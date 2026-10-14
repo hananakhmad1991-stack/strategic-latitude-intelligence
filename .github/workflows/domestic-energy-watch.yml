@@ -24,4 +24,5 @@ jobs:
           if [ -f data/domestic-energy.json ]; then git add data/domestic-energy.json; fi
           if git diff --cached --quiet; then echo "No change"; exit 0; fi
           git commit -m "Update domestic energy and environmental watch"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
