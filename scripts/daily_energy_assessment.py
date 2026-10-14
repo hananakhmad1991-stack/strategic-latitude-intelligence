@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Daily evidence-led Indonesia energy assessment, not an LLM fact verifier.
 
-Reads the official dated SLI datasets and attributed domestic/geopolitical headline
+Reads the latest locally published, officially sourced SLI datasets and attributed domestic/geopolitical headline
 feeds. Produces seven substantive, source-cited findings with conditional
 transmission analysis. Does not invent incidents, risk scores or fresh statistics.
 """
