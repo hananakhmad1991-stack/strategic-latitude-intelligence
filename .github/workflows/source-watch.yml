@@ -1,0 +1,48 @@
+name: SLI Official Source Watch
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "19 2 * * 1"
+permissions:
+  contents: read
+  issues: write
+jobs:
+  review-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check official source release pages
+        run: python scripts/source_watch.py
+      - name: Attach machine-readable source check
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-watch-report
+          path: monitor-report.json
+          retention-days: 30
+      - name: Open a review issue for a new candidate only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os, subprocess
+          r=json.load(open("monitor-report.json",encoding="utf-8"))
+          for item in r["alerts"]:
+              key="SLI-source-watch:"+item["id"]+":"+str(max(item["years"]))
+              existing=subprocess.run(["gh","issue","list","--state","all","--search",key+" in:body","--json","number","--limit","10"],capture_output=True,text=True)
+              if existing.returncode != 0:
+                  print("Issue lookup failed; avoid duplicate alert:", existing.stderr)
+                  continue
+              if json.loads(existing.stdout):
+                  print("Already reported:",key)
+                  continue
+              body=("Candidate release found by automated source scan. **Not verified; do not update dashboard until reviewed.**\n\n"
+                    + "Source: "+item["url"]+"\nDetected year(s): "+", ".join(map(str,item["years"]))
+                    + "\n\nReview: confirm document identity, release date, metric values, period, revisions, rights, and source URL.\n\n"+key)
+              result=subprocess.run(["gh","issue","create","--title","Review candidate: "+item["publisher"]+" ("+str(max(item["years"]))+")","--body",body],capture_output=True,text=True)
+              print(result.stdout or result.stderr)
+          PY
