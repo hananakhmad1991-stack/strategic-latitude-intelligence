@@ -1,0 +1,438 @@
+{
+  "title": "Indonesia Energy Governance, Regulatory Watch and CCS/CCUS Intelligence",
+  "as_of": "2026-10-15",
+  "scope": "Public research snapshot; functional governance map and selected CCS/CCUS projects, not an exhaustive licensing or investment register.",
+  "governance": {
+    "warning": "Functional influence/implementation map; NOT a statutory reporting-line organization chart. Leadership and institutional mandates change. Each actor has a source and review date.",
+    "layers": [
+      {
+        "title": "National direction and strategic policy",
+        "actors": [
+          {
+            "name": "President / Dewan Energi Nasional (DEN)",
+            "lead": "Prabowo Subianto · President; DEN steering chair",
+            "role": "Strategic direction on energy sovereignty, national security and cross-ministry coordination. DEN's daily chair is the Minister of ESDM.",
+            "scope": "National energy policy",
+            "kind": "Strategy",
+            "source": "https://esdm.go.id/id/media-center/arsip-berita/presiden-prabowo-lantik-ketua-harian-dan-anggota-den-periode-2026-2030",
+            "verified": "2026-01-28"
+          },
+          {
+            "name": "Kementerian ESDM / Minister",
+            "lead": "Bahlil Lahadalia · Minister of ESDM; DEN daily chair",
+            "role": "Leads energy regulation and ministerial direction across oil, gas, electricity, coal, renewables and CCS. Distinguish DEN coordination from the ministry's line functions.",
+            "scope": "Energy regulation",
+            "kind": "Regulator",
+            "source": "https://www.esdm.go.id/id/profil/struktur-organisasi",
+            "verified": "2026-10-15"
+          },
+          {
+            "name": "Kementerian Keuangan",
+            "lead": "Purbaya Yudhi Sadewa · Minister of Finance (DEN member, Jan 2026)",
+            "role": "Budget, subsidies and compensation, fiscal risk and tax/incentive policy; not an operating regulator for energy facilities.",
+            "scope": "Fiscal",
+            "kind": "Fiscal",
+            "source": "https://esdm.go.id/id/media-center/arsip-berita/presiden-prabowo-lantik-ketua-harian-dan-anggota-den-periode-2026-2030",
+            "verified": "2026-01-28"
+          },
+          {
+            "name": "Bappenas",
+            "lead": "Rachmat Pambudy · Minister/Head of Bappenas (DEN member, Jan 2026)",
+            "role": "National development planning, sector targets and alignment between medium-term plans, financing and energy infrastructure priorities.",
+            "scope": "Planning",
+            "kind": "Planning",
+            "source": "https://esdm.go.id/id/media-center/arsip-berita/presiden-prabowo-lantik-ketua-harian-dan-anggota-den-periode-2026-2030",
+            "verified": "2026-01-28"
+          }
+        ]
+      },
+      {
+        "title": "Sector regulators, implementation oversight and verification",
+        "actors": [
+          {
+            "name": "Ditjen Migas — ESDM",
+            "lead": "Laode Sulaeman · Director General (June 2026 source)",
+            "role": "Oil and gas regulation, upstream technical and commercial policy, and CCS/CCUS regulatory pathway within the ministry.",
+            "scope": "Upstream / CCS",
+            "kind": "Regulator",
+            "source": "https://migas.esdm.go.id/post/Sambut-Pejabat-Administrator-dan-Pengawas-Baru-Dirjen-Migas-Tekankan-Kecepatan-dan-Kekompakan",
+            "verified": "2026-06-19"
+          },
+          {
+            "name": "Ditjen EBTKE — ESDM",
+            "lead": "Eniya Listiani Dewi · Director General (2026 performance agreement)",
+            "role": "Renewable energy, bioenergy, conservation and transition-policy delivery; separate planning targets from commissioned generation.",
+            "scope": "Renewables",
+            "kind": "Regulator",
+            "source": "https://www.esdm.go.id/assets/media/content/content-perjanjian-kinerja-direktorat-jenderal-ebtke-tahun-2026.pdf",
+            "verified": "2026-01-01"
+          },
+          {
+            "name": "Ditjen Ketenagalistrikan — ESDM",
+            "lead": "Directorate General of Electricity",
+            "role": "Electricity supply regulation, PLN tariff decisions and power-sector supervision; corporate grid delivery is executed by PLN and IPPs.",
+            "scope": "Electricity",
+            "kind": "Regulator",
+            "source": "https://gatrik.esdm.go.id/berita/jaga-daya-beli-dan-daya-saing-industri-menteri-esdm-tarif-listrik-tw-iv-tetap",
+            "verified": "2026-09-30"
+          },
+          {
+            "name": "SKK Migas",
+            "lead": "Djoko Siswanto · Head (July 2026 source)",
+            "role": "Manages and supervises upstream PSC implementation and contractor development execution; not the ministerial policy setter.",
+            "scope": "Upstream execution",
+            "kind": "Implementer",
+            "source": "https://esdm.go.id/id/media-center/arsip-berita/north-hub-bidik-produksi-1000-mmscfd-gas-buka-lebih-dari-8000-lapangan-kerja",
+            "verified": "2026-07-23"
+          },
+          {
+            "name": "BPH Migas",
+            "lead": "Regulatory committee (verify current chair before naming)",
+            "role": "Downstream fuel distribution and quotas, monitoring assigned/subsidized fuel, and piped-gas transportation; distinct from SKK Migas.",
+            "scope": "Downstream fuels",
+            "kind": "Regulator",
+            "source": "https://www.bphmigas.go.id/komite/",
+            "verified": "2026-10-15"
+          },
+          {
+            "name": "BPMA — Aceh",
+            "lead": "Badan Pengelola Migas Aceh",
+            "role": "Aceh upstream PSC management under its special institutional arrangements; relevant to the Arun/PGE CCS development track.",
+            "scope": "Aceh upstream",
+            "kind": "Implementer",
+            "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-bpma-tahun-2025.pdf",
+            "verified": "2026-10-15"
+          },
+          {
+            "name": "Kementerian Lingkungan Hidup",
+            "lead": "Hanif Faisol Nurofiq · Minister (DEN member, Jan 2026)",
+            "role": "Environmental controls and permits, emissions governance, and safeguards relevant to CCS; separate from subsurface storage licensing by ESDM.",
+            "scope": "Environmental safeguard",
+            "kind": "Regulator",
+            "source": "https://esdm.go.id/id/media-center/arsip-berita/presiden-prabowo-lantik-ketua-harian-dan-anggota-den-periode-2026-2030",
+            "verified": "2026-01-28"
+          }
+        ]
+      },
+      {
+        "title": "State-owned and private project executors / investors",
+        "actors": [
+          {
+            "name": "PLN Group and private IPPs",
+            "lead": "Darmawan Prasodjo · President Director of PLN (June 2026)",
+            "role": "Implement and operate power systems; procure and build generation/transmission according to approved plans and contracts.",
+            "scope": "Power delivery",
+            "kind": "Operator",
+            "source": "https://www.pln.co.id/article-rups-pln-2026-perubahan-susunan-direksi",
+            "verified": "2026-06-18"
+          },
+          {
+            "name": "Pertamina Group / PSC contractors",
+            "lead": "Project-specific operators and PSC interest holders",
+            "role": "Operate fuel and upstream assets, invest in feasibility, EPC and CCS pilots; outcomes belong to each project and contract, not to a ministry.",
+            "scope": "Oil, gas, CCS",
+            "kind": "Operator",
+            "source": "https://www.esdm.go.id/id/media-center/arsip-berita/menteri-arifin-beber-tantangan-ccs-ccus-",
+            "verified": "2026-10-15"
+          },
+          {
+            "name": "Danantara / SOE investment ownership channel",
+            "lead": "Ownership, funding and portfolio role; verify transaction-specific mandate",
+            "role": "Potential capital allocation and SOE coordination channel. Not a replacement for ESDM policy, SKK Migas technical oversight or PLN project execution.",
+            "scope": "Capital / ownership",
+            "kind": "Financier",
+            "source": "https://www.pln.co.id/article-rups-pln-2026-perubahan-susunan-direksi",
+            "verified": "2026-10-15"
+          },
+          {
+            "name": "LEMIGAS / universities / technical partners",
+            "lead": "LEMIGAS, ITB and industrial engineering teams",
+            "role": "Geological screening, CO₂ source–sink matching, monitoring, measurement and storage-integrity research. Research estimates are not certified commercial injectivity.",
+            "scope": "Technical verification",
+            "kind": "Research",
+            "source": "https://www.lemigas.esdm.go.id/publikasi/berita/lemigas-dorong-penguatan-monitoring-dan-integritas-lokasi-penyimpanan-ccs-pada-iiccs-forum-internasional-2026",
+            "verified": "2026-08-26"
+          }
+        ]
+      }
+    ],
+    "strategic_readout": [
+      "Approval is fragmented: strategy (DEN/President), regulations and subsurface (ESDM), contract execution (SKK Migas/BPMA), environmental safeguard (environment ministry), and project engineering (operators).",
+      "For any CCS proposal, trace the operator, approved area and license, PoD/FID, verified injection measurement, liabilities and long-term MRV rather than equating cooperation MOUs with operational delivery.",
+      "Fuel shortages belong primarily to downstream distribution and logistics; power outages to PLN/grid operations and regulators; upstream gas production to PSC contractors and SKK Migas."
+    ]
+  },
+  "policies": {
+    "note": "Curated, source-dated policy register. 'Announced' is not enacted. The scheduled Official Source Watch scans for candidate releases, but requires analyst verification before adding or changing this list.",
+    "items": [
+      {
+        "date": "2026-10-01",
+        "title": "October 2026 HBA / mineral reference price decree",
+        "instrument": "Kepmen ESDM No. 384.K/MB.01/MEM.B/2026",
+        "status": "Enacted",
+        "sector": "Coal & mining",
+        "effect": "First October 2026 pricing reference; not a new coal royalty law or confirmed realized transaction price.",
+        "source": "https://jdih.esdm.go.id/"
+      },
+      {
+        "date": "2026-09-30",
+        "title": "PLN Q4 2026 nonsubsidized electricity tariffs unchanged",
+        "instrument": "ESDM electricity tariff decision; underlying Permen ESDM 7/2024",
+        "status": "Official decision",
+        "sector": "Electricity",
+        "effect": "13 non-subsidized tariff classes remain at Q3 2026 levels for October–December; monitor fiscal and PLN cost implications.",
+        "source": "https://gatrik.esdm.go.id/berita/jaga-daya-beli-dan-daya-saing-industri-menteri-esdm-tarif-listrik-tw-iv-tetap"
+      },
+      {
+        "date": "2026-09-23",
+        "title": "ESDM enforcement authority delegation",
+        "instrument": "Kepmen ESDM No. 381.K/KP.01/MEM.H/2026",
+        "status": "Enacted",
+        "sector": "Governance",
+        "effect": "Delegates specified authority in ESDM law enforcement; scope must be read from decree before inferring sector-specific sanctions.",
+        "source": "https://jdih.esdm.go.id/"
+      },
+      {
+        "date": "2026-09-17",
+        "title": "Government directs preparatory work on E50",
+        "instrument": "National Energy Council plenary / ESDM press statement",
+        "status": "Announced — not enacted",
+        "sector": "Fuel / bioenergy",
+        "effect": "E50 ethanol blending is under preparation; do not describe it as mandatory retail blending or commercial rollout.",
+        "source": "https://esdm.go.id/id/media-center/arsip-berita/usai-b50-pemerintah-siapkan-e50-langkah-baru-kurangi-ketergantungan-bbm-impor"
+      },
+      {
+        "date": "2026-08-28",
+        "title": "CCS sector carbon-value implementation under development",
+        "instrument": "ESDM CCS policy statement linked to Perpres 110/2025",
+        "status": "Draft / under development",
+        "sector": "CCS / carbon",
+        "effect": "Proposed inclusion of CCS/CCUS as energy-sector mitigation under carbon-value rules; no assumption of automatic carbon-credit eligibility.",
+        "source": "https://migas.esdm.go.id/post/Punya-Potensi-Penyimpanan-Karbon-500-Giga-Ton-Pemerintah-Matangkan-Kerangka-Regulasi-dan-Ekosistem-CCS-CCUS-Nasional"
+      },
+      {
+        "date": "2026-01-01",
+        "title": "Oil, petroleum fuel and LPG procurement for national security",
+        "instrument": "Perpres No. 26/2026",
+        "status": "Enacted",
+        "sector": "Fuel / imports",
+        "effect": "2026 presidential regulatory framework for procurement in national energy security; interpret obligations from primary legal text.",
+        "source": "https://jdih.esdm.go.id/dokumen"
+      },
+      {
+        "date": "2026-01-01",
+        "title": "Risk-based business licensing standards in ESDM sector",
+        "instrument": "Permen ESDM No. 7/2026",
+        "status": "Enacted",
+        "sector": "Licensing",
+        "effect": "Sectoral licensing standards; distinguish CCS site-specific permissions from broad registration or commercial start.",
+        "source": "https://jdih.esdm.go.id/dokumen/peraturan"
+      },
+      {
+        "date": "2025-10-10",
+        "title": "Updated national carbon economic value framework",
+        "instrument": "Perpres No. 110/2025",
+        "status": "Enacted",
+        "sector": "CCS / carbon",
+        "effect": "Supersedes Perpres 98/2021; specific CCS carbon-credit treatment needs implementing rules and eligibility review.",
+        "source": "https://jdih.kemenkopangan.go.id/peraturan-presiden-republik-indonesia-nomor-110-tahun-2025-tentang-penyelenggaraan-instrumen-nilai-ekonomi-karbon-dan-pengendalian-emisi-gas-rumah-kaca-nasional"
+      },
+      {
+        "date": "2025-09-15",
+        "title": "Updated National Energy Policy (KEN)",
+        "instrument": "PP No. 40/2025",
+        "status": "Enacted",
+        "sector": "Energy planning",
+        "effect": "Changes national planning benchmark; avoid treating older RUEN 23% EBT 2025 as the sole governing target.",
+        "source": "https://peraturan.go.id/id/pp-no-40-tahun-2025"
+      },
+      {
+        "date": "2025-01-01",
+        "title": "CCS storage non-tax state revenue framework",
+        "instrument": "PP No. 19/2025",
+        "status": "Enacted",
+        "sector": "CCS / carbon",
+        "effect": "Establishes relevant PNBP basis; verify tariff applicability and licensing for individual storage schemes.",
+        "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+      },
+      {
+        "date": "2024-12-20",
+        "title": "Carbon-storage permit areas (WIPK)",
+        "instrument": "Permen ESDM No. 16/2024",
+        "status": "Enacted",
+        "sector": "CCS / carbon",
+        "effect": "Rules governing carbon storage permit areas; distinct from upstream PSC CCS approval pathway.",
+        "source": "https://www.esdm.go.id/id/media-center/arsip-berita/menteri-arifin-beber-tantangan-ccs-ccus-"
+      },
+      {
+        "date": "2024-01-30",
+        "title": "National CCS activity framework",
+        "instrument": "Perpres No. 14/2024",
+        "status": "Enacted",
+        "sector": "CCS / carbon",
+        "effect": "Governs CCS, including cross-border storage provisions and domestic-priority constraints; permissions and bilateral conditions require verification.",
+        "source": "https://migas.esdm.go.id/post/Perpres-CCS-CCUS-Resmi-Disahkan-Atur-Skema-Penyelenggaraan-Alokasi-Domestik-Hingga-Transportasi-Karbon-Lintas-Negara"
+      },
+      {
+        "date": "2023-03-02",
+        "title": "CCS/CCUS in upstream oil and gas operations",
+        "instrument": "Permen ESDM No. 2/2023",
+        "status": "Enacted",
+        "sector": "CCS / carbon",
+        "effect": "Upstream PSC CCS/CCUS procedure, technical obligations and monitoring duties.",
+        "source": "https://www.esdm.go.id/id/berita-unit/direktorat-jenderal-minyak-dan-gas-bumi/peraturan-ccs-ccus-diteken-upaya-indonesia-capai-sektor-migas-rendah-emisi-dan-tingkatkan-produksi-"
+      }
+    ]
+  },
+  "ccs": {
+    "note": "Geological resource estimates are NOT certified injectable capacity. Project announcements, FID, pilot injectivity, operating injection, realized capital expenditure and measured cumulative tonnes are different evidence classes.",
+    "potential": [
+      {
+        "vintage": "2026-08",
+        "saline_gt": 500,
+        "depleted_gt": 4,
+        "source": "https://migas.esdm.go.id/post/Punya-Potensi-Penyimpanan-Karbon-500-Giga-Ton-Pemerintah-Matangkan-Kerangka-Regulasi-dan-Ekosistem-CCS-CCUS-Nasional",
+        "label": "2026 LEMIGAS preliminary basin-level estimates"
+      },
+      {
+        "vintage": "2024-02",
+        "saline_gt": 572.77,
+        "depleted_gt": 4.85,
+        "source": "https://www.esdm.go.id/id/media-center/arsip-berita/ini-potensi-penyimpanan-karbon-pada-ccs",
+        "label": "2024 ESDM screening estimates"
+      }
+    ],
+    "target": {
+      "text": "Approximately 15 potential CCS/CCUS developments targeting the 2026–2030 window (2024 policy aspiration, not evidence that 15 have commenced operation).",
+      "source": "https://esdm.go.id/en/media-center/news-archives/pemerintah-targetkan-15-proyek-ccs-ccus-onstream-tahun-2030"
+    },
+    "realized": {
+      "commercial_injected_tco2": null,
+      "commercial_projects_count": null,
+      "ccs_only_realized_investment_usd": null,
+      "note": "No independently reconciled national commercial injected CO₂ total, operational facility count or CCS-only realized CAPEX was established from the cited public sources as of this snapshot. NULL / unverified does NOT mean zero. Earlier injections may have occurred in pilots and must not be counted as commercial scale."
+    },
+    "projects": [
+      {
+        "name": "Tangguh Ubadari–CCUS–Compression (UCC)",
+        "location": "Bintuni Bay, West Papua",
+        "operator": "bp / Tangguh production-sharing contract partners",
+        "partners": "Tangguh PSC consortium",
+        "status": "FID approved; development stage",
+        "stage": "FID / development",
+        "investment_usd_billion": 7,
+        "investment_basis": "2024 FID for bundled Ubadari gas field + CCUS + compression; NOT CCS-only capex and NOT verified realized spending",
+        "storage_million_tco2": 15,
+        "storage_basis": "Potential sequestration in initial phase, not injected volume",
+        "target": "Ubadari first gas expected 2028; CCUS injection commissioning date not independently confirmed from cited source",
+        "realization": "No verified commercial CO₂ injection volume in the primary announcement",
+        "date": "2024-11-21",
+        "source": "https://www.bp.com/content/dam/bp/country-sites/en_id/indonesia/home/news/press-releases/241121%20Press%20release%20-%20bp%20and%20partners%20give%20go%20ahead%20for%20Tangguh%20UCC%20project.pdf"
+      },
+      {
+        "name": "Jatibarang injectivity / CO₂ EOR preparedness",
+        "location": "West Java",
+        "operator": "Pertamina EP Regional 2 Zone 7; PDSI test support",
+        "partners": "Pertamina Hulu Energi and Pertamina Drilling Services Indonesia",
+        "status": "Pilot preparation / water-injectivity test",
+        "stage": "Pilot / technical test",
+        "investment_usd_billion": null,
+        "investment_basis": "No project-level disclosed verified CAPEX",
+        "storage_million_tco2": null,
+        "storage_basis": "Water injectivity does not establish CO₂ storage volume",
+        "target": "Further CO₂ injection readiness subject to technical and commercial validation",
+        "realization": "Water injectivity test at JTB-156 on 14 July 2026, not evidence of commercial CO₂ storage",
+        "date": "2026-07-20",
+        "source": "https://www.petromindo.com/news/article/pertamina-completes-first-injectivity-test-to-support-ccs-development"
+      },
+      {
+        "name": "Gundih CCUS / EGR",
+        "location": "Central Java",
+        "operator": "Pertamina-linked upstream development / project-specific PSC",
+        "partners": "ITB, JGC, J-Power and JANUS; Japan METI-linked studies",
+        "status": "Study / pre-FEED and earlier technical pilots",
+        "stage": "Study / pre-FEED",
+        "investment_usd_billion": null,
+        "investment_basis": "ESDM historical modeled injection investment is not booked CAPEX",
+        "storage_million_tco2": 3,
+        "storage_basis": "Historical indicative 3 Mt CO₂ over 10 years; not certified capacity",
+        "target": "Historical schedule 2026; must be revalidated",
+        "realization": "Historical pilot-study references exist; no commercial-scale tonnage verified here",
+        "date": "2024-08-02",
+        "source": "https://www.esdm.go.id/id/media-center/arsip-berita/menteri-arifin-beber-tantangan-ccs-ccus-"
+      },
+      {
+        "name": "Sukowati CO₂-EOR / CCUS",
+        "location": "East Java",
+        "operator": "Pertamina upstream",
+        "partners": "LEMIGAS; JAPEX; Japan METI-supported study",
+        "status": "Study / pilot planned",
+        "stage": "Study / pilot planned",
+        "investment_usd_billion": null,
+        "investment_basis": "No CCS-only realized spending verified",
+        "storage_million_tco2": 14,
+        "storage_basis": "Historic indicative 14 Mt (15-year profile in technical listing); do not sum as committed",
+        "target": "Legacy pilot target 2026–2027; full scale around 2030/2031, subject to updated project disclosure",
+        "realization": "No confirmed commercial injection documented in cited material",
+        "date": "2024-08-02",
+        "source": "https://www.esdm.go.id/id/media-center/arsip-berita/menteri-arifin-beber-tantangan-ccs-ccus-"
+      },
+      {
+        "name": "Abadi Masela gas development with planned CCS",
+        "location": "Arafura Sea / Tanimbar, Maluku",
+        "operator": "INPEX (lead)",
+        "partners": "Pertamina and PETRONAS",
+        "status": "Wider gas project groundbreaking 2026; CCS not proven operational",
+        "stage": "Development (gas); CCS planned",
+        "investment_usd_billion": 20.9,
+        "investment_basis": "2026 publicly stated ENTIRE Abadi Masela gas/LNG project value, not CCS project capex or money realized",
+        "storage_million_tco2": null,
+        "storage_basis": "Reservoir CO₂ reinjection envisaged; verified commercial storage volume not provided",
+        "target": "Planned CCS from start of LNG production; date pending execution milestones",
+        "realization": "16 July 2026 groundbreaking of broader gas project, NOT inauguration of CCS injection",
+        "date": "2026-07-16",
+        "source": "https://www.esdm.go.id/id/media-center/arsip-berita/pembangunan-lng-abadi-masela-mulai-jalan-pemerintah-dorong-pertumbuhan-ekonomi-lokal-"
+      },
+      {
+        "name": "Sunda Asri / Asri Basin carbon storage hub",
+        "location": "Sunda–Asri Basin, western Java Sea",
+        "operator": "Pertamina / ExxonMobil collaboration (project model subject to approvals)",
+        "partners": "Pertamina, ExxonMobil; other emitters subject to commercial agreements",
+        "status": "Cooperation / feasibility preparation",
+        "stage": "Study / hub proposal",
+        "investment_usd_billion": null,
+        "investment_basis": "No verified sanctioned or realized CCS-only CAPEX in cited public statements",
+        "storage_million_tco2": null,
+        "storage_basis": "Basin resource estimates are not approved project capacity",
+        "target": "Hub ambition; no verified first-injection date",
+        "realization": "Agreement and studies, not proof of operational storage",
+        "date": "2024-07-02",
+        "source": "https://www.esdm.go.id/id/media-center/arsip-berita/penyimpanan-karbon-jadi-solusi-reduksi-emisi-dan-capai-target-nze-di-2060"
+      },
+      {
+        "name": "Arun / Aceh CCS evaluation",
+        "location": "Aceh (Arun and South Lhok Sukon)",
+        "operator": "Pema Global Energi (PGE) — field study track",
+        "partners": "BPMA, technical and prospective strategic partners",
+        "status": "Geological evaluation / expression of interest",
+        "stage": "Study / permit exploration",
+        "investment_usd_billion": null,
+        "investment_basis": "No verified realized CCS-only CAPEX",
+        "storage_million_tco2": null,
+        "storage_basis": "Project injectivity/capacity not independently confirmed",
+        "target": "A BPMA 2025 report discussed pilot 2027, full-scale ambition 2030; targets not verified achievements",
+        "realization": "2025 statement of interest and geological field studies, not commercial injection",
+        "date": "2025-12-31",
+        "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-bpma-tahun-2025.pdf"
+      }
+    ],
+    "assessment": [
+      "Supply-side resource potential is enormous on a basin-screening basis, but permits, injectivity, site integrity, CO₂ capture and transport economics determine bankable storage.",
+      "Indonesia has progressed from studies to a major integrated FID (Tangguh UCC); its US$7bn bundle must not be misrepresented as spent CCS-only investment.",
+      "Operational conversion remains the principal uncertainty: require named wells, meter-verified tonnes injected, MRV reports, permit conditions and liability arrangements.",
+      "Compare CO₂ transport cost and industrial capture economics with domestic energy-security and carbon-market rules; avoid counting potential storage as emissions abated.",
+      "Projects tied to oil/gas recovery warrant separate attribution of avoided emissions versus incremental hydrocarbon production and full lifecycle effects.",
+      "Partner mapping matters: bp (Tangguh), Pertamina and technical partners (Jatibarang, Gundih, Sukowati), INPEX/Pertamina/PETRONAS (Masela), and Pertamina–ExxonMobil (Sunda Asri)."
+    ]
+  }
+}
