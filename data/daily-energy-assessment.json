@@ -1,6 +1,6 @@
 {
   "assessment_date_wib": "2026-10-15",
-  "generated_at_utc": "2026-10-14T23:08:21.727938+00:00",
+  "generated_at_utc": "2026-10-14T23:10:04.841872+00:00",
   "headline": "Indonesia Energy Security — Daily Overall Assessment",
   "status": "Automated evidence-led interpretation; news leads unverified, no LLM article-body verification",
   "method": "Deterministic editorial transmission framework sourced from dated official baselines and qualified, attributed public headline leads.",
@@ -16,7 +16,7 @@
     },
     "geopolitical": {
       "source_checked_at_utc": "2026-10-14T21:36:21.745751+00:00",
-      "age_hours_at_generation": 1.5,
+      "age_hours_at_generation": 1.6,
       "usable": true
     }
   },
@@ -25,6 +25,7 @@
       "id": "oil-gas",
       "heading": "01 · Oil & Gas Supply Resilience",
       "finding": "Indonesia's reported oil-field output averaged 581 thousand barrels/day in 2025, while gross gas production was 6,789 MMSCFD in 2025. Proved reserves reported for 2025 were 2.326 billion barrels of oil and 34.78 TSCF of gas. These are different stock and flow measures.",
+      "daily_signal": "Previously monitored attributed headline (CNBC Indonesia, 14 Oct 2026 19:30 WIB): Video: Bahlil Dipanggil ke Istana, Bahas Kelangkaan BBM di Bali - CNBC Indonesia. Analytical test: Assess regional stocks, last-mile fuel delivery and physical gas flows before attributing a supply problem to domestic crude production. The headline is not independently verified evidence of operational impact.",
       "implication": "Sustained supply resilience depends on replacement discoveries, operational delivery and refinery import needs. Regional fuel-availability headlines may point to distribution issues rather than changes in national production; LNG headlines do not prove Indonesian gas outages.",
       "verification_priority": "Monitor SKK Migas and ESDM revisions to actual output, domestic gas allocation, proved reserves and Pertamina/BPH Migas supply status.",
       "baseline_sources": [
@@ -62,6 +63,7 @@
       "id": "geopolitics",
       "heading": "02 · External Price & Maritime Exposure",
       "finding": "International oil, LNG and shipping shocks remain transmission risks for Indonesia's imported petroleum and energy-intensive industry. This is an exposure assessment, not a claim that any news headline confirms a reduction in global supply.",
+      "daily_signal": "Previously monitored attributed headline (WWD, 15 Oct 2026 00:35 WIB): Container Shipping’s Red Sea Comeback is Outpacing the Risk Warnings - WWD. Analytical test: Confirm actual tanker passages, freight/war-risk rates and oil or LNG loading volumes before treating shipping headlines as a physical supply loss. The headline is not independently verified evidence of operational impact.",
       "implication": "A verified production outage or material shipping rerouting could affect crude and product prices, freight, insurance, the rupiah and the Indonesian Crude Price (ICP). A reported attack alone does not prove that Hormuz or Bab el-Mandeb has closed.",
       "verification_priority": "Check vessel traffic, insured voyages, refinery throughput, dated price observations and official statements before classifying an event as a supply disruption.",
       "baseline_sources": [
@@ -105,6 +107,7 @@
       "id": "coal",
       "heading": "03 · Coal Production, DMO & Exports",
       "finding": "The Ditjen Minerba 2025 dataset reports coal production of 817.48 million tonnes, with 246.88 million tonnes of DMO use in 2025 (provisional). Other ESDM releases use different reporting vintages, so the figures should not be mechanically reconciled into a national supply balance.",
+      "daily_signal": "Previously monitored attributed headline (EnergyNow.com, 14 Oct 2026 23:04 WIB): Trump Plans $700 Million Push to Build Coal Plants, Export Site - EnergyNow.com. Analytical test: Check whether the reported development changes Indonesian export volumes, DMO allocations or effective coal reference prices; foreign policy news does not directly establish a domestic outage. The headline is not independently verified evidence of operational impact.",
       "implication": "The strategic tension is maintaining reliable domestic coal supply while assessing changes in export demand, regulated reference prices, and longer-run coal transition pressure.",
       "verification_priority": "Reconcile Minerba, HEESI, PLN deliveries and customs exports for identical reporting periods; confirm effective dates of any new coal rule.",
       "baseline_sources": [
@@ -138,6 +141,7 @@
       "id": "power",
       "heading": "04 · Grid Reliability & Industrial Demand",
       "finding": "Electricity security must be evaluated through grid availability and restoration times, not installed capacity alone. Smelters, industrial estates and data centres are particularly dependent on reliable regional supply.",
+      "daily_signal": "Previously monitored attributed headline (ANTARA News Sumbar, 15 Oct 2026 04:40 WIB): \"Blackout\" PLN Batam, Bahlil: gangguan jaringan hingga kelelawar - ANTARA News Sumbar. Analytical test: Verify outage location, utility-confirmed cause, restoration time and affected industrial load, rather than extrapolating one regional event nationally. The headline is not independently verified evidence of operational impact.",
       "implication": "Reported local blackouts can disrupt industry and data-centre operations. Their economic scale cannot be inferred without operator-confirmed duration, affected substations, customers and industrial load.",
       "verification_priority": "Verify each outage with the regional PLN operator; track interruption duration, cause, recovery, transmission constraints and the commissioning of firm supply.",
       "baseline_sources": [
@@ -175,6 +179,7 @@
       "id": "transition",
       "heading": "05 · Energy Transition & Project Delivery",
       "finding": "Indonesia's reported EBT share was 15.75% in 2025 versus the revised KEN 2025 reference range of 17–20%. The 2025–2034 RUPTL plans 42.6 GW of renewable additions and 10.3 GW of storage, but these are planned, not commissioned.",
+      "daily_signal": "No qualified recent headline was selected for this theme in the available feed. This is a monitoring-coverage statement, not evidence that no event occurred. Determine whether the development is an investment proposal, construction milestone, grid energization or commissioned generation, since those represent different levels of delivery.",
       "implication": "The transition implementation gap remains an important strategic variable: grid connection, dispatch, financing and provincial RUED progress determine whether planned additions translate into generation and lower emissions.",
       "verification_priority": "Check COD, installed and dispatched capacity, regional RUED actuals and project operating data; do not treat announcements or personnel appointments as project completion.",
       "baseline_sources": [
@@ -197,6 +202,7 @@
       "id": "carbon",
       "heading": "06 · Carbon Outcomes & Environmental Risk",
       "finding": "The BPS/KLHK inventory shown here ends in 2023; energy-sector emissions were 752.28 MtCO₂e and national emissions 1,360.35 MtCO₂e. These are emitted greenhouse gases, not reported avoided-emission achievements.",
+      "daily_signal": "Previously monitored attributed headline (Media Center Kota Palangka Raya, 14 Oct 2026 22:42 WIB): PADAMKAN LAHAN GAMBUT YANG TERBAKAR - Media Center Kota Palangka Raya. Analytical test: Verify observed fire area, duration, smoke dispersion and infrastructure proximity before inferring either an emissions increase or energy-system loss. The headline is not independently verified evidence of operational impact.",
       "implication": "Peatland and forest-fire conditions can affect land-use emissions, haze and infrastructure access; local fire reports do not on their own confirm damage to electricity or fuel assets. National net-zero progress should use updated inventories rather than assuming daily changes.",
       "verification_priority": "Review BNPB/BPBD and KLHK fire measurements, proximity to critical infrastructure, restoration work, and the next verified GHG inventory.",
       "baseline_sources": [
@@ -234,6 +240,7 @@
       "id": "policy",
       "heading": "07 · Policy Execution & Evidence Discipline",
       "finding": "PP 40/2025 updates Indonesia's national energy policy. The national long-term net-zero pathway is 2060 or sooner; provincial RUED attainment remains province-specific rather than a verified single nationwide compliance score.",
+      "daily_signal": "No qualified recent headline was selected for this theme in the available feed. This is a monitoring-coverage statement, not evidence that no event occurred. Confirm a numbered legal instrument and its effective date; media commentary on future policies is not itself binding regulation.",
       "implication": "New regulations, local supply decisions and commissioning milestones may change incentives and execution. A headline that discusses a policy or minister is not evidence that a legally binding rule was enacted.",
       "verification_priority": "Require a numbered official instrument, signature and effective date from JDIH ESDM or peraturan.go.id; verify implementation milestones before revising project or regulatory assessments.",
       "baseline_sources": [
