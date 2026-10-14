@@ -19,6 +19,7 @@ function buildRUED(root,d){
  kpi(grid,"National EBT mix — 2025","15.75%","Reported national primary energy mix, not the province-specific RUED attainment.",d.sources.esdm);
  kpi(grid,"East Java RUED target 2025","12.15%","Legal provincial target, not a verified achievement or national benchmark.",d.sources.jatim);
  kpi(grid,"East Java RUED target 2050","23.76%","Provincial Regulation No. 3 of 2024; realization requires its own official release.",d.sources.jatim);
+ kpi(grid,"DEN 2024 supervision","33 provinces","33 recommendation reports assessing 2023 provincial energy mix; monitoring coverage, NOT target achievement.","https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-sekjen-den-tahun-2024.pdf");
  root.append(grid);
  const pane=panel(root);add(pane,dom("h3","How RUED progress is assessed"),dom("p","RUED achievement requires province-specific actual primary-energy mix, adopted targets, operating clean-energy projects and annual execution evidence. We have not verified a single national RUED completion percentage."));
  const method=dom("p",null,"tr-link");add(method,a(d.sources.den,"DEN 2025 annual performance report ↗"),document.createTextNode(" · "),a(d.sources.jatim,"East Java RUED regulation ↗"));pane.append(method);
