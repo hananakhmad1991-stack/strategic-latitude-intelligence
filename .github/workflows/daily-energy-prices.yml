@@ -1,0 +1,33 @@
+name: SLI Daily Energy Market Prices
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "37 1 * * *"
+permissions:
+  contents: write
+jobs:
+  update-public-daily-quotes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve verifiable public daily price observations
+        run: python scripts/energy_prices.py
+      - name: Commit verified delayed quotes if changed
+        run: |
+          if [ ! -f data/energy-prices.json ]; then
+            echo "Data unavailable or stale; existing published data unchanged"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/energy-prices.json
+          if git diff --cached --quiet; then
+            echo "No new data"
+            exit 0
+          fi
+          git commit -m "Refresh official daily energy market price observations"
+          git push
