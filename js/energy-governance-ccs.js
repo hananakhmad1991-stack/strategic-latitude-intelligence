@@ -59,12 +59,30 @@ function policies(root,data){
  for(const x of [sector,state])x.addEventListener("change",draw);query.addEventListener("input",draw);draw();
  const live=E("div","gov-live");live.append(E("h3",null,"Recent regulatory-news leads (not enacted-policy records)"));
  const check=E("p","gov-meta","Reading attributed domestic monitoring leads…"),stories=E("div","gov-leads");live.append(check,stories);root.append(live);
- fetch("data/domestic-energy.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Unavailable");return r.json()}).then(d=>{
-  const stamp=new Date(d.checked_at_utc);const relevant=(d.reports||[]).filter(x=>x.topic_id==="policy"&&/aturan|regulasi|perpres|permen|kebijakan|izin|etanol|subsidi|kuota|peraturan|energi/i.test(x.title||""));
-  check.textContent="Last attributed news scan: "+(isNaN(stamp.getTime())?"unknown":stamp.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Jakarta"})+" WIB")+" · "+relevant.length+" qualifying leads (headline only).";
-  relevant.slice(0,3).forEach(x=>{const row=E("div","gov-lead");row.append(LINK(x.url,x.title),E("div","gov-meta",(x.publisher||"Source")+" · unverified headline, not a regulation"));stories.append(row)});
-  if(!relevant.length)note(stories,"No recent specifically regulatory headlines passed the conservative title filter.");
- }).catch(()=>{check.textContent="No validated regulatory-headline feed available; the curated policy register remains visible."});
+
+ (async()=>{
+  let data,kind;
+  try{
+   const r=await fetch("data/energy-policy-leads.json",{cache:"no-store"});
+   if(!r.ok)throw Error("Policy watcher has not published yet");
+   data=await r.json();kind="policy";
+  }catch(e){
+   try{
+    const r=await fetch("data/domestic-energy.json",{cache:"no-store"});
+    if(!r.ok)throw Error("Domestic watcher missing");
+    data=await r.json();kind="domestic";
+   }catch(err){check.textContent="Awaiting the first valid policy-source scan. Curated dated legal and policy records remain above.";return;}
+  }
+  const stamp=new Date(data.checked_at_utc);
+  const stampLabel=isNaN(stamp.getTime())?"unknown":stamp.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Jakarta"})+" WIB";
+  const relevant=kind==="policy"?(data.items||[]):(data.reports||[]).filter(x=>x.topic_id==="policy"&&/aturan|regulasi|perpres|permen|kebijakan|izin|etanol|subsidi|kuota|energi/i.test(x.title||""));
+  check.textContent=(kind==="policy"?"Official-source candidate scan: ":"Fallback domestic policy-news scan: ")+stampLabel+" · "+relevant.length+" attributed leads · NOT legal enactment verification"+(data.stale_previous_results?" · stale data":"");
+  relevant.slice(0,5).forEach(x=>{
+   const row=E("div","gov-lead");row.append(LINK(x.url,x.title),E("div","gov-meta",(x.publisher||"Source")+" · candidate only; verify original legal text / effective date before promotion"));stories.append(row);
+  });
+  if(!relevant.length)note(stories,"No recent qualified release candidates. This does NOT prove no new regulations were issued.");
+  if((data.scan_errors||[]).length)note(stories,"Some candidate feeds failed; coverage may be incomplete.");
+ })();
 }
 function ccs(root,data){
  section(root,"03 · Carbon Capture, Utilisation & Storage (CCS/CCUS)","Geological potential, regulation, project maturity & commercial realisation");
