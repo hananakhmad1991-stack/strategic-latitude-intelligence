@@ -1,0 +1,319 @@
+{
+  "title": "Indonesia Energy Fiscal, Quotas, Investment and Retail Prices",
+  "as_of": "2026-10-15",
+  "definition": "Source-dated values; approved/announced budget, actual paid, annual quotas and partial-year dispatch, realized investment, retail price and power tariffs are non-interchangeable.",
+  "subsidies": {
+    "combined_paid": {
+      "value": 376.8,
+      "unit": "Rp trillion",
+      "period": "January–September 2026",
+      "coverage": "Energy subsidies PLUS state compensation paid together",
+      "year_on_year_percent": 54.1,
+      "source": "https://www.antaranews.com/berita/5778778/subsidi-dan-kompensasi-energi-capai-rp3768-t-hingga-september",
+      "note": "Do NOT label Rp376.8tn as subsidies-only. Compensation and subsidy payments differ from final underlying economic cost, and payment timing affects comparability."
+    },
+    "combined_apbn_implied": {
+      "value": null,
+      "period": "2026",
+      "note": "A reported 84.3% budget reference concerns the combined subsidy-and-compensation envelope. Do not compare to the proposed direct-subsidy figure below."
+    },
+    "draft_2026": {
+      "value": 210.0608,
+      "unit": "Rp trillion",
+      "status": "RAPBN proposal (historical; not final enacted subsidy budget)",
+      "components": [
+        {
+          "label": "BBM certain categories",
+          "value": 25.1
+        },
+        {
+          "label": "LPG 3kg",
+          "value": 80.3
+        },
+        {
+          "label": "Electricity",
+          "value": 104.6
+        }
+      ],
+      "source": "https://anggaran.kemenkeu.go.id/api/Medias/3e021dbf-3aae-47b3-9557-a8014ebf90e2",
+      "note": "Proposal in Nota Keuangan RAPBN 2026, not the updated APBN 2026 final budget; the sum is rounded. For actual execution, use separate paid subsidies and compensation disclosure."
+    },
+    "analysis": "Global oil/FX shocks can increase fiscal exposure and payment obligations even if regulated retail Pertalite/Biosolar prices are kept unchanged. Monitor APBN KiTa and separate monthly subsidy versus compensation releases."
+  },
+  "quotas": {
+    "year": 2026,
+    "as_of": "BPH Migas allocation announced 27 Jan 2026",
+    "unit": "kilolitres (kL)",
+    "items": [
+      {
+        "name": "Pertalite",
+        "type": "JBKP, assignment fuel (not direct APBN subsidy line)",
+        "annual_quota": 29267947,
+        "q1_distribution": 6882568,
+        "q1_as_of": "2026-03-31",
+        "source": "https://www.antaranews.com/berita/5379266/pemerintah-pangkas-kuota-bbm-subsidi-untuk-2026",
+        "q1_source": "https://www.bphmigas.go.id/wp-content/uploads/2026/05/Majalah-Hilir-Edisi-1-2026-.pdf",
+        "note": "JBKP Pertalite is price-regulated/assigned, and should not automatically be classified as the same subsidy type as JBT Solar."
+      },
+      {
+        "name": "Biosolar / subsidized diesel",
+        "type": "JBT subsidized fuel",
+        "annual_quota": 18636500,
+        "q1_distribution": 4563431,
+        "q1_as_of": "2026-03-31",
+        "source": "https://www.antaranews.com/berita/5379266/pemerintah-pangkas-kuota-bbm-subsidi-untuk-2026",
+        "q1_source": "https://www.bphmigas.go.id/wp-content/uploads/2026/05/Majalah-Hilir-Edisi-1-2026-.pdf"
+      },
+      {
+        "name": "Kerosene / minyak tanah",
+        "type": "JBT subsidized fuel",
+        "annual_quota": 526000,
+        "q1_distribution": 128998,
+        "q1_as_of": "2026-03-31",
+        "source": "https://www.antaranews.com/berita/5379266/pemerintah-pangkas-kuota-bbm-subsidi-untuk-2026",
+        "q1_source": "https://www.bphmigas.go.id/wp-content/uploads/2026/05/Majalah-Hilir-Edisi-1-2026-.pdf"
+      }
+    ],
+    "note": "Quarter-I delivery is the latest harmonized fuel-by-fuel volume snapshot used here, NOT an October cumulative figure. Q1 utilization against full-year quota should not be read as current October exhaustion."
+  },
+  "investment": {
+    "unit": "USD billion",
+    "basis": "ESDM administrative monitoring of realized energy/mining subsector investment; not announcement pipeline, not comparable 1:1 to BKPM all-industry national realized investment.",
+    "series": [
+      {
+        "year": 2019,
+        "migas": 12.9,
+        "ebtke": 1.7,
+        "electricity": 12.1,
+        "minerba": 6.5
+      },
+      {
+        "year": 2020,
+        "migas": 13.1,
+        "ebtke": 1.4,
+        "electricity": 7.6,
+        "minerba": 4.2
+      },
+      {
+        "year": 2021,
+        "migas": 14.71,
+        "ebtke": 1.56,
+        "electricity": 6.71,
+        "minerba": 4.54
+      },
+      {
+        "year": 2022,
+        "migas": 13.9,
+        "ebtke": 1.64,
+        "electricity": 5.75,
+        "minerba": 5.69
+      },
+      {
+        "year": 2023,
+        "migas": 14.92,
+        "ebtke": 1.47,
+        "electricity": 5.9,
+        "minerba": 7.46
+      },
+      {
+        "year": 2024,
+        "migas": 17.54,
+        "ebtke": 1.76,
+        "electricity": 5.3,
+        "minerba": 7.7
+      },
+      {
+        "year": 2025,
+        "migas": 18.02,
+        "ebtke": 2.31,
+        "electricity": 4.63,
+        "minerba": 7
+      }
+    ],
+    "latest": {
+      "period": "Full-year 2025; revised through 31 January 2026",
+      "total_usd_billion": 31.96,
+      "migas": 18.02,
+      "ebtke": 2.31,
+      "migas_target": 21.67,
+      "ebtke_target": 1.53,
+      "migas_target_achievement_pct": 83.04,
+      "ebtke_target_achievement_pct": 153.71,
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-sekretariat-jenderal-tahun-2025.pdf"
+    },
+    "ebtke_breakdown_2025_million_usd": [
+      {
+        "name": "Geothermal",
+        "value": 1159.9
+      },
+      {
+        "name": "Other renewables",
+        "value": 865.5
+      },
+      {
+        "name": "Bioenergy",
+        "value": 267.1
+      },
+      {
+        "name": "Energy conservation",
+        "value": 22.1
+      }
+    ],
+    "ebtke_breakdown_total_million_usd": 2314.68,
+    "breakdown_source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+    "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-sekretariat-jenderal-tahun-2025.pdf",
+    "latest_2026_status": "No verified comparable 2026 subsector realized Migas vs EBTKE totals in this dataset. ESDM published a H1 2026 strategic-program report, but a sector breakdown should be extracted and reconciled before being labeled realized investment.",
+    "latest_2026_catalog": "https://www.esdm.go.id/id/publikasi/laporan-kinerja",
+    "note": "EBTKE includes energy conservation; it is NOT exclusively spending on renewable generating plants. Electricity investment is tracked separately to avoid double counting."
+  },
+  "fuel": {
+    "reference": "Pertamina retail price disclosure, 1 October 2026",
+    "market": "Quoted Indonesian retail pump prices; non-subsidized prices vary by province/retailer and can change after the reference date.",
+    "rows": [
+      {
+        "name": "Pertalite (JBKP)",
+        "price": 10000,
+        "category": "Government-assigned",
+        "unit": "Rp/litre",
+        "national_price": true
+      },
+      {
+        "name": "Biosolar (JBT)",
+        "price": 6800,
+        "category": "Subsidized",
+        "unit": "Rp/litre",
+        "national_price": true
+      },
+      {
+        "name": "Pertamax RON 92",
+        "price": 15950,
+        "category": "Non-subsidized",
+        "unit": "Rp/litre",
+        "national_price": false
+      },
+      {
+        "name": "Pertamax Turbo RON 98",
+        "price": 19600,
+        "category": "Non-subsidized",
+        "unit": "Rp/litre",
+        "national_price": false
+      },
+      {
+        "name": "Pertamax Green RON 95",
+        "price": 19150,
+        "category": "Non-subsidized",
+        "unit": "Rp/litre",
+        "national_price": false
+      },
+      {
+        "name": "Dexlite",
+        "price": 23700,
+        "category": "Non-subsidized",
+        "unit": "Rp/litre",
+        "national_price": false
+      },
+      {
+        "name": "Pertamina Dex",
+        "price": 25200,
+        "category": "Non-subsidized",
+        "unit": "Rp/litre",
+        "national_price": false
+      }
+    ],
+    "reference_area": "Indicative Jakarta/Java retail prices; check regional Pertamina price schedule before applying elsewhere.",
+    "source": "https://jabar.antaranews.com/berita/710088/harga-bbm-per-1-oktober-2026-resmi-tidak-naik",
+    "government_source": "https://www.ekon.go.id/unduh/publikasi/6873/pemerintah-berikan-kepastian-ketersediaan-energi-dengan-harga-terjangkau-bagi-seluruh-lapisan-masyarakat",
+    "note": "Historical 1 October price list, not a live pump-price API. The government announced a policy to hold Pertalite and Biosolar prices through 2026; future policy may change."
+  },
+  "electricity": {
+    "reference": "Q4 2026 (1 October–31 December)",
+    "policy": "ESDM 30 September 2026: 13 PLN non-subsidized tariff groups unchanged versus Q3. Subsidized rates remain policy-fixed subject to category/eligibility.",
+    "rows": [
+      {
+        "group": "R-1 450 VA",
+        "rate": 415,
+        "category": "Residential subsidized"
+      },
+      {
+        "group": "R-1 900 VA eligible",
+        "rate": 605,
+        "category": "Residential subsidized"
+      },
+      {
+        "group": "R-1 900 VA RTM",
+        "rate": 1352,
+        "category": "Residential nonsubsidized"
+      },
+      {
+        "group": "R-1 1,300–2,200 VA",
+        "rate": 1444.7,
+        "category": "Residential nonsubsidized"
+      },
+      {
+        "group": "R-2/R-3 3,500+ VA",
+        "rate": 1699.53,
+        "category": "Residential nonsubsidized"
+      },
+      {
+        "group": "B-2 6,600 VA–200 kVA",
+        "rate": 1444.7,
+        "category": "Business nonsubsidized"
+      },
+      {
+        "group": "B-3 >200 kVA",
+        "rate": 1114.74,
+        "category": "Business nonsubsidized"
+      },
+      {
+        "group": "I-3 >200 kVA",
+        "rate": 1114.74,
+        "category": "Industry nonsubsidized"
+      },
+      {
+        "group": "I-4 ≥30,000 kVA",
+        "rate": 996.74,
+        "category": "Industry nonsubsidized"
+      },
+      {
+        "group": "P-1 6,600 VA–200 kVA",
+        "rate": 1699.53,
+        "category": "Government nonsubsidized"
+      },
+      {
+        "group": "P-2 >200 kVA",
+        "rate": 1522.88,
+        "category": "Government nonsubsidized"
+      },
+      {
+        "group": "P-3 public lighting",
+        "rate": 1699.53,
+        "category": "Public lighting"
+      },
+      {
+        "group": "L special services",
+        "rate": 1644.52,
+        "category": "Special"
+      }
+    ],
+    "unit": "Rp/kWh",
+    "source": "https://gatrik.esdm.go.id/berita/jaga-daya-beli-dan-daya-saing-industri-menteri-esdm-tarif-listrik-tw-iv-tetap",
+    "rate_source": "https://www.detik.com/bali/bisnis/d-8687548/daftar-lengkap-tarif-listrik-oktober-2026",
+    "subsidized_rate_source": "https://www.antaranews.com/berita/5719805/tarif-listrik-pln-september-2026-tidak-naik-ini-daftar-lengkapnya",
+    "note": "Electricity tariff (energy rate) excludes applicable taxes, admin fees, minimum bills, capacity charges or special arrangements. 450 VA/900 VA subsidy eligibility must be verified; PLN's larger industrial arrangements may have additional contractual characteristics."
+  },
+  "sources": {
+    "finance": "https://www.kemenkeu.go.id/informasi-publik/publikasi/berita-utama/Menkeu-Suahasil-APBN-KiTA-September-2026",
+    "finance_breakdown": "https://www.antaranews.com/berita/5778778/subsidi-dan-kompensasi-energi-capai-rp3768-t-hingga-september",
+    "budget": "https://anggaran.kemenkeu.go.id/api/Medias/3e021dbf-3aae-47b3-9557-a8014ebf90e2",
+    "bph": "https://www.bphmigas.go.id/wp-content/uploads/2026/05/Majalah-Hilir-Edisi-1-2026-.pdf",
+    "bphquota": "https://www.antaranews.com/berita/5379266/pemerintah-pangkas-kuota-bbm-subsidi-untuk-2026",
+    "esdmreport": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-sekretariat-jenderal-tahun-2025.pdf",
+    "ebtbreakdown": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+    "invest2026": "https://www.esdm.go.id/id/publikasi/laporan-kinerja",
+    "bbm": "https://jabar.antaranews.com/berita/710088/harga-bbm-per-1-oktober-2026-resmi-tidak-naik",
+    "bbmgovernment": "https://www.ekon.go.id/unduh/publikasi/6873/pemerintah-berikan-kepastian-ketersediaan-energi-dengan-harga-terjangkau-bagi-seluruh-lapisan-masyarakat",
+    "electricity": "https://gatrik.esdm.go.id/berita/jaga-daya-beli-dan-daya-saing-industri-menteri-esdm-tarif-listrik-tw-iv-tetap",
+    "electricityrates": "https://www.antaranews.com/berita/5719805/tarif-listrik-pln-september-2026-tidak-naik-ini-daftar-lengkapnya",
+    "electricityfull": "https://www.detik.com/bali/bisnis/d-8687548/daftar-lengkap-tarif-listrik-oktober-2026"
+  }
+}
