@@ -119,6 +119,7 @@ def main():
     today = now.astimezone(WIB).date().isoformat()
     fundamentals = read("energy-fundamentals.json", True)
     transition = read("energy-transition.json", True)
+    fiscal = read("energy-prices-fiscal.json", True)
     domestic = read("domestic-energy.json")
     geo = read("geopolitical-energy.json")
     previous = read("daily-energy-assessment.json")
@@ -140,6 +141,10 @@ def main():
     gas_res = fundamentals["reserves"]["gas_proved"]
     src = fundamentals["sources"]
     t_src = tr["sources"]
+    subsidy = fiscal["subsidies"]
+    retail = fiscal["fuel"]
+    inv = fiscal["investment"]
+    quotas = fiscal["quotas"]
     official = lambda label, url: evidence(label, url)
 
     fuel = select(domestic_items, {"fuel","Fuel and LPG availability"},
@@ -166,17 +171,17 @@ def main():
 
     points = [
        report_item("oil-gas", "01 · Oil & Gas Supply Resilience",
-           f"Indonesia's reported oil-field output averaged {fmt(oi_value, 0)} thousand barrels/day in {oi_year}, while gross gas production was {fmt(gas_val,0)} MMSCFD in {gas_year}. Proved reserves reported for {oil_res['year']} were {fmt(oil_res['value'],3)} billion barrels of oil and {fmt(gas_res['value'])} TSCF of gas. These are different stock and flow measures.",
+           f"Indonesia's reported oil-field output averaged {fmt(oi_value, 0)} thousand barrels/day in {oi_year}, while gross gas production was {fmt(gas_val,0)} MMSCFD in {gas_year}. Proved reserves reported for {oil_res['year']} were {fmt(oil_res['value'],3)} billion barrels of oil and {fmt(gas_res['value'])} TSCF of gas. These are different stock and flow measures. For 2026, the BPH Migas Pertalite quota was {fmt(quotas['items'][0]['annual_quota']/1e6)} million kL and the subsidized diesel quota was {fmt(quotas['items'][1]['annual_quota']/1e6)} million kL (annual allocations, not observed October deliveries).",
            "Sustained supply resilience depends on replacement discoveries, operational delivery and refinery import needs. Regional fuel-availability headlines may point to distribution issues rather than changes in national production; LNG headlines do not prove Indonesian gas outages.",
            "Monitor SKK Migas and ESDM revisions to actual output, domestic gas allocation, proved reserves and Pertamina/BPH Migas supply status.",
-           [official("Ditjen Migas 2025", src["migas2025"])],
+           [official("Ditjen Migas 2025", src["migas2025"]),official("BPH Migas fuel quotas 2026",fiscal["sources"]["bphquota"])],
            annotated(fuel[:1] + gasnews[:1])),
        report_item("geopolitics", "02 · External Price & Maritime Exposure",
-           "International oil, LNG and shipping shocks remain transmission risks for Indonesia's imported petroleum and energy-intensive industry. This is an exposure assessment, not a claim that any news headline confirms a reduction in global supply.",
+           f"International oil, LNG and shipping shocks remain transmission risks for Indonesia's imported petroleum and energy-intensive industry. As of September 2026, combined energy subsidies AND compensation paid amounted to Rp{fmt(subsidy['combined_paid']['value'])} trillion; this is not direct subsidies alone. The 1 October 2026 Pertalite reference price was Rp{fmt(retail['rows'][0]['price'],0)}/litre, not a live pump quote. Reported shipping headlines alone do not prove lost physical supply.",
            "A verified production outage or material shipping rerouting could affect crude and product prices, freight, insurance, the rupiah and the Indonesian Crude Price (ICP). A reported attack alone does not prove that Hormuz or Bab el-Mandeb has closed.",
            "Check vessel traffic, insured voyages, refinery throughput, dated price observations and official statements before classifying an event as a supply disruption.",
            [official("BPS foreign trade import data", "https://www.bps.go.id/"),
-            official("ESDM official energy balance", src["heesi"])],
+            official("ESDM official energy balance", src["heesi"]),official("Kemenkeu energy support disbursement",subsidy["combined_paid"]["source"]),official("1 October retail fuel reference",retail["source"])],
            annotated(chokepoints)),
        report_item("coal", "03 · Coal Production, DMO & Exports",
            f"The Ditjen Minerba {coal_year} dataset reports coal production of {fmt(coal_prod)} million tonnes, with {fmt(coal_dmo)} million tonnes of DMO use in {dmo_year} (provisional). Other ESDM releases use different reporting vintages, so the figures should not be mechanically reconciled into a national supply balance.",
@@ -191,10 +196,10 @@ def main():
            [official("PLN Annual Report 2024", "https://web.pln.co.id/statics/uploads/2025/06/AR-PLN-2024-final.pdf")],
            annotated(power)),
        report_item("transition", "05 · Energy Transition & Project Delivery",
-           f"Indonesia's reported EBT share was {fmt(ebt)}% in {ebt_year} versus the revised KEN {ebt_year} reference range of {fmt(tr['ken']['target_ebt_2025_low'])}–{fmt(tr['ken']['target_ebt_2025_high'])}%. The 2025–2034 RUPTL plans {fmt(tr['ruplt']['renewables_gw'])} GW of renewable additions and {fmt(tr['ruplt']['storage_gw'])} GW of storage, but these are planned, not commissioned.",
+           f"Indonesia's reported EBT share was {fmt(ebt)}% in {ebt_year} versus the revised KEN {ebt_year} reference range of {fmt(tr['ken']['target_ebt_2025_low'])}–{fmt(tr['ken']['target_ebt_2025_high'])}%. The 2025–2034 RUPTL plans {fmt(tr['ruplt']['renewables_gw'])} GW of renewable additions and {fmt(tr['ruplt']['storage_gw'])} GW of storage, but these are planned, not commissioned. ESDM's realized 2025 investment was US${fmt(inv['latest']['migas'])}bn in Migas versus US${fmt(inv['latest']['ebtke'])}bn in EBTKE, which includes conservation and is not only renewable power-plant capex.",
            "The transition implementation gap remains an important strategic variable: grid connection, dispatch, financing and provincial RUED progress determine whether planned additions translate into generation and lower emissions.",
            "Check COD, installed and dispatched capacity, regional RUED actuals and project operating data; do not treat announcements or personnel appointments as project completion.",
-           [official("Ditjen EBTKE 2025",t_src["ebt2025"]),official("RUPTL 2025–2034",t_src["ruptl"])],
+           [official("Ditjen EBTKE 2025",t_src["ebt2025"]),official("RUPTL 2025–2034",t_src["ruptl"]),official("ESDM realized energy investments 2025",inv["source"])],
            annotated(projects)),
        report_item("carbon", "06 · Carbon Outcomes & Environmental Risk",
            f"The BPS/KLHK inventory shown here ends in {emissions['year']}; energy-sector emissions were {fmt(emissions['energy_mtco2e'])} MtCO₂e and national emissions {fmt(emissions['national_mtco2e'])} MtCO₂e. These are emitted greenhouse gases, not reported avoided-emission achievements.",
@@ -217,7 +222,10 @@ def main():
        "oil_res": oil_res["value"], "gas_res": gas_res["value"],
        "coal": coal_prod, "dmo": coal_dmo, "renewables": ebt,
        "ghg": emissions["energy_mtco2e"], "ken":tr["ken"]["regulation"],
-       "ruptl":tr["ruplt"]["planned_new_capacity_gw"]
+       "ruptl":tr["ruplt"]["planned_new_capacity_gw"],
+       "fiscal_asof":fiscal["as_of"],"subsidy_and_compensation":subsidy["combined_paid"]["value"],
+       "migas_investment":inv["latest"]["migas"],"ebtke_investment":inv["latest"]["ebtke"],
+       "pertalite_price":retail["rows"][0]["price"]
     }
     fingerprint = hashlib.sha256(json.dumps(baseline_inputs,sort_keys=True).encode()).hexdigest()
     changed_baseline = bool(prev_base and prev_base != fingerprint)
