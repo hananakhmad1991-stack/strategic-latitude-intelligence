@@ -31,7 +31,7 @@ def rss_fallback(now):
    continue
   count=0
   for item in root.findall(".//channel/item"):
-   title=re.sub(r"\\s+"," ",(item.findtext("title") or "")).strip()
+   title=" ".join((item.findtext("title") or "").split()).strip()
    src=((item.find("source").text or "").strip() if item.find("source") is not None else "")
    link=(item.findtext("link") or "").strip()
    stamp=item.findtext("pubDate") or ""
