@@ -43,7 +43,9 @@ def main():
  for topic,query,typ,pathway in TOPICS:
   try:records=fetch(query)
   except Exception as exc:
-   errors.append({"topic":topic,"error":str(exc)[:160]});continue
+   errors.append({"topic":topic,"error":str(exc)[:160]})
+   if "429" in str(exc):break
+   continue
   count=0
   for art in records:
    url=art.get("url","");host=urllib.parse.urlparse(url).hostname or ""
