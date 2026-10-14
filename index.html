@@ -120,7 +120,7 @@ async function showEnergyQuotes(){
  try{
   const resp=await fetch("data/energy-prices.json?cache="+Date.now(),{cache:"no-store"});if(!resp.ok)throw Error("data not published");
   const payload=await resp.json();
-  function quote(key){const q=payload.data&&payload.data[key];if(!q||typeof q.value!=="number"||!/^\\d{4}-\\d{2}-\\d{2}$/.test(q.date))return null;
+  function quote(key){const q=payload.data&&payload.data[key];if(!q||typeof q.value!=="number"||!/^\d{4}-\d{2}-\d{2}$/.test(q.date))return null;
    return q.label+": $"+q.value.toFixed(2)+" "+q.unit+" (observed "+q.date+")";}
   oil.textContent=[quote("brent"),quote("wti")].filter(Boolean).join(" · ")||"Market observations not available";
   gas.textContent=quote("henry_hub")||"Henry Hub observation not available";
