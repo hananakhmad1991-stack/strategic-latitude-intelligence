@@ -1,0 +1,27 @@
+name: SLI Indonesia Domestic Energy Radar
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 */3 * * *"
+permissions:
+  contents: write
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Scan attributed Indonesian energy / environment releases
+        run: python scripts/domestic_energy_watch.py
+      - name: Commit dated leads and diagnostic status
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/domestic-energy-health.json
+          if [ -f data/domestic-energy.json ]; then git add data/domestic-energy.json; fi
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "Update domestic energy and environmental watch"
+          git push
