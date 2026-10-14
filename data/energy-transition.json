@@ -1,0 +1,214 @@
+{
+  "title": "Indonesia NZE Transition and Provincial RUED Dashboard",
+  "as_of": "2026-10-15",
+  "national_goal": {
+    "year": 2060,
+    "description": "Net zero emissions by 2060 or earlier is the national long-term goal; ESDM 2026 describes sector transition aspirations across 2050–2060, not a verified binding nationwide NZE 2050 deadline.",
+    "sources": [
+      "https://www.esdm.go.id/id/media-center/arsip-berita/menuju-nze-2050-2060-pemerintah-dorong-investasi-kelistrikan-100-gw-dan-penguatan-ebt",
+      "https://esdm.go.id/en/media-center/news-archives/menteri-esdm-umumkan-ruptl-pln-2025-2034-serap-lebih-dari-17-juta-tenaga-kerja-baru"
+    ]
+  },
+  "ken": {
+    "regulation": "PP 40/2025",
+    "effective": "2025-09-15",
+    "target_ebt_2025_low": 17,
+    "target_ebt_2025_high": 20,
+    "target_ebt_2060_low": 70,
+    "target_ebt_2060_high": 72,
+    "ebt_share_actual_2025": 15.75,
+    "notes": "New KEN 2025 range is from ESDM Ditjen EBTKE 2025 performance report. Old RUEN Perpres 22/2017 target of 23% EBT by 2025 is a historical policy benchmark, not the sole current standard.",
+    "sources": [
+      "https://peraturan.go.id/id/pp-no-40-tahun-2025",
+      "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2025.pdf",
+      "https://peraturan.bpk.go.id/Details/13421/perpres-no-22-tahun-2017",
+      "https://ebtke.esdm.go.id/artikel/siaran-pers/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat"
+    ]
+  },
+  "rued": {
+    "status": "Province-specific implementation; no verified single national completion score",
+    "governance": "RUED-P provincial energy plans; progress should track adopted regional regulation, regional primary energy mix, generation commissioning, yearly targets and budget execution.",
+    "coverage": "DEN 2025 annual report describes receiving 2024 provincial mix reporting and follow-up evaluation; this is not an independently verified score of nationwide RUED attainment.",
+    "case_province": "East Java",
+    "case_ebt_goal_2025": 12.15,
+    "case_ebt_goal_2050": 23.76,
+    "case_realization": null,
+    "case_law": "East Java Provincial Regulation No. 3 of 2024 (amending No. 6 of 2019)",
+    "notes": "A regional RUED target must be compared with data for the same province and year, not with the national EBT mix. No provincial realization is filled without its official release.",
+    "sources": [
+      "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-dewan-energi-nasional-tahun-2025.pdf",
+      "https://peraturan.bpk.go.id/Download/383559/Perda%20Prov%20Jawa%20Timur%20Nomor%203%20Tahun%202024.pdf",
+      "https://peraturan.go.id/id/pp-no-40-tahun-2025"
+    ]
+  },
+  "ruplt": {
+    "planned_new_capacity_gw": 69.5,
+    "renewables_gw": 42.6,
+    "storage_gw": 10.3,
+    "fossil_gw": 16.6,
+    "period": "2025–2034",
+    "status": "Planned RUPTL additions; not completed construction",
+    "source": "https://esdm.go.id/en/media-center/news-archives/menteri-esdm-umumkan-ruptl-pln-2025-2034-serap-lebih-dari-17-juta-tenaga-kerja-baru",
+    "notes": "Renewables, storage and fossil are separately accounted. The 76% headline includes storage; it is not 76% renewable generation share."
+  },
+  "emissions": {
+    "series": [
+      {
+        "year": 2010,
+        "energy_mtco2e": 434.715,
+        "national_mtco2e": 794.78
+      },
+      {
+        "year": 2011,
+        "energy_mtco2e": 454.484,
+        "national_mtco2e": 892.418
+      },
+      {
+        "year": 2012,
+        "energy_mtco2e": 477.85,
+        "national_mtco2e": 1199.147
+      },
+      {
+        "year": 2013,
+        "energy_mtco2e": 496.03,
+        "national_mtco2e": 1275.948
+      },
+      {
+        "year": 2014,
+        "energy_mtco2e": 531.142,
+        "national_mtco2e": 1405.071
+      },
+      {
+        "year": 2015,
+        "energy_mtco2e": 527.103,
+        "national_mtco2e": 2132.652
+      },
+      {
+        "year": 2016,
+        "energy_mtco2e": 529.576,
+        "national_mtco2e": 1381.95
+      },
+      {
+        "year": 2017,
+        "energy_mtco2e": 553.974,
+        "national_mtco2e": 1510.279
+      },
+      {
+        "year": 2018,
+        "energy_mtco2e": 593.027,
+        "national_mtco2e": 1816.146
+      },
+      {
+        "year": 2019,
+        "energy_mtco2e": 636.453,
+        "national_mtco2e": 1629.442
+      },
+      {
+        "year": 2020,
+        "energy_mtco2e": 584.284,
+        "national_mtco2e": 1077.528
+      },
+      {
+        "year": 2021,
+        "energy_mtco2e": 595.862,
+        "national_mtco2e": 1156.055
+      },
+      {
+        "year": 2022,
+        "energy_mtco2e": 727.33,
+        "national_mtco2e": 1228.721
+      },
+      {
+        "year": 2023,
+        "energy_mtco2e": 752.28,
+        "national_mtco2e": 1360.347
+      }
+    ],
+    "latest_inventory_year": 2023,
+    "source": "https://www.bps.go.id/id/statistics-table/1/MjA3MiMx/emisi-gas-",
+    "scope": "KLHK national GHG inventory reproduced by BPS; energy sector and all-sector total in million tonnes CO2-equivalent (MtCO2e). All-sector series includes forestry/land use and peat fires. Does not equal fossil CO2 only or verified mitigation savings.",
+    "disclaimer": "Inventory 2024–2026 figures are not asserted here. BPS statistical table updated 2 February 2026; last time-series observation 2023."
+  },
+  "mitigation": {
+    "series": [
+      {
+        "year": 2019,
+        "target": 48,
+        "achievement": 54.8
+      },
+      {
+        "year": 2020,
+        "target": 58,
+        "achievement": 64.4
+      },
+      {
+        "year": 2021,
+        "target": 67,
+        "achievement": 70
+      },
+      {
+        "year": 2022,
+        "target": 91,
+        "achievement": 91.5
+      },
+      {
+        "year": 2023,
+        "target": 116,
+        "achievement": 127.67
+      },
+      {
+        "year": 2024,
+        "target": 142,
+        "achievement": 147.61
+      }
+    ],
+    "year_2025_value": 165.31,
+    "year_2025_source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2025.pdf",
+    "source": "https://esdm.go.id/assets/media/file/file-capaian-kinerja-sektor-esdm-tahun-2024.pdf",
+    "scope": "ESDM reported achieved sector emissions reductions / avoided emissions, not emitted tonnes. Do not plot on the same emissions axis as BPS inventory; not interchangeable with absolute GHG emissions."
+  },
+  "monitoring_framework": [
+    {
+      "label": "Power-system transition",
+      "question": "Which renewables/storage capacity was commissioned, connected, and dispatched rather than merely announced?",
+      "sources": [
+        "https://esdm.go.id/en/media-center/news-archives/menteri-esdm-umumkan-ruptl-pln-2025-2034-serap-lebih-dari-17-juta-tenaga-kerja-baru"
+      ]
+    },
+    {
+      "label": "Fiscal and technology",
+      "question": "Do investment, grid expansion, and renewable integration happen fast enough to displace fossil generation?",
+      "sources": [
+        "https://www.esdm.go.id/id/media-center/arsip-berita/menuju-nze-2050-2060-pemerintah-dorong-investasi-kelistrikan-100-gw-dan-penguatan-ebt"
+      ]
+    },
+    {
+      "label": "Regional RUED execution",
+      "question": "Do provincial realizations and local budgets match each RUED regulation, without borrowing national totals?",
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-dewan-energi-nasional-tahun-2025.pdf",
+        "https://peraturan.bpk.go.id/Download/383559/Perda%20Prov%20Jawa%20Timur%20Nomor%203%20Tahun%202024.pdf"
+      ]
+    },
+    {
+      "label": "Carbon consistency",
+      "question": "Are absolute emissions, mitigation claims and emissions intensity moving as expected, with transparent baselines?",
+      "sources": [
+        "https://www.bps.go.id/id/statistics-table/1/MjA3MiMx/emisi-gas-",
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2025.pdf"
+      ]
+    }
+  ],
+  "sources": {
+    "bps": "https://www.bps.go.id/id/statistics-table/1/MjA3MiMx/emisi-gas-",
+    "den": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-dewan-energi-nasional-tahun-2025.pdf",
+    "ebt2025": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2025.pdf",
+    "nze": "https://www.esdm.go.id/id/media-center/arsip-berita/menuju-nze-2050-2060-pemerintah-dorong-investasi-kelistrikan-100-gw-dan-penguatan-ebt",
+    "ken": "https://peraturan.go.id/id/pp-no-40-tahun-2025",
+    "ruptl": "https://esdm.go.id/en/media-center/news-archives/menteri-esdm-umumkan-ruptl-pln-2025-2034-serap-lebih-dari-17-juta-tenaga-kerja-baru",
+    "esdm": "https://ebtke.esdm.go.id/artikel/siaran-pers/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat",
+    "ruen": "https://peraturan.bpk.go.id/Details/13421/perpres-no-22-tahun-2017",
+    "jatim": "https://peraturan.bpk.go.id/Download/383559/Perda%20Prov%20Jawa%20Timur%20Nomor%203%20Tahun%202024.pdf",
+    "reductions": "https://esdm.go.id/assets/media/file/file-capaian-kinerja-sektor-esdm-tahun-2024.pdf"
+  }
+}
