@@ -1,0 +1,52 @@
+name: SLI Daily Energy Overall Assessment
+on:
+  workflow_dispatch:
+  schedule:
+    # 09:30 WIB, daily (02:30 UTC), after morning domestic and geopolitical radar scans.
+    - cron: "30 2 * * *"
+  push:
+    branches: [main]
+    paths:
+      - scripts/daily_energy_assessment.py
+      - js/daily-energy-assessment.js
+      - .github/workflows/daily-energy-assessment.yml
+permissions:
+  contents: write
+concurrency:
+  group: sli-daily-energy-assessment
+  cancel-in-progress: false
+jobs:
+  assessment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build seven-point assessment from local dated sources
+        run: python scripts/daily_energy_assessment.py
+      - name: Validate published dataset
+        run: |
+          python -m json.tool data/daily-energy-assessment.json > /dev/null
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("data/daily-energy-assessment.json").read_text())
+          assert len(d["points"]) == 7
+          assert d.get("generated_at_utc")
+          for point in d["points"]:
+              assert point["finding"] and point["implication"] and point["verification_priority"]
+          print("Valid assessment generated:",d["assessment_date_wib"],"points",len(d["points"]))
+          PY
+      - name: Publish dated assessment
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/daily-energy-assessment.json
+          if git diff --cached --quiet; then
+            echo "Nothing changed"; exit 0
+          fi
+          git commit -m "Publish daily evidence-led Indonesia energy assessment"
+          git pull --rebase origin main
+          git push origin HEAD:main
