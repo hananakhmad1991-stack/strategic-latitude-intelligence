@@ -1,0 +1,21 @@
+name: SLI Energy Policy Candidate Scan
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '41 */6 * * *'
+permissions:
+  contents: write
+jobs:
+  policy_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/energy_policy_watch.py
+      - run: |
+          git config user.name sli-research-bot
+          git config user.email research-bot@users.noreply.github.com
+          git add data/energy-policy-leads.json
+          git diff --cached --quiet || (git commit -m 'Update energy policy release candidates' && git pull --rebase origin main && git push origin HEAD:main)
