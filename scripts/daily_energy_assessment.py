@@ -87,9 +87,32 @@ def fmt(number, places=2):
     return f"{number:,.{places}f}".rstrip("0").rstrip(".")
 
 def report_item(id_, heading, finding, implication, verify, baseline, developments=None):
-    return {"id": id_, "heading": heading, "finding": finding, "implication": implication,
+    reports = developments or []
+    channels = {
+        "oil-gas": "Assess regional stocks, last-mile fuel delivery and physical gas flows before attributing a supply problem to domestic crude production.",
+        "geopolitics": "Confirm actual tanker passages, freight/war-risk rates and oil or LNG loading volumes before treating shipping headlines as a physical supply loss.",
+        "coal": "Check whether the reported development changes Indonesian export volumes, DMO allocations or effective coal reference prices; foreign policy news does not directly establish a domestic outage.",
+        "power": "Verify outage location, utility-confirmed cause, restoration time and affected industrial load, rather than extrapolating one regional event nationally.",
+        "transition": "Determine whether the development is an investment proposal, construction milestone, grid energization or commissioned generation, since those represent different levels of delivery.",
+        "carbon": "Verify observed fire area, duration, smoke dispersion and infrastructure proximity before inferring either an emissions increase or energy-system loss.",
+        "policy": "Confirm a numbered legal instrument and its effective date; media commentary on future policies is not itself binding regulation."
+    }
+    if reports:
+        item = reports[0]
+        stamp = when(item["published_at_utc"])
+        local_date = stamp.astimezone(WIB).strftime("%d %b %Y %H:%M WIB") if stamp else "date unavailable"
+        change = "Newly identified" if item.get("new_since_previous") else "Previously monitored"
+        daily_signal = (f"{change} attributed headline ({item['publisher']}, {local_date}): "
+                        f"{item['title']}. Analytical test: {channels[id_]} "
+                        "The headline is not independently verified evidence of operational impact.")
+    else:
+        daily_signal = ("No qualified recent headline was selected for this theme in the available "
+                        "feed. This is a monitoring-coverage statement, not evidence that no event occurred. "
+                        + channels[id_])
+    return {"id": id_, "heading": heading, "finding": finding,
+            "daily_signal": daily_signal, "implication": implication,
             "verification_priority": verify, "baseline_sources": baseline,
-            "recent_news_leads": developments or []}
+            "recent_news_leads": reports}
 
 def main():
     now = dt.datetime.now(UTC)
