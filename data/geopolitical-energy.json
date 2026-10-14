@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-14T18:44:00.028584+00:00",
+  "checked_at_utc": "2026-10-14T21:36:21.745751+00:00",
   "coverage": "GDELT discovery with public RSS fallback; headlines are attributed and unverified, and not a live incident database",
   "events": [
     {
@@ -8,7 +8,7 @@
       "title": "Attacks on Ships in Strait of Hormuz Escalate Sharply - The New York Times",
       "publisher": "The New York Times",
       "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1uTTFfTURzNnFkMDYyU0czbk5Oai1adnh2U0dLVlA4eFlZUGJ6MlgtS2VNejU4c09aVE55d2ZyQXJMR0VuZ0xHUDRIdlNiUWJZUlhBUUFDX2NZRlpOU0c2T0ZXYWlUSnJYbGw2VVZiTkJiZ2szdEtNdmxzYXY?oc=5",
-      "indexed_at_utc": "2026-10-14T18:20:24+00:00",
+      "indexed_at_utc": "2026-10-14T12:08:58+00:00",
       "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -27,6 +27,17 @@
     {
       "topic": "Red Sea and Bab el-Mandeb",
       "type": "Maritime chokepoint",
+      "title": "Container Shipping’s Red Sea Comeback is Outpacing the Risk Warnings - WWD",
+      "publisher": "WWD",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPVV9wRGc3RWI1MWRGY29HNFNWQ2dVNHlWelpXMWpOU2tWdnNHd0w1SjNBNUxWelV1dktGVzRkQ1FUQVg0YjAzcmdLZ20zcUtQQmdQTldzSmRxc0dXZXpRWkNPX29vU3FFUkdOb2JBM0kwMXZRS3pncmhlMGVNeFlsNmpVNjc0VlJsb2tKR1JOS1lxQUF6ZVp3ejNoYXFvZDZwU2p4bFk1c1haZ1FXNFdIVkNjb09hX0s5eDZybEdn?oc=5",
+      "indexed_at_utc": "2026-10-14T17:35:49+00:00",
+      "impact_pathway": "Routing changes -> transit time and shipping insurance -> delivered commodity cost",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Red Sea and Bab el-Mandeb",
+      "type": "Maritime chokepoint",
       "title": "Yemen's Iran-backed Houthis may conduct land or sea attack against Israel, defense officials warn - The Jerusalem Post",
       "publisher": "The Jerusalem Post",
       "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1mQklWOG1oZFZRWTBVZ25lODJoM0h2cHc1YWpHcWt6eHM2cDJhaXJvY3JZRlJwbm9QMlZFUzMxb0paNzBkOHE0NmlGbjZQTHJrQ19DOWxJQ1VSWDRuVWx1ZEFEQllxUlVQNjNXdlRR?oc=5",
@@ -36,23 +47,12 @@
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Red Sea and Bab el-Mandeb",
-      "type": "Maritime chokepoint",
-      "title": "Houthi attacks add new geopolitical risk to softening container rates - FreightWaves",
-      "publisher": "FreightWaves",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQVnNUZ01hZEtXTzVpZXhNazBiUjVVcHlLZ1hFMlgzallPNy1zU0xTZ25aN3BfdkhSMnF0ZFIxWmE5VlItekF2cV9YRlUxNlBvUzUyaGxGNmNxZzZqbHNMSXAyZHpmTWtjVVBHV3NNNy1fQTRiZkhoUW1waUFNX0ItN3Z2UjR1RmNJalFvQzd2RUE1T1BUWGdtVzJUd2dxei0xMkc3Y2NB?oc=5",
-      "indexed_at_utc": "2026-10-14T17:46:53+00:00",
-      "impact_pathway": "Routing changes -> transit time and shipping insurance -> delivered commodity cost",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
       "topic": "Middle East energy infrastructure",
       "type": "Infrastructure",
-      "title": "Houthi missile hits Aramco building after Saudi-led coalition strike on Yemen fuel depot - BBC",
-      "publisher": "BBC",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1NTXliU09wdmZTVFFLc3dfamVjQlRpUnNuVXY3QmpLLUVGYjVXZHBZNm8taks5cTJaVUNndmNFZy01WGxNcFp0YzFlb0NZcXBQclBsZFF1T1o2SGM?oc=5",
-      "indexed_at_utc": "2026-10-14T12:26:13+00:00",
+      "title": "Houthis threaten escalation after strike on Saudi oil giant Aramco - France 24",
+      "publisher": "France 24",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPZnFoblRlOGxWWTJiWTZITTk2eWd4akYwQVVBOUVXeGMtbkxkLThkV3dpZnZDSEZ5Q2VMR2lQSEdYckhBanVaaWdkOFBpQmhZRld0aGhEYU5Kb2MyRGtqaDZwdWhUT0tkTUlibU9xVGxQREpwakNHTHA4T0l3bzdPOXNZY25tWWlacUdkMFdkRFBfTHZYN29BVmpWN2p5S0NtYVl2azRMNG8tcTFsZUZPUVdRZUk2UGtTbzNnTVhiLU8?oc=5",
+      "indexed_at_utc": "2026-10-14T16:21:53+00:00",
       "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -60,10 +60,10 @@
     {
       "topic": "Middle East energy infrastructure",
       "type": "Infrastructure",
-      "title": "Aramco's New Chinese JV Refinery Gets First Saudi Crude Cargo - Crude Oil Prices Today | OilPrice.com",
-      "publisher": "Crude Oil Prices Today | OilPrice.com",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPSl9jbzcycGZ1TkNLNWdnSEx1RzQ4ZEFyLTlpVjUyT0FoTTVyZjJLY2s1eGFyaDBTZFhSZXI3UW9pM0FkV00xdGdjWXNwTmlyNHZ1TlRhWjllRmd6cGNjYVpZajFvNnpZRVNUdTFNRnNfX1gwZFp1V2N6RUZfbmRFRVo4QW1BakxxaEN2YmRIUTFaOEMta29SQnlteTJkeEFnenNpQklCZ3B1U3N0a2ZlS3hyNXdtcE3SAbwBQVVfeXFMTjREN0lNbEVfSUhtWEVWNHljRnFBNUJKa0lSYUtuS2REZTRJaDdnbGVXM2V6amRTXzBIem43TXNfWjdFQzZ5NC1OWW5UYmJreERmN2wxOG5FMTNrM1pSWG1mTW9Ba050QlRPM2VFeEE1OGhPU1VLNmwwTlRRTlU0aWkyLWZHVEcxUTVEcEJROGdad0lFUjFRZ2lDU1k3R1REaVl0ZnU1RjlCUElUbjFVMkZCeXVNVFh1TC1yQkE?oc=5",
-      "indexed_at_utc": "2026-10-14T12:30:00+00:00",
+      "title": "Aramco HQ attack exposes Saudi defense gaps, infrastructure vulnerabilities - Al-Monitor",
+      "publisher": "Al-Monitor",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOQ0pNUFNjbXNNOTlEUXhka2xCZlBEMUxxOTIxV21vUkNpbUZWamdDenV6QmI5QWhSblBNdm1LVlFXZTFkcFBZTDRGQjhEd2FYOTVfdlphUjRONWZYX21yVWEzUExfeDRFei1XRVhHbEpibVhWQm9XR2QzdlRINWM4bHdCcFpfaEZWdHpuM0kwWGNRTHh1WGZMWkcyeFAwWWtRXzl1eGF4U1pYeUg3TXFIRmUtWkVmdWNpazJZ?oc=5",
+      "indexed_at_utc": "2026-10-14T18:54:13+00:00",
       "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -93,10 +93,10 @@
     {
       "topic": "Asian LNG and gas",
       "type": "Gas supply",
-      "title": "While Asia and Europe Scramble for Natural Gas, the US Glut Has Nowhere to Go - EnergyNow.com",
+      "title": "QatarEnergy Buys 33 US LNG Cargoes to Offset Hormuz Disruption - EnergyNow.com",
       "publisher": "EnergyNow.com",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQR0NqbzFZdzY2b2wzLTV2emVwQjJzT05rLWdwVVNzYXJWYzdBejJtVjNtTjdRcGg1dFhfVVVUWlQxRGFFNGZoNWp0YzJRVWlPV1dXYU8zSEdtUVV4WkxUY0VReDBUbDU0NFl4X3RmM3ByVWltVXliay12STItUDI1aW5sbk10ZU9UcUdjX3hTWm4ya2FrdTdjbE5Rb3VPMmVjdFVWX1NvejZfMFE?oc=5",
-      "indexed_at_utc": "2026-10-14T11:23:25+00:00",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPZHMwRFdQa0ZINzNVUjF5YmpaV1gyTllsZmlRYWZXSEF6NXgySWVaUVF0cnE5YkZvRzJjbVRLRmEtdnd4aUJmWGc1aHZ0b3IwdDk5U2tIdzBwTEpNQlRzei0tR2lIeFdvWG5RNVBuWlZmWGs5VlZCVlEwaXVfVnpnelhuY2xObzN1ZkVWeUxHdUJxVy15NnpXMQ?oc=5",
+      "indexed_at_utc": "2026-10-14T17:30:30+00:00",
       "impact_pathway": "Gas supply changes -> Asian LNG pricing -> power and industrial costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -137,11 +137,7 @@
   ],
   "errors": [
     {
-      "topic": "Red Sea and Bab el-Mandeb",
-      "error": "Expecting value: line 1 column 1 (char 0)"
-    },
-    {
-      "topic": "Middle East energy infrastructure",
+      "topic": "Hormuz and Gulf energy",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
