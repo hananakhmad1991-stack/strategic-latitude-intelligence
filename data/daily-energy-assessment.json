@@ -1,0 +1,258 @@
+{
+  "assessment_date_wib": "2026-10-15",
+  "generated_at_utc": "2026-10-14T23:07:38.950208+00:00",
+  "headline": "Indonesia Energy Security — Daily Overall Assessment",
+  "status": "Automated evidence-led interpretation; news leads unverified, no LLM article-body verification",
+  "method": "Deterministic editorial transmission framework sourced from dated official baselines and qualified, attributed public headline leads.",
+  "baseline_fingerprint": "76aaf468d517d7f69a3730fce905df53ea0dc146d14ef095fe1a2becac9d2fc5",
+  "baseline_changed_since_previous": false,
+  "news_new_since_previous": 9,
+  "news_note": "9 newly identified attributed headline leads across the seven findings.",
+  "news_freshness": {
+    "domestic": {
+      "source_checked_at_utc": "2026-10-14T22:39:58.236330+00:00",
+      "age_hours_at_generation": 0.5,
+      "usable": true
+    },
+    "geopolitical": {
+      "source_checked_at_utc": "2026-10-14T21:36:21.745751+00:00",
+      "age_hours_at_generation": 1.5,
+      "usable": true
+    }
+  },
+  "points": [
+    {
+      "id": "oil-gas",
+      "heading": "01 · Oil & Gas Supply Resilience",
+      "finding": "Indonesia's reported oil-field output averaged 581 thousand barrels/day in 2025, while gross gas production was 6,789 MMSCFD in 2025. Proved reserves reported for 2025 were 2.326 billion barrels of oil and 34.78 TSCF of gas. These are different stock and flow measures.",
+      "implication": "Sustained supply resilience depends on replacement discoveries, operational delivery and refinery import needs. Regional fuel-availability headlines may point to distribution issues rather than changes in national production; LNG headlines do not prove Indonesian gas outages.",
+      "verification_priority": "Monitor SKK Migas and ESDM revisions to actual output, domestic gas allocation, proved reserves and Pertamina/BPH Migas supply status.",
+      "baseline_sources": [
+        {
+          "label": "Ditjen Migas 2025",
+          "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf",
+          "kind": "official",
+          "published_at_utc": null
+        }
+      ],
+      "recent_news_leads": [
+        {
+          "title": "Video: Bahlil Dipanggil ke Istana, Bahas Kelangkaan BBM di Bali - CNBC Indonesia",
+          "publisher": "CNBC Indonesia",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNSkR4WmZVcnRudnFjdksxUWMzRktiWEI3UHNxYjVyQ2hiZjRnOXFtYzJhSUQzeEdpcFFvRDczX203OERra0EwZW5PRFRXczNTUy15UGlzZGU0aG1OcUx6ZjR4M0NWU1dDTk55NnNTRGtOY2ZjZjdWSEdrdEotYk96eExBQnlDUHlZMFZycTZFdk9GYlI3ZXBwRHNmUUR0RUlJRkRRTEhNX2JvSTR3ekZVVWRBRF9JX29kZUhVVw?oc=5",
+          "published_at_utc": "2026-10-14T12:30:55+00:00",
+          "category": "Fuel and LPG availability",
+          "topic_id": "fuel",
+          "kind": "attributed news headline, not independently verified",
+          "new_since_previous": true
+        },
+        {
+          "title": "QatarEnergy Buys 33 US LNG Cargoes to Offset Hormuz Disruption - EnergyNow.com",
+          "publisher": "EnergyNow.com",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPZHMwRFdQa0ZINzNVUjF5YmpaV1gyTllsZmlRYWZXSEF6NXgySWVaUVF0cnE5YkZvRzJjbVRLRmEtdnd4aUJmWGc1aHZ0b3IwdDk5U2tIdzBwTEpNQlRzei0tR2lIeFdvWG5RNVBuWlZmWGs5VlZCVlEwaXVfVnpnelhuY2xObzN1ZkVWeUxHdUJxVy15NnpXMQ?oc=5",
+          "published_at_utc": "2026-10-14T17:30:30+00:00",
+          "category": "Asian LNG and gas",
+          "topic_id": "",
+          "kind": "attributed news headline, not independently verified",
+          "new_since_previous": true
+        }
+      ]
+    },
+    {
+      "id": "geopolitics",
+      "heading": "02 · External Price & Maritime Exposure",
+      "finding": "International oil, LNG and shipping shocks remain transmission risks for Indonesia's imported petroleum and energy-intensive industry. This is an exposure assessment, not a claim that any news headline confirms a reduction in global supply.",
+      "implication": "A verified production outage or material shipping rerouting could affect crude and product prices, freight, insurance, the rupiah and the Indonesian Crude Price (ICP). A reported attack alone does not prove that Hormuz or Bab el-Mandeb has closed.",
+      "verification_priority": "Check vessel traffic, insured voyages, refinery throughput, dated price observations and official statements before classifying an event as a supply disruption.",
+      "baseline_sources": [
+        {
+          "label": "BPS foreign trade import data",
+          "url": "https://www.bps.go.id/",
+          "kind": "official",
+          "published_at_utc": null
+        },
+        {
+          "label": "ESDM official energy balance",
+          "url": "https://www.esdm.go.id/en/publikasi/handbook-of-energy-economic-statistics-of-indonesia",
+          "kind": "official",
+          "published_at_utc": null
+        }
+      ],
+      "recent_news_leads": [
+        {
+          "title": "Container Shipping’s Red Sea Comeback is Outpacing the Risk Warnings - WWD",
+          "publisher": "WWD",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPVV9wRGc3RWI1MWRGY29HNFNWQ2dVNHlWelpXMWpOU2tWdnNHd0w1SjNBNUxWelV1dktGVzRkQ1FUQVg0YjAzcmdLZ20zcUtQQmdQTldzSmRxc0dXZXpRWkNPX29vU3FFUkdOb2JBM0kwMXZRS3pncmhlMGVNeFlsNmpVNjc0VlJsb2tKR1JOS1lxQUF6ZVp3ejNoYXFvZDZwU2p4bFk1c1haZ1FXNFdIVkNjb09hX0s5eDZybEdn?oc=5",
+          "published_at_utc": "2026-10-14T17:35:49+00:00",
+          "category": "Red Sea and Bab el-Mandeb",
+          "topic_id": "",
+          "kind": "attributed news headline, not independently verified",
+          "new_since_previous": true
+        },
+        {
+          "title": "Container ship sinks in Strait of Hormuz as Iran steps up attacks - CNBC",
+          "publisher": "CNBC",
+          "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQMWFKMzFFcmxqYVdxcTVUYmZBZTZHejZpWTJmZ3o3Z3lFbnA0NTV4MkFlb1ZEMmRGQmw3MjJkc2RnTFgtX19YRkZOUDR4WXhNeWg5Zy1qV3FpeVpTVUo5QVBOVmJxcXVhc0NqandfT2ltQ3BseThmbG5oQTJhYUJ4MV9nM240c3I3ZG5wai1fY3ZIYWdpbGfSAZsBQVVfeXFMUHl0VWNMbEpIOXhweHBSVTdYdHNjd1V5a2NfNkJSdFk5UUV0R2lDSUtZV1BpMEM3aWxZOXlWRTBRRTNtVkxRcDZtYVFDdnA5X3RPLW4zTm42M0hzVFJYNGtoMWJHcjVGVlJ1a2Jja1F5SnFDUHVTYVFkYXRYTFFnbDd1REZsc0haTlNibWhxdTU0aHZCcjVYQ0x1Vm8?oc=5",
+          "published_at_utc": "2026-10-14T15:47:29+00:00",
+          "category": "Hormuz and Gulf energy",
+          "topic_id": "",
+          "kind": "attributed news headline, not independently verified",
+          "new_since_previous": true
+        }
+      ]
+    },
+    {
+      "id": "coal",
+      "heading": "03 · Coal Production, DMO & Exports",
+      "finding": "The Ditjen Minerba 2025 dataset reports coal production of 817.48 million tonnes, with 246.88 million tonnes of DMO use in 2025 (provisional). Other ESDM releases use different reporting vintages, so the figures should not be mechanically reconciled into a national supply balance.",
+      "implication": "The strategic tension is maintaining reliable domestic coal supply while assessing changes in export demand, regulated reference prices, and longer-run coal transition pressure.",
+      "verification_priority": "Reconcile Minerba, HEESI, PLN deliveries and customs exports for identical reporting periods; confirm effective dates of any new coal rule.",
+      "baseline_sources": [
+        {
+          "label": "Ditjen Minerba 2025",
+          "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+          "kind": "official",
+          "published_at_utc": null
+        },
+        {
+          "label": "HEESI energy statistics",
+          "url": "https://www.esdm.go.id/en/publikasi/handbook-of-energy-economic-statistics-of-indonesia",
+          "kind": "official",
+          "published_at_utc": null
+        }
+      ],
+      "recent_news_leads": [
+        {
+          "title": "Trump Plans $700 Million Push to Build Coal Plants, Export Site - EnergyNow.com",
+          "publisher": "EnergyNow.com",
+          "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNVTduUXA1c1ZMZnBmREdONV91czd2VllRZjQ5eDc0YmEyRHRvdUItcVFLMWsxLURJUmtOaVRoTktuRVFrcFNlbks3RDdsZHg4aWxXclJmNlFvdGRSRkZVa1lpS2pvcGNQVlFSaHNDZVVpVllZQlZBdEhMQ0VMRGhmSG1oLVUwWVZ0TE5IdlN6LTB4eEhoNWZF?oc=5",
+          "published_at_utc": "2026-10-14T16:04:14+00:00",
+          "category": "Global coal and energy policy",
+          "topic_id": "",
+          "kind": "attributed news headline, not independently verified",
+          "new_since_previous": true
+        }
+      ]
+    },
+    {
+      "id": "power",
+      "heading": "04 · Grid Reliability & Industrial Demand",
+      "finding": "Electricity security must be evaluated through grid availability and restoration times, not installed capacity alone. Smelters, industrial estates and data centres are particularly dependent on reliable regional supply.",
+      "implication": "Reported local blackouts can disrupt industry and data-centre operations. Their economic scale cannot be inferred without operator-confirmed duration, affected substations, customers and industrial load.",
+      "verification_priority": "Verify each outage with the regional PLN operator; track interruption duration, cause, recovery, transmission constraints and the commissioning of firm supply.",
+      "baseline_sources": [
+        {
+          "label": "PLN Annual Report 2024",
+          "url": "https://web.pln.co.id/statics/uploads/2025/06/AR-PLN-2024-final.pdf",
+          "kind": "official",
+          "published_at_utc": null
+        }
+      ],
+      "recent_news_leads": [
+        {
+          "title": "\"Blackout\" PLN Batam, Bahlil: gangguan jaringan hingga kelelawar - ANTARA News Sumbar",
+          "publisher": "ANTARA News Sumbar",
+          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNTmVWalFjdlE2XzZQRmNKZVZsdUVBYmh1SWZnSFgwTFNDbGQ5X3Zqa3dNMTNEZHVQSkhXdmFwWE1BTWhVZDNaU3dXQzV6Rm9TeGxua0ZIb3RDQ19jdUhmNG1PeEJoLWdYbHF1bjRMV0g3RkExQ1lDd3NQYktjNXBweHdwQkF1dmNUYU1GV21OUlBoUENfOF81dVFQN045S3U1dW9JLTVVSQ?oc=5",
+          "published_at_utc": "2026-10-14T21:40:33+00:00",
+          "category": "Electricity outages",
+          "topic_id": "power",
+          "kind": "attributed news headline, not independently verified",
+          "new_since_previous": true
+        },
+        {
+          "title": "Soal Blackout di Batam, Bahlil: Trouble karena Petir hingga Kelelawar - detikcom",
+          "publisher": "detikcom",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPRW9YODVyUFYycG5xWXVIZlEyNkM0T3lNRHVNS3RjMU9IVUtIWGQxWklJczh1ZThJRzdGQWhvcF9zbTBMd0RvQWpyNGtVS05BeUtxWmlBbFJKZmt1RjBHaTFTNkt5Rmhwbl9MN0pFN2RxRTVKZmFHM2g2MDVnX3FkODA4ZW95dEgzekY2TFBoWnBDLW9ySTg3ZnhxNy13SHgwSC03Q0NtMlVxYVctVEVjWVJB0gG3AUFVX3lxTFBBVEdlVGFGZmlDdjBnUHZKMk54RFlLcXlZZzNIZW80am1Rdk5RRkU4eUlQY0psZ3B4MmtRa3R3WlVnSlB4ZWRNa1hjZU5ON3A2TWU5ei1OMGV6bWVKazIxdmkzV3RkODNSUEdRWVgwN1FLYW52WG9jUFBITnpzZlRaRzVOWG5xb0JuUmkzNF93RHBQZHlPR1VMeV9IZHhnbnJ1ZDQ5MEk2amQ1ZHVhSDhEbmVkdGZaUQ?oc=5",
+          "published_at_utc": "2026-10-14T21:02:38+00:00",
+          "category": "Electricity outages",
+          "topic_id": "power",
+          "kind": "attributed news headline, not independently verified",
+          "new_since_previous": true
+        }
+      ]
+    },
+    {
+      "id": "transition",
+      "heading": "05 · Energy Transition & Project Delivery",
+      "finding": "Indonesia's reported EBT share was 15.75% in 2025 versus the revised KEN 2025 reference range of 17–20%. The 2025–2034 RUPTL plans 42.6 GW of renewable additions and 10.3 GW of storage, but these are planned, not commissioned.",
+      "implication": "The transition implementation gap remains an important strategic variable: grid connection, dispatch, financing and provincial RUED progress determine whether planned additions translate into generation and lower emissions.",
+      "verification_priority": "Check COD, installed and dispatched capacity, regional RUED actuals and project operating data; do not treat announcements or personnel appointments as project completion.",
+      "baseline_sources": [
+        {
+          "label": "Ditjen EBTKE 2025",
+          "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2025.pdf",
+          "kind": "official",
+          "published_at_utc": null
+        },
+        {
+          "label": "RUPTL 2025–2034",
+          "url": "https://esdm.go.id/en/media-center/news-archives/menteri-esdm-umumkan-ruptl-pln-2025-2034-serap-lebih-dari-17-juta-tenaga-kerja-baru",
+          "kind": "official",
+          "published_at_utc": null
+        }
+      ],
+      "recent_news_leads": []
+    },
+    {
+      "id": "carbon",
+      "heading": "06 · Carbon Outcomes & Environmental Risk",
+      "finding": "The BPS/KLHK inventory shown here ends in 2023; energy-sector emissions were 752.28 MtCO₂e and national emissions 1,360.35 MtCO₂e. These are emitted greenhouse gases, not reported avoided-emission achievements.",
+      "implication": "Peatland and forest-fire conditions can affect land-use emissions, haze and infrastructure access; local fire reports do not on their own confirm damage to electricity or fuel assets. National net-zero progress should use updated inventories rather than assuming daily changes.",
+      "verification_priority": "Review BNPB/BPBD and KLHK fire measurements, proximity to critical infrastructure, restoration work, and the next verified GHG inventory.",
+      "baseline_sources": [
+        {
+          "label": "BPS greenhouse gas inventory",
+          "url": "https://www.bps.go.id/id/statistics-table/1/MjA3MiMx/emisi-gas-",
+          "kind": "official",
+          "published_at_utc": null
+        }
+      ],
+      "recent_news_leads": [
+        {
+          "title": "PADAMKAN LAHAN GAMBUT YANG TERBAKAR - Media Center Kota Palangka Raya",
+          "publisher": "Media Center Kota Palangka Raya",
+          "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQS1VfOGJWdVRCM2NzR2VZbHlZODljVk9OUDYwWHpiRXR0eDNORnRGUGtfY0JyalBfcnRmTTlaR2RmWmVjcXVBTWNxeDhWckhrWVhpQ0U4S1NoTTZZSnFUUnVmdTZpT1VYWjFfV3lxb3l2NjZyRHhSdjQySkVQa2NmWA?oc=5",
+          "published_at_utc": "2026-10-14T15:42:14+00:00",
+          "category": "Forest fires and haze",
+          "topic_id": "forest_fire",
+          "kind": "attributed news headline, not independently verified",
+          "new_since_previous": true
+        },
+        {
+          "title": "BPBD Kalsel Catat 4.926 Kejadian Karhutla, Luas Lahan Terdampak Capai 27.202 Hektare - Media Center Provinsi Kalimantan Selatan",
+          "publisher": "Media Center Provinsi Kalimantan Selatan",
+          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOVnpBRFdtdW5nR2hiclJYN05BTXAzbHQxSjZfZU5XcUlRNEMwWFFiemlqcGJEYzRpN3pBOEI5ZllLQ3VvWk1YclIzUUVMLURQVC1VMHBlOGdHY05udWN4cURhNlBGdDU0VGROQ05oLU1LdmtjaGhZOXdBaC1Rb0NodHpqeXZwT3dPNlhuS1IycE5aU3c2YnZUNW5EWkZsQ1hicU1hVjlvSzN2cHgwZ0xSbEtwZmdyQmJqeHJIVVo1bnFtLTUwWmpRQjRhQVNZQQ?oc=5",
+          "published_at_utc": "2026-10-14T12:07:38+00:00",
+          "category": "Forest fires and haze",
+          "topic_id": "forest_fire",
+          "kind": "attributed news headline, not independently verified",
+          "new_since_previous": true
+        }
+      ]
+    },
+    {
+      "id": "policy",
+      "heading": "07 · Policy Execution & Evidence Discipline",
+      "finding": "PP 40/2025 updates Indonesia's national energy policy. The national long-term net-zero pathway is 2060 or sooner; provincial RUED attainment remains province-specific rather than a verified single nationwide compliance score.",
+      "implication": "New regulations, local supply decisions and commissioning milestones may change incentives and execution. A headline that discusses a policy or minister is not evidence that a legally binding rule was enacted.",
+      "verification_priority": "Require a numbered official instrument, signature and effective date from JDIH ESDM or peraturan.go.id; verify implementation milestones before revising project or regulatory assessments.",
+      "baseline_sources": [
+        {
+          "label": "PP 40/2025",
+          "url": "https://peraturan.go.id/id/pp-no-40-tahun-2025",
+          "kind": "official",
+          "published_at_utc": null
+        },
+        {
+          "label": "DEN performance / RUED",
+          "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-dewan-energi-nasional-tahun-2025.pdf",
+          "kind": "official",
+          "published_at_utc": null
+        }
+      ],
+      "recent_news_leads": []
+    }
+  ],
+  "limitations": "The dated report is rebuilt daily, but underlying annual fundamentals only change when the original datasets are updated. News links represent attributed headlines, not independent incident confirmation. No probability forecast, investment advice or made-up daily data.",
+  "watch_next": "Oil and gas delivery; fuel stocks; verified Hormuz/Red Sea voyages; coal and DMO reconciliation; outage restoration; commissioned renewable capacity; provincial RUED reporting and carbon inventories."
+}
