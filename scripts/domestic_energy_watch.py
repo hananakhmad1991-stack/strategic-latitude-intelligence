@@ -25,10 +25,15 @@ def pick(topic,root,now):
   try:published=email.utils.parsedate_to_datetime(item.findtext("pubDate") or "").astimezone(dt.timezone.utc)
   except Exception:continue
   if not title or not source or not url.startswith("https://"):continue
-  if source not in PUBLISHERS:continue
+  source_link=(item.find("source").attrib.get("url","") if item.find("source") is not None else "")
+  source_host=(urllib.parse.urlparse(source_link).hostname or "").lower()
+  official_domains=("esdm.go.id","bnpb.go.id","bmkg.go.id","bphmigas.go.id","pln.co.id","pertamina.com","go.id")
+  official=any(source_host==h or source_host.endswith("."+h) for h in official_domains)
+  reputable=source in PUBLISHERS or any(source.lower().startswith(prefix) for prefix in ("antara","detik","kompas","bisnis","cnbc indonesia","katadata"))
+  if not (official or reputable):continue
   if not dt.timedelta(0)<=now-published<=dt.timedelta(days=4):continue
   out.append({"category":topic["name"],"topic_id":topic["id"],"channel":topic["channel"],"title":title,"publisher":source,"url":url,"published_at_utc":published.isoformat(),
-    "claim_status":"Attributed headline — unverified event details","analysis":"Possible pathway: "+topic["impact"],"evidence_to_check":topic["verify"],"impact_status":"Conditional scenario, not observed loss"})
+    "claim_status":("Official-source headline — check original release" if official else "Media headline — independently verify event"),"analysis":"Possible pathway: "+topic["impact"],"evidence_to_check":topic["verify"],"impact_status":"Conditional scenario, not observed loss"})
   if len(out)>=3:break
  return out
 def main():
