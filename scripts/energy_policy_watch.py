@@ -51,7 +51,7 @@ def main():
             for item in tree.findall("./channel/item"):
                 doc=read_item(item,group)
                 if not doc:continue
-                key=re.sub(r"\\W+","",doc["title"].lower())[:160]
+                key=re.sub(r"\W+","",doc["title"].lower())[:160]
                 if key in dedup:continue
                 dedup.add(key);rows.append(doc)
         except Exception as exc:
