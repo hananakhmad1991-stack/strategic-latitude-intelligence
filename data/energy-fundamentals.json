@@ -27,13 +27,18 @@
       "unit": "thousand barrels/day",
       "domain": "oil_gas",
       "values": {
+        "2020": 708,
+        "2021": 659,
+        "2022": 612,
+        "2023": 606,
         "2024": 580,
         "2025": 581
       },
       "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2024.pdf",
         "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
       ],
-      "note": "2024/2025 average oil production per Ditjen Migas 2025 report; distinct from lifting."
+      "note": "2020-2024 production series from Ditjen Migas 2024 and 2025 updated production 581 MBOPD. Excludes additional NGL/condensate categories counted in 2025 total liquids/lifting."
     },
     "gas_production": {
       "name": "Gas production",
@@ -47,6 +52,24 @@
         "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
       ],
       "note": "Gross gas production incl. field own use, gas lift, impurities and flaring; do not compare directly to gas lifting or sales."
+    },
+    "gas_production_boe": {
+      "name": "Natural gas production (oil equivalent)",
+      "unit": "thousand BOE/day",
+      "domain": "oil_gas",
+      "values": {
+        "2020": 1178,
+        "2021": 1178,
+        "2022": 1147,
+        "2023": 1184,
+        "2024": 1215,
+        "2025": 1212
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2024.pdf",
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+      ],
+      "note": "Oil-equivalent gas production, 2020-2024 from Ditjen Migas 2024 (Gambar 8); 2025 1,212 MBOEPD from 2025 report. Do not conflate with marketed gas lifting, BBTUD gas use, or MMSCFD gross volumes."
     },
     "gas_domestic": {
       "name": "Domestic gas use",
