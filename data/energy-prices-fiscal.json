@@ -36,9 +36,27 @@
         }
       ],
       "source": "https://anggaran.kemenkeu.go.id/api/Medias/3e021dbf-3aae-47b3-9557-a8014ebf90e2",
-      "note": "Proposal in Nota Keuangan RAPBN 2026, not the updated APBN 2026 final budget; the sum is rounded. For actual execution, use separate paid subsidies and compensation disclosure."
+      "note": "Proposal in Nota Keuangan RAPBN 2026, not the updated APBN 2026 final budget; the sum is rounded. For actual execution, use separate paid subsidies and compensation disclosure. Later FY2026 outlook for direct subsidies is Rp227.26tn (reported August 2026); the figures are planning vintages, not simultaneous targets."
     },
-    "analysis": "Global oil/FX shocks can increase fiscal exposure and payment obligations even if regulated retail Pertalite/Biosolar prices are kept unchanged. Monitor APBN KiTa and separate monthly subsidy versus compensation releases."
+    "analysis": "Global oil/FX shocks can increase fiscal exposure and payment obligations even if regulated retail Pertalite/Biosolar prices are kept unchanged. Monitor APBN KiTa and separate monthly subsidy versus compensation releases.",
+    "q1_2026_actual": {
+      "value": 24.5,
+      "period": "Q1 2026 (Jan–Mar)",
+      "unit": "Rp trillion",
+      "breakdown": {
+        "bbm": 3.6,
+        "lpg_3kg": 6.5,
+        "electricity": 14.4
+      },
+      "source": "https://media.kemenkeu.go.id/getmedia/e37def30-1fc9-4756-95cb-05b4b2c156aa/Bulletin_APBN_KITA_Triwulan_I_tahun_2026.pdf?ext=.pdf",
+      "note": "Direct energy subsidy payments in Q1; NOT including Q1 compensation Rp66.5 trillion. Separate from Jan–Sep combined payments."
+    },
+    "outlook_2026": {
+      "value": 227.26,
+      "unit": "Rp trillion",
+      "status": "2026 direct-energy-subsidy outlook cited in August 2026 RAPBN 2027 discussion; NOT enacted budget, NOT actual spending",
+      "source": "https://jdih.dpr.go.id/berita/detail/id/68118/t/RAPBN%2B2027%2BPerlu%2BPastikan%2BKemandirian%2BEnergi%2BSelaras%2Bdengan%2BLingkungan"
+    }
   },
   "quotas": {
     "year": 2026,
@@ -314,6 +332,8 @@
     "bbmgovernment": "https://www.ekon.go.id/unduh/publikasi/6873/pemerintah-berikan-kepastian-ketersediaan-energi-dengan-harga-terjangkau-bagi-seluruh-lapisan-masyarakat",
     "electricity": "https://gatrik.esdm.go.id/berita/jaga-daya-beli-dan-daya-saing-industri-menteri-esdm-tarif-listrik-tw-iv-tetap",
     "electricityrates": "https://www.antaranews.com/berita/5719805/tarif-listrik-pln-september-2026-tidak-naik-ini-daftar-lengkapnya",
-    "electricityfull": "https://www.detik.com/bali/bisnis/d-8687548/daftar-lengkap-tarif-listrik-oktober-2026"
+    "electricityfull": "https://www.detik.com/bali/bisnis/d-8687548/daftar-lengkap-tarif-listrik-oktober-2026",
+    "subsidy_q1": "https://media.kemenkeu.go.id/getmedia/e37def30-1fc9-4756-95cb-05b4b2c156aa/Bulletin_APBN_KITA_Triwulan_I_tahun_2026.pdf?ext=.pdf",
+    "subsidy_outlook": "https://jdih.dpr.go.id/berita/detail/id/68118/t/RAPBN%2B2027%2BPerlu%2BPastikan%2BKemandirian%2BEnergi%2BSelaras%2Bdengan%2BLingkungan"
   }
 }
