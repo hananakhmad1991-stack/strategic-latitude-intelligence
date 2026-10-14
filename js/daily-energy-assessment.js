@@ -30,6 +30,7 @@ function dailyPoint(p){
  const li=element("li",null,"oa-daily-point");
  li.append(element("strong",p.heading||"Energy finding"));
  li.append(element("p",p.finding||"No assessment available.","oa-daily-finding"));
+ if(p.daily_signal){const signal=element("p",null,"oa-daily-signal");signal.append(element("b","Daily intelligence signal: "),document.createTextNode(p.daily_signal));li.append(signal);}
  const why=element("p",null,"oa-daily-impact");
  why.append(element("b","Strategic implication: "),document.createTextNode(p.implication||"Insufficient evidence."));li.append(why);
  const verify=element("p",null,"oa-daily-check");
