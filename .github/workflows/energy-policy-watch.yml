@@ -3,6 +3,11 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '41 */6 * * *'
+  push:
+    branches: [main]
+    paths:
+      - scripts/energy_policy_watch.py
+      - .github/workflows/energy-policy-watch.yml
 permissions:
   contents: write
 jobs:
