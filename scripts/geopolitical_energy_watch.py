@@ -43,5 +43,6 @@ def main():
  # Preserve last good feed during API outage, but never misrepresent its freshness.
  if items:p.write_text(json.dumps(output,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
  else:print("No vetted publisher headlines fetched; existing last-good snapshot preserved.")
+ Path("data/geopolitical-energy-status.json").write_text(json.dumps({"checked_at_utc":now.isoformat(),"leads_found":len(items),"errors":errors,"status":"published" if items else "no_verified_leads_or_source_unavailable","note":"A successful workflow does not mean news leads were available. Review source errors."},indent=2)+"\n",encoding="utf-8")
  print(json.dumps({"found":len(items),"errors":errors,"checked_at_utc":output["checked_at_utc"]},indent=2))
 if __name__=="__main__":main()
