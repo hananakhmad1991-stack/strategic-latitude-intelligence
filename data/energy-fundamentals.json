@@ -1,0 +1,351 @@
+{
+  "title": "Indonesia Energy Fundamentals",
+  "updated": "2026-10-15",
+  "latest_complete_year": 2025,
+  "description": "Official ESDM data with distinct definitions, vintage and status; no realtime claims.",
+  "series": {
+    "oil_lifting": {
+      "name": "Oil lifting",
+      "unit": "thousand barrels/day",
+      "domain": "oil_gas",
+      "values": {
+        "2021": 660,
+        "2022": 612,
+        "2023": 605.6,
+        "2024": 579.7,
+        "2025": 605.3
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2024.pdf",
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf",
+        "https://www.esdm.go.id/en/publikasi/handbook-of-energy-economic-statistics-of-indonesia"
+      ],
+      "note": "2025 605.3 MBOPD explicitly includes specified natural-gas liquids/condensate; earlier years may not use an identical inclusion boundary. Lifting differs from field production."
+    },
+    "oil_production": {
+      "name": "Oil production (field)",
+      "unit": "thousand barrels/day",
+      "domain": "oil_gas",
+      "values": {
+        "2024": 580,
+        "2025": 581
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+      ],
+      "note": "2024/2025 average oil production per Ditjen Migas 2025 report; distinct from lifting."
+    },
+    "gas_production": {
+      "name": "Gas production",
+      "unit": "MMSCFD",
+      "domain": "oil_gas",
+      "values": {
+        "2024": 6802,
+        "2025": 6789
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+      ],
+      "note": "Gross gas production incl. field own use, gas lift, impurities and flaring; do not compare directly to gas lifting or sales."
+    },
+    "gas_domestic": {
+      "name": "Domestic gas use",
+      "unit": "BBTUD",
+      "domain": "oil_gas",
+      "values": {
+        "2020": 3592,
+        "2021": 3687,
+        "2022": 3682,
+        "2023": 3800,
+        "2024": 3866,
+        "2025": 3908
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+      ],
+      "note": "Ditjen Migas gas utilization series; 2025 may use preliminary/November utilization reporting."
+    },
+    "gas_export": {
+      "name": "Export gas use",
+      "unit": "BBTUD",
+      "domain": "oil_gas",
+      "values": {
+        "2020": 2108,
+        "2021": 2046,
+        "2022": 1791,
+        "2023": 1719,
+        "2024": 1746,
+        "2025": 1691
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+      ],
+      "note": "Reported gas utilization for exports, energy equivalent BBTUD; different from LNG physical-export tonnage."
+    },
+    "oil_proved": {
+      "name": "Proved oil reserves (P1)",
+      "unit": "billion barrels",
+      "domain": "reserves",
+      "values": {
+        "2021": 2.245,
+        "2022": 2.271,
+        "2023": 2.413,
+        "2024": 2.288,
+        "2025": 2.326
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+      ],
+      "note": "Proved recoverable oil reserves P1; not geological resources nor total 3P reserves."
+    },
+    "gas_proved": {
+      "name": "Proved gas reserves (P1)",
+      "unit": "TSCF",
+      "domain": "reserves",
+      "values": {
+        "2021": 41.62,
+        "2022": 36.34,
+        "2023": 35.3,
+        "2024": 33.84,
+        "2025": 34.78
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+      ],
+      "note": "Proved recoverable gas reserves P1; not prospective resources. TSCF = trillion standard cubic feet."
+    },
+    "coal_production": {
+      "name": "Coal production",
+      "unit": "million tonnes",
+      "domain": "coal",
+      "values": {
+        "2020": 563.73,
+        "2021": 613.99,
+        "2022": 687.43,
+        "2023": 775.18,
+        "2024": 836.13,
+        "2025": 817.48
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+        "https://www.esdm.go.id/en/media-center/news-archives/kinerja-sektor-esdm-2024-lampui-target-penuhi-kebutuhan-domestik-dan-tingkatkan-ketahanan-energi-"
+      ],
+      "note": "2025 annual Ditjen Minerba reporting 817.48 Mt differs from early ESDM ministry briefing ~790 Mt. Do not treat them as interchangeable; reconciling sources remains necessary."
+    },
+    "coal_dmo": {
+      "name": "Coal domestic use (DMO)",
+      "unit": "million tonnes",
+      "domain": "coal",
+      "values": {
+        "2020": 131.89,
+        "2021": 133.04,
+        "2022": 215.81,
+        "2023": 212.87,
+        "2024": 232.64,
+        "2025": 246.88
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+        "https://www.esdm.go.id/en/media-center/news-archives/kinerja-sektor-esdm-2024-lampui-target-penuhi-kebutuhan-domestik-dan-tingkatkan-ketahanan-energi-"
+      ],
+      "note": "2025 DMO 246.88 Mt provisional pending reconciliation. Early ministry reporting said ~254 Mt."
+    },
+    "coal_export": {
+      "name": "Coal exports",
+      "unit": "million tonnes",
+      "domain": "coal",
+      "values": {
+        "2020": 405.05,
+        "2021": 435.22,
+        "2022": 465.34,
+        "2023": 518.05,
+        "2024": 555.34,
+        "2025": 522.56
+      },
+      "sources": [
+        "https://www.esdm.go.id/en/publikasi/handbook-of-energy-economic-statistics-of-indonesia",
+        "https://www.esdm.go.id/id/media-center/arsip-berita/dmo-terpenuhi-produksi-batubara-lampaui-target-2023-",
+        "https://www.esdm.go.id/en/media-center/news-archives/kinerja-sektor-esdm-2024-lampui-target-penuhi-kebutuhan-domestik-dan-tingkatkan-ketahanan-energi-"
+      ],
+      "note": "2020–24 published official series; 2025 HEESI 2025 export statistic ~522.56 Mt is not identical to the earlier ministry press briefing ~514 Mt. Compare within same series and vintage."
+    },
+    "nre_share": {
+      "name": "Renewables share of primary energy",
+      "unit": "percent",
+      "domain": "renewable",
+      "values": {
+        "2021": 11.7,
+        "2022": 11.9,
+        "2023": 13.29,
+        "2024": 14.68,
+        "2025": 15.75
+      },
+      "sources": [
+        "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2024.pdf",
+        "https://www.esdm.go.id/id/media-center/arsip-berita/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat"
+      ],
+      "note": "ESDM-reported 2024 estimate and 2025 reported value. Provisional figures may later be revised in HEESI; not the same as share of power-generation capacity."
+    }
+  },
+  "snapshots": [
+    {
+      "name": "Oil production",
+      "value": "568,213",
+      "unit": "BOPD",
+      "as_of": "2026-09-09",
+      "source": "https://www.esdm.go.id/id?Itemid=134&id=47&option=com_content&task=view",
+      "note": "ESDM Highlight snapshot, not annual average. Distinct from 2025 oil lifting."
+    },
+    {
+      "name": "Gas production",
+      "value": "6,703",
+      "unit": "MMSCFD",
+      "as_of": "2026-09-09",
+      "source": "https://www.esdm.go.id/id?Itemid=134&id=47&option=com_content&task=view",
+      "note": "ESDM Highlight snapshot, not annual average."
+    },
+    {
+      "name": "EBT installed capacity",
+      "value": "16.278",
+      "unit": "GW",
+      "as_of": "2026 report",
+      "source": "https://esdm.go.id/en/media-center/news-archives/perkuat-ketahanan-energi-indonesia-jerman-percepat-investasi-ebt-dan-jaringan-listrik",
+      "note": "Reported installed new and renewable energy capacity in 2026 ESDM release; publication snapshot."
+    }
+  ],
+  "reserves": {
+    "oil_proved": {
+      "value": 2.326,
+      "unit": "billion barrels",
+      "year": 2025,
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+    },
+    "oil_potential": {
+      "value": 2.098,
+      "unit": "billion barrels",
+      "year": 2025,
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf",
+      "note": "Potential/non-proved reserve category in ESDM report; do not add to proved for 'proved' headline."
+    },
+    "gas_proved": {
+      "value": 34.78,
+      "unit": "TSCF",
+      "year": 2025,
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+    },
+    "gas_potential": {
+      "value": 21.07,
+      "unit": "TSCF",
+      "year": 2025,
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf"
+    },
+    "coal_reserves": {
+      "value": 31.89,
+      "unit": "billion tonnes",
+      "as_of": "2025 H1",
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf"
+    },
+    "coal_resources": {
+      "value": 98.41,
+      "unit": "billion tonnes",
+      "as_of": "2025 H1",
+      "source": "https://geologi.esdm.go.id/storage/publikasi/MU7O2Z6gSMxxfpUAhti1nN7CnDCvFT3dKZfjo1TX.pdf"
+    }
+  },
+  "renewables": {
+    "reported_share_2025": 15.75,
+    "reported_installed_2025_mw": 15630,
+    "installed_by_type_mw": [
+      {
+        "name": "Hydro",
+        "value": 7587
+      },
+      {
+        "name": "Bioenergy",
+        "value": 3148
+      },
+      {
+        "name": "Geothermal",
+        "value": 2744
+      },
+      {
+        "name": "Solar PV",
+        "value": 1494
+      },
+      {
+        "name": "Wind",
+        "value": 152
+      },
+      {
+        "name": "Waste-to-energy",
+        "value": 36
+      },
+      {
+        "name": "Other",
+        "value": 18
+      },
+      {
+        "name": "Coal gasification* (non-renewable)",
+        "value": 450
+      }
+    ],
+    "technical_potential_gw": [
+      {
+        "name": "Solar",
+        "value": 3294
+      },
+      {
+        "name": "Wind",
+        "value": 155
+      },
+      {
+        "name": "Hydro",
+        "value": 95
+      },
+      {
+        "name": "Marine",
+        "value": 63
+      },
+      {
+        "name": "Bioenergy",
+        "value": 57
+      },
+      {
+        "name": "Geothermal",
+        "value": 24
+      }
+    ],
+    "technical_potential_reported_total_gw": 3687,
+    "reported_source": "https://www.esdm.go.id/id/media-center/arsip-berita/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat",
+    "potential_source": "https://esdm.go.id/en/media-center/news-archives/perkuat-ketahanan-energi-indonesia-jerman-percepat-investasi-ebt-dan-jaringan-listrik",
+    "note": "ESDM's official installed EBT breakdown reports 450 MW coal gasification, which is not renewable generation. This item is visibly separated and must not be called strictly renewable. Potential is technical potential, not feasible near-term pipeline; figures rounded, so components may not sum exactly to the reported total."
+  },
+  "coal_reconciliation": {
+    "period": 2025,
+    "minerba_production": 817.48,
+    "minerba_dmo": 246.88,
+    "heesi_export": 522.56,
+    "early_press_production": 790,
+    "early_press_dmo": 254,
+    "early_press_export": 514,
+    "notes": "Different ESDM products and vintages. Minerba 2025 DMO explicitly provisional. Do not force balance or sum these values as if compiled on a single reconciliation basis.",
+    "sources": [
+      "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+      "https://www.esdm.go.id/id/media-center/arsip-berita/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat",
+      "https://www.esdm.go.id/en/publikasi/handbook-of-energy-economic-statistics-of-indonesia"
+    ]
+  },
+  "sources": {
+    "migas2025": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf",
+    "migas2024": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2024.pdf",
+    "minerba2025": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+    "coal2023": "https://www.esdm.go.id/id/media-center/arsip-berita/dmo-terpenuhi-produksi-batubara-lampaui-target-2023-",
+    "coal2024": "https://www.esdm.go.id/en/media-center/news-archives/kinerja-sektor-esdm-2024-lampui-target-penuhi-kebutuhan-domestik-dan-tingkatkan-ketahanan-energi-",
+    "heesi": "https://www.esdm.go.id/en/publikasi/handbook-of-energy-economic-statistics-of-indonesia",
+    "esdm2025": "https://www.esdm.go.id/id/media-center/arsip-berita/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat",
+    "esdm2026": "https://www.esdm.go.id/id?Itemid=134&id=47&option=com_content&task=view",
+    "ebtpot": "https://esdm.go.id/en/media-center/news-archives/perkuat-ketahanan-energi-indonesia-jerman-percepat-investasi-ebt-dan-jaringan-listrik",
+    "coalres": "https://geologi.esdm.go.id/storage/publikasi/MU7O2Z6gSMxxfpUAhti1nN7CnDCvFT3dKZfjo1TX.pdf",
+    "ebt2024": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2024.pdf"
+  }
+}
