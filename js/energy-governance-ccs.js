@@ -43,34 +43,82 @@ function showCCSWatch(root){
  }).catch(()=>{stamp.textContent="CCS project change scanner has not published data; verified project snapshots remain below.";});
 }
 
-function governance(root,data){
- if(typeof window.renderSLIStakeholderMap==="function"){
-  window.renderSLIStakeholderMap(root,data);
- }else{
-  const el=E("div","gov-note","Interactive stakeholder map is temporarily unavailable. The research data and policy register remain accessible.");
-  root.append(el);
-  const groups=E("div");
-  data.layers.forEach(layer=>{
-   const section=E("details","gov-details");
-   const title=E("summary",null,layer.title+" · "+layer.actors.length+" actors");section.append(title);
-   layer.actors.forEach(x=>{
-    const p=E("p",null,x.name+" — "+x.lead+" — "+x.role);section.append(p,LINK(x.source,"Source ↗"));
-   });groups.append(section);
-  });root.append(groups);
+function governance(root,data,asOf){
+ const wrapper=E("details","sli-extra-network sli-energy-institution-explorer");
+ const heading=E("summary",null,"Explore institution network, named officials and 9 issue pathways");
+ const tabs=E("div","sli-sector-explorer-switcher");
+ tabs.setAttribute("role","tablist");
+ tabs.setAttribute("aria-label","Energy institutional intelligence views");
+ const networkTab=E("button","sli-sector-explorer-tab","Institution network & 9 issues");
+ const hierarchyTab=E("button","sli-sector-explorer-tab active","Government / Danantara & BUMN / Private");
+ const networkPane=E("div","sli-sector-explorer-pane");
+ const hierarchyPane=E("div","sli-sector-explorer-pane sli-sector-hierarchy-pane");
+ for(const [tab,pane,id] of [[networkTab,networkPane,"energy-institution-network"],[hierarchyTab,hierarchyPane,"energy-command-hierarchy"]]){
+  tab.type="button";tab.setAttribute("role","tab");tab.setAttribute("aria-controls",id);
+  pane.id=id;pane.setAttribute("role","tabpanel");
  }
+ networkPane.hidden=true;
+ tabs.append(networkTab,hierarchyTab);
+ wrapper.append(heading,tabs,networkPane,hierarchyPane);
+ root.append(wrapper);
+ let networkLoaded=false,hierarchyLoaded=false,activeView="hierarchy";
+ const loadNetwork=()=>{
+  if(networkLoaded)return;networkLoaded=true;
+  if(typeof window.renderSLIStakeholderMap==="function"){
+   window.renderSLIStakeholderMap(networkPane,data);
+  }else{
+   networkPane.append(E("p","gov-note","Interactive network temporarily unavailable; source-attributed institution records remain accessible."));
+   const groups=E("div","gov-details");
+   for(const layer of data.layers||[]){
+    const section=E("details","gov-details"),title=E("summary",null,layer.title+" · "+layer.actors.length+" actors");
+    section.append(title);
+    for(const actor of layer.actors)section.append(E("p",null,actor.name+" — "+actor.lead+" — "+actor.role),LINK(actor.source,"Original source ↗"));
+    groups.append(section);
+   }
+   networkPane.append(groups);
+  }
+ };
+ const loadHierarchy=()=>{
+  if(hierarchyLoaded)return;hierarchyLoaded=true;
+  try{
+   if(typeof window.buildSLIEnergyHierarchy!=="function"||typeof window.initSLICommandHierarchy!=="function")throw Error("Energy hierarchy module missing");
+   const joined=window.buildSLIEnergyHierarchy(data,asOf);
+   window.initSLICommandHierarchy("energy",hierarchyPane,joined);
+  }catch(error){
+   console.error("[SLI Energy hierarchy]",error);
+   hierarchyPane.append(E("p","gov-note","Grouped corporate hierarchy unavailable. The sourced Energy institutional network remains available in the other tab."));
+  }
+ };
+ const choose=(view)=>{
+  activeView=view;
+  const network=view==="network";
+  networkPane.hidden=!network;
+  hierarchyPane.hidden=network;
+  networkTab.className="sli-sector-explorer-tab"+(network?" active":"");
+  hierarchyTab.className="sli-sector-explorer-tab"+(!network?" active":"");
+  networkTab.setAttribute("aria-selected",String(network));
+  hierarchyTab.setAttribute("aria-selected",String(!network));
+  if(wrapper.open){if(network)loadNetwork();else loadHierarchy()}
+ };
+ networkTab.addEventListener("click",()=>choose("network"));
+ hierarchyTab.addEventListener("click",()=>choose("hierarchy"));
+ wrapper.addEventListener("toggle",()=>{if(wrapper.open)choose(activeView)});
  const secondary=E("details","stake-directory");
  const summary=E("summary",null,"Official source monitoring & research notes");
  const content=E("div","stake-directory-inner");
- secondary.append(summary,content);root.append(secondary);
- let ready=false;
+ secondary.append(summary,content);wrapper.append(secondary);
+ let notesReady=false;
  secondary.addEventListener("toggle",()=>{
-  if(!secondary.open||ready)return;
-  ready=true;showActorWatch(content);
+  if(!secondary.open||notesReady)return;
+  notesReady=true;showActorWatch(content);
   const analysis=E("div","gov-takeaways");
   analysis.append(E("h3",null,"Governance analytical findings"));
-  const ul=E("ol");(data.strategic_readout||[]).forEach(t=>ul.append(E("li",null,t)));
+  const ul=E("ol");
+  for(const finding of data.strategic_readout||[])ul.append(E("li",null,finding));
   analysis.append(ul);content.append(analysis);
  });
+ wrapper.open=true;
+ choose("hierarchy");
 }
 
 let lastPolicyData=null;
@@ -220,7 +268,7 @@ window.initEnergyGovernance=async function(){
   document.documentElement.dataset.govAsOf=d.as_of;
   root.replaceChildren();
   const hero=E("div","gov-hero");hero.append(E("div","eyebrow","INDONESIA · ENERGY GOVERNANCE"),E("h2",null,"Institutional responsibilities & accountability"),E("p",null,"Who directs policy, who regulates and who executes it · verified as of "+d.as_of));root.append(hero);
-  governance(root,d.governance);
+  governance(root,d.governance,d.as_of);
   const policyRoot=document.getElementById("energyPolicyRoot")||root;
   const ccsRoot=document.getElementById("energyCCSRoot")||root;
   if(policyRoot!==root)policyRoot.replaceChildren();
