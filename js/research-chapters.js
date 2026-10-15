@@ -71,11 +71,11 @@ policy:{name:"Policy & Risk",subtitle:"A decision register linking legal status,
 ["National AI Roadmap / AI Ethics Presidential Regulations","Proposed / awaiting presidential determination as of July 2026 official statement","Komdigi reported completed drafting and pending issuance; do not mark enacted without an official legal document.","https://portal.komdigi.go.id/kanal-publik/berita-kini/10425"],
 ["Mineral processing & export requirements","Instrument-specific; verify commodity, effective date and exceptions","Do not apply one generic export-ban rule to every mineral. Track instrument-by-instrument with authenticated source.","https://jdih.esdm.go.id/"],
 ["Industrial, environmental & investment implementation","Sectoral subordinate instruments requiring project-specific scope checks","Regulatory applicability depends on the activity, location and entity; no blanket certification implied.","https://peraturan.go.id/"]]],
-["01","Regulatory Register","Categorize every item as enacted law, implementing regulation, draft, policy target or corporate announcement.",[
-["National energy policy · PP 40/2025","Enacted regulation","Use as current National Energy Policy framework; distinguish legacy targets from current policy.","https://peraturan.go.id/id/pp-no-40-tahun-2025"],
-["RUEN · Presidential Regulation 22/2017","Historical policy reference","Do not present its 2025 target alone as the current governing benchmark.","https://peraturan.bpk.go.id/Details/13421/perpres-no-22-tahun-2017"],
-["AI governance / roadmap","Status requires fresh legal register confirmation","A circulated draft or roadmap discussion is not enacted law.","https://komdigi.go.id/"],
-["Investment realization release","Official statistical release","Differentiate realized national PMA/PMDN from sector/project pipeline.","https://www.bkpm.go.id/id/info/realisasi-investasi"]]],
+["01","Policy Status & Implementation Monitor","Operational reading guide for the canonical register above; legal instruments must never be reproduced as undated facts in sector dashboards.",[
+["Enacted / in force","Official promulgation and commencement date required","Record responsible ministry, legal level, instrument number and amendments.",null],
+["Draft / harmonization / awaiting signature","Pending is not enforceable","Evidence must identify the exact government statement date; re-check against peraturan.go.id before updating.",null],
+["Implementation / compliance","Measure what is operationally applicable","A government policy objective is not proof of a permit, incentive award or business compliance.",null],
+["Superseded / historic benchmark","Preserve as historical context only","Show successor, repeal or amendment before comparing targets.",null]]],
 ["02","Risk Taxonomy & Sector Exposure","Use qualitative classifications only when source and reasoning are attached.",[
 ["Political / Regulatory","Permit design, export controls, fiscal policy and changes in legal instruments","Record actual rule, effective date and responsible institution.",null],
 ["Economic / Financial","FX, cost of capital, commodity prices, capital-commitment conversion","Do not equate market volatility with realized project loss.",null],
