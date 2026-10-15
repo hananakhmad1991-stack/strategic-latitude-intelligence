@@ -188,6 +188,49 @@ def main():
         if not benchmark.get("period") or not benchmark.get("classification") or not https(benchmark.get("source_url")):
             fail(f"National bioenergy / EBT benchmark missing time or original source: {benchmark.get('indicator')}")
 
+    forbes = read("investment-forbes-top20.json")
+    ranked = forbes.get("rankings", [])
+    if len(ranked) != 20 or not https(forbes.get("source_url")):
+        fail("Forbes top20 must be exactly twenty sourced entries")
+    for i, person in enumerate(ranked):
+        if person.get("rank") != i + 1 or not person.get("name") or person.get("net_worth_usd_billion", 0) <= 0:
+            fail("Forbes ranking has unsourced/missing rank or wealth amount")
+        if i and person["net_worth_usd_billion"] > ranked[i-1]["net_worth_usd_billion"]:
+            fail("Forbes annual wealth estimates out of order")
+    markets = read("investment-market.json")
+    fx = markets.get("fx", {})
+    ihsg = markets.get("ihsg", {})
+    if not https(fx.get("source")) or not https(ihsg.get("source")):
+        fail("Market indicators lack primary BI or price-vendor links")
+    if not (9000 < fx.get("bid", 0) < fx.get("ask", 0) < 30000):
+        fail("BI buy/sell quote improbable or misassigned")
+    if abs(fx.get("value", 0) - (fx["bid"]+fx["ask"])/2) > 0.03:
+        fail("Official BI transaction midpoint arithmetic mismatch")
+    if not 2000 < ihsg.get("value", 0) < 30000:
+        fail("IHSG value anomalous")
+    if not fx.get("observed_date") or not ihsg.get("observed_date"):
+        fail("Market price observation date must be published")
+    for item in markets.get("global_indicators", []):
+        if not https(item.get("source")) or not item.get("classification") or not item.get("period"):
+            fail("Global investment / innovation comparator lacks source or scope")
+    swot = read("investment-swot.json")
+    sector_swots = swot.get("sectors", [])
+    if len(sector_swots) != 12 or len({x["sector"] for x in sector_swots}) != 12:
+        fail("Twelve-sector SWOT needs unique sector names")
+    for section in sector_swots:
+        for lens in ("strength", "weakness", "opportunity", "threat"):
+            if not section.get(lens):
+                fail(f"{section['sector']}: no {lens} content")
+        for ref in section.get("asset_ids", []):
+            if ref not in asset_ids:
+                fail(f"SWOT {section['sector']} references missing asset {ref}")
+    speculation = read("investment-reported-scenarios.json")
+    for report in speculation.get("reports", []):
+        if not https(report.get("url")) or not report.get("source_name") or not report.get("unconfirmed_element"):
+            fail("Curated scenario lacks original attribution and uncertainty")
+        if not report.get("verify_next"):
+            fail("Curated speculation must say what would verify it")
+
     for observation in evidence.get("corporate_capex", []):
         key = observation.get("entity", "?")
         if not https(observation.get("source")) or not observation.get("geographic_scope"):
