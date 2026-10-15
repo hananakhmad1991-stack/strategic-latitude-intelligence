@@ -1,0 +1,60 @@
+name: SLI Refinery Grid Jargas & IKE Source Watch
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "32 0,12 * * *"
+  push:
+    branches: [main]
+    paths:
+      - scripts/energy_infrastructure_watch.py
+      - js/energy-infrastructure-security.js
+      - data/energy-infrastructure-security.json
+      - .github/workflows/energy-infrastructure-watch.yml
+permissions:
+  contents: write
+concurrency:
+  group: sli-energy-infrastructure-watch
+  cancel-in-progress: false
+jobs:
+  update_public_ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Discover dated institutional source updates
+        run: python scripts/energy_infrastructure_watch.py
+      - name: Validate published evidence and visual components
+        run: |
+          python -m json.tool data/energy-infrastructure-watch.json > /dev/null
+          python -m json.tool data/energy-infrastructure-security.json > /dev/null
+          node --check js/energy-infrastructure-security.js
+          python - <<'PY'
+          import json
+          d=json.load(open("data/energy-infrastructure-security.json",encoding="utf-8"))
+          assert len(d["refinery"]["units"])==6
+          assert len(d["power_generation"]["capacity_by_type_mw"])>=12
+          assert d["energy_security"]["official"]["index"]==7.04
+          assert len(d["energy_security"]["aspects"])==4
+          assert d["jargas"]["historic"]["connected_households"]==954307
+          assert abs(sum(x["nameplate_kbpd"] for x in d["refinery"]["units"])-d["refinery"]["sum_of_listed_kbpd"])<0.01
+          print("Validated infrastructure official source-vintaged baseline")
+          PY
+      - name: Publish research release candidates with conflict-safe updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp data/energy-infrastructure-watch.json /tmp/sli-asset-leads.json
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main || exit 1
+            git reset --hard origin/main
+            cp /tmp/sli-asset-leads.json data/energy-infrastructure-watch.json
+            git add data/energy-infrastructure-watch.json
+            if git diff --cached --quiet; then echo "No update"; exit 0; fi
+            git commit -m "Refresh energy infrastructure source change leads"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
