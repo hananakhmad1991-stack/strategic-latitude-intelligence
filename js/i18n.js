@@ -6,6 +6,26 @@ let lang=stored==="id"?"id":"en";
 const history=new WeakMap(),attributes=new WeakMap();
 const labels=window.SLI_TRANSLATIONS_ID instanceof Map?window.SLI_TRANSLATIONS_ID:new Map();
 const exclusions="script,style,pre,code,textarea,option[data-original],[data-sli-no-translate],.bio-news .bio-source,.bio-news a,.oa-daily-headline a,.events-card h3,.gov-lead a,#geoEvents article a,svg";
+const polishedEnglish=new Map([
+ ["Jargas","Household Gas Networks (Jargas)"],
+ ["Migas vs EBTKE","Oil and Gas vs NRE & Energy Conservation"],
+ ["Migas only","Oil and Gas only"],
+ ["Migas — 2025 realized","Oil and Gas investment · 2025 actual"],
+ ["EBTKE only","NRE & Energy Conservation only"],
+ ["EBTKE — 2025 realized","NRE & Energy Conservation investment · 2025 actual"],
+ ["EBTKE realized investment — 2025 breakdown","NRE & Energy Conservation investment · 2025 breakdown"],
+ ["EBT-type · PLN-owned units","Renewable power units · PLN-owned"],
+ ["ESDM EBT programme","MEMR New and Renewable Energy programme"],
+ ["Official EBTKE annual volumes","Official NREEC biodiesel volumes"],
+ ["ESDM catalog ↗","MEMR publications ↗"],
+ ["ESDM official announcements ↗","MEMR official releases ↗"],
+ ["ESDM decree register ↗","MEMR legal instruments ↗"],
+ ["EBTKE HIP biodiesel ↗","NREEC biodiesel reference price ↗"],
+ ["EBTKE HIP bioethanol ↗","NREEC bioethanol reference price ↗"],
+ ["New & Renewable Energy (EBT/NRE)","New and Renewable Energy (NRE)"],
+ ["RUED — Provincial Energy Plan Implementation","Provincial Energy Planning (RUED) — Implementation"],
+ ["RUPTL Implementation Watch","Electricity Supply Plan (RUPTL) Implementation Tracker"]
+]);
 const glossary={
  en:[
   [/\bNew\s*&\s*Renewable Energy\s*\(EBT\/NRE\)/gi,"New and Renewable Energy (NRE)"],
@@ -45,7 +65,7 @@ function translate(text,code=lang){
  // Preserve symbolic nav icons but translate their labels.
  const decor=body.match(/^([◈▦ϟ◇⌘▤☷]\s*)(.+)$/);
  const leading=decor?decor[1]:"",plain=decor?decor[2]:body;
- if(code==="en")return prefix+leading+lexical(plain,"en")+suffix;
+ if(code==="en")return prefix+leading+(polishedEnglish.get(plain)||lexical(plain,"en"))+suffix;
  // Translate complete human-edited sentences before attempting a glossary fallback.
  const direct=labels.get(plain) || labels.get(lexical(plain,"en"));
  if(direct)return prefix+leading+direct+suffix;
