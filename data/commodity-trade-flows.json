@@ -1,0 +1,519 @@
+{
+  "as_of": "2026-10-15",
+  "units": "USD million (musd)",
+  "latest_bps": {
+    "period": "2026-01_to_2026-08",
+    "released": "2026-10-01",
+    "exports_total_musd": 193643.2,
+    "imports_total_musd": 186392.1,
+    "exports_oil_gas_musd": 8011.2,
+    "imports_oil_gas_musd": 29299.7,
+    "exports_non_oil_gas_musd": 185632,
+    "imports_non_oil_gas_musd": 157092.4,
+    "source_url": "https://www.bps.go.id/assets/pressrelease/2026/10/01/2621/ekspor-dan-impor-indonesia-agustus-2026-masing-masing-tercatat-usd-26-61-miliar-dan-usd-23-06-miliar.html",
+    "notes": "BPS 2026 Jan-Aug aggregate only: NON-migas includes all non-oil sectors; it is NOT a minerba total."
+  },
+  "bilateral": {
+    "period": "2025",
+    "source_note": "Year 2025 is the latest verified full-year bilateral matrix for these selected product groups, not the latest 2026 bilateral transaction date. Partner rows are selected available reported countries. Residual rows fill 'Other/remaining' to reconcile displayed world totals; they are not a single country. Nickel/ferronickel without verified partner rows is intentionally not drawn as country-specific flows.",
+    "method": "2025 Indonesia-reporter customs flows: exports FOB, imports CIF. Same commodity HS coverage required for bilateral trade balance; missing values are null, never zero. HS 74/76 are processed commodity CHAPTERS, not exclusively mining output. HS 27 includes both fuels and coal; coal is classified as minerba (not oil and gas).",
+    "products": [
+      {
+        "id": "coal",
+        "sector": "minerba",
+        "name_en": "Coal & coal-based solid fuels",
+        "name_id": "Batubara & bahan bakar padat batubara",
+        "hs": "2701",
+        "period": "2025",
+        "exports": {
+          "world_musd": 24482.764923,
+          "source_url": "https://corplox.com/trade/id/hs/27/2701",
+          "partner_precision": "Mixed exact 2025 primary figures and rounded displayed source partner amounts; grouping remainder computed from exact world total",
+          "partners": [
+            {
+              "country": "India",
+              "musd": 4980.114155
+            },
+            {
+              "country": "China",
+              "musd": 4571.672678
+            },
+            {
+              "country": "Japan",
+              "musd": 2855.949247
+            },
+            {
+              "country": "Philippines",
+              "musd": 2203.214372
+            },
+            {
+              "country": "Malaysia",
+              "musd": 2185.816505
+            },
+            {
+              "country": "South Korea",
+              "musd": 1845.330626
+            },
+            {
+              "country": "Vietnam",
+              "musd": 1625.35013
+            },
+            {
+              "country": "Bangladesh",
+              "musd": 1184.817019
+            },
+            {
+              "country": "Thailand",
+              "musd": 798.603848
+            },
+            {
+              "country": "Cambodia",
+              "musd": 356.17
+            },
+            {
+              "country": "Hong Kong",
+              "musd": 235.78
+            },
+            {
+              "country": "New Zealand",
+              "musd": 115.03
+            }
+          ]
+        },
+        "imports": {
+          "world_musd": 3317.261049,
+          "source_url": "https://corplox.com/trade/id/hs/27/2701",
+          "partner_precision": "Exact world and leading 5 partner figures; other partner amounts rounded from source table",
+          "partners": [
+            {
+              "country": "Australia",
+              "musd": 1167.741071
+            },
+            {
+              "country": "Russia",
+              "musd": 900.994072
+            },
+            {
+              "country": "United States",
+              "musd": 537.737196
+            },
+            {
+              "country": "China",
+              "musd": 336.434757
+            },
+            {
+              "country": "Canada",
+              "musd": 214.252155
+            },
+            {
+              "country": "Hong Kong",
+              "musd": 37.5
+            },
+            {
+              "country": "Vietnam",
+              "musd": 35.64
+            },
+            {
+              "country": "Colombia",
+              "musd": 22.62
+            },
+            {
+              "country": "Peru",
+              "musd": 20.2
+            },
+            {
+              "country": "New Zealand",
+              "musd": 15.95
+            }
+          ]
+        }
+      },
+      {
+        "id": "crude",
+        "sector": "migas",
+        "name_en": "Crude petroleum",
+        "name_id": "Minyak mentah",
+        "hs": "2709",
+        "period": "2025",
+        "exports": {
+          "world_musd": 1555.60894,
+          "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/IDN/year/2025/tradeflow/Exports/partner/ALL/product/2709",
+          "partner_precision": "Exact values as shown in source, USD million",
+          "partners": [
+            {
+              "country": "Thailand",
+              "musd": 1219.01309
+            },
+            {
+              "country": "South Korea",
+              "musd": 119.64947
+            },
+            {
+              "country": "China",
+              "musd": 84.17485
+            },
+            {
+              "country": "Malaysia",
+              "musd": 82.2776
+            },
+            {
+              "country": "Singapore",
+              "musd": 28.61315
+            },
+            {
+              "country": "Australia",
+              "musd": 13.08869
+            },
+            {
+              "country": "Japan",
+              "musd": 8.79207
+            }
+          ]
+        },
+        "imports": {
+          "world_musd": 9309.69292,
+          "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/IDN/year/2025/tradeflow/Imports/partner/ALL/product/2709",
+          "partner_precision": "Exact values as shown in source, USD million",
+          "partners": [
+            {
+              "country": "Nigeria",
+              "musd": 2446.56103
+            },
+            {
+              "country": "Angola",
+              "musd": 1942.80608
+            },
+            {
+              "country": "Saudi Arabia",
+              "musd": 1649.22375
+            },
+            {
+              "country": "Brazil",
+              "musd": 813.78618
+            },
+            {
+              "country": "Australia",
+              "musd": 765.82796
+            },
+            {
+              "country": "Gabon",
+              "musd": 535.22768
+            },
+            {
+              "country": "United States",
+              "musd": 367.53408
+            },
+            {
+              "country": "Malaysia",
+              "musd": 199.54676
+            },
+            {
+              "country": "Azerbaijan",
+              "musd": 137.93874
+            },
+            {
+              "country": "Algeria",
+              "musd": 117.90775
+            },
+            {
+              "country": "Equatorial Guinea",
+              "musd": 105.40756
+            },
+            {
+              "country": "Brunei",
+              "musd": 92.5172
+            },
+            {
+              "country": "Ghana",
+              "musd": 67.44684
+            },
+            {
+              "country": "Libya",
+              "musd": 45.7468
+            },
+            {
+              "country": "Norway",
+              "musd": 22.20884
+            }
+          ]
+        }
+      },
+      {
+        "id": "lng",
+        "sector": "migas",
+        "name_en": "Liquefied natural gas (LNG)",
+        "name_id": "Gas alam cair (LNG)",
+        "hs": "271111",
+        "period": "2025",
+        "exports": {
+          "world_musd": 5556.48223,
+          "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/IDN/year/2025/tradeflow/Exports/partner/ALL/product/271111",
+          "partner_precision": "Exact values as shown in source, USD million",
+          "partners": [
+            {
+              "country": "Japan",
+              "musd": 2082.16723
+            },
+            {
+              "country": "China",
+              "musd": 1994.47155
+            },
+            {
+              "country": "South Korea",
+              "musd": 943.14451
+            },
+            {
+              "country": "Other Asia, nes",
+              "musd": 173.695
+            },
+            {
+              "country": "Thailand",
+              "musd": 152.47651
+            },
+            {
+              "country": "Bangladesh",
+              "musd": 85.68958
+            },
+            {
+              "country": "Philippines",
+              "musd": 84.97138
+            },
+            {
+              "country": "Singapore",
+              "musd": 32.30846
+            },
+            {
+              "country": "Mexico",
+              "musd": 4.17413
+            },
+            {
+              "country": "Spain",
+              "musd": 3.38389
+            }
+          ]
+        },
+        "imports": {
+          "world_musd": null,
+          "source_url": null,
+          "partner_precision": "Indonesia 2025 LNG import counterpart values not independently verified in this snapshot",
+          "partners": []
+        }
+      },
+      {
+        "id": "copper",
+        "sector": "minerba",
+        "name_en": "Copper and articles thereof",
+        "name_id": "Tembaga & produk tembaga",
+        "hs": "74",
+        "period": "2025",
+        "exports": {
+          "world_musd": 3990.6126,
+          "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/IDN/year/2025/tradeflow/Exports/partner/ALL/product/74",
+          "partner_precision": "Exact values as shown in source, USD million",
+          "partners": [
+            {
+              "country": "China",
+              "musd": 1425.08429
+            },
+            {
+              "country": "Malaysia",
+              "musd": 767.1228
+            },
+            {
+              "country": "Vietnam",
+              "musd": 561.47449
+            },
+            {
+              "country": "Thailand",
+              "musd": 470.41816
+            },
+            {
+              "country": "Other Asia, nes",
+              "musd": 230.20924
+            },
+            {
+              "country": "South Korea",
+              "musd": 174.99339
+            },
+            {
+              "country": "Philippines",
+              "musd": 91.05722
+            },
+            {
+              "country": "Japan",
+              "musd": 86.82276
+            },
+            {
+              "country": "Singapore",
+              "musd": 46.65366
+            },
+            {
+              "country": "Australia",
+              "musd": 45.10914
+            },
+            {
+              "country": "Bangladesh",
+              "musd": 25.75494
+            },
+            {
+              "country": "India",
+              "musd": 20.7629
+            },
+            {
+              "country": "United States",
+              "musd": 14.42765
+            }
+          ]
+        },
+        "imports": {
+          "world_musd": 1896.3007,
+          "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/IDN/year/2025/tradeflow/Imports/partner/ALL/product/74",
+          "partner_precision": "Exact values as shown in source, USD million",
+          "partners": [
+            {
+              "country": "China",
+              "musd": 537.35886
+            },
+            {
+              "country": "Japan",
+              "musd": 528.17345
+            },
+            {
+              "country": "Australia",
+              "musd": 417.66671
+            },
+            {
+              "country": "Malaysia",
+              "musd": 89.07253
+            },
+            {
+              "country": "Thailand",
+              "musd": 65.70431
+            },
+            {
+              "country": "South Korea",
+              "musd": 52.19839
+            },
+            {
+              "country": "Other Asia, nes",
+              "musd": 48.05192
+            },
+            {
+              "country": "Vietnam",
+              "musd": 47.00606
+            },
+            {
+              "country": "Singapore",
+              "musd": 20.96699
+            },
+            {
+              "country": "Philippines",
+              "musd": 18.17092
+            },
+            {
+              "country": "United Arab Emirates",
+              "musd": 14.60822
+            },
+            {
+              "country": "India",
+              "musd": 13.74483
+            },
+            {
+              "country": "United States",
+              "musd": 6.26446
+            }
+          ]
+        }
+      },
+      {
+        "id": "aluminium",
+        "sector": "minerba",
+        "name_en": "Aluminium and articles thereof",
+        "name_id": "Aluminium & produk aluminium",
+        "hs": "76",
+        "period": "2025",
+        "exports": {
+          "world_musd": 2182.07765,
+          "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/IDN/year/2025/tradeflow/Exports/partner/ALL/product/76",
+          "partner_precision": "Exact values as shown in source, USD million",
+          "partners": [
+            {
+              "country": "China",
+              "musd": 615.51992
+            },
+            {
+              "country": "South Korea",
+              "musd": 238.62744
+            },
+            {
+              "country": "Vietnam",
+              "musd": 235.58836
+            },
+            {
+              "country": "United States",
+              "musd": 161.58257
+            },
+            {
+              "country": "India",
+              "musd": 117.34119
+            },
+            {
+              "country": "Turkey",
+              "musd": 108.66506
+            },
+            {
+              "country": "Malaysia",
+              "musd": 90.45389
+            },
+            {
+              "country": "Thailand",
+              "musd": 86.01098
+            },
+            {
+              "country": "Australia",
+              "musd": 67.60584
+            },
+            {
+              "country": "Other Asia, nes",
+              "musd": 65.75979
+            },
+            {
+              "country": "Egypt",
+              "musd": 56.9101
+            },
+            {
+              "country": "Japan",
+              "musd": 49.5119
+            }
+          ]
+        },
+        "imports": {
+          "world_musd": null,
+          "source_url": null,
+          "partner_precision": "Import HS 76 country decomposition not yet source-verified",
+          "partners": []
+        }
+      },
+      {
+        "id": "ferronickel",
+        "sector": "minerba",
+        "name_en": "Ferro-nickel",
+        "name_id": "Feronikel",
+        "hs": "720260",
+        "period": "2025",
+        "exports": {
+          "world_musd": 16385.06673,
+          "source_url": "https://wits.worldbank.org/trade/comtrade/en/country/ALL/year/2025/tradeflow/Exports/partner/WLD/product/720260",
+          "partner_precision": "World total from WITS exporter ranking; Indonesian destination-country matrix not verified; no inferred partner links",
+          "partners": []
+        },
+        "imports": {
+          "world_musd": null,
+          "source_url": null,
+          "partner_precision": "Indonesia ferro-nickel import values not independently verified in this snapshot",
+          "partners": []
+        }
+      }
+    ]
+  }
+}
