@@ -1,0 +1,58 @@
+name: SLI Biodiesel Biofuel & Policy Radar
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - scripts/energy_biofuels_watch.py
+      - .github/workflows/energy-biofuels-watch.yml
+permissions:
+  contents: write
+concurrency:
+  group: sli-biofuels-radar
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Discover public biofuels industry, feedstock, B50 and policy headlines
+        run: python scripts/energy_biofuels_watch.py
+      - name: Validate source-vintaged biofuel snapshot and watcher
+        run: |
+          python -m json.tool data/energy-biofuels.json > /dev/null
+          python -m json.tool data/energy-biofuels-watch.json > /dev/null
+          node --check js/energy-biofuels.js
+          python - <<'PY'
+          import json
+          d=json.load(open("data/energy-biofuels.json",encoding="utf-8"))
+          a=d["allocation"]
+          assert a["pso_kl"]+a["non_pso_kl"]==a["initial_2026_kl"]
+          assert d["blend"]["effective"]=="2026-07-01"
+          assert d["ethanol"]["capacity_verified_million_kl"] is None
+          assert d["price"]["hip_biodiesel_rp_per_l"]==15072
+          assert d["actuals_2026"]["distributed_million_kl"]<d["installed_capacity"]["million_kl_per_year"]
+          print("Verified category separation and source-vintaged research baseline")
+          PY
+      - name: Publish discovery feed without overwriting concurrent changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp data/energy-biofuels-watch.json /tmp/sli-biofuel-news.json
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main || exit 1
+            git reset --hard origin/main
+            cp /tmp/sli-biofuel-news.json data/energy-biofuels-watch.json
+            git add data/energy-biofuels-watch.json
+            if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+            git commit -m "Refresh biofuel news and policy discovery feed"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
