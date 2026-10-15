@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-15T00:16:59.145Z",
+  "generated_at_utc": "2026-10-15T00:19:52.062794+00:00",
   "date_wib": "2026-10-15",
   "time_zone": "Asia/Jakarta",
   "max_displayed": 5,
@@ -25,7 +25,7 @@
         "20 Oktober",
         "2026-10-20"
       ],
-      "source_check": "organizer date confirmed in initial research; automatic monitor will re-check"
+      "source_check": "organizer-page-date-visible"
     },
     {
       "id": "coal-outlook-2027",
@@ -47,7 +47,7 @@
         "Nov 3, 2026",
         "2026-11-03"
       ],
-      "source_check": "organizer date confirmed in initial research; automatic monitor will re-check"
+      "source_check": "manual-source-entry; no automated scraping"
     },
     {
       "id": "eic-connect-indo-2026",
@@ -68,7 +68,7 @@
         "9th November 2026",
         "2026-11-09"
       ],
-      "source_check": "organizer date confirmed in initial research; automatic monitor will re-check"
+      "source_check": "organizer-page-date-visible"
     },
     {
       "id": "asean-solar-storage-2026",
@@ -89,7 +89,7 @@
         "November 10, 2026",
         "2026-11-10"
       ],
-      "source_check": "organizer date confirmed in initial research; automatic monitor will re-check"
+      "source_check": "organizer-page-reachable-date-recheck"
     },
     {
       "id": "solar-storage-live-2026",
@@ -110,12 +110,33 @@
         "11–12 November 2026",
         "2026-11-11"
       ],
-      "source_check": "organizer date confirmed in initial research; automatic monitor will re-check"
+      "source_check": "organizer-page-date-visible"
     }
   ],
-  "candidate_pool_count": 8,
+  "candidate_pool_count": 13,
   "discovered_from_official_iesr": 0,
-  "source_errors": [],
-  "policy": "Nearest five Indonesia energy industry and policy events, ordered by date with curated priority for concurrent conferences. Past events drop automatically; verified backup events replace them.",
-  "disclaimer": "Scheduled events may change; verify organiser before planning travel. Manual initial publication; automatic checks may be delayed."
+  "source_errors": [
+    {
+      "source": "https://www.fuelsandlubes.com/fl-week/2027-1/",
+      "error": "ValueError: Not on permitted official organiser list"
+    },
+    {
+      "source": "https://solartech-exhibition.net/event-fact-sheet/",
+      "error": "ValueError: Not on permitted official organiser list"
+    },
+    {
+      "source": "https://energycouncil.com/roadshows-and-receptions/jakarta-conference/",
+      "error": "ValueError: Not on permitted official organiser list"
+    },
+    {
+      "source": "https://regridintegrationasia.info/location-venue/",
+      "error": "ValueError: Not on permitted official organiser list"
+    },
+    {
+      "source": "https://www.iee-series.com/surabaya/",
+      "error": "ValueError: Not on permitted official organiser list"
+    }
+  ],
+  "policy": "Five upcoming/ongoing Indonesian energy events sorted by event start date. Past events automatically drop. Replacements come from pre-vetted organiser-dated catalog entries plus newly dated original IESR event pages. Other unverified event discoveries are not automatically promoted.",
+  "disclaimer": "Event plans may change. Opening, registration, programme and venue should be confirmed at organiser links before travel. Failed source checks do not prove cancellations; newly found dates are not guessed."
 }
