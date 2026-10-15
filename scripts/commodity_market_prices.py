@@ -149,8 +149,8 @@ def main():
   "cadence":"Automated every 30 minutes subject to GitHub Action scheduling. Browser checks published raw repository JSON every 3 minutes.",
   "quotes":available,"errors":errors,"fallback_ids":list(last_good),
   "official_indonesia_reference":[
-   {"id":"hba","title":"Indonesia HBA · coal benchmark","period":"ESDM decree, periodically issued","value":None,"url":"https://jdih.esdm.go.id/","note":"Not Australian thermal coal futures; do not substitute IMF Australia price."},
-   {"id":"hma","title":"Indonesia HMA · metal benchmark","period":"ESDM decree, periodically issued","value":None,"url":"https://jdih.esdm.go.id/","note":"Regulatory benchmark. Check relevant commodity/period and decree."},
+   {"id":"hba","title":"Indonesia HBA · coal benchmark","period":"ESDM · 1–15 October 2026 · decree 384.K/MB.01/MEM.B/2026; check for later issues","value":None,"url":"https://jdih.esdm.go.id/dokumen/view?id=2827","note":"Not Australian thermal coal futures; do not substitute IMF Australia price. Follow authoritative newest decree."},
+   {"id":"hma","title":"Indonesia HMA · metal benchmark","period":"ESDM · 1–15 October 2026 · decree 384.K/MB.01/MEM.B/2026; check for later issues","value":None,"url":"https://jdih.esdm.go.id/dokumen/view?id=2827","note":"Metal-specific decree period benchmark; not live LME nickel."},
    {"id":"icp","title":"Indonesia ICP · crude reference","period":"ESDM monthly decree","value":None,"url":"https://www.esdm.go.id/id/media-center/arsip-berita","note":"Not a real-time Brent futures contract."}
   ]
  }
