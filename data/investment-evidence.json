@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-15",
-  "methodology": "Figures are independently scoped. BKPM investment realization differs from announced project capital and from PNBP. Values use original currencies and units. Financial facilities are separately listed from equity investment and project budgets. Booking-origin jurisdictions for FDI are not ultimate owners.",
+  "methodology": "Figures are independently scoped. BKPM investment realization differs from announced project capital and from PNBP. Values use original currencies and units. Financial facilities are separately listed from equity investment and project budgets. Booking-origin jurisdictions for FDI are not ultimate owners. Project table includes explicit null actual capex when an audited entity-level project realization figure is absent. Equinix initial US$74m intent predated subsequent JV formation and operational opening.",
   "national": {
     "period": "2026-H1",
     "unit": "IDR trillion",
@@ -83,7 +83,12 @@
       "amount_basis": "Announced integrated ecosystem project investment; not verified realized capex",
       "status_note": "Groundbreaking of the six-subproject integrated ecosystem confirmed 29 June 2025. This is a consortium-wide figure, not single-factory spending.",
       "next_step": "Track construction, plant commissioning, battery production and offtake",
-      "source_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai"
+      "source_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai",
+      "ownership_ref": "antam",
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "verification_class": "Reported milestone or funding only; verify subsequent steps",
+      "amount_type": "Announced project value / proposed investment — not actual disbursement"
     },
     {
       "name": "Microsoft Indonesia cloud and AI program",
@@ -97,7 +102,12 @@
       "amount_basis": "Public investment commitment, not confirmed expenditure or AI-only data center capex",
       "status_note": "Microsoft announced a four-year program in April 2024; Komdigi reaffirmed commitment September 2026. Value includes cloud/AI infrastructure and skilling, not verified data-center construction spending.",
       "next_step": "Track commercial milestones, infrastructure expenditure and workforce programs",
-      "source_url": "https://news.microsoft.com/source/asia/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions/"
+      "source_url": "https://news.microsoft.com/source/asia/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions/",
+      "ownership_ref": null,
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "verification_class": "Reported milestone or funding only; verify subsequent steps",
+      "amount_type": "Announced project value / proposed investment — not actual disbursement"
     },
     {
       "name": "13 strategic downstream projects — Phase II",
@@ -111,7 +121,12 @@
       "amount_basis": "Combined announced project investment for 13 projects, not realized expenditure",
       "status_note": "BKPM announced collective groundbreaking; individual company allocations not disclosed in this source",
       "next_step": "Track individual SPVs, contractor awards, drawdowns and COD",
-      "source_url": "https://www.bkpm.go.id/index.php/id/info/siaran-pers/kementerian-investasi-dan-hilirisasi-dukung-percepatan-13-proyek-hilirisasi-strategis-tahap-ii"
+      "source_url": "https://www.bkpm.go.id/index.php/id/info/siaran-pers/kementerian-investasi-dan-hilirisasi-dukung-percepatan-13-proyek-hilirisasi-strategis-tahap-ii",
+      "ownership_ref": null,
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "verification_class": "Reported milestone or funding only; verify subsequent steps",
+      "amount_type": "Announced project value / proposed investment — not actual disbursement"
     },
     {
       "name": "IGP Pomalaa — mine and HPAL",
@@ -125,7 +140,12 @@
       "amount_basis": "Company-described full project investment (mine and HPAL); not verified realized cash outlay, not limited to KNI equity",
       "status_note": "PT Vale disclosed 62% overall project progress in February 2026; ore-sales milestone in March 2026 should not be conflated with HPAL operation.",
       "next_step": "Track HPAL mechanical completion, actual commissioning and current cap table of KNI.",
-      "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion"
+      "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion",
+      "ownership_ref": "vale",
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "verification_class": "Reported milestone or funding only; verify subsequent steps",
+      "amount_type": "Announced project value / proposed investment — not actual disbursement"
     },
     {
       "name": "IGP Morowali — mine and HPAL / BNSI",
@@ -139,7 +159,12 @@
       "amount_basis": "Integrated IGP Morowali project investment estimate (mine and HPAL), not disbursed capital",
       "status_note": "Vale reported July 2026 arrival of HPAL autoclave; mining ore first sales occurred 2025, but HPAL facility construction continued.",
       "next_step": "Track equipment installation, 2027 expected HPAL project completion and venture ownership.",
-      "source_url": "https://vale.com/in/w/sambalagi-hpal-project-reaches-major-milestone-with-autoclave-arrival-strengthening-the-future-of-sustainable-downstreaming/-/categories"
+      "source_url": "https://vale.com/in/w/sambalagi-hpal-project-reaches-major-milestone-with-autoclave-arrival-strengthening-the-future-of-sustainable-downstreaming/-/categories",
+      "ownership_ref": "vale",
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "verification_class": "Reported milestone or funding only; verify subsequent steps",
+      "amount_type": "Announced project value / proposed investment — not actual disbursement"
     },
     {
       "name": "PTFI Manyar copper smelter",
@@ -153,7 +178,12 @@
       "amount_basis": "Not included: no single current realized-capex figure verified in this source",
       "status_note": "FCX reports May 2025 startup and July 2025 first cathode; 2025 production and post-September 2025 concentrate constraints mean operational status does not equal full utilization.",
       "next_step": "Monitor Q4 2026 feed availability, concentrate shipments and actual utilization rather than design capacity.",
-      "source_url": "https://www.fcx.com/operations/indonesia"
+      "source_url": "https://www.fcx.com/operations/indonesia",
+      "ownership_ref": "ptfi",
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "verification_class": "Facility operation supported by cited corporate release; capital spending unverified",
+      "amount_type": "No verified amount in source"
     },
     {
       "name": "Abadi LNG Masela — onshore/offshore LNG and CCS",
@@ -167,7 +197,12 @@
       "amount_basis": "Estimated integrated project budget / national project value announced by ESDM; not proven actual disbursement",
       "status_note": "ESDM reported formal project groundbreaking 16 July 2026. PSC interests are not direct company equity; FID and execution financing require separate documentation.",
       "next_step": "Monitor EPC mobilization, LNG plant and CCS construction, project financing and production schedule.",
-      "source_url": "https://esdm.go.id/id/media-center/arsip-berita/pembangunan-lng-abadi-masela-mulai-jalan-pemerintah-dorong-pertumbuhan-ekonomi-lokal-"
+      "source_url": "https://esdm.go.id/id/media-center/arsip-berita/pembangunan-lng-abadi-masela-mulai-jalan-pemerintah-dorong-pertumbuhan-ekonomi-lokal-",
+      "ownership_ref": "masela",
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "verification_class": "Reported milestone or funding only; verify subsequent steps",
+      "amount_type": "Announced project value / proposed investment — not actual disbursement"
     },
     {
       "name": "Tangguh Ubadari CCUS Compression (UCC)",
@@ -181,7 +216,12 @@
       "amount_basis": "2024 approved final investment decision for UCC development; not investment realization",
       "status_note": "JOGMEC and bp confirmed FID in November 2024; S&P Global reported approximately 40% construction progress in June 2026.",
       "next_step": "Track EPCI packages, actual gas flow and planned staged production from 2028.",
-      "source_url": "https://www.spglobal.com/energy/en/news-research/latest-news/lng/060326-bp-expects-tangguh-lng-domestic-deliveries-to-rise-to-89-cargoes-in-2026"
+      "source_url": "https://www.spglobal.com/energy/en/news-research/latest-news/lng/060326-bp-expects-tangguh-lng-domestic-deliveries-to-rise-to-89-cargoes-in-2026",
+      "ownership_ref": "tangguh",
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "verification_class": "Reported milestone or funding only; verify subsequent steps",
+      "amount_type": "Announced project value / proposed investment — not actual disbursement"
     },
     {
       "name": "PLTP Lumut Balai Unit 2",
@@ -195,7 +235,12 @@
       "amount_basis": "No distinct project capex amount verified in cited COD release",
       "status_note": "55 MW geothermal unit achieved operational eligibility 29 June 2025; energy delivered to PLN system. This is delivered generation capacity, not a new 2026 investment commitment.",
       "next_step": "Monitor actual electricity generation, tariff/offtake and the company's new 2026 investment program.",
-      "source_url": "https://www.pge.pertamina.com/id/siaran-pers/pltp-lumut-balai-unit-2-beroperasi-penuh-pge-tambah-kapasitas-terpasang-55-mw-menuju-target-1-gw"
+      "source_url": "https://www.pge.pertamina.com/id/siaran-pers/pltp-lumut-balai-unit-2-beroperasi-penuh-pge-tambah-kapasitas-terpasang-55-mw-menuju-target-1-gw",
+      "ownership_ref": null,
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "verification_class": "Facility operation supported by cited corporate release; capital spending unverified",
+      "amount_type": "No verified amount in source"
     },
     {
       "name": "PLTP Gunung Tiga (Ulubelu Extension I)",
@@ -209,7 +254,34 @@
       "amount_basis": "Company's planned total investment, not committed or drawn investment",
       "status_note": "2 × 27.5 MW; investor presentation indicates development-stage well drilling, with planned COD 2029 and 2030.",
       "next_step": "Track development drilling, FID, financing, EPC execution and actual commissioning dates.",
-      "source_url": "https://www.pge.pertamina.com/Media/Uploads/investor/Earnings_Call_Maret_2026%20%28FY25%20Results%29.pdf"
+      "source_url": "https://www.pge.pertamina.com/Media/Uploads/investor/Earnings_Call_Maret_2026%20%28FY25%20Results%29.pdf",
+      "ownership_ref": null,
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "verification_class": "Preparation / early works; not commercial operations",
+      "amount_type": "Announced project value / proposed investment — not actual disbursement"
+    },
+    {
+      "name": "Equinix JK1 — Jakarta IBX data center",
+      "investor": "Equinix–Astra joint venture (announced 75% / 25% equity at formation)",
+      "sector": "AI infrastructure",
+      "region": "Jakarta CBD, DKI Jakarta",
+      "stage": "Operational",
+      "evidence_date": "2025-05-15",
+      "reported_amount": 74,
+      "currency": "USD million",
+      "amount_basis": "Initial Equinix 2022 planned data-center investment; not the independently verified final JV project cost or realized capex.",
+      "status_note": "Equinix inaugurated JK1 on 15 May 2025. Its first stage offers 550 cabinets, with 1,600 cabinets and 5,300 m² envisaged at full build-out. Operational launch is verified; final capex and occupancy are not.",
+      "next_step": "Confirm final project disbursement, current JV direct share register, energy utilization, occupancy and additional build phases.",
+      "source_url": "https://newsroom.equinix.com/2025-05-15-Equinix-Unveils-Its-First-AI-Ready-Data-Center-with-Dense-Ecosystem-in-Jakarta",
+      "initial_commitment_source": "https://investor.equinix.com/news-events/press-releases/detail/978/equinix-expands-to-indonesia-with-74m-data-center",
+      "ownership_ref": "equinix_astra",
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "measurement": "2022 project budget; 2025 operating facility",
+      "capacity": "550 cabinets first phase; 1,600 cabinets at full build-out",
+      "verification_class": "Facility operation supported by cited corporate release; capital spending unverified",
+      "amount_type": "Announced project value / proposed investment — not actual disbursement"
     }
   ],
   "policy": [
