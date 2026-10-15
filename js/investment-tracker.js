@@ -5,6 +5,7 @@ const $=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=
 const source=(url,label)=>{const a=$("a",null,label+" ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";return a};
 const heading=(root,title,sub)=>{const x=$("div","section");x.append($("h2",null,title),$("span",null,sub));root.append(x)};
 const box=(root,title)=>{const p=$("div","panel");if(title)p.append($("h3",null,title));root.append(p);return p};
+const initSafe=(label,fn)=>{try{const result=fn();if(result&&typeof result.catch==="function")result.catch(err=>console.error("[SLI Investment] "+label+" failed",err));return true}catch(err){console.error("[SLI Investment] "+label+" failed",err);return false}};
 const links=[
  ["Ministry of Investment / BKPM — official releases","https://www.bkpm.go.id/"],
  ["BPS — investment and national accounts","https://www.bps.go.id/"],
@@ -36,7 +37,7 @@ window.initSLIInvestment=async function(){
  const sectors=box(root,"Energy subsector execution, licence types and capital classification");
  sectors.id="inv-sector-history";
  const sectorRoot=$("div");sectorRoot.id="investmentSectorRoot";sectors.append(sectorRoot);
- if(typeof window.initSLIInvestmentSectorEvidence==="function")window.initSLIInvestmentSectorEvidence();
+ if(typeof window.initSLIInvestmentSectorEvidence==="function")initSafe("Sector evidence",()=>window.initSLIInvestmentSectorEvidence());
  heading(root,"Where Investment Is Realized","BKPM Q2 2026 · provincial investment, not project capex");
  const geography=box(root,"Top provinces and foreign-investor origin");geography.id="inv-geography";
  const geographyContent=$("div");geography.append(geographyContent);
@@ -48,7 +49,7 @@ window.initSLIInvestment=async function(){
  const own=box(root,"Investor / control intelligence");own.id="inv-ownership";
  own.append($("p",null,"Each verified project record can distinguish Indonesian operating partner, direct shareholder, financing provider, ultimate parent (if independently documented) and public-sector role. Danantara, BP BUMN, line ministries and private investors must not be conflated."));
  const ownershipRoot=$("div");ownershipRoot.id="investmentOwnershipRoot";own.append(ownershipRoot);
- if(typeof window.initSLIInvestmentOwnership==="function")window.initSLIInvestmentOwnership();
+ if(typeof window.initSLIInvestmentOwnership==="function")initSafe("Ownership",()=>window.initSLIInvestmentOwnership());
  const axis=$("div","grid tr-grid");
  [["Who finances?","Equity · debt · syndicated loans · incentives"],["Who operates?","Project SPV · offtaker · engineering contractor"],["What is delivered?","Permits · construction · energization · production"],["What remains exposed?","Land · grid · environmental clearance · FX"]].forEach(([a,b])=>{const c=$("div","card tr-kpi");c.style.cursor="default";c.append($("h3",null,a),$("p",null,b));axis.append(c)});root.append(axis);
  heading(root,"Investment Risk & Source Watch","Dated editorial and regulatory intelligence");
@@ -56,7 +57,7 @@ window.initSLIInvestment=async function(){
  const ul=$("ul");links.forEach(([label,url])=>{const li=$("li");li.append(source(url,label));ul.append(li)});watch.append(ul);
  watch.append($("p",null,"Operational risks: disbursement timing, land acquisition, grid or gas availability, environmental permits, foreign-exchange exposure, offtake contracts and local content requirements. A published approval is not equivalent to completed construction."));
  heading(root,"Investment Media Monitoring","Domestic, FDI, project implementation and investment policy headlines");
- const media=box(root,"Investment-focused source discovery");media.id="inv-media";const feed=$("div");feed.id="investmentMediaRoot";media.append(feed);if(typeof window.initSLIInvestmentMedia==="function")window.initSLIInvestmentMedia();
+ const media=box(root,"Investment-focused source discovery");media.id="inv-media";const feed=$("div");feed.id="investmentMediaRoot";media.append(feed);if(typeof window.initSLIInvestmentMedia==="function")initSafe("Media",()=>window.initSLIInvestmentMedia());
  heading(root,"State Revenue & Sector Receipts","ESDM PNBP · annual vs partial-year comparisons");
  const rev=box(root,"Indonesia sectoral non-tax revenue");rev.id="inv-revenue";
  rev.append($("p",null,"Reported PNBP only. Mineral and coal receipts are combined in this source; figures are not export value, GDP, tax take or investment flows."));
@@ -78,7 +79,7 @@ window.initSLIInvestment=async function(){
   const response=await fetch("data/investment-evidence.json",{cache:"no-store"});
   if(!response.ok)throw Error("Official investment dataset not available");
   const evidence=await response.json();snapshot=evidence;
-  if(typeof window.renderSLIInvestmentQuality==="function")window.renderSLIInvestmentQuality(qualityRoot,evidence);
+  if(typeof window.renderSLIInvestmentQuality==="function")initSafe("Evidence quality",()=>window.renderSLIInvestmentQuality(qualityRoot,evidence));
   const national=evidence.national;
   if(national){
    values[0].textContent="Rp"+national.total.toLocaleString("id-ID")+" T";
@@ -158,8 +159,8 @@ window.initSLIInvestment=async function(){
   const projectRows=Array.isArray(evidence.projects)?evidence.projects:[];
   values[3].textContent=projectRows.length+" sourced";
   if(typeof window.initSLIInvestmentExplorer==="function"){
-   window.initSLIInvestmentExplorer(explorerRoot,projectRows,evidence.as_of);
-   stat.textContent="Project explorer loaded · announced values, realization and corporate ownership remain distinct.";
+   const loaded=initSafe("Project explorer",()=>window.initSLIInvestmentExplorer(explorerRoot,projectRows,evidence.as_of));
+   stat.textContent=loaded?"Project explorer loaded · announced values, realization and corporate ownership remain distinct.":"Project explorer failed to initialize; underlying source JSON remains available.";
   }else stat.textContent="Project viewer is unavailable; the source registry is retained in the data file.";
   const issue=$("div","tr-note");issue.append($("strong",null,"Reconciliation rule: "),document.createTextNode("Multi-year programs, subprojects, corporate debt facilities, FIDs, and BKPM realization cannot be summed as independent capital investment."));
   section.append(issue);
