@@ -21,7 +21,7 @@ window.initSLIInvestment=async function(){
  const intro=$("p",null,"Track policy-relevant investment through verifiable milestones. Announcements, financial commitments, realized investment statistics and operational assets are different measurements and must never be added together.");
  root.append(strap,title,intro);
  const nav=$("div","tr-jumpnav");
- [["inv-kpis","Investment evidence"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
+ [["inv-kpis","Investment evidence"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
  heading(root,"National Investment Evidence","BKPM · BPS · BI / distinguish statistical definitions");
  const kpis=$("div","grid tr-grid");kpis.id="inv-kpis";
  const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Verified projects","0 published","Only source-dated project records appear in the registry"]];
@@ -46,6 +46,8 @@ window.initSLIInvestment=async function(){
  heading(root,"Ownership & Capital Structure","Investor nationality is not ultimate beneficial ownership");
  const own=box(root,"Investor / control intelligence");own.id="inv-ownership";
  own.append($("p",null,"Each verified project record can distinguish Indonesian operating partner, direct shareholder, financing provider, ultimate parent (if independently documented) and public-sector role. Danantara, BP BUMN, line ministries and private investors must not be conflated."));
+ const ownershipRoot=$("div");ownershipRoot.id="investmentOwnershipRoot";own.append(ownershipRoot);
+ if(typeof window.initSLIInvestmentOwnership==="function")window.initSLIInvestmentOwnership();
  const axis=$("div","grid tr-grid");
  [["Who finances?","Equity · debt · syndicated loans · incentives"],["Who operates?","Project SPV · offtaker · engineering contractor"],["What is delivered?","Permits · construction · energization · production"],["What remains exposed?","Land · grid · environmental clearance · FX"]].forEach(([a,b])=>{const c=$("div","card tr-kpi");c.style.cursor="default";c.append($("h3",null,a),$("p",null,b));axis.append(c)});root.append(axis);
  heading(root,"Investment Risk & Source Watch","Dated editorial and regulatory intelligence");
@@ -75,11 +77,11 @@ window.initSLIInvestment=async function(){
   const projectRows=Array.isArray(evidence.projects)?evidence.projects:[];
   const existing=new Set(records.map(x=>x.name));
   for(const record of projectRows){if(!existing.has(record.name))records.push(record);}
-  values[3].textContent=records.length+" records";
+  values[3].textContent=records.length+" sourced";
   const detail=$("div","pf-table-wrap");
   const t=$("table");t.innerHTML="<thead><tr><th>Company / project</th><th>Reported amount</th><th>Amount classification</th><th>Implementation & next milestone</th><th>Source</th></tr></thead>";
   const body=$("tbody");
-  projectRows.forEach(x=>{const tr=$("tr");[x.name+" · "+x.investor,x.currency+" "+x.reported_amount,x.amount_basis,x.status_note+" · Next: "+x.next_step].forEach(v=>tr.append($("td",null,v)));const td=$("td");td.append(source(x.source_url,"Official release"));tr.append(td);body.append(tr)});
+  projectRows.forEach(x=>{const tr=$("tr");[x.name+" · "+x.investor,x.reported_amount===null?"Not disclosed in cited source":x.currency+" "+x.reported_amount,x.amount_basis,x.status_note+" · Next: "+x.next_step].forEach(v=>tr.append($("td",null,v)));const td=$("td");td.append(source(x.source_url,"Official release"));tr.append(td);body.append(tr)});
   t.append(body);detail.append(t);section.append($("h3",null,"Company investment amounts & verification caveats"),detail);
   const rt=$("table");rt.innerHTML="<thead><tr><th>Sector / scope</th><th>PNBP (Rp trillion)</th><th>Period</th><th>Source</th></tr></thead>";
   const rb=$("tbody");
