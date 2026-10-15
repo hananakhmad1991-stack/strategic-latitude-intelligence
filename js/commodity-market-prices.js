@@ -63,7 +63,11 @@ function chart(root,q){
   const d=data[i],a=document.createElementNS(svg.namespaceURI,"text");a.setAttribute("x",pt(d,i)[0]);a.setAttribute("y",H-8);a.setAttribute("font-size","11");a.setAttribute("fill","#a6c1d4");a.setAttribute("text-anchor",i?"end":"start");a.textContent=d.observed_at_utc.slice(0,10);svg.append(a);
  }
  const tip=el("p","cp-muted",lang("Historical dates and units retained. Prices from separate markets are not interchangeable.","Tanggal dan satuan historis dipertahankan. Harga berbagai pasar tidak setara."));
- root.append(svg,tip);
+ const provenance=el("p","cp-source");provenance.append(el("span",null,(q.market||"")+" · "));
+ if(/^https:\/\//.test(q.source_url||""))provenance.append(link(q.source_url,lang("Original price source ↗","Sumber harga asli ↗")));
+ if(q.tier==="monthly_reference")provenance.append(el("span",null,lang(" · Period average, not live"," · Rata-rata periode, bukan live")));
+ if(q.availability==="last_good_source_unavailable")provenance.append(el("span",null,lang(" · Last available quote, upstream unavailable"," · Harga terakhir, sumber gagal")));
+ root.append(svg,tip,provenance);
 }
 function card(q,onSelect){
  const node=el("button","cp-quote-card");node.type="button";
@@ -123,6 +127,10 @@ async function update(root,sector){
   }
   if(selection.length)chart(graphs,selection[0]);
   else graphs.append(el("p","cp-muted",lang("No verified dated prices were downloaded. See source links for market data.","Harga bertanggal belum berhasil diambil. Periksa tautan sumber.")));
+  if(sector==="minerals"){
+   const lm=el("p","cp-source",lang("Latest real-time LME nickel, copper and tin prices require a market-data license: ","Harga live LME nikel, tembaga dan timah memerlukan lisensi data pasar: "));
+   lm.append(link("https://www.lme.com/Market-data",lang("Official LME market-data access ↗","Akses data resmi LME ↗")));official.append(lm);
+  }
   if(sector==="energy"){
    const ref=el("div","cp-reference");ref.append(el("h4",null,lang("INDONESIAN OFFICIAL REFERENCE PRICES","HARGA ACUAN RESMI INDONESIA")));
    for(const x of d.official_indonesia_reference||[]){
