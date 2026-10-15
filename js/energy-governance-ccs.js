@@ -44,34 +44,76 @@ function showCCSWatch(root){
 }
 
 function governance(root,data){
- section(root,"01 · Institutional Structure & Actor Analysis","Strategic authority → regulation / oversight → investment / execution");
+ section(root,"01 · Indonesia Energy Governance & Actor Analysis","Six influence layers · executive / advisory / industry / DPR / DPD / regional");
  note(root,data.warning);
+ const summary=E("div","gov-kpis");
+ [
+   ["Mapped institutions & actors",data.layers.reduce((sum,g)=>sum+g.actors.length,0),"Distinct authorities, not simply a ministry org chart"],
+   ["Functional layers",data.layers.length,"Executive, directorates, operators, legislature, region"],
+   ["Parliamentary oversight",data.layers.filter(x=>/DPR|DPD/.test(x.title)).reduce((s,x)=>s+x.actors.length,0),"DPR & DPD have separate constitutional mandates"]
+ ].forEach(([name,value,desc])=>{const card=E("div","card gov-kpi");card.style.cursor="default";card.append(E("div","eyebrow",name),E("h2","gov-big",value),E("p",null,desc));summary.append(card)});root.append(summary);
+ const pathway=E("div","gov-vintage");pathway.append(E("h3",null,"Decision-rights & accountability pathways"));
+ const chain=E("div","gov-chain");
+ [
+  "President / DEN & special energy adviser · strategic direction",
+  "Kemenko / ESDM / Ministries · coordination & regulation",
+  "SKK / BPH / BPMA / PLN / Pertamina · supervision & delivery",
+  "DPR / DPD · INDEPENDENT oversight & regional voice"
+ ].forEach((x,i)=>{if(i)chain.append(E("span","gov-arrow",i===3?"↳":"→"));chain.append(E("div","gov-node",x))});
+ pathway.append(chain);
+ const foot=E("p","gov-meta","The arrows describe analytical policy influence, NOT a legal reporting chain. Parliament does not sit under an energy minister; the adviser advises rather than issuing permits. Include these distinctions when assessing an energy decision.");
+ pathway.append(foot);root.append(pathway);
  showActorWatch(root);
- const headline=E("div","gov-chain");["President & DEN | national priorities","New Kemenko Hilirisasi & Transisi Energi | coordination","ESDM / Finance / Bappenas | regulation, fiscal & planning","Regulators / SKK Migas / BPMA | technical oversight","PLN / Pertamina / private operators | actual execution"].forEach((x,i)=>{if(i)headline.append(E("span","gov-arrow","→"));headline.append(E("div","gov-node",x))});root.append(headline);
- const controls=E("div","gov-controls"),search=E("input","gov-input"),kind=elSelect([["all","All actor types"],...["Strategy","Regulator","Fiscal","Planning","Implementer","Operator","Financier","Research"].map(x=>[x,x])]);
- search.placeholder="Find agency, official, responsibility…";search.setAttribute("aria-label","Search actors");
- controls.append(search,kind);root.append(controls);
+ const controls=E("div","gov-controls");
+ const search=E("input","gov-input");
+ search.placeholder="Find Pertamina, Purnomo, Komisi XII, DPD, regulator…";
+ search.setAttribute("aria-label","Search all Indonesian energy actors and mandates");
+ const kind=elSelect([["all","All actor roles"],...Array.from(new Set(data.layers.flatMap(x=>x.actors.map(a=>a.kind)))).sort().map(x=>[x,x])]);
+ const group=elSelect([["all","All governance branches"],...data.layers.map((g,i)=>[String(i),g.title.replace(/^\d+\s*·\s*/,"")])]);
+ controls.append(search,kind,group);root.append(controls);
+ const result=E("p","gov-meta");root.append(result);
  const mount=E("div");root.append(mount);
  const draw=()=>{
   mount.replaceChildren();
-  const query=search.value.toLocaleLowerCase();
+  const query=search.value.trim().toLocaleLowerCase();
   let count=0;
-  data.layers.forEach(layer=>{
-   const items=layer.actors.filter(x=>(kind.value==="all"||kind.value===x.kind)&&[x.name,x.lead,x.role,x.scope].join(" ").toLowerCase().includes(query));
+  data.layers.forEach((layer,layerIndex)=>{
+   if(group.value!=="all"&&group.value!==String(layerIndex))return;
+   const items=layer.actors.filter(x=>(kind.value==="all"||kind.value===x.kind)&&[
+    x.name,x.lead,x.role,x.scope,x.authority,x.person_name,
+    ...(Array.isArray(x.connections)?x.connections:[])
+   ].join(" ").toLowerCase().includes(query));
    if(!items.length)return;
    count+=items.length;
-   const box=E("div","gov-layer"),title=E("div","gov-layer-title");title.append(E("strong",null,layer.title),E("span",null,items.length+" actors"));box.append(title);
+   const details=E("details","gov-layer gov-details");
+   if(query||group.value!=="all"||kind.value!=="all"||layerIndex===0||layerIndex===2)details.open=true;
+   const summary=E("summary","gov-layer-title");
+   const left=E("span","gov-layer-summary"),right=E("span","gov-layer-count",items.length+" of "+layer.actors.length+" actors · expand/collapse");
+   left.append(E("strong",null,layer.title));summary.append(left,right);
+   details.append(summary);
+   if(layer.summary)details.append(E("p","gov-meta",layer.summary));
    const cards=E("div","gov-grid");
    items.forEach(x=>{
-    const card=E("article","gov-actor"),header=E("div","gov-actor-head");header.append(tag(x.kind),tag(x.scope,"gov-tag gov-tag-secondary"));card.append(header,E("h3",null,x.name),E("p","gov-leader",x.lead),E("p",null,x.role));
-    const foot=E("div","gov-foot");foot.append(E("span",null,"Source checked: "+x.verified),LINK(x.source,"Role source ↗"));card.append(foot);cards.append(card);
-   });box.append(cards);mount.append(box);
+    const card=E("article","gov-actor"),head=E("div","gov-actor-head");
+    head.append(tag(x.kind),tag(x.scope,"gov-tag gov-tag-secondary"));
+    card.append(head,E("h3",null,x.name),E("p","gov-leader",x.lead),E("p",null,x.role));
+    if(x.authority)card.append(E("p","gov-meta","Decision right / mandate: "+x.authority));
+    if(x.connections&&x.connections.length){
+     const adjacent=E("p","gov-meta","Linked with: "+x.connections.slice(0,4).join(" · "));card.append(adjacent);
+    }
+    const verification=E("p","gov-meta",x.evidence_status||x.verification_status||"Dated source; appointment subject to later checks");
+    card.append(verification);
+    const date=E("div","gov-foot");date.append(E("span",null,"Last source: "+(x.verified||"undated")),LINK(x.source,"Evidence ↗"));card.append(date);
+    cards.append(card);
+   });
+   details.append(cards);mount.append(details);
   });
-  if(!count)note(mount,"No institutional records match this filter.");
+  result.textContent=count+" actors shown. Officeholders without recent primary confirmation are explicitly labeled for review.";
+  if(!count)note(mount,"No institutional records match these filters.");
  };
- search.addEventListener("input",draw);kind.addEventListener("change",draw);draw();
- const analysis=E("div","gov-takeaways");analysis.append(E("h3",null,"Governance assessment · Where authority meets implementation"));
- const ul=E("ul");data.strategic_readout.forEach(x=>ul.append(E("li",null,x)));analysis.append(ul);root.append(analysis);
+ search.addEventListener("input",draw);kind.addEventListener("change",draw);group.addEventListener("change",draw);draw();
+ const assessment=E("div","gov-takeaways");assessment.append(E("h3",null,"SLI institutional assessment · Decision-maker, regulator, operator, accountability"));
+ const ul=E("ol");data.strategic_readout.forEach(x=>ul.append(E("li",null,x)));assessment.append(ul);root.append(assessment);
 }
 function policies(root,data){
  section(root,"02 · Energy Policy & Regulatory Update","Enacted instruments vs corporate decisions vs proposals");
