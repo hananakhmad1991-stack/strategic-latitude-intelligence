@@ -22,6 +22,9 @@ Once GitHub Pages is enabled: https://hananakhmad1991-stack.github.io/strategic-
 - Do not publish confidential client material or personal information without proper authorization.
 - Do not give individualized investment or securities trading recommendations.
 
+## Interactive Stakeholder Explorer
+Six clickable institutional hubs replace the initial full-page actor cards. Select a hub to view actors, choose an actor to inspect leadership, role, evidence and connected stakeholders, or select an energy issue to trace policy, regulator, operator, legislative oversight and region. A text search and mobile buttons provide alternate navigation. The explorer uses native SVG and reads the same date-stamped JSON as the institutional monitoring workflow; no Power BI subscription or external JavaScript library is required. Its lines express analytical association, not legal reporting hierarchy.
+
 ## Indonesia Energy Institutional Power Map — October 2026
 - The top of Energy Security now includes a **six-layer institutional and actor map** with **54 distinct actors and roles**, covering:
   1. Presidency, DEN, Purnomo Yusgiantoro as presidential energy adviser, coordinating ministries and fiscal/planning agencies.
