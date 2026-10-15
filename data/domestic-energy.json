@@ -1,20 +1,7 @@
 {
-  "checked_at_utc": "2026-10-15T00:54:30.361747+00:00",
+  "checked_at_utc": "2026-10-15T00:56:23.484987+00:00",
   "scope": "Indonesia domestic energy/environment public-source RSS headline discovery",
   "reports": [
-    {
-      "category": "Forest fires and haze",
-      "topic_id": "forest_fire",
-      "channel": "Wildfire / peat / haze",
-      "title": "Pemerintah Optimalkan Penanganan Karhutla di Kalteng dan Sumsel - BNPB",
-      "publisher": "BNPB",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOWjA5TENKcC1SOHB4UmF2dzF1OUYzOThMNTRqRlZQdVphTmptWTFFVVNuZ3BsQ0I5ZVlHM09PS1dvYnlTcHRfbzN4NkxVV1JtUXBBaGtmTkhDdUE3V05CckoyT1RBemJSdTB2cG15VWRNaXpYbV82UjdUUWNNUHRHcmFHdC1nRWVKOENmaWtncFJwSkVmWlRCUQ?oc=5",
-      "published_at_utc": "2026-10-14T06:46:00+00:00",
-      "claim_status": "Official-source headline — check original release",
-      "analysis": "Possible pathway: Potential disruption to energy transport and project sites; verify fire location, burned area, smoke, asset proximity, and BNPB/BPBD status.",
-      "evidence_to_check": "BNPB/BPBD incident status; KLHK hotspots; BMKG wind/rain",
-      "impact_status": "Conditional scenario, not observed loss"
-    },
     {
       "category": "Forest fires and haze",
       "topic_id": "forest_fire",
@@ -39,6 +26,58 @@
       "claim_status": "Official-source headline — check original release",
       "analysis": "Possible pathway: Potential disruption to energy transport and project sites; verify fire location, burned area, smoke, asset proximity, and BNPB/BPBD status.",
       "evidence_to_check": "BNPB/BPBD incident status; KLHK hotspots; BMKG wind/rain",
+      "impact_status": "Conditional scenario, not observed loss"
+    },
+    {
+      "category": "Forest fires and haze",
+      "topic_id": "forest_fire",
+      "channel": "Wildfire / peat / haze",
+      "title": "Pemerintah Optimalkan Penanganan Karhutla di Kalteng dan Sumsel - BNPB",
+      "publisher": "BNPB",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNMWxGcHM2Yk5jczhESURyaUtSY1luZW9sWWZ2NU9GX0E5bmstRFNVNTNVWEpVYjg4STA4NjNTZjRNWGlyTXd2aHN4a1oyZVhZMVVENnVYMURpVUI1d3RqSnUtMllzUHVDMmo4YTBNTzJZTTBuQ2ZYNjFLejRycEw0U1hjeXdKal9EUlpmbFRySFFjVUU?oc=5",
+      "published_at_utc": "2026-10-14T06:46:00+00:00",
+      "claim_status": "Official-source headline — check original release",
+      "analysis": "Possible pathway: Potential disruption to energy transport and project sites; verify fire location, burned area, smoke, asset proximity, and BNPB/BPBD status.",
+      "evidence_to_check": "BNPB/BPBD incident status; KLHK hotspots; BMKG wind/rain",
+      "impact_status": "Conditional scenario, not observed loss"
+    },
+    {
+      "category": "Refinery operations & capacity",
+      "topic_id": "refinery",
+      "channel": "Refining / fuel resilience",
+      "title": "Muncul Kobaran Api Besar di Area Kilang Balongan Indramayu hingga Gegerkan Warga, Pertamina Beri Penjelasan - Kompas.com",
+      "publisher": "Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOdzJXeDhrV0IwaTRFLVl2S3ZLMzB1LWk4T1g3eGRmRmVaQl96aFpSUjVMZWJmakJZeGNFQVBBeWdPV195WHlXakVqWml0TlhIN1lYQlZVOTd4aFVlWmhsTndUZ0wzRzNpbEdIenROcUtNYW1TWXhRbHpEWG81clVpeEJ4NXNHODlJVEpER3VvYVRab0NfZDhfdV9EWnhFVVQ2TkJrTVdDTTltTUQwdFM4cXdPcURHdGt1OHNYZkVMd0RLcHd0YlE4ckE1VkczdF96dFE?oc=5",
+      "published_at_utc": "2026-10-14T06:45:00+00:00",
+      "claim_status": "Media headline — independently verify event",
+      "analysis": "Possible pathway: Possible refinery feedstock, throughput, commissioning or fuel-quality effects. A nameplate design change or headline does not confirm actual production loss or a nationwide BBM supply shortage.",
+      "evidence_to_check": "Primary KPI/KPB/ESDM statement; exact refinery & process train; bpd throughput vs design capacity; outage dates; product volumes and restoration",
+      "impact_status": "Conditional scenario, not observed loss"
+    },
+    {
+      "category": "Refinery operations & capacity",
+      "topic_id": "refinery",
+      "channel": "Refining / fuel resilience",
+      "title": "Pertamina nilai RDMP Balikpapan dan B50 jadi capaian bersejarah - ANTARA News",
+      "publisher": "ANTARA News",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPVnNybVdXOHFoRGYyNVkxU2F0OFR1dWx0ZTJ5ZVZxNFJYd3I2MjIxMklCdndzbU5vbFhqeGhvNlk4ZmgzS3ZPQmtnUnc3YjBMdC1ZaENnMGxzbVJ6NzBqWVdDcEhnMUIxUzlmbFBxRUFvM3JhQnlfbTZKc3BfQmxjN3ZnaG0ydzg2czVVR3p3eE1CMl9GdlgzcVdmTElkMUdScF9wRkFOWGzSAasBQVVfeXFMUGVQYjNDWm9lUG94aE1MekRVTXJUd0JOZDdCT1MtRUhhTnNOVG1ZX0FhZHIyWkpzZ0xZZlZDaE41OWdOQnptUHI5bVNDRVJpUjFjSUFqbVB1YVlSZjkyRV9yV3FLT21LaUJDMThFd29COXVrbW9lOUxyaTM2Tm5TT1Q1a1JTQ2I3eExkLXZDVTBmd3QzVDRWbnFpNHVyTXZRZ0Q0M2pwM0R1WnY0?oc=5",
+      "published_at_utc": "2026-10-06T12:00:35+00:00",
+      "claim_status": "Media headline — independently verify event",
+      "analysis": "Possible pathway: Possible refinery feedstock, throughput, commissioning or fuel-quality effects. A nameplate design change or headline does not confirm actual production loss or a nationwide BBM supply shortage.",
+      "evidence_to_check": "Primary KPI/KPB/ESDM statement; exact refinery & process train; bpd throughput vs design capacity; outage dates; product volumes and restoration",
+      "impact_status": "Conditional scenario, not observed loss"
+    },
+    {
+      "category": "Refinery operations & capacity",
+      "topic_id": "refinery",
+      "channel": "Refining / fuel resilience",
+      "title": "Kilang Cilacap Perkuat Komitmen P4GN, Dukung Target Jawa Tengah Zero Prevalensi 2045 - Pemerintah Daerah Kabupaten Cilacap",
+      "publisher": "Pemerintah Daerah Kabupaten Cilacap",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNaFY5RlBXWmlJRkxLRUNCOHV5Mmhoc0JSQ3VmV2oxX3o5bHBlTmJxQ0dZby1YX2tyLWJjTWVFWnZPYzRkNGxUdFExZHkzT3NKNE1RZ2JOSGZDX1o0QmZabGczSmFON3JqNFExOTNWemxQV2pHZExTV2w1dHV6NFhuVHlzTk15MHZTZlNpZ2xWdWs1Mk43a0E3VEhxa3kwNWZoSzgzekJUNmtuZzRWUndWVWhGU19UZzh4VzZyVU5B?oc=5",
+      "published_at_utc": "2026-10-12T03:48:20+00:00",
+      "claim_status": "Official-source headline — check original release",
+      "analysis": "Possible pathway: Possible refinery feedstock, throughput, commissioning or fuel-quality effects. A nameplate design change or headline does not confirm actual production loss or a nationwide BBM supply shortage.",
+      "evidence_to_check": "Primary KPI/KPB/ESDM statement; exact refinery & process train; bpd throughput vs design capacity; outage dates; product volumes and restoration",
       "impact_status": "Conditional scenario, not observed loss"
     },
     {
@@ -244,7 +283,7 @@
     },
     {
       "topic": "Refinery operations & capacity",
-      "found": 0
+      "found": 3
     },
     {
       "topic": "Fuel and LPG availability",
