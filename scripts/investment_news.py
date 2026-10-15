@@ -17,6 +17,7 @@ QUERIES = {
     "Policy & incentives": 'BKPM investasi OR Danantara investasi OR insentif investasi',
     "Risks & disputes": '"kendala investasi" OR "sengketa investasi" Indonesia',
     "Biofuels & bioenergy": 'biodiesel B50 Indonesia OR biofuel SAF Pertamina OR pabrik biodiesel',
+    "Palm oil & downstream": '"investasi sawit" OR "hilirisasi sawit" OR "pungutan ekspor sawit" OR "CPO biodiesel" Indonesia',
     "Renewable energy": 'investasi panas bumi geothermal PLTS PLN PGE Indonesia',
     "Solar & hydro": 'PLTS atap PLTA PLTM hidro surya investasi proyek PLN Indonesia',
     "Wind & storage": 'PLTB Sidrap Tolo angin Upper Cisokan pumped storage investasi Indonesia',
