@@ -80,6 +80,29 @@ def main():
                            or "INPEX" in str(s.get("label", "")) for s in entity.get("sources", [])):
             fail(f"{key}: contract interest requires explicit operator/PSC source")
 
+    sector = read("investment-sector-evidence.json")
+    years = sector.get("sector_history", [])
+    if not years or sorted(r["year"] for r in years) != list(range(2019, 2026)):
+        fail("ESDM series should contain the dated 2019–2025 full years")
+    if years and abs(years[-1].get("total", 0)-31.96) > 0.001:
+        fail("ESDM 2025 headline investment total changed without review")
+    for record in years:
+        for key in ("migas", "minerba", "ebt", "power", "total"):
+            if record.get(key, -1) < 0:
+                fail(f"ESDM {record.get('year')}: invalid {key} amount")
+    if not https(sector.get("sector_source", {}).get("url")):
+        fail("ESDM history is missing official-source URL")
+    mineral = sector.get("minerba_2025", {})
+    if not https(mineral.get("source", {}).get("url")):
+        fail("Minerba 2025 licence table is missing official-source URL")
+    for deal in sector.get("deal_register", []):
+        if not https(deal.get("source")):
+            fail("Deal register lacks official-source evidence")
+        if deal.get("type") == "Managed assets / AUM stock" and deal.get("actual_paid") is not None:
+            fail("AUM stock cannot itself be coded as actual investment cash paid")
+        if deal.get("type", "").startswith("Outbound") and deal.get("country_of_asset") == "Indonesia":
+            fail("Outbound investment misclassified as Indonesian asset investment")
+
     for observation in evidence.get("corporate_capex", []):
         key = observation.get("entity", "?")
         if not https(observation.get("source")) or not observation.get("geographic_scope"):
