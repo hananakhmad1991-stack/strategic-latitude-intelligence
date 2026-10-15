@@ -139,8 +139,8 @@ function renderIntelligence(which,root){const d=intelligence[which];if(!d)return
  const switcher=E("div","sli-sector-explorer-switcher");
  switcher.setAttribute("role","tablist");
  switcher.setAttribute("aria-label","Institutional intelligence views");
- const networkTab=E("button","sli-sector-explorer-tab active","Institution network & issues");
- const hierarchyTab=E("button","sli-sector-explorer-tab","Presidential & corporate hierarchy");
+ const networkTab=E("button","sli-sector-explorer-tab","Institution network & 9 issues");
+ const hierarchyTab=E("button","sli-sector-explorer-tab active","Government / Danantara & BUMN / Private");
  const networkMount=E("div","sli-sector-explorer-pane");
  const hierarchyMount=E("div","sli-sector-explorer-pane sli-sector-hierarchy-pane");
  for(const button of [networkTab,hierarchyTab]){button.type="button";button.setAttribute("role","tab")}
@@ -150,13 +150,13 @@ function renderIntelligence(which,root){const d=intelligence[which];if(!d)return
  hierarchyTab.setAttribute("aria-controls",hierarchyMount.id);
  networkMount.setAttribute("role","tabpanel");
  hierarchyMount.setAttribute("role","tabpanel");
- hierarchyMount.hidden=true;
+ networkMount.hidden=true;
  switcher.append(networkTab,hierarchyTab);
  explorer.append(summary,switcher,networkMount,hierarchyMount);
  mapMount.append(explorer);intro.append(mapMount);root.append(intro);
  let networkLoaded=false;
  let hierarchyLoaded=false;
- let activeView="network";
+ let activeView="hierarchy";
  const loadNetwork=()=>{
   if(networkLoaded)return;networkLoaded=true;
   if(typeof window.renderSLISectorStakeholderMap!=="function"){networkMount.append(E("p","gov-note","Institutional network script unavailable."));return}
@@ -187,7 +187,7 @@ function renderIntelligence(which,root){const d=intelligence[which];if(!d)return
  networkTab.addEventListener("click",()=>showView("network"));
  hierarchyTab.addEventListener("click",()=>showView("hierarchy"));
  explorer.addEventListener("toggle",()=>{if(explorer.open)showView(activeView)});
- showView("network");
+ showView("hierarchy");
  const taxonomy=E("section","sli-research-section");taxonomy.append(E("h3",null,"Measurement Framework · Do not mix units"));const measure=E("div","sli-intel-metrics");for(const [type,title,desc] of d.measures){const c=E("article","sli-intel-metric");c.append(E("small","sli-research-num",type),E("strong",null,title),E("p",null,desc));measure.append(c)}taxonomy.append(measure);root.append(taxonomy);
  const watch=E("section","sli-research-section");watch.append(E("h3",null,"Monitoring Priorities & Verification Triggers"),E("p","sli-research-description","Editorial watchlist only, not a claim that every event occurred."));const ul=E("ul","sli-intel-watch");for(const item of d.watch)ul.append(E("li",null,item));watch.append(ul);root.append(watch);
  const assess=E("section","sli-research-section");assess.append(E("h3",null,"Overall Strategic Assessment"),E("p","sli-research-description","Qualitative, source-informed interpretation. Reassess as primary observations change."));const ol=E("ol","sli-intel-watch");for(const x of d.assessment)ol.append(E("li",null,x));assess.append(ol);root.append(assess);
