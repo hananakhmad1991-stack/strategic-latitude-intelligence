@@ -670,6 +670,59 @@
       },
       "ownership_ref": "kni",
       "notes": "Vale disclosed ~62% integrated project progress Feb 2026; ore sales are not HPAL nickel/cobalt output."
+    },
+    {
+      "id": "bio-anj-aane-pome",
+      "sector": "Biofuels & Bioenergy",
+      "asset": "Jangkang POME-to-biogas power (historical IPP)",
+      "region": "East Belitung, Bangka Belitung",
+      "operator": "PT Austindo Aufwind New Energy (AANE)",
+      "affiliation": "Indonesia · subsidiary of PT Austindo Nusantara Jaya (ANJ) as of 2017 source",
+      "stage": "Historical operating evidence",
+      "source_url": "https://www.esdm.go.id/id/media-center/arsip-berita/tinjau-potensi-interkoneksi-pltbg-dan-plts-ke-jaringan-pln-wamen-esdm-yakini-investasi-energi-terbarukan-menjanjikan",
+      "legal": "PPA with PLN signed 2013 according to ESDM. Contract expiry and updated 2026 commercial arrangement not independently verified.",
+      "contract_end": null,
+      "contract_end_status": "2013 PPA signed, end date not documented in selected source",
+      "production": null,
+      "notes": "ESDM described AANE as operating PLTBg Jangkang and selling power to PLN, with cited Rp975/kWh at time. This is historical evidence (2017 release), NOT proof of 2026 generation or tariff."
+    }
+  ],
+  "macro_sector_benchmarks": [
+    {
+      "sector": "Biofuels & Bioenergy",
+      "indicator": "Biodiesel realized domestic utilization",
+      "value": 14.2,
+      "unit": "million kL",
+      "period": "2025 full year",
+      "classification": "Verified government national retrospective utilization, not single producer capacity",
+      "source_url": "https://ebtke.esdm.go.id/artikel/siaran-pers/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat"
+    },
+    {
+      "sector": "Renewable Energy",
+      "indicator": "Reported renewable installed capacity",
+      "value": 15630,
+      "unit": "MW",
+      "period": "December 2025",
+      "classification": "ESDM EBT total; includes reported bioenergy, hydro, geothermal, solar and specified other categories; do not compare directly with power generation",
+      "source_url": "https://ebtke.esdm.go.id/artikel/siaran-pers/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat"
+    },
+    {
+      "sector": "Biofuels & Bioenergy",
+      "indicator": "Bioenergy installed capacity",
+      "value": 3148,
+      "unit": "MW",
+      "period": "December 2025",
+      "classification": "National ESDM reported total; mix includes PLN/off-grid and multiple fuel types. Do not add to EBT total above.",
+      "source_url": "https://ebtke.esdm.go.id/artikel/siaran-pers/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat"
+    },
+    {
+      "sector": "Renewable Energy",
+      "indicator": "PGE produced electricity",
+      "value": 5095,
+      "unit": "GWh",
+      "period": "2025 FY",
+      "classification": "PGE company-wide electricity output, not single asset capacity or Indonesia national generation",
+      "source_url": "https://pge.pertamina.com/id/siaran-pers/performa-bisnis-kuartal-i-2026-menguat-tiga-proyek-panas-bumi-pge-raih-dukungan-pendanaan-internasional-hingga-us477-87-juta"
     }
   ]
 }
