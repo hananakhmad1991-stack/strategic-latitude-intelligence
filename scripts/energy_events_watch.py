@@ -28,7 +28,12 @@ def safe_source(url: str):
     return (host=="iesr.or.id" or host.endswith(".iesr.or.id")
             or host in ("www.the-eic.com","the-eic.com","aseansolarstorage.metal.com",
                         "www.terrapinn.com","terrapinn.com","iceevent.org",
-                        "carbondigitalconference.com","www.carbondigitalconference.com"))
+                        "carbondigitalconference.com","www.carbondigitalconference.com",
+                        "www.fuelsandlubes.com","fuelsandlubes.com",
+                        "solartech-exhibition.net","www.solartech-exhibition.net",
+                        "energycouncil.com","www.energycouncil.com",
+                        "regridintegrationasia.info","www.regridintegrationasia.info",
+                        "iee-series.com","www.iee-series.com"))
 def get_html(url: str, max_read: int=900000):
     if not url.startswith("https://") or not safe_source(url):
         raise ValueError("Not on permitted official organiser list")
