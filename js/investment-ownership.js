@@ -38,6 +38,7 @@ window.initSLIInvestmentOwnership=async function(){
   results.textContent=list.length+" of "+data.entities.length+" entity files · expand to review control, beneficial ownership gap and original disclosures.";
   for(const entity of list){
    const details=E("details","inv-owner-card"),summary=E("summary","inv-owner-head");
+   details.id="inv-owner-"+entity.id;
    const name=E("span","inv-owner-title",entity.entity),badge=E("span","inv-owner-status",entity.beneficial_owner.status);
    summary.append(name,badge);details.append(summary);
    const content=E("div","inv-owner-content");
