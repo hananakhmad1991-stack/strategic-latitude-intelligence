@@ -26,7 +26,7 @@ const geopolitical={
  nre_grid_storage:["nre"],nre_geothermal:["nre"],nre_biofuels:["nre"]
 };
 const patterns={
- oil_gas:/\b(?:migas|minyak\s+(?:mentah|bumi)|crude|petroleum|refinery|kilang|bbm|lpg|lng|natural\s+gas|gas\s+bumi|hgbt|jargas|skk\s*migas|opec|pertalite|pertamax|oil\s+(?:prices?|exports?|imports?|supply|production|tanker|field)|gas\s+(?:prices?|supply|pipeline))\b/i,
+ oil_gas:/\b(?:migas|minyak\s+(?:mentah|bumi)|crude|petroleum|refinery|kilang|solar\s+subsidi|bbm|lpg|lng|natural\s+gas|gas\s+bumi|hgbt|jargas|skk\s*migas|opec|pertalite|pertamax|oil\s+(?:prices?|exports?|imports?|supply|production|tanker|field)|gas\s+(?:prices?|supply|pipeline))\b/i,
  coal:/\b(?:batubara|batu\s+bara|coal|lignite|hba|rkab|iupk|pkp2b|pltu|minerba|ptba|kpc|kideco)\b/i,
  nre:/\b(?:renewables?|clean\s+energy|energi\s+terbarukan|ebtke|biofuels?|biodiesel|bioetanol|bioethanol|b40|b50|plts|plta|pltp|pltb|geothermal|hydropower|solar\s+(?:pv|panel|power|farm)|wind\s+(?:power|farm|turbine)|battery\s+storage|green\s+hydrogen|energy\s+storage|bess)\b/i,
  electricity:/\b(?:pln|listrik|electricity|power\s+(?:grid|outage|plant)|blackout|pemadaman|transmission|pltu)\b/i
