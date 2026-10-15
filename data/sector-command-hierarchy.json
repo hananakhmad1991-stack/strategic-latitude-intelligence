@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-15",
-  "updated_note": "Public-source organizational relationships, not a single statutory chain of command. Only ownership nodes have equity relations; policy oversight and commercial partnerships are different edge types.",
+  "updated_note": "Public-source organizational relationships, not a single statutory chain of command. Only ownership nodes have equity relations; policy oversight and commercial partnerships are different edge types. The subsidiary/member list denotes MIND ID six principal members; non-wholly-owned Vale/Freeport equity is explicitly marked. Other affiliates are selected documented examples rather than an exhaustive sub-subsidiary roster.",
   "sectors": {
     "minerals": {
       "title": "Critical Minerals",
@@ -310,6 +310,156 @@
           "parent": "pres",
           "relation": "oversight",
           "verification": "constitutional branch; schematic only"
+        },
+        {
+          "id": "mindboard-dany",
+          "title": "MIND ID Board · Deputy President Director",
+          "person": "Dany Amrul Ichdan",
+          "role": "Deputy President Director in the MIND ID corporate management, not the CEO of a separate subsidiary.",
+          "source": "https://mind.id/pages/board-of-director",
+          "parent": "mind",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "mindboard-wahyu",
+          "title": "MIND ID Board · Finance Director",
+          "person": "Wahyu Suparyono",
+          "role": "Finance Director in the MIND ID corporate management, not the CEO of a separate subsidiary.",
+          "source": "https://mind.id/pages/board-of-director",
+          "parent": "mind",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "mindboard-kuswantoro",
+          "title": "MIND ID Board · Corporate Strategy, Business Development & Portfolio Director",
+          "person": "Kuswantoro Pranabudi",
+          "role": "Corporate Strategy, Business Development & Portfolio Director in the MIND ID corporate management, not the CEO of a separate subsidiary.",
+          "source": "https://mind.id/pages/board-of-director",
+          "parent": "mind",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "mindboard-firman",
+          "title": "MIND ID Board · Risk, Governance & Legal Director",
+          "person": "Firman Shantyabudi",
+          "role": "Risk, Governance & Legal Director in the MIND ID corporate management, not the CEO of a separate subsidiary.",
+          "source": "https://mind.id/pages/board-of-director",
+          "parent": "mind",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "mindboard-ardianto",
+          "title": "MIND ID Board · Downstream Strategy & Operations Director",
+          "person": "Achmad Ardianto",
+          "role": "Downstream Strategy & Operations Director in the MIND ID corporate management, not the CEO of a separate subsidiary.",
+          "source": "https://mind.id/pages/board-of-director",
+          "parent": "mind",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "mindboard-pambudi",
+          "title": "MIND ID Board · HR & Transformation Director",
+          "person": "Pambudi Soenarsihanto",
+          "role": "HR & Transformation Director in the MIND ID corporate management, not the CEO of a separate subsidiary.",
+          "source": "https://mind.id/pages/board-of-director",
+          "parent": "mind",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "mindboard-budisantoso",
+          "title": "MIND ID Board · Natural Resources Planning & Management Director",
+          "person": "STJ. Budi Santoso",
+          "role": "Natural Resources Planning & Management Director in the MIND ID corporate management, not the CEO of a separate subsidiary.",
+          "source": "https://mind.id/pages/board-of-director",
+          "parent": "mind",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "mindboard-suko",
+          "title": "MIND ID Board · Research, Development & Sustainability Director",
+          "person": "Suko Hartono",
+          "role": "Research, Development & Sustainability Director in the MIND ID corporate management, not the CEO of a separate subsidiary.",
+          "source": "https://mind.id/pages/board-of-director",
+          "parent": "mind",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "dsiboard-sinthya",
+          "title": "DSI Board · Finance Director",
+          "person": "Sinthya Roesly",
+          "role": "Finance Director at PT Danantara Sumberdaya Indonesia; export-governance operational management.",
+          "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
+          "parent": "dsi",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "dsiboard-nur",
+          "title": "DSI Board · Risk Management Director",
+          "person": "Nur Hidayat Udin",
+          "role": "Risk Management Director at PT Danantara Sumberdaya Indonesia; export-governance operational management.",
+          "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
+          "parent": "dsi",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "dsiboard-ivan",
+          "title": "DSI Board · Legal & Compliance Director",
+          "person": "Ivan Ferdiansyah Baely",
+          "role": "Legal & Compliance Director at PT Danantara Sumberdaya Indonesia; export-governance operational management.",
+          "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
+          "parent": "dsi",
+          "relation": "management",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "bai",
+          "title": "PT Borneo Alumina Indonesia (BAI)",
+          "person": null,
+          "role": "State group alumina refinery project/affiliation, bauxite-to-alumina chain; exact shareholding must be confirmed from a current register.",
+          "source": "https://mind.id/pages/members",
+          "parent": "mind",
+          "relation": "joint-venture",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "catib",
+          "title": "PT Contemporary Amperex Technology Indonesia Battery · CATIB",
+          "person": null,
+          "role": "Battery-cells module and pack production JV built with CBL partners; not fully owned by MIND ID.",
+          "source": "https://mind.id/en/news/battery-manufacture-selesai-diinstalasi-wujudkan-ekosistem-baterai-terintegrasi-di-indonesia",
+          "parent": "ibc",
+          "relation": "joint-venture",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "brin-widi",
+          "title": "BRIN critical minerals researcher · Widi Astuti",
+          "person": "Widi Astuti",
+          "role": "Critical mineral research collaboration documented in 2026; research role, not mine/regulatory officer.",
+          "source": "https://brin.go.id/ornm/posts/kabar/dua-peneliti-brin-jajaki-kolaborasi-riset-mineral-kritis-1",
+          "parent": "brinmin",
+          "relation": "research",
+          "verification": "named official/issuer board as at 2026-10-15"
+        },
+        {
+          "id": "brin-hendra",
+          "title": "BRIN critical minerals researcher · Hendra Prasetia",
+          "person": "Hendra Prasetia",
+          "role": "Critical mineral research collaboration documented in 2026; research role, not mining director.",
+          "source": "https://brin.go.id/ornm/posts/kabar/dua-peneliti-brin-jajaki-kolaborasi-riset-mineral-kritis-1",
+          "parent": "brinmin",
+          "relation": "research",
+          "verification": "named official/issuer board as at 2026-10-15"
         }
       ],
       "market": [
