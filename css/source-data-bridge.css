@@ -1,0 +1,30 @@
+/* SLI official-source bridge · BKPM / ESDM / IEA report indicators */
+.sli-source-bridge{border:1px solid #425a70;background:#112b3e;border-radius:14px;padding:17px;margin:17px 0 22px;scroll-margin-top:25px}
+.sli-source-bridge-head small{font-size:10px;letter-spacing:1.1px;color:#ddb976;font-weight:700}
+.sli-source-bridge-head h3{color:#f0dfbd;margin:5px 0;font:normal clamp(19px,2.4vw,25px)/1.3 Georgia,serif}
+.sli-source-caption{font-size:11px;color:#b9cdd9;line-height:1.6;margin:7px 0 13px}
+.sli-source-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.sli-source-tab{border:1px solid #496981;color:#cedfe9;background:#0c273d;font:inherit;font-size:11px;font-weight:650;border-radius:6px;cursor:pointer;padding:9px 12px;min-height:40px}
+.sli-source-tab.active,.sli-source-tab[aria-pressed=true]{background:#e0bd7c;color:#122d42;border-color:#f2d69b}
+.sli-source-tab:focus-visible{outline:2px solid #eecb86;outline-offset:2px}
+.sli-source-group>h4{font-size:13px;color:#efdcbb;margin:8px 0 5px}
+.sli-source-metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:11px;margin:13px 0}
+.sli-source-metric{background:#0a2539;border:1px solid #3b5a72;border-radius:10px;padding:13px;display:flex;flex-direction:column;gap:5px}
+.sli-source-metric-period{font-size:9px;letter-spacing:.45px;color:#92b8cd}
+.sli-source-metric-value{color:#f2d195;font-size:26px;line-height:1.1;font-variant-numeric:tabular-nums}
+.sli-source-metric-unit{color:#a8d0de;font-size:11px}
+.sli-source-metric h5{font-size:12px;color:#e0edf5;margin:6px 0 0;line-height:1.5}
+.sli-source-metric p{font-size:10px;line-height:1.6;color:#bed0dc;margin:0}
+.sli-source-metric a,.sli-source-bridge a{color:#eacb90;font-size:10px;text-decoration:underline;text-underline-offset:2px}
+.sli-source-metric a{margin-top:auto;padding-top:6px}
+.sli-source-bars{background:#0b2335;border:1px solid #425c70;padding:13px;border-radius:9px;margin:14px 0}
+.sli-source-bars h5{font-size:12px;color:#e9cea1;margin:0 0 12px}
+.sli-source-bar-row{display:grid;grid-template-columns:minmax(105px,1fr) 50px 2fr;align-items:center;gap:9px;margin:8px 0;font-size:11px}
+.sli-source-bar-row strong{text-align:right;color:#e5cb98;font-variant-numeric:tabular-nums}
+.sli-source-bar-track{height:13px;border-radius:4px;background:#254255;overflow:hidden}
+.sli-source-bar-fill{height:100%;background:linear-gradient(90deg,#d0a961,#d8c598);border-radius:4px}
+.sli-source-disclaimer,.sli-source-caveat{border-left:3px solid #c8a56e;background:#19354a;border-radius:5px;padding:10px 13px;color:#bad0de;font-size:11px;line-height:1.7}
+.sli-source-links,.sli-source-actions{display:flex;gap:10px 14px;flex-wrap:wrap;margin:12px 0}
+.sli-source-links a,.sli-source-actions a{font-size:11px}
+@media(max-width:700px){.sli-source-bridge{padding:12px}.sli-source-metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sli-source-bar-row{grid-template-columns:1fr 50px}.sli-source-bar-track{grid-column:1/-1}}
+@media(max-width:410px){.sli-source-metric-grid{grid-template-columns:1fr}}
