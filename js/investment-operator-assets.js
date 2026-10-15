@@ -17,6 +17,15 @@ window.initSLIInvestmentAssets=async function(){
  const coveredSectors=["Oil & Gas","Coal","Minerals","Smelters & Processing","Biofuels & Bioenergy","Renewable Energy","Electric Vehicles","AI / Data Center"];
  for(const sector of coveredSectors){const value=d.records.filter(x=>x.sector===sector).length;const c=el("div","inv-asset-stat");c.append(el("span",null,sector),el("strong",null,value));counts.append(c)}root.append(counts);
  root.append(el("p","tr-detail","Research snapshot "+(d.as_of||"unknown")+". A row may represent an upstream PSC, a company mine, a project or a government MoU — not identical legal/production units. Values refer only to the source period."));
+ if(Array.isArray(d.macro_sector_benchmarks)&&d.macro_sector_benchmarks.length){
+  const wrap=el("div","inv-asset-benchmarks");
+  for(const b of d.macro_sector_benchmarks){
+    const card=el("div","inv-asset-stat");
+    card.append(el("span",null,b.indicator),el("strong",null,Number(b.value).toLocaleString("en-US")+" "+b.unit),el("small",null,b.period+" · "+b.classification),link(b.source_url,"ESDM / company evidence"));
+    wrap.append(card)
+  }
+  root.append(wrap)
+ }
  const controls=el("div","inv-asset-controls"),q=el("input","tr-select"),sector=el("select","tr-select"),stage=el("select","tr-select");
  q.type="search";q.placeholder="Search WK, KKKS, IUPK, operator, investor or country…";q.setAttribute("aria-label","Search sector operator assets");
  const mk=(s,values)=>values.forEach(([value,title])=>{const o=el("option",null,title);o.value=value;s.append(o)});
