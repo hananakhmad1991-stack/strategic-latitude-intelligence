@@ -31,3 +31,15 @@
 .inv-muted{color:#afc2d2;font-size:11px}
 @media(max-width:980px){.inv-explorer-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.inv-dossier-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.inv-explorer-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.inv-explorer-controls{grid-template-columns:1fr}.inv-dossier-grid{grid-template-columns:1fr}.inv-explorer-detail{padding:13px}.inv-explorer-bar{align-items:flex-start}.inv-explorer-bar .tr-detail{max-width:100%}}
+
+/* Evidence integrity and review methodology */
+.inv-quality-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:8px 0 13px}
+.inv-quality-card{display:flex;flex-direction:column;gap:6px;border:1px solid #415b73;background:#142c42;border-radius:9px;padding:12px}
+.inv-quality-card span{color:#b6c9d8;font-size:11px}
+.inv-quality-card strong{color:#eed3a1;font-size:20px;font-variant-numeric:tabular-nums}
+.inv-quality-card small{color:#9eb5c9;font-size:10px;line-height:1.5}
+.inv-quality-checklist{background:#102c41;border:1px solid #3e596c;border-radius:9px;padding:13px;margin:12px 0;font-size:12px;color:#cad7e2}
+.inv-quality-checklist summary{cursor:pointer;color:#e7c990;font-weight:700}
+.inv-quality-checklist li{margin:7px 0;line-height:1.65}
+@media(max-width:980px){.inv-quality-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){.inv-quality-grid{grid-template-columns:1fr 1fr}}
