@@ -27,7 +27,11 @@ Once GitHub Pages is enabled: https://hananakhmad1991-stack.github.io/strategic-
 - `js/energy-governance-ccs.js` and `css/energy-governance-ccs.css`: accessible interactive front-end panels at the **top** of Energy Security.
 - `.github/workflows/energy-policy-watch.yml`: scans for possible policy release **candidates** every six hours. Google RSS headlines are not proof of enacted regulations. The curated policy register requires research review; scans do not automatically change it.
 - A geological screening estimate is not proven injectable storage, an MoU is not FID, FID is not spend, a water injectivity test is not measured CO₂ injection, and full LNG project funding is not CCS-only capex.
-- Corporate and ministerial leaders are dated as-of cited sources; refresh them when appointments change. Example: PLN President Director change announced 14 October 2026.
+- `scripts/energy_actor_watch.py` / `.github/workflows/energy-actor-watch.yml`: official cabinet & line-ministry profiles checked **every six hours**; ministers auto-change only when cabinet roster and ministry leadership page concur, ESDM director generals may be updated from the explicitly role-linked official ESDM leadership profile. Other offices use source checks and appointment-candidate monitoring; unverified headlines never overwrite names.
+- `data/energy-actors-status.json`: last scan, verified automatic changes, uncertain appointments, source availability and errors. A network failure does **not** confirm the incumbent's continued tenure.
+- `scripts/energy_ccs_watch.py` / `.github/workflows/energy-ccs-watch.yml`: six-hour attributed CCS/CCUS headline discovery and project-change signals; publishes `data/energy-ccs-updates.json`. A headline is not FID, captured tonnage or realized capital expenditure.
+- Policy discovery operates every six hours; dated official-regulation baselines remain curated to prevent false claims of enactment from search snippets.
+- Official roster corrections made on 15 October 2026: Mohammad Jumhur Hidayat (KLH/BPLH), Suahasil Nazara (Finance), Tri Winarno (acting Gatrik DG), Wahyudi Anas (BPH Migas), and Suroso Isnandar (PLN).
 
 ## Maintenance
 The site is served from GitHub Pages using `index.html`, separate JavaScript / CSS modules and dated JSON datasets. Source-watch workflows may run periodically; verify data freshness and GitHub Actions results rather than treating a green build as proof of analytical accuracy.
