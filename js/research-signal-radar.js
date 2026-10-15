@@ -4,6 +4,7 @@
 (function(){
 "use strict";
 const FEED="data/research-signal-radar.json";
+const RAW_FEED="https://raw.githubusercontent.com/hananakhmad1991-stack/strategic-latitude-intelligence/main/data/research-signal-radar.json";
 const FIVE_MIN=300000;
 const MAX_AGE=14*86400000;
 const channels={
@@ -118,9 +119,20 @@ async function load(slot,which,force){
  if(!status||!body)return;
  status.textContent=tr("Syncing published snapshot…","Menyinkronkan snapshot terbitan…");
  try{
-  const response=await fetch(FEED+(force?"?v="+Date.now():""),{cache:"no-store"});
-  if(!response.ok)throw Error("HTTP "+response.status);
-  const data=await response.json();
+  // Read branch data directly where possible: GitHub Pages deploy queues can lag.
+  // Fall back to the deployed same-origin snapshot if raw.githubusercontent.com fails.
+  let data=null,lastError=null;
+  const query="?v="+(force?Date.now():Math.floor(Date.now()/FIVE_MIN));
+  for(const target of [RAW_FEED,FEED]){
+   try{
+    const response=await fetch(target+query,{cache:"no-store"});
+    if(!response.ok)throw Error("HTTP "+response.status);
+    const candidate=await response.json();
+    if(!candidate?.groups||!candidate.groups[which])throw Error("Invalid radar dataset");
+    data=candidate;break;
+   }catch(error){lastError=error}
+  }
+  if(!data)throw lastError||Error("No radar snapshot available");
   if(!slot.isConnected||active?.slot!==slot)return;
   if(!data||!data.groups||!data.groups[which])throw Error("Invalid sector registry");
   const state=classifyFreshness(data);
