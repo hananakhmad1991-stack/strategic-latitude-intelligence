@@ -164,3 +164,9 @@ Six clickable institutional hubs replace the initial full-page actor cards. Sele
 
 ## Maintenance
 The site is served from GitHub Pages using `index.html`, separate JavaScript / CSS modules and dated JSON datasets. Source-watch workflows may run periodically; verify data freshness and GitHub Actions results rather than treating a green build as proof of analytical accuracy.
+## Strategic Map — source-qualified province explorer (15 October 2026)
+- Menu `Strategic Map`: locally bundled 38-province SVG outline from CC BY 4.0 Indonesia GeoJSON, 4-decimal coordinates; source attribution and upstream licensing caveat in the map appendix. The asset/operator (44 records at initial snapshot) and investment-project (25 entries) registries are independent modes, not additive datasets.
+- Province shading and count bubbles represent only records with **one unambiguous documented province**; not precise site coordinates. Multi-site, national, unspecified and ambiguous regions remain unmapped and counted in methodological exclusions. No fabricated coordinates or geocoded addresses.
+- Interactive province selection, text search, sector/stage filters, zoom controls, mobile layouts, source links, amount basis and data vintage; all original investment currencies retained. Palm sector and nationwide biofuel mandates are NOT pinned without source-dated sites.
+- Map is rendered without third-party map tiles/CDNs. Geographical source: https://github.com/denyherianto/indonesia-geojson-topojson-maps-with-38-provinces (CC BY 4.0). Attribution and modification note are embedded in `data/indonesia-provinces.geojson`; check provenance before commercial redistribution.
+- CI checks: `.github/workflows/strategic-map-qa.yml` validates geodata, province mapping, filters, source safeguards and integration.
