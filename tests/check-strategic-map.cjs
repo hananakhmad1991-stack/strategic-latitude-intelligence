@@ -47,7 +47,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  let all=flatten(root);
  assert.ok(all.some(n=>n.textContent==="Indonesia Investment & Energy Map"),"Map title rendered");
  assert.equal(all.filter(n=>n.tagName==="path").length,38,"One province path per feature");
- assert.equal(all.filter(n=>n.className==="map-stat").length,10,"All source and layer counters displayed");
+ assert.equal(all.filter(n=>n.className==="map-stat").length,11,"All source and layer counters displayed");
  const results=all.find(n=>n.className==="map-list"),list=()=>flatten(results).filter(n=>n.className==="map-list-item");
  const select=all.filter(n=>n.tagName==="select");
  assert.equal(select.length,5,"Should have dataset, technology, status, province and geographic filters");
@@ -68,15 +68,20 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  const power=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-power-fossil-renewable.json"),"utf8")).records;
  const industry=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-biofuel-smelters.json"),"utf8")).records;
  const regional=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-regional-crosschecks.json"),"utf8")).records;
- const total=assets.length+projects.length+infra.length+sites.length+wk.length+power.length+industry.length+regional.length;
+ const digital=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-digital-ai.json"),"utf8")).records;
+ const total=assets.length+projects.length+infra.length+sites.length+wk.length+power.length+industry.length+regional.length+digital.length;
  assert.equal(sites.length,31,"Expanded company-sourced site dossiers");
  assert.equal(wk.length,57,"WK historical operator layer");
  assert.equal(power.length,102,"All fossil, geothermal, hydro and solar directories");
  assert.equal(industry.length,53,"Biodiesel/smelter source geographic sites");
  assert.equal(regional.length,19,"Source-verified regional Batam, Java/Bali offshore, Papua, Maluku and Natuna cross-checks");
- assert.equal(total,337,"All 8 registry datasets should load");
+ assert.equal(digital.length,14,"Exactly fourteen added digital facility dossiers");
+ assert.equal(digital.filter(r=>r.provinces[0]==="DKI Jakarta").length,5,"Five Jakarta dossiers");
+ assert.equal(digital.filter(r=>r.provinces[0]==="Jawa Barat").length,9,"Nine West Java dossiers");
+ assert.equal(total,351,"All nine registries combined (337 + 14)");
+ assert.ok(digital.every(r=>r.source_url.startsWith("https://")&&r.notes&&r.stage&&r.provinces.length===1),"All digital records have official company sources, status and province");
  assert.ok(regional.every(r=>Array.isArray(r.provinces)&&r.provinces.length>=1&&r.source_url.startsWith("https://")&&r.stage&&r.notes),"Regional record must have sourced province, stage and caveat");
- assert.equal(list().length,total,"Default shows all 337 source-dated records, no cutoff");
+ assert.equal(list().length,total,"Default shows all 351 records without recency cutoff");
  for(const x of [...wk,...power,...industry]){
   assert.ok(x.source_url?.startsWith("https://"),"Dataset source must be HTTPS: "+x.id);
   assert.ok(x.source_vintage&&x.notes&&x.region&&x.stage,"Must explain source vintage, location, stage and boundary: "+x.id);
@@ -95,6 +100,24 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(flatten(root).some(n=>n.className==="map-results-head"&&flatten(n).some(y=>y.textContent==="Riau")),"Province click shows province panel");
  const reset=all.find(n=>n.tagName==="button"&&n.textContent==="Reset filters");
  reset.events.click();assert.equal(list().length,total,"Reset restores every record");
+ const shortcuts=all.filter(n=>n.className==="map-btn map-digital-btn");
+ assert.equal(shortcuts.length,3,"Jakarta, West Java and all Digital/AI presets are available");
+ shortcuts[0].events.click();
+ assert.equal(dataset.value,"digital");
+ assert.equal(province.value,"DKI Jakarta");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Digital Edge EDGE2"))),"EDGE2 Jakarta mapped");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("DCI Indonesia / Salim Group"))),"DCI E1 Jakarta mapped");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Equinix JK1"))),"Existing Equinix JK1 integrated");
+ shortcuts[1].events.click();
+ assert.equal(province.value,"Jawa Barat");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("DCI Indonesia · H2 Campus"))),"Karawang H2 mapped");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Princeton Digital Group · JC3"))),"PDG JC3 mapped");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Digital Edge CGK"))),"Existing CGK mapped");
+ shortcuts[2].events.click();
+ assert.equal(province.value,"all");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Microsoft Indonesia Central"))),"Cloud region stays discoverable nationally");
+ assert.ok(list().length>=25,"Digital view includes existing records and 14 new records");
+ reset.events.click();
  province.value="Kepulauan Riau";province.events.change();
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Equator Gate System"))),"EGS Batam must appear in Riau Islands");
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("South Natuna Sea Block B"))),"Natuna must appear in Riau Islands");
@@ -141,5 +164,5 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  ctx.window.SLIi18n.language="id";
  await ctx.window.initSLIStrategicMap(); // same root intentionally cached
  assert.ok(flatten(root).some(n=>n.textContent==="Peta Investasi dan Energi Indonesia")===false,"cached root unchanged until language event");
- console.log("PASS: 38 provinces; 337 source records including Batam AI, Bali/East Java offshore, West Papua Tangguh, Maluku Masela and Riau Islands Natuna; all filters");
+ console.log("PASS: 38 provinces, 351 source records, 14 additional Jakarta/West Java data center facilities, 3 functional Digital/AI quick view filters");
 })().catch(e=>{console.error(e);process.exitCode=1});
