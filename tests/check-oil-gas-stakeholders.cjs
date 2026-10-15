@@ -1,0 +1,44 @@
+/* Regression: Danantara ≠ regulator, SKK/BPH ≠ holding subsidiary, BUMS ≠ BUMN.
+   Dedicated Oil & Gas stakeholder explorer and six-branch power-map integrity. */
+"use strict";
+const fs=require("node:fs"),assert=require("node:assert/strict");
+const gov=JSON.parse(fs.readFileSync("data/energy-governance-ccs.json","utf8"));
+const map=JSON.parse(fs.readFileSync("data/energy-oil-gas-stakeholders.json","utf8"));
+const general=fs.readFileSync("js/stakeholder-map.js","utf8");
+const dedicated=fs.readFileSync("js/energy-oil-gas-stakeholders.js","utf8");
+const page=fs.readFileSync("index.html","utf8");
+const details=fs.readFileSync("css/energy-oil-gas-stakeholders.css","utf8");
+const owners=gov.governance.ownership_model;
+assert(owners&&owners.bp_bumn.share.includes("1%")&&owners.danantara.share.includes("99%"),"Incorrect BP BUMN/Danantara Series A/B model");
+assert(owners.boundaries.some(x=>x.includes("SKK Migas")||x.includes("Independent Indonesian BUMS")),"No limits on shareholding assertions");
+const names=gov.governance.layers.flatMap(layer=>layer.actors.map(x=>x.name));
+assert(names.some(x=>x.startsWith("Danantara Indonesia")),"Portfolio manager missing");
+assert(names.includes("BP BUMN — State-Owned Enterprises Regulatory Agency"),"BP BUMN independent body missing");
+assert(names.includes("PT Danantara Asset Management (DAM)"),"Operational holding missing");
+for(const name of ["SKK Migas","BPH Migas","PT Pertamina (Persero) — parent company","PT Medco Energi Internasional Tbk",
+ "ExxonMobil Cepu Limited (EMCL)","bp Indonesia / Tangguh LNG","INPEX Masela Ltd / Abadi LNG","Searah (Eni–PETRONAS JV)"]){
+ assert(names.includes(name),"General stakeholder map missing "+name);
+}
+assert.equal(gov.governance.layers.length,6,"General stakeholder map must remain six branches");
+assert.equal(new Set(names).size,names.length,"Duplicate actors on primary map");
+assert(map.items.length>=27&&map.groups.length===6,"Incomplete focused map");
+assert.equal(new Set(map.items.map(x=>x.name)).size,map.items.length,"Duplicate dedicated-map actor");
+assert(map.items.some(x=>x.name==="SKK Migas"&&x.group==="upstream"),"SKK must be upstream supervisor");
+assert(map.items.some(x=>x.name==="BPH Migas"&&x.group==="downstream"),"BPH must be downstream regulator");
+assert(map.items.some(x=>x.name==="Danantara Indonesia"&&x.group==="policy"),"Danantara owner/investor must not be classified as operator");
+assert(map.items.filter(x=>x.group==="private").length>=5,"BUMS / KKKS section too sparse");
+assert(map.items.every(x=>/^https:\/\//.test(x.source)&&x.summary_en&&x.summary_id&&x.group&&x.as_of),"Missing source/date/bilingual actor data");
+assert(map.items.some(x=>x.name==="Searah (Eni–PETRONAS)")&&map.notes_en.some(x=>x.includes("contractors"))===false || map.items.some(x=>x.name==="Searah (Eni–PETRONAS)"),"Eni/PETRONAS 2026 JV missing");
+assert(map.issues.length>=5&&map.issues.some(x=>x.id==="fuel")&&map.issues.some(x=>x.id==="gas"),"Missing separate oil/gas policy issue focus");
+assert(map.issues.every(x=>x.route.every(r=>map.groups.some(g=>g.id===r))),"Issue route includes invalid stakeholder group");
+assert(general.includes("data.ownership_model")&&general.includes("Series A Dwiwarna (1%)")&&general.includes("Series B (99%)"),"Danantara vs BP BUMN ownership explainer missing");
+assert(!general.includes("search across all 54"),"Hard-coded original stakeholder count survived");
+new Function(general);new Function(dedicated);
+assert(dedicated.includes('window.initSLIOilGasStakeholders=async function'),"No dedicated explorer initializer");
+assert(dedicated.includes('sli:languagechange'),"No bilingual view refresh");
+assert(page.includes('id="energyOilGasStakeholdersRoot"'),"Independent map mount missing");
+assert(page.includes('href="#energyOilGasStakeholdersRoot"'),"No quick navigation to separate oil/gas map");
+assert(page.includes('js/energy-oil-gas-stakeholders.js')&&page.includes('css/energy-oil-gas-stakeholders.css'),"Assets not loaded");
+assert(page.includes("initSLIOilGasStakeholders()"),"Map initializer omitted");
+assert(details.includes(".ogas-profile")&&details.includes(".ogas-tile"),"Responsive actor cards missing");
+console.log("Oil & Gas stakeholders PASS: "+map.items.length+" sector actors in "+map.groups.length+" groups, "+map.issues.length+" issue lenses; Danantara/BP BUMN and BUMS separated.");
