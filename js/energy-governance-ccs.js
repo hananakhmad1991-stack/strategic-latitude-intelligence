@@ -23,6 +23,11 @@ function showActorWatch(root){
    pending.slice(0,5).forEach(x=>{const row=E("div","gov-lead");row.append(E("strong",null,x.actor+": "+x.candidate),E("p","gov-meta",x.reason));items.append(row)})}
   else note(items,"No uncorroborated ministerial appointments detected by this scan. This does not prove there have been no changes.");
   if((d.errors||[]).length)note(items,(d.errors||[]).length+" institutional source checks could not be completed; review the source-health file.");
+  if((d.appointment_headline_leads||[]).length){
+   const h=E("div","gov-layer-title");h.append(E("strong",null,"Recently indexed appointment reports · unverified"));items.append(h);
+   (d.appointment_headline_leads||[]).slice(0,5).forEach(x=>{const r=E("div","gov-lead");r.append(LINK(x.url,x.title),E("p","gov-meta",(x.publisher||"Source")+" · "+String(x.published_at_utc||"").slice(0,10)+" · Verify official appointment before changing roster"));items.append(r);});
+  }
+
  }).catch(()=>{status.textContent="Institutional monitor not yet published. The currently verified actor roster remains visible below."});
 }
 function showCCSWatch(root){
