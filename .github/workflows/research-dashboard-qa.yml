@@ -6,6 +6,11 @@ on:
       - 'js/research-chapters.js'
       - 'js/sector-stakeholder-explorer.js'
       - 'js/sector-command-hierarchy.js'
+      - 'js/stakeholder-map.js'
+      - 'js/energy-governance-ccs.js'
+      - 'js/energy-hierarchy-adapter.js'
+      - 'data/energy-governance-ccs.json'
+      - 'tests/qa-energy-institution-explorer.mjs'
       - 'css/sector-command-hierarchy.css'
       - 'data/sector-command-hierarchy.json'
       - 'tests/qa-command-hierarchy.mjs'
@@ -32,4 +37,5 @@ jobs:
           node tests/qa-research-dashboard.mjs
           node tests/qa-sector-organigrams.mjs
           node tests/qa-command-hierarchy.mjs
+          node tests/qa-energy-institution-explorer.mjs
           python scripts/validate_sector_hierarchy.py
