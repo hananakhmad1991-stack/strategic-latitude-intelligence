@@ -102,7 +102,22 @@
       "definition": "Passenger electric car population reported by Kemenperin for April 2026, rather than Jan–Sep wholesale sales.",
       "method_note": "Published April stock appears to have increased unusually sharply from March; confirm original Kemenperin registry/definitions before declaring precise month-on-month physical adoption."
     },
-    "stock_gap": "April 2026 Kemenperin reported 223,100 passenger EV car stock; no audited August 2026 car-only split. Unusual March to April jump requires registry reconciliation."
+    "stock_gap": "April 2026 Kemenperin reported 223,100 passenger EV car stock; no audited August 2026 car-only split. Unusual March to April jump requires registry reconciliation.",
+    "h1_2026_official": {
+      "period": "2026-H1",
+      "value": 70095,
+      "market_share_pct": 16.06,
+      "source": "https://www.antaranews.com/berita/5724048/menperin-ri-punya-modal-kuat-bangun-industri-ev-secara-utuh",
+      "attribution": "Industry minister citing GAIKINDO",
+      "note": "H1 BEV passenger car wholesale share, not share of all vehicle fleet stock."
+    },
+    "h1_hev": {
+      "period": "2026-H1",
+      "value": 40405,
+      "market_share_pct": 9.26,
+      "source": "https://www.antaranews.com/berita/5724048/menperin-ri-punya-modal-kuat-bangun-industri-ev-secara-utuh",
+      "note": "HEV is a separate powertrain; not added to BEV"
+    }
   },
   "motorcycles": {
     "sales_2026": {
@@ -213,6 +228,19 @@
     "stock_comparison_note": "Use Apr 2026 stock (223,100 passenger EV cars / 242,909 motorcycles) for target comparisons; Aug 2026 nationwide EV stock 541,678 is all classes and cannot be allocated by vehicle type from public data."
   },
   "industry": [
+    {
+      "name": "BYD electric passenger-car manufacturing facility inaugurated",
+      "period": "2026-09-03",
+      "status": "Factory inauguration / manufacturing facility as reported by ANTARA at the ceremony; verify actual monthly output, local procurement and audited capital expenditure separately",
+      "location": "Subang, West Java",
+      "participants": "BYD Indonesia, Kemenperin",
+      "source": "https://en.antaranews.com/news/429709/indonesia-sees-strong-ev-industry-chain-potential-minister-says",
+      "tkdn_reported_range_pct": [
+        40.8,
+        47
+      ],
+      "note": "Reported BYD product domestic-content range, not necessarily audited for every model or plant."
+    },
     {
       "name": "Indonesian EV batteries — first reported exports",
       "period": "2026-10-08",
