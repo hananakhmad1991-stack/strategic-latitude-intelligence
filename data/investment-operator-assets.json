@@ -9,7 +9,10 @@
       "Cloud service regions, data-center campus IT power, cabinets and announced budgets are not interchangeable production measurements.",
       "MoU, conditional finance, announced campus, physical construction, commissioned capacity and realized capital are separate milestones.",
       "Investor nationality describes headquarters or named corporate affiliation, not the natural-person beneficial owner.",
-      "Blank or unknown fields mean not independently documented, NOT zero."
+      "Blank or unknown fields mean not independently documented, NOT zero.",
+      "Company cumulative vehicle production is not current-year sales, and plant total nameplate vehicles/year is not BEV-only output.",
+      "Mandated national biodiesel volume is a government allocation, not realized deliveries by a named biodiesel manufacturer.",
+      "Green Book loans are planned financing access, not disbursed company CAPEX; upstream geothermal resource permits differ from electric power PPAs."
     ]
   },
   "records": [
@@ -416,6 +419,257 @@
       "investment": null,
       "production": null,
       "notes": "Neither a named data-center construction project nor guaranteed capital commitment; follow projects individually."
+    },
+    {
+      "id": "bio-b50-2026",
+      "sector": "Biofuels & Bioenergy",
+      "asset": "B50 biodiesel national blending programme (2026)",
+      "region": "Indonesia · nationwide programme",
+      "operator": "Ministry of Energy and Mineral Resources · 26 registered BU BBN",
+      "affiliation": "Indonesia · government policy; 26 private / state fuel producers",
+      "stage": "Programme / mandate",
+      "source_url": "https://www.esdm.go.id/id/media-center/arsip-berita/kawal-implementasi-b50-kementerian-esdm-perkuat-uji-teknis-dan-dialog-dengan-industri-otomotif",
+      "legal": "Ministerial B50 blending mandate (Kepmen 257.K/EK.01/MEM.E/2026); NOT a commercial asset operating permit",
+      "capacity": {
+        "value": 17.6,
+        "unit": "million kL",
+        "label": "2026 estimated annual allocation in ESDM 18 Jun statement; NOT actual producer output nor individual BU BBN quota",
+        "source_url": "https://www.esdm.go.id/id/media-center/arsip-berita/targetkan-stop-impor-solar-menteri-bahlil-b50-dimulai-1-juli"
+      },
+      "contract_end": "2026 allocation period",
+      "contract_end_status": "Mandate and supply allocations subject to later decrees; programme is not a fixed-term private contract",
+      "notes": "Official ESDM Sept 2026 statement describes B50 at 6,050 SPBU; separate verified injection volumes, feedstock prices (HIP), palm supply, BPDP financing, compliance and machine specifications. Do not equate estimated savings or CPO value added with corporate revenue."
+    },
+    {
+      "id": "bio-apical-dumai",
+      "sector": "Biofuels & Bioenergy",
+      "asset": "Apical biodiesel manufacturing, Dumai (Sari Dumai Sejati & CEP)",
+      "region": "Dumai, Riau",
+      "operator": "Apical / PT Sari Dumai Sejati and Cemerlang Energi Perkasa",
+      "affiliation": "Singapore commercial headquarters (Apical); ultimate personal BO not documented",
+      "stage": "Operational",
+      "source_url": "https://www.apicalgroup.com/id/produk-kami/",
+      "legal": "Industrial biodiesel facility; producer allocations depend on specific ESDM decree. No refinery permit expiry verified.",
+      "contract_end": null,
+      "capacity": null,
+      "production": null,
+      "notes": "Apical identifies biodiesel facilities in Dumai, with ISCC/RSPO certifications reported for 2012. No facility-specific 2026 production, B50 quota, CAPEX or verified owners inserted."
+    },
+    {
+      "id": "bio-pertamina-saf",
+      "sector": "Biofuels & Bioenergy",
+      "asset": "Green Refinery RU IV Cilacap — SAF / HVO",
+      "region": "Cilacap, Central Java",
+      "operator": "PT Kilang Pertamina Internasional",
+      "affiliation": "Indonesia · Pertamina group",
+      "stage": "Operational",
+      "source_url": "https://kpi.pertamina.com/id/inovasi-bisnis",
+      "legal": "Oil-refinery green-fuel production and phased green refinery proposal; SAF co-processing demonstrated in 2023; full UCO green refinery phase expansion is NOT asserted commissioned.",
+      "capacity": {
+        "value": 6000,
+        "unit": "barrels/day",
+        "label": "Phase II planned UCO processing capacity; NOT realized SAF production",
+        "source_url": "https://kpi.pertamina.com/id/profil-perusahaan/bisnis-kami"
+      },
+      "notes": "2023 commercial flight-test SAF and product launch are verified; 2024 feedstock UCO supply MoU and projected throughput are different evidence classes.",
+      "secondary_source": "https://kpi.pertamina.com/App_Data/hubunganInvestor/laporan_keuangan_doc_wxhq4yg2.pdf"
+    },
+    {
+      "id": "ebt-cirata",
+      "sector": "Renewable Energy",
+      "asset": "Cirata Floating Solar PV",
+      "region": "Purwakarta, West Java",
+      "operator": "PT Pembangkitan Jawa Bali Masdar Solar Energi (PMSE) / PLN Nusantara Power partnership",
+      "affiliation": "Indonesia · PLN group; United Arab Emirates · Masdar",
+      "stage": "Operational",
+      "source_url": "https://www.esdm.go.id/en/media-center/news-archives/presiden-ri-resmikan-plts-terapung-terbesar-di-asia-tenggara",
+      "legal": "IPP power project and PLN power offtake; PPA tenor and current direct SPV holdings not verified here.",
+      "capacity": {
+        "value": 192,
+        "unit": "MWp",
+        "label": "Nameplate DC solar capacity operating since Nov 2023; MWp NOT annual MWh delivered",
+        "source_url": "https://www.esdm.go.id/en/media-center/news-archives/presiden-ri-resmikan-plts-terapung-terbesar-di-asia-tenggara"
+      },
+      "investment": {
+        "amount": 129,
+        "unit": "USD million",
+        "basis": "Government-announced original development value from 2020; not final audited realized cost",
+        "source_url": "https://www.esdm.go.id/id/media-center/arsip-berita/plts-terapung-pertama-di-indonesia-dan-terbesar-di-asia-tenggara-resmi-dibangun"
+      },
+      "notes": "Masdar UAE is a strategic project partner. Avoid equating SPV equity with foreign nationality of retail shareholders."
+    },
+    {
+      "id": "ebt-pge-lumut3",
+      "sector": "Renewable Energy",
+      "asset": "PLTP Lumut Balai Unit 3 — development / JICA Green Book",
+      "region": "South Sumatra · Lumut Balai WKP",
+      "operator": "PT Pertamina Geothermal Energy Tbk (PGEO)",
+      "affiliation": "Indonesia · Pertamina group",
+      "stage": "Under construction",
+      "source_url": "https://www.pge.pertamina.com/id/siaran-pers/pge-resmi-mulai-tahap-eksekusi-proyek-pltp-lumut-balai-unit-3-berkapasitas-55-mw-perkuat-pasokan-energi-bersih-nasional",
+      "legal": "Geothermal WKP development, PLN power purchase arrangement; specific work-area permit maturity not verified.",
+      "capacity": {
+        "value": 55,
+        "unit": "MW",
+        "label": "Planned Unit 3 capacity / targeted COD 2030; NOT commissioned",
+        "source_url": "https://www.pge.pertamina.com/id/siaran-pers/pge-resmi-mulai-tahap-eksekusi-proyek-pltp-lumut-balai-unit-3-berkapasitas-55-mw-perkuat-pasokan-energi-bersih-nasional"
+      },
+      "investment": {
+        "amount": 158.86,
+        "unit": "USD million",
+        "basis": "JICA on-lending amount listed in PGE's 2026 Green Book; financial eligibility / commitment, NOT actual expenditure",
+        "source_url": "https://pge.pertamina.com/id/siaran-pers/performa-bisnis-kuartal-i-2026-menguat-tiga-proyek-panas-bumi-pge-raih-dukungan-pendanaan-internasional-hingga-us477-87-juta"
+      },
+      "notes": "Programme kick-off Jan 2026; 55 MW is future capacity. PGE FY2025 company total 727MW direct-operation capacity is not attributable to this unit."
+    },
+    {
+      "id": "ev-hyundai-cikarang",
+      "sector": "Electric Vehicles",
+      "asset": "Hyundai Motor Manufacturing Indonesia (HMMI) · IONIQ 5 / KONA EV",
+      "region": "Cikarang, West Java",
+      "operator": "PT Hyundai Motor Manufacturing Indonesia",
+      "affiliation": "Republic of Korea · Hyundai Motor Group",
+      "stage": "Operational",
+      "source_url": "https://www.hyundai.com/content/hyundai/worldwide/en/newsroom/detail/0000000039.html",
+      "legal": "Automotive manufacturing plant; not oil-and-gas PSC / mining IUP; specific factory lease term not established.",
+      "capacity": {
+        "value": 250000,
+        "unit": "vehicles/year",
+        "label": "Company-stated maximum annual plant capacity (all models), NOT annual Indonesian EV output",
+        "source_url": "https://www.hyundai.com/content/hyundai/worldwide/en/newsroom/detail/0000000039.html"
+      },
+      "investment": {
+        "amount": 1.55,
+        "unit": "USD billion",
+        "basis": "Hyundai 2023 regional company statement: planned plant and product development through 2030; NOT audited realized Indonesian EV CAPEX",
+        "source_url": "https://www.hyundai.com/worldwide/en/newsroom/detail/hyundai-successfully-concludes-ioniq-5-asean-tour-showcases-ev-confidence-and-cost-effective-journey-0000000381"
+      },
+      "notes": "IONIQ 5 manufacturing documented since 2022, KONA Electric local battery supply documented 2025. Up-to-250,000 capacity includes ICE vehicles, not exclusive EV capacity."
+    },
+    {
+      "id": "ev-hli-karawang",
+      "sector": "Electric Vehicles",
+      "asset": "HLI Green Power — battery cell JV",
+      "region": "Karawang, West Java",
+      "operator": "PT HLI Green Power (Hyundai Motor Group · LG Energy Solution JV)",
+      "affiliation": "Republic of Korea · Hyundai Motor Group 50%, LG Energy Solution 50% announced JV",
+      "stage": "Operational",
+      "source_url": "https://www.hyundai.com/id/id/hyundai-story/articles/the-all-new-kona-electric-mobil-listrik-hyundai-dengan-teknologi-baterai-unggulan?articleId=0000000570",
+      "legal": "Battery manufacturing JV (50/50 announced in 2021); definitive 2026 share register and permit expiries need review.",
+      "capacity": {
+        "value": 10,
+        "unit": "GWh/year",
+        "label": "2021 announced initial installed/design capacity, not 2026 measured production output",
+        "source_url": "https://www.hyundai.com/worldwide/en/newsroom/detail/hyundai-motor-group-and-lg-energy-solution-sign-mou-with-indonesian-government-to-establish-ev-battery-cell-plant-0000000492"
+      },
+      "investment": {
+        "amount": 1.1,
+        "unit": "USD billion",
+        "basis": "Announced 2021 JV battery plant investment; not currently audited actual expenditure",
+        "source_url": "https://www.hyundai.com/worldwide/en/newsroom/detail/hyundai-motor-group-and-lg-energy-solution-sign-mou-with-indonesian-government-to-establish-ev-battery-cell-plant-0000000492"
+      },
+      "notes": "Hyundai confirms Indonesian-made HLI battery cells in KONA Electric in 2025. Initial JV stakes 50/50; verify changes against current register."
+    },
+    {
+      "id": "ev-wuling-cikarang",
+      "sector": "Electric Vehicles",
+      "asset": "Wuling Motor Indonesia factory — Air ev / BinguoEV / Cloud EV",
+      "region": "Cikarang, West Java",
+      "operator": "PT SGMW Motor Indonesia",
+      "affiliation": "China · SAIC-GM-Wuling joint venture; precise Indonesian entity shareholder percentages not verified",
+      "stage": "Operational",
+      "source_url": "https://wuling.id/id/blog/press-release/wuling-rayakan-produksi-3-000-000-unit-mobil-listrik-secara-global-dan-40-000-unit-ev-di-indonesia",
+      "legal": "Automotive and locally assembled EV battery systems; production plant operating since 2017.",
+      "production": {
+        "value": 40000,
+        "unit": "EV units",
+        "period": "Cumulative through May 2025",
+        "scope": "Factory cumulative EV production only; NOT 2025 yearly production, sales or capacity",
+        "evidence": "Wuling official release",
+        "source_url": "https://wuling.id/id/blog/press-release/wuling-rayakan-produksi-3-000-000-unit-mobil-listrik-secara-global-dan-40-000-unit-ev-di-indonesia"
+      },
+      "notes": "Plant makes combustion/hybrid vehicles too; cumulative 40,000 EV production is not an annual flow."
+    },
+    {
+      "id": "ev-byd-subang",
+      "sector": "Electric Vehicles",
+      "asset": "BYD Subang Smartpolitan EV manufacturing investment",
+      "region": "Subang, West Java",
+      "operator": "PT BYD Motor Indonesia",
+      "affiliation": "China · BYD",
+      "stage": "Announced / development",
+      "source_url": "https://www.byd.com/id/newsroom/pt-byd-motor-indonesia-menandatangani-kerja-sama-pembelian-lahan",
+      "legal": "Land purchase/cooperation for EV factory and training/R&D; site investment licence, commissioning and start-of-production not established by the 2024 source.",
+      "capacity": null,
+      "notes": "Source confirms April 2024 land partnership for site >108 ha, NOT commissioning or actual plant output in 2026. Follow subsequent official construction/operation filings. President Director Eagle Zhao was quoted in the source."
+    },
+    {
+      "id": "ev-chery-e5",
+      "sector": "Electric Vehicles",
+      "asset": "Chery OMODA E5 — local assembly & sales",
+      "region": "Indonesia · assembly location not established by this source",
+      "operator": "PT Chery Sales Indonesia",
+      "affiliation": "China · Chery Automobile",
+      "stage": "Operational",
+      "source_url": "https://chery.co.id/id/berita/chery-serahkan-60-unit-omoda-e5-kepada-bank-bsi-sebagai-konsumen-fleet",
+      "legal": "Automotive assembly and retail; factory shareholder/permit arrangements not documented by this release.",
+      "production": {
+        "value": 60,
+        "unit": "EV units",
+        "period": "2025-02-20",
+        "scope": "Fleet handover to BSI, NOT total manufacturing or sales",
+        "evidence": "Company verified delivery milestone",
+        "source_url": "https://chery.co.id/id/berita/chery-serahkan-60-unit-omoda-e5-kepada-bank-bsi-sebagai-konsumen-fleet"
+      },
+      "notes": "4,510 OMODA E5 retail sales since model launch was reported at time of February 2025 handover; do not confuse with annual national manufacturing."
+    },
+    {
+      "id": "smelter-pt-smelting",
+      "sector": "Smelters & Processing",
+      "asset": "PT Smelting copper cathode plant — Gresik",
+      "region": "Gresik, East Java",
+      "operator": "PT Smelting (PTFI / Mitsubishi Materials)",
+      "affiliation": "Indonesia/U.S. (PTFI chain) and Japan (Mitsubishi Materials)",
+      "stage": "Operational",
+      "source_url": "https://www.fcx.com/operations/indonesia",
+      "legal": "Copper processing asset. Company equity PTFI 66% / Mitsubishi Materials 34%, while Mitsubishi Materials has operating responsibility per FCX.",
+      "production": null,
+      "ownership_ref": "smelting",
+      "notes": "Do not equate throughput or cashflows with PTFI's separate Manyar smelter. Facility-level output quantity not sourced for current period."
+    },
+    {
+      "id": "smelter-manyar",
+      "sector": "Smelters & Processing",
+      "asset": "PTFI Manyar copper smelter — Gresik",
+      "region": "Gresik, East Java",
+      "operator": "PT Freeport Indonesia",
+      "affiliation": "Indonesia · MIND ID group; United States · FCX",
+      "stage": "Operational",
+      "source_url": "https://www.fcx.com/operations/indonesia",
+      "legal": "New copper smelter; commissioned production timeline and utilization differ from nameplate.",
+      "production": null,
+      "ownership_ref": "ptfi",
+      "notes": "FCX reported first cathode July 2025; operating status does not mean rated production or full utilization. Concentrate constraints to be monitored."
+    },
+    {
+      "id": "smelter-kni-hpal",
+      "sector": "Smelters & Processing",
+      "asset": "KNI Pomalaa HPAL nickel processing",
+      "region": "Kolaka, Southeast Sulawesi",
+      "operator": "PT Kolaka Nickel Indonesia (Vale/Huayou/Ford named project partners)",
+      "affiliation": "Indonesia · Vale; China · Huayou; U.S. · Ford; ownership percentages unknown",
+      "stage": "Under construction",
+      "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion",
+      "legal": "HPAL project JV; no direct share percentages or expiry verified from selected release.",
+      "production": null,
+      "investment": {
+        "amount": 4.5,
+        "unit": "USD billion",
+        "basis": "Integrated Pomalaa mining + HPAL project estimate, NOT standalone HPAL plant capex",
+        "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion"
+      },
+      "ownership_ref": "kni",
+      "notes": "Vale disclosed ~62% integrated project progress Feb 2026; ore sales are not HPAL nickel/cobalt output."
     }
   ]
 }
