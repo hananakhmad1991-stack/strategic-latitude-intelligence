@@ -5,6 +5,7 @@ from pathlib import Path
 TOPICS=[
  {"id":"forest_fire","name":"Forest fires and haze","query":"(karhutla OR kebakaran hutan OR kebakaran lahan) (BNPB OR BPBD OR Indonesia)","channel":"Wildfire / peat / haze","impact":"Potential disruption to energy transport and project sites; verify fire location, burned area, smoke, asset proximity, and BNPB/BPBD status.","verify":"BNPB/BPBD incident status; KLHK hotspots; BMKG wind/rain"},
  {"id":"refinery","name":"Refinery operations & capacity","query":"(kilang OR RDMP OR RFCC OR refinery) (Pertamina OR Balikpapan OR Cilacap OR Dumai OR Balongan OR Plaju OR Kasim)","window_days":30,"channel":"Refining / fuel resilience","impact":"Possible refinery feedstock, throughput, commissioning or fuel-quality effects. A nameplate design change or headline does not confirm actual production loss or a nationwide BBM supply shortage.","verify":"Primary KPI/KPB/ESDM statement; exact refinery & process train; bpd throughput vs design capacity; outage dates; product volumes and restoration"},
+ {"id":"biofuels","name":"Biofuels · B50 & E10","query":"(biodiesel OR bioetanol OR biofuel OR B50 OR E10 OR E20) (produksi OR kapasitas OR pasokan OR penyaluran OR mandatori OR CPO) Indonesia","window_days":7,"channel":"Biodiesel / bioethanol / feedstock","impact":"Potential effects from FAME capacity, palm oil supply, fuel blending, bioethanol rollout and BPDP financing; identify verified impact and date.","verify":"Kepmen/JDIH legal status; EBTKE official monthly distribution and HIP; producer/site records; BPDP funding and palm feedstock data"},
  {"id":"fuel","name":"Fuel and LPG availability","query":"(BBM OR LPG OR Pertamina) (kelangkaan OR antrean OR pasokan OR stok OR distribusi) Indonesia","channel":"Fuel logistics","impact":"Potential pressure on regional fuel availability, retail logistics and industrial costs; verify inventory and district-level distribution.","verify":"BPH Migas / Pertamina supply confirmation; outages by region; distribution restoration"},
  {"id":"power","name":"Electricity outages","query":"(PLN OR listrik) (pemadaman OR gangguan OR padam OR blackout OR pemulihan)","channel":"Grid reliability","impact":"Potential downtime for manufacturing, cold chains and data centers; distinguish planned maintenance from unplanned disruption.","verify":"PLN region, outage timing, number of customers, restoration and cause"},
  {"id":"projects","name":"Energy project commissioning","query":"(PLN OR ESDM OR Pertamina) (peresmian OR beroperasi OR COD OR groundbreaking OR proyek energi OR PLTS OR PLTA OR PLTP)","channel":"Investment implementation","impact":"Check whether an announcement represents commitment, construction, commissioning, energization or commercial operation.","verify":"Official COD or commissioning report; MW capacity; location; sponsor; implementation date"},
@@ -26,6 +27,18 @@ def pick(topic,root,now):
   try:published=email.utils.parsedate_to_datetime(item.findtext("pubDate") or "").astimezone(dt.timezone.utc)
   except Exception:continue
   if not title or not source or not url.startswith("https://"):continue
+  # Require topic evidence in the headline itself; RSS query matches can be noisy.
+  relevance={
+   "biofuels":r"\\b(biodiesel|bioetanol|bioethanol|biofuel|biosolar|B50|B40|E10|E20|CPO.*biodiesel|bahan bakar nabati)\\b",
+   "refinery":r"\\b(kilang|RDMP|RFCC|refinery)\\b.*\\b(produksi|kapasitas|operasi|proyek|kebakaran|kobaran|gangguan|pasokan|pemeliharaan|turnaround|BBM|peresmian|uji|commissioning|investasi|insiden|ledakan)\\b",
+   "projects":r"\\b(peresmian|beroperasi|COD|groundbreaking|proyek|investasi|pembangunan|commissioning|PLTS|PLTA|PLTP)\\b",
+   "policy":r"\\b(peraturan|kepmen|permen|regulasi|kebijakan|ditetapkan|diterbitkan|undang-undang|aturan|izin|kuota|DMO)\\b",
+   "supply_disaster":r"\\b(banjir|longsor|cuaca ekstrem|bencana)\\b.*\\b(listrik|pembangkit|BBM|kilang|PLN|transmisi|energi|terminal|pelabuhan|jalan)\\b"
+  }
+  pattern=relevance.get(topic["id"])
+  if pattern and not re.search(pattern,title,re.I):continue
+  if topic["id"]=="supply_disaster" and re.search(r"Timur Tengah|Amerika|China|Eropa|Pakistan",title,re.I):continue
+
   source_link=(item.find("source").attrib.get("url","") if item.find("source") is not None else "")
   source_host=(urllib.parse.urlparse(source_link).hostname or "").lower()
   official_domains=("esdm.go.id","bnpb.go.id","bmkg.go.id","bphmigas.go.id","pln.co.id","pertamina.com","go.id")
