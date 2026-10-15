@@ -1,0 +1,52 @@
+/* SLI Energy Security 2026 editorial information architecture.
+   Clear progression: institutional -> national -> technical -> risk -> interpretation. */
+.es-intro{margin:4px 0 14px;padding:26px 28px;border:1px solid #4f6880;border-radius:16px;background:linear-gradient(120deg,#1a344b,#102438 76%)}
+.es-intro h2{font:normal clamp(27px,3.6vw,37px)/1.18 Georgia,serif;color:#f4ecdb;margin:9px 0 12px}
+.es-intro p{font-size:13px;line-height:1.8;color:#bfd0db;max-width:930px;margin:7px 0}
+.es-intro .es-discipline{border-left:3px solid #ddc488;padding:7px 11px;background:#1d3a50;font-size:11px;color:#d2dce4;margin-top:16px}
+.es-toc{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:16px 0 27px}
+.es-toc a{display:flex;align-items:center;gap:9px;border:1px solid #35536c;padding:10px 11px;min-height:48px;background:#122c41;border-radius:9px;color:#d7e3ed;font-size:11px;font-weight:620;text-decoration:none;transition:border-color .15s ease,background .15s ease;line-height:1.4}
+.es-toc a:hover,.es-toc a:focus-visible{background:#1e4058;border-color:#d8be86;outline:none}
+.es-toc a span{font-size:11px;color:#e4cb94;letter-spacing:.3px;font-weight:750}
+.es-stage{margin:34px 0 40px;padding:0 0 19px;border-bottom:1px solid #29455d;scroll-margin-top:20px;min-width:0}
+.es-stage-head{display:flex;align-items:flex-start;gap:13px;margin:0 0 18px;padding-bottom:13px;border-bottom:1px solid #38536c}
+.es-stage-number{display:grid;place-items:center;flex:none;height:38px;width:38px;background:#203f56;border:1px solid #687e8b;color:#ebca86;border-radius:10px;font-weight:750;font-size:12px;letter-spacing:.7px}
+.es-stage-head h2{font:normal clamp(20px,2.8vw,27px)/1.28 Georgia,serif;margin:1px 0 5px;color:#f0e9d9}
+.es-stage-head p{margin:0;font-size:11.5px;color:#a9c3d4;line-height:1.6;max-width:850px}
+.es-section-intro{color:#a7c1d4;font-size:11.5px;margin:0 0 13px}
+.es-stage .section{margin:22px 0 11px}
+.es-stage .section h2{font-size:17px}
+.es-stage .notice{font-size:11.5px;line-height:1.65}
+.es-stage .grid{gap:12px}
+.es-stage .card{min-height:150px}
+.es-stage .card:hover[style*="cursor:default"]{border-color:var(--line)}
+.es-stage .panel{min-width:0}
+.es-stage .gov-hero,.es-stage .infra-hero,.es-stage .bio-hero,.es-stage .ev-hero{margin-top:9px}
+.es-stage .gov-hero h2,.es-stage .infra-hero h2{font-size:clamp(21px,2.8vw,26px)}
+.es-stage .es-archive{border:1px solid #37566c;background:#10283b;border-radius:11px;margin:17px 0;overflow:hidden}
+.es-stage .es-archive>summary{padding:15px 17px;list-style:revert;cursor:pointer;font-size:12px;color:#e5cca1;font-weight:650}
+.es-stage .es-archive>summary:focus-visible{outline:2px solid #dfc386;outline-offset:-3px}
+.es-stage .es-archive-body{border-top:1px solid #35516a;padding:9px 16px 17px}
+.es-stage .es-archive-body .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.es-stage .es-archive-body .section{margin:15px 0 11px}
+.es-stage .es-archive-body .section h2{font-size:15px}
+.es-stage-final{border-bottom:0;padding-bottom:0;margin-bottom:5px}
+.es-overall .section:first-child{margin:8px 0 12px}
+.es-overall .oa-intro{font:normal 13px/1.85 system-ui,sans-serif;color:#c8d6e1}
+.es-overall .oa-list{list-style:none;counter-reset:none;margin:17px 0;padding:0;display:grid;gap:14px}
+.es-overall .oa-daily-point{counter-increment:none;min-width:0;padding:19px 19px 16px;background:#142c40;border:1px solid #35536a;border-radius:11px}
+.es-overall .oa-daily-point h3{color:#f0dcad;font:normal clamp(17px,2.1vw,20px)/1.35 Georgia,serif;margin:3px 0 12px}
+.es-overall .oa-daily-point p{line-height:1.85;font-size:12.3px;color:#c6d8e3;margin:9px 0}
+.es-overall .oa-daily-point .oa-story{font-size:13px;color:#d1dde6}
+.es-overall .oa-daily-point .oa-implication{color:#c7d5dc}
+.es-overall .oa-daily-point .oa-daily-sources,.es-overall .oa-daily-point .oa-daily-sources a{font-size:11px}
+.es-overall .oa-evidence{border-top:1px solid #37556c;padding-top:11px;margin-top:13px}
+.es-overall .oa-evidence summary{color:#e1c991;cursor:pointer;font-size:11px;font-weight:650}
+.es-overall .oa-evidence summary:focus-visible{outline:2px solid #e6cc9b}
+.es-overall .oa-evidence>div{margin-top:9px}
+.es-overall .oa-daily-meta-panel{font-size:11px}
+.es-overall .oa-footer{margin:20px 0}
+.es-archive .panel,.es-archive .card{background:#132d42}
+@media(max-width:1100px){.es-toc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.es-intro{padding:18px}.es-intro p{font-size:12px}.es-toc{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.es-toc a{padding:8px 9px;font-size:10px;min-height:45px}.es-stage{margin:24px 0 27px}.es-stage-head{gap:10px}.es-stage-number{width:32px;height:32px}.es-stage-head h2{font-size:20px}.es-stage .es-archive-body{padding:8px 10px}.es-stage .es-archive-body .grid{grid-template-columns:1fr}.es-overall .oa-daily-point{padding:14px}}
+@media(max-width:390px){.es-toc{grid-template-columns:1fr 1fr}.es-toc a{font-size:9.6px}.es-stage-head h2{font-size:19px}}
