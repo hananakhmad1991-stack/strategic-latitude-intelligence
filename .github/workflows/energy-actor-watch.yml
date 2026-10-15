@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - scripts/energy_actor_watch.py
+      - js/energy-governance-ccs.js
       - .github/workflows/energy-actor-watch.yml
 permissions:
   contents: write
@@ -29,6 +30,19 @@ jobs:
           python -m json.tool data/energy-actors-status.json > /dev/null
           python -m json.tool data/energy-governance-ccs.json > /dev/null
           node --check js/energy-governance-ccs.js
+          python - <<'PY'
+          import json
+          d=json.load(open("data/energy-governance-ccs.json",encoding="utf-8"))
+          groups=d["governance"]["layers"]
+          names=[x["name"] for layer in groups for x in layer["actors"]]
+          assert len(groups)>=6 and len(names)>=50 and len(set(names))==len(names)
+          for x in ("Penasihat Khusus Presiden Bidang Energi","PT Pertamina (Persero) — parent company",
+                    "DPR RI · Komisi XII — energi, SDA, lingkungan, investasi",
+                    "DPD RI · Komite II — resources, energy, infrastructure"):
+              assert x in names,x
+          assert len(d["governance"]["accountability_routes"])>=7
+          print("Validated governance map:",len(names),"unique actors,",len(groups),"branches")
+          PY
       - name: Commit monitored status and only dual-verified leadership changes
         run: |
           git config user.name "github-actions[bot]"
