@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 STAGES = {"Announced", "Permitted", "Early works", "Financed", "Under construction",
-          "Mixed implementation", "Commissioning", "Operational", "Suspended"}
+          "Mixed implementation", "Commissioning", "Operational", "Suspended", "Site evaluation", "MoU only"}
 today = dt.date.today()
 issues = []
 
