@@ -92,6 +92,7 @@ window.initSLIInvestment=async function(){
    values[2].textContent="Rp"+national.pmdn.toLocaleString("id-ID")+" T";
    const proof=$("p","tr-detail","BKPM · "+national.period+" · "+national.year_on_year_pct+"% YoY · downstream realization Rp"+national.downstream.toLocaleString("id-ID")+" T · target Rp"+national.target_2026.toLocaleString("id-ID")+" T. ");
    proof.append(source(national.source,"Official BKPM release"));kpis.after(proof);
+   if(national.release_status){const latest=$("p","tr-detail","Latest official investment release listed as of "+national.release_status.last_listed_as_of+": "+national.release_status.latest_official_quarter+". ");latest.append(source(national.release_status.source,"BKPM release archive"));proof.after(latest);}
   }
   if(evidence.regional){
    const reg=evidence.regional,body=$("div","inv-regional-bars"),max=Math.max(...reg.values.map(v=>v.value),1);
