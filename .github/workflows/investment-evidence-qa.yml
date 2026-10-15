@@ -3,12 +3,19 @@ on:
   push:
     paths:
       - 'data/investment-evidence.json'
+      - 'data/investment-forbes-top20.json'
+      - 'data/investment-market.json'
+      - 'data/investment-swot.json'
+      - 'data/investment-reported-scenarios.json'
       - 'data/investment-operator-assets.json'
       - 'data/investment-actors-ev-events.json'
       - 'data/investment-sector-evidence.json'
       - 'data/investment-ownership.json'
       - 'scripts/validate_investment.py'
+      - 'scripts/investment_market_refresh.py'
+      - 'scripts/investment_forbes_monitor.py'
       - 'js/investment-tracker.js'
+      - 'js/investment-strategy.js'
       - 'js/investment-operator-assets.js'
       - 'js/investment-actors.js'
       - 'js/investment-media.js'
@@ -31,8 +38,10 @@ jobs:
           python-version: '3.12'
       - name: Check investment JavaScript syntax
         run: |
-          for file in js/investment-tracker.js js/investment-operator-assets.js js/investment-actors.js js/investment-media.js js/investment-explorer.js js/investment-quality.js js/investment-ownership.js js/investment-sectors.js; do
+          for file in js/investment-tracker.js js/investment-strategy.js js/investment-operator-assets.js js/investment-actors.js js/investment-media.js js/investment-explorer.js js/investment-quality.js js/investment-ownership.js js/investment-sectors.js; do
             node --check "$file"
           done
+      - name: Validate Python market and Forbes parsers
+        run: python -m py_compile scripts/investment_market_refresh.py scripts/investment_forbes_monitor.py
       - name: Check company-level source, BO and spending boundaries
         run: python scripts/validate_investment.py
