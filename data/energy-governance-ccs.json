@@ -792,7 +792,72 @@
           ]
         }
       ]
-    }
+    },
+    "accountability_routes": [
+      {
+        "issue": "Fuel / LPG shortage",
+        "strategic": "ESDM and fiscal price policy; Presiden/DEN in major national escalations",
+        "regulators": "Ditjen Migas / BPH Migas for licensed downstream distribution; Kemenkeu for subsidy cash and compensation",
+        "operators": "Pertamina Patra Niaga and terminal, shipping, distributor, SPBU operators",
+        "oversight": "DPR XII (energy policy, quotas) + DPR VI (Pertamina group operations); DPD Komite II (regional impact)",
+        "regional": "Provincial governor / BPBD / local transport authorities where affected",
+        "assessment": "Test national stocks versus last-mile terminal throughput, tanker unloading, sales constraints and local SPBU hours. Do not declare national supply collapse from one province's queues."
+      },
+      {
+        "issue": "Electricity blackout or load shedding",
+        "strategic": "National electrification and power adequacy policy",
+        "regulators": "ESDM Ditjen Ketenagalistrikan; relevant grid and safety rules",
+        "operators": "PLN parent, regional dispatch/transmission/distribution units and generating subsidiaries/IPPs",
+        "oversight": "DPR XII (electricity regulation) + DPR VI (utility performance); DPD Komite II (regional services)",
+        "regional": "Provincial emergency coordination and local system restoration",
+        "assessment": "Distinguish plant outages, grid faults, reserve margins, restoration time and affected customers; cross-check PLN's time-stamped technical statement."
+      },
+      {
+        "issue": "CCS/CCUS permits & commercial progress",
+        "strategic": "KEN/NZE, Perpres 14/2024 and ESDM carbon management direction",
+        "regulators": "Ditjen Migas / SKK Migas or BPMA within PSC; ESDM WIPK rules outside PSC; KLH/BPLH environmental approval; MRV",
+        "operators": "Named storage/capture and transport contract holders including bp Tangguh, Pertamina, INPEX and partners",
+        "oversight": "DPR XII (regulatory framework, environmental and investment oversight); DPD Komite II (regional impacts)",
+        "regional": "Local government and community safeguards; transport routes / land use",
+        "assessment": "Require site permit, PoD, FID, energized capture train, metered injection volumes and verified capex. Geological Gt potential and enterprise LNG project budgets are not realized CCS."
+      },
+      {
+        "issue": "Coal DMO & mining compliance",
+        "strategic": "National energy supply and coal export/levy policy",
+        "regulators": "ESDM Ditjen Minerba, fiscal ministry for revenues, KLH for environmental compliance",
+        "operators": "Concession mine operators, transport chains, PLN EPI and relevant power generators",
+        "oversight": "DPR XII (mineral, coal, electricity) and DPR XI/Banggar (fiscal exposure); DPD Komite II (regional effects)",
+        "regional": "Provincial permit, land, community and reclamation impacts under delegated authority",
+        "assessment": "Differentiate coal production, DMO allocation, delivery to PLN and financial realization; match volumes and calendar periods."
+      },
+      {
+        "issue": "Renewable generation & grid investment",
+        "strategic": "KEN/RUPTL/EBT target, Kemenko Hilirisasi & Transisi Energi cross-ministry coordination",
+        "regulators": "ESDM EBTKE and Gatrik, BKPM for investment processing, KLH / Forestry for sites",
+        "operators": "PLN, PLN Indonesia Power, PGE, Geo Dipa, IPPs, EPC and storage providers",
+        "oversight": "DPR XII energy legislation and renewable oversight, DPR VI SOE capital execution, DPD Komite II local implementation",
+        "regional": "RUED offices, permit, land and connectivity, provincial electricity users",
+        "assessment": "Trace tender, PPA, financing/FID, transmission readiness, construction and COD. Announced MW is not commissioned capacity."
+      },
+      {
+        "issue": "Energy subsidy, fuel quota & APBN",
+        "strategic": "National fiscal and subsidy-targeting policy",
+        "regulators": "Kemenkeu budgeting and compensation, ESDM and BPH for energy prices, allocation and downstream control",
+        "operators": "Pertamina Patra Niaga / PLN distribution and commercial operations",
+        "oversight": "DPR XII sector assumptions and quotas, DPR XI + Banggar budget, DPR VI company performance; DPD Komite IV regional fiscal perspective",
+        "regional": "Delivery to households and remote islands; ensure eligibility and local stocks",
+        "assessment": "Never equate draft APBN, enacted allocations, subsidies actually paid, state compensation, or fuel dispatched."
+      },
+      {
+        "issue": "Strategic energy investment & downstreaming",
+        "strategic": "President/DEN, new Kemenko Hilirisasi dan Transisi Energi; Investment Ministry/BKPM",
+        "regulators": "ESDM technical permitting, Industry Ministry factory policy, KLH/BPLH safeguard, Kemenkeu incentives",
+        "operators": "Danantara (only where transaction documented), Pertamina, PLN, private EPC/project owners",
+        "oversight": "DPR XII energy/investment, DPR VII industry, DPR VI SOEs, DPD Komite II regional development",
+        "regional": "Provincial investors, ports, industrial estates, BP Batam/KEK zones, utilities",
+        "assessment": "Separate investment pipeline, final financing, paid-in capital, construction expenditure and commercial operation."
+      }
+    ]
   },
   "policies": {
     "note": "Curated, source-dated policy register. 'Announced' is not enacted. The scheduled Official Source Watch scans for candidate releases, but requires analyst verification before adding or changing this list.",
