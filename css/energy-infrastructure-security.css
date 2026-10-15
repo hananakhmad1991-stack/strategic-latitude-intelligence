@@ -1,0 +1,64 @@
+/* SLI oil refining, power generation and 4A energy index workspace */
+#energyInfrastructureRoot{margin:18px 0 28px;scroll-margin-top:20px}
+.infra-hero{padding:24px 26px;border:1px solid #466783;border-radius:15px;background:linear-gradient(130deg,#203b51,#102337 75%);margin-bottom:14px}
+.infra-hero h2{font:normal clamp(22px,3.3vw,31px)/1.24 Georgia,serif;color:#f5f4ec;margin:8px 0}
+.infra-description,.infra-vintage{font-size:11.5px;line-height:1.75;color:#afc9da;margin:10px 0}
+.infra-tabs{display:flex;gap:5px;flex-wrap:wrap;background:#102b41;border:1px solid #3b5971;padding:7px;border-radius:11px;margin:13px 0}
+.infra-tab{flex:1 1 145px;background:transparent;color:#b6d2e3;border:1px solid transparent;border-radius:7px;padding:11px 9px;font:650 11px/1.4 system-ui,sans-serif;cursor:pointer}
+.infra-tab:hover,.infra-tab:focus-visible{border-color:#d7b678;outline:none}
+.infra-tab.active{background:#ddc68d;color:#173046}
+.infra-mount{border:1px solid #355571;border-radius:13px;background:#0d2336;padding:21px;margin-top:10px}
+.infra-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin:2px 0 16px}
+.infra-head h3{font-size:18px;color:#f4f5f6;margin:0}
+.infra-head span{font-size:10px;color:#e0bf81}
+.infra-kpi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:14px 0 18px}
+.infra-kpi{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:9px;border:1px solid #3b5972;border-radius:10px;background:#152e44;padding:15px}
+.infra-eyebrow{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:#c9d7e3}
+.infra-number{font-size:clamp(20px,2.5vw,27px);line-height:1.25;color:#f1cf91}
+.infra-kpi p{color:#bcd2df;font-size:11px;line-height:1.6;margin:0}
+.infra-source{font-size:10.5px;text-decoration:underline;text-underline-offset:3px;color:#edcf8c!important}
+.infra-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(275px,.9fr);gap:13px;margin:14px 0}
+.infra-bars,.infra-detail,.infra-score-bars{min-width:0;border:1px solid #36556b;border-radius:10px;padding:15px;background:#142c41}
+.infra-bars{display:grid;align-content:start;gap:8px}
+.infra-ref-button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;border:1px solid #416177;background:#10283c;border-radius:7px;padding:11px 12px;color:#cbd9e4;font-size:11px;text-align:left;cursor:pointer}
+.infra-ref-button strong{color:#e5c991;white-space:nowrap}
+.infra-ref-button.active,.infra-ref-button:hover{border-color:#cfb077;background:#23445b}
+.infra-detail h4{font-size:15px;color:#f0e8d9;margin:5px 0 12px}
+.infra-detail p{font-size:11px;line-height:1.7}
+.infra-large{color:#e9cc92;font-size:27px;font-weight:700}
+.infra-mini{color:#91b2c8;font-size:10px!important}
+.infra-bar-row{margin:7px 0 13px}
+.infra-bar-top,.infra-score-line{display:flex;justify-content:space-between;gap:8px;align-items:center;color:#dce4ed;font-size:11px;margin-bottom:5px}
+.infra-bar-top span,.infra-score-line span{color:#e4c88c;white-space:nowrap}
+.infra-track,.infra-score-track{background:#29465c;border-radius:10px;overflow:hidden;height:9px}
+.infra-track-fill,.infra-score-fill{height:100%;border-radius:10px;background:#d7b678}
+.infra-bar-row small{font-size:10px;color:#9dbbd0}
+.infra-region{border-bottom:1px solid #35546c;padding:10px 0}
+.infra-region>strong{font-size:12px}
+.infra-region .infra-bar-row{margin:6px 0}
+.infra-region .infra-track{height:6px}
+.infra-plant-bars{max-height:540px;overflow:auto;display:grid;gap:2px;background:#142c41;border:1px solid #3b5c73;padding:17px;border-radius:9px}
+.infra-controls{display:flex;gap:11px;align-items:center;margin:10px 0}
+.infra-controls label{color:#a8c4d3;font-size:11px}
+.infra-select{min-height:39px;border:1px solid #60798c;border-radius:7px;padding:9px;background:#0b2237;color:#f1f3f6}
+.infra-funnel{padding:11px 0;border-bottom:1px solid #456075}
+.infra-funnel strong{color:#f0d5a5;font-size:12px}
+.infra-funnel p{font-size:11px}
+.infra-score-bars{display:grid;gap:12px;align-content:start}
+.infra-score-button{text-align:left;background:#10273a;border:1px solid #395b72;border-radius:8px;padding:12px 13px;cursor:pointer}
+.infra-score-button.active{border-color:#d7b678;background:#1c3a51}
+.infra-score-line strong{color:#e6edf3;font-weight:650}
+.infra-score-button:hover{border-color:#e5cf9f}
+.infra-index-detail{max-height:600px;overflow:auto}
+.infra-indicator{padding:9px 0;border-bottom:1px solid #344e65}
+.infra-indicator>span{color:#dae6ed;font-size:11px}
+.infra-indicator>strong{float:right;color:#f2d59d;font-size:11px}
+.infra-indicator .infra-bar-row{clear:both}
+.infra-gaps{padding-left:22px;color:#e7c68a;font-size:11.5px;line-height:1.9}
+.infra-overlay{border:1px solid #4a6880;border-radius:9px;margin-top:14px;background:#142d43}
+.infra-overlay summary{padding:14px;color:#efd8ad;font-size:12px;font-weight:650;cursor:pointer}
+.infra-overlay-inner{padding:3px 18px 18px;color:#bcd2e0;font-size:11px;line-height:1.8}
+.infra-vintage{border-left:3px solid #ddbd7e;padding:9px 12px;margin-top:14px}
+@media(max-width:920px){.infra-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:660px){.infra-kpi-grid,.infra-split{grid-template-columns:1fr}.infra-mount{padding:13px}.infra-hero{padding:18px}.infra-tab{flex-basis:44%}.infra-head{align-items:flex-start}}
+@media(max-width:390px){.infra-tab{flex-basis:100%}}
