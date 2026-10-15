@@ -51,7 +51,7 @@ fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok
  btn.addEventListener("click",()=>{selectedId=a.id;profile(a);draw()});wrap.append(btn);return wrap
  }
  function nested(a,depth,scope,maxDepth=8){
- const node=card(a,depth),children=actors.filter(x=>x.parent===a.id&&!["oversight","strategic-interface"].includes(x.relation)&&!["market"].includes(x.relation));
+ const node=card(a,depth),children=actors.filter(x=>x.parent===a.id && x.lane===a.lane && x.relation!=="market");
  if(children.length&&depth<maxDepth){const disclosure=el("button","sli-hier-toggle",(openIds.has(a.id)?"−":"+")+" "+children.length+" subordinate / linked entities");disclosure.type="button";
  disclosure.setAttribute("aria-expanded",String(openIds.has(a.id)));disclosure.addEventListener("click",()=>{if(openIds.has(a.id))openIds.delete(a.id);else openIds.add(a.id);draw()});node.append(disclosure);
  if(openIds.has(a.id)){const branch=el("div","sli-hier-children");for(const ch of children)branch.append(nested(ch,depth+1,scope,maxDepth));node.append(branch)}}
