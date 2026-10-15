@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-15",
-  "methodology": "Figures are independently scoped. BKPM investment realization differs from announced project capital and from PNBP. Values use original currencies and units.",
+  "methodology": "Figures are independently scoped. BKPM investment realization differs from announced project capital and from PNBP. Values use original currencies and units. Financial facilities are separately listed from equity investment and project budgets. Booking-origin jurisdictions for FDI are not ultimate owners.",
   "national": {
     "period": "2026-H1",
     "unit": "IDR trillion",
@@ -37,7 +37,8 @@
         "value": 36.6
       }
     ],
-    "source": "https://bkpm.go.id/id/info/siaran-pers/investment-realization-reaches-idr-1-010-6-trillion-in-the-first-half-of-2026-creating-1-4-million-jobs"
+    "source": "https://bkpm.go.id/id/info/siaran-pers/investment-realization-reaches-idr-1-010-6-trillion-in-the-first-half-of-2026-creating-1-4-million-jobs",
+    "note": "Only Q2 2026. Geographical realization totals are not individual project asset valuations."
   },
   "revenue": [
     {
@@ -170,5 +171,51 @@
     "The Q2 provincial figures are not cumulative H1 figures.",
     "Overlapping multi-project programs (including the 13-project Phase II bundle, Vale IGP campuses and the ANTAM-IBC-CBL ecosystem) cannot be added to national BKPM realization or one another without project-level reconciliation.",
     "For assets with known JV partners, no share percentages are imputed unless disclosed in company filings."
+  ],
+  "foreign_origins": {
+    "period": "2026-Q2",
+    "metric": "PMA realized; booking jurisdiction is not investor ultimate nationality",
+    "top_five_share_pct": 79.6,
+    "ranks": [
+      {
+        "rank": 1,
+        "place": "Hong Kong",
+        "reported_usd_billion": 5
+      },
+      {
+        "rank": 2,
+        "place": "Singapore",
+        "reported_usd_billion": null
+      },
+      {
+        "rank": 3,
+        "place": "China",
+        "reported_usd_billion": null
+      },
+      {
+        "rank": 4,
+        "place": "Japan",
+        "reported_usd_billion": null
+      },
+      {
+        "rank": 5,
+        "place": "Malaysia",
+        "reported_usd_billion": null
+      }
+    ],
+    "source": "https://bkpm.go.id/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+    "note": "Hong Kong is a booking origin and must not be equated with the final nationality or beneficial owner. Remaining origin values are not published in the cited release."
+  },
+  "financing": [
+    {
+      "borrower": "PT Vale Indonesia Tbk",
+      "instrument": "Sustainability-linked loan facility",
+      "amount_usd_million": 750,
+      "optional_greenshoe_usd_million": 250,
+      "reported_date": "2026-04-23",
+      "classification": "Signed financing facility, not proof of amount drawn nor additional project capex",
+      "project_relation": "Corporate sustainability-linked facility; do not automatically allocate across Pomalaa and Morowali projects",
+      "source": "https://www.vale.com/in/indonesia/sejarah-vale-di-indonesia"
+    }
   ]
 }
