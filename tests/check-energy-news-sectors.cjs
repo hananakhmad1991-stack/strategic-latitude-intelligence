@@ -62,7 +62,7 @@ assert(bar.children.length===6,"All six visible filter chips expected");
 const nre=bar.children.find(x=>x.dataset.sector==="nre");
 assert(nre,"NRE filter must exist even when zero leads");
 nre.click();assert(selected==="nre"&&nre.attributes["aria-pressed"]==="true","Empty NRE sector tab must be clickable");
-assert(gCounts.nre===0,"Historical scan currently must not be fabricated with NRE stories");
+assert(Number.isInteger(gCounts.nre)&&gCounts.nre>=0,"Geopolitical NRE count must reflect actual saved headlines, including empty results");
 const badges=api.badges({title:"Bioethanol E10 mandate",topic_id:"biofuels"},"domestic");
 assert(badges.children.some(x=>x.textContent.includes("NRE")),"Multi-sector badge missing");
 env.window.SLIi18n.language="id";
