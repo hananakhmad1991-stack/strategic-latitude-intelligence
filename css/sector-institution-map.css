@@ -1,0 +1,39 @@
+/* SLI Institutional Organigram · Energy Security style, mobile-first controls */
+.sli-org-mount{min-width:0}
+.sli-org-shell{margin:12px 0 26px!important;background:linear-gradient(145deg,#142c40,#0e2335);border:1px solid #3e586d;border-radius:15px;padding:22px}
+.sli-org-header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px}
+.sli-org-header h2{font-size:clamp(22px,2.2vw,28px);margin:7px 0}
+.sli-org-header .stake-intro{font-size:13px;line-height:1.65;max-width:860px}
+.sli-org-stats{align-self:center;border:1px solid #456479;background:#122e44;padding:10px 14px;border-radius:9px;display:grid;gap:2px;color:#e8d39e;min-width:155px}
+.sli-org-stats strong{font-size:15px}.sli-org-stats span{font-size:11px;color:#b2c5d5}
+.sli-org-disclaimer,.sli-org-footer{font-size:12px;color:#aebfd0;line-height:1.6;border-left:3px solid #cdb274;padding:7px 12px;background:#10293d}
+.sli-org-toolbar{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}
+.sli-org-action,.sli-org-select,.sli-org-search{background:#16374d;border:1px solid #567087;color:#f2f4f7;padding:10px 12px;border-radius:8px;font:inherit;min-width:0}
+.sli-org-action{cursor:pointer}.sli-org-select{flex:1 1 190px;max-width:350px}.sli-org-search{flex:1 1 200px}
+.sli-org-columns{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,1fr);gap:17px;align-items:start}
+.sli-org-main{min-width:0}
+.sli-org-canvas{border:1px solid #37536a;background:#0a2032;border-radius:12px;overflow:hidden}
+.sli-org-svg{display:block;width:100%;height:auto;max-height:560px}
+.sli-org-node{cursor:pointer;outline:none}.sli-org-node:hover rect:first-child,.sli-org-node:focus rect:first-child{filter:brightness(1.45);stroke-width:2.6}
+.sli-org-inspector{border:1px solid #3d5872;border-radius:12px;background:#122c40;padding:20px;min-height:280px}
+.sli-org-inspector h3{color:#f0f5f8;font-size:19px;line-height:1.4}.sli-org-inspector h4{color:#e8cc92;font-size:16px}.sli-org-inspector p{color:#c0cfda;line-height:1.7;font-size:13px}
+.sli-org-inspector a,.sli-org-footer a{color:#e8ce90}
+.sli-org-caveat{border-left:2px solid #d7b678;padding:10px;background:#1a3446}
+.sli-org-guide{padding-left:20px;color:#c5d5df;font-size:13px;line-height:2}
+.sli-org-branch-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
+.sli-org-branch-btn,.sli-org-actor-btn,.sli-org-inspect-list button{border:1px solid #3e6178;background:#19364d;color:#e3ebf1;border-radius:8px;text-align:left;font:inherit;cursor:pointer;font-size:12px;line-height:1.5;padding:11px}
+.sli-org-branch-btn.active,.sli-org-actor-btn.active,.sli-org-branch-btn:hover,.sli-org-inspect-list button:hover{border-color:#d7b678;color:#ffe0a4;background:#23455a}
+.sli-org-actor-list,.sli-org-inspect-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:10px}
+.sli-org-inspect-list{grid-template-columns:1fr}
+.sli-org-status{border:1px solid #3e586d;border-radius:9px;padding:16px;color:#e4c68f}
+@media(max-width:950px){.sli-org-columns{grid-template-columns:1fr}.sli-org-inspector{min-height:0}}
+@media(max-width:650px){
+ .sli-org-shell{padding:13px!important;margin:8px 0 20px!important}
+ .sli-org-toolbar{display:grid;grid-template-columns:minmax(0,1fr);gap:7px}
+ .sli-org-toolbar>*{width:100%;max-width:none}
+ .sli-org-canvas{display:none}
+ .sli-org-branch-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .sli-org-actor-list{grid-template-columns:1fr}
+ .sli-org-inspector{padding:15px}
+ .sli-org-stats{width:100%}
+}
