@@ -23,7 +23,7 @@ window.initSLIInvestment=async function(){
  const intro=$("p",null,"Track policy-relevant investment through verifiable milestones. Announcements, financial commitments, realized investment statistics and operational assets are different measurements and must never be added together.");
  root.append(strap,title,intro);
  const nav=$("div","tr-jumpnav");
- [["inv-kpis","Investment evidence"],["inv-quality","Evidence health"],["inv-sector-history","Energy & mining investment"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-commitments","Equity commitments"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
+ [["inv-kpis","Investment evidence"],["inv-quality","Evidence health"],["inv-sector-history","Energy & mining investment"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-assets","Asset & concession intelligence"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-commitments","Equity commitments"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
  heading(root,"National Investment Evidence","BKPM · BPS · BI / distinguish statistical definitions");
  const kpis=$("div","grid tr-grid");kpis.id="inv-kpis";
  const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Source-dated project / programme records","0 published","Includes individual projects, programme milestones and portfolios; not all represent delivered assets"]];
@@ -45,6 +45,12 @@ window.initSLIInvestment=async function(){
  const section=box(root,"Search the investment pipeline");section.id="inv-pipeline";
  const explorerRoot=$("div");explorerRoot.id="investmentProjectExplorerRoot";section.append(explorerRoot);
  const stat=$("p","tr-detail","Loading source-dated investment dataset…");section.append(stat);
+ heading(root,"Asset, Contract & Operator Intelligence","WK Migas / KKKS · coal IUPK · mineral permits · data center · MoU");
+ const assets=box(root,"Who operates the asset, for how long, with which output and investment?");
+ assets.id="inv-assets";
+ assets.append($("p","tr-detail","Sector-specific legal instruments: PSC contract ends, coal/mineral IUPK permit expiry, data-center facility milestones, and non-binding MoUs are shown independently. Reported production and capacity always retain their reference periods."));
+ const assetRoot=$("div");assetRoot.id="investmentAssetsRoot";assets.append(assetRoot);
+ if(typeof window.initSLIInvestmentAssets==="function")initSafe("Asset and concession intelligence",()=>window.initSLIInvestmentAssets());
  heading(root,"Ownership & Capital Structure","Investor nationality is not ultimate beneficial ownership");
  const own=box(root,"Investor / control intelligence");own.id="inv-ownership";
  own.append($("p",null,"Each verified project record can distinguish Indonesian operating partner, direct shareholder, financing provider, ultimate parent (if independently documented) and public-sector role. Danantara, BP BUMN, line ministries and private investors must not be conflated."));
