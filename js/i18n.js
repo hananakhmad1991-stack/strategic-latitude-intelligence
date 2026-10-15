@@ -5,7 +5,7 @@ const stored=(()=>{try{return localStorage.getItem("sli-ui-language")}catch(e){r
 let lang=stored==="id"?"id":"en";
 const history=new WeakMap(),attributes=new WeakMap();
 const labels=window.SLI_TRANSLATIONS_ID instanceof Map?window.SLI_TRANSLATIONS_ID:new Map();
-const exclusions="script,style,pre,code,textarea,option[data-original],[data-sli-no-translate],.bio-news .bio-source,.bio-news a,.oa-daily-headline a,.events-card h3,.gov-lead a,#geoEvents article a,svg";
+const exclusions="script,style,pre,code,textarea,option[data-original],[data-sli-no-translate],.bio-news .bio-source,.bio-news a,.oa-daily-headline a,.events-card h3,.gov-lead a,.tr-news-card a,.infra-watch-card a,.gov-policy h3,.gov-policy .gov-leader,#geoEvents article a,svg";
 const polishedEnglish=new Map([
  ["Jargas","Household Gas Networks (Jargas)"],
  ["Migas vs EBTKE","Oil and Gas vs NRE & Energy Conservation"],
