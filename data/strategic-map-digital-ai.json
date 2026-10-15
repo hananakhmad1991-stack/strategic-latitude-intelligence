@@ -1,0 +1,346 @@
+{
+  "as_of": "2026-10-15",
+  "title": "Indonesia Digital and AI data-center facility geographic register",
+  "scope": "Province-specific physical facilities/campuses in DKI Jakarta and West Java; AWS and Microsoft cloud-region AZ addresses deliberately not geolocated.",
+  "classification": "A colocation/data center may support AI, but listing as Digital / AI does NOT establish GPU infrastructure or live AI training cluster. Operator-disclosed full-build capacity, campus capacity and energized IT load must not be added. Parent and sub-campus overlaps explicitly labeled.",
+  "records": [
+    {
+      "id": "jakarta-digital-edge-edge1",
+      "asset": "Digital Edge EDGE1 · carrier-neutral data center",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "Kuningan Barat / Mampang Prapatan, South Jakarta, DKI Jakarta",
+      "provinces": [
+        "DKI Jakarta"
+      ],
+      "operator": "PT Ekagrata Data Gemilang / Digital Edge Indonesia",
+      "stage": "Operating facility",
+      "source_url": "https://www.digitaledgedc.com/products-services/data-centers/indonesia/",
+      "source_vintage": "2026 operator product page",
+      "evidence_date": null,
+      "capacity": {
+        "value": 6,
+        "unit": "MW IT",
+        "scope": "Operator site published IT load; not GPU compute or investment"
+      },
+      "notes": "6 MW IT-load facility per Digital Edge. Connectivity / colocation data center, not proof of dedicated GPU AI compute.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jakarta-digital-edge-edge2",
+      "asset": "Digital Edge EDGE2 · AI-ready data center",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "Kuningan Mulia, South Jakarta, DKI Jakarta",
+      "provinces": [
+        "DKI Jakarta"
+      ],
+      "operator": "PT Ekagrata Data Gemilang / Digital Edge Indonesia",
+      "stage": "Operating · inaugurated March 2024",
+      "source_url": "https://id.digitaledgedc.com/event/edge2-data-center-grand-launch-ceremony-in-jakarta",
+      "source_vintage": "2024 inauguration; operator 2026 page",
+      "evidence_date": null,
+      "capacity": {
+        "value": 23,
+        "unit": "MW IT",
+        "scope": "Operator facility IT load, not new IT load added in 2026"
+      },
+      "notes": "23 MW AI-ready EDGE2 in downtown Jakarta. Do not count as a new 2026 project.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jakarta-dci-e1",
+      "asset": "DCI Indonesia / Salim Group · E1 edge data center",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "Ariobimo Sentral, Kuningan, South Jakarta, DKI Jakarta",
+      "provinces": [
+        "DKI Jakarta"
+      ],
+      "operator": "PT DCI Indonesia Tbk platform / PT Datacenter Indonesia Sukses Perkasa (DISP)",
+      "stage": "Operating since December 2023",
+      "source_url": "https://dci-indonesia.com/news/dci-indonesias-tier-iv-data-center-e1-is-operational-and-serving-various-users-in-the-heart-of-jakarta",
+      "source_vintage": "2026 operator notice (Dec 2023 operations)",
+      "evidence_date": null,
+      "capacity": {
+        "value": 18,
+        "unit": "MW IT",
+        "scope": "2026 release cites 18 MW IT; platform page reports 19 MW later, reconcile vintages"
+      },
+      "notes": "DCI confirms E1 serving customers in Jakarta. Facility capacity disclosed as 18 MW IT in its operation release and 19 MW on more recent site directory; use 18 MW as vintage-specific, not additive to platform aggregate.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jakarta-ntt-jkt2",
+      "asset": "NTT DATA · Jakarta 2 data center",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "Central Jakarta, DKI Jakarta",
+      "provinces": [
+        "DKI Jakarta"
+      ],
+      "operator": "NTT DATA Global Data Centers",
+      "stage": "Operating / marketed facility",
+      "source_url": "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/asia-pacific/jakarta-2-data-center",
+      "source_vintage": "2026 accessible operator page",
+      "evidence_date": null,
+      "capacity": {
+        "value": 9.4,
+        "unit": "MW IT",
+        "scope": "Operator critical IT-load rating for Jakarta 2 facility"
+      },
+      "notes": "NTT identifies operating JKT2 central-Jakarta carrier-neutral colocation data center. Capacity displayed is critical IT load, not AI GPU deployment.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jakarta-ntt-jkt2a",
+      "asset": "NTT DATA · Jakarta 2 Annex data center",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "Central Jakarta, DKI Jakarta",
+      "provinces": [
+        "DKI Jakarta"
+      ],
+      "operator": "NTT DATA Global Data Centers",
+      "stage": "Operating / marketed facility",
+      "source_url": "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/asia-pacific/jakarta-2a-data-center",
+      "source_vintage": "2026 accessible operator page",
+      "evidence_date": null,
+      "capacity": null,
+      "notes": "JKT2A is part of the JKT2 campus; keep an individual dossier but do NOT sum stated 12-MW campus aspiration and JKT2 facility rating. Operator page contains a typographical '12W' in specification; no standalone capacity imputed.",
+      "related_existing_record": "jakarta-ntt-jkt2",
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jabar-dci-h1",
+      "asset": "DCI Indonesia · H1 Campus (JK1, JK2, JK3, JK5, JK6)",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "Cibitung, Bekasi Regency, Jawa Barat",
+      "provinces": [
+        "Jawa Barat"
+      ],
+      "operator": "PT DCI Indonesia Tbk",
+      "stage": "Operating hyperscale campus",
+      "source_url": "https://dci-indonesia.com/data-centers",
+      "source_vintage": "2026 operator campus listing",
+      "evidence_date": null,
+      "capacity": {
+        "value": 75,
+        "unit": "MW IT",
+        "scope": "2026 live campus total, includes JK6 and four other facilities"
+      },
+      "notes": "DCI H1 Cibitung consists of five live data centers with operator-reported 75 MW total IT load. JK6 is a SUBSITE of H1; exclude it when summing campus capacity.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jabar-dci-jk6",
+      "asset": "DCI Indonesia · JK6 AI-ready data center",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "H1 Campus, Cibitung, Bekasi Regency, Jawa Barat",
+      "provinces": [
+        "Jawa Barat"
+      ],
+      "operator": "PT DCI Indonesia Tbk",
+      "stage": "Operational since June 2025",
+      "source_url": "https://dci-indonesia.com/news",
+      "source_vintage": "2025 operator inauguration",
+      "evidence_date": null,
+      "capacity": {
+        "value": 36,
+        "unit": "MW IT",
+        "scope": "Facility-level rating included inside the 75-MW H1 campus"
+      },
+      "notes": "DCI launched JK6 in Cibitung with a 36 MW capacity. It is INCLUDED in the H1 Campus published total, NOT a separate 36 MW addition to 75 MW.",
+      "related_existing_record": "jabar-dci-h1",
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jabar-dci-h2",
+      "asset": "DCI Indonesia · H2 Campus",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "Karawang Regency, Jawa Barat",
+      "provinces": [
+        "Jawa Barat"
+      ],
+      "operator": "PT DCI Indonesia Tbk / DCI platform",
+      "stage": "Operating hyperscale campus",
+      "source_url": "https://dci-indonesia.com/data-centers",
+      "source_vintage": "2026 operator campus listing",
+      "evidence_date": null,
+      "capacity": {
+        "value": 30,
+        "unit": "MW IT",
+        "scope": "2026 operator campus total, not the prospective 600-MW expansion"
+      },
+      "notes": "DCI states two live facilities at its H2 Karawang Campus, with 30 MW combined operating IT load. At least 600 MW potential is NOT commissioned capacity.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jabar-ntt-jkt3",
+      "asset": "NTT DATA · Jakarta 3 (JKT3) data center",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "Bekasi Regency, Jawa Barat",
+      "provinces": [
+        "Jawa Barat"
+      ],
+      "operator": "NTT DATA Global Data Centers",
+      "stage": "Operating / marketed campus",
+      "source_url": "https://services.global.ntt/de-de/services-and-products/global-data-centers/global-locations/asia-pacific/jakarta-3-data-center",
+      "source_vintage": "2026 accessible operator listing",
+      "evidence_date": null,
+      "capacity": {
+        "value": 45,
+        "unit": "MW IT",
+        "scope": "Operator campus nameplate/critical IT load, NOT utilization"
+      },
+      "notes": "The brand 'Jakarta 3' refers to a facility in BEKASI, WEST JAVA, not DKI Jakarta. Operator cites ~45 MW maximum critical IT load; distinguish full campus nameplate from utilized/energized load.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jabar-pdg-jc1-jc2",
+      "asset": "Princeton Digital Group · JC1 / JC2 Cibitung campuses",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "MM2100 Industrial Estate, Cibitung, Bekasi Regency, Jawa Barat",
+      "provinces": [
+        "Jawa Barat"
+      ],
+      "operator": "Princeton Digital Group",
+      "stage": "Operating facilities",
+      "source_url": "https://princetondg.com/where-we-operate/",
+      "source_vintage": "2026 operator portfolio listing",
+      "evidence_date": null,
+      "capacity": {
+        "value": 26,
+        "unit": "MW",
+        "scope": "PDG combined capacity for JC1 + JC2 (two facilities)"
+      },
+      "notes": "Two facilities at a shared Cibitung campus. PDG reports 26 MW combined; do not add 26 MW to each site.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jabar-pdg-jc3",
+      "asset": "Princeton Digital Group · JC3 hyperscale campus",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "GIIC Kota Deltamas, Central Cikarang, Bekasi Regency, Jawa Barat",
+      "provinces": [
+        "Jawa Barat"
+      ],
+      "operator": "Princeton Digital Group",
+      "stage": "Planned / phased campus",
+      "source_url": "https://princetondg.com/where-we-operate/",
+      "source_vintage": "2026 operator portfolio listing",
+      "evidence_date": null,
+      "capacity": {
+        "value": 120,
+        "unit": "MW planned",
+        "scope": "Operator eventual campus design, not live commissioned MW"
+      },
+      "notes": "PDG lists 120 MW planned JC3 two-building campus; project buildout, energization and delivered IT load require independent progress verification.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jabar-pdg-jc4",
+      "asset": "Princeton Digital Group · JC4 hyperscale campus",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "GIIC Kota Deltamas, Bekasi Regency, Jawa Barat",
+      "provinces": [
+        "Jawa Barat"
+      ],
+      "operator": "Princeton Digital Group",
+      "stage": "Planned / phased campus",
+      "source_url": "https://princetondg.com/where-we-operate/",
+      "source_vintage": "2026 operator portfolio listing",
+      "evidence_date": null,
+      "capacity": {
+        "value": 240,
+        "unit": "MW planned",
+        "scope": "Operator eventual site capacity, not current IT operations"
+      },
+      "notes": "PDG lists 240 MW planned JC4 four-building campus ~1.7 km from JC3. Planned design, not confirmed live or realized investment.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jabar-neutradc-hdc-existing",
+      "asset": "NeutraDC · operational Cikarang hyperscale campus",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "Cikarang, Bekasi Regency, Jawa Barat",
+      "provinces": [
+        "Jawa Barat"
+      ],
+      "operator": "PT Telkom Data Ekosistem (NeutraDC) / Telkom Indonesia",
+      "stage": "Operating campus · separate PLN MoU expansion",
+      "source_url": "https://www.telkom.co.id/sites/berita/id_ID/news/sinergi-danantara-neutradc-gandeng-pln-siapkan-ekspansi-hyperscale-data-center-3881",
+      "source_vintage": "2026-08-14",
+      "evidence_date": null,
+      "capacity": null,
+      "notes": "Telkom describes operational Cikarang HDC and new grid cooperation for longer-term expansion. This operating campus overlaps existing map record 'NeutraDC Cikarang expansion' but different phases; do not sum 200 MW expansion objective as existing campus capacity.",
+      "related_existing_record": "dc-neutra",
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    },
+    {
+      "id": "jabar-neutradc-sentul",
+      "asset": "NeutraDC · Sentul enterprise data center",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "region": "Sentul, Bogor Regency, Jawa Barat",
+      "provinces": [
+        "Jawa Barat"
+      ],
+      "operator": "PT Telkom Data Ekosistem (NeutraDC) / Telkom Indonesia",
+      "stage": "Operating enterprise data-center location",
+      "source_url": "https://www.telkom.co.id/sites/news-resources/en_US/news/neutradc-unveils-expansion-strategy-and-batam%27s-vital-role-in-indonesia%27s-data-center-industry-2185",
+      "source_vintage": "2023 Telkom operator disclosure",
+      "evidence_date": null,
+      "capacity": null,
+      "notes": "Telkom names Sentul as one of three enterprise data-center locations. Verify specific local campus footprint; no site-specific MW reported.",
+      "related_existing_record": null,
+      "financial_baseline": null,
+      "location_precision": "Verified province and named campus/district, not independently surveyed facility coordinates",
+      "source_class": "Operator / company first-party disclosure"
+    }
+  ]
+}
