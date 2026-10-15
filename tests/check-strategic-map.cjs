@@ -110,7 +110,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(smelters.records.some(x=>x.id==="sml-ica-tayan"&&x.capacity.value===300000),"Tayan CGA indexed");
  assert.ok(smelters.records.some(x=>x.id==="sml-hpl-obi"&&x.product.includes("MHP")),"Harita HPAL indexed");
  assert.ok(smelters.records.some(x=>x.id==="sml-kalimantan-surya"&&x.province===null),"Unknown copper facility coordinate not invented");
- assert.ok(smelters.records.every(x=>x.source.startsWith("https://")&&x.region&&x.province&&x.stage),"Enriched smelters all have sourced facility-level context");
+ assert.ok(smelters.records.every(x=>x.source.startsWith("https://")&&x.region&&(x.province||/unverified|unknown/i.test(x.location_precision||""))&&x.stage),"Every smelter has dated source, status and locality OR honestly unverified coordinates");
  assert.ok(pltu.records.some(x=>x.asset.includes("Batang")&&x.region.includes("Jawa Tengah")&&x.capacity.value===2000),"Batang 2 x 1,000 MW");
  assert.ok(pltu.records.some(x=>x.asset.includes("Jawa 9")&&x.region.includes("Banten")),"Jawa 9/10 2025 COD");
  assert.ok(pltu.records.some(x=>x.asset.includes("Celukan Bawang")&&x.region.includes("Bali")),"Bali coal IPP");
