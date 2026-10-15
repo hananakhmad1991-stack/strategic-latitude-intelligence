@@ -51,6 +51,12 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  const select=all.filter(n=>n.tagName==="select");
  assert.equal(select.length,4,"Should have dataset, sector, stage and geographic filters");
  const [dataset,sector,stage,location]=select;
+ const expand=all.find(n=>n.className==="map-btn map-expand");
+ assert.ok(expand,"List expansion control should exist");
+ expand.events.click();
+ assert.equal(expand.attributes["aria-expanded"],"true","Users can reveal the full-height list");
+ expand.events.click();
+ assert.equal(expand.attributes["aria-expanded"],"false","Users can collapse the list");
  assert.equal(dataset.value,"all","Default must be all projects, assets and refineries");
  const filtering=all.find(n=>n.className==="map-search");
  const assets=JSON.parse(fs.readFileSync(path.join(ROOT,"data/investment-operator-assets.json"),"utf8")).records;
