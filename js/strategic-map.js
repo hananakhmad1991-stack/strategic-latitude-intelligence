@@ -284,7 +284,8 @@ function mapPage(root,data){
  const digitalRows=allRows.filter(r=>r.sectorKey==="Digital & AI");
  const counters=node("div","map-stats");
  const assetCount=allAssets.length,projectCount=allProjects.length,refineryCount=allRefineries.length,siteCount=allSites.length;
- for(const [name,val] of [
+ const registryCounts=[
+
   [label("All source-dated records","Semua catatan bersumber"),allRows.length],
   [label("Investment project dossiers","Dossier proyek investasi"),projectCount],
   [label("Asset / operator dossiers","Dossier aset / operator"),assetCount],
@@ -297,10 +298,20 @@ function mapPage(root,data){
   [label("Regional source cross-checks","Pemeriksaan sumber regional"),allRegional.length],
   [label("Jakarta / West Java digital facilities","Fasilitas digital Jakarta / Jawa Barat"),allDigital.length],
   [label("Province boundaries","Batas provinsi"),geometry.length]
+ ];
+ for(const [name,val] of [
+  [label("Sourced catalogue records","Catatan katalog bersumber"),allRows.length],
+  [label("Indonesian provinces","Provinsi Indonesia"),geometry.length],
+  [label("Sector families","Kelompok sektor"),SECTORS.filter(x=>allRows.some(r=>r.sectorKey===x[0])).length],
+  [label("Distinct source layers","Lapisan data sumber"),9]
  ]){
   const c=node("div","map-stat");c.append(node("span",null,name),node("strong",null,val));counters.append(c);
  }
  head.append(counters);root.append(head);
+ const introduction=node("p","map-taxonomy-intro",label(
+  "HOW TO USE · First choose the industry sector; then the asset or technology (for example Oil & Gas → Oil Refinery, or Minerals & Metals → Smelter & Metal Refining). The original company/source register is available only under Advanced.",
+  "CARA MEMBACA · Pilih sektor industri, kemudian jenis aset atau teknologi (misalnya Migas → Kilang Minyak, atau Mineral & Logam → Smelter & Pemurnian Logam). Registri sumber asli tersedia di menu Lanjutan."
+ ));root.append(introduction);
  const stat=data.pltuAudit?.summary_stats;
  if(stat){
   const panel=node("section","map-pln-baseline");
@@ -350,6 +361,9 @@ function mapPage(root,data){
  ctrl(label("3 · Project phase","3 · Tahapan proyek"),stage),ctrl(label("4 · Province","4 · Provinsi"),provinceSelect),
  ctrl(label("Geographic accuracy","Akurasi lokasi"),location),ctrl(label("Search operator, asset, WK…","Cari operator, aset, WK…"),search," map-search-row"),reset);
  root.append(controls);
+ const glossaryShortcut=node("button","map-btn map-glossary-btn",label("ⓘ Open definitions & appendix","ⓘ Lihat istilah & lampiran"));glossaryShortcut.type="button";
+ glossaryShortcut.addEventListener("click",()=>{outside.open=true;outside.scrollIntoView?.({behavior:"smooth",block:"start"})});
+ root.append(glossaryShortcut);
  const advanced=node("details","map-advanced");const advSummary=node("summary",null,label("Advanced · original data registry (optional)","Lanjutan · registri sumber asli (opsional)"));
  advanced.append(advSummary,ctrl(label("Original registry · not an industry sector","Registri asal · bukan sektor industri"),kind));root.append(advanced);
  const shortcuts=node("div","map-digital-shortcuts"),shortLabel=node("span","map-short-label",label("DIGITAL / AI QUICK VIEW","TAMPILAN CEPAT DIGITAL / AI"));
@@ -418,8 +432,33 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
  });
  expand.setAttribute("aria-expanded","false");
  resultsHead.append(heading,info,expand);side.append(resultsHead,list);grid.append(side);root.append(grid);
- const outside=node("details","map-footer"),summary=node("summary",null,label("Map appendix · geography, status, classification, and limitations","Lampiran peta · geografi, status, klasifikasi, dan keterbatasan"));
+ const outside=node("details","map-footer"),summary=node("summary",null,label("APPENDIX · All terms, abbreviations, units, classification and methodology","LAMPIRAN · Istilah, singkatan, satuan, klasifikasi dan metodologi"));
  const appendix=node("div");
+ const guide=data.glossary;
+ if(guide?.sections?.length){
+  const glossaryHead=node("section","map-glossary-head");
+  glossaryHead.append(node("h3",null,label("Glossary of every map term","Glosarium istilah peta")));
+  glossaryHead.append(node("p","map-muted",label(guide.intro_en||"Terminology follows underlying sources.",guide.intro_id||"Istilah mengikuti dokumen sumber.")));
+  const count=guide.sections.reduce((n,x)=>n+(x.items?.length||0),0);
+  glossaryHead.append(node("p","map-glossary-count",count+" "+label("bilingual definitions in ","definisi dwibahasa dalam ")+guide.sections.length+" "+label("topics","kelompok")));
+  appendix.append(glossaryHead);
+  for(const group of guide.sections){
+   const det=node("details","map-glossary-section"),summary=node("summary",null,label(group.title_en,group.title_id));
+   det.append(summary);
+   const terms=node("dl","map-terms");
+   for(const item of group.items||[]){
+    terms.append(node("dt",null,item.term),node("dd",null,label(item.definition_en,item.definition_id)));
+   }
+   det.append(terms);appendix.append(det);
+  }
+ }
+ const origin=node("details","map-registry-appendix"),originSummary=node("summary",null,label("Data layers and potential duplicate record counts","Lapisan sumber dan potensi duplikasi hitungan"));
+ origin.append(originSummary,node("p","map-muted",label(
+  "A raw data registry is NOT a sector. The rows below are source-register counts and may cover the same facility, its corporate operator or several sub-units.",
+  "Registri asal BUKAN sektor industri. Jumlah berikut merupakan entri menurut sumber yang mungkin berulang antara fasilitas, perusahaan operator atau sejumlah unit."
+  )));
+ for(const [title,n] of registryCounts)origin.append(node("p","map-registry-line",title+": "+n));
+ appendix.append(origin);
  appendix.append(node("p",null,label(
   "This is a geographic index of source-attributed project and asset records, not a geocoded site database. A record is placed at province level only if a unique province is independently indicated by its existing source-dated dossier. Missing, nationwide and multi-province cases remain unlocated. Do not interpret bubble centers as addresses or facility coordinates.",
   "Ini adalah indeks geografis catatan aset dan proyek bersumber, bukan basis data lokasi fasilitas presisi. Catatan ditempatkan pada tingkat provinsi hanya jika dossier menyebutkan satu provinsi secara jelas. Kasus tanpa lokasi, nasional, atau lintas provinsi tidak diberi titik. Pusat lingkaran bukan alamat atau koordinat fasilitas."
