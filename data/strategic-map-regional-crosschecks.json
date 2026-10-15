@@ -1,0 +1,441 @@
+{
+  "as_of": "2026-10-15",
+  "title": "Verified regional map additions & offshore province associations",
+  "scope": "Evidence-backed Batam data centres, East Java / Bali offshore PSCs, Tangguh, Abadi Masela in Maluku and Natuna",
+  "methodology": "Use explicit provinces arrays for offshore multi-province contract associations; no fixed facility pin is inferred. Recorded corporate plans, agreements, FIDs, exploration, production and government groundbreaking have separate meanings. Vintage and parent overlaps are disclosed. Monetary values are never summed across parent and sub-records.",
+  "records": [
+    {
+      "id": "batam-egs-range-ai",
+      "asset": "Equator Gate System / Range IDC · AI Data Centre",
+      "region": "Teluk Mata Ikan, Nongsa, Batam, Kepulauan Riau",
+      "provinces": [
+        "Kepulauan Riau"
+      ],
+      "operator": "PT Equator Gate System Batam · Range Intelligent Computing Technology",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "stage": "PLN power agreement signed; announced development",
+      "source_url": "https://bpbatam.go.id/bp-batam-kawal-investasi-rp88-triliun-ai-data-centre-untuk-transformasi-digital-batam/",
+      "evidence_date": "2026-05-26",
+      "source_vintage": "2026",
+      "location_scope": "named development or site / province association",
+      "notes": "BP Batam reports signed power supply agreement and proposed US$5bn high-density AI data-centre development on 30 ha. Not verified construction spend, completion or live AI GPU compute.",
+      "investment_amount": {
+        "amount": 5,
+        "unit": "USD billion",
+        "basis": "Announced multi-phase investment, NOT realised capital expenditure"
+      },
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "batam-dayone-kabil",
+      "asset": "DayOne / Digitalland · Kabil hyperscale data-centre campus",
+      "region": "Kabil Industrial Tech Park, Batam, Kepulauan Riau",
+      "provinces": [
+        "Kepulauan Riau"
+      ],
+      "operator": "DayOne / PT Digitalland Service One; electricity from PLN Batam",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "stage": "Power purchase agreement; phased campus development",
+      "source_url": "https://ptsp.bpbatam.go.id/investasi-digital-menguat-bp-batam-dukung-proyek-pusat-data-dayone-pln-batam/",
+      "evidence_date": "2026-04-17",
+      "source_vintage": "2026",
+      "location_scope": "named development or site / province association",
+      "notes": "BP Batam reports 511 MVA electricity supply agreement (described as 450 MW equivalent) for Kabil campus in phases 2026–27; contracted input power, NOT confirmed commissioned IT MW, installed GPUs, or physical data-centre operating capacity.",
+      "investment_amount": null,
+      "capacity_or_power": {
+        "value": 511,
+        "unit": "MVA",
+        "basis": "Contracted power, not operational IT load"
+      },
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "batam-pdg-nongsa",
+      "asset": "Princeton Digital Group (PDG) · Nongsa hyperscale campus",
+      "region": "Nongsa Digital Park, Batam, Kepulauan Riau",
+      "provinces": [
+        "Kepulauan Riau"
+      ],
+      "operator": "Princeton Digital Group",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "stage": "Earlier announced investment / campus plan",
+      "source_url": "https://bpbatam.go.id/satu-lagi-data-centre-dibangun-di-batam-kepala-bp-batam-siap-mengawal/",
+      "evidence_date": "2023-04-17",
+      "source_vintage": "2023",
+      "location_scope": "named development or site / province association",
+      "notes": "BP Batam reported an initial near-US$1bn intended investment and conceptual four-building 96 MW campus. Publication-era proposal, NOT independently verified as 96 MW operating in Oct 2026.",
+      "investment_amount": {
+        "amount": 1,
+        "unit": "USD billion",
+        "basis": "Approximate early-stage announced investment; not realised"
+      },
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "batam-dayone-nongsa",
+      "asset": "DayOne data-centre presence · Nongsa Digital Park",
+      "region": "Nongsa Digital Park, Batam, Kepulauan Riau",
+      "provinces": [
+        "Kepulauan Riau"
+      ],
+      "operator": "DayOne / Nongsa Digital Park ecosystem",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "stage": "Operator park timeline describes operations since 2025",
+      "source_url": "https://nongsadigital.com/our-company/",
+      "evidence_date": "2025-12-31",
+      "source_vintage": "2025",
+      "location_scope": "named development or site / province association",
+      "notes": "Nongsa Digital Park timeline reports DayOne operations in 2025. Different location from the newer Kabil development; no operating IT power asserted.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "batam-gdg-nongsa",
+      "asset": "Golden Digital Gateway · Nongsa Digital Park",
+      "region": "Nongsa Digital Park, Batam, Kepulauan Riau",
+      "provinces": [
+        "Kepulauan Riau"
+      ],
+      "operator": "Golden Digital Gateway · Nongsa Digital Park",
+      "sector": "AI / Data Center",
+      "group": "Digital / AI",
+      "stage": "Park operator reports operational milestone in 2024",
+      "source_url": "https://nongsadigital.com/our-company/",
+      "evidence_date": "2024-12-31",
+      "source_vintage": "2024",
+      "location_scope": "named development or site / province association",
+      "notes": "Nongsa Digital Park's company timeline describes Golden Digital Gateway as commencing operations in 2024. Do not infer certified 2026 power/capex.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "eastjava-ketapang-psc",
+      "asset": "Ketapang PSC · offshore East Java",
+      "region": "Offshore northern East Java / Ketapang PSC, Jawa Timur",
+      "provinces": [
+        "Jawa Timur"
+      ],
+      "operator": "PETRONAS / PC Ketapang",
+      "sector": "Oil & Gas",
+      "group": "WK Migas / PSC",
+      "stage": "PETRONAS-operated PSC (2026 statement)",
+      "source_url": "https://www.petronas.com/media/media-releases/petronas-confirms-hydrocarbon-discovery-barokah-1-east-java-indonesia",
+      "evidence_date": "2026-03-12",
+      "source_vintage": "2026",
+      "location_scope": "offshore / province association",
+      "notes": "PETRONAS confirms Ketapang among its East Java offshore operated PSCs. Existence of a PSC is not proof of new capital expenditure.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "eastjava-north-ketapang-barokah",
+      "asset": "North Ketapang PSC · Barokah-1 discovery",
+      "region": "Offshore North Madura / East Java, Jawa Timur",
+      "provinces": [
+        "Jawa Timur"
+      ],
+      "operator": "PETRONAS North Ketapang (51% PI); partners SK earthon 34%, PHE 15%",
+      "sector": "Oil & Gas",
+      "group": "WK Migas / PSC",
+      "stage": "Exploration discovery; commerciality still under evaluation",
+      "source_url": "https://www.petronas.com/media/media-releases/petronas-confirms-hydrocarbon-discovery-barokah-1-east-java-indonesia",
+      "evidence_date": "2026-03-12",
+      "source_vintage": "2026",
+      "location_scope": "offshore / province association",
+      "notes": "2026 Barokah-1 hydrocarbons discovery, NOT commercial production or an approved field development at present.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "eastjava-north-madura-hidayah",
+      "asset": "North Madura II PSC · Hidayah field development",
+      "region": "North Madura offshore, Jawa Timur",
+      "provinces": [
+        "Jawa Timur"
+      ],
+      "operator": "PETRONAS · PC North Madura II Ltd (100% operator PI in Jan 2025 release)",
+      "sector": "Oil & Gas",
+      "group": "WK Migas / PSC",
+      "stage": "Final investment decision reached 2025; not yet assumed producing",
+      "source_url": "https://www.petronas.com/media/media-releases/petronas-reaches-final-investment-decision-hidayah-development-project",
+      "evidence_date": "2025-01-10",
+      "source_vintage": "2025",
+      "location_scope": "offshore / province association",
+      "notes": "PETRONAS announced FID for Hidayah development in North Madura II PSC. FID is not proof of start-up or expenditure realised.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "eastjava-serpang-psc",
+      "asset": "Serpang PSC · offshore East Java",
+      "region": "Offshore East Java, Jawa Timur",
+      "provinces": [
+        "Jawa Timur"
+      ],
+      "operator": "PETRONAS Energy Serpang (operator) · INPEX · SK earthon",
+      "sector": "Oil & Gas",
+      "group": "WK Migas / PSC",
+      "stage": "PSC signed 2025 · exploration stage",
+      "source_url": "https://www.petronas.com/bm/node/1653",
+      "evidence_date": "2025-05-21",
+      "source_vintage": "2025",
+      "location_scope": "offshore / province association",
+      "notes": "PETRONAS records PSC signing, 3-year G&G and 400 km² of 3D seismic commitment; not a production field.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "eastjava-kangean-pagerungan",
+      "asset": "Kangean PSC · Pagerungan gas field",
+      "region": "Pagerungan / Kangean Islands, offshore Jawa Timur",
+      "provinces": [
+        "Jawa Timur"
+      ],
+      "operator": "Kangean Energy Indonesia (historical reported operating field)",
+      "sector": "Oil & Gas",
+      "group": "Gas fields / LNG",
+      "stage": "Gas production confirmed in 2025 ESDM field visit",
+      "source_url": "https://migas.esdm.go.id/post/mwt-dirtekling-ke-hcml-pasuruan-dan-kei-pagerungan-tinjau-pemenuhan-aspek-keselamatan-kegiatan-operasi-migas",
+      "evidence_date": "2025-01-15",
+      "source_vintage": "2025",
+      "location_scope": "offshore / province association",
+      "notes": "ESDM describes production at Pagerungan; field is within Kangean PSC. Facility/site may overlap existing WK listing; no 2026 production volume asserted.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "eastjava-kangean-tsb",
+      "asset": "Kangean PSC · Terang–Sirasun–Batur (TSB) gas",
+      "region": "Offshore Kangean Islands / Jawa Timur",
+      "provinces": [
+        "Jawa Timur"
+      ],
+      "operator": "Kangean Energy Indonesia",
+      "sector": "Oil & Gas",
+      "group": "Gas fields / LNG",
+      "stage": "Gas production confirmed in 2025 ESDM field visit",
+      "source_url": "https://migas.esdm.go.id/post/mwt-dirtekling-ke-hcml-pasuruan-dan-kei-pagerungan-tinjau-pemenuhan-aspek-keselamatan-kegiatan-operasi-migas",
+      "evidence_date": "2025-01-15",
+      "source_vintage": "2025",
+      "location_scope": "offshore / province association",
+      "notes": "Separate gas fields within Kangean PSC; production from TSB and Pagerungan was confirmed on ESDM visit, no independent current 2026 flow rate.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "eastjava-bawean-psc",
+      "asset": "Bawean PSC · East Java offshore contract",
+      "region": "Offshore Bawean / Java Sea, Jawa Timur",
+      "provinces": [
+        "Jawa Timur"
+      ],
+      "operator": "PSC contractor as documented by ESDM 2022 (current operator needs recheck)",
+      "sector": "Oil & Gas",
+      "group": "WK Migas / PSC",
+      "stage": "PSC signed 2022; present phase unverified",
+      "source_url": "https://migas.esdm.go.id/post/kementerian-esdm-umumkan-pemenang-lelang-west-kampar-dan-penandatanganan-kontrak-wk-bawean",
+      "evidence_date": "2022-11-23",
+      "source_vintage": "2022",
+      "location_scope": "offshore / province association",
+      "notes": "Do not assume 2008 terminated Bawean I PSC is identical to the 2022 Bawean PSC; current production or active work programme not established.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "bali-jatim-agung-i",
+      "asset": "Agung I PSC · offshore Bali and East Java",
+      "region": "Offshore Bali and East Java; MULTI-PROVINCE WK",
+      "provinces": [
+        "Bali",
+        "Jawa Timur"
+      ],
+      "operator": "bp Agung I Limited / bp (100% PI per May 2025 portfolio)",
+      "sector": "Oil & Gas",
+      "group": "WK Migas / PSC",
+      "stage": "Exploration PSC · bp 2025 holdings",
+      "source_url": "https://www.bp.com/content/dam/bp/country-sites/en_id/indonesia/home/who-we-are/bp%20Company%20Profile%20-%202025%20%28ENG%29.pdf",
+      "evidence_date": "2025-05-01",
+      "source_vintage": "2025",
+      "location_scope": "offshore / province association",
+      "notes": "CROSS-PROVINCE offshore PSC association to Bali AND Jawa Timur; a province bubble is not an offshore well coordinate and this is NOT producing oil or gas. ESDM confirmed Agung I exploration contract in 2022.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "jatim-ntb-sulsel-agung-ii",
+      "asset": "Agung II PSC · offshore multi-province survey",
+      "region": "Offshore Java–Lesser Sunda–Sulawesi waters; MULTI-PROVINCE WK",
+      "provinces": [
+        "Jawa Timur",
+        "Nusa Tenggara Barat",
+        "Sulawesi Selatan"
+      ],
+      "operator": "bp Agung II Limited / bp (100% PI per May 2025 portfolio)",
+      "sector": "Oil & Gas",
+      "group": "WK Migas / PSC",
+      "stage": "Exploration PSC · bp 2025 holdings",
+      "source_url": "https://www.bp.com/content/dam/bp/country-sites/en_id/indonesia/home/who-we-are/bp%20Company%20Profile%20-%202025%20%28ENG%29.pdf",
+      "evidence_date": "2025-05-01",
+      "source_vintage": "2025",
+      "location_scope": "offshore / province association",
+      "notes": "bp 2025 corporate profile names East Java, West Nusa Tenggara and South Sulawesi as offshore association. Do not infer individual land-based facilities.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "papuabarat-tangguh-lng",
+      "asset": "Tangguh LNG · Berau PSC and producing trains",
+      "region": "Teluk Bintuni, Papua Barat",
+      "provinces": [
+        "Papua Barat"
+      ],
+      "operator": "bp (operator), Berau / Wiriagar / Muturi Tangguh project partners",
+      "sector": "Oil & Gas",
+      "group": "Gas fields / LNG",
+      "stage": "Existing LNG production; separate UCC expansion",
+      "source_url": "https://www.inpex.com/english/business/project/tangguh.html",
+      "evidence_date": "2026-10-15",
+      "source_vintage": "2026",
+      "location_scope": "named development or site / province association",
+      "notes": "Tangguh LNG trains already produce LNG (first exports 2009, Train 3 production 2023); Berau PSC runs to 2055. Distinguish operating base trains from Ubadari/CCUS construction; no extra capital amount inferred.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": "wk-tangguh-ucc",
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "maluku-masela-abadi",
+      "asset": "Masela PSC · Abadi LNG and Tanimbar onshore site",
+      "region": "Arafura Sea ~170–180 km southwest of Tanimbar Islands; proposed LNG shore base Kepulauan Tanimbar, Maluku",
+      "provinces": [
+        "Maluku"
+      ],
+      "operator": "INPEX Masela 65% (operator) · PHE Masela 20% · PETRONAS 15%",
+      "sector": "Oil & Gas",
+      "group": "Gas fields / LNG",
+      "stage": "July 2026 government groundbreaking; FEED / FID verification separate",
+      "source_url": "https://esdm.go.id/id/media-center/arsip-berita/pembangunan-lng-abadi-masela-mulai-jalan-pemerintah-dorong-pertumbuhan-ekonomi-lokal-",
+      "evidence_date": "2026-07-16",
+      "source_vintage": "2026",
+      "location_scope": "offshore / province association",
+      "notes": "NOT Nusa Tenggara Timur: offshore Arafura Masela WK associated with Tanimbar Regency, MALUKU. ESDM says physical groundbreaking July 2026; INPEX project profile still describes FEED and pre-FID preparation; do not equate groundbreaking with LNG production.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": "wk-masela",
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "kepri-natuna-b-production",
+      "asset": "South Natuna Sea Block B · producing gas and oil",
+      "region": "Offshore Natuna Sea, Kepulauan Riau",
+      "provinces": [
+        "Kepulauan Riau"
+      ],
+      "operator": "MedcoEnergi (operator; multiple contract PI holders)",
+      "sector": "Oil & Gas",
+      "group": "WK Migas / PSC",
+      "stage": "Producing block",
+      "source_url": "https://www.energimedco.org/en/our-businesses/oil-gas/south-natuna-sea-block-b/index.html",
+      "evidence_date": "2026-10-15",
+      "source_vintage": "2026",
+      "location_scope": "offshore / province association",
+      "notes": "Medco public profile confirms producing South Natuna Sea Block B PSC with 15 offshore platforms and FPSO Belanak. Offshore province association, not Natuna town location.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": "wk-medco-south-natuna-b",
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "kepri-forel-terubuk",
+      "asset": "Forel and Terubuk fields · South Natuna Sea Block B",
+      "region": "Offshore Natuna Sea, Kepulauan Riau",
+      "provinces": [
+        "Kepulauan Riau"
+      ],
+      "operator": "Medco E&P Natuna Ltd · MedcoEnergi",
+      "sector": "Oil & Gas",
+      "group": "Gas fields / LNG",
+      "stage": "Production inaugurated May 2025",
+      "source_url": "https://www.esdm.go.id/id/media-center/arsip-berita/wujudkan-swasembada-energi-presiden-ri-resmikan-produksi-perdana-dua-lapangan-migas",
+      "evidence_date": "2025-05-16",
+      "source_vintage": "2025",
+      "location_scope": "offshore / province association",
+      "notes": "ESDM inaugurated first output from Forel and Terubuk in 2025; fields belong to South Natuna Sea Block B, not separate PSCs.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": "kepri-natuna-b-production",
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    },
+    {
+      "id": "kepri-natuna-d-alpha",
+      "asset": "Natuna D-Alpha · 2026 government WK tender",
+      "region": "Offshore East Natuna area, Kepulauan Riau",
+      "provinces": [
+        "Kepulauan Riau"
+      ],
+      "operator": "Unassigned in cited 2026 government tender",
+      "sector": "Oil & Gas",
+      "group": "WK Migas / PSC",
+      "stage": "Offered in 2026 tender; NOT confirmed awarded/producing",
+      "source_url": "https://migas.esdm.go.id/post/Genjot-Investasi-Hulu-Migas-Pemerintah-Umumkan-Lelang-13-Wilayah-Kerja-dengan-Skema-Kontrak-Fleksibel",
+      "evidence_date": "2026-05-20",
+      "source_vintage": "2026",
+      "location_scope": "offshore / province association",
+      "notes": "ESDM May 2026 offer is evidence of tender only; no award, operating entity, approval of field development, or financing assumed.",
+      "investment_amount": null,
+      "capacity_or_power": null,
+      "related_existing_record": null,
+      "source_class": "Official regulator, public investment authority, operator or corporate site",
+      "not_unique_capex_warning": "A site/PSC/field/phase may overlap other registries. PPA/announced project value is NOT spending realised."
+    }
+  ]
+}
