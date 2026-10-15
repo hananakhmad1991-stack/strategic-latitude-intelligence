@@ -5,7 +5,7 @@ const NS="http://www.w3.org/2000/svg";
 const colors=["#D8BD80","#83BACB","#82B5A3","#B9A2D8","#D9A780","#95AED6"];
 const E=(tag,cls,label)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(label!==undefined)el.textContent=String(label);return el};
 const SVG=(tag,attrs,parent,label)=>{const el=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs||{}))el.setAttribute(k,String(v));if(label!==undefined)el.textContent=String(label);if(parent)parent.append(el);return el};
-const link=(url,label)=>{const a=E("a",null,label);a.href=/^https:\/\//.test(url||"")?url:"#policy";if(a.href.startsWith("https://")){a.target="_blank";a.rel="noopener noreferrer"}else a.addEventListener("click",ev=>{ev.preventDefault();document.querySelector('#nav button[data-page="policy"]')?.click()});return a};
+const link=(url,label)=>{const a=E("a",null,label);const external=/^https:\/\//.test(url||"");a.href=external?url:"#policy";if(external){a.target="_blank";a.rel="noopener noreferrer"}else a.addEventListener("click",ev=>{ev.preventDefault();document.querySelector('#nav button[data-page="policy"]')?.click()});return a};
 const fade=(str,max)=>str.length<=max?str:str.slice(0,max-1)+"…";
 function init(sector,mount,fallback=[]){
  if(!mount)return;
