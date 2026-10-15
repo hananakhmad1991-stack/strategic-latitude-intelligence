@@ -70,7 +70,7 @@ def ie_sr_official_discovery(errors):
     except Exception as exc:
         errors.append({"source":"IESR official agenda","error":type(exc).__name__+": "+str(exc)[:125]})
         return []
-    p,_=flatten(directory)
+    p,_=flattened(directory)
     candidates=[];dedup=set()
     for href in p.anchors:
         u=urllib.parse.urljoin(link,href).split("#",1)[0]
@@ -82,7 +82,7 @@ def ie_sr_official_discovery(errors):
     for u in candidates:
         try:
             page=get_html(u)
-            el,t=flatten(page)
+            el,t=flattened(page)
             title=" ".join(el.h1).strip()
             date=date_from_page(t)
             if not date or date<TODAY or date>TODAY+dt.timedelta(days=500):continue
@@ -119,7 +119,7 @@ def check_seed(event,errors):
     u=e["source_url"]
     try:
         doc=get_html(u)
-        _,body=flatten(doc)
+        _,body=flattened(doc)
         compact=re.sub(r"\s+"," ",body)
         hints=e.get("date_hints",[])
         # Source pages can use different date typography; failure means review, not a reschedule.
