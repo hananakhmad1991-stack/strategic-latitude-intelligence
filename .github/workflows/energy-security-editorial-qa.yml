@@ -6,6 +6,9 @@ on:
     paths:
       - index.html
       - css/energy-information-architecture.css
+      - css/energy-appendix.css
+      - js/energy-appendix.js
+      - data/energy-appendix.json
       - js/energy-governance-ccs.js
       - js/daily-energy-assessment.js
       - scripts/daily_energy_assessment.py
@@ -33,12 +36,14 @@ jobs:
           node --check js/i18n.js
           node --check js/energy-ev.js
           node --check js/energy-biofuels.js
+          node --check js/energy-appendix.js
           node tests/check-energy-architecture.cjs
           node tests/check-i18n.cjs
       - name: Validate Python generator, historical snapshots and source notation
         run: |
           python -m py_compile scripts/daily_energy_assessment.py
           python -m json.tool data/daily-energy-assessment.json >/dev/null
+          python -m json.tool data/energy-appendix.json >/dev/null
           python - <<'PY'
           import json
           from pathlib import Path
