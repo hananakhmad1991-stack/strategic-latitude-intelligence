@@ -24,10 +24,11 @@ jobs:
           python-version: "3.12"
       - name: Scan official government leadership sources
         run: python scripts/energy_actor_watch.py
-      - name: Validate status and changed actor roster
+      - name: Validate status, actor roster and dashboard JavaScript
         run: |
           python -m json.tool data/energy-actors-status.json > /dev/null
           python -m json.tool data/energy-governance-ccs.json > /dev/null
+          node --check js/energy-governance-ccs.js
       - name: Commit monitored status and only dual-verified leadership changes
         run: |
           git config user.name "github-actions[bot]"
@@ -35,5 +36,11 @@ jobs:
           git add data/energy-actors-status.json data/energy-governance-ccs.json
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "Refresh official energy actor verification and change status"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main || exit 1
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Concurrent update; retry $attempt/5"
+            sleep $((attempt * 2))
+          done
+          echo "Unable to publish institutional verification after 5 attempts"
+          exit 1
