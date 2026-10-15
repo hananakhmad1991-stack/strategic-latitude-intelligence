@@ -1,0 +1,279 @@
+{
+  "as_of": "2026-10-15",
+  "scope": "Sourced public industrial actors, branded EV market footprint and corporate development event classification; not comprehensive national market coverage.",
+  "actor_method": "Roles are source-dated and can change. Do not present people as verified individual ultimate beneficial owners simply due to founder/leader/official/direct shareholder status. Sources specify corporate role as recorded.",
+  "sentiment_method": "Signals are qualitative exposure labels attached to documented events. They are NOT stock recommendations, sentiment polarity scores, forecasts or price predictions. Real market sentiment requires representative dated market-price, analyst and disclosure data.",
+  "actors": [
+    {
+      "name": "Sukanto Tanoto",
+      "sector": "Biofuels & Bioenergy",
+      "role": "Founder and Chairman",
+      "organisation": "Royal Golden Eagle (RGE) · Apical within RGE group",
+      "role_type": "Founder / corporate owner at group level",
+      "country_affiliation": "Indonesia-origin entrepreneurial group; RGE global operations",
+      "company_connection": "RGE publicly identifies him as its owner; Apical is an RGE group company. The source does not prove his direct personal share percentages in individual Indonesian biodiesel SPVs.",
+      "asset_ids": [
+        "bio-apical-dumai"
+      ],
+      "ownership_class": "Group-level ownership disclosed by RGE; no individual facility BO inference",
+      "source_url": "https://www.rgei.com/id/tentang-kami/faqs/siapa-pemilik-rge-dan-bagaimana-susunan-manajemen-perusahaan",
+      "evidence_date": "2026-10-15"
+    },
+    {
+      "name": "Kelvin Tio",
+      "sector": "Biofuels & Bioenergy",
+      "role": "President of Apical (since 2024), RGE executive",
+      "organisation": "Apical / RGE",
+      "role_type": "Corporate executive",
+      "country_affiliation": "Apical operations in Indonesia and globally",
+      "company_connection": "RGE identifies Kelvin Tio as overseeing agriculture businesses and President of Apical; not labelled personal BO.",
+      "asset_ids": [
+        "bio-apical-dumai"
+      ],
+      "ownership_class": "Executive, not shareholder or BO by job title",
+      "source_url": "https://www.rgei.com/?id=118&view=category",
+      "evidence_date": "2026-10-15"
+    },
+    {
+      "name": "Ahmad Yani",
+      "sector": "Renewable Energy",
+      "role": "President Director (appointed January 2026)",
+      "organisation": "PT Pertamina Geothermal Energy Tbk (PGEO)",
+      "role_type": "Corporate executive",
+      "country_affiliation": "Indonesia · Pertamina",
+      "company_connection": "PGE management page confirms appointment and geothermal leadership. Tracks geothermal development, not personal ownership.",
+      "asset_ids": [
+        "ebt-pge-lumut3"
+      ],
+      "ownership_class": "Executive, not natural-person BO",
+      "source_url": "https://www.pge.pertamina.com/id/manajemen",
+      "evidence_date": "2026-10-15"
+    },
+    {
+      "name": "Eagle Zhao",
+      "sector": "Electric Vehicles",
+      "role": "President Director in BYD's 2025 Indonesia release",
+      "organisation": "PT BYD Motor Indonesia",
+      "role_type": "Corporate executive (source-dated)",
+      "country_affiliation": "China · BYD operations in Indonesia",
+      "company_connection": "BYD quotes Eagle Zhao as President Director in 2025. Role requires updated filing before treating it as current indefinitely.",
+      "asset_ids": [
+        "ev-byd-subang"
+      ],
+      "ownership_class": "Executive, not shareholder/BO conclusion",
+      "source_url": "https://www.byd.com/id/newsroom/byd-indonesia-hadirkan-new-byd-seal-2025-di-mandalika-dan-perken.html",
+      "evidence_date": "2025-05-22"
+    },
+    {
+      "name": "Euisun Chung",
+      "sector": "Electric Vehicles",
+      "role": "Executive Chair of Hyundai Motor Group (2022 announcement)",
+      "organisation": "Hyundai Motor Group",
+      "role_type": "Corporate group chair (source-dated)",
+      "country_affiliation": "Republic of Korea",
+      "company_connection": "Hyundai primary release identifies the chair's participation in HMMI inauguration. This dated role is not proof of equity stakes in the Indonesian manufacturing subsidiary.",
+      "asset_ids": [
+        "ev-hyundai-cikarang",
+        "ev-hli-karawang"
+      ],
+      "ownership_class": "Corporate executive; not independently established subsidiary BO",
+      "source_url": "https://www.hyundai.com/content/hyundai/worldwide/en/newsroom/detail/0000000039.html",
+      "evidence_date": "2022-03-16"
+    },
+    {
+      "name": "Low Tuck Kwong",
+      "sector": "Coal",
+      "role": "Primary / controlling shareholder disclosed by company",
+      "organisation": "PT Bayan Resources Tbk (BYAN)",
+      "role_type": "Direct substantial shareholder / controller disclosed",
+      "country_affiliation": "Indonesia listed coal company",
+      "company_connection": "Bayan corporate source identifies a controlling shareholder; individual percentage and dates remain in the ownership dossier, not assumptions about other family holdings.",
+      "asset_ids": [],
+      "ownership_class": "Publicly disclosed shareholder/controller; separate from AHU BO verification",
+      "source_url": "https://www.bayan.com.sg/primary-and-controlling-shareholders",
+      "evidence_date": "2026-03-31"
+    },
+    {
+      "name": "Garibaldi Thohir",
+      "sector": "Coal",
+      "role": "Individual shareholding disclosed in AADI year-end 2025 register",
+      "organisation": "PT Adaro Andalan Indonesia Tbk (AADI)",
+      "role_type": "Publicly disclosed individual shareholder",
+      "country_affiliation": "Indonesia",
+      "company_connection": "AADI shareholder list discloses his direct interest; do not combine it with PT Adaro Strategic without proof of further chain.",
+      "asset_ids": [
+        "coal-adaro"
+      ],
+      "ownership_class": "Direct disclosed stake, not implied sole control or final BO",
+      "source_url": "https://www.adaroindonesia.com/pages/view/informasi-saham.html",
+      "evidence_date": "2025-12-31"
+    },
+    {
+      "name": "Eniya Listiani Dewi",
+      "sector": "Biofuels & Bioenergy",
+      "role": "Director General EBTKE, Ministry of Energy and Mineral Resources",
+      "organisation": "Government of Indonesia · Ditjen EBTKE",
+      "role_type": "Regulator / policymaker (not investor)",
+      "country_affiliation": "Indonesia",
+      "company_connection": "Leads government technical regulation and rollout coordination for the national B50 mandate; no private beneficial-ownership inference.",
+      "asset_ids": [
+        "bio-b50-2026"
+      ],
+      "ownership_class": "Public official, not a corporate shareholder by virtue of office",
+      "source_url": "https://www.esdm.go.id/id/media-center/arsip-berita/kawal-implementasi-b50-kementerian-esdm-perkuat-uji-teknis-dan-dialog-dengan-industri-otomotif",
+      "evidence_date": "2026-09-15"
+    }
+  ],
+  "brands": [
+    {
+      "brand": "BYD",
+      "origin": "China",
+      "indonesian_entity": "PT BYD Motor Indonesia",
+      "models": [
+        "Dolphin",
+        "Atto 3",
+        "Seal",
+        "M6 EV",
+        "Sealion 7"
+      ],
+      "business_status": "Retail sales; planned local manufacturing in Subang",
+      "manufacturing_status": "2024 Subang site agreement; verified production startup not established by selected corporate source",
+      "asset_ref": "ev-byd-subang",
+      "corporate_actors": [
+        "Eagle Zhao"
+      ],
+      "source_url": "https://www.byd.com/id/newsroom/pt-byd-motor-indonesia-menandatangani-kerja-sama-pembelian-lahan",
+      "model_source": "https://www.byd.com/id/newsroom/byd-indonesia-kupas-tuntas-inovasi-teknologi-kendaraan-listrik-p",
+      "investment": "No verified paid CAPEX in selected company release"
+    },
+    {
+      "brand": "Denza (BYD brand)",
+      "origin": "China",
+      "indonesian_entity": "BYD Indonesia distribution",
+      "models": [
+        "D9"
+      ],
+      "business_status": "Consumer EV offering in Indonesia",
+      "manufacturing_status": "Do not assume local production from exhibition/retail listing",
+      "asset_ref": "ev-byd-subang",
+      "corporate_actors": [
+        "Eagle Zhao"
+      ],
+      "source_url": "https://www.byd.com/id/newsroom/byd-dan-denza-hadirkan-inovasi-elektrifikasi-dan--pengalaman-tes",
+      "investment": "Not separately disclosed for Denza"
+    },
+    {
+      "brand": "Wuling",
+      "origin": "China",
+      "indonesian_entity": "PT SGMW Motor Indonesia",
+      "models": [
+        "Air ev",
+        "BinguoEV",
+        "Cloud EV",
+        "Mitra EV"
+      ],
+      "business_status": "Cikarang EV production established",
+      "manufacturing_status": "40,000 cumulative Cikarang EV units through May 2025 (all Wuling EV lines)",
+      "asset_ref": "ev-wuling-cikarang",
+      "corporate_actors": [],
+      "source_url": "https://wuling.id/id/blog/press-release/wuling-rayakan-produksi-3-000-000-unit-mobil-listrik-secara-global-dan-40-000-unit-ev-di-indonesia",
+      "investment": "Factory CAPEX total not verified in this release"
+    },
+    {
+      "brand": "Hyundai",
+      "origin": "Republic of Korea",
+      "indonesian_entity": "PT Hyundai Motor Manufacturing Indonesia",
+      "models": [
+        "IONIQ 5",
+        "All-new KONA Electric",
+        "IONIQ 6 (marketed; manufacturing locality not verified)"
+      ],
+      "business_status": "Local manufacturing + sales; locally made HLI battery in KONA",
+      "manufacturing_status": "Cikarang operating; 250,000 vehicle/year max applies to all models, not EV-only",
+      "asset_ref": "ev-hyundai-cikarang",
+      "corporate_actors": [
+        "Euisun Chung"
+      ],
+      "source_url": "https://www.hyundai.com/content/hyundai/worldwide/en/newsroom/detail/0000000039.html",
+      "model_source": "https://www.hyundai.com/id/id/hyundai-story/articles/the-all-new-kona-electric-mobil-listrik-hyundai-dengan-teknologi-baterai-unggulan?articleId=0000000570",
+      "investment": "US$1.55bn through 2030 including product development (announced plan)"
+    },
+    {
+      "brand": "Chery",
+      "origin": "China",
+      "indonesian_entity": "PT Chery Sales Indonesia",
+      "models": [
+        "OMODA E5",
+        "J6 EV"
+      ],
+      "business_status": "Retail sales and local OMODA E5 production as reported",
+      "manufacturing_status": "Company says OMODA E5 produced locally, but project capex/factory cap table not verified from this release",
+      "asset_ref": "ev-chery-e5",
+      "corporate_actors": [],
+      "source_url": "https://chery.co.id/id/berita/chery-serahkan-60-unit-omoda-e5-kepada-bank-bsi-sebagai-konsumen-fleet",
+      "investment": "Not separately verified"
+    }
+  ],
+  "corporate_events": [
+    {
+      "date": "2026-10-01",
+      "type": "Price / policy input",
+      "sector": "Biofuels & Bioenergy",
+      "entity": "ESDM / biodiesel mandate",
+      "headline": "October 2026 biodiesel reference price (HIP BBN) set at Rp15,072/litre plus transport cost",
+      "event_status": "Published regulatory price index, not producer revenue",
+      "signal": "Cost/input-price exposure",
+      "impact_hypothesis": "Affects procurement and blending economics; company-margin effect depends on individual offtake, CPO prices, transport and subsidies, not inferable from HIP alone.",
+      "confirmation_needed": "Review later HIP revisions and supplier-specific realized sales; separate regulation from market-price predictions.",
+      "source_url": "https://ebtke.esdm.go.id/artikel/pengumuman/hip-bbn-jenis-biodiesel-bulan-oktober-2026"
+    },
+    {
+      "date": "2026-06-05",
+      "type": "Financing / corporate development",
+      "sector": "Renewable Energy",
+      "entity": "Pertamina Geothermal Energy (PGEO)",
+      "headline": "Three geothermal projects enter 2026 Green Book; US$477.87m planned on-lending",
+      "event_status": "Foreign-loan priority programme listed; not proof full drawdown or corporate proceeds received",
+      "signal": "Potential financing access",
+      "impact_hypothesis": "Long-tenor financing could support construction economics if executed; not realized CAPEX.",
+      "confirmation_needed": "Signed on-lending agreements, actual draws, EPC contracts and COD.",
+      "source_url": "https://pge.pertamina.com/id/siaran-pers/performa-bisnis-kuartal-i-2026-menguat-tiga-proyek-panas-bumi-pge-raih-dukungan-pendanaan-internasional-hingga-us477-87-juta"
+    },
+    {
+      "date": "2025-09-26",
+      "type": "Commercial EV partnership",
+      "sector": "Electric Vehicles",
+      "entity": "Wuling × KALISTA",
+      "headline": "Strategic partnership for commercial Mitra EV supply and aftersales",
+      "event_status": "Collaboration announced; not proof delivery quantity or paid share subscription",
+      "signal": "Commercial-channel expansion",
+      "impact_hypothesis": "Potential route to fleet adoption; quantify actual fleet delivery and unit economics separately.",
+      "confirmation_needed": "Fleet purchasing agreements, executed orders and delivery records.",
+      "source_url": "https://wuling.id/id/blog/press-release/wuling-dan-kalista-jalin-kerja-sama-dalam-penyediaan-dan-layanan-purna-jual-mitra-ev"
+    },
+    {
+      "date": "2024-04-30",
+      "type": "Site agreement / future CAPEX",
+      "sector": "Electric Vehicles",
+      "entity": "BYD Motor Indonesia × Suryacipta",
+      "headline": "Subang industrial land cooperation for proposed EV manufacturing ecosystem",
+      "event_status": "2024 agreement; no audited 2026 project CAPEX in this record",
+      "signal": "Greenfield manufacturing pipeline",
+      "impact_hypothesis": "Project may create local EV supply chain demand when the factory is commissioned.",
+      "confirmation_needed": "Plant commissioning, final investment cost, local supplier localization and actual payroll.",
+      "source_url": "https://www.byd.com/id/newsroom/pt-byd-motor-indonesia-menandatangani-kerja-sama-pembelian-lahan"
+    },
+    {
+      "date": "2026-10-08",
+      "type": "Operational versus construction portfolio",
+      "sector": "Smelters & Processing",
+      "entity": "Weda Bay project portfolio",
+      "headline": "Four facilities commercialized; seven groundbreaking at Weda Bay programme",
+      "event_status": "Government ceremony listing mixed implementation",
+      "signal": "Commissioning and new-construction pipeline",
+      "impact_hypothesis": "Separate feedstock/export and electricity demand among operating and uncompleted facilities.",
+      "confirmation_needed": "Facility-level SPVs, offtake, output, capex paid and energy permits.",
+      "source_url": "https://www.setneg.go.id/baca/index/presiden_prabowo_luncurkan_11_proyek_hilirisasi_dengan_total_investasi_senilai_rp180_triliun_di_maluku_utara"
+    }
+  ]
+}
