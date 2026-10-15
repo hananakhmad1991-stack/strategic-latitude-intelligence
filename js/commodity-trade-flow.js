@@ -40,7 +40,7 @@ function view(){
  function options(s,rows,v){s.replaceChildren();for(const [id,title] of rows){const a=el("option",null,title);a.value=String(id);s.append(a)}s.value=String(v)}
  const group=state.data.bilateral.products.filter(p=>p.sector===state.sector);
  if(state.commodity!=="all"&&!group.some(p=>p.id===state.commodity))state.commodity=group[0].id;
- options(sector,[["minerba",t("Mining & metals","Minerba & logam")],["migas",t("Oil & gas","Migas")]],state.sector);
+ options(sector,[["minerba",t("Mining & metals","Minerba & logam")],["migas",t("Oil & gas","Migas")],["electricity",t("Electricity trade","Perdagangan listrik")]],state.sector);
  options(commodity,[["all",t("All selected HS groups","Semua kelompok HS")],...group.map(p=>[p.id,t(p.name_en,p.name_id)+" · HS "+p.hs])],state.commodity);
  options(direction,[["exports",t("Exports → partner countries","Ekspor → negara mitra")],["imports",t("Imports ← partner countries","Impor ← negara mitra")]],state.direction);
  options(limit,[[6,"Top 6"],[9,"Top 9"],[12,"Top 12"],[20,"Top 20"]],state.limit);
@@ -112,7 +112,7 @@ function view(){
  tab.append(body);table.append(tab,el("p","tf-warning",t("*Partner balance only shown when both same-year, same-HS partner flows are explicitly recorded. Dash never implies zero.","*Neraca mitra hanya ditampilkan apabila dua arus untuk tahun dan HS yang sama tercatat eksplisit. Tanda pisah bukan nol.")));
  const unique=new Set();sources.append(el("b",null,t("2025 original commodity sources","Sumber asli komoditas 2025")));
  for(const p of ps)for(const d of ["exports","imports"]){const a=p[d];if(safeUrl(a.source_url)&&!unique.has(a.source_url)){unique.add(a.source_url);sources.append(source(a.source_url,"HS "+p.hs+" · "+d))}}
- sources.append(el("p","tf-warning",t("HS = Harmonized System. Commodity basket is selected products, NOT the whole oil/gas or mining sector. Coal HS2701 is mining (not oil/gas); copper HS74 includes manufactured articles, not only ore. Imports CIF vs exports FOB. These are trade VALUES, not volumes.","HS = Harmonized System. Kelompok ini hanya komoditas terpilih, BUKAN total seluruh migas atau minerba. Batubara HS2701 termasuk minerba, bukan migas; HS74 mencakup produk tembaga, bukan hanya bijih. Impor CIF versus ekspor FOB. Ini NILAI perdagangan, bukan volume.")));
+ sources.append(el("p","tf-warning",t("HS = Harmonized System. Electricity uses HS271600 (cross-border power, NOT electrical equipment). Singapore CBET is planned, NOT a realized electricity export. Commodity basket is selected products, NOT the whole oil/gas or mining sector. Coal HS2701 is mining (not oil/gas); copper HS74 includes manufactured articles, not only ore. Imports CIF vs exports FOB. These are trade VALUES, not volumes.","HS = Harmonized System. Listrik menggunakan HS271600 (energi listrik lintas negara, BUKAN peralatan listrik). Perdagangan listrik ke Singapura masih rencana, BUKAN ekspor terealisasi. Kelompok ini hanya komoditas terpilih, BUKAN total seluruh migas atau minerba. Batubara HS2701 termasuk minerba, bukan migas; HS74 mencakup produk tembaga, bukan hanya bijih. Impor CIF versus ekspor FOB. Ini NILAI perdagangan, bukan volume.")));
  }
  draw();
 }
