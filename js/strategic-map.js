@@ -332,20 +332,51 @@ function mapPage(root,data){
   "CARA MEMBACA · Pilih sektor industri, kemudian jenis aset atau teknologi (misalnya Migas → Kilang Minyak, atau Mineral & Logam → Smelter & Pemurnian Logam). Registri sumber asli tersedia di menu Lanjutan."
  ));root.append(introduction);
  const official=data.smelters?.official_baseline;
+ const old2024=data.smelters?.official_2024;
+ const academic=data.smelters?.academic_nickel_baseline;
  if(official){
   const panel=node("section","map-pln-baseline map-smelter-baseline");
-  panel.append(node("div","map-pln-baseline-title",label("SMELTER INTELLIGENCE · 2026 TRACKER AND OFFICIAL 2025 REFERENCE","INTELIJEN SMELTER · PELACAK 2026 DAN ACUAN RESMI 2025")));
+  panel.append(node("div","map-pln-baseline-title",label("SMELTER INVENTORY RECONCILIATION · 2024–2026","REKONSILIASI DATA SMELTER · 2024–2026")));
   const cards=node("div","map-pln-baseline-grid");
   for(const [heading,value] of [
-   [label("Tracked smelter facility/project dossiers","Dossier fasilitas/proyek smelter terlacak"),allSmelters.length],
-   [label("ESDM 2025 specific integrated cohort","Kohort khusus smelter terintegrasi ESDM 2025"),official.reported],
-   [label("2025 cohort operating","Kohort 2025 beroperasi"),official.operating],
-   [label("2025 cohort in development","Kohort 2025 dalam pengembangan"),official.development]
+   [label("Named verified-source dossiers · incomplete","Dossier fasilitas/proyek bersumber · belum lengkap"),allSmelters.length],
+   [label("Marves nickel snapshot 2024 · all stages","Inventaris nikel Marves 2024 · semua tahap"),academic?.reported??"-"],
+   [label("ESDM integrated cohort · 2024","Kohort terintegrasi ESDM · 2024"),old2024?.reported??"-"],
+   [label("ESDM integrated cohort · 2025","Kohort terintegrasi ESDM · 2025"),official.reported],
+   [label("ESDM 2025 · operating","ESDM 2025 · beroperasi"),official.operating],
+   [label("ESDM 2025 · process or planning","ESDM 2025 · proses atau rencana"),official.development]
   ]){const tile=node("div","map-pln-baseline-card");tile.append(node("span",null,heading),node("strong",null,value));cards.append(tile)}
-  panel.append(cards,node("p","map-muted",label(
-   "CAUTION · The ESDM 2025 narrow reporting cohort is NOT a 2026 national census including all industrial-park tenants. This tracker includes records of different dates and some facilities still need 2026 status revalidation. Rated plant capacity, actual production, future design capacity and industrial-park totals are never automatically added together.",
-   "PERHATIAN · Kohort ESDM 2025 terbatas BUKAN sensus nasional 2026 semua tenant kawasan industri. Pelacak mencakup catatan dari tahun berbeda dan sebagian fasilitas memerlukan verifikasi status 2026. Kapasitas terpasang, produksi aktual, kapasitas rancangan serta total kawasan industri tidak boleh otomatis dijumlahkan."
-  )),srcLink(official.source,label("Official ESDM publication catalogue","Katalog laporan resmi ESDM")));
+  panel.append(cards);
+  if(academic?.technology){
+   const plot=node("div","map-nickel-baseline-plot");
+   plot.append(node("h3",null,label("Nickel processing · 2024 historical snapshot by technology and project stage","Pengolahan nikel · inventaris historis 2024 per teknologi dan tahap proyek")));
+   const statuses=[["operating",label("Operating","Beroperasi")],["construction",label("Construction","Konstruksi")],["planning",label("Planned","Rencana")]];
+   for(const [key,caption] of statuses){
+    const holder=node("div","map-nickel-baseline-row");
+    const total=academic.technology.reduce((sum,x)=>sum+Number(x[key]||0),0);
+    holder.append(node("span",null,caption),node("strong",null,total+" "+label("units","unit")));
+    const track=node("div","map-nickel-baseline-track");
+    for(const x of academic.technology){
+     const val=Number(x[key]||0);
+     const bar=node("span","map-nickel-baseline-bar "+(x.id==="pyrometallurgy"?"pyro":"hydro"));
+     bar.style.width=(100*val/academic.reported)+"%";
+     bar.title=x.name+": "+val+" "+label("units","unit");
+     track.append(bar);
+    }
+    holder.append(track);plot.append(holder);
+   }
+   plot.append(node("p","map-muted",label("2024 inventory: pyrometallurgy 49 operating / 35 building / 36 planned = 120; hydrometallurgy 5 operating / 3 building / 19 planned = 27. Total 147, including 93 non-operational units in that historical snapshot.",
+    "Inventaris 2024: pirometalurgi 49 operasi / 35 konstruksi / 36 rencana = 120; hidrometalurgi 5 operasi / 3 konstruksi / 19 rencana = 27. Total 147, termasuk 93 unit belum beroperasi dalam snapshot historis tersebut.")));
+   const foot=node("div","map-smelter-baseline-sources");
+   foot.append(srcLink(academic.source,label("IPB 2025 · cites Marves November 2024","IPB 2025 · mengutip Marves November 2024")));
+   if(old2024?.source)foot.append(srcLink(old2024.source,"ESDM 2024"));
+   foot.append(srcLink(official.source,"ESDM 2025"));
+   plot.append(foot);panel.append(plot);
+  }
+  panel.append(node("p","map-muted",label(
+   "NOT ADDITIVE · The 147 figure is a nickel project/unit inventory across statuses from November 2024, NOT 147 operating smelters in 2026. ESDM 2024 (15) and 2025 (28) are differently scoped integrated-smelter administrative monitoring cohorts across multiple commodities; 15 to 28 is NOT automatically a count of newly commissioned projects. Named records below are incomplete and can overlap these historical aggregate cohorts. Stand-alone industrial facilities may fall under Kemenperin. Map dots are approximate localities only, not surveyed facility GPS.",
+   "TIDAK BOLEH DIJUMLAHKAN · Angka 147 adalah inventaris unit/proyek nikel berbagai tahap per November 2024, BUKAN 147 smelter beroperasi pada 2026. ESDM 2024 (15) dan 2025 (28) adalah kohort pengawasan administratif smelter terintegrasi dengan cakupan berbeda dan lintas komoditas; kenaikan 15 ke 28 BUKAN otomatis pabrik baru yang selesai. Dossier fasilitas di bawah belum lengkap dan bisa termasuk dalam kelompok agregat tersebut. Smelter industri mandiri dapat berada dalam kewenangan Kemenperin. Titik peta adalah referensi wilayah, bukan GPS fasilitas terukur."
+  )));
   root.append(panel);
  }
  const stat=data.pltuAudit?.summary_stats;
