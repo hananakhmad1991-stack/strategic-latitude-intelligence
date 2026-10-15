@@ -32,15 +32,15 @@ window.initSLIInvestmentMedia=async function(){
   });
  }
  type.addEventListener("change",draw);search.addEventListener("input",draw);
- const definitions=[["Domestic","data/domestic-energy.json","reports"],["Geopolitical","data/geopolitical-energy.json","events"]];
+ const definitions=[["Investment-specific","data/investment-news.json","reports"],["Domestic","data/domestic-energy.json","reports"],["Geopolitical","data/geopolitical-energy.json","events"]];
  const results=await Promise.allSettled(definitions.map(async ([source,url,field])=>{const response=await fetch(url,{cache:"no-store"});if(!response.ok)throw Error(source+" feed unavailable");return {source,data:await response.json(),field}}));
- const seen=new Set();let failed=0;const times=[];
+ const seen=new Set();let failed=0;const times=[];let sourceErrors=0;
  for(const result of results){
   if(result.status!=="fulfilled"){failed++;continue}
-  const {source,data,field}=result.value;if(data.checked_at_utc)times.push(Date.parse(data.checked_at_utc));
+  const {source,data,field}=result.value;if(data.checked_at_utc)times.push(Date.parse(data.checked_at_utc));sourceErrors+=(Array.isArray(data.errors)?data.errors.length:0);
   for(const item of Array.isArray(data[field])?data[field]:[]){
    const title=String(item.title||""),url=String(item.url||"");if(!/^https:\/\//.test(url)||seen.has(url))continue;
-   const topic=regexes.find(([,rx])=>rx.test(title))?.[0];if(!topic)continue;
+   const topic=(source==="Investment-specific"&&TAX.some(([name])=>name===item.topic))?item.topic:regexes.find(([,rx])=>rx.test(title))?.[0];if(!topic)continue;
    seen.add(url);
    matches.push({title,url,topic,source,publisher:item.publisher||"Source unspecified",date:item.published_at_utc||item.indexed_at_utc||""});
   }
@@ -48,7 +48,7 @@ window.initSLIInvestmentMedia=async function(){
  matches.sort((a,b)=>String(b.date).localeCompare(String(a.date)));
  const newest=times.filter(Number.isFinite).sort((a,b)=>b-a)[0];
  const stamp=newest?new Date(newest).toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB":"unknown";
- status.textContent="Saved source scan: "+stamp+" · "+matches.length+" investment-related leads · "+failed+" unavailable feeds"+(failed?" · Partial source coverage":"")+(newest&&Date.now()-newest>6*3600000?" · Delayed data":"");
+ status.textContent="Saved source scan: "+stamp+" · "+matches.length+" investment-related leads · "+failed+" unavailable feeds · "+sourceErrors+" topic-source errors"+(failed||sourceErrors?" · Partial source coverage":"")+(newest&&Date.now()-newest>6*3600000?" · Delayed data":"");
  draw();
 };
 })();
