@@ -39,19 +39,8 @@ window.initSLIInvestment=async function(){
  const geographyContent=$("div");geography.append(geographyContent);
  heading(root,"Project Implementation Tracker","Project-level milestones · verifiable status");
  const section=box(root,"Search the investment pipeline");section.id="inv-pipeline";
- const controls=$("div","tr-controls"),search=$("input","tr-select");search.placeholder="Search project, region, investor or sector…";search.type="search";search.setAttribute("aria-label","Search investment projects");
- const select=$("select","tr-select");[["all","All stages"],...stages.map(s=>[s,s])].forEach(([val,name])=>{const o=$("option",null,name);o.value=val;select.append(o)});
- const sector=$("select","tr-select");[["all","All sectors"],["Energy","Energy"],["Critical minerals","Critical minerals"],["AI infrastructure","AI infrastructure"],["Other","Other"]].forEach(([v,n])=>{const o=$("option",null,n);o.value=v;sector.append(o)});
- [[search,"Project search"],[select,"Implementation stage"],[sector,"Sector"]].forEach(([el,txt])=>{const l=$("label",null,txt);l.append(el);controls.append(l)});section.append(controls);
- const stat=$("p","tr-detail","Loading source-dated project registry…"),tableWrap=$("div","pf-table-wrap");section.append(stat,tableWrap);
- const tbl=$("table");tbl.innerHTML="<thead><tr><th>Project / investor</th><th>Sector / region</th><th>Milestone</th><th>Evidence date</th><th>Primary source</th></tr></thead>";const tbody=$("tbody");tbl.append(tbody);tableWrap.append(tbl);
- let records=[];
- function render(){
-  tbody.replaceChildren();const q=norm(search.value);const rows=records.filter(x=>(select.value==="all"||x.stage===select.value)&&(sector.value==="all"||x.sector===sector.value)&&norm([x.name,x.investor,x.region,x.sector].join(" ")).includes(q));
-  stat.textContent=records.length?rows.length+" of "+records.length+" sourced records shown · milestone is not proof of project completion": "No verified project-level records published yet. The framework is ready for curated evidence; no hypothetical projects are shown as facts.";
-  for(const x of rows){const tr=$("tr");[x.name+" · "+x.investor,x.sector+" · "+x.region,x.stage,x.evidence_date].forEach(t=>tr.append($("td",null,t)));const cell=$("td");cell.append(source(x.source_url,"Evidence"));tr.append(cell);tbody.append(tr)}
- }
- [search,select,sector].forEach(el=>el.addEventListener(el===search?"input":"change",render));
+ const explorerRoot=$("div");explorerRoot.id="investmentProjectExplorerRoot";section.append(explorerRoot);
+ const stat=$("p","tr-detail","Loading source-dated investment dataset…");section.append(stat);
  heading(root,"Ownership & Capital Structure","Investor nationality is not ultimate beneficial ownership");
  const own=box(root,"Investor / control intelligence");own.id="inv-ownership";
  own.append($("p",null,"Each verified project record can distinguish Indonesian operating partner, direct shareholder, financing provider, ultimate parent (if independently documented) and public-sector role. Danantara, BP BUMN, line ministries and private investors must not be conflated."));
@@ -162,34 +151,12 @@ window.initSLIInvestment=async function(){
    watch.append($("h3",null,"Dated investment implementation & policy watch"),dated);
   }
   const projectRows=Array.isArray(evidence.projects)?evidence.projects:[];
-  const existing=new Set(records.map(x=>x.name));
-  for(const record of projectRows){if(!existing.has(record.name))records.push(record);}
-  values[3].textContent=records.length+" sourced";
-  const detail=$("div","pf-table-wrap");
-  const t=$("table");t.innerHTML="<thead><tr><th>Company / project</th><th>Sector · status</th><th>Announced project value</th><th>Verified spent capital</th><th>Next delivery milestone</th><th>Source / ownership</th></tr></thead>";
-  const body=$("tbody");
-  const dateLabel=(x)=>x.evidence_date||"Undated";
-  projectRows.forEach(x=>{
-   const tr=$("tr");tr.id=projectAnchor(x.name);
-   const named=$("td");named.append($("strong",null,x.name),$("p","tr-detail",x.investor));tr.append(named);
-   tr.append($("td",null,x.sector+" · "+x.stage+" · evidence "+dateLabel(x)));
-   const amount=$("td");amount.append($("strong",null,x.reported_amount===null?"Not disclosed":x.currency+" "+Number(x.reported_amount).toLocaleString("en-US")));amount.append($("p","tr-detail",x.amount_basis));tr.append(amount);
-   const actual=$("td");actual.append($("strong",null,x.capex_realized===null||x.capex_realized===undefined?"Not independently verified":String(x.capex_realized)));
-   actual.append($("p","tr-detail","Not zero. Project cost / FID / debt does not equal actual capital spent."));tr.append(actual);
-   const milestone=$("td");milestone.append($("p",null,x.status_note),$("p","tr-detail","Next: "+x.next_step));tr.append(milestone);
-   const src=$("td");src.append(source(x.source_url,"Project disclosure"));
-   if(x.initial_commitment_source){src.append($("p","tr-detail","Initial commitment: "),source(x.initial_commitment_source,"Original amount source"));}
-   if(x.ownership_ref){
-    const ref=$("a",null,"Ownership dossier ↗");ref.href="#inv-owner-"+x.ownership_ref;ref.addEventListener("click",evt=>{
-     const card=document.getElementById("inv-owner-"+x.ownership_ref);
-     if(card){evt.preventDefault();card.open=true;card.scrollIntoView({behavior:"smooth",block:"start"});}
-    });src.append($("p","tr-detail","Ownership: "),ref);
-   }else src.append($("p","tr-detail","Ownership mapping pending independent verification"));
-   tr.append(src);body.append(tr);
-  });
-  t.append(body);detail.append(t);
-  section.append($("h3",null,"Investment execution & company evidence ledger"),$("p","tr-detail","Amounts are attributed to public sources. An unreported realized-capex field is unknown, not zero. Facility operation confirms physical delivery, not the total value disbursed."),detail);
-  const issue=$("div","tr-note");issue.append($("strong",null,"Reconciliation rule: "),document.createTextNode("Do not add commitments from a multi-year program, its subprojects, corporate debt, an FID and national BKPM realization as though they were independent investment flows."));
+  values[3].textContent=projectRows.length+" sourced";
+  if(typeof window.initSLIInvestmentExplorer==="function"){
+   window.initSLIInvestmentExplorer(explorerRoot,projectRows,evidence.as_of);
+   stat.textContent="Project explorer loaded · announced values, realization and corporate ownership remain distinct.";
+  }else stat.textContent="Project viewer is unavailable; the source registry is retained in the data file.";
+  const issue=$("div","tr-note");issue.append($("strong",null,"Reconciliation rule: "),document.createTextNode("Multi-year programs, subprojects, corporate debt facilities, FIDs, and BKPM realization cannot be summed as independent capital investment."));
   section.append(issue);
   const rt=$("table");rt.innerHTML="<thead><tr><th>Sector / scope</th><th>PNBP (Rp trillion)</th><th>Period</th><th>Source</th></tr></thead>";
   const rb=$("tbody");
@@ -198,7 +165,6 @@ window.initSLIInvestment=async function(){
   (evidence.policy||[]).forEach(x=>{const p=$("p",null,x.title+": "+x.amount+" · "+x.status+" · ");p.append(source(x.source,"BKPM"));policy.append(p)});
   evidenceStatus.textContent="Published data snapshot · "+evidence.as_of+" · Investment realization "+national.period+"; receipts retain their individual reference periods.";
  }catch(err){evidenceStatus.textContent="Official investment evidence dataset unavailable; headline feed and editorial framework remain accessible.";console.error("[SLI] investment evidence load",err);}
- render();
  heading(root,"Overall Strategic Assessment","Evidence-led; no speculative scoring");
  const assess=box(root,"Indonesia Investment Execution Outlook");assess.id="inv-assessment";
  const points=[
@@ -212,13 +178,6 @@ window.initSLIInvestment=async function(){
  ];
  const ol=$("ol");points.forEach(p=>ol.append($("li",null,p)));assess.append(ol);
  assess.append($("p","tr-detail","Editorial framework (not an automated market forecast). This assessment will become quantitative as verified releases and project records are published."));
- try{
- const response=await fetch("data/investment-projects.json",{cache:"no-store"});if(!response.ok)throw Error("no registry");
- const data=await response.json();
- const legacy=Array.isArray(data.projects)?data.projects.filter(x=>x.name&&x.investor&&x.region&&x.sector&&stages.includes(x.stage)&&/^https:\/\//.test(x.source_url||"")&&/^\d{4}-\d{2}-\d{2}$/.test(x.evidence_date||"")):[]; const known=new Set(records.map(x=>x.name));legacy.forEach(x=>{if(!known.has(x.name))records.push(x)});
- values[3].textContent=records.length+" verified";
- if(data.as_of)stat.title="Last registry review: "+data.as_of;
- }catch(err){console.info("[SLI] Investment registry is awaiting publication.");}
- render();
+
 };
 })();
