@@ -1,0 +1,47 @@
+name: SLI Strategic Pulse QA
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'js/strategic-pulse.js'
+      - 'css/strategic-pulse.css'
+      - 'tests/check-strategic-pulse.cjs'
+      - '.github/workflows/strategic-pulse-qa.yml'
+      - 'data/investment-market.json'
+      - 'data/investment-evidence.json'
+      - 'data/energy-biofuels.json'
+      - 'data/energy-transition.json'
+      - 'data/investment-palm.json'
+      - 'data/daily-energy-assessment.json'
+      - 'data/domestic-energy.json'
+      - 'data/geopolitical-energy.json'
+      - 'data/investment-news.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate script and rendered pulse with source snapshots
+        run: |
+          node --check js/strategic-pulse.js
+          node tests/check-strategic-pulse.cjs
+      - name: Validate homepage bundle references
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html = Path("index.html").read_text(encoding="utf-8")
+          assert 'id="sliPulse"' in html
+          assert 'js/strategic-pulse.js' in html
+          assert 'css/strategic-pulse.css' in html
+          assert "window.initSLIPulse()" in html
+          assert "Verified project records forthcoming" not in html
+          assert "Public research briefs forthcoming" not in html
+          print("PASS: homepage mounts responsive Pulse and removes old placeholders")
+          PY
