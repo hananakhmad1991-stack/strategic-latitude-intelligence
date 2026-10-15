@@ -1,0 +1,176 @@
+{
+  "as_of": "2026-10-15",
+  "definitions": {
+    "domestic_realisasi": "Kementerian ESDM investment realization is a sectoral statistical series. Do not sum it with BKPM PMA+PMDN as they may have different methodologies, perimeter and overlap.",
+    "investment_flow": "Capital expenditure or investment realization over a time period.",
+    "committed": "Proposed/signed funding may be subject to milestones and closing; does not establish cash actually paid or capital goods created.",
+    "outbound": "Capital deployed or proposed by an Indonesia-linked vehicle abroad. This is NOT Indonesian domestic investment realization.",
+    "assets_under_management": "Stock of investment assets managed on behalf of clients; AUM is NOT annual new investment, nor shareholder purchase consideration.",
+    "currency": "USD billions unless otherwise indicated. No FX conversion is performed.",
+    "receipt": "Fiscal PNBP receipts are public revenue and cannot be combined with ESDM investment spending."
+  },
+  "sector_history": [
+    {
+      "year": 2019,
+      "migas": 12.9,
+      "minerba": 6.5,
+      "ebt": 1.7,
+      "power": 12.1,
+      "total": 33.2
+    },
+    {
+      "year": 2020,
+      "migas": 13.1,
+      "minerba": 4.2,
+      "ebt": 1.4,
+      "power": 7.6,
+      "total": 26.3
+    },
+    {
+      "year": 2021,
+      "migas": 14.71,
+      "minerba": 4.54,
+      "ebt": 1.56,
+      "power": 6.71,
+      "total": 27.52
+    },
+    {
+      "year": 2022,
+      "migas": 13.9,
+      "minerba": 5.69,
+      "ebt": 1.64,
+      "power": 5.75,
+      "total": 26.98
+    },
+    {
+      "year": 2023,
+      "migas": 14.92,
+      "minerba": 7.46,
+      "ebt": 1.47,
+      "power": 5.9,
+      "total": 29.9
+    },
+    {
+      "year": 2024,
+      "migas": 17.54,
+      "minerba": 7.7,
+      "ebt": 1.76,
+      "power": 5.3,
+      "total": 32.3
+    },
+    {
+      "year": 2025,
+      "migas": 18.02,
+      "minerba": 7,
+      "ebt": 2.31,
+      "power": 4.63,
+      "total": 31.96
+    }
+  ],
+  "sector_source": {
+    "title": "Laporan Kinerja Sekretariat Jenderal Kementerian ESDM 2025, sector investment table",
+    "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-sekretariat-jenderal-tahun-2025.pdf",
+    "observation": "2025 final reported values retrieved 31 January 2026",
+    "verified": "2026-10-15",
+    "data_quality_note": "Retain original source totals. 2023 component rows sum to US$29.75bn while reported total is US$29.90bn; not harmonized or falsely reconciled. Some other years have publication rounding."
+  },
+  "target_2025": {
+    "migas": 21.67,
+    "minerba": 3.17,
+    "power": 3.1,
+    "ebt": 1.53,
+    "total": 29.47
+  },
+  "minerba_2025": {
+    "source": {
+      "title": "ESDM annual report 2025, Table 45 investment by permit type",
+      "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf"
+    },
+    "period": "2025 full year, data as at 31 Jan 2026",
+    "total_usd_million": 7008.13,
+    "target_usd_million": 3171.01,
+    "lines": [
+      {
+        "type": "KK",
+        "actual": 578.3,
+        "target": 566.61
+      },
+      {
+        "type": "PKP2B",
+        "actual": 437,
+        "target": 198.57
+      },
+      {
+        "type": "IUPK",
+        "actual": 3579,
+        "target": 1471.16
+      },
+      {
+        "type": "IUP BUMN",
+        "actual": 527.8,
+        "target": 450.35
+      },
+      {
+        "type": "IUP Mineral",
+        "actual": 363.9,
+        "target": 221.85
+      },
+      {
+        "type": "IUP Batubara",
+        "actual": 164.4,
+        "target": 112.91
+      },
+      {
+        "type": "IUPJ",
+        "actual": 1357.62,
+        "target": 149.56
+      }
+    ],
+    "note": "These are mining licence categories, not exclusive commodity revenue buckets: do NOT label IUPK entirely nickel, KK entirely copper, or IUP Batubara as all Indonesian coal investment. Component sum may differ from total by published rounding."
+  },
+  "deal_register": [
+    {
+      "id": "highpeak-2026",
+      "entity": "Danantara Investment Management (DIM) → HighPeak Energy Inc.",
+      "jurisdiction": "United States / Texas",
+      "country_of_asset": "United States",
+      "sector": "Oil & gas",
+      "type": "Outbound convertible preferred equity",
+      "value": 250,
+      "unit": "USD million",
+      "published": "2026-10-06",
+      "status": "Announced investment; staged convertible preferred shares, closing requirements outstanding in source",
+      "actual_paid": null,
+      "deal_reality": "The source confirms a proposed US$250m investment in tranches; completion remains subject to conditions. Not proof all funds transferred.",
+      "source": "https://www.danantaraindonesia.co.id/id/media-center/press-releases/danantara-highpeak-permian-investment",
+      "next": "Check closing report, tranche subscriptions, conversion voting rights and board seat after completion",
+      "owner": "DIM / BPI Danantara; no individual BO imputed"
+    },
+    {
+      "id": "dam-aum-2026",
+      "entity": "Danantara Asset Management / four SOE investment managers",
+      "jurisdiction": "Indonesia",
+      "country_of_asset": "Indonesia",
+      "sector": "Financial services",
+      "type": "Managed assets / AUM stock",
+      "value": 170,
+      "unit": "IDR trillion (over)",
+      "published": "2026-07-23",
+      "status": "Share-purchase agreement announced and management-control transfer reported; merger proposed at source date",
+      "actual_paid": null,
+      "deal_reality": "More than Rp170tn collective AUM at June 2026 is not purchase consideration, new capital invested in Indonesian projects or state tax revenue.",
+      "source": "https://www.danantaraindonesia.co.id/id/media-center/press-releases/dam-acquires-four-soe-investment-managers",
+      "next": "Check merger registration, consideration actually paid, post-closing share register and AUM update",
+      "owner": "PT Danantara Asset Management; four acquired manager entities"
+    }
+  ],
+  "assessment": [
+    "Indonesia's reported 2025 ESDM sector investment total was US$31.96bn; it is not directly additive to national BKPM PMA/PMDN statistics.",
+    "At US$18.02bn, oil and gas was the largest named ESDM investment segment in 2025, while minerba reached about US$7.00bn.",
+    "ESDM 2025 investment surpassed its US$29.47bn sector target, but oil-and-gas execution was below its own US$21.67bn sub-target.",
+    "Minerba licence-class investment is not an accurate proxy for exact nickel, copper or coal project spending without further licence-to-commodity mapping.",
+    "HighPeak is outward-bound portfolio exposure in US oil and gas; it cannot be portrayed as inbound Indonesian FDI or local oilfield capital formation.",
+    "DAM's AUM over Rp170tn represents a stock of assets under management, not incremental investment capital or a purchase price.",
+    "Monitor financed/paid, construction and commissioning milestones independently; preserve provenance, period and corporate reporting boundaries."
+  ]
+}
