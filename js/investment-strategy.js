@@ -12,7 +12,7 @@ const newsCategories={
 "Minerals":/nikel|nickel|mineral|vale|freeport|emas|tembaga/i,
 "Smelters & Processing":/smelter|hpal|hilirisasi|copper|tembaga|refinery/i,
 "Biofuels & Bioenergy":/biodiesel|biofuel|b50|bioenergi|saf\b|biogas/i,
-"Palm Oil & Downstreaming":/sawit|palm oil|kelapa sawit|cpo\b|pk[o\b]|bpdp|pungutan ekspor|pabrik kelapa sawit/i,
+"Palm Oil & Downstreaming":/sawit|palm oil|kelapa sawit|cpo\b|pko\b|bpdp|pungutan ekspor|pabrik kelapa sawit/i,
 "Geothermal":/panas bumi|geothermal|pge|pltp/i,
 "Solar PV":/plts|surya|solar|photovoltaic/i,
 "Hydropower & Storage":/plta|pltm|hidro|hydro|cisokan|pumped storage/i,
