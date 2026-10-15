@@ -1,0 +1,397 @@
+{
+  "version": "2026-10-15",
+  "intro_en": "Definitions apply to this map. A label describes source evidence, not a regulatory certificate, current ownership or new investment.",
+  "intro_id": "Definisi ini berlaku untuk peta SLI. Label menjelaskan bukti dari sumber, bukan sertifikat regulasi, kepemilikan terkini, atau investasi baru.",
+  "sections": [
+    {
+      "title_en": "Upstream oil & gas",
+      "title_id": "Hulu migas",
+      "items": [
+        {
+          "term": "WK",
+          "definition_en": "Working Area: a government-designated exploration/production contract area; one WK can contain several fields.",
+          "definition_id": "Wilayah Kerja: area kontrak eksplorasi/produksi migas; satu WK dapat memiliki beberapa lapangan."
+        },
+        {
+          "term": "KKS / PSC",
+          "definition_en": "Kontrak Kerja Sama / Production Sharing Contract: agreement governing upstream oil and gas activities; NOT a physical refinery.",
+          "definition_id": "Kontrak Kerja Sama / Production Sharing Contract: kontrak pengelolaan kegiatan hulu migas; BUKAN kilang fisik."
+        },
+        {
+          "term": "Field / Lapangan",
+          "definition_en": "An oil or gas accumulation/development inside a WK; a field and its parent PSC can appear in separate source records.",
+          "definition_id": "Akumulasi/lapangan migas dalam WK; lapangan dan KKS induknya dapat menjadi dua catatan sumber."
+        },
+        {
+          "term": "Offshore / Onshore",
+          "definition_en": "At sea / on land. A province association for an offshore WK is NOT an oil platform GPS position.",
+          "definition_id": "Lepas pantai / di darat. Asosiasi provinsi untuk WK offshore BUKAN titik GPS anjungan."
+        },
+        {
+          "term": "SKK Migas",
+          "definition_en": "Indonesian special task force for upstream oil and gas business activities.",
+          "definition_id": "Satuan Kerja Khusus Pelaksana Kegiatan Usaha Hulu Minyak dan Gas Bumi."
+        },
+        {
+          "term": "BPMA",
+          "definition_en": "Aceh Oil and Gas Management Agency for upstream oil/gas activities in Aceh.",
+          "definition_id": "Badan Pengelola Migas Aceh untuk kegiatan hulu migas di Aceh."
+        },
+        {
+          "term": "PHE",
+          "definition_en": "Pertamina Hulu Energi, an Indonesian upstream oil and gas group.",
+          "definition_id": "Pertamina Hulu Energi, grup usaha hulu migas Indonesia."
+        },
+        {
+          "term": "BPD / bpd",
+          "definition_en": "Barrels per day: an oil-production flow rate, not reserves or installed processing capacity.",
+          "definition_id": "Barel per hari: laju produksi minyak, bukan cadangan atau kapasitas kilang."
+        },
+        {
+          "term": "MMSCFD",
+          "definition_en": "Million standard cubic feet per day: natural-gas flow rate at standard conditions.",
+          "definition_id": "Juta standar kaki kubik per hari: laju aliran gas pada kondisi baku."
+        },
+        {
+          "term": "Tcf",
+          "definition_en": "Trillion cubic feet of gas volume; a resource/reserves volume, not daily production.",
+          "definition_id": "Triliun kaki kubik volume gas; ukuran sumber daya/cadangan, bukan produksi harian."
+        },
+        {
+          "term": "LNG",
+          "definition_en": "Liquefied Natural Gas: gas cooled into liquid for transport; an LNG plant is NOT an oil refinery.",
+          "definition_id": "Gas alam cair untuk penyimpanan/pengiriman; pabrik LNG BUKAN kilang minyak."
+        },
+        {
+          "term": "CCS",
+          "definition_en": "Carbon Capture and Storage: capture and permanent subsurface storage of CO₂.",
+          "definition_id": "Penangkapan dan penyimpanan permanen CO₂ di bawah permukaan."
+        },
+        {
+          "term": "CCUS",
+          "definition_en": "Carbon Capture, Utilisation and Storage: capture, utilisation and/or storage of CO₂; a project plan is not confirmed emissions reduction.",
+          "definition_id": "Penangkapan, pemanfaatan, dan penyimpanan CO₂; rencana proyek bukan bukti pengurangan emisi yang sudah tercapai."
+        }
+      ]
+    },
+    {
+      "title_en": "Electricity & energy technology",
+      "title_id": "Teknologi listrik dan energi",
+      "items": [
+        {
+          "term": "PLTU",
+          "definition_en": "Coal-fired (or other steam-cycle) power station / Pembangkit Listrik Tenaga Uap. Co-firing biomass does not automatically convert it to a renewable-only station.",
+          "definition_id": "Pembangkit Listrik Tenaga Uap; pada registri PLTU ini terutama berbahan bakar batubara. Co-firing biomassa tidak otomatis menjadikannya pembangkit EBT penuh."
+        },
+        {
+          "term": "PLTG",
+          "definition_en": "Gas-turbine power plant / Pembangkit Listrik Tenaga Gas.",
+          "definition_id": "Pembangkit Listrik Tenaga Gas, memakai turbin gas."
+        },
+        {
+          "term": "PLTGU",
+          "definition_en": "Combined-cycle gas-and-steam power plant; distinct from coal PLTU.",
+          "definition_id": "Pembangkit Listrik Tenaga Gas dan Uap (siklus gabungan); berbeda dari PLTU batubara."
+        },
+        {
+          "term": "PLTMG",
+          "definition_en": "Gas-engine power plant / Pembangkit Listrik Tenaga Mesin Gas.",
+          "definition_id": "Pembangkit Listrik Tenaga Mesin Gas."
+        },
+        {
+          "term": "PLTD",
+          "definition_en": "Diesel-engine power plant / Pembangkit Listrik Tenaga Diesel.",
+          "definition_id": "Pembangkit Listrik Tenaga Diesel."
+        },
+        {
+          "term": "PLTA",
+          "definition_en": "Hydropower / Pembangkit Listrik Tenaga Air; usually larger-scale hydroelectric plants.",
+          "definition_id": "Pembangkit Listrik Tenaga Air, biasanya skala pembangkit hidro besar."
+        },
+        {
+          "term": "PLTM / PLTMH",
+          "definition_en": "Mini-hydro / micro-hydro hydropower stations.",
+          "definition_id": "Pembangkit Listrik Tenaga Minihidro / Mikrohidro."
+        },
+        {
+          "term": "PLTP",
+          "definition_en": "Geothermal power plant / Pembangkit Listrik Tenaga Panas Bumi.",
+          "definition_id": "Pembangkit Listrik Tenaga Panas Bumi."
+        },
+        {
+          "term": "PLTS",
+          "definition_en": "Solar photovoltaic power / Pembangkit Listrik Tenaga Surya.",
+          "definition_id": "Pembangkit Listrik Tenaga Surya (fotovoltaik)."
+        },
+        {
+          "term": "PLTB",
+          "definition_en": "Wind-powered electricity / Pembangkit Listrik Tenaga Bayu.",
+          "definition_id": "Pembangkit Listrik Tenaga Bayu atau angin."
+        },
+        {
+          "term": "PLTN",
+          "definition_en": "Nuclear power plant / Pembangkit Listrik Tenaga Nuklir; a proposal is not an operating reactor.",
+          "definition_id": "Pembangkit Listrik Tenaga Nuklir; usulan lokasi bukan reaktor beroperasi."
+        },
+        {
+          "term": "PLTBm / PLTBg",
+          "definition_en": "Biomass / biogas electricity generation.",
+          "definition_id": "Pembangkit Listrik Tenaga Biomassa / Biogas."
+        },
+        {
+          "term": "EBT / NRE",
+          "definition_en": "Energi Baru dan Terbarukan / New and Renewable Energy; do not assume all technology labels are fossil-free.",
+          "definition_id": "Energi Baru dan Terbarukan; tidak semua label teknologi otomatis berarti tanpa emisi atau tanpa fosil."
+        },
+        {
+          "term": "RUPTL",
+          "definition_en": "Electricity Supply Business Plan / Rencana Usaha Penyediaan Tenaga Listrik: PLN system planning, NOT proof each planned asset is financed or operating.",
+          "definition_id": "Rencana Usaha Penyediaan Tenaga Listrik PLN: dokumen rencana sistem, BUKAN bukti seluruh proyek sudah didanai atau beroperasi."
+        },
+        {
+          "term": "PLN",
+          "definition_en": "Indonesia's state electricity company / Perusahaan Listrik Negara.",
+          "definition_id": "Perusahaan Listrik Negara, BUMN sektor ketenagalistrikan."
+        },
+        {
+          "term": "IPP",
+          "definition_en": "Independent Power Producer: non-PLN plant developer/operator selling electricity under commercial terms.",
+          "definition_id": "Independent Power Producer: pengembang/operator pembangkit non-PLN yang menjual listrik menurut perjanjian komersial."
+        },
+        {
+          "term": "Captive power",
+          "definition_en": "Power capacity produced primarily for the owner's industrial use; not automatically delivered to the public grid.",
+          "definition_id": "Pembangkit untuk kebutuhan sendiri seperti smelter atau kawasan industri; tidak otomatis menyalurkan listrik ke jaringan umum."
+        },
+        {
+          "term": "PPA / PJBTL",
+          "definition_en": "Power Purchase Agreement / Perjanjian Jual Beli Tenaga Listrik; a contract, not evidence of commissioned plant capacity.",
+          "definition_id": "Power Purchase Agreement / Perjanjian Jual Beli Tenaga Listrik; perjanjian komersial, bukan bukti pembangkit sudah COD."
+        },
+        {
+          "term": "BESS",
+          "definition_en": "Battery Energy Storage System: electricity storage, not electricity generation.",
+          "definition_id": "Battery Energy Storage System: sistem penyimpanan listrik dengan baterai, bukan pembangkitan listrik."
+        }
+      ]
+    },
+    {
+      "title_en": "Minerals, smelters & biofuels",
+      "title_id": "Mineral, smelter, dan biofuel",
+      "items": [
+        {
+          "term": "Mine / Tambang",
+          "definition_en": "A site extracting coal or mineral ore; extraction is distinct from refining or smelting.",
+          "definition_id": "Lokasi pengambilan batubara atau bijih mineral; berbeda dari fasilitas pengolahan/pemurnian."
+        },
+        {
+          "term": "Smelter",
+          "definition_en": "A metallurgical facility converting ores/concentrates into metal, alloy or intermediate products using thermal/electrochemical processing.",
+          "definition_id": "Fasilitas metalurgi yang mengolah bijih/konsentrat menjadi logam, paduan atau produk antara melalui proses termal/elektrokimia."
+        },
+        {
+          "term": "Mineral refinery",
+          "definition_en": "A mineral purification/refining plant; NOT petroleum refinery. Alumina refining is generally chemical processing rather than metal smelting.",
+          "definition_id": "Fasilitas pemurnian mineral, BUKAN kilang minyak. Pemurnian alumina umumnya proses kimia, bukan peleburan logam."
+        },
+        {
+          "term": "Concentrator",
+          "definition_en": "Plant upgrading ore into mineral concentrate before subsequent metallurgy; NOT necessarily a smelter.",
+          "definition_id": "Fasilitas peningkatan kadar bijih menjadi konsentrat sebelum proses metalurgi; belum tentu smelter."
+        },
+        {
+          "term": "HPAL",
+          "definition_en": "High Pressure Acid Leach: hydrometallurgical process used for some nickel laterite ores.",
+          "definition_id": "High Pressure Acid Leach: proses hidrometalurgi pelindian asam bertekanan untuk sebagian bijih nikel laterit."
+        },
+        {
+          "term": "RKEF",
+          "definition_en": "Rotary Kiln–Electric Furnace: pyrometallurgical route often used for nickel pig iron/ferronickel.",
+          "definition_id": "Rotary Kiln–Electric Furnace: jalur pirometalurgi untuk menghasilkan antara lain NPI atau feronikel."
+        },
+        {
+          "term": "NPI / FeNi",
+          "definition_en": "Nickel Pig Iron / Ferronickel: nickel-bearing iron products, not battery-grade nickel sulfate.",
+          "definition_id": "Nickel Pig Iron / Feronikel: produk besi bernikel, bukan langsung nikel sulfat kelas baterai."
+        },
+        {
+          "term": "MHP",
+          "definition_en": "Mixed Hydroxide Precipitate: intermediate nickel/cobalt product from some hydrometallurgical routes.",
+          "definition_id": "Mixed Hydroxide Precipitate: produk antara nikel/kobalt dari jalur hidrometalurgi."
+        },
+        {
+          "term": "CPO / PKO",
+          "definition_en": "Crude Palm Oil / Palm Kernel Oil, input oils used by multiple downstream product chains.",
+          "definition_id": "Crude Palm Oil / Palm Kernel Oil, minyak sawit mentah dan minyak inti sawit untuk berbagai proses hilir."
+        },
+        {
+          "term": "FAME",
+          "definition_en": "Fatty Acid Methyl Esters: standard biodiesel blending component; biodiesel plant is NOT an oil refinery.",
+          "definition_id": "Fatty Acid Methyl Esters: komponen biodiesel untuk campuran solar; pabrik biodiesel BUKAN kilang minyak bumi."
+        },
+        {
+          "term": "B35 / B40 / B50",
+          "definition_en": "Diesel-fuel blend notation with nominal biodiesel share of 35%, 40%, or 50%; mandate/targets are not plant output.",
+          "definition_id": "Notasi campuran solar dengan target porsi biodiesel 35%, 40% atau 50%; mandat/target bukan bukti volume produksi fasilitas."
+        },
+        {
+          "term": "SAF",
+          "definition_en": "Sustainable Aviation Fuel: a regulated aviation-fuel pathway, not identical to FAME diesel biodiesel.",
+          "definition_id": "Sustainable Aviation Fuel: bahan bakar penerbangan berkelanjutan, tidak sama dengan biodiesel FAME untuk kendaraan diesel."
+        }
+      ]
+    },
+    {
+      "title_en": "Digital & project governance",
+      "title_id": "Digital dan tahapan proyek",
+      "items": [
+        {
+          "term": "AI-ready",
+          "definition_en": "Infrastructure designed for demanding AI workloads; does NOT independently verify GPUs or AI model-training operations.",
+          "definition_id": "Infrastruktur yang dirancang mendukung beban AI; BUKAN bukti GPU atau pelatihan model AI sudah beroperasi."
+        },
+        {
+          "term": "Data center / DC",
+          "definition_en": "Facility housing IT infrastructure; colocation, cloud, AI and hyperscale describe different service arrangements, not equivalent projects.",
+          "definition_id": "Fasilitas infrastruktur TI; colocation, cloud, AI, dan hyperscale merupakan model/karakteristik berbeda."
+        },
+        {
+          "term": "HDC / Hyperscale",
+          "definition_en": "Hyperscale Data Center: large modular/flexible capacity campus; published full build-out is not currently active IT load.",
+          "definition_id": "Hyperscale Data Center: kampus kapasitas besar; kapasitas desain akhir tidak sama dengan IT load aktif."
+        },
+        {
+          "term": "GPU",
+          "definition_en": "Graphics Processing Unit: compute accelerator sometimes used for AI; a facility MW figure cannot establish GPU counts.",
+          "definition_id": "Graphics Processing Unit: akselerator komputasi untuk sejumlah beban AI; angka MW tidak membuktikan jumlah GPU."
+        },
+        {
+          "term": "AZ / Cloud region",
+          "definition_en": "Availability Zone / regional cloud service geography; customer-facing 'Jakarta' cloud region does not reveal physical AZ addresses.",
+          "definition_id": "Availability Zone / wilayah layanan cloud; nama region 'Jakarta' tidak menunjukkan alamat fisik AZ."
+        },
+        {
+          "term": "IT load",
+          "definition_en": "Power consumed by IT equipment, different from total facility incoming power including cooling and auxiliaries.",
+          "definition_id": "Daya yang dipakai perangkat TI; berbeda dari daya masuk fasilitas termasuk pendinginan dan sistem bantu."
+        },
+        {
+          "term": "PUE",
+          "definition_en": "Power Usage Effectiveness: total data-center facility energy divided by IT equipment energy; closer to 1 indicates lower overhead.",
+          "definition_id": "Power Usage Effectiveness: energi total fasilitas dibagi energi perangkat TI; makin mendekati 1 berarti overhead makin rendah."
+        },
+        {
+          "term": "MoU",
+          "definition_en": "Memorandum of Understanding / nota kesepahaman; not automatically a binding financed construction agreement.",
+          "definition_id": "Nota kesepahaman; tidak otomatis menjadi kontrak konstruksi dengan pembiayaan pasti."
+        },
+        {
+          "term": "FEED",
+          "definition_en": "Front-End Engineering Design: detailed engineering preparation before final investment decisions.",
+          "definition_id": "Front-End Engineering Design: rancangan rekayasa awal sebelum keputusan investasi final."
+        },
+        {
+          "term": "FID",
+          "definition_en": "Final Investment Decision: formal project go-ahead subject to stated conditions; not COD or actual spending.",
+          "definition_id": "Final Investment Decision: keputusan akhir investasi sesuai syarat proyek; bukan berarti proyek sudah COD/selesai dibangun."
+        },
+        {
+          "term": "EPC",
+          "definition_en": "Engineering, Procurement and Construction: design, procurement and physical construction contracting.",
+          "definition_id": "Engineering, Procurement and Construction: kontrak rekayasa, pengadaan dan konstruksi."
+        },
+        {
+          "term": "COD",
+          "definition_en": "Commercial Operation Date: start of contracted commercial service after necessary tests; different from groundbreaking or commissioning tests.",
+          "definition_id": "Commercial Operation Date: tanggal mulai operasi komersial setelah uji yang diperlukan; berbeda dari groundbreaking/pengujian commissioning."
+        },
+        {
+          "term": "Commissioning",
+          "definition_en": "Testing and start-up phase before routine commercial service; completion is not assumed without evidence.",
+          "definition_id": "Tahap pengujian/pengaktifan sebelum operasi komersial rutin; selesai tidak boleh diasumsikan tanpa bukti."
+        },
+        {
+          "term": "MoU / PPA / FID / COD",
+          "definition_en": "Milestone ladder: expression of intent → power contract → final investment approval → commercially operating; steps are NOT interchangeable.",
+          "definition_id": "Urutan tonggak: niat kerja sama → kontrak listrik → keputusan investasi → operasi komersial; statusnya TIDAK boleh disamakan."
+        }
+      ]
+    },
+    {
+      "title_en": "Units, money & geography",
+      "title_id": "Satuan, keuangan, dan geografi",
+      "items": [
+        {
+          "term": "kW / MW / GW",
+          "definition_en": "Kilowatt / megawatt / gigawatt = 1,000 W / 1 million W / 1 billion W; measures POWER, not energy generated.",
+          "definition_id": "Kilowatt / megawatt / gigawatt = 1.000 W / 1 juta W / 1 miliar W; ukuran DAYA, bukan energi yang dihasilkan."
+        },
+        {
+          "term": "kWh / MWh / GWh",
+          "definition_en": "Kilowatt-hour / megawatt-hour / gigawatt-hour: amounts of ENERGY delivered or consumed over time, not nameplate capacity.",
+          "definition_id": "Kilowatt-jam / megawatt-jam / gigawatt-jam: jumlah ENERGI yang dihasilkan/dipakai dalam waktu tertentu."
+        },
+        {
+          "term": "MWp",
+          "definition_en": "Megawatt-peak: solar PV DC rating under standard test conditions, not assured AC grid dispatch.",
+          "definition_id": "Megawatt-peak: kapasitas puncak DC modul surya pada kondisi uji, bukan pasokan AC aktual jaringan."
+        },
+        {
+          "term": "MVA",
+          "definition_en": "Megavolt-amperes: apparent electrical power, not necessarily MW without a power-factor assumption.",
+          "definition_id": "Megavolt-ampere: daya semu listrik, tidak selalu setara MW tanpa faktor daya."
+        },
+        {
+          "term": "MW IT",
+          "definition_en": "Megawatts of IT-equipment load at a data center; cannot be directly added to power plant generation capacity.",
+          "definition_id": "Megawatt beban perangkat TI pusat data; tidak boleh dijumlahkan dengan kapasitas pembangkit listrik."
+        },
+        {
+          "term": "kL / ML",
+          "definition_en": "Kilolitres (1,000 litres) / megalitres (1,000,000 litres) of liquid volume; 'million kL' = 1 billion litres.",
+          "definition_id": "Kiloliter (1.000 liter) / megaliter (1 juta liter) volume cairan; 'juta kL' = 1 miliar liter."
+        },
+        {
+          "term": "Mt / tpd",
+          "definition_en": "Million tonnes (mass) / tonnes per day (throughput); neither is revenue or MW.",
+          "definition_id": "Juta ton massa / ton per hari laju produksi/pengolahan; bukan nilai pendapatan atau MW."
+        },
+        {
+          "term": "Rp / IDR / USD",
+          "definition_en": "Indonesian rupiah / international IDR currency code / US dollars; never add money figures with incompatible currencies or bases.",
+          "definition_id": "Rupiah / kode mata uang rupiah / dolar AS; jangan jumlahkan angka dengan mata uang dan dasar pelaporan berbeda."
+        },
+        {
+          "term": "PMA / PMDN",
+          "definition_en": "Foreign / domestic direct investment realization classifications under Indonesian investment statistics.",
+          "definition_id": "Penanaman Modal Asing / Penanaman Modal Dalam Negeri pada statistik investasi Indonesia."
+        },
+        {
+          "term": "BKPM / LKPM",
+          "definition_en": "Indonesian investment ministry/coordination board / company Investment Activity Reports; an announcement is NOT LKPM realized investment.",
+          "definition_id": "Kementerian Investasi/BKPM / Laporan Kegiatan Penanaman Modal; pengumuman investasi BUKAN realisasi LKPM."
+        },
+        {
+          "term": "CAPEX",
+          "definition_en": "Capital expenditure: money actually budgeted or spent to build long-lived assets; announcement, financing facility and realization differ.",
+          "definition_id": "Belanja modal; komitmen, fasilitas pembiayaan, dan pengeluaran yang benar-benar terjadi adalah angka berbeda."
+        },
+        {
+          "term": "WGS84",
+          "definition_en": "Global latitude/longitude reference system; a district/city anchor is not a surveyed facility coordinate.",
+          "definition_id": "Sistem referensi lintang/bujur global; titik kota/kabupaten bukan koordinat survei fasilitas."
+        },
+        {
+          "term": "GeoNames",
+          "definition_en": "Geographic place-name reference used for approximate locality markers; not proof of project address.",
+          "definition_id": "Basis data nama tempat untuk penanda wilayah perkiraan; bukan bukti alamat proyek."
+        },
+        {
+          "term": "Province / site / unit",
+          "definition_en": "One province can contain many sites; one site can contain many generating units; an operator dossier can overlap both.",
+          "definition_id": "Satu provinsi dapat memiliki banyak lokasi; satu kompleks bisa memiliki banyak unit; dossier operator dapat beririsan dengan keduanya."
+        }
+      ]
+    }
+  ]
+}
