@@ -253,7 +253,7 @@ function mapPage(root,data){
  ]){
   const b=node("button","map-btn map-digital-btn",name);b.type="button";
   b.addEventListener("click",()=>{
-   currentKind="digital";kind.value="digital";currentProvince=provinceName==="all"?null:provinceName;
+   currentPoint=null;currentKind="digital";kind.value="digital";currentProvince=provinceName==="all"?null:provinceName;
    provinceSelect.value=provinceName;currentSector="all";currentStage="all";currentLocation="all";location.value="all";
    lastQuery="";search.value="";filtersRebuild();draw();
   });
@@ -287,13 +287,16 @@ function mapPage(root,data){
  for(const [b,desc] of [[minus,"Zoom out"],[plus,"Zoom in"],[home,"Reset map view"]]){b.type="button";b.setAttribute("aria-label",desc);zoom.append(b)}
  mapHead.append(place,zoom);mapSection.append(mapHead);
  const svg=snode("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":label("Interactive province map of Indonesia","Peta provinsi interaktif Indonesia"),class:"map-viz"});
- const shapeLayer=snode("g"),bubbleLayer=snode("g"),pinLayer=snode("g",{class:"map-coordinate-markers"}),gridlines=snode("g",{class:"map-gridlines"});
+ const shapeLayer=snode("g"),adminLayer=snode("g",{class:"map-administrative-references"}),bubbleLayer=snode("g"),pinLayer=snode("g",{class:"map-coordinate-markers"}),gridlines=snode("g",{class:"map-gridlines"});
  for(let lat=-10;lat<=5;lat+=5){const line=snode("line",{x1:20,x2:W-15,y1:yFor(lat),y2:yFor(lat)});gridlines.append(line)}
- svg.append(gridlines,shapeLayer,pinLayer,bubbleLayer);
+ svg.append(gridlines,shapeLayer,adminLayer,pinLayer,bubbleLayer);
  mapSection.append(svg);
  const legend=node("div","map-legend");
- for(const [cls,txt] of [["map-swatch",label("Registered records","Catatan terdaftar")],["map-swatch off",label("No mapped record","Tidak ada data terpetakan")],["map-swatch selected",label("Selected province","Provinsi dipilih")]]){
+ for(const [cls,txt] of [["map-swatch",label("Province has records","Provinsi memiliki catatan")],["map-swatch off",label("No mapped record","Tidak ada catatan terpetakan")],["map-swatch selected",label("Selected province","Provinsi dipilih")]]){
   const wrap=node("span");wrap.append(node("i",cls),document.createTextNode(" "+txt));legend.append(wrap)
+ }
+for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titik wilayah perkiraan")],["map-legend-admin",label("Province only — NOT facility GPS","Hanya provinsi — BUKAN GPS fasilitas")]]){
+  const wrap=node("span");wrap.append(node("i",cls),document.createTextNode(" "+txt));legend.append(wrap);
  }
  mapSection.append(legend);grid.append(mapSection);
  const side=node("section","map-results"),resultsHead=node("div","map-results-head"),heading=node("h3",null,label("Mapped evidence","Bukti terpetakan")),info=node("p","map-muted"),list=node("div","map-list");
@@ -408,7 +411,7 @@ function mapPage(root,data){
  function draw(){
   const base=filtered(),mapped=base.filter(r=>provinceAssociations(r).length>0),unmapped=base.length-mapped.length;
   const counts=new Map();for(const x of mapped)for(const p of provinceAssociations(x))counts.set(p,(counts.get(p)||0)+1);
-  shapeLayer.replaceChildren();bubbleLayer.replaceChildren();pinLayer.replaceChildren();
+  shapeLayer.replaceChildren();adminLayer.replaceChildren();bubbleLayer.replaceChildren();pinLayer.replaceChildren();
   for(const feature of geometry){
    const name=feature.properties.name,count=counts.get(name)||0;
    const p=snode("path",{d:projectPath(feature),class:"map-province"+(currentProvince===name?" active":""),fill:currentProvince===name?"#cb9f58":count?(count>=5?"#648fad":count>=3?"#4d7798":"#345773"):"#152f44",tabindex:"0",role:"button","aria-label":name+" — "+count+" "+label("records","catatan")});
@@ -435,12 +438,30 @@ function mapPage(root,data){
      marker.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();focusKepriCluster(cluster)}});
      bubbleLayer.append(marker);
     }
-   }else if(count){
-    const [x,y]=polygonAnchor(feature);
-    const radius=count<10?11:14;
-    bubbleLayer.append(snode("circle",{cx:x,cy:y,r:radius,class:"map-bubble"}));
-    const n=snode("text",{x,y,class:"map-bubble-text"});n.textContent=count;bubbleLayer.append(n);
    }
+  }
+  // Province-only dossiers receive a visually distinct administrative-reference
+  // SQUARE at the polygon reference position. It is NOT a project geocode.
+  // Kepri is positioned near Tanjung Pinang rather than the Natuna polygon centroid.
+  for(const feature of geometry){
+   const name=feature.properties.name;
+   const refs=base.filter(r=>accuracyOf(r)==="province"&&provinceAssociations(r).includes(name));
+   if(!refs.length)continue;
+   const [x,y]=name==="Kepulauan Riau"?boundsOf([104.455,0.922]):polygonAnchor(feature);
+   const marker=snode("g",{class:"map-admin-reference",role:"button",tabindex:"0",
+    "aria-label":name+" — "+refs.length+" "+label("province-only references, NOT project locations","referensi provinsi saja, BUKAN lokasi proyek")});
+   const box=snode("rect",{x:x-5,y:y-5,width:10,height:10,rx:2,class:"map-admin-square"});
+   const title=snode("title");title.textContent=name+" · "+refs.length+" "+label("records only known at province scale","catatan hanya diketahui sampai provinsi");
+   marker.append(box,title);
+   marker.addEventListener("click",()=>{
+    if(dragged)return;
+    currentPoint=null;currentProvince=name;currentKepriCluster=null;provinceSelect.value=name;
+    currentAccuracy="province";
+    for(const b of geoButtons)b.setAttribute("aria-pressed",String(b.dataset.accuracy==="province"));
+    draw();
+   });
+   marker.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();marker.events?.click?.()}}); // browser listener uses the click event
+   adminLayer.append(marker);
   }
   // Named-locality coordinate references, grouped by close screen distance.
   // No random marker jitter and no invented GPS for province-only dossiers.
