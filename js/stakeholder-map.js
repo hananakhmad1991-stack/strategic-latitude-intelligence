@@ -192,7 +192,7 @@ window.renderSLIStakeholderMap=function(root,data){
    $("h3",null,"BPI Danantara · Series B (99%)"),
    $("p",null,"BUMN portfolio investment and operational holding mandate, including Pertamina / PLN; board execution stays with each corporate group."));
   split.append(bp,bpi);content.append(split);
-  content.append($("p","stake-ownership-note","Separate chain: ESDM (energy regulation) → SKK Migas/BPMA (upstream PSC management) → KKKS (BUMN, private or foreign field operator). BPH Migas supervises downstream fuel and gas-transport matters. Neither SKK Migas nor BPH Migas is a Danantara subsidiary."));
+  content.append($("p","stake-ownership-note","The legal 1%/99% split concerns defined state-shareholding rights: it does not mean Danantara owns 99% of every listed BUMN’s total market equity. Verify each issuer’s share register. Separate chain: ESDM (energy regulation) → SKK Migas/BPMA (upstream PSC management) → KKKS (BUMN, private or foreign field operator). BPH Migas supervises downstream fuel and gas-transport matters. Neither SKK Migas nor BPH Migas is a Danantara subsidiary."));
   const citations=$("div","stake-ownership-links");
   citations.append(panelLink(data.ownership_model.source,"UU 16/2025 legal text ↗"),
     panelLink(data.ownership_model.danantara_source,"Danantara official mandate ↗"));
