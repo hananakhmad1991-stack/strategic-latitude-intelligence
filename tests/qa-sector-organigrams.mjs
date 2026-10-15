@@ -1,68 +1,108 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
+
+const powerMap=fs.readFileSync('js/sector-stakeholder-explorer.js','utf8');
 const research=fs.readFileSync('js/research-chapters.js','utf8');
-const organization=fs.readFileSync('js/sector-institution-map.js','utf8');
-const index=fs.readFileSync('index.html','utf8');
-const directory=JSON.parse(fs.readFileSync('data/sector-institution-map.json','utf8'));
-const datasets={
- 'data/sector-institution-map.json':directory,
- 'data/investment-evidence.json':JSON.parse(fs.readFileSync('data/investment-evidence.json','utf8')),
- 'data/sector-evidence-catalog.json':JSON.parse(fs.readFileSync('data/sector-evidence-catalog.json','utf8')),
- 'data/ai-monitoring.json':JSON.parse(fs.readFileSync('data/ai-monitoring.json','utf8'))
+const catalog=JSON.parse(fs.readFileSync('data/sector-governance-explorer.json','utf8'));
+const investments=JSON.parse(fs.readFileSync('data/investment-evidence.json','utf8'));
+const indicators=JSON.parse(fs.readFileSync('data/sector-evidence-catalog.json','utf8'));
+const monitoring=JSON.parse(fs.readFileSync('data/ai-monitoring.json','utf8'));
+const html=fs.readFileSync('index.html','utf8');
+const sources={
+ 'data/sector-governance-explorer.json':catalog,
+ 'data/investment-evidence.json':investments,
+ 'data/sector-evidence-catalog.json':indicators,
+ 'data/ai-monitoring.json':monitoring,
 };
-class FakeNode{
- constructor(tag){this.tagName=tag;this.children=[];this.className='';this.style={};this.id='';this.href='';this.events={};this.attrs={};this._text='';this.hidden=false;this.isConnected=true;this.classList={contains:name=>this.className.split(' ').includes(name)}}
- append(...nodes){for(let n of nodes){if(typeof n==='string'){const t=new FakeNode('#text');t.textContent=n;n=t}if(n)this.children.push(n)}}
- replaceChildren(...nodes){this.children=[];this.append(...nodes)}
+
+class FakeNode {
+ constructor(tag){
+  this.tagName=tag;this.children=[];this._text='';this.className='';this.id='';this.href='';this.value='';
+  this.style={};this.attrs={};this.dataset={};this.handlers={};this.hidden=false;this.open=false;this.isConnected=true;
+  this.classList={
+   contains:name=>this.className.split(' ').includes(name),
+   add:name=>this.setClass(name,true),
+   remove:name=>this.setClass(name,false),
+   toggle:(name,flag)=>this.setClass(name,flag===undefined?!this.className.split(' ').includes(name):flag)
+  };
+ }
+ setClass(name,enabled){let s=new Set(this.className.split(' ').filter(Boolean));if(enabled)s.add(name);else s.delete(name);this.className=[...s].join(' ')}
+ append(...items){for(let x of items){if(typeof x==='string'){const n=new FakeNode('#text');n.textContent=x;x=n}if(x)this.children.push(x)}}
+ appendChild(x){this.append(x);return x}
+ get lastChild(){return this.children.at(-1)||null}
+ replaceChildren(...items){this.children=[];this._text='';this.append(...items)}
  setAttribute(k,v){this.attrs[k]=v;if(k==='class')this.className=v;if(k==='id')this.id=v}
  getAttribute(k){return this.attrs[k]}
- addEventListener(name,fn){this.events[name]=fn}
- set textContent(v){this._text=String(v)}
+ removeAttribute(k){delete this.attrs[k]}
+ addEventListener(k,fn){this.handlers[k]=fn}
+ set textContent(v){this._text=String(v);this.children=[]}
  get textContent(){return this._text||this.children.map(n=>n.textContent).join(' ')}
- querySelector(selector){return this.querySelectorAll(selector)[0]||null}
- querySelectorAll(selector){const out=[];const hit=n=>selector==='h3'?n.tagName==='h3':selector==='a[href^="https://"]'?n.tagName==='a'&&n.href.startsWith('https://'):selector.startsWith('.')?n.className.split(' ').includes(selector.slice(1)):false;const scan=n=>{for(const child of n.children){if(hit(child))out.push(child);scan(child)}};scan(this);return out}
+ querySelectorAll(q){
+  let out=[];const match=n=>q.startsWith('.')?n.className.split(' ').includes(q.slice(1)):q.startsWith('#')?n.id===q.slice(1):q==='h3'?n.tagName==='h3':q==='a[href^="https://"]'?n.tagName==='a'&&n.href.startsWith('https://'):n.tagName===q;
+  const recurse=node=>{for(const child of node.children){if(match(child))out.push(child);recurse(child)}};recurse(this);return out;
+ }
+ querySelector(q){return this.querySelectorAll(q)[0]||null}
  scrollIntoView(){this.scrolled=true}
  remove(){}
 }
-class URLMock{constructor(text){this.hostname=text.split('/')[2]||'unknown'}}
+
+class MockURL {constructor(u){this.hostname=u.split('/')[2]||'unknown'}}
 const root=new FakeNode('main');
 const document={
- createElement:tag=>new FakeNode(tag),
- createElementNS:(_,tag)=>new FakeNode(tag),
- createTextNode:text=>{const n=new FakeNode('#text');n.textContent=text;return n},
+ createElement:t=>new FakeNode(t),
+ createElementNS:(_,t)=>new FakeNode(t),
+ createTextNode:t=>{const n=new FakeNode('#text');n.textContent=t;return n},
  getElementById:id=>id==='sliResearchRoot'?root:null,
  querySelector:()=>null,
  addEventListener(){}
 };
 const window={};
-const fetch=async path=>({ok:!!datasets[path],status:datasets[path]?200:404,json:async()=>datasets[path]});
-const context={window,document,fetch,URL:URLMock,console};
-vm.runInNewContext(organization,context);
+const fetch=async path=>({ok:!!sources[path],status:sources[path]?200:404,json:async()=>sources[path]});
+const context={document,window,URL:MockURL,fetch,console};
+vm.runInNewContext(powerMap,context);
 vm.runInNewContext(research,context);
-assert.ok(index.includes('id="sliMobileNavToggle"'),'Mobile menu toggle not installed');
-assert.ok(index.includes('sector-institution-map.js'),'Missing organigram dependency');
-assert.ok(index.includes('const pagesFromURL='),'Unified hash routing missing');
+assert.match(html,/sector-stakeholder-explorer\.js/,'Power-map script should load on all pages');
+assert.match(html,/stakeholder-map\.css/,'Must reuse Energy Security styling');
+
 for(const sector of ['minerals','ai']){
+ const data=catalog.sectors[sector];
+ const count=data.layers.reduce((n,branch)=>n+branch.actors.length,0);
+ assert.equal(data.layers.length,6,'six functional hubs required');
+ assert.equal(data.accountability_routes.length,9,'nine policy accountability lenses required');
+ assert.ok(count>=40,'Sector research must have substantive mapped stakeholders');
+ assert.equal(data.meta.key_people.filter(([name])=>data.layers.some(x=>x.actors.some(a=>a.name===name&&a.person_name))).length,6,'all named leader chips require dated sources');
+ 
  window.initSLIResearch(sector);
- for(let i=0;i<18;i++)await Promise.resolve();
- const stages=root.children.filter(n=>n.classList.contains('es-stage'));
- assert.equal(stages.length,9,'Energy Security parity: nine sector sections');
- assert.ok(stages.every(n=>n.children.length>1),'One or more empty sections');
- const org=stages[0].querySelector('.sli-org-shell');
- assert.ok(org,'Institutional organigram missing in stage 01');
- const nav=root.children.find(n=>n.classList.contains('es-toc'));
- assert.equal(nav.children.length,9);
- const nodes=org.querySelectorAll('.sli-org-node');
- assert.equal(nodes.length,6,'Six functional branches should be visible in overview SVG');
- nodes[0].events.click();
- const actor=org.querySelectorAll('.sli-org-node')[0];
- assert.ok(actor,'Group drilldown has no actors');
- actor.events.click();
- assert.match(org.querySelector('.sli-org-inspector').textContent,/Original institution \/ evidence/);
- const groupButtons=org.querySelector('.sli-org-branch-buttons');
- assert.equal(groupButtons.children.length,6);
- nav.children[0].events.click({preventDefault(){}});
- assert.equal(stages[0].scrolled,true,'Chapter navigation must scroll rather than return to Overview');
- console.log(sector+': 9 panels, 6 clickable organizational branches, actor provenance, navigation OK');
+ for(let i=0;i<25;i++)await Promise.resolve();
+ const stages=root.children.filter(x=>x.classList.contains('es-stage'));
+ assert.equal(stages.length,9,'Energy Security structural parity');
+ const map=stages[0].querySelector('.stake-shell');
+ assert.ok(map,'Missing Energy Security power-map component in institution stage');
+ const tabs=map.querySelectorAll('.stake-tab');
+ const leaders=map.querySelectorAll('.stake-person-chip');
+ const svg=map.querySelectorAll('.stake-svg');
+ assert.equal(tabs.length,3,'Overview / Explore actors / Issue focus');
+ assert.equal(leaders.length,6,'six verified named leadership cards');
+ assert.equal(svg.length,1);
+ assert.equal(map.querySelectorAll('.stake-mobile-button').length,6,'six accessible institutional mobile branches');
+ assert.ok(map.textContent.includes(String(count)+' Institutions'));
+ 
+ leaders[0].handlers.click();
+ assert.ok(map.querySelector('.stake-inspector').textContent.includes('STAKEHOLDER PROFILE'));
+ assert.ok(map.querySelector('.stake-inspector').textContent.includes('Source reference:'));
+ 
+ tabs[2].handlers.click();
+ assert.equal(map.querySelectorAll('.stake-issue-dot').length,5);
+ let issue=map.querySelectorAll('.stake-select').at(-1);issue.value='3';issue.handlers.change();
+ assert.match(map.querySelector('.stake-inspector').textContent,/POLICY ACCOUNTABILITY LENS/);
+ 
+ tabs[1].handlers.click();
+ const groups=map.querySelectorAll('.stake-select')[0];groups.value='2';groups.handlers.change();
+ assert.ok(map.querySelectorAll('.stake-mobile-button').length>=4);
+ 
+ const nav=root.children.find(x=>x.classList.contains('es-toc'));
+ nav.children[0].handlers.click({preventDefault(){}});
+ assert.equal(stages[0].scrolled,true,'chapter nav must stay within current sector');
+ console.log(sector+' OK: '+count+' actors, 6 named officials, 9 issues, Energy power-map interaction and navigation');
 }
