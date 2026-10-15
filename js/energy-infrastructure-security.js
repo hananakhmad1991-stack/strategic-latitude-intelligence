@@ -148,6 +148,35 @@ function energyIndex(p,d){
  p.append(link(h.source,"ESDM 2025 report Tables 12–13 pp. 55–56 ↗"));
  desc(p,h.method);
 }
+
+async function attachWatch(root){
+ const wrapper=$("details","infra-overlay");
+ const summary=$("summary",null,"Automatic source watch · updated refining, power, electrification, Jargas and IKE releases");
+ const content=$("div","infra-overlay-inner");
+ wrapper.append(summary,content);root.append(wrapper);
+ let fetched=false;
+ async function show(){
+  if(fetched||!wrapper.open)return;fetched=true;
+  try{
+   const res=await fetch("data/energy-infrastructure-watch.json",{cache:"no-store"});
+   if(!res.ok)throw Error("not yet published");
+   const d=await res.json(),records=(d.leads||[]).slice(0,12);
+   const timestamp=new Date(d.checked_at_utc);
+   content.append($("p","infra-mini","Latest source scan: "+timestamp.toLocaleString("id-ID",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB · "+records.length+" candidates"+(d.stale_previous_results?" · retained previous data":"")));
+   desc(content,"Auto-discovered source leads do not establish actual throughput, electricity access, operating plant MW or a new official index. Verified benchmark data on the tabs above are updated only after primary-source validation.");
+   records.forEach(item=>{
+    const card=$("div","infra-watch-card");
+    card.append($("span","infra-eyebrow",item.topic+" · "+String(item.published_at_utc||"").slice(0,10)));
+    card.append(link(item.url,item.title+" ↗"));
+    card.append($("p","infra-mini",item.publisher+" · unverified source candidate"));content.append(card);
+   });
+   if(!records.length)desc(content,"No qualifying current official-source releases were indexed.");
+   if((d.source_errors||[]).length)desc(content,"Some sources were unavailable in this scan.");
+  }catch(e){desc(content,"Automatic source feed not yet published; report data and primary references above remain accessible.");}
+ }
+ wrapper.addEventListener("toggle",show);
+}
+
 window.initSLIInfrastructure=async function(){
  const root=document.getElementById("energyInfrastructureRoot");if(!root)return;
  root.replaceChildren($("p","infra-description","Loading refinery, generation, electrification, jargas and 4A data…"));
@@ -178,6 +207,7 @@ window.initSLIInfrastructure=async function(){
   panes.forEach(([name],i)=>{const b=$("button","infra-tab",name);b.type="button";
    b.addEventListener("click",()=>{active=i;draw()});buttons.push(b);tabs.append(b)});
   root.append(tabs,mount);
+  attachWatch(root);
   root.append($("p","infra-vintage","Source vintage varies (2025 official full-year, Q1 2026 national electrification and named 2026 operator releases). Missing 2026 actuals are not estimated. This is a source-dated analysis, not a live telemetry feed."));
   draw();
  }catch(e){root.replaceChildren($("p","infra-description","Infrastructure research dataset temporarily unavailable; existing energy sections remain accessible."))}
