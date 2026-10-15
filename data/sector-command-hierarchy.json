@@ -16,6 +16,26 @@
           "verification": "source-dated"
         },
         {
+          "id": "bappenas",
+          "title": "Ministry of National Development Planning · PPN/Bappenas",
+          "person": "Rachmat Pambudy",
+          "role": "Long- and medium-term development planning (RPJPN/RPJMN), RKP and evaluation of national development priorities, including mineral industrialization, critical-materials supply chains and regional infrastructure. Planning authority, not a mining operator or permit issuer.",
+          "source": "https://www.bappenas.go.id/struktur-organisasi",
+          "parent": "pres",
+          "relation": "planning",
+          "verification": "Official Bappenas organizational roster, accessed as of 2026-10-16"
+        },
+        {
+          "id": "kemenkoekon",
+          "title": "Coordinating Ministry for Economic Affairs · Kemenko Perekonomian",
+          "person": "Airlangga Hartarto",
+          "role": "Coordination of macroeconomic policy, international trade and FTA market access, investment climate and industrial competitiveness relevant to mineral downstreaming. A coordinating ministry, not a mining-licensing authority.",
+          "source": "https://www.ekon.go.id/publikasi/detail/7150/dongkrak-pertumbuhan-ekonomi-menko-airlangga-perkuat-kinerja-ekspor",
+          "parent": "pres",
+          "relation": "coordination",
+          "verification": "Official Kemenko Perekonomian statement dated 2026-10-13"
+        },
+        {
           "id": "minister",
           "title": "Ministry of Energy & Mineral Resources · ESDM",
           "person": "Bahlil Lahadalia",
@@ -593,6 +613,26 @@
           "parent": null,
           "relation": "root",
           "verification": "source-dated"
+        },
+        {
+          "id": "bappenas",
+          "title": "Ministry of National Development Planning · PPN/Bappenas",
+          "person": "Rachmat Pambudy",
+          "role": "National development planning and evaluation for digital transformation, connectivity, grid/infrastructure priorities and technology workforce programmes under RPJMN and annual RKP. Separate from Komdigi operational regulation.",
+          "source": "https://www.bappenas.go.id/struktur-organisasi",
+          "parent": "pres",
+          "relation": "planning",
+          "verification": "Official Bappenas organizational roster, accessed as of 2026-10-16"
+        },
+        {
+          "id": "kemenkoekon",
+          "title": "Coordinating Ministry for Economic Affairs · Kemenko Perekonomian",
+          "person": "Airlangga Hartarto",
+          "role": "Interministerial macroeconomic coordination for the digital economy, investment climate, cross-border trade and the competitiveness of AI/data-center industries. Does not directly regulate data-center facilities.",
+          "source": "https://www.ekon.go.id/publikasi/detail/7150/dongkrak-pertumbuhan-ekonomi-menko-airlangga-perkuat-kinerja-ekspor",
+          "parent": "pres",
+          "relation": "coordination",
+          "verification": "Official Kemenko Perekonomian statement dated 2026-10-13"
         },
         {
           "id": "komdigi",
