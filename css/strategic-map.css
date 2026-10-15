@@ -119,3 +119,12 @@
 .map-registry-appendix p{margin:7px 15px;font-size:11px;color:#b9cbd9}
 .map-registry-line{font-variant-numeric:tabular-nums}
 @media(max-width:650px){.map-taxonomy-intro{font-size:11px}.map-terms{grid-template-columns:1fr;gap:0}.map-terms dt{padding-bottom:2px;border-bottom:0}.map-terms dd{padding-top:1px}.map-glossary-btn{width:100%}}
+
+/* 2026 standalone smelter facility intelligence within the interactive provincial map. */
+.map-smelter-preset{display:block;margin:0 0 14px;width:100%;padding:12px 16px;font-weight:750;white-space:normal;text-align:left;color:#ffe5ac;border-color:#947548;background:linear-gradient(115deg,#203e50,#443b33);box-shadow:inset 3px 0 #e8bd70}
+.map-smelter-preset:hover,.map-smelter-preset:focus-visible{background:linear-gradient(115deg,#2b5365,#594b38);border-color:#efc985}
+.map-smelter-baseline{border-color:#77674b;background:#132b3c}
+.map-smelter-baseline .map-pln-baseline-card{background:#1d3748;border-color:#665a45}
+.map-smelter-production{color:#8cdbc0!important;font-weight:750;border-left:2px solid #49a88d;padding-left:8px}
+.map-smelter-gap{color:#ecc18b!important;background:#3b3128;border-radius:5px;padding:7px 9px}
+@media(max-width:650px){.map-smelter-preset{font-size:12px;line-height:1.5}.map-smelter-baseline .map-pln-baseline-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.map-viz{min-height:0;aspect-ratio:1200/530}}
