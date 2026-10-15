@@ -8,6 +8,7 @@ on:
       - 'data/indonesia-provinces.geojson'
       - 'data/investment-operator-assets.json'
       - 'data/investment-evidence.json'
+      - 'data/energy-infrastructure-security.json'
       - 'tests/check-strategic-map.cjs'
       - '.github/workflows/strategic-map-qa.yml'
   workflow_dispatch:
