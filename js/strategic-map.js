@@ -177,7 +177,16 @@ function mapPage(root,data){
  }
  mapSection.append(legend);grid.append(mapSection);
  const side=node("section","map-results"),resultsHead=node("div","map-results-head"),heading=node("h3",null,label("Mapped evidence","Bukti terpetakan")),info=node("p","map-muted"),list=node("div","map-list");
- resultsHead.append(heading,info);side.append(resultsHead,list);grid.append(side);root.append(grid);
+ const expand=node("button","map-btn map-expand",label("Expand full list","Bentangkan seluruh daftar"));expand.type="button";
+ let expanded=false;
+ expand.addEventListener("click",()=>{
+  expanded=!expanded;
+  side.className="map-results"+(expanded?" expanded":"");
+  expand.textContent=expanded?label("Collapse list","Ringkas daftar"):label("Expand full list","Bentangkan seluruh daftar");
+  expand.setAttribute("aria-expanded",String(expanded));
+ });
+ expand.setAttribute("aria-expanded","false");
+ resultsHead.append(heading,info,expand);side.append(resultsHead,list);grid.append(side);root.append(grid);
  const outside=node("details","map-footer"),summary=node("summary",null,label("Map appendix · geography, status, classification, and limitations","Lampiran peta · geografi, status, klasifikasi, dan keterbatasan"));
  const appendix=node("div");
  appendix.append(node("p",null,label(
