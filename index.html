@@ -176,6 +176,35 @@ async function initGeoRadar(){
  }catch(e){status.textContent="Automated news feed not yet available";root.textContent="The scheduled news-discovery workflow has not published a dataset. Historical editorial events remain below."}
 }
 document.addEventListener("sli:languagechange",()=>{if(document.getElementById("geoEvents"))initGeoRadar()});
-function show(page){if(!pages[page])page='overview';document.getElementById('pageTitle').textContent=pages[page][0];document.getElementById('pageDescription').textContent=pages[page][1];document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));document.getElementById('content').innerHTML=page==='overview'?overview():page==='methodology'?method():page==='energy'?energyMonitor():tracker(page);if(page==='energy'){if(typeof initSLIInfrastructure==='function')initSLIInfrastructure();if(typeof initSLIBiofuels==='function')initSLIBiofuels();if(typeof initSLIEV==='function')initSLIEV();if(typeof initEnergyEvents==='function')initEnergyEvents();if(typeof initEnergyGovernance==='function')initEnergyGovernance();if(typeof initSLIOilGasStakeholders==='function')initSLIOilGasStakeholders();if(typeof initSLICoalStakeholders==='function')initSLICoalStakeholders();initEnergyViz();showEnergyQuotes();initGeoRadar();if(typeof initEnergyFundamentals==='function')initEnergyFundamentals();if(typeof initFiscalPrices==='function')initFiscalPrices();if(typeof initSLITransition==='function')initSLITransition();if(typeof initDailyEnergyAssessment==='function')initDailyEnergyAssessment();if(typeof initSLIEnergyAppendix==='function')initSLIEnergyAppendix();}document.querySelectorAll('[data-link]').forEach(x=>{x.onclick=()=>show(x.dataset.link);x.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(x.dataset.link)}}});}
+function show(page){if(!pages[page])page='overview';document.getElementById('pageTitle').textContent=pages[page][0];document.getElementById('pageDescription').textContent=pages[page][1];document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));document.getElementById('content').innerHTML=page==='overview'?overview():page==='methodology'?method():page==='energy'?energyMonitor():tracker(page);if(page==='energy'){
+ // Allow the new page to paint before starting heavier, independent modules.
+ const runModule=(name,fn)=>{try{if(typeof fn==='function'){const result=fn();if(result&&typeof result.catch==='function')result.catch(err=>console.error('[SLI] '+name+' failed',err));}}catch(err){console.error('[SLI] '+name+' failed',err);}};
+ const tasks=[
+  ['Infrastructure',()=>window.initSLIInfrastructure?.()],
+  ['Biofuels',()=>window.initSLIBiofuels?.()],
+  ['EV',()=>window.initSLIEV?.()],
+  ['Events',()=>window.initEnergyEvents?.()],
+  ['Governance',()=>window.initEnergyGovernance?.()],
+  ['Oil and gas stakeholders',()=>window.initSLIOilGasStakeholders?.()],
+  ['Coal stakeholders',()=>window.initSLICoalStakeholders?.()],
+  ['Energy chart',()=>initEnergyViz()],
+  ['Energy quotes',()=>showEnergyQuotes()],
+  ['Geopolitical monitoring',()=>initGeoRadar()],
+  ['Energy fundamentals',()=>window.initEnergyFundamentals?.()],
+  ['Fiscal prices',()=>window.initFiscalPrices?.()],
+  ['Transition and domestic monitoring',()=>window.initSLITransition?.()],
+  ['Daily assessment',()=>window.initDailyEnergyAssessment?.()],
+  ['Energy appendix',()=>window.initSLIEnergyAppendix?.()]
+ ];
+ const activeContent=document.getElementById('content');
+ let i=0;
+ function loadNext(){
+  if(document.getElementById('content')!==activeContent||!document.getElementById('energyChart'))return;
+  if(i>=tasks.length)return;
+  const [name,fn]=tasks[i++];runModule(name,fn);
+  setTimeout(loadNext,0);
+ }
+ setTimeout(loadNext,0);
+}document.querySelectorAll('[data-link]').forEach(x=>{x.onclick=()=>show(x.dataset.link);x.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(x.dataset.link)}}});}
 document.querySelectorAll('#nav button').forEach(x=>x.addEventListener('click',()=>show(x.dataset.page)));document.getElementById('year').textContent=new Date().getFullYear();show('overview');
 </script></body></html>
