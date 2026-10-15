@@ -2,7 +2,7 @@
 (function(){"use strict";
 const el=(tag,cl,text)=>{const x=document.createElement(tag);if(cl)x.className=cl;if(text!==undefined)x.textContent=String(text);return x};
 const link=(url,label)=>{const a=el("a","sli-hier-link",label||"Original source ↗");if(/^https:\/\//.test(url||"")){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}else{a.textContent="No verified source"}return a};
-const typeName={root:"National direction",policy:"Policy coordination",reporting:"Administrative reporting",portfolio:"State portfolio",equity:"Shareholding / member",minority:"Minority investment / associate",oversight:"Independent constitutional oversight",research:"Research / applied innovation",coordination:"Strategic coordination / collaboration","strategic-interface":"Functional demand interface","joint-venture":"Joint venture / cross-holding",market:"Independent commercial market","security":"Cybersecurity"};
+const typeName={root:"National direction",policy:"Sector policy",coordination:"Interministerial economic coordination",planning:"National development planning",reporting:"Administrative reporting",portfolio:"State portfolio",equity:"Shareholding / member",minority:"Minority investment / associate",oversight:"Independent constitutional oversight",research:"Research / applied innovation",coordination:"Strategic coordination / collaboration","strategic-interface":"Functional demand interface","joint-venture":"Joint venture / cross-holding",market:"Independent commercial market","security":"Cybersecurity"};
 function init(which,root){if(!root)return;root.replaceChildren(el("p","sli-hier-status","Loading verified institutional and corporate hierarchy…"));
 fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Hierarchy source unavailable");return r.json()}).then(db=>{
  const record=db.sectors?.[which];if(!root.isConnected||!record)return;
@@ -27,7 +27,7 @@ fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok
 
  const top=el("div","sli-hier-president"),lanes=el("div","sli-hier-lanes"),outsiders=el("section","sli-hier-market"),info=el("aside","sli-hier-profile");
  main.append(top,lanes,outsiders,info);
- const legend=el("div","sli-hier-legend");for(const [key,title] of Object.entries(typeName)){if(["reporting","policy","portfolio","equity","minority","research","market","oversight","joint-venture"].includes(key))legend.append(el("span","sli-hier-key "+key,title))}main.append(legend);
+ const legend=el("div","sli-hier-legend");for(const [key,title] of Object.entries(typeName)){if(["reporting","policy","coordination","planning","portfolio","equity","minority","research","market","oversight","joint-venture"].includes(key))legend.append(el("span","sli-hier-key "+key,title))}main.append(legend);
  main.append(el("p","sli-hier-foot",db.updated_note+" Reported shareholding and direct official reporting must not be conflated with coordination or related-industry links."));
  root.replaceChildren(main);
  const defaultExpanded=new Set(["pres","minister","industrial","investment","komdigi","dgE","dgI","bpi","dam","mind","telkom","brin"]);
@@ -67,7 +67,7 @@ fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok
  top.replaceChildren(card(rootNode));
  lanes.replaceChildren();outsiders.hidden=mode!=="all"&&mode!=="market";
  let first=actors.filter(a=>a.parent==="pres"&&!["oversight"].includes(a.relation));
- if(mode==="policy")first=first.filter(a=>["policy"].includes(a.relation));
+ if(mode==="policy")first=first.filter(a=>["policy","coordination","planning"].includes(a.relation));
  if(mode==="portfolio")first=first.filter(a=>a.id==="bpi"||a.id==="bpbum");
  if(mode==="research")first=first.filter(a=>["research","strategic-interface"].includes(a.relation)||a.id==="defense"||a.id==="highered");
  if(mode==="market")first=[];
