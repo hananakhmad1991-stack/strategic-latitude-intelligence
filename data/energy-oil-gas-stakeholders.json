@@ -1,0 +1,486 @@
+{
+  "as_of": "2026-10-15",
+  "title": "Oil & Gas — Independent Institutional & Commercial Stakeholder Map",
+  "description_en": "A focused view of regulators, SOE equity governance, upstream PSC contractors, BUMS and foreign operators, fuel / gas infrastructure and public scrutiny.",
+  "description_id": "Peta khusus regulator, pengelolaan portofolio BUMN, kontraktor KKS hulu, operator swasta dan asing, infrastruktur BBM/gas, serta pengawasan publik.",
+  "notes_en": [
+    "BPI Danantara manages SOE economic Series B holdings; BP BUMN represents special Series A rights. They do not replace ESDM, SKK Migas or BPH Migas.",
+    "Upstream PSC management belongs to SKK Migas (or Aceh's BPMA where applicable). SOE / BUMS / foreign KKKS operate within their own contracts.",
+    "Lines and lanes indicate accountability or transactions, not universal ownership or direct employment relationships."
+  ],
+  "notes_id": [
+    "Danantara mengelola hak ekonomi Seri B BUMN, sementara BP BUMN mewakili hak khusus Seri A. Keduanya tidak menggantikan ESDM, SKK Migas, atau BPH Migas.",
+    "Pengelolaan KKS hulu berada pada SKK Migas (atau BPMA di Aceh). KKKS milik BUMN, swasta, dan asing bekerja menurut kontrak masing-masing.",
+    "Jalur dan kelompok menunjukkan lingkup tanggung jawab atau transaksi, bukan kepemilikan maupun hubungan atasan langsung universal."
+  ],
+  "groups": [
+    {
+      "id": "policy",
+      "en": "Policy, fiscal & public oversight",
+      "id_label": "Kebijakan, fiskal & pengawasan",
+      "color": "#d9bf89"
+    },
+    {
+      "id": "upstream",
+      "en": "Upstream supervision & PSC governance",
+      "id_label": "Pengawasan hulu & tata kelola KKS",
+      "color": "#7bb5d0"
+    },
+    {
+      "id": "state",
+      "en": "State-owned oil, gas & infrastructure operators",
+      "id_label": "Operator BUMN & infrastruktur migas",
+      "color": "#83bbab"
+    },
+    {
+      "id": "private",
+      "en": "Private and foreign upstream operators (BUMS / KKKS)",
+      "id_label": "Operator hulu swasta & asing (BUMS / KKKS)",
+      "color": "#caacd9"
+    },
+    {
+      "id": "downstream",
+      "en": "Fuel, LPG and gas distribution",
+      "id_label": "Distribusi BBM, LPG & gas bumi",
+      "color": "#e1a57f"
+    },
+    {
+      "id": "regions",
+      "en": "Regional, research & local implementation",
+      "id_label": "Daerah, riset & implementasi lokal",
+      "color": "#a6b5d3"
+    }
+  ],
+  "items": [
+    {
+      "group": "policy",
+      "name": "ESDM / Minister",
+      "id_name": "Kementerian ESDM",
+      "summary_en": "Energy policy, upstream and downstream rulemaking, technical standards and permits; not the owner of all sector companies.",
+      "summary_id": "Perumusan kebijakan, standar, dan perizinan hulu-hilir migas; bukan pemilik seluruh perusahaan sektor.",
+      "lead": "Bahlil Lahadalia · Minister",
+      "as_of": "2026-10-15",
+      "source": "https://www.esdm.go.id/",
+      "role": "Government regulator"
+    },
+    {
+      "group": "policy",
+      "name": "Ditjen Migas",
+      "id_name": "Direktorat Jenderal Migas",
+      "summary_en": "Ministerial oil/gas technical policy: working areas, upstream/downstream regulation, gas infrastructure and CCS in its mandate.",
+      "summary_id": "Kebijakan teknis migas kementerian: wilayah kerja, aturan hulu-hilir, infrastruktur gas, dan aspek CCS.",
+      "lead": "Laode Sulaeman · Director General",
+      "as_of": "2026-06-19",
+      "source": "https://migas.esdm.go.id/post/Sambut-Pejabat-Administrator-dan-Pengawas-Baru-Dirjen-Migas-Tekankan-Kecepatan-dan-Kekompakan",
+      "role": "Government regulator"
+    },
+    {
+      "group": "policy",
+      "name": "BP BUMN",
+      "id_name": "Badan Pengatur BUMN",
+      "summary_en": "Government SOE corporate regulator representing special Series A Dwiwarna rights; not a PSC regulator and not the commercial owner of private KKKS.",
+      "summary_id": "Pengatur korporasi BUMN serta wakil hak saham Seri A Dwiwarna; bukan regulator KKS maupun pemilik KKKS swasta.",
+      "lead": "Government agency · incumbent verify separately",
+      "as_of": "2026-10-15",
+      "source": "https://perpajakan.ddtc.co.id/id/sumber-hukum/peraturan-pusat/undang-undang-16-tahun-2025",
+      "role": "SOE regulator"
+    },
+    {
+      "group": "policy",
+      "name": "Danantara Indonesia",
+      "id_name": "BPI Danantara",
+      "summary_en": "Investment and economic ownership of the state SOE Series B portfolio, including energy holdings; not a ministry regulator or chain of command to independent private contractors.",
+      "summary_id": "Pengelolaan portofolio dan hak ekonomi Seri B BUMN, termasuk energi; bukan regulator sektor atau atasan kontraktor swasta.",
+      "lead": "Rosan Perkasa Roeslani · CEO",
+      "as_of": "2026-10-15",
+      "source": "https://www.danantaraindonesia.co.id/id/about",
+      "role": "SOE ownership / investor"
+    },
+    {
+      "group": "policy",
+      "name": "Kementerian Keuangan",
+      "id_name": "Kementerian Keuangan",
+      "summary_en": "Migas fiscal assumptions, APBN, fuel/LPG subsidies or compensation, taxes and state revenues; distinct from refinery and terminal operations.",
+      "summary_id": "Asumsi fiskal migas, APBN, subsidi/kompensasi BBM-LPG, pajak, dan penerimaan negara; berbeda dari pengoperasian kilang/terminal.",
+      "lead": "Minister / fiscal teams · date-specific review",
+      "as_of": "2026-10-15",
+      "source": "https://www.kemenkeu.go.id/",
+      "role": "Fiscal authority"
+    },
+    {
+      "group": "policy",
+      "name": "DPR RI Komisi XII",
+      "id_name": "Komisi XII DPR RI",
+      "summary_en": "Parliamentary scrutiny of energy laws, ESDM, upstream PSC implementation and downstream fuel quotas; not field or corporate operator.",
+      "summary_id": "Pengawasan legislasi energi, ESDM, tata kelola KKS hulu, dan kuota BBM; bukan operator lapangan atau korporasi.",
+      "lead": "Commission XII · current leadership verify",
+      "as_of": "2026-10-15",
+      "source": "https://www.dpr.go.id/",
+      "role": "Parliamentary oversight"
+    },
+    {
+      "group": "upstream",
+      "name": "SKK Migas",
+      "id_name": "SKK Migas",
+      "summary_en": "Government special task force managing upstream production-sharing contracts and KKKS work plans, budgets and field development oversight; NOT Danantara subsidiary.",
+      "summary_id": "Satuan kerja pemerintah untuk pengelolaan KKS hulu, WP&B, dan pengawasan pengembangan lapangan; bukan anak usaha Danantara.",
+      "lead": "Djoko Siswanto · Head",
+      "as_of": "2026-10-15",
+      "source": "https://skkmigas.go.id/",
+      "role": "PSC supervisor"
+    },
+    {
+      "group": "upstream",
+      "name": "BPMA Aceh",
+      "id_name": "Badan Pengelola Migas Aceh",
+      "summary_en": "Separate upstream institutional arrangement for Aceh under its special legal status; not simply a SKK Migas field branch.",
+      "summary_id": "Pengelola kegiatan usaha hulu di Aceh melalui tata kelembagaan khusus; bukan sekadar kantor cabang SKK Migas.",
+      "lead": "Aceh oil-and-gas authority",
+      "as_of": "2026-10-15",
+      "source": "https://bpma.go.id/",
+      "role": "Aceh upstream authority"
+    },
+    {
+      "group": "upstream",
+      "name": "KKKS contract governance",
+      "id_name": "Tata kelola kontraktor KKS",
+      "summary_en": "Contractor categories encompass BUMN subsidiaries, Indonesian private companies, foreign operators and JVs; field-by-field PSC mandates are contractual.",
+      "summary_id": "Kelompok KKKS mencakup anak usaha BUMN, swasta Indonesia, operator asing, dan JV; kewenangan bergantung kontrak per wilayah kerja.",
+      "lead": "Contract and field dependent",
+      "as_of": "2026-10-15",
+      "source": "https://skkmigas.go.id/",
+      "role": "Contract framework"
+    },
+    {
+      "group": "state",
+      "name": "PT Pertamina (Persero)",
+      "id_name": "Pertamina (Persero)",
+      "summary_en": "SOE energy corporate group under Danantara economic-portfolio governance and BP BUMN special-share regulation; its management and subsidiaries execute business operations.",
+      "summary_id": "BUMN grup energi dalam pengelolaan portofolio ekonomi Danantara dan pengawasan hak saham khusus BP BUMN; pengoperasian dilakukan direksi serta anak usaha.",
+      "lead": "Simon Aloysius Mantiri · CEO (dated roster)",
+      "as_of": "2026-10-15",
+      "source": "https://www.pertamina.com/",
+      "role": "BUMN group"
+    },
+    {
+      "group": "state",
+      "name": "Pertamina Hulu Energi (PHE)",
+      "id_name": "Pertamina Hulu Energi",
+      "summary_en": "Pertamina upstream subholding/KKKS execution across operated blocks and partners; supervised by SKK Migas/BPMA where applicable.",
+      "summary_id": "Subholding hulu Pertamina serta pelaksana KKS pada berbagai blok bersama mitra; pengawasan oleh SKK Migas/BPMA sesuai kewenangan.",
+      "lead": "Sunaryanto · President Director (dated roster)",
+      "as_of": "2026-10-15",
+      "source": "https://phe.pertamina.com/",
+      "role": "SOE upstream operator"
+    },
+    {
+      "group": "state",
+      "name": "Pertamina Hulu Indonesia (PHI)",
+      "id_name": "Pertamina Hulu Indonesia",
+      "summary_en": "Regional upstream operational companies within the PHE group, particularly Kalimantan PSC field operations.",
+      "summary_id": "Operator hulu regional dalam grup PHE, termasuk blok migas Kalimantan.",
+      "lead": "Regional operating management",
+      "as_of": "2026-10-15",
+      "source": "https://phi.pertamina.com/",
+      "role": "SOE upstream operator"
+    },
+    {
+      "group": "state",
+      "name": "Pertamina Patra Niaga",
+      "id_name": "Pertamina Patra Niaga",
+      "summary_en": "SOE downstream fuel/LPG marketing and distribution, terminals, shipping and supply chain after restructuring; asset and process scopes must be sourced separately.",
+      "summary_id": "Operator distribusi dan pemasaran BBM/LPG, terminal, pelayaran, dan rantai pasok setelah restrukturisasi; cakupan aset perlu dicek per entitas.",
+      "lead": "Mars Ega Legowo Putra · President Director",
+      "as_of": "2026-10-15",
+      "source": "https://pertaminapatraniaga.com/",
+      "role": "SOE downstream operator"
+    },
+    {
+      "group": "state",
+      "name": "PGN / Pertamina Gas subholding",
+      "id_name": "Perusahaan Gas Negara (PGN)",
+      "summary_en": "Publicly listed SOE-group gas transmission/distribution network, gas trading, LNG/regasification and Jargas projects; separate from SKK upstream oversight.",
+      "summary_id": "Grup gas bumi milik BUMN terbuka yang mengelola pipa transmisi/distribusi, niaga gas, LNG/regasifikasi, dan Jargas; berbeda dari pengawasan hulu SKK.",
+      "lead": "Corporate leadership · verify current appointment",
+      "as_of": "2026-10-15",
+      "source": "https://www.pgn.co.id/",
+      "role": "SOE gas networks"
+    },
+    {
+      "group": "state",
+      "name": "PT PLN Energi Primer Indonesia",
+      "id_name": "PLN Energi Primer Indonesia",
+      "summary_en": "PLN primary energy procurement and gas/power fuel offtake; customer/contract counterparty, not upstream field regulator.",
+      "summary_id": "Pengadaan energi primer PLN dan pembelian gas untuk pembangkit; pihak kontrak/pembeli, bukan pengatur lapangan hulu.",
+      "lead": "PLN Group operations",
+      "as_of": "2026-10-15",
+      "source": "https://web.pln.co.id/",
+      "role": "SOE buyer / offtaker"
+    },
+    {
+      "group": "private",
+      "name": "MedcoEnergi",
+      "id_name": "Medco Energi Internasional",
+      "summary_en": "Indonesian publicly listed private oil and gas producer; operator of South Natuna Sea Block B and other PSC interests. 2026 Eni divestment is agreement, not necessarily closed transfer.",
+      "summary_id": "Produsen migas swasta nasional terbuka, operator South Natuna Sea Block B dan pemegang kepentingan KKS lain. Divestasi Eni 2026 masih perlu bukti penutupan transaksi.",
+      "lead": "Indonesian BUMS / KKKS",
+      "as_of": "2026-10-15",
+      "source": "https://www.energimedco.org/en/our-businesses/oil-gas/south-natuna-sea-block-b/index.html",
+      "role": "Private Indonesian operator"
+    },
+    {
+      "group": "private",
+      "name": "ExxonMobil Cepu (EMCL)",
+      "id_name": "ExxonMobil Cepu Limited",
+      "summary_en": "Foreign private upstream operator of Banyu Urip / Cepu PSC assets; actual output is not a Danantara investment indicator.",
+      "summary_id": "Operator swasta asing untuk aset Banyu Urip / Blok Cepu; produksi aktual bukan indikator investasi Danantara.",
+      "lead": "International KKKS · Cepu",
+      "as_of": "2026-08-20",
+      "source": "https://corporate.exxonmobil.com/locations/indonesia/newsroom/2026/first-of-its-kind-tech-strengthening-indonesias-oil-resilience-future",
+      "role": "Foreign operator"
+    },
+    {
+      "group": "private",
+      "name": "bp Tangguh",
+      "id_name": "bp Indonesia / Tangguh",
+      "summary_en": "International upstream gas and LNG operator at Tangguh with PSC partners; progress should follow onstream gas/LNG assets and contractual milestones.",
+      "summary_id": "Operator hulu gas dan LNG asing pada Tangguh beserta mitra KKS; pantau fasilitas beroperasi dan tahapan kontrak.",
+      "lead": "International KKKS · Papua",
+      "as_of": "2026-10-15",
+      "source": "https://www.bp.com/en_id/indonesia/home.html",
+      "role": "Foreign gas / LNG"
+    },
+    {
+      "group": "private",
+      "name": "INPEX Masela",
+      "id_name": "INPEX Masela / Abadi LNG",
+      "summary_en": "Private international operator of Masela/Abadi LNG with PHE/PETRONAS partners. May 2026 offtake agreements are not first gas or final commissioning.",
+      "summary_id": "Operator swasta asing untuk proyek Masela/Abadi LNG bersama PHE/PETRONAS. Kesepakatan pembeli Mei 2026 belum membuktikan gas pertama atau operasi komersial.",
+      "lead": "International KKKS · Masela",
+      "as_of": "2026-05-20",
+      "source": "https://www.inpex.com/news/2026/20260520.html",
+      "role": "Foreign gas / LNG"
+    },
+    {
+      "group": "private",
+      "name": "Searah (Eni–PETRONAS)",
+      "id_name": "Searah — JV Eni dan PETRONAS",
+      "summary_en": "Joint venture established in June 2026, operating gas assets around Kutei Basin. October 2026 sales to Pertamina and Medco were announced transactions requiring closing checks.",
+      "summary_id": "JV dibentuk Juni 2026 dan mengelola aset gas Cekungan Kutai. Penjualan kepentingan kepada Pertamina/Medco pada Oktober memerlukan verifikasi penyelesaian transaksi.",
+      "lead": "International JV / KKKS",
+      "as_of": "2026-10-12",
+      "source": "https://www.eni.com/en-IT/media/press-release/2026/10/eni-signs-two-agreements-for-the-sale-of-stakes-in-selected-upstream-assets-indonesia.html",
+      "role": "International JV"
+    },
+    {
+      "group": "downstream",
+      "name": "BPH Migas",
+      "id_name": "BPH Migas",
+      "summary_en": "Government downstream agency for assigned/subsidized fuel allocation and distribution supervision and regulated gas pipeline transportation; NOT Danantara-held company.",
+      "summary_id": "Badan pengatur hilir pemerintah untuk alokasi/pengawasan BBM penugasan dan subsidi serta angkutan gas pipa; bukan perusahaan portofolio Danantara.",
+      "lead": "Wahyudi Anas · Head",
+      "as_of": "2026-10-15",
+      "source": "https://www.bphmigas.go.id/komite-bph/wahyudi-anas-s-t-2/",
+      "role": "Downstream regulator"
+    },
+    {
+      "group": "downstream",
+      "name": "Refineries and terminals",
+      "id_name": "Kilang dan terminal distribusi",
+      "summary_en": "Pertamina and licensed private facility operators produce, store and transfer fuel; commissioning or nameplate capacity is not volume actually delivered.",
+      "summary_id": "Operator fasilitas Pertamina serta swasta berizin mengolah, menyimpan, dan menyalurkan BBM; kapasitas terpasang tidak sama dengan penyaluran nyata.",
+      "lead": "Named facilities / owners differ",
+      "as_of": "2026-10-15",
+      "source": "https://migas.esdm.go.id/",
+      "role": "Commercial infrastructure"
+    },
+    {
+      "group": "downstream",
+      "name": "LPG depots, agents and SPBU",
+      "id_name": "Depot LPG, agen dan SPBU",
+      "summary_en": "Licensed commercial distributors, independent fuel-station managers and last-mile logistics, with BPH/ESDM and related public-sector oversight.",
+      "summary_id": "Distributor niaga berizin, pengelola SPBU swasta, dan logistik akhir; diawasi dalam lingkup kewenangan BPH/ESDM serta regulator terkait.",
+      "lead": "Commercial BUMN + BUMS",
+      "as_of": "2026-10-15",
+      "source": "https://www.bphmigas.go.id/",
+      "role": "Distribution operator"
+    },
+    {
+      "group": "downstream",
+      "name": "Gas pipeline and LNG terminals",
+      "id_name": "Pipa gas bumi dan terminal LNG",
+      "summary_en": "PGN and other licensed pipeline and LNG/regasification operators; distinguish third-party network access, metered transport and actual consumer deliveries.",
+      "summary_id": "PGN dan operator pipa/LNG/regasifikasi berizin lainnya; bedakan akses pihak ketiga, volume transportasi dan pasokan diterima pelanggan.",
+      "lead": "State & private network operators",
+      "as_of": "2026-10-15",
+      "source": "https://www.pgn.co.id/",
+      "role": "Gas infrastructure"
+    },
+    {
+      "group": "regions",
+      "name": "DPR / DPD oversight",
+      "id_name": "Pengawasan DPR dan DPD",
+      "summary_en": "DPR XII and VI scrutinize energy regulation and SOE management; regional DPD committees assess impacts. Legislators do not supervise PSC operations day-to-day.",
+      "summary_id": "Komisi XII/VI DPR mengawasi kebijakan energi dan kinerja BUMN; DPD menilai dampak daerah, bukan mengelola operasi harian KKS.",
+      "lead": "DPR XII / DPR VI / DPD II",
+      "as_of": "2026-10-15",
+      "source": "https://www.dpr.go.id/",
+      "role": "Oversight"
+    },
+    {
+      "group": "regions",
+      "name": "Provincial energy offices and licensing",
+      "id_name": "Dinas ESDM & perizinan daerah",
+      "summary_en": "Site interfaces, provincial development, environment and community issues within delegated authority; a province cannot unilaterally change national PSC terms.",
+      "summary_id": "Pelaksanaan proyek di daerah dan persoalan lingkungan/masyarakat sesuai pelimpahan wewenang; daerah tidak dapat sepihak mengubah syarat KKS nasional.",
+      "lead": "Province-specific offices",
+      "as_of": "2026-10-15",
+      "source": "https://www.esdm.go.id/",
+      "role": "Regional implementation"
+    },
+    {
+      "group": "regions",
+      "name": "LEMIGAS / BRIN technical researchers",
+      "id_name": "LEMIGAS / BRIN",
+      "summary_en": "Technical reservoir testing, petroleum technologies, CO₂ storage research and verification; research institutions are not equivalent to permit issuers.",
+      "summary_id": "Pengujian reservoir, teknologi migas, riset penyimpanan CO₂ dan verifikasi teknis; lembaga riset bukan penerbit izin.",
+      "lead": "ESDM / BRIN labs",
+      "as_of": "2026-10-15",
+      "source": "https://migas.esdm.go.id/",
+      "role": "Technical and research"
+    }
+  ],
+  "issues": [
+    {
+      "id": "upstream",
+      "en": "Upstream lifting and production",
+      "id_label": "Produksi dan lifting hulu",
+      "route": [
+        "policy",
+        "upstream",
+        "state",
+        "private",
+        "regions"
+      ],
+      "focus": [
+        "Measured output and lifting differ",
+        "Approved WP&B and drilling execution",
+        "Field operator and SKK records for the same period"
+      ],
+      "focus_id": [
+        "Produksi dan lifting merupakan ukuran berbeda",
+        "WP&B disetujui dibanding realisasi pengeboran",
+        "Cocokkan periode antara operator dan SKK"
+      ]
+    },
+    {
+      "id": "fuel",
+      "en": "Fuel and LPG availability",
+      "id_label": "Ketersediaan BBM dan LPG",
+      "route": [
+        "policy",
+        "downstream",
+        "state",
+        "regions"
+      ],
+      "focus": [
+        "Quota versus allocation versus delivered litres",
+        "Port, depot and last-mile distribution",
+        "BPH/ESDM and operator evidence, not headlines"
+      ],
+      "focus_id": [
+        "Bedakan kuota, alokasi, dan realisasi penyaluran",
+        "Periksa pelabuhan, depot, dan distribusi akhir",
+        "Verifikasi BPH/ESDM dan operator, bukan judul berita"
+      ]
+    },
+    {
+      "id": "gas",
+      "en": "HGBT, gas networks and Jargas",
+      "id_label": "HGBT, jaringan gas dan Jargas",
+      "route": [
+        "policy",
+        "upstream",
+        "state",
+        "downstream",
+        "regions"
+      ],
+      "focus": [
+        "Field gas production versus contracted domestic gas",
+        "HGBT eligibility and actual industrial invoices",
+        "Piped gas transport throughput versus household connections"
+      ],
+      "focus_id": [
+        "Bedakan produksi gas dan gas domestik terkontrak",
+        "Periksa penerima HGBT dan tarif faktual industri",
+        "Bedakan aliran gas pipa dan sambungan rumah tangga"
+      ]
+    },
+    {
+      "id": "investment",
+      "en": "PSC investments and FID",
+      "id_label": "Investasi KKS dan keputusan investasi",
+      "route": [
+        "policy",
+        "upstream",
+        "state",
+        "private",
+        "regions"
+      ],
+      "focus": [
+        "Concession and investor are not the same as state shareholder",
+        "Approval, FID, capex and commissioning are separate dates",
+        "12 October Eni stake agreements are not assumed closed"
+      ],
+      "focus_id": [
+        "Pemegang KKS tidak sama dengan pemegang saham negara",
+        "Izin, FID, belanja modal, dan operasi adalah tahap berbeda",
+        "Perjanjian Eni 12 Oktober belum dianggap selesai otomatis"
+      ]
+    },
+    {
+      "id": "lng",
+      "en": "LNG supply and energy security",
+      "id_label": "Pasokan LNG dan ketahanan energi",
+      "route": [
+        "policy",
+        "upstream",
+        "private",
+        "state",
+        "downstream"
+      ],
+      "focus": [
+        "Separate gas field, LNG liquefaction, offtake and imports",
+        "Check project and cargo operations, not investment announcements",
+        "Link LNG prices and contracts to Indonesian consumers"
+      ],
+      "focus_id": [
+        "Bedakan lapangan gas, kilang LNG, kontrak pembelian dan impor",
+        "Periksa operasi proyek dan kargo, bukan pengumuman",
+        "Hubungkan harga dan kontrak LNG ke pengguna domestik"
+      ]
+    }
+  ],
+  "reference_sources": [
+    {
+      "label": "SOE law and two-share model",
+      "url": "https://perpajakan.ddtc.co.id/id/sumber-hukum/peraturan-pusat/undang-undang-16-tahun-2025"
+    },
+    {
+      "label": "Danantara official mandate",
+      "url": "https://www.danantaraindonesia.co.id/id/about"
+    },
+    {
+      "label": "SKK Migas official scope",
+      "url": "https://skkmigas.go.id/"
+    },
+    {
+      "label": "BPH Migas official role",
+      "url": "https://www.bphmigas.go.id/komite-bph/wahyudi-anas-s-t-2/"
+    },
+    {
+      "label": "Eni 12 October 2026 PSC agreements",
+      "url": "https://www.eni.com/en-IT/media/press-release/2026/10/eni-signs-two-agreements-for-the-sale-of-stakes-in-selected-upstream-assets-indonesia.html"
+    }
+  ]
+}
