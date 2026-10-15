@@ -48,3 +48,15 @@
 .sli-extra-network>summary{cursor:pointer;color:#e4c98f;font-weight:700;padding:7px;line-height:1.6}
 @media(max-width:1150px){.sli-hier-lanes{grid-template-columns:repeat(2,minmax(0,1fr))}.sli-hier-market-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.sli-hier-root{padding:12px}.sli-hier-tools{grid-template-columns:1fr 1fr}.sli-hier-search,.sli-hier-select{grid-column:1/-1}.sli-hier-button{font-size:12px;padding:9px}.sli-hier-lanes{grid-template-columns:1fr}.sli-hier-lane{padding:9px}.sli-hier-market-grid{grid-template-columns:1fr}.sli-hier-independent{grid-column:1}.sli-hier-entry.root strong{font-size:17px}.sli-hier-card strong{font-size:13px}}
+
+
+/* One consolidated institutional explorer per sector */
+.sli-sector-explorer-switcher{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 12px;padding:5px;background:#0b2133;border:1px solid #34536b;border-radius:10px}
+.sli-sector-explorer-tab{flex:1 1 190px;min-width:0;text-align:center;background:transparent;color:#c6d5e1;border:1px solid transparent;border-radius:7px;padding:12px 14px;cursor:pointer;font:700 13px/1.4 inherit}
+.sli-sector-explorer-tab.active{color:#132a3c;background:#e1c486;border-color:#e1c486}
+.sli-sector-explorer-tab:hover:not(.active),.sli-sector-explorer-tab:focus-visible{border-color:#d7b678;color:#f4e2b5}
+.sli-sector-explorer-pane[hidden]{display:none!important}
+.sli-sector-explorer-pane{min-width:0}
+.sli-sector-hierarchy-pane .sli-hier-root{margin-top:6px}
+.sli-sector-power-map>.sli-extra-network{margin:12px 0}
+@media(max-width:650px){.sli-sector-explorer-switcher{gap:5px;padding:4px}.sli-sector-explorer-tab{flex-basis:100%;font-size:12px;padding:10px 12px}}
