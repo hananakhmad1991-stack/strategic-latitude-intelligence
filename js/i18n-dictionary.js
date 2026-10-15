@@ -1518,3 +1518,8 @@ window.SLI_TRANSLATIONS_ID.set("the international thermal-coal benchmark differs
 window.SLI_TRANSLATIONS_ID.set("Energy Policy & Regulatory Update","Pembaruan Kebijakan & Regulasi Energi");
 window.SLI_TRANSLATIONS_ID.set("Institutional responsibilities & accountability","Tanggung Jawab & Akuntabilitas Kelembagaan");
 window.SLI_TRANSLATIONS_ID.set("Who directs policy, who regulates and who executes it","Siapa yang mengarahkan, mengatur, dan menjalankan kebijakan");
+
+window.SLI_TRANSLATIONS_ID.set("Appendix · Glossary","Lampiran · Glosarium");
+window.SLI_TRANSLATIONS_ID.set("Appendix · Acronyms, Technical Terms & Units","Lampiran · Singkatan, Istilah Teknis & Satuan");
+window.SLI_TRANSLATIONS_ID.set("A bilingual reader’s reference to the abbreviations, policy terms and measurement units used throughout Energy Security.","Panduan dwibahasa berisi singkatan, istilah kebijakan, dan satuan pengukuran dalam seluruh dashboard Ketahanan Energi.");
+window.SLI_TRANSLATIONS_ID.set("Searchable bilingual glossary of energy security terms and measurement units","Glosarium dwibahasa istilah dan satuan ketahanan energi yang bisa dicari");
