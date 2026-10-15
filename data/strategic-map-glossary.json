@@ -4,6 +4,72 @@
   "intro_id": "Definisi ini berlaku untuk peta SLI. Label menjelaskan bukti dari sumber, bukan sertifikat regulasi, kepemilikan terkini, atau investasi baru.",
   "sections": [
     {
+      "title_en": "Start here: how to read the classification",
+      "title_id": "Mulai di sini: cara membaca klasifikasi",
+      "items": [
+        {
+          "term": "Oil Refinery / Kilang Minyak",
+          "definition_en": "Industrial facility processing crude petroleum into gasoline, diesel, jet fuel and other products; categorically different from upstream oil/gas WK and metal smelting.",
+          "definition_id": "Pabrik pengolahan minyak mentah menjadi BBM seperti bensin, solar dan avtur; berbeda dari WK hulu migas dan smelter logam."
+        },
+        {
+          "term": "Gas Processing / LNG Facility",
+          "definition_en": "Processing removes impurities or separates raw gas; an LNG train cools gas for shipment. Neither is an oil refinery nor the original upstream PSC.",
+          "definition_id": "Fasilitas pengolahan gas memisahkan kotoran/komponen; train LNG mencairkan gas untuk diangkut. Keduanya bukan kilang minyak atau kontrak WK itu sendiri."
+        },
+        {
+          "term": "Coal mine vs coal-fired PLTU",
+          "definition_en": "A coal mine extracts fuel; a coal-fired PLTU burns that fuel to generate electricity. This map classifies the mine under Coal Mining and the PLTU under Power Generation.",
+          "definition_id": "Tambang batubara menghasilkan bahan bakar; PLTU membakar bahan bakar tersebut untuk menghasilkan listrik. Di peta, tambang masuk Coal Mining dan PLTU masuk Power Generation."
+        },
+        {
+          "term": "Smelter vs refinery / processing",
+          "definition_en": "Metal smelters/refineries process mineral ore/intermediate products into metal; an oil refinery processes petroleum. 'Processing' is a process, not an additional stand-alone map sector.",
+          "definition_id": "Smelter/pemurnian logam mengolah bijih/produk antara menjadi logam; kilang minyak mengolah minyak bumi. 'Processing' adalah kegiatan, bukan sektor baru terpisah."
+        },
+        {
+          "term": "Sector vs asset type vs source registry",
+          "definition_en": "Sector: industry family. Asset type: a facility/contract/technology within it. Source registry: originating dataset, NOT an industry sector. Each row belongs to exactly one public-facing sector/type but can overlap another parent record.",
+          "definition_id": "Sektor: kelompok industri. Jenis aset: fasilitas, kontrak atau teknologi dalam sektor tersebut. Registri sumber: asal dataset, BUKAN nama sektor. Setiap entri hanya satu sektor/jenis aset pada tampilan, namun dapat merujuk aset induk yang sama."
+        },
+        {
+          "term": "Project phase vs original status",
+          "definition_en": "Public phase is a simplified navigation label (reported operating, construction, planned, exploration, historical). Original text is shown separately and source dates control its reliability.",
+          "definition_id": "Tahapan proyek di filter merupakan pengelompokan sederhana (operasi dilaporkan, konstruksi, rencana, eksplorasi, historis). Teks status asli ditampilkan tersendiri dan validitasnya bergantung tanggal sumber."
+        },
+        {
+          "term": "Historical / Verify",
+          "definition_en": "Evidence describes an older project state but a current contract, operating permit, ownership or production status was not independently reconfirmed.",
+          "definition_id": "Sumber menjelaskan kondisi terdahulu, tetapi kontrak, izin, operator atau status produksi terkini belum diverifikasi ulang."
+        },
+        {
+          "term": "Metal smelter vs mineral mine",
+          "definition_en": "A mine extracts rock/ore; a smelter separates or transforms ore into a metal or intermediate. Same company may own both, but they are different types of assets.",
+          "definition_id": "Tambang mengambil bijih/batuan; smelter mengolahnya menjadi logam/produk antara. Perusahaan yang sama bisa memiliki keduanya, tetapi jenis asetnya berbeda."
+        },
+        {
+          "term": "Project announcement vs realization",
+          "definition_en": "Publicly announced investment, targeted spend or multi-year financial commitment is NOT BKPM/LKPM-reported investment realization and cannot be added to installed MW.",
+          "definition_id": "Pengumuman nilai proyek atau komitmen belanja modal beberapa tahun BUKAN realisasi investasi yang dilaporkan ke BKPM/LKPM dan tak bisa dijumlahkan dengan MW terpasang."
+        },
+        {
+          "term": "PLTU / PLTGU / PLTA / PLTS",
+          "definition_en": "Acronyms denote power generating technology, not owner, investment status or number of plants. One complex can contain several generating units.",
+          "definition_id": "Singkatan menyatakan teknologi pembangkit, bukan operator, status investasi atau jumlah lokasi. Satu kompleks bisa terdiri dari banyak unit."
+        },
+        {
+          "term": "Locality pin vs province-only marker",
+          "definition_en": "Locality pin shows an approximate city/district anchor backed by name evidence; an administrative province marker only means the province is known. Neither is surveyed GPS of a facility.",
+          "definition_id": "Titik wilayah adalah perkiraan kota/kecamatan berdasarkan sumber; penanda provinsi hanya menunjukkan provinsi diketahui. Keduanya bukan koordinat GPS fasilitas hasil survei."
+        },
+        {
+          "term": "FAME / biodiesel refinery",
+          "definition_en": "FAME is biodiesel produced from fatty oils; a biodiesel/FAME factory is NOT a petroleum oil refinery or a metal smelter.",
+          "definition_id": "FAME adalah bahan biodiesel dari minyak/lemak; pabrik FAME BUKAN kilang pengolahan minyak mentah dan BUKAN smelter logam."
+        }
+      ]
+    },
+    {
       "title_en": "Upstream oil & gas",
       "title_id": "Hulu migas",
       "items": [
