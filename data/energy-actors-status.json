@@ -1,0 +1,129 @@
+{
+  "checked_at_utc": "2026-10-15T00:05:10.953632+00:00",
+  "verification_method": "Dual official cabinet + ministry-site name agreement for auto-updating ministers; other offices are monitored as source status and require role-specific corroboration.",
+  "current_actor_count": 17,
+  "official_sources_checked": 13,
+  "verified_auto_changes": [],
+  "requires_review": [
+    {
+      "actor": "Kementerian Investasi dan Hilirisasi / BKPM",
+      "candidate": "Rosan Perkasa Roeslani",
+      "previous": "Rosan Roeslani · Minister of Investment/Head of BKPM (14 Oct 2026 presidential meeting)",
+      "reason": "Cabinet candidate not corroborated by ministerial page",
+      "sources": [
+        "https://setkab.go.id/profil-kabinet/",
+        "https://www.bkpm.go.id"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "actor": "Kementerian Lingkungan Hidup",
+      "primary_source": "https://setkab.go.id/profil-kabinet/",
+      "corroboration_source": "https://www.kemenlh.go.id/contents/8/Profil-Menteri",
+      "candidate": "Mohammad Jumhur Hidayat",
+      "corroborated": true,
+      "status": "confirmed-current"
+    },
+    {
+      "actor": "Kementerian Keuangan",
+      "primary_source": "https://setkab.go.id/profil-kabinet/",
+      "corroboration_source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
+      "candidate": "Suahasil Nazara",
+      "corroborated": false,
+      "status": "requires-review"
+    },
+    {
+      "actor": "Kementerian ESDM / Minister",
+      "primary_source": "https://setkab.go.id/profil-kabinet/",
+      "corroboration_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+      "candidate": "Bahlil Lahadalia",
+      "corroborated": true,
+      "status": "confirmed-current"
+    },
+    {
+      "actor": "Bappenas",
+      "primary_source": "https://setkab.go.id/profil-kabinet/",
+      "corroboration_source": "https://www.bappenas.go.id",
+      "candidate": "Rachmat Pambudy",
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "corroborated": false,
+      "status": "requires-review"
+    },
+    {
+      "actor": "Kementerian Investasi dan Hilirisasi / BKPM",
+      "primary_source": "https://setkab.go.id/profil-kabinet/",
+      "corroboration_source": "https://www.bkpm.go.id",
+      "candidate": "Rosan Perkasa Roeslani",
+      "corroborated": false,
+      "status": "requires-review"
+    },
+    {
+      "actor": "Ditjen Migas — ESDM",
+      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+      "status": "source-available-review-needed",
+      "bytes_read": 35905
+    },
+    {
+      "actor": "Ditjen EBTKE — ESDM",
+      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+      "status": "source-available-review-needed",
+      "bytes_read": 35905
+    },
+    {
+      "actor": "Ditjen Ketenagalistrikan — ESDM",
+      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+      "status": "source-available-review-needed",
+      "bytes_read": 35905
+    },
+    {
+      "actor": "SKK Migas",
+      "primary_source": "https://www.skkmigas.go.id/",
+      "status": "source-unavailable",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "actor": "BPH Migas",
+      "primary_source": "https://www.bphmigas.go.id/komite/",
+      "status": "source-available-review-needed",
+      "bytes_read": 127858
+    },
+    {
+      "actor": "BPMA — Aceh",
+      "primary_source": "https://www.bpma.go.id/",
+      "status": "source-unavailable",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "actor": "PLN Group and private IPPs",
+      "primary_source": "https://web.pln.co.id/",
+      "status": "source-unavailable",
+      "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
+    },
+    {
+      "actor": "Kemenko Hilirisasi dan Transisi Energi",
+      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+      "status": "source-available-review-needed",
+      "bytes_read": 35905
+    }
+  ],
+  "errors": [
+    {
+      "source": "https://www.bappenas.go.id",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "https://www.skkmigas.go.id/",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "https://www.bpma.go.id/",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "https://web.pln.co.id/",
+      "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
+    }
+  ],
+  "disclaimer": "No change is not evidence that no appointments happened. An unreachable, ambiguous or stale government source must not overwrite the last verified officeholder. No minister names are inferred from news headlines."
+}
