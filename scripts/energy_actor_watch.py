@@ -17,7 +17,7 @@ DATA=Path("data/energy-governance-ccs.json")
 OUT=Path("data/energy-actors-status.json")
 CABINET="https://setkab.go.id/profil-kabinet/"
 SPECS=[
- {"key":"Kementerian Lingkungan Hidup","cabinet":"Menteri Lingkungan Hidup/Kepala Badan Pengendalian Lingkungan Hidup","agency":"https://www.kemenlh.go.id/contents/8/Profil-Menteri","prefix":"Minister of Environment / Head of BPLH"},
+ {"key":"Kementerian Lingkungan Hidup / BPLH","cabinet":"Menteri Lingkungan Hidup/Kepala Badan Pengendalian Lingkungan Hidup","agency":"https://www.kemenlh.go.id/contents/8/Profil-Menteri","prefix":"Minister of Environment / Head of BPLH"},
  {"key":"Kementerian Keuangan","cabinet":"Menteri Keuangan","agency":"https://www.kemenkeu.go.id/en/profile/profile-pejabat/menteri-keuangan","fallback_agency":"https://www.setneg.go.id/baca/index/presiden_prabowo_lantik_suahasil_nazara_sebagai_menteri_keuangan_1","prefix":"Minister of Finance"},
  {"key":"Kementerian ESDM / Minister","cabinet":"Menteri Energi dan Sumber Daya Mineral","agency":"https://www.esdm.go.id/id/profil/profil-pimpinan","prefix":"Minister of ESDM; energy-sector regulator"},
  {"key":"Bappenas","cabinet":"Menteri Perencanaan Pembangunan Nasional/Kepala Badan Perencanaan Pembangunan Nasional","agency":"https://www.bappenas.go.id","prefix":"Minister / Head of Bappenas"},
@@ -27,8 +27,15 @@ OTHER_SOURCES=[
  {"actor":"SKK Migas","url":"https://www.skkmigas.go.id/"},
  {"actor":"BPH Migas","url":"https://www.bphmigas.go.id/komite/"},
  {"actor":"BPMA — Aceh","url":"https://www.bpma.go.id/"},
- {"actor":"PLN Group and private IPPs","url":"https://web.pln.co.id/"},
+ {"actor":"PT PLN (Persero) — national utility","url":"https://www.pln.co.id/tentang-kami-id/jajaran-direksi-id"},
  {"actor":"Kemenko Hilirisasi dan Transisi Energi","url":"https://www.esdm.go.id/id/profil/profil-pimpinan"},
+ {"actor":"PT Pertamina (Persero) — parent company","url":"https://sustainability.pertamina.com/id-ID/Sustainability-Commitment/CEO-Statement/"},
+ {"actor":"PT Pertamina Hulu Indonesia — regional upstream","url":"https://phi.pertamina.com/id/tentang-kami"},
+ {"actor":"PT Pertamina Geothermal Energy Tbk","url":"https://pge.pertamina.com/id/"},
+ {"actor":"DPR RI · Komisi XII — energi, SDA, lingkungan, investasi","url":"https://www.mpr.go.id/berita/cost-recovery-skk-migas-mekeng"},
+ {"actor":"DPR RI · Komisi VI — BUMN","url":"https://www.dpr.go.id/"},
+ {"actor":"DPD RI · Komite II — resources, energy, infrastructure","url":"https://orchard.dpd.go.id/daftar-berita/komite-ii-dpd-ri-serap-masukan-provinsi-sumatera-utara-dalam-penyusunan-pandangan-pendapat-dpd-ri-terhadap-ruu-perubahan-ketiga-undang-undang-lalu-lintas-dan-angkutan-jalan"},
+ {"actor":"Penasihat Khusus Presiden Bidang Energi","url":"https://www.setneg.go.id/baca/index/presiden_prabowo_resmi_lantik_para_penasihat_khusus_utusan_khusus_dan_staf_khusus_presiden"},
 ]
 AGENT="SLI-Public-Institutional-Verification/1.0"
 NOW=dt.datetime.now(dt.timezone.utc)
@@ -113,7 +120,11 @@ def discover_appointment_leads():
       ("Energy and environmental leadership","site:esdm.go.id (pelantikan dirjen OR ditjen migas OR ditjen ketenagalistrikan OR direktur jenderal)"),
       ("Environment leadership","site:kemenlh.go.id (pelantikan menteri OR kepala BPLH OR pejabat)"),
       ("Power utility leadership","(PLN direktur utama OR RUPSLB PLN)"),
-      ("Upstream and downstream bodies","(SKK Migas kepala OR BPH Migas kepala OR BPMA kepala pelantikan)")
+      ("Upstream and downstream bodies","(SKK Migas kepala OR BPH Migas kepala OR BPMA kepala pelantikan)"),
+      ("Pertamina Group leadership","(Pertamina dirut OR Pertamina Patra Niaga direksi OR Pertamina Hulu Energi dirut OR RUPS Pertamina)"),
+      ("DPR Energy & SOE Commissions","(Ketua Komisi XII OR Ketua Komisi VI OR Ketua Komisi VII OR ketua Komisi XI) DPR"),
+      ("DPD Regional Energy Committees","(Ketua Komite II DPD OR Ketua DPD RI OR Komite IV DPD)"),
+      ("Energy Presidential Advisory","(Penasihat Khusus Presiden Bidang Energi OR Purnomo Yusgiantoro energi)")
     ]
     leads=[];issues=[];seen=set()
     for topic,query in feeds:
@@ -197,6 +208,13 @@ def main():
             markup=fetch(src["url"])
             row["status"]="source-available-review-needed"
             row["bytes_read"]=len(markup)
+            actor=actors.get(src["actor"])
+            if actor and actor.get("person_name"):
+                row["last_published_person"]=actor["person_name"]
+                row["listed_person_appears_in_source"]=agree_agency(actor["person_name"],flatten(markup))
+                row["interpretation"]="Source has candidate name; does not prove the role is still held (especially archival news)." if row["listed_person_appears_in_source"] else "Named official absent from referenced source; targeted current-appointment review advised."
+                if not row["listed_person_appears_in_source"]:
+                    needs.append({"actor":src["actor"],"candidate":None,"previous":actor["lead"],"reason":"Named incumbent absent from monitored source. Could be stale/blocked layout; no automatic removal or replacement.", "sources":[src["url"]]})
         except Exception as ex:
             row["error"]=type(ex).__name__+": "+str(ex)[:140]
             errors.append({"source":src["url"],"error":row["error"]})
@@ -209,6 +227,8 @@ def main():
             ("Ditjen Migas — ESDM","DIRJEN MIGAS","Director General of Oil and Gas"),
             ("Ditjen EBTKE — ESDM","DIRJEN EBTKE","Director General of EBTKE"),
             ("Ditjen Ketenagalistrikan — ESDM","PLT. DIRJEN KETENAGALISTRIKAN","Acting Director General of Electricity"),
+            ("Ditjen Mineral dan Batubara — ESDM","DIRJEN MINERAL & BATUBARA","Director General of Minerals and Coal"),
+            ("Badan Geologi — ESDM","KEPALA BADAN GEOLOGI","Head of Geological Agency"),
         ]:
             found=person_before_role(profile,position)
             row={"actor":key,"primary_source":esdm_url,"candidate":found,
@@ -232,7 +252,7 @@ def main():
     errors.extend(lead_errors)
     if changes:
         DATA.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    output={"checked_at_utc":NOW.isoformat(),"verification_method":"Dual official cabinet + ministry-site name agreement for auto-updating ministers; other offices are monitored as source status and require role-specific corroboration.",
+    output={"checked_at_utc":NOW.isoformat(),"verification_method":"Cabinet + ministry-source matching for ministers, role-linked ESDM leadership profile for director generals, expanded Pertamina/PLN/DPR/DPD/Presidential adviser public-source scans for candidate changes. News headlines cannot auto-replace non-government officeholders.",
             "current_actor_count":len(actors),"official_sources_checked":len(scans),
             "verified_auto_changes":changes,"requires_review":needs,"appointment_headline_leads":appointment_leads,"checks":scans,"errors":errors,
             "disclaimer":"No change is not evidence that no appointments happened. An unreachable, ambiguous or stale government source must not overwrite the last verified officeholder. No minister names are inferred from news headlines."}
