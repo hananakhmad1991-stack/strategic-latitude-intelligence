@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'data/investment-evidence.json'
+      - 'data/investment-sector-evidence.json'
       - 'data/investment-ownership.json'
       - 'scripts/validate_investment.py'
       - '.github/workflows/investment-evidence-qa.yml'
