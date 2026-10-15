@@ -34,7 +34,7 @@ for(const name of ['minerals','ai']){
  assert.equal(sections.length,9,name+' requires 9 Energy Security stages');
  assert.equal(nav?.children.length,9,name+' requires 9 working chapter navigation items');
  for(let i=0;i<9;i++)assert.ok(sections[i].children.length>1,name+' has an empty stage '+(i+1));
- assert.match(sections[0].textContent,/ESDM|Komdigi/);
+ assert.match(sections[0].textContent,/Institutions, Governance & Policy/);
  assert.match(sections[2].textContent,/Project|Site|Implementation/);
  assert.match(sections[7].textContent,/Assessment/);
  const contents=[];const visit=n=>{contents.push(n);for(const x of n.children)visit(x)};visit(sections[2]);
