@@ -97,9 +97,19 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.equal(digital.filter(r=>r.provinces[0]==="DKI Jakarta").length,5,"Five Jakarta dossiers");
  assert.equal(digital.filter(r=>r.provinces[0]==="Jawa Barat").length,9,"Nine West Java dossiers");
  assert.equal(pltu.records.length,21,"Twenty-one supplemental PLTU project/unit dossiers");
- assert.equal(total,387,"Original registry baseline plus 15 genuinely additional smelter facilities");
- assert.equal(fullSmelterCount,34,"19 older facilities plus 15 new, without double counting enrichments");
+ assert.equal(total,407,"Original record count plus 35 distinct supplementary smelter dossiers (20 new)");
+ assert.equal(fullSmelterCount,54,"19 legacy facilities plus 35 distinct named supplements, without counting enrichments twice");
  assert.equal(smelters.official_baseline.operating+smelters.official_baseline.development,28,"ESDM 2025 narrow cohort not a 2026 census");
+ assert.equal(smelters.academic_nickel_baseline.reported,147,"Nov 2024 Marves nickel all-stage inventory, not current 2026 operating count");
+ assert.equal(smelters.academic_nickel_baseline.operation+smelters.academic_nickel_baseline.construction+smelters.academic_nickel_baseline.planning,147,"2024 lifecycle cohorts sum to 147");
+ assert.equal(smelters.academic_nickel_baseline.technology.reduce((x,y)=>x+y.total,0),147,"2024 pyro + hydro method totals");
+ assert.equal(smelters.official_2024.reported,15,"2024 ESDM supervised cohort");
+ assert.equal(smelters.official_2024.operating+smelters.official_2024.process_or_plan,15,"2024 ESDM cohort lifecycles");
+ assert.equal(smelters.official_baseline.by_commodity.reduce((x,y)=>x+y.total,0),28,"2025 ESDM across 6 commodities");
+ assert.ok(smelters.records.some(x=>x.id==="sml-whw-kendawangan"&&x.capacity.value===2000000),"WHW operator capacity indexed");
+ assert.ok(smelters.records.some(x=>x.id==="sml-ica-tayan"&&x.capacity.value===300000),"Tayan CGA indexed");
+ assert.ok(smelters.records.some(x=>x.id==="sml-hpl-obi"&&x.product.includes("MHP")),"Harita HPAL indexed");
+ assert.ok(smelters.records.some(x=>x.id==="sml-kalimantan-surya"&&x.province===null),"Unknown copper facility coordinate not invented");
  assert.ok(smelters.records.every(x=>x.source.startsWith("https://")&&x.region&&x.province&&x.stage),"Enriched smelters all have sourced facility-level context");
  assert.ok(pltu.records.some(x=>x.asset.includes("Batang")&&x.region.includes("Jawa Tengah")&&x.capacity.value===2000),"Batang 2 x 1,000 MW");
  assert.ok(pltu.records.some(x=>x.asset.includes("Jawa 9")&&x.region.includes("Banten")),"Jawa 9/10 2025 COD");
@@ -110,7 +120,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(all.some(x=>x.className==="map-pln-baseline"),"Latest official PLN statistics have a visible panel");
  assert.ok(digital.every(r=>r.source_url.startsWith("https://")&&r.notes&&r.stage&&r.provinces.length===1),"All digital records have official company sources, status and province");
  assert.ok(regional.every(r=>Array.isArray(r.provinces)&&r.provinces.length>=1&&r.source_url.startsWith("https://")&&r.stage&&r.notes),"Regional record must have sourced province, stage and caveat");
- assert.equal(list().length,total,"Default shows all 387 records without recency cutoff");
+ assert.equal(list().length,total,"Default shows all 407 records without recency cutoff");
  const pointMarkers=all.filter(n=>n.className==="map-geopoint");
  assert.ok(pointMarkers.length>=20,"Geocoded project locality markers should span numerous source-named places");
  const batangg=pointMarkers.find(n=>String(n.attributes["aria-label"]||"").includes("Batang"));
@@ -193,7 +203,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(smelterPreset,"Dedicated smelter map preset");
  smelterPreset.events.click();
  assert.equal(dataset.value,"smelters","Smelter map filter is active");
- assert.equal(list().length,fullSmelterCount,"34 smelter/project dossiers, no duplicates in dedicated tracker");
+ assert.equal(list().length,fullSmelterCount,"54 uniquely indexed smelter and metal-refining project dossiers");
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("BNSI Sambalagi"))),"2026 Sambalagi HPAL evidence is on map");
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Ownership / equity"))),"Equity/ownership details available");
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("ACTUAL reported output"))),"Measured production shown separately from nameplate capacity");
@@ -246,5 +256,5 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  ctx.window.SLIi18n.language="id";
  await ctx.window.initSLIStrategicMap(); // same root intentionally cached
  assert.ok(flatten(root).some(n=>n.textContent==="Peta Investasi dan Energi Indonesia")===false,"cached root unchanged until language event");
- console.log("PASS: map geography and 387 records incl. 2026 smelter tracker; normalized sector/type/lifecycle, all facilities retained, PLN PLTU, glossary >=80 bilingual definitions");
+ console.log("PASS: map geography and 407 records incl. 2026 smelter tracker; normalized sector/type/lifecycle, all facilities retained, PLN PLTU, glossary >=80 bilingual definitions");
 })().catch(e=>{console.error(e);process.exitCode=1});
