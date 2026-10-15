@@ -21,7 +21,7 @@ window.initSLIInvestment=async function(){
  const intro=$("p",null,"Track policy-relevant investment through verifiable milestones. Announcements, financial commitments, realized investment statistics and operational assets are different measurements and must never be added together.");
  root.append(strap,title,intro);
  const nav=$("div","tr-jumpnav");
- [["inv-kpis","Investment evidence"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
+ [["inv-kpis","Investment evidence"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
  heading(root,"National Investment Evidence","BKPM · BPS · BI / distinguish statistical definitions");
  const kpis=$("div","grid tr-grid");kpis.id="inv-kpis";
  const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Verified projects","0 published","Only source-dated project records appear in the registry"]];
@@ -52,6 +52,8 @@ window.initSLIInvestment=async function(){
  const watch=box(root,"Official reference points");watch.id="inv-watch";
  const ul=$("ul");links.forEach(([label,url])=>{const li=$("li");li.append(source(url,label));ul.append(li)});watch.append(ul);
  watch.append($("p",null,"Operational risks: disbursement timing, land acquisition, grid or gas availability, environmental permits, foreign-exchange exposure, offtake contracts and local content requirements. A published approval is not equivalent to completed construction."));
+ heading(root,"Investment Media Monitoring","Domestic, FDI, project implementation and investment policy headlines");
+ const media=box(root,"Investment-focused source discovery");media.id="inv-media";const feed=$("div");feed.id="investmentMediaRoot";media.append(feed);if(typeof window.initSLIInvestmentMedia==="function")window.initSLIInvestmentMedia();
  heading(root,"Overall Strategic Assessment","Evidence-led; no speculative scoring");
  const assess=box(root,"Indonesia Investment Execution Outlook");assess.id="inv-assessment";
  const points=[
