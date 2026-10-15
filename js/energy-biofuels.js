@@ -48,7 +48,7 @@ function policy(p,d){subsection(p,"Biodiesel & bioethanol policy register","Enac
  const g=el("div","bio-stats");g.append(box("Biodiesel HIP · OCT 2026","Rp "+id(d.price.hip_biodiesel_rp_per_l)+"/L","October 2026 EBTKE benchmark + freight (not retail)",d.price.biodiesel_source),box("Bioethanol HIP · JUN 2026","Rp "+id(d.price.hip_bioethanol_rp_per_l)+"/L","June 2026 EBTKE benchmark; older vintage",d.price.source));p.append(g);note(p,d.price.warning);
 }
 function risk(p,d){subsection(p,"Strategic implications for Indonesia","Analytical judgments — not quantified real-time warnings");const ul=el("ol","bio-risks");d.assessment.forEach(x=>add(ul,"li",null,x));p.append(ul);
- subsection(p,"Key feedstock and operational dependency","Palm oil · energy security · food security");note(p,d.feedstock.upstream_dependency);note(p,d.feedstock.risk);p.append(link(d.feedstock.source,"Technical implementation source ↗"));
+ subsection(p,"Key feedstock and operational dependency","Palm oil · energy security · food security");note(p,d.feedstock.upstream_dependency);note(p,d.feedstock.risk);const fs=d.feedstock.stats_2026;if(fs){const fg=el("div","bio-stats");fg.append(box("H1 2026 domestic palm for biodiesel",id(fs.domestic_palm_oil_biodiesel_use_million_tonnes)+"m tonnes","GAPKI industry measure; NOT biodiesel kL",fs.source),box("2026 palm feedstock outlook",id(fs.year_2026_forecast_palm_use_for_biodiesel_million_tonnes)+"m tonnes","Full-year GAPKI projected oil use, NOT FAME production",fs.source));p.append(fg);note(p,fs.caveat)}p.append(link(d.feedstock.source,"Technical implementation source ↗"));
 }
 async function radar(root,force){
  let old=root.querySelector(".bio-radar-results");if(old)old.remove();
