@@ -1,0 +1,1086 @@
+{
+  "title": "USGS · Indonesia Critical Minerals Intelligence",
+  "updated": "2026-10-16",
+  "scope_note": "MCS 2026 (2025e world estimates) and USGS Indonesia 2024 Minerals Yearbook (2020–2024 Indonesia observed/estimated time series) are two separate USGS products. Country shares below refer to 2024 except 2025e derived nickel share and 2025e cobalt share.",
+  "sources": [
+    {
+      "id": "mcs2026",
+      "title": "USGS Mineral Commodity Summaries 2026",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf",
+      "date": "2026-02-06",
+      "scope": "World mine-production and reserves; 2025 values are estimates. Nickel chapter pp. 132–133; cobalt pp. 70–71."
+    },
+    {
+      "id": "country2024",
+      "title": "USGS Indonesia Country Profile · 2024 Minerals Yearbook",
+      "url": "https://www.usgs.gov/centers/national-minerals-information-center/indonesia",
+      "date": "country data through 2024; online release 2026",
+      "scope": "Global position, Indonesia series 2020–2024, 2024 trade and selected industrial facilities."
+    },
+    {
+      "id": "data2024",
+      "title": "USGS Minerals Yearbook 2024 International Data Release",
+      "url": "https://www.usgs.gov/data/2024-minerals-yearbook-volume-iii-area-reports-international-country-reports-global-production",
+      "date": "2026-08-31",
+      "scope": "Country-level production and facilities table, data 2020–2024, CC0 1.0 Universal."
+    },
+    {
+      "id": "release2026",
+      "title": "USGS Mineral Commodity Summaries 2026 · publication",
+      "url": "https://www.usgs.gov/publications/mineral-commodity-summaries-2026",
+      "date": "2026-02-06",
+      "scope": "Official MCS 2026 publication and dataset links."
+    }
+  ],
+  "rank2024": [
+    {
+      "commodity": "Nickel",
+      "global_share": 62,
+      "rank": 1,
+      "scope": "mine Ni contained",
+      "source_id": "country2024"
+    },
+    {
+      "commodity": "Tin",
+      "global_share": 19,
+      "rank": 2,
+      "scope": "mined Sn content",
+      "source_id": "country2024"
+    },
+    {
+      "commodity": "Cobalt",
+      "global_share": 12,
+      "rank": 2,
+      "scope": "mined contained Co; derived from nickel products",
+      "source_id": "country2024"
+    },
+    {
+      "commodity": "Natural zeolites",
+      "global_share": 10,
+      "rank": 6,
+      "scope": "natural zeolite output",
+      "source_id": "country2024"
+    },
+    {
+      "commodity": "Zirconium concentrates",
+      "global_share": 6,
+      "rank": 6,
+      "scope": "mineral concentrates",
+      "source_id": "country2024"
+    }
+  ],
+  "headline": [
+    {
+      "id": "nickel_2025",
+      "label": "Nickel mine production",
+      "value": 2600000,
+      "unit": "t Ni",
+      "year": "2025e",
+      "kind": "estimate",
+      "source_id": "mcs2026",
+      "note": "Indonesia 2025 estimated mined contained nickel, not gross wet ore."
+    },
+    {
+      "id": "nickel_reserves_2026",
+      "label": "Nickel reserves",
+      "value": 62000000,
+      "unit": "t Ni",
+      "year": "MCS 2026",
+      "kind": "reserve",
+      "source_id": "mcs2026",
+      "note": "Estimated reserves, not annual mine production."
+    },
+    {
+      "id": "world_nickel_2025",
+      "label": "Global mined nickel",
+      "value": 3900000,
+      "unit": "t Ni",
+      "year": "2025e",
+      "kind": "estimate",
+      "source_id": "mcs2026",
+      "note": "World rounded estimate."
+    },
+    {
+      "id": "nickel_global_share_2025",
+      "label": "Nickel global mine share",
+      "value": 66.7,
+      "unit": "%",
+      "year": "2025e · derived",
+      "kind": "calculated",
+      "source_id": "mcs2026",
+      "note": "SLI calculation 2.6Mt Indonesia ÷ 3.9Mt global = ~66.7%; NOT an independently reported official USGS share."
+    },
+    {
+      "id": "cobalt_share_2025",
+      "label": "Cobalt global mine share",
+      "value": 14,
+      "unit": "%",
+      "year": "2025e",
+      "kind": "estimate",
+      "source_id": "mcs2026",
+      "note": "IEA 2026 figures and USGS 2024 country share differ by vintage/method; no interpolation."
+    }
+  ],
+  "series": [
+    {
+      "id": "bauxite",
+      "label": "Bauxite · wet basis",
+      "stage": "Mining",
+      "unit": "t gross/wet",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        25860000,
+        25780000,
+        30360000,
+        9889569,
+        9900000
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "alumina",
+      "label": "Alumina",
+      "stage": "Refining",
+      "unit": "t gross",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        1162139,
+        1156039,
+        1200000,
+        1200000,
+        1200000
+      ],
+      "estimated": [
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "aluminium",
+      "label": "Aluminum · primary metal",
+      "stage": "Smelting",
+      "unit": "t Al",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        245000,
+        243000,
+        223800,
+        214883,
+        274230
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "cobalt_mine",
+      "label": "Cobalt · mine",
+      "stage": "Mining/by-product",
+      "unit": "t Co contained",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        1100,
+        2700,
+        9600,
+        19000,
+        35000
+      ],
+      "estimated": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "cobalt_refinery",
+      "label": "Cobalt sulfate · Co content",
+      "stage": "Refining",
+      "unit": "t Co contained",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        0,
+        0,
+        0,
+        1533,
+        2900
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "copper_concentrate",
+      "label": "Copper · mine concentrates",
+      "stage": "Mining",
+      "unit": "t Cu contained",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        500000,
+        712000,
+        921000,
+        894000,
+        996000
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "copper_smelt",
+      "label": "Copper · primary smelting",
+      "stage": "Smelting",
+      "unit": "t reported",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        276900,
+        280400,
+        316700,
+        251300,
+        398200
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "copper_refine",
+      "label": "Copper · primary refinery other",
+      "stage": "Refining",
+      "unit": "t Cu contained",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        263208,
+        270497,
+        268400,
+        212000,
+        335200
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "nickel_mine",
+      "label": "Nickel · mine laterite",
+      "stage": "Mining",
+      "unit": "t Ni contained",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        767000,
+        1069000,
+        1579000,
+        2030000,
+        2310000
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "nickel_matte",
+      "label": "Nickel matte · intermediate",
+      "stage": "Intermediate",
+      "unit": "t Ni contained",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        72237,
+        100000,
+        210000,
+        265000,
+        250000
+      ],
+      "estimated": [
+        false,
+        true,
+        true,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "nickel_hydroxide",
+      "label": "Nickel cobalt hydroxide · Ni content",
+      "stage": "Intermediate",
+      "unit": "t Ni contained",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        0,
+        0,
+        90000,
+        180000,
+        290000
+      ],
+      "estimated": [
+        false,
+        false,
+        true,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "nickel_npi",
+      "label": "Nickel pig iron · gross",
+      "stage": "Ferroalloy",
+      "unit": "t gross",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        4300000,
+        6100000,
+        8100000,
+        9900000,
+        11000000
+      ],
+      "estimated": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "nickel_npi_ni",
+      "label": "Nickel pig iron · Ni content",
+      "stage": "Ferroalloy",
+      "unit": "t Ni contained",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        600000,
+        850000,
+        1100000,
+        1390000,
+        1600000
+      ],
+      "estimated": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "ferronickel",
+      "label": "Ferronickel · gross",
+      "stage": "Ferroalloy",
+      "unit": "t gross",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        130000,
+        129000,
+        122000,
+        110000,
+        101000
+      ],
+      "estimated": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "ferronickel_ni",
+      "label": "Ferronickel · Ni content",
+      "stage": "Ferroalloy",
+      "unit": "t Ni contained",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        25970,
+        25818,
+        24334,
+        21473,
+        20103
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "tin_mine",
+      "label": "Tin · mined",
+      "stage": "Mining",
+      "unit": "t Sn contained",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        65127,
+        52467,
+        57735,
+        67625,
+        55000
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "tin_smelt",
+      "label": "Tin · primary smelter",
+      "stage": "Smelting",
+      "unit": "t reported",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        56200,
+        34780,
+        57140,
+        68700,
+        50000
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "zirconium",
+      "label": "Zirconium concentrates",
+      "stage": "Mining",
+      "unit": "t gross",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        64000,
+        55000,
+        97000,
+        95000,
+        81000
+      ],
+      "estimated": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "zeolites",
+      "label": "Natural zeolites",
+      "stage": "Mining",
+      "unit": "t gross",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        130000,
+        130000,
+        100000,
+        120000,
+        120000
+      ],
+      "estimated": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "manganese",
+      "label": "Manganese ore · mine",
+      "stage": "Mining",
+      "unit": "t gross",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        158000,
+        19000,
+        138000,
+        41000,
+        45100
+      ],
+      "estimated": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "source_id": "country2024"
+    },
+    {
+      "id": "ilmenite",
+      "label": "Titanium concentrates · ilmenite/leucoxene",
+      "stage": "Mining",
+      "unit": "t gross",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "values": [
+        3000,
+        90000,
+        40000,
+        19000,
+        102000
+      ],
+      "estimated": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "source_id": "country2024"
+    }
+  ],
+  "trend_groups": [
+    {
+      "key": "nickel",
+      "label": "Nickel & processing",
+      "ids": [
+        "nickel_mine",
+        "nickel_npi_ni",
+        "nickel_matte",
+        "nickel_hydroxide",
+        "ferronickel_ni"
+      ],
+      "why": "Ni metal-content series; stages are not an auditable physical conversion balance."
+    },
+    {
+      "key": "nickel_gross",
+      "label": "Nickel ferroalloys · gross",
+      "ids": [
+        "nickel_npi",
+        "ferronickel"
+      ],
+      "why": "Gross product weights, not nickel-contained equivalents."
+    },
+    {
+      "key": "cobalt",
+      "label": "Cobalt by-products",
+      "ids": [
+        "cobalt_mine",
+        "cobalt_refinery"
+      ],
+      "why": "Contained cobalt. Mined cobalt estimated from nickel matte and MHP; do not add to nickel contained tonnes."
+    },
+    {
+      "key": "copper",
+      "label": "Copper production",
+      "ids": [
+        "copper_concentrate",
+        "copper_smelt",
+        "copper_refine"
+      ],
+      "why": "Mine production, smelter production and refinery production are distinct reporting perimeters."
+    },
+    {
+      "key": "bauxite",
+      "label": "Bauxite → aluminium",
+      "ids": [
+        "bauxite",
+        "alumina",
+        "aluminium"
+      ],
+      "why": "Bauxite wet tonnes, alumina gross tonnes and aluminium metal tonnes are different products."
+    },
+    {
+      "key": "tin",
+      "label": "Tin production",
+      "ids": [
+        "tin_mine",
+        "tin_smelt"
+      ],
+      "why": "Tin-content mined output versus reported refined/smelter production; not a mass-balance dataset."
+    },
+    {
+      "key": "others",
+      "label": "Other mineral outputs",
+      "ids": [
+        "zirconium",
+        "zeolites",
+        "manganese",
+        "ilmenite"
+      ],
+      "why": "Gross weights may have varying grades; compare trends within a commodity, not across mineral content."
+    }
+  ],
+  "chain": [
+    {
+      "id": "nickel",
+      "label": "Nickel laterite → intermediate → products",
+      "nodes": [
+        {
+          "name": "Mine laterite",
+          "series_id": "nickel_mine",
+          "color": "mining"
+        },
+        {
+          "name": "Nickel matte",
+          "series_id": "nickel_matte",
+          "color": "process"
+        },
+        {
+          "name": "Ni–Co hydroxide",
+          "series_id": "nickel_hydroxide",
+          "color": "process"
+        },
+        {
+          "name": "NPI · Ni content",
+          "series_id": "nickel_npi_ni",
+          "color": "smelt"
+        }
+      ],
+      "note": "Branches are processing pathways, NOT physically reconciled Sankey mass flows. HPAL/MHP recovery differs by feedstock and measured metal basis."
+    },
+    {
+      "id": "bauxite",
+      "label": "Bauxite → alumina → primary aluminium",
+      "nodes": [
+        {
+          "name": "Bauxite · wet",
+          "series_id": "bauxite",
+          "color": "mining"
+        },
+        {
+          "name": "Alumina",
+          "series_id": "alumina",
+          "color": "process"
+        },
+        {
+          "name": "Aluminium metal",
+          "series_id": "aluminium",
+          "color": "smelt"
+        }
+      ],
+      "note": "Sequential stages show separately reported 2024 outputs; 9.9 Mt wet ore is NOT an input allocation for 1.2 Mt alumina."
+    },
+    {
+      "id": "copper",
+      "label": "Copper concentrates → smelting → refining",
+      "nodes": [
+        {
+          "name": "Copper mine",
+          "series_id": "copper_concentrate",
+          "color": "mining"
+        },
+        {
+          "name": "Primary smelter",
+          "series_id": "copper_smelt",
+          "color": "smelt"
+        },
+        {
+          "name": "Copper refinery",
+          "series_id": "copper_refine",
+          "color": "process"
+        }
+      ],
+      "note": "Smelter and refinery annual output are not automatically produced from the same year's mine concentrate."
+    },
+    {
+      "id": "cobalt",
+      "label": "Cobalt by-product → cobalt chemicals",
+      "nodes": [
+        {
+          "name": "Mined Co",
+          "series_id": "cobalt_mine",
+          "color": "mining"
+        },
+        {
+          "name": "Cobalt sulphate · Co",
+          "series_id": "cobalt_refinery",
+          "color": "process"
+        }
+      ],
+      "note": "Mined cobalt is estimated from nickel matte and MHP, not necessarily shipped as standalone cobalt concentrate."
+    },
+    {
+      "id": "tin",
+      "label": "Tin mine → primary smelting",
+      "nodes": [
+        {
+          "name": "Tin · mine Sn",
+          "series_id": "tin_mine",
+          "color": "mining"
+        },
+        {
+          "name": "Tin · primary smelter",
+          "series_id": "tin_smelt",
+          "color": "smelt"
+        }
+      ],
+      "note": "The year's mine and smelter outputs have different inventories and accounting, so this is not a quantified conversion rate."
+    }
+  ],
+  "sites": [
+    {
+      "id": "mempawah",
+      "name": "Borneo Alumina Indonesia · refinery",
+      "location": "Mempawah, West Kalimantan",
+      "lat": 0.37,
+      "lon": 109.1,
+      "commodity": "Alumina",
+      "capacity": 1000000,
+      "capacity_unit": "t alumina/yr",
+      "status": "Started operation Dec 2024",
+      "operator": "PT Borneo Alumina Indonesia",
+      "source_id": "country2024",
+      "note": "USGS 2024 report identifies the capacity and December 2024 start; not 2026 real-time operating availability."
+    },
+    {
+      "id": "gresik",
+      "name": "Freeport Manyar · copper smelter",
+      "location": "Gresik, East Java",
+      "lat": -7.15,
+      "lon": 112.6,
+      "commodity": "Copper",
+      "capacity": 600000,
+      "capacity_unit": "t/yr as reported",
+      "status": "Startup interrupted by Oct 2024 fire",
+      "operator": "PT Freeport Indonesia",
+      "source_id": "country2024",
+      "note": "USGS report is a 2024 retrospective; repairs/current commissioning should be checked with operator disclosures."
+    },
+    {
+      "id": "morowali",
+      "name": "Morowali nickel processing cluster",
+      "location": "Central Sulawesi",
+      "lat": -2.81,
+      "lon": 122.16,
+      "commodity": "Nickel",
+      "capacity": null,
+      "capacity_unit": null,
+      "status": "Industrial processing cluster",
+      "operator": "Multiple Indonesian/foreign entities",
+      "source_id": "country2024",
+      "note": "Regional locator only; not precise site centroid or capacity attribution."
+    },
+    {
+      "id": "obi",
+      "name": "Obi Island nickel/cobalt processing",
+      "location": "North Maluku (Obi)",
+      "lat": -1.52,
+      "lon": 127.65,
+      "commodity": "Nickel / cobalt",
+      "capacity": null,
+      "capacity_unit": null,
+      "status": "HPAL/MHP ecosystem",
+      "operator": "PT Halmahera Persada Lygend and partners",
+      "source_id": "country2024",
+      "note": "Approximate location; do not interpret as a facility GPS survey."
+    },
+    {
+      "id": "papua",
+      "name": "Grasberg / Freeport copper-gold",
+      "location": "Central Papua",
+      "lat": -4.07,
+      "lon": 137.12,
+      "commodity": "Copper / gold",
+      "capacity": null,
+      "capacity_unit": null,
+      "status": "Major mining area",
+      "operator": "PT Freeport Indonesia",
+      "source_id": "country2024",
+      "note": "Regional marker, not a precise mine site boundary."
+    },
+    {
+      "id": "bangka",
+      "name": "Bangka Belitung tin industry",
+      "location": "Bangka Belitung",
+      "lat": -2.4,
+      "lon": 106.1,
+      "commodity": "Tin",
+      "capacity": null,
+      "capacity_unit": null,
+      "status": "Regional tin production",
+      "operator": "PT Timah and other licensed operators",
+      "source_id": "country2024",
+      "note": "Regional marker; production share or capacity not inferred."
+    }
+  ],
+  "trade": {
+    "year": 2024,
+    "unit": "USD billion",
+    "source_id": "country2024",
+    "flows": [
+      {
+        "id": "exp_ores",
+        "direction": "export",
+        "group": "Metal ores, slag and ash",
+        "total": 8.2,
+        "partner": "China",
+        "share": 34,
+        "calc_value": 2.788,
+        "label": "Recipient"
+      },
+      {
+        "id": "exp_metals",
+        "direction": "export",
+        "group": "Base metals and articles",
+        "total": 44,
+        "partner": "China",
+        "share": 56,
+        "calc_value": 24.64,
+        "label": "Recipient"
+      },
+      {
+        "id": "imp_ores",
+        "direction": "import",
+        "group": "Metal ores, slag and ash",
+        "total": 2.8,
+        "partner": "Australia",
+        "share": 40,
+        "calc_value": 1.12,
+        "label": "Supplier"
+      },
+      {
+        "id": "imp_metals",
+        "direction": "import",
+        "group": "Base metals and articles",
+        "total": 21,
+        "partner": "China",
+        "share": 39,
+        "calc_value": 8.19,
+        "label": "Supplier"
+      }
+    ],
+    "products": [
+      {
+        "direction": "export",
+        "label": "Copper concentrates",
+        "value": 8,
+        "unit": "USD billion"
+      },
+      {
+        "direction": "export",
+        "label": "NPI + ferronickel",
+        "value": 14.1,
+        "unit": "USD billion"
+      },
+      {
+        "direction": "import",
+        "label": "Iron ore",
+        "value": 1.5,
+        "unit": "USD billion"
+      },
+      {
+        "direction": "import",
+        "label": "Iron and steel",
+        "value": 11,
+        "unit": "USD billion"
+      }
+    ],
+    "note": "Partner shares refer to different HS chapter aggregates; values at partner level are CALCULATED from USGS-reported totals × shares and may not match detailed bilateral customs statistics after rounding. Do not add product categories to broad category totals; no complete mineral trade balance inferred."
+  },
+  "policy_context": [
+    {
+      "label": "Nickel ore export restrictions",
+      "detail": "USGS historical account: export ban since 2020; current legal state belongs in Policy & Risk.",
+      "year": 2020
+    },
+    {
+      "label": "Bauxite ore export restrictions",
+      "detail": "USGS historical account: export ban since June 2023; legal updates belong in Policy & Risk.",
+      "year": 2023
+    },
+    {
+      "label": "Copper smelter commissioning",
+      "detail": "USGS documented extensions of concentrate export permits through 2024 due to smelter delays; not a claim about permits in 2026.",
+      "year": 2024
+    },
+    {
+      "label": "Nickel ferroalloy oversupply",
+      "detail": "USGS reported ESDM was considering a moratorium in 2024; NOT automatically an enacted 2026 prohibition.",
+      "year": 2024
+    }
+  ],
+  "methodology": [
+    "Source vintages: MCS 2026 contains 2025 estimated world commodity statistics; USGS Indonesia Country Profile/Minerals Yearbook 2024 contains 2020–2024 country production, 2024 bilateral partner aggregates, and selected facility history.",
+    "Estimated figures (e) are author estimates. Zero indicates USGS reports zero in that table; not proof all unreported production was absent.",
+    "Metallurgical stages must not be stacked into national total: mine contained Ni vs NPI gross weight vs intermediate Ni content vs smelter capacity use different denominators and product forms.",
+    "Illustrative value-chain diagrams are NOT quantitative Sankey or measured conversion efficiency. No flows or yields are fabricated.",
+    "Facility locators are APPROXIMATE regional geographic placements to orient readers; do not use for permitting, surveying, or physical site access.",
+    "Trade links use USGS/BPS/Trade Data Monitor aggregate 2024 categories, not facility cargo or HS-6 shipment data; partner values are derived calculations.",
+    "Do not merge 2024 USGS 62% nickel share with 2024 IEA 63% or 2025e USGS calculated 66.7% without citing source and data year.",
+    "MCS nickel reserve estimate 62 Mt is stock (reserves), compared with mined output flow 2.6 Mt in 2025e. They must never share a bar axis as annual outputs.",
+    "USGS facts do not independently validate current executive appointments, individual-project ownership, or currently enacted policy — use canonical SLI Stakeholder Mapping and Policy & Risk."
+  ]
+}
