@@ -877,7 +877,7 @@
     ]
   },
   "policies": {
-    "note": "Curated, source-dated policy register. 'Announced' is not enacted. The scheduled Official Source Watch scans for candidate releases, but requires analyst verification before adding or changing this list.",
+    "note": "Curated official-law and policy register; 2026 references are placed alongside still-applicable framework rules from earlier years. Enacted decisions, appointments, projects and draft proposals are distinctly labeled. Legal framework ≠ verified project implementation. The scheduled source watch surfaces candidate releases, not automatic legal status updates.",
     "items": [
       {
         "date": "2026-10-14",
@@ -952,13 +952,16 @@
         "source": "https://migas.esdm.go.id/post/Punya-Potensi-Penyimpanan-Karbon-500-Giga-Ton-Pemerintah-Matangkan-Kerangka-Regulasi-dan-Ekosistem-CCS-CCUS-Nasional"
       },
       {
-        "date": "2026",
-        "title": "Oil, petroleum fuel and LPG procurement for national security",
+        "date": "2026-04-30",
+        "title": "Crude oil, transport fuel and LPG procurement for national supply resilience",
         "instrument": "Perpres No. 26/2026",
         "status": "Enacted",
-        "sector": "Fuel / imports",
-        "effect": "2026 presidential regulatory framework for procurement in national energy security; interpret obligations from primary legal text. Exact promulgation date not independently verified in this register.",
-        "source": "https://jdih.esdm.go.id/dokumen"
+        "sector": "Oil & Gas",
+        "effect": "Regulates domestic and imported procurement of crude oil, transport fuels and LPG to sustain refinery feedstock and consumer/industrial fuel availability. Procurement arrangements are not proof of physical supply sufficiency.",
+        "source": "https://peraturan.bpk.go.id/Details/349426/perpres-no-26-tahun-2026",
+        "subsector": "Downstream & fuel",
+        "title_id": "Pengadaan minyak mentah, BBM, dan LPG untuk ketahanan pasokan nasional",
+        "effect_id": "Mengatur pengadaan minyak mentah, BBM, dan LPG dari dalam negeri maupun impor untuk menjamin kebutuhan kilang serta pasokan masyarakat dan industri. Peraturan ini tidak otomatis membuktikan kecukupan pasokan fisik."
       },
       {
         "date": "2026-01-01",
@@ -1022,8 +1025,149 @@
         "sector": "CCS / carbon",
         "effect": "Upstream PSC CCS/CCUS procedure, technical obligations and monitoring duties.",
         "source": "https://www.esdm.go.id/id/berita-unit/direktorat-jenderal-minyak-dan-gas-bumi/peraturan-ccs-ccus-diteken-upaya-indonesia-capai-sektor-migas-rendah-emisi-dan-tingkatkan-produksi-"
+      },
+      {
+        "date": "2001-11-23",
+        "title": "Oil and gas sector legal framework — as amended and subject to constitutional decisions",
+        "title_id": "Kerangka UU Migas — beserta perubahan dan putusan konstitusional",
+        "instrument": "UU No. 22/2001 · amended most recently by UU No. 6/2023",
+        "subsector": "Foundation",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Foundation for upstream/downstream activities; read with later amendments and Constitutional Court decisions, including the invalidation of BP Migas provisions. Do not present the 2001 original text as wholly unchanged.",
+        "effect_id": "Landasan kegiatan hulu dan hilir migas; harus dibaca bersama perubahan terbaru dan putusan Mahkamah Konstitusi, termasuk pembatalan ketentuan BP Migas. Jangan anggap naskah 2001 tidak berubah.",
+        "source": "https://peraturan.bpk.go.id/Details/44903/uu-no-22-tahun-2001"
+      },
+      {
+        "date": "2004-10-14",
+        "title": "Upstream licensing, production-sharing arrangements and field operations",
+        "title_id": "Ketentuan hulu: wilayah kerja, kontrak, dan operasi lapangan",
+        "instrument": "PP No. 35/2004 · amended by PP No. 34/2005 & PP No. 55/2009",
+        "subsector": "Upstream",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Framework for exploration and exploitation of oil and gas. The amended framework governs upstream contract/operating arrangements; it is distinct from the downstream fuels regime.",
+        "effect_id": "Kerangka eksplorasi dan eksploitasi migas, termasuk hubungan kontraktual serta operasi hulu, sebagaimana telah diubah. Berbeda dari ketentuan pengolahan dan distribusi BBM di hilir.",
+        "source": "https://peraturan.bpk.go.id/Details/65695/pp-no-35-tahun-2004"
+      },
+      {
+        "date": "2004-10-14",
+        "title": "Downstream processing, transport, storage and trading framework",
+        "title_id": "Kerangka hilir: pengolahan, pengangkutan, penyimpanan, dan niaga",
+        "instrument": "PP No. 36/2004 · amended by PP No. 30/2009",
+        "subsector": "Downstream & fuel",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Sets the downstream business framework, including processing/refining, logistics, storage, licensing and trading. Facility nameplate capacity is not evidence of fuel deliveries.",
+        "effect_id": "Mengatur usaha pengolahan/kilang, pengangkutan, penyimpanan, perizinan, dan niaga migas. Kapasitas desain fasilitas tidak sama dengan realisasi penyaluran BBM.",
+        "source": "https://peraturan.bpk.go.id/Details/65698/pp-no-36-tahun-2004"
+      },
+      {
+        "date": "2013-01-14",
+        "title": "SKK Migas upstream institutional governance and PSC oversight",
+        "title_id": "Tata kelola SKK Migas dan pengawasan kontrak kerja sama hulu",
+        "instrument": "Perpres No. 9/2013 · amended by Perpres No. 36/2018",
+        "subsector": "Upstream",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Provides the institutional framework for managing upstream cooperation contracts through SKK Migas under government oversight, following Constitutional Court changes to BP Migas. This is not a new 2026 appointment.",
+        "effect_id": "Mengatur pengelolaan kontrak kerja sama hulu melalui SKK Migas setelah perubahan kelembagaan akibat putusan MK. Bukan keputusan pengangkatan pejabat pada 2026.",
+        "source": "https://peraturan.bpk.go.id/Details/41379/perpres-no-9-tahun-2013"
+      },
+      {
+        "date": "2024-08-12",
+        "title": "Updated gross-split production-sharing contracts",
+        "title_id": "Pembaharuan kontrak bagi hasil gross split",
+        "instrument": "Permen ESDM No. 13/2024",
+        "subsector": "Upstream",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Updates the gross-split framework, revenue sharing, contractor obligations and investment risk allocation; supersedes the older Permen ESDM 8/2017 gross-split regulation. Individual contracts may have transitional provisions.",
+        "effect_id": "Memperbarui mekanisme gross split, pembagian hasil, kewajiban kontraktor, dan alokasi risiko investasi. Menggantikan aturan gross split 8/2017; kontrak berjalan dapat memiliki ketentuan transisi.",
+        "source": "https://jdih.esdm.go.id/dokumen/view?id=2476"
+      },
+      {
+        "date": "2026-06-11",
+        "title": "Rokan nonconventional oil and gas upstream acceleration",
+        "title_id": "Percepatan migas nonkonvensional di Wilayah Kerja Rokan",
+        "instrument": "Kepmen ESDM No. 246.K/MG.04/MEM.M/2026",
+        "subsector": "Upstream",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Ministerial decision specifically concerns the acceleration of nonconventional oil and gas development in the Rokan working area. It does not verify commercial-scale production or realized incremental output.",
+        "effect_id": "Keputusan Menteri mengenai percepatan migas nonkonvensional Wilayah Kerja Rokan. Belum menjadi bukti produksi komersial atau tambahan produksi yang terealisasi.",
+        "source": "https://jdih.esdm.go.id/dokumen/view?id=2781"
+      },
+      {
+        "date": "2021-07-09",
+        "title": "Downstream natural-gas business and pipeline-commercial framework",
+        "title_id": "Kerangka pengusahaan gas bumi di hilir dan niaga melalui pipa",
+        "instrument": "Permen ESDM No. 4/2018 · amended by Permen ESDM No. 19/2021",
+        "subsector": "Gas pricing & networks",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Regulates downstream gas commercial activities, distribution and consumer supply as updated in 2021. Pricing, customer connections and physical flow should be separately verified.",
+        "effect_id": "Mengatur kegiatan pengusahaan gas bumi di hilir, distribusi dan penyaluran kepada konsumen sebagaimana diubah pada 2021. Harga, sambungan pelanggan, dan volume aliran harus diuji terpisah.",
+        "source": "https://peraturan.bpk.go.id/Details/175279/permen-esdm-no-19-tahun-2021"
+      },
+      {
+        "date": "2019-01-28",
+        "title": "Household and small-customer natural gas network (Jargas) provision",
+        "title_id": "Penyediaan Jargas bagi rumah tangga dan pelanggan kecil",
+        "instrument": "Perpres No. 6/2019",
+        "subsector": "Gas pricing & networks",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Policy framework for supplying and distributing natural gas through transmission/distribution networks to households and small customers. Project targets and installed customer connections are not interchangeable.",
+        "effect_id": "Landasan penyediaan dan distribusi gas melalui jaringan bagi rumah tangga dan pelanggan kecil. Target sambungan dan sambungan terpasang tidak boleh dicampur.",
+        "source": "https://peraturan.bpk.go.id/Details/100990/perpres-no-6-tahun-2019"
+      },
+      {
+        "date": "2022-12-23",
+        "title": "Industry-specific natural gas users and HGBT price-setting mechanism",
+        "title_id": "Penetapan pengguna dan Harga Gas Bumi Tertentu (HGBT) industri",
+        "instrument": "Permen ESDM No. 15/2022 · replaces Permen No. 8/2020",
+        "subsector": "Gas pricing & networks",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Specifies eligible users and procedures for setting differentiated gas prices in industry. A legal price mechanism is distinct from actual 2026 plant-gate tariffs, delivered volumes and each eligible firm's effective decision.",
+        "effect_id": "Mengatur pengguna dan tata cara penetapan harga gas untuk industri tertentu. Mekanisme hukum berbeda dari tarif plant gate aktual 2026, volume tersalur, dan keputusan bagi masing-masing penerima.",
+        "source": "https://peraturan.bpk.go.id/Details/257390/permen-esdm-no-15-tahun-2022"
+      },
+      {
+        "date": "2025-02-26",
+        "title": "Updated HGBT beneficiary designation and differentiated industrial gas reference",
+        "title_id": "Perubahan penerima HGBT dan penetapan harga gas industri berdasarkan pemanfaatan",
+        "instrument": "Kepmen ESDM No. 76.K/MG.01/MEM.M/2025",
+        "subsector": "Gas pricing & networks",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Official ministerial decision revised beneficiary list for seven industrial sectors; ESDM announced differentiated references US$7/MMBtu for fuel and US$6.5/MMBtu for feedstock as of February 2025. These are dated references and not a validated October 2026 price for every buyer.",
+        "effect_id": "Keputusan Menteri mengubah daftar penerima HGBT di tujuh sektor industri. ESDM menyebut acuan Februari 2025 sebesar US$7/MMBtu untuk bahan bakar dan US$6,5/MMBtu untuk bahan baku; bukan harga Oktober 2026 yang telah diverifikasi bagi seluruh pelanggan.",
+        "source": "https://www.esdm.go.id/id/media-center/arsip-berita/skema-baru-hgbt-perkuat-daya-saing-industri-dan-efisiensi-anggaran-negara"
+      },
+      {
+        "date": "2026-06-09",
+        "title": "BPH Migas revokes six specific household pipeline-gas price regulations",
+        "title_id": "BPH Migas mencabut enam aturan harga gas rumah tangga tertentu",
+        "instrument": "Peraturan BPH Migas No. 1/2026",
+        "subsector": "Gas pricing & networks",
+        "sector": "Oil & Gas",
+        "status": "Enacted",
+        "effect": "Repeals six specific previous BPH Migas regulations on consumer gas prices through designated household distribution pipelines. Does not abolish the national Jargas programme or all household pipeline gas tariff decisions.",
+        "effect_id": "Mencabut enam peraturan BPH Migas terdahulu yang mengatur harga gas pipa rumah tangga pada jaringan tertentu. Bukan penghapusan program Jargas nasional atau seluruh ketentuan tarif gas rumah tangga.",
+        "source": "https://peraturan.bpk.go.id/Details/354444/peraturan-bph-migas-no-1-tahun-2026"
       }
-    ]
+    ],
+    "oil_gas_review": {
+      "date": "2026-10-15",
+      "record_count": 12,
+      "scope": "Upstream, downstream, BBM/LPG procurement, HGBT, gas pipelines/Jargas, new and inherited legal instruments",
+      "method": "Curated links from Indonesian official law repositories and MEMR; amendments and court decisions noted; dated rules are not assumed to establish realized sectoral outcomes",
+      "upstream_regulator": "MEMR / SKK Migas",
+      "downstream_regulator": "MEMR / BPH Migas",
+      "warning": "Legal status as checked on reference date; future supersession, tariff changes and implementation require renewed official checking."
+    }
   },
   "ccs": {
     "note": "Geological resource estimates are NOT certified injectable capacity. Project announcements, FID, pilot injectivity, operating injection, realized capital expenditure and measured cumulative tonnes are different evidence classes.",
