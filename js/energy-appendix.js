@@ -27,7 +27,8 @@ function resultCard(x){
  item.append(dt,dd);return item;
 }
 function refresh(root,data){
- const oldFocus=root.querySelector(".esa-search")===document.activeElement;
+ const previousInput=root.querySelector(".esa-search");
+ const oldFocus=Boolean(previousInput)&&previousInput===document.activeElement;
  const from=oldFocus&&typeof document.activeElement.selectionStart==="number"?document.activeElement.selectionStart:null;
  root.replaceChildren();
  const intro=E("p","esa-intro",T(
