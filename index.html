@@ -252,5 +252,12 @@ function show(page){if(!pages[page])page='overview';document.getElementById('pag
  }
  setTimeout(loadNext,0);
 }document.querySelectorAll('[data-link]').forEach(x=>{x.onclick=()=>show(x.dataset.link);x.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(x.dataset.link)}}});}
-document.querySelectorAll('#nav button').forEach(x=>x.addEventListener('click',()=>show(x.dataset.page)));document.getElementById('year').textContent=new Date().getFullYear();show('overview');
+document.querySelectorAll('#nav button').forEach(x=>x.addEventListener('click',()=>show(x.dataset.page)));document.getElementById('year').textContent=new Date().getFullYear();
+const pageFromHash=()=>{const hash=decodeURIComponent(location.hash.slice(1)).trim().toLowerCase();return Object.prototype.hasOwnProperty.call(pages,hash)?hash:null;};
+let renderedPage=null;
+const renderRoute=(page)=>{const destination=pages[page]?page:'overview';if(renderedPage===destination)return;renderedPage=destination;show(destination);};
+document.querySelectorAll('#nav button').forEach(b=>b.addEventListener('click',()=>{const page=b.dataset.page;if(location.hash!=='#'+page)history.pushState({sliPage:page},'',location.pathname+location.search+'#'+page);renderedPage=page;}));
+window.addEventListener('hashchange',()=>{const page=pageFromHash();if(page)renderRoute(page)});
+window.addEventListener('popstate',()=>renderRoute(pageFromHash()||'overview'));
+renderRoute(pageFromHash()||'overview');
 </script></body></html>
