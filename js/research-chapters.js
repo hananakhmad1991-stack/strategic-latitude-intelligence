@@ -133,23 +133,23 @@ function renderIntelligence(which,root){const d=intelligence[which];if(!d)return
  const intro=E("section","sli-research-section");intro.append(E("small","sli-research-num","DEEP-DIVE INTELLIGENCE"),E("h3",null,"Institutional Accountability & Decision Pathways"),E("p","sli-research-description",d.headline));
  const mapMount=E("div","sli-sector-power-map");mapMount.id=which==="minerals"?"sliMineralsOrganigram":"sliAIOrganigram";
  intro.querySelector("h3").textContent="Institutions, Governance & Policy";
- intro.append(mapMount);root.append(intro);
- if(typeof window.renderSLISectorStakeholderMap==="function"){
-  mapMount.append(E("p","gov-note","Loading institutional leadership and issue accountability map…"));
+ const hierarchy=E("div","sli-hierarchy-mount");
+ const explorer=E("details","sli-extra-network"),summary=E("summary",null,"Explore institution network, named officials and 9 issue pathways (Energy Security-style)");
+ const networkMount=E("div","sli-legacy-network");
+ explorer.append(summary,networkMount);mapMount.append(hierarchy,explorer);intro.append(mapMount);root.append(intro);
+ if(typeof window.initSLICommandHierarchy==="function")window.initSLICommandHierarchy(which,hierarchy);
+ else hierarchy.append(E("p","gov-note","Top-down hierarchy module could not load; original stakeholder network is available below."));
+ let explorerLoaded=false;
+ const loadNetwork=()=>{
+  if(explorerLoaded)return;explorerLoaded=true;
+  if(typeof window.renderSLISectorStakeholderMap!=="function"){networkMount.append(E("p","gov-note","Institutional network script unavailable."));return}
+  networkMount.replaceChildren(E("p","gov-note","Loading source-dated institutional network…"));
   fetch("data/sector-governance-explorer.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Sector governance dataset not published");return r.json()}).then(payload=>{
-   if(!mapMount.isConnected)return;
-   const record=payload.sectors?.[which];
-   if(!record||!Array.isArray(record.layers)||record.layers.length!==6)throw Error("Malformed sector institutional dataset");
-   mapMount.replaceChildren();
-   window.renderSLISectorStakeholderMap(mapMount,record);
-  }).catch(err=>{
-   console.error("[SLI sector governance]",err);
-   mapMount.replaceChildren(E("p","gov-note","Full institutional explorer unavailable. Showing the last sourced institutional summary."));
-   const grid=E("div","sli-research-grid");
-   for(const [group,name,role,,url] of d.institutions){const card=E("article","sli-research-card");card.append(E("h4",null,group),E("strong",null,name),E("p",null,role));if(url)card.append(link(url,"Source ↗"));grid.append(card)}
-   mapMount.append(grid);
-  });
- }else mapMount.append(E("p","gov-note","Institutional explorer not loaded. Check browser assets."));
+   if(!networkMount.isConnected)return;const record=payload.sectors?.[which];if(!record?.layers)throw Error("Institution dataset incomplete");
+   networkMount.replaceChildren();window.renderSLISectorStakeholderMap(networkMount,record);
+  }).catch(err=>{console.error("[SLI sector network]",err);networkMount.replaceChildren(E("p","gov-note","Interactive institution network unavailable; hierarchy above remains accessible."))});
+ };
+ explorer.addEventListener("toggle",()=>{if(explorer.open)loadNetwork()});
  const taxonomy=E("section","sli-research-section");taxonomy.append(E("h3",null,"Measurement Framework · Do not mix units"));const measure=E("div","sli-intel-metrics");for(const [type,title,desc] of d.measures){const c=E("article","sli-intel-metric");c.append(E("small","sli-research-num",type),E("strong",null,title),E("p",null,desc));measure.append(c)}taxonomy.append(measure);root.append(taxonomy);
  const watch=E("section","sli-research-section");watch.append(E("h3",null,"Monitoring Priorities & Verification Triggers"),E("p","sli-research-description","Editorial watchlist only, not a claim that every event occurred."));const ul=E("ul","sli-intel-watch");for(const item of d.watch)ul.append(E("li",null,item));watch.append(ul);root.append(watch);
  const assess=E("section","sli-research-section");assess.append(E("h3",null,"Overall Strategic Assessment"),E("p","sli-research-description","Qualitative, source-informed interpretation. Reassess as primary observations change."));const ol=E("ol","sli-intel-watch");for(const x of d.assessment)ol.append(E("li",null,x));assess.append(ol);root.append(assess);
