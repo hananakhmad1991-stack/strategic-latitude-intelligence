@@ -1,0 +1,497 @@
+{
+  "title": "Indonesia Refinery, Electricity Access, Generation, Jargas and Energy Security (4A + S)",
+  "as_of": "2026-10-15",
+  "data_quality": "Every observation carries source vintage; no unverified 2026 production, provincial rankings, unit count by technology or household connections.",
+  "refinery": {
+    "name": "Oil refining infrastructure",
+    "reported_national": {
+      "value": 1.18,
+      "unit": "million barrels/day",
+      "year": 2025,
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+      "scope": "ESDM/DEN national total, rounded; not exactly the sum of the KPI six-unit reference roster"
+    },
+    "utilisation": {
+      "value": 56.7,
+      "unit": "%",
+      "year": 2025,
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+      "explanation": "2025 ESDM assessment figure; do not infer current run rates or actual output volumes from this single percentage."
+    },
+    "operator": "Pertamina / KPI refining system. February 2026 subholding consolidation requires verifying whether KPI remains a separate legal reporting label.",
+    "units": [
+      {
+        "id": "dumai",
+        "name": "Dumai (RU II)",
+        "province": "Riau",
+        "city": "Dumai",
+        "nameplate_kbpd": 170,
+        "legacy_kbpd": 170,
+        "latest_basis": "Current KPI six-refinery public profile; operational throughput not published",
+        "status": "Listed operating refinery",
+        "source": "https://kpi.pertamina.com/id/profil-perusahaan/bisnis-kami",
+        "verified": "2026-10-15",
+        "nci": 7.6
+      },
+      {
+        "id": "plaju",
+        "name": "Plaju (RU III)",
+        "province": "Sumatera Selatan",
+        "city": "Palembang",
+        "nameplate_kbpd": 120,
+        "legacy_kbpd": 120,
+        "latest_basis": "KPI listed capacity; actual 2026 processing not verified",
+        "status": "Listed operating refinery",
+        "source": "https://kpi.pertamina.com/id/profil-perusahaan/bisnis-kami",
+        "verified": "2026-10-15",
+        "nci": 3
+      },
+      {
+        "id": "cilacap",
+        "name": "Cilacap (RU IV)",
+        "province": "Jawa Tengah",
+        "city": "Cilacap",
+        "nameplate_kbpd": 348,
+        "legacy_kbpd": 348,
+        "latest_basis": "KPI listed capacity; 2026 utilization not asserted",
+        "status": "Listed operating refinery",
+        "source": "https://kpi.pertamina.com/id/profil-perusahaan/bisnis-kami",
+        "verified": "2026-10-15",
+        "nci": 7.4
+      },
+      {
+        "id": "balikpapan",
+        "name": "Balikpapan (RU V / RDMP)",
+        "province": "Kalimantan Timur",
+        "city": "Balikpapan",
+        "nameplate_kbpd": 360,
+        "legacy_kbpd": 260,
+        "latest_basis": "Expanded CDU nameplate confirmed in KPB 2026 project performance release; August 2026 RFCC still in commissioning, so total-integrated operation is NOT inferred.",
+        "status": "360 kbpd crude distillation capacity; RFCC complex commissioning in Aug 2026",
+        "source": "https://kpb.pertamina.com/id/media/news/press-releases/berbekal-capaian-2025-kpb-akselerasi-menuju-fase-operasi-rdmp-balikpapan-dan-lawe-lawe",
+        "commissioning_source": "https://kpb.pertamina.com/id/media/news/press-releases/rdmp-balikpapan-masuki-uji-operasi-rfcc-kpb-pastikan-proses-berjalan-dengan-pengawasan-ketat",
+        "verified": "2026-08-24",
+        "nci": null
+      },
+      {
+        "id": "balongan",
+        "name": "Balongan (RU VI)",
+        "province": "Jawa Barat",
+        "city": "Indramayu",
+        "nameplate_kbpd": 150,
+        "legacy_kbpd": 150,
+        "latest_basis": "KPI listed capacity; actual 2026 processing not verified",
+        "status": "Listed operating refinery",
+        "source": "https://kpi.pertamina.com/id/profil-perusahaan/bisnis-kami",
+        "verified": "2026-10-15",
+        "nci": 11.9
+      },
+      {
+        "id": "kasim",
+        "name": "Kasim (RU VII)",
+        "province": "Papua Barat Daya",
+        "city": "Sorong",
+        "nameplate_kbpd": 10,
+        "legacy_kbpd": 10,
+        "latest_basis": "KPI listed capacity, small geographically strategic refinery",
+        "status": "Listed operating refinery",
+        "source": "https://kpi.pertamina.com/id/profil-perusahaan/bisnis-kami",
+        "verified": "2026-10-15",
+        "nci": 2.4
+      }
+    ],
+    "sum_of_listed_kbpd": 1158,
+    "scope_note": "Six KPI refineries add to 1,158 kbpd with RDMP Balikpapan 360. ESDM reports ≈1.18 million bpd, a different rounded national reporting scope. Do not treat difference as an identified seventh refinery or a capacity shortfall. The KPI landing page may still list Balikpapan 260 kbpd pending copy updates; the KPB project report documents CDU 360.",
+    "watch_topics": [
+      "Commissioning RFCC RDMP Balikpapan",
+      "Refinery turnaround and outages",
+      "Refining unit product quality and utilization",
+      "Crude-slate feed availability",
+      "Fuel imports and domestic offtake"
+    ]
+  },
+  "electrification": {
+    "national": {
+      "ratio_total_pct": 99.832,
+      "ratio_pln_pct": 98.561,
+      "as_of": "2026-Q1",
+      "source": "https://gatrik.esdm.go.id/assets/uploads/download_index/files/42c2e-peta-sebaran-rasio-elektrifikasi-re-triwulan-i-2026.pdf",
+      "scope": "Household electricity access; national coverage includes non-PLN power; not equivalent to PLN supply, hours/day or reliability"
+    },
+    "context": {
+      "ratio_total_pct": 99.831,
+      "as_of": "2025-Q4",
+      "source": "https://gatrik.esdm.go.id/assets/uploads/download_index/files/42c2e-peta-sebaran-rasio-elektrifikasi-re-triwulan-i-2026.pdf"
+    },
+    "regional_gaps": [
+      {
+        "province": "Papua Pegunungan",
+        "ratio_total_pct": 94.105,
+        "ratio_pln_pct": 16.656,
+        "vintage": "2025 reference reported 2026",
+        "source": "https://instituthijauindonesia.or.id/publikasi/di-balik-lampu-yang-menyala-masih-adakah-keadilan-energi-di-indonesia",
+        "source_quality": "secondary reproduction of ESDM 2025 provincial table; recheck original",
+        "interpretation": "Very high share served outside main PLN network; resilience, duration and affordability cannot be inferred from nominal access."
+      },
+      {
+        "province": "Papua Tengah",
+        "ratio_total_pct": 94.656,
+        "ratio_pln_pct": 53.006,
+        "vintage": "2025 household access per ESDM derivative",
+        "source": "https://instituthijauindonesia.or.id/publikasi/di-balik-lampu-yang-menyala-masih-adakah-keadilan-energi-di-indonesia",
+        "source_quality": "secondary reproduction; 2026 project reports cite ~94.7 total, 53.01 PLN",
+        "interpretation": "Remote villages and grid connectivity remain priorities; 2026 announced solar additions are not already realised."
+      },
+      {
+        "province": "Papua Barat",
+        "ratio_total_pct": null,
+        "ratio_pln_pct": null,
+        "vintage": "2026 monitoring region",
+        "source": "https://gatrik.esdm.go.id/assets/uploads/download_index/files/42c2e-peta-sebaran-rasio-elektrifikasi-re-triwulan-i-2026.pdf",
+        "source_quality": "official province value pending extraction and verification",
+        "interpretation": "Remote and island/grid gaps monitored; do not invent a province-level ratio."
+      },
+      {
+        "province": "Papua Selatan",
+        "ratio_total_pct": null,
+        "ratio_pln_pct": null,
+        "vintage": "2026 monitoring region",
+        "source": "https://rri.co.id/jayapura/regional/2498687/pln-dan-pemprov-papua-selatan-kerjasama-percepat-infrastruktut-kelistrikan",
+        "source_quality": "regional project source, methodological mismatch with national RE table",
+        "interpretation": "Check consistency of grid PLN, off-grid and local reporting before comparing provinces."
+      }
+    ],
+    "note": "Lowest areas displayed are a source-backed priority watchlist, not a statistically exhaustive 38-province league table. Compare the exact same reporting date and PLN versus nationwide access denominators. Village electrification, household electrification, reliability and hours of supply are separate."
+  },
+  "power_generation": {
+    "national": {
+      "year": 2025,
+      "capacity_mw": 107498.89,
+      "source": "https://databoks.katadata.co.id/utilitas/statistik/6a8ba6bc0fa61/kapasitas-terpasang-pembangkit-listrik-di-indonesia-2025-pltu-terbesar",
+      "primary_reference": "ESDM 2025 electricity statistics; secondary data transcription of official category table",
+      "note": "Total installed nationwide includes non-PLN operators and captive power; should not be conflated with PLN Group units."
+    },
+    "unit_count": {
+      "total_pln_group_units": 5985,
+      "year": 2025,
+      "source": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
+      "national_technology_unit_counts": null,
+      "note": "5,985 is PLN Group unit count across all technologies; verified comparable national counts per PLTU/PLTD/EBT are not established, so show MW by type rather than invent unit counts."
+    },
+    "capacity_by_type_mw": [
+      {
+        "type": "PLTU",
+        "category": "Coal / steam",
+        "mw": 60542.14,
+        "family": "Fossil"
+      },
+      {
+        "type": "PLTGU",
+        "category": "Combined cycle gas",
+        "mw": 17433.56,
+        "family": "Fossil"
+      },
+      {
+        "type": "PLTD",
+        "category": "Diesel",
+        "mw": 6146.07,
+        "family": "Fossil"
+      },
+      {
+        "type": "PLTG",
+        "category": "Gas turbine",
+        "mw": 4582.71,
+        "family": "Fossil"
+      },
+      {
+        "type": "PLTMG",
+        "category": "Gas engine",
+        "mw": 2633.7,
+        "family": "Fossil"
+      },
+      {
+        "type": "PLTA",
+        "category": "Hydropower",
+        "mw": 6372.41,
+        "family": "Renewable"
+      },
+      {
+        "type": "PLTM",
+        "category": "Minihydro",
+        "mw": 940.46,
+        "family": "Renewable"
+      },
+      {
+        "type": "PLTMH",
+        "category": "Microhydro",
+        "mw": 281.52,
+        "family": "Renewable"
+      },
+      {
+        "type": "PLTP",
+        "category": "Geothermal",
+        "mw": 2757.38,
+        "family": "Renewable"
+      },
+      {
+        "type": "PLTS",
+        "category": "Solar",
+        "mw": 1534.11,
+        "family": "Renewable"
+      },
+      {
+        "type": "PLTBm",
+        "category": "Biomass",
+        "mw": 3432.46,
+        "family": "Renewable"
+      },
+      {
+        "type": "PLTBg",
+        "category": "Biogas",
+        "mw": 181.78,
+        "family": "Renewable"
+      },
+      {
+        "type": "PLTB",
+        "category": "Wind",
+        "mw": 151.91,
+        "family": "Renewable"
+      },
+      {
+        "type": "PLTSa",
+        "category": "Waste-to-energy",
+        "mw": 35.67,
+        "family": "Renewable"
+      },
+      {
+        "type": "PLT BBN",
+        "category": "Biofuel",
+        "mw": 5,
+        "family": "Renewable"
+      },
+      {
+        "type": "Gasifikasi batu bara",
+        "category": "Coal gasification",
+        "mw": 450,
+        "family": "Other / coal-derived"
+      },
+      {
+        "type": "Other",
+        "category": "Other listed generation",
+        "mw": 18,
+        "family": "Other"
+      }
+    ],
+    "reported_ebt": {
+      "capacity_mw": 15630,
+      "year": 2025,
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2025.pdf",
+      "note": "Headline EBT programme total includes categories described in EBTKE's accounting, including 468 MW gasifikasi batubara/WHB; unlike strict renewables, cannot be directly summed as low-carbon share without checking classification."
+    },
+    "pln_group": {
+      "year": 2025,
+      "capacity_mw": 47464.24,
+      "source": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
+      "units": 5985
+    },
+    "method_note": "Types are MW, not number of power stations. Do not compare total PLN Group 47.46 GW, broader PLN plus IPP 80.19 GW, and national 107.50 GW without flagging ownership/coverage definitions."
+  },
+  "jargas": {
+    "historic": {
+      "connected_households": 703308,
+      "period": "2009–2022",
+      "status": "reported historical accumulation; NOT a verified end-2026 customer census",
+      "source": "https://migas.esdm.go.id/post/Ditjen-Migas-Percepat-Proyek-Jargas-Multi-Years-Tekankan-Target-Serapan-Anggaran-dan-Kinerja-Kontraktor"
+    },
+    "project_2025_2026": {
+      "planned_connections": 115264,
+      "locations": 15,
+      "contracts": 5,
+      "appropriation_idr_trillion": 1.152,
+      "status": "EPC program contracted/construction; completed & energized connections not verified nationally",
+      "source": "https://migas.esdm.go.id/post/Ditjen-Migas-Percepat-Proyek-Jargas-Multi-Years-Tekankan-Target-Serapan-Anggaran-dan-Kinerja-Kontraktor"
+    },
+    "target_2026": {
+      "target_connections": 160000,
+      "status": "2026 government target, not realized customer connections, may overlap 2025–26 contracted program",
+      "source": "https://www.esdm.go.id/id/media-center/arsip-berita/wamen-esdm-tinjau-jargas-sleman-perluas-akses-energi-bersih-dan-hemat-bagi-masyarakat"
+    },
+    "example": {
+      "location": "Sleman, DI Yogyakarta",
+      "customers": 4545,
+      "system": "Beyond-pipeline CNG",
+      "network_km": 141,
+      "year": 2026,
+      "source": "https://www.esdm.go.id/id/media-center/arsip-berita/wamen-esdm-tinjau-jargas-sleman-perluas-akses-energi-bersih-dan-hemat-bagi-masyarakat"
+    },
+    "emissions_note": "Jargas gas is fossil natural gas. Can reduce LPG import dependence in locations with robust supply, but any carbon/air-quality claim requires lifecycle comparison."
+  },
+  "energy_security": {
+    "official": {
+      "index": 7.04,
+      "status": "Tahan",
+      "year": 2025,
+      "provisional": true,
+      "scale": "0–10",
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+      "method": "Official Setjen DEN/ESDM 4A weighted AHP; 2025 formula changed and old historical scores are not a directly comparable sequence.",
+      "previous_comparable_2024": 6.74
+    },
+    "aspects": [
+      {
+        "code": "Availability",
+        "name": "Availability / Ketersediaan",
+        "score2024": 6.76,
+        "score2025": 7.03,
+        "indicators": [
+          [
+            "A.1",
+            "Cadangan dan produktivitas energi",
+            8.1,
+            8.55
+          ],
+          [
+            "A.2",
+            "Impor energi",
+            3.9,
+            3.9
+          ],
+          [
+            "A.3",
+            "Cadangan energi nasional",
+            6.23,
+            7.78
+          ],
+          [
+            "A.4",
+            "Komitmen energi domestik",
+            7.35,
+            7.06
+          ],
+          [
+            "A.5",
+            "Diversifikasi energi primer",
+            6.22,
+            7.45
+          ]
+        ],
+        "weakness": "Energy import reliance remains lowest at 3.90; crude, fuel and LPG exposures matter even when reserves score improves."
+      },
+      {
+        "code": "Accessibility",
+        "name": "Accessibility / Akses",
+        "score2024": 6.7,
+        "score2025": 7.26,
+        "indicators": [
+          [
+            "B.1",
+            "Infrastruktur dan layanan listrik",
+            6.98,
+            8.35
+          ],
+          [
+            "B.2",
+            "Infrastruktur dan layanan BBM",
+            6.8,
+            7.43
+          ],
+          [
+            "B.3",
+            "Infrastruktur dan layanan gas bumi",
+            5.68,
+            6.13
+          ],
+          [
+            "B.4",
+            "Infrastruktur dan layanan LPG",
+            6.56,
+            6.95
+          ]
+        ],
+        "weakness": "Gas infrastructure and affordable physical availability outside core urban areas remain comparatively weak (6.13)."
+      },
+      {
+        "code": "Affordability",
+        "name": "Affordability / Keterjangkauan",
+        "score2024": 6.92,
+        "score2025": 7.19,
+        "indicators": [
+          [
+            "C.1",
+            "Disparitas harga energi",
+            6.24,
+            6.67
+          ],
+          [
+            "C.2",
+            "Biaya energi dibanding belanja total",
+            7.38,
+            7
+          ],
+          [
+            "C.3",
+            "Energi yang disubsidi",
+            7.33,
+            8.04
+          ]
+        ],
+        "weakness": "Energy price dispersion (6.67) and household budget burden warrant monitoring; higher subsidy-index score does not prove healthy long-run fiscal sustainability."
+      },
+      {
+        "code": "Acceptability",
+        "name": "Acceptability / Lingkungan & penerimaan",
+        "score2024": 6.55,
+        "score2025": 6.58,
+        "indicators": [
+          [
+            "D.1",
+            "Porsi EBT",
+            6.36,
+            6.9
+          ],
+          [
+            "D.2",
+            "Intensitas energi",
+            7.19,
+            5.88
+          ],
+          [
+            "D.3",
+            "Penurunan emisi karbon",
+            6.18,
+            6.86
+          ],
+          [
+            "D.4",
+            "Diversifikasi energi bersih",
+            6.34,
+            6.66
+          ]
+        ],
+        "weakness": "Weakest official pillar; energy intensity (5.88) and clean diversification lag. Environmental performance is already captured here."
+      }
+    ],
+    "sustainability_overlay": {
+      "score": null,
+      "name": "Sustainability / Ketahanan Jangka Panjang — SLI supplementary lens",
+      "status": "Analytical overlay only; NOT a fifth DEN 2025 pillar and not part of official 7.04",
+      "dimensions": [
+        "Decline in fossil-import dependence",
+        "Reliable decentralized electrification and grid adequacy",
+        "Fiscal resilience of subsidy and compensation",
+        "Lifecycle emissions/air quality and responsible CCS",
+        "Climate and physical-infrastructure adaptation",
+        "Strategic maintenance, reserve stocks and plant availability"
+      ],
+      "warning": "Do not recompute official IKE as an unweighted five-part mean; official 4A weights not reconstructed from aspect scores."
+    },
+    "major_gaps": [
+      "A.2 Impor Energi 3.90",
+      "D.2 Intensitas Energi 5.88",
+      "B.3 Jaringan/Layanan Gas 6.13",
+      "D.4 Diversifikasi Energi Bersih 6.66",
+      "C.1 Disparitas Harga 6.67"
+    ],
+    "as_of_method": "ESDM 2025 annual performance report Tables 12–13 pages 55–56; result preliminary for 2025. 2025 IKE 7.04/10 = 70.40/100 minister-level conversion; no new 2026 national official index asserted."
+  }
+}
