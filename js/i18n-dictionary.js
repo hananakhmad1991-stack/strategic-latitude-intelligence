@@ -1475,3 +1475,7 @@ for (const [en,id] of [["Editorial & data standards","Standar Editorial & Data"]
 
 window.SLI_TRANSLATIONS_ID.set("New & Renewable Energy (EBT/NRE)","Energi Baru dan Terbarukan (EBT)");
 window.SLI_TRANSLATIONS_ID.set("NRE & Energy Conservation","Energi Baru Terbarukan dan Konservasi Energi");
+
+window.SLI_TRANSLATIONS_ID.set("Electric Vehicles · Cars · Motorcycles","Kendaraan Listrik · Mobil · Motor");
+
+window.SLI_TRANSLATIONS_ID.set("Indonesia electric vehicle sales motorcycles car production 2030 targets batteries charging and regulatory monitoring","Penjualan kendaraan listrik Indonesia, produksi mobil, target 2030, baterai, pengisian daya, dan pemantauan kebijakan");
