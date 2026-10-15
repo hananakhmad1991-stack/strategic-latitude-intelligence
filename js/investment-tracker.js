@@ -168,6 +168,20 @@ window.initSLIInvestment=async function(){
   const rb=$("tbody");
   (evidence.revenue||[]).forEach(x=>{const tr=$("tr");[x.sector,x.value.toLocaleString("id-ID"),x.period].forEach(v=>tr.append($("td",null,v)));const td=$("td");td.append(source(x.source,"ESDM"));tr.append(td);rb.append(tr)});rt.append(rb);revenueTable.append(rt);
   rev.append($("p","tr-detail","Minerals vs coal and AI/data center-specific fiscal receipts are not separately verified by these sources; no artificial split is applied."));
+  const scope=$("details");scope.append($("summary",null,"Fiscal coverage by sector · expand definition matrix"));
+  const scopeTable=$("div","pf-table-wrap"),matrix=$("table");matrix.innerHTML="<thead><tr><th>Sector</th><th>Fiscal series available</th><th>Separate attribution?</th></tr></thead>";
+  const mb=$("tbody");
+  const sectorScope=[
+   ["Upstream oil","PNBP from petroleum natural resources","Reported separately in the current 2025 ESDM series"],
+   ["Natural gas","PNBP from natural gas natural resources","Reported separately in the current 2025 ESDM series"],
+   ["Coal","Combined mineral + coal PNBP only","No separate coal figure from this selected report; do not allocate an arbitrary share"],
+   ["Non-coal mining / critical minerals","Combined mineral + coal PNBP only","No standalone critical-minerals fiscal series in this dataset"],
+   ["Renewable power and geothermal","Fiscal and non-tax categories vary by regulator and license","Not isolated in this current investment dataset"],
+   ["AI/data centers and technology","Corporate and indirect taxes may apply; no corresponding unified sector line","No official separate tax/PNBP total verified here"]
+  ];
+  sectorScope.forEach(row=>{const tr=$("tr");row.forEach(value=>tr.append($("td",null,value)));mb.append(tr)});
+  matrix.append(mb);scopeTable.append(matrix);scope.append(scopeTable);rev.append(scope);
+  rev.append($("p","tr-detail","Accounting rule: government revenue (tax or PNBP), corporate revenue, export values, investment disbursements and project capital budgets are different statistics and cannot be interchanged."));
   (evidence.policy||[]).forEach(x=>{const p=$("p",null,x.title+": "+x.amount+" · "+x.status+" · ");p.append(source(x.source,"BKPM"));policy.append(p)});
   evidenceStatus.textContent="Published data snapshot · "+evidence.as_of+" · Investment realization "+national.period+"; receipts retain their individual reference periods.";
  }catch(err){evidenceStatus.textContent="Official investment evidence dataset unavailable; headline feed and editorial framework remain accessible.";qualityRoot.textContent="Data coverage diagnostics unavailable.";console.error("[SLI] investment evidence load",err);}
