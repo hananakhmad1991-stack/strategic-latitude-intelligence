@@ -16,7 +16,8 @@
       "Nuclear is classified as 'New Energy', not renewable energy; site-evaluation approval is not a siting, construction or operating licence.",
       "Pumped storage is electricity storage (grid consumption while pumping), not additional net renewable energy production.",
       "RUPTL 2025–2034 incremental technology plans, project design MW and operational power are different time/status measures.",
-      "Hydro MW and solar PV MWp are different ratings, and historical contract tariffs should not be presented as current spot power prices."
+      "Hydro MW and solar PV MWp are different ratings, and historical contract tariffs should not be presented as current spot power prices.",
+      "Cirata Floating Solar (192 MWp) and Cirata hydropower (1,008 MW) are different operating assets sharing a reservoir, not duplicated project records."
     ]
   },
   "records": [
@@ -480,7 +481,7 @@
     },
     {
       "id": "ebt-cirata",
-      "sector": "Renewable Energy",
+      "sector": "Solar PV",
       "asset": "Cirata Floating Solar PV",
       "region": "Purwakarta, West Java",
       "operator": "PT Pembangkitan Jawa Bali Masdar Solar Energi (PMSE) / PLN Nusantara Power partnership",
@@ -504,7 +505,7 @@
     },
     {
       "id": "ebt-pge-lumut3",
-      "sector": "Renewable Energy",
+      "sector": "Geothermal",
       "asset": "PLTP Lumut Balai Unit 3 — development / JICA Green Book",
       "region": "South Sumatra · Lumut Balai WKP",
       "operator": "PT Pertamina Geothermal Energy Tbk (PGEO)",
@@ -964,7 +965,7 @@
       "source_url": "https://ebtke.esdm.go.id/artikel/siaran-pers/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat"
     },
     {
-      "sector": "Renewable Energy",
+      "sector": "Geothermal",
       "indicator": "PGE produced electricity",
       "value": 5095,
       "unit": "GWh",
