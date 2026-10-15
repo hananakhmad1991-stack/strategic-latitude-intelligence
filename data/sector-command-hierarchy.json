@@ -1,0 +1,780 @@
+{
+  "as_of": "2026-10-15",
+  "updated_note": "Public-source organizational relationships, not a single statutory chain of command. Only ownership nodes have equity relations; policy oversight and commercial partnerships are different edge types.",
+  "sectors": {
+    "minerals": {
+      "title": "Critical Minerals",
+      "nodes": [
+        {
+          "id": "pres",
+          "title": "PRESIDENCY · Prabowo Subianto",
+          "person": "Prabowo Subianto",
+          "role": "National strategic direction; not the direct operator or licensor of individual mines.",
+          "source": "https://setneg.go.id/",
+          "parent": null,
+          "relation": "root",
+          "verification": "source-dated"
+        },
+        {
+          "id": "minister",
+          "title": "Ministry of Energy & Mineral Resources · ESDM",
+          "person": "Bahlil Lahadalia",
+          "role": "Mineral policy, regulatory supervision and sector administration.",
+          "source": "https://www.esdm.go.id/",
+          "parent": "pres",
+          "relation": "policy",
+          "verification": "source-dated"
+        },
+        {
+          "id": "dgminerba",
+          "title": "Directorate General of Minerals & Coal · Ditjen Minerba",
+          "person": "Tri Winarno",
+          "role": "Directorate under the ESDM minister, responsible for technical licensing and mineral/coal supervision.",
+          "source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+          "parent": "minister",
+          "relation": "reporting",
+          "verification": "source-dated"
+        },
+        {
+          "id": "geology",
+          "title": "Geological Agency · Badan Geologi",
+          "person": null,
+          "role": "Geological mapping and resources assessment; administrative position within ESDM.",
+          "source": "https://www.esdm.go.id/",
+          "parent": "minister",
+          "relation": "reporting",
+          "verification": "source-dated"
+        },
+        {
+          "id": "industrial",
+          "title": "Ministry of Industry · Kemenperin",
+          "person": "Muhammad Sarmuji",
+          "role": "Industrial downstreaming and manufacturing policy.",
+          "source": "https://kemenperin.go.id/",
+          "parent": "pres",
+          "relation": "policy",
+          "verification": "source-dated"
+        },
+        {
+          "id": "industryunit",
+          "title": "Industrial processing and downstreaming directorates",
+          "person": null,
+          "role": "Relevant industrial policy directorates beneath the Industry Ministry; exact active structure subject to official roster.",
+          "source": "https://kemenperin.go.id/",
+          "parent": "industrial",
+          "relation": "reporting",
+          "verification": "source-dated"
+        },
+        {
+          "id": "investment",
+          "title": "Investment Ministry / BKPM",
+          "person": "Rosan Perkasa Roeslani",
+          "role": "Investment licensing, facilitation and published capital realization.",
+          "source": "https://www.bkpm.go.id/",
+          "parent": "pres",
+          "relation": "policy",
+          "verification": "source-dated"
+        },
+        {
+          "id": "bpkmunit",
+          "title": "Strategic downstream investment deputies",
+          "person": "Heldy Satrya Putera",
+          "role": "BKPM deputy-level strategic downstream investment facilitation.",
+          "source": "https://www.bkpm.go.id/id/info/siaran-pers/menteri-investasi-dan-hilirisasi-kepala-bkpm-lantik-pejabat-tinggi-madya",
+          "parent": "investment",
+          "relation": "reporting",
+          "verification": "source-dated"
+        },
+        {
+          "id": "highered",
+          "title": "Ministry of Higher Education, Science & Technology",
+          "person": "Brian Yuliarto",
+          "role": "National applied R&D and strategic materials research policy.",
+          "source": "https://kemdiktisaintek.go.id/",
+          "parent": "pres",
+          "relation": "policy",
+          "verification": "source-dated"
+        },
+        {
+          "id": "mineralindustry",
+          "title": "Badan Industri Mineral / strategic mineral programmes",
+          "person": "Brian Yuliarto",
+          "role": "Strategic mineral industrialization and rare-earth programme role reported in 2026; confirm independent mandate versus ministerial portfolio.",
+          "source": "https://timah.com/berita/post/hilirisasi-mineral-kritis-digenjot-pt-timah-dan-perminas-perkuat-sinergi-strategis.html",
+          "parent": "highered",
+          "relation": "coordination",
+          "verification": "source-dated"
+        },
+        {
+          "id": "bpbum",
+          "title": "BP BUMN · state regulatory/special-rights functions",
+          "person": null,
+          "role": "SOE statutory oversight and government special shareholders' rights separate from Danantara commercial management.",
+          "source": "https://peraturan.go.id/",
+          "parent": "pres",
+          "relation": "oversight",
+          "verification": "source-dated"
+        },
+        {
+          "id": "bpi",
+          "title": "BPI Danantara Indonesia",
+          "person": "Rosan Perkasa Roeslani",
+          "role": "State strategic investment/holding governance; distinguish asset management and corporate control from sector regulation.",
+          "source": "https://www.danantaraindonesia.co.id/id",
+          "parent": "pres",
+          "relation": "portfolio",
+          "verification": "source-dated"
+        },
+        {
+          "id": "dam",
+          "title": "PT Danantara Asset Management",
+          "person": null,
+          "role": "Management of SOE group portfolio under Danantara structure.",
+          "source": "https://www.danantaraindonesia.co.id/",
+          "parent": "bpi",
+          "relation": "portfolio",
+          "verification": "source-dated"
+        },
+        {
+          "id": "mind",
+          "title": "PT Mineral Industri Indonesia (Persero) · MIND ID",
+          "person": "Maroef Sjamsoeddin",
+          "role": "State mining strategic holding: shareholdings and group industrial integration.",
+          "source": "https://mind.id/pages/board-of-director",
+          "parent": "dam",
+          "relation": "portfolio",
+          "verification": "official group listing"
+        },
+        {
+          "id": "antam",
+          "title": "PT ANTAM Tbk",
+          "person": "Untung Budiharto",
+          "role": "Nickel, gold, bauxite and alumina, domestic processing; MIND ID reports 65% stake.",
+          "source": "https://www.antam.com/id/news-and-events/antam-distributes-rp5-04-trillion-dividends-reaffirms-commitment-to-sustainable-value-creation",
+          "parent": "mind",
+          "relation": "equity",
+          "verification": "issuer-reported 2026",
+          "stake": "65% (MIND ID issuer page)"
+        },
+        {
+          "id": "ptba",
+          "title": "PT Bukit Asam Tbk · PTBA",
+          "person": "Bambang Ismawan",
+          "role": "Coal production and downstreaming; energy mineral interface, not battery-metal producer; group stake 65.93%.",
+          "source": "https://www.ptba.co.id/id/media/press-release/detail/kinerja-operasional-pulih-dan-program-efisiensi-terus-berjalan-ptba-bukukan-laba-bersih-rp-2-65-triliun-di-semester-i-2026",
+          "parent": "mind",
+          "relation": "equity",
+          "verification": "issuer-reported 2026",
+          "stake": "65.93% (MIND ID issuer page)"
+        },
+        {
+          "id": "inalum",
+          "title": "PT Indonesia Asahan Aluminium · INALUM",
+          "person": "Melati Sarnita",
+          "role": "Aluminium metal production and alumina chain; MIND ID reports 100%.",
+          "source": "https://www.inalum.id/id/tentang-kami/organisasi/direksi",
+          "parent": "mind",
+          "relation": "equity",
+          "verification": "issuer board roster",
+          "stake": "100%"
+        },
+        {
+          "id": "timah",
+          "title": "PT Timah Tbk",
+          "person": "Restu Widiyantoro",
+          "role": "Tin mining, processing and rare-earth-recovery initiatives; group stake 65%.",
+          "source": "https://timah.com/blog/about-us/direksi.html",
+          "parent": "mind",
+          "relation": "equity",
+          "verification": "issuer board roster",
+          "stake": "65%"
+        },
+        {
+          "id": "freeport",
+          "title": "PT Freeport Indonesia",
+          "person": "Clayton Allen Wenas",
+          "role": "Copper, gold, silver, smelting and refining; MIND ID reports 51.2% interest.",
+          "source": "https://ptfi.co.id/id/management",
+          "parent": "mind",
+          "relation": "equity",
+          "verification": "issuer board roster",
+          "stake": "51.2% reported (not a wholly owned unit)"
+        },
+        {
+          "id": "vale",
+          "title": "PT Vale Indonesia Tbk",
+          "person": "Bernardus Irmanto",
+          "role": "Nickel matte, mine and processing facilities; 34% MIND ID participation, associated interest not wholly owned.",
+          "source": "https://www.valeindonesia.com/indonesia/direksi.html",
+          "parent": "mind",
+          "relation": "minority",
+          "verification": "issuer board roster",
+          "stake": "34% group participation; NOT a wholly owned subsidiary"
+        },
+        {
+          "id": "ibc",
+          "title": "PT Industri Baterai Indonesia · IBC",
+          "person": "Aditya Farhan Arif",
+          "role": "Battery-value-chain venture involving MIND ID/ANTAM and energy SOEs; not an exclusively MIND ID subsidiary.",
+          "source": "https://www.antam.com/id/news-and-events/antam-ibc-and-huayou-strengthen-national-integrated-battery-ecosystem-through-global-strategic-collaboration",
+          "parent": "mind",
+          "relation": "joint-venture",
+          "verification": "source-dated"
+        },
+        {
+          "id": "dsi",
+          "title": "PT Danantara Sumberdaya Indonesia · DSI",
+          "person": "Luke Thomas Mahony",
+          "role": "Strategic commodity export governance, monitoring under-invoicing and trade transactions; NOT MIND ID holding company.",
+          "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
+          "parent": "bpi",
+          "relation": "portfolio",
+          "verification": "officially announced August 2026"
+        },
+        {
+          "id": "perminas",
+          "title": "PT Perusahaan Mineral Nasional · PERMINAS",
+          "person": "Gilarsi Wahju Setijono",
+          "role": "State strategic rare-earth/mineral downstreaming company; TIMAH cooperation on tin slag, monazite and REE.",
+          "source": "https://timah.com/berita/post/hilirisasi-mineral-kritis-digenjot-pt-timah-dan-perminas-perkuat-sinergi-strategis.html",
+          "parent": "bpi",
+          "relation": "coordination",
+          "verification": "corporate collaboration, exact corporate share chain not established"
+        },
+        {
+          "id": "brin",
+          "title": "Badan Riset dan Inovasi Nasional · BRIN",
+          "person": null,
+          "role": "Applied research in mineral processing, rare earths and strategic resources, institutionally outside ESDM/mining-company chain.",
+          "source": "https://brin.go.id/news/128046/brin-percepat-eksplorasi-dan-hilirisasi-ltj-untuk-industri-strategis-nasional",
+          "parent": "pres",
+          "relation": "research",
+          "verification": "source-dated"
+        },
+        {
+          "id": "brinmin",
+          "title": "BRIN mineral technology and critical material research centers",
+          "person": null,
+          "role": "Mineral separation, extraction, metallurgy and recoveries of REE, nickel, cobalt, lithium and recycling.",
+          "source": "https://brin.go.id/press-release/129653/brin-dan-northeastern-university-kembangkan-laboratorium-bersama-untuk-riset-industri-mineral",
+          "parent": "brin",
+          "relation": "research",
+          "verification": "source-dated"
+        },
+        {
+          "id": "defense",
+          "title": "Ministry of Defence / Kemhan",
+          "person": null,
+          "role": "Industrial requirement and strategic materials demand; no presumption that listed mines supply specific defence contracts.",
+          "source": "https://www.kemhan.go.id/",
+          "parent": "pres",
+          "relation": "policy",
+          "verification": "source-dated"
+        },
+        {
+          "id": "defend",
+          "title": "DEFEND ID · PT Len Industri holding",
+          "person": null,
+          "role": "Defence industrial group: relevant material-demand and supplier qualification, not mineral sector regulator.",
+          "source": "https://defend.id/",
+          "parent": "defense",
+          "relation": "strategic-interface",
+          "verification": "functional demand-side interface, not ministerial subsidiary"
+        },
+        {
+          "id": "pindad",
+          "title": "PT Pindad",
+          "person": null,
+          "role": "Defense manufacturing and metallurgy applications; sourcing partnerships require documentation.",
+          "source": "https://pindad.com/",
+          "parent": "defend",
+          "relation": "strategic-interface",
+          "verification": "source-dated"
+        },
+        {
+          "id": "dpr",
+          "title": "DPR RI · Commission XII and related committees",
+          "person": null,
+          "role": "Oversight, legislation and budget scrutiny; independent institution and not a ministry subordinate.",
+          "source": "https://www.dpr.go.id/",
+          "parent": "pres",
+          "relation": "oversight",
+          "verification": "functionally shown at national level; no reporting relationship"
+        },
+        {
+          "id": "bpk",
+          "title": "BPK RI",
+          "person": null,
+          "role": "Constitutional public financial audit, independent from executive command.",
+          "source": "https://www.bpk.go.id/",
+          "parent": "pres",
+          "relation": "oversight",
+          "verification": "constitutional branch; schematic only"
+        }
+      ],
+      "market": [
+        {
+          "id": "imip",
+          "title": "Indonesia Morowali Industrial Park · IMIP",
+          "person": null,
+          "role": "Nickel industrial cluster with multiple Indonesian and foreign JV participants.",
+          "source": "https://imip.co.id/",
+          "parent": null,
+          "relation": "market",
+          "verification": "counterparty cited; verify facility-specific shareholding",
+          "affiliation": "Indonesia/foreign JV cluster"
+        },
+        {
+          "id": "weda",
+          "title": "PT Weda Bay Nickel / Eramet partners",
+          "person": null,
+          "role": "Nickel extraction and JV activity; ownership must be checked in issuer filings.",
+          "source": "https://www.eramet.com/en/",
+          "parent": null,
+          "relation": "market",
+          "verification": "counterparty cited; verify facility-specific shareholding",
+          "affiliation": "France/China/Indonesia JV"
+        },
+        {
+          "id": "valeintl",
+          "title": "Vale Base Metals / international shareholders",
+          "person": null,
+          "role": "International ownership alongside state participation in PT Vale.",
+          "source": "https://www.vale.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "counterparty cited; verify facility-specific shareholding",
+          "affiliation": "Canada/Brazil-linked"
+        },
+        {
+          "id": "fcx",
+          "title": "Freeport-McMoRan",
+          "person": null,
+          "role": "Non-Indonesian shareholder/partner in Freeport Indonesia; not directly controlled by MIND ID.",
+          "source": "https://www.fcx.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "counterparty cited; verify facility-specific shareholding",
+          "affiliation": "United States"
+        },
+        {
+          "id": "mbma",
+          "title": "PT Merdeka Battery Materials Tbk",
+          "person": null,
+          "role": "Private listed nickel/battery-materials operations.",
+          "source": "https://merdekabattery.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "counterparty cited; verify facility-specific shareholding",
+          "affiliation": "Indonesia listed/private"
+        },
+        {
+          "id": "harita",
+          "title": "PT Trimegah Bangun Persada · Harita Nickel",
+          "person": null,
+          "role": "Indonesian listed nickel-processing group and JVs.",
+          "source": "https://haritanickel.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "counterparty cited; verify facility-specific shareholding",
+          "affiliation": "Indonesia private/JVs"
+        },
+        {
+          "id": "amnt",
+          "title": "PT Amman Mineral Nusa Tenggara",
+          "person": null,
+          "role": "Copper/gold mine and downstream project.",
+          "source": "https://amman.co.id/",
+          "parent": null,
+          "relation": "market",
+          "verification": "counterparty cited; verify facility-specific shareholding",
+          "affiliation": "Indonesia private/listed"
+        },
+        {
+          "id": "cbl",
+          "title": "CATL / Brunp / Lygend consortium",
+          "person": null,
+          "role": "Chinese supply-chain investors in Indonesian integrated battery programme.",
+          "source": "https://www.catl.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "counterparty cited; verify facility-specific shareholding",
+          "affiliation": "China"
+        },
+        {
+          "id": "huayou",
+          "title": "Zhejiang Huayou Cobalt",
+          "person": null,
+          "role": "Battery materials technology/investment partner.",
+          "source": "https://www.huayou.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "counterparty cited; verify facility-specific shareholding",
+          "affiliation": "China"
+        },
+        {
+          "id": "tsingshan",
+          "title": "Tsingshan-linked Indonesian processing ventures",
+          "person": null,
+          "role": "Foreign-sponsored nickel and stainless-steel processing ecosystem.",
+          "source": "https://www.tssgroup.com.cn/",
+          "parent": null,
+          "relation": "market",
+          "verification": "counterparty cited; verify facility-specific shareholding",
+          "affiliation": "China"
+        }
+      ],
+      "notes": [
+        "Hierarchy is an analytical flow: President → ministry → directorate and President → Danantara → state portfolio companies. DPR/BPK and BRIN are independent functional counterparts.",
+        "Danantara Sumberdaya Indonesia (DSI) is a sibling export-governance arm in Danantara ecosystem, not MIND ID's parent.",
+        "PT Vale's MIND ID 34% interest is not complete control. Share figures source dated and not auto-updated to current securities register.",
+        "Only six principal MIND ID member companies are listed; all indirect subsidiaries of each are not enumerated, pending verified corporate registers."
+      ]
+    },
+    "ai": {
+      "title": "AI Infrastructure",
+      "nodes": [
+        {
+          "id": "pres",
+          "title": "PRESIDENCY · Prabowo Subianto",
+          "person": "Prabowo Subianto",
+          "role": "National economic, infrastructure and digital strategy.",
+          "source": "https://setneg.go.id/",
+          "parent": null,
+          "relation": "root",
+          "verification": "source-dated"
+        },
+        {
+          "id": "komdigi",
+          "title": "Ministry of Communication & Digital Affairs · Komdigi",
+          "person": "Meutya Hafid",
+          "role": "Digital infrastructure, AI ecosystem and personal-data statutory interface.",
+          "source": "https://komdigi.go.id/",
+          "parent": "pres",
+          "relation": "policy",
+          "verification": "source-dated"
+        },
+        {
+          "id": "dgE",
+          "title": "DG Digital Ecosystem · Ditjen Ekosistem Digital",
+          "person": "Edwin Hidayat Abdullah",
+          "role": "DG located under Komdigi minister; coordinates digital ecosystem and AI initiatives.",
+          "source": "https://www.komdigi.go.id/",
+          "parent": "komdigi",
+          "relation": "reporting",
+          "verification": "source-dated"
+        },
+        {
+          "id": "dirAI",
+          "title": "Directorate of AI & New Technology Ecosystems",
+          "person": "Said Mirza Pahlevi",
+          "role": "Directorate placed under DG Digital Ecosystem; national AI ecosystem programmes.",
+          "source": "https://komdigi.go.id/",
+          "parent": "dgE",
+          "relation": "reporting",
+          "verification": "source-dated"
+        },
+        {
+          "id": "dgI",
+          "title": "DG Digital Infrastructure · Ditjen Infrastruktur Digital",
+          "person": "Wayan Toni Supriyanto",
+          "role": "Digital telecom/fiber infrastructure regulation beneath Komdigi minister.",
+          "source": "https://infradigital.komdigi.go.id/artikel-daftar-pejabat-1-4",
+          "parent": "komdigi",
+          "relation": "reporting",
+          "verification": "source-dated"
+        },
+        {
+          "id": "dirNet",
+          "title": "Directorate of Digital Infrastructure Services",
+          "person": "Dwi Handoko",
+          "role": "Directorate under DG Infrastructure Digital, network/service infrastructure policy.",
+          "source": "https://infradigital.komdigi.go.id/artikel-daftar-pejabat-1-4",
+          "parent": "dgI",
+          "relation": "reporting",
+          "verification": "source-dated"
+        },
+        {
+          "id": "esdm",
+          "title": "Ministry of Energy & Mineral Resources",
+          "person": "Bahlil Lahadalia",
+          "role": "Electricity policy and energy requirements for data-center projects.",
+          "source": "https://www.esdm.go.id/",
+          "parent": "pres",
+          "relation": "policy",
+          "verification": "source-dated"
+        },
+        {
+          "id": "pln",
+          "title": "PT PLN (Persero) · national power utility",
+          "person": "Suroso Isnandar",
+          "role": "Grid electricity contracting, supply reliability and energization. Corporate SOE, not an ESDM directorate.",
+          "source": "https://www.antaranews.com/berita/5786793/direktur-utama-pln-diganti-jadi-suroso-isnandar",
+          "parent": "dam",
+          "relation": "portfolio",
+          "verification": "source-dated 2026-10-14"
+        },
+        {
+          "id": "bkpm",
+          "title": "Investment Ministry / BKPM",
+          "person": "Rosan Perkasa Roeslani",
+          "role": "Capital facilitation and reported realized investment.",
+          "source": "https://www.bkpm.go.id/",
+          "parent": "pres",
+          "relation": "policy",
+          "verification": "source-dated"
+        },
+        {
+          "id": "bssn",
+          "title": "BSSN · National Cyber & Crypto Agency",
+          "person": null,
+          "role": "National cybersecurity coordination, not cloud operator.",
+          "source": "https://bssn.go.id/",
+          "parent": "pres",
+          "relation": "security",
+          "verification": "source-dated"
+        },
+        {
+          "id": "bpi",
+          "title": "BPI Danantara Indonesia",
+          "person": "Rosan Perkasa Roeslani",
+          "role": "State portfolio investment governance; distinguish commercial investment from regulation.",
+          "source": "https://www.danantaraindonesia.co.id/",
+          "parent": "pres",
+          "relation": "portfolio",
+          "verification": "source-dated"
+        },
+        {
+          "id": "dam",
+          "title": "Danantara Asset Management",
+          "person": null,
+          "role": "State-owned commercial portfolio management.",
+          "source": "https://www.danantaraindonesia.co.id/",
+          "parent": "bpi",
+          "relation": "portfolio",
+          "verification": "source-dated"
+        },
+        {
+          "id": "telkom",
+          "title": "PT Telkom Indonesia Tbk",
+          "person": "Dian Siswarini",
+          "role": "State-linked telecom, connectivity and digital infrastructure business.",
+          "source": "https://www.telkom.co.id/",
+          "parent": "dam",
+          "relation": "portfolio",
+          "verification": "source-dated"
+        },
+        {
+          "id": "neutra",
+          "title": "PT Telkom Data Ekosistem · NeutraDC",
+          "person": "Rakhmad Tunggal Afifuddin",
+          "role": "Commercial data-center operating company; Telkom Group and Danantara ecosystem. 200 MW Cikarang expansion announced.",
+          "source": "https://www.telkom.co.id/sites/berita/id_ID/news/sinergi-danantara-neutradc-gandeng-pln-siapkan-ekspansi-hyperscale-data-center-3881",
+          "parent": "telkom",
+          "relation": "equity",
+          "verification": "source-dated"
+        },
+        {
+          "id": "telin",
+          "title": "PT Telekomunikasi Indonesia International · Telin",
+          "person": "Abdul Rahman Ansyori",
+          "role": "Telkom-linked global fiber/submarine connectivity.",
+          "source": "https://www.telkom.co.id/",
+          "parent": "telkom",
+          "relation": "equity",
+          "verification": "source-dated"
+        },
+        {
+          "id": "brin",
+          "title": "BRIN · National Research & Innovation Agency",
+          "person": null,
+          "role": "National AI research, compute use and technological capability; distinct from Komdigi regulation.",
+          "source": "https://brin.go.id/",
+          "parent": "pres",
+          "relation": "research",
+          "verification": "source-dated"
+        },
+        {
+          "id": "universities",
+          "title": "Universities, polytechnics and AI research centers",
+          "person": null,
+          "role": "Talent development, training programmes, applied AI R&D and access to compute.",
+          "source": "https://www.ugm.ac.id/",
+          "parent": "brin",
+          "relation": "research",
+          "verification": "association, NOT institutional subordination"
+        },
+        {
+          "id": "defense",
+          "title": "Ministry of Defence · Kemhan",
+          "person": null,
+          "role": "Strategic AI, cyber and military information requirements; not the civil data-center operator.",
+          "source": "https://www.kemhan.go.id/",
+          "parent": "pres",
+          "relation": "policy",
+          "verification": "source-dated"
+        },
+        {
+          "id": "len",
+          "title": "DEFEND ID / PT Len Industri ecosystem",
+          "person": null,
+          "role": "Defence and high-assurance digital solutions potential offtaker, not civilian AI regulator.",
+          "source": "https://defend.id/",
+          "parent": "defense",
+          "relation": "strategic-interface",
+          "verification": "source-dated"
+        },
+        {
+          "id": "dpr",
+          "title": "DPR RI · digital & energy oversight commissions",
+          "person": null,
+          "role": "Parliamentary scrutiny of sector laws and public infrastructure.",
+          "source": "https://www.dpr.go.id/",
+          "parent": "pres",
+          "relation": "oversight",
+          "verification": "source-dated"
+        }
+      ],
+      "market": [
+        {
+          "id": "dci",
+          "title": "PT DCI Indonesia Tbk",
+          "person": null,
+          "role": "Private Indonesia colocation/operator; site-specific IT capacity requires direct evidence.",
+          "source": "https://www.dci-indonesia.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "Indonesia"
+        },
+        {
+          "id": "edge",
+          "title": "Digital Edge",
+          "person": null,
+          "role": "Regional data-center developer/operator including CGK and EDGE2 campuses.",
+          "source": "https://www.digitaledgedc.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "Singapore / regional"
+        },
+        {
+          "id": "pdg",
+          "title": "Princeton Digital Group",
+          "person": null,
+          "role": "Regional data-center operator/developer with Indonesian facilities.",
+          "source": "https://princetondg.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "Singapore / regional"
+        },
+        {
+          "id": "microsoft",
+          "title": "Microsoft Azure Indonesia Central",
+          "person": null,
+          "role": "Operational cloud region; announced spending not equivalent to AI GPU MW.",
+          "source": "https://news.microsoft.com/source/asia/",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "United States"
+        },
+        {
+          "id": "aws",
+          "title": "Amazon Web Services · Asia Pacific Jakarta",
+          "person": null,
+          "role": "Cloud-region provider and services.",
+          "source": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "United States"
+        },
+        {
+          "id": "google",
+          "title": "Google Cloud",
+          "person": null,
+          "role": "Cloud platforms and regional infrastructure services.",
+          "source": "https://cloud.google.com/about/locations",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "United States"
+        },
+        {
+          "id": "alibaba",
+          "title": "Alibaba Cloud",
+          "person": null,
+          "role": "Cloud computing service provider in Indonesian market.",
+          "source": "https://www.alibabacloud.com/global-locations",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "China"
+        },
+        {
+          "id": "equinix",
+          "title": "Equinix Indonesia / partnerships",
+          "person": null,
+          "role": "Colocation, interconnection and data center operating ecosystem.",
+          "source": "https://www.equinix.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "United States/Indonesia JV"
+        },
+        {
+          "id": "indosat",
+          "title": "Indosat Ooredoo Hutchison",
+          "person": null,
+          "role": "Private/public listed carrier and AI collaboration ecosystem.",
+          "source": "https://ioh.co.id/",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "Indonesia/Qatar-linked"
+        },
+        {
+          "id": "nvidia",
+          "title": "NVIDIA",
+          "person": null,
+          "role": "GPU/AI hardware supplier, not national AI regulator or issuer of data-center licenses.",
+          "source": "https://www.nvidia.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "United States"
+        },
+        {
+          "id": "bdx",
+          "title": "BDx Data Centers",
+          "person": null,
+          "role": "Regional data-center operator; verify Indonesia campus projects at facility level.",
+          "source": "https://www.bdxworld.com/",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "Regional"
+        },
+        {
+          "id": "daya",
+          "title": "PT Dayamitra Telekomunikasi · Mitratel",
+          "person": null,
+          "role": "Listed telecom infrastructure; fiber/tower network interface, not automatically an AI data-center operator.",
+          "source": "https://www.mitratel.co.id/",
+          "parent": null,
+          "relation": "market",
+          "verification": "operator source or corporate website",
+          "affiliation": "Indonesia/Telkom Group-linked"
+        }
+      ],
+      "notes": [
+        "Dirjen Ekosistem Digital and Dirjen Infrastruktur Digital report through Komdigi, below ministerial tier.",
+        "Danantara → state-linked Telkom group company structure is a portfolio relationship; PLN remains a separate SOE with its own corporate governance.",
+        "Foreign operators and hyperscalers are independent private investors, not subordinate state entities.",
+        "Site MW, contracted utility MVA, available GPU compute and financial pipeline are different measurements."
+      ]
+    }
+  }
+}
