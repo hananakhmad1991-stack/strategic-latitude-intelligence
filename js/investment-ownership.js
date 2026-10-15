@@ -3,12 +3,16 @@
 "use strict";
 const E=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined&&text!==null)n.textContent=String(text);return n};
 const link=(url,title)=>{const a=E("a",null,title+" ↗");if(/^https:\/\//.test(url||"")){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}else a.removeAttribute("href");return a};
+const projectAnchor=name=>"inv-project-"+String(name||"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
 window.initSLIInvestmentOwnership=async function(){
  const root=document.getElementById("investmentOwnershipRoot");if(!root)return;
  root.replaceChildren(E("p","tr-detail","Loading source-dated shareholder registry…"));
  let data;
  try{const res=await fetch("data/investment-ownership.json",{cache:"no-store"});if(!res.ok)throw Error("Missing ownership file");data=await res.json();if(!Array.isArray(data.entities))throw Error("Invalid entity schema");}
  catch(err){root.replaceChildren(E("p","tr-status","Ownership registry temporarily unavailable. No unidentified ultimate owner is assumed."));console.error("[SLI] investment ownership",err);return}
+ let projectRows=[];
+ try{const report=await fetch("data/investment-evidence.json",{cache:"no-store"});if(report.ok){const evidence=await report.json();if(Array.isArray(evidence.projects))projectRows=evidence.projects;}}
+ catch(err){console.info("[SLI] Project backlinks temporarily unavailable.",err)}
  root.replaceChildren();
  const callout=E("div","tr-note");
  callout.append(E("strong",null,"Evidence hierarchy: "),document.createTextNode("verified direct shareholders → separately verified corporate parent chain → documented operating/joint control → individually verified beneficial owner. These levels are NOT interchangeable."));
@@ -61,6 +65,21 @@ window.initSLIInvestmentOwnership=async function(){
    field("BO evidence limitation:",entity.beneficial_owner?.reason);
    field("Implementation risk:",entity.risk);
    field("Next monitoring priority:",entity.monitor);
+   const related=projectRows.filter(p=>p.ownership_ref===entity.id);
+   if(related.length){
+    const relatedBox=E("div","inv-owner-related");
+    relatedBox.append(E("strong",null,"Linked investment projects ("+related.length+")"));
+    for(const project of related){
+      const a=E("a",null,project.name+" · "+project.stage+" ↗");
+      a.href="#"+projectAnchor(project.name);
+      a.addEventListener("click",event=>{
+       const row=document.getElementById(projectAnchor(project.name));
+       if(row){event.preventDefault();row.scrollIntoView({behavior:"smooth",block:"center"});}
+      });
+      relatedBox.append(a);
+    }
+    content.append(relatedBox);
+   }
    const refs=E("div","inv-owner-refs");(entity.sources||[]).forEach(s=>refs.append(link(s.url,s.label)));content.append(refs);details.append(content);items.append(details);
   }
   if(!list.length)items.append(E("p","tr-detail","No ownership records match the search."));
