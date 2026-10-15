@@ -31,6 +31,8 @@ assert.equal(new Set(policy.items.map(x=>x.instrument)).size,policy.items.length
 assert(script.includes('sector.value="Oil & Gas"'),"No quick policy sector shortcut");
 assert(script.includes('segment.value==="all"'),"No oil gas subtopic dropdown");
 assert(script.includes('x.title_id')&&script.includes('x.effect_id'),"Oil/gas entries not bilingual");
+assert(script.includes('document.addEventListener("sli:languagechange"'),"Oil & Gas legal-policy language switch does not rerender");
+assert(page.includes('href="#energyPolicyRoot"'),"No direct jump-link to Oil & Gas policy register");
 assert(script.includes('migas|hulu|hilir|SKK|BPH|LPG|HGBT'),"Live policy scan ignores oil/gas sources");
 assert(css.includes("#energyPolicyRoot .gov-quick"),"Filter styles missing");
 assert(page.includes('id="energyPolicyRoot"'),"Policy mount missing");
