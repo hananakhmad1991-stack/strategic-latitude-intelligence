@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-15T04:15:23.202977+00:00",
+  "checked_at_utc": "2026-10-15T04:18:21.810358+00:00",
   "verification_method": "Cabinet + ministry-source matching for ministers, role-linked ESDM leadership profile for director generals, expanded Pertamina/PLN/DPR/DPD/Presidential adviser public-source scans for candidate changes. News headlines cannot auto-replace non-government officeholders.",
   "current_actor_count": 54,
   "official_sources_checked": 22,
@@ -257,11 +257,11 @@
     {
       "actor": "PT Pertamina Hulu Indonesia — regional upstream",
       "primary_source": "https://phi.pertamina.com/id/tentang-kami",
-      "status": "source-available-review-needed",
-      "bytes_read": 49206,
+      "status": "source-available-name-not-found",
+      "bytes_read": 247,
       "last_published_person": "Muharram Jaya Panguriseng",
-      "listed_person_appears_in_source": true,
-      "interpretation": "Source has candidate name; does not prove the role is still held (especially archival news)."
+      "listed_person_appears_in_source": false,
+      "interpretation": "No matching name in source; may be an old article, generic homepage or site formatting issue. Do not infer a leadership change without a current role-linked official appointment."
     },
     {
       "actor": "PT Pertamina Geothermal Energy Tbk",
