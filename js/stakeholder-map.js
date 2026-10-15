@@ -203,9 +203,9 @@ window.renderSLIStakeholderMap=function(root,data){
  wrapper.append(tools);
  const layout=$("div","stake-layout"),figure=$("div","stake-figure"),inspector=$("aside","stake-inspector");
  inspector.setAttribute("aria-live","polite");
- const plotTitle=$("div","stake-plot-title"),canvas=$("div","stake-canvas");
+ const plotTitle=$("div","stake-plot-title"),canvas=$("div","stake-canvas"),mobile=$("div","stake-mobile-list");
  const zoomHint=$("div","stake-hint","Select a highlighted node to drill down");
- figure.append(plotTitle,canvas,zoomHint);layout.append(figure,inspector);wrapper.append(layout);
+ figure.append(plotTitle,canvas,mobile,zoomHint);layout.append(figure,inspector);wrapper.append(layout);
  const legend=$("div","stake-legend");
  const note=$("p","stake-disclaimer",data.warning||"Analytical policy influence only. Not statutory reporting lines.");
  wrapper.append(legend,note);
@@ -334,6 +334,20 @@ window.renderSLIStakeholderMap=function(root,data){
   },state.selected);
   if(isIssue&&routes.length)issueGraph(svg,routes,state.issue,i=>{state.issueStep=i;draw()});
   canvas.replaceChildren(svg);
+  mobile.replaceChildren();
+  const mobileOptions=isOverview?data.layers.map((layer,i)=>({
+    label:titles[i].join(" ")+" · "+layer.actors.length,
+    go:()=>{state.mode="layer";state.group=i;state.selected="";draw()}
+   })):isLayer?data.layers[state.group].actors.map(a=>({
+    label:a.name,go:()=>goActor(a.name)
+   })):routes.length?[
+    ["Strategic direction",0],["Rules / budget",1],["Operators",2],
+    ["DPR / DPD oversight",3],["Regional implementation",4]
+   ].map(([label,index])=>({label,go:()=>{state.issueStep=index;draw()}})):[];
+  mobileOptions.forEach(({label,go})=>{
+   const b=$("button","stake-mobile-button",label);b.type="button";
+   b.addEventListener("click",go);mobile.append(b);
+  });
   inspector.replaceChildren();
   if(isOverview)paintOverviewPanel();
   if(isLayer){
