@@ -6,6 +6,7 @@ on:
       - 'data/investment-forbes-top20.json'
       - 'data/investment-market.json'
       - 'data/investment-swot.json'
+      - 'data/investment-palm.json'
       - 'data/investment-reported-scenarios.json'
       - 'data/investment-operator-assets.json'
       - 'data/investment-actors-ev-events.json'
@@ -15,6 +16,9 @@ on:
       - 'scripts/investment_market_refresh.py'
       - 'scripts/investment_forbes_monitor.py'
       - 'js/investment-tracker.js'
+      - 'js/investment-palm.js'
+      - 'css/investment-palm.css'
+      - 'scripts/investment_news.py'
       - 'js/investment-strategy.js'
       - 'js/investment-operator-assets.js'
       - 'js/investment-actors.js'
@@ -38,7 +42,7 @@ jobs:
           python-version: '3.12'
       - name: Check investment JavaScript syntax
         run: |
-          for file in js/investment-tracker.js js/investment-strategy.js js/investment-operator-assets.js js/investment-actors.js js/investment-media.js js/investment-explorer.js js/investment-quality.js js/investment-ownership.js js/investment-sectors.js; do
+          for file in js/investment-tracker.js js/investment-strategy.js js/investment-operator-assets.js js/investment-actors.js js/investment-media.js js/investment-explorer.js js/investment-quality.js js/investment-ownership.js js/investment-sectors.js js/investment-palm.js; do
             node --check "$file"
           done
       - name: Validate Python market and Forbes parsers
