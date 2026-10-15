@@ -28,6 +28,7 @@ window.initSLIInvestment=async function(){
  const marketPanel=box(root,"USD/IDR, IHSG & international investment indicators");
  marketPanel.id="inv-markets";
  const marketRoot=$("div");marketRoot.id="investmentMarketsRoot";marketPanel.append(marketRoot);
+ const mapJump=$("button","viz-btn","▧ Open Strategic Map · province-level evidence");mapJump.type="button";mapJump.addEventListener("click",()=>document.querySelector('#nav button[data-page="map"]')?.click());root.append(mapJump);
  heading(root,"National Investment Evidence","BKPM · BPS · BI / distinguish statistical definitions");
  const kpis=$("div","grid tr-grid");kpis.id="inv-kpis";
  const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Source-dated project / programme records","0 published","Includes individual projects, programme milestones and portfolios; not all represent delivered assets"]];
