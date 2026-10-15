@@ -24,6 +24,15 @@
   },
   "global_indicators": [
     {
+      "name": "Kearney 2026 FDI Confidence · Emerging Markets",
+      "value": 13,
+      "denominator": 25,
+      "unit": "rank of 25 emerging markets",
+      "period": "2026",
+      "classification": "Investor-intention survey ranking within the 25 emerging markets, not world-wide FDI volume ranking and not realized investment",
+      "source": "https://www.kearney.com/documents/d/asset-library-291362522/world-recalibrating-the-2026-fdi-confidence-index-pdf"
+    },
+    {
       "name": "Global Innovation Index (WIPO)",
       "value": 55,
       "denominator": 139,
@@ -45,6 +54,7 @@
   "limitations": [
     "FX is BI middle of transaction buy/sell quotes, not intraday USD/IDR streaming.",
     "IHSG is a delayed vendor snapshot; provider time is ambiguous and cannot be presented as current close.",
-    "GII ranks innovation inputs/outputs, not total investment climate. UNCTAD worldwide FDI is not an Indonesian rank."
+    "GII ranks innovation inputs/outputs, not total investment climate. UNCTAD worldwide FDI is not an Indonesian rank.",
+    "Kearney Emerging Markets Index is a forward-looking survey ranking of 25 emerging economies, not Indonesia's ranking in the global all-economies list."
   ]
 }
