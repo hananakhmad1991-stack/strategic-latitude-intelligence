@@ -46,6 +46,7 @@ const LABELS=[
  ["Riau",["riau"]]
 ];
 const TYPE_GROUPS={
+ "Oil refining":"Oil & Gas",
  "Oil & Gas":"Oil & Gas","Coal":"Coal","Minerals":"Minerals","Critical minerals":"Minerals",
  "Smelters & Processing":"Processing","Biofuels & Bioenergy":"Bioenergy",
  "Solar PV":"Renewables","Geothermal":"Renewables","Hydropower & Storage":"Renewables",
@@ -96,6 +97,12 @@ function polygonAnchor(feature){
 const read=async file=>{const r=await fetch(file,{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status+": "+file);return r.json()};
 const APP={data:null,active:null};
 function records(kind,data){
+ if(kind==="refineries")return (data.infra?.refinery?.units||[]).filter(r=>/^https:\/\//.test(r.source||"")&&r.province).map(r=>({
+  id:"refinery-"+r.id,name:"Refinery · "+r.name,operator:"Pertamina refining system",
+  region:r.city+", "+r.province,province:r.province,sector:"Oil refining",group:"Oil & Gas",
+  stage:/commissioning/i.test(r.status||"")?"Commissioning":"Operational",
+  date:r.verified,source:r.source,note:r.status||"",amount:null,kind
+ }));
  if(kind==="assets")return (data.assets?.records||[]).map(r=>({
   id:r.id,name:r.asset,operator:r.operator,region:r.region,province:provinceFor(r.region),
   sector:r.sector,group:TYPE_GROUPS[r.sector]||"Other",stage:r.stage,
@@ -121,23 +128,39 @@ function mapPage(root,data){
  const head=node("header","map-hero");
  head.append(node("div","map-eyebrow","STRATEGIC LATITUDE · GEOGRAPHIC INTELLIGENCE"));
  head.append(node("h2",null,label("Indonesia Investment & Energy Map","Peta Investasi dan Energi Indonesia")));
- head.append(node("p",null,label("Explore the geographic concentration of sourced industrial and infrastructure records, then inspect operator, implementation stage, investment classification and original evidence.","Jelajahi sebaran geografis aset industri dan infrastruktur yang bersumber, lalu periksa operator, tahap implementasi, klasifikasi investasi, dan bukti asli.")));
+ head.append(node("p",null,label("Explore ALL available source-dated investment projects, operating assets, and refinery facilities, including older records; choose a sector, project status, or location to narrow the map.","Jelajahi SEMUA proyek investasi, aset operasional, dan kilang dengan sumber bertanggal yang tersedia, termasuk catatan lama; saring menurut sektor, status, atau lokasi.")));
+ const allAssets=records("assets",data),allProjects=records("projects",data),allRefineries=records("refineries",data);
+ const allRows=[...allAssets,...allProjects,...allRefineries];
  const counters=node("div","map-stats");
- const assetCount=(data.assets?.records||[]).length,projectCount=(data.projects?.projects||[]).length;
- for(const [name,val] of [[label("Asset / operator dossiers","Dossier aset / operator"),assetCount],[label("Investment registry entries","Entri registri investasi"),projectCount],[label("Province boundaries","Batas provinsi"),geometry.length]]){
+ const assetCount=allAssets.length,projectCount=allProjects.length,refineryCount=allRefineries.length;
+ for(const [name,val] of [
+  [label("All source-dated records","Semua catatan bersumber"),allRows.length],
+  [label("Investment project dossiers","Dossier proyek investasi"),projectCount],
+  [label("Asset / operator dossiers","Dossier aset / operator"),assetCount],
+  [label("Oil refining facility records","Catatan fasilitas kilang"),refineryCount],
+  [label("Province boundaries","Batas provinsi"),geometry.length]
+ ]){
   const c=node("div","map-stat");c.append(node("span",null,name),node("strong",null,val));counters.append(c);
  }
  head.append(counters);root.append(head);
- root.append(node("div","map-alert",label("Important: shaded provinces indicate records with province-level location evidence. The numbered bubbles are provincial record counts, NOT exact facility locations. Asset and project registries overlap; never add their counts or investments together.","Penting: provinsi berwarna menunjukkan entri yang memiliki informasi lokasi tingkat provinsi. Angka merupakan jumlah catatan per provinsi, BUKAN koordinat fasilitas. Registri aset dan proyek dapat tumpang tindih; jangan menjumlahkan nilai atau jumlahnya.")));
- const controls=node("div","map-controls"),kind=node("select","map-select"),group=node("select","map-select"),stage=node("select","map-select"),search=node("input","map-search"),reset=node("button","map-btn",label("Reset filters","Reset filter"));
+ root.append(node("div","map-alert",label("Default view includes all existing records without a recent-only cutoff. Shaded provinces represent province-level evidence; numbered bubbles count registry entries, NOT unique projects or exact facility coordinates. Multi-province, nationwide or unverified locations remain in the list under Unlocated. Asset, project, and refinery records can overlap—never add their investment values.","Tampilan awal mencakup semua catatan yang tersedia tanpa batasan hanya proyek terbaru. Provinsi berwarna menunjukkan bukti lokasi provinsi; lingkaran menunjukkan jumlah entri registri, BUKAN proyek unik atau koordinat tepat. Catatan lintas provinsi, nasional, atau tanpa lokasi terverifikasi tetap muncul di daftar Tanpa lokasi. Aset, proyek, dan kilang dapat tumpang tindih—jangan jumlahkan nilai investasinya.")));
+ const controls=node("div","map-controls"),kind=node("select","map-select"),group=node("select","map-select"),stage=node("select","map-select"),location=node("select","map-select"),search=node("input","map-search"),reset=node("button","map-btn",label("Reset filters","Reset filter"));
  kind.setAttribute("aria-label","Dataset layer");
  group.setAttribute("aria-label","Sector filter");
  stage.setAttribute("aria-label","Implementation stage filter");
+ location.setAttribute("aria-label","Geographic coverage filter");
  search.type="search";search.placeholder=label("Search asset, project, operator, province","Cari aset, proyek, operator, provinsi");search.setAttribute("aria-label","Search map records");
  reset.type="button";
- radioOptions(kind,[["assets",label("Asset & operator registry","Registri aset dan operator")],["projects",label("Investment project registry","Registri proyek investasi")]]);
+ radioOptions(kind,[
+  ["all",label("All projects, assets & refineries","Semua proyek, aset & kilang")],
+  ["projects",label("Investment projects (all years)","Proyek investasi (semua tahun)")],
+  ["assets",label("Asset & operator dossiers","Dossier aset dan operator")],
+  ["refineries",label("Refinery facilities","Fasilitas kilang")]
+ ]);
+ kind.value="all";
+ radioOptions(location,[["all",label("All: mapped & unlocated","Semua: terpetakan & tanpa lokasi")],["mapped",label("Province-mapped only","Hanya terpetakan")],["unlocated",label("Unlocated / multiple provinces","Tanpa lokasi / lintas provinsi")]]);
  const ctrl=(caption,input,extra)=>{const l=node("label","map-control"+(extra||""));l.append(node("span",null,caption),input);return l};
- controls.append(ctrl(label("Dataset","Dataset"),kind),ctrl(label("Sector","Sektor"),group),ctrl(label("Implementation","Implementasi"),stage),ctrl(label("Search","Pencarian"),search," map-search-row"),reset);root.append(controls);
+ controls.append(ctrl(label("Dataset","Dataset"),kind),ctrl(label("Sector","Sektor"),group),ctrl(label("Implementation","Implementasi"),stage),ctrl(label("Geographic coverage","Cakupan geografis"),location),ctrl(label("Search","Pencarian"),search," map-search-row"),reset);root.append(controls);
  const grid=node("div","map-mapgrid"),mapSection=node("section","map-canvas-wrap"),mapHead=node("div","map-canvas-head");
  const place=node("p",null,label("38 provinces · administrative boundaries","38 provinsi · batas administratif")),zoom=node("div","map-zoom");
  const minus=node("button","map-btn","−"),plus=node("button","map-btn","+"),home=node("button","map-btn",label("Reset view","Reset tampilan"));
@@ -162,8 +185,8 @@ function mapPage(root,data){
   "Ini adalah indeks geografis catatan aset dan proyek bersumber, bukan basis data lokasi fasilitas presisi. Catatan ditempatkan pada tingkat provinsi hanya jika dossier menyebutkan satu provinsi secara jelas. Kasus tanpa lokasi, nasional, atau lintas provinsi tidak diberi titik. Pusat lingkaran bukan alamat atau koordinat fasilitas."
   )));
  appendix.append(node("p",null,label(
-  "Separate layer accounting: operator assets include plants, permits, PSCs and programme entries; investment projects include announced, financed or delivered initiatives. They can refer to the same physical development. Monetary fields retain their original units and investment basis; never sum unlike portfolios, historical spend and commitments.",
-  "Penghitungan per lapisan terpisah: aset operator meliputi pabrik, izin, PSC, dan program; proyek investasi meliputi inisiatif diumumkan, didanai, atau beroperasi. Dua registri bisa merujuk proyek fisik yang sama. Nilai uang menggunakan satuan dan definisi aslinya; jangan menjumlahkan portofolio, belanja historis, dan komitmen."
+  "Coverage includes all saved 2026 source-dated operator dossiers, projects from any evidence year and the six refinery facilities recorded in the energy infrastructure module; there is no recency exclusion or 20-record cap. This is not a census of every Indonesian investment ever made. Registers may refer to the same project; capital values retain their original currency and category and are not added.",
+  "Cakupan meliputi seluruh dossier operator bertanggal pada snapshot 2026, proyek dari berbagai tahun bukti, dan enam kilang yang tercatat di modul infrastruktur energi; tidak ada penyaringan proyek terbaru atau batas 20 entri. Ini bukan sensus seluruh investasi Indonesia. Registri bisa mencatat proyek yang sama; nominal tetap mengikuti mata uang dan kategori aslinya tanpa dijumlahkan."
   )));
  const geoAttribution=node("p");
  geoAttribution.append(document.createTextNode(label("Boundary source: ","Sumber batas provinsi: ")),srcLink(data.geo.metadata?.source,"Indonesia GeoJSON (38 provinces)"),document.createTextNode(" · CC BY 4.0 · "+label("Coordinates rounded to 4 decimals; check upstream rights before commercial redistribution.","Koordinat dibulatkan 4 desimal; periksa lisensi sumber awal sebelum distribusi komersial.")));
@@ -172,8 +195,7 @@ function mapPage(root,data){
  appendix.append(caveat);
  const countsText=node("p","map-muted");appendix.append(countsText);
  outside.append(summary,appendix);root.append(outside);
- const allAssets=records("assets",data),allProjects=records("projects",data);
- let currentKind="assets",currentProvince=null,lastQuery="",currentSector="all",currentStage="all";
+ let currentKind="all",currentProvince=null,lastQuery="",currentSector="all",currentStage="all",currentLocation="all";
  let viewport={x:0,y:0,w:W,h:H},drag=null,dragged=false;
  function setView(v){viewport=v;svg.setAttribute("viewBox",[v.x,v.y,v.w,v.h].join(" "))}
  function zoomAt(factor){const v=viewport,ratio=factor,uw=Math.max(250,Math.min(W*1.1,v.w*ratio)),uh=Math.max(110,Math.min(H*1.1,v.h*ratio));setView({x:v.x+(v.w-uw)/2,y:v.y+(v.h-uh)/2,w:uw,h:uh})}
@@ -185,7 +207,7 @@ function mapPage(root,data){
   svg.addEventListener("pointercancel",()=>{drag=null;dragged=false});
  }
  const featureByName=new Map(geometry.map(f=>[f.properties.name,f]));
- function active(){return currentKind==="assets"?allAssets:allProjects}
+ function active(){return currentKind==="all"?allRows:currentKind==="assets"?allAssets:currentKind==="projects"?allProjects:allRefineries}
  function filtersRebuild(){
   const rows=active(),groups=[...new Set(rows.map(x=>x.group))].sort(),stages=[...new Set(rows.map(x=>x.stage))].sort();
   radioOptions(group,[["all",label("All sectors","Semua sektor")],...groups.map(x=>[x,x])]);
@@ -193,7 +215,13 @@ function mapPage(root,data){
   if(!groups.includes(currentSector))currentSector="all";if(!stages.includes(currentStage))currentStage="all";
   group.value=currentSector;stage.value=currentStage;
  }
- const filtered=()=>active().filter(r=>(currentSector==="all"||r.group===currentSector)&&(currentStage==="all"||r.stage===currentStage)&&(!lastQuery||[r.name,r.operator,r.region,r.sector,r.stage].join(" ").toLowerCase().includes(lastQuery)));
+ const filtered=()=>active().filter(r=>{
+  const mapped=Boolean(r.province&&featureByName.has(r.province));
+  return (currentSector==="all"||r.group===currentSector)
+   &&(currentStage==="all"||r.stage===currentStage)
+   &&(currentLocation==="all"||(currentLocation==="mapped"?mapped:!mapped))
+   &&(!lastQuery||[r.name,r.operator,r.region,r.province,r.sector,r.stage,r.kind].join(" ").toLowerCase().includes(lastQuery));
+ });
  function focusProvince(name){currentProvince=currentProvince===name?null:name;draw()}
  function draw(){
   const base=filtered(),mapped=base.filter(r=>r.province&&featureByName.has(r.province)),unmapped=base.length-mapped.length;
@@ -213,15 +241,24 @@ function mapPage(root,data){
     const n=snode("text",{x,y,class:"map-bubble-text"});n.textContent=count;bubbleLayer.append(n);
    }
   }
-  const chosen=base.filter(x=>!currentProvince||x.province===currentProvince);
-  const maxRows=20,display=chosen.slice(0,maxRows);
+  const chosen=base.filter(x=>!currentProvince||x.province===currentProvince)
+   .sort((a,b)=>a.group.localeCompare(b.group)||a.name.localeCompare(b.name));
+  const display=chosen; // Do not silently hide entries behind a 20-item list cap.
+  const scopeName=currentKind==="all"?label("all projects and assets","semua proyek dan aset"):currentKind==="assets"?label("operator assets","aset operator"):currentKind==="projects"?label("investment projects","proyek investasi"):label("refineries","kilang");
   heading.textContent=currentProvince?currentProvince:label("Mapped evidence","Bukti terpetakan");
-  info.textContent=label("Registry: ","Registri: ")+(currentKind==="assets"?label("operator assets","aset operator"):label("investment projects","proyek investasi"))+" · "+mapped.length+" "+label("province-mapped of","terpetakan dari")+" "+base.length+" · "+unmapped+" "+label("unlocated","lokasi belum terverifikasi");
+  info.textContent=label("Registry: ","Registri: ")+scopeName+" · "+display.length+" "+label("shown in list / ","ditampilkan / ")+base.length+" "+label("matching records · ","catatan cocok · ")+mapped.length+" "+label("province-mapped · ","terpetakan · ")+unmapped+" "+label("unlocated","tanpa lokasi");
   list.replaceChildren();
   if(!chosen.length)list.append(node("p","map-muted",label("No records match these filters or this province. Choose another province or reset filters.","Tidak ada catatan sesuai filter atau provinsi ini. Pilih provinsi lain atau reset filter.")));
+  let lastGroup="";
   for(const r of display){
+   if(r.group!==lastGroup){
+    list.append(node("div","map-group-label",r.group));
+    lastGroup=r.group;
+   }
    const card=node("article","map-list-item");
-   card.append(node("small",null,(r.province||label("UNLOCATED","TANPA LOKASI"))+" · "+(r.date||label("date not specified","tanggal tidak tersedia"))));
+   const layerName=r.kind==="projects"?label("Investment project","Proyek investasi"):r.kind==="refineries"?label("Refinery","Kilang"):label("Asset / operator","Aset / operator");
+   const dateName=r.kind==="assets"?label("dataset reviewed","dataset ditinjau"):r.kind==="refineries"?label("facility verified","fasilitas diverifikasi"):label("evidence date","tanggal bukti");
+   card.append(node("small",null,layerName+" · "+(r.province||label("UNLOCATED / MULTI-SITE","TANPA LOKASI / MULTILOKASI"))+" · "+dateName+": "+(r.date||label("not specified","tidak tersedia"))));
    card.append(node("h4",null,r.name));
    const tags=node("div");for(const txt of [r.group,r.stage])tags.append(node("span","map-tag",txt));card.append(tags);
    card.append(node("p",null,label("Operator / sponsor: ","Operator / investor: ")+(r.operator||label("Not identified","Tidak disebutkan"))));
@@ -230,14 +267,15 @@ function mapPage(root,data){
    card.append(srcLink(r.source,label("Original evidence","Bukti asli")));
    list.append(card);
   }
-  if(chosen.length>maxRows)list.append(node("p","map-muted",label("Showing first ","Menampilkan ")+maxRows+label(" records. Narrow the sector, stage or province to inspect the rest."," catatan pertama. Persempit sektor, status atau provinsi untuk melihat yang lain.")));
+  list.append(node("p","map-muted",label("All matching records shown: ","Semua catatan yang cocok ditampilkan: ")+chosen.length+" · "+label("scroll this list or filter to browse","gulir daftar atau gunakan filter untuk menjelajah")));
   countsText.textContent=label("For this selection: ","Untuk pilihan ini: ")+base.length+label(" records, "," catatan, ")+mapped.length+label(" mapped, "," terpetakan, ")+unmapped+label(" unlocated. The map does not quantify realized investment value."," tanpa lokasi. Peta tidak menghitung total realisasi investasi.");
  }
  kind.addEventListener("change",()=>{currentKind=kind.value;currentSector="all";currentStage="all";currentProvince=null;filtersRebuild();draw()});
+ location.addEventListener("change",()=>{currentLocation=location.value;currentProvince=null;draw()});
  group.addEventListener("change",()=>{currentSector=group.value;draw()});
  stage.addEventListener("change",()=>{currentStage=stage.value;draw()});
  search.addEventListener("input",()=>{lastQuery=search.value.toLowerCase().trim();draw()});
- reset.addEventListener("click",()=>{kind.value="assets";currentKind="assets";currentProvince=null;currentSector="all";currentStage="all";search.value="";lastQuery="";filtersRebuild();setView({x:0,y:0,w:W,h:H});draw()});
+ reset.addEventListener("click",()=>{kind.value="all";currentKind="all";location.value="all";currentLocation="all";currentProvince=null;currentSector="all";currentStage="all";search.value="";lastQuery="";filtersRebuild();setView({x:0,y:0,w:W,h:H});draw()});
  filtersRebuild();draw();
 }
 window.SLIProvinceFor=provinceFor;
@@ -245,11 +283,11 @@ window.initSLIStrategicMap=async function(){
  const root=document.getElementById("sliMapRoot");if(!root||APP.active===root)return;
  APP.active=root;root.replaceChildren(node("p","map-muted",label("Loading provinces and source-attributed investment records…","Memuat provinsi dan catatan investasi bersumber…")));
  try{
-  const settled=await Promise.allSettled([read("data/indonesia-provinces.geojson"),read("data/investment-operator-assets.json"),read("data/investment-evidence.json")]);
+  const settled=await Promise.allSettled([read("data/indonesia-provinces.geojson"),read("data/investment-operator-assets.json"),read("data/investment-evidence.json"),read("data/energy-infrastructure-security.json")]);
   if(root!==document.getElementById("sliMapRoot"))return;
   if(settled.some(x=>x.status!=="fulfilled"))throw Error("Required basemap/registry unavailable");
-  const [geo,assets,projects]=settled.map(x=>x.value);
-  APP.data={geo,assets,projects};mapPage(root,APP.data);
+  const [geo,assets,projects,infra]=settled.map(x=>x.value);
+  APP.data={geo,assets,projects,infra};mapPage(root,APP.data);
  }catch(e){root.replaceChildren(node("p","map-alert",label("Geographic registry unavailable; no inferred project positions are displayed.","Registri geografis tidak tersedia; lokasi proyek tidak direka.")));console.error("[SLI map]",e)}
 };
 document.addEventListener("sli:languagechange",()=>{const root=document.getElementById("sliMapRoot");if(!root||!APP.data)return;mapPage(root,APP.data)});
