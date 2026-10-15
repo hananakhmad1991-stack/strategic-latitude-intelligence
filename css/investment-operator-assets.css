@@ -1,0 +1,28 @@
+/* SLI asset, contract, output, operator intelligence */
+.inv-asset-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:10px 0 15px}
+.inv-asset-stat{background:#142e43;border:1px solid #365871;border-radius:10px;padding:13px;display:flex;flex-direction:column;gap:5px}
+.inv-asset-stat span{color:#b8cbdb;font-size:12px}
+.inv-asset-stat strong{color:#ecd198;font-size:23px;font-variant-numeric:tabular-nums}
+.inv-asset-controls{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin:12px 0}
+.inv-asset-controls label{font-size:11px;color:#bfd1df;display:flex;flex-direction:column;gap:5px;min-width:0}
+.inv-asset-controls .tr-select{width:100%;min-width:0}
+.inv-asset-table{max-width:100%;overflow:auto;margin:10px 0}
+.inv-asset-table table{min-width:1120px;width:100%}
+.inv-asset-table td{font-size:11px;line-height:1.65;vertical-align:top}
+.inv-asset-title{font-weight:700;color:#edd6a5}
+.inv-asset-title small{display:block;font-weight:400;color:#9fb9ce;font-size:10px}
+.inv-asset-dossier{border:1px solid #52748a;background:#112e43;border-radius:11px;padding:16px;margin:17px 0;scroll-margin-top:80px}
+.inv-asset-dossier h3{color:#f3e5c9;font-size:19px;margin:9px 0}
+.inv-asset-dossier-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
+.inv-asset-fact{background:#1b3b51;border:1px solid #3a6274;border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.inv-asset-fact span{font-size:10px;color:#aac4d5}
+.inv-asset-fact strong{font-size:12px;font-weight:600;overflow-wrap:anywhere;color:#e9edf4}
+.inv-asset-field{font-size:12px;color:#c0d3df;line-height:1.7}
+.inv-asset-field strong{color:#ecd29b}
+.inv-asset-refs{display:flex;flex-wrap:wrap;gap:10px;align-items:center;border-top:1px solid #3c5b71;padding-top:13px;margin-top:16px}
+.inv-asset-refs a{font-size:12px;overflow-wrap:anywhere}
+.inv-asset-method{margin:16px 0;padding:12px;border:1px solid #426176;border-radius:9px;color:#cbd8df;font-size:12px}
+.inv-asset-method summary{color:#ebd19b;cursor:pointer;font-weight:700}
+.inv-asset-method li{margin:7px 0}
+@media(max-width:950px){.inv-asset-dossier-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.inv-asset-controls{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.inv-asset-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.inv-asset-controls{grid-template-columns:1fr}.inv-asset-dossier-grid{grid-template-columns:1fr}.inv-asset-dossier{padding:12px}}
