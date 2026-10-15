@@ -105,6 +105,19 @@ function draw(which){const root=document.getElementById("sliResearchRoot");if(!r
 const nav=E("nav","sli-research-nav");nav.setAttribute("aria-label","Chapter sections");
 for(const [num,title] of c.sections){nav.append(link("#sli-chapter-"+num,num+" · "+title))}root.append(nav);
 for(const [num,title,description,rows] of c.sections){const sec=E("section","sli-research-section");sec.id="sli-chapter-"+num;sec.append(E("small","sli-research-num","CHAPTER "+num),E("h3",null,title),E("p","sli-research-description",description));const grid=E("div","sli-research-grid");for(const [name,value,detail,url] of rows){const card=E("article","sli-research-card");card.append(E("h4",null,name),E("strong",null,value),E("p",null,detail));if(url)card.append(link(url,url.startsWith("#")?"Open canonical dashboard ↗":"Original source / reference ↗"));else card.append(E("small","sli-research-caveat","Editorial framework · project-level confirmation required"));grid.append(card)}sec.append(grid);root.append(sec)}
+if(which==="ai"||which==="minerals"){
+ const section=E("section","sli-research-section");section.append(E("small","sli-research-num","VERIFIED DATA CATALOG"),E("h3",null,which==="ai"?"Facility and Implementation Records":"Mineral Production and Processing Measures"),E("p","sli-research-description","Source-dated data with original units, explicit project stage and separate planned versus operational capacity."));
+ const table=E("div","sli-research-grid"),status=E("p","sli-research-description","Loading source record catalog…");section.append(status,table);root.append(section);
+ fetch("data/sector-evidence-catalog.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+ if(!section.isConnected)return;
+ const records=which==="ai"?d.ai_projects:d.mineral_indicators;status.textContent="Records: "+records.length+" · Dataset reviewed "+d.as_of+" · Source years differ. Not exhaustive.";
+ table.replaceChildren();
+ for(const x of records){const card=E("article","sli-research-card");card.append(E("h4",null,which==="ai"?x.project:x.commodity+" · "+x.measure));
+ const val=which==="ai"?(x.it_capacity_mw_planned?"Planned IT capacity: "+x.it_capacity_mw_planned+" MW":x.it_capacity_mw_reported?"Reported facility: "+x.it_capacity_mw_reported+" MW":"MW undisclosed"):Number(x.value).toLocaleString("en-US")+" "+x.unit;
+ card.append(E("strong",null,val),E("p",null,which==="ai"?x.operator+" · "+x.location:x.status+" · "+x.year),E("p",null,which==="ai"?x.status+" · "+x.note:"Measure date "+x.year+"; "+x.status));
+ if(x.source_url)card.append(link(x.source_url,"Original source ↗"));table.append(card)}
+ }).catch(()=>{status.textContent="Source catalog unavailable; no observations inferred.";});
+}
 if(which==="ai"){
  const panel=E("section","sli-research-section");panel.append(E("small","sli-research-num","CONTINUOUS MONITORING"),E("h3",null,"AI & Data Center · Dated News Signals"),E("p","sli-research-description","Automatically discovered publisher-attributed headlines. Not proof of project investment, construction or operational GPU capacity."));
  const status=E("p","sli-research-description","Loading dated RSS monitoring snapshot…"),list=E("div","sli-research-grid");panel.append(status,list);root.append(panel);
