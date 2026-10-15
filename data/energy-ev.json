@@ -182,7 +182,8 @@
       "value": 4769,
       "as_of": "2026-03",
       "source": "https://web.pln.co.id/media/siaran-pers/2026/03/spklu-pln-mudik-ev-trans-jawa-2026",
-      "definition": "PLN and partner charging machines / connectors-as-reported (SPKLU units), NOT locations or charging sessions"
+      "definition": "PLN and partner charging machines / connectors-as-reported (SPKLU units), NOT locations or charging sessions",
+      "note": "March observation remains 4,769 machine units, accompanied by newer May >=5,000 milestone. The two are separate vintages."
     },
     "spklu_sites": {
       "value": 3097,
@@ -212,7 +213,14 @@
       "source": null,
       "note": "National comparable audited SPBKLU sites/bays by 2026 not verified; not equal to car SPKLU."
     },
-    "advisory": "Grid availability, effective uptime, charging power mix and connector standard are distinct from installed machine counts."
+    "advisory": "Grid availability, effective uptime, charging power mix and connector standard are distinct from installed machine counts. Latest published threshold reached at least 5,000th unit May 2026, but exact latest all-Indonesia SPKLU total and nationwide geographic distribution in October are not independently reconciled.",
+    "milestone_5000": {
+      "value_at_least": 5000,
+      "as_of": "2026-05-20",
+      "published": "2026-05-22",
+      "source": "https://www.antaranews.com/berita/5578277/pln-operasikan-spklu-ke-5000-perkuat-ekosistem-kendaraan-listrik",
+      "note": "PLN inaugurated its 5,000th charging unit in Tanjung Priok. This is a dated achievement marker (at least 5,000 reached), NOT verified exact October 2026 count or station-site total."
+    }
   },
   "targets": {
     "period": "2030",
@@ -305,7 +313,7 @@
     "Passenger BEV wholesales accelerated in 2026, but market shipments must not be confused with registered stock, true end-user retail deliveries or long-term operating fleet.",
     "Electric motorcycle adoption is weaker: AISMOLI reported only 18,900 units through August 2026, while the incentive instrument remained uncertain. Compare like-method and like-period data before quantifying decline.",
     "The 2030 targets concern registered electric cars and two-wheelers. April Kemenperin population figures (223,100 cars and 242,909 motorcycles) imply ~11.2% and ~1.9% against the respective targets if the source scopes match; clarify unusual monthly registry revisions.",
-    "Charging expansion reached 4,769 PLN/partner SPKLU units at 3,097 sites by March 2026; uptime, location, connector availability and access for two-wheelers need separate measures.",
+    "Charging expansion reached 4,769 PLN/partner SPKLU units at 3,097 sites in March 2026 and the 5,000th machine milestone in May; uptime, location, connector availability and access for two-wheelers need separate measures.",
     "EV manufacturing value-added depends on local supplier participation, batteries and technology transfer. Manufacturing announcements and investment commitments do not establish realized local content or commercial viability.",
     "Net emissions and energy-security benefits depend on grid emissions, electricity reliability, vehicle usage, battery lifecycle and displacement of imported petroleum; do not claim zero lifecycle emissions."
   ],
