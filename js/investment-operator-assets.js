@@ -14,13 +14,14 @@ window.initSLIInvestmentAssets=async function(){
  catch(err){root.replaceChildren(el("p","tr-detail","Verified asset registry is not available yet. No project or production values have been inferred."));console.error("[SLI] asset intelligence",err);return}
  root.replaceChildren();
  const counts=el("div","inv-asset-stats");
- for(const sector of ["Oil & Gas","Coal","Minerals","AI / Data Center"]){const value=d.records.filter(x=>x.sector===sector).length;const c=el("div","inv-asset-stat");c.append(el("span",null,sector),el("strong",null,value));counts.append(c)}root.append(counts);
+ const coveredSectors=["Oil & Gas","Coal","Minerals","Smelters & Processing","Biofuels & Bioenergy","Renewable Energy","Electric Vehicles","AI / Data Center"];
+ for(const sector of coveredSectors){const value=d.records.filter(x=>x.sector===sector).length;const c=el("div","inv-asset-stat");c.append(el("span",null,sector),el("strong",null,value));counts.append(c)}root.append(counts);
  root.append(el("p","tr-detail","Research snapshot "+(d.as_of||"unknown")+". A row may represent an upstream PSC, a company mine, a project or a government MoU — not identical legal/production units. Values refer only to the source period."));
  const controls=el("div","inv-asset-controls"),q=el("input","tr-select"),sector=el("select","tr-select"),stage=el("select","tr-select");
  q.type="search";q.placeholder="Search WK, KKKS, IUPK, operator, investor or country…";q.setAttribute("aria-label","Search sector operator assets");
  const mk=(s,values)=>values.forEach(([value,title])=>{const o=el("option",null,title);o.value=value;s.append(o)});
- mk(sector,[["all","All sectors"],...["Oil & Gas","Coal","Minerals","AI / Data Center"].map(x=>[x,x])]);
- mk(stage,[["all","All statuses"],["Operational","Operational"],["Under construction","Under construction"],["Announced / development","Announced / development"],["MoU / power expansion","MoU / power expansion"],["Agreement / proposal","Agreement / proposal"],["MoU only","MoU only"]]);
+ mk(sector,[["all","All sectors"],...coveredSectors.map(x=>[x,x])]);
+ mk(stage,[["all","All statuses"],...[...new Set(d.records.map(x=>x.stage))].sort().map(x=>[x,x])]);
  for(const [name,input] of [["Find an asset",q],["Sector",sector],["Status",stage]]){const l=el("label",null,name);l.append(input);controls.append(l)}root.append(controls);
  const count=el("p","tr-detail"),tableWrap=el("div","pf-table-wrap inv-asset-table"),table=el("table");
  table.innerHTML="<thead><tr><th>Asset / WK / site</th><th>Operator / entity</th><th>Contract or licence</th><th>Production / capacity</th><th>Investment / status</th><th>Review</th></tr></thead>";
