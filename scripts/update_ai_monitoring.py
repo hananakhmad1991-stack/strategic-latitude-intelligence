@@ -48,12 +48,12 @@ def main():
   if old.get("reports"):
    old["last_attempt_at_utc"]=now.isoformat()
    old["errors"]=errors or ["Empty upstream feeds; preserving last verified dated snapshot"]
-   OUT.write_text(json.dumps(old,indent=2,ensure_ascii=False)+"\\n")
+   OUT.write_text(json.dumps(old,indent=2,ensure_ascii=False)+"\n")
    return
   raise RuntimeError("No feed entries received; refusing to publish empty dataset")
  payload={"scope":"Indonesia AI, data centers, cybersecurity and digital industry; RSS headline discovery only",
  "checked_at_utc":now.isoformat(),"status":"Publisher-attributed discovery, not fact-checked implementation or capital verification",
  "reports":valid,"errors":errors}
- OUT.write_text(json.dumps(payload,indent=2,ensure_ascii=False)+"\\n")
+ OUT.write_text(json.dumps(payload,indent=2,ensure_ascii=False)+"\n")
  print("Saved",len(valid),"leads; feed errors:",len(errors))
 if __name__=="__main__":main()
