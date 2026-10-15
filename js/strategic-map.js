@@ -442,6 +442,21 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   const count=guide.sections.reduce((n,x)=>n+(x.items?.length||0),0);
   glossaryHead.append(node("p","map-glossary-count",count+" "+label("bilingual definitions in ","definisi dwibahasa dalam ")+guide.sections.length+" "+label("topics","kelompok")));
   appendix.append(glossaryHead);
+  if(Array.isArray(guide.categories)&&guide.categories.length){
+   const details=node("details","map-glossary-section map-glossary-category");
+   details.append(node("summary",null,label("Asset-type dictionary · "+guide.categories.length+" definitions","Kamus jenis aset · "+guide.categories.length+" definisi")));
+   details.append(node("p","map-muted",label(guide.categories_intro_en,guide.categories_intro_id)));
+   const terms=node("dl","map-terms");
+   for(const x of guide.categories)terms.append(node("dt",null,assetLabel(x.term)),node("dd",null,label(x.definition_en,x.definition_id)));
+   details.append(terms);appendix.append(details);
+  }
+  if(Array.isArray(guide.source_layers)&&guide.source_layers.length){
+   const details=node("details","map-glossary-section map-glossary-source");
+   details.append(node("summary",null,label("Source-registry labels · "+guide.source_layers.length+" definitions","Istilah registri sumber · "+guide.source_layers.length+" definisi")));
+   const terms=node("dl","map-terms");
+   for(const x of guide.source_layers)terms.append(node("dt",null,x.term),node("dd",null,label(x.definition_en,x.definition_id)));
+   details.append(terms);appendix.append(details);
+  }
   for(const group of guide.sections){
    const det=node("details","map-glossary-section"),summary=node("summary",null,label(group.title_en,group.title_id));
    det.append(summary);
