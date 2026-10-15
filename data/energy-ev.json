@@ -95,8 +95,14 @@
       "source": "https://oto.detik.com/mobil/d-8699828/penjualan-mobil-di-indonesia-september-2026-turun-tipis",
       "definition": "All powertrains, whole vehicle industry"
     },
-    "stock_verified": null,
-    "stock_gap": "No up-to-date comprehensive verified BEV passenger-car population 2026 in the same statistical scope as motorcycle population."
+    "stock_verified": {
+      "period": "2026-Apr",
+      "value": 223100,
+      "source": "https://www.antaranews.com/berita/5724048/menperin-ri-punya-modal-kuat-bangun-industri-ev-secara-utuh",
+      "definition": "Passenger electric car population reported by Kemenperin for April 2026, rather than Jan–Sep wholesale sales.",
+      "method_note": "Published April stock appears to have increased unusually sharply from March; confirm original Kemenperin registry/definitions before declaring precise month-on-month physical adoption."
+    },
+    "stock_gap": "April 2026 Kemenperin reported 223,100 passenger EV car stock; no audited August 2026 car-only split. Unusual March to April jump requires registry reconciliation."
   },
   "motorcycles": {
     "sales_2026": {
@@ -140,6 +146,13 @@
       "value": 6412769,
       "source": "https://www.aisi.or.id/news/",
       "note": "All motorcycle powertrains, including ICE. No like-period 2026 denominator for BEV motorcycle share."
+    },
+    "fleet_stock_later": {
+      "period": "2026-Apr",
+      "value": 242909,
+      "source": "https://www.antaranews.com/berita/5724048/menperin-ri-punya-modal-kuat-bangun-industri-ev-secara-utuh",
+      "date": "2026-04-30",
+      "note": "Later Kemenperin passenger vehicle category population, distinct from Feb 236,451 recorded electric motorcycles."
     }
   },
   "buses": {
@@ -195,7 +208,9 @@
     "status": "Government stated 2030 population ambition; verify amendments to subsequent policy instruments before treating as enacted mandatory quota.",
     "avoid": "Compare only registered EV fleet stock to 2030 population targets; 2026 wholesale car sales cannot be used as progress against cumulative population target.",
     "bike_stock_progress_pct": 1.8188538461538462,
-    "car_stock_progress_pct": null
+    "car_stock_progress_pct": 11.155,
+    "bike_stock_progress_april_pct": 1.868530769230769,
+    "stock_comparison_note": "Use Apr 2026 stock (223,100 passenger EV cars / 242,909 motorcycles) for target comparisons; Aug 2026 nationwide EV stock 541,678 is all classes and cannot be allocated by vehicle type from public data."
   },
   "industry": [
     {
@@ -258,12 +273,33 @@
     }
   ],
   "assessment": [
+    "Kemenperin's national battery-electric fleet population reached 541,678 as of Aug 2026, but the latest publicly cited by-type split is April 2026, not August; these observations must be shown with different reference dates.",
     "Passenger BEV wholesales accelerated in 2026, but market shipments must not be confused with registered stock, true end-user retail deliveries or long-term operating fleet.",
     "Electric motorcycle adoption is weaker: AISMOLI reported only 18,900 units through August 2026, while the incentive instrument remained uncertain. Compare like-method and like-period data before quantifying decline.",
-    "The 2030 target of 2m cars and 13m electric two-wheelers is stated for population in use, not cumulative sales. Only the February motorcycle fleet stock can be cautiously compared to its own 13m fleet goal.",
+    "The 2030 targets concern registered electric cars and two-wheelers. April Kemenperin population figures (223,100 cars and 242,909 motorcycles) imply ~11.2% and ~1.9% against the respective targets if the source scopes match; clarify unusual monthly registry revisions.",
     "Charging expansion reached 4,769 PLN/partner SPKLU units at 3,097 sites by March 2026; uptime, location, connector availability and access for two-wheelers need separate measures.",
     "EV manufacturing value-added depends on local supplier participation, batteries and technology transfer. Manufacturing announcements and investment commitments do not establish realized local content or commercial viability.",
     "Net emissions and energy-security benefits depend on grid emissions, electricity reliability, vehicle usage, battery lifecycle and displacement of imported petroleum; do not claim zero lifecycle emissions."
   ],
-  "methodology": "Observations are dated; source methods differ. No unaudited real-time vehicle registrations or station uptime are inferred. News is source discovery, not independent event verification."
+  "methodology": "Observations are dated; source methods differ. No unaudited real-time vehicle registrations or station uptime are inferred. News is source discovery, not independent event verification.",
+  "fleet": {
+    "latest_national": {
+      "period": "2026-Aug",
+      "value": 541678,
+      "source": "https://pon.antaranews.com/foto/5782221/jumlah-kendaraan-listrik-di-indonesia-melonjak-tajam-di-2026-begini-data-resmi-kemenperin",
+      "attribution": "Kemenperin data cited by ANTARA Foto, 12 Oct 2026",
+      "classification": "All battery electric road-vehicle categories; not BEV passenger-car sales",
+      "previous_2025": 406916,
+      "note": "Overall national stock does not identify the August car and motorcycle split."
+    },
+    "april_by_type": {
+      "period": "2026-Apr",
+      "total": 468231,
+      "motorcycles": 242909,
+      "passenger_cars": 223100,
+      "source": "https://www.antaranews.com/berita/5724048/menperin-ri-punya-modal-kuat-bangun-industri-ev-secara-utuh",
+      "attribution": "Industry ministry figures delivered in official Sept 2026 factory-opening statement, as reported ANTARA",
+      "discrepancy_warning": "Published April stock appears to have increased unusually sharply from March; confirm original Kemenperin registry/definitions before declaring precise month-on-month physical adoption."
+    }
+  }
 }
