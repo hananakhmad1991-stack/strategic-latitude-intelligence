@@ -72,26 +72,66 @@ function governance(root,data){
   analysis.append(ul);content.append(analysis);
  });
 }
+
 function policies(root,data){
- section(root,"Energy Policy & Regulatory Update","Enacted instruments vs corporate decisions vs proposals");
+ const currentLang=()=>window.SLIi18n?.language==="id"?"id":"en";
+ const translate=(en,id)=>currentLang()==="id"?id:en;
+ section(root,"Energy Policy & Regulatory Update","Enacted instruments, regulatory execution and proposals · with dedicated upstream / downstream oil & gas coverage");
  note(root,data.note);
+ const oilCount=data.items.filter(x=>x.sector==="Oil & Gas").length;
+ const quick=E("div","gov-quick-filters");quick.setAttribute("role","group");quick.setAttribute("aria-label","Policy topics");
+ const oil=E("button","gov-quick",translate("Oil & Gas ("+oilCount+")","Migas ("+oilCount+")"));
+ oil.type="button";oil.setAttribute("aria-pressed","false");
+ const other=E("button","gov-quick active",translate("All sectors","Semua sektor"));
+ other.type="button";other.setAttribute("aria-pressed","true");
+ const explain=E("p","gov-meta",translate("Filter by sector and legal status; oil & gas contains upstream, fuel, LPG, industrial gas and Jargas rules.","Filter menurut sektor dan status hukum; migas mencakup hulu, BBM, LPG, gas industri, dan Jargas."));
+ quick.append(other,oil);root.append(quick,explain);
  const controls=E("div","gov-controls");
- const sector=elSelect([["all","All policy topics"],...Array.from(new Set(data.items.map(x=>x.sector))).sort().map(x=>[x,x])]);
- const state=elSelect([["all","All policy statuses"],["Enacted","Enacted"],["Official decision","Official decisions"],["Corporate decision","Corporate decisions"],["Announced — not enacted","Announcements only"],["Draft / under development","Drafts / proposals"]]);
- const query=E("input","gov-input");query.placeholder="Search instrument or policy…";query.setAttribute("aria-label","Search policy records");
- controls.append(sector,state,query);root.append(controls);
+ const sector=elSelect([["all",translate("All policy topics","Semua topik kebijakan")],...Array.from(new Set(data.items.map(x=>x.sector))).sort().map(x=>[x,x==="Oil & Gas"?translate("Oil & Gas","Minyak & Gas Bumi"):x])]);
+ const segment=elSelect([["all",translate("All oil & gas subtopics","Semua subsektor migas")],...["Foundation","Upstream","Downstream & fuel","Gas pricing & networks"].map(x=>[x,({Foundation:translate("Legal foundation","Landasan hukum"),Upstream:translate("Upstream / exploration","Hulu / eksplorasi"),"Downstream & fuel":translate("Downstream / fuels and LPG","Hilir / BBM dan LPG"),"Gas pricing & networks":translate("Natural gas, HGBT & Jargas","Gas bumi, HGBT dan Jargas")})[x]])]);
+ segment.setAttribute("aria-label",translate("Oil and gas subtopic","Subsektor migas"));
+ const state=elSelect([["all",translate("All policy statuses","Semua status kebijakan")],["Enacted",translate("Enacted legal instruments","Regulasi berlaku")],["Official decision",translate("Official decisions","Keputusan resmi")],["Corporate decision",translate("Corporate decisions","Keputusan korporasi")],["Announced — not enacted",translate("Announcements only","Baru pengumuman")],["Draft / under development",translate("Drafts / proposals","Draf / usulan")]]);
+ const query=E("input","gov-input");query.type="search";query.placeholder=translate("Search law, instrument or policy…","Cari regulasi, nomor aturan, atau kebijakan…");query.setAttribute("aria-label",translate("Search policy records","Cari arsip regulasi"));
+ controls.append(sector,segment,state,query);root.append(controls);
  const status=E("p","gov-meta"),list=E("div","gov-policy-list");root.append(status,list);
+ const labels={"Enacted":["Enacted","Berlaku"],"Official decision":["Official decision","Keputusan resmi"],"Corporate decision":["Corporate decision","Keputusan korporasi"],"Announced — not enacted":["Announced only","Baru diumumkan"],"Draft / under development":["Draft","Dalam penyusunan"]};
  const draw=()=>{
-  const rows=data.items.filter(x=>(sector.value==="all"||x.sector===sector.value)&&(state.value==="all"||x.status===state.value)&&[x.title,x.instrument,x.effect,x.sector].join(" ").toLowerCase().includes(query.value.toLowerCase())).sort((a,b)=>b.date.localeCompare(a.date));
-  status.textContent=rows.length+" dated policy / governance records, curated through "+(document.documentElement.dataset.govAsOf||"15 October 2026")+".";
+  segment.hidden=sector.value!=="Oil & Gas";
+  if(segment.hidden)segment.value="all";
+  const q=query.value.toLocaleLowerCase().trim();
+  const rows=data.items.filter(x=>
+   (sector.value==="all"||x.sector===sector.value)&&
+   (segment.hidden||segment.value==="all"||x.subsector===segment.value)&&
+   (state.value==="all"||x.status===state.value)&&
+   [x.title,x.title_id,x.instrument,x.effect,x.effect_id,x.sector,x.subsector].join(" ").toLocaleLowerCase().includes(q)
+  ).sort((a,b)=>b.date.localeCompare(a.date));
+  const oilActive=sector.value==="Oil & Gas";
+  for(const [button,active] of [[oil,oilActive],[other,!oilActive]]){
+   button.classList.toggle("active",active);
+   button.setAttribute("aria-pressed",String(active));
+  }
+  status.textContent=rows.length+" "+translate("curated records","catatan terkurasi")+
+   (oilActive?" · "+translate("Oil & Gas policy register","Register kebijakan migas"):"")+
+   " · "+translate("Reviewed","Ditinjau")+" "+(document.documentElement.dataset.govAsOf||"2026-10-15")+".";
   list.replaceChildren();
   rows.forEach(x=>{
-   const card=E("article","gov-policy"),h=E("div","gov-policy-head");h.append(tag(x.status,x.status==="Enacted"?"gov-tag gov-enacted":"gov-tag gov-caution"),tag(x.sector,"gov-tag gov-tag-secondary"),E("span","gov-date",x.date));card.append(h,E("h3",null,x.title),E("p","gov-leader",x.instrument),E("p",null,x.effect));
-   card.append(LINK(x.source,"Primary / attributable source ↗"));list.append(card);
+   const card=E("article","gov-policy"),h=E("div","gov-policy-head");
+   const str=labels[x.status]||[x.status,x.status];
+   h.append(tag(translate(str[0],str[1]),x.status==="Enacted"?"gov-tag gov-enacted":"gov-tag gov-caution"),
+    tag(x.sector==="Oil & Gas"?translate("Oil & Gas","Migas"):x.sector,"gov-tag gov-tag-secondary"),
+    E("span","gov-date",x.date));
+   if(x.subsector)h.append(tag(x.subsector==="Upstream"?translate("Upstream","Hulu"):x.subsector==="Downstream & fuel"?translate("Downstream / fuel","Hilir / BBM"):x.subsector==="Gas pricing & networks"?translate("Gas / HGBT / Jargas","Gas / HGBT / Jargas"):translate("Legal basis","Landasan hukum"),"gov-tag gov-tag-secondary"));
+   card.append(h,E("h3",null,currentLang()==="id"&&x.title_id?x.title_id:x.title),E("p","gov-leader",x.instrument),E("p",null,currentLang()==="id"&&x.effect_id?x.effect_id:x.effect));
+   card.append(LINK(x.source,translate("Official law / attributable source ↗","Sumber hukum resmi / teratribusi ↗")));
+   list.append(card);
   });
-  if(!rows.length)note(list,"No records match these filters.");
+  if(!rows.length)note(list,translate("No policy records match the selected sector, date or search.","Tidak ada kebijakan sesuai sektor, status, atau pencarian."));
  };
- for(const x of [sector,state])x.addEventListener("change",draw);query.addEventListener("input",draw);draw();
+ other.addEventListener("click",()=>{sector.value="all";segment.value="all";state.value="all";query.value="";draw()});
+ oil.addEventListener("click",()=>{sector.value="Oil & Gas";segment.value="all";state.value="all";query.value="";draw()});
+ for(const x of [sector,segment,state])x.addEventListener("change",draw);
+ query.addEventListener("input",draw);
+ draw();
  const live=E("div","gov-live");live.append(E("h3",null,"Recent regulatory-news leads (not enacted-policy records)"));
  const check=E("p","gov-meta","Reading attributed domestic monitoring leads…"),stories=E("div","gov-leads");live.append(check,stories);root.append(live);
 
@@ -110,7 +150,7 @@ function policies(root,data){
   }
   const stamp=new Date(data.checked_at_utc);
   const stampLabel=isNaN(stamp.getTime())?"unknown":stamp.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Jakarta"})+" WIB";
-  const relevant=kind==="policy"?(data.items||[]).filter(x=>x.group==="ESDM legal instrument candidates"?/peraturan menteri|keputusan menteri|perpres|permen/i.test(x.title||""):/perpres|permen|peraturan|regulasi|kebijakan|menko|transisi energi|tarif listrik|subsidi|moratorium|B50|E50/i.test(x.title||"")):(data.reports||[]).filter(x=>x.topic_id==="policy"&&/aturan|regulasi|perpres|permen|kebijakan|izin|etanol|subsidi|kuota|energi/i.test(x.title||""));
+  const relevant=kind==="policy"?(data.items||[]).filter(x=>x.group==="ESDM legal instrument candidates"?/peraturan menteri|keputusan menteri|perpres|permen/i.test(x.title||""):/perpres|permen|peraturan|regulasi|kebijakan|menko|migas|hulu|hilir|SKK|BPH|LPG|HGBT|gas bumi|gross split|kontrak migas|lifting|BBM|transisi energi|tarif listrik|subsidi|moratorium|B50|E50/i.test(x.title||"")):(data.reports||[]).filter(x=>x.topic_id==="policy"&&/aturan|regulasi|perpres|permen|kebijakan|izin|migas|gas bumi|HGBT|SKK|BPH|LPG|BBM|gross split|lifting|etanol|subsidi|kuota|energi/i.test(x.title||""));
   check.textContent=(kind==="policy"?"Official-source candidate scan: ":"Fallback domestic policy-news scan: ")+stampLabel+" · "+relevant.length+" attributed leads · NOT legal enactment verification"+(data.stale_previous_results?" · stale data":"");
   relevant.slice(0,5).forEach(x=>{
    const row=E("div","gov-lead");row.append(LINK(x.url,x.title),E("div","gov-meta",(x.publisher||"Source")+" · candidate only; verify original legal text / effective date before promotion"));stories.append(row);
