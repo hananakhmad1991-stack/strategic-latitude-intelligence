@@ -109,6 +109,16 @@ function jargas(p,d){
  local.append(link(d.example.source));
  desc(local,d.emissions_note);
  expl.append(card,local);p.append(expl);
+ if(Array.isArray(d.project_2025_2026.districts)){
+  const details=$("details","infra-overlay");
+  details.append($("summary",null,"View all 15 jargas contract locations · planned connections, not completed"));
+  const inner=$("div","infra-overlay-inner"),rows=$("div","infra-jargas-regions");
+  d.project_2025_2026.districts.slice().sort((a,b)=>b.connections-a.connections).forEach(x=>{
+   const line=$("div","infra-jargas-region");line.append($("span",null,x.area+" · "+x.province),$("strong",null,fmt(x.connections)+" SR"));rows.append(line);
+  });
+  inner.append(rows,link(d.project_2025_2026.district_source,"Ditjen Migas 2025 regional Jargas allocation tables ↗"));
+  details.append(inner);p.append(details);
+ }
 }
 function energyIndex(p,d){
  const h=d.official;
