@@ -1,0 +1,491 @@
+{
+  "id": "sli-cross-source-2026",
+  "reviewed_at": "2026-10-16",
+  "title": "National investment, Indonesian energy performance and IEA global context",
+  "interpretation": "Source-dated reference indicators, NOT a live telemetry/API feed. Items are additive only within one source's own accounting classification, never between publishers. Existing canonical sector datasets remain the authoritative place for their originally charted time series.",
+  "licensing": "BKPM open source requires attribution; IEA report CC BY 4.0, but downloadable IEA dataset has separate non-CC conditions. This module summarises attributed public report numbers; it does not redistribute the IEA spreadsheet.",
+  "bkpm": {
+    "publisher": "Kementerian Investasi dan Hilirisasi/BKPM",
+    "data_catalog": "https://data.bkpm.go.id/dataset?status=publik",
+    "dataset_detail": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2026",
+    "source_press_release": "https://bkpm.go.id/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+    "latest_quarter": "2026-Q2",
+    "source_date": "2026-07-17",
+    "refresh_cycle": "quarterly (when BKPM publishes)",
+    "scope_note": "LKPM aggregate PMA/PMDN investment realization; excludes upstream oil and gas and financial services per BKPM reporting footnotes. Sector KBLI classification cannot, without record-level isolation, prove realized investment at a named smelter, battery factory or AI data center. PMA source country ≠ ultimate beneficial owner.",
+    "raw_import_status": "Q2 dataset discovered; portal shows CSV download but file URL and row values were not directly retrievable in this integration. Do not invent sector/province figures. Published national KPIs come from BKPM's 17 July 2026 press release.",
+    "quarterly_kpis": [
+      {
+        "id": "h1-realized",
+        "label": "National investment realized · H1 2026",
+        "value": 1010.6,
+        "unit": "Rp trillion",
+        "description": "H1 total including PMA and PMDN; realization, not announced capex.",
+        "source_url": "https://bkpm.go.id/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+        "scope": "Indonesia",
+        "period": "2026-H1",
+        "kind": "actual"
+      },
+      {
+        "id": "q2-realized",
+        "label": "National investment realized · Q2 2026",
+        "value": 511.8,
+        "unit": "Rp trillion",
+        "description": "Q2 2026 investment realization; part of H1 total, NOT additional to H1.",
+        "source_url": "https://bkpm.go.id/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+        "scope": "Indonesia",
+        "period": "2026-Q2",
+        "kind": "actual"
+      },
+      {
+        "id": "h1-yoy",
+        "label": "National H1 realization growth",
+        "value": 7.2,
+        "unit": "% YoY",
+        "description": "Growth compared with H1 2025; not annual GDP or investment growth.",
+        "source_url": "https://bkpm.go.id/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+        "period": "2026-H1",
+        "kind": "growth"
+      },
+      {
+        "id": "h1-workers",
+        "label": "Workers absorbed · H1 2026",
+        "value": 1448862,
+        "unit": "people",
+        "description": "BKPM direct labour absorption from LKPM; not net economy-wide job creation.",
+        "source_url": "https://bkpm.go.id/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+        "period": "2026-H1",
+        "kind": "observed"
+      },
+      {
+        "id": "q2-workers",
+        "label": "Workers absorbed · Q2 2026",
+        "value": 742293,
+        "unit": "people",
+        "description": "Included within H1 labour absorption; do not sum again.",
+        "source_url": "https://bkpm.go.id/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+        "period": "2026-Q2",
+        "kind": "observed"
+      },
+      {
+        "id": "target-2026",
+        "label": "National investment target · 2026",
+        "value": 2041.3,
+        "unit": "Rp trillion",
+        "description": "Full-year 2026 goal; target, not realization.",
+        "source_url": "https://bkpm.go.id/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+        "period": "2026",
+        "kind": "target"
+      }
+    ],
+    "breakdown_fields": [
+      "periode",
+      "status_penanaman_modal",
+      "regional",
+      "negara",
+      "sektor_utama",
+      "nama_sektor",
+      "deskripsi_kbli_2digit",
+      "provinsi",
+      "kabupaten_kota",
+      "jawa_luar_jawa",
+      "pulau",
+      "investasi_rp_juta",
+      "investasi_us_ribu",
+      "tki"
+    ],
+    "field_notes": "Original Q2 2026 CKBP/LKPM sector, region and country records are linked as catalog; numeric breakdown cards appear only after verified raw downloads. Unit in dataset: investments Rp million and USD thousand, not rupiah trillion.",
+    "useful_sectors": [
+      {
+        "view": "investment",
+        "channel": "LKPM realisation, PMA/PMDN, province, origin and KBLI",
+        "caveat": "Link dataset; no invented sector totals."
+      },
+      {
+        "view": "energy",
+        "channel": "Energy/electricity/mining investment classifications by KBLI",
+        "caveat": "BKPM's exclusion of upstream oil and gas prevents direct comparison with ESDM sector total."
+      },
+      {
+        "view": "minerals",
+        "channel": "Mining, metals, and refining industry KBLI exposure",
+        "caveat": "Published BKPM sector total ≠ verified realized capex of each smelter."
+      },
+      {
+        "view": "ai",
+        "channel": "Information/communication, data centers and electricity supply exposure",
+        "caveat": "Standard KBLI categories ≠ audited standalone AI compute capex."
+      }
+    ],
+    "sources": [
+      {
+        "title": "BKPM Data Terbuka · Q2 2026 LKPM detailed dataset",
+        "url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2026"
+      },
+      {
+        "title": "BKPM · H1 2026 official press release",
+        "url": "https://bkpm.go.id/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung"
+      },
+      {
+        "title": "BKPM · full public dataset directory",
+        "url": "https://data.bkpm.go.id/dataset?status=publik"
+      }
+    ]
+  },
+  "esdm": {
+    "id": "esdm",
+    "title": "ESDM Ministry Performance 2025 · Indonesia",
+    "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+    "period": "2025",
+    "frequency": "annual",
+    "items": [
+      {
+        "id": "esdm-investment-total",
+        "label": "Total ESDM sector investment",
+        "value": 31.96,
+        "unit": "USD billion",
+        "description": "2025 realized, status 31 Jan 2026; exact sector boundary includes upstream oil/gas.",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+        "kind": "actual",
+        "scope": "Indonesia",
+        "page": 124
+      },
+      {
+        "id": "esdm-oil-gas",
+        "label": "Oil and natural gas investment",
+        "value": 18.02,
+        "unit": "USD billion",
+        "description": "ESDM subsector realised 2025; covers upstream oil/gas that BKPM typically excludes.",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+        "kind": "actual",
+        "scope": "Indonesia",
+        "page": 125,
+        "sector": "oil_gas",
+        "target": 21.67
+      },
+      {
+        "id": "esdm-minerba",
+        "label": "Minerals AND coal investment",
+        "value": 7,
+        "unit": "USD billion",
+        "description": "ESDM 2025 realised minerba aggregate, cannot isolate critical minerals without project/commodity evidence.",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+        "kind": "actual",
+        "scope": "Indonesia",
+        "page": 125,
+        "sector": "minerals_coal",
+        "target": 3.17
+      },
+      {
+        "id": "esdm-electricity",
+        "label": "Electricity investment",
+        "value": 4.63,
+        "unit": "USD billion",
+        "description": "ESDM 2025 sector electricity investment; investment capital is not generating capacity.",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+        "kind": "actual",
+        "scope": "Indonesia",
+        "page": 125,
+        "sector": "electricity",
+        "target": 3.1
+      },
+      {
+        "id": "esdm-renewables",
+        "label": "EBTKE investment",
+        "value": 2.31,
+        "unit": "USD billion",
+        "description": "ESDM 2025 new/renewable energy and energy conservation; not identical to electricity-only investment.",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+        "kind": "actual",
+        "scope": "Indonesia",
+        "page": 125,
+        "sector": "renewables",
+        "target": 1.53
+      },
+      {
+        "id": "esdm-security-index",
+        "label": "National energy security index · provisional",
+        "value": 7.04,
+        "unit": "/ 10",
+        "description": "ESDM 2025 preliminary score; classified 'Tahan'. 2025 scoring methodology changed, so historical scores cannot be plotted as directly comparable.",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+        "kind": "provisional",
+        "scope": "Indonesia",
+        "page": 55
+      },
+      {
+        "id": "esdm-electrification",
+        "label": "National electrification ratio",
+        "value": 99.83,
+        "unit": "%",
+        "description": "ESDM reported at end-2025; coverage does not measure reliability or service quality.",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+        "kind": "reported",
+        "scope": "Indonesia",
+        "page": 57
+      },
+      {
+        "id": "esdm-ebt-oct",
+        "label": "EBT share of primary energy mix",
+        "value": 15.84,
+        "unit": "%",
+        "description": "As of October 2025, NOT year-end 2025; annual EBTKE reporting uses another period and series.",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+        "kind": "partial_year",
+        "scope": "Indonesia",
+        "period": "2025-10",
+        "page": 57
+      },
+      {
+        "id": "esdm-safi",
+        "label": "SAIFI average annual interruptions",
+        "value": 3.23,
+        "unit": "times/customer/year",
+        "description": "2025 system average interruption frequency in energy-security chapter, not a province-specific metric.",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+        "kind": "reported",
+        "scope": "Indonesia",
+        "page": 58
+      },
+      {
+        "id": "esdm-biodiesel-cap",
+        "label": "Biodiesel manufacturing rated capacity",
+        "value": 22.02,
+        "unit": "million kL/year",
+        "description": "ESDM 2025 report describes 22.02 million kL/year installed nameplate after licensing expansion; not actual biodiesel output.",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+        "kind": "nameplate",
+        "scope": "Indonesia",
+        "page": 322
+      }
+    ]
+  },
+  "iea": {
+    "id": "iea",
+    "title": "IEA Global Energy Review 2026 · 2025 world observations",
+    "source": "https://www.iea.org/reports/global-energy-review-2026",
+    "period": "2025",
+    "frequency": "annual",
+    "items": [
+      {
+        "id": "iea-energy-growth",
+        "label": "Global total energy demand growth",
+        "value": 1.3,
+        "unit": "% YoY",
+        "description": "Demand increased ~8 EJ; world 2025, not Indonesia's demand growth.",
+        "source_url": "https://www.iea.org/reports/global-energy-review-2026",
+        "kind": "annual_growth",
+        "scope": "World",
+        "page": "Key findings"
+      },
+      {
+        "id": "iea-power-growth",
+        "label": "Global electricity demand growth",
+        "value": 3,
+        "unit": "% YoY",
+        "description": "Global electricity demand rose around 800 TWh in 2025; rounded estimate.",
+        "source_url": "https://www.iea.org/reports/global-energy-review-2026",
+        "kind": "approx",
+        "scope": "World",
+        "page": "Global trends"
+      },
+      {
+        "id": "iea-data-centers-growth",
+        "label": "Global data centre electricity demand growth",
+        "value": 17,
+        "unit": "% YoY",
+        "description": "2025 demand growth from data centres worldwide, NOT Indonesia's AI GPU buildout or data centre grid MW.",
+        "source_url": "https://www.iea.org/reports/global-energy-review-2026",
+        "kind": "annual_growth",
+        "scope": "World",
+        "page": "Global trends"
+      },
+      {
+        "id": "iea-renewables-new",
+        "label": "Worldwide new renewable capacity",
+        "value": 800,
+        "unit": "GW",
+        "description": "Approximately 800 GW annual renewable additions in 2025; solar ~75% of this; new capacity, not total cumulative fleet.",
+        "source_url": "https://www.iea.org/reports/global-energy-review-2026",
+        "kind": "approx_addition",
+        "scope": "World",
+        "page": "Key findings"
+      },
+      {
+        "id": "iea-solar-generation-growth",
+        "label": "Global solar PV generation increase",
+        "value": 600,
+        "unit": "TWh",
+        "description": "Record 2025 annual solar generation increase; production energy, NOT new installed capacity.",
+        "source_url": "https://www.iea.org/reports/global-energy-review-2026",
+        "kind": "approx_addition",
+        "scope": "World",
+        "page": "Global trends"
+      },
+      {
+        "id": "iea-battery-new",
+        "label": "World battery storage new capacity",
+        "value": 110,
+        "unit": "GW",
+        "description": "Almost 110 GW annual 2025 battery storage additions; power capacity, NOT GW-hours energy capacity.",
+        "source_url": "https://www.iea.org/reports/global-energy-review-2026",
+        "kind": "approx_addition",
+        "scope": "World",
+        "page": "Key findings"
+      },
+      {
+        "id": "iea-ev-global-sales",
+        "label": "Electric car sales globally",
+        "value": 20,
+        "unit": "million cars",
+        "description": "More than 20 million new electric cars sold in 2025; presented as >20m lower bound rather than exact 20m.",
+        "source_url": "https://www.iea.org/reports/global-energy-review-2026",
+        "kind": "lower_bound",
+        "scope": "World",
+        "page": "Key findings",
+        "operator": ">"
+      },
+      {
+        "id": "iea-coal-demand",
+        "label": "Global coal consumption growth",
+        "value": 0.4,
+        "unit": "% YoY",
+        "description": "Global coal demand, not Indonesian production or exports.",
+        "source_url": "https://www.iea.org/reports/global-energy-review-2026",
+        "kind": "annual_growth",
+        "scope": "World",
+        "page": "Key findings"
+      },
+      {
+        "id": "iea-oil-demand-growth",
+        "label": "World oil demand growth",
+        "value": 0.65,
+        "unit": "million bbl/day",
+        "description": "Incremental global demand increase over 2024, NOT absolute consumption.",
+        "source_url": "https://www.iea.org/reports/global-energy-review-2026",
+        "kind": "annual_change",
+        "scope": "World",
+        "page": "Key findings"
+      },
+      {
+        "id": "iea-emissions-change",
+        "label": "Energy-related global CO2 change",
+        "value": 0.4,
+        "unit": "% YoY",
+        "description": "2025 global energy-related carbon dioxide emissions growth, not Indonesian territorial inventory.",
+        "source_url": "https://www.iea.org/reports/global-energy-review-2026",
+        "kind": "annual_growth",
+        "scope": "World",
+        "page": "Key findings"
+      }
+    ]
+  },
+  "groups": {
+    "investment": {
+      "bkpm": [
+        "h1-realized",
+        "q2-realized",
+        "h1-yoy",
+        "h1-workers",
+        "target-2026"
+      ],
+      "esdm": [
+        "esdm-investment-total",
+        "esdm-oil-gas",
+        "esdm-minerba",
+        "esdm-electricity",
+        "esdm-renewables"
+      ],
+      "iea": [
+        "iea-energy-growth",
+        "iea-renewables-new"
+      ]
+    },
+    "energy": {
+      "bkpm": [
+        "h1-realized",
+        "q2-realized"
+      ],
+      "esdm": [
+        "esdm-investment-total",
+        "esdm-oil-gas",
+        "esdm-electricity",
+        "esdm-renewables",
+        "esdm-security-index",
+        "esdm-electrification",
+        "esdm-ebt-oct",
+        "esdm-biodiesel-cap"
+      ],
+      "iea": [
+        "iea-energy-growth",
+        "iea-power-growth",
+        "iea-renewables-new",
+        "iea-solar-generation-growth",
+        "iea-battery-new",
+        "iea-coal-demand",
+        "iea-oil-demand-growth",
+        "iea-emissions-change"
+      ]
+    },
+    "minerals": {
+      "bkpm": [
+        "h1-realized",
+        "q2-realized"
+      ],
+      "esdm": [
+        "esdm-minerba",
+        "esdm-investment-total"
+      ],
+      "iea": [
+        "iea-ev-global-sales",
+        "iea-battery-new",
+        "iea-renewables-new"
+      ]
+    },
+    "ai": {
+      "bkpm": [
+        "h1-realized",
+        "q2-realized"
+      ],
+      "esdm": [
+        "esdm-electricity",
+        "esdm-security-index"
+      ],
+      "iea": [
+        "iea-data-centers-growth",
+        "iea-power-growth",
+        "iea-battery-new",
+        "iea-renewables-new"
+      ]
+    }
+  },
+  "source_registry": [
+    {
+      "id": "bkpm-q2",
+      "url": "https://data.bkpm.go.id/dataset-detail/data-realisasi-investasi-triwulan-ii-tahun-2026",
+      "title": "BKPM Q2 2026 LKPM detailed dataset",
+      "publisher": "BKPM",
+      "coverage": "Investment sector, origin, province, PMA/PMDN, jobs",
+      "status": "Metadata and official national KPIs integrated; raw CSV parsing not yet connected",
+      "auto_refresh": "Quarterly after verified official data release"
+    },
+    {
+      "id": "esdm-lakin",
+      "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+      "title": "Kementerian ESDM LAKIN 2025",
+      "publisher": "Kementerian ESDM",
+      "coverage": "Investment, 4A index, power access, biodiesel and energy transition",
+      "status": "Select source-checked official 2025 observations integrated",
+      "auto_refresh": "Annual on new official PDF edition"
+    },
+    {
+      "id": "iea-ger",
+      "url": "https://www.iea.org/reports/global-energy-review-2026",
+      "title": "Global Energy Review 2026",
+      "publisher": "IEA",
+      "coverage": "Global energy, fossil/renewable, electricity, EV, battery and data center context",
+      "status": "Source-checked published report metrics integrated; downloadable IEA spreadsheet not mirrored",
+      "auto_refresh": "Annual IEA release"
+    }
+  ]
+}
