@@ -11,13 +11,15 @@
         "actors": [
           {
             "name": "Presidency / National Energy Council (DEN)",
-            "lead": "Prabowo Subianto · President; DEN presidential chair",
-            "role": "Establishes national priorities and chairs DEN; DEN provides national energy-policy coordination, not operating permits.",
-            "scope": "Strategic command",
+            "lead": "Prabowo Subianto · Presiden Republik Indonesia; Ketua Dewan Energi Nasional (DEN)",
+            "role": "President of Indonesia; chairs the National Energy Council (DEN), sets national energy-security priorities and leads interministerial strategic energy-policy direction. Operational energy licensing, PSC oversight and enterprise management remain with distinct institutions.",
+            "scope": "Presidency · Ketua DEN",
             "kind": "Strategy",
-            "source": "https://esdm.go.id/id/media-center/arsip-berita/presiden-prabowo-lantik-ketua-harian-dan-anggota-den-periode-2026-2030",
-            "verified": "2026-01-28",
-            "authority": "presidential steering / DEN"
+            "source": "https://www.esdm.go.id/id/media-center/arsip-berita/usai-b50-pemerintah-siapkan-e50-langkah-baru-kurangi-ketergantungan-bbm-impor",
+            "verified": "2026-09-17",
+            "authority": "presidential direction / DEN national energy policy",
+            "person_name": "Prabowo Subianto",
+            "verification_status": "ESDM 17 September 2026 public report confirms President Prabowo Subianto as Chair of DEN"
           },
           {
             "name": "Penasihat Khusus Presiden Bidang Energi",
@@ -41,16 +43,21 @@
           },
           {
             "name": "Sekretariat Jenderal DEN",
-            "lead": "Government and non-government DEN members · appointments require current roster review",
-            "role": "Coordinates studies, energy resilience index, policy assessment and DEN meetings; distinguish its members from ministers' current positions.",
-            "scope": "Policy analysis",
+            "lead": "Dadan Kusdiana · Sekretaris Jenderal Dewan Energi Nasional (dilantik 17 September 2025)",
+            "role": "Heads the DEN Secretariat General: organizes council administration and policy coordination, prepares analytical studies and supports energy security index reporting, follow-up on council decisions and stakeholder coordination. The Secretary General is not the Council's Chair and is not head of SKK Migas.",
+            "scope": "DEN secretariat · Sekjen",
             "kind": "Planning",
-            "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-dewan-energi-nasional-tahun-2025.pdf",
-            "verified": "2026-10-15",
-            "person_name": "",
+            "source": "https://esdm.go.id/id/media-center/arsip-berita/menteri-esdm-lantik-pejabat-tinggi-madya-di-lingkungan-kementerian-esdm",
+            "verified": "2026-03-04",
+            "person_name": "Dadan Kusdiana",
             "evidence_status": "institution-led; current secretary-general requires review",
-            "authority": "secretariat / recommendations",
-            "connections": []
+            "authority": "DEN secretariat management / studies / coordination; not upstream PSC execution",
+            "connections": [
+              "Presidency / National Energy Council (DEN)"
+            ],
+            "appointed": "2025-09-17",
+            "verification_status": "Official appointment on 17 Sep 2025; re-identified as DEN Secretary General by ESDM on 4 Mar 2026",
+            "latest_source": "https://www.esdm.go.id/en/media-center/news-archives/den-gandeng-as-dan-jepang-siapkan-sdm-perkuat-misi-transisi-energi"
           },
           {
             "name": "Kemenko Hilirisasi dan Transisi Energi",
@@ -260,12 +267,13 @@
           {
             "name": "SKK Migas",
             "lead": "Djoko Siswanto · Head (July 2026 source)",
-            "role": "Manages and supervises upstream PSC implementation and contractor development execution; not the ministerial policy setter.",
+            "role": "Heads the upstream oil and gas special task force responsible for managing cooperation contracts (PSC/KKS) and supervising KKKS implementation; a separate role from DEN Secretary General Dadan Kusdiana and the President / DEN chair.",
             "scope": "Upstream PSC",
             "kind": "Implementer",
             "source": "https://esdm.go.id/id/media-center/arsip-berita/north-hub-bidik-produksi-1000-mmscfd-gas-buka-lebih-dari-8000-lapangan-kerja",
             "verified": "2026-07-23",
-            "authority": "upstream PSC management"
+            "authority": "upstream PSC management",
+            "person_name": "Djoko Siswanto"
           },
           {
             "name": "BPH Migas",
