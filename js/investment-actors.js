@@ -19,22 +19,31 @@ window.initSLIInvestmentActors=async function(){
  root.replaceChildren(E("p","tr-detail","Loading source-attributed company, EV brand and event dossiers…"));
  let dataset;try{const response=await fetch("data/investment-actors-ev-events.json",{cache:"no-store"});if(!response.ok)throw Error("Registry unavailable");dataset=await response.json();}catch(err){root.textContent="Industrial actor evidence registry unavailable.";console.error("[SLI] actor registry",err);return}
  root.replaceChildren();
- root.append(E("p","tr-detail","Research snapshot "+dataset.as_of+" · "+dataset.actors.length+" dated decision-maker profiles · "+dataset.brands.length+" EV brands · "+dataset.corporate_events.length+" selected corporate-action and policy records. Actors are NOT automatically ultimate beneficial owners."));
- const people=section(root,"Industrial Actor & Corporate Control Map","Founder/owner, publicly disclosed shareholder, executive and regulator roles are separate. Click source for dated company disclosure.");
- const filters=E("div","inv-actor-controls"),sector=E("select","tr-select"),query=E("input","tr-select");query.type="search";query.placeholder="Search person, company or sector…";query.setAttribute("aria-label","Search strategic industrial actors");
+ root.append(E("p","tr-detail","Research snapshot "+dataset.as_of+" · Forbes ranked-wealth list is independently dated · "+dataset.brands.length+" EV brand records · "+dataset.corporate_events.length+" attributed corporate-action events."));
  const select=(el,list)=>list.forEach(x=>{const op=E("option",null,x);op.value=x;el.append(op)});
- select(sector,["All sectors",...[...new Set(dataset.actors.map(x=>x.sector))].sort()]);
- for(const [label,node] of [["Sector",sector],["Actor or company",query]]){const l=E("label",null,label);l.append(node);filters.append(l)}people.append(filters);
- const pCount=E("p","tr-detail"),pCards=E("div","inv-actor-cards");people.append(pCount,pCards);
- function renderPeople(){
-  const q=query.value.trim().toLowerCase(),rows=dataset.actors.filter(x=>(sector.value==="All sectors"||sector.value===x.sector)&&[x.name,x.organisation,x.role,x.sector].join(" ").toLowerCase().includes(q));
-  pCards.replaceChildren();pCount.textContent=rows.length+" of "+dataset.actors.length+" sourced actors shown";
-  for(const x of rows){const c=E("article","inv-actor-card");c.append(E("div","eyebrow",x.role_type+" · "+x.sector),E("h4",null,x.name),E("p","inv-actor-position",x.role+" · "+x.organisation));
-   c.append(E("p","tr-detail",x.company_connection));const ul=E("p","tr-detail","Ownership classification: "+x.ownership_class);c.append(ul);
-   const foot=E("div","inv-actor-foot");foot.append(E("span",null,"As documented: "+x.evidence_date),link(x.source_url,"Company / regulator source"));if(x.asset_ids?.length)x.asset_ids.forEach(id=>assetJump(foot,id));c.append(foot);pCards.append(c)}
-  if(!rows.length)pCards.append(E("p","tr-detail","No actors match these filters. The register is an explicitly selected sample, not a comprehensive BO database."));
- }
- sector.addEventListener("change",renderPeople);query.addEventListener("input",renderPeople);renderPeople();
+ const richest=section(root,"Forbes Indonesia · Top 20 Richest","Official annual list, NOT real-time Forbes net worth, current BO status or proof of capital invested in Indonesia.");
+ const richText=E("p","tr-detail","Loading the dated Forbes ranking…");richest.append(richText);
+ try{
+  const fr=await fetch("data/investment-forbes-top20.json",{cache:"no-store"});
+  if(!fr.ok)throw Error("Forbes source snapshot unavailable");
+  const f=await fr.json();
+  if(!Array.isArray(f.rankings)||f.rankings.length<20)throw Error("Incomplete source edition");
+  richText.textContent=f.edition+" · source "+f.published+" · last review "+f.reviewed_as_of+" · "+f.status+". "+f.basis;
+  const check=E("p","tr-detail",f.last_auto_checked_at?"Automatic source check "+f.last_auto_checked_at:"Automated source checking not yet confirmed to have run.");
+  richest.append(check);
+  if(f.review_alert)richest.append(E("p","tr-note","New-edition review: "+f.review_alert));
+  const find=E("input","tr-select");find.type="search";find.placeholder="Find a Forbes name or industry…";find.setAttribute("aria-label","Search Forbes Indonesia top twenty");richest.append(find);
+  const table=tableBlock(richest,["Rank","Forbes person / family","2025 estimated wealth (USD bn)","Forbes industry / source"]);
+  function renderForbes(){
+    const q=find.value.trim().toLowerCase();
+    const list=f.rankings.filter(x=>[x.name,x.forbes_industry].join(" ").toLowerCase().includes(q));
+    table.replaceChildren();
+    for(const person of list){const tr=E("tr");td(tr,"#"+person.rank);td(tr,person.name);td(tr,"$"+Number(person.net_worth_usd_billion).toLocaleString("en-US",{maximumFractionDigits:2})+" bn");
+      const src=E("td");src.append(E("span",null,person.forbes_industry+" · "),link(f.source_url,"Forbes edition"));tr.append(src);table.append(tr)}
+    if(!list.length){const row=E("tr"),cell=td(row,"No matches");cell.colSpan=4;table.append(row)}
+  }
+  find.addEventListener("input",renderForbes);renderForbes();
+ }catch(err){richText.textContent="Forbes ranking unavailable or not source-validated. Open the official Forbes list directly.";richest.append(link("https://www.forbeschina.com/lists/1855","Forbes original publication"));console.error("[SLI Forbes]",err)}
  const brands=section(root,"EV Brand, Manufacturing & Country-Affiliation Matrix","A brand's nationality, import/retail status, Indonesian assembly, local battery supply and parent-company CAPEX are distinct measures.");
  const eControls=E("div","inv-actor-controls"),eQ=E("input","tr-select");eQ.type="search";eQ.placeholder="Search EV brand, model or country…";eQ.setAttribute("aria-label","Filter EV brands");
  const eLabel=E("label",null,"EV brand or model");eLabel.append(eQ);eControls.append(eLabel);brands.append(eControls);
