@@ -104,9 +104,10 @@ def main():
             fail("Outbound investment misclassified as Indonesian asset investment")
 
     assets = read("investment-operator-assets.json")
-    sector_names = {"Oil & Gas", "Coal", "Minerals", "AI / Data Center"}
+    sector_names = {"Oil & Gas", "Coal", "Minerals", "Smelters & Processing", "Biofuels & Bioenergy", "Renewable Energy", "Electric Vehicles", "AI / Data Center"}
     allowed_asset_stages = {"Operational", "Under construction", "Announced / development",
-                            "MoU / power expansion", "Agreement / proposal", "MoU only"}
+                            "MoU / power expansion", "Agreement / proposal", "MoU only",
+                            "Programme / mandate", "Historical operating evidence"}
     asset_ids = set()
     for asset in assets.get("records", []):
         key = asset.get("id", "?")
@@ -138,6 +139,36 @@ def main():
             fail(f"{key}: digital asset incorrectly presented as upstream PSC")
         if asset.get("contract_end") and not asset.get("contract_end_status"):
             fail(f"{key}: disclosed expiry missing legal qualification")
+
+    actor_data = read("investment-actors-ev-events.json")
+    asset_ids = {item.get("id") for item in assets.get("records", [])}
+    names = set()
+    for actor in actor_data.get("actors", []):
+        name = actor.get("name")
+        if not name or name in names:
+            fail(f"Actor duplicate or missing name: {name}")
+        names.add(name)
+        if not https(actor.get("source_url")) or not actor.get("evidence_date"):
+            fail(f"{name}: no source or as-of evidence")
+        for asset in actor.get("asset_ids", []):
+            if asset not in asset_ids:
+                fail(f"{name}: linked asset not in asset registry: {asset}")
+        if "beneficial owner" in actor.get("role_type", "").lower() and not actor.get("bo_verified_filing"):
+            fail(f"{name}: unsupported BO role")
+    for brand in actor_data.get("brands", []):
+        if not brand.get("origin") or not brand.get("models") or not https(brand.get("source_url")):
+            fail(f"{brand.get('brand')}: missing origin, model proof or source")
+        if brand.get("asset_ref") not in asset_ids:
+            fail(f"{brand.get('brand')}: no linked facility/dossier")
+    for event in actor_data.get("corporate_events", []):
+        if not https(event.get("source_url")) or not event.get("event_status"):
+            fail(f"Corporate action lacks dated evidence: {event.get('headline')}")
+        if event.get("verified_price_reaction") and not https(event.get("price_data_source")):
+            fail(f"Market event has unverified share-price sentiment: {event.get('headline')}")
+
+    for benchmark in assets.get("macro_sector_benchmarks", []):
+        if not benchmark.get("period") or not benchmark.get("classification") or not https(benchmark.get("source_url")):
+            fail(f"National bioenergy / EBT benchmark missing time or original source: {benchmark.get('indicator')}")
 
     for observation in evidence.get("corporate_capex", []):
         key = observation.get("entity", "?")
