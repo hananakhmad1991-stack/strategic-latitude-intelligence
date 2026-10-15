@@ -4,6 +4,9 @@ import assert from 'node:assert/strict';
 
 const powerMap=fs.readFileSync('js/sector-stakeholder-explorer.js','utf8');
 const research=fs.readFileSync('js/research-chapters.js','utf8');
+const hierarchyModule=fs.readFileSync('js/sector-command-hierarchy.js','utf8');
+const hierarchyData=JSON.parse(fs.readFileSync('data/sector-command-hierarchy.json','utf8'));
+const leadershipScan=JSON.parse(fs.readFileSync('data/sector-leadership-watch.json','utf8'));
 const catalog=JSON.parse(fs.readFileSync('data/sector-governance-explorer.json','utf8'));
 const investments=JSON.parse(fs.readFileSync('data/investment-evidence.json','utf8'));
 const indicators=JSON.parse(fs.readFileSync('data/sector-evidence-catalog.json','utf8'));
@@ -11,6 +14,8 @@ const monitoring=JSON.parse(fs.readFileSync('data/ai-monitoring.json','utf8'));
 const html=fs.readFileSync('index.html','utf8');
 const sources={
  'data/sector-governance-explorer.json':catalog,
+ 'data/sector-command-hierarchy.json':hierarchyData,
+ 'data/sector-leadership-watch.json':leadershipScan,
  'data/investment-evidence.json':investments,
  'data/sector-evidence-catalog.json':indicators,
  'data/ai-monitoring.json':monitoring,
@@ -61,6 +66,7 @@ const window={};
 const fetch=async path=>({ok:!!sources[path],status:sources[path]?200:404,json:async()=>sources[path]});
 const context={document,window,URL:MockURL,fetch,console};
 vm.runInNewContext(powerMap,context);
+vm.runInNewContext(hierarchyModule,context);
 vm.runInNewContext(research,context);
 assert.match(html,/sector-stakeholder-explorer\.js/,'Power-map script should load on all pages');
 assert.match(html,/stakeholder-map\.css/,'Must reuse Energy Security styling');
@@ -77,10 +83,13 @@ for(const sector of ['minerals','ai']){
  for(let i=0;i<25;i++)await Promise.resolve();
  const stages=root.children.filter(x=>x.classList.contains('es-stage'));
  assert.equal(stages.length,9,'Energy Security structural parity');
- const hierarchy=stages[0].querySelector('.sli-hier-root');
- assert.ok(hierarchy||stages[0].querySelector('.sli-hierarchy-mount'),'Missing presidential hierarchy mounting point');
+ assert.equal(stages[0].querySelector('.sli-hier-root'),null,'Hierarchy should not be duplicated outside the single explorer');
  const expandable=stages[0].querySelector('.sli-extra-network');
- assert.ok(expandable,'Energy Security detailed network disclosure must exist');
+ assert.ok(expandable,'Single consolidated institutional explorer must exist');
+ assert.ok(expandable.children[0].textContent.includes('Explore institution network, named officials and 9 issue pathways'));
+ assert.ok(!expandable.children[0].textContent.includes('Energy Security-style'),'Remove internal style comparison from heading');
+ const internalTabs=expandable.querySelectorAll('.sli-sector-explorer-tab');
+ assert.equal(internalTabs.length,2,'Network and hierarchy are two views in a single panel');
  expandable.open=true;
  expandable.handlers.toggle();
  for(let i=0;i<12;i++)await Promise.resolve();
@@ -93,6 +102,7 @@ for(const sector of ['minerals','ai']){
  assert.equal(leaders.length,6,'six verified named leadership cards');
  assert.equal(svg.length,1);
  assert.equal(map.querySelectorAll('.stake-mobile-button').length,6,'six accessible institutional mobile branches');
+ assert.equal(stages[0].querySelector('.sli-sector-hierarchy-pane').hidden,true,'Hierarchy hidden when network tab is selected');
  assert.ok(map.textContent.includes(String(count)+' Institutions'));
  
  leaders[0].handlers.click();
@@ -108,6 +118,17 @@ for(const sector of ['minerals','ai']){
  const groups=map.querySelectorAll('.stake-select')[0];groups.value='2';groups.handlers.change();
  assert.ok(map.querySelectorAll('.stake-mobile-button').length>=4);
  
+ internalTabs[1].handlers.click();
+ for(let i=0;i<16;i++)await Promise.resolve();
+ const hierarchyPanel=expandable.querySelector('.sli-sector-hierarchy-pane');
+ const networkPanel=expandable.querySelectorAll('.sli-sector-explorer-pane')[0];
+ assert.equal(hierarchyPanel.hidden,false,'Top-down hierarchy visible when selected');
+ assert.equal(networkPanel.hidden,true,'Power map hidden to prevent duplicated panels');
+ assert.ok(hierarchyPanel.querySelector('.sli-hier-president'),'Hierarchy now lives inside the consolidated explorer');
+ assert.ok(hierarchyPanel.querySelector('.sli-hier-root'),'Full presidential tree is available in the hierarchy tab');
+ internalTabs[0].handlers.click();
+ assert.equal(networkPanel.hidden,false,'Power map restored on switch');
+ assert.equal(hierarchyPanel.hidden,true,'Hierarchy no longer shown outside selection');
  const nav=root.children.find(x=>x.classList.contains('es-toc'));
  nav.children[0].handlers.click({preventDefault(){}});
  assert.equal(stages[0].scrolled,true,'chapter nav must stay within current sector');
