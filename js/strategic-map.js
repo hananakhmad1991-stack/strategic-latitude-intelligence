@@ -453,14 +453,14 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    const box=snode("rect",{x:x-5,y:y-5,width:10,height:10,rx:2,class:"map-admin-square"});
    const title=snode("title");title.textContent=name+" · "+refs.length+" "+label("records only known at province scale","catatan hanya diketahui sampai provinsi");
    marker.append(box,title);
-   marker.addEventListener("click",()=>{
-    if(dragged)return;
+   function selectProvinceReference(){
     currentPoint=null;currentProvince=name;currentKepriCluster=null;provinceSelect.value=name;
     currentAccuracy="province";
-    for(const b of geoButtons)b.setAttribute("aria-pressed",String(b.dataset.accuracy==="province"));
+    for(const button of geoButtons)button.setAttribute("aria-pressed",String(button.dataset.accuracy==="province"));
     draw();
-   });
-   marker.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();marker.events?.click?.()}}); // browser listener uses the click event
+   }
+   marker.addEventListener("click",()=>{if(!dragged)selectProvinceReference()});
+   marker.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectProvinceReference()}});
    adminLayer.append(marker);
   }
   // Named-locality coordinate references, grouped by close screen distance.
