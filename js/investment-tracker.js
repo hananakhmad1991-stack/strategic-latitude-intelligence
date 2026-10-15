@@ -21,7 +21,7 @@ window.initSLIInvestment=async function(){
  const intro=$("p",null,"Track policy-relevant investment through verifiable milestones. Announcements, financial commitments, realized investment statistics and operational assets are different measurements and must never be added together.");
  root.append(strap,title,intro);
  const nav=$("div","tr-jumpnav");
- [["inv-kpis","Investment evidence"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
+ [["inv-kpis","Investment evidence"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
  heading(root,"National Investment Evidence","BKPM · BPS · BI / distinguish statistical definitions");
  const kpis=$("div","grid tr-grid");kpis.id="inv-kpis";
  const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Verified projects","0 published","Only source-dated project records appear in the registry"]];
@@ -104,7 +104,7 @@ window.initSLIInvestment=async function(){
  try{
  const response=await fetch("data/investment-projects.json",{cache:"no-store"});if(!response.ok)throw Error("no registry");
  const data=await response.json();
- records=Array.isArray(data.projects)?data.projects.filter(x=>x.name&&x.investor&&x.region&&x.sector&&stages.includes(x.stage)&&/^https:\/\//.test(x.source_url||"")&&/^\d{4}-\d{2}-\d{2}$/.test(x.evidence_date||"")):[];
+ const legacy=Array.isArray(data.projects)?data.projects.filter(x=>x.name&&x.investor&&x.region&&x.sector&&stages.includes(x.stage)&&/^https:\/\//.test(x.source_url||"")&&/^\d{4}-\d{2}-\d{2}$/.test(x.evidence_date||"")):[]; const known=new Set(records.map(x=>x.name));legacy.forEach(x=>{if(!known.has(x.name))records.push(x)});
  values[3].textContent=records.length+" verified";
  if(data.as_of)stat.title="Last registry review: "+data.as_of;
  }catch(err){console.info("[SLI] Investment registry is awaiting publication.");}
