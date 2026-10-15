@@ -63,3 +63,19 @@
 @media(max-width:1020px){.gov-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.gov-grid,.gov-policy-list,.gov-project-grid{grid-template-columns:1fr}.gov-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.gov-hero{padding:20px}.gov-arrow{display:none}.gov-node{flex-basis:100%}.gov-project-head{flex-wrap:wrap}}
 @media(max-width:460px){.gov-kpis{grid-template-columns:1fr}.gov-actor,.gov-policy,.gov-project{padding:14px}.gov-controls>.gov-select{flex:1 1 100%}}
+
+/* Six-layer actor map improvements */
+.gov-details{padding:12px 15px!important;margin:12px 0 17px}
+.gov-details summary{cursor:pointer;list-style:none;align-items:center}
+.gov-details summary::-webkit-details-marker{display:none}
+.gov-details summary:focus-visible{outline:2px solid #d7b678;outline-offset:4px}
+.gov-details summary .gov-layer-summary:before{content:"▸";color:#d7b678;font-size:16px;margin-right:10px}
+.gov-details[open] summary .gov-layer-summary:before{content:"▾"}
+.gov-details .gov-grid{margin:13px 0 0}
+.gov-details .gov-layer-count{font-size:10px;color:#9ebbd1}
+.gov-details>.gov-meta{line-height:1.7}
+.gov-actor{min-height:255px}
+.gov-actor .gov-foot{margin-top:auto}
+.gov-actor .gov-meta{font-size:10px!important;line-height:1.6!important}
+.gov-kpis:has(.gov-big){grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:700px){.gov-kpis:has(.gov-big){grid-template-columns:1fr}.gov-details{padding:12px!important}.gov-details .gov-layer-title{align-items:flex-start;flex-direction:column}.gov-details .gov-layer-count{margin-left:24px}.gov-actor{min-height:0}}
