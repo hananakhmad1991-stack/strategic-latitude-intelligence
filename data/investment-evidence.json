@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-15",
-  "methodology": "Figures are independently scoped. BKPM investment realization differs from announced project capital and from PNBP. Values use original currencies and units. Financial facilities are separately listed from equity investment and project budgets. Booking-origin jurisdictions for FDI are not ultimate owners. Project table includes explicit null actual capex when an audited entity-level project realization figure is absent. Equinix initial US$74m intent predated subsequent JV formation and operational opening.",
+  "methodology": "Figures are independently scoped. BKPM investment realization differs from announced project capital and from PNBP. Values use original currencies and units. Financial facilities are separately listed from equity investment and project budgets. Booking-origin jurisdictions for FDI are not ultimate owners. Project table includes explicit null actual capex when an audited entity-level project realization figure is absent. Equinix initial US$74m intent predated subsequent JV formation and operational opening. Corporate capex is shown with its company's reporting perimeter, currency and fiscal period. A company's group-wide capex may include investments outside Indonesia and must not be conflated with local BKPM realization.",
   "national": {
     "period": "2026-H1",
     "unit": "IDR trillion",
@@ -346,6 +346,54 @@
       "classification": "Signed financing facility, not proof of amount drawn nor additional project capex",
       "project_relation": "Corporate sustainability-linked facility; do not automatically allocate across Pomalaa and Morowali projects",
       "source": "https://www.vale.com/in/indonesia/sejarah-vale-di-indonesia"
+    }
+  ],
+  "corporate_capex": [
+    {
+      "entity": "PT Medco Energi Internasional Tbk",
+      "ticker": "MEDC",
+      "period": "2026-Q1",
+      "actual_usd_million": 90,
+      "components": [
+        {
+          "name": "Oil and gas",
+          "usd_million": 88
+        },
+        {
+          "name": "Power",
+          "usd_million": 2
+        }
+      ],
+      "geographic_scope": "Group-wide reporting, NOT solely Indonesian asset capex",
+      "definition": "Actual capital expenditure disclosed in company Q1 financial results; distinct from announced multi-year project budgets and national BKPM PMA/PMDN realization",
+      "source": "https://www.medcoenergi.com/uploads/pressreleases/551/Press%20Release_MedcoEnergi%20Announces%20First%20Quarter%202026%20Results_VFF.pdf",
+      "review_status": "Primary company disclosure"
+    }
+  ],
+  "company_disclosure_watch": [
+    {
+      "entity": "PT Medco Energi Internasional Tbk",
+      "category": "Oil & gas",
+      "document": "1H26 financial statement",
+      "date": "2026-09-21",
+      "status": "Published, company-wide spend should be checked before updating reported actual capex",
+      "source": "https://www.medcoenergi.com/en/publication/financial-statement/"
+    },
+    {
+      "entity": "PT Adaro Andalan Indonesia Tbk",
+      "category": "Coal",
+      "document": "1H26 financial statements and 1 Oct 2026 material transaction",
+      "date": "2026-10-01",
+      "status": "Available for review; not automatically classified as new capital expenditure",
+      "source": "https://www.adaroindonesia.com/pages/view/keterbukaan-informasi.html"
+    },
+    {
+      "entity": "PT DCI Indonesia Tbk",
+      "category": "AI/data center",
+      "document": "1H26 financial statement and 2025 annual report",
+      "date": "2026-06-30",
+      "status": "Available for review; current capex and subsidiary ownership not independently isolated",
+      "source": "https://dci-indonesia.com/investor-relations"
     }
   ]
 }
