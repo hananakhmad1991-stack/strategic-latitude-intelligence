@@ -21,7 +21,7 @@ window.initSLIInvestment=async function(){
  const intro=$("p",null,"Track policy-relevant investment through verifiable milestones. Announcements, financial commitments, realized investment statistics and operational assets are different measurements and must never be added together.");
  root.append(strap,title,intro);
  const nav=$("div","tr-jumpnav");
- [["inv-kpis","Investment evidence"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
+ [["inv-kpis","Investment evidence"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
  heading(root,"National Investment Evidence","BKPM · BPS · BI / distinguish statistical definitions");
  const kpis=$("div","grid tr-grid");kpis.id="inv-kpis";
  const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Verified projects","0 published","Only source-dated project records appear in the registry"]];
@@ -65,6 +65,11 @@ window.initSLIInvestment=async function(){
  const revenueTable=$("div","pf-table-wrap");rev.append(revenueTable);
  const finance=box(root,"Debt facilities are NOT realized project investments");finance.id="inv-financing";
  const financeContent=$("div");finance.append(financeContent);
+ const corporate=box(root,"Verified corporate capital expenditure (actual spend)");corporate.id="inv-corporate-capex";
+ corporate.append($("p","tr-detail","Company-reported capex is separate from announcements, signed financing facilities and BKPM national capital realization. Reporting boundaries may cover projects outside Indonesia."));
+ const corporateContent=$("div","pf-table-wrap");corporate.append(corporateContent);
+ const filingWatch=box(root,"Company disclosure verification queue");filingWatch.id="inv-filings";
+ const filingContent=$("div","pf-table-wrap");filingWatch.append(filingContent);
  const policy=box(root,"Forward policy / investment planning");policy.id="inv-policy";
  const evidenceStatus=$("p","tr-detail","Loading official investment data…");root.insertBefore(evidenceStatus,root.firstChild);
  try{
@@ -104,6 +109,24 @@ window.initSLIInvestment=async function(){
     block.append($("strong",null,facility.borrower+" · "+amount),$("p",null,facility.instrument+" · "+facility.reported_date),$("p",null,facility.classification),$("p",null,facility.project_relation),source(facility.source,"Company disclosure"));
     financeContent.append(block)
    }
+  }
+  if(Array.isArray(evidence.corporate_capex)&&evidence.corporate_capex.length){
+   const t=$("table");t.innerHTML="<thead><tr><th>Reporting entity</th><th>Period</th><th>Actual company capex</th><th>Scope & allocation</th><th>Primary release</th></tr></thead>";
+   const b=$("tbody");
+   evidence.corporate_capex.forEach(x=>{
+    const tr=$("tr"),components=(x.components||[]).map(a=>a.name+": US$"+a.usd_million+"m").join(" · ");
+    [x.entity+(x.ticker?" ("+x.ticker+")":""),x.period,"US$"+x.actual_usd_million+" million",x.geographic_scope+" · "+components].forEach(value=>tr.append($("td",null,value)));
+    const src=$("td");src.append(source(x.source,"Company disclosure"));tr.append(src);b.append(tr)
+   });
+   t.append(b);corporateContent.append(t);
+  }
+  if(Array.isArray(evidence.company_disclosure_watch)){
+   const t=$("table");t.innerHTML="<thead><tr><th>Company</th><th>Published filing</th><th>Review status</th><th>Official source</th></tr></thead>";
+   const b=$("tbody");
+   evidence.company_disclosure_watch.forEach(x=>{
+    const tr=$("tr");[x.entity,x.document+" · "+x.date,x.status].forEach(v=>tr.append($("td",null,v)));
+    const td=$("td");td.append(source(x.source,"Filing"));tr.append(td);b.append(tr)
+   });t.append(b);filingContent.append(t)
   }
   const projectRows=Array.isArray(evidence.projects)?evidence.projects:[];
   const existing=new Set(records.map(x=>x.name));
