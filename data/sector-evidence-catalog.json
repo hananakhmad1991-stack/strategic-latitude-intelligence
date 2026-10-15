@@ -1,0 +1,87 @@
+{
+  "as_of": "2026-10-15",
+  "method": "Selected original-operator/USGS sourced observations. Not exhaustive. Country capacity estimates and operator IT capacity are not interchangeable. Project commitments not realized capex.",
+  "ai_projects": [
+    {
+      "id": "digital-edge-cgk",
+      "operator": "Digital Edge",
+      "project": "CGK Campus",
+      "location": "GIIC, Bekasi, West Java",
+      "status": "Under construction (CGK1 topped out 2026-06-08)",
+      "it_capacity_mw_planned": 500,
+      "expandable_mw": 1000,
+      "secured_electrical_supply_mva": 1450,
+      "announced_budget_usd": 4500000000,
+      "green_loan_usd": 665000000,
+      "operational_it_mw_verified": null,
+      "source_date": "2026-06-08",
+      "source_url": "https://id.digitaledgedc.com/news/digital-edge-tops-out-cgk1-secures-largest-indonesia-power-deal",
+      "financing_url": "https://www.digitaledgedc.com/resources/newsroom/digital-edge-secures-indonesias-largest-data-center-green-loan/",
+      "note": "1.45 GW is dual-feed utility commitment (2 × 725 MVA), not commissioned IT capacity. US$4.5bn is a multi-phase announced investment, not spent."
+    },
+    {
+      "id": "digital-edge-edge2",
+      "operator": "Digital Edge",
+      "project": "EDGE2",
+      "location": "Kuningan, South Jakarta",
+      "status": "Operating facility (operator listing)",
+      "it_capacity_mw_reported": 23,
+      "source_date": "2026-10-15",
+      "source_url": "https://www.digitaledgedc.com/products-services/data-centers/indonesia/",
+      "note": "Operator marketed capacity; do not count as independently measured GPU compute."
+    },
+    {
+      "id": "microsoft-central",
+      "operator": "Microsoft",
+      "project": "Indonesia Central cloud region",
+      "location": "Indonesia (exact facility location not publicly provided here)",
+      "status": "Commercial cloud services live",
+      "it_capacity_mw_verified": null,
+      "source_date": "2026-05-29",
+      "source_url": "https://news.microsoft.com/source/asia/2026/05/29/one-year-of-indonesia-central-driving-innovation-empowering-the-nation-and-beyond/",
+      "note": "Live regional cloud service does not disclose facility MW or dedicated AI GPU capacity."
+    }
+  ],
+  "mineral_indicators": [
+    {
+      "id": "nickel-2025",
+      "commodity": "Nickel",
+      "measure": "Mine production (contained Ni)",
+      "year": 2025,
+      "value": 2600000,
+      "unit": "metric tonnes Ni",
+      "status": "USGS estimate",
+      "source_url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-nickel.pdf"
+    },
+    {
+      "id": "nickel-reserves",
+      "commodity": "Nickel",
+      "measure": "Economically recoverable reserves (Ni content)",
+      "year": 2026,
+      "value": 62000000,
+      "unit": "metric tonnes Ni",
+      "status": "USGS reported reserves",
+      "source_url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-nickel.pdf"
+    },
+    {
+      "id": "copper-manyar",
+      "commodity": "Copper",
+      "measure": "Manyar nominal smelter output capacity",
+      "year": 2024,
+      "value": 600000,
+      "unit": "metric tonnes copper per year",
+      "status": "USGS 2024 source baseline, not confirmation of 2026 output",
+      "source_url": "https://www.usgs.gov/centers/national-minerals-information-center/indonesia"
+    },
+    {
+      "id": "alumina-kalbar",
+      "commodity": "Alumina",
+      "measure": "Borneo Alumina Indonesia refinery nameplate",
+      "year": 2024,
+      "value": 1000000,
+      "unit": "metric tonnes alumina per year",
+      "status": "USGS: operations started Dec 2024; not aluminium metal",
+      "source_url": "https://www.usgs.gov/centers/national-minerals-information-center/indonesia"
+    }
+  ]
+}
