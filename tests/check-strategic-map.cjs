@@ -84,7 +84,10 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  const regional=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-regional-crosschecks.json"),"utf8")).records;
  const digital=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-digital-ai.json"),"utf8")).records;
  const pltu=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-pltu-pln-2025.json"),"utf8"));
- const total=assets.length+projects.length+infra.length+sites.length+wk.length+power.length+industry.length+regional.length+digital.length+pltu.records.length;
+ const smelters=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-smelter-2026.json"),"utf8"));
+ const extraSmelters=smelters.records.filter(r=>!r.original_id);
+ const fullSmelterCount=industry.filter(r=>/smelter|processing/i.test(r.group||"")).length+extraSmelters.length;
+ const total=assets.length+projects.length+infra.length+sites.length+wk.length+power.length+industry.length+regional.length+digital.length+pltu.records.length+extraSmelters.length;
  assert.equal(sites.length,31,"Expanded company-sourced site dossiers");
  assert.equal(wk.length,57,"WK historical operator layer");
  assert.equal(power.length,102,"All fossil, geothermal, hydro and solar directories");
@@ -94,7 +97,10 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.equal(digital.filter(r=>r.provinces[0]==="DKI Jakarta").length,5,"Five Jakarta dossiers");
  assert.equal(digital.filter(r=>r.provinces[0]==="Jawa Barat").length,9,"Nine West Java dossiers");
  assert.equal(pltu.records.length,21,"Twenty-one supplemental PLTU project/unit dossiers");
- assert.equal(total,372,"All ten registries combined (351 + 21)");
+ assert.equal(total,387,"Original registry baseline plus 15 genuinely additional smelter facilities");
+ assert.equal(fullSmelterCount,34,"19 older facilities plus 15 new, without double counting enrichments");
+ assert.equal(smelters.official_baseline.operating+smelters.official_baseline.development,28,"ESDM 2025 narrow cohort not a 2026 census");
+ assert.ok(smelters.records.every(x=>x.source.startsWith("https://")&&x.region&&x.province&&x.stage),"Enriched smelters all have sourced facility-level context");
  assert.ok(pltu.records.some(x=>x.asset.includes("Batang")&&x.region.includes("Jawa Tengah")&&x.capacity.value===2000),"Batang 2 x 1,000 MW");
  assert.ok(pltu.records.some(x=>x.asset.includes("Jawa 9")&&x.region.includes("Banten")),"Jawa 9/10 2025 COD");
  assert.ok(pltu.records.some(x=>x.asset.includes("Celukan Bawang")&&x.region.includes("Bali")),"Bali coal IPP");
@@ -104,7 +110,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(all.some(x=>x.className==="map-pln-baseline"),"Latest official PLN statistics have a visible panel");
  assert.ok(digital.every(r=>r.source_url.startsWith("https://")&&r.notes&&r.stage&&r.provinces.length===1),"All digital records have official company sources, status and province");
  assert.ok(regional.every(r=>Array.isArray(r.provinces)&&r.provinces.length>=1&&r.source_url.startsWith("https://")&&r.stage&&r.notes),"Regional record must have sourced province, stage and caveat");
- assert.equal(list().length,total,"Default shows all 372 records without recency cutoff");
+ assert.equal(list().length,total,"Default shows all 387 records without recency cutoff");
  const pointMarkers=all.filter(n=>n.className==="map-geopoint");
  assert.ok(pointMarkers.length>=20,"Geocoded project locality markers should span numerous source-named places");
  const batangg=pointMarkers.find(n=>String(n.attributes["aria-label"]||"").includes("Batang"));
@@ -183,6 +189,16 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Microsoft Indonesia Central"))),"Cloud region stays discoverable nationally");
  assert.ok(list().length>=25,"Digital view includes existing records and 14 new records");
  reset.events.click();
+ const smelterPreset=all.find(n=>n.className==="map-btn map-smelter-preset");
+ assert.ok(smelterPreset,"Dedicated smelter map preset");
+ smelterPreset.events.click();
+ assert.equal(dataset.value,"smelters","Smelter map filter is active");
+ assert.equal(list().length,fullSmelterCount,"34 smelter/project dossiers, no duplicates in dedicated tracker");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("BNSI Sambalagi"))),"2026 Sambalagi HPAL evidence is on map");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Ownership / equity"))),"Equity/ownership details available");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("ACTUAL reported output"))),"Measured production shown separately from nameplate capacity");
+ assert.ok(all.some(x=>x.className==="map-pln-baseline map-smelter-baseline"),"2025 official ESDM reference separate from tracker");
+ reset.events.click();
  province.value="Kepulauan Riau";province.events.change();
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Equator Gate System"))),"EGS Batam must appear in Riau Islands");
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("South Natuna Sea Block B"))),"Natuna must appear in Riau Islands");
@@ -230,5 +246,5 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  ctx.window.SLIi18n.language="id";
  await ctx.window.initSLIStrategicMap(); // same root intentionally cached
  assert.ok(flatten(root).some(n=>n.textContent==="Peta Investasi dan Energi Indonesia")===false,"cached root unchanged until language event");
- console.log("PASS: map geography and 372 records; normalized sector/type/lifecycle, all facilities retained, PLN PLTU, glossary >=80 bilingual definitions");
+ console.log("PASS: map geography and 387 records incl. 2026 smelter tracker; normalized sector/type/lifecycle, all facilities retained, PLN PLTU, glossary >=80 bilingual definitions");
 })().catch(e=>{console.error(e);process.exitCode=1});
