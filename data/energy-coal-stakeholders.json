@@ -1,0 +1,721 @@
+{
+  "as_of": "2026-10-15",
+  "title_en": "COAL STAKEHOLDER INTELLIGENCE",
+  "title_id": "INTELIJEN PEMANGKU KEPENTINGAN BATUBARA",
+  "description_en": "A standalone stakeholder map linking coal mining licences, SOE shareholding, IUP/IUPK holders, BUMS groups, domestic PLTU and industrial buyers, export logistics, fiscal receipts and public oversight.",
+  "description_id": "Peta pemangku kepentingan yang menghubungkan perizinan batubara, kepemilikan BUMN, pemegang IUP/IUPK, grup swasta, pembeli PLTU dan industri, logistik ekspor, penerimaan fiskal, serta pengawasan publik.",
+  "notes_en": [
+    "Mining concessions and RKAB/HBA/DMO oversight belong to ESDM's Minerba authorities, not to Danantara or company shareholders. A coal IUP/IUPK is different from an upstream oil/gas PSC.",
+    "MIND ID's direct PT Bukit Asam holding, the broader Danantara portfolio, private coal groups and PLN coal demand are analytically linked but do not form a single chain of corporate command.",
+    "The 2025 coal GDP, coal production, coal DMO and Minerba-wide PNBP series have different populations and accounting methods: never add or substitute them."
+  ],
+  "notes_id": [
+    "Pengawasan izin tambang dan RKAB/HBA/DMO merupakan kewenangan instansi Minerba ESDM, bukan Danantara atau pemegang saham perusahaan. IUP/IUPK batubara berbeda dari KKS hulu migas.",
+    "Kepemilikan PTBA oleh MIND ID, portofolio Danantara, grup tambang swasta dan permintaan PLN terkait secara analitis tetapi bukan satu rantai atasan langsung.",
+    "PDB batubara, produksi batubara, DMO dan PNBP seluruh minerba tahun 2025 berbeda cakupan dan basis akuntansi; jangan dicampur atau dijumlahkan."
+  ],
+  "groups": [
+    {
+      "id": "authority",
+      "en": "Public policy, fiscal and SOE rights",
+      "id_label": "Kebijakan publik, fiskal, dan hak BUMN",
+      "color": "#D8BD80"
+    },
+    {
+      "id": "licensing",
+      "en": "Licensing, HBA, RKAB and environmental control",
+      "id_label": "Perizinan, HBA, RKAB, dan lingkungan",
+      "color": "#83BACB"
+    },
+    {
+      "id": "state",
+      "en": "BUMN mining, PLN and public infrastructure",
+      "id_label": "BUMN tambang, PLN, dan infrastruktur publik",
+      "color": "#82B5A3"
+    },
+    {
+      "id": "private",
+      "en": "Indonesian private mining companies (BUMS)",
+      "id_label": "Perusahaan tambang swasta nasional (BUMS)",
+      "color": "#B9A2D8"
+    },
+    {
+      "id": "market",
+      "en": "DMO, transport, trading and end-users",
+      "id_label": "DMO, transportasi, perdagangan, dan pengguna",
+      "color": "#D9A780"
+    },
+    {
+      "id": "oversight",
+      "en": "Parliament, provinces and public accountability",
+      "id_label": "DPR/DPD, daerah, dan akuntabilitas publik",
+      "color": "#95AED6"
+    }
+  ],
+  "items": [
+    {
+      "group": "authority",
+      "name": "President / DEN — national energy direction",
+      "id_name": "Presiden / DEN — arah kebijakan energi",
+      "lead": "Prabowo Subianto · President / DEN chair",
+      "role": "National executive",
+      "summary_en": "Sets national energy-security direction; production ceilings, statutory permits and mine operating decisions belong to legally designated institutions.",
+      "summary_id": "Menetapkan arah ketahanan energi nasional; kuota produksi, izin, dan operasi tambang menjadi kewenangan instansi masing-masing.",
+      "source": "https://www.esdm.go.id/id/media-center/arsip-berita/usai-b50-pemerintah-siapkan-e50-langkah-baru-kurangi-ketergantungan-bbm-impor",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "authority",
+      "name": "Ministry of ESDM / Minister",
+      "id_name": "Kementerian ESDM / Menteri",
+      "lead": "Bahlil Lahadalia · Minister (as of Oct 2026)",
+      "role": "Energy-policy ministry",
+      "summary_en": "Sets ministerial coal-mining rules, domestic supply priorities, mine governance and energy-sector supervision. Do not confuse ministerial policy with corporate coal sales.",
+      "summary_id": "Menetapkan kebijakan pertambangan batubara, prioritas pasokan domestik dan pengawasan sektor; berbeda dari penjualan komersial operator.",
+      "source": "https://www.esdm.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "authority",
+      "name": "Ministry of Finance / fiscal policy",
+      "id_name": "Kementerian Keuangan / kebijakan fiskal",
+      "lead": "Minister and fiscal administration",
+      "role": "Fiscal authority",
+      "summary_en": "National budget, tax, state-revenue and mineral-coal non-tax revenue oversight; PNBP Minerba is not coal-only receipts.",
+      "summary_id": "Kebijakan APBN, perpajakan, dan PNBP minerba; realisasi PNBP minerba tidak sama dengan penerimaan batubara saja.",
+      "source": "https://www.kemenkeu.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "authority",
+      "name": "BP BUMN — strategic SOE rights",
+      "id_name": "BP BUMN — hak saham strategis",
+      "lead": "State-owned enterprise supervisory agency",
+      "role": "SOE governance",
+      "summary_en": "Represents the state's special shareholder and regulatory interests in Indonesian SOEs, not mine-permit approvals for independent companies.",
+      "summary_id": "Mengelola hak pemegang saham khusus negara dan tata kelola BUMN, bukan izin tambang bagi perusahaan swasta.",
+      "source": "https://perpajakan.ddtc.co.id/id/sumber-hukum/peraturan-pusat/undang-undang-16-tahun-2025",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "authority",
+      "name": "Danantara Indonesia — SOE investment",
+      "id_name": "Danantara Indonesia — investasi BUMN",
+      "lead": "BPI Danantara · investment/portfolio management",
+      "role": "SOE portfolio",
+      "summary_en": "Portfolio and capital-allocation layer for national SOEs. MIND ID and its mining subsidiaries have their own legal and commercial operating structures; private listed miners are not Danantara subsidiaries.",
+      "summary_id": "Pengelola portofolio dan modal BUMN; MIND ID beserta anak perusahaan tambangnya tetap memiliki tata kelola operasional masing-masing. Perusahaan swasta bukan anak usaha Danantara.",
+      "source": "https://www.danantaraindonesia.co.id/id/about",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "authority",
+      "name": "Ministry of Investment / BKPM",
+      "id_name": "Kementerian Investasi / BKPM",
+      "lead": "Government investment licensing and facilitation",
+      "role": "Investment coordination",
+      "summary_en": "Investment promotion and risk-based licensing interfaces for coal, processing, logistics and industrial investments; mineral concession approvals follow the applicable Minerba regime.",
+      "summary_id": "Fasilitasi investasi dan antarmuka perizinan usaha berbasis risiko; izin konsesi minerba mengikuti regulasi tersendiri.",
+      "source": "https://www.bkpm.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "authority",
+      "name": "Ministry of Energy Policy / DEN Secretariat",
+      "id_name": "Sekretariat Jenderal DEN",
+      "lead": "Dadan Kusdiana · Secretary General DEN",
+      "role": "Policy planning",
+      "summary_en": "Coordinates national energy-planning and supply-security studies; does not grant IUP, approve corporate coal shipments or directly operate mines.",
+      "summary_id": "Koordinasi studi perencanaan energi dan keamanan pasokan; tidak menerbitkan IUP ataupun menjalankan tambang.",
+      "source": "https://www.esdm.go.id/en/media-center/news-archives/den-gandeng-as-dan-jepang-siapkan-sdm-perkuat-misi-transisi-energi",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "licensing",
+      "name": "Directorate General of Minerals & Coal",
+      "id_name": "Direktorat Jenderal Mineral dan Batubara",
+      "lead": "Tri Winarno · Director General",
+      "role": "Central sector regulator",
+      "summary_en": "Responsible for technical Minerba rules, RKAB and mining-business oversight, reference prices (HBA/HPB), DMO and sector administration. It is a government regulator, not producer.",
+      "summary_id": "Regulator pusat minerba untuk RKAB, HBA/HPB, kepatuhan pertambangan dan DMO. Bukan badan usaha produsen batubara.",
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "licensing",
+      "name": "ESDM Mining Inspectors",
+      "id_name": "Inspektur Tambang ESDM",
+      "lead": "Functional mine inspection / safety corps",
+      "role": "Mining safety",
+      "summary_en": "Inspect technical compliance, mine safety and good-mining practice within statutory mandates; not production off-takers or holding-company directors.",
+      "summary_id": "Memeriksa kepatuhan teknis, keselamatan dan kaidah pertambangan yang baik menurut mandat; bukan pembeli atau pengelola korporasi.",
+      "source": "https://www.esdm.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "licensing",
+      "name": "ESDM HBA / HPB pricing administration",
+      "id_name": "Administrasi Harga Batubara Acuan / HPB",
+      "lead": "ESDM Minerba coal reference-price process",
+      "role": "Royalty price mechanism",
+      "summary_en": "Publishes reference coal prices for tax/royalty reference calculations; HBA is not the realized FOB price of every cargo or a fixed universal DMO selling price.",
+      "summary_id": "Menetapkan acuan harga batubara bagi basis perhitungan PNBP; HBA bukan harga transaksi setiap kargo maupun otomatis harga DMO semua pengguna.",
+      "source": "https://esdm.go.id/id/media-center/arsip-berita/esdm-tetapkan-hba-periode-pertama-agustus-2026-usd-12444-per-ton-turun-562-persen",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "licensing",
+      "name": "Ministry of Environment / BPLH",
+      "id_name": "Kementerian Lingkungan Hidup / BPLH",
+      "lead": "Environment regulator and impact assessments",
+      "role": "Environmental compliance",
+      "summary_en": "Environmental approvals, pollution enforcement, coal-ash and mining impacts under law; distinct from mineral production permits and coal-sale contracts.",
+      "summary_id": "Persetujuan lingkungan, pengawasan polusi, dan dampak pertambangan termasuk residu batubara; bukan pemegang izin operasi produksi.",
+      "source": "https://www.menlh.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "licensing",
+      "name": "Ministry of Forestry",
+      "id_name": "Kementerian Kehutanan",
+      "lead": "Forest-area use and restoration authorities",
+      "role": "Forest permits",
+      "summary_en": "Forest-zone use, rehabilitation and land-use interface for mining sites under applicable permits; forestry authorisation does not itself confer coal-production rights.",
+      "summary_id": "Persetujuan penggunaan kawasan hutan serta rehabilitasi di kawasan tambang; bukan kewenangan langsung memberi hak produksi batubara.",
+      "source": "https://www.kehutanan.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "licensing",
+      "name": "Geological Agency (Badan Geologi)",
+      "id_name": "Badan Geologi",
+      "lead": "ESDM geological mapping and research",
+      "role": "Resource knowledge",
+      "summary_en": "Geological exploration/resource datasets; inferred coal resources and proven mine reserves differ and should not be summed as if physically available for current shipments.",
+      "summary_id": "Pemetaan sumber daya geologi; sumber daya dan cadangan batubara bukan kategori yang sama dan tidak setara dengan pasokan siap kirim.",
+      "source": "https://geologi.esdm.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "state",
+      "name": "MIND ID — Indonesian mining SOE holding",
+      "id_name": "MIND ID — holding BUMN pertambangan",
+      "lead": "PT Mineral Industri Indonesia (Persero)",
+      "role": "State mining holding",
+      "summary_en": "Mining-sector corporate holding of PT Bukit Asam and other strategic mining assets. Direct coal production remains within PTBA and its operating subsidiaries.",
+      "summary_id": "Holding korporasi tambang yang membawahi PT Bukit Asam serta aset pertambangan lain; produksi batubara dilakukan PTBA dan perusahaan operasinya.",
+      "source": "https://mind.id/en/pages/members",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "state",
+      "name": "PT Bukit Asam Tbk (PTBA)",
+      "id_name": "PT Bukit Asam Tbk (PTBA)",
+      "lead": "MIND ID member · coal mining operator",
+      "role": "Public-listed mining SOE group",
+      "summary_en": "State-linked publicly listed coal producer with mines in South Sumatra and domestic PLTU supply; MIND ID states a 65.93% shareholding in PTBA (check current issuer register).",
+      "summary_id": "Produsen batubara terbuka grup BUMN dengan tambang Sumatra Selatan serta pasokan bagi PLTU; menurut MIND ID kepemilikannya 65,93%, perlu cocokkan daftar pemegang saham terbaru.",
+      "source": "https://mind.id/en/pages/members",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "state",
+      "name": "PT PLN (Persero) — power-sector buyer",
+      "id_name": "PT PLN (Persero) — pembeli sektor listrik",
+      "lead": "PLN Group · public utility",
+      "role": "SOE electricity buyer",
+      "summary_en": "Plans electricity system requirements and thermal-fuel demand through its generation portfolio; coal purchase and operation are distributed across subsidiaries and contract mandates.",
+      "summary_id": "Menentukan kebutuhan sistem listrik dan permintaan energi primer; pengadaan dan operasi PLTU dilaksanakan bersama entitas grup dan kontrak terkait.",
+      "source": "https://web.pln.co.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "state",
+      "name": "PT PLN Energi Primer Indonesia (PLN EPI)",
+      "id_name": "PT PLN Energi Primer Indonesia (PLN EPI)",
+      "lead": "PLN primary-energy procurement arm",
+      "role": "Coal procurement",
+      "summary_en": "Authorized procurement executor for coal needed by PLN / PLN Indonesia Power / PLN Nusantara Power; fuel requirements are set by relevant generators.",
+      "summary_id": "Pelaksana kuasa pengadaan batubara untuk kebutuhan PLN/PLN IP/PLN NP; kebutuhan bahan bakar ditetapkan pengelola PLTU terkait.",
+      "source": "https://plnepi.co.id/media-informasi/ruang-media/siaran-pers/pln-epi-perkuat-koordinasi-pengadaan-batubara-untuk-keandalan-pasokan-listrik",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "state",
+      "name": "PT PLN Indonesia Power",
+      "id_name": "PT PLN Indonesia Power",
+      "lead": "PLN Group generation company",
+      "role": "SOE PLTU operator",
+      "summary_en": "Runs and maintains generating assets, including coal-fired power plants; fuel consumption and commissioning are plant-specific.",
+      "summary_id": "Mengelola dan mengoperasikan pembangkit termasuk PLTU; realisasi pemakaian batubara dan kapasitas harus ditelusuri per unit pembangkit.",
+      "source": "https://www.plnindonesiapower.co.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "state",
+      "name": "PT PLN Nusantara Power",
+      "id_name": "PT PLN Nusantara Power",
+      "lead": "PLN Group generation company",
+      "role": "SOE PLTU operator",
+      "summary_en": "SOE power generation subsidiary with dispatch and plant performance responsibilities; contracts and coal requirement forecasts are separate from actual receipts.",
+      "summary_id": "Subholding pembangkitan PLN yang bertanggung jawab pada operasi unit; kebutuhan batubara dan volume diterima perlu dicatat terpisah.",
+      "source": "https://www.plnnusantarapower.co.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "state",
+      "name": "PT Kereta Api Indonesia (KAI)",
+      "id_name": "PT Kereta Api Indonesia (KAI)",
+      "lead": "BUMN freight railway operator",
+      "role": "Rail coal logistics",
+      "summary_en": "Provides railway freight network for PTBA coal logistics to Tarahan/Kertapati; not coal concession-holder.",
+      "summary_id": "Menyediakan layanan angkutan kereta batubara PTBA menuju Tarahan/Kertapati; bukan pemegang konsesi tambang.",
+      "source": "https://www.ptba.co.id/api/storage/1777608216188-530aad52-cfc2-40fc-8d3c-0afcaa236e6c.pdf",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "private",
+      "name": "PT Adaro Andalan Indonesia Tbk",
+      "id_name": "PT Adaro Andalan Indonesia Tbk",
+      "lead": "Indonesian private thermal-coal group",
+      "role": "Private holding",
+      "summary_en": "Listed private thermal-coal mining group, with mining operations through Adaro Indonesia and Balangan-related entities. Not a Danantara entity.",
+      "summary_id": "Grup tambang batubara termal swasta terbuka, termasuk operasi Adaro Indonesia dan perusahaan Balangan; bukan perusahaan Danantara.",
+      "source": "https://www.adaroindonesia.com/pages/view/Adaro_Mining.html",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "private",
+      "name": "PT Adaro Indonesia",
+      "id_name": "PT Adaro Indonesia",
+      "lead": "Adaro thermal-coal operating company",
+      "role": "Private coal IUPK holder",
+      "summary_en": "Operates Tutupan and Wara mines; corporate disclosures identify an IUPK continuing operations in production; separate parent ownership from specific permit entity.",
+      "summary_id": "Operator tambang Tutupan dan Wara; perusahaan menyebut dasar IUPK kelanjutan operasi, terpisah dari status induk usaha.",
+      "source": "https://www.adaroindonesia.com/pages/view/Adaro_Mining.html",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "private",
+      "name": "PT Bumi Resources Tbk",
+      "id_name": "PT Bumi Resources Tbk",
+      "lead": "Listed private coal group",
+      "role": "Private holding",
+      "summary_en": "Coal group linked to Kaltim Prima Coal and Arutmin operations; group sales, mine output and cash receipts must be separately reconciled.",
+      "summary_id": "Grup batubara swasta terbuka yang berkaitan dengan KPC dan Arutmin; produksi, penjualan dan penerimaan kas berbeda.",
+      "source": "https://www.bumiresources.com/en/about-us",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "private",
+      "name": "PT Kaltim Prima Coal (KPC)",
+      "id_name": "PT Kaltim Prima Coal (KPC)",
+      "lead": "Sangatta / Bengalon operating mines",
+      "role": "Private mine operator",
+      "summary_en": "Coal mine operator in East Kalimantan under a post-PKP2B IUPK; Bumi Resources publishes KPC's production and permit profile.",
+      "summary_id": "Operator tambang Sangatta dan Bengalon di Kalimantan Timur dengan IUPK setelah PKP2B; profil operasional dan izin tersedia pada keterbukaan BUMI.",
+      "source": "https://www.bumiresources.com/en/about-us/subsidiaries/detail/kaltim-prima-coal",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "private",
+      "name": "PT Arutmin Indonesia",
+      "id_name": "PT Arutmin Indonesia",
+      "lead": "South Kalimantan coal operations",
+      "role": "Private mine operator",
+      "summary_en": "Operating Indonesian coal subsidiary of Bumi Resources with domestic and export customers; corporate ownership is distinct from government concessions.",
+      "summary_id": "Operator batubara Kalimantan Selatan pada grup Bumi Resources bagi pasar domestik dan ekspor; kepemilikan berbeda dari konsesi pemerintah.",
+      "source": "https://www.bumiresources.com/en/about-us",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "private",
+      "name": "PT Bayan Resources Tbk",
+      "id_name": "PT Bayan Resources Tbk",
+      "lead": "Indonesian listed coal-mining group",
+      "role": "Private mining group",
+      "summary_en": "Publicly listed private coal-mining group in East/North Kalimantan, with mine-to-port logistics; separate the holding from concession subsidiaries.",
+      "summary_id": "Grup tambang batubara swasta terbuka di Kalimantan Timur/Utara dengan logistik tambang-ke-pelabuhan; bedakan induk dan pemegang IUP anak usaha.",
+      "source": "https://www.bayan.com.sg/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "private",
+      "name": "PT Indo Tambangraya Megah Tbk (ITM)",
+      "id_name": "PT Indo Tambangraya Megah Tbk",
+      "lead": "Listed private Indonesian coal group",
+      "role": "Private mining group",
+      "summary_en": "Indonesian listed coal group with mines and related coal logistics; individual IUP and shipping throughput require subsidiary-level verification.",
+      "summary_id": "Emiten batubara Indonesia yang memiliki tambang dan logistik terkait; izin dan volume pengiriman harus ditinjau per anak usaha.",
+      "source": "https://www.itmg.co.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "private",
+      "name": "PT Indika Energy Tbk",
+      "id_name": "PT Indika Energy Tbk",
+      "lead": "Listed Indonesian private energy group",
+      "role": "Private energy holding",
+      "summary_en": "Holding-company coal exposure through Kideco; its 2025 annual report notes Kideco as the largest consolidated revenue contributor.",
+      "summary_id": "Grup energi swasta terbuka dengan eksposur batubara melalui Kideco; laporan tahunan 2025 menempatkan Kideco sebagai kontributor pendapatan terbesar.",
+      "source": "https://www.indikaenergy.co.id/wp-content/uploads/2026/04/INDY-AR-2025.pdf",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "private",
+      "name": "PT Kideco Jaya Agung",
+      "id_name": "PT Kideco Jaya Agung",
+      "lead": "East Kalimantan private coal mine operator",
+      "role": "Private coal operator",
+      "summary_en": "Mine operator within Indika's coal group; 2025 production disclosed as 30.5 million tonnes, but do not treat 2025 production as automatically carried into 2026.",
+      "summary_id": "Operator tambang swasta grup Indika; laporan 2025 menyebut produksi 30,5 juta ton, tidak boleh otomatis dianggap realisasi 2026.",
+      "source": "https://www.indikaenergy.co.id/wp-content/uploads/2026/04/INDY-AR-2025.pdf",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "market",
+      "name": "DMO coal allocations for electricity",
+      "id_name": "Alokasi DMO batubara untuk pembangkit",
+      "lead": "ESDM allocations + licensed suppliers / PLN demand",
+      "role": "Domestic supply regime",
+      "summary_en": "Domestic supply policy involves the regulator, IUP/IUPK producers, PLN EPI, PLTU owners and other eligible consumers. An allocation is not evidence of delivery.",
+      "summary_id": "Pasokan domestik melibatkan regulator, pemegang izin tambang, PLN EPI, pemilik PLTU, dan pengguna lainnya. Alokasi tidak sama dengan realisasi penyerahan.",
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "market",
+      "name": "Tarahan & Kertapati coal corridors",
+      "id_name": "Koridor batubara Tarahan dan Kertapati",
+      "lead": "PTBA / PT KAI rail-port logistics",
+      "role": "Coal terminal / transport",
+      "summary_en": "PTBA connects mine conveyors and rail to Tarahan and Kertapati loading operations. Port handling and dispatch are different from national coal production.",
+      "summary_id": "Rantai logistik PTBA dari konveyor dan kereta ke terminal Tarahan/Kertapati. Volume pelabuhan/angkut berbeda dari produksi nasional.",
+      "source": "https://www.ptba.co.id/api/storage/1777608216188-530aad52-cfc2-40fc-8d3c-0afcaa236e6c.pdf",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "market",
+      "name": "Private coal barging & transshipment operators",
+      "id_name": "Operator tongkang & alih muat batubara swasta",
+      "lead": "Project- and route-specific BUMS shippers",
+      "role": "Commercial shipping",
+      "summary_en": "Licensed barges, tugboats, jetties and loading terminals connect inland mines to seaborne buyers; operators vary by concession and contract.",
+      "summary_id": "Operator tongkang, tugboat, jetty, serta terminal berizin menghubungkan tambang ke kapal ekspor/domestik; aktor berbeda menurut kontrak.",
+      "source": "https://www.ptba.co.id/api/storage/1777608216188-530aad52-cfc2-40fc-8d3c-0afcaa236e6c.pdf",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "market",
+      "name": "Domestic industrial coal customers",
+      "id_name": "Pelanggan batubara industri domestik",
+      "lead": "Cement, metals, industrial boilers",
+      "role": "Industrial end-users",
+      "summary_en": "Coal demand extends beyond PLN thermal generation to cement, metallurgy and industrial boilers; do not classify all DMO tonnage as PLN supply.",
+      "summary_id": "Permintaan domestik selain PLTU meliputi semen, metalurgi dan boiler industri; total DMO tidak seluruhnya diserap PLN.",
+      "source": "https://www.adaroindonesia.com/pages/view/Adaro_Mining.html",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "market",
+      "name": "APBI–ICMA coal industry association",
+      "id_name": "APBI–ICMA asosiasi batubara",
+      "lead": "Indonesian Coal Mining Association",
+      "role": "Industry representation",
+      "summary_en": "Industry association providing sector views and business advocacy; not a mining-regulation issuer or source of administrative permits.",
+      "summary_id": "Asosiasi usaha pertambangan batubara yang memberi masukan industri; bukan penerbit aturan atau izin tambang.",
+      "source": "https://apbi-icma.org/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "market",
+      "name": "International coal buyers and traders",
+      "id_name": "Pembeli dan pedagang batubara internasional",
+      "lead": "Cargo-specific buyers and commercial traders",
+      "role": "Export demand",
+      "summary_en": "Exposure to Chinese, Indian and other Asian offtakers influences sales/prices, but private buyers do not determine Indonesia's official HBA regulation.",
+      "summary_id": "Eksposur pembeli dan pedagang Tiongkok, India, dan Asia lain mempengaruhi permintaan/harga, tetapi bukan pembuat aturan HBA Indonesia.",
+      "source": "https://www.bumiresources.com/index.php/en/business-info",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "oversight",
+      "name": "DPR RI Commission XII",
+      "id_name": "DPR RI Komisi XII",
+      "lead": "Energy, minerals, environment scrutiny",
+      "role": "Parliamentary oversight",
+      "summary_en": "Examines sector rules, government performance, DMO/HBA/RKAB policy and environmental issues, not the daily management of private mines.",
+      "summary_id": "Mengawasi kebijakan minerba, DMO/HBA/RKAB, dan dampak lingkungan, bukan menjalankan tambang swasta.",
+      "source": "https://www.dpr.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "oversight",
+      "name": "DPR VI and DPR XI / Budget Committee",
+      "id_name": "DPR Komisi VI, XI, dan Banggar",
+      "lead": "SOE and fiscal legislative oversight",
+      "role": "Legislative oversight",
+      "summary_en": "Commission VI scrutinizes state enterprises; XI and Banggar examine fiscal revenue, tax, subsidies and macro budget implications. Keep committee jurisdictions separate.",
+      "summary_id": "Komisi VI mengawasi BUMN; Komisi XI dan Banggar terkait penerimaan fiskal, pajak dan pembahasan APBN. Wewenang tidak boleh dicampur.",
+      "source": "https://www.dpr.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "oversight",
+      "name": "DPD RI Committee II",
+      "id_name": "DPD RI Komite II",
+      "lead": "Regional natural-resource representation",
+      "role": "Regional oversight",
+      "summary_en": "Represents provincial mining, infrastructure, environmental and energy-access interests at national level; not a coal IUP issuer.",
+      "summary_id": "Menyuarakan kepentingan daerah tambang, infrastruktur, lingkungan, dan akses energi di tingkat nasional; bukan penerbit IUP.",
+      "source": "https://www.dpd.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "oversight",
+      "name": "Coal-producing provincial governments",
+      "id_name": "Pemerintah provinsi daerah penghasil batubara",
+      "lead": "East/South/Central Kalimantan and South Sumatra",
+      "role": "Regional delivery",
+      "summary_en": "Coordinate spatial, environmental and local logistics issues within delegated legal powers; licensing powers must be distinguished from central Minerba competencies.",
+      "summary_id": "Menangani tata ruang, dampak lingkungan, dan logistik daerah dalam batas delegasi; kewenangan izin tidak boleh disamakan dengan pemerintah pusat.",
+      "source": "https://www.kemendagri.go.id/",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "oversight",
+      "name": "BPS — coal & lignite GDP statistics",
+      "id_name": "BPS — statistik PDB batubara dan lignit",
+      "lead": "BPS-Statistics Indonesia",
+      "role": "Official GDP measure",
+      "summary_en": "Publishes coal/lignite mining gross value added as a separate GDP subindustry; neither total mining GDP nor export FOB revenues should be mislabeled coal-only GDP.",
+      "summary_id": "Menerbitkan nilai tambah bruto pertambangan batubara/lignit sebagai subkategori PDB; bukan seluruh PDB pertambangan atau nilai FOB ekspor.",
+      "source": "https://www.bps.go.id/en/statistics-table/3/UzFSTVVXUlliME5XYzBZNUwwNVFRa3h6Y1d3M1p6MDkjMyMwMDAw/produk-domestik-bruto-atas-dasar-harga-berlaku-menurut-lapangan-usaha---miliar-rupiah-.html",
+      "as_of": "2026-10-15"
+    },
+    {
+      "group": "oversight",
+      "name": "BPK RI — public-finance audit",
+      "id_name": "BPK RI — audit keuangan negara",
+      "lead": "State audit institution",
+      "role": "Financial accountability",
+      "summary_en": "Audits state financial management, including relevant public entities and government revenue; not the mine-licensing authority.",
+      "summary_id": "Memeriksa pengelolaan keuangan negara dan penerimaan pemerintah/entitas yang menjadi kewenangannya; bukan pemberi izin pertambangan.",
+      "source": "https://www.bpk.go.id/",
+      "as_of": "2026-10-15"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "gdp",
+      "value_en": "Rp 827.36 tn",
+      "value_id": "Rp827,36 T",
+      "label_en": "2025 coal & lignite GDP",
+      "label_id": "PDB pertambangan batubara & lignit 2025",
+      "note_en": "Current prices · BPS · provisional (**); mining value added, not exports",
+      "note_id": "Harga berlaku · BPS · sementara (**); nilai tambah, bukan ekspor",
+      "source": "https://www.bps.go.id/en/statistics-table/3/UzFSTVVXUlliME5XYzBZNUwwNVFRa3h6Y1d3M1p6MDkjMw%3D%3D/produk-domestik-bruto-atas-dasar-harga-berlaku-menurut-lapangan-usaha----miliar-rupiah---2019.html",
+      "series": "BPS Coal and Lignite Mining, GDP at current market prices, 2025",
+      "vintage": "2025",
+      "unit": "trillion IDR",
+      "scope": "coal+lignite GDP"
+    },
+    {
+      "id": "production",
+      "value_en": "817.48 Mt",
+      "value_id": "817,48 juta ton",
+      "label_en": "2025 coal production",
+      "label_id": "Produksi batubara 2025",
+      "note_en": "ESDM / Ditjen Minerba · realized, not 2026 target",
+      "note_id": "ESDM / Ditjen Minerba · realisasi, bukan target 2026",
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+      "vintage": "2025",
+      "unit": "million tonnes",
+      "scope": "coal production"
+    },
+    {
+      "id": "dmo",
+      "value_en": "246.88 Mt",
+      "value_id": "246,88 juta ton",
+      "label_en": "2025 domestic market obligation deliveries",
+      "label_id": "Pemenuhan DMO 2025",
+      "note_en": "ESDM · all eligible domestic end-users, not just PLN",
+      "note_id": "ESDM · termasuk pengguna domestik selain PLN",
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+      "vintage": "2025",
+      "unit": "million tonnes",
+      "scope": "coal DMO"
+    },
+    {
+      "id": "pnbp",
+      "value_en": "Rp 130.2 tn",
+      "value_id": "Rp130,2 T",
+      "label_en": "2025 total Minerba PNBP",
+      "label_id": "PNBP seluruh subsektor minerba 2025",
+      "note_en": "Minerals AND coal; not coal-only revenue; no claim of export receipts",
+      "note_id": "Mineral DAN batubara; bukan penerimaan khusus batubara atau ekspor",
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+      "vintage": "2025",
+      "unit": "trillion IDR",
+      "scope": "minerals + coal government PNBP"
+    }
+  ],
+  "issues": [
+    {
+      "id": "rkab",
+      "en": "RKAB, IUP/IUPK and production controls",
+      "id_label": "RKAB, IUP/IUPK, dan kendali produksi",
+      "route": [
+        "authority",
+        "licensing",
+        "state",
+        "private",
+        "oversight"
+      ],
+      "focus": [
+        "Separate approved RKAB, company targets and actual mined tonnage",
+        "Check IUP/IUPK/legacy PKP2B permit status company by company",
+        "Reconcile ESDM and corporate reporting for the same period"
+      ],
+      "focus_id": [
+        "Bedakan RKAB, target perusahaan dan tonase hasil tambang",
+        "Periksa izin IUP/IUPK/PKP2B per entitas",
+        "Cocokkan ESDM dan laporan emiten pada periode sama"
+      ]
+    },
+    {
+      "id": "dmo",
+      "en": "DMO coal supply and PLTU shortages",
+      "id_label": "Pasokan DMO dan risiko kekurangan PLTU",
+      "route": [
+        "authority",
+        "licensing",
+        "state",
+        "private",
+        "market",
+        "oversight"
+      ],
+      "focus": [
+        "Allocation is not delivered coal; verify PLN EPI procurement, coal quality and plant stock",
+        "Compare plant-specific inventories with demand and freight bottlenecks",
+        "Do not presume all DMO serves PLN; industrial buyers count too"
+      ],
+      "focus_id": [
+        "Kuota bukan realisasi; cek PLN EPI, kualitas batubara, dan stok PLTU",
+        "Cocokkan stok per PLTU dengan kebutuhan dan hambatan angkut",
+        "Tidak seluruh DMO untuk PLN; pengguna industri juga termasuk"
+      ]
+    },
+    {
+      "id": "revenue",
+      "en": "Coal GDP, export value and state revenue",
+      "id_label": "PDB batubara, ekspor dan penerimaan negara",
+      "route": [
+        "authority",
+        "licensing",
+        "state",
+        "private",
+        "market",
+        "oversight"
+      ],
+      "focus": [
+        "BPS GDP value added is different from export sales value and corporate revenue",
+        "2025 PNBP Rp130.2tn covers minerals and coal, not just coal",
+        "Price changes and output volume have different effects on GDP, royalties and local budgets"
+      ],
+      "focus_id": [
+        "PDB BPS adalah nilai tambah, berbeda dari nilai penjualan ekspor/omzet",
+        "PNBP Rp130,2 T pada 2025 mencakup mineral dan batubara",
+        "Harga dan volume memengaruhi PDB, royalti serta anggaran daerah secara berbeda"
+      ]
+    },
+    {
+      "id": "price",
+      "en": "HBA reference prices and fiscal exposure",
+      "id_label": "Harga HBA dan risiko fiskal",
+      "route": [
+        "authority",
+        "licensing",
+        "private",
+        "market",
+        "oversight"
+      ],
+      "focus": [
+        "Check the actual dated HBA reference and grade/calorific content",
+        "HBA is a royalty reference, not universal FOB/contract sale price",
+        "Check tax and royalty realization separately from quoted benchmark"
+      ],
+      "focus_id": [
+        "Periksa HBA bertanggal beserta kelas/kalori batubara",
+        "HBA acuan royalti, bukan semua harga transaksi FOB",
+        "Bedakan realisasi pajak/royalti dengan harga acuan"
+      ]
+    },
+    {
+      "id": "logistics",
+      "en": "Export and domestic coal logistics",
+      "id_label": "Logistik batubara ekspor dan domestik",
+      "route": [
+        "licensing",
+        "state",
+        "private",
+        "market",
+        "oversight"
+      ],
+      "focus": [
+        "Mine output, stockpile inventories, rail/river haulage and port throughput are distinct",
+        "Separate licensed exporter/trader, mining contractor and end-buyer",
+        "Watch shipping interruptions and affected electricity demand by location"
+      ],
+      "focus_id": [
+        "Produksi, stockpile, pengangkutan, dan throughput pelabuhan berbeda",
+        "Bedakan pemegang izin, pedagang, kontraktor angkutan, dan pembeli",
+        "Pantau gangguan logistik dan kebutuhan PLTU menurut lokasi"
+      ]
+    },
+    {
+      "id": "transition",
+      "en": "Coal emissions, mine closure and transition",
+      "id_label": "Emisi batubara, penutupan tambang dan transisi",
+      "route": [
+        "authority",
+        "licensing",
+        "state",
+        "private",
+        "oversight"
+      ],
+      "focus": [
+        "Coal mining GDP and dispatch dependence must be balanced against climate and rehabilitation obligations",
+        "Assess rehabilitation guarantees, local jobs, post-mining plans and future power replacement",
+        "Do not equate pledged closure or phase-down with a commissioned replacement plant"
+      ],
+      "focus_id": [
+        "Nilai PDB dan ketergantungan pasokan harus dianalisis bersama kewajiban iklim/reklamasi",
+        "Uji jaminan reklamasi, pekerja lokal, pascatambang dan pengganti kapasitas listrik",
+        "Komitmen penutupan bukan bukti pembangkit pengganti sudah beroperasi"
+      ]
+    }
+  ],
+  "reference_sources": [
+    {
+      "label": "BPS — coal/lignite GDP, 2025",
+      "url": "https://www.bps.go.id/en/statistics-table/3/UzFSTVVXUlliME5XYzBZNUwwNVFRa3h6Y1d3M1p6MDkjMw%3D%3D/produk-domestik-bruto-atas-dasar-harga-berlaku-menurut-lapangan-usaha----miliar-rupiah---2019.html"
+    },
+    {
+      "label": "ESDM — Minerba 2025 performance and DMO",
+      "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf"
+    },
+    {
+      "label": "Minerba mining-business law PP 39/2025",
+      "url": "https://www.peraturan.go.id/id/pp-no-39-tahun-2025"
+    },
+    {
+      "label": "MIND ID coal ownership and PTBA",
+      "url": "https://mind.id/en/pages/members"
+    },
+    {
+      "label": "PLN EPI coal procurement function",
+      "url": "https://plnepi.co.id/media-informasi/ruang-media/siaran-pers/pln-epi-perkuat-koordinasi-pengadaan-batubara-untuk-keandalan-pasokan-listrik"
+    }
+  ]
+}
