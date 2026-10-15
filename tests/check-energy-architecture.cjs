@@ -36,13 +36,14 @@ const order=["es-governance","es-scorecard","es-supply","es-economics","es-trans
 const positions=order.map(id=>html.indexOf('id="'+id+'"'));
 assert(positions.every(x=>x>=0));assert(positions.every((x,i)=>i===0||x>positions[i-1]),"Invalid strategic-to-technical section order");
 const mounts=[
- "energyGovernanceRoot","energyPolicyRoot","energyCCSRoot","energyEventsRoot","energyInfrastructureRoot",
+ "energyGovernanceRoot","energyOilGasStakeholdersRoot","energyCoalStakeholdersRoot","energyPolicyRoot","energyCCSRoot","energyEventsRoot","energyInfrastructureRoot",
  "energyFundamentalsRoot","energyFiscalRoot","energyPriceSection","energyBiofuelsRoot","energyEVRoot",
  "energyRUEDRoot","energyTransitionRoot","domesticRadarRoot","geoEvents","geoTopic","geoSearch",
  "energyChart","energyMetric","energyStyle","energyFrom","energyReset","energyCsv",
  "energyOverallAssessment","energyAppendixRoot"
 ];
 for(const id of mounts){const count=html.split('id="'+id+'"').length-1;assert.equal(count,1,"Mount id missing/duplicated: "+id)}
+assert(html.indexOf('id="energyGovernanceRoot"')<html.indexOf('id="energyOilGasStakeholdersRoot"')&&html.indexOf('id="energyOilGasStakeholdersRoot"')<html.indexOf('id="energyCoalStakeholdersRoot"')&&html.indexOf('id="energyCoalStakeholdersRoot"')<html.indexOf('id="energyPolicyRoot"'),"Separate oil/gas and coal stakeholder maps must precede the policy register");
 assert(html.indexOf('id="energyOverallAssessment"')>html.indexOf('id="energyEventsRoot"'));
 assert(html.indexOf('id="es-appendix"')>html.indexOf('id="energyOverallAssessment"'),"Appendix must follow full final assessment");
 assert(!html.includes('<h2>Strategic implications for Indonesia</h2>'),"Redundant analysis section survives");
@@ -60,6 +61,8 @@ assert(orig.refinery?.units.length>=6 && policy.governance?.layers?.length>=5,"D
 assert(fs.existsSync("css/energy-information-architecture.css"));
 assert(index.includes('css/energy-information-architecture.css'));
 assert(index.includes('css/energy-appendix.css')&&index.includes('js/energy-appendix.js'),"Glossary assets not linked");
+assert(index.includes('css/energy-coal-stakeholders.css')&&index.includes('js/energy-coal-stakeholders.js'),"Coal map assets not linked");
+assert(script[1].includes('initSLICoalStakeholders()'),"Coal module not initialized");
 assert(script[1].includes('initSLIEnergyAppendix()'),"Appendix is not initialized");
 assert(html.includes('data-sli-no-translate'),"Glossary terms must be protected from automatic translation substitutions");
 const glossary=JSON.parse(fs.readFileSync("data/energy-appendix.json","utf8"));
