@@ -11,7 +11,7 @@ const links=[
  ["Bank Indonesia — balance of payments and direct investment","https://www.bi.go.id/"],
  ["Indonesia Investment Authority","https://www.ina.go.id/"]
 ];
-const stages=["Announced","Permitted","Early works","Financed","Under construction","Commissioning","Operational","Suspended"];
+const stages=["Announced","Permitted","Early works","Financed","Under construction","Mixed implementation","Commissioning","Operational","Suspended"];
 const norm=v=>String(v||"").toLowerCase();
 window.initSLIInvestment=async function(){
  const root=document.getElementById("investmentRoot");if(!root)return;
@@ -21,10 +21,10 @@ window.initSLIInvestment=async function(){
  const intro=$("p",null,"Track policy-relevant investment through verifiable milestones. Announcements, financial commitments, realized investment statistics and operational assets are different measurements and must never be added together.");
  root.append(strap,title,intro);
  const nav=$("div","tr-jumpnav");
- [["inv-kpis","Investment evidence"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
+ [["inv-kpis","Investment evidence"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-commitments","Equity commitments"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
  heading(root,"National Investment Evidence","BKPM · BPS · BI / distinguish statistical definitions");
  const kpis=$("div","grid tr-grid");kpis.id="inv-kpis";
- const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Verified projects","0 published","Only source-dated project records appear in the registry"]];
+ const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Source-dated project / programme records","0 published","Includes individual projects, programme milestones and portfolios; not all represent delivered assets"]];
  const values=[];
  labels.forEach(([name,value,note])=>{const c=$("div","card tr-kpi");c.style.cursor="default";c.append($("div","eyebrow",name));const v=$("h2","tr-value",value);values.push(v);c.append(v,$("p",null,note));kpis.append(c)});root.append(kpis);
  const warning=$("div","tr-note","Data integrity: national PMA/PMDN realization, announced capex, committed financing and cumulative project cost have different scopes. No unsourced aggregate is presented as live data.");root.append(warning);
@@ -65,6 +65,9 @@ window.initSLIInvestment=async function(){
  const revenueTable=$("div","pf-table-wrap");rev.append(revenueTable);
  const finance=box(root,"Debt facilities are NOT realized project investments");finance.id="inv-financing";
  const financeContent=$("div");finance.append(financeContent);
+ const commitments=box(root,"Conditional equity & project financing commitments");commitments.id="inv-commitments";
+ commitments.append($("p","tr-detail","A signed conditional subscription is not verified paid-in capital. A US$200m component of an US$800m project is NOT US$1bn of additional capital."));
+ const commitmentsContent=$("div","pf-table-wrap");commitments.append(commitmentsContent);
  const corporate=box(root,"Verified corporate capital expenditure (actual spend)");corporate.id="inv-corporate-capex";
  corporate.append($("p","tr-detail","Company-reported capex is separate from announcements, signed financing facilities and BKPM national capital realization. Reporting boundaries may cover projects outside Indonesia."));
  const corporateContent=$("div","pf-table-wrap");corporate.append(corporateContent);
@@ -127,6 +130,19 @@ window.initSLIInvestment=async function(){
     const tr=$("tr");[x.entity,x.document+" · "+x.date,x.status].forEach(v=>tr.append($("td",null,v)));
     const td=$("td");td.append(source(x.source,"Filing"));tr.append(td);b.append(tr)
    });t.append(b);filingContent.append(t)
+  }
+  if(Array.isArray(evidence.capital_commitment_ledger)&&evidence.capital_commitment_ledger.length){
+   const t=$("table");t.innerHTML="<thead><tr><th>Investor / project</th><th>Conditional capital</th><th>Total project value</th><th>Closed / paid?</th><th>Verified source</th></tr></thead>";
+   const b=$("tbody");
+   evidence.capital_commitment_ledger.forEach(x=>{
+    const tr=$("tr");
+    [x.entity+" · "+x.project,"US$"+x.total_usd_million+"m","US$"+x.total_project_usd_million+"m",x.paid_in_capital_verified===null?"Not independently verified":String(x.paid_in_capital_verified)].forEach(v=>tr.append($("td",null,v)));
+    const td=$("td");td.append(source(x.source,"Signed CSSA announcement"));tr.append(td);b.append(tr)
+   });t.append(b);commitmentsContent.append(t);
+  }
+  if(Array.isArray(evidence.programme_overlap_rules)&&evidence.programme_overlap_rules.length){
+   const discl=$("details");const summ=$("summary",null,"Project overlap & double-counting safeguards");discl.append(summ);
+   const ul=$("ul");for(const item of evidence.programme_overlap_rules)ul.append($("li",null,item.explanation));discl.append(ul);section.append(discl);
   }
   const projectRows=Array.isArray(evidence.projects)?evidence.projects:[];
   const existing=new Set(records.map(x=>x.name));
