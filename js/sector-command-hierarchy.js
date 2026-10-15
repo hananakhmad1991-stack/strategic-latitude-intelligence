@@ -1,0 +1,80 @@
+/* SLI source-dated TOP-DOWN institutional / corporate organization explorer */
+(function(){"use strict";
+const el=(tag,cl,text)=>{const x=document.createElement(tag);if(cl)x.className=cl;if(text!==undefined)x.textContent=String(text);return x};
+const link=(url,label)=>{const a=el("a","sli-hier-link",label||"Original source ↗");if(/^https:\/\//.test(url||"")){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}else{a.textContent="No verified source"}return a};
+const typeName={root:"National direction",policy:"Policy coordination",reporting:"Administrative reporting",portfolio:"State portfolio",equity:"Shareholding / member",minority:"Minority investment / associate",oversight:"Independent constitutional oversight",research:"Research / applied innovation",coordination:"Strategic coordination / collaboration","strategic-interface":"Functional demand interface","joint-venture":"Joint venture / cross-holding",market:"Independent commercial market","security":"Cybersecurity"};
+function init(which,root){if(!root)return;root.replaceChildren(el("p","sli-hier-status","Loading verified institutional and corporate hierarchy…"));
+fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Hierarchy source unavailable");return r.json()}).then(db=>{
+ const record=db.sectors?.[which];if(!root.isConnected||!record)return;
+ const actors=record.nodes||[],market=record.market||[],byId=new Map(actors.map(x=>[x.id,x]));
+ const rootNode=actors.find(x=>x.relation==="root");if(!rootNode)throw Error("Missing president root");
+ const main=el("section","sli-hier-root");
+ const h=el("div","sli-hier-header");h.append(el("div","eyebrow","INSTITUTIONAL & CORPORATE COMMAND STRUCTURE"),el("h3",null,"President → Ministries / Danantara → Directorates & Operators"),el("p",null,"Top-down official and ownership pathways. Independent parliament/audit bodies and private foreign investors appear in separate functional lanes."));
+ const tools=el("div","sli-hier-tools"),search=el("input","sli-hier-search"),expand=el("button","sli-hier-button","Expand all"),collapse=el("button","sli-hier-button","Collapse all"),filter=el("select","sli-hier-select");
+ search.type="search";search.placeholder="Find people, directorates, companies…";search.setAttribute("aria-label","Search the hierarchy");
+ const opts=[["all","All relationships"],["policy","Policy & regulation"],["portfolio","Danantara & state enterprises"],["research","BRIN / research / defense"],["market","Independent private & foreign"]];
+ for(const [key,title] of opts){const op=el("option",null,title);op.value=key;filter.append(op)}
+ for(const button of [expand,collapse])button.type="button";
+ tools.append(filter,search,expand,collapse);main.append(h,tools);
+ const top=el("div","sli-hier-president"),lanes=el("div","sli-hier-lanes"),outsiders=el("section","sli-hier-market"),info=el("aside","sli-hier-profile");
+ main.append(top,lanes,outsiders,info);
+ const legend=el("div","sli-hier-legend");for(const [key,title] of Object.entries(typeName)){if(["reporting","policy","portfolio","equity","minority","research","market","oversight","joint-venture"].includes(key))legend.append(el("span","sli-hier-key "+key,title))}main.append(legend);
+ main.append(el("p","sli-hier-foot",db.updated_note+" Reported shareholding and direct official reporting must not be conflated with coordination or related-industry links."));
+ root.replaceChildren(main);
+ const defaultExpanded=new Set(["pres","minister","industrial","investment","komdigi","dgE","dgI","bpi","dam","mind","telkom","brin"]);
+ let openIds=new Set(defaultExpanded);
+ let selectedId="pres";
+ function profile(a){
+ info.replaceChildren(el("div","eyebrow","SOURCE-DATED ACTOR PROFILE"),el("h4",null,a.title));
+ if(a.person)info.append(el("p","sli-hier-person","Actor / leader: "+a.person));else info.append(el("p","sli-hier-missing","Named incumbent is not independently verified in this register."));
+ info.append(el("p",null,a.role),el("p","sli-hier-type","Relationship: "+(typeName[a.relation]||a.relation)));
+ if(a.stake)info.append(el("p","sli-hier-stake","Reported stake: "+a.stake));
+ if(a.affiliation)info.append(el("p",null,"Corporate affiliation: "+a.affiliation));
+ info.append(el("p","sli-hier-provenance","Evidence class: "+a.verification+" · research snapshot "+db.as_of),link(a.source,"View original institutional or issuer source ↗"));
+ const path=[];let p=a;while(p&&path.length<8){path.unshift(p.title);p=byId.get(p.parent)}
+ if(path.length>1)info.append(el("p","sli-hier-path","Trace: "+path.join(" → ")));
+ }
+ function card(a,depth=0){
+ const wrap=el("div","sli-hier-entry "+a.relation),btn=el("button","sli-hier-card"+(selectedId===a.id?" selected":""),undefined);
+ btn.type="button";btn.append(el("small",null,(typeName[a.relation]||a.relation)+" · L"+depth),el("strong",null,a.title));
+ if(a.person)btn.append(el("span","sli-hier-lead",a.person));
+ if(a.stake)btn.append(el("span","sli-hier-share",a.stake));
+ btn.addEventListener("click",()=>{selectedId=a.id;profile(a);draw()});wrap.append(btn);return wrap
+ }
+ function nested(a,depth,scope,maxDepth=8){
+ const node=card(a,depth),children=actors.filter(x=>x.parent===a.id&&!["oversight","strategic-interface"].includes(x.relation)&&!["market"].includes(x.relation));
+ if(children.length&&depth<maxDepth){const disclosure=el("button","sli-hier-toggle",(openIds.has(a.id)?"−":"+")+" "+children.length+" subordinate / linked entities");disclosure.type="button";
+ disclosure.setAttribute("aria-expanded",String(openIds.has(a.id)));disclosure.addEventListener("click",()=>{if(openIds.has(a.id))openIds.delete(a.id);else openIds.add(a.id);draw()});node.append(disclosure);
+ if(openIds.has(a.id)){const branch=el("div","sli-hier-children");for(const ch of children)branch.append(nested(ch,depth+1,scope,maxDepth));node.append(branch)}}
+ return node
+ }
+ function marketPanel(){
+ outsiders.replaceChildren(el("h4",null,"PRIVATE, FOREIGN & COMMERCIAL PARTNERS"),el("p",null,"Independent market ecosystem. These companies are not subordinate to Indonesia's President or ministries; relationships require specific JV/equity evidence."));
+ const groups=el("div","sli-hier-market-grid");for(const a of market){if(query&&![(a.title||""),(a.person||""),a.role,a.affiliation].join(" ").toLowerCase().includes(query))continue;groups.append(card(a,1))}outsiders.append(groups);
+ }
+ let query="";
+ function draw(){
+ query=search.value.trim().toLowerCase();const mode=filter.value||"all";
+ top.replaceChildren(card(rootNode));
+ lanes.replaceChildren();outsiders.hidden=mode!=="all"&&mode!=="market";
+ let first=actors.filter(a=>a.parent==="pres"&&!["oversight"].includes(a.relation));
+ if(mode==="policy")first=first.filter(a=>["policy"].includes(a.relation));
+ if(mode==="portfolio")first=first.filter(a=>a.id==="bpi"||a.id==="bpbum");
+ if(mode==="research")first=first.filter(a=>["research","strategic-interface"].includes(a.relation)||a.id==="defense"||a.id==="highered");
+ if(mode==="market")first=[];
+ for(const a of first){const branch=el("article","sli-hier-lane");branch.append(nested(a,1,mode));lanes.append(branch)}
+ const independent=actors.filter(a=>["oversight","strategic-interface"].includes(a.relation) || (a.parent&&a.parent==="defense"&&a.relation==="strategic-interface"));
+ if(["all","policy","research"].includes(mode)){const sep=el("article","sli-hier-independent");sep.append(el("h4",null,"INDEPENDENT OVERSIGHT & INDUSTRIAL DEMAND"),el("p",null,"Oversight bodies and defence industry are *not* ministry directorates or Danantara subsidiaries by virtue of this diagram."));const box=el("div","sli-hier-market-grid");for(const a of independent)box.append(card(a));sep.append(box);lanes.append(sep)}
+ marketPanel();
+ if(query){
+  const matches=[...actors,...market].filter(x=>[x.title,x.person,x.role].join(" ").toLowerCase().includes(query));
+  const result=el("div","sli-hier-search-hits");result.append(el("h4",null,"Matching actors · "+matches.length));for(const a of matches.slice(0,20)){const b=el("button","sli-hier-match",a.title+(a.person?" · "+a.person:""));b.type="button";b.addEventListener("click",()=>{selectedId=a.id;if(a.parent){let p=a;while(p){openIds.add(p.id);p=byId.get(p.parent)}}profile(a);search.value="";draw()});result.append(b)}lanes.prepend(result)}
+ }
+ expand.addEventListener("click",()=>{openIds=new Set(actors.map(x=>x.id));draw()});
+ collapse.addEventListener("click",()=>{openIds=new Set();draw()});
+ search.addEventListener("input",draw);filter.addEventListener("change",draw);
+ profile(rootNode);draw();
+}).catch(error=>{console.error("[SLI command hierarchy]",error);root.replaceChildren(el("p","sli-hier-status","Hierarchy data cannot be loaded. The Energy-style institutional network remains available below."))});
+}
+window.initSLICommandHierarchy=init;
+})();
