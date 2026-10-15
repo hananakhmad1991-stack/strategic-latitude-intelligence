@@ -16,6 +16,35 @@ window.initSLIInvestmentSectorEvidence=async function(){
  for(const x of d.sector_history){const o=E("option",null,String(x.year));o.value=String(x.year);yearSelect.append(o)}
  yearSelect.value=String(d.sector_history[d.sector_history.length-1].year);
  const lbl=E("label",null,"Observation year");lbl.append(yearSelect);controls.append(lbl);root.append(controls);
+ const historical=E("div","tr-chart");historical.style.marginBottom="14px";
+ const chartSelect=E("select","tr-select");
+ [["total","Total ESDM"],["migas","Oil & gas"],["minerba","Mineral & coal"],["power","Electricity"],["ebt","EBTKE"]].forEach(([v,label])=>{const opt=E("option",null,label);opt.value=v;chartSelect.append(opt)});
+ const chartLbl=E("label",null,"Historical series");chartLbl.append(chartSelect);
+ const chartControls=E("div","tr-controls");chartControls.append(chartLbl);root.append(chartControls,historical);
+ function renderTrend(){
+  historical.replaceChildren();
+  const svgNS="http://www.w3.org/2000/svg",S=(tag,attrs,text)=>{const n=document.createElementNS(svgNS,tag);Object.entries(attrs||{}).forEach(([k,v])=>n.setAttribute(k,String(v)));if(text!==undefined)n.textContent=String(text);return n};
+  const W=820,H=285,L=59,R=27,T=22,B=45,pw=W-L-R,ph=H-T-B;
+  const metric=chartSelect.value,series=d.sector_history,max=Math.max(...series.map(p=>p[metric]))*1.2;
+  const x=i=>L+pw*i/(series.length-1),y=n=>T+ph*(1-n/max);
+  const svg=S("svg",{viewBox:"0 0 820 285",style:"width:100%;min-width:520px;display:block",role:"img","aria-label":"ESDM sector investment historical comparison from 2019 through 2025, US dollar billions"});
+  for(let i=0;i<=4;i++){
+   const val=max*i/4,yy=y(val);svg.append(S("line",{x1:L,x2:W-R,y1:yy,y2:yy,stroke:"#36546b","stroke-width":1}));
+   const t=S("text",{x:L-12,y:yy+4,"text-anchor":"end","font-size":11,fill:"#a9bfd2"},val.toFixed(1));svg.append(t)
+  }
+  const points=series.map((p,i)=>x(i)+","+y(p[metric])).join(" ");
+  svg.append(S("polyline",{points,fill:"none",stroke:"#d7b678","stroke-width":3}));
+  series.forEach((p,i)=>{
+   const node=S("circle",{cx:x(i),cy:y(p[metric]),r:6,fill:"#d7b678",stroke:"#0b2033","stroke-width":2,tabindex:"0",role:"button","aria-label":"View "+p.year+", US$"+money(p[metric])+" billion"});
+   node.append(S("title",{},"US$"+money(p[metric])+"bn · "+p.year));
+   const choose=()=>{yearSelect.value=String(p.year);renderYear()};
+   node.addEventListener("click",choose);node.addEventListener("keydown",evt=>{if(evt.key==="Enter"||evt.key===" "){evt.preventDefault();choose()}});
+   svg.append(node);
+   svg.append(S("text",{x:x(i),y:H-19,"text-anchor":"middle","font-size":11,fill:"#adc4d5"},String(p.year)));
+  });
+  historical.append(svg);
+ }
+ chartSelect.addEventListener("change",renderTrend);renderTrend();
  const total=E("div","inv-sector-summary"),details=E("div","inv-sector-bars");
  root.append(total,details);
  const parts=[["Oil & gas","migas"],["Mineral & coal","minerba"],["Electricity","power"],["Renewables (EBTKE)","ebt"]];
