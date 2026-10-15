@@ -1,0 +1,130 @@
+{
+  "as_of": "2026-10-15",
+  "methodology": "Figures are independently scoped. BKPM investment realization differs from announced project capital and from PNBP. Values use original currencies and units.",
+  "national": {
+    "period": "2026-H1",
+    "unit": "IDR trillion",
+    "total": 1010.6,
+    "pma": 507.6,
+    "pmdn": 502.9,
+    "downstream": 300.1,
+    "target_2026": 2041.3,
+    "year_on_year_pct": 7.2,
+    "source": "https://www.bkpm.go.id/index.php/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung"
+  },
+  "regional": {
+    "period": "2026-Q2",
+    "unit": "IDR trillion",
+    "values": [
+      {
+        "name": "DKI Jakarta",
+        "value": 94.9
+      },
+      {
+        "name": "West Java",
+        "value": 61.3
+      },
+      {
+        "name": "North Maluku",
+        "value": 40.2
+      },
+      {
+        "name": "East Java",
+        "value": 40.1
+      },
+      {
+        "name": "Central Sulawesi",
+        "value": 36.6
+      }
+    ],
+    "source": "https://bkpm.go.id/id/info/siaran-pers/investment-realization-reaches-idr-1-010-6-trillion-in-the-first-half-of-2026-creating-1-4-million-jobs"
+  },
+  "revenue": [
+    {
+      "sector": "Minerals & coal (combined)",
+      "value": 135.16,
+      "period": "2025 full year",
+      "category": "PNBP",
+      "source": "https://www.esdm.go.id/en/media-center/news-archives/hasil-dari-perbaikan-tata-kelola-harga-komoditas-membaik-dan-pnbp-meningkat"
+    },
+    {
+      "sector": "Minerals & coal (combined)",
+      "value": 108.13,
+      "period": "2026 Jan–Aug",
+      "category": "PNBP",
+      "source": "https://www.esdm.go.id/en/media-center/news-archives/hasil-dari-perbaikan-tata-kelola-harga-komoditas-membaik-dan-pnbp-meningkat"
+    },
+    {
+      "sector": "Oil",
+      "value": 74.88,
+      "period": "2025 full year",
+      "category": "PNBP SDA",
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf"
+    },
+    {
+      "sector": "Natural gas",
+      "value": 27.94,
+      "period": "2025 full year",
+      "category": "PNBP SDA",
+      "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Integrated EV battery ecosystem",
+      "investor": "ANTAM · IBC · Ningbo Contemporary Brunp Lygend (CBL)",
+      "sector": "Critical minerals",
+      "region": "West Java",
+      "stage": "Under construction",
+      "evidence_date": "2025-06-29",
+      "reported_amount": 5.9,
+      "currency": "USD billion",
+      "amount_basis": "Announced integrated ecosystem project investment; not verified realized capex",
+      "status_note": "Groundbreaking confirmed; individual component commissioning needs verification",
+      "next_step": "Track construction, plant commissioning, battery production and offtake",
+      "source_url": "https://www.gatrik.esdm.go.id/assets/uploads/download_index/files/51378-bahan-kementerian-perindustrian.pdf"
+    },
+    {
+      "name": "Microsoft Indonesia cloud and AI program",
+      "investor": "Microsoft",
+      "sector": "AI infrastructure",
+      "region": "Indonesia (multi-location program)",
+      "stage": "Announced",
+      "evidence_date": "2026-09-24",
+      "reported_amount": 1.7,
+      "currency": "USD billion",
+      "amount_basis": "Public investment commitment, not confirmed expenditure or AI-only data center capex",
+      "status_note": "Government reaffirmed Microsoft investment commitment; not proof entire value was realized",
+      "next_step": "Track commercial milestones, infrastructure expenditure and workforce programs",
+      "source_url": "https://portal.komdigi.go.id/kanal-publik/berita-kini/10559"
+    },
+    {
+      "name": "13 strategic downstream projects — Phase II",
+      "investor": "Multiple SOEs coordinated by Danantara",
+      "sector": "Critical minerals",
+      "region": "Multiple Indonesian locations",
+      "stage": "Under construction",
+      "evidence_date": "2026-04-29",
+      "reported_amount": 116,
+      "currency": "IDR trillion",
+      "amount_basis": "Combined announced project investment for 13 projects, not realized expenditure",
+      "status_note": "BKPM announced collective groundbreaking; individual company allocations not disclosed in this source",
+      "next_step": "Track individual SPVs, contractor awards, drawdowns and COD",
+      "source_url": "https://www.bkpm.go.id/index.php/id/info/siaran-pers/kementerian-investasi-dan-hilirisasi-dukung-percepatan-13-proyek-hilirisasi-strategis-tahap-ii"
+    }
+  ],
+  "policy": [
+    {
+      "title": "2027 national investment target",
+      "amount": "Rp2,322 trillion",
+      "status": "Government target, not realized investment",
+      "source": "https://bkpm.go.id/id/info/siaran-pers/target-investasi-2027-rp2-322-triliun-keminveshil-bkpm-fokus-percepat-perizinan-dan-realisasi-proyek"
+    }
+  ],
+  "limitations": [
+    "Minerals and coal PNBP are combined in the cited release; do not assert a separate coal or critical-minerals amount.",
+    "No verified standalone national PNBP series for AI/data center revenue in selected sources.",
+    "Project values represent announced amounts, not verified spent capital.",
+    "The Q2 provincial figures are not cumulative H1 figures."
+  ]
+}
