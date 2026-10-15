@@ -178,5 +178,33 @@ if(which==="ai"){
  }).catch(()=>{status.textContent="AI monitoring snapshot unavailable; no headlines inferred.";});
 }
 const note=E("p","sli-research-footer","Source ownership: this chapter contains its own primary evidence; referenced trade, project, energy or regulatory datasets remain in their specialist dashboards. Method: figures retain their original reference year and unit. Announcements ≠ commitments ≠ construction ≠ commissioned assets. Missing or unpublished data are not zero. Industry and policy scenarios are editorial analysis, not measured probabilities.");root.append(note);}
+
+function makeEnergyStructure(which,root){
+ if(!["minerals","ai"].includes(which))return;
+ const labels=which==="minerals"?["Institutions & Policy","National Mineral Picture","Supply, Processing & Projects","Markets & Economics","Value Chains & Technology","Monitoring","Sources","Overall Assessment","Appendix · Glossary"]:["Institutions & Policy","National Infrastructure Picture","Sites & Project Delivery","Investment & Economics","Compute & Technology","Monitoring","Sources","Overall Assessment","Appendix · Glossary"];
+ const sections=labels.map((label,i)=>{let sec=E("section","es-stage sli-research-stage");sec.id=(which==="minerals"?"cm-":"ai-")+(i+1);let h=E("header","es-stage-head"),wrap=E("div");wrap.append(E("h2",null,label),E("p",null,["Institutional accountability and rules, with the legal register centralized in Policy & Risk.","Official baseline measures with units and dates.","Named assets, operators, sites and implementation stage.","Financial and market exposure without double counting.","Technical systems, local capability and industrial dependencies.","What is being monitored and what would verify it.","Original evidence and reporting scope.","Five source-informed strategic findings.","Definitions and limitations."][i]));h.append(E("span","es-stage-number",String(i+1).padStart(2,"0")),wrap);sec.append(h);return sec});
+ const children=[...root.children],foot=children.find(x=>x.classList.contains("sli-research-footer"));
+ for(const node of children){if(!node.classList.contains("sli-research-section"))continue;
+ const title=node.querySelector("h3")?.textContent||"";
+ if(title==="Stakeholder & Institution Mapping"){node.remove();continue}
+ let index=4;
+ if(/Institutional Accountability|Governance & Strategic Actors/.test(title))index=0;
+ else if(/National Mineral Baseline|National Capacity|Production and Processing Measures|Facility and Implementation Records|Measurement Framework/.test(title))index=1;
+ else if(/Named Projects|Operators, Projects|Project Implementation|Infrastructure Geography/.test(title))index=2;
+ else if(/Trade, Competitiveness|Market|Economics/.test(title))index=3;
+ else if(/Monitoring Priorities|Dated News Signals/.test(title))index=5;
+ else if(/Overall Strategic Assessment|SWOT/.test(title))index=7;
+ sections[index].append(node);
+ }
+ const seen=new Set(),sources=E("div","sli-research-grid");
+ for(const node of sections){for(const a of node.querySelectorAll('a[href^="https://"]')){if(seen.has(a.href)||seen.size>=35)continue;seen.add(a.href);let c=E("article","sli-research-card");c.append(E("h4",null,new URL(a.href).hostname),link(a.href,"Primary or attributed source ↗"));sources.append(c)}}
+ sections[6].append(sources);
+ const words=which==="minerals"?[["RKAB","Mining annual work and budget approval"],["MHP","Mixed hydroxide precipitate"],["NPI","Nickel pig iron"],["Contained metal","Element mass, not raw ore mass"],["Nameplate capacity","Rated plant capacity, not actual output"]]:[["IT MW","Computing equipment power load"],["MVA","Electrical apparent power, not IT MW"],["PUE","Total facility power divided by IT power"],["GPU","Graphics processing unit"],["Commissioning","Testing before commercial operations"]];
+ const glossary=E("div","sli-research-grid");for(const [term,desc] of words){let card=E("article","sli-research-card");card.append(E("h4",null,term),E("p",null,desc));glossary.append(card)}sections[8].append(glossary);if(foot)sections[8].append(foot);
+ const intro=E("div","es-intro");intro.append(E("div","eyebrow","STRATEGIC LATITUDE INTELLIGENCE · INDONESIA"),E("h2",null,which==="minerals"?"Critical Minerals Intelligence":"AI Infrastructure Intelligence"),E("p",null,"Institutional mapping, verified indicators, implementation, market exposure, technology, monitoring and strategic assessment."),E("p","es-discipline","Official source dates and measurement periods vary; announced assets are not operating capacity."));
+ const nav=E("nav","es-toc");nav.setAttribute("aria-label","Research topics");labels.forEach((label,i)=>{let a=link("#"+sections[i].id,"");a.append(E("span",null,String(i+1).padStart(2,"0")),document.createTextNode(label));a.addEventListener("click",e=>{e.preventDefault();sections[i].scrollIntoView({behavior:"smooth",block:"start"})});nav.append(a)});
+ root.replaceChildren(intro,nav,...sections);
+}
+
 window.initSLIResearch=draw;
 })();
