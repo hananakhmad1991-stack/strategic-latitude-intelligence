@@ -62,3 +62,33 @@
 .sli-sector-hierarchy-pane .sli-hier-root{margin-top:6px}
 .sli-sector-power-map>.sli-extra-network{margin:12px 0}
 @media(max-width:650px){.sli-sector-explorer-switcher{gap:5px;padding:4px}.sli-sector-explorer-tab{flex-basis:100%;font-size:12px;padding:10px 12px}}
+
+
+/* Clear functional ownership bands: Government / Danantara-SOEs / Private */
+.sli-hier-root>.sli-hier-header h3{font-size:clamp(22px,2.4vw,32px)}
+.sli-hier-root-label{color:#e1ca91;font-size:11px;font-weight:800;letter-spacing:1.5px;text-align:center;margin:14px 0 8px}
+.sli-hier-lanes{display:flex!important;flex-direction:column!important;gap:19px!important;margin:26px 0 18px!important}
+.sli-hier-domain{width:100%;min-width:0;padding:18px;border:1px solid #3b596f;border-radius:13px;background:#0f293c}
+.sli-hier-domain-head{display:grid;gap:6px;margin-bottom:16px}
+.sli-hier-domain-head .eyebrow{font-size:10px;letter-spacing:1.4px;color:#dfbf7d}
+.sli-hier-domain-head h4{font-size:clamp(17px,1.7vw,22px);color:#f0f5f7;line-height:1.3;margin:0}
+.sli-hier-domain-head p{font-size:12px;line-height:1.6;color:#b7cbda;margin:0;max-width:990px}
+.sli-hier-domain-count{display:inline-flex;justify-self:start;font-size:11px;color:#e5c88a;background:#1c3a50;padding:5px 9px;border-radius:6px}
+.sli-hier-domain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:12px;align-items:start}
+.sli-hier-domain.government{border-top:3px solid #80bdca}
+.sli-hier-domain.state{border-top:3px solid #d7b678}
+.sli-hier-domain.private{border-top:3px solid #ac9bd7}
+.sli-hier-market{border-top:none!important;padding:0!important;margin-top:16px}
+.sli-hier-market-classifications{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sli-hier-market-class{padding:12px;background:#142e42;border:1px solid #39546c;border-radius:10px;min-width:0}
+.sli-hier-market-class h5{color:#e4cc9f;font-size:12px;margin:0 0 9px;line-height:1.4}
+.sli-hier-market-class p{font-size:11px;line-height:1.55;color:#b5c8d5}
+.sli-hier-market-class .sli-hier-market-grid{display:grid;grid-template-columns:1fr;gap:9px;margin:11px 0 0}
+.sli-hier-market-class.domestic{border-top:2px solid #8bc5ad}
+.sli-hier-market-class.foreign{border-top:2px solid #9bb8d9}
+.sli-hier-market-class.joint{border-top:2px solid #c7a0cc}
+.sli-hier-independent{grid-column:auto!important;margin-top:16px}
+.sli-hier-entry.coordination>.sli-hier-card{border-left:3px solid #e2bd75}
+.sli-hier-entry.planning>.sli-hier-card{border-left:3px solid #9bc8ad}
+@media(max-width:1000px){.sli-hier-market-classifications{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.sli-hier-domain{padding:12px}.sli-hier-domain-grid{grid-template-columns:1fr}.sli-hier-market-classifications{grid-template-columns:1fr}.sli-hier-domain-head h4{font-size:18px}}
