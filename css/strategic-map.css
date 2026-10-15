@@ -55,3 +55,21 @@
 .map-digital-btn{border-color:#4c7187;background:#183c54;color:#e8f3fa}
 .map-digital-btn:hover{background:#2b536d;border-color:#dbc08c}
 @media(max-width:650px){.map-digital-shortcuts{gap:6px}.map-digital-btn{white-space:normal;text-align:center;flex:1 1 130px}}
+
+/* Province clusters with explicitly named island-group anchors, not facility GPS. */
+.map-site-cluster{cursor:pointer;outline:none}
+.map-site-cluster .map-site-bubble{pointer-events:all;cursor:pointer;stroke:#16334b;stroke-width:2;fill:#f6ca74}
+.map-site-cluster .map-site-bubble.chosen{fill:#ffd98e;stroke:#fff8e5;stroke-width:3}
+.map-site-cluster:focus-visible .map-site-bubble{stroke:#fff8e5;stroke-width:4}
+.map-site-label{pointer-events:none;fill:#f7d99d;font:700 11px/1.1 system-ui,Arial,sans-serif;letter-spacing:.8px;text-anchor:middle;paint-order:stroke;stroke:#0e293f;stroke-width:3px;stroke-linejoin:round}
+/* 2025 official PLN national reference, separate from plant-level projects and IPPs. */
+.map-pln-baseline{margin:12px 0 17px;padding:16px 17px;border:1px solid #4b6271;border-radius:11px;background:#0e283c;color:#c7dbe7}
+.map-pln-baseline-title{font-size:11px;font-weight:750;letter-spacing:1.2px;color:#e0c791;margin-bottom:10px}
+.map-pln-baseline-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.map-pln-baseline-card{padding:11px;background:#14364e;border:1px solid #3b586d;border-radius:8px;display:flex;flex-direction:column;gap:7px;min-width:0}
+.map-pln-baseline-card span{font-size:10px;color:#a8c9dc;line-height:1.3}
+.map-pln-baseline-card strong{font-size:16px;color:#f1e8d5;font-variant-numeric:tabular-nums;white-space:normal;overflow-wrap:anywhere}
+.map-pln-baseline .map-muted{margin-top:10px;line-height:1.5}
+.map-pln-baseline a{display:inline-block;color:#e7cb90;margin-top:4px}
+@media(max-width:1000px){.map-pln-baseline-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:550px){.map-pln-baseline{padding:12px}.map-pln-baseline-card{padding:9px}.map-pln-baseline-card strong{font-size:14px}}
