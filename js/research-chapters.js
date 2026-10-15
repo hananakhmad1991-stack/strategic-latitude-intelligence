@@ -62,7 +62,7 @@ ai:{name:"AI Infrastructure",subtitle:"From data-center announcements to energiz
 ["Strength","Domestic digital demand, large market and regional connectivity opportunity","Verify workload utilization and service-market uptake.",null],
 ["Weakness","Power reliability, skilled operations, cooling, cybersecurity and governance","Impacts vary sharply between campuses.",null],
 ["Opportunity","South Korea cooperation: power equipment, cooling, storage, workforce certification, cyber and applied AI","Track executed programs and local engineering outcomes.",null],
-["Threat","Financing conversion, technology restriction, security incidents and stranded capacity","Forward-looking qualitative scenario, not an independently validated forecast.",null]]]},
+["Threat","Financing conversion, technology restriction, security incidents and stranded capacity","Forward-looking qualitative scenario, not an independently validated forecast.",null]]]]},
 policy:{name:"Policy & Risk",subtitle:"A decision register linking legal status, implementation, cross-sector exposure and strategic watchpoints.",sections:[["00","Canonical Cross-Sector Policy Register","All legal instruments, proposed policies and regulatory implementation statuses live here. Sector chapters link to this page.",[
 ["Mineral & Coal Mining · Law 3/2020","Enacted mining-law amendment to Law 4/2009","Source: legal database; subsequent amendments and implementing rules require consolidated review.","https://peraturan.go.id/id/uu-no-3-tahun-2020"],
 ["National Energy Policy · Government Regulation 40/2025","Enacted national energy policy framework","Current KEN reference; do not conflate with historical RUEN 2025 targets.","https://peraturan.go.id/id/pp-no-40-tahun-2025"],
@@ -96,7 +96,7 @@ policy:{name:"Policy & Risk",subtitle:"A decision register linking legal status,
 ["Strength","Large market, diversified resources and downstream ambition","Trigger: confirmed production, service or investment milestone.",null],
 ["Weakness","Project data fragmentation and regional infrastructure gaps","Trigger: verified grid, logistics and implementation records.",null],
 ["Opportunity","Regional integration and higher domestic industrial value capture","Trigger: executed commercial agreements and capacity utilization.",null],
-["Threat","Geopolitical shocks and execution delays","Trigger: official policy action, shipment interruption or financial disclosure.",null]]]}
+["Threat","Geopolitical shocks and execution delays","Trigger: official policy action, shipment interruption or financial disclosure.",null]]]]}
 };
 const T=(en,id)=>window.SLIi18n?.language==="id"?id:en;
 const E=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n};
