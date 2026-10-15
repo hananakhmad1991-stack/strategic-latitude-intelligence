@@ -1,0 +1,50 @@
+{
+  "as_of": "2026-10-15",
+  "fx": {
+    "pair": "USD/IDR",
+    "value": 17898,
+    "currency": "IDR per USD",
+    "bid": 17808.51,
+    "ask": 17987.49,
+    "reference": "Bank Indonesia official USD transfer transaction midpoint (JISDOR basis), not instant broker spot",
+    "observed_date": "2026-10-15",
+    "quote_status": "Official business-day fixing",
+    "source": "https://www.bi.go.id/id/statistik/informasi-kurs/transaksi-bi/Default.aspx",
+    "last_checked_utc": null
+  },
+  "ihsg": {
+    "name": "IDX Composite (IHSG)",
+    "value": 5814.72,
+    "change_pct": -2.16,
+    "observed_date": "2026-10-15",
+    "quote_status": "Delayed data snapshot, NOT verified live or final official close",
+    "source": "https://id.investing.com/indices/idx-composite-historical-data",
+    "last_checked_utc": null,
+    "provider_quote_clock": "Source shows 11:59:59; time zone/status ambiguous, do not infer final session close"
+  },
+  "global_indicators": [
+    {
+      "name": "Global Innovation Index (WIPO)",
+      "value": 55,
+      "denominator": 139,
+      "unit": "rank of 139 economies",
+      "period": "2026",
+      "classification": "Innovation readiness comparator, NOT direct FDI attractiveness rank",
+      "source": "https://www.wipo.int/gii-ranking/en/indonesia"
+    },
+    {
+      "name": "Global FDI inflows (UNCTAD)",
+      "value": 1.6,
+      "unit": "USD trillion worldwide",
+      "period": "2025 (WIR 2026)",
+      "classification": "Global investment market size, NOT Indonesia FDI ranking or Indonesia inflows",
+      "source": "https://unctad.org/press-material/global-investment-rises-6-16-trillion-development-gains-remain-uneven"
+    }
+  ],
+  "market_data_policy": "Every quote shows its own observation date. If the scheduled provider fetch fails, keep the last verified observation with a clear stale indicator. Never invent real-time market ticks.",
+  "limitations": [
+    "FX is BI middle of transaction buy/sell quotes, not intraday USD/IDR streaming.",
+    "IHSG is a delayed vendor snapshot; provider time is ambiguous and cannot be presented as current close.",
+    "GII ranks innovation inputs/outputs, not total investment climate. UNCTAD worldwide FDI is not an Indonesian rank."
+  ]
+}
