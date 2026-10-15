@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-15T06:38:55.908001+00:00",
+  "generated_at_utc": "2026-10-15T12:40:55.453649+00:00",
   "date_wib": "2026-10-15",
   "time_zone": "Asia/Jakarta",
   "max_displayed": 5,
@@ -115,7 +115,12 @@
   ],
   "candidate_pool_count": 13,
   "discovered_from_official_iesr": 0,
-  "source_errors": [],
+  "source_errors": [
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    }
+  ],
   "policy": "Five upcoming/ongoing Indonesian energy events sorted by event start date. Past events automatically drop. Replacements come from pre-vetted organiser-dated catalog entries plus newly dated original IESR event pages. Other unverified event discoveries are not automatically promoted.",
   "disclaimer": "Event plans may change. Opening, registration, programme and venue should be confirmed at organiser links before travel. Failed source checks do not prove cancellations; newly found dates are not guessed."
 }
