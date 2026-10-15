@@ -216,5 +216,31 @@
     "2026 biodiesel volume data are incomplete as of 7 September; year-to-date distribution cannot be interpreted as final-year consumption.",
     "Risk concentration: BPDP funding balance, export-levy sensitivity, engine/fuel quality, terminal blending transition, CPO food-versus-fuel competition and land-use impacts.",
     "Bioethanol E10 remains planned for 2027 and E20 later; ESDM quoted ~8m kL E20 need in October, but active industrial-scale ethanol capacity, delivered fuel volumes, and binding implementation rules require verification."
-  ]
+  ],
+  "saf": {
+    "type": "Bioavtur / Sustainable Aviation Fuel (SAF), distinct from palm FAME biodiesel",
+    "current": {
+      "facility": "Pertamina Cilacap TDHT / co-processing, Central Java",
+      "reported_capacity_kl_per_day": 27,
+      "as_of": "2026-09-11",
+      "status": "Reported current operational-unit capacity; not audited annual SAF output",
+      "source": "https://bali.antaranews.com/amp/berita/413304/pertamina-sebut-proyek-kilang-bioavtur-cilacap-berpotensi-dongkrak-pdb-rp199-triliun"
+    },
+    "expansion": {
+      "facility": "Cilacap Bio-Refinery Phase 2",
+      "target_capacity_kl_per_day": 887,
+      "target_operations": 2029,
+      "status": "Project target; NOT currently operating at 887 kL/day",
+      "reported_capex_usd_billion": 1.1,
+      "source": "https://bali.antaranews.com/amp/berita/413304/pertamina-sebut-proyek-kilang-bioavtur-cilacap-berpotensi-dongkrak-pdb-rp199-triliun"
+    },
+    "other_projects": [
+      {
+        "site": "Banyuwangi fuel ethanol facility",
+        "status": "2026 project launch / groundbreaking mentioned by ESDM; no verified commissioning or annual fuel-ethanol nameplate",
+        "source": "https://www.esdm.go.id/en/media-center/news-archives/presiden-groundbreaking-tahap-ii-dari-kajian-satgas-hilirisasi-danantara-langsung-implementasi"
+      }
+    ],
+    "note": "Do not aggregate daily SAF processing/production capacity (kL/day) with annual FAME production capacity (million kL/year) or crude refining capacity (bpd). SAF may use UCO and co-processing rather than FAME."
+  }
 }
