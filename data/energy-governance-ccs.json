@@ -6,7 +6,7 @@
     "warning": "Functional influence/implementation map; NOT a statutory reporting-line organization chart. Leadership and institutional mandates change. Each actor has a source and review date.",
     "layers": [
       {
-        "title": "National direction and strategic policy",
+        "title": "National direction, new coordinating ministry and strategic policy",
         "actors": [
           {
             "name": "President / Dewan Energi Nasional (DEN)",
@@ -18,13 +18,22 @@
             "verified": "2026-01-28"
           },
           {
+            "name": "Kemenko Hilirisasi dan Transisi Energi",
+            "lead": "Bahlil Lahadalia · Coordinating Minister since 1 Oct 2026; concurrently Minister of ESDM",
+            "role": "Cross-ministry policy synchronization for downstream mineral/industrial value chains and energy transition; coordinates ESDM, investment and industry actors. Not a substitute for each sector ministry's formal licensing or operator execution.",
+            "scope": "Cross-ministry coordination",
+            "kind": "Strategy",
+            "source": "https://www.setneg.go.id/baca/index/usai_dilantik_presiden_prabowo_menko_bahlil_fokus_percepat_hilirisasi_dan_transisi_energi",
+            "verified": "2026-10-01"
+          },
+          {
             "name": "Kementerian ESDM / Minister",
-            "lead": "Bahlil Lahadalia · Minister of ESDM; DEN daily chair",
-            "role": "Leads energy regulation and ministerial direction across oil, gas, electricity, coal, renewables and CCS. Distinguish DEN coordination from the ministry's line functions.",
+            "lead": "Bahlil Lahadalia · Minister of ESDM AND Coordinating Minister for Downstreaming & Energy Transition (dual role, confirmed 14 Oct 2026)",
+            "role": "Line ministry responsible for sector regulation, under an additional cross-ministry policy-coordination layer established in October 2026. Dual appointments should not be represented as two different people.",
             "scope": "Energy regulation",
             "kind": "Regulator",
-            "source": "https://www.esdm.go.id/id/profil/struktur-organisasi",
-            "verified": "2026-10-15"
+            "source": "https://www.esdm.go.id/id/media-center/arsip-berita/hilirisasi-dan-transisi-energi-dikoordinasikan-satu-pintu-bahlil-dilantik-sebagai-menko",
+            "verified": "2026-10-14"
           },
           {
             "name": "Kementerian Keuangan",
@@ -43,6 +52,15 @@
             "kind": "Planning",
             "source": "https://esdm.go.id/id/media-center/arsip-berita/presiden-prabowo-lantik-ketua-harian-dan-anggota-den-periode-2026-2030",
             "verified": "2026-01-28"
+          },
+          {
+            "name": "Kementerian Investasi dan Hilirisasi / BKPM",
+            "lead": "Rosan Roeslani · Minister of Investment/Head of BKPM (14 Oct 2026 presidential meeting)",
+            "role": "Facilitates investment project approvals and promotion, distinct from ESDM technical energy licensing and operating data.",
+            "scope": "Investment coordination",
+            "kind": "Financier",
+            "source": "https://presidenri.go.id/siaran-pers/presiden-prabowo-instruksikan-transformasi-menyeluruh-pln-fokus-efisiensi-dan-percepat-energi-surya-100-gw/",
+            "verified": "2026-10-14"
           }
         ]
       },
@@ -157,6 +175,7 @@
       }
     ],
     "strategic_readout": [
+      "A new coordinating layer was established on 1 October 2026: Bahlil holds both the Coordinating Ministry for Downstreaming & Energy Transition and the ESDM line-minister role. Track the dual-hat governance interface and evolving decision authority.",
       "Approval is fragmented: strategy (DEN/President), regulations and subsurface (ESDM), contract execution (SKK Migas/BPMA), environmental safeguard (environment ministry), and project engineering (operators).",
       "For any CCS proposal, trace the operator, approved area and license, PoD/FID, verified injection measurement, liabilities and long-term MRV rather than equating cooperation MOUs with operational delivery.",
       "Fuel shortages belong primarily to downstream distribution and logistics; power outages to PLN/grid operations and regulators; upstream gas production to PSC contractors and SKK Migas."
@@ -165,6 +184,24 @@
   "policies": {
     "note": "Curated, source-dated policy register. 'Announced' is not enacted. The scheduled Official Source Watch scans for candidate releases, but requires analyst verification before adding or changing this list.",
     "items": [
+      {
+        "date": "2026-10-14",
+        "title": "Presidential direction: PLN transformation and accelerated 100 GW solar initiative",
+        "instrument": "Presidential instruction / 14 October official press release",
+        "status": "Announced — not enacted",
+        "sector": "Electricity",
+        "effect": "Strategic directive on PLN model, efficiency and 100 GW solar ambition. NOT a verified financed or commissioned 100 GW construction programme.",
+        "source": "https://presidenri.go.id/siaran-pers/presiden-prabowo-instruksikan-transformasi-menyeluruh-pln-fokus-efisiensi-dan-percepat-energi-surya-100-gw/"
+      },
+      {
+        "date": "2026-10-01",
+        "title": "New coordinating ministry for downstreaming and energy transition",
+        "instrument": "Keppres No. 104/P/2026 · appointment and dual ministerial mandate",
+        "status": "Official decision",
+        "sector": "Governance",
+        "effect": "Bahlil appointed Menko Hilirisasi & Transisi Energi while retaining Minister of ESDM; introduces coordination of energy transition with industrial downstreaming across ministries.",
+        "source": "https://www.setneg.go.id/baca/index/usai_dilantik_presiden_prabowo_menko_bahlil_fokus_percepat_hilirisasi_dan_transisi_energi"
+      },
       {
         "date": "2026-10-14",
         "title": "PLN leadership transition — Suroso Isnandar appointed President Director",
