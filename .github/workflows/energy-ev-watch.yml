@@ -1,0 +1,59 @@
+name: SLI Indonesia EV Mobility News Radar
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 */3 * * *"
+  push:
+    branches: [main]
+    paths:
+      - scripts/energy_ev_watch.py
+      - .github/workflows/energy-ev-watch.yml
+permissions:
+  contents: write
+concurrency:
+  group: sli-ev-mobility-radar
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scan attributed Indonesian EV and electrification source headlines
+        run: python scripts/energy_ev_watch.py
+      - name: Validate research categories and dated news JSON
+        run: |
+          python -m json.tool data/energy-ev.json >/dev/null
+          python -m json.tool data/energy-ev-watch.json >/dev/null
+          python -m py_compile scripts/energy_ev_watch.py
+          python - <<'PY'
+          import json
+          d=json.load(open("data/energy-ev.json",encoding="utf-8"))
+          assert d["cars"]["gaikindo_wholesale"]["value"]==117218
+          assert d["motorcycles"]["sales_2026"]["value"]==18900
+          assert d["targets"]["electric_two_wheelers_population"]==13000000
+          assert d["infrastructure"]["spklu_units"]["value"]==4769
+          assert d["cars"]["stock_verified"] is None
+          assert d["motorcycles"]["fleet_stock"]["value"]<d["targets"]["electric_two_wheelers_population"]
+          assert d["motorcycles"]["sales_2026"]["source"]!=d["motorcycles"]["srut_sales_2025"]["source"]
+          print("EV statistical definitions and target guardrails validated")
+          PY
+      - name: Publish source leads without losing concurrent updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp data/energy-ev-watch.json /tmp/sli-ev-watch.json
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main || exit 1
+            git reset --hard origin/main
+            cp /tmp/sli-ev-watch.json data/energy-ev-watch.json
+            git add data/energy-ev-watch.json
+            if git diff --cached --quiet; then echo "No update"; exit 0; fi
+            git commit -m "Refresh EV electric-car motorcycle SPKLU and battery policy radar"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
