@@ -1,17 +1,17 @@
 {
   "assessment_date_wib": "2026-10-15",
-  "generated_at_utc": "2026-10-15T02:36:41.097958+00:00",
+  "generated_at_utc": "2026-10-15T02:39:38.200165+00:00",
   "headline": "Indonesia Energy Security — Daily Overall Assessment",
   "status": "Automated evidence-led interpretation; news leads unverified, no LLM article-body verification",
   "method": "Deterministic editorial transmission framework sourced from dated official baselines and qualified, attributed public headline leads.",
   "baseline_fingerprint": "94f8dc22a6db81a51b3366afa1c11ab1f01ce7eda5279eacfb90edc071bf0839",
   "baseline_changed_since_previous": false,
-  "news_new_since_previous": 8,
-  "news_note": "8 newly identified attributed headline leads across the seven findings.",
+  "news_new_since_previous": 0,
+  "news_note": "No new qualifying headline leads relative to the previous assessment.",
   "news_freshness": {
     "domestic": {
       "source_checked_at_utc": "2026-10-15T01:47:16.153681+00:00",
-      "age_hours_at_generation": 0.8,
+      "age_hours_at_generation": 0.9,
       "usable": true
     },
     "geopolitical": {
@@ -25,7 +25,7 @@
       "id": "oil-gas",
       "heading": "01 · Oil & Gas Supply Resilience",
       "finding": "Indonesia's reported oil-field output averaged 581 thousand barrels/day in 2025, while gross gas production was 6,789 MMSCFD in 2025. Proved reserves reported for 2025 were 2.326 billion barrels of oil and 34.78 TSCF of gas. These are different stock and flow measures. For 2026, the BPH Migas Pertalite quota was 29.27 million kL and the subsidized diesel quota was 18.64 million kL (annual allocations, not observed October deliveries).",
-      "daily_signal": "Newly identified attributed headline (CNBC Indonesia, 15 Oct 2026 08:38 WIB): Suplai BBM Bali, Pertamina Perkuat Armada & Operasi Terminal 24 Jam - CNBC Indonesia. Analytical test: Assess regional stocks, last-mile fuel delivery and physical gas flows before attributing a supply problem to domestic crude production. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Previously monitored attributed headline (CNBC Indonesia, 15 Oct 2026 08:38 WIB): Suplai BBM Bali, Pertamina Perkuat Armada & Operasi Terminal 24 Jam - CNBC Indonesia. Analytical test: Assess regional stocks, last-mile fuel delivery and physical gas flows before attributing a supply problem to domestic crude production. The headline is not independently verified evidence of operational impact.",
       "implication": "Sustained supply resilience depends on replacement discoveries, operational delivery and refinery import needs. Regional fuel-availability headlines may point to distribution issues rather than changes in national production; LNG headlines do not prove Indonesian gas outages.",
       "verification_priority": "Monitor SKK Migas and ESDM revisions to actual output, domestic gas allocation, proved reserves and Pertamina/BPH Migas supply status.",
       "baseline_sources": [
@@ -51,7 +51,7 @@
           "category": "Fuel and LPG availability",
           "topic_id": "fuel",
           "kind": "attributed news headline, not independently verified",
-          "new_since_previous": true
+          "new_since_previous": false
         },
         {
           "title": "LNG price reviews in Asia: Implications of increased US supply - JD Supra",
@@ -61,7 +61,7 @@
           "category": "Asian LNG and gas",
           "topic_id": "",
           "kind": "attributed news headline, not independently verified",
-          "new_since_previous": true
+          "new_since_previous": false
         }
       ]
     },
@@ -69,7 +69,7 @@
       "id": "geopolitics",
       "heading": "02 · External Price & Maritime Exposure",
       "finding": "International oil, LNG and shipping shocks remain transmission risks for Indonesia's imported petroleum and energy-intensive industry. As of September 2026, combined energy subsidies AND compensation paid amounted to Rp376.8 trillion; this is not direct subsidies alone. The 1 October 2026 Pertalite reference price was Rp10,000/litre, not a live pump quote. Reported shipping headlines alone do not prove lost physical supply.",
-      "daily_signal": "Newly identified attributed headline (The New York Times, 15 Oct 2026 01:20 WIB): Attacks on Ships in Strait of Hormuz Escalate Sharply - The New York Times. Analytical test: Confirm actual tanker passages, freight/war-risk rates and oil or LNG loading volumes before treating shipping headlines as a physical supply loss. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Previously monitored attributed headline (The New York Times, 15 Oct 2026 01:20 WIB): Attacks on Ships in Strait of Hormuz Escalate Sharply - The New York Times. Analytical test: Confirm actual tanker passages, freight/war-risk rates and oil or LNG loading volumes before treating shipping headlines as a physical supply loss. The headline is not independently verified evidence of operational impact.",
       "implication": "A verified production outage or material shipping rerouting could affect crude and product prices, freight, insurance, the rupiah and the Indonesian Crude Price (ICP). A reported attack alone does not prove that Hormuz or Bab el-Mandeb has closed.",
       "verification_priority": "Check vessel traffic, insured voyages, refinery throughput, dated price observations and official statements before classifying an event as a supply disruption.",
       "baseline_sources": [
@@ -107,7 +107,7 @@
           "category": "Hormuz and Gulf energy",
           "topic_id": "",
           "kind": "attributed news headline, not independently verified",
-          "new_since_previous": true
+          "new_since_previous": false
         },
         {
           "title": "Houthi attacks add new geopolitical risk to softening container rates - FreightWaves",
@@ -117,7 +117,7 @@
           "category": "Red Sea and Bab el-Mandeb",
           "topic_id": "",
           "kind": "attributed news headline, not independently verified",
-          "new_since_previous": true
+          "new_since_previous": false
         }
       ]
     },
@@ -159,7 +159,7 @@
       "id": "power",
       "heading": "04 · Grid Reliability & Industrial Demand",
       "finding": "Electricity security must be evaluated through grid availability and restoration times, not installed capacity alone. Smelters, industrial estates and data centres are particularly dependent on reliable regional supply.",
-      "daily_signal": "Newly identified attributed headline (ANTARA News Jambi, 15 Oct 2026 07:56 WIB): Bahlil sebut listrik di Batam padam karena jaringan tersambar petir - ANTARA News Jambi. Analytical test: Verify outage location, utility-confirmed cause, restoration time and affected industrial load, rather than extrapolating one regional event nationally. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Previously monitored attributed headline (ANTARA News Jambi, 15 Oct 2026 07:56 WIB): Bahlil sebut listrik di Batam padam karena jaringan tersambar petir - ANTARA News Jambi. Analytical test: Verify outage location, utility-confirmed cause, restoration time and affected industrial load, rather than extrapolating one regional event nationally. The headline is not independently verified evidence of operational impact.",
       "implication": "Reported local blackouts can disrupt industry and data-centre operations. Their economic scale cannot be inferred without operator-confirmed duration, affected substations, customers and industrial load.",
       "verification_priority": "Verify each outage with the regional PLN operator; track interruption duration, cause, recovery, transmission constraints and the commissioning of firm supply.",
       "baseline_sources": [
@@ -179,7 +179,7 @@
           "category": "Electricity outages",
           "topic_id": "power",
           "kind": "attributed news headline, not independently verified",
-          "new_since_previous": true
+          "new_since_previous": false
         },
         {
           "title": "Dirut PLN Diganti di Tengah Masalah Listrik Batam Padam - detikFinance",
@@ -189,7 +189,7 @@
           "category": "Electricity outages",
           "topic_id": "power",
           "kind": "attributed news headline, not independently verified",
-          "new_since_previous": true
+          "new_since_previous": false
         }
       ]
     },
@@ -226,7 +226,7 @@
       "id": "carbon",
       "heading": "06 · Carbon Outcomes & Environmental Risk",
       "finding": "The BPS/KLHK inventory shown here ends in 2023; energy-sector emissions were 752.28 MtCO₂e and national emissions 1,360.35 MtCO₂e. These are emitted greenhouse gases, not reported avoided-emission achievements.",
-      "daily_signal": "Newly identified attributed headline (detikNews, 15 Oct 2026 08:17 WIB): Asap Karhutla Terasa di Singapura-Malaysia, BNPB Gencarkan Modifikasi Cuaca - detikNews. Analytical test: Verify observed fire area, duration, smoke dispersion and infrastructure proximity before inferring either an emissions increase or energy-system loss. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Previously monitored attributed headline (detikNews, 15 Oct 2026 08:17 WIB): Asap Karhutla Terasa di Singapura-Malaysia, BNPB Gencarkan Modifikasi Cuaca - detikNews. Analytical test: Verify observed fire area, duration, smoke dispersion and infrastructure proximity before inferring either an emissions increase or energy-system loss. The headline is not independently verified evidence of operational impact.",
       "implication": "Peatland and forest-fire conditions can affect land-use emissions, haze and infrastructure access; local fire reports do not on their own confirm damage to electricity or fuel assets. National net-zero progress should use updated inventories rather than assuming daily changes.",
       "verification_priority": "Review BNPB/BPBD and KLHK fire measurements, proximity to critical infrastructure, restoration work, and the next verified GHG inventory.",
       "baseline_sources": [
@@ -246,7 +246,7 @@
           "category": "Forest fires and haze",
           "topic_id": "forest_fire",
           "kind": "attributed news headline, not independently verified",
-          "new_since_previous": true
+          "new_since_previous": false
         },
         {
           "title": "Menhut Raja Juli tegaskan keseriusan pemerintah tangani karhutla di TNTP - ANTARA News Kalteng",
@@ -256,7 +256,7 @@
           "category": "Forest fires and haze",
           "topic_id": "forest_fire",
           "kind": "attributed news headline, not independently verified",
-          "new_since_previous": true
+          "new_since_previous": false
         }
       ]
     },
