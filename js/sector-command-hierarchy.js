@@ -61,7 +61,7 @@ source.then(db=>{
  return node
  }
 
- const govs=actors.filter(a=>a.lane==="government"&&a.id!=="pres");
+ const govs=actors.filter(a=>a.lane==="government"&&a.id!==rootNode.id);
  const states=actors.filter(a=>a.lane==="state");
  const independent=actors.filter(a=>a.lane==="oversight");
  const marketCategories=[
@@ -83,7 +83,7 @@ source.then(db=>{
   const show=domainVisible(filter.value||"all","government");
   if(!show)return;
   const mode=filter.value||"all";
-  const roots=govs.filter(a=>a.parent==="pres");
+  const roots=govs.filter(a=>a.parent===rootNode.id||!a.parent);
   let relevant=mode==="research"?roots.filter(a=>["research"].includes(a.relation)||a.id==="defense"||a.id==="highered"):
     mode==="policy"?roots.filter(a=>["policy","coordination","planning"].includes(a.relation)):roots;
   const section=renderSection("GOVERNMENT · POLICY & PUBLIC INSTITUTIONS",
