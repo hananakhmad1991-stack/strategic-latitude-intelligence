@@ -21,7 +21,7 @@ assert.equal(d.procurement.tkdn.actual_pct,23.46);
 assert.ok(d.procurement.tkdn.note.includes('self-assessment'));
 assert.equal(d.investment.categories.length,7);
 assert.equal(d.investment.total_minerba_usd_m,7008.13);
-assert.ok(d.investment.scope.includes('AND COAL'));
+assert.match(d.investment.scope,/minerals.*coal/i);
 const coal=d.investment.categories.filter(x=>x.coal_only);
 const mineral=d.investment.categories.filter(x=>x.minerals_only);
 assert.equal(coal.length,2);assert.equal(mineral.length,1);
