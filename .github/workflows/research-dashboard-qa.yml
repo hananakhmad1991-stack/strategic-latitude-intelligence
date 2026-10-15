@@ -5,6 +5,10 @@ on:
       - 'index.html'
       - 'js/research-chapters.js'
       - 'js/sector-stakeholder-explorer.js'
+      - 'js/sector-command-hierarchy.js'
+      - 'css/sector-command-hierarchy.css'
+      - 'data/sector-command-hierarchy.json'
+      - 'tests/qa-command-hierarchy.mjs'
       - 'css/stakeholder-map.css'
       - 'data/sector-governance-explorer.json'
       - 'tests/qa-sector-organigrams.mjs'
@@ -27,3 +31,5 @@ jobs:
         run: |
           node tests/qa-research-dashboard.mjs
           node tests/qa-sector-organigrams.mjs
+          node tests/qa-command-hierarchy.mjs
+          python scripts/validate_sector_hierarchy.py
