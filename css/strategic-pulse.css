@@ -1,0 +1,52 @@
+/* Indonesia Strategic Pulse — light, responsive, evidence-dated home experience */
+#sliPulse{margin:2px 0 22px;scroll-margin-top:16px}
+.sp-shell{border:1px solid #33536c;border-radius:15px;background:linear-gradient(148deg,#163249 0%,#0e2539 70%);overflow:hidden}
+.sp-shell button{font:inherit}
+.sp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:24px 25px 14px}
+.sp-eyebrow{text-transform:uppercase;letter-spacing:1.8px;font-size:10px;font-weight:750;color:#d7b678}
+.sp-title{font:normal clamp(26px,3vw,34px)/1.2 Georgia,serif;letter-spacing:-.3px;margin:7px 0}
+.sp-subtitle{font-size:12px;color:#afc7d9;max-width:740px;margin:7px 0}
+.sp-head-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+.sp-date{border:1px solid #54718a;padding:6px 11px;border-radius:16px;font-size:11px;color:#e0ebf1;white-space:nowrap}
+.sp-action,.sp-filter,.sp-route{border:1px solid #506e88;border-radius:9px;background:#17334a;color:#eef5fa;cursor:pointer;padding:8px 11px;min-height:36px;font-size:11px}
+.sp-action:hover,.sp-filter:hover,.sp-route:hover{border-color:#d7b678}
+.sp-action:focus-visible,.sp-filter:focus-visible,.sp-route:focus-visible,.sp-head a:focus-visible{outline:2px solid #d7b678;outline-offset:2px}
+.sp-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;padding:10px 25px 22px}
+.sp-kpi{background:#0a2134;border:1px solid #31506b;border-radius:11px;padding:15px;min-width:0}
+.sp-kpi-top{display:flex;justify-content:space-between;align-items:flex-start;gap:7px}
+.sp-kpi-label{font-size:11px;color:#b3cbdc;line-height:1.4}
+.sp-stamp{font-size:9px;white-space:nowrap;border:1px solid #577489;padding:2px 7px;border-radius:12px;color:#c5d3df}
+.sp-stamp.stale{color:#f1c988;border-color:#9a7247}
+.sp-stamp.unknown{color:#c6c6c6}
+.sp-kpi-value{font-size:clamp(18px,2vw,25px);font-weight:750;line-height:1.2;letter-spacing:-.4px;margin:10px 0 6px;color:#f7f2e7}
+.sp-kpi-foot{font-size:10px;color:#a7c0d2;line-height:1.45;min-height:30px}
+.sp-kpi a,.sp-foot a{font-size:10px;color:#dfc38f;text-decoration:underline;text-underline-offset:3px}
+.sp-columns{display:grid;grid-template-columns:1.12fr 1fr;gap:13px;padding:0 25px 17px}
+.sp-panel{background:#0b2235;border:1px solid #31506b;border-radius:11px;padding:19px;min-width:0}
+.sp-panel-title{margin:0 0 4px;font-size:16px;color:#f5f8fc}
+.sp-panel-sub{font-size:11px;color:#a9c0cf;margin:0 0 15px;line-height:1.5}
+.sp-meta{font-size:10px;color:#d9c49a;margin:5px 0 12px}
+.sp-brief{padding:11px 0;border-top:1px solid #2b465e}
+.sp-brief:first-of-type{border-top:none}
+.sp-brief strong{font-size:12px;color:#d9e8f5}
+.sp-brief p{font-size:11px;line-height:1.55;margin:5px 0;color:#aec7d8}
+.sp-brief summary{cursor:pointer;font-size:11px;color:#d7b678}
+.sp-signals{display:grid;gap:9px}
+.sp-filter-bar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:13px}
+.sp-filter[aria-pressed="true"]{background:#d7b678;border-color:#d7b678;color:#11283b;font-weight:750}
+.sp-signal{border-bottom:1px solid #2d4760;padding-bottom:9px}
+.sp-signal:last-child{border-bottom:none;padding-bottom:0}
+.sp-signal a{display:block;font-size:12px;color:#f1e6cf;line-height:1.45}
+.sp-signal-meta{font-size:10px;color:#9db6ca;margin-top:5px;line-height:1.5}
+.sp-signal-note{font-size:10px;color:#acc3d2;margin:4px 0 0}
+.sp-chips{display:flex;flex-wrap:wrap;gap:7px;margin:7px 0}
+.sp-chip{background:#183950;border:1px solid #42627b;border-radius:16px;padding:5px 9px;font-size:10px;color:#d6e6f1}
+.sp-next{margin:0 25px 16px;padding:14px 17px;border:1px solid #5d5c49;border-radius:9px;background:#1c3040}
+.sp-next h3{margin:0 0 6px;font-size:14px;color:#eed7a8}
+.sp-next p{margin:2px 0;font-size:11px;color:#b8cbd8}
+.sp-routes{display:flex;gap:9px;flex-wrap:wrap;margin:0 25px 17px}
+.sp-route{background:#1a3a53}
+.sp-foot{border-top:1px solid #38556c;padding:12px 25px 16px;color:#a7bac9;font-size:10px;line-height:1.6}
+.sp-err{padding:16px 25px;font-size:12px;color:#e0caa0}
+@media(max-width:1050px){.sp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.sp-columns{grid-template-columns:1fr}}
+@media(max-width:650px){.sp-head{display:block;padding:19px 15px 8px}.sp-head-actions{justify-content:flex-start;margin-top:11px}.sp-kpis{gap:8px;padding:9px 15px 17px}.sp-kpi{padding:11px}.sp-kpi-value{font-size:19px}.sp-columns{padding:0 15px 15px}.sp-panel{padding:14px}.sp-next{margin:0 15px 14px}.sp-routes{margin:0 15px 14px}.sp-foot{padding:12px 15px}.sp-kpi-top{display:block}.sp-stamp{display:inline-block;margin-top:6px}}
