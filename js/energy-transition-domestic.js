@@ -138,7 +138,7 @@ function buildDomestic(root,d){
   const data=await res.json();if(!Array.isArray(data.reports))throw Error("bad schema");
   controlsState.reports=data.reports;
   if(sectors){sectors.makeControls(sectorContainer,data.reports,"domestic",v=>{selectedSector=v;cat.value="all";draw()})}
-  const t=new Date(data.checked_at_utc),age=(Date.now()-t.getTime())/36e5;status.textContent=T("Latest saved scan: ","Pemindaian tersimpan: ")+(isNaN(t.getTime())?T("date unknown","tanggal tidak tersedia"):t.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+(age>6?T(" · Old feed; check timestamp"," · Data lama; periksa tanggal"):"")+" · "+data.reports.length+T(" attributed leads"," headline teratribusi");
+  const t=new Date(data.checked_at_utc),age=(Date.now()-t.getTime())/36e5;status.textContent=T("Latest saved scan: ","Pemindaian tersimpan: ")+(isNaN(t.getTime())?T("date unknown","tanggal tidak tersedia"):t.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+(age>6?T(" · Old feed; check timestamp"," · Data lama; periksa tanggal"):"")+" · "+data.reports.length+T(" attributed leads"," headline teratribusi")+((data.errors||[]).length?T(" · Partial source coverage ("," · Sebagian sumber gagal (")+(data.errors||[]).length+")":"");
   [...new Set(data.reports.map(x=>x.category))].sort().forEach(v=>{const o=dom("option",v);o.value=v;cat.append(o)});
   draw();
  }catch(err){status.textContent="Awaiting the first published domestic news dataset";listing.append(dom("p","The scheduled watcher has not yet produced a verified source feed. Dated official editorial notes remain visible below.","tr-detail"))}
