@@ -94,3 +94,28 @@
 .map-admin-reference:hover .map-admin-square,.map-admin-reference:focus-visible .map-admin-square{stroke:#fff9e8;stroke-width:2.5}
 .map-legend-pin{display:inline-block;width:12px;height:12px;vertical-align:middle;border-radius:50%;background:#45b6b1;border:1px solid #124057}
 .map-legend-admin{display:inline-block;width:11px;height:11px;vertical-align:middle;border:1px dashed #bec4cc;background:#172e43;border-radius:2px}
+
+/* SLI sector → asset → lifecycle taxonomy (October 2026): registry is advanced only. */
+.map-taxonomy-intro{margin:10px 4px 14px;padding:12px 15px;background:#17374b;border-left:3px solid #d3af70;border-radius:8px;color:#d9e8f3;font-size:12px;line-height:1.6}
+.map-type-label{font-size:11px;font-weight:750;color:#f1d8a8;background:#172f42;padding:10px 12px 7px;border-bottom:1px solid #345872;letter-spacing:.15px}
+.map-group-label{font-size:13px;letter-spacing:.4px;color:#f8e3b6;background:#234357;padding:12px}
+.map-advanced{margin:0 0 14px;padding:10px 14px;border:1px solid #3b586f;background:#102b40;border-radius:9px;font-size:12px;color:#c4d9e7}
+.map-advanced summary{cursor:pointer;font-weight:650;color:#d6c18f}
+.map-advanced .map-control{margin:12px 0 3px;display:flex;flex-direction:column;gap:6px;max-width:450px}
+.map-advanced select{width:100%;min-height:36px}
+.map-glossary-btn{margin:0 0 12px;border-color:#b99b65;background:#263f50;color:#f3e2c5;white-space:normal}
+.map-footer{scroll-margin-top:16px}
+.map-glossary-head{border-top:1px solid #416179;margin-top:12px;padding-top:12px}
+.map-glossary-head h3{margin:2px 0 8px;font-size:17px;color:#f4e4c4}
+.map-glossary-count{font-size:11px;color:#c7ad7c}
+.map-glossary-section,.map-registry-appendix{margin:10px 0;border:1px solid #3d5970;border-radius:10px;background:#122d42}
+.map-glossary-section>summary,.map-registry-appendix>summary{padding:13px 15px;cursor:pointer;color:#e7ecf5;font-weight:700;font-size:12px}
+.map-glossary-section[open]>summary,.map-registry-appendix[open]>summary{border-bottom:1px solid #3d5970}
+.map-terms{display:grid;grid-template-columns:minmax(120px,1fr) minmax(0,3fr);column-gap:16px;row-gap:0;margin:0;padding:6px 15px 15px}
+.map-terms dt,.map-terms dd{border-bottom:1px solid #345066;padding:10px 0;margin:0;font-size:11px;line-height:1.55}
+.map-terms dt{font-weight:700;color:#f0d8a4}
+.map-terms dd{color:#c1d4e3}
+.map-registry-appendix{padding-bottom:9px}
+.map-registry-appendix p{margin:7px 15px;font-size:11px;color:#b9cbd9}
+.map-registry-line{font-variant-numeric:tabular-nums}
+@media(max-width:650px){.map-taxonomy-intro{font-size:11px}.map-terms{grid-template-columns:1fr;gap:0}.map-terms dt{padding-bottom:2px;border-bottom:0}.map-terms dd{padding-top:1px}.map-glossary-btn{width:100%}}
