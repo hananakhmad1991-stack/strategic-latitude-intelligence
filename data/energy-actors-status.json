@@ -1,29 +1,10 @@
 {
-  "checked_at_utc": "2026-10-15T00:27:50.032327+00:00",
+  "checked_at_utc": "2026-10-15T00:30:33.038910+00:00",
   "verification_method": "Cabinet + ministry-source matching for ministers, role-linked ESDM leadership profile for director generals, expanded Pertamina/PLN/DPR/DPD/Presidential adviser public-source scans for candidate changes. News headlines cannot auto-replace non-government officeholders.",
-  "current_actor_count": 53,
+  "current_actor_count": 54,
   "official_sources_checked": 22,
   "verified_auto_changes": [],
-  "requires_review": [
-    {
-      "actor": "DPR RI · Komisi VI — BUMN",
-      "candidate": null,
-      "previous": "Anggia Erma Rini · Chair (11 February 2026 report)",
-      "reason": "Named incumbent absent from monitored source. Could be stale/blocked layout; no automatic removal or replacement.",
-      "sources": [
-        "https://www.dpr.go.id/"
-      ]
-    },
-    {
-      "actor": "DPD RI · Komite II — resources, energy, infrastructure",
-      "candidate": null,
-      "previous": "Badikenita Putri Br. Sitepu · Chair (October 2026 official DPD source)",
-      "reason": "Named incumbent absent from monitored source. Could be stale/blocked layout; no automatic removal or replacement.",
-      "sources": [
-        "https://orchard.dpd.go.id/daftar-berita/komite-ii-dpd-ri-serap-masukan-provinsi-sumatera-utara-dalam-penyusunan-pandangan-pendapat-dpd-ri-terhadap-ruu-perubahan-ketiga-undang-undang-lalu-lintas-dan-angkutan-jalan"
-      ]
-    }
-  ],
+  "requires_review": [],
   "appointment_headline_leads": [
     {
       "topic": "Power utility leadership",
@@ -300,26 +281,26 @@
     {
       "actor": "DPR RI · Komisi VI — BUMN",
       "primary_source": "https://www.dpr.go.id/",
-      "status": "source-available-review-needed",
+      "status": "source-available-name-not-found",
       "bytes_read": 853845,
       "last_published_person": "Anggia Erma Rini",
       "listed_person_appears_in_source": false,
-      "interpretation": "Named official absent from referenced source; targeted current-appointment review advised."
+      "interpretation": "No matching name in source; may be an old article, generic homepage or site formatting issue. Do not infer a leadership change without a current role-linked official appointment."
     },
     {
       "actor": "DPD RI · Komite II — resources, energy, infrastructure",
       "primary_source": "https://orchard.dpd.go.id/daftar-berita/komite-ii-dpd-ri-serap-masukan-provinsi-sumatera-utara-dalam-penyusunan-pandangan-pendapat-dpd-ri-terhadap-ruu-perubahan-ketiga-undang-undang-lalu-lintas-dan-angkutan-jalan",
-      "status": "source-available-review-needed",
+      "status": "source-available-name-not-found",
       "bytes_read": 218041,
       "last_published_person": "Badikenita Putri Br. Sitepu",
       "listed_person_appears_in_source": false,
-      "interpretation": "Named official absent from referenced source; targeted current-appointment review advised."
+      "interpretation": "No matching name in source; may be an old article, generic homepage or site formatting issue. Do not infer a leadership change without a current role-linked official appointment."
     },
     {
       "actor": "Penasihat Khusus Presiden Bidang Energi",
       "primary_source": "https://www.setneg.go.id/baca/index/presiden_prabowo_resmi_lantik_para_penasihat_khusus_utusan_khusus_dan_staf_khusus_presiden",
       "status": "source-available-review-needed",
-      "bytes_read": 68172,
+      "bytes_read": 68093,
       "last_published_person": "Purnomo Yusgiantoro",
       "listed_person_appears_in_source": true,
       "interpretation": "Source has candidate name; does not prove the role is still held (especially archival news)."
