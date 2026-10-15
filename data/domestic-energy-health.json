@@ -1,8 +1,36 @@
 {
-  "checked_at_utc": "2026-10-15T03:57:03.617375+00:00",
+  "checked_at_utc": "2026-10-15T04:57:14.358188+00:00",
   "found": 18,
   "errors": [],
   "topic_counts": [
+    {
+      "topic": "Oil & Gas · upstream / SKK Migas",
+      "found": 0
+    },
+    {
+      "topic": "Oil & Gas · LNG, HGBT & Jargas",
+      "found": 0
+    },
+    {
+      "topic": "Coal · production, RKAB & HBA",
+      "found": 0
+    },
+    {
+      "topic": "Coal · DMO, PLN & PLTU supply",
+      "found": 0
+    },
+    {
+      "topic": "NRE · solar and wind",
+      "found": 0
+    },
+    {
+      "topic": "NRE · geothermal and hydropower",
+      "found": 0
+    },
+    {
+      "topic": "NRE · regulation, financing and grid",
+      "found": 0
+    },
     {
       "topic": "Forest fires and haze",
       "found": 3
@@ -35,5 +63,12 @@
       "topic": "Floods and infrastructure disruption",
       "found": 0
     }
-  ]
+  ],
+  "sector_counts": {
+    "oil_gas": 9,
+    "coal": 0,
+    "nre": 3,
+    "electricity": 3,
+    "cross_cutting": 6
+  }
 }
