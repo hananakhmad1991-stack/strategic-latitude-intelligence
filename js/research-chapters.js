@@ -298,6 +298,11 @@ function makeEnergyStructure(which,root){
  // Mount four automatically refreshed, source-dated geopolitical and domestic signal lanes
  // inside the dedicated Monitoring chapter; preserve canonical statistics elsewhere.
  if(typeof window.initSLIResearchRadar==="function")window.initSLIResearchRadar(which,sections[5]);
+ if(which==="minerals"&&typeof window.initSLICommodityPrices==="function"){
+  const priceMount=E("div","sli-price-chapter-mount");
+  sections[3].append(priceMount);
+  window.initSLICommodityPrices(priceMount,"minerals");
+ }
  if(which==="minerals"&&typeof window.initSLIESDMMinerals==="function"){
   window.initSLIESDMMinerals(sections).catch(error=>{
    console.error("[SLI ESDM LAKIN 2025]",error);
