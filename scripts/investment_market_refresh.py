@@ -29,15 +29,15 @@ def money(text):
 
 def update_bi(d):
     raw=fetch("https://www.bi.go.id/id/statistik/informasi-kurs/transaksi-bi/Default.aspx")
-    rows=re.findall(r"<tr\\b[^>]*>(.*?)</tr>",raw,flags=re.I|re.S)
+    rows=re.findall(r"<tr\b[^>]*>(.*?)</tr>",raw,flags=re.I|re.S)
     for row in rows:
         clean=html.unescape(re.sub(r"<[^>]*>"," ",row))
-        if not re.search(r"\\bUSD\\b",clean,re.I):continue
-        nums=re.findall(r"\\d{1,3}(?:\\.\\d{3})+(?:,\\d{1,2})?",clean)
+        if not re.search(r"\bUSD\b",clean,re.I):continue
+        nums=re.findall(r"\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?",clean)
         if len(nums)<2:continue
         ask,bid=money(nums[-2]),money(nums[-1])
         if not(9000<bid<ask<30000):continue
-        date_match=re.search(r"Update Terakhir\\s*(\\d{1,2})\\s+(?:Oktober|October)\\s+(2026)",re.sub(r"<[^>]*>"," ",raw),re.I)
+        date_match=re.search(r"Update Terakhir\s*(\d{1,2})\s+(?:Oktober|October)\s+(2026)",re.sub(r"<[^>]*>"," ",raw),re.I)
         if not date_match:raise ValueError("BI updated date not verified for current 2026 source")
         observed="2026-10-"+str(int(date_match.group(1))).zfill(2)
         day=dt.date.fromisoformat(observed)
@@ -72,7 +72,7 @@ def main():
             print(f"Skipped {title}: {type(exc).__name__} — retained earlier dated observation")
     if done:
         d["last_refresh_attempt_utc"]=NOW.isoformat()
-        PATH.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+        PATH.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(f"Market sources refreshed: {done}/2; no fabricated intraday data")
 
 if __name__=="__main__":
