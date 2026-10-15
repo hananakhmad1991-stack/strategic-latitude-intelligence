@@ -214,7 +214,8 @@ def main():
                 row["listed_person_appears_in_source"]=agree_agency(actor["person_name"],flatten(markup))
                 row["interpretation"]="Source has candidate name; does not prove the role is still held (especially archival news)." if row["listed_person_appears_in_source"] else "Named official absent from referenced source; targeted current-appointment review advised."
                 if not row["listed_person_appears_in_source"]:
-                    needs.append({"actor":src["actor"],"candidate":None,"previous":actor["lead"],"reason":"Named incumbent absent from monitored source. Could be stale/blocked layout; no automatic removal or replacement.", "sources":[src["url"]]})
+                    row["status"]="source-available-name-not-found"
+                    row["interpretation"]="No matching name in source; may be an old article, generic homepage or site formatting issue. Do not infer a leadership change without a current role-linked official appointment."
         except Exception as ex:
             row["error"]=type(ex).__name__+": "+str(ex)[:140]
             errors.append({"source":src["url"],"error":row["error"]})
