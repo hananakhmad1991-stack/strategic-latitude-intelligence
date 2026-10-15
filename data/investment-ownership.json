@@ -10,7 +10,9 @@
     ],
     "bo_register": "https://www.ahu.go.id/pencarian/profil-pemilik-manfaat",
     "notice": "Indonesian AHU's beneficial ownership records are filed by companies or reporting agents and AHU notes it does not verify submitted information. Registry availability is not independent verification. Do not identify executives, ministers or owners of listed-company stakes as BO without direct evidence.",
-    "recency": "Source snapshots retain their own dates; entries older than 12 months should be rechecked."
+    "recency": "Source snapshots retain their own dates; entries older than 12 months should be rechecked.",
+    "remainder_policy": "A shareholder row explicitly labelled arithmetic remainder groups many owners only for visual completeness and is not a separate legal shareholder or ultimate owner. Do not attribute rights to it.",
+    "jv_policy": "A 2023 JV ownership announcement is a dated snapshot; current as-of 2026 share percentages require newer filings."
   },
   "entities": [
     {
@@ -428,6 +430,202 @@
         {
           "label": "JOGMEC JV participating-interest list",
           "url": "https://www.jogmec.go.jp/english/news/release/release_00140.html"
+        }
+      ]
+    },
+    {
+      "id": "byan",
+      "entity": "PT Bayan Resources Tbk (BYAN)",
+      "sector": "Energy",
+      "ownership_as_of": "2026-03-31",
+      "evidence_tier": "Company investor-relations shareholder list and controller disclosure",
+      "direct_shareholders": [
+        {
+          "name": "Dato' Dr. Low Tuck Kwong",
+          "pct": 40.22
+        },
+        {
+          "name": "Elaine Low",
+          "pct": 22
+        },
+        {
+          "name": "PT Sumber Suryadaya Prima",
+          "pct": 10
+        },
+        {
+          "name": "Public / other holders",
+          "pct": 27.78
+        }
+      ],
+      "ownership_chain": "Bayan directly identifies Low Tuck Kwong and Elaine Low among shareholders. PT Sumber Suryadaya Prima is separately recorded as a 10% corporate shareholder; its shareholder chain has not been established in this dossier.",
+      "control": "Bayan officially identifies Low Tuck Kwong as a primary and controlling shareholder with 40.22% voting shares. Do not automatically attribute Elaine Low's holdings to him or claim a 72.22% sole block.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "Corporate shareholding or reported individual shareholders alone are not sufficient for an independently verified natural-person BO determination; review company-specific AHU/filing evidence."
+      },
+      "risk": "Coal prices, mine/haul-road expansion, domestic offtake, environmental regulation and logistics capex may affect growth.",
+      "monitor": "Quarterly beneficial ownership and major holder updates; Tabang/North Pakar mine and logistics expansion disbursements.",
+      "sources": [
+        {
+          "label": "Bayan shareholder register 31 March 2026",
+          "url": "https://www.bayan.com.sg/shareholders-information"
+        },
+        {
+          "label": "Bayan controlling shareholder statement",
+          "url": "https://www.bayan.com.sg/primary-and-controlling-shareholders"
+        }
+      ]
+    },
+    {
+      "id": "aadi",
+      "entity": "PT Adaro Andalan Indonesia Tbk (AADI)",
+      "sector": "Energy",
+      "ownership_as_of": "2025-12-31",
+      "evidence_tier": "Official listed-company shareholder disclosure",
+      "direct_shareholders": [
+        {
+          "name": "PT Adaro Strategic",
+          "pct": 41.0965
+        },
+        {
+          "name": "PT Alamtri Resources Indonesia Tbk",
+          "pct": 15.3723
+        },
+        {
+          "name": "Garibaldi Thohir",
+          "pct": 5.8304
+        },
+        {
+          "name": "Other holders incl. directors (arithmetic remainder)",
+          "pct": 37.7008
+        }
+      ],
+      "ownership_chain": "Listed direct holding percentages are from PT Adaro Andalan Indonesia; the aggregated remainder is calculated as 100% minus the three individually listed large shareholders, including public holders and small management stakes. It must not be interpreted as a single legal shareholder. Ownership up the PT Adaro Strategic chain requires entity-by-entity verification.",
+      "control": "Largest disclosed direct corporate holder is PT Adaro Strategic. Operational control, contractual rights and beneficial ownership cannot be inferred solely from percentage.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "Corporate shareholding or reported individual shareholders alone are not sufficient for an independently verified natural-person BO determination; review company-specific AHU/filing evidence."
+      },
+      "risk": "Coal marketing, DMO and seaborne demand exposure; affiliated financing and related-party transactions.",
+      "monitor": "Updated 2026 major shareholder filing, mine subsidiary equity, 1 October 2026 material transaction disclosure and financing use.",
+      "sources": [
+        {
+          "label": "AADI shareholder information (2025)",
+          "url": "https://www.adaroindonesia.com/pages/view/informasi-saham.html"
+        },
+        {
+          "label": "AADI 2026 disclosures",
+          "url": "https://www.adaroindonesia.com/pages/view/keterbukaan-informasi.html"
+        }
+      ]
+    },
+    {
+      "id": "medc",
+      "entity": "PT Medco Energi Internasional Tbk (MEDC)",
+      "sector": "Energy",
+      "ownership_as_of": "2025-12-31",
+      "evidence_tier": "MEDC 2025 annual report, >5% owner register",
+      "direct_shareholders": [
+        {
+          "name": "PT Medco Daya Abadi Lestari",
+          "pct": 51.5
+        },
+        {
+          "name": "Diamond Bridge Pte. Ltd.",
+          "pct": 21.46
+        },
+        {
+          "name": "All other shareholders (calculated remainder)",
+          "pct": 27.04
+        }
+      ],
+      "ownership_chain": "The annual report lists PT Medco Daya Abadi Lestari as majority shareholder and Diamond Bridge Pte. Ltd. as a major shareholder. The aggregated remainder is not a legal shareholder. Corporate and natural-person ownership above these entities must be traced from primary filings.",
+      "control": "Majority shareholding by PT Medco Daya Abadi Lestari. Subsidiary PSC operators and project financing arrangements must be evaluated independently from holding-company voting rights.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "Corporate shareholding or reported individual shareholders alone are not sufficient for an independently verified natural-person BO determination; review company-specific AHU/filing evidence."
+      },
+      "risk": "Commodity prices, production decline, debt costs, divestment/acquisition execution, and PSC obligations.",
+      "monitor": "2026 major ownership changes, shareholder chain of Medco Daya Abadi Lestari and Diamond Bridge, cash capex versus guidance.",
+      "sources": [
+        {
+          "label": "MEDC 2025 annual report, shareholder list",
+          "url": "https://www.medcoenergi.com/uploads/areports/2025/MEDC_AR2025_ENG.pdf"
+        },
+        {
+          "label": "MEDC annual reports index",
+          "url": "https://www.medcoenergi.com/id/publikasi/laporan-tahunan/"
+        }
+      ]
+    },
+    {
+      "id": "equinix_astra",
+      "entity": "Equinix–Astra Indonesia data center joint venture (JK1)",
+      "sector": "AI infrastructure",
+      "ownership_as_of": "2023-04-11",
+      "evidence_tier": "Equinix and Astra joint public company release (initial JV structure)",
+      "direct_shareholders": [
+        {
+          "name": "Equinix",
+          "pct": 75
+        },
+        {
+          "name": "PT Astra International Tbk",
+          "pct": 25
+        }
+      ],
+      "ownership_chain": "JV direct economic equity at 2023 formation was 75/25; verify current local legal entity, cap table and amendments before asserting this remains unchanged in October 2026. Astra itself reports Jardine Cycle & Carriage as its 50.11% shareholder in 2025.",
+      "control": "Equinix is the majority equity holder in the publicly announced JV. The physical JK1 facility was inaugurated 15 May 2025, but ownership percentages were disclosed at JV formation, not reconfirmed as of 2026.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "Corporate shareholding or reported individual shareholders alone are not sufficient for an independently verified natural-person BO determination; review company-specific AHU/filing evidence."
+      },
+      "risk": "Growth depends on occupancy, power delivery, technical cooling efficiency, regulatory requirements and expansion capex.",
+      "monitor": "Updated SPV share register, cabinet occupancy vs phase build-out, separate initial US$74m budget from realized expense.",
+      "sources": [
+        {
+          "label": "Equinix–Astra 75/25 JV release",
+          "url": "https://www.astra.co.id/en/press-release/equinix-dan-astra-bentuk-usaha-patungan-untuk-mendukung-kebutuhan-digital-indonesia-yang-semakin-berkembang"
+        },
+        {
+          "label": "Equinix JK1 May 2025 opening",
+          "url": "https://newsroom.equinix.com/2025-05-15-Equinix-Unveils-Its-First-AI-Ready-Data-Center-with-Dense-Ecosystem-in-Jakarta"
+        }
+      ]
+    },
+    {
+      "id": "astra",
+      "entity": "PT Astra International Tbk (ASII)",
+      "sector": "AI infrastructure",
+      "ownership_as_of": "2025-12-31",
+      "evidence_tier": "Astra official direct shareholder disclosure",
+      "direct_shareholders": [
+        {
+          "name": "Jardine Cycle & Carriage Limited",
+          "pct": 50.11
+        },
+        {
+          "name": "Public and holders below 5%",
+          "pct": 49.89
+        }
+      ],
+      "ownership_chain": "Astra's corporate owner Jardine Cycle & Carriage holds a 50.11% majority. Its upstream corporate group chain needs separate filings before assigning natural-person ownership. Its 25% JK1 JV interest is a different layer.",
+      "control": "Jardine Cycle & Carriage direct corporate majority in Astra; this does not itself specify control of each Astra investee or subsidiary.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "Corporate shareholding or reported individual shareholders alone are not sufficient for an independently verified natural-person BO determination; review company-specific AHU/filing evidence."
+      },
+      "risk": "Sector diversification and shareholding through indirect stakes; avoid counting Astra investment alongside subsidiaries' project capex twice.",
+      "monitor": "Updated shareholder reports and indirect ownership in Equinix–Astra JV and other digital ventures.",
+      "sources": [
+        {
+          "label": "Astra investor shareholding 31 Dec 2025",
+          "url": "https://www.astra.co.id/investor-relations/shareholding"
         }
       ]
     }
