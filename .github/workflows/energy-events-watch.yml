@@ -45,13 +45,18 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/energy-events.json
-          if git diff --cached --quiet; then echo "No change"; exit 0; fi
-          git commit -m "Refresh next five Indonesia energy events"
+          cp data/energy-events.json /tmp/sli-upcoming-events.json
           for attempt in 1 2 3 4 5; do
-            git pull --rebase origin main || exit 1
+            # Each attempt starts from current origin: no add/add or rebase conflicts.
+            git fetch origin main || exit 1
+            git reset --hard origin/main
+            cp /tmp/sli-upcoming-events.json data/energy-events.json
+            git add data/energy-events.json
+            if git diff --cached --quiet; then echo "Event feed already current"; exit 0; fi
+            git commit -m "Refresh next five Indonesia energy events"
             if git push origin HEAD:main; then exit 0; fi
-            echo "Concurrent update detected; retrying"
+            echo "Concurrent publication: retry $attempt/5"
             sleep $((attempt * 2))
           done
+          echo "Event feed not published after 5 attempts"
           exit 1
