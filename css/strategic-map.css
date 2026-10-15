@@ -128,3 +128,15 @@
 .map-smelter-production{color:#8cdbc0!important;font-weight:750;border-left:2px solid #49a88d;padding-left:8px}
 .map-smelter-gap{color:#ecc18b!important;background:#3b3128;border-radius:5px;padding:7px 9px}
 @media(max-width:650px){.map-smelter-preset{font-size:12px;line-height:1.5}.map-smelter-baseline .map-pln-baseline-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.map-viz{min-height:0;aspect-ratio:1200/530}}
+
+/* Published historical nickel unit inventory vs ESDM programme baselines. */
+.map-nickel-baseline-plot{border:1px solid #6c6250;border-radius:8px;background:#0c2639;padding:13px 15px;margin:13px 0;color:#e0eaf0}
+.map-nickel-baseline-plot h3{font-size:13px!important;color:#efd7ad;margin:0 0 10px}
+.map-nickel-baseline-row{display:grid;grid-template-columns:minmax(100px,1fr) 65px 2fr;gap:9px;align-items:center;padding:6px 0;font-size:11px}
+.map-nickel-baseline-row strong{text-align:right;color:#f5e9d3;font-variant-numeric:tabular-nums}
+.map-nickel-baseline-track{width:100%;display:flex;gap:2px;background:#1b3446;height:17px;border-radius:4px;overflow:hidden}
+.map-nickel-baseline-bar{height:100%;min-width:0;display:block}
+.map-nickel-baseline-bar.pyro{background:#dbaf63}.map-nickel-baseline-bar.hydro{background:#65afbb}
+.map-smelter-baseline-sources{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:10px 0;font-size:11px}
+.map-smelter-baseline-sources a{color:#e8ca91}
+@media(max-width:520px){.map-nickel-baseline-row{grid-template-columns:1fr 48px;gap:7px}.map-nickel-baseline-track{grid-column:1/-1}.map-nickel-baseline-plot{padding:10px}}
