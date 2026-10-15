@@ -48,3 +48,10 @@
 /* Optional full-height catalogue: all matching records, no pagination */
 .map-results.expanded,.map-results.expanded .map-list{max-height:none;overflow:visible}
 .map-expand{margin-top:9px;max-width:100%}
+
+/* Convenient AI/data-center geographic explorer shortcuts */
+.map-digital-shortcuts{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:0 4px 15px}
+.map-short-label{font-size:10px;font-weight:700;letter-spacing:1px;color:#dbc08c;margin-right:6px}
+.map-digital-btn{border-color:#4c7187;background:#183c54;color:#e8f3fa}
+.map-digital-btn:hover{background:#2b536d;border-color:#dbc08c}
+@media(max-width:650px){.map-digital-shortcuts{gap:6px}.map-digital-btn{white-space:normal;text-align:center;flex:1 1 130px}}
