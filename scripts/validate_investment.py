@@ -104,10 +104,10 @@ def main():
             fail("Outbound investment misclassified as Indonesian asset investment")
 
     assets = read("investment-operator-assets.json")
-    sector_names = {"Oil & Gas", "Coal", "Minerals", "Smelters & Processing", "Biofuels & Bioenergy", "Renewable Energy", "Electric Vehicles", "AI / Data Center"}
+    sector_names = {"Oil & Gas", "Coal", "Minerals", "Smelters & Processing", "Biofuels & Bioenergy", "Renewable Energy", "Electric Vehicles", "AI / Data Center", "Solar PV", "Hydropower & Storage", "Wind", "Nuclear (New Energy)"}
     allowed_asset_stages = {"Operational", "Under construction", "Announced / development",
                             "MoU / power expansion", "Agreement / proposal", "MoU only",
-                            "Programme / mandate", "Historical operating evidence", "Retail / commercial sales"}
+                            "Programme / mandate", "Historical operating evidence", "Retail / commercial sales", "Site evaluation approval"}
     asset_ids = set()
     for asset in assets.get("records", []):
         key = asset.get("id", "?")
@@ -139,6 +139,24 @@ def main():
             fail(f"{key}: digital asset incorrectly presented as upstream PSC")
         if asset.get("contract_end") and not asset.get("contract_end_status"):
             fail(f"{key}: disclosed expiry missing legal qualification")
+
+    plan = assets.get("ruptl_2025_2034", {})
+    if plan:
+        if not plan.get("planning_not_operational") or not https(plan.get("source_url")):
+            fail("RUPTL source/planning classification invalid")
+        for item in plan.get("capacity_GW", []):
+            if not item.get("technology") or item.get("value", -1) < 0:
+                fail("RUPTL technology plan missing scope or capacity")
+    nuclear_projects = [item for item in assets.get("records", [])
+                        if item.get("sector") == "Nuclear (New Energy)"]
+    for item in nuclear_projects:
+        if item.get("stage") == "Operational":
+            fail(f"{item.get('id')}: nuclear operational claim needs independent reactor operation licence verification")
+        if item.get("production"):
+            fail(f"{item.get('id')}: nuclear non-operating record cannot report delivered generation")
+    for item in assets.get("records", []):
+        if item.get("id") == "storage-cisokan-1040" and item.get("production"):
+            fail("Pumped storage planning must not be reported as source of net renewable electricity")
 
     actor_data = read("investment-actors-ev-events.json")
     asset_ids = {item.get("id") for item in assets.get("records", [])}
