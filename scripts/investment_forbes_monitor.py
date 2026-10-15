@@ -23,14 +23,14 @@ def fetch(url):
 def discover(page,year):
     source="https://www.forbeschina.com/lists"
     # Only links on the publisher's own domain and matching the explicit annual edition.
-    for match in re.finditer(r'<a\\b[^>]*href=["\\']([^"\\']+)["\\'][^>]*>(.*?)</a>',page,re.I|re.S):
+    for match in re.finditer(r'<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',page,re.I|re.S):
         target,body=match.groups()
         visible=html.unescape(re.sub(r"<[^>]*>"," ",body))
         context=html.unescape(re.sub(r"<[^>]*>"," ",page[max(match.start()-200,0):match.end()+200]))
         if ("印尼富豪榜" not in visible and "印尼富豪榜" not in context) or str(year) not in context:
             continue
         uri=target if target.startswith("https://www.forbeschina.com/lists/") else ("https://www.forbeschina.com"+target if target.startswith("/lists/") else "")
-        if re.fullmatch(r"https://www\\.forbeschina\\.com/lists/\\d+",uri):
+        if re.fullmatch(r"https://www\.forbeschina\.com/lists/\d+",uri):
             return uri
     return None
 
@@ -38,16 +38,16 @@ def parse_table(page):
     # Conservative row parser: requires rank 1..20, English names and USD-bn
     # figure under publisher's table columns. Anything ambiguous is rejected.
     output=[]
-    for row in re.findall(r"<tr\\b[^>]*>(.*?)</tr>",page,re.I|re.S):
+    for row in re.findall(r"<tr\b[^>]*>(.*?)</tr>",page,re.I|re.S):
         cells=[html.unescape(re.sub(r"<[^>]*>"," ",part)).strip()
-               for part in re.findall(r"<t[dh]\\b[^>]*>(.*?)</t[dh]>",row,re.I|re.S)]
+               for part in re.findall(r"<t[dh]\b[^>]*>(.*?)</t[dh]>",row,re.I|re.S)]
         if len(cells)<4:continue
-        if not re.fullmatch(r"(?:[1-9]|1\\d|20)",cells[0]):continue
+        if not re.fullmatch(r"(?:[1-9]|1\d|20)",cells[0]):continue
         name=cells[1].strip()
         if not re.search(r"[A-Za-z]{3}",name):continue
         amount=None
         for cell in cells[2:5]:
-            raw=re.search(r"^\\$?\\s*(\\d+(?:\\.\\d+)?)\\s*$",cell)
+            raw=re.search(r"^\$?\s*(\d+(?:\.\d+)?)\s*$",cell)
             if raw:amount=float(raw.group(1));break
         if amount is None:continue
         rank=int(cells[0])
@@ -77,7 +77,7 @@ def main():
     except (OSError,ValueError,TypeError,IndexError) as exc:
         print("Forbes publisher scan unavailable: "+type(exc).__name__)
     old["last_auto_checked_at"]=NOW.isoformat()
-    PATH.write_text(json.dumps(old,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    PATH.write_text(json.dumps(old,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("Forbes monitored: "+("new edition checked" if changed else "no eligible new verified edition; older ranking retained"))
 
 if __name__=="__main__":
