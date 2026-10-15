@@ -117,6 +117,13 @@ function renderGeo(stage,d,refs){
 }
 function renderTrade(stage,d,refs){
  const p=panel();title(p,"USGS · INDONESIA MINERAL TRADE 2024","Export / Import Partner Exposure","Bilateral flow bands derived from USGS 2024 aggregate HS-category totals × partner shares; widths are proportional within each category only. No fabricated trade balance.");
+ const gdp=E("div","sli-usgs-economy-grid");
+ for(const item of d.economic2024||[]){
+  const card=E("article","sli-usgs-economy-card");
+  card.append(E("small",null,item.label),E("strong",null,"~"+item.share_gdp+"% of GDP"),E("span",null,String(item.year)),E("p",null,item.note));
+  gdp.append(card);
+ }
+ if(gdp.children.length)p.append(E("h4",null,"Indonesia · 2024 non-fuel minerals economic footprint"),gdp);
  const flowGrid=E("div","sli-usgs-trade-grid");
  d.trade.flows.forEach(f=>{
   const card=E("div","sli-usgs-trade-card"),partner=f.calc_value,other=f.total-partner;
@@ -132,7 +139,17 @@ function renderTrade(stage,d,refs){
 }
 function renderSources(stage,d,refs){
  const p=panel();title(p,"USGS · REPORT & TABLE PROVENANCE","Production, Trade & Methodology Sources","Original source vintage, production perimeter and license; no independent claim of 2026 real-time market values.");
- const grid=E("div","sli-usgs-sources");for(const source of d.sources){const card=E("div","sli-usgs-source");card.append(E("strong",null,source.title),E("small",null,source.date),E("p",null,source.scope),link(source.url,"Open USGS original ↗"));grid.append(card)}p.append(grid);stage.append(p);
+ const grid=E("div","sli-usgs-sources");for(const source of d.sources){const card=E("div","sli-usgs-source");card.append(E("strong",null,source.title),E("small",null,source.date),E("p",null,source.scope),link(source.url,"Open USGS original ↗"));grid.append(card)}p.append(grid);
+ const context=E("details","sli-usgs-policy-history");
+ context.append(E("summary",null,"USGS historical policy developments · refer to current Policy & Risk"));
+ const list=E("div","sli-usgs-policy-list");
+ for(const item of d.policy_context||[]){
+  const card=E("div","sli-usgs-policy-card");
+  card.append(E("small",null,String(item.year)),E("strong",null,item.label),E("p",null,item.detail));
+  list.append(card);
+ }
+ context.append(list,E("p","sli-usgs-note","Historical reporting, not evidence of current legal status. SLI Policy & Risk remains the canonical legal register."));
+ p.append(context);stage.append(p);
 }
 function renderMethods(stage,d){const p=panel();title(p,"USGS · MEASUREMENT DISCIPLINE","Definitions and Dataset Caveats","Read this before comparing tonnes of ore, metal content, installed capacity, annual output, reserves or export values.");
  const ul=E("ul","sli-usgs-bullets");for(const x of d.methodology)ul.append(E("li",null,x));p.append(ul);stage.append(p)}
