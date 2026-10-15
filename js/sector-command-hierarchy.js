@@ -3,8 +3,9 @@
 const el=(tag,cl,text)=>{const x=document.createElement(tag);if(cl)x.className=cl;if(text!==undefined)x.textContent=String(text);return x};
 const link=(url,label)=>{const a=el("a","sli-hier-link",label||"Original source ↗");if(/^https:\/\//.test(url||"")){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}else{a.textContent="No verified source"}return a};
 const typeName={root:"National direction",policy:"Sector policy",coordination:"Coordinating ministry",planning:"National development planning",reporting:"Administrative reporting",portfolio:"State portfolio",equity:"Shareholding / member",minority:"Minority investment / associate",oversight:"Independent constitutional oversight",research:"Research / applied innovation","strategic-interface":"Functional demand interface","joint-venture":"Joint venture / cross-holding",market:"Independent commercial market","security":"Cybersecurity"};
-function init(which,root){if(!root)return;root.replaceChildren(el("p","sli-hier-status","Loading verified institutional and corporate hierarchy…"));
-fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Hierarchy source unavailable");return r.json()}).then(db=>{
+function init(which,root,provided){if(!root)return;root.replaceChildren(el("p","sli-hier-status","Loading verified institutional and corporate hierarchy…"));
+const source=provided?Promise.resolve(provided):fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Hierarchy source unavailable");return r.json()});
+source.then(db=>{
  const record=db.sectors?.[which];if(!root.isConnected||!record)return;
  const actors=record.nodes||[],market=record.market||[],byId=new Map(actors.map(x=>[x.id,x]));
  const rootNode=actors.find(x=>x.relation==="root");if(!rootNode)throw Error("Missing president root");
@@ -17,7 +18,9 @@ fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok
  for(const button of [expand,collapse])button.type="button";
  tools.append(filter,search,expand,collapse);main.append(h,tools);
  const watch=el("div","sli-hier-watch","Official leadership source watch: awaiting the next dated source scan.");main.append(watch);
- fetch("data/sector-leadership-watch.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
+ if(which==="energy"){
+  watch.textContent="Official leadership source verification and research notes are available within this Energy Security institution panel. The two views use the same source-dated governance data.";
+ }else fetch("data/sector-leadership-watch.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
   if(!d?.checked_at_utc){watch.textContent="Leadership roster source monitoring is configured but has not completed its first scan. Names are source-dated, not live confirmed.";return}
   const items=(d.checks||[]).filter(x=>x.sector===which),ok=items.filter(x=>x.status==="name_present_in_source").length,
     review=items.filter(x=>x.status==="name_not_detected_needs_review").length,
