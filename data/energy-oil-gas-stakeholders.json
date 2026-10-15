@@ -1,8 +1,8 @@
 {
   "as_of": "2026-10-15",
   "title": "Oil & Gas — Independent Institutional & Commercial Stakeholder Map",
-  "description_en": "A focused view of regulators, SOE equity governance, upstream PSC contractors, BUMS and foreign operators, fuel / gas infrastructure and public scrutiny.",
-  "description_id": "Peta khusus regulator, pengelolaan portofolio BUMN, kontraktor KKS hulu, operator swasta dan asing, infrastruktur BBM/gas, serta pengawasan publik.",
+  "description_en": "A dedicated institutional map distinguishing government agencies, SOE shareholder rights, Indonesian BUMS, foreign state/private operators, upstream PSC contractors and downstream networks.",
+  "description_id": "Peta khusus yang membedakan lembaga pemerintah, hak saham BUMN, BUMS Indonesia, operator asing milik negara/swasta, KKKS hulu, dan jaringan hilir.",
   "notes_en": [
     "BPI Danantara manages SOE economic Series B holdings; BP BUMN represents special Series A rights. They do not replace ESDM, SKK Migas or BPH Migas.",
     "Upstream PSC management belongs to SKK Migas (or Aceh's BPMA where applicable). SOE / BUMS / foreign KKKS operate within their own contracts.",
@@ -348,6 +348,39 @@
       "as_of": "2026-10-15",
       "source": "https://migas.esdm.go.id/",
       "role": "Technical and research"
+    },
+    {
+      "group": "downstream",
+      "name": "Rukun Raharja (RAJA)",
+      "id_name": "Rukun Raharja Tbk (RAJA)",
+      "summary_en": "Indonesian publicly listed private group in natural-gas pipeline transportation, industrial gas trading and related energy infrastructure. Neither a PGN subsidiary by default nor part of Danantara's SOE portfolio; review specific joint ventures separately.",
+      "summary_id": "BUMS Indonesia terbuka di bidang angkutan gas pipa, niaga gas industri, dan infrastruktur energi. Bukan otomatis anak usaha PGN atau portofolio Danantara; kerja sama usaha harus diperiksa per proyek.",
+      "lead": "Djauhar Maulidi · President Director (company profile)",
+      "as_of": "2026-10-15",
+      "source": "https://www.raja.co.id/id/business-portfolio",
+      "role": "Indonesian BUMS · gas networks"
+    },
+    {
+      "group": "private",
+      "name": "Harbour Energy (Andaman)",
+      "id_name": "Harbour Energy (Andaman)",
+      "summary_en": "Foreign private Andaman PSC operator/investor. Harbour states Natuna Sea Block A and Tuna interest divestments completed in May 2026; current exposure is Andaman, including operated Andaman II / Central Andaman.",
+      "summary_id": "Operator/pemegang kepentingan KKS asing di Andaman. Harbour menyebut divestasi Natuna Sea Block A dan Tuna selesai Mei 2026; portofolio terkini difokuskan di Andaman, termasuk operator Andaman II / Central Andaman.",
+      "lead": "UK-listed international KKKS",
+      "as_of": "2026-10-15",
+      "source": "https://www.harbourenergy.com/what-we-do/southeast-asia/",
+      "role": "Foreign PSC operator"
+    },
+    {
+      "group": "private",
+      "name": "Mubadala Energy (Andaman)",
+      "id_name": "Mubadala Energy (Andaman)",
+      "summary_en": "UAE state-owned international investor/operator at South Andaman and Andaman I working areas; a foreign SOE participant, not an Indonesian BUMN and not held under Danantara.",
+      "summary_id": "Perusahaan investasi/energi milik negara UAE yang menjadi operator/peserta KKS di South Andaman dan Andaman I; BUMN asing, bukan BUMN Indonesia atau portofolio Danantara.",
+      "lead": "UAE-origin international KKKS",
+      "as_of": "2026-10-15",
+      "source": "https://www.harbourenergy.com/what-we-do/southeast-asia/",
+      "role": "Foreign SOE PSC participant"
     }
   ],
   "issues": [
