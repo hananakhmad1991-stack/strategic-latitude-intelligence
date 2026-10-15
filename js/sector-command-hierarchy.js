@@ -16,6 +16,15 @@ fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok
  for(const [key,title] of opts){const op=el("option",null,title);op.value=key;filter.append(op)}
  for(const button of [expand,collapse])button.type="button";
  tools.append(filter,search,expand,collapse);main.append(h,tools);
+ const watch=el("div","sli-hier-watch","Official leadership source watch: awaiting the next dated source scan.");main.append(watch);
+ fetch("data/sector-leadership-watch.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
+  if(!d?.checked_at_utc){watch.textContent="Leadership roster source monitoring is configured but has not completed its first scan. Names are source-dated, not live confirmed.";return}
+  const items=(d.checks||[]).filter(x=>x.sector===which),ok=items.filter(x=>x.status==="name_present_in_source").length,
+    review=items.filter(x=>x.status==="name_not_detected_needs_review").length,
+    unavailable=items.filter(x=>x.status==="source_access_unavailable").length;
+  watch.textContent="Official page scan "+d.checked_at_utc.slice(0,16)+" UTC · "+ok+" names seen in linked source pages · "+review+" need review · "+unavailable+" sources inaccessible. Automated page matching is not proof of incumbent appointment.";
+ }).catch(()=>{watch.textContent="Leadership source scanner status temporarily unavailable; original links remain visible."});
+
  const top=el("div","sli-hier-president"),lanes=el("div","sli-hier-lanes"),outsiders=el("section","sli-hier-market"),info=el("aside","sli-hier-profile");
  main.append(top,lanes,outsiders,info);
  const legend=el("div","sli-hier-legend");for(const [key,title] of Object.entries(typeName)){if(["reporting","policy","portfolio","equity","minority","research","market","oversight","joint-venture"].includes(key))legend.append(el("span","sli-hier-key "+key,title))}main.append(legend);
