@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 STAGES = {"Announced", "Permitted", "Early works", "Financed", "Under construction",
-          "Commissioning", "Operational", "Suspended"}
+          "Mixed implementation", "Commissioning", "Operational", "Suspended"}
 today = dt.date.today()
 issues = []
 
@@ -49,6 +49,16 @@ def main():
             fail(f"{key}: incorrectly classified announced figure as realized capex")
         if not p.get("next_step"):
             fail(f"{key}: missing verification milestone")
+
+    for commitment in evidence.get("capital_commitment_ledger", []):
+        key = commitment.get("project", "unknown")
+        if not https(commitment.get("source")):
+            fail(f"{key}: conditional funding commitment has no primary source")
+        if commitment.get("total_usd_million", 0) > commitment.get("total_project_usd_million", 0):
+            fail(f"{key}: financing component exceeds project total")
+        if commitment.get("paid_in_capital_verified") is not None and not https(
+                commitment.get("paid_in_capital_source")):
+            fail(f"{key}: claimed paid-in capital lacks verified document")
 
     for entity in entities:
         key = entity.get("id", "?")
