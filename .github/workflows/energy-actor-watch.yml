@@ -8,6 +8,8 @@ on:
     paths:
       - scripts/energy_actor_watch.py
       - js/energy-governance-ccs.js
+      - js/stakeholder-map.js
+      - css/stakeholder-map.css
       - .github/workflows/energy-actor-watch.yml
 permissions:
   contents: write
@@ -30,6 +32,7 @@ jobs:
           python -m json.tool data/energy-actors-status.json > /dev/null
           python -m json.tool data/energy-governance-ccs.json > /dev/null
           node --check js/energy-governance-ccs.js
+          node --check js/stakeholder-map.js
           python - <<'PY'
           import json
           d=json.load(open("data/energy-governance-ccs.json",encoding="utf-8"))
@@ -41,6 +44,12 @@ jobs:
                     "DPD RI · Komite II — resources, energy, infrastructure"):
               assert x in names,x
           assert len(d["governance"]["accountability_routes"])>=7
+          assert len(d["governance"]["layers"])==6
+          assert "scope" in d["governance"]["layers"][2]["actors"][0]
+          ui=open("index.html",encoding="utf-8").read()
+          assert "js/stakeholder-map.js" in ui and "css/stakeholder-map.css" in ui
+          with open("js/energy-governance-ccs.js",encoding="utf-8") as view:
+              assert "window.renderSLIStakeholderMap(root,data)" in view.read()
           print("Validated governance map:",len(names),"unique actors,",len(groups),"branches")
           PY
       - name: Commit monitored status and only dual-verified leadership changes
