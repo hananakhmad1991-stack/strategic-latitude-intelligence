@@ -1,0 +1,34 @@
+name: SLI Language Switch Validation
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - js/i18n.js
+      - js/i18n-dictionary.js
+      - css/i18n.css
+      - tests/check-i18n.cjs
+      - .github/workflows/i18n-validation.yml
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate i18n JavaScript and translation dictionary
+        run: |
+          node --check js/i18n.js
+          node --check js/i18n-dictionary.js
+          node --check tests/check-i18n.cjs
+          node tests/check-i18n.cjs
+      - name: Ensure main app scripts remain valid
+        run: |
+          node --check js/energy-biofuels.js
+          node --check js/energy-governance-ccs.js
+          node --check js/energy-infrastructure-security.js
