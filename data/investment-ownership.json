@@ -332,6 +332,104 @@
           "url": "https://www.telkom.co.id/minio/show/data/lampiran/1764593627837_original_Tambahan-Keterbukaan-Informasi-Infraco-ENG.pdf"
         }
       ]
+    },
+    {
+      "id": "masela",
+      "entity": "Abadi LNG / Masela PSC consortium",
+      "sector": "Energy",
+      "ownership_as_of": "2026-02-20",
+      "evidence_tier": "INPEX official project participating-interest disclosure",
+      "direct_shareholders": [],
+      "contract_interests": [
+        {
+          "name": "INPEX Masela Ltd. (operator)",
+          "pct": 65
+        },
+        {
+          "name": "PHE Masela / Pertamina",
+          "pct": 20
+        },
+        {
+          "name": "PETRONAS Masela",
+          "pct": 15
+        }
+      ],
+      "ownership_chain": "65/20/15 are upstream Masela Production Sharing Contract (PSC) participating interests, NOT share ownership in a single Indonesian incorporated company. Each contractor's corporate parent chain requires separate filings.",
+      "control": "INPEX Masela is the PSC operator. SKK Migas supervision, field development approvals, project contractors and equity governance are different powers.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "PSC participating interests cannot establish a natural-person BO of the operating companies."
+      },
+      "risk": "Execution depends on onshore LNG works, local infrastructure, EPCI progress, gas offtake and CCS permissions.",
+      "monitor": "Contract-level ownership changes, FID/financing status, work packages and physical construction evidence.",
+      "sources": [
+        {
+          "label": "INPEX Abadi Masela project overview",
+          "url": "https://www.inpex.com/english/business/project/abadi.html"
+        },
+        {
+          "label": "INPEX 2023 project revised POD / participating interests",
+          "url": "https://www.inpex.com/english/news/english/news/assets/pdf/20231205.pdf"
+        }
+      ]
+    },
+    {
+      "id": "tangguh",
+      "entity": "Tangguh LNG PSC consortium (UCC investment)",
+      "sector": "Energy",
+      "ownership_as_of": "2024-11-21",
+      "evidence_tier": "bp official UCC FID announcement, PSC participants",
+      "direct_shareholders": [],
+      "contract_interests": [
+        {
+          "name": "bp operator / affiliates",
+          "pct": 40.22
+        },
+        {
+          "name": "MI Berau B.V.",
+          "pct": 16.3
+        },
+        {
+          "name": "CNOOC Muturi Ltd.",
+          "pct": 13.9
+        },
+        {
+          "name": "Nippon Oil Exploration (Berau) Ltd.",
+          "pct": 12.23
+        },
+        {
+          "name": "KG Berau Petroleum Ltd.",
+          "pct": 8.56
+        },
+        {
+          "name": "KG Wiriagar Petroleum Ltd.",
+          "pct": 1.44
+        },
+        {
+          "name": "Indonesia Natural Gas Resources Muturi Inc.",
+          "pct": 7.35
+        }
+      ],
+      "ownership_chain": "Disclosed percentages are Tangguh PSC participating interests. The controlling owners of each consortium SPV require separate legal-entity tracing, not mechanical attribution to individuals.",
+      "control": "bp is PSC operator with 40.22% working/participating interest; operational designation is not direct share majority.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "No independently corroborated individual BO records for all participating-interest legal entities."
+      },
+      "risk": "Execution depends on gas reservoir, CCUS infrastructure, offshore engineering, local contractors and future commissioning.",
+      "monitor": "Contractor-level procurement, EPCI construction, 2028 planned staged production and carbon-injection permits.",
+      "sources": [
+        {
+          "label": "bp Tangguh UCC 2024 final-investment decision announcement",
+          "url": "https://www.bp.com/content/dam/bp/country-sites/id_id/indonesia/home/news/press-releases/241121%20Siaran%20pers%20proyek%20Tangguh%20UCC.pdf"
+        },
+        {
+          "label": "JOGMEC JV participating-interest list",
+          "url": "https://www.jogmec.go.jp/english/news/release/release_00140.html"
+        }
+      ]
     }
   ]
 }
