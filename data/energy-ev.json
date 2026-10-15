@@ -1,0 +1,269 @@
+{
+  "title": "Indonesia Electric Mobility Intelligence — passenger cars, motorcycles and electrification ecosystem",
+  "as_of": "2026-10-15",
+  "scope": "Separate battery-electric passenger-car wholesales, two-wheeler sales and in-use population; do not interpret annual sales as cumulative EV fleet stock.",
+  "units": "vehicles unless specified",
+  "types": [
+    {
+      "key": "BEV",
+      "name": "Battery Electric Vehicle",
+      "indonesian": "Mobil listrik baterai",
+      "definition": "Plug-in full-battery vehicle with no combustion propulsion; reported car wholesales exclude electric motorcycles."
+    },
+    {
+      "key": "PHEV",
+      "name": "Plug-in Hybrid Electric Vehicle",
+      "indonesian": "Mobil hibrida plug-in",
+      "definition": "Can be charged externally but also burns fuel. Do not add to BEV series."
+    },
+    {
+      "key": "HEV",
+      "name": "Hybrid Electric Vehicle",
+      "indonesian": "Mobil hibrida",
+      "definition": "Combustion plus electric drivetrain; typically non-plug-in. Not a zero-tailpipe vehicle."
+    },
+    {
+      "key": "E2W",
+      "name": "Battery-electric motorcycle",
+      "indonesian": "Sepeda motor listrik",
+      "definition": "Two-wheel electric vehicle. Annual AISMOLI sales data, SRUT registration and estimated in-use population use different statistical methods."
+    },
+    {
+      "key": "Ebus",
+      "name": "Battery-electric bus",
+      "indonesian": "Bus listrik",
+      "definition": "Public transport EV fleet; avoid conflating stock with factory output."
+    },
+    {
+      "key": "Etruck",
+      "name": "Battery-electric truck",
+      "indonesian": "Truk listrik",
+      "definition": "Commercial EV project and deployment pipeline; a comparable audited national 2026 fleet total is unavailable."
+    }
+  ],
+  "cars": {
+    "gaikindo_wholesale": {
+      "period": "2026-Jan–Sep",
+      "value": 117218,
+      "classification": "BEV passenger-car wholesale as media reports based on GAIKINDO; confirm official category workbook on each update",
+      "source": "https://www.bloombergtechnoz.com/detail-news/124270/membaca-tren-ev-hingga-q3-2026-laku-117-218-unit-lampaui-2025",
+      "source_class": "GAIKINDO-derived, secondary industry report",
+      "observed_date": "2026-09-30",
+      "publication_date": "2026-10-12",
+      "note": "Reported sales are wholesales (factory to dealer), not end-user registrations or registered stock."
+    },
+    "prior_full_year": {
+      "period": "2025-full-year",
+      "value": 103931,
+      "classification": "Reported GAIKINDO BEV annual total",
+      "source": "https://www.bloombergtechnoz.com/detail-news/124270/membaca-tren-ev-hingga-q3-2026-laku-117-218-unit-lampaui-2025"
+    },
+    "production": {
+      "period": "2026-Jan–Sep",
+      "value": 79818,
+      "classification": "Indonesian domestic battery-electric car production, not vehicle deliveries",
+      "source": "https://www.bloombergtechnoz.com/detail-news/124270/membaca-tren-ev-hingga-q3-2026-laku-117-218-unit-lampaui-2025",
+      "source_class": "GAIKINDO-derived, secondary industry report",
+      "prior_comparator_2025_value": 16683,
+      "prior_comparator_note": "2025 comparator quoted in media report; unclear whether full-year or Jan–Sep, DO NOT calculate YoY growth from unlike periods."
+    },
+    "quarterly_snapshot": {
+      "period": "2026-Q1",
+      "value": 33150,
+      "source": "https://ikm.kemenperin.go.id/kemenperin-buka-jalan-ikm-masuk-rantai-pasok-kendaraan-listrik",
+      "method": "Official Kemenperin citing GAIKINDO Q1 BEV sales"
+    },
+    "monthly_wholesale": [
+      {
+        "period": "2026-05",
+        "value": 9290
+      },
+      {
+        "period": "2026-08",
+        "value": 17417
+      },
+      {
+        "period": "2026-09",
+        "value": 16043
+      }
+    ],
+    "monthly_source": "https://www.bloombergtechnoz.com/detail-news/124270/membaca-tren-ev-hingga-q3-2026-laku-117-218-unit-lampaui-2025",
+    "monthly_note": "Selected months only, not a continuous monthly time series; do not interpolate unreported months.",
+    "total_auto_wholesale": {
+      "period": "2026-Jan–Sep",
+      "value": 679020,
+      "source": "https://oto.detik.com/mobil/d-8699828/penjualan-mobil-di-indonesia-september-2026-turun-tipis",
+      "definition": "All powertrains, whole vehicle industry"
+    },
+    "stock_verified": null,
+    "stock_gap": "No up-to-date comprehensive verified BEV passenger-car population 2026 in the same statistical scope as motorcycle population."
+  },
+  "motorcycles": {
+    "sales_2026": {
+      "period": "2026-Jan–Aug",
+      "value": 18900,
+      "source": "https://finance.detik.com/industri/d-8673078/penjualan-motor-listrik-merosot-tajam-pengusaha-ungkap-biang-keroknya",
+      "attribution": "AISMOLI chair reported through detikFinance 21 Sep 2026",
+      "classification": "Industry association-reported sales; not official SRUT registered output",
+      "date": "2026-08-31"
+    },
+    "srut_sales_2025": {
+      "period": "2025-full-year",
+      "value": 55059,
+      "source": "https://oto.detik.com/motor-listrik/d-8295378/subsidi-motor-listrik-tak-jelas-penjualan-2025-anjlok",
+      "attribution": "Kemenhub SRUT registrations as reported by detikOto",
+      "note": "SRUT-based reported figure is not the same statistical series as AISMOLI 2026 numbers."
+    },
+    "srut_sales_2024": {
+      "period": "2024-full-year",
+      "value": 77078,
+      "source": "https://oto.detik.com/motor-listrik/d-8295378/subsidi-motor-listrik-tak-jelas-penjualan-2025-anjlok",
+      "attribution": "Kemenhub SRUT registrations as reported by detikOto"
+    },
+    "aismoli_sales_2025_estimate": {
+      "period": "2025-full-year",
+      "value": 70000,
+      "approximate": true,
+      "source": "https://finance.detik.com/industri/d-8673078/penjualan-motor-listrik-merosot-tajam-pengusaha-ungkap-biang-keroknya",
+      "note": "Approximate AISMOLI verbal estimate, distinct from Kemenhub SRUT 55,059. Do not merge methods."
+    },
+    "fleet_stock": {
+      "period": "2026-Feb",
+      "value": 236451,
+      "source": "https://ikm.kemenperin.go.id/kemenperin-buka-jalan-ikm-masuk-rantai-pasok-kendaraan-listrik",
+      "source_class": "Official Kemenperin cited population",
+      "date": "2026-02-28",
+      "note": "Registered/in-use population as reported; not annual units sold."
+    },
+    "all_motorcycle_sales_2025": {
+      "period": "2025",
+      "value": 6412769,
+      "source": "https://www.aisi.or.id/news/",
+      "note": "All motorcycle powertrains, including ICE. No like-period 2026 denominator for BEV motorcycle share."
+    }
+  },
+  "buses": {
+    "fleet_stock": {
+      "period": "2026-Apr",
+      "value": 798,
+      "source": "https://ikm.kemenperin.go.id/kemenperin-buka-jalan-ikm-masuk-rantai-pasok-kendaraan-listrik"
+    }
+  },
+  "infrastructure": {
+    "spklu_units": {
+      "value": 4769,
+      "as_of": "2026-03",
+      "source": "https://web.pln.co.id/media/siaran-pers/2026/03/spklu-pln-mudik-ev-trans-jawa-2026",
+      "definition": "PLN and partner charging machines / connectors-as-reported (SPKLU units), NOT locations or charging sessions"
+    },
+    "spklu_sites": {
+      "value": 3097,
+      "as_of": "2026-03",
+      "source": "https://web.pln.co.id/media/siaran-pers/2026/03/spklu-pln-mudik-ev-trans-jawa-2026",
+      "definition": "Physical reported SPKLU site locations"
+    },
+    "spklu_prior_year_units": {
+      "value": 4655,
+      "as_of": "2025-12",
+      "source": "https://web.pln.co.id/media/siaran-pers/2026/02/pln-operasikan-4655-spklu-permudah-mobilitas-kendaraan-listrik"
+    },
+    "spklu_prior_year_sites": {
+      "value": 3007,
+      "as_of": "2025-12",
+      "source": "https://web.pln.co.id/media/siaran-pers/2026/02/pln-operasikan-4655-spklu-permudah-mobilitas-kendaraan-listrik"
+    },
+    "corridors": {
+      "period": "2026-Ramadan",
+      "units": 1681,
+      "sites": 994,
+      "scope": "Mudik Sumatra–Java–Bali routes; subset of national SPKLU",
+      "source": "https://web.pln.co.id/media/siaran-pers/2026/03/spklu-pln-mudik-ev-trans-jawa-2026"
+    },
+    "motorcycle_battery_swap_stations": {
+      "value": null,
+      "source": null,
+      "note": "National comparable audited SPBKLU sites/bays by 2026 not verified; not equal to car SPKLU."
+    },
+    "advisory": "Grid availability, effective uptime, charging power mix and connector standard are distinct from installed machine counts."
+  },
+  "targets": {
+    "period": "2030",
+    "electric_cars_population": 2000000,
+    "electric_two_wheelers_population": 13000000,
+    "source": "https://www.esdm.go.id/id/media-center/arsip-berita/ini-target-pemerintah-untuk-populasi-kendaraan-listrik-di-tahun-2030",
+    "announced": "2024-05",
+    "status": "Government stated 2030 population ambition; verify amendments to subsequent policy instruments before treating as enacted mandatory quota.",
+    "avoid": "Compare only registered EV fleet stock to 2030 population targets; 2026 wholesale car sales cannot be used as progress against cumulative population target.",
+    "bike_stock_progress_pct": 1.8188538461538462,
+    "car_stock_progress_pct": null
+  },
+  "industry": [
+    {
+      "name": "Indonesian EV batteries — first reported exports",
+      "period": "2026-10-08",
+      "status": "Commercial operations / first exports announced at Weda Bay; do not equate group-wide project values with battery factory-specific capex",
+      "location": "Weda Bay, North Maluku",
+      "participants": "REPT Battero and upstream industrial players",
+      "source": "https://www.reuters.com/world/asia-pacific/indonesia-vows-protect-investment-launch-battery-solar-aluminium-plants-2026-10-08/"
+    },
+    {
+      "name": "National electric motorcycle (MoLiNas) / ALVA ecosystem",
+      "period": "2026-08-13",
+      "status": "National EV motorcycle launch, with a commemorated ALVA production milestone of 20,000 units, not proof of 20,000 MoLiNas sold",
+      "location": "Cikarang, Bekasi",
+      "participants": "ALVA and Indonesian government",
+      "source": "https://www.setneg.go.id/baca/index/presiden_prabowo_luncurkan_motor_listrik_nasional_tonggak_kemandirian_teknologi_dan_industri_nasional"
+    },
+    {
+      "name": "Domestic EV component supply-chain program",
+      "period": "2026-06",
+      "status": "IKM supplier matchmaking, not verified supplier shipment or investment realization",
+      "location": "Bekasi, West Java",
+      "participants": "Kemenperin; Polytron; SGMW Motor Indonesia; VKTR and IKM",
+      "source": "https://ikm.kemenperin.go.id/kemenperin-buka-jalan-ikm-masuk-rantai-pasok-kendaraan-listrik"
+    }
+  ],
+  "policies": [
+    {
+      "title": "EV acceleration framework",
+      "instrument": "Presidential Regulation 55/2019 as amended by Presidential Regulation 79/2023",
+      "status": "Enacted framework",
+      "date": "2023-12",
+      "source": "https://pajak.go.id/id/peraturan/perubahan-atas-peraturan-presiden-nomor-55-tahun-2019-tentang-percepatan-program",
+      "note": "Battery electric vehicles and investment/local-content implementation; implementation rules and dated exemptions vary."
+    },
+    {
+      "title": "Domestic-content roadmap (TKDN)",
+      "instrument": "Perpres 79/2023 amendment",
+      "status": "Enacted schedule; check model-specific exemptions",
+      "date": "2026",
+      "source": "https://pajak.go.id/id/peraturan/perubahan-atas-peraturan-presiden-nomor-55-tahun-2019-tentang-percepatan-program",
+      "note": "Minimum 40% for 2022–2026, 60% for 2027–2029, 80% from 2030; specific applicability and transitional incentives require review."
+    },
+    {
+      "title": "2025 VAT / luxury tax incentives for certain BEVs",
+      "instrument": "PMK 12/2025",
+      "status": "Enacted for FY2025 only; do not assume automatically renewed in 2026",
+      "date": "2025",
+      "source": "https://peraturan.bpk.go.id/Details/313577/pmk-no-12-tahun-2025",
+      "note": "Qualifying models and legal period strictly defined; a separate valid 2026 instrument must be checked."
+    },
+    {
+      "title": "2026 electric motorcycle purchase-incentive proposal",
+      "instrument": "Ministerial fiscal regulation awaited as of 30 September 2026",
+      "status": "Proposal delayed / not verified as in force",
+      "date": "2026-09-30",
+      "source": "https://finance.detik.com/industri/d-8686515/subsidi-motor-listrik-tak-jelas-penjualan-2026-anjlok-ke-18-900-unit",
+      "note": "A prior announcement of possible Rp5m support is not a payable subsidy without an effective PMK."
+    }
+  ],
+  "assessment": [
+    "Passenger BEV wholesales accelerated in 2026, but market shipments must not be confused with registered stock, true end-user retail deliveries or long-term operating fleet.",
+    "Electric motorcycle adoption is weaker: AISMOLI reported only 18,900 units through August 2026, while the incentive instrument remained uncertain. Compare like-method and like-period data before quantifying decline.",
+    "The 2030 target of 2m cars and 13m electric two-wheelers is stated for population in use, not cumulative sales. Only the February motorcycle fleet stock can be cautiously compared to its own 13m fleet goal.",
+    "Charging expansion reached 4,769 PLN/partner SPKLU units at 3,097 sites by March 2026; uptime, location, connector availability and access for two-wheelers need separate measures.",
+    "EV manufacturing value-added depends on local supplier participation, batteries and technology transfer. Manufacturing announcements and investment commitments do not establish realized local content or commercial viability.",
+    "Net emissions and energy-security benefits depend on grid emissions, electricity reliability, vehicle usage, battery lifecycle and displacement of imported petroleum; do not claim zero lifecycle emissions."
+  ],
+  "methodology": "Observations are dated; source methods differ. No unaudited real-time vehicle registrations or station uptime are inferred. News is source discovery, not independent event verification."
+}
