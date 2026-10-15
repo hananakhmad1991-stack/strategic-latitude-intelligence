@@ -1,6 +1,6 @@
 {
-  "checked_at_utc": "2026-10-15T05:02:59.206916+00:00",
-  "coverage": "GDELT discovery with per-topic public RSS fallback; headlines are attributed and unverified, not a live incident database",
+  "checked_at_utc": "2026-10-15T05:09:15.634397+00:00",
+  "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
       "topic": "Hormuz and Gulf energy",
@@ -200,7 +200,7 @@
   "sector_taxonomy_version": "2026-10-15",
   "errors": [
     {
-      "topic": "Red Sea and Bab el-Mandeb",
+      "topic": "Hormuz and Gulf energy",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
