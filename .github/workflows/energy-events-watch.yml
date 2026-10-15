@@ -1,0 +1,57 @@
+name: SLI Indonesia Upcoming Energy Events
+on:
+  workflow_dispatch:
+  schedule:
+    # Four times daily. Local dates and expirations are evaluated in Asia/Jakarta.
+    - cron: "07 */6 * * *"
+  push:
+    branches: [main]
+    paths:
+      - scripts/energy_events_watch.py
+      - data/energy-events-catalog.json
+      - .github/workflows/energy-events-watch.yml
+permissions:
+  contents: write
+concurrency:
+  group: sli-upcoming-energy-events
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build next five source-dated events
+        run: python scripts/energy_events_watch.py
+      - name: Verify event dates, citations and count
+        run: |
+          python - <<'PY'
+          import json,datetime as d
+          from pathlib import Path
+          j=json.loads(Path("data/energy-events.json").read_text())
+          today=d.date.fromisoformat(j["date_wib"])
+          assert len(j["events"]) <= 5
+          assert j["events"]==sorted(j["events"],key=lambda x:(x["start_date"],x["title"].lower()))
+          for e in j["events"]:
+              assert d.date.fromisoformat(e["end_date"]) >= today
+              assert e["source_url"].startswith("https://")
+              assert e["title"] and e["organizer"] and e["start_date"]
+          print("Validated",len(j["events"]),"events for",today)
+          PY
+      - name: Publish current event shortlist
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/energy-events.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "Refresh next five Indonesia energy events"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main || exit 1
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Concurrent update detected; retrying"
+            sleep $((attempt * 2))
+          done
+          exit 1
