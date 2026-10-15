@@ -98,6 +98,13 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  const batCircle=batangg.children.find(n=>n.tagName==="circle");
  assert.ok(Math.abs(Number(batCircle.attributes.cx)-((109.735-94)*24.2+15))<0.01,"Batang marker latitude/longitude projection");
  assert.ok(all.some(n=>n.className==="map-accuracy-bar"),"Visible site-level location precision controls");
+ const adminMarkers=all.filter(n=>n.className==="map-admin-reference");
+ assert.ok(adminMarkers.length>=15,"Province-only records must appear as separate administrative reference squares");
+ const provinceOnly=adminMarkers.find(n=>String(n.attributes["aria-label"]).startsWith("Kepulauan Riau —"));
+ assert.ok(provinceOnly,"Kepri admin-only marker should not land at Natuna polygon centroid");
+ const kepriBox=provinceOnly.children.find(n=>n.tagName==="rect");
+ assert.ok(Math.abs(Number(kepriBox.attributes.x)+5-((104.455-94)*24.2+15))<0.02,"Kepri admin marker near administrative seat, NOT Natuna");
+ 
  const precision=all.filter(n=>n.className==="map-btn map-accuracy-btn");
  assert.equal(precision.length,4);
  precision[1].events.click();
