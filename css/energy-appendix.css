@@ -1,0 +1,38 @@
+/* SLI glossary appendix — compact editorial reference after Overall Assessment. */
+#es-appendix{border-bottom:0;margin-top:28px;padding-top:18px;border-top:1px solid #496174;scroll-margin-top:20px}
+#es-appendix .es-stage-head{margin-bottom:12px}
+#energyAppendixRoot{min-width:0}
+#energyAppendixRoot .esa-intro{margin:0 0 16px;color:#b6ccdb;font-size:12px;line-height:1.75;max-width:920px}
+#energyAppendixRoot .esa-toolbar{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px;margin:12px 0 14px;padding:12px;border:1px solid #375570;border-radius:11px;background:#142c3f}
+#energyAppendixRoot .esa-search-label{display:flex;flex:1 1 275px;min-width:0;flex-direction:column;gap:7px;color:#c7d7e0;font-size:11px;font-weight:600}
+#energyAppendixRoot .esa-search{width:100%;min-width:0;min-height:41px;padding:10px 13px;border:1px solid #4b6a80;border-radius:7px;outline:none;background:#0d2437;color:#f2eadb;font-size:12px}
+#energyAppendixRoot .esa-search:focus-visible{border-color:#f1d49c;box-shadow:0 0 0 2px #c1a97740}
+#energyAppendixRoot .esa-search::placeholder{color:#9fb9c9}
+#energyAppendixRoot .esa-filters{display:flex;flex:2 1 400px;flex-wrap:wrap;gap:7px}
+#energyAppendixRoot .esa-filter{flex:1 1 auto;min-height:38px;padding:8px 10px;background:#213c51;color:#d5e0e8;border:1px solid #46627a;border-radius:7px;cursor:pointer;font-weight:650;font-size:11px}
+#energyAppendixRoot .esa-filter.active{background:#e0c58e;border-color:#e0c58e;color:#173045}
+#energyAppendixRoot .esa-filter:focus-visible{outline:2px solid #f6d9a1;outline-offset:2px}
+#energyAppendixRoot .esa-result-count{margin:12px 0;font-size:11px;color:#a8c2d5}
+#energyAppendixRoot .esa-group{margin:10px 0 12px;border-radius:10px;background:#122b40;border:1px solid #395772;overflow:hidden}
+#energyAppendixRoot .esa-group-title{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;color:#e9ddc6;font-size:13px;list-style-position:inside}
+#energyAppendixRoot .esa-group-title:hover{background:#19374e}
+#energyAppendixRoot .esa-group-title:focus-visible{outline:2px solid #dfc48e;outline-offset:-4px}
+#energyAppendixRoot .esa-count{flex:none;padding:4px 8px;border-radius:16px;background:#24445a;border:1px solid #456780;color:#bfd4df;font-size:10px}
+#energyAppendixRoot .esa-list{margin:0;padding:2px 16px 8px;border-top:1px solid #38536a}
+#energyAppendixRoot .esa-entry{display:grid;grid-template-columns:minmax(110px,180px) minmax(0,1fr);align-items:start;gap:14px;border-bottom:1px solid #2f4a5f;padding:13px 0}
+#energyAppendixRoot .esa-entry:last-child{border-bottom:0}
+#energyAppendixRoot .esa-term{color:#e4c58e;font-size:12px;line-height:1.5;font-weight:750;overflow-wrap:anywhere}
+#energyAppendixRoot .esa-meaning{margin:0;color:#d2e0e9;font-size:11.7px;line-height:1.7;overflow-wrap:anywhere}
+#energyAppendixRoot .esa-meaning strong{font-weight:560}
+#energyAppendixRoot .esa-meaning p{margin:5px 0 0;color:#a6bfcc;font-size:11px;line-height:1.65}
+#energyAppendixRoot .esa-empty{padding:16px;background:#193449;border:1px dashed #486681;border-radius:8px;color:#bad0df;font-size:11px}
+#energyAppendixRoot .esa-footnote{margin:15px 0 0;border-left:3px solid #d8bd80;padding:9px 12px;border-radius:4px;color:#b9cddd;background:#20394a;font-size:11px;line-height:1.8}
+@media(max-width:650px){
+ #energyAppendixRoot .esa-toolbar{padding:10px}
+ #energyAppendixRoot .esa-search-label{flex:1 1 100%}
+ #energyAppendixRoot .esa-filters{flex:1 1 100%}
+ #energyAppendixRoot .esa-filter{flex:1 1 42%;font-size:10px}
+ #energyAppendixRoot .esa-entry{grid-template-columns:1fr;gap:3px;padding:11px 0}
+ #energyAppendixRoot .esa-list{padding:0 12px 6px}
+ #energyAppendixRoot .esa-group-title{padding:12px}
+}
