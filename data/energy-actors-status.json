@@ -1,11 +1,39 @@
 {
-  "checked_at_utc": "2026-10-15T00:10:23.856511+00:00",
-  "verification_method": "Dual official cabinet + ministry-site name agreement for auto-updating ministers; other offices are monitored as source status and require role-specific corroboration.",
-  "current_actor_count": 17,
-  "official_sources_checked": 13,
+  "checked_at_utc": "2026-10-15T00:27:50.032327+00:00",
+  "verification_method": "Cabinet + ministry-source matching for ministers, role-linked ESDM leadership profile for director generals, expanded Pertamina/PLN/DPR/DPD/Presidential adviser public-source scans for candidate changes. News headlines cannot auto-replace non-government officeholders.",
+  "current_actor_count": 53,
+  "official_sources_checked": 22,
   "verified_auto_changes": [],
-  "requires_review": [],
+  "requires_review": [
+    {
+      "actor": "DPR RI · Komisi VI — BUMN",
+      "candidate": null,
+      "previous": "Anggia Erma Rini · Chair (11 February 2026 report)",
+      "reason": "Named incumbent absent from monitored source. Could be stale/blocked layout; no automatic removal or replacement.",
+      "sources": [
+        "https://www.dpr.go.id/"
+      ]
+    },
+    {
+      "actor": "DPD RI · Komite II — resources, energy, infrastructure",
+      "candidate": null,
+      "previous": "Badikenita Putri Br. Sitepu · Chair (October 2026 official DPD source)",
+      "reason": "Named incumbent absent from monitored source. Could be stale/blocked layout; no automatic removal or replacement.",
+      "sources": [
+        "https://orchard.dpd.go.id/daftar-berita/komite-ii-dpd-ri-serap-masukan-provinsi-sumatera-utara-dalam-penyusunan-pandangan-pendapat-dpd-ri-terhadap-ruu-perubahan-ketiga-undang-undang-lalu-lintas-dan-angkutan-jalan"
+      ]
+    }
+  ],
   "appointment_headline_leads": [
+    {
+      "topic": "Power utility leadership",
+      "title": "Dirut PLN diganti, kini dijabat Suroso Isnandar - ANTARA News Kepri",
+      "publisher": "ANTARA News Kepri",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQb1REc095WHV5OHB0c2FwVDkzblBUZkJOd2VwXzFpZFI2Yy1fb2dfLVFVNnR2R21UamRxMTFFbU9keFBHWkFfQlFjOUZoVTZYR29zbDl3NnhJNjBmZlJod3lCX0tyenZ6SFB3ZWhUeVFLYk9jcEtHMFZDeTgtUFVILTVsX0JQc0NicHVWdEkwOVczZDg?oc=5",
+      "published_at_utc": "2026-10-15T00:12:40+00:00",
+      "verified": false,
+      "status": "Appointment headline candidate only"
+    },
     {
       "topic": "Power utility leadership",
       "title": "Suroso Jadi Direktur Utama PLN yang Baru - Tempo.co",
@@ -142,6 +170,15 @@
       "status": "Appointment headline candidate only"
     },
     {
+      "topic": "DPR Energy & SOE Commissions",
+      "title": "8 Legislator Partai Golkar dengan Masa Jabatan Terlama di DPR RI, Agun Gunandjar Tujuh Periode - Golkarpedia",
+      "publisher": "Golkarpedia",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPLXlqVDJsZjVtcWxsbzFtQ2tsZlRxN0hBaW9ZZTREZDdBU2NJS2drVHpEVEl0dHg2T1FRRlNTY3NTb3RfdkVnRWh6U3BzaWthenNyODRvTGhkb2hxTXNOYXpUdVZucWZFd1hOYVlfZk1rQ01vak5hZVd0MVcwWUpSX2oxRFN2a1VFWE9aQTdKOXZPV2xZRTU2LWlTRkxsUXJXclRJMWdvN2NpaF9wMDhQQlRFWjlWSkZqTWc?oc=5",
+      "published_at_utc": "2026-10-14T13:49:27+00:00",
+      "verified": false,
+      "status": "Appointment headline candidate only"
+    },
+    {
       "topic": "Power utility leadership",
       "title": "Suroso Isnandar Jadi Dirut, Ini Daftar Terbaru Direksi & Komisaris PLN - CNBC Indonesia",
       "publisher": "CNBC Indonesia",
@@ -149,29 +186,11 @@
       "published_at_utc": "2026-10-14T13:47:15+00:00",
       "verified": false,
       "status": "Appointment headline candidate only"
-    },
-    {
-      "topic": "Power utility leadership",
-      "title": "Profil Suroso Isnandar, Sosok Teknokrat Direktur Utama PLN yang Baru - Media Indonesia",
-      "publisher": "Media Indonesia",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNNGxnTUh2S292WXRoZnNYTHFxNlctV01aTWxJOGlITF9qcHhKSC1NSXdQTzV5bUkwOWJ4VklfdDhoSkNhTHJBczVVMTdYaDl3dWk3eTI3SnltZ25JbGVFdkpOQS1zUFNXWV9BLXh6Zms0VEN6ZnpHOWVqSzhLUGpheUJEd2p2T3BMUjJ4WnpJSWMtM1BWQWoyM0pyQzExSEd6Mk1nX1Q0VHh2NDJQZ2c?oc=5",
-      "published_at_utc": "2026-10-14T13:39:59+00:00",
-      "verified": false,
-      "status": "Appointment headline candidate only"
-    },
-    {
-      "topic": "Power utility leadership",
-      "title": "Suroso Isnandar Ditunjuk Jadi Direktur Utama PLN, Gantikan Darmawan Prasodjo - Espos.id",
-      "publisher": "Espos.id",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPNUFGUnZfRFZOMzI3Y2FIWHVPNE1mUm1YUVpQdGpobjdIVWZVWExzMF91aHZOMU9jXzlGWmtMOUs5SGxaZ3NrRUVfNWtZT1ZKTURZZjNuc3JLbUsxNDJFbzNSNnVXc3lMU1A2LVpxMkFZbktoVTFULTRCXzZIaGVRR3FDNGpaWjJmZUZ3bTMxT2JxdkNWZUo2b3NMSFJTTHMxeXZVb1FLRVhwdUVx0gGyAUFVX3lxTFBYOTdmTGdMa1gxa0NxX3hvVFFHb3lhUlIyTzBGQ2dMQWw2dG1tTmplSXZKZGc5YlVXQzZXWC1vMzFtUjNydWllNzZiQmRpWGhZaVFSQXh0OVlZbmtvTzJiN0V0Z3BuUkh0LWtHa1ZUWjRkN2RwU1NvRk9QaHdPRm1CQkYwcUptNHZ1MG1PMHc3TDlKR1NNcDlacmlnS3F5dmZJd2plUEpiclpkVWlLd29VNmc?oc=5",
-      "published_at_utc": "2026-10-14T13:39:38+00:00",
-      "verified": false,
-      "status": "Appointment headline candidate only"
     }
   ],
   "checks": [
     {
-      "actor": "Kementerian Lingkungan Hidup",
+      "actor": "Kementerian Lingkungan Hidup / BPLH",
       "primary_source": "https://setkab.go.id/profil-kabinet/",
       "corroboration_source": "https://www.kemenlh.go.id/contents/8/Profil-Menteri",
       "candidate": "Mohammad Jumhur Hidayat",
@@ -222,7 +241,10 @@
       "actor": "BPH Migas",
       "primary_source": "https://www.bphmigas.go.id/komite/",
       "status": "source-available-review-needed",
-      "bytes_read": 127858
+      "bytes_read": 127858,
+      "last_published_person": "Wahyudi Anas",
+      "listed_person_appears_in_source": true,
+      "interpretation": "Source has candidate name; does not prove the role is still held (especially archival news)."
     },
     {
       "actor": "BPMA — Aceh",
@@ -231,16 +253,76 @@
       "error": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
-      "actor": "PLN Group and private IPPs",
-      "primary_source": "https://web.pln.co.id/",
-      "status": "source-unavailable",
-      "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
+      "actor": "PT PLN (Persero) — national utility",
+      "primary_source": "https://www.pln.co.id/tentang-kami-id/jajaran-direksi-id",
+      "status": "source-available-review-needed",
+      "bytes_read": 367928,
+      "last_published_person": "Suroso Isnandar",
+      "listed_person_appears_in_source": true,
+      "interpretation": "Source has candidate name; does not prove the role is still held (especially archival news)."
     },
     {
       "actor": "Kemenko Hilirisasi dan Transisi Energi",
       "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
       "status": "source-available-review-needed",
       "bytes_read": 35905
+    },
+    {
+      "actor": "PT Pertamina (Persero) — parent company",
+      "primary_source": "https://sustainability.pertamina.com/id-ID/Sustainability-Commitment/CEO-Statement/",
+      "status": "source-unavailable",
+      "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
+    },
+    {
+      "actor": "PT Pertamina Hulu Indonesia — regional upstream",
+      "primary_source": "https://phi.pertamina.com/id/tentang-kami",
+      "status": "source-available-review-needed",
+      "bytes_read": 49206,
+      "last_published_person": "Muharram Jaya Panguriseng",
+      "listed_person_appears_in_source": true,
+      "interpretation": "Source has candidate name; does not prove the role is still held (especially archival news)."
+    },
+    {
+      "actor": "PT Pertamina Geothermal Energy Tbk",
+      "primary_source": "https://pge.pertamina.com/id/",
+      "status": "source-available-review-needed",
+      "bytes_read": 36773,
+      "last_published_person": "Ahmad Yani",
+      "listed_person_appears_in_source": true,
+      "interpretation": "Source has candidate name; does not prove the role is still held (especially archival news)."
+    },
+    {
+      "actor": "DPR RI · Komisi XII — energi, SDA, lingkungan, investasi",
+      "primary_source": "https://www.mpr.go.id/berita/cost-recovery-skk-migas-mekeng",
+      "status": "source-unavailable",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
+    },
+    {
+      "actor": "DPR RI · Komisi VI — BUMN",
+      "primary_source": "https://www.dpr.go.id/",
+      "status": "source-available-review-needed",
+      "bytes_read": 853845,
+      "last_published_person": "Anggia Erma Rini",
+      "listed_person_appears_in_source": false,
+      "interpretation": "Named official absent from referenced source; targeted current-appointment review advised."
+    },
+    {
+      "actor": "DPD RI · Komite II — resources, energy, infrastructure",
+      "primary_source": "https://orchard.dpd.go.id/daftar-berita/komite-ii-dpd-ri-serap-masukan-provinsi-sumatera-utara-dalam-penyusunan-pandangan-pendapat-dpd-ri-terhadap-ruu-perubahan-ketiga-undang-undang-lalu-lintas-dan-angkutan-jalan",
+      "status": "source-available-review-needed",
+      "bytes_read": 218041,
+      "last_published_person": "Badikenita Putri Br. Sitepu",
+      "listed_person_appears_in_source": false,
+      "interpretation": "Named official absent from referenced source; targeted current-appointment review advised."
+    },
+    {
+      "actor": "Penasihat Khusus Presiden Bidang Energi",
+      "primary_source": "https://www.setneg.go.id/baca/index/presiden_prabowo_resmi_lantik_para_penasihat_khusus_utusan_khusus_dan_staf_khusus_presiden",
+      "status": "source-available-review-needed",
+      "bytes_read": 68172,
+      "last_published_person": "Purnomo Yusgiantoro",
+      "listed_person_appears_in_source": true,
+      "interpretation": "Source has candidate name; does not prove the role is still held (especially archival news)."
     },
     {
       "actor": "Ditjen Migas — ESDM",
@@ -262,6 +344,20 @@
       "candidate": "Tri Winarno",
       "verification": "Direct official ESDM role-linked current leadership profile",
       "status": "confirmed-current"
+    },
+    {
+      "actor": "Ditjen Mineral dan Batubara — ESDM",
+      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+      "candidate": "Tri Winarno",
+      "verification": "Direct official ESDM role-linked current leadership profile",
+      "status": "confirmed-current"
+    },
+    {
+      "actor": "Badan Geologi — ESDM",
+      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+      "candidate": "Lana Saria",
+      "verification": "Direct official ESDM role-linked current leadership profile",
+      "status": "confirmed-current"
     }
   ],
   "errors": [
@@ -278,8 +374,12 @@
       "error": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
-      "source": "https://web.pln.co.id/",
+      "source": "https://sustainability.pertamina.com/id-ID/Sustainability-Commitment/CEO-Statement/",
       "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
+    },
+    {
+      "source": "https://www.mpr.go.id/berita/cost-recovery-skk-migas-mekeng",
+      "error": "HTTPError: HTTP Error 403: Forbidden"
     }
   ],
   "disclaimer": "No change is not evidence that no appointments happened. An unreachable, ambiguous or stale government source must not overwrite the last verified officeholder. No minister names are inferred from news headlines."
