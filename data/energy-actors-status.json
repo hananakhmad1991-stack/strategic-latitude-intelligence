@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-15T00:09:15.657812+00:00",
+  "checked_at_utc": "2026-10-15T00:10:23.856511+00:00",
   "verification_method": "Dual official cabinet + ministry-site name agreement for auto-updating ministers; other offices are monitored as source status and require role-specific corroboration.",
   "current_actor_count": 17,
   "official_sources_checked": 13,
@@ -183,8 +183,9 @@
       "primary_source": "https://setkab.go.id/profil-kabinet/",
       "corroboration_source": "https://www.kemenkeu.go.id/en/profile/profile-pejabat/menteri-keuangan",
       "candidate": "Suahasil Nazara",
-      "corroborated": false,
-      "status": "requires-review"
+      "fallback_checked": "https://www.setneg.go.id/baca/index/presiden_prabowo_lantik_suahasil_nazara_sebagai_menteri_keuangan_1",
+      "corroborated": true,
+      "status": "confirmed-current"
     },
     {
       "actor": "Kementerian ESDM / Minister",
@@ -206,10 +207,10 @@
     {
       "actor": "Kementerian Investasi dan Hilirisasi / BKPM",
       "primary_source": "https://setkab.go.id/profil-kabinet/",
-      "corroboration_source": "https://www.bkpm.go.id",
+      "corroboration_source": "https://www.bkpm.go.id/en/about-bkpm/profile-of-chairman",
       "candidate": "Rosan Perkasa Roeslani",
-      "corroborated": false,
-      "status": "requires-review"
+      "corroborated": true,
+      "status": "confirmed-current"
     },
     {
       "actor": "SKK Migas",
