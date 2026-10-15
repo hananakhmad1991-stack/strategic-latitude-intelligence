@@ -178,11 +178,11 @@ window.initSLIInvestment=async function(){
  const linked=projects.filter(p=>p.ownership_ref).length;
  const operating=projects.filter(p=>p.stage==="Operational").length;
  const mixed=projects.filter(p=>p.stage==="Mixed implementation").length;
- const sectors=[...new Set(projects.map(p=>p.sector).filter(Boolean))];
+ const sectorNames=[...new Set(projects.map(p=>p.sector).filter(Boolean))];
  const realized=projects.filter(p=>p.capex_realized!==null&&p.capex_realized!==undefined&&p.capex_realized_source).length;
  const points=[
  "Macroeconomic evidence: "+(Number.isFinite(rec.total)?"BKPM recorded Rp"+rec.total.toLocaleString("id-ID")+" trillion in "+rec.period:"No official macro investment total available")+"; investment realization is not the sum of company announcements.",
- "Execution evidence: "+projects.length+" source-dated project/programme records span "+sectors.join(", ")+"; "+operating+" are tagged operational and "+mixed+" mix distinct project stages. This does not imply all capital has been spent.",
+ "Execution evidence: "+projects.length+" source-dated project/programme records span "+sectorNames.join(", ")+"; "+operating+" are tagged operational and "+mixed+" mix distinct project stages. This does not imply all capital has been spent.",
  "Capital verification: project-level realized CAPEX documentation covers "+realized+"/"+projects.length+" records. Unknown actual disbursement is not zero; neither signed debt nor planned budgets can fill these gaps.",
  "Corporate transparency: "+linked+" of "+projects.length+" project entries link to an entity or PSC profile. Direct equity, operating rights, contractual PSC interests and a natural-person beneficial owner must remain separate.",
  "Territorial concentration: report BKPM province-level investment within its reference quarter, not as a cumulative annual total; review power, access roads, ports, permitting and local value-chain integration.",
