@@ -84,7 +84,8 @@ def latest(series):
     return year, float(observations[year])
 
 def fmt(number, places=2):
-    return f"{number:,.{places}f}".rstrip("0").rstrip(".")
+    rendered = f"{number:,.{places}f}"
+    return rendered.rstrip("0").rstrip(".") if places > 0 else rendered
 
 def report_item(id_, heading, finding, implication, verify, baseline, developments=None):
     reports = developments or []
