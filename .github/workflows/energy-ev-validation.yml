@@ -1,0 +1,67 @@
+name: SLI EV Data and Bilingual Dashboard Validation
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - data/energy-ev.json
+      - data/energy-ev-watch.json
+      - js/energy-ev.js
+      - css/energy-ev.css
+      - scripts/energy_ev_watch.py
+      - .github/workflows/energy-ev-validation.yml
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate EV code and datasets
+        run: |
+          node --check js/energy-ev.js
+          python -m py_compile scripts/energy_ev_watch.py
+          python -m json.tool data/energy-ev.json >/dev/null
+          python -m json.tool data/energy-ev-watch.json >/dev/null
+          python - <<'PY'
+          import json,pathlib
+          d=json.load(open("data/energy-ev.json",encoding="utf-8"))
+          site=pathlib.Path("index.html").read_text()
+          assert 'id="energyEVRoot"' in site
+          assert 'js/energy-ev.js' in site
+          assert 'css/energy-ev.css' in site
+          assert 'initSLIEV()' in site
+          assert len(d["types"])>=5
+          assert d["cars"]["gaikindo_wholesale"]["value"]==117218
+          assert d["cars"]["production"]["value"]==79818
+          assert d["motorcycles"]["sales_2026"]["value"]==18900
+          assert d["motorcycles"]["srut_sales_2025"]["value"]==55059
+          assert d["targets"]["electric_cars_population"]==2000000
+          assert d["targets"]["electric_two_wheelers_population"]==13000000
+          assert d["cars"]["stock_verified"]["period"]=="2026-Apr"
+          assert d["cars"]["stock_verified"]["value"]==223100
+          assert d["motorcycles"]["fleet_stock_later"]["value"]==242909
+          assert d["fleet"]["latest_national"]["value"]==541678
+          assert d["fleet"]["latest_national"]["period"]=="2026-Aug"
+          assert d["infrastructure"]["spklu_units"]["value"]==4769
+          assert d["infrastructure"]["spklu_sites"]["value"]==3097
+          assert d["infrastructure"]["motorcycle_battery_swap_stations"]["value"] is None
+          assert len(d["policies"])>=4 and len(d["industry"])>=4
+          assert all(x["source"].startswith("https://") for x in d["policies"]+d["industry"])
+          feed=json.load(open("data/energy-ev-watch.json",encoding="utf-8"))
+          assert "items" in feed and "errors" in feed
+          print("EV definitions, data years, population vs sales and bilingual dashboard integration passed")
+          PY
+      - name: Check UI is bilingual and protects news headings
+        run: |
+          grep -q 'sli:languagechange' js/energy-ev.js
+          grep -q 'ev-news-card a' js/i18n.js
+          node tests/check-i18n.cjs
