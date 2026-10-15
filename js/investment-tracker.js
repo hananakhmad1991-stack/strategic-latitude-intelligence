@@ -23,7 +23,7 @@ window.initSLIInvestment=async function(){
  const intro=$("p",null,"Track policy-relevant investment through verifiable milestones. Announcements, financial commitments, realized investment statistics and operational assets are different measurements and must never be added together.");
  root.append(strap,title,intro);
  const nav=$("div","tr-jumpnav");
- [["inv-kpis","Investment evidence"],["inv-quality","Evidence health"],["inv-sector-history","Energy & mining investment"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-assets","Asset & concession intelligence"],["inv-industrial-actors","Industrial actors & EV brands"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-commitments","Equity commitments"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
+ [["inv-kpis","Investment evidence"],["inv-quality","Evidence health"],["inv-sector-history","Energy & mining investment"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-assets","Asset & concession intelligence"],["inv-industrial-actors","Forbes Top 20 & EV"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-commitments","Equity commitments"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
  heading(root,"National Investment Evidence","BKPM · BPS · BI / distinguish statistical definitions");
  const kpis=$("div","grid tr-grid");kpis.id="inv-kpis";
  const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Source-dated project / programme records","0 published","Includes individual projects, programme milestones and portfolios; not all represent delivered assets"]];
@@ -51,10 +51,10 @@ window.initSLIInvestment=async function(){
  assets.append($("p","tr-detail","Sector-specific legal instruments: PSC contract ends, coal/mineral IUPK permit expiry, data-center facility milestones, and non-binding MoUs are shown independently. Reported production and capacity always retain their reference periods."));
  const assetRoot=$("div");assetRoot.id="investmentAssetsRoot";assets.append(assetRoot);
  if(typeof window.initSLIInvestmentAssets==="function")initSafe("Asset and concession intelligence",()=>window.initSLIInvestmentAssets());
- heading(root,"Industrial Investors, Corporate Actors & EV Ecosystem","Verified roles · major corporate owners · EV brand country affiliation · transaction / market exposure");
- const actorBlock=box(root,"Who holds influence, who operates and which country is affiliated?");
+ heading(root,"Forbes Wealth Watch, EV Brands & Corporate Actions","Forbes 2025 published list · country affiliation · public transactions and research caveats");
+ const actorBlock=box(root,"Top 20 Indonesia Richest · Forbes + EV Brand / Corporate Action Intelligence");
  actorBlock.id="inv-industrial-actors";
- actorBlock.append($("p","tr-detail","The mapping distinguishes entrepreneurs or shareholder/controllers from operational executives and regulators. Market-exposure signals are NOT price forecasts or investment advice."));
+ actorBlock.append($("p","tr-detail","Forbes ranking is a dated wealth estimate, NOT the legal beneficial ownership register or the value invested in Indonesia. Public corporate events and EV country affiliation are tracked separately."));
  const actorRoot=$("div");actorRoot.id="investmentActorsRoot";actorBlock.append(actorRoot);
  if(typeof window.initSLIInvestmentActors==="function")initSafe("Industrial actors, EV brands and market events",()=>window.initSLIInvestmentActors());
  heading(root,"Ownership & Capital Structure","Investor nationality is not ultimate beneficial ownership");
@@ -62,8 +62,6 @@ window.initSLIInvestment=async function(){
  own.append($("p",null,"Each verified project record can distinguish Indonesian operating partner, direct shareholder, financing provider, ultimate parent (if independently documented) and public-sector role. Danantara, BP BUMN, line ministries and private investors must not be conflated."));
  const ownershipRoot=$("div");ownershipRoot.id="investmentOwnershipRoot";own.append(ownershipRoot);
  if(typeof window.initSLIInvestmentOwnership==="function")initSafe("Ownership",()=>window.initSLIInvestmentOwnership());
- const axis=$("div","grid tr-grid");
- [["Who finances?","Equity · debt · syndicated loans · incentives"],["Who operates?","Project SPV · offtaker · engineering contractor"],["What is delivered?","Permits · construction · energization · production"],["What remains exposed?","Land · grid · environmental clearance · FX"]].forEach(([a,b])=>{const c=$("div","card tr-kpi");c.style.cursor="default";c.append($("h3",null,a),$("p",null,b));axis.append(c)});root.append(axis);
  heading(root,"Investment Risk & Source Watch","Dated editorial and regulatory intelligence");
  const watch=box(root,"Official reference points");watch.id="inv-watch";
  const ul=$("ul");links.forEach(([label,url])=>{const li=$("li");li.append(source(url,label));ul.append(li)});watch.append(ul);
