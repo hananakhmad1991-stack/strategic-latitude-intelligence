@@ -44,7 +44,19 @@ for(const sector of ['minerals','ai']){
  const lanes=root.querySelector('.sli-hier-lanes');
  const filter=root.querySelector('.sli-hier-select');
  assert.match(top.textContent,/Prabowo Subianto/);
- assert.ok(lanes.children.length>=3,'No multi-lane top-down branches');
+ assert.equal(lanes.querySelectorAll('.sli-hier-domain').length,2,'Government and Danantara groups must be separately rendered');
+ const fullPrivate=root.querySelector('.sli-hier-market');
+ assert.ok(fullPrivate.querySelector('.sli-hier-domain.private'),'Private sector must be an independent section');
+ const divisions=fullPrivate.querySelectorAll('.sli-hier-market-class');
+ assert.equal(divisions.length,3,'Domestic, foreign and mixed JV must be separately grouped');
+ const coord=nodes.find(x=>x.id==='kemenkohilir');
+ assert.equal(coord.parent,'pres','Coordinating ministry must appear below President');
+ assert.equal(coord.person,'Bahlil Lahadalia','2026-10-01 coordinating minister attribution');
+ assert.equal(coord.lane,'government');
+ const corporate=nodes.filter(n=>n.lane==='state');
+ assert.ok(corporate.length>=6,'Danantara and SOEs missing');
+ const privates=market.filter(x=>x.lane==='private');
+ assert.ok(privates.length>=10,'Independent private listings missing');
  const nationalLanes=lanes.textContent;
  assert.match(nationalLanes,/Airlangga Hartarto/,'Kemenko must appear on top-level diagram');
  assert.match(nationalLanes,/Rachmat Pambudy/,'Bappenas must appear on top-level diagram');
@@ -61,6 +73,13 @@ for(const sector of ['minerals','ai']){
  assert.ok(root.querySelectorAll('.sli-hier-card').length>=nodes.length-5,'Expand all fails');
  filter.value='market';filter.events.change();
  assert.equal(root.querySelector('.sli-hier-market').hidden,false);
+ assert.equal(root.querySelectorAll('.sli-hier-market-class').length,3);
+ for(const category of ['domestic','foreign','joint']){
+  filter.value=category;filter.events.change();
+  const classes=root.querySelectorAll('.sli-hier-market-class');
+  assert.equal(classes.length,1,'Private ownership filter must show only one selected category');
+  assert.ok(classes[0].className.includes(category),'Wrong private category displayed');
+ }
  console.log(sector+' top-down hierarchy, search, expansion, external market lanes: PASS');
 }
 assert.equal(db.sectors.minerals.nodes.find(x=>x.id==='dgminerba').parent,'minister');
