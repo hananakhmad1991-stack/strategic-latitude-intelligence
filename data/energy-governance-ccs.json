@@ -3,7 +3,7 @@
   "as_of": "2026-10-15",
   "scope": "Public research snapshot; functional governance map and selected CCS/CCUS projects, not an exhaustive licensing or investment register.",
   "governance": {
-    "warning": "Indonesia energy governance is a functional stakeholder/decision-rights map—not a statutory organisation chart. Presidential advisers advise; ministries regulate; companies execute; DPR/DPD scrutinise; regions implement. Names are as-of source dates; unnamed roles intentionally avoid guessing. The parliamentary and corporate rosters can change quickly and must be monitored.",
+    "warning": "Actor map shows relationships between policy, regulation, shareholding, project contracts and oversight, not a single reporting hierarchy. Under UU 16/2025, Danantara manages the state's Series B BUMN economic interests and BP BUMN holds strategic Series A Dwiwarna rights. Danantara does not directly regulate upstream PSCs or supervise private operators (BUMS). Direct corporate-shareholding statements require company-specific verification.",
     "layers": [
       {
         "title": "01 · Presidential decision-making, advice and national coordination",
@@ -181,6 +181,21 @@
         "summary": "Mandates and reporting lines are sector-specific; regulatory oversight differs from project operations.",
         "actors": [
           {
+            "name": "BP BUMN — State-Owned Enterprises Regulatory Agency",
+            "lead": "Government SOE regulatory body · chair/incumbent requires current roster confirmation",
+            "role": "Under UU 16/2025, BP BUMN holds/represents the state's 1% special Series A Dwiwarna rights in BUMNs, including specified strategic shareholder approvals, and acts as government SOE regulatory/supervisory authority. Separate from Danantara's Series B economic holdings and from ESDM's energy/PSC licensing.",
+            "scope": "SOE regulation · Series A",
+            "kind": "State regulator",
+            "source": "https://peraturan.bpk.go.id/Home/Details/325819/uu-no-16-tahun-2025",
+            "verified": "2026-10-15",
+            "authority": "State special shareholder rights and SOE corporate governance; not ESDM sector regulator",
+            "connections": [
+              "Danantara Indonesia (BPI) — SOE portfolio ownership & capital",
+              "PT Pertamina (Persero) — parent company",
+              "PT PLN (Persero) — national utility"
+            ]
+          },
+          {
             "name": "Ditjen Migas — ESDM",
             "lead": "Laode Sulaeman · Director General of Oil and Gas (since 29 August 2025)",
             "role": "Oil and gas regulation, upstream technical and commercial policy, and CCS/CCUS regulatory pathway within the ministry.",
@@ -316,8 +331,8 @@
         ]
       },
       {
-        "title": "03 · State-owned groups, energy companies and execution",
-        "summary": "Companies build, procure, operate and invest. Track latest GMS leadership and subsidiaries separately; governance roles are not the same as regulatory authority.",
+        "title": "03 · State ownership, investment holdings, BUMN & private operators",
+        "summary": "Danantara manages the SOE Series B portfolio; BP BUMN has separate Series A rights. SOE management, private KKKS/IPP contractors and ministry regulators operate under distinct legal mandates.",
         "actors": [
           {
             "name": "PT PLN (Persero) — national utility",
@@ -458,17 +473,22 @@
             "connections": []
           },
           {
-            "name": "Danantara Indonesia — SOE capital coordination",
-            "lead": "Rosan Perkasa Roeslani · CEO Danantara Indonesia; also Minister of Investment/Head of BKPM",
-            "role": "Institutional SOE capital allocation and portfolio coordination potential; do not assume an energy project is Danantara-financed without a separate official transaction or FID disclosure.",
-            "scope": "Capital / ownership",
-            "kind": "Financier",
-            "source": "https://www.antaranews.com/berita/5786193/rosan-prabowo-minta-transformasi-pln-dipercepat",
-            "verified": "2026-10-14",
+            "name": "Danantara Indonesia (BPI) — SOE portfolio ownership & capital",
+            "lead": "Rosan Perkasa Roeslani · CEO, BPI Danantara (reviewed Oct 2026)",
+            "role": "Under the UU 16/2025 two-institution SOE governance model, Danantara holds/manages the economic Series B interests in state-owned enterprises through operational and investment holding arrangements. Its portfolio includes energy SOEs such as Pertamina and PLN. Corporate operations remain with SOE boards, while BP BUMN retains state strategic Series A Dwiwarna rights. Danantara is not SKK Migas, BPH Migas, the ESDM regulator, nor parent to independent private contractors.",
+            "scope": "SOE portfolio · Series B",
+            "kind": "Portfolio owner / investor",
+            "source": "https://www.danantaraindonesia.co.id/id/about",
+            "verified": "2026-10-15",
             "person_name": "Rosan Perkasa Roeslani",
             "verification_status": "Current official BKPM minister profile; distinguish Danantara chair from individual energy project investment decisions",
-            "authority": "investment ownership/funding oversight (deal-specific)",
-            "evidence_status": "Confirmed in dated institutional/public reporting; monitor later changes"
+            "authority": "Portfolio ownership and holding-company capital allocation; not ESDM sector licensing",
+            "evidence_status": "Confirmed in dated institutional/public reporting; monitor later changes",
+            "connections": [
+              "PT Pertamina (Persero) — parent company",
+              "PT PLN (Persero) — national utility",
+              "PT Danantara Asset Management (DAM)"
+            ]
           },
           {
             "name": "PT SMI / public financing institutions",
@@ -484,17 +504,20 @@
             "connections": []
           },
           {
-            "name": "Private IPPs, PSC contractors, CCS operators",
+            "name": "Private project developers, IPPs and EPC contractors (umbrella category)",
             "lead": "Investor/operator identified by each contracted project",
-            "role": "BP, INPEX, ExxonMobil, Medco, independent power producers and other contractors execute individual concessions and sites, subject to legal approvals and contract structures.",
-            "scope": "Private project execution",
+            "role": "Category of privately owned IPP, engineering and project developers. Not a state-owned company or a subsidiary of Danantara. Specific contracts govern project obligations and industry supervision.",
+            "scope": "Cross-sector private investors",
             "kind": "Operator",
             "source": "https://www.esdm.go.id/id/publikasi/laporan-kinerja",
             "verified": "2026-10-15",
             "person_name": "Investor/operator identified by each contracted project",
             "evidence_status": "category, not a single organization",
             "authority": "concession / project-specific",
-            "connections": []
+            "connections": [
+              "PT Medco Energi Internasional Tbk",
+              "ExxonMobil Cepu Limited (EMCL)"
+            ]
           },
           {
             "name": "PT Danantara Sumberdaya Indonesia (DSI)",
@@ -507,6 +530,99 @@
             "source": "https://kalteng.antaranews.com/berita/839623/danantara-sumberdaya-indonesia-resmi-umumkan-jajaran-pimpinan-baru",
             "authority": "Danantara-linked commodity execution",
             "evidence_status": "Dated company launch / ANTARA report"
+          },
+          {
+            "name": "PT Danantara Asset Management (DAM)",
+            "lead": "Danantara Operational Holding · officeholder roster to verify",
+            "role": "Operational holding for SOE portfolio performance, governance reset, corporate restructuring and asset management. Managing a portfolio company does not itself mean instructing its field-level operations or authorising regulatory energy projects.",
+            "scope": "SOE operational holding",
+            "kind": "Portfolio holding",
+            "source": "https://www.danantaraindonesia.co.id/id/media-center/press-releases/danantara-indonesia-undertakes-governance-reset-and-strengthens-soe-fundamentals",
+            "verified": "2026-03-05",
+            "authority": "Portfolio governance and corporate value creation; not sector regulator",
+            "connections": [
+              "Danantara Indonesia (BPI) — SOE portfolio ownership & capital",
+              "PT Pertamina (Persero) — parent company",
+              "PT PLN (Persero) — national utility"
+            ]
+          },
+          {
+            "name": "Danantara Investment Management — investment holding",
+            "lead": "Danantara investment platform · leadership to verify",
+            "role": "Investment holding and project allocation platform; distinguish actual committed financing and paid-in transactions from energy project pipelines and separate corporate portfolio holdings.",
+            "scope": "Investment holding",
+            "kind": "Investor",
+            "source": "https://www.danantaraindonesia.co.id/id/about",
+            "verified": "2026-10-15",
+            "authority": "Deal-specific investment allocation; not universal energy-sector financing",
+            "connections": [
+              "Danantara Indonesia (BPI) — SOE portfolio ownership & capital"
+            ]
+          },
+          {
+            "name": "PT Medco Energi Internasional Tbk",
+            "lead": "MedcoEnergi corporate/project management; field-specific operator team",
+            "role": "Indonesian private energy company with upstream interests including operating South Natuna Sea Block B; other blocks may use JV operating entities. Corporate issuer ≠ government regulator.",
+            "source": "https://www.energimedco.org/id/bisnis-kami/minyak-gas/south-natuna-sea-block-b/",
+            "scope": "Upstream contractor",
+            "kind": "Private / foreign operator",
+            "verified": "2026-10-15",
+            "authority": "Project-specific licensed PSC or commercial rights; SKK Migas oversees upstream PSC",
+            "connections": [
+              "SKK Migas"
+            ]
+          },
+          {
+            "name": "ExxonMobil Cepu Limited (EMCL)",
+            "lead": "Local operating management · Cepu PSC",
+            "role": "Private international KKKS operating Banyu Urip/Cepu upstream assets, supervised by SKK Migas. Production is field-measured rather than a ministry or Danantara metric.",
+            "source": "https://corporate.exxonmobil.com/locations/indonesia/newsroom/2026/first-of-its-kind-tech-strengthening-indonesias-oil-resilience-future",
+            "scope": "Upstream KKKS",
+            "kind": "Private / foreign operator",
+            "verified": "2026-10-15",
+            "authority": "Project-specific licensed PSC or commercial rights; SKK Migas oversees upstream PSC",
+            "connections": [
+              "SKK Migas"
+            ]
+          },
+          {
+            "name": "bp Indonesia / Tangguh LNG",
+            "lead": "Tangguh / LNG project operator · latest project roster",
+            "role": "International upstream gas/LNG operator; Tangguh execution involves its PSC partners, LNG and gas infrastructure. Not controlled by Danantara.",
+            "source": "https://www.bp.com/en_id/indonesia/home.html",
+            "scope": "Upstream gas & LNG",
+            "kind": "Private / foreign operator",
+            "verified": "2026-10-15",
+            "authority": "Project-specific licensed PSC or commercial rights; SKK Migas oversees upstream PSC",
+            "connections": [
+              "SKK Migas"
+            ]
+          },
+          {
+            "name": "INPEX Masela Ltd / Abadi LNG",
+            "lead": "Masela PSC operator · project roster",
+            "role": "Private international project operator with PHE and PETRONAS partner interests; May 2026 gas offtake agreements do not establish first gas or plant commissioning.",
+            "source": "https://www.inpex.com/news/2026/20260520.html",
+            "scope": "Upstream LNG development",
+            "kind": "Private / foreign operator",
+            "verified": "2026-10-15",
+            "authority": "Project-specific licensed PSC or commercial rights; SKK Migas oversees upstream PSC",
+            "connections": [
+              "SKK Migas"
+            ]
+          },
+          {
+            "name": "Searah (Eni–PETRONAS JV)",
+            "lead": "Eni / PETRONAS 50:50 JV established Jun 2026",
+            "role": "Private/state-foreign joint venture with Kutei Basin gas PSC activities; 12 October 2026 stake-sale announcements to Medco/Pertamina must not be treated as completed transfers without closing proof.",
+            "source": "https://www.eni.com/en-IT/media/press-release/2026/10/eni-signs-two-agreements-for-the-sale-of-stakes-in-selected-upstream-assets-indonesia.html",
+            "scope": "Gas field & LNG development",
+            "kind": "Private / foreign operator",
+            "verified": "2026-10-15",
+            "authority": "Project-specific licensed PSC or commercial rights; SKK Migas oversees upstream PSC",
+            "connections": [
+              "SKK Migas"
+            ]
           }
         ]
       },
@@ -747,13 +863,12 @@
       }
     ],
     "strategic_readout": [
+      "Two separate SOE governance dimensions: BP BUMN acts as SOE regulator / Series A state shareholder representative; Danantara acts as portfolio owner-manager for Series B economic interests; directors and subsidiaries conduct their own operations.",
+      "Oil & Gas accountability must be traced distinctly: ESDM/Dirjen Migas policy and licences → SKK Migas/BPMA for upstream PSC execution → private or SOE contractors/KKKS → downstream BPH Migas and commercial operators.",
       "Decision rights do not form a single hierarchy: Presidency/DEN and the special adviser drive direction; Kemenko coordinates; ESDM and other ministries regulate; SKK Migas/BPH and local administrations supervise assigned domains; operators deliver assets.",
       "Energy politics has two parliamentary interfaces: Komisi XII scrutinises energy regulation, SKK/BPH and energy subsidies; Komisi VI examines Pertamina as an SOE. Komisi VII handles downstream industry, while XI and Banggar track fiscal consequences.",
       "DPD Komite II feeds regional resource and infrastructure priorities into national debate, while Komite IV flags regional fiscal transfers and DBH; neither directly licenses a CCS storage permit or instructs corporate management.",
-      "The 2026 Pertamina downstream consolidation should not be analysed as the pre-2026 separate PPN/KPI/PIS operator structure; parent Pertamina, upstream PHE and downstream Patra Niaga have different management and assets.",
-      "Government actor updates should follow official appointment data and monitor company GM/shareholder releases. Legacy site biographies and older DEN lists frequently lag October 2026 changes.",
-      "For a physical incident, identify regulator, enterprise owner, subholding, local operator, responsible region and accountable legislative body; avoid assigning every operational failure to the president or energy adviser.",
-      "International projects including CCS/CCUS require independent ESDM/BPLH permitting plus operator FID and measured injection evidence, not simply a political endorsement."
+      "The 2026 Pertamina downstream consolidation should not be analysed as the pre-2026 separate PPN/KPI/PIS operator structure; parent Pertamina, upstream PHE and downstream Patra Niaga have different management and assets."
     ],
     "method": {
       "as_of": "2026-10-15",
@@ -869,12 +984,31 @@
         "issue": "Strategic energy investment & downstreaming",
         "strategic": "President/DEN, new Kemenko Hilirisasi dan Transisi Energi; Investment Ministry/BKPM",
         "regulators": "ESDM technical permitting, Industry Ministry factory policy, KLH/BPLH safeguard, Kemenkeu incentives",
-        "operators": "Danantara (only where transaction documented), Pertamina, PLN, private EPC/project owners",
+        "operators": "Danantara via its SOE portfolio and transaction-specific holdings; BP BUMN retains shareholder/regulatory functions; corporate boards of Pertamina and PLN, plus independently contracted private investors/KKKS/IPPs, execute projects.",
         "oversight": "DPR XII energy/investment, DPR VII industry, DPR VI SOEs, DPD Komite II regional development",
         "regional": "Provincial investors, ports, industrial estates, BP Batam/KEK zones, utilities",
         "assessment": "Separate investment pipeline, final financing, paid-in capital, construction expenditure and commercial operation."
       }
-    ]
+    ],
+    "ownership_model": {
+      "as_of": "2026-10-15",
+      "source": "https://peraturan.bpk.go.id/Home/Details/325819/uu-no-16-tahun-2025",
+      "danantara_source": "https://www.danantaraindonesia.co.id/id/about",
+      "bp_bumn": {
+        "share": "State special 1% Series A Dwiwarna",
+        "role": "SOE regulation and strategic state-shareholder rights, subject to each company's structure"
+      },
+      "danantara": {
+        "share": "State economic 99% Series B",
+        "role": "Portfolio management and operational / investment holding mandates for BUMN"
+      },
+      "boundaries": [
+        "Not a blanket chart of statutory reporting lines",
+        "Not all project entities are BUMN",
+        "Independent Indonesian BUMS and foreign operators are not Danantara subsidiaries",
+        "SKK Migas and BPH Migas execute government regulatory mandates, not BUMN portfolio operations"
+      ]
+    }
   },
   "policies": {
     "note": "Curated official-law and policy register; 2026 references are placed alongside still-applicable framework rules from earlier years. Enacted decisions, appointments, projects and draft proposals are distinctly labeled. Legal framework ≠ verified project implementation. The scheduled source watch surfaces candidate releases, not automatic legal status updates.",
