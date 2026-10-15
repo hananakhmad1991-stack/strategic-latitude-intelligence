@@ -15,7 +15,7 @@
   },
   "bilateral": {
     "period": "2025",
-    "source_note": "Year 2025 is the latest verified full-year bilateral matrix for these selected product groups, not the latest 2026 bilateral transaction date. Partner rows are selected available reported countries. Residual rows fill 'Other/remaining' to reconcile displayed world totals; they are not a single country. Nickel/ferronickel without verified partner rows is intentionally not drawn as country-specific flows.",
+    "source_note": "Year 2025 is the latest verified full-year bilateral matrix for these selected product groups, not the latest 2026 bilateral transaction date. Partner rows are selected available reported countries. Residual rows fill 'Other/remaining' to reconcile displayed world totals; they are not a single country. Nickel/ferronickel without verified partner rows is intentionally not drawn as country-specific flows. Electricity HS271600 reports 2025 importer-declared values; planned Singapore CBET is not a realized export. ",
     "method": "2025 Indonesia-reporter customs flows: exports FOB, imports CIF. Same commodity HS coverage required for bilateral trade balance; missing values are null, never zero. HS 74/76 are processed commodity CHAPTERS, not exclusively mining output. HS 27 includes both fuels and coal; coal is classified as minerba (not oil and gas).",
     "products": [
       {
@@ -513,6 +513,35 @@
           "partner_precision": "Indonesia ferro-nickel import values not independently verified in this snapshot",
           "partners": []
         }
+      },
+      {
+        "id": "electricity",
+        "sector": "electricity",
+        "name_en": "Cross-border electrical energy",
+        "name_id": "Perdagangan listrik lintas negara",
+        "hs": "271600",
+        "period": "2025",
+        "exports": {
+          "world_musd": 0.00001,
+          "partners": [
+            {
+              "country": "Timor-Leste",
+              "musd": 0.00001
+            }
+          ],
+          "source_url": "https://corplox.com/trade/id/hs/27/2716"
+        },
+        "imports": {
+          "world_musd": 81.767197,
+          "partners": [
+            {
+              "country": "Malaysia",
+              "musd": 81.767197
+            }
+          ],
+          "source_url": "https://corplox.com/trade/id/hs/27/2716"
+        },
+        "notes": "Reporter Indonesia 2025 UN Comtrade via CorpLox, published 2026-09-07; exports USD 10 nominal; imports USD 81,767,197. Do not infer commercial export trade with Singapore from July 2026 CBET cooperation announcement. Malaysian mirror exports to Indonesia differ from Indonesia's importer declaration."
       }
     ]
   }
