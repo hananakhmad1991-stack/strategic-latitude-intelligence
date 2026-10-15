@@ -131,8 +131,11 @@ const intelligence={
  }};
 function renderIntelligence(which,root){const d=intelligence[which];if(!d)return;
  const intro=E("section","sli-research-section");intro.append(E("small","sli-research-num","DEEP-DIVE INTELLIGENCE"),E("h3",null,"Institutional Accountability & Decision Pathways"),E("p","sli-research-description",d.headline));
- const institutions=E("div","sli-intel-mapping");
- for(const [group,name,role,caveat,url] of d.institutions){const card=E("article","sli-intel-institution");card.append(E("small","sli-research-num",group),E("h4",null,name),E("p",null,role),E("p","sli-research-note",caveat));card.append(link(url,url[0]==="#"?"Open central policy register ↗":"Institution / official source ↗"));institutions.append(card)}intro.append(institutions);root.append(intro);
+ const mapMount=E("div","sli-org-mount");mapMount.id=which==="minerals"?"sliMineralsOrganigram":"sliAIOrganigram";
+ intro.querySelector("h3").textContent="Institutions, Governance & Policy";
+ intro.append(mapMount);root.append(intro);
+ if(typeof window.initSLISectorOrganigram==="function")window.initSLISectorOrganigram(which,mapMount,d.institutions);
+ else mapMount.append(E("p","sli-org-status","Institutional organigram module not loaded. Source information is temporarily unavailable."));
  const taxonomy=E("section","sli-research-section");taxonomy.append(E("h3",null,"Measurement Framework · Do not mix units"));const measure=E("div","sli-intel-metrics");for(const [type,title,desc] of d.measures){const c=E("article","sli-intel-metric");c.append(E("small","sli-research-num",type),E("strong",null,title),E("p",null,desc));measure.append(c)}taxonomy.append(measure);root.append(taxonomy);
  const watch=E("section","sli-research-section");watch.append(E("h3",null,"Monitoring Priorities & Verification Triggers"),E("p","sli-research-description","Editorial watchlist only, not a claim that every event occurred."));const ul=E("ul","sli-intel-watch");for(const item of d.watch)ul.append(E("li",null,item));watch.append(ul);root.append(watch);
  const assess=E("section","sli-research-section");assess.append(E("h3",null,"Overall Strategic Assessment"),E("p","sli-research-description","Qualitative, source-informed interpretation. Reassess as primary observations change."));const ol=E("ol","sli-intel-watch");for(const x of d.assessment)ol.append(E("li",null,x));assess.append(ol);root.append(assess);
