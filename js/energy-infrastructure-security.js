@@ -64,6 +64,19 @@ function electrification(p,d){
  desc(side,"The national near-100% ratio can coexist with off-grid villages, micro-solar household connections, limited operating hours and vulnerable diesel-based mini-grids.");
  desc(side,d.note);
  region.append(bars,side);p.append(region);
+ if(d.village_electrification){
+  const v=d.village_electrification;
+  p.append(section("PLN-served villages: most underserved provinces","Q1 2026 Gatrik · RD PLN, NOT household electrification"));
+  const cityGrid=$("div","infra-split"),rank=$("div","infra-bars"),notes=$("div","infra-detail");
+  (v.lowest_pln_village_service||[]).slice().sort((a,b)=>a.pct-b.pct).forEach(x=>{
+   rank.append(bar(x.province,x.pct,100,"%","#83bacc"))
+  });
+  notes.append($("h4",null,"National village access metrics (different denominators)"));
+  notes.append($("div","infra-large",fmt(v.national_pln_pct,3)+"% RD PLN"));
+  desc(notes,"National all-source village electrification: "+fmt(v.national_all_sources_pct,0)+"% RD NAS, versus PLN-served village ratio. This is about villages rather than households.");
+  desc(notes,v.warn);notes.append(link(v.source,"Gatrik official Q1 2026 village map ↗"));
+  cityGrid.append(rank,notes);p.append(cityGrid);
+ }
 }
 function power(p,d){
  p.append(section("PLTU vs PLTD vs renewable generation","Two different scopes: national installed MW and PLN-owned physical generating units"));
