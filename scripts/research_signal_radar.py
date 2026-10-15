@@ -75,11 +75,35 @@ FOCUS = {
     "ai": re.compile(r"\b(AI|artificial intelligence|kecerdasan buatan|GPU|semiconductor|semikonduktor|chip|data cent(?:er|re)|data\s*center|pusat data|komputasi|cloud|hyperscale|cyber|siber|submarine cable|undersea cable|pdp)\b", re.I),
 }
 EXCLUDE_AI = re.compile(r"\b(football|soccer|celebrity|gaming laptop|smartphone reviews)\b", re.I)
+# A Google News query can match article text even when the headline concerns a
+# different topic. Require a topic-specific signal in the displayed headline.
+TITLE_RULES = {
+    "nickel_market": r"\\b(nickel|nikel|lme|npi|ferronickel)\\b",
+    "export_policy": r"\\b(nickel|nikel|copper|tembaga|cobalt|kobalt|rare earth|critical mineral|minerals|lithium|mineral kritis)\\b",
+    "batteries": r"\\b(nickel|nikel|battery|batteries|baterai|lithium|cobalt|kobalt)\\b",
+    "copper_supply": r"\\b(copper|tembaga|alumina|aluminium|bauksit|bauxite)\\b",
+    "smelter_projects": r"\\b(smelter|hilirisasi|pabrik nikel|nikel|nickel|hpal|rkef|pengolahan mineral|processing mineral)\\b",
+    "mineral_policy": r"\\b(minerba|nikel|nickel|bauksit|tembaga|copper|timah|mineral|rkab|iupk)\\b",
+    "environment": r"\\b(nikel|nickel|smelter|tambang|tailing|morowali|weda|mineral)\\b",
+    "mineral_investment": r"\\b(freeport|inalum|antam|vale|mempawah|gresik|pomalaa|sorowako|baterai|battery)\\b",
+    "chip_controls": r"\\b(gpu|semiconductor|semikonduktor|nvidia|chip|h100|h200|blackwell|ai accelerator)\\b",
+    "compute_competition": r"\\b(data\\s*cent(?:er|re)|hyperscale|data center|data centre|ai infrastructure|infrastruktur ai)\\b",
+    "data_governance": r"\\b(sovereignty|data governance|cross.border data|cloud policy|data privacy|data protection|cyber|siber|pdpa|gdpr)\\b",
+    "subsea": r"\\b(submarine cable|subsea|undersea|cable|kabel bawah laut|connectivity)\\b",
+    "campus_projects": r"\\b(data\\s*cent(?:er|re)|hyperscale|pusat data|cloud region|kampus data)\\b",
+    "power_water": r"\\b(data\\s*cent(?:er|re)|pusat data|hyperscale|data centre)\\b",
+    "ai_policy": r"\\b(komdigi|bssn|ai roadmap|peta jalan ai|uu pdp|regulasi ai|tata kelola ai|perlindungan data|cybersecurity|keamanan siber)\\b",
+    "cloud_operations": r"\\b(aws|azure|microsoft|google cloud|dci indonesia|digital edge|princeton digital|equinix|cloud region|data\\s*cent(?:er|re))\\b",
+}
+TITLE_RULES = {key: re.compile(expr.replace("\\\\b", r"\b").replace("\\\\s", r"\s"), re.I) for key, expr in TITLE_RULES.items()}
+
 
 
 def source_ok(source: str, source_url: str) -> bool:
     name = source.strip().lower()
     host = (urllib.parse.urlparse(source_url).hostname or "").lower()
+    if any(x in name for x in ("kompasiana", "medium.com", "blogspot", "wordpress", "reddit")):
+        return False
     if any(part in name for part in PUBLISHER_PATTERNS):
         return True
     # A source URL alone can be publisher-spoofed; never accept arbitrary
@@ -113,7 +137,7 @@ def scan(topic: tuple, now: dt.datetime) -> list[dict]:
         date = item.findtext("pubDate") or ""
         if not title or not source or not link.startswith("https://") or not source_ok(source, source_url):
             continue
-        if not FOCUS[domain].search(title) or domain == "ai" and EXCLUDE_AI.search(title):
+        if not FOCUS[domain].search(title) or not TITLE_RULES[key].search(title) or domain == "ai" and EXCLUDE_AI.search(title):
             continue
         try:
             published = email.utils.parsedate_to_datetime(date).astimezone(UTC)
