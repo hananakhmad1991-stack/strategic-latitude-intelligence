@@ -4,6 +4,11 @@ on:
     paths:
       - 'index.html'
       - 'js/research-chapters.js'
+      - 'js/research-signal-radar.js'
+      - 'css/research-signal-radar.css'
+      - 'data/research-signal-radar.json'
+      - 'tests/qa-research-signal-radar.mjs'
+      - 'tests/test_research_signal_radar.py'
       - 'js/iea-critical-minerals.js'
       - 'js/usgs-critical-minerals.js'
       - 'js/esdm-2025-mineral-performance.js'
@@ -47,6 +52,10 @@ jobs:
       - name: Compile and render both specialist modules
         run: |
           node tests/qa-research-dashboard.mjs
+          node --check js/research-signal-radar.js
+          node tests/qa-research-signal-radar.mjs
+          python -m py_compile scripts/research_signal_radar.py
+          python tests/test_research_signal_radar.py
           node tests/qa-iea-critical-minerals.mjs
           node tests/qa-usgs-critical-minerals.mjs
           node tests/qa-esdm-2025-mineral-performance.mjs
