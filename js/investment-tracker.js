@@ -22,13 +22,16 @@ window.initSLIInvestment=async function(){
  const intro=$("p",null,"Track policy-relevant investment through verifiable milestones. Announcements, financial commitments, realized investment statistics and operational assets are different measurements and must never be added together.");
  root.append(strap,title,intro);
  const nav=$("div","tr-jumpnav");
- [["inv-kpis","Investment evidence"],["inv-sector-history","Energy & mining investment"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-commitments","Equity commitments"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
+ [["inv-kpis","Investment evidence"],["inv-quality","Evidence health"],["inv-sector-history","Energy & mining investment"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-commitments","Equity commitments"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
  heading(root,"National Investment Evidence","BKPM · BPS · BI / distinguish statistical definitions");
  const kpis=$("div","grid tr-grid");kpis.id="inv-kpis";
  const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Source-dated project / programme records","0 published","Includes individual projects, programme milestones and portfolios; not all represent delivered assets"]];
  const values=[];
  labels.forEach(([name,value,note])=>{const c=$("div","card tr-kpi");c.style.cursor="default";c.append($("div","eyebrow",name));const v=$("h2","tr-value",value);values.push(v);c.append(v,$("p",null,note));kpis.append(c)});root.append(kpis);
  const warning=$("div","tr-note","Data integrity: national PMA/PMDN realization, announced capex, committed financing and cumulative project cost have different scopes. No unsourced aggregate is presented as live data.");root.append(warning);
+ heading(root,"Source Quality & Evidence Gaps","Reviewed snapshot · source dates, ownership links and missing realization");
+ const qualityRoot=$("div");qualityRoot.id="inv-quality";root.append(qualityRoot);
+ qualityRoot.append($("p","tr-detail","Loading data coverage diagnostics…"));
  heading(root,"Energy & Mining Investment Realization","ESDM historical performance · annual subsector trends");
  const sectors=box(root,"Energy subsector execution, licence types and capital classification");
  sectors.id="inv-sector-history";
@@ -70,10 +73,12 @@ window.initSLIInvestment=async function(){
  const filingContent=$("div","pf-table-wrap");filingWatch.append(filingContent);
  const policy=box(root,"Forward policy / investment planning");policy.id="inv-policy";
  const evidenceStatus=$("p","tr-detail","Loading official investment data…");root.insertBefore(evidenceStatus,root.firstChild);
+ let snapshot=null;
  try{
   const response=await fetch("data/investment-evidence.json",{cache:"no-store"});
   if(!response.ok)throw Error("Official investment dataset not available");
-  const evidence=await response.json();
+  const evidence=await response.json();snapshot=evidence;
+  if(typeof window.renderSLIInvestmentQuality==="function")window.renderSLIInvestmentQuality(qualityRoot,evidence);
   const national=evidence.national;
   if(national){
    values[0].textContent="Rp"+national.total.toLocaleString("id-ID")+" T";
@@ -164,20 +169,28 @@ window.initSLIInvestment=async function(){
   rev.append($("p","tr-detail","Minerals vs coal and AI/data center-specific fiscal receipts are not separately verified by these sources; no artificial split is applied."));
   (evidence.policy||[]).forEach(x=>{const p=$("p",null,x.title+": "+x.amount+" · "+x.status+" · ");p.append(source(x.source,"BKPM"));policy.append(p)});
   evidenceStatus.textContent="Published data snapshot · "+evidence.as_of+" · Investment realization "+national.period+"; receipts retain their individual reference periods.";
- }catch(err){evidenceStatus.textContent="Official investment evidence dataset unavailable; headline feed and editorial framework remain accessible.";console.error("[SLI] investment evidence load",err);}
+ }catch(err){evidenceStatus.textContent="Official investment evidence dataset unavailable; headline feed and editorial framework remain accessible.";qualityRoot.textContent="Data coverage diagnostics unavailable.";console.error("[SLI] investment evidence load",err);}
  heading(root,"Overall Strategic Assessment","Evidence-led; no speculative scoring");
  const assess=box(root,"Indonesia Investment Execution Outlook");assess.id="inv-assessment";
+ const saved=snapshot||{};
+ const projects=Array.isArray(saved.projects)?saved.projects:[];
+ const rec=saved.national||{};
+ const linked=projects.filter(p=>p.ownership_ref).length;
+ const operating=projects.filter(p=>p.stage==="Operational").length;
+ const mixed=projects.filter(p=>p.stage==="Mixed implementation").length;
+ const sectors=[...new Set(projects.map(p=>p.sector).filter(Boolean))];
+ const realized=projects.filter(p=>p.capex_realized!==null&&p.capex_realized!==undefined&&p.capex_realized_source).length;
  const points=[
- "Capital conversion: BKPM reported Rp1,010.6 trillion realized in H1 2026 (49.5% of the full-year target); do not confuse this with announced multi-year project budgets.",
- "Investor origin: the five leading booking jurisdictions contributed 79.6% of Q2 2026 PMA; the origin of the recorded investment is not proof of an ultimate beneficial owner.",
- "Spatial concentration: Jakarta and Java remain key hubs, while nickel-intensive eastern provinces rank among Q2 leaders. Local power, transport, ports and water remain critical execution constraints.",
- "Critical minerals: distinguish mined ore sales from completed HPAL commissioning. Vale's Morowali and Pomalaa milestones cannot be treated as all-project commercial operation.",
- "Corporate control: Freeport economic ownership differs from operating rights; Vale explicitly describes joint control. Track shareholder agreements rather than extrapolating from percentage stakes.",
- "Revenue vs investment: PNBP SDA oil, gas and minerba is government non-tax revenue, not gross exports, project capital expenditure or a proxy for corporate taxes.",
- "Delivery discipline: compare financial close, capital drawdown, environmental approval, construction evidence and actual utilization separately; maintain company-level BO gaps explicitly."
+ "Macroeconomic evidence: "+(Number.isFinite(rec.total)?"BKPM recorded Rp"+rec.total.toLocaleString("id-ID")+" trillion in "+rec.period:"No official macro investment total available")+"; investment realization is not the sum of company announcements.",
+ "Execution evidence: "+projects.length+" source-dated project/programme records span "+sectors.join(", ")+"; "+operating+" are tagged operational and "+mixed+" mix distinct project stages. This does not imply all capital has been spent.",
+ "Capital verification: project-level realized CAPEX documentation covers "+realized+"/"+projects.length+" records. Unknown actual disbursement is not zero; neither signed debt nor planned budgets can fill these gaps.",
+ "Corporate transparency: "+linked+" of "+projects.length+" project entries link to an entity or PSC profile. Direct equity, operating rights, contractual PSC interests and a natural-person beneficial owner must remain separate.",
+ "Territorial concentration: report BKPM province-level investment within its reference quarter, not as a cumulative annual total; review power, access roads, ports, permitting and local value-chain integration.",
+ "Policy and revenue: compare incentives, approvals and fiscal PNBP within their own time periods; combined minerba receipts cannot be subdivided into coal and critical minerals without a defensible official dataset.",
+ "Monitoring priorities: verify project SPV share registers, financial close, audited realized capital, construction progress and commissioning milestones; use dated releases and do not silently infer progress from elapsed time."
  ];
  const ol=$("ol");points.forEach(p=>ol.append($("li",null,p)));assess.append(ol);
- assess.append($("p","tr-detail","Editorial framework (not an automated market forecast). This assessment will become quantitative as verified releases and project records are published."));
+ assess.append($("p","tr-detail","Dataset-derived editorial synthesis using the stored research snapshot "+(saved.as_of||"unknown")+". Recomputed on page load from the current JSON; not a live market prediction or automatic fact-check of external sources."));
 
 };
 })();
