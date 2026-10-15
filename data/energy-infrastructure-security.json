@@ -176,7 +176,84 @@
       "year": 2025,
       "source": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
       "national_technology_unit_counts": null,
-      "note": "5,985 is PLN Group unit count across all technologies; verified comparable national counts per PLTU/PLTD/EBT are not established, so show MW by type rather than invent unit counts."
+      "note": "2025 PLN statistics Table 54 reports 5,985 PLN-owned generating units, including PLTD 4,857, PLTU 138 and PLTS 361. Categorized unit counts are PLN-owned only; the national installed-MW series includes PLN, IPPs and captive. A generating unit is not necessarily a power station. Comparable national all-owner unit counts remain unverified.",
+      "pln_by_type_units": [
+        {
+          "type": "PLTA",
+          "units": 58,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTM",
+          "units": 106,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTMH",
+          "units": 90,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTU",
+          "units": 138,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTG",
+          "units": 59,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTGU",
+          "units": 97,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTP",
+          "units": 18,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTD",
+          "units": 4857,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTMG",
+          "units": 197,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTS",
+          "units": 361,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTB",
+          "units": 2,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        },
+        {
+          "type": "PLTBM",
+          "units": 2,
+          "scope": "PLN-owned generating units only",
+          "year": 2025
+        }
+      ],
+      "pln_renewable_type_units": 637,
+      "table": "2025 Statistics PLN, Table 54 — Number of Power Plant (only PLN-owned power plants)",
+      "vintage": "2025 annual, published Mar 2026"
     },
     "capacity_by_type_mw": [
       {
