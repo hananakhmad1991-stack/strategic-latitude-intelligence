@@ -88,12 +88,12 @@ function render(root,data){
  const issueWrap=E("label","ogas-issue-label");issueWrap.append(E("span",null,T("Trace a specific oil & gas issue","Telusuri isu migas khusus")));
  const select=E("select","ogas-issue-select");select.setAttribute("aria-label",T("Select oil gas issue","Pilih isu migas"));
  [{id:"none",en:"All institutional responsibilities",id_label:"Semua hubungan kelembagaan"},...data.issues].forEach(x=>{const opt=E("option",null,lang()==="id"?x.id_label:x.en);opt.value=x.id;select.append(opt)});
- select.value=state.issue;select.addEventListener("change",()=>{state.issue=select.value;state.group="all";drawResults()});issueWrap.append(select);
+ select.value=state.issue;select.addEventListener("change",()=>{state.issue=select.value;state.group="all";state.query="";input.value="";drawResults()});issueWrap.append(select);
  controls.append(searchWrap,issueWrap);root.append(controls);
  const categories=E("div","ogas-groups");
- function pick(group){state.group=state.group===group?"all":group;state.query="";input.value="";drawResults()}
+ function pick(group){state.group=state.group===group?"all":group;state.query="";input.value="";state.issue="none";select.value="none";drawResults()}
  const groupButtons=[];
- [{id:"all",en:"All 27 entities",id_label:"Semua 27 entitas"},...data.groups].forEach(g=>{
+ [{id:"all",en:"All "+data.items.length+" entities",id_label:"Semua "+data.items.length+" entitas"},...data.groups].forEach(g=>{
   const b=button(lang()==="id"?g.id_label:g.en,"ogas-group-tab",()=>pick(g.id));
   b.setAttribute("aria-pressed",String(state.group===g.id));b.dataset.group=g.id;categories.append(b);groupButtons.push(b);
  });
