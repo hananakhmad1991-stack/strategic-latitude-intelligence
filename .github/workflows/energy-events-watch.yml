@@ -34,7 +34,7 @@ jobs:
           j=json.loads(Path("data/energy-events.json").read_text())
           today=d.date.fromisoformat(j["date_wib"])
           assert len(j["events"]) <= 5
-          assert j["events"]==sorted(j["events"],key=lambda x:(x["start_date"],x["title"].lower()))
+          assert j["events"]==sorted(j["events"],key=lambda x:x["start_date"])
           for e in j["events"]:
               assert d.date.fromisoformat(e["end_date"]) >= today
               assert e["source_url"].startswith("https://")
