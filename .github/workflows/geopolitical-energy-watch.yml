@@ -3,17 +3,25 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "13 */3 * * *"
+  push:
+    branches: [main]
+    paths:
+      - scripts/geopolitical_energy_watch.py
+      - scripts/energy_sector_taxonomy.py
+      - .github/workflows/geopolitical-energy-watch.yml
 permissions:
   contents: write
 jobs:
   discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 16
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Validate collector syntax
+        run: python -m py_compile scripts/geopolitical_energy_watch.py scripts/energy_sector_taxonomy.py
       - name: Gather attributed public news leads
         run: python scripts/geopolitical_energy_watch.py
       - name: Commit news-discovery snapshot if new
@@ -21,8 +29,17 @@ jobs:
           if [ ! -f data/geopolitical-energy-status.json ]; then exit 1; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/geopolitical-energy-status.json
-          if [ -f data/geopolitical-energy.json ]; then git add data/geopolitical-energy.json; fi
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Update attributed geopolitical energy monitoring leads"
-          git push
+          cp data/geopolitical-energy-status.json /tmp/sli-geo-status.json
+          if [ -f data/geopolitical-energy.json ]; then cp data/geopolitical-energy.json /tmp/sli-geo-leads.json; fi
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main || exit 1
+            git reset --hard origin/main
+            cp /tmp/sli-geo-status.json data/geopolitical-energy-status.json
+            if [ -f /tmp/sli-geo-leads.json ]; then cp /tmp/sli-geo-leads.json data/geopolitical-energy.json; fi
+            git add data/geopolitical-energy-status.json data/geopolitical-energy.json
+            if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+            git commit -m "Refresh source-attributed geopolitical sector intelligence"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
