@@ -139,6 +139,21 @@
       "ownership_class": "Officer, not a proved natural-person beneficial owner",
       "source_url": "https://www.vale.com/ca/indonesia/board-of-directors",
       "evidence_date": "2026-10-15"
+    },
+    {
+      "name": "Setiawan Surya",
+      "sector": "Electric Vehicles",
+      "role": "CEO of Changan Indonesia, as reported August 2026",
+      "organisation": "Changan Indonesia / Indomobil distribution partnership",
+      "role_type": "Country-market corporate executive",
+      "country_affiliation": "Chinese automotive brand with Indonesian distribution",
+      "company_connection": "Company announced his role at 2026 GIIAS Surabaya; responsible for brand operations, not necessarily an equity holder of manufacturer or distributor.",
+      "asset_ids": [
+        "ev-changan-indomobil"
+      ],
+      "ownership_class": "Executive, not shareholder or natural-person BO by title",
+      "source_url": "https://changan.co.id/newsroom/perdana-hadir-di-giias-surabaya-2026-changan-resmi-meluncurkan-changan-deepal-s05-dan-changan-nevo-q05-untuk-wilayah-jawa-timur",
+      "evidence_date": "2026-08-26"
     }
   ],
   "brands": [
@@ -229,6 +244,43 @@
       "corporate_actors": [],
       "source_url": "https://chery.co.id/id/berita/chery-serahkan-60-unit-omoda-e5-kepada-bank-bsi-sebagai-konsumen-fleet",
       "investment": "Not separately verified"
+    },
+    {
+      "brand": "Changan (incl. Deepal / Nevo)",
+      "origin": "China",
+      "indonesian_entity": "PT Wahana Wirawan (Indomobil group partnership)",
+      "models": [
+        "Lumin (BEV)",
+        "Deepal S07 (BEV)",
+        "Deepal S05 (BEV / REEV)",
+        "Nevo Q05 (BEV)"
+      ],
+      "business_status": "Indonesian retail launches and first vehicle handover confirmed in 2026",
+      "manufacturing_status": "No Indonesian manufacturing operation established from selected company release",
+      "asset_ref": "ev-changan-indomobil",
+      "corporate_actors": [
+        "Setiawan Surya"
+      ],
+      "source_url": "https://changan.co.id/newsroom/changan-indonesia-resmikan-tiga-diler-sekaligus-dan-serahkan-unit-perdana-lumin-serta-deepal-s07-kepada-konsumen",
+      "investment": "Local manufacturing CAPEX not verified; market-entry and commercial channel only"
+    },
+    {
+      "brand": "BMW i",
+      "origin": "Germany",
+      "indonesian_entity": "BMW Group Indonesia and authorized retail network",
+      "models": [
+        "iX1",
+        "i4",
+        "i5",
+        "iX",
+        "i7"
+      ],
+      "business_status": "Official Indonesian branded EV sales",
+      "manufacturing_status": "Not demonstrated as produced locally by the cited BMW product catalog",
+      "asset_ref": "ev-bmw-indonesia",
+      "corporate_actors": [],
+      "source_url": "https://shop.bmw.co.id/",
+      "investment": "Indonesian factory investment not verified; brand availability is not direct investment"
     }
   ],
   "corporate_events": [
