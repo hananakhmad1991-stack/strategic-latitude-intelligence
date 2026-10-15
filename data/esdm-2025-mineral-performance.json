@@ -1,0 +1,324 @@
+{
+  "id": "ESDM_LAKIN_2025_MINERAL",
+  "title": "Laporan Kinerja Kementerian ESDM Tahun 2025",
+  "published": "2026-02-27",
+  "reference_year": 2025,
+  "as_of": "2026-10-16",
+  "source": {
+    "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf",
+    "title": "Laporan Kinerja Kementerian ESDM 2025",
+    "publisher": "Kementerian Energi dan Sumber Daya Mineral Republik Indonesia"
+  },
+  "secondary": {
+    "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-mineral-dan-batubara-tahun-2025.pdf",
+    "title": "Laporan Kinerja Ditjen Minerba Tahun 2025",
+    "note": "Corroboration only. Ministry LAKIN remains authoritative for data shown in this dataset."
+  },
+  "index": {
+    "label": "Indeks Pasokan Mineral untuk Peningkatan Nilai Tambah Dalam Negeri",
+    "target_2025": 79.42,
+    "realized_2025": 86.4,
+    "achievement_percent": 108.79,
+    "series": [
+      {
+        "year": 2021,
+        "value": 74.84
+      },
+      {
+        "year": 2022,
+        "value": 77.07
+      },
+      {
+        "year": 2023,
+        "value": 86.29
+      },
+      {
+        "year": 2024,
+        "value": 87.62
+      },
+      {
+        "year": 2025,
+        "value": 86.4
+      }
+    ],
+    "page": 69,
+    "pdf_page": 87,
+    "weights": [
+      {
+        "name": "Domestic mineral processing ratio",
+        "weight": 25
+      },
+      {
+        "name": "Smelter/refinery facility utilisation",
+        "weight": 25
+      },
+      {
+        "name": "Domestic procurement & local content · P3DN/TKDN",
+        "weight": 10
+      },
+      {
+        "name": "Ore-to-product value-add scoring",
+        "weight": 40
+      }
+    ],
+    "scope": "ESDM composite ministry performance index, NOT an international critical-mineral security rating.",
+    "methodology_warning": "Renstra 2025–2029 modifies both the index name and its formula. Historic series belongs to the 2025 reporting framework and must not be blindly continued under the new indicator."
+  },
+  "processing": [
+    {
+      "mineral": "Gold & silver",
+      "ratio_target": 68,
+      "ratio_actual": 100,
+      "material_tonnes": 483.04,
+      "unit": "ton precious metal reported",
+      "material_note": "ESDM source contains internally awkward ozT/million notation; 483.04 tonnes quoted as explicit equivalent and not assumed mine ore tonnage.",
+      "volume_target": null,
+      "volume_achievement": null,
+      "page": 64,
+      "pdf_page": 82
+    },
+    {
+      "mineral": "Tin",
+      "ratio_target": 100,
+      "ratio_actual": 100,
+      "material_tonnes": 98670,
+      "unit": "ton raw material / processed material",
+      "volume_target": 175000,
+      "volume_achievement": 56.38,
+      "page": 64,
+      "pdf_page": 82
+    },
+    {
+      "mineral": "Nickel",
+      "ratio_target": 97,
+      "ratio_actual": 100,
+      "material_tonnes": 313670000,
+      "unit": "ton raw nickel material reported, NOT contained Ni",
+      "volume_target": 52139014,
+      "volume_achievement": 601,
+      "page": 65,
+      "pdf_page": 83
+    }
+  ],
+  "utilization": [
+    {
+      "product": "Gold",
+      "target_pct": 38,
+      "actual_pct": 59,
+      "relative_to_target_pct": 155.26
+    },
+    {
+      "product": "Silver",
+      "target_pct": 60,
+      "actual_pct": 117,
+      "relative_to_target_pct": 195
+    },
+    {
+      "product": "Tin",
+      "target_pct": 60,
+      "actual_pct": 59,
+      "relative_to_target_pct": 98.33
+    },
+    {
+      "product": "Processed nickel · FeNi & NPI",
+      "target_pct": 70,
+      "actual_pct": 94,
+      "relative_to_target_pct": 134.29
+    },
+    {
+      "product": "Nickel matte",
+      "target_pct": 90,
+      "actual_pct": 98,
+      "relative_to_target_pct": 108.89
+    }
+  ],
+  "scope_utilization": "2025 Q4 processing/smelter facility utilisation is limited to integrated IUP/IUPK facilities under ESDM. Standalone IUI industrial smelters overseen by Kemenperin are outside this perimeter; values above 100% may reflect reporting/capacity denominator effects.",
+  "procurement": {
+    "p3dn": {
+      "target_pct": 72,
+      "actual_pct": 81.8,
+      "relative_to_target_pct": 113.61,
+      "page": 67,
+      "pdf_page": 85,
+      "note": "Provisional 2025 Q4 P3DN realised domestic product procurement; incomplete enterprise reporting."
+    },
+    "tkdn": {
+      "target_pct": 18,
+      "actual_pct": 23.46,
+      "relative_to_target_pct": 130.33,
+      "page": 68,
+      "pdf_page": 86,
+      "note": "2025 Q4 share of certified domestic content in local goods expenditure; self-assessment and partial documentation."
+    }
+  },
+  "investment": {
+    "period": "2025 full-year · source checked 2026-01-31",
+    "total_minerba_usd_m": 7008.13,
+    "target_pk_usd_m": 3171.01,
+    "target_renstra_usd_m": 5250,
+    "achievement_vs_pk_pct": 221.01,
+    "achievement_vs_renstra_pct": 133.49,
+    "scope": "Minerba = minerals AND coal, plus services. This US$7.008bn is NOT verified critical-mineral-only investment and must not be presented as such.",
+    "categories": [
+      {
+        "code": "KK",
+        "name": "Contract of Work (KK)",
+        "target": 566.61,
+        "realized": 578.3
+      },
+      {
+        "code": "PKP2B",
+        "name": "Coal Contract of Work (PKP2B)",
+        "target": 198.57,
+        "realized": 437,
+        "coal_only": true
+      },
+      {
+        "code": "IUPK",
+        "name": "Special Mining Business Permit (IUPK)",
+        "target": 1471.16,
+        "realized": 3579,
+        "note": "Multi-commodity; cannot isolate critical minerals from this report."
+      },
+      {
+        "code": "IUP_BUMN",
+        "name": "SOE Mining Business Permit (IUP BUMN)",
+        "target": 450.35,
+        "realized": 527.8,
+        "note": "Scope is permit owner, not proof of mineral-only spending."
+      },
+      {
+        "code": "IUP_MINERAL",
+        "name": "Mineral Mining Business Permit (IUP Mineral)",
+        "target": 221.85,
+        "realized": 363.9,
+        "minerals_only": true
+      },
+      {
+        "code": "IUP_COAL",
+        "name": "Coal Mining Business Permit (IUP Batubara)",
+        "target": 112.91,
+        "realized": 164.4,
+        "coal_only": true
+      },
+      {
+        "code": "IUPJ",
+        "name": "Mining Services Business Permit (IUPJ)",
+        "target": 149.56,
+        "realized": 1357.62,
+        "note": "Minerals/coal services are not split into project/commodity expenditure."
+      }
+    ],
+    "page": 127,
+    "pdf_page": 145,
+    "note": "Figures from investment table are rounded; category sum can differ slightly from headline (US$7,008.13m). Avoid adding to BKPM or IEA greenfield pipeline figures."
+  },
+  "actors": [
+    {
+      "name": "Ditjen Minerba · Kementerian ESDM",
+      "role": "IUP/IUPK integrated smelter performance reporting, MOMS production/processing oversight, mineral investment monitoring.",
+      "relationship": "Government regulator",
+      "page": 66
+    },
+    {
+      "name": "Kementerian Perindustrian (Kemenperin)",
+      "role": "Standalone industrial processing/refining (IUI) outside ESDM-integrated smelter utilization denominator.",
+      "relationship": "Separate ministry; industrial licensing",
+      "page": 66
+    },
+    {
+      "name": "Kementerian Investasi dan Hilirisasi / BKPM",
+      "role": "2025 cross-government reconciliation of refinery data and investment facilitation.",
+      "relationship": "Investment / cross-ministerial",
+      "page": 66
+    },
+    {
+      "name": "Badan Geologi · Kementerian ESDM",
+      "role": "Geological mapping, critical/strategic mineral resource analysis and policy recommendations.",
+      "relationship": "ESDM technical agency",
+      "page": 24
+    },
+    {
+      "name": "PT Sucofindo",
+      "role": "ESDM-linked study to support mineral TKDN benchmarks and procurement verification.",
+      "relationship": "State-linked technical surveyor",
+      "page": 67
+    }
+  ],
+  "risks": [
+    {
+      "id": "reporting",
+      "title": "Quarterly RKAB reporting gaps",
+      "detail": "Some mineral IUP holders reported late, particularly Q4; administrative lag affects completeness and timing of production indices.",
+      "page": 65
+    },
+    {
+      "id": "electricity",
+      "title": "Smelter power and infrastructure constraints",
+      "detail": "Unfinished processing facilities face financing, electricity supply, accessibility and land-use issues.",
+      "page": 65
+    },
+    {
+      "id": "nickel",
+      "title": "Nickel excess supply / fragile performance",
+      "detail": "High processed nickel output and smelter expansion do not guarantee sustainable raw material supply or balanced market pricing; skill, spatial and environmental constraints persist.",
+      "page": 65
+    },
+    {
+      "id": "regulator",
+      "title": "Dual supervision of processing",
+      "detail": "Integrated IUP smelters fall under ESDM while industrial stand-alone IUI plants fall under Kemenperin, requiring cross-agency data alignment.",
+      "page": 66
+    },
+    {
+      "id": "procurement",
+      "title": "TKDN evidence quality",
+      "detail": "Some enterprise figures rely on self-assessment; the report notes incomplete reporting and a limited mineral procurement obligation in company plans.",
+      "page": 67
+    },
+    {
+      "id": "capital",
+      "title": "Investment conversion & permitting",
+      "detail": "IPPKH, RKAB revisions, land price negotiations, rainfall, procurement and vendor issues constrain delivery.",
+      "page": 127
+    },
+    {
+      "id": "outcome",
+      "title": "Critical mineral supply chain outcome measurement",
+      "detail": "The ESDM performance review calls for explicit outcome measures on critical-mineral supply security and environmental/social impacts of downstreaming.",
+      "page": 233
+    }
+  ],
+  "policy_outputs": [
+    {
+      "name": "MOMS expansion",
+      "description": "Mineral Online Monitoring System launched / extended to bauxite and iron, as well as copper, gold, galena, manganese, zinc and lead.",
+      "page": 70
+    },
+    {
+      "name": "Strategic supply index reform",
+      "description": "2025–2029 Renstra renamed/reworked the composite index as Indeks Pengelolaan Mineral dan Peningkatan Nilai Tambah Dalam Negeri.",
+      "page": 70
+    },
+    {
+      "name": "2025 raw-to-refined product categories",
+      "description": "Gold/silver metal, tin metal, copper cathode, NPI, ferronickel, nickel matte, CGA and SGA referenced; listing a product does not prove global battery-grade capacity.",
+      "page": 68
+    },
+    {
+      "name": "Mineral investment monitoring",
+      "description": "Monthly corporate reports and sector investment monitoring through Ditjen Minerba; mineral investment cannot be disaggregated into critical minerals from this one total.",
+      "page": 135
+    }
+  ],
+  "methodology": [
+    "Source: ESDM ministry LAKIN 2025, issued 27 February 2026. PDF pagination includes introductory pages: user-facing page labels are printed report pages, PDF pages differ.",
+    "The nickel 313.67 million-ton figure is reported RAW MATERIAL tonnes in the ESDM processing-ratio KPI. It is not USGS/IEA mined contained-Ni tonnes, refined nickel production, or national NI stocks.",
+    "ESDM quotes 100% physical nickel processing ratio and 103% target achievement: these are not conflicting measurements. The latter compares 100 with 97 targeted.",
+    "Reported 2025 ore processing ratio data are limited by smelter integration and submitted administrative data; the data do not prove all standalone smelters or mined ore nationally are covered.",
+    "Some Q4 2025 P3DN/TKDN numbers are provisional or self-assessed; 117% silver utilisation must not be interpreted as verified physical capacity exceeding maximum engineering throughput.",
+    "2025 minerba investment is MINERAL AND COAL; US$363.9m IUP mineral is only one mining-permit class, NOT a comprehensive mineral/critical mineral economy estimate.",
+    "Raw ore tonnes, metal content, product tonnes, facility utilisation percentages, investment dollars and composite-score points are different measures and cannot be summed.",
+    "ESDM 2025 series are national programme KPIs: they must not overwrite USGS MCS 2026 mine statistics, IEA scenario projections, investment-project disclosures or the canonical SLI policy register."
+  ]
+}
