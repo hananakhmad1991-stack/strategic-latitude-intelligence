@@ -22,6 +22,21 @@ Once GitHub Pages is enabled: https://hananakhmad1991-stack.github.io/strategic-
 - Do not publish confidential client material or personal information without proper authorization.
 - Do not give individualized investment or securities trading recommendations.
 
+## Indonesia Energy Institutional Power Map — October 2026
+- The top of Energy Security now includes a **six-layer institutional and actor map** with **54 distinct actors and roles**, covering:
+  1. Presidency, DEN, Purnomo Yusgiantoro as presidential energy adviser, coordinating ministries and fiscal/planning agencies.
+  2. ESDM subsector directorates (Migas, Minerba, EBTKE, Gatrik), regulators (BPH, SKK, BPMA, BAPETEN), and technical bodies.
+  3. Pertamina Persero and key subsidiaries (Patra Niaga, PHE, PGE, gas), PLN and generation/fuel units, Danantara and infrastructure finance.
+  4. DPR commissions XII (energy), VI (state-owned companies), VII (industry), XI (finance), plus Banggar, Baleg and BPK.
+  5. DPD chair, Komite II (energy/resources and region), Komite IV (regional finance), legislation.
+  6. RUED and local authorities, BP Batam/SEZ, emergency response, BMKG and local utilities.
+- Leadership highlights sourced as of 15 October 2026: Purnomo Yusgiantoro (special presidential energy adviser), Simon Aloysius Mantiri (Pertamina parent), Sunaryanto (PHE), Mars Ega Legowo Putra (Patra Niaga consolidated downstream), Melchias Markus Mekeng (DPR Komisi XII since August 2026), Badikenita Br. Sitepu (DPD Komite II). Recheck source date on individual cards.
+- The actor explorer has text/role/branch filters, expandable branches and **seven issue-specific accountability matrices** (fuel shortages, outages, CCS/CCUS, coal DMO, renewables, fiscal subsidies and downstreaming investment).
+- **Governance mapping is analytical, not legal hierarchy:** advisers have no presumed permitting authority; the DPR and DPD are oversight/representation branches, *not* executive subordinates; Danantara does not automatically finance each company project.
+- `energy_actor_watch.py` scans cabinet/agency sources and attributed appointment headlines at six-hour intervals, now covering Pertamina, the special adviser, DPR and DPD. Only corroborated cabinet and role-linked ESDM officials can be auto-renamed. For other officeholders, a candidate headline or source inconsistency is **flagged for review**, never silently promoted.
+- Official institutional source access may fail or lag (HTTP 403, stale biographies). A failed check never means a person is still in office.
+- CI asserts at least 50 unique roles, the presence of the presidential adviser, Pertamina parent, DPR XII and DPD II, and all seven accountability routes.
+
 ## Energy governance and CCS/CCUS scope
 - `data/energy-governance-ccs.json`: functional energy governance / actor roles, updated policy register and evidence-labeled CCS/CCUS pipeline (potential, status, participants, reported investment, verified realization).
 - `js/energy-governance-ccs.js` and `css/energy-governance-ccs.css`: accessible interactive front-end panels at the **top** of Energy Security.
