@@ -25,6 +25,13 @@ for(const sector of ['minerals','ai']){
  assert.equal(nodes.filter(x=>x.relation==='root').length,1);
  assert.ok(nodes.length>=20,'Too few hierarchy records');
  assert.ok(market.length>=10,'Private/foreign actors missing');
+ for(const [id,person,relation] of [['kemenkoekon','Airlangga Hartarto','coordination'],['bappenas','Rachmat Pambudy','planning']]){
+  const x=nodes.find(a=>a.id===id);
+  assert.ok(x,'Missing national coordinating/planning ministry '+id);
+  assert.equal(x.parent,'pres',id+' must be directly below the President, not beneath ESDM');
+  assert.equal(x.relation,relation,'Functional role must not be conflated with sector regulator');
+  assert.equal(x.person,person,'Incorrect dated incumbent for '+id);
+ }
  const byId=new Map(nodes.map(x=>[x.id,x]));
  for(const a of nodes){
   assert.ok(a.source?.startsWith('https://'),sector+' original source missing for '+a.id);
@@ -38,6 +45,13 @@ for(const sector of ['minerals','ai']){
  const filter=root.querySelector('.sli-hier-select');
  assert.match(top.textContent,/Prabowo Subianto/);
  assert.ok(lanes.children.length>=3,'No multi-lane top-down branches');
+ const nationalLanes=lanes.textContent;
+ assert.match(nationalLanes,/Airlangga Hartarto/,'Kemenko must appear on top-level diagram');
+ assert.match(nationalLanes,/Rachmat Pambudy/,'Bappenas must appear on top-level diagram');
+ filter.value='policy';filter.events.change();
+ assert.match(lanes.textContent,/Kemenko Perekonomian/,'Policy filter must include economic coordination');
+ assert.match(lanes.textContent,/Bappenas/,'Policy filter must include national planning');
+ filter.value='all';filter.events.change();
  const cards=root.querySelectorAll('.sli-hier-card');
  assert.ok(cards.length>=12,'Incomplete initial expanded corporate/regulatory tree');
  const search=root.querySelector('.sli-hier-search');
