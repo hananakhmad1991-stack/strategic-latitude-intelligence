@@ -12,7 +12,8 @@
     "notice": "Indonesian AHU's beneficial ownership records are filed by companies or reporting agents and AHU notes it does not verify submitted information. Registry availability is not independent verification. Do not identify executives, ministers or owners of listed-company stakes as BO without direct evidence.",
     "recency": "Source snapshots retain their own dates; entries older than 12 months should be rechecked.",
     "remainder_policy": "A shareholder row explicitly labelled arithmetic remainder groups many owners only for visual completeness and is not a separate legal shareholder or ultimate owner. Do not attribute rights to it.",
-    "jv_policy": "A 2023 JV ownership announcement is a dated snapshot; current as-of 2026 share percentages require newer filings."
+    "jv_policy": "A 2023 JV ownership announcement is a dated snapshot; current as-of 2026 share percentages require newer filings.",
+    "sovereign_role": "Danantara, INA and SOE holding interests are identified from specific entity disclosures. Manager, financier, state-special-share rights and natural-person beneficial owner are separate roles."
   },
   "entities": [
     {
@@ -626,6 +627,65 @@
         {
           "label": "Astra investor shareholding 31 Dec 2025",
           "url": "https://www.astra.co.id/investor-relations/shareholding"
+        }
+      ]
+    },
+    {
+      "id": "caa",
+      "entity": "PT Chandra Asri Alkali (CAA) — CA-EDC project developer",
+      "sector": "Other",
+      "ownership_as_of": "2026-03-03",
+      "evidence_tier": "Danantara and INA 3 March 2026 conditional share subscription release; no definitive cap table",
+      "direct_shareholders": [],
+      "known_project_partners": [
+        "Chandra Asri Group (identified parent)",
+        "Danantara Indonesia (conditional investor)",
+        "Indonesia Investment Authority (conditional investor)"
+      ],
+      "ownership_chain": "Danantara identifies PT Chandra Asri Alkali as the subsidiary project company of Chandra Asri Group. A 3 March 2026 Conditional Share Subscription Agreement proposed aggregate Danantara + INA participation of US$200m; the release does not specify individual contributions, direct issued share percentages, or whether conditions were completed.",
+      "control": "CAA is identified as the operating project developer, but the investment agreement does not itself prove changes in voting control or closing of new share allotments.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "No up-to-date company-specific AHU share register or independently confirmed natural-person beneficial owner; parent corporate structure and proposed minority investors must not be translated into individual BO claims."
+      },
+      "risk": "Completion of financing conditions, construction, caustic soda/EDC market conditions, chemical plant commissioning and off-take.",
+      "monitor": "Final subscriptions and ownership percentages; 2027 targeted COD; completed capex.",
+      "sources": [
+        {
+          "label": "Danantara/INA conditional equity subscription and CA-EDC project disclosure",
+          "url": "https://www.danantaraindonesia.co.id/media-center/press-releases/reducing-import-dependency-danantara-and-ina-sign-investment-agreement-in-chandra-asri-groups-ca-edc-project"
+        }
+      ]
+    },
+    {
+      "id": "denera",
+      "entity": "PT Daya Energi Bersih Nusantara (Denera) — Danantara WtE platform",
+      "sector": "Energy",
+      "ownership_as_of": "2026-09-17",
+      "evidence_tier": "Danantara Investment Management corporate project-platform statement",
+      "direct_shareholders": [],
+      "known_project_partners": [
+        "PT Danantara Investment Management (DIM) — establishing platform",
+        "Selected waste-to-energy project developers and operators, by project"
+      ],
+      "ownership_chain": "Danantara's 17 September 2026 official release describes Denera as established under DIM as the national waste-to-energy development and coordination platform. Precise direct shareholding percentages and any project-specific SPV shares are not disclosed in that statement.",
+      "control": "DIM is the stated sponsoring platform. Programmatic oversight does not prove Denera owns 100% of each PSEL project or controls future privately selected partners.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "Official platform description does not contain Denera's company cap table or a natural-person BO identification."
+      },
+      "risk": "Project procurement, waste supply agreements, electricity off-take, local permits and selection of engineering/concession partners.",
+      "monitor": "Bogor/Bekasi/Denpasar project SPV contracts, Denera cap table, CAPEX financing agreements and COD progress.",
+      "sources": [
+        {
+          "label": "Danantara PSEL Bogor Raya 1 construction and Denera description",
+          "url": "https://www.danantaraindonesia.co.id/zh/media-center/press-releases/psel-bogor-raya-1-construction"
+        },
+        {
+          "label": "Danantara WtE 2026 partner selection process",
+          "url": "https://www.danantaraindonesia.co.id/media-center/press-releases/dim-cloa-batch-ii-wte-partners"
         }
       ]
     }
