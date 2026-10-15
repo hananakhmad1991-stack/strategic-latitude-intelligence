@@ -66,28 +66,48 @@ function electrification(p,d){
  region.append(bars,side);p.append(region);
 }
 function power(p,d){
- p.append(section("PLTU vs PLTD vs renewable generation","2025 installed capacity · MW, not number of stations"));
+ p.append(section("PLTU vs PLTD vs renewable generation","Two different scopes: national installed MW and PLN-owned physical generating units"));
  const c=$("div","infra-kpi-grid");
- c.append(kpi("Installed nationwide",fmt(d.national.capacity_mw/1000,2)+" GW","ESDM nationwide including non-PLN / captive facilities",d.national.source));
- c.append(kpi("PLTU (steam / coal)",fmt(d.capacity_by_type_mw.find(x=>x.type==="PLTU").mw/1000,2)+" GW","Installed nameplate capacity · not generated kWh",d.national.source));
- c.append(kpi("PLTD (diesel)",fmt(d.capacity_by_type_mw.find(x=>x.type==="PLTD").mw/1000,2)+" GW","Installed diesel generating nameplate",d.national.source));p.append(c);
- const controls=$("div","infra-controls"),choice=$("select","infra-select");
- [["major","Key types"],["all","All 17 categories"],["renewable","Renewables only"]].forEach(([val,txt])=>{const opt=$("option",null,txt);opt.value=val;choice.append(opt)});
- controls.append($("label",null,"Show generation technologies"),choice);p.append(controls);
- const plot=$("div","infra-plant-bars");p.append(plot);
+ c.append(kpi("Installed nationwide",fmt(d.national.capacity_mw/1000,2)+" GW","2025 nationally, incl. PLN / IPP / captive",d.national.source));
+ c.append(kpi("PLTU installed",fmt(d.capacity_by_type_mw.find(x=>x.type==="PLTU").mw/1000,2)+" GW","Coal/steam generation nationally, NOT number of sites",d.national.source));
+ c.append(kpi("PLTD installed",fmt(d.capacity_by_type_mw.find(x=>x.type==="PLTD").mw/1000,2)+" GW","National installed diesel capacity",d.national.source));p.append(c);
+ const units=d.unit_count.pln_by_type_units||[];
+ const numbers=$("div","infra-kpi-grid");
+ const get=t=>units.find(x=>x.type===t)?.units;
+ numbers.append(kpi("PLTU · PLN-owned units",get("PLTU")===undefined?"—":fmt(get("PLTU"))+" units","2025 PLN fleet only; 138 generating units, NOT 138 sites",d.unit_count.source));
+ numbers.append(kpi("PLTD · PLN-owned units",get("PLTD")===undefined?"—":fmt(get("PLTD"))+" units","2025 PLN-owned diesel generating units; generally smaller per unit",d.unit_count.source));
+ numbers.append(kpi("EBT-type · PLN-owned units",d.unit_count.pln_renewable_type_units===undefined?"—":fmt(d.unit_count.pln_renewable_type_units)+" units","PLTA + mini/micro hydro + PLTP + PLTS + wind + biomass; PLN scope",d.unit_count.source));
+ p.append(numbers);
+ const controls=$("div","infra-controls");
+ const mode=$("select","infra-select"),choice=$("select","infra-select");
+ [["mw","National installed capacity · MW (all owners)"],["units","PLN-owned generating units · count (2025)"]].forEach(([val,title])=>{
+  const o=$("option",null,title);o.value=val;mode.append(o)
+ });
+ [["major","Key types"],["all","All technologies"],["renewable","Renewables only"]].forEach(([val,txt])=>{
+  const o=$("option",null,txt);o.value=val;choice.append(o)
+ });
+ const field=(label,ctrl)=>{const wrap=$("label","infra-field",label);wrap.append(ctrl);controls.append(wrap)};
+ field("What to compare",mode);field("Technologies",choice);p.append(controls);
+ const plot=$("div","infra-plant-bars"),basis=$("p","infra-basis");p.append(basis,plot);
  function draw(){
-  plot.replaceChildren();
-  let arr=d.capacity_by_type_mw;
-  if(choice.value==="major")arr=arr.filter(x=>["PLTU","PLTD","PLTGU","PLTA","PLTP","PLTS","PLTBm"].includes(x.type));
-  if(choice.value==="renewable")arr=arr.filter(x=>x.family==="Renewable");
-  const max=Math.max(1,...arr.map(x=>x.mw));
-  arr.forEach(x=>plot.append(bar(x.type+" · "+x.category,x.mw,max,"MW",x.family==="Renewable"?"#6eaeab":x.family==="Fossil"?"#d7b678":"#a8a8b5")));
+  plot.replaceChildren();const isUnits=mode.value==="units";
+  const renewableTypes=new Set(["PLTA","PLTM","PLTMH","PLTP","PLTS","PLTB","PLTBM"]);
+  const items=isUnits?units.map(x=>({type:x.type,value:x.units,renewable:renewableTypes.has(x.type),label:x.type})):
+    d.capacity_by_type_mw.map(x=>({type:x.type,value:x.mw,renewable:x.family==="Renewable",label:x.type+" · "+x.category}));
+  let arr=items;
+  if(choice.value==="major")arr=items.filter(x=>["PLTU","PLTD","PLTGU","PLTA","PLTP","PLTS","PLTBM","PLTBm"].includes(x.type));
+  else if(choice.value==="renewable")arr=items.filter(x=>x.renewable);
+  const max=Math.max(1,...arr.map(x=>x.value)),unit=isUnits?"units":"MW";
+  arr.forEach(x=>plot.append(bar(x.label,x.value,max,unit,x.renewable?"#6eaeab":"#d7b678")));
+  basis.textContent=isUnits?
+    "PLN-owned power generating units only (2025, official PLN Table 54). This is NOT the number of stations nationwide; 4,857 small diesel units can coexist with a much larger installed MW coal fleet.":
+    "National installed nameplate MW by technology (2025, all ownership classes). A larger MW figure does not imply more physical power stations or units.";
  }
- choice.addEventListener("change",draw);draw();
- const others=$("div","infra-kpi-grid");
- others.append(kpi("Official EBT programme",fmt(d.reported_ebt.capacity_mw/1000,2)+" GW","2025 EBTKE reported; category includes 468 MW classified gasification/WHB",d.reported_ebt.source));
- others.append(kpi("PLN Group units",fmt(d.unit_count.total_pln_group_units)+" units","2025 PLN Group across ALL technologies only, not national unit count",d.unit_count.source));
- others.append(kpi("PLN Group own capacity",fmt(d.pln_group.capacity_mw/1000,2)+" GW","PLN-owned plant subset (not 107.5 GW nationwide)",d.pln_group.source));p.append(others);
+ mode.addEventListener("change",draw);choice.addEventListener("change",draw);draw();
+ const other=$("div","infra-kpi-grid");
+ other.append(kpi("ESDM EBT programme",fmt(d.reported_ebt.capacity_mw/1000,2)+" GW","2025 EBTKE programme reporting; scope includes coal gasification/WHB",d.reported_ebt.source));
+ other.append(kpi("PLN total power units",fmt(d.unit_count.total_pln_group_units)+" units","All types in 2025 PLN-owned fleet; table category counts sum exactly",d.unit_count.source));
+ other.append(kpi("PLN Group own capacity",fmt(d.pln_group.capacity_mw/1000,2)+" GW","PLN-owned capacity; subset of national total",d.pln_group.source));p.append(other);
  desc(p,d.unit_count.note+" "+d.method_note);
 }
 function jargas(p,d){
