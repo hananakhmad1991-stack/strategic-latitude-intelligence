@@ -47,7 +47,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  let all=flatten(root);
  assert.ok(all.some(n=>n.textContent==="Indonesia Investment & Energy Map"),"Map title rendered");
  assert.equal(all.filter(n=>n.tagName==="path").length,38,"One province path per feature");
- assert.equal(all.filter(n=>n.className==="map-stat").length,11,"All source and layer counters displayed");
+ assert.equal(all.filter(n=>n.className==="map-stat").length,12,"All source and layer counters displayed");
  const results=all.find(n=>n.className==="map-list"),list=()=>flatten(results).filter(n=>n.className==="map-list-item");
  const select=all.filter(n=>n.tagName==="select");
  assert.equal(select.length,5,"Should have dataset, technology, status, province and geographic filters");
@@ -69,7 +69,8 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  const industry=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-biofuel-smelters.json"),"utf8")).records;
  const regional=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-regional-crosschecks.json"),"utf8")).records;
  const digital=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-digital-ai.json"),"utf8")).records;
- const total=assets.length+projects.length+infra.length+sites.length+wk.length+power.length+industry.length+regional.length+digital.length;
+ const pltu=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-pltu-pln-2025.json"),"utf8"));
+ const total=assets.length+projects.length+infra.length+sites.length+wk.length+power.length+industry.length+regional.length+digital.length+pltu.records.length;
  assert.equal(sites.length,31,"Expanded company-sourced site dossiers");
  assert.equal(wk.length,57,"WK historical operator layer");
  assert.equal(power.length,102,"All fossil, geothermal, hydro and solar directories");
@@ -78,10 +79,18 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.equal(digital.length,14,"Exactly fourteen added digital facility dossiers");
  assert.equal(digital.filter(r=>r.provinces[0]==="DKI Jakarta").length,5,"Five Jakarta dossiers");
  assert.equal(digital.filter(r=>r.provinces[0]==="Jawa Barat").length,9,"Nine West Java dossiers");
- assert.equal(total,351,"All nine registries combined (337 + 14)");
+ assert.equal(pltu.records.length,21,"Twenty-one supplemental PLTU project/unit dossiers");
+ assert.equal(total,372,"All ten registries combined (351 + 21)");
+ assert.ok(pltu.records.some(x=>x.asset.includes("Batang")&&x.region.includes("Jawa Tengah")&&x.capacity.value===2000),"Batang 2 x 1,000 MW");
+ assert.ok(pltu.records.some(x=>x.asset.includes("Jawa 9")&&x.region.includes("Banten")),"Jawa 9/10 2025 COD");
+ assert.ok(pltu.records.some(x=>x.asset.includes("Celukan Bawang")&&x.region.includes("Bali")),"Bali coal IPP");
+ assert.equal(pltu.summary_stats.pln_group_capacity_mw,47464.24,"2025 PLN group installed");
+ assert.equal(pltu.summary_stats.national_capacity_including_ipp_and_rentals_mw,80189.32,"2025 national installed incl IPP and rentals");
+ assert.equal(pltu.summary_stats.pln_owned_pltu_generating_units,138,"PLN-owned generating units, not sites");
+ assert.ok(all.some(x=>x.className==="map-pln-baseline"),"Latest official PLN statistics have a visible panel");
  assert.ok(digital.every(r=>r.source_url.startsWith("https://")&&r.notes&&r.stage&&r.provinces.length===1),"All digital records have official company sources, status and province");
  assert.ok(regional.every(r=>Array.isArray(r.provinces)&&r.provinces.length>=1&&r.source_url.startsWith("https://")&&r.stage&&r.notes),"Regional record must have sourced province, stage and caveat");
- assert.equal(list().length,total,"Default shows all 351 records without recency cutoff");
+ assert.equal(list().length,total,"Default shows all 372 records without recency cutoff");
  for(const x of [...wk,...power,...industry]){
   assert.ok(x.source_url?.startsWith("https://"),"Dataset source must be HTTPS: "+x.id);
   assert.ok(x.source_vintage&&x.notes&&x.region&&x.stage,"Must explain source vintage, location, stage and boundary: "+x.id);
@@ -100,6 +109,19 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(flatten(root).some(n=>n.className==="map-results-head"&&flatten(n).some(y=>y.textContent==="Riau")),"Province click shows province panel");
  const reset=all.find(n=>n.tagName==="button"&&n.textContent==="Reset filters");
  reset.events.click();assert.equal(list().length,total,"Reset restores every record");
+ const clusters=all.filter(n=>n.className==="map-site-cluster");
+ const batam=clusters.find(n=>String(n.attributes["aria-label"]||"").startsWith("Batam —"));
+ const natuna=clusters.find(n=>String(n.attributes["aria-label"]||"").startsWith("Natuna —"));
+ assert.ok(batam&&natuna,"Separate Batam and Natuna locality markers must render");
+ const bc=batam.children.find(n=>n.tagName==="circle"),nc=natuna.children.find(n=>n.tagName==="circle");
+ assert.equal(Number(bc.attributes.cx).toFixed(2),((104.05-94)*24.2+15).toFixed(2),"Batam longitude 104.05");
+ assert.equal(Number(bc.attributes.cy).toFixed(2),((7-1.05)*24.2+19).toFixed(2),"Batam latitude 1.05N");
+ assert.equal(Number(nc.attributes.cx).toFixed(2),((108.18-94)*24.2+15).toFixed(2),"Natuna separately anchored");
+ assert.ok(Number(bc.attributes.cy)>Number(nc.attributes.cy),"Batam marker south (below) Natuna marker");
+ batam.events.click();
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Equator Gate System"))),"Batam marker click shows Batam AI project");
+ assert.ok(!list().some(x=>flatten(x).some(n=>String(n.textContent).includes("South Natuna Sea Block B"))),"Batam city cluster excludes Natuna offshore PSC");
+ reset.events.click();
  const shortcuts=all.filter(n=>n.className==="map-btn map-digital-btn");
  assert.equal(shortcuts.length,3,"Jakarta, West Java and all Digital/AI presets are available");
  shortcuts[0].events.click();
@@ -151,9 +173,9 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  dataset.value="sites";dataset.events.change();
  assert.equal(list().length,sites.length,"Source-documented mine and industrial-site layer includes every source record");
  dataset.value="wk";dataset.events.change();assert.equal(list().length,wk.length,"All WK/PSC company source references");
- dataset.value="power";dataset.events.change();assert.equal(list().length,power.length,"All fossil and renewable power references");
+ dataset.value="power";dataset.events.change();assert.equal(list().length,power.length+pltu.records.length,"Power includes supplementary PLN/ESDM PLTU");
  sector.value="PLTU";sector.events.change();
- assert.equal(list().length,power.filter(x=>x.technology==="PLTU").length,"PLTU technology filter");
+ assert.equal(list().length,power.filter(x=>x.technology==="PLTU").length+pltu.records.length,"PLTU filter includes 21 additions");
  dataset.value="industry";dataset.events.change();assert.equal(list().length,industry.length,"All biodiesel and smelter source records");
  dataset.value="projects";dataset.events.change();
  assert.ok(results.children.length>0);
@@ -164,5 +186,5 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  ctx.window.SLIi18n.language="id";
  await ctx.window.initSLIStrategicMap(); // same root intentionally cached
  assert.ok(flatten(root).some(n=>n.textContent==="Peta Investasi dan Energi Indonesia")===false,"cached root unchanged until language event");
- console.log("PASS: 38 provinces, 351 source records, 14 additional Jakarta/West Java data center facilities, 3 functional Digital/AI quick view filters");
+ console.log("PASS: Batam and Natuna separately geolocated by name, 372 records, PLTU Batang and 21 PLN/ESDM additions, PLN 2025 aggregate source");
 })().catch(e=>{console.error(e);process.exitCode=1});
