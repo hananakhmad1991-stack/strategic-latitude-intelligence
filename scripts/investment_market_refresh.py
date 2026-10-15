@@ -42,7 +42,7 @@ def update_bi(d):
                       "juli":7,"agustus":8,"september":9,"oktober":10,"november":11,"desember":12,
                       "january":1,"february":2,"march":3,"may":5,"june":6,"july":7,
                       "august":8,"october":10,"december":12}
-        date_match=re.search(r"Update Terakhir\\s*(\\d{1,2})\\s+([A-Za-z]+)\\s+(\\d{4})",plain,re.I)
+        date_match=re.search(r"Update Terakhir\s*(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})",plain,re.I)
         if not date_match or date_match.group(2).lower() not in month_labels:
             raise ValueError("BI last-update date not verifiable from source")
         day_number,word,year=date_match.groups()
