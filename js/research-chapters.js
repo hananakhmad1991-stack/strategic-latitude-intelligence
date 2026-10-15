@@ -177,7 +177,7 @@ if(which==="ai"){
  for(const item of items){if(!/^https:\/\//.test(item.url||""))continue;const card=E("article","sli-research-card");card.append(E("h4",null,item.topic||"Technology"),link(item.url,item.title),E("p",null,(item.publisher||"Publisher unavailable")+" · "+(item.published_at_utc||"No observation date").slice(0,10)),E("small","sli-research-caveat","Monitoring lead only · verify original publication"));list.append(card)}
  }).catch(()=>{status.textContent="AI monitoring snapshot unavailable; no headlines inferred.";});
 }
-const note=E("p","sli-research-footer","Source ownership: this chapter contains its own primary evidence; referenced trade, project, energy or regulatory datasets remain in their specialist dashboards. Method: figures retain their original reference year and unit. Announcements ≠ commitments ≠ construction ≠ commissioned assets. Missing or unpublished data are not zero. Industry and policy scenarios are editorial analysis, not measured probabilities.");root.append(note);}
+const note=E("p","sli-research-footer","Source ownership: this chapter contains its own primary evidence; referenced trade, project, energy or regulatory datasets remain in their specialist dashboards. Method: figures retain their original reference year and unit. Announcements ≠ commitments ≠ construction ≠ commissioned assets. Missing or unpublished data are not zero. Industry and policy scenarios are editorial analysis, not measured probabilities.");root.append(note);makeEnergyStructure(which,root);}
 
 function makeEnergyStructure(which,root){
  if(!["minerals","ai"].includes(which))return;
@@ -186,7 +186,7 @@ function makeEnergyStructure(which,root){
  const children=[...root.children],foot=children.find(x=>x.classList.contains("sli-research-footer"));
  for(const node of children){if(!node.classList.contains("sli-research-section"))continue;
  const title=node.querySelector("h3")?.textContent||"";
- if(title==="Stakeholder & Institution Mapping"){node.remove();continue}
+ if(title==="Stakeholder & Institution Mapping"||title==="SWOT & Strategic Assessment"||title==="SWOT & Korea Cooperation"){node.remove();continue}
  let index=4;
  if(/Institutional Accountability|Governance & Strategic Actors/.test(title))index=0;
  else if(/National Mineral Baseline|National Capacity|Production and Processing Measures|Facility and Implementation Records|Measurement Framework/.test(title))index=1;
@@ -195,6 +195,38 @@ function makeEnergyStructure(which,root){
  else if(/Monitoring Priorities|Dated News Signals/.test(title))index=5;
  else if(/Overall Strategic Assessment|SWOT/.test(title))index=7;
  sections[index].append(node);
+ }
+
+ // Canonical specialist sections: avoid blank financial or technical stages.
+ const insightRows=which==="ai"?{
+  finance:[
+   ["Microsoft cloud & AI programme","US$1.7bn announced programme","2024 multi-year cloud/AI and skilling commitment; neither site-specific realized capex nor a dedicated GPU investment amount.","https://news.microsoft.com/source/asia/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions/"],
+   ["Digital Edge CGK campus","US$4.5bn announced multiphase campus","Operator-announced forward investment plan. Count phases separately; do not interpret the amount as spent or as present operating capacity.","https://id.digitaledgedc.com/news/digital-edge-tops-out-cgk1-secures-largest-indonesia-power-deal"],
+   ["CGK development financing","US$665m announced green loan","A financing facility is not itself capital expenditure realized; assess drawdowns and commissioning independently.","https://www.digitaledgedc.com/resources/newsroom/digital-edge-secures-indonesias-largest-data-center-green-loan/"],
+   ["BKPM comparison","Project-level AI realized capex not isolated","National PMA and PMDN headline figures cannot be assigned to AI data centers without a separate official industry breakdown.","#investment"]],
+  technology:[
+   ["Electricity and IT load","CGK utility agreement 1.45 GW apparent-power equivalent reported as 2 × 725 MVA","MVA, total campus MW and IT MW have different definitions; signed power is not energized AI compute.","https://id.digitaledgedc.com/news/digital-edge-tops-out-cgk1-secures-largest-indonesia-power-deal"],
+   ["Cooling and water","High-density heat removal; facility-specific data required","Liquid-cooling, PUE and water-source claims need published engineering specifications and permit evidence.",null],
+   ["Network resilience","Independent terrestrial and submarine routes","Redundant fiber routes, latency, carrier diversity and outage history should be checked per campus.",null],
+   ["GPU and AI workload","No reliable national installed GPU count in this dataset","Cloud-service launch and AI-ready space do not establish GPU inventory, tenancy or utilization.",null],
+   ["Cybersecurity, governance and talent","Operational policies require evidence","Map security controls, incident response, skilled operators and data-protection requirements; legal instruments live in Policy & Risk.","#policy"]]
+ }:{
+  finance:[
+   ["Royalty, taxes and PNBP","Scope needs project- and year-specific accounting","Production value, mineral export value, government receipts and corporate capex are different measurements.",null],
+   ["Trade destinations","Partner-specific HS customs data","Detailed bilateral values, years, reverse flows and trade balances are owned by Trade Flows.","#trade"],
+   ["Investment and capital conversion","Financial commitment ≠ construction ≠ commissioning","The Investment Tracker is the canonical source for company-specific ownership, project milestones and reported budgets.","#investment"]],
+  technology:[
+   ["Nickel routes","Ore → ferronickel/NPI or matte/MHP → refined inputs","Different flows create different downstream products; a smelter is not automatically battery-grade chemical capacity.",null],
+   ["Copper smelting","Concentrate → anode → cathode","Separate nameplate production, commissioning, operating availability and actual cathode throughput.",null],
+   ["Bauxite processing","Bauxite → alumina → aluminium metal","Alumina refinery nameplate is not equivalent to aluminium metal smelter capacity.",null],
+   ["Energy and environmental inputs","Process energy, water and waste","Site-specific source, environmental approvals and operational disclosure needed for measured ESG comparisons.",null]]
+ };
+ for(const [index,key,title] of [[3,"finance",which==="ai"?"Capital evidence and commercial conversion":"Commodity economics and value capture"],[4,"technology",which==="ai"?"AI compute-readiness verification matrix":"Processing technology and domestic industrial capability"]]){
+  const node=E("div","sli-research-section");
+  node.append(E("h3",null,title),E("p","sli-research-description","Source-led sector context. Where evidence is missing, this chapter identifies the exact observation required rather than inferring a value."));
+  const grid=E("div","sli-research-grid");
+  for(const [heading,value,explanation,url] of insightRows[key]){const card=E("article","sli-research-card");card.append(E("h4",null,heading),E("strong",null,value),E("p",null,explanation));if(url)card.append(link(url,url.startsWith("#")?"Go to canonical dashboard ↗":"Original evidence ↗"));grid.append(card)}
+  node.append(grid);sections[index].append(node);
  }
  const seen=new Set(),sources=E("div","sli-research-grid");
  for(const node of sections){for(const a of node.querySelectorAll('a[href^="https://"]')){if(seen.has(a.href)||seen.size>=35)continue;seen.add(a.href);let c=E("article","sli-research-card");c.append(E("h4",null,new URL(a.href).hostname),link(a.href,"Primary or attributed source ↗"));sources.append(c)}}
