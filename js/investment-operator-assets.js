@@ -30,7 +30,7 @@ window.initSLIInvestmentAssets=async function(){
  if(d.ruplt_2025_2034&&Array.isArray(d.ruplt_2025_2034.capacity_GW)){
   const plan=d.ruplt_2025_2034,box=el("details","inv-asset-method");box.open=true;
   box.append(el("summary",null,"RUPTL PLN "+plan.plan_window+" — planned capacity by energy technology (not installed)"));
-  const note=el("p","tr-detail","Total new generation planned: "+plan.total_new_generation_GW+" GW across ALL generation technologies. The breakdown below is a selected technology plan, including storage, and must not be summed with site-specific projects or interpreted as commissioned electricity supply.");box.append(note);
+  const note=el("p","tr-detail","Total additional system capacity planned (generation AND storage): "+plan.total_planned_system_capacity_GW+" GW. The breakdown is selected technology targets, not currently commissioned capacity. Storage MW must not be counted as new net generation.");box.append(note);
   const bars=el("div","inv-ruptl-grid");
   for(const entry of plan.capacity_GW){
    const row=el("div","inv-ruptl-row"),head=el("div","inv-stake-head");
