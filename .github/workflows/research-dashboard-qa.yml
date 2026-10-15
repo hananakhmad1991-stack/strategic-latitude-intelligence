@@ -4,6 +4,10 @@ on:
     paths:
       - 'index.html'
       - 'js/research-chapters.js'
+      - 'js/iea-critical-minerals.js'
+      - 'css/iea-critical-minerals.css'
+      - 'data/iea-indonesia-critical-minerals.json'
+      - 'tests/qa-iea-critical-minerals.mjs'
       - 'js/sector-stakeholder-explorer.js'
       - 'js/sector-command-hierarchy.js'
       - 'js/stakeholder-map.js'
@@ -35,6 +39,7 @@ jobs:
       - name: Compile and render both specialist modules
         run: |
           node tests/qa-research-dashboard.mjs
+          node tests/qa-iea-critical-minerals.mjs
           node tests/qa-sector-organigrams.mjs
           node tests/qa-command-hierarchy.mjs
           node tests/qa-energy-institution-explorer.mjs
