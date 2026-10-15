@@ -107,7 +107,8 @@
       "capex_realized": null,
       "capex_realized_source": null,
       "verification_class": "Reported milestone or funding only; verify subsequent steps",
-      "amount_type": "Announced project value / proposed investment — not actual disbursement"
+      "amount_type": "Announced project value / proposed investment — not actual disbursement",
+      "program_group": "microsoft-indonesia-2024-2028"
     },
     {
       "name": "13 strategic downstream projects — Phase II",
@@ -282,6 +283,103 @@
       "capacity": "550 cabinets first phase; 1,600 cabinets at full build-out",
       "verification_class": "Facility operation supported by cited corporate release; capital spending unverified",
       "amount_type": "Announced project value / proposed investment — not actual disbursement"
+    },
+    {
+      "name": "Chandra Asri CA-EDC — Cilegon",
+      "investor": "PT Chandra Asri Alkali (CAA) · Chandra Asri Group; Danantara Indonesia and INA as conditional equity participants",
+      "sector": "Other",
+      "region": "Cilegon, Banten",
+      "stage": "Announced",
+      "evidence_date": "2026-03-03",
+      "reported_amount": 800,
+      "currency": "USD million",
+      "amount_basis": "Total announced project value; separate US$200m conditional joint subscription by Danantara + INA, not an incremental addition to the US$800m budget",
+      "status_note": "Conditional Share Subscription Agreement (CSSA) announced 3 March 2026. Public document does not establish subscription closing, fully paid equity, operating capacity or 2026 audited expenditure.",
+      "next_step": "Confirm CSSA closing, project-SPV share register, EPC progress, equity drawdown and 2027 target COD.",
+      "source_url": "https://www.danantaraindonesia.co.id/media-center/press-releases/reducing-import-dependency-danantara-and-ina-sign-investment-agreement-in-chandra-asri-groups-ca-edc-project",
+      "ownership_ref": "caa",
+      "capital_commitment_usd_million": 200,
+      "capital_commitment_class": "Conditional equity subscription by Danantara + INA; subset of total project value",
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "program_group": "ca-edc-2026",
+      "evidence_status": "Primary company and investment agency release"
+    },
+    {
+      "name": "Weda Bay nickel ecosystem — eleven facilities (portfolio)",
+      "investor": "Multiple Indonesian and foreign industrial investors; Tsingshan and Huayou representatives present, but portfolio-level source does not establish each facility's shareholder percentages",
+      "sector": "Critical minerals",
+      "region": "Indonesia Weda Bay Industrial Park, Central Halmahera, North Maluku",
+      "stage": "Mixed implementation",
+      "evidence_date": "2026-10-08",
+      "reported_amount": 10.2,
+      "currency": "USD billion",
+      "amount_basis": "Government-reported collective value of eleven facilities; includes four commercialization milestones and seven groundbreaking milestones; NOT independent CAPEX realization for eleven completed assets",
+      "status_note": "Setneg recorded 11 projects on 8 October 2026: four entering commercial operation and seven breaking ground; facility-level investing entities and budgets need reconciliation.",
+      "next_step": "Separate all 11 facilities into named SPVs, four operating sites and seven construction sites, including actual equity and COD per plant.",
+      "source_url": "https://www.setneg.go.id/baca/index/presiden_prabowo_luncurkan_11_proyek_hilirisasi_dengan_total_investasi_senilai_rp180_triliun_di_maluku_utara",
+      "ownership_ref": null,
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "program_group": "iwip-11-2026",
+      "evidence_status": "Government first-party dated project ceremony; no verified facility-level cash spending"
+    },
+    {
+      "name": "PSEL Bogor Raya 1 — waste-to-energy",
+      "investor": "PT Daya Energi Bersih Nusantara (Denera), Danantara Investment Management platform and future selected partners",
+      "sector": "Energy",
+      "region": "Galuga, Cibungbulang, Bogor Regency, West Java",
+      "stage": "Under construction",
+      "evidence_date": "2026-09-17",
+      "reported_amount": null,
+      "currency": "IDR trillion",
+      "amount_basis": "Project budget not established in this official construction announcement; do not impute sector programme-wide estimate.",
+      "status_note": "Danantara announced formal construction inauguration 17 September 2026; commissioned electricity production not established.",
+      "next_step": "Track provider and SPV, signed EPC contract, site works, environmental permits and mid-2028 operation target.",
+      "source_url": "https://www.danantaraindonesia.co.id/zh/media-center/press-releases/psel-bogor-raya-1-construction",
+      "ownership_ref": "denera",
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "program_group": "psel-bogor-raya-1",
+      "evidence_status": "Danantara construction release; project financial realization unverified"
+    },
+    {
+      "name": "Microsoft Indonesia Central cloud region — operational milestone",
+      "investor": "Microsoft",
+      "sector": "AI infrastructure",
+      "region": "Indonesia, three availability zones; site addresses not disclosed in this release",
+      "stage": "Operational",
+      "evidence_date": "2025-04-15",
+      "reported_amount": null,
+      "currency": "USD billion",
+      "amount_basis": "No isolated project-specific realized capex; this operating cloud region forms part of the separately reported multi-year US$1.7bn Microsoft cloud/AI program",
+      "status_note": "Microsoft confirmed general availability 15 April 2025 with three availability zones; do not double count full 2024–2028 capital program as a region-only project expense.",
+      "next_step": "Track operational service expansion, availability-zone capacity, independently reported Indonesia capex and electricity sourcing.",
+      "source_url": "https://news.microsoft.com/id-id/2025/04/15/general-availability-of-indonesia-central-cloud-region/",
+      "ownership_ref": null,
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "program_group": "microsoft-indonesia-2024-2028",
+      "evidence_status": "Microsoft operational service announcement; capex unverified"
+    },
+    {
+      "name": "AWS Asia Pacific (Jakarta) cloud region",
+      "investor": "Amazon Web Services (AWS), Amazon group",
+      "sector": "AI infrastructure",
+      "region": "Jakarta region, Indonesia; physical AZ locations undisclosed",
+      "stage": "Operational",
+      "evidence_date": "2021-12-14",
+      "reported_amount": null,
+      "currency": "USD billion",
+      "amount_basis": "No independently source-matched reported realized project capex in the selected AWS region overview; do not merge regional business projections or group capex into Indonesian capex",
+      "status_note": "AWS publicly confirms Jakarta region with three availability zones; serves operational workloads, but source does not state customer occupancy or site-specific expenditure.",
+      "next_step": "Verify Indonesia-specific disclosed capex, region resilience, utility and emissions sourcing and incremental buildouts.",
+      "source_url": "https://aws.amazon.com/local/jakarta/",
+      "ownership_ref": null,
+      "capex_realized": null,
+      "capex_realized_source": null,
+      "program_group": "aws-jakarta-region",
+      "evidence_status": "Direct AWS service availability; investment spend undisclosed"
     }
   ],
   "policy": [
@@ -394,6 +492,35 @@
       "date": "2026-06-30",
       "status": "Available for review; current capex and subsidiary ownership not independently isolated",
       "source": "https://dci-indonesia.com/investor-relations"
+    }
+  ],
+  "capital_commitment_ledger": [
+    {
+      "entity": "Danantara Indonesia + Indonesia Investment Authority (INA)",
+      "project": "Chandra Asri CA-EDC",
+      "type": "Conditional Share Subscription Agreement (CSSA)",
+      "total_usd_million": 200,
+      "total_project_usd_million": 800,
+      "split_between_investors": "Not specified in official release",
+      "paid_in_capital_verified": null,
+      "shares_after_closing_pct": null,
+      "evidence_date": "2026-03-03",
+      "source": "https://www.danantaraindonesia.co.id/media-center/press-releases/reducing-import-dependency-danantara-and-ina-sign-investment-agreement-in-chandra-asri-groups-ca-edc-project",
+      "caveat": "The US$200m is part of the US$800m project financing plan, not additional project value. A signed CSSA is not evidence of share subscription completion."
+    }
+  ],
+  "programme_overlap_rules": [
+    {
+      "key": "microsoft-indonesia-2024-2028",
+      "explanation": "Microsoft's 2024–2028 US$1.7bn program and the live Indonesia Central cloud region are connected evidence, not separate investment totals."
+    },
+    {
+      "key": "ca-edc-2026",
+      "explanation": "CA-EDC US$800m project and Danantara + INA US$200m conditional equity are a project-level total plus a funding component, not US$1bn investment."
+    },
+    {
+      "key": "iwip-11-2026",
+      "explanation": "Weda Bay US$10.2bn is a multi-facility portfolio including already-commercialized and new-groundbreaking facilities; it may overlap other national project announcements until SPV-specific reconciliation."
     }
   ]
 }
