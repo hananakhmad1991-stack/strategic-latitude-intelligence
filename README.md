@@ -33,5 +33,12 @@ Once GitHub Pages is enabled: https://hananakhmad1991-stack.github.io/strategic-
 - Policy discovery operates every six hours; dated official-regulation baselines remain curated to prevent false claims of enactment from search snippets.
 - Official roster corrections made on 15 October 2026: Mohammad Jumhur Hidayat (KLH/BPLH), Suahasil Nazara (Finance), Tri Winarno (acting Gatrik DG), Wahyudi Anas (BPH Migas), and Suroso Isnandar (PLN).
 
+## Upcoming Indonesia Energy Events
+- Energy Security now begins with **Upcoming Energy Events**: five dated organizer-attributed Indonesian energy and transition events, with source links, date/location, organiser and local WIB countdown.
+- `data/energy-events-catalog.json` is a curator-reviewed backup pool spanning 2026–2027. `data/energy-events.json` publishes at most five nearest active/future entries. Expired events are dropped automatically based on **Asia/Jakarta** dates.
+- `.github/workflows/energy-events-watch.yml` scans every six hours, refreshes event dates/source health and rolls the top-five list. `scripts/energy_events_watch.py` can also discover newly dated events from original IESR event-detail pages.
+- The system **does not automatically accept unverified press mentions or hallucinated conferences**. Broader discoveries outside supported official organizer calendars require adding a source-dated entry to the curated pool. Access failures and possible reschedules are flagged rather than mistaken for cancellations; dates are subject to organizer changes.
+- Petromindo-source event metadata was manually curated from publicly announced date facts; their terms exclude automated scraping, so the automated watcher does not scrape their pages.
+
 ## Maintenance
 The site is served from GitHub Pages using `index.html`, separate JavaScript / CSS modules and dated JSON datasets. Source-watch workflows may run periodically; verify data freshness and GitHub Actions results rather than treating a green build as proof of analytical accuracy.
