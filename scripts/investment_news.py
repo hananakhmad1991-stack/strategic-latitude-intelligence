@@ -16,6 +16,12 @@ QUERIES = {
     "Downstreaming & energy": '"investasi hilirisasi" OR "investasi smelter" Indonesia',
     "Policy & incentives": 'BKPM investasi OR Danantara investasi OR insentif investasi',
     "Risks & disputes": '"kendala investasi" OR "sengketa investasi" Indonesia',
+    "Biofuels & bioenergy": 'biodiesel B50 Indonesia OR biofuel SAF Pertamina OR pabrik biodiesel',
+    "Renewable energy": 'investasi panas bumi geothermal PLTS PLN PGE Indonesia',
+    "Electric vehicles": 'investasi EV mobil listrik BYD Wuling Hyundai Chery pabrik Indonesia',
+    "Smelters & processing": 'investasi smelter HPAL nikel tembaga hilirisasi Indonesia',
+    "Corporate actions & market": 'akuisisi rights issue merger divestasi investasi emiten energi mineral Indonesia',
+    "AI & data centers": 'investasi data center Indonesia NeutraDC Digital Edge hyperscale',
 }
 USER_AGENT = "StrategicLatitudeIntelligence/1.0 (public RSS monitoring)"
 NOW = dt.datetime.now(dt.timezone.utc)
@@ -37,7 +43,7 @@ def scan(topic, query):
         xml = response.read(1500000)
     root = ET.fromstring(xml)
     reports = []
-    for item in root.findall("./channel/item")[:25]:
+    for item in root.findall("./channel/item")[:20]:
         title = (item.findtext("title") or "").strip()
         link = (item.findtext("link") or "").strip()
         publisher = (item.findtext("source") or "Publisher unknown").strip()
@@ -81,12 +87,12 @@ def main():
         "checked_at_utc": NOW.isoformat(),
         "scope": "Public RSS discovery only; no independent verification of investment amounts, permits, milestones or capital disbursement",
         "source": "Google News RSS search indexing attributed publishers",
-        "reports": reports[:100],
+        "reports": reports[:180],
         "errors": errors,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Investment news: {len(reports[:100])} headlines, {len(errors)} topic failures")
+    print(f"Investment news: {len(reports[:180])} headlines, {len(errors)} topic failures")
 
 if __name__ == "__main__":
     main()
