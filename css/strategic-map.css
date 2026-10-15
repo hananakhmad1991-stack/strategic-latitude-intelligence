@@ -36,3 +36,11 @@
 .map-limited{color:#e6c993}
 @media(max-width:1070px){.map-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.map-mapgrid{grid-template-columns:1fr}.map-results{max-height:none}.map-list{max-height:420px}}
 @media(max-width:650px){.map-hero{padding:17px}.map-stats{gap:7px}.map-stat{min-width:0;flex:1 1 130px}.map-stat strong{font-size:18px}.map-controls{grid-template-columns:1fr 1fr;gap:8px;padding:10px}.map-control.map-search-row{grid-column:1/-1}.map-viz{min-height:200px}.map-canvas-head{padding:9px}.map-list{max-height:430px}}
+
+/* All-year registry controls and complete, scrollable results */
+.map-controls{grid-template-columns:repeat(3,minmax(0,1fr))}
+.map-control.map-search-row{grid-column:span 2}
+.map-group-label{position:sticky;top:-6px;background:#213d53;color:#edd4a4;font-size:11px;font-weight:750;letter-spacing:.4px;padding:10px 7px;border-bottom:1px solid #50728b;z-index:1}
+.map-list{overscroll-behavior:contain}
+@media(max-width:1070px){.map-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.map-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.map-control.map-search-row{grid-column:1/-1}.map-controls>.map-btn{grid-column:1/-1}}
