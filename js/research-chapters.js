@@ -100,7 +100,7 @@ policy:{name:"Policy & Risk",subtitle:"A decision register linking legal status,
 };
 const T=(en,id)=>window.SLIi18n?.language==="id"?id:en;
 const E=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n};
-const link=(url,label)=>{const a=E("a",null,label);a.href=url;a.rel=/^https?:/.test(url)?"noopener noreferrer":"";if(/^https?:/.test(url))a.target="_blank";return a};
+const link=(url,label)=>{const a=E("a",null,label);a.href=url;a.rel=/^https?:/.test(url)?"noopener noreferrer":"";if(/^https?:/.test(url))a.target="_blank";if(/^#(policy|energy|trade|ai|minerals|investment|map|methodology)$/.test(url)){a.addEventListener("click",e=>{e.preventDefault();document.querySelector(`#nav button[data-page="${url.slice(1)}"]`)?.click()})}return a};
 function draw(which){const root=document.getElementById("sliResearchRoot");if(!root)return;const c=chapters[which];if(!c)return;root.replaceChildren();let head=E("section","sli-research-hero");head.append(E("small",null,"STRATEGIC LATITUDE · RESEARCH CHAPTER"),E("h2",null,c.name),E("p",null,c.subtitle),E("p","sli-research-note","Evidence baseline: 15 October 2026 · published source periods vary · source-led qualitative assessments"));root.append(head);
 const nav=E("nav","sli-research-nav");nav.setAttribute("aria-label","Chapter sections");
 for(const [num,title] of c.sections){nav.append(link("#sli-chapter-"+num,num+" · "+title))}root.append(nav);
