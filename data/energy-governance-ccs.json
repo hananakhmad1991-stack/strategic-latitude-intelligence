@@ -3,87 +3,190 @@
   "as_of": "2026-10-15",
   "scope": "Public research snapshot; functional governance map and selected CCS/CCUS projects, not an exhaustive licensing or investment register.",
   "governance": {
-    "warning": "Functional influence/implementation map, NOT a statutory reporting-line chart. Official agency profiles and cabinet appointment records take precedence over old DEN membership lists or articles; actor entries carry verification dates. Automated source scans are subject to validation before changing named leadership.",
+    "warning": "Indonesia energy governance is a functional stakeholder/decision-rights map—not a statutory organisation chart. Presidential advisers advise; ministries regulate; companies execute; DPR/DPD scrutinise; regions implement. Names are as-of source dates; unnamed roles intentionally avoid guessing. The parliamentary and corporate rosters can change quickly and must be monitored.",
     "layers": [
       {
-        "title": "National direction, new coordinating ministry and strategic policy",
+        "title": "01 · Presidential decision-making, advice and national coordination",
+        "summary": "Direction and strategic advice are distinct from legally delegated line-ministry decisions and operational approvals.",
         "actors": [
           {
-            "name": "President / Dewan Energi Nasional (DEN)",
-            "lead": "Prabowo Subianto · President; DEN steering chair",
-            "role": "Strategic direction on energy sovereignty, national security and cross-ministry coordination. DEN's daily chair is the Minister of ESDM.",
-            "scope": "National energy policy",
+            "name": "Presidency / National Energy Council (DEN)",
+            "lead": "Prabowo Subianto · President; DEN presidential chair",
+            "role": "Establishes national priorities and chairs DEN; DEN provides national energy-policy coordination, not operating permits.",
+            "scope": "Strategic command",
             "kind": "Strategy",
             "source": "https://esdm.go.id/id/media-center/arsip-berita/presiden-prabowo-lantik-ketua-harian-dan-anggota-den-periode-2026-2030",
-            "verified": "2026-01-28"
+            "verified": "2026-01-28",
+            "authority": "presidential steering / DEN"
+          },
+          {
+            "name": "Penasihat Khusus Presiden Bidang Energi",
+            "lead": "Purnomo Yusgiantoro · Special Presidential Adviser on Energy",
+            "role": "Advisory input to the President on energy policy and strategic trade-offs; no statutory licensing, ministerial command, project procurement or budget-vote power should be presumed.",
+            "scope": "Presidential adviser",
+            "kind": "Adviser",
+            "source": "https://www.setneg.go.id/baca/index/presiden_prabowo_resmi_lantik_para_penasihat_khusus_utusan_khusus_dan_staf_khusus_presiden",
+            "verified": "2024-10-22",
+            "person_name": "Purnomo Yusgiantoro",
+            "evidence_status": "official appointment recorded in October 2024; monitor later status",
+            "authority": "advisory only",
+            "connections": [
+              "Presidency / National Energy Council (DEN)",
+              "Kementerian ESDM / Minister"
+            ]
+          },
+          {
+            "name": "Sekretariat Jenderal DEN",
+            "lead": "Government and non-government DEN members · appointments require current roster review",
+            "role": "Coordinates studies, energy resilience index, policy assessment and DEN meetings; distinguish its members from ministers' current positions.",
+            "scope": "Policy analysis",
+            "kind": "Planning",
+            "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-dewan-energi-nasional-tahun-2025.pdf",
+            "verified": "2026-10-15",
+            "person_name": "",
+            "evidence_status": "institution-led; current secretary-general requires review",
+            "authority": "secretariat / recommendations",
+            "connections": []
           },
           {
             "name": "Kemenko Hilirisasi dan Transisi Energi",
             "lead": "Bahlil Lahadalia · Coordinating Minister since 1 Oct 2026; concurrently Minister of ESDM",
-            "role": "Cross-ministry policy synchronization for downstream mineral/industrial value chains and energy transition; coordinates ESDM, investment and industry actors. Not a substitute for each sector ministry's formal licensing or operator execution.",
-            "scope": "Cross-ministry coordination",
+            "role": "Cross-ministry coordination of energy transition and downstream industrialization; the Menko also serves as ESDM minister as of the October 2026 appointments. Does not itself operate PLN, Pertamina or SKK Migas.",
+            "scope": "Cabinet coordination",
             "kind": "Strategy",
             "source": "https://www.setneg.go.id/baca/index/usai_dilantik_presiden_prabowo_menko_bahlil_fokus_percepat_hilirisasi_dan_transisi_energi",
-            "verified": "2026-10-01"
+            "verified": "2026-10-01",
+            "authority": "cross-ministry coordination"
           },
           {
             "name": "Kementerian ESDM / Minister",
             "lead": "Bahlil Lahadalia · Minister of ESDM AND Coordinating Minister for Downstreaming & Energy Transition (dual role, confirmed 14 Oct 2026)",
-            "role": "Line ministry responsible for sector regulation, under an additional cross-ministry policy-coordination layer established in October 2026. Dual appointments should not be represented as two different people.",
+            "role": "Line ministry sets regulation and supervises electricity, oil and gas, renewables, minerals, and CCS/CCUS under legal mandates. Bahlil also holds a coordinating minister portfolio.",
             "scope": "Energy regulation",
             "kind": "Regulator",
             "source": "https://www.esdm.go.id/id/media-center/arsip-berita/hilirisasi-dan-transisi-energi-dikoordinasikan-satu-pintu-bahlil-dilantik-sebagai-menko",
             "verified": "2026-10-14",
-            "person_name": "Bahlil Lahadalia"
+            "person_name": "Bahlil Lahadalia",
+            "authority": "sector ministry"
           },
           {
             "name": "Kementerian Keuangan",
             "lead": "Suahasil Nazara · Minister of Finance (appointed 14 September 2026)",
             "role": "Budget, subsidies and compensation, fiscal risk and tax/incentive policy; not an operating regulator for energy facilities.",
-            "scope": "Fiscal",
+            "scope": "Subsidy / fiscal",
             "kind": "Fiscal",
             "source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
             "verified": "2026-10-15",
             "verification_status": "Verified from official government appointment / current leadership profile",
             "previous_official": "Purbaya Yudhi Sadewa",
-            "person_name": "Suahasil Nazara"
+            "person_name": "Suahasil Nazara",
+            "authority": "national budget and fiscal policy"
           },
           {
             "name": "Bappenas",
             "lead": "Rachmat Pambudy · Minister/Head of Bappenas (DEN member, Jan 2026)",
             "role": "National development planning, sector targets and alignment between medium-term plans, financing and energy infrastructure priorities.",
-            "scope": "Planning",
+            "scope": "Development planning",
             "kind": "Planning",
             "source": "https://esdm.go.id/id/media-center/arsip-berita/presiden-prabowo-lantik-ketua-harian-dan-anggota-den-periode-2026-2030",
             "verified": "2026-01-28",
-            "person_name": "Rachmat Pambudy"
+            "person_name": "Rachmat Pambudy",
+            "authority": "RPJMN / national planning"
           },
           {
             "name": "Kementerian Investasi dan Hilirisasi / BKPM",
             "lead": "Rosan Perkasa Roeslani · Minister of Investment/Head of BKPM",
             "role": "Facilitates investment project approvals and promotion, distinct from ESDM technical energy licensing and operating data.",
-            "scope": "Investment coordination",
+            "scope": "Investment licensing",
             "kind": "Financier",
             "source": "https://setkab.go.id/profil-kabinet/",
             "verified": "2026-10-15",
             "verification_status": "Official government leadership/profile source",
-            "person_name": "Rosan Perkasa Roeslani"
+            "person_name": "Rosan Perkasa Roeslani",
+            "authority": "investment implementation / OSS coordination"
+          },
+          {
+            "name": "Kementerian Perindustrian",
+            "lead": "Office of Minister of Industry · incumbent review required",
+            "role": "Industrial electricity demand, downstream process industries, strategic manufacturing and carbon-intensive industrial decarbonization.",
+            "scope": "Industry / demand",
+            "kind": "Regulator",
+            "source": "https://kemenperin.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "",
+            "evidence_status": "institutional role verified; named incumbent omitted pending fresh primary source",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "Kementerian Lingkungan Hidup / BPLH",
+            "lead": "Mohammad Jumhur Hidayat · Minister of Environment / Head of BPLH",
+            "role": "Environmental protection, impact approvals and pollution supervision; distinguish climate/environmental approvals from ESDM subsurface CCS rules.",
+            "scope": "Environmental safeguards",
+            "kind": "Regulator",
+            "source": "https://www.setneg.go.id/baca/index/presiden_prabowo_lantik_hanif_faisol_nurofiq_mohammad_jumhur_hidayat_dan_hasan_nasbi",
+            "verified": "2026-10-15",
+            "person_name": "Mohammad Jumhur Hidayat",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "Kementerian Kehutanan",
+            "lead": "Minister of Forestry · incumbent review required",
+            "role": "Forest-zone licensing and protection relevant to geothermal, hydropower, biomass, transmission routes and land access.",
+            "scope": "Forest / land",
+            "kind": "Regulator",
+            "source": "https://www.kehutanan.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "Minister of Forestry",
+            "evidence_status": "institutional role verified; incumbent not asserted",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "Kementerian Dalam Negeri",
+            "lead": "Minister of Home Affairs · incumbent review required",
+            "role": "Regional government coordination, implementation of provincial energy plans and local licensing intersections.",
+            "scope": "Regional administration",
+            "kind": "Planning",
+            "source": "https://www.kemendagri.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "Minister of Home Affairs",
+            "evidence_status": "institutional role verified; incumbent not asserted",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "Kementerian Perhubungan",
+            "lead": "Minister of Transportation · incumbent review required",
+            "role": "Marine/port safety, shipping of fuel and LNG, logistics interfaces and energy infrastructure transport.",
+            "scope": "Logistics / maritime",
+            "kind": "Regulator",
+            "source": "https://dephub.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "Minister of Transportation",
+            "evidence_status": "institutional role verified; incumbent not asserted",
+            "authority": "functional influence only",
+            "connections": []
           }
         ]
       },
       {
-        "title": "Sector regulators, implementation oversight and verification",
+        "title": "02 · ESDM technical directorates and upstream / downstream regulators",
+        "summary": "Mandates and reporting lines are sector-specific; regulatory oversight differs from project operations.",
         "actors": [
           {
             "name": "Ditjen Migas — ESDM",
             "lead": "Laode Sulaeman · Director General of Oil and Gas (since 29 August 2025)",
             "role": "Oil and gas regulation, upstream technical and commercial policy, and CCS/CCUS regulatory pathway within the ministry.",
-            "scope": "Upstream / CCS",
+            "scope": "Oil & gas",
             "kind": "Regulator",
             "source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
             "verified": "2026-10-15",
             "verification_status": "Official government leadership/profile source",
-            "person_name": "Laode Sulaeman"
+            "person_name": "Laode Sulaeman",
+            "authority": "oil and gas regulatory policy"
           },
           {
             "name": "Ditjen EBTKE — ESDM",
@@ -94,7 +197,8 @@
             "source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
             "verified": "2026-10-15",
             "verification_status": "Official government leadership/profile source",
-            "person_name": "Eniya Listiani Dewi"
+            "person_name": "Eniya Listiani Dewi",
+            "authority": "renewable energy and conservation policy"
           },
           {
             "name": "Ditjen Ketenagalistrikan — ESDM",
@@ -105,16 +209,44 @@
             "source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
             "verified": "2026-10-15",
             "verification_status": "Official government leadership/profile source",
-            "person_name": "Tri Winarno"
+            "person_name": "Tri Winarno",
+            "authority": "electricity regulation"
+          },
+          {
+            "name": "Ditjen Mineral dan Batubara — ESDM",
+            "lead": "Director General of Minerals & Coal · incumbent review required",
+            "role": "Minerba licenses, royalty/reference prices, production planning, DMO and mine operational governance.",
+            "scope": "Coal & minerals",
+            "kind": "Regulator",
+            "source": "https://www.minerba.esdm.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "Director General of Minerals & Coal",
+            "evidence_status": "office included; appointment needs fresh official check",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "Badan Geologi — ESDM",
+            "lead": "Head of Geological Agency · incumbent review required",
+            "role": "Geological resource mapping, geothermal/geology and subsurface data important to CO₂ storage-site screening.",
+            "scope": "Subsurface screening",
+            "kind": "Research",
+            "source": "https://geologi.esdm.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "Head of Geological Agency",
+            "evidence_status": "institution-level role",
+            "authority": "functional influence only",
+            "connections": []
           },
           {
             "name": "SKK Migas",
             "lead": "Djoko Siswanto · Head (July 2026 source)",
             "role": "Manages and supervises upstream PSC implementation and contractor development execution; not the ministerial policy setter.",
-            "scope": "Upstream execution",
+            "scope": "Upstream PSC",
             "kind": "Implementer",
             "source": "https://esdm.go.id/id/media-center/arsip-berita/north-hub-bidik-produksi-1000-mmscfd-gas-buka-lebih-dari-8000-lapangan-kerja",
-            "verified": "2026-07-23"
+            "verified": "2026-07-23",
+            "authority": "upstream PSC management"
           },
           {
             "name": "BPH Migas",
@@ -125,7 +257,8 @@
             "source": "https://www.bphmigas.go.id/komite-bph/wahyudi-anas-s-t-2/",
             "verified": "2026-10-15",
             "verification_status": "Official government leadership/profile source",
-            "person_name": "Wahyudi Anas"
+            "person_name": "Wahyudi Anas",
+            "authority": "downstream fuel and gas-transport oversight"
           },
           {
             "name": "BPMA — Aceh",
@@ -134,73 +267,531 @@
             "scope": "Aceh upstream",
             "kind": "Implementer",
             "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-bpma-tahun-2025.pdf",
-            "verified": "2026-10-15"
+            "verified": "2026-10-15",
+            "authority": "Aceh upstream PSC management"
           },
           {
-            "name": "Kementerian Lingkungan Hidup",
-            "lead": "Mohammad Jumhur Hidayat · Minister of Environment / Head of BPLH (appointed 27 April 2026)",
-            "role": "Environmental controls and permits, emissions governance, and safeguards relevant to CCS; separate from subsurface storage licensing by ESDM.",
-            "scope": "Environmental safeguard",
+            "name": "BAPETEN",
+            "lead": "Head of Nuclear Energy Regulatory Agency · incumbent review required",
+            "role": "Independent nuclear/radiation regulatory and safety oversight for proposed nuclear power facilities; distinct from BRIN research.",
+            "scope": "Nuclear safety",
             "kind": "Regulator",
-            "source": "https://setneg.go.id/baca/index/presiden_prabowo_lantik_hanif_faisol_nurofiq_mohammad_jumhur_hidayat_dan_hasan_nasbi",
+            "source": "https://www.bapeten.go.id/",
             "verified": "2026-10-15",
-            "verification_status": "Verified from official government appointment / current leadership profile",
-            "previous_official": "Hanif Faisol Nurofiq",
-            "person_name": "Mohammad Jumhur Hidayat"
+            "person_name": "Head of Nuclear Energy Regulatory Agency",
+            "evidence_status": "institution-level role",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "BRIN — Energy & nuclear research",
+            "lead": "Research organization and technical leaders · incumbent review required",
+            "role": "Research on energy systems, technology, nuclear energy and industrial innovation; not an operator or nuclear licensing authority.",
+            "scope": "Energy R&D",
+            "kind": "Research",
+            "source": "https://www.brin.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "Research organization and technical leaders",
+            "evidence_status": "institution-level role",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "LEMIGAS / ESDM technical verification",
+            "lead": "LEMIGAS technical center · technical leadership check pending",
+            "role": "Reservoir integrity, source–sink mapping, carbon storage, oil/gas testing and scientific evidence; technical reports do not establish commercial permitting.",
+            "scope": "CCS technical MRV",
+            "kind": "Research",
+            "source": "https://www.lemigas.esdm.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "LEMIGAS technical center",
+            "evidence_status": "institution-level role",
+            "authority": "functional influence only",
+            "connections": []
           }
         ]
       },
       {
-        "title": "State-owned and private project executors / investors",
+        "title": "03 · State-owned groups, energy companies and execution",
+        "summary": "Companies build, procure, operate and invest. Track latest GMS leadership and subsidiaries separately; governance roles are not the same as regulatory authority.",
         "actors": [
           {
-            "name": "PLN Group and private IPPs",
-            "lead": "Suroso Isnandar · President Director since 14 October 2026 (replaced Darmawan Prasodjo)",
-            "role": "Implement and operate power systems; procure and build generation/transmission according to approved plans and contracts.",
-            "scope": "Power delivery",
+            "name": "PT PLN (Persero) — national utility",
+            "lead": "Suroso Isnandar · President Director (appointed 14 October 2026)",
+            "role": "Responsible for PLN Group generation, transmission, distribution, procurement and power delivery. Note: older PLN webpages still show previous directors.",
+            "scope": "Electricity operator",
             "kind": "Operator",
             "source": "https://www.antaranews.com/berita/5786793/direktur-utama-pln-diganti-jadi-suroso-isnandar",
-            "verified": "2026-10-14"
+            "verified": "2026-10-14",
+            "person_name": "Suroso Isnandar",
+            "authority": "SOE operating and capital-execution decisions"
           },
           {
-            "name": "Pertamina Group / PSC contractors",
-            "lead": "Project-specific operators and PSC interest holders",
-            "role": "Operate fuel and upstream assets, invest in feasibility, EPC and CCS pilots; outcomes belong to each project and contract, not to a ministry.",
-            "scope": "Oil, gas, CCS",
+            "name": "PT Pertamina (Persero) — parent company",
+            "lead": "Simon Aloysius Mantiri · President Director / CEO",
+            "role": "Group corporate management of national oil, gas, fuel and energy investments, and strategic shareholder oversight of downstream/upstream subholdings. Does not set official fuel subsidy quotas.",
+            "scope": "National energy SOE",
             "kind": "Operator",
-            "source": "https://www.esdm.go.id/id/media-center/arsip-berita/menteri-arifin-beber-tantangan-ccs-ccus-",
-            "verified": "2026-10-15"
+            "source": "https://www.antaranews.com/berita/5783845/pertamina-minta-maaf-ke-warga-bali-klarifikasi-soal-bbm-langka",
+            "verified": "2026-10-13",
+            "person_name": "Simon Aloysius Mantiri",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "SOE executive",
+            "connections": [
+              "PT Pertamina Patra Niaga — downstream",
+              "PT Pertamina Hulu Energi — upstream",
+              "PT Pertamina Geothermal Energy Tbk"
+            ]
           },
           {
-            "name": "Danantara / SOE investment ownership channel",
+            "name": "PT Pertamina Patra Niaga — downstream",
+            "lead": "Mars Ega Legowo Putra · President Director",
+            "role": "Fuel refining/supply, wholesale and retail distribution, energy trading, maritime logistics as consolidated downstream group after February 2026 merger; operational shortages and logistics are not synonymous with national stock deficit.",
+            "scope": "Downstream fuel",
+            "kind": "Operator",
+            "source": "https://ekonomi.bisnis.com/read/20261001/44/2008772/pertamina-patra-niaga-tambah-direksi-baru-surya-tri-harto-jadi-wadirut-ii",
+            "verified": "2026-10-01",
+            "person_name": "Mars Ega Legowo Putra",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "fuel, refining and logistics execution",
+            "connections": [
+              "PT Pertamina (Persero) — parent company",
+              "BPH Migas"
+            ]
+          },
+          {
+            "name": "PT Pertamina Hulu Energi — upstream",
+            "lead": "Sunaryanto · President Director",
+            "role": "Pertamina upstream subholding: PSC investment, exploration, production, gas assets and acquisition; policy oversight is through ESDM/SKK Migas.",
+            "scope": "Upstream SOE",
+            "kind": "Operator",
+            "source": "https://katadata.co.id/berita/energi/6acc4ba21adf2/pertamina-akuisisi-10-pi-eni-di-wk-north-ganal-hingga-east-sepinggan",
+            "verified": "2026-10-12",
+            "person_name": "Sunaryanto",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "upstream project execution",
+            "connections": [
+              "PT Pertamina (Persero) — parent company",
+              "SKK Migas"
+            ]
+          },
+          {
+            "name": "PT Pertamina Hulu Indonesia — regional upstream",
+            "lead": "Muharram Jaya Panguriseng · President Director since 29 July 2026",
+            "role": "Kalimantan regional upstream operational portfolio of Pertamina including production, drilling and regional developments.",
+            "scope": "Kalimantan upstream",
+            "kind": "Operator",
+            "source": "https://phi.pertamina.com/id/tentang-kami",
+            "verified": "2026-07-29",
+            "person_name": "Muharram Jaya Panguriseng",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "regional production execution",
+            "connections": []
+          },
+          {
+            "name": "PT Pertamina Geothermal Energy Tbk",
+            "lead": "Ahmad Yani · President Director",
+            "role": "Geothermal exploration, development and generation, including PGE–PLN collaboration and project-level investment decisions.",
+            "scope": "Geothermal EBT",
+            "kind": "Operator",
+            "source": "https://pge.pertamina.com/id/siaran-pers/hadir-di-iigce-2026-pge-optimalkan-aset-ulubelu-dan-lahendong-serta-buka-potensi-baru-panas-bumi-di-cubadak-panti-1",
+            "verified": "2026-09-01",
+            "person_name": "Ahmad Yani",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "geothermal generation execution",
+            "connections": []
+          },
+          {
+            "name": "PT PLN Indonesia Power",
+            "lead": "Bernardus Sudarmanta · President Director (September 2026 event record)",
+            "role": "Power-plant operator/developer and collaborator for renewable generation; subordinate PLN group project operator.",
+            "scope": "Power generation",
+            "kind": "Operator",
+            "source": "https://pge.pertamina.com/id/siaran-pers/hadir-di-iigce-2026-pge-optimalkan-aset-ulubelu-dan-lahendong-serta-buka-potensi-baru-panas-bumi-di-cubadak-panti-1",
+            "verified": "2026-09-01",
+            "person_name": "Bernardus Sudarmanta",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "PLN generation subsidiary",
+            "connections": []
+          },
+          {
+            "name": "PT PLN Energi Primer Indonesia",
+            "lead": "CEO · latest appointment review required",
+            "role": "Coal, gas, biomass and other primary energy supply chain for PLN generation; relevant to power price and energy security.",
+            "scope": "Electricity fuel supply",
+            "kind": "Operator",
+            "source": "https://www.plnepi.co.id/",
+            "verified": "2026-10-15",
+            "person_name": "CEO",
+            "evidence_status": "company role established; no unsupported CEO naming",
+            "authority": "primary-energy procurement",
+            "connections": []
+          },
+          {
+            "name": "PT PGN Tbk / Pertamina Gas Subholding",
+            "lead": "President Director · latest appointment review required",
+            "role": "Gas transmission, distribution, LNG and domestic gas infrastructure. Separate network throughput from SKK upstream production figures.",
+            "scope": "Gas infrastructure",
+            "kind": "Operator",
+            "source": "https://www.pgn.co.id/",
+            "verified": "2026-10-15",
+            "person_name": "President Director",
+            "evidence_status": "company role established; named incumbent requires official confirmation",
+            "authority": "gas network operations",
+            "connections": []
+          },
+          {
+            "name": "PT Geo Dipa Energi (Persero)",
+            "lead": "President Director · latest appointment review required",
+            "role": "State-linked geothermal developer; track project milestones, COD, and separate actual investments.",
+            "scope": "Geothermal development",
+            "kind": "Operator",
+            "source": "https://www.geodipa.co.id/",
+            "verified": "2026-10-15",
+            "person_name": "President Director",
+            "evidence_status": "company role established; named incumbent requires confirmation",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "Danantara Indonesia — SOE capital coordination",
             "lead": "Rosan Perkasa Roeslani · Chair of Danantara (since 24 February 2025); simultaneously Minister of Investment/Head of BKPM",
             "role": "Institutional SOE capital allocation and portfolio coordination potential; do not assume an energy project is Danantara-financed without a separate official transaction or FID disclosure.",
             "scope": "Capital / ownership",
             "kind": "Financier",
-            "source": "https://www.bkpm.go.id/en/about-bkpm/profile-of-chairman",
+            "source": "https://www.antaranews.com/berita/5786793/direktur-utama-pln-diganti-jadi-suroso-isnandar",
             "verified": "2026-10-15",
             "person_name": "Rosan Perkasa Roeslani",
-            "verification_status": "Current official BKPM minister profile; distinguish Danantara chair from individual energy project investment decisions"
+            "verification_status": "Current official BKPM minister profile; distinguish Danantara chair from individual energy project investment decisions",
+            "authority": "investment ownership/funding oversight (deal-specific)"
           },
           {
-            "name": "LEMIGAS / universities / technical partners",
-            "lead": "LEMIGAS, ITB and industrial engineering teams",
-            "role": "Geological screening, CO₂ source–sink matching, monitoring, measurement and storage-integrity research. Research estimates are not certified commercial injectivity.",
-            "scope": "Technical verification",
+            "name": "PT SMI / public financing institutions",
+            "lead": "Institutional leadership · name depends on entity",
+            "role": "Project finance, blended finance and guarantee arrangements for infrastructure, green energy and grid investment; not equivalent to announced investment commitments.",
+            "scope": "Project finance",
+            "kind": "Financier",
+            "source": "https://ptsmi.co.id/",
+            "verified": "2026-10-15",
+            "person_name": "Institutional leadership",
+            "evidence_status": "institutional role; verify transaction-by-transaction",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "Private IPPs, PSC contractors, CCS operators",
+            "lead": "Investor/operator identified by each contracted project",
+            "role": "BP, INPEX, ExxonMobil, Medco, independent power producers and other contractors execute individual concessions and sites, subject to legal approvals and contract structures.",
+            "scope": "Private project execution",
+            "kind": "Operator",
+            "source": "https://www.esdm.go.id/id/publikasi/laporan-kinerja",
+            "verified": "2026-10-15",
+            "person_name": "Investor/operator identified by each contracted project",
+            "evidence_status": "category, not a single organization",
+            "authority": "concession / project-specific",
+            "connections": []
+          }
+        ]
+      },
+      {
+        "title": "04 · DPR RI: legislation, SOE and fiscal oversight",
+        "summary": "Parliamentary commissions and the executive are not in one command chain: distinguish legislative oversight and hearings from executive implementation.",
+        "actors": [
+          {
+            "name": "DPR RI · Komisi XII — energi, SDA, lingkungan, investasi",
+            "lead": "Melchias Markus Mekeng · Chair since 26 August 2026",
+            "role": "Primary energy regulator counterpart; debates energy and environmental legislation, supervises ESDM/SKK/BPH/BKPM and monitors oil, gas, coal, renewables, carbon and quotas.",
+            "scope": "Legislative scrutiny",
+            "kind": "Oversight",
+            "source": "https://www.mpr.go.id/berita/cost-recovery-skk-migas-mekeng",
+            "verified": "2026-09-08",
+            "person_name": "Melchias Markus Mekeng",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "legislation / hearing / budget oversight",
+            "connections": [
+              "Kementerian ESDM / Minister",
+              "SKK Migas",
+              "BPH Migas"
+            ]
+          },
+          {
+            "name": "DPR RI · Komisi VI — BUMN",
+            "lead": "Anggia Erma Rini · Chair (11 February 2026 report)",
+            "role": "Oversight of Pertamina and other state-owned enterprise corporate operations, governance and performance; not the lead energy-resource regulator.",
+            "scope": "Corporate oversight",
+            "kind": "Oversight",
+            "source": "https://berkas.dpr.go.id/akd/dokumen/komisi6-2026_02_11_KOMISI-VI-DPR-RI_LS_RDP-dengan-PT-Pertamina-Persero-dan-Subholding-agenda-Evaluasi-Penanganan-Bencana-Hidrometeorologi-Sumatera-Dukungan-terhadap-Program-Koperasi-Desa-Merah-Putih-1770812227.pdf",
+            "verified": "2026-02-11",
+            "person_name": "Anggia Erma Rini",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "functional influence only",
+            "connections": [
+              "PT Pertamina (Persero) — parent company"
+            ]
+          },
+          {
+            "name": "DPR RI · Komisi VII — industry & downstreaming",
+            "lead": "Saleh Partaonan Daulay · Chair (September 2026 official DPR report)",
+            "role": "Industry, downstream value-chain competitiveness and industrial demand; not the core energy regulator. Coordinates industrial inputs and downstream value-added questions.",
+            "scope": "Industrial policy oversight",
+            "kind": "Oversight",
+            "source": "https://emedia.dpr.go.id/news/2026/09/18/saleh-daulay-bahan-baku-melimpah-industri-genteng-dan-keramik-jangan-bergantung-impor",
+            "verified": "2026-09-18",
+            "person_name": "Saleh Partaonan Daulay",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "DPR RI · Komisi XI — finance & development financing",
+            "lead": "Mukhamad Misbakhun · Chair (2026 official DPR report)",
+            "role": "State fiscal and banking/development-finance oversight relevant to energy subsidy financing, macro assumptions and tax incentives.",
+            "scope": "Finance oversight",
+            "kind": "Oversight",
+            "source": "https://emedia.dpr.go.id/news/2026/08/25/setahun-kerja-komisi-xi-dpr-ri-stabilitas-fiskal-dan-reformasi-keuangan-jadi-fokus-utama",
+            "verified": "2026-08-26",
+            "person_name": "Mukhamad Misbakhun",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "DPR RI · Badan Anggaran (Banggar)",
+            "lead": "Leadership must be verified from current DPR record",
+            "role": "National budget discussion of energy subsidy/compensation, ICP, macro fiscal assumptions and cash expenditures together with relevant commissions and government.",
+            "scope": "APBN oversight",
+            "kind": "Oversight",
+            "source": "https://www.dpr.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "",
+            "evidence_status": "institutional role only; named chair pending current DPR roster",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "DPR RI · Badan Legislasi (Baleg)",
+            "lead": "Leadership must be verified from current DPR record",
+            "role": "Legislative harmonisation and bill planning, including oil-gas, electricity, energy transition and climate measures.",
+            "scope": "Legal drafting",
+            "kind": "Oversight",
+            "source": "https://www.dpr.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "",
+            "evidence_status": "institutional role only",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "BPK RI — public finance auditor",
+            "lead": "Board / members require current institutional roster",
+            "role": "Independent auditing of budget and public entity finances; audit conclusions are distinct from political oversight or ministerial performance claims.",
+            "scope": "Public accountability",
+            "kind": "Oversight",
+            "source": "https://www.bpk.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "Board / members require current institutional roster",
+            "evidence_status": "institutional role only",
+            "authority": "functional influence only",
+            "connections": []
+          }
+        ]
+      },
+      {
+        "title": "05 · DPD RI: regional energy interests and fiscal equity",
+        "summary": "DPD represents regional interests and reviews relevant legislation; its powers are not identical to DPR's legislative decision-making or ESDM's executive regulation.",
+        "actors": [
+          {
+            "name": "DPD RI — institution",
+            "lead": "Sultan Bachtiar Najamudin · Chair",
+            "role": "Represents regional interests in national policy, natural resources, regional autonomy and fiscal equity and channels provincial concerns.",
+            "scope": "Regional representation",
+            "kind": "Oversight",
+            "source": "https://orchard.dpd.go.id/daftar-berita/sultan-pimpinan-alat-kelengkapan-dpd-ri-harus-segera-bekerja-dan-hadirkan-manfaat-bagi-daerah",
+            "verified": "2026-08-20",
+            "person_name": "Sultan Bachtiar Najamudin",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "DPD RI · Komite II — resources, energy, infrastructure",
+            "lead": "Badikenita Putri Br. Sitepu · Chair (October 2026 official DPD source)",
+            "role": "DPD's main committee for energy resources, infrastructure, environment and related regional legislation oversight; monitors nuclear, fuel for fishermen, and regional project effects.",
+            "scope": "Regional energy oversight",
+            "kind": "Oversight",
+            "source": "https://orchard.dpd.go.id/daftar-berita/komite-ii-dpd-ri-serap-masukan-provinsi-sumatera-utara-dalam-penyusunan-pandangan-pendapat-dpd-ri-terhadap-ruu-perubahan-ketiga-undang-undang-lalu-lintas-dan-angkutan-jalan",
+            "verified": "2026-10-04",
+            "person_name": "Badikenita Putri Br. Sitepu",
+            "evidence_status": "named incumbent source-dated; monitor appointment changes",
+            "authority": "functional influence only",
+            "connections": [
+              "Kementerian ESDM / Minister",
+              "Provincial governors, RUED and local energy offices"
+            ]
+          },
+          {
+            "name": "DPD RI · Komite IV — regional fiscal transfers",
+            "lead": "Leadership must be verified for 2026–2027 term",
+            "role": "Examines fiscal policy, regional revenues, extractive royalties, DBH and financing capacity affecting provincial energy services.",
+            "scope": "Regional fiscal",
+            "kind": "Oversight",
+            "source": "https://orchard.dpd.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "",
+            "evidence_status": "institutional role only, no guessed incumbent",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "DPD RI · legislative / regional regulation instruments",
+            "lead": "DPD lawmaking and regional legislative units",
+            "role": "Gives inputs on regional regulatory alignment, provincial finance and natural-resource-related bills; not a regional oil/gas permit issuer.",
+            "scope": "Regional legislation",
+            "kind": "Oversight",
+            "source": "https://orchard.dpd.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "DPD lawmaking and regional legislative units",
+            "evidence_status": "institutional role only",
+            "authority": "functional influence only",
+            "connections": []
+          }
+        ]
+      },
+      {
+        "title": "06 · Provincial implementation, environment and site-level risk",
+        "summary": "Final-mile delivery, land, regional plans, environment and local emergency response are distributed across institutions.",
+        "actors": [
+          {
+            "name": "Provincial governors, RUED and local energy offices",
+            "lead": "Governor / provincial ESDM offices · varies by province",
+            "role": "Set and implement RUED and local energy programs, coordinate project sites and local licensing within statutory limits.",
+            "scope": "Provincial RUED",
+            "kind": "Implementer",
+            "source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-dewan-energi-nasional-tahun-2025.pdf",
+            "verified": "2026-10-15",
+            "person_name": "Governor / provincial ESDM offices",
+            "evidence_status": "institutional level, not a single national incumbent",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "BP Batam, KEK administrators and investment zones",
+            "lead": "Designated local zone authorities / administrators",
+            "role": "Land, zone infrastructure and project facilitation; relevant to Batam data centers, industrial clusters and gas/power projects, subject to central permitting.",
+            "scope": "Special zones",
+            "kind": "Implementer",
+            "source": "https://bpbatam.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "Designated local zone authorities / administrators",
+            "evidence_status": "institutional mandate",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "BNPB and regional BPBD",
+            "lead": "National and provincial disaster management services",
+            "role": "Fire, flood, heat and infrastructure incident coordination; distinguish reports of hazards from verified disruption of energy assets.",
+            "scope": "Disaster response",
+            "kind": "Implementer",
+            "source": "https://www.bnpb.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "National and provincial disaster management services",
+            "evidence_status": "institutional mandate",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "BMKG — weather and climate",
+            "lead": "Agency leadership · verify current appointment",
+            "role": "Meteorological, climate and extreme-weather warnings to inform flood, drought, grid and physical-energy security exposure.",
+            "scope": "Climate intelligence",
             "kind": "Research",
-            "source": "https://www.lemigas.esdm.go.id/publikasi/berita/lemigas-dorong-penguatan-monitoring-dan-integritas-lokasi-penyimpanan-ccs-pada-iiccs-forum-internasional-2026",
-            "verified": "2026-08-26"
+            "source": "https://www.bmkg.go.id/",
+            "verified": "2026-10-15",
+            "person_name": "Agency leadership",
+            "evidence_status": "institutional mandate",
+            "authority": "functional influence only",
+            "connections": []
+          },
+          {
+            "name": "Regional PLN units, ports and energy logistics",
+            "lead": "Asset- and province-specific operators",
+            "role": "Dispatch, grid restoration, fuel unloading, storage and SPBU logistics; a national corporate leader should not substitute for the responsible local operator.",
+            "scope": "Local implementation",
+            "kind": "Implementer",
+            "source": "https://www.pln.co.id/",
+            "verified": "2026-10-15",
+            "person_name": "Asset- and province-specific operators",
+            "evidence_status": "operational category",
+            "authority": "functional influence only",
+            "connections": []
           }
         ]
       }
     ],
     "strategic_readout": [
-      "Current officeholders matter to execution: KLH/BPLH is led by Mohammad Jumhur Hidayat (appointed 27 April 2026), while the Finance Ministry is led by Suahasil Nazara (appointed 14 September 2026). Historical DEN membership reports must not be reused as today's minister roster.",
-      "A new coordinating layer was established on 1 October 2026: Bahlil holds both the Coordinating Ministry for Downstreaming & Energy Transition and the ESDM line-minister role. Track the dual-hat governance interface and evolving decision authority.",
-      "Approval is fragmented: strategy (DEN/President), regulations and subsurface (ESDM), contract execution (SKK Migas/BPMA), environmental safeguard (environment ministry), and project engineering (operators).",
-      "For any CCS proposal, trace the operator, approved area and license, PoD/FID, verified injection measurement, liabilities and long-term MRV rather than equating cooperation MOUs with operational delivery.",
-      "Fuel shortages belong primarily to downstream distribution and logistics; power outages to PLN/grid operations and regulators; upstream gas production to PSC contractors and SKK Migas."
-    ]
+      "Decision rights do not form a single hierarchy: Presidency/DEN and the special adviser drive direction; Kemenko coordinates; ESDM and other ministries regulate; SKK Migas/BPH and local administrations supervise assigned domains; operators deliver assets.",
+      "Energy politics has two parliamentary interfaces: Komisi XII scrutinises energy regulation, SKK/BPH and energy subsidies; Komisi VI examines Pertamina as an SOE. Komisi VII handles downstream industry, while XI and Banggar track fiscal consequences.",
+      "DPD Komite II feeds regional resource and infrastructure priorities into national debate, while Komite IV flags regional fiscal transfers and DBH; neither directly licenses a CCS storage permit or instructs corporate management.",
+      "The 2026 Pertamina downstream consolidation should not be analysed as the pre-2026 separate PPN/KPI/PIS operator structure; parent Pertamina, upstream PHE and downstream Patra Niaga have different management and assets.",
+      "Government actor updates should follow official appointment data and monitor company GM/shareholder releases. Legacy site biographies and older DEN lists frequently lag October 2026 changes.",
+      "For a physical incident, identify regulator, enterprise owner, subholding, local operator, responsible region and accountable legislative body; avoid assigning every operational failure to the president or energy adviser.",
+      "International projects including CCS/CCUS require independent ESDM/BPLH permitting plus operator FID and measured injection evidence, not simply a political endorsement."
+    ],
+    "method": {
+      "as_of": "2026-10-15",
+      "coverage": [
+        "Presidency and special energy adviser",
+        "DEN and coordinating ministries",
+        "ESDM directorates, SKK Migas, BPH Migas, BPMA, BAPETEN",
+        "Pertamina parent, upstream and consolidated downstream, PLN, PGE, PGN",
+        "DPR VI/VII/XI/XII, Banggar, Baleg, BPK",
+        "DPD chair, Komite II and regional fiscal Komite IV",
+        "Local energy plans, disaster response and zone infrastructure"
+      ],
+      "watch_rule": "Six-hour monitoring for cabinet/ESDM, parliamentary, DPD, corporate and regulatory source changes. Promote individual leadership changes only on role-matched official institutional evidence; otherwise flag as unverified candidate.",
+      "tiers": [
+        {
+          "label": "Policy direction / advice",
+          "actors": [
+            "Presidency / National Energy Council (DEN)",
+            "Penasihat Khusus Presiden Bidang Energi",
+            "Kemenko Hilirisasi dan Transisi Energi"
+          ]
+        },
+        {
+          "label": "Rule-making / budget / permits",
+          "actors": [
+            "Kementerian ESDM / Minister",
+            "Kementerian Keuangan",
+            "Bappenas",
+            "Kementerian Investasi dan Hilirisasi / BKPM",
+            "SKK Migas",
+            "BPH Migas",
+            "Kementerian Lingkungan Hidup / BPLH"
+          ]
+        },
+        {
+          "label": "Execution / ownership",
+          "actors": [
+            "Danantara Indonesia — SOE capital coordination",
+            "PT Pertamina (Persero) — parent company",
+            "PT Pertamina Patra Niaga — downstream",
+            "PT Pertamina Hulu Energi — upstream",
+            "PT PLN (Persero) — national utility"
+          ]
+        },
+        {
+          "label": "Independent oversight / regional voice",
+          "actors": [
+            "DPR RI · Komisi XII — energi, SDA, lingkungan, investasi",
+            "DPR RI · Komisi VI — BUMN",
+            "DPD RI · Komite II — resources, energy, infrastructure",
+            "Provincial governors, RUED and local energy offices"
+          ]
+        }
+      ]
+    }
   },
   "policies": {
     "note": "Curated, source-dated policy register. 'Announced' is not enacted. The scheduled Official Source Watch scans for candidate releases, but requires analyst verification before adding or changing this list.",
