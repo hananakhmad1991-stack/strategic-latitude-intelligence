@@ -4,9 +4,9 @@ on:
     paths:
       - 'index.html'
       - 'js/research-chapters.js'
-      - 'js/sector-institution-map.js'
-      - 'css/sector-institution-map.css'
-      - 'data/sector-institution-map.json'
+      - 'js/sector-stakeholder-explorer.js'
+      - 'css/stakeholder-map.css'
+      - 'data/sector-governance-explorer.json'
       - 'tests/qa-sector-organigrams.mjs'
       - 'data/investment-evidence.json'
       - 'tests/qa-research-dashboard.mjs'
