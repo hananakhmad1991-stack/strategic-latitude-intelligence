@@ -145,12 +145,12 @@ window.initSLIInvestment=async function(){
    actual.append($("p","tr-detail","Not zero. Project cost / FID / debt does not equal actual capital spent."));tr.append(actual);
    const milestone=$("td");milestone.append($("p",null,x.status_note),$("p","tr-detail","Next: "+x.next_step));tr.append(milestone);
    const src=$("td");src.append(source(x.source_url,"Project disclosure"));
-   if(x.initial_commitment_source){src.append($("p","tr-detail",null),source(x.initial_commitment_source,"Original amount source"));}
+   if(x.initial_commitment_source){src.append($("p","tr-detail","Initial commitment: "),source(x.initial_commitment_source,"Original amount source"));}
    if(x.ownership_ref){
     const ref=$("a",null,"Ownership dossier ↗");ref.href="#inv-owner-"+x.ownership_ref;ref.addEventListener("click",evt=>{
      const card=document.getElementById("inv-owner-"+x.ownership_ref);
      if(card){evt.preventDefault();card.open=true;card.scrollIntoView({behavior:"smooth",block:"start"});}
-    });src.append($("p","tr-detail",null),ref);
+    });src.append($("p","tr-detail","Ownership: "),ref);
    }else src.append($("p","tr-detail","Ownership mapping pending independent verification"));
    tr.append(src);body.append(tr);
   });
