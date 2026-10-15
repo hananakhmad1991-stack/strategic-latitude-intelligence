@@ -4,6 +4,9 @@
 const TAX=[
  ["FDI & capital","foreign investment|penanaman modal asing|investasi asing|pma\\b|fdi\\b|investor asing|joint venture|kemitraan investasi"],
  ["Project implementation","groundbreaking|peresmian|resmikan|construction|konstruksi|operasional|commissioning|financial close|pendanaan proyek|proyek strategis|psn\\b"],
+ ["Solar & hydro","plts|plta|pltm\\b|solar pv|hidroelektr|hydropower|floating solar|surya terapung|surya atap|photovoltaic"],
+ ["Wind & storage","pltb|bayu|wind farm|sidrap|jeneponto|pumped storage|cisokan|bess|penyimpanan energi"],
+ ["Nuclear & SMR","pltn|bapeten|thorcon|small modular reactor|khnp|reaktor|energi nuklir|nuclear power"],
  ["Downstreaming & energy","hilirisasi|smelter|kilang|refinery|nickel|nikel|mineral|geothermal|panas bumi|pembangkit|data center|pusat data"],
  ["Policy & incentives","bkpm|danantara|insentif investasi|tax holiday|kek\\b|special economic zone|izin investasi|investment regulation"],
  ["Risks & disputes","pembatalan investasi|investasi batal|dispute|sengketa|moratorium|protes proyek|environmental permit|amdal|kendala investasi"],
