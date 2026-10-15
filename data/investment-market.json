@@ -14,12 +14,12 @@
   },
   "ihsg": {
     "name": "IDX Composite (IHSG)",
-    "value": 5814.72,
+    "value": 5863.78,
     "change_pct": -2.16,
     "observed_date": "2026-10-15",
-    "quote_status": "Delayed data snapshot, NOT verified live or final official close",
-    "source": "https://id.investing.com/indices/idx-composite-historical-data",
-    "last_checked_utc": null,
+    "quote_status": "Yahoo Finance delayed quote; not guaranteed official close",
+    "source": "https://finance.yahoo.com/quote/%5EJKSE/",
+    "last_checked_utc": "2026-10-15T09:59:40.806731+00:00",
     "provider_quote_clock": "Source shows 11:59:59; time zone/status ambiguous, do not infer final session close"
   },
   "global_indicators": [
@@ -56,5 +56,6 @@
     "IHSG is a delayed vendor snapshot; provider time is ambiguous and cannot be presented as current close.",
     "GII ranks innovation inputs/outputs, not total investment climate. UNCTAD worldwide FDI is not an Indonesian rank.",
     "Kearney Emerging Markets Index is a forward-looking survey ranking of 25 emerging economies, not Indonesia's ranking in the global all-economies list."
-  ]
+  ],
+  "last_refresh_attempt_utc": "2026-10-15T09:59:40.806731+00:00"
 }
