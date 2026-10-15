@@ -1,4 +1,4 @@
-/* SLI Investment Strategy: sourced market snapshots, 12-sector SWOT and unconfirmed deal watch. */
+/* SLI Investment Strategy: sourced market snapshots, 13-sector SWOT and unconfirmed deal watch. */
 (function(){"use strict";
 const N=(tag,cls,txt)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(txt!==undefined&&txt!==null)x.textContent=String(txt);return x};
 const url=(u,label)=>{if(!/^https:\/\//.test(u||""))return N("span","tr-detail","Original source unavailable");const a=N("a",null,label+" ↗");a.href=u;a.target="_blank";a.rel="noopener noreferrer";return a};
@@ -12,6 +12,7 @@ const newsCategories={
 "Minerals":/nikel|nickel|mineral|vale|freeport|emas|tembaga/i,
 "Smelters & Processing":/smelter|hpal|hilirisasi|copper|tembaga|refinery/i,
 "Biofuels & Bioenergy":/biodiesel|biofuel|b50|bioenergi|saf\b|biogas/i,
+"Palm Oil & Downstreaming":/sawit|palm oil|kelapa sawit|cpo\b|pk[o\b]|bpdp|pungutan ekspor|pabrik kelapa sawit/i,
 "Geothermal":/panas bumi|geothermal|pge|pltp/i,
 "Solar PV":/plts|surya|solar|photovoltaic/i,
 "Hydropower & Storage":/plta|pltm|hidro|hydro|cisokan|pumped storage/i,
