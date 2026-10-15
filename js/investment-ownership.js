@@ -23,28 +23,30 @@ window.initSLIInvestmentOwnership=async function(){
  const results=E("p","tr-detail"),items=E("div","inv-ownership-list");root.append(results,items);
  const pct=x=>Number.isFinite(Number(x))?Number(x).toLocaleString("en-US",{maximumFractionDigits:2})+"%":"Undisclosed";
  const table=(entity)=>{
-  const wrap=E("div","pf-table-wrap"),t=E("table");
-  const head=E("thead"),hr=E("tr");["Reported direct equity holder","Percent / share","Basis"].forEach(x=>hr.append(E("th",null,x)));head.append(hr);t.append(head);
-  const tbody=E("tbody");
-  if(entity.direct_shareholders.length){
-   for(const s of entity.direct_shareholders){const tr=E("tr");tr.append(E("td",null,s.name),E("td",null,pct(s.pct)),E("td",null,"Direct corporate equity, as of "+entity.ownership_as_of));tbody.append(tr)}
+  const wrap=E("div","pf-table-wrap"),t=E("table"),isPSC=Array.isArray(entity.contract_interests)&&entity.contract_interests.length>0;
+  const head=E("thead"),hr=E("tr");[isPSC?"PSC contractor / holder":"Reported direct equity holder",isPSC?"Participating interest":"Percent / share","Rights classification"].forEach(x=>hr.append(E("th",null,x)));head.append(hr);t.append(head);
+  const tbody=E("tbody"),holders=isPSC?entity.contract_interests:entity.direct_shareholders;
+  if(holders.length){
+   for(const sh of holders){const tr=E("tr");tr.append(E("td",null,sh.name),E("td",null,pct(sh.pct)),E("td",null,isPSC?"Contractual PSC interest; NOT corporate shares":"Direct corporate equity, as of "+entity.ownership_as_of));tbody.append(tr)}
   }else{const tr=E("tr"),cell=E("td",null,"Cap table not verified: named project partners are not necessarily shareholders.");cell.colSpan=3;tr.append(cell);tbody.append(tr)}
   t.append(tbody);wrap.append(t);return wrap;
  };
  function render(){
   const q=query.value.trim().toLowerCase();
   items.replaceChildren();
-  const list=data.entities.filter(x=>(category.value==="all"||x.sector===category.value)&&([x.entity,x.ownership_chain,x.control,...x.direct_shareholders.map(s=>s.name),...(x.known_project_partners||[])].join(" ").toLowerCase().includes(q)));
+  const list=data.entities.filter(x=>(category.value==="all"||x.sector===category.value)&&([x.entity,x.ownership_chain,x.control,...x.direct_shareholders.map(s=>s.name),...(x.contract_interests||[]).map(s=>s.name),...(x.known_project_partners||[])].join(" ").toLowerCase().includes(q)));
   results.textContent=list.length+" of "+data.entities.length+" entity files · expand to review control, beneficial ownership gap and original disclosures.";
   for(const entity of list){
    const details=E("details","inv-owner-card"),summary=E("summary","inv-owner-head");
    const name=E("span","inv-owner-title",entity.entity),badge=E("span","inv-owner-status",entity.beneficial_owner.status);
    summary.append(name,badge);details.append(summary);
    const content=E("div","inv-owner-content");
-   const line=E("p","tr-detail",entity.sector+" · Equity reference "+entity.ownership_as_of+" · "+entity.evidence_tier);content.append(line);
+   const line=E("p","tr-detail",entity.sector+" · Ownership / PSC reference "+entity.ownership_as_of+" · "+entity.evidence_tier);content.append(line);
    const stakes=E("div","inv-owner-stakes");
-   if(entity.direct_shareholders.length){
-    for(const sh of entity.direct_shareholders){
+   const presentedHolders=(entity.contract_interests&&entity.contract_interests.length)?entity.contract_interests:entity.direct_shareholders;
+   if(entity.contract_interests?.length)stakes.append(E("p","tr-detail","PSC contractual participating interests — not equity shares in a company."));
+   if(presentedHolders.length){
+    for(const sh of presentedHolders){
      const row=E("div","inv-stake-row"),head=E("div","inv-stake-head"),track=E("div","inv-stake-track"),fill=E("div","inv-stake-fill");
      head.append(E("span",null,sh.name),E("strong",null,pct(sh.pct)));
      fill.style.width=Math.min(100,Math.max(0,Number(sh.pct)||0))+"%";track.append(fill);row.append(head,track);stakes.append(row)
