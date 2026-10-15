@@ -24,6 +24,10 @@ for sector,group in obj["sectors"].items():
                 errors.append(sector+": cyclical chain at "+x["id"]);break
             seen.add(current["id"])
             current=by_id.get(current["parent"],{})
+    for id,person,relation in [("kemenkoekon","Airlangga Hartarto","coordination"),("bappenas","Rachmat Pambudy","planning")]:
+        actor=by_id.get(id,{})
+        if actor.get("parent")!="pres" or actor.get("relation")!=relation or actor.get("person")!=person:
+            errors.append(sector+": invalid top-level economic coordination/national planning hierarchy: "+id)
     if sector=="minerals":
         for id in ["bpi","dam","mind","antam","ptba","inalum","timah","freeport","vale","dsi","brin","defense"]:
             if id not in by_id:errors.append(sector+": critical required actor missing "+id)
