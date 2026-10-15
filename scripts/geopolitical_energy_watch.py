@@ -38,11 +38,12 @@ def sector_relevance(title,topic):
  key=GEO_TOPIC_ID.get(topic,"")
  tags=classify(title,key,"geopolitical")["sector_tags"]
  if "oil_gas" in tags:
-  return bool(PATTERNS["oil_gas"].search(title) or __import__("re").search(r"\\b(tanker|hormuz|crude|oilfield|gasfield)\\b",title,__import__("re").I))
+  return bool(PATTERNS["oil_gas"].search(title) or re.search(r"\b(tanker|hormuz|crude|oilfield|gasfield)\b",title,re.I))
  if "coal" in tags:return bool(PATTERNS["coal"].search(title))
  if "nre" in tags:return bool(PATTERNS["nre"].search(title))
  return bool(any(PATTERNS[k].search(title) for k in ("oil_gas","coal","nre","electricity")))
 
+RSS_TRUSTED={"Reuters","Associated Press","AP News","BBC","Financial Times","Bloomberg","CNBC","S&P Global","Nikkei Asia","Argus Media","The Guardian","Energy Intelligence","The Jakarta Post","ANTARA","IEA","EIA"}
 TRUSTED={"reuters.com","apnews.com","bloomberg.com","ft.com","iea.org","eia.gov","worldbank.org","argusmedia.com","spglobal.com","tradewindsnews.com","lloydslist.com","oilprice.com"}
 def fetch(query):
  params=urllib.parse.urlencode({"query":query,"mode":"artlist","format":"json","timespan":"2d","maxrecords":"25","sort":"datedesc"})
@@ -72,6 +73,7 @@ def rss_fallback(now, missing_topics=None):
    except Exception:continue
    if not dt.timedelta(0)<=now-published<=dt.timedelta(days=3):continue
    if not title or not link.startswith("https://") or not src:continue
+   if not any(src.lower()==t.lower() or src.lower().startswith(t.lower()+" ") for t in RSS_TRUSTED):continue
    if not sector_relevance(title,topic):continue
    def tokens(t):
     return set(re.findall(r"[a-z]{4,}",t.lower().rsplit(" - ",1)[0]))-{"energy","global","reports","update","breaking","today"}
