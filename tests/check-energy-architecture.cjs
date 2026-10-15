@@ -20,6 +20,18 @@ assert(start>=0&&next>start,"Energy Security template missing");
 const functionSource=script[1].slice(start,next).trim();
 const html=new Function(functionSource+"\nreturn energyMonitor();")();
 assert.equal(typeof html,"string");
+const voidTags=new Set(["area","base","br","col","embed","hr","img","input","link","meta","param","source","track","wbr"]);
+const stack=[];
+const markup=/<\/?([a-z][a-z0-9-]*)(?:"[^"]*"|'[^']*'|[^'">])*>/gi;
+for(const match of html.matchAll(markup)){
+ const tag=match[1].toLowerCase(),closing=match[0][1]==="/";
+ if(voidTags.has(tag)||match[0].endsWith("/>"))continue;
+ if(!closing){stack.push(tag);continue}
+ assert(stack.length>0,"Unexpected closing HTML tag: "+tag);
+ assert.equal(stack.pop(),tag,"HTML tag nesting mismatch");
+}
+assert.equal(stack.length,0,"Unclosed structural HTML elements");
+
 const order=["es-governance","es-scorecard","es-supply","es-economics","es-transition","es-monitoring","es-evidence","es-assessment"];
 const positions=order.map(id=>html.indexOf('id="'+id+'"'));
 assert(positions.every(x=>x>=0));assert(positions.every((x,i)=>i===0||x>positions[i-1]),"Invalid strategic-to-technical section order");
