@@ -266,9 +266,9 @@ function mapPage(root,data){
  for(const [b,desc] of [[minus,"Zoom out"],[plus,"Zoom in"],[home,"Reset map view"]]){b.type="button";b.setAttribute("aria-label",desc);zoom.append(b)}
  mapHead.append(place,zoom);mapSection.append(mapHead);
  const svg=snode("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":label("Interactive province map of Indonesia","Peta provinsi interaktif Indonesia"),class:"map-viz"});
- const shapeLayer=snode("g"),bubbleLayer=snode("g"),gridlines=snode("g",{class:"map-gridlines"});
+ const shapeLayer=snode("g"),bubbleLayer=snode("g"),pinLayer=snode("g",{class:"map-coordinate-markers"}),gridlines=snode("g",{class:"map-gridlines"});
  for(let lat=-10;lat<=5;lat+=5){const line=snode("line",{x1:20,x2:W-15,y1:yFor(lat),y2:yFor(lat)});gridlines.append(line)}
- svg.append(gridlines,shapeLayer,bubbleLayer);
+ svg.append(gridlines,shapeLayer,pinLayer,bubbleLayer);
  mapSection.append(svg);
  const legend=node("div","map-legend");
  for(const [cls,txt] of [["map-swatch",label("Registered records","Catatan terdaftar")],["map-swatch off",label("No mapped record","Tidak ada data terpetakan")],["map-swatch selected",label("Selected province","Provinsi dipilih")]]){
@@ -319,7 +319,7 @@ function mapPage(root,data){
  appendix.append(caveat);
  const countsText=node("p","map-muted");appendix.append(countsText);
  outside.append(summary,appendix);root.append(outside);
- let currentKind="all",currentProvince=null,currentKepriCluster=null,lastQuery="",currentSector="all",currentStage="all",currentLocation="all";
+ let currentKind="all",currentProvince=null,currentKepriCluster=null,currentPoint=null,lastQuery="",currentSector="all",currentStage="all",currentLocation="all";
  let viewport={x:0,y:0,w:W,h:H},drag=null,dragged=false;
  function setView(v){viewport=v;svg.setAttribute("viewBox",[v.x,v.y,v.w,v.h].join(" "))}
  function zoomAt(factor){const v=viewport,ratio=factor,uw=Math.max(250,Math.min(W*1.1,v.w*ratio)),uh=Math.max(110,Math.min(H*1.1,v.h*ratio));setView({x:v.x+(v.w-uw)/2,y:v.y+(v.h-uh)/2,w:uw,h:uh})}
@@ -340,6 +340,25 @@ function mapPage(root,data){
   group.value=currentSector;stage.value=currentStage;
  }
  const provinceAssociations=r=>[...new Set((Array.isArray(r.provinces)&&r.provinces.length?r.provinces:r.province?[r.province]:[]).filter(p=>featureByName.has(p)))];
+ const gazetteer=(data.localityAnchors?.entries||[]).filter(p=>Number.isFinite(p.longitude)&&Number.isFinite(p.latitude)&&p.longitude>=94&&p.longitude<=142&&p.latitude>=-12&&p.latitude<=7);
+ const geoText=x=>String(x||"").toLowerCase().replace(/[.,;:/·()—–-]/g," ").replace(/\s+/g," ").trim();
+ function pointFor(r){
+  const provinces=provinceAssociations(r);
+  if(provinces.length!==1)return null;
+  const raw=geoText(r.region);
+  if(!raw||/\b(offshore|lepas pantai|natuna sea|arafura sea|java sea|nationwide|national retail|multi site|multi location|multiple|cloud region|service region|site undisclosed|site addresses not disclosed|physical az|availability zones|countrywide|sites not disclosed)\b/.test(raw))return null;
+  let selected=null,score=0;
+  for(const a of gazetteer){
+   if(a.province!==provinces[0])continue;
+   for(const term of a.terms||[]){
+    const t=geoText(term);
+    if(t.length>2&&(" "+raw+" ").includes(" "+t+" ")&&t.length>score){selected=a;score=t.length}
+   }
+  }
+  return selected?{id:selected.name+"|"+selected.province,label:selected.name,lon:selected.longitude,lat:selected.latitude,source:selected.source_url}:null;
+ }
+ const accuracyOf=r=>pointFor(r)?"locality":provinceAssociations(r).length?"province":"unknown";
+ 
  const filtered=()=>active().filter(r=>{
   const mapped=provinceAssociations(r).length>0;
   return (currentSector==="all"||r.group===currentSector)
@@ -354,14 +373,14 @@ function mapPage(root,data){
   if(/\bbatam\b|\bnongsa\b|\bkabil\b/i.test(raw))return "batam";
   return "province-only";
  }
- function focusProvince(name){currentProvince=currentProvince===name?null:name;currentKepriCluster=null;provinceSelect.value=currentProvince||"all";draw()}
+ function focusProvince(name){currentProvince=currentProvince===name?null:name;currentKepriCluster=null;currentPoint=null;provinceSelect.value=currentProvince||"all";draw()}
  function focusKepriCluster(cluster){
-  currentProvince="Kepulauan Riau";currentKepriCluster=cluster;provinceSelect.value=currentProvince;draw();
+  currentProvince="Kepulauan Riau";currentKepriCluster=cluster;currentPoint=null;provinceSelect.value=currentProvince;draw();
  }
  function draw(){
   const base=filtered(),mapped=base.filter(r=>provinceAssociations(r).length>0),unmapped=base.length-mapped.length;
   const counts=new Map();for(const x of mapped)for(const p of provinceAssociations(x))counts.set(p,(counts.get(p)||0)+1);
-  shapeLayer.replaceChildren();bubbleLayer.replaceChildren();
+  shapeLayer.replaceChildren();bubbleLayer.replaceChildren();pinLayer.replaceChildren();
   for(const feature of geometry){
    const name=feature.properties.name,count=counts.get(name)||0;
    const p=snode("path",{d:projectPath(feature),class:"map-province"+(currentProvince===name?" active":""),fill:currentProvince===name?"#cb9f58":count?(count>=5?"#648fad":count>=3?"#4d7798":"#345773"):"#152f44",tabindex:"0",role:"button","aria-label":name+" — "+count+" "+label("records","catatan")});
@@ -444,11 +463,11 @@ window.initSLIStrategicMap=async function(){
  const root=document.getElementById("sliMapRoot");if(!root||APP.active===root)return;
  APP.active=root;root.replaceChildren(node("p","map-muted",label("Loading provinces and source-attributed investment records…","Memuat provinsi dan catatan investasi bersumber…")));
  try{
-  const settled=await Promise.allSettled([read("data/indonesia-provinces.geojson"),read("data/investment-operator-assets.json"),read("data/investment-evidence.json"),read("data/energy-infrastructure-security.json"),read("data/strategic-map-sector-dossiers.json"),read("data/strategic-map-upstream-wk.json"),read("data/strategic-map-power-fossil-renewable.json"),read("data/strategic-map-biofuel-smelters.json"),read("data/strategic-map-regional-crosschecks.json"),read("data/strategic-map-digital-ai.json"),read("data/strategic-map-pltu-pln-2025.json")]);
+  const settled=await Promise.allSettled([read("data/indonesia-provinces.geojson"),read("data/investment-operator-assets.json"),read("data/investment-evidence.json"),read("data/energy-infrastructure-security.json"),read("data/strategic-map-sector-dossiers.json"),read("data/strategic-map-upstream-wk.json"),read("data/strategic-map-power-fossil-renewable.json"),read("data/strategic-map-biofuel-smelters.json"),read("data/strategic-map-regional-crosschecks.json"),read("data/strategic-map-digital-ai.json"),read("data/strategic-map-pltu-pln-2025.json"),read("data/strategic-map-locality-anchors.json")]);
   if(root!==document.getElementById("sliMapRoot"))return;
   if(settled.some(x=>x.status!=="fulfilled"))throw Error("Required basemap/registry unavailable");
-  const [geo,assets,projects,infra,sectorSites,upstream,power,industry,regional,digital,pltuAudit]=settled.map(x=>x.value);
-  APP.data={geo,assets,projects,infra,sectorSites,upstream,power,industry,regional,digital,pltuAudit};mapPage(root,APP.data);
+  const [geo,assets,projects,infra,sectorSites,upstream,power,industry,regional,digital,pltuAudit,localityAnchors]=settled.map(x=>x.value);
+  APP.data={geo,assets,projects,infra,sectorSites,upstream,power,industry,regional,digital,pltuAudit,localityAnchors};mapPage(root,APP.data);
  }catch(e){root.replaceChildren(node("p","map-alert",label("Geographic registry unavailable; no inferred project positions are displayed.","Registri geografis tidak tersedia; lokasi proyek tidak direka.")));console.error("[SLI map]",e)}
 };
 document.addEventListener("sli:languagechange",()=>{const root=document.getElementById("sliMapRoot");if(!root||!APP.data)return;mapPage(root,APP.data)});
