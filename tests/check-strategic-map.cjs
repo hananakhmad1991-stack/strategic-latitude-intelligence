@@ -7,7 +7,7 @@ const path=require("node:path");
 const vm=require("node:vm");
 const ROOT=path.resolve(__dirname,"..");
 class Mock {
- constructor(tag){this.tagName=tag;this.children=[];this.attributes={};this.events={};this.className="";this.dataset={};this.value="";this.textContent="";}
+ constructor(tag){this.tagName=tag;this.children=[];this.attributes={};this.events={};this.className="";this.dataset={};this.style={};this.value="";this.textContent="";}
  append(...items){this.children.push(...items)}
  replaceChildren(...items){this.children=[...items]}
  setAttribute(k,v){this.attributes[k]=String(v);if(k==="class")this.className=String(v)}
