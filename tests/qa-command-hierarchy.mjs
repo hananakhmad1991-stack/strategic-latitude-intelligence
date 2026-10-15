@@ -46,7 +46,7 @@ for(const sector of ['minerals','ai']){
  assert.match(top.textContent,/Prabowo Subianto/);
  assert.equal(lanes.querySelectorAll('.sli-hier-domain').length,2,'Government and Danantara groups must be separately rendered');
  const fullPrivate=root.querySelector('.sli-hier-market');
- assert.ok(fullPrivate.querySelector('.sli-hier-domain.private'),'Private sector must be an independent section');
+ assert.ok(fullPrivate.querySelectorAll('.sli-hier-domain').some(x=>x.className.includes('private')),'Private sector must be an independent section');
  const divisions=fullPrivate.querySelectorAll('.sli-hier-market-class');
  assert.equal(divisions.length,3,'Domestic, foreign and mixed JV must be separately grouped');
  const coord=nodes.find(x=>x.id==='kemenkohilir');
