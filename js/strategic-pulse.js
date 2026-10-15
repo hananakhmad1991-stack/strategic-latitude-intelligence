@@ -56,7 +56,7 @@ function signalRows(d){
    if(!e.title||!validUrl(e.url)||!dateOnly(dt))continue;
    const timestamp=Date.parse(dt),future=Number.isFinite(timestamp)&&timestamp>Date.now()+86400000;
    if(future)continue;
-   rows.push({title:e.title,url:e.url,publisher:e.publisher||tr("Publisher unknown","Penerbit tidak diketahui"),date:dt,type,topic:e[field]||"",note:e[tag]||""});
+   const topic=String(e[field]||"");const techRelated=/\b(AI|data[ -]?cent(?:er|re)|cloud|comput(?:e|ing)|semiconductor|chip|digital|technology|teknologi|kecerdasan buatan|pusat data)\b/i.test(topic+" "+e.title);const category=(type==="investment"&&techRelated)?"technology":type;rows.push({title:e.title,url:e.url,publisher:e.publisher||tr("Publisher unknown","Penerbit tidak diketahui"),date:dt,type:category,topic,note:e[tag]||""});
   }
  };
  add(d.domestic?.reports,"energy","channel","claim_status");
@@ -69,12 +69,12 @@ function renderSignals(root,rows,feeds){
  root.append(dom("h3","sp-panel-title",tr("Monitoring signals","Sinyal pemantauan")));
  root.append(dom("p","sp-panel-sub",tr("Source-attributed headlines for investigation, NOT verified incidents or confirmed trades.","Judul berita bersumber untuk diperiksa, BUKAN insiden terverifikasi atau transaksi pasti.")));
  const bar=dom("div","sp-filter-bar"),list=dom("div","sp-signals"),meta=dom("p","sp-panel-sub");
- const options=[["all",tr("All","Semua")],["energy",tr("Energy","Energi")],["investment",tr("Investment","Investasi")],["geopolitics",tr("Geopolitics","Geopolitik")]];
+ const options=[["all",tr("All","Semua")],["energy",tr("Energy","Energi")],["investment",tr("Investment","Investasi")],["technology",tr("AI & Technology","AI & Teknologi")],["geopolitics",tr("Geopolitics","Geopolitik")]];
  let category="all";
  function draw(){
   [...bar.children].forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.type===category)));
   list.replaceChildren();
-  const selection=rows.filter(r=>category==="all"||r.type===category).slice(0,5);
+  const selection=rows.filter(r=>category==="all"||r.type===category).slice(0,category==="all"?7:6);
   if(!selection.length)list.append(dom("p","sp-panel-sub",tr("No eligible, dated headlines in this saved snapshot.","Belum ada judul berita bertanggal yang memenuhi kriteria pada snapshot tersimpan.")));
   for(const row of selection){
    const item=dom("article","sp-signal");
