@@ -92,6 +92,7 @@ function buildTransition(root,d){
  dom("p","Regional RUED execution and project commissioning determine how national plans translate into delivered outcomes. Before revising assessments, validate plant COD, network integration and energy-mix definitions."));
 }
 function buildDomestic(root,d){
+ root.setAttribute("data-sli-no-translate","");
  root.replaceChildren();
  h(root,"Indonesia Domestic Energy & Environmental Intelligence","RSS-based source discovery · scheduled every 3 hours");
  warning(root,"Latest reports are attributed news leads, not independently verified outage, scarcity, wildfire or commissioned-project claims. Automated impact notes are conditional analysis and need original-source confirmation.");
@@ -156,4 +157,8 @@ window.initSLITransition=async function(){
  for(const x of [rued,transition])if(x)x.textContent="NZE / RUED dataset temporarily unavailable; original Energy Security monitor remains accessible.";
  }
 };
+document.addEventListener("sli:languagechange",()=>{
+ const root=document.getElementById("domesticRadarRoot");
+ if(root)buildDomestic(root);
+});
 })();
