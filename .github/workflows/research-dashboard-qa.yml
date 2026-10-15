@@ -4,6 +4,10 @@ on:
     paths:
       - 'index.html'
       - 'js/research-chapters.js'
+      - 'js/source-data-bridge.js'
+      - 'css/source-data-bridge.css'
+      - 'data/cross-source-policy-2026.json'
+      - 'tests/qa-cross-source-evidence.mjs'
       - 'js/smelter-cohort-reconciliation.js'
       - 'css/smelter-cohort-reconciliation.css'
       - 'data/strategic-map-smelter-2026.json'
@@ -56,6 +60,8 @@ jobs:
       - name: Compile and render both specialist modules
         run: |
           node tests/qa-research-dashboard.mjs
+          node --check js/source-data-bridge.js
+          node tests/qa-cross-source-evidence.mjs
           node --check js/smelter-cohort-reconciliation.js
           node tests/qa-smelter-cohort-reconciliation.mjs
           node --check js/research-signal-radar.js
