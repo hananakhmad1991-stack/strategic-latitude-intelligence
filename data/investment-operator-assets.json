@@ -12,7 +12,11 @@
       "Blank or unknown fields mean not independently documented, NOT zero.",
       "Company cumulative vehicle production is not current-year sales, and plant total nameplate vehicles/year is not BEV-only output.",
       "Mandated national biodiesel volume is a government allocation, not realized deliveries by a named biodiesel manufacturer.",
-      "Green Book loans are planned financing access, not disbursed company CAPEX; upstream geothermal resource permits differ from electric power PPAs."
+      "Green Book loans are planned financing access, not disbursed company CAPEX; upstream geothermal resource permits differ from electric power PPAs.",
+      "Nuclear is classified as 'New Energy', not renewable energy; site-evaluation approval is not a siting, construction or operating licence.",
+      "Pumped storage is electricity storage (grid consumption while pumping), not additional net renewable energy production.",
+      "RUPTL 2025–2034 incremental technology plans, project design MW and operational power are different time/status measures.",
+      "Hydro MW and solar PV MWp are different ratings, and historical contract tariffs should not be presented as current spot power prices."
     ]
   },
   "records": [
@@ -716,6 +720,219 @@
       "investment": null,
       "notes": "BMW Indonesia shop and official 2026 price document identify iX1, i4, i5, iX and other EV offerings. Does not prove local manufacturing, annual sales or CAPEX.",
       "secondary_source": "https://www.bmw.co.id/content/dam/bmw/marketID/bmw_co_id/Brochures/pdf/BMW_PriceAnnouncement_NIK25_January2026.pdf.asset.1767777539561.pdf"
+    },
+    {
+      "id": "solar-ikn-50",
+      "sector": "Solar PV",
+      "asset": "IKN Solar Power Plant, 50 MW",
+      "operator": "PT Nusantara Sembcorp Solar Energi (PLN Nusantara Renewables / Sembcorp Utilities)",
+      "region": "Sepaku, Penajam Paser Utara, East Kalimantan",
+      "stage": "Operational",
+      "source_url": "https://www.plnnusantarapower.co.id/media-relation/press-release/plts-ikn-50-mw-mulai-beroperasi-pln-nusantara-power-dukung-swasembada-energi-nasional",
+      "affiliation": "Indonesia — PLN Nusantara Power / PLN group; Singapore — Sembcorp",
+      "legal": "Solar IPP/JV and clean electricity supply to IKN. No specific current PPA expiry independently documented.",
+      "contract_end": null,
+      "capacity": {
+        "value": 50,
+        "unit": "MW",
+        "label": "PLTS IKN operating solar nameplate capacity; PLN NP company announced operation, not 50 MW of constant generation",
+        "source_url": "https://www.plnnusantarapower.co.id/media-relation/press-release/plts-ikn-50-mw-mulai-beroperasi-pln-nusantara-power-dukung-swasembada-energi-nasional"
+      },
+      "investment": {
+        "amount": 900,
+        "unit": "IDR billion",
+        "basis": "OIKN-reported 2025 NSSE project investment, not independently audited cash CAPEX",
+        "source_url": "https://www.ikn.go.id/storage/press-release/2025/20251128-siaran-pers-tandatangani-kerja-sama-dengan-pt-nsse%2C-otorita-ikn-siap-percepat-optimalisasi-penggunaan-energi-bersih.pdf"
+      },
+      "notes": "Do not treat annual expected 92.8 million kWh as metered FY2026 generation. Direct JV ownership percentages and PPA maturity require separate primary documents."
+    },
+    {
+      "id": "hydro-cirata-1008",
+      "sector": "Hydropower & Storage",
+      "asset": "PLTA Cirata Hydropower (separate from floating solar)",
+      "operator": "PT PLN Nusantara Power",
+      "region": "Cirata Reservoir, West Java",
+      "stage": "Operational",
+      "source_url": "https://www.plnnusantarapower.co.id/media-relation/press-release/dewan-energi-nasional-apresiasi-langkah-pln-np-kembangkan-energi-hybrid-cirata",
+      "affiliation": "Indonesia — PLN group",
+      "legal": "Hydropower operating asset; not interchangeable with independently managed Cirata 192 MWp floating PV.",
+      "capacity": {
+        "value": 1008,
+        "unit": "MW",
+        "label": "Operational hydropower installed capacity; excludes 192 MWp floating solar PV",
+        "source_url": "https://www.plnnusantarapower.co.id/media-relation/press-release/dewan-energi-nasional-apresiasi-langkah-pln-np-kembangkan-energi-hybrid-cirata"
+      },
+      "notes": "One reservoir complex but separate hydro and solar capacities; do not aggregate MW AC with MWp DC without conversion criteria."
+    },
+    {
+      "id": "hydro-poso-515",
+      "sector": "Hydropower & Storage",
+      "asset": "PLTA Poso Peaker (combined phase portfolio)",
+      "operator": "PT Poso Energy",
+      "region": "Poso, Central Sulawesi",
+      "stage": "Operational",
+      "source_url": "https://www.esdm.go.id/en/media-center/news-archives/presiden-joko-widodo-resmikan-plta-di-kabupaten-poso",
+      "affiliation": "Indonesia — Kalla Group, identified by government as Poso energy investor",
+      "legal": "IPP PPA: ESDM described BOOT 30-year contract (2018 source); company-specific execution and actual expiration date not independently verified.",
+      "contract_end": null,
+      "contract_end_status": "ESDM 2018 press statement says 30-year BOOT; exact effective and expiry dates must be checked against executed PPA.",
+      "capacity": {
+        "value": 515,
+        "unit": "MW",
+        "label": "Government-confirmed operating PLTA Poso capacity on 2022 inauguration; 195MW old units plus extensions",
+        "source_url": "https://www.esdm.go.id/en/media-center/news-archives/presiden-joko-widodo-resmikan-plta-di-kabupaten-poso"
+      },
+      "investment": {
+        "amount": 820.1,
+        "unit": "USD million",
+        "basis": "ESDM's 2018 total estimated PLTA Poso project investment; NOT later audited actual capital spent",
+        "source_url": "https://www.esdm.go.id/en/berita-unit/directorate-general-of-electricity/wapres-kunjungi-plta-poso"
+      },
+      "notes": "Do not assign the 2018 contracted 1,669 GWh/year to realized 2025 output; PPA and generation remain distinct."
+    },
+    {
+      "id": "hydro-malea-90",
+      "sector": "Hydropower & Storage",
+      "asset": "PLTA Malea Hydropower",
+      "operator": "PT Malea Energy",
+      "region": "Tana Toraja, South Sulawesi",
+      "stage": "Operational",
+      "source_url": "https://www.esdm.go.id/id/berita-unit/direktorat-jenderal-ketenagalistrikan/presiden-jokowi-resmikan-plta-poso-energy-dan-malea-energy",
+      "affiliation": "Indonesia — Kalla Group, identified as regional hydropower developer in ESDM release",
+      "legal": "IPP PLN PPA signed 2015 per ESDM release; full executed PPA tenor and expiry unknown.",
+      "capacity": {
+        "value": 90,
+        "unit": "MW",
+        "label": "Operational 2 × 45 MW per ESDM, commissioned 2021 and inaugurated 2022",
+        "source_url": "https://www.esdm.go.id/id/berita-unit/direktorat-jenderal-ketenagalistrikan/presiden-jokowi-resmikan-plta-poso-energy-dan-malea-energy"
+      },
+      "notes": "No latest annually metered GWh or verified final project capex in selected ESDM release."
+    },
+    {
+      "id": "hydro-batangtoru-510",
+      "sector": "Hydropower & Storage",
+      "asset": "PLTA Batang Toru, run-of-river peaking plant",
+      "operator": "PT North Sumatra Hydro Energy (NSHE)",
+      "region": "South Tapanuli, North Sumatra",
+      "stage": "Under construction",
+      "source_url": "https://nshe.co.id/en/",
+      "affiliation": "Indonesia project company; upstream shareholder country of origin not independently established in selected operator release",
+      "legal": "Hydropower development; signed project PPA and concession expiry not confirmed here.",
+      "capacity": {
+        "value": 510,
+        "unit": "MW",
+        "label": "Planned full project installed capacity with daily pondage; zero MW of confirmed commercial operation in selected records",
+        "source_url": "https://nshe.co.id/en/capacity-technology/"
+      },
+      "notes": "Company's August 2026 update describes recovery after major flood and accelerated completion. Monitor flood exposure, environmental reviews, commissioning and power delivery separately."
+    },
+    {
+      "id": "storage-cisokan-1040",
+      "sector": "Hydropower & Storage",
+      "asset": "Upper Cisokan Pumped Storage (grid flexibility)",
+      "operator": "PT PLN (Persero)",
+      "region": "West Bandung and Cianjur, West Java",
+      "stage": "Under construction",
+      "source_url": "https://www.aiib.org/en/projects/details/2022/_download/indonesia/AIIB-P000512-Indonesia-Development-of-Pumped-Storage-Hydropower-in-Java-Bali-System.pdf",
+      "affiliation": "Indonesia — PLN; multilateral finance from World Bank / AIIB (not equity owners)",
+      "legal": "Pumped storage as energy-storage infrastructure; pumping uses purchased grid electricity, not a net-primary renewable-generation resource.",
+      "capacity": {
+        "value": 1040,
+        "unit": "MW",
+        "label": "Planned full pump-storage turbine generation capacity, not operational and NOT 1,040 MW renewable generation added",
+        "source_url": "https://documents1.worldbank.org/curated/en/844471635952134217/pdf/Indonesia-Development-of-Pumped-Storage-Hydropower-in-the-Java-Bali-Project.pdf"
+      },
+      "notes": "World Bank/AIIB loan amounts are finance facilities, not audited actual project CAPEX or private FDI; monitor construction, water and environmental safeguards and COD."
+    },
+    {
+      "id": "minihydro-ketaun3-10",
+      "sector": "Hydropower & Storage",
+      "asset": "PLTM Ketaun 3 small hydro (3 units)",
+      "operator": "PT Ketaun Hidro Energi",
+      "region": "Bengkulu",
+      "stage": "Operational",
+      "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2025.pdf",
+      "affiliation": "Indonesia project SPV, ultimate corporate ownership/foreign investor affiliation not verified",
+      "legal": "PLTM operator identified in ESDM 2025 annual capacity addition register; source does not identify PPA expiry.",
+      "capacity": {
+        "value": 9.99,
+        "unit": "MW",
+        "label": "Three units × 3.33 MW recorded in 2025 ESDM newly installed capacity table; not annual production",
+        "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2025.pdf"
+      },
+      "notes": "Total 9.99 MW calculated from three distinct 3.33MW units in ESDM report; no confirmed annual output, PPA price or SPV shareholders."
+    },
+    {
+      "id": "wind-sidrap-75",
+      "sector": "Wind",
+      "asset": "PLTB Sidrap — commercial wind IPP",
+      "operator": "Project partnership originally UPC Renewables / AC Energy",
+      "region": "Sidrap, South Sulawesi",
+      "stage": "Operational",
+      "source_url": "https://upcrenewables.com/projects/sidrap",
+      "affiliation": "Indonesia site; international development partners UPC Renewables and Philippines — AC Energy (Ayala group) in historical source",
+      "legal": "Wind IPP feeding southern Sulawesi PLN grid; PPA expiry and latest legal share register not verified.",
+      "capacity": {
+        "value": 75,
+        "unit": "MW",
+        "label": "30 × 2.5 MW wind turbines operating from 2018; capacity is not average dispatch",
+        "source_url": "https://upcrenewables.com/projects/sidrap"
+      },
+      "notes": "Developer site identifies original AC Energy partnership; current project company direct and ultimate shareholders require registry review."
+    },
+    {
+      "id": "wind-tolo-72",
+      "sector": "Wind",
+      "asset": "PLTB Tolo 1 / Jeneponto commercial wind IPP",
+      "operator": "PT Energi Bayu Jeneponto / Vena Energy development",
+      "region": "Jeneponto, South Sulawesi",
+      "stage": "Operational",
+      "source_url": "https://www.esdm.go.id/en/media-center/arsip-berita/pltb-tolo-sukses-beroperasi-komersial-tahap-ii-siap-dikembangkan",
+      "affiliation": "Indonesia project company; Vena Energy regional developer with Singapore HQ history",
+      "legal": "IPP PLN power purchase agreement signed 14 Nov 2016, disclosed tariff 10.89 US cents/kWh; PPA expiry not independently verified.",
+      "capacity": {
+        "value": 72,
+        "unit": "MW",
+        "label": "20 × 3.6 MW, commercial operation since 14 May 2019 according to ESDM",
+        "source_url": "https://www.esdm.go.id/en/media-center/arsip-berita/pltb-tolo-sukses-beroperasi-komersial-tahap-ii-siap-dikembangkan"
+      },
+      "investment": {
+        "amount": 160.7,
+        "unit": "USD million",
+        "basis": "ESDM's February 2018 project investment estimate, not audited completed CAPEX",
+        "source_url": "https://www.esdm.go.id/id/media-center/news-archives/tolo-i-jeneponto-pembangkit-listrik-tenaga-angin-terbesar-kedua-progress-capai-65"
+      },
+      "notes": "ESDM confirmed actual COD May 2019. Historical PPA tariff is not a present market-clearing wholesale rate."
+    },
+    {
+      "id": "nuclear-thorcon-kelasa",
+      "sector": "Nuclear (New Energy)",
+      "asset": "Thorcon 500 / TMSR500 — Kelasa Island prospective NPP",
+      "operator": "PT Thorcon Power Indonesia",
+      "region": "Kelasa Island, Central Bangka, Bangka Belitung",
+      "stage": "Site evaluation approval",
+      "source_url": "https://bapeten.go.id/berita/siaran-pers-bapeten-terbitkan-persetujuan-evaluasi-tapak-pltn-di-pulau-kelasa-kepulauan-bangka-belitung-112749?lang=en",
+      "affiliation": "Indonesia-registered project proponent; technology sponsor Thorcon; ultimate BO and funding origin not independently verified",
+      "legal": "BAPETEN Decision 00003.556.1.300725 dated 30 July 2025: APPROVAL TO EVALUATE SITE, NOT construction, commissioning, operating license, or RUPTL PPA.",
+      "capacity": {
+        "value": 500,
+        "unit": "MWe",
+        "label": "Proposed Thorcon 500 molten-salt reactor capacity, NOT existing or construction-permitted Indonesian PLTN capacity",
+        "source_url": "https://bapeten.go.id/berita/siaran-pers--evaluasi-permohonan-persetujuan-evaluasi-tapak-pembangkit-listrik-tenaga-nuklir-di-pulau-kelasa-111318"
+      },
+      "notes": "No verified commercial Indonesian nuclear generating capacity. Thorcon proposal is NOT necessarily identical to the RUPTL 500 MW across two power systems; do not sum. Safety and environmental licensing are stage-gated."
+    },
+    {
+      "id": "nuclear-pln-khnp",
+      "sector": "Nuclear (New Energy)",
+      "asset": "PLN–KHNP small modular reactor pre-feasibility cooperation",
+      "operator": "PT PLN (Persero) · Korea Hydro & Nuclear Power (KHNP)",
+      "region": "Indonesia — site unspecified",
+      "stage": "MoU only",
+      "source_url": "https://web.pln.co.id/cms/media/siaran-pers/2023/12/dari-akselerasi-ebt-hingga-pensiun-dini-pltu-pln-berhasil-jaring-14-kerja-sama-global-dalam-cop28/",
+      "affiliation": "Indonesia PLN; Republic of Korea — KHNP",
+      "legal": "2023 cooperation / pre-feasibility agreement, not approved reactor construction, financial close, land licence, or nuclear operation permit.",
+      "notes": "No independently verified project site, module power, offtake contract term or capital subscription. Keep listed as exploratory cooperation."
     }
   ],
   "macro_sector_benchmarks": [
@@ -755,5 +972,48 @@
       "classification": "PGE company-wide electricity output, not single asset capacity or Indonesia national generation",
       "source_url": "https://pge.pertamina.com/id/siaran-pers/performa-bisnis-kuartal-i-2026-menguat-tiga-proyek-panas-bumi-pge-raih-dukungan-pendanaan-internasional-hingga-us477-87-juta"
     }
-  ]
+  ],
+  "ruplt_2025_2034": {
+    "plan_window": "2025–2034",
+    "publication_date": "2025-05-26",
+    "planning_not_operational": true,
+    "total_new_generation_GW": 69.5,
+    "capacity_GW": [
+      {
+        "technology": "Solar PV",
+        "value": 17.1
+      },
+      {
+        "technology": "Hydropower (new conventional)",
+        "value": 11.7
+      },
+      {
+        "technology": "Wind",
+        "value": 7.2
+      },
+      {
+        "technology": "Geothermal",
+        "value": 5.2
+      },
+      {
+        "technology": "Nuclear (NEW energy, not renewable)",
+        "value": 0.5
+      },
+      {
+        "technology": "Bioenergy",
+        "value": 0.9
+      },
+      {
+        "technology": "Pumped storage (storage not net generation)",
+        "value": 4.3
+      },
+      {
+        "technology": "Battery energy storage (storage not generation)",
+        "value": 6
+      }
+    ],
+    "source_url": "https://gatrik.esdm.go.id/assets/uploads/download_index/files/06524-bahan-dirut-pln.pdf",
+    "explanation": "RUPTL planned additional capacities by technology. These are not current installed capacity or signed contracts. Solar PV MW, floating solar MWp, pumped storage MW and nuclear MWe are not directly additive as homogeneous generation."
+  },
+  "nuclear_status_note": "Indonesia nuclear power: no independently verified commercial nuclear electric generating plant is operating as of the source-date snapshot. The RUPTL 500 MW proposal and Thorcon 500 MWe licensing-stage plan are separate references; do not interpret either as built capacity."
 }
