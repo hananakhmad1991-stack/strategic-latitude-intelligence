@@ -439,19 +439,19 @@
       "group": "PLTU",
       "technology": "PLTU",
       "asset": "PLTU · Bengkulu IPP coal-fired plant",
-      "region": "Bengkulu",
-      "operator": "PT Tenaga Listrik Bengkulu / IPP (current operator verification pending)",
-      "stage": "Named in PLN regional dispatch 2024, latest status not confirmed",
-      "source_url": "https://web.pln.co.id/statics/uploads/2024/07/AR-PLN-2023-final_compressed.pdf",
-      "source_vintage": "2023 PLN annual regional generation inventory",
+      "region": "Teluk Sepang, Pulau Baai, Kota Bengkulu, Bengkulu",
+      "operator": "PT Tenaga Listrik Bengkulu · IPP",
+      "stage": "Commercial operation 26 March 2020 (ESDM performance report)",
+      "source_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ketenagalistrikan-2020.pdf",
+      "source_vintage": "2020 ESDM official project performance report; 2025 ESDM vital installation comparison",
       "evidence_date": null,
       "capacity": {
         "value": 200,
         "unit": "MW",
-        "scope": "Published nameplate, not annual generation or actual utilized output"
+        "scope": "Historic ESDM 2020 documented 2 × 100 MW; separate ESDM 2025 facility list 2 × 115 MW; do not reconcile without nameplate/net definitions."
       },
       "investment_amount": null,
-      "notes": "Bengkulu IPP documented in energy dispatch operator materials; location Bengkulu confirmed. Specific operator assignment and current generation require independent 2026 verification. Capacity is approximate nominal and retained as reference only.",
+      "notes": "ESDM 2020 performance report confirms COD 26 March 2020 and labels 2 × 100 MW. ESDM 2025 Obvitnas list instead gives 2 × 115 MW, reflecting an incompatible facility-rating basis; use 200 MW as source-dated 2020 project net/contract reference, NOT 2025 gross plant capacity or a new investment.",
       "ownership_scope": "PLN Group/IPP contract distinction and parent-campus overlaps require careful reading",
       "related_existing_record": null,
       "project_investment_status": "No project-specific realized investment imputed"
