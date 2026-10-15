@@ -54,6 +54,107 @@ const TYPE_GROUPS={
  "Electric Vehicles":"EV & Batteries","AI / Data Center":"Digital / AI","AI infrastructure":"Digital / AI",
  "Energy":"Energy (mixed)","Other":"Other"
 };
+
+/* Public-facing taxonomy is independent of raw registry layer names. No source records are deleted. */
+const SECTORS=[
+ ["Oil & Gas","Migas"],["Coal Mining","Pertambangan Batubara"],["Minerals & Metals","Mineral & Logam"],
+ ["Power Generation","Pembangkit Listrik"],["Biofuels & Bioenergy","Biofuel & Bioenergi"],
+ ["Digital & AI","Digital & AI"],["EV & Batteries","Kendaraan Listrik & Baterai"],
+ ["Nuclear & New Energy","Nuklir & Energi Baru"],["Other / Cross-sector","Lainnya / Lintas Sektor"]
+];
+const ASSET_TRANSLATIONS={
+ "WK / PSC & Upstream Fields":"WK / PSC & Lapangan Hulu",
+ "Oil Refinery":"Kilang Minyak",
+ "LNG / Gas Facilities":"Fasilitas LNG / Gas",
+ "CCS / CCUS Project":"Proyek CCS / CCUS",
+ "Other Oil & Gas":"Migas Lainnya",
+ "Coal Mine & Logistics":"Tambang Batubara & Logistik",
+ "Mineral Mine & Exploration":"Tambang & Eksplorasi Mineral",
+ "Smelter & Metal Refining":"Smelter & Pemurnian Logam",
+ "Mineral / Battery Materials Project":"Proyek Bahan Mineral / Baterai",
+ "PLTU · Coal Steam":"PLTU · Uap Batubara",
+ "PLTG / PLTGU / Gas IPP":"PLTG / PLTGU / IPP Gas",
+ "PLTD / Diesel":"PLTD / Diesel",
+ "PLTA · Hydropower":"PLTA · Hidro",
+ "PLTM / PLTMH · Small Hydro":"PLTM / PLTMH · Hidro Kecil",
+ "PLTP · Geothermal":"PLTP · Panas Bumi",
+ "PLTS · Solar":"PLTS · Surya",
+ "PLTB · Wind":"PLTB · Bayu",
+ "Energy Storage":"Penyimpanan Energi",
+ "Other Power Projects":"Proyek Pembangkit Lainnya",
+ "Biodiesel / FAME Plant":"Pabrik Biodiesel / FAME",
+ "Bioenergy / Feedstock":"Bioenergi / Bahan Baku",
+ "Physical Data Centre":"Pusat Data Fisik",
+ "Cloud Region / Services":"Region Cloud / Layanan",
+ "AI Programme / Agreement":"Program / Kesepakatan AI",
+ "EV Factory / Assembly":"Pabrik / Perakitan EV",
+ "Battery Supply Chain":"Rantai Nilai Baterai",
+ "Nuclear Proposal / Development":"Rencana / Pengembangan Nuklir",
+ "Cross-sector Project":"Proyek Lintas Sektor"
+};
+const sectorLabel=s=>{const x=SECTORS.find(z=>z[0]===s);return x?label(x[0],x[1]):s};
+const assetLabel=s=>label(s,ASSET_TRANSLATIONS[s]||s);
+function classifyRecord(r){
+ const rawSector=String(r.sector||"").toLowerCase(),rawGroup=String(r.group||"").toLowerCase();
+ const name=String(r.name||"").toLowerCase(),id=String(r.id||"").toLowerCase();
+ const words=rawSector+" "+rawGroup+" "+name;
+ const result=(sector,type)=>({sector,type});
+ let c;
+ if(r.kind==="refineries"||rawSector==="oil refining"||(/\b(refinery|kilang minyak|rdmp)\b/.test(name)&&!/biodiesel|fame|smelter|nickel|copper/.test(words))){
+  c=result("Oil & Gas","Oil Refinery");
+ }else if(r.kind==="power"||r.kind==="pltu"||/^(coal power|gas-fired power|renewable power)$/.test(rawSector)||rawGroup==="fossil power"||rawGroup==="renewables"||["solar pv","geothermal","hydropower & storage","wind","renewable energy"].includes(rawSector)){
+  let type="Other Power Projects",tech=String(r.group||"").toUpperCase();
+  if(r.kind==="pltu"||/PLTU/.test(tech+" "+r.name)||rawSector==="coal power")type="PLTU · Coal Steam";
+  else if(/PLTGU|PLTG|GAS IPP|PLTMG/.test(tech+" "+r.name)||rawSector==="gas-fired power")type="PLTG / PLTGU / Gas IPP";
+  else if(/PLTD/.test(tech))type="PLTD / Diesel";
+  else if(/PLTMH|PLTM\b/.test(tech+" "+r.name))type="PLTM / PLTMH · Small Hydro";
+  else if(/PLTA/.test(tech+" "+r.name)||/hydropower/.test(words))type="PLTA · Hydropower";
+  else if(/PLTP/.test(tech+" "+r.name)||/geothermal/.test(words))type="PLTP · Geothermal";
+  else if(/PLTS/.test(tech+" "+r.name)||/solar|pv\b/.test(words))type="PLTS · Solar";
+  else if(/PLTB\b/.test(tech+" "+r.name)||/wind/.test(words))type="PLTB · Wind";
+  else if(/storage|bess|battery energy/.test(words))type="Energy Storage";
+  c=result("Power Generation",type);
+ }else if(r.kind==="digital"||/ai\s*(\/|&)\s*data center|ai infrastructure|digital\s*\/\s*ai/.test(words)||/cloud region|data cent(re|er)|hyperscale|cloud infrastructure|digital programme/.test(name)){
+  c=result("Digital & AI",/cloud region|aws asia pacific|indonesia central/.test(name)?"Cloud Region / Services":/mou|cooperation|programme|program|proposal/.test(name)?"AI Programme / Agreement":"Physical Data Centre");
+ }else if(r.kind==="industry"&&/biodiesel/.test(rawGroup)||/biofuels|bioenergy|biodiesel|fame/.test(rawSector+" "+rawGroup)||/\bbiodiesel\b|\bfame\b/.test(name)){
+  c=result("Biofuels & Bioenergy",/biodiesel|\bfame\b/.test(name+rawGroup)?"Biodiesel / FAME Plant":"Bioenergy / Feedstock");
+ }else if(r.kind==="industry"&&/smelter|processing/.test(rawGroup)||r.kind==="sites"&&rawGroup==="processing"||/smelters|critical minerals|^minerals$/.test(rawSector)||/smelter|metal refin|ferronickel|alumina/.test(name)){
+  c=result("Minerals & Metals",/smelt|processing|refin|matte|ferronickel|alumina|npi|hpal|rkef/.test(name+" "+rawGroup)?"Smelter & Metal Refining":/battery|ecosystem|downstream/.test(name)?"Mineral / Battery Materials Project":"Mineral Mine & Exploration");
+ }else if(rawSector==="coal"||rawGroup==="coal"||/coal mining/.test(words)){
+  c=result("Coal Mining","Coal Mine & Logistics");
+ }else if(rawSector==="oil & gas"||r.kind==="wk"||/wk migas|gas fields\s*\/\s*lng|oil & gas/.test(words)){
+  const type=/refiner|kilang minyak|rdmp/.test(name)?"Oil Refinery":
+   /\bccs\b|\bccus\b|\bucc\b/.test(name)&&!/lng/.test(name)?"CCS / CCUS Project":
+   /\blng\b|\bgas processing\b|\bgas treatment\b/.test(name)?"LNG / Gas Facilities":
+   r.kind==="wk"||/(\bwk\b|\bpsc\b|offshore|upstream|block|field|lapangan)/.test(name+rawGroup)?"WK / PSC & Upstream Fields":"Other Oil & Gas";
+  c=result("Oil & Gas",type);
+ }else if(/electric vehicles|ev & batteries|battery/.test(words)){
+  c=result("EV & Batteries",/battery|baterai|cathode|anode/.test(name)?"Battery Supply Chain":"EV Factory / Assembly");
+ }else if(/nuclear|pltn/.test(words)){
+  c=result("Nuclear & New Energy","Nuclear Proposal / Development");
+ }else if(/\benergy\b/.test(words)&&!/mineral/.test(words)){
+  c=result("Other / Cross-sector","Cross-sector Project");
+ }else{
+  c=result("Other / Cross-sector","Cross-sector Project");
+ }
+ r.sourceGroup=r.group;
+ r.sectorKey=c.sector;r.assetType=c.type;
+ const status=String(r.stage||"").toLowerCase();
+ r.phase=/historical|revalidat|current status unknown|status unverified|earlier roster|historic/.test(status)?"Historical / Verify":
+  /under construction|construction|commissioning|ramp.up|development ongoing|physical works|groundbreaking/.test(status)?"Construction / Testing":
+  /explor|discovery|offered|tender|survey|preliminary|study/.test(status)?"Exploration / Study":
+  /operat|in service|producing|production|existing|installed|commercial|commissioned|inaugurated|first gold pour/.test(status)?"Operational / Reported":
+  /mou|agreement|planned|proposal|announced|fid|power purchase|contract award|pipeline|phased|development|signed|financ/.test(status)?"Planned / Agreed":
+  "Status / Verify";
+ return r;
+}
+const PHASE_LABELS={
+ "Operational / Reported":"Beroperasi / Dilaporkan","Construction / Testing":"Konstruksi / Pengujian",
+ "Planned / Agreed":"Direncanakan / Kesepakatan","Exploration / Study":"Eksplorasi / Kajian",
+ "Historical / Verify":"Historis / Perlu Verifikasi","Status / Verify":"Status / Perlu Verifikasi"
+};
+const phaseLabel=s=>label(s,PHASE_LABELS[s]||s);
+
 const node=(tag,cls,txt)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(txt!==undefined&&txt!==null)x.textContent=String(txt);return x};
 const snode=(tag,attrs)=>{const x=document.createElementNS(SVG,tag);for(const [k,v] of Object.entries(attrs||{}))x.setAttribute(k,String(v));return x};
 const label=(en,id)=>window.SLIi18n?.language==="id"?id:en;
@@ -179,7 +280,8 @@ function mapPage(root,data){
  const allAssets=records("assets",data),allProjects=records("projects",data),allRefineries=records("refineries",data),allSites=records("sites",data);
  const allWk=records("wk",data),allPltu=records("pltu",data),allPower=[...records("power",data),...allPltu],allIndustry=records("industry",data),allRegional=records("regional",data),allDigital=records("digital",data);
  const allRows=[...allAssets,...allProjects,...allRefineries,...allSites,...allWk,...allPower,...allIndustry,...allRegional,...allDigital];
- const digitalRows=allRows.filter(r=>r.group==="Digital / AI"||r.sector==="AI / Data Center"||r.sector==="AI infrastructure");
+ allRows.forEach(classifyRecord);
+ const digitalRows=allRows.filter(r=>r.sectorKey==="Digital & AI");
  const counters=node("div","map-stats");
  const assetCount=allAssets.length,projectCount=allProjects.length,refineryCount=allRefineries.length,siteCount=allSites.length;
  for(const [name,val] of [
@@ -219,8 +321,9 @@ function mapPage(root,data){
   root.append(panel);
  }
  root.append(node("div","map-alert",label("ALL records contain different evidence vintages. PLTU Batang and newer IPP units are now indexed; a parent power plant and its units may both appear as dossiers. Kepulauan Riau displays SEPARATE approximate Batam and Natuna location markers; unverified Kepri localities are kept in province records only. Province/project counts are NOT unique power stations, capacity or expenditure.","SELURUH catatan berasal dari tahun bukti yang berbeda. PLTU Batang dan unit IPP yang lebih baru kini tercatat; satu kompleks dan unitnya bisa muncul sebagai beberapa dossier. Kepulauan Riau menampilkan penanda lokasi PERKIRAAN Batam dan Natuna secara terpisah; lokasi Kepri lain tanpa bukti kota tidak diberi penanda kota. Jumlah catatan bukan jumlah pembangkit unik, kapasitas, atau nilai investasi.")));
- const controls=node("div","map-controls"),kind=node("select","map-select"),group=node("select","map-select"),stage=node("select","map-select"),location=node("select","map-select"),provinceSelect=node("select","map-select"),search=node("input","map-search"),reset=node("button","map-btn",label("Reset filters","Reset filter"));
- kind.setAttribute("aria-label","Dataset layer");
+ const controls=node("div","map-controls"),kind=node("select","map-select"),group=node("select","map-select"),assetType=node("select","map-select"),stage=node("select","map-select"),location=node("select","map-select"),provinceSelect=node("select","map-select"),search=node("input","map-search"),reset=node("button","map-btn",label("Reset filters","Reset filter"));
+ kind.setAttribute("aria-label","Registry source (advanced)");
+ assetType.setAttribute("aria-label","Asset type filter");
  group.setAttribute("aria-label","Sector filter");
  stage.setAttribute("aria-label","Implementation stage filter");
  location.setAttribute("aria-label","Geographic coverage filter");
@@ -243,7 +346,12 @@ function mapPage(root,data){
  radioOptions(location,[["all",label("All: mapped & unlocated","Semua: terpetakan & tanpa lokasi")],["mapped",label("Province-mapped only","Hanya terpetakan")],["unlocated",label("Unlocated / multiple provinces","Tanpa lokasi / lintas provinsi")]]);
  radioOptions(provinceSelect,[["all",label("All provinces","Seluruh provinsi")],...geometry.map(f=>[f.properties.name,f.properties.name]).sort((a,b)=>a[1].localeCompare(b[1]))]);
  const ctrl=(caption,input,extra)=>{const l=node("label","map-control"+(extra||""));l.append(node("span",null,caption),input);return l};
- controls.append(ctrl(label("Dataset","Dataset"),kind),ctrl(label("Sector / technology","Sektor / teknologi"),group),ctrl(label("Implementation","Implementasi"),stage),ctrl(label("Province","Provinsi"),provinceSelect),ctrl(label("Geographic coverage","Cakupan geografis"),location),ctrl(label("Search","Pencarian"),search," map-search-row"),reset);root.append(controls);
+ controls.append(ctrl(label("1 · Sector","1 · Sektor"),group),ctrl(label("2 · Asset type","2 · Jenis aset"),assetType),
+ ctrl(label("3 · Project phase","3 · Tahapan proyek"),stage),ctrl(label("4 · Province","4 · Provinsi"),provinceSelect),
+ ctrl(label("Geographic accuracy","Akurasi lokasi"),location),ctrl(label("Search operator, asset, WK…","Cari operator, aset, WK…"),search," map-search-row"),reset);
+ root.append(controls);
+ const advanced=node("details","map-advanced");const advSummary=node("summary",null,label("Advanced · original data registry (optional)","Lanjutan · registri sumber asli (opsional)"));
+ advanced.append(advSummary,ctrl(label("Original registry · not an industry sector","Registri asal · bukan sektor industri"),kind));root.append(advanced);
  const shortcuts=node("div","map-digital-shortcuts"),shortLabel=node("span","map-short-label",label("DIGITAL / AI QUICK VIEW","TAMPILAN CEPAT DIGITAL / AI"));
  shortcuts.append(shortLabel);
  for(const [name,provinceName] of [
@@ -254,7 +362,7 @@ function mapPage(root,data){
   const b=node("button","map-btn map-digital-btn",name);b.type="button";
   b.addEventListener("click",()=>{
    currentPoint=null;currentKind="digital";kind.value="digital";currentProvince=provinceName==="all"?null:provinceName;
-   provinceSelect.value=provinceName;currentSector="all";currentStage="all";currentLocation="all";location.value="all";
+   provinceSelect.value=provinceName;currentSector="all";currentType="all";currentStage="all";currentLocation="all";location.value="all";
    lastQuery="";search.value="";filtersRebuild();draw();
   });
   shortcuts.append(b);
@@ -349,7 +457,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
  appendix.append(caveat);
  const countsText=node("p","map-muted");appendix.append(countsText);
  outside.append(summary,appendix);root.append(outside);
- let currentKind="all",currentProvince=null,currentKepriCluster=null,currentPoint=null,lastQuery="",currentSector="all",currentStage="all",currentLocation="all";
+ let currentKind="all",currentProvince=null,currentKepriCluster=null,currentPoint=null,lastQuery="",currentSector="all",currentType="all",currentStage="all",currentLocation="all";
  let viewport={x:0,y:0,w:W,h:H},drag=null,dragged=false;
  function setView(v){viewport=v;svg.setAttribute("viewBox",[v.x,v.y,v.w,v.h].join(" "))}
  function zoomAt(factor){const v=viewport,ratio=factor,uw=Math.max(250,Math.min(W*1.1,v.w*ratio)),uh=Math.max(110,Math.min(H*1.1,v.h*ratio));setView({x:v.x+(v.w-uw)/2,y:v.y+(v.h-uh)/2,w:uw,h:uh})}
@@ -363,11 +471,16 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
  const featureByName=new Map(geometry.map(f=>[f.properties.name,f]));
  function active(){return currentKind==="all"?allRows:currentKind==="digital"?digitalRows:currentKind==="assets"?allAssets:currentKind==="projects"?allProjects:currentKind==="sites"?allSites:currentKind==="wk"?allWk:currentKind==="power"?allPower:currentKind==="industry"?allIndustry:currentKind==="regional"?allRegional:allRefineries}
  function filtersRebuild(){
-  const rows=active(),groups=[...new Set(rows.map(x=>x.group))].sort(),stages=[...new Set(rows.map(x=>x.stage))].sort();
-  radioOptions(group,[["all",label("All sectors","Semua sektor")],...groups.map(x=>[x,x])]);
-  radioOptions(stage,[["all",label("All statuses","Semua status")],...stages.map(x=>[x,x])]);
-  if(!groups.includes(currentSector))currentSector="all";if(!stages.includes(currentStage))currentStage="all";
-  group.value=currentSector;stage.value=currentStage;
+  const rows=active(),groups=SECTORS.map(x=>x[0]).filter(x=>rows.some(r=>r.sectorKey===x));
+  if(!groups.includes(currentSector))currentSector="all";
+  const types=[...new Set(rows.filter(r=>currentSector==="all"||r.sectorKey===currentSector).map(r=>r.assetType))].sort();
+  if(!types.includes(currentType))currentType="all";
+  const phases=[...new Set(rows.filter(r=>(currentSector==="all"||r.sectorKey===currentSector)&&(currentType==="all"||r.assetType===currentType)).map(r=>r.phase))].sort();
+  if(!phases.includes(currentStage))currentStage="all";
+  radioOptions(group,[["all",label("All industries","Seluruh sektor")],...groups.map(x=>[x,sectorLabel(x)])]);
+  radioOptions(assetType,[["all",label("All asset types","Seluruh jenis aset")],...types.map(x=>[x,assetLabel(x)])]);
+  radioOptions(stage,[["all",label("All project phases","Seluruh tahapan proyek")],...phases.map(x=>[x,phaseLabel(x)])]);
+  group.value=currentSector;assetType.value=currentType;stage.value=currentStage;
  }
  const provinceAssociations=r=>[...new Set((Array.isArray(r.provinces)&&r.provinces.length?r.provinces:r.province?[r.province]:[]).filter(p=>featureByName.has(p)))];
  const gazetteer=(data.localityAnchors?.entries||[]).filter(p=>Number.isFinite(p.longitude)&&Number.isFinite(p.latitude)&&p.longitude>=94&&p.longitude<=142&&p.latitude>=-12&&p.latitude<=7);
@@ -391,8 +504,9 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
  
  const filtered=()=>active().filter(r=>{
   const mapped=provinceAssociations(r).length>0;
-  return (currentSector==="all"||r.group===currentSector)
-   &&(currentStage==="all"||r.stage===currentStage)
+  return (currentSector==="all"||r.sectorKey===currentSector)
+   &&(currentType==="all"||r.assetType===currentType)
+   &&(currentStage==="all"||r.phase===currentStage)
    &&(currentLocation==="all"||(currentLocation==="mapped"?mapped:!mapped))
    &&(currentAccuracy==="all"||accuracyOf(r)===currentAccuracy)
    &&(!lastQuery||[r.name,r.operator,r.region,r.province,...provinceAssociations(r),r.sector,r.stage,r.kind].join(" ").toLowerCase().includes(lastQuery));
@@ -497,7 +611,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    pinLayer.append(pin);
   }
   const chosen=base.filter(x=>(!currentProvince||provinceAssociations(x).includes(currentProvince))&&(!currentKepriCluster||currentProvince!=="Kepulauan Riau"||kepriCluster(x)===currentKepriCluster)&&(!currentPoint||currentPoint.split("|").includes(x.id)))
-   .sort((a,b)=>a.group.localeCompare(b.group)||a.name.localeCompare(b.name));
+   .sort((a,b)=>SECTORS.findIndex(s=>s[0]===a.sectorKey)-SECTORS.findIndex(s=>s[0]===b.sectorKey)||a.assetType.localeCompare(b.assetType)||a.name.localeCompare(b.name));
   const display=chosen; // Do not silently hide entries behind a 20-item list cap.
   const scopeName=currentKind==="all"?label("all saved source records","seluruh catatan bersumber"):currentKind==="assets"?label("operator assets","aset operator"):currentKind==="projects"?label("investment projects","proyek investasi"):currentKind==="sites"?label("mine and industrial sites","tambang dan fasilitas industri"):currentKind==="wk"?label("WK / upstream oil and gas","WK / hulu migas"):currentKind==="power"?label("fossil and renewable power plants","pembangkit fosil dan EBT"):currentKind==="industry"?label("biodiesel and smelter plants","pabrik biodiesel dan smelter"):currentKind==="regional"?label("regional cross-checks","pemeriksaan sumber regional"):currentKind==="digital"?label("Digital / AI (all registries)","Digital / AI (seluruh registri)"):label("refineries","kilang");
   heading.textContent=currentPoint?label("Selected coordinate cluster","Klaster koordinat terpilih"):currentProvince?(currentProvince+(currentKepriCluster?" · "+KEPRI_REFERENCES[currentKepriCluster].name:"")):label("Mapped evidence","Bukti terpetakan");
@@ -507,11 +621,15 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   info.textContent=label("Registry: ","Registri: ")+scopeName+" · "+display.length+" "+label("shown in list / ","ditampilkan / ")+base.length+" "+label("matching records · ","catatan cocok · ")+mapped.length+" "+label("province-mapped · ","terpetakan · ")+unmapped+" "+label("unlocated","tanpa lokasi");
   list.replaceChildren();
   if(!chosen.length)list.append(node("p","map-muted",label("No records match these filters or this province. Choose another province or reset filters.","Tidak ada catatan sesuai filter atau provinsi ini. Pilih provinsi lain atau reset filter.")));
-  let lastGroup="";
+  let lastGroup="",lastType="";
   for(const r of display){
-   if(r.group!==lastGroup){
-    list.append(node("div","map-group-label",r.group));
-    lastGroup=r.group;
+   if(r.sectorKey!==lastGroup){
+    list.append(node("div","map-group-label",sectorLabel(r.sectorKey)));
+    lastGroup=r.sectorKey;lastType="";
+   }
+   if(r.assetType!==lastType){
+    list.append(node("div","map-type-label",assetLabel(r.assetType)));
+    lastType=r.assetType;
    }
    const card=node("article","map-list-item");
    const layerName=r.kind==="projects"?label("Investment project","Proyek investasi"):r.kind==="refineries"?label("Refinery","Kilang"):r.kind==="sites"?label("Source-documented site (possibly overlapping)","Fasilitas bersumber (mungkin tumpang tindih)"):r.kind==="wk"?label("Upstream WK / field reference","Referensi WK / lapangan hulu"):r.kind==="power"?label("Power station / development record","Pembangkit / catatan pengembangan"):r.kind==="industry"?label("Industrial facility / supply point","Fasilitas industri / titik pasokan"):r.kind==="regional"?label("Verified regional project / PSC","Proyek / PSC sumber regional"):r.kind==="digital"?label("Physical Digital / AI data-center dossier","Dossier fasilitas fisik Digital / AI"):r.kind==="pltu"?label("PLN/ESDM-checked coal power dossier","Dossier PLTU pembanding PLN/ESDM"):label("Asset / operator","Aset / operator");
@@ -519,7 +637,8 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    const provinces=provinceAssociations(r);
    card.append(node("small",null,layerName+" · "+(provinces.length?provinces.join(" + ")+(provinces.length>1?" · MULTI-PROVINCE":""):label("UNLOCATED / MULTI-SITE","TANPA LOKASI / MULTILOKASI"))+" · "+dateName+": "+(r.date||label("not specified","tidak tersedia"))));
    card.append(node("h4",null,r.name));
-   const tags=node("div");for(const txt of [r.group,r.stage])tags.append(node("span","map-tag",txt));card.append(tags);
+   const tags=node("div");for(const txt of [sectorLabel(r.sectorKey),assetLabel(r.assetType),phaseLabel(r.phase)])tags.append(node("span","map-tag",txt));card.append(tags);
+   card.append(node("p","map-muted",label("Original evidence status: ","Status detail dari sumber: ")+(r.stage||label("Unspecified","Tidak tersedia"))));
    card.append(node("p",null,label("Operator / sponsor: ","Operator / investor: ")+(r.operator||label("Not identified","Tidak disebutkan"))));
    if(r.amount?.amount!=null)card.append(node("p",null,label("Reported amount: ","Nilai dilaporkan: ")+r.amount.unit+" "+fmt(r.amount.amount)+" · "+(r.amount.basis||label("basis not stated","basis tidak tercatat"))));
    if(r.region)card.append(node("p","map-muted",label("Source geography: ","Geografi bersumber: ")+r.region));
@@ -537,13 +656,14 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   list.append(node("p","map-muted",label("All matching records shown: ","Semua catatan yang cocok ditampilkan: ")+chosen.length+" · "+label("scroll this list or filter to browse","gulir daftar atau gunakan filter untuk menjelajah")));
   countsText.textContent=label("For this selection: ","Untuk pilihan ini: ")+base.length+label(" records, "," catatan, ")+mapped.length+label(" mapped, "," terpetakan, ")+unmapped+label(" unlocated. The map does not quantify realized investment value."," tanpa lokasi. Peta tidak menghitung total realisasi investasi.");
  }
- kind.addEventListener("change",()=>{currentPoint=null;currentKind=kind.value;currentSector="all";currentStage="all";currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";filtersRebuild();draw()});
+ kind.addEventListener("change",()=>{currentPoint=null;currentKind=kind.value;currentSector="all";currentType="all";currentStage="all";currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";filtersRebuild();draw()});
  provinceSelect.addEventListener("change",()=>{currentPoint=null;currentProvince=provinceSelect.value==="all"?null:provinceSelect.value;currentKepriCluster=null;draw()});
  location.addEventListener("change",()=>{currentPoint=null;currentLocation=location.value;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";draw()});
- group.addEventListener("change",()=>{currentPoint=null;currentSector=group.value;draw()});
+ group.addEventListener("change",()=>{currentPoint=null;currentSector=group.value;currentType="all";currentStage="all";filtersRebuild();draw()});
+ assetType.addEventListener("change",()=>{currentPoint=null;currentType=assetType.value;currentStage="all";filtersRebuild();draw()});
  stage.addEventListener("change",()=>{currentPoint=null;currentStage=stage.value;draw()});
  search.addEventListener("input",()=>{currentPoint=null;lastQuery=search.value.toLowerCase().trim();draw()});
- reset.addEventListener("click",()=>{currentPoint=null;currentAccuracy="all";for(const b of geoButtons)b.setAttribute("aria-pressed",String(b.dataset.accuracy==="all"));kind.value="all";currentKind="all";location.value="all";currentLocation="all";provinceSelect.value="all";currentProvince=null;currentKepriCluster=null;currentSector="all";currentStage="all";search.value="";lastQuery="";filtersRebuild();setView({x:0,y:0,w:W,h:H});draw()});
+ reset.addEventListener("click",()=>{currentPoint=null;currentType="all";currentAccuracy="all";for(const b of geoButtons)b.setAttribute("aria-pressed",String(b.dataset.accuracy==="all"));kind.value="all";currentKind="all";location.value="all";currentLocation="all";provinceSelect.value="all";currentProvince=null;currentKepriCluster=null;currentSector="all";currentStage="all";search.value="";lastQuery="";filtersRebuild();setView({x:0,y:0,w:W,h:H});draw()});
  filtersRebuild();draw();
 }
 window.SLIProvinceFor=provinceFor;
