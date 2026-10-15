@@ -24,6 +24,7 @@ QUERIES = {
     "Electric vehicles": 'investasi EV mobil listrik BYD Wuling Hyundai Chery pabrik Indonesia',
     "Smelters & processing": 'investasi smelter HPAL nikel tembaga hilirisasi Indonesia',
     "Corporate actions & market": 'akuisisi rights issue merger divestasi investasi emiten energi mineral Indonesia',
+    "Rumor & deal watch": '"rumor akuisisi" "emiten" Indonesia OR "penjajakan merger" perusahaan Indonesia OR "potensi akuisisi" emiten',
     "AI & data centers": 'investasi data center Indonesia NeutraDC Digital Edge hyperscale',
 }
 USER_AGENT = "StrategicLatitudeIntelligence/1.0 (public RSS monitoring)"
