@@ -52,6 +52,29 @@ function governance(root,data){
    ["Functional layers",data.layers.length,"Executive, directorates, operators, legislature, region"],
    ["Parliamentary oversight",data.layers.filter(x=>/DPR|DPD/.test(x.title)).reduce((s,x)=>s+x.actors.length,0),"DPR & DPD have separate constitutional mandates"]
  ].forEach(([name,value,desc])=>{const card=E("div","card gov-kpi");card.style.cursor="default";card.append(E("div","eyebrow",name),E("h2","gov-big",value),E("p",null,desc));summary.append(card)});root.append(summary);
+
+ const routes=(data.accountability_routes||[]);
+ if(routes.length){
+  const panel=E("div","gov-vintage");
+  panel.append(E("h3",null,"Issue-based accountability · Who decides, who executes, who oversees?"));
+  const controls=E("div","gov-controls");
+  const picker=elSelect(routes.map((r,i)=>[String(i),r.issue]));
+  picker.setAttribute("aria-label","Choose Indonesia energy incident or policy issue");
+  controls.append(picker);panel.append(controls);
+  const fields=E("div","gov-project-grid");panel.append(fields);
+  const summary=E("p","gov-note");panel.append(summary);
+  const renderRoute=()=>{
+   fields.replaceChildren();
+   const r=routes[Number(picker.value)]||routes[0];
+   [["Strategic direction",r.strategic],["Executive regulator / budget",r.regulators],
+    ["Asset owner & operator",r.operators],["DPR / DPD scrutiny",r.oversight],
+    ["Provincial implementation",r.regional]].forEach(([head,value])=>{
+    const cell=E("div","gov-project-cell");cell.append(E("strong",null,head),E("p",null,value));fields.append(cell);
+   });
+   summary.textContent="SLI analytical test: "+r.assessment;
+  };
+  picker.addEventListener("change",renderRoute);renderRoute();root.append(panel);
+ }
  const pathway=E("div","gov-vintage");pathway.append(E("h3",null,"Decision-rights & accountability pathways"));
  const chain=E("div","gov-chain");
  [
