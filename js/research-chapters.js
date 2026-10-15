@@ -178,8 +178,8 @@ function renderIntelligence(which,root){const d=intelligence[which];if(!d)return
   const isNetwork=view==="network";
   networkMount.hidden=!isNetwork;
   hierarchyMount.hidden=isNetwork;
-  networkTab.classList.toggle("active",isNetwork);
-  hierarchyTab.classList.toggle("active",!isNetwork);
+  networkTab.className="sli-sector-explorer-tab"+(isNetwork?" active":"");
+  hierarchyTab.className="sli-sector-explorer-tab"+(!isNetwork?" active":"");
   networkTab.setAttribute("aria-selected",String(isNetwork));
   hierarchyTab.setAttribute("aria-selected",String(!isNetwork));
   if(explorer.open){if(isNetwork)loadNetwork();else loadHierarchy()}
