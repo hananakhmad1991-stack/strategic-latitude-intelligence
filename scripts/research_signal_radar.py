@@ -71,7 +71,7 @@ NEWS_DOMAINS = ("go.id", "reuters.com", "apnews.com", "bloomberg.com", "cnbc.com
                 "thejakartapost.com", "channelnewsasia.com", "mining.com",
                 "datacenterdynamics.com", "techinasia.com", "scmp.com")
 FOCUS = {
-    "minerals": re.compile(r"\b(nickel|nikel|smelter|mineral|copper|tembaga|cobalt|kobalt|rare earth|bauksit|bauxite|alumina|aluminium|timah|tin\b|hpal|rkef|battery material|bahan baterai|ore|tailing|hilirisasi)\b", re.I),
+    "minerals": re.compile(r"\b(nickel|nikel|smelter|mineral|copper|tembaga|cobalt|kobalt|rare earth|bauksit|bauxite|alumina|aluminium|timah|baterai|tin\b|hpal|rkef|battery material|bahan baterai|ore|tailing|hilirisasi)\b", re.I),
     "ai": re.compile(r"\b(AI|artificial intelligence|kecerdasan buatan|GPU|semiconductor|semikonduktor|chip|data cent(?:er|re)|data\s*center|pusat data|komputasi|cloud|hyperscale|cyber|siber|submarine cable|undersea cable|pdp)\b", re.I),
 }
 EXCLUDE_AI = re.compile(r"\b(football|soccer|celebrity|gaming laptop|smartphone reviews)\b", re.I)
@@ -82,7 +82,11 @@ def source_ok(source: str, source_url: str) -> bool:
     host = (urllib.parse.urlparse(source_url).hostname or "").lower()
     if any(part in name for part in PUBLISHER_PATTERNS):
         return True
-    return any(host == suffix or host.endswith("." + suffix) for suffix in NEWS_DOMAINS)
+    # A source URL alone can be publisher-spoofed; never accept arbitrary
+    # publisher names just because an RSS source tag links to a well-known site.
+    return host.endswith(".go.id") and any(
+        key in name for key in ("pemerintah", "kementerian", "badan", "dinas", "otorita", "sekretariat")
+    )
 
 
 def scan(topic: tuple, now: dt.datetime) -> list[dict]:
