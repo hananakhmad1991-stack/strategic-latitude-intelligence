@@ -46,7 +46,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  let all=flatten(root);
  assert.ok(all.some(n=>n.textContent==="Indonesia Investment & Energy Map"),"Map title rendered");
  assert.equal(all.filter(n=>n.tagName==="path").length,38,"One province path per feature");
- assert.equal(all.filter(n=>n.className==="map-stat").length,5,"All source and layer counters displayed");
+ assert.equal(all.filter(n=>n.className==="map-stat").length,6,"All source and layer counters displayed");
  const results=all.find(n=>n.className==="map-list"),list=()=>flatten(results).filter(n=>n.className==="map-list-item");
  const select=all.filter(n=>n.tagName==="select");
  assert.equal(select.length,4,"Should have dataset, sector, stage and geographic filters");
@@ -62,9 +62,15 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  const assets=JSON.parse(fs.readFileSync(path.join(ROOT,"data/investment-operator-assets.json"),"utf8")).records;
  const projects=JSON.parse(fs.readFileSync(path.join(ROOT,"data/investment-evidence.json"),"utf8")).projects;
  const infra=JSON.parse(fs.readFileSync(path.join(ROOT,"data/energy-infrastructure-security.json"),"utf8")).refinery.units;
- const total=assets.length+projects.length+infra.length;
- assert.equal(total,75,"Source registries currently have 44+25+6 entries");
- assert.equal(list().length,total,"Default must show ALL 75 records, with no 20-item cap");
+ const sites=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-sector-dossiers.json"),"utf8")).records;
+ const total=assets.length+projects.length+infra.length+sites.length;
+ assert.equal(sites.length,31,"Expanded company-sourced site dossiers");
+ assert.equal(total,106,"Source registries currently have 44+25+6+31 entries");
+ assert.equal(list().length,total,"Default must show ALL 106 records, with no 20-item cap");
+ assert.ok(sites.filter(x=>x.region.includes("East Kalimantan")&&x.group==="Coal").length>=10,"East Kalimantan coal coverage missing");
+ assert.ok(sites.filter(x=>x.region.includes("Sulawesi")&&/Minerals|Processing/.test(x.group)).length>=13,"Sulawesi minerals coverage missing");
+ assert.ok(sites.filter(x=>x.region.includes("Central Papua")).length>=4,"Central Papua gold/copper coverage missing");
+ assert.ok(sites.every(x=>x.source_url.startsWith("https://")&&x.notes&&x.region&&x.stage),"Every site has source, location, stage and scope note");
  let maps=all.filter(n=>n.tagName==="path");
  const riau=maps.find(p=>p.attributes["aria-label"].startsWith("Riau —"));
  assert.ok(riau,"Riau province should render");
@@ -83,6 +89,8 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.equal(list().length,assets.length,"Assets layer shows all operator dossiers");
  dataset.value="refineries";dataset.events.change();
  assert.equal(list().length,infra.length,"Refinery layer includes every recorded oil refinery");
+ dataset.value="sites";dataset.events.change();
+ assert.equal(list().length,sites.length,"Source-documented mine and industrial-site layer includes every source record");
  dataset.value="projects";dataset.events.change();
  assert.ok(results.children.length>0);
  sector.value="Minerals";sector.events.change();
@@ -92,5 +100,5 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  ctx.window.SLIi18n.language="id";
  await ctx.window.initSLIStrategicMap(); // same root intentionally cached
  assert.ok(flatten(root).some(n=>n.textContent==="Peta Investasi dan Energi Indonesia")===false,"cached root unchanged until language event");
- console.log("PASS: 38 province map, all 75 records (44 assets,25 projects,6 refineries), all-year listing, unlocated filter, source links, province click, search and reset");
+ console.log("PASS: 38 province map; 106 combined records incl. 31 operator-sourced Kalimantan/Sulawesi/Papua/other site dossiers, source links, full catalog and filters");
 })().catch(e=>{console.error(e);process.exitCode=1});
