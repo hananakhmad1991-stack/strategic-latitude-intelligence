@@ -79,3 +79,16 @@
 .gov-actor .gov-meta{font-size:10px!important;line-height:1.6!important}
 .gov-kpis:has(.gov-big){grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:700px){.gov-kpis:has(.gov-big){grid-template-columns:1fr}.gov-details{padding:12px!important}.gov-details .gov-layer-title{align-items:flex-start;flex-direction:column}.gov-details .gov-layer-count{margin-left:24px}.gov-actor{min-height:0}}
+
+/* Editorial oil and gas policy visibility: a clear sector shortcut ahead of the full register. */
+#energyPolicyRoot .gov-quick-filters{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 10px}
+#energyPolicyRoot .gov-quick{cursor:pointer;min-height:40px;background:#1b3a51;color:#d9e8ef;border:1px solid #4e6d86;border-radius:8px;padding:9px 15px;font:650 11.5px/1.4 system-ui,sans-serif}
+#energyPolicyRoot .gov-quick.active{background:#dec58f;border-color:#f1d39a;color:#153047}
+#energyPolicyRoot .gov-quick:focus-visible{outline:2px solid #f2da9d;outline-offset:2px}
+#energyPolicyRoot .gov-controls{align-items:center}
+#energyPolicyRoot .gov-select[hidden]{display:none}
+#energyPolicyRoot .gov-policy{min-height:175px}
+#energyPolicyRoot .gov-policy .gov-tag{font-size:10px}
+#energyPolicyRoot .gov-policy-head{gap:6px}
+#energyPolicyRoot .gov-policy h3{font-size:13.5px;line-height:1.5}
+@media(max-width:700px){#energyPolicyRoot .gov-quick{flex:1 1 145px}#energyPolicyRoot .gov-controls .gov-select{flex:1 1 170px}}
