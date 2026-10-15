@@ -15,6 +15,7 @@ on:
       - 'data/strategic-map-biofuel-smelters.json'
       - 'data/strategic-map-regional-crosschecks.json'
       - 'data/strategic-map-digital-ai.json'
+      - 'data/strategic-map-pltu-pln-2025.json'
       - 'tests/check-strategic-map.cjs'
       - '.github/workflows/strategic-map-qa.yml'
   workflow_dispatch:
