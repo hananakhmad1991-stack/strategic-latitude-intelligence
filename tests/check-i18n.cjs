@@ -40,7 +40,7 @@ assert.equal(api.translate("Biofuel news & regulatory watch","id"),"Pantauan ber
 assert.equal(api.translate("New & Renewable Energy (EBT/NRE)","en"),"New and Renewable Energy (NRE)");
 assert.equal(api.translate("Ditjen EBTKE","en"),"Directorate General of New, Renewable Energy and Energy Conservation (NREEC)");
 assert.equal(api.translate("ESDM EBTKE 2025 performance report","en"),"MEMR / NREEC 2025 performance report");
-assert.equal(api.translate("EBTKE — 2025 realized","en"),"NRE/EC — 2025 realized");
+assert.equal(api.translate("EBTKE — 2025 realized","en"),"NRE & Energy Conservation investment · 2025 actual");
 assert.equal(api.translate("Jargas","en"),"Household Gas Networks (Jargas)");
 api.setLanguage("en");
 assert.equal(api.language,"en");
