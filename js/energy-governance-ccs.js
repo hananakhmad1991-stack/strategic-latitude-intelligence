@@ -73,7 +73,7 @@ function governance(root,data){
  });
 }
 function policies(root,data){
- section(root,"02 · Energy Policy & Regulatory Update","Enacted instruments vs corporate decisions vs proposals");
+ section(root,"Energy Policy & Regulatory Update","Enacted instruments vs corporate decisions vs proposals");
  note(root,data.note);
  const controls=E("div","gov-controls");
  const sector=elSelect([["all","All policy topics"],...Array.from(new Set(data.items.map(x=>x.sector))).sort().map(x=>[x,x])]);
@@ -120,7 +120,7 @@ function policies(root,data){
  })();
 }
 function ccs(root,data){
- section(root,"03 · Carbon Capture, Utilisation & Storage (CCS/CCUS)","Geological potential, regulation, project maturity & commercial realisation");
+ section(root,"Carbon Capture, Utilisation & Storage (CCS/CCUS)","Geological potential, regulation, project maturity & commercial realisation");
  note(root,data.note,"gov-note gov-caution-note");
  showCCSWatch(root);
  const kpis=E("div","gov-kpis");
@@ -171,8 +171,14 @@ window.initEnergyGovernance=async function(){
   const d=await r.json();if(!d.governance?.layers||!d.policies?.items||!d.ccs?.projects)throw Error("Incomplete research data");
   document.documentElement.dataset.govAsOf=d.as_of;
   root.replaceChildren();
-  const hero=E("div","gov-hero");hero.append(E("div","eyebrow","Energy governance & carbon management intelligence"),E("h2",null,"Who decides, who executes — and what is actually happening?"),E("p",null,"Source-dated institutional mapping, regulatory implementation and CCS investment tracking · "+d.as_of));root.append(hero);
-  governance(root,d.governance);policies(root,d.policies);ccs(root,d.ccs);
+  const hero=E("div","gov-hero");hero.append(E("div","eyebrow","INDONESIA · ENERGY GOVERNANCE"),E("h2",null,"Institutional responsibilities & accountability"),E("p",null,"Who directs policy, who regulates and who executes it · verified as of "+d.as_of));root.append(hero);
+  governance(root,d.governance);
+  const policyRoot=document.getElementById("energyPolicyRoot")||root;
+  const ccsRoot=document.getElementById("energyCCSRoot")||root;
+  if(policyRoot!==root)policyRoot.replaceChildren();
+  if(ccsRoot!==root)ccsRoot.replaceChildren();
+  policies(policyRoot,d.policies);
+  ccs(ccsRoot,d.ccs);
  }catch(e){root.replaceChildren(E("div","gov-note","Energy governance research data is temporarily unavailable. Other Energy Security sections remain accessible."));}
 };
 })();
