@@ -29,6 +29,9 @@ const polishedEnglish=new Map([
 const glossary={
  en:[
   [/\bNew\s*&\s*Renewable Energy\s*\(EBT\/NRE\)/gi,"New and Renewable Energy (NRE)"],
+  [/\bKementerian\s+ESDM\b/gi,"Ministry of Energy and Mineral Resources (MEMR)"],
+  [/\bDirektorat\s+Jenderal\s+EBTKE\b/gi,"Directorate General of New, Renewable Energy and Energy Conservation (NREEC)"],
+  [/\bDirektur\s+Jenderal\s+EBTKE\b/gi,"Director-General for New, Renewable Energy and Energy Conservation"],
   [/\bDitjen\s+EBTKE\b/gi,"Directorate General of New, Renewable Energy and Energy Conservation (NREEC)"],
   [/\bDirjen\s+EBTKE\b/gi,"Director-General for New, Renewable Energy and Energy Conservation"],
   [/\bESDM\s+EBTKE\b/g,"MEMR / NREEC"],
@@ -37,9 +40,9 @@ const glossary={
   [/\bEBTKE\b/g,"NRE/EC"],
   [/\bEBT\b/g,"NRE"],
   [/\bDitjen\s+Migas\b/g,"Directorate General of Oil and Gas"],
-  [/\bMigas\b/g,"Oil & Gas"],
+  [/(?<!SKK )(?<!BPH )\bMigas\b/g,"Oil & Gas"],
   [/\bJargas\b/g,"household gas networks"],
-  [/\bESDM\b/g,"MEMR"],
+  [/(?<!Kepmen )(?<!Permen )\bESDM\b/g,"MEMR"],
   [/\bNRE\/NRE\b/g,"NRE"],
   [/\bBBM\b/g,"petroleum fuels"]
  ],
