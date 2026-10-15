@@ -459,5 +459,201 @@
         }
       ]
     }
+  ],
+  "categories_intro_en": "These asset types sit BELOW the industry sector. They are facility/contract definitions, not independent source registries.",
+  "categories_intro_id": "Jenis aset berada DI BAWAH sektor industri. Istilah berikut adalah definisi fasilitas/kontrak, bukan registri data yang berdiri sendiri.",
+  "categories": [
+    {
+      "term": "WK / PSC & Upstream Fields",
+      "definition_en": "Exploration / production contract area or oil/gas field; not a refining facility.",
+      "definition_id": "Wilayah kontrak atau lapangan produksi migas; bukan fasilitas pengilangan."
+    },
+    {
+      "term": "Oil Refinery",
+      "definition_en": "Petroleum refining plant converting crude oil into fuels and products; not mineral refining.",
+      "definition_id": "Kilang pengolahan minyak bumi menjadi BBM dan produk turunan; bukan pemurnian mineral."
+    },
+    {
+      "term": "LNG / Gas Facilities",
+      "definition_en": "Gas production, treatment, liquefaction and LNG infrastructure; not petroleum refinery.",
+      "definition_id": "Fasilitas produksi, pengolahan, pencairan gas dan LNG; bukan kilang minyak."
+    },
+    {
+      "term": "CCS / CCUS Project",
+      "definition_en": "CO₂ capture/storage or use; carbon management is not proof of oil/gas production.",
+      "definition_id": "Proyek penangkapan, penyimpanan atau pemanfaatan CO₂; bukan bukti produksi migas."
+    },
+    {
+      "term": "Other Oil & Gas",
+      "definition_en": "Oil/gas-related entry lacking enough evidence for a more specific facility type.",
+      "definition_id": "Entri migas yang belum cukup jelas untuk ditetapkan sebagai fasilitas tertentu."
+    },
+    {
+      "term": "Coal Mine & Logistics",
+      "definition_en": "Coal pits, mines and dedicated logistics; different from coal-fired power generation.",
+      "definition_id": "Tambang, pit, dan logistik batubara; berbeda dari PLTU."
+    },
+    {
+      "term": "Mineral Mine & Exploration",
+      "definition_en": "Ore mine, geology or mineral exploration; distinct from smelter/refinery.",
+      "definition_id": "Tambang, geologi, atau eksplorasi mineral; berbeda dari smelter/kilang mineral."
+    },
+    {
+      "term": "Smelter & Metal Refining",
+      "definition_en": "Metallurgical processing or purification of ores/metals. Includes smelting, nickel processing, and alumina refining; specific processes differ.",
+      "definition_id": "Pengolahan/pemurnian bijih atau logam: mencakup peleburan, pengolahan nikel, dan kilang alumina. Proses tiap fasilitas berbeda."
+    },
+    {
+      "term": "Mineral / Battery Materials Project",
+      "definition_en": "Broader mineral/battery processing chain, not yet verified as a smelter.",
+      "definition_id": "Rantai proyek mineral/bahan baterai yang belum tentu berupa smelter fisik."
+    },
+    {
+      "term": "PLTU · Coal Steam",
+      "definition_en": "Coal-fired steam power station or unit; plant and individual units can overlap.",
+      "definition_id": "Pembangkit listrik tenaga uap berbahan bakar batubara; lokasi dan unit bisa tercatat bersamaan."
+    },
+    {
+      "term": "PLTG / PLTGU / Gas IPP",
+      "definition_en": "Gas turbine, combined-cycle gas/steam or gas-based independent power plant.",
+      "definition_id": "Pembangkit turbin gas, siklus gabungan gas-uap atau IPP berbahan bakar gas."
+    },
+    {
+      "term": "PLTD / Diesel",
+      "definition_en": "Diesel-fuel power generation, typically diesel engine facilities.",
+      "definition_id": "Pembangkit listrik tenaga diesel berbasis mesin."
+    },
+    {
+      "term": "PLTA · Hydropower",
+      "definition_en": "Hydroelectric power station; not the same as pumped-storage unit count.",
+      "definition_id": "Pembangkit listrik tenaga air; tidak sama dengan hitungan unit penyimpanan pompa."
+    },
+    {
+      "term": "PLTM / PLTMH · Small Hydro",
+      "definition_en": "Mini- and micro-hydro electricity facilities.",
+      "definition_id": "Pembangkit listrik minihidro dan mikrohidro."
+    },
+    {
+      "term": "PLTP · Geothermal",
+      "definition_en": "Electricity generation using geothermal heat.",
+      "definition_id": "Pembangkit listrik yang menggunakan panas bumi."
+    },
+    {
+      "term": "PLTS · Solar",
+      "definition_en": "Solar photovoltaic electricity; MWp peak differs from average MW output.",
+      "definition_id": "Pembangkit listrik tenaga surya; MWp puncak berbeda dari rata-rata keluaran MW."
+    },
+    {
+      "term": "PLTB · Wind",
+      "definition_en": "Wind farm or wind turbine electricity project.",
+      "definition_id": "Pembangkit listrik tenaga bayu/angin."
+    },
+    {
+      "term": "Energy Storage",
+      "definition_en": "Storage (battery/pumped hydro) not itself new net energy generation.",
+      "definition_id": "Penyimpanan energi (baterai/hidro pompa), bukan penciptaan energi neto baru."
+    },
+    {
+      "term": "Other Power Projects",
+      "definition_en": "Electricity development not classified more precisely from available source.",
+      "definition_id": "Proyek listrik yang jenisnya belum bisa dipastikan dari sumber tersedia."
+    },
+    {
+      "term": "Biodiesel / FAME Plant",
+      "definition_en": "FAME biofuel plant or registered supply point; do not infer current throughput from quota.",
+      "definition_id": "Pabrik biodiesel FAME atau titik pasokan; kuota bukan produksi aktual."
+    },
+    {
+      "term": "Bioenergy / Feedstock",
+      "definition_en": "Upstream biomass/palm feedstock or other bioenergy, not a confirmed FAME facility.",
+      "definition_id": "Bahan baku biomassa/sawit atau bioenergi lain; belum pasti pabrik FAME."
+    },
+    {
+      "term": "Physical Data Centre",
+      "definition_en": "Identified physical IT facility/campus; AI-ready is not verified GPU deployment.",
+      "definition_id": "Pusat data/kampus fisik yang lokasinya teridentifikasi; AI-ready bukan bukti GPU sudah terpasang."
+    },
+    {
+      "term": "Cloud Region / Services",
+      "definition_en": "Cloud service availability in a region; not a disclosed physical data-center address.",
+      "definition_id": "Wilayah layanan komputasi awan; bukan alamat fisik pusat data yang diumumkan."
+    },
+    {
+      "term": "AI Programme / Agreement",
+      "definition_en": "Agreement, policy or investment programme related to AI, not necessarily built infrastructure.",
+      "definition_id": "Kesepakatan, kebijakan atau program investasi AI; belum tentu fasilitas sudah dibangun."
+    },
+    {
+      "term": "EV Factory / Assembly",
+      "definition_en": "Electric vehicle manufacture or assembly; not automatically battery-cell factory.",
+      "definition_id": "Pabrik/perakitan kendaraan listrik; belum tentu pabrik sel baterai."
+    },
+    {
+      "term": "Battery Supply Chain",
+      "definition_en": "Battery, cathode/anode or material supply-chain assets.",
+      "definition_id": "Fasilitas sel baterai, katoda/anoda dan material terkait."
+    },
+    {
+      "term": "Nuclear Proposal / Development",
+      "definition_en": "Nuclear technology evaluation or planned site; not an operating reactor.",
+      "definition_id": "Kajian teknologi/lokasi nuklir; belum menunjukkan reaktor beroperasi."
+    },
+    {
+      "term": "Cross-sector Project",
+      "definition_en": "Project or policy crossing sectors or lacking verifiable primary asset type.",
+      "definition_id": "Proyek/kebijakan lintas sektor atau belum jelas jenis aset utamanya."
+    }
+  ],
+  "source_layers": [
+    {
+      "term": "Investment project evidence",
+      "definition_en": "Announced, financed, constructed and operating projects from investment registries; a source layer, not a sector.",
+      "definition_id": "Catatan investasi diumumkan, didanai, dibangun atau beroperasi; ini sumber registri, bukan sektor."
+    },
+    {
+      "term": "Company / operator dossiers",
+      "definition_en": "Company-stated assets and activities, may refer to a parent company rather than unique site.",
+      "definition_id": "Daftar aset/kegiatan menurut perusahaan, bisa merupakan entri induk dan bukan situs unik."
+    },
+    {
+      "term": "Official oil-refinery directory",
+      "definition_en": "Published name/capacity of oil refineries; does not include upstream oil fields.",
+      "definition_id": "Daftar kilang minyak menurut sumber; tidak mencakup lapangan migas hulu."
+    },
+    {
+      "term": "Mining / industrial-site evidence",
+      "definition_en": "Sites, tenants and mine pits with location evidence; multiple dossiers may share a single estate.",
+      "definition_id": "Bukti lokasi tambang, pit, atau tenant; beberapa dossier bisa satu kawasan."
+    },
+    {
+      "term": "Historical upstream WK / field roster",
+      "definition_en": "Historical PSC/field disclosures, with operator and licence needing current verification.",
+      "definition_id": "Daftar historis WK/lapangan migas; operator dan masa kontrak perlu verifikasi terbaru."
+    },
+    {
+      "term": "Electricity plant directories",
+      "definition_en": "Named PLTU/PLTP/PLTA/etc sites, including historical rosters and company publications.",
+      "definition_id": "Daftar pembangkit PLTU/PLTP/PLTA/dll dari publikasi resmi/historis."
+    },
+    {
+      "term": "Biodiesel / smelter source directories",
+      "definition_en": "Published industrial location registers; may overlap site-level dossiers.",
+      "definition_id": "Direktori fasilitas biodiesel/smelter; dapat tumpang tindih dengan catatan fasilitas lain."
+    },
+    {
+      "term": "Regional evidence cross-checks",
+      "definition_en": "Targeted source-confirmed updates by province; not an independent set of unique investments.",
+      "definition_id": "Verifikasi khusus wilayah/provinsi; bukan himpunan investasi unik terpisah."
+    },
+    {
+      "term": "Digital / AI physical facilities",
+      "definition_en": "Source-identified physical data centers, separate from undisclosed cloud-region locations.",
+      "definition_id": "Fasilitas pusat data fisik yang teridentifikasi, terpisah dari cloud region tanpa alamat lokasi."
+    },
+    {
+      "term": "Supplementary PLN/ESDM PLTU roster",
+      "definition_en": "Additional power units and sites, possibly duplicate parent plants from older rosters.",
+      "definition_id": "Tambahan unit/lokasi PLTU; bisa sama dengan kompleks induk dalam daftar lama."
+    }
   ]
 }
