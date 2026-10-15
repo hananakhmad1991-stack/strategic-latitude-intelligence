@@ -151,7 +151,7 @@ async function initGeoRadar(){
   const data=await response.json();
   const checked=new Date(data.checked_at_utc);
   const age=(Date.now()-checked.getTime())/3600000;
-  status.textContent=T("News scan: ","Pemindaian berita: ")+(isNaN(checked.getTime())?T("date unavailable","tanggal tidak tersedia"):checked.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+(age>6?T(" · Delayed feed"," · Umpan terlambat"):"");
+  status.textContent=T("News scan: ","Pemindaian berita: ")+(isNaN(checked.getTime())?T("date unavailable","tanggal tidak tersedia"):checked.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+(age>6?T(" · Delayed feed"," · Umpan terlambat"):"")+((data.errors||[]).length?T(" · Partial source coverage ("," · Sebagian sumber gagal (")+(data.errors||[]).length+")":"");
   const entries=Array.isArray(data.events)?data.events:[];
   sel.length=1;sel.value="all";
   const topics=[...new Set(entries.map(x=>x.topic).filter(Boolean))];
