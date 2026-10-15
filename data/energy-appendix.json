@@ -1,0 +1,560 @@
+{
+  "version": "2026-10-15",
+  "title": "SLI Energy Security Appendix: Acronyms and Units",
+  "scope": "Reader aids for displayed metrics; not a substitute for source definitions or statutory instrument text.",
+  "categories": [
+    {
+      "id": "institution",
+      "label_en": "Institutions & policy",
+      "label_id": "Lembaga & kebijakan"
+    },
+    {
+      "id": "technology",
+      "label_en": "Technology & indicators",
+      "label_id": "Teknologi & indikator"
+    },
+    {
+      "id": "unit",
+      "label_en": "Units & notation",
+      "label_id": "Satuan & notasi"
+    }
+  ],
+  "items": [
+    {
+      "category": "institution",
+      "term": "4A",
+      "en": "Four dimensions of Indonesia’s official energy security assessment: Availability, Accessibility, Affordability and Acceptability.",
+      "id": "Empat dimensi resmi penilaian ketahanan energi Indonesia: ketersediaan, aksesibilitas, keterjangkauan, dan penerimaan.",
+      "note_en": "The dashboard's additional “+S” is an analytical sustainability lens, not a fifth official IKE score.",
+      "note_id": "Tambahan “+S” merupakan lensa keberlanjutan analitis, bukan dimensi kelima resmi IKE."
+    },
+    {
+      "category": "institution",
+      "term": "AHP",
+      "en": "Analytic Hierarchy Process, a decision-weighting methodology.",
+      "id": "Analytic Hierarchy Process, metode pembobotan dalam pengambilan keputusan.",
+      "note_en": "Official 4A scores use weights; they are not simply averaged.",
+      "note_id": "Nilai 4A menggunakan pembobotan, bukan sekadar rata-rata."
+    },
+    {
+      "category": "institution",
+      "term": "AISMOLI",
+      "en": "Association of the Indonesian Electric Motorcycle Industry.",
+      "id": "Asosiasi Industri Sepeda Motor Listrik Indonesia.",
+      "note_en": "Association-reported unit sales are not identical to SRUT counts.",
+      "note_id": "Penjualan versi asosiasi tidak selalu sama dengan catatan SRUT."
+    },
+    {
+      "category": "institution",
+      "term": "BPH Migas",
+      "en": "Downstream Oil and Gas Regulatory Agency.",
+      "id": "Badan Pengatur Hilir Minyak dan Gas Bumi.",
+      "note_en": "Different from SKK Migas, which oversees upstream oil-and-gas activities.",
+      "note_id": "Berbeda dari SKK Migas yang mengawasi kegiatan usaha hulu migas."
+    },
+    {
+      "category": "institution",
+      "term": "BPDP",
+      "en": "Plantation Fund Management Agency.",
+      "id": "Badan Pengelola Dana Perkebunan.",
+      "note_en": "Supports eligible biodiesel/plantation funding mechanisms; verify the applicable program.",
+      "note_id": "Terlibat dalam mekanisme pendanaan program biodiesel/perkebunan sesuai ketentuan."
+    },
+    {
+      "category": "institution",
+      "term": "BPS",
+      "en": "Statistics Indonesia, the national statistics agency.",
+      "id": "Badan Pusat Statistik.",
+      "note_en": "Reference source for trade, statistics and selected emissions-series indicators.",
+      "note_id": "Sumber rujukan perdagangan, statistik, dan seri data emisi tertentu."
+    },
+    {
+      "category": "institution",
+      "term": "DEN",
+      "en": "National Energy Council.",
+      "id": "Dewan Energi Nasional.",
+      "note_en": "Policy coordination and official energy security index-related reporting.",
+      "note_id": "Koordinasi kebijakan dan pelaporan terkait indeks ketahanan energi."
+    },
+    {
+      "category": "institution",
+      "term": "DMO",
+      "en": "Domestic Market Obligation, a required supply allocation to the domestic market.",
+      "id": "Domestic Market Obligation, kewajiban memasok kebutuhan dalam negeri.",
+      "note_en": "For coal, allocation, actual delivery and utilization must be distinguished.",
+      "note_id": "Untuk batubara, bedakan alokasi, realisasi pasokan, dan pemanfaatan."
+    },
+    {
+      "category": "institution",
+      "term": "EBT / NRE",
+      "en": "New and Renewable Energy.",
+      "id": "Energi Baru dan Terbarukan.",
+      "note_en": "A sector concept; narrower than EBTKE because energy conservation is separate.",
+      "note_id": "Istilah sektor; cakupannya berbeda dari EBTKE yang juga meliputi konservasi."
+    },
+    {
+      "category": "institution",
+      "term": "EBTKE / NREEC",
+      "en": "New, Renewable Energy and Energy Conservation; NREEC identifies the relevant Indonesian directorate general in English.",
+      "id": "Energi Baru, Terbarukan, dan Konservasi Energi; digunakan dalam nama Ditjen EBTKE.",
+      "note_en": "Institutional/program scope may include conservation and should not be equated with pure renewable generating capacity.",
+      "note_id": "Cakupan kelembagaan/program dapat mencakup konservasi, bukan hanya kapasitas pembangkit terbarukan."
+    },
+    {
+      "category": "institution",
+      "term": "ESDM / MEMR",
+      "en": "Ministry of Energy and Mineral Resources.",
+      "id": "Kementerian Energi dan Sumber Daya Mineral.",
+      "note_en": "ESDM is the Indonesian abbreviation; MEMR is its English-language equivalent.",
+      "note_id": "ESDM merupakan singkatan bahasa Indonesia; MEMR digunakan dalam bahasa Inggris."
+    },
+    {
+      "category": "institution",
+      "term": "GAIKINDO",
+      "en": "Association of Indonesia Automotive Industries.",
+      "id": "Gabungan Industri Kendaraan Bermotor Indonesia.",
+      "note_en": "Wholesale figures generally describe shipments to dealers, not registered fleet stock.",
+      "note_id": "Data wholesales umumnya merupakan pengiriman ke dealer, bukan populasi kendaraan terdaftar."
+    },
+    {
+      "category": "institution",
+      "term": "IPP",
+      "en": "Independent Power Producer.",
+      "id": "Produsen Listrik Swasta (Independent Power Producer).",
+      "note_en": "Do not conflate IPP capacity with PLN-owned generating assets.",
+      "note_id": "Kapasitas IPP berbeda dari kapasitas pembangkit milik PLN."
+    },
+    {
+      "category": "institution",
+      "term": "JBT / JBKP",
+      "en": "JBT: specified subsidized fuel; JBKP: special-assignment fuel (a distinct regulatory classification).",
+      "id": "JBT: Jenis BBM Tertentu; JBKP: Jenis BBM Khusus Penugasan.",
+      "note_en": "Biosolar and Pertalite use different regulatory classifications.",
+      "note_id": "Biosolar dan Pertalite memiliki kategori pengaturan berbeda."
+    },
+    {
+      "category": "institution",
+      "term": "JDIH",
+      "en": "Legal Documentation and Information Network.",
+      "id": "Jaringan Dokumentasi dan Informasi Hukum.",
+      "note_en": "Use legal texts and effective dates to verify enacted rules.",
+      "note_id": "Gunakan naskah hukum dan tanggal mulai berlakunya untuk memverifikasi regulasi."
+    },
+    {
+      "category": "institution",
+      "term": "KEN",
+      "en": "National Energy Policy.",
+      "id": "Kebijakan Energi Nasional.",
+      "note_en": "Policy reference and targets; separate from annually achieved outcomes.",
+      "note_id": "Kerangka kebijakan dan target; berbeda dari capaian aktual tahunan."
+    },
+    {
+      "category": "institution",
+      "term": "KPI / KPB",
+      "en": "Kilang Pertamina Internasional / Kilang Pertamina Balikpapan.",
+      "id": "Kilang Pertamina Internasional / Kilang Pertamina Balikpapan.",
+      "note_en": "Operator/corporate abbreviations used in refinery and upgrade coverage.",
+      "note_id": "Singkatan perusahaan/pengelola pada data kilang dan pengembangannya."
+    },
+    {
+      "category": "institution",
+      "term": "PLN",
+      "en": "State Electricity Company (PT PLN Persero).",
+      "id": "Perusahaan Listrik Negara (PT PLN Persero).",
+      "note_en": "PLN-owned assets are only part of Indonesia's total generation system.",
+      "note_id": "Aset milik PLN hanya sebagian dari total sistem pembangkitan nasional."
+    },
+    {
+      "category": "institution",
+      "term": "PSO / Non-PSO",
+      "en": "Public Service Obligation versus non-PSO allocation or activity.",
+      "id": "Penugasan pelayanan publik (PSO) dibanding kegiatan/alokasi non-PSO.",
+      "note_en": "Biodiesel allocations may be segmented by these categories.",
+      "note_id": "Alokasi biodiesel dapat dibedakan menjadi PSO dan non-PSO."
+    },
+    {
+      "category": "institution",
+      "term": "RUED",
+      "en": "Provincial Energy Plan.",
+      "id": "Rencana Umum Energi Daerah.",
+      "note_en": "Province-level targets require province-level realized-data comparison.",
+      "note_id": "Target daerah harus dibandingkan dengan realisasi tiap provinsi."
+    },
+    {
+      "category": "institution",
+      "term": "RUEN",
+      "en": "National General Energy Plan.",
+      "id": "Rencana Umum Energi Nasional.",
+      "note_en": "Older planning frameworks should not be confused with new KEN provisions.",
+      "note_id": "Kerangka rencana historis tidak otomatis sama dengan ketentuan KEN yang diperbarui."
+    },
+    {
+      "category": "institution",
+      "term": "RUPTL",
+      "en": "Electricity Supply Business Plan.",
+      "id": "Rencana Usaha Penyediaan Tenaga Listrik.",
+      "note_en": "Planned additions are not necessarily operational or grid-connected.",
+      "note_id": "Rencana penambahan pembangkit tidak otomatis telah beroperasi atau tersambung jaringan."
+    },
+    {
+      "category": "institution",
+      "term": "SKK Migas",
+      "en": "Special Task Force for Upstream Oil and Gas Business Activities.",
+      "id": "Satuan Kerja Khusus Pelaksana Kegiatan Usaha Hulu Minyak dan Gas Bumi.",
+      "note_en": "Upstream production governance; different scope from downstream regulator BPH Migas.",
+      "note_id": "Pengelolaan kegiatan hulu migas; berbeda dari regulator hilir BPH Migas."
+    },
+    {
+      "category": "institution",
+      "term": "SRUT",
+      "en": "Type Test Registration Certificate for motor vehicles.",
+      "id": "Sertifikat Registrasi Uji Tipe kendaraan bermotor.",
+      "note_en": "Registration/certification-based EV motorcycle data are not identical to industry association sales.",
+      "note_id": "Data motor listrik berbasis SRUT tidak sama dengan angka penjualan asosiasi."
+    },
+    {
+      "category": "institution",
+      "term": "TKDN",
+      "en": "Domestic Component Level (local content).",
+      "id": "Tingkat Komponen Dalam Negeri.",
+      "note_en": "Applicable thresholds vary by sector, instrument and effective period.",
+      "note_id": "Persentase yang diwajibkan berbeda menurut sektor, aturan, dan periode berlaku."
+    },
+    {
+      "category": "technology",
+      "term": "BEV",
+      "en": "Battery Electric Vehicle, powered solely by externally charged battery-electric propulsion.",
+      "id": "Kendaraan listrik baterai yang digerakkan motor listrik tanpa mesin pembakaran untuk propulsi.",
+      "note_en": "The BEV sales series excludes conventional hybrids and motorcycles unless otherwise stated.",
+      "note_id": "Seri penjualan BEV mobil tidak otomatis memasukkan hibrida dan sepeda motor."
+    },
+    {
+      "category": "technology",
+      "term": "B40 / B50",
+      "en": "Biodiesel blends containing nominally 40% / 50% biodiesel component by volume.",
+      "id": "Campuran solar dengan komponen biodiesel nominal 40% / 50% berdasarkan volume.",
+      "note_en": "A blending requirement is not the same as measured full-year delivery.",
+      "note_id": "Ketentuan pencampuran tidak sama dengan volume penyaluran aktual setahun."
+    },
+    {
+      "category": "technology",
+      "term": "CCS",
+      "en": "Carbon Capture and Storage.",
+      "id": "Penangkapan dan Penyimpanan Karbon.",
+      "note_en": "Project potential is not verified injected CO₂ volume.",
+      "note_id": "Potensi proyek bukan volume CO₂ yang telah benar-benar diinjeksikan."
+    },
+    {
+      "category": "technology",
+      "term": "CCUS",
+      "en": "Carbon Capture, Utilisation and Storage.",
+      "id": "Penangkapan, Pemanfaatan, dan Penyimpanan Karbon.",
+      "note_en": "Utilisation adds a pathway beyond capture and storage alone.",
+      "note_id": "Mencakup jalur pemanfaatan selain penangkapan dan penyimpanan."
+    },
+    {
+      "category": "technology",
+      "term": "CPO",
+      "en": "Crude Palm Oil.",
+      "id": "Minyak Sawit Mentah.",
+      "note_en": "Feedstock tonnes should not be equated directly to finished biodiesel kilolitres.",
+      "note_id": "Tonase bahan baku tidak bisa langsung disamakan dengan kiloliter biodiesel."
+    },
+    {
+      "category": "technology",
+      "term": "E10 / E20",
+      "en": "Gasoline blends containing nominally 10% / 20% fuel ethanol by volume.",
+      "id": "Campuran bensin dengan bioetanol bahan bakar nominal 10% / 20% berdasarkan volume.",
+      "note_en": "A roadmap or announced target does not establish a nationwide mandate in force.",
+      "note_id": "Peta jalan atau target yang diumumkan belum tentu merupakan kewajiban nasional yang berlaku."
+    },
+    {
+      "category": "technology",
+      "term": "FAME",
+      "en": "Fatty Acid Methyl Ester, the biodiesel component used in diesel blending.",
+      "id": "Fatty Acid Methyl Ester, komponen biodiesel untuk campuran solar.",
+      "note_en": "FAME manufacturing capacity is not crude-oil refinery throughput.",
+      "note_id": "Kapasitas produksi FAME berbeda dari kapasitas pengolahan minyak mentah."
+    },
+    {
+      "category": "technology",
+      "term": "HBA",
+      "en": "Harga Batubara Acuan, Indonesia's official coal reference price.",
+      "id": "Harga Batubara Acuan.",
+      "note_en": "A regulated reference is not necessarily the physical realized sales price.",
+      "note_id": "Harga acuan tidak selalu sama dengan harga jual aktual."
+    },
+    {
+      "category": "technology",
+      "term": "HEV / PHEV",
+      "en": "Hybrid Electric Vehicle / Plug-in Hybrid Electric Vehicle.",
+      "id": "Kendaraan Listrik Hibrida / Kendaraan Hibrida Plug-in.",
+      "note_en": "HEV and PHEV are not counted as pure BEV in the BEV car series.",
+      "note_id": "HEV dan PHEV tidak dihitung sebagai BEV murni dalam seri mobil BEV."
+    },
+    {
+      "category": "technology",
+      "term": "HEESI",
+      "en": "Handbook of Energy & Economic Statistics of Indonesia.",
+      "id": "Handbook of Energy & Economic Statistics of Indonesia (buku statistik energi dan ekonomi Indonesia).",
+      "note_en": "Covers annual statistical series with stated reference periods.",
+      "note_id": "Memuat seri statistik dengan tahun pengamatan tertentu."
+    },
+    {
+      "category": "technology",
+      "term": "HIP",
+      "en": "Harga Indeks Pasar, an official published reference price for specified fuels.",
+      "id": "Harga Indeks Pasar.",
+      "note_en": "HIP biodiesel or ethanol differs from consumer pump prices.",
+      "note_id": "HIP biodiesel atau bioetanol berbeda dari harga jual BBM di SPBU."
+    },
+    {
+      "category": "technology",
+      "term": "ICP",
+      "en": "Indonesian Crude Price, the official monthly Indonesian crude-oil reference.",
+      "id": "Indonesian Crude Price, harga minyak mentah Indonesia.",
+      "note_en": "ICP is not a live Brent/WTI quotation.",
+      "note_id": "ICP bukan kutipan langsung harga Brent/WTI."
+    },
+    {
+      "category": "technology",
+      "term": "IKE",
+      "en": "Indeks Ketahanan Energi, Indonesia's official energy security index.",
+      "id": "Indeks Ketahanan Energi.",
+      "note_en": "The 4A official score is separate from the optional +S sustainability interpretation.",
+      "note_id": "Skor resmi 4A terpisah dari interpretasi keberlanjutan tambahan +S."
+    },
+    {
+      "category": "technology",
+      "term": "Jargas",
+      "en": "Household natural gas distribution networks.",
+      "id": "Jaringan Gas Rumah Tangga.",
+      "note_en": "Connections installed, contracted and targeted must not be added indiscriminately.",
+      "note_id": "Sambungan terpasang, terkontrak, dan direncanakan harus dibedakan."
+    },
+    {
+      "category": "technology",
+      "term": "LNG",
+      "en": "Liquefied Natural Gas.",
+      "id": "Gas Alam Cair.",
+      "note_en": "Gas volume and LNG market quotations use different units and reference periods.",
+      "note_id": "Volume gas dan harga LNG menggunakan satuan serta periode acuan berbeda."
+    },
+    {
+      "category": "technology",
+      "term": "NZE",
+      "en": "Net Zero Emissions.",
+      "id": "Emisi Nol Bersih.",
+      "note_en": "A target year is not proof that emissions are already at net zero.",
+      "note_id": "Tahun target bukan bukti emisi aktual telah nol bersih."
+    },
+    {
+      "category": "technology",
+      "term": "PLTA / PLTM / PLTMH",
+      "en": "Large hydro / small hydro / microhydro electricity generation.",
+      "id": "Pembangkit Listrik Tenaga Air / Minihidro / Mikrohidro.",
+      "note_en": "Capacity classes and reported plant counts may differ.",
+      "note_id": "Kelas kapasitas dan jumlah unit yang dilaporkan bisa berbeda."
+    },
+    {
+      "category": "technology",
+      "term": "PLTB / PLTBm",
+      "en": "Wind power / biomass electricity generation.",
+      "id": "Pembangkit Listrik Tenaga Bayu (angin) / Biomassa.",
+      "note_en": "PLTBm sometimes appears with different capitalization in datasets.",
+      "note_id": "PLTBm kadang ditulis dengan kapitalisasi berbeda."
+    },
+    {
+      "category": "technology",
+      "term": "PLTD / PLTU",
+      "en": "Diesel power / steam (commonly coal-fired) power generation.",
+      "id": "Pembangkit Listrik Tenaga Diesel / Tenaga Uap.",
+      "note_en": "A technology capacity total is not a count of sites or generating units.",
+      "note_id": "Kapasitas teknologi bukan jumlah lokasi maupun unit pembangkit."
+    },
+    {
+      "category": "technology",
+      "term": "PLTG / PLTGU",
+      "en": "Gas turbine / combined-cycle gas turbine power generation.",
+      "id": "Pembangkit Listrik Tenaga Gas / Gas dan Uap (siklus gabungan).",
+      "note_en": "Different from stand-alone diesel or steam plant classifications.",
+      "note_id": "Berbeda dari klasifikasi pembangkit diesel atau uap."
+    },
+    {
+      "category": "technology",
+      "term": "PLTP / PLTS",
+      "en": "Geothermal power / solar photovoltaic power.",
+      "id": "Pembangkit Listrik Tenaga Panas Bumi / Tenaga Surya.",
+      "note_en": "Nameplate power is not annual electricity generated.",
+      "note_id": "Daya terpasang tidak sama dengan energi listrik tahunan."
+    },
+    {
+      "category": "technology",
+      "term": "RDMP",
+      "en": "Refinery Development Master Plan.",
+      "id": "Program pengembangan dan modernisasi kilang.",
+      "note_en": "Commissioning milestones do not alone verify full design-rate throughput.",
+      "note_id": "Peresmian atau uji operasi tidak otomatis membuktikan kapasitas penuh."
+    },
+    {
+      "category": "technology",
+      "term": "SAF",
+      "en": "Sustainable Aviation Fuel.",
+      "id": "Bahan Bakar Penerbangan Berkelanjutan (bioavtur berkelanjutan).",
+      "note_en": "Distinguish refinery capacity, qualification, certification and actual production.",
+      "note_id": "Bedakan kapasitas kilang, kualifikasi, sertifikasi, dan produksi aktual."
+    },
+    {
+      "category": "technology",
+      "term": "SPBKLU",
+      "en": "Public Electric Vehicle Battery Swapping Station.",
+      "id": "Stasiun Penukaran Baterai Kendaraan Listrik Umum.",
+      "note_en": "A swapping location is not an SPKLU charging machine.",
+      "note_id": "Lokasi penukaran baterai bukan unit mesin pengisian SPKLU."
+    },
+    {
+      "category": "technology",
+      "term": "SPKLU",
+      "en": "Public Electric Vehicle Charging Station.",
+      "id": "Stasiun Pengisian Kendaraan Listrik Umum.",
+      "note_en": "A machine/connector count is not necessarily a count of physical station sites.",
+      "note_id": "Jumlah mesin/konektor tidak selalu sama dengan jumlah lokasi SPKLU."
+    },
+    {
+      "category": "unit",
+      "term": "% / pp",
+      "en": "Percent / percentage point (absolute difference between percentage rates).",
+      "id": "Persen / poin persentase (selisih absolut antara dua angka persentase).",
+      "note_en": "From 15% to 17% is +2 pp, not +2% relative growth.",
+      "note_id": "Dari 15% ke 17% naik 2 poin persentase, bukan pertumbuhan relatif 2%."
+    },
+    {
+      "category": "unit",
+      "term": "bbl",
+      "en": "Barrel of oil, about 159 litres.",
+      "id": "Barel minyak, sekitar 159 liter.",
+      "note_en": "A volume unit, not a flow rate.",
+      "note_id": "Satuan volume, bukan laju produksi."
+    },
+    {
+      "category": "unit",
+      "term": "bpd",
+      "en": "Barrels per day.",
+      "id": "Barel per hari.",
+      "note_en": "Oil-flow unit; always check the stated reporting period.",
+      "note_id": "Satuan laju minyak; periksa periode pelaporan."
+    },
+    {
+      "category": "unit",
+      "term": "kbpd",
+      "en": "Thousand barrels per day (1 kbpd = 1,000 bpd).",
+      "id": "Ribu barel per hari (1 kbpd = 1.000 bpd).",
+      "note_en": "Commonly used for individual refinery capacity.",
+      "note_id": "Biasa digunakan untuk kapasitas tiap kilang."
+    },
+    {
+      "category": "unit",
+      "term": "Mbpd",
+      "en": "Million barrels per day (1 Mbpd = 1,000 kbpd).",
+      "id": "Juta barel per hari (1 Mbpd = 1.000 kbpd).",
+      "note_en": "Capital M means million here; do not confuse it with kbpd.",
+      "note_id": "Huruf M besar berarti juta; jangan disamakan dengan kbpd."
+    },
+    {
+      "category": "unit",
+      "term": "kL / m kL",
+      "en": "Kilolitre (1,000 litres) / million kilolitres.",
+      "id": "Kiloliter (1.000 liter) / juta kiloliter.",
+      "note_en": "Fuel quotas and biodiesel volumes may use either scale.",
+      "note_id": "Kuota BBM dan volume biodiesel bisa memakai kedua skala."
+    },
+    {
+      "category": "unit",
+      "term": "kL/day / kL/yr",
+      "en": "Kilolitres per day / per year.",
+      "id": "Kiloliter per hari / per tahun.",
+      "note_en": "Production rates and annual capacity must not be compared without a time basis.",
+      "note_id": "Laju produksi dan kapasitas tahunan perlu disetarakan basis waktunya."
+    },
+    {
+      "category": "unit",
+      "term": "kW / MW / GW",
+      "en": "Kilowatt / megawatt / gigawatt; 1 MW = 1,000 kW and 1 GW = 1,000 MW.",
+      "id": "Kilowatt / megawatt / gigawatt; 1 MW = 1.000 kW dan 1 GW = 1.000 MW.",
+      "note_en": "Units of instantaneous power or installed generating capacity, not energy output.",
+      "note_id": "Satuan daya atau kapasitas terpasang, bukan jumlah energi listrik."
+    },
+    {
+      "category": "unit",
+      "term": "kWh / GWh / TWh",
+      "en": "Kilowatt-hour / gigawatt-hour / terawatt-hour; 1 GWh = 1 million kWh.",
+      "id": "Kilowatt-jam / gigawatt-jam / terawatt-jam; 1 GWh = 1 juta kWh.",
+      "note_en": "Units of energy generated, delivered or consumed over an interval.",
+      "note_id": "Satuan energi yang dihasilkan, disalurkan, atau dipakai selama periode tertentu."
+    },
+    {
+      "category": "unit",
+      "term": "MMSCFD",
+      "en": "Million Standard Cubic Feet per Day.",
+      "id": "Juta kaki kubik standar gas per hari.",
+      "note_en": "Natural gas production or flow rate; not proved reserve volume.",
+      "note_id": "Satuan laju produksi/aliran gas, bukan volume cadangan terbukti."
+    },
+    {
+      "category": "unit",
+      "term": "TSCF",
+      "en": "Trillion Standard Cubic Feet.",
+      "id": "Triliun kaki kubik standar.",
+      "note_en": "Natural gas reserve/volume unit, not a daily production rate.",
+      "note_id": "Satuan cadangan/volume gas, bukan produksi per hari."
+    },
+    {
+      "category": "unit",
+      "term": "MMBtu",
+      "en": "One million British thermal units.",
+      "id": "Satu juta British thermal units, satuan energi termal.",
+      "note_en": "Common in natural gas/LNG pricing (US$/MMBtu).",
+      "note_id": "Biasa dipakai pada harga gas/LNG (US$/MMBtu)."
+    },
+    {
+      "category": "unit",
+      "term": "Mt / MtCO₂e",
+      "en": "Million metric tonnes / million tonnes of CO₂-equivalent.",
+      "id": "Juta ton metrik / juta ton setara CO₂.",
+      "note_en": "MtCO₂e combines greenhouse gases using a common equivalence metric; not avoided emissions by default.",
+      "note_id": "MtCO₂e menyetarakan gas rumah kaca ke CO₂; bukan otomatis emisi yang dihindari."
+    },
+    {
+      "category": "unit",
+      "term": "tCO₂ / tCO₂e",
+      "en": "Metric tonnes of carbon dioxide / tonnes of CO₂-equivalent.",
+      "id": "Ton metrik CO₂ / ton setara CO₂.",
+      "note_en": "Do not equate actual emissions with captured, injected or avoided emissions.",
+      "note_id": "Jangan samakan emisi aktual dengan emisi ditangkap, diinjeksi, atau dihindari."
+    },
+    {
+      "category": "unit",
+      "term": "Rp/kWh",
+      "en": "Indonesian rupiah per kilowatt-hour.",
+      "id": "Rupiah per kilowatt-jam.",
+      "note_en": "Retail electricity tariff; not the same as total monthly household bills.",
+      "note_id": "Tarif energi listrik; bukan total tagihan bulanan rumah tangga."
+    },
+    {
+      "category": "unit",
+      "term": "US$/bbl",
+      "en": "US dollars per barrel.",
+      "id": "Dolar AS per barel.",
+      "note_en": "Oil price quote; benchmark and observation dates matter.",
+      "note_id": "Kutipan harga minyak; acuan dan tanggal observasi penting."
+    },
+    {
+      "category": "unit",
+      "term": "US$bn / Rp tn",
+      "en": "Billion US dollars / trillion Indonesian rupiah.",
+      "id": "Miliar dolar AS / triliun rupiah.",
+      "note_en": "1 bn = 1 billion; 1 tn = 1 trillion. Currency periods and exchange rates differ.",
+      "note_id": "1 bn = satu miliar; 1 tn = satu triliun. Kurs dan periode pengamatan perlu diperiksa."
+    }
+  ]
+}
