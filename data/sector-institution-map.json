@@ -1,0 +1,312 @@
+{
+  "as_of": "2026-10-15",
+  "scope": "Functional stakeholder mapping, not a statutory command hierarchy. Named institutions are source-attributed; individual leaders should be checked against official rosters before publication.",
+  "minerals": {
+    "title": "Minerals Institutional & Stakeholder Mapping",
+    "central": "INDONESIA MINERAL VALUE CHAIN",
+    "subtitle": "Six functional accountability systems. Regulator, shareholder, industrial authority and operator are distinct.",
+    "branches": [
+      {
+        "id": "policy",
+        "name": "Mineral Regulators",
+        "description": "Mining policy, licensing, approved work programmes and supervisory functions.",
+        "actors": [
+          {
+            "name": "Ministry of Energy and Mineral Resources (ESDM)",
+            "role": "National mining-sector policy and mineral-resource governance.",
+            "source": "https://www.esdm.go.id/",
+            "detail": "Sets the mineral policy framework; it is not the commercial owner of every operator."
+          },
+          {
+            "name": "Directorate General of Minerals and Coal (Ditjen Minerba)",
+            "role": "Sectoral permitting administration, production oversight and RKAB-related supervision.",
+            "source": "https://www.esdm.go.id/",
+            "detail": "Differentiate permit/production supervision from company mine operations."
+          },
+          {
+            "name": "Policy & Risk Register",
+            "role": "Legal text, revisions, effective dates and implementing rules are tracked in the central register.",
+            "source": "https://peraturan.go.id/",
+            "detail": "Use SLI Policy & Risk for authoritative policy status."
+          }
+        ]
+      },
+      {
+        "id": "industry",
+        "name": "Industrial & Investment",
+        "description": "Downstream industrial policy and investment facilitation.",
+        "actors": [
+          {
+            "name": "Ministry of Industry (Kemenperin)",
+            "role": "Industrial development, refining/smelting policy and manufacturing-chain oversight.",
+            "source": "https://kemenperin.go.id/",
+            "detail": "Industrial policy is separate from mineral extraction licensing."
+          },
+          {
+            "name": "Ministry of Investment / BKPM",
+            "role": "Investment facilitation, recorded PMA/PMDN realization and business licensing procedures.",
+            "source": "https://www.bkpm.go.id/",
+            "detail": "Aggregate investment numbers are not proof of entity-level capex."
+          },
+          {
+            "name": "Environmental regulatory authorities",
+            "role": "Environmental approval, safeguards and compliance according to prevailing jurisdiction.",
+            "source": "https://www.menlh.go.id/",
+            "detail": "Confirm permit authority and environmental approval for each site."
+          }
+        ]
+      },
+      {
+        "id": "state",
+        "name": "State Ownership",
+        "description": "Equity and state-linked corporate operating portfolios.",
+        "actors": [
+          {
+            "name": "MIND ID",
+            "role": "State-owned mining industry holding and investment portfolio.",
+            "source": "https://mind.id/",
+            "detail": "Ownership rights differ from ESDM policy powers."
+          },
+          {
+            "name": "PT ANTAM Tbk",
+            "role": "Commercial mineral extraction, refining and downstream investment activities.",
+            "source": "https://www.antam.com/",
+            "detail": "Specific project ownership and JV percentages require primary company records."
+          },
+          {
+            "name": "State-linked mining subsidiaries",
+            "role": "Operating companies and shareholding entities within disclosed government-linked portfolios.",
+            "source": "https://mind.id/",
+            "detail": "Do not imply direct operational control by every ministry."
+          }
+        ]
+      },
+      {
+        "id": "commercial",
+        "name": "Private & JV Operators",
+        "description": "Private and mixed-ownership asset operators and project SPVs.",
+        "actors": [
+          {
+            "name": "PT Freeport Indonesia",
+            "role": "Copper mining and downstream smelter operations.",
+            "source": "https://ptfi.co.id/",
+            "detail": "Verify project stage, ownership chain and measured copper throughput separately."
+          },
+          {
+            "name": "Nickel industrial partnerships / SPVs",
+            "role": "Nickel mine, NPI/ferronickel, HPAL, MHP and battery-material facilities.",
+            "source": "https://www.bkpm.go.id/",
+            "detail": "SPV legal name, shareholders and license perimeter vary by campus."
+          },
+          {
+            "name": "PT Borneo Alumina Indonesia",
+            "role": "Alumina refinery project company linked to Indonesia's bauxite processing value chain.",
+            "source": "https://www.antam.com/",
+            "detail": "Alumina tonnage is not aluminium-metal tonnage."
+          }
+        ]
+      },
+      {
+        "id": "oversight",
+        "name": "Parliament & Audit",
+        "description": "External scrutiny and public financial accountability.",
+        "actors": [
+          {
+            "name": "DPR RI sectoral commissions",
+            "role": "Legislative oversight of relevant mining, industry and environmental responsibilities.",
+            "source": "https://www.dpr.go.id/",
+            "detail": "Committee assignments should be verified against the active parliamentary roster."
+          },
+          {
+            "name": "BPK RI",
+            "role": "State financial audit for entities within its legal audit jurisdiction.",
+            "source": "https://www.bpk.go.id/",
+            "detail": "Audit findings are not automatic conclusions about individual projects."
+          }
+        ]
+      },
+      {
+        "id": "regional",
+        "name": "Regional Delivery",
+        "description": "Permitting interfaces, local infrastructure and operational effects.",
+        "actors": [
+          {
+            "name": "Provincial and district governments",
+            "role": "Land, local planning, infrastructure interface and community/public service responsibilities.",
+            "source": "https://www.kemendagri.go.id/",
+            "detail": "Competence depends on the legal instrument and territorial jurisdiction."
+          },
+          {
+            "name": "Grid utilities & infrastructure providers",
+            "role": "Power, water, transport and logistics services for energy-intensive mineral facilities.",
+            "source": "https://web.pln.co.id/",
+            "detail": "Availability and tariffs vary by project."
+          },
+          {
+            "name": "Research and technical institutes",
+            "role": "Standards, applied mineral R&D and workforce development.",
+            "source": "https://brin.go.id/",
+            "detail": "Policy input does not imply regulatory authority."
+          }
+        ]
+      }
+    ]
+  },
+  "ai": {
+    "title": "AI & Data Center Institutional Mapping",
+    "central": "INDONESIA DIGITAL COMPUTE SYSTEM",
+    "subtitle": "Six functional systems, from public policy to power, operators and local delivery. Cloud services are not equivalent to verified AI GPU capacity.",
+    "branches": [
+      {
+        "id": "digital",
+        "name": "Digital & AI Policy",
+        "description": "National digital policy and AI ecosystem coordination.",
+        "actors": [
+          {
+            "name": "Ministry of Communication and Digital Affairs (Komdigi)",
+            "role": "Digital ecosystem, infrastructure policy and coordination of AI governance.",
+            "source": "https://komdigi.go.id/",
+            "detail": "Distinguish draft roadmap and ethics regulation from enacted instruments."
+          },
+          {
+            "name": "Digital ecosystem directorates",
+            "role": "AI ecosystem programmes and cross-government coordination within Komdigi's active organizational structure.",
+            "source": "https://komdigi.go.id/",
+            "detail": "Directorate and incumbent names require current official roster verification."
+          },
+          {
+            "name": "Policy & Risk Register",
+            "role": "Authoritative source/status mapping for PDP, electronic systems and AI governance.",
+            "source": "https://peraturan.go.id/",
+            "detail": "Draft ≠ enacted; do not duplicate legal instrument text here."
+          }
+        ]
+      },
+      {
+        "id": "power",
+        "name": "Power & Connectivity",
+        "description": "Electrical delivery and network access to commercial facilities.",
+        "actors": [
+          {
+            "name": "Ministry of Energy and Mineral Resources (ESDM)",
+            "role": "Power-sector regulation and energy infrastructure policy.",
+            "source": "https://www.esdm.go.id/",
+            "detail": "Grid allocation is not commissioned IT load."
+          },
+          {
+            "name": "PT PLN (Persero)",
+            "role": "Grid connection, electricity supply contracts and infrastructure delivery.",
+            "source": "https://web.pln.co.id/",
+            "detail": "MVA, facility MW, IT MW and delivered capacity are different measures."
+          },
+          {
+            "name": "Telecommunications / fiber carriers",
+            "role": "Terrestrial backbone and submarine connectivity to data centers.",
+            "source": "https://komdigi.go.id/",
+            "detail": "Verify route diversity, availability and operator by facility."
+          }
+        ]
+      },
+      {
+        "id": "capital",
+        "name": "Capital & State Portfolio",
+        "description": "Investment facilitation and corporate ownership must be distinguished.",
+        "actors": [
+          {
+            "name": "Ministry of Investment / BKPM",
+            "role": "Recorded PMA and PMDN realization, facilitation and project support.",
+            "source": "https://www.bkpm.go.id/",
+            "detail": "National investment totals cannot isolate AI-data-center spending."
+          },
+          {
+            "name": "Telkom Group / data-center businesses",
+            "role": "Commercial participation in cloud, connectivity and colocation through identified subsidiaries.",
+            "source": "https://www.telkom.co.id/",
+            "detail": "Telkom subsidiaries are not the regulator of every data center."
+          },
+          {
+            "name": "Danantara / state-capital participants",
+            "role": "State portfolio and investment participation where documented in identified legal entities.",
+            "source": "https://www.danantaraindonesia.com/",
+            "detail": "Do not imply the state owns or operates all private data centers."
+          }
+        ]
+      },
+      {
+        "id": "security",
+        "name": "Data & Cyber Security",
+        "description": "Compliance functions and national-security coordination.",
+        "actors": [
+          {
+            "name": "National Cyber and Crypto Agency (BSSN)",
+            "role": "Cybersecurity coordination and national cyber-resilience functions.",
+            "source": "https://bssn.go.id/",
+            "detail": "Cybersecurity agency is not the operator of private security operations centers."
+          },
+          {
+            "name": "Personal data protection governance",
+            "role": "Legal responsibilities under Indonesian PDP legislation and implementing institutions.",
+            "source": "https://peraturan.go.id/",
+            "detail": "State the effective law and confirm regulator formation separately."
+          },
+          {
+            "name": "Commercial security operators",
+            "role": "Data-center and cloud security operations, incident response and risk controls.",
+            "source": "https://komdigi.go.id/",
+            "detail": "Implementation varies by entity and contract."
+          }
+        ]
+      },
+      {
+        "id": "operators",
+        "name": "Cloud & Site Operators",
+        "description": "Companies that finance, build, host, or sell infrastructure services.",
+        "actors": [
+          {
+            "name": "Digital Edge",
+            "role": "Colocation/data-center development including CGK and Jakarta facilities.",
+            "source": "https://www.digitaledgedc.com/",
+            "detail": "Separate prospective MW from operating facility IT MW."
+          },
+          {
+            "name": "Microsoft",
+            "role": "Indonesia Central commercial cloud services and investment commitments.",
+            "source": "https://news.microsoft.com/source/asia/",
+            "detail": "Cloud region live ≠ published national AI GPU inventory."
+          },
+          {
+            "name": "Amazon Web Services (AWS)",
+            "role": "Asia Pacific (Jakarta) cloud-region services.",
+            "source": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/",
+            "detail": "Cloud-region operating status does not specify site-specific GPU capacity."
+          }
+        ]
+      },
+      {
+        "id": "delivery",
+        "name": "Regions, R&D & Skills",
+        "description": "Site-level jurisdictions and domestic compute capability.",
+        "actors": [
+          {
+            "name": "Greater Jakarta / West Java authorities",
+            "role": "Regional planning, permits and physical industrial-site interfaces.",
+            "source": "https://jabarprov.go.id/",
+            "detail": "Site coordinates, power and land permits must be matched to facility."
+          },
+          {
+            "name": "Batam regional authorities / BP Batam",
+            "role": "Industrial-zone facilitation, border connectivity and local delivery.",
+            "source": "https://bpbatam.go.id/",
+            "detail": "Batam's Singapore proximity is not proof of commissioned cross-border service."
+          },
+          {
+            "name": "BRIN, universities and polytechnics",
+            "role": "AI research, technical skills and access to domestic computing resources.",
+            "source": "https://brin.go.id/",
+            "detail": "Track practical training and compute access, not only signed MoUs."
+          }
+        ]
+      }
+    ]
+  }
+}
