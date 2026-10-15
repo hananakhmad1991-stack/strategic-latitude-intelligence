@@ -1,0 +1,44 @@
+name: SLI Strategic Map QA
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'js/strategic-map.js'
+      - 'css/strategic-map.css'
+      - 'data/indonesia-provinces.geojson'
+      - 'data/investment-operator-assets.json'
+      - 'data/investment-evidence.json'
+      - 'tests/check-strategic-map.cjs'
+      - '.github/workflows/strategic-map-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-map:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JS and map interaction validation
+        run: |
+          node --check js/strategic-map.js
+          node tests/check-strategic-map.cjs
+      - name: Check homepage map navigation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          html=Path("index.html").read_text()
+          geo=json.loads(Path("data/indonesia-provinces.geojson").read_text())
+          assert 'data-page="map"' in html
+          assert '<div id="sliMapRoot"></div>' in html
+          assert "window.initSLIStrategicMap()" in html
+          assert 'js/strategic-map.js' in html
+          assert 'css/strategic-map.css' in html
+          assert len(geo["features"])==38
+          assert "CC BY 4.0" in geo["metadata"]["license"]
+          print("PASS: map navigation and credited provincial geometry")
+          PY
