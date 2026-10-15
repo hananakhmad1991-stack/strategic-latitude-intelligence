@@ -39,13 +39,13 @@ function flows(p,d){subsection(p,"Consumption, allocation & blending","Volumes r
  note(p,d.history_note);d.history_sources.forEach((url,i)=>p.append(link(url,i?"2025 EBTKE actual record ↗":"2021–24 ESDM series ↗")));
  const call=el("div","bio-emphasis");add(call,"strong",null,"Diesel market: "+d.diesel_market.consumption_range_million_kl_per_year.join("–")+"m kL finished fuel/year");note(call,d.diesel_market.note);call.append(link(d.diesel_market.source));p.append(call);
  subsection(p,"Bioethanol · separate maturity stage","E20 is not confirmed as nationwide in force");
- const e=d.ethanol;const eg=el("div","bio-stats");eg.append(box("Announced ethanol requirement",id(e.announced_need_million_kl)+"m kL","June ESDM policy quotation, not actual demand",e.official_source),box("Fuel-ethanol capacity","Not verified","No current national plant-by-plant certified capacity",e.official_source),box("Fuel-ethanol production","Not verified","Not inferred from industrial ethanol or gasoline demand",e.official_source));p.append(eg);
- note(p,e.consistency_warning);note(p,"Feedstocks under discussion: "+e.feedstocks.join(", ")+".");p.append(link(e.specification_source,"2026 technical specification ↗"));
+ const e=d.ethanol;const eg=el("div","bio-stats");eg.append(box("E20 ethanol requirement discussed",id(e.announced_need_million_kl)+"m kL","ESDM 12 October policy estimate, not actual demand",e.official_source),box("Fuel-ethanol capacity","Not verified","No current national plant-by-plant certified capacity",e.official_source),box("Fuel-ethanol production","Not verified","Not inferred from industrial ethanol or gasoline demand",e.official_source));p.append(eg);
+ note(p,e.consistency_warning);note(p,e.roadmap);p.append(link(e.roadmap_source,"E10→E20 planning roadmap ↗"));note(p,"Feedstocks under discussion: "+e.feedstocks.join(", ")+". Planned regions: "+e.feedstock_regions.join(", ")+".");note(p,e.alternative_pilots);p.append(link(e.specification_source,"2026 technical specification ↗"));
 }
 function policy(p,d){subsection(p,"Biodiesel & bioethanol policy register","Enacted vs initial allocation vs proposals");
  d.policies.forEach(pol=>{const c=el("div","bio-policy");const top=el("div","bio-policy-head");add(top,"strong",null,pol.name);add(top,"span",null,pol.category);c.append(top);add(c,"p","bio-rule",pol.instrument+" · "+pol.date);add(c,"p","bio-status",pol.status);note(c,pol.note);c.append(link(pol.source,"Policy release ↗"));p.append(c)});
  subsection(p,"Pricing & BPDP funding","Price index is not retail pump price");
- const g=el("div","bio-stats");g.append(box("Biodiesel HIP (older release)","Rp "+id(d.price.hip_biodiesel_rp_per_l)+"/L","Reference published for "+d.price.as_of,d.price.source),box("Bioethanol HIP (older release)","Rp "+id(d.price.hip_bioethanol_rp_per_l)+"/L","Reference published for "+d.price.as_of,d.price.source));p.append(g);note(p,d.price.warning);
+ const g=el("div","bio-stats");g.append(box("Biodiesel HIP · OCT 2026","Rp "+id(d.price.hip_biodiesel_rp_per_l)+"/L","October 2026 EBTKE benchmark + freight (not retail)",d.price.biodiesel_source),box("Bioethanol HIP · JUN 2026","Rp "+id(d.price.hip_bioethanol_rp_per_l)+"/L","June 2026 EBTKE benchmark; older vintage",d.price.source));p.append(g);note(p,d.price.warning);
 }
 function risk(p,d){subsection(p,"Strategic implications for Indonesia","Analytical judgments — not quantified real-time warnings");const ul=el("ol","bio-risks");d.assessment.forEach(x=>add(ul,"li",null,x));p.append(ul);
  subsection(p,"Key feedstock and operational dependency","Palm oil · energy security · food security");note(p,d.feedstock.upstream_dependency);note(p,d.feedstock.risk);p.append(link(d.feedstock.source,"Technical implementation source ↗"));
@@ -60,7 +60,7 @@ async function radar(root,force){
   const age=t&&Number.isFinite(t.getTime())?(Date.now()-t.getTime())/3600000:null;
   add(out,"p","bio-note","Last public-source scan: "+(t?t.toLocaleString("id-ID",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB":"unknown")+
     (age!==null&&age>6?" · STALE (>6 hours)":"")+(d.errors&&d.errors.length?" · source errors reported":"")+". Headlines are discovery leads, not confirmed incidents or enacted regulations.");
-  const controls=el("div","bio-chips");const types=["All","Policy","Capacity","Production","Feedstock","Distribution","Bioethanol","Sustainability"];const list=el("div","bio-radar-list");out.append(controls,list);
+  const controls=el("div","bio-chips");const types=["All","Policy","Capacity","Production","Feedstock","Distribution","Bioethanol","Sustainability","Prices"];const list=el("div","bio-radar-list");out.append(controls,list);
   const news=(d.items||[]).filter(x=>x.title&&x.url);
   function draw(type){list.replaceChildren();const showing=news.filter(x=>type==="All"||x.category===type).slice(0,18);
     if(!showing.length)note(list,"No attributable current source candidates for this category. Absence does not prove no incidents.");
