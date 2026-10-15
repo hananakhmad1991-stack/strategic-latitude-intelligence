@@ -14,7 +14,7 @@ window.initSLIInvestmentAssets=async function(){
  catch(err){root.replaceChildren(el("p","tr-detail","Verified asset registry is not available yet. No project or production values have been inferred."));console.error("[SLI] asset intelligence",err);return}
  root.replaceChildren();
  const counts=el("div","inv-asset-stats");
- const priority=["Oil & Gas","Coal","Minerals","Smelters & Processing","Biofuels & Bioenergy","Renewable Energy","Solar PV","Hydropower & Storage","Wind","Nuclear (New Energy)","Electric Vehicles","AI / Data Center"];
+ const priority=["Oil & Gas","Coal","Minerals","Smelters & Processing","Biofuels & Bioenergy","Renewable Energy","Geothermal","Solar PV","Hydropower & Storage","Wind","Nuclear (New Energy)","Electric Vehicles","AI / Data Center"];
  const coveredSectors=[...priority.filter(x=>d.records.some(y=>y.sector===x)),...[...new Set(d.records.map(x=>x.sector))].filter(x=>!priority.includes(x)).sort()];
  for(const sector of coveredSectors){const value=d.records.filter(x=>x.sector===sector).length;const c=el("div","inv-asset-stat");c.append(el("span",null,sector),el("strong",null,value));counts.append(c)}root.append(counts);
  root.append(el("p","tr-detail","Research snapshot "+(d.as_of||"unknown")+". A row may represent an upstream PSC, a company mine, a project or a government MoU — not identical legal/production units. Values refer only to the source period."));
