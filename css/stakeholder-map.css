@@ -79,3 +79,10 @@
 @media(max-width:850px){.stake-layout{grid-template-columns:1fr}.stake-inspector{min-height:180px}.stake-header{flex-direction:column}.stake-stats{width:100%;justify-content:stretch}.stake-stat{flex:1}.stake-figure{padding:10px 8px}.stake-search-wrap{flex:1 1 100%}}
 @media(max-width:540px){.stake-shell{padding:14px 11px}.stake-stat{min-width:0;padding:9px 6px}.stake-stat strong{font-size:19px}.stake-stat span{white-space:normal;font-size:9px}.stake-tab{font-size:10px;padding:8px}.stake-toolbar{padding:9px}.stake-select{width:100%;max-width:unset}.stake-svg{min-width:0}.stake-plot-title span{display:none}.stake-inspector{padding:16px}}
 @media(prefers-reduced-motion:reduce){.stake-svg-node rect{transition:none}}
+
+/* Large SVG stays exploratory; the mobile touch list is the legible input surface. */
+.stake-mobile-list{display:none;gap:6px;grid-template-columns:repeat(2,minmax(0,1fr));margin:9px 0 12px}
+.stake-mobile-button{border:1px solid #496881;background:#142f45;color:#dce8ef;border-radius:8px;text-align:left;cursor:pointer;padding:11px 10px;font:600 11px/1.45 inherit;min-height:45px;overflow-wrap:anywhere}
+.stake-mobile-button:hover,.stake-mobile-button:focus-visible{border-color:#e6c990;color:#ffe6b2;outline:none}
+@media(max-width:690px){.stake-mobile-list{display:grid}}
+@media(max-width:400px){.stake-mobile-list{grid-template-columns:1fr}}
