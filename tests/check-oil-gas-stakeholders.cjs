@@ -28,7 +28,7 @@ assert(map.items.some(x=>x.name==="BPH Migas"&&x.group==="downstream"),"BPH must
 assert(map.items.some(x=>x.name==="Danantara Indonesia"&&x.group==="policy"),"Danantara owner/investor must not be classified as operator");
 assert(map.items.filter(x=>x.group==="private").length>=5,"BUMS / KKKS section too sparse");
 assert(map.items.every(x=>/^https:\/\//.test(x.source)&&x.summary_en&&x.summary_id&&x.group&&x.as_of),"Missing source/date/bilingual actor data");
-assert(map.items.some(x=>x.name==="Searah (Eni–PETRONAS)")&&map.notes_en.some(x=>x.includes("contractors"))===false || map.items.some(x=>x.name==="Searah (Eni–PETRONAS)"),"Eni/PETRONAS 2026 JV missing");
+assert(map.items.some(x=>x.name==="Searah (Eni–PETRONAS)"),"Eni/PETRONAS 2026 JV missing");
 assert(map.issues.length>=5&&map.issues.some(x=>x.id==="fuel")&&map.issues.some(x=>x.id==="gas"),"Missing separate oil/gas policy issue focus");
 assert(map.issues.every(x=>x.route.every(r=>map.groups.some(g=>g.id===r))),"Issue route includes invalid stakeholder group");
 assert(general.includes("data.ownership_model")&&general.includes("Series A Dwiwarna (1%)")&&general.includes("Series B (99%)"),"Danantara vs BP BUMN ownership explainer missing");
