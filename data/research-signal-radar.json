@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-15T22:45:28.208459+00:00",
-  "last_attempt_at_utc": "2026-10-15T22:45:28.208459+00:00",
+  "generated_at_utc": "2026-10-15T23:42:06.734618+00:00",
+  "last_attempt_at_utc": "2026-10-15T23:42:06.734618+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
@@ -305,6 +305,21 @@
           "topic_id": "smelter_projects",
           "channel": "Smelter construction and operation",
           "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "environment-hilirisasi-nikel-memasuki-babak-baru-dari-ledakan-smelter-menuju-industri-hilir-bisnis-com-ekonomi",
+          "title": "Hilirisasi Nikel Memasuki Babak Baru, dari Ledakan Smelter Menuju Industri Hilir - Bisnis.com - Ekonomi",
+          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxORmZ2MjV3NEVpOV9tVkV5bWEzYVp0VzQwQmRUQmpoQmxwcDBjckJ0OHdOQ0M2dnN5S3gyNUQwRjhfUXFremJYWEJVWkVBWWF3c0t6cC10emg2Z0R4ZmhRUkNGLTN6cUdWREJKdlE3VmtMaENNM2h3QVhqcmxsYnI1akVSYlBQcVZGNXFIQWp3SW8zb0dCbm1POWFEd3hYc0JjY2c5NUZnUTdaZXFKUVQ4RThSTFBSWkRtWHpIRWlLX0lZR3o1eHdBUlM3RQ?oc=5",
+          "publisher": "Bisnis.com - Ekonomi",
+          "publisher_url": "https://ekonomi.bisnis.com",
+          "published_at_utc": "2026-10-08T08:04:07+00:00",
+          "sector": "minerals",
+          "scope": "domestic",
+          "topic_id": "environment",
+          "channel": "Environment, safety and physical infrastructure",
+          "impact_pathway": "Environmental and site-level reports may indicate permitting or continuity exposure; allegations are not established violations.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -680,7 +695,7 @@
   "counts": {
     "minerals": {
       "geopolitical": 10,
-      "domestic": 15
+      "domestic": 16
     },
     "ai": {
       "geopolitical": 7,
@@ -728,7 +743,7 @@
       "id": "environment",
       "scope": "minerals/domestic",
       "state": "scanned",
-      "found": 3
+      "found": 5
     },
     {
       "id": "mineral_investment",
