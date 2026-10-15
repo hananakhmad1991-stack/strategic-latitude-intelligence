@@ -4,6 +4,10 @@ on:
     paths:
       - 'index.html'
       - 'js/research-chapters.js'
+      - 'js/sector-institution-map.js'
+      - 'css/sector-institution-map.css'
+      - 'data/sector-institution-map.json'
+      - 'tests/qa-sector-organigrams.mjs'
       - 'data/investment-evidence.json'
       - 'tests/qa-research-dashboard.mjs'
       - '.github/workflows/research-dashboard-qa.yml'
@@ -20,4 +24,6 @@ jobs:
         with:
           node-version: '22'
       - name: Compile and render both specialist modules
-        run: node tests/qa-research-dashboard.mjs
+        run: |
+          node tests/qa-research-dashboard.mjs
+          node tests/qa-sector-organigrams.mjs
