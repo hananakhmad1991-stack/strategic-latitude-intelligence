@@ -30,9 +30,9 @@ window.initSLIInvestmentStrategy=async function(){
  const markets=document.getElementById("investmentMarketsRoot");
  const swot=document.getElementById("investmentSWOTRoot");
  const rumors=document.getElementById("investmentRumorsRoot");
- const results=await Promise.allSettled(["data/investment-market.json","data/investment-swot.json","data/investment-operator-assets.json","data/investment-news.json"].map(read));
+ const results=await Promise.allSettled(["data/investment-market.json","data/investment-swot.json","data/investment-operator-assets.json","data/investment-news.json","data/investment-reported-scenarios.json"].map(read));
  const loaded=results.map(x=>x.status==="fulfilled"?x.value:null);
- const [market,model,assets,news]=loaded;
+ const [market,model,assets,news,curated]=loaded;
  if(markets){
   markets.replaceChildren();
   if(!market)markets.append(N("p","tr-detail","Bank Indonesia and IHSG snapshots unavailable. No live number inferred."));
@@ -86,10 +86,26 @@ window.initSLIInvestmentStrategy=async function(){
  if(rumors){
   rumors.replaceChildren();
   rumors.append(N("p","tr-detail","Public-report speculation only. No anonymous tips or claims of illegal behaviour. 'Unverified' means the report is NOT established as a corporate action, financing close, or market-moving event. A disclaimer does not make unsubstantiated claims reliable."));
+  const verifiedEditorial=(curated?.reports||[]).filter(x=>/^https:\/\//.test(x.url||""));
+  if(verifiedEditorial.length){
+    const title=N("h4",null,"Publicly sourced prospective scenarios — not confirmed outcomes");
+    rumors.append(title);
+    for(const x of verifiedEditorial){
+      const block=N("details","inv-rumor-card"),summary=N("summary",null,x.date+" · "+x.headline);
+      block.append(summary,N("small",null,x.source_name+" · "+x.topic));
+      const paragraph=(k,v)=>{const p=N("p","tr-detail");p.append(N("strong",null,k+": "),document.createTextNode(v));block.append(p)};
+      paragraph("What the source actually reported",x.reported_basis);
+      paragraph("Unverified future development",x.unconfirmed_element);
+      paragraph("Conditional investment relevance",x.implication);
+      paragraph("Evidence needed",x.verify_next);
+      block.append(url(x.url,"Read attributed original"));
+      rumors.append(block)
+    }
+  }
   const report=(news?.reports||[]).filter(x=>x.topic==="Rumor & deal watch"&&/^https:\/\//.test(x.url||"")).slice(0,12);
   const age=news?.checked_at_utc?"Investment RSS scan: "+news.checked_at_utc:"No completed new investment-RSS scan";
   rumors.append(N("p","tr-detail",age));
-  if(!report.length)rumors.append(N("p","tr-detail","No qualifying published deal speculation in the current saved feed. This does not establish that no prospective deals exist."));
+  if(!report.length)rumors.append(N("p","tr-detail","No additional eligible RSS speculation found. Existing curated reports above remain individually attributed and date-scoped."));
   for(const item of report){
    const p=N("article","inv-rumor-card");
    p.append(N("div","eyebrow","UNCONFIRMED PUBLIC-REPORT WATCH"),url(item.url,item.title),N("small",null,item.publisher+" · "+(item.published_at_utc||"Date unknown")));
