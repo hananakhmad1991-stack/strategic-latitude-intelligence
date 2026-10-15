@@ -105,3 +105,12 @@
 .stake-canvas[data-view="layer"]{max-height:690px;overflow-y:auto;scrollbar-color:#698496 #0c2438}
 .stake-canvas[data-view="layer"] .stake-svg{max-height:none}
 @media(max-width:690px){.stake-canvas[data-view="layer"]{max-height:540px}}
+
+/* Source-dated named leadership shortcuts, preserving national map readability. */
+.stake-key-people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:0 0 15px}
+.stake-person-chip{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0;padding:12px 15px;background:#17364b;border:1px solid #49677e;border-radius:9px;color:#f3e9d8;cursor:pointer;text-align:left}
+.stake-person-chip span{font-size:10px;letter-spacing:.25px;color:#b6cddd}
+.stake-person-chip strong{font-size:12px;line-height:1.45;color:#edd4a0}
+.stake-person-chip:hover{border-color:#dfc18b;background:#24465b}
+.stake-person-chip:focus-visible{outline:2px solid #f1d69e;outline-offset:2px}
+@media(max-width:650px){.stake-key-people{grid-template-columns:1fr;gap:7px}.stake-person-chip{padding:10px 12px}}
