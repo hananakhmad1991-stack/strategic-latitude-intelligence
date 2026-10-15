@@ -91,6 +91,28 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(digital.every(r=>r.source_url.startsWith("https://")&&r.notes&&r.stage&&r.provinces.length===1),"All digital records have official company sources, status and province");
  assert.ok(regional.every(r=>Array.isArray(r.provinces)&&r.provinces.length>=1&&r.source_url.startsWith("https://")&&r.stage&&r.notes),"Regional record must have sourced province, stage and caveat");
  assert.equal(list().length,total,"Default shows all 372 records without recency cutoff");
+ const pointMarkers=all.filter(n=>n.className==="map-geopoint");
+ assert.ok(pointMarkers.length>=20,"Geocoded project locality markers should span numerous source-named places");
+ const batangg=pointMarkers.find(n=>String(n.attributes["aria-label"]||"").includes("Batang"));
+ assert.ok(batangg,"PLTU Batang locality must have independent WGS84 coordinate marker");
+ const batCircle=batangg.children.find(n=>n.tagName==="circle");
+ assert.ok(Math.abs(Number(batCircle.attributes.cx)-((109.735-94)*24.2+15))<0.01,"Batang marker latitude/longitude projection");
+ assert.ok(all.some(n=>n.className==="map-accuracy-bar"),"Visible site-level location precision controls");
+ const precision=all.filter(n=>n.className==="map-btn map-accuracy-btn");
+ assert.equal(precision.length,4);
+ precision[1].events.click();
+ assert.ok(list().length>20&&list().length<total,"Locality filter should only show geocodable references");
+ assert.ok(list().every(x=>flatten(x).some(n=>String(n.textContent).includes("Approximate locality"))),"Every locality-filtered card shows approximate not facility GPS");
+ precision[2].events.click();
+ assert.ok(list().length>20&&list().length<total,"Province-only must remain available without invented GPS");
+ precision[3].events.click();
+ assert.ok(list().length>0&&list().length<total,"Unlocated records retained");
+ precision[0].events.click();
+ assert.equal(list().length,total,"All records can be restored");
+ batangg.events.click();
+ assert.ok(list().length>0&&list().length<total,"Clicking Batang locality marker filters the project list");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Batang"))),"Batang PLTU/area project displayed after click");
+ 
  for(const x of [...wk,...power,...industry]){
   assert.ok(x.source_url?.startsWith("https://"),"Dataset source must be HTTPS: "+x.id);
   assert.ok(x.source_vintage&&x.notes&&x.region&&x.stage,"Must explain source vintage, location, stage and boundary: "+x.id);
