@@ -3,7 +3,7 @@
   "as_of": "2026-10-15",
   "scope": "Public research snapshot; functional governance map and selected CCS/CCUS projects, not an exhaustive licensing or investment register.",
   "governance": {
-    "warning": "Functional influence/implementation map; NOT a statutory reporting-line organization chart. Leadership and institutional mandates change. Each actor has a source and review date.",
+    "warning": "Functional influence/implementation map, NOT a statutory reporting-line chart. Official agency profiles and cabinet appointment records take precedence over old DEN membership lists or articles; actor entries carry verification dates. Automated source scans are subject to validation before changing named leadership.",
     "layers": [
       {
         "title": "National direction, new coordinating ministry and strategic policy",
@@ -37,12 +37,14 @@
           },
           {
             "name": "Kementerian Keuangan",
-            "lead": "Purbaya Yudhi Sadewa · Minister of Finance (DEN member, Jan 2026)",
+            "lead": "Suahasil Nazara · Minister of Finance (appointed 14 September 2026)",
             "role": "Budget, subsidies and compensation, fiscal risk and tax/incentive policy; not an operating regulator for energy facilities.",
             "scope": "Fiscal",
             "kind": "Fiscal",
-            "source": "https://esdm.go.id/id/media-center/arsip-berita/presiden-prabowo-lantik-ketua-harian-dan-anggota-den-periode-2026-2030",
-            "verified": "2026-01-28"
+            "source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
+            "verified": "2026-10-15",
+            "verification_status": "Verified from official government appointment / current leadership profile",
+            "previous_official": "Purbaya Yudhi Sadewa"
           },
           {
             "name": "Bappenas",
@@ -123,12 +125,14 @@
           },
           {
             "name": "Kementerian Lingkungan Hidup",
-            "lead": "Hanif Faisol Nurofiq · Minister (DEN member, Jan 2026)",
+            "lead": "Mohammad Jumhur Hidayat · Minister of Environment / Head of BPLH (appointed 27 April 2026)",
             "role": "Environmental controls and permits, emissions governance, and safeguards relevant to CCS; separate from subsurface storage licensing by ESDM.",
             "scope": "Environmental safeguard",
             "kind": "Regulator",
-            "source": "https://esdm.go.id/id/media-center/arsip-berita/presiden-prabowo-lantik-ketua-harian-dan-anggota-den-periode-2026-2030",
-            "verified": "2026-01-28"
+            "source": "https://setneg.go.id/baca/index/presiden_prabowo_lantik_hanif_faisol_nurofiq_mohammad_jumhur_hidayat_dan_hasan_nasbi",
+            "verified": "2026-10-15",
+            "verification_status": "Verified from official government appointment / current leadership profile",
+            "previous_official": "Hanif Faisol Nurofiq"
           }
         ]
       },
@@ -175,6 +179,7 @@
       }
     ],
     "strategic_readout": [
+      "Current officeholders matter to execution: KLH/BPLH is led by Mohammad Jumhur Hidayat (appointed 27 April 2026), while the Finance Ministry is led by Suahasil Nazara (appointed 14 September 2026). Historical DEN membership reports must not be reused as today's minister roster.",
       "A new coordinating layer was established on 1 October 2026: Bahlil holds both the Coordinating Ministry for Downstreaming & Energy Transition and the ESDM line-minister role. Track the dual-hat governance interface and evolving decision authority.",
       "Approval is fragmented: strategy (DEN/President), regulations and subsurface (ESDM), contract execution (SKK Migas/BPMA), environmental safeguard (environment ministry), and project engineering (operators).",
       "For any CCS proposal, trace the operator, approved area and license, PoD/FID, verified injection measurement, liabilities and long-term MRV rather than equating cooperation MOUs with operational delivery.",
