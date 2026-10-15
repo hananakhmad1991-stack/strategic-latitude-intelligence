@@ -1,0 +1,56 @@
+name: SLI Biofuels Dashboard Validation
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - css/energy-biofuels.css
+      - js/energy-biofuels.js
+      - data/energy-biofuels.json
+      - scripts/energy_biofuels_watch.py
+      - scripts/domestic_energy_watch.py
+      - .github/workflows/energy-biofuels-validation.yml
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Compile headless JS and Python
+        run: |
+          node --check js/energy-biofuels.js
+          node --check js/energy-infrastructure-security.js
+          python -m py_compile scripts/energy_biofuels_watch.py scripts/domestic_energy_watch.py
+      - name: Validate Biofuels data and dashboard integration
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          d=json.loads(pathlib.Path("data/energy-biofuels.json").read_text())
+          s=pathlib.Path("index.html").read_text()
+          assert 'id="energyBiofuelsRoot"' in s
+          assert 'js/energy-biofuels.js' in s
+          assert 'css/energy-biofuels.css' in s
+          assert "initSLIBiofuels()" in s
+          assert d["blend"]["current"]=="B50" and d["blend"]["effective"]=="2026-07-01"
+          assert d["allocation"]["initial_2026_kl"]==d["allocation"]["pso_kl"]+d["allocation"]["non_pso_kl"]
+          assert d["installed_capacity"]["million_kl_per_year"]==22
+          assert d["actuals_2025"]["production_million_kl"]==15.65
+          assert d["price"]["hip_biodiesel_rp_per_l"]==15072
+          assert d["ethanol"]["announced_need_million_kl"]==8
+          assert d["ethanol"]["capacity_verified_million_kl"] is None
+          assert d["saf"]["current"]["reported_capacity_kl_per_day"]==27
+          assert d["saf"]["expansion"]["target_operations"]==2029
+          watch=json.loads(pathlib.Path("data/energy-biofuels-watch.json").read_text())
+          assert "items" in watch
+          assert "biofuels" in pathlib.Path("scripts/domestic_energy_watch.py").read_text()
+          print("SLI biofuel source vintage, market definitions and dashboard anchors valid")
+          PY
