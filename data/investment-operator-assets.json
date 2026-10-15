@@ -1,0 +1,421 @@
+{
+  "as_of": "2026-10-15",
+  "title": "Indonesia Asset, Licence, PSC & Digital Infrastructure Intelligence",
+  "methodology": {
+    "scope": "Selected evidence-led asset/operator dossiers, not the country's complete permits, SKK Migas KKKS, smelters or data center asset register.",
+    "distinctions": [
+      "Oil-and-gas PSC has an operator/KKKS, participating interests, contract duration and asset-level lifting, not an IUP.",
+      "Mining IUP or IUPK grants mining rights; production in a company report can include multiple concessions, and is never assigned to one mine without asset-level data.",
+      "Cloud service regions, data-center campus IT power, cabinets and announced budgets are not interchangeable production measurements.",
+      "MoU, conditional finance, announced campus, physical construction, commissioned capacity and realized capital are separate milestones.",
+      "Investor nationality describes headquarters or named corporate affiliation, not the natural-person beneficial owner.",
+      "Blank or unknown fields mean not independently documented, NOT zero."
+    ]
+  },
+  "records": [
+    {
+      "id": "wk-rokan",
+      "sector": "Oil & Gas",
+      "asset": "Rokan PSC / WK Rokan",
+      "region": "Riau",
+      "operator": "PT Pertamina Hulu Rokan",
+      "affiliation": "Indonesia · Pertamina group",
+      "stage": "Operational",
+      "source_url": "https://phe.pertamina.com/uploads/2025/09/434ed844-da4d-4a42-9acd-60cad9515ba8.pdf",
+      "legal": "PSC / production sharing contract; upstream KKKS operator",
+      "contract_start": "2021-08-09",
+      "contract_end": "2041-08-08",
+      "contract_end_status": "20-year award calculated from 9 Aug 2021; date subject to original PSC verification",
+      "production": {
+        "value": 151547,
+        "unit": "bopd",
+        "period": "2025 average",
+        "scope": "Gross WK Rokan oil and condensate (compiled from Ditjen Migas, cited by secondary sector atlas)",
+        "source_url": "https://sorotenergi.com/peta-migas/wilayah-kerja/rokan/",
+        "evidence": "secondary compilation of government statistics"
+      },
+      "investment": null,
+      "ownership_ref": "phi",
+      "notes": "Do not attribute entire Pertamina Hulu Energi group capex to this PSC; revalidate PI shares and 2026 production with SKK Migas."
+    },
+    {
+      "id": "wk-mahakam",
+      "sector": "Oil & Gas",
+      "asset": "Mahakam PSC / WK Mahakam",
+      "region": "East Kalimantan",
+      "operator": "PT Pertamina Hulu Mahakam",
+      "affiliation": "Indonesia · Pertamina group; 10% PI BUMD Kaltim/Kutai",
+      "stage": "Operational",
+      "source_url": "https://www.esdm.go.id/en/media-center/news-archives/tinjau-lapangan-migas-senipah-menteri-bahlil-kejar-target-lifting-migas-2029",
+      "legal": "PSC; SKK Migas upstream contract",
+      "contract_start": "2018-01-01",
+      "contract_end": "2037-12-31",
+      "contract_end_status": "Contract end confirmed in ESDM release",
+      "production": {
+        "value": 25000,
+        "unit": "bopd",
+        "period": "2025 Jan–Mar lifting snapshot",
+        "scope": "Senipah-Peciko-South Mahakam (SPS) fields ONLY, not entire Mahakam block",
+        "source_url": "https://www.esdm.go.id/en/media-center/news-archives/tinjau-lapangan-migas-senipah-menteri-bahlil-kejar-target-lifting-migas-2029",
+        "evidence": "ESDM field-level lifting statement"
+      },
+      "capacity": {
+        "value": 399,
+        "unit": "MMSCFD",
+        "label": "SPS associated gas lifting (2025 Jan–Mar; NOT entire WK)",
+        "source_url": "https://www.esdm.go.id/en/media-center/news-archives/tinjau-lapangan-migas-senipah-menteri-bahlil-kejar-target-lifting-migas-2029"
+      },
+      "ownership_ref": "phi",
+      "notes": "PHM 90% PI and East Kalimantan BUMD 10% are participating interests, NOT company shares. Production here is SPS field grouping."
+    },
+    {
+      "id": "wk-cepu",
+      "sector": "Oil & Gas",
+      "asset": "Cepu PSC / Banyu Urip",
+      "region": "East/Central Java",
+      "operator": "ExxonMobil Cepu Limited (EMCL)",
+      "affiliation": "United States · ExxonMobil; Indonesia · Pertamina PSC partners",
+      "stage": "Operational",
+      "source_url": "https://corporate.exxonmobil.com/locations/indonesia/newsroom/2025/together-unlocking-indonesias-energy-potential",
+      "legal": "PSC · expiry extension publicly announced for 2055, amended contract instrument not independently reviewed",
+      "contract_end": "2035 (prior public expiry); 2055 announced extension",
+      "contract_end_status": "Reported policy decision / extension announcement; do not state signed amended PSC without instrument",
+      "production": {
+        "value": 129915,
+        "unit": "bopd",
+        "period": "2026-05-31 snapshot",
+        "scope": "EMCL oil/condensate/NGL rate reported by media citing SKK Migas; NOT full-year output",
+        "source_url": "https://finance.detik.com/energi/d-8516767/terungkap-biang-kerok-produksi-minyak-blok-cepu-rokan-turun-awal-tahun",
+        "evidence": "media quoting SKK Migas"
+      },
+      "investment": {
+        "amount": 4,
+        "unit": "USD billion",
+        "basis": "ExxonMobil says >US$4bn invested in Cepu since 2005; historical cumulative and not future commitment",
+        "source_url": "https://corporate.exxonmobil.com/locations/indonesia/newsroom/2025/together-unlocking-indonesias-energy-potential"
+      },
+      "notes": "2055 discussed by ESDM in 2026; amount ~US$10bn associated with extension proposal, NOT audited spent investment; verify signed addendum before contract status 'executed'.",
+      "secondary_source": "https://www.adpmet.or.id/berita/155/pemerintah-perpanjang-kontrak-exxonmobil-di-blok-cepu-hingga-2055-adpmet-produksi-berkelanjutan-harus-sejalan-dengan-kelestarian-lingkungan-dan-kesejahteraan-daerah"
+    },
+    {
+      "id": "wk-masela",
+      "sector": "Oil & Gas",
+      "asset": "Abadi Masela / LNG-CCS development",
+      "region": "Maluku · Tanimbar",
+      "operator": "INPEX Masela Ltd",
+      "affiliation": "Japan · INPEX; Indonesia · Pertamina; Malaysia · PETRONAS",
+      "stage": "Under construction",
+      "source_url": "https://www.inpex.com/english/business/project/abadi.html",
+      "legal": "Masela PSC participating interests: INPEX 65%, PHE 20%, PETRONAS 15%",
+      "contract_end": null,
+      "contract_end_status": "PSC expiry not independently confirmed from selected current primary disclosure",
+      "production": null,
+      "investment": {
+        "amount": 20.9,
+        "unit": "USD billion",
+        "basis": "Government-reported programme/project estimate; NOT spent CAPEX",
+        "source_url": "https://esdm.go.id/id/media-center/arsip-berita/pembangunan-lng-abadi-masela-mulai-jalan-pemerintah-dorong-pertumbuhan-ekonomi-lokal-"
+      },
+      "ownership_ref": "masela",
+      "notes": "Construction programme distinct from production. CCS, onshore LNG and subsea system require milestone monitoring."
+    },
+    {
+      "id": "wk-tangguh-ucc",
+      "sector": "Oil & Gas",
+      "asset": "Tangguh UCC / Ubadari expansion",
+      "region": "West Papua · Bintuni Bay",
+      "operator": "bp Berau Ltd / Tangguh PSC operator",
+      "affiliation": "United Kingdom · bp; multinational Tangguh PSC consortium",
+      "stage": "Under construction",
+      "source_url": "https://www.bp.com/content/dam/bp/country-sites/id_id/indonesia/home/news/press-releases/241121%20Siaran%20pers%20proyek%20Tangguh%20UCC.pdf",
+      "legal": "Tangguh PSC; UCC development is incremental investment, not a separate PSC",
+      "contract_end": null,
+      "contract_end_status": "PSC maturity not verified in selected source",
+      "production": null,
+      "investment": {
+        "amount": 7,
+        "unit": "USD billion",
+        "basis": "2024 final investment decision value for UCC development, NOT incurred CAPEX",
+        "source_url": "https://www.bp.com/content/dam/bp/country-sites/id_id/indonesia/home/news/press-releases/241121%20Siaran%20pers%20proyek%20Tangguh%20UCC.pdf"
+      },
+      "ownership_ref": "tangguh",
+      "notes": "Existing Tangguh LNG trains produce LNG, while UCC project is not yet an operating production increment; don't combine the two."
+    },
+    {
+      "id": "coal-adaro",
+      "sector": "Coal",
+      "asset": "PT Adaro Indonesia IUPK-KOP / Tabalong & Balangan",
+      "region": "South Kalimantan",
+      "operator": "PT Adaro Indonesia (AADI group)",
+      "affiliation": "Indonesia · PT Adaro Andalan Indonesia Tbk",
+      "stage": "Operational",
+      "source_url": "https://www.adaroindonesia.com/pages/view/Adaro_Mining.html",
+      "legal": "IUPK continuation of Coal Contract of Work (PKP2B)",
+      "contract_start": "2022",
+      "contract_end": "2032-10-01",
+      "contract_end_status": "Company reports IUPK-KOP until 1 Oct 2032",
+      "production": {
+        "value": 50.8,
+        "unit": "million tonnes",
+        "period": "2024 full year",
+        "scope": "PT Adaro Indonesia subsidiary output ONLY; not full AADI group output",
+        "source_url": "https://www.adaroindonesia.com/pages/view/Adaro_Mining.html",
+        "evidence": "company operational data"
+      },
+      "ownership_ref": "aadi",
+      "notes": "Company disclosed 24.78 million tonnes 1H25. RKAB annual quota, license term, permit limits and reserves should remain separate."
+    },
+    {
+      "id": "coal-ptba",
+      "sector": "Coal",
+      "asset": "PTBA Tanjung Enim mining operations",
+      "region": "South Sumatra · Muara Enim",
+      "operator": "PT Bukit Asam Tbk",
+      "affiliation": "Indonesia · MIND ID",
+      "stage": "Operational",
+      "source_url": "https://www.ptba.co.id/uploads/ptba_laporan_tahunan/20250430114045-2025-04-30ptba_laporan_tahunan113945.pdf",
+      "legal": "Mineral and Coal IUP mining permits; asset-specific permit numbers/expiry need registry-level verification",
+      "contract_end": null,
+      "contract_end_status": "Current specific concession expiry not independently verified",
+      "production": {
+        "value": 41.999197,
+        "unit": "million tonnes",
+        "period": "2024 full year",
+        "scope": "Tanjung Enim mining unit (NOT all PTBA subsidiaries)",
+        "source_url": "https://www.ptba.co.id/uploads/ptba_laporan_tahunan/20250430114045-2025-04-30ptba_laporan_tahunan113945.pdf",
+        "evidence": "PTBA FY24 audited annual report operational table"
+      },
+      "ownership_ref": "ptba",
+      "notes": "Company announced 2026 group-wide production target ~49.5 million tonnes (not actual) and 2027 RKAB planning.",
+      "secondary_source": "https://www.ptba.co.id/id/media/press-release/detail/ptba-siapkan-rencana-produksi-batu-bara-2027-perkuat-pasokan-dan-kepastian-operasional"
+    },
+    {
+      "id": "min-vale",
+      "sector": "Minerals",
+      "asset": "PT Vale IUPK / Sorowako and Sulawesi nickel operations",
+      "region": "South/Central/Southeast Sulawesi",
+      "operator": "PT Vale Indonesia Tbk (INCO)",
+      "affiliation": "Indonesia · MIND ID; Canada/Brazil Vale group; Japan · Sumitomo",
+      "stage": "Operational",
+      "source_url": "https://vale.com/in/indonesia/tentang-pt-vale-indonesia",
+      "legal": "IUPK as continuation of Contract of Work (CoW)",
+      "contract_end": "2035-12-28",
+      "contract_end_status": "Current licensed period ends Dec 28 2035; further extension only by future permit",
+      "production": {
+        "value": 72027,
+        "unit": "tonnes Ni matte",
+        "period": "2025 full year",
+        "scope": "PT Vale consolidated nickel matte production; DO NOT attribute all tonnes solely to each IGP project",
+        "source_url": "https://vale.com/in/w/pt-vale-indonesia-strengthens-performance-and-lays-a-solid-foundation-for-sustainable-growth-in-2025",
+        "evidence": "company FY2025 release"
+      },
+      "ownership_ref": "vale",
+      "notes": "Company's IGP HPAL partners/production are project-specific; company-wide 2025 matte not Pomalaa commissioning."
+    },
+    {
+      "id": "min-freeport",
+      "sector": "Minerals",
+      "asset": "Grasberg underground copper and gold / PTFI",
+      "region": "Central Papua · Mimika",
+      "operator": "PT Freeport Indonesia",
+      "affiliation": "Indonesia · MIND ID/PT IPMM; United States · Freeport-McMoRan",
+      "stage": "Operational",
+      "source_url": "https://investors.fcx.com/investors/news-releases/news-release-details/2026/FCX-Announces-Agreement-for-Life-of-Resource-Extension-of-Operating-Rights-in-Grasberg-Minerals-District/default.aspx",
+      "legal": "IUPK operating rights. Feb 2026 MoU for life-of-resource extension requires license amendment",
+      "contract_end": "2041 (existing framework)",
+      "contract_end_status": "Extension beyond 2041 announced in MOU, not evidence amended permit already issued",
+      "production": null,
+      "ownership_ref": "ptfi",
+      "notes": "FCX's February 2026 MOU contemplates FCX transferring a further 12% equity interest in 2041; cannot label transfer consummated. Check actual FY2025 production and September 2025 mine incident effects separately."
+    },
+    {
+      "id": "min-pomalaa",
+      "sector": "Minerals",
+      "asset": "IGP Pomalaa HPAL / KNI",
+      "region": "Southeast Sulawesi · Kolaka",
+      "operator": "PT Kolaka Nickel Indonesia and PT Vale mine operations",
+      "affiliation": "Indonesia / Brazil/Canada (Vale), China (Huayou), United States (Ford)",
+      "stage": "Under construction",
+      "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion",
+      "legal": "Vale mining IUPK and separate HPAL project JV; JV permit and equity distinct",
+      "contract_end": null,
+      "contract_end_status": "Do not use Vale's mining IUPK expiry as unverified HPAL JV license expiry",
+      "production": null,
+      "investment": {
+        "amount": 4.5,
+        "unit": "USD billion",
+        "basis": "Integrated mine and HPAL project estimate, NOT actual project disbursement",
+        "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion"
+      },
+      "ownership_ref": "kni",
+      "notes": "Mine ore-sales milestone does not mean HPAL operational. Company disclosed progress ~62% Feb 2026; recheck subsequent updates."
+    },
+    {
+      "id": "dc-edge",
+      "sector": "AI / Data Center",
+      "asset": "Digital Edge CGK Campus (GIIC)",
+      "region": "Bekasi · West Java",
+      "operator": "Digital Edge",
+      "affiliation": "Singapore · Digital Edge; actual SPV ownership/ultimate BO require disclosure",
+      "stage": "Announced / development",
+      "source_url": "https://www.digitaledgedc.com/resources/newsroom/digital-edge-4-5b-cgk-500mw-ai-ready-hyperscale-campus-indonesia/",
+      "legal": "Commercial data-center project; no PSC/IUP concession. Land/grid/construction permits entity-specific",
+      "contract_end": null,
+      "contract_end_status": "Tenant SLAs, land-use and power contracts not publicly confirmed",
+      "capacity": {
+        "value": 500,
+        "unit": "MW IT",
+        "label": "Planned full-campus IT capacity; scalable to 1GW, not operating",
+        "source_url": "https://www.digitaledgedc.com/resources/newsroom/digital-edge-4-5b-cgk-500mw-ai-ready-hyperscale-campus-indonesia/"
+      },
+      "production": null,
+      "investment": {
+        "amount": 4.5,
+        "unit": "USD billion",
+        "basis": "Jan 2026 announced campus investment; NOT realized capex",
+        "source_url": "https://www.digitaledgedc.com/resources/newsroom/digital-edge-4-5b-cgk-500mw-ai-ready-hyperscale-campus-indonesia/"
+      },
+      "notes": "Multiple development phases planned. No inference that 500MW is available 2026."
+    },
+    {
+      "id": "dc-neutra",
+      "sector": "AI / Data Center",
+      "asset": "NeutraDC Cikarang expansion / PLN power MoU",
+      "region": "Cikarang · West Java",
+      "operator": "PT Telkom Data Ekosistem (NeutraDC)",
+      "affiliation": "Indonesia · Telkom/Danantara corporate group",
+      "stage": "MoU / power expansion",
+      "source_url": "https://www.telkom.co.id/sites/berita/id_ID/news/sinergi-danantara-neutradc-gandeng-pln-siapkan-ekspansi-hyperscale-data-center-3881",
+      "legal": "PLN supply cooperation MoU, not production-sharing contract or confirmed construction completion",
+      "contract_end": null,
+      "contract_end_status": "MoU duration and definitive electricity agreement expiry not supplied",
+      "capacity": {
+        "value": 200,
+        "unit": "MW",
+        "label": "Proposed expansion capacity with PLN support; not commissioned MW",
+        "source_url": "https://www.telkom.co.id/sites/berita/id_ID/news/sinergi-danantara-neutradc-gandeng-pln-siapkan-ekspansi-hyperscale-data-center-3881"
+      },
+      "investment": null,
+      "ownership_ref": "telkom",
+      "notes": "MoU signed Aug 2026. Power procurement collaboration is not physical campus commercial operation or realized investment."
+    },
+    {
+      "id": "dc-equinix",
+      "sector": "AI / Data Center",
+      "asset": "Equinix JK1 · AI-ready data center",
+      "region": "DKI Jakarta",
+      "operator": "Equinix–Astra JV",
+      "affiliation": "United States · Equinix; Indonesia · Astra (Astra ultimate corporate holder Jardine group)",
+      "stage": "Operational",
+      "source_url": "https://newsroom.equinix.com/2025-05-15-Equinix-Unveils-Its-First-AI-Ready-Data-Center-with-Dense-Ecosystem-in-Jakarta",
+      "legal": "Commercial data center; corporate operations and power contracts rather than PSC/IUP mining contract",
+      "contract_end": null,
+      "contract_end_status": "Customer SLAs or land/power agreement maturity not reported publicly",
+      "capacity": {
+        "value": 550,
+        "unit": "cabinets",
+        "label": "First-phase cabinet capacity at May 2025 opening; 1,600 cabinets full build-out plan",
+        "source_url": "https://newsroom.equinix.com/2025-05-15-Equinix-Unveils-Its-First-AI-Ready-Data-Center-with-Dense-Ecosystem-in-Jakarta"
+      },
+      "investment": {
+        "amount": 74,
+        "unit": "USD million",
+        "basis": "2022 announced initial planned budget, predating 2023 JV, not audit-verified actual capex",
+        "source_url": "https://investor.equinix.com/news-events/press-releases/detail/978/equinix-expands-to-indonesia-with-74m-data-center"
+      },
+      "ownership_ref": "equinix_astra",
+      "notes": "500+ first-stage cabinets NOT 500 MW; avoid mixing rack/cabinet count with power capacity."
+    },
+    {
+      "id": "dc-microsoft",
+      "sector": "AI / Data Center",
+      "asset": "Microsoft Indonesia Central cloud region",
+      "region": "Indonesia · cloud region, sites not disclosed",
+      "operator": "Microsoft",
+      "affiliation": "United States · Microsoft Corporation",
+      "stage": "Operational",
+      "source_url": "https://news.microsoft.com/id-id/2025/05/27/microsoft-resmikan-indonesia-central/",
+      "legal": "Commercial hyperscale cloud service; no publicly verified per-facility contract expiry",
+      "contract_end": null,
+      "contract_end_status": "Not publicly confirmed",
+      "production": null,
+      "capacity": {
+        "value": 3,
+        "unit": "availability zones",
+        "label": "Cloud region architecture; not a disclosed IT MW measurement",
+        "source_url": "https://news.microsoft.com/id-id/2025/05/27/microsoft-resmikan-indonesia-central/"
+      },
+      "investment": {
+        "amount": 1.7,
+        "unit": "USD billion",
+        "basis": "2024–2028 Indonesia-wide cloud/AI investment plan; not region-only or fully spent",
+        "source_url": "https://news.microsoft.com/id-id/2025/05/27/microsoft-resmikan-indonesia-central/"
+      },
+      "notes": "Cloud region operating since 2025; hardware MW and annual actual Indonesian capex not disclosed."
+    },
+    {
+      "id": "dc-aws",
+      "sector": "AI / Data Center",
+      "asset": "AWS Asia Pacific (Jakarta) Region",
+      "region": "Indonesia · Greater Jakarta service region",
+      "operator": "Amazon Web Services",
+      "affiliation": "United States · Amazon group",
+      "stage": "Operational",
+      "source_url": "https://press.aboutamazon.com/2021/12/aws-launches-region-in-indonesia",
+      "legal": "Commercial cloud service; facilities, offtake and contractual maturities not disclosed",
+      "contract_end": null,
+      "contract_end_status": "Not public",
+      "production": null,
+      "capacity": {
+        "value": 3,
+        "unit": "availability zones",
+        "label": "Cloud-service AZs, not MW nor distinct publicly mapped site count",
+        "source_url": "https://press.aboutamazon.com/2021/12/aws-launches-region-in-indonesia"
+      },
+      "investment": {
+        "amount": 5,
+        "unit": "USD billion",
+        "basis": "2021 announced 15-year spending plan including CAPEX, OPEX and local purchases; not purely infrastructure capex",
+        "source_url": "https://press.aboutamazon.com/2021/12/aws-launches-region-in-indonesia"
+      },
+      "notes": "Service launched Dec 2021; cannot claim US$5bn actual spend by 2026."
+    },
+    {
+      "id": "dc-worldvuer",
+      "sector": "AI / Data Center",
+      "asset": "Worldvuer iByond quantum/AI data center proposal",
+      "region": "Indonesia · Tunas Prima Industrial Estate (precise operating site to verify)",
+      "operator": "Worldvuer iByond Limited + Tunas Prima Industrial Estate",
+      "affiliation": "United States · company described Silicon Valley-based; Indonesian industrial partner",
+      "stage": "Agreement / proposal",
+      "source_url": "https://www.bkpm.go.id/id/info/siaran-pers/ri-siap-fasilitasi-investasi-data-center-ai-pertama-di-asia-senilai-rp6-t",
+      "legal": "Strategic cooperation agreement witnessed by BKPM; no published operating data-center licence or tenancy maturity",
+      "contract_end": null,
+      "contract_end_status": "Definitive project permit and contract term not published",
+      "investment": {
+        "amount": 400,
+        "unit": "USD million",
+        "basis": "July 2025 stage-one planned investment; contract/operational spending not confirmed",
+        "source_url": "https://www.bkpm.go.id/id/info/siaran-pers/ri-siap-fasilitasi-investasi-data-center-ai-pertama-di-asia-senilai-rp6-t"
+      },
+      "production": null,
+      "notes": "Signing cooperation is not commissioning, financial close, or verified site energization."
+    },
+    {
+      "id": "mou-korea-digital",
+      "sector": "AI / Data Center",
+      "asset": "Indonesia–Korea digital and AI cooperation (government MoU)",
+      "region": "Indonesia–Republic of Korea",
+      "operator": "Indonesia Komdigi / Korea Ministry of Science and ICT",
+      "affiliation": "Indonesia + Republic of Korea (government counterparties)",
+      "stage": "MoU only",
+      "source_url": "https://www.komdigi.go.id/berita/siaran-pers/detail/kerja-sama-ri-korea-internet-lebih-stabil-data-lebih-aman-talenta-ai-diperkuat",
+      "legal": "Government-to-government MoU in digital resilience and AI collaboration; NOT concession or private investment agreement",
+      "contract_end": null,
+      "contract_end_status": "Not publicly disclosed",
+      "investment": null,
+      "production": null,
+      "notes": "Neither a named data-center construction project nor guaranteed capital commitment; follow projects individually."
+    }
+  ]
+}
