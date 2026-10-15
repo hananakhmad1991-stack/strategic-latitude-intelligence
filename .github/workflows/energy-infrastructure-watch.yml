@@ -45,6 +45,11 @@ jobs:
           assert {x["type"]:x["units"] for x in u}["PLTU"]==138
           assert {x["type"]:x["units"] for x in u}["PLTD"]==4857
           assert p["unit_count"]["pln_renewable_type_units"]==637
+          ve=d["electrification"]["village_electrification"]
+          assert ve["period"]=="2026-Q1"
+          assert len(ve["lowest_pln_village_service"])==5
+          assert ve["national_pln_pct"]==93.674
+          assert ve["national_all_sources_pct"]==100
           assert abs(sum(x["mw"] for x in p["capacity_by_type_mw"])-p["national"]["capacity_mw"])<0.1
           assert abs(sum(x["nameplate_kbpd"] for x in d["refinery"]["units"])-d["refinery"]["sum_of_listed_kbpd"])<0.01
           print("Validated infrastructure official source-vintaged baseline")
