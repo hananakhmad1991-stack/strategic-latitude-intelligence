@@ -107,7 +107,7 @@ def main():
     sector_names = {"Oil & Gas", "Coal", "Minerals", "Smelters & Processing", "Biofuels & Bioenergy", "Renewable Energy", "Electric Vehicles", "AI / Data Center"}
     allowed_asset_stages = {"Operational", "Under construction", "Announced / development",
                             "MoU / power expansion", "Agreement / proposal", "MoU only",
-                            "Programme / mandate", "Historical operating evidence"}
+                            "Programme / mandate", "Historical operating evidence", "Retail / commercial sales"}
     asset_ids = set()
     for asset in assets.get("records", []):
         key = asset.get("id", "?")
