@@ -103,6 +103,42 @@ def main():
         if deal.get("type", "").startswith("Outbound") and deal.get("country_of_asset") == "Indonesia":
             fail("Outbound investment misclassified as Indonesian asset investment")
 
+    assets = read("investment-operator-assets.json")
+    sector_names = {"Oil & Gas", "Coal", "Minerals", "AI / Data Center"}
+    allowed_asset_stages = {"Operational", "Under construction", "Announced / development",
+                            "MoU / power expansion", "Agreement / proposal", "MoU only"}
+    asset_ids = set()
+    for asset in assets.get("records", []):
+        key = asset.get("id", "?")
+        if key in asset_ids:
+            fail(f"{key}: duplicate cross-sector asset ID")
+        asset_ids.add(key)
+        if asset.get("sector") not in sector_names or asset.get("stage") not in allowed_asset_stages:
+            fail(f"{key}: unknown sector or implementation stage")
+        if not https(asset.get("source_url")):
+            fail(f"{key}: missing source for operator / concession")
+        if not asset.get("operator") or not asset.get("affiliation"):
+            fail(f"{key}: operator and country affiliation required")
+        if asset.get("ownership_ref") and asset["ownership_ref"] not in owner_ids:
+            fail(f"{key}: bad ownership dossier connection")
+        for field in ("production", "capacity", "investment"):
+            value = asset.get(field)
+            if value is not None and value.get("value", value.get("amount")) is not None:
+                if not https(value.get("source_url")):
+                    fail(f"{key}: {field} numerical claim missing source")
+                if field == "production" and not value.get("scope"):
+                    fail(f"{key}: production does not identify asset/company scope")
+                if field == "production" and not value.get("period"):
+                    fail(f"{key}: production does not identify reporting period")
+                if field == "investment" and not value.get("basis"):
+                    fail(f"{key}: investment is missing classification of capital basis")
+        if asset.get("stage") in {"MoU only", "MoU / power expansion"} and asset.get("production"):
+            fail(f"{key}: MoU-only row must not claim operating production")
+        if asset.get("sector") == "AI / Data Center" and asset.get("legal", "").startswith("PSC"):
+            fail(f"{key}: digital asset incorrectly presented as upstream PSC")
+        if asset.get("contract_end") and not asset.get("contract_end_status"):
+            fail(f"{key}: disclosed expiry missing legal qualification")
+
     for observation in evidence.get("corporate_capex", []):
         key = observation.get("entity", "?")
         if not https(observation.get("source")) or not observation.get("geographic_scope"):
@@ -116,7 +152,8 @@ def main():
         print("\n".join("ERROR: " + x for x in issues))
         raise SystemExit(1)
     print(f"PASS: {len(projects)} projects, {len(entities)} ownership / PSC entities, "
-          f"{len(evidence.get('corporate_capex', []))} group capex records. "
+          f"{len(evidence.get('corporate_capex', []))} group capex records, "
+          f"{len(assets.get('records', []))} cross-sector operator assets. "
           "Sources and financial-scope labels structurally consistent.")
     print("NOTE: Source URLs and publication facts are not reverified by this offline QA.")
 
