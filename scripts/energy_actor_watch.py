@@ -6,7 +6,10 @@ import html
 import json
 import re
 import unicodedata
+import urllib.parse
 import urllib.request
+import email.utils
+import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -103,6 +106,42 @@ def person_before_role(markup, official_role):
                 return before.title()
     return None
 
+
+def discover_appointment_leads():
+    feeds=[
+      ("Cabinet reshuffle","site:setneg.go.id (pelantikan menteri OR pergantian menteri OR pemberhentian menteri)"),
+      ("Energy and environmental leadership","site:esdm.go.id (pelantikan dirjen OR ditjen migas OR ditjen ketenagalistrikan OR direktur jenderal)"),
+      ("Environment leadership","site:kemenlh.go.id (pelantikan menteri OR kepala BPLH OR pejabat)"),
+      ("Power utility leadership","(PLN direktur utama OR RUPSLB PLN)"),
+      ("Upstream and downstream bodies","(SKK Migas kepala OR BPH Migas kepala OR BPMA kepala pelantikan)")
+    ]
+    leads=[];issues=[];seen=set()
+    for topic,query in feeds:
+        try:
+            url="https://news.google.com/rss/search?"+urllib.parse.urlencode({"q":query+" when:21d","hl":"id","gl":"ID","ceid":"ID:id"})
+            with urllib.request.urlopen(urllib.request.Request(url,headers={"User-Agent":AGENT}),timeout=18) as resp:
+                doc=ET.fromstring(resp.read(550000))
+            for item in doc.findall("./channel/item"):
+                title=" ".join((item.findtext("title") or "").split())[:250]
+                if not title or not re.search(r"lantik|jabat|direksi|pergantian|menteri|direktur|kepala|komite|RUPS",title,re.I):continue
+                href=(item.findtext("link") or "").strip()
+                if not href.startswith("https://"):continue
+                try:pub=email.utils.parsedate_to_datetime(item.findtext("pubDate")).astimezone(dt.timezone.utc)
+                except (TypeError, ValueError):continue
+                if NOW-pub>dt.timedelta(days=25):continue
+                source=item.find("source")
+                publisher=(source.text or "").strip() if source is not None else "News index"
+                key=re.sub(r"\W+","",title.lower())[:150]
+                if key in seen:continue
+                seen.add(key)
+                leads.append({"topic":topic,"title":title,"publisher":publisher,"url":href,
+                              "published_at_utc":pub.isoformat(),"verified":False,
+                              "status":"Appointment headline candidate only"})
+        except Exception as ex:
+            issues.append({"source":topic,"error":type(ex).__name__+": "+str(ex)[:160]})
+    leads.sort(key=lambda x:x["published_at_utc"],reverse=True)
+    return leads[:18],issues
+
 def main():
     d=json.loads(DATA.read_text(encoding="utf-8"))
     actors={x["name"]:x for l in d["governance"]["layers"] for x in l["actors"]}
@@ -182,11 +221,13 @@ def main():
     except Exception as ex:
         errors.append({"source":"Official ESDM leadership profile","error":type(ex).__name__+": "+str(ex)[:160]})
 
+    appointment_leads, lead_errors=discover_appointment_leads()
+    errors.extend(lead_errors)
     if changes:
         DATA.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     output={"checked_at_utc":NOW.isoformat(),"verification_method":"Dual official cabinet + ministry-site name agreement for auto-updating ministers; other offices are monitored as source status and require role-specific corroboration.",
             "current_actor_count":len(actors),"official_sources_checked":len(scans),
-            "verified_auto_changes":changes,"requires_review":needs,"checks":scans,"errors":errors,
+            "verified_auto_changes":changes,"requires_review":needs,"appointment_headline_leads":appointment_leads,"checks":scans,"errors":errors,
             "disclaimer":"No change is not evidence that no appointments happened. An unreachable, ambiguous or stale government source must not overwrite the last verified officeholder. No minister names are inferred from news headlines."}
     OUT.parent.mkdir(parents=True,exist_ok=True)
     OUT.write_text(json.dumps(output,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
