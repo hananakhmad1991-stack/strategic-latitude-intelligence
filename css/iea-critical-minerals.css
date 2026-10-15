@@ -1,0 +1,55 @@
+/* Source-attributed IEA Indonesia mineral observations, CC BY 4.0 */
+.sli-iea-panel{min-width:0;margin:24px 0 10px;padding:20px;border-radius:12px;border:1px solid #37536b;background:linear-gradient(145deg,#112e42,#102639);color:#d6e2e9}
+.sli-iea-eyebrow{font-size:10px;letter-spacing:1.65px;font-weight:800;color:#dfc38b;margin:0 0 11px}
+.sli-iea-panel h3{font-size:clamp(19px,2vw,23px);margin:5px 0 11px;color:#f6f7f8}
+.sli-iea-desc,.sli-iea-caveat{font-size:12px;line-height:1.75;color:#b9d0df;margin:8px 0 18px}
+.sli-iea-caveat{background:#193347;padding:12px 14px;border-left:3px solid #dfbf7c;border-radius:5px}
+.sli-iea-stat{border:1px solid #425f73;border-radius:11px;background:#19374c;padding:18px;display:flex;flex-direction:column;gap:7px;min-width:0}
+.sli-iea-national>.sli-iea-stat{max-width:600px}
+.sli-iea-stat-label{font-size:12px;color:#c3d2dd}
+.sli-iea-stat-value{font-size:clamp(26px,3vw,35px);line-height:1.2;color:#e8ca89}
+.sli-iea-stat-period{font-size:11px!important;color:#b7cbd7!important;margin:0!important}
+.sli-iea-stat-basis{font-size:12px!important;line-height:1.6;color:#edf2f4!important;margin:2px 0!important}
+.sli-iea-meter{width:100%;height:12px;overflow:hidden;border-radius:8px;background:#2f5366;margin:9px 0 5px}
+.sli-iea-meter-fill{height:100%;background:#dbb97e;border-radius:8px}
+.sli-iea-foot{margin-top:auto;display:grid;gap:8px;padding-top:9px;border-top:1px solid #39566c}
+.sli-iea-foot p,.sli-iea-material-card p{font-size:11.5px!important;line-height:1.7!important;color:#c1d4de!important;margin:0!important}
+.sli-iea-panel a{color:#efd39c;font-size:11.5px;line-height:1.6;text-decoration:underline;overflow-wrap:anywhere}
+.sli-iea-metric-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.sli-iea-global-context{margin:18px 0;border:1px solid #416176;border-radius:10px;padding:11px;background:#112b40}
+.sli-iea-global-context summary{cursor:pointer;font-weight:700;color:#e5c78b;padding:8px 4px;line-height:1.5}
+.sli-iea-global-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px}
+.sli-iea-global-card{border:1px solid #355671;border-radius:9px;padding:12px;background:#15364d;display:grid;gap:7px}
+.sli-iea-global-card small{color:#c5d5df;font-size:10px}
+.sli-iea-global-card strong{color:#e7ca8d;font-size:21px}
+.sli-iea-global-card h4{font-size:12px;color:#fff;margin:0}
+.sli-iea-global-card p{font-size:11px;line-height:1.5;color:#b8ccdb;margin:0}
+.sli-iea-controls{display:flex;align-items:center;gap:12px;margin:14px 0}
+.sli-iea-controls label{font-size:12px;color:#e8d4a9;font-weight:700}
+.sli-iea-select{padding:10px 12px;border:1px solid #5a7b8b;border-radius:8px;min-width:200px;max-width:100%;background:#18384e;color:#edf4f8;font:inherit}
+.sli-iea-material-detail{padding:17px;background:#152f43;border:1px solid #3c5d74;border-radius:10px}
+.sli-iea-material-head{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.sli-iea-material-head h4{font-size:19px;margin:0;color:#fff}
+.sli-iea-status{border:1px solid #a6a7a0;border-radius:6px;padding:4px 7px;color:#e6d0a4;font-size:10px}
+.sli-iea-material-head p{flex:1 0 100%;font-size:12px;color:#a8c3d4;margin:0 0 12px}
+.sli-iea-material-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.sli-iea-material-card{padding:12px;border:1px solid #3e5a71;background:#112a3c;border-radius:9px}
+.sli-iea-material-card h5,.sli-iea-material-detail>h5{font-size:12px;color:#e7ca90;margin:0 0 7px}
+.sli-iea-material-detail>h5{margin:15px 0 8px}
+.sli-iea-watch{margin:9px 0 14px;padding-left:20px;color:#c5d6df;font-size:12px;line-height:1.7}
+.sli-iea-watch li{margin:5px 0}
+.sli-iea-refs{display:flex;flex-wrap:wrap;gap:13px}
+.sli-iea-sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:10px;margin:12px 0}
+.sli-iea-source{border:1px solid #415d74;border-radius:9px;background:#16354b;padding:12px;display:grid;gap:7px}
+.sli-iea-source strong{font-size:12px;color:#eef4f8}
+.sli-iea-source p{font-size:11px;color:#b8c9d6;line-height:1.6;margin:0}
+.sli-iea-source small{color:#e2c58c;font-size:10px}
+.sli-iea-attribution{font-size:11px;color:#bbccd8;line-height:1.7}
+@media(max-width:650px){
+ .sli-iea-panel{padding:12px}
+ .sli-iea-metric-grid,.sli-iea-global-grid,.sli-iea-material-columns,.sli-iea-sources{grid-template-columns:1fr}
+ .sli-iea-controls{display:grid;grid-template-columns:1fr;gap:5px}
+ .sli-iea-select{width:100%;max-width:none}
+ .sli-iea-stat{padding:13px}
+ .sli-iea-material-detail{padding:11px}
+}
