@@ -34,7 +34,7 @@ vm.runInNewContext(fs.readFileSync(path.join(rootDir,"js/commodity-trade-flow.js
 const all=n=>n instanceof Node?[n,...n.children.flatMap(all)]:[];
 (async()=>{
  await ctx.window.initSLITradeFlow();
- let nodes=all(mount),svg=nodes.find(x=>x.tagName==="svg"&&x.className==="tf-sankey");
+ let nodes=all(mount),svg=nodes.find(x=>x.tagName==="svg"&&x.attributes.class==="tf-sankey");
  assert.ok(svg,"Export Sankey should show by default");
  assert.ok(nodes.some(x=>x.textContent.includes("24.48")||x.textContent.includes("24,48")),"Coal exports must be displayed");
  assert.ok(nodes.some(x=>x.textContent.includes("21.17")||x.textContent.includes("21,17")),"Coal trade balance must display");
