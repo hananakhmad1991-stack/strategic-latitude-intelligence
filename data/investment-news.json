@@ -1,7 +1,65 @@
 {
   "checked_at_utc": null,
-  "scope": "Investment news RSS scanner awaiting first scheduled or manual run; not verified investment data",
-  "source": "Google News RSS indexed publishers",
-  "reports": [],
-  "errors": []
+  "scope": "Curated dated examples until first automatic RSS run; public sources only. Not verified as investment disbursement.",
+  "source": "Editorially curated initial publisher leads; scheduled Google News RSS scan has not been confirmed",
+  "reports": [
+    {
+      "title": "Danantara says stock purchases during selloffs depend on attractive valuations",
+      "url": "https://www.reuters.com/world/asia-pacific/indonesias-danantara-says-it-could-step-during-market-selloffs-if-valuations-2026-10-09/",
+      "publisher": "Reuters",
+      "topic": "Corporate actions & market",
+      "published_at_utc": "2026-10-09T00:00:00+07:00",
+      "evidence_status": "Dated attributed editorial example, not an automatic RSS scan or capital verification"
+    },
+    {
+      "title": "Potential MSCI Indonesia classification change remains under future review",
+      "url": "https://www.reuters.com/world/asia-pacific/indonesias-danantara-says-it-could-step-during-market-selloffs-if-valuations-2026-10-09/",
+      "publisher": "Reuters",
+      "topic": "Rumor & deal watch",
+      "published_at_utc": "2026-10-09T00:00:00+07:00",
+      "evidence_status": "Dated attributed editorial example, not an automatic RSS scan or capital verification"
+    },
+    {
+      "title": "Danantara ownership participation in IDX demutualization under discussion",
+      "url": "https://www.antaranews.com/berita/5765295/demutualisasi-bei-rosan-perkirakan-porsi-saham-danantara-5-10-persen",
+      "publisher": "ANTARA",
+      "topic": "Rumor & deal watch",
+      "published_at_utc": "2026-09-30T00:00:00+07:00",
+      "evidence_status": "Dated attributed editorial example, not an automatic RSS scan or capital verification"
+    },
+    {
+      "title": "Tech stocks fall as AI data-center debt risk draws scrutiny",
+      "url": "https://www.reuters.com/world/china/global-markets-wrapup-1-2026-10-15/",
+      "publisher": "Reuters",
+      "topic": "AI & data centers",
+      "published_at_utc": "2026-10-15T00:00:00+07:00",
+      "evidence_status": "Dated attributed editorial example, not an automatic RSS scan or capital verification"
+    },
+    {
+      "title": "Eleven Weda Bay downstream projects include operating and groundbreaking facilities",
+      "url": "https://www.setneg.go.id/baca/index/presiden_prabowo_luncurkan_11_proyek_hilirisasi_dengan_total_investasi_senilai_rp180_triliun_di_maluku_utara",
+      "publisher": "Secretariat of State Indonesia",
+      "topic": "Smelters & processing",
+      "published_at_utc": "2026-10-08T00:00:00+07:00",
+      "evidence_status": "Dated attributed editorial example, not an automatic RSS scan or capital verification"
+    },
+    {
+      "title": "BAPETEN approval covers Kelasa nuclear site evaluation, not construction",
+      "url": "https://bapeten.go.id/berita/siaran-pers-bapeten-terbitkan-persetujuan-evaluasi-tapak-pltn-di-pulau-kelasa-kepulauan-bangka-belitung-112749?lang=en",
+      "publisher": "BAPETEN",
+      "topic": "Nuclear & SMR",
+      "published_at_utc": "2025-07-30T00:00:00+07:00",
+      "evidence_status": "Dated attributed editorial example, not an automatic RSS scan or capital verification"
+    },
+    {
+      "title": "PGE identifies international financing pipelines for three geothermal projects",
+      "url": "https://pge.pertamina.com/id/siaran-pers/performa-bisnis-kuartal-i-2026-menguat-tiga-proyek-panas-bumi-pge-raih-dukungan-pendanaan-internasional-hingga-us477-87-juta",
+      "publisher": "Pertamina Geothermal Energy",
+      "topic": "Renewable energy",
+      "published_at_utc": "2026-06-05T00:00:00+07:00",
+      "evidence_status": "Dated attributed editorial example, not an automatic RSS scan or capital verification"
+    }
+  ],
+  "errors": [],
+  "curated_as_of": "2026-10-15"
 }
