@@ -73,7 +73,9 @@ function governance(root,data){
  });
 }
 
+let lastPolicyData=null;
 function policies(root,data){
+ lastPolicyData=data;
  const currentLang=()=>window.SLIi18n?.language==="id"?"id":"en";
  const translate=(en,id)=>currentLang()==="id"?id:en;
  section(root,"Energy Policy & Regulatory Update","Enacted instruments, regulatory execution and proposals · with dedicated upstream / downstream oil & gas coverage");
@@ -159,6 +161,12 @@ function policies(root,data){
   if((data.scan_errors||[]).length)note(stories,"Some candidate feeds failed; coverage may be incomplete.");
  })();
 }
+document.addEventListener("sli:languagechange",()=>{
+ const root=document.getElementById("energyPolicyRoot");
+ if(!root||!lastPolicyData)return;
+ root.replaceChildren();
+ policies(root,lastPolicyData);
+});
 function ccs(root,data){
  section(root,"Carbon Capture, Utilisation & Storage (CCS/CCUS)","Geological potential, regulation, project maturity & commercial realisation");
  note(root,data.note,"gov-note gov-caution-note");
