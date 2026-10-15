@@ -6,6 +6,10 @@ on:
       - 'js/research-chapters.js'
       - 'js/iea-critical-minerals.js'
       - 'js/usgs-critical-minerals.js'
+      - 'js/esdm-2025-mineral-performance.js'
+      - 'css/esdm-2025-mineral-performance.css'
+      - 'data/esdm-2025-mineral-performance.json'
+      - 'tests/qa-esdm-2025-mineral-performance.mjs'
       - 'css/usgs-critical-minerals.css'
       - 'data/usgs-indonesia-minerals-2026.json'
       - 'tests/qa-usgs-critical-minerals.mjs'
@@ -45,6 +49,7 @@ jobs:
           node tests/qa-research-dashboard.mjs
           node tests/qa-iea-critical-minerals.mjs
           node tests/qa-usgs-critical-minerals.mjs
+          node tests/qa-esdm-2025-mineral-performance.mjs
           node tests/qa-sector-organigrams.mjs
           node tests/qa-command-hierarchy.mjs
           node tests/qa-energy-institution-explorer.mjs
