@@ -9,7 +9,7 @@ const emitter=fs.readFileSync("scripts/daily_energy_assessment.py","utf8");
 const data=JSON.parse(fs.readFileSync("data/daily-energy-assessment.json","utf8"));
 const orig=JSON.parse(fs.readFileSync("data/energy-infrastructure-security.json","utf8"));
 const policy=JSON.parse(fs.readFileSync("data/energy-governance-ccs.json","utf8"));
-for(const source of [governance,assessment,fs.readFileSync("js/i18n.js","utf8"),
+for(const source of [governance,assessment,fs.readFileSync("js/energy-appendix.js","utf8"),fs.readFileSync("js/i18n.js","utf8"),
  fs.readFileSync("js/energy-ev.js","utf8"),fs.readFileSync("js/energy-biofuels.js","utf8")])new Function(source);
 const script=index.match(/<script>([\s\S]*?)<\/script>\s*<\/body>/);
 assert(script,"Expected main inline dashboard script");
@@ -32,7 +32,7 @@ for(const match of html.matchAll(markup)){
 }
 assert.equal(stack.length,0,"Unclosed structural HTML elements");
 
-const order=["es-governance","es-scorecard","es-supply","es-economics","es-transition","es-monitoring","es-evidence","es-assessment"];
+const order=["es-governance","es-scorecard","es-supply","es-economics","es-transition","es-monitoring","es-evidence","es-assessment","es-appendix"];
 const positions=order.map(id=>html.indexOf('id="'+id+'"'));
 assert(positions.every(x=>x>=0));assert(positions.every((x,i)=>i===0||x>positions[i-1]),"Invalid strategic-to-technical section order");
 const mounts=[
@@ -40,10 +40,11 @@ const mounts=[
  "energyFundamentalsRoot","energyFiscalRoot","energyPriceSection","energyBiofuelsRoot","energyEVRoot",
  "energyRUEDRoot","energyTransitionRoot","domesticRadarRoot","geoEvents","geoTopic","geoSearch",
  "energyChart","energyMetric","energyStyle","energyFrom","energyReset","energyCsv",
- "energyOverallAssessment"
+ "energyOverallAssessment","energyAppendixRoot"
 ];
 for(const id of mounts){const count=html.split('id="'+id+'"').length-1;assert.equal(count,1,"Mount id missing/duplicated: "+id)}
 assert(html.indexOf('id="energyOverallAssessment"')>html.indexOf('id="energyEventsRoot"'));
+assert(html.indexOf('id="es-appendix"')>html.indexOf('id="energyOverallAssessment"'),"Appendix must follow full final assessment");
 assert(!html.includes('<h2>Strategic implications for Indonesia</h2>'),"Redundant analysis section survives");
 assert(!html.includes('<h2>Priority monitoring questions</h2>'),"Redundant monitoring questions survive");
 assert.equal((html.match(/<h3>HIP Biodiesel<\/h3>/g)||[]).length,0,"Duplicate standalone biodiesel price card");
@@ -58,4 +59,21 @@ assert(!emitter.includes('f"{number:,.{places}f}".rstrip("0")'),"Daily generator
 assert(orig.refinery?.units.length>=6 && policy.governance?.layers?.length>=5,"Data source unexpectedly absent");
 assert(fs.existsSync("css/energy-information-architecture.css"));
 assert(index.includes('css/energy-information-architecture.css'));
-console.log("SLI editorial hierarchy passes: 8 ordered stages; "+mounts.length+" unique active roots; narrative, source register, risk hygiene and script parsing checked.");
+assert(index.includes('css/energy-appendix.css')&&index.includes('js/energy-appendix.js'),"Glossary assets not linked");
+assert(script[1].includes('initSLIEnergyAppendix()'),"Appendix is not initialized");
+assert(html.includes('data-sli-no-translate'),"Glossary terms must be protected from automatic translation substitutions");
+const glossary=JSON.parse(fs.readFileSync("data/energy-appendix.json","utf8"));
+assert(glossary.items.length>=70,"Glossary missing required terms");
+assert.equal(new Set(glossary.items.map(x=>x.term.toLowerCase())).size,glossary.items.length,"Duplicate glossary term");
+assert.deepEqual(new Set(glossary.categories.map(x=>x.id)),new Set(["institution","technology","unit"]));
+for(const entry of glossary.items){
+ assert(glossary.categories.some(x=>x.id===entry.category),"Invalid category for "+entry.term);
+ assert(["term","en","id","note_en","note_id"].every(k=>typeof entry[k]==="string"&&entry[k].trim()),"Incomplete bilingual entry "+entry.term);
+}
+for(const term of ["EBT / NRE","EBTKE / NREEC","B40 / B50","SPKLU","SPBKLU","4A","kbpd","Mbpd","MMSCFD","TSCF","Mt / MtCO₂e","MW"]) {
+ const terms=glossary.items.map(x=>x.term);
+ if(term==="MW")assert(terms.some(t=>t.includes("MW")),"Power unit missing");
+ else assert(terms.includes(term),"Missing common Energy Security term "+term);
+}
+
+console.log("SLI editorial hierarchy passes: 9 ordered stages; "+mounts.length+" unique active roots; "+glossary.items.length+" bilingual appendix terms and units; narrative, source register, risk hygiene and script parsing checked.");
