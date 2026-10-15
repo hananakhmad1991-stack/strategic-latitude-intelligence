@@ -978,7 +978,6 @@
     "plan_window": "2025–2034",
     "publication_date": "2025-05-26",
     "planning_not_operational": true,
-    "total_new_generation_GW": 69.5,
     "capacity_GW": [
       {
         "technology": "Solar PV",
@@ -1014,7 +1013,8 @@
       }
     ],
     "source_url": "https://gatrik.esdm.go.id/assets/uploads/download_index/files/06524-bahan-dirut-pln.pdf",
-    "explanation": "RUPTL planned additional capacities by technology. These are not current installed capacity or signed contracts. Solar PV MW, floating solar MWp, pumped storage MW and nuclear MWe are not directly additive as homogeneous generation."
+    "explanation": "RUPTL 69.5GW planned additional system capacity includes generation technologies AND 10.3GW storage. Entries are programme targets (not operational assets) and not independently additive to named project capacities. Do not count pumped storage or BESS as net renewable generation.",
+    "total_planned_system_capacity_GW": 69.5
   },
   "nuclear_status_note": "Indonesia nuclear power: no independently verified commercial nuclear electric generating plant is operating as of the source-date snapshot. The RUPTL 500 MW proposal and Thorcon 500 MWe licensing-stage plan are separate references; do not interpret either as built capacity."
 }
