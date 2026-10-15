@@ -11,7 +11,7 @@ const tag=(text,cls="gov-tag")=>E("span",cls,text);
 function governance(root,data){
  section(root,"01 · Institutional Structure & Actor Analysis","Strategic authority → regulation / oversight → investment / execution");
  note(root,data.warning);
- const headline=E("div","gov-chain");["President & DEN | national priorities","ESDM / Finance / Bappenas | policy, planning, fiscal","Regulators & SKK Migas / BPMA | permits, oversight","PLN / Pertamina / private operators | project execution"].forEach((x,i)=>{if(i)headline.append(E("span","gov-arrow","→"));headline.append(E("div","gov-node",x))});root.append(headline);
+ const headline=E("div","gov-chain");["President & DEN | national priorities","New Kemenko Hilirisasi & Transisi Energi | coordination","ESDM / Finance / Bappenas | regulation, fiscal & planning","Regulators / SKK Migas / BPMA | technical oversight","PLN / Pertamina / private operators | actual execution"].forEach((x,i)=>{if(i)headline.append(E("span","gov-arrow","→"));headline.append(E("div","gov-node",x))});root.append(headline);
  const controls=E("div","gov-controls"),search=E("input","gov-input"),kind=elSelect([["all","All actor types"],...["Strategy","Regulator","Fiscal","Planning","Implementer","Operator","Financier","Research"].map(x=>[x,x])]);
  search.placeholder="Find agency, official, responsibility…";search.setAttribute("aria-label","Search actors");
  controls.append(search,kind);root.append(controls);
@@ -75,7 +75,7 @@ function policies(root,data){
   }
   const stamp=new Date(data.checked_at_utc);
   const stampLabel=isNaN(stamp.getTime())?"unknown":stamp.toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Jakarta"})+" WIB";
-  const relevant=kind==="policy"?(data.items||[]):(data.reports||[]).filter(x=>x.topic_id==="policy"&&/aturan|regulasi|perpres|permen|kebijakan|izin|etanol|subsidi|kuota|energi/i.test(x.title||""));
+  const relevant=kind==="policy"?(data.items||[]).filter(x=>x.group==="ESDM legal instrument candidates"?/peraturan menteri|keputusan menteri|perpres|permen/i.test(x.title||""):/perpres|permen|peraturan|regulasi|kebijakan|menko|transisi energi|tarif listrik|subsidi|moratorium|B50|E50/i.test(x.title||"")):(data.reports||[]).filter(x=>x.topic_id==="policy"&&/aturan|regulasi|perpres|permen|kebijakan|izin|etanol|subsidi|kuota|energi/i.test(x.title||""));
   check.textContent=(kind==="policy"?"Official-source candidate scan: ":"Fallback domestic policy-news scan: ")+stampLabel+" · "+relevant.length+" attributed leads · NOT legal enactment verification"+(data.stale_previous_results?" · stale data":"");
   relevant.slice(0,5).forEach(x=>{
    const row=E("div","gov-lead");row.append(LINK(x.url,x.title),E("div","gov-meta",(x.publisher||"Source")+" · candidate only; verify original legal text / effective date before promotion"));stories.append(row);
