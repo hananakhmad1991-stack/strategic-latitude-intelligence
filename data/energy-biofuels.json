@@ -101,7 +101,16 @@
     "primary": "Palm oil-derived FAME/CPO derivatives",
     "upstream_dependency": "Competition for palm oil with food, oleochemicals and exports; feedstock demand depends on yield and process efficiencies, not a naive 1:1 CPO-to-FAME conversion.",
     "risk": "CPO supply and weather, land-use sustainability, export levy revenues, terminal blending logistics, fuel specs, machinery compatibility",
-    "source": "https://www.esdm.go.id/id/media-center/arsip-berita/kawal-implementasi-b50-kementerian-esdm-perkuat-uji-teknis-dan-dialog-dengan-industri-otomotif"
+    "source": "https://www.esdm.go.id/id/media-center/arsip-berita/kawal-implementasi-b50-kementerian-esdm-perkuat-uji-teknis-dan-dialog-dengan-industri-otomotif",
+    "stats_2026": {
+      "period": "2026-H1",
+      "total_palm_products_output_million_tonnes": 30.28,
+      "domestic_palm_oil_biodiesel_use_million_tonnes": 6.57,
+      "year_2026_forecast_palm_use_for_biodiesel_million_tonnes": 14.69,
+      "source": "https://dev.gapki.id/news/2026/09/21/produksi-cpo-cukup-untuk-b50-tetapi-produktivitas-harus-jadi-kunci-menjaga-ekspor/",
+      "attribution": "GAPKI/industry estimate, not an ESDM audited FAME kL figure",
+      "caveat": "Tonnes of palm oil supply/feedstock are not equivalent to kiloliters of FAME biodiesel; do not add or compare numerically without validated conversion yields."
+    }
   },
   "ethanol": {
     "status": "E20 discussed/planned; not evidenced as nationwide implemented mandate as of this dataset date",
