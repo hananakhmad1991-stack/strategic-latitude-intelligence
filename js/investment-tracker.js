@@ -110,10 +110,31 @@ window.initSLIInvestment=async function(){
   for(const record of projectRows){if(!existing.has(record.name))records.push(record);}
   values[3].textContent=records.length+" sourced";
   const detail=$("div","pf-table-wrap");
-  const t=$("table");t.innerHTML="<thead><tr><th>Company / project</th><th>Reported amount</th><th>Amount classification</th><th>Implementation & next milestone</th><th>Source</th></tr></thead>";
+  const t=$("table");t.innerHTML="<thead><tr><th>Company / project</th><th>Sector · status</th><th>Announced project value</th><th>Verified spent capital</th><th>Next delivery milestone</th><th>Source / ownership</th></tr></thead>";
   const body=$("tbody");
-  projectRows.forEach(x=>{const tr=$("tr");[x.name+" · "+x.investor,x.reported_amount===null?"Not disclosed in cited source":x.currency+" "+x.reported_amount,x.amount_basis,x.status_note+" · Next: "+x.next_step].forEach(v=>tr.append($("td",null,v)));const td=$("td");td.append(source(x.source_url,"Official release"));tr.append(td);body.append(tr)});
-  t.append(body);detail.append(t);section.append($("h3",null,"Company investment amounts & verification caveats"),detail);
+  const dateLabel=(x)=>x.evidence_date||"Undated";
+  projectRows.forEach(x=>{
+   const tr=$("tr");
+   const named=$("td");named.append($("strong",null,x.name),$("p","tr-detail",x.investor));tr.append(named);
+   tr.append($("td",null,x.sector+" · "+x.stage+" · evidence "+dateLabel(x)));
+   const amount=$("td");amount.append($("strong",null,x.reported_amount===null?"Not disclosed":x.currency+" "+Number(x.reported_amount).toLocaleString("en-US")));amount.append($("p","tr-detail",x.amount_basis));tr.append(amount);
+   const actual=$("td");actual.append($("strong",null,x.capex_realized===null||x.capex_realized===undefined?"Not independently verified":String(x.capex_realized)));
+   actual.append($("p","tr-detail","Not zero. Project cost / FID / debt does not equal actual capital spent."));tr.append(actual);
+   const milestone=$("td");milestone.append($("p",null,x.status_note),$("p","tr-detail","Next: "+x.next_step));tr.append(milestone);
+   const src=$("td");src.append(source(x.source_url,"Project disclosure"));
+   if(x.initial_commitment_source){src.append($("p","tr-detail",null),source(x.initial_commitment_source,"Original amount source"));}
+   if(x.ownership_ref){
+    const ref=$("a",null,"Ownership dossier ↗");ref.href="#inv-owner-"+x.ownership_ref;ref.addEventListener("click",evt=>{
+     const card=document.getElementById("inv-owner-"+x.ownership_ref);
+     if(card){evt.preventDefault();card.open=true;card.scrollIntoView({behavior:"smooth",block:"start"});}
+    });src.append($("p","tr-detail",null),ref);
+   }else src.append($("p","tr-detail","Ownership mapping pending independent verification"));
+   tr.append(src);body.append(tr);
+  });
+  t.append(body);detail.append(t);
+  section.append($("h3",null,"Investment execution & company evidence ledger"),$("p","tr-detail","Amounts are attributed to public sources. An unreported realized-capex field is unknown, not zero. Facility operation confirms physical delivery, not the total value disbursed."),detail);
+  const issue=$("div","tr-note");issue.append($("strong",null,"Reconciliation rule: "),document.createTextNode("Do not add commitments from a multi-year program, its subprojects, corporate debt, an FID and national BKPM realization as though they were independent investment flows."));
+  section.append(issue);
   const rt=$("table");rt.innerHTML="<thead><tr><th>Sector / scope</th><th>PNBP (Rp trillion)</th><th>Period</th><th>Source</th></tr></thead>";
   const rb=$("tbody");
   (evidence.revenue||[]).forEach(x=>{const tr=$("tr");[x.sector,x.value.toLocaleString("id-ID"),x.period].forEach(v=>tr.append($("td",null,v)));const td=$("td");td.append(source(x.source,"ESDM"));tr.append(td);rb.append(tr)});rt.append(rb);revenueTable.append(rt);
