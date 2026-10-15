@@ -64,7 +64,7 @@ window.initSLIInvestmentAssets=async function(){
   count.textContent=rows.length+" of "+d.records.length+" sourced asset and agreement dossiers · contract/production quantities cannot be summed across sectors";
   body.replaceChildren();
   for(const x of rows){
-   const tr=el("tr"),title=el("div","inv-asset-title",x.asset);title.append(el("small",null,x.region+" · "+x.sector));const name=el("td");name.append(title);tr.append(name);
+   const tr=el("tr");tr.id="sli-asset-"+x.id;const title=el("div","inv-asset-title",x.asset);title.append(el("small",null,x.region+" · "+x.sector));const name=el("td");name.append(title);tr.append(name);
    for(const val of [x.operator,x.legal+" · "+(x.contract_end||"Expiry not established"),x.production?fmtOutput(x.production)+" · "+x.production.period:x.capacity?fmtCapacity(x.capacity)+" · "+x.capacity.label:"No reported output / capacity",fAmount(x.investment)+" · "+x.stage])tr.append(el("td",null,val));
    const button=el("button","inv-view","View dossier");button.type="button";button.setAttribute("aria-label","View dossier for "+x.asset);button.addEventListener("click",()=>{selected=x.id;details(x);body.querySelectorAll("tr").forEach(r=>r.classList.toggle("inv-row-selected",r===tr));dossier.scrollIntoView({behavior:"smooth",block:"start"})});
    const cell=el("td");cell.append(button);tr.append(cell);if(selected===x.id)tr.classList.add("inv-row-selected");body.append(tr);
@@ -73,6 +73,14 @@ window.initSLIInvestmentAssets=async function(){
   const current=rows.find(x=>x.id===selected);details(current||null);
  }
  for(const input of [q,sector,stage])input.addEventListener(input===q?"input":"change",draw);draw();
+ const onAssetRequest=event=>{
+  const id=event?.detail?.id,record=d.records.find(x=>x.id===id);if(!record||!root.isConnected)return;
+  q.value="";sector.value="all";stage.value="all";selected=id;draw();
+  details(record);
+  const row=document.getElementById("sli-asset-"+id);
+  if(row){row.classList.add("inv-row-selected");row.scrollIntoView({behavior:"smooth",block:"center"});}
+ };
+ root.addEventListener("sli:openinvestmentasset",onAssetRequest);
  const methodology=el("details","inv-asset-method");methodology.append(el("summary",null,"Why PSC, IUPK, corporate shares, and MoUs have different data fields"));
  const ul=el("ul");for(const note of d.methodology.distinctions)ul.append(el("li",null,note));methodology.append(ul);root.append(methodology);
 };
