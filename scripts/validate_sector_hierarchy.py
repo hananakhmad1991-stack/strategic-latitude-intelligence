@@ -28,6 +28,19 @@ for sector,group in obj["sectors"].items():
         actor=by_id.get(id,{})
         if actor.get("parent")!="pres" or actor.get("relation")!=relation or actor.get("person")!=person:
             errors.append(sector+": invalid top-level economic coordination/national planning hierarchy: "+id)
+    # A cross-ministry coordinator is directly tied to the President, never the technical DG.
+    menko=by_id.get("kemenkohilir",{})
+    if menko.get("parent")!="pres" or menko.get("person")!="Bahlil Lahadalia" or menko.get("lane")!="government":
+        errors.append(sector+": Kemenko Hilirisasi must be a sourced national-level coordinating ministry")
+    for x in nodes:
+        if x.get("id") not in ("pres",) and x.get("lane") not in ("government","state","oversight"):
+            errors.append(sector+": incorrectly classified public sector node "+x["id"])
+    for x in group["market"]:
+        if x.get("lane")!="private" or x.get("ownership_category") not in ("domestic","foreign","joint"):
+            errors.append(sector+": misclassified independent private/foreign company "+x["id"])
+    for x in nodes:
+        if x.get("lane")=="state" and x.get("relation") in ("policy","planning","security"):
+            errors.append(sector+": state corporate actor placed in regulator hierarchy "+x["id"])
     if sector=="minerals":
         for id in ["bpi","dam","mind","antam","ptba","inalum","timah","freeport","vale","dsi","brin","defense"]:
             if id not in by_id:errors.append(sector+": critical required actor missing "+id)
