@@ -118,7 +118,7 @@ function classifyRecord(r){
   c=result("Digital & AI",/cloud region|aws asia pacific|indonesia central/.test(name)?"Cloud Region / Services":/mou|cooperation|programme|program|proposal/.test(name)?"AI Programme / Agreement":"Physical Data Centre");
  }else if(r.kind==="industry"&&/biodiesel/.test(rawGroup)||/biofuels|bioenergy|biodiesel|fame/.test(rawSector+" "+rawGroup)||/\bbiodiesel\b|\bfame\b/.test(name)){
   c=result("Biofuels & Bioenergy",/biodiesel|\bfame\b/.test(name+rawGroup)?"Biodiesel / FAME Plant":"Bioenergy / Feedstock");
- }else if(r.kind==="industry"&&/smelter|processing/.test(rawGroup)||r.kind==="sites"&&rawGroup==="processing"||/smelters|critical minerals|^minerals$/.test(rawSector)||/smelter|metal refin|ferronickel|alumina/.test(name)){
+ }else if(r.kind==="smelters"||r.kind==="industry"&&/smelter|processing/.test(rawGroup)||r.kind==="sites"&&rawGroup==="processing"||/smelters|critical minerals|^minerals$/.test(rawSector)||/smelter|metal refin|ferronickel|alumina/.test(name)){
   c=result("Minerals & Metals",/smelt|processing|refin|matte|ferronickel|alumina|npi|hpal|rkef/.test(name+" "+rawGroup)?"Smelter & Metal Refining":/battery|ecosystem|downstream/.test(name)?"Mineral / Battery Materials Project":"Mineral Mine & Exploration");
  }else if(rawSector==="coal"||rawGroup==="coal"||/coal mining/.test(words)){
   c=result("Coal Mining","Coal Mine & Logistics");
