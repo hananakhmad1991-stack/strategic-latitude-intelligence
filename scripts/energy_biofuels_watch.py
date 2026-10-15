@@ -22,9 +22,10 @@ TRACKS=[
  ("Distribution","(biodiesel OR B50 OR biosolar) (terminal OR SPBU OR distribusi OR pasokan) Indonesia"),
  ("Bioethanol","(bioetanol OR E10 OR E20 OR etanol bahan bakar) (ESDM OR Pertamina OR Indonesia)"),
  ("Sustainability","(biodiesel OR bioetanol) (emisi OR deforestasi OR pangan OR penggunaan lahan OR sertifikasi) Indonesia"),
+ ("SAF","(bioavtur OR sustainable aviation fuel OR green refinery) (Pertamina OR Cilacap OR Dumai OR Indonesia)"),
  ("Prices","(HIP biodiesel OR harga biodiesel OR BPDP biodiesel) Indonesia")
 ]
-TOPIC=re.compile(r"\b(biodiesel|bioetanol|bioethanol|biosolar|biofuel|b50|b40|e10|e20|e50|fame|bahan bakar nabati|bbn|hip bbn)\b",re.I)
+TOPIC=re.compile(r"\b(biodiesel|bioetanol|bioethanol|biosolar|biofuel|b50|b40|e10|e20|e50|fame|bioavtur|sustainable aviation fuel|green refinery|bahan bakar nabati|bbn|hip bbn)\b",re.I)
 ALLOWED=re.compile(r"^(ANTARA|Kompas|detik|CNBC Indonesia|Bisnis|Kontan|Katadata|Tempo|The Jakarta Post|CNN Indonesia|Bloomberg Technoz|Kementerian ESDM|Ditjen EBTKE|BPH Migas|BPDP|Pertamina|Kementerian Perdagangan|Kementerian Pertanian|GAPKI|APROBI)",re.I)
 OFFICIAL_ENDINGS=("esdm.go.id","bpdp.or.id","pertamina.com","go.id")
 NOW=dt.datetime.now(dt.timezone.utc)
