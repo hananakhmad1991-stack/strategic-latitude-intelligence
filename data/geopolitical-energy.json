@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-15T15:41:13.162247+00:00",
+  "checked_at_utc": "2026-10-15T18:42:09.078947+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -37,6 +37,23 @@
       "status": "Unverified aggregated news lead"
     },
     {
+      "topic": "Red Sea and Bab el-Mandeb",
+      "topic_id": "oil_shipping",
+      "type": "Maritime chokepoint",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "general",
+      "title": "Two ships sink near Hormuz after being hit by projectiles amid surge in attacks - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVlQtcHJibXBpYWEwWTQ4dFdfWUFJbTVteGY0WThGcTFybEdUTERvVG9DcGdoY09vUjh0TG1QeG5zMWx0LTFvV09teVNXY1NLdXZVNlpuMVBIV3pndWJKWVBRdENjLVd0dnVwdUxPTHFPU002S0ZqR0lkcjgyNVl2ZFFXc05MdTJHenM3LVNUSlBUb1RyeDVxY3VTdUxEamxrbS1OXzJJR3o3SlltandncHAwVXFNSTFYcmJXblh2U25vN2xMMW1ibQ?oc=5",
+      "indexed_at_utc": "2026-10-14T12:49:00+00:00",
+      "impact_pathway": "Routing changes -> transit time and shipping insurance -> delivered commodity cost",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
       "topic": "Russia and energy sanctions",
       "topic_id": "oil_sanctions",
       "type": "Geoeconomic",
@@ -45,10 +62,10 @@
         "oil_gas"
       ],
       "subsector": "downstream",
-      "title": "Eight crew missing after drone attack leaves tanker ablaze off Romania's coast - BBC",
+      "title": "Seven crew missing after drone attack leaves tanker ablaze off Romania's coast - BBC",
       "publisher": "BBC",
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA0OXJ4RE9wV0VmeUZhMlRkczVwcXB1UGl3aENvbm5TeERrVWNCQnc4cGFVZWRZWEQ1d0pfbURXa21uanFDdUlld01rOTJBYkYtN3ZDZFg4RlpIeUU?oc=5",
-      "indexed_at_utc": "2026-10-15T11:12:54+00:00",
+      "indexed_at_utc": "2026-10-15T14:51:30+00:00",
       "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -130,10 +147,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil Market Report - October 2026 - IEA - International Energy Agency",
-      "publisher": "IEA - International Energy Agency",
-      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9OQmtselAxckpkSnVscEVwVEZyRHRYaUs4aUJucmhrcUZ4NGVyTW42YlViMjI5aHFuX2dJQUFKTVVpc040V0l2SEhQT2N5aFBYTTVPajJyeVV4U3A0Ni1hZHQxTnJRYjhiZEE?oc=5",
-      "indexed_at_utc": "2026-10-14T08:00:00+00:00",
+      "title": "U.S. crude oil prices rise as investors assess Middle East supply risks - CNBC",
+      "publisher": "CNBC",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1DVlpiaVB3TDNMcWszU0s4YVotdmZpYjUzVDVkZ1EwWU5nNTVfWDlsbVI2eVJHRHB6NDJrbXNONEtCdzFoWDJmVDF5V0ltWk5HUE1DMVNWRlhPREYtSmhMZEZUOUN6QnI3d2ZadVYwNErSAXZBVV95cUxNTnU2bkR5aVZmeE40Q3o5cjE5bmNZT2NLRVJhbnkwVzdyNFBHY0JNREQ2NjFfdy1GWEUwblVobnBYRHhiRUw4RkpLN3B6WngycUdQeTJkQlVuYVB0ekhlLUJEeVJBXzJzQlM1X1BQbGxLQmMtdndn?oc=5",
+      "indexed_at_utc": "2026-10-15T04:09:18+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -147,10 +164,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "‘From liabilities to goldmines’: refineries eye record profits from diesel shortage | Oil and gas companies - The Guardian",
-      "publisher": "The Guardian",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxObG5YWndtYmhpZG1OSWNWSmp1R1NXSjFTMWhYUk5DalR1UF9ONUpaWGlMUkRDdWdFSGR1ZDVoaU9CTW1GdzZmWi1lV3QwZjhLdnh1ZFBFZy1wZ3l4RENnQTdneDV1UkJSVVJKSmhXREVTejQwSURZVWdfTXliNlBsQWM1NTVNU296VU9OSzJwYTdXeW5qcUhjSVkyZXRIVGlqNUJ3YzRxSDY?oc=5",
-      "indexed_at_utc": "2026-10-14T17:37:00+00:00",
+      "title": "Oil Market Report - October 2026 - IEA - International Energy Agency",
+      "publisher": "IEA - International Energy Agency",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9OQmtselAxckpkSnVscEVwVEZyRHRYaUs4aUJucmhrcUZ4NGVyTW42YlViMjI5aHFuX2dJQUFKTVVpc040V0l2SEhQT2N5aFBYTTVPajJyeVV4U3A0Ni1hZHQxTnJRYjhiZEE?oc=5",
+      "indexed_at_utc": "2026-10-14T08:00:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -208,7 +225,7 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 7,
+    "oil_gas": 8,
     "coal": 4,
     "nre": 1,
     "electricity": 0,
