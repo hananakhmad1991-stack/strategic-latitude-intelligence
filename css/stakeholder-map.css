@@ -100,3 +100,8 @@
 .stake-ownership-note{margin:13px 2px;padding:10px;border-left:2px solid #d5bd82;background:#1c3445}
 .stake-ownership-links{display:flex;gap:14px;flex-wrap:wrap}
 @media(max-width:690px){.stake-ownership-rows{grid-template-columns:1fr}.stake-ownership-box{padding:12px}}
+
+/* For larger corporate/BUMS groups, scroll vertically at legible node size rather than downscale labels. */
+.stake-canvas[data-view="layer"]{max-height:690px;overflow-y:auto;scrollbar-color:#698496 #0c2438}
+.stake-canvas[data-view="layer"] .stake-svg{max-height:none}
+@media(max-width:690px){.stake-canvas[data-view="layer"]{max-height:540px}}
