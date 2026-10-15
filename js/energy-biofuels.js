@@ -60,7 +60,7 @@ async function radar(root,force){
   const age=t&&Number.isFinite(t.getTime())?(Date.now()-t.getTime())/3600000:null;
   add(out,"p","bio-note","Last public-source scan: "+(t?t.toLocaleString("id-ID",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB":"unknown")+
     (age!==null&&age>6?" · STALE (>6 hours)":"")+(d.errors&&d.errors.length?" · source errors reported":"")+". Headlines are discovery leads, not confirmed incidents or enacted regulations.");
-  const controls=el("div","bio-chips");const types=["All","Policy","Capacity","Production","Feedstock","Distribution","Bioethanol","Sustainability","Prices"];const list=el("div","bio-radar-list");out.append(controls,list);
+  const controls=el("div","bio-chips");const types=["All","Policy","Capacity","Production","Feedstock","Distribution","Bioethanol","Sustainability","Prices","SAF"];const list=el("div","bio-radar-list");out.append(controls,list);
   const news=(d.items||[]).filter(x=>x.title&&x.url);
   function draw(type){list.replaceChildren();const showing=news.filter(x=>type==="All"||x.category===type).slice(0,18);
     if(!showing.length)note(list,"No attributable current source candidates for this category. Absence does not prove no incidents.");
