@@ -8,13 +8,14 @@ const label=(parent,name,value)=>{const p=el("p","inv-asset-field");p.append(el(
 const fAmount=a=>a?.amount==null?"Not independently disclosed":a.unit+" "+Number(a.amount).toLocaleString("en-US");
 window.initSLIInvestmentAssets=async function(){
  const root=document.getElementById("investmentAssetsRoot");if(!root)return;
- root.replaceChildren(el("p","tr-detail","Loading WK/KKKS, mining concessions and digital infrastructure dossiers…"));
+ root.replaceChildren(el("p","tr-detail","Loading WK/KKKS, solar, hydro, wind, geothermal, nuclear, mining and digital infrastructure dossiers…"));
  let d;
  try{const res=await fetch("data/investment-operator-assets.json",{cache:"no-store"});if(!res.ok)throw Error("File not yet published");d=await res.json();if(!Array.isArray(d.records))throw Error("Invalid data schema")}
  catch(err){root.replaceChildren(el("p","tr-detail","Verified asset registry is not available yet. No project or production values have been inferred."));console.error("[SLI] asset intelligence",err);return}
  root.replaceChildren();
  const counts=el("div","inv-asset-stats");
- const coveredSectors=["Oil & Gas","Coal","Minerals","Smelters & Processing","Biofuels & Bioenergy","Renewable Energy","Electric Vehicles","AI / Data Center"];
+ const priority=["Oil & Gas","Coal","Minerals","Smelters & Processing","Biofuels & Bioenergy","Renewable Energy","Solar PV","Hydropower & Storage","Wind","Nuclear (New Energy)","Electric Vehicles","AI / Data Center"];
+ const coveredSectors=[...priority.filter(x=>d.records.some(y=>y.sector===x)),...[...new Set(d.records.map(x=>x.sector))].filter(x=>!priority.includes(x)).sort()];
  for(const sector of coveredSectors){const value=d.records.filter(x=>x.sector===sector).length;const c=el("div","inv-asset-stat");c.append(el("span",null,sector),el("strong",null,value));counts.append(c)}root.append(counts);
  root.append(el("p","tr-detail","Research snapshot "+(d.as_of||"unknown")+". A row may represent an upstream PSC, a company mine, a project or a government MoU — not identical legal/production units. Values refer only to the source period."));
  if(Array.isArray(d.macro_sector_benchmarks)&&d.macro_sector_benchmarks.length){
@@ -26,8 +27,22 @@ window.initSLIInvestmentAssets=async function(){
   }
   root.append(wrap)
  }
+ if(d.ruplt_2025_2034&&Array.isArray(d.ruplt_2025_2034.capacity_GW)){
+  const plan=d.ruplt_2025_2034,box=el("details","inv-asset-method");box.open=true;
+  box.append(el("summary",null,"RUPTL PLN "+plan.plan_window+" — planned capacity by energy technology (not installed)"));
+  const note=el("p","tr-detail","Total new generation planned: "+plan.total_new_generation_GW+" GW across ALL generation technologies. The breakdown below is a selected technology plan, including storage, and must not be summed with site-specific projects or interpreted as commissioned electricity supply.");box.append(note);
+  const bars=el("div","inv-ruptl-grid");
+  for(const entry of plan.capacity_GW){
+   const row=el("div","inv-ruptl-row"),head=el("div","inv-stake-head");
+   head.append(el("span",null,entry.technology),el("strong",null,Number(entry.value).toLocaleString("en-US")+" GW"));
+   const track=el("div","inv-stake-track"),fill=el("div","inv-stake-fill");fill.style.width=(100*entry.value/17.1)+"%";track.append(fill);row.append(head,track);bars.append(row)
+  }
+  box.append(bars,el("p","tr-detail",plan.explanation),link(plan.source_url,"PLN / ESDM 2025-2034 RUPTL source"));
+  root.append(box)
+ }
+ if(d.nuclear_status_note){const caution=el("div","tr-note");caution.append(el("strong",null,"Nuclear licensing boundary: "),document.createTextNode(d.nuclear_status_note));root.append(caution)}
  const controls=el("div","inv-asset-controls"),q=el("input","tr-select"),sector=el("select","tr-select"),stage=el("select","tr-select");
- q.type="search";q.placeholder="Search WK, KKKS, IUPK, operator, investor or country…";q.setAttribute("aria-label","Search sector operator assets");
+ q.type="search";q.placeholder="Search WK, PLTS, PLTA, PLTB, PLTN, KKKS, operator or investor…";q.setAttribute("aria-label","Search sector operator assets");
  const mk=(s,values)=>values.forEach(([value,title])=>{const o=el("option",null,title);o.value=value;s.append(o)});
  mk(sector,[["all","All sectors"],...coveredSectors.map(x=>[x,x])]);
  mk(stage,[["all","All statuses"],...[...new Set(d.records.map(x=>x.stage))].sort().map(x=>[x,x])]);
