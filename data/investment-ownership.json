@@ -228,6 +228,110 @@
           "url": "https://www.vale.com/in/indonesia/indonesia-growth-projects-pomalaa/-/categories/64940"
         }
       ]
+    },
+    {
+      "id": "ptba",
+      "entity": "PT Bukit Asam Tbk (PTBA)",
+      "sector": "Energy",
+      "ownership_as_of": "2025-12-31",
+      "evidence_tier": "PTBA annual report 2025 share register",
+      "direct_shareholders": [
+        {
+          "name": "MIND ID (Series B)",
+          "pct": 65.93
+        },
+        {
+          "name": "Public (Series B)",
+          "pct": 34.02
+        },
+        {
+          "name": "Treasury shares (Series B)",
+          "pct": 0.05
+        }
+      ],
+      "ownership_chain": "MIND ID is the majority Series B holder. The Republic of Indonesia additionally holds five Series A Dwiwarna shares; those special shares are a separate rights class and cannot be measured by percentage alone.",
+      "control": "Majority corporate ownership through MIND ID; direct control rights and operational authorizations are not interchangeable.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "Company share register does not identify any individual natural person as ultimate BO; state officeholders are not assigned as BO."
+      },
+      "risk": "Coal demand, HBA and domestic-market obligation, power-sector offtake and diversified downstream capital affect operations.",
+      "monitor": "Post-2025 capital structure, related-party exposures, coal offtake and energy-transition commitments.",
+      "sources": [
+        {
+          "label": "PTBA annual report 2025 — shareholder structure p.159",
+          "url": "https://www.ptba.co.id/api/storage/1777608216188-530aad52-cfc2-40fc-8d3c-0afcaa236e6c.pdf"
+        }
+      ]
+    },
+    {
+      "id": "phi",
+      "entity": "PT Pertamina Hulu Indonesia (PHI)",
+      "sector": "Energy",
+      "ownership_as_of": "Company webpage reviewed 2026-10-15 (register date unspecified)",
+      "evidence_tier": "Company shareholder disclosure; underlying register undated",
+      "direct_shareholders": [
+        {
+          "name": "PT Pertamina Hulu Energi",
+          "pct": 99.93
+        },
+        {
+          "name": "PT Pertamina Pedeve Indonesia",
+          "pct": 0.07
+        }
+      ],
+      "ownership_chain": "PHI's direct equity holders are PHE and Pertamina Pedeve. The group's ultimate institutional ownership and legal special rights require separate parent-level disclosures.",
+      "control": "PHE is PHI's disclosed controlling shareholder at the entity level; PHI subsidiary PSC operational rights must be checked at asset-specific level.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "No company-specific natural-person BO record or current parent chain ownership verification incorporated."
+      },
+      "risk": "Oil and gas investment exposure should be assessed by PSC contract, contractor operator, approval and cost recovery rules, not simply corporate holding equity.",
+      "monitor": "PHE group annual report, PSC operator mapping, upstream work program and budget, field-level FID.",
+      "sources": [
+        {
+          "label": "Pertamina Hulu Indonesia — shareholder disclosure",
+          "url": "https://phi.pertamina.com/id/relasi-investor-dan-pengadaan/relasi-investor/pemegang-saham"
+        }
+      ]
+    },
+    {
+      "id": "telkom",
+      "entity": "PT Telkom Indonesia (Persero) Tbk (TLKM)",
+      "sector": "AI infrastructure",
+      "ownership_as_of": "2025-09-30",
+      "evidence_tier": "Official Telkom transaction disclosure and shareholder register",
+      "direct_shareholders": [
+        {
+          "name": "PT Danantara Asset Management (Series B)",
+          "pct": 52.090852931
+        },
+        {
+          "name": "Public (Series B)",
+          "pct": 47.907380502
+        },
+        {
+          "name": "Treasury stock",
+          "pct": 0.001766567
+        }
+      ],
+      "ownership_chain": "The September 2025 Telkom public disclosure lists PT Danantara Asset Management holding 52.09% of Series B shares and the Republic of Indonesia holding one Series A Dwiwarna special-rights share.",
+      "control": "Distinguish Danantara's economic equity interests, the state Dwiwarna share, Telkom corporate governance and Telkom subsidiary-level data-center JV shareholdings.",
+      "beneficial_owner": {
+        "status": "Company reports an AHU BO designation; independently unverified",
+        "natural_person": null,
+        "reason": "Telkom disclosure states AHU record reports its Board of Directors as controller/BO, but provides no independently verified person-specific BO determination suitable for this registry."
+      },
+      "risk": "Group shareholding does not establish equity percentages in NeutraDC, data-center ventures or individual campuses; verify each SPV.",
+      "monitor": "2026 dated major-shareholder filing, Telkom subsidiary ownership, data-center project capacity and investment realization.",
+      "sources": [
+        {
+          "label": "Telkom disclosure / shareholder register 30 Sep 2025, p.12 and BO statement p.14",
+          "url": "https://www.telkom.co.id/minio/show/data/lampiran/1764593627837_original_Tambahan-Keterbukaan-Informasi-Infraco-ENG.pdf"
+        }
+      ]
     }
   ]
 }
