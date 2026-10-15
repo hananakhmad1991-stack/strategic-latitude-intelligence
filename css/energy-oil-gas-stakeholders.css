@@ -1,0 +1,52 @@
+/* Separate Oil & Gas stakeholder explorer, independent of six-hub energy power map. */
+#energyOilGasStakeholdersRoot{margin:23px 0 31px;scroll-margin-top:22px;color:#d3e0e9}
+.ogas-header{border:1px solid #46627a;background:linear-gradient(115deg,#1b4058,#10273b);border-radius:14px;padding:21px 24px;margin-bottom:12px}
+.ogas-overline{color:#e3c88f;font-size:10px;letter-spacing:1px;font-weight:700}
+.ogas-header h2{color:#f4ede0;font:400 clamp(23px,3vw,30px)/1.2 Georgia,serif;margin:9px 0}
+.ogas-header p{color:#bcd3df;line-height:1.75;margin:0;font-size:12px;max-width:900px}
+.ogas-context{background:#172f43;border:1px solid #4c6980;border-radius:9px;margin:12px 0}
+.ogas-context summary{padding:13px 15px;color:#eed4a3;font-size:12px;font-weight:650;cursor:pointer;outline-offset:-3px}
+.ogas-context-body{padding:0 15px 13px}.ogas-context-body p{font-size:11.5px;color:#bfd4e0;line-height:1.75}
+.ogas-link{color:#e9c882;font-size:11px;text-decoration:underline;text-underline-offset:2px}
+.ogas-controls{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:15px 0}
+.ogas-search-label,.ogas-issue-label{display:flex;flex-direction:column;gap:6px;color:#abc6d5;font-size:11px}
+.ogas-search,.ogas-issue-select{width:100%;min-height:41px;padding:9px 11px;color:#e8f1f8;background:#10283a;border:1px solid #4b6b83;border-radius:8px;font-size:12px}
+.ogas-search:focus-visible,.ogas-issue-select:focus-visible{outline:2px solid #dfc486;outline-offset:2px}
+.ogas-groups{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.ogas-group-tab{min-height:37px;border:1px solid #416179;background:#1a384e;color:#cddfea;border-radius:7px;padding:8px 11px;font-weight:610;font-size:10.5px;cursor:pointer}
+.ogas-group-tab.selected{background:#dcc38c;color:#172d3e;border-color:#dcc38c}
+.ogas-group-tab:focus-visible,.ogas-tile:focus-visible{outline:2px solid #f1d9a0;outline-offset:2px}
+.ogas-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:12px}
+.ogas-main,.ogas-inspector{min-width:0}
+.ogas-graph,.ogas-profile,.ogas-issue-insight{border:1px solid #3f5971;background:#102739;border-radius:12px;padding:13px 14px}
+.ogas-graph-head{display:flex;align-items:baseline;gap:8px;justify-content:space-between;margin-bottom:8px}
+.ogas-graph-head strong{color:#f0eadc;font-size:11.5px}
+.ogas-graph-head span,.ogas-chart-note{font-size:10px;color:#a9c5d4;line-height:1.65}
+.ogas-graph svg{width:100%;height:auto;display:block}
+.ogas-graph svg g[role="button"] rect{transition:stroke-width .2s,fill .2s}
+.ogas-graph svg g[role="button"]:hover rect,.ogas-graph svg g[role="button"]:focus-visible rect{stroke-width:3}
+.ogas-graph svg g[role="button"]:focus-visible{outline:none}
+.ogas-graph .ogas-chart-note{margin:10px 0 1px}
+.ogas-count{margin:14px 0 8px;font-size:11px;color:#b6cada}
+.ogas-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.ogas-tile{display:flex;flex-direction:column;justify-content:space-between;gap:4px;padding:11px 12px;background:#173347;color:#f3f1ea;min-height:71px;font-size:11px;line-height:1.5;font-weight:650;text-align:left;border:1px solid #3f6076;border-radius:8px;cursor:pointer}
+.ogas-tile span{font-size:9.5px;font-weight:450;color:#a9c5d3}
+.ogas-tile.selected{border-color:#dcc58e;background:#234658}
+.ogas-tile:hover{border-color:#dec68f}
+.ogas-profile{position:sticky;top:10px;padding:18px}
+.ogas-label{font-size:10px;letter-spacing:.6px;color:#d8c08b;text-transform:uppercase}
+.ogas-profile h3{font:400 clamp(18px,2.2vw,24px)/1.35 Georgia,serif;color:#f4efdf;margin:12px 0}
+.ogas-lead{font-size:12px;color:#e0cb98;font-weight:650;line-height:1.65}
+.ogas-role{font-size:12px;line-height:1.78;color:#c7d8e1}
+.ogas-profile-badge{display:inline-block;margin:5px 0;padding:5px 9px;background:#223f52;border:1px solid #5b778b;border-radius:12px;font-size:10px;color:#d6e2e9}
+.ogas-vintage{font-size:10px;color:#9db6c6;margin:13px 0 9px}
+.ogas-caution{font-size:11px;color:#e3cfab;line-height:1.65;padding:10px;border-left:2px solid #d7be89;background:#273d46}
+.ogas-issue-insight{border-left:3px solid #dfc288;margin-top:11px}
+.ogas-issue-insight h3{font-size:15px;color:#f0deb8;margin:3px 0 8px}
+.ogas-issue-insight ul{padding-left:19px;font-size:11.5px;line-height:1.75;color:#bacfdf}
+.ogas-empty{background:#163146;color:#bad2df;padding:14px;border-radius:7px}
+.ogas-footnote{margin:17px 0 2px;color:#a8c0cf;font-size:10.5px;line-height:1.8;border-top:1px solid #39556d;padding:11px 0}
+@media(max-width:900px){.ogas-layout{grid-template-columns:minmax(0,1fr)}.ogas-profile{position:relative;top:auto}}
+@media(max-width:650px){.ogas-header{padding:18px 15px}.ogas-controls{grid-template-columns:1fr}.ogas-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.ogas-group-tab{font-size:10px}.ogas-graph svg{min-width:0}.ogas-graph-head{flex-wrap:wrap}}
+@media(max-width:440px){.ogas-tiles{grid-template-columns:1fr}.ogas-graph svg{max-height:240px}.ogas-graph-head span{display:none}}
+@media(prefers-reduced-motion:reduce){.ogas-graph svg g[role="button"] rect{transition:none}}
