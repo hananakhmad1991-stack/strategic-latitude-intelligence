@@ -15,15 +15,12 @@ OUT=Path("data/energy-actors-status.json")
 CABINET="https://setkab.go.id/profil-kabinet/"
 SPECS=[
  {"key":"Kementerian Lingkungan Hidup","cabinet":"Menteri Lingkungan Hidup/Kepala Badan Pengendalian Lingkungan Hidup","agency":"https://www.kemenlh.go.id/contents/8/Profil-Menteri","prefix":"Minister of Environment / Head of BPLH"},
- {"key":"Kementerian Keuangan","cabinet":"Menteri Keuangan","agency":"https://www.kemenkeu.go.id/profile/profile-pejabat","prefix":"Minister of Finance"},
+ {"key":"Kementerian Keuangan","cabinet":"Menteri Keuangan","agency":"https://www.kemenkeu.go.id/en/profile/profile-pejabat/menteri-keuangan","prefix":"Minister of Finance"},
  {"key":"Kementerian ESDM / Minister","cabinet":"Menteri Energi dan Sumber Daya Mineral","agency":"https://www.esdm.go.id/id/profil/profil-pimpinan","prefix":"Minister of ESDM; energy-sector regulator"},
  {"key":"Bappenas","cabinet":"Menteri Perencanaan Pembangunan Nasional/Kepala Badan Perencanaan Pembangunan Nasional","agency":"https://www.bappenas.go.id","prefix":"Minister / Head of Bappenas"},
  {"key":"Kementerian Investasi dan Hilirisasi / BKPM","cabinet":"Menteri Investasi dan Hilirisasi/Kepala Badan Koordinasi Penanaman Modal","agency":"https://www.bkpm.go.id","prefix":"Minister of Investment / Head of BKPM"},
 ]
 OTHER_SOURCES=[
- {"actor":"Ditjen Migas — ESDM","url":"https://www.esdm.go.id/id/profil/profil-pimpinan"},
- {"actor":"Ditjen EBTKE — ESDM","url":"https://www.esdm.go.id/id/profil/profil-pimpinan"},
- {"actor":"Ditjen Ketenagalistrikan — ESDM","url":"https://www.esdm.go.id/id/profil/profil-pimpinan"},
  {"actor":"SKK Migas","url":"https://www.skkmigas.go.id/"},
  {"actor":"BPH Migas","url":"https://www.bphmigas.go.id/komite/"},
  {"actor":"BPMA — Aceh","url":"https://www.bpma.go.id/"},
@@ -94,6 +91,18 @@ def agree_agency(name,text):
     if n.startswith("mohammad "):
         return n.replace("mohammad ","moh ",1) in body
     return False
+
+def person_before_role(markup, official_role):
+    p=Plain();p.feed(markup)
+    parts=[" ".join(t.split()) for t in p.parts if t.strip()]
+    goal=norm(official_role)
+    for i,part in enumerate(parts):
+        if norm(part)!=goal:continue
+        for before in reversed(parts[max(0,i-5):i]):
+            if text_name_valid(before) and before.upper()==before and not re.search(r"PROFIL|LHKPN|DIREKTORAT|MENTERI",before):
+                return before.title()
+    return None
+
 def main():
     d=json.loads(DATA.read_text(encoding="utf-8"))
     actors={x["name"]:x for l in d["governance"]["layers"] for x in l["actors"]}
@@ -146,6 +155,33 @@ def main():
             row["error"]=type(ex).__name__+": "+str(ex)[:140]
             errors.append({"source":src["url"],"error":row["error"]})
         scans.append(row)
+    # The ESDM leadership profile explicitly pairs each current appointee with an official role.
+    try:
+        esdm_url="https://www.esdm.go.id/id/profil/profil-pimpinan"
+        profile=fetch(esdm_url)
+        for key,position,descriptor in [
+            ("Ditjen Migas — ESDM","DIRJEN MIGAS","Director General of Oil and Gas"),
+            ("Ditjen EBTKE — ESDM","DIRJEN EBTKE","Director General of EBTKE"),
+            ("Ditjen Ketenagalistrikan — ESDM","PLT. DIRJEN KETENAGALISTRIKAN","Acting Director General of Electricity"),
+        ]:
+            found=person_before_role(profile,position)
+            row={"actor":key,"primary_source":esdm_url,"candidate":found,
+                 "verification":"Direct official ESDM role-linked current leadership profile"}
+            current=actors.get(key)
+            if current and found and text_name_valid(found):
+                old=current.get("person_name") or current.get("lead","").split(" · ",1)[0]
+                if norm(old)!=norm(found):
+                    current.update(person_name=found,lead=found+" · "+descriptor+" (official ESDM role profile)",
+                        source=esdm_url,verified=NOW.date().isoformat(),
+                        verification_status="Auto-verified official ESDM role-linked leadership profile")
+                    changes.append({"actor":key,"old":old,"new":found,"status":"auto-updated","sources":[esdm_url]})
+                    row["status"]="auto-updated"
+                else:row["status"]="confirmed-current"
+            else:row["status"]="profile-role-unreadable"
+            scans.append(row)
+    except Exception as ex:
+        errors.append({"source":"Official ESDM leadership profile","error":type(ex).__name__+": "+str(ex)[:160]})
+
     if changes:
         DATA.write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     output={"checked_at_utc":NOW.isoformat(),"verification_method":"Dual official cabinet + ministry-site name agreement for auto-updating ministers; other offices are monitored as source status and require role-specific corroboration.",
