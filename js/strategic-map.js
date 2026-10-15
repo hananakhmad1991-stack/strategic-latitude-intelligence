@@ -140,7 +140,7 @@ function classifyRecord(r){
  r.sourceGroup=r.group;
  r.sectorKey=c.sector;r.assetType=c.type;
  const status=String(r.stage||"").toLowerCase();
- r.phase=/historical|revalidat|current status unknown|status unverified|earlier roster|historic/.test(status)?"Historical / Verify":
+ r.phase=/historical|revalidat|recheck|current status unknown|status unverified|earlier roster|historic/.test(status)?"Historical / Verify":
   /under construction|construction|commissioning|ramp.up|development ongoing|physical works|groundbreaking/.test(status)?"Construction / Testing":
   /explor|discovery|offered|tender|survey|preliminary|study/.test(status)?"Exploration / Study":
   /operat|in service|producing|production|existing|installed|commercial|commissioned|inaugurated|first gold pour/.test(status)?"Operational / Reported":
@@ -313,6 +313,7 @@ function mapPage(root,data){
   [label("Fossil & renewable power dossiers","Catatan pembangkit fosil & EBT"),allPower.length],
   [label("PLTU additions verified against PLN/ESDM","Tambahan PLTU dibandingkan PLN/ESDM"),allPltu.length],
   [label("Biodiesel & smelter dossiers","Catatan biodiesel & smelter"),allIndustry.length],
+   [label("Smelter facility/project tracker · not national census","Pelacak smelter · bukan sensus nasional"),allSmelters.length],
   [label("Regional source cross-checks","Pemeriksaan sumber regional"),allRegional.length],
   [label("Jakarta / West Java digital facilities","Fasilitas digital Jakarta / Jawa Barat"),allDigital.length],
   [label("Province boundaries","Batas provinsi"),geometry.length]
@@ -321,7 +322,7 @@ function mapPage(root,data){
   [label("Sourced catalogue records","Catatan katalog bersumber"),allRows.length],
   [label("Indonesian provinces","Provinsi Indonesia"),geometry.length],
   [label("Sector families","Kelompok sektor"),SECTORS.filter(x=>allRows.some(r=>r.sectorKey===x[0])).length],
-  [label("Distinct source layers","Lapisan data sumber"),9]
+  [label("Distinct source layers","Lapisan data sumber"),10]
  ]){
   const c=node("div","map-stat");c.append(node("span",null,name),node("strong",null,val));counters.append(c);
  }
@@ -330,6 +331,23 @@ function mapPage(root,data){
   "HOW TO USE · First choose the industry sector; then the asset or technology (for example Oil & Gas → Oil Refinery, or Minerals & Metals → Smelter & Metal Refining). The original company/source register is available only under Advanced.",
   "CARA MEMBACA · Pilih sektor industri, kemudian jenis aset atau teknologi (misalnya Migas → Kilang Minyak, atau Mineral & Logam → Smelter & Pemurnian Logam). Registri sumber asli tersedia di menu Lanjutan."
  ));root.append(introduction);
+ const official=data.smelters?.official_baseline;
+ if(official){
+  const panel=node("section","map-pln-baseline map-smelter-baseline");
+  panel.append(node("div","map-pln-baseline-title",label("SMELTER INTELLIGENCE · 2026 TRACKER AND OFFICIAL 2025 REFERENCE","INTELIJEN SMELTER · PELACAK 2026 DAN ACUAN RESMI 2025")));
+  const cards=node("div","map-pln-baseline-grid");
+  for(const [heading,value] of [
+   [label("Tracked smelter facility/project dossiers","Dossier fasilitas/proyek smelter terlacak"),allSmelters.length],
+   [label("ESDM 2025 specific integrated cohort","Kohort khusus smelter terintegrasi ESDM 2025"),official.reported],
+   [label("2025 cohort operating","Kohort 2025 beroperasi"),official.operating],
+   [label("2025 cohort in development","Kohort 2025 dalam pengembangan"),official.development]
+  ]){const tile=node("div","map-pln-baseline-card");tile.append(node("span",null,heading),node("strong",null,value));cards.append(tile)}
+  panel.append(cards,node("p","map-muted",label(
+   "CAUTION · The ESDM 2025 narrow reporting cohort is NOT a 2026 national census including all industrial-park tenants. This tracker includes records of different dates and some facilities still need 2026 status revalidation. Rated plant capacity, actual production, future design capacity and industrial-park totals are never automatically added together.",
+   "PERHATIAN · Kohort ESDM 2025 terbatas BUKAN sensus nasional 2026 semua tenant kawasan industri. Pelacak mencakup catatan dari tahun berbeda dan sebagian fasilitas memerlukan verifikasi status 2026. Kapasitas terpasang, produksi aktual, kapasitas rancangan serta total kawasan industri tidak boleh otomatis dijumlahkan."
+  )),srcLink(official.source,label("Official ESDM publication catalogue","Katalog laporan resmi ESDM")));
+  root.append(panel);
+ }
  const stat=data.pltuAudit?.summary_stats;
  if(stat){
   const panel=node("section","map-pln-baseline");
@@ -728,8 +746,17 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    else card.append(node("p","map-muted",provinceAssociations(r).length?label("Province-level only · facility coordinates not verified","Hanya tingkat provinsi · koordinat fasilitas belum diverifikasi"):label("Undisclosed / cross-province · no site location invented","Dirahasiakan / lintas provinsi · tidak dibuatkan titik palsu")));
    if(r.locationScope)card.append(node("p","map-limited",label("Mapping: ","Pemetaan: ")+r.locationScope+" · "+label("province association only, not site coordinates","asosiasi provinsi, bukan koordinat fasilitas")));
    if(r.vintage)card.append(node("p","map-muted",label("Source vintage (not operating confirmation): ","Tahun sumber (bukan konfirmasi operasi): ")+r.vintage));
-   if(r.capacity?.value!=null)card.append(node("p","map-muted",(r.kind==="digital"?label("Operator-published IT capacity: ","Kapasitas TI menurut operator: "):label("Source-reported plant rating: ","Rating pembangkit dari sumber: "))+fmt(r.capacity.value)+" "+r.capacity.unit+" · "+r.capacity.scope));
-   if(["wk","power","industry","regional","digital","pltu"].includes(r.kind))card.append(node("p","map-muted",r.note));
+   if(r.capacity?.value!=null)card.append(node("p","map-muted",(r.kind==="digital"?label("Operator-published IT capacity: ","Kapasitas TI menurut operator: "):r.kind==="smelters"?label("CAPACITY (see source basis, not actual output): ","KAPASITAS (lihat basis, bukan produksi aktual): "):label("Source-reported plant rating: ","Rating pembangkit dari sumber: "))+fmt(r.capacity.value)+" "+r.capacity.unit+" · "+r.capacity.scope));
+   if(r.kind==="smelters"){
+    if(r.ownership)card.append(node("p",null,label("Ownership / equity: ","Pemilik / saham: ")+r.ownership));
+    if(r.investors)card.append(node("p",null,label("Investors / partners: ","Investor / mitra: ")+r.investors));
+    if(r.technology)card.append(node("p","map-muted",label("Technology: ","Teknologi: ")+r.technology));
+    if(r.product)card.append(node("p","map-muted",label("Products: ","Produk: ")+r.product));
+    if(r.production?.value!=null)card.append(node("p","map-smelter-production",label("ACTUAL reported output: ","Output AKTUAL dilaporkan: ")+fmt(r.production.value)+" "+r.production.unit+" ("+r.production.year+")"));
+    if(r.progress)card.append(node("p","map-muted",label("Implementation milestone: ","Tahap implementasi: ")+r.progress));
+    if(!r.capacity&&!r.ownership)card.append(node("p","map-smelter-gap",label("Capacity and ownership not source-verified for this facility. Do not assume zero.","Kapasitas dan kepemilikan belum terverifikasi untuk fasilitas ini. Jangan dianggap nol.")));
+   }
+   if(["wk","power","industry","regional","digital","pltu","smelters"].includes(r.kind)&&r.note)card.append(node("p","map-muted",r.note));
    if(r.kind==="sites")card.append(node("p","map-muted",r.note||label("An attributed geographic site; not incremental new investment.","Catatan lokasi bersumber; bukan investasi baru tambahan.")));
    card.append(srcLink(r.source,label("Original evidence","Bukti asli")));
    list.append(card);
