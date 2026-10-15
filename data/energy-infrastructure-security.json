@@ -161,7 +161,37 @@
         "interpretation": "Check consistency of grid PLN, off-grid and local reporting before comparing provinces."
       }
     ],
-    "note": "Lowest areas displayed are a source-backed priority watchlist, not a statistically exhaustive 38-province league table. Compare the exact same reporting date and PLN versus nationwide access denominators. Village electrification, household electrification, reliability and hours of supply are separate."
+    "note": "Lowest areas displayed are a source-backed priority watchlist, not a statistically exhaustive 38-province league table. Compare the exact same reporting date and PLN versus nationwide access denominators. Village electrification, household electrification, reliability and hours of supply are separate.",
+    "village_electrification": {
+      "period": "2026-Q1",
+      "national_pln_pct": 93.674,
+      "national_all_sources_pct": 100,
+      "source": "https://gatrik.esdm.go.id/assets/uploads/download_index/files/2d4cd-peta-sebaran-rasio-desa-berlistrik-triwulan-i-2026.pdf",
+      "source_context": "Official Gatrik village-electrification map, not the household ratio map. Province values are RD PLN; nationwide RD NAS may count non-PLN or independent village sources. Confirm against map before treating as PLN-grid customer coverage.",
+      "lowest_pln_village_service": [
+        {
+          "province": "Papua Pegunungan",
+          "pct": 21.165
+        },
+        {
+          "province": "Papua Tengah",
+          "pct": 26.821
+        },
+        {
+          "province": "Papua Selatan",
+          "pct": 56.957
+        },
+        {
+          "province": "Papua Barat Daya",
+          "pct": 66.338
+        },
+        {
+          "province": "Papua Barat",
+          "pct": 70.51
+        }
+      ],
+      "warn": "These are share of villages covered by PLN (RD PLN), NOT the ratio of electrified households, NOT villages with zero electricity, NOT share of population without electricity. The national all-source village electrification indicator is a separate 100% figure."
+    }
   },
   "power_generation": {
     "national": {
