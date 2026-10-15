@@ -30,6 +30,14 @@ if ai_file.exists():
   if key in seen:errors.append("Duplicate AI monitoring lead")
   seen.add(key)
   if not str(lead.get("url","")).startswith("https://") or not lead.get("published_at_utc") or not lead.get("publisher"):errors.append("Unattributed AI monitoring lead")
+catalog=read("data/sector-evidence-catalog.json")
+for record in catalog.get("ai_projects",[]):
+ if not record.get("project") or not record.get("operator") or not record.get("location") or not record.get("status") or not str(record.get("source_url","")).startswith("https://"):
+  errors.append("AI project lacks operator, implementation status, location or source")
+ if record.get("operational_it_mw_verified") is not None and record.get("operational_it_mw_verified")<0:errors.append("Negative commissioned IT capacity")
+for record in catalog.get("mineral_indicators",[]):
+ if not all(record.get(k) for k in ("commodity","measure","unit","year","status","source_url")):errors.append("Mineral indicator missing measurement provenance")
+ if record.get("value") is None:errors.append("Mineral indicator missing numeric value")
 if errors:
  print("SOURCE QA FAILED:\n"+"\n".join(errors),file=sys.stderr);sys.exit(1)
 print(f"SLI source QA passed: {len(products)} trade commodities, investment provenance and AI feed metadata")
