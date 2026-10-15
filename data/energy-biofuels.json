@@ -105,11 +105,11 @@
   },
   "ethanol": {
     "status": "E20 discussed/planned; not evidenced as nationwide implemented mandate as of this dataset date",
-    "announced_need_million_kl": 4,
-    "announced_need_year": "2026 policy discussion",
+    "announced_need_million_kl": 8,
+    "announced_need_year": "2026-10-12 (latest government statement)",
     "gasoline_market_million_kl": 40,
-    "official_source": "https://www.esdm.go.id/id/media-center/arsip-berita/implementasi-program-e20-pemerintah-butuh-4-juta-kiloliter-etanol",
-    "consistency_warning": "ESDM public statement cited 4m kL ethanol for E20 with a 40m kL gasoline market; 20% of 40m kL would be 8m kL if it applies to the entire market. Treat 4m kL as a quoted governmental programme estimate, NOT as demonstrated nationwide E20 volumetric demand.",
+    "official_source": "https://esdm.go.id/id/media-center/arsip-berita/dari-sumur-rakyat-hingga-etanol-bahlil-dorong-rakyat-jadi-pemain-energi",
+    "consistency_warning": "ESDM's June 2026 statement said 4m kL for E20, while 12 October 2026 revised the stated E20 requirement to about 8m kL, consistent with 20% of a 40m kL fuel market under simple volume assumptions. These are programme estimates, NOT verified commissioned supply.",
     "feedstocks": [
       "Sugarcane",
       "Cassava",
@@ -117,14 +117,24 @@
     ],
     "capacity_verified_million_kl": null,
     "production_verified_million_kl": null,
-    "specification_source": "https://ebtke.esdm.go.id/artikel/pengumuman/keputusan-direktur-jenderal-energi-baru-terbarukan-dan-konservasi-energi-tentang-standar-dan-mutu-spesifikasi-bahan-bakar-nabati-jenis-bioethanol-sebagai-bahan-bakar-lain-yang-dipasarkan-di-dalam-negeri"
+    "specification_source": "https://ebtke.esdm.go.id/artikel/pengumuman/keputusan-direktur-jenderal-energi-baru-terbarukan-dan-konservasi-energi-tentang-standar-dan-mutu-spesifikasi-bahan-bakar-nabati-jenis-bioethanol-sebagai-bahan-bakar-lain-yang-dipasarkan-di-dalam-negeri",
+    "roadmap": "E10 targeted from 2027, then E20 around 2028–29; potential longer-run E50 under study, no nationwide legal mandate verified.",
+    "roadmap_source": "https://www.antaranews.com/berita/5657931/bahlil-pemerintah-targetkan-penerapan-bbm-campuran-etanol-mulai-2027",
+    "feedstock_regions": [
+      "Jawa",
+      "Sumatera",
+      "Papua"
+    ],
+    "alternative_pilots": "Sorgum manis pilot in DIY & NTT; Arenga palm processing in Kamojang (reported 1,000 L/day; site-specific pilot, not national industry capacity)."
   },
   "price": {
-    "hip_biodiesel_rp_per_l": 14643,
+    "hip_biodiesel_rp_per_l": 15072,
     "hip_bioethanol_rp_per_l": 8062,
     "as_of": "2026-06",
     "source": "https://ebtke.esdm.go.id/?lang=en",
-    "warning": "Stale reference HIP snapshot (June 2026), not a live retail BBM price; monthly HIP must be corroborated before updating."
+    "warning": "October 2026 biodiesel HIP Rp15,072/L EXCLUDES transport charge. Bioethanol HIP Rp8,062/L remains a June 2026 reference; each has a different as-of date. Neither is a retail pump price.",
+    "biodiesel_vintage": "2026-10",
+    "biodiesel_source": "https://ebtke.esdm.go.id/artikel/pengumuman/hip-bbn-jenis-biodiesel-bulan-oktober-2026"
   },
   "policies": [
     {
@@ -171,6 +181,24 @@
       "category": "Bioethanol",
       "source": "https://www.esdm.go.id/id/media-center/arsip-berita/implementasi-program-e20-pemerintah-butuh-4-juta-kiloliter-etanol",
       "note": "Four million kL ethanol stated requirement conflicts with simple market-wide 20%-of-40m kL arithmetic; planning basis needs clarification."
+    },
+    {
+      "name": "October 2026 biodiesel price index (HIP)",
+      "instrument": "EBTKE October 2026 HIP release; based on Kepmen ESDM 3.K/EK.05/DJE/2024",
+      "status": "Published official monthly reference; freight extra",
+      "date": "2026-10-01",
+      "category": "Price",
+      "source": "https://ebtke.esdm.go.id/artikel/pengumuman/hip-bbn-jenis-biodiesel-bulan-oktober-2026",
+      "note": "Rp15,072/L plus applicable transport; not retail fuel price."
+    },
+    {
+      "name": "E10 bioethanol implementation roadmap",
+      "instrument": "ESDM public planning updates July–October 2026",
+      "status": "Target E10 2027; E20 2028–29; E50 discussed, no nationwide mandate confirmed",
+      "date": "2026-10-12",
+      "category": "Bioethanol",
+      "source": "https://esdm.go.id/id/media-center/arsip-berita/dari-sumur-rakyat-hingga-etanol-bahlil-dorong-rakyat-jadi-pemain-energi",
+      "note": "October E20 quoted need 8m kL vs June 4m; verify enacted roadmap and funding."
     }
   ],
   "assessment": [
@@ -178,6 +206,6 @@
     "B50 substitution can reduce imported finished diesel, but concentration in palm oil feedstock can shift vulnerability upstream to agronomy, input pricing and logistics.",
     "2026 biodiesel volume data are incomplete as of 7 September; year-to-date distribution cannot be interpreted as final-year consumption.",
     "Risk concentration: BPDP funding balance, export-levy sensitivity, engine/fuel quality, terminal blending transition, CPO food-versus-fuel competition and land-use impacts.",
-    "Bioethanol E20 is less mature: verified current manufacturing capacity, actual ethanol fuel supply and an enacted nationwide blend rule are not yet established."
+    "Bioethanol E10 remains planned for 2027 and E20 later; ESDM quoted ~8m kL E20 need in October, but active industrial-scale ethanol capacity, delivered fuel volumes, and binding implementation rules require verification."
   ]
 }
