@@ -1,0 +1,37 @@
+name: SLI Commodity Price Display QA
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - js/commodity-market-prices.js
+      - css/commodity-market-prices.css
+      - data/commodity-market-prices.json
+      - scripts/commodity_market_prices.py
+      - tests/test_commodity_market_prices.py
+      - tests/qa-commodity-market-prices.mjs
+      - index.html
+      - js/research-chapters.js
+      - .github/workflows/commodity-price-qa.yml
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse collector and validate historical benchmark units
+        run: |
+          python -m py_compile scripts/commodity_market_prices.py
+          python tests/test_commodity_market_prices.py
+      - name: Check price UI and both specialist pages
+        run: |
+          node --check js/commodity-market-prices.js
+          node tests/qa-commodity-market-prices.mjs
