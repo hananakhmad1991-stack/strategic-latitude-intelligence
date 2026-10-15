@@ -1479,3 +1479,42 @@ window.SLI_TRANSLATIONS_ID.set("NRE & Energy Conservation","Energi Baru Terbaruk
 window.SLI_TRANSLATIONS_ID.set("Electric Vehicles · Cars · Motorcycles","Kendaraan Listrik · Mobil · Motor");
 
 window.SLI_TRANSLATIONS_ID.set("Indonesia electric vehicle sales motorcycles car production 2030 targets batteries charging and regulatory monitoring","Penjualan kendaraan listrik Indonesia, produksi mobil, target 2030, baterai, pengisian daya, dan pemantauan kebijakan");
+
+/* Editorial hierarchy, source transparency and overview navigation */
+window.SLI_TRANSLATIONS_ID.set("Energy Security Intelligence","Intelijen Ketahanan Energi");
+window.SLI_TRANSLATIONS_ID.set("Start with the institutions and rules shaping energy decisions, then examine the national picture, physical infrastructure, costs, transition technologies and current risk signals. The concluding assessment connects the evidence to Indonesia’s strategic outlook.","Mulai dari lembaga dan aturan yang menentukan keputusan energi, lalu pahami kondisi nasional, infrastruktur fisik, biaya, teknologi transisi, serta sinyal risiko terbaru. Penilaian di bagian akhir menghubungkan semua bukti itu dengan prospek strategis Indonesia.");
+window.SLI_TRANSLATIONS_ID.set("Official baselines are dated; monitored headlines are research leads, not independently verified incidents or real-time infrastructure telemetry.","Data acuan resmi memiliki periode tertentu; berita yang terpantau merupakan petunjuk riset, bukan insiden yang telah diverifikasi independen atau telemetri infrastruktur secara langsung.");
+window.SLI_TRANSLATIONS_ID.set("Institutions & Policy","Lembaga & Kebijakan");
+window.SLI_TRANSLATIONS_ID.set("National Picture","Gambaran Nasional");
+window.SLI_TRANSLATIONS_ID.set("Supply & Infrastructure","Pasokan & Infrastruktur");
+window.SLI_TRANSLATIONS_ID.set("Prices & Fiscal","Harga & Fiskal");
+window.SLI_TRANSLATIONS_ID.set("Transition & Technology","Transisi & Teknologi");
+window.SLI_TRANSLATIONS_ID.set("Monitoring","Pemantauan");
+window.SLI_TRANSLATIONS_ID.set("Sources","Sumber");
+window.SLI_TRANSLATIONS_ID.set("Institutions, Governance & Policy","Kelembagaan, Tata Kelola & Kebijakan");
+window.SLI_TRANSLATIONS_ID.set("Who decides, who regulates, who implements and which instruments are legally in force?","Siapa yang menetapkan keputusan, mengatur, melaksanakan, dan kebijakan mana yang benar-benar berlaku?");
+window.SLI_TRANSLATIONS_ID.set("National Energy Security at a Glance","Gambaran Umum Ketahanan Energi Nasional");
+window.SLI_TRANSLATIONS_ID.set("Headline indicators, the official 4A energy security index, the international Trilemma and long-run trends.","Indikator utama, indeks ketahanan energi resmi 4A, Trilemma internasional, dan perkembangan jangka panjang.");
+window.SLI_TRANSLATIONS_ID.set("What do the national indicators tell us—and where do their methods differ?","Apa yang ditunjukkan indikator nasional, dan di mana perbedaan metodologinya?");
+window.SLI_TRANSLATIONS_ID.set("Energy Supply, Access & Infrastructure","Pasokan, Akses & Infrastruktur Energi");
+window.SLI_TRANSLATIONS_ID.set("Production, reserves, refining, imports, electricity capacity and access, and household gas networks.","Produksi, cadangan, kilang, impor, kapasitas serta akses listrik, dan jaringan gas rumah tangga.");
+window.SLI_TRANSLATIONS_ID.set("Energy Economics & Affordability","Ekonomi Energi & Keterjangkauan");
+window.SLI_TRANSLATIONS_ID.set("Public subsidies, investment, fuel quotas, regulated tariffs and dated commodity reference prices.","Subsidi, investasi, kuota BBM, tarif yang diatur, dan harga acuan komoditas bertanggal.");
+window.SLI_TRANSLATIONS_ID.set("Transition, Technology & Delivery","Transisi, Teknologi & Implementasi");
+window.SLI_TRANSLATIONS_ID.set("Provincial planning, net-zero, emissions, biodiesel, electric mobility and CCS projects.","Perencanaan daerah, net-zero, emisi, biodiesel, kendaraan listrik, dan proyek CCS.");
+window.SLI_TRANSLATIONS_ID.set("Domestic & Geopolitical Monitoring","Pemantauan Domestik & Geopolitik");
+window.SLI_TRANSLATIONS_ID.set("Attributable domestic and international signals, followed by relevant forthcoming events.","Sinyal perkembangan domestik dan internasional dengan sumber jelas, berikut agenda terdekat.");
+window.SLI_TRANSLATIONS_ID.set("Sources & Analytical Boundaries","Sumber & Batasan Analisis");
+window.SLI_TRANSLATIONS_ID.set("Review original releases and understand limitations without crowding the operational dashboard.","Tinjau publikasi asli dan pahami keterbatasan data tanpa memenuhi dashboard dengan penjelasan berulang.");
+window.SLI_TRANSLATIONS_ID.set("Open source register and methodology (BPS, PLN, MEMR)","Buka daftar sumber dan metodologi (BPS, PLN, ESDM)");
+window.SLI_TRANSLATIONS_ID.set("Historical geopolitical incidents · source-dated editorial archive","Insiden geopolitik historis · arsip editorial bertanggal");
+window.SLI_TRANSLATIONS_ID.set("What the evidence means for Indonesia, what remains uncertain and what deserves attention next.","Makna bukti bagi Indonesia, ketidakpastian yang tersisa, dan prioritas pemantauan berikutnya.");
+window.SLI_TRANSLATIONS_ID.set("Overall Assessment · Indonesia Energy Security Outlook","Penilaian Keseluruhan · Prospek Ketahanan Energi Indonesia");
+window.SLI_TRANSLATIONS_ID.set("Dated analytical synthesis · evidence-led","Sintesis analitis bertanggal · berbasis bukti");
+window.SLI_TRANSLATIONS_ID.set("The seven-part analytical assessment is loading. If the dated data cannot be retrieved, refer to the source-linked sections above.","Analisis tujuh tema sedang dimuat. Jika data terbaru tidak tersedia, gunakan bagian sebelumnya yang mencantumkan sumber.");
+window.SLI_TRANSLATIONS_ID.set("● Dated research · monitored sources","● Riset bertanggal · pemantauan sumber");
+window.SLI_TRANSLATIONS_ID.set("Consult the latest dated World Bank observation","Lihat observasi terbaru Bank Dunia yang mencantumkan tanggal");
+window.SLI_TRANSLATIONS_ID.set("the international thermal-coal benchmark differs in grade and methodology from Indonesia’s HBA.","Acuan batubara termal internasional berbeda dalam kualitas serta metodologi dari HBA Indonesia.");
+window.SLI_TRANSLATIONS_ID.set("Energy Policy & Regulatory Update","Pembaruan Kebijakan & Regulasi Energi");
+window.SLI_TRANSLATIONS_ID.set("Institutional responsibilities & accountability","Tanggung Jawab & Akuntabilitas Kelembagaan");
+window.SLI_TRANSLATIONS_ID.set("Who directs policy, who regulates and who executes it","Siapa yang mengarahkan, mengatur, dan menjalankan kebijakan");
