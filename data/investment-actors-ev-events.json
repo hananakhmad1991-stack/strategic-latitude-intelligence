@@ -154,6 +154,37 @@
       "ownership_class": "Executive, not shareholder or natural-person BO by title",
       "source_url": "https://changan.co.id/newsroom/perdana-hadir-di-giias-surabaya-2026-changan-resmi-meluncurkan-changan-deepal-s05-dan-changan-nevo-q05-untuk-wilayah-jawa-timur",
       "evidence_date": "2026-08-26"
+    },
+    {
+      "name": "Kun Chen",
+      "sector": "Nuclear (New Energy)",
+      "role": "Chief Nuclear Officer (identified in April 2025 BAPETEN hearing)",
+      "organisation": "PT Thorcon Power Indonesia",
+      "role_type": "Project technical executive (source-dated)",
+      "country_affiliation": "Indonesia-registered nuclear development applicant; company upstream shareholding not independently verified",
+      "company_connection": "Technical role at site-evaluation stage; no inference of project SPV beneficial ownership or any reactor construction approval.",
+      "asset_ids": [
+        "nuclear-thorcon-kelasa"
+      ],
+      "ownership_class": "Technical executive; natural-person beneficial ownership unverified",
+      "source_url": "https://bapeten.go.id/berita/konsultasi-perizinan-persetujuan-evaluasi-tapak-kelasa-pt-thorcon-power-indonesia-163913?lang=id",
+      "evidence_date": "2025-04-17"
+    },
+    {
+      "name": "Ruly Firmansyah",
+      "sector": "Solar PV",
+      "role": "President Director (quoted in 2025 IKN solar project release)",
+      "organisation": "PT PLN Nusantara Power",
+      "role_type": "Corporate executive (source-dated)",
+      "country_affiliation": "Indonesia — PLN group, with Singapore JV partner Sembcorp for IKN PLTS",
+      "company_connection": "Identified by PLN Nusantara Power as speaking at 50MW IKN PLTS operating announcement; office holding should be reconfirmed in newer governance filings.",
+      "asset_ids": [
+        "solar-ikn-50",
+        "hydro-cirata-1008"
+      ],
+      "ownership_class": "State utility executive; not private shareholder or natural-person beneficial owner",
+      "source_url": "https://www.plnnusantarapower.co.id/media-relation/press-release/plts-ikn-50-mw-mulai-beroperasi-pln-nusantara-power-dukung-swasembada-energi-nasional",
+      "evidence_date": "2025"
     }
   ],
   "brands": [
@@ -355,6 +386,30 @@
       "impact_hypothesis": "Approval can reduce operating suspension risk but does not itself establish permitted mine output achieved or stock-price movement.",
       "confirmation_needed": "Full signed RKAB, production quotas, quarterly 2026 output and official exchange filings.",
       "source_url": "https://vale.com/in/w/2026-rkab-approved-pt-vale-indonesia-reaffirms-operational-certainty-and-investment-continuity"
+    },
+    {
+      "date": "2025-07-30",
+      "type": "Regulatory stage-gate / nuclear site",
+      "sector": "Nuclear (New Energy)",
+      "entity": "PT Thorcon Power Indonesia / BAPETEN",
+      "headline": "BAPETEN approves Thorcon's site evaluation programme at Kelasa, not reactor construction",
+      "event_status": "Site-evaluation programme approval; construction/commissioning/operation licences not issued by this document",
+      "signal": "Early regulatory pathway / multi-stage nuclear development risk",
+      "impact_hypothesis": "Positive progress through a preliminary regulator step, conditional on geology, environmental, safety and subsequent permissions; not confirmation of investment cash or electricity production.",
+      "confirmation_needed": "Completed site evaluation, nuclear siting licence, construction permit, finance closing and later operating licence.",
+      "source_url": "https://bapeten.go.id/berita/siaran-pers-bapeten-terbitkan-persetujuan-evaluasi-tapak-pltn-di-pulau-kelasa-kepulauan-bangka-belitung-112749?lang=en"
+    },
+    {
+      "date": "2025-05-26",
+      "type": "RUPTL ten-year policy pipeline",
+      "sector": "Solar PV",
+      "entity": "ESDM / PLN",
+      "headline": "RUPTL 2025–2034 includes 17.1GW solar, 11.7GW hydro, 7.2GW wind and 0.5GW nuclear targets",
+      "event_status": "Official published capacity planning; project award and actual capital disbursement remain separate",
+      "signal": "Long-horizon project pipeline / permitting and grid investment dependency",
+      "impact_hypothesis": "Defines potential future tender and EPC demand, not evidence that each proposed project has started construction.",
+      "confirmation_needed": "Track each tender, PPA, financing, annual COD and technology-specific realization.",
+      "source_url": "https://ebtke.esdm.go.id/artikel/siaran-pers/menteri-esdm-umumkan-ruptl-pln-2025-2034-serap-lebih-dari-17-juta-tenaga-kerja-baru"
     }
   ]
 }
