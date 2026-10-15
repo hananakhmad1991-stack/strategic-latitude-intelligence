@@ -32,3 +32,11 @@
 .inv-asset-benchmarks .inv-asset-stat small{font-size:10px;color:#aac0d0;line-height:1.5}
 .inv-asset-benchmarks .inv-asset-stat a{font-size:11px}
 @media(max-width:650px){.inv-asset-benchmarks{grid-template-columns:1fr}}
+
+/* Long-horizon RUPTL capacity plan. Technology classes and storage are kept separate. */
+.inv-ruptl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 20px;padding:9px 3px}
+.inv-ruptl-row{min-width:0}
+.inv-ruptl-row .inv-stake-head{margin-bottom:6px}
+.inv-ruptl-row .inv-stake-track{height:9px;background:#203e55;border-radius:5px;overflow:hidden}
+.inv-ruptl-row .inv-stake-fill{height:100%;background:#d7b678;border-radius:5px}
+@media(max-width:720px){.inv-ruptl-grid{grid-template-columns:1fr}}
