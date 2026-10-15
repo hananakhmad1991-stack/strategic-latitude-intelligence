@@ -23,7 +23,7 @@ window.initSLIInvestment=async function(){
  const intro=$("p",null,"Track policy-relevant investment through verifiable milestones. Announcements, financial commitments, realized investment statistics and operational assets are different measurements and must never be added together.");
  root.append(strap,title,intro);
  const nav=$("div","tr-jumpnav");
- [["inv-markets","Markets & global indices"],["inv-kpis","Investment evidence"],["inv-quality","Evidence health"],["inv-sector-history","Energy & mining investment"],["inv-swot","Sector SWOT"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-assets","Asset & concession intelligence"],["inv-industrial-actors","Forbes Top 20 & EV"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-rumors","Unconfirmed deals"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-commitments","Equity commitments"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
+ [["inv-markets","Markets & global indices"],["inv-kpis","Investment evidence"],["inv-quality","Evidence health"],["inv-sector-history","Energy & mining investment"],["inv-palm","Palm oil investment & fiscal"],["inv-swot","Sector SWOT"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-assets","Asset & concession intelligence"],["inv-industrial-actors","Forbes Top 20 & EV"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-rumors","Unconfirmed deals"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-commitments","Equity commitments"],["inv-corporate-capex","Corporate capex"],["inv-filings","Company filings"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
  heading(root,"Markets & Global Investment Context","Daily exchange fixing · delayed equity market data · global comparator methodologies");
  const marketPanel=box(root,"USD/IDR, IHSG & international investment indicators");
  marketPanel.id="inv-markets";
@@ -42,6 +42,10 @@ window.initSLIInvestment=async function(){
  sectors.id="inv-sector-history";
  const sectorRoot=$("div");sectorRoot.id="investmentSectorRoot";sectors.append(sectorRoot);
  if(typeof window.initSLIInvestmentSectorEvidence==="function")initSafe("Sector evidence",()=>window.initSLIInvestmentSectorEvidence());
+ heading(root,"Palm Oil, Investment & Public Returns","BKPM palm downstreaming · BPDP/export duties · biodiesel feedstock");
+ const palmPanel=box(root,"Palm Oil: Investment, Fiscal & Biofuel Feedstock Intelligence");palmPanel.id="inv-palm";
+ const palmRoot=$("div");palmRoot.id="investmentPalmRoot";palmPanel.append(palmRoot);
+ if(typeof window.initSLIInvestmentPalm==="function")initSafe("Palm investment & fiscal",()=>window.initSLIInvestmentPalm());
  heading(root,"Where Investment Is Realized","BKPM Q2 2026 · provincial investment, not project capex");
  const geography=box(root,"Top provinces and foreign-investor origin");geography.id="inv-geography";
  const geographyContent=$("div");geography.append(geographyContent);
@@ -67,7 +71,7 @@ window.initSLIInvestment=async function(){
  const ownershipRoot=$("div");ownershipRoot.id="investmentOwnershipRoot";own.append(ownershipRoot);
  if(typeof window.initSLIInvestmentOwnership==="function")initSafe("Ownership",()=>window.initSLIInvestmentOwnership());
  heading(root,"Indonesia Investment SWOT by Sector","Strength · Weakness · Opportunity · Threat · dated asset/news context");
- const swotPanel=box(root,"Twelve-sector investment SWOT explorer");swotPanel.id="inv-swot";
+ const swotPanel=box(root,"Thirteen-sector investment SWOT explorer");swotPanel.id="inv-swot";
  const swotRoot=$("div");swotRoot.id="investmentSWOTRoot";swotPanel.append(swotRoot);
  heading(root,"Investment Risk & Source Watch","Dated editorial and regulatory intelligence");
  const watch=box(root,"Official reference points");watch.id="inv-watch";
@@ -79,7 +83,7 @@ window.initSLIInvestment=async function(){
  const rumorPanel=box(root,"Unconfirmed M&A, divestment, financing and deal reports");rumorPanel.id="inv-rumors";
  const rumorRoot=$("div");rumorRoot.id="investmentRumorsRoot";rumorPanel.append(rumorRoot);
  if(typeof window.initSLIInvestmentStrategy==="function")initSafe("Markets, sector SWOT and public deal watch",()=>window.initSLIInvestmentStrategy());
- heading(root,"State Revenue & Sector Receipts","ESDM PNBP · annual vs partial-year comparisons");
+ heading(root,"State Revenue & Sector Receipts","ESDM PNBP · palm oil levies/duties shown separately above · annual vs partial-year comparisons");
  const rev=box(root,"Indonesia sectoral non-tax revenue");rev.id="inv-revenue";
  rev.append($("p",null,"Reported PNBP only. Mineral and coal receipts are combined in this source; figures are not export value, GDP, tax take or investment flows."));
  const revenueTable=$("div","pf-table-wrap");rev.append(revenueTable);
