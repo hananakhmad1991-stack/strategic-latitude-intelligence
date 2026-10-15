@@ -180,6 +180,24 @@ window.renderSLIStakeholderMap=function(root,data){
  const stats=$("div","stake-stats");
  stats.append(stat("Institutions",String(all.length)),stat("Influence groups",String(data.layers.length)),stat("Issue lenses",String(routes.length)));
  header.append(heading,stats);wrapper.append(header);
+ const keyPeople=[
+  {name:"Presidency / National Energy Council (DEN)",title:"President / DEN Chair"},
+  {name:"Sekretariat Jenderal DEN",title:"DEN Secretary General"},
+  {name:"SKK Migas",title:"SKK Migas Head"}
+ ];
+ const leaders=$("div","stake-key-people");
+ leaders.setAttribute("aria-label","Named current decision-makers in Indonesia energy institutional mapping");
+ keyPeople.forEach(({name,title})=>{
+  const record=all.find(x=>x.a.name===name)?.a;
+  if(!record?.person_name)return;
+  const chip=$("button","stake-person-chip");
+  chip.type="button";
+  chip.append($("span",null,title),$("strong",null,record.person_name));
+  chip.setAttribute("aria-label",title+": "+record.person_name+". Open stakeholder profile");
+  chip.addEventListener("click",()=>goActor(name));
+  leaders.append(chip);
+ });
+ if(leaders.children.length)wrapper.append(leaders);
  if(data.ownership_model){
   const own=$("details","stake-ownership");
   own.append($("summary",null,"SOE ownership vs regulation · UU 16/2025 · expand mandate diagram"));
