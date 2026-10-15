@@ -10,7 +10,8 @@ const html=fs.readFileSync('index.html','utf8');
 assert.ok(html.includes('energy-hierarchy-adapter.js'),'Canonical Energy actor adapter must be loaded');
 assert.match(html,/energy-governance-ccs\.js\?v=/,'Energy module must have a new cache token');
 class FakeNode{
- constructor(tag){this.tagName=tag;this.children=[];this._text='';this.className='';this.id='';this.href='';this.style={};this.dataset={};this.attrs={};this.events={};this.hidden=false;this.open=false;this.isConnected=true;this.value='';this.classList={contains:v=>this.className.split(' ').includes(v)}}
+ constructor(tag){this.tagName=tag;this.children=[];this._text='';this.className='';this.id='';this.href='';this.style={};this.dataset={};this.attrs={};this.events={};this.hidden=false;this.open=false;this.isConnected=true;this.value='';this.classList={contains:v=>this.className.split(' ').includes(v),add:v=>this.setClass(v,true),remove:v=>this.setClass(v,false),toggle:(v,on)=>this.setClass(v,on===undefined?!this.className.split(' ').includes(v):on)}}
+ setClass(name,enabled){const vals=new Set(this.className.split(' ').filter(Boolean));if(enabled)vals.add(name);else vals.delete(name);this.className=[...vals].join(' ')}
  append(...items){for(let n of items){if(typeof n==='string'){const t=new FakeNode('#text');t.textContent=n;n=t}if(n)this.children.push(n)}if(this.tagName==='select'&&!this.value&&this.children.length)this.value=this.children[0].value||''}
  replaceChildren(...items){this.children=[];this._text='';this.append(...items)}
  prepend(n){this.children.unshift(n)}
