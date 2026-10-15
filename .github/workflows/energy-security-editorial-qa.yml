@@ -12,6 +12,9 @@ on:
       - scripts/geopolitical_energy_watch.py
       - tests/test_energy_news_sectors.py
       - tests/check-energy-news-sectors.cjs
+      - tests/check-i18n.cjs
+      - js/i18n-dictionary.js
+      - js/i18n.js
       - css/energy-information-architecture.css
       - css/energy-appendix.css
       - js/energy-appendix.js
