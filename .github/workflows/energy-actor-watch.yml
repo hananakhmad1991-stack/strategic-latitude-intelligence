@@ -52,18 +52,42 @@ jobs:
               assert "window.renderSLIStakeholderMap(root,data)" in view.read()
           print("Validated governance map:",len(names),"unique actors,",len(groups),"branches")
           PY
-      - name: Commit monitored status and only dual-verified leadership changes
+      - name: Publish monitor status with conflict-safe governance updates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/energy-actors-status.json data/energy-governance-ccs.json
-          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
-          git commit -m "Refresh official energy actor verification and change status"
+          cp data/energy-actors-status.json /tmp/sli-actor-status.json
+          cp data/energy-governance-ccs.json /tmp/sli-actor-scan.json
           for attempt in 1 2 3 4 5; do
-            git pull --rebase origin main || exit 1
+            git fetch origin main || exit 1
+            git reset --hard origin/main
+            cp /tmp/sli-actor-status.json data/energy-actors-status.json
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          current=Path("data/energy-governance-ccs.json")
+          scanned=json.loads(Path("/tmp/sli-actor-scan.json").read_text(encoding="utf-8"))
+          status=json.loads(Path("/tmp/sli-actor-status.json").read_text(encoding="utf-8"))
+          changes=status.get("verified_auto_changes",[])
+          if changes:
+              data=json.loads(current.read_text(encoding="utf-8"))
+              new={a["name"]:a for layer in scanned["governance"]["layers"] for a in layer["actors"]}
+              current_actors={a["name"]:a for layer in data["governance"]["layers"] for a in layer["actors"]}
+              for change in changes:
+                  name=change.get("actor")
+                  if name not in new or name not in current_actors: continue
+                  src=new[name];dst=current_actors[name]
+                  if dst.get("verified","")>src.get("verified",""):continue
+                  for key in ("person_name","lead","source","verified","verification_status"):
+                      if key in src:dst[key]=src[key]
+              current.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+            git add data/energy-actors-status.json data/energy-governance-ccs.json
+            if git diff --cached --quiet; then echo "Already current"; exit 0; fi
+            git commit -m "Refresh source-verified energy actor monitoring"
             if git push origin HEAD:main; then exit 0; fi
-            echo "Concurrent update; retry $attempt/5"
+            echo "Concurrent change; retry on current main"
             sleep $((attempt * 2))
           done
-          echo "Unable to publish institutional verification after 5 attempts"
+          echo "Could not publish after retries"
           exit 1
