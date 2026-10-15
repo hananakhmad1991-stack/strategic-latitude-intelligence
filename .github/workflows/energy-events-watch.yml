@@ -26,6 +26,8 @@ jobs:
           python-version: "3.12"
       - name: Build next five source-dated events
         run: python scripts/energy_events_watch.py
+      - name: Check dashboard JavaScript syntax
+        run: node --check js/energy-events.js
       - name: Verify event dates, citations and count
         run: |
           python - <<'PY'
