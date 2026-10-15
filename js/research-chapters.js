@@ -193,9 +193,9 @@ function makeEnergyStructure(which,root){
  const children=[...root.children],foot=children.find(x=>x.classList.contains("sli-research-footer"));
  for(const node of children){if(!node.classList.contains("sli-research-section"))continue;
  const title=node.querySelector("h3")?.textContent||"";
- if(title==="Stakeholder & Institution Mapping"||title==="SWOT & Strategic Assessment"||title==="SWOT & Korea Cooperation"){node.remove();continue}
+ if(title==="Stakeholder & Institution Mapping"||title==="Governance & Strategic Actors"||title==="SWOT & Strategic Assessment"||title==="SWOT & Korea Cooperation"){node.remove();continue}
  let index=4;
- if(/Institutional Accountability|Governance & Strategic Actors/.test(title))index=0;
+ if(/Institutions, Governance & Policy|Institutional Accountability/.test(title))index=0;
  else if(/National Mineral Baseline|National Capacity|Production and Processing Measures|Facility and Implementation Records|Measurement Framework/.test(title))index=1;
  else if(/Named Projects|Operators, Projects|Project Implementation|Infrastructure Geography/.test(title))index=2;
  else if(/Trade, Competitiveness|Market|Economics/.test(title))index=3;
