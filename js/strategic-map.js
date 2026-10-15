@@ -260,6 +260,27 @@ function mapPage(root,data){
   shortcuts.append(b);
  }
  root.append(shortcuts);
+ const accuracyBar=node("div","map-accuracy-bar");
+ accuracyBar.append(node("strong",null,label("COORDINATE ACCURACY","AKURASI KOORDINAT")));
+ const geoCount=node("span","map-geocode-count");let currentAccuracy="all";
+ const accuracies=[
+  ["all",label("All records","Semua catatan")],
+  ["locality",label("Locality pins","Titik wilayah")],
+  ["province",label("Province only","Hanya provinsi")],
+  ["unknown",label("No location","Tanpa lokasi")]
+ ];
+ const geoButtons=[];
+ for(const [value,copy] of accuracies){
+  const b=node("button","map-btn map-accuracy-btn",copy);b.type="button";b.dataset.accuracy=value;
+  b.setAttribute("aria-pressed",String(value==="all"));
+  b.addEventListener("click",()=>{
+   currentAccuracy=value;currentPoint=null;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";
+   for(const item of geoButtons)item.setAttribute("aria-pressed",String(item.dataset.accuracy===value));
+   draw();
+  });
+  accuracyBar.append(b);geoButtons.push(b);
+ }
+ accuracyBar.append(geoCount);root.append(accuracyBar);
  const grid=node("div","map-mapgrid"),mapSection=node("section","map-canvas-wrap"),mapHead=node("div","map-canvas-head");
  const place=node("p",null,label("38 provinces · administrative boundaries","38 provinsi · batas administratif")),zoom=node("div","map-zoom");
  const minus=node("button","map-btn","−"),plus=node("button","map-btn","+"),home=node("button","map-btn",label("Reset view","Reset tampilan"));
@@ -296,6 +317,12 @@ function mapPage(root,data){
   "Coverage now also includes Pertamina 2022 upstream WK/field rosters, Medco 2024–2026 upstream/power disclosures, historical PLN/ESDM PLTU–PLTGU–PLTA–PLTP lists (some dating back to 2010), EBTKE 2024/25 biodiesel plant geography and 2025/26 government refinery/smelter directories. Historical source vintage is not current operating certification, owner verification, COD or executed CAPEX. RUPTL targets and regional energy totals are not allocated to individual sites. Double counts across company, WK, field, facility and investment dossiers are possible; never sum counts as unique projects or investment value.",
   "Cakupan kini juga menyertakan daftar WK/lapangan Pertamina 2022, pengungkapan portofolio Medco 2024–2026, daftar historis pembangkit ESDM/PLN (sebagian sejak 2010), data lokasi produsen biodiesel EBTKE 2024/25, serta dossier smelter resmi. Tahun publikasi lama bukan bukti operasi, operator, izin PSC, COD atau realisasi belanja modal tahun 2026. Target regional RUPTL tidak dialokasikan menjadi angka investasi setiap lokasi. Catatan perusahaan, WK, lapangan, fasilitas dan proyek bisa tumpang tindih sehingga tidak boleh dijumlahkan sebagai proyek unik ataupun modal investasi."
   )));
+ appendix.append(node("p","map-limited",label(
+  "NEW COORDINATE-LAYER METHODOLOGY: A marker is a WGS84 approximate named-city, locality, industrial zone or district reference ONLY when a source record identifies that locality. It is not a surveyed site/facility GPS coordinate. Co-located records form interactive clusters. Province-only, offshore and undisclosed locations cannot be assigned made-up project coordinates and remain searchable in the full registry. The user can filter by accuracy. Licensing and city labels: GeoNames, CC BY 4.0.",
+  "METODOLOGI TITIK KOORDINAT BARU: penanda WGS84 adalah posisi PERKIRAAN kota, kecamatan, kawasan industri atau kabupaten jika lokasi tersebut disebut pada sumber. Ini BUKAN koordinat GPS fasilitas. Entri dengan lokasi serupa dikelompokkan dalam klaster interaktif. Catatan provinsi saja, offshore dan lokasi dirahasiakan tetap bisa dicari tanpa lokasi fiktif. Akurasi dapat difilter. Sumber nama wilayah: GeoNames, CC BY 4.0."
+  )));
+ const namesCredit=node("p");namesCredit.append(document.createTextNode(label("Locality reference: ","Referensi wilayah: ")),srcLink("https://www.geonames.org/","GeoNames · CC BY 4.0"));
+ appendix.append(namesCredit);
  const geoAttribution=node("p");
  geoAttribution.append(document.createTextNode(label("Boundary source: ","Sumber batas provinsi: ")),srcLink(data.geo.metadata?.source,"Indonesia GeoJSON (38 provinces)"),document.createTextNode(" · CC BY 4.0 · "+label("Coordinates rounded to 4 decimals; check upstream rights before commercial redistribution.","Koordinat dibulatkan 4 desimal; periksa lisensi sumber awal sebelum distribusi komersial.")));
  appendix.append(geoAttribution);
@@ -323,7 +350,7 @@ function mapPage(root,data){
  let viewport={x:0,y:0,w:W,h:H},drag=null,dragged=false;
  function setView(v){viewport=v;svg.setAttribute("viewBox",[v.x,v.y,v.w,v.h].join(" "))}
  function zoomAt(factor){const v=viewport,ratio=factor,uw=Math.max(250,Math.min(W*1.1,v.w*ratio)),uh=Math.max(110,Math.min(H*1.1,v.h*ratio));setView({x:v.x+(v.w-uw)/2,y:v.y+(v.h-uh)/2,w:uw,h:uh})}
- plus.addEventListener("click",()=>zoomAt(.78));minus.addEventListener("click",()=>zoomAt(1.28));home.addEventListener("click",()=>setView({x:0,y:0,w:W,h:H}));
+ plus.addEventListener("click",()=>{zoomAt(.78);draw()});minus.addEventListener("click",()=>{zoomAt(1.28);draw()});home.addEventListener("click",()=>{setView({x:0,y:0,w:W,h:H});draw()});
  if(svg.addEventListener){
   svg.addEventListener("pointerdown",e=>{if(e.pointerType==="touch")return;drag={x:e.clientX,y:e.clientY,b:viewport};dragged=false;svg.setPointerCapture?.(e.pointerId)});
   svg.addEventListener("pointermove",e=>{if(!drag)return;const rect=svg.getBoundingClientRect?.();if(!rect?.width)return;const dx=(e.clientX-drag.x)*drag.b.w/rect.width,dy=(e.clientY-drag.y)*drag.b.h/rect.height;if(Math.abs(dx)+Math.abs(dy)>3)dragged=true;setView({...drag.b,x:drag.b.x-dx,y:drag.b.y-dy})});
@@ -364,6 +391,7 @@ function mapPage(root,data){
   return (currentSector==="all"||r.group===currentSector)
    &&(currentStage==="all"||r.stage===currentStage)
    &&(currentLocation==="all"||(currentLocation==="mapped"?mapped:!mapped))
+   &&(currentAccuracy==="all"||accuracyOf(r)===currentAccuracy)
    &&(!lastQuery||[r.name,r.operator,r.region,r.province,...provinceAssociations(r),r.sector,r.stage,r.kind].join(" ").toLowerCase().includes(lastQuery));
  });
  function kepriCluster(r){
@@ -414,11 +442,47 @@ function mapPage(root,data){
     const n=snode("text",{x,y,class:"map-bubble-text"});n.textContent=count;bubbleLayer.append(n);
    }
   }
-  const chosen=base.filter(x=>(!currentProvince||provinceAssociations(x).includes(currentProvince))&&(!currentKepriCluster||currentProvince!=="Kepulauan Riau"||kepriCluster(x)===currentKepriCluster))
+  // Named-locality coordinate references, grouped by close screen distance.
+  // No random marker jitter and no invented GPS for province-only dossiers.
+  const groups=new Map();
+  for(const r of base){
+   const a=pointFor(r);
+   if(!a)continue;
+   const key=a.id;
+   if(!groups.has(key))groups.set(key,{...a,records:[]});
+   groups.get(key).records.push(r);
+  }
+  const clusters=[];
+  const threshold=16*viewport.w/W;
+  for(const g of [...groups.values()].sort((a,b)=>a.lat-b.lat)){
+   const [gx,gy]=boundsOf([g.lon,g.lat]);
+   const nearby=clusters.find(c=>c.province===g.id.split("|")[1]&&Math.hypot(c.x-gx,c.y-gy)<=threshold);
+   if(nearby){nearby.records.push(...g.records);nearby.names.add(g.label)}
+   else clusters.push({x:gx,y:gy,province:g.id.split("|")[1],records:[...g.records],names:new Set([g.label])});
+  }
+  for(const c of clusters){
+   const idSet=[...new Set(c.records.map(r=>r.id))];
+   const count=idSet.length;
+   const geoKey=idSet.sort().join("|");
+   const x=c.x,y=c.y;
+   const pin=snode("g",{class:"map-geopoint",role:"button",tabindex:"0",
+    "aria-label":[...c.names].join(", ")+" — "+count+" "+label("locality coordinate references (not exact project GPS)","referensi koordinat wilayah (bukan GPS proyek)")});
+   const dot=snode("circle",{cx:x,cy:y,r:count>8?11:count>2?9:6,class:"map-geopoint-dot"+(currentPoint===geoKey?" active":"")});
+   const tooltip=snode("title");tooltip.textContent=[...c.names].join(", ")+" · "+count+" "+label("source records · approximate locality, click to inspect","catatan bersumber · perkiraan wilayah, klik untuk periksa");
+   pin.append(dot,tooltip);
+   if(count>1){const num=snode("text",{x,y,class:"map-geopoint-label"});num.textContent=count;pin.append(num)}
+   pin.addEventListener("click",()=>{if(dragged)return;currentPoint=currentPoint===geoKey?null:geoKey;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";draw()});
+   pin.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();currentPoint=currentPoint===geoKey?null:geoKey;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";draw()}});
+   pinLayer.append(pin);
+  }
+  const chosen=base.filter(x=>(!currentProvince||provinceAssociations(x).includes(currentProvince))&&(!currentKepriCluster||currentProvince!=="Kepulauan Riau"||kepriCluster(x)===currentKepriCluster)&&(!currentPoint||currentPoint.split("|").includes(x.id)))
    .sort((a,b)=>a.group.localeCompare(b.group)||a.name.localeCompare(b.name));
   const display=chosen; // Do not silently hide entries behind a 20-item list cap.
   const scopeName=currentKind==="all"?label("all saved source records","seluruh catatan bersumber"):currentKind==="assets"?label("operator assets","aset operator"):currentKind==="projects"?label("investment projects","proyek investasi"):currentKind==="sites"?label("mine and industrial sites","tambang dan fasilitas industri"):currentKind==="wk"?label("WK / upstream oil and gas","WK / hulu migas"):currentKind==="power"?label("fossil and renewable power plants","pembangkit fosil dan EBT"):currentKind==="industry"?label("biodiesel and smelter plants","pabrik biodiesel dan smelter"):currentKind==="regional"?label("regional cross-checks","pemeriksaan sumber regional"):currentKind==="digital"?label("Digital / AI (all registries)","Digital / AI (seluruh registri)"):label("refineries","kilang");
-  heading.textContent=currentProvince?(currentProvince+(currentKepriCluster?" · "+KEPRI_REFERENCES[currentKepriCluster].name:"")):label("Mapped evidence","Bukti terpetakan");
+  heading.textContent=currentPoint?label("Selected coordinate cluster","Klaster koordinat terpilih"):currentProvince?(currentProvince+(currentKepriCluster?" · "+KEPRI_REFERENCES[currentKepriCluster].name:"")):label("Mapped evidence","Bukti terpetakan");
+  const localityCount=base.filter(r=>accuracyOf(r)==="locality").length;
+  const provinceCount=base.filter(r=>accuracyOf(r)==="province").length;
+  geoCount.textContent=localityCount+" "+label("locality-referenced","titik wilayah")+" · "+provinceCount+" "+label("province-only","hanya provinsi")+" · "+(base.length-localityCount-provinceCount)+" "+label("unlocated","tanpa lokasi");
   info.textContent=label("Registry: ","Registri: ")+scopeName+" · "+display.length+" "+label("shown in list / ","ditampilkan / ")+base.length+" "+label("matching records · ","catatan cocok · ")+mapped.length+" "+label("province-mapped · ","terpetakan · ")+unmapped+" "+label("unlocated","tanpa lokasi");
   list.replaceChildren();
   if(!chosen.length)list.append(node("p","map-muted",label("No records match these filters or this province. Choose another province or reset filters.","Tidak ada catatan sesuai filter atau provinsi ini. Pilih provinsi lain atau reset filter.")));
@@ -438,6 +502,9 @@ function mapPage(root,data){
    card.append(node("p",null,label("Operator / sponsor: ","Operator / investor: ")+(r.operator||label("Not identified","Tidak disebutkan"))));
    if(r.amount?.amount!=null)card.append(node("p",null,label("Reported amount: ","Nilai dilaporkan: ")+r.amount.unit+" "+fmt(r.amount.amount)+" · "+(r.amount.basis||label("basis not stated","basis tidak tercatat"))));
    if(r.region)card.append(node("p","map-muted",label("Source geography: ","Geografi bersumber: ")+r.region));
+   const loc=pointFor(r);
+   if(loc)card.append(node("p","map-coordinate-pill",label("Approximate locality, NOT project GPS: ","Perkiraan wilayah, BUKAN GPS proyek: ")+loc.label+" · "+loc.lat.toFixed(3)+"°, "+loc.lon.toFixed(3)+"°"));
+   else card.append(node("p","map-muted",provinceAssociations(r).length?label("Province-level only · facility coordinates not verified","Hanya tingkat provinsi · koordinat fasilitas belum diverifikasi"):label("Undisclosed / cross-province · no site location invented","Dirahasiakan / lintas provinsi · tidak dibuatkan titik palsu")));
    if(r.locationScope)card.append(node("p","map-limited",label("Mapping: ","Pemetaan: ")+r.locationScope+" · "+label("province association only, not site coordinates","asosiasi provinsi, bukan koordinat fasilitas")));
    if(r.vintage)card.append(node("p","map-muted",label("Source vintage (not operating confirmation): ","Tahun sumber (bukan konfirmasi operasi): ")+r.vintage));
    if(r.capacity?.value!=null)card.append(node("p","map-muted",(r.kind==="digital"?label("Operator-published IT capacity: ","Kapasitas TI menurut operator: "):label("Source-reported plant rating: ","Rating pembangkit dari sumber: "))+fmt(r.capacity.value)+" "+r.capacity.unit+" · "+r.capacity.scope));
@@ -449,13 +516,13 @@ function mapPage(root,data){
   list.append(node("p","map-muted",label("All matching records shown: ","Semua catatan yang cocok ditampilkan: ")+chosen.length+" · "+label("scroll this list or filter to browse","gulir daftar atau gunakan filter untuk menjelajah")));
   countsText.textContent=label("For this selection: ","Untuk pilihan ini: ")+base.length+label(" records, "," catatan, ")+mapped.length+label(" mapped, "," terpetakan, ")+unmapped+label(" unlocated. The map does not quantify realized investment value."," tanpa lokasi. Peta tidak menghitung total realisasi investasi.");
  }
- kind.addEventListener("change",()=>{currentKind=kind.value;currentSector="all";currentStage="all";currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";filtersRebuild();draw()});
- provinceSelect.addEventListener("change",()=>{currentProvince=provinceSelect.value==="all"?null:provinceSelect.value;currentKepriCluster=null;draw()});
- location.addEventListener("change",()=>{currentLocation=location.value;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";draw()});
- group.addEventListener("change",()=>{currentSector=group.value;draw()});
- stage.addEventListener("change",()=>{currentStage=stage.value;draw()});
- search.addEventListener("input",()=>{lastQuery=search.value.toLowerCase().trim();draw()});
- reset.addEventListener("click",()=>{kind.value="all";currentKind="all";location.value="all";currentLocation="all";provinceSelect.value="all";currentProvince=null;currentKepriCluster=null;currentSector="all";currentStage="all";search.value="";lastQuery="";filtersRebuild();setView({x:0,y:0,w:W,h:H});draw()});
+ kind.addEventListener("change",()=>{currentPoint=null;currentKind=kind.value;currentSector="all";currentStage="all";currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";filtersRebuild();draw()});
+ provinceSelect.addEventListener("change",()=>{currentPoint=null;currentProvince=provinceSelect.value==="all"?null:provinceSelect.value;currentKepriCluster=null;draw()});
+ location.addEventListener("change",()=>{currentPoint=null;currentLocation=location.value;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";draw()});
+ group.addEventListener("change",()=>{currentPoint=null;currentSector=group.value;draw()});
+ stage.addEventListener("change",()=>{currentPoint=null;currentStage=stage.value;draw()});
+ search.addEventListener("input",()=>{currentPoint=null;lastQuery=search.value.toLowerCase().trim();draw()});
+ reset.addEventListener("click",()=>{currentPoint=null;currentAccuracy="all";for(const b of geoButtons)b.setAttribute("aria-pressed",String(b.dataset.accuracy==="all"));kind.value="all";currentKind="all";location.value="all";currentLocation="all";provinceSelect.value="all";currentProvince=null;currentKepriCluster=null;currentSector="all";currentStage="all";search.value="";lastQuery="";filtersRebuild();setView({x:0,y:0,w:W,h:H});draw()});
  filtersRebuild();draw();
 }
 window.SLIProvinceFor=provinceFor;
