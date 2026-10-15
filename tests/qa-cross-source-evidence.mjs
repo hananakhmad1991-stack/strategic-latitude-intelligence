@@ -14,6 +14,7 @@ assert.ok(html.includes("initSLISourceBridge?.('energy','sliSourceEnergyRoot')")
 assert.ok(html.includes("initSLISourceBridge('investment','sliSourceInvestmentRoot')"));
 assert.ok(html.includes("initSLISourceBridge('overview','sliSourceOverviewRoot')"));
 assert.ok(research.includes('initSLISourceBridge(which,sourceMount)'),'specialist mineral and AI economics page should mount');
+assert.ok(research.includes('initSLISourceBridge("policy",policyEvidence)'),'policy risk should retain official investment and energy source provenance');
 assert.ok(source.includes('scope==="World"'),'world metrics must not appear as Indonesian statistics');
 assert.ok(d.reviewed_at&&d.licensing.includes('non-CC'),'explicit IEA data license warning');
 assert.ok(d.bkpm.raw_import_status.includes('not directly retrievable'),'do not invent raw provincial data');
@@ -48,4 +49,4 @@ for(const [where,refs] of Object.entries(d.groups)){
 const ctx={window:{SLIi18n:{language:'en'}},document:{},console};
 vm.runInNewContext(source,ctx,{filename:'source-data-bridge.js'});
 assert.equal(typeof ctx.window.initSLISourceBridge,'function');
-console.log('PASS: Official 2026 BKPM, ESDM 2025 and IEA 2025 cross-sector sources, licensing, units, period isolation and five mounts');
+console.log('PASS: Official 2026 BKPM, ESDM 2025 and IEA 2025 cross-sector sources, licensing, units, period isolation and six mounts');
