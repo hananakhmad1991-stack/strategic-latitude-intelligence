@@ -86,3 +86,17 @@
 .stake-mobile-button:hover,.stake-mobile-button:focus-visible{border-color:#e6c990;color:#ffe6b2;outline:none}
 @media(max-width:690px){.stake-mobile-list{display:grid}}
 @media(max-width:400px){.stake-mobile-list{grid-template-columns:1fr}}
+
+/* Two-share SOE ownership explainer: shareholder rights do not equal field regulator authority. */
+.stake-ownership{border:1px solid #506d83;border-radius:10px;background:#122b3f;margin:2px 0 14px}
+.stake-ownership summary{padding:12px 15px;font-size:11.5px;color:#f1d397;font-weight:650;cursor:pointer}
+.stake-ownership summary:focus-visible{outline:2px solid #e7cf9d;outline-offset:-2px}
+.stake-ownership-content{border-top:1px solid #405e74;padding:13px}
+.stake-ownership-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stake-ownership-box{background:#1a3a4f;border:1px solid #506c7f;border-radius:9px;padding:15px}
+.stake-ownership-kicker{font-size:9.5px;letter-spacing:.8px;color:#d8bd86}
+.stake-ownership-box h3{font-size:14px;color:#f0e8d6;margin:7px 0}
+.stake-ownership-box p,.stake-ownership-note{font-size:11px;line-height:1.8;color:#bcd1e0;margin:6px 0}
+.stake-ownership-note{margin:13px 2px;padding:10px;border-left:2px solid #d5bd82;background:#1c3445}
+.stake-ownership-links{display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:690px){.stake-ownership-rows{grid-template-columns:1fr}.stake-ownership-box{padding:12px}}
