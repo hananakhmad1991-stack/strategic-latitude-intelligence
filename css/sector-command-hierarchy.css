@@ -52,7 +52,7 @@
 
 /* One consolidated institutional explorer per sector */
 .sli-sector-explorer-switcher{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 12px;padding:5px;background:#0b2133;border:1px solid #34536b;border-radius:10px}
-.sli-sector-explorer-tab{flex:1 1 190px;min-width:0;text-align:center;background:transparent;color:#c6d5e1;border:1px solid transparent;border-radius:7px;padding:12px 14px;cursor:pointer;font:700 13px/1.4 inherit}
+.sli-sector-explorer-tab{flex:1 1 190px;min-width:0;text-align:center;background:transparent;color:#c6d5e1;border:1px solid transparent;border-radius:7px;padding:12px 14px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;line-height:1.4}
 .sli-sector-explorer-tab.active{color:#132a3c;background:#e1c486;border-color:#e1c486}
 .sli-sector-explorer-tab:hover:not(.active),.sli-sector-explorer-tab:focus-visible{border-color:#d7b678;color:#f4e2b5}
 .sli-sector-explorer-pane[hidden]{display:none!important}
