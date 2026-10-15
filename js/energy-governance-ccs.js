@@ -8,9 +8,40 @@ const note=(p,text,cls="gov-note")=>p.append(E("div",cls,text));
 const elSelect=(opts,cls="gov-select")=>{const s=E("select",cls);opts.forEach(([v,label])=>{const o=E("option",null,label);o.value=v;s.append(o)});return s};
 const meta=(p,s)=>p.append(E("p","gov-meta",s));
 const tag=(text,cls="gov-tag")=>E("span",cls,text);
+
+function showActorWatch(root){
+ const panel=E("div","gov-live");
+ panel.append(E("h3",null,"Official leadership verification · automated source scan"));
+ const status=E("p","gov-meta","Loading verification status…"),items=E("div","gov-leads");
+ panel.append(status,items);root.append(panel);
+ fetch("data/energy-actors-status.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Not published");return r.json()}).then(d=>{
+  const checked=new Date(d.checked_at_utc);
+  const age=(Date.now()-checked.getTime())/3600000;
+  status.textContent="Official source scan: "+(isNaN(checked.getTime())?"date unavailable":checked.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+" · "+d.official_sources_checked+" sources · "+(d.verified_auto_changes||[]).length+" automatically corroborated leadership changes"+(age>12?" · Delayed scan":"");
+  const pending=(d.requires_review||[]);
+  if(pending.length){note(items,pending.length+" candidate appointments await two independent official-source confirmations.");
+   pending.slice(0,5).forEach(x=>{const row=E("div","gov-lead");row.append(E("strong",null,x.actor+": "+x.candidate),E("p","gov-meta",x.reason));items.append(row)})}
+  else note(items,"No uncorroborated ministerial appointments detected by this scan. This does not prove there have been no changes.");
+  if((d.errors||[]).length)note(items,(d.errors||[]).length+" institutional source checks could not be completed; review the source-health file.");
+ }).catch(()=>{status.textContent="Institutional monitor not yet published. The currently verified actor roster remains visible below."});
+}
+function showCCSWatch(root){
+ const box=E("div","gov-live");box.append(E("h3",null,"CCS/CCUS Development Watch · attributed sources"));
+ const stamp=E("p","gov-meta","Awaiting dated project monitoring scan…"),list=E("div","gov-leads");box.append(stamp,list);root.append(box);
+ fetch("data/energy-ccs-updates.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Not published");return r.json()}).then(d=>{
+  const t=new Date(d.checked_at_utc),age=(Date.now()-t.getTime())/3600000;
+  const items=(d.updates||[]).filter(x=>x.url&&x.title);
+  stamp.textContent="CCS source scan: "+(isNaN(t.getTime())?"date unavailable":t.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+" · "+items.length+" attributed leads"+(age>12?" · Delayed scan":"")+(d.stale_previous_results?" · Previous leads retained":"");
+  items.slice(0,8).forEach(x=>{const row=E("div","gov-lead");row.append(tag(x.track),E("span","gov-meta"," · "+x.publisher+" · "+String(x.published_at_utc||"").slice(0,10)),E("div",null));row.lastChild.append(LINK(x.url,x.title));row.append(E("p","gov-meta","Headline discovered automatically; stage, investment and CO₂ injection NOT independently verified."));list.append(row)});
+  if(!items.length)note(list,"No qualifying CCS sources found in the scan. This does not imply no project activity.");
+  if((d.errors||[]).length)note(list,"Some CCS feeds failed; coverage may be incomplete.");
+ }).catch(()=>{stamp.textContent="CCS project change scanner has not published data; verified project snapshots remain below.";});
+}
+
 function governance(root,data){
  section(root,"01 · Institutional Structure & Actor Analysis","Strategic authority → regulation / oversight → investment / execution");
  note(root,data.warning);
+ showActorWatch(root);
  const headline=E("div","gov-chain");["President & DEN | national priorities","New Kemenko Hilirisasi & Transisi Energi | coordination","ESDM / Finance / Bappenas | regulation, fiscal & planning","Regulators / SKK Migas / BPMA | technical oversight","PLN / Pertamina / private operators | actual execution"].forEach((x,i)=>{if(i)headline.append(E("span","gov-arrow","→"));headline.append(E("div","gov-node",x))});root.append(headline);
  const controls=E("div","gov-controls"),search=E("input","gov-input"),kind=elSelect([["all","All actor types"],...["Strategy","Regulator","Fiscal","Planning","Implementer","Operator","Financier","Research"].map(x=>[x,x])]);
  search.placeholder="Find agency, official, responsibility…";search.setAttribute("aria-label","Search actors");
@@ -87,6 +118,7 @@ function policies(root,data){
 function ccs(root,data){
  section(root,"03 · Carbon Capture, Utilisation & Storage (CCS/CCUS)","Geological potential, regulation, project maturity & commercial realisation");
  note(root,data.note,"gov-note gov-caution-note");
+ showCCSWatch(root);
  const kpis=E("div","gov-kpis");
  const latest=data.potential[0],prior=data.potential[1];
  const values=[
