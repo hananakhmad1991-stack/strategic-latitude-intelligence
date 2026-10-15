@@ -35,6 +35,9 @@ assert len(domestic.TOPICS)>=15
 domestic_ids={x["id"] for x in domestic.TOPICS}
 for key in ["oil_gas_upstream","oil_gas_gas","coal_production","coal_dmo","nre_solar_wind","nre_geothermal_hydro","nre_policy"]:
     assert key in domestic_ids,key
+assert geo.topic_window("Global crude oil & OPEC supply")==2
+assert geo.topic_window("Coal exports and Asian import demand")==5
+assert geo.topic_window("Global solar PV and wind supply chains")==7
 assert len(geo.TOPICS)>=12
 assert {"oil_supply","coal_markets","nre_solar_wind","nre_grid_storage","nre_geothermal","nre_biofuels"}.issubset(set(geo.GEO_TOPIC_ID.values()))
 for path,collection in [("data/domestic-energy.json","reports"),("data/geopolitical-energy.json","events")]:
