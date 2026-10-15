@@ -1,0 +1,335 @@
+{
+  "id": "IEA-CM-INDONESIA-2026-07",
+  "as_of": "2026-10-16",
+  "iea_dataset_vintage": "2026-07-27",
+  "title": "IEA Critical Minerals · Indonesia Evidence & Global Market Context",
+  "attribution": "Source: IEA (2025–2026), Critical Minerals Data Explorer / Global Critical Minerals Outlook / Southeast Asia Energy Outlook / World Energy Investment. CC BY 4.0. SLI editorial grouping and analysis (not an IEA-endorsed dashboard).",
+  "coverage": "Publicly accessible IEA country observations and IEA model context, NOT a parsed national table from the downloadable 2026 workbook.",
+  "download_status": "The full raw IEA Critical Minerals Dataset was not accessible for verified bulk extraction here; no unpublished country series or Indonesia-specific STEPS/CPS/NZE values are inferred.",
+  "sources": [
+    {
+      "id": "iea_explorer_2026",
+      "title": "IEA Critical Minerals Data Explorer (2026)",
+      "year": 2026,
+      "published": "2026-07-27",
+      "url": "https://www.iea.org/data-and-statistics/data-tools/critical-minerals-data-explorer",
+      "scope": "Global scenario demand projections for 37 minerals; public introduction does not identify an Indonesia-specific demand series."
+    },
+    {
+      "id": "iea_dataset_2026",
+      "title": "IEA Critical Minerals Dataset (July 2026)",
+      "year": 2026,
+      "published": "2026-07-27",
+      "url": "https://www.iea.org/data-and-statistics/data-product/critical-minerals-dataset",
+      "scope": "Underlying scenario demand data and global mining/refining supply projections; full raw file not ingested here."
+    },
+    {
+      "id": "iea_sea_2026",
+      "title": "IEA Southeast Asia Energy Outlook 2026 · Challenges and opportunities",
+      "year": 2026,
+      "published": "2026",
+      "url": "https://www.iea.org/reports/southeast-asia-energy-outlook-2026/southeast-asia-s-energy-challenges-and-emerging-opportunities",
+      "scope": "Indonesia country-level mined nickel share; chart pertains to production in 2024 using IEA 2025 underlying data."
+    },
+    {
+      "id": "iea_invest_2025",
+      "title": "IEA World Energy Investment 2025 · Southeast Asia",
+      "year": 2025,
+      "published": "2025",
+      "url": "https://www.iea.org/reports/world-energy-investment-2025/southeast-asia",
+      "scope": "Historical Indonesia nickel mine greenfield investment and Chinese involvement in nickel refinery capacity."
+    },
+    {
+      "id": "iea_mkt_2026",
+      "title": "IEA Global Critical Minerals Outlook 2026 · Market overview",
+      "year": 2026,
+      "published": "2026-07-16",
+      "url": "https://www.iea.org/reports/global-critical-minerals-outlook-2026/market-overview",
+      "scope": "2025 market investment, prices, sulphur supply and refining concentration."
+    },
+    {
+      "id": "iea_out_2026",
+      "title": "IEA Global Critical Minerals Outlook 2026 · Outlook",
+      "year": 2026,
+      "published": "2026-07-16",
+      "url": "https://www.iea.org/reports/global-critical-minerals-outlook-2026/outlook",
+      "scope": "Modelled global mineral demand/supply and material-use exposure, not Indonesia country forecasts."
+    },
+    {
+      "id": "iea_exec_2026",
+      "title": "IEA Global Critical Minerals Outlook 2026 · Executive summary",
+      "year": 2026,
+      "published": "2026-07-16",
+      "url": "https://www.iea.org/reports/global-critical-minerals-outlook-2026/executive-summary",
+      "scope": "Global investment decline, nickel refining concentration, strategic by-product and energy-security conclusions."
+    },
+    {
+      "id": "iea_out_2025",
+      "title": "IEA Global Critical Minerals Outlook 2025 · Key mineral outlook",
+      "year": 2025,
+      "published": "2025-05-21",
+      "url": "https://www.iea.org/reports/global-critical-minerals-outlook-2025/overview-of-outlook-for-key-minerals",
+      "scope": "Older model sensitivity analysis (N-1) treating Indonesia as the largest nickel supplier; not current 2026 forecast."
+    },
+    {
+      "id": "iea_chart_2026",
+      "title": "IEA chart · Refined material production by country, 2023 vs 2025",
+      "year": 2026,
+      "published": "2026-07-10",
+      "url": "https://www.iea.org/data-and-statistics/charts/share-of-refined-material-production-by-country-with-the-top-producer-s-share-2023-versus-2025",
+      "scope": "Chart includes Indonesia for refined nickel; exact country series not extracted here."
+    },
+    {
+      "id": "iea_chart_sea_2026",
+      "title": "IEA chart · SE Asia mined output and reserves, 2024",
+      "year": 2026,
+      "published": "2026-06-10",
+      "url": "https://www.iea.org/data-and-statistics/charts/southeast-asia-s-share-of-global-mined-production-by-country-and-share-of-global-reserves-for-selected-minerals-2024",
+      "scope": "Country production/reserves chart; not a verified complete CSV series in SLI."
+    }
+  ],
+  "metrics": [
+    {
+      "id": "nickel_mined_share",
+      "label": "Indonesia's share of global mined nickel",
+      "value": 63,
+      "operator": "approximately",
+      "unit": "%",
+      "year": 2024,
+      "metric_scope": "Mine output share, nickel only (IEA Southeast Asia chart refers to 2024).",
+      "type": "observed_share",
+      "source_id": "iea_sea_2026",
+      "note": "IEA reports 63% in its Southeast Asia Energy Outlook 2026, based on 2024 data. This is not a share of global nickel reserves or refining output."
+    },
+    {
+      "id": "nickel_greenfield_capital",
+      "label": "Indonesia greenfield nickel-mining investment",
+      "value": 50,
+      "operator": "greater_than",
+      "unit": "USD billion",
+      "period": "2014–2023 cumulative",
+      "metric_scope": "Historical greenfield nickel mining investment, not 2025/2026 flows and not all minerals.",
+      "type": "historic_investment",
+      "source_id": "iea_invest_2025",
+      "note": "IEA states investment exceeded USD 50 billion between 2014 and 2023 and represented over 90% of the global greenfield mining investment total discussed in its nickel context. Do not add to annual PMA/PMDN realization."
+    },
+    {
+      "id": "china_nickel_capital",
+      "label": "Chinese investment in Indonesia's nickel refining",
+      "value": 30,
+      "operator": "approximately",
+      "unit": "USD billion",
+      "period": "Reported for 2024",
+      "metric_scope": "IEA-reported Chinese refining investment amount; publication does not establish an annual 2024 inflow.",
+      "type": "historical_investment_exposure",
+      "source_id": "iea_invest_2025",
+      "note": "Do not add to nickel greenfield mining investment or annual BKPM investment: time period, scope and measure differ."
+    },
+    {
+      "id": "china_refinery_capacity",
+      "label": "Chinese companies' share of Indonesian nickel refining capacity",
+      "value": 75,
+      "operator": "approximately",
+      "unit": "%",
+      "year": 2024,
+      "metric_scope": "Share of domestic nickel refining capacity attributed by IEA to Chinese companies, not Indonesian equity rights in every asset.",
+      "type": "capacity_ownership_exposure",
+      "source_id": "iea_invest_2025",
+      "note": "Company attribution is a capacity exposure; not an official beneficial-ownership register or a current 2026 percentage."
+    }
+  ],
+  "global_context": [
+    {
+      "id": "global_battery_demand",
+      "headline": "Global battery demand",
+      "value": 35,
+      "operator": "greater_than",
+      "unit": "% growth in 2025",
+      "detail": "IEA reports battery demand rose by over 35% in 2025, exceeding 1.5 TWh. Global demand indicator, not Indonesia battery consumption.",
+      "source_id": "iea_mkt_2026",
+      "period": "2025 actual/global"
+    },
+    {
+      "id": "global_mineral_investment",
+      "headline": "Global critical mineral capital investment",
+      "value": -9,
+      "operator": "equals",
+      "unit": "% change",
+      "detail": "Company investment fell by 9% in 2025; should not be labelled as Indonesia FDI contraction.",
+      "source_id": "iea_mkt_2026",
+      "period": "2025 actual/global"
+    },
+    {
+      "id": "global_copper_gap",
+      "headline": "Global copper project-pipeline supply gap",
+      "value": 25,
+      "operator": "approximately",
+      "unit": "% of primary requirements",
+      "detail": "Around a 25% estimated global copper supply deficit in 2035 from the announced mine-project base case. Not Indonesia's deficit.",
+      "source_id": "iea_out_2026",
+      "period": "2035 model/global"
+    },
+    {
+      "id": "global_cobalt_gap",
+      "headline": "Global cobalt project-pipeline supply gap",
+      "value": 25,
+      "operator": "greater_than",
+      "unit": "% of primary requirements",
+      "detail": "Projected cobalt shortfall exceeds 25% by 2035 in IEA 2026 base case, dependent on DRC export-policy and announced projects. Not Indonesian cobalt supply.",
+      "source_id": "iea_out_2026",
+      "period": "2035 model/global"
+    },
+    {
+      "id": "global_copper_growth",
+      "headline": "Additional global copper demand",
+      "value": 7,
+      "operator": "approximately",
+      "unit": "million tonnes",
+      "detail": "Approximately 7 million more tonnes global copper demand by 2040, under IEA 2026 outlook. Relevant to Indonesian copper assets, but no share allocated to Indonesia.",
+      "source_id": "iea_out_2026",
+      "period": "2040 model/global"
+    }
+  ],
+  "lenses": [
+    {
+      "mineral": "Nickel",
+      "scope": "Indonesia supply · direct IEA evidence",
+      "exposure": "Mine output concentration and nickel refining scale.",
+      "finding": "Indonesia supplies about 63% of global mined nickel (2024 observation). IEA also identifies Indonesia as the dominant nickel refiner behind recent supply growth. Existing mineral project tables remain the canonical source for facilities.",
+      "value_chain": "Ore → ferronickel/NPI or matte/MHP → refined nickel / battery inputs. Do not equate contained nickel, nickel sulphate and crude ore tonnage.",
+      "issues": [
+        "Prices and overcapacity",
+        "Grid and captive power intensity",
+        "Ownership and processing technology",
+        "Mine-to-refinery commissioning"
+      ],
+      "source_ids": [
+        "iea_sea_2026",
+        "iea_mkt_2026"
+      ],
+      "status": "Direct Indonesia evidence"
+    },
+    {
+      "mineral": "Cobalt",
+      "scope": "Indonesia supply · IEA-linked exposure",
+      "exposure": "By-product exposure from nickel processing, especially MHP/HPAL.",
+      "finding": "IEA has identified Indonesia's anticipated nickel and cobalt supply growth. The 2026 model estimates a global cobalt 2035 project-pipeline gap greater than 25%; this is NOT an Indonesia supply forecast.",
+      "value_chain": "Nickel laterite → HPAL → MHP → cobalt intermediates; chemistry and recovery rates require facility records.",
+      "issues": [
+        "Nickel feedstock dependence",
+        "HPAL acid/sulphur supply",
+        "DRC market and export changes",
+        "Contained-cobalt reporting"
+      ],
+      "source_ids": [
+        "iea_out_2025",
+        "iea_out_2026"
+      ],
+      "status": "Indonesia exposure; global projection only"
+    },
+    {
+      "mineral": "Copper",
+      "scope": "Indonesia producing sector · global IEA risk context",
+      "exposure": "Mining and refining/metal-smelting capability, global electrification demand.",
+      "finding": "IEA projects an approximately 25% global copper mine supply gap by 2035 and around 7 Mt extra global demand by 2040. Neither figure is an Indonesia mine output or domestic deficit.",
+      "value_chain": "Concentrate → smelting → anode → electrolytic copper cathode; by-product metals may be commercially recoverable.",
+      "issues": [
+        "Concentrate access",
+        "Smelter commissioning",
+        "Treatment charges",
+        "By-product recovery"
+      ],
+      "source_ids": [
+        "iea_out_2026",
+        "iea_exec_2026"
+      ],
+      "status": "Global IEA market context"
+    },
+    {
+      "mineral": "Bauxite / aluminium",
+      "scope": "Indonesia industry · indirect IEA exposure",
+      "exposure": "Bauxite, alumina refining and aluminium smelting are distinct processing tiers.",
+      "finding": "IEA 2026 notes supply disruptions in aluminium and sulphur markets, relevant to imported inputs and processing costs; these are global/regional observations, not Indonesia aluminium production statistics.",
+      "value_chain": "Bauxite ore → alumina → aluminium metal. Distinct materials and different capacity units.",
+      "issues": [
+        "Power intensity",
+        "Alumina refining",
+        "Sulphur/industrial input disruptions",
+        "Smelter economics"
+      ],
+      "source_ids": [
+        "iea_mkt_2026"
+      ],
+      "status": "Global risk linkage; no country extraction"
+    },
+    {
+      "mineral": "Tin / minor materials",
+      "scope": "Indonesia production potential · strategic IEA analysis",
+      "exposure": "Tin metallurgy and by-product research for strategic minor minerals.",
+      "finding": "IEA 2026 highlights strategic minor minerals required for chips, sensors, aerospace and defence. This does not prove Indonesia currently produces gallium, germanium or other strategic metals at commercial scale.",
+      "value_chain": "Tin refining and residues → laboratory/industrial separation studies (potential only; verify site and recovered metal).",
+      "issues": [
+        "BRIN research validation",
+        "By-product assay",
+        "Technology licensing",
+        "Defence/semiconductor specifications"
+      ],
+      "source_ids": [
+        "iea_out_2026",
+        "iea_exec_2026"
+      ],
+      "status": "Strategic opportunity / verification required"
+    },
+    {
+      "mineral": "Rare earth elements",
+      "scope": "Indonesia research potential · not a proven production series",
+      "exposure": "Separation and magnet-material research links; no verified national industrial output figure from the Explorer.",
+      "finding": "IEA 2026 warns that global rare-earth processing and downstream magnet manufacture are more concentrated than upstream projects. Indonesia domestic project and commercial separation claims require independent evidence.",
+      "value_chain": "Resource characterization → separation → oxides → metals/alloys → magnets. Each step needs a distinct measured capacity.",
+      "issues": [
+        "Geological confirmation",
+        "Commercial separation",
+        "Patent/equipment dependence",
+        "End-user qualification"
+      ],
+      "source_ids": [
+        "iea_out_2026",
+        "iea_exec_2026"
+      ],
+      "status": "Research/risk lens only"
+    },
+    {
+      "mineral": "Graphite / lithium",
+      "scope": "Global demand · Indonesia supply not established in this IEA extraction",
+      "exposure": "Battery anodes, storage and battery material imports or partnerships.",
+      "finding": "IEA includes graphite and lithium among global minerals in the Explorer. A global STEPS demand curve must not be presented as Indonesia mining production or a verified refinery project.",
+      "value_chain": "Graphite/anode and lithium chemical systems; establish asset-specific local evidence before changing production statuses.",
+      "issues": [
+        "Technology dependence",
+        "Battery chemistry substitution",
+        "Imported feedstock",
+        "Recycling capacity"
+      ],
+      "source_ids": [
+        "iea_explorer_2026",
+        "iea_out_2026"
+      ],
+      "status": "Global context; local output unverified"
+    }
+  ],
+  "assessments": [
+    "Nickel concentration gives Indonesia material global leverage, but IEA capacity-attribution evidence also highlights the difference between processing located in Indonesia and technology/equity control held by Indonesian entities.",
+    "Growth in global battery demand does not guarantee similar growth in Indonesian nickel prices or investment realization: chemistry substitution, operating costs, and competing supply affect outcomes.",
+    "Copper's projected global supply gap makes Indonesian mine and smelter delivery strategically important, but nameplate capacity cannot be added to mined output or portrayed as commissioned output.",
+    "Cobalt and strategic minor minerals require by-product analysis and applied R&D: the existence of nickel, copper, bauxite or tin operations does not prove marketable high-purity products.",
+    "IEA global scenario modelling should inform risk assumptions, not substitute for Indonesia-local annual production, company equity, export HS flows or asset-level financing disclosures."
+  ],
+  "methodology": [
+    "IEA 2026 Explorer documents global 37-mineral demand projections, scenario cases and mining/refining outlook; this public landing page is not equivalent to a verified dataset of Indonesia annual country demand.",
+    "2024 nickel mine output share (63%) is IEA's published country production metric, sourced to its 2026 Southeast Asia Outlook and underlying 2025 Outlook; not a 2026 live share. Existing SLI USGS 2024 share may differ slightly by method.",
+    "Investments described in the IEA World Energy Investment 2025 section cover different periods/stages: more than USD 50 billion greenfield mine investment (2014–23) versus USD 30 billion Chinese investment referenced for refining in 2024. Do not add, assume year flows, or overwrite BKPM realized FDI.",
+    "75% is a Chinese corporate capacity-attribution estimate for domestic nickel refining, not a country-equity register; users must consult current issuer filings for individual venture percentages.",
+    "Global 2035 project-pipeline gaps are forecasts conditional on model assumptions and commissioned projects; they are not statistical shortfalls for Indonesian production.",
+    "All original IEA numeric charts should be downloaded under CC BY 4.0 with explicit series, mineral product, unit, year, scenario and country before producing more detailed time-series."
+  ]
+}
