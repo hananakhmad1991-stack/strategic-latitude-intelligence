@@ -6,14 +6,20 @@ const TAX=[
  ["Project implementation","groundbreaking|peresmian|resmikan|construction|konstruksi|operasional|commissioning|financial close|pendanaan proyek|proyek strategis|psn\\b"],
  ["Downstreaming & energy","hilirisasi|smelter|kilang|refinery|nickel|nikel|mineral|geothermal|panas bumi|pembangkit|data center|pusat data"],
  ["Policy & incentives","bkpm|danantara|insentif investasi|tax holiday|kek\\b|special economic zone|izin investasi|investment regulation"],
- ["Risks & disputes","pembatalan investasi|investasi batal|dispute|sengketa|moratorium|protes proyek|environmental permit|amdal|kendala investasi"]
+ ["Risks & disputes","pembatalan investasi|investasi batal|dispute|sengketa|moratorium|protes proyek|environmental permit|amdal|kendala investasi"],
+ ["Biofuels & bioenergy","biodiesel|biofuel|b50\\b|bioetanol|biomassa|biogas|saf\\b|green refinery"],
+ ["Renewable energy","geothermal|panas bumi|pltp|plts|angin|energi terbarukan|green hydrogen"],
+ ["Electric vehicles","kendaraan listrik|mobil listrik|baterai ev|byd|wuling|hyundai|chery|pabrik ev"],
+ ["Smelters & processing","smelter|hpal|nickel matte|pabrik nikel|copper cathode|hilirisasi nikel"],
+ ["Corporate actions & market","akuisisi|divestasi|rights issue|private placement|merger|saham|obligasi|corporate action|restrukturisasi"],
+ ["AI & data centers","data center|pusat data|ai infrastructure|cloud region|neutradc|hyperscale"]
 ];
 const regexes=TAX.map(([name,pattern])=>[name,new RegExp(pattern,"i")]);
 const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=String(text);return e};
 window.initSLIInvestmentMedia=async function(){
  const root=document.getElementById("investmentMediaRoot");if(!root)return;
  root.replaceChildren();
- const p=el("p","tr-detail","Investment-related headlines discovered from SLI's existing saved news scans. These are attributed leads, not evidence of actual capital disbursement or project completion.");
+ const p=el("p","tr-detail","Investment media discovery spans biofuels, renewable power, EVs, smelters, digital infrastructure and corporate actions. Headlines are attributed leads, not confirmed price sentiment, investment realization or asset commissioning.");
  const controls=el("div","tr-controls"),type=el("select","tr-select"),search=el("input","tr-select"),status=el("p","tr-status","Loading dated source scans…"),list=el("div","tr-news");
  search.type="search";search.placeholder="Search investor, project, province…";search.setAttribute("aria-label","Search investment headlines");
  [["all","All investment topics"],...TAX.map(([name])=>[name,name])].forEach(([v,t])=>{const x=el("option",null,t);x.value=v;type.append(x)});
@@ -27,7 +33,7 @@ window.initSLIInvestmentMedia=async function(){
   rows.forEach(x=>{
    const card=el("article","tr-news-card"),label=el("div","eyebrow",x.topic+" · "+x.publisher+" · "+x.source),link=el("a",null,x.title),date=el("p","tr-detail",x.date||"Publication date unavailable");
    link.href=x.url;link.target="_blank";link.rel="noopener noreferrer";
-   card.append(label,link,date,el("p","tr-detail","Unverified headline lead. Confirm original source, investment amount, project milestone and implementation date before analytical use."));
+   card.append(label,link,date,el("p","tr-detail",x.topic==="Corporate actions & market"?"Market reaction NOT measured: review IDX filing, actual transaction close, trading prices and volume before interpreting sentiment.":"Unverified headline lead: verify project stage, corporate source and implementation evidence."));
    list.append(card);
   });
  }
