@@ -10,7 +10,8 @@ const SOURCES=[
  ["assessment","data/daily-energy-assessment.json"],
  ["domestic","data/domestic-energy.json"],
  ["geopolitical","data/geopolitical-energy.json"],
- ["investmentNews","data/investment-news.json"]
+ ["investmentNews","data/investment-news.json"],
+ ["aiNews","data/ai-monitoring.json"]
 ];
 const dom=(tag,cls,content)=>{
  const n=document.createElement(tag);
@@ -62,6 +63,7 @@ function signalRows(d){
  add(d.domestic?.reports,"energy","channel","claim_status");
  add(d.geopolitical?.events,"geopolitics","topic","status");
  add(d.investmentNews?.reports,"investment","topic","evidence_status");
+ add(d.aiNews?.reports,"technology","topic","verification");
  rows.sort((a,b)=>Date.parse(b.date)-Date.parse(a.date));
  return rows;
 }
@@ -90,7 +92,7 @@ function renderSignals(root,rows,feeds){
  }
  root.append(bar,list,meta);
  const oldest=[];
- for(const [label,record] of [["Energy",feeds.domestic],["Geopolitics",feeds.geopolitical],["Investment",feeds.investmentNews]]){
+ for(const [label,record] of [["Energy",feeds.domestic],["Geopolitics",feeds.geopolitical],["Investment",feeds.investmentNews],["AI & Tech",feeds.aiNews]]){
   const checked=record?.checked_at_utc;
   oldest.push(label+": "+(checked?dateOnly(checked):tr("not scanned / curated","belum dipindai / kurasi")));
  }
@@ -111,7 +113,7 @@ function brief(root,d){
  delta.append(dom("span","sp-chip",a.baseline_changed_since_previous===true?tr("Source baseline revised","Data dasar berubah"):tr("No verified baseline change recorded","Tidak tercatat perubahan data dasar terverifikasi")));
  delta.append(dom("span","sp-chip",Number.isInteger(a.news_new_since_previous)?a.news_new_since_previous+" "+tr("new qualified monitored leads","temuan monitoring baru yang memenuhi kriteria"):tr("Lead delta unavailable","Perubahan temuan tidak tersedia")));
  root.append(delta);
- const tech=(d.investmentNews?.reports||[]).filter(e=>/\b(AI|data[ -]?cent(?:er|re)|cloud|comput(?:e|ing)|semiconductor|chip|digital|technology|teknologi)\b/i.test(String(e.topic||"")+" "+String(e.title||""))).sort((x,y)=>Date.parse(y.published_at_utc||0)-Date.parse(x.published_at_utc||0));
+ const tech=[...(d.aiNews?.reports||[]),...(d.investmentNews?.reports||[])].filter(e=>/\b(AI|data[ -]?cent(?:er|re)|cloud|comput(?:e|ing)|semiconductor|chip|digital|technology|teknologi)\b/i.test(String(e.topic||"")+" "+String(e.title||""))).sort((x,y)=>Date.parse(y.published_at_utc||0)-Date.parse(x.published_at_utc||0));
  if(tech.length){
   const node=dom("article","sp-brief");
   node.append(dom("strong",null,tr("AI, Data Centers & Technology · Emerging signal","AI, Pusat Data & Teknologi · Sinyal terbaru")));
