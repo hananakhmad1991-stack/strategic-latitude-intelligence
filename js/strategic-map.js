@@ -296,7 +296,7 @@ function mapPage(root,data){
  head.append(node("p",null,label("Explore documented projects and facilities across Indonesia, including Jakarta–West Java digital/AI data-center clusters, Batam, oil/gas PSCs, power generation and smelters. Use the Digital / AI preset to focus on data-center campuses.","Jelajahi proyek dan fasilitas bersumber di Indonesia, termasuk klaster data center Digital/AI Jakarta–Jawa Barat, Batam, WK migas, pembangkit dan smelter. Pilih filter cepat Digital/AI untuk fokus pada pusat data.")));
  const allAssets=records("assets",data),allProjects=records("projects",data),allRefineries=records("refineries",data),allSites=records("sites",data);
  const allWk=records("wk",data),allPltu=records("pltu",data),allPower=[...records("power",data),...allPltu],allIndustry=records("industry",data),allRegional=records("regional",data),allDigital=records("digital",data),allSmelters=records("smelters",data);
- const newSmelters=allSmelters.filter(r=>!(data.smelters?.records||[]).some(x=>x.original_id===r.id));
+ const newSmelters=allSmelters.filter(r=>!allIndustry.some(x=>x.id===r.id));
  const allRows=[...allAssets,...allProjects,...allRefineries,...allSites,...allWk,...allPower,...allIndustry,...allRegional,...allDigital,...newSmelters];
  allRows.forEach(classifyRecord);allSmelters.forEach(classifyRecord);
  const digitalRows=allRows.filter(r=>r.sectorKey==="Digital & AI");
