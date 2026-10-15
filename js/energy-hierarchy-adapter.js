@@ -58,6 +58,8 @@ function build(governance,asOf){
  const marketIds=new Map(privateKeys.map(([part,category,affiliation])=>[get(part)?.id,{category,affiliation}]).filter(([id])=>id));
  const nodes=[],market=[];
  for(const a of all){
+  // Not a legal entity: keep the private EPC/developer umbrella solely in the canonical network.
+  if(a.name.startsWith("Private project developers, IPPs and EPC contractors"))continue;
   const record=links.get(a.id)||{};
   const priv=marketIds.get(a.id);
   let lane=record.lane||(a.idx===3||a.idx===4?oversight:a.idx===2?state:govt);
@@ -76,8 +78,8 @@ function build(governance,asOf){
   if(priv){node.ownership_category=priv.category;node.affiliation=priv.affiliation;market.push(node);}
   else nodes.push(node);
  }
- // Do not hide the existence of the private umbrella category, but distinguish it from a named company.
- return {as_of:asOf||null,updated_note:"Energy hierarchy is an alternate visualization of the canonical Energy Governance actor dataset. Government authority, independent DPR/DPD/BPK scrutiny, Indonesian SOE holdings and commercial investors are separate legal systems. Edges classified coordination are functional links, not statutory reporting; board offices and shareholdings are source-dated.",sectors:{energy:{nodes,market}}};
+ // The unnamed private umbrella category is not a corporate entity or a joint venture.
+ return {as_of:asOf||null,updated_note:"Energy hierarchy is an alternate visualization of the canonical Energy Governance actor dataset. Government authority, independent DPR/DPD/BPK scrutiny, Indonesian SOE holdings and commercial investors are separate legal systems. Edges classified coordination are functional links, not statutory reporting; board offices and shareholdings are source-dated. The unnamed private-sector umbrella category remains in the canonical Power Map but is not shown as a fictitious company or JV.",sectors:{energy:{nodes,market}}};
 }
 window.buildSLIEnergyHierarchy=build;
 })();
