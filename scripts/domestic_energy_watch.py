@@ -37,13 +37,13 @@ def pick(topic,root,now):
   if not title or not source or not url.startswith("https://"):continue
   # Require topic evidence in the headline itself; RSS query matches can be noisy.
   relevance={
-   "oil_gas_upstream":r"\\b(SKK\\s*Migas|KKKS|lifting|eksplorasi|sumur\\s+(?:minyak|gas)|hulu\\s+migas|produksi\\s+(?:minyak|gas))\\b",
-   "oil_gas_gas":r"\\b(gas\\s+bumi|gas\\s+alam|PGN|LNG|HGBT|Jargas|pipa\\s+gas|produksi\\s+gas)\\b",
-   "coal_production":r"\\b(batubara|batu\\s+bara|minerba|HBA|RKAB|IUPK|PKP2B)\\b",
-   "coal_dmo":r"\\b(batubara|batu\\s+bara|DMO|PLTU|PLN\\s+EPI)\\b",
-   "nre_solar_wind":r"\\b(PLTS|PLTB|surya|energi\\s+angin|pembangkit\\s+angin|solar\\s+PV)\\b",
-   "nre_geothermal_hydro":r"\\b(panas\\s+bumi|geothermal|PLTP|PLTA|hidro|tenaga\\s+air)\\b",
-   "nre_policy":r"\\b(energi\\s+terbarukan|EBT|transisi\\s+energi|RUPTL|renewable|penyimpanan\\s+energi)\\b",
+   "oil_gas_upstream":r"\b(SKK\s*Migas|KKKS|lifting|eksplorasi|sumur\s+(?:minyak|gas)|hulu\s+migas|produksi\s+(?:minyak|gas))\b",
+   "oil_gas_gas":r"\b(gas\s+bumi|gas\s+alam|PGN|LNG|HGBT|Jargas|pipa\s+gas|produksi\s+gas)\b",
+   "coal_production":r"\b(batubara|batu\s+bara|minerba|HBA|RKAB|IUPK|PKP2B)\b",
+   "coal_dmo":r"\b(batubara|batu\s+bara|DMO|PLTU|PLN\s+EPI)\b",
+   "nre_solar_wind":r"\b(PLTS|PLTB|surya|energi\s+angin|pembangkit\s+angin|solar\s+PV)\b",
+   "nre_geothermal_hydro":r"\b(panas\s+bumi|geothermal|PLTP|PLTA|hidro|tenaga\s+air)\b",
+   "nre_policy":r"\b(energi\s+terbarukan|EBT|transisi\s+energi|RUPTL|renewable|penyimpanan\s+energi)\b",
    "biofuels":r"\b(biodiesel|bioetanol|bioethanol|biofuel|biosolar|B50|B40|E10|E20|CPO.*biodiesel|bahan bakar nabati)\b",
    "refinery":r"\b(kilang|RDMP|RFCC|refinery)\b",
    "projects":r"\b(peresmian|beroperasi|COD|groundbreaking|proyek|investasi|pembangunan|commissioning|PLTS|PLTA|PLTP)\b",
