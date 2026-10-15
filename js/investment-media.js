@@ -15,6 +15,7 @@ const TAX=[
  ["Electric vehicles","kendaraan listrik|mobil listrik|baterai ev|byd|wuling|hyundai|chery|pabrik ev"],
  ["Smelters & processing","smelter|hpal|nickel matte|pabrik nikel|copper cathode|hilirisasi nikel"],
  ["Corporate actions & market","akuisisi|divestasi|rights issue|private placement|merger|saham|obligasi|corporate action|restrukturisasi"],
+ ["Rumor & deal watch","rumor akuisisi|penjajakan merger|potensi akuisisi|rumor divestasi|market speculation"],
  ["AI & data centers","data center|pusat data|ai infrastructure|cloud region|neutradc|hyperscale"]
 ];
 const regexes=TAX.map(([name,pattern])=>[name,new RegExp(pattern,"i")]);
