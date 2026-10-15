@@ -1,0 +1,43 @@
+/* SLI sector intelligence radar — 2026-10-16. Quiet professional dashboard design. */
+.sli-radar{background:linear-gradient(145deg,#122a3f,#0b2337);border:1px solid #365670;border-radius:14px;padding:19px 19px 16px;margin:20px 0 18px}
+.sli-radar-header{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;border-bottom:1px solid #315168;padding-bottom:10px}
+.sli-radar-header h3{font:normal clamp(20px,2.4vw,26px)/1.25 Georgia,serif;color:#f3e9d5;margin:5px 0 3px}
+.sli-radar-refresh,.sli-radar-more{background:#15374e;color:#f6e6c0;border:1px solid #698396;border-radius:8px;font:inherit;font-size:11px;min-height:37px;padding:9px 12px;cursor:pointer}
+.sli-radar-refresh:hover,.sli-radar-more:hover{background:#244d64;border-color:#dab77a}
+.sli-radar-timestamps{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:11px;color:#b4cad9;margin:13px 0}
+.sli-radar-status{font-size:11px;font-weight:700;border:1px solid #587388;color:#c9dce9;background:#173246;border-radius:6px;padding:4px 8px}
+.sli-radar-status[data-state="fresh"]{border-color:#357f78;color:#b3e3d0;background:#153c3d}
+.sli-radar-status[data-state="late"]{border-color:#93774a;color:#f1d6a4;background:#393323}
+.sli-radar-status[data-state="old"]{border-color:#9b6060;color:#f0c0b7;background:#3d292a}
+.sli-radar-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.sli-radar-lane{border:1px solid #3a5872;background:#0e2539;border-radius:11px;overflow:hidden;min-width:0}
+.sli-radar-lane-head{display:flex;justify-content:space-between;align-items:center;padding:15px 14px 9px;gap:9px}
+.sli-radar-kicker{color:#d9bd88;font-size:10px;letter-spacing:1.05px;font-weight:750}
+.sli-radar-lane-head h4{font-size:16px;color:#f3e3c4;margin:3px 0 0;font-weight:700}
+.sli-radar-count{color:#acd2df;font-size:11px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sli-radar-lane-note{font-size:11px;color:#acc6d8;line-height:1.6;margin:9px 14px}
+.sli-radar-histogram{display:flex;align-items:end;justify-content:space-evenly;gap:6px;min-height:75px;margin:0 14px;padding:9px 10px 5px;border:1px solid #2e4c63;background:#0b2131;border-radius:8px}
+.sli-radar-bar-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:end;gap:4px;min-width:0}
+.sli-radar-bar{width:min(100%,24px);border-radius:4px 4px 1px 1px;background:linear-gradient(#c6ae75,#658c9d);opacity:.94;min-height:4px}
+.sli-radar-bar-col small{font-size:9px;color:#91acc2;white-space:nowrap}
+.sli-radar-search-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 14px 13px}
+.sli-radar-search,.sli-radar-select{width:100%;min-width:0;min-height:38px;border:1px solid #4a657b;border-radius:7px;padding:8px 9px;color:#e9f0f6;background:#0b2032;font:inherit;font-size:11px}
+.sli-radar-search:focus-visible,.sli-radar-select:focus-visible,.sli-radar-refresh:focus-visible,.sli-radar-more:focus-visible{outline:2px solid #dec38d;outline-offset:2px}
+.sli-radar-feed{max-height:590px;overflow:auto;overscroll-behavior:contain;padding:0 14px}
+.sli-radar-item{padding:14px 2px;border-top:1px solid #2e4a5f}
+.sli-radar-item-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px;margin-bottom:5px}
+.sli-radar-topic{font-size:10px;color:#e6c58a}
+.sli-radar-date,.sli-radar-publisher{font-size:10px!important;color:#a6bfce!important}
+.sli-radar-item h5{font-size:13px;font-weight:700;line-height:1.52;margin:0}
+.sli-radar-item h5 a{color:#f2f5f8;text-decoration:none}
+.sli-radar-item h5 a:hover{text-decoration:underline;color:#f4d8a3}
+.sli-radar-item p{font-size:11px;line-height:1.55;margin:5px 0;color:#bdd0de}
+.sli-radar-item .sli-radar-path{border-left:2px solid #738fa2;padding-left:9px;color:#c4d8e6}
+.sli-radar-caveat{color:#9fb8c9;font-size:10px}
+.sli-radar-empty{padding:13px 0;font-size:11px;color:#acc3d3;line-height:1.6}
+.sli-radar-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px 13px;border-top:1px solid #2d4a62;color:#acc3d3;font-size:10px}
+.sli-radar-more{min-height:31px;font-size:10px}
+.sli-radar-scan-detail,.sli-radar-method{font-size:11px;color:#afc6d7;line-height:1.65;margin:13px 0 0}
+.sli-radar-method{color:#e5c894}
+@media(max-width:900px){.sli-radar-grid{grid-template-columns:1fr}.sli-radar-feed{max-height:470px}}
+@media(max-width:520px){.sli-radar{padding:13px 11px}.sli-radar-lane-head{padding:12px 10px}.sli-radar-search-row{grid-template-columns:1fr;padding:9px 10px}.sli-radar-histogram{margin:0 10px}.sli-radar-lane-note{margin:8px 10px}.sli-radar-feed{padding:0 10px}.sli-radar-bottom{padding:10px}}
