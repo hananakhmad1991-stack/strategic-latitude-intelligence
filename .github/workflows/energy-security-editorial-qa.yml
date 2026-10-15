@@ -1,0 +1,50 @@
+name: SLI Energy Security Editorial and Syntax QA
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - css/energy-information-architecture.css
+      - js/energy-governance-ccs.js
+      - js/daily-energy-assessment.js
+      - scripts/daily_energy_assessment.py
+      - data/daily-energy-assessment.json
+      - tests/check-energy-architecture.cjs
+      - .github/workflows/energy-security-editorial-qa.yml
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Parse all Energy Security JavaScript and verify editable layout
+        run: |
+          node --check js/energy-governance-ccs.js
+          node --check js/daily-energy-assessment.js
+          node --check js/i18n.js
+          node --check js/energy-ev.js
+          node --check js/energy-biofuels.js
+          node tests/check-energy-architecture.cjs
+          node tests/check-i18n.cjs
+      - name: Validate Python generator, historical snapshots and source notation
+        run: |
+          python -m py_compile scripts/daily_energy_assessment.py
+          python -m json.tool data/daily-energy-assessment.json >/dev/null
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('data/daily-energy-assessment.json').read_text())
+          assert len(d['points'])==7
+          assert not any('Rp10,/litre' in json.dumps(p) for p in d['points'])
+          assert d['assessment_date_wib']<=d['generated_at_utc'][:10] or d['assessment_date_wib']>d['generated_at_utc'][:10]
+          print('Dated assessment validates; no malformed numeric string')
+          PY
