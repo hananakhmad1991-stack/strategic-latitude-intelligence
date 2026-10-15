@@ -1,0 +1,1808 @@
+{
+  "as_of": "2026-10-15",
+  "method": "Functional association graph and issue pathways, not reporting lines. Leadership attached only when identified in dated official or operator primary sources; absence means no verified public name in this registry.",
+  "sectors": {
+    "minerals": {
+      "meta": {
+        "title": "Indonesia Minerals & Downstreaming Power Map",
+        "subtitle": "Six functional accountability systems. Regulator, shareholder, industrial authority and operator are distinct.",
+        "center_primary": "MINERAL",
+        "center_secondary": "GOVERNANCE",
+        "branch_titles": [
+          [
+            "MINERAL POLICY",
+            "& LICENSING"
+          ],
+          [
+            "INDUSTRIAL",
+            "& INVESTMENT"
+          ],
+          [
+            "STATE CAPITAL",
+            "& OPERATORS"
+          ],
+          [
+            "PRIVATE",
+            "& JOINT VENTURES"
+          ],
+          [
+            "LEGISLATIVE",
+            "& AUDIT"
+          ],
+          [
+            "REGIONAL",
+            "& DELIVERY"
+          ]
+        ],
+        "key_people": [
+          [
+            "Kemenko Hilirisasi dan Transisi Energi",
+            "Coordinating Minister"
+          ],
+          [
+            "Ministry of Energy and Mineral Resources (ESDM)",
+            "ESDM Minister"
+          ],
+          [
+            "Directorate General of Minerals and Coal (Ditjen Minerba)",
+            "Minerba Director-General"
+          ],
+          [
+            "Ministry of Industry (Kemenperin)",
+            "Industry Minister"
+          ],
+          [
+            "Ministry of Investment / BKPM",
+            "Investment Minister"
+          ],
+          [
+            "MIND ID",
+            "MIND ID President Director"
+          ]
+        ],
+        "search_hint": "Search Tri Winarno, Sarmuji, MIND ID, BKPM…",
+        "featured_branch": "Explore mining and downstreaming actors →",
+        "featured_group": 2
+      },
+      "warning": "Functional network of policy, regulation, ownership, operation and oversight. Source dates vary; private ownership does not imply statutory reporting relationship.",
+      "layers": [
+        {
+          "title": "01 · Mineral Regulators",
+          "summary": "Mining policy, licensing, approved work programmes and supervisory functions.",
+          "actors": [
+            {
+              "name": "Ministry of Energy and Mineral Resources (ESDM)",
+              "role": "National mining-sector policy and mineral-resource governance.",
+              "source": "https://www.esdm.go.id/id/media-center/arsip-berita/hilirisasi-dan-transisi-energi-dikoordinasikan-satu-pintu-bahlil-dilantik-sebagai-menko",
+              "lead": "Bahlil Lahadalia · source dated 2026-10-01",
+              "person_name": "Bahlil Lahadalia",
+              "verified": "2026-10-01",
+              "scope": "Sets the mineral policy framework; it is not the commercial owner of every operator.",
+              "authority": "National mining-sector policy and mineral-resource governance.",
+              "kind": "Institution / operator",
+              "evidence_status": "Primary official/issuer source 2026-10-01",
+              "connections": [
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ],
+              "verification_status": "Primary official/issuer source 2026-10-01"
+            },
+            {
+              "name": "Directorate General of Minerals and Coal (Ditjen Minerba)",
+              "role": "Sectoral permitting administration, production oversight and RKAB-related supervision.",
+              "source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+              "lead": "Tri Winarno · source dated 2026-10-15",
+              "person_name": "Tri Winarno",
+              "verified": "2026-10-15",
+              "scope": "Differentiate permit/production supervision from company mine operations.",
+              "authority": "Sectoral permitting administration, production oversight and RKAB-related supervision.",
+              "kind": "Institution / operator",
+              "evidence_status": "Primary official/issuer source 2026-10-15",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ],
+              "verification_status": "Primary official/issuer source 2026-10-15"
+            },
+            {
+              "name": "Policy & Risk Register",
+              "role": "Legal text, revisions, effective dates and implementing rules are tracked in the central register.",
+              "source": "https://peraturan.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Use SLI Policy & Risk for authoritative policy status.",
+              "authority": "Legal text, revisions, effective dates and implementing rules are tracked in the central register.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "Kemenko Hilirisasi dan Transisi Energi",
+              "role": "Cross-ministerial downstreaming coordination, policy alignment and economic transformation.",
+              "source": "https://esdm.go.id/id/media-center/arsip-berita/pidato-perdana-menko-bahlil-petakan-peran-kemenko-hilirisasi-sinkronkan-kebijakan-hingga-kaji-moratorium",
+              "lead": "Bahlil Lahadalia · source-dated public officeholder",
+              "person_name": "Bahlil Lahadalia",
+              "verified": "2026-10-07",
+              "scope": "01 · Mineral Regulators",
+              "authority": "Cross-ministerial downstreaming coordination, policy alignment and economic transformation.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "Geological Agency (Badan Geologi)",
+              "role": "Geoscience, geological information, mapping and mineral resource context.",
+              "source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+              "lead": "Lana Saria · source-dated public officeholder",
+              "person_name": "Lana Saria",
+              "verified": "2026-10-15",
+              "scope": "01 · Mineral Regulators",
+              "authority": "Geoscience, geological information, mapping and mineral resource context.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "ESDM mineral-law enforcement directorate",
+              "role": "Regulatory enforcement and technical compliance within the ESDM authority.",
+              "source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+              "lead": "Rilke Jeffri Huwae · source-dated public officeholder",
+              "person_name": "Rilke Jeffri Huwae",
+              "verified": "2026-10-15",
+              "scope": "01 · Mineral Regulators",
+              "authority": "Regulatory enforcement and technical compliance within the ESDM authority.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "02 · Industrial & Investment",
+          "summary": "Downstream industrial policy and investment facilitation.",
+          "actors": [
+            {
+              "name": "Ministry of Industry (Kemenperin)",
+              "role": "Industrial development, refining/smelting policy and manufacturing-chain oversight.",
+              "source": "https://ikm.kemenperin.go.id/menperin-sarmuji-industri-tumpuan-daya-ungkit-pertumbuhan-ekonomi-dan-penyerapan-tenaga-kerja",
+              "lead": "Muhammad Sarmuji · source dated 2026-10-04",
+              "person_name": "Muhammad Sarmuji",
+              "verified": "2026-10-04",
+              "scope": "Industrial policy is separate from mineral extraction licensing.",
+              "authority": "Industrial development, refining/smelting policy and manufacturing-chain oversight.",
+              "kind": "Institution / operator",
+              "evidence_status": "Primary official/issuer source 2026-10-04",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "MIND ID"
+              ],
+              "verification_status": "Primary official/issuer source 2026-10-04"
+            },
+            {
+              "name": "Ministry of Investment / BKPM",
+              "role": "Investment facilitation, recorded PMA/PMDN realization and business licensing procedures.",
+              "source": "https://www.bkpm.go.id/id/tentang-bkpm/struktur-organisasi",
+              "lead": "Rosan Perkasa Roeslani · source dated 2026-10-15",
+              "person_name": "Rosan Perkasa Roeslani",
+              "verified": "2026-10-15",
+              "scope": "Aggregate investment numbers are not proof of entity-level capex.",
+              "authority": "Investment facilitation, recorded PMA/PMDN realization and business licensing procedures.",
+              "kind": "Institution / operator",
+              "evidence_status": "Primary official/issuer source 2026-10-15",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ],
+              "verification_status": "Primary official/issuer source 2026-10-15"
+            },
+            {
+              "name": "Environmental regulatory authorities",
+              "role": "Environmental approval, safeguards and compliance according to prevailing jurisdiction.",
+              "source": "https://www.menlh.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Confirm permit authority and environmental approval for each site.",
+              "authority": "Environmental approval, safeguards and compliance according to prevailing jurisdiction.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "BKPM Deputy for Strategic Downstreaming Investment",
+              "role": "National downstream investment facilitation and strategic-project implementation follow-up.",
+              "source": "https://www.bkpm.go.id/id/info/siaran-pers/menteri-investasi-dan-hilirisasi-kepala-bkpm-lantik-pejabat-tinggi-madya",
+              "lead": "Heldy Satrya Putera · source-dated public officeholder",
+              "person_name": "Heldy Satrya Putera",
+              "verified": "2025-11-05",
+              "scope": "02 · Industrial & Investment",
+              "authority": "National downstream investment facilitation and strategic-project implementation follow-up.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "BKPM Deputy for Investment Planning",
+              "role": "National investment planning and identified project opportunity framework.",
+              "source": "https://www.bkpm.go.id/id/info/siaran-pers/pelantikan-tiga-pejabat-pimpinan-tinggi-madya-perkuat-transformasi-kelembagaan-dan-akselerasi-investasi-nasional",
+              "lead": "Ichsan Zulkarnaen · source-dated public officeholder",
+              "person_name": "Ichsan Zulkarnaen",
+              "verified": "2026-03-27",
+              "scope": "02 · Industrial & Investment",
+              "authority": "National investment planning and identified project opportunity framework.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "Directorate of Industrial Resilience and Downstreaming (Kemenperin)",
+              "role": "Sector-specific industrial processing priorities, linkages and manufacturing policy.",
+              "source": "https://kemenperin.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "02 · Industrial & Investment",
+              "authority": "Sector-specific industrial processing priorities, linkages and manufacturing policy.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "National Development Planning Ministry (Bappenas)",
+              "role": "Strategic industrial development planning, resource and sustainability coordination.",
+              "source": "https://www.bappenas.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "02 · Industrial & Investment",
+              "authority": "Strategic industrial development planning, resource and sustainability coordination.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "OSS investment licensing system (BKPM)",
+              "role": "Online Single Submission interface for risk-based business licensing.",
+              "source": "https://oss.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "02 · Industrial & Investment",
+              "authority": "Online Single Submission interface for risk-based business licensing.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "03 · State Ownership",
+          "summary": "Equity and state-linked corporate operating portfolios.",
+          "actors": [
+            {
+              "name": "MIND ID",
+              "role": "State-owned mining industry holding and investment portfolio.",
+              "source": "https://mind.id/pages/board-of-director",
+              "lead": "Maroef Sjamsoeddin · source dated 2026-10-15",
+              "person_name": "Maroef Sjamsoeddin",
+              "verified": "2026-10-15",
+              "scope": "Ownership rights differ from ESDM policy powers.",
+              "authority": "State-owned mining industry holding and investment portfolio.",
+              "kind": "Institution / operator",
+              "evidence_status": "Primary official/issuer source 2026-10-15",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)"
+              ],
+              "verification_status": "Primary official/issuer source 2026-10-15"
+            },
+            {
+              "name": "PT ANTAM Tbk",
+              "role": "Commercial mineral extraction, refining and downstream investment activities.",
+              "source": "https://www.antam.com/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Specific project ownership and JV percentages require primary company records.",
+              "authority": "Commercial mineral extraction, refining and downstream investment activities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "State-linked mining subsidiaries",
+              "role": "Operating companies and shareholding entities within disclosed government-linked portfolios.",
+              "source": "https://mind.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Do not imply direct operational control by every ministry.",
+              "authority": "Operating companies and shareholding entities within disclosed government-linked portfolios.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "PT Indonesia Asahan Aluminium (INALUM)",
+              "role": "State-linked aluminium production and processing portfolio.",
+              "source": "https://www.inalum.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "03 · State Ownership",
+              "authority": "State-linked aluminium production and processing portfolio.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "PT Timah Tbk",
+              "role": "Listed tin mining and processing operations within the state-linked mining ecosystem.",
+              "source": "https://www.timah.com/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "03 · State Ownership",
+              "authority": "Listed tin mining and processing operations within the state-linked mining ecosystem.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "PT Bukit Asam Tbk",
+              "role": "State-linked coal operator; included only as an energy-mineral interface, not a critical-metal producer.",
+              "source": "https://www.ptba.co.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "03 · State Ownership",
+              "authority": "State-linked coal operator; included only as an energy-mineral interface, not a critical-metal producer.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "MIND ID Group President Director",
+              "role": "State mining group executive direction, capital and downstream investment governance.",
+              "source": "https://mind.id/pages/board-of-director",
+              "lead": "Maroef Sjamsoeddin · source-dated public officeholder",
+              "person_name": "Maroef Sjamsoeddin",
+              "verified": "2026-10-15",
+              "scope": "03 · State Ownership",
+              "authority": "State mining group executive direction, capital and downstream investment governance.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "04 · Private & JV Operators",
+          "summary": "Private and mixed-ownership asset operators and project SPVs.",
+          "actors": [
+            {
+              "name": "PT Freeport Indonesia",
+              "role": "Copper mining and downstream smelter operations.",
+              "source": "https://ptfi.co.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Verify project stage, ownership chain and measured copper throughput separately.",
+              "authority": "Copper mining and downstream smelter operations.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "Nickel industrial partnerships / SPVs",
+              "role": "Nickel mine, NPI/ferronickel, HPAL, MHP and battery-material facilities.",
+              "source": "https://www.bkpm.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "SPV legal name, shareholders and license perimeter vary by campus.",
+              "authority": "Nickel mine, NPI/ferronickel, HPAL, MHP and battery-material facilities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "PT Borneo Alumina Indonesia",
+              "role": "Alumina refinery project company linked to Indonesia's bauxite processing value chain.",
+              "source": "https://www.antam.com/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Alumina tonnage is not aluminium-metal tonnage.",
+              "authority": "Alumina refinery project company linked to Indonesia's bauxite processing value chain.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "PT Vale Indonesia Tbk",
+              "role": "Nickel mining and nickel value-chain project development.",
+              "source": "https://vale.com/indonesia",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "04 · Private & JV Operators",
+              "authority": "Nickel mining and nickel value-chain project development.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "PT Weda Bay Nickel",
+              "role": "North Maluku nickel-mining and processing joint-venture ecosystem.",
+              "source": "https://www.eramet.com/en/activities/sites/indonesia/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "04 · Private & JV Operators",
+              "authority": "North Maluku nickel-mining and processing joint-venture ecosystem.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "PT Merdeka Battery Materials Tbk",
+              "role": "Nickel and battery-material corporate investments and processing activities.",
+              "source": "https://merdekabattery.com/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "04 · Private & JV Operators",
+              "authority": "Nickel and battery-material corporate investments and processing activities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "PT Trimegah Bangun Persada Tbk (Harita Nickel)",
+              "role": "Nickel mine and processing operations, including HPAL-related business ecosystems.",
+              "source": "https://haritanickel.com/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "04 · Private & JV Operators",
+              "authority": "Nickel mine and processing operations, including HPAL-related business ecosystems.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "PT Amman Mineral Nusa Tenggara",
+              "role": "Copper and gold concentrate extraction and smelter development activities.",
+              "source": "https://amman.co.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "04 · Private & JV Operators",
+              "authority": "Copper and gold concentrate extraction and smelter development activities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "05 · Parliament & Audit",
+          "summary": "External scrutiny and public financial accountability.",
+          "actors": [
+            {
+              "name": "DPR RI sectoral commissions",
+              "role": "Legislative oversight of relevant mining, industry and environmental responsibilities.",
+              "source": "https://www.dpr.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Committee assignments should be verified against the active parliamentary roster.",
+              "authority": "Legislative oversight of relevant mining, industry and environmental responsibilities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "BPK RI",
+              "role": "State financial audit for entities within its legal audit jurisdiction.",
+              "source": "https://www.bpk.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Audit findings are not automatic conclusions about individual projects.",
+              "authority": "State financial audit for entities within its legal audit jurisdiction.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "Financial Services Authority (OJK)",
+              "role": "Capital-market oversight where mining issuers have listed securities.",
+              "source": "https://www.ojk.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "05 · Parliament & Audit",
+              "authority": "Capital-market oversight where mining issuers have listed securities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "National Audit Board (BPK)",
+              "role": "Public finance scrutiny according to constitutional audit jurisdiction.",
+              "source": "https://www.bpk.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "05 · Parliament & Audit",
+              "authority": "Public finance scrutiny according to constitutional audit jurisdiction.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "DPR RI Commission XII",
+              "role": "Legislative scrutiny of natural resources, energy and environment responsibilities.",
+              "source": "https://www.dpr.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "05 · Parliament & Audit",
+              "authority": "Legislative scrutiny of natural resources, energy and environment responsibilities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "06 · Regional Delivery",
+          "summary": "Permitting interfaces, local infrastructure and operational effects.",
+          "actors": [
+            {
+              "name": "Provincial and district governments",
+              "role": "Land, local planning, infrastructure interface and community/public service responsibilities.",
+              "source": "https://www.kemendagri.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Competence depends on the legal instrument and territorial jurisdiction.",
+              "authority": "Land, local planning, infrastructure interface and community/public service responsibilities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "Grid utilities & infrastructure providers",
+              "role": "Power, water, transport and logistics services for energy-intensive mineral facilities.",
+              "source": "https://web.pln.co.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Availability and tariffs vary by project.",
+              "authority": "Power, water, transport and logistics services for energy-intensive mineral facilities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "Research and technical institutes",
+              "role": "Standards, applied mineral R&D and workforce development.",
+              "source": "https://brin.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Policy input does not imply regulatory authority.",
+              "authority": "Standards, applied mineral R&D and workforce development.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "North Maluku provincial government",
+              "role": "Regional delivery interface in nickel mining and smelter industrial zones.",
+              "source": "https://malutprov.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "06 · Regional Delivery",
+              "authority": "Regional delivery interface in nickel mining and smelter industrial zones.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "Central Sulawesi provincial government",
+              "role": "Regional infrastructure and administrative interface in Morowali industrial areas.",
+              "source": "https://sultengprov.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "06 · Regional Delivery",
+              "authority": "Regional infrastructure and administrative interface in Morowali industrial areas.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "Ministry of Public Works",
+              "role": "Strategic roads, ports interface and physical public infrastructure relevant to industry.",
+              "source": "https://pu.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "06 · Regional Delivery",
+              "authority": "Strategic roads, ports interface and physical public infrastructure relevant to industry.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            },
+            {
+              "name": "Geological Research / BRIN",
+              "role": "Research and technical support on mineral processing, technology and materials.",
+              "source": "https://brin.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "06 · Regional Delivery",
+              "authority": "Research and technical support on mineral processing, technology and materials.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Industry (Kemenperin)",
+                "MIND ID"
+              ]
+            }
+          ]
+        }
+      ],
+      "accountability_routes": [
+        {
+          "issue": "Nickel production & RKAB",
+          "strategic": "ESDM/Minerba issues permitted production plans; downstream demand and export commitments are distinct.",
+          "regulators": "Minerba approves/supervises mining plans; industrial incentives are separately administered.",
+          "operators": "Operators disclose permits, mine volumes, smelter feedstock and actual output.",
+          "oversight": "DPR reviews resource policy and associated fiscal performance.",
+          "regional": "North Maluku and Sulawesi delivery, water, power and local approvals.",
+          "assessment": "Cross-check RKAB with official production statistics and operator output."
+        },
+        {
+          "issue": "Smelter construction and commissioning",
+          "strategic": "Industrial downstreaming priorities require sector alignment.",
+          "regulators": "ESDM and Kemenperin have different upstream/industrial competencies; BKPM monitors capital.",
+          "operators": "Project legal companies fund/build smelters and document commissioning.",
+          "oversight": "Parliamentary and audit scrutiny can examine incentives and state stakes.",
+          "regional": "Local industrial zones, power and land determine completion.",
+          "assessment": "Separate groundbreaking, energized testing and commercial capacity."
+        },
+        {
+          "issue": "Copper downstream processing",
+          "strategic": "Concentrate availability, cathode capacity and trade matter.",
+          "regulators": "Mining and industry mandates differ across the copper chain.",
+          "operators": "PTFI and other operators execute site-specific construction and throughput.",
+          "oversight": "DPR and financial scrutiny review public-sector exposure.",
+          "regional": "East Java and NTB infrastructure interfaces matter.",
+          "assessment": "Track actual commercial cathode output, not nameplate."
+        },
+        {
+          "issue": "Foreign ownership and JV control",
+          "strategic": "The government sets policy; corporate shareholders govern their own entities.",
+          "regulators": "ESDM, BKPM and industrial regulators hold distinct roles.",
+          "operators": "State-owned and private SPVs have different shareholders and operators.",
+          "oversight": "Listed disclosures and DPR scrutiny provide accountability.",
+          "regional": "Permit jurisdiction varies by mine and refinery.",
+          "assessment": "Use beneficial-ownership disclosures and specific JV documents."
+        },
+        {
+          "issue": "Mineral exports and market restrictions",
+          "strategic": "Domestic value added vs trade access is a strategic choice.",
+          "regulators": "Legal validity and commodity-specific export instruments live in Policy & Risk.",
+          "operators": "Mining companies and processors ship different HS products.",
+          "oversight": "DPR can review performance and regulatory effects.",
+          "regional": "Port, customs and local logistics influence volumes.",
+          "assessment": "Separate physical volumes, FOB value and HS classifications."
+        },
+        {
+          "issue": "Energy costs of processing",
+          "strategic": "Coal/gas/electricity costs affect metal competitiveness.",
+          "regulators": "ESDM regulates energy and mineral matters via separate directorates.",
+          "operators": "Smelter operators source captive/grid power and cooling inputs.",
+          "oversight": "Audit and parliament scrutinize public assets and subsidies.",
+          "regional": "Local grid and water capacity condition delivery.",
+          "assessment": "Measure facility-specific electricity intensity instead of national guess."
+        },
+        {
+          "issue": "Environmental permits and tailings",
+          "strategic": "Industrial policy coexists with environmental standards.",
+          "regulators": "Responsible environment authorities must be established per project.",
+          "operators": "Operators disclose approvals, waste and compliance status.",
+          "oversight": "Oversight institutions address attributable findings.",
+          "regional": "Local impacts depend on site-specific water and land use.",
+          "assessment": "Do not label allegations confirmed without administrative or judicial evidence."
+        },
+        {
+          "issue": "Battery materials vs stainless routes",
+          "strategic": "Mineral abundance does not imply battery-grade output.",
+          "regulators": "Industry and mineral agencies use differing reporting perimeters.",
+          "operators": "NPI, matte, MHP and precursors are produced via distinct processes.",
+          "oversight": "DPR reviews industrial incentives and value capture.",
+          "regional": "Customer/offtake and material logistics vary.",
+          "assessment": "Trace mine→product→customer rather than count all nickel as EV materials."
+        },
+        {
+          "issue": "Investment realization and industrial finance",
+          "strategic": "Ambition requires commercial execution.",
+          "regulators": "BKPM publishes realized investment aggregates; ESDM and Kemenperin supervise sector activity.",
+          "operators": "Operators disclose capex and financial milestones where available.",
+          "oversight": "State ownership and public finances require appropriate audits.",
+          "regional": "Regional delivery and infrastructure impose gates.",
+          "assessment": "Do not sum portfolio proposals with realized capex."
+        }
+      ]
+    },
+    "ai": {
+      "meta": {
+        "title": "Indonesia AI & Compute Governance Power Map",
+        "subtitle": "Six functional systems, from public policy to power, operators and local delivery. Cloud services are not equivalent to verified AI GPU capacity.",
+        "center_primary": "AI & COMPUTE",
+        "center_secondary": "GOVERNANCE",
+        "branch_titles": [
+          [
+            "DIGITAL & AI",
+            "POLICY"
+          ],
+          [
+            "POWER",
+            "& NETWORK"
+          ],
+          [
+            "CAPITAL",
+            "& SOE PORTFOLIO"
+          ],
+          [
+            "DATA",
+            "& CYBER"
+          ],
+          [
+            "CLOUD & DC",
+            "OPERATORS"
+          ],
+          [
+            "REGIONAL",
+            "& RESEARCH"
+          ]
+        ],
+        "key_people": [
+          [
+            "Ministry of Communication and Digital Affairs (Komdigi)",
+            "Communications & Digital Minister"
+          ],
+          [
+            "Deputy Minister for Communication and Digital Affairs",
+            "Deputy Digital Minister"
+          ],
+          [
+            "Directorate General of Digital Ecosystem (Komdigi)",
+            "DG Digital Ecosystem"
+          ],
+          [
+            "Directorate for AI and New Technology Ecosystems (Komdigi)",
+            "Director of AI & New Tech"
+          ],
+          [
+            "Ministry of Investment / BKPM",
+            "Investment Minister"
+          ],
+          [
+            "PT Telkom Indonesia (Persero) Tbk",
+            "Telkom CEO"
+          ]
+        ],
+        "search_hint": "Search Meutya, Nezar, Said Mirza, Telkom, PLN…",
+        "featured_branch": "Explore cloud and data-center operators →",
+        "featured_group": 4
+      },
+      "warning": "Functional network of policy, regulation, ownership, operation and oversight. Source dates vary; private ownership does not imply statutory reporting relationship.",
+      "layers": [
+        {
+          "title": "01 · Digital & AI Policy",
+          "summary": "National digital policy and AI ecosystem coordination.",
+          "actors": [
+            {
+              "name": "Ministry of Communication and Digital Affairs (Komdigi)",
+              "role": "Digital ecosystem, infrastructure policy and coordination of AI governance.",
+              "source": "https://www.komdigi.go.id/berita/siaran-pers/detail/resmi-diluncurkan-di-ugm-pusat-ai-berbasis-universitas-jadi-langkah-nyata-kedaulatan-digital-indonesia",
+              "lead": "Meutya Hafid · source dated 2026-08-13",
+              "person_name": "Meutya Hafid",
+              "verified": "2026-08-13",
+              "scope": "Distinguish draft roadmap and ethics regulation from enacted instruments.",
+              "authority": "Digital ecosystem, infrastructure policy and coordination of AI governance.",
+              "kind": "Institution / operator",
+              "evidence_status": "Primary official/issuer source 2026-08-13",
+              "connections": [
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ],
+              "verification_status": "Primary official/issuer source 2026-08-13"
+            },
+            {
+              "name": "Digital ecosystem directorates",
+              "role": "AI ecosystem programmes and cross-government coordination within Komdigi's active organizational structure.",
+              "source": "https://komdigi.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Directorate and incumbent names require current official roster verification.",
+              "authority": "AI ecosystem programmes and cross-government coordination within Komdigi's active organizational structure.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Policy & Risk Register",
+              "role": "Authoritative source/status mapping for PDP, electronic systems and AI governance.",
+              "source": "https://peraturan.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Draft ≠ enacted; do not duplicate legal instrument text here.",
+              "authority": "Authoritative source/status mapping for PDP, electronic systems and AI governance.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Minister of Communication and Digital Affairs (Komdigi)",
+              "role": "Ministerial authority for national digital programmes and AI ecosystem policy.",
+              "source": "https://www.komdigi.go.id/berita/siaran-pers/detail/resmi-diluncurkan-di-ugm-pusat-ai-berbasis-universitas-jadi-langkah-nyata-kedaulatan-digital-indonesia",
+              "lead": "Meutya Hafid · source-dated public officeholder",
+              "person_name": "Meutya Hafid",
+              "verified": "2026-08-13",
+              "scope": "01 · Digital & AI Policy",
+              "authority": "Ministerial authority for national digital programmes and AI ecosystem policy.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Deputy Minister for Communication and Digital Affairs",
+              "role": "Deputy-level coordination of national AI roadmap, policy consultation and cross-sector diplomacy.",
+              "source": "https://www.komdigi.go.id/berita/galeri-foto/detail/wamenkomdigi-nezar-beri-sambutan-di-an-overview-of-the-ai-roadmap-of-indonesia",
+              "lead": "Nezar Patria · source-dated public officeholder",
+              "person_name": "Nezar Patria",
+              "verified": "2026-07-31",
+              "scope": "01 · Digital & AI Policy",
+              "authority": "Deputy-level coordination of national AI roadmap, policy consultation and cross-sector diplomacy.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Directorate General of Digital Ecosystem (Komdigi)",
+              "role": "Digital ecosystem coordination including the AI and new technologies directorate.",
+              "source": "https://www.komdigi.go.id/berita/galeri-foto/detail/dirjen-ekosistem-digital-komdigi-edwin-keynote-speech-di-digital-transformation-indonesia-conference-and-expo-dti-cx-2026",
+              "lead": "Edwin Hidayat Abdullah · source-dated public officeholder",
+              "person_name": "Edwin Hidayat Abdullah",
+              "verified": "2026-08-05",
+              "scope": "01 · Digital & AI Policy",
+              "authority": "Digital ecosystem coordination including the AI and new technologies directorate.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Directorate for AI and New Technology Ecosystems (Komdigi)",
+              "role": "Applied AI ecosystem programmes and government consultation on the AI roadmap.",
+              "source": "https://www.komdigi.go.id/berita/galeri-foto/detail/wamenkomdigi-nezar-beri-sambutan-di-an-overview-of-the-ai-roadmap-of-indonesia",
+              "lead": "Said Mirza Pahlevi · source-dated public officeholder",
+              "person_name": "Said Mirza Pahlevi",
+              "verified": "2026-07-31",
+              "scope": "01 · Digital & AI Policy",
+              "authority": "Applied AI ecosystem programmes and government consultation on the AI roadmap.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Directorate General of Digital Infrastructure (Komdigi)",
+              "role": "Digital infrastructure policy, network governance and related programmes.",
+              "source": "https://komdigi.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "01 · Digital & AI Policy",
+              "authority": "Digital infrastructure policy, network governance and related programmes.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "02 · Power & Connectivity",
+          "summary": "Electrical delivery and network access to commercial facilities.",
+          "actors": [
+            {
+              "name": "Ministry of Energy and Mineral Resources (ESDM)",
+              "role": "Power-sector regulation and energy infrastructure policy.",
+              "source": "https://www.esdm.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Grid allocation is not commissioned IT load.",
+              "authority": "Power-sector regulation and energy infrastructure policy.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "PT PLN (Persero)",
+              "role": "Grid connection, electricity supply contracts and infrastructure delivery.",
+              "source": "https://web.pln.co.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "MVA, facility MW, IT MW and delivered capacity are different measures.",
+              "authority": "Grid connection, electricity supply contracts and infrastructure delivery.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Telecommunications / fiber carriers",
+              "role": "Terrestrial backbone and submarine connectivity to data centers.",
+              "source": "https://komdigi.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Verify route diversity, availability and operator by facility.",
+              "authority": "Terrestrial backbone and submarine connectivity to data centers.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "PLN electricity transmission and distribution",
+              "role": "Electricity delivery, power supply contracting and grid reliability for campuses.",
+              "source": "https://web.pln.co.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "02 · Power & Connectivity",
+              "authority": "Electricity delivery, power supply contracting and grid reliability for campuses.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Telkom Infrastructure / fiber network",
+              "role": "Telecommunications infrastructure and backbone network participation.",
+              "source": "https://www.telkom.co.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "02 · Power & Connectivity",
+              "authority": "Telecommunications infrastructure and backbone network participation.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "PT Telekomunikasi Indonesia International (Telin)",
+              "role": "International subsea connectivity and network services.",
+              "source": "https://www.telkom.co.id/sites/berita/id_ID/news/batic-2026-buka-babak-baru-transformasi-digital-asia-pasifik-3901",
+              "lead": "Abdul Rahman Ansyori · source-dated public officeholder",
+              "person_name": "Abdul Rahman Ansyori",
+              "verified": "2026-08-26",
+              "scope": "02 · Power & Connectivity",
+              "authority": "International subsea connectivity and network services.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Subsea cable landing and independent carriers",
+              "role": "Cross-border fiber and terrestrial diversity; verify each carrier per campus.",
+              "source": "https://komdigi.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "02 · Power & Connectivity",
+              "authority": "Cross-border fiber and terrestrial diversity; verify each carrier per campus.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "03 · Capital & State Portfolio",
+          "summary": "Investment facilitation and corporate ownership must be distinguished.",
+          "actors": [
+            {
+              "name": "Ministry of Investment / BKPM",
+              "role": "Recorded PMA and PMDN realization, facilitation and project support.",
+              "source": "https://www.bkpm.go.id/id/tentang-bkpm/struktur-organisasi",
+              "lead": "Rosan Perkasa Roeslani · source dated 2026-10-15",
+              "person_name": "Rosan Perkasa Roeslani",
+              "verified": "2026-10-15",
+              "scope": "National investment totals cannot isolate AI-data-center spending.",
+              "authority": "Recorded PMA and PMDN realization, facilitation and project support.",
+              "kind": "Institution / operator",
+              "evidence_status": "Primary official/issuer source 2026-10-15",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)"
+              ],
+              "verification_status": "Primary official/issuer source 2026-10-15"
+            },
+            {
+              "name": "Telkom Group / data-center businesses",
+              "role": "Commercial participation in cloud, connectivity and colocation through identified subsidiaries.",
+              "source": "https://www.telkom.co.id/sites/berita/id_ID/news/strategi-telkom-jaga-momentum-pertumbuhan-tingkatkan-nilai-tambah-dari-bisnis-infrastruktur-digital-3926",
+              "lead": "Dian Siswarini · source dated 2026-09-07",
+              "person_name": "Dian Siswarini",
+              "verified": "2026-09-07",
+              "scope": "Telkom subsidiaries are not the regulator of every data center.",
+              "authority": "Commercial participation in cloud, connectivity and colocation through identified subsidiaries.",
+              "kind": "Institution / operator",
+              "evidence_status": "Primary official/issuer source 2026-09-07",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ],
+              "verification_status": "Primary official/issuer source 2026-09-07"
+            },
+            {
+              "name": "Danantara / state-capital participants",
+              "role": "State portfolio and investment participation where documented in identified legal entities.",
+              "source": "https://www.danantaraindonesia.com/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Do not imply the state owns or operates all private data centers.",
+              "authority": "State portfolio and investment participation where documented in identified legal entities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "PT Telkom Indonesia (Persero) Tbk",
+              "role": "State-linked telco group, digital infrastructure and commercial data centre / AI ecosystem participation.",
+              "source": "https://www.telkom.co.id/sites/berita/id_ID/news/strategi-telkom-jaga-momentum-pertumbuhan-tingkatkan-nilai-tambah-dari-bisnis-infrastruktur-digital-3926",
+              "lead": "Dian Siswarini · source-dated public officeholder",
+              "person_name": "Dian Siswarini",
+              "verified": "2026-09-07",
+              "scope": "03 · Capital & State Portfolio",
+              "authority": "State-linked telco group, digital infrastructure and commercial data centre / AI ecosystem participation.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "BKPM Strategic Investment Downstreaming Deputy",
+              "role": "Investment programme coordination and realized capital monitoring.",
+              "source": "https://www.bkpm.go.id/id/info/siaran-pers/menteri-investasi-dan-hilirisasi-kepala-bkpm-lantik-pejabat-tinggi-madya",
+              "lead": "Heldy Satrya Putera · source-dated public officeholder",
+              "person_name": "Heldy Satrya Putera",
+              "verified": "2025-11-05",
+              "scope": "03 · Capital & State Portfolio",
+              "authority": "Investment programme coordination and realized capital monitoring.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "BKPM Minister and investment policy lead",
+              "role": "National investment facilitation, financing/incentive process coordination.",
+              "source": "https://www.bkpm.go.id/id/tentang-bkpm/struktur-organisasi",
+              "lead": "Rosan Perkasa Roeslani · source-dated public officeholder",
+              "person_name": "Rosan Perkasa Roeslani",
+              "verified": "2026-10-15",
+              "scope": "03 · Capital & State Portfolio",
+              "authority": "National investment facilitation, financing/incentive process coordination.",
+              "kind": "Institution / operator",
+              "evidence_status": "Named incumbent in cited official source; review for replacements",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "PT Telkom Data Ekosistem (NeutraDC)",
+              "role": "Commercial data-center and cloud infrastructure within the Telkom ecosystem.",
+              "source": "https://neutradc.com/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "03 · Capital & State Portfolio",
+              "authority": "Commercial data-center and cloud infrastructure within the Telkom ecosystem.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Indonesia Investment Authority (INA)",
+              "role": "Sovereign wealth investment activity where separately disclosed.",
+              "source": "https://www.ina.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "03 · Capital & State Portfolio",
+              "authority": "Sovereign wealth investment activity where separately disclosed.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "04 · Data & Cyber Security",
+          "summary": "Compliance functions and national-security coordination.",
+          "actors": [
+            {
+              "name": "National Cyber and Crypto Agency (BSSN)",
+              "role": "Cybersecurity coordination and national cyber-resilience functions.",
+              "source": "https://bssn.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Cybersecurity agency is not the operator of private security operations centers.",
+              "authority": "Cybersecurity coordination and national cyber-resilience functions.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Personal data protection governance",
+              "role": "Legal responsibilities under Indonesian PDP legislation and implementing institutions.",
+              "source": "https://peraturan.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "State the effective law and confirm regulator formation separately.",
+              "authority": "Legal responsibilities under Indonesian PDP legislation and implementing institutions.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Commercial security operators",
+              "role": "Data-center and cloud security operations, incident response and risk controls.",
+              "source": "https://komdigi.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Implementation varies by entity and contract.",
+              "authority": "Data-center and cloud security operations, incident response and risk controls.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Directorate of Electronic System Governance (Komdigi)",
+              "role": "Electronic system registration and governance interfaces under relevant digital regulations.",
+              "source": "https://komdigi.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "04 · Data & Cyber Security",
+              "authority": "Electronic system registration and governance interfaces under relevant digital regulations.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Cybersecurity operations and CERT ecosystem",
+              "role": "Incident response participation; distinguish national agency and private enterprise SOC.",
+              "source": "https://bssn.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "04 · Data & Cyber Security",
+              "authority": "Incident response participation; distinguish national agency and private enterprise SOC.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Personal Data Protection Law 27/2022",
+              "role": "Statutory regime affecting personal-data processing; not itself a regulator or operator.",
+              "source": "https://peraturan.go.id/id/uu-no-27-tahun-2022",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "04 · Data & Cyber Security",
+              "authority": "Statutory regime affecting personal-data processing; not itself a regulator or operator.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "05 · Cloud & Site Operators",
+          "summary": "Companies that finance, build, host, or sell infrastructure services.",
+          "actors": [
+            {
+              "name": "Digital Edge",
+              "role": "Colocation/data-center development including CGK and Jakarta facilities.",
+              "source": "https://www.digitaledgedc.com/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Separate prospective MW from operating facility IT MW.",
+              "authority": "Colocation/data-center development including CGK and Jakarta facilities.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Microsoft",
+              "role": "Indonesia Central commercial cloud services and investment commitments.",
+              "source": "https://news.microsoft.com/source/asia/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Cloud region live ≠ published national AI GPU inventory.",
+              "authority": "Indonesia Central commercial cloud services and investment commitments.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Amazon Web Services (AWS)",
+              "role": "Asia Pacific (Jakarta) cloud-region services.",
+              "source": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Cloud-region operating status does not specify site-specific GPU capacity.",
+              "authority": "Asia Pacific (Jakarta) cloud-region services.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "PT DCI Indonesia Tbk",
+              "role": "Indonesian data-center and colocation operator with listed-company disclosures.",
+              "source": "https://www.dci-indonesia.com/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "05 · Cloud & Site Operators",
+              "authority": "Indonesian data-center and colocation operator with listed-company disclosures.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Princeton Digital Group",
+              "role": "Regional data-center development and operator presence in Indonesia.",
+              "source": "https://princetondg.com/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "05 · Cloud & Site Operators",
+              "authority": "Regional data-center development and operator presence in Indonesia.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "PT Equinix Indonesia / local venture",
+              "role": "Commercial colocation and Jakarta data-center services.",
+              "source": "https://www.equinix.com/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "05 · Cloud & Site Operators",
+              "authority": "Commercial colocation and Jakarta data-center services.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Google Cloud",
+              "role": "Cloud-service and regional compute ecosystem participation; verify local facility specifics.",
+              "source": "https://cloud.google.com/about/locations",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "05 · Cloud & Site Operators",
+              "authority": "Cloud-service and regional compute ecosystem participation; verify local facility specifics.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Alibaba Cloud",
+              "role": "Cloud and data-center ecosystem service provider in Indonesia.",
+              "source": "https://www.alibabacloud.com/global-locations",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "05 · Cloud & Site Operators",
+              "authority": "Cloud and data-center ecosystem service provider in Indonesia.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "PT Indosat Ooredoo Hutchison Tbk",
+              "role": "Telecommunications, networking and public AI partnership ecosystem.",
+              "source": "https://ioh.co.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "05 · Cloud & Site Operators",
+              "authority": "Telecommunications, networking and public AI partnership ecosystem.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "NVIDIA",
+              "role": "GPU and AI-computing technology vendor / research partnerships, not national compute regulator.",
+              "source": "https://www.nvidia.com/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "05 · Cloud & Site Operators",
+              "authority": "GPU and AI-computing technology vendor / research partnerships, not national compute regulator.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "06 · Regions, R&D & Skills",
+          "summary": "Site-level jurisdictions and domestic compute capability.",
+          "actors": [
+            {
+              "name": "Greater Jakarta / West Java authorities",
+              "role": "Regional planning, permits and physical industrial-site interfaces.",
+              "source": "https://jabarprov.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Site coordinates, power and land permits must be matched to facility.",
+              "authority": "Regional planning, permits and physical industrial-site interfaces.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Batam regional authorities / BP Batam",
+              "role": "Industrial-zone facilitation, border connectivity and local delivery.",
+              "source": "https://bpbatam.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Batam's Singapore proximity is not proof of commissioned cross-border service.",
+              "authority": "Industrial-zone facilitation, border connectivity and local delivery.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "BRIN, universities and polytechnics",
+              "role": "AI research, technical skills and access to domestic computing resources.",
+              "source": "https://brin.go.id/",
+              "lead": "Incumbent requires verification",
+              "verified": "2026-10-15",
+              "scope": "Track practical training and compute access, not only signed MoUs.",
+              "authority": "AI research, technical skills and access to domestic computing resources.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "DKI Jakarta Provincial Government",
+              "role": "Site permits, local infrastructure, business environment and technical collaboration.",
+              "source": "https://jakarta.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "06 · Regions, R&D & Skills",
+              "authority": "Site permits, local infrastructure, business environment and technical collaboration.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "West Java Provincial Government",
+              "role": "Industrial and commercial data-center campus permitting and grid coordination.",
+              "source": "https://jabarprov.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "06 · Regions, R&D & Skills",
+              "authority": "Industrial and commercial data-center campus permitting and grid coordination.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "UGM AI research ecosystem",
+              "role": "Research and training collaborations; not a statutory national AI regulator.",
+              "source": "https://www.ugm.ac.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "06 · Regions, R&D & Skills",
+              "authority": "Research and training collaborations; not a statutory national AI regulator.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Technology research agency (BRIN)",
+              "role": "Applied AI research and technical capacity development.",
+              "source": "https://www.brin.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "06 · Regions, R&D & Skills",
+              "authority": "Applied AI research and technical capacity development.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Bappenas national development planning",
+              "role": "Digital development and national strategy integration.",
+              "source": "https://bappenas.go.id/",
+              "lead": "Incumbent / project lead not independently confirmed",
+              "verified": "2026-10-15",
+              "scope": "06 · Regions, R&D & Skills",
+              "authority": "Digital development and national strategy integration.",
+              "kind": "Institution / operator",
+              "evidence_status": "Institutional mandate identified; current personal incumbent not validated",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
+                "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            }
+          ]
+        }
+      ],
+      "accountability_routes": [
+        {
+          "issue": "AI roadmap and ethics regulation",
+          "strategic": "Komdigi coordinates proposed rules and AI ecosystem priorities.",
+          "regulators": "Policy status must be checked against enacted documents; BKPM has a different scope.",
+          "operators": "Cloud and AI companies implement practical governance for their services.",
+          "oversight": "Oversight involves DPR and appropriate independent authorities.",
+          "regional": "Research institutions and local agencies support implementation.",
+          "assessment": "Treat drafts as drafts until promulgated."
+        },
+        {
+          "issue": "Data-center power allocation",
+          "strategic": "Compute growth depends on available electrical infrastructure.",
+          "regulators": "ESDM/PLN separate power regulation, supply contracting and build-out.",
+          "operators": "Operators finance, construct, test and energize sites.",
+          "oversight": "Public utility oversight and permitting affect public exposure.",
+          "regional": "Local grid and land interfaces determine feasibility.",
+          "assessment": "Contracted MVA ≠ energised IT MW ≠ GPU capacity."
+        },
+        {
+          "issue": "Cybersecurity and PDP",
+          "strategic": "Data protection and cyber resilience are separate policy dimensions.",
+          "regulators": "BSSN and competent digital institutions have different powers.",
+          "operators": "Site operators handle systems security and incident response.",
+          "oversight": "DPR and legal institutions oversee statutory rules.",
+          "regional": "Public authorities and vendors have site-specific duties.",
+          "assessment": "Check enforceable articles, reporting and actual audits."
+        },
+        {
+          "issue": "Batam regional hub",
+          "strategic": "Connectivity and power proximity to Singapore creates options, not guaranteed delivery.",
+          "regulators": "BP Batam and national digital/energy agencies cover different jurisdictions.",
+          "operators": "Commercial campuses procure land, energy and fiber.",
+          "oversight": "Investment transparency and contract compliance require scrutiny.",
+          "regional": "Local government and connectivity infrastructure are decisive.",
+          "assessment": "Require commissioned site, grid and route records."
+        },
+        {
+          "issue": "Cloud region versus AI compute",
+          "strategic": "Availability of cloud services is distinct from AI GPU inventory.",
+          "regulators": "Digital governance and data handling fall under applicable rules.",
+          "operators": "Hyperscalers and colocation operators sell different services.",
+          "oversight": "Procurement scrutiny and competition policy may matter.",
+          "regional": "Application developers and academia need usable access.",
+          "assessment": "Do not infer GPUs from a cloud-region launch."
+        },
+        {
+          "issue": "AI talent and academic compute",
+          "strategic": "R&D capacity is a national capability criterion.",
+          "regulators": "Komdigi, education and R&D institutions have distinct mandates.",
+          "operators": "Cloud providers, universities and firms provide actual training resources.",
+          "oversight": "Program funding and results need review.",
+          "regional": "Regional universities and research centers affect skills.",
+          "assessment": "Count delivered training/certification and compute use."
+        },
+        {
+          "issue": "Investment incentives and realized capex",
+          "strategic": "National investment attractiveness does not establish industry realized capex.",
+          "regulators": "BKPM investment accounting differs from power/ICT regulatory mandates.",
+          "operators": "Site operators disclose construction, financing and service milestones.",
+          "oversight": "Public disclosure, audit and competition oversight apply case by case.",
+          "regional": "Local infrastructure constraints affect conversion.",
+          "assessment": "Avoid adding financing and project budgets to national BKPM figures."
+        },
+        {
+          "issue": "Cross-border data flows and fiber",
+          "strategic": "Network redundancy supports resilient services.",
+          "regulators": "Telecom authorities govern networks under relevant legal instruments.",
+          "operators": "Telin, independent carriers and site operators establish routes.",
+          "oversight": "DPR scrutiny relates to applicable digital legislation.",
+          "regional": "Landing stations and regional service quality matter.",
+          "assessment": "Track routes and SLA, not only announced fiber capacity."
+        },
+        {
+          "issue": "AI hardware supply and security",
+          "strategic": "Compute sovereignty depends on hardware access and efficient operations.",
+          "regulators": "Trade, digital and energy agencies have different roles.",
+          "operators": "GPU vendors, hyperscalers and local service companies execute procurements.",
+          "oversight": "Public procurement integrity and security due diligence matter.",
+          "regional": "Skilled operations and spare-part availability affect uptime.",
+          "assessment": "Distinguish installed hardware, contracted compute and expected shipments."
+        }
+      ]
+    }
+  }
+}
