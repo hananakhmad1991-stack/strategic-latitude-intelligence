@@ -54,6 +54,41 @@ window.initSLIInvestment=async function(){
  watch.append($("p",null,"Operational risks: disbursement timing, land acquisition, grid or gas availability, environmental permits, foreign-exchange exposure, offtake contracts and local content requirements. A published approval is not equivalent to completed construction."));
  heading(root,"Investment Media Monitoring","Domestic, FDI, project implementation and investment policy headlines");
  const media=box(root,"Investment-focused source discovery");media.id="inv-media";const feed=$("div");feed.id="investmentMediaRoot";media.append(feed);if(typeof window.initSLIInvestmentMedia==="function")window.initSLIInvestmentMedia();
+ heading(root,"State Revenue & Sector Receipts","ESDM PNBP · annual vs partial-year comparisons");
+ const rev=box(root,"Indonesia sectoral non-tax revenue");rev.id="inv-revenue";
+ rev.append($("p",null,"Reported PNBP only. Mineral and coal receipts are combined in this source; figures are not export value, GDP, tax take or investment flows."));
+ const revenueTable=$("div","pf-table-wrap");rev.append(revenueTable);
+ const policy=box(root,"Forward policy / investment planning");policy.id="inv-policy";
+ const evidenceStatus=$("p","tr-detail","Loading official investment data…");root.insertBefore(evidenceStatus,root.firstChild);
+ try{
+  const response=await fetch("data/investment-evidence.json",{cache:"no-store"});
+  if(!response.ok)throw Error("Official investment dataset not available");
+  const evidence=await response.json();
+  const national=evidence.national;
+  if(national){
+   values[0].textContent="Rp"+national.total.toLocaleString("id-ID")+" T";
+   values[1].textContent="Rp"+national.pma.toLocaleString("id-ID")+" T";
+   values[2].textContent="Rp"+national.pmdn.toLocaleString("id-ID")+" T";
+   const proof=$("p","tr-detail","BKPM · "+national.period+" · "+national.year_on_year_pct+"% YoY · downstream realization Rp"+national.downstream.toLocaleString("id-ID")+" T · target Rp"+national.target_2026.toLocaleString("id-ID")+" T. ");
+   proof.append(source(national.source,"Official BKPM release"));kpis.after(proof);
+  }
+  const projectRows=Array.isArray(evidence.projects)?evidence.projects:[];
+  const existing=new Set(records.map(x=>x.name));
+  for(const record of projectRows){if(!existing.has(record.name))records.push(record);}
+  values[3].textContent=records.length+" records";
+  const detail=$("div","pf-table-wrap");
+  const t=$("table");t.innerHTML="<thead><tr><th>Company / project</th><th>Reported amount</th><th>Amount classification</th><th>Implementation & next milestone</th><th>Source</th></tr></thead>";
+  const body=$("tbody");
+  projectRows.forEach(x=>{const tr=$("tr");[x.name+" · "+x.investor,x.currency+" "+x.reported_amount,x.amount_basis,x.status_note+" · Next: "+x.next_step].forEach(v=>tr.append($("td",null,v)));const td=$("td");td.append(source(x.source_url,"Official release"));tr.append(td);body.append(tr)});
+  t.append(body);detail.append(t);section.append($("h3",null,"Company investment amounts & verification caveats"),detail);
+  const rt=$("table");rt.innerHTML="<thead><tr><th>Sector / scope</th><th>PNBP (Rp trillion)</th><th>Period</th><th>Source</th></tr></thead>";
+  const rb=$("tbody");
+  (evidence.revenue||[]).forEach(x=>{const tr=$("tr");[x.sector,x.value.toLocaleString("id-ID"),x.period].forEach(v=>tr.append($("td",null,v)));const td=$("td");td.append(source(x.source,"ESDM"));tr.append(td);rb.append(tr)});rt.append(rb);revenueTable.append(rt);
+  rev.append($("p","tr-detail","Minerals vs coal and AI/data center-specific fiscal receipts are not separately verified by these sources; no artificial split is applied."));
+  (evidence.policy||[]).forEach(x=>{const p=$("p",null,x.title+": "+x.amount+" · "+x.status+" · ");p.append(source(x.source,"BKPM"));policy.append(p)});
+  evidenceStatus.textContent="Published data snapshot · "+evidence.as_of+" · Investment realization "+national.period+"; receipts retain their individual reference periods.";
+ }catch(err){evidenceStatus.textContent="Official investment evidence dataset unavailable; headline feed and editorial framework remain accessible.";console.error("[SLI] investment evidence load",err);}
+ render();
  heading(root,"Overall Strategic Assessment","Evidence-led; no speculative scoring");
  const assess=box(root,"Indonesia Investment Execution Outlook");assess.id="inv-assessment";
  const points=[
