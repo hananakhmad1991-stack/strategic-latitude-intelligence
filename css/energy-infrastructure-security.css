@@ -66,3 +66,6 @@
 .infra-watch-card{border-top:1px solid #415b72;padding:11px 0;display:grid;gap:5px}.infra-watch-card .infra-source{line-height:1.6;font-size:11px}.infra-watch-card .infra-mini{margin:1px 0;color:#a6bbce}
 
 .infra-jargas-regions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:7px 0 13px}.infra-jargas-region{display:flex;justify-content:space-between;gap:10px;border:1px solid #426077;background:#102a40;border-radius:7px;padding:10px;color:#c9dde9}.infra-jargas-region span{font-size:10px}.infra-jargas-region strong{white-space:nowrap;color:#e5cc90;font-size:11px}@media(max-width:600px){.infra-jargas-regions{grid-template-columns:1fr}}
+
+.infra-controls{flex-wrap:wrap;align-items:flex-end}.infra-field{display:grid;gap:6px;min-width:205px;max-width:100%;font-size:11px;color:#afc9da}.infra-basis{font-size:11px;color:#eccf97;line-height:1.65;margin:10px 0;border-left:2px solid #d4b777;padding:7px 10px;background:#173246}.infra-plant-bars .infra-bar-row{margin:5px 0 10px}
+@media(max-width:600px){.infra-field{width:100%;min-width:0}.infra-field>.infra-select{width:100%}}
