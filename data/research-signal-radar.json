@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "awaiting_first_scan",
+  "generated_at_utc": null,
+  "last_attempt_at_utc": null,
+  "groups": {
+    "minerals": {
+      "geopolitical": [],
+      "domestic": []
+    },
+    "ai": {
+      "geopolitical": [],
+      "domestic": []
+    }
+  },
+  "counts": {
+    "minerals": {
+      "geopolitical": 0,
+      "domestic": 0
+    },
+    "ai": {
+      "geopolitical": 0,
+      "domestic": 0
+    }
+  },
+  "topic_status": [],
+  "errors": [],
+  "reused_last_good_groups": [],
+  "methodology": "Headlines discovered by scheduled public RSS queries; empty starting state is not evidence of no developments.",
+  "refresh_policy": "Scheduled hourly scan, client checks snapshot every 5 minutes",
+  "windows": {
+    "headline_max_age_days": 14,
+    "max_items_per_group": 32
+  }
+}
