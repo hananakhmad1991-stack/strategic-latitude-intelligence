@@ -44,10 +44,10 @@ window.initSLIInvestmentMedia=async function(){
  type.addEventListener("change",draw);search.addEventListener("input",draw);
  const definitions=[["Investment-specific","data/investment-news.json","reports"],["Domestic","data/domestic-energy.json","reports"],["Geopolitical","data/geopolitical-energy.json","events"]];
  const results=await Promise.allSettled(definitions.map(async ([source,url,field])=>{const response=await fetch(url,{cache:"no-store"});if(!response.ok)throw Error(source+" feed unavailable");return {source,data:await response.json(),field}}));
- const seen=new Set();let failed=0;const times=[];let sourceErrors=0;
+ const seen=new Set();let failed=0;const times=[];let sourceErrors=0;let curatedAsOf=null;
  for(const result of results){
   if(result.status!=="fulfilled"){failed++;continue}
-  const {source,data,field}=result.value;if(data.checked_at_utc)times.push(Date.parse(data.checked_at_utc));sourceErrors+=(Array.isArray(data.errors)?data.errors.length:0);
+  const {source,data,field}=result.value;if(data.checked_at_utc)times.push(Date.parse(data.checked_at_utc));if(source==="Investment-specific"&&data.curated_as_of&&!data.checked_at_utc)curatedAsOf=data.curated_as_of;sourceErrors+=(Array.isArray(data.errors)?data.errors.length:0);
   for(const item of Array.isArray(data[field])?data[field]:[]){
    const title=String(item.title||""),url=String(item.url||"");if(!/^https:\/\//.test(url)||seen.has(url))continue;
    const topic=(source==="Investment-specific"&&TAX.some(([name])=>name===item.topic))?item.topic:regexes.find(([,rx])=>rx.test(title))?.[0];if(!topic)continue;
@@ -58,7 +58,7 @@ window.initSLIInvestmentMedia=async function(){
  matches.sort((a,b)=>String(b.date).localeCompare(String(a.date)));
  const newest=times.filter(Number.isFinite).sort((a,b)=>b-a)[0];
  const stamp=newest?new Date(newest).toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB":"unknown";
- status.textContent="Saved source scan: "+stamp+" · "+matches.length+" investment-related leads · "+failed+" unavailable feeds · "+sourceErrors+" topic-source errors"+(failed||sourceErrors?" · Partial source coverage":"")+(newest&&Date.now()-newest>6*3600000?" · Delayed data":"");
+ status.textContent=(newest?"Latest saved scan: "+stamp:curatedAsOf?"Curated public-source examples as of "+curatedAsOf+" · automatic investment RSS scan not yet confirmed":"Latest saved scan: unknown")+" · "+matches.length+" investment-related headlines · "+failed+" unavailable feeds · "+sourceErrors+" topic-source errors"+(failed||sourceErrors?" · Partial source coverage":"")+(newest&&Date.now()-newest>6*3600000?" · Delayed feed":"");
  draw();
 };
 })();
