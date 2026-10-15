@@ -1,0 +1,36 @@
+name: SLI Commodity Trade Sankey QA
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'js/commodity-trade-flow.js'
+      - 'css/commodity-trade-flow.css'
+      - 'data/commodity-trade-flows.json'
+      - 'tests/check-commodity-trade.cjs'
+      - '.github/workflows/commodity-trade-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  trade-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate source-dated bilateral Sankey and interaction states
+        run: |
+          node --check js/commodity-trade-flow.js
+          node tests/check-commodity-trade.cjs
+      - name: Validate homepage Trade Flows link and bundle
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html=Path("index.html").read_text(encoding="utf-8")
+          for value in ['data-page="trade"', 'id="sliTradeRoot"', 'window.initSLITradeFlow()', 'js/commodity-trade-flow.js', 'css/commodity-trade-flow.css']:
+              assert value in html, f"Missing trade navigation/mount: {value}"
+          assert Path("data/commodity-trade-flows.json").exists()
+          print("PASS: trade page routes and evidence dataset")
+          PY
