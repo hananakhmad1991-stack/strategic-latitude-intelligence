@@ -25,7 +25,7 @@ TRACKS=[
  ("Batteries","(baterai kendaraan listrik OR EV battery OR battery) (pabrik OR ekspor OR nikel OR daur ulang) Indonesia")
 ]
 EV_TITLE=re.compile(r"mobil listrik|motor listrik|kendaraan listrik|electric vehicle|\bbev\b|\bphev\b|\bev\b|\bspklu\b|\bspbklu\b|battery swap|baterai kendaraan|baterai mobil|baterai motor|\bkblbb\b|\bgaikindo\b.*listrik|\btkdn\b.*listrik",re.I)
-REPUTABLE=re.compile(r"^(ANTARA|Kompas|detik|CNBC Indonesia|Bisnis|Katadata|Kontan|Tempo|The Jakarta Post|CNN Indonesia|Bloomberg Technoz|GAIKINDO|AISI|AISMOLI|Kementerian |Ditjen |PT PLN|PLN|Pertamina|Sekretariat Negara|Presiden RI)",re.I)
+REPUTABLE=re.compile(r"^(ANTARA|Kompas\\.com|Kompas\\.id|Kompas TV|detik|CNBC Indonesia|Bisnis|Katadata|Kontan|Tempo|The Jakarta Post|CNN Indonesia|Bloomberg Technoz|GAIKINDO|AISI|AISMOLI|Kementerian |Ditjen |PT PLN|PLN|Pertamina|Sekretariat Negara|Presiden RI)",re.I)
 OFFICIAL_HOSTS=("esdm.go.id","kemenperin.go.id","dephub.go.id","kemenhub.go.id","setneg.go.id","pln.co.id","gaikindo.or.id","aisi.or.id","go.id")
 def official(host):
  host=(host or "").lower()
@@ -46,6 +46,15 @@ def scan(category,query):
   try:published=email.utils.parsedate_to_datetime(item.findtext("pubDate") or "").astimezone(dt.timezone.utc)
   except (TypeError,ValueError,IndexError,OverflowError):continue
   if not title or not EV_TITLE.search(title) or not link.startswith("https://"):continue
+  evidence={
+    "Cars":r"penjualan|gaikindo|wholesale|retail|produksi|populasi|pangsa pasar|terjual",
+    "Motorcycles":r"penjualan|populasi|produksi|insentif|subsidi|TKDN|baterai|industri|registrasi",
+    "Charging":r"SPKLU|SPBKLU|pengisian|charging|swapping|tukar baterai|stasiun",
+    "Policy":r"TKDN|insentif|subsidi|perpres|peraturan|PMK|kebijakan|aturan|pajak|izin",
+    "Industry":r"pabrik|produksi|fasilitas|ekspor|investasi|rantai pasok|perakitan|smelter",
+    "Batteries":r"baterai|battery|daur ulang"
+  }
+  if not re.search(evidence[category],title,re.I):continue
   if not (REPUTABLE.search(publisher) or official(host)):continue
   if published<NOW-dt.timedelta(days=11) or published>NOW+dt.timedelta(hours=2):continue
   # Only domestic EV developments or globally relevant Indonesian manufacturing.
