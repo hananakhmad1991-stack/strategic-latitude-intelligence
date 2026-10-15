@@ -1,0 +1,44 @@
+/* Strategic Latitude · ESDM Mineral Performance 2025, visualized separately from USGS/IEA */
+.sli-esdm-panel{margin:22px 0;padding:21px;border:1px solid #385770;border-radius:13px;background:linear-gradient(145deg,#152f44,#0f293d);color:#d8e3ec;min-width:0}
+.sli-esdm-kicker{display:block;color:#dec087;font-size:10px;letter-spacing:1.6px;font-weight:800;margin-bottom:9px}
+.sli-esdm-panel h3{font-size:clamp(18px,2vw,25px);color:#f5f6f8;margin:0 0 8px}.sli-esdm-panel h4{font-size:14px;color:#e9ce94;margin:16px 0 8px}
+.sli-esdm-subtitle{color:#bbccda;font-size:12px;line-height:1.7;margin:0 0 17px}
+.sli-esdm-stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:14px 0}
+.sli-esdm-card{border:1px solid #48677f;border-radius:9px;background:#1d4057;padding:15px;display:grid;gap:7px;min-width:0}
+.sli-esdm-card>span{font-size:12px;color:#c5d5df}
+.sli-esdm-card strong{font-size:clamp(22px,2.4vw,30px);color:#e7c583;line-height:1.2}
+.sli-esdm-card small{font-size:11px;color:#bdcfdc;line-height:1.55}.sli-esdm-card p{font-size:11px;color:#cbdae3;margin:2px 0}
+.sli-esdm-index-chart{border:1px solid #38586e;background:#0e2436;border-radius:10px;overflow:hidden;padding:11px;margin:14px 0}
+.sli-esdm-index-chart svg{display:block;width:100%;height:auto}
+.sli-esdm-bar-row{display:grid;grid-template-columns:1fr;gap:5px;margin:12px 0;color:#d7e5ea}
+.sli-esdm-bar-label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:12px}
+.sli-esdm-bar-label strong{color:#e8c887;white-space:nowrap;font-size:13px}
+.sli-esdm-bar-row small{font-size:10px;color:#aac1cf}
+.sli-esdm-track{height:14px;position:relative;border-radius:6px;background:#2f5167;overflow:visible}
+.sli-esdm-fill{height:100%;background:linear-gradient(90deg,#6bafc8,#e3c07e);border-radius:6px}
+.sli-esdm-target{position:absolute;top:-4px;bottom:-4px;width:2px;background:#f1f4fa;box-shadow:0 0 0 1px #193044}
+.sli-esdm-coal .sli-esdm-fill{background:#8397a5}.sli-esdm-mineral .sli-esdm-fill{background:#8dc5a5}
+.sli-esdm-bars{margin:10px 0}
+.sli-esdm-details{margin:13px 0;padding:12px;border:1px solid #4d6b80;border-radius:9px}
+.sli-esdm-details summary{color:#e5c98d;font-weight:700;cursor:pointer;line-height:1.5}
+.sli-esdm-weights{margin-top:15px}
+.sli-esdm-warning{font-size:11.5px!important;line-height:1.75!important;background:#1d3c52;border-left:3px solid #dec182;padding:10px 13px;color:#d4dfea!important;margin:14px 0!important}
+.sli-esdm-select{width:100%;max-width:460px;padding:11px 13px;background:#1e4258;border:1px solid #54768b;border-radius:8px;color:#eef4f6;font:inherit;font-size:12px}
+.sli-esdm-scroll{overflow-x:auto;max-width:100%;margin-top:18px}
+.sli-esdm-table{width:100%;min-width:580px;border-collapse:collapse}
+.sli-esdm-table th,.sli-esdm-table td{font-size:11px;text-align:left;padding:12px;border-bottom:1px solid #3b576c;color:#d5e1e8}
+.sli-esdm-table th{color:#e6c88f;background:#1a3a51}
+.sli-esdm-actors{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:10px;margin:12px 0}
+.sli-esdm-actor{border:1px solid #43647c;border-radius:9px;background:#1a3950;padding:13px;min-width:0;display:grid;gap:7px}
+.sli-esdm-actor h4{font-size:12px!important;color:#f7f9fb!important;margin:2px 0!important}
+.sli-esdm-actor p{font-size:11px;color:#c5d7e0;line-height:1.6;margin:0}
+.sli-esdm-actor small{font-size:10px;color:#e6c689}
+.sli-esdm-source{font-size:11px;color:#eacd96;text-decoration:underline;overflow-wrap:anywhere}
+.sli-esdm-footer{margin:13px 0 0;padding-top:11px;border-top:1px solid #3e5e74}
+.sli-esdm-risks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.sli-esdm-risk{border:1px solid #4a6a7e;background:#1b3c53;border-radius:9px;padding:12px;min-width:0}
+.sli-esdm-risk summary{font-size:12px;font-weight:700;color:#e8d19f;cursor:pointer;line-height:1.5}
+.sli-esdm-risk p{font-size:11px;color:#c6d8e2;line-height:1.7}
+.sli-esdm-methods{color:#d4e0e7;font-size:12px;line-height:1.8;padding-left:19px}
+.sli-esdm-methods li{margin:6px 0}
+@media(max-width:670px){.sli-esdm-panel{padding:13px}.sli-esdm-stat-grid,.sli-esdm-actors,.sli-esdm-risks{grid-template-columns:1fr}.sli-esdm-card{padding:11px}}
