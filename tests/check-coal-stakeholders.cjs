@@ -25,7 +25,7 @@ for(const name of ["Directorate General of Minerals & Coal","MIND ID — Indones
 assert(d.items.find(x=>x.name==="PT Bukit Asam Tbk (PTBA)").group==="state","MIND ID/PTBA must map under BUMN");
 assert(d.items.find(x=>x.name==="PT Adaro Andalan Indonesia Tbk").group==="private","Indonesian private miner must not be Danantara SOE");
 assert(d.items.find(x=>x.name==="Directorate General of Minerals & Coal").lead.includes("Tri Winarno"),"Minerba official name missing");
-assert(d.items.find(x=>x.name==="Ministry of Energy Policy / DEN Secretariat").lead.includes("Dadan Kusdiana"),"DEN leadership not current");
+assert(d.items.find(x=>x.name==="National Energy Council Secretariat (DEN)").lead.includes("Dadan Kusdiana"),"DEN leadership not current");
 assert(d.indicators.length===4,"2025 GDP and 3 other indicators expected");
 const indicators=Object.fromEntries(d.indicators.map(x=>[x.id,x]));
 assert(indicators.gdp.scope==="coal+lignite GDP"&&indicators.gdp.value_en==="Rp 827.36 tn","Must distinguish BPS 2025 direct GDP");
