@@ -1,0 +1,183 @@
+{
+  "title": "Indonesia Biofuels & Biodiesel Intelligence",
+  "as_of": "2026-10-15",
+  "definitions": "Installed biodiesel/FAME manufacturing capacity is NOT crude-oil refining throughput; 2025 biodiesel output is NOT 2026 consumption. B50 blend refers to diesel product blending, not an ethanol mandate.",
+  "installed_capacity": {
+    "million_kl_per_year": 22,
+    "period": "2026",
+    "source_type": "Attributed EBTKE official speaking to ANTARA, 5 Feb 2026",
+    "source": "https://www.antaranews.com/berita/5398470/den-biodiesel-berperan-strategis-dalam-swasembada-energi",
+    "caveat": "Aggregate manufacturing capacity, not certified operating throughput or a plant-by-plant audited inventory. Active commissioned capacity by plant pending verification."
+  },
+  "plants": {
+    "number_of_blenders_or_bbn_entities": 26,
+    "number_of_fuel_distributors": 32,
+    "reference_date": "2025-12-23",
+    "source": "https://esdm.go.id/id/media-center/arsip-berita/pemerintah-tetapkan-alokasi-biodiesel-tahun-2026-sebesar-1565-juta-kl",
+    "caveat": "Number of nominated businesses is not number of manufacturing plants; no unverified site nameplate data are shown.",
+    "locations_note": "Clustered around palm oil processing hubs, notably Sumatra and Kalimantan; a verified 2026 plant-by-plant nameplate/province register is still a data gap."
+  },
+  "actuals_2025": {
+    "year": 2025,
+    "production_million_kl": 15.65,
+    "domestic_distribution_million_kl": 14.94,
+    "exports_million_kl": 0,
+    "source": "https://ebtke.esdm.go.id/?lang=en",
+    "vintage": "Dec 2025; EBTKE public numerical snapshot",
+    "caveat": "Government publications separately report 14.2m kL against an internal KPI indicator; 14.94m kL is EBTKE's physical distribution against annual allocation, not the same measurement."
+  },
+  "domestic_distribution_history": [
+    {
+      "year": 2021,
+      "million_kl": 9.3
+    },
+    {
+      "year": 2022,
+      "million_kl": 10.4
+    },
+    {
+      "year": 2023,
+      "million_kl": 12.3
+    },
+    {
+      "year": 2024,
+      "million_kl": 13.2
+    },
+    {
+      "year": 2025,
+      "million_kl": 14.94
+    }
+  ],
+  "history_note": "2021–24 government 'pemanfaatan' series from Jan 2026 ESDM release, 2025 is EBTKE distributor record; methodological distinction precludes precise audited year-on-year claim.",
+  "history_sources": [
+    "https://www.esdm.go.id/id/media-center/arsip-berita/mandatori-biodiesel-perkuat-ketahanan-energi-pemerintah-targetkan-stop-impor-solar-2026",
+    "https://ebtke.esdm.go.id/?lang=en"
+  ],
+  "actuals_2026": {
+    "as_of": "2026-09-07",
+    "distributed_million_kl": 10.69,
+    "b40_jan_jun_million_kl": 7.27,
+    "b50_jul_sep_million_kl": 3.42,
+    "status": "Attributed official EBTKE statement in Commission XII hearing; non-audited media-reported interim figure",
+    "source": "https://databoks.katadata.co.id/energi/statistik/6aa255d28480f/pemanfaatan-biodiesel-di-indonesia-capai-107-juta-kl-per-september-2026",
+    "note": "The 10.69m kL is biodiesel/FAME volume distributed, not total blended diesel volume."
+  },
+  "allocation": {
+    "initial_2026_kl": 15646372,
+    "pso_kl": 7454600,
+    "non_pso_kl": 8191772,
+    "instrument": "Kepmen ESDM 439.K/EK.01/MEM.E/2025",
+    "issued": "2025-12-22",
+    "source": "https://esdm.go.id/id/media-center/arsip-berita/pemerintah-tetapkan-alokasi-biodiesel-tahun-2026-sebesar-1565-juta-kl",
+    "revised_planning_million_kl": 17.6,
+    "planning_vintage": "2026-06-18",
+    "planning_status": "Government estimated full-year volume upon phased B40→B50; NOT presented as revised signed operator-specific allocation",
+    "planning_source": "https://www.esdm.go.id/id/media-center/arsip-berita/targetkan-stop-impor-solar-menteri-bahlil-b50-dimulai-1-juli",
+    "target_2026_other_note": "September committee briefing reportedly used 16.7m kL target. Do not combine with June 17.6m forecast or original 15.646m allocated volume without confirming latest legal instrument."
+  },
+  "blend": {
+    "current": "B50",
+    "effective": "2026-07-01",
+    "original_launch": "2026-07-09",
+    "source": "https://esdm.go.id/id/media-center/arsip-berita/luncurkan-mandatori-b50-esdm-tegaskan-kesiapan-indonesia-perkuat-kedaulatan-energi",
+    "policy": "Kepmen ESDM 257.K/EK.01/MEM.E/2026",
+    "phase": "B40 Jan-Jun; B50 Jul-Dec 2026",
+    "rollout": {
+      "as_of": "2026-09-15",
+      "stations": 6050,
+      "source": "https://www.esdm.go.id/id/media-center/arsip-berita/kawal-implementasi-b50-kementerian-esdm-perkuat-uji-teknis-dan-dialog-dengan-industri-otomotif",
+      "note": "Count refers to service stations reached, not evidence of sustained quality at each location."
+    }
+  },
+  "diesel_market": {
+    "consumption_range_million_kl_per_year": [
+      38,
+      40
+    ],
+    "source": "https://www.esdm.go.id/id/media-center/arsip-berita/b50-diluncurkan-pemerintah-targetkan-hemat-devisa-rp170-triliun-dan-stop-impor-solar",
+    "note": "Total finished diesel market baseline; cannot equate one-to-one with the bio-component volume."
+  },
+  "feedstock": {
+    "primary": "Palm oil-derived FAME/CPO derivatives",
+    "upstream_dependency": "Competition for palm oil with food, oleochemicals and exports; feedstock demand depends on yield and process efficiencies, not a naive 1:1 CPO-to-FAME conversion.",
+    "risk": "CPO supply and weather, land-use sustainability, export levy revenues, terminal blending logistics, fuel specs, machinery compatibility",
+    "source": "https://www.esdm.go.id/id/media-center/arsip-berita/kawal-implementasi-b50-kementerian-esdm-perkuat-uji-teknis-dan-dialog-dengan-industri-otomotif"
+  },
+  "ethanol": {
+    "status": "E20 discussed/planned; not evidenced as nationwide implemented mandate as of this dataset date",
+    "announced_need_million_kl": 4,
+    "announced_need_year": "2026 policy discussion",
+    "gasoline_market_million_kl": 40,
+    "official_source": "https://www.esdm.go.id/id/media-center/arsip-berita/implementasi-program-e20-pemerintah-butuh-4-juta-kiloliter-etanol",
+    "consistency_warning": "ESDM public statement cited 4m kL ethanol for E20 with a 40m kL gasoline market; 20% of 40m kL would be 8m kL if it applies to the entire market. Treat 4m kL as a quoted governmental programme estimate, NOT as demonstrated nationwide E20 volumetric demand.",
+    "feedstocks": [
+      "Sugarcane",
+      "Cassava",
+      "Maize"
+    ],
+    "capacity_verified_million_kl": null,
+    "production_verified_million_kl": null,
+    "specification_source": "https://ebtke.esdm.go.id/artikel/pengumuman/keputusan-direktur-jenderal-energi-baru-terbarukan-dan-konservasi-energi-tentang-standar-dan-mutu-spesifikasi-bahan-bakar-nabati-jenis-bioethanol-sebagai-bahan-bakar-lain-yang-dipasarkan-di-dalam-negeri"
+  },
+  "price": {
+    "hip_biodiesel_rp_per_l": 14643,
+    "hip_bioethanol_rp_per_l": 8062,
+    "as_of": "2026-06",
+    "source": "https://ebtke.esdm.go.id/?lang=en",
+    "warning": "Stale reference HIP snapshot (June 2026), not a live retail BBM price; monthly HIP must be corroborated before updating."
+  },
+  "policies": [
+    {
+      "name": "B50 mandatory blending",
+      "instrument": "Kepmen ESDM 257.K/EK.01/MEM.E/2026",
+      "status": "Implemented from July 2026",
+      "date": "2026-07-01",
+      "category": "Biodiesel",
+      "source": "https://esdm.go.id/id/media-center/arsip-berita/luncurkan-mandatori-b50-esdm-tegaskan-kesiapan-indonesia-perkuat-kedaulatan-energi",
+      "note": "Staged terminal and service-station rollout; compliance needs verification."
+    },
+    {
+      "name": "Initial 2026 B40 volume allocation",
+      "instrument": "Kepmen ESDM 439.K/EK.01/MEM.E/2025",
+      "status": "Original allocation; review effect of B50 revisions",
+      "date": "2025-12-22",
+      "category": "Biodiesel",
+      "source": "https://ebtke.esdm.go.id/artikel/pengumuman/keputusan-menteri-esdm-tentang-penetapan-badan-usaha-bahan-bakar-minyak-dan-badan-usaha-bahan-bakar-nabati-jenis-biodiesel-serta-alokasi-volume-bahan-bakar-nabati-jenis-biodiesel-untuk-pencampuran-bahan-bakar-minyak-jenis-minyak-solar-tahun-2026",
+      "note": "15.646m kL baseline must not be called revised B50 allocation."
+    },
+    {
+      "name": "Biodiesel producer incentive arrangements",
+      "instrument": "Permen ESDM 24/2021",
+      "status": "Regulatory framework; verify later amendments",
+      "date": "2021",
+      "category": "Funding",
+      "source": "https://ebtke.esdm.go.id/artikel/pengumuman/keputusan-menteri-esdm-tentang-penetapan-badan-usaha-bahan-bakar-minyak-dan-badan-usaha-bahan-bakar-nabati-jenis-biodiesel-serta-alokasi-volume-bahan-bakar-nabati-jenis-biodiesel-untuk-pencampuran-bahan-bakar-minyak-jenis-minyak-solar-tahun-2026",
+      "note": "BPDP financing and price differential; not blanket subsidy for every liter."
+    },
+    {
+      "name": "Bioethanol product specification",
+      "instrument": "2026 Ditjen EBTKE technical specification announcement",
+      "status": "Specification announced April 2026; not E20 rollout proof",
+      "date": "2026-04-07",
+      "category": "Bioethanol",
+      "source": "https://ebtke.esdm.go.id/artikel/pengumuman/keputusan-direktur-jenderal-energi-baru-terbarukan-dan-konservasi-energi-tentang-standar-dan-mutu-spesifikasi-bahan-bakar-nabati-jenis-bioethanol-sebagai-bahan-bakar-lain-yang-dipasarkan-di-dalam-negeri",
+      "note": "Standards distinct from binding nationwide E20 blending obligation."
+    },
+    {
+      "name": "E20 gasoline ethanol ambition",
+      "instrument": "ESDM public proposal June 2026",
+      "status": "Proposal / planning, not enforced nationwide",
+      "date": "2026-06-27",
+      "category": "Bioethanol",
+      "source": "https://www.esdm.go.id/id/media-center/arsip-berita/implementasi-program-e20-pemerintah-butuh-4-juta-kiloliter-etanol",
+      "note": "Four million kL ethanol stated requirement conflicts with simple market-wide 20%-of-40m kL arithmetic; planning basis needs clarification."
+    }
+  ],
+  "assessment": [
+    "Nominal 22m kL/year FAME production capacity appears above June 17.6m kL demand estimate, but no operational headroom should be inferred without verified utilization and regional throughput.",
+    "B50 substitution can reduce imported finished diesel, but concentration in palm oil feedstock can shift vulnerability upstream to agronomy, input pricing and logistics.",
+    "2026 biodiesel volume data are incomplete as of 7 September; year-to-date distribution cannot be interpreted as final-year consumption.",
+    "Risk concentration: BPDP funding balance, export-levy sensitivity, engine/fuel quality, terminal blending transition, CPO food-versus-fuel competition and land-use impacts.",
+    "Bioethanol E20 is less mature: verified current manufacturing capacity, actual ethanol fuel supply and an enacted nationwide blend rule are not yet established."
+  ]
+}
