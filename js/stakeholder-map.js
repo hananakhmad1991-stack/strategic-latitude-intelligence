@@ -353,6 +353,7 @@ window.renderSLIStakeholderMap=function(root,data){
    state.mode="overview";state.selected="";draw();
   },state.selected);
   if(isIssue&&routes.length)issueGraph(svg,routes,state.issue,i=>{state.issueStep=i;draw()});
+  canvas.dataset.view=isLayer?"layer":isIssue?"issue":"overview";
   canvas.replaceChildren(svg);
   mobile.replaceChildren();
   const mobileOptions=isOverview?data.layers.map((layer,i)=>({
