@@ -92,3 +92,8 @@
 #energyPolicyRoot .gov-policy-head{gap:6px}
 #energyPolicyRoot .gov-policy h3{font-size:13.5px;line-height:1.5}
 @media(max-width:700px){#energyPolicyRoot .gov-quick{flex:1 1 145px}#energyPolicyRoot .gov-controls .gov-select{flex:1 1 170px}}
+
+.es-policy-shortcuts{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 13px}
+.es-policy-shortcuts a{color:#e6d3ad;background:#1b384e;border:1px solid #45647a;border-radius:8px;padding:9px 13px;font:650 11px/1.4 system-ui,sans-serif;text-decoration:none}
+.es-policy-shortcuts a:hover,.es-policy-shortcuts a:focus-visible{background:#274963;border-color:#e4c98c;outline:none}
+#energyPolicyRoot{scroll-margin-top:15px}
