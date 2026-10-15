@@ -105,6 +105,18 @@ function draw(which){const root=document.getElementById("sliResearchRoot");if(!r
 const nav=E("nav","sli-research-nav");nav.setAttribute("aria-label","Chapter sections");
 for(const [num,title] of c.sections){nav.append(link("#sli-chapter-"+num,num+" · "+title))}root.append(nav);
 for(const [num,title,description,rows] of c.sections){const sec=E("section","sli-research-section");sec.id="sli-chapter-"+num;sec.append(E("small","sli-research-num","CHAPTER "+num),E("h3",null,title),E("p","sli-research-description",description));const grid=E("div","sli-research-grid");for(const [name,value,detail,url] of rows){const card=E("article","sli-research-card");card.append(E("h4",null,name),E("strong",null,value),E("p",null,detail));if(url)card.append(link(url,url.startsWith("#")?"Open canonical dashboard ↗":"Original source / reference ↗"));else card.append(E("small","sli-research-caveat","Editorial framework · project-level confirmation required"));grid.append(card)}sec.append(grid);root.append(sec)}
+if(which==="ai"){
+ const panel=E("section","sli-research-section");panel.append(E("small","sli-research-num","CONTINUOUS MONITORING"),E("h3",null,"AI & Data Center · Dated News Signals"),E("p","sli-research-description","Automatically discovered publisher-attributed headlines. Not proof of project investment, construction or operational GPU capacity."));
+ const status=E("p","sli-research-description","Loading dated RSS monitoring snapshot…"),list=E("div","sli-research-grid");panel.append(status,list);root.append(panel);
+ fetch("data/ai-monitoring.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
+ if(!panel.isConnected)return;
+ const items=Array.isArray(d.reports)?d.reports.slice(0,12):[];
+ status.textContent=(d.checked_at_utc?"Last checked: "+d.checked_at_utc.slice(0,16)+" UTC":"Automated scan not yet completed")+" · "+items.length+" attributed headlines displayed. Do not treat as verified incidents.";
+ list.replaceChildren();
+ if(!items.length)list.append(E("p","sli-research-description","No published AI RSS observations yet. Existing project research remains available above."));
+ for(const item of items){if(!/^https:\/\//.test(item.url||""))continue;const card=E("article","sli-research-card");card.append(E("h4",null,item.topic||"Technology"),link(item.url,item.title),E("p",null,(item.publisher||"Publisher unavailable")+" · "+(item.published_at_utc||"No observation date").slice(0,10)),E("small","sli-research-caveat","Monitoring lead only · verify original publication"));list.append(card)}
+ }).catch(()=>{status.textContent="AI monitoring snapshot unavailable; no headlines inferred.";});
+}
 const note=E("p","sli-research-footer","Source ownership: this chapter contains its own primary evidence; referenced trade, project, energy or regulatory datasets remain in their specialist dashboards. Method: figures retain their original reference year and unit. Announcements ≠ commitments ≠ construction ≠ commissioned assets. Missing or unpublished data are not zero. Industry and policy scenarios are editorial analysis, not measured probabilities.");root.append(note);}
 window.initSLIResearch=draw;
 })();
