@@ -369,17 +369,18 @@
       "region": "Jakarta region, Indonesia; physical AZ locations undisclosed",
       "stage": "Operational",
       "evidence_date": "2021-12-14",
-      "reported_amount": null,
+      "reported_amount": 5,
       "currency": "USD billion",
-      "amount_basis": "No independently source-matched reported realized project capex in the selected AWS region overview; do not merge regional business projections or group capex into Indonesian capex",
+      "amount_basis": "AWS's 2021 announcement estimated US$5bn over fifteen years. This includes data-center CAPEX, ongoing operating expenses and local goods/services purchases; it is NOT a single-facility capex budget or verified 2026 realized investment.",
       "status_note": "AWS publicly confirms Jakarta region with three availability zones; serves operational workloads, but source does not state customer occupancy or site-specific expenditure.",
-      "next_step": "Verify Indonesia-specific disclosed capex, region resilience, utility and emissions sourcing and incremental buildouts.",
-      "source_url": "https://aws.amazon.com/local/jakarta/",
+      "next_step": "Confirm Indonesian region's actual annual CAPEX and OPEX, site-specific expansion milestones and verified spending to date.",
+      "source_url": "https://press.aboutamazon.com/2021/12/aws-launches-region-in-indonesia",
       "ownership_ref": null,
       "capex_realized": null,
       "capex_realized_source": null,
       "program_group": "aws-jakarta-region",
-      "evidence_status": "Direct AWS service availability; investment spend undisclosed"
+      "evidence_status": "Direct AWS service availability; investment spend undisclosed",
+      "amount_type": "Long-term planned regional spending, including CAPEX and OPEX"
     }
   ],
   "policy": [
@@ -521,6 +522,43 @@
     {
       "key": "iwip-11-2026",
       "explanation": "Weda Bay US$10.2bn is a multi-facility portfolio including already-commercialized and new-groundbreaking facilities; it may overlap other national project announcements until SPV-specific reconciliation."
+    }
+  ],
+  "implementation_watch": [
+    {
+      "id": "pln-batam-reliability",
+      "sector": "AI infrastructure / Energy",
+      "topic": "Power availability for Batam-based data centers",
+      "event_date": "2026-10-14",
+      "title": "Danantara commits to PLN Batam reliability improvements following 12 October outage",
+      "observed": "Danantara official statement following a PLN Batam power supply disruption; no investment or data-center losses are quantified.",
+      "possible_impact": "Stable grid power is a gating dependency for AI-ready campuses; assess redundancy and energization schedules rather than automatically assuming data-center disruption.",
+      "follow_up": "Check PLN Batam root-cause analysis, firm capacity and specific campus energization agreements.",
+      "source": "https://www.danantaraindonesia.co.id/media-center/press-releases/danantara-indonesia-commitment-improving-pln-services"
+    },
+    {
+      "id": "dtiif-2026",
+      "sector": "Technology / Investment",
+      "topic": "Upcoming partnership and financing pipeline",
+      "event_date": "2026-10-14",
+      "event_start": "2026-10-26",
+      "event_end": "2026-10-28",
+      "title": "Danantara Technology Innovation Investment Forum — 26–28 October 2026",
+      "observed": "Danantara confirms forum at Fairmont Jakarta; attendance and meeting announcements do not constitute signed financing or project realization.",
+      "possible_impact": "Potential future deal pipeline in AI, infrastructure and strategic industry, conditional on follow-up definitive agreements.",
+      "follow_up": "Review resulting signed deals separately from MOUs or partnership discussions.",
+      "source": "https://www.danantaraindonesia.co.id/media-center/press-releases/inaugural-dtiif-2026"
+    },
+    {
+      "id": "weda-bay-conversion",
+      "sector": "Critical minerals",
+      "topic": "Commercialized versus newly grounded",
+      "event_date": "2026-10-08",
+      "title": "Setneg confirms four commercializations and seven groundbreakings within 11-project Weda Bay programme",
+      "observed": "The 11 facilities' combined announced project value is US$10.2bn. Output, ownership and cost-to-complete vary by facility.",
+      "possible_impact": "The programme includes assets at different delivery stages; no portfolio-wide 100% commissioning assumption is warranted.",
+      "follow_up": "Seek facility-level company names, production approvals and commissioned capacity for each asset.",
+      "source": "https://www.setneg.go.id/baca/index/presiden_prabowo_luncurkan_11_proyek_hilirisasi_dengan_total_investasi_senilai_rp180_triliun_di_maluku_utara"
     }
   ]
 }
