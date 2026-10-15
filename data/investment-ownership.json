@@ -1,0 +1,233 @@
+{
+  "as_of": "2026-10-15",
+  "scope": "Select Indonesian strategic investment entities; not a comprehensive beneficial ownership register",
+  "methodology": {
+    "levels": [
+      "Direct equity: sourced legal shareholders and percentages",
+      "Corporate chain: explicitly disclosed parent/subsidiary relationships",
+      "Control: separately disclosed voting, joint-control, operating or shareholder-agreement arrangements",
+      "Natural-person beneficial owner: label verified ONLY after company-specific primary registry evidence with cross-check"
+    ],
+    "bo_register": "https://www.ahu.go.id/pencarian/profil-pemilik-manfaat",
+    "notice": "Indonesian AHU's beneficial ownership records are filed by companies or reporting agents and AHU notes it does not verify submitted information. Registry availability is not independent verification. Do not identify executives, ministers or owners of listed-company stakes as BO without direct evidence.",
+    "recency": "Source snapshots retain their own dates; entries older than 12 months should be rechecked."
+  },
+  "entities": [
+    {
+      "id": "ptfi",
+      "entity": "PT Freeport Indonesia",
+      "sector": "Critical minerals",
+      "ownership_as_of": "2025-12-31",
+      "evidence_tier": "Audited financial statements",
+      "direct_shareholders": [
+        {
+          "name": "Freeport-McMoRan (FCX)",
+          "pct": 48.76
+        },
+        {
+          "name": "PT Mineral Industri Indonesia (MIND ID)",
+          "pct": 26.24
+        },
+        {
+          "name": "PT Indonesia Papua Metal Dan Mineral (PT IPMM)",
+          "pct": 25
+        }
+      ],
+      "ownership_chain": "PT IPMM was reported 100% MIND ID-owned at 31 December 2025, yielding a 51.24% MIND ID group position. This is a corporate equity chain, not an individually verified beneficial owner.",
+      "control": "FCX is described as operating shareholder with rights to appoint a majority of members of the operating committee. Economic equity majority and operational governance differ.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "No company-specific, cross-checked natural-person BO record incorporated; state ownership and listed-company ownership do not identify an individual BO."
+      },
+      "risk": "Concentrate supply, smelter restart and shareholder operating rights may affect project execution independently of nominal equity.",
+      "monitor": "Latest audited share register, PT IPMM ownership, ownership rights, FCX operating arrangements, smelter availability.",
+      "sources": [
+        {
+          "label": "PTFI consolidated financial statements, December 2025",
+          "url": "https://links.sgx.com/FileOpen/PTFI_251231.ashx?App=Announcement&FileID=878366"
+        },
+        {
+          "label": "Freeport-McMoRan Indonesia operations",
+          "url": "https://www.fcx.com/operations/indonesia"
+        }
+      ]
+    },
+    {
+      "id": "vale",
+      "entity": "PT Vale Indonesia Tbk (INCO)",
+      "sector": "Critical minerals",
+      "ownership_as_of": "2025-12-31",
+      "evidence_tier": "2025 annual-report shareholder information",
+      "direct_shareholders": [
+        {
+          "name": "MIND ID",
+          "pct": 34
+        },
+        {
+          "name": "Vale Canada Limited",
+          "pct": 33.88
+        },
+        {
+          "name": "Sumitomo Metal Mining Co., Ltd.",
+          "pct": 11.48
+        },
+        {
+          "name": "Public / free and other float",
+          "pct": 20.64
+        }
+      ],
+      "ownership_chain": "Vale states MIND ID and Vale Canada exercise joint control. A 34% largest shareholding is not sole control. Company identifies Vale Canada as belonging to Vale Base Metals.",
+      "control": "Joint control disclosed by company; not inferred from simple ownership threshold.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "Controlling legal entities are disclosed but individual ultimate beneficial owners have not been independently established."
+      },
+      "risk": "Joint-governance arrangements, capital commitments, industrial power and environmental approvals are distinct control and delivery issues.",
+      "monitor": "Quarterly substantial shareholdings, shareholders' agreement changes, IGP Pomalaa and Morowali milestones.",
+      "sources": [
+        {
+          "label": "Vale 2025 shareholding register",
+          "url": "https://saladeimprensa.vale.com/in/indonesia/informasi-saham"
+        },
+        {
+          "label": "Vale controlling shareholders",
+          "url": "https://vale.com/indonesia/major-and-controlling-shareholders"
+        }
+      ]
+    },
+    {
+      "id": "antam",
+      "entity": "PT Aneka Tambang Tbk (ANTM)",
+      "sector": "Critical minerals",
+      "ownership_as_of": "2025-06-30",
+      "evidence_tier": "Company half-year financial disclosure",
+      "direct_shareholders": [
+        {
+          "name": "MIND ID",
+          "pct": 65
+        },
+        {
+          "name": "Public shareholders",
+          "pct": 35
+        }
+      ],
+      "ownership_chain": "ANTAM reports MIND ID as immediate parent and Danantara as ultimate parent incorporated in Indonesia, controlled by the Republic of Indonesia. A separate Series A Dwiwarna state share must not be confused with Series B economic percentages.",
+      "control": "MIND ID direct controlling shareholder in reported period; state strategic rights are a separate layer.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "State and SOE corporate ownership is known; no natural-person BO is inferred from officeholders."
+      },
+      "risk": "SOE portfolio control, partner-specific project SPVs and ministerial authorizations are separate mechanisms.",
+      "monitor": "2025 annual report and 2026 updated shareholder registers, IBC and battery SPV equity allocation.",
+      "sources": [
+        {
+          "label": "ANTAM first-half 2025 reviewed financial statements",
+          "url": "https://www.antam.com/downloads/appendix-4d-first-half-2025--reviewed-"
+        },
+        {
+          "label": "ANTAM annual reports",
+          "url": "https://antam.com/id/company-report/annual-report"
+        }
+      ]
+    },
+    {
+      "id": "imip",
+      "entity": "PT Indonesia Morowali Industrial Park",
+      "sector": "Critical minerals",
+      "ownership_as_of": "2024-07-01",
+      "evidence_tier": "Company published shareholder FAQ (older snapshot)",
+      "direct_shareholders": [
+        {
+          "name": "Shanghai Decent Investment Group",
+          "pct": 49.69
+        },
+        {
+          "name": "PT Sulawesi Mining Investment",
+          "pct": 25
+        },
+        {
+          "name": "PT Bintang Delapan Investama",
+          "pct": 25.31
+        }
+      ],
+      "ownership_chain": "The IMIP corporate FAQ lists three direct shareholders. The ultimate owners of intermediate companies and ultimate natural-person beneficial owners are NOT established by this statement.",
+      "control": "Direct percentages disclosed; cannot infer a single controlling natural person, governance rights or ultimate voting control without additional evidence.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "No cross-checked upstream shareholder registry or AHU beneficial-owner record available for this analysis."
+      },
+      "risk": "Industry-park manager and individual tenant project SPVs are separate legal entities. Do not attribute all tenant investment, power capacity or emissions to IMIP equity owners.",
+      "monitor": "Updated shareholders, industrial park licenses, tenant-specific ownership, energy and environmental permits.",
+      "sources": [
+        {
+          "label": "IMIP official shareholder FAQ (2024)",
+          "url": "https://imip.co.id/helpie_faq/pertanyaan-3/"
+        }
+      ]
+    },
+    {
+      "id": "smelting",
+      "entity": "PT Smelting (Gresik)",
+      "sector": "Critical minerals",
+      "ownership_as_of": "2026-10-15",
+      "evidence_tier": "Operating shareholder disclosure (FCX)",
+      "direct_shareholders": [
+        {
+          "name": "PT Freeport Indonesia",
+          "pct": 66
+        },
+        {
+          "name": "Mitsubishi Materials Corporation",
+          "pct": 34
+        }
+      ],
+      "ownership_chain": "PT Freeport Indonesia is majority shareholder in PT Smelting. Its own shareholder chain is separately documented under PTFI; look-through arithmetic does not automatically translate to operating control.",
+      "control": "FCX states Mitsubishi Materials operates PT Smelting facilities despite holding a 34% stake.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "No separate individual BO filing was independently reviewed."
+      },
+      "risk": "Management and operating rights are not identical to majority equity; concentrate supply affects utilization.",
+      "monitor": "Shareholder register updates, operator agreement and production utilization.",
+      "sources": [
+        {
+          "label": "Freeport-McMoRan Indonesia operations, ownership",
+          "url": "https://www.fcx.com/operations/indonesia"
+        }
+      ]
+    },
+    {
+      "id": "kni",
+      "entity": "PT Kolaka Nickel Indonesia (KNI)",
+      "sector": "Critical minerals",
+      "ownership_as_of": "2026-10-15",
+      "evidence_tier": "Project company identification; equity percentages unverified",
+      "direct_shareholders": [],
+      "known_project_partners": [
+        "PT Vale Indonesia",
+        "Zhejiang Huayou Cobalt",
+        "Ford Motor Company"
+      ],
+      "ownership_chain": "Vale identifies PT KNI as the HPAL project venture with Vale, Huayou and Ford. No current ownership percentages are supplied in the selected project disclosure; partner participation does not determine equity percentage.",
+      "control": "Not established from reviewed disclosure.",
+      "beneficial_owner": {
+        "status": "Not independently verified",
+        "natural_person": null,
+        "reason": "Current direct share register and natural-person BO not verified."
+      },
+      "risk": "Verify venture-level cap table before any attribution of financing or project revenue to a parent company.",
+      "monitor": "JV shareholders, project equity subscription, financing close and commissioning.",
+      "sources": [
+        {
+          "label": "Vale IGP Pomalaa project profile",
+          "url": "https://www.vale.com/in/indonesia/indonesia-growth-projects-pomalaa/-/categories/64940"
+        }
+      ]
+    }
+  ]
+}
