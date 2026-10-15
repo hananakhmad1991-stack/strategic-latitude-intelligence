@@ -62,3 +62,5 @@
 @media(max-width:920px){.infra-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:660px){.infra-kpi-grid,.infra-split{grid-template-columns:1fr}.infra-mount{padding:13px}.infra-hero{padding:18px}.infra-tab{flex-basis:44%}.infra-head{align-items:flex-start}}
 @media(max-width:390px){.infra-tab{flex-basis:100%}}
+
+.infra-watch-card{border-top:1px solid #415b72;padding:11px 0;display:grid;gap:5px}.infra-watch-card .infra-source{line-height:1.6;font-size:11px}.infra-watch-card .infra-mini{margin:1px 0;color:#a6bbce}
