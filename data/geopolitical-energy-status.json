@@ -1,9 +1,16 @@
 {
-  "checked_at_utc": "2026-10-15T03:35:37.074508+00:00",
-  "leads_found": 12,
+  "checked_at_utc": "2026-10-15T05:02:59.206916+00:00",
+  "leads_found": 11,
+  "sector_counts": {
+    "oil_gas": 7,
+    "coal": 3,
+    "nre": 1,
+    "electricity": 0,
+    "cross_cutting": 0
+  },
   "errors": [
     {
-      "topic": "Hormuz and Gulf energy",
+      "topic": "Red Sea and Bab el-Mandeb",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
