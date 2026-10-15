@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-10-15",
-  "updated_note": "Public-source organizational relationships, not a single statutory chain of command. Only ownership nodes have equity relations; policy oversight and commercial partnerships are different edge types. The subsidiary/member list denotes MIND ID six principal members; non-wholly-owned Vale/Freeport equity is explicitly marked. Other affiliates are selected documented examples rather than an exhaustive sub-subsidiary roster.",
+  "as_of": "2026-10-16",
+  "updated_note": "Presidency and ministries denote executive accountability; coordinating ministries do not automatically sit above technical ministries in a statutory reporting chain. Danantara and BUMN denote corporate portfolios, not public regulators. Private actors are split by parent-group nationality, with mixed JVs identified separately; source years vary.",
   "sectors": {
     "minerals": {
       "title": "Critical Minerals",
@@ -13,7 +13,20 @@
           "source": "https://setneg.go.id/",
           "parent": null,
           "relation": "root",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
+        },
+        {
+          "id": "kemenkohilir",
+          "title": "Coordinating Ministry for Downstreaming & Energy Transition · Kemenko Hilirisasi dan Transisi Energi",
+          "person": "Bahlil Lahadalia",
+          "role": "Presidential interministerial coordination of mineral downstreaming, processing-industry investment execution and energy transition. ESDM, Industry and Investment Ministries retain their respective technical authorities; this office does not license mines or own MIND ID.",
+          "source": "https://www.setneg.go.id/baca/index/usai_dilantik_presiden_prabowo_menko_bahlil_fokus_percepat_hilirisasi_dan_transisi_energi",
+          "parent": "pres",
+          "relation": "coordination",
+          "verification": "State Secretariat official release, appointment 2026-10-01",
+          "lane": "government",
+          "note": "Bahlil concurrently holds the ESDM ministership; this is a distinct coordinating position, not a duplicate agency."
         },
         {
           "id": "bappenas",
@@ -23,7 +36,8 @@
           "source": "https://www.bappenas.go.id/struktur-organisasi",
           "parent": "pres",
           "relation": "planning",
-          "verification": "Official Bappenas organizational roster, accessed as of 2026-10-16"
+          "verification": "Official Bappenas organizational roster, accessed as of 2026-10-16",
+          "lane": "government"
         },
         {
           "id": "kemenkoekon",
@@ -33,7 +47,8 @@
           "source": "https://www.ekon.go.id/publikasi/detail/7150/dongkrak-pertumbuhan-ekonomi-menko-airlangga-perkuat-kinerja-ekspor",
           "parent": "pres",
           "relation": "coordination",
-          "verification": "Official Kemenko Perekonomian statement dated 2026-10-13"
+          "verification": "Official Kemenko Perekonomian statement dated 2026-10-13",
+          "lane": "government"
         },
         {
           "id": "minister",
@@ -43,7 +58,8 @@
           "source": "https://www.esdm.go.id/",
           "parent": "pres",
           "relation": "policy",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "dgminerba",
@@ -53,7 +69,8 @@
           "source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
           "parent": "minister",
           "relation": "reporting",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "geology",
@@ -63,7 +80,8 @@
           "source": "https://www.esdm.go.id/",
           "parent": "minister",
           "relation": "reporting",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "industrial",
@@ -73,7 +91,8 @@
           "source": "https://kemenperin.go.id/",
           "parent": "pres",
           "relation": "policy",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "industryunit",
@@ -83,7 +102,8 @@
           "source": "https://kemenperin.go.id/",
           "parent": "industrial",
           "relation": "reporting",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "investment",
@@ -93,7 +113,8 @@
           "source": "https://www.bkpm.go.id/",
           "parent": "pres",
           "relation": "policy",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "bpkmunit",
@@ -103,7 +124,8 @@
           "source": "https://www.bkpm.go.id/id/info/siaran-pers/menteri-investasi-dan-hilirisasi-kepala-bkpm-lantik-pejabat-tinggi-madya",
           "parent": "investment",
           "relation": "reporting",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "highered",
@@ -113,7 +135,8 @@
           "source": "https://kemdiktisaintek.go.id/",
           "parent": "pres",
           "relation": "policy",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "mineralindustry",
@@ -123,7 +146,8 @@
           "source": "https://timah.com/berita/post/hilirisasi-mineral-kritis-digenjot-pt-timah-dan-perminas-perkuat-sinergi-strategis.html",
           "parent": "highered",
           "relation": "coordination",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "bpbum",
@@ -133,7 +157,8 @@
           "source": "https://peraturan.go.id/",
           "parent": "pres",
           "relation": "oversight",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "bpi",
@@ -143,7 +168,8 @@
           "source": "https://www.danantaraindonesia.co.id/id",
           "parent": "pres",
           "relation": "portfolio",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "state"
         },
         {
           "id": "dam",
@@ -153,7 +179,8 @@
           "source": "https://www.danantaraindonesia.co.id/",
           "parent": "bpi",
           "relation": "portfolio",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "state"
         },
         {
           "id": "mind",
@@ -163,7 +190,8 @@
           "source": "https://mind.id/pages/board-of-director",
           "parent": "dam",
           "relation": "portfolio",
-          "verification": "official group listing"
+          "verification": "official group listing",
+          "lane": "state"
         },
         {
           "id": "antam",
@@ -174,7 +202,8 @@
           "parent": "mind",
           "relation": "equity",
           "verification": "issuer-reported 2026",
-          "stake": "65% (MIND ID issuer page)"
+          "stake": "65% (MIND ID issuer page)",
+          "lane": "state"
         },
         {
           "id": "ptba",
@@ -185,7 +214,8 @@
           "parent": "mind",
           "relation": "equity",
           "verification": "issuer-reported 2026",
-          "stake": "65.93% (MIND ID issuer page)"
+          "stake": "65.93% (MIND ID issuer page)",
+          "lane": "state"
         },
         {
           "id": "inalum",
@@ -196,7 +226,8 @@
           "parent": "mind",
           "relation": "equity",
           "verification": "issuer board roster",
-          "stake": "100%"
+          "stake": "100%",
+          "lane": "state"
         },
         {
           "id": "timah",
@@ -207,7 +238,8 @@
           "parent": "mind",
           "relation": "equity",
           "verification": "issuer board roster",
-          "stake": "65%"
+          "stake": "65%",
+          "lane": "state"
         },
         {
           "id": "freeport",
@@ -218,7 +250,8 @@
           "parent": "mind",
           "relation": "equity",
           "verification": "issuer board roster",
-          "stake": "51.2% reported (not a wholly owned unit)"
+          "stake": "51.2% reported (not a wholly owned unit)",
+          "lane": "state"
         },
         {
           "id": "vale",
@@ -229,7 +262,8 @@
           "parent": "mind",
           "relation": "minority",
           "verification": "issuer board roster",
-          "stake": "34% group participation; NOT a wholly owned subsidiary"
+          "stake": "34% group participation; NOT a wholly owned subsidiary",
+          "lane": "state"
         },
         {
           "id": "ibc",
@@ -239,7 +273,8 @@
           "source": "https://www.antam.com/id/news-and-events/antam-ibc-and-huayou-strengthen-national-integrated-battery-ecosystem-through-global-strategic-collaboration",
           "parent": "mind",
           "relation": "joint-venture",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "state"
         },
         {
           "id": "dsi",
@@ -249,7 +284,8 @@
           "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
           "parent": "bpi",
           "relation": "portfolio",
-          "verification": "officially announced August 2026"
+          "verification": "officially announced August 2026",
+          "lane": "state"
         },
         {
           "id": "perminas",
@@ -259,7 +295,8 @@
           "source": "https://timah.com/berita/post/hilirisasi-mineral-kritis-digenjot-pt-timah-dan-perminas-perkuat-sinergi-strategis.html",
           "parent": "bpi",
           "relation": "coordination",
-          "verification": "corporate collaboration, exact corporate share chain not established"
+          "verification": "corporate collaboration, exact corporate share chain not established",
+          "lane": "state"
         },
         {
           "id": "brin",
@@ -269,7 +306,8 @@
           "source": "https://brin.go.id/news/128046/brin-percepat-eksplorasi-dan-hilirisasi-ltj-untuk-industri-strategis-nasional",
           "parent": "pres",
           "relation": "research",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "brinmin",
@@ -279,7 +317,8 @@
           "source": "https://brin.go.id/press-release/129653/brin-dan-northeastern-university-kembangkan-laboratorium-bersama-untuk-riset-industri-mineral",
           "parent": "brin",
           "relation": "research",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "defense",
@@ -289,7 +328,8 @@
           "source": "https://www.kemhan.go.id/",
           "parent": "pres",
           "relation": "policy",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "defend",
@@ -297,9 +337,11 @@
           "person": null,
           "role": "Defence industrial group: relevant material-demand and supplier qualification, not mineral sector regulator.",
           "source": "https://defend.id/",
-          "parent": "defense",
+          "parent": null,
           "relation": "strategic-interface",
-          "verification": "functional demand-side interface, not ministerial subsidiary"
+          "verification": "functional demand-side interface, not ministerial subsidiary",
+          "lane": "state",
+          "note": "State-linked defence industrial entity; demand-side relationship with Defence Ministry, not ministerial reporting."
         },
         {
           "id": "pindad",
@@ -309,7 +351,8 @@
           "source": "https://pindad.com/",
           "parent": "defend",
           "relation": "strategic-interface",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "state"
         },
         {
           "id": "dpr",
@@ -317,9 +360,11 @@
           "person": null,
           "role": "Oversight, legislation and budget scrutiny; independent institution and not a ministry subordinate.",
           "source": "https://www.dpr.go.id/",
-          "parent": "pres",
+          "parent": null,
           "relation": "oversight",
-          "verification": "functionally shown at national level; no reporting relationship"
+          "verification": "functionally shown at national level; no reporting relationship",
+          "lane": "oversight",
+          "note": "Independent constitutional oversight; shown apart from the presidential executive chain."
         },
         {
           "id": "bpk",
@@ -327,9 +372,11 @@
           "person": null,
           "role": "Constitutional public financial audit, independent from executive command.",
           "source": "https://www.bpk.go.id/",
-          "parent": "pres",
+          "parent": null,
           "relation": "oversight",
-          "verification": "constitutional branch; schematic only"
+          "verification": "constitutional branch; schematic only",
+          "lane": "oversight",
+          "note": "Independent constitutional oversight; shown apart from the presidential executive chain."
         },
         {
           "id": "mindboard-dany",
@@ -339,7 +386,8 @@
           "source": "https://mind.id/pages/board-of-director",
           "parent": "mind",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "mindboard-wahyu",
@@ -349,7 +397,8 @@
           "source": "https://mind.id/pages/board-of-director",
           "parent": "mind",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "mindboard-kuswantoro",
@@ -359,7 +408,8 @@
           "source": "https://mind.id/pages/board-of-director",
           "parent": "mind",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "mindboard-firman",
@@ -369,7 +419,8 @@
           "source": "https://mind.id/pages/board-of-director",
           "parent": "mind",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "mindboard-ardianto",
@@ -379,7 +430,8 @@
           "source": "https://mind.id/pages/board-of-director",
           "parent": "mind",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "mindboard-pambudi",
@@ -389,7 +441,8 @@
           "source": "https://mind.id/pages/board-of-director",
           "parent": "mind",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "mindboard-budisantoso",
@@ -399,7 +452,8 @@
           "source": "https://mind.id/pages/board-of-director",
           "parent": "mind",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "mindboard-suko",
@@ -409,7 +463,8 @@
           "source": "https://mind.id/pages/board-of-director",
           "parent": "mind",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "dsiboard-sinthya",
@@ -419,7 +474,8 @@
           "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
           "parent": "dsi",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "dsiboard-nur",
@@ -429,7 +485,8 @@
           "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
           "parent": "dsi",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "dsiboard-ivan",
@@ -439,7 +496,8 @@
           "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
           "parent": "dsi",
           "relation": "management",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "bai",
@@ -449,7 +507,8 @@
           "source": "https://mind.id/pages/members",
           "parent": "mind",
           "relation": "joint-venture",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "catib",
@@ -459,7 +518,8 @@
           "source": "https://mind.id/en/news/battery-manufacture-selesai-diinstalasi-wujudkan-ekosistem-baterai-terintegrasi-di-indonesia",
           "parent": "ibc",
           "relation": "joint-venture",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "state"
         },
         {
           "id": "brin-widi",
@@ -469,7 +529,8 @@
           "source": "https://brin.go.id/ornm/posts/kabar/dua-peneliti-brin-jajaki-kolaborasi-riset-mineral-kritis-1",
           "parent": "brinmin",
           "relation": "research",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "government"
         },
         {
           "id": "brin-hendra",
@@ -479,7 +540,8 @@
           "source": "https://brin.go.id/ornm/posts/kabar/dua-peneliti-brin-jajaki-kolaborasi-riset-mineral-kritis-1",
           "parent": "brinmin",
           "relation": "research",
-          "verification": "named official/issuer board as at 2026-10-15"
+          "verification": "named official/issuer board as at 2026-10-15",
+          "lane": "government"
         }
       ],
       "market": [
@@ -492,7 +554,10 @@
           "parent": null,
           "relation": "market",
           "verification": "counterparty cited; verify facility-specific shareholding",
-          "affiliation": "Indonesia/foreign JV cluster"
+          "affiliation": "Indonesia/foreign JV cluster",
+          "ownership_category": "joint",
+          "lane": "private",
+          "ownership_caveat": "Indonesian and foreign participation; verify site-level JV ownership."
         },
         {
           "id": "weda",
@@ -503,7 +568,10 @@
           "parent": null,
           "relation": "market",
           "verification": "counterparty cited; verify facility-specific shareholding",
-          "affiliation": "France/China/Indonesia JV"
+          "affiliation": "France/China/Indonesia JV",
+          "ownership_category": "joint",
+          "lane": "private",
+          "ownership_caveat": "Indonesian and foreign participation; verify site-level JV ownership."
         },
         {
           "id": "valeintl",
@@ -514,7 +582,10 @@
           "parent": null,
           "relation": "market",
           "verification": "counterparty cited; verify facility-specific shareholding",
-          "affiliation": "Canada/Brazil-linked"
+          "affiliation": "Canada/Brazil-linked",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "fcx",
@@ -525,7 +596,10 @@
           "parent": null,
           "relation": "market",
           "verification": "counterparty cited; verify facility-specific shareholding",
-          "affiliation": "United States"
+          "affiliation": "United States",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "mbma",
@@ -536,7 +610,10 @@
           "parent": null,
           "relation": "market",
           "verification": "counterparty cited; verify facility-specific shareholding",
-          "affiliation": "Indonesia listed/private"
+          "affiliation": "Indonesia listed/private",
+          "ownership_category": "domestic",
+          "lane": "private",
+          "ownership_caveat": "Indonesian-headquartered private/listed business; joint ventures may exist at individual asset level."
         },
         {
           "id": "harita",
@@ -547,7 +624,10 @@
           "parent": null,
           "relation": "market",
           "verification": "counterparty cited; verify facility-specific shareholding",
-          "affiliation": "Indonesia private/JVs"
+          "affiliation": "Indonesia private/JVs",
+          "ownership_category": "domestic",
+          "lane": "private",
+          "ownership_caveat": "Indonesian-headquartered private/listed business; joint ventures may exist at individual asset level."
         },
         {
           "id": "amnt",
@@ -558,7 +638,10 @@
           "parent": null,
           "relation": "market",
           "verification": "counterparty cited; verify facility-specific shareholding",
-          "affiliation": "Indonesia private/listed"
+          "affiliation": "Indonesia private/listed",
+          "ownership_category": "domestic",
+          "lane": "private",
+          "ownership_caveat": "Indonesian-headquartered private/listed business; joint ventures may exist at individual asset level."
         },
         {
           "id": "cbl",
@@ -569,7 +652,10 @@
           "parent": null,
           "relation": "market",
           "verification": "counterparty cited; verify facility-specific shareholding",
-          "affiliation": "China"
+          "affiliation": "China",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "huayou",
@@ -580,7 +666,10 @@
           "parent": null,
           "relation": "market",
           "verification": "counterparty cited; verify facility-specific shareholding",
-          "affiliation": "China"
+          "affiliation": "China",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "tsingshan",
@@ -591,10 +680,14 @@
           "parent": null,
           "relation": "market",
           "verification": "counterparty cited; verify facility-specific shareholding",
-          "affiliation": "China"
+          "affiliation": "China",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         }
       ],
       "notes": [
+        "Sector actors are organized by Government (ministerial and research bodies), Danantara & SOEs (corporate portfolio with verified equity caveats), Private Domestic, Private Foreign and Mixed JV; parliament and audit are separately independent.",
         "Hierarchy is an analytical flow: President → ministry → directorate and President → Danantara → state portfolio companies. DPR/BPK and BRIN are independent functional counterparts.",
         "Danantara Sumberdaya Indonesia (DSI) is a sibling export-governance arm in Danantara ecosystem, not MIND ID's parent.",
         "PT Vale's MIND ID 34% interest is not complete control. Share figures source dated and not auto-updated to current securities register.",
@@ -612,7 +705,20 @@
           "source": "https://setneg.go.id/",
           "parent": null,
           "relation": "root",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
+        },
+        {
+          "id": "kemenkohilir",
+          "title": "Coordinating Ministry for Downstreaming & Energy Transition · Kemenko Hilirisasi dan Transisi Energi",
+          "person": "Bahlil Lahadalia",
+          "role": "Cross-ministry coordination of clean energy transition, infrastructure and downstream industrial capacity relevant to AI/data-center electricity supply and equipment value chains. Komdigi retains digital and AI regulatory authority.",
+          "source": "https://www.setneg.go.id/baca/index/usai_dilantik_presiden_prabowo_menko_bahlil_fokus_percepat_hilirisasi_dan_transisi_energi",
+          "parent": "pres",
+          "relation": "coordination",
+          "verification": "State Secretariat official release, appointment 2026-10-01",
+          "lane": "government",
+          "note": "Bahlil concurrently holds the ESDM ministership; this is a distinct coordinating position, not a duplicate agency."
         },
         {
           "id": "bappenas",
@@ -622,7 +728,8 @@
           "source": "https://www.bappenas.go.id/struktur-organisasi",
           "parent": "pres",
           "relation": "planning",
-          "verification": "Official Bappenas organizational roster, accessed as of 2026-10-16"
+          "verification": "Official Bappenas organizational roster, accessed as of 2026-10-16",
+          "lane": "government"
         },
         {
           "id": "kemenkoekon",
@@ -632,7 +739,8 @@
           "source": "https://www.ekon.go.id/publikasi/detail/7150/dongkrak-pertumbuhan-ekonomi-menko-airlangga-perkuat-kinerja-ekspor",
           "parent": "pres",
           "relation": "coordination",
-          "verification": "Official Kemenko Perekonomian statement dated 2026-10-13"
+          "verification": "Official Kemenko Perekonomian statement dated 2026-10-13",
+          "lane": "government"
         },
         {
           "id": "komdigi",
@@ -642,7 +750,8 @@
           "source": "https://komdigi.go.id/",
           "parent": "pres",
           "relation": "policy",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "dgE",
@@ -652,7 +761,8 @@
           "source": "https://www.komdigi.go.id/",
           "parent": "komdigi",
           "relation": "reporting",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "dirAI",
@@ -662,7 +772,8 @@
           "source": "https://komdigi.go.id/",
           "parent": "dgE",
           "relation": "reporting",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "dgI",
@@ -672,7 +783,8 @@
           "source": "https://infradigital.komdigi.go.id/artikel-daftar-pejabat-1-4",
           "parent": "komdigi",
           "relation": "reporting",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "dirNet",
@@ -682,7 +794,8 @@
           "source": "https://infradigital.komdigi.go.id/artikel-daftar-pejabat-1-4",
           "parent": "dgI",
           "relation": "reporting",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "esdm",
@@ -692,7 +805,8 @@
           "source": "https://www.esdm.go.id/",
           "parent": "pres",
           "relation": "policy",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "pln",
@@ -702,7 +816,8 @@
           "source": "https://www.antaranews.com/berita/5786793/direktur-utama-pln-diganti-jadi-suroso-isnandar",
           "parent": "dam",
           "relation": "portfolio",
-          "verification": "source-dated 2026-10-14"
+          "verification": "source-dated 2026-10-14",
+          "lane": "state"
         },
         {
           "id": "bkpm",
@@ -712,7 +827,8 @@
           "source": "https://www.bkpm.go.id/",
           "parent": "pres",
           "relation": "policy",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "bssn",
@@ -722,7 +838,8 @@
           "source": "https://bssn.go.id/",
           "parent": "pres",
           "relation": "security",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "bpi",
@@ -732,7 +849,8 @@
           "source": "https://www.danantaraindonesia.co.id/",
           "parent": "pres",
           "relation": "portfolio",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "state"
         },
         {
           "id": "dam",
@@ -742,7 +860,8 @@
           "source": "https://www.danantaraindonesia.co.id/",
           "parent": "bpi",
           "relation": "portfolio",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "state"
         },
         {
           "id": "telkom",
@@ -752,7 +871,8 @@
           "source": "https://www.telkom.co.id/",
           "parent": "dam",
           "relation": "portfolio",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "state"
         },
         {
           "id": "neutra",
@@ -762,7 +882,8 @@
           "source": "https://www.telkom.co.id/sites/berita/id_ID/news/sinergi-danantara-neutradc-gandeng-pln-siapkan-ekspansi-hyperscale-data-center-3881",
           "parent": "telkom",
           "relation": "equity",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "state"
         },
         {
           "id": "telin",
@@ -772,7 +893,8 @@
           "source": "https://www.telkom.co.id/",
           "parent": "telkom",
           "relation": "equity",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "state"
         },
         {
           "id": "brin",
@@ -782,7 +904,8 @@
           "source": "https://brin.go.id/",
           "parent": "pres",
           "relation": "research",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "universities",
@@ -792,7 +915,8 @@
           "source": "https://www.ugm.ac.id/",
           "parent": "brin",
           "relation": "research",
-          "verification": "association, NOT institutional subordination"
+          "verification": "association, NOT institutional subordination",
+          "lane": "government"
         },
         {
           "id": "defense",
@@ -802,7 +926,8 @@
           "source": "https://www.kemhan.go.id/",
           "parent": "pres",
           "relation": "policy",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "government"
         },
         {
           "id": "len",
@@ -810,9 +935,11 @@
           "person": null,
           "role": "Defence and high-assurance digital solutions potential offtaker, not civilian AI regulator.",
           "source": "https://defend.id/",
-          "parent": "defense",
+          "parent": null,
           "relation": "strategic-interface",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "state",
+          "note": "State-linked defence industrial entity; demand-side relationship with Defence Ministry, not ministerial reporting."
         },
         {
           "id": "dpr",
@@ -820,9 +947,25 @@
           "person": null,
           "role": "Parliamentary scrutiny of sector laws and public infrastructure.",
           "source": "https://www.dpr.go.id/",
-          "parent": "pres",
+          "parent": null,
           "relation": "oversight",
-          "verification": "source-dated"
+          "verification": "source-dated",
+          "lane": "oversight",
+          "note": "Independent constitutional oversight; shown apart from the presidential executive chain."
+        },
+        {
+          "id": "daya",
+          "title": "PT Dayamitra Telekomunikasi Tbk · Mitratel",
+          "person": null,
+          "role": "Publicly listed Telkom Group telecommunications tower and digital-infrastructure company; not a purely private independent cloud operator.",
+          "source": "https://www.mitratel.co.id/",
+          "parent": "telkom",
+          "relation": "equity",
+          "verification": "operator source or corporate website",
+          "affiliation": "Indonesia/Telkom Group-linked",
+          "ownership_category": "state",
+          "lane": "state",
+          "ownership_caveat": "State-linked listed enterprise."
         }
       ],
       "market": [
@@ -835,7 +978,10 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "Indonesia"
+          "affiliation": "Indonesia",
+          "ownership_category": "domestic",
+          "lane": "private",
+          "ownership_caveat": "Indonesian-headquartered private/listed business; joint ventures may exist at individual asset level."
         },
         {
           "id": "edge",
@@ -846,7 +992,10 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "Singapore / regional"
+          "affiliation": "Singapore / regional",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "pdg",
@@ -857,7 +1006,10 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "Singapore / regional"
+          "affiliation": "Singapore / regional",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "microsoft",
@@ -868,7 +1020,10 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "United States"
+          "affiliation": "United States",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "aws",
@@ -879,7 +1034,10 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "United States"
+          "affiliation": "United States",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "google",
@@ -890,7 +1048,10 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "United States"
+          "affiliation": "United States",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "alibaba",
@@ -901,7 +1062,10 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "China"
+          "affiliation": "China",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "equinix",
@@ -912,7 +1076,10 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "United States/Indonesia JV"
+          "affiliation": "United States/Indonesia JV",
+          "ownership_category": "joint",
+          "lane": "private",
+          "ownership_caveat": "Indonesian and foreign participation; verify site-level JV ownership."
         },
         {
           "id": "indosat",
@@ -923,7 +1090,10 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "Indonesia/Qatar-linked"
+          "affiliation": "Indonesia/Qatar-linked",
+          "ownership_category": "joint",
+          "lane": "private",
+          "ownership_caveat": "Indonesian and foreign participation; verify site-level JV ownership."
         },
         {
           "id": "nvidia",
@@ -934,7 +1104,10 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "United States"
+          "affiliation": "United States",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         },
         {
           "id": "bdx",
@@ -945,21 +1118,14 @@
           "parent": null,
           "relation": "market",
           "verification": "operator source or corporate website",
-          "affiliation": "Regional"
-        },
-        {
-          "id": "daya",
-          "title": "PT Dayamitra Telekomunikasi · Mitratel",
-          "person": null,
-          "role": "Listed telecom infrastructure; fiber/tower network interface, not automatically an AI data-center operator.",
-          "source": "https://www.mitratel.co.id/",
-          "parent": null,
-          "relation": "market",
-          "verification": "operator source or corporate website",
-          "affiliation": "Indonesia/Telkom Group-linked"
+          "affiliation": "Regional",
+          "ownership_category": "foreign",
+          "lane": "private",
+          "ownership_caveat": "Foreign-headquartered corporate group; Indonesian subsidiary may be locally incorporated."
         }
       ],
       "notes": [
+        "Sector actors are organized by Government (ministerial and research bodies), Danantara & SOEs (corporate portfolio with verified equity caveats), Private Domestic, Private Foreign and Mixed JV; parliament and audit are separately independent.",
         "Dirjen Ekosistem Digital and Dirjen Infrastruktur Digital report through Komdigi, below ministerial tier.",
         "Danantara → state-linked Telkom group company structure is a portfolio relationship; PLN remains a separate SOE with its own corporate governance.",
         "Foreign operators and hyperscalers are independent private investors, not subordinate state entities.",
