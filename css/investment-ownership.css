@@ -19,3 +19,8 @@
 .inv-owner-refs a{font-size:11px}
 @media(max-width:1000px){.inv-ownership-list{grid-template-columns:1fr}}
 @media(max-width:650px){.inv-owner-head{padding:12px}.inv-owner-content{padding:0 12px 12px}}
+
+.inv-owner-related{margin:14px 0 13px;padding:13px;background:#0c2639;border:1px solid #42647c;border-radius:8px;display:flex;flex-direction:column;gap:8px}
+.inv-owner-related strong{font-size:11px;color:#ead4a8}
+.inv-owner-related a{font-size:12px;overflow-wrap:anywhere}
+#inv-pipeline tr:target{outline:2px solid #d7b678;outline-offset:-2px;background:#203c53}
