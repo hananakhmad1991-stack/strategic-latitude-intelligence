@@ -305,7 +305,8 @@ window.renderSLIStakeholderMap=function(root,data){
   inspector.append($("h4",null,"Decision authority"),$("p",null,a.authority||"Institutional scope; actual mandate must be verified."));
   inspector.append($("div","stake-date","Source reference: "+(a.verified||"undated")+
       " · "+(a.evidence_status||a.verification_status||"Monitor appointment status")));
-  if(a.source)inspector.append(panelLink(a.source,"Open dated institutional source ↗"));
+  if(a.source)inspector.append(panelLink(a.source,"Official appointment / institutional source ↗"));
+  if(a.latest_source&&a.latest_source!==a.source)inspector.append(panelLink(a.latest_source,"Later official leadership confirmation ↗"));
   const references=(a.connections||[]).filter(v=>find(v));
   if(references.length){
    inspector.append($("h4",null,"Related stakeholders"));
