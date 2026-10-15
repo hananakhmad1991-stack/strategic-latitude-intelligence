@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": null,
+  "status": "awaiting_first_scan",
+  "market_data_notice": "Indicative public futures can be delayed; IMF/FRED reference values are monthly averages. Neither is a licensed real-time LME feed.",
+  "license_notice": "Verify third-party rights before commercial distribution.",
+  "cadence": "GitHub every 30 minutes, browser refreshes every three minutes",
+  "quotes": [],
+  "errors": {},
+  "fallback_ids": [],
+  "official_indonesia_reference": [
+    {
+      "id": "hba",
+      "title": "Indonesia HBA · coal benchmark",
+      "period": "ESDM decree",
+      "value": null,
+      "url": "https://jdih.esdm.go.id/",
+      "note": "Not an Australian coal benchmark."
+    },
+    {
+      "id": "hma",
+      "title": "Indonesia HMA · metals",
+      "period": "ESDM decree",
+      "value": null,
+      "url": "https://jdih.esdm.go.id/",
+      "note": "Verify commodity/period in official decree."
+    },
+    {
+      "id": "icp",
+      "title": "Indonesia ICP · crude",
+      "period": "ESDM monthly decree",
+      "value": null,
+      "url": "https://www.esdm.go.id/id/media-center/arsip-berita",
+      "note": "Not a Brent futures quote."
+    }
+  ]
+}
