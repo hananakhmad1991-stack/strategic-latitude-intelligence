@@ -236,7 +236,12 @@ if(which==="ai"){
  for(const item of items){if(!/^https:\/\//.test(item.url||""))continue;const card=E("article","sli-research-card");card.append(E("h4",null,item.topic||"Technology"),link(item.url,item.title),E("p",null,(item.publisher||"Publisher unavailable")+" · "+(item.published_at_utc||"No observation date").slice(0,10)),E("small","sli-research-caveat","Monitoring lead only · verify original publication"));list.append(card)}
  }).catch(()=>{status.textContent="AI monitoring snapshot unavailable; no headlines inferred.";});
 }
-const note=E("p","sli-research-footer","Source ownership: this chapter contains its own primary evidence; referenced trade, project, energy or regulatory datasets remain in their specialist dashboards. Method: figures retain their original reference year and unit. Announcements ≠ commitments ≠ construction ≠ commissioned assets. Missing or unpublished data are not zero. Industry and policy scenarios are editorial analysis, not measured probabilities.");root.append(note);makeEnergyStructure(which,root);}
+const note=E("p","sli-research-footer","Source ownership: this chapter contains its own primary evidence; referenced trade, project, energy or regulatory datasets remain in their specialist dashboards. Method: figures retain their original reference year and unit. Announcements ≠ commitments ≠ construction ≠ commissioned assets. Missing or unpublished data are not zero. Industry and policy scenarios are editorial analysis, not measured probabilities.");root.append(note);makeEnergyStructure(which,root);
+ if(which==="policy"&&typeof window.initSLISourceBridge==="function"){
+  const policyEvidence=E("div","sli-policy-source-brief");root.append(policyEvidence);
+  window.initSLISourceBridge("policy",policyEvidence);
+ }
+}
 
 function makeEnergyStructure(which,root){
  if(!["minerals","ai"].includes(which))return;
