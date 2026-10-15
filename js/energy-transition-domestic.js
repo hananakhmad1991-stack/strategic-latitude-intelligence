@@ -96,6 +96,9 @@ function buildDomestic(root,d){
  h(root,"Indonesia Domestic Energy & Environmental Intelligence","RSS-based source discovery · scheduled every 3 hours");
  warning(root,"Latest reports are attributed news leads, not independently verified outage, scarcity, wildfire or commissioned-project claims. Automated impact notes are conditional analysis and need original-source confirmation.");
  const status=dom("div","Waiting for first domestic monitoring scan","tr-status");root.append(status);
+ const sectors=window.SLIEnergyNews;
+ const sectorContainer=dom("div",null,"tr-sector-container");root.append(sectorContainer);
+ let selectedSector="all";
  const controls=dom("div",null,"tr-controls");const cat=dom("select",null,"tr-select");const all=dom("option","All categories");all.value="all";cat.append(all);
  const search=dom("input",null,"tr-select");search.type="search";search.placeholder="Search location, PLN, BBM, regulation…";
  const label=(txt,x)=>{const l=dom("label",txt);l.append(x);controls.append(l)};
@@ -108,15 +111,22 @@ function buildDomestic(root,d){
  ];
  examples.forEach(x=>{const e=panel(root);e.append(dom("div",x.date+" · "+x.cat,"eyebrow"),dom("h3",x.title),dom("p",x.text),dom("p","Indonesia energy relevance: "+x.impact),a(x.href,"Original official source ↗"))});
  const controlsState={reports:[]};
+ const lang=()=>window.SLIi18n?.language==="id"?"id":"en";
+ const T=(en,id)=>lang()==="id"?id:en;
  function draw(){
  listing.replaceChildren();
  const q=search.value.toLowerCase().trim();
- const xs=controlsState.reports.filter(x=>(cat.value==="all"||x.category===cat.value)&&(!q||[x.title,x.publisher,x.category].join(" ").toLowerCase().includes(q)));
- if(!xs.length){listing.append(dom("p",controlsState.reports.length?"No reports match this filter.":"No attributed reports available from the latest scan.","tr-detail"));return}
+ const xs=controlsState.reports.filter(x=>((!sectors||sectors.matches(x,selectedSector,"domestic"))&&(cat.value==="all"||x.category===cat.value))&&(!q||[x.title,x.publisher,x.category,x.topic_id,x.sector].join(" ").toLowerCase().includes(q)));
+ if(!xs.length){listing.append(dom("p",controlsState.reports.length?
+  T("No attributed news leads match this sector, topic and search in the dated saved scan. This does not imply no sector developments.","Tidak ada headline teratribusi yang cocok dengan sektor, topik, dan pencarian pada pemindaian tersimpan. Ini bukan berarti tidak ada perkembangan di sektor tersebut."):
+  T("No attributed reports available from the latest scan.","Belum ada berita bersumber dalam pemindaian terakhir."),"tr-detail"));return}
  xs.forEach(x=>{
   const e=dom("article",null,"tr-news-card");
   const date=new Date(x.published_at_utc);
-  e.append(dom("div",x.category+" · "+x.publisher,"eyebrow"),a(x.url,x.title),dom("div",isNaN(date.getTime())?"Date unverified":date.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB","tr-detail"));
+  const banner=dom("div",null,"tr-sector-head");
+  banner.append(dom("span",x.category+" · "+x.publisher,"eyebrow"));
+  if(sectors)banner.append(sectors.badges(x,"domestic"));
+  e.append(banner,a(x.url,x.title),dom("div",isNaN(date.getTime())?"Date unverified":date.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB","tr-detail"));
   e.append(dom("p","Possible energy impact: "+x.analysis),dom("p","Verify: "+x.evidence_to_check,"tr-detail"),dom("p","Status: "+x.claim_status,"tr-detail"));
   listing.append(e);
  });
@@ -126,7 +136,8 @@ function buildDomestic(root,d){
   const res=await fetch("data/domestic-energy.json",{cache:"no-store"});if(!res.ok)throw Error("not published");
   const data=await res.json();if(!Array.isArray(data.reports))throw Error("bad schema");
   controlsState.reports=data.reports;
-  const t=new Date(data.checked_at_utc),age=(Date.now()-t.getTime())/36e5;status.textContent="Latest saved scan: "+t.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB"+(age>6?" · Older than monitoring target":"")+" · "+data.reports.length+" attributed reports";
+  if(sectors){sectors.makeControls(sectorContainer,data.reports,"domestic",v=>{selectedSector=v;cat.value="all";draw()})}
+  const t=new Date(data.checked_at_utc),age=(Date.now()-t.getTime())/36e5;status.textContent=T("Latest saved scan: ","Pemindaian tersimpan: ")+(isNaN(t.getTime())?T("date unknown","tanggal tidak tersedia"):t.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+(age>6?T(" · Old feed; check timestamp"," · Data lama; periksa tanggal"):"")+" · "+data.reports.length+T(" attributed leads"," headline teratribusi");
   [...new Set(data.reports.map(x=>x.category))].sort().forEach(v=>{const o=dom("option",v);o.value=v;cat.append(o)});
   draw();
  }catch(err){status.textContent="Awaiting the first published domestic news dataset";listing.append(dom("p","The scheduled watcher has not yet produced a verified source feed. Dated official editorial notes remain visible below.","tr-detail"))}
