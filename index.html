@@ -143,28 +143,31 @@ async function showEnergyQuotes(){
 }
 async function initGeoRadar(){
  const root=document.getElementById("geoEvents"),status=document.getElementById("geoFreshness"),sel=document.getElementById("geoTopic"),search=document.getElementById("geoSearch"),sectors=window.SLIEnergyNews,sectorRoot=document.getElementById("geoSectorFilters");if(!root)return;
+ const T=(en,id)=>window.SLIi18n?.language==="id"?id:en;
+ root.setAttribute("data-sli-no-translate","");if(sectorRoot)sectorRoot.setAttribute("data-sli-no-translate","");
  let selectedSector="all";
  try{
   const response=await fetch("data/geopolitical-energy.json?cache="+Date.now(),{cache:"no-store"});if(!response.ok)throw Error("no data");
   const data=await response.json();
   const checked=new Date(data.checked_at_utc);
   const age=(Date.now()-checked.getTime())/3600000;
-  status.textContent="News scan: "+(isNaN(checked.getTime())?"date unavailable":checked.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+(age>6?" · Delayed feed":"");
+  status.textContent=T("News scan: ","Pemindaian berita: ")+(isNaN(checked.getTime())?T("date unavailable","tanggal tidak tersedia"):checked.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+(age>6?T(" · Delayed feed"," · Umpan terlambat"):"");
   const entries=Array.isArray(data.events)?data.events:[];
+  sel.length=1;sel.value="all";
   const topics=[...new Set(entries.map(x=>x.topic).filter(Boolean))];
   topics.forEach(x=>{const opt=document.createElement("option");opt.value=x;opt.textContent=x;sel.appendChild(opt)});
   const draw=()=>{
    root.replaceChildren();
    const q=search.value.toLowerCase().trim();
    const filtered=entries.filter(e=>(!sectors||sectors.matches(e,selectedSector,"geopolitical"))&&(sel.value==="all"||e.topic===sel.value)&&(!q||[e.title,e.publisher,e.topic,e.sector].join(" ").toLowerCase().includes(q)));
-   if(!filtered.length){const note=document.createElement("p");note.textContent=entries.length?"No attributed leads for the selected sector/theme in this dated scan. Zero saved leads does not mean zero geopolitical developments.":"No qualifying news leads in the latest saved scan.";root.append(note);return}
+   if(!filtered.length){const note=document.createElement("p");note.textContent=entries.length?T("No attributed leads for the selected sector/theme in this dated scan. Zero saved leads does not mean zero geopolitical developments.","Tidak ada berita teratribusi untuk sektor/tema terpilih pada data tersimpan ini. Angka nol bukan bukti tidak ada perkembangan geopolitik."):T("No qualifying news leads in the latest saved scan.","Belum ada berita yang memenuhi kriteria pada pemindaian tersimpan terakhir.");root.append(note);return}
    filtered.forEach(e=>{
     const card=document.createElement("article");card.style.cssText="padding:15px;border:1px solid #35506a;border-radius:10px;background:#10283d";
     const kicker=document.createElement("div");kicker.className="eyebrow";kicker.textContent=(e.topic||"Energy") + " · "+(e.publisher||"source");
     if(sectors)kicker.append(sectors.badges(e,"geopolitical"));
     const title=document.createElement("a");title.href=e.url;title.target="_blank";title.rel="noopener noreferrer";title.textContent=e.title||"Untitled report";title.style.cssText="display:block;font-size:15px;font-weight:700;margin:8px 0";
-    const index=document.createElement("div");index.style.cssText="font-size:11px;color:#a7c4d9";const when=new Date(e.indexed_at_utc);index.textContent="Indexed: "+(isNaN(when.getTime())?"unknown":when.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+" · Unverified news lead";
-    const pathway=document.createElement("p");pathway.style.cssText="font-size:12px;margin:9px 0 0";pathway.textContent="Potential Indonesia impact: "+(e.impact_pathway||"Under review");
+    const index=document.createElement("div");index.style.cssText="font-size:11px;color:#a7c4d9";const when=new Date(e.indexed_at_utc);index.textContent=T("Indexed: ","Diindeks: ")+(isNaN(when.getTime())?T("unknown","tidak diketahui"):when.toLocaleString("en-GB",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB")+T(" · Unverified news lead"," · Berita belum diverifikasi");
+    const pathway=document.createElement("p");pathway.style.cssText="font-size:12px;margin:9px 0 0";pathway.textContent=T("Potential Indonesia impact: ","Potensi dampak bagi Indonesia: ")+(e.impact_pathway||T("Under review","Perlu kajian"));
     card.append(kicker,title,index,pathway);root.append(card);
    });
   };
@@ -172,6 +175,7 @@ async function initGeoRadar(){
   sel.addEventListener("change",draw);search.addEventListener("input",draw);draw();
  }catch(e){status.textContent="Automated news feed not yet available";root.textContent="The scheduled news-discovery workflow has not published a dataset. Historical editorial events remain below."}
 }
+document.addEventListener("sli:languagechange",()=>{if(document.getElementById("geoEvents"))initGeoRadar()});
 function show(page){if(!pages[page])page='overview';document.getElementById('pageTitle').textContent=pages[page][0];document.getElementById('pageDescription').textContent=pages[page][1];document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));document.getElementById('content').innerHTML=page==='overview'?overview():page==='methodology'?method():page==='energy'?energyMonitor():tracker(page);if(page==='energy'){if(typeof initSLIInfrastructure==='function')initSLIInfrastructure();if(typeof initSLIBiofuels==='function')initSLIBiofuels();if(typeof initSLIEV==='function')initSLIEV();if(typeof initEnergyEvents==='function')initEnergyEvents();if(typeof initEnergyGovernance==='function')initEnergyGovernance();if(typeof initSLIOilGasStakeholders==='function')initSLIOilGasStakeholders();if(typeof initSLICoalStakeholders==='function')initSLICoalStakeholders();initEnergyViz();showEnergyQuotes();initGeoRadar();if(typeof initEnergyFundamentals==='function')initEnergyFundamentals();if(typeof initFiscalPrices==='function')initFiscalPrices();if(typeof initSLITransition==='function')initSLITransition();if(typeof initDailyEnergyAssessment==='function')initDailyEnergyAssessment();if(typeof initSLIEnergyAppendix==='function')initSLIEnergyAppendix();}document.querySelectorAll('[data-link]').forEach(x=>{x.onclick=()=>show(x.dataset.link);x.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(x.dataset.link)}}});}
 document.querySelectorAll('#nav button').forEach(x=>x.addEventListener('click',()=>show(x.dataset.page)));document.getElementById('year').textContent=new Date().getFullYear();show('overview');
 </script></body></html>
