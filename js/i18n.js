@@ -8,15 +8,19 @@ const labels=window.SLI_TRANSLATIONS_ID instanceof Map?window.SLI_TRANSLATIONS_I
 const exclusions="script,style,pre,code,textarea,option[data-original],[data-sli-no-translate],.bio-news .bio-source,.bio-news a,.oa-daily-headline a,.events-card h3,.gov-lead a,#geoEvents article a,svg";
 const glossary={
  en:[
-  [/\bDitjen\s+EBTKE\b/gi,"Directorate General of NREEC"],
-  [/\bDirjen\s+EBTKE\b/gi,"Director General of NREEC"],
-  [/\bESDM\s+EBTKE\b/g,"MEMR NREEC"],
+  [/\bNew\s*&\s*Renewable Energy\s*\(EBT\/NRE\)/gi,"New and Renewable Energy (NRE)"],
+  [/\bDitjen\s+EBTKE\b/gi,"Directorate General of New, Renewable Energy and Energy Conservation (NREEC)"],
+  [/\bDirjen\s+EBTKE\b/gi,"Director-General for New, Renewable Energy and Energy Conservation"],
+  [/\bESDM\s+EBTKE\b/g,"MEMR / NREEC"],
+  [/\bEBTKE HIP biodiesel\b/gi,"NREEC biodiesel reference price"],
+  [/\bEBTKE HIP bioethanol\b/gi,"NREEC bioethanol reference price"],
   [/\bEBTKE\b/g,"NRE/EC"],
   [/\bEBT\b/g,"NRE"],
   [/\bDitjen\s+Migas\b/g,"Directorate General of Oil and Gas"],
   [/\bMigas\b/g,"Oil & Gas"],
   [/\bJargas\b/g,"household gas networks"],
   [/\bESDM\b/g,"MEMR"],
+  [/\bNRE\/NRE\b/g,"NRE"],
   [/\bBBM\b/g,"petroleum fuels"]
  ],
  id:[
