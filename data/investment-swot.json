@@ -1,0 +1,144 @@
+{
+  "as_of": "2026-10-15",
+  "headline": "Indonesia Investment Sector SWOT — evidence-linked research baseline",
+  "methodology": "Four qualitative lenses per sector based on source-dated SLI asset registry; updated numeric asset stage counts and curated RSS headline context are generated dynamically when the page opens. SWOT statements are editorial hypotheses, NOT automatically revalidated claims whenever news arrives.",
+  "refresh_rule": "Regenerate asset-state counts automatically from data/investment-operator-assets.json; attach filtered dated investment-news.json headlines after each six-hour published scan. Any material SWOT text change needs primary-document review, not title-only automatic rewriting.",
+  "sectors": [
+    {
+      "sector": "Oil & Gas",
+      "strength": "Existing producing PSCs (Rokan, Mahakam, Cepu) provide verifiable production bases and operating expertise.",
+      "weakness": "Long project lead times, field declines and dependence on PSC approvals complicate committed-to-realized CAPEX conversion.",
+      "opportunity": "Masela LNG/CCS, Tangguh UCC and enhanced recovery could anchor engineering, gas offtake and domestic industry.",
+      "threat": "Commodity/FX volatility, reservoir risk, approvals and local infrastructure can delay COD or reduce returns.",
+      "asset_ids": [
+        "wk-rokan",
+        "wk-mahakam",
+        "wk-masela"
+      ]
+    },
+    {
+      "sector": "Coal",
+      "strength": "Operating IUPK concessions and existing export logistics provide established production and cash-generating infrastructure.",
+      "weakness": "Reliance on coal cycles, reserve renewal, freight bottlenecks and uncertain long-term demand can narrow investment flexibility.",
+      "opportunity": "Logistics upgrades, methane mitigation, mine reclamation and documented coal-related downstream opportunities.",
+      "threat": "Carbon policies, financing constraints, DMO obligations and export-demand shifts change project economics.",
+      "asset_ids": [
+        "coal-adaro",
+        "coal-ptba"
+      ]
+    },
+    {
+      "sector": "Minerals",
+      "strength": "Nickel and copper assets, smelting infrastructure and mine-to-processing investment create industrial clusters.",
+      "weakness": "Upstream ownership, HPAL cap tables, grid/carbon footprints and project-level CAPEX reporting remain fragmented.",
+      "opportunity": "Domestic processing, battery materials and copper value-chain expansion offer downstream integration opportunities.",
+      "threat": "Price swings, environmental compliance, power costs and concentrated buyer demand threaten margins.",
+      "asset_ids": [
+        "min-vale",
+        "min-freeport",
+        "min-pomalaa"
+      ]
+    },
+    {
+      "sector": "Smelters & Processing",
+      "strength": "Operating copper plants and extensive nickel-processing development provide existing heavy-industrial capabilities.",
+      "weakness": "Portfolio announcements can hide stalled plants; utilization, input quality, environmental permitting and actual spend need verification.",
+      "opportunity": "Refining technology, recycling, critical-minerals component supply and cleaner grid contracts can raise domestic value capture.",
+      "threat": "Feedstock shortages, HPAL execution complexity, water/power constraints and trade remedies can reduce competitiveness.",
+      "asset_ids": [
+        "smelter-manyar",
+        "smelter-kni-hpal"
+      ]
+    },
+    {
+      "sector": "Biofuels & Bioenergy",
+      "strength": "National biodiesel mandate and operating supply chains support recurring domestic offtake demand.",
+      "weakness": "Government quotas and fiscal incentives are not verified individual-plant production; feedstock traceability is uneven.",
+      "opportunity": "SAF, waste-oil refining, biogas and non-palm advanced fuels diversify use of domestic biomass streams.",
+      "threat": "CPO price changes, food-land competition, engine compatibility and export sustainability rules affect investment viability.",
+      "asset_ids": [
+        "bio-b50-2026",
+        "bio-pertamina-saf"
+      ]
+    },
+    {
+      "sector": "Geothermal",
+      "strength": "Operating baseload plants and established concession/geoscience expertise support reliable power generation.",
+      "weakness": "Exploration wells require substantial upfront capital and subsurface resource risk before commissioning.",
+      "opportunity": "WKP additions, offtake agreements, climate finance and international EPC collaboration can accelerate new capacity.",
+      "threat": "Drilling delays, tariff negotiations, grid constraints and project finance costs can erode returns.",
+      "asset_ids": [
+        "ebt-pge-lumut3"
+      ]
+    },
+    {
+      "sector": "Solar PV",
+      "strength": "Cirata floating PV and IKN solar demonstrate large and new-market execution pathways.",
+      "weakness": "Intermittency, grid interconnection, domestic component costs and unclear final CAPEX can constrain deployment.",
+      "opportunity": "RUPTL 17.1 GW planned solar additions, rooftops, storage hybrids and industrial PPAs create a project pipeline.",
+      "threat": "Land/water competition, grid curtailment, imported components and tariff changes can delay FID.",
+      "asset_ids": [
+        "ebt-cirata",
+        "solar-ikn-50"
+      ]
+    },
+    {
+      "sector": "Hydropower & Storage",
+      "strength": "Operating Cirata and Poso facilities provide dispatchable capacity and hydrological operating experience.",
+      "weakness": "Ecological impacts, resettlement, permit complexity and long construction cycles complicate capital conversion.",
+      "opportunity": "Pumped storage supports flexibility for variable renewables; small hydro can serve regional networks.",
+      "threat": "Drought/flood impacts, geotechnical incidents, safeguard failures and construction inflation are critical risks.",
+      "asset_ids": [
+        "hydro-cirata-1008",
+        "storage-cisokan-1040",
+        "hydro-batangtoru-510"
+      ]
+    },
+    {
+      "sector": "Wind",
+      "strength": "Sidrap and Tolo establish precedent for utility-scale wind IPPs and PLN offtake.",
+      "weakness": "Wind resource concentration, land access and grid availability limit where new turbines can scale.",
+      "opportunity": "RUPTL 7.2 GW wind target provides potential new projects if PPAs, resource studies and transmission materialize.",
+      "threat": "Interest rates, turbine imports, permitting disputes and low utilization can weaken financial returns.",
+      "asset_ids": [
+        "wind-sidrap-75",
+        "wind-tolo-72"
+      ]
+    },
+    {
+      "sector": "Nuclear (New Energy)",
+      "strength": "A regulator-led staged licensing framework exists and PLN has conducted preliminary nuclear cooperation.",
+      "weakness": "No verified commercial PLTN operations; financing model, technology choice, safety case and local supply chain remain preliminary.",
+      "opportunity": "Proposed SMRs and the RUPTL 0.5 GW planning target invite feasibility, skills and institutional readiness investments.",
+      "threat": "Safety, waste stewardship, public acceptance, financing, site suitability and licensing risks can defer any investment.",
+      "asset_ids": [
+        "nuclear-thorcon-kelasa",
+        "nuclear-pln-khnp"
+      ]
+    },
+    {
+      "sector": "Electric Vehicles",
+      "strength": "Local EV assembly, battery-cell manufacturing and branded retail distribution are already documented.",
+      "weakness": "Import-heavy components and ambiguity between showroom presence and local production distort investment comparisons.",
+      "opportunity": "Battery localization, supplier ecosystems, fleets, charging and wider export markets may expand capital formation.",
+      "threat": "Demand volatility, subsidies, trade competition, charging reliability and technology obsolescence threaten uptake.",
+      "asset_ids": [
+        "ev-hyundai-cikarang",
+        "ev-hli-karawang",
+        "ev-byd-subang"
+      ]
+    },
+    {
+      "sector": "AI / Data Center",
+      "strength": "Operating international cloud regions and JV facilities validate Indonesian digital infrastructure demand.",
+      "weakness": "AI-ready capacity, grid availability, actual GPU supply, tenancy and hyperscaler capital outlays are rarely published consistently.",
+      "opportunity": "Regional cloud and data-center demand, connectivity, efficient cooling, compute access and Korea/ASEAN collaboration offer opportunities.",
+      "threat": "Power/water constraints, data governance, cybersecurity, FX equipment costs and long commissioning periods threaten schedules.",
+      "asset_ids": [
+        "dc-microsoft",
+        "dc-equinix",
+        "dc-edge"
+      ]
+    }
+  ]
+}
