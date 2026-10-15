@@ -1,0 +1,50 @@
+name: SLI Commodity Price Monitoring
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '7,37 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - scripts/commodity_market_prices.py
+      - tests/test_commodity_market_prices.py
+      - .github/workflows/commodity-market-prices.yml
+permissions:
+  contents: write
+concurrency:
+  group: sli-commodity-price-data
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test prices, units and truthful staleness
+        run: |
+          python -m py_compile scripts/commodity_market_prices.py
+          python tests/test_commodity_market_prices.py
+      - name: Fetch current indicative and historical observations
+        run: python scripts/commodity_market_prices.py
+      - name: Verify parsed published schema
+        run: python tests/test_commodity_market_prices.py
+      - name: Preserve validated snapshot and commit
+        run: |
+          set -eu
+          cp data/commodity-market-prices.json /tmp/sli-commodity-market-prices.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/sli-commodity-market-prices.json data/commodity-market-prices.json
+            git add data/commodity-market-prices.json
+            if git diff --cached --quiet; then echo "No price snapshot change"; exit 0; fi
+            git commit -m "Refresh dated commodity market and IMF benchmark snapshots"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((2*attempt))
+          done
+          exit 1
