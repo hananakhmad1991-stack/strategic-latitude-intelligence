@@ -1,0 +1,22 @@
+name: Investment Evidence QA
+on:
+  push:
+    paths:
+      - 'data/investment-evidence.json'
+      - 'data/investment-ownership.json'
+      - 'scripts/validate_investment.py'
+      - '.github/workflows/investment-evidence-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-investment-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check company-level source, BO and spending boundaries
+        run: python scripts/validate_investment.py
