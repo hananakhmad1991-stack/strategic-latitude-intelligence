@@ -29,7 +29,7 @@ check("Solar PV panel tariffs in Asia","nre_solar_wind","geopolitical","nre")
 check("Wind turbines and battery storage supply","nre_grid_storage","geopolitical","nre")
 check("Global LNG gas prices jump","lng_asia","geopolitical","oil_gas")
 assert classify("Government debates subsidy procedure","policy","domestic")["sector"]=="cross_cutting"
-assert classify("Solar subsidi ditambah pemerintah","policy","domestic")["sector"]=="cross_cutting"
+assert classify("Solar subsidi ditambah pemerintah","policy","domestic")["sector"]=="oil_gas"  # Solar subsidi is diesel fuel
 assert classify("Greenhouse gas emission audit","energy_transition_policy","geopolitical")["sector"]=="cross_cutting"
 assert len(domestic.TOPICS)>=15
 domestic_ids={x["id"] for x in domestic.TOPICS}
