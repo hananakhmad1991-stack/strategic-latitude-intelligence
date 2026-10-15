@@ -47,7 +47,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  let all=flatten(root);
  assert.ok(all.some(n=>n.textContent==="Indonesia Investment & Energy Map"),"Map title rendered");
  assert.equal(all.filter(n=>n.tagName==="path").length,38,"One province path per feature");
- assert.equal(all.filter(n=>n.className==="map-stat").length,9,"All source and layer counters displayed");
+ assert.equal(all.filter(n=>n.className==="map-stat").length,10,"All source and layer counters displayed");
  const results=all.find(n=>n.className==="map-list"),list=()=>flatten(results).filter(n=>n.className==="map-list-item");
  const select=all.filter(n=>n.tagName==="select");
  assert.equal(select.length,5,"Should have dataset, technology, status, province and geographic filters");
@@ -67,13 +67,16 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  const wk=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-upstream-wk.json"),"utf8")).records;
  const power=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-power-fossil-renewable.json"),"utf8")).records;
  const industry=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-biofuel-smelters.json"),"utf8")).records;
- const total=assets.length+projects.length+infra.length+sites.length+wk.length+power.length+industry.length;
+ const regional=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-regional-crosschecks.json"),"utf8")).records;
+ const total=assets.length+projects.length+infra.length+sites.length+wk.length+power.length+industry.length+regional.length;
  assert.equal(sites.length,31,"Expanded company-sourced site dossiers");
  assert.equal(wk.length,57,"WK historical operator layer");
  assert.equal(power.length,102,"All fossil, geothermal, hydro and solar directories");
  assert.equal(industry.length,53,"Biodiesel/smelter source geographic sites");
- assert.equal(total,318,"All seven independent datasets should load");
- assert.equal(list().length,total,"Default shows all 318 source-dated records, no cutoff");
+ assert.equal(regional.length,19,"Source-verified regional Batam, Java/Bali offshore, Papua, Maluku and Natuna cross-checks");
+ assert.equal(total,337,"All 8 registry datasets should load");
+ assert.ok(regional.every(r=>Array.isArray(r.provinces)&&r.provinces.length>=1&&r.source_url.startsWith("https://")&&r.stage&&r.notes),"Regional record must have sourced province, stage and caveat");
+ assert.equal(list().length,total,"Default shows all 337 source-dated records, no cutoff");
  for(const x of [...wk,...power,...industry]){
   assert.ok(x.source_url?.startsWith("https://"),"Dataset source must be HTTPS: "+x.id);
   assert.ok(x.source_vintage&&x.notes&&x.region&&x.stage,"Must explain source vintage, location, stage and boundary: "+x.id);
@@ -92,6 +95,18 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(flatten(root).some(n=>n.className==="map-results-head"&&flatten(n).some(y=>y.textContent==="Riau")),"Province click shows province panel");
  const reset=all.find(n=>n.tagName==="button"&&n.textContent==="Reset filters");
  reset.events.click();assert.equal(list().length,total,"Reset restores every record");
+ province.value="Kepulauan Riau";province.events.change();
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Equator Gate System"))),"EGS Batam must appear in Riau Islands");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("South Natuna Sea Block B"))),"Natuna must appear in Riau Islands");
+ province.value="Bali";province.events.change();
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Agung I PSC"))),"Bali must show Agung I offshore multi-province PSC");
+ province.value="Jawa Timur";province.events.change();
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Agung I PSC"))),"Same offshore PSC must also show in East Java");
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("North Ketapang PSC"))),"East Java must include North Ketapang");
+ province.value="Papua Barat";province.events.change();
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Tangguh LNG"))),"Tangguh LNG base trains must appear in West Papua");
+ province.value="Maluku";province.events.change();
+ assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Masela PSC"))),"Masela Abadi must appear in Maluku, not NTT");
  province.value="Kalimantan Timur";province.events.change();
  assert.ok(list().length>=10&&list().length<total,"Province filter returns East Kalimantan dossiers");
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("PLTU")||String(n.textContent).includes("WK"))),"Province should contain electricity or upstream references");
@@ -102,6 +117,8 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(list().some(n=>flatten(n).some(e=>String(e.textContent).includes("UNLOCATED"))),"Unlocated list needs visible disclosure");
  location.value="all";location.events.change();
  assert.equal(list().length,total,"Selecting all geography restores all records");
+ dataset.value="regional";dataset.events.change();
+ assert.equal(list().length,regional.length,"Dedicated regional cross-check layer fully exposed");
  dataset.value="projects";dataset.events.change();
  assert.equal(list().length,projects.length,"Projects layer displays ALL investment entries");
  dataset.value="assets";dataset.events.change();
@@ -124,5 +141,5 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  ctx.window.SLIi18n.language="id";
  await ctx.window.initSLIStrategicMap(); // same root intentionally cached
  assert.ok(flatten(root).some(n=>n.textContent==="Peta Investasi dan Energi Indonesia")===false,"cached root unchanged until language event");
- console.log("PASS: 38 provinces, 318 records (57 WK,102 power,53 biodiesel/smelter,106 earlier), full display, province & PLTU filters, source vintages, safe links");
+ console.log("PASS: 38 provinces; 337 source records including Batam AI, Bali/East Java offshore, West Papua Tangguh, Maluku Masela and Riau Islands Natuna; all filters");
 })().catch(e=>{console.error(e);process.exitCode=1});
