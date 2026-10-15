@@ -103,7 +103,8 @@ def ie_sr_official_discovery(errors):
             errors.append({"source":"IESR event detail","error":type(exc).__name__+": "+str(exc)[:105]})
     return events
 def sort_by_nearest(event):
-    return (event["start_date"],event["title"].lower())
+    # Python stable sort preserves curated organiser-event priority for same-day conferences.
+    return event["start_date"]
 def valid(event):
     try:
         st=dt.date.fromisoformat(event["start_date"])
