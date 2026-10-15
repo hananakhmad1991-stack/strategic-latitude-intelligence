@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-15T12:46:39.815017+00:00",
+  "checked_at_utc": "2026-10-15T15:41:13.162247+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -37,19 +37,19 @@
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Middle East energy infrastructure",
-      "topic_id": "oil_supply",
-      "type": "Infrastructure",
+      "topic": "Russia and energy sanctions",
+      "topic_id": "oil_sanctions",
+      "type": "Geoeconomic",
       "sector": "oil_gas",
       "sector_tags": [
         "oil_gas"
       ],
-      "subsector": "general",
-      "title": "Gulf oil production rebounds ahead of increase in Iran war hostilities - Financial Times",
-      "publisher": "Financial Times",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNOXJmSnBaU3h0Z3pqMms4b25kODFKdG8zRjNQMGRDYUVzR3dONEpnb3FWZFVUOGJETEhaaFpwZWR4blViRm1JZ2tjNFFYQjBmNzhESVZSUlV2Tk5BMzQtTGdtMFJYYzAwZEVqLXFGSVFZUWQyc2FEclo5NzV2NGYzMm8xcTY?oc=5",
-      "indexed_at_utc": "2026-10-13T12:53:16+00:00",
-      "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
+      "subsector": "downstream",
+      "title": "Eight crew missing after drone attack leaves tanker ablaze off Romania's coast - BBC",
+      "publisher": "BBC",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA0OXJ4RE9wV0VmeUZhMlRkczVwcXB1UGl3aENvbm5TeERrVWNCQnc4cGFVZWRZWEQ1d0pfbURXa21uanFDdUlld01rOTJBYkYtN3ZDZFg4RlpIeUU?oc=5",
+      "indexed_at_utc": "2026-10-15T11:12:54+00:00",
+      "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -112,29 +112,12 @@
       "sector_tags": [
         "coal"
       ],
-      "subsector": "dmo_power",
-      "title": "Coal prices up 40% this year on LNG replacement demand, supply uncertainty - Nikkei Asia",
-      "publisher": "Nikkei Asia",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPamxPTUcyVnRjSFJxTkhqZ1hhR2E4T2haMzFKelgyci1oNVNiMjYxTklJdDctcHZFV0JIRVNpWlFySGV1ZXNrWE5naDZ3UXE2MWFVTlo1NzFLWUdjaG11MzdHTjVlbFdQZXczM2twU2VFemRCZU1xaWpGR0VaV2VXSW5LUnZ0SndVSmMzMzdyRURBc19pQXdjSm9UdnBDTXJNWldfNUhIZDJ4MlhmTkF0V2tR?oc=5",
-      "indexed_at_utc": "2026-10-14T16:35:00+00:00",
-      "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Global crude oil & OPEC supply",
-      "topic_id": "oil_supply",
-      "type": "Oil markets",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
       "subsector": "general",
-      "title": "Oil prices slide as US weighs easing sanctions on 'shadow fleet' - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOakIxN2pXRENBSjFMY1Rtc00zZG84UUVERE54NFBReWdoV2VJMHRpMFlZdzdSLXdzaEFOOEQwbFp5TG44Mk5wMFZyLVdPOTNpNG5nRlY5Q1lITWFlSjZ1RXdBMDdoRTQ1LTdrMy0zQVJlTThsUUJ2anBxWDNLWkpyV3lUbm5VMm5KMVJybkNpTVJuTGl6bTJia0t5UjE1UHNIclJFQUVRZ0FnektCZWxnSXNGc1VSdlhXM2RZ?oc=5",
-      "indexed_at_utc": "2026-10-15T01:30:00+00:00",
-      "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
+      "title": "How America’s dying coal industry found a lifeline in Trump’s White House - Financial Times",
+      "publisher": "Financial Times",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNaEkyMXd6ZEtSX2xLbGRHWEp4WmVjSjIwaGdvb2hkSm1YT2k1c2VrZ3FjU3doRzJ2WVRtM3ZzY3JheWM4ZHVyby1SdE5YR1h5XzRJT0xtemFDc1hfTkpTY055UzliSGdGWlM4cHhvZDQ4c3I5b25Helppd29NRVJzaXdidng?oc=5",
+      "indexed_at_utc": "2026-10-13T10:00:10+00:00",
+      "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -152,6 +135,40 @@
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9OQmtselAxckpkSnVscEVwVEZyRHRYaUs4aUJucmhrcUZ4NGVyTW42YlViMjI5aHFuX2dJQUFKTVVpc040V0l2SEhQT2N5aFBYTTVPajJyeVV4U3A0Ni1hZHQxTnJRYjhiZEE?oc=5",
       "indexed_at_utc": "2026-10-14T08:00:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Global crude oil & OPEC supply",
+      "topic_id": "oil_supply",
+      "type": "Oil markets",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "general",
+      "title": "‘From liabilities to goldmines’: refineries eye record profits from diesel shortage | Oil and gas companies - The Guardian",
+      "publisher": "The Guardian",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxObG5YWndtYmhpZG1OSWNWSmp1R1NXSjFTMWhYUk5DalR1UF9ONUpaWGlMUkRDdWdFSGR1ZDVoaU9CTW1GdzZmWi1lV3QwZjhLdnh1ZFBFZy1wZ3l4RENnQTdneDV1UkJSVVJKSmhXREVTejQwSURZVWdfTXliNlBsQWM1NTVNU296VU9OSzJwYTdXeW5qcUhjSVkyZXRIVGlqNUJ3YzRxSDY?oc=5",
+      "indexed_at_utc": "2026-10-14T17:37:00+00:00",
+      "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Coal exports and Asian import demand",
+      "topic_id": "coal_markets",
+      "type": "Coal trade",
+      "sector": "coal",
+      "sector_tags": [
+        "coal"
+      ],
+      "subsector": "dmo_power",
+      "title": "Coal prices up 40% this year on LNG replacement demand, supply uncertainty - Nikkei Asia",
+      "publisher": "Nikkei Asia",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPamxPTUcyVnRjSFJxTkhqZ1hhR2E4T2haMzFKelgyci1oNVNiMjYxTklJdDctcHZFV0JIRVNpWlFySGV1ZXNrWE5naDZ3UXE2MWFVTlo1NzFLWUdjaG11MzdHTjVlbFdQZXczM2twU2VFemRCZU1xaWpGR0VaV2VXSW5LUnZ0SndVSmMzMzdyRURBc19pQXdjSm9UdnBDTXJNWldfNUhIZDJ4MlhmTkF0V2tR?oc=5",
+      "indexed_at_utc": "2026-10-14T16:35:00+00:00",
+      "impact_pathway": "Asian coal import shifts -> Indonesian exporter revenues, DMO opportunity cost and benchmark prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -192,7 +209,7 @@
   ],
   "sector_counts": {
     "oil_gas": 7,
-    "coal": 3,
+    "coal": 4,
     "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
