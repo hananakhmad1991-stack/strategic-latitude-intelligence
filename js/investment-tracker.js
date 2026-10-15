@@ -13,6 +13,7 @@ const links=[
 ];
 const stages=["Announced","Permitted","Early works","Financed","Under construction","Mixed implementation","Commissioning","Operational","Suspended"];
 const norm=v=>String(v||"").toLowerCase();
+const projectAnchor=name=>"inv-project-"+String(name||"").toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
 window.initSLIInvestment=async function(){
  const root=document.getElementById("investmentRoot");if(!root)return;
  root.replaceChildren();
@@ -144,6 +145,16 @@ window.initSLIInvestment=async function(){
    const discl=$("details");const summ=$("summary",null,"Project overlap & double-counting safeguards");discl.append(summ);
    const ul=$("ul");for(const item of evidence.programme_overlap_rules)ul.append($("li",null,item.explanation));discl.append(ul);section.append(discl);
   }
+  if(Array.isArray(evidence.implementation_watch)&&evidence.implementation_watch.length){
+   const dated=$("div","tr-news");
+   evidence.implementation_watch.slice().sort((a,b)=>b.event_date.localeCompare(a.event_date)).forEach(event=>{
+    const card=$("article","tr-news-card");
+    card.append($("div","eyebrow",event.event_date+" · "+event.sector),$("h3",null,event.title));
+    card.append($("p","tr-detail","Observed: "+event.observed),$("p","tr-detail","Potential implications: "+event.possible_impact),$("p","tr-detail","Follow-up: "+event.follow_up));
+    card.append(source(event.source,"Original institutional release"));dated.append(card);
+   });
+   watch.append($("h3",null,"Dated investment implementation & policy watch"),dated);
+  }
   const projectRows=Array.isArray(evidence.projects)?evidence.projects:[];
   const existing=new Set(records.map(x=>x.name));
   for(const record of projectRows){if(!existing.has(record.name))records.push(record);}
@@ -153,7 +164,7 @@ window.initSLIInvestment=async function(){
   const body=$("tbody");
   const dateLabel=(x)=>x.evidence_date||"Undated";
   projectRows.forEach(x=>{
-   const tr=$("tr");
+   const tr=$("tr");tr.id=projectAnchor(x.name);
    const named=$("td");named.append($("strong",null,x.name),$("p","tr-detail",x.investor));tr.append(named);
    tr.append($("td",null,x.sector+" · "+x.stage+" · evidence "+dateLabel(x)));
    const amount=$("td");amount.append($("strong",null,x.reported_amount===null?"Not disclosed":x.currency+" "+Number(x.reported_amount).toLocaleString("en-US")));amount.append($("p","tr-detail",x.amount_basis));tr.append(amount);
