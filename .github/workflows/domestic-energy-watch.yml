@@ -7,18 +7,22 @@ on:
     branches: [main]
     paths:
       - scripts/domestic_energy_watch.py
+      - scripts/energy_sector_taxonomy.py
       - .github/workflows/domestic-energy-watch.yml
 permissions:
   contents: write
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 9
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Validate news taxonomy and collector syntax
+        run: |
+          python -m py_compile scripts/energy_sector_taxonomy.py scripts/domestic_energy_watch.py
       - name: Scan attributed Indonesian energy / environment releases
         run: python scripts/domestic_energy_watch.py
       - name: Commit dated leads and diagnostic status
