@@ -8,7 +8,7 @@ const palette=["#D8BD80","#83BACB","#82B5A3","#B9A2D8","#D9A780","#95AED6"];
 const titles=[
  ["PRESIDENCY","& DIRECTION"],
  ["REGULATORS","& INSTITUTIONS"],
- ["STATE-OWNED","& PRIVATE"],
+ ["OWNERSHIP","& OPERATORS"],
  ["DPR RI","& SCRUTINY"],
  ["DPD RI","& REGIONS"],
  ["LOCAL","& DELIVERY"]
@@ -174,10 +174,30 @@ window.renderSLIStakeholderMap=function(root,data){
  const header=$("div","stake-header");
  const heading=$("div");
  heading.append($("div","eyebrow","STRATEGIC LATITUDE INTELLIGENCE · STAKEHOLDER POWER MAP"),$("h2",null,"Indonesia Energy Power Map"));
- heading.append($("p","stake-intro","Six influence systems. One interactive view. Select a branch, inspect an actor or trace issue-by-issue accountability."));
+ heading.append($("p","stake-intro","Six stakeholder systems. SOE portfolio ownership, sector regulators, independent BUMS operators and parliamentary scrutiny remain distinct. Select a node to explore."));
  const stats=$("div","stake-stats");
  stats.append(stat("Institutions",String(all.length)),stat("Influence groups",String(data.layers.length)),stat("Issue lenses",String(routes.length)));
  header.append(heading,stats);wrapper.append(header);
+ if(data.ownership_model){
+  const own=$("details","stake-ownership");
+  own.append($("summary",null,"SOE ownership vs regulation · UU 16/2025 · expand mandate diagram"));
+  const content=$("div","stake-ownership-content");
+  const split=$("div","stake-ownership-rows");
+  const bp=$("div","stake-ownership-box");
+  bp.append($("span","stake-ownership-kicker","GOVERNMENT · SPECIAL RIGHTS"),
+   $("h3",null,"BP BUMN · Series A Dwiwarna (1%)"),
+   $("p",null,"State strategic shareholding rights and corporate regulation. Does not license PSCs or supervise private KKKS."));
+  const bpi=$("div","stake-ownership-box");
+  bpi.append($("span","stake-ownership-kicker","ECONOMIC SHAREHOLDING"),
+   $("h3",null,"BPI Danantara · Series B (99%)"),
+   $("p",null,"BUMN portfolio investment and operational holding mandate, including Pertamina / PLN; board execution stays with each corporate group."));
+  split.append(bp,bpi);content.append(split);
+  content.append($("p","stake-ownership-note","Separate chain: ESDM (energy regulation) → SKK Migas/BPMA (upstream PSC management) → KKKS (BUMN, private or foreign field operator). BPH Migas supervises downstream fuel and gas-transport matters. Neither SKK Migas nor BPH Migas is a Danantara subsidiary."));
+  const citations=$("div","stake-ownership-links");
+  citations.append(panelLink(data.ownership_model.source,"UU 16/2025 legal text ↗"),
+    panelLink(data.ownership_model.danantara_source,"Danantara official mandate ↗"));
+  content.append(citations);own.append(content);wrapper.append(own);
+ }
  const tools=$("div","stake-toolbar");
  const tabs=$("div","stake-tabs"),tabRefs={};
  [["overview","Overview"],["layer","Explore actors"],["issue","Issue focus"]].forEach(([mode,label])=>{
@@ -356,7 +376,7 @@ window.renderSLIStakeholderMap=function(root,data){
   }
   if(isIssue)paintIssuePanel(routes[state.issue]);
   zoomHint.textContent=isOverview?"Six hubs only. Click any branch to drill down.":isLayer?
-    "All "+data.layers[state.group].actors.length+" actors in this branch • select a node or search across all 54":"Choose a stage for responsibilities and analytical checks";
+    "All "+data.layers[state.group].actors.length+" actors in this branch • select a node or search across all "+all.length:"Choose a stage for responsibilities and analytical checks";
   legend.replaceChildren();
   if(isOverview)data.layers.forEach((layer,i)=>{
    const b=$("button","stake-legend-key");b.type="button";
