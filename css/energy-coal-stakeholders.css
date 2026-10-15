@@ -1,0 +1,63 @@
+/* Coal Stakeholder Intelligence — separate sourced institutional network, accessible navy/gold design */
+#energyCoalStakeholdersRoot{margin:24px 0 32px;scroll-margin-top:20px;color:#d4e3ee}
+.coal-header{border-radius:14px;background:linear-gradient(130deg,#203a45,#112a3e 72%);border:1px solid #63716c;padding:22px 24px 20px;margin:0 0 15px}
+.coal-overline{font-size:10px;color:#e6c98e;letter-spacing:1px;text-transform:uppercase;font-weight:750}
+.coal-header h2{font:400 clamp(24px,3vw,32px)/1.25 Georgia,serif;color:#f4eee1;margin:9px 0}
+.coal-header p{font-size:12px;color:#c0d3e0;line-height:1.75;max-width:960px;margin:0}
+.coal-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:13px 0}
+.coal-kpi{min-width:0;border:1px solid #416077;background:#132e42;border-radius:11px;padding:15px 14px;display:flex;flex-direction:column;gap:5px}
+.coal-kpi-label{font-size:10px;font-weight:600;line-height:1.4;color:#b6d0de;min-height:28px}
+.coal-kpi-number{font-size:clamp(18px,2.1vw,27px);line-height:1.2;color:#e7cd96;word-break:break-word;font-variant-numeric:tabular-nums}
+.coal-kpi p{color:#a7c4d0;font-size:10px;line-height:1.6;margin:3px 0}
+.coal-kpi .coal-source{margin-top:auto}
+.coal-source{color:#ebd09a;text-decoration:underline;text-underline-offset:3px;font-size:10.5px}
+.coal-economy-note,.coal-method-note{font-size:10.5px;color:#b0c6d3;line-height:1.75;border-left:3px solid #c5a975;background:#172e41;border-radius:4px;padding:11px 13px;margin:12px 0 16px}
+.coal-context{border:1px solid #436075;border-radius:9px;background:#142d3f;margin:11px 0 17px}
+.coal-context summary{padding:12px 15px;cursor:pointer;color:#e9ca90;font-size:12px;font-weight:650}
+.coal-context summary:focus-visible{outline:2px solid #ebd59d;outline-offset:-2px}
+.coal-context-inner{padding:0 15px 13px}
+.coal-context-inner p{font-size:11.5px;line-height:1.75;color:#b9cfdb}
+.coal-context-inner a{display:inline-block;margin:4px 12px 6px 0}
+.coal-controls{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:16px 0 12px}
+.coal-input-box{display:flex;flex-direction:column;gap:6px;color:#b6cddd;font-size:11px}
+.coal-search,.coal-issue{color:#e8f2f8;background:#112c40;border:1px solid #5e7689;padding:10px 11px;border-radius:8px;min-height:42px;width:100%;font-size:12px}
+.coal-search:focus-visible,.coal-issue:focus-visible{outline:2px solid #e2c990;outline-offset:1px}
+.coal-categories{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 12px}
+.coal-category{border:1px solid #47677c;background:#1a374c;color:#d2e4ed;border-radius:7px;min-height:39px;padding:8px 11px;font-size:10.5px;line-height:1.35;cursor:pointer;font-weight:620}
+.coal-category.selected{background:#dec88f;color:#193044;border-color:#dec88f}
+.coal-category:hover{border-color:#d6bd84}
+.coal-category:focus-visible,.coal-tile:focus-visible{outline:2px solid #eddbad;outline-offset:2px}
+.coal-layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,.9fr);gap:12px}
+.coal-main,.coal-side{min-width:0}
+.coal-flow,.coal-profile,.coal-issue-card{border:1px solid #3e5a70;background:#10283c;border-radius:12px;padding:14px}
+.coal-flow-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.coal-flow-head strong{font-size:12px;color:#efe6cf}
+.coal-flow-head span{font-size:10px;color:#acc5d3}
+.coal-flow svg{display:block;width:100%;height:auto;max-height:430px;margin:9px 0;border-radius:9px}
+.coal-flow svg g[role="button"] rect{transition:stroke-width .16s,fill .16s}
+.coal-flow svg g[role="button"]:hover rect,.coal-flow svg g[role="button"]:focus-visible rect{stroke-width:3}
+.coal-flow svg g[role="button"]:focus-visible{outline:none}
+.coal-flow-foot{font-size:10px;line-height:1.65;color:#aac6d5;margin:6px 0 1px}
+.coal-count{font-size:11px;color:#bdd4e0;margin:14px 0 8px}
+.coal-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.coal-tile{display:flex;flex-direction:column;justify-content:space-between;gap:7px;background:#16364b;border:1px solid #47657b;border-radius:9px;color:#f3f0e7;text-align:left;padding:12px;min-height:72px;font:650 11px/1.5 system-ui,sans-serif;cursor:pointer;overflow-wrap:anywhere}
+.coal-tile span{font-size:9.5px;font-weight:400;color:#b4cfde}
+.coal-tile.selected{background:#265065;border-color:#e4c889}
+.coal-tile:hover{border-color:#dfca95}
+.coal-profile{position:sticky;top:11px;padding:20px;align-self:start}
+.coal-profile h3{font:400 clamp(18px,2.3vw,25px)/1.35 Georgia,serif;color:#f8eee0;margin:11px 0}
+.coal-profile-lead{color:#ecd49b;font-weight:680;font-size:12px;line-height:1.65}
+.coal-role{display:inline-block;border:1px solid #687168;background:#263b44;color:#efdab1;border-radius:15px;padding:5px 10px;font-size:10px}
+.coal-profile-description{font-size:12px;color:#bdd0db;line-height:1.8}
+.coal-profile-date{font-size:10px;color:#aac1d0;margin:14px 0 10px}
+.coal-profile-boundary{font-size:11px;color:#dac89f;border-left:2px solid #dac18b;padding:10px;background:#263d48;line-height:1.7}
+.coal-issue-card{border-left:3px solid #d7b780;margin:12px 0}
+.coal-issue-card h3{font-size:15px;color:#f3d99d;margin:3px 0 8px}
+.coal-issue-card li{font-size:11.5px;color:#c3d5de;line-height:1.8;margin-bottom:5px}
+.coal-empty{background:#193649;border-radius:7px;padding:14px;color:#c3d5e0;font-size:12px}
+.coal-method-note{border-left:0;border-top:1px solid #416078;margin:15px 0 2px;background:transparent;padding:11px 3px}
+@media(max-width:1100px){.coal-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.coal-layout{grid-template-columns:1fr}.coal-profile{position:static}.coal-flow svg{max-height:none}}
+@media(max-width:680px){.coal-header{padding:18px 15px}.coal-controls{grid-template-columns:1fr}.coal-categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.coal-flow-head{flex-wrap:wrap}}
+@media(max-width:440px){.coal-kpis,.coal-tiles{grid-template-columns:1fr}.coal-kpi-label{min-height:0}.coal-flow svg{max-height:245px}.coal-flow-head span{display:none}}
+@media(prefers-reduced-motion:reduce){.coal-flow svg g[role="button"] rect{transition:none}}
