@@ -1,7 +1,7 @@
 {
-  "checked_at_utc": "2026-10-15T04:30:19.239780+00:00",
+  "checked_at_utc": "2026-10-15T04:37:09.631619+00:00",
   "verification_method": "Cabinet + ministry-source matching for ministers, role-linked ESDM leadership profile for director generals, expanded Pertamina/PLN/DPR/DPD/Presidential adviser public-source scans for candidate changes. News headlines cannot auto-replace non-government officeholders.",
-  "current_actor_count": 62,
+  "current_actor_count": 65,
   "official_sources_checked": 22,
   "verified_auto_changes": [],
   "requires_review": [],
@@ -252,7 +252,7 @@
       "actor": "PT Pertamina (Persero) — parent company",
       "primary_source": "https://sustainability.pertamina.com/id-ID/Sustainability-Commitment/CEO-Statement/",
       "status": "source-unavailable",
-      "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+      "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
     },
     {
       "actor": "PT Pertamina Hulu Indonesia — regional upstream",
@@ -356,7 +356,7 @@
     },
     {
       "source": "https://sustainability.pertamina.com/id-ID/Sustainability-Commitment/CEO-Statement/",
-      "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+      "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
     },
     {
       "source": "https://www.mpr.go.id/berita/cost-recovery-skk-migas-mekeng",
