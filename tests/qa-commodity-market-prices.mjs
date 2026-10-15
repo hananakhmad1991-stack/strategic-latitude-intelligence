@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const html=fs.readFileSync('index.html','utf8');
+const script=fs.readFileSync('js/commodity-market-prices.js','utf8');
+const research=fs.readFileSync('js/research-chapters.js','utf8');
+assert.ok(html.includes('id="commodityPriceRoot"'),"Energy Security needs price panel");
+assert.ok(html.includes("initSLICommodityPrices?.('commodityPriceRoot','energy')"),"Energy price initializer connected");
+assert.ok(html.includes('js/commodity-market-prices.js?'),"Frontend script loaded");
+assert.ok(html.includes('css/commodity-market-prices.css?'),"Quote styles loaded");
+assert.ok(research.includes('initSLICommodityPrices(priceMount,"minerals")'),"Critical Minerals price tab connected");
+assert.ok(script.includes("https://www.lme.com/Market-data"),"LME licensed source explanation accessible");
+const w={SLIi18n:{language:"en"}};
+vm.runInNewContext(script,{window:w,Date,Intl});
+const h=w.SLICommodityPriceHelpers;
+assert.ok(h);
+let today=new Date().toISOString();
+assert.equal(h.quoteState({value:12,observed_at_utc:today,tier:"indicative_futures"}).name,"indicative");
+assert.equal(h.quoteState({value:12,observed_at_utc:today,tier:"monthly_reference"}).name,"monthly");
+assert.equal(h.quoteState({value:12,observed_at_utc:"2025-01-01T00:00:00+00:00",tier:"indicative_futures"}).name,"stale");
+assert.equal(h.quoteState({value:null,observed_at_utc:today,tier:"indicative_futures"}).name,"unavailable");
+const d=JSON.parse(fs.readFileSync('data/commodity-market-prices.json','utf8'));
+assert.equal(d.schema_version,1);
+assert.ok(['awaiting_first_scan','ok','partial','unavailable','upstream_unavailable_last_good'].includes(d.status));
+const unique=new Set(d.quotes.map(x=>x.id));assert.equal(unique.size,d.quotes.length,'Price tickers should not duplicate');
+for(const q of d.quotes){
+ assert.ok(q.value>0&&q.unit&&q.observed_at_utc,'Real source-dated price data only');
+ assert.ok(/^https:\/\//.test(q.source_url),'Attribution URL required');
+ assert.ok(['monthly_reference','indicative_futures'].includes(q.tier));
+ assert.ok(Array.isArray(q.history),'Chart history is sourced');
+ if(q.id==='copper_future')assert.equal(q.unit,'USD/lb');
+ if(q.id==='copper_monthly')assert.equal(q.unit,'USD/metric ton');
+}
+assert.equal(d.official_indonesia_reference.find(x=>x.id==='hba').value,null,'Do not invent live HBA');
+console.log('PASS: quote source labels, data tiers, stale guard, energy/minerals mounts and chart metadata');
