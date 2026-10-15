@@ -98,7 +98,7 @@ function evidence(panel,point){
 function render(root,data,error){
  root.replaceChildren();
  const stamp=data?.generated_at_utc?dateTime(data.generated_at_utc):local("Date unavailable","Tanggal belum tersedia");
- const section=E("div","section"),heading=E("h2",null,local("Indonesia Energy Security: Strategic Assessment","Ketahanan Energi Indonesia: Penilaian Strategis"));
+ const section=E("div","section"),heading=E("h2",null,local("Reading Indonesia’s Energy Outlook","Membaca Prospek Ketahanan Energi Indonesia"));
  heading.id="energy-overall-heading";section.append(heading,E("span",null,(data?local("Research synthesis refreshed ","Sintesis riset diperbarui "):local("Editorial reference · ","Acuan editorial · "))+stamp));root.append(section);
  const intro=E("p","oa-intro oa-story",lead[lang()]);root.append(intro);
  if(error)root.append(E("p","oa-daily-fallback",local("The latest machine-readable assessment could not be loaded. The synthesis below is a source-vintaged editorial baseline, not a fresh daily finding.","Data penilaian otomatis terbaru tidak dapat dimuat. Analisis di bawah adalah acuan editorial bertanggal, bukan temuan harian baru.")));
@@ -107,6 +107,20 @@ function render(root,data,error){
   const hint=E("p","oa-editorial-meta",local("Verified statistics remain tied to their published reference years. Automatic news scans surface potential changes; they do not verify events.","Statistik terverifikasi selalu mengikuti tahun rujukan resmi. Pemindaian berita menunjukkan kemungkinan perkembangan, bukan verifikasi kejadian."));
   if(age>36)hint.append(E("strong","oa-daily-stale",local(" · Assessment is older than 36 hours."," · Assessment telah lebih dari 36 jam.")));
   root.append(hint);
+ }
+ if(data){
+  const changed=Number(data.news_new_since_previous||0),pulse=E("div","oa-daily-pulse");
+  pulse.append(E("strong",null,local("Latest monitoring pulse","Perkembangan pemantauan terbaru")));
+  pulse.append(E("p",null,changed>0?
+    local(changed+" newly selected source leads since the previous synthesis. These are candidates requiring original-source verification, not a confirmed change to physical energy supply.",changed+" berita baru terpilih sejak sintesis sebelumnya. Temuan ini masih perlu verifikasi sumber primer dan belum menjadi bukti perubahan pasokan energi fisik."):
+    local("No newly selected source leads relative to the previous published synthesis. This does not establish the absence of incidents.", "Belum ada berita baru terpilih dibanding sintesis terdahulu. Hal ini bukan bukti bahwa tidak terjadi insiden.")));
+  const baselineNote=data.baseline_changed_since_previous?
+    local("Source-date fingerprint changed; check individual dated figures before inferring a new trend.","Sidik data acuan berubah; periksa tahun rujukan tiap angka sebelum menyimpulkan tren baru."):
+    local("Official baseline unchanged; source-date comparisons remain essential.","Data acuan resmi belum berubah; perbandingan periode tetap penting.");
+  pulse.append(E("p","oa-pulse-note",baselineNote));
+  const chosen=(data.points||[]).flatMap(x=>(x.recent_news_leads||[]).filter(z=>z.new_since_previous)).filter(x=>x.url&&x.title).slice(0,3);
+  if(chosen.length){const ul=E("ul","oa-pulse-links");chosen.forEach(x=>{const li=E("li"),n=link(x.url,x.title+" ↗");if(n)li.append(n);ul.append(li)});pulse.append(ul)}
+  root.append(pulse);
  }
  const byId=new Map(Array.isArray(data?.points)?data.points.map(p=>[p.id,p]):[]);
  const list=E("ol","oa-list");
