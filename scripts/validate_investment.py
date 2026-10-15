@@ -23,6 +23,20 @@ def https(url):
     return isinstance(url, str) and url.startswith("https://")
 
 def main():
+    palm = read("investment-palm.json")
+    if palm.get("investment", {}).get("palm_2025_verified_rp_trillion") is not None:
+        fail("Palm-only investment figure must be checked against BKPM LKPM source before release")
+    if palm.get("investment", {}).get("broad_2025_downstream_forestry_plantation_rp_trillion") != 144.5:
+        fail("Incorrect 2025 combined plantation+forestry scope")
+    if palm.get("fiscal", {}).get("reported_levies_plus_export_duties_rp_trillion") != 53.13:
+        fail("Government-attributed 2025 palm levy+duty total differs from source")
+    if palm.get("fiscal", {}).get("palm_sector_tax_take_rp_trillion") is not None:
+        fail("Unsupported palm sector total tax take")
+    if palm.get("trade", {}).get("exports_ytd_period") != "Jan–Aug 2026":
+        fail("Palm YTD trade vintage must be dated")
+    for url in [palm["investment"]["palm_2025_dataset_url"], palm["investment"]["broad_2025_source"], palm["fiscal"]["source"], palm["trade"]["ytd_source"]]:
+        if not https(url):
+            fail("Palm fiscal/trade/investment record lacks HTTPS source")
     evidence = read("investment-evidence.json")
     ownership = read("investment-ownership.json")
     projects = evidence.get("projects", [])
