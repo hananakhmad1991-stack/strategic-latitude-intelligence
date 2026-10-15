@@ -14,6 +14,7 @@ class FakeNode{
  setClass(name,enabled){const vals=new Set(this.className.split(' ').filter(Boolean));if(enabled)vals.add(name);else vals.delete(name);this.className=[...vals].join(' ')}
  append(...items){for(let n of items){if(typeof n==='string'){const t=new FakeNode('#text');t.textContent=n;n=t}if(n)this.children.push(n)}if(this.tagName==='select'&&!this.value&&this.children.length)this.value=this.children[0].value||''}
  replaceChildren(...items){this.children=[];this._text='';this.append(...items)}
+ get lastChild(){return this.children.at(-1)||null}
  prepend(n){this.children.unshift(n)}
  setAttribute(k,v){this.attrs[k]=v;if(k==='id')this.id=v;if(k==='class')this.className=v}
  getAttribute(k){return this.attrs[k]}
