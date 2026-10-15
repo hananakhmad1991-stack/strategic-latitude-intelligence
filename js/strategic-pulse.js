@@ -179,7 +179,7 @@ window.initSLIPulse=async function(reload=false){
  const next=dom("div","sp-next");next.append(dom("h3",null,tr("Watch next · verification before inference","Pantau berikutnya · verifikasi sebelum mengambil kesimpulan")));
  next.append(dom("p",null,a?.watch_next||tr("Oil and gas delivery, project milestones, official policy instruments and dated market releases.","Distribusi migas, capaian proyek, kebijakan resmi, dan rilis pasar bertanggal.")));shell.append(next);
  const nav=dom("div","sp-routes");
- nav.append(route(tr("Explore investment ↗","Telusuri investasi ↗"),"investment"),route(tr("Open Energy Security ↗","Buka Ketahanan Energi ↗"),"energy"),route(tr("Research methodology ↗","Metodologi riset ↗"),"methodology"));
+ nav.append(route(tr("Explore strategic map ↗","Jelajahi peta strategis ↗"),"map"),route(tr("Explore investment ↗","Telusuri investasi ↗"),"investment"),route(tr("Open Energy Security ↗","Buka Ketahanan Energi ↗"),"energy"),route(tr("Research methodology ↗","Metodologi riset ↗"),"methodology"));
  shell.append(nav);
  const foot=dom("div","sp-foot");
  foot.append(document.createTextNode(tr("Methodology: published date ≠ scan time ≠ event date. The feed is a lead-discovery system, not verified intelligence or real-time market pricing. Source delays and missing metrics are displayed rather than filled.","Metodologi: tanggal terbit ≠ waktu pemindaian ≠ tanggal kejadian. Umpan berita menghasilkan temuan, bukan intelijen terkonfirmasi ataupun harga pasar real-time. Keterlambatan sumber dan data kosong ditampilkan, bukan direka.")));
