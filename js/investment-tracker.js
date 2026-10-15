@@ -21,13 +21,16 @@ window.initSLIInvestment=async function(){
  const intro=$("p",null,"Track policy-relevant investment through verifiable milestones. Announcements, financial commitments, realized investment statistics and operational assets are different measurements and must never be added together.");
  root.append(strap,title,intro);
  const nav=$("div","tr-jumpnav");
- [["inv-kpis","Investment evidence"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
+ [["inv-kpis","Investment evidence"],["inv-geography","Regional & FDI"],["inv-pipeline","Project registry"],["inv-ownership","Investor & ownership"],["inv-watch","Risks & sources"],["inv-media","Media monitoring"],["inv-revenue","State revenue"],["inv-financing","Financing"],["inv-policy","Forward planning"],["inv-assessment","Overall assessment"]].forEach(([id,label])=>{const a=$("a",null,label);a.href="#"+id;nav.append(a)});root.append(nav);
  heading(root,"National Investment Evidence","BKPM · BPS · BI / distinguish statistical definitions");
  const kpis=$("div","grid tr-grid");kpis.id="inv-kpis";
  const labels=[["Realized investment","Awaiting sourced release","BKPM realized PMA + PMDN; reference period and units required"],["Foreign investment (PMA)","Awaiting sourced release","BKPM realized PMA; not identical to balance-of-payments FDI"],["Domestic investment (PMDN)","Awaiting sourced release","BKPM realized PMDN; avoid combining with project announcements"],["Verified projects","0 published","Only source-dated project records appear in the registry"]];
  const values=[];
  labels.forEach(([name,value,note])=>{const c=$("div","card tr-kpi");c.style.cursor="default";c.append($("div","eyebrow",name));const v=$("h2","tr-value",value);values.push(v);c.append(v,$("p",null,note));kpis.append(c)});root.append(kpis);
  const warning=$("div","tr-note","Data integrity: national PMA/PMDN realization, announced capex, committed financing and cumulative project cost have different scopes. No unsourced aggregate is presented as live data.");root.append(warning);
+ heading(root,"Where Investment Is Realized","BKPM Q2 2026 · provincial investment, not project capex");
+ const geography=box(root,"Top provinces and foreign-investor origin");geography.id="inv-geography";
+ const geographyContent=$("div");geography.append(geographyContent);
  heading(root,"Project Implementation Tracker","Project-level milestones · verifiable status");
  const section=box(root,"Search the investment pipeline");section.id="inv-pipeline";
  const controls=$("div","tr-controls"),search=$("input","tr-select");search.placeholder="Search project, region, investor or sector…";search.type="search";search.setAttribute("aria-label","Search investment projects");
@@ -60,6 +63,8 @@ window.initSLIInvestment=async function(){
  const rev=box(root,"Indonesia sectoral non-tax revenue");rev.id="inv-revenue";
  rev.append($("p",null,"Reported PNBP only. Mineral and coal receipts are combined in this source; figures are not export value, GDP, tax take or investment flows."));
  const revenueTable=$("div","pf-table-wrap");rev.append(revenueTable);
+ const finance=box(root,"Debt facilities are NOT realized project investments");finance.id="inv-financing";
+ const financeContent=$("div");finance.append(financeContent);
  const policy=box(root,"Forward policy / investment planning");policy.id="inv-policy";
  const evidenceStatus=$("p","tr-detail","Loading official investment data…");root.insertBefore(evidenceStatus,root.firstChild);
  try{
@@ -73,6 +78,32 @@ window.initSLIInvestment=async function(){
    values[2].textContent="Rp"+national.pmdn.toLocaleString("id-ID")+" T";
    const proof=$("p","tr-detail","BKPM · "+national.period+" · "+national.year_on_year_pct+"% YoY · downstream realization Rp"+national.downstream.toLocaleString("id-ID")+" T · target Rp"+national.target_2026.toLocaleString("id-ID")+" T. ");
    proof.append(source(national.source,"Official BKPM release"));kpis.after(proof);
+  }
+  if(evidence.regional){
+   const reg=evidence.regional,body=$("div","inv-regional-bars"),max=Math.max(...reg.values.map(v=>v.value),1);
+   reg.values.forEach(v=>{
+    const line=$("div","inv-regional-row"),label=$("div","inv-stake-head"),track=$("div","inv-stake-track"),fill=$("div","inv-stake-fill");
+    label.append($("span",null,v.name),$("strong",null,"Rp"+v.value.toLocaleString("id-ID")+" T"));
+    fill.style.width=(100*v.value/max).toFixed(2)+"%";track.append(fill);line.append(label,track);body.append(line)
+   });
+   geographyContent.append($("p","tr-detail",reg.period+" · investment realization; bars scaled to largest province, not national totals."),body);
+   const note=$("p","tr-detail","Source: ");note.append(source(reg.source,"BKPM provincial Q2 release"));geographyContent.append(note);
+  }
+  if(evidence.foreign_origins){
+   const fdi=evidence.foreign_origins,tableWrap=$("div","pf-table-wrap"),t=$("table");
+   t.innerHTML="<thead><tr><th>Rank · PMA origin</th><th>Reported value</th><th>Interpretation</th></tr></thead>";
+   const b=$("tbody");(fdi.ranks||[]).forEach(r=>{const tr=$("tr");[r.rank+". "+r.place,r.reported_usd_billion==null?"Not separated in release":"US$"+r.reported_usd_billion+" bn","Country/jurisdiction of recording; not verified ultimate investor"].forEach(x=>tr.append($("td",null,x)));b.append(tr)});
+   t.append(b);tableWrap.append(t);
+   geographyContent.append($("h3",null,"Foreign investment origins · "+fdi.period),$("p","tr-detail","Top five origins represent "+fdi.top_five_share_pct+"% of PMA in this quarter. Routing via Hong Kong or Singapore does not establish ultimate beneficial ownership."),tableWrap);
+   const linkBox=$("p","tr-detail","Official source: ");linkBox.append(source(fdi.source,"BKPM origin ranking"));geographyContent.append(linkBox);
+  }
+  if(Array.isArray(evidence.financing)){
+   for(const facility of evidence.financing){
+    const block=$("div","tr-note");
+    const amount="US$"+facility.amount_usd_million+" million"+(facility.optional_greenshoe_usd_million?" (optional extra US$"+facility.optional_greenshoe_usd_million+" million)":"");
+    block.append($("strong",null,facility.borrower+" · "+amount),$("p",null,facility.instrument+" · "+facility.reported_date),$("p",null,facility.classification),$("p",null,facility.project_relation),source(facility.source,"Company disclosure"));
+    financeContent.append(block)
+   }
   }
   const projectRows=Array.isArray(evidence.projects)?evidence.projects:[];
   const existing=new Set(records.map(x=>x.name));
@@ -94,12 +125,13 @@ window.initSLIInvestment=async function(){
  heading(root,"Overall Strategic Assessment","Evidence-led; no speculative scoring");
  const assess=box(root,"Indonesia Investment Execution Outlook");assess.id="inv-assessment";
  const points=[
- "Distinguish announced project capex from official realized PMA/PMDN flows and operational capacity.",
- "Watch project conversion through documented financial close, construction and commissioning.",
- "Map shareholder control separately from permitting power and sectoral regulation.",
- "Compare regional concentration with supporting power, port, transport and skilled-labor infrastructure.",
- "Track exposure to global interest rates, demand, trade rules and changes in downstream policy.",
- "Give each project a dated source, evidence status, last review and explicit unresolved questions."
+ "Capital conversion: BKPM reported Rp1,010.6 trillion realized in H1 2026 (49.5% of the full-year target); do not confuse this with announced multi-year project budgets.",
+ "Investor origin: the five leading booking jurisdictions contributed 79.6% of Q2 2026 PMA; the origin of the recorded investment is not proof of an ultimate beneficial owner.",
+ "Spatial concentration: Jakarta and Java remain key hubs, while nickel-intensive eastern provinces rank among Q2 leaders. Local power, transport, ports and water remain critical execution constraints.",
+ "Critical minerals: distinguish mined ore sales from completed HPAL commissioning. Vale's Morowali and Pomalaa milestones cannot be treated as all-project commercial operation.",
+ "Corporate control: Freeport economic ownership differs from operating rights; Vale explicitly describes joint control. Track shareholder agreements rather than extrapolating from percentage stakes.",
+ "Revenue vs investment: PNBP SDA oil, gas and minerba is government non-tax revenue, not gross exports, project capital expenditure or a proxy for corporate taxes.",
+ "Delivery discipline: compare financial close, capital drawdown, environmental approval, construction evidence and actual utilization separately; maintain company-level BO gaps explicitly."
  ];
  const ol=$("ol");points.forEach(p=>ol.append($("li",null,p)));assess.append(ol);
  assess.append($("p","tr-detail","Editorial framework (not an automated market forecast). This assessment will become quantitative as verified releases and project records are published."));
