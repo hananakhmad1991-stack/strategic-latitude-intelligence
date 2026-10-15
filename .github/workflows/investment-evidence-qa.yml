@@ -46,6 +46,6 @@ jobs:
             node --check "$file"
           done
       - name: Validate Python market and Forbes parsers
-        run: python -m py_compile scripts/investment_market_refresh.py scripts/investment_forbes_monitor.py
+        run: python -m py_compile scripts/investment_market_refresh.py scripts/investment_forbes_monitor.py scripts/investment_news.py
       - name: Check company-level source, BO and spending boundaries
         run: python scripts/validate_investment.py
