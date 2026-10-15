@@ -1523,3 +1523,9 @@ window.SLI_TRANSLATIONS_ID.set("Appendix · Glossary","Lampiran · Glosarium");
 window.SLI_TRANSLATIONS_ID.set("Appendix · Acronyms, Technical Terms & Units","Lampiran · Singkatan, Istilah Teknis & Satuan");
 window.SLI_TRANSLATIONS_ID.set("A bilingual reader’s reference to the abbreviations, policy terms and measurement units used throughout Energy Security.","Panduan dwibahasa berisi singkatan, istilah kebijakan, dan satuan pengukuran dalam seluruh dashboard Ketahanan Energi.");
 window.SLI_TRANSLATIONS_ID.set("Searchable bilingual glossary of energy security terms and measurement units","Glosarium dwibahasa istilah dan satuan ketahanan energi yang bisa dicari");
+
+/* Dedicated coal and oil/gas institutional quick navigation (2026-10-15). */
+window.SLI_TRANSLATIONS_ID.set("Coal Stakeholders","Pemangku Kepentingan Batubara");
+window.SLI_TRANSLATIONS_ID.set("Oil & Gas Stakeholders","Pemangku Kepentingan Migas");
+window.SLI_TRANSLATIONS_ID.set("Energy Policy Register","Daftar Regulasi Energi");
+window.SLI_TRANSLATIONS_ID.set("Coal stakeholder intelligence: mining policy regulator BUMN BUMS IUP and IUPK holders PLN coal DMO logistics state revenue and GDP","Peta batubara: regulator, BUMN, BUMS, pemegang IUP/IUPK, PLN, DMO, logistik, pendapatan negara, dan PDB");
