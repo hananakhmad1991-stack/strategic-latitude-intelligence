@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-15",
+  "as_of": "2026-10-16",
   "method": "Functional association graph and issue pathways, not reporting lines. Leadership attached only when identified in dated official or operator primary sources; absence means no verified public name in this registry.",
   "sectors": {
     "minerals": {
@@ -309,6 +309,38 @@
                 "Ministry of Energy and Mineral Resources (ESDM)",
                 "Ministry of Industry (Kemenperin)",
                 "MIND ID"
+              ]
+            },
+            {
+              "name": "Coordinating Ministry for Economic Affairs (Kemenko Perekonomian)",
+              "role": "Coordinates economic, investment and international trade policy affecting downstream minerals; not mining licensor.",
+              "source": "https://www.ekon.go.id/publikasi/detail/7150/dongkrak-pertumbuhan-ekonomi-menko-airlangga-perkuat-kinerja-ekspor",
+              "lead": "Airlangga Hartarto · official source Oct 2026",
+              "person_name": "Airlangga Hartarto",
+              "verified": "2026-10-16",
+              "scope": "Coordinating ministry, not operational shareholder.",
+              "authority": "Coordinates economic, investment and international trade policy affecting downstream minerals; not mining licensor.",
+              "kind": "National policy / coordination",
+              "evidence_status": "Named officeholder verified from original government source",
+              "connections": [
+                "Ministry of Industry (Kemenperin)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Ministry of National Development Planning (PPN/Bappenas)",
+              "role": "National planning and evaluation of mineral downstreaming, infrastructure and industrial value chains under RPJMN/RKP.",
+              "source": "https://www.bappenas.go.id/struktur-organisasi",
+              "lead": "Rachmat Pambudy · official source Oct 2026",
+              "person_name": "Rachmat Pambudy",
+              "verified": "2026-10-16",
+              "scope": "Planning and monitoring, not site-specific project operator.",
+              "authority": "National planning and evaluation of mineral downstreaming, infrastructure and industrial value chains under RPJMN/RKP.",
+              "kind": "National policy / coordination",
+              "evidence_status": "Named officeholder verified from original government source",
+              "connections": [
+                "Ministry of Industry (Kemenperin)",
+                "Ministry of Investment / BKPM"
               ]
             }
           ]
@@ -1054,6 +1086,38 @@
               "connections": [
                 "Ministry of Communication and Digital Affairs (Komdigi)",
                 "Ministry of Energy and Mineral Resources (ESDM)",
+                "Ministry of Investment / BKPM"
+              ]
+            },
+            {
+              "name": "Coordinating Ministry for Economic Affairs (Kemenko Perekonomian)",
+              "role": "Coordinates the investment climate and economic policy for digital industry, AI services and data center competitiveness.",
+              "source": "https://www.ekon.go.id/publikasi/detail/7150/dongkrak-pertumbuhan-ekonomi-menko-airlangga-perkuat-kinerja-ekspor",
+              "lead": "Airlangga Hartarto · official source Oct 2026",
+              "person_name": "Airlangga Hartarto",
+              "verified": "2026-10-16",
+              "scope": "Economic coordination, not data-center regulator.",
+              "authority": "Coordinates the investment climate and economic policy for digital industry, AI services and data center competitiveness.",
+              "kind": "National policy / coordination",
+              "evidence_status": "Named officeholder verified from original government source",
+              "connections": [
+                "Ministry of Investment / BKPM",
+                "Ministry of Communication and Digital Affairs (Komdigi)"
+              ]
+            },
+            {
+              "name": "Ministry of National Development Planning (PPN/Bappenas)",
+              "role": "National planning of digital transformation, energy and connectivity infrastructure and human resources, under RPJMN/RKP.",
+              "source": "https://www.bappenas.go.id/struktur-organisasi",
+              "lead": "Rachmat Pambudy · official source Oct 2026",
+              "person_name": "Rachmat Pambudy",
+              "verified": "2026-10-16",
+              "scope": "National planning, not Komdigi operational chain.",
+              "authority": "National planning of digital transformation, energy and connectivity infrastructure and human resources, under RPJMN/RKP.",
+              "kind": "National policy / coordination",
+              "evidence_status": "Named officeholder verified from original government source",
+              "connections": [
+                "Ministry of Communication and Digital Affairs (Komdigi)",
                 "Ministry of Investment / BKPM"
               ]
             }
