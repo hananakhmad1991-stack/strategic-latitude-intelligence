@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-15T23:21:10.101323+00:00",
+  "checked_at_utc": "2026-10-15T23:23:13.044389+00:00",
   "status": "ok",
   "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
   "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
@@ -123,12 +123,12 @@
       "name": "WTI crude futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 96.13,
+      "value": 96.14,
       "previous": 105.83,
-      "change": -9.7,
-      "change_percent": -9.1656,
+      "change": -9.69,
+      "change_percent": -9.1562,
       "unit": "USD/bbl",
-      "observed_at_utc": "2026-10-15T23:09:41+00:00",
+      "observed_at_utc": "2026-10-15T23:12:35+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/CL%3DF",
       "symbol": "CL=F",
@@ -225,7 +225,7 @@
         },
         {
           "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 96.129997
+          "value": 96.139999
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -235,12 +235,12 @@
       "name": "US natural gas futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 3.214,
+      "value": 3.215,
       "previous": 2.919,
-      "change": 0.295,
-      "change_percent": 10.1062,
+      "change": 0.296,
+      "change_percent": 10.1405,
       "unit": "USD/MMBtu",
-      "observed_at_utc": "2026-10-15T23:10:12+00:00",
+      "observed_at_utc": "2026-10-15T23:11:30+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/NG%3DF",
       "symbol": "NG=F",
@@ -337,7 +337,7 @@
         },
         {
           "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 3.214
+          "value": 3.215
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -347,12 +347,12 @@
       "name": "Copper futures (COMEX)",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 6.56,
+      "value": 6.5605,
       "previous": 6.3685,
-      "change": 0.1915,
-      "change_percent": 3.007,
+      "change": 0.192,
+      "change_percent": 3.0148,
       "unit": "USD/lb",
-      "observed_at_utc": "2026-10-15T23:11:00+00:00",
+      "observed_at_utc": "2026-10-15T23:13:05+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/HG%3DF",
       "symbol": "HG=F",
@@ -449,7 +449,7 @@
         },
         {
           "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 6.56
+          "value": 6.5605
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -459,12 +459,12 @@
       "name": "Gold futures",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 4185.3,
+      "value": 4185.0,
       "previous": 4332.8,
-      "change": -147.5,
-      "change_percent": -3.4043,
+      "change": -147.8,
+      "change_percent": -3.4112,
       "unit": "USD/troy oz",
-      "observed_at_utc": "2026-10-15T23:11:06+00:00",
+      "observed_at_utc": "2026-10-15T23:13:12+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/GC%3DF",
       "symbol": "GC=F",
@@ -561,7 +561,7 @@
         },
         {
           "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 4185.299805
+          "value": 4185.0
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -571,12 +571,12 @@
       "name": "Silver futures",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 57.4,
+      "value": 57.41,
       "previous": 63.236,
-      "change": -5.836,
-      "change_percent": -9.2289,
+      "change": -5.826,
+      "change_percent": -9.2131,
       "unit": "USD/troy oz",
-      "observed_at_utc": "2026-10-15T23:11:00+00:00",
+      "observed_at_utc": "2026-10-15T23:12:00+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/SI%3DF",
       "symbol": "SI=F",
@@ -673,7 +673,7 @@
         },
         {
           "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 57.400002
+          "value": 57.41
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -1387,18 +1387,18 @@
     {
       "id": "hba",
       "title": "Indonesia HBA · coal benchmark",
-      "period": "ESDM decree, periodically issued",
+      "period": "ESDM · 1–15 October 2026 · decree 384.K/MB.01/MEM.B/2026; check for later issues",
       "value": null,
-      "url": "https://jdih.esdm.go.id/",
-      "note": "Not Australian thermal coal futures; do not substitute IMF Australia price."
+      "url": "https://jdih.esdm.go.id/dokumen/view?id=2827",
+      "note": "Not Australian thermal coal futures; do not substitute IMF Australia price. Follow authoritative newest decree."
     },
     {
       "id": "hma",
       "title": "Indonesia HMA · metal benchmark",
-      "period": "ESDM decree, periodically issued",
+      "period": "ESDM · 1–15 October 2026 · decree 384.K/MB.01/MEM.B/2026; check for later issues",
       "value": null,
-      "url": "https://jdih.esdm.go.id/",
-      "note": "Regulatory benchmark. Check relevant commodity/period and decree."
+      "url": "https://jdih.esdm.go.id/dokumen/view?id=2827",
+      "note": "Metal-specific decree period benchmark; not live LME nickel."
     },
     {
       "id": "icp",
