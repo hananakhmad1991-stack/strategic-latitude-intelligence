@@ -1,0 +1,32 @@
+name: SLI AI monitoring and source QA
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 2,14 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: sli-ai-monitoring
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Refresh attributed AI monitoring leads
+        run: python scripts/update_ai_monitoring.py
+      - name: Verify no unsupported states or broken dataset schemas
+        run: python scripts/verify_sli_data.py
+      - name: Publish only changed source observations
+        run: |
+          git config user.name "sli-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/ai-monitoring.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh dated AI monitoring leads"
+            git push
+          fi
