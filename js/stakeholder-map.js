@@ -129,7 +129,9 @@ function layerGraph(svg,layer,index,select,back,selectedName){
   const [a,b]=splitName(p.a.name,29);
   text(card,x-w/2+15,y-(b?12:1),a,{fill:"#f7fafb","font-size":11.2,"font-weight":700});
   if(b)text(card,x-w/2+15,y+4,b,{fill:"#edf3f8","font-size":10.8,"font-weight":650});
-  text(card,x-w/2+15,y+25,trim(p.a.scope||p.a.kind,35),{fill:active?"#eac985":"#9eb7cb","font-size":9.6});
+  const person=String(p.a.person_name||"").trim();
+  const label=person&&!/^(president director|head of|leadership|investor|minister|board|agency|institution|office)/i.test(person)?person:(p.a.scope||p.a.kind);
+  text(card,x-w/2+15,y+25,trim(label,35),{fill:active?"#eac985":"#9eb7cb","font-size":10.2,"font-weight":person===label?720:500});
   interactive(card,()=>select(p.a.name),"Inspect "+p.a.name+" — "+(p.a.lead||""));
   card.append(sv("title",{},p.a.name+"\n"+(p.a.lead||"")));
   svg.append(card);
