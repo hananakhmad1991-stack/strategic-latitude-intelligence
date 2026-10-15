@@ -1,21 +1,10 @@
 {
-  "checked_at_utc": "2026-10-15T00:05:10.953632+00:00",
+  "checked_at_utc": "2026-10-15T00:07:26.896489+00:00",
   "verification_method": "Dual official cabinet + ministry-site name agreement for auto-updating ministers; other offices are monitored as source status and require role-specific corroboration.",
   "current_actor_count": 17,
   "official_sources_checked": 13,
   "verified_auto_changes": [],
-  "requires_review": [
-    {
-      "actor": "Kementerian Investasi dan Hilirisasi / BKPM",
-      "candidate": "Rosan Perkasa Roeslani",
-      "previous": "Rosan Roeslani · Minister of Investment/Head of BKPM (14 Oct 2026 presidential meeting)",
-      "reason": "Cabinet candidate not corroborated by ministerial page",
-      "sources": [
-        "https://setkab.go.id/profil-kabinet/",
-        "https://www.bkpm.go.id"
-      ]
-    }
-  ],
+  "requires_review": [],
   "checks": [
     {
       "actor": "Kementerian Lingkungan Hidup",
@@ -28,7 +17,7 @@
     {
       "actor": "Kementerian Keuangan",
       "primary_source": "https://setkab.go.id/profil-kabinet/",
-      "corroboration_source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
+      "corroboration_source": "https://www.kemenkeu.go.id/en/profile/profile-pejabat/menteri-keuangan",
       "candidate": "Suahasil Nazara",
       "corroborated": false,
       "status": "requires-review"
@@ -59,24 +48,6 @@
       "status": "requires-review"
     },
     {
-      "actor": "Ditjen Migas — ESDM",
-      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
-      "status": "source-available-review-needed",
-      "bytes_read": 35905
-    },
-    {
-      "actor": "Ditjen EBTKE — ESDM",
-      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
-      "status": "source-available-review-needed",
-      "bytes_read": 35905
-    },
-    {
-      "actor": "Ditjen Ketenagalistrikan — ESDM",
-      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
-      "status": "source-available-review-needed",
-      "bytes_read": 35905
-    },
-    {
       "actor": "SKK Migas",
       "primary_source": "https://www.skkmigas.go.id/",
       "status": "source-unavailable",
@@ -105,6 +76,27 @@
       "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
       "status": "source-available-review-needed",
       "bytes_read": 35905
+    },
+    {
+      "actor": "Ditjen Migas — ESDM",
+      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+      "candidate": "Laode Sulaeman",
+      "verification": "Direct official ESDM role-linked current leadership profile",
+      "status": "confirmed-current"
+    },
+    {
+      "actor": "Ditjen EBTKE — ESDM",
+      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+      "candidate": "Eniya Listiani Dewi",
+      "verification": "Direct official ESDM role-linked current leadership profile",
+      "status": "confirmed-current"
+    },
+    {
+      "actor": "Ditjen Ketenagalistrikan — ESDM",
+      "primary_source": "https://www.esdm.go.id/id/profil/profil-pimpinan",
+      "candidate": "Tri Winarno",
+      "verification": "Direct official ESDM role-linked current leadership profile",
+      "status": "confirmed-current"
     }
   ],
   "errors": [
