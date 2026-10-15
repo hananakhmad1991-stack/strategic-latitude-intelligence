@@ -7,8 +7,11 @@ const section=(parent,label,text)=>{const block=E("div","inv-actor-section");blo
 function tableBlock(root,headers){const holder=E("div","pf-table-wrap"),table=E("table"),thead=E("thead"),tr=E("tr");headers.forEach(h=>tr.append(E("th",null,h)));thead.append(tr);table.append(thead);const body=E("tbody");table.append(body);holder.append(table);root.append(holder);return body}
 function td(row,text){const cell=E("td",null,text);row.append(cell);return cell}
 function assetJump(parent,assetId){
- const a=E("a",null,"Asset ↗");a.href="#inv-assets";
- a.addEventListener("click",evt=>{const target=document.getElementById("inv-assets");if(target){evt.preventDefault();target.scrollIntoView({behavior:"smooth",block:"start"})}});
+ const a=E("a",null,"Asset dossier ↗");a.href="#inv-assets";
+ a.addEventListener("click",evt=>{
+  const target=document.getElementById("investmentAssetsRoot");
+  if(target){evt.preventDefault();target.dispatchEvent(new CustomEvent("sli:openinvestmentasset",{detail:{id:assetId}}))}
+ });
  parent.append(a);
 }
 window.initSLIInvestmentActors=async function(){
@@ -28,7 +31,7 @@ window.initSLIInvestmentActors=async function(){
   pCards.replaceChildren();pCount.textContent=rows.length+" of "+dataset.actors.length+" sourced actors shown";
   for(const x of rows){const c=E("article","inv-actor-card");c.append(E("div","eyebrow",x.role_type+" · "+x.sector),E("h4",null,x.name),E("p","inv-actor-position",x.role+" · "+x.organisation));
    c.append(E("p","tr-detail",x.company_connection));const ul=E("p","tr-detail","Ownership classification: "+x.ownership_class);c.append(ul);
-   const foot=E("div","inv-actor-foot");foot.append(E("span",null,"As documented: "+x.evidence_date),link(x.source_url,"Company / regulator source"));if(x.asset_ids?.length)assetJump(foot,x.asset_ids[0]);c.append(foot);pCards.append(c)}
+   const foot=E("div","inv-actor-foot");foot.append(E("span",null,"As documented: "+x.evidence_date),link(x.source_url,"Company / regulator source"));if(x.asset_ids?.length)x.asset_ids.forEach(id=>assetJump(foot,id));c.append(foot);pCards.append(c)}
   if(!rows.length)pCards.append(E("p","tr-detail","No actors match these filters. The register is an explicitly selected sample, not a comprehensive BO database."));
  }
  sector.addEventListener("change",renderPeople);query.addEventListener("input",renderPeople);renderPeople();
@@ -37,7 +40,7 @@ window.initSLIInvestmentActors=async function(){
  const eLabel=E("label",null,"EV brand or model");eLabel.append(eQ);eControls.append(eLabel);brands.append(eControls);
  const eTable=tableBlock(brands,["Brand / origin","Local legal / commercial entity","Models marketed","Production in Indonesia","Investment & source"]);let eRows=dataset.brands;
  function renderBrands(){eRows=dataset.brands.filter(x=>[x.brand,x.origin,x.models.join(" "),x.indonesian_entity].join(" ").toLowerCase().includes(eQ.value.toLowerCase()));eTable.replaceChildren();
-  for(const b of eRows){const tr=E("tr");td(tr,b.brand+" · "+b.origin);td(tr,b.indonesian_entity);td(tr,b.models.join(" · "));td(tr,b.manufacturing_status);const c=E("td");c.append(E("div",null,b.investment),link(b.source_url,"Primary company release"));tr.append(c);eTable.append(tr)}
+  for(const b of eRows){const tr=E("tr");td(tr,b.brand+" · "+b.origin);td(tr,b.indonesian_entity);td(tr,b.models.join(" · "));td(tr,b.manufacturing_status);const c=E("td");c.append(E("div",null,b.investment),link(b.source_url,"Primary company release"));assetJump(c,b.asset_ref);tr.append(c);eTable.append(tr)}
   if(!eRows.length){const tr=E("tr"),c=td(tr,"No brands match filters");c.colSpan=5;eTable.append(tr)}
  }
  eQ.addEventListener("input",renderBrands);renderBrands();
