@@ -45,6 +45,8 @@ jobs:
           d=json.loads(Path('data/daily-energy-assessment.json').read_text())
           assert len(d['points'])==7
           assert not any('Rp10,/litre' in json.dumps(p) for p in d['points'])
-          assert d['assessment_date_wib']<=d['generated_at_utc'][:10] or d['assessment_date_wib']>d['generated_at_utc'][:10]
+          from datetime import date,datetime
+          date.fromisoformat(d['assessment_date_wib'])
+          datetime.fromisoformat(d['generated_at_utc'].replace('Z','+00:00'))
           print('Dated assessment validates; no malformed numeric string')
           PY
