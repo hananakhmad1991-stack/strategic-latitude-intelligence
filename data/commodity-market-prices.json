@@ -1,37 +1,1412 @@
 {
   "schema_version": 1,
-  "checked_at_utc": null,
-  "status": "awaiting_first_scan",
-  "market_data_notice": "Indicative public futures can be delayed; IMF/FRED reference values are monthly averages. Neither is a licensed real-time LME feed.",
-  "license_notice": "Verify third-party rights before commercial distribution.",
-  "cadence": "GitHub every 30 minutes, browser refreshes every three minutes",
-  "quotes": [],
+  "checked_at_utc": "2026-10-15T23:21:10.101323+00:00",
+  "status": "ok",
+  "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
+  "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
+  "cadence": "Automated every 30 minutes subject to GitHub Action scheduling. Browser checks published raw repository JSON every 3 minutes.",
+  "quotes": [
+    {
+      "id": "brent_future",
+      "name": "Brent crude futures",
+      "sector": "energy",
+      "tier": "indicative_futures",
+      "value": 105.62,
+      "previous": 108.75,
+      "change": -3.13,
+      "change_percent": -2.8782,
+      "unit": "USD/bbl",
+      "observed_at_utc": "2026-10-15T23:06:18+00:00",
+      "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
+      "source_url": "https://finance.yahoo.com/quote/BZ%3DF",
+      "symbol": "BZ=F",
+      "market": "ICE Brent continuous",
+      "refresh_class": "Indicative / may be delayed",
+      "history": [
+        {
+          "observed_at_utc": "2026-09-15T04:00:00+00:00",
+          "value": 108.75
+        },
+        {
+          "observed_at_utc": "2026-09-16T04:00:00+00:00",
+          "value": 105.830002
+        },
+        {
+          "observed_at_utc": "2026-09-17T04:00:00+00:00",
+          "value": 104.82
+        },
+        {
+          "observed_at_utc": "2026-09-18T04:00:00+00:00",
+          "value": 103.870003
+        },
+        {
+          "observed_at_utc": "2026-09-21T04:00:00+00:00",
+          "value": 100.339996
+        },
+        {
+          "observed_at_utc": "2026-09-22T04:00:00+00:00",
+          "value": 99.25
+        },
+        {
+          "observed_at_utc": "2026-09-23T04:00:00+00:00",
+          "value": 103.080002
+        },
+        {
+          "observed_at_utc": "2026-09-24T04:00:00+00:00",
+          "value": 106.599998
+        },
+        {
+          "observed_at_utc": "2026-09-25T04:00:00+00:00",
+          "value": 104.32
+        },
+        {
+          "observed_at_utc": "2026-09-28T04:00:00+00:00",
+          "value": 105.279999
+        },
+        {
+          "observed_at_utc": "2026-09-29T04:00:00+00:00",
+          "value": 102.589996
+        },
+        {
+          "observed_at_utc": "2026-09-30T04:00:00+00:00",
+          "value": 103.529999
+        },
+        {
+          "observed_at_utc": "2026-10-01T04:00:00+00:00",
+          "value": 102.309998
+        },
+        {
+          "observed_at_utc": "2026-10-02T04:00:00+00:00",
+          "value": 102.25
+        },
+        {
+          "observed_at_utc": "2026-10-05T04:00:00+00:00",
+          "value": 100.32
+        },
+        {
+          "observed_at_utc": "2026-10-06T04:00:00+00:00",
+          "value": 100.580002
+        },
+        {
+          "observed_at_utc": "2026-10-07T04:00:00+00:00",
+          "value": 100.199997
+        },
+        {
+          "observed_at_utc": "2026-10-08T04:00:00+00:00",
+          "value": 104.279999
+        },
+        {
+          "observed_at_utc": "2026-10-09T04:00:00+00:00",
+          "value": 104.720001
+        },
+        {
+          "observed_at_utc": "2026-10-12T04:00:00+00:00",
+          "value": 106.650002
+        },
+        {
+          "observed_at_utc": "2026-10-13T04:00:00+00:00",
+          "value": 105.690002
+        },
+        {
+          "observed_at_utc": "2026-10-14T04:00:00+00:00",
+          "value": 106.059998
+        },
+        {
+          "observed_at_utc": "2026-10-15T04:00:00+00:00",
+          "value": 105.620003
+        }
+      ],
+      "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
+    },
+    {
+      "id": "wti_future",
+      "name": "WTI crude futures",
+      "sector": "energy",
+      "tier": "indicative_futures",
+      "value": 96.13,
+      "previous": 105.83,
+      "change": -9.7,
+      "change_percent": -9.1656,
+      "unit": "USD/bbl",
+      "observed_at_utc": "2026-10-15T23:09:41+00:00",
+      "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
+      "source_url": "https://finance.yahoo.com/quote/CL%3DF",
+      "symbol": "CL=F",
+      "market": "NYMEX WTI continuous",
+      "refresh_class": "Indicative / may be delayed",
+      "history": [
+        {
+          "observed_at_utc": "2026-09-15T04:00:00+00:00",
+          "value": 105.830002
+        },
+        {
+          "observed_at_utc": "2026-09-16T04:00:00+00:00",
+          "value": 102.43
+        },
+        {
+          "observed_at_utc": "2026-09-17T04:00:00+00:00",
+          "value": 101.910004
+        },
+        {
+          "observed_at_utc": "2026-09-18T04:00:00+00:00",
+          "value": 100.300003
+        },
+        {
+          "observed_at_utc": "2026-09-21T04:00:00+00:00",
+          "value": 95.779999
+        },
+        {
+          "observed_at_utc": "2026-09-22T04:00:00+00:00",
+          "value": 94.589996
+        },
+        {
+          "observed_at_utc": "2026-09-23T04:00:00+00:00",
+          "value": 92.160004
+        },
+        {
+          "observed_at_utc": "2026-09-24T04:00:00+00:00",
+          "value": 94.610001
+        },
+        {
+          "observed_at_utc": "2026-09-25T04:00:00+00:00",
+          "value": 92.410004
+        },
+        {
+          "observed_at_utc": "2026-09-28T04:00:00+00:00",
+          "value": 92.599998
+        },
+        {
+          "observed_at_utc": "2026-09-29T04:00:00+00:00",
+          "value": 89.379997
+        },
+        {
+          "observed_at_utc": "2026-09-30T04:00:00+00:00",
+          "value": 90.419998
+        },
+        {
+          "observed_at_utc": "2026-10-01T04:00:00+00:00",
+          "value": 92.870003
+        },
+        {
+          "observed_at_utc": "2026-10-02T04:00:00+00:00",
+          "value": 91.110001
+        },
+        {
+          "observed_at_utc": "2026-10-05T04:00:00+00:00",
+          "value": 89.43
+        },
+        {
+          "observed_at_utc": "2026-10-06T04:00:00+00:00",
+          "value": 89.440002
+        },
+        {
+          "observed_at_utc": "2026-10-07T04:00:00+00:00",
+          "value": 88.279999
+        },
+        {
+          "observed_at_utc": "2026-10-08T04:00:00+00:00",
+          "value": 91.489998
+        },
+        {
+          "observed_at_utc": "2026-10-09T04:00:00+00:00",
+          "value": 91.849998
+        },
+        {
+          "observed_at_utc": "2026-10-12T04:00:00+00:00",
+          "value": 93.739998
+        },
+        {
+          "observed_at_utc": "2026-10-13T04:00:00+00:00",
+          "value": 94.139999
+        },
+        {
+          "observed_at_utc": "2026-10-14T04:00:00+00:00",
+          "value": 95.089996
+        },
+        {
+          "observed_at_utc": "2026-10-15T04:00:00+00:00",
+          "value": 96.129997
+        }
+      ],
+      "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
+    },
+    {
+      "id": "natural_gas_future",
+      "name": "US natural gas futures",
+      "sector": "energy",
+      "tier": "indicative_futures",
+      "value": 3.214,
+      "previous": 2.919,
+      "change": 0.295,
+      "change_percent": 10.1062,
+      "unit": "USD/MMBtu",
+      "observed_at_utc": "2026-10-15T23:10:12+00:00",
+      "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
+      "source_url": "https://finance.yahoo.com/quote/NG%3DF",
+      "symbol": "NG=F",
+      "market": "NYMEX Henry Hub continuous",
+      "refresh_class": "Indicative / may be delayed",
+      "history": [
+        {
+          "observed_at_utc": "2026-09-15T04:00:00+00:00",
+          "value": 2.919
+        },
+        {
+          "observed_at_utc": "2026-09-16T04:00:00+00:00",
+          "value": 2.891
+        },
+        {
+          "observed_at_utc": "2026-09-17T04:00:00+00:00",
+          "value": 2.901
+        },
+        {
+          "observed_at_utc": "2026-09-18T04:00:00+00:00",
+          "value": 2.912
+        },
+        {
+          "observed_at_utc": "2026-09-21T04:00:00+00:00",
+          "value": 2.836
+        },
+        {
+          "observed_at_utc": "2026-09-22T04:00:00+00:00",
+          "value": 2.965
+        },
+        {
+          "observed_at_utc": "2026-09-23T04:00:00+00:00",
+          "value": 3.023
+        },
+        {
+          "observed_at_utc": "2026-09-24T04:00:00+00:00",
+          "value": 3.297
+        },
+        {
+          "observed_at_utc": "2026-09-25T04:00:00+00:00",
+          "value": 3.196
+        },
+        {
+          "observed_at_utc": "2026-09-28T04:00:00+00:00",
+          "value": 3.0
+        },
+        {
+          "observed_at_utc": "2026-09-29T04:00:00+00:00",
+          "value": 3.011
+        },
+        {
+          "observed_at_utc": "2026-09-30T04:00:00+00:00",
+          "value": 3.026
+        },
+        {
+          "observed_at_utc": "2026-10-01T04:00:00+00:00",
+          "value": 2.967
+        },
+        {
+          "observed_at_utc": "2026-10-02T04:00:00+00:00",
+          "value": 3.035
+        },
+        {
+          "observed_at_utc": "2026-10-05T04:00:00+00:00",
+          "value": 3.066
+        },
+        {
+          "observed_at_utc": "2026-10-06T04:00:00+00:00",
+          "value": 3.114
+        },
+        {
+          "observed_at_utc": "2026-10-07T04:00:00+00:00",
+          "value": 3.203
+        },
+        {
+          "observed_at_utc": "2026-10-08T04:00:00+00:00",
+          "value": 3.168
+        },
+        {
+          "observed_at_utc": "2026-10-09T04:00:00+00:00",
+          "value": 3.22
+        },
+        {
+          "observed_at_utc": "2026-10-12T04:00:00+00:00",
+          "value": 3.167
+        },
+        {
+          "observed_at_utc": "2026-10-13T04:00:00+00:00",
+          "value": 3.283
+        },
+        {
+          "observed_at_utc": "2026-10-14T04:00:00+00:00",
+          "value": 3.198
+        },
+        {
+          "observed_at_utc": "2026-10-15T04:00:00+00:00",
+          "value": 3.214
+        }
+      ],
+      "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
+    },
+    {
+      "id": "copper_future",
+      "name": "Copper futures (COMEX)",
+      "sector": "minerals",
+      "tier": "indicative_futures",
+      "value": 6.56,
+      "previous": 6.3685,
+      "change": 0.1915,
+      "change_percent": 3.007,
+      "unit": "USD/lb",
+      "observed_at_utc": "2026-10-15T23:11:00+00:00",
+      "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
+      "source_url": "https://finance.yahoo.com/quote/HG%3DF",
+      "symbol": "HG=F",
+      "market": "COMEX HG; not LME copper",
+      "refresh_class": "Indicative / may be delayed",
+      "history": [
+        {
+          "observed_at_utc": "2026-09-15T04:00:00+00:00",
+          "value": 6.3685
+        },
+        {
+          "observed_at_utc": "2026-09-16T04:00:00+00:00",
+          "value": 6.4315
+        },
+        {
+          "observed_at_utc": "2026-09-17T04:00:00+00:00",
+          "value": 6.5865
+        },
+        {
+          "observed_at_utc": "2026-09-18T04:00:00+00:00",
+          "value": 6.615
+        },
+        {
+          "observed_at_utc": "2026-09-21T04:00:00+00:00",
+          "value": 6.6865
+        },
+        {
+          "observed_at_utc": "2026-09-22T04:00:00+00:00",
+          "value": 6.7595
+        },
+        {
+          "observed_at_utc": "2026-09-23T04:00:00+00:00",
+          "value": 6.678
+        },
+        {
+          "observed_at_utc": "2026-09-24T04:00:00+00:00",
+          "value": 6.7185
+        },
+        {
+          "observed_at_utc": "2026-09-25T04:00:00+00:00",
+          "value": 6.6955
+        },
+        {
+          "observed_at_utc": "2026-09-28T04:00:00+00:00",
+          "value": 6.566
+        },
+        {
+          "observed_at_utc": "2026-09-29T04:00:00+00:00",
+          "value": 6.5435
+        },
+        {
+          "observed_at_utc": "2026-09-30T04:00:00+00:00",
+          "value": 6.559
+        },
+        {
+          "observed_at_utc": "2026-10-01T04:00:00+00:00",
+          "value": 6.482
+        },
+        {
+          "observed_at_utc": "2026-10-02T04:00:00+00:00",
+          "value": 6.492
+        },
+        {
+          "observed_at_utc": "2026-10-05T04:00:00+00:00",
+          "value": 6.5855
+        },
+        {
+          "observed_at_utc": "2026-10-06T04:00:00+00:00",
+          "value": 6.5945
+        },
+        {
+          "observed_at_utc": "2026-10-07T04:00:00+00:00",
+          "value": 6.5965
+        },
+        {
+          "observed_at_utc": "2026-10-08T04:00:00+00:00",
+          "value": 6.519
+        },
+        {
+          "observed_at_utc": "2026-10-09T04:00:00+00:00",
+          "value": 6.6425
+        },
+        {
+          "observed_at_utc": "2026-10-12T04:00:00+00:00",
+          "value": 6.6985
+        },
+        {
+          "observed_at_utc": "2026-10-13T04:00:00+00:00",
+          "value": 6.678
+        },
+        {
+          "observed_at_utc": "2026-10-14T04:00:00+00:00",
+          "value": 6.6115
+        },
+        {
+          "observed_at_utc": "2026-10-15T04:00:00+00:00",
+          "value": 6.56
+        }
+      ],
+      "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
+    },
+    {
+      "id": "gold_future",
+      "name": "Gold futures",
+      "sector": "minerals",
+      "tier": "indicative_futures",
+      "value": 4185.3,
+      "previous": 4332.8,
+      "change": -147.5,
+      "change_percent": -3.4043,
+      "unit": "USD/troy oz",
+      "observed_at_utc": "2026-10-15T23:11:06+00:00",
+      "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
+      "source_url": "https://finance.yahoo.com/quote/GC%3DF",
+      "symbol": "GC=F",
+      "market": "COMEX GC",
+      "refresh_class": "Indicative / may be delayed",
+      "history": [
+        {
+          "observed_at_utc": "2026-09-15T04:00:00+00:00",
+          "value": 4332.799805
+        },
+        {
+          "observed_at_utc": "2026-09-16T04:00:00+00:00",
+          "value": 4387.5
+        },
+        {
+          "observed_at_utc": "2026-09-17T04:00:00+00:00",
+          "value": 4399.700195
+        },
+        {
+          "observed_at_utc": "2026-09-18T04:00:00+00:00",
+          "value": 4424.899902
+        },
+        {
+          "observed_at_utc": "2026-09-21T04:00:00+00:00",
+          "value": 4383.899902
+        },
+        {
+          "observed_at_utc": "2026-09-22T04:00:00+00:00",
+          "value": 4376.399902
+        },
+        {
+          "observed_at_utc": "2026-09-23T04:00:00+00:00",
+          "value": 4318.399902
+        },
+        {
+          "observed_at_utc": "2026-09-24T04:00:00+00:00",
+          "value": 4298.0
+        },
+        {
+          "observed_at_utc": "2026-09-25T04:00:00+00:00",
+          "value": 4321.200195
+        },
+        {
+          "observed_at_utc": "2026-09-28T04:00:00+00:00",
+          "value": 4168.399902
+        },
+        {
+          "observed_at_utc": "2026-09-29T04:00:00+00:00",
+          "value": 4179.700195
+        },
+        {
+          "observed_at_utc": "2026-09-30T04:00:00+00:00",
+          "value": 4186.700195
+        },
+        {
+          "observed_at_utc": "2026-10-01T04:00:00+00:00",
+          "value": 4202.299805
+        },
+        {
+          "observed_at_utc": "2026-10-02T04:00:00+00:00",
+          "value": 4162.299805
+        },
+        {
+          "observed_at_utc": "2026-10-05T04:00:00+00:00",
+          "value": 4156.799805
+        },
+        {
+          "observed_at_utc": "2026-10-06T04:00:00+00:00",
+          "value": 4187.100098
+        },
+        {
+          "observed_at_utc": "2026-10-07T04:00:00+00:00",
+          "value": 4140.700195
+        },
+        {
+          "observed_at_utc": "2026-10-08T04:00:00+00:00",
+          "value": 4157.0
+        },
+        {
+          "observed_at_utc": "2026-10-09T04:00:00+00:00",
+          "value": 4216.299805
+        },
+        {
+          "observed_at_utc": "2026-10-12T04:00:00+00:00",
+          "value": 4190.600098
+        },
+        {
+          "observed_at_utc": "2026-10-13T04:00:00+00:00",
+          "value": 4177.299805
+        },
+        {
+          "observed_at_utc": "2026-10-14T04:00:00+00:00",
+          "value": 4107.899902
+        },
+        {
+          "observed_at_utc": "2026-10-15T04:00:00+00:00",
+          "value": 4185.299805
+        }
+      ],
+      "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
+    },
+    {
+      "id": "silver_future",
+      "name": "Silver futures",
+      "sector": "minerals",
+      "tier": "indicative_futures",
+      "value": 57.4,
+      "previous": 63.236,
+      "change": -5.836,
+      "change_percent": -9.2289,
+      "unit": "USD/troy oz",
+      "observed_at_utc": "2026-10-15T23:11:00+00:00",
+      "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
+      "source_url": "https://finance.yahoo.com/quote/SI%3DF",
+      "symbol": "SI=F",
+      "market": "COMEX SI",
+      "refresh_class": "Indicative / may be delayed",
+      "history": [
+        {
+          "observed_at_utc": "2026-09-15T04:00:00+00:00",
+          "value": 63.236
+        },
+        {
+          "observed_at_utc": "2026-09-16T04:00:00+00:00",
+          "value": 64.288002
+        },
+        {
+          "observed_at_utc": "2026-09-17T04:00:00+00:00",
+          "value": 65.470001
+        },
+        {
+          "observed_at_utc": "2026-09-18T04:00:00+00:00",
+          "value": 66.556
+        },
+        {
+          "observed_at_utc": "2026-09-21T04:00:00+00:00",
+          "value": 65.824997
+        },
+        {
+          "observed_at_utc": "2026-09-22T04:00:00+00:00",
+          "value": 65.931999
+        },
+        {
+          "observed_at_utc": "2026-09-23T04:00:00+00:00",
+          "value": 64.382004
+        },
+        {
+          "observed_at_utc": "2026-09-24T04:00:00+00:00",
+          "value": 63.457001
+        },
+        {
+          "observed_at_utc": "2026-09-25T04:00:00+00:00",
+          "value": 64.245003
+        },
+        {
+          "observed_at_utc": "2026-09-28T04:00:00+00:00",
+          "value": 61.220001
+        },
+        {
+          "observed_at_utc": "2026-09-29T04:00:00+00:00",
+          "value": 60.667999
+        },
+        {
+          "observed_at_utc": "2026-09-30T04:00:00+00:00",
+          "value": 60.098
+        },
+        {
+          "observed_at_utc": "2026-10-01T04:00:00+00:00",
+          "value": 60.724998
+        },
+        {
+          "observed_at_utc": "2026-10-02T04:00:00+00:00",
+          "value": 59.977001
+        },
+        {
+          "observed_at_utc": "2026-10-05T04:00:00+00:00",
+          "value": 60.868999
+        },
+        {
+          "observed_at_utc": "2026-10-06T04:00:00+00:00",
+          "value": 61.167999
+        },
+        {
+          "observed_at_utc": "2026-10-07T04:00:00+00:00",
+          "value": 59.898998
+        },
+        {
+          "observed_at_utc": "2026-10-08T04:00:00+00:00",
+          "value": 59.063999
+        },
+        {
+          "observed_at_utc": "2026-10-09T04:00:00+00:00",
+          "value": 60.669998
+        },
+        {
+          "observed_at_utc": "2026-10-12T04:00:00+00:00",
+          "value": 60.140999
+        },
+        {
+          "observed_at_utc": "2026-10-13T04:00:00+00:00",
+          "value": 59.160999
+        },
+        {
+          "observed_at_utc": "2026-10-14T04:00:00+00:00",
+          "value": 55.549999
+        },
+        {
+          "observed_at_utc": "2026-10-15T04:00:00+00:00",
+          "value": 57.400002
+        }
+      ],
+      "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
+    },
+    {
+      "id": "nickel",
+      "name": "Nickel · IMF monthly",
+      "sector": "minerals",
+      "tier": "monthly_reference",
+      "value": 16632.36136,
+      "previous": 17588.28545,
+      "change": -955.92409,
+      "change_percent": -5.435,
+      "unit": "USD/metric ton",
+      "observation_period": "2026-07",
+      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "source": "International Monetary Fund primary commodity prices via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/PNICKUSDM",
+      "symbol": "PNICKUSDM",
+      "market": "IMF world monthly benchmark; historical period average",
+      "refresh_class": "Monthly / delayed, NOT intraday",
+      "history": [
+        {
+          "observed_at_utc": "2024-08-01T00:00:00+00:00",
+          "value": 16303.28773
+        },
+        {
+          "observed_at_utc": "2024-09-01T00:00:00+00:00",
+          "value": 16167.67762
+        },
+        {
+          "observed_at_utc": "2024-10-01T00:00:00+00:00",
+          "value": 16765.80348
+        },
+        {
+          "observed_at_utc": "2024-11-01T00:00:00+00:00",
+          "value": 15726.94762
+        },
+        {
+          "observed_at_utc": "2024-12-01T00:00:00+00:00",
+          "value": 15438.65636
+        },
+        {
+          "observed_at_utc": "2025-01-01T00:00:00+00:00",
+          "value": 15374.06087
+        },
+        {
+          "observed_at_utc": "2025-02-01T00:00:00+00:00",
+          "value": 15287.031
+        },
+        {
+          "observed_at_utc": "2025-03-01T00:00:00+00:00",
+          "value": 16048.2019
+        },
+        {
+          "observed_at_utc": "2025-04-01T00:00:00+00:00",
+          "value": 15146.00227
+        },
+        {
+          "observed_at_utc": "2025-05-01T00:00:00+00:00",
+          "value": 15350.40318
+        },
+        {
+          "observed_at_utc": "2025-06-01T00:00:00+00:00",
+          "value": 15003.10762
+        },
+        {
+          "observed_at_utc": "2025-07-01T00:00:00+00:00",
+          "value": 15034.0187
+        },
+        {
+          "observed_at_utc": "2025-08-01T00:00:00+00:00",
+          "value": 14948.05667
+        },
+        {
+          "observed_at_utc": "2025-09-01T00:00:00+00:00",
+          "value": 15103.18364
+        },
+        {
+          "observed_at_utc": "2025-10-01T00:00:00+00:00",
+          "value": 15092.11435
+        },
+        {
+          "observed_at_utc": "2025-11-01T00:00:00+00:00",
+          "value": 14670.7685
+        },
+        {
+          "observed_at_utc": "2025-12-01T00:00:00+00:00",
+          "value": 14879.03
+        },
+        {
+          "observed_at_utc": "2026-01-01T00:00:00+00:00",
+          "value": 17710.86364
+        },
+        {
+          "observed_at_utc": "2026-02-01T00:00:00+00:00",
+          "value": 17173.1035
+        },
+        {
+          "observed_at_utc": "2026-03-01T00:00:00+00:00",
+          "value": 17076.29273
+        },
+        {
+          "observed_at_utc": "2026-04-01T00:00:00+00:00",
+          "value": 17864.91636
+        },
+        {
+          "observed_at_utc": "2026-05-01T00:00:00+00:00",
+          "value": 18792.74857
+        },
+        {
+          "observed_at_utc": "2026-06-01T00:00:00+00:00",
+          "value": 17588.28545
+        },
+        {
+          "observed_at_utc": "2026-07-01T00:00:00+00:00",
+          "value": 16632.36136
+        }
+      ],
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+    },
+    {
+      "id": "copper_monthly",
+      "name": "Copper · IMF monthly",
+      "sector": "minerals",
+      "tier": "monthly_reference",
+      "value": 13542.82087,
+      "previous": 13552.04091,
+      "change": -9.22004,
+      "change_percent": -0.068,
+      "unit": "USD/metric ton",
+      "observation_period": "2026-07",
+      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "source": "International Monetary Fund primary commodity prices via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/PCOPPUSDM",
+      "symbol": "PCOPPUSDM",
+      "market": "IMF world monthly benchmark; historical period average",
+      "refresh_class": "Monthly / delayed, NOT intraday",
+      "history": [
+        {
+          "observed_at_utc": "2024-08-01T00:00:00+00:00",
+          "value": 8981.11773
+        },
+        {
+          "observed_at_utc": "2024-09-01T00:00:00+00:00",
+          "value": 9259.12857
+        },
+        {
+          "observed_at_utc": "2024-10-01T00:00:00+00:00",
+          "value": 9533.9913
+        },
+        {
+          "observed_at_utc": "2024-11-01T00:00:00+00:00",
+          "value": 9075.72714
+        },
+        {
+          "observed_at_utc": "2024-12-01T00:00:00+00:00",
+          "value": 8909.90773
+        },
+        {
+          "observed_at_utc": "2025-01-01T00:00:00+00:00",
+          "value": 8976.68043
+        },
+        {
+          "observed_at_utc": "2025-02-01T00:00:00+00:00",
+          "value": 9330.975
+        },
+        {
+          "observed_at_utc": "2025-03-01T00:00:00+00:00",
+          "value": 9735.82333
+        },
+        {
+          "observed_at_utc": "2025-04-01T00:00:00+00:00",
+          "value": 9172.69591
+        },
+        {
+          "observed_at_utc": "2025-05-01T00:00:00+00:00",
+          "value": 9531.20091
+        },
+        {
+          "observed_at_utc": "2025-06-01T00:00:00+00:00",
+          "value": 9835.0681
+        },
+        {
+          "observed_at_utc": "2025-07-01T00:00:00+00:00",
+          "value": 9770.58043
+        },
+        {
+          "observed_at_utc": "2025-08-01T00:00:00+00:00",
+          "value": 9671.87571
+        },
+        {
+          "observed_at_utc": "2025-09-01T00:00:00+00:00",
+          "value": 9994.77318
+        },
+        {
+          "observed_at_utc": "2025-10-01T00:00:00+00:00",
+          "value": 10739.91826
+        },
+        {
+          "observed_at_utc": "2025-11-01T00:00:00+00:00",
+          "value": 10812.028
+        },
+        {
+          "observed_at_utc": "2025-12-01T00:00:00+00:00",
+          "value": 11790.96409
+        },
+        {
+          "observed_at_utc": "2026-01-01T00:00:00+00:00",
+          "value": 12986.60682
+        },
+        {
+          "observed_at_utc": "2026-02-01T00:00:00+00:00",
+          "value": 12951.345
+        },
+        {
+          "observed_at_utc": "2026-03-01T00:00:00+00:00",
+          "value": 12528.70955
+        },
+        {
+          "observed_at_utc": "2026-04-01T00:00:00+00:00",
+          "value": 12890.68773
+        },
+        {
+          "observed_at_utc": "2026-05-01T00:00:00+00:00",
+          "value": 13512.15619
+        },
+        {
+          "observed_at_utc": "2026-06-01T00:00:00+00:00",
+          "value": 13552.04091
+        },
+        {
+          "observed_at_utc": "2026-07-01T00:00:00+00:00",
+          "value": 13542.82087
+        }
+      ],
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+    },
+    {
+      "id": "aluminium",
+      "name": "Aluminium · IMF monthly",
+      "sector": "minerals",
+      "tier": "monthly_reference",
+      "value": 3158.265,
+      "previous": 3438.84727,
+      "change": -280.58227,
+      "change_percent": -8.1592,
+      "unit": "USD/metric ton",
+      "observation_period": "2026-07",
+      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "source": "International Monetary Fund primary commodity prices via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/PALUMUSDM",
+      "symbol": "PALUMUSDM",
+      "market": "IMF world monthly benchmark; historical period average",
+      "refresh_class": "Monthly / delayed, NOT intraday",
+      "history": [
+        {
+          "observed_at_utc": "2024-08-01T00:00:00+00:00",
+          "value": 2352.46727
+        },
+        {
+          "observed_at_utc": "2024-09-01T00:00:00+00:00",
+          "value": 2457.4781
+        },
+        {
+          "observed_at_utc": "2024-10-01T00:00:00+00:00",
+          "value": 2595.58304
+        },
+        {
+          "observed_at_utc": "2024-11-01T00:00:00+00:00",
+          "value": 2582.18857
+        },
+        {
+          "observed_at_utc": "2024-12-01T00:00:00+00:00",
+          "value": 2540.88227
+        },
+        {
+          "observed_at_utc": "2025-01-01T00:00:00+00:00",
+          "value": 2571.37043
+        },
+        {
+          "observed_at_utc": "2025-02-01T00:00:00+00:00",
+          "value": 2655.7725
+        },
+        {
+          "observed_at_utc": "2025-03-01T00:00:00+00:00",
+          "value": 2651.59857
+        },
+        {
+          "observed_at_utc": "2025-04-01T00:00:00+00:00",
+          "value": 2367.80045
+        },
+        {
+          "observed_at_utc": "2025-05-01T00:00:00+00:00",
+          "value": 2447.34409
+        },
+        {
+          "observed_at_utc": "2025-06-01T00:00:00+00:00",
+          "value": 2525.95905
+        },
+        {
+          "observed_at_utc": "2025-07-01T00:00:00+00:00",
+          "value": 2606.37087
+        },
+        {
+          "observed_at_utc": "2025-08-01T00:00:00+00:00",
+          "value": 2598.73571
+        },
+        {
+          "observed_at_utc": "2025-09-01T00:00:00+00:00",
+          "value": 2654.47909
+        },
+        {
+          "observed_at_utc": "2025-10-01T00:00:00+00:00",
+          "value": 2793.08696
+        },
+        {
+          "observed_at_utc": "2025-11-01T00:00:00+00:00",
+          "value": 2819.0615
+        },
+        {
+          "observed_at_utc": "2025-12-01T00:00:00+00:00",
+          "value": 2875.89773
+        },
+        {
+          "observed_at_utc": "2026-01-01T00:00:00+00:00",
+          "value": 3133.98273
+        },
+        {
+          "observed_at_utc": "2026-02-01T00:00:00+00:00",
+          "value": 3065.1885
+        },
+        {
+          "observed_at_utc": "2026-03-01T00:00:00+00:00",
+          "value": 3372.95273
+        },
+        {
+          "observed_at_utc": "2026-04-01T00:00:00+00:00",
+          "value": 3594.37909
+        },
+        {
+          "observed_at_utc": "2026-05-01T00:00:00+00:00",
+          "value": 3658.22143
+        },
+        {
+          "observed_at_utc": "2026-06-01T00:00:00+00:00",
+          "value": 3438.84727
+        },
+        {
+          "observed_at_utc": "2026-07-01T00:00:00+00:00",
+          "value": 3158.265
+        }
+      ],
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+    },
+    {
+      "id": "tin",
+      "name": "Tin · IMF monthly",
+      "sector": "minerals",
+      "tier": "monthly_reference",
+      "value": 52881.99864,
+      "previous": 53036.54545,
+      "change": -154.54682,
+      "change_percent": -0.2914,
+      "unit": "USD/metric ton",
+      "observation_period": "2026-07",
+      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "source": "International Monetary Fund primary commodity prices via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/PTINUSDM",
+      "symbol": "PTINUSDM",
+      "market": "IMF world monthly benchmark; historical period average",
+      "refresh_class": "Monthly / delayed, NOT intraday",
+      "history": [
+        {
+          "observed_at_utc": "2024-08-01T00:00:00+00:00",
+          "value": 31553.93955
+        },
+        {
+          "observed_at_utc": "2024-09-01T00:00:00+00:00",
+          "value": 31554.18238
+        },
+        {
+          "observed_at_utc": "2024-10-01T00:00:00+00:00",
+          "value": 32012.43435
+        },
+        {
+          "observed_at_utc": "2024-11-01T00:00:00+00:00",
+          "value": 29664.96857
+        },
+        {
+          "observed_at_utc": "2024-12-01T00:00:00+00:00",
+          "value": 28860.54591
+        },
+        {
+          "observed_at_utc": "2025-01-01T00:00:00+00:00",
+          "value": 29579.04304
+        },
+        {
+          "observed_at_utc": "2025-02-01T00:00:00+00:00",
+          "value": 31797.959
+        },
+        {
+          "observed_at_utc": "2025-03-01T00:00:00+00:00",
+          "value": 34179.64143
+        },
+        {
+          "observed_at_utc": "2025-04-01T00:00:00+00:00",
+          "value": 32303.49864
+        },
+        {
+          "observed_at_utc": "2025-05-01T00:00:00+00:00",
+          "value": 31944.38273
+        },
+        {
+          "observed_at_utc": "2025-06-01T00:00:00+00:00",
+          "value": 32544.02952
+        },
+        {
+          "observed_at_utc": "2025-07-01T00:00:00+00:00",
+          "value": 33610.25739
+        },
+        {
+          "observed_at_utc": "2025-08-01T00:00:00+00:00",
+          "value": 33834.96476
+        },
+        {
+          "observed_at_utc": "2025-09-01T00:00:00+00:00",
+          "value": 34528.05773
+        },
+        {
+          "observed_at_utc": "2025-10-01T00:00:00+00:00",
+          "value": 36011.92522
+        },
+        {
+          "observed_at_utc": "2025-11-01T00:00:00+00:00",
+          "value": 36963.2215
+        },
+        {
+          "observed_at_utc": "2025-12-01T00:00:00+00:00",
+          "value": 41402.90909
+        },
+        {
+          "observed_at_utc": "2026-01-01T00:00:00+00:00",
+          "value": 49133.78227
+        },
+        {
+          "observed_at_utc": "2026-02-01T00:00:00+00:00",
+          "value": 48694.3375
+        },
+        {
+          "observed_at_utc": "2026-03-01T00:00:00+00:00",
+          "value": 47323.68182
+        },
+        {
+          "observed_at_utc": "2026-04-01T00:00:00+00:00",
+          "value": 48566.26136
+        },
+        {
+          "observed_at_utc": "2026-05-01T00:00:00+00:00",
+          "value": 53238.40429
+        },
+        {
+          "observed_at_utc": "2026-06-01T00:00:00+00:00",
+          "value": 53036.54545
+        },
+        {
+          "observed_at_utc": "2026-07-01T00:00:00+00:00",
+          "value": 52881.99864
+        }
+      ],
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+    },
+    {
+      "id": "coal_australia",
+      "name": "Coal Australia · IMF monthly",
+      "sector": "energy",
+      "tier": "monthly_reference",
+      "value": 140.39679,
+      "previous": 150.36214,
+      "change": -9.96536,
+      "change_percent": -6.6276,
+      "unit": "USD/metric ton",
+      "observation_period": "2026-07",
+      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "source": "International Monetary Fund primary commodity prices via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/PCOALAUUSDM",
+      "symbol": "PCOALAUUSDM",
+      "market": "IMF world monthly benchmark; historical period average",
+      "refresh_class": "Monthly / delayed, NOT intraday",
+      "history": [
+        {
+          "observed_at_utc": "2024-08-01T00:00:00+00:00",
+          "value": 151.635
+        },
+        {
+          "observed_at_utc": "2024-09-01T00:00:00+00:00",
+          "value": 148.74321
+        },
+        {
+          "observed_at_utc": "2024-10-01T00:00:00+00:00",
+          "value": 153.2175
+        },
+        {
+          "observed_at_utc": "2024-11-01T00:00:00+00:00",
+          "value": 150.57
+        },
+        {
+          "observed_at_utc": "2024-12-01T00:00:00+00:00",
+          "value": 140.22429
+        },
+        {
+          "observed_at_utc": "2025-01-01T00:00:00+00:00",
+          "value": 125.32286
+        },
+        {
+          "observed_at_utc": "2025-02-01T00:00:00+00:00",
+          "value": 113.17393
+        },
+        {
+          "observed_at_utc": "2025-03-01T00:00:00+00:00",
+          "value": 104.76857
+        },
+        {
+          "observed_at_utc": "2025-04-01T00:00:00+00:00",
+          "value": 101.14286
+        },
+        {
+          "observed_at_utc": "2025-05-01T00:00:00+00:00",
+          "value": 104.03786
+        },
+        {
+          "observed_at_utc": "2025-06-01T00:00:00+00:00",
+          "value": 110.13857
+        },
+        {
+          "observed_at_utc": "2025-07-01T00:00:00+00:00",
+          "value": 116.29929
+        },
+        {
+          "observed_at_utc": "2025-08-01T00:00:00+00:00",
+          "value": 119.21357
+        },
+        {
+          "observed_at_utc": "2025-09-01T00:00:00+00:00",
+          "value": 112.53429
+        },
+        {
+          "observed_at_utc": "2025-10-01T00:00:00+00:00",
+          "value": 111.49821
+        },
+        {
+          "observed_at_utc": "2025-11-01T00:00:00+00:00",
+          "value": 115.43679
+        },
+        {
+          "observed_at_utc": "2025-12-01T00:00:00+00:00",
+          "value": 115.68429
+        },
+        {
+          "observed_at_utc": "2026-01-01T00:00:00+00:00",
+          "value": 115.815
+        },
+        {
+          "observed_at_utc": "2026-02-01T00:00:00+00:00",
+          "value": 122.20929
+        },
+        {
+          "observed_at_utc": "2026-03-01T00:00:00+00:00",
+          "value": 140.05607
+        },
+        {
+          "observed_at_utc": "2026-04-01T00:00:00+00:00",
+          "value": 142.11
+        },
+        {
+          "observed_at_utc": "2026-05-01T00:00:00+00:00",
+          "value": 141.45321
+        },
+        {
+          "observed_at_utc": "2026-06-01T00:00:00+00:00",
+          "value": 150.36214
+        },
+        {
+          "observed_at_utc": "2026-07-01T00:00:00+00:00",
+          "value": 140.39679
+        }
+      ],
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+    },
+    {
+      "id": "palm_oil",
+      "name": "Palm oil · IMF monthly",
+      "sector": "energy",
+      "tier": "monthly_reference",
+      "value": 1106.46993,
+      "previous": 1108.6811,
+      "change": -2.21117,
+      "change_percent": -0.1994,
+      "unit": "USD/metric ton",
+      "observation_period": "2026-07",
+      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "source": "International Monetary Fund primary commodity prices via FRED",
+      "source_url": "https://fred.stlouisfed.org/series/PPOILUSDM",
+      "symbol": "PPOILUSDM",
+      "market": "IMF world monthly benchmark; historical period average",
+      "refresh_class": "Monthly / delayed, NOT intraday",
+      "history": [
+        {
+          "observed_at_utc": "2024-08-01T00:00:00+00:00",
+          "value": 888.20272
+        },
+        {
+          "observed_at_utc": "2024-09-01T00:00:00+00:00",
+          "value": 942.60725
+        },
+        {
+          "observed_at_utc": "2024-10-01T00:00:00+00:00",
+          "value": 1034.05188
+        },
+        {
+          "observed_at_utc": "2024-11-01T00:00:00+00:00",
+          "value": 1132.873
+        },
+        {
+          "observed_at_utc": "2024-12-01T00:00:00+00:00",
+          "value": 1127.77705
+        },
+        {
+          "observed_at_utc": "2025-01-01T00:00:00+00:00",
+          "value": 1030.03811
+        },
+        {
+          "observed_at_utc": "2025-02-01T00:00:00+00:00",
+          "value": 1067.3248
+        },
+        {
+          "observed_at_utc": "2025-03-01T00:00:00+00:00",
+          "value": 1057.14731
+        },
+        {
+          "observed_at_utc": "2025-04-01T00:00:00+00:00",
+          "value": 981.17763
+        },
+        {
+          "observed_at_utc": "2025-05-01T00:00:00+00:00",
+          "value": 902.78817
+        },
+        {
+          "observed_at_utc": "2025-06-01T00:00:00+00:00",
+          "value": 934.50341
+        },
+        {
+          "observed_at_utc": "2025-07-01T00:00:00+00:00",
+          "value": 931.04059
+        },
+        {
+          "observed_at_utc": "2025-08-01T00:00:00+00:00",
+          "value": 1026.0129
+        },
+        {
+          "observed_at_utc": "2025-09-01T00:00:00+00:00",
+          "value": 1034.90027
+        },
+        {
+          "observed_at_utc": "2025-10-01T00:00:00+00:00",
+          "value": 1038.28137
+        },
+        {
+          "observed_at_utc": "2025-11-01T00:00:00+00:00",
+          "value": 977.05661
+        },
+        {
+          "observed_at_utc": "2025-12-01T00:00:00+00:00",
+          "value": 981.22467
+        },
+        {
+          "observed_at_utc": "2026-01-01T00:00:00+00:00",
+          "value": 1004.34182
+        },
+        {
+          "observed_at_utc": "2026-02-01T00:00:00+00:00",
+          "value": 1033.76839
+        },
+        {
+          "observed_at_utc": "2026-03-01T00:00:00+00:00",
+          "value": 1121.1779
+        },
+        {
+          "observed_at_utc": "2026-04-01T00:00:00+00:00",
+          "value": 1137.41086
+        },
+        {
+          "observed_at_utc": "2026-05-01T00:00:00+00:00",
+          "value": 1130.02676
+        },
+        {
+          "observed_at_utc": "2026-06-01T00:00:00+00:00",
+          "value": 1108.6811
+        },
+        {
+          "observed_at_utc": "2026-07-01T00:00:00+00:00",
+          "value": 1106.46993
+        }
+      ],
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+    }
+  ],
   "errors": {},
   "fallback_ids": [],
   "official_indonesia_reference": [
     {
       "id": "hba",
       "title": "Indonesia HBA · coal benchmark",
-      "period": "ESDM decree",
+      "period": "ESDM decree, periodically issued",
       "value": null,
       "url": "https://jdih.esdm.go.id/",
-      "note": "Not an Australian coal benchmark."
+      "note": "Not Australian thermal coal futures; do not substitute IMF Australia price."
     },
     {
       "id": "hma",
-      "title": "Indonesia HMA · metals",
-      "period": "ESDM decree",
+      "title": "Indonesia HMA · metal benchmark",
+      "period": "ESDM decree, periodically issued",
       "value": null,
       "url": "https://jdih.esdm.go.id/",
-      "note": "Verify commodity/period in official decree."
+      "note": "Regulatory benchmark. Check relevant commodity/period and decree."
     },
     {
       "id": "icp",
-      "title": "Indonesia ICP · crude",
+      "title": "Indonesia ICP · crude reference",
       "period": "ESDM monthly decree",
       "value": null,
       "url": "https://www.esdm.go.id/id/media-center/arsip-berita",
-      "note": "Not a Brent futures quote."
+      "note": "Not a real-time Brent futures contract."
     }
   ]
 }
