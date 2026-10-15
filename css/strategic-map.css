@@ -44,3 +44,7 @@
 .map-list{overscroll-behavior:contain}
 @media(max-width:1070px){.map-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.map-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.map-control.map-search-row{grid-column:1/-1}.map-controls>.map-btn{grid-column:1/-1}}
+
+/* Optional full-height catalogue: all matching records, no pagination */
+.map-results.expanded,.map-results.expanded .map-list{max-height:none;overflow:visible}
+.map-expand{margin-top:9px;max-width:100%}
