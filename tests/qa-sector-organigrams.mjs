@@ -77,8 +77,15 @@ for(const sector of ['minerals','ai']){
  for(let i=0;i<25;i++)await Promise.resolve();
  const stages=root.children.filter(x=>x.classList.contains('es-stage'));
  assert.equal(stages.length,9,'Energy Security structural parity');
+ const hierarchy=stages[0].querySelector('.sli-hier-root');
+ assert.ok(hierarchy||stages[0].querySelector('.sli-hierarchy-mount'),'Missing presidential hierarchy mounting point');
+ const expandable=stages[0].querySelector('.sli-extra-network');
+ assert.ok(expandable,'Energy Security detailed network disclosure must exist');
+ expandable.open=true;
+ expandable.handlers.toggle();
+ for(let i=0;i<12;i++)await Promise.resolve();
  const map=stages[0].querySelector('.stake-shell');
- assert.ok(map,'Missing Energy Security power-map component in institution stage');
+ assert.ok(map,'Missing reusable Energy Security power-map component after opening network');
  const tabs=map.querySelectorAll('.stake-tab');
  const leaders=map.querySelectorAll('.stake-person-chip');
  const svg=map.querySelectorAll('.stake-svg');
