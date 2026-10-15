@@ -93,6 +93,12 @@ for(const sector of ['minerals','ai']){
  expandable.open=true;
  expandable.handlers.toggle();
  for(let i=0;i<12;i++)await Promise.resolve();
+ const hierarchyPanel=expandable.querySelector('.sli-sector-hierarchy-pane');
+ const networkPanel=expandable.querySelectorAll('.sli-sector-explorer-pane')[0];
+ assert.ok(hierarchyPanel.querySelector('.sli-hier-root'),'Three-group government and corporate hierarchy should be shown by default');
+ assert.equal(networkPanel.hidden,true,'Network view must be hidden until selected');
+ internalTabs[0].handlers.click();
+ for(let i=0;i<16;i++)await Promise.resolve();
  const map=stages[0].querySelector('.stake-shell');
  assert.ok(map,'Missing reusable Energy Security power-map component after opening network');
  const tabs=map.querySelectorAll('.stake-tab');
@@ -120,8 +126,6 @@ for(const sector of ['minerals','ai']){
  
  internalTabs[1].handlers.click();
  for(let i=0;i<16;i++)await Promise.resolve();
- const hierarchyPanel=expandable.querySelector('.sli-sector-hierarchy-pane');
- const networkPanel=expandable.querySelectorAll('.sli-sector-explorer-pane')[0];
  assert.equal(hierarchyPanel.hidden,false,'Top-down hierarchy visible when selected');
  assert.equal(networkPanel.hidden,true,'Power map hidden to prevent duplicated panels');
  assert.ok(hierarchyPanel.querySelector('.sli-hier-president'),'Hierarchy now lives inside the consolidated explorer');
