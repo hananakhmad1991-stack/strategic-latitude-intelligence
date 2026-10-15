@@ -1,0 +1,51 @@
+name: SLI Critical Minerals & AI Research Radar
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - scripts/research_signal_radar.py
+      - tests/test_research_signal_radar.py
+      - .github/workflows/research-signal-radar.yml
+permissions:
+  contents: write
+concurrency:
+  group: sli-research-radar
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate collector and feed categorization
+        run: |
+          python -m py_compile scripts/research_signal_radar.py
+          python tests/test_research_signal_radar.py
+      - name: Refresh four attributed-source radar channels
+        run: python scripts/research_signal_radar.py
+      - name: Preserve output and publish latest evidence snapshot
+        run: |
+          set -eu
+          cp data/research-signal-radar.json /tmp/sli-research-signal-radar.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/sli-research-signal-radar.json data/research-signal-radar.json
+            git add data/research-signal-radar.json
+            if git diff --cached --quiet; then
+              echo "Radar unchanged"
+              exit 0
+            fi
+            git commit -m "Refresh dated mineral/AI geopolitical and domestic radar"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 2))
+          done
+          exit 1
