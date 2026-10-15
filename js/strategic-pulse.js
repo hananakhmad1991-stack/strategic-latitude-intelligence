@@ -111,6 +111,14 @@ function brief(root,d){
  delta.append(dom("span","sp-chip",a.baseline_changed_since_previous===true?tr("Source baseline revised","Data dasar berubah"):tr("No verified baseline change recorded","Tidak tercatat perubahan data dasar terverifikasi")));
  delta.append(dom("span","sp-chip",Number.isInteger(a.news_new_since_previous)?a.news_new_since_previous+" "+tr("new qualified monitored leads","temuan monitoring baru yang memenuhi kriteria"):tr("Lead delta unavailable","Perubahan temuan tidak tersedia")));
  root.append(delta);
+ const tech=(d.investmentNews?.reports||[]).filter(e=>/\b(AI|data[ -]?cent(?:er|re)|cloud|comput(?:e|ing)|semiconductor|chip|digital|technology|teknologi)\b/i.test(String(e.topic||"")+" "+String(e.title||""))).sort((x,y)=>Date.parse(y.published_at_utc||0)-Date.parse(x.published_at_utc||0));
+ if(tech.length){
+  const node=dom("article","sp-brief");
+  node.append(dom("strong",null,tr("AI, Data Centers & Technology · Emerging signal","AI, Pusat Data & Teknologi · Sinyal terbaru")));
+  node.append(dom("p",null,tr("The technology feed currently contains source-attributed monitoring leads, not a verified Indonesia-specific investment or compute-capacity assessment. Separate announced projects from operational capacity and check power supply, connectivity and implementation milestones.","Umpan teknologi saat ini berisi temuan pemantauan bersumber, bukan asesmen terverifikasi atas investasi atau kapasitas komputasi Indonesia. Pisahkan proyek diumumkan dari kapasitas yang beroperasi dan periksa pasokan listrik, konektivitas serta tahapan pelaksanaannya.")));
+  node.append(link(tech[0].url,tech[0].title+" ↗"));
+  const button=route(tr("Read AI infrastructure chapter ↗","Buka bab infrastruktur AI ↗"),"ai");node.append(button);root.append(node);
+ }
  const preferred=["oil-gas","geopolitics","transition","policy"];
  const selected=preferred.map(id=>a.points.find(p=>p.id===id)).filter(Boolean);
  for(const p of selected){
