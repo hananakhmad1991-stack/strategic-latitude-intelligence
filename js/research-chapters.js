@@ -295,6 +295,15 @@ function makeEnergyStructure(which,root){
  const intro=E("div","es-intro");intro.append(E("div","eyebrow","STRATEGIC LATITUDE INTELLIGENCE · INDONESIA"),E("h2",null,which==="minerals"?"Critical Minerals Intelligence":"AI Infrastructure Intelligence"),E("p",null,"Institutional mapping, verified indicators, implementation, market exposure, technology, monitoring and strategic assessment."),E("p","es-discipline","Official source dates and measurement periods vary; announced assets are not operating capacity."));
  const nav=E("nav","es-toc");nav.setAttribute("aria-label","Research topics");labels.forEach((label,i)=>{let a=link("#"+sections[i].id,"");a.append(E("span",null,String(i+1).padStart(2,"0")),document.createTextNode(label));a.addEventListener("click",e=>{e.preventDefault();sections[i].scrollIntoView({behavior:"smooth",block:"start"})});nav.append(a)});
  root.replaceChildren(intro,nav,...sections);
+ if(which==="minerals"&&typeof window.initSLIESDMMinerals==="function"){
+  window.initSLIESDMMinerals(sections).catch(error=>{
+   console.error("[SLI ESDM LAKIN 2025]",error);
+   if(!sections[1].isConnected)return;
+   const note=E("p","sli-research-note","ESDM 2025 mineral performance unavailable. ");
+   note.append(link("https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-kementerian-esdm-tahun-2025.pdf","Original ESDM report ↗"));
+   sections[1].append(note);
+  });
+ }
  if(which==="minerals"&&typeof window.initSLIUSGSMinerals==="function"){
   window.initSLIUSGSMinerals(sections).catch(error=>{
    console.error("[SLI USGS Mineral Statistics]",error);
