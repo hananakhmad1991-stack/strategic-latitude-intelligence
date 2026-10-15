@@ -29,14 +29,16 @@ def pick(topic,root,now):
   if not title or not source or not url.startswith("https://"):continue
   # Require topic evidence in the headline itself; RSS query matches can be noisy.
   relevance={
-   "biofuels":r"\\b(biodiesel|bioetanol|bioethanol|biofuel|biosolar|B50|B40|E10|E20|CPO.*biodiesel|bahan bakar nabati)\\b",
-   "refinery":r"\\b(kilang|RDMP|RFCC|refinery)\\b.*\\b(produksi|kapasitas|operasi|proyek|kebakaran|kobaran|gangguan|pasokan|pemeliharaan|turnaround|BBM|peresmian|uji|commissioning|investasi|insiden|ledakan)\\b",
-   "projects":r"\\b(peresmian|beroperasi|COD|groundbreaking|proyek|investasi|pembangunan|commissioning|PLTS|PLTA|PLTP)\\b",
-   "policy":r"\\b(peraturan|kepmen|permen|regulasi|kebijakan|ditetapkan|diterbitkan|undang-undang|aturan|izin|kuota|DMO)\\b",
-   "supply_disaster":r"\\b(banjir|longsor|cuaca ekstrem|bencana)\\b.*\\b(listrik|pembangkit|BBM|kilang|PLN|transmisi|energi|terminal|pelabuhan|jalan)\\b"
+   "biofuels":r"\b(biodiesel|bioetanol|bioethanol|biofuel|biosolar|B50|B40|E10|E20|CPO.*biodiesel|bahan bakar nabati)\b",
+   "refinery":r"\b(kilang|RDMP|RFCC|refinery)\b",
+   "projects":r"\b(peresmian|beroperasi|COD|groundbreaking|proyek|investasi|pembangunan|commissioning|PLTS|PLTA|PLTP)\b",
+   "policy":r"\b(peraturan|kepmen|permen|regulasi|kebijakan|ditetapkan|diterbitkan|undang-undang|aturan|izin|kuota|DMO)\b",
+   "supply_disaster":r"\b(banjir|longsor|cuaca ekstrem|bencana)\b"
   }
   pattern=relevance.get(topic["id"])
   if pattern and not re.search(pattern,title,re.I):continue
+  if topic["id"]=="refinery" and not re.search(r"produksi|kapasitas|operasi|proyek|kebakaran|kobaran|gangguan|pasokan|pemeliharaan|turnaround|BBM|peresmian|uji|commissioning|investasi|insiden|ledakan",title,re.I):continue
+  if topic["id"]=="supply_disaster" and not re.search(r"listrik|pembangkit|BBM|kilang|PLN|transmisi|energi|terminal|pelabuhan|jalan|logistik|jaringan",title,re.I):continue
   if topic["id"]=="supply_disaster" and re.search(r"Timur Tengah|Amerika|China|Eropa|Pakistan",title,re.I):continue
 
   source_link=(item.find("source").attrib.get("url","") if item.find("source") is not None else "")
