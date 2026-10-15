@@ -1082,5 +1082,21 @@
     "Do not merge 2024 USGS 62% nickel share with 2024 IEA 63% or 2025e USGS calculated 66.7% without citing source and data year.",
     "MCS nickel reserve estimate 62 Mt is stock (reserves), compared with mined output flow 2.6 Mt in 2025e. They must never share a bar axis as annual outputs.",
     "USGS facts do not independently validate current executive appointments, individual-project ownership, or currently enacted policy — use canonical SLI Stakeholder Mapping and Policy & Risk."
+  ],
+  "economic2024": [
+    {
+      "label": "Mining & quarrying (non-fuel)",
+      "share_gdp": 3,
+      "year": 2024,
+      "source_id": "country2024",
+      "note": "Approximate contribution to Indonesia's GDP in the USGS country profile; excludes mineral fuels."
+    },
+    {
+      "label": "Base-metal manufacturing",
+      "share_gdp": 1,
+      "year": 2024,
+      "source_id": "country2024",
+      "note": "Approximate GDP contribution of downstream metal manufacturing, reported separately from non-fuel mining."
+    }
   ]
 }
