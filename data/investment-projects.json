@@ -1,0 +1,15 @@
+{
+  "as_of": "2026-10-15",
+  "dataset_status": "Awaiting independent review and project-source curation",
+  "description": "Source-dated project records only. Empty is intentional: no fictitious amounts, project milestones or realized capex.",
+  "schema": {
+    "name": "Project name",
+    "investor": "Named operating/investing entity",
+    "sector": "Energy | Critical minerals | AI infrastructure | Other",
+    "region": "Province / city",
+    "stage": "Announced | Permitted | Financed | Under construction | Commissioning | Operational | Suspended",
+    "evidence_date": "YYYY-MM-DD",
+    "source_url": "https:// official source"
+  },
+  "projects": []
+}
