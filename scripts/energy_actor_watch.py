@@ -18,10 +18,10 @@ OUT=Path("data/energy-actors-status.json")
 CABINET="https://setkab.go.id/profil-kabinet/"
 SPECS=[
  {"key":"Kementerian Lingkungan Hidup","cabinet":"Menteri Lingkungan Hidup/Kepala Badan Pengendalian Lingkungan Hidup","agency":"https://www.kemenlh.go.id/contents/8/Profil-Menteri","prefix":"Minister of Environment / Head of BPLH"},
- {"key":"Kementerian Keuangan","cabinet":"Menteri Keuangan","agency":"https://www.kemenkeu.go.id/en/profile/profile-pejabat/menteri-keuangan","prefix":"Minister of Finance"},
+ {"key":"Kementerian Keuangan","cabinet":"Menteri Keuangan","agency":"https://www.kemenkeu.go.id/en/profile/profile-pejabat/menteri-keuangan","fallback_agency":"https://www.setneg.go.id/baca/index/presiden_prabowo_lantik_suahasil_nazara_sebagai_menteri_keuangan_1","prefix":"Minister of Finance"},
  {"key":"Kementerian ESDM / Minister","cabinet":"Menteri Energi dan Sumber Daya Mineral","agency":"https://www.esdm.go.id/id/profil/profil-pimpinan","prefix":"Minister of ESDM; energy-sector regulator"},
  {"key":"Bappenas","cabinet":"Menteri Perencanaan Pembangunan Nasional/Kepala Badan Perencanaan Pembangunan Nasional","agency":"https://www.bappenas.go.id","prefix":"Minister / Head of Bappenas"},
- {"key":"Kementerian Investasi dan Hilirisasi / BKPM","cabinet":"Menteri Investasi dan Hilirisasi/Kepala Badan Koordinasi Penanaman Modal","agency":"https://www.bkpm.go.id","prefix":"Minister of Investment / Head of BKPM"},
+ {"key":"Kementerian Investasi dan Hilirisasi / BKPM","cabinet":"Menteri Investasi dan Hilirisasi/Kepala Badan Koordinasi Penanaman Modal","agency":"https://www.bkpm.go.id/en/about-bkpm/profile-of-chairman","prefix":"Minister of Investment / Head of BKPM"},
 ]
 OTHER_SOURCES=[
  {"actor":"SKK Migas","url":"https://www.skkmigas.go.id/"},
@@ -160,6 +160,13 @@ def main():
         try:
             agency_text=flatten(fetch(spec["agency"]))
             corroborated=bool(candidate and agree_agency(candidate,agency_text))
+            if not corroborated and candidate and spec.get("fallback_agency"):
+                try:
+                    fallback_text=flatten(fetch(spec["fallback_agency"]))
+                    corroborated=agree_agency(candidate,fallback_text)
+                    row["fallback_checked"]=spec["fallback_agency"]
+                except Exception as fallback_ex:
+                    row["fallback_error"]=type(fallback_ex).__name__+": "+str(fallback_ex)[:130]
         except Exception as ex:
             corroborated=False;row["error"]=type(ex).__name__+": "+str(ex)[:140]
             errors.append({"source":spec["agency"],"error":row["error"]})
