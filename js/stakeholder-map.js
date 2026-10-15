@@ -182,18 +182,23 @@ window.renderSLIStakeholderMap=function(root,data){
  header.append(heading,stats);wrapper.append(header);
  const keyPeople=[
   {name:"Presidency / National Energy Council (DEN)",title:"President / DEN Chair"},
+  {name:"Kementerian ESDM / Minister",title:"Minister of Energy and Mineral Resources"},
+  {name:"Kemenko Hilirisasi dan Transisi Energi",title:"Coordinating Minister for Downstreaming & Energy Transition"},
   {name:"Sekretariat Jenderal DEN",title:"DEN Secretary General"},
-  {name:"SKK Migas",title:"SKK Migas Head"}
+  {name:"SKK Migas",title:"SKK Migas Head"},
+  {name:"Danantara Indonesia (BPI) — SOE portfolio ownership & capital",title:"BPI Danantara / CEO"}
  ];
  const leaders=$("div","stake-key-people");
  leaders.setAttribute("aria-label","Named current decision-makers in Indonesia energy institutional mapping");
  keyPeople.forEach(({name,title})=>{
   const record=all.find(x=>x.a.name===name)?.a;
-  if(!record?.person_name)return;
+  if(!record)return;
+  const person=record.person_name||(name==="Kemenko Hilirisasi dan Transisi Energi"?"Bahlil Lahadalia":"");
+  if(!person)return;
   const chip=$("button","stake-person-chip");
   chip.type="button";
-  chip.append($("span",null,title),$("strong",null,record.person_name));
-  chip.setAttribute("aria-label",title+": "+record.person_name+". Open stakeholder profile");
+  chip.append($("span",null,title),$("strong",null,person));
+  chip.setAttribute("aria-label",title+": "+person+". Open stakeholder profile");
   chip.addEventListener("click",()=>goActor(name));
   leaders.append(chip);
  });
