@@ -104,7 +104,7 @@ def main():
             fail("Outbound investment misclassified as Indonesian asset investment")
 
     assets = read("investment-operator-assets.json")
-    sector_names = {"Oil & Gas", "Coal", "Minerals", "Smelters & Processing", "Biofuels & Bioenergy", "Renewable Energy", "Electric Vehicles", "AI / Data Center", "Solar PV", "Hydropower & Storage", "Wind", "Nuclear (New Energy)"}
+    sector_names = {"Oil & Gas", "Coal", "Minerals", "Smelters & Processing", "Biofuels & Bioenergy", "Renewable Energy", "Geothermal", "Electric Vehicles", "AI / Data Center", "Solar PV", "Hydropower & Storage", "Wind", "Nuclear (New Energy)"}
     allowed_asset_stages = {"Operational", "Under construction", "Announced / development",
                             "MoU / power expansion", "Agreement / proposal", "MoU only",
                             "Programme / mandate", "Historical operating evidence", "Retail / commercial sales", "Site evaluation approval"}
