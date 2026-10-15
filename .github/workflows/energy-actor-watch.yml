@@ -1,0 +1,39 @@
+name: SLI Energy Actor Verification
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 0,6,12,18 * * *"
+  push:
+    branches: [main]
+    paths:
+      - scripts/energy_actor_watch.py
+      - .github/workflows/energy-actor-watch.yml
+permissions:
+  contents: write
+concurrency:
+  group: sli-energy-actors
+  cancel-in-progress: false
+jobs:
+  validate_official_roster:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scan official government leadership sources
+        run: python scripts/energy_actor_watch.py
+      - name: Validate status and changed actor roster
+        run: |
+          python -m json.tool data/energy-actors-status.json > /dev/null
+          python -m json.tool data/energy-governance-ccs.json > /dev/null
+      - name: Commit monitored status and only dual-verified leadership changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/energy-actors-status.json data/energy-governance-ccs.json
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Refresh official energy actor verification and change status"
+          git pull --rebase origin main
+          git push origin HEAD:main
