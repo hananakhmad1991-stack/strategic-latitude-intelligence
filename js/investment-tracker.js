@@ -11,7 +11,7 @@ const links=[
  ["Bank Indonesia — balance of payments and direct investment","https://www.bi.go.id/"],
  ["Indonesia Investment Authority","https://www.ina.go.id/"]
 ];
-const stages=["Announced","Permitted","Financed","Under construction","Commissioning","Operational","Suspended"];
+const stages=["Announced","Permitted","Early works","Financed","Under construction","Commissioning","Operational","Suspended"];
 const norm=v=>String(v||"").toLowerCase();
 window.initSLIInvestment=async function(){
  const root=document.getElementById("investmentRoot");if(!root)return;
