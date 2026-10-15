@@ -21,12 +21,16 @@ for(const name of ["SKK Migas","BPH Migas","PT Pertamina (Persero) — parent co
 }
 assert.equal(gov.governance.layers.length,6,"General stakeholder map must remain six branches");
 assert.equal(new Set(names).size,names.length,"Duplicate actors on primary map");
-assert(map.items.length>=27&&map.groups.length===6,"Incomplete focused map");
+assert(map.items.length>=30&&map.groups.length===6,"Incomplete focused map");
 assert.equal(new Set(map.items.map(x=>x.name)).size,map.items.length,"Duplicate dedicated-map actor");
 assert(map.items.some(x=>x.name==="SKK Migas"&&x.group==="upstream"),"SKK must be upstream supervisor");
 assert(map.items.some(x=>x.name==="BPH Migas"&&x.group==="downstream"),"BPH must be downstream regulator");
 assert(map.items.some(x=>x.name==="Danantara Indonesia"&&x.group==="policy"),"Danantara owner/investor must not be classified as operator");
-assert(map.items.filter(x=>x.group==="private").length>=5,"BUMS / KKKS section too sparse");
+assert(map.items.filter(x=>x.group==="private").length>=7,"Private and foreign KKKS section too sparse");
+assert(map.items.some(x=>x.name==="Rukun Raharja (RAJA)"&&x.group==="downstream"),"Indonesian private midstream/downstream BUMS missing");
+assert(map.items.some(x=>x.name==="Mubadala Energy (Andaman)"&&x.summary_en.includes("not an Indonesian BUMN")),"Foreign state-owned company must not be marked as Indonesian BUMN");
+assert(map.items.some(x=>x.name==="Harbour Energy (Andaman)"&&x.summary_en.includes("May 2026")),"Divested Harbour assets not reconciled");
+assert(names.includes("PT Rukun Raharja Tbk")&&names.includes("Harbour Energy — Andaman PSC portfolio")&&names.includes("Mubadala Energy — South Andaman"),"New local/private/foreign actors missing from general map");
 assert(map.items.every(x=>/^https:\/\//.test(x.source)&&x.summary_en&&x.summary_id&&x.group&&x.as_of),"Missing source/date/bilingual actor data");
 assert(map.items.some(x=>x.name==="Searah (Eni–PETRONAS)"),"Eni/PETRONAS 2026 JV missing");
 assert(map.issues.length>=5&&map.issues.some(x=>x.id==="fuel")&&map.issues.some(x=>x.id==="gas"),"Missing separate oil/gas policy issue focus");
