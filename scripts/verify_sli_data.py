@@ -31,5 +31,5 @@ if ai_file.exists():
   seen.add(key)
   if not str(lead.get("url","")).startswith("https://") or not lead.get("published_at_utc") or not lead.get("publisher"):errors.append("Unattributed AI monitoring lead")
 if errors:
- print("SOURCE QA FAILED:\\n"+"\\n".join(errors),file=sys.stderr);sys.exit(1)
+ print("SOURCE QA FAILED:\n"+"\n".join(errors),file=sys.stderr);sys.exit(1)
 print(f"SLI source QA passed: {len(products)} trade commodities, investment provenance and AI feed metadata")
