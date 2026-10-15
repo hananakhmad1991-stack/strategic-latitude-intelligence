@@ -22,6 +22,25 @@ Once GitHub Pages is enabled: https://hananakhmad1991-stack.github.io/strategic-
 - Do not publish confidential client material or personal information without proper authorization.
 - Do not give individualized investment or securities trading recommendations.
 
+## Energy Security editorial information architecture — 15 October 2026
+The Energy Security workspace is now arranged as a progressive analytical brief:
+1. **Institutions, Governance & Policy** — live institutional map and legal/policy status, separated from technical CCS.
+2. **National Energy Security at a Glance** — national headline KPIs, DEN's 4A official index, WEC Trilemma and fundamental trends; these frameworks are not mixed numerically.
+3. **Energy Supply, Access & Infrastructure** — refinery capacities, production, coal, power, electrification, Jargas and BPS petroleum imports.
+4. **Energy Economics & Affordability** — fuel quotas, subsidies, realized energy investment, retail tariffs and dated benchmark prices. The biodiesel/bioethanol HIP cards are kept only in their dedicated Biofuels module rather than duplicated here.
+5. **Transition, Technology & Delivery** — RUED, NZE, emissions, B40→B50, EV cars/motorcycles/charging, and separately tracked CCS/CCUS maturity.
+6. **Domestic & Geopolitical Monitoring** — source-attributed latest feeds, archived historical event cards collapsed by default, and the five-event industry calendar.
+7. **Sources & Analytical Boundaries** — original source register and methodology collapsed by default, with dated source links also available within detailed modules.
+8. **Overall Assessment** — final seven-theme executive interpretation, now presented as readable bilingual analytical prose with optional dated evidence, source links, verification tasks and headline leads under expandable details. Daily data continues to refresh but does not automatically certify reported events.
+
+### Editorial corrections and safeguards
+- Preserved all existing feature mount IDs and asynchronous loaders while changing presentation order. Institutional map + policy stay at the beginning, and CCS now renders in the technical transition section.
+- Removed redundant introductory *Strategic Implications* and *Priority Monitoring Questions* boxes, the second geothermal/geo-risk introductory explanation, and duplicate biodiesel/bioethanol price cards; archived historical incidents instead of deleting their cited context.
+- Corrected a **real monetary formatting bug** in `scripts/daily_energy_assessment.py`: integer prices such as Rp10,000 were incorrectly rendered as `Rp10,` when all trailing zeroes were stripped. The current published daily JSON was corrected, and future scheduled generator output retains whole-number zeroes.
+- A new `css/energy-information-architecture.css` provides numbered topical navigation, clean hierarchy and mobile layout. The `js/daily-energy-assessment.js` essay is bilingual and includes one compact daily news-source pulse; headlines remain *unverified leads* until checked at the underlying publications.
+- `tests/check-energy-architecture.cjs` validates the inline JS, all unique dashboard mount IDs, chapter order, balanced HTML tags, assessment presence and absence of legacy redundant boxes/malformed price text. `.github/workflows/energy-security-editorial-qa.yml` runs regression checks on relevant changes.
+- The curated executive narratives express stable strategic reasoning. Automatically refreshed evidence and candidate headlines are linked and dated, **not represented as dynamically fact-checked LLM conclusions**.
+
 ## English / Bahasa Indonesia display modes
 - The sidebar offers a two-button **EN / ID** switch. The most recently chosen language is stored in browser `localStorage` (`sli-ui-language`), and the document language metadata changes with the selected language. The switch does not require a reload or external translation APIs.
 - `js/i18n-dictionary.js` holds a curated Indonesian vocabulary of navigation, key performance indicators, methodological warnings, policy/governance, biofuels, data provenance and monitoring headings. `js/i18n.js` localizes visible interface text and future asynchronous UI updates, while preserving originals for reversible switching.
