@@ -37,6 +37,8 @@ def discover(page,year):
 def parse_table(page):
     # Conservative row parser: requires rank 1..20, English names and USD-bn
     # figure under publisher's table columns. Anything ambiguous is rejected.
+    if "亿美元" not in page:
+        return None  # Unit must explicitly mean USD 100 million
     output=[]
     for row in re.findall(r"<tr\b[^>]*>(.*?)</tr>",page,re.I|re.S):
         cells=[html.unescape(re.sub(r"<[^>]*>"," ",part)).strip()
@@ -48,7 +50,7 @@ def parse_table(page):
         amount=None
         for cell in cells[2:5]:
             raw=re.search(r"^\$?\s*(\d+(?:\.\d+)?)\s*$",cell)
-            if raw:amount=float(raw.group(1));break
+            if raw:amount=round(float(raw.group(1))/10,3);break
         if amount is None:continue
         rank=int(cells[0])
         if rank!=len(output)+1 or not(0.1<amount<1000):return None
@@ -68,7 +70,7 @@ def main():
             page=fetch(newurl)
             parsed=parse_table(page)
             if parsed:
-                old.update(edition=f"{year} Indonesia's 50 Richest",published=f"{year}-12",source_url=newurl,rankings=parsed,status=f"Publisher {year} annual list (source validated for 20 visible rows)",review_alert=None)
+                old.update(edition=f"{year} Indonesia's 50 Richest",published=str(year),source_url=newurl,rankings=parsed,status=f"Publisher {year} annual list (20 rows validated; month/day not automatically established)",review_alert=None)
                 changed=True
             else:
                 old["review_alert"]=f"Official Forbes {year} list may be available at {newurl}; full 20-item table could not be verified automatically. Older validated edition retained."
