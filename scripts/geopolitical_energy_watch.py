@@ -45,8 +45,14 @@ def sector_relevance(title,topic):
 
 RSS_TRUSTED={"Reuters","Associated Press","AP News","BBC","Financial Times","Bloomberg","CNBC","S&P Global","Nikkei Asia","Argus Media","The Guardian","Energy Intelligence","The Jakarta Post","ANTARA","IEA","EIA"}
 TRUSTED={"reuters.com","apnews.com","bloomberg.com","ft.com","iea.org","eia.gov","worldbank.org","argusmedia.com","spglobal.com","tradewindsnews.com","lloydslist.com","oilprice.com"}
-def fetch(query):
- params=urllib.parse.urlencode({"query":query,"mode":"artlist","format":"json","timespan":"2d","maxrecords":"25","sort":"datedesc"})
+def topic_window(topic):
+ key=GEO_TOPIC_ID.get(topic,"")
+ if key.startswith("nre_"):return 7
+ if key.startswith("coal_"):return 5
+ return 2
+
+def fetch(query,window_days=2):
+ params=urllib.parse.urlencode({"query":query,"mode":"artlist","format":"json","timespan":str(window_days)+"d","maxrecords":"25","sort":"datedesc"})
  url="https://api.gdeltproject.org/api/v2/doc/doc?"+params
  req=urllib.request.Request(url,headers={"User-Agent":"SLI-OSINT-Research/1.0","Accept":"application/json"})
  with urllib.request.urlopen(req,timeout=22) as res:return json.load(res).get("articles",[])
@@ -55,7 +61,8 @@ def rss_fallback(now, missing_topics=None):
  leads=[];errors=[]
  for topic,query,typ,pathway in TOPICS:
   if missing_topics is not None and topic not in missing_topics:continue
-  url="https://news.google.com/rss/search?"+urllib.parse.urlencode({"q":query+" when:2d","hl":"en-US","gl":"US","ceid":"US:en"})
+  days=topic_window(topic)
+  url="https://news.google.com/rss/search?"+urllib.parse.urlencode({"q":query+" when:"+str(days)+"d","hl":"en-US","gl":"US","ceid":"US:en"})
   req=urllib.request.Request(url,headers={"User-Agent":"SLI-Public-News-Watcher/1.0","Accept":"application/rss+xml"})
   try:
    with urllib.request.urlopen(req,timeout=20) as res: xml=res.read(1000000)
@@ -71,7 +78,7 @@ def rss_fallback(now, missing_topics=None):
    stamp=item.findtext("pubDate") or ""
    try: published=email.utils.parsedate_to_datetime(stamp).astimezone(dt.timezone.utc)
    except Exception:continue
-   if not dt.timedelta(0)<=now-published<=dt.timedelta(days=3):continue
+   if not dt.timedelta(0)<=now-published<=dt.timedelta(days=days+1):continue
    if not title or not link.startswith("https://") or not src:continue
    if not any(src.lower()==t.lower() or src.lower().startswith(t.lower()+" ") for t in RSS_TRUSTED):continue
    if not sector_relevance(title,topic):continue
@@ -91,7 +98,7 @@ def rss_fallback(now, missing_topics=None):
 def main():
  now=dt.datetime.now(dt.timezone.utc);items=[];errors=[]
  for topic,query,typ,pathway in TOPICS:
-  try:records=fetch(query)
+  try:records=fetch(query,topic_window(topic))
   except Exception as exc:
    errors.append({"topic":topic,"error":str(exc)[:160]})
    if "429" in str(exc):break
@@ -106,7 +113,7 @@ def main():
    if not sector_relevance(title,topic):continue
    try:observed=dt.datetime.strptime(date,"%Y%m%d%H%M%S").replace(tzinfo=dt.timezone.utc)
    except ValueError:continue
-   if not dt.timedelta(0)<=now-observed<=dt.timedelta(days=3):continue
+   if not dt.timedelta(0)<=now-observed<=dt.timedelta(days=topic_window(topic)+1):continue
    if any(x["url"]==url for x in items):continue
    items.append({"topic":topic,"topic_id":GEO_TOPIC_ID.get(topic,""),"type":typ,**classify(title,GEO_TOPIC_ID.get(topic,""),"geopolitical"),"title":title,"publisher":host,"url":url,"indexed_at_utc":observed.isoformat(),"impact_pathway":pathway,
      "assessment":"Potential transmission pathway only. Verify the original report, event date, operational impact and Indonesia exposure before treating as confirmed.",
@@ -125,7 +132,7 @@ def main():
   except Exception as e:errors.append({"topic":"Public RSS fallback","error":str(e)[:160]})
  published=items[:32]
  counts={sector:sum(1 for x in published if sector in x["sector_tags"]) for sector in SECTORS}
- output={"checked_at_utc":now.isoformat(),"coverage":"GDELT discovery with per-topic public RSS fallback; headlines are attributed and unverified, not a live incident database","events":published,"sector_counts":counts,"sector_taxonomy_version":"2026-10-15","errors":errors,"disclaimer":"News indexing timestamp is not incident time. Headlines are not independent evidence of attacks or outages. All analytical pathways are conditional, not forecasts."}
+ output={"checked_at_utc":now.isoformat(),"coverage":"GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database","events":published,"sector_counts":counts,"sector_taxonomy_version":"2026-10-15","errors":errors,"disclaimer":"News indexing timestamp is not incident time. Headlines are not independent evidence of attacks or outages. All analytical pathways are conditional, not forecasts."}
  p=Path("data/geopolitical-energy.json");p.parent.mkdir(exist_ok=True)
  # Preserve last good feed during API outage, but never misrepresent its freshness.
  if items:p.write_text(json.dumps(output,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
