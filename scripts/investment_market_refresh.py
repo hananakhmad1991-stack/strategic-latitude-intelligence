@@ -37,9 +37,16 @@ def update_bi(d):
         if len(nums)<2:continue
         ask,bid=money(nums[-2]),money(nums[-1])
         if not(9000<bid<ask<30000):continue
-        date_match=re.search(r"Update Terakhir\s*(\d{1,2})\s+(?:Oktober|October)\s+(2026)",re.sub(r"<[^>]*>"," ",raw),re.I)
-        if not date_match:raise ValueError("BI updated date not verified for current 2026 source")
-        observed="2026-10-"+str(int(date_match.group(1))).zfill(2)
+        plain=" ".join(re.sub(r"<[^>]*>"," ",raw).split())
+        month_labels={"januari":1,"februari":2,"maret":3,"april":4,"mei":5,"juni":6,
+                      "juli":7,"agustus":8,"september":9,"oktober":10,"november":11,"desember":12,
+                      "january":1,"february":2,"march":3,"may":5,"june":6,"july":7,
+                      "august":8,"october":10,"december":12}
+        date_match=re.search(r"Update Terakhir\\s*(\\d{1,2})\\s+([A-Za-z]+)\\s+(\\d{4})",plain,re.I)
+        if not date_match or date_match.group(2).lower() not in month_labels:
+            raise ValueError("BI last-update date not verifiable from source")
+        day_number,word,year=date_match.groups()
+        observed=f"{int(year):04d}-{month_labels[word.lower()]:02d}-{int(day_number):02d}"
         day=dt.date.fromisoformat(observed)
         if day>NOW.astimezone(TZ).date() or (NOW.astimezone(TZ).date()-day).days>3:
             raise ValueError("BI quote date out of acceptable range")
@@ -58,7 +65,7 @@ def update_jci(d):
         raise ValueError("Yahoo quote anomalous or outdated")
     d["ihsg"].update(value=round(value,2),observed_date=when.astimezone(TZ).date().isoformat(),last_checked_utc=NOW.isoformat(),
         quote_status="Yahoo Finance delayed quote; not guaranteed official close",source="https://finance.yahoo.com/quote/%5EJKSE/")
-    prev=meta.get("chartPreviousClose") or meta.get("previousClose")
+    prev=meta.get("previousClose")
     if prev and float(prev)>0:
         d["ihsg"]["change_pct"]=round((value/float(prev)-1)*100,2)
     return True
