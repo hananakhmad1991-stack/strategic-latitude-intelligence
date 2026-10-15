@@ -74,15 +74,15 @@
       "name": "Integrated EV battery ecosystem",
       "investor": "ANTAM · IBC · Ningbo Contemporary Brunp Lygend (CBL)",
       "sector": "Critical minerals",
-      "region": "West Java",
+      "region": "Karawang, West Java; East Halmahera, North Maluku (multi-site)",
       "stage": "Under construction",
       "evidence_date": "2025-06-29",
       "reported_amount": 5.9,
       "currency": "USD billion",
       "amount_basis": "Announced integrated ecosystem project investment; not verified realized capex",
-      "status_note": "Groundbreaking confirmed; individual component commissioning needs verification",
+      "status_note": "Groundbreaking of the six-subproject integrated ecosystem confirmed 29 June 2025. This is a consortium-wide figure, not single-factory spending.",
       "next_step": "Track construction, plant commissioning, battery production and offtake",
-      "source_url": "https://www.gatrik.esdm.go.id/assets/uploads/download_index/files/51378-bahan-kementerian-perindustrian.pdf"
+      "source_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai"
     },
     {
       "name": "Microsoft Indonesia cloud and AI program",
@@ -90,13 +90,13 @@
       "sector": "AI infrastructure",
       "region": "Indonesia (multi-location program)",
       "stage": "Announced",
-      "evidence_date": "2026-09-24",
+      "evidence_date": "2024-04-30",
       "reported_amount": 1.7,
       "currency": "USD billion",
       "amount_basis": "Public investment commitment, not confirmed expenditure or AI-only data center capex",
-      "status_note": "Government reaffirmed Microsoft investment commitment; not proof entire value was realized",
+      "status_note": "Microsoft announced a four-year program in April 2024; Komdigi reaffirmed commitment September 2026. Value includes cloud/AI infrastructure and skilling, not verified data-center construction spending.",
       "next_step": "Track commercial milestones, infrastructure expenditure and workforce programs",
-      "source_url": "https://portal.komdigi.go.id/kanal-publik/berita-kini/10559"
+      "source_url": "https://news.microsoft.com/source/asia/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions/"
     },
     {
       "name": "13 strategic downstream projects — Phase II",
@@ -111,6 +111,48 @@
       "status_note": "BKPM announced collective groundbreaking; individual company allocations not disclosed in this source",
       "next_step": "Track individual SPVs, contractor awards, drawdowns and COD",
       "source_url": "https://www.bkpm.go.id/index.php/id/info/siaran-pers/kementerian-investasi-dan-hilirisasi-dukung-percepatan-13-proyek-hilirisasi-strategis-tahap-ii"
+    },
+    {
+      "name": "IGP Pomalaa — mine and HPAL",
+      "investor": "PT Vale Indonesia · PT Kolaka Nickel Indonesia · Huayou · Ford (project partners)",
+      "sector": "Critical minerals",
+      "region": "Kolaka, Southeast Sulawesi",
+      "stage": "Under construction",
+      "evidence_date": "2026-02-25",
+      "reported_amount": 4.5,
+      "currency": "USD billion",
+      "amount_basis": "Company-described full project investment (mine and HPAL); not verified realized cash outlay, not limited to KNI equity",
+      "status_note": "PT Vale disclosed 62% overall project progress in February 2026; ore-sales milestone in March 2026 should not be conflated with HPAL operation.",
+      "next_step": "Track HPAL mechanical completion, actual commissioning and current cap table of KNI.",
+      "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion"
+    },
+    {
+      "name": "IGP Morowali — mine and HPAL / BNSI",
+      "investor": "PT Vale Indonesia · PT Bahodopi Nickel Smelting Indonesia (BNSI) · GEM · EcoPro",
+      "sector": "Critical minerals",
+      "region": "Morowali, Central Sulawesi",
+      "stage": "Under construction",
+      "evidence_date": "2026-07-22",
+      "reported_amount": 2,
+      "currency": "USD billion",
+      "amount_basis": "Integrated IGP Morowali project investment estimate (mine and HPAL), not disbursed capital",
+      "status_note": "Vale reported July 2026 arrival of HPAL autoclave; mining ore first sales occurred 2025, but HPAL facility construction continued.",
+      "next_step": "Track equipment installation, 2027 expected HPAL project completion and venture ownership.",
+      "source_url": "https://vale.com/in/w/sambalagi-hpal-project-reaches-major-milestone-with-autoclave-arrival-strengthening-the-future-of-sustainable-downstreaming/-/categories"
+    },
+    {
+      "name": "PTFI Manyar copper smelter",
+      "investor": "PT Freeport Indonesia (PTFI); shareholder groups MIND ID / PT IPMM / FCX",
+      "sector": "Critical minerals",
+      "region": "Gresik, East Java",
+      "stage": "Operational",
+      "evidence_date": "2026-10-15",
+      "reported_amount": null,
+      "currency": "USD billion",
+      "amount_basis": "Not included: no single current realized-capex figure verified in this source",
+      "status_note": "FCX reports May 2025 startup and July 2025 first cathode; 2025 production and post-September 2025 concentrate constraints mean operational status does not equal full utilization.",
+      "next_step": "Monitor Q4 2026 feed availability, concentrate shipments and actual utilization rather than design capacity.",
+      "source_url": "https://www.fcx.com/operations/indonesia"
     }
   ],
   "policy": [
@@ -125,6 +167,8 @@
     "Minerals and coal PNBP are combined in the cited release; do not assert a separate coal or critical-minerals amount.",
     "No verified standalone national PNBP series for AI/data center revenue in selected sources.",
     "Project values represent announced amounts, not verified spent capital.",
-    "The Q2 provincial figures are not cumulative H1 figures."
+    "The Q2 provincial figures are not cumulative H1 figures.",
+    "Overlapping multi-project programs (including the 13-project Phase II bundle, Vale IGP campuses and the ANTAM-IBC-CBL ecosystem) cannot be added to national BKPM realization or one another without project-level reconciliation.",
+    "For assets with known JV partners, no share percentages are imputed unless disclosed in company filings."
   ]
 }
