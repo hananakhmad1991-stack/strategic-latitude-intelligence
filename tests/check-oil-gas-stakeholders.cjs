@@ -14,6 +14,18 @@ assert(owners.boundaries.some(x=>x.includes("SKK Migas")||x.includes("Independen
 const names=gov.governance.layers.flatMap(layer=>layer.actors.map(x=>x.name));
 assert(names.some(x=>x.startsWith("Danantara Indonesia")),"Portfolio manager missing");
 assert(names.includes("BP BUMN — State-Owned Enterprises Regulatory Agency"),"BP BUMN independent body missing");
+const national=gov.governance.layers.flatMap(layer=>layer.actors);
+const president=national.find(x=>x.name==="Presidency / National Energy Council (DEN)");
+const denSec=national.find(x=>x.name==="Sekretariat Jenderal DEN");
+const skk=national.find(x=>x.name==="SKK Migas");
+assert(president&&president.person_name==="Prabowo Subianto"&&president.lead.includes("Presiden"),"Presidency node does not name Prabowo");
+assert(denSec&&denSec.person_name==="Dadan Kusdiana"&&denSec.lead.includes("Sekretaris Jenderal"),"DEN Secretary General incumbent inaccurate");
+assert(denSec.source.includes("menteri-esdm-lantik-pejabat-tinggi-madya"),"DEN Secretary General lacks official appointment source");
+assert(denSec.latest_source?.includes("den-gandeng-as-dan-jepang"),"No 2026 reaffirmation source for DEN Secretary General");
+assert(denSec.appointed==="2025-09-17","DEN secretary appointment must be source dated");
+assert(skk&&skk.person_name==="Djoko Siswanto"&&skk.role.includes("separate role"),"Djoko SKK vs Dadan DEN distinction lost");
+assert(general.includes("stake-key-people")&&general.includes("stake-person-chip"),"Named leadership display missing");
+assert(general.includes("person_name")&&general.includes("const label=person"),"Map SVG does not display named incumbent");
 assert(names.includes("PT Danantara Asset Management (DAM)"),"Operational holding missing");
 for(const name of ["SKK Migas","BPH Migas","PT Pertamina (Persero) — parent company","PT Medco Energi Internasional Tbk",
  "ExxonMobil Cepu Limited (EMCL)","bp Indonesia / Tangguh LNG","INPEX Masela Ltd / Abadi LNG","Searah (Eni–PETRONAS JV)"]){
