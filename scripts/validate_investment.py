@@ -229,8 +229,8 @@ def main():
             fail("Global investment / innovation comparator lacks source or scope")
     swot = read("investment-swot.json")
     sector_swots = swot.get("sectors", [])
-    if len(sector_swots) != 12 or len({x["sector"] for x in sector_swots}) != 12:
-        fail("Twelve-sector SWOT needs unique sector names")
+    if len(sector_swots) != 13 or len({x["sector"] for x in sector_swots}) != 13:
+        fail("Thirteen-sector SWOT needs unique sector names")
     for section in sector_swots:
         for lens in ("strength", "weakness", "opportunity", "threat"):
             if not section.get(lens):
