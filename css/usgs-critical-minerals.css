@@ -1,0 +1,68 @@
+/* USGS 2026 · source-dated interactive critical minerals panels */
+.sli-usgs-panel{margin:20px 0 23px;padding:20px;border:1px solid #37576e;border-radius:14px;background:linear-gradient(150deg,#102b40,#11293a);color:#d6e4eb;min-width:0}
+.sli-usgs-overline{font-weight:800;color:#e1c38b;letter-spacing:1.5px;font-size:10px;margin-bottom:8px}
+.sli-usgs-panel h3{font-size:clamp(19px,2vw,25px);color:#f7f7f9;margin:0 0 9px}
+.sli-usgs-panel h4{font-size:15px;color:#e8cc95;margin:18px 0 11px}
+.sli-usgs-desc,.sli-usgs-panel p{font-size:12px;line-height:1.7}
+.sli-usgs-desc{color:#bcd1dd;margin:0 0 16px}
+.sli-usgs-snapshot,.sli-usgs-trade-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:11px;margin:12px 0 18px}
+.sli-usgs-metric,.sli-usgs-trade-card{padding:15px;border:1px solid #44657c;background:#1a3a50;border-radius:10px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.sli-usgs-metric small,.sli-usgs-trade-card small{font-size:11px;color:#bcd0df}
+.sli-usgs-metric strong,.sli-usgs-trade-card strong{font-size:clamp(20px,2.4vw,29px);color:#e4c486;line-height:1.2}
+.sli-usgs-metric span{font-size:11px;color:#ebd6ac}
+.sli-usgs-metric p{margin:3px 0;color:#bdced9;font-size:11px}
+.sli-usgs-share-bars{display:grid;gap:9px}
+.sli-usgs-share-row{display:grid;grid-template-columns:minmax(110px,170px) minmax(30px,1fr) 50px 30px;align-items:center;gap:11px;font-size:12px}
+.sli-usgs-share-name{color:#e0ebef;font-weight:650}.sli-usgs-share-track{height:15px;background:#2d4a5e;border-radius:7px;overflow:hidden}
+.sli-usgs-share-fill{height:100%;background:linear-gradient(90deg,#d9af6b,#f5d596);border-radius:7px}
+.sli-usgs-share-row strong{color:#e5ca92;text-align:right;font-size:12px}
+.sli-usgs-rank{font-size:10px;color:#b7cbd8;text-align:right}
+.sli-usgs-note{border-left:3px solid #d6b775;padding:10px 12px;background:#1c374b;margin:14px 0!important;color:#c5d5e0;font-size:11px!important;line-height:1.75!important}
+.sli-usgs-citation-row{display:flex;flex-wrap:wrap;gap:13px}.sli-usgs-link{font-size:11px;color:#eed098;text-decoration:underline;overflow-wrap:anywhere}
+.sli-usgs-controls{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:14px 0}
+.sli-usgs-controls label{font-size:12px;font-weight:650;color:#e1c68c}
+.sli-usgs-select{padding:9px 12px;min-width:180px;max-width:100%;border-radius:8px;border:1px solid #51718a;background:#1b3b52;color:#f3f5f8;font:inherit;font-size:12px}
+.sli-usgs-legend{display:flex;flex-wrap:wrap;gap:9px 14px;margin:12px 0}
+.sli-usgs-legend-item{display:flex;align-items:center;gap:6px;font-size:11px;line-height:1.4;color:#d5e3eb}
+.sli-usgs-swatch{width:12px;height:12px;border-radius:4px;flex:none}
+.sli-usgs-svg-wrap{background:#0e2436;border:1px solid #34536b;border-radius:11px;padding:11px;overflow:hidden}
+.sli-usgs-line-svg{display:block;width:100%;height:auto}
+.sli-usgs-table-wrap{max-width:100%;overflow-x:auto}
+.sli-usgs-table{width:100%;border-collapse:collapse;min-width:520px;margin-top:12px}
+.sli-usgs-table th,.sli-usgs-table td{padding:11px 10px;border-bottom:1px solid #365368;text-align:left;font-size:11px;vertical-align:top;color:#d9e3e9}
+.sli-usgs-table th{background:#1c4058;color:#e3c993;font-size:11px}
+.sli-usgs-process{margin:15px 0}
+.sli-usgs-process-nodes{display:flex;align-items:stretch;justify-content:space-between;gap:8px}
+.sli-usgs-process-node{flex:1;min-width:0;padding:12px;border:1px solid #56809a;border-radius:11px;background:#1b4257;display:grid;gap:7px}
+.sli-usgs-process-node.process{border-color:#83bdac}.sli-usgs-process-node.smelt{border-color:#d7b97d}
+.sli-usgs-process-node small{font-size:9px;color:#b4ccda}
+.sli-usgs-process-node strong{font-size:12px;color:#eef4f8;overflow-wrap:anywhere}
+.sli-usgs-process-node span{font-size:14px;color:#e7c98f;font-weight:750}
+.sli-usgs-process-arrow{display:grid;place-items:center;flex:none;color:#e3c585;font-size:24px;font-weight:800}
+.sli-usgs-geo-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(235px,1fr);gap:14px}
+.sli-usgs-map{border:1px solid #37546b;border-radius:10px;background:#0d2538;padding:9px;min-width:0}
+.sli-usgs-map svg{display:block;width:100%;height:auto}
+.sli-usgs-map g[role=button]{cursor:pointer;outline:none}.sli-usgs-map g[role=button]:focus circle{stroke:#fff!important}
+.sli-usgs-site-info{border:1px solid #44667c;border-radius:10px;background:#1a3a50;padding:15px;min-width:0}
+.sli-usgs-site-info small{color:#e6cb93;font-size:11px}
+.sli-usgs-site-info h4{margin:8px 0;color:#fff}
+.sli-usgs-site-info>strong{color:#e7c58a;font-size:18px}
+.sli-usgs-trade-band{height:19px;border-radius:7px;display:flex;overflow:hidden;background:#425f73}
+.sli-usgs-trade-known{background:#dcbd80}.sli-usgs-trade-other{background:#4c7287}
+.sli-usgs-trade-card p{margin:0;color:#c8d8e1}
+.sli-usgs-trade-legend{font-size:11px!important}
+.sli-usgs-product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px}
+.sli-usgs-product-card{background:#1b394d;border:1px solid #42627a;border-radius:8px;padding:12px}
+.sli-usgs-product-card small{color:#b7cbda;display:block;font-size:10px}
+.sli-usgs-product-card strong{display:block;color:#e5ca8f;font-size:18px;margin:5px 0}
+.sli-usgs-product-card p{margin:0;color:#dae7ed}
+.sli-usgs-sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.sli-usgs-source{border:1px solid #3d5b72;background:#16344b;border-radius:9px;padding:13px;display:grid;gap:8px}
+.sli-usgs-source strong{font-size:12px;color:#fff}
+.sli-usgs-source small{font-size:10px;color:#e4c68d}
+.sli-usgs-source p{margin:0;font-size:11px;color:#c4d6df}
+.sli-usgs-bullets{color:#d0dfe6;font-size:12px;line-height:1.75;padding-left:20px}
+.sli-usgs-bullets li{margin-bottom:7px}
+@media(max-width:850px){.sli-usgs-geo-layout{grid-template-columns:1fr}}
+@media(max-width:650px){.sli-usgs-panel{padding:13px}.sli-usgs-snapshot,.sli-usgs-trade-grid,.sli-usgs-product-grid,.sli-usgs-sources{grid-template-columns:1fr 1fr}.sli-usgs-share-row{grid-template-columns:98px minmax(15px,1fr) 40px 24px;gap:6px;font-size:10px}.sli-usgs-share-row strong{font-size:11px}.sli-usgs-controls{display:grid;grid-template-columns:1fr}.sli-usgs-select{width:100%}.sli-usgs-process-nodes{flex-direction:column}.sli-usgs-process-arrow{transform:rotate(90deg);min-height:13px}.sli-usgs-metric,.sli-usgs-trade-card{padding:11px}.sli-usgs-metric strong,.sli-usgs-trade-card strong{font-size:21px}}
+@media(max-width:420px){.sli-usgs-snapshot,.sli-usgs-trade-grid,.sli-usgs-product-grid,.sli-usgs-sources{grid-template-columns:1fr}}
