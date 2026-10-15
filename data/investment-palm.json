@@ -1,0 +1,100 @@
+{
+  "as_of": "2026-10-15",
+  "title": "Palm Oil Investment, Fiscal & Biofuel Feedstock Intelligence",
+  "classification": "Curated dated sources, not live national accounts",
+  "investment": {
+    "palm_2025_verified_rp_trillion": null,
+    "palm_2025_status": "BKPM's 2025 palm-oil downstream PMA/PMDN LKPM dataset is public, but its numeric aggregation has not yet been independently verified; no invented palm-only amount.",
+    "palm_2025_dataset_url": "https://data.bkpm.go.id/dataset-detail/nilai-realisasi-pmapmdn-hilirisasi-kelapa-sawit-tahun-2025",
+    "broad_2025_downstream_forestry_plantation_rp_trillion": 144.5,
+    "broad_2025_period": "2025 full year",
+    "broad_2025_source": "https://www.investindonesia.go.id/index.php/id/info/siaran-pers/realisasi-investasi-2025-lampaui-target-hilirisasi-melompat-43-3-persen",
+    "definition": "Rp144.5 trillion is the COMBINED plantation-and-forestry downstream investment category: NOT a palm-only investment value. The total does not isolate plantation from forestry, nor palm from other plantation crops.",
+    "next": "Aggregate BKPM's 2025 palm-oil downstream LKPM CSV by unique year/quarter/project definitions, split PMA/PMDN and province, check for revisions, then publish a palm-only measured figure."
+  },
+  "fiscal": {
+    "reference_year": 2025,
+    "reported_levies_plus_export_duties_rp_trillion": 53.13,
+    "source": "https://www.bpdp.or.id/tutup-perisai-2026-menko-perekonomian-tegaskan-riset-dan-hilirisasi-sawit-perkuat-ketahanan-ekonomi-nasional",
+    "attribution": "Government minister's 21 July 2026 public statement via BPDP.",
+    "scope": "Combined palm export levy (pungutan ekspor) and export duty (bea keluar), as publicly cited. These have different collection and accounting arrangements; Rp53.13tn is NOT validated as a single APBN tax receipt.",
+    "apbn_bea_keluar_palm_only_rp_trillion": null,
+    "bpdp_export_levy_only_rp_trillion": null,
+    "palm_sector_tax_take_rp_trillion": null,
+    "breakdown_note": "A separately reconciled fiscal ledger is needed for APBN export duties, BPDP levies/program funding, and income/VAT/land taxes. These must not be summed with exports or investments."
+  },
+  "trade": {
+    "exports_2025_usd_billion": 35.87,
+    "exports_2025_period": "Jan–Dec 2025",
+    "exports_2025_definition": "GAPKI palm oil and derivatives export value; NOT fiscal state revenue.",
+    "exports_2025_source": "https://gapki.id/news/2026/03/13/kinerja-sawit-2025-menguat-produksi-naik-ekspor-tembus-rp590-triliun/",
+    "exports_ytd_usd_billion": 27.55,
+    "exports_ytd_period": "Jan–Aug 2026",
+    "exports_ytd_million_tonnes": 23.37,
+    "output_ytd_million_tonnes": 40.997,
+    "consumption_ytd_million_tonnes": 17.523,
+    "august_biodiesel_consumption_million_tonnes": 1.35,
+    "ytd_source": "https://www.antaranews.com/berita/5778593/gapki-catat-peningkatan-konsumsi-dan-ekspor-minyak-sawit-pada-agustus",
+    "method": "GAPKI reported industry series through Aug 2026. Jan–Aug YTD cannot be compared to a full-year 2025 figure as annual growth. Production/consumption measures are by mass, not FAME kL."
+  },
+  "biofuel_link": {
+    "source": "https://www.esdm.go.id/id/media-center/arsip-berita/kawal-implementasi-b50-kementerian-esdm-perkuat-uji-teknis-dan-dialog-dengan-industri-otomotif",
+    "materials": [
+      {
+        "title": "Oil-palm fruit / Fresh Fruit Bunches (FFB)",
+        "description": "Harvest to palm mills. Palm estates and smallholder supply chains require replanting, yields, legality and land-use due diligence."
+      },
+      {
+        "title": "CPO / refined palm oil",
+        "description": "Food, oleochemical, export and fuel uses compete for upstream palm feedstock. CPO tonnes are not equivalent to FAME kilolitres."
+      },
+      {
+        "title": "FAME biodiesel / B50 blending",
+        "description": "Palm oil is the dominant feedstock for Indonesia's FAME biodiesel mandate; production capacity, allocation and physical distribution are separate measurements."
+      },
+      {
+        "title": "SAF / renewable diesel",
+        "description": "May use multiple approved lipid/waste feedstocks and distinct processing technology; do not assume all SAF is palm-derived."
+      },
+      {
+        "title": "Bioethanol",
+        "description": "Typically derived from sugar/starch crops such as sugarcane, cassava or maize, NOT palm oil; track separately from biodiesel."
+      }
+    ]
+  },
+  "actors": [
+    {
+      "name": "PTPN IV PalmCo",
+      "role": "State-linked upstream plantations & mills; under PTPN III holding",
+      "status": "Existing operating actor; NOT a new investment commitment",
+      "reported_h1_2026_revenue_rp_trillion": 23.41,
+      "source": "https://www.ptpn4.co.id/id/news/lanjutkan-tren-positif-ptpn-iv-palmco-raup-laba-bersih-rp323-triliun-pada-semester-i-2026-1785029415",
+      "note": "H1 2026 corporate revenue, NOT APBN income or capital investment."
+    },
+    {
+      "name": "BKPM LKPM palm-oil downstream register",
+      "role": "Official PMA/PMDN investor and province breakdown",
+      "status": "Downloadable official dataset; project list pending normalization",
+      "source": "https://data.bkpm.go.id/dataset-detail/nilai-realisasi-pmapmdn-hilirisasi-kelapa-sawit-tahun-2025",
+      "note": "Inspect registered investee projects before claiming ownership, capital deployed, countries or capacity."
+    },
+    {
+      "name": "BPDP",
+      "role": "Palm levy collection and programme financing; biodiesel and smallholder replanting",
+      "status": "Public institution and program records",
+      "source": "https://www.bpdp.or.id/tutup-perisai-2026-menko-perekonomian-tegaskan-riset-dan-hilirisasi-sawit-perkuat-ketahanan-ekonomi-nasional",
+      "note": "BPDP receipts and spending are not automatically equivalent to APBN export duty proceeds."
+    }
+  ],
+  "monitoring": {
+    "news_topic": "Palm oil & downstream",
+    "risk_watch": [
+      "CPO international prices and milling margins",
+      "Export levy/duty changes and BPDP programme funding",
+      "B50 FAME feedstock sufficiency versus food and oleochemicals",
+      "Smallholder replanting, tenure, deforestation and certification",
+      "New downstream refinery/oleochemical/SAF plant: FID versus operating status"
+    ]
+  },
+  "definitions": "Export value, company revenue, government-collected levies/duties, tax revenue and investment are distinct financial concepts. No totals across them."
+}
