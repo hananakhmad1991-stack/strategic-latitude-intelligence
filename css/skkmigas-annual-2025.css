@@ -1,0 +1,57 @@
+/* Source-led SKK Migas 2025 Oil and Gas Investor Intelligence. */
+.sm25-report{background:linear-gradient(145deg,#0c2639,#113044);color:#e5eef3;border:1px solid #4c6a7e;border-radius:13px;padding:18px;margin:18px 0 24px;scroll-margin-top:22px}
+.sm25-eyebrow{font-size:10px;letter-spacing:1.1px;color:#eccb8c;font-weight:800}
+.sm25-report h3{color:#efdaa8;font:normal clamp(21px,2.5vw,28px)/1.25 Georgia,serif;margin:6px 0 9px}
+.sm25-report h4{font-size:14px;color:#e9cb91;margin:12px 0 9px}
+.sm25-intro{font-size:12px;line-height:1.65;color:#c0d3df}
+.sm25-method,.sm25-note{font-size:11px;line-height:1.7;color:#aec5d4;margin:9px 0}
+.sm25-method{border-left:3px solid #dabb7e;background:#153448;border-radius:5px;padding:12px;margin-top:15px}
+.sm25-report a{color:#f2cb88;font-size:11px;text-decoration:underline}
+.sm25-tabs,.sm25-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0}
+.sm25-tab,.sm25-more{border:1px solid #587389;color:#dce8ef;background:#0b2539;padding:9px 12px;border-radius:7px;font:inherit;font-size:11px;cursor:pointer;min-height:39px}
+.sm25-tab.active,.sm25-tab[aria-pressed=true]{background:#e3c18c;color:#122a3b;font-weight:750;border-color:#f0d9af}
+.sm25-tab:focus-visible,.sm25-select:focus-visible,.sm25-query:focus-visible,.sm25-more:focus-visible{outline:2px solid #f0c786;outline-offset:2px}
+.sm25-toolbar{align-items:center}.sm25-toolbar label{font-size:11px;color:#b6cddb}
+.sm25-select,.sm25-query{background:#09283e;border:1px solid #55768a;border-radius:7px;padding:10px;min-height:40px;color:#e0e9f0;font:inherit;font-size:12px;max-width:100%;min-width:155px}
+.sm25-query{flex:1;min-width:240px}
+.sm25-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:9px;margin:13px 0}
+.sm25-kpi{border:1px solid #3b5b70;background:#0b2539;border-radius:9px;padding:13px;min-width:0}
+.sm25-kpi small{font-size:10px;color:#b1c9d8;letter-spacing:.2px}
+.sm25-kpi strong{display:block;color:#edc98e;font-variant-numeric:tabular-nums;font-size:clamp(20px,2.3vw,29px);line-height:1.1;margin:9px 0 3px}
+.sm25-kpi span{font-size:11px;color:#aed3e2}
+.sm25-kpi h5{font-size:12px;margin:9px 0;color:#e0edf4;line-height:1.4}
+.sm25-kpi p{font-size:10px;color:#b9ccd9;line-height:1.55;margin:7px 0}
+.sm25-progress{height:7px;border-radius:5px;background:#2d526a;overflow:hidden;margin:7px 0}
+.sm25-progress-done{height:100%;background:#edc083;border-radius:5px}
+.sm25-chart,.sm25-sankey{overflow:auto;border:1px solid #3b5b71;border-radius:9px;padding:10px;background:#071e31;margin:9px 0}
+.sm25-chart svg{width:100%;height:auto;display:block}
+.sm25-sankey svg{width:100%;height:auto;min-width:570px;display:block}
+.sm25-table-scroll{overflow:auto;max-height:350px;border:1px solid #35566a;margin:12px 0;border-radius:8px}
+.sm25-table{border-collapse:collapse;font-size:11px;width:100%;min-width:460px}
+.sm25-table th,.sm25-table td{padding:8px 10px;text-align:right;border-bottom:1px solid #39566a;font-variant-numeric:tabular-nums;color:#d1e3ed}
+.sm25-table th:first-child{text-align:left}
+.sm25-table thead{background:#234359;position:sticky;top:0}
+.sm25-bar-item{padding:8px 0}
+.sm25-bar-label{display:flex;justify-content:space-between;gap:12px;color:#e0ebef;font-size:11px}
+.sm25-bar-label strong{color:#efd096}
+.sm25-bar-track{height:9px;background:#2b4b63;overflow:hidden;border-radius:5px;margin-top:6px}
+.sm25-bar-filled{background:#dabb85;height:100%;border-radius:5px}
+.sm25-target-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px}
+.sm25-target-card{background:#0a283d;border:1px solid #3c596f;border-radius:8px;padding:12px}
+.sm25-target-card h5{font-size:12px;color:#e9dfc7;margin:0 0 7px}
+.sm25-target-card p{color:#efcb8e;font-size:16px;font-weight:bold;margin:4px 0}
+.sm25-target-card small{font-size:10px;color:#b7cbd9}
+.sm25-spatial{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 0}
+.sm25-spatial-item{border:1px solid #3a586b;border-radius:8px;background:#0a2338;padding:12px;display:flex;flex-direction:column;gap:5px}
+.sm25-spatial-item small{color:#96c0cd;font-size:10px}
+.sm25-spatial-item strong{color:#dfcfb1;font-size:12px}
+.sm25-catalog{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+.sm25-catalog-item{display:flex;flex-direction:column;gap:6px;border:1px solid #3a586a;background:#0b273b;border-radius:8px;padding:11px}
+.sm25-catalog-item small{font-size:10px;color:#a9c9d8}
+.sm25-catalog-item strong{color:#e1eaf1;font-size:12px;line-height:1.4}
+.sm25-catalog-status{font-size:10px;color:#dfbe83}
+.sm25-catalog-item a{margin-top:auto}
+.sm25-more{align-self:center}
+.sm25-source{display:flex;gap:10px;align-items:center;font-size:11px}
+@media(max-width:700px){.sm25-report{padding:11px}.sm25-tab{padding:8px 9px}.sm25-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.sm25-query{min-width:160px}.sm25-catalog{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:460px){.sm25-kpis,.sm25-catalog{grid-template-columns:1fr}.sm25-chart svg{min-width:530px}.sm25-report h3{font-size:21px}}
