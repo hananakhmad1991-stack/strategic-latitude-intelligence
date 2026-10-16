@@ -29,29 +29,84 @@ PATTERNS={
 'pembangkit':r'pembangkit|generation|\bPLT[ASUDGMB]\b',
 'keandalan':r'SAIDI|SAIFI|gangguan|reliability'
 }
+def _download_resumable(url,path):
+ """Resume truncated PLN HTTP responses only when server honors exact byte ranges."""
+ path.unlink(missing_ok=True)
+ expected=None
+ position=0
+ history=[]
+ max_bytes=180_000_000
+ for attempt in range(1,15):
+  headers={'User-Agent':'Mozilla/5.0 (compatible; SLI public energy statistics research)',
+           'Accept':'application/pdf,*/*','Accept-Encoding':'identity'}
+  if position:
+   headers['Range']=f'bytes={position}-'
+  try:
+   with requests.get(url,headers=headers,stream=True,timeout=(20,110),allow_redirects=True) as response:
+    response.raise_for_status()
+    if position:
+     if response.status_code!=206:
+      raise ValueError(f'cannot resume: expected 206 for Range at {position}, got HTTP {response.status_code}')
+     content_range=response.headers.get('Content-Range','')
+     match=re.fullmatch(r'bytes (\\d+)-(\\d+)/(\\d+|\\*)',content_range)
+     if not match or int(match.group(1))!=position:
+      raise ValueError(f'untrusted HTTP content range: {content_range}')
+     if match.group(3)!='*':
+      expected=int(match.group(3))
+    elif response.status_code==206:
+     content_range=response.headers.get('Content-Range','')
+     match=re.fullmatch(r'bytes (\\d+)-(\\d+)/(\\d+|\\*)',content_range)
+     if not match or int(match.group(1))!=0:
+      raise ValueError(f'initial byte range invalid: {content_range}')
+     if match.group(3)!='*':
+      expected=int(match.group(3))
+    elif response.status_code!=200:
+     raise ValueError(f'unexpected HTTP response {response.status_code}')
+    else:
+     content_length=response.headers.get('Content-Length')
+     if content_length and content_length.isdigit():
+      expected=int(content_length)
+    with path.open('ab') as fp:
+     for chunk in response.iter_content(chunk_size=256*1024):
+      if not chunk:
+       continue
+      fp.write(chunk)
+      position+=len(chunk)
+      if position>max_bytes:
+       raise ValueError('PDF exceeds 180MB safety limit')
+   if expected is not None and position<expected:
+    history.append({'attempt':attempt,'offset':position,'error':'HTTP response ended before expected size'})
+    time.sleep(2)
+    continue
+   if expected is not None and position>expected:
+    raise ValueError('Received more bytes than declared content length')
+   with path.open('rb') as fp:
+    if fp.read(5)!=b'%PDF-':
+     raise ValueError('response is not a PDF')
+   with fitz.open(path) as doc:
+    if doc.page_count<1:
+     raise ValueError('PDF has no pages')
+   return {'state':'downloaded','url':url,'bytes':position,
+           'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'path':str(path),
+           'resume_attempts':attempt-1,'download_history':history}
+  except Exception as exc:
+   history.append({'attempt':attempt,'offset':position,'error':str(exc)[:220]})
+   # A server that ignores Range would corrupt data if blindly appended.
+   if position>0 and ('cannot resume' in str(exc) or 'untrusted HTTP content range' in str(exc)):
+    break
+   time.sleep(2)
+ path.unlink(missing_ok=True)
+ return {'state':'download_failed','url':url,'attempts':history,'bytes_received_before_failure':position}
 def download(name, urls):
- path=OUT/(name+'.pdf');errors=[]
+ path=OUT/(name+'.pdf')
+ errors=[]
  for url in urls:
-  for attempt in range(2):
-   try:
-    if path.exists():path.unlink()
-    with requests.get(url,headers={'User-Agent':'Mozilla/5.0 SLI public statistics research','Accept':'application/pdf,*/*'},stream=True,timeout=(20,110),allow_redirects=True) as response:
-     response.raise_for_status()
-     h=hashlib.sha256(); size=0
-     with path.open('wb') as fp:
-      for chunk in response.iter_content(chunk_size=1<<20):
-       if chunk:
-        size+=len(chunk)
-        if size>180_000_000:raise ValueError('PDF exceeds 180MB safety limit')
-        fp.write(chunk);h.update(chunk)
-    with path.open('rb') as fp:
-     if fp.read(5)!=b'%PDF-':raise ValueError('response did not contain PDF header')
-    return {'state':'downloaded','url':url,'bytes':size,'sha256':h.hexdigest(),'path':str(path)}
-   except Exception as exc:
-    errors.append({'url':url,'attempt':attempt+1,'error':str(exc)[:220]})
-    if path.exists():path.unlink()
-    time.sleep(3)
+  result=_download_resumable(url,path)
+  if result['state']=='downloaded':
+   return result
+  errors.append({'url':url,'details':result.get('attempts',[]),'bytes_received_before_failure':result.get('bytes_received_before_failure')})
  return {'state':'download_failed','attempts':errors}
+
 def extract(name,info):
  doc=fitz.open(info['path']);matches=[];all_pages=doc.page_count
  for i,page in enumerate(doc):
