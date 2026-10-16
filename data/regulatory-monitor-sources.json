@@ -1,0 +1,164 @@
+{
+  "version": "2026-10-16",
+  "purpose": "Official-law and government policy news monitoring; candidate detection only, never automatic legal status amendment.",
+  "frequency": "GitHub Actions 01:13 UTC and 11:13 UTC (08:13/18:13 WIB) every day; GitHub schedule subject to delays.",
+  "listing_sources": [
+    {
+      "id": "esdm_news",
+      "label": "ESDM — Arsip Berita",
+      "url": "https://www.esdm.go.id/id/media-center/arsip-berita",
+      "class": "official_policy_news",
+      "allowed_hosts": [
+        "www.esdm.go.id",
+        "esdm.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/id/media-center/arsip-berita/"
+      ],
+      "limit": 50
+    },
+    {
+      "id": "peraturan_latest",
+      "label": "Peraturan.go.id — Regulasi Terbaru",
+      "url": "https://www.peraturan.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "www.peraturan.go.id",
+        "peraturan.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/id/",
+        "/tahun/"
+      ],
+      "limit": 35
+    },
+    {
+      "id": "esdm_jdih",
+      "label": "JDIH ESDM — Dokumen",
+      "url": "https://jdih.esdm.go.id/dokumen/index",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.esdm.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/dokumen/"
+      ],
+      "limit": 35
+    },
+    {
+      "id": "komdigi_news",
+      "label": "Komdigi — Berita Kini",
+      "url": "https://portal.komdigi.go.id/kanal-publik/berita-kini",
+      "class": "official_policy_news",
+      "allowed_hosts": [
+        "portal.komdigi.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/kanal-publik/berita-kini/"
+      ],
+      "limit": 35
+    },
+    {
+      "id": "jabar_jdih",
+      "label": "JDIH Jawa Barat",
+      "url": "https://jdih.jabarprov.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.jabarprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/"
+      ],
+      "limit": 35
+    },
+    {
+      "id": "jateng_jdih",
+      "label": "JDIH Jawa Tengah",
+      "url": "https://jdih.jatengprov.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.jatengprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/"
+      ],
+      "limit": 35
+    },
+    {
+      "id": "kepri_jdih",
+      "label": "JDIH Kepulauan Riau",
+      "url": "https://jdih.kepriprov.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.kepriprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/"
+      ],
+      "limit": 35
+    }
+  ],
+  "watched_laws": [
+    "pp40",
+    "pp28",
+    "uu2minerba",
+    "uu27pdp",
+    "kepmen188",
+    "pres112",
+    "pres110carbon",
+    "perda_jabar",
+    "perda_jateng",
+    "perda_kepri",
+    "permen5",
+    "pp22env"
+  ],
+  "keywords": [
+    "energi",
+    "ketenagalistrikan",
+    "listrik",
+    "pln",
+    "pembangkit",
+    "transmisi",
+    "minyak",
+    "migas",
+    "gas bumi",
+    "batubara",
+    "minerba",
+    "nikel",
+    "hilirisasi",
+    "smelter",
+    "esdm",
+    "investasi",
+    "perizinan",
+    "omnibus",
+    "cipta kerja",
+    "oss",
+    "carbon",
+    "karbon",
+    "ccs",
+    "emisi",
+    "iklim",
+    "ai",
+    "artificial intelligence",
+    "kecerdasan buatan",
+    "pusat data",
+    "data center",
+    "pelindungan data",
+    "pdp",
+    "siber",
+    "pemanfaatan ruang",
+    "lingkungan",
+    "rued",
+    "ruptl",
+    "peraturan",
+    "perpres",
+    "keputusan menteri",
+    "permen",
+    "undang-undang",
+    "perda"
+  ],
+  "item_retention": 150,
+  "source_item_cap": 65,
+  "monitoring_window_days": 90,
+  "notes": "Official sources may be unavailable, slow, or under maintenance. An unavailable source is NOT evidence there are no legal changes. Candidate news and document-page changes require primary-text examination; only human-reviewed records may change legal in-force/repeal statuses."
+}
