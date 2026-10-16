@@ -3,7 +3,7 @@
   "edition": "Laporan Kinerja Kementerian Komunikasi dan Digital 2025",
   "issuer": "Kementerian Komunikasi dan Digital Republik Indonesia",
   "report_year": 2025,
-  "publication_date": "2026-04-13",
+  "publication_date": "2026-04-22",
   "source_filename": "fa1898f3b7f2672c03afd8682a6187d1ece86d3114c6a1a52d8a51fe86a81ae0.pdf",
   "source_pages": 195,
   "provenance": "Digitized directly from uploaded original PDF; page numbers in this data refer to PDF page positions matching printed annual report folio for pages 10+. This is an offline 2025 retrospective with some earlier baselines and 2029 projections.",
@@ -15,7 +15,8 @@
     "Figure 3.25 SPLP numerator/denominator is a grouping of province/regency/city governments by geographical province; it is not exclusively provincial agency adoption.",
     "2025 4G population footprint and 5G settlement-area footprint have DIFFERENT denominators.",
     "SATRIA-1 gateway IP HUB capacity is distinct from provisioned IP transit or actual throughput.",
-    "Palapa Ring East microwave Gbps is converted from 5,500/5,050 Mbps solely for visualization; its 2025 reported 91.81% utilization is kept."
+    "Palapa Ring East microwave Gbps is converted from 5,500/5,050 Mbps solely for visualization; its 2025 reported 91.81% utilization is kept.",
+    "Figure 3.25 provincial SPLP displayed labels sum to 371 connected of 542 available units, but the headline says 378 of 546 local governments. Preserve printed provincial fractions and headline separately without forcing a reconciliation."
   ],
   "metrics": [
     {
@@ -1140,7 +1141,14 @@
         "pdf_page": 13,
         "note": "source asterisk: 2024 score used against 2025 target"
       }
-    ]
+    ],
+    "splp_headline": {
+      "connected": 378,
+      "total": 546,
+      "pdf_page": 161,
+      "unit": "local governments (municipalities, regencies, provinces)",
+      "caveat": "Headline figures from p.161 differ from sum of 38 listed province-by-province labels (371/542)."
+    }
   },
   "policy": {
     "ai_roadmap": {
@@ -1162,5 +1170,8 @@
       "target_year": 2025,
       "caution": "KPI measurement lag; 109.29% target attainment is a 2024 observation compared to 2025 target"
     }
-  }
+  },
+  "source_publication_url": "https://eppid.komdigi.go.id/informasi-publik/detail/550",
+  "source_pdf_url": "https://eppid.komdigi.go.id/attachments/045866d0b76dd70f7000f8747bdf5e1e8e059b90a1a5a81aa9eb6c7068bcb920/fa1898f3b7f2672c03afd8682a6187d1ece86d3114c6a1a52d8a51fe86a81ae0.pdf",
+  "report_signed_date": "2026-04-13"
 }
