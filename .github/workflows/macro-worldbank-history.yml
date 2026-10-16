@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - 'scripts/update_sli_macro_wdi.py'
+      - 'scripts/validate_sli_macro.py'
       - 'data/sli-macro-worldbank-config.json'
       - '.github/workflows/macro-worldbank-history.yml'
 permissions:
