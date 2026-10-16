@@ -746,5 +746,70 @@
       }
     ],
     "warning": "Report p67 internally prints total 233,175 BOEPD in prose but 232,175 BOEPD on its infographic. Maintained separate as source inconsistency. Oil/gas named-project capacities may be future peak/maintenance so do not assert summed per-row values reconcile to 85,550 BOPD and 821 MMSCFD in source aggregate. Only signed onstream dates and printed per-project values are transcribed."
+  },
+  "planned_shutdowns_2025": {
+    "pdf_page": 97,
+    "source_graph": "Graph 3.15",
+    "metric": "Planned vs actual planned shutdown LPO of oil and gas",
+    "oil_events": [
+      {
+        "operator": "MEPN",
+        "label": "Turbine overhaul and lift-gas compressor maintenance (4K PM)",
+        "source_reported_lpo_bbl": null
+      },
+      {
+        "operator": "PHKT",
+        "label": "Engine C-303A change-out",
+        "source_reported_lpo_bbl": null
+      },
+      {
+        "operator": "BP Berau",
+        "label": "TR01 vulnerabilities removal",
+        "source_reported_lpo_bbl": null
+      },
+      {
+        "operator": "EMCL",
+        "label": "Five-year turnaround, including critical device function tests",
+        "source_reported_lpo_bbl": 973686
+      },
+      {
+        "operator": "Pertamina Hulu Mahakam",
+        "label": "Handil shutdown for interstage header tie-ins",
+        "source_reported_lpo_bbl": null
+      }
+    ],
+    "gas_events": [
+      {
+        "operator": "PEPC JTB",
+        "label": "Planned maintenance (16,000 operating hours)"
+      },
+      {
+        "operator": "Eni Sepinggan",
+        "label": "Shutdown for ME MCS upgrade"
+      },
+      {
+        "operator": "MEPG",
+        "label": "Total shutdown for SCE test and DCS upgrade"
+      },
+      {
+        "operator": "BP Berau",
+        "label": "TR01 vulnerabilities removal"
+      },
+      {
+        "operator": "PCK2L",
+        "label": "Restaging bundle LPC Train A"
+      },
+      {
+        "operator": "HCML",
+        "label": "Main driver MDA alternate power generation"
+      }
+    ],
+    "unit_warning": "The graph's vertical axes show lost oil barrels (BBLS) and natural gas million cubic feet (MMSCF). The original dense stacked time chart does not print time-series cell labels. Exact monthly/daily flows are NOT derived from pixel coordinates.",
+    "source_numeric_annotation": {
+      "project": "EMCL five-year turnaround",
+      "reported_lpo_bbl": 973686,
+      "classification": "individual chart callout, not annual loss total"
+    },
+    "caveat": "Event names are directly printed next to planned-shutdown chart annotations. Their marker location is not accurate event start/end dates. Data lacking exact temporal coordinates stay unquantified. No synthetic daily shutdown LPO curves, monthly sums, or causal attribution beyond original labels."
   }
 }
