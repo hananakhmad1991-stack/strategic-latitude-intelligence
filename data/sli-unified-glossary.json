@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16",
+  "version": "2026-10-17",
   "title": "Strategic Latitude Intelligence — Unified Dictionary, Units & Interpretive Notes",
   "scope": "One canonical display entry per normalized term, combining existing Energy Security and map definitions without overriding source-specific statistical definitions. Domain filters guide users to relevant terms; original dataset provenance is retained.",
   "languages": [
@@ -4062,6 +4062,186 @@
       "origin": "SLI editorial terminology supplement",
       "source_path": "data/sli-unified-glossary.json",
       "slug": "yoy-mom-qoq"
+    },
+    {
+      "term": "Stress testing",
+      "en": "Testing an investment under explicitly assumed adverse conditions; not a probability forecast.",
+      "id": "Menguji investasi dengan kondisi buruk berdasarkan asumsi eksplisit; bukan ramalan probabilitas.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "investment",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-1"
+    },
+    {
+      "term": "Breaking point",
+      "en": "A defined threshold where a chosen business outcome (such as operating surplus) reaches zero. Not necessarily insolvency.",
+      "id": "Ambang ketika hasil usaha terpilih (misalnya surplus operasi) mencapai nol; bukan berarti otomatis bangkrut.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "investment",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-2"
+    },
+    {
+      "term": "Operating surplus",
+      "en": "Revenue minus the operating costs represented in a simplified model, before omitted financing, taxes or depreciation.",
+      "id": "Pendapatan dikurangi biaya operasi yang tercakup dalam model sederhana; belum memperhitungkan pembiayaan, pajak, atau depresiasi yang tidak dimodelkan.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "investment",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-3"
+    },
+    {
+      "term": "Break-even electricity tariff",
+      "en": "Implied electricity price at which modeled data-center operating surplus is zero given fixed utilization and assumptions.",
+      "id": "Tarif listrik tersirat yang menjadikan surplus operasi pusat data nol dengan utilisasi dan asumsi tetap.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "electricity",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-4"
+    },
+    {
+      "term": "Power rationing",
+      "en": "An assumed fraction of electricity availability curtailed; the lab simplifies lost availability as proportional lost service revenue.",
+      "id": "Pembatasan pasokan listrik yang diasumsikan; lab menyederhanakan kehilangan pasokan sebagai penurunan proporsional pendapatan layanan.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "electricity",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-5"
+    },
+    {
+      "term": "Power usage effectiveness (PUE)",
+      "en": "Facility electricity consumption divided by IT-equipment electricity consumption; unitless and at least 1 in a valid model.",
+      "id": "Konsumsi listrik fasilitas dibagi konsumsi listrik perangkat IT; tanpa satuan dan minimal 1 dalam model valid.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "ai",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-6"
+    },
+    {
+      "term": "Inventory survival runway",
+      "en": "Estimated stock coverage expressed in weeks assuming unchanged consumption and no replenishment.",
+      "id": "Perkiraan lama stok mencukupi dalam minggu dengan asumsi pemakaian konstan tanpa pasokan ulang.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "investment",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-7"
+    },
+    {
+      "term": "Uncovered supply-gap duration",
+      "en": "Maximum of zero and delayed supply days minus days of usable buffer inventory.",
+      "id": "Maksimum nol dan selisih hari keterlambatan pasokan dengan hari persediaan cadangan yang dapat digunakan.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "trade",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-8"
+    },
+    {
+      "term": "Cost pass-through",
+      "en": "Assumed share of additional input/logistics costs recovered through sales pricing; it does not itself estimate demand elasticity.",
+      "id": "Porsi asumsi tambahan biaya bahan baku/logistik yang dapat dibebankan ke harga jual; bukan estimasi elastisitas permintaan.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "investment",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-9"
+    },
+    {
+      "term": "Demand destruction",
+      "en": "Reduction in sales volume due to shocks; in the lab it is an independent user-defined percentage, not statistically inferred.",
+      "id": "Penurunan volume penjualan akibat guncangan; di lab merupakan persentase asumsi pengguna, bukan hasil estimasi statistik.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "macro",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-10"
+    },
+    {
+      "term": "Oil–FX double shock",
+      "en": "Combined effect of a changed USD oil price and changed IDR per USD on local-currency oil-import cost.",
+      "id": "Pengaruh gabungan perubahan harga minyak dalam USD dan kurs IDR per USD terhadap biaya impor minyak dalam rupiah.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "oilgas",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-11"
+    },
+    {
+      "term": "Fiscal pass-through sensitivity",
+      "en": "User-selected fraction of an incremental import bill treated as possible fiscal exposure; not an official subsidy estimate.",
+      "id": "Bagian asumsi kenaikan biaya impor yang dianggap sebagai potensi eksposur fiskal; bukan estimasi subsidi resmi.",
+      "note_en": "SLI investor stress-testing convention. Assumptions and source vintages must be checked before decision use.",
+      "note_id": "Konvensi stress testing investor SLI. Asumsi dan periode sumber perlu diperiksa sebelum dipakai mengambil keputusan.",
+      "domains": [
+        "macro",
+        "investment"
+      ],
+      "category": "methodology",
+      "origin": "SLI editorial methodological supplement",
+      "source_path": "intelligence-labs.html",
+      "slug": "sli-stress-12"
     }
   ]
 }
