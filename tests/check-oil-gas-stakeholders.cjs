@@ -55,6 +55,6 @@ assert(dedicated.includes('sli:languagechange'),"No bilingual view refresh");
 assert(page.includes('id="energyOilGasStakeholdersRoot"'),"Independent map mount missing");
 assert(page.includes('href="#energyOilGasStakeholdersRoot"'),"No quick navigation to separate oil/gas map");
 assert(page.includes('js/energy-oil-gas-stakeholders.js')&&page.includes('css/energy-oil-gas-stakeholders.css'),"Assets not loaded");
-assert(page.includes("initSLIOilGasStakeholders()"),"Map initializer omitted");
+assert(/initSLIOilGasStakeholders(?:\?\.)?\(\)/.test(page),"Map initializer omitted");
 assert(details.includes(".ogas-profile")&&details.includes(".ogas-tile"),"Responsive actor cards missing");
 console.log("Oil & Gas stakeholders PASS: "+map.items.length+" sector actors in "+map.groups.length+" groups, "+map.issues.length+" issue lenses; Danantara/BP BUMN and BUMS separated.");
