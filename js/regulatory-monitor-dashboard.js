@@ -51,6 +51,8 @@ function render(){
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='sli_regulatory_monitor_candidates.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
  };
 }
-fetch('./data/regulatory-monitor.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()})
-.then(d=>{snapshot=d;render()}).catch(ex=>root.innerHTML='<div class="note"><strong>Monitoring unavailable:</strong> '+e(ex.message)+' — kondisi ini tidak berarti tidak ada perubahan regulasi.</div>');
+const sourceLatest='https://raw.githubusercontent.com/hananakhmad1991-stack/strategic-latitude-intelligence/main/data/regulatory-monitor.json';
+const getJson=u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()});
+getJson(sourceLatest).catch(()=>getJson('./data/regulatory-monitor.json')).then(d=>{snapshot=d;render()})
+.catch(ex=>root.innerHTML='<div class="note"><strong>Monitoring unavailable:</strong> '+e(ex.message)+' — kondisi ini tidak berarti tidak ada perubahan regulasi.</div>');
 })();
