@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-16T12:45:29.396535+00:00",
+  "checked_at_utc": "2026-10-16T15:36:30.528467+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -147,28 +147,28 @@
         "coal"
       ],
       "subsector": "general",
-      "title": "China Coal Prices at Three-Year High With Little Relief in Sight - Bloomberg",
-      "publisher": "Bloomberg",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOMnpxWmJ1UmczTUpUSTBoVzZ2MHg1eDUweUNnYTRPbFhjSk50djkxSGdSb2hRelFrcnBDVW0zUXNoaFFpUnhHcFNJb1hGV3VoRlVCMjQ3U1gzSWFYQnh2YnJHcFhlcjJYZFFGRWlwWWQ1a1llZ2ZTTXNKc05rcW9NcE9EX1RiVHl4S2plMXJBekdMZkk2OFh2ZC1aVXhFamhqQTVnX19mZmFra3ZEbmdCZFlYSnhJQQ?oc=5",
-      "indexed_at_utc": "2026-10-12T08:20:45+00:00",
-      "impact_pathway": "Asian coal import shifts -> Indonesian exporter revenues, DMO opportunity cost and benchmark prices",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Coal exports and Asian import demand",
-      "topic_id": "coal_markets",
-      "type": "Coal trade",
-      "sector": "coal",
-      "sector_tags": [
-        "coal"
-      ],
-      "subsector": "general",
       "title": "Australia's copper mines boom while coal struggles - Nikkei Asia",
       "publisher": "Nikkei Asia",
       "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOMWFRblJQYkR5LWx6VE5wc1N1bEtIVG02cmU1SUNha1pXRUJZQmRsX3VraXBqVUZSbWRXTDNrSXE5VVpWZ29Xb3IzSzJqb2tlZ1BtU3kzTk11MkR1Z0ZkS1VUZkktWVhfZmVMUVpWV2JJRVo0Zm9qUFh3MEdzXzltSk9ZX1BJT1NyUmxVeW1aQTFrc1pyYlJucU4xOU81SF9sSHpDTllB?oc=5",
       "indexed_at_utc": "2026-10-13T16:56:00+00:00",
       "impact_pathway": "Asian coal import shifts -> Indonesian exporter revenues, DMO opportunity cost and benchmark prices",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Geothermal and renewable financing",
+      "topic_id": "nre_geothermal",
+      "type": "NRE investment",
+      "sector": "nre",
+      "sector_tags": [
+        "nre"
+      ],
+      "subsector": "solar_wind",
+      "title": "Japan's Toho Gas to generate solar power in US with Texas investment - Nikkei Asia",
+      "publisher": "Nikkei Asia",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPaGJVT1NMMGZjLU5ad09rY3FzNVA4NTAyaDhLVDZYVV9ab3lrUjB5cXllRElEOE5rbXh4WU5zMmd6T1g0T3BBMTFzaWV2dFFaajY4Rjc1Wm9BTl9xWlhRNUlCREZzSUtWR3ZQQlQ1Z0ZKWmtUeENjX2xBQjhtNTMxM25hZWlOMXZaWnJNMk5Sdy1KTlBfR293ZEgyYmpTX1pNOE1ldVp3X1FvS2VM?oc=5",
+      "indexed_at_utc": "2026-10-16T14:26:00+00:00",
+      "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -192,8 +192,8 @@
   ],
   "sector_counts": {
     "oil_gas": 6,
-    "coal": 4,
-    "nre": 1,
+    "coal": 3,
+    "nre": 2,
     "electricity": 0,
     "cross_cutting": 0
   },
