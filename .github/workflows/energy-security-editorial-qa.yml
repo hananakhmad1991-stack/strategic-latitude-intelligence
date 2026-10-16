@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - index.html
+      - js/heesi-2025-dashboard.js
+      - css/heesi-2025-dashboard.css
+      - data/heesi-2025-integrated.json
+      - tests/qa-heesi-2025.mjs
       - js/energy-news-sectors.js
       - css/energy-news-sectors.css
       - scripts/energy_sector_taxonomy.py
@@ -55,6 +59,8 @@ jobs:
       - name: Parse all Energy Security JavaScript and verify editable layout
         run: |
           node --check js/energy-governance-ccs.js
+          node --check js/heesi-2025-dashboard.js
+          node tests/qa-heesi-2025.mjs
           node --check js/energy-news-sectors.js
           node --check js/energy-transition-domestic.js
           node --check js/stakeholder-map.js
