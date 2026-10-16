@@ -10,6 +10,7 @@ on:
       - data/skkmigas-annual-2025.json
       - data/skkmigas-2025-figure-catalog.json
       - tests/qa-skkmigas-annual-2025.mjs
+      - tests/qa-skkmigas-ui-dom.mjs
       - js/heesi-2025-dashboard.js
       - js/heesi-2025-investor-atlas.js
       - css/heesi-2025-investor-atlas.css
@@ -71,6 +72,7 @@ jobs:
           node --check js/heesi-2025-dashboard.js
           node --check js/skkmigas-annual-2025.js
           node tests/qa-skkmigas-annual-2025.mjs
+          node tests/qa-skkmigas-ui-dom.mjs
           node --check js/heesi-2025-investor-atlas.js
           node tests/qa-heesi-investor-atlas.mjs
           node tests/qa-heesi-2025.mjs
