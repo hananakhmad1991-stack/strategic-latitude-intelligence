@@ -125,6 +125,19 @@ function cyber(root,d){
  g.append(div("Technical protocol",d.spektrum_iog.data_quality.spark_ats_cases+" SPARK ATS tests, 5 SIGI domains; not a cyber compliance score"));
  flag(root,154,"ISO document versions and CSIRT organizational illustration are not numerical certification results.");
 }
+function shutdown(root,d){
+ const x=d.planned_shutdowns_2025;
+ root.append(E("h4",null,T("2025 planned shutdown operations · source annotations","Shutdown terencana 2025 · anotasi sumber")));
+ const g=grid(root);
+ g.append(div("EMCL turnaround",n(x.source_numeric_annotation.reported_lpo_bbl,0)+" barrels of oil in one labeled outage callout, NOT total upstream annual LPO"));
+ g.append(div("Events indexed",x.oil_events.length+" oil-related shutdown labels + "+x.gas_events.length+" gas-related labels"));
+ root.append(E("h4",null,T("Oil-related operational events","Kejadian operasional terkait minyak")));
+ const o=grid(root);
+ for(const evt of x.oil_events)o.append(div(evt.operator,evt.label+(evt.source_reported_lpo_bbl?" · "+n(evt.source_reported_lpo_bbl,0)+" BBLS":"")));
+ root.append(E("h4",null,T("Gas-related operational events","Kejadian operasional terkait gas")));
+ const q=grid(root);for(const evt of x.gas_events)q.append(div(evt.operator,evt.label));
+ flag(root,97,x.caveat+" "+x.unit_warning);
+}
 function market(root,d){
  const e=d.ecommerce;
  root.append(E("h4",null,T("IOG e-Commerce adoption · SKK Migas source 2025","Adopsi IOG e-Commerce · sumber SKK Migas 2025")));
@@ -144,11 +157,12 @@ window.initSLISKKRemainingAtlas=function(root,d){
  ["strategy",T("12 charters + targets","12 program + target")],
  ["digital",T("SPEKTRUM + digital applications","SPEKTRUM + aplikasi digital")],
  ["cyber",T("10 cyber risks","10 risiko siber")],
- ["market",T("IOG e-Commerce and procurement","IOG e-Commerce dan pengadaan")]
+ ["market",T("IOG e-Commerce and procurement","IOG e-Commerce dan pengadaan")],
+ ["shutdown",T("2025 shutdown LPO annotations","Catatan LPO shutdown 2025")]
  ];
  for(const [id,label] of options){const o=E("option",null,label);o.value=id;sel.append(o)}
  controls.append(sel);const view=E("div","sm25-evidence-panel");root.append(E("p","sm25-note",T("Reconstructed from exact printed labels and report text. Dates are source forecasts or historical events, NOT independently updated current progress.","Berdasarkan label dan narasi laporan asli. Tanggal mencerminkan rencana atau peristiwa historis pada sumber, BUKAN perkembangan proyek terkini.")),controls,view);
- function draw(){view.replaceChildren();if(sel.value==="projects")projects(view,d);else if(sel.value==="exploration")exploration(view,d);else if(sel.value==="strategy")strategy(view,d);else if(sel.value==="digital")digital(view,d);else if(sel.value==="cyber")cyber(view,d);else market(view,d)}
+ function draw(){view.replaceChildren();if(sel.value==="projects")projects(view,d);else if(sel.value==="exploration")exploration(view,d);else if(sel.value==="strategy")strategy(view,d);else if(sel.value==="digital")digital(view,d);else if(sel.value==="cyber")cyber(view,d);else if(sel.value==="shutdown")shutdown(view,d);else market(view,d)}
  sel.addEventListener("change",draw);draw();
  root.append(E("p","sm25-method","Canonical source: SKK Migas English Annual Report 2025, 202 PDF pages, SHA256 48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301. Figures are cited by original PDF page. Printed maps/photos are evidence, not inferred coordinates. When report tables disagree, both are retained."));
 };
