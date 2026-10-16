@@ -41,7 +41,7 @@ function viewMap(parent,atlas,geo,baselines,defaultId){
  const picker=E("select","he25-atlas-select");for(const m of all){const opt=E("option",null,m.name+" · "+m.unit);opt.value=m.id;picker.append(opt)}
  picker.value=all.some(x=>x.id===defaultId)?defaultId:"spklu";
  const subtitle=E("p","he25-atlas-subtitle");const layout=E("div","he25-atlas-layout"),map=E("div","he25-atlas-map"),side=E("aside","he25-atlas-side");
- layout.append(map,side);const source=E("div","he25-atlas-foot");parent.append(E("h4",null,"Provincial Investor Heatmap · switch between 9 indicators"),picker,subtitle,layout,source);
+ layout.append(map,side);const source=E("div","he25-atlas-foot");parent.append(E("h4",null,"Provincial Investor Heatmap · switch between 10 indicators"),picker,subtitle,layout,source);
  let chosen=null;
  function update(){
   const layer=all.find(x=>x.id===picker.value);
@@ -71,6 +71,46 @@ function viewMap(parent,atlas,geo,baselines,defaultId){
   source.append(original(atlas.source_url,layer.pdf_page));
  }
  picker.addEventListener("change",()=>{chosen=null;update()});update();
+}
+function viewConsumptionMix(root,atlas){
+ const sectors=[
+  ["Industry","energy_final_industry","#d4ac67"],["Transportation","energy_final_transport","#78bacf"],
+  ["Household","energy_final_household","#93c88f"],["Commercial","energy_final_commercial","#c4a0c9"],
+  ["Other","energy_final_other","#e49d7f"]
+ ].map(([name,id,color])=>({name,color,entry:atlas.series.find(x=>x.id===id)}));
+ if(sectors.some(x=>!x.entry))return;
+ root.className="he25-atlas-mix";
+ root.append(E("h4",null,"Final energy demand · 11-year stacked sector composition (includes traditional biomass)"));
+ const controls=E("div","he25-atlas-controls"),year=E("select","he25-atlas-select"),tip=E("p","he25-atlas-foot");
+ for(let y=2015;y<=2025;y++){const o=E("option",null,String(y));o.value=String(y);year.append(o)}
+ year.value="2025";
+ const chart=E("div","he25-atlas-plot"),composition=E("div","he25-atlas-composition");
+ controls.append(E("span","he25-atlas-control-label","Detail year / tahun"),year);root.append(controls,chart,composition,tip);
+ const max=Math.max(...Array.from({length:11},(_,i)=>sectors.reduce((sum,x)=>sum+x.entry.values[i],0)));
+ const svg=S("svg",chart,{viewBox:"0 0 990 340",role:"img","aria-label":"2015–2025 final Indonesian energy demand sectors stacked columns, source thousand BOE"});
+ for(let grid=0;grid<=4;grid++){const y=279-250*grid/4;S("line",svg,{x1:75,y1:y,x2:970,y2:y,stroke:"#3b5b6d"});
+  const t=S("text",svg,{x:70,y:y+4,fill:"#bdd1dd","text-anchor":"end","font-size":11});t.textContent=f(max*grid/4,0)}
+ for(let i=0;i<11;i++){
+  const x=87+i*78,w=42;let bottom=279,total=0;
+  for(const group of sectors){const val=group.entry.values[i],h=250*val/max;
+    const rect=S("rect",svg,{x,y:bottom-h,width:w,height:h,fill:group.color,rx:1});
+    const t=S("title",rect);t.textContent=(2015+i)+" · "+group.name+" "+f(val,0)+" thousand BOE";
+    bottom-=h;total+=val}
+  const tick=S("text",svg,{x:x+w/2,y:296,fill:"#c9d7df","text-anchor":"middle","font-size":10});tick.textContent=String(2015+i);
+ }
+ sectors.forEach((group,i)=>{const label=S("text",svg,{x:82+(i%3)*267,y:318+(i>=3?14:0),fill:group.color,"font-size":11});label.textContent=group.name;});
+ function detail(){
+  const y=Number(year.value),i=y-2015,total=sectors.reduce((sum,x)=>sum+x.entry.values[i],0);
+  composition.replaceChildren();
+  for(const sector of sectors){const value=sector.entry.values[i],percent=100*value/total;
+   const row=E("div","he25-atlas-mix-row");
+   const a=E("div","he25-atlas-mix-label");a.append(E("span",null,sector.name),E("strong",null,f(value,0)+" thousand BOE · "+f(percent,1)+"%"));
+   const bar=E("div","he25-atlas-mix-track"),filled=E("div","he25-atlas-mix-filled");filled.style.background=sector.color;filled.style.width=f(percent,1)+"%";bar.append(filled);
+   row.append(a,bar);composition.append(row)
+  }
+  tip.textContent="Source ESDM HEESI 2025, Table 3.2.1 pp. 26–27 (PDF 42–43). Included traditional biomass; national final-sector figures, thousand BOE. "+y+" sum "+f(total,0)+" thousand BOE. Rounded components may differ from printed total by 1–2 units. Changes in NGL classification and source revisions are not normalized away.";
+ }
+ year.addEventListener("change",detail);detail();root.append(original(atlas.source_url,42));
 }
 function viewSeries(parent,atlas,defaultTopic){
  parent.replaceChildren();parent.className="he25-atlas-series";
@@ -108,11 +148,12 @@ async function init(where,options={}){
   const [a,base,geo]=await Promise.all([fetch(D,{cache:"no-store"}).then(r=>r.json()),fetch(H,{cache:"no-store"}).then(r=>r.json()),fetch(GEO,{cache:"force-cache"}).then(r=>r.json())]);
   if(a.id!=="HEESI-2025-INVESTOR-ATLAS"||geo.features?.length!==38)throw Error("Source schema not found");
   if(!block.isConnected)return;
-  waiting.textContent="9 provincial map datasets · "+a.series.length+" source-dated longitudinal series · map boundaries: 38 provinces · source ESDM HEESI 2025.";
+  waiting.textContent="10 provincial map datasets · "+a.series.length+" source-dated longitudinal series · map boundaries: 38 provinces · source ESDM HEESI 2025.";
   const map=E("div","he25-atlas-mount"),chart=E("div","he25-atlas-mount");
   block.append(map,chart);
   viewMap(map,a,geo,base,options.map||"spklu");
   viewSeries(chart,a,options.topic||"consumption");
+  const mix=E("div","he25-atlas-mount");block.append(mix);viewConsumptionMix(mix,a);
   const method=E("p","he25-atlas-method","Investor interpretation: source values represent sector conditions and geological/resource potential, not guarantees of investment returns. SPKLU consumption data is national-only in this handbook; provincial charging revenue is not inferred. Coal consumption by province is not provided by the source tables and is not fabricated. 'No data' is distinct from a reported zero. Always cite year, original units and source-page status.");
   block.append(method,original(a.source_url,131));
  }catch(error){waiting.textContent="ESDM Investor Atlas data not yet accessible; existing source-verified energy panels remain available.";console.warn("[SLI HEESI Investor Atlas]",error)}
