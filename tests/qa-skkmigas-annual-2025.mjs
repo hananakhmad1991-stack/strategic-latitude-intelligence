@@ -120,10 +120,10 @@ assert.equal(pod.unreconciled_difference_mmboe,12.31);
 assert.equal(pod.records[9].field,pod.records[24].field,"Source duplicates 10 and 25 must remain flagged");
 for(const r of pod.records){assert.match(r.approval_date,/^2025-\d\d-\d\d$/);assert.ok(r.operator&&r.field);assert.ok(r.source_pdf_page===52||r.source_pdf_page===53)}
 assert.equal(catalog.entries.length,101);
-assert.equal(catalog.digitization_review.numerically_verified,31);
-assert.equal(catalog.digitization_review.source_only,50);
-assert.equal(catalog.digitization_review.structured_source_tables,5);
-assert.equal(catalog.digitization_review.partially_digitized,1);
+assert.equal(catalog.digitization_review.numerically_verified,35);
+assert.equal(catalog.digitization_review.source_only,0);
+assert.equal(catalog.digitization_review.structured_source_tables,15);
+assert.equal(catalog.digitization_review.partially_digitized,3);
 const exploration=JSON.parse(read("data/skkmigas-2025-exploration-registers.json"));
 assert.equal(exploration.pse_structures.length,24);
 assert.equal(exploration.discovery_well_identifiers.length,15);
@@ -133,13 +133,15 @@ assert.equal(exploration.pse_structures[13].structure,exploration.pse_structures
 assert.equal(catalog.report_pages,202);
 assert.equal(new Set(catalog.entries.map(x=>x.kind+x.number+x.pdf_page)).size,101);
 assert.equal(catalog.entries.filter(x=>x.kind==="map").length,5);
-for(const x of catalog.entries){assert.ok(x.title&&x.number&&x.pdf_page>=14&&x.pdf_page<=198);assert.ok(["source-catalog-only","normalized-or-kpi","digitized_verified","structured_table_verified","partially_digitized"].includes(x.status))}
+for(const x of catalog.entries){assert.ok(x.title&&x.number&&x.pdf_page>=14&&x.pdf_page<=198);assert.ok(["source-catalog-only","normalized-or-kpi","digitized_verified","structured_table_verified","partially_digitized","visual_reference_linked","raster_map_reference","conceptual_source_only","source_context_extracted"].includes(x.status))}
 assert.ok(html.includes('id="skkMigas2025EnergyRoot"'));
 assert.ok(html.includes('id="skkMigas2025InvestmentRoot"'));
 assert.ok(html.includes("initSLISKKAnnual2025?.('skkMigas2025EnergyRoot','energy')"));
 assert.ok(html.includes("initSLISKKAnnual2025('skkMigas2025InvestmentRoot','investment')"));
 assert.match(html,/js\/skkmigas-annual-2025\.js\?v=/);
 assert.match(html,/js\/skkmigas-2025-extension\.js\?v=/);
+assert.match(html,/js\/skkmigas-2025-remaining-atlas\.js\?v=/);
+assert.match(script,/initSLISKKRemainingAtlas\?\.\(panel,evidence\)/);
 assert.ok(html.indexOf('js/skkmigas-2025-extension.js')<html.indexOf('js/skkmigas-annual-2025.js'),'Extra module should be preloaded');
 assert.match(script,/initSLISKKExtra2025\?\.\(panel,extra\)/);
 assert.match(html,/css\/skkmigas-annual-2025\.css\?v=/);
