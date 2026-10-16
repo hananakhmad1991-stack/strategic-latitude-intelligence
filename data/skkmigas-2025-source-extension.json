@@ -463,12 +463,86 @@
       }
     ],
     "vendor_assessed_names": [
-      "PT Promatcon Advance",
-      "PT Bumi Beam Tepatguna",
-      "PT Artas Energi Center",
-      "PT Sutrakabel Intimandiri",
-      "PT CT Petroga"
+      "PT Promatcon Tepatguna",
+      "PT Bumi Beam Center",
+      "PT Artas Energi Petroga",
+      "PT CT Advance",
+      "PT Sutrakabel Intimandiri"
     ],
-    "vendor_name_caveat": "Row-wise name/commodity alignment comes from multi-column printed PDF Table 6.4; names could be line-wrapped. Verify spelling against original before public company due-diligence use."
+    "vendor_name_caveat": "Names and commodities read from five source-aligned company cards in original SKK Migas Table 6.4, PDF page 183 (printed 181). No safety or quality score is provided by this graphic.",
+    "vendor_assessed_rows": [
+      {
+        "company": "PT Promatcon Tepatguna",
+        "commodity": "Mechanical static",
+        "source_pdf_page": 183,
+        "scope": "2025 SKK Migas joint capacity assessment by SMEs; selection is not procurement award."
+      },
+      {
+        "company": "PT Bumi Beam Center",
+        "commodity": "Structure",
+        "source_pdf_page": 183,
+        "scope": "2025 SKK Migas joint capacity assessment by SMEs; selection is not procurement award."
+      },
+      {
+        "company": "PT Artas Energi Petroga",
+        "commodity": "FTV",
+        "source_pdf_page": 183,
+        "scope": "2025 SKK Migas joint capacity assessment by SMEs; selection is not procurement award."
+      },
+      {
+        "company": "PT CT Advance",
+        "commodity": "FTV",
+        "source_pdf_page": 183,
+        "scope": "2025 SKK Migas joint capacity assessment by SMEs; selection is not procurement award."
+      },
+      {
+        "company": "PT Sutrakabel Intimandiri",
+        "commodity": "Electrical",
+        "source_pdf_page": 183,
+        "scope": "2025 SKK Migas joint capacity assessment by SMEs; selection is not procurement award."
+      }
+    ],
+    "compliance_inspected": [
+      {
+        "operator": "Repsol Sakakemang B.V.",
+        "contract_area": "Sakakemang",
+        "pdf_page": 184,
+        "inspection_year": 2025,
+        "assessed_fiscal_year": 2024,
+        "result": "inspection occurrence only; no audit pass/fail or noncompliance finding disclosed in this source figure"
+      },
+      {
+        "operator": "ExxonMobil Cepu Ltd.",
+        "contract_area": "Cepu",
+        "pdf_page": 184,
+        "inspection_year": 2025,
+        "assessed_fiscal_year": 2024,
+        "result": "inspection occurrence only; no audit pass/fail or noncompliance finding disclosed in this source figure"
+      },
+      {
+        "operator": "Harbour Energy Indonesia",
+        "contract_area": "Natuna Sea",
+        "pdf_page": 184,
+        "inspection_year": 2025,
+        "assessed_fiscal_year": 2024,
+        "result": "inspection occurrence only; no audit pass/fail or noncompliance finding disclosed in this source figure"
+      },
+      {
+        "operator": "PT Pertamina EP",
+        "contract_area": "Indonesia",
+        "pdf_page": 184,
+        "inspection_year": 2025,
+        "assessed_fiscal_year": 2024,
+        "result": "inspection occurrence only; no audit pass/fail or noncompliance finding disclosed in this source figure"
+      },
+      {
+        "operator": "Kangean Energy Indonesia",
+        "contract_area": "Kangean",
+        "pdf_page": 184,
+        "inspection_year": 2025,
+        "assessed_fiscal_year": 2024,
+        "result": "inspection occurrence only; no audit pass/fail or noncompliance finding disclosed in this source figure"
+      }
+    ]
   }
 }
