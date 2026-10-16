@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "status": "upstream_unavailable_last_good_preserved",
-  "generated_at_utc": "2026-10-16T08:51:55.392880+00:00",
-  "last_attempt_at_utc": "2026-10-16T09:49:05.286993+00:00",
+  "status": "ok",
+  "generated_at_utc": "2026-10-16T10:50:02.049716+00:00",
+  "last_attempt_at_utc": "2026-10-16T10:50:02.049716+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
@@ -691,188 +691,102 @@
     {
       "id": "nickel_market",
       "scope": "minerals/geopolitical",
-      "state": "unavailable",
-      "found": 0
+      "state": "scanned",
+      "found": 5
     },
     {
       "id": "export_policy",
       "scope": "minerals/geopolitical",
-      "state": "unavailable",
+      "state": "scanned",
       "found": 0
     },
     {
       "id": "batteries",
       "scope": "minerals/geopolitical",
-      "state": "unavailable",
+      "state": "scanned",
       "found": 0
     },
     {
       "id": "copper_supply",
       "scope": "minerals/geopolitical",
-      "state": "unavailable",
-      "found": 0
+      "state": "scanned",
+      "found": 6
     },
     {
       "id": "smelter_projects",
       "scope": "minerals/domestic",
-      "state": "unavailable",
-      "found": 0
+      "state": "scanned",
+      "found": 6
     },
     {
       "id": "mineral_policy",
       "scope": "minerals/domestic",
-      "state": "unavailable",
-      "found": 0
+      "state": "scanned",
+      "found": 6
     },
     {
       "id": "environment",
       "scope": "minerals/domestic",
-      "state": "unavailable",
-      "found": 0
+      "state": "scanned",
+      "found": 4
     },
     {
       "id": "mineral_investment",
       "scope": "minerals/domestic",
-      "state": "unavailable",
+      "state": "scanned",
       "found": 0
     },
     {
       "id": "chip_controls",
       "scope": "ai/geopolitical",
-      "state": "unavailable",
+      "state": "scanned",
       "found": 0
     },
     {
       "id": "compute_competition",
       "scope": "ai/geopolitical",
-      "state": "unavailable",
-      "found": 0
+      "state": "scanned",
+      "found": 6
     },
     {
       "id": "data_governance",
       "scope": "ai/geopolitical",
-      "state": "unavailable",
+      "state": "scanned",
       "found": 0
     },
     {
       "id": "subsea",
       "scope": "ai/geopolitical",
-      "state": "unavailable",
-      "found": 0
+      "state": "scanned",
+      "found": 1
     },
     {
       "id": "campus_projects",
       "scope": "ai/domestic",
-      "state": "unavailable",
-      "found": 0
+      "state": "scanned",
+      "found": 6
     },
     {
       "id": "power_water",
       "scope": "ai/domestic",
-      "state": "unavailable",
-      "found": 0
+      "state": "scanned",
+      "found": 6
     },
     {
       "id": "ai_policy",
       "scope": "ai/domestic",
-      "state": "unavailable",
-      "found": 0
+      "state": "scanned",
+      "found": 1
     },
     {
       "id": "cloud_operations",
       "scope": "ai/domestic",
-      "state": "unavailable",
+      "state": "scanned",
       "found": 0
     }
   ],
-  "errors": [
-    {
-      "id": "nickel_market",
-      "scope": "minerals/geopolitical",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "export_policy",
-      "scope": "minerals/geopolitical",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "batteries",
-      "scope": "minerals/geopolitical",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "copper_supply",
-      "scope": "minerals/geopolitical",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "smelter_projects",
-      "scope": "minerals/domestic",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "mineral_policy",
-      "scope": "minerals/domestic",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "environment",
-      "scope": "minerals/domestic",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "mineral_investment",
-      "scope": "minerals/domestic",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "chip_controls",
-      "scope": "ai/geopolitical",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "compute_competition",
-      "scope": "ai/geopolitical",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "data_governance",
-      "scope": "ai/geopolitical",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "subsea",
-      "scope": "ai/geopolitical",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "campus_projects",
-      "scope": "ai/domestic",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "power_water",
-      "scope": "ai/domestic",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "ai_policy",
-      "scope": "ai/domestic",
-      "error": "HTTP Error 503: Service Unavailable"
-    },
-    {
-      "id": "cloud_operations",
-      "scope": "ai/domestic",
-      "error": "HTTP Error 503: Service Unavailable"
-    }
-  ],
-  "reused_last_good_groups": [
-    "minerals/geopolitical",
-    "minerals/domestic",
-    "ai/geopolitical",
-    "ai/domestic"
-  ],
+  "errors": [],
+  "reused_last_good_groups": [],
   "methodology": "Automated, hourly scheduled Google News RSS discovery across 16 themed searches; published dates belong to news articles. Source names are publisher attributions, not a verification of facts. A successful scrape is not evidence that any specific event occurred. No quantitative probability or actual loss is inferred.",
   "refresh_policy": "GitHub scheduled hourly; browser checks published snapshot every 5 minutes while chapter is open.",
   "windows": {
