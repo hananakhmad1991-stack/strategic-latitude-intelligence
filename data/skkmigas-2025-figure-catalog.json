@@ -732,8 +732,11 @@
       "kind": "graph",
       "number": "3.15",
       "title": "Planned shutdown LPO optimization",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "partially_digitized",
+      "crosscheck": "All 11 individually named oil/gas major planned shutdown chart annotations indexed plus exact EMCL 973,686 BBLS callout. Monthly/day loss ribbons are not numerically labeled; never inferred from heights.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 104,
@@ -1259,12 +1262,12 @@
     "source_pdf_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
     "numerically_verified": 35,
     "indexed_source_items": 101,
-    "source_only": 1,
-    "notes": "Digitalization status includes exact numeric labels, named/source-structured qualitative registers and page-referenced artwork. Linked project photos, static non-georeferenced maps and conceptual diagrams are NOT numerically digitized, and an unlabeled shutdown chart remains source-only. These counts cover 101 indexed exhibits, not all figures necessarily in the original 202 pages.",
+    "source_only": 0,
+    "notes": "All 101 previously indexed exhibits now have reviewed dispositions: 35 exact numeric, 15 source-structured, 14 previously KPI-normalized, 3 partially or context-transcribed, 32 photo/map/concept-only source illustrations and 2 other contextual source extracts. No visual-only map is claimed geocoded and no unlabeled chart series is interpolated. This is an indexed subset of the 202-page source, NOT a claim all original page contents are fully digitized.",
     "structured_source_tables": 15,
     "comments": "Two additional complete source-name registers: 24 PSE structures and 15 well markers. Not validated GIS coordinates or numerical productions.",
     "note_extra": "Added five further labelled exhibits: gas contract versus actual, LNG receiving terminals by source, and monthly unplanned oil/gas loss components.",
-    "partially_digitized": 2,
+    "partially_digitized": 3,
     "latest_extension": "SKK Migas investor ratings Graph 1.1, production bridges Graphs 3.6/3.7, monthly TKDN Graph 6.7, risk Table 6.1 and partial commitment Graph 2.3. Additional monthly Natuna GSAI and DSA chart plus original vendor/contractor source tables.",
     "visual_references": 32,
     "context_extracts": 2,
@@ -1274,10 +1277,9 @@
       "digitized_verified": 35,
       "raster_map_reference": 9,
       "structured_table_verified": 15,
-      "partially_digitized": 2,
+      "partially_digitized": 3,
       "normalized-or-kpi": 14,
-      "visual_reference_linked": 19,
-      "source-catalog-only": 1
+      "visual_reference_linked": 19
     }
   }
 }
