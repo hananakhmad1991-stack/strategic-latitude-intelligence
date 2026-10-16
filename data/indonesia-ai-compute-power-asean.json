@@ -1,0 +1,122 @@
+{
+  "updated_at": "2026-10-16",
+  "scope": "Country and selected-market figures have different vintages and scope. Figures are NOT harmonized country rankings.",
+  "records": [
+    {
+      "place": "Indonesia",
+      "area": "National",
+      "mw": 580,
+      "kind": "operating_data_center_estimate",
+      "year": 2026,
+      "source": "https://www.antaranews.com/",
+      "status": "government_aggregate_estimate",
+      "note": "All data centers, not AI compute, GPU count or verified IT load."
+    },
+    {
+      "place": "Indonesia",
+      "area": "National",
+      "mw": 1300,
+      "kind": "prospective_data_center_pipeline",
+      "year": 2026,
+      "source": "https://www.antaranews.com/",
+      "status": "government_aggregate_estimate",
+      "note": "Prospective pipeline, not operational and not additive to project MW."
+    },
+    {
+      "place": "Singapore",
+      "area": "National",
+      "mw": 1400,
+      "kind": "operating_data_center_floor",
+      "year": 2025,
+      "source": "https://asean.org/wp-content/uploads/2026/01/2.-ASEAN-Guide-for-Sustainable-Data-Centre-Development_Dec-2025-Final.pdf",
+      "status": "published_lower_bound",
+      "note": "ASEAN: more than 1.4 GW operational; 1400 is floor not point estimate."
+    },
+    {
+      "place": "Malaysia",
+      "area": "Johor",
+      "mw": 500,
+      "kind": "operating_data_center_floor",
+      "year": 2025,
+      "source": "https://asean.org/wp-content/uploads/2026/01/2.-ASEAN-Guide-for-Sustainable-Data-Centre-Development_Dec-2025-Final.pdf",
+      "status": "published_lower_bound",
+      "note": "ASEAN: live Johor capacity exceeds 500 MW; not Malaysia national total."
+    },
+    {
+      "place": "Vietnam",
+      "area": "National",
+      "mw": 104,
+      "kind": "operating_data_center_estimate",
+      "year": 2025,
+      "source": "https://www.cbre.com.sg/insights/reports/data-center-in-vietnam-2025",
+      "status": "research_estimate",
+      "note": "CBRE 2025 operational market base."
+    },
+    {
+      "place": "Indonesia",
+      "area": "Batang",
+      "mw": 1000,
+      "kind": "zankore_long_term_ai_factory_target",
+      "year": 2026,
+      "source": "https://portal.komdigi.go.id/kanal-publik/berita-kini/10464",
+      "status": "announced_target",
+      "note": "Government described up to 1 GW over three years; not commissioned AI GPU power."
+    },
+    {
+      "place": "Indonesia",
+      "area": "Batang",
+      "mw": 200,
+      "kind": "zankore_initial_phase_target",
+      "year": 2027,
+      "source": "https://portal.komdigi.go.id/kanal-publik/berita-kini/10464",
+      "status": "projected_not_operating",
+      "note": "2027 phase target within long-term 1 GW; must not sum 200+1000."
+    }
+  ],
+  "readiness": [
+    {
+      "id": "national_ai_gpu_capacity",
+      "value": null,
+      "unit": "GPUs / AI TFLOPS",
+      "quality": "unverified",
+      "note": "No credible complete installed national AI accelerator count in available evidence."
+    },
+    {
+      "id": "national_commissioned_ai_specific_mw",
+      "value": null,
+      "unit": "MW IT load",
+      "quality": "unverified",
+      "note": "Do not relabel generic data center capacity as AI-specific power."
+    },
+    {
+      "id": "national_dc_operating_mw",
+      "value": 580,
+      "unit": "MW (published data center capacity)",
+      "quality": "aggregate_estimate",
+      "note": "Facility/load definition requires checking before multiplying by PUE."
+    }
+  ],
+  "talent": [
+    {
+      "name": "Relative AI hiring growth 2025",
+      "value": 31.74,
+      "unit": "%",
+      "source": "Stanford AI Index 2026 PDF p. 212",
+      "note": "LinkedIn relative hiring measure; not total workforce growth."
+    },
+    {
+      "name": "Growth in AI talent concentration, 2019–25",
+      "value": 108,
+      "unit": "%",
+      "source": "Stanford AI Index 2026 PDF p. 214",
+      "note": "Share of AI talents among LinkedIn members."
+    },
+    {
+      "name": "Indonesia projected digital talent deficit, 2024",
+      "value": 4223305,
+      "unit": "persons",
+      "source": "Komdigi Laporan Kinerja 2025",
+      "note": "General digital skills deficit, not GPU engineering deficit."
+    }
+  ]
+}
