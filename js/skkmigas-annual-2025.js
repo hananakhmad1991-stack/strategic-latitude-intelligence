@@ -234,7 +234,7 @@ function renderCatalog(root,data,catalog){
    const card=$("article","sm25-catalog-item");
    card.append($("small",null,x.kind.toUpperCase()+" "+x.number+" · PDF p. "+x.pdf_page+" · printed p. "+x.printed_page),
     $("strong",null,x.title),
-    $("span","sm25-catalog-status",x.status==="source-catalog-only"?I("Source referenced · not yet numerically digitized","Rujukan sumber · belum didigitalkan"):x.status==="digitized_verified"?I("Numeric values digitized and audited","Angka sudah didigitalkan dan diperiksa"):x.status==="structured_table_verified"?I("Complete named register digitized","Daftar nama telah didigitalkan"):I("Related KPI/table already normalized","KPI/tabel terkait sudah dinormalisasi")));
+    $("span","sm25-catalog-status",x.status==="source-catalog-only"?I("Source referenced · not yet numerically digitized","Rujukan sumber · belum didigitalkan"):x.status==="digitized_verified"?I("Numeric values digitized and audited","Angka sudah didigitalkan dan diperiksa"):x.status==="structured_table_verified"?I("Complete source register digitized","Registri sumber telah didigitalkan"):x.status==="partially_digitized"?I("Source headline numbers only · timeline still pending","Hanya angka utama · grafik rinci belum selesai"):I("Related KPI/table already normalized","KPI/tabel terkait sudah dinormalisasi")));
    card.append(links(data.source_url,I("Find in SKK Migas official report ↗","Buka katalog laporan resmi ↗")));results.append(card);
   }
   if(filtered.length>count){const more=$("button","sm25-more",I("Show more","Lihat lagi"));more.type="button";more.addEventListener("click",()=>{count+=30;redraw()});results.append(more)}
