@@ -6,6 +6,10 @@ on:
     paths:
       - index.html
       - js/heesi-2025-dashboard.js
+      - js/heesi-2025-investor-atlas.js
+      - css/heesi-2025-investor-atlas.css
+      - data/heesi-2025-investor-atlas.json
+      - tests/qa-heesi-investor-atlas.mjs
       - css/heesi-2025-dashboard.css
       - data/heesi-2025-integrated.json
       - tests/qa-heesi-2025.mjs
@@ -60,6 +64,8 @@ jobs:
         run: |
           node --check js/energy-governance-ccs.js
           node --check js/heesi-2025-dashboard.js
+          node --check js/heesi-2025-investor-atlas.js
+          node tests/qa-heesi-investor-atlas.mjs
           node tests/qa-heesi-2025.mjs
           node --check js/energy-news-sectors.js
           node --check js/energy-transition-domestic.js
