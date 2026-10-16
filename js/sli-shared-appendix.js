@@ -9,11 +9,11 @@ let cache=null,domain='all',category='all',query='',limit=40;
 const esc=v=>String(v??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
 const locEN=()=>window.SLIi18n?.language==='id'?'id':'en';
 const T=(en,id)=>locEN()==='id'?id:en;
-const LABELS={
-overview:['Overview','Overview'],energy:['Energy & Electricity','Energi dan Listrik'],investment:['Investment & Markets','Investasi dan Pasar'],ai:['AI Infrastructure','Infrastruktur AI'],policy:['Policy & Risk','Kebijakan dan Risiko'],research:['Research & Sources','Riset dan Sumber'],methodology:['Methodology','Metodologi']
-};
 const CONTEXT={
 overview:{domains:['macro','investment','data'],why:['These are national-context indicators at different dates; a latest release is not necessarily a present-day measurement.','Indikator konteks nasional memiliki periode berbeda; rilis terbaru belum tentu observasi saat ini.'],notes:['Growth YoY ≠ annual GDP growth; a monthly deficit ≠ full-year outcome.','Pertumbuhan YoY tidak otomatis pertumbuhan tahunan; defisit berjalan bukan hasil akhir tahun.'],link:'indonesia-macroeconomic-intelligence.html'},
+trade:{domains:['trade','macro','minerals'],why:['Trade surplus (goods-only), goods-and-services national accounts and the balance of payments measure distinct scopes.','Surplus perdagangan barang, neraca barang-jasa, dan neraca pembayaran mengukur cakupan yang berbeda.'],notes:['Check partner/commodity HS codes, USD values and source time windows before drawing trade Sankey or calculating balance.','Periksa kode HS komoditas/mitra, nilai USD dan periode sebelum menghitung neraca atau membuat Sankey.'],link:'indonesia-macroeconomic-intelligence.html'},
+map:{domains:['maps','data','investment'],why:['Asset sector, infrastructure type, corporate owner and source registry are different classification dimensions.','Sektor aset, jenis infrastruktur, pemilik perusahaan dan registri sumber merupakan dimensi klasifikasi berbeda.'],notes:['An approximate locality pin is not a measured facility coordinate. One asset may appear in company, field, plant and project datasets.','Titik lokasi perkiraan bukan koordinat fasilitas terukur. Satu aset dapat muncul pada data perusahaan, lapangan, fasilitas dan proyek.'],link:'data/strategic-map-glossary.json'},
+minerals:{domains:['minerals','trade','energy'],why:['Ore and metal product tonnages, reserve estimates, installed smelter output and actual utilization are different baselines.','Tonase bijih dan logam hasil olahan, cadangan, kapasitas smelter dan utilisasi nyata memiliki basis berbeda.'],notes:['Separate permitting, operational status, upstream source, processing technology and WTO exposure for each mineral.','Bedakan izin, status operasi, asal bahan baku, teknologi proses, dan eksposur WTO untuk setiap mineral.'],link:'ruplt-investor-digitization.html'},
 energy:{domains:['energy','electricity','oilgas','minerals'],why:['Power (MW), energy (GWh), capacity (MVA), and actual dispatch remain separate metrics.','Daya (MW), energi (GWh), kapasitas (MVA), serta operasi nyata adalah indikator berbeda.'],notes:['RUPTL planned equipment cannot be interpreted as commissioned firm grid headroom.','Peralatan yang direncanakan di RUPTL bukan kapasitas andal jaringan yang sudah beroperasi.'],link:'pln-ruptl-energy-investment.html'},
 investment:{domains:['investment','minerals','maps'],why:['Do not add planned capital, signed financing and realized investment into a single amount.','Jangan jumlahkan modal direncanakan, pembiayaan ditandatangani, dan investasi yang terealisasi.'],notes:['Announced MW, operational MW and reported ownership require dated source evidence.','MW diumumkan, MW beroperasi, dan kepemilikan harus memiliki sumber dan tanggal.'],link:'sli-data-automation-center.html'},
 ai:{domains:['ai','electricity','investment'],why:['IT MW, facility MW, GPU deployment, and cloud service availability represent different scopes.','MW IT, MW fasilitas, GPU terpasang, dan layanan cloud memiliki cakupan berbeda.'],notes:['Check verified grid power, N-1 reserve, cooling and commissioned computing separately.','Periksa daya jaringan, cadangan N-1, pendinginan, dan komputasi beroperasi secara terpisah.'],link:'ai-project-grid-finance.html'},
@@ -28,6 +28,9 @@ function contextFor(){
  let page=(location.hash||'').slice(1).split('?')[0];
  if(location.pathname.endsWith('/index.html')||location.pathname==='/'||location.pathname.endsWith('/strategic-latitude-intelligence/')){
   if(page.startsWith('energy')||page.startsWith('es-'))return 'energy';
+  if(page==='trade')return 'trade';
+  if(page==='map')return 'map';
+  if(page==='minerals')return 'minerals';
   if(page.includes('investment'))return 'investment';
   if(page.includes('policy'))return 'policy';
   if(page.includes('ai'))return 'ai';
@@ -56,6 +59,9 @@ async function getData(){
 function curatedTerms(ctx,data){
  const domains=CONTEXT[ctx].domains;
  const picks={overview:['GDP / PDB','Inflation (YoY / MoM)','JISDOR','Gini (BPS / WDI)'],
+ trade:['Neraca perdagangan barang','BOP / NPI','Current account / Transaksi berjalan','USD / IDR'],
+ map:['WGS84 / coordinates','Coordinates accuracy','Announcement vs realized','Missing / null vs zero'],
+ minerals:['DS592','CBAM / CRMA','Installed capacity vs generation','Announcement vs realized'],
  energy:['MW vs MVA','Installed capacity vs generation','Firm headroom','Energy security 4A + S'],
  investment:['Announcement vs realized','Investment commitment vs realization','CAPEX / OPEX','Operational / COD'],
  ai:['IT load vs facility power','PUE','Firm headroom','Cloud region / AZ'],
