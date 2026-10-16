@@ -116,6 +116,8 @@ def main():
     else:
         pdf, sha = download()
     archive = make_archive(pdf, sha)
+    from heesi_2025_power_by_province import write as write_power_by_province
+    write_power_by_province(pdf, ROOT / "data" / "heesi-2025-power-technologies.json")
     target = pathlib.Path(args.output)
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(archive, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
