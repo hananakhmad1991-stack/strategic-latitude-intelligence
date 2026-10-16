@@ -93,3 +93,17 @@
 .sm25-risk strong{font-size:12px;color:#e5eef3;line-height:1.55}
 .sm25-risk span{font-size:10px;color:#a0c6d3;text-transform:uppercase}
 @media(max-width:640px){.sm25-bridge-row{grid-template-columns:1fr 1fr}.sm25-bridge-track{grid-column:1/-1}.sm25-risk-grid{grid-template-columns:1fr}}
+
+/* Remaining 2025 source evidence atlas, source-dated and investor-facing. */
+.sm25-evidence-panel{margin:15px 0 22px}
+.sm25-evidence-panel h4{color:#efcd96;font-size:15px;margin:18px 0 12px}
+.sm25-evid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:13px 0}
+.sm25-evid-card,.sm25-evid-stat{padding:13px;background:#0b2a40;border-radius:9px;border:1px solid #426178;min-width:0}
+.sm25-evid-card h5,.sm25-evid-stat h5{font-size:12px;color:#f0d29e;margin:0 0 8px;line-height:1.45}
+.sm25-evid-card p,.sm25-evid-stat p{font-size:11px;color:#c3d6e3;line-height:1.6;margin:0}
+.sm25-evid-card small{display:block;color:#9dbccf;line-height:1.6;font-size:10px;margin-top:7px}
+.sm25-evid-timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:10px;margin:14px 0 22px;border-left:3px solid #d9b676;padding-left:12px}
+.sm25-evidence-panel .sm25-pod-caveat{margin-top:12px;font-size:11px;color:#f0d7ac;line-height:1.7}
+.sm25-evidence-panel .sm25-select{width:min(100%,460px)}
+.sm25-evidence-panel .sm25-query{width:min(100%,600px);margin:10px 0}
+@media(max-width:630px){.sm25-evid-grid,.sm25-evid-timeline{grid-template-columns:1fr}.sm25-evidence-panel .sm25-evid-card{padding:11px}}
