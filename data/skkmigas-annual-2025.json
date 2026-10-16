@@ -209,12 +209,13 @@
       "unit": "wells",
       "pdf_page": 56,
       "category": "drilling",
-      "detail": {
+      "detail": "2025 realized against 993 annual plan; plan is not production target.",
+      "year": 2025,
+      "target": {
         "value": 993,
         "unit": "wells",
         "type": "annual plan"
-      },
-      "year": 2025
+      }
     },
     {
       "id": "workover",
@@ -223,7 +224,7 @@
       "unit": "activities",
       "pdf_page": 56,
       "category": "drilling",
-      "detail": "Target 958.",
+      "detail": "2025 realized against 958 annual plan; plan is not production target.",
       "target": {
         "value": 958,
         "unit": "activities",
@@ -238,7 +239,7 @@
       "unit": "activities",
       "pdf_page": 56,
       "category": "drilling",
-      "detail": "Target 40,233.",
+      "detail": "2025 realized against 40,233 annual plan; plan is not production target.",
       "target": {
         "value": 40233,
         "unit": "activities",
@@ -977,7 +978,7 @@
       ],
       "values": [
         28329,
-        0,
+        null,
         53067,
         101003,
         67269,
@@ -985,7 +986,10 @@
       ],
       "source_pdf_page": 110,
       "category": "operators",
-      "note": "2021 source uses dash (no reported figure); zero is for plotting only and must not be treated as certified zero production."
+      "note": "PDF uses dash for years with no figure. Chart null, NOT zero: 2021",
+      "missing_years": [
+        2021
+      ]
     },
     {
       "id": "lpg_pertamina_ep",
@@ -1072,16 +1076,22 @@
         2025
       ],
       "values": [
-        0,
-        0,
-        0,
-        0,
+        null,
+        null,
+        null,
+        null,
         6921,
         63236
       ],
       "source_pdf_page": 110,
       "category": "operators",
-      "note": "2020–2023 reported as dash, not confirmed zero. Plotting zero is a placeholder only."
+      "note": "PDF uses dash for years with no figure. Chart null, NOT zero: 2020, 2021, 2022, 2023",
+      "missing_years": [
+        2020,
+        2021,
+        2022,
+        2023
+      ]
     },
     {
       "id": "cost_production",
