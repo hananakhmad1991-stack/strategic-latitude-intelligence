@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "checked_at_utc": null,
+  "monitoring_status": "awaiting_first_run",
+  "legal_status_update_policy": "Candidates only. Enactment, repeal, amendment and effective dates require review of authenticated legal source; the canonical graph cannot update from news headlines.",
+  "latest_new_candidates_count": 0,
+  "pending_candidate_review": 0,
+  "successful_listing_sources": 0,
+  "total_listing_sources": 7,
+  "sources": [
+    {
+      "id": "esdm_news",
+      "label": "ESDM — Arsip Berita",
+      "url": "https://www.esdm.go.id/id/media-center/arsip-berita",
+      "category": "official_policy_news",
+      "last_attempt_utc": null,
+      "last_success_utc": null,
+      "health": "pending",
+      "error": null,
+      "observed_items": null,
+      "previous_successful_baseline": false
+    },
+    {
+      "id": "peraturan_latest",
+      "label": "Peraturan.go.id — Regulasi Terbaru",
+      "url": "https://www.peraturan.go.id/",
+      "category": "official_regulation_listing",
+      "last_attempt_utc": null,
+      "last_success_utc": null,
+      "health": "pending",
+      "error": null,
+      "observed_items": null,
+      "previous_successful_baseline": false
+    },
+    {
+      "id": "esdm_jdih",
+      "label": "JDIH ESDM — Dokumen",
+      "url": "https://jdih.esdm.go.id/dokumen/index",
+      "category": "official_regulation_listing",
+      "last_attempt_utc": null,
+      "last_success_utc": null,
+      "health": "pending",
+      "error": null,
+      "observed_items": null,
+      "previous_successful_baseline": false
+    },
+    {
+      "id": "komdigi_news",
+      "label": "Komdigi — Berita Kini",
+      "url": "https://portal.komdigi.go.id/kanal-publik/berita-kini",
+      "category": "official_policy_news",
+      "last_attempt_utc": null,
+      "last_success_utc": null,
+      "health": "pending",
+      "error": null,
+      "observed_items": null,
+      "previous_successful_baseline": false
+    },
+    {
+      "id": "jabar_jdih",
+      "label": "JDIH Jawa Barat",
+      "url": "https://jdih.jabarprov.go.id/",
+      "category": "official_regulation_listing",
+      "last_attempt_utc": null,
+      "last_success_utc": null,
+      "health": "pending",
+      "error": null,
+      "observed_items": null,
+      "previous_successful_baseline": false
+    },
+    {
+      "id": "jateng_jdih",
+      "label": "JDIH Jawa Tengah",
+      "url": "https://jdih.jatengprov.go.id/",
+      "category": "official_regulation_listing",
+      "last_attempt_utc": null,
+      "last_success_utc": null,
+      "health": "pending",
+      "error": null,
+      "observed_items": null,
+      "previous_successful_baseline": false
+    },
+    {
+      "id": "kepri_jdih",
+      "label": "JDIH Kepulauan Riau",
+      "url": "https://jdih.kepriprov.go.id/",
+      "category": "official_regulation_listing",
+      "last_attempt_utc": null,
+      "last_success_utc": null,
+      "health": "pending",
+      "error": null,
+      "observed_items": null,
+      "previous_successful_baseline": false
+    }
+  ],
+  "watched_law_records": {},
+  "events": [],
+  "monitoring_scope": "Indonesia official legislation and policy news affecting SLI Energy Security, critical minerals, oil and gas, investment and AI/data centers",
+  "notes": [
+    "Initial snapshot only; no live check has run.",
+    "Unreachable issuers do not imply no changes.",
+    "Initial baseline headlines are not alerts."
+  ]
+}
