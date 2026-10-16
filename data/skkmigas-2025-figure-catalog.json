@@ -48,8 +48,9 @@
       "kind": "figure",
       "number": "1.1",
       "title": "Energy Trilemma",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "conceptual_source_only",
+      "crosscheck": "This source drawing is available at the original report page and cannot be turned into numeric time-series or verified GIS without an independent dataset.",
+      "evidence_type": "qualitative illustration / organizational diagram without verifiable numeric cells"
     },
     {
       "pdf_page": 32,
@@ -57,8 +58,12 @@
       "kind": "figure",
       "number": "1.2",
       "title": "Long-term low-carbon and climate resilience strategy",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "source_context_extracted",
+      "crosscheck": "LTS-LCCR 2030 and 2050 national GHG projections from adjacent report text. Not operational 2025 upstream emissions.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "partial or source-text-only extraction, not complete figure metrics"
     },
     {
       "pdf_page": 35,
@@ -102,8 +107,9 @@
       "kind": "figure",
       "number": "2.1",
       "title": "2025 seismic surveys",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "raster_map_reference",
+      "crosscheck": "Original figure retained as indexed map reference; SLI does NOT invent coordinates or contract-area boundary geometry. For 2025 national area statistics use independent official data and certified GIS layers.",
+      "evidence_type": "raster or PDF vector illustration; no georeferenced polygon/coordinates exported"
     },
     {
       "pdf_page": 41,
@@ -111,8 +117,12 @@
       "kind": "table",
       "number": "2.2",
       "title": "Exploration drilling activities",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Complete 2025 exploration wells plan 46, drilled 35, 24 completed, 14 successful, plus 2D and 3D seismic from adjacent source.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "structured source records"
     },
     {
       "pdf_page": 42,
@@ -120,8 +130,9 @@
       "kind": "figure",
       "number": "2.2",
       "title": "Exploration wells drilled location map",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "raster_map_reference",
+      "crosscheck": "Original figure retained as indexed map reference; SLI does NOT invent coordinates or contract-area boundary geometry. For 2025 national area statistics use independent official data and certified GIS layers.",
+      "evidence_type": "raster or PDF vector illustration; no georeferenced polygon/coordinates exported"
     },
     {
       "pdf_page": 44,
@@ -153,8 +164,12 @@
       "kind": "table",
       "number": "2.3",
       "title": "Contract area firm-commitment performance",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Five printed 1–5 star rows × 3 contract-period columns, 48 cell counts; does not reconcile to 43 effective CAs.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "structured source records"
     },
     {
       "pdf_page": 47,
@@ -162,8 +177,9 @@
       "kind": "figure",
       "number": "2.3",
       "title": "2025 exploration discovery location map",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "raster_map_reference",
+      "crosscheck": "Original figure retained as indexed map reference; SLI does NOT invent coordinates or contract-area boundary geometry. For 2025 national area statistics use independent official data and certified GIS layers.",
+      "evidence_type": "raster or PDF vector illustration; no georeferenced polygon/coordinates exported"
     },
     {
       "pdf_page": 47,
@@ -207,8 +223,9 @@
       "kind": "figure",
       "number": "2.4",
       "title": "National oil and gas reserves basin map",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "raster_map_reference",
+      "crosscheck": "Original figure retained as indexed map reference; SLI does NOT invent coordinates or contract-area boundary geometry. For 2025 national area statistics use independent official data and certified GIS layers.",
+      "evidence_type": "raster or PDF vector illustration; no georeferenced polygon/coordinates exported"
     },
     {
       "pdf_page": 51,
@@ -288,8 +305,12 @@
       "kind": "figure",
       "number": "3.1",
       "title": "National strategic upstream projects 2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Five projects with US$ investment estimates and peak production, plus overall USD46.15bn. Source announced projects, not completed 2026.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "original source exact numeric figure"
     },
     {
       "pdf_page": 62,
@@ -297,8 +318,12 @@
       "kind": "figure",
       "number": "3.2",
       "title": "National strategic project timeline",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Six precisely dated July–December 2025 project FID / AFE / assessment milestones transcribed.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "structured source records"
     },
     {
       "pdf_page": 63,
@@ -306,8 +331,13 @@
       "kind": "figure",
       "number": "3.3",
       "title": "Tangguh LNG facility",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 65,
@@ -315,8 +345,13 @@
       "kind": "figure",
       "number": "3.4",
       "title": "Abadi Masela field development concept",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 66,
@@ -324,8 +359,13 @@
       "kind": "figure",
       "number": "3.5",
       "title": "Asap, Kido and Merah development",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 67,
@@ -333,8 +373,12 @@
       "kind": "figure",
       "number": "3.6",
       "title": "16 upstream projects commissioned in 2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "All sixteen 2025 onstream commissioning dates, operators and printed per-project capacities; source aggregates and internal 1,000 BOEPD difference disclosed.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "original source exact numeric figure"
     },
     {
       "pdf_page": 69,
@@ -342,8 +386,13 @@
       "kind": "figure",
       "number": "3.7",
       "title": "Akasia Bagus production facility upgrade",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 70,
@@ -351,8 +400,13 @@
       "kind": "figure",
       "number": "3.8",
       "title": "Letang Tengah Rawa expansion",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 71,
@@ -360,8 +414,13 @@
       "kind": "figure",
       "number": "3.9",
       "title": "Balam gathering station enhancement",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 72,
@@ -369,8 +428,13 @@
       "kind": "figure",
       "number": "3.10",
       "title": "Sungai Anggur Selatan associated-gas facility",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 73,
@@ -378,8 +442,13 @@
       "kind": "figure",
       "number": "3.11",
       "title": "SAS-2 well put on production",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 74,
@@ -387,8 +456,13 @@
       "kind": "figure",
       "number": "3.12",
       "title": "Terubuk project",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 75,
@@ -396,8 +470,13 @@
       "kind": "figure",
       "number": "3.13",
       "title": "A25 flowline installation",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 76,
@@ -405,8 +484,13 @@
       "kind": "figure",
       "number": "3.14",
       "title": "NDD Area 14 Stage 2",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 77,
@@ -414,8 +498,13 @@
       "kind": "figure",
       "number": "3.15",
       "title": "Suban gas plant",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 78,
@@ -423,8 +512,13 @@
       "kind": "figure",
       "number": "3.16",
       "title": "Rengas-1 flowline",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 79,
@@ -432,8 +526,13 @@
       "kind": "figure",
       "number": "3.17",
       "title": "South Senoro project",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 81,
@@ -441,8 +540,13 @@
       "kind": "figure",
       "number": "3.18",
       "title": "Banyu Urip infill clastic project",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 82,
@@ -450,8 +554,13 @@
       "kind": "figure",
       "number": "3.19",
       "title": "Minas chemical enhanced oil recovery",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 83,
@@ -459,8 +568,13 @@
       "kind": "figure",
       "number": "3.20",
       "title": "Pantai Pakam Timur facility enhancement",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 85,
@@ -468,8 +582,13 @@
       "kind": "figure",
       "number": "3.21",
       "title": "Sisi Nubi field development",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 86,
@@ -477,8 +596,13 @@
       "kind": "figure",
       "number": "3.22",
       "title": "POPE Padang Pancuran 01",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "visual_reference_linked",
+      "crosscheck": "Linked by the source catalog to project dossiers and report pages. This photograph/artist concept has no printed machine-verifiable coordinates or time series. Nothing numerically inferred from pixels.",
+      "evidence_type": "project photo or conceptual source illustration; not a statistical chart",
+      "related_data": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-remaining-evidence.json"
+      ]
     },
     {
       "pdf_page": 88,
@@ -736,8 +860,12 @@
       "kind": "figure",
       "number": "6.1",
       "title": "Upstream strategic plan 2025–2035",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Three 2035 strategic targets and eight pillar/enabler statements transcribed; source policy commitments, not measured achievements.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "structured source records"
     },
     {
       "pdf_page": 124,
@@ -745,8 +873,12 @@
       "kind": "figure",
       "number": "6.2",
       "title": "Strategic plan charter",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "All twelve strategic program charters with source numbering and names.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "structured source records"
     },
     {
       "pdf_page": 126,
@@ -754,8 +886,12 @@
       "kind": "figure",
       "number": "6.3",
       "title": "Eight pillar charters progress",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "partially_digitized",
+      "crosscheck": "Eight strategic pillar charters, with four source-labelled performance milestones extracted; narrative diagram has nonnumeric remaining actions.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "partial or source-text-only extraction, not complete figure metrics"
     },
     {
       "pdf_page": 127,
@@ -763,8 +899,12 @@
       "kind": "figure",
       "number": "6.4",
       "title": "Four enabler charters progress",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Four enabling charters and source qualitative actions; no fabricated percent complete.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "structured source records"
     },
     {
       "pdf_page": 130,
@@ -772,8 +912,9 @@
       "kind": "figure",
       "number": "6.5",
       "title": "Efforts to increase exploration",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "conceptual_source_only",
+      "crosscheck": "This source drawing is available at the original report page and cannot be turned into numeric time-series or verified GIS without an independent dataset.",
+      "evidence_type": "qualitative illustration / organizational diagram without verifiable numeric cells"
     },
     {
       "pdf_page": 132,
@@ -847,8 +988,12 @@
       "kind": "table",
       "number": "6.2",
       "title": "Digital application development inventory",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Six named SKK Migas digital applications with original purpose, development status and planned e-POD 2026 rollout.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "structured source records"
     },
     {
       "pdf_page": 148,
@@ -856,8 +1001,12 @@
       "kind": "figure",
       "number": "6.6",
       "title": "Spektrum IOG 4.0 coverage March 2026",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Four SPEKTRUM onboarding cohorts: 7, 9, 16, and 18 from March 2026 narrative; figure itself says 7 initial. Inconsistent original source retained.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "original source exact numeric figure"
     },
     {
       "pdf_page": 149,
@@ -865,8 +1014,12 @@
       "kind": "figure",
       "number": "6.7",
       "title": "Spektrum IOG 4.0 architecture",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Five SIGI domain classes and three technical integration tiers; federated data architecture, no GIS data inferred.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "structured source records"
     },
     {
       "pdf_page": 150,
@@ -874,8 +1027,12 @@
       "kind": "figure",
       "number": "6.8",
       "title": "Three-phase roadmap 2026–2027",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Three sourced roadmap stages for 2026–2027, no claim that future targets have happened.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "structured source records"
     },
     {
       "pdf_page": 154,
@@ -883,8 +1040,12 @@
       "kind": "figure",
       "number": "6.9",
       "title": "ISO 20000/27001 certificates",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "source_context_extracted",
+      "crosscheck": "ISO standard versions cited but inconsistency ISO27001:2013 vs ISO27001:2022 disclosed. Not evidence of certification to either version.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "partial or source-text-only extraction, not complete figure metrics"
     },
     {
       "pdf_page": 154,
@@ -892,8 +1053,9 @@
       "kind": "figure",
       "number": "6.10",
       "title": "Incident response team 2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "conceptual_source_only",
+      "crosscheck": "This source drawing is available at the original report page and cannot be turned into numeric time-series or verified GIS without an independent dataset.",
+      "evidence_type": "qualitative illustration / organizational diagram without verifiable numeric cells"
     },
     {
       "pdf_page": 156,
@@ -901,8 +1063,9 @@
       "kind": "figure",
       "number": "6.11",
       "title": "Cyber risk profile",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "conceptual_source_only",
+      "crosscheck": "This source drawing is available at the original report page and cannot be turned into numeric time-series or verified GIS without an independent dataset.",
+      "evidence_type": "qualitative illustration / organizational diagram without verifiable numeric cells"
     },
     {
       "pdf_page": 157,
@@ -910,8 +1073,12 @@
       "kind": "figure",
       "number": "6.12",
       "title": "Ten cyber risks upstream oil and gas",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Ten original cyber threat categories digitized as unranked named taxonomy, not risk frequency or numerical ranking.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "structured source records"
     },
     {
       "pdf_page": 176,
@@ -981,8 +1148,12 @@
       "kind": "figure",
       "number": "6.13",
       "title": "IOG e-commerce and supply chain",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "2025 IOG e-Commerce users and IDR607.9bn transaction value from original figure-adjacent paragraph.",
+      "digitized_refs": [
+        "data/skkmigas-2025-remaining-evidence.json"
+      ],
+      "evidence_type": "original source exact numeric figure"
     },
     {
       "pdf_page": 183,
@@ -1038,8 +1209,9 @@
       "kind": "map",
       "number": "A",
       "title": "Oil and gas contract areas Indonesia 2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "raster_map_reference",
+      "crosscheck": "Original figure retained as indexed map reference; SLI does NOT invent coordinates or contract-area boundary geometry. For 2025 national area statistics use independent official data and certified GIS layers.",
+      "evidence_type": "raster or PDF vector illustration; no georeferenced polygon/coordinates exported"
     },
     {
       "pdf_page": 192,
@@ -1047,8 +1219,9 @@
       "kind": "map",
       "number": "B.1",
       "title": "PSC conventional areas Sumatra and Natuna",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "raster_map_reference",
+      "crosscheck": "Original figure retained as indexed map reference; SLI does NOT invent coordinates or contract-area boundary geometry. For 2025 national area statistics use independent official data and certified GIS layers.",
+      "evidence_type": "raster or PDF vector illustration; no georeferenced polygon/coordinates exported"
     },
     {
       "pdf_page": 194,
@@ -1056,8 +1229,9 @@
       "kind": "map",
       "number": "B.2",
       "title": "PSC conventional areas Java, Madura and Kalimantan",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "raster_map_reference",
+      "crosscheck": "Original figure retained as indexed map reference; SLI does NOT invent coordinates or contract-area boundary geometry. For 2025 national area statistics use independent official data and certified GIS layers.",
+      "evidence_type": "raster or PDF vector illustration; no georeferenced polygon/coordinates exported"
     },
     {
       "pdf_page": 196,
@@ -1065,8 +1239,9 @@
       "kind": "map",
       "number": "B.3",
       "title": "PSC conventional areas eastern Indonesia",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "raster_map_reference",
+      "crosscheck": "Original figure retained as indexed map reference; SLI does NOT invent coordinates or contract-area boundary geometry. For 2025 national area statistics use independent official data and certified GIS layers.",
+      "evidence_type": "raster or PDF vector illustration; no georeferenced polygon/coordinates exported"
     },
     {
       "pdf_page": 198,
@@ -1074,21 +1249,35 @@
       "kind": "map",
       "number": "B.4",
       "title": "Nonconventional contract area appendix",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "raster_map_reference",
+      "crosscheck": "Original figure retained as indexed map reference; SLI does NOT invent coordinates or contract-area boundary geometry. For 2025 national area statistics use independent official data and certified GIS layers.",
+      "evidence_type": "raster or PDF vector illustration; no georeferenced polygon/coordinates exported"
     }
   ],
   "digitization_review": {
     "updated": "2026-10-16",
     "source_pdf_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
-    "numerically_verified": 31,
+    "numerically_verified": 35,
     "indexed_source_items": 101,
-    "source_only": 50,
-    "notes": "101 entries are an indexed subset of original PDF exhibits, not an exhaustive count of all 202 pages. Numeric-verified denotes explicitly printed source values, not all pixels in a complex graphical timeline. Structured means a complete named/risk register. Partial means labelled KPI extract only; source diagram bars/timeline not interpolated. Source-only includes maps, photo, nonnumeric charts and a handful of remaining source graphics.",
-    "structured_source_tables": 5,
+    "source_only": 1,
+    "notes": "Digitalization status includes exact numeric labels, named/source-structured qualitative registers and page-referenced artwork. Linked project photos, static non-georeferenced maps and conceptual diagrams are NOT numerically digitized, and an unlabeled shutdown chart remains source-only. These counts cover 101 indexed exhibits, not all figures necessarily in the original 202 pages.",
+    "structured_source_tables": 15,
     "comments": "Two additional complete source-name registers: 24 PSE structures and 15 well markers. Not validated GIS coordinates or numerical productions.",
     "note_extra": "Added five further labelled exhibits: gas contract versus actual, LNG receiving terminals by source, and monthly unplanned oil/gas loss components.",
-    "partially_digitized": 1,
-    "latest_extension": "SKK Migas investor ratings Graph 1.1, production bridges Graphs 3.6/3.7, monthly TKDN Graph 6.7, risk Table 6.1 and partial commitment Graph 2.3. Additional monthly Natuna GSAI and DSA chart plus original vendor/contractor source tables."
+    "partially_digitized": 2,
+    "latest_extension": "SKK Migas investor ratings Graph 1.1, production bridges Graphs 3.6/3.7, monthly TKDN Graph 6.7, risk Table 6.1 and partial commitment Graph 2.3. Additional monthly Natuna GSAI and DSA chart plus original vendor/contractor source tables.",
+    "visual_references": 32,
+    "context_extracts": 2,
+    "status_distribution": {
+      "conceptual_source_only": 4,
+      "source_context_extracted": 2,
+      "digitized_verified": 35,
+      "raster_map_reference": 9,
+      "structured_table_verified": 15,
+      "partially_digitized": 2,
+      "normalized-or-kpi": 14,
+      "visual_reference_linked": 19,
+      "source-catalog-only": 1
+    }
   }
 }
