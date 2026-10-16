@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16.2",
+  "version": "2026-10-16.3",
   "updated_at": "2026-10-16",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -23,10 +23,10 @@
       "UU / Perppu",
       "PP",
       "Perpres",
-      "Perda Province",
-      "Perda City/Regency"
+      "Perda Provinsi",
+      "Perda Kabupaten/Kota"
     ],
-    "article_8_branch": "Ministerial and certain other regulations have authority-derived binding force under Article 8; not appended as a new rung after provincial local regulation. Kepmen often administrative decisions, not general normative regulations. SNI/technical codes require adoption/contract to be binding. Historical Keppres precedents can define institutional history but should not be confused with modern Presidential Regulations or assumed current licensing authority.",
+    "article_8_branch": "Article 8 UU 12/2011: regulations by Ministers, Governors, Regents/Mayors and authorized authorities are binding insofar as ordered by superior legislation OR issued under their legal authority. They are parallel competency/delegation branches, not automatic eighth–tenth levels of Article 7. A Pergub may implement a provincial Perda; a Perbup/Perwali implements lawful authority and relevant Kabupaten/Kota Perda or national spatial rules, but DOES NOT automatically derive from or stand beneath the Pergub. Kepmen often administrative decisions, not normative regulations.",
     "ria_lite": {
       "purpose": "transparent qualitative prioritization of investor due diligence, not government statutory Regulatory Impact Assessment, cost-benefit CBA, actual probability, compliance finding or legal verdict.",
       "scale": "six analyst-assigned 1–5 ordinal issue exposure ratings; uncalibrated, scenario screening only; higher=more diligence needed, not 'illegal'.",
@@ -64,7 +64,8 @@
         }
       ],
       "limitations": "Scores are illustrative analyst judgments; no empirical financial/likelihood calibration. Do not compare jurisdictions as objective regulatory risk. Missing compliance evidence is not a violation."
-    }
+    },
+    "cross_ministry_implementation": "Parallel regulations from BKPM/OSS, ATR/BPN, KLH/BPLH, ESDM, Kemenperin and Komdigi must be mapped by KBLI, permits and legal delegation, not mistaken for a joint regulation or one ministry's rules governing another."
   },
   "nodes": [
     {
@@ -651,6 +652,175 @@
       "kind": "presidential_decree_historical",
       "owner": "President / BP Batam",
       "evidence": "official_bp_batam_history"
+    },
+    {
+      "id": "uu26spatial",
+      "tier": "uu",
+      "ref": "UU 26/2007",
+      "label": "Penataan Ruang, termasuk perubahan Cipta Kerja",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/id/uu-no-26-tahun-2007",
+      "note": "Pijakan legislasi RTRW, RDTR, dan kesesuaian pemanfaatan ruang; pakai teks konsolidasi terbaru.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "ATR/BPN; PUPR; Pemda",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu25investment",
+      "tier": "uu",
+      "ref": "UU 25/2007",
+      "label": "Penanaman Modal",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/id/uu-no-25-tahun-2007",
+      "note": "Dasar penanaman modal lintas sektor, beririsan dengan OSS, izin lokasi, fasilitas fiskal dan pelaporan investasi.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "Investasi/BKPM; Kemenkeu",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu3industry",
+      "tier": "uu",
+      "ref": "UU 3/2014",
+      "label": "Perindustrian",
+      "sector": "minerba",
+      "source": "https://peraturan.go.id/id/uu-no-3-tahun-2014",
+      "note": "Pengaturan kegiatan industri termasuk smelter dan kawasan industri. Periksa ketentuan perubahan dari UU Cipta Kerja.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "Kemenperin",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pp21spatial",
+      "tier": "pp",
+      "ref": "PP 21/2021",
+      "label": "Penyelenggaraan Penataan Ruang",
+      "sector": "cross",
+      "source": "https://jdih.kemenkoinfra.go.id/id/peraturan-pemerintah-republik-indonesia-no-21-tahun-2021",
+      "note": "Integrasi tata ruang dan izin lokasi lintas sektor. Perhatikan kewenangan pusat-daerah serta RDTR setempat.",
+      "status": "check_current",
+      "kind": "general_regulation",
+      "owner": "ATR/BPN; Pemda",
+      "evidence": "official_record"
+    },
+    {
+      "id": "permenatr13",
+      "tier": "permen",
+      "ref": "Permen ATR/BPN 13/2021",
+      "label": "Kesesuaian Kegiatan Pemanfaatan Ruang (KKPR)",
+      "sector": "cross",
+      "source": "https://jdih.atrbpn.go.id/peraturan/detail/1004/peraturan-menteri-agraria-dan-tata-ruang-kepala-badan-pertanahan-nasional-nomor-13-tahun-2021",
+      "note": "JDIH ATR/BPN mencantumkan berlaku; kewajiban KKPR/PKKPR perlu dicocokkan dengan RDTR dan perubahan aturan OSS.",
+      "status": "listed_active_review_alignment",
+      "kind": "ministerial_regulation",
+      "owner": "ATR/BPN",
+      "evidence": "official_record"
+    },
+    {
+      "id": "permenlhk4",
+      "tier": "permen",
+      "ref": "Permen LHK 4/2021",
+      "label": "Daftar usaha wajib AMDAL, UKL-UPL atau SPPL",
+      "sector": "environment",
+      "source": "https://oss.go.id/id/regulasi/458951a7-9b0e-42bb-80a1-742feeb673bb",
+      "note": "Klasifikasi kegiatan/KBLI dan ambang lingkungan memengaruhi data center, smelter dan infrastruktur listrik; cek perubahan terkini.",
+      "status": "check_current",
+      "kind": "ministerial_regulation",
+      "owner": "KLH/BPLH",
+      "evidence": "official_record"
+    },
+    {
+      "id": "permenbkpm5",
+      "tier": "permen",
+      "ref": "Permen Investasi/BKPM 5/2025",
+      "label": "Tata cara OSS dan fasilitas penanaman modal",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/332573/permeninvesbkpm-no-5-tahun-2025",
+      "note": "Pelaksanaan PP 28/2025 lintas kementerian termasuk syarat dasar, izin penunjang, fasilitas investasi, pengawasan dan ketentuan peralihan.",
+      "status": "enacted",
+      "kind": "ministerial_regulation",
+      "owner": "Investasi/BKPM",
+      "evidence": "official_record"
+    },
+    {
+      "id": "permenperin37",
+      "tier": "permen",
+      "ref": "Permenperin 37/2025",
+      "label": "Standar kegiatan usaha/produk sektor industri dalam OSS",
+      "sector": "minerba",
+      "source": "https://peraturan.go.id/files/permenperin-no-37-tahun-2025.pdf",
+      "note": "Implementasi PP 28/2025 untuk sektor industri termasuk persyaratan dan klasifikasi kegiatan industri; rincian KBLI bergantung entitas proyek.",
+      "status": "enacted",
+      "kind": "ministerial_regulation",
+      "owner": "Kemenperin",
+      "evidence": "official_record"
+    },
+    {
+      "id": "perda_bekasi",
+      "tier": "perda_kab",
+      "ref": "Perda Kab. Bekasi 12/2011",
+      "label": "RTRW Kabupaten Bekasi 2011–2031",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/282472/perda-kab-bekasi-no-12-tahun-2011",
+      "note": "Kerangka tata ruang tingkat kabupaten; JDIH BPK mencantumkan berlaku, tetapi sinkronisasi terhadap aturan yang lebih baru dan RDTR perlu diperiksa.",
+      "status": "listed_active_review_alignment",
+      "kind": "regency_regulation",
+      "owner": "Pemkab Bekasi",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pergub_jateng29",
+      "tier": "pergub",
+      "ref": "Pergub Jateng 29/2021",
+      "label": "Petunjuk pelaksanaan RUED Jawa Tengah",
+      "sector": "energy",
+      "source": "https://peraturan.bpk.go.id/Details/192590/pergub-prov-jawa-tengah-no-29-tahun-2021",
+      "note": "Peraturan Gubernur ini secara eksplisit menjalankan Perda Jateng 12/2018 tentang RUED. Status tercatat berlaku; harmonisasi dengan KEN 2025 perlu ditelaah.",
+      "status": "listed_active_review_alignment",
+      "kind": "governor_regulation",
+      "owner": "Pemprov Jawa Tengah",
+      "evidence": "official_record"
+    },
+    {
+      "id": "perbup_bekasi7",
+      "tier": "perbup",
+      "ref": "Perbup Bekasi 7/2024",
+      "label": "RDTR Kawasan Perkotaan Cikarang Bekasi Laut 2024–2044",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/297495/perbup-kab-bekasi-no-7-tahun-2024",
+      "note": "Peraturan Bupati menetapkan struktur dan pola ruang serta zonasi daerah tertentu, bukan izin proyek data center otomatis. JDIH BPK mencantumkan berlaku.",
+      "status": "listed_active_review_alignment",
+      "kind": "regent_regulation",
+      "owner": "Pemkab Bekasi",
+      "evidence": "official_record"
+    },
+    {
+      "id": "perwali_semarang2",
+      "tier": "perwali",
+      "ref": "Perwali Semarang 2/2024",
+      "label": "RDTR Kecamatan Tugu 2023–2043",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/276791/perwali-kota-semarang-no-2-tahun-2024",
+      "note": "Contoh Peraturan Wali Kota yang menetapkan RDTR pada yurisdiksi kota sendiri; bukan aturan pelaksanaan Pergub Jawa Tengah secara otomatis.",
+      "status": "listed_active_review_alignment",
+      "kind": "mayor_regulation",
+      "owner": "Pemkot Semarang",
+      "evidence": "official_record"
+    },
+    {
+      "id": "kkpr",
+      "tier": "technical",
+      "ref": "KKPR / RDTR parcel-level evidence",
+      "label": "Site-specific land zoning compliance",
+      "sector": "cross",
+      "source": "https://oss.go.id/",
+      "note": "Pemeriksaan peta bidang, zonasi, persyaratan dasar OSS, Kesesuaian Kegiatan Pemanfaatan Ruang dan perizinan berusaha, khususnya lokasi data center/smelter.",
+      "status": "project_specific",
+      "kind": "implementation_evidence",
+      "owner": "ATR/BPN; Investasi/BKPM; Pemda",
+      "evidence": "official_record"
     }
   ],
   "edges": [
@@ -888,6 +1058,116 @@
       "from": "keppres41batam",
       "to": "grid",
       "type": "location_governance_context"
+    },
+    {
+      "from": "uu26spatial",
+      "to": "pp21spatial",
+      "type": "implements"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "permenatr13",
+      "type": "implements"
+    },
+    {
+      "from": "permenatr13",
+      "to": "kkpr",
+      "type": "compliance_check"
+    },
+    {
+      "from": "uu25investment",
+      "to": "pp28",
+      "type": "policy_relation"
+    },
+    {
+      "from": "pp28",
+      "to": "permenbkpm5",
+      "type": "implements"
+    },
+    {
+      "from": "permenbkpm5",
+      "to": "oss",
+      "type": "implements"
+    },
+    {
+      "from": "uu3industry",
+      "to": "permenperin37",
+      "type": "implements"
+    },
+    {
+      "from": "pp28",
+      "to": "permenperin37",
+      "type": "implements"
+    },
+    {
+      "from": "pp22env",
+      "to": "permenlhk4",
+      "type": "implements"
+    },
+    {
+      "from": "permenlhk4",
+      "to": "amdal",
+      "type": "compliance_check"
+    },
+    {
+      "from": "perda_jateng",
+      "to": "pergub_jateng29",
+      "type": "explicitly_implements"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_bekasi",
+      "type": "spatial_alignment_review"
+    },
+    {
+      "from": "perda_bekasi",
+      "to": "perbup_bekasi7",
+      "type": "local_spatial_planning_relation"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perbup_bekasi7",
+      "type": "implementing_spatial_planning"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perwali_semarang2",
+      "type": "implementing_spatial_planning"
+    },
+    {
+      "from": "perbup_bekasi7",
+      "to": "kkpr",
+      "type": "project_location_condition"
+    },
+    {
+      "from": "perwali_semarang2",
+      "to": "kkpr",
+      "type": "project_location_condition"
+    },
+    {
+      "from": "permenbkpm5",
+      "to": "permenperin37",
+      "type": "cross_ministry_oss_dependency"
+    },
+    {
+      "from": "permenbkpm5",
+      "to": "permenatr13",
+      "type": "cross_ministry_oss_dependency"
+    },
+    {
+      "from": "permenbkpm5",
+      "to": "permenlhk4",
+      "type": "cross_ministry_oss_dependency"
+    },
+    {
+      "from": "permenbkpm5",
+      "to": "permen11",
+      "type": "cross_ministry_oss_dependency"
+    },
+    {
+      "from": "permenbkpm5",
+      "to": "pdp",
+      "type": "cross_sector_compliance_intersection"
     }
   ],
   "cases": [
@@ -906,7 +1186,13 @@
         "uu27pdp",
         "grid",
         "amdal",
-        "pdp"
+        "pdp",
+        "permenbkpm5",
+        "permenatr13",
+        "permenlhk4",
+        "pp21spatial",
+        "perbup_bekasi7",
+        "kkpr"
       ],
       "issues": [
         {
@@ -972,7 +1258,10 @@
         "permen5",
         "kepmen188",
         "pp22env",
-        "grid"
+        "grid",
+        "permenatr13",
+        "permenlhk4",
+        "kkpr"
       ],
       "issues": [
         {
@@ -1037,7 +1326,12 @@
         "pp25min",
         "pp28",
         "pp22env",
-        "amdal"
+        "amdal",
+        "permenperin37",
+        "permenatr13",
+        "permenbkpm5",
+        "permenlhk4",
+        "kkpr"
       ],
       "issues": [
         {
