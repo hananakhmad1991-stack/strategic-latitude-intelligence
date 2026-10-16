@@ -48,14 +48,14 @@ def _download_resumable(url,path):
      if response.status_code!=206:
       raise ValueError(f'cannot resume: expected 206 for Range at {position}, got HTTP {response.status_code}')
      content_range=response.headers.get('Content-Range','')
-     match=re.fullmatch(r'bytes (\\d+)-(\\d+)/(\\d+|\\*)',content_range)
+     match=re.fullmatch(r'bytes (\d+)-(\d+)/(\d+|\*)',content_range)
      if not match or int(match.group(1))!=position:
       raise ValueError(f'untrusted HTTP content range: {content_range}')
      if match.group(3)!='*':
       expected=int(match.group(3))
     elif response.status_code==206:
      content_range=response.headers.get('Content-Range','')
-     match=re.fullmatch(r'bytes (\\d+)-(\\d+)/(\\d+|\\*)',content_range)
+     match=re.fullmatch(r'bytes (\d+)-(\d+)/(\d+|\*)',content_range)
      if not match or int(match.group(1))!=0:
       raise ValueError(f'initial byte range invalid: {content_range}')
      if match.group(3)!='*':
