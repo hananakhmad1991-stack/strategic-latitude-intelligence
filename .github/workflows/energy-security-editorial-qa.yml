@@ -6,6 +6,9 @@ on:
     paths:
       - index.html
       - js/skkmigas-annual-2025.js
+      - js/skkmigas-2025-extension.js
+      - data/skkmigas-2025-source-extension.json
+      - tests/qa-skkmigas-2025-extension.mjs
       - css/skkmigas-annual-2025.css
       - data/skkmigas-annual-2025.json
       - data/skkmigas-2025-figure-catalog.json
@@ -72,6 +75,8 @@ jobs:
           node --check js/heesi-2025-dashboard.js
           node --check js/skkmigas-annual-2025.js
           node tests/qa-skkmigas-annual-2025.mjs
+          node --check js/skkmigas-2025-extension.js
+          node tests/qa-skkmigas-2025-extension.mjs
           node tests/qa-skkmigas-ui-dom.mjs
           node --check js/heesi-2025-investor-atlas.js
           node tests/qa-heesi-investor-atlas.mjs
