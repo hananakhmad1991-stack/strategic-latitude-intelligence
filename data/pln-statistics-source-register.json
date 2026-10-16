@@ -85,5 +85,70 @@
       "pln_statistics_2024": "success_106_pages"
     },
     "extraction_hints": 195
-  }
+  },
+  "latest_download_runs": [
+    {
+      "id": 38896727137,
+      "conclusion": "success_partial",
+      "ruptl": "download_failed",
+      "statistics_2025": "download_failed",
+      "statistics_2024": "downloaded_106_pages"
+    },
+    {
+      "id": 38896673868,
+      "conclusion": "success_partial",
+      "ruptl": "download_failed",
+      "statistics_2025": "download_failed",
+      "statistics_2024": "downloaded_106_pages"
+    }
+  ],
+  "ruptl_annex_index": [
+    {
+      "annex": "A4",
+      "province": "Kepulauan Riau",
+      "markets": [
+        "Batam",
+        "Bintan"
+      ],
+      "status": "published_structure_identified_data_not_extracted",
+      "source": "https://www.pln.co.id/hubungan-investor-id/informasi-perusahaan-id/ruptl-id-1"
+    },
+    {
+      "annex": "B3",
+      "province": "Jawa Barat",
+      "markets": [
+        "Bekasi",
+        "Karawang"
+      ],
+      "status": "published_structure_identified_data_not_extracted",
+      "source": "https://www.pln.co.id/hubungan-investor-id/informasi-perusahaan-id/ruptl-id-1"
+    },
+    {
+      "annex": "B4",
+      "province": "Jawa Tengah",
+      "markets": [
+        "Batang"
+      ],
+      "status": "published_structure_identified_data_not_extracted",
+      "source": "https://www.pln.co.id/hubungan-investor-id/informasi-perusahaan-id/ruptl-id-1"
+    }
+  ],
+  "alternate_official_sources": [
+    {
+      "title": "PLN official RUPTL archive",
+      "url": "https://www.pln.co.id/hubungan-investor-id/informasi-perusahaan-id/ruptl-id-1",
+      "usage": "full RUPTL link and appendix structure"
+    },
+    {
+      "title": "ESDM RUPTL release",
+      "url": "https://www.esdm.go.id/id/media-center/arsip-berita/kementerian-esdm-resmi-merilis-dokumen-ruptl-pln-2025-2034",
+      "usage": "official publication and alternative ministry access"
+    },
+    {
+      "title": "PLN Statistics 2025 indexed PDF",
+      "url": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
+      "usage": "PDF indexed online; local download and full extraction pending"
+    }
+  ],
+  "current_blocker": "2026-10-16 workflow downloads of full RUPTL 2025-2034 and PLN Statistics 2025 failed; no regional annex numeric data may be asserted until independently verified."
 }
