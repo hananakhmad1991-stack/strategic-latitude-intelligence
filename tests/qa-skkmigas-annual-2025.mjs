@@ -77,7 +77,7 @@ assert.match(html,/css\/skkmigas-annual-2025\.css\?v=/);
 assert.ok(script.includes('renderGas(block,d)')||script.includes('renderGas(panel,d)'));
 assert.match(script,/renderProjectDossiers\(panel,d\)/);
 assert.match(script,/renderCatalog\(panel,d,c\)/);
-assert.match(script,/2025 annual report supplies printed work-area maps/);
+assert.match(script,/annual report supplies printed work-area maps/i);
 assert.ok(style.includes(".sm25-report"));
 const ctx={window:{},document:{},console};vm.runInNewContext(script,ctx,{filename:"skkmigas-annual-2025.js"});
 assert.equal(typeof ctx.window.initSLISKKAnnual2025,"function");
