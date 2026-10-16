@@ -7,9 +7,9 @@ export function classFromFeature(attributes){
  const keys=['KELAS_R','KELAS','kelas_r','kelas','risk_class','CLASS','KELAS_RISIKO'];
  let raw=null;for(const key of keys){if(a[key]!==undefined&&a[key]!==null){raw=String(a[key]).trim();break}}
  if(!raw)return null;
- const text=raw.toLowerCase();if(['1','rendah','low'].includes(text))return 'Low';
- if(['2','sedang','moderate','medium'].includes(text))return 'Moderate';
- if(['3','tinggi','high'].includes(text))return 'High';
+ const text=raw.toLowerCase();if(['rendah','low'].includes(text))return 'Low';
+ if(['sedang','moderate','medium'].includes(text))return 'Moderate';
+ if(['tinggi','high'].includes(text))return 'High';
  return null;
 }
 export async function assessPoint(site,{hazard,endpoint,signal}={}){
