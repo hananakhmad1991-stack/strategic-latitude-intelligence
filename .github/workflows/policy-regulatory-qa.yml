@@ -6,6 +6,9 @@ on:
       - 'data/sli-policy-regulatory-graph-2026.json'
       - 'policy-regulatory-intelligence.html'
       - 'policy-sector-ria.html'
+      - 'policy-impact-evaluation.html'
+      - 'data/sli-public-policy-evaluation-2026.json'
+      - 'scripts/validate_policy_evaluation.py'
       - 'data/sli-sector-regulatory-ria-deepdives.json'
       - 'js/regulatory-monitor-dashboard.js'
       - 'scripts/validate_regulatory_intelligence.py'
@@ -24,6 +27,8 @@ jobs:
           python-version: '3.12'
       - name: Validate regulatory provenance, amendment/repeal flags and RIA weights
         run: python scripts/validate_regulatory_intelligence.py
+      - name: Validate public policy evaluation evidence integrity
+        run: python scripts/validate_policy_evaluation.py
       - name: Validate embedded dashboard JavaScript
         run: |
           python - <<'PY'
@@ -45,3 +50,12 @@ jobs:
           Path('/tmp/sli-sector-ria.js').write_text(code[0])
           PY
           node --check /tmp/sli-sector-ria.js
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          text=Path('policy-impact-evaluation.html').read_text()
+          code=re.findall(r'<script>([\s\S]*?)</script>',text)
+          assert len(code)==1
+          Path('/tmp/sli-policy-impact-evaluation.js').write_text(code[0])
+          PY
+          node --check /tmp/sli-policy-impact-evaluation.js
