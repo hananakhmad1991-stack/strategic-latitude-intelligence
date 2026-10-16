@@ -1,0 +1,165 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-10-16",
+  "method": "Illustrative regional exposure sensitivity, not a measured PLN stress map. Coordinates indicate general industrial/geographic areas, NOT facility locations or verified substations.",
+  "regions": [
+    {
+      "id": "bekasi",
+      "name": "Bekasi–Karawang",
+      "lat": -6.35,
+      "lon": 107.2,
+      "location_precision": "regional centroid approximate",
+      "grid": "PLN Java–Bali system",
+      "project_ids": [
+        "digital-edge-cgk",
+        "pdg-jc3",
+        "pdg-jc4"
+      ],
+      "pipeline_it_mw_scenarios": {
+        "conservative": 130,
+        "base": 280,
+        "aggressive": 480
+      },
+      "completion_years": {
+        "conservative": 2034,
+        "base": 2032,
+        "aggressive": 2030
+      },
+      "base_start": 2027,
+      "grid_headroom_mw": null,
+      "substation_queue_mw": null,
+      "energy_mix_verified": null,
+      "opportunities": [
+        "Substations / transformers",
+        "Transmission and redundant feeds",
+        "Cooling efficiency",
+        "BESS",
+        "Clean energy procurement"
+      ],
+      "validation": [
+        "PLN local feeder and substation limits",
+        "Connection milestones and actual contracted IT MW",
+        "Water/cooling approvals",
+        "Fibre route diversity"
+      ]
+    },
+    {
+      "id": "batam",
+      "name": "Batam (Nongsa–Kabil)",
+      "lat": 1.1,
+      "lon": 104.1,
+      "location_precision": "island regional centroid approximate",
+      "grid": "PLN Batam",
+      "project_ids": [
+        "range-batam",
+        "dayone-firmus"
+      ],
+      "pipeline_it_mw_scenarios": {
+        "conservative": 80,
+        "base": 230,
+        "aggressive": 420
+      },
+      "completion_years": {
+        "conservative": 2035,
+        "base": 2033,
+        "aggressive": 2031
+      },
+      "base_start": 2028,
+      "grid_headroom_mw": null,
+      "substation_queue_mw": null,
+      "energy_mix_verified": null,
+      "opportunities": [
+        "Grid reinforcement",
+        "Substation / industrial feeder",
+        "BESS and grid flexibility",
+        "Low-carbon supply",
+        "Subsea/fibre connectivity"
+      ],
+      "validation": [
+        "PLN Batam capacity and firm connection schedule",
+        "Grid isolation/contingency planning",
+        "Cooling technology and water",
+        "Subsea diversity"
+      ]
+    },
+    {
+      "id": "batang",
+      "name": "Batang, Central Java",
+      "lat": -6.92,
+      "lon": 109.78,
+      "location_precision": "municipal centroid approximate",
+      "grid": "PLN Java–Bali system",
+      "project_ids": [
+        "zankore-batang"
+      ],
+      "pipeline_it_mw_scenarios": {
+        "conservative": 30,
+        "base": 120,
+        "aggressive": 250
+      },
+      "completion_years": {
+        "conservative": 2035,
+        "base": 2034,
+        "aggressive": 2032
+      },
+      "base_start": 2029,
+      "grid_headroom_mw": null,
+      "substation_queue_mw": null,
+      "energy_mix_verified": null,
+      "opportunities": [
+        "Cooling and water systems",
+        "Environmental engineering",
+        "Substation capacity",
+        "Storage",
+        "Renewable electricity supply"
+      ],
+      "validation": [
+        "PUE and cooling design",
+        "AMDAL and water allocation",
+        "Power connection and commissioning dates"
+      ]
+    },
+    {
+      "id": "jakarta",
+      "name": "Jakarta cloud metro",
+      "lat": -6.21,
+      "lon": 106.85,
+      "location_precision": "city centroid approximate",
+      "grid": "PLN Java–Bali system",
+      "project_ids": [
+        "aws-jakarta",
+        "microsoft-indonesia"
+      ],
+      "pipeline_it_mw_scenarios": {
+        "conservative": 0,
+        "base": 0,
+        "aggressive": 0
+      },
+      "completion_years": {
+        "conservative": 2035,
+        "base": 2035,
+        "aggressive": 2035
+      },
+      "base_start": 2027,
+      "grid_headroom_mw": null,
+      "substation_queue_mw": null,
+      "energy_mix_verified": null,
+      "opportunities": [
+        "Existing cloud energy efficiency",
+        "Grid reliability and UPS",
+        "BESS",
+        "Renewable contracts"
+      ],
+      "validation": [
+        "Physical data center sites not public",
+        "Actual incremental expansion and metered MW"
+      ]
+    }
+  ],
+  "default_parameters": {
+    "pue": 1.35,
+    "utilization": 0.8,
+    "emission_factor_tco2_mwh": 0.65
+  },
+  "notes": "Regional scenario IT MW are standalone research sensitivities. Do not sum with national cohort model or announced campus power; regional areas overlap the national footprint. No grid stress ratio can be calculated until firm available headroom is verified."
+}
