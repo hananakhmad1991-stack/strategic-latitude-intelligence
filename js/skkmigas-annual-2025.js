@@ -220,26 +220,26 @@ function renderPOD2025(root,register){
 }
 function renderCatalog(root,data,catalog){
  root.append($("h4",null,I("Report evidence navigator · original 202 PDF pages","Penelusuran bukti laporan · 202 halaman PDF")),
- $("p","sm25-note",I(catalog.entries.length+" indexed report exhibits: "+catalog.digitization_review.numerically_verified+" individually digitized, "+catalog.digitization_review.source_only+" source-only. Original nonnumeric figures and printed maps stay source-linked, not fabricated as GIS.","Ada "+catalog.entries.length+" item laporan: "+catalog.digitization_review.numerically_verified+" sudah didigitalkan numerik dan "+catalog.digitization_review.source_only+" masih referensi sumber. Ilustrasi dan peta cetak tidak direkayasa menjadi GIS.")));
- const controls=$("div","sm25-toolbar"),kind=selectBox([["all",I("All content","Semua")],["graph","Graphs"],["table","Tables"],["figure","Figures"],["map","Original printed maps"]],"all"),search=$("input","sm25-query");
+ $("p","sm25-note",I(catalog.entries.length+" indexed report exhibits: "+catalog.digitization_review.numerically_verified+" numeric exhibits, "+catalog.digitization_review.structured_source_tables+" structured registers and "+catalog.digitization_review.visual_references+" nonnumeric map/photo/concept references. All indexed items have reviewed source dispositions; illustrations do NOT become GIS or numeric datasets.","Ada "+catalog.entries.length+" item laporan: "+catalog.digitization_review.numerically_verified+" numerik, "+catalog.digitization_review.structured_source_tables+" registri terstruktur, dan "+catalog.digitization_review.visual_references+" foto/peta/konsep nonnumerik. Semua item telah diklasifikasi; ilustrasi bukan peta GIS atau dataset statistik.")));
+ const controls=$("div","sm25-toolbar"),kind=selectBox([["all",I("All content","Semua")],["graph","Graphs"],["table","Tables"],["figure","Figures"],["map","Original printed maps"]],"all"),status=selectBox([["all",I("All source states","Semua status")],["digitized_verified",I("Numeric verified","Angka terverifikasi")],["structured_table_verified",I("Structured registry","Registri terstruktur")],["partially_digitized",I("Partially digitized","Digitalisasi sebagian")],["raster_map_reference",I("Ungeocoded maps","Peta tanpa koordinat")],["visual_reference_linked",I("Project images","Gambar proyek")],["conceptual_source_only",I("Conceptual source diagrams","Diagram konseptual")],["source_context_extracted",I("Context extracted","Data konteks")]],"all"),search=$("input","sm25-query");
  search.type="search";search.placeholder=I("Search graph, region, PSC, reserves…","Cari grafik, wilayah, KKKS, cadangan…");
- controls.append(kind,search);
+ controls.append(kind,status,search);
  const results=$("div","sm25-catalog"),meta=$("p","sm25-note");root.append(controls,meta,results);
  let count=30;
  function redraw(){
   results.replaceChildren();const q=search.value.trim().toLowerCase();
-  const filtered=catalog.entries.filter(x=>(kind.value==="all"||x.kind===kind.value)&&(!q||[x.title,x.number,x.kind,x.pdf_page,x.printed_page].join(" ").toLowerCase().includes(q)));
+  const filtered=catalog.entries.filter(x=>(kind.value==="all"||x.kind===kind.value)&&(status.value==="all"||x.status===status.value)&&(!q||[x.title,x.number,x.kind,x.pdf_page,x.printed_page,x.crosscheck].join(" ").toLowerCase().includes(q)));
   meta.textContent=filtered.length+" entries match · "+catalog.entries.length+" original indexed exhibits.";
   for(const x of filtered.slice(0,count)){
    const card=$("article","sm25-catalog-item");
    card.append($("small",null,x.kind.toUpperCase()+" "+x.number+" · PDF p. "+x.pdf_page+" · printed p. "+x.printed_page),
     $("strong",null,x.title),
-    $("span","sm25-catalog-status",x.status==="source-catalog-only"?I("Source referenced · not yet numerically digitized","Rujukan sumber · belum didigitalkan"):x.status==="digitized_verified"?I("Numeric values digitized and audited","Angka sudah didigitalkan dan diperiksa"):x.status==="structured_table_verified"?I("Complete source register digitized","Registri sumber telah didigitalkan"):x.status==="partially_digitized"?I("Source headline numbers only · timeline still pending","Hanya angka utama · grafik rinci belum selesai"):I("Related KPI/table already normalized","KPI/tabel terkait sudah dinormalisasi")));
+    $("span","sm25-catalog-status",x.status==="source-catalog-only"?I("Source referenced · not yet numerically digitized","Rujukan sumber · belum didigitalkan"):x.status==="digitized_verified"?I("Numeric values digitized and audited","Angka sudah didigitalkan dan diperiksa"):x.status==="structured_table_verified"?I("Complete source register digitized","Registri sumber telah didigitalkan"):x.status==="partially_digitized"?I("Partially reconstructed · exact figure time series unavailable","Baru sebagian · seri lengkap tidak tersedia"):x.status==="raster_map_reference"?I("Original source map, NO verified GIS coordinates","Peta sumber, TANPA koordinat GIS"):x.status==="visual_reference_linked"?I("Photo/concept linked to project dossier, NOT numeric","Foto/konsep terkait dossier, BUKAN data angka"):x.status==="conceptual_source_only"?I("Original conceptual figure, no numerical cells","Gambar konseptual, tanpa data angka"):x.status==="source_context_extracted"?I("Source-paragraph figures extracted, illustration not fully digital","Angka narasi diambil, ilustrasi belum digital penuh"):I("Related KPI/table already normalized","KPI/tabel terkait sudah dinormalisasi")));
    card.append(links(data.source_url,I("Find in SKK Migas official report ↗","Buka katalog laporan resmi ↗")));results.append(card);
   }
   if(filtered.length>count){const more=$("button","sm25-more",I("Show more","Lihat lagi"));more.type="button";more.addEventListener("click",()=>{count+=30;redraw()});results.append(more)}
  }
- kind.addEventListener("change",()=>{count=30;redraw()});search.addEventListener("input",()=>{count=30;redraw()});redraw();
+ kind.addEventListener("change",()=>{count=30;redraw()});status.addEventListener("change",()=>{count=30;redraw()});search.addEventListener("input",()=>{count=30;redraw()});redraw();
 }
 function renderProjectDossiers(block,data){
  const projects=data.onstream_2025||[];
