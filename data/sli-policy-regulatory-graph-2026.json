@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16.3",
+  "version": "2026-10-16.4",
   "updated_at": "2026-10-16",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -26,7 +26,7 @@
       "Perda Provinsi",
       "Perda Kabupaten/Kota"
     ],
-    "article_8_branch": "Article 8 UU 12/2011: regulations by Ministers, Governors, Regents/Mayors and authorized authorities are binding insofar as ordered by superior legislation OR issued under their legal authority. They are parallel competency/delegation branches, not automatic eighth–tenth levels of Article 7. A Pergub may implement a provincial Perda; a Perbup/Perwali implements lawful authority and relevant Kabupaten/Kota Perda or national spatial rules, but DOES NOT automatically derive from or stand beneath the Pergub. Kepmen often administrative decisions, not normative regulations.",
+    "article_8_branch": "Article 8 UU 12/2011: regulations by Ministers, Governors, Regents/Mayors and authorized authorities are binding insofar as ordered by superior legislation OR issued under their legal authority. They are parallel competency/delegation branches, not automatic eighth–tenth levels of Article 7. A Pergub may implement a provincial Perda; a Perbup/Perwali implements lawful authority and relevant Kabupaten/Kota Perda or national spatial rules, but DOES NOT automatically derive from or stand beneath the Pergub. Kepmen often administrative decisions, not normative regulations. Inpres is a presidential executive instruction directed at addressees; it is not Perpres and not an extra Article 7 rung. International treaty obligations and WTO rulings are a separate international-law layer; Indonesia's ratification instruments appear at their domestic form.",
     "ria_lite": {
       "purpose": "transparent qualitative prioritization of investor due diligence, not government statutory Regulatory Impact Assessment, cost-benefit CBA, actual probability, compliance finding or legal verdict.",
       "scale": "six analyst-assigned 1–5 ordinal issue exposure ratings; uncalibrated, scenario screening only; higher=more diligence needed, not 'illegal'.",
@@ -65,7 +65,8 @@
       ],
       "limitations": "Scores are illustrative analyst judgments; no empirical financial/likelihood calibration. Do not compare jurisdictions as objective regulatory risk. Missing compliance evidence is not a violation."
     },
-    "cross_ministry_implementation": "Parallel regulations from BKPM/OSS, ATR/BPN, KLH/BPLH, ESDM, Kemenperin and Komdigi must be mapped by KBLI, permits and legal delegation, not mistaken for a joint regulation or one ministry's rules governing another."
+    "cross_ministry_implementation": "Parallel regulations from BKPM/OSS, ATR/BPN, KLH/BPLH, ESDM, Kemenperin and Komdigi must be mapped by KBLI, permits and legal delegation, not mistaken for a joint regulation or one ministry's rules governing another.",
+    "international_law_notes": "Treaties, investment agreements and arbitration rules differ in binding parties, forum and domestic implementation. WTO dispute DS592 is state-to-state and under appeal with a non-functioning Appellate Body in published record; ICSID is investor-state subject to consent, while New York Convention covers arbitral award recognition; UNCITRAL Arbitration Rules operate if adopted. No investor wins/loses automatically."
   },
   "nodes": [
     {
@@ -821,6 +822,266 @@
       "kind": "implementation_evidence",
       "owner": "ATR/BPN; Investasi/BKPM; Pemda",
       "evidence": "official_record"
+    },
+    {
+      "id": "inpres1_2025",
+      "tier": "inpres",
+      "ref": "Inpres 1/2025",
+      "label": "Efisiensi belanja APBN dan APBD Tahun Anggaran 2025",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/313401/inpres-no-1-tahun-2025-efisiensi-belanja-dalam-pelaksanaan-anggaran-pendapatan-d",
+      "note": "Instruksi kepada kementerian/lembaga dan kepala daerah untuk meninjau efisiensi belanja 2025. Tidak otomatis membuktikan pengurangan alokasi proyek tertentu. Status JDIH: berlaku.",
+      "status": "issued_directive",
+      "kind": "presidential_instruction",
+      "owner": "Presiden; Kemenkeu; Kemendagri",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "inpres14_2025",
+      "tier": "inpres",
+      "ref": "Inpres 14/2025",
+      "label": "Percepatan Kawasan Swasembada Pangan, Energi, dan Air Nasional",
+      "sector": "energy",
+      "source": "https://peraturan.bpk.go.id/Details/328144/inpres-no-14-tahun-2025-percepatan-pembangunan-kawasan-swasembada-pangan-energi",
+      "note": "Instruksi terkoordinasi lintas kementerian/provinsi termasuk Papua Selatan, Kalimantan Tengah/Kalimantan Selatan, Sumatera Selatan. Berlaku sebagai instruksi kepada penerima, bukan izin investor atau kewajiban umum yang berdiri sendiri.",
+      "status": "issued_directive",
+      "kind": "presidential_instruction",
+      "owner": "Presiden; Kementerian lintas sektor; Pemda",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "inpres16_2025",
+      "tier": "inpres",
+      "ref": "Inpres 16/2025",
+      "label": "Penguatan Percepatan Kawasan Swasembada Pangan, Energi, Air",
+      "sector": "energy",
+      "source": "https://peraturan.bpk.go.id/Details/337872/inpres-no-16-tahun-2025-penguatan-percepatan-pembangunan-kawasan-swasembada-pang",
+      "note": "Menugaskan Menko Pangan dan Menteri ATR/BPN memperkuat implementasi Inpres 14/2025. JDIH BPK mencatat berlaku; bukan Perpres atau PP.",
+      "status": "issued_directive",
+      "kind": "presidential_instruction",
+      "owner": "Presiden; Menko Pangan; Menteri ATR/BPN",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "uu7wto",
+      "tier": "uu",
+      "ref": "UU 7/1994",
+      "label": "Pengesahan Agreement Establishing the WTO",
+      "sector": "international",
+      "source": "https://www.peraturan.go.id/files/UU0071994.pdf",
+      "note": "Ratifikasi Indonesia atas Persetujuan Pembentukan WTO. Kewajiban WTO pada negara anggota berbeda dari penerapan langsung setiap ketentuan sebagai izin investor domestik.",
+      "status": "enacted",
+      "kind": "ratification_legislation",
+      "owner": "Indonesia / Kemendag",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "gattxi",
+      "tier": "international",
+      "ref": "WTO GATT 1994 · Article XI",
+      "label": "Quantitative restrictions on imports/exports",
+      "sector": "international",
+      "source": "https://www.wto.org/english/docs_e/legal_e/gatt47_02_e.htm",
+      "note": "Kewajiban WTO mengenai pembatasan kuantitatif impor/ekspor; relevan untuk pembatasan ekspor mineral dan analisis pengecualian Pasal XX/XXI. Berlaku antarnegera anggota, bukan Perpres.",
+      "status": "treaty_obligation",
+      "kind": "wto_multilateral_agreement",
+      "owner": "WTO Members / Kemendag",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "scm",
+      "tier": "international",
+      "ref": "WTO SCM Agreement",
+      "label": "Subsidies and Countervailing Measures",
+      "sector": "international",
+      "source": "https://www.wto.org/english/docs_e/legal_e/24-scm_01_e.htm",
+      "note": "Disiplin subsidi dan tindakan imbalan; analisis insentif perlu pemeriksaan jenis subsidi, spesifisitas, dan kontinjensi ekspor/lokal.",
+      "status": "treaty_obligation",
+      "kind": "wto_multilateral_agreement",
+      "owner": "WTO Members / Kemendag",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "trims",
+      "tier": "international",
+      "ref": "WTO TRIMs Agreement",
+      "label": "Trade-Related Investment Measures",
+      "sector": "international",
+      "source": "https://www.wto.org/english/docs_e/legal_e/18-trims_e.htm",
+      "note": "Relevan untuk persyaratan konten lokal dan pembatasan perdagangan tertentu; penerapan memerlukan analisis teks per kasus.",
+      "status": "treaty_obligation",
+      "kind": "wto_multilateral_agreement",
+      "owner": "WTO Members / Kemendag",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "gats",
+      "tier": "international",
+      "ref": "WTO GATS Agreement",
+      "label": "General Agreement on Trade in Services",
+      "sector": "international",
+      "source": "https://www.wto.org/english/docs_e/legal_e/26-gats_01_e.htm",
+      "note": "Perdagangan jasa cloud/IT/telekomunikasi perlu mengkaji jadwal komitmen Indonesia dan pengecualian; bukan liberalisasi otomatis seluruh sektor.",
+      "status": "treaty_obligation",
+      "kind": "wto_multilateral_agreement",
+      "owner": "WTO Members / Kemendag",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "dsu",
+      "tier": "international",
+      "ref": "WTO DSU",
+      "label": "Dispute Settlement Understanding",
+      "sector": "international",
+      "source": "https://www.wto.org/english/docs_e/legal_e/28-dsu_e.htm",
+      "note": "Kerangka penyelesaian sengketa antaranggota WTO, bukan klausul arbitrase investor-swasta. Status panel, adopsi, banding dan kepatuhan harus dibedakan.",
+      "status": "treaty_obligation",
+      "kind": "wto_dispute_mechanism",
+      "owner": "WTO Members",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "ds592",
+      "tier": "international",
+      "ref": "WTO DS592 · Indonesia—Raw Materials",
+      "label": "EU challenge to Indonesian nickel export measures",
+      "sector": "minerba",
+      "source": "https://www.wto.org/english/tratop_e/dispu_e/cases_e/ds592_e.htm",
+      "note": "Panel WTO 30 Nov 2022 menyimpulkan pembatasan ekspor nikel dan persyaratan pengolahan tidak konsisten dengan GATT XI:1. Indonesia mengajukan banding 8 Des 2022 saat Appellate Body tidak berfungsi. Jangan tandai laporan panel sebagai diadopsi/final ataupun larangan nasional otomatis dicabut. Status terkini perlu dicek di laman perkara WTO.",
+      "status": "dispute_appealed_not_final",
+      "kind": "wto_case_not_law",
+      "owner": "WTO / Kemendag / ESDM",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "uu30arb",
+      "tier": "uu",
+      "ref": "UU 30/1999",
+      "label": "Arbitrase dan Alternatif Penyelesaian Sengketa",
+      "sector": "international",
+      "source": "https://peraturan.go.id/files/uu30-1999.pdf",
+      "note": "Dasar penyelesaian arbitrase komersial di Indonesia; yurisdiksi/eksekusi tergantung perjanjian, objek arbitrabilitas, putusan dan syarat hukum.",
+      "status": "check_current",
+      "kind": "arbitration_legislation",
+      "owner": "Pengadilan / parties",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "perma3arb",
+      "tier": "agency",
+      "ref": "Perma 3/2023",
+      "label": "Prosedur pengadilan terkait arbitrase",
+      "sector": "international",
+      "source": "https://www.peraturan.go.id/id/peraturan-ma-no-3-tahun-2023",
+      "note": "Mengatur penunjukan arbiter, hak ingkar, pelaksanaan dan pembatalan putusan arbitrase di pengadilan. Status tercatat berlaku.",
+      "status": "listed_active_review_alignment",
+      "kind": "judicial_regulation",
+      "owner": "Mahkamah Agung",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "kp34newyork",
+      "tier": "decision",
+      "ref": "Keppres 34/1981",
+      "label": "Ratifikasi Konvensi New York 1958 — foreign arbitral awards",
+      "sector": "international",
+      "source": "https://peraturan.go.id/files/kp34-1981.pdf",
+      "note": "Ratifikasi Konvensi Pengakuan dan Pelaksanaan Putusan Arbitrase Asing. Rezim pengakuan/eksekusi tidak menjamin otomatis semua award dieksekusi.",
+      "status": "ratification_instrument",
+      "kind": "presidential_ratification_decision",
+      "owner": "Indonesia / Pengadilan",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "uu5icsid",
+      "tier": "uu",
+      "ref": "UU 5/1968",
+      "label": "Persetujuan ICSID Convention",
+      "sector": "international",
+      "source": "https://peraturan.go.id/id/uu-no-5-tahun-1968",
+      "note": "Ratifikasi Konvensi penyelesaian sengketa investasi Negara–WNI asing. Keanggotaan ICSID ≠ persetujuan arbitrase untuk semua investor/proyek.",
+      "status": "check_current",
+      "kind": "investment_arbitration_ratification",
+      "owner": "Indonesia / ICSID",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "icsid",
+      "tier": "international",
+      "ref": "ICSID Convention",
+      "label": "Investor–State arbitration framework",
+      "sector": "international",
+      "source": "https://icsid.worldbank.org/about/member-states/database-of-member-states/member-state-details?state=ST65",
+      "note": "ICSID Convention berlaku untuk Indonesia sejak 28 Oktober 1968. Yurisdiksi memerlukan persetujuan tertulis dan prasyarat terkait lain; tidak otomatis ada dari keanggotaan saja.",
+      "status": "convention_in_force_conditional_jurisdiction",
+      "kind": "investment_state_arbitration",
+      "owner": "Indonesia / ICSID",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "newyork",
+      "tier": "international",
+      "ref": "New York Convention 1958",
+      "label": "Recognition and enforcement of foreign arbitral awards",
+      "sector": "international",
+      "source": "https://uncitral.un.org/en/texts/arbitration/conventions/foreign_arbitral_awards/status2",
+      "note": "Indonesia mengaksesi pada 7 Oktober 1981 dan berlaku 5 Januari 1982; lihat reservasi yang berlaku dan syarat eksekusi pengadilan.",
+      "status": "convention_in_force",
+      "kind": "foreign_award_recognition",
+      "owner": "Indonesia / Courts",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "uncitral",
+      "tier": "international",
+      "ref": "UNCITRAL Arbitration Rules",
+      "label": "Model procedural arbitration rules",
+      "sector": "international",
+      "source": "https://uncitral.un.org/en/texts/arbitration/contractualtexts/arbitration",
+      "note": "Aturan prosedur bersifat pilihan jika disepakati/digunakan di instrumen relevan; bukan UU Indonesia otomatis dan bukan lembaga arbitrase sendiri.",
+      "status": "contractual_if_adopted",
+      "kind": "arbitration_rules_not_treaty",
+      "owner": "UNCITRAL / parties",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "bit",
+      "tier": "international",
+      "ref": "BIT / IIA project-specific treaty test",
+      "label": "Investment agreement treaty eligibility and consent",
+      "sector": "international",
+      "source": "https://investmentpolicy.unctad.org/international-investment-agreements",
+      "note": "Periksa treaty negara asal investor, keberlakuan, klausul perlindungan, sunset clause, nationality, seat, dan persetujuan arbitrase. Tidak semua perjanjian berlaku bagi semua investor.",
+      "status": "project_specific",
+      "kind": "treaty_applicability_workstream",
+      "owner": "Treaty parties / Investor",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "paris",
+      "tier": "international",
+      "ref": "Paris Agreement / UNFCCC",
+      "label": "Climate treaty / NDC commitments",
+      "sector": "carbon",
+      "source": "https://unfccc.int/process-and-meetings/the-paris-agreement",
+      "note": "Perjanjian iklim internasional mewajibkan tindakan negara; kewajiban spesifik proyek dibentuk melalui regulasi dan izin nasional. Jangan menyamakan NDC dengan izin emisi proyek.",
+      "status": "treaty_obligation",
+      "kind": "multilateral_environment_agreement",
+      "owner": "UNFCCC Parties / KLH",
+      "evidence": "primary_official"
+    },
+    {
+      "id": "uu16paris",
+      "tier": "uu",
+      "ref": "UU 16/2016",
+      "label": "Persetujuan Paris Agreement",
+      "sector": "carbon",
+      "source": "https://peraturan.go.id/id/uu-no-16-tahun-2016",
+      "note": "Pengesahan Paris Agreement di Indonesia; penerapan kepada fasilitas perlu regulasi nasional dan persetujuan lingkungan.",
+      "status": "enacted",
+      "kind": "ratification_legislation",
+      "owner": "Indonesia / KLH",
+      "evidence": "primary_official"
     }
   ],
   "edges": [
@@ -1168,6 +1429,131 @@
       "from": "permenbkpm5",
       "to": "pdp",
       "type": "cross_sector_compliance_intersection"
+    },
+    {
+      "from": "inpres1_2025",
+      "to": "kepmen188",
+      "type": "public_budget_implementation_context"
+    },
+    {
+      "from": "inpres14_2025",
+      "to": "inpres16_2025",
+      "type": "strengthened_by"
+    },
+    {
+      "from": "inpres14_2025",
+      "to": "pp40",
+      "type": "energy_policy_coordination_context"
+    },
+    {
+      "from": "inpres16_2025",
+      "to": "permenatr13",
+      "type": "interministerial_coordination"
+    },
+    {
+      "from": "uu7wto",
+      "to": "gattxi",
+      "type": "treaty_ratified_agreement_component"
+    },
+    {
+      "from": "uu7wto",
+      "to": "scm",
+      "type": "treaty_ratified_agreement_component"
+    },
+    {
+      "from": "uu7wto",
+      "to": "trims",
+      "type": "treaty_ratified_agreement_component"
+    },
+    {
+      "from": "uu7wto",
+      "to": "gats",
+      "type": "treaty_ratified_agreement_component"
+    },
+    {
+      "from": "uu7wto",
+      "to": "dsu",
+      "type": "treaty_ratified_dispute_mechanism"
+    },
+    {
+      "from": "gattxi",
+      "to": "ds592",
+      "type": "dispute_law_applied"
+    },
+    {
+      "from": "dsu",
+      "to": "ds592",
+      "type": "interstate_dispute_case"
+    },
+    {
+      "from": "uu2minerba",
+      "to": "ds592",
+      "type": "international_trade_policy_exposure_not_judicial_invalidation"
+    },
+    {
+      "from": "scm",
+      "to": "permenperin37",
+      "type": "international_compliance_review"
+    },
+    {
+      "from": "trims",
+      "to": "permenperin37",
+      "type": "international_compliance_review"
+    },
+    {
+      "from": "gats",
+      "to": "uu27pdp",
+      "type": "international_service_and_data_policy_intersection"
+    },
+    {
+      "from": "uu30arb",
+      "to": "perma3arb",
+      "type": "judicial_implementation"
+    },
+    {
+      "from": "kp34newyork",
+      "to": "newyork",
+      "type": "convention_ratification"
+    },
+    {
+      "from": "newyork",
+      "to": "uu30arb",
+      "type": "award_enforcement_framework"
+    },
+    {
+      "from": "uu5icsid",
+      "to": "icsid",
+      "type": "convention_ratification"
+    },
+    {
+      "from": "bit",
+      "to": "icsid",
+      "type": "consent_and_jurisdiction_test"
+    },
+    {
+      "from": "bit",
+      "to": "uu25investment",
+      "type": "investment_protection_interface"
+    },
+    {
+      "from": "uncitral",
+      "to": "uu30arb",
+      "type": "optional_clause_review"
+    },
+    {
+      "from": "uu16paris",
+      "to": "paris",
+      "type": "convention_ratification"
+    },
+    {
+      "from": "paris",
+      "to": "pres110carbon",
+      "type": "climate_policy_context_not_direct_project_rule"
+    },
+    {
+      "from": "ds592",
+      "to": "uu30arb",
+      "type": "DISTINCT_FORUM_WTO_INTERSTATE_NOT_COMMERCIAL_ARBITRATION"
     }
   ],
   "cases": [
@@ -1192,7 +1578,11 @@
         "permenlhk4",
         "pp21spatial",
         "perbup_bekasi7",
-        "kkpr"
+        "kkpr",
+        "gats",
+        "uu30arb",
+        "newyork",
+        "inpres1_2025"
       ],
       "issues": [
         {
@@ -1261,7 +1651,12 @@
         "grid",
         "permenatr13",
         "permenlhk4",
-        "kkpr"
+        "kkpr",
+        "inpres14_2025",
+        "inpres16_2025",
+        "uu16paris",
+        "paris",
+        "uu30arb"
       ],
       "issues": [
         {
@@ -1331,7 +1726,17 @@
         "permenatr13",
         "permenbkpm5",
         "permenlhk4",
-        "kkpr"
+        "kkpr",
+        "uu7wto",
+        "gattxi",
+        "scm",
+        "trims",
+        "dsu",
+        "ds592",
+        "uu30arb",
+        "kp34newyork",
+        "icsid",
+        "bit"
       ],
       "issues": [
         {
@@ -1394,7 +1799,11 @@
         "permen14oil",
         "kepmen77",
         "pp28",
-        "pp22env"
+        "pp22env",
+        "uu30arb",
+        "icsid",
+        "bit",
+        "kp34newyork"
       ],
       "issues": [
         {
@@ -1457,7 +1866,11 @@
         "pres14ccs",
         "pres110carbon",
         "pp22env",
-        "carbon_mrv"
+        "carbon_mrv",
+        "paris",
+        "uu16paris",
+        "icsid",
+        "bit"
       ],
       "issues": [
         {
