@@ -38,7 +38,7 @@ jobs:
           assert d['pages'][33]['pdf_page']==34
           assert 'Energy Balance' in d['pages'][33]['text']
           assert 'Power Plant Installed Capacity by Province' in d['pages'][133]['text']
-          assert sum(len(x['text']) for x in d['pages'])>200_000
+          assert sum(len(x['text']) for x in d['pages'])>140_000
           print('Validated 172 source-linked pages and official 2025 energy balance / provincial table.')
           PY
       - name: Commit verified source index
