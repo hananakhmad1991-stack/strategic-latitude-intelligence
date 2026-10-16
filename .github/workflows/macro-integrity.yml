@@ -1,0 +1,38 @@
+name: SLI Macroeconomic Integrity
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/sli-macro-indonesia-2026.json'
+      - 'data/sli-macro-worldbank-history.json'
+      - 'data/sli-macro-worldbank-config.json'
+      - 'indonesia-macroeconomic-intelligence.html'
+      - 'js/sli-macro-overview.js'
+      - 'scripts/validate_sli_macro.py'
+      - 'index.html'
+      - '.github/workflows/macro-integrity.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify primary source metadata and annual history definitions
+        run: python scripts/validate_sli_macro.py
+      - name: Verify macro chart code and Overview script syntax
+        run: |
+          node --check js/sli-macro-overview.js
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('indonesia-macroeconomic-intelligence.html').read_text(encoding='utf-8')
+          blocks=re.findall(r'<script>([\s\S]*?)</script>',p)
+          assert len(blocks)==1
+          Path('/tmp/sli-macro-chart.js').write_text(blocks[0],encoding='utf-8')
+          PY
+          node --check /tmp/sli-macro-chart.js
