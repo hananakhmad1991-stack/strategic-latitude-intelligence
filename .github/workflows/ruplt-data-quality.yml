@@ -1,0 +1,37 @@
+name: RUPTL Source Digitization QA
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'ruplt-investor-digitization.html'
+      - 'data/ruplt-2025-2034-*.json'
+      - 'scripts/validate_ruplt_excerpt.py'
+      - '.github/workflows/ruplt-data-quality.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify 100-page source lineage and numerical consistency
+        run: python3 scripts/validate_ruplt_excerpt.py
+      - name: Validate interactive dashboard JavaScript syntax
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          class JS(HTMLParser):
+              def __init__(self):super().__init__();self.in_script=False;self.blocks=[]
+              def handle_starttag(self,tag,attrs):
+                  if tag=="script":self.in_script=True;self.blocks.append("")
+              def handle_endtag(self,tag):
+                  if tag=="script":self.in_script=False
+              def handle_data(self,data):
+                  if self.in_script:self.blocks[-1]+=data
+          f=JS();f.feed(Path('ruplt-investor-digitization.html').read_text())
+          assert f.blocks
+          Path('/tmp/sli-ruplt-inline.js').write_text(f.blocks[-1])
+          PY
+          node --check /tmp/sli-ruplt-inline.js
