@@ -36,6 +36,16 @@ assertBuilt("targets");assert.ok(root.querySelectorAll("article").length>=5,"Tar
 assertBuilt("mapping");assert.ok(root.querySelectorAll("a").some(x=>x.href==="#map"),"Map link is honest existing GIS");
 assertBuilt("projects");assert.ok(root.querySelectorAll("article").length>=16,"All 16 sourced projects appear");
 assertBuilt("sourceplus");assert.ok(root.querySelectorAll("article").length>=5,"Five investment scorecards rendered on source extension");
+const extraSelect=root.querySelectorAll("select")[0];assert.ok(extraSelect,"Investor source view selector");
+extraSelect.value="monthly";extraSelect.change();
+assert.ok(root.querySelectorAll("svg").length>=1,"Monthly TKDN produces SVG and table");
+extraSelect.value="bridge";extraSelect.change();
+assert.ok(root.querySelectorAll("strong").length>=2,"Oil / gas signed bridge cards render");
+extraSelect.value="procurement";extraSelect.change();
+assert.ok(root.querySelectorAll("article").length>=9,"Procurement summary and audit data render");
+extraSelect.value="risk";extraSelect.change();
+assert.ok(root.querySelectorAll("article").length>=12,"All twelve risk-register entries render");
+
 assertBuilt("digitized");assert.ok(root.querySelectorAll("svg").length>=1,"Digitized historical annual series graph rendered");
 assertBuilt("pods");assert.ok(root.querySelectorAll("td").length>=45*8,"45 source-linked POD reserve rows rendered");
 assertBuilt("exploration");assert.ok(root.querySelectorAll("td").length>=24*4,"24 PSE rows rendered");
