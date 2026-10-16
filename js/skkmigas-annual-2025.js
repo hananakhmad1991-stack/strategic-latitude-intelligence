@@ -177,6 +177,30 @@ function renderDigitizedExhibits(root,doc){
  }
  kind.addEventListener("change",dataset);select.addEventListener("change",draw);draw();
 }
+function renderPOD2025(root,register){
+ root.append($("h4",null,I("2025 POD & Development Approvals · 45 Source Rows","Persetujuan POD dan Pengembangan 2025 · 45 Baris Sumber")),
+  $("p","sm25-note",I("This register reports estimated recoverable additions at approval (oil MMBO, gas BSCF, combined MMBOE) by contractor and field. An approval does not establish operating status, marketable production, FID or realized capex.","Daftar ini memuat estimasi penambahan sumber daya pada persetujuan (minyak MMBO, gas BSCF, gabungan MMBOE) per kontraktor dan lapangan. Persetujuan bukan bukti proyek sudah beroperasi, produksi, FID atau realisasi investasi.")));
+ const banner=$("div","sm25-pod-caveat");
+ banner.append($("strong",null,I("UNRECONCILED ORIGINAL TOTAL","TOTAL SUMBER BELUM REKONSILIASI")),
+ $("p",null,I("45 printed table rows total "+fmt(register.listed_table_sum_mmboe)+" MMBOE; report narrative states "+fmt(register.reported_narrative_reserve_addition_mmboe)+" MMBOE. Difference: "+fmt(register.unreconciled_difference_mmboe)+" MMBOE. Rows #10 and #25 repeat OPL Duri HO-4 with the same date. Both remain present exactly as printed; no adjusted total is asserted.","45 baris tabel berjumlah "+fmt(register.listed_table_sum_mmboe)+" MMBOE; narasi melaporkan "+fmt(register.reported_narrative_reserve_addition_mmboe)+" MMBOE. Selisih "+fmt(register.unreconciled_difference_mmboe)+" MMBOE. Baris #10 dan #25 mengulang OPL Duri HO-4 dengan tanggal sama, sehingga keduanya tetap dicatat tanpa total yang direkayasa.")));
+ root.append(banner);
+ const query=$("input","sm25-query");query.type="search";query.placeholder=I("Filter 45 rows by contractor, field or approval date…","Cari kontraktor, lapangan, atau tanggal persetujuan…");
+ const stats=$("p","sm25-note"),chart=$("div","sm25-chart"),table=$("div","sm25-table-scroll");
+ root.append(query,stats,chart,table);
+ function draw(){
+  const q=query.value.trim().toLowerCase();
+  const subset=register.records.filter(r=>[r.operator,r.field,r.approval_date,r.no].join(" ").toLowerCase().includes(q));
+  stats.textContent=subset.length+" / 45 "+I("printed source approvals · display uses combined MMBOE only for comparable bar lengths","persetujuan di tabel sumber · grafik memakai MMBOE gabungan agar sebanding");
+  chartBars(chart,[...subset].sort((a,b)=>b.estimated_combined_mmboe-a.estimated_combined_mmboe).slice(0,12).map(x=>({name:"#"+x.no+" "+x.field,value:x.estimated_combined_mmboe,unit:"MMBOE"})),"MMBOE");
+  table.replaceChildren();const t=$("table","sm25-table"),thead=$("thead"),head=$("tr");
+  ["#","Contractor / KKKS","POD / field","Oil MMBO","Gas BSCF","Combined MMBOE","Approval date","PDF"].forEach(x=>head.append($("th",null,x)));
+  thead.append(head);t.append(thead);const tb=$("tbody");
+  for(const r of subset){const tr=$("tr");[r.no,r.operator,r.field,fmt(r.oil_mmbo),fmt(r.gas_bscf),fmt(r.estimated_combined_mmboe),r.approval_date,r.source_pdf_page].forEach(x=>tr.append($("td",null,x)));tb.append(tr)}
+  t.append(tb);table.append(t);
+ }
+ query.addEventListener("input",draw);draw();
+ root.append($("p","sm25-note","Source: SKK Migas Annual Report 2025 (English), Table 2.6, original PDF pp. 52–53. Numeric discrepancies, double-listed approval and NULL source dashes preserved."));
+}
 function renderCatalog(root,data,catalog){
  root.append($("h4",null,I("Original report evidence navigator · 202 PDF pages","Penelusuran bukti laporan · 202 halaman PDF")),
  $("p","sm25-note",I("The 99 indexed graphics, tables, figures and printed maps below are ALL traceable to original PDF page numbers. Status 'source catalog' means it has not yet been digitized into an auditable machine-data series; it is not a claim that a new interactive GIS polygon or chart already exists.","99 grafik, tabel, gambar, dan peta tercetak memiliki halaman PDF sumber. Status katalog berarti isi belum seluruhnya dikonversi menjadi data mesin terverifikasi; bukan klaim semua peta sudah berbentuk GIS.")));
@@ -234,12 +258,12 @@ async function mount(where,mode){
  $("p","sm25-intro",I("English annual report is the primary numeric source; the Indonesian edition is a translation cross-check. Production ≠ lifting, reserves ≠ resources, plans ≠ realized investments.","Laporan tahunan Inggris sebagai sumber angka utama; versi Indonesia sebagai pemeriksa istilah. Produksi ≠ lifting, cadangan ≠ sumber daya, rencana ≠ realisasi investasi.")));
  const state=$("p","sm25-note",I("Loading audited report measures…","Memuat data laporan…"));section.append(state);
  try{
-  const [d,c,exhibits]=await Promise.all([fetch(BASE,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No baseline");return r.json()}),fetch(CAT,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No figure catalog");return r.json()}),fetch("data/skkmigas-2025-digitized-exhibits.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No digitized data");return r.json()})]);
-  if(d.id!=="sli-skkmigas-annual-2025"||c.entries.length<90||exhibits.series.length<20)throw Error("Report index incomplete");
+  const [d,c,exhibits,pod]=await Promise.all([fetch(BASE,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No baseline");return r.json()}),fetch(CAT,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No figure catalog");return r.json()}),fetch("data/skkmigas-2025-digitized-exhibits.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No digitized data");return r.json()}),fetch("data/skkmigas-2025-pod-approvals.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No POD register");return r.json()})]);
+  if(d.id!=="sli-skkmigas-annual-2025"||c.entries.length<90||exhibits.series.length<20||pod.records.length!==45)throw Error("Report index incomplete");
   if(!section.isConnected)return;
   state.textContent=I("2025 source values · report edition 2026 · "+d.metrics.length+" verified KPI definitions · "+d.series.length+" dated time series · "+c.entries.length+" source exhibits, plus "+exhibits.series.length+" newly digitized numeric series. NOT real-time.","Tahun data 2025 · edisi laporan 2026 · "+d.metrics.length+" KPI terverifikasi · "+d.series.length+" deret waktu · "+c.entries.length+" katalog sumber dan "+exhibits.series.length+" seri tambahan. BUKAN data real-time.");
   const tabs=$("div","sm25-tabs"),panel=$("div","sm25-pane");
-  const pageTabs=[["overview","Executive KPIs"],["trend","Historical data"],["gas","Gas Sankey"],["targets","Targets vs actual"],["mapping","PSC / basin map"],["projects","16 onstream projects"],["digitized","Digitized figures"],["catalog","Source catalog"]];
+  const pageTabs=[["overview","Executive KPIs"],["trend","Historical data"],["gas","Gas Sankey"],["targets","Targets vs actual"],["mapping","PSC / basin map"],["projects","16 onstream projects"],["digitized","Digitized figures"],["pods","45 POD approvals"],["catalog","Source catalog"]];
   let active=mode==="investment"?"trend":"overview";
   function render(){panel.replaceChildren();for(const b of tabs.querySelectorAll("button")){b.classList.toggle("active",b.dataset.tab===active);b.setAttribute("aria-pressed",b.dataset.tab===active?"true":"false")}
    if(active==="overview")renderKpi(panel,d);
@@ -249,6 +273,7 @@ async function mount(where,mode){
    else if(active==="mapping")renderMap(panel,d);
    else if(active==="projects")renderProjectDossiers(panel,d);
    else if(active==="digitized")renderDigitizedExhibits(panel,exhibits);
+   else if(active==="pods")renderPOD2025(panel,pod);
    else renderCatalog(panel,d,c);
   }
   for(const [id,title] of pageTabs){const b=$("button","sm25-tab",title);b.type="button";b.dataset.tab=id;b.addEventListener("click",()=>{active=id;render()});tabs.append(b)}
