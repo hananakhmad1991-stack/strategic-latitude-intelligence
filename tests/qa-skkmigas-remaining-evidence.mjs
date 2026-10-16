@@ -80,7 +80,7 @@ assert.equal(cat.digitization_review.source_only,0);
 assert.equal(cat.digitization_review.visual_references,32);
 const maps=cat.entries.filter(x=>x.status==="raster_map_reference");
 assert.ok(maps.some(x=>x.pdf_page===190&&x.kind==="map"));
-assert.ok(maps.every(x=>x.crosscheck.includes("DOES NOT invent coordinates")));
+assert.ok(maps.every(x=>/does NOT invent coordinates/i.test(x.crosscheck)),"Printed maps cannot be represented as surveyed GIS points");
 assert.ok(html.indexOf("skkmigas-2025-remaining-atlas.js")<html.indexOf("js/skkmigas-annual-2025.js"));
 assert.match(main,/initSLISKKRemainingAtlas\?\.\(panel,evidence\)/);
 assert.ok(main.includes("data/skkmigas-2025-remaining-evidence.json"));
