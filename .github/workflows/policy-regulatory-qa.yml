@@ -1,0 +1,34 @@
+name: SLI Policy and Regulatory Integrity
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/sli-policy-regulatory-graph-2026.json'
+      - 'policy-regulatory-intelligence.html'
+      - 'scripts/validate_regulatory_intelligence.py'
+      - 'js/research-chapters.js'
+      - '.github/workflows/policy-regulatory-qa.yml'
+permissions:
+  contents: read
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate regulatory provenance, amendment/repeal flags and RIA weights
+        run: python scripts/validate_regulatory_intelligence.py
+      - name: Validate embedded dashboard JavaScript
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          html=Path("policy-regulatory-intelligence.html").read_text()
+          scripts=re.findall(r"<script>([\s\S]*?)</script>",html)
+          assert len(scripts)==1
+          Path("/tmp/sli-policy-inline.js").write_text(scripts[0])
+          PY
+          node --check /tmp/sli-policy-inline.js
