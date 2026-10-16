@@ -3,6 +3,10 @@ on:
   push:
     paths:
       - 'index.html'
+      - 'js/site-search.js'
+      - 'css/site-search.css'
+      - 'data/site-search-index.json'
+      - 'tests/qa-site-search.mjs'
       - 'js/research-chapters.js'
       - 'js/iea-2026-explorer.js'
       - 'css/iea-2026-explorer.css'
@@ -65,6 +69,8 @@ jobs:
       - name: Compile and render both specialist modules
         run: |
           node tests/qa-research-dashboard.mjs
+          node --check js/site-search.js
+          node tests/qa-site-search.mjs
           node --check js/iea-2026-explorer.js
           node tests/qa-iea-2026-workbook.mjs
           node tests/qa-iea-critical-minerals.mjs
