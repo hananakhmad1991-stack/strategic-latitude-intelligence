@@ -1,0 +1,37 @@
+name: PLN RUPTL and Statistics PDF Extraction
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/extract_pln_publications.py'
+      - '.github/workflows/pln-pdf-extract.yml'
+permissions:
+  contents: read
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF extraction dependencies
+        run: python -m pip install --disable-pip-version-check pymupdf requests
+      - name: Fetch official PDFs and index source pages
+        run: python scripts/extract_pln_publications.py
+      - name: Validate manifest
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('artifacts/pln_publication_extract/audit_manifest.json')
+          d=json.loads(p.read_text())
+          assert len(d['documents'])==3
+          print('Download outcomes:',[(k,v['state']) for k,v in d['documents'].items()])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pln-pdf-retrieval-and-extraction
+          path: artifacts/pln_publication_extract/*.json
+          retention-days: 30
