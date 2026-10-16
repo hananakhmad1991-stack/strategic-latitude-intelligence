@@ -79,5 +79,23 @@
     "regional_station_table": "pending",
     "regional_peak_2025": "available_only_at_system_level",
     "headroom": "not_available"
-  }
+  },
+  "required_annexes": [
+    {
+      "annex": "A4",
+      "province": "Kepulauan Riau",
+      "status": "unextracted"
+    },
+    {
+      "annex": "B3",
+      "province": "Jawa Barat",
+      "status": "unextracted"
+    },
+    {
+      "annex": "B4",
+      "province": "Jawa Tengah",
+      "status": "unextracted"
+    }
+  ],
+  "source_landing_page": "https://www.pln.co.id/hubungan-investor-id/informasi-perusahaan-id/ruptl-id-1"
 }
