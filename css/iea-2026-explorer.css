@@ -1,0 +1,29 @@
+/* IEA 2026 workbook (CC BY 4.0) exploration, responsive dark research layout */
+.sli-iea26{border:1px solid #456177;background:linear-gradient(145deg,#122f43,#0c2335);color:#e1edf4;margin:18px 0;padding:18px;border-radius:13px;scroll-margin-top:24px}
+.sli-iea26 h3{font:normal clamp(20px,2.4vw,26px)/1.25 Georgia,serif;color:#f0d9ae;margin:5px 0 9px}
+.iea26-kicker{font-size:10px;color:#e5b978;letter-spacing:.9px;font-weight:700}
+.iea26-muted,.iea26-status,.iea26-detail,.iea26-foot{font-size:11px;line-height:1.65;color:#bed0db}
+.iea26-status{color:#f0d094;font-weight:650;margin:9px 0}
+.iea26-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+.iea26-kpi{border:1px solid #416076;border-radius:9px;background:#08243a;padding:12px}
+.iea26-kpi small{font-size:10px;color:#bad1db}
+.iea26-kpi strong{display:block;font-size:clamp(19px,2vw,27px);color:#f4d89f;margin:5px 0;font-variant-numeric:tabular-nums}
+.iea26-kpi p{font-size:10px;line-height:1.6;color:#b1c6d4;margin:0}
+.iea26-controls{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 16px}
+.iea26-selector{display:flex;flex-direction:column;gap:5px;flex:1 1 125px;max-width:270px}
+.iea26-selector[hidden]{display:none}
+.iea26-selector small{font-size:10px;color:#aec5d4}
+.iea26-select{appearance:auto;min-width:0;min-height:39px;padding:9px 11px;border-radius:6px;border:1px solid #638399;background:#0d2940;color:#f6e9d2;font:inherit;font-size:12px}
+.iea26-select:focus-visible{outline:2px solid #f3d69e}
+.iea26-chart{background:#092137;border:1px solid #3b5d77;border-radius:9px;padding:9px;min-height:220px}
+.iea26-svg{width:100%;height:auto;display:block;max-height:330px}
+.iea26-detail{margin:10px 1px}
+.iea26-table{overflow-x:auto;max-width:100%}
+.iea26-matrix{border-collapse:collapse;width:100%;min-width:420px;font-size:11px}
+.iea26-matrix th{background:#214157;color:#dce9f1;font-weight:700}
+.iea26-matrix td,.iea26-matrix th{padding:9px 10px;border-bottom:1px solid #425b6d;text-align:right}
+.iea26-matrix td:first-child,.iea26-matrix th:first-child{text-align:left}
+.iea26-foot{border-left:3px solid #d7b678;background:#1c3a4d;padding:12px;border-radius:7px;margin-top:16px}
+.iea26-foot a{color:#f1d19c}
+@media(max-width:970px){.iea26-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.sli-iea26{padding:11px}.iea26-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.iea26-selector{max-width:unset;min-width:0}.iea26-kpis{gap:6px}.iea26-kpi{padding:9px}.iea26-kpi strong{font-size:20px}}
