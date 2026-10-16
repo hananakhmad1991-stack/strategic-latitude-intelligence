@@ -7,6 +7,7 @@ on:
       - 'css/site-search.css'
       - 'data/site-search-index.json'
       - 'tests/qa-site-search.mjs'
+      - 'tests/qa-site-search-ui.mjs'
       - 'js/research-chapters.js'
       - 'js/iea-2026-explorer.js'
       - 'css/iea-2026-explorer.css'
@@ -71,6 +72,7 @@ jobs:
           node tests/qa-research-dashboard.mjs
           node --check js/site-search.js
           node tests/qa-site-search.mjs
+          node tests/qa-site-search-ui.mjs
           node --check js/iea-2026-explorer.js
           node tests/qa-iea-2026-workbook.mjs
           node tests/qa-iea-critical-minerals.mjs
