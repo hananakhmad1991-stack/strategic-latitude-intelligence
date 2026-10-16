@@ -1,0 +1,24 @@
+name: AI Intelligence source and schema check
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 1 * * *'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate dataset and source URLs
+        run: python scripts/validate_ai_intelligence.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ai-source-audit
+          path: artifacts/ai_source_audit.json
+          if-no-files-found: warn
