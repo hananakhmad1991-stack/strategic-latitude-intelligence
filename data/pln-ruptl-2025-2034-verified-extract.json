@@ -1,0 +1,83 @@
+{
+  "version": "2026-10-16",
+  "sources": [
+    {
+      "name": "RUPTL approval ESDM 188.K/TL.03/MEM.L/2025",
+      "url": "https://jdih.esdm.go.id/dokumen/download?id=2025abskmesdm188k.pdf"
+    },
+    {
+      "name": "PLN release regional transmission plans",
+      "url": "https://web.pln.co.id/cms/media/siaran-pers/2025/06/ruptl-2025-2034-pln-siap-bangun-green-super-grid-sepanjang-47-758-kms/"
+    },
+    {
+      "name": "Official RUPTL large PDF (direct retrieval blocked)",
+      "url": "https://www.pln.co.id/webapi/media/file/webkorp/asset/b967d-ruptl-pln-2025-2034-pub-.pdf"
+    },
+    {
+      "name": "PLN Statistics 2025 large PDF (direct retrieval blocked)",
+      "url": "https://www.pln.co.id/webapi/media/file/webkorp/asset/Statistik-2025-2907.pdf"
+    }
+  ],
+  "national": {
+    "planned_generation_and_storage_mw": 69512,
+    "renewable_generation_mw": 42569,
+    "storage_mw": 10256,
+    "fossil_generation_mw": 16687,
+    "transmission_circuit_km": 47758,
+    "substations_mva": 107950,
+    "distribution_circuit_km": 197998,
+    "distribution_transformers_mva": 18407,
+    "renewable_electricity_mix_target_2034_pct": 34.3,
+    "electricity_demand_growth_assumption_pct": 5.3,
+    "period": "2025–2034",
+    "status": "approved_plan_not_energized_capacity"
+  },
+  "regional_transmission": [
+    {
+      "area": "Java–Madura–Bali",
+      "circuit_km": 13889,
+      "note": "Reported approximate 13.9k kms in PLN release; exact 13,889 kms from RUPTL presentation",
+      "project_markets": [
+        "Bekasi–Karawang",
+        "Batang",
+        "Jakarta"
+      ]
+    },
+    {
+      "area": "Sumatra and Kalimantan",
+      "circuit_km": 20967,
+      "note": "Combined number does not isolate Batam grid additions",
+      "project_markets": [
+        "Batam"
+      ]
+    },
+    {
+      "area": "Sulawesi, Maluku and Papua",
+      "circuit_km": 12901,
+      "note": "Rounded regrouped press/presentation number; small rounding difference vs total",
+      "project_markets": []
+    }
+  ],
+  "investment_plans": [
+    {
+      "category": "Generation",
+      "idr_trillion": 2133.7
+    },
+    {
+      "category": "Grid/network",
+      "idr_trillion": 565.3
+    },
+    {
+      "category": "Other",
+      "idr_trillion": 268.4
+    }
+  ],
+  "scope_note": "National investment opportunities from ESDM RUPTL dissemination presentation, not committed funding and not data-center capex.",
+  "verification": {
+    "large_official_pdf": "not_downloaded_52MB_web_limit_and_container_network",
+    "pln_stats_2025": "not_downloaded_76MB_web_limit_and_container_network",
+    "regional_station_table": "pending",
+    "regional_peak_2025": "available_only_at_system_level",
+    "headroom": "not_available"
+  }
+}
