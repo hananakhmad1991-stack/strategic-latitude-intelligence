@@ -7,6 +7,9 @@ on:
       - index.html
       - js/skkmigas-annual-2025.js
       - js/skkmigas-2025-extension.js
+      - js/skkmigas-2025-remaining-atlas.js
+      - data/skkmigas-2025-remaining-evidence.json
+      - tests/qa-skkmigas-remaining-evidence.mjs
       - data/skkmigas-2025-source-extension.json
       - tests/qa-skkmigas-2025-extension.mjs
       - css/skkmigas-annual-2025.css
@@ -77,6 +80,8 @@ jobs:
           node tests/qa-skkmigas-annual-2025.mjs
           node --check js/skkmigas-2025-extension.js
           node tests/qa-skkmigas-2025-extension.mjs
+          node --check js/skkmigas-2025-remaining-atlas.js
+          node tests/qa-skkmigas-remaining-evidence.mjs
           node tests/qa-skkmigas-ui-dom.mjs
           node --check js/heesi-2025-investor-atlas.js
           node tests/qa-heesi-investor-atlas.mjs
