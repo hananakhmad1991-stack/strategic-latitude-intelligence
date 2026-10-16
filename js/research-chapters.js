@@ -322,6 +322,7 @@ function makeEnergyStructure(which,root){
   window.initSLISourceBridge(which,sourceMount);
  }
  if(which==="minerals"&&typeof window.initSLISmelterCohort==="function")window.initSLISmelterCohort(sections[2]);
+ showUpcomingEvents(which,sections[5]);
  // Mount four automatically refreshed, source-dated geopolitical and domestic signal lanes
  // inside the dedicated Monitoring chapter; preserve canonical statistics elsewhere.
  if(typeof window.initSLIResearchRadar==="function")window.initSLIResearchRadar(which,sections[5]);
@@ -361,5 +362,31 @@ function makeEnergyStructure(which,root){
  }
 }
 
+
+ // Upcoming Indonesia events are a sector monitoring aid, not a project investment milestone.
+ const upcomingEvents={
+  minerals:[
+   {date:"2026-11-02",end:"2026-11-03",title:"Minerba Convex 2026",place:"JIExpo, Jakarta",url:"https://minerbaconvex.com/",note:"Government, mining and downstream policy forum · organizer listing"},
+   {date:"2026-11-04",end:"2026-11-05",title:"Nickel Producers, Processors & Buyers Conference",place:"Shangri-La, Jakarta",url:"https://www.petromindo.com/events/detail/the-5th-nickel-producers-processors-buyers-conference",note:"Nickel processing and commercial value-chain conference · programme subject to change"},
+   {date:"2027-05-11",end:"2027-05-13",title:"Indonesia Miner 2027",place:"Westin, Jakarta",url:"https://www.indonesiaminer.com/",note:"Broader mining exhibition and industry conference"},
+   {date:"2027-06-16",end:"2027-06-18",title:"Indonesia Critical Minerals Conference & Expo",place:"Pullman Jakarta Central Park",url:"https://indonesia-critical-minerals.metal.com/home",note:"Minerals, downstreaming and supply chains"}
+  ],
+  ai:[
+   {date:"2027-03-31",end:"2027-04-01",title:"DCPSEA Indonesia 2027",place:"Jakarta",url:"https://www.zevente.com/indonesia/jakarta/ai",note:"Data-center power and AI-ready infrastructure · third-party listing, organizer confirmation pending",status:"Tentative"},
+   {date:"2027-04-21",end:"2027-04-23",title:"Data Center Indonesia 2027",place:"Jakarta",url:"https://www.zevente.com/indonesia/jakarta/ai",note:"Data-center and AI-infrastructure trade exhibition · third-party listing, organizer confirmation pending",status:"Tentative"},
+   {date:"2027-06-08",end:"2027-06-10",title:"DCD Connect APAC 2027",place:"Bali",url:"https://www.zevente.com/indonesia/ai",note:"APAC data-center operators and investors · third-party listing, organizer confirmation pending",status:"Tentative"}
+  ]
+ };
+ function showUpcomingEvents(which,section){
+  const list=(upcomingEvents[which]||[]).filter(x=>x.end>=new Date().toISOString().slice(0,10)).sort((a,b)=>a.date.localeCompare(b.date));
+  const wrap=E("div","sli-upcoming-events");wrap.id="sli-"+which+"-upcoming-events";
+  const heading=E("h3",null,"Upcoming Events · Indonesia");
+  const note=E("p","sli-research-note","Sector-specific events, not investment announcements. Sources and schedules may change; check organizers before attending.");
+  wrap.append(heading,note);
+  if(!list.length){wrap.append(E("p",null,"No upcoming event with sufficient dated evidence in the current register."));section.append(wrap);return;}
+  const cards=E("div","sli-research-grid");
+  for(const event of list){const card=E("article","sli-research-card");card.append(E("h4",null,event.title),E("p",null,event.date+(event.end!==event.date?" – "+event.end:"")+" · "+event.place),E("p",null,event.note),link(event.url,"Event details / verification ↗"));if(event.status)card.append(E("p","sli-research-note","Verification: "+event.status));cards.append(card)}
+  wrap.append(cards);section.append(wrap);
+ }
 window.initSLIResearch=draw;
 })();
