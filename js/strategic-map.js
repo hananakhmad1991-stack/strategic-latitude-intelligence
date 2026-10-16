@@ -512,35 +512,23 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
  const appendix=node("div");
  const guide=data.glossary;
  if(guide?.sections?.length){
-  const glossaryHead=node("section","map-glossary-head");
-  glossaryHead.append(node("h3",null,label("Glossary of every map term","Glosarium istilah peta")));
-  glossaryHead.append(node("p","map-muted",label(guide.intro_en||"Terminology follows underlying sources.",guide.intro_id||"Istilah mengikuti dokumen sumber.")));
-  const count=guide.sections.reduce((n,x)=>n+(x.items?.length||0),0);
-  glossaryHead.append(node("p","map-glossary-count",count+" "+label("bilingual definitions in ","definisi dwibahasa dalam ")+guide.sections.length+" "+label("topics","kelompok")));
-  appendix.append(glossaryHead);
-  if(Array.isArray(guide.categories)&&guide.categories.length){
-   const details=node("details","map-glossary-section map-glossary-category");
-   details.append(node("summary",null,label("Asset-type dictionary · "+guide.categories.length+" definitions","Kamus jenis aset · "+guide.categories.length+" definisi")));
-   details.append(node("p","map-muted",label(guide.categories_intro_en,guide.categories_intro_id)));
-   const terms=node("dl","map-terms");
-   for(const x of guide.categories)terms.append(node("dt",null,assetLabel(x.term)),node("dd",null,label(x.definition_en,x.definition_id)));
-   details.append(terms);appendix.append(details);
-  }
+  const head=node("section","map-glossary-head");
+  head.append(node("h3",null,label("Asset and map terminology · one shared dictionary","Istilah aset dan peta · satu glosarium bersama")));
+  head.append(node("p","map-muted",label(
+   "The 84 original map terms, asset-type labels and overlaps with Energy Security are consolidated in one bilingual dictionary. Keep the map-specific geolocation, source-registry and double-counting methods below.",
+   "Sebanyak 84 istilah peta asli, label jenis aset, dan istilah yang sama dengan Energy Security digabungkan dalam satu glosarium dwibahasa. Metode khusus koordinat, asal sumber dan potensi hitungan ganda tetap dijelaskan di bawah."
+  )));
+  const shared=document.createElement("a");
+  shared.href="./sli-glossary-methodology.html?domain=maps";
+  shared.textContent=label("Search every map term, technology, abbreviation and unit ↗","Cari istilah peta, teknologi, singkatan dan satuan ↗");
+  head.append(shared);
+  appendix.append(head);
   if(Array.isArray(guide.source_layers)&&guide.source_layers.length){
    const details=node("details","map-glossary-section map-glossary-source");
-   details.append(node("summary",null,label("Source-registry labels · "+guide.source_layers.length+" definitions","Istilah registri sumber · "+guide.source_layers.length+" definisi")));
+   details.append(node("summary",null,label("Map-source layer methodology · "+guide.source_layers.length+" types","Metodologi jenis sumber peta · "+guide.source_layers.length+" tipe")));
    const terms=node("dl","map-terms");
    for(const x of guide.source_layers)terms.append(node("dt",null,x.term),node("dd",null,label(x.definition_en,x.definition_id)));
    details.append(terms);appendix.append(details);
-  }
-  for(const group of guide.sections){
-   const det=node("details","map-glossary-section"),summary=node("summary",null,label(group.title_en,group.title_id));
-   det.append(summary);
-   const terms=node("dl","map-terms");
-   for(const item of group.items||[]){
-    terms.append(node("dt",null,item.term),node("dd",null,label(item.definition_en,item.definition_id)));
-   }
-   det.append(terms);appendix.append(det);
   }
  }
  const origin=node("details","map-registry-appendix"),originSummary=node("summary",null,label("Data layers and potential duplicate record counts","Lapisan sumber dan potensi duplikasi hitungan"));
