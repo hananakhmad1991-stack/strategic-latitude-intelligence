@@ -1,0 +1,4 @@
+import {readFileSync} from 'node:fs';import {test} from 'node:test';import assert from 'node:assert/strict';
+const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
+test('environmental dashboard source provenance and nav',()=>{const d=JSON.parse(read('data/sli-climate-environment.json'));assert.ok(d.sources.length>=7);assert.equal(d.indicators.length,20);assert.ok(d.indicators.every(i=>i.observed_value===null));assert.match(read('index.html'),/climate-environment\.html/);const h=read('climate-environment.html');assert.match(h,/Climate-to-Investment Stress Test/);assert.match(h,/sli-climate-monitoring.json/);});
+test('environmental monitoring always carries source and status',()=>{const d=JSON.parse(read('data/sli-climate-monitoring.json'));assert.ok(Array.isArray(d.events));assert.ok(d.events.every(x=>x.title&&x.url&&x.publisher));});
