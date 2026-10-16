@@ -1,0 +1,1166 @@
+{
+  "id": "komdigi-2025-digital-infrastructure",
+  "edition": "Laporan Kinerja Kementerian Komunikasi dan Digital 2025",
+  "issuer": "Kementerian Komunikasi dan Digital Republik Indonesia",
+  "report_year": 2025,
+  "publication_date": "2026-04-13",
+  "source_filename": "fa1898f3b7f2672c03afd8682a6187d1ece86d3114c6a1a52d8a51fe86a81ae0.pdf",
+  "source_pages": 195,
+  "provenance": "Digitized directly from uploaded original PDF; page numbers in this data refer to PDF page positions matching printed annual report folio for pages 10+. This is an offline 2025 retrospective with some earlier baselines and 2029 projections.",
+  "caveats": [
+    "Do not equate ~370 MW total data-center capacity in 2025 with dedicated GPU/AI capacity, nor projected 1,410 MW 2029 demand with signed financing or installed capacity.",
+    "2024 ITDN 55.52 reused as 2025 performance proxy with an asterisk in the official report; not a true 2025 measurement.",
+    "The PDF's 2025 Table 3.9 PDNS RAM row sum is 171,774 while the reported total is 171,773; storage row sum 18,337,876 GB versus reported total 18,337,877 GB. Do not silently reconcile.",
+    "Table 3.26 SATRIA gateway cities are sourced, but no official point coordinates are provided in the report; do not create fabricated GPS pins.",
+    "Figure 3.25 SPLP numerator/denominator is a grouping of province/regency/city governments by geographical province; it is not exclusively provincial agency adoption.",
+    "2025 4G population footprint and 5G settlement-area footprint have DIFFERENT denominators.",
+    "SATRIA-1 gateway IP HUB capacity is distinct from provisioned IP transit or actual throughput.",
+    "Palapa Ring East microwave Gbps is converted from 5,500/5,050 Mbps solely for visualization; its 2025 reported 91.81% utilization is kept."
+  ],
+  "metrics": [
+    {
+      "id": "dc_operational_capacity",
+      "label": "Indonesia data center capacity · reported",
+      "value": 370,
+      "unit": "MW",
+      "pdf_page": 107,
+      "basis": "approximate national data center capacity; not dedicated AI/GPU capacity",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "dc_energy_demand_projection",
+      "label": "Data center projected power requirement",
+      "value": 1410,
+      "unit": "MW",
+      "pdf_page": 21,
+      "basis": "projection for 2029 cited in report; not installed MW",
+      "period": "2029 projected",
+      "note": "Different vintage and metric from 2025 370 MW capacity; NOT a certified pipeline."
+    },
+    {
+      "id": "dc_watts_capita",
+      "label": "Data center capacity per capita",
+      "value": 1.3,
+      "unit": "W/person",
+      "pdf_page": 107,
+      "basis": "reported approximation, not a power density benchmark",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "mobile_4g_population",
+      "label": "4G population coverage",
+      "value": 98.95,
+      "unit": "%",
+      "pdf_page": 104,
+      "basis": "operator coverage Q2 2025",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "mobile_5g_population",
+      "label": "5G population coverage",
+      "value": 13.11,
+      "unit": "%",
+      "pdf_page": 104,
+      "basis": "operator coverage 2025",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "mobile_4g_settlements",
+      "label": "4G residential area coverage",
+      "value": 99.23,
+      "unit": "%",
+      "pdf_page": 104,
+      "basis": "settlement km² coverage, not national land area",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "mobile_5g_settlements",
+      "label": "5G residential area coverage",
+      "value": 6.33,
+      "unit": "%",
+      "pdf_page": 104,
+      "basis": "settlement km² coverage, not national land area",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "mobile_4g_land",
+      "label": "4G national land-area coverage",
+      "value": 53.82,
+      "unit": "%",
+      "pdf_page": 104,
+      "basis": "geographic km², not population",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "mobile_5g_land",
+      "label": "5G national land-area coverage",
+      "value": 0.28,
+      "unit": "%",
+      "pdf_page": 104,
+      "basis": "geographic km², not population",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "fiber_districts",
+      "label": "Districts with fiber optical reach",
+      "value": 5253,
+      "unit": "kecamatan",
+      "pdf_page": 106,
+      "basis": "of 7,285 districts; 72.12%",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "fiber_district_percent",
+      "label": "Fixed broadband district reach",
+      "value": 72.12,
+      "unit": "%",
+      "pdf_page": 106,
+      "basis": "5,253 of 7,285 kecamatan",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "fiber_undersea",
+      "label": "Undersea fiber-optic route length",
+      "value": 131236.93,
+      "unit": "km",
+      "pdf_page": 105,
+      "basis": "FO SKKL · not necessarily unique network ownership",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "fiber_inland",
+      "label": "Inland fiber-optic route length",
+      "value": 1021520.55,
+      "unit": "km",
+      "pdf_page": 105,
+      "basis": "FO Inland · different coverage definition from districts",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "speed_mobile_actual",
+      "label": "Mobile broadband sampled download speed",
+      "value": 63.51,
+      "unit": "Mbps",
+      "pdf_page": 107,
+      "basis": "sample: 35 provincial capital cities; target 50 Mbps",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "speed_mobile_target",
+      "label": "Mobile broadband download target",
+      "value": 50,
+      "unit": "Mbps",
+      "pdf_page": 107,
+      "basis": "2025 contractual target",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "speed_fixed_actual",
+      "label": "Fixed broadband sampled download speed",
+      "value": 51.84,
+      "unit": "Mbps",
+      "pdf_page": 106,
+      "basis": "sample: 20 cities; target 37 Mbps",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "speed_fixed_target",
+      "label": "Fixed broadband download target",
+      "value": 37,
+      "unit": "Mbps",
+      "pdf_page": 106,
+      "basis": "2025 contractual target",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "bts_total",
+      "label": "3T operational 4G/USO BTS locations",
+      "value": 6747,
+      "unit": "sites",
+      "pdf_page": 108,
+      "basis": "5,514 4G BTS + 1,233 BTS USO on air; 449 USO terminated excluded",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "bts_papua",
+      "label": "3T operational BTS in Papua region",
+      "value": 3262,
+      "unit": "sites",
+      "pdf_page": 108,
+      "basis": "Papua regional 2,979 4G + 283 USO on air; regional not individual province",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "pdns_user_inst",
+      "label": "IPPD using PDNS",
+      "value": 404,
+      "unit": "institutions",
+      "pdf_page": 110,
+      "basis": "404 of 730 institutions; PDN-1 not implied in full commercial operation",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "pdns_user_pct",
+      "label": "Share of IPPD using PDNS",
+      "value": 55.34,
+      "unit": "%",
+      "pdf_page": 110,
+      "basis": "404 of 730 users; government-only indicator",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "pdns_vcpu",
+      "label": "PDNS allocated virtual CPUs",
+      "value": 73927,
+      "unit": "vCPU",
+      "pdf_page": 110,
+      "basis": "table reported total; virtual processors, not physical rack/GPU capacity",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "pdns_ram",
+      "label": "PDNS allocated RAM · reported total",
+      "value": 171773,
+      "unit": "source RAM units",
+      "pdf_page": 110,
+      "basis": "table heading RAM does not specify unit; row sum is 171,774, report total 171,773",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "pdns_storage",
+      "label": "PDNS storage · reported total",
+      "value": 18337877,
+      "unit": "GB",
+      "pdf_page": 110,
+      "basis": "table row sum 18,337,876 GB vs reported total 18,337,877 GB",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "pdn1_construction",
+      "label": "PDN-1 construction completion",
+      "value": 100,
+      "unit": "%",
+      "pdf_page": 110,
+      "basis": "construction reached 100% March 2025; excludes full tenant migration",
+      "period": "2025-03",
+      "note": ""
+    },
+    {
+      "id": "pdns_sla_incident",
+      "label": "PDNS incident SLA fulfilment",
+      "value": 98.18,
+      "unit": "%",
+      "pdf_page": 111,
+      "basis": "December 2025 actual; target 91%",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "apps_sla_average",
+      "label": "Average government application SLA",
+      "value": 99.439,
+      "unit": "%",
+      "pdf_page": 109,
+      "basis": "2025; 12 individual service lines (SP4N V3 and V4 separately)",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "jip_connections",
+      "label": "Institutions using JIP",
+      "value": 98,
+      "unit": "institutions",
+      "pdf_page": 112,
+      "basis": "67 national institutions and 31 provincial governments; denominator 164",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "satria_capacity",
+      "label": "SATRIA-1 hub capacity",
+      "value": 150,
+      "unit": "Gbps",
+      "pdf_page": 159,
+      "basis": "11 gateway IP hubs, capacity not realized internet traffic",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "satria_ip_transit",
+      "label": "SATRIA-1 provisioned IP transit",
+      "value": 93,
+      "unit": "Gbps",
+      "pdf_page": 160,
+      "basis": "sum of IP transit available in 11 gateway locations",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "satria_beams",
+      "label": "SATRIA-1 spot beams",
+      "value": 116,
+      "unit": "beams",
+      "pdf_page": 160,
+      "basis": "satellite coverage beams, not ground stations",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "palapa_length",
+      "label": "Palapa Ring national backbone",
+      "value": 12229,
+      "unit": "km",
+      "pdf_page": 158,
+      "basis": "three packages; 57 cities of service",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "palapa_avg_util",
+      "label": "Palapa Ring average utilization",
+      "value": 54.39,
+      "unit": "%",
+      "pdf_page": 159,
+      "basis": "operator-defined 2025 source average; not equal simple mean across 4 technology links",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "internet_public",
+      "label": "Public-service internet access locations",
+      "value": 31394,
+      "unit": "locations",
+      "pdf_page": 157,
+      "basis": "nine distinct programme facility categories",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "splp_connected",
+      "label": "IPPD connected to SPLP",
+      "value": 442,
+      "unit": "institutions",
+      "pdf_page": 161,
+      "basis": "442 of 730 connected; NOT all actively trading data",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "splp_active",
+      "label": "IPPD transacting via SPLP",
+      "value": 37,
+      "unit": "institutions",
+      "pdf_page": 161,
+      "basis": "37 of 730 actively exchanging data daily",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "splp_active_share",
+      "label": "Active SPLP transaction share",
+      "value": 5.07,
+      "unit": "%",
+      "pdf_page": 161,
+      "basis": "37 of 730; connected share 60.55%",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "splp_transactions",
+      "label": "SPLP yearly data exchange volume",
+      "value": 90000000,
+      "unit": "hits · lower bound",
+      "pdf_page": 161,
+      "basis": "over 90 million, not exactly 90 million; lower-bound indicator",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "pse_public_registered",
+      "label": "Registered public electronic systems",
+      "value": 90,
+      "unit": "systems",
+      "pdf_page": 112,
+      "basis": "23 public sector institutions, not verified operator counts",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "startup_contribution",
+      "label": "Digital startup facilitated contributions",
+      "value": 289.5,
+      "unit": "IDR billion",
+      "pdf_page": 113,
+      "basis": "activity-attributed reported economic contribution, not realized external VC investment",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "satr_ipv4",
+      "label": "Palapa Ring service cities",
+      "value": 57,
+      "unit": "cities",
+      "pdf_page": 159,
+      "basis": "57 service cities; distinct from 131 reachable regencies/cities",
+      "period": "2025",
+      "note": ""
+    },
+    {
+      "id": "games_market",
+      "label": "Indonesia games economy 2025 projection",
+      "value": 32.7,
+      "unit": "IDR trillion",
+      "pdf_page": 163,
+      "basis": "Newzoo industry forecast cited by Komdigi; not audited transaction value",
+      "period": "2025 projection",
+      "note": ""
+    },
+    {
+      "id": "games_igdxbusiness",
+      "label": "IGDX reported prospective deal value",
+      "value": 210,
+      "unit": "IDR billion",
+      "pdf_page": 163,
+      "basis": "prospective collaboration, not signed/realized investment",
+      "period": "2025",
+      "note": ""
+    }
+  ],
+  "collections": {
+    "pdns": [
+      {
+        "group": "Ministries / national agencies",
+        "institutions": 93,
+        "vcpu": 54580,
+        "ram_source_unit": 137248,
+        "storage_gb": 15108024,
+        "pdf_page": 110
+      },
+      {
+        "group": "Provinces",
+        "institutions": 27,
+        "vcpu": 1732,
+        "ram_source_unit": 2826,
+        "storage_gb": 281661,
+        "pdf_page": 110
+      },
+      {
+        "group": "Municipalities / kota",
+        "institutions": 65,
+        "vcpu": 4999,
+        "ram_source_unit": 9054,
+        "storage_gb": 822311,
+        "pdf_page": 110
+      },
+      {
+        "group": "Regencies / kabupaten",
+        "institutions": 219,
+        "vcpu": 12616,
+        "ram_source_unit": 22646,
+        "storage_gb": 2125880,
+        "pdf_page": 110
+      }
+    ],
+    "gateways": [
+      {
+        "name": "Cikarang",
+        "hub_gbps": 8.5,
+        "transit_gbps": 7,
+        "pdf_page": 160,
+        "coordinates": null
+      },
+      {
+        "name": "Banjarmasin",
+        "hub_gbps": 9,
+        "transit_gbps": 7,
+        "pdf_page": 160,
+        "coordinates": null
+      },
+      {
+        "name": "Batam",
+        "hub_gbps": 15,
+        "transit_gbps": 12.5,
+        "pdf_page": 160,
+        "coordinates": null
+      },
+      {
+        "name": "Pontianak",
+        "hub_gbps": 14,
+        "transit_gbps": 11.5,
+        "pdf_page": 160,
+        "coordinates": null
+      },
+      {
+        "name": "Tarakan",
+        "hub_gbps": 14,
+        "transit_gbps": 12,
+        "pdf_page": 160,
+        "coordinates": null
+      },
+      {
+        "name": "Manado",
+        "hub_gbps": 15,
+        "transit_gbps": 12,
+        "pdf_page": 160,
+        "coordinates": null
+      },
+      {
+        "name": "Jayapura",
+        "hub_gbps": 15,
+        "transit_gbps": 11,
+        "pdf_page": 160,
+        "coordinates": null
+      },
+      {
+        "name": "Kupang",
+        "hub_gbps": 14.5,
+        "transit_gbps": 6,
+        "pdf_page": 160,
+        "coordinates": null
+      },
+      {
+        "name": "Ambon",
+        "hub_gbps": 15,
+        "transit_gbps": 4,
+        "pdf_page": 160,
+        "coordinates": null
+      },
+      {
+        "name": "Timika",
+        "hub_gbps": 15,
+        "transit_gbps": 6,
+        "pdf_page": 160,
+        "coordinates": null
+      },
+      {
+        "name": "Manokwari",
+        "hub_gbps": 15,
+        "transit_gbps": 4,
+        "pdf_page": 160,
+        "coordinates": null
+      }
+    ],
+    "bts": [
+      {
+        "region": "Sumatera",
+        "bts4g_bapl": 49,
+        "bts4g_nonbapl": 82,
+        "uso_onair": 135,
+        "uso_terminated": 39,
+        "active": 266,
+        "pdf_page": 108
+      },
+      {
+        "region": "Kalimantan",
+        "bts4g_bapl": 478,
+        "bts4g_nonbapl": 208,
+        "uso_onair": 275,
+        "uso_terminated": 42,
+        "active": 961,
+        "pdf_page": 108
+      },
+      {
+        "region": "Sulawesi",
+        "bts4g_bapl": 404,
+        "bts4g_nonbapl": 127,
+        "uso_onair": 74,
+        "uso_terminated": 21,
+        "active": 605,
+        "pdf_page": 108
+      },
+      {
+        "region": "Jawa",
+        "bts4g_bapl": 0,
+        "bts4g_nonbapl": 0,
+        "uso_onair": 4,
+        "uso_terminated": 1,
+        "active": 4,
+        "pdf_page": 108
+      },
+      {
+        "region": "Nusa Tenggara",
+        "bts4g_bapl": 358,
+        "bts4g_nonbapl": 121,
+        "uso_onair": 154,
+        "uso_terminated": 58,
+        "active": 633,
+        "pdf_page": 108
+      },
+      {
+        "region": "Maluku",
+        "bts4g_bapl": 434,
+        "bts4g_nonbapl": 274,
+        "uso_onair": 308,
+        "uso_terminated": 115,
+        "active": 1016,
+        "pdf_page": 108
+      },
+      {
+        "region": "Papua",
+        "bts4g_bapl": 1948,
+        "bts4g_nonbapl": 1031,
+        "uso_onair": 283,
+        "uso_terminated": 173,
+        "active": 3262,
+        "pdf_page": 108
+      }
+    ],
+    "app_sla": [
+      {
+        "name": "SP4N-LAPOR! V3",
+        "sla_percent": 97.957,
+        "pdf_page": 109
+      },
+      {
+        "name": "SP4N-LAPOR! V4",
+        "sla_percent": 100,
+        "pdf_page": 109
+      },
+      {
+        "name": "Mail Pemerintahan",
+        "sla_percent": 99.706,
+        "pdf_page": 109
+      },
+      {
+        "name": "SKM Online",
+        "sla_percent": 99.81,
+        "pdf_page": 109
+      },
+      {
+        "name": "SIDEKA-NG",
+        "sla_percent": 99.584,
+        "pdf_page": 109
+      },
+      {
+        "name": "SICANTIK Cloud",
+        "sla_percent": 99.922,
+        "pdf_page": 109
+      },
+      {
+        "name": "MPPDN",
+        "sla_percent": 99.782,
+        "pdf_page": 109
+      },
+      {
+        "name": "Domain",
+        "sla_percent": 99.844,
+        "pdf_page": 109
+      },
+      {
+        "name": "Repositori",
+        "sla_percent": 99.617,
+        "pdf_page": 109
+      },
+      {
+        "name": "Helpdesk",
+        "sla_percent": 99.798,
+        "pdf_page": 109
+      },
+      {
+        "name": "SPLP",
+        "sla_percent": 99.932,
+        "pdf_page": 109
+      },
+      {
+        "name": "SPPT-TI",
+        "sla_percent": 97.33,
+        "pdf_page": 109
+      }
+    ],
+    "splp_provinces": [
+      {
+        "province": "Aceh",
+        "connected": 14,
+        "total": 27,
+        "percent": 51.851851851851855,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Sumatera Utara",
+        "connected": 29,
+        "total": 34,
+        "percent": 85.29411764705883,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Riau",
+        "connected": 11,
+        "total": 13,
+        "percent": 84.61538461538461,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Kepulauan Riau",
+        "connected": 7,
+        "total": 8,
+        "percent": 87.5,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Sumatera Barat",
+        "connected": 20,
+        "total": 20,
+        "percent": 100,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Jambi",
+        "connected": 8,
+        "total": 12,
+        "percent": 66.66666666666667,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Sumatera Selatan",
+        "connected": 8,
+        "total": 12,
+        "percent": 66.66666666666667,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Bangka Belitung",
+        "connected": 8,
+        "total": 8,
+        "percent": 100,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Banten",
+        "connected": 8,
+        "total": 9,
+        "percent": 88.88888888888889,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "DKI Jakarta",
+        "connected": 1,
+        "total": 1,
+        "percent": 100,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Jawa Barat",
+        "connected": 27,
+        "total": 28,
+        "percent": 96.42857142857143,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Jawa Tengah",
+        "connected": 30,
+        "total": 36,
+        "percent": 83.33333333333333,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "DI Yogyakarta",
+        "connected": 5,
+        "total": 6,
+        "percent": 83.33333333333333,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Jawa Timur",
+        "connected": 39,
+        "total": 39,
+        "percent": 100,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Bali",
+        "connected": 8,
+        "total": 9,
+        "percent": 88.88888888888889,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Nusa Tenggara Barat",
+        "connected": 10,
+        "total": 11,
+        "percent": 90.9090909090909,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Nusa Tenggara Timur",
+        "connected": 11,
+        "total": 23,
+        "percent": 47.82608695652174,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Kalimantan Utara",
+        "connected": 1,
+        "total": 6,
+        "percent": 16.666666666666668,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Kalimantan Barat",
+        "connected": 10,
+        "total": 15,
+        "percent": 66.66666666666667,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Kalimantan Tengah",
+        "connected": 9,
+        "total": 15,
+        "percent": 60,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Kalimantan Timur",
+        "connected": 6,
+        "total": 11,
+        "percent": 54.54545454545455,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Kalimantan Selatan",
+        "connected": 11,
+        "total": 14,
+        "percent": 78.57142857142857,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Sulawesi Utara",
+        "connected": 9,
+        "total": 16,
+        "percent": 56.25,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Sulawesi Tengah",
+        "connected": 7,
+        "total": 14,
+        "percent": 50,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Gorontalo",
+        "connected": 6,
+        "total": 7,
+        "percent": 85.71428571428571,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Sulawesi Barat",
+        "connected": 5,
+        "total": 7,
+        "percent": 71.42857142857143,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Sulawesi Selatan",
+        "connected": 16,
+        "total": 25,
+        "percent": 64,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Sulawesi Tenggara",
+        "connected": 8,
+        "total": 18,
+        "percent": 44.44444444444444,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Maluku Utara",
+        "connected": 7,
+        "total": 11,
+        "percent": 63.63636363636363,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Maluku",
+        "connected": 10,
+        "total": 12,
+        "percent": 83.33333333333333,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Papua Barat Daya",
+        "connected": 0,
+        "total": 7,
+        "percent": 0,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Papua Barat",
+        "connected": 1,
+        "total": 8,
+        "percent": 12.5,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Papua",
+        "connected": 0,
+        "total": 10,
+        "percent": 0,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Papua Tengah",
+        "connected": 0,
+        "total": 9,
+        "percent": 0,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Papua Pegunungan",
+        "connected": 0,
+        "total": 9,
+        "percent": 0,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Papua Selatan",
+        "connected": 0,
+        "total": 5,
+        "percent": 0,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Bengkulu",
+        "connected": 9,
+        "total": 11,
+        "percent": 81.81818181818181,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      },
+      {
+        "province": "Lampung",
+        "connected": 12,
+        "total": 16,
+        "percent": 75,
+        "pdf_page": 161,
+        "coverage_note": "Source per-province fraction: province + cities + regencies combined, NOT province government exclusively"
+      }
+    ],
+    "public_access_sites": [
+      {
+        "category": "Education",
+        "locations": 21517,
+        "pdf_page": 157
+      },
+      {
+        "category": "Government",
+        "locations": 6152,
+        "pdf_page": 157
+      },
+      {
+        "category": "Health facilities",
+        "locations": 1834,
+        "pdf_page": 157
+      },
+      {
+        "category": "Defense & security",
+        "locations": 524,
+        "pdf_page": 157
+      },
+      {
+        "category": "Community centers",
+        "locations": 482,
+        "pdf_page": 157
+      },
+      {
+        "category": "Places of worship",
+        "locations": 428,
+        "pdf_page": 157
+      },
+      {
+        "category": "Business services",
+        "locations": 242,
+        "pdf_page": 157
+      },
+      {
+        "category": "Tourism",
+        "locations": 169,
+        "pdf_page": 157
+      },
+      {
+        "category": "Public transport",
+        "locations": 46,
+        "pdf_page": 157
+      }
+    ],
+    "palapa": [
+      {
+        "segment": "West",
+        "capacity_gbps": 300,
+        "used_gbps": 216,
+        "utilization_percent": 72,
+        "sla_percent": 100,
+        "medium": "fiber",
+        "pdf_page": 159
+      },
+      {
+        "segment": "Central",
+        "capacity_gbps": 600,
+        "used_gbps": 271,
+        "utilization_percent": 45.17,
+        "sla_percent": 100,
+        "medium": "fiber",
+        "pdf_page": 159
+      },
+      {
+        "segment": "East fiber",
+        "capacity_gbps": 800,
+        "used_gbps": 368,
+        "utilization_percent": 46,
+        "sla_percent": 100,
+        "medium": "fiber",
+        "pdf_page": 159
+      },
+      {
+        "segment": "East microwave",
+        "capacity_gbps": 5.5,
+        "used_gbps": 5.05,
+        "utilization_percent": 91.81,
+        "sla_percent": 100,
+        "medium": "microwave",
+        "pdf_page": 159
+      }
+    ],
+    "digital_pillars": [
+      {
+        "pillar": "Infrastructure",
+        "value": 53.03,
+        "year": 2024,
+        "pdf_page": 103
+      },
+      {
+        "pillar": "Government",
+        "value": 62.48,
+        "year": 2024,
+        "pdf_page": 103
+      },
+      {
+        "pillar": "Business",
+        "value": 47.4,
+        "year": 2024,
+        "pdf_page": 103
+      },
+      {
+        "pillar": "Society",
+        "value": 60.69,
+        "year": 2024,
+        "pdf_page": 103
+      }
+    ],
+    "strategic_performance": [
+      {
+        "label": "National Digital Transformation Index",
+        "target": 50.8,
+        "realized": 55.52,
+        "observation_year": 2024,
+        "pdf_page": 103,
+        "note": "2025 target compared with most recent measured 2024 realization; NOT measured 2025 ITDN"
+      },
+      {
+        "label": "Digital Space Climate Index",
+        "target": 3,
+        "realized": 3.975,
+        "observation_year": 2025,
+        "pdf_page": 13,
+        "note": "2025 outcome"
+      },
+      {
+        "label": "Public Communication and Information Index",
+        "target": 71,
+        "realized": 77.58,
+        "observation_year": 2025,
+        "pdf_page": 13,
+        "note": "2025 outcome"
+      },
+      {
+        "label": "Bureaucratic Reform Index",
+        "target": 87,
+        "realized": 87,
+        "observation_year": 2024,
+        "pdf_page": 13,
+        "note": "source asterisk: 2024 score used against 2025 target"
+      }
+    ]
+  },
+  "policy": {
+    "ai_roadmap": {
+      "source_pdf_page": 115,
+      "source_status": "draft presidential regulation included in 2026 presidential regulations formulation program, per Presidential Decision 38/2025; NOT enacted as of cited report",
+      "name": "Rancangan Peraturan Presiden Peta Jalan Kecerdasan Artifisial Nasional"
+    },
+    "pdn1": {
+      "construction_complete": "2025-03",
+      "migrations": "2025–2028 planned",
+      "certification": "ISO/IEC 27001:2022 reported obtained, Bekasi building fitness certificate (to 2030)",
+      "it_security_assessment": "BSSN ITSA conducted",
+      "disaster_recovery": "Ministry of Finance data center designated as DRC",
+      "pdf_page": 110
+    },
+    "itdn": {
+      "realization": 55.52,
+      "actual_year": 2024,
+      "target_year": 2025,
+      "caution": "KPI measurement lag; 109.29% target attainment is a 2024 observation compared to 2025 target"
+    }
+  }
+}
