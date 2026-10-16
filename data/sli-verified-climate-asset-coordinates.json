@@ -1,0 +1,19 @@
+{
+  "schema": "sli-verified-asset-coordinates-v1",
+  "policy": "Only exact facility coordinates backed by a primary permit/EIA/operator document or reviewed georeferenced official GIS. Province centroids are never asset coordinates.",
+  "records": [],
+  "required_fields": [
+    "project_id",
+    "site_name",
+    "latitude",
+    "longitude",
+    "coordinate_source_url",
+    "source_date",
+    "coordinate_method",
+    "verification_status"
+  ],
+  "allowed_verification": [
+    "primary_document_confirmed",
+    "official_geospatial_verified"
+  ]
+}
