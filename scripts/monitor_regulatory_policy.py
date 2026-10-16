@@ -94,7 +94,15 @@ def detail_digest(doc):
  description=clean(descr.get("content",""))[:350] if descr else ""
  if not title or len(title)<8 or "database peraturan" in title.casefold() or "sistem sedang" in title.casefold():
   return None
- return {"headline":title[:250],"digest":sha(clean(title.casefold()+"|"+description.casefold()))[:24],"description":description}
+ # Include the authoritative article/main content to discover status updates that do
+ # not change document titles (especially WTO case proceedings). This is only a review
+ # signal; navigation/chrome changes can cause false positives.
+ content_node=doc.find("article") or doc.find("main") or doc.find("div",id="content")
+ main_text=clean(content_node.get_text(" ",strip=True))[:18000] if content_node else ""
+ main_text=re.sub(r"Jumlah (?:dilihat|diunduh|download)\\s*:?\\s*\\d+","",main_text,flags=re.I)
+ fingerprint=clean(title.casefold()+"|"+description.casefold()+"|"+main_text.casefold())
+ return {"headline":title[:250],"digest":sha(fingerprint)[:24],"description":description,
+         "fingerprint_scope":"heading_description_and_official_main_text" if main_text else "heading_description_only"}
 def main():
  conf=json.loads(CONF.read_text(encoding="utf-8"))
  graph=json.loads(GRAPH.read_text(encoding="utf-8"))
@@ -148,6 +156,7 @@ def main():
            "error":err,
            "digest":parsed["digest"] if parsed else old_item.get("digest"),
            "last_known_headline":parsed["headline"] if parsed else old_item.get("last_known_headline"),
+           "fingerprint_scope":parsed["fingerprint_scope"] if parsed else old_item.get("fingerprint_scope"),
            "latest_candidate_review":"no_new_change_detected" if not err else "source_unavailable"}
   if not err and old_item.get("digest") and old_item["digest"]!=parsed["digest"]:
    current["latest_candidate_review"]="source_page_metadata_changed_review_required"
