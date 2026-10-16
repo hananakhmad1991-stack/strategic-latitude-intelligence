@@ -4,6 +4,11 @@ on:
     paths:
       - 'index.html'
       - 'js/research-chapters.js'
+      - 'js/iea-2026-explorer.js'
+      - 'css/iea-2026-explorer.css'
+      - 'data/iea-2026-workbook-dashboard.json'
+      - 'data/iea-indonesia-critical-minerals.json'
+      - 'tests/qa-iea-2026-workbook.mjs'
       - 'js/source-data-bridge.js'
       - 'css/source-data-bridge.css'
       - 'data/cross-source-policy-2026.json'
@@ -60,6 +65,9 @@ jobs:
       - name: Compile and render both specialist modules
         run: |
           node tests/qa-research-dashboard.mjs
+          node --check js/iea-2026-explorer.js
+          node tests/qa-iea-2026-workbook.mjs
+          node tests/qa-iea-critical-minerals.mjs
           node --check js/source-data-bridge.js
           node tests/qa-cross-source-evidence.mjs
           node --check js/smelter-cohort-reconciliation.js
