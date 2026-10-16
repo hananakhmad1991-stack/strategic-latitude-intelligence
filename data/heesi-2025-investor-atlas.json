@@ -803,6 +803,169 @@
           "value": 0
         }
       ]
+    },
+    {
+      "id": "solar_pv_capacity",
+      "name": "Solar PV power plant installed capacity",
+      "unit": "MW",
+      "pdf_page": 134,
+      "printed_page": 118,
+      "coverage": "38 provinces; installed nameplate solar PV, including captive and utility sources; source row rounded to 0.01 MW",
+      "national_total": 1534.11,
+      "values": [
+        {
+          "province": "Aceh",
+          "value": 1.46
+        },
+        {
+          "province": "Sumatera Utara",
+          "value": 17.34
+        },
+        {
+          "province": "Sumatera Barat",
+          "value": 3.38
+        },
+        {
+          "province": "Riau",
+          "value": 46.71
+        },
+        {
+          "province": "Kepulauan Riau",
+          "value": 1.87
+        },
+        {
+          "province": "Jambi",
+          "value": 13.57
+        },
+        {
+          "province": "Bengkulu",
+          "value": 0.41
+        },
+        {
+          "province": "Kepulauan Bangka Belitung",
+          "value": 7.78
+        },
+        {
+          "province": "Sumatera Selatan",
+          "value": 2.85
+        },
+        {
+          "province": "Lampung",
+          "value": 28.09
+        },
+        {
+          "province": "Banten",
+          "value": 65.33
+        },
+        {
+          "province": "Jawa Barat",
+          "value": 630.85
+        },
+        {
+          "province": "DKI Jakarta",
+          "value": 108.61
+        },
+        {
+          "province": "Jawa Tengah",
+          "value": 4.17
+        },
+        {
+          "province": "Daerah Istimewa Yogyakarta",
+          "value": 177.12
+        },
+        {
+          "province": "Jawa Timur",
+          "value": 91.53
+        },
+        {
+          "province": "Bali",
+          "value": 41.6
+        },
+        {
+          "province": "Nusa Tenggara Barat",
+          "value": 50.58
+        },
+        {
+          "province": "Nusa Tenggara Timur",
+          "value": 24.53
+        },
+        {
+          "province": "Kalimantan Barat",
+          "value": 7.39
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "value": 3.12
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "value": 21.22
+        },
+        {
+          "province": "Kalimantan Timur",
+          "value": 80.47
+        },
+        {
+          "province": "Kalimantan Utara",
+          "value": 3.98
+        },
+        {
+          "province": "Sulawesi Utara",
+          "value": 23.43
+        },
+        {
+          "province": "Gorontalo",
+          "value": 1.19
+        },
+        {
+          "province": "Sulawesi Tengah",
+          "value": 14.86
+        },
+        {
+          "province": "Sulawesi Tenggara",
+          "value": 3.95
+        },
+        {
+          "province": "Sulawesi Barat",
+          "value": 13.21
+        },
+        {
+          "province": "Sulawesi Selatan",
+          "value": 1.36
+        },
+        {
+          "province": "Maluku",
+          "value": 2.96
+        },
+        {
+          "province": "Maluku Utara",
+          "value": 6.16
+        },
+        {
+          "province": "Papua Barat",
+          "value": 10.75
+        },
+        {
+          "province": "Papua Barat Daya",
+          "value": 12.44
+        },
+        {
+          "province": "Papua",
+          "value": 4.66
+        },
+        {
+          "province": "Papua Tengah",
+          "value": 2.16
+        },
+        {
+          "province": "Papua Selatan",
+          "value": 0.66
+        },
+        {
+          "province": "Papua Pegunungan",
+          "value": 2.37
+        }
+      ]
     }
   ],
   "series": [
