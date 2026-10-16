@@ -1,0 +1,67 @@
+{
+  "updated_at": "2026-10-16",
+  "title": "PLN Statistics Source Registry for SLI",
+  "landing_page": "https://www.pln.co.id/hubungan-investor-id/publikasi-investor-id/laporan-statistik-id",
+  "verified_publication_links": [
+    {
+      "year": 2025,
+      "url": "https://www.pln.co.id/webapi/media/file/webkorp/asset/Statistik-2025-2907.pdf",
+      "access": "discovered_download_link_download_failed",
+      "estimated_bytes": 76192226
+    },
+    {
+      "year": 2025,
+      "url": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
+      "access": "web_indexed_pdf_direct_download_failed"
+    },
+    {
+      "year": 2024,
+      "url": "https://www.pln.co.id/webapi/media/file/webkorp/asset/Statistik2024.pdf",
+      "access": "discovered_download_link_timeout"
+    }
+  ],
+  "priority_extraction": [
+    {
+      "topic": "Generating capacity by province and fuel",
+      "destination": "Energy Security · generation / mix",
+      "status": "pending_pdf_table_extraction"
+    },
+    {
+      "topic": "Generation and energy sales history",
+      "destination": "Energy Security · supply and demand",
+      "status": "pending_pdf_table_extraction"
+    },
+    {
+      "topic": "Transmission lines km and circuit-km, by regional unit/system",
+      "destination": "Grid Intelligence · transmission",
+      "status": "pending_pdf_table_extraction"
+    },
+    {
+      "topic": "Substation capacity MVA and counts by region",
+      "destination": "Grid Intelligence · substations",
+      "status": "pending_pdf_table_extraction"
+    },
+    {
+      "topic": "Peak load and reserve by isolated system",
+      "destination": "Grid Intelligence · regional reliability",
+      "status": "pending_pdf_table_extraction"
+    },
+    {
+      "topic": "SAIDI and SAIFI electricity reliability",
+      "destination": "Energy Security · security and resilience",
+      "status": "pending_pdf_table_extraction"
+    },
+    {
+      "topic": "Electrification ratio, electricity use per capita",
+      "destination": "Energy Security · access",
+      "status": "pending_pdf_table_extraction"
+    }
+  ],
+  "verified_crosswalk": {
+    "java_bali_peak_mw_2025": 44940.8,
+    "other_systems_aggregate_peak_mw_2025": 20193.11,
+    "source": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
+    "warning": "peak demand IS NOT available headroom; outside Java-Bali IS NOT Batam-specific."
+  },
+  "rupTl_scope_warning": "RUPTL is a plan separate from historical PLN statistics; neither proves live substation capacity or completion."
+}
