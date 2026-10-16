@@ -66,7 +66,8 @@ function drawGasSankey(root,data){
  let sy=top;for(const x of first){const h=x.value*leftScale;leftSegments.set(x.scope,{x:245,y:sy,h,used:0,color:x.color});sy+=h}
  let ty=top;
  const startLine=S("rect",svg,{x:22,y:top,width:22,height:d*leftScale,rx:4,fill:"#dce5e9"});
- let p=0;for(const x of first){const h=x.value*leftScale;S("path",svg,{d:"M44,"+(top+p)+" C126,"+(top+p)+" 170,"+sy+" 245,"+sy,fill:"none",stroke:x.color,opacity:".45","stroke-width":Math.max(1,h)});p+=h;sy=top+p-h/2; }
+ let cursor=0;for(const x of first){const h=x.value*leftScale;const y0=top+cursor+h/2;const v=leftSegments.get(x.scope);const y1=v.y+v.h/2;
+   S("path",svg,{d:"M44,"+y0+" C126,"+y0+" 170,"+y1+" 245,"+y1,fill:"none",stroke:x.color,opacity:".45","stroke-width":Math.max(1,h)});cursor+=h;}
  const rootLabel=S("text",svg,{x:15,y:12,fill:"#fff","font-size":12});rootLabel.textContent="2025 gas allocation";
  for(const x of first){const v=leftSegments.get(x.scope);const rect=S("rect",svg,{x:245,y:v.y,width:18,height:v.h,rx:2,fill:x.color});const t=S("title",rect);t.textContent=x.name+" "+fmt(x.value)+" BBTUD"}
  for(const [i,r] of right.entries()){
@@ -155,6 +156,23 @@ function renderCatalog(root,data,catalog){
  }
  kind.addEventListener("change",()=>{count=30;redraw()});search.addEventListener("input",()=>{count=30;redraw()});redraw();
 }
+function renderProjectDossiers(block,data){
+ const projects=data.onstream_2025||[];
+ block.append($("h4",null,I("16 Upstream Projects Brought Onstream in 2025","16 proyek hulu migas mulai beroperasi 2025")),
+  $("p","sm25-note",I("SKK Migas reports 16 projects onstream in 2025 and aggregate planned production capacity of 85,550 BOPD oil and 821 MMSCFD gas. Total CAPEX attributed to this cohort is US$704.6 million, NOT each project. A project onstream during 2025 does not independently certify 2026 utilization.","SKK Migas mencatat 16 proyek onstream 2025 dengan kapasitas rencana agregat minyak 85.550 BOPD dan gas 821 MMSCFD. CAPEX agregat US$704,6 juta untuk keseluruhan kohort, bukan per proyek. Status 2026 belum dipastikan.")));
+ const filter=$("input","sm25-query");filter.type="search";filter.placeholder=I("Search operator, PSC, field or project…","Cari operator, wilayah kerja, atau proyek…");
+ const grid=$("div","sm25-projects");block.append(filter,grid);
+ function draw(){grid.replaceChildren();const q=filter.value.trim().toLowerCase();const chosen=projects.filter(x=>[x.name,x.operator,x.locality].join(" ").toLowerCase().includes(q));
+  for(const x of chosen){const item=$("article","sm25-project");
+   item.append($("small",null,"2025 ONSTREAM · #"+x.seq+" · PDF p. "+x.pdf_page),
+    $("strong",null,x.name),$("p",null,x.operator),$("span",null,x.locality),
+    $("small",null,I("No validated 2026 operating state or site GPS from the PDF","Status operasional 2026 dan titik GPS belum terverifikasi")));
+   grid.append(item)}
+  if(!chosen.length)grid.append($("p","sm25-note",I("No matching published project names","Tidak ditemukan proyek dalam daftar sumber")));
+ }
+ filter.addEventListener("input",draw);draw();
+ block.append($("p","sm25-note",I("Reported project list and names: SKK Migas Annual Report English PDF pp. 67–86; not a nationwide census of every operating oil/gas asset. Existing SLI Strategic Map remains a separate geography dataset.","Daftar proyek dan operator bersumber dari PDF SKK Migas Inggris hal. 67–86; bukan sensus nasional setiap fasilitas migas. Peta SLI memakai sumber geografi tersendiri.")));
+}
 function renderMap(block,data){
  block.append($("h4",null,I("Work Areas, Reserves and Project Locations · spatial audit","Wilayah Kerja, Cadangan, dan Proyek · audit spasial")),
  $("p","sm25-note",I("The SKK Migas annual report supplies printed work-area maps (PDF pp. 190–198), exploration-location illustrations (pp. 42, 47), and a reserves basin map (p. 50). These are not authoritative WGS84 polygons. To inspect verified site/contractor localities use SLI Strategic Map; no false GPS pins are generated from raster figures.","Laporan SKK Migas menyediakan peta cetak wilayah kerja (halaman PDF 190–198), peta eksplorasi (42, 47), serta peta cekungan cadangan (50). Gambar cetak tersebut bukan polygon GIS WGS84. Lokasi yang terverifikasi dapat dilihat pada Strategic Map; tidak dibuat koordinat palsu.")));
@@ -177,7 +195,7 @@ async function mount(where,mode){
   if(!section.isConnected)return;
   state.textContent=I("2025 source values · report edition 2026 · "+d.metrics.length+" verified KPI definitions · "+d.series.length+" dated time series · "+c.entries.length+" table/graph/figure/map references. NOT real-time.","Tahun data 2025 · edisi laporan 2026 · "+d.metrics.length+" KPI terverifikasi · "+d.series.length+" deret waktu · "+c.entries.length+" grafik/tabel/gambar/peta. BUKAN data real-time.");
   const tabs=$("div","sm25-tabs"),panel=$("div","sm25-pane");
-  const pageTabs=[["overview","Executive KPIs"],["trend","Historical data"],["gas","Gas Sankey"],["targets","Targets vs actual"],["mapping","PSC / basin map"],["catalog","Source catalog"]];
+  const pageTabs=[["overview","Executive KPIs"],["trend","Historical data"],["gas","Gas Sankey"],["targets","Targets vs actual"],["mapping","PSC / basin map"],["projects","16 onstream projects"],["catalog","Source catalog"]];
   let active=mode==="investment"?"trend":"overview";
   function render(){panel.replaceChildren();for(const b of tabs.querySelectorAll("button")){b.classList.toggle("active",b.dataset.tab===active);b.setAttribute("aria-pressed",b.dataset.tab===active?"true":"false")}
    if(active==="overview")renderKpi(panel,d);
@@ -185,6 +203,7 @@ async function mount(where,mode){
    else if(active==="gas")renderGas(panel,d);
    else if(active==="targets")renderTarget(panel,d);
    else if(active==="mapping")renderMap(panel,d);
+   else if(active==="projects")renderProjectDossiers(panel,d);
    else renderCatalog(panel,d,c);
   }
   for(const [id,title] of pageTabs){const b=$("button","sm25-tab",title);b.type="button";b.dataset.tab=id;b.addEventListener("click",()=>{active=id;render()});tabs.append(b)}
