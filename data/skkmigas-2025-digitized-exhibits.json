@@ -1,0 +1,930 @@
+{
+  "id": "sli-skkmigas-2025-numerical-digitization",
+  "source_document": "Annual Report 2025.pdf",
+  "pdf_pages": 202,
+  "year": 2025,
+  "report_edition": "2025 SKK Migas (English/Indonesia same report)",
+  "extracted_on": "2026-10-16",
+  "source_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
+  "data_license_note": "Facts, labeled figures and source table values transcribed from user-provided PDF; credit SKK Migas. This file does not republish the original report's copyrighted photos, layouts or full text.",
+  "quality_rule": "series values transcribed from printed data labels, not inferred pixel heights; zero and null are different; related categories and currencies should not be arithmetically mixed. Original PDF pages authoritative. Source disagreements described in notes.",
+  "series": [
+    {
+      "id": "ca_total",
+      "title": "Oil & gas contract areas total",
+      "unit": "contract areas",
+      "source_pdf_page": 38,
+      "years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        282,
+        308,
+        321,
+        318,
+        312,
+        280,
+        255,
+        217,
+        199,
+        184,
+        173,
+        171,
+        166,
+        164,
+        165
+      ],
+      "section": "exploration",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "Total only; four original stacked area components are NOT allocated without verified cell data; published 2025 categories listed in prose sum to 164, one short of headline 165."
+    },
+    {
+      "id": "pse_count",
+      "title": "Exploration status determinations (PSE)",
+      "unit": "structures",
+      "source_pdf_page": 48,
+      "years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        28,
+        28,
+        40,
+        28,
+        17,
+        11,
+        11,
+        23,
+        8,
+        11,
+        21,
+        19,
+        17,
+        36,
+        27,
+        24
+      ],
+      "section": "exploration",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "Chart 2.4; PSE structures evaluated, not new discovered hydrocarbon reserves."
+    },
+    {
+      "id": "rrr_2013",
+      "title": "Reserve replacement ratio (RRR)",
+      "unit": "%",
+      "source_pdf_page": 51,
+      "years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        74,
+        67,
+        60,
+        64,
+        55,
+        106,
+        354,
+        102,
+        116,
+        156,
+        124,
+        161,
+        114
+      ],
+      "section": "exploration",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "Ratio of reserves replaced to produced, not production growth."
+    },
+    {
+      "id": "development_plan",
+      "title": "Development drilling annual plan",
+      "unit": "wells",
+      "source_pdf_page": 57,
+      "years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        289,
+        336,
+        395,
+        616,
+        890,
+        991,
+        990,
+        993
+      ],
+      "section": "drilling",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    },
+    {
+      "id": "development_actual",
+      "title": "Development drilling realization",
+      "unit": "wells",
+      "source_pdf_page": 57,
+      "years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        278,
+        322,
+        240,
+        480,
+        760,
+        799,
+        899,
+        940
+      ],
+      "section": "drilling",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    },
+    {
+      "id": "workover_plan_annual",
+      "title": "Workover annual plan",
+      "unit": "activities",
+      "source_pdf_page": 58,
+      "years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        640,
+        973,
+        837,
+        615,
+        585,
+        834,
+        906,
+        958
+      ],
+      "section": "drilling",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    },
+    {
+      "id": "workover_actual_annual",
+      "title": "Workover realization",
+      "unit": "activities",
+      "source_pdf_page": 58,
+      "years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        654,
+        812,
+        585,
+        566,
+        639,
+        834,
+        984,
+        1008
+      ],
+      "section": "drilling",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    },
+    {
+      "id": "wellservice_plan",
+      "title": "Well service annual plan",
+      "unit": "activities",
+      "source_pdf_page": 59,
+      "years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        56218,
+        29260,
+        28151,
+        26431,
+        29582,
+        33181,
+        35690,
+        40233
+      ],
+      "section": "drilling",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    },
+    {
+      "id": "wellservice_actual",
+      "title": "Well service realization",
+      "unit": "activities",
+      "source_pdf_page": 59,
+      "years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        81624,
+        29954,
+        24413,
+        22790,
+        30066,
+        33412,
+        38935,
+        42002
+      ],
+      "section": "drilling",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    },
+    {
+      "id": "workforce_tki",
+      "title": "Indonesian PSC workforce (TKI)",
+      "unit": "people",
+      "source_pdf_page": 132,
+      "years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        25243,
+        25682,
+        29330,
+        32292,
+        31745,
+        29863,
+        26811,
+        24739,
+        22643,
+        21069,
+        19501,
+        18924,
+        18627,
+        18989,
+        20069
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "Contractor workforce headcount, NOT all employees in the Indonesian oil/gas economy."
+    },
+    {
+      "id": "workforce_tka",
+      "title": "Foreign PSC workforce (TKA)",
+      "unit": "people",
+      "source_pdf_page": 132,
+      "years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        975,
+        890,
+        1078,
+        1140,
+        1022,
+        668,
+        405,
+        337,
+        258,
+        200,
+        179,
+        145,
+        183,
+        197,
+        223
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "2025 approved TKA positions 384 vs 223 filled. Not population count."
+    },
+    {
+      "id": "civd_registered",
+      "title": "Registered procurement goods/services vendors (PBJ)",
+      "unit": "vendors",
+      "source_pdf_page": 180,
+      "years": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        9168,
+        12651,
+        15558,
+        18151,
+        19851,
+        22148,
+        24740,
+        26700,
+        30096
+      ],
+      "section": "procurement",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "Vendor database registration is not a new annual vendor creation count."
+    },
+    {
+      "id": "civd_spda",
+      "title": "Procurement replacement certificates (SPDA) issued",
+      "unit": "certificates",
+      "source_pdf_page": 180,
+      "years": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        5469,
+        7687,
+        9320,
+        10861,
+        11577,
+        12887,
+        22894,
+        30675,
+        39918
+      ],
+      "section": "procurement",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "CIVD SPDA issuance counts may exceed vendor counts; more than one certificate may be issued."
+    },
+    {
+      "id": "bank_commitments",
+      "title": "BUMN/BUMD banks procurement and ASR commitments",
+      "unit": "USD million",
+      "source_pdf_page": 179,
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        6666.3,
+        9011.56,
+        5624.27,
+        4370.28,
+        5928.46,
+        4842.95,
+        4065.73,
+        6128.95,
+        9684.05,
+        14271.29,
+        8223.18
+      ],
+      "section": "procurement",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "Procurement + ASR bank-channel transaction commitments; not sector investment or cost-recovery total."
+    },
+    {
+      "id": "bmn_optimization",
+      "title": "Upstream oil & gas BMN optimization value",
+      "unit": "USD million",
+      "source_pdf_page": 188,
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        44.26,
+        49.68,
+        113.53
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "2025 value 113.529 million vs target USD67.5 million; asset optimization value, NOT BMN asset book value."
+    },
+    {
+      "id": "soe_procurement",
+      "title": "Goods and services contracts awarded through BUMN",
+      "unit": "USD million",
+      "source_pdf_page": 178,
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        274.74,
+        133.59,
+        981.93,
+        156.26,
+        727.3,
+        694.72,
+        284.14,
+        290.04,
+        290.04,
+        450.27,
+        234.32
+      ],
+      "section": "procurement",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "Annotated 2015–2025 chart; printed cumulative contract subtotal USD4,756.51m does not reconcile to this listed chart series (USD4,517.35m). Keep source as illustrated pending audit; do not sum chart as lifetime census."
+    },
+    {
+      "id": "tki_utilization_actual",
+      "title": "Indonesian filled workforce positions",
+      "unit": "people",
+      "source_pdf_page": 133,
+      "years": [
+        2024,
+        2025
+      ],
+      "values": [
+        18989,
+        20069
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "2024–2025 actual; 2025 approved formation 27,780."
+    },
+    {
+      "id": "tki_formation",
+      "title": "Indonesian approved workforce positions",
+      "unit": "people",
+      "source_pdf_page": 133,
+      "years": [
+        2024,
+        2025
+      ],
+      "values": [
+        28528,
+        27780
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "Approved workforce plan, not actual employment."
+    },
+    {
+      "id": "tka_utilization_actual",
+      "title": "Foreign filled workforce positions",
+      "unit": "people",
+      "source_pdf_page": 133,
+      "years": [
+        2024,
+        2025
+      ],
+      "values": [
+        197,
+        223
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    },
+    {
+      "id": "tka_formation",
+      "title": "Foreign approved workforce positions",
+      "unit": "people",
+      "source_pdf_page": 133,
+      "years": [
+        2024,
+        2025
+      ],
+      "values": [
+        384,
+        363
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": "Graph 6.2 labels 2024 allocation 384, 2025 363; narrative reports 384 approved, discrepancy to be reviewed."
+    },
+    {
+      "id": "overseas_job_swap",
+      "title": "TKI abroad · job swapping",
+      "unit": "people",
+      "source_pdf_page": 134,
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        2,
+        0,
+        6
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    },
+    {
+      "id": "overseas_technical_exchange",
+      "title": "TKI abroad · technical development exchange",
+      "unit": "people",
+      "source_pdf_page": 134,
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        3,
+        2,
+        0
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    },
+    {
+      "id": "overseas_ojt",
+      "title": "TKI abroad · on-the-job assignments",
+      "unit": "people",
+      "source_pdf_page": 134,
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        7,
+        5,
+        3
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    },
+    {
+      "id": "overseas_international",
+      "title": "TKI abroad · internationalization",
+      "unit": "people",
+      "source_pdf_page": 134,
+      "years": [
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        10,
+        10,
+        7
+      ],
+      "section": "governance",
+      "method": "transcribed from numerical annotations on original SKK Migas 2025 chart; cross-checked against source PDF",
+      "note": ""
+    }
+  ],
+  "categories": [
+    {
+      "id": "oil_lpo_equipment",
+      "title": "Oil lost production opportunity by equipment",
+      "unit": "BOPD",
+      "source_pdf_page": 95,
+      "category": "verified labeled categorical chart",
+      "records": [
+        {
+          "name": "Instrumentation & control",
+          "value": 239
+        },
+        {
+          "name": "Electrical",
+          "value": 1646
+        },
+        {
+          "name": "Engine / prime mover",
+          "value": 109
+        },
+        {
+          "name": "Compressor",
+          "value": 464
+        },
+        {
+          "name": "Heat exchanger",
+          "value": 1098
+        },
+        {
+          "name": "Pumps",
+          "value": 54
+        },
+        {
+          "name": "Vessels",
+          "value": 27
+        },
+        {
+          "name": "Platform / structure",
+          "value": 0
+        },
+        {
+          "name": "Piping and valves",
+          "value": 65
+        },
+        {
+          "name": "Pipeline",
+          "value": 3545
+        }
+      ],
+      "note": "Reported averages by equipment type. Different from planned-shutdown loss profile.",
+      "method": "verbatim data labels on original SKK Migas 2025 annual report figure"
+    },
+    {
+      "id": "gas_lpo_equipment",
+      "title": "Gas lost production opportunity by equipment",
+      "unit": "MMSCFD",
+      "source_pdf_page": 95,
+      "category": "verified labeled categorical chart",
+      "records": [
+        {
+          "name": "Instrumentation & control",
+          "value": 17.8
+        },
+        {
+          "name": "Electrical",
+          "value": 59.4
+        },
+        {
+          "name": "Engine / prime mover",
+          "value": 4.7
+        },
+        {
+          "name": "Compressor",
+          "value": 6.7
+        },
+        {
+          "name": "Heat exchanger",
+          "value": 70.6
+        },
+        {
+          "name": "Pumps",
+          "value": 2
+        },
+        {
+          "name": "Vessels",
+          "value": 0.9
+        },
+        {
+          "name": "Platform / structure",
+          "value": 0
+        },
+        {
+          "name": "Piping and valves",
+          "value": 24.2
+        },
+        {
+          "name": "Pipeline",
+          "value": 9.2
+        }
+      ],
+      "note": "Categories refer to annual LPO average, not cumulative gas volume.",
+      "method": "verbatim data labels on original SKK Migas 2025 annual report figure"
+    },
+    {
+      "id": "exploration_2025_plan_vs_real",
+      "title": "2025 exploration programme by activity",
+      "unit": "mixed",
+      "source_pdf_page": 40,
+      "category": "verified labeled categorical chart",
+      "records": [
+        {
+          "name": "G&G studies",
+          "plan": 193,
+          "realization": 162,
+          "unit": "activities"
+        },
+        {
+          "name": "2D seismic",
+          "plan": 1745.11,
+          "realization": 419.84,
+          "unit": "km"
+        },
+        {
+          "name": "3D seismic",
+          "plan": 3610.74,
+          "realization": 2574.1,
+          "unit": "km²"
+        },
+        {
+          "name": "Non-seismic",
+          "plan": 8,
+          "realization": 3,
+          "unit": "activities"
+        },
+        {
+          "name": "Exploration wells",
+          "plan": 46,
+          "realization": 35,
+          "unit": "wells"
+        }
+      ],
+      "note": "Do NOT sum mixed units. The text below source Table 2.1 mentions 155 G&G studies while table shows 162 active CA studies, difference likely scope; retain table number with disclosure.",
+      "method": "verbatim data labels on original SKK Migas 2025 annual report figure"
+    },
+    {
+      "id": "project_2025_exploration_firm",
+      "title": "Exploration PSC firm-commitment performance",
+      "unit": "contract areas",
+      "source_pdf_page": 44,
+      "category": "verified labeled categorical chart",
+      "records": [
+        {
+          "name": "Gold",
+          "value": 2
+        },
+        {
+          "name": "Green",
+          "value": 4
+        },
+        {
+          "name": "Blue",
+          "value": 11
+        },
+        {
+          "name": "Pink",
+          "value": 2
+        },
+        {
+          "name": "Red",
+          "value": 6
+        },
+        {
+          "name": "Black",
+          "value": 0
+        },
+        {
+          "name": "Under 3 years",
+          "value": 19
+        }
+      ],
+      "note": "2025 text-zone classification excludes exploration areas overseen by BPMA. Under-three-years may be an evaluation cohort; do not treat these as mutually exclusive operator counts without cross-tab.",
+      "method": "verbatim data labels on original SKK Migas 2025 annual report figure"
+    },
+    {
+      "id": "procurement_approval",
+      "title": "2025 procurement approval SLA",
+      "unit": "working days",
+      "source_pdf_page": 176,
+      "category": "verified labeled categorical chart",
+      "records": [
+        {
+          "name": "Tender plan approval",
+          "plan": 15,
+          "realization": 3.83,
+          "unit": "working days"
+        },
+        {
+          "name": "Tender result approval",
+          "plan": 15,
+          "realization": 9.57,
+          "unit": "working days"
+        }
+      ],
+      "note": "Lower time is faster. These represent two types of approval under PTK 007, not time to complete construction.",
+      "method": "verbatim data labels on original SKK Migas 2025 annual report figure"
+    },
+    {
+      "id": "state_assets_2025",
+      "title": "Unaudited government upstream oil/gas asset book value (BMN)",
+      "unit": "IDR",
+      "source_pdf_page": 186,
+      "category": "verified labeled categorical chart",
+      "records": [
+        {
+          "name": "Capital assets",
+          "value": 666183829267840
+        },
+        {
+          "name": "Inventory assets",
+          "value": 139867633198
+        },
+        {
+          "name": "Inventory materials",
+          "value": 29219347607687
+        },
+        {
+          "name": "Land",
+          "value": 47954509454149
+        }
+      ],
+      "note": "31 December 2025, unaudited. Four source components sum exactly to IDR 743,497,553,962,874. Original document describes 218 PSC contractors.",
+      "method": "verbatim data labels on original SKK Migas 2025 annual report figure"
+    }
+  ],
+  "status": "Numerically digitized and auditable original printed labels/tables only; nonnumeric maps, Gantt charts, raw maps, textual risk diagrams and scanned figures remain referenced instead of fictional numeric data."
+}
