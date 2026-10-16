@@ -177,6 +177,23 @@ function renderDigitizedExhibits(root,doc){
  }
  kind.addEventListener("change",dataset);select.addEventListener("change",draw);draw();
 }
+function renderExplorationRegisters(root,registry){
+ root.append($("h4",null,I("2025 Exploration · PSE Structures and Discovery Wells","Eksplorasi 2025 · Struktur PSE dan Sumur Penemuan")),
+ $("p","sm25-note",I("24 structures with exploration status determinations (PSE) and 15 numbered well-discovery markers from the annual report. These are distinct registers. The report says 14 successful of 24 completed wells; one 15-entry marker is labelled uneconomic. This register is not a GIS well map or an estimate of certified 2026 reserves.","Terdapat 24 struktur PSE dan 15 penanda sumur temuan yang diberi nomor pada laporan. Keduanya daftar berbeda. Laporan menyebut 14 berhasil dari 24 sumur selesai; satu dari 15 penanda dinyatakan tidak ekonomis. Data ini bukan peta GPS atau estimasi cadangan pasti 2026.")));
+ const actions=$("div","sm25-toolbar"),kind=selectBox([["pse","24 PSE determinations"],["discovery","15 well-discovery identifiers"]],"pse"),input=$("input","sm25-query");
+ input.type="search";input.placeholder=I("Search PSC, contract area, well or structure","Cari KKKS, wilayah kerja, sumur, atau struktur");actions.append(kind,input);root.append(actions);
+ const counter=$("p","sm25-note"),table=$("div","sm25-table-scroll");root.append(counter,table);
+ function draw(){
+  const q=input.value.trim().toLowerCase(),source=kind.value==="pse"?registry.pse_structures:registry.discovery_well_identifiers;
+  const fields=kind.value==="pse"?["no","psc","area","structure"]:["map_id","psc","area","well","reported_result"];
+  const rows=source.filter(x=>fields.map(k=>x[k]).join(" ").toLowerCase().includes(q));counter.textContent=rows.length+" / "+source.length+" original table rows (PDF p. "+(kind.value==="pse"?49:47)+")";
+  table.replaceChildren();const tbl=$("table","sm25-table"),head=$("thead"),hr=$("tr");
+  fields.forEach(k=>hr.append($("th",null,k.replaceAll("_"," "))));head.append(hr);tbl.append(head);
+  const body=$("tbody");for(const row of rows){const tr=$("tr");fields.forEach(k=>tr.append($("td",null,row[k])));body.append(tr)}tbl.append(body);table.append(tbl);
+ }
+ kind.addEventListener("change",draw);input.addEventListener("input",draw);draw();
+ root.append($("p","sm25-note",I("Source includes duplicate Rengasdengklok PSE entries #14 and #15; preserved as printed. Well-map identifiers are not WGS84 coordinates. Source: report PDF pp. 47 and 49.","Sumber memuat dua entri PSE Rengasdengklok #14 dan #15; keduanya dipertahankan. Nomor penanda sumur bukan koordinat WGS84. Sumber: PDF halaman 47 dan 49.")));
+}
 function renderPOD2025(root,register){
  root.append($("h4",null,I("2025 POD & Development Approvals · 45 Source Rows","Persetujuan POD dan Pengembangan 2025 · 45 Baris Sumber")),
   $("p","sm25-note",I("This register reports estimated recoverable additions at approval (oil MMBO, gas BSCF, combined MMBOE) by contractor and field. An approval does not establish operating status, marketable production, FID or realized capex.","Daftar ini memuat estimasi penambahan sumber daya pada persetujuan (minyak MMBO, gas BSCF, gabungan MMBOE) per kontraktor dan lapangan. Persetujuan bukan bukti proyek sudah beroperasi, produksi, FID atau realisasi investasi.")));
@@ -258,12 +275,12 @@ async function mount(where,mode){
  $("p","sm25-intro",I("English annual report is the primary numeric source; the Indonesian edition is a translation cross-check. Production ≠ lifting, reserves ≠ resources, plans ≠ realized investments.","Laporan tahunan Inggris sebagai sumber angka utama; versi Indonesia sebagai pemeriksa istilah. Produksi ≠ lifting, cadangan ≠ sumber daya, rencana ≠ realisasi investasi.")));
  const state=$("p","sm25-note",I("Loading audited report measures…","Memuat data laporan…"));section.append(state);
  try{
-  const [d,c,exhibits,pod]=await Promise.all([fetch(BASE,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No baseline");return r.json()}),fetch(CAT,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No figure catalog");return r.json()}),fetch("data/skkmigas-2025-digitized-exhibits.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No digitized data");return r.json()}),fetch("data/skkmigas-2025-pod-approvals.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No POD register");return r.json()})]);
-  if(d.id!=="sli-skkmigas-annual-2025"||c.entries.length<100||exhibits.series.length<20||pod.records.length!==45||Math.abs(pod.listed_table_sum_mmboe-643.42)>.01)throw Error("Report index or source register incomplete");
+  const [d,c,exhibits,pod,exregister]=await Promise.all([fetch(BASE,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No baseline");return r.json()}),fetch(CAT,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No figure catalog");return r.json()}),fetch("data/skkmigas-2025-digitized-exhibits.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No digitized data");return r.json()}),fetch("data/skkmigas-2025-pod-approvals.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No POD register");return r.json()}),fetch("data/skkmigas-2025-exploration-registers.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No exploration register");return r.json()})]);
+  if(d.id!=="sli-skkmigas-annual-2025"||c.entries.length<100||exhibits.series.length<20||pod.records.length!==45||exregister.pse_structures.length!==24||exregister.discovery_well_identifiers.length!==15||Math.abs(pod.listed_table_sum_mmboe-643.42)>.01)throw Error("Report index or source register incomplete");
   if(!section.isConnected)return;
   state.textContent=I("2025 source values · report edition 2026 · "+d.metrics.length+" verified KPI definitions · "+d.series.length+" dated time series · "+c.entries.length+" source exhibits, plus "+exhibits.series.length+" newly digitized numeric series. NOT real-time.","Tahun data 2025 · edisi laporan 2026 · "+d.metrics.length+" KPI terverifikasi · "+d.series.length+" deret waktu · "+c.entries.length+" katalog sumber dan "+exhibits.series.length+" seri tambahan. BUKAN data real-time.");
   const tabs=$("div","sm25-tabs"),panel=$("div","sm25-pane");
-  const pageTabs=[["overview",I("Executive KPIs","KPI utama")],["trend",I("Historical data","Data historis")],["gas",I("Gas Sankey","Sankey gas")],["targets",I("Targets vs actual","Target vs realisasi")],["mapping",I("PSC / basin maps","Peta WK / cekungan")],["projects",I("16 onstream projects","16 proyek onstream")],["digitized",I("Digitized figures","Grafik digital")],["pods",I("45 POD approvals","45 persetujuan POD")],["catalog",I("Source catalog","Katalog sumber")]];
+  const pageTabs=[["overview",I("Executive KPIs","KPI utama")],["trend",I("Historical data","Data historis")],["gas",I("Gas Sankey","Sankey gas")],["targets",I("Targets vs actual","Target vs realisasi")],["mapping",I("PSC / basin maps","Peta WK / cekungan")],["projects",I("16 onstream projects","16 proyek onstream")],["digitized",I("Digitized figures","Grafik digital")],["pods",I("45 POD approvals","45 persetujuan POD")],["exploration",I("Exploration registers","Daftar eksplorasi")],["catalog",I("Source catalog","Katalog sumber")]];
   let active=mode==="investment"?"trend":"overview";
   function render(){panel.replaceChildren();for(const b of tabs.querySelectorAll("button")){b.classList.toggle("active",b.dataset.tab===active);b.setAttribute("aria-pressed",b.dataset.tab===active?"true":"false")}
    if(active==="overview")renderKpi(panel,d);
@@ -274,6 +291,7 @@ async function mount(where,mode){
    else if(active==="projects")renderProjectDossiers(panel,d);
    else if(active==="digitized")renderDigitizedExhibits(panel,exhibits);
    else if(active==="pods")renderPOD2025(panel,pod);
+   else if(active==="exploration")renderExplorationRegisters(panel,exregister);
    else renderCatalog(panel,d,c);
   }
   for(const [id,title] of pageTabs){const b=$("button","sm25-tab",title);b.type="button";b.dataset.tab=id;b.addEventListener("click",()=>{active=id;render()});tabs.append(b)}
