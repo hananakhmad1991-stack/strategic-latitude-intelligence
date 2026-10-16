@@ -3,7 +3,7 @@
   "source_url": "https://www.skkmigas.go.id/publication?tab=laporan+tahunan",
   "book": "SKK Migas Annual Report 2025 (English)",
   "report_pages": 202,
-  "interpretation": "The page-linked exhibit index now distinguishes digitized_verified, original prior KPI normalization (normalized-or-kpi), and source-catalog-only items. This is source-text and printed numeric label transcription, not raster graph pixel estimation.",
+  "interpretation": "Labels: digitized_verified (all targeted source-labelled numeric exhibit values extracted without interpolating), structured_table_verified (complete source named/risk rows), partially_digitized (headline numerics only), normalized-or-kpi (previous SLI metrics), source-catalog-only (unparsed exhibit).",
   "sections": [
     {
       "name": "Introduction & global context",
@@ -66,8 +66,11 @@
       "kind": "graph",
       "number": "1.1",
       "title": "Indonesia investment rating",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "2025 numeric labels transcribed directly from original PDF page. Data source preserves exact metric units and methodological gaps.",
+      "digitized_refs": [
+        "rating_dimensions"
+      ]
     },
     {
       "pdf_page": 38,
@@ -138,8 +141,11 @@
       "kind": "graph",
       "number": "2.3",
       "title": "Firm commitments and work-area performance",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "partially_digitized",
+      "crosscheck": "Printed headline 2025 commitment values transcribed; the unlabeled per-year bars 2013–2037 remain source-only and are NOT graph-estimated.",
+      "digitized_refs": [
+        "commitment"
+      ]
     },
     {
       "pdf_page": 46,
@@ -516,8 +522,11 @@
       "kind": "graph",
       "number": "3.6",
       "title": "Oil and condensate lifting bridge",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "2025 numeric labels transcribed directly from original PDF page. Data source preserves exact metric units and methodological gaps.",
+      "digitized_refs": [
+        "oil"
+      ]
     },
     {
       "pdf_page": 91,
@@ -525,8 +534,11 @@
       "kind": "graph",
       "number": "3.7",
       "title": "Natural gas lifting waterfall",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "2025 numeric labels transcribed directly from original PDF page. Data source preserves exact metric units and methodological gaps.",
+      "digitized_refs": [
+        "gas"
+      ]
     },
     {
       "pdf_page": 92,
@@ -818,8 +830,11 @@
       "kind": "table",
       "number": "6.1",
       "title": "2025 top institutional risks",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "All twelve Table 6.1 risk labels and original classifications extracted as structured source evidence.",
+      "digitized_refs": [
+        "risk_register"
+      ]
     },
     {
       "pdf_page": 146,
@@ -911,8 +926,12 @@
       "kind": "graph",
       "number": "6.7",
       "title": "2025 local content PSC procurement",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "2025 numeric labels transcribed directly from original PDF page. Data source preserves exact metric units and methodological gaps.",
+      "digitized_refs": [
+        "tkdn_psn_monthly",
+        "tkdn_nonpsn_monthly"
+      ]
     },
     {
       "pdf_page": 178,
@@ -1051,12 +1070,14 @@
   "digitization_review": {
     "updated": "2026-10-16",
     "source_pdf_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
-    "numerically_verified": 26,
+    "numerically_verified": 30,
     "indexed_source_items": 101,
-    "source_only": 59,
-    "notes": "This index is an evidence navigator and was not a proven complete inventory of all original report graphics. Named 45 POD approvals have two source PDF pages, and the 0.01–12.31 discrepancies are flagged. Source-only items include nonnumeric drawings, governance diagrams and raster maps; do not label them numerically digitized.",
-    "structured_source_tables": 2,
+    "source_only": 53,
+    "notes": "101 entries are an indexed subset of original PDF exhibits, not an exhaustive count of all 202 pages. Numeric-verified denotes explicitly printed source values, not all pixels in a complex graphical timeline. Structured means a complete named/risk register. Partial means labelled KPI extract only; source diagram bars/timeline not interpolated. Source-only includes maps, photo, nonnumeric charts and a handful of remaining source graphics.",
+    "structured_source_tables": 3,
     "comments": "Two additional complete source-name registers: 24 PSE structures and 15 well markers. Not validated GIS coordinates or numerical productions.",
-    "note_extra": "Added five further labelled exhibits: gas contract versus actual, LNG receiving terminals by source, and monthly unplanned oil/gas loss components."
+    "note_extra": "Added five further labelled exhibits: gas contract versus actual, LNG receiving terminals by source, and monthly unplanned oil/gas loss components.",
+    "partially_digitized": 1,
+    "latest_extension": "SKK Migas investor ratings Graph 1.1, production bridges Graphs 3.6/3.7, monthly TKDN Graph 6.7, risk Table 6.1 and partial commitment Graph 2.3."
   }
 }
