@@ -1,141 +1,371 @@
 {
   "schema_version": "1.0",
-  "checked_at_utc": null,
-  "state": "awaiting_first_scan",
+  "checked_at_utc": "2026-10-16T15:28:55Z",
+  "state": "sources_scanned",
   "source_count": 10,
-  "healthy_source_count": 0,
-  "scan_errors": 0,
+  "healthy_source_count": 2,
+  "scan_errors": 8,
+  "new_review_leads": 0,
+  "events": [
+    {
+      "id": "827874b730c4ef6f0ef2",
+      "publisher": "Stanford HAI",
+      "source_id": "stanford_ai",
+      "title": "Sha Sajadieh Program Manager, AI Index at Stanford HAI",
+      "url": "https://hai.stanford.edu/people/sha-sajadieh",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "2c115571615652a1e900",
+      "publisher": "Stanford HAI",
+      "source_id": "stanford_ai",
+      "title": "The 2026 AI Index Report",
+      "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "9e9e10729e6b214d9111",
+      "publisher": "Stanford HAI",
+      "source_id": "stanford_ai",
+      "title": "The 2025 AI Index Report",
+      "url": "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "42e4d08354c198b0342b",
+      "publisher": "Stanford HAI",
+      "source_id": "stanford_ai",
+      "title": "The 2024 AI Index Report",
+      "url": "https://hai.stanford.edu/ai-index/2024-ai-index-report",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "13675f88333018bda2bf",
+      "publisher": "Stanford HAI",
+      "source_id": "stanford_ai",
+      "title": "The 2023 AI Index Report",
+      "url": "https://hai.stanford.edu/ai-index/2023-ai-index-report",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "2ece95ab39c7821f6241",
+      "publisher": "Stanford HAI",
+      "source_id": "stanford_ai",
+      "title": "The 2022 AI Index Report",
+      "url": "https://hai.stanford.edu/ai-index/2022-ai-index-report",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "9860e60415a9c00fea0a",
+      "publisher": "Stanford HAI",
+      "source_id": "stanford_ai",
+      "title": "The 2021 AI Index Report",
+      "url": "https://hai.stanford.edu/ai-index/2021-ai-index-report",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "de41ff3f2d84aa879f60",
+      "publisher": "Stanford HAI",
+      "source_id": "stanford_ai",
+      "title": "The 2019 AI Index Report",
+      "url": "https://hai.stanford.edu/ai-index/2019-ai-index-report",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "3a46e61d409624382369",
+      "publisher": "Stanford HAI",
+      "source_id": "stanford_ai",
+      "title": "The 2018 AI Index Report",
+      "url": "https://hai.stanford.edu/ai-index/2018-ai-index-report",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "eb23051fd064c0b97e9b",
+      "publisher": "Stanford HAI",
+      "source_id": "stanford_ai",
+      "title": "The 2017 AI Index Report",
+      "url": "https://hai.stanford.edu/ai-index/2017-ai-index-report",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "065994bf55d377c5d21d",
+      "publisher": "Bank Indonesia",
+      "source_id": "bi_releases",
+      "title": "Indikator Moneter",
+      "url": "https://www.bi.go.id/id/fungsi-utama/moneter/indikator-moneter/default.aspx",
+      "linked_datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/investment-market.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "b9f9198095bcb8e213ee",
+      "publisher": "Bank Indonesia",
+      "source_id": "bi_releases",
+      "title": "Suku Bunga Obligasi Pemerintah RI",
+      "url": "https://www.bi.go.id/id/publikasi/suku-bunga-obligasi",
+      "linked_datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/investment-market.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "edb568d6a82b6084f9a0",
+      "publisher": "Bank Indonesia",
+      "source_id": "bi_releases",
+      "title": "Indikator Terpilih Moneter dan Sistem Pembayaran (ITEMs)",
+      "url": "https://www.bi.go.id/id/statistik/ekonomi-keuangan/items/Default.aspx",
+      "linked_datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/investment-market.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    }
+  ],
   "sources": [
+    {
+      "id": "bi_releases",
+      "publisher": "Bank Indonesia",
+      "url": "https://www.bi.go.id/id/publikasi/ruang-media/news-release/default.aspx",
+      "linked_datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/investment-market.json"
+      ],
+      "health": "ok",
+      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "observed_items": 3,
+      "error": null,
+      "last_success_utc": "2026-10-16T15:28:55Z"
+    },
     {
       "id": "bps_brs",
       "publisher": "BPS",
       "url": "https://www.bps.go.id/id/pressrelease",
-      "health": "pending",
-      "last_success_utc": null,
       "linked_datasets": [
         "data/sli-macro-indonesia-2026.json",
         "data/commodity-trade-flows.json",
         "data/investment-sector-evidence.json"
       ],
-      "observed_items": null
+      "health": "unavailable",
+      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "observed_items": null,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "last_success_utc": null
     },
     {
       "id": "bps_publications",
       "publisher": "BPS",
       "url": "https://www.bps.go.id/id/publication",
-      "health": "pending",
-      "last_success_utc": null,
       "linked_datasets": [
         "data/commodity-trade-flows.json",
         "data/energy-fundamentals.json"
       ],
-      "observed_items": null
-    },
-    {
-      "id": "bi_releases",
-      "publisher": "Bank Indonesia",
-      "url": "https://www.bi.go.id/id/publikasi/ruang-media/news-release/default.aspx",
-      "health": "pending",
-      "last_success_utc": null,
-      "linked_datasets": [
-        "data/sli-macro-indonesia-2026.json",
-        "data/investment-market.json"
-      ],
-      "observed_items": null
-    },
-    {
-      "id": "kemenkeu_news",
-      "publisher": "Kementerian Keuangan",
-      "url": "https://www.kemenkeu.go.id/informasi-publik/publikasi/berita-utama",
-      "health": "pending",
-      "last_success_utc": null,
-      "linked_datasets": [
-        "data/sli-macro-indonesia-2026.json",
-        "data/energy-prices-fiscal.json"
-      ],
-      "observed_items": null
-    },
-    {
-      "id": "pln_statistics",
-      "publisher": "PLN Investor Relations",
-      "url": "https://www.pln.co.id/hubungan-investor-id/publikasi-investor-id/laporan-statistik-id",
-      "health": "pending",
-      "last_success_utc": null,
-      "linked_datasets": [
-        "data/pln-statistics-regional-baseline-2024.json",
-        "data/pln-statistics-source-register.json",
-        "data/energy-fundamentals.json"
-      ],
-      "observed_items": null
+      "health": "unavailable",
+      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "observed_items": null,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "last_success_utc": null
     },
     {
       "id": "esdm_energy_reports",
       "publisher": "ESDM",
       "url": "https://www.esdm.go.id/id/publikasi",
-      "health": "pending",
-      "last_success_utc": null,
       "linked_datasets": [
         "data/heesi-2025-integrated.json",
         "data/energy-fundamentals.json",
         "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
       ],
-      "observed_items": null
+      "health": "unavailable",
+      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "observed_items": null,
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "last_success_utc": null
     },
     {
-      "id": "usgs_minerals",
-      "publisher": "USGS",
-      "url": "https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries",
-      "health": "pending",
-      "last_success_utc": null,
+      "id": "kemenkeu_news",
+      "publisher": "Kementerian Keuangan",
+      "url": "https://www.kemenkeu.go.id/informasi-publik/publikasi/berita-utama",
       "linked_datasets": [
-        "data/usgs-indonesia-minerals-2026.json",
-        "data/esdm-2025-mineral-performance.json"
+        "data/sli-macro-indonesia-2026.json",
+        "data/energy-prices-fiscal.json"
       ],
-      "observed_items": null
-    },
-    {
-      "id": "stanford_ai",
-      "publisher": "Stanford HAI",
-      "url": "https://hai.stanford.edu/ai-index",
-      "health": "pending",
-      "last_success_utc": null,
-      "linked_datasets": [
-        "data/indonesia-ai-global-benchmarks.json",
-        "data/indonesia-ai-compute-power-asean.json"
-      ],
-      "observed_items": null
+      "health": "no_readable_publisher_links",
+      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "observed_items": 0,
+      "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
+      "last_success_utc": null
     },
     {
       "id": "komdigi_releases",
       "publisher": "Komdigi",
       "url": "https://portal.komdigi.go.id/kanal-publik/berita-kini",
-      "health": "pending",
-      "last_success_utc": null,
       "linked_datasets": [
         "data/komdigi-digital-infrastructure-2025.json",
         "data/ai-intelligence.json"
       ],
-      "observed_items": null
+      "health": "unavailable",
+      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "observed_items": null,
+      "error": "HTTPError: HTTP Error 404: Not Found",
+      "last_success_utc": null
+    },
+    {
+      "id": "pln_statistics",
+      "publisher": "PLN Investor Relations",
+      "url": "https://www.pln.co.id/hubungan-investor-id/publikasi-investor-id/laporan-statistik-id",
+      "linked_datasets": [
+        "data/pln-statistics-regional-baseline-2024.json",
+        "data/pln-statistics-source-register.json",
+        "data/energy-fundamentals.json"
+      ],
+      "health": "no_readable_publisher_links",
+      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "observed_items": 0,
+      "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
+      "last_success_utc": null
     },
     {
       "id": "skkmigas_publications",
       "publisher": "SKK Migas",
       "url": "https://www.skkmigas.go.id/",
-      "health": "pending",
-      "last_success_utc": null,
       "linked_datasets": [
         "data/skkmigas-annual-2025.json",
         "data/skkmigas-2025-digitized-exhibits.json",
         "data/energy-fundamentals.json"
       ],
-      "observed_items": null
+      "health": "unavailable",
+      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "observed_items": null,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "last_success_utc": null
+    },
+    {
+      "id": "stanford_ai",
+      "publisher": "Stanford HAI",
+      "url": "https://hai.stanford.edu/ai-index",
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "health": "ok",
+      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "observed_items": 10,
+      "error": null,
+      "last_success_utc": "2026-10-16T15:28:55Z"
+    },
+    {
+      "id": "usgs_minerals",
+      "publisher": "USGS",
+      "url": "https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries",
+      "linked_datasets": [
+        "data/usgs-indonesia-minerals-2026.json",
+        "data/esdm-2025-mineral-performance.json"
+      ],
+      "health": "no_readable_publisher_links",
+      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "observed_items": 0,
+      "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
+      "last_success_utc": null
     }
   ],
-  "events": [],
-  "new_review_leads": 0,
   "notes": [
     "Listing pages may use JavaScript, block automated retrieval, or show old references; no readable matches does NOT mean no new release.",
     "The watcher records newly seen matching publisher links as candidates after initial baseline. Full PDF/table extraction and legal/project verification remain separate.",
     "Only source URLs on the publisher's allowlist are stored. Publisher report numeric values are never changed by this watcher."
-  ]
+  ],
+  "integrity": "No input datasets, reported national indicator values, legal status or project statuses are modified."
 }
