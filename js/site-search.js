@@ -158,6 +158,7 @@
    return loading;
   }
   function goToRecord(item){
+   const requestToken=++requested;
    close();input.value="";
    const previous=getPage();const target=item.page;
    if(target&&target!==previous)navigate(target);
@@ -167,6 +168,7 @@
    let jumped=false;
    const attempt=(delay)=>{
     setTimeout(()=>{
+     if(requestToken!==requested)return;
      const el=item.anchor?document.getElementById(item.anchor):document.getElementById("content");
      if(!el)return;
      if(!jumped){el.scrollIntoView({behavior:delay?"smooth":"auto",block:"start"});jumped=true}
