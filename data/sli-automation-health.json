@@ -1,27 +1,2203 @@
 {
   "schema_version": "1.0",
-  "generated_at_utc": null,
-  "audit_state": "awaiting_first_run",
-  "scope": "All SLI data/*.json and GitHub Actions workflows",
-  "source_semantics": "Source update not guaranteed by workflow execution. Dataset-level freshness will be calculated from metadata and action statuses.",
-  "transport": "latest GitHub public main JSON, Pages fallback",
+  "generated_at_utc": "2026-10-16T15:15:20Z",
+  "audit_state": "complete_with_api_warnings",
+  "scope": "All data/*.json files and all .github/workflows/*.yml files in main at audit time.",
+  "source_semantics": "Workflow freshness does not guarantee source completeness or official verification. News candidates do not modify legal status/project operations. Static historical vintages are not current observations.",
+  "transport": "Data-backed SLI pages fetch latest public GitHub main JSON with GitHub Pages fallback; if fallback occurs, freshness may lag.",
   "summary": {
-    "datasets": null,
-    "workflows": null,
-    "scheduled_workflows": null,
-    "auto_numeric_datasets": null,
-    "auto_discovery_datasets": null,
-    "curated_or_archival_datasets": null,
-    "overdue_or_broken_datasets": null,
-    "unmanaged_datasets": null,
-    "workflow_failures_latest": null,
-    "workflow_status_api_errors": null
+    "datasets": 97,
+    "workflows": 38,
+    "scheduled_workflows": 23,
+    "auto_numeric_datasets": 12,
+    "auto_discovery_datasets": 12,
+    "curated_or_archival_datasets": 72,
+    "other_datasets": 1,
+    "overdue_or_broken_datasets": 2,
+    "unmanaged_datasets": 72,
+    "workflow_failures_latest": 0,
+    "workflow_status_api_errors": 23
   },
-  "attention": [],
-  "api_errors": {},
-  "workflows": [],
-  "datasets": [],
+  "attention": [
+    {
+      "kind": "dataset",
+      "id": "data/energy-actors-status.json",
+      "status": "overdue",
+      "note": "Leadership watch should not auto-replace current officials without unambiguous legal appointment."
+    },
+    {
+      "kind": "dataset",
+      "id": "data/energy-ev-watch.json",
+      "status": "overdue",
+      "note": "Source/news candidate monitor, not a verified project or legal status change."
+    }
+  ],
+  "api_errors": {
+    "ai-monitoring.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "daily-energy-assessment.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "commodity-market-prices.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "domestic-energy-watch.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "ai-intelligence-audit.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "daily-energy-prices.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "energy-actor-watch.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "energy-ccs-watch.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "energy-biofuels-watch.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "energy-ev-watch.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "energy-events-watch.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "energy-infrastructure-watch.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "heesi-handbook-index.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "geopolitical-energy-watch.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "energy-policy-watch.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "investment-market-forbes.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "investment-media.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "macro-worldbank-history.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "research-signal-radar.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "regulatory-change-monitor.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "sector-leadership-watch.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "sli-automation-health.yml": "HTTPError: HTTP Error 401: Unauthorized",
+    "source-watch.yml": "HTTPError: HTTP Error 401: Unauthorized"
+  },
+  "workflows": [
+    {
+      "id": "ai-intelligence-audit.yml",
+      "name": "AI Intelligence source and schema check",
+      "scheduled": true,
+      "cron": [
+        "17 1 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 24,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "ai-investor-qa.yml",
+      "name": "AI Investor Integrity and UI Checks",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "ai-monitoring.yml",
+      "name": "SLI AI monitoring and source QA",
+      "scheduled": true,
+      "cron": [
+        "23 2,14 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 12,
+      "datasets_written": [
+        "data/ai-monitoring.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "commodity-market-prices.yml",
+      "name": "SLI Commodity Price Monitoring",
+      "scheduled": true,
+      "cron": [
+        "7,37 * * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 0.5,
+      "datasets_written": [
+        "data/commodity-market-prices.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "commodity-price-qa.yml",
+      "name": "SLI Commodity Price Display QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "commodity-trade-qa.yml",
+      "name": "SLI Commodity Trade Sankey QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "daily-energy-assessment.yml",
+      "name": "SLI Daily Energy Overall Assessment",
+      "scheduled": true,
+      "cron": [
+        "30 2 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 24,
+      "datasets_written": [
+        "data/daily-energy-assessment.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "daily-energy-prices.yml",
+      "name": "SLI Daily Energy Market Prices",
+      "scheduled": true,
+      "cron": [
+        "37 1 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 24,
+      "datasets_written": [
+        "data/energy-prices.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "domestic-energy-watch.yml",
+      "name": "SLI Indonesia Domestic Energy Radar",
+      "scheduled": true,
+      "cron": [
+        "23 */3 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 3.0,
+      "datasets_written": [
+        "data/domestic-energy-health.json",
+        "data/domestic-energy.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "energy-actor-watch.yml",
+      "name": "SLI Energy Actor Verification",
+      "scheduled": true,
+      "cron": [
+        "17 0,6,12,18 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 6,
+      "datasets_written": [
+        "data/energy-actors-status.json",
+        "data/energy-governance-ccs.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "energy-biofuels-validation.yml",
+      "name": "SLI Biofuels Dashboard Validation",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "energy-biofuels-watch.yml",
+      "name": "SLI Biodiesel Biofuel & Policy Radar",
+      "scheduled": true,
+      "cron": [
+        "17 * * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 1,
+      "datasets_written": [
+        "data/energy-biofuels-watch.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "energy-ccs-watch.yml",
+      "name": "SLI CCS-CCUS Project Watch",
+      "scheduled": true,
+      "cron": [
+        "49 */6 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 6.0,
+      "datasets_written": [
+        "data/energy-ccs-updates.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "energy-ev-validation.yml",
+      "name": "SLI EV Data and Bilingual Dashboard Validation",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "energy-ev-watch.yml",
+      "name": "SLI Indonesia EV Mobility News Radar",
+      "scheduled": true,
+      "cron": [
+        "41 */3 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 3.0,
+      "datasets_written": [
+        "data/energy-ev-watch.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "energy-events-watch.yml",
+      "name": "SLI Indonesia Upcoming Energy Events",
+      "scheduled": true,
+      "cron": [
+        "07 */6 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 6.0,
+      "datasets_written": [
+        "data/energy-events.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "energy-infrastructure-watch.yml",
+      "name": "SLI Refinery Grid Jargas & IKE Source Watch",
+      "scheduled": true,
+      "cron": [
+        "32 0,12 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 12,
+      "datasets_written": [
+        "data/energy-infrastructure-watch.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "energy-policy-watch.yml",
+      "name": "SLI Energy Policy Candidate Scan",
+      "scheduled": true,
+      "cron": [
+        "41 */6 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 6.0,
+      "datasets_written": [
+        "data/energy-policy-leads.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "energy-security-editorial-qa.yml",
+      "name": "SLI Energy Security Editorial and Syntax QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "geopolitical-energy-watch.yml",
+      "name": "SLI Geopolitical Energy News Discovery",
+      "scheduled": true,
+      "cron": [
+        "13 */3 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 3.0,
+      "datasets_written": [
+        "data/geopolitical-energy-status.json",
+        "data/geopolitical-energy.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "heesi-handbook-index.yml",
+      "name": "SLI HEESI 2025 · Full Official Handbook Index",
+      "scheduled": true,
+      "cron": [
+        "41 7 1 * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 744,
+      "datasets_written": [
+        "data/handbook-2025-pages.json",
+        "data/heesi-2025-power-technologies.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "i18n-validation.yml",
+      "name": "SLI Language Switch Validation",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "investment-evidence-qa.yml",
+      "name": "Investment Evidence QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "investment-market-forbes.yml",
+      "name": "Investment Market and Forbes Sources",
+      "scheduled": true,
+      "cron": [
+        "30 9 * * 1-5",
+        "15 1 * * 0"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 168,
+      "datasets_written": [
+        "data/investment-forbes-top20.json",
+        "data/investment-market.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "investment-media.yml",
+      "name": "Investment Media Monitoring",
+      "scheduled": true,
+      "cron": [
+        "24 */6 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 6.0,
+      "datasets_written": [
+        "data/investment-news.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "macro-integrity.yml",
+      "name": "SLI Macroeconomic Integrity",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "macro-worldbank-history.yml",
+      "name": "SLI Macro World Bank Annual History",
+      "scheduled": true,
+      "cron": [
+        "23 2 * * 2"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 168,
+      "datasets_written": [
+        "data/sli-macro-worldbank-history.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "pln-pdf-extract.yml",
+      "name": "PLN RUPTL and Statistics PDF Extraction",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "policy-regulatory-qa.yml",
+      "name": "SLI Policy and Regulatory Integrity",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "regulatory-change-monitor.yml",
+      "name": "SLI Regulatory Change and Policy News Monitor",
+      "scheduled": true,
+      "cron": [
+        "13 1,11 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 10,
+      "datasets_written": [
+        "data/regulatory-monitor.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "research-dashboard-qa.yml",
+      "name": "SLI Research Dashboard QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "research-signal-radar.yml",
+      "name": "SLI Critical Minerals & AI Research Radar",
+      "scheduled": true,
+      "cron": [
+        "17 * * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 1,
+      "datasets_written": [
+        "data/research-signal-radar.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "ruplt-data-quality.yml",
+      "name": "RUPTL Source Digitization QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "sector-leadership-watch.yml",
+      "name": "SLI Sector Leadership Source Watch",
+      "scheduled": true,
+      "cron": [
+        "15 1 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 24,
+      "datasets_written": [
+        "data/sector-leadership-watch.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "sli-automation-health.yml",
+      "name": "SLI Whole Dashboard Freshness & Automation Health",
+      "scheduled": true,
+      "cron": [
+        "7 0,6,12,18 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 6,
+      "datasets_written": [
+        "data/sli-automation-health.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "source-watch.yml",
+      "name": "SLI Official Source Watch",
+      "scheduled": true,
+      "cron": [
+        "19 2 * * 1"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 168,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "strategic-map-qa.yml",
+      "name": "SLI Strategic Map QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "strategic-pulse-qa.yml",
+      "name": "SLI Strategic Pulse QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    }
+  ],
+  "datasets": [
+    {
+      "id": "data/ai-electricity-demand-model.json",
+      "group": "AI / Data Centers",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/ai-grid-official-crosswalk.json",
+      "group": "AI / Data Centers",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "updated_at",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated_at": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/ai-intelligence.json",
+      "group": "AI / Data Centers",
+      "mode": "curated_snapshot",
+      "priority": "critical",
+      "status": "curated_not_automated",
+      "last_record_key": "updated_at",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated_at": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Project MW, operator, financing, GPU fleet and COD require sourced project-specific confirmations. AI news workflow is discovery-only.",
+      "error": null
+    },
+    {
+      "id": "data/ai-investment-events.json",
+      "group": "AI / Data Centers",
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "status": "curated_not_automated",
+      "last_record_key": "updated_at",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated_at": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Milestone ledger only changes after evidence verification; not automatically inferred from announcements.",
+      "error": null
+    },
+    {
+      "id": "data/ai-monitoring.json",
+      "group": "AI / Data Centers",
+      "mode": "automated_discovery",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T14:53:40.215364Z",
+      "age_hours_since_record": 0.36,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T14:53:40.215364+00:00"
+      },
+      "scheduled_writers": [
+        "ai-monitoring.yml"
+      ],
+      "cadence_hours": 12,
+      "note": "Source/news candidate monitor, not a verified project or legal status change.",
+      "error": null
+    },
+    {
+      "id": "data/ai-project-power-crosswalk.json",
+      "group": "AI / Data Centers",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/ai-regional-grid-scenarios.json",
+      "group": "AI / Data Centers",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "updated_at",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated_at": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/ai-risk-evidence.json",
+      "group": "AI / Data Centers",
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Diligence score reflects evidence completeness, never implied changes in financial or legal risks.",
+      "error": null
+    },
+    {
+      "id": "data/commodity-market-prices.json",
+      "group": "Trade & Markets",
+      "mode": "automated_numeric",
+      "priority": "high",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T15:02:30.151365Z",
+      "age_hours_since_record": 0.21,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T15:02:30.151365+00:00"
+      },
+      "scheduled_writers": [
+        "commodity-market-prices.yml"
+      ],
+      "cadence_hours": 0.5,
+      "note": "Automatic quotes/price observations; verify actual quote date, publisher and fallback fields.",
+      "error": null
+    },
+    {
+      "id": "data/commodity-trade-flows.json",
+      "group": "Trade & Markets",
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Trade partner/commodity Sankey currently represents a particular statistical vintage; requires verified periodic BPS/UN Comtrade ingestion.",
+      "error": null
+    },
+    {
+      "id": "data/cross-source-policy-2026.json",
+      "group": "Governance & Regulations",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/daily-energy-assessment.json",
+      "group": "Energy & Electricity",
+      "mode": "computed_from_sources",
+      "priority": "medium",
+      "status": "recent_check",
+      "last_record_key": "generated_at_utc",
+      "last_record_utc": "2026-10-16T03:00:25.247645Z",
+      "age_hours_since_record": 12.25,
+      "publisher_metadata": {
+        "generated_at_utc": "2026-10-16T03:00:25.247645+00:00"
+      },
+      "scheduled_writers": [
+        "daily-energy-assessment.yml"
+      ],
+      "cadence_hours": 24,
+      "note": "Rule-based daily assessment from observed data, not direct proof of changes in energy security.",
+      "error": null
+    },
+    {
+      "id": "data/domestic-energy-health.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T13:09:23.879635Z",
+      "age_hours_since_record": 2.1,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T13:09:23.879635+00:00"
+      },
+      "scheduled_writers": [
+        "domestic-energy-watch.yml"
+      ],
+      "cadence_hours": 3.0,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/domestic-energy.json",
+      "group": "Other / Reference",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T13:09:23.879635Z",
+      "age_hours_since_record": 2.1,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T13:09:23.879635+00:00"
+      },
+      "scheduled_writers": [
+        "domestic-energy-watch.yml"
+      ],
+      "cadence_hours": 3.0,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/energy-actors-status.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_discovery",
+      "priority": "high",
+      "status": "overdue",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-15T18:55:33.177621Z",
+      "age_hours_since_record": 20.33,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-15T18:55:33.177621+00:00"
+      },
+      "scheduled_writers": [
+        "energy-actor-watch.yml"
+      ],
+      "cadence_hours": 6,
+      "note": "Leadership watch should not auto-replace current officials without unambiguous legal appointment.",
+      "error": null
+    },
+    {
+      "id": "data/energy-appendix.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/energy-biofuels-watch.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_discovery",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T14:47:01.410778Z",
+      "age_hours_since_record": 0.47,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T14:47:01.410778+00:00"
+      },
+      "scheduled_writers": [
+        "energy-biofuels-watch.yml"
+      ],
+      "cadence_hours": 1,
+      "note": "Source/news candidate monitor, not a verified project or legal status change.",
+      "error": null
+    },
+    {
+      "id": "data/energy-biofuels.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/energy-ccs-updates.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T13:25:27.459532Z",
+      "age_hours_since_record": 1.83,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T13:25:27.459532+00:00"
+      },
+      "scheduled_writers": [
+        "energy-ccs-watch.yml"
+      ],
+      "cadence_hours": 6.0,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/energy-coal-stakeholders.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/energy-ev-watch.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_discovery",
+      "priority": "normal",
+      "status": "overdue",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-15T02:11:44.019481Z",
+      "age_hours_since_record": 37.06,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-15T02:11:44.019481+00:00"
+      },
+      "scheduled_writers": [
+        "energy-ev-watch.yml"
+      ],
+      "cadence_hours": 3.0,
+      "note": "Source/news candidate monitor, not a verified project or legal status change.",
+      "error": null
+    },
+    {
+      "id": "data/energy-ev.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/energy-events-catalog.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/energy-events.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_discovery",
+      "priority": "medium",
+      "status": "recent_check",
+      "last_record_key": "generated_at_utc",
+      "last_record_utc": "2026-10-16T12:39:07.685246Z",
+      "age_hours_since_record": 2.6,
+      "publisher_metadata": {
+        "generated_at_utc": "2026-10-16T12:39:07.685246+00:00",
+        "date_wib": "2026-10-16"
+      },
+      "scheduled_writers": [
+        "energy-events-watch.yml"
+      ],
+      "cadence_hours": 6.0,
+      "note": "Events are discovered from public announcements; validate cancellations and actual dates.",
+      "error": null
+    },
+    {
+      "id": "data/energy-fundamentals.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "status": "curated_not_automated",
+      "last_record_key": "updated",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical statistics are edition-specific; new ESDM/PLN publications require digitization.",
+      "error": null
+    },
+    {
+      "id": "data/energy-governance-ccs.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "source_date_only",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [
+        "energy-actor-watch.yml"
+      ],
+      "cadence_hours": 6,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/energy-infrastructure-security.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/energy-infrastructure-watch.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_discovery",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T13:15:46.421240Z",
+      "age_hours_since_record": 1.99,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T13:15:46.421240+00:00"
+      },
+      "scheduled_writers": [
+        "energy-infrastructure-watch.yml"
+      ],
+      "cadence_hours": 12,
+      "note": "Source/news candidate monitor, not a verified project or legal status change.",
+      "error": null
+    },
+    {
+      "id": "data/energy-oil-gas-stakeholders.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/energy-policy-leads.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_discovery",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T13:18:32.691895Z",
+      "age_hours_since_record": 1.95,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T13:18:32.691895+00:00"
+      },
+      "scheduled_writers": [
+        "energy-policy-watch.yml"
+      ],
+      "cadence_hours": 6.0,
+      "note": "Source/news candidate monitor, not a verified project or legal status change.",
+      "error": null
+    },
+    {
+      "id": "data/energy-prices-fiscal.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/energy-prices.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T02:04:41.160315Z",
+      "age_hours_since_record": 13.18,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T02:04:41.160315+00:00"
+      },
+      "scheduled_writers": [
+        "daily-energy-prices.yml"
+      ],
+      "cadence_hours": 24,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/energy-transition.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/esdm-2025-mineral-performance.json",
+      "group": "Mining & Minerals",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16",
+        "reference_year": 2025
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/geopolitical-energy-status.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T12:45:29.396535Z",
+      "age_hours_since_record": 2.5,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T12:45:29.396535+00:00"
+      },
+      "scheduled_writers": [
+        "geopolitical-energy-watch.yml"
+      ],
+      "cadence_hours": 3.0,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/geopolitical-energy.json",
+      "group": "Other / Reference",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T12:45:29.396535Z",
+      "age_hours_since_record": 2.5,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T12:45:29.396535+00:00"
+      },
+      "scheduled_writers": [
+        "geopolitical-energy-watch.yml"
+      ],
+      "cadence_hours": 3.0,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/handbook-2025-pages.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "freshness_unknown",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [
+        "heesi-handbook-index.yml"
+      ],
+      "cadence_hours": 744,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/heesi-2025-integrated.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16",
+        "reference_year": 2025
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "HEESI 2025 archived source values do not change when a later edition appears.",
+      "error": null
+    },
+    {
+      "id": "data/heesi-2025-investor-atlas.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/heesi-2025-power-technologies.json",
+      "group": "Energy & Electricity",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "freshness_unknown",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [
+        "heesi-handbook-index.yml"
+      ],
+      "cadence_hours": 744,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/iea-2026-workbook-dashboard.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/iea-indonesia-critical-minerals.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/indonesia-ai-compute-power-asean.json",
+      "group": "AI / Data Centers",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "updated_at",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated_at": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/indonesia-ai-global-benchmarks.json",
+      "group": "AI / Data Centers",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "updated_at",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated_at": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/investment-actors-ev-events.json",
+      "group": "Investment & Finance",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/investment-evidence.json",
+      "group": "Investment & Finance",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/investment-forbes-top20.json",
+      "group": "Investment & Finance",
+      "mode": "automated_discovery",
+      "priority": "medium",
+      "status": "freshness_unknown",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [
+        "investment-market-forbes.yml"
+      ],
+      "cadence_hours": 168,
+      "note": "Forbes rank updates require publication-specific source and date; never invent wealth estimates.",
+      "error": null
+    },
+    {
+      "id": "data/investment-market.json",
+      "group": "Investment & Finance",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "source_date_only",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "last_refresh_attempt_utc": "2026-10-16T09:58:37.657060+00:00",
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [
+        "investment-market-forbes.yml"
+      ],
+      "cadence_hours": 168,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/investment-news.json",
+      "group": "Investment & Finance",
+      "mode": "automated_discovery",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T13:03:42.917187Z",
+      "age_hours_since_record": 2.19,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T13:03:42.917187+00:00"
+      },
+      "scheduled_writers": [
+        "investment-media.yml"
+      ],
+      "cadence_hours": 6.0,
+      "note": "Source/news candidate monitor, not a verified project or legal status change.",
+      "error": null
+    },
+    {
+      "id": "data/investment-operator-assets.json",
+      "group": "Investment & Finance",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/investment-ownership.json",
+      "group": "Investment & Finance",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/investment-palm.json",
+      "group": "Investment & Finance",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/investment-projects.json",
+      "group": "Investment & Finance",
+      "mode": "curated_snapshot",
+      "priority": "critical",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Announced financing and capacity must not be automatically equated with actual commissioned projects.",
+      "error": null
+    },
+    {
+      "id": "data/investment-reported-scenarios.json",
+      "group": "Investment & Finance",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/investment-sector-evidence.json",
+      "group": "Investment & Finance",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/investment-swot.json",
+      "group": "Investment & Finance",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/komdigi-digital-infrastructure-2025.json",
+      "group": "AI / Data Centers",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/pln-ruptl-2025-2034-verified-extract.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/pln-ruptl-uploaded-excerpt-2025-2034.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "status": "curated_not_automated",
+      "last_record_key": "updated_at",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated_at": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Only initial 100-page RUPTL excerpt; new annex and revisions require document validation.",
+      "error": null
+    },
+    {
+      "id": "data/pln-statistics-regional-baseline-2024.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": "as_of",
+      "last_record_utc": "2024-12-31T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2024-12-31"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/pln-statistics-source-register.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": "updated_at",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated_at": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/regulatory-monitor-sources.json",
+      "group": "Governance & Regulations",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/regulatory-monitor.json",
+      "group": "Governance & Regulations",
+      "mode": "automated_discovery",
+      "priority": "critical",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T13:48:05Z",
+      "age_hours_since_record": 1.45,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T13:48:05Z"
+      },
+      "scheduled_writers": [
+        "regulatory-change-monitor.yml"
+      ],
+      "cadence_hours": 10,
+      "note": "Document changes and policy news are review candidates; the legally effective law graph remains curated.",
+      "error": null
+    },
+    {
+      "id": "data/research-signal-radar.json",
+      "group": "Other / Reference",
+      "mode": "automated_discovery",
+      "priority": "normal",
+      "status": "recent_check",
+      "last_record_key": "generated_at_utc",
+      "last_record_utc": "2026-10-16T14:50:33.545376Z",
+      "age_hours_since_record": 0.41,
+      "publisher_metadata": {
+        "generated_at_utc": "2026-10-16T14:50:33.545376+00:00"
+      },
+      "scheduled_writers": [
+        "research-signal-radar.yml"
+      ],
+      "cadence_hours": 1,
+      "note": "Source/news candidate monitor, not a verified project or legal status change.",
+      "error": null
+    },
+    {
+      "id": "data/ruplt-2025-2034-floating-solar-potential.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/ruplt-2025-2034-partial-source-intelligence.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/sector-command-hierarchy.json",
+      "group": "Governance & Regulations",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sector-evidence-catalog.json",
+      "group": "Governance & Regulations",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sector-governance-explorer.json",
+      "group": "Governance & Regulations",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sector-institution-map.json",
+      "group": "Governance & Regulations",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sector-leadership-watch.json",
+      "group": "Governance & Regulations",
+      "mode": "automated_discovery",
+      "priority": "high",
+      "status": "recent_check",
+      "last_record_key": "checked_at_utc",
+      "last_record_utc": "2026-10-16T01:40:15.070181Z",
+      "age_hours_since_record": 13.58,
+      "publisher_metadata": {
+        "checked_at_utc": "2026-10-16T01:40:15.070181+00:00"
+      },
+      "scheduled_writers": [
+        "sector-leadership-watch.yml"
+      ],
+      "cadence_hours": 24,
+      "note": "Actor source checks are not appointment proof.",
+      "error": null
+    },
+    {
+      "id": "data/site-search-index.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "updated",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/skkmigas-2025-digitized-exhibits.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/skkmigas-2025-exploration-registers.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/skkmigas-2025-figure-catalog.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/skkmigas-2025-pod-approvals.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/skkmigas-2025-remaining-evidence.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/skkmigas-2025-source-extension.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/skkmigas-annual-2025.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/sli-automation-policy.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-macro-indonesia-2026.json",
+      "group": "Trade & Markets",
+      "mode": "curated_snapshot",
+      "priority": "critical",
+      "status": "curated_not_automated",
+      "last_record_key": "last_source_audit",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "last_source_audit": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "BPS/BI/Kemenkeu 2026 press-release snapshot; NOT yet an automated current monthly/quarterly feed. WDI series updates separately.",
+      "error": null
+    },
+    {
+      "id": "data/sli-macro-worldbank-config.json",
+      "group": "Trade & Markets",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-macro-worldbank-history.json",
+      "group": "Trade & Markets",
+      "mode": "automated_numeric",
+      "priority": "critical",
+      "status": "recent_check",
+      "last_record_key": "last_success_utc",
+      "last_record_utc": "2026-10-16T15:00:41Z",
+      "age_hours_since_record": 0.24,
+      "publisher_metadata": {
+        "last_success_utc": "2026-10-16T15:00:41Z"
+      },
+      "scheduled_writers": [
+        "macro-worldbank-history.yml"
+      ],
+      "cadence_hours": 168,
+      "note": "World Bank WDI annual history synced weekly; API omissions retained as missing and never interpolated.",
+      "error": null
+    },
+    {
+      "id": "data/sli-policy-regulatory-graph-2026.json",
+      "group": "Governance & Regulations",
+      "mode": "curated_snapshot",
+      "priority": "critical",
+      "status": "curated_not_automated",
+      "last_record_key": "updated_at",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated_at": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Changes to in-force/amended/repealed status require official primary legal document, not news headline.",
+      "error": null
+    },
+    {
+      "id": "data/sli-public-policy-evaluation-2026.json",
+      "group": "Governance & Regulations",
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Ex-ante/process/ex-post assessments need quantitative outcomes, attribution design and researcher review.",
+      "error": null
+    },
+    {
+      "id": "data/sli-sector-regulatory-ria-deepdives.json",
+      "group": "Governance & Regulations",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/strategic-map-biofuel-smelters.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/strategic-map-digital-ai.json",
+      "group": "AI / Data Centers",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/strategic-map-glossary.json",
+      "group": "Maps & Geography",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/strategic-map-locality-anchors.json",
+      "group": "Maps & Geography",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/strategic-map-pltu-pln-2025.json",
+      "group": "Energy & Electricity",
+      "mode": "static_reference",
+      "priority": "normal",
+      "status": "source_edition_static",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Historical geographic/report reference; source year is not today's observation.",
+      "error": null
+    },
+    {
+      "id": "data/strategic-map-power-fossil-renewable.json",
+      "group": "Energy & Electricity",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/strategic-map-regional-crosschecks.json",
+      "group": "Maps & Geography",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/strategic-map-sector-dossiers.json",
+      "group": "Maps & Geography",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/strategic-map-smelter-2026.json",
+      "group": "Mining & Minerals",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/strategic-map-upstream-wk.json",
+      "group": "Mining & Minerals",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/usgs-indonesia-minerals-2026.json",
+      "group": "Mining & Minerals",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "updated",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "updated": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    }
+  ],
   "operational_rules": [
-    "Waiting for first source health audit; no implied all-green state."
+    "Automatic source ingestion is limited to explicitly scheduled and source-linked numeric feeds.",
+    "Other releases are detected as review leads and cannot overwrite verified project, regulatory, official appointments, legal or PDF extract states.",
+    "A workflow success is code-execution evidence only, not a claim every provider value is updated.",
+    "Source-specific observation date, unit, geographic coverage and extraction limitations are retained.",
+    "An unavailable official source or missing timestamp must be shown, not converted to zero/no change.",
+    "GitHub Actions scheduling is best-effort; snapshot generated timestamp is a monitoring run time."
   ]
 }
