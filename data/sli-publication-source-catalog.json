@@ -78,12 +78,12 @@
     {
       "id": "esdm_energy_reports",
       "publisher": "ESDM",
-      "url": "https://www.esdm.go.id/id/publikasi",
+      "url": "https://www.esdm.go.id/en/publication/handbook-of-energy-economic-statistics-of-indonesia-HEESI",
       "allowed_hosts": [
         "www.esdm.go.id",
         "esdm.go.id"
       ],
-      "title_pattern": "handbook|energi|statistik|laporan kinerja|ruptl",
+      "title_pattern": "handbook of energy|energy and economic statistics|heesi",
       "datasets": [
         "data/heesi-2025-integrated.json",
         "data/energy-fundamentals.json",
@@ -93,13 +93,13 @@
     {
       "id": "usgs_minerals",
       "publisher": "USGS",
-      "url": "https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries",
+      "url": "https://www.usgs.gov/national-minerals-information-center/publications",
       "allowed_hosts": [
         "www.usgs.gov",
         "usgs.gov",
         "pubs.usgs.gov"
       ],
-      "title_pattern": "mineral commodity summaries|commodity summaries|critical mineral",
+      "title_pattern": "mineral commodity summaries|critical minerals|minerals yearbook",
       "datasets": [
         "data/usgs-indonesia-minerals-2026.json",
         "data/esdm-2025-mineral-performance.json"
@@ -112,7 +112,7 @@
       "allowed_hosts": [
         "hai.stanford.edu"
       ],
-      "title_pattern": "ai index|artificial intelligence index|report 20",
+      "title_pattern": "(?:20[0-9]{2} ai index|ai index report|ai index 20[0-9]{2})",
       "datasets": [
         "data/indonesia-ai-global-benchmarks.json",
         "data/indonesia-ai-compute-power-asean.json"
@@ -121,11 +121,12 @@
     {
       "id": "komdigi_releases",
       "publisher": "Komdigi",
-      "url": "https://portal.komdigi.go.id/kanal-publik/berita-kini",
+      "url": "https://www.komdigi.go.id/",
       "allowed_hosts": [
-        "portal.komdigi.go.id"
+        "www.komdigi.go.id",
+        "komdigi.go.id"
       ],
-      "title_pattern": "laporan|statistik|data center|pusat data|digital|kecerdasan buatan",
+      "title_pattern": "pusat data|infrastruktur komputasi|kecerdasan buatan|talenta digital|ai |regulasi|laporan kinerja",
       "datasets": [
         "data/komdigi-digital-infrastructure-2025.json",
         "data/ai-intelligence.json"
@@ -150,6 +151,7 @@
   "notes": [
     "Listing pages may use JavaScript, block automated retrieval, or show old references; no readable matches does NOT mean no new release.",
     "The watcher records newly seen matching publisher links as candidates after initial baseline. Full PDF/table extraction and legal/project verification remain separate.",
-    "Only source URLs on the publisher's allowlist are stored. Publisher report numeric values are never changed by this watcher."
+    "Only source URLs on the publisher's allowlist are stored. Publisher report numeric values are never changed by this watcher.",
+    "Official BPS host may forbid cloud crawlers (403), and PLN report portal may require Javascript. Flag as unparsed rather than claiming no new publication."
   ]
 }
