@@ -1,12 +1,300 @@
 {
   "schema_version": "1.0",
-  "checked_at_utc": "2026-10-16T15:28:55Z",
+  "checked_at_utc": "2026-10-16T15:31:07Z",
   "state": "sources_scanned",
   "source_count": 10,
-  "healthy_source_count": 2,
-  "scan_errors": 8,
+  "healthy_source_count": 4,
+  "scan_errors": 6,
   "new_review_leads": 0,
   "events": [
+    {
+      "id": "24800f26cd697707119d",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook Of Energy & Economic Statistics Of Indonesia (HEESI)",
+      "url": "https://www.esdm.go.id/en/publication/handbook-of-energy-economic-statistics-of-indonesia-heesi",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "fee8f869cb252a65cec5",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy and Economic Statistics of Indonesia 2025",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-and-economic-statistics-of-indonesia-2025.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "09718c176445548fcc81",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy and Economic Statistics of Indonesia 2024",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-and-economic-statistics-of-indonesia-2024.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "42fccdf02939b06bef81",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy and Economic Statistics of Indonesia 2023",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-and-economic-statistics-of-indonesia-2023.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "b4fdbb780971aba650ce",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy and Economic Statistics of Indonesia 2022",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-and-economic-statistics-of-indonesia-2022.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "11b95dbaae281b9ccdb8",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy and Economic Statistics of Indonesia 2021",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-and-economic-statistics-of-indonesia-2021.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "52d523fc714cfa7af922",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy and Economic Statistics of Indonesia 2020",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-and-economic-statistics-of-indonesia-2020.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "06d4784fe1fb7f92dbd1",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy and Economic Statistics of Indonesia 2019",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-and-economic-statistics-of-indonesia-2019.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "22ce8e6bbf20f0455929",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy and Economic Statistics of Indonesia 2018 (Final Edition)",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-and-economic-statistics-of-indonesia-2018-final-edition.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "3d320bcf575c2c2ae494",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy & Economic Statistics of Indonesia 2017",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-economic-statistics-of-indonesia-2017--1.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "805a32731ba82026d225",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy & Economic Statistics of Indonesia 2016",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-economic-statistics-of-indonesia-2016-lvekpnc.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "a1a181196f6e8b4bc5e2",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy & Economic Statistics of Indonesia 2015",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-economic-statistics-of-indonesia-2015-uwe2cqn.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "3c3b947bd01087763499",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy & Economic Statistics of Indonesia 2014",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-economic-statistics-of-indonesia-2014-it06jkm.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "6e704a780de7338d7210",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy & Economic Statistics of Indonesia 2013",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-economic-statistics-of-indonesia-2013-997ndnz.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "da89b3fc27d903be5323",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy & Economic Statistics of Indonesia 2012",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-economic-statistics-of-indonesia-2012-dcexnjb.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "f9ea880f646ff380b380",
+      "publisher": "ESDM",
+      "source_id": "esdm_energy_reports",
+      "title": "Handbook of Energy & Economic Statistics of Indonesia 2010",
+      "url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-economic-statistics-of-indonesia-2010-c19rfkq.pdf",
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "bfb6925340c31a6e3596",
+      "publisher": "USGS",
+      "source_id": "usgs_minerals",
+      "title": "Mineral commodity summaries 2026 Mineral commodity summaries 2026",
+      "url": "https://www.usgs.gov/publications/mineral-commodity-summaries-2026",
+      "linked_datasets": [
+        "data/usgs-indonesia-minerals-2026.json",
+        "data/esdm-2025-mineral-performance.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
     {
       "id": "827874b730c4ef6f0ef2",
       "publisher": "Stanford HAI",
@@ -35,7 +323,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -51,7 +339,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -67,7 +355,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -83,7 +371,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -99,7 +387,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -115,7 +403,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -131,7 +419,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -147,7 +435,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -163,7 +451,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -179,7 +467,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -195,7 +483,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -211,7 +499,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:28:55Z",
+      "last_seen_utc": "2026-10-16T15:31:07Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     }
@@ -226,10 +514,10 @@
         "data/investment-market.json"
       ],
       "health": "ok",
-      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "last_attempt_utc": "2026-10-16T15:31:07Z",
       "observed_items": 3,
       "error": null,
-      "last_success_utc": "2026-10-16T15:28:55Z"
+      "last_success_utc": "2026-10-16T15:31:07Z"
     },
     {
       "id": "bps_brs",
@@ -241,7 +529,7 @@
         "data/investment-sector-evidence.json"
       ],
       "health": "unavailable",
-      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "last_attempt_utc": "2026-10-16T15:31:07Z",
       "observed_items": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "last_success_utc": null
@@ -255,7 +543,7 @@
         "data/energy-fundamentals.json"
       ],
       "health": "unavailable",
-      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "last_attempt_utc": "2026-10-16T15:31:07Z",
       "observed_items": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "last_success_utc": null
@@ -263,17 +551,17 @@
     {
       "id": "esdm_energy_reports",
       "publisher": "ESDM",
-      "url": "https://www.esdm.go.id/id/publikasi",
+      "url": "https://www.esdm.go.id/en/publication/handbook-of-energy-economic-statistics-of-indonesia-HEESI",
       "linked_datasets": [
         "data/heesi-2025-integrated.json",
         "data/energy-fundamentals.json",
         "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
       ],
-      "health": "unavailable",
-      "last_attempt_utc": "2026-10-16T15:28:55Z",
-      "observed_items": null,
-      "error": "HTTPError: HTTP Error 404: Not Found",
-      "last_success_utc": null
+      "health": "ok",
+      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "observed_items": 16,
+      "error": null,
+      "last_success_utc": "2026-10-16T15:31:07Z"
     },
     {
       "id": "kemenkeu_news",
@@ -284,7 +572,7 @@
         "data/energy-prices-fiscal.json"
       ],
       "health": "no_readable_publisher_links",
-      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "last_attempt_utc": "2026-10-16T15:31:07Z",
       "observed_items": 0,
       "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
       "last_success_utc": null
@@ -292,15 +580,15 @@
     {
       "id": "komdigi_releases",
       "publisher": "Komdigi",
-      "url": "https://portal.komdigi.go.id/kanal-publik/berita-kini",
+      "url": "https://www.komdigi.go.id/",
       "linked_datasets": [
         "data/komdigi-digital-infrastructure-2025.json",
         "data/ai-intelligence.json"
       ],
-      "health": "unavailable",
-      "last_attempt_utc": "2026-10-16T15:28:55Z",
-      "observed_items": null,
-      "error": "HTTPError: HTTP Error 404: Not Found",
+      "health": "no_readable_publisher_links",
+      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "observed_items": 0,
+      "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
       "last_success_utc": null
     },
     {
@@ -313,7 +601,7 @@
         "data/energy-fundamentals.json"
       ],
       "health": "no_readable_publisher_links",
-      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "last_attempt_utc": "2026-10-16T15:31:07Z",
       "observed_items": 0,
       "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
       "last_success_utc": null
@@ -328,7 +616,7 @@
         "data/energy-fundamentals.json"
       ],
       "health": "unavailable",
-      "last_attempt_utc": "2026-10-16T15:28:55Z",
+      "last_attempt_utc": "2026-10-16T15:31:07Z",
       "observed_items": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "last_success_utc": null
@@ -342,30 +630,31 @@
         "data/indonesia-ai-compute-power-asean.json"
       ],
       "health": "ok",
-      "last_attempt_utc": "2026-10-16T15:28:55Z",
-      "observed_items": 10,
+      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "observed_items": 9,
       "error": null,
-      "last_success_utc": "2026-10-16T15:28:55Z"
+      "last_success_utc": "2026-10-16T15:31:07Z"
     },
     {
       "id": "usgs_minerals",
       "publisher": "USGS",
-      "url": "https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries",
+      "url": "https://www.usgs.gov/national-minerals-information-center/publications",
       "linked_datasets": [
         "data/usgs-indonesia-minerals-2026.json",
         "data/esdm-2025-mineral-performance.json"
       ],
-      "health": "no_readable_publisher_links",
-      "last_attempt_utc": "2026-10-16T15:28:55Z",
-      "observed_items": 0,
-      "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
-      "last_success_utc": null
+      "health": "ok",
+      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "observed_items": 1,
+      "error": null,
+      "last_success_utc": "2026-10-16T15:31:07Z"
     }
   ],
   "notes": [
     "Listing pages may use JavaScript, block automated retrieval, or show old references; no readable matches does NOT mean no new release.",
     "The watcher records newly seen matching publisher links as candidates after initial baseline. Full PDF/table extraction and legal/project verification remain separate.",
-    "Only source URLs on the publisher's allowlist are stored. Publisher report numeric values are never changed by this watcher."
+    "Only source URLs on the publisher's allowlist are stored. Publisher report numeric values are never changed by this watcher.",
+    "Official BPS host may forbid cloud crawlers (403), and PLN report portal may require Javascript. Flag as unparsed rather than claiming no new publication."
   ],
   "integrity": "No input datasets, reported national indicator values, legal status or project statuses are modified."
 }
