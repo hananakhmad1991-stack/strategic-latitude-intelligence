@@ -1,0 +1,37 @@
+name: AI Investor Integrity and UI Checks
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/ai-*.json'
+      - 'ai-investor-layer.html'
+      - 'ai-intelligence-hub.html'
+      - 'ai-investment-geography.html'
+      - 'scripts/validate_ai_events.py'
+      - 'tests/test_ai_investor.py'
+      - '.github/workflows/ai-investor-qa.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate AI schema & before-after guard
+        run: python scripts/validate_ai_events.py
+      - name: Unit and integration contracts
+        run: python -m unittest discover -s tests -p 'test_ai_investor.py' -v
+      - name: Check HTML local links and scripts
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('ai-investor-layer.html').read_text()
+          for path in ('data/ai-intelligence.json','data/ai-investment-events.json','data/ai-risk-evidence.json','ai-intelligence-hub.html'):
+              assert Path(path).exists(), path
+          assert "fetch(url" in html
+          print("Static route and script-dependency smoke checks passed")
+          PY
