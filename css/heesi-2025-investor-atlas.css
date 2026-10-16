@@ -1,0 +1,28 @@
+/* Source-verified, investor-facing ESDM province maps and national energy trends. */
+.he25-investor-atlas{color:#e3edf2;background:linear-gradient(145deg,#0d293e,#122c40);border:1px solid #3f6176;border-radius:12px;padding:17px;margin:18px 0 26px;scroll-margin-top:25px}
+.he25-atlas-kicker{font-size:10px;letter-spacing:.9px;color:#e8be7c;font-weight:700}
+.he25-investor-atlas h3{color:#efd4a7;font:normal clamp(21px,2.3vw,28px)/1.3 Georgia,serif;margin:5px 0 10px}
+.he25-atlas-lead{font-size:12px;line-height:1.7;color:#c3d4e0;max-width:1050px}
+.he25-atlas-mount{border-top:1px solid #38586d;padding-top:14px;margin-top:20px}
+.he25-atlas-mount h4{font-size:14px;color:#f0d5a0;margin:0 0 12px}
+.he25-atlas-select{background:#0a273d;color:#e4eefa;border:1px solid #6b8598;border-radius:6px;padding:9px 10px;min-height:41px;font:inherit;font-size:12px;max-width:100%;min-width:230px}
+.he25-atlas-select:focus-visible{outline:2px solid #f2d49c}
+.he25-atlas-subtitle,.he25-atlas-foot,.he25-atlas-method{font-size:11px;color:#b3cbdc;line-height:1.7}
+.he25-atlas-layout{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(210px,1fr);gap:14px;margin:13px 0}
+.he25-atlas-map{background:#071e31;border:1px solid #3e5b70;border-radius:9px;overflow:hidden}
+.he25-atlas-map svg{width:100%;height:auto;display:block}
+.he25-atlas-map svg path:hover{stroke:#fff;stroke-width:2.5;filter:brightness(1.18)}
+.he25-atlas-side{background:#092239;border:1px solid #3e5b70;border-radius:9px;padding:12px;max-height:450px;overflow:auto}
+.he25-atlas-side h4{margin:0 0 8px!important}
+.he25-atlas-value{color:#f2d195;font-size:17px;font-weight:700}
+.he25-atlas-ranking{padding:0 0 0 24px;margin:8px 0}
+.he25-atlas-rank{display:flex;justify-content:space-between;gap:8px;color:#cbdbe5;border:0;background:transparent;width:100%;cursor:pointer;font-size:11px;text-align:left;padding:7px 3px;border-radius:5px}
+.he25-atlas-rank:hover,.he25-atlas-rank:focus-visible{background:#264359;outline:none}
+.he25-atlas-rank strong{color:#e7c48d;font-variant-numeric:tabular-nums}
+.he25-atlas-controls{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.he25-atlas-plot{border:1px solid #3b5c73;background:#071d30;border-radius:9px;padding:10px;overflow:hidden}
+.he25-atlas-plot svg{width:100%;height:auto;display:block}
+.he25-atlas-foot a,.he25-investor-atlas a{color:#f0ca8d}
+.he25-atlas-method{border-left:3px solid #d0ac70;background:#1a3749;border-radius:4px;padding:10px 13px;margin-top:15px}
+@media(max-width:850px){.he25-atlas-layout{grid-template-columns:1fr}.he25-atlas-side{max-height:290px}.he25-atlas-select{flex:1;min-width:155px}}
+@media(max-width:470px){.he25-investor-atlas{padding:11px}.he25-atlas-rank{font-size:10px}}
