@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16",
+  "version": "2026-10-16.2",
   "provider": "World Bank World Development Indicators",
   "country": "IDN",
   "start_year": 1990,
@@ -21,8 +21,8 @@
       "code": "NY.GDP.MKTP.CD",
       "category": "Growth & Production",
       "label": "GDP current USD",
-      "unit": "current US$",
-      "scale": 1
+      "unit": "USD billion",
+      "scale": 1e-9
     },
     {
       "id": "annual_gdp_per_capita_usd",
@@ -37,8 +37,8 @@
       "code": "NY.GDP.MKTP.KD",
       "category": "Growth & Production",
       "label": "GDP constant USD",
-      "unit": "constant 2015 US$",
-      "scale": 1
+      "unit": "USD billion",
+      "scale": 1e-9
     },
     {
       "id": "annual_inflation",
@@ -85,40 +85,40 @@
       "code": "NE.EXP.GNFS.CD",
       "category": "Trade & External",
       "label": "Exports of goods and services",
-      "unit": "current US$",
-      "scale": 1
+      "unit": "USD billion",
+      "scale": 1e-9
     },
     {
       "id": "annual_imports_goods_services",
       "code": "NE.IMP.GNFS.CD",
       "category": "Trade & External",
       "label": "Imports of goods and services",
-      "unit": "current US$",
-      "scale": 1
+      "unit": "USD billion",
+      "scale": 1e-9
     },
     {
       "id": "annual_external_balance",
       "code": "NE.RSB.GNFS.CD",
       "category": "Trade & External",
       "label": "External balance goods and services",
-      "unit": "current US$",
-      "scale": 1
+      "unit": "USD billion",
+      "scale": 1e-9
     },
     {
       "id": "annual_current_account",
       "code": "BN.CAB.XOKA.CD",
       "category": "Trade & External",
       "label": "Current account balance",
-      "unit": "current US$",
-      "scale": 1
+      "unit": "USD billion",
+      "scale": 1e-9
     },
     {
       "id": "annual_reserves",
       "code": "FI.RES.TOTL.CD",
       "category": "Trade & External",
       "label": "Total reserves including gold",
-      "unit": "current US$",
-      "scale": 1
+      "unit": "USD billion",
+      "scale": 1e-9
     },
     {
       "id": "annual_gov_balance",
