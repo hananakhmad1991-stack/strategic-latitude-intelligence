@@ -28,7 +28,7 @@ jobs:
           python-version: '3.12'
       - name: Audit every dataset and scheduled workflow
         env:
-          GITHUB_TOKEN: \${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           python -m py_compile scripts/audit_sli_automation.py scripts/validate_sli_automation.py
           python scripts/audit_sli_automation.py
@@ -50,7 +50,7 @@ jobs:
           PY
       - name: Publish latest snapshot after reconciling concurrent commits
         env:
-          GITHUB_TOKEN: \${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           git config user.name "sli-freshness-audit[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -80,7 +80,7 @@ jobs:
       - name: Create single issue for unresolved data freshness failures
         if: always()
         env:
-          GH_TOKEN: \${{ github.token }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           python - <<'PY'
           import json,subprocess
