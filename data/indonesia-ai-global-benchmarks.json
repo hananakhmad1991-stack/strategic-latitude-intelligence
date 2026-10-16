@@ -1,0 +1,210 @@
+{
+  "updated_at": "2026-10-16",
+  "country": "Indonesia",
+  "method": "Only values explicitly supported by cited report pages; peer observations kept survey specific; 2021-to-2024 'tripling' is approximate, not an indexed precision measurement.",
+  "sources": {
+    "worldbank": {
+      "title": "World Bank Digital Progress and Trends Report 2025: Strengthening AI Foundations",
+      "year": 2025,
+      "pdf_pages": [
+        53,
+        99,
+        100
+      ],
+      "url": "https://hdl.handle.net/10986/43822"
+    },
+    "stanford": {
+      "title": "Stanford HAI AI Index Report 2026",
+      "year": 2026,
+      "pdf_pages": [
+        212,
+        303,
+        380
+      ],
+      "url": "https://hai.stanford.edu/ai-index"
+    }
+  },
+  "series": [
+    {
+      "id": "ai_hiring_growth",
+      "title": "Relative AI hiring growth versus overall hiring",
+      "unit": "%",
+      "year": 2025,
+      "source": "stanford",
+      "pdf_page": 212,
+      "provider": "LinkedIn",
+      "values": [
+        [
+          "Indonesia",
+          31.74
+        ],
+        [
+          "Croatia",
+          27.8
+        ],
+        [
+          "Belgium",
+          21.49
+        ],
+        [
+          "Costa Rica",
+          17.26
+        ],
+        [
+          "Cyprus",
+          17.13
+        ],
+        [
+          "Czech Republic",
+          16.5
+        ]
+      ],
+      "caveat": "LinkedIn hiring signal, not national employment growth."
+    },
+    {
+      "id": "student_genai_2023",
+      "title": "University students using GenAI for studies, 2023",
+      "unit": "%",
+      "year": 2023,
+      "source": "stanford",
+      "pdf_page": 303,
+      "provider": "Chegg Global Student Survey",
+      "values": [
+        [
+          "Indonesia",
+          53
+        ],
+        [
+          "Malaysia",
+          49
+        ],
+        [
+          "South Korea",
+          23
+        ],
+        [
+          "India",
+          44
+        ],
+        [
+          "Brazil",
+          52
+        ]
+      ],
+      "caveat": "Survey-based; participating students, not all citizens."
+    },
+    {
+      "id": "student_genai_2025",
+      "title": "University students using GenAI for studies, 2025",
+      "unit": "%",
+      "year": 2025,
+      "source": "stanford",
+      "pdf_page": 303,
+      "provider": "Chegg Global Student Survey",
+      "values": [
+        [
+          "Indonesia",
+          95
+        ],
+        [
+          "Malaysia",
+          90
+        ],
+        [
+          "South Korea",
+          84
+        ],
+        [
+          "India",
+          84
+        ],
+        [
+          "Brazil",
+          84
+        ]
+      ],
+      "caveat": "Survey-based, not all Indonesian university students as an administrative count."
+    },
+    {
+      "id": "ai_regulatory_trust",
+      "title": "Trust government to regulate AI responsibly",
+      "unit": "%",
+      "year": 2025,
+      "source": "stanford",
+      "pdf_page": 380,
+      "provider": "Ipsos AI Monitor Survey",
+      "values": [
+        [
+          "Singapore",
+          81
+        ],
+        [
+          "Indonesia",
+          76
+        ],
+        [
+          "Malaysia",
+          73
+        ],
+        [
+          "Thailand",
+          70
+        ],
+        [
+          "Chile",
+          67
+        ],
+        [
+          "India",
+          65
+        ]
+      ],
+      "caveat": "Respondents in the countries surveyed; perception is not verified regulator effectiveness."
+    },
+    {
+      "id": "it_services_export_growth",
+      "title": "IT services export growth 2022–2024",
+      "unit": "%",
+      "year": "2022–2024",
+      "source": "worldbank",
+      "pdf_page": 53,
+      "provider": "World Bank report",
+      "values": [
+        [
+          "Indonesia",
+          48
+        ],
+        [
+          "South Africa",
+          23
+        ],
+        [
+          "Egypt",
+          15
+        ]
+      ],
+      "caveat": "Selected regional examples from the narrative; different geographies; does not describe total ICT exports."
+    }
+  ],
+  "observations": [
+    {
+      "metric": "Advanced digital skills demand",
+      "period": "2021–2024",
+      "value_text": "Approximately tripled",
+      "country": "Indonesia",
+      "source": "worldbank",
+      "pdf_page": 99,
+      "kind": "narrative directional"
+    },
+    {
+      "metric": "AI-related vacancies",
+      "period": "2021–2024",
+      "value_text": "Approximately tripled",
+      "country": "Indonesia",
+      "source": "worldbank",
+      "pdf_page": 100,
+      "kind": "narrative directional"
+    }
+  ],
+  "copyright": "Original interactive charts from transcribed factual data; no reproduction of third-party graphic artwork."
+}
