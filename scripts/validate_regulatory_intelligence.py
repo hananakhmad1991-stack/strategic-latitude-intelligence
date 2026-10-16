@@ -44,6 +44,25 @@ for case in data["cases"]:
 html=(ROOT/"policy-regulatory-intelligence.html").read_text(encoding="utf-8")
 assert "data/sli-policy-regulatory-graph-2026.json" in html
 assert "new Function(" not in html, "Avoid dynamic script evaluation in dashboard"
+assert "international:12,foreignlaw:12" in html, "Foreign law graph must render in its own branch"
+assert "inpres:10" in html, "Presidential instruction must not be presented as Article 7 rung"
+assert "policy-monitor-sector" not in html or "sli-regulatory-monitor-root" in html
+assert all(k in lookup for k in ("inpres1_2025","inpres14_2025","inpres16_2025","uu7wto","ds592","icsid","newyork","eu_cbam","eu_crma","eu_batteries","us_bis_ear"))
+assert all(lookup[k]["tier"]=="inpres" for k in ("inpres1_2025","inpres14_2025","inpres16_2025"))
+assert all(lookup[k]["tier"] in ("international","foreignlaw") for k in ("gattxi","icsid","eu_cbam","us_bis_ear"))
+assert lookup["ds592"]["status"]=="dispute_appealed_not_final"
+deep=json.loads((ROOT/"data/sli-sector-regulatory-ria-deepdives.json").read_text(encoding="utf-8"))
+case_ids={c["id"] for c in data["cases"]}
+assert case_ids==set(deep["cases"])
+for cid,sector in deep["cases"].items():
+    assert sector["policy_options"] and len(sector["policy_options"])>=3
+    assert len(sector["indicators"])>=5 and len(sector["chain"])>=5
+    assert sector["stakeholders"] and sector["sector_note"]
+sector_html=(ROOT/"policy-sector-ria.html").read_text(encoding="utf-8")
+assert "sli-sector-regulatory-ria-deepdives.json" in sector_html
+assert "sli-policy-regulatory-graph-2026.json" in sector_html
+monitor_html=(ROOT/"js/regulatory-monitor-dashboard.js").read_text(encoding="utf-8")
+assert "raw.githubusercontent.com" in monitor_html and "policy-monitor-group" in monitor_html
 for path in ("index.html","js/research-chapters.js","ai-intelligence-hub.html"):
     assert "policy-regulatory-intelligence.html" in (ROOT/path).read_text(encoding="utf-8"),path
 print(f"PASS {len(nodes)} regulations, {len(data['edges'])} typed edges, {len(data['cases'])} cases")
