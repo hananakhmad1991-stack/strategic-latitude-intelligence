@@ -63,3 +63,12 @@
 .sm25-project strong{font-size:13px;line-height:1.5;color:#e3e9f1}
 .sm25-project p{font-size:12px;font-weight:650;color:#85c1cf;margin:0}
 .sm25-project span{font-size:11px;color:#b5cfda;line-height:1.6}
+
+/* 2025 POD approvals: keep source-total discrepancy prominent rather than silently reconciling. */
+.sm25-pod-caveat{border-left:3px solid #d0ae78;background:#1c3e50;border-radius:6px;margin:10px 0 16px;padding:11px 14px}
+.sm25-pod-caveat strong{display:block;letter-spacing:.4px;font-size:11px;color:#f1d19d}
+.sm25-pod-caveat p{font-size:11px;line-height:1.75;color:#c7dce8;margin:5px 0}
+.sm25-report .sm25-table-scroll:has(.sm25-table){scrollbar-color:#597e96 #132c3f}
+.sm25-report .sm25-table td:first-child,.sm25-report .sm25-table th:first-child{text-align:left}
+.sm25-report .sm25-table td:nth-child(3){text-align:left;min-width:115px}
+.sm25-report .sm25-chart:has(.sm25-target-card){display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
