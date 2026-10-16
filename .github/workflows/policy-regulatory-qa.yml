@@ -5,6 +5,9 @@ on:
     paths:
       - 'data/sli-policy-regulatory-graph-2026.json'
       - 'policy-regulatory-intelligence.html'
+      - 'policy-sector-ria.html'
+      - 'data/sli-sector-regulatory-ria-deepdives.json'
+      - 'js/regulatory-monitor-dashboard.js'
       - 'scripts/validate_regulatory_intelligence.py'
       - 'js/research-chapters.js'
       - '.github/workflows/policy-regulatory-qa.yml'
@@ -32,3 +35,13 @@ jobs:
           Path("/tmp/sli-policy-inline.js").write_text(scripts[0])
           PY
           node --check /tmp/sli-policy-inline.js
+          node --check js/regulatory-monitor-dashboard.js
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          text=Path('policy-sector-ria.html').read_text()
+          code=re.findall(r'<script>([\\s\\S]*?)</script>',text)
+          assert len(code)==1
+          Path('/tmp/sli-sector-ria.js').write_text(code[0])
+          PY
+          node --check /tmp/sli-sector-ria.js
