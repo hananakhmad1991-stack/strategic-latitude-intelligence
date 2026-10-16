@@ -6,7 +6,7 @@
 (function() {
  "use strict";
  const INDEX_URL="data/site-search-index.json?v=20261016-search2";
- const ID="sliGlobalSearchRoot",MAX=11;
+ const ID="sliGlobalSearchRoot",MAX=25;
  const alias={
   batubara:["coal"],"minyak":["oil","migas"],"migas":["oil","gas"],"nikel":["nickel"],
   "panas":["geothermal"],"bumi":["geothermal"],"surya":["solar","plts"],
@@ -51,6 +51,7 @@
   const found=[];
   for(const item of items){
    if(scope==="page"&&item.page!==page)continue;
+   if(scope!=="page"&&scope!=="all"&&item.page!==scope)continue;
    const value=passes(item,q);if(value>0)found.push({entry:item,score:value+(item.page===page?2:0)});
   }
   found.sort((a,b)=>b.score-a.score||a.entry.title.localeCompare(b.entry.title));
@@ -74,7 +75,7 @@
   pop.hidden=true;const controls=document.createElement("div");controls.className="sli-search-controls";
   const scope=document.createElement("select");scope.className="sli-search-scope";
   scope.setAttribute("aria-label","Search scope");
-  for(const [v,l] of [["all","All dashboards"],["page","This dashboard"]]){const o=document.createElement("option");o.value=v;o.textContent=l;scope.append(o)}
+  for(const [v,l] of [["all","All dashboards"],["page","This dashboard"],["overview","Overview"],["investment","Investment"],["map","Strategic Map"],["trade","Trade"],["energy","Energy"],["minerals","Critical Minerals"],["ai","AI Infrastructure"],["policy","Policy"],["methodology","Methodology"]]){const o=document.createElement("option");o.value=v;o.textContent=l;scope.append(o)}
   const count=document.createElement("span");count.className="sli-search-count";
   controls.append(scope,count);
   const list=document.createElement("div");list.className="sli-search-list";
