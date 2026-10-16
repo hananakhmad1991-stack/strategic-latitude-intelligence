@@ -2,6 +2,17 @@
 
 Independent, open-source-based analysis of Indonesia's strategic investment, energy security, critical minerals, AI infrastructure, and public policy.
 
+## Unified Appendix, Glossary & Methodology (October 2026)
+
+- **[Unified Appendix & Methodology](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-glossary-methodology.html)** is the shared bilingual reader reference for every SLI dashboard. It has **257 unique terms** merged from the original Energy Security appendix and Strategic Map taxonomy, with added macroeconomic, AI infrastructure, investment, law and policy-evaluation definitions.
+- **`data/sli-unified-glossary.json`** is the single canonical, searchable glossary. Normalize Unicode dashes/spacing/case to prevent duplicate term labels; preserve original Energy and Strategic Map source attribution. Selective sector filters and term deep links are supported.
+- **`js/sli-shared-appendix.js`** embeds **one short context-specific reading guide** in each dashboard entrypoint, with links to the canonical glossary. It does not repeat full definitions or override source-specific metric definitions and calculation caveats. Main SLI nav has a permanent Appendix link.
+- **Energy Security** retains five energy-only interpretation notes; the original separate list of 84 terms is no longer redundantly rendered. The **Strategic Map** keeps detailed geocoding, source-layer and double-counting caveats while sharing the primary asset/abbreviation dictionary.
+- The appendix explicitly distinguishes **MW/MVA/GWh, targets vs actuals, equipment capacity vs local grid headroom, investment promises vs actual spending, source-check timestamps vs observation years, missing values vs zero, legal hierarchy vs international obligations, and provisional analysis vs verified policy outcomes**.
+- **`scripts/validate_sli_glossary.py` and `.github/workflows/sli-glossary-qa.yml`** check uniqueness, bilingual coverage, original provenance, all 24 HTML entrypoints, appendix links and JS syntax.
+
+Current source values, dates, geographic denominators and technical evidence **override general glossary shorthand**. This is explanatory research, not certification of a specific project, investor, asset, permission or legal status.
+
 ## Whole-Dashboard Automation & Data Freshness (October 2026)
 
 - **[SLI Overview](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/#overview)**: shows live source date classifications and operational warning counters.
