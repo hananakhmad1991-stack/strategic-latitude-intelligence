@@ -4,8 +4,8 @@
   "iea_dataset_vintage": "2026-07-27",
   "title": "IEA Critical Minerals · Indonesia Evidence & Global Market Context",
   "attribution": "Source: IEA (2025–2026), Critical Minerals Data Explorer / Global Critical Minerals Outlook / Southeast Asia Energy Outlook / World Energy Investment. CC BY 4.0. SLI editorial grouping and analysis (not an IEA-endorsed dashboard).",
-  "coverage": "Publicly accessible IEA country observations and IEA model context, NOT a parsed national table from the downloadable 2026 workbook.",
-  "download_status": "The full raw IEA Critical Minerals Dataset was not accessible for verified bulk extraction here; no unpublished country series or Indonesia-specific STEPS/CPS/NZE values are inferred.",
+  "coverage": "Public source-dated IEA observations plus the validated July 2026 source-workbook extract in data/iea-2026-workbook-dashboard.json; not a live 2026 Indonesian national production census. 2025 modelled base and 2030–2050 IEA scenarios must be distinguished.",
+  "download_status": "Verified IEA July 2026 workbook uploaded by the user and parsed in October 2026. SLI 2026 scenario explorer now publishes attributed selected rows: 37 transition minerals, six key mineral mining/refining country supply series, and six energy technology categories. Full normalized source-row export is available as a separate user artifact; not all workbook scenarios/alternative technology cases are embedded in the live page.",
   "sources": [
     {
       "id": "iea_explorer_2026",
@@ -21,7 +21,7 @@
       "year": 2026,
       "published": "2026-07-27",
       "url": "https://www.iea.org/data-and-statistics/data-product/critical-minerals-dataset",
-      "scope": "Underlying scenario demand data and global mining/refining supply projections; full raw file not ingested here."
+      "scope": "July 2026 CC BY 4.0 underlying global scenario demand and country mining/refining production outlook; selected original worksheet rows now directly ingested in SLI"
     },
     {
       "id": "iea_sea_2026",
@@ -331,5 +331,14 @@
     "75% is a Chinese corporate capacity-attribution estimate for domestic nickel refining, not a country-equity register; users must consult current issuer filings for individual venture percentages.",
     "Global 2035 project-pipeline gaps are forecasts conditional on model assumptions and commissioned projects; they are not statistical shortfalls for Indonesian production.",
     "All original IEA numeric charts should be downloaded under CC BY 4.0 with explicit series, mineral product, unit, year, scenario and country before producing more detailed time-series."
-  ]
+  ],
+  "workbook_ingestion": {
+    "status": "parsed_and_integrated",
+    "source_edition": "2026-07-27",
+    "source": "IEA Critical Minerals Dataset 2026.xlsx",
+    "dashboard_extract": "data/iea-2026-workbook-dashboard.json",
+    "license": "CC BY 4.0",
+    "coverage": "37 minerals + 6 supply commodities + 6 energy end-use groups, selected scenario/period columns; different from full Excel alternative cases",
+    "caution": "The workbook Notice tab contains outdated 2024 citation boilerplate. Use official IEA July 2026 dataset page for edition/date and license."
+  }
 }
