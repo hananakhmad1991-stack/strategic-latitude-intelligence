@@ -55,3 +55,11 @@
 .sm25-source{display:flex;gap:10px;align-items:center;font-size:11px}
 @media(max-width:700px){.sm25-report{padding:11px}.sm25-tab{padding:8px 9px}.sm25-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.sm25-query{min-width:160px}.sm25-catalog{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:460px){.sm25-kpis,.sm25-catalog{grid-template-columns:1fr}.sm25-chart svg{min-width:530px}.sm25-report h3{font-size:21px}}
+
+/* SKK Migas 2025 individually named project/onstream registries. */
+.sm25-projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:9px;margin:13px 0}
+.sm25-project{border:1px solid #436478;background:#08263c;border-radius:9px;padding:13px;display:flex;flex-direction:column;gap:7px}
+.sm25-project small{font-size:10px;color:#d9bc8b}
+.sm25-project strong{font-size:13px;line-height:1.5;color:#e3e9f1}
+.sm25-project p{font-size:12px;font-weight:650;color:#85c1cf;margin:0}
+.sm25-project span{font-size:11px;color:#b5cfda;line-height:1.6}
