@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "checked_at_utc": null,
+  "state": "awaiting_first_scan",
+  "source_count": 10,
+  "healthy_source_count": 0,
+  "scan_errors": 0,
+  "sources": [
+    {
+      "id": "bps_brs",
+      "publisher": "BPS",
+      "url": "https://www.bps.go.id/id/pressrelease",
+      "health": "pending",
+      "last_success_utc": null,
+      "linked_datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/commodity-trade-flows.json",
+        "data/investment-sector-evidence.json"
+      ],
+      "observed_items": null
+    },
+    {
+      "id": "bps_publications",
+      "publisher": "BPS",
+      "url": "https://www.bps.go.id/id/publication",
+      "health": "pending",
+      "last_success_utc": null,
+      "linked_datasets": [
+        "data/commodity-trade-flows.json",
+        "data/energy-fundamentals.json"
+      ],
+      "observed_items": null
+    },
+    {
+      "id": "bi_releases",
+      "publisher": "Bank Indonesia",
+      "url": "https://www.bi.go.id/id/publikasi/ruang-media/news-release/default.aspx",
+      "health": "pending",
+      "last_success_utc": null,
+      "linked_datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/investment-market.json"
+      ],
+      "observed_items": null
+    },
+    {
+      "id": "kemenkeu_news",
+      "publisher": "Kementerian Keuangan",
+      "url": "https://www.kemenkeu.go.id/informasi-publik/publikasi/berita-utama",
+      "health": "pending",
+      "last_success_utc": null,
+      "linked_datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/energy-prices-fiscal.json"
+      ],
+      "observed_items": null
+    },
+    {
+      "id": "pln_statistics",
+      "publisher": "PLN Investor Relations",
+      "url": "https://www.pln.co.id/hubungan-investor-id/publikasi-investor-id/laporan-statistik-id",
+      "health": "pending",
+      "last_success_utc": null,
+      "linked_datasets": [
+        "data/pln-statistics-regional-baseline-2024.json",
+        "data/pln-statistics-source-register.json",
+        "data/energy-fundamentals.json"
+      ],
+      "observed_items": null
+    },
+    {
+      "id": "esdm_energy_reports",
+      "publisher": "ESDM",
+      "url": "https://www.esdm.go.id/id/publikasi",
+      "health": "pending",
+      "last_success_utc": null,
+      "linked_datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ],
+      "observed_items": null
+    },
+    {
+      "id": "usgs_minerals",
+      "publisher": "USGS",
+      "url": "https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries",
+      "health": "pending",
+      "last_success_utc": null,
+      "linked_datasets": [
+        "data/usgs-indonesia-minerals-2026.json",
+        "data/esdm-2025-mineral-performance.json"
+      ],
+      "observed_items": null
+    },
+    {
+      "id": "stanford_ai",
+      "publisher": "Stanford HAI",
+      "url": "https://hai.stanford.edu/ai-index",
+      "health": "pending",
+      "last_success_utc": null,
+      "linked_datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ],
+      "observed_items": null
+    },
+    {
+      "id": "komdigi_releases",
+      "publisher": "Komdigi",
+      "url": "https://portal.komdigi.go.id/kanal-publik/berita-kini",
+      "health": "pending",
+      "last_success_utc": null,
+      "linked_datasets": [
+        "data/komdigi-digital-infrastructure-2025.json",
+        "data/ai-intelligence.json"
+      ],
+      "observed_items": null
+    },
+    {
+      "id": "skkmigas_publications",
+      "publisher": "SKK Migas",
+      "url": "https://www.skkmigas.go.id/",
+      "health": "pending",
+      "last_success_utc": null,
+      "linked_datasets": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-digitized-exhibits.json",
+        "data/energy-fundamentals.json"
+      ],
+      "observed_items": null
+    }
+  ],
+  "events": [],
+  "new_review_leads": 0,
+  "notes": [
+    "Listing pages may use JavaScript, block automated retrieval, or show old references; no readable matches does NOT mean no new release.",
+    "The watcher records newly seen matching publisher links as candidates after initial baseline. Full PDF/table extraction and legal/project verification remain separate.",
+    "Only source URLs on the publisher's allowlist are stored. Publisher report numeric values are never changed by this watcher."
+  ]
+}
