@@ -57,6 +57,10 @@
     "Maps & Geography": [
       "strategic-map-",
       "indonesia-provinces"
+    ],
+    "Source & Publication Integrity": [
+      "sli-automation-",
+      "sli-publication-"
     ]
   },
   "overrides": {
@@ -154,6 +158,21 @@
       "mode": "computed_from_sources",
       "priority": "medium",
       "note": "Rule-based daily assessment from observed data, not direct proof of changes in energy security."
+    },
+    "data/sli-publication-watch.json": {
+      "mode": "automated_discovery",
+      "priority": "high",
+      "note": "Ten original publisher listing checks each day; new editions are review candidates, not automatically extracted statistics; Javascript/403/404 gaps are reported."
+    },
+    "data/sli-publication-source-catalog.json": {
+      "mode": "curated_snapshot",
+      "priority": "medium",
+      "note": "Curated publisher URLs and affected-dataset routing; expand coverage as stable official feeds become available."
+    },
+    "data/sli-automation-health.json": {
+      "mode": "computed_from_sources",
+      "priority": "high",
+      "note": "Operational inventory derived from SLI source files and GitHub Actions workflow metadata; does not verify every numeric fact."
     }
   },
   "readiness_rules": {
@@ -172,6 +191,7 @@
     ],
     "note": "Workflow delivery health re-evaluated periodically; success is not an indication legal project or historical metrics were changed.",
     "publication_rule": "When published by GitHub Actions using GITHUB_TOKEN, raw main JSON is primary live-data source with Pages fallback. UI site code must still be deployed.",
-    "known_gap": "Curated/report PDFs, BPS/BI/Kemenkeu current national release cards, site project financing, energy stakeholder law/legal force and historical source editions cannot be fully rebuilt from news detection without primary source extraction."
+    "known_gap": "Curated/report PDFs, BPS/BI/Kemenkeu current national release cards, site project financing, energy stakeholder law/legal force and historical source editions cannot be fully rebuilt from news detection without primary source extraction.",
+    "publication_checks": "Official publication source watcher currently checks 10 catalogs daily; inaccessible pages flag a gap. The data readiness dashboard classifies every file including publication watcher."
   }
 }
