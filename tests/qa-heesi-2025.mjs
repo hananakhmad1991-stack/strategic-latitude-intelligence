@@ -35,7 +35,9 @@ const target=d.balance.fuel_to_sector.reduce((s,x)=>s+x.value,0);
 assert.ok(Math.abs(target-1400307)<=2,"Original full carrier→sector table differs by ≤2 Thousand BOE rounded");
 const by={};for(const f of d.balance.fuel_to_sector){assert.ok(f.value>0&&f.source&&f.target);by[f.target]=(by[f.target]||0)+f.value}
 for(const [k,v] of Object.entries(d.balance.reported_sector_totals))assert.ok(Math.abs((by[k]||0)-v)<=1,"Source sector total rounding "+k);
-assert.equal(d.series.length,4);
+assert.equal(d.series.length,8,"Four energy fundamentals plus four verified GHG historical series");
+const ghg=d.series.find(x=>x.name==="Energy-sector greenhouse gas emissions");assert.equal(ghg.values[0],547710);assert.equal(ghg.values[10],829883);assert.match(ghg.note,/verification/i,"2025 emissions provisional status must be disclosed");
+const ghgTransport=d.series.find(x=>x.name==="Transport-sector GHG emissions");assert.equal(ghgTransport.values[10],168649);
 for(const s of d.series){assert.deepEqual(s.years,Array.from({length:11},(_,i)=>i+2015));assert.equal(s.values.length,11)}
 assert.equal(d.series[0].values[10],2078491);
 assert.equal(d.series[1].values[10],1387112);
@@ -50,4 +52,4 @@ assert.match(script,/get\(x\.source\)/);
 assert.match(script,/fill-rule/);
 const w={};vm.runInNewContext(script,{window:w,document:{},console}, {filename:"heesi-2025-dashboard.js"});
 assert.equal(typeof w.initSLIHEESI2025,"function");
-console.log("PASS ESDM HEESI 2025: 172 original source pages, 38 exact province MW totals, source-dated geothermal caveat, source-cell Sankey, 2015–25 four annual series and all dashboard mounts");
+console.log("PASS ESDM HEESI 2025: 172 original source pages, 38 exact province MW totals, source-dated geothermal caveat, source-cell Sankey, 2015–25 eight historical series (including provisional 2025 greenhouse gas data) and all dashboard mounts");
