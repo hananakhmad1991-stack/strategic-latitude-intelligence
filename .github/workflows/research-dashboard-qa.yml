@@ -9,6 +9,10 @@ on:
       - 'tests/qa-site-search.mjs'
       - 'tests/qa-site-search-ui.mjs'
       - 'js/research-chapters.js'
+      - 'js/komdigi-digital-2025.js'
+      - 'css/komdigi-digital-2025.css'
+      - 'data/komdigi-digital-infrastructure-2025.json'
+      - 'tests/qa-komdigi-digital-2025.mjs'
       - 'js/iea-2026-explorer.js'
       - 'css/iea-2026-explorer.css'
       - 'data/iea-2026-workbook-dashboard.json'
@@ -70,6 +74,8 @@ jobs:
       - name: Compile and render both specialist modules
         run: |
           node tests/qa-research-dashboard.mjs
+          node --check js/komdigi-digital-2025.js
+          node tests/qa-komdigi-digital-2025.mjs
           node --check js/site-search.js
           node tests/qa-site-search.mjs
           node tests/qa-site-search-ui.mjs
