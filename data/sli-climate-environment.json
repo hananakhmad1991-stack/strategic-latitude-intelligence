@@ -1,0 +1,297 @@
+{
+  "version": "2026-10-17",
+  "purpose": "Source directory and transparent coverage of Indonesian climate/environmental investment risk. A catalog is not a numeric observation.",
+  "sources": [
+    {
+      "id": "bmkg_alert",
+      "agency": "BMKG",
+      "topic": "Weather alerts",
+      "url": "https://www.bmkg.go.id/cuaca/peringatan-dini-cuaca",
+      "frequency": "nowcasting, 0–6 hours",
+      "status": "official portal link"
+    },
+    {
+      "id": "bmkg_rain",
+      "agency": "BMKG",
+      "topic": "Heavy-rain outlook",
+      "url": "https://www.bmkg.go.id/iklim/peringatan-dini-hujan-tinggi",
+      "frequency": "10-day bulletin",
+      "status": "official portal link"
+    },
+    {
+      "id": "bmkg_events",
+      "agency": "BMKG",
+      "topic": "Observed extreme weather",
+      "url": "https://pikacu.bmkg.go.id/grafik-cuaca-ekstrem",
+      "frequency": "periodic",
+      "status": "official portal link"
+    },
+    {
+      "id": "bnpb",
+      "agency": "BNPB DIBI",
+      "topic": "Historical disasters and impacts",
+      "url": "https://dibi.bnpb.go.id/superset/dashboard/tentang-dibi/",
+      "frequency": "as published",
+      "status": "official portal link"
+    },
+    {
+      "id": "bnpb_gis",
+      "agency": "BNPB GIS",
+      "topic": "Hazard GIS layers",
+      "url": "https://gis.bnpb.go.id/server/rest/",
+      "frequency": "dataset-specific",
+      "status": "official GIS services directory"
+    },
+    {
+      "id": "nasa_firms",
+      "agency": "NASA FIRMS",
+      "topic": "Satellite thermal anomalies",
+      "url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
+      "frequency": "satellite overpass",
+      "status": "registration required for most downloads"
+    },
+    {
+      "id": "gfw",
+      "agency": "Global Forest Watch",
+      "topic": "Forest cover and alerts",
+      "url": "https://www.globalforestwatch.org/",
+      "frequency": "dataset-specific",
+      "status": "external source portal"
+    },
+    {
+      "id": "proper",
+      "agency": "Environmental authorities",
+      "topic": "PROPER, EIA and environmental compliance",
+      "url": "https://www.menlh.go.id/",
+      "frequency": "annual/administrative",
+      "status": "registry reconciliation required"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "CE-001",
+      "domain": "Physical",
+      "name": "Extreme rain and flood alerts",
+      "scope": "province/district",
+      "agency": "BMKG",
+      "status": "official_alert_link",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-002",
+      "domain": "Physical",
+      "name": "River/coastal flooding events",
+      "scope": "district",
+      "agency": "BNPB",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-003",
+      "domain": "Physical",
+      "name": "Drought and rainfall anomaly",
+      "scope": "province",
+      "agency": "BMKG",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-004",
+      "domain": "Physical",
+      "name": "Temperature and heat stress",
+      "scope": "station/province",
+      "agency": "BMKG",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-005",
+      "domain": "Physical",
+      "name": "Wildfire satellite detections",
+      "scope": "geopoint/time",
+      "agency": "NASA FIRMS",
+      "status": "requires_API_key",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-006",
+      "domain": "Physical",
+      "name": "Historical wildfire losses",
+      "scope": "district/year",
+      "agency": "BNPB",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-007",
+      "domain": "Physical",
+      "name": "Sea-level and coastal inundation",
+      "scope": "coast/grid",
+      "agency": "BMKG",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-008",
+      "domain": "Physical",
+      "name": "Landslide occurrence",
+      "scope": "district",
+      "agency": "BNPB",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-009",
+      "domain": "Environmental",
+      "name": "Air pollution PM2.5",
+      "scope": "city/station",
+      "agency": "environmental authorities",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-010",
+      "domain": "Environmental",
+      "name": "River water quality",
+      "scope": "river/station",
+      "agency": "environmental authorities",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-011",
+      "domain": "Environmental",
+      "name": "Forest-cover change",
+      "scope": "grid/year",
+      "agency": "GFW",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-012",
+      "domain": "Environmental",
+      "name": "Industrial wastewater violations",
+      "scope": "facility",
+      "agency": "environmental authorities",
+      "status": "needs_case_validation",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-013",
+      "domain": "Environmental",
+      "name": "PROPER assessment",
+      "scope": "company/facility",
+      "agency": "environmental authorities",
+      "status": "needs_registry_validation",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-014",
+      "domain": "Environmental",
+      "name": "EIA/AMDAL approval status",
+      "scope": "facility",
+      "agency": "licensing/authorities",
+      "status": "needs_registry_validation",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-015",
+      "domain": "Transition",
+      "name": "GHG emissions by sector",
+      "scope": "sector/year",
+      "agency": "government inventory",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-016",
+      "domain": "Transition",
+      "name": "Electricity carbon intensity",
+      "scope": "grid/year",
+      "agency": "ESDM/PLN",
+      "status": "needs_numeric_ingestion",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-017",
+      "domain": "Transition",
+      "name": "Carbon regulation and pricing",
+      "scope": "jurisdiction/date",
+      "agency": "official regulations",
+      "status": "needs_policy_validation",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-018",
+      "domain": "Investment",
+      "name": "Asset hazard intersection",
+      "scope": "verified asset coordinate",
+      "agency": "SLI map and hazard grids",
+      "status": "requires_spatial_QA",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-019",
+      "domain": "Investment",
+      "name": "Shutdown downtime and recovery costs",
+      "scope": "company/asset",
+      "agency": "company disclosures",
+      "status": "requires_asset_financials",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    },
+    {
+      "id": "CE-020",
+      "domain": "Investment",
+      "name": "Insurance and adaptation investment",
+      "scope": "company/asset",
+      "agency": "company disclosure",
+      "status": "requires_asset_financials",
+      "observed_value": null,
+      "source_date": null,
+      "confidence": "unassessed"
+    }
+  ],
+  "notes": [
+    "Never treat a satellite hotspot as a confirmed wildfire area or assign it to a named company without asset and geospatial verification.",
+    "Climate exposure is not automatically a loss estimate. Hazard, asset location, vulnerability and financial sensitivity are separate.",
+    "Official external source links do not imply API ingestion or live local measurements."
+  ]
+}
