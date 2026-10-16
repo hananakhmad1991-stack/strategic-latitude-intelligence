@@ -7,6 +7,7 @@ const digitized=JSON.parse(fs.readFileSync("data/skkmigas-2025-digitized-exhibit
 const pod=JSON.parse(fs.readFileSync("data/skkmigas-2025-pod-approvals.json","utf8"));
 const exploration=JSON.parse(fs.readFileSync("data/skkmigas-2025-exploration-registers.json","utf8"));
 const extra=JSON.parse(fs.readFileSync("data/skkmigas-2025-source-extension.json","utf8"));
+const remaining=JSON.parse(fs.readFileSync("data/skkmigas-2025-remaining-evidence.json","utf8"));
 const source=fs.readFileSync("js/skkmigas-annual-2025.js","utf8");
 class MiniDom{
  constructor(tag){this.tagName=tag;this.children=[];this.attrs={};this.className="";this.dataset={};this.style={};this.listeners={};this.textContent="";this.isConnected=true;this.value="";this.rel="";}
@@ -21,13 +22,14 @@ class MiniDom{
 }
 const root=new MiniDom("div");
 const doc={createElement:(tag)=>new MiniDom(tag),createElementNS:(ns,tag)=>new MiniDom(tag),getElementById:()=>root};
-const ctx={window:{SLIi18n:{language:"en"}},document:doc,console,fetch:async url=>({ok:true,json:async()=>url.includes("figure-catalog")?catalog:url.includes("digitized-exhibits")?digitized:url.includes("pod-approvals")?pod:url.includes("exploration-registers")?exploration:url.includes("source-extension")?extra:report})};
+const ctx={window:{SLIi18n:{language:"en"}},document:doc,console,fetch:async url=>({ok:true,json:async()=>url.includes("figure-catalog")?catalog:url.includes("digitized-exhibits")?digitized:url.includes("pod-approvals")?pod:url.includes("exploration-registers")?exploration:url.includes("source-extension")?extra:url.includes("remaining-evidence")?remaining:report})};
 vm.runInNewContext(fs.readFileSync("js/skkmigas-2025-extension.js","utf8"),ctx,{filename:"skkmigas-2025-extension.js"});
+vm.runInNewContext(fs.readFileSync("js/skkmigas-2025-remaining-atlas.js","utf8"),ctx,{filename:"skkmigas-2025-remaining-atlas.js"});
 vm.runInNewContext(source,ctx,{filename:"skkmigas-annual-2025.js"});
 ctx.window.initSLISKKAnnual2025(root,"energy");
 await Promise.resolve();await Promise.resolve();await Promise.resolve();await new Promise(resolve=>setImmediate(resolve));
 const tabs=root.querySelectorAll("button").filter(x=>x.dataset.tab);
-assert.deepEqual(tabs.map(x=>x.dataset.tab),["overview","trend","gas","targets","mapping","projects","digitized","sourceplus","pods","exploration","catalog"]);
+assert.deepEqual(tabs.map(x=>x.dataset.tab),["overview","trend","gas","targets","mapping","projects","digitized","sourceplus","atlas","pods","exploration","catalog"]);
 function getTab(name){const b=tabs.find(x=>x.dataset.tab===name);assert.ok(b,name);return b}
 const assertBuilt=(name)=>{getTab(name).click();assert.equal(getTab(name).attrs["aria-pressed"],"true");};
 assertBuilt("trend");assert.ok(root.querySelectorAll("svg").length>=1,"Historical chart draws a complete SVG");
@@ -35,6 +37,9 @@ assertBuilt("gas");assert.ok(root.querySelectorAll("path").length>=10,"Ten gas a
 assertBuilt("targets");assert.ok(root.querySelectorAll("article").length>=5,"Target KPI comparison drawn");
 assertBuilt("mapping");assert.ok(root.querySelectorAll("a").some(x=>x.href==="#map"),"Map link is honest existing GIS");
 assertBuilt("projects");assert.ok(root.querySelectorAll("article").length>=16,"All 16 sourced projects appear");
+assertBuilt("atlas");assert.ok(root.querySelectorAll("article").length>=20,"Investor projects and 16 sourced onstream cards render");
+const atlasSelect=root.querySelectorAll("select")[0];assert.ok(atlasSelect,"Evidence atlas selector");
+for(const tab of ["exploration","strategy","digital","cyber","market","shutdown"]){atlasSelect.value=tab;atlasSelect.change();assert.ok(root.querySelectorAll("article").length>=2,"Evidence atlas source panel "+tab+" renders")}
 assertBuilt("sourceplus");assert.ok(root.querySelectorAll("article").length>=5,"Five investment scorecards rendered on source extension");
 const extraSelect=root.querySelectorAll("select")[0];assert.ok(extraSelect,"Investor source view selector");
 extraSelect.value="monthly";extraSelect.change();
@@ -51,4 +56,4 @@ assertBuilt("pods");assert.ok(root.querySelectorAll("td").length>=45*8,"45 sourc
 assertBuilt("exploration");assert.ok(root.querySelectorAll("td").length>=24*4,"24 PSE rows rendered");
 assertBuilt("catalog");assert.ok(root.querySelectorAll("article").length>=30,"Source catalog initial page rendered");
 assertBuilt("overview");assert.ok(root.querySelectorAll("article").length>=30,"2025 all KPI cards rendered");
-console.log("PASS: live DOM smoke for 11 tab views, 10 Sankey flows, 16 project cards, KPI metrics and 99-reference catalog");
+console.log("PASS: live DOM smoke for 12 tab views, 10 Sankey flows, 16 project cards, KPI metrics and 99-reference catalog");
