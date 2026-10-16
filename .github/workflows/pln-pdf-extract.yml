@@ -28,6 +28,10 @@ jobs:
           d=json.loads(p.read_text())
           assert len(d['documents'])==3
           print('Download outcomes:',[(k,v['state']) for k,v in d['documents'].items()])
+          downloaded=[k for k,v in d['documents'].items() if v['state']=='downloaded']
+          if not downloaded:
+              print('ERROR: No PDF downloaded; extraction has not succeeded')
+              raise SystemExit(2)
           PY
       - uses: actions/upload-artifact@v4
         if: always()
