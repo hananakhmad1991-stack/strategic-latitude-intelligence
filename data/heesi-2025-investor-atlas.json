@@ -1,0 +1,1576 @@
+{
+  "id": "HEESI-2025-INVESTOR-ATLAS",
+  "source_url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-and-economic-statistics-of-indonesia-2025.pdf",
+  "source_year": 2025,
+  "published": "2026-07",
+  "extraction_date": "2026-10-16",
+  "scope": "Source-matched selected spatial observations and longitudinal series; separate national totals from province observations, unlisted ≠ 0, no 2026 live claims.",
+  "maps": [
+    {
+      "id": "spklu",
+      "name": "EV charging stations · SPKLU",
+      "unit": "stations",
+      "pdf_page": 131,
+      "printed_page": 115,
+      "coverage": "38 provinces; zero is reported zero, not missing",
+      "publisher": "Ditjen Ketenagalistrikan",
+      "national_total": 4778,
+      "values": [
+        {
+          "province": "Aceh",
+          "value": 36
+        },
+        {
+          "province": "Sumatera Utara",
+          "value": 114
+        },
+        {
+          "province": "Sumatera Barat",
+          "value": 95
+        },
+        {
+          "province": "Riau",
+          "value": 49
+        },
+        {
+          "province": "Kepulauan Riau",
+          "value": 5
+        },
+        {
+          "province": "Jambi",
+          "value": 25
+        },
+        {
+          "province": "Bengkulu",
+          "value": 13
+        },
+        {
+          "province": "Kepulauan Bangka Belitung",
+          "value": 33
+        },
+        {
+          "province": "Sumatera Selatan",
+          "value": 64
+        },
+        {
+          "province": "Lampung",
+          "value": 72
+        },
+        {
+          "province": "Banten",
+          "value": 473
+        },
+        {
+          "province": "Jawa Barat",
+          "value": 827
+        },
+        {
+          "province": "DKI Jakarta",
+          "value": 1438
+        },
+        {
+          "province": "Jawa Tengah",
+          "value": 335
+        },
+        {
+          "province": "Daerah Istimewa Yogyakarta",
+          "value": 48
+        },
+        {
+          "province": "Jawa Timur",
+          "value": 446
+        },
+        {
+          "province": "Bali",
+          "value": 197
+        },
+        {
+          "province": "Nusa Tenggara Barat",
+          "value": 41
+        },
+        {
+          "province": "Nusa Tenggara Timur",
+          "value": 38
+        },
+        {
+          "province": "Kalimantan Barat",
+          "value": 55
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "value": 25
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "value": 53
+        },
+        {
+          "province": "Kalimantan Timur",
+          "value": 80
+        },
+        {
+          "province": "Kalimantan Utara",
+          "value": 7
+        },
+        {
+          "province": "Sulawesi Utara",
+          "value": 32
+        },
+        {
+          "province": "Gorontalo",
+          "value": 8
+        },
+        {
+          "province": "Sulawesi Tengah",
+          "value": 21
+        },
+        {
+          "province": "Sulawesi Tenggara",
+          "value": 13
+        },
+        {
+          "province": "Sulawesi Barat",
+          "value": 8
+        },
+        {
+          "province": "Sulawesi Selatan",
+          "value": 71
+        },
+        {
+          "province": "Maluku",
+          "value": 15
+        },
+        {
+          "province": "Maluku Utara",
+          "value": 9
+        },
+        {
+          "province": "Papua Barat",
+          "value": 9
+        },
+        {
+          "province": "Papua Barat Daya",
+          "value": 0
+        },
+        {
+          "province": "Papua",
+          "value": 23
+        },
+        {
+          "province": "Papua Tengah",
+          "value": 0
+        },
+        {
+          "province": "Papua Selatan",
+          "value": 0
+        },
+        {
+          "province": "Papua Pegunungan",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "spbklu",
+      "name": "Battery swapping stations · SPBKLU",
+      "unit": "stations",
+      "pdf_page": 131,
+      "printed_page": 115,
+      "coverage": "38 provinces",
+      "national_total": 1936,
+      "values": [
+        {
+          "province": "Aceh",
+          "value": 15
+        },
+        {
+          "province": "Sumatera Utara",
+          "value": 140
+        },
+        {
+          "province": "Sumatera Barat",
+          "value": 1
+        },
+        {
+          "province": "Riau",
+          "value": 13
+        },
+        {
+          "province": "Kepulauan Riau",
+          "value": 30
+        },
+        {
+          "province": "Jambi",
+          "value": 25
+        },
+        {
+          "province": "Bengkulu",
+          "value": 0
+        },
+        {
+          "province": "Kepulauan Bangka Belitung",
+          "value": 7
+        },
+        {
+          "province": "Sumatera Selatan",
+          "value": 5
+        },
+        {
+          "province": "Lampung",
+          "value": 2
+        },
+        {
+          "province": "Banten",
+          "value": 327
+        },
+        {
+          "province": "Jawa Barat",
+          "value": 390
+        },
+        {
+          "province": "DKI Jakarta",
+          "value": 588
+        },
+        {
+          "province": "Jawa Tengah",
+          "value": 38
+        },
+        {
+          "province": "Daerah Istimewa Yogyakarta",
+          "value": 34
+        },
+        {
+          "province": "Jawa Timur",
+          "value": 98
+        },
+        {
+          "province": "Bali",
+          "value": 122
+        },
+        {
+          "province": "Nusa Tenggara Barat",
+          "value": 1
+        },
+        {
+          "province": "Nusa Tenggara Timur",
+          "value": 1
+        },
+        {
+          "province": "Kalimantan Barat",
+          "value": 8
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "value": 1
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "value": 2
+        },
+        {
+          "province": "Kalimantan Timur",
+          "value": 9
+        },
+        {
+          "province": "Kalimantan Utara",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Utara",
+          "value": 0
+        },
+        {
+          "province": "Gorontalo",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Tengah",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Tenggara",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Barat",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Selatan",
+          "value": 79
+        },
+        {
+          "province": "Maluku",
+          "value": 0
+        },
+        {
+          "province": "Maluku Utara",
+          "value": 0
+        },
+        {
+          "province": "Papua Barat",
+          "value": 0
+        },
+        {
+          "province": "Papua Barat Daya",
+          "value": 0
+        },
+        {
+          "province": "Papua",
+          "value": 0
+        },
+        {
+          "province": "Papua Tengah",
+          "value": 0
+        },
+        {
+          "province": "Papua Selatan",
+          "value": 0
+        },
+        {
+          "province": "Papua Pegunungan",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "coal_resources",
+      "name": "Coal identified resources",
+      "unit": "million tonnes",
+      "pdf_page": 86,
+      "printed_page": 70,
+      "coverage": "26 provinces published; unlisted provinces unknown",
+      "national_total": 97836.2,
+      "values": [
+        {
+          "province": "Aceh",
+          "value": 1042.75
+        },
+        {
+          "province": "Sumatera Utara",
+          "value": 26.26
+        },
+        {
+          "province": "Sumatera Barat",
+          "value": 69.02
+        },
+        {
+          "province": "Riau",
+          "value": 902.8
+        },
+        {
+          "province": "Jambi",
+          "value": 3678.63
+        },
+        {
+          "province": "Sumatera Selatan",
+          "value": 20573.07
+        },
+        {
+          "province": "Bengkulu",
+          "value": 346.24
+        },
+        {
+          "province": "Lampung",
+          "value": 94.85
+        },
+        {
+          "province": "Jawa Tengah",
+          "value": 0
+        },
+        {
+          "province": "Jawa Timur",
+          "value": 0
+        },
+        {
+          "province": "Banten",
+          "value": 0
+        },
+        {
+          "province": "Kalimantan Barat",
+          "value": 70.98
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "value": 9364.91
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "value": 12877.45
+        },
+        {
+          "province": "Kalimantan Timur",
+          "value": 45929.64
+        },
+        {
+          "province": "Kalimantan Utara",
+          "value": 2840.69
+        },
+        {
+          "province": "Sulawesi Tengah",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Selatan",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Tenggara",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Barat",
+          "value": 0
+        },
+        {
+          "province": "Maluku Utara",
+          "value": 0
+        },
+        {
+          "province": "Papua",
+          "value": 0
+        },
+        {
+          "province": "Papua Barat",
+          "value": 0
+        },
+        {
+          "province": "Papua Selatan",
+          "value": 0
+        },
+        {
+          "province": "Papua Tengah",
+          "value": 0
+        },
+        {
+          "province": "Papua Barat Daya",
+          "value": 18.9
+        }
+      ]
+    },
+    {
+      "id": "coal_reserves",
+      "name": "Coal verified reserves",
+      "unit": "million tonnes",
+      "pdf_page": 86,
+      "printed_page": 70,
+      "coverage": "26 reported provinces, Competent Person Indonesia verification",
+      "national_total": 33250.1,
+      "values": [
+        {
+          "province": "Aceh",
+          "value": 507.05
+        },
+        {
+          "province": "Sumatera Utara",
+          "value": 7.12
+        },
+        {
+          "province": "Sumatera Barat",
+          "value": 26.04
+        },
+        {
+          "province": "Riau",
+          "value": 378.23
+        },
+        {
+          "province": "Jambi",
+          "value": 1272.53
+        },
+        {
+          "province": "Sumatera Selatan",
+          "value": 7804.87
+        },
+        {
+          "province": "Bengkulu",
+          "value": 149.47
+        },
+        {
+          "province": "Lampung",
+          "value": 56
+        },
+        {
+          "province": "Jawa Tengah",
+          "value": 0
+        },
+        {
+          "province": "Jawa Timur",
+          "value": 0
+        },
+        {
+          "province": "Banten",
+          "value": 0
+        },
+        {
+          "province": "Kalimantan Barat",
+          "value": 11.22
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "value": 2959.9
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "value": 3292.63
+        },
+        {
+          "province": "Kalimantan Timur",
+          "value": 15688.57
+        },
+        {
+          "province": "Kalimantan Utara",
+          "value": 1092.39
+        },
+        {
+          "province": "Sulawesi Tengah",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Selatan",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Tenggara",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Barat",
+          "value": 0
+        },
+        {
+          "province": "Maluku Utara",
+          "value": 0
+        },
+        {
+          "province": "Papua",
+          "value": 0
+        },
+        {
+          "province": "Papua Barat",
+          "value": 0
+        },
+        {
+          "province": "Papua Selatan",
+          "value": 0
+        },
+        {
+          "province": "Papua Tengah",
+          "value": 0
+        },
+        {
+          "province": "Papua Barat Daya",
+          "value": 4.09
+        }
+      ]
+    },
+    {
+      "id": "coal_inventory",
+      "name": "Coal exploration inventory",
+      "unit": "million tonnes",
+      "pdf_page": 86,
+      "printed_page": 70,
+      "coverage": "26 reported provinces; exploration inventory ≠ proven reserves",
+      "national_total": 32550.3,
+      "values": [
+        {
+          "province": "Aceh",
+          "value": 20.92
+        },
+        {
+          "province": "Sumatera Utara",
+          "value": 14.62
+        },
+        {
+          "province": "Sumatera Barat",
+          "value": 333.93
+        },
+        {
+          "province": "Riau",
+          "value": 505.63
+        },
+        {
+          "province": "Jambi",
+          "value": 1145.56
+        },
+        {
+          "province": "Sumatera Selatan",
+          "value": 10769.38
+        },
+        {
+          "province": "Bengkulu",
+          "value": 211.92
+        },
+        {
+          "province": "Lampung",
+          "value": 106.95
+        },
+        {
+          "province": "Jawa Tengah",
+          "value": 0.82
+        },
+        {
+          "province": "Jawa Timur",
+          "value": 0.08
+        },
+        {
+          "province": "Banten",
+          "value": 52.2
+        },
+        {
+          "province": "Kalimantan Barat",
+          "value": 463.44
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "value": 2803.04
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "value": 1710.81
+        },
+        {
+          "province": "Kalimantan Timur",
+          "value": 13901.22
+        },
+        {
+          "province": "Kalimantan Utara",
+          "value": 386.04
+        },
+        {
+          "province": "Sulawesi Tengah",
+          "value": 1.98
+        },
+        {
+          "province": "Sulawesi Selatan",
+          "value": 31.31
+        },
+        {
+          "province": "Sulawesi Tenggara",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Barat",
+          "value": 26.26
+        },
+        {
+          "province": "Maluku Utara",
+          "value": 0
+        },
+        {
+          "province": "Papua",
+          "value": 31.36
+        },
+        {
+          "province": "Papua Barat",
+          "value": 30.91
+        },
+        {
+          "province": "Papua Selatan",
+          "value": 0
+        },
+        {
+          "province": "Papua Tengah",
+          "value": 0
+        },
+        {
+          "province": "Papua Barat Daya",
+          "value": 1.91
+        }
+      ]
+    },
+    {
+      "id": "biodiesel_capacity",
+      "name": "Biodiesel production nameplate capacity",
+      "unit": "kL/year",
+      "pdf_page": 144,
+      "printed_page": 128,
+      "coverage": "13 reported provinces; unlisted provinces not assumed zero",
+      "national_total": 22018189,
+      "values": [
+        {
+          "province": "Sumatera Utara",
+          "value": 877011
+        },
+        {
+          "province": "Sumatera Barat",
+          "value": 413793
+        },
+        {
+          "province": "Riau",
+          "value": 4810345
+        },
+        {
+          "province": "Lampung",
+          "value": 1488506
+        },
+        {
+          "province": "Kepulauan Riau",
+          "value": 896552
+        },
+        {
+          "province": "Jawa Barat",
+          "value": 455400
+        },
+        {
+          "province": "Jawa Timur",
+          "value": 4189081
+        },
+        {
+          "province": "Banten",
+          "value": 1706897
+        },
+        {
+          "province": "Kalimantan Barat",
+          "value": 1479310
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "value": 402299
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "value": 1701725
+        },
+        {
+          "province": "Kalimantan Timur",
+          "value": 3121408
+        },
+        {
+          "province": "Sulawesi Utara",
+          "value": 475862
+        }
+      ]
+    },
+    {
+      "id": "bioethanol_capacity",
+      "name": "Bioethanol installed industry capacity",
+      "unit": "kL/year",
+      "pdf_page": 144,
+      "printed_page": 128,
+      "coverage": "13 reported provinces including zero in named rows",
+      "national_total": 60000,
+      "values": [
+        {
+          "province": "Sumatera Utara",
+          "value": 0
+        },
+        {
+          "province": "Sumatera Barat",
+          "value": 0
+        },
+        {
+          "province": "Riau",
+          "value": 0
+        },
+        {
+          "province": "Lampung",
+          "value": 20000
+        },
+        {
+          "province": "Kepulauan Riau",
+          "value": 0
+        },
+        {
+          "province": "Jawa Barat",
+          "value": 0
+        },
+        {
+          "province": "Jawa Timur",
+          "value": 40000
+        },
+        {
+          "province": "Banten",
+          "value": 0
+        },
+        {
+          "province": "Kalimantan Barat",
+          "value": 0
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "value": 0
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "value": 0
+        },
+        {
+          "province": "Kalimantan Timur",
+          "value": 0
+        },
+        {
+          "province": "Sulawesi Utara",
+          "value": 0
+        }
+      ]
+    }
+  ],
+  "series": [
+    {
+      "id": "spklu_gwh",
+      "title": "SPKLU electricity transactions",
+      "unit": "GWh",
+      "pdf_page": 130,
+      "printed_page": 114,
+      "topic": "ev",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        0.02,
+        0.07,
+        0.37,
+        2.21,
+        8.35,
+        46.69
+      ],
+      "note": "PLN and partner public EV chargers; national annual energy, not number of public connectors."
+    },
+    {
+      "id": "coal_production",
+      "title": "Coal production",
+      "unit": "million tonnes",
+      "pdf_page": 87,
+      "printed_page": 71,
+      "topic": "coal",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        461.56608,
+        456.197775,
+        461.248184,
+        557.77294,
+        616.159594,
+        563.728255,
+        613.990256,
+        687.432384,
+        775.181855,
+        836.131585,
+        817.478697
+      ],
+      "note": "Production by year; national tonnes divided by 1 million."
+    },
+    {
+      "id": "coal_export",
+      "title": "Coal exports",
+      "unit": "million tonnes",
+      "pdf_page": 87,
+      "printed_page": 71,
+      "topic": "coal",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        365.84961,
+        331.128438,
+        286.936795,
+        356.394687,
+        454.500164,
+        405.052868,
+        435.217208,
+        465.335605,
+        518.045831,
+        555.3358,
+        522.560236
+      ],
+      "note": ""
+    },
+    {
+      "id": "coal_import",
+      "title": "Coal imports",
+      "unit": "million tonnes",
+      "pdf_page": 87,
+      "printed_page": 71,
+      "topic": "coal",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        3.038701,
+        4.118833,
+        4.733352,
+        5.919784,
+        7.391172,
+        8.949453,
+        14.524132,
+        12.396727,
+        14.457536,
+        20.886425,
+        26.08121
+      ],
+      "note": ""
+    },
+    {
+      "id": "coal_domestic",
+      "title": "Domestic coal sales",
+      "unit": "million tonnes",
+      "pdf_page": 90,
+      "printed_page": 74,
+      "topic": "coal",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        86.814099,
+        90.55,
+        97.03,
+        115.08,
+        138.418192,
+        131.886643,
+        133.043362,
+        215.81324,
+        212.867547,
+        232.5981,
+        246.88
+      ],
+      "note": ""
+    },
+    {
+      "id": "coal_power",
+      "title": "Coal supplied to power plants",
+      "unit": "million tonnes",
+      "pdf_page": 90,
+      "printed_page": 74,
+      "topic": "coal",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        70.08,
+        75.4,
+        83,
+        91.14,
+        98.55026,
+        104.829892,
+        112.133733,
+        129.226621,
+        121.197161,
+        133.4641,
+        141.4
+      ],
+      "note": ""
+    },
+    {
+      "id": "coal_metallurgy",
+      "title": "Coal domestic sales · iron/steel/metallurgy",
+      "unit": "million tonnes",
+      "pdf_page": 90,
+      "printed_page": 74,
+      "topic": "coal",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        0.399,
+        0.39,
+        0.3,
+        1.75,
+        10.06475,
+        13.210585,
+        11.39302,
+        49.375407,
+        60.111682,
+        69.5245,
+        76.3
+      ],
+      "note": ""
+    },
+    {
+      "id": "energy_final_industry",
+      "title": "Final energy consumption · industry incl. traditional biomass",
+      "unit": "thousand BOE",
+      "pdf_page": 42,
+      "printed_page": 26,
+      "topic": "consumption",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        244513,
+        237807,
+        248751,
+        308101,
+        363535,
+        317800,
+        309530,
+        537280,
+        592177,
+        647240,
+        681237
+      ],
+      "note": ""
+    },
+    {
+      "id": "energy_final_household",
+      "title": "Final energy consumption · households incl. traditional biomass",
+      "unit": "thousand BOE",
+      "pdf_page": 42,
+      "printed_page": 26,
+      "topic": "consumption",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        149138,
+        149136,
+        148202,
+        151965,
+        153780,
+        158319,
+        162188,
+        162513,
+        167610,
+        170887,
+        174650
+      ],
+      "note": ""
+    },
+    {
+      "id": "energy_final_commercial",
+      "title": "Final energy consumption · commercial incl. traditional biomass",
+      "unit": "thousand BOE",
+      "pdf_page": 42,
+      "printed_page": 26,
+      "topic": "consumption",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        39287,
+        41369,
+        42378,
+        43602,
+        45545,
+        42242,
+        43985,
+        49721,
+        55494,
+        60097,
+        61759
+      ],
+      "note": ""
+    },
+    {
+      "id": "energy_final_transport",
+      "title": "Final energy consumption · transportation",
+      "unit": "thousand BOE",
+      "pdf_page": 42,
+      "printed_page": 26,
+      "topic": "consumption",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        345573,
+        341274,
+        364147,
+        400042,
+        413515,
+        364394,
+        388609,
+        432589,
+        448537,
+        461422,
+        469449
+      ],
+      "note": ""
+    },
+    {
+      "id": "energy_final_other",
+      "title": "Final energy consumption · other sectors",
+      "unit": "thousand BOE",
+      "pdf_page": 42,
+      "printed_page": 26,
+      "topic": "consumption",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        21705,
+        19865,
+        17000,
+        13578,
+        11113,
+        10245,
+        10788,
+        10940,
+        10619,
+        11298,
+        13213
+      ],
+      "note": ""
+    },
+    {
+      "id": "energy_household_commercial",
+      "title": "Commercial-energy household consumption · excl. traditional biomass",
+      "unit": "thousand BOE",
+      "pdf_page": 44,
+      "printed_page": 28,
+      "topic": "consumption",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        110670,
+        115048,
+        120202,
+        125299,
+        130672,
+        137640,
+        142445,
+        144658,
+        150516,
+        156973,
+        162735
+      ],
+      "note": "Direct comparison to energy final household including biomass requires boundary adjustment."
+    },
+    {
+      "id": "energy_commercial_excl",
+      "title": "Commercial-sector energy use · excl. traditional biomass",
+      "unit": "thousand BOE",
+      "pdf_page": 44,
+      "printed_page": 28,
+      "topic": "consumption",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        37941,
+        40029,
+        41045,
+        42276,
+        44225,
+        40929,
+        42679,
+        48421,
+        54201,
+        58810,
+        60478
+      ],
+      "note": ""
+    },
+    {
+      "id": "bio_production",
+      "title": "Biodiesel annual production",
+      "unit": "thousand kL",
+      "pdf_page": 145,
+      "printed_page": 129,
+      "topic": "bioenergy",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        1620,
+        3656,
+        3416,
+        6168,
+        8399,
+        8594,
+        10240,
+        11836,
+        13151,
+        13929,
+        15654
+      ],
+      "note": ""
+    },
+    {
+      "id": "bio_domestic",
+      "title": "Biodiesel domestic consumption",
+      "unit": "thousand kL",
+      "pdf_page": 145,
+      "printed_page": 129,
+      "topic": "bioenergy",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        915,
+        3008,
+        2572,
+        3750,
+        6396,
+        8400,
+        9294,
+        10449,
+        12290,
+        13158,
+        14941
+      ],
+      "note": ""
+    },
+    {
+      "id": "biogas_production",
+      "title": "Biogas production",
+      "unit": "thousand cubic metres",
+      "pdf_page": 145,
+      "printed_page": 129,
+      "topic": "bioenergy",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        18953,
+        22800,
+        24786,
+        25670,
+        26277,
+        27856,
+        28390,
+        57050,
+        110793,
+        94626,
+        103198
+      ],
+      "note": ""
+    },
+    {
+      "id": "industrial_biomass",
+      "title": "Industrial biomass use",
+      "unit": "thousand tonnes",
+      "pdf_page": 145,
+      "printed_page": 129,
+      "topic": "bioenergy",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        47,
+        72,
+        73,
+        133,
+        217,
+        258,
+        793,
+        2351,
+        8971,
+        20737,
+        23811
+      ],
+      "note": ""
+    },
+    {
+      "id": "coal_export_china",
+      "title": "Coal exports to China",
+      "unit": "thousand tonnes",
+      "pdf_page": 88,
+      "printed_page": 72,
+      "topic": "trade",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        41898,
+        53887,
+        51201,
+        63429,
+        144415,
+        127789,
+        196243,
+        173323,
+        218207,
+        239309,
+        213224
+      ],
+      "note": ""
+    },
+    {
+      "id": "coal_export_india",
+      "title": "Coal exports to India",
+      "unit": "thousand tonnes",
+      "pdf_page": 88,
+      "printed_page": 72,
+      "topic": "trade",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        79111,
+        56277,
+        46241,
+        49967,
+        116949,
+        97507,
+        72124,
+        109843,
+        107976,
+        107805,
+        99918
+      ],
+      "note": ""
+    },
+    {
+      "id": "coal_export_korea",
+      "title": "Coal exports to South Korea",
+      "unit": "thousand tonnes",
+      "pdf_page": 88,
+      "printed_page": 72,
+      "topic": "trade",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        14111,
+        13574,
+        17284,
+        18732,
+        29743,
+        24778,
+        21260,
+        26297,
+        25955,
+        27546,
+        28680
+      ],
+      "note": ""
+    },
+    {
+      "id": "coal_export_japan",
+      "title": "Coal exports to Japan",
+      "unit": "thousand tonnes",
+      "pdf_page": 88,
+      "printed_page": 72,
+      "topic": "trade",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        23252,
+        29798,
+        22177,
+        23081,
+        27679,
+        26970,
+        22740,
+        26474,
+        25603,
+        28635,
+        27280
+      ],
+      "note": ""
+    }
+  ],
+  "investor_context": {
+    "spklu": "Stations ≠ connectors, charging sessions, energy sold, or revenue. DKI Jakarta/SPKLU is a count for 2025, not per-capita or utilization. Annual kWh available only nationally.",
+    "coal": "Verified resources and reserves (geological) ≠ annual coal production (national series) and should not be classified as 2026 mine operating output.",
+    "bioenergy": "Plant capacity (kL per year) ≠ physical biodiesel fuel output (thousand kL/year). Export, domestic sales and production have different boundaries.",
+    "consumption": "Sectoral energy consumption includes traditional biomass in one table; excluded-traditional biomass commercial series are separate. National 2015–25, NOT province-by-province consumption."
+  }
+}
