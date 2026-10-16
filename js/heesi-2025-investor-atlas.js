@@ -32,16 +32,21 @@ function chartHistory(box,entries,unit){
   const leg=S("text",canvas,{x:80+(i%3)*260,y:309,fill:colors[i],"font-size":11});leg.textContent=s.title.slice(0,36);
  });
 }
-function viewMap(parent,atlas,geo,baselines,defaultId){
+function viewMap(parent,atlas,geo,baselines,defaultId,tech){
  parent.replaceChildren();parent.className="he25-atlas-view";
  const all=[...atlas.maps,
   {id:"installed_total",name:"Total installed power capacity",unit:"MW",pdf_page:134,printed_page:118,national_total:baselines.provincial.reported_total,coverage:"38 province electricity capacity including captive generation",values:baselines.provincial.locations},
   {id:"geothermal_potential",name:"Geothermal geological resources & reserves",unit:"MW",pdf_page:136,printed_page:120,national_total:baselines.geothermal_provincial.reported_total,coverage:"32 province geothermal resource rows, not commissioned plants",values:baselines.geothermal_provincial.locations}
  ];
+ const extra=(tech&&tech.id==="HEESI-2025-POWER-TECH-BY-PROVINCE"?tech.layers:[])
+  .filter(item=>item.id!=="total_power"&&item.id!=="solar_pp")
+  .map(item=>({id:item.id,name:item.name,unit:"MW",pdf_page:item.source_pdf_page,printed_page:item.source_pdf_page-16,
+               national_total:item.reported_total,coverage:"38-province 2025 actual installed nameplate power generation by named technology. ESDM dash represents zero published capacity.",values:item.values}));
+ all.push(...extra);
  const picker=E("select","he25-atlas-select");for(const m of all){const opt=E("option",null,m.name+" · "+m.unit);opt.value=m.id;picker.append(opt)}
  picker.value=all.some(x=>x.id===defaultId)?defaultId:"spklu";
  const subtitle=E("p","he25-atlas-subtitle");const layout=E("div","he25-atlas-layout"),map=E("div","he25-atlas-map"),side=E("aside","he25-atlas-side");
- layout.append(map,side);const source=E("div","he25-atlas-foot");parent.append(E("h4",null,"Provincial Investor Heatmap · switch between 10 indicators"),picker,subtitle,layout,source);
+ layout.append(map,side);const source=E("div","he25-atlas-foot");parent.append(E("h4",null,"Provincial Investor Heatmap · choose a 2025 indicator"),picker,subtitle,layout,source);
  let chosen=null;
  function update(){
   const layer=all.find(x=>x.id===picker.value);
@@ -145,13 +150,13 @@ async function init(where,options={}){
   E("p","he25-atlas-lead","Interactive sourced provincial indicators (SPKLU/SPBKLU, verified coal resources and reserves, biodiesel & bioethanol capacities, power and geothermal) plus national historical energy consumption, coal and trade volumes. Published 2026; not realtime."));
  const waiting=E("p","he25-atlas-foot","Loading independently reconciled 2025 handbook tables…");block.append(waiting);
  try{
-  const [a,base,geo]=await Promise.all([fetch(D,{cache:"no-store"}).then(r=>r.json()),fetch(H,{cache:"no-store"}).then(r=>r.json()),fetch(GEO,{cache:"force-cache"}).then(r=>r.json())]);
+  const [a,base,geo,tech]=await Promise.all([fetch(D,{cache:"no-store"}).then(r=>r.json()),fetch(H,{cache:"no-store"}).then(r=>r.json()),fetch(GEO,{cache:"force-cache"}).then(r=>r.json()),fetch("data/heesi-2025-power-technologies.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)]);
   if(a.id!=="HEESI-2025-INVESTOR-ATLAS"||geo.features?.length!==38)throw Error("Source schema not found");
   if(!block.isConnected)return;
-  waiting.textContent="10 provincial map datasets · "+a.series.length+" source-dated longitudinal series · map boundaries: 38 provinces · source ESDM HEESI 2025.";
+  waiting.textContent=(a.maps.length+2+(tech?.layers?.filter(x=>x.id!=="total_power"&&x.id!=="solar_pp").length||0))+" selectable province layers · "+a.series.length+" audited national time series · ESDM HEESI 2025.";
   const map=E("div","he25-atlas-mount"),chart=E("div","he25-atlas-mount");
   block.append(map,chart);
-  viewMap(map,a,geo,base,options.map||"spklu");
+  viewMap(map,a,geo,base,options.map||"spklu",tech);
   viewSeries(chart,a,options.topic||"consumption");
   const mix=E("div","he25-atlas-mount");block.append(mix);viewConsumptionMix(mix,a);
   const method=E("p","he25-atlas-method","Investor interpretation: source values represent sector conditions and geological/resource potential, not guarantees of investment returns. SPKLU consumption data is national-only in this handbook; provincial charging revenue is not inferred. Coal consumption by province is not provided by the source tables and is not fabricated. 'No data' is distinct from a reported zero. Always cite year, original units and source-page status.");
