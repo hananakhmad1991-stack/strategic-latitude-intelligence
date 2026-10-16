@@ -15,6 +15,14 @@ assert.equal(D.collections.pdns.length,4);
 assert.equal(D.collections.gateways.length,11);
 assert.equal(D.collections.bts.length,7);
 assert.equal(D.collections.splp_provinces.length,38);
+const geo=JSON.parse(fs.readFileSync("data/indonesia-provinces.geojson","utf8"));
+assert.equal(geo.features.length,38);
+const aliases={"Daerah Istimewa Yogyakarta":"DI Yogyakarta","Kepulauan Bangka Belitung":"Bangka Belitung"};
+const keyed=new Set(D.collections.splp_provinces.map(x=>x.province));
+assert.ok(geo.features.every(x=>keyed.has(aliases[x.properties.name]||x.properties.name)),"Every source province matches existing GIS boundary");
+assert.ok(geo.features.every(x=>["Polygon","MultiPolygon"].includes(x.geometry.type)),"All geometry features supported");
+assert.ok(geo.features.every(x=>x.geometry.coordinates?.length>0),"No invented points");
+
 assert.equal(D.collections.app_sla.length,12);
 assert.equal(D.collections.public_access_sites.length,9);
 assert.equal(D.collections.palapa.length,4);
@@ -65,6 +73,10 @@ assert.ok(html.includes("css/komdigi-digital-2025.css?v="));
 assert.match(chapter,/initSLIKomdigi2025\(komdigiRoot\)/);
 assert.match(chapter,/sections\[1\]\.append\(komdigiRoot\)/);
 assert.match(css,/@media\(max-width:650px\)/);
+assert.match(css,/kd25-province-shape/);
+assert.match(code,/data\/indonesia-provinces\.geojson/);
+assert.match(code,/mapped!==38/);
+assert.match(code,/aria-label.*getAttribute|aria-label/);
 assert.ok(html.indexOf("js/komdigi-digital-2025.js")<html.indexOf("js/research-chapters.js"),"Explorer loaded before chapter JS");
 class Dom {
  constructor(tag){this.tagName=tag;this.children=[];this.listeners={};this.attrs={};this._text="";this.className="";this.id="";this.dataset={};this.style={};this.value="";this.hidden=false;this.isConnected=true;
