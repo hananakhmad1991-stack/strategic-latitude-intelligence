@@ -1,0 +1,182 @@
+{
+  "dataset_id": "pln_statistics_2024_regional_asset_baseline",
+  "as_of": "2024-12-31",
+  "source_published": "2025-06",
+  "indexed_at": "2026-10-16",
+  "source": {
+    "title": "Statistik PLN 2024",
+    "url": "https://www.pln.co.id/webapi/media/file/webkorp/asset/Statistik2024.pdf",
+    "pages_total": 106,
+    "sha256": "3e3ae7aee96b2f29211a9abd9b2c04853a0790ecf54d3c6c42f0c121c7344c4d",
+    "extraction_origin": "GitHub Actions run 38885267384 downloaded 8,506,759-byte PDF; page-specific tables additionally checked against publisher rendered pages",
+    "run_url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38885267384",
+    "artifact_id": 12039427741
+  },
+  "national_actuals": [
+    {
+      "id": "transmission_circuit_km",
+      "label": "Installed transmission length",
+      "value": 72655.85,
+      "unit": "circuit-km",
+      "page": 6,
+      "table": "2024 report executive summary",
+      "kind": "observed_2024"
+    },
+    {
+      "id": "substation_transformer_mva",
+      "label": "Installed transmission substation transformers",
+      "value": 169306.64,
+      "unit": "MVA",
+      "page": 6,
+      "table": "Summary / Table 30",
+      "kind": "installed_rating_not_headroom"
+    },
+    {
+      "id": "distribution_transformer_mva",
+      "label": "Installed distribution transformers",
+      "value": 68978.99,
+      "unit": "MVA",
+      "page": 6,
+      "table": "Summary / Table 31",
+      "kind": "installed_rating_not_headroom"
+    },
+    {
+      "id": "java_bali_peak_mw",
+      "label": "Java-Bali 2024 interconnected system peak",
+      "value": 42635.66,
+      "unit": "MW",
+      "page": 5,
+      "table": "Executive summary",
+      "kind": "observed_system_peak"
+    },
+    {
+      "id": "non_java_bali_peak_mw",
+      "label": "Outside Java-Bali 2024 peak",
+      "value": 18652.14,
+      "unit": "MW",
+      "page": 5,
+      "table": "Executive summary",
+      "kind": "observed_multi_system_aggregate"
+    }
+  ],
+  "distribution_transformers": [
+    {
+      "province": "West Java",
+      "province_id": "jawa_barat",
+      "unit": "UID Jawa Barat",
+      "transformer_units": 62428,
+      "installed_mva": 10611.69,
+      "pdf_page": 74,
+      "printed_page": 58,
+      "definition": "20 kV distribution transformers under the reporting UID; not transmission-substation headroom",
+      "market": "Bekasi–Karawang"
+    },
+    {
+      "province": "Central Java",
+      "province_id": "jawa_tengah",
+      "unit": "Jawa Tengah row inside UID Jawa Tengah dan Yogyakarta",
+      "transformer_units": 131131,
+      "installed_mva": 7758.91,
+      "pdf_page": 74,
+      "printed_page": 58,
+      "definition": "20 kV distribution transformers; Java Central provincial subtotal excluding DI Yogyakarta",
+      "market": "Batang"
+    },
+    {
+      "province": "Riau Islands",
+      "province_id": "kepulauan_riau",
+      "unit": "Kepulauan Riau row inside UID Riau dan Kepulauan Riau",
+      "transformer_units": 2727,
+      "installed_mva": 355.44,
+      "pdf_page": 74,
+      "printed_page": 58,
+      "definition": "20 kV distribution transformers under UID; PT PLN Batam listed separately with no value in this table; NOT entire Batam capacity",
+      "market": "Batam"
+    }
+  ],
+  "transmission_substations": [
+    {
+      "reporting_unit": "UIT Jawa Bagian Barat",
+      "category": "transmission_unit",
+      "transformer_units": 405,
+      "installed_mva": 40480,
+      "pdf_page": 73,
+      "printed_page": 57,
+      "not_province": "Regional transmission operating area, not an exact West Java-only capacity or firm available MW."
+    },
+    {
+      "reporting_unit": "UIT Jawa Bagian Tengah",
+      "category": "transmission_unit",
+      "transformer_units": 562,
+      "installed_mva": 45944,
+      "pdf_page": 73,
+      "printed_page": 57,
+      "not_province": "Regional transmission operating area, not an exact Central Java-only capacity or firm available MW."
+    },
+    {
+      "reporting_unit": "UID Kepulauan Riau portion",
+      "category": "distribution_business_substation",
+      "transformer_units": 10,
+      "installed_mva": 350,
+      "pdf_page": 73,
+      "printed_page": 57,
+      "not_province": "UID reporting unit assets; excludes PT PLN Batam's separately reported substations."
+    },
+    {
+      "reporting_unit": "PT PLN Batam",
+      "category": "separate_subsidiary",
+      "transformer_units": 21,
+      "installed_mva": 870,
+      "pdf_page": 73,
+      "printed_page": 57,
+      "not_province": "Company reporting scope, not isolated site headroom. Do not automatically sum with UID or assign to a specific DC connection."
+    }
+  ],
+  "transmission_by_reporting_unit": [
+    {
+      "reporting_unit": "Kepulauan Riau under UID Riau dan Kepulauan Riau",
+      "total_circuit_km": 179.08,
+      "voltage_kv": 150,
+      "pdf_page": 71,
+      "printed_page": 55,
+      "scope": "UID operation only; does not characterize all Batam or regional network assets."
+    }
+  ],
+  "regional_connection": [
+    {
+      "regional_cluster": "Bekasi–Karawang",
+      "province": "West Java",
+      "distribution_id": "jawa_barat",
+      "supporting_transmission_reporting_unit": "UIT Jawa Bagian Barat (system reporting, nonexclusive)",
+      "available_headroom_mw": null,
+      "utility_connection_date": null,
+      "load_queue_mw": null
+    },
+    {
+      "regional_cluster": "Batang",
+      "province": "Central Java",
+      "distribution_id": "jawa_tengah",
+      "supporting_transmission_reporting_unit": "UIT Jawa Bagian Tengah (system reporting, nonexclusive)",
+      "available_headroom_mw": null,
+      "utility_connection_date": null,
+      "load_queue_mw": null
+    },
+    {
+      "regional_cluster": "Batam",
+      "province": "Riau Islands",
+      "distribution_id": "kepulauan_riau",
+      "supporting_transmission_reporting_unit": "PLN Batam company data separate from UID; no substation mapping",
+      "available_headroom_mw": null,
+      "utility_connection_date": null,
+      "load_queue_mw": null
+    }
+  ],
+  "quality_notes": [
+    "2024 observed baseline and 2025–2034 RUPTL planned additions must be presented in different series.",
+    "Installed MVA is equipment nameplate, not MW of unused firm capacity.",
+    "2024 regional units and province labels are different geographic scopes; do not attribute UIT totals to a province.",
+    "PLN Batam subsidiary assets and provincial UID assets should not be merged without an independently documented scope reconciliation.",
+    "Regional firm N-1 headroom, grid queue and project connection status are unavailable in this data.",
+    "PLN Statistics 2025 and complete RUPTL PDF were not downloaded by run 38885267384; any 2025 figures from other sources must retain distinct provenance."
+  ]
+}
