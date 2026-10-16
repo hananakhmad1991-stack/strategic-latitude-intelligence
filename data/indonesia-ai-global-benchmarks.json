@@ -184,6 +184,82 @@
         ]
       ],
       "caveat": "Selected regional examples from the narrative; different geographies; does not describe total ICT exports."
+    },
+    {
+      "id": "ai_talent_concentration_growth",
+      "title": "Growth in concentration of AI talent among LinkedIn members, 2019–2025",
+      "unit": "%",
+      "year": "2019–2025",
+      "source": "stanford",
+      "pdf_page": 214,
+      "provider": "LinkedIn",
+      "values": [
+        [
+          "United Arab Emirates",
+          121
+        ],
+        [
+          "India",
+          120
+        ],
+        [
+          "Saudi Arabia",
+          113
+        ],
+        [
+          "Cyprus",
+          112
+        ],
+        [
+          "Portugal",
+          111
+        ],
+        [
+          "Indonesia",
+          108
+        ],
+        [
+          "Brazil",
+          107
+        ],
+        [
+          "Iceland",
+          93
+        ],
+        [
+          "Uruguay",
+          90
+        ],
+        [
+          "Denmark",
+          89
+        ]
+      ],
+      "caveat": "Growth in share of LinkedIn members classified as AI talent; not share of national population or total employment. Selected countries from figure 4.4.22."
+    },
+    {
+      "id": "worldbank_colocation_capacity",
+      "title": "Global colocation data center capacity by country income group, June 2025",
+      "unit": "%",
+      "year": 2025,
+      "source": "worldbank",
+      "pdf_page": 17,
+      "provider": "World Bank report",
+      "values": [
+        [
+          "High income",
+          77
+        ],
+        [
+          "Upper-middle income",
+          18
+        ],
+        [
+          "Lower-middle income",
+          5
+        ]
+      ],
+      "caveat": "Global shares; low-income below 0.1% and therefore not plotted at a rounded precision. No Indonesia country-specific data center capacity here."
     }
   ],
   "observations": [
@@ -204,6 +280,15 @@
       "source": "worldbank",
       "pdf_page": 100,
       "kind": "narrative directional"
+    },
+    {
+      "metric": "Relative AI talent concentration growth",
+      "period": "2019–2025",
+      "value_text": "108% (LinkedIn member share)",
+      "country": "Indonesia",
+      "source": "stanford",
+      "pdf_page": 214,
+      "kind": "survey/platform-based"
     }
   ],
   "copyright": "Original interactive charts from transcribed factual data; no reproduction of third-party graphic artwork."
