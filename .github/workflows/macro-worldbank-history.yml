@@ -44,8 +44,17 @@ jobs:
             git fetch origin main
             if ! git rebase origin/main; then
               git rebase --abort || true
-              echo "WDI series changed concurrently; preserve latest and rerun next schedule"
-              exit 1
+              echo "Concurrent macro history publication changed baseline; rescan on latest main"
+              git reset --hard origin/main
+              python scripts/update_sli_macro_wdi.py
+              python scripts/validate_sli_macro.py
+              git add data/sli-macro-worldbank-history.json
+              if git diff --cached --quiet; then
+                echo "History already up to date"
+                exit 0
+              fi
+              git commit -m "data: refreshed WDI macro history after concurrent update [skip ci]"
+              continue
             fi
             if git push origin HEAD:main; then exit 0; fi
             sleep $((attempt * 3))
