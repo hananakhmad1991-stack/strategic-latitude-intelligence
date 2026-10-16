@@ -24,6 +24,20 @@
       "peak_mw": 20193.11,
       "source": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
       "definition": "Aggregates multiple isolated systems; NOT Batam peak or reserve"
+    },
+    {
+      "system": "Java–Bali interconnection",
+      "observed_year": 2024,
+      "peak_mw": 42635.66,
+      "source": "https://www.pln.co.id/webapi/media/file/webkorp/asset/Statistik2024.pdf",
+      "definition": "2024 measured system peak; NOT available grid headroom."
+    },
+    {
+      "system": "Outside Java–Bali aggregate",
+      "observed_year": 2024,
+      "peak_mw": 18652.14,
+      "source": "https://www.pln.co.id/webapi/media/file/webkorp/asset/Statistik2024.pdf",
+      "definition": "2024 measured system peak; NOT available grid headroom."
     }
   ],
   "regional_grid": [
@@ -69,5 +83,7 @@
     "incremental_mw": "hypothetical IT facility draw MW from SLI regional model",
     "headroom_mw": "not published in verified sources",
     "ratio": "incremental facility MW / system observed peak MW for scale context only; NOT a grid stress ratio"
-  }
+  },
+  "statistics_2024_regional_baseline": "./data/pln-statistics-regional-baseline-2024.json",
+  "verified_2024_note": "Actual provincial distribution-transformer ratings and UIT/PLN Batam transmission-substation reporting-unit capacities have been verified separately; they do not represent free grid headroom."
 }
