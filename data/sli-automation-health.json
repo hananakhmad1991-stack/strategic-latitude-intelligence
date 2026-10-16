@@ -1,24 +1,37 @@
 {
   "schema_version": "1.0",
-  "generated_at_utc": "2026-10-16T15:34:03Z",
+  "generated_at_utc": "2026-10-16T18:35:24Z",
   "audit_state": "complete",
   "scope": "All data/*.json files and all .github/workflows/*.yml files in main at audit time.",
   "source_semantics": "Workflow freshness does not guarantee source completeness or official verification. News candidates do not modify legal status/project operations. Static historical vintages are not current observations.",
   "transport": "Data-backed SLI pages fetch latest public GitHub main JSON with GitHub Pages fallback; if fallback occurs, freshness may lag.",
   "summary": {
-    "datasets": 99,
-    "workflows": 40,
-    "scheduled_workflows": 24,
-    "auto_numeric_datasets": 12,
-    "auto_discovery_datasets": 13,
-    "curated_or_archival_datasets": 73,
+    "datasets": 111,
+    "workflows": 44,
+    "scheduled_workflows": 26,
+    "auto_numeric_datasets": 13,
+    "auto_discovery_datasets": 14,
+    "curated_or_archival_datasets": 83,
     "other_datasets": 1,
-    "overdue_or_broken_datasets": 0,
-    "unmanaged_datasets": 73,
-    "workflow_failures_latest": 0,
+    "overdue_or_broken_datasets": 1,
+    "unmanaged_datasets": 83,
+    "workflow_failures_latest": 1,
     "workflow_status_api_errors": 0
   },
-  "attention": [],
+  "attention": [
+    {
+      "kind": "dataset",
+      "id": "data/sli-bnpb-provincial-2025.json",
+      "status": "workflow_failure",
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors."
+    },
+    {
+      "kind": "workflow",
+      "id": "sli-bnpb-provincial-sync.yml",
+      "status": "failure",
+      "note": "Latest recorded GitHub Actions run not successful."
+    }
+  ],
   "api_errors": {},
   "workflows": [
     {
@@ -80,11 +93,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-16T15:28:16Z",
-        "updated_at": "2026-10-16T15:28:33Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38924192758",
+        "created_at": "2026-10-16T18:27:48Z",
+        "updated_at": "2026-10-16T18:28:06Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38947526586",
         "event": "schedule",
-        "workflow_run_id": 38924192758
+        "workflow_run_id": 38947526586
       }
     },
     {
@@ -167,11 +180,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-16T13:09:17Z",
-        "updated_at": "2026-10-16T13:09:46Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38905681604",
+        "created_at": "2026-10-16T15:55:40Z",
+        "updated_at": "2026-10-16T15:56:12Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38927867412",
         "event": "schedule",
-        "workflow_run_id": 38905681604
+        "workflow_run_id": 38927867412
       }
     },
     {
@@ -222,11 +235,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-16T14:46:55Z",
-        "updated_at": "2026-10-16T14:47:12Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38918546331",
+        "created_at": "2026-10-16T17:41:19Z",
+        "updated_at": "2026-10-16T17:41:37Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38941597493",
         "event": "schedule",
-        "workflow_run_id": 38918546331
+        "workflow_run_id": 38941597493
       }
     },
     {
@@ -276,11 +289,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-16T15:22:59Z",
-        "updated_at": "2026-10-16T15:23:16Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38923472393",
-        "event": "push",
-        "workflow_run_id": 38923472393
+        "created_at": "2026-10-16T16:10:27Z",
+        "updated_at": "2026-10-16T16:10:42Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38929837577",
+        "event": "schedule",
+        "workflow_run_id": 38929837577
       }
     },
     {
@@ -298,11 +311,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-16T12:37:45Z",
-        "updated_at": "2026-10-16T12:39:13Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38901856873",
+        "created_at": "2026-10-16T18:32:20Z",
+        "updated_at": "2026-10-16T18:33:46Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38948108799",
         "event": "schedule",
-        "workflow_run_id": 38901856873
+        "workflow_run_id": 38948108799
       }
     },
     {
@@ -375,11 +388,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-16T12:45:23Z",
-        "updated_at": "2026-10-16T12:46:01Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38902771925",
+        "created_at": "2026-10-16T15:36:25Z",
+        "updated_at": "2026-10-16T15:37:03Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38925306706",
         "event": "schedule",
-        "workflow_run_id": 38902771925
+        "workflow_run_id": 38925306706
       }
     },
     {
@@ -570,11 +583,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-16T14:50:25Z",
-        "updated_at": "2026-10-16T14:50:49Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38919021757",
+        "created_at": "2026-10-16T17:46:25Z",
+        "updated_at": "2026-10-16T17:46:49Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38942250633",
         "event": "schedule",
-        "workflow_run_id": 38919021757
+        "workflow_run_id": 38942250633
       }
     },
     {
@@ -624,12 +637,68 @@
       "last_run": {
         "status": "in_progress",
         "conclusion": null,
-        "created_at": "2026-10-16T15:33:56Z",
-        "updated_at": "2026-10-16T15:34:00Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38924972184",
-        "event": "push",
-        "workflow_run_id": 38924972184
+        "created_at": "2026-10-16T18:35:17Z",
+        "updated_at": "2026-10-16T18:35:21Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38948489484",
+        "event": "schedule",
+        "workflow_run_id": 38948489484
       }
+    },
+    {
+      "id": "sli-bnpb-provincial-sync.yml",
+      "name": "SLI BNPB Provincial Disaster Sync",
+      "scheduled": true,
+      "cron": [
+        "17 3 * * 1"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 168,
+      "datasets_written": [
+        "data/sli-bnpb-provincial-2025.json"
+      ],
+      "last_run": {
+        "status": "completed",
+        "conclusion": "failure",
+        "created_at": "2026-10-16T18:21:16Z",
+        "updated_at": "2026-10-16T18:21:26Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38946682528",
+        "event": "push",
+        "workflow_run_id": 38946682528
+      }
+    },
+    {
+      "id": "sli-climate-monitoring.yml",
+      "name": "SLI Climate Environment Monitoring",
+      "scheduled": true,
+      "cron": [
+        "32 */6 * * *"
+      ],
+      "manual_dispatch": true,
+      "expected_interval_hours": 6.0,
+      "datasets_written": [
+        "data/sli-climate-monitoring.json"
+      ],
+      "last_run": null
+    },
+    {
+      "id": "sli-glossary-qa.yml",
+      "name": "SLI Unified Glossary & Appendix QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "sli-intelligence-labs-qa.yml",
+      "name": "SLI Intelligence Labs QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
     },
     {
       "id": "sli-live-delivery-qa.yml",
@@ -779,7 +848,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-16T14:53:40.215364Z",
-      "age_hours_since_record": 0.67,
+      "age_hours_since_record": 3.7,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-16T14:53:40.215364+00:00"
       },
@@ -846,10 +915,10 @@
       "priority": "high",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-16T15:28:21.447982Z",
-      "age_hours_since_record": 0.09,
+      "last_record_utc": "2026-10-16T18:27:53.486294Z",
+      "age_hours_since_record": 0.13,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-16T15:28:21.447982+00:00"
+        "checked_at_utc": "2026-10-16T18:27:53.486294+00:00"
       },
       "scheduled_writers": [
         "commodity-market-prices.yml"
@@ -898,7 +967,7 @@
       "status": "recent_check",
       "last_record_key": "generated_at_utc",
       "last_record_utc": "2026-10-16T03:00:25.247645Z",
-      "age_hours_since_record": 12.56,
+      "age_hours_since_record": 15.58,
       "publisher_metadata": {
         "generated_at_utc": "2026-10-16T03:00:25.247645+00:00"
       },
@@ -916,10 +985,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-16T13:09:23.879635Z",
-      "age_hours_since_record": 2.41,
+      "last_record_utc": "2026-10-16T15:55:47.629206Z",
+      "age_hours_since_record": 2.66,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-16T13:09:23.879635+00:00"
+        "checked_at_utc": "2026-10-16T15:55:47.629206+00:00"
       },
       "scheduled_writers": [
         "domestic-energy-watch.yml"
@@ -935,10 +1004,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-16T13:09:23.879635Z",
-      "age_hours_since_record": 2.41,
+      "last_record_utc": "2026-10-16T15:55:47.629206Z",
+      "age_hours_since_record": 2.66,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-16T13:09:23.879635+00:00"
+        "checked_at_utc": "2026-10-16T15:55:47.629206+00:00"
       },
       "scheduled_writers": [
         "domestic-energy-watch.yml"
@@ -955,7 +1024,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-16T15:22:49.020876Z",
-      "age_hours_since_record": 0.19,
+      "age_hours_since_record": 3.21,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-16T15:22:49.020876+00:00"
       },
@@ -988,10 +1057,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-16T14:47:01.410778Z",
-      "age_hours_since_record": 0.78,
+      "last_record_utc": "2026-10-16T17:41:24.467008Z",
+      "age_hours_since_record": 0.9,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-16T14:47:01.410778+00:00"
+        "checked_at_utc": "2026-10-16T17:41:24.467008+00:00"
       },
       "scheduled_writers": [
         "energy-biofuels-watch.yml"
@@ -1025,7 +1094,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-16T13:25:27.459532Z",
-      "age_hours_since_record": 2.14,
+      "age_hours_since_record": 5.17,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-16T13:25:27.459532+00:00"
       },
@@ -1060,10 +1129,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-16T15:23:05.847467Z",
-      "age_hours_since_record": 0.18,
+      "last_record_utc": "2026-10-16T16:10:33.741132Z",
+      "age_hours_since_record": 2.41,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-16T15:23:05.847467+00:00"
+        "checked_at_utc": "2026-10-16T16:10:33.741132+00:00"
       },
       "scheduled_writers": [
         "energy-ev-watch.yml"
@@ -1113,11 +1182,11 @@
       "priority": "medium",
       "status": "recent_check",
       "last_record_key": "generated_at_utc",
-      "last_record_utc": "2026-10-16T12:39:07.685246Z",
-      "age_hours_since_record": 2.92,
+      "last_record_utc": "2026-10-16T18:33:39.759039Z",
+      "age_hours_since_record": 0.03,
       "publisher_metadata": {
-        "generated_at_utc": "2026-10-16T12:39:07.685246+00:00",
-        "date_wib": "2026-10-16"
+        "generated_at_utc": "2026-10-16T18:33:39.759039+00:00",
+        "date_wib": "2026-10-17"
       },
       "scheduled_writers": [
         "energy-events-watch.yml"
@@ -1187,7 +1256,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-16T13:15:46.421240Z",
-      "age_hours_since_record": 2.3,
+      "age_hours_since_record": 5.33,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-16T13:15:46.421240+00:00"
       },
@@ -1223,7 +1292,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-16T13:18:32.691895Z",
-      "age_hours_since_record": 2.26,
+      "age_hours_since_record": 5.28,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-16T13:18:32.691895+00:00"
       },
@@ -1259,7 +1328,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-16T02:04:41.160315Z",
-      "age_hours_since_record": 13.49,
+      "age_hours_since_record": 16.51,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-16T02:04:41.160315+00:00"
       },
@@ -1312,10 +1381,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-16T12:45:29.396535Z",
-      "age_hours_since_record": 2.81,
+      "last_record_utc": "2026-10-16T15:36:30.528467Z",
+      "age_hours_since_record": 2.98,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-16T12:45:29.396535+00:00"
+        "checked_at_utc": "2026-10-16T15:36:30.528467+00:00"
       },
       "scheduled_writers": [
         "geopolitical-energy-watch.yml"
@@ -1331,10 +1400,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-16T12:45:29.396535Z",
-      "age_hours_since_record": 2.81,
+      "last_record_utc": "2026-10-16T15:36:30.528467Z",
+      "age_hours_since_record": 2.98,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-16T12:45:29.396535+00:00"
+        "checked_at_utc": "2026-10-16T15:36:30.528467+00:00"
       },
       "scheduled_writers": [
         "geopolitical-energy-watch.yml"
@@ -1555,7 +1624,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-16T13:03:42.917187Z",
-      "age_hours_since_record": 2.51,
+      "age_hours_since_record": 5.53,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-16T13:03:42.917187+00:00"
       },
@@ -1789,7 +1858,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-16T13:48:05Z",
-      "age_hours_since_record": 1.77,
+      "age_hours_since_record": 4.79,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-16T13:48:05Z"
       },
@@ -1807,10 +1876,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "generated_at_utc",
-      "last_record_utc": "2026-10-16T14:50:33.545376Z",
-      "age_hours_since_record": 0.72,
+      "last_record_utc": "2026-10-16T17:46:32.638284Z",
+      "age_hours_since_record": 0.81,
       "publisher_metadata": {
-        "generated_at_utc": "2026-10-16T14:50:33.545376+00:00"
+        "generated_at_utc": "2026-10-16T17:46:32.638284+00:00"
       },
       "scheduled_writers": [
         "research-signal-radar.yml"
@@ -1925,7 +1994,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-16T01:40:15.070181Z",
-      "age_hours_since_record": 13.9,
+      "age_hours_since_record": 16.92,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-16T01:40:15.070181+00:00"
       },
@@ -2078,6 +2147,149 @@
       "error": null
     },
     {
+      "id": "data/sli-bnpb-provincial-2025.json",
+      "group": "Other / Reference",
+      "mode": "automated_numeric",
+      "priority": "normal",
+      "status": "workflow_failure",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [
+        "sli-bnpb-provincial-sync.yml"
+      ],
+      "cadence_hours": 168,
+      "note": "Automatic numeric-source ingestion; check publisher date and source errors.",
+      "error": null
+    },
+    {
+      "id": "data/sli-climate-asset-coordinate-review.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-climate-environment.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-climate-monitoring.json",
+      "group": "Other / Reference",
+      "mode": "automated_discovery",
+      "priority": "normal",
+      "status": "freshness_unknown",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [
+        "sli-climate-monitoring.yml"
+      ],
+      "cadence_hours": 6.0,
+      "note": "Source/news candidate monitor, not a verified project or legal status change.",
+      "error": null
+    },
+    {
+      "id": "data/sli-climate-observations.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-climate-official-alerts.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-17T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-17"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-climate-spatial-scoring-policy.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-geopolitical-indicator-library.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-labs-official-context.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-16T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-16"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
       "id": "data/sli-macro-indonesia-2026.json",
       "group": "Trade & Markets",
       "mode": "curated_snapshot",
@@ -2117,7 +2329,7 @@
       "status": "recent_check",
       "last_record_key": "last_success_utc",
       "last_record_utc": "2026-10-16T15:00:41Z",
-      "age_hours_since_record": 0.56,
+      "age_hours_since_record": 3.58,
       "publisher_metadata": {
         "last_success_utc": "2026-10-16T15:00:41Z"
       },
@@ -2143,6 +2355,23 @@
       "scheduled_writers": [],
       "cadence_hours": null,
       "note": "Changes to in-force/amended/repealed status require official primary legal document, not news headline.",
+      "error": null
+    },
+    {
+      "id": "data/sli-project-registry.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": "as_of",
+      "last_record_utc": "2026-10-15T00:00:00Z",
+      "age_hours_since_record": null,
+      "publisher_metadata": {
+        "as_of": "2026-10-15"
+      },
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
       "error": null
     },
     {
@@ -2187,7 +2416,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-16T15:31:07Z",
-      "age_hours_since_record": 0.05,
+      "age_hours_since_record": 3.07,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-16T15:31:07Z"
       },
@@ -2201,6 +2430,36 @@
     {
       "id": "data/sli-sector-regulatory-ria-deepdives.json",
       "group": "Governance & Regulations",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-unified-glossary.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-verified-climate-asset-coordinates.json",
+      "group": "Other / Reference",
       "mode": "curated_snapshot",
       "priority": "normal",
       "status": "curated_not_automated",
