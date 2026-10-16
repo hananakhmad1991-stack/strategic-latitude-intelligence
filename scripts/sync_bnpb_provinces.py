@@ -1,44 +1,80 @@
 #!/usr/bin/env python3
-"""Normalize BNPB open datastore province totals; fail closed on schema/remote errors."""
-import json, urllib.request, urllib.parse, pathlib, datetime
-BASE=pathlib.Path(__file__).resolve().parents[1]
-RESOURCE="df39e8c3-117e-40fa-b518-ff1037743955"
-URL="https://data.bnpb.go.id/api/3/action/datastore_search"
-DEST=BASE/"data/sli-bnpb-provincial-2025.json"
-COLUMNS={"BANJIR":"flood","CUACA EKSTREM":"extreme_weather","KEBAKARAN HUTAN DAN LAHAN":"wildfire","KEKERINGAN":"drought","TANAH LONGSOR":"landslide","GELOMBANG PASANG DAN ABRASI":"coastal"}
-def fetch(offset):
-    query=urllib.parse.urlencode({"resource_id":RESOURCE,"limit":100,"offset":offset})
-    req=urllib.request.Request(URL+"?"+query,headers={"User-Agent":"SLI-open-research/1.0"})
-    with urllib.request.urlopen(req,timeout=25) as response:
-        payload=json.load(response)
-    if payload.get("success") is not True or not isinstance(payload.get("result",{}).get("records"),list):
-        raise ValueError("BNPB CKAN datastore returned invalid response")
-    return payload["result"]
-def run():
-    rows=[];offset=0;seen=set()
-    while True:
-        page=fetch(offset);records=page["records"]
-        if not records:break
-        for r in records:
-            prov=str(r.get("Provinsi","")).strip()
-            if not prov or prov.lower() in ("indonesia","total","jumlah"):continue
-            code=str(r.get("Kode Wilayah Provinsi","")).strip()
-            if prov.lower() in seen:raise ValueError("Duplicate province: "+prov)
-            seen.add(prov.lower())
-            totals={}
-            for source,key in COLUMNS.items():
-                v=r.get(source)
-                if v in (None,"","-"):totals[key]=None
-                else:
-                    n=int(str(v).replace(".","").replace(",",""))
-                    if n<0:raise ValueError("Negative count")
-                    totals[key]=n
-            lat=r.get("Latitude");lon=r.get("Longitude")
-            rows.append({"province":prov,"code":code,"administrative_centroid":[float(lat),float(lon)] if lat not in (None,"") and lon not in (None,"") else None,"events":totals,"year":2025})
-        offset+=len(records)
-        if len(records)<100 or offset>=500:break
-    if len(rows)<30 or len(rows)>45:raise ValueError("Unexpected province count: "+str(len(rows)))
-    payload={"schema":"sli-bnpb-provincial-disasters-v1","year":2025,"source":"BNPB Satu Data / DIBI","resource_id":RESOURCE,"source_url":"https://data.bnpb.go.id/dataset/kompilasi-data-kejadian-dan-dampak-bencana-2025/resource/"+RESOURCE,"retrieved_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"spatial_basis":"province administrative centroid, not hazard or asset location","warning":"2025 province annual event counts are historical frequency, not facility exposure, probability, event severity or hazard raster.","records":rows}
-    DEST.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    print("Validated provinces",len(rows))
-if __name__=="__main__":run()
+"""Download BNPB official 2025 province XLSX, parse safely, and publish only validated counts."""
+import datetime as dt
+import io
+import json
+import pathlib
+import re
+import urllib.request
+import zipfile
+import xml.etree.ElementTree as ET
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+OUT = ROOT / "data/sli-bnpb-provincial-2025.json"
+URL = "https://data.bnpb.go.id/dataset/58878b43-41b5-4ffb-b851-c6d8c8c4d438/resource/df39e8c3-117e-40fa-b518-ff1037743955/download/jumlah-kejadian-bencana-menurut-provinsi-2025.xlsx"
+NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+FIELDS = {"flood": ("banjir",), "extreme_weather": ("cuaca ekstrem","cuaca ekstrim"), "wildfire": ("kebakaran hutan", "karhutla"), "drought": ("kekeringan",), "landslide": ("tanah longsor",), "coastal": ("gelombang pasang","abrasi")}
+def normalize(v):
+    return re.sub(r"\s+"," ",str(v or "").lower().strip())
+def colindex(ref):
+    letters=re.match(r"[A-Z]+",ref).group()
+    n=0
+    for c in letters:n=n*26+ord(c)-64
+    return n-1
+def parse_xlsx(raw):
+    with zipfile.ZipFile(io.BytesIO(raw)) as z:
+        strings=[]
+        if "xl/sharedStrings.xml" in z.namelist():
+            root=ET.fromstring(z.read("xl/sharedStrings.xml"))
+            strings=["".join(t.text or "" for t in x.findall(".//m:t",NS)) for x in root.findall("m:si",NS)]
+        sheets=[x for x in z.namelist() if re.fullmatch(r"xl/worksheets/sheet\d+\.xml",x)]
+        if not sheets:raise ValueError("XLSX has no worksheet")
+        for name in sheets:
+            root=ET.fromstring(z.read(name)); rows=[]
+            for row in root.findall(".//m:sheetData/m:row",NS):
+                cells={}
+                for c in row.findall("m:c",NS):
+                    at=c.get("r");v=c.find("m:v",NS)
+                    inline=c.find("m:is",NS)
+                    text=v.text if v is not None else ("".join(t.text or "" for t in inline.findall(".//m:t",NS)) if inline is not None else "")
+                    if c.get("t")=="s" and text:text=strings[int(text)]
+                    if at:cells[colindex(at)]=text
+                if cells:rows.append([cells.get(i,"") for i in range(max(cells)+1)])
+            yield name,rows
+def find_table(rows):
+    for idx,row in enumerate(rows[:25]):
+        labels=[normalize(x) for x in row]
+        province_col=next((i for i,v in enumerate(labels) if "provinsi" in v),None)
+        if province_col is None:continue
+        mapping={}
+        for key,terms in FIELDS.items():
+            c=next((i for i,v in enumerate(labels) if any(t in v for t in terms)),None)
+            if c is not None:mapping[key]=c
+        if len(mapping)<3:continue
+        data=[]
+        for row in rows[idx+1:]:
+            province=str(row[province_col]).strip() if len(row)>province_col else ""
+            if not province or normalize(province) in ("total","jumlah","indonesia"):continue
+            if not re.search(r"[A-Za-z]",province):continue
+            events={}
+            for key,c in mapping.items():
+                v=str(row[c]).strip() if len(row)>c else ""
+                if v in ("","-","n/a"):events[key]=None;continue
+                if not re.fullmatch(r"\d+(?:[.,]\d{3})*",v):raise ValueError(f"Unexpected value {v!r} for {province} / {key}")
+                events[key]=int(v.replace(".","").replace(",",""))
+            data.append({"province":province,"year":2025,"events":events})
+        if 30<=len(data)<=45 and len(set(normalize(x["province"]) for x in data))==len(data):
+            return data,mapping
+    raise ValueError("Official workbook did not contain a validated province/hazard table")
+def main():
+    request=urllib.request.Request(URL,headers={"User-Agent":"StrategicLatitudeIntelligence/1.0 public research"})
+    with urllib.request.urlopen(request,timeout=35) as response:raw=response.read(8_000_000)
+    if not raw.startswith(b"PK"):raise ValueError("Official response is not XLSX")
+    errors=[]
+    for sheet,rows in parse_xlsx(raw):
+        try: records,mapping=find_table(rows);break
+        except ValueError as e:errors.append(str(e))
+    else:raise ValueError("; ".join(errors))
+    payload={"schema":"sli-bnpb-provincial-disasters-v1","year":2025,"status":"verified_official_workbook_extraction","source_url":URL,"retrieved_at_utc":dt.datetime.now(dt.timezone.utc).isoformat(),"sheet":sheet,"columns_used":mapping,"spatial_basis":"province-level annual incident counts, not asset coordinate or hazard class","records":records,"warning":"Historical frequencies not a site-level Low/Moderate/High climate-risk estimate."}
+    OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    print("BNPB records accepted",len(records))
+if __name__=="__main__":main()
