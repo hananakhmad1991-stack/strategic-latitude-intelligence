@@ -1,0 +1,31 @@
+name: SLI Climate Environment Monitoring
+on:
+  schedule:
+    - cron: '32 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sli-climate-monitoring
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch attributed environmental monitoring leads
+        run: python scripts/refresh_climate_monitoring.py
+      - name: Commit only changed snapshot
+        run: |
+          git config user.name "sli-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/sli-climate-monitoring.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: refresh source-attributed climate environmental leads"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
