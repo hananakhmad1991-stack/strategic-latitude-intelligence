@@ -39,8 +39,8 @@ function draw(){
  const ticks=sub.length>40?8:sub.length>18?9:sub.length>9?6:sub.length;
  const tickIndexes=new Set([0,sub.length-1]);for(let i=0;i<ticks;i++)tickIndexes.add(Math.round(i*(sub.length-1)/Math.max(1,ticks-1)));
  sub.forEach((p,i)=>{if(tickIndexes.has(i))svg+='<text x="'+px(i)+'" y="'+(H-24)+'" text-anchor="middle" fill="#b9cbd8" font-size="11">'+esc(p.x)+'</text>'});
- svg+='<text x="'+(L+8)+'" y="18" fill="#dbbc83" font-size="12">'+esc(s.unit||'')+'</text></svg>';
- $('graph').outerHTML='<svg id="graph" class="chart" viewBox="0 0 900 400" role="img" aria-label="Historical macro time-series chart">'+svg.slice(svg.indexOf('>')+1);
+ svg+='<text x="'+(L+8)+'" y="18" fill="#dbbc83" font-size="12">'+esc(s.unit||'')+'</text>';
+ $('graph').innerHTML=svg;
  $('graph').querySelectorAll('.datapoint').forEach(el=>{const show=()=>{let p=sub[Number(el.dataset.i)];$('hit').textContent=p.x+' · '+fmt(p.y,3)+' '+s.unit};el.addEventListener('click',show);el.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();show()}})});
  $('hit').textContent='Source series: '+all.length+' observations · display '+sub.length+' · '+sub[0]?.x+' to '+sub.at(-1)?.x+'. Select a point.';
  let src=selectedDataset==='national'?snap.sources[s.source_id]:null;
