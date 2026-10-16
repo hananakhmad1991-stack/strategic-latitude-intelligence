@@ -1,0 +1,1137 @@
+{
+  "version": "2026-10-16.1",
+  "as_of": "2026-10-16",
+  "title": "SLI Public Policy Evaluation — ex-ante, implementation, ex-post where evidence supports",
+  "notice": "Preliminary document-based analytical assessments, NOT completed field evaluations. No interviews, surveys, regression, CBA or causal impact evaluation conducted. Missing data remain null. Commentary, assumptions and policy-stage labels are editorial hypotheses, not legal or policy-performance determinations.",
+  "methodology": {
+    "selection": "Apply only relevant methods by policy age, causal question and verified empirical data; omit irrelevant stages/methods.",
+    "time_phases": [
+      {
+        "id": "ex_ante",
+        "title": "Ex-ante / formative",
+        "why": "Policy design / next amendment, prospective alternatives"
+      },
+      {
+        "id": "during",
+        "title": "Process / implementation",
+        "why": "Issuing agencies, inputs, output conversion and field barriers"
+      },
+      {
+        "id": "ex_post",
+        "title": "Ex-post / summative",
+        "why": "Outcomes after enough time, appropriate comparison and robust data"
+      }
+    ],
+    "dunn_criteria": [
+      {
+        "id": "effectiveness",
+        "label": "Efektivitas",
+        "prompt": "Tujuan tercapai?"
+      },
+      {
+        "id": "efficiency",
+        "label": "Efisiensi",
+        "prompt": "Biaya sumber daya per hasil?"
+      },
+      {
+        "id": "adequacy",
+        "label": "Kecukupan",
+        "prompt": "Masalah riil terpecahkan?"
+      },
+      {
+        "id": "equity",
+        "label": "Pemerataan",
+        "prompt": "Siapa mendapat manfaat dan menanggung biaya?"
+      },
+      {
+        "id": "responsiveness",
+        "label": "Responsivitas",
+        "prompt": "Apakah pihak terdampak dilayani?"
+      }
+    ],
+    "evaluation_statuses": {
+      "not_yet_due": "Target/tenggat belum tercapai; bukan kegagalan",
+      "insufficient": "Bukti empiris belum mencukupi",
+      "design_inference": "Penilaian analisis koherensi/desain, bukan dampak terukur",
+      "not_applicable": "Kriteria tidak tepat untuk jenis kasus ini"
+    },
+    "guardrails": [
+      "Ex-post requires realized observations and causal inference design; historical actual without attribution not causal effect.",
+      "Quantitative attainment only when actual and target have same year, geography, unit, definition and scope; no automatic interpolation.",
+      "CBA requires attributable cost, benefits and counterfactual; if missing use non-monetized assessment.",
+      "Participation is not claimed without actual surveys, interviews or minutes.",
+      "Process evaluation is not the same as policy result; ex-ante analysis can revisit existing policy alternatives but is not pre-enactment.",
+      "WTO dispute status is a legal procedural event and cannot be graded as if it is an Indonesian administrative project."
+    ],
+    "methods": [
+      {
+        "id": "ex_ante_ria",
+        "name": "RIA / ex-ante",
+        "category": "ex_ante",
+        "description": "Kebutuhan masalah, alternatif kebijakan, biaya-manfaat dan risiko sebelum disahkan atau untuk revisi berikutnya.",
+        "guardrail": "Tanpa data dan alternatif terukur, hasil hanya screen kualitatif; tidak disebut RIA formal."
+      },
+      {
+        "id": "process_evaluation",
+        "name": "Evaluasi proses / implementasi",
+        "category": "during",
+        "description": "Pantau penerbitan aturan turunan, pembagian kewenangan, realisasi anggaran, kegiatan dan deliverable.",
+        "guardrail": "Penerbitan instrumen bukan bukti outcome masyarakat."
+      },
+      {
+        "id": "ex_post",
+        "name": "Evaluasi hasil / ex-post",
+        "category": "ex_post",
+        "description": "Uji hasil dan dampak setelah jangka implementasi yang cukup dengan kelompok pembanding dan data aktual.",
+        "guardrail": "Korelasi sebelum-sesudah tanpa counterfactual bukan bukti kausal."
+      },
+      {
+        "id": "quantitative",
+        "name": "Analisis kuantitatif",
+        "category": "evidence",
+        "description": "Seri waktu, denominator, baseline, target dan aktual yang setara; estimasi statistik jika desain memungkinkan.",
+        "guardrail": "Jangan menghitung capaian dari indikator dengan basis satuan/definisi berbeda."
+      },
+      {
+        "id": "qualitative",
+        "name": "Analisis kualitatif",
+        "category": "evidence",
+        "description": "Telaah peraturan, wawancara terstruktur, konsultasi, coding tematik dan studi kasus.",
+        "guardrail": "Pandangan analis tidak dianggap hasil wawancara yang belum dilakukan."
+      },
+      {
+        "id": "mixed_methods",
+        "name": "Mixed methods",
+        "category": "evidence",
+        "description": "Triangulasi outcome kuantitatif dengan kepatuhan proses, stakeholder dan dokumen primer.",
+        "guardrail": "Label mixed methods adalah rekomendasi sampai kedua sisi pengumpulan data selesai."
+      },
+      {
+        "id": "cost_benefit",
+        "name": "Cost–Benefit Analysis",
+        "category": "economics",
+        "description": "PV biaya dan manfaat, distribusi, discount rate, skenario dan sensitivitas.",
+        "guardrail": "Tidak menghitung NPV/BCR tanpa actual unit costs, benefit monetization dan horizon."
+      },
+      {
+        "id": "participatory",
+        "name": "Evaluasi partisipatif",
+        "category": "evidence",
+        "description": "Pengguna, pelaku usaha, pemda, masyarakat terdampak dan regulator dilibatkan secara terdokumentasi.",
+        "guardrail": "Tidak mengklaim responsivitas hanya dari konferensi pers resmi."
+      },
+      {
+        "id": "impact_pathway",
+        "name": "Impact pathway / theory of change",
+        "category": "causal_chain",
+        "description": "Input → aktivitas → output → outcome → dampak, beserta asumsi penghubungnya.",
+        "guardrail": "Diagram kausal adalah hipotesis, bukan atribusi dampak terukur."
+      }
+    ],
+    "source_catalog": [
+      {
+        "id": "pln_ruptl_excerpt",
+        "label": "RUPTL PLN 2025–2034 — cuplikan 100 halaman, angka target halaman PDF 5",
+        "url": "./data/pln-ruptl-uploaded-excerpt-2025-2034.json",
+        "scope": "approved_plan_and_design_rules_not_actuals"
+      },
+      {
+        "id": "pln_statistics_2024",
+        "label": "PLN Statistics 2024 — baseline aset dan sistem",
+        "url": "./data/pln-statistics-regional-baseline-2024.json",
+        "scope": "historical_asset_inventory_not_policy_effect"
+      },
+      {
+        "id": "law_graph",
+        "label": "SLI Policy Legal Register — tautan JDIH/peraturan nasional",
+        "url": "./data/sli-policy-regulatory-graph-2026.json",
+        "scope": "normative_instruments_not_outcome_measurements"
+      },
+      {
+        "id": "wto",
+        "label": "WTO DS592 — official case register",
+        "url": "https://www.wto.org/english/tratop_e/dispu_e/cases_e/ds592_e.htm",
+        "scope": "procedural_case_not_domestic_repeal"
+      }
+    ]
+  },
+  "profiles": [
+    {
+      "id": "electricity_grid",
+      "title": "Pelaksanaan RUPTL PLN 2025–2034",
+      "sector": "electricity",
+      "stage": "during",
+      "policy_type": "approved_plan",
+      "summary": "RUPTL menetapkan kapasitas pembangkit/penyimpanan dan jaringan untuk 2025–2034, tetapi dokumen rencana bukan bukti kapasitas sudah beroperasi. Evaluasi yang sah pada 2026 adalah kesiapan implementasi dan verifikasi milestone.",
+      "refs": [
+        "kepmen188",
+        "uu30power",
+        "pp40"
+      ],
+      "source_data_refs": [
+        "pln_ruptl_excerpt",
+        "pln_statistics_2024"
+      ],
+      "period": "2025–2034",
+      "last_evidence_year": 2024,
+      "question": "Seberapa cepat proyek listrik yang direncanakan berubah menjadi jaringan/pembangkit yang benar-benar beroperasi pada wilayah pertumbuhan industri dan AI?",
+      "methods": [
+        {
+          "id": "process_evaluation",
+          "usage": "priority",
+          "why": "Jadwal konstruksi, pengadaan, N-1, penyambungan dan realisasi investasi harus dicek tahunan."
+        },
+        {
+          "id": "impact_pathway",
+          "usage": "priority",
+          "why": "Rencana jaringan harus ditelusuri hingga penyambungan beban dan keandalan aktual."
+        },
+        {
+          "id": "quantitative",
+          "usage": "conditional",
+          "why": "Butuh stok 2024, realisasi per tahun dan target regional berbasis definisi sama."
+        },
+        {
+          "id": "qualitative",
+          "usage": "conditional",
+          "why": "Wawancara PLN/PLN Batam, pengembang kawasan dan regulator soal bottleneck."
+        },
+        {
+          "id": "cost_benefit",
+          "usage": "deferred",
+          "why": "Belum ada capex per GI/feeder, biaya keterlambatan atau manfaat keandalan yang terukur."
+        }
+      ],
+      "pathway": {
+        "input": "Pengesahan RUPTL, pembiayaan dan sumber daya PLN/IPPs",
+        "activities": "Tender, studi jaringan, pengadaan EPC, konstruksi gardu/transmisi/pembangkit",
+        "output": "MW dan MVA tambahan selesai, km-sirkuit beroperasi, sambungan pelanggan terenergize",
+        "outcome": "Peningkatan firm service dan keandalan beban industri, pengurangan risiko bottleneck",
+        "impact": "Ketahanan pasokan, investasi produktif dan transisi energi",
+        "causal_warning": "RUPTL target → commissioning → grid adequacy → investor outcomes memerlukan verifikasi tiap tautan."
+      },
+      "indicators": [
+        {
+          "name": "Pembangkit + penyimpanan baru yang direncanakan",
+          "unit": "MW",
+          "baseline": null,
+          "target": 69512,
+          "actual": null,
+          "source_id": "pln_ruptl_excerpt",
+          "notes": "Target RUPTL 2025–2034; realisasi 2025–26 belum diekstrak.",
+          "year": 2034
+        },
+        {
+          "name": "Transmisi yang direncanakan",
+          "unit": "circuit-km",
+          "baseline": null,
+          "target": 47758,
+          "actual": null,
+          "source_id": "pln_ruptl_excerpt",
+          "notes": "Tambahan yang direncanakan, berbeda dari stok jaringan terpasang.",
+          "year": 2034
+        },
+        {
+          "name": "Stok transmisi terpasang",
+          "unit": "circuit-km",
+          "baseline": 72655.85,
+          "target": null,
+          "actual": null,
+          "source_id": "pln_statistics_2024",
+          "notes": "2024 aktual nasional; tidak boleh dipakai sebagai realisasi tambahan RUPTL.",
+          "year": 2024
+        },
+        {
+          "name": "GI direncanakan",
+          "unit": "MVA",
+          "baseline": null,
+          "target": 107950,
+          "actual": null,
+          "source_id": "pln_ruptl_excerpt",
+          "notes": "Kapasitas nameplate GI, bukan firm local headroom.",
+          "year": 2034
+        }
+      ],
+      "criteria": [
+        {
+          "criterion": "effectiveness",
+          "preliminary_judgement": "Belum bisa dipastikan",
+          "assessment": "Target spesifik tersedia, tetapi commissioning tahunan dan realisasi yang identik secara definisi belum tersedia.",
+          "missing_evidence": "Realisasi MW/MVA/circuit-km per tahun, jadwal COD, N-1 di wilayah prioritas.",
+          "evidence_level": "not_yet_due"
+        },
+        {
+          "criterion": "efficiency",
+          "preliminary_judgement": "Belum dapat dihitung",
+          "assessment": "Tidak tersedia biaya per output yang sebanding atau belanja aktual yang teratribusi pada proyek.",
+          "missing_evidence": "Realisasi capex proyek, unit cost, alternatif penguatan jaringan.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "adequacy",
+          "preliminary_judgement": "Risiko kecukupan lokal perlu diuji",
+          "assessment": "Target nasional besar tidak secara otomatis memenuhi kebutuhan daya firm Bekasi–Karawang, Batang, Batam.",
+          "missing_evidence": "Substation headroom per node, load queue PLN, demand growth dan kualitas pasokan.",
+          "evidence_level": "design_inference"
+        },
+        {
+          "criterion": "equity",
+          "preliminary_judgement": "Belum dapat dinilai",
+          "assessment": "Rencana perlu dibandingkan dengan kebutuhan akses listrik antardaerah dan kelompok pelanggan.",
+          "missing_evidence": "Wilayah belum berlistrik, SAIDI/SAIFI, biaya tarif dan investasi regional.",
+          "evidence_level": "insufficient"
+        }
+      ],
+      "finding": "Prioritas 2026 adalah audit realisasi per wilayah dan sinkronisasi kebutuhan industri dengan tanggal energisasi PLN/PLN Batam.",
+      "evidence_gate": "Tidak ada skor keberhasilan ex-post sebelum seri proyek yang selesai dan dampak layanan terkumpul.",
+      "priority_actions": [
+        "Digitalisasi rencana GI/transmisi/RUPTL lampiran provinsi beserta COD",
+        "Cocokkan realisasi fisik PLN 2025/2026 dengan baseline 2024",
+        "Bangun grid stress hanya dari firm headroom yang diverifikasi"
+      ]
+    },
+    {
+      "id": "energy_policy",
+      "title": "Kebijakan Energi Nasional — PP 40/2025",
+      "sector": "energy",
+      "stage": "ex_ante",
+      "policy_type": "national_strategy",
+      "summary": "KEN baru memberi arah kebijakan, tetapi perubahan bauran energi dan keterjangkauan harga memerlukan pengamatan jangka panjang, bukan klaim hasil satu tahun.",
+      "refs": [
+        "pp40",
+        "uu30energy",
+        "pres22ruen"
+      ],
+      "source_data_refs": [
+        "pln_ruptl_excerpt"
+      ],
+      "period": "2025 dan seterusnya",
+      "last_evidence_year": null,
+      "question": "Apakah KEN memiliki target, insentif, roadmap, dan instrumen pelaksana yang konsisten untuk mencapai keamanan serta transisi energi?",
+      "methods": [
+        {
+          "id": "ex_ante_ria",
+          "usage": "priority",
+          "why": "Alternatif kebijakan dan trade-off ketahanan, biaya, keterjangkauan dan emisi harus diperiksa."
+        },
+        {
+          "id": "impact_pathway",
+          "usage": "priority",
+          "why": "Memisahkan arahan kebijakan, turunan, perubahan investasi dan outcome energi."
+        },
+        {
+          "id": "qualitative",
+          "usage": "priority",
+          "why": "Telaah pasal, peraturan transisi, dan harmonisasi RUEN/RUED."
+        },
+        {
+          "id": "quantitative",
+          "usage": "conditional",
+          "why": "Evaluasi memerlukan baseline konsumsi, bauran, keandalan dan biaya pada definisi sama."
+        },
+        {
+          "id": "cost_benefit",
+          "usage": "deferred",
+          "why": "CBA membutuhkan biaya implementasi per instrumen dan manfaat bersih yang belum tersedia."
+        }
+      ],
+      "pathway": {
+        "input": "PP 40/2025 dan mandat nasional",
+        "activities": "Revisi perencanaan turunan dan koordinasi ESDM, DEN, PLN, pemda",
+        "output": "Dokumen perencanaan/aturan pelaksana dan pembiayaan yang selaras",
+        "outcome": "Perubahan keputusan energi dan investasi",
+        "impact": "Ketahanan energi, pemerataan akses dan emisi lebih rendah",
+        "causal_warning": "Konsistensi dokumen awal tidak menunjukkan penurunan emisi ataupun peningkatan affordability."
+      },
+      "indicators": [
+        {
+          "name": "Harmonisasi RUEN/RUED terhadap KEN baru",
+          "unit": "status",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Metrik kualitatif audit, belum diverifikasi per provinsi.",
+          "year": 2026
+        },
+        {
+          "name": "Bauran pembangkitan EBT 2034 menurut RUPTL",
+          "unit": "% generation mix",
+          "baseline": null,
+          "target": 34.3,
+          "actual": null,
+          "source_id": "pln_ruptl_excerpt",
+          "notes": "Target RUPTL terkait, bukan angka outcome PP 40/2025 secara kausal.",
+          "year": 2034
+        }
+      ],
+      "criteria": [
+        {
+          "criterion": "effectiveness",
+          "preliminary_judgement": "Belum waktunya menilai",
+          "assessment": "Pencapaian target jangka panjang belum dapat dinilai setahun setelah pengesahan.",
+          "missing_evidence": "Seri bauran/pasokan/reliability post-2025 dengan baseline yang sama.",
+          "evidence_level": "not_yet_due"
+        },
+        {
+          "criterion": "adequacy",
+          "preliminary_judgement": "Koherensi kebijakan perlu audit",
+          "assessment": "Arahan KEN perlu diterjemahkan ke proyek, insentif dan distribusi biaya agar menyelesaikan masalah riil.",
+          "missing_evidence": "Matriks kesesuaian peraturan, jadwal implementasi, studi supply-demand.",
+          "evidence_level": "design_inference"
+        },
+        {
+          "criterion": "equity",
+          "preliminary_judgement": "Data kelompok/daerah dibutuhkan",
+          "assessment": "Akses energi, keterjangkauan dan beban transisi tidak otomatis merata.",
+          "missing_evidence": "Tarif relatif pendapatan, elektrifikasi provinsi dan kelompok pelanggan.",
+          "evidence_level": "insufficient"
+        }
+      ],
+      "finding": "Assessment awal: evaluasi rancangan dan harmonisasi instrumen lebih tepat daripada mengklaim keberhasilan KEN.",
+      "evidence_gate": "Hanya kesiapan kebijakan dan kecocokan instrumen yang dapat dibahas; hasil ekonomi-sosial belum diukur.",
+      "priority_actions": [
+        "Audit kesesuaian PP 40/2025, RUEN lama dan RUED daerah",
+        "Susun baseline 4A+1S dengan definisi statistik yang konsisten",
+        "Publikasikan indikator transisi dengan periode dan sumber resmi"
+      ]
+    },
+    {
+      "id": "oss_licensing",
+      "title": "Perizinan Berbasis Risiko — PP 28/2025",
+      "sector": "cross",
+      "stage": "during",
+      "policy_type": "licensing_framework",
+      "summary": "PP 28/2025 menggantikan PP 5/2021; keberhasilan bukan jumlah perizinan terbit saja, melainkan kecepatan, kejelasan, kepastian, dan dampaknya terhadap investasi tanpa melemahkan safeguard.",
+      "refs": [
+        "pp28",
+        "pp5old",
+        "permenbkpm5",
+        "permenatr13",
+        "permenlhk4"
+      ],
+      "source_data_refs": [],
+      "period": "2025 dan seterusnya",
+      "last_evidence_year": null,
+      "question": "Apakah OSS berbasis risiko mempercepat perizinan lintas kementerian dan pemda tanpa mengurangi pengawasan lingkungan serta kepastian hukum?",
+      "methods": [
+        {
+          "id": "process_evaluation",
+          "usage": "priority",
+          "why": "Telaah alur OSS, PB UMKU, izin lingkungan, KKPR dan pelaksanaan antarinstansi."
+        },
+        {
+          "id": "mixed_methods",
+          "usage": "conditional",
+          "why": "Waktu izin per KBLI dipadukan pengalaman investor dan pejabat daerah."
+        },
+        {
+          "id": "participatory",
+          "usage": "priority",
+          "why": "Perlu wawancara UKM, investor, asosiasi dan regulator pemda."
+        },
+        {
+          "id": "ex_post",
+          "usage": "deferred",
+          "why": "Butuh cohort pra/pasca PP28 dengan komposisi KBLI dibandingkan dan perubahan sistem lain dikendalikan."
+        },
+        {
+          "id": "cost_benefit",
+          "usage": "deferred",
+          "why": "Butuh biaya administrasi pemohon/regulator dan nilai waktu sebelum/selepas."
+        }
+      ],
+      "pathway": {
+        "input": "PP28/2025, OSS, standar sektoral",
+        "activities": "Penyelarasan izin dan pemrosesan risk tier",
+        "output": "Permohonan dan izin diproses dengan standar waktu",
+        "outcome": "Waktu/biaya administrasi serta kepastian izin berubah",
+        "impact": "Investasi formal yang produktif dan lebih patuh",
+        "causal_warning": "Pertumbuhan investasi tidak dapat otomatis diatribusikan kepada PP28."
+      },
+      "indicators": [
+        {
+          "name": "Median waktu perizinan per KBLI",
+          "unit": "days",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Perlu mikrodata antrian OSS kohort sebanding.",
+          "year": 2026
+        },
+        {
+          "name": "Pangsa permohonan selesai sesuai SLA",
+          "unit": "%",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Perlu denominator permohonan dan kategori permohonan.",
+          "year": 2026
+        }
+      ],
+      "criteria": [
+        {
+          "criterion": "effectiveness",
+          "preliminary_judgement": "Belum ada ukuran outcome",
+          "assessment": "Waktu proses dan rasio permohonan selesai belum tersedia.",
+          "missing_evidence": "Data OSS pra/pasca aturan menurut KBLI dan wilayah.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "efficiency",
+          "preliminary_judgement": "Butuh data biaya proses",
+          "assessment": "Digitalisasi alur tidak otomatis menurunkan biaya pelaku usaha.",
+          "missing_evidence": "Biaya SDM, penanganan ulang, dan biaya tunggu sebelum/akhir.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "responsiveness",
+          "preliminary_judgement": "Harus diuji bersama pengguna",
+          "assessment": "Keluhan tentang proses, ketidakjelasan, atau hambatan lintas instansi belum diteliti dalam penilaian ini.",
+          "missing_evidence": "Survei perizinan, rekam tiket/aduan dan wawancara penerbit izin.",
+          "evidence_level": "insufficient"
+        }
+      ],
+      "finding": "Nilai evaluasi tertinggi sekarang ada pada audit proses lintas ESDM–BKPM–ATR–lingkungan, bukan skor hasil investasi.",
+      "evidence_gate": "Tidak ada inferensi keberhasilan OSS dari jumlah NIB atau berita peresmian.",
+      "priority_actions": [
+        "Peroleh dataset durasi permohonan KBLI dan SLA",
+        "Uji kohort sebelum/sesudah dengan kontrol reformasi lain",
+        "Selesaikan audit dasar kewenangan perizinan lintas kementerian"
+      ]
+    },
+    {
+      "id": "renewables",
+      "title": "Percepatan EBT Ketenagalistrikan — Perpres 112/2022",
+      "sector": "electricity",
+      "stage": "during",
+      "policy_type": "renewable_policy",
+      "summary": "Perpres 112/2022 dan pengaturan PJBL terkait mendorong proyek EBT, namun data PPA, financial close, jaringan dan COD yang sebanding diperlukan untuk menilai hasil.",
+      "refs": [
+        "pres112",
+        "permen5",
+        "kepmen188"
+      ],
+      "source_data_refs": [
+        "pln_ruptl_excerpt"
+      ],
+      "period": "2022 dan seterusnya",
+      "last_evidence_year": null,
+      "question": "Apakah skema kontrak, pengadaan dan kesiapan jaringan benar-benar mempercepat proyek pembangkitan EBT beroperasi?",
+      "methods": [
+        {
+          "id": "process_evaluation",
+          "usage": "priority",
+          "why": "Uji perubahan waktu pengadaan, PPA, financial close dan COD."
+        },
+        {
+          "id": "quantitative",
+          "usage": "conditional",
+          "why": "Bandingkan PPA MW → COD MW dan waktu pembangunan per teknologi."
+        },
+        {
+          "id": "qualitative",
+          "usage": "priority",
+          "why": "Kajian klausul PJBL, lender/offtaker risk, wawancara developer."
+        },
+        {
+          "id": "impact_pathway",
+          "usage": "priority",
+          "why": "Pisahkan kapasitas yang direncanakan, terkontrak, terbangun dan generasi aktual."
+        },
+        {
+          "id": "ex_post",
+          "usage": "conditional",
+          "why": "Evaluasi interim hanya jika time series dan counterfactual layak tersedia."
+        }
+      ],
+      "pathway": {
+        "input": "Perpres 112/2022, Permen ESDM 5/2025 dan RUPTL",
+        "activities": "Pengadaan IPP, negosiasi PPA, grid study dan izin",
+        "output": "PPA ditandatangani serta pembangkit beroperasi",
+        "outcome": "Penambahan produksi EBT dan penurunan curtailment bila jaringan mendukung",
+        "impact": "Diversifikasi sumber dan penurunan intensitas emisi",
+        "causal_warning": "RUPTL target kapasitas tidak dapat diatribusikan ke satu instrumen, PPA MW bukan GWh pembangkitan."
+      },
+      "indicators": [
+        {
+          "name": "Target pembangkit EBT baru pada RUPTL",
+          "unit": "MW",
+          "baseline": null,
+          "target": 42569,
+          "actual": null,
+          "source_id": "pln_ruptl_excerpt",
+          "notes": "Target rencana 2025–2034; bukan realisasi Perpres 112.",
+          "year": 2034
+        },
+        {
+          "name": "Rasio PPA → COD untuk proyek EBT",
+          "unit": "%",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Perlu kontrak IPP dan tanggal energisasi aktual.",
+          "year": 2026
+        }
+      ],
+      "criteria": [
+        {
+          "criterion": "effectiveness",
+          "preliminary_judgement": "Belum ada realisasi yang sepadan",
+          "assessment": "Ada target pembangunan energi bersih, tetapi conversion rate PPA→COD belum tersedia.",
+          "missing_evidence": "PPA per teknologi, commissioning, GWh aktual.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "efficiency",
+          "preliminary_judgement": "Belum dapat dianalisis biaya per GWh",
+          "assessment": "Diperlukan tarif aktual, capex, biaya transmisi dan curtailment.",
+          "missing_evidence": "LCOE berbasis proyek serta biaya integrasi.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "adequacy",
+          "preliminary_judgement": "Grid integration menjadi prasyarat",
+          "assessment": "EBT yang direncanakan harus diikuti jaringan dan fleksibilitas yang cukup.",
+          "missing_evidence": "Studi grid dan curtailment lokasi.",
+          "evidence_level": "design_inference"
+        }
+      ],
+      "finding": "Prioritas: ukur konversi pipeline EBT menjadi COD dan GWh, bukan menghitung jumlah pengumuman proyek.",
+      "evidence_gate": "Tidak ada estimasi dampak emisi kausal tanpa dispatch dan faktor emisi.",
+      "priority_actions": [
+        "Bangun ledger PPA, financial close, COD dari sumber PLN",
+        "Uji keterlambatan proyek dan keandalan jaringan menurut teknologi",
+        "Hitung CBA setelah capex dan GWh terukur tersedia"
+      ]
+    },
+    {
+      "id": "minerba",
+      "title": "Reformasi Minerba dan Hilirisasi — UU 2/2025",
+      "sector": "minerba",
+      "stage": "during",
+      "policy_type": "sector_law",
+      "summary": "Revisi aturan mineral-batubara dan hilirisasi perlu dinilai berdasarkan nilai tambah bersih, kepatuhan, kesempatan kerja, beban lingkungan dan eksposur perdagangan, bukan volume produksi saja.",
+      "refs": [
+        "uu2minerba",
+        "uu4minerba",
+        "pp96min",
+        "pp25min",
+        "ds592"
+      ],
+      "source_data_refs": [],
+      "period": "2025 dan seterusnya",
+      "last_evidence_year": null,
+      "question": "Apakah perubahan pengaturan minerba meningkatkan nilai tambah ekonomi secara neto tanpa beban sosial/lingkungan dan ketidakpastian perdagangan yang tidak proporsional?",
+      "methods": [
+        {
+          "id": "ex_ante_ria",
+          "usage": "conditional",
+          "why": "Menilai alternatif aturan izin, pengolahan dan fasilitas untuk revisi ke depan."
+        },
+        {
+          "id": "process_evaluation",
+          "usage": "priority",
+          "why": "Perlu audit perubahan izin, RKAB dan aturan industri ekspor."
+        },
+        {
+          "id": "mixed_methods",
+          "usage": "conditional",
+          "why": "Input-output/ekspor/tenaga kerja perlu ditriangulasi dengan dampak lokal dan wawancara."
+        },
+        {
+          "id": "participatory",
+          "usage": "priority",
+          "why": "Warga dekat smelter, pekerja, pemerintah daerah dan eksportir perlu dilibatkan."
+        },
+        {
+          "id": "cost_benefit",
+          "usage": "deferred",
+          "why": "Tidak tersedia net welfare benefit, biaya eksternalitas dan dampak fiskal yang andal."
+        }
+      ],
+      "pathway": {
+        "input": "Amendemen UU 2/2025, izin dan kebijakan hilirisasi",
+        "activities": "Penerbitan izin, konstruksi, pembelian bahan baku, ekspor",
+        "output": "Smelter dan produksi turunan terverifikasi",
+        "outcome": "Nilai tambah domestik, tenaga kerja dan pendapatan setelah biaya energi/lingkungan",
+        "impact": "Transformasi ekonomi yang berkelanjutan dan distribusi manfaat",
+        "causal_warning": "Export value meningkat tidak sama dengan welfare gain kausal; DS592 belum final sebagai kewajiban domestik."
+      },
+      "indicators": [
+        {
+          "name": "Nilai tambah lokal bersih smelter",
+          "unit": "IDR",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Butuh GVA vs input impor/energi untuk proyek terkait.",
+          "year": 2026
+        },
+        {
+          "name": "Ekspor mineral olahan vs bahan mentah",
+          "unit": "USD",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Seri HS dan volume dengan sumber BPS/Kemendag, belum dimasukkan.",
+          "year": 2026
+        },
+        {
+          "name": "Dampak sosial-lingkungan per lokasi",
+          "unit": "index",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Harus didefinisikan melalui sampel, audit dan proses partisipatif.",
+          "year": 2026
+        }
+      ],
+      "criteria": [
+        {
+          "criterion": "effectiveness",
+          "preliminary_judgement": "Belum dapat diatribusikan",
+          "assessment": "Tidak tersedia baseline/counterfactual yang membedakan perubahan 2025 dari kebijakan sebelumnya.",
+          "missing_evidence": "Produksi kapasitas termanfaatkan dan nilai tambah bersih per cohort.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "efficiency",
+          "preliminary_judgement": "CBA neto belum tersedia",
+          "assessment": "Belum ada pengukuran biaya fiskal, energi, impor modal dan eksternalitas.",
+          "missing_evidence": "Biaya insentif, lingkungan, listrik dan subsidi setara nilai kini.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "equity",
+          "preliminary_judgement": "Perlu audit dampak lokal",
+          "assessment": "Manfaat pekerja/daerah serta biaya polusi belum diuji bersama masyarakat.",
+          "missing_evidence": "Pekerjaan lokal, kompensasi, kesehatan, lingkungan regional.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "responsiveness",
+          "preliminary_judgement": "Belum dinilai",
+          "assessment": "Belum ada konsultasi pemda/pelaku industri yang terdokumentasi untuk assessment ini.",
+          "missing_evidence": "Konsultasi dengan investor, masyarakat dan pekerja.",
+          "evidence_level": "insufficient"
+        }
+      ],
+      "finding": "Assessment awal: kerangka hasil hilirisasi perlu diperluas dari ekspor bruto ke manfaat bersih dan distribusi biaya, dengan sengketa WTO sebagai konteks hukum eksternal.",
+      "evidence_gate": "Penilaian ini tidak mengasumsikan UU 2/2025 sendiri menyebabkan seluruh investasi smelter atau pertumbuhan ekspor.",
+      "priority_actions": [
+        "Kumpulkan data terpilah nilai tambah, input energi, PNBP dan externality",
+        "Bangun impact pathway per rantai nikel/aluminium/tembaga terpisah",
+        "Pantau status WTO DS592 sebagai sengketa, bukan indikator output UU Minerba"
+      ]
+    },
+    {
+      "id": "digital_pdp",
+      "title": "Implementasi UU Pelindungan Data Pribadi — UU 27/2022",
+      "sector": "digital",
+      "stage": "during",
+      "policy_type": "digital_governance",
+      "summary": "Kewajiban PDP penting bagi cloud dan data center; evaluasi memerlukan bukti kepatuhan per pengendali/prosesor, pelaksanaan hak subjek data dan pengawasan yang proporsional.",
+      "refs": [
+        "uu27pdp",
+        "pp28"
+      ],
+      "source_data_refs": [],
+      "period": "2022 dan seterusnya",
+      "last_evidence_year": null,
+      "question": "Apakah pelaksanaan PDP memperbaiki perlindungan hak subjek data dan kepastian usaha digital?",
+      "methods": [
+        {
+          "id": "process_evaluation",
+          "usage": "priority",
+          "why": "Audit implementasi kewajiban, mekanisme aduan dan akuntabilitas institusional."
+        },
+        {
+          "id": "qualitative",
+          "usage": "priority",
+          "why": "Telaah praktek pelaku cloud, DPA, insiden dan wawancara pelindung data."
+        },
+        {
+          "id": "participatory",
+          "usage": "conditional",
+          "why": "Survei pengalaman masyarakat sebagai subjek data dan pelaku usaha."
+        },
+        {
+          "id": "ex_post",
+          "usage": "conditional",
+          "why": "Dampak kepercayaan dan insiden hanya dinilai setelah data tren dan klasifikasi insiden sepadan."
+        }
+      ],
+      "pathway": {
+        "input": "UU PDP dan kapasitas kepatuhan organisasi",
+        "activities": "Kebijakan pemrosesan, DPA, kontrol teknis dan pengelolaan aduan",
+        "output": "Dokumen kepatuhan dan penanganan aduan terselesaikan",
+        "outcome": "Hak subjek data lebih terlindungi dan insiden berkurang bila ada bukti",
+        "impact": "Kepercayaan dan ketahanan ekosistem digital",
+        "causal_warning": "Lebih banyak laporan insiden bisa berarti deteksi lebih baik, bukan otomatis kondisi lebih buruk."
+      },
+      "indicators": [
+        {
+          "name": "Waktu penyelesaian permintaan subjek data",
+          "unit": "days",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Butuh data organisasi dan klasifikasi kasus.",
+          "year": 2026
+        },
+        {
+          "name": "Insiden terverifikasi per pelanggan/organisasi",
+          "unit": "rate",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Denominator, deteksi dan definisi insiden harus sepadan.",
+          "year": 2026
+        }
+      ],
+      "criteria": [
+        {
+          "criterion": "effectiveness",
+          "preliminary_judgement": "Belum terukur",
+          "assessment": "Hasil perlindungan perlu data insiden dan pemenuhan hak subjek data.",
+          "missing_evidence": "Data audit dan penegakan yang relevan.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "responsiveness",
+          "preliminary_judgement": "Perlu bukti dari subjek data",
+          "assessment": "Kepuasan dan akses atas pemulihan belum terukur.",
+          "missing_evidence": "Survei permintaan hak, akses pengaduan dan waktu respons.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "adequacy",
+          "preliminary_judgement": "Cakupan peran perlu diperiksa",
+          "assessment": "Data center bukan selalu pengendali; role-based compliance berbeda.",
+          "missing_evidence": "Peta role data controller/processor dan ketentuan operasional.",
+          "evidence_level": "design_inference"
+        }
+      ],
+      "finding": "Untuk AI data center, ukuran kunci bukan luas bangunan pusat data melainkan efektivitas praktik pengendalian/pemrosesan data dan pemenuhan hak.",
+      "evidence_gate": "Tidak ada skor keamanan siber atau tingkat kepatuhan nasional yang diciptakan dari teks UU.",
+      "priority_actions": [
+        "Definisikan bukti per peran controller/processor",
+        "Bangun indikator penanganan hak subjek dan insiden",
+        "Lakukan survei atau audit dengan persetujuan sumber data"
+      ]
+    },
+    {
+      "id": "carbon",
+      "title": "Tata Kelola Nilai Ekonomi Karbon — Perpres 110/2025",
+      "sector": "carbon",
+      "stage": "ex_ante",
+      "policy_type": "carbon_regulation",
+      "summary": "Kerangka karbon yang lebih baru memerlukan audit aturan turunan, integritas MRV, kepastian hak kredit dan kaitan Paris/NDC sebelum menilai kinerja pasar.",
+      "refs": [
+        "pres110carbon",
+        "uu16paris",
+        "paris",
+        "carbon_mrv"
+      ],
+      "source_data_refs": [],
+      "period": "2025 dan seterusnya",
+      "last_evidence_year": null,
+      "question": "Apakah tata kelola karbon dapat menjaga integritas klaim penurunan emisi dan memberikan insentif ekonomi yang kredibel?",
+      "methods": [
+        {
+          "id": "ex_ante_ria",
+          "usage": "priority",
+          "why": "Menilai desain insentif, integritas unit, biaya MRV dan alternatif tata kelola."
+        },
+        {
+          "id": "impact_pathway",
+          "usage": "priority",
+          "why": "Memisahkan registrasi unit, perdagangan, pengurangan emisi aktual dan dampak iklim."
+        },
+        {
+          "id": "qualitative",
+          "usage": "priority",
+          "why": "Uji konsistensi registri, perizinan, pelaku pasar dan verifier."
+        },
+        {
+          "id": "cost_benefit",
+          "usage": "deferred",
+          "why": "Belum ada biaya MRV/abatement dan volume kredit yang valid untuk menghitung net benefit."
+        }
+      ],
+      "pathway": {
+        "input": "Perpres 110/2025 dan aturan MRV",
+        "activities": "Verifikasi, registrasi, transaksi dan retirement",
+        "output": "Unit karbon tercatat dengan audit trail",
+        "outcome": "Pengurangan emisi tambahan yang dapat diverifikasi tanpa double counting",
+        "impact": "Mitigasi iklim dan kredibilitas pasar",
+        "causal_warning": "Volume kredit terjual bukan bukti ton CO2 tambahan terhindarkan."
+      },
+      "indicators": [
+        {
+          "name": "Pengurangan emisi tambahan terverifikasi",
+          "unit": "tCO2e",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Memerlukan baseline counterfactual, registry dan independent verification.",
+          "year": 2026
+        },
+        {
+          "name": "Unit karbon tanpa double-counting",
+          "unit": "%",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Perlu audit registry issuance–transfer–retirement.",
+          "year": 2026
+        }
+      ],
+      "criteria": [
+        {
+          "criterion": "effectiveness",
+          "preliminary_judgement": "Belum dapat diuji dampaknya",
+          "assessment": "Belum ada baseline dan verifikasi atribusi pengurangan emisi dari instrumen 2025.",
+          "missing_evidence": "MRV terpercaya dan data satuan tCO2e yang dapat direkonsiliasi.",
+          "evidence_level": "not_yet_due"
+        },
+        {
+          "criterion": "efficiency",
+          "preliminary_judgement": "Belum bisa dihitung biaya abatement",
+          "assessment": "Harga kredit tidak mewakili biaya ekonomi sosial bersih.",
+          "missing_evidence": "Biaya MRV, abatement dan alternatif mitigasi.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "adequacy",
+          "preliminary_judgement": "Integritas unit menjadi prasyarat",
+          "assessment": "Desain kebijakan harus mencegah klaim ganda dan kredit tanpa additionality.",
+          "missing_evidence": "Audit tata kelola registry, additionality, leakage.",
+          "evidence_level": "design_inference"
+        }
+      ],
+      "finding": "RIA ex-ante dan audit MRV paling relevan; statistik perdagangan karbon saja belum cukup sebagai bukti mitigasi.",
+      "evidence_gate": "Belum ada pembuktian additionality, sehingga efektivitas emisi tidak diberi nilai.",
+      "priority_actions": [
+        "Susun standar indikator MRV dan kontrol double counting",
+        "Pisahkan transaksi pasar dari mitigasi aktual",
+        "Bangun analisis biaya abatement saat data proyek tersedia"
+      ]
+    },
+    {
+      "id": "regional_rued",
+      "title": "RUED Kepulauan Riau — Perda 4/2023",
+      "sector": "energy",
+      "stage": "during",
+      "policy_type": "regional_plan",
+      "summary": "RUED Kepri relevan untuk pertumbuhan data center di Batam tetapi harmonisasi dengan KEN baru dan kebutuhan listrik PLN Batam belum dapat disimpulkan tanpa data rencana maupun realisasi wilayah yang sepadan.",
+      "refs": [
+        "perda_kepri",
+        "pp40",
+        "kepmen188"
+      ],
+      "source_data_refs": [
+        "pln_statistics_2024"
+      ],
+      "period": "2023–2050",
+      "last_evidence_year": 2024,
+      "question": "Seberapa selaras perencanaan energi Kepri dengan perkembangan permintaan industri dan pembiayaan jaringan pulau?",
+      "methods": [
+        {
+          "id": "process_evaluation",
+          "usage": "priority",
+          "why": "Audit penyelarasan RUED, RUPTL, PLN Batam dan pelaksanaan izin/pengadaan."
+        },
+        {
+          "id": "qualitative",
+          "usage": "priority",
+          "why": "Telaah peta kewenangan dan wawancara investor, Pemprov, PLN Batam."
+        },
+        {
+          "id": "quantitative",
+          "usage": "conditional",
+          "why": "Butuh demand/peak/capacity dan realisasi per sistem Batam, bukan agregat Riau Islands UID."
+        },
+        {
+          "id": "impact_pathway",
+          "usage": "priority",
+          "why": "Hubungkan perencanaan, jaringan, daya tersambung dan hasil reliability."
+        }
+      ],
+      "pathway": {
+        "input": "Perda 4/2023, rencana PLN Batam dan anggaran",
+        "activities": "Harmonisasi proyek, tender grid dan penyambungan",
+        "output": "Jaringan/firm supply tersedia menurut pulau dan klaster",
+        "outcome": "Investasi data center terlayani dengan keandalan memadai",
+        "impact": "Ketahanan energi dan diversifikasi ekonomi kepulauan",
+        "causal_warning": "UID Kepulauan Riau 2024 tidak mencakup semua aset PLN Batam."
+      },
+      "indicators": [
+        {
+          "name": "Trafo distribusi UID Kepulauan Riau 2024",
+          "unit": "MVA",
+          "baseline": 355.44,
+          "target": null,
+          "actual": null,
+          "source_id": "pln_statistics_2024",
+          "notes": "Actual stock 2024 UID; excludes separate PLN Batam reporting, not grid headroom.",
+          "year": 2024
+        },
+        {
+          "name": "Gardu induk PT PLN Batam 2024",
+          "unit": "MVA",
+          "baseline": 870,
+          "target": null,
+          "actual": null,
+          "source_id": "pln_statistics_2024",
+          "notes": "PLN Batam company reporting figure, not local N-1 headroom.",
+          "year": 2024
+        },
+        {
+          "name": "Firm available MW Batam industrial nodes",
+          "unit": "MW",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Requires PLN Batam operational confirmation.",
+          "year": 2026
+        }
+      ],
+      "criteria": [
+        {
+          "criterion": "effectiveness",
+          "preliminary_judgement": "Belum dapat dinilai",
+          "assessment": "Kapasitas trafo nasional/UID bukan ukuran keberhasilan RUED wilayah.",
+          "missing_evidence": "Demand peak Batam, N-1 headroom and energizations.",
+          "evidence_level": "insufficient"
+        },
+        {
+          "criterion": "adequacy",
+          "preliminary_judgement": "Ada potensi mismatch yang perlu diverifikasi",
+          "assessment": "Permintaan data center tumbuh berdasarkan pipeline, tetapi ketersediaan daya firm belum terkonfirmasi.",
+          "missing_evidence": "Source grid study, local peak and N-1 data.",
+          "evidence_level": "design_inference"
+        },
+        {
+          "criterion": "equity",
+          "preliminary_judgement": "Perlu pembandingan antarpulau",
+          "assessment": "Ekspansi cluster industri tidak boleh mengabaikan keterjangkauan rumah tangga dan pulau terluar.",
+          "missing_evidence": "Elektrifikasi, tarif, keandalan dan investasi per kabupaten/pulau.",
+          "evidence_level": "insufficient"
+        }
+      ],
+      "finding": "RUED Kepri memerlukan audit pelaksanaan terpisah dari RUPTL Jawa–Bali; data agregat luar Jawa tidak dapat menjadi Batam peak.",
+      "evidence_gate": "Laporan stok aset bukan outcome langsung RUED atau kontrak penyambungan data center.",
+      "priority_actions": [
+        "Peroleh rencana sistem dan statistik PLN Batam per pulau",
+        "Audit kecocokan RUED Kepri vs PP 40/2025",
+        "Bangun matriks firm headroom proyek Batam berbukti"
+      ]
+    },
+    {
+      "id": "wto_trade",
+      "title": "Eksposur kebijakan ekspor mineral — WTO DS592",
+      "sector": "international",
+      "stage": "during",
+      "policy_type": "external_dispute_watch",
+      "summary": "DS592 merupakan mekanisme sengketa negara-ke-negara tentang kebijakan ekspor/pengolahan nikel. Monitoring putusan, banding, dan perubahan aturan domestik relevan, namun skor efektivitas kebijakan ala Dunn tidak relevan untuk menilai siapa menang perkara.",
+      "refs": [
+        "ds592",
+        "dsu",
+        "gattxi",
+        "uu7wto"
+      ],
+      "source_data_refs": [],
+      "period": "2022 dan seterusnya",
+      "last_evidence_year": null,
+      "question": "Perubahan legal atau perdagangan apa yang benar-benar terjadi akibat perkembangan DS592 dan langkah kebijakan Indonesia?",
+      "methods": [
+        {
+          "id": "process_evaluation",
+          "usage": "priority",
+          "why": "Pantau proses WTO, banding, adopsi putusan, konsultasi dan tindak lanjut domestik."
+        },
+        {
+          "id": "qualitative",
+          "usage": "priority",
+          "why": "Analisis dokumen panel, pembelaan, aturan ekspor dan pandangan eksportir."
+        },
+        {
+          "id": "impact_pathway",
+          "usage": "conditional",
+          "why": "Dapat diterapkan pada kebijakan ekspor mineral dan pasar, bukan pada prosedur putusan panel itu sendiri."
+        },
+        {
+          "id": "quantitative",
+          "usage": "conditional",
+          "why": "Untuk dampak ekspor, memerlukan seri HS, harga dunia, kapasitas smelter dan pembanding negara."
+        }
+      ],
+      "pathway": {
+        "input": "Kebijakan ekspor Indonesia dan komitmen WTO",
+        "activities": "Sengketa negara antaranggota, panel/banding dan opsi penyesuaian",
+        "output": "Dokumen kasus dan tindakan domestik bila benar-benar ditetapkan",
+        "outcome": "Perubahan peraturan ekspor, investasi, akses pasar (jika terverifikasi)",
+        "impact": "Daya saing nilai tambah dan hubungan dagang",
+        "causal_warning": "Banding WTO yang pending bukan putusan final ataupun pembatalan UU nasional."
+      },
+      "indicators": [
+        {
+          "name": "Status prosedural DS592",
+          "unit": "case_state",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "wto",
+          "notes": "Laman perkara perlu dipantau; tidak dapat dijadikan persentase.",
+          "year": 2026
+        },
+        {
+          "name": "Dampak ekspor nikel menurut HS",
+          "unit": "USD",
+          "baseline": null,
+          "target": null,
+          "actual": null,
+          "source_id": "law_graph",
+          "notes": "Memerlukan data ekspor, volume dan harga sebanding, serta kebijakan counterfactual.",
+          "year": 2026
+        }
+      ],
+      "criteria": [
+        {
+          "criterion": "effectiveness",
+          "preliminary_judgement": "Tidak tepat untuk perkara itu sendiri",
+          "assessment": "Efektivitas kebijakan hilirisasi harus dievaluasi pada indikator ekonomi, bukan status menang/kalah DS592.",
+          "missing_evidence": "Pisahkan tujuan kebijakan domestik, legal WTO dan efek perdagangan.",
+          "evidence_level": "not_applicable"
+        },
+        {
+          "criterion": "efficiency",
+          "preliminary_judgement": "Tidak dihitung dari putusan",
+          "assessment": "Biaya-manfaat kebijakan hanya bisa dilakukan dengan data ekonomi dan hukum yang sesuai.",
+          "missing_evidence": "Biaya dan manfaat alternatif kebijakan serta dampak dagang.",
+          "evidence_level": "not_applicable"
+        }
+      ],
+      "finding": "Klasifikasi yang sesuai ialah pemantauan risiko geopolitik/ketidakpastian legal dan evaluasi dampak perdagangan secara terpisah; bukan indeks keberhasilan berbasis perkara WTO.",
+      "evidence_gate": "WTO panel, banding, adopsi dan hukum domestik tidak boleh disatukan menjadi status 'aturan dicabut'.",
+      "priority_actions": [
+        "Pantau dokumen DS592 dengan tanggal prosedural eksplisit",
+        "Cocokkan setiap perubahan peraturan ekspor dengan instrumen nasional",
+        "Bangun studi dampak perdagangan hanya setelah seri HS dan pembanding tersedia"
+      ]
+    }
+  ]
+}
