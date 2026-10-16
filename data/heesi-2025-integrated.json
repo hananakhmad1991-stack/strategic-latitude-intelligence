@@ -571,5 +571,144 @@
     "path": "data/handbook-2025-pages.json",
     "complete_extraction": false,
     "warning": "Only personally crosschecked dashboard metrics may appear as quantified charts. Full text extraction is a searchable archive, not audited machine-readable table serialization of all 172 pages."
+  },
+  "geothermal_provincial": {
+    "title": "Geothermal Resources and Reserves by Province as of December 2025",
+    "unit": "MW of geological resource/reserve potential",
+    "printed_pages": "120–121",
+    "pdf_pages": "136–137",
+    "reported_total": 23203,
+    "listed_sum": 23204,
+    "locations": [
+      {
+        "province": "Aceh",
+        "value": 1031
+      },
+      {
+        "province": "Sumatera Utara",
+        "value": 1866
+      },
+      {
+        "province": "Sumatera Barat",
+        "value": 1648
+      },
+      {
+        "province": "Riau",
+        "value": 45
+      },
+      {
+        "province": "Jambi",
+        "value": 779
+      },
+      {
+        "province": "Sumatera Selatan",
+        "value": 1450
+      },
+      {
+        "province": "Bengkulu",
+        "value": 838
+      },
+      {
+        "province": "Lampung",
+        "value": 1732
+      },
+      {
+        "province": "Kepulauan Bangka Belitung",
+        "value": 46
+      },
+      {
+        "province": "Kepulauan Riau",
+        "value": 7
+      },
+      {
+        "province": "Jawa Barat",
+        "value": 4420
+      },
+      {
+        "province": "Jawa Tengah",
+        "value": 1341
+      },
+      {
+        "province": "Daerah Istimewa Yogyakarta",
+        "value": 10
+      },
+      {
+        "province": "Jawa Timur",
+        "value": 1299
+      },
+      {
+        "province": "Banten",
+        "value": 518
+      },
+      {
+        "province": "Bali",
+        "value": 335
+      },
+      {
+        "province": "Nusa Tenggara Barat",
+        "value": 78
+      },
+      {
+        "province": "Nusa Tenggara Timur",
+        "value": 1195
+      },
+      {
+        "province": "Kalimantan Barat",
+        "value": 65
+      },
+      {
+        "province": "Kalimantan Selatan",
+        "value": 50
+      },
+      {
+        "province": "Kalimantan Timur",
+        "value": 32
+      },
+      {
+        "province": "Kalimantan Utara",
+        "value": 43
+      },
+      {
+        "province": "Sulawesi Utara",
+        "value": 939
+      },
+      {
+        "province": "Sulawesi Tengah",
+        "value": 688
+      },
+      {
+        "province": "Sulawesi Selatan",
+        "value": 525
+      },
+      {
+        "province": "Sulawesi Tenggara",
+        "value": 316
+      },
+      {
+        "province": "Gorontalo",
+        "value": 160
+      },
+      {
+        "province": "Sulawesi Barat",
+        "value": 378
+      },
+      {
+        "province": "Maluku",
+        "value": 564
+      },
+      {
+        "province": "Maluku Utara",
+        "value": 706
+      },
+      {
+        "province": "Papua Barat",
+        "value": 50
+      },
+      {
+        "province": "Papua Barat Daya",
+        "value": 50
+      }
+    ],
+    "caution": "Geological resource and reserve estimates, not installed generation capacity, economically proved production, or commissioned PLN projects. 32 listed province rows sum to 23,204 MW vs the printed national total 23,203 MW; source rounding/aggregation discrepancy of 1 MW is not silently corrected. Unlisted provinces are no-data (not zero)."
   }
 }
