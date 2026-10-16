@@ -8,6 +8,7 @@ const datestr=x=>{if(!x)return 'Belum tercatat';let d=new Date(x);return Number.
 const statuses={recent_check:'Baru diperiksa',overdue:'Pemeriksaan terlambat',workflow_failure:'Workflow gagal',freshness_unknown:'Tanggal pemeriksaan belum ada',schedule_unknown:'Jadwal tak diketahui',source_date_only:'Hanya tanggal snapshot',curated_not_automated:'Kurasi manual',source_edition_static:'Referensi historis',invalid_dataset:'Data tidak valid'};
 const modes={automated_numeric:'Data numerik otomatis',automated_discovery:'Monitoring / kandidat review',computed_from_sources:'Analisis turunan',curated_snapshot:'Snapshot terkurasi',static_reference:'Dokumen / historis',status_unknown:'Tidak diketahui'};
 const badge=(v,kind)=>'<span class="sli-ah-tag '+(kind||'')+'">'+escapeHTML(v)+'</span>';
+let publicationWatch=null;
 let current=null;
 let filters={category:'all',mode:'all',status:'all',text:''};
 function shell(){
@@ -33,10 +34,17 @@ function banner(data){
  )+'</b>. Diperiksa: '+escapeHTML(datestr(data.generated_at_utc))+
  '. <b>Tidak semua konten dapat diperbarui otomatis:</b> angka terstruktur dapat disinkronkan; perubahan peraturan, pejabat, proyek, data PDF dan penilaian dampak tetap memerlukan konfirmasi resmi. Pembaruan berita adalah kandidat pemeriksaan, bukan perubahan fakta.</div>';
 }
+function publicationStatus(){if(!publicationWatch)return '<div class="sli-ah-note">Publication edition watcher has not returned a readable source snapshot. This is not evidence that publishers have no newer reports.</div>';
+const p=publicationWatch,lead=(p.events||[]).filter(x=>x.event_kind==='new_candidate').slice(0,5),failed=(p.sources||[]).filter(x=>x.health!=='ok');
+return '<div class="sli-ah-card"><strong style="font-size:15px">Official report and macro publication watcher</strong><p class="sli-ah-mini">Publisher sources readable: '+escapeHTML(p.healthy_source_count)+' / '+escapeHTML(p.source_count)+' · unavailable or unparseable: '+escapeHTML(p.scan_errors)+' · last audit '+escapeHTML(datestr(p.checked_at_utc))+'. New links are review candidates, not automatically verified statistics.</p>'+
+(lead.length?lead.map(x=>'<p class="sli-ah-mini">'+badge('NEW REPORT LEAD','warning')+' <a href="'+escapeHTML(x.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(x.title)+'</a> · '+escapeHTML(x.publisher)+'</p>').join(''):'<p class="sli-ah-mini">No new link detected beyond stored publication baseline; unparseable sources are explicitly reported, not treated as unchanged.</p>')+
+(failed.length?'<p class="sli-ah-mini">Publisher gaps: '+failed.slice(0,8).map(x=>escapeHTML(x.publisher)+' ('+escapeHTML(x.health)+')').join(', ')+'</p>':'')+
+'<p class="sli-ah-mini"><a href="./data/sli-publication-watch.json">See publication source and candidate audit ↗</a></p></div>'}
 function shortView(data){
  let problem=(data.attention||[]).slice(0,5);
  return shell()+'<section class="sli-ah"><div class="sli-ah-title"><div><div style="color:#d7b678;font-size:11px;letter-spacing:1.5px">SOURCE TRANSPARENCY · AUTOMATION CONTROL</div><h2>Data Freshness & Auto-Update Status</h2></div></div>'+banner(data)+totals(data)+
  '<div class="sli-ah-modes"><div><strong>Automatic numeric data</strong><p class="sli-ah-mini">World Bank WDI and supported market/statistical machine-readable series; always retain observation date and source.</p></div><div><strong>Monitoring & verification queue</strong><p class="sli-ah-mini">Law changes, sector actors, AI project milestones and news are leads, not auto-certified facts.</p></div><div><strong>Published historical data</strong><p class="sli-ah-mini">RUPTL, PLN annual tables, HEESI and BPS reports remain tied to their source edition until new PDF/data is verified.</p></div></div>'+
+ publicationStatus()+
  (problem.length?'<div class="sli-ah-card"><strong style="font-size:14px">Recent operational attention</strong>'+problem.map(x=>'<p class="sli-ah-mini">'+badge(x.status,'warning')+' '+escapeHTML(x.id)+'</p>').join('')+'</div>':'')+
  '<p class="sli-ah-mini">Latest structured data reads GitHub main with a safe Pages fallback. If raw data cannot be read, the page can be older than the repository. Auto-run success is not proof of publisher completeness or legal validity.</p>'+actionLinks()+'</section>';
 }
@@ -56,6 +64,7 @@ function fullView(data){
     const tagKind=x.status==='recent_check'?'good':(['overdue','workflow_failure','invalid_dataset'].includes(x.status)?'warning':'');
     return '<tr><td><a href="./'+escapeHTML(x.id)+'">'+escapeHTML(x.id.split('/').at(-1))+'</a><br><small>'+escapeHTML(x.group)+'</small></td><td>'+badge(modes[x.mode]||x.mode)+'</td><td>'+badge(statuses[x.status]||x.status,tagKind)+'</td><td>'+escapeHTML(datestr(x.last_record_utc))+'<br><small>'+escapeHTML(x.last_record_key||'No audit timestamp')+'</small></td><td>'+ (runs||'<small>Not automatically written</small>')+(x.cadence_hours?'<br><small>Scheduled every ≈ '+escapeHTML(x.cadence_hours)+' h</small>':'')+'</td><td>'+escapeHTML(x.note||'')+'</td></tr>'
  }).join('')+'</tbody></table></div>'+
+ publicationStatus()+
  '<h2>Scheduled monitors, QA, failed runs</h2><div class="sli-ah-scroll"><table><thead><tr><th>GitHub workflow</th><th>Schedule</th><th>Last run status</th><th>Last activity</th><th>Output JSON</th></tr></thead><tbody>'+
  (data.workflows||[]).map(x=>{let r=x.last_run||{};return '<tr><td><a target="_blank" rel="noopener noreferrer" href="https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/workflows/'+encodeURIComponent(x.id)+'">'+escapeHTML(x.name||x.id)+'</a></td><td>'+escapeHTML(x.scheduled?x.cron.join(' / '):'QA / manual only')+'</td><td>'+badge(r.conclusion||r.status||'No available run',r.conclusion==='failure'?'warning':r.conclusion==='success'?'good':'')+'</td><td>'+escapeHTML(datestr(r.updated_at))+'</td><td>'+escapeHTML((x.datasets_written||[]).join(', ')||'Validation / report only')+'</td></tr>'}).join('')+'</tbody></table></div>'+
  '<div class="sli-ah-note"><strong>Evidence standards:</strong> verified statistics can refresh when stable provider data is available; source changes, maps, pdf reports and legal/project statuses need versioned evidence before publication. Long-lived historical tables are not necessarily broken. This coverage inventory detects pipeline health, not the truth of every source. All times Jakarta WIB and schedules best-effort.</div>'+actionLinks()+'</div>';
@@ -64,7 +73,7 @@ function dataCsv(data){let cols=['id','group','mode','status','last_record_utc',
 async function load(){const r=await fetch(SRC,{cache:'no-store'});if(!r.ok)throw Error('Dataset audit HTTP '+r.status);return r.json();}
 async function paint(){
  const compact=document.getElementById('sliAutomationHealthRoot'),full=document.getElementById('sliAutomationCenterRoot');if(!compact&&!full)return;
- try{current=await load();if(compact?.isConnected)compact.innerHTML=shortView(current);if(full?.isConnected)full.innerHTML=fullView(current);
+ try{current=await load();try{const pr=await fetch('./data/sli-publication-watch.json',{cache:'no-store'});publicationWatch=pr.ok?await pr.json():null;}catch(_){publicationWatch=null;}if(compact?.isConnected)compact.innerHTML=shortView(current);if(full?.isConnected)full.innerHTML=fullView(current);
  if(full?.isConnected){
    for(const [id,key] of [['sli-ah-category','category'],['sli-ah-mode','mode'],['sli-ah-status','status']])full.querySelector('#'+id).onchange=e=>{filters[key]=e.target.value;full.innerHTML=fullView(current);wire()};
    wire();
