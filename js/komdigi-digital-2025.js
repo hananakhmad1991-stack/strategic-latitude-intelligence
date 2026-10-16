@@ -197,6 +197,33 @@ function digital(root,d){
  const notes=el("div","kd25-timeline");
  for(const [tag,title,detail] of [["2026 drafting programme","National AI roadmap Presidential Regulation draft","Included in 2026 drafting programme under Keppres 38/2025; not enacted according to this report, page 115."],["2025 regional innovation","Garuda Spark Innovation Hub","Operational in Jakarta, Bandung and Medan, source page 115."],["2025 IoT agricultural pilots","Sragen smart agriculture","Reported melon yield +33%, rice/corn +5.3% in source field trials; not generalized nationwide, page 115."],["2025 fisheries pilot","Sukabumi microbubble aerator","Reported monthly electricity cost reduction averaging 73.5% compared with conventional paddlewheels; local use case, page 115."]]){const n=el("article","kd25-timeline-entry");n.append(el("small",null,tag),el("strong",null,title),p(detail));notes.append(n)}root.append(notes);
 }
+function security(root,d){
+ const sec=d.security;
+ root.append(el("h3",null,l("Digital trust, platform oversight & personal data protection","Kepercayaan digital, pengawasan platform dan pelindungan data pribadi")));
+ grid(root,[
+ card("Content access restrictions",sec.blocked.total,"actions","Website and social-platform removals/blocks in 2025; not incidents",123),
+ card("Potential PDP findings",sec.personal_data.potential_findings_total,"findings","112 website + 18 mobile app; suspected noncompliance, not confirmed breach",168),
+ card("PSE assessed · personal data",sec.personal_data.pse_assessed,"providers","Maturity assessment reported 78% compliance; not census",168),
+ card("UGC platforms under SAMAN",sec.pse_content_regulation.saman_ugc_platforms_monitored,"platforms","Monitoring perimeter, not proven sanctions on each platform",170)
+ ]);
+ root.append(el("h4",null,l("Access blocking actions · website versus social","Pemutusan akses konten · situs vs media sosial")));
+ const channels=el("div","kd25-chart");root.append(channels);
+ barPanel(channels,[{name:"Websites",value:sec.blocked.website},{name:"Social platforms",value:sec.blocked.social_platform}],{unit:"content blocks",decimals:0});
+ root.append(el("h4",null,l("Blocked content categories · select channel","Kategori konten yang diputus akses · pilih kanal")));
+ const categorySelect=opt([["website",l("Websites","Situs")],["social",l("Social platforms","Media sosial")]]),chart=el("div","kd25-chart");root.append(categorySelect,chart);
+ function draw(){
+  const list=categorySelect.value==="website"?sec.blocked_website_categories:sec.blocked_social_categories;
+  barPanel(chart,list.map(x=>({name:x.name,value:x.blocks})).sort((a,b)=>b.value-a.value),{unit:"actions",decimals:0});
+  chart.append(meta(l("Reported category totals must not be interpreted as numbers of unique cyber incidents or criminal convictions.","Jumlah penindakan kategori ini bukan jumlah insiden siber unik atau putusan pidana."),123));
+ }
+ categorySelect.addEventListener("change",draw);draw();
+ root.append(el("h4",null,l("Data-protection oversight · 2025","Pengawasan pelindungan data pribadi · 2025")));
+ const privacyChart=el("div","kd25-chart");root.append(privacyChart);
+ barPanel(privacyChart,[{name:"Website potential findings",value:sec.personal_data.website_findings},{name:"Mobile app potential findings",value:sec.personal_data.mobile_app_findings}],{unit:"potential findings",decimals:0});
+ root.append(p(l("PDP screening of 64 electronic-system providers recorded a 78% compliance-maturity result; 300 electronic systems were subject to oversight. Findings are potential violations followed up by the ministry, not substantiated data breaches. AI regulation drafting, PSE registration and PDP implementation must be verified at their own legal-status dates.",
+ "Asesmen kematangan kepatuhan PDP terhadap 64 PSE mencatat skor 78%; pengawasan dilakukan atas 300 sistem elektronik. Temuan berupa potensi pelanggaran yang ditindaklanjuti, bukan kebocoran data yang terbukti. Status peraturan AI, registrasi PSE dan aturan PDP harus dicek pada tanggal hukum masing-masing."),"kd25-warning"));
+ root.append(meta("Figure 3.14 · website/social content access blocks; Graph 3.7 · PDP potential findings; SAMAN UGC oversight section.",168));
+}
 function catalogue(root,d){
  root.append(el("h3",null,l("Digitized source catalogue · 195-page official report","Katalog data terverifikasi · laporan resmi 195 halaman")));
  const q=el("input","kd25-filter");q.type="search";q.placeholder=l("Filter indicator or source page…","Saring indikator atau halaman sumber…");
@@ -217,14 +244,14 @@ function render(root,d){
  const head=el("div","kd25-header");head.append(el("span","kd25-kicker","KOMDIGI PERFORMANCE REPORT · 2025"),el("h2",null,l("Digital Infrastructure & Technology Evidence","Data Infrastruktur Digital dan Teknologi")),p(l("Official connectivity, data-center, cloud, satellite, 38-province interoperability and public digital service intelligence. Verified report-vintage data, not real-time telemetry.",
  "Konektivitas, pusat data, cloud, satelit, interoperabilitas 38 provinsi dan layanan digital. Data tahunan bersumber, bukan pemantauan real-time.")));
  root.append(head);
- const tabs=[["overview","Overview","Ringkasan"],["network","4G / 5G & BTS","4G / 5G & BTS"],["cloud","Data Center & PDNS","Pusat Data & PDNS"],["backbone","SATRIA & Fiber","SATRIA & Fiber"],["regional","38 Provinces · SPLP","38 Provinsi · SPLP"],["digital","Digital Economy & AI","Ekonomi Digital & AI"],["catalogue","Source Data","Data Sumber"]];
+ const tabs=[["overview","Overview","Ringkasan"],["network","4G / 5G & BTS","4G / 5G & BTS"],["cloud","Data Center & PDNS","Pusat Data & PDNS"],["backbone","SATRIA & Fiber","SATRIA & Fiber"],["regional","38 Provinces · SPLP","38 Provinsi · SPLP"],["digital","Digital Economy & AI","Ekonomi Digital & AI"],["security","Trust & Data Protection","Keamanan & Data Pribadi"],["catalogue","Source Data","Data Sumber"]];
  const nav=el("div","kd25-tablist");nav.setAttribute("role","tablist");const panel=el("div","kd25-panel");panel.id="kd25VisiblePanel";panel.setAttribute("role","tabpanel");
  const buttons=[];for(const [id,en,indo]of tabs){const btn=el("button","kd25-tab",l(en,indo));btn.type="button";btn.dataset.tab=id;btn.setAttribute("role","tab");nav.append(btn);buttons.push(btn);btn.addEventListener("click",()=>show(id))}
  root.append(nav,panel);
  function show(active){
   buttons.forEach(b=>{const on=b.dataset.tab===active;b.setAttribute("aria-selected",String(on));b.classList.toggle("is-active",on)});
   panel.replaceChildren();
-  ({overview,network,cloud,backbone,regional,digital,catalogue})[active](panel,d);
+  ({overview,network,cloud,backbone,regional,digital,security,catalogue})[active](panel,d);
  }
  show("overview");root.append(p(l("Source: Laporan Kinerja Kementerian Komunikasi dan Digital 2025, 195 pages, ePPID publication 22 April 2026. Page references appear in every chart and table.",
  "Sumber: Laporan Kinerja Kementerian Komunikasi dan Digital 2025, 195 halaman, dipublikasikan melalui ePPID pada 22 April 2026. Referensi halaman terdapat di grafik/tabel."),"kd25-footer"));
