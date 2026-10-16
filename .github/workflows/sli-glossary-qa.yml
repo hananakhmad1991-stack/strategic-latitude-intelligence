@@ -1,0 +1,43 @@
+name: SLI Unified Glossary & Appendix QA
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/sli-unified-glossary.json'
+      - 'js/sli-shared-appendix.js'
+      - 'js/energy-appendix.js'
+      - 'js/strategic-map.js'
+      - 'sli-glossary-methodology.html'
+      - 'index.html'
+      - 'scripts/validate_sli_glossary.py'
+      - '.github/workflows/sli-glossary-qa.yml'
+permissions:
+  contents: read
+jobs:
+  appendix-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Deduplicate and validate every appendix entrypoint
+        run: python scripts/validate_sli_glossary.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify shared bilingual glossary, energy and map JavaScript syntax
+        run: |
+          node --check js/sli-shared-appendix.js
+          node --check js/energy-appendix.js
+          node --check js/strategic-map.js
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          x=Path('sli-glossary-methodology.html').read_text(encoding='utf-8')
+          scripts=re.findall(r'<script>([\s\S]*?)</script>',x)
+          assert len(scripts)==1
+          Path('/tmp/sli-glossary-inline.js').write_text(scripts[0],encoding='utf-8')
+          PY
+          node --check /tmp/sli-glossary-inline.js
