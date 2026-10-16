@@ -1,0 +1,575 @@
+{
+  "id": "ESDM_HEESI_2025",
+  "as_of": "2026-10-16",
+  "reference_year": 2025,
+  "published": "2026-07",
+  "title": "Handbook of Energy & Economic Statistics of Indonesia 2025",
+  "publisher": "Ministry of Energy and Mineral Resources, Center for Data and Information Technology",
+  "source_url": "https://www.esdm.go.id/assets/media/content/content-handbook-of-energy-and-economic-statistics-of-indonesia-2025.pdf",
+  "license_note": "Official public statistical publication. Cite ESDM and exact year/page. Preserve original units and footnotes.",
+  "pages": 172,
+  "scope": "2015–2025 historic data, revised statistics; provincial installed generation capacity 2025 and 2025 national balance. Source reported estimates, not realtime telemetry.",
+  "definitional_changes": [
+    "2025 natural gas liquids (NGLs) moved from natural gas to crude oil; do not compare historic crude oil and gas without this break.",
+    "Power plant classification changed from on-grid/off-grid to ownership categories in 2025.",
+    "International marine bunkers added to 2025 balance from experimental OECD data; EV electricity is included in transport.",
+    "Commercial final energy consumption trend excludes traditional biomass; full 2025 national balance includes traditional biomass."
+  ],
+  "balance": {
+    "year": 2025,
+    "unit": "Thousand BOE",
+    "printed_pages": "18–21",
+    "pdf_pages": "34–37",
+    "primary_supply": 2091686,
+    "transform_net": -604161,
+    "own_use_and_losses": -50770,
+    "final_supply": 1436754,
+    "statistical_discrepancy": 6039,
+    "non_energy_use": 30408,
+    "final_energy_consumption": 1400307,
+    "stage_links": [
+      {
+        "source": "Primary energy supply",
+        "target": "Net transformation adjustment",
+        "value": 604161
+      },
+      {
+        "source": "Primary energy supply",
+        "target": "Own use & losses",
+        "value": 50770
+      },
+      {
+        "source": "Primary energy supply",
+        "target": "Final energy supply",
+        "value": 1436754
+      },
+      {
+        "source": "Primary energy supply",
+        "target": "Statistical rounding",
+        "value": 1
+      },
+      {
+        "source": "Final energy supply",
+        "target": "Statistical discrepancy",
+        "value": 6039
+      },
+      {
+        "source": "Final energy supply",
+        "target": "Non-energy use",
+        "value": 30408
+      },
+      {
+        "source": "Final energy supply",
+        "target": "Final energy use",
+        "value": 1400307
+      }
+    ],
+    "fuel_to_sector": [
+      {
+        "source": "Coal",
+        "target": "Industry",
+        "value": 364476
+      },
+      {
+        "source": "Natural gas",
+        "target": "Industry",
+        "value": 89687
+      },
+      {
+        "source": "Natural gas",
+        "target": "Transportation",
+        "value": 560
+      },
+      {
+        "source": "Natural gas",
+        "target": "Household",
+        "value": 845
+      },
+      {
+        "source": "Natural gas",
+        "target": "Commercial",
+        "value": 643
+      },
+      {
+        "source": "Oil fuel",
+        "target": "Industry",
+        "value": 28825
+      },
+      {
+        "source": "Oil fuel",
+        "target": "Transportation",
+        "value": 468547
+      },
+      {
+        "source": "Oil fuel",
+        "target": "Household",
+        "value": 3014
+      },
+      {
+        "source": "Oil fuel",
+        "target": "Commercial",
+        "value": 1625
+      },
+      {
+        "source": "Oil fuel",
+        "target": "Other",
+        "value": 13213
+      },
+      {
+        "source": "LPG",
+        "target": "Industry",
+        "value": 1144
+      },
+      {
+        "source": "LPG",
+        "target": "Household",
+        "value": 75727
+      },
+      {
+        "source": "LPG",
+        "target": "Commercial",
+        "value": 2097
+      },
+      {
+        "source": "Electricity",
+        "target": "Industry",
+        "value": 142386
+      },
+      {
+        "source": "Electricity",
+        "target": "Transportation",
+        "value": 343
+      },
+      {
+        "source": "Electricity",
+        "target": "Household",
+        "value": 82495
+      },
+      {
+        "source": "Electricity",
+        "target": "Commercial",
+        "value": 53692
+      },
+      {
+        "source": "Traditional biomass",
+        "target": "Household",
+        "value": 11915
+      },
+      {
+        "source": "Traditional biomass",
+        "target": "Commercial",
+        "value": 1281
+      },
+      {
+        "source": "Industrial biomass",
+        "target": "Industry",
+        "value": 54715
+      },
+      {
+        "source": "Biogas",
+        "target": "Household",
+        "value": 654
+      },
+      {
+        "source": "Solar water heating",
+        "target": "Commercial",
+        "value": 2421
+      },
+      {
+        "source": "Direct geothermal heat",
+        "target": "Industry",
+        "value": 4
+      }
+    ],
+    "reported_sector_totals": {
+      "Industry": 681237,
+      "Transportation": 469449,
+      "Household": 174650,
+      "Commercial": 61759,
+      "Other": 13213
+    },
+    "notes": "Do not treat net transformation adjustment as physical heat losses: table reports signed input-output transformations. Fuel-to-sector table rows sum to published subtotals within rounding of 1–2 Thousand BOE. Fuels before and after conversion cannot be linked by a guessed carrier transformation matrix."
+  },
+  "provincial": {
+    "title": "Power Plant Installed Capacity by Province 2025",
+    "unit": "MW",
+    "printed_pages": "118–119",
+    "pdf_pages": "134–135",
+    "count": 38,
+    "reported_total": 107498.89,
+    "locations": [
+      {
+        "province": "Aceh",
+        "value": 1386.01
+      },
+      {
+        "province": "Sumatera Utara",
+        "value": 5135.16
+      },
+      {
+        "province": "Sumatera Barat",
+        "value": 1016.58
+      },
+      {
+        "province": "Riau",
+        "value": 3560.24
+      },
+      {
+        "province": "Jambi",
+        "value": 1177.54
+      },
+      {
+        "province": "Sumatera Selatan",
+        "value": 5245.31
+      },
+      {
+        "province": "Bengkulu",
+        "value": 562.7
+      },
+      {
+        "province": "Lampung",
+        "value": 1114.85
+      },
+      {
+        "province": "Kepulauan Bangka Belitung",
+        "value": 519.35
+      },
+      {
+        "province": "Kepulauan Riau",
+        "value": 1422.02
+      },
+      {
+        "province": "DKI Jakarta",
+        "value": 5583.52
+      },
+      {
+        "province": "Jawa Barat",
+        "value": 14610.35
+      },
+      {
+        "province": "Jawa Tengah",
+        "value": 13040.8
+      },
+      {
+        "province": "Daerah Istimewa Yogyakarta",
+        "value": 16.78
+      },
+      {
+        "province": "Jawa Timur",
+        "value": 10948.77
+      },
+      {
+        "province": "Banten",
+        "value": 12879.25
+      },
+      {
+        "province": "Bali",
+        "value": 1337.11
+      },
+      {
+        "province": "Nusa Tenggara Barat",
+        "value": 1521.58
+      },
+      {
+        "province": "Nusa Tenggara Timur",
+        "value": 575.87
+      },
+      {
+        "province": "Kalimantan Barat",
+        "value": 944.83
+      },
+      {
+        "province": "Kalimantan Tengah",
+        "value": 1109.2
+      },
+      {
+        "province": "Kalimantan Selatan",
+        "value": 1080.06
+      },
+      {
+        "province": "Kalimantan Timur",
+        "value": 2044.49
+      },
+      {
+        "province": "Kalimantan Utara",
+        "value": 513.63
+      },
+      {
+        "province": "Sulawesi Utara",
+        "value": 643.2
+      },
+      {
+        "province": "Sulawesi Tengah",
+        "value": 7126.9
+      },
+      {
+        "province": "Sulawesi Selatan",
+        "value": 2662.33
+      },
+      {
+        "province": "Sulawesi Tenggara",
+        "value": 535.47
+      },
+      {
+        "province": "Gorontalo",
+        "value": 307.55
+      },
+      {
+        "province": "Sulawesi Barat",
+        "value": 81.66
+      },
+      {
+        "province": "Maluku",
+        "value": 356.22
+      },
+      {
+        "province": "Maluku Utara",
+        "value": 6892.1
+      },
+      {
+        "province": "Papua",
+        "value": 413.46
+      },
+      {
+        "province": "Papua Barat",
+        "value": 210.92
+      },
+      {
+        "province": "Papua Selatan",
+        "value": 71.32
+      },
+      {
+        "province": "Papua Tengah",
+        "value": 684.65
+      },
+      {
+        "province": "Papua Pegunungan",
+        "value": 19.34
+      },
+      {
+        "province": "Papua Barat Daya",
+        "value": 147.77
+      }
+    ],
+    "caution": "Installed capacity by province is owned-and-captive aggregate generation, NOT PLN-owned only. Map represents whole province, NOT coordinates of individual plant sites. Shading shows absolute total MW, not accessibility or population-normalized rate."
+  },
+  "summary_2025": {
+    "primary_energy_supply_commercial_million_boe": 2078.491,
+    "final_energy_commercial_million_boe": 1387.112,
+    "total_electricity_installed_capacity_gw": 107.49889,
+    "ratio_electrification_percent": 99.83,
+    "primary_mix_percent": {
+      "coal": 41.1,
+      "oil": 28.1,
+      "gas": 15.1,
+      "new_renewable": 15.7
+    },
+    "coal_production_million_tonnes": 817.5,
+    "coal_exports_million_tonnes": 522.6,
+    "coal_domestic_sales_million_tonnes": 246.9,
+    "crude_oil_production_million_barrels": 221.22915,
+    "natural_gas_production_bscf": 2464.71,
+    "electricity_generation_twh": 494.35,
+    "renewable_electricity_generation_twh": 78.4,
+    "electricity_sales_twh": 455,
+    "electricity_grid_losses_percent": 8.3,
+    "biodiesel_production_million_kl": 15.7,
+    "biodiesel_domestic_million_kl": 14.9,
+    "notes": "Headline published figures include rounding. The final 2025 balance includes biomass but the commercial series on pp. 2–3 explicitly excludes traditional biomass.",
+    "source_pages": "xi–xvi (PDF 11–16)"
+  },
+  "series": [
+    {
+      "name": "Primary energy supply (excluding traditional biomass)",
+      "unit": "Thousand BOE",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        1211461,
+        1284528,
+        1328761,
+        1462199,
+        1554746,
+        1487567,
+        1536951,
+        1825003,
+        1853281,
+        1991510,
+        2078491
+      ],
+      "printed_pages": "2–3",
+      "pdf_pages": "18–19"
+    },
+    {
+      "name": "Final energy consumption (excluding traditional biomass)",
+      "unit": "Thousand BOE",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        760401,
+        754023,
+        791145,
+        889295,
+        963059,
+        871007,
+        894051,
+        1173887,
+        1256049,
+        1335742,
+        1387112
+      ],
+      "printed_pages": "2–3",
+      "pdf_pages": "18–19"
+    },
+    {
+      "name": "Primary energy supply per capita",
+      "unit": "BOE/capita",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        4.74,
+        4.97,
+        5.07,
+        5.52,
+        5.8,
+        5.51,
+        5.64,
+        6.62,
+        6.65,
+        7.07,
+        7.31
+      ],
+      "printed_pages": "2–3",
+      "pdf_pages": "18–19"
+    },
+    {
+      "name": "Final energy consumption per capita",
+      "unit": "BOE/capita",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        2.98,
+        2.91,
+        3.02,
+        3.36,
+        3.59,
+        3.22,
+        3.28,
+        4.26,
+        4.51,
+        4.74,
+        4.88
+      ],
+      "printed_pages": "2–3",
+      "pdf_pages": "18–19"
+    }
+  ],
+  "content_index": {
+    "01 Energy and economic indicators": {
+      "print_pages": "2–15",
+      "pdf_pages": "18–31",
+      "focus": [
+        "GDP, energy intensity, population, trade, prices and per-capita series"
+      ]
+    },
+    "02 Energy balance table": {
+      "print_pages": "18–21",
+      "pdf_pages": "34–37",
+      "focus": [
+        "National physical energy balance by 19 fuels/carriers, transformation and end-use sectors"
+      ]
+    },
+    "03 Energy supply and demand": {
+      "print_pages": "24–33",
+      "pdf_pages": "40–49",
+      "focus": [
+        "Primary energy by sources, final energy by sectors and carriers"
+      ]
+    },
+    "04 Energy prices": {
+      "print_pages": "36–40",
+      "pdf_pages": "52–56",
+      "focus": [
+        "ICP, world gas, LNG export, coal export and prices/energy unit"
+      ]
+    },
+    "05 Final energy demand by sector": {
+      "print_pages": "44–68",
+      "pdf_pages": "60–84",
+      "focus": [
+        "Industry, household, commercial, transport, other by carrier and original energy units"
+      ]
+    },
+    "06 Energy supply by resource": {
+      "print_pages": "70–129",
+      "pdf_pages": "86–145",
+      "focus": [
+        "Coal trade/destinations, reserves, refineries, fuels, gas, generation by province, geothermal, biofuel"
+      ]
+    },
+    "07 Greenhouse gas emissions": {
+      "print_pages": "132–133",
+      "pdf_pages": "148–149",
+      "focus": [
+        "Sectoral greenhouse gas emissions"
+      ]
+    },
+    "Annex methodology, glossary, conversion": {
+      "print_pages": "136–154",
+      "pdf_pages": "152–170",
+      "focus": [
+        "Terminology, energy conversion and statistical methods"
+      ]
+    }
+  },
+  "archive": {
+    "status": "source-linked chapter index; complete page text is generated by source-ingest workflow when the source URL can be downloaded",
+    "path": "data/handbook-2025-pages.json",
+    "complete_extraction": false,
+    "warning": "Only personally crosschecked dashboard metrics may appear as quantified charts. Full text extraction is a searchable archive, not audited machine-readable table serialization of all 172 pages."
+  }
+}
