@@ -6,6 +6,7 @@ const catalog=JSON.parse(fs.readFileSync("data/skkmigas-2025-figure-catalog.json
 const digitized=JSON.parse(fs.readFileSync("data/skkmigas-2025-digitized-exhibits.json","utf8"));
 const pod=JSON.parse(fs.readFileSync("data/skkmigas-2025-pod-approvals.json","utf8"));
 const exploration=JSON.parse(fs.readFileSync("data/skkmigas-2025-exploration-registers.json","utf8"));
+const extra=JSON.parse(fs.readFileSync("data/skkmigas-2025-source-extension.json","utf8"));
 const source=fs.readFileSync("js/skkmigas-annual-2025.js","utf8");
 class MiniDom{
  constructor(tag){this.tagName=tag;this.children=[];this.attrs={};this.className="";this.dataset={};this.style={};this.listeners={};this.textContent="";this.isConnected=true;this.value="";this.rel="";}
@@ -20,12 +21,13 @@ class MiniDom{
 }
 const root=new MiniDom("div");
 const doc={createElement:(tag)=>new MiniDom(tag),createElementNS:(ns,tag)=>new MiniDom(tag),getElementById:()=>root};
-const ctx={window:{SLIi18n:{language:"en"}},document:doc,console,fetch:async url=>({ok:true,json:async()=>url.includes("figure-catalog")?catalog:url.includes("digitized-exhibits")?digitized:url.includes("pod-approvals")?pod:url.includes("exploration-registers")?exploration:report})};
+const ctx={window:{SLIi18n:{language:"en"}},document:doc,console,fetch:async url=>({ok:true,json:async()=>url.includes("figure-catalog")?catalog:url.includes("digitized-exhibits")?digitized:url.includes("pod-approvals")?pod:url.includes("exploration-registers")?exploration:url.includes("source-extension")?extra:report})};
+vm.runInNewContext(fs.readFileSync("js/skkmigas-2025-extension.js","utf8"),ctx,{filename:"skkmigas-2025-extension.js"});
 vm.runInNewContext(source,ctx,{filename:"skkmigas-annual-2025.js"});
 ctx.window.initSLISKKAnnual2025(root,"energy");
 await Promise.resolve();await Promise.resolve();await Promise.resolve();await new Promise(resolve=>setImmediate(resolve));
 const tabs=root.querySelectorAll("button").filter(x=>x.dataset.tab);
-assert.deepEqual(tabs.map(x=>x.dataset.tab),["overview","trend","gas","targets","mapping","projects","digitized","pods","exploration","catalog"]);
+assert.deepEqual(tabs.map(x=>x.dataset.tab),["overview","trend","gas","targets","mapping","projects","digitized","sourceplus","pods","exploration","catalog"]);
 function getTab(name){const b=tabs.find(x=>x.dataset.tab===name);assert.ok(b,name);return b}
 const assertBuilt=(name)=>{getTab(name).click();assert.equal(getTab(name).attrs["aria-pressed"],"true");};
 assertBuilt("trend");assert.ok(root.querySelectorAll("svg").length>=1,"Historical chart draws a complete SVG");
@@ -33,9 +35,10 @@ assertBuilt("gas");assert.ok(root.querySelectorAll("path").length>=10,"Ten gas a
 assertBuilt("targets");assert.ok(root.querySelectorAll("article").length>=5,"Target KPI comparison drawn");
 assertBuilt("mapping");assert.ok(root.querySelectorAll("a").some(x=>x.href==="#map"),"Map link is honest existing GIS");
 assertBuilt("projects");assert.ok(root.querySelectorAll("article").length>=16,"All 16 sourced projects appear");
+assertBuilt("sourceplus");assert.ok(root.querySelectorAll("article").length>=5,"Five investment scorecards rendered on source extension");
 assertBuilt("digitized");assert.ok(root.querySelectorAll("svg").length>=1,"Digitized historical annual series graph rendered");
 assertBuilt("pods");assert.ok(root.querySelectorAll("td").length>=45*8,"45 source-linked POD reserve rows rendered");
 assertBuilt("exploration");assert.ok(root.querySelectorAll("td").length>=24*4,"24 PSE rows rendered");
 assertBuilt("catalog");assert.ok(root.querySelectorAll("article").length>=30,"Source catalog initial page rendered");
 assertBuilt("overview");assert.ok(root.querySelectorAll("article").length>=30,"2025 all KPI cards rendered");
-console.log("PASS: live DOM smoke for 10 tab views, 10 Sankey flows, 16 project cards, KPI metrics and 99-reference catalog");
+console.log("PASS: live DOM smoke for 11 tab views, 10 Sankey flows, 16 project cards, KPI metrics and 99-reference catalog");
