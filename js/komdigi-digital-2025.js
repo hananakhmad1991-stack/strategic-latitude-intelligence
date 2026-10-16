@@ -117,13 +117,53 @@ function regional(root,d){
  grid(root,[card("SPLP connected IPPD",442,"of 730","60.55% connected nationally · includes central and regional bodies",161),
  card("Daily active exchange",37,"of 730","5.07% of institutions actively exchanging data",161),
  card("Local governments · source headline",378,"of 546","38-province figure headline; differs from visible province label sum",161)]);
- root.append(p(l("Select a province to inspect source fractions. Each numerator / denominator combines province, regency and city governments associated with that province. This is a ranked geographic matrix, NOT an exact GIS administrative polygon or counts of data centers.",
- "Pilih provinsi untuk melihat proporsi pada sumber. Pembilang dan penyebut mencakup pemerintah provinsi, kabupaten, dan kota di wilayah tersebut. Ini matriks geografis, BUKAN polygon GIS atau jumlah data center."),"kd25-note"));
+ root.append(p(l("Select a province on the original source-matched GeoJSON map or ranked matrix. Numerator/denominator combine province, regency and city administrations. The simplified map polygons are spatial reference only, not legal cadastral boundaries or counts of data centers.",
+ "Pilih provinsi di peta GeoJSON atau matriks untuk melihat proporsi sumber. Pembilang/penyebut mencakup pemerintah provinsi, kabupaten, dan kota. Batas peta disederhanakan untuk visualisasi, bukan batas kadastral resmi atau jumlah data center."),"kd25-note"));
  const toolbar=el("div","kd25-controls"),q=el("input","kd25-filter");q.type="search";q.placeholder=l("Search province…","Cari provinsi…");q.setAttribute("aria-label","Filter provincial government SPLP data");const sort=opt([["coverage","Highest coverage"],["volume","Most connected"],["name","Province A–Z"],["gap","Lowest coverage"]]);
  toolbar.append(q,sort);root.append(toolbar);
  const selected=el("div","kd25-inspector"),matrix=el("div","kd25-provinces"),tableView=el("div");
- root.append(selected,matrix,tableView);
+ const mapSlot=el("div","kd25-map"),tableHeading=el("h4",null,l("Province list · sortable source values","Daftar provinsi · angka sumber terurut"));
+ root.append(mapSlot,selected,tableHeading,matrix,tableView);
  function inspector(x){selected.replaceChildren();if(!x)return;selected.append(el("strong",null,x.province+" · "+x.connected+" / "+x.total+" · "+fmt(x.percent,1)+"%"),p(l("Reported geographic grouping; no verified polygon or municipality-level coordinates.","Pengelompokan wilayah sumber; tidak ada geometri/polygon atau titik kabupaten/kota terverifikasi.")))}
+ function drawProvinceMap(){
+  // SLI already publishes 38 simplified Indonesian province polygons as independent
+  // spatial geometry. Join by harmonized names; never treat report's text as GPS.
+  fetch("data/indonesia-provinces.geojson",{cache:"force-cache"}).then(r=>{if(!r.ok)throw Error("Province boundary layer not available");return r.json()}).then(geo=>{
+   if(!mapSlot.isConnected||!Array.isArray(geo.features))return;
+   const alias={"Daerah Istimewa Yogyakarta":"DI Yogyakarta","Kepulauan Bangka Belitung":"Bangka Belitung"};
+   const byName=new Map(d.collections.splp_provinces.map(x=>[x.province,x]));
+   const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+   svg.setAttribute("viewBox","0 0 980 390");svg.setAttribute("role","img");
+   svg.setAttribute("aria-label",l("Provincial SPLP adoption choropleth, 38 polygons; click province for exact counts","Peta adopsi SPLP provinsi, 38 polygon; klik provinsi untuk angka pasti"));
+   const X=lon=>24+(lon-94)*19.65,Y=lat=>24+(7-lat)*19.5;
+   const pathOf=coordinates=>{
+    const ring=pts=>pts.map((pt,i)=>(i?"L":"M")+X(pt[0]).toFixed(2)+","+Y(pt[1]).toFixed(2)).join(" ")+"Z";
+    return coordinates.map(poly=>poly.map(ring).join(" ")).join(" ");
+   };
+   let mapped=0;
+   for(const feature of geo.features){
+    const name=feature.properties?.name||"",data=byName.get(alias[name]||name);if(!data)continue;
+    const geometry=feature.geometry||{},coordinates=geometry.type==="Polygon"?[geometry.coordinates]:geometry.type==="MultiPolygon"?geometry.coordinates:[];
+    if(!coordinates.length)continue;
+    const p=document.createElementNS("http://www.w3.org/2000/svg","path");
+    p.setAttribute("d",pathOf(coordinates));p.setAttribute("class","kd25-province-shape");
+    p.setAttribute("fill","hsl("+(195-150*data.percent/100)+" 55% "+(33+19*data.percent/100)+"%)");
+    p.setAttribute("tabindex","0");p.setAttribute("role","button");
+    p.setAttribute("aria-label",name+": "+data.connected+" of "+data.total+" administrations connected, "+fmt(data.percent,1)+"%");
+    const title=document.createElementNS("http://www.w3.org/2000/svg","title");
+    title.textContent=name+" · "+data.connected+"/"+data.total+" · "+fmt(data.percent,1)+"%";p.append(title);
+    const select=()=>{inspector(data);mapSlot.querySelectorAll(".kd25-province-shape").forEach(node=>node.classList.toggle("is-selected",node===p))};
+    p.addEventListener("click",select);
+    p.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select()}});
+    svg.append(p);mapped++;
+   }
+   if(mapped!==38)throw Error("Partial provincial spatial join ("+mapped+"/38)");
+   mapSlot.replaceChildren();
+   const header=el("div","kd25-map-top");header.append(el("strong",null,l("SPLP Local Government Adoption · 2025","Adopsi SPLP Pemerintah Daerah · 2025")),el("span",null,"38 / 38 "+l("matched province polygons","polygon provinsi cocok")));
+   const legend=el("div","kd25-map-legend");legend.append(el("span",null,"0%"),el("div","kd25-map-ramp"),el("span",null,"100%"));
+   mapSlot.append(header,svg,legend,p(l("Choropleth uses SLI's existing simplified 38-province GeoJSON boundaries and Komdigi Figure 3.25 administrative fractions. Not a cell-tower map, data-center location map, or certified boundary survey.","Peta menggunakan GeoJSON 38 provinsi milik SLI yang telah disederhanakan dan rasio administrasi Gambar 3.25 Komdigi. Bukan peta titik BTS, lokasi data center, atau survei batas resmi.")));
+  }).catch(err=>{console.warn("[SLI Komdigi Province Map]",err);mapSlot.textContent=l("Provincial map unavailable; the complete searchable province matrix remains below.","Peta belum tersedia; matriks 38 provinsi masih dapat digunakan di bawah.")});
+ }
  function draw(){
   let v=d.collections.splp_provinces.filter(x=>x.province.toLowerCase().includes(q.value.toLowerCase()));
   v.sort((a,b)=>sort.value==="coverage"?b.percent-a.percent:sort.value==="gap"?a.percent-b.percent:sort.value==="volume"?b.connected-a.connected:a.province.localeCompare(b.province));
@@ -131,7 +171,7 @@ function regional(root,d){
   b.type="button";b.title=x.connected+" of "+x.total+" local administrations";fill.style.width=fmt(x.percent,3)+"%";track.append(fill);b.append(h,num,track);b.addEventListener("click",()=>inspector(x));matrix.append(b)}
   table(tableView,["Province","Connected","Eligible","Percentage"],v.map(x=>[x.province,x.connected,x.total,fmt(x.percent,1)+"%"]));
  }
- q.addEventListener("input",draw);sort.addEventListener("change",draw);draw();inspector(d.collections.splp_provinces[0]);
+ q.addEventListener("input",draw);sort.addEventListener("change",draw);draw();inspector(d.collections.splp_provinces[0]);drawProvinceMap();
  root.append(p(l("IMPORTANT source discrepancy: the 38 printed province labels sum to 371/542, but the Figure 3.25 headline reports 378/546. The two disclosures are preserved, not silently reconciled.",
  "PERBEDAAN SUMBER: jumlah 38 label provinsi adalah 371/542, tetapi judul Gambar 3.25 menyebut 378/546. Keduanya dipertahankan, tidak direkonsiliasi diam-diam."),"kd25-warning"));
  root.append(meta(l("One regional aggregate for each of Indonesia's 38 provinces; source Figure 3.25.","Satu agregat untuk masing-masing 38 provinsi, Gambar 3.25."),161));
