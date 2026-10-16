@@ -86,13 +86,20 @@ jobs:
           import json,subprocess
           p=json.load(open("data/sli-automation-health.json"))
           s=p.get("summary",{})
-          if not ((s.get("overdue_or_broken_datasets") or 0)+(s.get("workflow_failures_latest") or 0)):
-              print("No dataset/workflow freshness problems")
-              raise SystemExit(0)
           key="SLI-AUTOMATION-HEALTH-CONTROL"
           prior=subprocess.run(["gh","issue","list","--state","open","--search",
              key+" in:body","--json","number","--limit","10"],capture_output=True,text=True)
-          if prior.returncode or json.loads(prior.stdout):
+          existing=json.loads(prior.stdout) if prior.returncode==0 else []
+          problem_count=(s.get("overdue_or_broken_datasets") or 0)+(s.get("workflow_failures_latest") or 0)
+          if not problem_count:
+              if existing:
+                  for issue in existing:
+                      subprocess.run(["gh","issue","close",str(issue["number"]),"--comment",
+                          "Freshness audit now shows no overdue datasets or failing last workflow runs. Monitor will reopen a new issue if failures recur."],check=False)
+                  print("Closed resolved umbrella issue(s)")
+              else:print("No dataset/workflow freshness problems")
+              raise SystemExit(0)
+          if prior.returncode or existing:
               print("Already tracked or issue lookup failed; no duplicate")
               raise SystemExit(0)
           lines=["- "+v["id"]+": "+v["status"] for v in p.get("attention",[])[:12]]
