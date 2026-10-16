@@ -172,6 +172,14 @@
      const el=item.anchor?document.getElementById(item.anchor):document.getElementById("content");
      if(!el)return;
      if(!jumped){el.scrollIntoView({behavior:delay?"smooth":"auto",block:"start"});jumped=true}
+     if(item.komdigi_tab){
+      const tab=[...el.querySelectorAll("button.kd25-tab")].find(b=>b.dataset.tab===item.komdigi_tab);
+      if(tab&&tab.getAttribute("aria-selected")!=="true")tab.click();
+      if(item.komdigi_tab==="regional"&&item.province){
+       const provinceBtn=[...el.querySelectorAll("button.kd25-province")].find(b=>(b.textContent||"").includes(item.province));
+       provinceBtn?.click();
+      }
+     }
      if(item.layer){
       const select=el.querySelector("select.he25-atlas-select");
       if(select&&[...select.options].some(o=>o.value===item.layer)){
