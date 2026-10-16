@@ -66,7 +66,7 @@ assert.ok(Math.abs(doc.gas_allocation.filter(x=>x.scope==="Domestic").reduce((a,
 const digitized=JSON.parse(read("data/skkmigas-2025-digitized-exhibits.json"));
 const pod=JSON.parse(read("data/skkmigas-2025-pod-approvals.json"));
 assert.equal(digitized.series.length,24);
-assert.equal(digitized.categories.length,6);
+assert.equal(digitized.categories.length,13);
 assert.equal(digitized.source_sha256,"48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301");
 assert.equal(digitized.series.reduce((a,x)=>a+x.values.length,0),185);
 for(const x of digitized.series){
@@ -89,6 +89,18 @@ const equipmentGas=digitized.categories.find(x=>x.id==="gas_lpo_equipment");
 assert.equal(equipmentGas.records.find(x=>x.name==="Heat exchanger").value,70.6);
 const govt=digitized.categories.find(x=>x.id==="state_assets_2025");
 assert.equal(govt.records.reduce((a,x)=>a+x.value,0),743497553962874);
+const contractGas=digitized.categories.find(x=>x.id==="gas_contract_vs_actual");
+assert.equal(contractGas.records.length,10);
+assert.equal(contractGas.records.find(x=>x.name==="Industry").realization,1403.44);
+assert.equal(contractGas.records.find(x=>x.name==="Industry").plan,1636.2);
+const receivers=digitized.categories.find(x=>x.id==="lng_domestic_receivers");
+assert.equal(receivers.records.length,8);
+assert.equal(receivers.records.reduce((s,x)=>s+x.value,0).toFixed(2),"84.61");
+assert.equal(receivers.records.find(x=>x.name==="Nusantara Regas").tangguh_cargo,37.47);
+assert.equal(digitized.categories.find(x=>x.id==="facility_disruption_frequency").records.find(x=>x.name==="Electrical").value,196);
+assert.equal(digitized.categories.find(x=>x.id==="oil_lpo_other_2025").records.length,12);
+assert.equal(digitized.categories.find(x=>x.id==="gas_lpo_other_2025").records.find(x=>x.name==="Jun").value,22);
+
 assert.equal(pod.records.length,45);
 assert.equal(pod.records.reduce((a,x)=>a+x.estimated_combined_mmboe,0).toFixed(2),"643.42");
 assert.equal(pod.listed_table_sum_mmboe,643.42);
@@ -97,8 +109,8 @@ assert.equal(pod.unreconciled_difference_mmboe,12.31);
 assert.equal(pod.records[9].field,pod.records[24].field,"Source duplicates 10 and 25 must remain flagged");
 for(const r of pod.records){assert.match(r.approval_date,/^2025-\d\d-\d\d$/);assert.ok(r.operator&&r.field);assert.ok(r.source_pdf_page===52||r.source_pdf_page===53)}
 assert.equal(catalog.entries.length,101);
-assert.equal(catalog.digitization_review.numerically_verified,21);
-assert.equal(catalog.digitization_review.source_only,64);
+assert.equal(catalog.digitization_review.numerically_verified,26);
+assert.equal(catalog.digitization_review.source_only,59);
 assert.equal(catalog.digitization_review.structured_source_tables,2);
 const exploration=JSON.parse(read("data/skkmigas-2025-exploration-registers.json"));
 assert.equal(exploration.pse_structures.length,24);
