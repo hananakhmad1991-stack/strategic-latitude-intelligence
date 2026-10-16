@@ -20,13 +20,13 @@ DOCS={
  'https://www.pln.co.id/webapi/media/file/webkorp/asset/Statistik2024.pdf'
  ]}
 PATTERNS={
-'jawa_barat':r'jawa\\s+barat|west\\s+java|bekasi|karawang|cikarang',
-'jawa_tengah':r'jawa\\s+tengah|central\\s+java|batang|semarang',
-'kepulauan_riau':r'kepulauan\\s+riau|batam|bintan|tanjungpinang',
-'gardu_induk':r'gardu\\s+induk|substation|\\bMVA\\b',
-'transmisi':r'transmisi|transmission|\\bkms\\b',
-'beban_puncak':r'beban\\s+puncak|peak\\s+load',
-'pembangkit':r'pembangkit|generation|\\bPLT[ASUDGMB]\\b',
+'jawa_barat':r'jawa\s+barat|west\s+java|bekasi|karawang|cikarang',
+'jawa_tengah':r'jawa\s+tengah|central\s+java|batang|semarang',
+'kepulauan_riau':r'kepulauan\s+riau|batam|bintan|tanjungpinang',
+'gardu_induk':r'gardu\s+induk|substation|\bMVA\b',
+'transmisi':r'transmisi|transmission|\bkms\b',
+'beban_puncak':r'beban\s+puncak|peak\s+load',
+'pembangkit':r'pembangkit|generation|\bPLT[ASUDGMB]\b',
 'keandalan':r'SAIDI|SAIFI|gangguan|reliability'
 }
 def download(name, urls):
@@ -56,7 +56,7 @@ def extract(name,info):
  doc=fitz.open(info['path']);matches=[];all_pages=doc.page_count
  for i,page in enumerate(doc):
   txt=page.get_text(sort=True)
-  plain=re.sub(r'\\s+',' ',txt)
+  plain=re.sub(r'\s+',' ',txt)
   categories=[label for label,pattern in PATTERNS.items() if re.search(pattern,plain,re.I)]
   if not categories:continue
   # Human-reviewed evidence snippets with page location; no automatic table claims.
@@ -65,7 +65,7 @@ def extract(name,info):
    occurrences=list(pattern.finditer(plain))
    snippets=[plain[max(0,m.start()-180):min(len(plain),m.end()+350)] for m in occurrences[:3]]
    matches.append({'pdf_page':i+1,'category':label,'snippets':snippets,'page_has_extracted_text':len(txt)>30,
-     'table_candidate':bool(re.search(r'\\d[\\d., ]+\\s*(?:MW|MVA|kms|kV)',plain,re.I)),
+     'table_candidate':bool(re.search(r'\d[\d., ]+\s*(?:MW|MVA|kms|kV)',plain,re.I)),
      'status':'REQUIRES_HUMAN_VERIFICATION'})
  (OUT/(name+'_index.json')).write_text(json.dumps({'document':name,'pages':all_pages,'source':info['url'],'sha256':info['sha256'],'hits':matches},ensure_ascii=False,indent=2))
  info['pages']=all_pages; info['hit_count']=len(matches)
