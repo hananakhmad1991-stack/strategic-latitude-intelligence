@@ -1,0 +1,492 @@
+{
+  "version": "2026-10-16.1",
+  "last_source_audit": "2026-10-16",
+  "country": "Indonesia",
+  "currency": "IDR",
+  "units_policy": "Every metric has period, frequency and source. Manual official press-release snapshots are not automatically refreshed. World Bank history is independently refreshed by the GitHub workflow, with different reporting lags.",
+  "sources": {
+    "bps_gdp": {
+      "publisher": "BPS",
+      "title": "Ekonomi Indonesia Triwulan II 2026",
+      "url": "https://www.bps.go.id/en/pressrelease/2026/08/05/2605/indonesia-s-economic-in-q2-2026-was-5-29-percent--y-on-y-.html",
+      "released": "2026-08-05"
+    },
+    "bps_inflation": {
+      "publisher": "BPS",
+      "title": "CPI September 2026",
+      "url": "https://www.bps.go.id/en/pressrelease/2026/10/01/2623/the-year-on-year--y-on-y--headline-inflation-in-september-2026-was-recorded-at-3-28-percent-.html",
+      "released": "2026-10-01"
+    },
+    "bi_rate": {
+      "publisher": "Bank Indonesia",
+      "title": "Monetary Policy Review September 2026",
+      "url": "https://www.bi.go.id/en/publikasi/laporan/Pages/TKM-September-2026.aspx",
+      "released": "2026-09-29"
+    },
+    "bi_jisdor": {
+      "publisher": "Bank Indonesia",
+      "title": "JISDOR reference exchange rate USD/IDR",
+      "url": "https://www.bi.go.id/en/statistik/informasi-kurs/jisdor/Default.aspx",
+      "released": "2026-10-16"
+    },
+    "bps_employment": {
+      "publisher": "BPS",
+      "title": "February 2026 Employment Situation",
+      "url": "https://www.bps.go.id/en/pressrelease/2026/05/05/2574/unemployment-rate-was-4-68-percent-and-the-average-wage-of-employees-was-3-29-million-rupiah-.html",
+      "released": "2026-05-05"
+    },
+    "bps_poverty": {
+      "publisher": "BPS",
+      "title": "Poverty March 2026",
+      "url": "https://www.bps.go.id/en/pressrelease/2026/08/05/2594/persentase-penduduk-miskin-maret-2026-turun-menjadi-8-07-persen-.html",
+      "released": "2026-08-05"
+    },
+    "bps_gini": {
+      "publisher": "BPS",
+      "title": "Gini March 2026",
+      "url": "https://www.bps.go.id/en/pressrelease/2026/08/05/2595/gini-ratio-maret-2026-tercatat-sebesar-0-368-.html",
+      "released": "2026-08-05"
+    },
+    "bps_trade": {
+      "publisher": "BPS",
+      "title": "Indonesia Merchandise Trade August 2026",
+      "url": "https://www.bps.go.id/en/pressrelease/2026/10/01/2621/exports-and-imports-of-indonesia-in-august-2026-reached-usd26-61-billion-and-usd23-06-billion--respectively.html",
+      "released": "2026-10-01"
+    },
+    "bi_bop": {
+      "publisher": "Bank Indonesia",
+      "title": "BOP Q2 2026",
+      "url": "https://www.bi.go.id/en/publikasi/ruang-media/news-release/Pages/sp_2816526.aspx",
+      "released": "2026-08-21"
+    },
+    "bi_reserves": {
+      "publisher": "Bank Indonesia",
+      "title": "Official Reserve Assets September 2026",
+      "url": "https://www.bi.go.id/en/publikasi/ruang-media/news-release/Pages/sp_2821426.aspx",
+      "released": "2026-10-07"
+    },
+    "minfin_apbn": {
+      "publisher": "Kementerian Keuangan",
+      "title": "APBN KiTA through September 2026",
+      "url": "https://www.kemenkeu.go.id/informasi-publik/publikasi/berita-utama/Menkeu-Suahasil-APBN-KiTA-September-2026",
+      "released": "2026-10-09"
+    },
+    "wb_wdi": {
+      "publisher": "World Bank",
+      "title": "World Development Indicators (IDN)",
+      "url": "https://data.worldbank.org/country/indonesia",
+      "released": null
+    }
+  },
+  "metrics": [
+    {
+      "id": "real_gdp_growth",
+      "category": "Growth & Production",
+      "label": "Real GDP growth",
+      "display": "5.29",
+      "value": 5.29,
+      "unit": "% YoY",
+      "period": "2026-Q2",
+      "frequency": "quarter",
+      "source_id": "bps_gdp",
+      "caveat": "GDP growth vs Q2 2025; not full-year growth",
+      "status": "official_current_release"
+    },
+    {
+      "id": "nominal_gdp_q",
+      "category": "Growth & Production",
+      "label": "Nominal GDP",
+      "display": "Rp6,552.1 tn",
+      "value": 6552.1,
+      "unit": "IDR trillion",
+      "period": "2026-Q2",
+      "frequency": "quarter",
+      "source_id": "bps_gdp",
+      "caveat": "Q2 total GDP current prices, NOT annualized.",
+      "status": "official_current_release"
+    },
+    {
+      "id": "gdp_per_capita",
+      "category": "Growth & Production",
+      "label": "GDP per capita",
+      "display": null,
+      "value": null,
+      "unit": "current US$",
+      "period": "latest annual",
+      "frequency": "year",
+      "source_id": "wb_wdi",
+      "caveat": "Annual nominal WDI, update via historical API; not yet in signed snapshot.",
+      "status": "awaiting_historical_dataset"
+    },
+    {
+      "id": "inflation_yoy",
+      "category": "Prices & Monetary",
+      "label": "CPI headline inflation",
+      "display": "3.28",
+      "value": 3.28,
+      "unit": "% YoY",
+      "period": "2026-09",
+      "frequency": "month",
+      "source_id": "bps_inflation",
+      "caveat": "September 2026 YoY (not month-to-month inflation)",
+      "status": "official_current_release"
+    },
+    {
+      "id": "bi_policy_rate",
+      "category": "Prices & Monetary",
+      "label": "BI policy rate",
+      "display": "5.75",
+      "value": 5.75,
+      "unit": "%",
+      "period": "2026-09-23",
+      "frequency": "rate_decision",
+      "source_id": "bi_rate",
+      "caveat": "BI-Rate as of 23 September 2026 decision; not today’s overnight interbank rate",
+      "status": "official_current_release"
+    },
+    {
+      "id": "usd_idr_jisdor",
+      "category": "Prices & Monetary",
+      "label": "USD/IDR JISDOR",
+      "display": "18,052",
+      "value": 18052,
+      "unit": "IDR per USD",
+      "period": "2026-10-16",
+      "frequency": "business_day",
+      "source_id": "bi_jisdor",
+      "caveat": "BI reference rate; NOT a bank retail exchange quote or intraday FX",
+      "status": "official_current_release"
+    },
+    {
+      "id": "unemployment_rate",
+      "category": "Employment & Welfare",
+      "label": "Open unemployment rate",
+      "display": "4.68",
+      "value": 4.68,
+      "unit": "%",
+      "period": "2026-02",
+      "frequency": "survey",
+      "source_id": "bps_employment",
+      "caveat": "BPS Sakernas February 2026 definition; not U.S. payroll statistics",
+      "status": "official_current_release"
+    },
+    {
+      "id": "employment_millions",
+      "category": "Employment & Welfare",
+      "label": "Persons employed",
+      "display": "147.67",
+      "value": 147.67,
+      "unit": "million people",
+      "period": "2026-02",
+      "frequency": "survey",
+      "source_id": "bps_employment",
+      "caveat": "Employment stock; increase year-on-year was 1.896 million, not new nonfarm payrolls",
+      "status": "official_current_release"
+    },
+    {
+      "id": "poverty_rate",
+      "category": "Employment & Welfare",
+      "label": "National poverty rate",
+      "display": "8.07",
+      "value": 8.07,
+      "unit": "% people",
+      "period": "2026-03",
+      "frequency": "survey",
+      "source_id": "bps_poverty",
+      "caveat": "BPS national poverty line, NOT World Bank USD8.30 PPP poverty line",
+      "status": "official_current_release"
+    },
+    {
+      "id": "gini_ratio",
+      "category": "Employment & Welfare",
+      "label": "Gini ratio",
+      "display": "0.368",
+      "value": 0.368,
+      "unit": "index 0–1",
+      "period": "2026-03",
+      "frequency": "survey",
+      "source_id": "bps_gini",
+      "caveat": "BPS expenditure inequality, NOT wealth Gini",
+      "status": "official_current_release"
+    },
+    {
+      "id": "exports_month",
+      "category": "Trade & External",
+      "label": "Merchandise exports",
+      "display": "26.61",
+      "value": 26.61,
+      "unit": "USD billion",
+      "period": "2026-08",
+      "frequency": "month",
+      "source_id": "bps_trade",
+      "caveat": "Goods exports, August only, not goods/services",
+      "status": "official_current_release"
+    },
+    {
+      "id": "imports_month",
+      "category": "Trade & External",
+      "label": "Merchandise imports",
+      "display": "23.06",
+      "value": 23.06,
+      "unit": "USD billion",
+      "period": "2026-08",
+      "frequency": "month",
+      "source_id": "bps_trade",
+      "caveat": "Goods imports, August only",
+      "status": "official_current_release"
+    },
+    {
+      "id": "trade_balance_ytd",
+      "category": "Trade & External",
+      "label": "Merchandise trade balance",
+      "display": "7.25",
+      "value": 7.25,
+      "unit": "USD billion",
+      "period": "2026-Jan–Aug",
+      "frequency": "ytd",
+      "source_id": "bps_trade",
+      "caveat": "BPS goods balance Jan–Aug 2026; oil/gas deficit USD21.29bn",
+      "status": "official_current_release"
+    },
+    {
+      "id": "bop_balance",
+      "category": "Trade & External",
+      "label": "Balance of payments",
+      "display": "−0.9",
+      "value": -0.9,
+      "unit": "USD billion",
+      "period": "2026-Q2",
+      "frequency": "quarter",
+      "source_id": "bi_bop",
+      "caveat": "Overall BOP, not current account or trade balance",
+      "status": "official_current_release"
+    },
+    {
+      "id": "forex_reserves",
+      "category": "Trade & External",
+      "label": "Official reserve assets",
+      "display": "146.3",
+      "value": 146.3,
+      "unit": "USD billion",
+      "period": "2026-09-end",
+      "frequency": "month_end",
+      "source_id": "bi_reserves",
+      "caveat": "Official BI reserves including monetary gold and reserve assets",
+      "status": "official_current_release"
+    },
+    {
+      "id": "fiscal_balance",
+      "category": "Fiscal & Government",
+      "label": "APBN balance / GDP",
+      "display": "−1.24",
+      "value": -1.24,
+      "unit": "% GDP",
+      "period": "2026-Jan–Sep",
+      "frequency": "ytd",
+      "source_id": "minfin_apbn",
+      "caveat": "Realized Jan–Sep deficit as share of GDP, negative sign; not full-year deficit",
+      "status": "official_current_release"
+    },
+    {
+      "id": "fiscal_deficit_amount",
+      "category": "Fiscal & Government",
+      "label": "APBN deficit nominal",
+      "display": "−319",
+      "value": -319,
+      "unit": "IDR trillion",
+      "period": "2026-Jan–Sep",
+      "frequency": "ytd",
+      "source_id": "minfin_apbn",
+      "caveat": "State deficit Jan–Sep; not complete annual balance",
+      "status": "official_current_release"
+    },
+    {
+      "id": "debt_gdp",
+      "category": "Fiscal & Government",
+      "label": "Government debt / GDP",
+      "display": null,
+      "value": null,
+      "unit": "% GDP",
+      "period": "latest reported annual",
+      "frequency": "year",
+      "source_id": "wb_wdi",
+      "caveat": "Government debt definition differs between central government vs consolidated public debt; not verified in this snapshot",
+      "status": "awaiting_historical_dataset"
+    }
+  ],
+  "manual_series": [
+    {
+      "id": "usd_idr_jisdor",
+      "unit": "IDR/USD",
+      "frequency": "business_day",
+      "source_id": "bi_jisdor",
+      "points": [
+        {
+          "period": "2026-10-05",
+          "value": 17917
+        },
+        {
+          "period": "2026-10-06",
+          "value": 17910
+        },
+        {
+          "period": "2026-10-07",
+          "value": 17880
+        },
+        {
+          "period": "2026-10-08",
+          "value": 17890
+        },
+        {
+          "period": "2026-10-09",
+          "value": 17884
+        },
+        {
+          "period": "2026-10-12",
+          "value": 17899
+        },
+        {
+          "period": "2026-10-13",
+          "value": 17930
+        },
+        {
+          "period": "2026-10-14",
+          "value": 17898
+        },
+        {
+          "period": "2026-10-15",
+          "value": 17948
+        },
+        {
+          "period": "2026-10-16",
+          "value": 18052
+        }
+      ],
+      "data_status": "source_verified_compact_baseline",
+      "notes": "Only available official-source points. Avoid connecting observations with mixed frequency."
+    },
+    {
+      "id": "forex_reserves",
+      "unit": "USD billion",
+      "frequency": "month_end",
+      "source_id": "bi_reserves",
+      "points": [
+        {
+          "period": "2026-08",
+          "value": 146.5
+        },
+        {
+          "period": "2026-09",
+          "value": 146.3
+        }
+      ],
+      "data_status": "source_verified_compact_baseline",
+      "notes": "Only available official-source points. Avoid connecting observations with mixed frequency."
+    },
+    {
+      "id": "inflation_yoy",
+      "unit": "% YoY",
+      "frequency": "month",
+      "source_id": "bps_inflation",
+      "points": [
+        {
+          "period": "2026-08",
+          "value": 3.19
+        },
+        {
+          "period": "2026-09",
+          "value": 3.28
+        }
+      ],
+      "data_status": "source_verified_compact_baseline",
+      "notes": "Only available official-source points. Avoid connecting observations with mixed frequency."
+    },
+    {
+      "id": "gini_ratio",
+      "unit": "index 0–1",
+      "frequency": "survey",
+      "source_id": "bps_gini",
+      "points": [
+        {
+          "period": "2025-03",
+          "value": 0.375
+        },
+        {
+          "period": "2025-09",
+          "value": 0.363
+        },
+        {
+          "period": "2026-03",
+          "value": 0.368
+        }
+      ],
+      "data_status": "source_verified_compact_baseline",
+      "notes": "Only available official-source points. Avoid connecting observations with mixed frequency."
+    },
+    {
+      "id": "poverty_rate",
+      "unit": "%",
+      "frequency": "survey",
+      "source_id": "bps_poverty",
+      "points": [
+        {
+          "period": "2025-03",
+          "value": 8.47
+        },
+        {
+          "period": "2025-09",
+          "value": 8.25
+        },
+        {
+          "period": "2026-03",
+          "value": 8.07
+        }
+      ],
+      "data_status": "source_verified_compact_baseline",
+      "notes": "Only available official-source points. Avoid connecting observations with mixed frequency."
+    },
+    {
+      "id": "bop_balance",
+      "unit": "USD billion",
+      "frequency": "quarter",
+      "source_id": "bi_bop",
+      "points": [
+        {
+          "period": "2026-Q1",
+          "value": -9.1
+        },
+        {
+          "period": "2026-Q2",
+          "value": -0.9
+        }
+      ],
+      "data_status": "source_verified_compact_baseline",
+      "notes": "Only available official-source points. Avoid connecting observations with mixed frequency."
+    },
+    {
+      "id": "trade_balance_ytd",
+      "unit": "USD billion",
+      "frequency": "ytd",
+      "source_id": "bps_trade",
+      "points": [
+        {
+          "period": "2026-Jan–Aug",
+          "value": 7.25
+        }
+      ],
+      "data_status": "source_verified_compact_baseline",
+      "notes": "Only available official-source points. Avoid connecting observations with mixed frequency."
+    }
+  ],
+  "analysis_notes": [
+    "Q2 growth 5.29% is a quarter-on-quarter annual comparison (YoY), not calendar-year 2026 annual growth.",
+    "Commodity trade surplus is goods-only and differs from balance of payments and current account.",
+    "BPS national poverty is not comparable to World Bank global PPP poverty levels.",
+    "Fiscal year-to-date deficit is not an annual forecast or final annual outcome.",
+    "The latest reference date differs by indicator; World Bank historical datasets lag national releases.",
+    "Government debt-to-GDP remains unreported here rather than using an unverified figure.",
+    "US nonfarm payrolls is not Indonesia's employment measure; use Sakernas employed persons and changes."
+  ],
+  "wdi_series_file": "./data/sli-macro-worldbank-history.json",
+  "sources_registry_note": "Primary official references with dated releases. For WDI annual levels, cite indicator endpoints in the history manifest."
+}
