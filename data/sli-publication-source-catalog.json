@@ -1,0 +1,155 @@
+{
+  "version": "1.0",
+  "as_of": "2026-10-16",
+  "purpose": "Watch official/public original publishers for newly linked reports and news releases affecting curated SLI historical and 2026 snapshot data. New links create editorial review leads, not changes in official numeric values.",
+  "sources": [
+    {
+      "id": "bps_brs",
+      "publisher": "BPS",
+      "url": "https://www.bps.go.id/id/pressrelease",
+      "allowed_hosts": [
+        "www.bps.go.id",
+        "bps.go.id"
+      ],
+      "title_pattern": "pertumbuhan ekonomi|inflasi|perdagangan luar negeri|ekspor|impor|kemiskinan|gini|ketenagakerjaan",
+      "datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/commodity-trade-flows.json",
+        "data/investment-sector-evidence.json"
+      ]
+    },
+    {
+      "id": "bps_publications",
+      "publisher": "BPS",
+      "url": "https://www.bps.go.id/id/publication",
+      "allowed_hosts": [
+        "www.bps.go.id",
+        "bps.go.id"
+      ],
+      "title_pattern": "statistik perdagangan|statistik indonesia|ekonomi|ekspor|impor",
+      "datasets": [
+        "data/commodity-trade-flows.json",
+        "data/energy-fundamentals.json"
+      ]
+    },
+    {
+      "id": "bi_releases",
+      "publisher": "Bank Indonesia",
+      "url": "https://www.bi.go.id/id/publikasi/ruang-media/news-release/default.aspx",
+      "allowed_hosts": [
+        "www.bi.go.id",
+        "bi.go.id"
+      ],
+      "title_pattern": "suku bunga|bi.rate|cadangan devisa|neraca pembayaran|moneter|nilai tukar",
+      "datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/investment-market.json"
+      ]
+    },
+    {
+      "id": "kemenkeu_news",
+      "publisher": "Kementerian Keuangan",
+      "url": "https://www.kemenkeu.go.id/informasi-publik/publikasi/berita-utama",
+      "allowed_hosts": [
+        "www.kemenkeu.go.id",
+        "kemenkeu.go.id"
+      ],
+      "title_pattern": "apbn kita|apbn|utang|subsidi|anggaran",
+      "datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/energy-prices-fiscal.json"
+      ]
+    },
+    {
+      "id": "pln_statistics",
+      "publisher": "PLN Investor Relations",
+      "url": "https://www.pln.co.id/hubungan-investor-id/publikasi-investor-id/laporan-statistik-id",
+      "allowed_hosts": [
+        "www.pln.co.id",
+        "pln.co.id"
+      ],
+      "title_pattern": "statistik pln|laporan statistik|statistik ketenagalistrikan",
+      "datasets": [
+        "data/pln-statistics-regional-baseline-2024.json",
+        "data/pln-statistics-source-register.json",
+        "data/energy-fundamentals.json"
+      ]
+    },
+    {
+      "id": "esdm_energy_reports",
+      "publisher": "ESDM",
+      "url": "https://www.esdm.go.id/id/publikasi",
+      "allowed_hosts": [
+        "www.esdm.go.id",
+        "esdm.go.id"
+      ],
+      "title_pattern": "handbook|energi|statistik|laporan kinerja|ruptl",
+      "datasets": [
+        "data/heesi-2025-integrated.json",
+        "data/energy-fundamentals.json",
+        "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
+      ]
+    },
+    {
+      "id": "usgs_minerals",
+      "publisher": "USGS",
+      "url": "https://www.usgs.gov/centers/national-minerals-information-center/mineral-commodity-summaries",
+      "allowed_hosts": [
+        "www.usgs.gov",
+        "usgs.gov",
+        "pubs.usgs.gov"
+      ],
+      "title_pattern": "mineral commodity summaries|commodity summaries|critical mineral",
+      "datasets": [
+        "data/usgs-indonesia-minerals-2026.json",
+        "data/esdm-2025-mineral-performance.json"
+      ]
+    },
+    {
+      "id": "stanford_ai",
+      "publisher": "Stanford HAI",
+      "url": "https://hai.stanford.edu/ai-index",
+      "allowed_hosts": [
+        "hai.stanford.edu"
+      ],
+      "title_pattern": "ai index|artificial intelligence index|report 20",
+      "datasets": [
+        "data/indonesia-ai-global-benchmarks.json",
+        "data/indonesia-ai-compute-power-asean.json"
+      ]
+    },
+    {
+      "id": "komdigi_releases",
+      "publisher": "Komdigi",
+      "url": "https://portal.komdigi.go.id/kanal-publik/berita-kini",
+      "allowed_hosts": [
+        "portal.komdigi.go.id"
+      ],
+      "title_pattern": "laporan|statistik|data center|pusat data|digital|kecerdasan buatan",
+      "datasets": [
+        "data/komdigi-digital-infrastructure-2025.json",
+        "data/ai-intelligence.json"
+      ]
+    },
+    {
+      "id": "skkmigas_publications",
+      "publisher": "SKK Migas",
+      "url": "https://www.skkmigas.go.id/",
+      "allowed_hosts": [
+        "www.skkmigas.go.id",
+        "skkmigas.go.id"
+      ],
+      "title_pattern": "laporan tahunan|annual report|laporan kinerja|statistik|produksi",
+      "datasets": [
+        "data/skkmigas-annual-2025.json",
+        "data/skkmigas-2025-digitized-exhibits.json",
+        "data/energy-fundamentals.json"
+      ]
+    }
+  ],
+  "notes": [
+    "Listing pages may use JavaScript, block automated retrieval, or show old references; no readable matches does NOT mean no new release.",
+    "The watcher records newly seen matching publisher links as candidates after initial baseline. Full PDF/table extraction and legal/project verification remain separate.",
+    "Only source URLs on the publisher's allowlist are stored. Publisher report numeric values are never changed by this watcher."
+  ]
+}
