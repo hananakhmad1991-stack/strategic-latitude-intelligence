@@ -7,7 +7,7 @@
   "extracted_on": "2026-10-16",
   "source_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
   "data_license_note": "Facts, labeled figures and source table values transcribed from user-provided PDF; credit SKK Migas. This file does not republish the original report's copyrighted photos, layouts or full text.",
-  "quality_rule": "series values transcribed from printed data labels, not inferred pixel heights; zero and null are different; related categories and currencies should not be arithmetically mixed. Original PDF pages authoritative. Source disagreements described in notes. Additional source exact Graphs 3.8, 4.2, 4.5 distinguish disruptions, utilization units and standard-cargo LNG.",
+  "quality_rule": "series values transcribed from printed data labels, not inferred pixel heights; zero and null are different; related categories and currencies should not be arithmetically mixed. Original PDF pages authoritative. Source disagreements described in notes. Additional source exact Graphs 3.8, 4.2, 4.5 distinguish disruptions, utilization units and standard-cargo LNG. Monthly shutdown chart bars are component series, not total LPO; year-summary bars are not an additional month.",
   "series": [
     {
       "id": "ca_total",
@@ -1143,6 +1143,124 @@
         }
       ],
       "note": "2025 standard LNG cargoes (STD CARGO), NOT TBTU or metric tonnes. Bontang total 10.45 and Tangguh 74.16, all receivers sum 84.61 standard cargoes; 2025 TBTU in other SKK report section is not directly convertible without cargo energy-content assumptions."
+    },
+    {
+      "id": "oil_lpo_other_2025",
+      "title": "Monthly oil LPO · other PSC contractor component",
+      "unit": "BOPD",
+      "source_pdf_page": 93,
+      "section": "production",
+      "method": "Individual month gray-series value labels read from original SKK Migas 2025 PDF chart; no imputed spike bars",
+      "records": [
+        {
+          "name": "Jan",
+          "value": 6534
+        },
+        {
+          "name": "Feb",
+          "value": 6398
+        },
+        {
+          "name": "Mar",
+          "value": 3478
+        },
+        {
+          "name": "Apr",
+          "value": 3211
+        },
+        {
+          "name": "May",
+          "value": 5904
+        },
+        {
+          "name": "Jun",
+          "value": 5141
+        },
+        {
+          "name": "Jul",
+          "value": 3171
+        },
+        {
+          "name": "Aug",
+          "value": 4264
+        },
+        {
+          "name": "Sep",
+          "value": 5258
+        },
+        {
+          "name": "Oct",
+          "value": 7645
+        },
+        {
+          "name": "Nov",
+          "value": 4424
+        },
+        {
+          "name": "Dec",
+          "value": 4115
+        }
+      ],
+      "note": "Graph 3.9 gray series labelled Other PSC Contractor only, NOT the total 2025 oil LPO per month. Additional annotated events: EMCL 4,500 BOPD Aug, 2,415 Sep, 783 Dec; PHR 19,372 Dec. The annual surface facility average FY2025 7,247 BOPD is NOT a month to sum."
+    },
+    {
+      "id": "gas_lpo_other_2025",
+      "title": "Monthly gas LPO · other PSC contractor component",
+      "unit": "MMSCFD",
+      "source_pdf_page": 94,
+      "section": "production",
+      "method": "Individual month gray-series value labels read from original SKK Migas 2025 PDF chart; no imputed spike bars",
+      "records": [
+        {
+          "name": "Jan",
+          "value": 125
+        },
+        {
+          "name": "Feb",
+          "value": 205
+        },
+        {
+          "name": "Mar",
+          "value": 103
+        },
+        {
+          "name": "Apr",
+          "value": 61
+        },
+        {
+          "name": "May",
+          "value": 137
+        },
+        {
+          "name": "Jun",
+          "value": 22
+        },
+        {
+          "name": "Jul",
+          "value": 50
+        },
+        {
+          "name": "Aug",
+          "value": 174
+        },
+        {
+          "name": "Sep",
+          "value": 166
+        },
+        {
+          "name": "Oct",
+          "value": 132
+        },
+        {
+          "name": "Nov",
+          "value": 118
+        },
+        {
+          "name": "Dec",
+          "value": 154
+        }
+      ],
+      "note": "Graph 3.10 gray series labelled Other PSC Contractor only, not monthly national gas LPO totals. Graph additionally annotates 58 MMSCFD bp in June and 420/423 MMSCFD PEPC in June/October as marked by legend; operator attribution conflicts with parts of the narrative and needs further confirmation. FY2025 195.49 MMSCFD is average surface-facility LPO, not a thirteenth month."
     }
   ],
   "status": "Numerically digitized and auditable original printed labels/tables only; nonnumeric maps, Gantt charts, raw maps, textual risk diagrams and scanned figures remain referenced instead of fictional numeric data."
