@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-10-16",
+  "disclaimer": "Evidence-gap exposure index, not probability of loss or an independently established project risk assessment. Missing evidence is unknown, not adverse proof.",
+  "weights": {
+    "grid_energization": 25,
+    "cooling_water_environment": 20,
+    "network_redundancy": 15,
+    "regulatory_permits": 15,
+    "finance_closure": 15,
+    "operational_commissioning": 10
+  },
+  "rules": "Each category rated unverified=1, documented=0, explicit_concern=2. Weighted evidence gap = sum(weight*rating)/2, total max 100. No explicit concerns assumed without documentation.",
+  "assessments": [
+    {
+      "id": "digital-edge-cgk",
+      "evidence": {
+        "grid_energization": "unverified",
+        "cooling_water_environment": "unverified",
+        "network_redundancy": "documented",
+        "regulatory_permits": "unverified",
+        "finance_closure": "documented",
+        "operational_commissioning": "unverified"
+      },
+      "rationale": "Power agreement and financing do not establish energization; Indonet provides reported connectivity, physical route redundancy remains to verify",
+      "source": "https://www.digitaledgedc.com/"
+    },
+    {
+      "id": "pdg-jc3",
+      "evidence": {
+        "grid_energization": "unverified",
+        "cooling_water_environment": "unverified",
+        "network_redundancy": "unverified",
+        "regulatory_permits": "unverified",
+        "finance_closure": "documented",
+        "operational_commissioning": "unverified"
+      },
+      "rationale": "Financing reported; technical diligence documentation unavailable",
+      "source": "https://princetondg.com/press-releases/princeton-digital-group-breaks-ground-on-milestone-usd-1-billion-120-mw-greater-jakarta-campus/"
+    }
+  ]
+}
