@@ -17,7 +17,16 @@
     {
       "year": 2024,
       "url": "https://www.pln.co.id/webapi/media/file/webkorp/asset/Statistik2024.pdf",
-      "access": "discovered_download_link_timeout"
+      "access": "downloaded_and_source_tables_verified_2026_10_16",
+      "bytes": 8506759,
+      "sha256": "3e3ae7aee96b2f29211a9abd9b2c04853a0790ecf54d3c6c42f0c121c7344c4d",
+      "pages": 106,
+      "actions_run_id": 38885267384,
+      "source_table_pages": [
+        71,
+        73,
+        74
+      ]
     }
   ],
   "priority_extraction": [
@@ -34,17 +43,17 @@
     {
       "topic": "Transmission lines km and circuit-km, by regional unit/system",
       "destination": "Grid Intelligence · transmission",
-      "status": "pending_pdf_table_extraction"
+      "status": "2024_selected_reporting_unit_values_verified_more_pending"
     },
     {
       "topic": "Substation capacity MVA and counts by region",
       "destination": "Grid Intelligence · substations",
-      "status": "pending_pdf_table_extraction"
+      "status": "2024_selected_UID_and_UIT_rows_verified_more_pending"
     },
     {
       "topic": "Peak load and reserve by isolated system",
       "destination": "Grid Intelligence · regional reliability",
-      "status": "pending_pdf_table_extraction"
+      "status": "2024_system_level_verified_local_queue_unknown"
     },
     {
       "topic": "SAIDI and SAIFI electricity reliability",
@@ -63,5 +72,18 @@
     "source": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
     "warning": "peak demand IS NOT available headroom; outside Java-Bali IS NOT Batam-specific."
   },
-  "rupTl_scope_warning": "RUPTL is a plan separate from historical PLN statistics; neither proves live substation capacity or completion."
+  "rupTl_scope_warning": "RUPTL is a plan separate from historical PLN statistics; neither proves live substation capacity or completion.",
+  "latest_verified_extraction": {
+    "source_year": 2024,
+    "verified_at": "2026-10-16",
+    "structured_json": "./data/pln-statistics-regional-baseline-2024.json",
+    "dashboard": "./pln-regional-grid-baseline-2024.html",
+    "audit_run": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/38885267384",
+    "download_outcome": {
+      "ruptl_2025_2034": "failed_incomplete_http_download",
+      "pln_statistics_2025": "failed_incomplete_http_download",
+      "pln_statistics_2024": "success_106_pages"
+    },
+    "extraction_hints": 195
+  }
 }
