@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16",
+  "version": "2026-10-16.2",
   "purpose": "Official-law and government policy news monitoring; candidate detection only, never automatic legal status amendment.",
   "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
@@ -136,6 +136,58 @@
         "/berita/"
       ],
       "limit": 30
+    },
+    {
+      "id": "wto_news",
+      "label": "WTO — 2026 dispute & trade-policy news",
+      "url": "https://www.wto.org/english/news_e/news26_e/news26_e.htm",
+      "class": "international_policy_news",
+      "allowed_hosts": [
+        "www.wto.org"
+      ],
+      "allowed_path_prefixes": [
+        "/english/news_e/news26_e/"
+      ],
+      "limit": 50
+    },
+    {
+      "id": "icsid_news",
+      "label": "ICSID — investment arbitration",
+      "url": "https://icsid.worldbank.org/news-and-events/news-releases",
+      "class": "international_policy_news",
+      "allowed_hosts": [
+        "icsid.worldbank.org"
+      ],
+      "allowed_path_prefixes": [
+        "/news-and-events/news-releases/"
+      ],
+      "limit": 45
+    },
+    {
+      "id": "uncitral_news",
+      "label": "UNCITRAL — dispute settlement reforms",
+      "url": "https://uncitral.un.org/en/news",
+      "class": "international_policy_news",
+      "allowed_hosts": [
+        "uncitral.un.org"
+      ],
+      "allowed_path_prefixes": [
+        "/en/news/"
+      ],
+      "limit": 40
+    },
+    {
+      "id": "setneg_inpres",
+      "label": "JDIH Setneg — presidential instructions",
+      "url": "https://jdih.setneg.go.id/produk-hukum/instrumen/instruksi",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.setneg.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/produk-hukum/"
+      ],
+      "limit": 40
     }
   ],
   "watched_laws": [
@@ -156,7 +208,17 @@
     "permenatr13",
     "permenlhk4",
     "pergub_jateng29",
-    "perbup_bekasi7"
+    "perbup_bekasi7",
+    "inpres1_2025",
+    "inpres14_2025",
+    "inpres16_2025",
+    "uu7wto",
+    "ds592",
+    "uu30arb",
+    "icsid",
+    "kp34newyork",
+    "perma3arb",
+    "uu16paris"
   ],
   "keywords": [
     "energi",
@@ -221,10 +283,50 @@
     "perwali",
     "peraturan gubernur",
     "peraturan bupati",
-    "peraturan wali kota"
+    "peraturan wali kota",
+    "wto",
+    "ds592",
+    "trade dispute",
+    "world trade organization",
+    "dispute settlement",
+    "arbitration",
+    "arbitral",
+    "arbitrase",
+    "icsid",
+    "uncitral",
+    "trims",
+    "scm",
+    "subsidies",
+    "export restriction",
+    "investment treaty",
+    "treaty",
+    "isds",
+    "inpres",
+    "instruksi presiden",
+    "nikel",
+    "mediasi",
+    "investment dispute"
   ],
   "item_retention": 150,
   "source_item_cap": 65,
   "monitoring_window_days": 90,
-  "notes": "Official sources may be unavailable, slow, or under maintenance. An unavailable source is NOT evidence there are no legal changes. Candidate news and document-page changes require primary-text examination; only human-reviewed records may change legal in-force/repeal statuses."
+  "notes": "Official sources may be unavailable, slow, or under maintenance. An unavailable source is NOT evidence there are no legal changes. Candidate news and document-page changes require primary-text examination; only human-reviewed records may change legal in-force/repeal statuses.",
+  "monitor_groups": [
+    {
+      "id": "domestic_policy",
+      "label": "Domestic policy · official legal changes",
+      "source_classes": [
+        "official_policy_news",
+        "official_regulation_listing"
+      ]
+    },
+    {
+      "id": "geopolitical_policy",
+      "label": "International trade disputes & arbitration",
+      "source_classes": [
+        "international_policy_news"
+      ]
+    }
+  ],
+  "monitor_guardrail": "Global arbitration institution news is not automatically Indonesia-specific. Flag relevance and review actual WTO or ICSID case; an announcement about a third country is informational and cannot update Indonesian legal status."
 }
