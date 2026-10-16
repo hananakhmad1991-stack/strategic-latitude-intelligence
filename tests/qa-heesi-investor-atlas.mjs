@@ -8,7 +8,7 @@ const page=fs.readFileSync('index.html','utf8');
 const js=fs.readFileSync('js/heesi-2025-investor-atlas.js','utf8');
 assert.equal(d.id,'HEESI-2025-INVESTOR-ATLAS');
 assert.equal(geo.features.length,38);
-assert.equal(d.maps.length,7);
+assert.equal(d.maps.length,8);
 assert.equal(d.series.length,22);
 const names=new Set(geo.features.map(x=>x.properties.name));
 for(const p of d.maps){
@@ -21,7 +21,7 @@ for(const p of d.maps){
 }
 for(const [id,n,rows,pg] of [
  ['spklu',4778,38,131],['spbklu',1936,38,131],['coal_resources',97836.2,26,86],['coal_reserves',33250.1,26,86],
- ['coal_inventory',32550.3,26,86],['biodiesel_capacity',22018189,13,144],['bioethanol_capacity',60000,13,144]
+ ['coal_inventory',32550.3,26,86],['biodiesel_capacity',22018189,13,144],['bioethanol_capacity',60000,13,144],['solar_pv_capacity',1534.11,38,134]
 ]){const m=d.maps.find(x=>x.id===id);assert.ok(m,id);assert.equal(m.values.length,rows);assert.equal(m.national_total,n);assert.equal(m.pdf_page,pg)}
 const sp=d.maps.find(x=>x.id==='spklu');
 assert.equal(sp.values.find(x=>x.province==='DKI Jakarta').value,1438);
@@ -45,7 +45,10 @@ assert.ok(page.includes('js/heesi-2025-investor-atlas.js?v='));
 assert.ok(page.includes('css/heesi-2025-investor-atlas.css?v='));
 assert.ok(/fetch\(D,\{cache:"no-store"\}\)/.test(js));
 assert.ok(js.includes('not provided by the source tables and is not fabricated'),'no manufactured coal province production');
+assert.ok(js.includes('viewConsumptionMix(mix,a)'),'five-sector annual stacked-energy composition must be connected');
+assert.ok(js.includes('Table 3.2.1 pp. 26–27'),'document sector consumption calculation origin');
+assert.equal(d.maps.find(x=>x.id==='solar_pv_capacity').values.find(x=>x.province==='Jawa Barat').value,630.85);
 const ctx={window:{},document:{},console};
 vm.runInNewContext(js,ctx,{filename:'heesi-2025-investor-atlas.js'});
 assert.equal(typeof ctx.window.initSLIHEESIInvestorAtlas,'function');
-console.log('PASS: 9 interactive provincial layers, 7 source-extracted new province tables, 22 annual series, SPKLU 4,778 & SPBKLU 1,936, coal totals, kL biofuel reconciliation, no fake province consumption, two investor/energy mounts');
+console.log('PASS: 10 interactive provincial layers, 8 source-extracted new province tables, 22 annual series, SPKLU 4,778 & SPBKLU 1,936, coal totals, kL biofuel reconciliation, no fake province consumption, two investor/energy mounts');
