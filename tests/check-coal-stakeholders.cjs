@@ -39,7 +39,7 @@ for(const issue of ["rkab","dmo","revenue","price","logistics","transition"])
  assert(d.issues.some(x=>x.id===issue),"Missing focused coal issue: "+issue);
 assert(page.includes('id="energyCoalStakeholdersRoot"'),"Standalone coal visual mount missing");
 assert(page.includes('href="#energyCoalStakeholdersRoot"'),"Coal institutional navigation link missing");
-assert(page.includes("initSLICoalStakeholders()"),"Coal module not initialized");
+assert(/initSLICoalStakeholders(?:\?\.)?\(\)/.test(page),"Coal module not initialized");
 assert(page.includes('js/energy-coal-stakeholders.js')&&page.includes('css/energy-coal-stakeholders.css'),"Coal UI assets not linked");
 assert(page.indexOf('id="energyOilGasStakeholdersRoot"')<page.indexOf('id="energyCoalStakeholdersRoot"')&&page.indexOf('id="energyCoalStakeholdersRoot"')<page.indexOf('id="energyPolicyRoot"'),"Coal visual ordering wrong");
 assert(script.includes('document.addEventListener("sli:languagechange"'),"Coal EN/ID refresh missing");
