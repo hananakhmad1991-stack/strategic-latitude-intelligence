@@ -1,0 +1,427 @@
+{
+  "version": "2026-10-16",
+  "framework": "RIA-lite issue-based investor diligence; not government RIA, not litigation predictions",
+  "method": "For each sector, discuss objectives, legal route, policy alternatives, distributional effects, evidence gaps, quantitative indicators that could be validated. No automatic financial-loss figures are asserted.",
+  "cases": {
+    "electricity_grid": {
+      "short": "Electricity & Grid",
+      "thesis": "Menilai pembangunan transmisi, gardu induk, penyediaan listrik PLN/PLN Batam, dan kebutuhan beban industri baru tanpa mengubah target RUPTL menjadi kapasitas tersedia.",
+      "stakeholders": [
+        "ESDM/Dirjen Gatrik",
+        "PLN/PLN Batam",
+        "ATR/BPN",
+        "KLH/BPLH",
+        "Pemprov/pemkab",
+        "Pengembang data center/industri"
+      ],
+      "chain": [
+        "Legal authority: UU 30/2009, PP 14/2012, PP 25/2021",
+        "OSS dan IUPTL/PB-UMKU sesuai KBLI dan kegiatan",
+        "Kesesuaian lahan, hak tanah, AMDAL/UKL-UPL dan izin lintasan",
+        "Studi sistem PLN/PLN Batam: N-1, kapasitas trafo, proteksi",
+        "Pengadaan, konstruksi, SLO, commissioning dan COD",
+        "Tarif/kontrak listrik, standar mutu layanan, SAIDI/SAIFI"
+      ],
+      "policy_options": [
+        [
+          "No action",
+          "Menunggu jaringan eksisting",
+          "Risiko keterlambatan sambungan dan biaya operasional pelanggan meningkat jika kapasitas tidak cukup."
+        ],
+        [
+          "Targeted reinforcement",
+          "Gardu induk, feeder dan koneksi N-1 untuk klaster prioritas",
+          "Pilihan investasi lebih spesifik, tetapi membutuhkan studi biaya/manfaat lokasi dan komitmen pelanggan."
+        ],
+        [
+          "Integrated grid + flexibility",
+          "Substation + BESS + demand response + clean PPA",
+          "Dapat meningkatkan ketahanan dan fleksibilitas; wajib uji durasi penyimpanan dan ekonomi dispatch."
+        ]
+      ],
+      "indicators": [
+        "Substation firm headroom MW (per node)",
+        "Transformer loading % and N-1 status",
+        "Signed industrial connection MW and queue",
+        "Energization/COD dates vs RUPTL plan",
+        "SAIDI/SAIFI and power-quality commitments",
+        "Realized capex / signed procurement / PLN Batam grid plan"
+      ],
+      "sector_note": "Grid stress tidak dapat dihitung hanya dari kapasitas terpasang MVA, beban puncak regional, atau MW pembangunan nasional."
+    },
+    "renewables": {
+      "short": "Renewable IPP & PPA",
+      "thesis": "Menguji bankabilitas PPA, pengadaan, jaringan, izin lingkungan, hak lahan, pembiayaan dan kepastian COD PLTS/PLTA/PLTP/PLTB.",
+      "stakeholders": [
+        "PLN offtaker",
+        "ESDM",
+        "Investor IPP",
+        "Bank/project finance",
+        "KLH/BPLH",
+        "ATR/BPN",
+        "Pemda"
+      ],
+      "chain": [
+        "Identifikasi basis RUPTL dan kondisi pengadaan",
+        "Pemeriksaan lokasi, keperluan tanah, AMDAL",
+        "Grid access, curtailment dan power balance",
+        "Pemenuhan standar PPA Permen ESDM 5/2025",
+        "Penutupan pendanaan/EPC/performance guarantee",
+        "Construction COD dan monitoring output tahunan"
+      ],
+      "policy_options": [
+        [
+          "No adjustment",
+          "PPA dan network baseline",
+          "Stranded time risk bila tarif, pembangkit, dan koneksi tidak sinkron."
+        ],
+        [
+          "Bankable PPA standardization",
+          "Pembagian risiko change-in-law, keterlambatan dan force majeure",
+          "Membantu pembiayaan jika konsisten dengan peraturan dan kemampuan pembayaran."
+        ],
+        [
+          "Co-planned grid + VRE storage",
+          "Koneksi tenaga surya/angin dan kapasitas fleksibilitas",
+          "Mengurangi curtailment potensial, tetapi tidak menggantikan studi energi dan biaya."
+        ]
+      ],
+      "indicators": [
+        "Signed PPA MW and specific COD",
+        "Financial close and debt conditions",
+        "Expected/actual curtailment",
+        "Interconnection study outcome",
+        "Contracted vs commissioned generation MW",
+        "Land/environment permit status"
+      ],
+      "sector_note": "RUPTL 69.512 MW termasuk storage dan fosil; target adalah rencana, bukan PPA ditandatangani atau MW beroperasi."
+    },
+    "power_dc": {
+      "short": "AI & Data Center",
+      "thesis": "Memastikan data center dapat benar-benar memperoleh daya IT yang aman dan legal sambil mematuhi lingkungan, tata ruang, privasi dan keamanan operasional.",
+      "stakeholders": [
+        "Investor/operator fasilitas",
+        "PLN atau PLN Batam",
+        "ESDM/Gatrik",
+        "BKPM/OSS",
+        "ATR/BPN",
+        "KLH/BPLH",
+        "Komdigi"
+      ],
+      "chain": [
+        "Saring announced MW: IT load atau facility power?",
+        "KBLI, NIB, KKPR/RDTR, AMDAL serta hak atas lokasi",
+        "Power contract & N-1 grid study; trafo/GI dedicated",
+        "PUE, cooling, water, fuel backup, onsite storage",
+        "Finance close, construction, GPU procurement, commissioning",
+        "PDP, cyber, cloud contracts, service quality"
+      ],
+      "policy_options": [
+        [
+          "No coordination",
+          "Beban baru masuk perizinan terpisah",
+          "Bisa terjadi mismatch target AI dan jadwal penyambungan PLN."
+        ],
+        [
+          "Cluster connection readiness",
+          "Satu cross-agency evidence pack per kampus",
+          "Meningkatkan transparansi kepada investor tanpa menjanjikan headroom yang tak diketahui."
+        ],
+        [
+          "Conditional incentive",
+          "Tax/land/grid incentives only on verifiable skills, energy, compute milestones",
+          "Menghindari valuasi berdasarkan rencana semata; detail insentif harus konsisten hukum."
+        ]
+      ],
+      "indicators": [
+        "Verified IT MW, facility MW and power contract",
+        "Energized date and contracted supply",
+        "Grid N-1 and backup duration",
+        "PUE and cooling water commitments",
+        "Installed GPU fleet/compute accessibility",
+        "Permit, PDP and funding evidence"
+      ],
+      "sector_note": "GPU count, grid power, permit, cloud service investment dan PPA tidak boleh dijumlahkan sebagai MW IT aktual."
+    },
+    "minerba": {
+      "short": "Minerals & Smelters",
+      "thesis": "Menguji izin pertambangan, hilirisasi mineral, perizinan industri, rantai pasok energi, akses ekspor, risiko WTO dan pembiayaan manufaktur.",
+      "stakeholders": [
+        "ESDM Minerba",
+        "Kemenperin",
+        "BKPM/OSS",
+        "KLH/BPLH",
+        "Kemendag",
+        "ATR/BPN",
+        "Smelter/offtaker"
+      ],
+      "chain": [
+        "IUP/IUPK, RKAB dan sumber bahan baku sah",
+        "Izin dan standar industri/KBLI, tata ruang",
+        "AMDAL dan izin air/limbah/tailing",
+        "Grid/PLTU captive dan sumber BBM/energi",
+        "Kontrak EPC/finance, pabrik COD, produksi aktual",
+        "Ketentuan ekspor/penjualan dan risiko GATT/TRIMs/SCM"
+      ],
+      "policy_options": [
+        [
+          "Status quo",
+          "Implementasi hilirisasi berbasis aturan yang berlaku",
+          "Risiko regulasi dan litigasi dagang tetap tergantung komoditas dan instrumen."
+        ],
+        [
+          "Rule-by-rule compliance audit",
+          "Audit per HS code, perizinan, ketentuan ekspor dan pengecualian WTO",
+          "Mengurangi generalisasi larangan; tidak otomatis mengubah sengketa."
+        ],
+        [
+          "Diversified market and energy",
+          "Kontrak off-take, listrik bersih dan traceability",
+          "Dapat mengurangi paparan akses pasar dan biaya karbon, tergantung bukti proyek."
+        ]
+      ],
+      "indicators": [
+        "Valid IUP/IUPK and RKAB",
+        "Actual ore processed, product and utilization",
+        "Power/fuel cost and emission intensity",
+        "HS-code-specific export rule status",
+        "WTO DS592 and new trade remedies",
+        "Finance close, owner/partner and COD"
+      ],
+      "sector_note": "WTO DS592 adalah sengketa antarnegara. Putusan panel yang sedang dibandingi tidak otomatis membatalkan peraturan Indonesia."
+    },
+    "coal_power": {
+      "short": "Coal, DMO & Thermal Power",
+      "thesis": "Menghubungkan DMO, pembangkit berbasis batubara, pengadaan PLN, logistik, polusi, transisi energi dan kewajiban lingkungan.",
+      "stakeholders": [
+        "ESDM Minerba/Gatrik",
+        "PLN",
+        "Produsen batubara",
+        "KKP/BUP pelabuhan",
+        "KLH/BPLH",
+        "Investor"
+      ],
+      "chain": [
+        "Izin tambang dan RKAB",
+        "Ketentuan DMO dan kontrak pasokan PLTU",
+        "Transportasi dan port readiness",
+        "Kontrak batubara, kualitas dan inventory",
+        "AMDAL, abu, emisi dan penanganan limbah",
+        "Evaluasi penuaan PLTU vs RUPTL energi bersih"
+      ],
+      "policy_options": [
+        [
+          "Business as usual",
+          "DMO dan dispatch termal tradisional",
+          "Risiko ketergantungan kualitas/ketersediaan logistik dan pembiayaan emisi."
+        ],
+        [
+          "Resilience fuel chain",
+          "Inventaris dan logistik berlapis sesuai kebutuhan sistem",
+          "Dapat meningkatkan keamanan pasokan dengan biaya penyimpanan tambahan."
+        ],
+        [
+          "Managed transition",
+          "Skenario pensiun pembangkit dan penggantian kapasitas nyata",
+          "Perlu model cadangan, VRE+BESS, tenaga kerja dan dampak daerah."
+        ]
+      ],
+      "indicators": [
+        "DMO fulfilled volume / price basis",
+        "PLTU outage hours and capacity factor",
+        "Coal supply inventory days",
+        "Emission compliance and costs",
+        "Retirement / replacement schedules",
+        "Transport disruptions"
+      ],
+      "sector_note": "Tambahan MW pembangkit masa depan, energi listrik GWh, dan stok batubara harus dinilai sebagai satuan berbeda."
+    },
+    "oilgas": {
+      "short": "Oil & Gas",
+      "thesis": "Menilai aturan kontrak migas, aset PSC, pasokan gas ke pembangkit, kebijakan harga, izin infrastruktur dan arbitrase kontraktual.",
+      "stakeholders": [
+        "ESDM Dirjen Migas",
+        "SKK Migas",
+        "BPH Migas",
+        "Kontraktor PSC",
+        "PLN/gas buyers",
+        "KLH/BPLH",
+        "Investor"
+      ],
+      "chain": [
+        "Working-area allocation/PSC contract and approvals",
+        "Plan of development, drilling and production permits",
+        "Gas pricing and supply allocations",
+        "Transport pipelines, LNG/FSRU and customer utility contracts",
+        "Environment, methane/leak and site permits",
+        "Production surveillance and dispute-resolution clause"
+      ],
+      "policy_options": [
+        [
+          "No coordination",
+          "Separate upstream/downstream gas planning",
+          "Term mismatch between gas delivery and capacity demand may persist."
+        ],
+        [
+          "Integrated gas-power contracting",
+          "Align upstream delivery, transport and grid dispatch",
+          "Reduces timing exposure if contract and infrastructure are verified."
+        ],
+        [
+          "Investment stability package",
+          "Regulatory clarity and contract/change-in-law review",
+          "Could aid financing; BIT/ICSID eligibility still treaty- and consent-dependent."
+        ]
+      ],
+      "indicators": [
+        "PSC field production vs target",
+        "Reserves and deliverability",
+        "Confirmed LNG/pipeline availability",
+        "Gas price benefit beneficiaries",
+        "FSRU/pipeline COD",
+        "Arbitration clause and foreign investor nationality"
+      ],
+      "sector_note": "HGBT, harga domestik, kontrak PSC dan pipeline/commercial agreements adalah instrumen berbeda."
+    },
+    "carbon": {
+      "short": "Carbon, CCS & Climate",
+      "thesis": "Menguji pasar karbon, kepatuhan MRV, izin CCS/CCUS, pembagian risiko penyimpanan, kredibilitas offset dan kaitannya dengan Paris Agreement.",
+      "stakeholders": [
+        "KLH/BPLH",
+        "ESDM",
+        "Carbon registry",
+        "Pengembang CCS",
+        "Verifier independen",
+        "Pembeli kredit",
+        "Lender"
+      ],
+      "chain": [
+        "Carbon/methane accounting boundary and activity eligibility",
+        "Environment and underground-storage permitting",
+        "Mekanisme MRV, registri, ownership attribute",
+        "Injection/transport monitoring and long-term liability",
+        "Credit issuance transfer rules and buyer",
+        "Audit, double-counting and Paris/NDC alignment"
+      ],
+      "policy_options": [
+        [
+          "No reform",
+          "Follow project approvals and available credits",
+          "Revenue, registry and ownership risks stay deal-specific."
+        ],
+        [
+          "Robust MRV",
+          "Uniform baseline, additionality and oversight",
+          "Reduces information asymmetry but adds compliance cost."
+        ],
+        [
+          "Risk-sharing for storage",
+          "Escrow, post-closure monitoring and liability allocation",
+          "May support projects if legally valid and financed."
+        ]
+      ],
+      "indicators": [
+        "Verified tonnes CO2 captured/stored",
+        "Leakage/monitoring evidence",
+        "Registry serial and retirement status",
+        "Permits and geological confirmation",
+        "Carbon price/forward contracts",
+        "Double-counting and NDC treatment"
+      ],
+      "sector_note": "Paris Agreement adalah treaty state obligations; NDC bukan izin emisi atau kredit karbon otomatis."
+    },
+    "wto_trade": {
+      "short": "WTO & Trade Disputes",
+      "thesis": "Memetakan risiko sengketa ekspor bahan mentah, GATT XI, SCM/TRIMs, perubahan instrumen Kemendag dan konsekuensi bagi investasi hilirisasi.",
+      "stakeholders": [
+        "Kemendag",
+        "ESDM",
+        "Kemenperin",
+        "WTO Dispute Settlement Body",
+        "EU trade authorities",
+        "Mineral exporters",
+        "Smelter investors"
+      ],
+      "chain": [
+        "Identify domestic legal trade measure, HS code and dates",
+        "Analyze GATT XI and exceptions",
+        "SCM/TRIMs subsidy or local-content test",
+        "Track dispute procedural status panel vs appeal vs adopted ruling",
+        "Separate negotiated settlement from domestic implementing changes",
+        "Stress-test off-take, finance and market access"
+      ],
+      "policy_options": [
+        [
+          "Unchanged measures",
+          "Existing export restrictions continue",
+          "Continued treaty challenge risk; financial effect case-specific."
+        ],
+        [
+          "Targeted legally reviewed alternatives",
+          "Specific licensing/regulatory instruments aligned with trade objectives",
+          "Could meet public policy aims with different trade restrictiveness subject to legal analysis."
+        ],
+        [
+          "Negotiated resolution / diversification",
+          "Multilateral consultations and market diversification",
+          "May reduce exposure but timing and concessions are unknown."
+        ]
+      ],
+      "indicators": [
+        "WTO DS592 document date/status",
+        "New export laws by commodity and HS",
+        "Public WTO DSB notifications",
+        "Trade remedy investigations",
+        "Offtake contract revisions",
+        "Counterparty and tariff shifts"
+      ],
+      "sector_note": "Panel findings and state-to-state appeal differ from investment-state awards; avoid calling DS592 final or repealing Indonesian law automatically."
+    },
+    "investor_arbitration": {
+      "short": "Investor Protection & Arbitration",
+      "thesis": "Memisahkan forum komersial (BANI/SIAC/ICC), investor–state treaty (ICSID/UNCITRAL), dan penegakan putusan asing (Konvensi New York).",
+      "stakeholders": [
+        "Foreign project sponsors",
+        "Contracting authorities",
+        "Investment/BKPM",
+        "Arbitral institutions",
+        "Domestic courts",
+        "Treaty partners"
+      ],
+      "chain": [
+        "Map investor ownership/nationality and treaty coverage",
+        "Check BIT/IIA ratification and sunset",
+        "Identify governing law, forum, seat and written consent",
+        "Assess notice/cooling-off/admissibility requirements",
+        "Review enforcement mechanism and assets",
+        "Separate public policy regulation from contractual default"
+      ],
+      "policy_options": [
+        [
+          "Contract ambiguity",
+          "Generic international arbitration clause",
+          "Higher jurisdiction/procedure uncertainty; no automatic investor-state treaty consent."
+        ],
+        [
+          "Precise dispute clause",
+          "Define governing law, forum, seat, notice and enforceability",
+          "Reduces drafting risk subject to local legal review."
+        ],
+        [
+          "Pre-dispute consultation & mediation",
+          "Contractual negotiation stage before arbitral escalation",
+          "Can limit friction if lawful and not waiver of applicable rights."
+        ]
+      ],
+      "indicators": [
+        "Treaty in force and covered investor nationality",
+        "Arbitration clause validity",
+        "Jurisdiction/concurrence and cooling-off",
+        "Interim measures/sovereign immunity",
+        "Judicial enforcement procedural status",
+        "Foreign-asset and collectability evidence"
+      ],
+      "sector_note": "UNCITRAL model rules are contractual if adopted, ICSID consent is case-specific; Convention on Foreign Arbitral Awards governs recognition, not nationality or investment admission."
+    }
+  }
+}
