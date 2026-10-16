@@ -5,7 +5,7 @@
  */
 (function() {
  "use strict";
- const INDEX_URL="data/site-search-index.json?v=20261016-search1";
+ const INDEX_URL="data/site-search-index.json?v=20261016-search2";
  const ID="sliGlobalSearchRoot",MAX=11;
  const alias={
   batubara:["coal"],"minyak":["oil","migas"],"migas":["oil","gas"],"nikel":["nickel"],
