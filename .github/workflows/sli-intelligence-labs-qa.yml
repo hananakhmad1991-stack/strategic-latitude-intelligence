@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'intelligence-labs.html'
+      - 'js/sli-geopolitical-scoring.mjs'
+      - 'data/sli-geopolitical-indicator-library.json'
       - 'data/sli-project-registry.json'
       - 'data/sli-labs-official-context.json'
       - 'data/investment-evidence.json'
