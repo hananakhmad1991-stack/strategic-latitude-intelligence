@@ -65,6 +65,22 @@
       "url": "https://www.menlh.go.id/",
       "frequency": "annual/administrative",
       "status": "registry reconciliation required"
+    },
+    {
+      "id": "bnpb_prov_2025",
+      "agency": "BNPB Satu Data",
+      "topic": "2025 disaster events by province (official XLSX)",
+      "url": "https://data.bnpb.go.id/dataset/kompilasi-data-kejadian-dan-dampak-bencana-2025/resource/df39e8c3-117e-40fa-b518-ff1037743955",
+      "frequency": "annual revision",
+      "status": "Validated parser prepared; ingestion result pending"
+    },
+    {
+      "id": "big_smelter_planning",
+      "agency": "Badan Informasi Geospasial (BIG)",
+      "topic": "Smelter RPJMN planning points — coordinate cross-check candidates",
+      "url": "https://kspservices.big.go.id/satupeta/rest/services/PUBLIK/PERENCANAAN_RUANG/MapServer/115",
+      "frequency": "as published",
+      "status": "Official planning points, not guaranteed exact facilities; match to source documents"
     }
   ],
   "indicators": [
