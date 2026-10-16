@@ -1,7 +1,7 @@
 {
   "version": "2026-10-16",
   "purpose": "Official-law and government policy news monitoring; candidate detection only, never automatic legal status amendment.",
-  "frequency": "GitHub Actions 01:13 UTC and 11:13 UTC (08:13/18:13 WIB) every day; GitHub schedule subject to delays.",
+  "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
     {
       "id": "esdm_news",
@@ -96,6 +96,46 @@
         "/"
       ],
       "limit": 35
+    },
+    {
+      "id": "bkpm_news",
+      "label": "Kementerian Investasi/BKPM — Siaran Pers",
+      "url": "https://www.bkpm.go.id/id/info/siaran-pers",
+      "class": "official_policy_news",
+      "allowed_hosts": [
+        "www.bkpm.go.id",
+        "bkpm.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/id/info/siaran-pers/"
+      ],
+      "limit": 30
+    },
+    {
+      "id": "kemendag_jdih",
+      "label": "Kementerian Perdagangan — JDIH",
+      "url": "https://jdih.kemendag.go.id/peraturan",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.kemendag.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/peraturan/"
+      ],
+      "limit": 40
+    },
+    {
+      "id": "kemendag_news",
+      "label": "Kementerian Perdagangan — Berita",
+      "url": "https://www.kemendag.go.id/berita",
+      "class": "official_policy_news",
+      "allowed_hosts": [
+        "www.kemendag.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/berita/"
+      ],
+      "limit": 30
     }
   ],
   "watched_laws": [
@@ -110,7 +150,13 @@
     "perda_jateng",
     "perda_kepri",
     "permen5",
-    "pp22env"
+    "pp22env",
+    "permenbkpm5",
+    "permenperin37",
+    "permenatr13",
+    "permenlhk4",
+    "pergub_jateng29",
+    "perbup_bekasi7"
   ],
   "keywords": [
     "energi",
@@ -155,7 +201,27 @@
     "keputusan menteri",
     "permen",
     "undang-undang",
-    "perda"
+    "perda",
+    "rdtr",
+    "rtrw",
+    "kesesuaian kegiatan pemanfaatan ruang",
+    "kkpr",
+    "bpn",
+    "atr",
+    "tata ruang",
+    "industri",
+    "kemenperin",
+    "bkpm",
+    "perdagangan",
+    "kemendag",
+    "ekspor",
+    "impor",
+    "pergub",
+    "perbup",
+    "perwali",
+    "peraturan gubernur",
+    "peraturan bupati",
+    "peraturan wali kota"
   ],
   "item_retention": 150,
   "source_item_cap": 65,
