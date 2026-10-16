@@ -80,6 +80,9 @@ function compact(root,data){
 }
 function mount(){
  style();
+ // Energy Security has its own short source-specific reading guide pointing to the
+ // same canonical dictionary. Do not show two appendices on that tab.
+ if(contextFor()==="energy"&&document.getElementById("energyAppendixRoot"))return;
  const isIndex=location.pathname.endsWith('/index.html')||location.pathname==='/'||location.pathname.endsWith('/strategic-latitude-intelligence/');
  const rootId=isIndex?'sliSharedAppendixBar':'sliSharedAppendixBar';
  let root=document.getElementById(rootId);
@@ -111,7 +114,7 @@ function drawFull(data){
     return '<article class="sli-dict-row" id="term-'+esc(x.slug)+'"><h3>'+esc(x.term)+'</h3><div class="sli-dict-meta">'+
        x.domains.slice(0,4).map(z=>'<span>'+esc(data.domain_labels[z]?.[locEN()==='id'?1:0]||z)+'</span>').join('')+'</div>'+
        '<p>'+esc(locEN()==='id'?x.id:x.en)+'</p>'+
-       (locEN()==='id'?x.note_id:x.note_en?x.note_en:'')?'<small>'+esc(locEN()==='id'?(x.note_id||x.note_en):x.note_en)+'</small>':''+
+       (x.note_en||x.note_id)?'<small>'+esc(locEN()==='id'?(x.note_id||x.note_en):x.note_en)+'</small>':''+
        '<small>'+esc(x.origin)+' · '+esc(x.map_context||'')+' '+reference+'</small></article>';
  }).join('')+'</div>':'<div class="sli-glos-empty">'+T('No entries. Change term or sector filter.','Istilah tidak ditemukan. Ubah kata pencarian atau sektor.')+'</div>');
  const more=root.querySelector('#sli-dict-more');more.disabled=selected.length>=rows.length;
