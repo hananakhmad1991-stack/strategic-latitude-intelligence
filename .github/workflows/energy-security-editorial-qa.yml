@@ -5,6 +5,11 @@ on:
     branches: [main]
     paths:
       - index.html
+      - js/skkmigas-annual-2025.js
+      - css/skkmigas-annual-2025.css
+      - data/skkmigas-annual-2025.json
+      - data/skkmigas-2025-figure-catalog.json
+      - tests/qa-skkmigas-annual-2025.mjs
       - js/heesi-2025-dashboard.js
       - js/heesi-2025-investor-atlas.js
       - css/heesi-2025-investor-atlas.css
@@ -64,6 +69,8 @@ jobs:
         run: |
           node --check js/energy-governance-ccs.js
           node --check js/heesi-2025-dashboard.js
+          node --check js/skkmigas-annual-2025.js
+          node tests/qa-skkmigas-annual-2025.mjs
           node --check js/heesi-2025-investor-atlas.js
           node tests/qa-heesi-investor-atlas.mjs
           node tests/qa-heesi-2025.mjs
