@@ -20,8 +20,8 @@ SESSION=requests.Session()
 SESSION.headers.update({"User-Agent":USER_AGENT,"Accept":"text/html,application/xhtml+xml"})
 REGULATION_PATTERN=re.compile(r"(?:peraturan|undang.undang|keputusan|instruksi|perda|perpres|permen|ruu|rancangan)",re.I)
 MAINTENANCE_PATTERN=re.compile(r"(sistem sedang dalam perbaikan|under maintenance|website sedang dalam perbaikan|layanan sementara tidak tersedia)",re.I)
-POLICY_ACTION=re.compile(r"\\b(?:rancangan|ruu|regulasi|aturan|kebijakan|perpres|permen|inpres|perda|pergub|perbup|perwali|amendment|amended|dispute|arbitration|arbitrase|putus(?:an)?|putusan|banding|appeal|countervailing|import ban|export ban|export control|trade restriction|moratorium|consultation|consultations|tarif|subsidi|pajak|bea masuk|dmo|persyaratan ekspor|insentif|perizinan|izin usaha|harmonisasi|wto|icsid|uncitral|isds|ds592|legislation|treaty|mediation|negotiation|enforcement|adopts?|dispute settlement|import duty|policy)\\b",re.I)
-LEGAL_ID=re.compile(r"(?i)(?:nomor|no[.]?|tahun)\\s*[:/]?\\s*\\d+|\\b(?:uu|pp|perpres|inpres|permen|pergub|perbup|perwali)\\s*\\d+")
+POLICY_ACTION=re.compile(r"\b(?:rancangan|ruu|regulasi|aturan|kebijakan|perpres|permen|inpres|perda|pergub|perbup|perwali|amendment|amended|dispute|arbitration|arbitrase|putus(?:an)?|putusan|banding|appeal|countervailing|import ban|export ban|export control|trade restriction|moratorium|consultation|consultations|tarif|subsidi|pajak|bea masuk|dmo|persyaratan ekspor|insentif|perizinan|izin usaha|harmonisasi|wto|icsid|uncitral|isds|ds592|legislation|treaty|mediation|negotiation|enforcement|adopts?|dispute settlement|import duty|policy)\b",re.I)
+LEGAL_ID=re.compile(r"(?i)(?:nomor|no[.]?|tahun)\s*[:/]?\s*\d+|\b(?:uu|pp|perpres|inpres|permen|pergub|perbup|perwali)\s*\d+")
 TERMS={
  "electricity":["listrik","pln","ketenagalistrikan","gardu","pembangkit","transmisi","ruptl","rued","plts","pltu","plta","pltn"],
  "energy":["energi","ebt","biodiesel","biofuel","transisi","efisiensi","konservasi"],
@@ -55,8 +55,8 @@ def classify(title,keywords):
  low=title.casefold()
  score=sum(1 for term in keywords if (bool(re.search(r"\b"+re.escape(term)+r"\b",low)) if len(term.strip())<=3 else term in low))
  if not score:return None
- sectors=[s for s,words in TERMS.items() if any(re.search(r"(?<!\\w)"+re.escape(x)+r"(?!\\w)",low) for x in words)]
- if re.search(r"\\bai\\b",low) and "digital" not in sectors: sectors.append("digital")
+ sectors=[s for s,words in TERMS.items() if any(re.search(r"(?<!\w)"+re.escape(x)+r"(?!\w)",low) for x in words)]
+ if re.search(r"\bai\b",low) and "digital" not in sectors: sectors.append("digital")
  return {"sectors":sectors or ["cross"],"relevance_hits":score}
 def listing(cfg,keywords):
  r,doc,error=get(cfg["url"])
