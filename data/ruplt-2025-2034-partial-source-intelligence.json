@@ -1,0 +1,489 @@
+{
+  "id": "ruplt_pln_2025_2034_uploaded_excerpt_v1",
+  "extracted_at": "2026-10-16",
+  "source": {
+    "file": "876718974-RUPTL-2025-2034-1.pdf",
+    "sha256": "6b0a38077e64421c034b94f49bf97d05afc18ddfdedaf8e44607380c9a284ac1",
+    "pdf_pages": 100,
+    "title": "Rencana Usaha Penyediaan Tenaga Listrik PT PLN (Persero) 2025–2034",
+    "decree": "188.K/TL.03/MEM.L/2025",
+    "source_date": "2025-05-26",
+    "scope": "Partial 100-page user upload: approval, tables/figures index, glossary, Chapter I and Chapter II pages II-1 to II-50. Later chapters and province annexes absent. All page numbers below are PDF page numbers starting at 1."
+  },
+  "national_indicators": [
+    {
+      "id": "plan_total_mw",
+      "value": 69512,
+      "unit": "MW",
+      "pdf_page": 5,
+      "description": "total new generation capacity including storage",
+      "status": "planned_target"
+    },
+    {
+      "id": "renewable_generation_mw",
+      "value": 42569,
+      "unit": "MW",
+      "pdf_page": 5,
+      "description": "planned EBT generating capacity",
+      "status": "planned_target"
+    },
+    {
+      "id": "storage_mw",
+      "value": 10256,
+      "unit": "MW",
+      "pdf_page": 5,
+      "description": "planned ESS power capacity, not energy or annual electricity",
+      "status": "planned_target"
+    },
+    {
+      "id": "fossil_generation_mw",
+      "value": 16687,
+      "unit": "MW",
+      "pdf_page": 5,
+      "description": "planned fossil generation",
+      "status": "planned_target"
+    },
+    {
+      "id": "transmission_circuit_km",
+      "value": 47758,
+      "unit": "circuit-km",
+      "pdf_page": 5,
+      "description": "planned network additions",
+      "status": "planned_target"
+    },
+    {
+      "id": "transmission_substation_mva",
+      "value": 107950,
+      "unit": "MVA",
+      "pdf_page": 5,
+      "description": "planned substation equipment addition",
+      "status": "planned_target"
+    },
+    {
+      "id": "distribution_circuit_km",
+      "value": 197998,
+      "unit": "circuit-km",
+      "pdf_page": 5,
+      "description": "planned distribution lines",
+      "status": "planned_target"
+    },
+    {
+      "id": "distribution_transformer_mva",
+      "value": 18407,
+      "unit": "MVA",
+      "pdf_page": 5,
+      "description": "planned distribution transformer rating",
+      "status": "planned_target"
+    },
+    {
+      "id": "annual_electricity_demand_growth_forecast_pct",
+      "value": 5.3,
+      "unit": "%",
+      "pdf_page": 5,
+      "description": "national planning average growth assumption",
+      "status": "planned_target"
+    },
+    {
+      "id": "target_renewable_generation_share_2034_pct",
+      "value": 34.3,
+      "unit": "%",
+      "pdf_page": 5,
+      "description": "electricity generation mix target; not capacity share",
+      "status": "planned_target"
+    },
+    {
+      "id": "generation_reliability_LOLP_upper_pct",
+      "value": 0.274,
+      "unit": "%",
+      "pdf_page": 61,
+      "description": "planning criterion: LOLP strictly below this percentage, not measured outage rate",
+      "status": "planning_standard"
+    },
+    {
+      "id": "substation_COD_load_factor_low_pct",
+      "value": 70,
+      "unit": "%",
+      "pdf_page": 90,
+      "description": "typical lower end of proposed expansion/replacement trigger; may vary by assessment",
+      "status": "planning_standard"
+    },
+    {
+      "id": "substation_COD_load_factor_high_pct",
+      "value": 80,
+      "unit": "%",
+      "pdf_page": 90,
+      "description": "typical upper end of proposed expansion/replacement trigger; may vary by assessment",
+      "status": "planning_standard"
+    },
+    {
+      "id": "distribution_voltage_min_pct",
+      "value": 90,
+      "unit": "%",
+      "pdf_page": 99,
+      "description": "nominal voltage floor in distribution planning rules",
+      "status": "planning_standard"
+    },
+    {
+      "id": "distribution_voltage_max_pct",
+      "value": 105,
+      "unit": "%",
+      "pdf_page": 99,
+      "description": "nominal voltage ceiling in distribution planning rules",
+      "status": "planning_standard"
+    },
+    {
+      "id": "distribution_frequency_min_hz",
+      "value": 49.5,
+      "unit": "Hz",
+      "pdf_page": 99,
+      "description": "frequency lower bound stated by RUPTL",
+      "status": "planning_standard"
+    },
+    {
+      "id": "distribution_frequency_max_hz",
+      "value": 50.5,
+      "unit": "Hz",
+      "pdf_page": 99,
+      "description": "frequency upper bound stated by RUPTL",
+      "status": "planning_standard"
+    },
+    {
+      "id": "AMI_reported_meters_2023_cohort",
+      "value": 1222540,
+      "unit": "meters",
+      "pdf_page": 98,
+      "description": "Table 2.3 programme cohort, COD Jan 2024; not 2026 actual",
+      "status": "historic_source_report"
+    },
+    {
+      "id": "AMI_reported_meters_active_MDMS",
+      "value": 1214229,
+      "unit": "meters",
+      "pdf_page": 98,
+      "description": "Table 2.3 MDMS active count reported; not current national figure",
+      "status": "historic_source_report"
+    },
+    {
+      "id": "AMI_planned_additional_provinces_2026_to_2028",
+      "value": 20,
+      "unit": "provinces",
+      "pdf_page": 98,
+      "description": "phase allocation plan",
+      "status": "planned_target"
+    },
+    {
+      "id": "AMI_total_target_provinces_2026_to_2028",
+      "value": 28,
+      "unit": "provinces",
+      "pdf_page": 98,
+      "description": "phase allocation plan",
+      "status": "planned_target"
+    }
+  ],
+  "ami_rollout_table_2_4": {
+    "page": 98,
+    "rows": [
+      {
+        "year": 2022,
+        "annual_target": 110000,
+        "cumulative_target": 110000,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2023,
+        "annual_target": 1217256,
+        "cumulative_target": 1327256,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2024,
+        "annual_target": 2060517,
+        "cumulative_target": 3387773,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2025,
+        "annual_target": 2060517,
+        "cumulative_target": 5448290,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2026,
+        "annual_target": 2243288,
+        "cumulative_target": 7691578,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2027,
+        "annual_target": 2243288,
+        "cumulative_target": 9934866,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2028,
+        "annual_target": 2243288,
+        "cumulative_target": 12178154,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2029,
+        "annual_target": 2243288,
+        "cumulative_target": 14421442,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2030,
+        "annual_target": 2243288,
+        "cumulative_target": 16664730,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2031,
+        "annual_target": 2243288,
+        "cumulative_target": 18908018,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2032,
+        "annual_target": 2931284,
+        "cumulative_target": 21839302,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2033,
+        "annual_target": 2931284,
+        "cumulative_target": 24770586,
+        "source_pdf_page": 98,
+        "quality": "published_planned_values_subject_to_verification"
+      },
+      {
+        "year": 2034,
+        "annual_target": 11725136,
+        "cumulative_target": 36495722,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2035,
+        "annual_target": 11725136,
+        "cumulative_target": 48220858,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2036,
+        "annual_target": 11725136,
+        "cumulative_target": 59945994,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2037,
+        "annual_target": 11725136,
+        "cumulative_target": 71671130,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2038,
+        "annual_target": 11725136,
+        "cumulative_target": 83396266,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2039,
+        "annual_target": 11725136,
+        "cumulative_target": 95121402,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2040,
+        "annual_target": 11725136,
+        "cumulative_target": 106846538,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2041,
+        "annual_target": 11725136,
+        "cumulative_target": 118571674,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2042,
+        "annual_target": 11725136,
+        "cumulative_target": 130296810,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2043,
+        "annual_target": 11725136,
+        "cumulative_target": 142021946,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2044,
+        "annual_target": 11725136,
+        "cumulative_target": 153747082,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      },
+      {
+        "year": 2045,
+        "annual_target": 11725136,
+        "cumulative_target": 165472218,
+        "source_pdf_page": 98,
+        "quality": "source_internal_contradiction_high"
+      }
+    ],
+    "prose_page": 99,
+    "prose_claim": "Approximately 34 million AMI customers by 2037; conflicts with tabular 2037 cumulative of 71,671,130.",
+    "recommended_default_chart_cutoff_year": 2033
+  },
+  "policy_and_evidence": [
+    {
+      "id": "additional_large_industry",
+      "pdf_pages": [
+        5,
+        46,
+        61
+      ],
+      "finding": "Additional electricity demand for priority industrial consumers may require ESDM-approved plan amendment; uncommitted large customer loads separated by confidence",
+      "investor_implication": "Do not assume an AI campus announcement automatically receives reserved firm power."
+    },
+    {
+      "id": "customer_confidence",
+      "pdf_pages": [
+        46,
+        53
+      ],
+      "finding": "Confidence levels for large KTT customers based on PJBTL, paid connection charges, construction, probing and MoU; base scenario emphasizes higher-confidence projects",
+      "investor_implication": "Classify AI data-center grid demand by evidence of signed contract, paid connection charge and substations under construction."
+    },
+    {
+      "id": "N_minus_1",
+      "pdf_pages": [
+        86,
+        89,
+        90
+      ],
+      "finding": "N-1 contingency planning for transmission and substations, including static/dynamic security",
+      "investor_implication": "A multi-GPU site needs firm contingency analysis, not just regional MVA."
+    },
+    {
+      "id": "grid_COD_threshold",
+      "pdf_pages": [
+        90
+      ],
+      "finding": "70–80% GI load criterion for COD of transformer reinforcement typically used, subject to evaluation and N-1 exceptions",
+      "investor_implication": "Data center MW compared with verified individual GI load headroom; no observed local saturation inferred."
+    },
+    {
+      "id": "energy_reliability_LOLP",
+      "pdf_pages": [
+        61
+      ],
+      "finding": "Generation adequacy benchmark LOLP below 0.274%",
+      "investor_implication": "LOLP refers generation adequacy, not site-level uptime SLA."
+    },
+    {
+      "id": "renewable_procurement",
+      "pdf_pages": [
+        54,
+        55
+      ],
+      "finding": "Renewable energy certificates (REC) and verification/tracking are described separately from physical power supply",
+      "investor_implication": "Contractual clean energy claims do not by themselves verify hourly renewable matching."
+    },
+    {
+      "id": "floating_solar_opportunity",
+      "pdf_pages": [
+        82,
+        83
+      ],
+      "finding": "109 indicative reservoir floating PV entries from Table 2.2, not operating PV plants",
+      "investor_implication": "Potential power supply/cooling tradeoffs require water, grid connection and feasibility diligence."
+    },
+    {
+      "id": "grid_service_quality",
+      "pdf_pages": [
+        99
+      ],
+      "finding": "Distribution planning mentions voltage 90–105% of nominal and frequency 49.5–50.5 Hz, plus harmonic limits",
+      "investor_implication": "Track power-quality proof at DC connection point, not merely utility published generation."
+    }
+  ],
+  "province_annex_locator": [
+    {
+      "province": "Kepulauan Riau",
+      "annex": "A4",
+      "pdf_page": 27,
+      "included_in_this_pdf": false,
+      "linked_dc_cluster": "Batam"
+    },
+    {
+      "province": "Jawa Barat",
+      "annex": "B3",
+      "pdf_page": 27,
+      "included_in_this_pdf": false,
+      "linked_dc_cluster": "Bekasi–Karawang"
+    },
+    {
+      "province": "Jawa Tengah",
+      "annex": "B4",
+      "pdf_page": 27,
+      "included_in_this_pdf": false,
+      "linked_dc_cluster": "Batang"
+    },
+    {
+      "province": "DKI Jakarta",
+      "annex": "B1",
+      "pdf_page": 27,
+      "included_in_this_pdf": false,
+      "linked_dc_cluster": "Jakarta metro"
+    }
+  ],
+  "data_quality_flags": [
+    {
+      "topic": "source_scope",
+      "severity": "high",
+      "note": "Only 100 initial pages are supplied; complete project-level geographic schedules are not in this PDF."
+    },
+    {
+      "topic": "ami_inconsistency",
+      "severity": "high",
+      "note": "Table 2.4 prints 71.67 million cumulative AMI by 2037, but accompanying prose says approximately 34 million by 2037. Preserve both; do not use later values as verified projections."
+    },
+    {
+      "topic": "reservoir_duplicate",
+      "severity": "medium",
+      "note": "Gembong is repeated as rows 23 and 28 of Table 2.2. Raw published 13,898.8 MW is not deduplicated."
+    },
+    {
+      "topic": "reservoir_province",
+      "severity": "medium",
+      "note": "Karangnongko is cross-provincial (Jawa Tengah and Jawa Timur); do not assign whole potential to both."
+    },
+    {
+      "topic": "dam_status",
+      "severity": "high",
+      "note": "Table 2.2 status applies to dam development, NOT floating-solar project development."
+    }
+  ]
+}
