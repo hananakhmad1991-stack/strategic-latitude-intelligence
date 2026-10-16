@@ -1,0 +1,148 @@
+{
+  "version": "2026-10-16",
+  "provider": "World Bank World Development Indicators",
+  "country": "IDN",
+  "start_year": 1990,
+  "max_year": "current",
+  "api_base": "https://api.worldbank.org/v2/country/IDN/indicator/",
+  "refresh_cadence": "Weekly Tuesday GitHub Actions 02:23 UTC; first run also on script/config push",
+  "source_comparability": "Annual WDI series use provider definitions, coverage and revision policies. Do not splice with BPS national press-release monthly/quarterly series as a single uninterrupted chain.",
+  "indicators": [
+    {
+      "id": "annual_gdp_growth",
+      "code": "NY.GDP.MKTP.KD.ZG",
+      "category": "Growth & Production",
+      "label": "Real GDP growth",
+      "unit": "% annual",
+      "scale": 1
+    },
+    {
+      "id": "annual_gdp_usd",
+      "code": "NY.GDP.MKTP.CD",
+      "category": "Growth & Production",
+      "label": "GDP current USD",
+      "unit": "current US$",
+      "scale": 1
+    },
+    {
+      "id": "annual_gdp_per_capita_usd",
+      "code": "NY.GDP.PCAP.CD",
+      "category": "Growth & Production",
+      "label": "GDP per capita",
+      "unit": "current US$/person",
+      "scale": 1
+    },
+    {
+      "id": "annual_gdp_constant",
+      "code": "NY.GDP.MKTP.KD",
+      "category": "Growth & Production",
+      "label": "GDP constant USD",
+      "unit": "constant 2015 US$",
+      "scale": 1
+    },
+    {
+      "id": "annual_inflation",
+      "code": "FP.CPI.TOTL.ZG",
+      "category": "Prices & Monetary",
+      "label": "CPI inflation annual",
+      "unit": "% annual",
+      "scale": 1
+    },
+    {
+      "id": "annual_fx",
+      "code": "PA.NUS.FCRF",
+      "category": "Prices & Monetary",
+      "label": "Official exchange rate annual average",
+      "unit": "IDR/USD annual average",
+      "scale": 1
+    },
+    {
+      "id": "annual_unemployment",
+      "code": "SL.UEM.TOTL.ZS",
+      "category": "Employment & Welfare",
+      "label": "Unemployment (ILO modeled estimate)",
+      "unit": "% modeled ILO labor force",
+      "scale": 1
+    },
+    {
+      "id": "annual_gini",
+      "code": "SI.POV.GINI",
+      "category": "Employment & Welfare",
+      "label": "Gini index (World Bank)",
+      "unit": "index 0–100",
+      "scale": 1
+    },
+    {
+      "id": "annual_poverty_national",
+      "code": "SI.POV.NAHC",
+      "category": "Employment & Welfare",
+      "label": "Poverty headcount at national line (WDI)",
+      "unit": "% of population",
+      "scale": 1
+    },
+    {
+      "id": "annual_exports_goods_services",
+      "code": "NE.EXP.GNFS.CD",
+      "category": "Trade & External",
+      "label": "Exports of goods and services",
+      "unit": "current US$",
+      "scale": 1
+    },
+    {
+      "id": "annual_imports_goods_services",
+      "code": "NE.IMP.GNFS.CD",
+      "category": "Trade & External",
+      "label": "Imports of goods and services",
+      "unit": "current US$",
+      "scale": 1
+    },
+    {
+      "id": "annual_external_balance",
+      "code": "NE.RSB.GNFS.CD",
+      "category": "Trade & External",
+      "label": "External balance goods and services",
+      "unit": "current US$",
+      "scale": 1
+    },
+    {
+      "id": "annual_current_account",
+      "code": "BN.CAB.XOKA.CD",
+      "category": "Trade & External",
+      "label": "Current account balance",
+      "unit": "current US$",
+      "scale": 1
+    },
+    {
+      "id": "annual_reserves",
+      "code": "FI.RES.TOTL.CD",
+      "category": "Trade & External",
+      "label": "Total reserves including gold",
+      "unit": "current US$",
+      "scale": 1
+    },
+    {
+      "id": "annual_gov_balance",
+      "code": "GC.BAL.CASH.GD.ZS",
+      "category": "Fiscal & Government",
+      "label": "Cash surplus/deficit",
+      "unit": "% GDP",
+      "scale": 1
+    },
+    {
+      "id": "annual_gov_debt",
+      "code": "GC.DOD.TOTL.GD.ZS",
+      "category": "Fiscal & Government",
+      "label": "Central government debt total",
+      "unit": "% GDP",
+      "scale": 1
+    },
+    {
+      "id": "annual_employment_ratio",
+      "code": "SL.EMP.TOTL.SP.ZS",
+      "category": "Employment & Welfare",
+      "label": "Employment-to-population (ILO modeled)",
+      "unit": "% population ages 15+",
+      "scale": 1
+    }
+  ]
+}
