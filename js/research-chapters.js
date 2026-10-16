@@ -300,6 +300,11 @@ function makeEnergyStructure(which,root){
  const intro=E("div","es-intro");intro.append(E("div","eyebrow","STRATEGIC LATITUDE INTELLIGENCE · INDONESIA"),E("h2",null,which==="minerals"?"Critical Minerals Intelligence":"AI Infrastructure Intelligence"),E("p",null,"Institutional mapping, verified indicators, implementation, market exposure, technology, monitoring and strategic assessment."),E("p","es-discipline","Official source dates and measurement periods vary; announced assets are not operating capacity."));
  const nav=E("nav","es-toc");nav.setAttribute("aria-label","Research topics");labels.forEach((label,i)=>{let a=link("#"+sections[i].id,"");a.append(E("span",null,String(i+1).padStart(2,"0")),document.createTextNode(label));a.addEventListener("click",e=>{e.preventDefault();sections[i].scrollIntoView({behavior:"smooth",block:"start"})});nav.append(a)});
  root.replaceChildren(intro,nav,...sections);
+ if(which==="minerals"&&typeof window.initSLIIEA2026Explorer==="function"){
+  const rawIEA=E("div","sli-iea-2026-model-mount");
+  sections[3].append(rawIEA);
+  window.initSLIIEA2026Explorer("minerals",rawIEA);
+ }
  // An independent source-vintage layer cross-links BKPM, ESDM and IEA without
  // overwriting the existing USGS/IEA mineral registry or named investment cases.
  if(typeof window.initSLISourceBridge==="function"){
