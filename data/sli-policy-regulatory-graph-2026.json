@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16.4",
+  "version": "2026-10-16.5",
   "updated_at": "2026-10-16",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -1920,6 +1920,272 @@
           "reason": "Policy announcement alone does not create guaranteed carbon credit revenue.",
           "evidence": "market_assumption",
           "mitigation": "Conservative revenue underwriting and contracted buyers."
+        }
+      ]
+    },
+    {
+      "id": "electricity_grid",
+      "name": "Electricity & PLN / PLN Batam · regulated grid investment",
+      "sector": "electricity",
+      "geo": "Jawa–Bali; Batam",
+      "basis": [
+        "uu30power",
+        "pp14power",
+        "pp25energy",
+        "permen11",
+        "permen2service",
+        "kepmen188",
+        "permenbkpm5",
+        "grid",
+        "inpres1_2025"
+      ],
+      "issues": [
+        {
+          "id": "permits",
+          "title": "IUPTL, utility jurisdiction & obligations",
+          "exposure": 5,
+          "reason": "Operator/utility rights, industrial customer voltage and regulatory scopes need precise allocation.",
+          "mitigation": "Obtain activity-specific IUPTL, point-of-connection agreement, concessions and regulated service rules.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "power",
+          "title": "N-1 network security, congestion & reserve",
+          "exposure": 5,
+          "reason": "RUPTL planned MVA, installed transformer rating and firm available MW are different; PLN Batam is a separate system.",
+          "mitigation": "Require substation firm reserve, contingency study, transformer plan and grid queue.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "environment",
+          "title": "Line route, land and environmental licenses",
+          "exposure": 4,
+          "reason": "Transmission projects face siting, social/environment and rights-of-way execution.",
+          "mitigation": "Review approved routes, land acquisition status, AMDAL, grid ESMP and construction permits.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "change",
+          "title": "Tariff, subsidy, service and procurement regimes",
+          "exposure": 4,
+          "reason": "Regulatory pricing and procurement changes can alter utility/project economics.",
+          "mitigation": "Validate customer tariff class, wheeling/contract authority and service compensation terms.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "privacy",
+          "title": "SCADA, OT cyber and metering obligations",
+          "exposure": 4,
+          "reason": "Grid cybersecurity and connected meters affect reliability and regulatory operational risk.",
+          "mitigation": "Request operational safety, telemetry standards, incident response, data governance.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "delivery",
+          "title": "Energization dates and financing conversion",
+          "exposure": 5,
+          "reason": "National RUPTL publication is not field construction, commissioning or disbursed financing.",
+          "mitigation": "Track annual PLN progress, GI contract, EPC, procurement, substation COD and cost responsibility.",
+          "evidence": "analyst_scenario_not_quantified"
+        }
+      ]
+    },
+    {
+      "id": "coal_power",
+      "name": "Coal generation, DMO & transition policy",
+      "sector": "minerba",
+      "geo": "Coal producing provinces; PLN supply chain",
+      "basis": [
+        "uu4minerba",
+        "uu2minerba",
+        "pp96min",
+        "pp40",
+        "permen11",
+        "kepmen188",
+        "gattxi",
+        "pres112"
+      ],
+      "issues": [
+        {
+          "id": "permits",
+          "title": "Coal mining, DMO & dispatch governance",
+          "exposure": 5,
+          "reason": "Mining rights and coal allocation to power plant need different source documents.",
+          "mitigation": "Check IUP/RKAB, DMO assignments, offtake obligations and plant dispatch permits.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "power",
+          "title": "Thermal dispatch and system adequacy",
+          "exposure": 4,
+          "reason": "Retirement and new supply timing affect baseload and VRE integration.",
+          "mitigation": "Compare PLN power balance, plant age and local reserve by year.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "environment",
+          "title": "Air pollution, coal ash & just transition",
+          "exposure": 5,
+          "reason": "Facility emission performance, waste and asset lock-in are site-specific.",
+          "mitigation": "Review monitoring, consent and decommissioning liabilities.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "change",
+          "title": "Energy transition schedule vs mining rules",
+          "exposure": 5,
+          "reason": "PP 40/2025 and implementing policy can shift coal demand and commercial assumptions.",
+          "mitigation": "Monitor RUPTL changes, energy mix and current coal sector rules.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "privacy",
+          "title": "Mine-to-plant reporting traceability",
+          "exposure": 2,
+          "reason": "Volume and source reporting integrity is operationally relevant but not the main risk driver.",
+          "mitigation": "Reconcile seller shipment reporting and buyer dispatch data.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "delivery",
+          "title": "Coal transport and port resilience",
+          "exposure": 4,
+          "reason": "Supply bottlenecks and contract dependence affect power availability.",
+          "mitigation": "Review port, road, rail, barge seasons and fuel inventory resilience.",
+          "evidence": "analyst_scenario_not_quantified"
+        }
+      ]
+    },
+    {
+      "id": "wto_trade",
+      "name": "WTO trade-policy dispute · mineral export and industrial measures",
+      "sector": "international",
+      "geo": "Indonesia–EU nickel raw materials DS592",
+      "basis": [
+        "uu7wto",
+        "gattxi",
+        "scm",
+        "trims",
+        "dsu",
+        "ds592",
+        "uu2minerba",
+        "permenperin37"
+      ],
+      "issues": [
+        {
+          "id": "permits",
+          "title": "Export control legal compatibility",
+          "exposure": 5,
+          "reason": "Indonesia may impose trade measures domestically while WTO compliance is a separate treaty assessment.",
+          "mitigation": "Compare exact export measure, HS code, GATT XI and defensible exceptions.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "power",
+          "title": "Industrial competitiveness and processing supply",
+          "exposure": 4,
+          "reason": "Domestic processing/local value-added policies may change demand for smelter electricity.",
+          "mitigation": "Stress-test electricity tariff and mineral downstream model under trade-measure alternatives.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "environment",
+          "title": "Environmental justification and least-restrictive alternatives",
+          "exposure": 4,
+          "reason": "WTO panel assessed necessity exceptions; environment goals do not automatically exempt restrictions.",
+          "mitigation": "Evaluate available less-trade-restrictive alternatives with sector data.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "change",
+          "title": "Pending WTO appeal and state-to-state remedy",
+          "exposure": 5,
+          "reason": "Panel report followed by appeal where Appellate Body is non-operational; do not assume final adopted award.",
+          "mitigation": "Track WTO DS592 documentation, appellate status, negotiated resolution and any domestic legal change.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "privacy",
+          "title": "Disclosure, trade reporting and audit trails",
+          "exposure": 2,
+          "reason": "Regulatory compliance requires accurate export/subsidy reporting and confidential commercial records.",
+          "mitigation": "Build auditable trace of incentive conditions and source legal instruments.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "delivery",
+          "title": "Smelter financing and tariff/non-tariff exposure",
+          "exposure": 5,
+          "reason": "Trade-remedy shifts can alter offtake, export mix and realized downstream returns.",
+          "mitigation": "Run commodity-specific scenario of export rules and investment terms, not invented loss totals.",
+          "evidence": "analyst_scenario_not_quantified"
+        }
+      ]
+    },
+    {
+      "id": "investor_arbitration",
+      "name": "Investor–State protection & commercial arbitration",
+      "sector": "international",
+      "geo": "Indonesia · inbound foreign investors",
+      "basis": [
+        "uu25investment",
+        "uu30arb",
+        "kp34newyork",
+        "perma3arb",
+        "uu5icsid",
+        "icsid",
+        "newyork",
+        "uncitral",
+        "bit"
+      ],
+      "issues": [
+        {
+          "id": "permits",
+          "title": "Treaty consent and jurisdiction",
+          "exposure": 5,
+          "reason": "ICSID membership alone is insufficient to establish investor–state arbitration jurisdiction.",
+          "mitigation": "Check nationality, treaty in force, protections, investor consent and admissibility.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "power",
+          "title": "State contractual performance",
+          "exposure": 3,
+          "reason": "Power purchase agreements and utility contracts can carry separate contractual dispute forums.",
+          "mitigation": "Review state counterparty authority and force majeure/change-in-law allocations.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "environment",
+          "title": "Public policy and regulatory powers",
+          "exposure": 4,
+          "reason": "Environmental measures can lead to disputes but are not breaches by default.",
+          "mitigation": "Evaluate treaty exceptions, police powers and local environmental compliance.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "change",
+          "title": "Termination/sunset of investment agreements",
+          "exposure": 5,
+          "reason": "BIT/IIA applicability may depend on entry into force, termination and survival clauses.",
+          "mitigation": "Use UNCTAD treaty-status records, ratification and exact investor nationality.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "privacy",
+          "title": "Confidentiality and transparency procedures",
+          "exposure": 3,
+          "reason": "Arbitration clauses and tribunal rules change treatment of pleadings and public disclosure.",
+          "mitigation": "Confirm forum/seat/confidentiality and disclosure of third-party funding.",
+          "evidence": "analyst_scenario_not_quantified"
+        },
+        {
+          "id": "delivery",
+          "title": "Recognition, execution and award collectability",
+          "exposure": 5,
+          "reason": "New York Convention awards, ICSID awards, court recognition and sovereign immunity differ.",
+          "mitigation": "Review enforcement forum, judicial procedure, assets and statutory limitations.",
+          "evidence": "analyst_scenario_not_quantified"
         }
       ]
     }
