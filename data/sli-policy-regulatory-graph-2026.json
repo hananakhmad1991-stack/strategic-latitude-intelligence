@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16.5",
+  "version": "2026-10-16.6",
   "updated_at": "2026-10-16",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -66,7 +66,8 @@
       "limitations": "Scores are illustrative analyst judgments; no empirical financial/likelihood calibration. Do not compare jurisdictions as objective regulatory risk. Missing compliance evidence is not a violation."
     },
     "cross_ministry_implementation": "Parallel regulations from BKPM/OSS, ATR/BPN, KLH/BPLH, ESDM, Kemenperin and Komdigi must be mapped by KBLI, permits and legal delegation, not mistaken for a joint regulation or one ministry's rules governing another.",
-    "international_law_notes": "Treaties, investment agreements and arbitration rules differ in binding parties, forum and domestic implementation. WTO dispute DS592 is state-to-state and under appeal with a non-functioning Appellate Body in published record; ICSID is investor-state subject to consent, while New York Convention covers arbitral award recognition; UNCITRAL Arbitration Rules operate if adopted. No investor wins/loses automatically."
+    "international_law_notes": "Treaties, investment agreements and arbitration rules differ in binding parties, forum and domestic implementation. WTO dispute DS592 is state-to-state and under appeal with a non-functioning Appellate Body in published record; ICSID is investor-state subject to consent, while New York Convention covers arbitral award recognition; UNCITRAL Arbitration Rules operate if adopted. No investor wins/loses automatically.",
+    "foreign_law_notes": "Foreign EU and US regulations are separate market-access/transactional applicability branches, not levels in Indonesian hierarchy; check destination, product nomenclature, counterparty, implementation dates, license requirements and foreign jurisdictional scope."
   },
   "nodes": [
     {
@@ -1082,6 +1083,58 @@
       "kind": "ratification_legislation",
       "owner": "Indonesia / KLH",
       "evidence": "primary_official"
+    },
+    {
+      "id": "eu_cbam",
+      "tier": "foreignlaw",
+      "ref": "EU CBAM · Regulation 2023/956",
+      "label": "Carbon Border Adjustment Mechanism",
+      "sector": "carbon",
+      "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R0956",
+      "note": "EU import rules apply to Annex I covered goods (e.g. certain iron/steel, aluminum, fertilizer, cement, hydrogen, electricity) via EU economic operators. NOT automatically to all Indonesian nickel ore, all smelters or all exports; review HS/CN codes and current EU implementing revisions.",
+      "status": "foreign_rule_conditional_scope",
+      "kind": "foreign_market_regulation_not_indonesian_law",
+      "owner": "European Union",
+      "evidence": "official_foreign_regulation"
+    },
+    {
+      "id": "eu_crma",
+      "tier": "foreignlaw",
+      "ref": "EU CRMA · Regulation 2024/1252",
+      "label": "EU Critical Raw Materials Act",
+      "sector": "minerba",
+      "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1252",
+      "note": "EU raw-material strategic security framework affects sourcing and investment incentives/standards; does not itself amend Indonesian IUP, mining law or exports.",
+      "status": "foreign_rule_conditional_scope",
+      "kind": "foreign_market_regulation_not_indonesian_law",
+      "owner": "European Union",
+      "evidence": "official_foreign_regulation"
+    },
+    {
+      "id": "eu_batteries",
+      "tier": "foreignlaw",
+      "ref": "EU Battery Regulation 2023/1542",
+      "label": "Battery sustainability, due diligence, labelling and waste",
+      "sector": "minerba",
+      "source": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32023R1542",
+      "note": "EU battery placement-on-market rules can require supply-chain and carbon information of relevant economic operators; implementation and transitional dates changed, so use consolidated 2026 text and buyer/product-specific applicability.",
+      "status": "foreign_rule_conditional_scope",
+      "kind": "foreign_market_regulation_not_indonesian_law",
+      "owner": "European Union",
+      "evidence": "official_foreign_regulation"
+    },
+    {
+      "id": "us_bis_ear",
+      "tier": "foreignlaw",
+      "ref": "US BIS · Export Administration Regulations",
+      "label": "Export controls and advanced computing items",
+      "sector": "digital",
+      "source": "https://www.bis.gov/regulations/ear/740",
+      "note": "US EAR export/reexport/transfers and technology access may affect some GPU/cloud supply chains based on item classification, end-user, destinations and changing license exceptions. Do NOT assume Indonesia-specific prohibition without classification and contemporary BIS rules.",
+      "status": "foreign_rule_conditional_scope",
+      "kind": "foreign_market_regulation_not_indonesian_law",
+      "owner": "U.S. Bureau of Industry and Security",
+      "evidence": "official_foreign_regulation"
     }
   ],
   "edges": [
@@ -1554,6 +1607,36 @@
       "from": "ds592",
       "to": "uu30arb",
       "type": "DISTINCT_FORUM_WTO_INTERSTATE_NOT_COMMERCIAL_ARBITRATION"
+    },
+    {
+      "from": "eu_cbam",
+      "to": "carbon_mrv",
+      "type": "foreign_market_reporting_exposure"
+    },
+    {
+      "from": "eu_cbam",
+      "to": "permenperin37",
+      "type": "foreign_market_economics_interface"
+    },
+    {
+      "from": "eu_crma",
+      "to": "uu2minerba",
+      "type": "cross_border_market_incentive_context"
+    },
+    {
+      "from": "eu_batteries",
+      "to": "permenperin37",
+      "type": "battery_supply_chain_market_conditions"
+    },
+    {
+      "from": "eu_batteries",
+      "to": "eu_crma",
+      "type": "market_supply_chain_intersection"
+    },
+    {
+      "from": "us_bis_ear",
+      "to": "pdp",
+      "type": "cloud_infrastructure_operational_context"
     }
   ],
   "cases": [
@@ -1582,7 +1665,8 @@
         "gats",
         "uu30arb",
         "newyork",
-        "inpres1_2025"
+        "inpres1_2025",
+        "us_bis_ear"
       ],
       "issues": [
         {
@@ -1736,7 +1820,10 @@
         "uu30arb",
         "kp34newyork",
         "icsid",
-        "bit"
+        "bit",
+        "eu_cbam",
+        "eu_crma",
+        "eu_batteries"
       ],
       "issues": [
         {
@@ -1870,7 +1957,8 @@
         "paris",
         "uu16paris",
         "icsid",
-        "bit"
+        "bit",
+        "eu_cbam"
       ],
       "issues": [
         {
@@ -2069,7 +2157,9 @@
         "dsu",
         "ds592",
         "uu2minerba",
-        "permenperin37"
+        "permenperin37",
+        "eu_cbam",
+        "eu_crma"
       ],
       "issues": [
         {
