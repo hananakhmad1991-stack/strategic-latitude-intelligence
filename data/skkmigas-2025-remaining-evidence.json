@@ -1,0 +1,545 @@
+{
+  "id": "sli-skkmigas-2025-remaining-evidence",
+  "as_of": "2026-10-16",
+  "report": "SKK Migas Annual Report 2025 (English) · user-supplied original",
+  "source_pdf_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
+  "source_pages": 202,
+  "publication_directory": "https://www.skkmigas.go.id/publication?tab=laporan+tahunan",
+  "methodology": "Transcribed explicit printed labels, tables and prose from the original 202-page English PDF. Unlabelled chart heights and polygon geometry are not inferred. Some report disclosures refer to March 2026 after the 2025 reporting year; all milestones and targets are as stated at publication, not current fact.",
+  "strategic_projects": {
+    "pdf_page": 61,
+    "aggregate": {
+      "estimated_investment_usd_billion": 46.15,
+      "idr_trillion_illustrative": 761,
+      "reported_peak_liquids_bopd": 109847,
+      "reported_peak_gas_mmscfd": 3753
+    },
+    "projects": [
+      {
+        "project": "Genting Oil Kasuri · Asap Kido Merah",
+        "operator": "Genting Oil Kasuri",
+        "investment_usd_billion": 3.37,
+        "gas_reserves_tscf": 2.24,
+        "peak_gas_mmscfd": 383,
+        "peak_liquids_bcpd": 1209,
+        "announced_first_delivery": "2027-Q2",
+        "pdf_page": 61,
+        "note": "Gas and condensate",
+        "status": "source 2025 project announced, not independently verified current 2026 milestone"
+      },
+      {
+        "project": "Tangguh UCC",
+        "operator": "bp",
+        "investment_usd_billion": 6.38,
+        "gas_reserves_tscf": 3,
+        "peak_gas_mmscfd": 476,
+        "peak_liquids_bcpd": null,
+        "announced_first_delivery": "2028-Q3",
+        "pdf_page": 61,
+        "note": "Project includes Ubadari, compression and CCS; 2028-Q3 UBA-A gas is a milestone, others extend to 2030",
+        "status": "source 2025 project announced, not independently verified current 2026 milestone"
+      },
+      {
+        "project": "Indonesia Deepwater Development · Gendalo & Gandang",
+        "operator": "Eni",
+        "investment_usd_billion": 3.7,
+        "gas_reserves_tscf": 1.64,
+        "peak_gas_mmscfd": 510,
+        "peak_liquids_bcpd": 6058,
+        "announced_first_delivery": "2028",
+        "pdf_page": 61,
+        "note": "Reserve includes 19 MMBO oil in addition to TSCF",
+        "status": "source 2025 project announced, not independently verified current 2026 milestone"
+      },
+      {
+        "project": "North Hub · Gehem & Geng North",
+        "operator": "Eni",
+        "investment_usd_billion": 11.8,
+        "gas_reserves_tscf": 3.82,
+        "peak_gas_mmscfd": 1000,
+        "peak_liquids_bcpd": 67089,
+        "announced_first_delivery": "2028",
+        "pdf_page": 61,
+        "note": "Reserve includes 168 MMBO oil in addition to TSCF",
+        "status": "source 2025 project announced, not independently verified current 2026 milestone"
+      },
+      {
+        "project": "Abadi Masela",
+        "operator": "INPEX",
+        "investment_usd_billion": 20.9,
+        "gas_reserves_tscf": 18.54,
+        "peak_gas_mmscfd": 1384,
+        "peak_liquids_bcpd": 35491,
+        "announced_first_delivery": "2030",
+        "pdf_page": 61,
+        "note": "Source 2025 forecast, not commissioned in 2026",
+        "status": "source 2025 project announced, not independently verified current 2026 milestone"
+      }
+    ],
+    "caveat": "Project investment totals add to 46.15 USD billion and stated peak gas totals add to 3,753 MMSCFD. Peak oil/condensate volumes in source are BCPD for named projects; do not relabel as realized oil output. Investment values are estimates, and schedules may change."
+  },
+  "timeline_2025": {
+    "pdf_page": 62,
+    "milestones": [
+      {
+        "date": "2025-07-30",
+        "project": "North Hub",
+        "milestone": "AFE approval: ORF, GEP and FPSO",
+        "pdf_page": 62,
+        "meaning": "2025 report event, not current project status"
+      },
+      {
+        "date": "2025-07-31",
+        "project": "Abadi Masela",
+        "milestone": "Contract awarded for SURF, GEP, FPSO and OLNG",
+        "pdf_page": 62,
+        "meaning": "2025 report event, not current project status"
+      },
+      {
+        "date": "2025-11-22",
+        "project": "IDD",
+        "milestone": "Final Investment Decision (FID)",
+        "pdf_page": 62,
+        "meaning": "2025 report event, not current project status"
+      },
+      {
+        "date": "2025-11-24",
+        "project": "North Hub",
+        "milestone": "AFE approval: SURF",
+        "pdf_page": 62,
+        "meaning": "2025 report event, not current project status"
+      },
+      {
+        "date": "2025-11-28",
+        "project": "North Hub",
+        "milestone": "Assessment completed for Bontang LNG Train F reactivation",
+        "pdf_page": 62,
+        "meaning": "2025 report event, not current project status"
+      },
+      {
+        "date": "2025-12-19",
+        "project": "IDD",
+        "milestone": "JMSSLA approved",
+        "pdf_page": 62,
+        "meaning": "2025 report event, not current project status"
+      }
+    ]
+  },
+  "exploration": {
+    "seismic": {
+      "pdf_page": 41,
+      "two_dimensional_km": {
+        "plan": 1745.11,
+        "actual": 419.84
+      },
+      "three_dimensional_km2": {
+        "plan": 3610.74,
+        "actual": 2574.1
+      },
+      "disclaimer": "Source exact planned/realized 2D km and 3D square kilometres cannot be added together."
+    },
+    "drilling": {
+      "pdf_page": 41,
+      "planned_wells": 46,
+      "spudded_wells": 35,
+      "completed_wells": 24,
+      "successful_completed_wells": 14,
+      "geological_success_rate_percent": 58,
+      "p50_preliminary_mmboe": 243
+    },
+    "firm_commitment_matrix": {
+      "pdf_page": 46,
+      "metric": "contract areas by 1–5 star budget performance and contract elapsed period",
+      "rows": [
+        {
+          "stars": 5,
+          "not_yet_active": 1,
+          "under_3_years": 0,
+          "over_3_years": 11,
+          "pdf_page": 46
+        },
+        {
+          "stars": 4,
+          "not_yet_active": 1,
+          "under_3_years": 0,
+          "over_3_years": 8,
+          "pdf_page": 46
+        },
+        {
+          "stars": 3,
+          "not_yet_active": 4,
+          "under_3_years": 2,
+          "over_3_years": 6,
+          "pdf_page": 46
+        },
+        {
+          "stars": 2,
+          "not_yet_active": 1,
+          "under_3_years": 2,
+          "over_3_years": 2,
+          "pdf_page": 46
+        },
+        {
+          "stars": 1,
+          "not_yet_active": 2,
+          "under_3_years": 0,
+          "over_3_years": 8,
+          "pdf_page": 46
+        }
+      ],
+      "reported_effective_extended_contract_areas": 43,
+      "table_row_count": 48,
+      "caveat": "The table's 48 cell counts are NOT reconcilable to narrative's 43 effective exploitation CAs (cohort differences and footnote). Do not force them into a 43-area denominator; starred footnotes include CAs with periods remaining and/or assessment newly started."
+    }
+  },
+  "transition_context": {
+    "pdf_page": 32,
+    "source": "Indonesia LTS-LCCR 2021 as cited in SKK Migas",
+    "estimated_national_ghg_peak_2030_million_tonnes_co2e": 1244,
+    "projected_2050_million_tonnes_co2e": 540,
+    "nze_aspiration_year": 2060,
+    "caveat": "LTS-LCCR long-term national scenario, NOT measured upstream SKK Migas operational emissions; avoid equating projected emissions and actual 2025 sector emissions."
+  },
+  "strategic_plan": {
+    "pdf_pages": [
+      123,
+      124,
+      126,
+      127
+    ],
+    "target_2035_boepd_million": 2.6,
+    "conditional_target_2035_boepd_million": 3,
+    "targets": [
+      "Production by 2035",
+      "Net zero emissions commitment",
+      "Attract investment"
+    ],
+    "charters": [
+      {
+        "number": 1,
+        "name": "Best-in-class Subsurface Data",
+        "type": "pillar",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 2,
+        "name": "Unlocking Open Area Potential",
+        "type": "pillar",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 3,
+        "name": "Exploration-led Growth",
+        "type": "pillar",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 4,
+        "name": "Lifecycle Resources to Production (R-to-P) Management",
+        "type": "pillar",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 5,
+        "name": "Competitive Fiscals and Business Models",
+        "type": "pillar",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 6,
+        "name": "Integrated Gas",
+        "type": "pillar",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 7,
+        "name": "Accelerated EOR Development",
+        "type": "pillar",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 8,
+        "name": "Emissions Reduction Strategy",
+        "type": "pillar",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 9,
+        "name": "Strategic Portfolio Alignment & Investor Engagement",
+        "type": "enabler",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 10,
+        "name": "Coordinated Supply Chain & Capacity Development",
+        "type": "enabler",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 11,
+        "name": "End-to-end Digital Excellence",
+        "type": "enabler",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      },
+      {
+        "number": 12,
+        "name": "Streamlined Workflows & People Development",
+        "type": "enabler",
+        "pdf_page": 124,
+        "outcome_status": "qualitative source achievement notes in pp126–127, not a comparable completion percentage"
+      }
+    ],
+    "source_milestones": [
+      {
+        "charter": 3,
+        "metric": "Contingent resources",
+        "outlook_bb_oe": 1.1,
+        "target_bb_oe": 0.605,
+        "pdf_page": 126,
+        "note": "December Outlook 2025 figure, not ultimate proven reserves"
+      },
+      {
+        "charter": 4,
+        "metric": "Reserve replacement ratio",
+        "outlook_percent": 128.26,
+        "target_percent": 110,
+        "pdf_page": 126,
+        "note": "December outlook charter measure differs from 114% annual baseline from exploration table"
+      },
+      {
+        "charter": 7,
+        "metric": "EOR Balam South extended stimulation",
+        "patterns": 26,
+        "pdf_page": 126,
+        "note": "Cumulative charter milestone; not production volume"
+      },
+      {
+        "charter": 8,
+        "metric": "Emission reduction",
+        "kton_co2": 420,
+        "pdf_page": 126,
+        "note": "Charter reported reduction, not Indonesia national GHG inventory"
+      }
+    ]
+  },
+  "digital_applications": {
+    "pdf_page": 146,
+    "items": [
+      {
+        "number": 1,
+        "name": "e-SDC",
+        "purpose": "Oil/gas reserves and resources reporting, validation, evaluation and visualization",
+        "source_status": "updated 2025",
+        "pdf_page": 146
+      },
+      {
+        "number": 2,
+        "name": "Integrated SIT (Ministry of Finance–SKK Migas)",
+        "purpose": "Cross-institution financial and fiscal data exchange with BaTii, DJA, DJKN, DJP, DJBC and LNSW",
+        "source_status": "operational exchange described 2025",
+        "pdf_page": 146
+      },
+      {
+        "number": 3,
+        "name": "KPM",
+        "purpose": "Oil and gas commercialization and revenue collection information system",
+        "source_status": "system described 2025",
+        "pdf_page": 146
+      },
+      {
+        "number": 4,
+        "name": "e-POD",
+        "purpose": "Digital submission of Plans of Development for approval",
+        "source_status": "developed 2025; implementation planned 2026",
+        "pdf_page": 146
+      },
+      {
+        "number": 5,
+        "name": "WP&B Online Enhancement",
+        "purpose": "Digital Budget Schedules 1–17 and 5-year validated historical WP&B records",
+        "source_status": "enhanced 2025",
+        "pdf_page": 146
+      },
+      {
+        "number": 6,
+        "name": "PMIS",
+        "purpose": "Project management information system monitoring major PSC projects",
+        "source_status": "enhanced 2025",
+        "pdf_page": 146
+      }
+    ]
+  },
+  "spektrum_iog": {
+    "pdf_pages": [
+      148,
+      149,
+      150
+    ],
+    "observation": "March 2026 (in SKK Migas 2025 report)",
+    "target_contract_areas": 50,
+    "target_by": "2026-Q4",
+    "status": [
+      {
+        "name": "Certified",
+        "count": 7,
+        "detail": "Five active SIGI domains, ATS ≥95; original figure"
+      },
+      {
+        "name": "Pilot",
+        "count": 9,
+        "detail": "Pilot GWS online and ≥5 ready domains"
+      },
+      {
+        "name": "Active onboarding",
+        "count": 16,
+        "detail": "SPARK connector and PKI installation in progress"
+      },
+      {
+        "name": "Initial registration",
+        "count": 18,
+        "detail": "Narrative on PDF p150 says 18; figure p148 labels 7; disagreement flagged"
+      }
+    ],
+    "source_figure_discrepancy": "Figure 6.6 p148 labels Initial Registration 7 while explanatory report text p150 says 18; using narrative 18 gives 7+9+16+18=50. The source discrepancy must be visible; the figure's 7 must not be silently overwritten.",
+    "data_quality": {
+      "ppdm_39_mapping_percent_tier2_tier3": 35,
+      "psc_with_gis_specialist_constraints": 28,
+      "psc_with_legacy_shapefile_excel_data": 16,
+      "non_pertamina_psc_without_mpls": 43,
+      "spark_ats_cases": 48,
+      "sigi_domain_count": 5
+    },
+    "architecture": {
+      "pdf_page": 149,
+      "domains": [
+        "SIGI-210 Contract Areas",
+        "SIGI-220 Seismic",
+        "SIGI-230 Wells",
+        "SIGI-240 Fields",
+        "SIGI-250 Facilities"
+      ],
+      "tiers": [
+        "Tier 1 OSDU full",
+        "Tier 2 modular hybrid",
+        "Tier 3 OSDU Lite"
+      ],
+      "notes": "Federated data stay in PSC infrastructure; source depicts technical standards, not sourceable geocoordinates."
+    },
+    "roadmap": [
+      {
+        "label": "Foundation governance",
+        "when": "2026-03",
+        "version": "v5.1.0",
+        "detail": "27 definitions, SRGI2013, SPARK reference, phased onboarding"
+      },
+      {
+        "label": "Technical integration",
+        "when": "2026-Q3",
+        "version": "v5.2.0",
+        "detail": "Five SIGI specifications, SPARK protocol and PPDM mapping"
+      },
+      {
+        "label": "Full national standard",
+        "when": "2027-Q1",
+        "version": "v5.0.0 final (as printed)",
+        "detail": "KISI 10 criteria, SPARK-615 API, full ATS and certification"
+      }
+    ]
+  },
+  "cybersecurity": {
+    "pdf_pages": [
+      154,
+      156,
+      157
+    ],
+    "risks": [
+      {
+        "number": 1,
+        "risk": "Terrorism, attacks and sabotage",
+        "pdf_page": 157,
+        "source_kind": "categorical examples, not statistically ranked by likelihood or severity"
+      },
+      {
+        "number": 2,
+        "risk": "Workplace accidents",
+        "pdf_page": 157,
+        "source_kind": "categorical examples, not statistically ranked by likelihood or severity"
+      },
+      {
+        "number": 3,
+        "risk": "Malware",
+        "pdf_page": 157,
+        "source_kind": "categorical examples, not statistically ranked by likelihood or severity"
+      },
+      {
+        "number": 4,
+        "risk": "Distributed denial-of-service (DDoS)",
+        "pdf_page": 157,
+        "source_kind": "categorical examples, not statistically ranked by likelihood or severity"
+      },
+      {
+        "number": 5,
+        "risk": "Social engineering",
+        "pdf_page": 157,
+        "source_kind": "categorical examples, not statistically ranked by likelihood or severity"
+      },
+      {
+        "number": 6,
+        "risk": "Equipment or system failure",
+        "pdf_page": 157,
+        "source_kind": "categorical examples, not statistically ranked by likelihood or severity"
+      },
+      {
+        "number": 7,
+        "risk": "Loss of devices and data",
+        "pdf_page": 157,
+        "source_kind": "categorical examples, not statistically ranked by likelihood or severity"
+      },
+      {
+        "number": 8,
+        "risk": "Data and information interception",
+        "pdf_page": 157,
+        "source_kind": "categorical examples, not statistically ranked by likelihood or severity"
+      },
+      {
+        "number": 9,
+        "risk": "Use of unauthorized hardware or software (shadow IT)",
+        "pdf_page": 157,
+        "source_kind": "categorical examples, not statistically ranked by likelihood or severity"
+      },
+      {
+        "number": 10,
+        "risk": "Loss of service availability",
+        "pdf_page": 157,
+        "source_kind": "categorical examples, not statistically ranked by likelihood or severity"
+      }
+    ],
+    "certification_standards": [
+      "ISO 20000-1:2018",
+      "ISO 27001:2022 (prose) / ISO 27001:2013 (figure heading)"
+    ],
+    "standard_discrepancy": "Figure 6.9 heading lists ISO 27001:2013, source body refers to ISO 27001:2022. Do not imply audited certification to either version solely from illustration.",
+    "csirt_psc_target": 10,
+    "notes": "Cyber risk list is illustrative and unranked; 01–10 are sequence numbers, not ranks or measured probabilities."
+  },
+  "ecommerce": {
+    "pdf_page": 182,
+    "launch_month": "2024-08",
+    "reporting_year": 2025,
+    "registered_psc_contractors": 54,
+    "registered_vendors": 1470,
+    "total_transactions_idr": 607912074759,
+    "caveat": "Registered users and gross transaction value as reported. Does not measure vendor profit, realized cost recovery, or total upstream national procurement."
+  }
+}
