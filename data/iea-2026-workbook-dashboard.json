@@ -1,0 +1,986 @@
+{
+  "source": "https://www.iea.org/data-and-statistics/data-product/critical-minerals-dataset",
+  "explorer": "https://www.iea.org/data-and-statistics/data-tools/critical-minerals-data-explorer",
+  "report": "https://www.iea.org/reports/global-critical-minerals-outlook-2026",
+  "edition": "2026-07-27",
+  "license": "CC BY 4.0",
+  "attribution": "IEA (2026), Critical Minerals Dataset, IEA, Paris. Extracted from user-provided workbook; selected dashboard indicators and original-source model scenarios, not an IEA-endorsed SLI product.",
+  "caveat": "2025 is the IEA model baseline/vintage, not live October 2026 production. CPS=Current Policies Scenario, STEPS=Stated Policies Scenario, HDS=High Demand Scenario. Forecasts are not guaranteed or audited. All figures kt (thousand metric tonnes) unless explicitly marked share. Mining and refining volumes refer to different processing boundaries; never add them. Country shares computed from supplied model, not site-level operating output.",
+  "demand_columns": [
+    "2025",
+    "STEPS 2030",
+    "STEPS 2040",
+    "HDS 2040"
+  ],
+  "supply_columns": [
+    "2025",
+    "2030 base",
+    "2040 base"
+  ],
+  "minerals": {
+    "Boron": [
+      0.212,
+      0.355,
+      0.279,
+      0.468
+    ],
+    "Cadmium": [
+      1.03,
+      0.907,
+      0.926,
+      1.02
+    ],
+    "Chromium": [
+      190,
+      373,
+      363,
+      466
+    ],
+    "Copper": [
+      8003,
+      10765,
+      13073,
+      15668
+    ],
+    "Cobalt": [
+      90.4,
+      134,
+      139,
+      190
+    ],
+    "Gallium": [
+      0.0263,
+      0.212,
+      5.82,
+      7.22
+    ],
+    "Germanium": [
+      0.0234,
+      0.0181,
+      0.0149,
+      0.0161
+    ],
+    "Battery-grade graphite": [
+      1462,
+      3182,
+      4186,
+      5647
+    ],
+    "Hafnium": [
+      0.00248,
+      0.012,
+      0.0126,
+      0.0118
+    ],
+    "Indium": [
+      0.103,
+      0.142,
+      0.212,
+      0.226
+    ],
+    "Iridium": [
+      0.000476,
+      0.000492,
+      0.000268,
+      0.00213
+    ],
+    "Lead": [
+      13.4,
+      20.6,
+      17.6,
+      17.4
+    ],
+    "Lithium": [
+      203,
+      407,
+      836,
+      1131
+    ],
+    "Magnesium": [
+      3.61,
+      5.69,
+      11.7,
+      29.9
+    ],
+    "Manganese": [
+      197,
+      559,
+      1834,
+      2509
+    ],
+    "Molybdenum": [
+      30.1,
+      50.9,
+      45.5,
+      57.6
+    ],
+    "Nickel": [
+      625,
+      1409,
+      2403,
+      3253
+    ],
+    "Niobium": [
+      0.154,
+      0.397,
+      0.736,
+      1.69
+    ],
+    "PGMs (excluding iridium)": [
+      0.00167,
+      0.00528,
+      0.0144,
+      0.0614
+    ],
+    "Selenium": [
+      0.21,
+      0.192,
+      0.161,
+      0.179
+    ],
+    "Silicon": [
+      1705,
+      1616,
+      1781,
+      2174
+    ],
+    "Silver": [
+      10.1,
+      9.83,
+      6.56,
+      7.24
+    ],
+    "Tantalum": [
+      0.0598,
+      0.151,
+      0.162,
+      0.207
+    ],
+    "Tellurium": [
+      1.06,
+      0.886,
+      0.821,
+      0.958
+    ],
+    "Tin": [
+      3.47,
+      4.06,
+      4.13,
+      4.93
+    ],
+    "Titanium": [
+      4.26,
+      10.3,
+      7.32,
+      11.6
+    ],
+    "Tungsten": [
+      0.0258,
+      0.125,
+      0.131,
+      0.123
+    ],
+    "Vanadium": [
+      0.00354,
+      27,
+      384,
+      511
+    ],
+    "Zinc": [
+      827,
+      1096,
+      815,
+      1237
+    ],
+    "Zirconium": [
+      0.475,
+      1.41,
+      1.36,
+      5.17
+    ],
+    "Arsenic": [
+      0,
+      0.457,
+      14.5,
+      18
+    ],
+    "Neodymium": [
+      16.2,
+      28.3,
+      34.6,
+      50
+    ],
+    "Dysprosium": [
+      1.71,
+      2.89,
+      3.45,
+      5.04
+    ],
+    "Praseodymium": [
+      2.53,
+      4.52,
+      5.44,
+      8.03
+    ],
+    "Terbium": [
+      0.463,
+      0.804,
+      0.899,
+      1.35
+    ],
+    "Yttrium": [
+      0.00308,
+      0.0132,
+      0.0134,
+      0.0145
+    ],
+    "Lanthanum": [
+      0.00394,
+      0.00514,
+      0.00326,
+      0.0258
+    ]
+  },
+  "supply": {
+    "Nickel": {
+      "mining": {
+        "world": [
+          4207,
+          5098,
+          4858
+        ],
+        "leaders": [
+          [
+            "Indonesia",
+            2637,
+            3567,
+            3568
+          ],
+          [
+            "Philippines",
+            482,
+            308,
+            308
+          ],
+          [
+            "Russia",
+            192,
+            218,
+            218
+          ],
+          [
+            "China",
+            147,
+            161,
+            152
+          ],
+          [
+            "New Caledonia",
+            138,
+            207,
+            207
+          ]
+        ]
+      },
+      "refining": {
+        "world": [
+          3729,
+          4231,
+          4159
+        ],
+        "leaders": [
+          [
+            "Indonesia",
+            1681,
+            2080,
+            2081
+          ],
+          [
+            "China",
+            1160,
+            1194,
+            1194
+          ],
+          [
+            "Canada",
+            125,
+            134,
+            90.1
+          ],
+          [
+            "Russia",
+            123,
+            142,
+            142
+          ],
+          [
+            "Japan",
+            108,
+            107,
+            107
+          ]
+        ]
+      }
+    },
+    "Cobalt": {
+      "mining": {
+        "world": [
+          320,
+          252,
+          200
+        ],
+        "leaders": [
+          [
+            "Democratic Republic of Congo",
+            210,
+            121,
+            88.1
+          ],
+          [
+            "Indonesia",
+            48.3,
+            69.1,
+            66.8
+          ],
+          [
+            "Russia",
+            7.69,
+            8.26,
+            8.29
+          ],
+          [
+            "China",
+            7.38,
+            7.36,
+            7.36
+          ],
+          [
+            "Australia",
+            4.15,
+            4.98,
+            3.69
+          ]
+        ]
+      },
+      "refining": {
+        "world": [
+          238,
+          295,
+          335
+        ],
+        "leaders": [
+          [
+            "China",
+            180,
+            217,
+            260
+          ],
+          [
+            "Finland",
+            20.3,
+            19.9,
+            19.7
+          ],
+          [
+            "Indonesia",
+            6.17,
+            17.4,
+            17.4
+          ],
+          [
+            "Japan",
+            5.83,
+            6.59,
+            6.59
+          ],
+          [
+            "Canada",
+            6.4,
+            6.4,
+            2.33
+          ]
+        ]
+      }
+    },
+    "Copper": {
+      "mining": {
+        "world": [
+          23227,
+          24571,
+          17183
+        ],
+        "leaders": [
+          [
+            "Chile",
+            5485,
+            5369,
+            4165
+          ],
+          [
+            "Democratic Republic of Congo",
+            3338,
+            4212,
+            2696
+          ],
+          [
+            "Peru",
+            2726,
+            2712,
+            1859
+          ],
+          [
+            "China",
+            1838,
+            2040,
+            1852
+          ],
+          [
+            "Russia",
+            1145,
+            1244,
+            1343
+          ]
+        ]
+      },
+      "refining": {
+        "world": [
+          27955,
+          36383,
+          33710
+        ],
+        "leaders": [
+          [
+            "China",
+            13069,
+            17121,
+            17221
+          ],
+          [
+            "Democratic Republic of Congo",
+            2659,
+            3278,
+            1979
+          ],
+          [
+            "Chile",
+            1741,
+            1846,
+            1359
+          ],
+          [
+            "Japan",
+            1431,
+            1624,
+            1624
+          ],
+          [
+            "Russia",
+            990,
+            1110,
+            1105
+          ]
+        ]
+      }
+    },
+    "Lithium": {
+      "mining": {
+        "world": [
+          302,
+          540,
+          482
+        ],
+        "leaders": [
+          [
+            "Australia",
+            104,
+            143,
+            120
+          ],
+          [
+            "China",
+            69.9,
+            162,
+            150
+          ],
+          [
+            "Chile",
+            52.1,
+            56.6,
+            58.6
+          ],
+          [
+            "Zimbabwe",
+            27.7,
+            26.6,
+            26.6
+          ],
+          [
+            "Argentina",
+            18.7,
+            51.4,
+            54.4
+          ]
+        ]
+      },
+      "refining": {
+        "world": [
+          319,
+          544,
+          568
+        ],
+        "leaders": [
+          [
+            "China",
+            235,
+            369,
+            374
+          ],
+          [
+            "Chile",
+            52.1,
+            56.6,
+            58.6
+          ],
+          [
+            "Argentina",
+            15.7,
+            51.4,
+            54.4
+          ],
+          [
+            "Australia",
+            6.35,
+            16.3,
+            26.5
+          ],
+          [
+            "Germany",
+            2.98,
+            6.44,
+            6.62
+          ]
+        ]
+      }
+    },
+    "Graphite": {
+      "mining": {
+        "world": [
+          1781,
+          2214,
+          2460
+        ],
+        "leaders": [
+          [
+            "China",
+            1432,
+            1239,
+            1337
+          ],
+          [
+            "Madagascar",
+            69.7,
+            170,
+            165
+          ],
+          [
+            "Mozambique",
+            66.6,
+            259,
+            368
+          ],
+          [
+            "Tanzania",
+            61.8,
+            263,
+            283
+          ],
+          [
+            "Brazil",
+            64.1,
+            98.5,
+            83.9
+          ]
+        ]
+      },
+      "refining": {
+        "world": [
+          2266,
+          3356,
+          4467
+        ],
+        "leaders": [
+          [
+            "China",
+            2139,
+            3026,
+            4039
+          ],
+          [
+            "Japan",
+            68.5,
+            149,
+            165
+          ],
+          [
+            "Indonesia",
+            32,
+            92.7,
+            103
+          ],
+          [
+            "United States",
+            13.1,
+            14.7,
+            17.1
+          ],
+          [
+            "Korea",
+            5.2,
+            10.4,
+            11.1
+          ]
+        ]
+      }
+    },
+    "Magnet rare earth elements": {
+      "mining": {
+        "world": [
+          80.5,
+          96.9,
+          104
+        ],
+        "leaders": [
+          [
+            "China",
+            47.2,
+            51.2,
+            56.8
+          ],
+          [
+            "Myanmar",
+            13.1,
+            10.8,
+            11
+          ],
+          [
+            "United States",
+            7.4,
+            9.47,
+            9.47
+          ],
+          [
+            "Australia",
+            4.09,
+            11.4,
+            12.3
+          ],
+          [
+            "Lao PDR",
+            3.75,
+            7.66,
+            7.66
+          ]
+        ]
+      },
+      "refining": {
+        "world": [
+          89.3,
+          111,
+          118
+        ],
+        "leaders": [
+          [
+            "China",
+            74.9,
+            81.1,
+            86.4
+          ],
+          [
+            "United States",
+            4.7,
+            9.39,
+            11.1
+          ],
+          [
+            "Malaysia",
+            4.59,
+            10.1,
+            10.1
+          ],
+          [
+            "France",
+            0.991,
+            1.16,
+            1.16
+          ],
+          [
+            "Viet Nam",
+            0.98,
+            0.98,
+            0.98
+          ]
+        ]
+      }
+    }
+  },
+  "technologies": {
+    "Solar PV": [
+      [
+        "Copper",
+        1970,
+        2222,
+        2219,
+        2626
+      ],
+      [
+        "Nickel",
+        0.722,
+        0.823,
+        0.828,
+        0.995
+      ],
+      [
+        "Silicon",
+        1691,
+        1547,
+        1418,
+        1684
+      ],
+      [
+        "Zinc",
+        17.4,
+        19.9,
+        20.2,
+        24.3
+      ]
+    ],
+    "Wind": [
+      [
+        "Copper",
+        542,
+        791,
+        571,
+        919
+      ],
+      [
+        "Manganese",
+        113,
+        150,
+        111,
+        169
+      ],
+      [
+        "Nickel",
+        52.1,
+        67.4,
+        49.3,
+        74.2
+      ],
+      [
+        "Zinc",
+        796,
+        1055,
+        774,
+        1183
+      ],
+      [
+        "Neodymium",
+        7.73,
+        11.9,
+        8.62,
+        13.7
+      ],
+      [
+        "Dysprosium",
+        0.844,
+        1.26,
+        0.913,
+        1.48
+      ],
+      [
+        "Praseodymium",
+        1.26,
+        2.05,
+        1.54,
+        2.58
+      ],
+      [
+        "Terbium",
+        0.291,
+        0.465,
+        0.361,
+        0.597
+      ]
+    ],
+    "Electric vehicles": [
+      [
+        "Copper",
+        794,
+        1763,
+        3046,
+        4143
+      ],
+      [
+        "Cobalt",
+        84.5,
+        130,
+        139,
+        190
+      ],
+      [
+        "Battery-grade graphite",
+        1199,
+        2809,
+        3544,
+        4793
+      ],
+      [
+        "Lithium",
+        171,
+        365,
+        765,
+        1037
+      ],
+      [
+        "Manganese",
+        59.9,
+        309,
+        1416,
+        1906
+      ],
+      [
+        "Nickel",
+        439,
+        989,
+        1851,
+        2500
+      ],
+      [
+        "Silicon",
+        13.1,
+        64.4,
+        351,
+        473
+      ],
+      [
+        "Neodymium",
+        8.44,
+        16.5,
+        26,
+        36.3
+      ],
+      [
+        "Dysprosium",
+        0.865,
+        1.63,
+        2.54,
+        3.56
+      ],
+      [
+        "Praseodymium",
+        1.27,
+        2.47,
+        3.9,
+        5.45
+      ],
+      [
+        "Terbium",
+        0.173,
+        0.34,
+        0.538,
+        0.752
+      ]
+    ],
+    "Battery storage": [
+      [
+        "Copper",
+        137,
+        218,
+        460,
+        610
+      ],
+      [
+        "Cobalt",
+        5.92,
+        4.64,
+        0,
+        0
+      ],
+      [
+        "Battery-grade graphite",
+        263,
+        373,
+        642,
+        854
+      ],
+      [
+        "Lithium",
+        31.8,
+        42.1,
+        71.2,
+        94.4
+      ],
+      [
+        "Manganese",
+        6.88,
+        69.1,
+        262,
+        348
+      ],
+      [
+        "Nickel",
+        27.6,
+        71.4,
+        199,
+        264
+      ],
+      [
+        "Silicon",
+        0.941,
+        3.97,
+        12.2,
+        16.2
+      ],
+      [
+        "Vanadium",
+        0,
+        27,
+        384,
+        511
+      ]
+    ],
+    "Electricity networks": [
+      [
+        "Copper",
+        4544,
+        5713,
+        6631,
+        7181
+      ]
+    ],
+    "Hydrogen": [
+      [
+        "Copper",
+        0.00585,
+        0.0119,
+        0.0104,
+        0.0824
+      ],
+      [
+        "Cobalt",
+        0.00972,
+        0.0041,
+        0.00357,
+        0.0283
+      ],
+      [
+        "Nickel",
+        2.31,
+        4.71,
+        4.09,
+        32.4
+      ]
+    ]
+  },
+  "coverage_note": "Curated dashboard extract: 37 energy-transition minerals; mining/refining sources for 6 key commodities; 6 technology categories. Selected years/scenarios, NOT all cases or tabs in the complete licensed workbook. Full parsed row-level export supplied separately, and official IEA download links retained."
+}
