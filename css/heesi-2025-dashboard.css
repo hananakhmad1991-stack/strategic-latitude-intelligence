@@ -1,0 +1,47 @@
+/* ESDM 2025 Handbook · source-verified energy balance, provinces and original-index. */
+.he25-section{margin:18px 0 24px;border:1px solid #405e75;border-radius:12px;padding:17px;color:#dbe9ef;background:#0e2a3e;scroll-margin-top:18px}
+.he25-section h3{font:normal clamp(20px,2.4vw,28px)/1.24 Georgia,serif;color:#ebd5a8;margin:5px 0 9px}
+.he25-section h4{font-size:13px;color:#efd7ab;margin:14px 0 10px}
+.he25-eyebrow{letter-spacing:1px;color:#e6bb7a;font-weight:750;font-size:10px}
+.he25-note{color:#b7ccda;font-size:11px;line-height:1.65;margin:9px 0}
+.he25-section a{color:#ebcd96;font-size:11px}
+.he25-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:15px 0}
+.he25-stat{padding:12px;background:#092439;border:1px solid #365972;border-radius:8px}
+.he25-stat small{color:#afd2df;font-size:10px;line-height:1.5}
+.he25-stat strong{display:block;color:#ebca8d;font-size:clamp(19px,2.4vw,27px);font-variant-numeric:tabular-nums;margin:5px 0}
+.he25-stat span{color:#a6bacb;font-size:10px}
+.he25-controls{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+.he25-button,.he25-rank-button{background:#18394f;color:#e6eaf0;border:1px solid #597289;border-radius:7px;padding:9px 12px;cursor:pointer;font:inherit;font-size:11px}
+.he25-button[aria-pressed="true"]{background:#ddba7d;border-color:#edd5a8;color:#102c3e;font-weight:700}
+.he25-button:focus-visible,.he25-rank-button:focus-visible,.he25-select:focus-visible,.he25-search:focus-visible{outline:2px solid #edcc86;outline-offset:2px}
+.he25-sankey{padding:9px;border:1px solid #36536b;border-radius:9px;background:#061d30;overflow:auto}
+.he25-sankey svg{display:block;max-width:none;width:100%;min-width:600px;height:auto}
+.he25-select,.he25-search{background:#102d43;color:#e8edf3;border:1px solid #5b788c;border-radius:7px;padding:10px;font:inherit;font-size:12px;min-height:40px;max-width:100%}
+.he25-trend{margin:17px 0}
+.he25-trend .he25-select{width:min(600px,100%);margin-bottom:10px}
+.he25-plot{background:#08243a;border:1px solid #36536b;border-radius:9px;overflow:hidden;padding:10px}
+.he25-plot svg{width:100%;height:auto}
+.he25-map-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(220px,1fr);gap:13px;margin:15px 0}
+.he25-map{background:#071e31;border:1px solid #37546b;border-radius:10px;overflow:hidden;min-height:260px}
+.he25-map svg{width:100%;height:auto;display:block}
+.he25-map path{transition:fill .18s,stroke .12s}
+.he25-map path:hover{stroke:#fff;stroke-width:2;filter:brightness(1.22)}
+.he25-map-sidebar{background:#0b263b;padding:10px 14px;border:1px solid #37546b;border-radius:10px}
+.he25-map-sidebar h4{margin:4px 0}
+.he25-selected{font-size:18px;font-weight:700;color:#e9cc93}
+.he25-rank{padding-left:22px;margin:7px 0}
+.he25-rank li{padding:0;margin:2px 0;font-size:11px}
+.he25-rank-button{display:flex;gap:8px;align-items:center;justify-content:space-between;width:100%;padding:5px 7px;background:transparent;border:0;text-align:left}
+.he25-rank-button:hover{background:#23455a}
+.he25-rank-button strong{font-variant-numeric:tabular-nums;color:#e9c58c}
+.he25-toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+.he25-toc-item{padding:12px;background:#09253a;border-radius:9px;border:1px solid #3c596e}
+.he25-toc-item h4{color:#e9d1a7;font-size:13px;margin:0 0 8px}
+.he25-toc-item p,.he25-toc-item small{display:block;color:#bed1de;font-size:11px;line-height:1.6}
+.he25-toc-item a{display:inline-block;margin-top:8px}
+.he25-search{width:min(680px,100%)}
+.he25-result{padding:10px;border-bottom:1px solid #38536a}
+.he25-result strong{font-size:11px;color:#f1d5a2}
+.he25-result p{font-size:11px;color:#b9cddd;line-height:1.6}
+@media(max-width:800px){.he25-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.he25-map-layout{grid-template-columns:1fr}.he25-toc{grid-template-columns:1fr}}
+@media(max-width:480px){.he25-section{padding:10px}.he25-stats{gap:6px}.he25-stat{padding:8px}.he25-sankey svg{min-width:540px}}
