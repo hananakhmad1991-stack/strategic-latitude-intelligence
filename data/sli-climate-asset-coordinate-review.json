@@ -1,0 +1,289 @@
+{
+  "schema": "sli-climate-asset-coordinate-review-v1",
+  "last_reviewed": "2026-10-17",
+  "description": "Project-by-project official geometry evidence review; regional place names or RPJMN planning point layers are not verified physical facility coordinates.",
+  "candidate_geospatial_source": {
+    "publisher": "Badan Informasi Geospasial (BIG)",
+    "name": "Smelter RPJMN 2020-2024",
+    "url": "https://kspservices.big.go.id/satupeta/rest/services/PUBLIK/PERENCANAAN_RUANG/MapServer/115",
+    "layer_type": "official geospatial planning point layer",
+    "caveat": "Planning/project points can be approximate and cannot be automatically matched to physical operating facilities."
+  },
+  "items": [
+    {
+      "project_id": "sli-project-001",
+      "project_name": "Integrated EV battery ecosystem",
+      "sector": "Critical minerals",
+      "reported_region": "Karawang, West Java; East Halmahera, North Maluku (multi-site)",
+      "project_evidence_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-002",
+      "project_name": "Microsoft Indonesia cloud and AI program",
+      "sector": "AI infrastructure",
+      "reported_region": "Indonesia (multi-location program)",
+      "project_evidence_url": "https://news.microsoft.com/source/asia/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions/",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-003",
+      "project_name": "13 strategic downstream projects — Phase II",
+      "sector": "Critical minerals",
+      "reported_region": "Multiple Indonesian locations",
+      "project_evidence_url": "https://www.bkpm.go.id/index.php/id/info/siaran-pers/kementerian-investasi-dan-hilirisasi-dukung-percepatan-13-proyek-hilirisasi-strategis-tahap-ii",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-004",
+      "project_name": "IGP Pomalaa — mine and HPAL",
+      "sector": "Critical minerals",
+      "reported_region": "Kolaka, Southeast Sulawesi",
+      "project_evidence_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-005",
+      "project_name": "IGP Morowali — mine and HPAL / BNSI",
+      "sector": "Critical minerals",
+      "reported_region": "Morowali, Central Sulawesi",
+      "project_evidence_url": "https://vale.com/in/w/sambalagi-hpal-project-reaches-major-milestone-with-autoclave-arrival-strengthening-the-future-of-sustainable-downstreaming/-/categories",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-006",
+      "project_name": "PTFI Manyar copper smelter",
+      "sector": "Critical minerals",
+      "reported_region": "Gresik, East Java",
+      "project_evidence_url": "https://www.fcx.com/operations/indonesia",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-007",
+      "project_name": "Abadi LNG Masela — onshore/offshore LNG and CCS",
+      "sector": "Energy",
+      "reported_region": "Tanimbar Islands, Maluku",
+      "project_evidence_url": "https://esdm.go.id/id/media-center/arsip-berita/pembangunan-lng-abadi-masela-mulai-jalan-pemerintah-dorong-pertumbuhan-ekonomi-lokal-",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-008",
+      "project_name": "Tangguh Ubadari CCUS Compression (UCC)",
+      "sector": "Energy",
+      "reported_region": "Bintuni Bay, West Papua",
+      "project_evidence_url": "https://www.spglobal.com/energy/en/news-research/latest-news/lng/060326-bp-expects-tangguh-lng-domestic-deliveries-to-rise-to-89-cargoes-in-2026",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-009",
+      "project_name": "PLTP Lumut Balai Unit 2",
+      "sector": "Energy",
+      "reported_region": "Muara Enim, South Sumatra",
+      "project_evidence_url": "https://www.pge.pertamina.com/id/siaran-pers/pltp-lumut-balai-unit-2-beroperasi-penuh-pge-tambah-kapasitas-terpasang-55-mw-menuju-target-1-gw",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-010",
+      "project_name": "PLTP Gunung Tiga (Ulubelu Extension I)",
+      "sector": "Energy",
+      "reported_region": "Lampung",
+      "project_evidence_url": "https://www.pge.pertamina.com/Media/Uploads/investor/Earnings_Call_Maret_2026%20%28FY25%20Results%29.pdf",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-011",
+      "project_name": "Equinix JK1 — Jakarta IBX data center",
+      "sector": "AI infrastructure",
+      "reported_region": "Jakarta CBD, DKI Jakarta",
+      "project_evidence_url": "https://newsroom.equinix.com/2025-05-15-Equinix-Unveils-Its-First-AI-Ready-Data-Center-with-Dense-Ecosystem-in-Jakarta",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-012",
+      "project_name": "Chandra Asri CA-EDC — Cilegon",
+      "sector": "Other",
+      "reported_region": "Cilegon, Banten",
+      "project_evidence_url": "https://www.danantaraindonesia.co.id/media-center/press-releases/reducing-import-dependency-danantara-and-ina-sign-investment-agreement-in-chandra-asri-groups-ca-edc-project",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-013",
+      "project_name": "Weda Bay nickel ecosystem — eleven facilities (portfolio)",
+      "sector": "Critical minerals",
+      "reported_region": "Indonesia Weda Bay Industrial Park, Central Halmahera, North Maluku",
+      "project_evidence_url": "https://www.setneg.go.id/baca/index/presiden_prabowo_luncurkan_11_proyek_hilirisasi_dengan_total_investasi_senilai_rp180_triliun_di_maluku_utara",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-014",
+      "project_name": "PSEL Bogor Raya 1 — waste-to-energy",
+      "sector": "Energy",
+      "reported_region": "Galuga, Cibungbulang, Bogor Regency, West Java",
+      "project_evidence_url": "https://www.danantaraindonesia.co.id/zh/media-center/press-releases/psel-bogor-raya-1-construction",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-015",
+      "project_name": "Microsoft Indonesia Central cloud region — operational milestone",
+      "sector": "AI infrastructure",
+      "reported_region": "Indonesia, three availability zones; site addresses not disclosed in this release",
+      "project_evidence_url": "https://news.microsoft.com/id-id/2025/04/15/general-availability-of-indonesia-central-cloud-region/",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-016",
+      "project_name": "AWS Asia Pacific (Jakarta) cloud region",
+      "sector": "AI infrastructure",
+      "reported_region": "Jakarta region, Indonesia; physical AZ locations undisclosed",
+      "project_evidence_url": "https://press.aboutamazon.com/2021/12/aws-launches-region-in-indonesia",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-017",
+      "project_name": "IKN Solar Power Plant — 50 MW",
+      "sector": "Solar PV",
+      "reported_region": "East Kalimantan · IKN Sepaku",
+      "project_evidence_url": "https://www.ikn.go.id/storage/press-release/2025/20251128-siaran-pers-tandatangani-kerja-sama-dengan-pt-nsse%2C-otorita-ikn-siap-percepat-optimalisasi-penggunaan-energi-bersih.pdf",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-018",
+      "project_name": "PLTA Poso Peaker — 515 MW",
+      "sector": "Hydropower & Storage",
+      "reported_region": "Central Sulawesi · Poso",
+      "project_evidence_url": "https://www.esdm.go.id/en/media-center/news-archives/presiden-joko-widodo-resmikan-plta-di-kabupaten-poso",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-019",
+      "project_name": "PLTB Tolo 1 — 72 MW",
+      "sector": "Wind",
+      "reported_region": "South Sulawesi · Jeneponto",
+      "project_evidence_url": "https://www.esdm.go.id/en/media-center/arsip-berita/pltb-tolo-sukses-beroperasi-komersial-tahap-ii-siap-dikembangkan",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-020",
+      "project_name": "PLTA Batang Toru — 510 MW",
+      "sector": "Hydropower & Storage",
+      "reported_region": "North Sumatra · South Tapanuli",
+      "project_evidence_url": "https://nshe.co.id/en/",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-021",
+      "project_name": "Upper Cisokan Pumped Storage — 1,040 MW",
+      "sector": "Hydropower & Storage",
+      "reported_region": "West Java · West Bandung and Cianjur",
+      "project_evidence_url": "https://documents1.worldbank.org/curated/en/099120125205526878/pdf/P172256-a3decd36-a5b6-4182-af6c-aa1c6c7f3222.pdf",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-022",
+      "project_name": "Thorcon 500 — Kelasa Island nuclear site evaluation",
+      "sector": "Nuclear (New Energy)",
+      "reported_region": "Bangka Belitung · Pulau Kelasa",
+      "project_evidence_url": "https://bapeten.go.id/berita/siaran-pers-bapeten-terbitkan-persetujuan-evaluasi-tapak-pltn-di-pulau-kelasa-kepulauan-bangka-belitung-112749?lang=en",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-023",
+      "project_name": "PLN–KHNP SMR early-stage cooperation",
+      "sector": "Nuclear (New Energy)",
+      "reported_region": "Indonesia · proposed site not disclosed",
+      "project_evidence_url": "https://web.pln.co.id/cms/media/siaran-pers/2023/12/dari-akselerasi-ebt-hingga-pensiun-dini-pltu-pln-berhasil-jaring-14-kerja-sama-global-dalam-cop28/",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-024",
+      "project_name": "Cirata Floating Solar PV — 192 MWp",
+      "sector": "Solar PV",
+      "reported_region": "West Java · Cirata Reservoir",
+      "project_evidence_url": "https://www.esdm.go.id/en/media-center/news-archives/presiden-ri-resmikan-plts-terapung-terbesar-di-asia-tenggara",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    },
+    {
+      "project_id": "sli-project-025",
+      "project_name": "PLTP Lumut Balai Unit 3 — 55 MW development",
+      "sector": "Geothermal",
+      "reported_region": "South Sumatra · Muara Enim",
+      "project_evidence_url": "https://www.pge.pertamina.com/id/siaran-pers/pge-resmi-mulai-tahap-eksekusi-proyek-pltp-lumut-balai-unit-3-berkapasitas-55-mw-perkuat-pasokan-energi-bersih-nasional",
+      "exact_facility_coordinate": null,
+      "coordinate_status": "pending_primary_site_geometry_verification",
+      "spatial_exposure_status": "N/A",
+      "review_notes": "Need a primary permit/EIA/operator geo-document or confirmed facility GIS point. Not sourced from provincial reference."
+    }
+  ]
+}
