@@ -1261,6 +1261,202 @@
         }
       ],
       "note": "Graph 3.10 gray series labelled Other PSC Contractor only, not monthly national gas LPO totals. Graph additionally annotates 58 MMSCFD bp in June and 420/423 MMSCFD PEPC in June/October as marked by legend; operator attribution conflicts with parts of the narrative and needs further confirmation. FY2025 195.49 MMSCFD is average surface-facility LPO, not a thirteenth month."
+    },
+    {
+      "id": "natuna_gsai_monthly",
+      "title": "Natuna GSAI monthly gas offtake",
+      "unit": "BBTUD",
+      "source_pdf_page": 107,
+      "records": [
+        {
+          "name": "Jan",
+          "value": 123
+        },
+        {
+          "name": "Feb",
+          "value": 115
+        },
+        {
+          "name": "Mar",
+          "value": 116
+        },
+        {
+          "name": "Apr",
+          "value": 133
+        },
+        {
+          "name": "May",
+          "value": 155
+        },
+        {
+          "name": "Jun",
+          "value": 173
+        },
+        {
+          "name": "Jul",
+          "value": 167
+        },
+        {
+          "name": "Aug",
+          "value": 156
+        },
+        {
+          "name": "Sep",
+          "value": 144
+        },
+        {
+          "name": "Oct",
+          "value": 164
+        },
+        {
+          "name": "Nov",
+          "value": 164
+        },
+        {
+          "name": "Dec",
+          "value": 172
+        }
+      ],
+      "note": "2025 labelled monthly source values from Graph 4.3. Null means unreported. Some separately rounded monthly totals differ from sum of components by 1 BBTUD."
+    },
+    {
+      "id": "natuna_dsa_monthly",
+      "title": "Natuna DSA monthly gas allocations",
+      "unit": "BBTUD",
+      "source_pdf_page": 107,
+      "records": [
+        {
+          "name": "Jan",
+          "value": null
+        },
+        {
+          "name": "Feb",
+          "value": null
+        },
+        {
+          "name": "Mar",
+          "value": null
+        },
+        {
+          "name": "Apr",
+          "value": null
+        },
+        {
+          "name": "May",
+          "value": null
+        },
+        {
+          "name": "Jun",
+          "value": null
+        },
+        {
+          "name": "Jul",
+          "value": null
+        },
+        {
+          "name": "Aug",
+          "value": 8
+        },
+        {
+          "name": "Sep",
+          "value": 27
+        },
+        {
+          "name": "Oct",
+          "value": 26
+        },
+        {
+          "name": "Nov",
+          "value": 27
+        },
+        {
+          "name": "Dec",
+          "value": 23
+        }
+      ],
+      "note": "2025 labelled monthly source values from Graph 4.3. Null means unreported. Some separately rounded monthly totals differ from sum of components by 1 BBTUD."
+    },
+    {
+      "id": "natuna_combined_monthly",
+      "title": "Natuna GSAI + DSA combined volume",
+      "unit": "BBTUD",
+      "source_pdf_page": 107,
+      "records": [
+        {
+          "name": "Jan",
+          "value": 123
+        },
+        {
+          "name": "Feb",
+          "value": 115
+        },
+        {
+          "name": "Mar",
+          "value": 116
+        },
+        {
+          "name": "Apr",
+          "value": 133
+        },
+        {
+          "name": "May",
+          "value": 155
+        },
+        {
+          "name": "Jun",
+          "value": 173
+        },
+        {
+          "name": "Jul",
+          "value": 167
+        },
+        {
+          "name": "Aug",
+          "value": 165
+        },
+        {
+          "name": "Sep",
+          "value": 170
+        },
+        {
+          "name": "Oct",
+          "value": 190
+        },
+        {
+          "name": "Nov",
+          "value": 191
+        },
+        {
+          "name": "Dec",
+          "value": 195
+        }
+      ],
+      "note": "2025 labelled monthly source values from Graph 4.3. Null means unreported. Some separately rounded monthly totals differ from sum of components by 1 BBTUD."
+    },
+    {
+      "id": "lng_bontang_tangguh_2024_2025",
+      "title": "LNG lifted at Bontang and Tangguh 2024 vs 2025",
+      "unit": "TBTU",
+      "source_pdf_page": 107,
+      "records": [
+        {
+          "name": "Bontang 2024",
+          "value": 194.2
+        },
+        {
+          "name": "Bontang 2025",
+          "value": 165.9
+        },
+        {
+          "name": "Tangguh 2024",
+          "value": 545.5
+        },
+        {
+          "name": "Tangguh 2025",
+          "value": 582.12
+        }
+      ],
+      "note": "Reported LNG plant annual lifting, not standard cargo count."
     }
   ],
   "status": "Numerically digitized and auditable original printed labels/tables only; nonnumeric maps, Gantt charts, raw maps, textual risk diagrams and scanned figures remain referenced instead of fictional numeric data."
