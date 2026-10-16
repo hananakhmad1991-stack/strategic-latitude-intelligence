@@ -34,7 +34,7 @@ jobs:
         run: python scripts/monitor_regulatory_policy.py
       - name: Validate monitoring provenance and no false legal-status changes
         run: python scripts/validate_regulatory_monitor.py
-      - name: Publish dated candidate monitor snapshot to GitHub Pages source data
+      - name: Publish dated candidate monitor snapshot to repository source data
         run: |
           git config user.name "sli-policy-monitor[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -51,8 +51,17 @@ jobs:
             git fetch origin main
             if ! git rebase origin/main; then
               git rebase --abort || true
-              echo "Concurrent changes conflict with monitor data; next run will rescan"
-              exit 1
+              echo "Concurrent monitor snapshot changed; refreshing baseline and rescanning"
+              git reset --hard origin/main
+              python scripts/monitor_regulatory_policy.py
+              python scripts/validate_regulatory_monitor.py
+              git add data/regulatory-monitor.json
+              if git diff --cached --quiet; then
+                echo "Source snapshot already current"
+                exit 0
+              fi
+              git commit -m "data: refreshed regulatory source candidate snapshot [skip ci]"
+              continue
             fi
             if git push origin HEAD:main; then
               echo "Published latest monitoring snapshot on attempt $attempt"
