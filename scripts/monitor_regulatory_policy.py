@@ -20,12 +20,14 @@ SESSION=requests.Session()
 SESSION.headers.update({"User-Agent":USER_AGENT,"Accept":"text/html,application/xhtml+xml"})
 REGULATION_PATTERN=re.compile(r"(?:peraturan|undang.undang|keputusan|instruksi|perda|perpres|permen|ruu|rancangan)",re.I)
 MAINTENANCE_PATTERN=re.compile(r"(sistem sedang dalam perbaikan|under maintenance|website sedang dalam perbaikan|layanan sementara tidak tersedia)",re.I)
+POLICY_ACTION=re.compile(r"\\b(?:rancangan|ruu|regulasi|aturan|kebijakan|perpres|permen|inpres|perda|pergub|perbup|perwali|amendment|amended|dispute|arbitration|arbitrase|putus(?:an)?|putusan|banding|appeal|countervailing|import ban|export ban|export control|trade restriction|moratorium|consultation|consultations|tarif|subsidi|pajak|bea masuk|dmo|persyaratan ekspor|insentif|perizinan|izin usaha|harmonisasi|wto|icsid|uncitral|isds|ds592|legislation|treaty|mediation|negotiation|enforcement|adopts?|dispute settlement|import duty|policy)\\b",re.I)
+LEGAL_ID=re.compile(r"(?i)(?:nomor|no[.]?|tahun)\\s*[:/]?\\s*\\d+|\\b(?:uu|pp|perpres|inpres|permen|pergub|perbup|perwali)\\s*\\d+")
 TERMS={
  "electricity":["listrik","pln","ketenagalistrikan","gardu","pembangkit","transmisi","ruptl","rued","plts","pltu","plta","pltn"],
  "energy":["energi","ebt","biodiesel","biofuel","transisi","efisiensi","konservasi"],
  "oilgas":["migas","minyak","bbm","gas bumi","kilang","hulu","lpg","lng","gasifikasi"],
  "minerba":["minerba","mineral","nikel","batubara","smelter","tambang","hilirisasi"],
- "digital":["data center","pusat data","komdigi","kecerdasan buatan","artificial intelligence","cloud","ai ","pdp","siber"],
+ "digital":["data center","pusat data","komdigi","kecerdasan buatan","artificial intelligence","cloud","pdp","siber"],
  "environment":["lingkungan","amdal","karhutla","emisi","air limbah","polusi"],
  "carbon":["karbon","ccs","ccus","iklim","emisi","perdagangan karbon"],
  "cross":["perizinan","investasi","oss","cipta kerja","omnibus","peraturan","perda","permen","perpres","undang-undang"],
@@ -53,7 +55,8 @@ def classify(title,keywords):
  low=title.casefold()
  score=sum(1 for term in keywords if (bool(re.search(r"\b"+re.escape(term)+r"\b",low)) if len(term.strip())<=3 else term in low))
  if not score:return None
- sectors=[s for s,words in TERMS.items() if any(x in low for x in words)]
+ sectors=[s for s,words in TERMS.items() if any(re.search(r"(?<!\\w)"+re.escape(x)+r"(?!\\w)",low) for x in words)]
+ if re.search(r"\\bai\\b",low) and "digital" not in sectors: sectors.append("digital")
  return {"sectors":sectors or ["cross"],"relevance_hits":score}
 def listing(cfg,keywords):
  r,doc,error=get(cfg["url"])
@@ -64,6 +67,8 @@ def listing(cfg,keywords):
  for a in doc.find_all("a",href=True):
   title=clean(a.get_text(" ",strip=True))
   if len(title)<22 or len(title)>280:continue
+  if cfg["class"]=="official_regulation_listing" and not LEGAL_ID.search(title):continue
+  if cfg["class"]!="official_regulation_listing" and not POLICY_ACTION.search(title):continue
   info=classify(title,keywords)
   if not info:continue
   url=urljoin(r.url,a["href"].strip())
@@ -103,13 +108,19 @@ def detail_digest(doc):
  fingerprint=clean(title.casefold()+"|"+description.casefold()+"|"+main_text.casefold())
  return {"headline":title[:250],"digest":sha(fingerprint)[:24],"description":description,
          "fingerprint_scope":"heading_description_and_official_main_text" if main_text else "heading_description_only"}
+def meaningful_prior(item):
+ if item.get("kind")=="official_document_metadata_changed":return True
+ title=item.get("title","")
+ if item.get("kind")=="official_regulation_candidate":return bool(LEGAL_ID.search(title))
+ return bool(POLICY_ACTION.search(title))
 def main():
  conf=json.loads(CONF.read_text(encoding="utf-8"))
  graph=json.loads(GRAPH.read_text(encoding="utf-8"))
  old=json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
  now=iso_now()
  previous={x["id"]:x for x in old.get("sources",[])}
- prev_events={x["id"]:x for x in old.get("events",[])}
+ baseline_reset=old.get("extraction_version")!="policy_only_v2"
+ prev_events={x["id"]:x for x in old.get("events",[]) if meaningful_prior(x)}
  legal_previous=old.get("watched_law_records",{})
  records=[]
  events=list(prev_events.values())
@@ -132,7 +143,7 @@ def main():
      continue
     item["first_seen_utc"]=now
     item["last_seen_utc"]=now
-    item["event_kind"]="new_candidate" if record["previous_successful_baseline"] else "baseline_observation"
+    item["event_kind"]="new_candidate" if record["previous_successful_baseline"] and not baseline_reset else "baseline_observation"
     item["legal_status_update"]="NOT_AUTOMATICALLY_VERIFIED"
     item["review_state"]="pending_source_text_and_legal_review"
     events.append(item)
@@ -177,7 +188,7 @@ def main():
  events=sorted(events,key=lambda v:v.get("first_seen_utc",""),reverse=True)[:conf.get("item_retention",150)]
  pending=sum(e["event_kind"]=="new_candidate" and e["review_state"].startswith("pending") for e in events)
  status="sources_available" if fresh_sources else "all_listing_sources_unavailable"
- result={"schema_version":"1.0","checked_at_utc":now,"monitoring_status":status,
+ result={"schema_version":"1.0","extraction_version":"policy_only_v2","checked_at_utc":now,"monitoring_status":status,
          "legal_status_update_policy":"All discovered changes are candidates, not confirmed enactments, amendments or repeals. Legal register is not auto-overwritten.",
          "latest_new_candidates_count":len(added),"pending_candidate_review":pending,
          "successful_listing_sources":fresh_sources,"total_listing_sources":len(records),
