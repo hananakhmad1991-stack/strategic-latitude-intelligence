@@ -63,11 +63,46 @@ for(const s of doc.series){
 }
 assert.ok(Math.abs(doc.gas_allocation.reduce((a,b)=>a+b.value,0)-5601.20)<0.011);
 assert.ok(Math.abs(doc.gas_allocation.filter(x=>x.scope==="Domestic").reduce((a,b)=>a+b.value,0)-3882.93)<.021,"Domestic allocation must match published rounded 3,882.93 BBTUD");
-assert.equal(catalog.entries.length,99);
+const digitized=JSON.parse(read("data/skkmigas-2025-digitized-exhibits.json"));
+const pod=JSON.parse(read("data/skkmigas-2025-pod-approvals.json"));
+assert.equal(digitized.series.length,24);
+assert.equal(digitized.categories.length,6);
+assert.equal(digitized.source_sha256,"48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301");
+assert.equal(digitized.series.reduce((a,x)=>a+x.values.length,0),185);
+for(const x of digitized.series){
+ assert.ok(x.source_pdf_page>=38&&x.source_pdf_page<=188,"Unreferenced SKK graph "+x.id);
+ assert.equal(x.values.length,x.years.length,"Misaligned source years "+x.id);
+ assert.ok(x.values.every(v=>v===null||Number.isFinite(v)));
+}
+const find=id=>digitized.series.find(x=>x.id===id);
+assert.equal(find("rrr_2013").values[6],354);
+assert.equal(find("civd_registered").values.at(-1),30096);
+assert.equal(find("civd_spda").values.at(-1),39918);
+assert.equal(find("development_actual").values.at(-1),940);
+assert.equal(find("workover_actual_annual").values.at(-1),1008);
+assert.equal(find("wellservice_actual").values.at(-1),42002);
+assert.equal(find("pse_count").values.at(-1),24);
+assert.equal(find("ca_total").values.at(-1),165);
+const lpo=digitized.categories.find(x=>x.id==="oil_lpo_equipment");
+assert.equal(lpo.records.find(x=>x.name==="Pipeline").value,3545);
+const equipmentGas=digitized.categories.find(x=>x.id==="gas_lpo_equipment");
+assert.equal(equipmentGas.records.find(x=>x.name==="Heat exchanger").value,70.6);
+const govt=digitized.categories.find(x=>x.id==="state_assets_2025");
+assert.equal(govt.records.reduce((a,x)=>a+x.value,0),743497553962874);
+assert.equal(pod.records.length,45);
+assert.equal(pod.records.reduce((a,x)=>a+x.estimated_combined_mmboe,0).toFixed(2),"643.42");
+assert.equal(pod.listed_table_sum_mmboe,643.42);
+assert.equal(pod.reported_narrative_reserve_addition_mmboe,655.73);
+assert.equal(pod.unreconciled_difference_mmboe,12.31);
+assert.equal(pod.records[9].field,pod.records[24].field,"Source duplicates 10 and 25 must remain flagged");
+for(const r of pod.records){assert.match(r.approval_date,/^2025-\d\d-\d\d$/);assert.ok(r.operator&&r.field);assert.ok(r.source_pdf_page===52||r.source_pdf_page===53)}
+assert.equal(catalog.entries.length,101);
+assert.equal(catalog.digitization_review.numerically_verified,21);
+assert.equal(catalog.digitization_review.source_only,66);
 assert.equal(catalog.report_pages,202);
-assert.equal(new Set(catalog.entries.map(x=>x.kind+x.number+x.pdf_page)).size,99);
+assert.equal(new Set(catalog.entries.map(x=>x.kind+x.number+x.pdf_page)).size,101);
 assert.equal(catalog.entries.filter(x=>x.kind==="map").length,5);
-for(const x of catalog.entries){assert.ok(x.title&&x.number&&x.pdf_page>=14&&x.pdf_page<=198);assert.ok(["source-catalog-only","normalized-or-kpi"].includes(x.status))}
+for(const x of catalog.entries){assert.ok(x.title&&x.number&&x.pdf_page>=14&&x.pdf_page<=198);assert.ok(["source-catalog-only","normalized-or-kpi","digitized_verified"].includes(x.status))}
 assert.ok(html.includes('id="skkMigas2025EnergyRoot"'));
 assert.ok(html.includes('id="skkMigas2025InvestmentRoot"'));
 assert.ok(html.includes("initSLISKKAnnual2025?.('skkMigas2025EnergyRoot','energy')"));
@@ -77,8 +112,10 @@ assert.match(html,/css\/skkmigas-annual-2025\.css\?v=/);
 assert.ok(script.includes('renderGas(block,d)')||script.includes('renderGas(panel,d)'));
 assert.match(script,/renderProjectDossiers\(panel,d\)/);
 assert.match(script,/renderCatalog\(panel,d,c\)/);
+assert.match(script,/renderDigitizedExhibits\(panel,exhibits\)/);
+assert.match(script,/renderPOD2025\(panel,pod\)/);
 assert.match(script,/annual report supplies printed work-area maps/i);
 assert.ok(style.includes(".sm25-report"));
 const ctx={window:{},document:{},console};vm.runInNewContext(script,ctx,{filename:"skkmigas-annual-2025.js"});
 assert.equal(typeof ctx.window.initSLISKKAnnual2025,"function");
-console.log("PASS: SKK Migas 2025 202-page bilingual report, 30 non-additive KPIs, 27 original historical series, 10-sector BBTUD Sankey, 16 onstream project dossiers, 99 source figures and Oil & Gas + Investment mounts.");
+console.log("PASS: SKK Migas 2025 202-page bilingual report, 30 non-additive KPIs, 27 original historical series, 10-sector BBTUD Sankey, 16 onstream project dossiers, 24 extra numeric series, 45 approved POD rows, 101 indexed figures and Oil & Gas + Investment mounts.");
