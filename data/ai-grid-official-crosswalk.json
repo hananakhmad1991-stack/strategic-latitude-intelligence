@@ -85,5 +85,23 @@
     "ratio": "incremental facility MW / system observed peak MW for scale context only; NOT a grid stress ratio"
   },
   "statistics_2024_regional_baseline": "./data/pln-statistics-regional-baseline-2024.json",
-  "verified_2024_note": "Actual provincial distribution-transformer ratings and UIT/PLN Batam transmission-substation reporting-unit capacities have been verified separately; they do not represent free grid headroom."
+  "verified_2024_note": "Actual provincial distribution-transformer ratings and UIT/PLN Batam transmission-substation reporting-unit capacities have been verified separately; they do not represent free grid headroom.",
+  "official_ruptl_planning_standards": {
+    "source": "100-page uploaded RUPTL approved 2025-05-26, 188.K/TL.03/MEM.L/2025",
+    "file_sha256": "6b0a38077e64421c034b94f49bf97d05afc18ddfdedaf8e44607380c9a284ac1",
+    "LOLP_max_percent_exclusive": 0.274,
+    "LOLP_page": 61,
+    "N_minus_1_planning": true,
+    "N_minus_1_page": 89,
+    "substation_reinforcement_design_loading_percent_range": [
+      70,
+      80
+    ],
+    "substation_rule_page": 90,
+    "local_grid_firm_headroom_mw": null,
+    "site_specific_reinforcement_completion_date": null,
+    "project_specific_solar_connection_power_mw": null,
+    "reservoir_potential_dataset": "./data/ruplt-2025-2034-floating-solar-potential.json",
+    "note": "Planning standards and opportunity potential only; no status or available firm power data for AI campuses."
+  }
 }
