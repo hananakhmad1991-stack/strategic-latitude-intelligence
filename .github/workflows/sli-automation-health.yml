@@ -1,0 +1,105 @@
+name: SLI Whole Dashboard Freshness & Automation Health
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '7 0,6,12,18 * * *'
+  push:
+    paths:
+      - 'scripts/audit_sli_automation.py'
+      - 'scripts/validate_sli_automation.py'
+      - 'data/sli-automation-policy.json'
+      - '.github/workflows/sli-automation-health.yml'
+permissions:
+  contents: write
+  actions: read
+  issues: write
+concurrency:
+  group: sli-data-freshness-publisher
+  cancel-in-progress: false
+jobs:
+  audit:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit every dataset and scheduled workflow
+        env:
+          GITHUB_TOKEN: \${{ github.token }}
+        run: |
+          python -m py_compile scripts/audit_sli_automation.py scripts/validate_sli_automation.py
+          python scripts/audit_sli_automation.py
+          python scripts/validate_sli_automation.py
+      - name: Publish source-status summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          p=json.load(open("data/sli-automation-health.json"))
+          print("### SLI Data Freshness & Automation Control")
+          print("| Classification | Datasets |")
+          print("|---|---:|")
+          for key in ("datasets","auto_numeric_datasets","auto_discovery_datasets",
+                      "curated_or_archival_datasets","overdue_or_broken_datasets",
+                      "workflow_failures_latest","workflow_status_api_errors"):
+              print("| "+key+" | "+str(p["summary"][key])+" |")
+          print("")
+          print("Scheduled checks do not prove source facts and legal/project status are current.")
+          PY
+      - name: Publish latest snapshot after reconciling concurrent commits
+        env:
+          GITHUB_TOKEN: \${{ github.token }}
+        run: |
+          git config user.name "sli-freshness-audit[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sli-automation-health.json
+          if git diff --cached --quiet; then
+            echo "No audit status changes"
+            exit 0
+          fi
+          git commit -m "data: audit SLI automation coverage and source freshness [skip ci]"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              git reset --hard origin/main
+              python scripts/audit_sli_automation.py
+              python scripts/validate_sli_automation.py
+              git add data/sli-automation-health.json
+              git diff --cached --quiet && exit 0
+              git commit -m "data: audit freshness after concurrent source update [skip ci]"
+              continue
+            fi
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 4))
+          done
+          echo "Unable to publish freshness data after retries" >&2
+          exit 1
+      - name: Create single issue for unresolved data freshness failures
+        if: always()
+        env:
+          GH_TOKEN: \${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,subprocess
+          p=json.load(open("data/sli-automation-health.json"))
+          s=p.get("summary",{})
+          if not ((s.get("overdue_or_broken_datasets") or 0)+(s.get("workflow_failures_latest") or 0)):
+              print("No dataset/workflow freshness problems")
+              raise SystemExit(0)
+          key="SLI-AUTOMATION-HEALTH-CONTROL"
+          prior=subprocess.run(["gh","issue","list","--state","open","--search",
+             key+" in:body","--json","number","--limit","10"],capture_output=True,text=True)
+          if prior.returncode or json.loads(prior.stdout):
+              print("Already tracked or issue lookup failed; no duplicate")
+              raise SystemExit(0)
+          lines=["- "+v["id"]+": "+v["status"] for v in p.get("attention",[])[:12]]
+          body="Automated SLI data health check detected issues. This is not evidence a policy or legal status changed.\n\n"
+          body+="\n".join(lines)+"\n\nInspect data/sli-automation-health.json.\n\n"+key
+          result=subprocess.run(["gh","issue","create","--title",
+              "SLI: review overdue or failed data-source workflows","--body",body],
+              capture_output=True,text=True)
+          print(result.stdout or result.stderr)
+          PY
