@@ -3,7 +3,7 @@
   "source_url": "https://www.skkmigas.go.id/publication?tab=laporan+tahunan",
   "book": "SKK Migas Annual Report 2025 (English)",
   "report_pages": 202,
-  "interpretation": "Publisher index points to official report list. PDF page numbers, NOT web deeplinks. Source-only means no safe numeric cell extraction or GIS geometry has yet been validated. Figures/graphics are indexed for easy source lookup but not claimed digitised as interactive values.",
+  "interpretation": "The page-linked exhibit index now distinguishes digitized_verified, original prior KPI normalization (normalized-or-kpi), and source-catalog-only items. This is source-text and printed numeric label transcription, not raster graph pixel estimation.",
   "sections": [
     {
       "name": "Introduction & global context",
@@ -75,8 +75,11 @@
       "kind": "graph",
       "number": "2.1",
       "title": "Oil and gas contract areas, 2011–2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "ca_total"
+      ]
     },
     {
       "pdf_page": 40,
@@ -84,8 +87,11 @@
       "kind": "table",
       "number": "2.1",
       "title": "Exploration activities, plan versus actual",
-      "status": "normalized-or-kpi",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "exploration_2025_plan_vs_real"
+      ]
     },
     {
       "pdf_page": 41,
@@ -120,8 +126,11 @@
       "kind": "graph",
       "number": "2.2",
       "title": "Assessment of exploration PSC contractors",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "project_2025_exploration_firm"
+      ]
     },
     {
       "pdf_page": 45,
@@ -165,8 +174,11 @@
       "kind": "graph",
       "number": "2.4",
       "title": "Exploration status determinations, 2010–2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "pse_count"
+      ]
     },
     {
       "pdf_page": 49,
@@ -192,8 +204,11 @@
       "kind": "graph",
       "number": "2.5",
       "title": "Reserve replacement ratio, 2013–2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "rrr_2013"
+      ]
     },
     {
       "pdf_page": 52,
@@ -201,8 +216,11 @@
       "kind": "table",
       "number": "2.6",
       "title": "Plan of Development approvals",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "pod_approvals_2025"
+      ]
     },
     {
       "pdf_page": 56,
@@ -219,8 +237,12 @@
       "kind": "graph",
       "number": "3.1",
       "title": "Exploitation drilling target versus realization 2018–2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "development_plan",
+        "development_actual"
+      ]
     },
     {
       "pdf_page": 58,
@@ -228,8 +250,12 @@
       "kind": "graph",
       "number": "3.2",
       "title": "Workover target versus realization 2018–2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "workover_plan_annual",
+        "workover_actual_annual"
+      ]
     },
     {
       "pdf_page": 59,
@@ -237,8 +263,12 @@
       "kind": "graph",
       "number": "3.3",
       "title": "Well service target versus realization 2018–2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "wellservice_plan",
+        "wellservice_actual"
+      ]
     },
     {
       "pdf_page": 61,
@@ -441,18 +471,18 @@
     {
       "pdf_page": 88,
       "printed_page": 86,
-      "kind": "table",
-      "number": "3.2",
-      "title": "Oil and gas production baseline",
+      "kind": "graph",
+      "number": "3.4",
+      "title": "Oil, condensate and NGL production 2015–2025",
       "status": "normalized-or-kpi",
       "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
     },
     {
       "pdf_page": 88,
       "printed_page": 86,
-      "kind": "graph",
-      "number": "3.4",
-      "title": "Oil, condensate and NGL production 2015–2025",
+      "kind": "table",
+      "number": "3.2",
+      "title": "Oil and gas production baseline",
       "status": "normalized-or-kpi",
       "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
     },
@@ -525,8 +555,11 @@
       "kind": "graph",
       "number": "3.11",
       "title": "Oil LPO by equipment category",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "oil_lpo_equipment"
+      ]
     },
     {
       "pdf_page": 95,
@@ -534,8 +567,11 @@
       "kind": "graph",
       "number": "3.12",
       "title": "Natural gas LPO by equipment category",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "gas_lpo_equipment"
+      ]
     },
     {
       "pdf_page": 97,
@@ -705,8 +741,38 @@
       "kind": "graph",
       "number": "6.1",
       "title": "Indonesian and foreign workforce",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "workforce_tki",
+        "workforce_tka"
+      ]
+    },
+    {
+      "pdf_page": 133,
+      "printed_page": 131,
+      "kind": "graph",
+      "number": "6.2",
+      "title": "Expatriate workforce 2024–2025",
+      "status": "digitized_verified",
+      "digitized_refs": [
+        "tka_utilization_actual",
+        "tka_formation"
+      ],
+      "crosscheck": "Numerical source annotation retained and QA checked; original user-uploaded SKK 2025 English PDF is authoritative."
+    },
+    {
+      "pdf_page": 133,
+      "printed_page": 131,
+      "kind": "graph",
+      "number": "6.3",
+      "title": "Indonesian workforce utilization 2024–2025",
+      "status": "digitized_verified",
+      "digitized_refs": [
+        "tki_utilization_actual",
+        "tki_formation"
+      ],
+      "crosscheck": "Numerical source annotation retained and QA checked; original user-uploaded SKK 2025 English PDF is authoritative."
     },
     {
       "pdf_page": 134,
@@ -714,8 +780,14 @@
       "kind": "graph",
       "number": "6.4",
       "title": "Indonesian workforce overseas placements",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "overseas_job_swap",
+        "overseas_technical_exchange",
+        "overseas_ojt",
+        "overseas_international"
+      ]
     },
     {
       "pdf_page": 145,
@@ -804,8 +876,11 @@
       "kind": "table",
       "number": "6.3",
       "title": "Procurement process performance",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "procurement_approval"
+      ]
     },
     {
       "pdf_page": 177,
@@ -822,8 +897,11 @@
       "kind": "graph",
       "number": "6.8",
       "title": "SOE goods and services contracts",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "soe_procurement"
+      ]
     },
     {
       "pdf_page": 179,
@@ -831,8 +909,11 @@
       "kind": "graph",
       "number": "6.9",
       "title": "Transaction commitments in SOE/Regional banks",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "bank_commitments"
+      ]
     },
     {
       "pdf_page": 180,
@@ -840,8 +921,12 @@
       "kind": "graph",
       "number": "6.10",
       "title": "Registered supplier providers and procurement",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "civd_registered",
+        "civd_spda"
+      ]
     },
     {
       "pdf_page": 182,
@@ -876,8 +961,11 @@
       "kind": "table",
       "number": "6.6",
       "title": "Upstream state-owned asset profile",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "state_assets_2025"
+      ]
     },
     {
       "pdf_page": 188,
@@ -885,8 +973,11 @@
       "kind": "graph",
       "number": "6.11",
       "title": "State asset optimization value 2023–2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Source year, unit and printed numeric data labels transcribed from original report; cross-check SHA-256 and PDF page; source discrepancies disclosed.",
+      "digitized_refs": [
+        "bmn_optimization"
+      ]
     },
     {
       "pdf_page": 190,
@@ -933,5 +1024,13 @@
       "status": "source-catalog-only",
       "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
     }
-  ]
+  ],
+  "digitization_review": {
+    "updated": "2026-10-16",
+    "source_pdf_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
+    "numerically_verified": 21,
+    "indexed_source_items": 101,
+    "source_only": 66,
+    "notes": "This index is an evidence navigator and was not a proven complete inventory of all original report graphics. Named 45 POD approvals have two source PDF pages, and the 0.01–12.31 discrepancies are flagged. Source-only items include nonnumeric drawings, governance diagrams and raster maps; do not label them numerically digitized."
+  }
 }
