@@ -99,7 +99,7 @@ def detail_digest(doc):
  # signal; navigation/chrome changes can cause false positives.
  content_node=doc.find("article") or doc.find("main") or doc.find("div",id="content")
  main_text=clean(content_node.get_text(" ",strip=True))[:18000] if content_node else ""
- main_text=re.sub(r"Jumlah (?:dilihat|diunduh|download)\\s*:?\\s*\\d+","",main_text,flags=re.I)
+ main_text=re.sub(r"Jumlah (?:dilihat|diunduh|download)\s*:?\s*\d+","",main_text,flags=re.I)
  fingerprint=clean(title.casefold()+"|"+description.casefold()+"|"+main_text.casefold())
  return {"headline":title[:250],"digest":sha(fingerprint)[:24],"description":description,
          "fingerprint_scope":"heading_description_and_official_main_text" if main_text else "heading_description_only"}
