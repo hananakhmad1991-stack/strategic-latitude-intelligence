@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "scripts/heesi_2025_extract.py"
+      - "scripts/heesi_2025_power_by_province.py"
       - ".github/workflows/heesi-handbook-index.yml"
   schedule:
     - cron: "41 7 1 * *"
@@ -39,6 +40,15 @@ jobs:
           assert 'Energy Balance' in d['pages'][33]['text']
           assert 'Power Plant Installed Capacity by Province' in d['pages'][133]['text']
           assert sum(len(x['text']) for x in d['pages'])>140_000
+          p2=Path('data/heesi-2025-power-technologies.json')
+          gen=json.loads(p2.read_text())
+          assert len(gen['province_rows'])==38
+          assert gen['technology_count']==17
+          assert len(gen['layers'])==18
+          assert abs(sum(x['total_power'] for x in gen['province_rows'])-107498.89)<.01
+          assert abs(sum(x['steam_pp'] for x in gen['province_rows'])-60542.14)<.03
+          assert abs(sum(x['solar_pp'] for x in gen['province_rows'])-1534.11)<.03
+          print('Validated complete 38 province × 17 technologies vs exact source page 118–119.')
           print('Validated 172 source-linked pages and official 2025 energy balance / provincial table.')
           PY
       - name: Commit verified source index
@@ -46,7 +56,7 @@ jobs:
         run: |
           git config user.name "sli-data-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/handbook-2025-pages.json
+          git add data/handbook-2025-pages.json data/heesi-2025-power-technologies.json
           if git diff --cached --quiet; then
             echo "Source index unchanged"
             exit 0
