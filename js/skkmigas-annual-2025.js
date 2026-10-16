@@ -133,6 +133,50 @@ function renderTarget(block,data){
  const p=$("div","sm25-progress"),filled=$("div","sm25-progress-done");filled.style.width=Math.min(100,item.value/item.target.value*100)+"%";p.append(filled);row.append(p);bars.append(row)}
  root.append(bars);block.append(root);
 }
+function renderDigitizedExhibits(root,doc){
+ root.append($("h4",null,I("Numerically digitized source graphs and tables","Grafik dan tabel yang didigitalkan secara numerik")),
+ $("p","sm25-note",I("Source-labeled 2010–2025 data only. All values are transcribed from original PDF graph labels or printed tables; charts never estimate from bar heights. Source discrepancies and unreconciled totals stay visible.","Hanya data 2010–2025 yang tercetak. Angka ditranskripsi dari label grafik atau tabel PDF asli, tidak ditebak dari tinggi batang. Selisih dan ketidaksesuaian pada sumber tetap ditampilkan.")));
+ const tools=$("div","sm25-toolbar"),kind=selectBox([["series","Annual time series"],["category","Categorical & tabular evidence"]],"series");
+ const select=selectBox(doc.series.map(v=>[v.id,v.title]),doc.series[0]?.id);
+ const viz=$("div","sm25-chart"),table=$("div","sm25-table-scroll"),detail=$("p","sm25-note");
+ const source=$("div","sm25-source");tools.append(kind,select);root.append(tools,viz,detail,source,table);
+ function dataset(){
+  const set=kind.value==="series"?doc.series:doc.categories;const prev=select.value;
+  select.replaceChildren();set.forEach(x=>{const o=$("option",null,x.title);o.value=x.id;select.append(o)});
+  if(set.some(x=>x.id===prev))select.value=prev;draw();
+ }
+ function draw(){
+  const list=kind.value==="series"?doc.series:doc.categories;
+  const info=list.find(x=>x.id===select.value);if(!info)return;
+  viz.replaceChildren();table.replaceChildren();source.replaceChildren();
+  detail.textContent=I("Source PDF page","Halaman PDF sumber")+" "+info.source_pdf_page+" · "+info.unit+" · "+(info.note||"Printed original data labels with explicit reference dates.");
+  source.append($("span",null,I("Source verified by original PDF SHA-256 · page","Sumber dicek dengan SHA-256 PDF · halaman")+" "+info.source_pdf_page+" · "),links("https://www.skkmigas.go.id/publication?tab=laporan+tahunan","SKK Migas publications ↗"));
+  const tbl=$("table","sm25-table"),head=$("thead"),h=$("tr"),body=$("tbody");
+  if(kind.value==="series"){
+   const matches=doc.series.filter(x=>x.id!==info.id&&x.section===info.section&&x.unit===info.unit&&x.years.length===info.years.length&&x.years[0]===info.years[0]&&x.years.at(-1)===info.years.at(-1)).slice(0,2);
+   const aligned=[info,...matches];
+   chartLine(viz,aligned.map(x=>({title:x.title,unit:x.unit,years:x.years,values:x.values})));
+   ["Year",...aligned.map(x=>x.title)].forEach(name=>h.append($("th",null,name)));
+   info.years.forEach((y,i)=>{const row=$("tr");row.append($("th",null,y));aligned.forEach(x=>row.append($("td",null,fmt(x.values[i],3))));body.append(row)});
+  }else{
+   const hasPlan=info.records.some(x=>x.plan!==undefined);
+   if(hasPlan){
+    for(const r of info.records){const item=$("div","sm25-target-card");item.append($("h5",null,r.name),
+      $("p",null,I("Realized","Realisasi")+" "+fmt(r.realization)+" "+r.unit),
+      $("small",null,I("Planned","Rencana")+" "+fmt(r.plan)+" "+r.unit+" · "+fmt(100*r.realization/r.plan,1)+"%"));viz.append(item)}
+    ["Item","Plan","Realization","Unit"].forEach(x=>h.append($("th",null,x)));
+    info.records.forEach(r=>{const row=$("tr");[r.name,fmt(r.plan),fmt(r.realization),r.unit].forEach(v=>row.append($("td",null,v)));body.append(row)});
+   }else{
+    const records=info.records.map(x=>({name:x.name,value:x.value,unit:info.unit}));
+    chartBars(viz,records,info.unit);
+    ["Name","Value","Unit"].forEach(x=>h.append($("th",null,x)));
+    records.forEach(r=>{const row=$("tr");[r.name,fmt(r.value,info.unit==="IDR"?0:2),r.unit].forEach(v=>row.append($("td",null,v)));body.append(row)});
+   }
+  }
+  head.append(h);tbl.append(head,body);table.append(tbl);
+ }
+ kind.addEventListener("change",dataset);select.addEventListener("change",draw);draw();
+}
 function renderCatalog(root,data,catalog){
  root.append($("h4",null,I("Original report evidence navigator · 202 PDF pages","Penelusuran bukti laporan · 202 halaman PDF")),
  $("p","sm25-note",I("The 99 indexed graphics, tables, figures and printed maps below are ALL traceable to original PDF page numbers. Status 'source catalog' means it has not yet been digitized into an auditable machine-data series; it is not a claim that a new interactive GIS polygon or chart already exists.","99 grafik, tabel, gambar, dan peta tercetak memiliki halaman PDF sumber. Status katalog berarti isi belum seluruhnya dikonversi menjadi data mesin terverifikasi; bukan klaim semua peta sudah berbentuk GIS.")));
@@ -190,12 +234,12 @@ async function mount(where,mode){
  $("p","sm25-intro",I("English annual report is the primary numeric source; the Indonesian edition is a translation cross-check. Production ≠ lifting, reserves ≠ resources, plans ≠ realized investments.","Laporan tahunan Inggris sebagai sumber angka utama; versi Indonesia sebagai pemeriksa istilah. Produksi ≠ lifting, cadangan ≠ sumber daya, rencana ≠ realisasi investasi.")));
  const state=$("p","sm25-note",I("Loading audited report measures…","Memuat data laporan…"));section.append(state);
  try{
-  const [d,c]=await Promise.all([fetch(BASE,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No baseline");return r.json()}),fetch(CAT,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No figure catalog");return r.json()})]);
-  if(d.id!=="sli-skkmigas-annual-2025"||c.entries.length<90)throw Error("Report index incomplete");
+  const [d,c,exhibits]=await Promise.all([fetch(BASE,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No baseline");return r.json()}),fetch(CAT,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No figure catalog");return r.json()}),fetch("data/skkmigas-2025-digitized-exhibits.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No digitized data");return r.json()})]);
+  if(d.id!=="sli-skkmigas-annual-2025"||c.entries.length<90||exhibits.series.length<20)throw Error("Report index incomplete");
   if(!section.isConnected)return;
-  state.textContent=I("2025 source values · report edition 2026 · "+d.metrics.length+" verified KPI definitions · "+d.series.length+" dated time series · "+c.entries.length+" table/graph/figure/map references. NOT real-time.","Tahun data 2025 · edisi laporan 2026 · "+d.metrics.length+" KPI terverifikasi · "+d.series.length+" deret waktu · "+c.entries.length+" grafik/tabel/gambar/peta. BUKAN data real-time.");
+  state.textContent=I("2025 source values · report edition 2026 · "+d.metrics.length+" verified KPI definitions · "+d.series.length+" dated time series · "+c.entries.length+" source exhibits, plus "+exhibits.series.length+" newly digitized numeric series. NOT real-time.","Tahun data 2025 · edisi laporan 2026 · "+d.metrics.length+" KPI terverifikasi · "+d.series.length+" deret waktu · "+c.entries.length+" katalog sumber dan "+exhibits.series.length+" seri tambahan. BUKAN data real-time.");
   const tabs=$("div","sm25-tabs"),panel=$("div","sm25-pane");
-  const pageTabs=[["overview","Executive KPIs"],["trend","Historical data"],["gas","Gas Sankey"],["targets","Targets vs actual"],["mapping","PSC / basin map"],["projects","16 onstream projects"],["catalog","Source catalog"]];
+  const pageTabs=[["overview","Executive KPIs"],["trend","Historical data"],["gas","Gas Sankey"],["targets","Targets vs actual"],["mapping","PSC / basin map"],["projects","16 onstream projects"],["digitized","Digitized figures"],["catalog","Source catalog"]];
   let active=mode==="investment"?"trend":"overview";
   function render(){panel.replaceChildren();for(const b of tabs.querySelectorAll("button")){b.classList.toggle("active",b.dataset.tab===active);b.setAttribute("aria-pressed",b.dataset.tab===active?"true":"false")}
    if(active==="overview")renderKpi(panel,d);
@@ -204,6 +248,7 @@ async function mount(where,mode){
    else if(active==="targets")renderTarget(panel,d);
    else if(active==="mapping")renderMap(panel,d);
    else if(active==="projects")renderProjectDossiers(panel,d);
+   else if(active==="digitized")renderDigitizedExhibits(panel,exhibits);
    else renderCatalog(panel,d,c);
   }
   for(const [id,title] of pageTabs){const b=$("button","sm25-tab",title);b.type="button";b.dataset.tab=id;b.addEventListener("click",()=>{active=id;render()});tabs.append(b)}
