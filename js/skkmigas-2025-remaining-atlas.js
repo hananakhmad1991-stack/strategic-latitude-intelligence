@@ -31,6 +31,27 @@ function projects(root,d){
  const time=E("div","sm25-evid-timeline");root.append(time);
  for(const m of d.timeline_2025.milestones){const c=div(m.date+" · "+m.project,m.milestone);time.append(c)}
  flag(root,62,"Historical 2025 decisions: not evidence of 2026 construction progress or investment disbursement.");
+ const on=d.onstream_2025_projects;
+ root.append(E("h4",null,T("All 16 commissioned upstream projects · exact dates","16 proyek hulu migas onstream · tanggal pasti")));
+ const summary=grid(root);
+ summary.append(div("Source count",on.reported_onstream_count+" projects onstream 2025"));
+ summary.append(div("Cohort CAPEX","US$"+n(on.reported_cohort_capex_usd_million)+" million aggregate, not each project's financing"));
+ summary.append(div("2025 actual additions",n(on.source_2025_incremental_oil_bopd,0)+" BOPD oil + "+n(on.source_2025_incremental_gas_mmscfd,0)+" MMSCFD gas"));
+ const months=["03","04","05","06","07","08","09","10","11","12"];
+ const monthly=E("div","sm25-chart");root.append(monthly);
+ bar(monthly,months.map(m=>({name:"2025-"+m,value:on.projects.filter(x=>x.onstream_date.slice(5,7)===m).length})),"projects",{max:8,decimals:0});
+ const search=E("input","sm25-query");search.type="search";search.placeholder="Search project, PSC contractor, onstream date...";
+ const listed=E("div","sm25-evid-grid");root.append(search,listed);
+ function repaint(){
+  const q=search.value.toLowerCase().trim();listed.replaceChildren();
+  const filtered=on.projects.filter(x=>[x.name,x.operator,x.onstream_date,x.motif].join(" ").toLowerCase().includes(q));
+  for(const p of filtered){const values=[p.reported_capacity_liquids===null?"":n(p.reported_capacity_liquids)+" liquids/day",p.reported_capacity_gas===null?"":n(p.reported_capacity_gas)+" MMSCFD gas"].filter(Boolean).join(" · ");
+   const card=div(p.onstream_date+" · "+p.name,p.operator+" · "+p.motif+" · "+values);
+   card.append(E("small",null,"PDF p. 67 · source units: "+p.capacity_units));listed.append(card)}
+ }
+ search.addEventListener("input",repaint);repaint();
+ flag(root,67,on.warning);
+
 }
 function exploration(root,d){
  const x=d.exploration;
