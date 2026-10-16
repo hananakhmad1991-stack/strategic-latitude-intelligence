@@ -11,6 +11,7 @@ on:
       - 'index.html'
       - 'scripts/validate_sli_glossary.py'
       - '.github/workflows/sli-glossary-qa.yml'
+      - 'tests/qa-unified-glossary-ui.mjs'
 permissions:
   contents: read
 jobs:
@@ -41,3 +42,7 @@ jobs:
           Path('/tmp/sli-glossary-inline.js').write_text(scripts[0],encoding='utf-8')
           PY
           node --check /tmp/sli-glossary-inline.js
+      - name: Smoke-test interactive dictionary and dashboard appendix in DOM
+        run: |
+          npm install --no-save --no-package-lock --silent jsdom@25
+          node tests/qa-unified-glossary-ui.mjs
