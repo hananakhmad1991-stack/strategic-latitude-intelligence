@@ -2,8 +2,8 @@
   "schema_version": "1.0",
   "provider": "World Bank WDI",
   "country": "IDN",
-  "last_attempt_utc": "2026-10-16T14:58:18Z",
-  "last_success_utc": "2026-10-16T14:58:18Z",
+  "last_attempt_utc": "2026-10-16T15:00:41Z",
+  "last_success_utc": "2026-10-16T15:00:41Z",
   "status": "partial_update",
   "attempted_indicators": 17,
   "successful_indicators_this_run": 16,
@@ -16,17 +16,7 @@
     "WDI fiscal balance/debt data can be sparse; unavailable is not zero."
   ],
   "indicator_status": {
-    "annual_gdp_constant": {
-      "status": "ok",
-      "last_year": 2025,
-      "observations": 36
-    },
     "annual_gdp_growth": {
-      "status": "ok",
-      "last_year": 2025,
-      "observations": 36
-    },
-    "annual_gdp_per_capita_usd": {
       "status": "ok",
       "last_year": 2025,
       "observations": 36
@@ -36,10 +26,20 @@
       "last_year": 2025,
       "observations": 36
     },
-    "annual_inflation": {
+    "annual_gdp_per_capita_usd": {
       "status": "ok",
       "last_year": 2025,
       "observations": 36
+    },
+    "annual_gdp_constant": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_unemployment": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 35
     },
     "annual_fx": {
       "status": "ok",
@@ -51,22 +51,12 @@
       "last_year": 2025,
       "observations": 31
     },
-    "annual_poverty_national": {
-      "status": "ok",
-      "last_year": 2025,
-      "observations": 28
-    },
-    "annual_exports_goods_services": {
+    "annual_inflation": {
       "status": "ok",
       "last_year": 2025,
       "observations": 36
     },
-    "annual_unemployment": {
-      "status": "ok",
-      "last_year": 2025,
-      "observations": 35
-    },
-    "annual_external_balance": {
+    "annual_exports_goods_services": {
       "status": "ok",
       "last_year": 2025,
       "observations": 36
@@ -76,12 +66,22 @@
       "last_year": 2025,
       "observations": 36
     },
-    "annual_current_account": {
+    "annual_poverty_national": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 28
+    },
+    "annual_external_balance": {
       "status": "ok",
       "last_year": 2025,
       "observations": 36
     },
     "annual_reserves": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_current_account": {
       "status": "ok",
       "last_year": 2025,
       "observations": 36
@@ -261,7 +261,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_gdp_growth": {
       "id": "annual_gdp_growth",
@@ -421,7 +421,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_gdp_per_capita_usd": {
       "id": "annual_gdp_per_capita_usd",
@@ -581,7 +581,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_gdp_usd": {
       "id": "annual_gdp_usd",
@@ -741,7 +741,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_inflation": {
       "id": "annual_inflation",
@@ -901,7 +901,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_fx": {
       "id": "annual_fx",
@@ -1061,7 +1061,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_gini": {
       "id": "annual_gini",
@@ -1201,7 +1201,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_poverty_national": {
       "id": "annual_poverty_national",
@@ -1329,7 +1329,7 @@
       "first_year": 1996,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_exports_goods_services": {
       "id": "annual_exports_goods_services",
@@ -1489,7 +1489,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_unemployment": {
       "id": "annual_unemployment",
@@ -1645,7 +1645,7 @@
       "first_year": 1991,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_external_balance": {
       "id": "annual_external_balance",
@@ -1805,7 +1805,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_imports_goods_services": {
       "id": "annual_imports_goods_services",
@@ -1965,7 +1965,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_current_account": {
       "id": "annual_current_account",
@@ -2125,7 +2125,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_reserves": {
       "id": "annual_reserves",
@@ -2285,7 +2285,7 @@
       "first_year": 1990,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_employment_ratio": {
       "id": "annual_employment_ratio",
@@ -2441,7 +2441,7 @@
       "first_year": 1991,
       "last_year": 2025,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     },
     "annual_gov_debt": {
       "id": "annual_gov_debt",
@@ -2513,7 +2513,7 @@
       "first_year": 1990,
       "last_year": 2009,
       "data_status": "source_api_verified_series",
-      "last_verified_utc": "2026-10-16T14:58:18Z"
+      "last_verified_utc": "2026-10-16T15:00:41Z"
     }
   }
 }
