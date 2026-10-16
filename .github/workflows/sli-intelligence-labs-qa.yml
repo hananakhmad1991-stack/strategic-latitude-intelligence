@@ -1,0 +1,20 @@
+name: SLI Intelligence Labs QA
+on:
+  push:
+    paths:
+      - 'intelligence-labs.html'
+      - 'data/sli-project-registry.json'
+      - 'data/sli-labs-official-context.json'
+      - 'data/investment-evidence.json'
+      - 'tests/qa-intelligence-labs.mjs'
+      - '.github/workflows/sli-intelligence-labs-qa.yml'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/qa-intelligence-labs.mjs
