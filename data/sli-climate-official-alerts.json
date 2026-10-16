@@ -1,0 +1,33 @@
+{
+  "as_of": "2026-10-17",
+  "source_policy": "Official published forecasts; not confirmed incidents. Static snapshot with validity dates; no implied continuous official feed.",
+  "alerts": [
+    {
+      "title": "BMKG weekly outlook: drought persists; heavy rain possible in several regions",
+      "category": "drought / heavy rain",
+      "publisher": "BMKG",
+      "published": "2026-10-13",
+      "valid_through": "2026-10-19",
+      "url": "https://www.bmkg.go.id/cuaca/potensi-hujan-sepekan/prakiraan-cuaca-indonesia-sepekan-periode-13-19-oktober-2026-kekeringan-belum-berakhir-namun-potensi-hujan-lebat-masih-ada-di-sejumlah-wilayah",
+      "status": "official forecast"
+    },
+    {
+      "title": "BMKG high waves: 2.5–4 m forecast in selected Indonesian waters",
+      "category": "maritime high waves",
+      "publisher": "BMKG",
+      "published": "2026-10-17",
+      "valid_through": "2026-10-20",
+      "url": "https://www.bmkg.go.id/cuaca/maritim/peringatan-gelombang-tinggi",
+      "status": "official forecast snapshot"
+    },
+    {
+      "title": "BMKG high-rainfall early warning: Dasarian II October 2026",
+      "category": "heavy rain",
+      "publisher": "BMKG",
+      "published": "2026-10-11",
+      "valid_through": "2026-10-20",
+      "url": "https://www.bmkg.go.id/iklim/peringatan-dini-hujan-tinggi",
+      "status": "official forecast snapshot"
+    }
+  ]
+}
