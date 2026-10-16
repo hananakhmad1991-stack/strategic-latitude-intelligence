@@ -534,8 +534,13 @@
       "kind": "graph",
       "number": "3.8",
       "title": "Loss of production opportunity from shutdowns",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Original report numeric component labels checked. Values retain original units and operator/category scope, not inferred totals.",
+      "digitized_refs": [
+        "unplanned_oil_lpo",
+        "unplanned_gas_lpo",
+        "facility_disruption_frequency"
+      ]
     },
     {
       "pdf_page": 93,
@@ -543,8 +548,11 @@
       "kind": "graph",
       "number": "3.9",
       "title": "Monthly oil LPO 2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Original report numeric component labels checked. Values retain original units and operator/category scope, not inferred totals.",
+      "digitized_refs": [
+        "oil_lpo_other_2025"
+      ]
     },
     {
       "pdf_page": 94,
@@ -552,8 +560,11 @@
       "kind": "graph",
       "number": "3.10",
       "title": "Monthly natural gas LPO 2025",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Original report numeric component labels checked. Values retain original units and operator/category scope, not inferred totals.",
+      "digitized_refs": [
+        "gas_lpo_other_2025"
+      ]
     },
     {
       "pdf_page": 95,
@@ -603,8 +614,11 @@
       "kind": "graph",
       "number": "4.2",
       "title": "Contracted versus realized gas utilization",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Original report numeric component labels checked. Values retain original units and operator/category scope, not inferred totals.",
+      "digitized_refs": [
+        "gas_contract_vs_actual"
+      ]
     },
     {
       "pdf_page": 106,
@@ -639,8 +653,11 @@
       "kind": "graph",
       "number": "4.5",
       "title": "LNG supplied to domestic terminals",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Original report numeric component labels checked. Values retain original units and operator/category scope, not inferred totals.",
+      "digitized_refs": [
+        "lng_domestic_receivers"
+      ]
     },
     {
       "pdf_page": 110,
@@ -1034,11 +1051,12 @@
   "digitization_review": {
     "updated": "2026-10-16",
     "source_pdf_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
-    "numerically_verified": 21,
+    "numerically_verified": 26,
     "indexed_source_items": 101,
-    "source_only": 64,
+    "source_only": 59,
     "notes": "This index is an evidence navigator and was not a proven complete inventory of all original report graphics. Named 45 POD approvals have two source PDF pages, and the 0.01–12.31 discrepancies are flagged. Source-only items include nonnumeric drawings, governance diagrams and raster maps; do not label them numerically digitized.",
     "structured_source_tables": 2,
-    "comments": "Two additional complete source-name registers: 24 PSE structures and 15 well markers. Not validated GIS coordinates or numerical productions."
+    "comments": "Two additional complete source-name registers: 24 PSE structures and 15 well markers. Not validated GIS coordinates or numerical productions.",
+    "note_extra": "Added five further labelled exhibits: gas contract versus actual, LNG receiving terminals by source, and monthly unplanned oil/gas loss components."
   }
 }
