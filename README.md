@@ -2,6 +2,19 @@
 
 Independent, open-source-based analysis of Indonesia's strategic investment, energy security, critical minerals, AI infrastructure, and public policy.
 
+## Whole-Dashboard Automation & Data Freshness (October 2026)
+
+- **[SLI Overview](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/#overview)**: shows live source date classifications and operational warning counters.
+- **[SLI Data Freshness & Automation Control Center](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-data-automation-center.html)**: inventory of every `data/*.json`, GitHub Action writer, schedule, latest observation timestamp, API/QA failures and update method.
+- **Source refresh:** `js/sli-live-data.js` intercepts same-origin public `data/*.json` GET requests and prefers the GitHub main-branch JSON over the GitHub Pages embedded copy. On failure, it falls back to Pages and exposes transport counters; it does not proxy third-party traffic or write new values. GitHub CDN/browser caching means this is **not a real-time guarantee**.
+- **Scheduled audit:** `.github/workflows/sli-automation-health.yml` checks the whole source inventory four times per day, using source metadata and GitHub Actions run outcomes; malformed sources or failures are surfaced. It may open a consolidated issue for actual overdue/failed flows.
+- **Publisher-edition detection:** `.github/workflows/sli-publication-watch.yml` checks 10 curated publisher listing pages daily and records new edition links as **review candidates**, never validated numeric source updates. Publishers using Javascript/blocked download are flagged as inaccessible/unparseable.
+- **Actual automated numeric ingestion:** upstream structured services including World Bank annual WDI, source-attributed commodity/pricing and other scheduled structured pipelines. Each observation retains its own reference date, source and unit; scheduled execution does not imply a newer release existed.
+- **News/discovery only:** legal changes, AI compute commissioning, personnel appointments, investment financing and other government/publisher announcements. A discovery lead cannot automatically overwrite a legal status, physical completion or validated leadership roster.
+- **Curated/static reference datasets:** HEESI, RUPTL, PLN annual statistics, institutional maps, geocoded project locations, BPS/BI/Kemenkeu current press-release snapshot and source-derived analyst assessments. These **do not fully update themselves** until the relevant new edition/document is accessible and systematically extracted/validated. Published source vintages must not be silently overwritten by the next edition.
+
+The objective is high and auditable automatic coverage, **not a claim that 100% of facts in the dashboard always update automatically**. Important exclusions, source failures and pending reviews are visible in the Control Center; date of monitoring is distinct from the underlying statistical observation period.
+
 ## Status
 **Public research prototype.** Energy Security now contains sourced historical statistics, institutional actor mapping, a curated legal and policy register, and a **selected** CCS/CCUS project stage tracker. Automated public-source news discovery, market observations and rule-based daily assessments are experimental and do **not** amount to independently verified real-time incidents, commercially injected CO₂, or audited project expenditure. Do not market SLI as a real-time intelligence service or investment advisory product.
 
