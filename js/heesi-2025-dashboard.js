@@ -63,7 +63,7 @@ function renderBalance(root,d){
  const trend=e("div","he25-trend"),pick=e("select","he25-select"),plot=e("div","he25-plot"),caption=e("p","he25-note");
  trend.append(e("h4",null,"Energy indicators · revised 2015–2025 historical series"));
  d.series.forEach((v,i)=>{const o=e("option",null,v.name+" · "+v.unit);o.value=i;pick.append(o)});
- function line(){const s=d.series[Number(pick.value)];plotLine(plot,s);caption.textContent=s.unit+" · original printed pages 2–3. Commercial energy excludes traditional biomass; revised source figures."}
+ function line(){const s=d.series[Number(pick.value)];plotLine(plot,s);caption.textContent=s.unit+" · source printed pp. "+s.printed_pages+", PDF pp. "+s.pdf_pages+". "+(s.note||"Commercial energy series excludes traditional biomass; revised source figures.")}
  pick.addEventListener("change",line);trend.append(pick,plot,caption);root.append(trend);line();
 }
 function geomPath(g){
