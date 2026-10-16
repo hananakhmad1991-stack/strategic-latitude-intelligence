@@ -1,0 +1,36 @@
+{
+  "version": "2026-10-17",
+  "basis": "Published national monthly historical BNPB disaster bulletin. Counts are NOT province-level project exposure or a climate risk score.",
+  "observations": [
+    {
+      "period": "2025-06",
+      "total_events": 182,
+      "floods": 60,
+      "extreme_weather": 41,
+      "landslides": 12,
+      "wildfires": 63,
+      "droughts": 4,
+      "coastal_events": 1,
+      "other_geological": 1,
+      "publisher": "BNPB",
+      "source_url": "https://www.bnpb.go.id/informasi-bencana/buletin-info-bencana-juni-2025",
+      "published": "2025-07-16"
+    },
+    {
+      "period": "2025-11",
+      "total_events": 274,
+      "floods": 163,
+      "extreme_weather": 63,
+      "landslides": 19,
+      "wildfires": 20,
+      "droughts": 3,
+      "coastal_events": 3,
+      "other_geological": 3,
+      "publisher": "BNPB",
+      "source_url": "https://www.bnpb.go.id/buku/buletin-info-bencana-november-2025",
+      "published": "2025-12-18"
+    }
+  ],
+  "province_spatial_hazard_ratings": "unavailable",
+  "asset_verified_coordinates": "unavailable"
+}
