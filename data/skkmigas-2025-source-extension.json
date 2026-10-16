@@ -1,0 +1,474 @@
+{
+  "id": "skkmigas-2025-numeric-source-extension",
+  "year": 2025,
+  "source_pdf": "Annual Report 2025.pdf",
+  "original_pdf_pages": 202,
+  "sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
+  "publisher": "SKK Migas",
+  "period_vintage": "calendar year 2025",
+  "extracted": "2026-10-16",
+  "source_url": "https://www.skkmigas.go.id/publication?tab=laporan+tahunan",
+  "quality_note": "Only source-labeled values from English-language PDF, selected numerical figures and complete Table 6.1 transcription. Contract awards do not equal investor returns. Source figure Graph 6.7 PSN and non-PSN labels match chart labels, but chart targets should not be reversed. Weighted annual totals are not means of 12 monthly percentages.",
+  "categories": [
+    {
+      "id": "rating_dimensions",
+      "title": "Indonesia upstream oil & gas investor attractiveness · 2025",
+      "unit": "rating points",
+      "source_pdf_page": 35,
+      "chart": "bar",
+      "records": [
+        {
+          "name": "Overall attractiveness",
+          "value": 5.4
+        },
+        {
+          "name": "Legal and contractual",
+          "value": 5.51
+        },
+        {
+          "name": "Fiscal systems",
+          "value": 5.11
+        },
+        {
+          "name": "Oil and gas overall",
+          "value": 5.53
+        },
+        {
+          "name": "Activity and success",
+          "value": 6.03
+        }
+      ],
+      "note": "S&P Global rating cited by SKK Migas, 2025. Graph 1.1 step-line 2015–2025 lacks 11 exact yearly labels, so only explicitly printed 2025 five-factor snapshot is digitized."
+    },
+    {
+      "id": "tkdn_psn_monthly",
+      "title": "PSN local-content achieved by month · 2025",
+      "unit": "percent",
+      "source_pdf_page": 177,
+      "chart": "bar",
+      "records": [
+        {
+          "name": "Jan",
+          "value": 72.87
+        },
+        {
+          "name": "Feb",
+          "value": 72.73
+        },
+        {
+          "name": "Mar",
+          "value": 73.11
+        },
+        {
+          "name": "Apr",
+          "value": 55.31
+        },
+        {
+          "name": "May",
+          "value": 55.26
+        },
+        {
+          "name": "Jun",
+          "value": 38.37
+        },
+        {
+          "name": "Jul",
+          "value": 38.37
+        },
+        {
+          "name": "Aug",
+          "value": 36.02
+        },
+        {
+          "name": "Sep",
+          "value": 33.89
+        },
+        {
+          "name": "Oct",
+          "value": 34.5
+        },
+        {
+          "name": "Nov",
+          "value": 34.66
+        },
+        {
+          "name": "Dec",
+          "value": 37.94
+        }
+      ],
+      "target_percent": 57,
+      "report_end_year_percent": 37.94,
+      "note": "Graph 6.7 labelled PSN monthly achieved percentages. 57% target displayed for PSN in the original graph. Annual reported 37.94% is year-end cumulative content cost, not 12-month simple average. The source's January–December target row must not be exchanged with non-PSN."
+    },
+    {
+      "id": "tkdn_nonpsn_monthly",
+      "title": "Non-PSN local-content achieved by month · 2025",
+      "unit": "percent",
+      "source_pdf_page": 177,
+      "chart": "bar",
+      "records": [
+        {
+          "name": "Jan",
+          "value": 64.8
+        },
+        {
+          "name": "Feb",
+          "value": 58.89
+        },
+        {
+          "name": "Mar",
+          "value": 59.37
+        },
+        {
+          "name": "Apr",
+          "value": 58.35
+        },
+        {
+          "name": "May",
+          "value": 59.01
+        },
+        {
+          "name": "Jun",
+          "value": 60.29
+        },
+        {
+          "name": "Jul",
+          "value": 60.22
+        },
+        {
+          "name": "Aug",
+          "value": 60.82
+        },
+        {
+          "name": "Sep",
+          "value": 59.62
+        },
+        {
+          "name": "Oct",
+          "value": 57.86
+        },
+        {
+          "name": "Nov",
+          "value": 58.25
+        },
+        {
+          "name": "Dec",
+          "value": 59.12
+        }
+      ],
+      "target_percent": 18,
+      "report_end_year_percent": 59.12,
+      "note": "Graph 6.7 labelled non-PSN monthly achieved percentages, target 18% in its printed table. The report's full-year paragraph states non-PSN 59.12%; do not add to PSN achievements."
+    }
+  ],
+  "procurement": {
+    "label": "2025 upstream PSC procurement pipeline",
+    "source_pdf_page": 176,
+    "auction_estimated_usd": 40490217386.37,
+    "large_tender_savings_usd": 958309393,
+    "threshold_usd": 5000000,
+    "description": "Estimated total 2025 procurement tenders under Cost Recovery PSCs US$40.49 billion; savings of US$958.3 million refer only to subset of packages > US$5 million requiring SKK approval, so savings/total is NOT a verified all-tender savings rate.",
+    "approval_plan_workdays": 3.83,
+    "approval_results_workdays": 9.57,
+    "service_target_days": 15
+  },
+  "commitment": {
+    "label": "Exploration commitments in exploitation contract areas",
+    "source_pdf_pages": [
+      45,
+      46
+    ],
+    "exploitation_contract_areas": 105,
+    "extended_contract_areas": 43,
+    "not_yet_effective_extended_areas": 8,
+    "firma_areas": 18,
+    "commitment_to_bid_areas": 25,
+    "cumulative_implementation_percent": 48,
+    "cumulative_budget_realization_usd_billion": 1.1,
+    "cumulative_budget_percent_of_plan": 73,
+    "exploration_wells_implemented_2025": 14,
+    "seismic_activities_2025": 8,
+    "exploration_studies_2025": 9,
+    "reported_2025_activities_estimated_investment_usd_million": 280.6,
+    "warning": "Graph 2.3 includes approximated total US$2.27 billion and US$1.1 billion YTD budget release. Contract areas by status overlap; do NOT double count. Timeline 2013–2037 values are graphical without labels; no interpolated per-year values."
+  },
+  "bridges": [
+    {
+      "id": "oil",
+      "title": "Oil lifting: 2025 technical bridge",
+      "unit": "thousand BOPD",
+      "source_pdf_page": 91,
+      "chart": "waterfall",
+      "points": [
+        {
+          "name": "APBN target",
+          "value": 605,
+          "role": "baseline"
+        },
+        {
+          "name": "Technical gaps",
+          "value": -5.7,
+          "role": "change"
+        },
+        {
+          "name": "Technical WP&B",
+          "value": 599.3,
+          "role": "checkpoint"
+        },
+        {
+          "name": "Entry rate",
+          "value": -9.8,
+          "role": "change"
+        },
+        {
+          "name": "Well/facility/offtake LPO",
+          "value": -14,
+          "role": "change"
+        },
+        {
+          "name": "Work program delay",
+          "value": -19.6,
+          "role": "change"
+        },
+        {
+          "name": "Project onstream delay",
+          "value": -3.3,
+          "role": "change"
+        },
+        {
+          "name": "Production optimization",
+          "value": 29.8,
+          "role": "change"
+        },
+        {
+          "name": "Oil, condensate production",
+          "value": 582.1,
+          "role": "component"
+        },
+        {
+          "name": "NGL production",
+          "value": 23,
+          "role": "component"
+        },
+        {
+          "name": "2025 production total",
+          "value": 606.1,
+          "role": "checkpoint"
+        },
+        {
+          "name": "Stock drawdown",
+          "value": 0.1,
+          "role": "change"
+        },
+        {
+          "name": "2025 actual lifting",
+          "value": 606.2,
+          "role": "actual"
+        }
+      ],
+      "warning": "Original Graph 3.6 prints values 605.0, -5.7, 599.3, -9.8, -14.0, -19.6, -3.3, +29.8, 582.1, NGL 23.0, 606.1, stock 0.1, lifting 606.2. Its illustration is NOT a mathematically exact continuous waterfall (source labels have category timing and rounding). Plot individual labeled contributions without forcing a synthetic reconciliation. NGL class changed during 2025."
+    },
+    {
+      "id": "gas",
+      "title": "Gas lifting: 2025 technical bridge",
+      "unit": "MMSCFD",
+      "source_pdf_page": 91,
+      "chart": "waterfall",
+      "points": [
+        {
+          "name": "APBN target",
+          "value": 5628,
+          "role": "baseline"
+        },
+        {
+          "name": "Technical gap",
+          "value": -180,
+          "role": "change"
+        },
+        {
+          "name": "Technical WP&B",
+          "value": 5448,
+          "role": "checkpoint"
+        },
+        {
+          "name": "PSC downtime",
+          "value": -204,
+          "role": "change"
+        },
+        {
+          "name": "Low demand",
+          "value": -25,
+          "role": "change"
+        },
+        {
+          "name": "Sales optimization",
+          "value": 207,
+          "role": "change"
+        },
+        {
+          "name": "2025 gas delivered",
+          "value": 5425,
+          "role": "actual"
+        }
+      ],
+      "warning": "Original graph 3.7 component arithmetic gives 5,426 MMSCFD, while final delivered gas is printed 5,425. Discrepancy 1 MMSCFD is preserved, likely rounding or source representation. Values are not corrected for presentation."
+    }
+  ],
+  "risk_register": [
+    {
+      "no": 1,
+      "description": "Difficulty achieving timely giant oil/gas discoveries",
+      "risk_level": "HIGH",
+      "risk_aspect": "Oil & gas reserves",
+      "risk_type": "Recurring",
+      "risk_source": "External",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 2,
+      "description": "Challenges implementing EOR in mature oil/gas fields",
+      "risk_level": "HIGH",
+      "risk_aspect": "Oil & gas reserves",
+      "risk_type": "Recurring",
+      "risk_source": "External",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 3,
+      "description": "POD/project delays from technical procurement licensing and land issues",
+      "risk_level": "HIGH",
+      "risk_aspect": "Production optimization",
+      "risk_type": "Recurring",
+      "risk_source": "External",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 4,
+      "description": "Lost production opportunity from facility disruptions",
+      "risk_level": "HIGH",
+      "risk_aspect": "Production optimization",
+      "risk_type": "Recurring",
+      "risk_source": "External",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 5,
+      "description": "Oil gas LNG buyers and meeting domestic gas demand",
+      "risk_level": "HIGH",
+      "risk_aspect": "Commercialization",
+      "risk_type": "Recurring",
+      "risk_source": "External",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 6,
+      "description": "National vendor capability constraints for exploration and production",
+      "risk_level": "HIGH",
+      "risk_aspect": "TKDN",
+      "risk_type": "Recurring",
+      "risk_source": "External",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 7,
+      "description": "Reduced investor and lender appetite for upstream funding",
+      "risk_level": "HIGH",
+      "risk_aspect": "Strategic",
+      "risk_type": "Recurring",
+      "risk_source": "External",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 8,
+      "description": "Legal uncertainty affecting oil and gas investors",
+      "risk_level": "HIGH",
+      "risk_aspect": "Strategic",
+      "risk_type": "Recurring",
+      "risk_source": "External",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 9,
+      "description": "Fraud / noncompliant individuals and legal reputational effects",
+      "risk_level": "MODERATE TO HIGH",
+      "risk_aspect": "Fraud",
+      "risk_type": "Recurring",
+      "risk_source": "External",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 10,
+      "description": "Reliability of IT and accuracy of exploration/production data",
+      "risk_level": "MODERATE TO HIGH",
+      "risk_aspect": "Strategic",
+      "risk_type": "Emerging",
+      "risk_source": "Internal",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 11,
+      "description": "Physical and transition climate risks disrupting upstream operations",
+      "risk_level": "MODERATE TO HIGH",
+      "risk_aspect": "Cost recovery",
+      "risk_type": "Emerging",
+      "risk_source": "Internal",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    },
+    {
+      "no": 12,
+      "description": "CCS/CCUS technology changes impacting SKK Migas strategy",
+      "risk_level": "MODERATE",
+      "risk_aspect": "Strategic",
+      "risk_type": "Emerging",
+      "risk_source": "External",
+      "pdf_page": 145,
+      "method": "Structured source text from Table 6.1 in 2025 original annual report. Language shortened without changing risk axis or classification."
+    }
+  ],
+  "scm": {
+    "source_pdf_pages": [
+      183,
+      184
+    ],
+    "vendors_assessed": 5,
+    "psc_contractors_evaluated": 72,
+    "scm_reporting_period": 2024,
+    "evaluation_conducted_in": 2025,
+    "award_leaders": [
+      {
+        "class": "Large production",
+        "company": "PT Pertamina Hulu Mahakam",
+        "wpb_usd_range": ">250 million"
+      },
+      {
+        "class": "Medium production",
+        "company": "GentingOil Kasuri Pte. Ltd.",
+        "wpb_usd_range": "50–250 million"
+      },
+      {
+        "class": "Small production",
+        "company": "PT SPR Langgak",
+        "wpb_usd_range": "<50 million"
+      }
+    ],
+    "vendor_assessed_names": [
+      "PT Promatcon Advance",
+      "PT Bumi Beam Tepatguna",
+      "PT Artas Energi Center",
+      "PT Sutrakabel Intimandiri",
+      "PT CT Petroga"
+    ],
+    "vendor_name_caveat": "Row-wise name/commodity alignment comes from multi-column printed PDF Table 6.4; names could be line-wrapped. Verify spelling against original before public company due-diligence use."
+  }
+}
