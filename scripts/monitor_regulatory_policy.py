@@ -28,7 +28,8 @@ TERMS={
  "digital":["data center","pusat data","komdigi","kecerdasan buatan","artificial intelligence","cloud","ai ","pdp","siber"],
  "environment":["lingkungan","amdal","karhutla","emisi","air limbah","polusi"],
  "carbon":["karbon","ccs","ccus","iklim","emisi","perdagangan karbon"],
- "cross":["perizinan","investasi","oss","cipta kerja","omnibus","peraturan","perda","permen","perpres","undang-undang"]
+ "cross":["perizinan","investasi","oss","cipta kerja","omnibus","peraturan","perda","permen","perpres","undang-undang"],
+ "international":["wto","ds592","gatt","dispute","arbitration","arbitrase","icsid","uncitral","investment treaty","isds","trade restriction","trade dispute","countervailing"]
 }
 def iso_now():return dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z")
 def clean(s):return re.sub(r"\s+"," ",s or "").strip()
@@ -50,7 +51,7 @@ def get(url):
   return None,None,f"{type(e).__name__}: {str(e)[:175]}"
 def classify(title,keywords):
  low=title.casefold()
- score=sum(1 for term in keywords if term in low)
+ score=sum(1 for term in keywords if (bool(re.search(r"\b"+re.escape(term)+r"\b",low)) if len(term.strip())<=3 else term in low))
  if not score:return None
  sectors=[s for s,words in TERMS.items() if any(x in low for x in words)]
  return {"sectors":sectors or ["cross"],"relevance_hits":score}
@@ -76,8 +77,10 @@ def listing(cfg,keywords):
   snippet=clean(wrapper.get_text(" ",strip=True))[:320] if wrapper else ""
   out.append({"id":sha(cfg["id"]+"|"+stable_url(url))[:20],"title":title,
       "url":stable_url(url),"issuer":cfg["label"],"source_id":cfg["id"],
-      "kind":"official_regulation_candidate" if cfg["class"]=="official_regulation_listing" and REGULATION_PATTERN.search(title) else "official_policy_news",
+      "kind":"official_regulation_candidate" if cfg["class"]=="official_regulation_listing" and REGULATION_PATTERN.search(title) else ("international_policy_news" if cfg["class"]=="international_policy_news" else "official_policy_news"),
       "classification":"unverified_primary_document_candidate","sectors":info["sectors"],
+      "monitor_group":"geopolitical_policy" if cfg["class"]=="international_policy_news" else "domestic_policy",
+      "indonesia_specificity":"verify_case_or_instrument" if cfg["class"]=="international_policy_news" else "issuer_indonesia",
       "preview":snippet,"has_exact_instrument_number":bool(re.search(r"(?:nomor|no[.]?)\s*\d+.*(?:19|20)\d{2}",title,re.I))})
   if len(out)>=cfg["limit"]:break
  return out,None
@@ -154,6 +157,8 @@ def main():
       "url":node["source"],"issuer":node.get("owner") or "Official register",
       "source_id":"law_detail_"+lawid,"kind":"official_document_metadata_changed",
       "classification":"unverified_document_update","sectors":[node["sector"]],
+      "monitor_group":"geopolitical_policy" if node["tier"]=="international" else "domestic_policy",
+      "indonesia_specificity":"specific_watched_instrument",
       "preview":"Page headline/metadata fingerprint changed. Compare actual text and amendment/repeal clauses before updating any legal status.",
       "first_seen_utc":now,"last_seen_utc":now,"event_kind":"new_candidate",
       "legal_status_update":"NOT_AUTOMATICALLY_VERIFIED",
