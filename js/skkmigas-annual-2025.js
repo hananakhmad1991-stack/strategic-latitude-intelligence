@@ -202,8 +202,8 @@ function renderPOD2025(root,register){
  root.append($("p","sm25-note","Source: SKK Migas Annual Report 2025 (English), Table 2.6, original PDF pp. 52–53. Numeric discrepancies, double-listed approval and NULL source dashes preserved."));
 }
 function renderCatalog(root,data,catalog){
- root.append($("h4",null,I("Original report evidence navigator · 202 PDF pages","Penelusuran bukti laporan · 202 halaman PDF")),
- $("p","sm25-note",I("The 99 indexed graphics, tables, figures and printed maps below are ALL traceable to original PDF page numbers. Status 'source catalog' means it has not yet been digitized into an auditable machine-data series; it is not a claim that a new interactive GIS polygon or chart already exists.","99 grafik, tabel, gambar, dan peta tercetak memiliki halaman PDF sumber. Status katalog berarti isi belum seluruhnya dikonversi menjadi data mesin terverifikasi; bukan klaim semua peta sudah berbentuk GIS.")));
+ root.append($("h4",null,I("Report evidence navigator · original 202 PDF pages","Penelusuran bukti laporan · 202 halaman PDF")),
+ $("p","sm25-note",I(catalog.entries.length+" indexed report exhibits: "+catalog.digitization_review.numerically_verified+" individually digitized, "+catalog.digitization_review.source_only+" source-only. Original nonnumeric figures and printed maps stay source-linked, not fabricated as GIS.","Ada "+catalog.entries.length+" item laporan: "+catalog.digitization_review.numerically_verified+" sudah didigitalkan numerik dan "+catalog.digitization_review.source_only+" masih referensi sumber. Ilustrasi dan peta cetak tidak direkayasa menjadi GIS.")));
  const controls=$("div","sm25-toolbar"),kind=selectBox([["all",I("All content","Semua")],["graph","Graphs"],["table","Tables"],["figure","Figures"],["map","Original printed maps"]],"all"),search=$("input","sm25-query");
  search.type="search";search.placeholder=I("Search graph, region, PSC, reserves…","Cari grafik, wilayah, KKKS, cadangan…");
  controls.append(kind,search);
@@ -217,7 +217,7 @@ function renderCatalog(root,data,catalog){
    const card=$("article","sm25-catalog-item");
    card.append($("small",null,x.kind.toUpperCase()+" "+x.number+" · PDF p. "+x.pdf_page+" · printed p. "+x.printed_page),
     $("strong",null,x.title),
-    $("span","sm25-catalog-status",x.status==="source-catalog-only"?I("Source referenced · not yet fully digitized","Rujukan sumber · belum dinormalisasi penuh"):I("Related verified KPI/table available","Data/KPI terkait tersedia")));
+    $("span","sm25-catalog-status",x.status==="source-catalog-only"?I("Source referenced · not yet numerically digitized","Rujukan sumber · belum didigitalkan"):x.status==="digitized_verified"?I("Numeric values digitized and audited","Angka sudah didigitalkan dan diperiksa"):I("Related KPI/table already normalized","KPI/tabel terkait sudah dinormalisasi")));
    card.append(links(data.source_url,I("Find in SKK Migas official report ↗","Buka katalog laporan resmi ↗")));results.append(card);
   }
   if(filtered.length>count){const more=$("button","sm25-more",I("Show more","Lihat lagi"));more.type="button";more.addEventListener("click",()=>{count+=30;redraw()});results.append(more)}
@@ -259,11 +259,11 @@ async function mount(where,mode){
  const state=$("p","sm25-note",I("Loading audited report measures…","Memuat data laporan…"));section.append(state);
  try{
   const [d,c,exhibits,pod]=await Promise.all([fetch(BASE,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No baseline");return r.json()}),fetch(CAT,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No figure catalog");return r.json()}),fetch("data/skkmigas-2025-digitized-exhibits.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No digitized data");return r.json()}),fetch("data/skkmigas-2025-pod-approvals.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("No POD register");return r.json()})]);
-  if(d.id!=="sli-skkmigas-annual-2025"||c.entries.length<90||exhibits.series.length<20||pod.records.length!==45)throw Error("Report index incomplete");
+  if(d.id!=="sli-skkmigas-annual-2025"||c.entries.length<100||exhibits.series.length<20||pod.records.length!==45||Math.abs(pod.listed_table_sum_mmboe-643.42)>.01)throw Error("Report index or source register incomplete");
   if(!section.isConnected)return;
   state.textContent=I("2025 source values · report edition 2026 · "+d.metrics.length+" verified KPI definitions · "+d.series.length+" dated time series · "+c.entries.length+" source exhibits, plus "+exhibits.series.length+" newly digitized numeric series. NOT real-time.","Tahun data 2025 · edisi laporan 2026 · "+d.metrics.length+" KPI terverifikasi · "+d.series.length+" deret waktu · "+c.entries.length+" katalog sumber dan "+exhibits.series.length+" seri tambahan. BUKAN data real-time.");
   const tabs=$("div","sm25-tabs"),panel=$("div","sm25-pane");
-  const pageTabs=[["overview","Executive KPIs"],["trend","Historical data"],["gas","Gas Sankey"],["targets","Targets vs actual"],["mapping","PSC / basin map"],["projects","16 onstream projects"],["digitized","Digitized figures"],["pods","45 POD approvals"],["catalog","Source catalog"]];
+  const pageTabs=[["overview",I("Executive KPIs","KPI utama")],["trend",I("Historical data","Data historis")],["gas",I("Gas Sankey","Sankey gas")],["targets",I("Targets vs actual","Target vs realisasi")],["mapping",I("PSC / basin maps","Peta WK / cekungan")],["projects",I("16 onstream projects","16 proyek onstream")],["digitized",I("Digitized figures","Grafik digital")],["pods",I("45 POD approvals","45 persetujuan POD")],["catalog",I("Source catalog","Katalog sumber")]];
   let active=mode==="investment"?"trend":"overview";
   function render(){panel.replaceChildren();for(const b of tabs.querySelectorAll("button")){b.classList.toggle("active",b.dataset.tab===active);b.setAttribute("aria-pressed",b.dataset.tab===active?"true":"false")}
    if(active==="overview")renderKpi(panel,d);
