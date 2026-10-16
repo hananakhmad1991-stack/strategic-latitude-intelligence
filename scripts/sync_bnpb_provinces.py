@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Download BNPB official 2025 province XLSX, parse safely, and publish only validated counts."""
+"""Download BNPB official 2025 province XLSX, parse safely, and publish only validated counts.\nFail closed: keep last good province snapshot if the provider schema changes.\n"""
 import datetime as dt
 import io
 import json
