@@ -1,0 +1,1197 @@
+{
+  "version": "2026-10-16.1",
+  "updated_at": "2026-10-16",
+  "methodology": {
+    "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
+    "not_legal_advice": true,
+    "exhaustiveness": "Curated high-signal illustrative register; not every Indonesian legal instrument. Confirm consolidated texts/implementing rules at time of transaction.",
+    "status_dictionary": {
+      "enacted": "officially enacted instrument; later changes may still require review",
+      "repealed": "repeal supported by successor official source",
+      "amended": "historical base document amended; use consolidated legal text",
+      "amending_instrument": "amendment not consolidated text",
+      "check_current": "document existence verified; current amendment/repeal status not comprehensively rechecked",
+      "transition_review": "transition and alignment require legal verification",
+      "listed_active_review_alignment": "listed active by regional JDIH, but alignment with new KEN not legally adjudicated",
+      "issued_plan_not_commissioned": "legal administrative RUPTL planning approval, not completed physical projects",
+      "project_specific": "not a single legal instrument and not automatically satisfied",
+      "archival_not_verified": "historical Director-General reference only; do not apply as current law"
+    },
+    "formal_tiers": [
+      "Constitution",
+      "TAP MPR",
+      "UU / Perppu",
+      "PP",
+      "Perpres",
+      "Perda Province",
+      "Perda City/Regency"
+    ],
+    "article_8_branch": "Ministerial and certain other regulations have authority-derived binding force under Article 8; not appended as a new rung after provincial local regulation. Kepmen often administrative decisions, not general normative regulations. SNI/technical codes require adoption/contract to be binding.",
+    "ria_lite": {
+      "purpose": "transparent qualitative prioritization of investor due diligence, not government statutory Regulatory Impact Assessment, cost-benefit CBA, actual probability, compliance finding or legal verdict.",
+      "scale": "six analyst-assigned 1–5 ordinal issue exposure ratings; uncalibrated, scenario screening only; higher=more diligence needed, not 'illegal'.",
+      "score_formula": "sum(weight_i*(exposure_i-1)/4)*100; normalized 0–100 as relative issue coverage signal only",
+      "dimensions": [
+        {
+          "id": "permits",
+          "label": "Perizinan & kewenangan",
+          "weight": 0.22
+        },
+        {
+          "id": "power",
+          "label": "Infrastruktur / pasokan",
+          "weight": 0.22
+        },
+        {
+          "id": "environment",
+          "label": "Lingkungan / sosial",
+          "weight": 0.18
+        },
+        {
+          "id": "change",
+          "label": "Ketidakpastian perubahan aturan",
+          "weight": 0.18
+        },
+        {
+          "id": "privacy",
+          "label": "Data / cyber / pelaporan",
+          "weight": 0.08
+        },
+        {
+          "id": "delivery",
+          "label": "Eksekusi kebijakan & bukti proyek",
+          "weight": 0.12
+        }
+      ],
+      "limitations": "Scores are illustrative analyst judgments; no empirical financial/likelihood calibration. Do not compare jurisdictions as objective regulatory risk. Missing compliance evidence is not a violation."
+    }
+  },
+  "nodes": [
+    {
+      "id": "uud",
+      "tier": "constitutional",
+      "ref": "UUD 1945 · Pasal 33",
+      "label": "Constitutional foundation for strategic natural resources",
+      "sector": "cross",
+      "source": "https://www.mkri.id/",
+      "note": "Constitutional basis for state control and public welfare; not a substitute for sector permits.",
+      "status": "constitutional_foundation",
+      "kind": "constitution",
+      "owner": "State",
+      "evidence": "official_record"
+    },
+    {
+      "id": "tap",
+      "tier": "tap",
+      "ref": "TAP MPR · formal tier",
+      "label": "Hierarchy category; no specific operative energy TAP is asserted",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/",
+      "note": "Pasal 7 UU 12/2011 lists TAP MPR. Placeholder category, not a claim of a sectoral rule.",
+      "status": "not_applicable",
+      "kind": "tier_marker",
+      "owner": "",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu12",
+      "tier": "uu",
+      "ref": "UU 12/2011 jo. UU 13/2022",
+      "label": "Formation and hierarchy of legislation",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/files/uu12-2011bt.pdf",
+      "note": "Pasal 7 formal hierarchy; Pasal 8 recognizes other regulations if authorized. Interpret together with UU 13/2022.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "Lawmakers",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu6",
+      "tier": "uu",
+      "ref": "UU 6/2023",
+      "label": "Cipta Kerja / omnibus framework",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/files/uu-no-6-tahun-2023.pdf",
+      "note": "Enacts Perppu 2/2022; affects licensing, environment and sector statutes. Do not use repealed UU 11/2020 as sole operative anchor.",
+      "status": "enacted",
+      "kind": "legislation",
+      "owner": "Lawmakers",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu30energy",
+      "tier": "uu",
+      "ref": "UU 30/2007",
+      "label": "Energy framework",
+      "sector": "energy",
+      "source": "https://peraturan.go.id/id/uu-no-30-tahun-2007",
+      "note": "Planning and governance of energy. PP 40/2025 implements national energy policy.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "ESDM / DEN",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu30power",
+      "tier": "uu",
+      "ref": "UU 30/2009",
+      "label": "Electricity law",
+      "sector": "electricity",
+      "source": "https://peraturan.go.id/id/uu-no-30-tahun-2009",
+      "note": "Public/private electricity supply, licensing, reliability and supervision. Consolidate with amendments before investment legal diligence.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "ESDM / Gatrik",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu22oil",
+      "tier": "uu",
+      "ref": "UU 22/2001",
+      "label": "Oil and natural gas framework",
+      "sector": "oilgas",
+      "source": "https://peraturan.go.id/id/uu-no-22-tahun-2001",
+      "note": "Upstream contracts and downstream licensing have different supervisory chains; read with judgments and amendments.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "ESDM / SKK Migas / BPH Migas",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu4minerba",
+      "tier": "uu",
+      "ref": "UU 4/2009",
+      "label": "Mining baseline act",
+      "sector": "minerba",
+      "source": "https://peraturan.go.id/id/uu-no-4-tahun-2009",
+      "note": "Original Mineral and Coal Mining statute; do not treat its 2009 text as consolidated current law.",
+      "status": "amended",
+      "kind": "legislation",
+      "owner": "ESDM / Minerba",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu3minerba",
+      "tier": "uu",
+      "ref": "UU 3/2020",
+      "label": "Mining amendment of UU 4/2009",
+      "sector": "minerba",
+      "source": "https://peraturan.go.id/id/uu-no-3-tahun-2020",
+      "note": "Historical amending instrument, read with later UU 2/2025.",
+      "status": "amending_instrument",
+      "kind": "legislation",
+      "owner": "ESDM / Minerba",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu2minerba",
+      "tier": "uu",
+      "ref": "UU 2/2025",
+      "label": "Fourth amendment to mining law",
+      "sector": "minerba",
+      "source": "https://peraturan.go.id/id/uu-no-2-tahun-2025",
+      "note": "Mining investment and concessions require the current consolidated mining framework.",
+      "status": "amending_instrument",
+      "kind": "legislation",
+      "owner": "ESDM / Minerba",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu32env",
+      "tier": "uu",
+      "ref": "UU 32/2009",
+      "label": "Environmental protection framework",
+      "sector": "environment",
+      "source": "https://peraturan.go.id/id/uu-no-32-tahun-2009",
+      "note": "Environmental approval and compliance; read as amended by Cipta Kerja legal regime.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "KLH / BPLH",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu27pdp",
+      "tier": "uu",
+      "ref": "UU 27/2022",
+      "label": "Personal Data Protection",
+      "sector": "digital",
+      "source": "https://peraturan.go.id/id/uu-no-27-tahun-2022",
+      "note": "Data-center investors must distinguish obligations of controllers/processors and compliance details; not an enacted AI roadmap.",
+      "status": "enacted",
+      "kind": "legislation",
+      "owner": "Komdigi",
+      "evidence": "official_record"
+    },
+    {
+      "id": "uu23local",
+      "tier": "uu",
+      "ref": "UU 23/2014",
+      "label": "Regional-government competency and authority",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/id/uu-no-23-tahun-2014",
+      "note": "Defines central/regional division of authority; read with amendments and sector-specific delegations.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "Interior / Regional",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pp40",
+      "tier": "pp",
+      "ref": "PP 40/2025",
+      "label": "National Energy Policy (KEN)",
+      "sector": "energy",
+      "source": "https://peraturan.go.id/files/pp-no-40-tahun-2025.pdf",
+      "note": "Latest national policy basis; transitional provisions preserve implementing rules insofar as consistent.",
+      "status": "enacted",
+      "kind": "general_regulation",
+      "owner": "ESDM / DEN",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pp79old",
+      "tier": "pp",
+      "ref": "PP 79/2014",
+      "label": "Former national energy policy",
+      "sector": "energy",
+      "source": "https://peraturan.go.id/id/pp-no-79-tahun-2014",
+      "note": "Historical KEN superseded by PP 40/2025; avoid citing old mix targets as current new KEN.",
+      "status": "repealed",
+      "kind": "general_regulation",
+      "owner": "ESDM / DEN",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pp28",
+      "tier": "pp",
+      "ref": "PP 28/2025",
+      "label": "Risk-based business licensing",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/files/pp-no-28-tahun-2025.pdf",
+      "note": "Replaces PP 5/2021. Project KBLI, NIB, risk tier and permits need activity-level assessment.",
+      "status": "enacted",
+      "kind": "general_regulation",
+      "owner": "Investment Ministry / OSS",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pp5old",
+      "tier": "pp",
+      "ref": "PP 5/2021",
+      "label": "Former risk-based business licensing",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/id/pp-no-5-tahun-2021",
+      "note": "Explicitly revoked by PP 28/2025; historical reference only.",
+      "status": "repealed",
+      "kind": "general_regulation",
+      "owner": "Investment Ministry / OSS",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pp14power",
+      "tier": "pp",
+      "ref": "PP 14/2012",
+      "label": "Electricity supply business regulation",
+      "sector": "electricity",
+      "source": "https://peraturan.go.id/id/pp-no-14-tahun-2012",
+      "note": "Read with PP 23/2014 and later sectoral and omnibus amendments.",
+      "status": "check_current",
+      "kind": "general_regulation",
+      "owner": "ESDM / Gatrik",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pp25energy",
+      "tier": "pp",
+      "ref": "PP 25/2021",
+      "label": "ESDM sector administration",
+      "sector": "electricity",
+      "source": "https://peraturan.go.id/id/pp-no-25-tahun-2021",
+      "note": "Operating and electricity sector framework; ensure compatibility with PP 28/2025 licensing.",
+      "status": "check_current",
+      "kind": "general_regulation",
+      "owner": "ESDM",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pp22env",
+      "tier": "pp",
+      "ref": "PP 22/2021",
+      "label": "Environmental approval, AMDAL and UKL-UPL",
+      "sector": "environment",
+      "source": "https://peraturan.go.id/files/Salinan%2BPP%2BNomor%2B22%2BTahun%2B2021.pdf",
+      "note": "Environmental permitting procedures and emission/water requirements; applicability depends on project characteristics.",
+      "status": "check_current",
+      "kind": "general_regulation",
+      "owner": "KLH / BPLH",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pp96min",
+      "tier": "pp",
+      "ref": "PP 96/2021",
+      "label": "Mining business implementation",
+      "sector": "minerba",
+      "source": "https://peraturan.go.id/id/pp-no-96-tahun-2021",
+      "note": "Read with PP 25/2024 and UU 2/2025; evolving concession and processing rules.",
+      "status": "amended",
+      "kind": "general_regulation",
+      "owner": "ESDM / Minerba",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pp25min",
+      "tier": "pp",
+      "ref": "PP 25/2024",
+      "label": "Amendment to PP 96/2021",
+      "sector": "minerba",
+      "source": "https://peraturan.go.id/id/pp-no-25-tahun-2024",
+      "note": "Amending regulation, not a standalone consolidated mining license checklist.",
+      "status": "amending_instrument",
+      "kind": "general_regulation",
+      "owner": "ESDM / Minerba",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pres112",
+      "tier": "perpres",
+      "ref": "Perpres 112/2022",
+      "label": "Renewable electricity acceleration",
+      "sector": "electricity",
+      "source": "https://peraturan.go.id/files/Salinan%2BPerpres%2BNomor%2B112%2BTahun%2B2022.pdf",
+      "note": "New and renewable electricity development; PPA guidelines are operationalized in Permen ESDM 5/2025.",
+      "status": "check_current",
+      "kind": "presidential_regulation",
+      "owner": "President / ESDM",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pres14ccs",
+      "tier": "perpres",
+      "ref": "Perpres 14/2024",
+      "label": "Carbon capture and storage",
+      "sector": "carbon",
+      "source": "https://peraturan.go.id/files/perpres-no-14-tahun-2024.pdf",
+      "note": "CCS activities, permits and storage regime; separate from carbon credit eligibility.",
+      "status": "check_current",
+      "kind": "presidential_regulation",
+      "owner": "President / ESDM",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pres110carbon",
+      "tier": "perpres",
+      "ref": "Perpres 110/2025",
+      "label": "Carbon economic instruments and GHG governance",
+      "sector": "carbon",
+      "source": "https://peraturan.go.id/id/perpres-no-110-tahun-2025",
+      "note": "Carbon compliance, accounting and trading exposure needs transaction-specific verification.",
+      "status": "check_current",
+      "kind": "presidential_regulation",
+      "owner": "President / KLH",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pres22ruen",
+      "tier": "perpres",
+      "ref": "Perpres 22/2017",
+      "label": "RUEN (historical national energy planning)",
+      "sector": "energy",
+      "source": "https://peraturan.go.id/id/perpres-no-22-tahun-2017",
+      "note": "Legacy planning instrument premised on older KEN. Check applicability/transition under PP 40/2025; do not automatically call repealed.",
+      "status": "transition_review",
+      "kind": "presidential_regulation",
+      "owner": "ESDM / DEN",
+      "evidence": "official_record"
+    },
+    {
+      "id": "perda_jabar",
+      "tier": "perda",
+      "ref": "Perda Jabar 2/2019",
+      "label": "RUED West Java 2018–2050",
+      "sector": "energy",
+      "source": "https://jdih.jabarprov.go.id/page/info/produk/8013",
+      "note": "JDIH lists as berlaku; harmonization with national PP 40/2025 still needs substantive review.",
+      "status": "listed_active_review_alignment",
+      "kind": "provincial_regulation",
+      "owner": "West Java",
+      "evidence": "official_record"
+    },
+    {
+      "id": "perda_jateng",
+      "tier": "perda",
+      "ref": "Perda Jateng 12/2018",
+      "label": "RUED Central Java",
+      "sector": "energy",
+      "source": "https://jdih.jatengprov.go.id/inventarisasi-hukum/detail/perda_12_th_2018",
+      "note": "JDIH lists as berlaku. Legacy assumptions may diverge from new national KEN.",
+      "status": "listed_active_review_alignment",
+      "kind": "provincial_regulation",
+      "owner": "Central Java",
+      "evidence": "official_record"
+    },
+    {
+      "id": "perda_kepri",
+      "tier": "perda",
+      "ref": "Perda Kepri 4/2023",
+      "label": "RUED Riau Islands 2023–2050",
+      "sector": "energy",
+      "source": "https://jdih.kepriprov.go.id/dokumenhukum/100",
+      "note": "JDIH Kepri lists as berlaku; important for Batam regional power strategies.",
+      "status": "listed_active_review_alignment",
+      "kind": "provincial_regulation",
+      "owner": "Riau Islands",
+      "evidence": "official_record"
+    },
+    {
+      "id": "permen11",
+      "tier": "permen",
+      "ref": "Permen ESDM 11/2021",
+      "label": "Electricity business implementation",
+      "sector": "electricity",
+      "source": "https://jdih.esdm.go.id/dokumen/download?id=Permen+ESDM+No.+11+Tahun+2021+new.pdf",
+      "note": "Electricity business licensing and ancillary services. Sector provisions require compatibility checks against PP 28/2025.",
+      "status": "check_current",
+      "kind": "ministerial_regulation",
+      "owner": "ESDM / Gatrik",
+      "evidence": "official_record"
+    },
+    {
+      "id": "permen5",
+      "tier": "permen",
+      "ref": "Permen ESDM 5/2025",
+      "label": "Renewable power-purchase agreement guidance",
+      "sector": "electricity",
+      "source": "https://jdih.esdm.go.id/dokumen/download?id=2025abspmesdm5.pdf",
+      "note": "PPA allocation of risks, commissioning/COD, guarantees, performance and environmental attributes.",
+      "status": "enacted",
+      "kind": "ministerial_regulation",
+      "owner": "ESDM / PLN",
+      "evidence": "official_record"
+    },
+    {
+      "id": "permen2solar",
+      "tier": "permen",
+      "ref": "Permen ESDM 2/2024",
+      "label": "Rooftop photovoltaic generation on licensed utility grid",
+      "sector": "electricity",
+      "source": "https://www.peraturan.go.id/files/permen-esdm-no-2-tahun-2024.pdf",
+      "note": "Quota, grid access and utility requirements are installation-specific.",
+      "status": "check_current",
+      "kind": "ministerial_regulation",
+      "owner": "ESDM / PLN",
+      "evidence": "official_record"
+    },
+    {
+      "id": "permen8",
+      "tier": "permen",
+      "ref": "Permen ESDM 8/2025",
+      "label": "Energy management",
+      "sector": "energy",
+      "source": "https://jdih.esdm.go.id/dokumen/peraturan?DokumenSearch%5Bjenis_peraturan%5D=5&page=14&per-page=5",
+      "note": "Energy audits and conservation compliance; verify regulated consumer applicability and thresholds.",
+      "status": "check_current",
+      "kind": "ministerial_regulation",
+      "owner": "ESDM",
+      "evidence": "official_record"
+    },
+    {
+      "id": "permen2service",
+      "tier": "permen",
+      "ref": "Permen ESDM 2/2025",
+      "label": "Electricity service quality and related costs amendment",
+      "sector": "electricity",
+      "source": "https://jdih.esdm.go.id/dokumen/peraturan?DokumenSearch%5Bjenis_peraturan%5D=75&page=6&per-page=5",
+      "note": "Amends Permen ESDM 27/2017 on service quality and costs, relevant to outage/service diligence.",
+      "status": "amending_instrument",
+      "kind": "ministerial_regulation",
+      "owner": "ESDM / PLN",
+      "evidence": "official_record"
+    },
+    {
+      "id": "permen14oil",
+      "tier": "permen",
+      "ref": "Permen ESDM 14/2025",
+      "label": "Oil & gas work-area cooperation for production",
+      "sector": "oilgas",
+      "source": "https://jdih.esdm.go.id/dokumen/index?page=3&per-page=100",
+      "note": "Regulatory instrument for upstream cooperation; specific contract impact requires review.",
+      "status": "check_current",
+      "kind": "ministerial_regulation",
+      "owner": "ESDM / Migas",
+      "evidence": "official_record"
+    },
+    {
+      "id": "kepmen188",
+      "tier": "decision",
+      "ref": "Kepmen ESDM 188.K/TL.03/MEM.L/2025",
+      "label": "PLN RUPTL 2025–2034 approval",
+      "sector": "electricity",
+      "source": "https://jdih.esdm.go.id/dokumen/view?id=2584",
+      "note": "Approves 69,512 MW generation/storage, 47,758 circuit-km transmission, 107,950 MVA substations as planned additions, not realized capacity.",
+      "status": "issued_plan_not_commissioned",
+      "kind": "administrative_decision",
+      "owner": "ESDM / PLN",
+      "evidence": "official_record"
+    },
+    {
+      "id": "kepmen77",
+      "tier": "decision",
+      "ref": "Kepmen ESDM 77.K/MG.01/MEM.M/2025",
+      "label": "Special gas users/prices for public electricity",
+      "sector": "oilgas",
+      "source": "https://jdih.esdm.go.id/dokumen/index?page=52&per-page=5",
+      "note": "Decision designates eligible public-electricity gas users and prices; beneficiary and amendment need independent confirmation.",
+      "status": "issued_review_scope",
+      "kind": "administrative_decision",
+      "owner": "ESDM / PLN",
+      "evidence": "official_record"
+    },
+    {
+      "id": "perdirjen2007",
+      "tier": "dirjen",
+      "ref": "Perdirjen LPE 421-12/40/600.3/2007",
+      "label": "Historical electricity competence-certification supervision guide",
+      "sector": "electricity",
+      "source": "https://jdih.esdm.go.id/dokumen/download?id=djlpe-421-12-2007.pdf",
+      "note": "Historic sample illustrating Director-General rules. Referenced earlier statutes; CURRENT ENFORCEABILITY UNVERIFIED. Not a live compliance checklist.",
+      "status": "archival_not_verified",
+      "kind": "director_general_regulation",
+      "owner": "Dirjen Gatrik (historic)",
+      "evidence": "official_record"
+    },
+    {
+      "id": "slo",
+      "tier": "technical",
+      "ref": "SLO & technical electrical certification",
+      "label": "Installation and operating safety evidence",
+      "sector": "electricity",
+      "source": "https://gatrik.esdm.go.id/",
+      "note": "Technical compliance workstream, not one standalone named law. SLO criteria depend on installation class and latest implementing regulation.",
+      "status": "project_specific",
+      "kind": "implementation_evidence",
+      "owner": "ESDM / accredited inspectors",
+      "evidence": "official_record"
+    },
+    {
+      "id": "amdal",
+      "tier": "technical",
+      "ref": "AMDAL / UKL-UPL / water approvals",
+      "label": "Project-specific environment screening",
+      "sector": "environment",
+      "source": "https://peraturan.go.id/files/Salinan%2BPP%2BNomor%2B22%2BTahun%2B2021.pdf",
+      "note": "Applicable assessment depends on project size/location and applicable threshold lists; approval is not automatically implied.",
+      "status": "project_specific",
+      "kind": "implementation_evidence",
+      "owner": "KLH / regional authorities",
+      "evidence": "official_record"
+    },
+    {
+      "id": "oss",
+      "tier": "technical",
+      "ref": "OSS / NIB / KBLI verification",
+      "label": "Project-specific risk-based license file",
+      "sector": "cross",
+      "source": "https://oss.go.id/",
+      "note": "Project-by-project KBLI/OSS license, sector PB UMKU, site and tenure evidence required.",
+      "status": "project_specific",
+      "kind": "implementation_evidence",
+      "owner": "Investment Ministry / OSS",
+      "evidence": "official_record"
+    },
+    {
+      "id": "grid",
+      "tier": "technical",
+      "ref": "PLN point-of-connection & N-1 study",
+      "label": "Firm connection, reliability and operational readiness",
+      "sector": "electricity",
+      "source": "https://jdih.esdm.go.id/dokumen/view?id=2584",
+      "note": "No project is verified energized from RUPTL approvals; request PLN local substation/feeder, energization dates, N-1, COD and actual contracted power.",
+      "status": "project_specific",
+      "kind": "implementation_evidence",
+      "owner": "PLN / PLN Batam",
+      "evidence": "official_record"
+    },
+    {
+      "id": "pdp",
+      "tier": "technical",
+      "ref": "Data protection compliance file",
+      "label": "DPIA, contracts, controls and incident readiness",
+      "sector": "digital",
+      "source": "https://peraturan.go.id/id/uu-no-27-tahun-2022",
+      "note": "Responsibility depends on controller/processor role and facts. Cybersecurity law and AI draft status assessed separately.",
+      "status": "project_specific",
+      "kind": "implementation_evidence",
+      "owner": "Komdigi / operating entity",
+      "evidence": "official_record"
+    },
+    {
+      "id": "carbon_mrv",
+      "tier": "technical",
+      "ref": "GHG MRV and carbon entitlement",
+      "label": "Measure, report, verify and attribute carbon claims",
+      "sector": "carbon",
+      "source": "https://peraturan.go.id/id/perpres-no-110-tahun-2025",
+      "note": "Carbon value or offset cannot be presumed solely by procurement of renewable generation or CCS equipment.",
+      "status": "project_specific",
+      "kind": "implementation_evidence",
+      "owner": "KLH / carbon ecosystem",
+      "evidence": "official_record"
+    }
+  ],
+  "edges": [
+    {
+      "from": "uud",
+      "to": "uu30energy",
+      "type": "constitutional_context"
+    },
+    {
+      "from": "uud",
+      "to": "uu30power",
+      "type": "constitutional_context"
+    },
+    {
+      "from": "uud",
+      "to": "uu22oil",
+      "type": "constitutional_context"
+    },
+    {
+      "from": "uud",
+      "to": "uu4minerba",
+      "type": "constitutional_context"
+    },
+    {
+      "from": "uu12",
+      "to": "pp28",
+      "type": "legal_hierarchy_context"
+    },
+    {
+      "from": "uu6",
+      "to": "pp28",
+      "type": "implementation"
+    },
+    {
+      "from": "pp28",
+      "to": "pp5old",
+      "type": "repeals"
+    },
+    {
+      "from": "uu30energy",
+      "to": "pp40",
+      "type": "implements"
+    },
+    {
+      "from": "pp40",
+      "to": "pp79old",
+      "type": "repeals"
+    },
+    {
+      "from": "pp40",
+      "to": "pres22ruen",
+      "type": "transition_review"
+    },
+    {
+      "from": "uu30energy",
+      "to": "pres22ruen",
+      "type": "policy_alignment"
+    },
+    {
+      "from": "uu30power",
+      "to": "pp14power",
+      "type": "implements"
+    },
+    {
+      "from": "uu30power",
+      "to": "pp25energy",
+      "type": "implements"
+    },
+    {
+      "from": "pp25energy",
+      "to": "permen11",
+      "type": "implements"
+    },
+    {
+      "from": "permen11",
+      "to": "slo",
+      "type": "compliance_check"
+    },
+    {
+      "from": "pp25energy",
+      "to": "kepmen188",
+      "type": "planning_approval_context"
+    },
+    {
+      "from": "kepmen188",
+      "to": "grid",
+      "type": "planning_reference"
+    },
+    {
+      "from": "uu6",
+      "to": "pp22env",
+      "type": "policy_relation"
+    },
+    {
+      "from": "uu32env",
+      "to": "pp22env",
+      "type": "implements"
+    },
+    {
+      "from": "pp22env",
+      "to": "amdal",
+      "type": "compliance_check"
+    },
+    {
+      "from": "uu4minerba",
+      "to": "uu3minerba",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu4minerba",
+      "to": "uu2minerba",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu4minerba",
+      "to": "pp96min",
+      "type": "implements"
+    },
+    {
+      "from": "pp96min",
+      "to": "pp25min",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu27pdp",
+      "to": "pdp",
+      "type": "compliance_check"
+    },
+    {
+      "from": "uu6",
+      "to": "oss",
+      "type": "compliance_check"
+    },
+    {
+      "from": "pp28",
+      "to": "oss",
+      "type": "compliance_check"
+    },
+    {
+      "from": "uu30energy",
+      "to": "pres112",
+      "type": "policy_relation"
+    },
+    {
+      "from": "pres112",
+      "to": "permen5",
+      "type": "implements"
+    },
+    {
+      "from": "uu30power",
+      "to": "permen2solar",
+      "type": "policy_relation"
+    },
+    {
+      "from": "uu30power",
+      "to": "permen2service",
+      "type": "policy_relation"
+    },
+    {
+      "from": "pp40",
+      "to": "perda_jabar",
+      "type": "harmonization_review"
+    },
+    {
+      "from": "pp40",
+      "to": "perda_jateng",
+      "type": "harmonization_review"
+    },
+    {
+      "from": "pp40",
+      "to": "perda_kepri",
+      "type": "harmonization_review"
+    },
+    {
+      "from": "uu23local",
+      "to": "perda_jabar",
+      "type": "regional_authority_context"
+    },
+    {
+      "from": "uu23local",
+      "to": "perda_jateng",
+      "type": "regional_authority_context"
+    },
+    {
+      "from": "uu23local",
+      "to": "perda_kepri",
+      "type": "regional_authority_context"
+    },
+    {
+      "from": "uu22oil",
+      "to": "permen14oil",
+      "type": "implementation_context"
+    },
+    {
+      "from": "uu22oil",
+      "to": "kepmen77",
+      "type": "implementation_context"
+    },
+    {
+      "from": "uu30energy",
+      "to": "permen8",
+      "type": "policy_relation"
+    },
+    {
+      "from": "pres14ccs",
+      "to": "carbon_mrv",
+      "type": "compliance_interaction"
+    },
+    {
+      "from": "pres110carbon",
+      "to": "carbon_mrv",
+      "type": "compliance_check"
+    },
+    {
+      "from": "uu32env",
+      "to": "pres14ccs",
+      "type": "policy_interaction"
+    },
+    {
+      "from": "uu30power",
+      "to": "perdirjen2007",
+      "type": "historical_reference"
+    },
+    {
+      "from": "permen11",
+      "to": "grid",
+      "type": "operational_diligence"
+    }
+  ],
+  "cases": [
+    {
+      "id": "power_dc",
+      "name": "AI Data Center · grid connection",
+      "sector": "digital",
+      "geo": "Bekasi / Batam / Batang",
+      "basis": [
+        "uu6",
+        "pp28",
+        "uu30power",
+        "permen11",
+        "kepmen188",
+        "pp22env",
+        "uu27pdp",
+        "grid",
+        "amdal",
+        "pdp"
+      ],
+      "issues": [
+        {
+          "id": "permits",
+          "title": "Multitrack OSS + electricity licensing",
+          "exposure": 4,
+          "reason": "A data center project may combine zoning, business licensing, direct energy arrangements and environmental approvals.",
+          "evidence": "legal_structure_not_project_permits",
+          "mitigation": "Trace KBLI and permit issuers; request NIB, IUPTL/private supply documentation and PB UMKU where applicable."
+        },
+        {
+          "id": "power",
+          "title": "Energy availability vs RUPTL pipeline",
+          "exposure": 5,
+          "reason": "RUPTL plan and contracted power do not prove commissioning, N-1 headroom or site-level firm power.",
+          "evidence": "known_data_gap",
+          "mitigation": "Require PLN/PLN Batam connection agreement, substation reservation, COD and grid study."
+        },
+        {
+          "id": "environment",
+          "title": "Cooling/water and AMDAL",
+          "exposure": 4,
+          "reason": "Cooling efficiency, water discharge and environmental approval depend on site and design.",
+          "evidence": "project_dependent",
+          "mitigation": "Confirm water sourcing permits, environmental approval, effluent and cooling technology."
+        },
+        {
+          "id": "change",
+          "title": "Transition from PP 5 to PP 28",
+          "exposure": 3,
+          "reason": "Licensing files must be reviewed under PP 28/2025, not legacy PP 5/2021.",
+          "evidence": "verified_regulatory_change",
+          "mitigation": "Update OSS checklist and transition provisions by KBLI and filing date."
+        },
+        {
+          "id": "privacy",
+          "title": "PDP / cloud-service obligations",
+          "exposure": 4,
+          "reason": "Cloud/data handling activates role-specific PDP compliance requirements.",
+          "evidence": "law_issued_fact_dependent",
+          "mitigation": "Map controller/processor, DPA, security controls and transfer treatment."
+        },
+        {
+          "id": "delivery",
+          "title": "Project execution evidence",
+          "exposure": 5,
+          "reason": "Investor announcements may not equal financing close, commissioned GPU fleet or active data center MW.",
+          "evidence": "known_data_gap",
+          "mitigation": "Verify grid energization, financing close, capacity type, commissioning and installed compute."
+        }
+      ]
+    },
+    {
+      "id": "renewables",
+      "name": "Renewable IPP · utility-scale solar/hydro",
+      "sector": "electricity",
+      "geo": "National / provincial",
+      "basis": [
+        "uu30energy",
+        "uu30power",
+        "pp40",
+        "pres112",
+        "permen5",
+        "kepmen188",
+        "pp22env",
+        "grid"
+      ],
+      "issues": [
+        {
+          "id": "permits",
+          "title": "Licensing and site access",
+          "exposure": 4,
+          "reason": "Energy, land, spatial planning and environmental approvals intersect.",
+          "evidence": "general_framework",
+          "mitigation": "Document land rights, grid access, KBLI and environmental obligations."
+        },
+        {
+          "id": "power",
+          "title": "Transmission capacity & connection",
+          "exposure": 5,
+          "reason": "Available network headroom and curtailment conditions may be unknown at candidate location.",
+          "evidence": "grid_specific",
+          "mitigation": "Require grid studies and utility commissioning timetable."
+        },
+        {
+          "id": "environment",
+          "title": "Environmental and social safeguards",
+          "exposure": 4,
+          "reason": "Land and water impacts can affect schedule and project consent.",
+          "evidence": "project_dependent",
+          "mitigation": "Assess AMDAL/UKL-UPL and community process."
+        },
+        {
+          "id": "change",
+          "title": "Commercial rule stability",
+          "exposure": 3,
+          "reason": "Renewable tariff and PPA terms vary with implementation rules.",
+          "evidence": "instrument_specific",
+          "mitigation": "Apply Permen ESDM 5/2025 clauses to signed PJBL."
+        },
+        {
+          "id": "privacy",
+          "title": "Digital metering / data controls",
+          "exposure": 2,
+          "reason": "Operational data arrangements and smart-grid requirements may affect design.",
+          "evidence": "potential_exposure",
+          "mitigation": "Confirm telemetry and cyber duties."
+        },
+        {
+          "id": "delivery",
+          "title": "Financing and COD certainty",
+          "exposure": 5,
+          "reason": "National RUPTL plans do not establish project financial close.",
+          "evidence": "pipeline_gap",
+          "mitigation": "Check PJBL, guarantees, EPC/finance and COD milestones."
+        }
+      ]
+    },
+    {
+      "id": "minerba",
+      "name": "Mineral & coal investment / smelter",
+      "sector": "minerba",
+      "geo": "National + industrial clusters",
+      "basis": [
+        "uu4minerba",
+        "uu2minerba",
+        "pp96min",
+        "pp25min",
+        "pp28",
+        "pp22env",
+        "amdal"
+      ],
+      "issues": [
+        {
+          "id": "permits",
+          "title": "Mining rights & processing permits",
+          "exposure": 5,
+          "reason": "Latest mining-amendment framework and OSS/sectoral permissions must be read together.",
+          "evidence": "verified_amendments",
+          "mitigation": "Consolidate IUP/IUPK, RKAB and downstream permits by entity."
+        },
+        {
+          "id": "power",
+          "title": "Smelter grid dependency",
+          "exposure": 4,
+          "reason": "Large power draw can depend on PLN or own generation.",
+          "evidence": "general_industry",
+          "mitigation": "Check grid agreement, captive power and fuel supply."
+        },
+        {
+          "id": "environment",
+          "title": "Environmental and tailings impacts",
+          "exposure": 5,
+          "reason": "Environmental management obligations can affect feasibility and public confidence.",
+          "evidence": "project_specific",
+          "mitigation": "Review AMDAL, water/tailings permits and monitoring."
+        },
+        {
+          "id": "change",
+          "title": "Post-2025 concession and license rules",
+          "exposure": 5,
+          "reason": "UU 2/2025 and PP changes warrant contract-by-contract legal review.",
+          "evidence": "verified_amendment",
+          "mitigation": "Check transition and implementing rules for the project type."
+        },
+        {
+          "id": "privacy",
+          "title": "Compliance data and reporting",
+          "exposure": 2,
+          "reason": "Digital reporting systems can have specific obligations.",
+          "evidence": "general",
+          "mitigation": "Review e-RKAB and sector reporting channels."
+        },
+        {
+          "id": "delivery",
+          "title": "Export / downstream project execution",
+          "exposure": 4,
+          "reason": "Processing milestones and market constraints may shift financial outcomes.",
+          "evidence": "commercial_inference",
+          "mitigation": "Confirm commissioning, feedstock and off-take terms."
+        }
+      ]
+    },
+    {
+      "id": "oilgas",
+      "name": "Oil & gas upstream / gas-to-power",
+      "sector": "oilgas",
+      "geo": "National",
+      "basis": [
+        "uu22oil",
+        "permen14oil",
+        "kepmen77",
+        "pp28",
+        "pp22env"
+      ],
+      "issues": [
+        {
+          "id": "permits",
+          "title": "Upstream/downstream jurisdiction",
+          "exposure": 4,
+          "reason": "SKK Migas upstream and downstream commercial regimes differ.",
+          "evidence": "sectoral_structure",
+          "mitigation": "Identify PSC/working area, licensing entity and oversight chain."
+        },
+        {
+          "id": "power",
+          "title": "Fuel reliability",
+          "exposure": 4,
+          "reason": "Gas allocation for electricity requires concrete contracted supply and transport.",
+          "evidence": "scope_specific",
+          "mitigation": "Check gas nominations, pipelines and HGBT eligibility."
+        },
+        {
+          "id": "environment",
+          "title": "Methane & site permits",
+          "exposure": 4,
+          "reason": "Site emissions and environmental permits vary by installation.",
+          "evidence": "project_specific",
+          "mitigation": "Verify environmental approval, venting/flaring and monitoring."
+        },
+        {
+          "id": "change",
+          "title": "Contract and gas price framework",
+          "exposure": 4,
+          "reason": "Operational contracts and administered gas-price decisions are source/recipient specific.",
+          "evidence": "ministerial_decision",
+          "mitigation": "Check beneficiary schedule and most recent amended price decision."
+        },
+        {
+          "id": "privacy",
+          "title": "Cyber operational controls",
+          "exposure": 3,
+          "reason": "Critical infrastructure may face operational cybersecurity threats.",
+          "evidence": "threat_scenario",
+          "mitigation": "Assess security and incident practices."
+        },
+        {
+          "id": "delivery",
+          "title": "Reservoir/production execution risk",
+          "exposure": 5,
+          "reason": "Reserve and field maturity constrain delivery independently of licenses.",
+          "evidence": "technical_risk",
+          "mitigation": "Require verified production and reserve data."
+        }
+      ]
+    },
+    {
+      "id": "carbon",
+      "name": "Carbon markets & CCS",
+      "sector": "carbon",
+      "geo": "National",
+      "basis": [
+        "pp40",
+        "pres14ccs",
+        "pres110carbon",
+        "pp22env",
+        "carbon_mrv"
+      ],
+      "issues": [
+        {
+          "id": "permits",
+          "title": "Transport / storage authorization",
+          "exposure": 5,
+          "reason": "Storage permissions differ from carbon-unit recognition and markets.",
+          "evidence": "separate_legal_regimes",
+          "mitigation": "Map project-specific exploration, injection, storage and monitoring licenses."
+        },
+        {
+          "id": "power",
+          "title": "Energy penalty and supply",
+          "exposure": 4,
+          "reason": "CCS equipment adds energy demand.",
+          "evidence": "technical_inference",
+          "mitigation": "Calculate capture compression loads and supply contracts."
+        },
+        {
+          "id": "environment",
+          "title": "Storage environmental monitoring",
+          "exposure": 5,
+          "reason": "Containment, leakage and post-closure liability need verified plans.",
+          "evidence": "high_consequence",
+          "mitigation": "Obtain environmental monitoring and long-term stewardship terms."
+        },
+        {
+          "id": "change",
+          "title": "Carbon MRV and attribute rules",
+          "exposure": 5,
+          "reason": "Eligible units, registries, transfers and accounting depend on applicable newer instruments.",
+          "evidence": "regulation_change",
+          "mitigation": "Validate against Perpres 110/2025 and operational implementing rules."
+        },
+        {
+          "id": "privacy",
+          "title": "Registry and data reliability",
+          "exposure": 3,
+          "reason": "Audit trail integrity is needed for credible credits.",
+          "evidence": "market_integrity",
+          "mitigation": "Require MRV records and independent verifier."
+        },
+        {
+          "id": "delivery",
+          "title": "Carbon-price and revenue certainty",
+          "exposure": 5,
+          "reason": "Policy announcement alone does not create guaranteed carbon credit revenue.",
+          "evidence": "market_assumption",
+          "mitigation": "Conservative revenue underwriting and contracted buyers."
+        }
+      ]
+    }
+  ]
+}
