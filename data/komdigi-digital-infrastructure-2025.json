@@ -16,7 +16,8 @@
     "2025 4G population footprint and 5G settlement-area footprint have DIFFERENT denominators.",
     "SATRIA-1 gateway IP HUB capacity is distinct from provisioned IP transit or actual throughput.",
     "Palapa Ring East microwave Gbps is converted from 5,500/5,050 Mbps solely for visualization; its 2025 reported 91.81% utilization is kept.",
-    "Figure 3.25 provincial SPLP displayed labels sum to 371 connected of 542 available units, but the headline says 378 of 546 local governments. Preserve printed provincial fractions and headline separately without forcing a reconciliation."
+    "Figure 3.25 provincial SPLP displayed labels sum to 371 connected of 542 available units, but the headline says 378 of 546 local governments. Preserve printed provincial fractions and headline separately without forcing a reconciliation.",
+    "Digital-space content blocking statistics count access-block actions, not cybersecurity incidents or confirmed breaches. Privacy (PDP) potential findings are not adjudicated violations."
   ],
   "metrics": [
     {
@@ -1173,5 +1174,95 @@
   },
   "source_publication_url": "https://eppid.komdigi.go.id/informasi-publik/detail/550",
   "source_pdf_url": "https://eppid.komdigi.go.id/attachments/045866d0b76dd70f7000f8747bdf5e1e8e059b90a1a5a81aa9eb6c7068bcb920/fa1898f3b7f2672c03afd8682a6187d1ece86d3114c6a1a52d8a51fe86a81ae0.pdf",
-  "report_signed_date": "2026-04-13"
+  "report_signed_date": "2026-04-13",
+  "security": {
+    "source_pages": [
+      123,
+      124,
+      125,
+      168,
+      169,
+      170
+    ],
+    "blocked": {
+      "period": "2025-01-01 to 2025-12-31",
+      "total": 2737962,
+      "website": 2358557,
+      "social_platform": 379405,
+      "unit": "access blocks of content",
+      "caveat": "Access blocks counted, not unique incidents, lost investment, cyber intrusions or number of regulated firms. Website and social channel subtotals are disjoint as presented in Figure 3.14.",
+      "pdf_page": 123
+    },
+    "blocked_website_categories": [
+      {
+        "name": "Online gambling",
+        "blocks": 1809358,
+        "pdf_page": 123
+      },
+      {
+        "name": "Pornography",
+        "blocks": 534836,
+        "pdf_page": 123
+      },
+      {
+        "name": "Other categories",
+        "blocks": 14363,
+        "pdf_page": 123
+      }
+    ],
+    "blocked_social_categories": [
+      {
+        "name": "File sharing",
+        "blocks": 136654,
+        "pdf_page": 123
+      },
+      {
+        "name": "Meta",
+        "blocks": 130894,
+        "pdf_page": 123
+      },
+      {
+        "name": "X",
+        "blocks": 48188,
+        "pdf_page": 123
+      },
+      {
+        "name": "Google",
+        "blocks": 45900,
+        "pdf_page": 123
+      },
+      {
+        "name": "Other",
+        "blocks": 17769,
+        "pdf_page": 123
+      }
+    ],
+    "category_actions": [
+      {
+        "name": "Online gambling (web & social)",
+        "blocks": 2087109,
+        "pdf_page": 125
+      },
+      {
+        "name": "Pornography (web & social)",
+        "blocks": 581549,
+        "pdf_page": 125
+      }
+    ],
+    "personal_data": {
+      "potential_findings_total": 130,
+      "website_findings": 112,
+      "mobile_app_findings": 18,
+      "pse_assessed": 64,
+      "compliance_percent": 78,
+      "systems_overseen": 300,
+      "pdf_page": 168,
+      "caveat": "130 are suspected/potential PDP violations subject to follow-up, not judicial determinations or confirmed security breaches. Compliance percentage reflects maturity assessment of 64 PSE, not all Indonesia PSE."
+    },
+    "pse_content_regulation": {
+      "saman_ugc_platforms_monitored": 18,
+      "pdf_page": 170,
+      "scope": "18 UGC electronic-system providers under SAMAN oversight in the 2025 report; monitoring coverage does not establish enforcement action against all 18."
+    }
+  }
 }
