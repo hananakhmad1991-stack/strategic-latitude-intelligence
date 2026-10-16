@@ -1,5 +1,8 @@
 name: SLI BNPB Provincial Disaster Sync
 on:
+  push:
+    paths:
+      - 'scripts/sync_bnpb_provinces.py'
   workflow_dispatch:
   schedule:
     - cron: '17 3 * * 1'
