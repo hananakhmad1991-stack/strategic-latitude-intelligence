@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "provider": "World Bank WDI",
+  "country": "IDN",
+  "last_success_utc": null,
+  "last_attempt_utc": null,
+  "status": "awaiting_initial_api_sync",
+  "series": {},
+  "indicator_status": {},
+  "api_docs": "https://datahelpdesk.worldbank.org/knowledgebase/articles/898599-indicator-api-queries",
+  "notes": [
+    "World Bank annual series will populate only after successful official API download; no fabricated historical data.",
+    "Latest official national releases remain separate and may be newer than WDI annual observations.",
+    "WDI ILO-modeled unemployment differs in method from the BPS Sakernas unemployment rate.",
+    "WDI Gini uses 0–100; BPS March 2026 Gini uses 0–1.",
+    "World Bank general government/central debt series may have gaps or missing recent years."
+  ]
+}
