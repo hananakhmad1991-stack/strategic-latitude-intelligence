@@ -51,7 +51,7 @@ assert.ok(d.digital_applications.items.find(x=>x.name==="e-POD").source_status.i
 const sp=d.spektrum_iog;
 assert.equal(sp.status.reduce((s,x)=>s+x.count,0),50);
 assert.deepEqual(sp.status.map(x=>x.count),[7,9,16,18]);
-assert.match(sp.source_figure_discrepancy,/figure p148 labels Initial Registration 7/);
+assert.match(sp.source_figure_discrepancy,/Figure 6\.6 p148 labels Initial Registration 7/);
 assert.equal(sp.data_quality.ppdm_39_mapping_percent_tier2_tier3,35);
 assert.equal(sp.data_quality.psc_with_gis_specialist_constraints,28);
 assert.equal(sp.data_quality.non_pertamina_psc_without_mpls,43);
