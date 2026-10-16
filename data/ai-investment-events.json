@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-10-16",
+  "method": "Public-source event ledger. Historical entries are documented milestones, not continuously observed time-series. Do not connect events as actual operating-capacity changes.",
+  "events": [
+    {
+      "project_id": "digital-edge-cgk",
+      "date": "2026-06-01",
+      "type": "construction",
+      "label": "CGK1 topping-out reported",
+      "stage": "under_construction",
+      "mw": null,
+      "usd_bn": null,
+      "source": "https://www.digitaledgedc.com/",
+      "review": "reference_requires_release_confirmation"
+    },
+    {
+      "project_id": "pdg-jc3",
+      "date": "2025-11-19",
+      "type": "construction",
+      "label": "JC3 groundbreaking / 120 MW planned",
+      "stage": "under_construction",
+      "mw": 120,
+      "usd_bn": 1,
+      "source": "https://princetondg.com/press-releases/princeton-digital-group-breaks-ground-on-milestone-usd-1-billion-120-mw-greater-jakarta-campus/",
+      "review": "public_announcement"
+    },
+    {
+      "project_id": "pdg-jc4",
+      "date": "2026-04-30",
+      "type": "capacity_announcement",
+      "label": "240 MW powered land acquisition announced",
+      "stage": "under_construction",
+      "mw": 240,
+      "usd_bn": null,
+      "source": "https://princetondg.com/press-releases/pdg-acquires-240-mw-of-powered-land-in-jakarta-advancing-its-rapid-expansion-across-asia/",
+      "review": "public_announcement"
+    },
+    {
+      "project_id": "zankore-batang",
+      "date": "2026-09-09",
+      "type": "financing",
+      "label": "AI infrastructure development and financing reported",
+      "stage": "planning_financing",
+      "mw": null,
+      "usd_bn": null,
+      "source": "https://zankore.com/zankore-expands-southeast-asias-ai-compute-infrastructure-with-nvidia",
+      "review": "public_announcement"
+    },
+    {
+      "project_id": "aws-jakarta",
+      "date": "2021-12-14",
+      "type": "operations",
+      "label": "Asia Pacific Jakarta cloud region launched",
+      "stage": "operational_cloud",
+      "mw": null,
+      "usd_bn": null,
+      "source": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/",
+      "review": "public_announcement"
+    },
+    {
+      "project_id": "microsoft-indonesia",
+      "date": "2025-05-27",
+      "type": "operations",
+      "label": "Indonesia Central cloud region launched",
+      "stage": "operational_cloud",
+      "mw": null,
+      "usd_bn": null,
+      "source": "https://news.microsoft.com/",
+      "review": "source_page_needs_direct_release"
+    },
+    {
+      "project_id": "range-batam",
+      "date": "2026-05-01",
+      "type": "power",
+      "label": "PLN Batam power agreement reported",
+      "stage": "planning_power",
+      "mw": null,
+      "usd_bn": null,
+      "source": "https://bpbatam.go.id/",
+      "review": "source_page_needs_direct_release"
+    },
+    {
+      "project_id": "dayone-firmus",
+      "date": "2026-04-01",
+      "type": "power",
+      "label": "DayOne / PLN Batam power agreement reported",
+      "stage": "planning_power",
+      "mw": null,
+      "usd_bn": null,
+      "source": "https://www.dayonedc.com/",
+      "review": "source_page_needs_direct_release"
+    },
+    {
+      "project_id": "coreweave-indonesia",
+      "date": "2026-08-01",
+      "type": "capacity_announcement",
+      "label": "360 MW IT power expansion announced",
+      "stage": "announced",
+      "mw": 360,
+      "usd_bn": null,
+      "source": "https://www.coreweave.com/",
+      "review": "source_page_needs_direct_release"
+    }
+  ]
+}
