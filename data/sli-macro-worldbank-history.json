@@ -2,17 +2,2518 @@
   "schema_version": "1.0",
   "provider": "World Bank WDI",
   "country": "IDN",
-  "last_success_utc": null,
-  "last_attempt_utc": null,
-  "status": "awaiting_initial_api_sync",
-  "series": {},
-  "indicator_status": {},
+  "last_attempt_utc": "2026-10-16T14:58:18Z",
+  "last_success_utc": "2026-10-16T14:58:18Z",
+  "status": "partial_update",
+  "attempted_indicators": 17,
+  "successful_indicators_this_run": 16,
   "api_docs": "https://datahelpdesk.worldbank.org/knowledgebase/articles/898599-indicator-api-queries",
   "notes": [
-    "World Bank annual series will populate only after successful official API download; no fabricated historical data.",
-    "Latest official national releases remain separate and may be newer than WDI annual observations.",
-    "WDI ILO-modeled unemployment differs in method from the BPS Sakernas unemployment rate.",
-    "WDI Gini uses 0–100; BPS March 2026 Gini uses 0–1.",
-    "World Bank general government/central debt series may have gaps or missing recent years."
-  ]
+    "Annual WDI observations do not describe current-month official national release dates.",
+    "Unemployment is ILO modeled WDI, not February BPS Sakernas.",
+    "Gini WDI is 0-100 and cannot be drawn directly on BPS 0-1 scale.",
+    "World Bank poverty line definitions may differ; read indicator code and source notes.",
+    "WDI fiscal balance/debt data can be sparse; unavailable is not zero."
+  ],
+  "indicator_status": {
+    "annual_gdp_constant": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_gdp_growth": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_gdp_per_capita_usd": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_gdp_usd": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_inflation": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_fx": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_gini": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 31
+    },
+    "annual_poverty_national": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 28
+    },
+    "annual_exports_goods_services": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_unemployment": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 35
+    },
+    "annual_external_balance": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_imports_goods_services": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_current_account": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_reserves": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 36
+    },
+    "annual_employment_ratio": {
+      "status": "ok",
+      "last_year": 2025,
+      "observations": 35
+    },
+    "annual_gov_debt": {
+      "status": "ok",
+      "last_year": 2009,
+      "observations": 14
+    },
+    "annual_gov_balance": {
+      "status": "error",
+      "error": "Unexpected WDI response schema",
+      "preserved_prior": false
+    }
+  },
+  "series": {
+    "annual_gdp_constant": {
+      "id": "annual_gdp_constant",
+      "indicator": "NY.GDP.MKTP.KD",
+      "name": "GDP constant USD",
+      "category": "Growth & Production",
+      "unit": "USD billion",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/NY.GDP.MKTP.KD?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 269.915108912607
+        },
+        {
+          "year": 1991,
+          "value": 288.571594912183
+        },
+        {
+          "year": 1992,
+          "value": 307.32155309731405
+        },
+        {
+          "year": 1993,
+          "value": 327.28641542863005
+        },
+        {
+          "year": 1994,
+          "value": 351.96371655149403
+        },
+        {
+          "year": 1995,
+          "value": 380.89516009394504
+        },
+        {
+          "year": 1996,
+          "value": 410.674256276219
+        },
+        {
+          "year": 1997,
+          "value": 429.975448805372
+        },
+        {
+          "year": 1998,
+          "value": 373.533751956055
+        },
+        {
+          "year": 1999,
+          "value": 376.488874892846
+        },
+        {
+          "year": 2000,
+          "value": 395.01238259755604
+        },
+        {
+          "year": 2001,
+          "value": 409.404526219842
+        },
+        {
+          "year": 2002,
+          "value": 427.825582126161
+        },
+        {
+          "year": 2003,
+          "value": 448.277224148753
+        },
+        {
+          "year": 2004,
+          "value": 470.82948621989806
+        },
+        {
+          "year": 2005,
+          "value": 497.63179044244004
+        },
+        {
+          "year": 2006,
+          "value": 525.006275302523
+        },
+        {
+          "year": 2007,
+          "value": 558.318040161892
+        },
+        {
+          "year": 2008,
+          "value": 591.893632243067
+        },
+        {
+          "year": 2009,
+          "value": 619.2916260173831
+        },
+        {
+          "year": 2010,
+          "value": 657.8354337735179
+        },
+        {
+          "year": 2011,
+          "value": 698.4224604791971
+        },
+        {
+          "year": 2012,
+          "value": 740.537688618414
+        },
+        {
+          "year": 2013,
+          "value": 781.6913206906991
+        },
+        {
+          "year": 2014,
+          "value": 820.8280132305881
+        },
+        {
+          "year": 2015,
+          "value": 860.854232686214
+        },
+        {
+          "year": 2016,
+          "value": 904.181621780388
+        },
+        {
+          "year": 2017,
+          "value": 950.021694164001
+        },
+        {
+          "year": 2018,
+          "value": 999.1785863090211
+        },
+        {
+          "year": 2019,
+          "value": 1049.33023399745
+        },
+        {
+          "year": 2020,
+          "value": 1027.6561938853802
+        },
+        {
+          "year": 2021,
+          "value": 1065.7091273968601
+        },
+        {
+          "year": 2022,
+          "value": 1122.2684126502
+        },
+        {
+          "year": 2023,
+          "value": 1178.92985017516
+        },
+        {
+          "year": 2024,
+          "value": 1238.26037638151
+        },
+        {
+          "year": 2025,
+          "value": 1301.5118190083601
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_gdp_growth": {
+      "id": "annual_gdp_growth",
+      "indicator": "NY.GDP.MKTP.KD.ZG",
+      "name": "Real GDP growth",
+      "category": "Growth & Production",
+      "unit": "% annual",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/NY.GDP.MKTP.KD.ZG?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 7.24213163856464
+        },
+        {
+          "year": 1991,
+          "value": 6.91198283591309
+        },
+        {
+          "year": 1992,
+          "value": 6.49750651682714
+        },
+        {
+          "year": 1993,
+          "value": 6.49640812045304
+        },
+        {
+          "year": 1994,
+          "value": 7.53997109551439
+        },
+        {
+          "year": 1995,
+          "value": 8.22000739903493
+        },
+        {
+          "year": 1996,
+          "value": 7.81818707670867
+        },
+        {
+          "year": 1997,
+          "value": 4.69987885390397
+        },
+        {
+          "year": 1998,
+          "value": -13.1267254923818
+        },
+        {
+          "year": 1999,
+          "value": 0.79112608199847
+        },
+        {
+          "year": 2000,
+          "value": 4.9200677470169
+        },
+        {
+          "year": 2001,
+          "value": 3.64346644721492
+        },
+        {
+          "year": 2002,
+          "value": 4.49947539085764
+        },
+        {
+          "year": 2003,
+          "value": 4.78036912167654
+        },
+        {
+          "year": 2004,
+          "value": 5.03087394501685
+        },
+        {
+          "year": 2005,
+          "value": 5.69257130383384
+        },
+        {
+          "year": 2006,
+          "value": 5.50095178520348
+        },
+        {
+          "year": 2007,
+          "value": 6.34502222667214
+        },
+        {
+          "year": 2008,
+          "value": 6.01370360009123
+        },
+        {
+          "year": 2009,
+          "value": 4.62887118256153
+        },
+        {
+          "year": 2010,
+          "value": 6.22385418062366
+        },
+        {
+          "year": 2011,
+          "value": 6.16978420771008
+        },
+        {
+          "year": 2012,
+          "value": 6.03005065305615
+        },
+        {
+          "year": 2013,
+          "value": 5.5572636889101
+        },
+        {
+          "year": 2014,
+          "value": 5.006668425755
+        },
+        {
+          "year": 2015,
+          "value": 4.87632230022123
+        },
+        {
+          "year": 2016,
+          "value": 5.03306918280177
+        },
+        {
+          "year": 2017,
+          "value": 5.06978590134916
+        },
+        {
+          "year": 2018,
+          "value": 5.17429153955024
+        },
+        {
+          "year": 2019,
+          "value": 5.01928768046282
+        },
+        {
+          "year": 2020,
+          "value": -2.06551182934165
+        },
+        {
+          "year": 2021,
+          "value": 3.70288562827751
+        },
+        {
+          "year": 2022,
+          "value": 5.30719722664799
+        },
+        {
+          "year": 2023,
+          "value": 5.04883117855516
+        },
+        {
+          "year": 2024,
+          "value": 5.03257477088519
+        },
+        {
+          "year": 2025,
+          "value": 5.10808904438025
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_gdp_per_capita_usd": {
+      "id": "annual_gdp_per_capita_usd",
+      "indicator": "NY.GDP.PCAP.CD",
+      "name": "GDP per capita",
+      "category": "Growth & Production",
+      "unit": "current US$/person",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/NY.GDP.PCAP.CD?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 578.420121135382
+        },
+        {
+          "year": 1991,
+          "value": 624.387495384411
+        },
+        {
+          "year": 1992,
+          "value": 673.67103954742
+        },
+        {
+          "year": 1993,
+          "value": 817.395116417856
+        },
+        {
+          "year": 1994,
+          "value": 899.793982949817
+        },
+        {
+          "year": 1995,
+          "value": 1011.22614205568
+        },
+        {
+          "year": 1996,
+          "value": 1118.92133024129
+        },
+        {
+          "year": 1997,
+          "value": 1044.60674832472
+        },
+        {
+          "year": 1998,
+          "value": 454.877800792123
+        },
+        {
+          "year": 1999,
+          "value": 657.268934667018
+        },
+        {
+          "year": 2000,
+          "value": 763.711124950924
+        },
+        {
+          "year": 2001,
+          "value": 732.307093405708
+        },
+        {
+          "year": 2002,
+          "value": 881.002913569131
+        },
+        {
+          "year": 2003,
+          "value": 1043.2105838671
+        },
+        {
+          "year": 2004,
+          "value": 1126.84004447173
+        },
+        {
+          "year": 2005,
+          "value": 1238.21447629488
+        },
+        {
+          "year": 2006,
+          "value": 1558.31562847163
+        },
+        {
+          "year": 2007,
+          "value": 1823.21976255073
+        },
+        {
+          "year": 2008,
+          "value": 2124.55483920618
+        },
+        {
+          "year": 2009,
+          "value": 2218.48541852977
+        },
+        {
+          "year": 2010,
+          "value": 3065.68348377765
+        },
+        {
+          "year": 2011,
+          "value": 3579.46442466152
+        },
+        {
+          "year": 2012,
+          "value": 3632.27254030331
+        },
+        {
+          "year": 2013,
+          "value": 3566.60284506078
+        },
+        {
+          "year": 2014,
+          "value": 3441.06808464008
+        },
+        {
+          "year": 2015,
+          "value": 3288.22269725538
+        },
+        {
+          "year": 2016,
+          "value": 3521.46943457574
+        },
+        {
+          "year": 2017,
+          "value": 3798.88326174526
+        },
+        {
+          "year": 2018,
+          "value": 3860.95353090726
+        },
+        {
+          "year": 2019,
+          "value": 4106.94856160358
+        },
+        {
+          "year": 2020,
+          "value": 3853.70288774146
+        },
+        {
+          "year": 2021,
+          "value": 4287.17313995098
+        },
+        {
+          "year": 2022,
+          "value": 4730.83484836107
+        },
+        {
+          "year": 2023,
+          "value": 4876.2992959843
+        },
+        {
+          "year": 2024,
+          "value": 4925.43644992666
+        },
+        {
+          "year": 2025,
+          "value": 5059.62596411213
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_gdp_usd": {
+      "id": "annual_gdp_usd",
+      "indicator": "NY.GDP.MKTP.CD",
+      "name": "GDP current USD",
+      "category": "Growth & Production",
+      "unit": "USD billion",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/NY.GDP.MKTP.CD?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 106.14072733363601
+        },
+        {
+          "year": 1991,
+          "value": 116.621996217133
+        },
+        {
+          "year": 1992,
+          "value": 128.026966579964
+        },
+        {
+          "year": 1993,
+          "value": 158.006700301533
+        },
+        {
+          "year": 1994,
+          "value": 176.89214393150502
+        },
+        {
+          "year": 1995,
+          "value": 202.132028723115
+        },
+        {
+          "year": 1996,
+          "value": 227.369679374973
+        },
+        {
+          "year": 1997,
+          "value": 215.748998609635
+        },
+        {
+          "year": 1998,
+          "value": 95.445547872715
+        },
+        {
+          "year": 1999,
+          "value": 140.00135121546202
+        },
+        {
+          "year": 2000,
+          "value": 165.02101207781
+        },
+        {
+          "year": 2001,
+          "value": 160.446947784909
+        },
+        {
+          "year": 2002,
+          "value": 195.660611165183
+        },
+        {
+          "year": 2003,
+          "value": 234.77246382380804
+        },
+        {
+          "year": 2004,
+          "value": 256.836875295452
+        },
+        {
+          "year": 2005,
+          "value": 285.86861919608504
+        },
+        {
+          "year": 2006,
+          "value": 364.57051561835704
+        },
+        {
+          "year": 2007,
+          "value": 432.21673777486103
+        },
+        {
+          "year": 2008,
+          "value": 510.22863499225804
+        },
+        {
+          "year": 2009,
+          "value": 539.580085612401
+        },
+        {
+          "year": 2010,
+          "value": 755.0941576219361
+        },
+        {
+          "year": 2011,
+          "value": 892.9691045631711
+        },
+        {
+          "year": 2012,
+          "value": 917.869913332649
+        },
+        {
+          "year": 2013,
+          "value": 912.524136718018
+        },
+        {
+          "year": 2014,
+          "value": 890.8147555335371
+        },
+        {
+          "year": 2015,
+          "value": 860.854232686214
+        },
+        {
+          "year": 2016,
+          "value": 931.877364037698
+        },
+        {
+          "year": 2017,
+          "value": 1015.61874415973
+        },
+        {
+          "year": 2018,
+          "value": 1042.27153298863
+        },
+        {
+          "year": 2019,
+          "value": 1119.0998713502
+        },
+        {
+          "year": 2020,
+          "value": 1059.0548426984801
+        },
+        {
+          "year": 2021,
+          "value": 1186.50969108673
+        },
+        {
+          "year": 2022,
+          "value": 1319.10118338015
+        },
+        {
+          "year": 2023,
+          "value": 1371.16692574988
+        },
+        {
+          "year": 2024,
+          "value": 1396.30178846169
+        },
+        {
+          "year": 2025,
+          "value": 1445.6425841638102
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_inflation": {
+      "id": "annual_inflation",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "name": "CPI inflation annual",
+      "category": "Prices & Monetary",
+      "unit": "% annual",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/FP.CPI.TOTL.ZG?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 7.81919756505634
+        },
+        {
+          "year": 1991,
+          "value": 9.41906784347004
+        },
+        {
+          "year": 1992,
+          "value": 7.52351006242677
+        },
+        {
+          "year": 1993,
+          "value": 9.6719108926401
+        },
+        {
+          "year": 1994,
+          "value": 8.53199829189143
+        },
+        {
+          "year": 1995,
+          "value": 9.42030300572995
+        },
+        {
+          "year": 1996,
+          "value": 7.97328096513345
+        },
+        {
+          "year": 1997,
+          "value": 6.22615154887213
+        },
+        {
+          "year": 1998,
+          "value": 58.4510413515525
+        },
+        {
+          "year": 1999,
+          "value": 20.4778324428892
+        },
+        {
+          "year": 2000,
+          "value": 3.68862037056681
+        },
+        {
+          "year": 2001,
+          "value": 11.5001160550887
+        },
+        {
+          "year": 2002,
+          "value": 11.9001200338413
+        },
+        {
+          "year": 2003,
+          "value": 6.75731256333564
+        },
+        {
+          "year": 2004,
+          "value": 6.06406189133647
+        },
+        {
+          "year": 2005,
+          "value": 10.4532001873347
+        },
+        {
+          "year": 2006,
+          "value": 13.1086709853459
+        },
+        {
+          "year": 2007,
+          "value": 6.40656087966004
+        },
+        {
+          "year": 2008,
+          "value": 10.2266663272482
+        },
+        {
+          "year": 2009,
+          "value": 4.38641311792073
+        },
+        {
+          "year": 2010,
+          "value": 5.13420639015885
+        },
+        {
+          "year": 2011,
+          "value": 5.35604849112582
+        },
+        {
+          "year": 2012,
+          "value": 4.2795142691943
+        },
+        {
+          "year": 2013,
+          "value": 6.41249457900391
+        },
+        {
+          "year": 2014,
+          "value": 6.39492882396559
+        },
+        {
+          "year": 2015,
+          "value": 6.36312061196646
+        },
+        {
+          "year": 2016,
+          "value": 3.52580452815451
+        },
+        {
+          "year": 2017,
+          "value": 3.80879857691948
+        },
+        {
+          "year": 2018,
+          "value": 3.19834755924996
+        },
+        {
+          "year": 2019,
+          "value": 3.0305846094166
+        },
+        {
+          "year": 2020,
+          "value": 1.91983527270792
+        },
+        {
+          "year": 2021,
+          "value": 1.56007882983334
+        },
+        {
+          "year": 2022,
+          "value": 4.20946463714784
+        },
+        {
+          "year": 2023,
+          "value": 3.66938654859761
+        },
+        {
+          "year": 2024,
+          "value": 2.18151273615188
+        },
+        {
+          "year": 2025,
+          "value": 1.91333443295079
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_fx": {
+      "id": "annual_fx",
+      "indicator": "PA.NUS.FCRF",
+      "name": "Official exchange rate annual average",
+      "category": "Prices & Monetary",
+      "unit": "IDR/USD annual average",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/PA.NUS.FCRF?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 1842.81333333333
+        },
+        {
+          "year": 1991,
+          "value": 1950.3175
+        },
+        {
+          "year": 1992,
+          "value": 2029.92083333333
+        },
+        {
+          "year": 1993,
+          "value": 2087.10386666666
+        },
+        {
+          "year": 1994,
+          "value": 2160.753675
+        },
+        {
+          "year": 1995,
+          "value": 2248.607975
+        },
+        {
+          "year": 1996,
+          "value": 2342.29629166666
+        },
+        {
+          "year": 1997,
+          "value": 2909.38
+        },
+        {
+          "year": 1998,
+          "value": 10013.6225
+        },
+        {
+          "year": 1999,
+          "value": 7855.15
+        },
+        {
+          "year": 2000,
+          "value": 8421.775
+        },
+        {
+          "year": 2001,
+          "value": 10260.85
+        },
+        {
+          "year": 2002,
+          "value": 9311.19166666666
+        },
+        {
+          "year": 2003,
+          "value": 8577.13333333333
+        },
+        {
+          "year": 2004,
+          "value": 8938.85
+        },
+        {
+          "year": 2005,
+          "value": 9704.74166666666
+        },
+        {
+          "year": 2006,
+          "value": 9159.31666666666
+        },
+        {
+          "year": 2007,
+          "value": 9141.0
+        },
+        {
+          "year": 2008,
+          "value": 9698.9625
+        },
+        {
+          "year": 2009,
+          "value": 10389.9375
+        },
+        {
+          "year": 2010,
+          "value": 9090.43333333333
+        },
+        {
+          "year": 2011,
+          "value": 8770.43333333333
+        },
+        {
+          "year": 2012,
+          "value": 9386.62916666666
+        },
+        {
+          "year": 2013,
+          "value": 10461.24
+        },
+        {
+          "year": 2014,
+          "value": 11865.2112962963
+        },
+        {
+          "year": 2015,
+          "value": 13389.4129365079
+        },
+        {
+          "year": 2016,
+          "value": 13308.3268020541
+        },
+        {
+          "year": 2017,
+          "value": 13380.8338788891
+        },
+        {
+          "year": 2018,
+          "value": 14236.9387734817
+        },
+        {
+          "year": 2019,
+          "value": 14147.6713605454
+        },
+        {
+          "year": 2020,
+          "value": 14582.2034678177
+        },
+        {
+          "year": 2021,
+          "value": 14308.1439011896
+        },
+        {
+          "year": 2022,
+          "value": 14849.8539362104
+        },
+        {
+          "year": 2023,
+          "value": 15236.8846620506
+        },
+        {
+          "year": 2024,
+          "value": 15855.448286671
+        },
+        {
+          "year": 2025,
+          "value": 16477.8651797835
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_gini": {
+      "id": "annual_gini",
+      "indicator": "SI.POV.GINI",
+      "name": "Gini index (World Bank)",
+      "category": "Employment & Welfare",
+      "unit": "index 0–100",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/SI.POV.GINI?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 31.1
+        },
+        {
+          "year": 1993,
+          "value": 31.8
+        },
+        {
+          "year": 1996,
+          "value": 34.2
+        },
+        {
+          "year": 1998,
+          "value": 30.9
+        },
+        {
+          "year": 1999,
+          "value": 30.8
+        },
+        {
+          "year": 2000,
+          "value": 30.3
+        },
+        {
+          "year": 2001,
+          "value": 31.2
+        },
+        {
+          "year": 2002,
+          "value": 30.2
+        },
+        {
+          "year": 2003,
+          "value": 29.3
+        },
+        {
+          "year": 2004,
+          "value": 30.4
+        },
+        {
+          "year": 2005,
+          "value": 29.9
+        },
+        {
+          "year": 2006,
+          "value": 31.5
+        },
+        {
+          "year": 2007,
+          "value": 33.2
+        },
+        {
+          "year": 2008,
+          "value": 32.6
+        },
+        {
+          "year": 2009,
+          "value": 33.4
+        },
+        {
+          "year": 2010,
+          "value": 34.6
+        },
+        {
+          "year": 2011,
+          "value": 37.9
+        },
+        {
+          "year": 2012,
+          "value": 37.1
+        },
+        {
+          "year": 2013,
+          "value": 38.9
+        },
+        {
+          "year": 2014,
+          "value": 38.8
+        },
+        {
+          "year": 2015,
+          "value": 38.2
+        },
+        {
+          "year": 2016,
+          "value": 36.9
+        },
+        {
+          "year": 2017,
+          "value": 36.4
+        },
+        {
+          "year": 2018,
+          "value": 36.3
+        },
+        {
+          "year": 2019,
+          "value": 35.4
+        },
+        {
+          "year": 2020,
+          "value": 35.3
+        },
+        {
+          "year": 2021,
+          "value": 35.5
+        },
+        {
+          "year": 2022,
+          "value": 35.5
+        },
+        {
+          "year": 2023,
+          "value": 36.1
+        },
+        {
+          "year": 2024,
+          "value": 34.9
+        },
+        {
+          "year": 2025,
+          "value": 34.4
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_poverty_national": {
+      "id": "annual_poverty_national",
+      "indicator": "SI.POV.NAHC",
+      "name": "Poverty headcount at national line (WDI)",
+      "category": "Employment & Welfare",
+      "unit": "% of population",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/SI.POV.NAHC?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1996,
+          "value": 17.5
+        },
+        {
+          "year": 1999,
+          "value": 23.4
+        },
+        {
+          "year": 2000,
+          "value": 19.1
+        },
+        {
+          "year": 2001,
+          "value": 18.4
+        },
+        {
+          "year": 2002,
+          "value": 18.2
+        },
+        {
+          "year": 2003,
+          "value": 17.4
+        },
+        {
+          "year": 2004,
+          "value": 16.7
+        },
+        {
+          "year": 2005,
+          "value": 16.0
+        },
+        {
+          "year": 2006,
+          "value": 17.8
+        },
+        {
+          "year": 2007,
+          "value": 16.6
+        },
+        {
+          "year": 2008,
+          "value": 15.4
+        },
+        {
+          "year": 2009,
+          "value": 14.2
+        },
+        {
+          "year": 2010,
+          "value": 13.3
+        },
+        {
+          "year": 2011,
+          "value": 12.5
+        },
+        {
+          "year": 2012,
+          "value": 12.0
+        },
+        {
+          "year": 2013,
+          "value": 11.4
+        },
+        {
+          "year": 2014,
+          "value": 11.3
+        },
+        {
+          "year": 2015,
+          "value": 11.2
+        },
+        {
+          "year": 2016,
+          "value": 10.9
+        },
+        {
+          "year": 2017,
+          "value": 10.6
+        },
+        {
+          "year": 2018,
+          "value": 9.8
+        },
+        {
+          "year": 2019,
+          "value": 9.4
+        },
+        {
+          "year": 2020,
+          "value": 9.8
+        },
+        {
+          "year": 2021,
+          "value": 10.1
+        },
+        {
+          "year": 2022,
+          "value": 9.5
+        },
+        {
+          "year": 2023,
+          "value": 9.4
+        },
+        {
+          "year": 2024,
+          "value": 9.0
+        },
+        {
+          "year": 2025,
+          "value": 8.5
+        }
+      ],
+      "first_year": 1996,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_exports_goods_services": {
+      "id": "annual_exports_goods_services",
+      "indicator": "NE.EXP.GNFS.CD",
+      "name": "Exports of goods and services",
+      "category": "Trade & External",
+      "unit": "USD billion",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/NE.EXP.GNFS.CD?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 28.982531183372505
+        },
+        {
+          "year": 1991,
+          "value": 33.063806609367
+        },
+        {
+          "year": 1992,
+          "value": 38.801726176401004
+        },
+        {
+          "year": 1993,
+          "value": 42.274397859498904
+        },
+        {
+          "year": 1994,
+          "value": 46.8966331135023
+        },
+        {
+          "year": 1995,
+          "value": 53.185312942038905
+        },
+        {
+          "year": 1996,
+          "value": 58.7172010417111
+        },
+        {
+          "year": 1997,
+          "value": 60.1060384035787
+        },
+        {
+          "year": 1998,
+          "value": 50.55572623455011
+        },
+        {
+          "year": 1999,
+          "value": 49.72026058980751
+        },
+        {
+          "year": 2000,
+          "value": 67.62116916582701
+        },
+        {
+          "year": 2001,
+          "value": 62.62587583390761
+        },
+        {
+          "year": 2002,
+          "value": 63.956798804501005
+        },
+        {
+          "year": 2003,
+          "value": 71.5531410449888
+        },
+        {
+          "year": 2004,
+          "value": 82.7443517810167
+        },
+        {
+          "year": 2005,
+          "value": 97.3876275659961
+        },
+        {
+          "year": 2006,
+          "value": 113.14342528779801
+        },
+        {
+          "year": 2007,
+          "value": 127.22610217700502
+        },
+        {
+          "year": 2008,
+          "value": 152.090401421802
+        },
+        {
+          "year": 2009,
+          "value": 130.357798591185
+        },
+        {
+          "year": 2010,
+          "value": 183.48056296132103
+        },
+        {
+          "year": 2011,
+          "value": 235.09512913298803
+        },
+        {
+          "year": 2012,
+          "value": 225.74440326774203
+        },
+        {
+          "year": 2013,
+          "value": 218.308408827835
+        },
+        {
+          "year": 2014,
+          "value": 210.82008283180602
+        },
+        {
+          "year": 2015,
+          "value": 182.158298802029
+        },
+        {
+          "year": 2016,
+          "value": 177.886012744865
+        },
+        {
+          "year": 2017,
+          "value": 204.92448590915703
+        },
+        {
+          "year": 2018,
+          "value": 218.905647886556
+        },
+        {
+          "year": 2019,
+          "value": 208.05776365925203
+        },
+        {
+          "year": 2020,
+          "value": 183.546577017375
+        },
+        {
+          "year": 2021,
+          "value": 254.10950815449203
+        },
+        {
+          "year": 2022,
+          "value": 323.218198016355
+        },
+        {
+          "year": 2023,
+          "value": 299.031805850549
+        },
+        {
+          "year": 2024,
+          "value": 311.51002477867104
+        },
+        {
+          "year": 2025,
+          "value": 330.279431218799
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_unemployment": {
+      "id": "annual_unemployment",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "name": "Unemployment (ILO modeled estimate)",
+      "category": "Employment & Welfare",
+      "unit": "% modeled ILO labor force",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/SL.UEM.TOTL.ZS?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1991,
+          "value": 2.617
+        },
+        {
+          "year": 1992,
+          "value": 2.734
+        },
+        {
+          "year": 1993,
+          "value": 2.782
+        },
+        {
+          "year": 1994,
+          "value": 4.366
+        },
+        {
+          "year": 1995,
+          "value": 4.611
+        },
+        {
+          "year": 1996,
+          "value": 4.861
+        },
+        {
+          "year": 1997,
+          "value": 4.684
+        },
+        {
+          "year": 1998,
+          "value": 5.459
+        },
+        {
+          "year": 1999,
+          "value": 6.358
+        },
+        {
+          "year": 2000,
+          "value": 6.077
+        },
+        {
+          "year": 2001,
+          "value": 6.082
+        },
+        {
+          "year": 2002,
+          "value": 6.604
+        },
+        {
+          "year": 2003,
+          "value": 6.657
+        },
+        {
+          "year": 2004,
+          "value": 7.303
+        },
+        {
+          "year": 2005,
+          "value": 7.945
+        },
+        {
+          "year": 2006,
+          "value": 7.551
+        },
+        {
+          "year": 2007,
+          "value": 8.06
+        },
+        {
+          "year": 2008,
+          "value": 7.208
+        },
+        {
+          "year": 2009,
+          "value": 6.106
+        },
+        {
+          "year": 2010,
+          "value": 5.614
+        },
+        {
+          "year": 2011,
+          "value": 5.153
+        },
+        {
+          "year": 2012,
+          "value": 4.468
+        },
+        {
+          "year": 2013,
+          "value": 4.336
+        },
+        {
+          "year": 2014,
+          "value": 4.049
+        },
+        {
+          "year": 2015,
+          "value": 4.514
+        },
+        {
+          "year": 2016,
+          "value": 4.301
+        },
+        {
+          "year": 2017,
+          "value": 3.783
+        },
+        {
+          "year": 2018,
+          "value": 4.387
+        },
+        {
+          "year": 2019,
+          "value": 3.59
+        },
+        {
+          "year": 2020,
+          "value": 4.255
+        },
+        {
+          "year": 2021,
+          "value": 3.827
+        },
+        {
+          "year": 2022,
+          "value": 3.462
+        },
+        {
+          "year": 2023,
+          "value": 3.308
+        },
+        {
+          "year": 2024,
+          "value": 3.301
+        },
+        {
+          "year": 2025,
+          "value": 3.237
+        }
+      ],
+      "first_year": 1991,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_external_balance": {
+      "id": "annual_external_balance",
+      "indicator": "NE.RSB.GNFS.CD",
+      "name": "External balance goods and services",
+      "category": "Trade & External",
+      "unit": "USD billion",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/NE.RSB.GNFS.CD?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 1.8252559364828203
+        },
+        {
+          "year": 1991,
+          "value": 2.17261793821619
+        },
+        {
+          "year": 1992,
+          "value": 4.08085047686608
+        },
+        {
+          "year": 1993,
+          "value": 4.718460796394
+        },
+        {
+          "year": 1994,
+          "value": 2.02674997107486
+        },
+        {
+          "year": 1995,
+          "value": -2.6969668817501202
+        },
+        {
+          "year": 1996,
+          "value": -1.3997779959868502
+        },
+        {
+          "year": 1997,
+          "value": -0.594112855457618
+        },
+        {
+          "year": 1998,
+          "value": 9.30601419293817
+        },
+        {
+          "year": 1999,
+          "value": 11.3181926674627
+        },
+        {
+          "year": 2000,
+          "value": 17.3564826960358
+        },
+        {
+          "year": 2001,
+          "value": 13.270680431764601
+        },
+        {
+          "year": 2002,
+          "value": 12.3183616438171
+        },
+        {
+          "year": 2003,
+          "value": 17.2295187034996
+        },
+        {
+          "year": 2004,
+          "value": 11.999661267373801
+        },
+        {
+          "year": 2005,
+          "value": 11.8538264115959
+        },
+        {
+          "year": 2006,
+          "value": 19.7316712120179
+        },
+        {
+          "year": 2007,
+          "value": 17.4710087517777
+        },
+        {
+          "year": 2008,
+          "value": 5.383772872479921
+        },
+        {
+          "year": 2009,
+          "value": 15.1412537370894
+        },
+        {
+          "year": 2010,
+          "value": 14.322535350900901
+        },
+        {
+          "year": 2011,
+          "value": 22.0982438661449
+        },
+        {
+          "year": 2012,
+          "value": -3.6176991117731703
+        },
+        {
+          "year": 2013,
+          "value": -7.2109474718389
+        },
+        {
+          "year": 2014,
+          "value": -6.66513293865745
+        },
+        {
+          "year": 2015,
+          "value": 3.2946464961356203
+        },
+        {
+          "year": 2016,
+          "value": 7.0510119146231105
+        },
+        {
+          "year": 2017,
+          "value": 10.1471667134804
+        },
+        {
+          "year": 2018,
+          "value": -11.1399644985114
+        },
+        {
+          "year": 2019,
+          "value": -4.97688267557574
+        },
+        {
+          "year": 2020,
+          "value": 17.8997337154424
+        },
+        {
+          "year": 2021,
+          "value": 31.185663098503902
+        },
+        {
+          "year": 2022,
+          "value": 46.7113934581127
+        },
+        {
+          "year": 2023,
+          "value": 29.571270061567702
+        },
+        {
+          "year": 2024,
+          "value": 25.2641214277135
+        },
+        {
+          "year": 2025,
+          "value": 33.277095523913104
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_imports_goods_services": {
+      "id": "annual_imports_goods_services",
+      "indicator": "NE.IMP.GNFS.CD",
+      "name": "Imports of goods and services",
+      "category": "Trade & External",
+      "unit": "USD billion",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/NE.IMP.GNFS.CD?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 27.157275246889704
+        },
+        {
+          "year": 1991,
+          "value": 30.8911886711508
+        },
+        {
+          "year": 1992,
+          "value": 34.72087569953501
+        },
+        {
+          "year": 1993,
+          "value": 37.5559370631049
+        },
+        {
+          "year": 1994,
+          "value": 44.869883142427405
+        },
+        {
+          "year": 1995,
+          "value": 55.882279823789005
+        },
+        {
+          "year": 1996,
+          "value": 60.116979037698
+        },
+        {
+          "year": 1997,
+          "value": 60.7001512590363
+        },
+        {
+          "year": 1998,
+          "value": 41.2497120416119
+        },
+        {
+          "year": 1999,
+          "value": 38.402067922344806
+        },
+        {
+          "year": 2000,
+          "value": 50.2646864697912
+        },
+        {
+          "year": 2001,
+          "value": 49.355195402142904
+        },
+        {
+          "year": 2002,
+          "value": 51.6384371606839
+        },
+        {
+          "year": 2003,
+          "value": 54.3236223414892
+        },
+        {
+          "year": 2004,
+          "value": 70.74469051364281
+        },
+        {
+          "year": 2005,
+          "value": 85.53380115440021
+        },
+        {
+          "year": 2006,
+          "value": 93.41175407578031
+        },
+        {
+          "year": 2007,
+          "value": 109.75509342522702
+        },
+        {
+          "year": 2008,
+          "value": 146.706628549322
+        },
+        {
+          "year": 2009,
+          "value": 115.216544854096
+        },
+        {
+          "year": 2010,
+          "value": 169.15802761042002
+        },
+        {
+          "year": 2011,
+          "value": 212.996885266843
+        },
+        {
+          "year": 2012,
+          "value": 229.36210237951602
+        },
+        {
+          "year": 2013,
+          "value": 225.51935629967403
+        },
+        {
+          "year": 2014,
+          "value": 217.48521577046301
+        },
+        {
+          "year": 2015,
+          "value": 178.86365230589303
+        },
+        {
+          "year": 2016,
+          "value": 170.83500083024202
+        },
+        {
+          "year": 2017,
+          "value": 194.777319195676
+        },
+        {
+          "year": 2018,
+          "value": 230.045612385068
+        },
+        {
+          "year": 2019,
+          "value": 213.03464633482702
+        },
+        {
+          "year": 2020,
+          "value": 165.64684330193302
+        },
+        {
+          "year": 2021,
+          "value": 222.923845055988
+        },
+        {
+          "year": 2022,
+          "value": 276.50680455824204
+        },
+        {
+          "year": 2023,
+          "value": 269.460535788982
+        },
+        {
+          "year": 2024,
+          "value": 286.245903350957
+        },
+        {
+          "year": 2025,
+          "value": 297.002335694886
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_current_account": {
+      "id": "annual_current_account",
+      "indicator": "BN.CAB.XOKA.CD",
+      "name": "Current account balance",
+      "category": "Trade & External",
+      "unit": "USD billion",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/BN.CAB.XOKA.CD?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": -2.988
+        },
+        {
+          "year": 1991,
+          "value": -4.260000000000001
+        },
+        {
+          "year": 1992,
+          "value": -2.7800000000000002
+        },
+        {
+          "year": 1993,
+          "value": -2.1060000000000003
+        },
+        {
+          "year": 1994,
+          "value": -2.7920000000000003
+        },
+        {
+          "year": 1995,
+          "value": -6.431
+        },
+        {
+          "year": 1996,
+          "value": -7.663
+        },
+        {
+          "year": 1997,
+          "value": -4.889
+        },
+        {
+          "year": 1998,
+          "value": 4.09696577022987
+        },
+        {
+          "year": 1999,
+          "value": 5.78289839749641
+        },
+        {
+          "year": 2000,
+          "value": 7.9920741004978
+        },
+        {
+          "year": 2001,
+          "value": 6.90090109130435
+        },
+        {
+          "year": 2002,
+          "value": 7.823542185485751
+        },
+        {
+          "year": 2003,
+          "value": 8.1067938384709
+        },
+        {
+          "year": 2004,
+          "value": 1.5630099040162202
+        },
+        {
+          "year": 2005,
+          "value": 0.27754482892532006
+        },
+        {
+          "year": 2006,
+          "value": 10.8594935939516
+        },
+        {
+          "year": 2007,
+          "value": 10.4910418267601
+        },
+        {
+          "year": 2008,
+          "value": 0.12599241649558401
+        },
+        {
+          "year": 2009,
+          "value": 10.6284896860765
+        },
+        {
+          "year": 2010,
+          "value": 5.14428499019702
+        },
+        {
+          "year": 2011,
+          "value": 1.68506800842165
+        },
+        {
+          "year": 2012,
+          "value": -24.417850938214002
+        },
+        {
+          "year": 2013,
+          "value": -29.109199017058202
+        },
+        {
+          "year": 2014,
+          "value": -27.509865798232603
+        },
+        {
+          "year": 2015,
+          "value": -17.5187445694758
+        },
+        {
+          "year": 2016,
+          "value": -16.952255385026202
+        },
+        {
+          "year": 2017,
+          "value": -16.195634380356303
+        },
+        {
+          "year": 2018,
+          "value": -30.633120324428702
+        },
+        {
+          "year": 2019,
+          "value": -30.2790597529683
+        },
+        {
+          "year": 2020,
+          "value": -4.4332697384878506
+        },
+        {
+          "year": 2021,
+          "value": 3.51071505041252
+        },
+        {
+          "year": 2022,
+          "value": 13.2151349104119
+        },
+        {
+          "year": 2023,
+          "value": -2.0416620200125
+        },
+        {
+          "year": 2024,
+          "value": -8.58348708455384
+        },
+        {
+          "year": 2025,
+          "value": -1.25255442876224
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_reserves": {
+      "id": "annual_reserves",
+      "indicator": "FI.RES.TOTL.CD",
+      "name": "Total reserves including gold",
+      "category": "Trade & External",
+      "unit": "USD billion",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/FI.RES.TOTL.CD?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 8.65679285520194
+        },
+        {
+          "year": 1991,
+          "value": 10.3579890112346
+        },
+        {
+          "year": 1992,
+          "value": 11.4820192527912
+        },
+        {
+          "year": 1993,
+          "value": 12.4740623705058
+        },
+        {
+          "year": 1994,
+          "value": 13.321136813013501
+        },
+        {
+          "year": 1995,
+          "value": 14.907558865922002
+        },
+        {
+          "year": 1996,
+          "value": 19.3961489673555
+        },
+        {
+          "year": 1997,
+          "value": 17.4867996428985
+        },
+        {
+          "year": 1998,
+          "value": 23.605842945521
+        },
+        {
+          "year": 1999,
+          "value": 27.3450976673644
+        },
+        {
+          "year": 2000,
+          "value": 29.352929561476703
+        },
+        {
+          "year": 2001,
+          "value": 28.103636180338203
+        },
+        {
+          "year": 2002,
+          "value": 32.0335852474441
+        },
+        {
+          "year": 2003,
+          "value": 36.2562036415962
+        },
+        {
+          "year": 2004,
+          "value": 36.3107339093168
+        },
+        {
+          "year": 2005,
+          "value": 34.730799049252404
+        },
+        {
+          "year": 2006,
+          "value": 42.597040281593905
+        },
+        {
+          "year": 2007,
+          "value": 56.935744023296
+        },
+        {
+          "year": 2008,
+          "value": 51.64062572131981
+        },
+        {
+          "year": 2009,
+          "value": 66.11891796813981
+        },
+        {
+          "year": 2010,
+          "value": 96.2109805840427
+        },
+        {
+          "year": 2011,
+          "value": 110.13659766243501
+        },
+        {
+          "year": 2012,
+          "value": 112.79762783306501
+        },
+        {
+          "year": 2013,
+          "value": 99.3868262390833
+        },
+        {
+          "year": 2014,
+          "value": 111.862594561997
+        },
+        {
+          "year": 2015,
+          "value": 105.92884708871802
+        },
+        {
+          "year": 2016,
+          "value": 116.36960185105801
+        },
+        {
+          "year": 2017,
+          "value": 130.215330382956
+        },
+        {
+          "year": 2018,
+          "value": 120.66097409094901
+        },
+        {
+          "year": 2019,
+          "value": 129.186464020187
+        },
+        {
+          "year": 2020,
+          "value": 135.915917616262
+        },
+        {
+          "year": 2021,
+          "value": 144.907809744208
+        },
+        {
+          "year": 2022,
+          "value": 137.222356128227
+        },
+        {
+          "year": 2023,
+          "value": 146.358992701848
+        },
+        {
+          "year": 2024,
+          "value": 155.708275547573
+        },
+        {
+          "year": 2025,
+          "value": 156.542507869671
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_employment_ratio": {
+      "id": "annual_employment_ratio",
+      "indicator": "SL.EMP.TOTL.SP.ZS",
+      "name": "Employment-to-population (ILO modeled)",
+      "category": "Employment & Welfare",
+      "unit": "% population ages 15+",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/SL.EMP.TOTL.SP.ZS?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1991,
+          "value": 64.22
+        },
+        {
+          "year": 1992,
+          "value": 64.503
+        },
+        {
+          "year": 1993,
+          "value": 63.8
+        },
+        {
+          "year": 1994,
+          "value": 63.882
+        },
+        {
+          "year": 1995,
+          "value": 63.752
+        },
+        {
+          "year": 1996,
+          "value": 63.619
+        },
+        {
+          "year": 1997,
+          "value": 63.231
+        },
+        {
+          "year": 1998,
+          "value": 63.276
+        },
+        {
+          "year": 1999,
+          "value": 62.948
+        },
+        {
+          "year": 2000,
+          "value": 63.638
+        },
+        {
+          "year": 2001,
+          "value": 63.046
+        },
+        {
+          "year": 2002,
+          "value": 61.62
+        },
+        {
+          "year": 2003,
+          "value": 61.299
+        },
+        {
+          "year": 2004,
+          "value": 60.879
+        },
+        {
+          "year": 2005,
+          "value": 59.283
+        },
+        {
+          "year": 2006,
+          "value": 59.359
+        },
+        {
+          "year": 2007,
+          "value": 60.889
+        },
+        {
+          "year": 2008,
+          "value": 61.589
+        },
+        {
+          "year": 2009,
+          "value": 62.014
+        },
+        {
+          "year": 2010,
+          "value": 62.845
+        },
+        {
+          "year": 2011,
+          "value": 63.465
+        },
+        {
+          "year": 2012,
+          "value": 64.404
+        },
+        {
+          "year": 2013,
+          "value": 63.863
+        },
+        {
+          "year": 2014,
+          "value": 63.927
+        },
+        {
+          "year": 2015,
+          "value": 63.573
+        },
+        {
+          "year": 2016,
+          "value": 63.462
+        },
+        {
+          "year": 2017,
+          "value": 64.171
+        },
+        {
+          "year": 2018,
+          "value": 64.684
+        },
+        {
+          "year": 2019,
+          "value": 65.789
+        },
+        {
+          "year": 2020,
+          "value": 64.533
+        },
+        {
+          "year": 2021,
+          "value": 63.348
+        },
+        {
+          "year": 2022,
+          "value": 64.698
+        },
+        {
+          "year": 2023,
+          "value": 65.653
+        },
+        {
+          "year": 2024,
+          "value": 65.685
+        },
+        {
+          "year": 2025,
+          "value": 65.765
+        }
+      ],
+      "first_year": 1991,
+      "last_year": 2025,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    },
+    "annual_gov_debt": {
+      "id": "annual_gov_debt",
+      "indicator": "GC.DOD.TOTL.GD.ZS",
+      "name": "Central government debt total",
+      "category": "Fiscal & Government",
+      "unit": "% GDP",
+      "source": "World Bank WDI",
+      "source_url": "https://api.worldbank.org/v2/country/IDN/indicator/GC.DOD.TOTL.GD.ZS?format=json",
+      "frequency": "annual",
+      "points": [
+        {
+          "year": 1990,
+          "value": 45.7414523316285
+        },
+        {
+          "year": 1991,
+          "value": 40.2756295663842
+        },
+        {
+          "year": 1992,
+          "value": 42.7093574260874
+        },
+        {
+          "year": 1993,
+          "value": 37.4975968521644
+        },
+        {
+          "year": 1994,
+          "value": 36.5705901605804
+        },
+        {
+          "year": 1995,
+          "value": 30.8043248823304
+        },
+        {
+          "year": 1996,
+          "value": 23.92314220907
+        },
+        {
+          "year": 1997,
+          "value": 72.4853185253111
+        },
+        {
+          "year": 1998,
+          "value": 55.2040876648634
+        },
+        {
+          "year": 1999,
+          "value": 45.2079671076106
+        },
+        {
+          "year": 2002,
+          "value": 32.2241265309989
+        },
+        {
+          "year": 2003,
+          "value": 29.7173962466428
+        },
+        {
+          "year": 2008,
+          "value": 34.2250282105616
+        },
+        {
+          "year": 2009,
+          "value": 29.997306381567
+        }
+      ],
+      "first_year": 1990,
+      "last_year": 2009,
+      "data_status": "source_api_verified_series",
+      "last_verified_utc": "2026-10-16T14:58:18Z"
+    }
+  }
 }
