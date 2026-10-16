@@ -1,0 +1,411 @@
+{
+  "dataset_id": "sli_ruptl_2025_2034_uploaded_excerpt_first_100_pages",
+  "updated_at": "2026-10-16",
+  "source": {
+    "title": "Rencana Usaha Penyediaan Tenaga Listrik PT PLN (Persero) 2025–2034",
+    "legal_basis": "Keputusan Menteri ESDM No. 188.K/TL.03/MEM.L/2025, 26 Mei 2025",
+    "uploaded_filename": "876718974-RUPTL-2025-2034-1.pdf",
+    "source_sha256": "6b0a38077e64421c034b94f49bf97d05afc18ddfdedaf8e44607380c9a284ac1",
+    "pages_in_upload": 100,
+    "coverage": "Approval decree, TOC, vocabulary, Chapter I, Chapter II through section II.4.2; not a complete RUPTL and does not contain detailed province-by-province Chapter V project annexes.",
+    "official_full_document_url": "https://www.pln.co.id/webapi/media/file/webkorp/asset/b967d-ruptl-pln-2025-2034-pub-.pdf",
+    "page_number_basis": "PDF 1-indexed page, not printed chapter numbering"
+  },
+  "approved_plan": {
+    "approval_pdf_page": 5,
+    "electricity_demand_growth_percent_avg": 5.3,
+    "new_generation_and_storage_mw": 69512,
+    "new_renewable_and_new_generation_mw": 42569,
+    "storage_mw": 10256,
+    "new_fossil_generation_mw": 16687,
+    "renewable_generation_mix_target_2034_percent": 34.3,
+    "new_transmission_circuit_km": 47758,
+    "new_transmission_substation_mva": 107950,
+    "new_distribution_circuit_km": 197998,
+    "new_distribution_substation_mva": 18407,
+    "kind": "2025–2034 target (not commissioned actual)"
+  },
+  "engineering_criteria": [
+    {
+      "key": "java_madura_bali_reserve_margin_planning_percent",
+      "min": 30,
+      "max": 38,
+      "unit": "percent",
+      "kind": "planning_range_not_realized_2026",
+      "source_pdf_page": 66,
+      "source_section": "II.2.1",
+      "note": "Indicative reserve margin for generation adequacy in Java–Madura–Bali; not proof of local transmission grid headroom."
+    },
+    {
+      "key": "grid_substation_loading_trigger_percent",
+      "min": 70,
+      "max": 80,
+      "unit": "percent",
+      "kind": "planning_threshold_not_measured_loading",
+      "source_pdf_page": 90,
+      "source_section": "II.3.1",
+      "note": "Indicative loading that generally informs transformer expansion/uprating COD; N-1 exceptions and project studies apply."
+    },
+    {
+      "key": "bess_smoothing_fraction_of_vre_mw_percent",
+      "min": 10,
+      "max": 20,
+      "unit": "percent",
+      "kind": "typical_technical_planning_rule",
+      "source_pdf_page": 76,
+      "source_section": "II.2.4",
+      "note": "General smoothing/buffering capacity relative to utility-scale VRE MW; not 10–20% of data-center IT load, not MWh storage duration, not a bankable BESS project."
+    },
+    {
+      "key": "distribution_voltage_nominal_percent",
+      "min": 90,
+      "max": 105,
+      "unit": "percent",
+      "kind": "distribution_planning_quality_standard",
+      "source_pdf_page": 99,
+      "source_section": "II.4.1.3"
+    },
+    {
+      "key": "distribution_frequency_hz",
+      "min": 49.5,
+      "max": 50.5,
+      "unit": "Hz",
+      "kind": "distribution_planning_quality_standard",
+      "source_pdf_page": 99,
+      "source_section": "II.4.1.3"
+    }
+  ],
+  "electrification": {
+    "as_of": "2024-Q3",
+    "national_electrification_percent": 99.82,
+    "pln_electrification_percent": 98.42,
+    "source_pdf_page": 92,
+    "kind": "historical_figure_quoted_in_2025_RUPTL_not_new_2025_observation"
+  },
+  "reservoir_solar": {
+    "source_table": "Tabel 2.2 Daftar Potensi PLTS pada Bendungan Kementerian PU",
+    "source_pdf_page": 83,
+    "table_country_total_technical_potential_mw": 13898.8,
+    "regional_selection_note": "Selected 9 rows visible on PDF page 83 (including 1 shared Jawa Tengah–Jawa Timur); NOT all reservoir locations nationwide or verified permitted projects.",
+    "reservoirs": [
+      {
+        "name": "Sadawarna",
+        "province": "Jawa Barat",
+        "dam_status_at_source": "Selesai",
+        "reservoir_area_ha": 681,
+        "indicative_20pct_surface_pv_mw": 136.3,
+        "table_row": 78,
+        "source_pdf_page": 83,
+        "solar_project_stage": "technical_potential_only_not_committed"
+      },
+      {
+        "name": "Cipanas",
+        "province": "Jawa Barat",
+        "dam_status_at_source": "On Going",
+        "reservoir_area_ha": 1316,
+        "indicative_20pct_surface_pv_mw": 263.19,
+        "table_row": 83,
+        "source_pdf_page": 83,
+        "solar_project_stage": "technical_potential_only_not_committed"
+      },
+      {
+        "name": "Cibeet",
+        "province": "Jawa Barat",
+        "dam_status_at_source": "Baru",
+        "reservoir_area_ha": 920,
+        "indicative_20pct_surface_pv_mw": 184.03,
+        "table_row": 102,
+        "source_pdf_page": 83,
+        "solar_project_stage": "technical_potential_only_not_committed"
+      },
+      {
+        "name": "Cijurey",
+        "province": "Jawa Barat",
+        "dam_status_at_source": "Baru",
+        "reservoir_area_ha": 139,
+        "indicative_20pct_surface_pv_mw": 27.8,
+        "table_row": 104,
+        "source_pdf_page": 83,
+        "solar_project_stage": "technical_potential_only_not_committed"
+      },
+      {
+        "name": "Bener",
+        "province": "Jawa Tengah",
+        "dam_status_at_source": "On Going",
+        "reservoir_area_ha": 313,
+        "indicative_20pct_surface_pv_mw": 62.6,
+        "table_row": 96,
+        "source_pdf_page": 83,
+        "solar_project_stage": "technical_potential_only_not_committed"
+      },
+      {
+        "name": "Jragung",
+        "province": "Jawa Tengah",
+        "dam_status_at_source": "On Going",
+        "reservoir_area_ha": 451,
+        "indicative_20pct_surface_pv_mw": 90.26,
+        "table_row": 97,
+        "source_pdf_page": 83,
+        "solar_project_stage": "technical_potential_only_not_committed"
+      },
+      {
+        "name": "Kedung Langgar",
+        "province": "Jawa Tengah",
+        "dam_status_at_source": "Baru",
+        "reservoir_area_ha": 142,
+        "indicative_20pct_surface_pv_mw": 28.4,
+        "table_row": 103,
+        "source_pdf_page": 83,
+        "solar_project_stage": "technical_potential_only_not_committed"
+      },
+      {
+        "name": "Bodri",
+        "province": "Jawa Tengah",
+        "dam_status_at_source": "Baru",
+        "reservoir_area_ha": 168,
+        "indicative_20pct_surface_pv_mw": 33.69,
+        "table_row": 105,
+        "source_pdf_page": 83,
+        "solar_project_stage": "technical_potential_only_not_committed"
+      },
+      {
+        "name": "Karangnongko",
+        "province": "Jawa Tengah, Jawa Timur",
+        "dam_status_at_source": "Baru",
+        "reservoir_area_ha": 1027,
+        "indicative_20pct_surface_pv_mw": 205.31,
+        "table_row": 109,
+        "source_pdf_page": 83,
+        "solar_project_stage": "technical_potential_only_not_committed"
+      }
+    ],
+    "summary_warning": "20% indicative reservoir-area PLTS technical potential, NOT awarded MW, financial close, COD, committed floating-solar capacity, or dam status as of 2026."
+  },
+  "ami": {
+    "source_table": "Tabel 2.4 Target Pemasangan Meter AMI per Tahun",
+    "source_pdf_page": 98,
+    "unit": "meter devices, annual/cumulative projections",
+    "series": [
+      {
+        "year": 2022,
+        "annual_installation_target": 110000,
+        "cumulative_installation_target": 110000,
+        "source_pdf_page": 98,
+        "phase": "pre-commercial"
+      },
+      {
+        "year": 2023,
+        "annual_installation_target": 1217256,
+        "cumulative_installation_target": 1327256,
+        "source_pdf_page": 98,
+        "phase": "slow early commercial"
+      },
+      {
+        "year": 2024,
+        "annual_installation_target": 2060517,
+        "cumulative_installation_target": 3387773,
+        "source_pdf_page": 98,
+        "phase": "slow early commercial"
+      },
+      {
+        "year": 2025,
+        "annual_installation_target": 2060517,
+        "cumulative_installation_target": 5448290,
+        "source_pdf_page": 98,
+        "phase": "slow early commercial"
+      },
+      {
+        "year": 2026,
+        "annual_installation_target": 2243288,
+        "cumulative_installation_target": 7691578,
+        "source_pdf_page": 98,
+        "phase": "stabilization"
+      },
+      {
+        "year": 2027,
+        "annual_installation_target": 2243288,
+        "cumulative_installation_target": 9934866,
+        "source_pdf_page": 98,
+        "phase": "stabilization"
+      },
+      {
+        "year": 2028,
+        "annual_installation_target": 2243288,
+        "cumulative_installation_target": 12178154,
+        "source_pdf_page": 98,
+        "phase": "stabilization"
+      },
+      {
+        "year": 2029,
+        "annual_installation_target": 2243288,
+        "cumulative_installation_target": 14421442,
+        "source_pdf_page": 98,
+        "phase": "ramp-up or mass rollout"
+      },
+      {
+        "year": 2030,
+        "annual_installation_target": 2243288,
+        "cumulative_installation_target": 16664730,
+        "source_pdf_page": 98,
+        "phase": "ramp-up or mass rollout"
+      },
+      {
+        "year": 2031,
+        "annual_installation_target": 2243288,
+        "cumulative_installation_target": 18908018,
+        "source_pdf_page": 98,
+        "phase": "ramp-up or mass rollout"
+      },
+      {
+        "year": 2032,
+        "annual_installation_target": 2931284,
+        "cumulative_installation_target": 21839302,
+        "source_pdf_page": 98,
+        "phase": "ramp-up or mass rollout"
+      },
+      {
+        "year": 2033,
+        "annual_installation_target": 2931284,
+        "cumulative_installation_target": 24770586,
+        "source_pdf_page": 98,
+        "phase": "ramp-up or mass rollout"
+      },
+      {
+        "year": 2034,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 36495722,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2035,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 48220858,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2036,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 59945994,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2037,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 71671130,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2038,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 83396266,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2039,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 95121402,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2040,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 106846538,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2041,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 118571674,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2042,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 130296810,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2043,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 142021946,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2044,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 153747082,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      },
+      {
+        "year": 2045,
+        "annual_installation_target": 11725136,
+        "cumulative_installation_target": 165472218,
+        "source_pdf_page": 98,
+        "phase": "fully implemented"
+      }
+    ],
+    "source_text_discrepancy": {
+      "text_pdf_page": 99,
+      "narrative_2037_approximately": 34000000,
+      "table_2037_cumulative": 71671130,
+      "note": "Internal inconsistency between narrative (~34 million by 2037) and Table 2.4 (71.67 million by 2037). Both are presented as printed; do not reconcile without PLN clarification."
+    }
+  },
+  "implementation_rules": [
+    {
+      "section": "I.4 / II.1",
+      "pdf_page": 46,
+      "principle": "Demand-driven customer planning",
+      "decision_use": "High/medium certainty KTT consumers go into base scenario; lower certainty should not be booked as firm grid demand without evidence on location, timing and MW.",
+      "evidence_status": "source policy not project verification"
+    },
+    {
+      "section": "II.3.1",
+      "pdf_page": 89,
+      "principle": "N-1 transmission/substation reliability",
+      "decision_use": "Get proof of N-1 adequacy and firm service at the connection location; nameplate MVA is not headroom.",
+      "evidence_status": "engineering standard, no site measurements"
+    },
+    {
+      "section": "II.3.1",
+      "pdf_page": 90,
+      "principle": "70–80% transformer loading expansion threshold",
+      "decision_use": "Prioritize substation reinforcement reviews where verified transformer loading nears source planning threshold, but avoid automated overload claims.",
+      "evidence_status": "engineering planning criterion, no live loading values"
+    },
+    {
+      "section": "II.2.4",
+      "pdf_page": 76,
+      "principle": "BESS functions",
+      "decision_use": "Distinguish grid smoothing 10–20% VRE MW from separate data center UPS and duration-driven reliability BESS.",
+      "evidence_status": "planning commentary not procurement evidence"
+    },
+    {
+      "section": "II.4.1",
+      "pdf_page": 98,
+      "principle": "AMI and digital visibility",
+      "decision_use": "Use AMI targets as distribution digitalization readiness proxy only after actual rollout and operational data are independently confirmed.",
+      "evidence_status": "rollout plan, not verified implementation"
+    }
+  ],
+  "coverage_and_quality": {
+    "ruplt_full_document_not_available_in_uploaded_pdf": true,
+    "detailed_regional_annex_data_extracted": false,
+    "planned_targets_not_realized": true,
+    "ami_narrative_table_discrepancy": true,
+    "selected_solar_reservoirs_not_verified_projects": true,
+    "regional_firm_grid_headroom_mw": null,
+    "pln_batam_substation_capacity_not_in_this_excerpt": null
+  }
+}
