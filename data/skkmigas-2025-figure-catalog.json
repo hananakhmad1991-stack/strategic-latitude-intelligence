@@ -647,8 +647,13 @@
       "kind": "graph",
       "number": "4.3",
       "title": "Natuna gas domestic swap arrangement",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "digitized_verified",
+      "crosscheck": "Original source PDF text and printed values matched; records preserved with reported time, unit and table limitations.",
+      "digitized_refs": [
+        "natuna_gsai_monthly",
+        "natuna_dsa_monthly",
+        "natuna_combined_monthly"
+      ]
     },
     {
       "pdf_page": 108,
@@ -985,8 +990,11 @@
       "kind": "table",
       "number": "6.4",
       "title": "Vendor capacity assessment",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Original source PDF text and printed values matched; records preserved with reported time, unit and table limitations.",
+      "digitized_refs": [
+        "vendor_assessed_rows"
+      ]
     },
     {
       "pdf_page": 184,
@@ -994,8 +1002,11 @@
       "kind": "table",
       "number": "6.5",
       "title": "PSC contractor compliance inspection",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Original source PDF text and printed values matched; records preserved with reported time, unit and table limitations.",
+      "digitized_refs": [
+        "compliance_inspected"
+      ]
     },
     {
       "pdf_page": 186,
@@ -1070,14 +1081,14 @@
   "digitization_review": {
     "updated": "2026-10-16",
     "source_pdf_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
-    "numerically_verified": 30,
+    "numerically_verified": 31,
     "indexed_source_items": 101,
-    "source_only": 53,
+    "source_only": 50,
     "notes": "101 entries are an indexed subset of original PDF exhibits, not an exhaustive count of all 202 pages. Numeric-verified denotes explicitly printed source values, not all pixels in a complex graphical timeline. Structured means a complete named/risk register. Partial means labelled KPI extract only; source diagram bars/timeline not interpolated. Source-only includes maps, photo, nonnumeric charts and a handful of remaining source graphics.",
-    "structured_source_tables": 3,
+    "structured_source_tables": 5,
     "comments": "Two additional complete source-name registers: 24 PSE structures and 15 well markers. Not validated GIS coordinates or numerical productions.",
     "note_extra": "Added five further labelled exhibits: gas contract versus actual, LNG receiving terminals by source, and monthly unplanned oil/gas loss components.",
     "partially_digitized": 1,
-    "latest_extension": "SKK Migas investor ratings Graph 1.1, production bridges Graphs 3.6/3.7, monthly TKDN Graph 6.7, risk Table 6.1 and partial commitment Graph 2.3."
+    "latest_extension": "SKK Migas investor ratings Graph 1.1, production bridges Graphs 3.6/3.7, monthly TKDN Graph 6.7, risk Table 6.1 and partial commitment Graph 2.3. Additional monthly Natuna GSAI and DSA chart plus original vendor/contractor source tables."
   }
 }
