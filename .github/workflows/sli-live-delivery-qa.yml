@@ -1,0 +1,32 @@
+name: SLI Live Data and Whole-Dashboard Delivery QA
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'js/sli-live-data.js'
+      - 'js/sli-automation-health-dashboard.js'
+      - 'sli-data-automation-center.html'
+      - 'index.html'
+      - 'scripts/validate_sli_live_delivery.py'
+      - '.github/workflows/sli-live-delivery-qa.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify SLI HTML module live data coverage
+        run: python scripts/validate_sli_live_delivery.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify browser scripts are syntactically valid
+        run: |
+          node --check js/sli-live-data.js
+          node --check js/sli-automation-health-dashboard.js
+          node --check js/sli-macro-overview.js
