@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16.1",
+  "version": "2026-10-16.2",
   "as_of": "2026-10-16",
   "title": "SLI Public Policy Evaluation — ex-ante, implementation, ex-post where evidence supports",
   "notice": "Preliminary document-based analytical assessments, NOT completed field evaluations. No interviews, surveys, regression, CBA or causal impact evaluation conducted. Missing data remain null. Commentary, assumptions and policy-stage labels are editorial hypotheses, not legal or policy-performance determinations.",
@@ -294,7 +294,7 @@
       "id": "energy_policy",
       "title": "Kebijakan Energi Nasional — PP 40/2025",
       "sector": "energy",
-      "stage": "ex_ante",
+      "stage": "during",
       "policy_type": "national_strategy",
       "summary": "KEN baru memberi arah kebijakan, tetapi perubahan bauran energi dan keterjangkauan harga memerlukan pengamatan jangka panjang, bukan klaim hasil satu tahun.",
       "refs": [
@@ -311,8 +311,8 @@
       "methods": [
         {
           "id": "ex_ante_ria",
-          "usage": "priority",
-          "why": "Alternatif kebijakan dan trade-off ketahanan, biaya, keterjangkauan dan emisi harus diperiksa."
+          "usage": "conditional",
+          "why": "Alternatif kebijakan dan trade-off ketahanan, biaya, keterjangkauan dan emisi harus diperiksa. Analisis ex-ante berlaku untuk desain aturan pelaksana/revisi mendatang, bukan evaluasi sebelum aturan 2025 disahkan."
         },
         {
           "id": "impact_pathway",
@@ -833,7 +833,7 @@
       "id": "carbon",
       "title": "Tata Kelola Nilai Ekonomi Karbon — Perpres 110/2025",
       "sector": "carbon",
-      "stage": "ex_ante",
+      "stage": "during",
       "policy_type": "carbon_regulation",
       "summary": "Kerangka karbon yang lebih baru memerlukan audit aturan turunan, integritas MRV, kepastian hak kredit dan kaitan Paris/NDC sebelum menilai kinerja pasar.",
       "refs": [
@@ -849,8 +849,8 @@
       "methods": [
         {
           "id": "ex_ante_ria",
-          "usage": "priority",
-          "why": "Menilai desain insentif, integritas unit, biaya MRV dan alternatif tata kelola."
+          "usage": "conditional",
+          "why": "Menilai desain insentif, integritas unit, biaya MRV dan alternatif tata kelola. Analisis ex-ante berlaku untuk desain aturan pelaksana/revisi mendatang, bukan evaluasi sebelum aturan 2025 disahkan."
         },
         {
           "id": "impact_pathway",
