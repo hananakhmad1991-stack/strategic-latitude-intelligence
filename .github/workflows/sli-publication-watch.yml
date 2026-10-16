@@ -1,0 +1,85 @@
+name: SLI Official Publication Edition Watch
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '25 2 * * *'
+  push:
+    paths:
+      - 'scripts/watch_sli_publications.py'
+      - 'data/sli-publication-source-catalog.json'
+      - '.github/workflows/sli-publication-watch.yml'
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: sli-official-publication-watch
+  cancel-in-progress: false
+jobs:
+  scan:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Scan published official report editions and macro releases
+        run: |
+          python -m py_compile scripts/watch_sli_publications.py
+          python scripts/watch_sli_publications.py
+          python - <<'PY'
+          import json
+          c=json.load(open("data/sli-publication-source-catalog.json"))
+          d=json.load(open("data/sli-publication-watch.json"))
+          assert len(c["sources"])==d["source_count"]
+          assert all(x["classification"]=="UNVERIFIED_SOURCE_EDITION_CANDIDATE" for x in d["events"])
+          assert all(x["url"].startswith("https://") and x["review_state"].startswith("pending") for x in d["events"])
+          print("Validated publisher discovery with no automatic rewriting of static report values")
+          PY
+      - name: Commit attributed publication-lead updates
+        run: |
+          git config user.name "sli-publications[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/sli-publication-watch.json
+          git diff --cached --quiet && exit 0
+          git commit -m "data: source publication edition discovery, review only [skip ci]"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort || true
+              git reset --hard origin/main
+              python scripts/watch_sli_publications.py
+              git add data/sli-publication-watch.json
+              git diff --cached --quiet && exit 0
+              git commit -m "data: refreshed source edition scan [skip ci]"
+              continue
+            fi
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 4))
+          done
+          exit 1
+      - name: Raise bounded review requests for new publisher report leads
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,subprocess
+          report=json.load(open("data/sli-publication-watch.json"))
+          candidates=[x for x in report["events"]
+                  if x["event_kind"]=="new_candidate"
+                  and x["first_seen_utc"]==report["checked_at_utc"]][:4]
+          for x in candidates:
+              key="SLI-SOURCE-EDITION:"+x["id"]
+              old=subprocess.run(["gh","issue","list","--state","all","--search",key+" in:body",
+                                  "--json","number","--limit","10"],text=True,capture_output=True)
+              if old.returncode or json.loads(old.stdout):
+                  continue
+              body=("Publisher-link discovery, NOT numeric dataset verification.\n\n"
+                   +x["title"]+"\nOriginal publisher link: "+x["url"]+"\n\nAffected SLI dataset(s):\n"
+                   +"\n".join("- "+v for v in x["linked_datasets"])
+                   +"\n\nReview document edition, source date, definitions, coverage, rights and metrics before publication.\n\n"+key)
+              p=subprocess.run(["gh","issue","create","--title","Check official update: "+x["publisher"]+" "+x["title"][:65],
+                                 "--body",body],text=True,capture_output=True)
+              print(p.stdout or p.stderr)
+          PY
