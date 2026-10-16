@@ -300,6 +300,15 @@ function makeEnergyStructure(which,root){
  const intro=E("div","es-intro");intro.append(E("div","eyebrow","STRATEGIC LATITUDE INTELLIGENCE · INDONESIA"),E("h2",null,which==="minerals"?"Critical Minerals Intelligence":"AI Infrastructure Intelligence"),E("p",null,"Institutional mapping, verified indicators, implementation, market exposure, technology, monitoring and strategic assessment."),E("p","es-discipline","Official source dates and measurement periods vary; announced assets are not operating capacity."));
  const nav=E("nav","es-toc");nav.setAttribute("aria-label","Research topics");labels.forEach((label,i)=>{let a=link("#"+sections[i].id,"");a.append(E("span",null,String(i+1).padStart(2,"0")),document.createTextNode(label));a.addEventListener("click",e=>{e.preventDefault();sections[i].scrollIntoView({behavior:"smooth",block:"start"})});nav.append(a)});
  root.replaceChildren(intro,nav,...sections);
+ if(which==="ai"&&typeof window.initSLIKomdigi2025==="function"){
+  const komdigiRoot=E("div","kd25-root");
+  komdigiRoot.id="sliKomdigiAI2025Root";
+  sections[1].append(komdigiRoot);
+  Promise.resolve(window.initSLIKomdigi2025(komdigiRoot)).catch(err=>{
+   console.error("[SLI Komdigi 2025]",err);
+   if(komdigiRoot.isConnected)komdigiRoot.append(E("p","sli-research-note","Komdigi report data temporarily unavailable · source: ePPID Komdigi Report 2025."));
+  });
+ }
  if(which==="minerals"&&typeof window.initSLIIEA2026Explorer==="function"){
   const rawIEA=E("div","sli-iea-2026-model-mount");
   sections[3].append(rawIEA);
