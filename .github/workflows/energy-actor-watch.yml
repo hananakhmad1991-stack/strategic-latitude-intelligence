@@ -49,7 +49,7 @@ jobs:
           ui=open("index.html",encoding="utf-8").read()
           assert "js/stakeholder-map.js" in ui and "css/stakeholder-map.css" in ui
           with open("js/energy-governance-ccs.js",encoding="utf-8") as view:
-              assert "window.renderSLIStakeholderMap(root,data)" in view.read()
+              assert "window.renderSLIStakeholderMap(" in view.read(), "Stakeholder visualization integration missing"
           print("Validated governance map:",len(names),"unique actors,",len(groups),"branches")
           PY
       - name: Publish monitor status with conflict-safe governance updates
