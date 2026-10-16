@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": null,
+  "audit_state": "awaiting_first_run",
+  "scope": "All SLI data/*.json and GitHub Actions workflows",
+  "source_semantics": "Source update not guaranteed by workflow execution. Dataset-level freshness will be calculated from metadata and action statuses.",
+  "transport": "latest GitHub public main JSON, Pages fallback",
+  "summary": {
+    "datasets": null,
+    "workflows": null,
+    "scheduled_workflows": null,
+    "auto_numeric_datasets": null,
+    "auto_discovery_datasets": null,
+    "curated_or_archival_datasets": null,
+    "overdue_or_broken_datasets": null,
+    "unmanaged_datasets": null,
+    "workflow_failures_latest": null,
+    "workflow_status_api_errors": null
+  },
+  "attention": [],
+  "api_errors": {},
+  "workflows": [],
+  "datasets": [],
+  "operational_rules": [
+    "Waiting for first source health audit; no implied all-green state."
+  ]
+}
