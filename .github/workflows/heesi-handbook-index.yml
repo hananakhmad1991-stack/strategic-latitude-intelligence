@@ -1,0 +1,57 @@
+name: SLI HEESI 2025 · Full Official Handbook Index
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/heesi_2025_extract.py"
+      - ".github/workflows/heesi-handbook-index.yml"
+  schedule:
+    - cron: "41 7 1 * *"
+permissions:
+  contents: write
+concurrency:
+  group: sli-heesi-2025-index
+  cancel-in-progress: false
+jobs:
+  extract-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install official PDF text extractor
+        run: python -m pip install --disable-pip-version-check pymupdf==1.26.4
+      - name: Extract every original page from July 2026 ESDM publication
+        run: python scripts/heesi_2025_extract.py
+      - name: Validate complete searchable index
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('data/handbook-2025-pages.json')
+          d=json.loads(p.read_text())
+          assert len(d['pages'])==172
+          assert d['pages'][33]['pdf_page']==34
+          assert 'Energy Balance' in d['pages'][33]['text']
+          assert 'Power Plant Installed Capacity by Province' in d['pages'][133]['text']
+          assert sum(len(x['text']) for x in d['pages'])>200_000
+          print('Validated 172 source-linked pages and official 2025 energy balance / provincial table.')
+          PY
+      - name: Commit verified source index
+        shell: bash
+        run: |
+          git config user.name "sli-data-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/handbook-2025-pages.json
+          if git diff --cached --quiet; then
+            echo "Source index unchanged"
+            exit 0
+          fi
+          git commit -m "data: index complete 172-page ESDM HEESI 2025 original text"
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
