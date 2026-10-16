@@ -30,7 +30,9 @@ assert.equal(data.metrics.filter(x=>x.metric_scope.includes('Indonesia')||x.labe
 assert.equal(data.metrics.find(x=>x.id==='nickel_mined_share').value,63);
 assert.equal(data.metrics.find(x=>x.id==='nickel_mined_share').year,2024);
 assert.equal(data.metrics.find(x=>x.id==='china_refinery_capacity').value,75);
-assert.match(data.download_status,/not accessible|not ingested|not extracted/i);
+assert.match(data.download_status,/parsed|ingested|integrated/i,'IEA July 2026 workbook must be source-parsed');
+assert.equal(data.workbook_ingestion.license,'CC BY 4.0');
+assert.equal(data.workbook_ingestion.source_edition,'2026-07-27');
 assert.equal(data.lenses.length,7);
 assert.ok(data.sources.length>=9,'Missing original IEA citations');
 const refs=new Map(data.sources.map(x=>[x.id,x]));
