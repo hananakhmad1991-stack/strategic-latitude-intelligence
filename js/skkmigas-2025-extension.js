@@ -87,6 +87,14 @@ function procurement(root,data){
  root.append(E("p","sm25-note",p.description),E("p","sm25-note",c.warning));
  const leaders=E("div","sm25-spatial");for(const x of s.award_leaders){const b=E("div","sm25-spatial-item");b.append(E("small",null,x.class+" · WP&B "+x.wpb_usd_range),E("strong",null,x.company));leaders.append(b)}
  root.append(E("h4",null,"SCM awards by PSC work-program class"),leaders);
+ const vendors=E("div","sm25-spatial");
+ for(const v of s.vendor_assessed_rows){const c=E("div","sm25-spatial-item");c.append(E("small",null,"SME capacity assessment · "+v.commodity),E("strong",null,v.company));vendors.append(c)}
+ root.append(E("h4",null,L("Five vendors assessed in 2025","Lima vendor dinilai pada 2025")),vendors);
+ const contractors=E("div","sm25-spatial");
+ for(const v of s.compliance_inspected){const c=E("div","sm25-spatial-item");c.append(E("small",null,"PSC inspection · "+v.contract_area),E("strong",null,v.operator));contractors.append(c)}
+ root.append(E("h4",null,L("Five PSC compliance inspections · 2024 performance","Lima pemeriksaan kepatuhan KKKS · kinerja 2024")),contractors);
+ root.append(E("p","sm25-note",L("Source tables 6.4 and 6.5 identify assessed companies and inspected contractors, not vendor quality ratings, regulatory breaches or procurement contracts.","Tabel sumber 6.4 dan 6.5 mencantumkan perusahaan yang dinilai dan KKKS yang diperiksa, bukan skor kualitas, pelanggaran, atau kontrak pengadaan.")));
+
  note(root,176,"Procurement figures and approval speed · see also PDF pp. 45–46, 183–184 for exploration commitments and supplier KPI assessment.");
 }
 function risks(root,data){
