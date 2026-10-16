@@ -32,10 +32,16 @@ for p in cases:
         assert i["source_id"] in source_ids
         assert i["name"] and i["unit"] and i["notes"]
         assert "actual" in i and "target" in i and "baseline" in i
-        # Every actual result is explicitly null in this preliminary assessment.
-        # Future values must be accompanied by verifiable target-equivalent sources,
-        # year, unit, geography and provenance before this guard is relaxed.
-        assert i["actual"] is None,(p["id"],i["name"],"unverified actual introduced")
+        # Permit future independently verified measured values, but never an actual
+        # without traceable observation, comparable definition, and reviewer approval.
+        if i["actual"] is not None:
+            assert isinstance(i["actual"],(int,float)) and not isinstance(i["actual"],bool)
+            assert i.get("actual_source_url","").startswith("https://"),(p["id"],i["name"],"actual source missing")
+            assert isinstance(i.get("actual_year"),int),(p["id"],i["name"],"actual period missing")
+            assert i.get("actual_scope") and i.get("actual_definition"),(p["id"],i["name"],"definition missing")
+            assert i.get("reviewer_verified") is True,(p["id"],i["name"],"actual not reviewed")
+            if i["target"] is not None:
+                assert i.get("target_comparable_verified") is True,(p["id"],i["name"],"target and actual not comparable")
     if p["id"]=="wto_trade":
         assert p["policy_type"]=="external_dispute_watch"
         assert all(c["evidence_level"]=="not_applicable" for c in p["criteria"])
@@ -52,4 +58,4 @@ for path in ("index.html","js/research-chapters.js","policy-regulatory-intellige
     assert "policy-impact-evaluation.html" in (ROOT/path).read_text(encoding="utf-8"),path
 print("PASS:",len(cases),"assessment profiles,",sum(len(p["indicators"]) for p in cases),
       "indicators,",sum(len(p["criteria"]) for p in cases),"Dunn selections;",
-      "all outcome actuals intentionally unverified")
+      "actual values require provenance and manual validation")
