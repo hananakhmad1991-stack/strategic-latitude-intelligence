@@ -1,0 +1,28 @@
+name: SLI BNPB Provincial Disaster Sync
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * 1'
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Normalize official BNPB provincial disaster events
+        run: python scripts/sync_bnpb_provinces.py
+      - name: Commit validated snapshot
+        run: |
+          git config user.name sli-data-bot
+          git config user.email actions@users.noreply.github.com
+          git add data/sli-bnpb-provincial-2025.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: normalize BNPB provincial disaster observations"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
