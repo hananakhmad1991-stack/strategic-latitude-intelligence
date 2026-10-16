@@ -85,7 +85,7 @@ def detail_digest(doc):
  # Restrict changes to title and metadata; never use changing navigation lists.
  title=clean((doc.find("h1") or doc.find("h2")).get_text(" ",strip=True)) if (doc.find("h1") or doc.find("h2")) else ""
  og=doc.find("meta",attrs={"property":"og:title"})
- if not title and og:title=clean(og.get("content",""))
+ if not title and og: title=clean(og.get("content",""))
  if not title and doc.title:title=clean(doc.title.get_text(" ",strip=True))
  descr=doc.find("meta",attrs={"name":"description"})
  description=clean(descr.get("content",""))[:350] if descr else ""
