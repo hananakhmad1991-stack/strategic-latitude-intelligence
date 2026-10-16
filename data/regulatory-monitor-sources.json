@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16.2",
+  "version": "2026-10-16.3",
   "purpose": "Official-law and government policy news monitoring; candidate detection only, never automatic legal status amendment.",
   "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
@@ -218,7 +218,11 @@
     "icsid",
     "kp34newyork",
     "perma3arb",
-    "uu16paris"
+    "uu16paris",
+    "eu_cbam",
+    "eu_crma",
+    "eu_batteries",
+    "us_bis_ear"
   ],
   "keywords": [
     "energi",
@@ -305,7 +309,18 @@
     "instruksi presiden",
     "nikel",
     "mediasi",
-    "investment dispute"
+    "investment dispute",
+    "critical raw materials",
+    "cbam",
+    "battery regulation",
+    "carbon border",
+    "bis",
+    "export administration",
+    "export controls",
+    "advanced computing",
+    "gpu",
+    "foreign arbitration",
+    "investor-state"
   ],
   "item_retention": 150,
   "source_item_cap": 65,
