@@ -23,3 +23,5 @@ test('scoring refuses unvalidated values and aggregates only eligible evidence',
  const down={...valid,risk_direction:'decreasing',risk_thresholds:{safe:100,critical:0}};
  assert.equal(indicatorScore(down).score,50);
 });
+
+test('three stress labs display base/stress and explicit breaking-point explanation',()=>{const html=get('intelligence-labs.html');for(const part of ['Base vs Stress','Break-even electricity tariff','Break-even cost pass-through','Cost-neutral oil price','stressInterpretation','Methodology, formulas &amp; definitions','sli-glossary-methodology.html'])assert.ok(html.includes(part));const glossary=JSON.parse(get('data/sli-unified-glossary.json'));for(const term of ['Breaking point','Stress testing','Inventory survival runway','Oil–FX double shock'])assert.ok(glossary.items.some(x=>x.term===term&&x.en&&x.id));});
