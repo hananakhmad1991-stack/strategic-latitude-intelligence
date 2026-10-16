@@ -376,7 +376,9 @@
     "biodiesel_production_million_kl": 15.7,
     "biodiesel_domestic_million_kl": 14.9,
     "notes": "Headline published figures include rounding. The final 2025 balance includes biomass but the commercial series on pp. 2–3 explicitly excludes traditional biomass.",
-    "source_pages": "xi–xvi (PDF 11–16)"
+    "source_pages": "xi–xvi (PDF 11–16)",
+    "energy_sector_emissions_kton_co2eq_preliminary": 829883,
+    "energy_sector_emissions_status": "2025 awaiting Ministry of Environment verification; 2015–2025 AR5 GWP methodology revisions."
   },
   "series": [
     {
@@ -506,6 +508,138 @@
       ],
       "printed_pages": "2–3",
       "pdf_pages": "18–19"
+    },
+    {
+      "name": "Energy-sector greenhouse gas emissions",
+      "unit": "kton CO₂-equivalent",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        547710,
+        528426,
+        575196,
+        613218,
+        655568,
+        603763,
+        621031,
+        738167,
+        758993,
+        804127,
+        829883
+      ],
+      "printed_pages": "132–133",
+      "pdf_pages": "148–149",
+      "note": "Historical energy-related greenhouse gas inventory using revised AR5 global warming potentials. ESDM states 2025 data still under verification by the Ministry of Environment; not a finalized audited 2025 inventory."
+    },
+    {
+      "name": "Emissions from fuel combustion",
+      "unit": "kton CO₂-equivalent",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        521758,
+        503284,
+        549639,
+        587255,
+        630426,
+        580814,
+        598359,
+        716676,
+        735114,
+        779816,
+        803463
+      ],
+      "printed_pages": "132–133",
+      "pdf_pages": "148–149",
+      "note": "Historical energy-related greenhouse gas inventory using revised AR5 global warming potentials. ESDM states 2025 data still under verification by the Ministry of Environment; not a finalized audited 2025 inventory."
+    },
+    {
+      "name": "Energy industries GHG emissions",
+      "unit": "kton CO₂-equivalent",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        237474,
+        256338,
+        268562,
+        286902,
+        297616,
+        306257,
+        330578,
+        315576,
+        307458,
+        343374,
+        353247
+      ],
+      "printed_pages": "132–133",
+      "pdf_pages": "148–149",
+      "note": "Historical energy-related greenhouse gas inventory using revised AR5 global warming potentials. ESDM states 2025 data still under verification by the Ministry of Environment; not a finalized audited 2025 inventory."
+    },
+    {
+      "name": "Transport-sector GHG emissions",
+      "unit": "kton CO₂-equivalent",
+      "years": [
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "values": [
+        130266,
+        121924,
+        147944,
+        157923,
+        161375,
+        134894,
+        142979,
+        157280,
+        161305,
+        164441,
+        168649
+      ],
+      "printed_pages": "132–133",
+      "pdf_pages": "148–149",
+      "note": "Historical energy-related greenhouse gas inventory using revised AR5 global warming potentials. ESDM states 2025 data still under verification by the Ministry of Environment; not a finalized audited 2025 inventory."
     }
   ],
   "content_index": {
