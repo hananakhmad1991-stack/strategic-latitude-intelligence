@@ -150,5 +150,26 @@
       "usage": "PDF indexed online; local download and full extraction pending"
     }
   ],
-  "current_blocker": "2026-10-16 workflow downloads of full RUPTL 2025-2034 and PLN Statistics 2025 failed; no regional annex numeric data may be asserted until independently verified."
+  "current_blocker": "2026-10-16 workflow downloads of full RUPTL 2025-2034 and PLN Statistics 2025 failed; no regional annex numeric data may be asserted until independently verified.",
+  "ruptl_uploaded_excerpt": {
+    "document": "876718974-RUPTL-2025-2034-1.pdf",
+    "pages": 100,
+    "sha256": "6b0a38077e64421c034b94f49bf97d05afc18ddfdedaf8e44607380c9a284ac1",
+    "status": "verified_first_100_pages_only",
+    "metric_dataset": "./data/ruplt-2025-2034-partial-source-intelligence.json",
+    "reservoir_dataset": "./data/ruplt-2025-2034-floating-solar-potential.json",
+    "dashboard": "./ruplt-investor-digitization.html",
+    "available_table_pages": [
+      5,
+      82,
+      83,
+      98
+    ],
+    "missing_annexes": [
+      "A4",
+      "B3",
+      "B4"
+    ],
+    "note": "Original full RUPTL and 2025 Statistics download remain unsuccessful. Annex titles indexed on PDF page 27, detailed annex schedules not in uploaded excerpt."
+  }
 }
