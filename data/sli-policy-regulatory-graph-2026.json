@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16.1",
+  "version": "2026-10-16.2",
   "updated_at": "2026-10-16",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -26,7 +26,7 @@
       "Perda Province",
       "Perda City/Regency"
     ],
-    "article_8_branch": "Ministerial and certain other regulations have authority-derived binding force under Article 8; not appended as a new rung after provincial local regulation. Kepmen often administrative decisions, not general normative regulations. SNI/technical codes require adoption/contract to be binding.",
+    "article_8_branch": "Ministerial and certain other regulations have authority-derived binding force under Article 8; not appended as a new rung after provincial local regulation. Kepmen often administrative decisions, not general normative regulations. SNI/technical codes require adoption/contract to be binding. Historical Keppres precedents can define institutional history but should not be confused with modern Presidential Regulations or assumed current licensing authority.",
     "ria_lite": {
       "purpose": "transparent qualitative prioritization of investor due diligence, not government statutory Regulatory Impact Assessment, cost-benefit CBA, actual probability, compliance finding or legal verdict.",
       "scale": "six analyst-assigned 1–5 ordinal issue exposure ratings; uncalibrated, scenario screening only; higher=more diligence needed, not 'illegal'.",
@@ -638,6 +638,19 @@
       "kind": "implementation_evidence",
       "owner": "KLH / carbon ecosystem",
       "evidence": "official_record"
+    },
+    {
+      "id": "keppres41batam",
+      "tier": "decision",
+      "ref": "Keppres 41/1973 · Batam",
+      "label": "Establishment of Batam as industrial area (historical legal basis)",
+      "sector": "energy",
+      "source": "https://bpbatam.go.id/about-batam/history-of-batam-2/",
+      "note": "Historical Presidential Decision underpinning Batam industrial development and former Otorita Batam. BP Batam traces its institutional origin here; do NOT treat 1973 text as a consolidated 2026 investment or land-permit rule. Follow later FTZ and organizational legislation.",
+      "status": "archival_not_verified",
+      "kind": "presidential_decree_historical",
+      "owner": "President / BP Batam",
+      "evidence": "official_bp_batam_history"
     }
   ],
   "edges": [
@@ -865,6 +878,16 @@
       "from": "permen11",
       "to": "grid",
       "type": "operational_diligence"
+    },
+    {
+      "from": "keppres41batam",
+      "to": "perda_kepri",
+      "type": "batam_regional_historical_context"
+    },
+    {
+      "from": "keppres41batam",
+      "to": "grid",
+      "type": "location_governance_context"
     }
   ],
   "cases": [
