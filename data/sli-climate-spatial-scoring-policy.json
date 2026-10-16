@@ -1,0 +1,17 @@
+{
+  "schema": "sli-climate-point-exposure-v1",
+  "status": "not_scored",
+  "hazards": [
+    "flood",
+    "drought",
+    "wildfire",
+    "extreme_heat"
+  ],
+  "requirements": [
+    "verified site coordinates",
+    "hazard raster or polygon with valid nationwide coverage and publication date",
+    "documented class thresholds and coordinate uncertainty",
+    "spatial intersection successful"
+  ],
+  "warning": "No project risk scores may be assigned from provincial centroid or annual incident counts."
+}
