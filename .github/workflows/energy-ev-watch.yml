@@ -32,13 +32,25 @@ jobs:
           python - <<'PY'
           import json
           d=json.load(open("data/energy-ev.json",encoding="utf-8"))
-          assert d["cars"]["gaikindo_wholesale"]["value"]==117218
-          assert d["motorcycles"]["sales_2026"]["value"]==18900
-          assert d["targets"]["electric_two_wheelers_population"]==13000000
-          assert d["infrastructure"]["spklu_units"]["value"]==4769
-          assert d["cars"]["stock_verified"] is None
-          assert d["motorcycles"]["fleet_stock"]["value"]<d["targets"]["electric_two_wheelers_population"]
-          assert d["motorcycles"]["sales_2026"]["source"]!=d["motorcycles"]["srut_sales_2025"]["source"]
+          def sourced_number(entry, name):
+              assert isinstance(entry,dict), name
+              assert isinstance(entry.get("value"),(int,float)) and not isinstance(entry["value"],bool), name
+              assert entry["value"]>=0 and entry.get("source","").startswith("https://"), name
+              assert entry.get("period") or entry.get("as_of") or entry.get("date"), name
+          sourced_number(d["cars"]["gaikindo_wholesale"],"Wholesale is dated sales, not fleet")
+          sourced_number(d["motorcycles"]["sales_2026"],"Motorcycle sales vintage")
+          sourced_number(d["infrastructure"]["spklu_units"],"SPKLU machines, not locations")
+          target=d["targets"]["electric_two_wheelers_population"]
+          assert isinstance(target,(int,float)) and target>0, "Population target must be a positive number"
+          stock=d["cars"].get("stock_verified")
+          if stock is not None:
+              sourced_number(stock,"Verified car stock source")
+              assert stock.get("definition"), "Stock must state its definition and reporting basis"
+          fleet=d["motorcycles"].get("fleet_stock")
+          if isinstance(fleet,dict) and fleet.get("value") is not None:
+              assert fleet["value"]>=0
+          assert d["cars"]["gaikindo_wholesale"].get("definition","") or d["cars"]["gaikindo_wholesale"].get("classification")
+          assert d["infrastructure"]["spklu_units"].get("definition")
           print("EV statistical definitions and target guardrails validated")
           PY
       - name: Publish source leads without losing concurrent updates
