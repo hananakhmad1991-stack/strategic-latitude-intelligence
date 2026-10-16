@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-10-16",
+  "purpose": "Audit whole SLI dashboard, distinguish automatically refreshed data, candidate-only news, archival sources and manually curated reference tables; no fabricated auto-update completeness.",
+  "schedule": "4 checks per day, approximately 07:07, 13:07, 19:07, 01:07 WIB (GitHub Actions delays possible)",
+  "model": {
+    "automated_numeric": "Machine-readable numerical source updates run on schedule and pass schema checks; historical observation is not necessarily current",
+    "automated_discovery": "Automated source/news/publisher checks that generate review candidates; do not equate news with verified changes",
+    "computed_from_sources": "Automatically recalculated assessment from already available monitored observations; cannot establish causality",
+    "curated_snapshot": "Published/extracted reference data; new editions require verified re-ingestion or manual review",
+    "static_reference": "Historical atlas/map/source data that changes only on publication/source replacement",
+    "status_unknown": "No deterministic writer discovered; never claim automatic refresh"
+  },
+  "categories": {
+    "AI / Data Centers": [
+      "ai-",
+      "indonesia-ai-",
+      "komdigi-",
+      "strategic-map-digital-ai"
+    ],
+    "Energy & Electricity": [
+      "energy-",
+      "pln-",
+      "ruplt-",
+      "daily-energy-",
+      "geopolitical-energy-",
+      "domestic-energy-",
+      "iea-",
+      "heesi-",
+      "handbook-",
+      "skkmigas-",
+      "strategic-map-pltu-",
+      "strategic-map-power-",
+      "strategic-map-biofuel-"
+    ],
+    "Mining & Minerals": [
+      "usgs-",
+      "esdm-2025-mineral",
+      "strategic-map-smelter",
+      "strategic-map-upstream"
+    ],
+    "Investment & Finance": [
+      "investment-"
+    ],
+    "Trade & Markets": [
+      "commodity-",
+      "sli-macro-"
+    ],
+    "Governance & Regulations": [
+      "regulatory-",
+      "sector-",
+      "sli-policy",
+      "sli-public-policy",
+      "sli-sector-regulatory",
+      "cross-source-policy"
+    ],
+    "Maps & Geography": [
+      "strategic-map-",
+      "indonesia-provinces"
+    ]
+  },
+  "overrides": {
+    "data/ai-intelligence.json": {
+      "mode": "curated_snapshot",
+      "priority": "critical",
+      "note": "Project MW, operator, financing, GPU fleet and COD require sourced project-specific confirmations. AI news workflow is discovery-only."
+    },
+    "data/ai-investment-events.json": {
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "note": "Milestone ledger only changes after evidence verification; not automatically inferred from announcements."
+    },
+    "data/ai-risk-evidence.json": {
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "note": "Diligence score reflects evidence completeness, never implied changes in financial or legal risks."
+    },
+    "data/sli-macro-indonesia-2026.json": {
+      "mode": "curated_snapshot",
+      "priority": "critical",
+      "note": "BPS/BI/Kemenkeu 2026 press-release snapshot; NOT yet an automated current monthly/quarterly feed. WDI series updates separately."
+    },
+    "data/sli-macro-worldbank-history.json": {
+      "mode": "automated_numeric",
+      "priority": "critical",
+      "note": "World Bank WDI annual history synced weekly; API omissions retained as missing and never interpolated."
+    },
+    "data/commodity-market-prices.json": {
+      "mode": "automated_numeric",
+      "priority": "high",
+      "note": "Automatic quotes/price observations; verify actual quote date, publisher and fallback fields."
+    },
+    "data/regulatory-monitor.json": {
+      "mode": "automated_discovery",
+      "priority": "critical",
+      "note": "Document changes and policy news are review candidates; the legally effective law graph remains curated."
+    },
+    "data/sli-policy-regulatory-graph-2026.json": {
+      "mode": "curated_snapshot",
+      "priority": "critical",
+      "note": "Changes to in-force/amended/repealed status require official primary legal document, not news headline."
+    },
+    "data/sli-public-policy-evaluation-2026.json": {
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "note": "Ex-ante/process/ex-post assessments need quantitative outcomes, attribution design and researcher review."
+    },
+    "data/investment-projects.json": {
+      "mode": "curated_snapshot",
+      "priority": "critical",
+      "note": "Announced financing and capacity must not be automatically equated with actual commissioned projects."
+    },
+    "data/energy-events.json": {
+      "mode": "automated_discovery",
+      "priority": "medium",
+      "note": "Events are discovered from public announcements; validate cancellations and actual dates."
+    },
+    "data/energy-actors-status.json": {
+      "mode": "automated_discovery",
+      "priority": "high",
+      "note": "Leadership watch should not auto-replace current officials without unambiguous legal appointment."
+    },
+    "data/sector-leadership-watch.json": {
+      "mode": "automated_discovery",
+      "priority": "high",
+      "note": "Actor source checks are not appointment proof."
+    },
+    "data/investment-forbes-top20.json": {
+      "mode": "automated_discovery",
+      "priority": "medium",
+      "note": "Forbes rank updates require publication-specific source and date; never invent wealth estimates."
+    },
+    "data/energy-fundamentals.json": {
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "note": "Historical statistics are edition-specific; new ESDM/PLN publications require digitization."
+    },
+    "data/heesi-2025-integrated.json": {
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "note": "HEESI 2025 archived source values do not change when a later edition appears."
+    },
+    "data/pln-ruptl-uploaded-excerpt-2025-2034.json": {
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "note": "Only initial 100-page RUPTL excerpt; new annex and revisions require document validation."
+    },
+    "data/commodity-trade-flows.json": {
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "note": "Trade partner/commodity Sankey currently represents a particular statistical vintage; requires verified periodic BPS/UN Comtrade ingestion."
+    },
+    "data/daily-energy-assessment.json": {
+      "mode": "computed_from_sources",
+      "priority": "medium",
+      "note": "Rule-based daily assessment from observed data, not direct proof of changes in energy security."
+    }
+  },
+  "readiness_rules": {
+    "health_check_horizon_hours": 8,
+    "failure_alert": "Workflow latest conclusion != success, stale scheduled observations, missing official source, or missing freshness metadata appears in dashboard.",
+    "legacy_static_coverage": "Curated static report values remain valid for their stated reference years but do not update until new source editions are verified and ingested.",
+    "review_queue": "Candidate only for legal changes, appointments, project implementation, forecasts, maps and new PDF/report digitization.",
+    "live_site_delivery": "Prefer raw public repository JSON with local Pages fallback; website code still requires GitHub Pages deployments.",
+    "operational_success": "A successful workflow run confirms execution, not source completeness or semantic validity."
+  }
+}
