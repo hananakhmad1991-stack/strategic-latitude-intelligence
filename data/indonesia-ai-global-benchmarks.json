@@ -260,6 +260,110 @@
         ]
       ],
       "caveat": "Global shares; low-income below 0.1% and therefore not plotted at a rounded precision. No Indonesia country-specific data center capacity here."
+    },
+    {
+      "id": "worldbank_5g_income",
+      "title": "5G population network coverage by income group, 2024",
+      "unit": "%",
+      "year": 2024,
+      "source": "worldbank",
+      "pdf_page": 16,
+      "provider": "World Bank report",
+      "values": [
+        [
+          "High-income economies",
+          84
+        ],
+        [
+          "Upper-middle-income economies",
+          65
+        ],
+        [
+          "Lower-middle-income economies",
+          35
+        ],
+        [
+          "Low-income economies",
+          4
+        ]
+      ],
+      "caveat": "World Bank global income-group aggregates, not Indonesia's standalone 5G coverage. Denominator is population, unlike Komdigi settlement-area coverage."
+    },
+    {
+      "id": "worldbank_internet_income",
+      "title": "Population using internet by income group, 2024",
+      "unit": "%",
+      "year": 2024,
+      "source": "worldbank",
+      "pdf_page": 16,
+      "provider": "World Bank report",
+      "values": [
+        [
+          "High-income economies",
+          93
+        ],
+        [
+          "Upper-middle-income economies",
+          81
+        ],
+        [
+          "Lower-middle-income economies",
+          54
+        ],
+        [
+          "Low-income economies",
+          27
+        ]
+      ],
+      "caveat": "Country income group averages; not Indonesia-specific internet penetration."
+    },
+    {
+      "id": "worldbank_basic_skills",
+      "title": "Share of people with basic digital skills by income group, 2023",
+      "unit": "%",
+      "year": 2023,
+      "source": "worldbank",
+      "pdf_page": 17,
+      "provider": "World Bank report",
+      "values": [
+        [
+          "High-income economies",
+          66
+        ],
+        [
+          "Upper-middle-income economies",
+          38
+        ],
+        [
+          "Lower-middle-income economies",
+          21
+        ]
+      ],
+      "caveat": "Low-income rate stated as less than 5%, deliberately excluded because no exact value was given."
+    },
+    {
+      "id": "worldbank_ai_job_growth_income",
+      "title": "Growth in AI-skilled job vacancies by income group, 2021–2024",
+      "unit": "%",
+      "year": "2021–2024",
+      "source": "worldbank",
+      "pdf_page": 17,
+      "provider": "World Bank report",
+      "values": [
+        [
+          "Upper-middle-income economies",
+          16
+        ],
+        [
+          "Lower-middle-income economies",
+          11
+        ],
+        [
+          "High-income economies",
+          2
+        ]
+      ],
+      "caveat": "Income-group labour-demand growth. Not directly comparable to LinkedIn Indonesia 2025 relative AI hiring measure."
     }
   ],
   "observations": [
