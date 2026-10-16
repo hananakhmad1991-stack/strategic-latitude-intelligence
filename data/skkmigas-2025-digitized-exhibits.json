@@ -7,7 +7,7 @@
   "extracted_on": "2026-10-16",
   "source_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
   "data_license_note": "Facts, labeled figures and source table values transcribed from user-provided PDF; credit SKK Migas. This file does not republish the original report's copyrighted photos, layouts or full text.",
-  "quality_rule": "series values transcribed from printed data labels, not inferred pixel heights; zero and null are different; related categories and currencies should not be arithmetically mixed. Original PDF pages authoritative. Source disagreements described in notes.",
+  "quality_rule": "series values transcribed from printed data labels, not inferred pixel heights; zero and null are different; related categories and currencies should not be arithmetically mixed. Original PDF pages authoritative. Source disagreements described in notes. Additional source exact Graphs 3.8, 4.2, 4.5 distinguish disruptions, utilization units and standard-cargo LNG.",
   "series": [
     {
       "id": "ca_total",
@@ -924,6 +924,225 @@
       ],
       "note": "31 December 2025, unaudited. Four source components sum exactly to IDR 743,497,553,962,874. Original document describes 218 PSC contractors.",
       "method": "verbatim data labels on original SKK Migas 2025 annual report figure"
+    },
+    {
+      "id": "unplanned_oil_lpo",
+      "title": "Oil loss from unplanned shutdowns: surface vs non-surface",
+      "unit": "BOPD",
+      "source_pdf_page": 92,
+      "section": "production",
+      "method": "Original SKK Migas Graph 3.8 and surrounding text",
+      "records": [
+        {
+          "name": "Surface facilities",
+          "value": 7247
+        },
+        {
+          "name": "Non-surface causes",
+          "value": 7120
+        }
+      ],
+      "note": "Original parts sum 14,367 BOPD; paragraph reports 14,368 BOPD, discrepancy 1 BOPD due printed rounding."
+    },
+    {
+      "id": "unplanned_gas_lpo",
+      "title": "Gas loss from unplanned shutdowns: surface vs non-surface",
+      "unit": "MMSCFD",
+      "source_pdf_page": 92,
+      "section": "production",
+      "method": "Original SKK Migas Graph 3.8 and surrounding text",
+      "records": [
+        {
+          "name": "Surface facilities",
+          "value": 195.49
+        },
+        {
+          "name": "Non-surface causes",
+          "value": 125.18
+        }
+      ],
+      "note": "Original parts sum 320.67 MMSCFD; paragraph reports 320.68 MMSCFD, 0.01 MMSCFD discrepancy."
+    },
+    {
+      "id": "facility_disruption_frequency",
+      "title": "Frequency of production facility disruptions",
+      "unit": "events",
+      "source_pdf_page": 92,
+      "section": "production",
+      "method": "Labeled horizontal bar annotations, Graph 3.8",
+      "records": [
+        {
+          "name": "Pipeline",
+          "value": 90
+        },
+        {
+          "name": "Pipings and valves",
+          "value": 20
+        },
+        {
+          "name": "Platform/structure",
+          "value": 0
+        },
+        {
+          "name": "Vessels",
+          "value": 8
+        },
+        {
+          "name": "Pumps",
+          "value": 26
+        },
+        {
+          "name": "Heat exchanger",
+          "value": 24
+        },
+        {
+          "name": "Compressor",
+          "value": 143
+        },
+        {
+          "name": "Engine/prime mover",
+          "value": 2
+        },
+        {
+          "name": "Electrical",
+          "value": 196
+        },
+        {
+          "name": "Instrument and control",
+          "value": 55
+        }
+      ],
+      "note": "Frequency of reported disruptions, not averaged lost oil or gas volume. The original record does not provide facility geolocations."
+    },
+    {
+      "id": "gas_contract_vs_actual",
+      "title": "2025 gas utilization by sector · realized versus daily contract quantity",
+      "unit": "BBTUD",
+      "source_pdf_page": 105,
+      "section": "gas",
+      "method": "Original SKK Migas Graph 4.2 printed numeric contract and realized labels",
+      "records": [
+        {
+          "name": "LNG export",
+          "plan": 1302.66,
+          "realization": 1302.66,
+          "unit": "BBTUD"
+        },
+        {
+          "name": "Industry",
+          "plan": 1636.2,
+          "realization": 1403.44,
+          "unit": "BBTUD"
+        },
+        {
+          "name": "Fertilizer",
+          "plan": 759.81,
+          "realization": 662.67,
+          "unit": "BBTUD"
+        },
+        {
+          "name": "Electricity",
+          "plan": 816.07,
+          "realization": 735.3,
+          "unit": "BBTUD"
+        },
+        {
+          "name": "LNG domestic",
+          "plan": 761.77,
+          "realization": 761.77,
+          "unit": "BBTUD"
+        },
+        {
+          "name": "Pipeline gas export",
+          "plan": 471.5,
+          "realization": 415.61,
+          "unit": "BBTUD"
+        },
+        {
+          "name": "Oil lifting",
+          "plan": 183.75,
+          "realization": 201.96,
+          "unit": "BBTUD"
+        },
+        {
+          "name": "LPG domestic",
+          "plan": 96.35,
+          "realization": 96.35,
+          "unit": "BBTUD"
+        },
+        {
+          "name": "City gas",
+          "plan": 17.98,
+          "realization": 12.89,
+          "unit": "BBTUD"
+        },
+        {
+          "name": "Gas fuel",
+          "plan": 12.42,
+          "realization": 8.54,
+          "unit": "BBTUD"
+        }
+      ],
+      "note": "Actual vs daily contracted quantity (DCQ), both BBTUD. No synthetic volume-to-currency conversion; different from gross gas production in MMSCFD."
+    },
+    {
+      "id": "lng_domestic_receivers",
+      "title": "2025 LNG standard cargoes supplied to domestic regas terminals",
+      "unit": "standard cargoes",
+      "source_pdf_page": 109,
+      "section": "gas",
+      "method": "Graph 4.5 original eight terminal columns and Bontang/Tangguh source rows",
+      "records": [
+        {
+          "name": "AMNT",
+          "value": 0.82,
+          "bontang_cargo": 0.82,
+          "tangguh_cargo": 0
+        },
+        {
+          "name": "Arun",
+          "value": 13.82,
+          "bontang_cargo": 1.1,
+          "tangguh_cargo": 12.72
+        },
+        {
+          "name": "Benoa",
+          "value": 5.35,
+          "bontang_cargo": 5.35,
+          "tangguh_cargo": 0
+        },
+        {
+          "name": "Gorontalo",
+          "value": 1.01,
+          "bontang_cargo": 1.01,
+          "tangguh_cargo": 0
+        },
+        {
+          "name": "Isotank",
+          "value": 0.03,
+          "bontang_cargo": 0.03,
+          "tangguh_cargo": 0
+        },
+        {
+          "name": "Java-1",
+          "value": 8.26,
+          "bontang_cargo": 0,
+          "tangguh_cargo": 8.26
+        },
+        {
+          "name": "Lampung",
+          "value": 17.85,
+          "bontang_cargo": 2.14,
+          "tangguh_cargo": 15.71
+        },
+        {
+          "name": "Nusantara Regas",
+          "value": 37.47,
+          "bontang_cargo": 0,
+          "tangguh_cargo": 37.47
+        }
+      ],
+      "note": "2025 standard LNG cargoes (STD CARGO), NOT TBTU or metric tonnes. Bontang total 10.45 and Tangguh 74.16, all receivers sum 84.61 standard cargoes; 2025 TBTU in other SKK report section is not directly convertible without cargo energy-content assumptions."
     }
   ],
   "status": "Numerically digitized and auditable original printed labels/tables only; nonnumeric maps, Gantt charts, raw maps, textual risk diagrams and scanned figures remain referenced instead of fictional numeric data."
