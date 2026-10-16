@@ -1,0 +1,73 @@
+{
+  "updated_at": "2026-10-16",
+  "method": "Official-source transmission planning and observed system peak crosswalk; published system peak is not headroom or site-specific capacity.",
+  "national": {
+    "ruptl_start": 2025,
+    "ruptl_end": 2034,
+    "planned_new_capacity_gw": 69.5,
+    "planned_renewables_storage_gw": 52.9,
+    "planned_transmission_circuit_km": 47758,
+    "source": "https://www.esdm.go.id/id/media-center/arsip-berita/kementerian-esdm-resmi-merilis-dokumen-ruptl-pln-2025-2034",
+    "numeric_source": "https://web.pln.co.id/cms/media/siaran-pers/2025/06/ruptl-2025-2034-pln-siap-bangun-green-super-grid-sepanjang-47-758-kms/"
+  },
+  "system_peaks": [
+    {
+      "system": "Java–Bali interconnection",
+      "observed_year": 2025,
+      "peak_mw": 44940.8,
+      "source": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
+      "definition": "2025 measured interconnected-system peak, NOT spare available MW"
+    },
+    {
+      "system": "Outside Java–Bali aggregate",
+      "observed_year": 2025,
+      "peak_mw": 20193.11,
+      "source": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
+      "definition": "Aggregates multiple isolated systems; NOT Batam peak or reserve"
+    }
+  ],
+  "regional_grid": [
+    {
+      "id": "bekasi",
+      "system": "Java–Bali interconnection",
+      "regional_peak_mw": null,
+      "substation_firm_headroom_mw": null,
+      "grid_queue_mw": null,
+      "ruptl_regional_construction_mw": null,
+      "verification": "regional substation-specific RUPTL table and PLN operational capacity not yet verified"
+    },
+    {
+      "id": "batang",
+      "system": "Java–Bali interconnection",
+      "regional_peak_mw": null,
+      "substation_firm_headroom_mw": null,
+      "grid_queue_mw": null,
+      "ruptl_regional_construction_mw": null,
+      "verification": "regional substation-specific RUPTL table and PLN operational capacity not yet verified"
+    },
+    {
+      "id": "batam",
+      "system": "PLN Batam",
+      "regional_peak_mw": null,
+      "substation_firm_headroom_mw": null,
+      "grid_queue_mw": null,
+      "ruptl_regional_construction_mw": null,
+      "verification": "PLN Batam separate operational/statistics and firm available capacity required"
+    },
+    {
+      "id": "jakarta",
+      "system": "Java–Bali interconnection",
+      "regional_peak_mw": null,
+      "substation_firm_headroom_mw": null,
+      "grid_queue_mw": null,
+      "ruptl_regional_construction_mw": null,
+      "verification": "region-wide cloud operations cannot be pinned to individual PLN substations"
+    }
+  ],
+  "units": {
+    "peak_mw": "peak MW of whole power system",
+    "incremental_mw": "hypothetical IT facility draw MW from SLI regional model",
+    "headroom_mw": "not published in verified sources",
+    "ratio": "incremental facility MW / system observed peak MW for scale context only; NOT a grid stress ratio"
+  }
+}
