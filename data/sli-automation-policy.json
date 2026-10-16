@@ -163,5 +163,15 @@
     "review_queue": "Candidate only for legal changes, appointments, project implementation, forecasts, maps and new PDF/report digitization.",
     "live_site_delivery": "Prefer raw public repository JSON with local Pages fallback; website code still requires GitHub Pages deployments.",
     "operational_success": "A successful workflow run confirms execution, not source completeness or semantic validity."
+  },
+  "operational_review": {
+    "latest_verified_workflows": [
+      "energy-actor-watch.yml",
+      "energy-ev-watch.yml",
+      "sli-live-delivery-qa.yml"
+    ],
+    "note": "Workflow delivery health re-evaluated periodically; success is not an indication legal project or historical metrics were changed.",
+    "publication_rule": "When published by GitHub Actions using GITHUB_TOKEN, raw main JSON is primary live-data source with Pages fallback. UI site code must still be deployed.",
+    "known_gap": "Curated/report PDFs, BPS/BI/Kemenkeu current national release cards, site project financing, energy stakeholder law/legal force and historical source editions cannot be fully rebuilt from news detection without primary source extraction."
   }
 }
