@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-16T11:48:46.509076+00:00",
-  "last_attempt_at_utc": "2026-10-16T11:48:46.509076+00:00",
+  "generated_at_utc": "2026-10-16T13:01:31.510534+00:00",
+  "last_attempt_at_utc": "2026-10-16T13:01:31.510534+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
@@ -13,21 +13,6 @@
           "publisher": "Mining.com",
           "publisher_url": "https://www.mining.com",
           "published_at_utc": "2026-10-15T18:00:41+00:00",
-          "sector": "minerals",
-          "scope": "geopolitical",
-          "topic_id": "copper_supply",
-          "channel": "Copper, alumina and aluminium exposure",
-          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "copper-supply-copper-price-forecasts-lifted-for-2026-but-tariff-collapse-still-on-the-table-mining-com",
-          "title": "Copper price forecasts lifted for 2026 but tariff “collapse” still on the table - Mining.com",
-          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPUXdLa1dPTUMwTjlJYWRvaWhwQkV4Z0tXVUV0MDRTR0YxTHp0SnBFMjIwWDZBZXBWS0N1azNLeGFOdVA2T0tER2V1N05ZTXN1bW1veWJhU2JUeEVGSEItZFh5d3BxYnNtMGxJbXhQeEtac2RBZTFMTjJCS211bXVZQlptdG9QVF9NN2JXck9zemt2Q29CS2FzaGRpQTZDY3d3WjZ3?oc=5",
-          "publisher": "Mining.com",
-          "publisher_url": "https://www.mining.com",
-          "published_at_utc": "2026-10-14T16:31:40+00:00",
           "sector": "minerals",
           "scope": "geopolitical",
           "topic_id": "copper_supply",
@@ -679,7 +664,7 @@
   },
   "counts": {
     "minerals": {
-      "geopolitical": 11,
+      "geopolitical": 10,
       "domestic": 15
     },
     "ai": {
@@ -710,7 +695,7 @@
       "id": "copper_supply",
       "scope": "minerals/geopolitical",
       "state": "scanned",
-      "found": 6
+      "found": 5
     },
     {
       "id": "smelter_projects",
