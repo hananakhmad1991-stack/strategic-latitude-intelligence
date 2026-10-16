@@ -165,8 +165,11 @@
       "kind": "table",
       "number": "2.4",
       "title": "2025 exploration discoveries by well, PSC contractor and contract area",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Complete source table names and record identifiers digitized as a searchable register; locations are unverified GIS. Distinct from numeric chart digitization.",
+      "digitized_refs": [
+        "discovery_well_identifiers"
+      ]
     },
     {
       "pdf_page": 48,
@@ -186,8 +189,11 @@
       "kind": "table",
       "number": "2.5",
       "title": "Exploration status determination register",
-      "status": "source-catalog-only",
-      "crosscheck": "Open uploaded SKK Migas Annual Report 2025 English version at the printed page; official publisher catalog has the report but a stable direct PDF URL was not available during this integration."
+      "status": "structured_table_verified",
+      "crosscheck": "Complete source table names and record identifiers digitized as a searchable register; locations are unverified GIS. Distinct from numeric chart digitization.",
+      "digitized_refs": [
+        "pse_structures"
+      ]
     },
     {
       "pdf_page": 50,
@@ -1030,7 +1036,9 @@
     "source_pdf_sha256": "48994ab291337f3089945e89f5ddbc6716b009e17defcb55b36628b83b21c301",
     "numerically_verified": 21,
     "indexed_source_items": 101,
-    "source_only": 66,
-    "notes": "This index is an evidence navigator and was not a proven complete inventory of all original report graphics. Named 45 POD approvals have two source PDF pages, and the 0.01–12.31 discrepancies are flagged. Source-only items include nonnumeric drawings, governance diagrams and raster maps; do not label them numerically digitized."
+    "source_only": 64,
+    "notes": "This index is an evidence navigator and was not a proven complete inventory of all original report graphics. Named 45 POD approvals have two source PDF pages, and the 0.01–12.31 discrepancies are flagged. Source-only items include nonnumeric drawings, governance diagrams and raster maps; do not label them numerically digitized.",
+    "structured_source_tables": 2,
+    "comments": "Two additional complete source-name registers: 24 PSE structures and 15 well markers. Not validated GIS coordinates or numerical productions."
   }
 }
