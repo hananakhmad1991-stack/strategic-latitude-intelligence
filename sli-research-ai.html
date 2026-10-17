@@ -4,7 +4,7 @@
 <meta name="description" content="SLI Research AI: a source-grounded conversational research assistant for Indonesia's economy, energy, strategic investment, geopolitics and technology. Generative service is not yet active.">
 <link rel="stylesheet" href="./css/sli-site-ux.css">
 <link rel="stylesheet" href="./css/sli-navigation.css">
-<link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261017-conversation1">
+<link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261017-conversation2">
 <script src="./js/sli-live-data.js?v=20261017-research1"></script></head>
 <body>
 <main class="sli-assistant" id="sliResearchMain">
@@ -18,6 +18,12 @@
  <h1>Research <em>AI</em> <span data-id="by Strategic Latitude" data-en="by Strategic Latitude">by Strategic Latitude</span></h1>
  <p data-id="Satu instruksi, riset analitis yang didukung data, konteks dan sumber yang dapat diperiksa." data-en="One prompt. Analytical research grounded in data, context and verifiable sources.">Satu instruksi, riset analitis yang didukung data, konteks dan sumber yang dapat diperiksa.</p>
  <div class="sli-ra-access-label" id="raAccessLabel">Research AI · Pre-launch</div>
+</section>
+<section class="sli-ra-owner" id="raOwnerPanel" aria-label="Private Owner Test activation">
+ <div class="sli-ra-owner-heading"><strong data-id="Uji AI Generatif · Khusus Pemilik SLI" data-en="Generative AI Owner Test · Private">Uji AI Generatif · Khusus Pemilik SLI</strong><span id="raOwnerState" class="sli-ra-owner-state">Belum terhubung</span></div>
+ <p id="raOwnerInfo" data-id="Agar bisa menguji prompt sungguhan tanpa menunggu membership selesai, deploy backend Owner Test Cloudflare terlebih dahulu. Kunci API disimpan di server, bukan di GitHub atau kolom chat." data-en="To test real AI prompts without waiting for paid membership, deploy the private Cloudflare Owner Test service first. API keys stay on the server, never on GitHub or inside the chat.">Agar bisa menguji prompt sungguhan tanpa menunggu membership selesai, deploy backend Owner Test Cloudflare terlebih dahulu. Kunci API disimpan di server, bukan di GitHub atau kolom chat.</p>
+ <div id="raOwnerInputRow" class="sli-ra-owner-input" hidden><label for="raOwnerToken" data-id="Token pengujian pribadi (bukan API key OpenAI)" data-en="Private test token (not an OpenAI API key)">Token pengujian pribadi (bukan API key OpenAI)</label><input type="password" id="raOwnerToken" autocomplete="off" spellcheck="false" placeholder="Owner test token"></div>
+ <a href="https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/blob/main/research-api/OWNER_TEST_SETUP.md" target="_blank" rel="noopener noreferrer" data-id="Petunjuk aktivasi Owner Test ↗" data-en="Owner Test setup instructions ↗">Petunjuk aktivasi Owner Test ↗</a>
 </section>
 <section class="sli-ra-workspace" aria-label="Research conversation workspace">
  <form id="raAssistantForm" class="sli-ra-composer">
