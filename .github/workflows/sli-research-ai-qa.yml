@@ -3,6 +3,8 @@ on:
   workflow_dispatch:
   push:
     paths:
+      - 'research-api/OWNER_TEST_SETUP.md'
+      - 'tests/qa-sli-owner-test.mjs'
       - 'sli-research-ai.html'
       - 'sli-research-evidence-preview.html'
       - 'css/sli-research-assistant.css'
@@ -36,6 +38,7 @@ jobs:
           node --check js/sli-research-ai.js
           node --check js/sli-research-analysis.mjs
           node --check research-api/src/index.js
+          node --check research-api/src/owner-test-worker.mjs
           node --check research-api/src/core.mjs
       - name: Validate open evidence, secure planned RAG and traceability
-        run: node --test tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs
+        run: node --test tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs
