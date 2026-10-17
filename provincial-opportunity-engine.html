@@ -233,7 +233,7 @@ async function init(){
   selected=new Set(rows.slice(0,2).map(r=>r.name));
   $('coverage').textContent=data.provinces.length+'/38';$('vintage').textContent=String(data.grdp_years.at(-1));
   $('projectTotal').textContent=String(registry.records.filter(r=>r.provinces?.length).length)+' / '+registry.records.length;
-  const sources=$('sourceLinks');sources.replaceChildren(makeLink(data.sources.pdrb.url,'BPS expenditure GRDP, 2021–2025 ↗'),makeLink(registry.source?.url,'SLI project-register sources ↗'));
+  const sources=$('sourceLinks');sources.replaceChildren(makeLink(data.sources.pdrb.url,'BPS expenditure GRDP, 2021–2025 ↗'),makeLink('https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/blob/main/data/sli-project-registry.json','SLI curated project register ↗'));
   const note=$('sourceDates');note.textContent='BPS release: '+data.sources.pdrb.released+' · 2025 provincial values preliminary · registry as of: '+registry.as_of+' · update is not simultaneous across sources. Regional policy and project execution require independent verification.';
   $('status').textContent='Source-linked screening ready. Fit scores compare provincial indicators relative to observed peers; scenario effects are hypothetical, not forecasts.';
   recompute();
