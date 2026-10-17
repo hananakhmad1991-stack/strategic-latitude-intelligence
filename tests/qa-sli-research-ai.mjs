@@ -7,7 +7,7 @@ const corpus=JSON.parse(read("data/sli-research-evidence-preview.json"));
 test("Research AI published page is a sourced, honest, bilingual Open preview",()=>{
  const h=read("sli-research-ai.html"),index=read("index.html"),nav=read("js/sli-navigation.js");
  assert.match(h,/SLI Research AI/);
- assert.match(h,/BUKAN jawaban dari model AI generatif/);
+ assert.match(h,/BUKAN AI generatif/);
  assert.match(h,/private backend|backend privat/);
  assert.match(h,/raQuestion/);assert.match(h,/raSources/);
  assert.ok(index.includes("sli-research-ai.html"));
