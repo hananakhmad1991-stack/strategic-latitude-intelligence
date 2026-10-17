@@ -96,10 +96,47 @@
     return (registry?.records||[]).filter(x=>Array.isArray(x.provinces)&&
       (x.provinces.includes(province)||x.provinces.includes(alias)));
   }
+  function attachInequality(rows, dataset){
+    const indexed = new Map((dataset?.provinces||[]).map(p=>[p.name,p]));
+    const national=dataset?.national||{};
+    return rows.map(row=>{
+      const g=indexed.get(row.name);
+      const inequalities={
+        combined:finite(g?.combined)?g.combined:null,
+        urban:finite(g?.urban)?g.urban:null,
+        rural:finite(g?.rural)?g.rural:null
+      };
+      return {...row,inequality:inequalities,inequalityRegion:g?.region||null};
+    });
+  }
+  // Descriptive only: area-specific province value compared with the same-area national
+  // official coefficient. Provincial scores are never recomputed from inequality.
+  function inequalityContext(row, dataset, area='combined'){
+    const key=['combined','urban','rural'].includes(area)?area:'combined';
+    const value=row?.inequality?.[key],national=dataset?.national?.[key];
+    if(!finite(value)||!finite(national))return {value:null,national:finite(national)?national:null,difference:null,comparison:'Not available'};
+    const difference=Number((value-national).toFixed(3));
+    return {value,national,difference,comparison:difference>0?'Above national':difference<0?'Below national':'Same as national'};
+  }
+  function groupedProvinceMedians(rows,area='combined'){
+    const groups={};
+    for(const row of rows||[]){
+      const v=row?.inequality?.[area],g=row?.inequalityRegion;
+      if(!g||!finite(v))continue;
+      (groups[g]??=[]).push(v);
+    }
+    const out={};
+    for(const [name,values] of Object.entries(groups)){
+      values.sort((a,b)=>a-b);
+      out[name]={median:(values[Math.floor((values.length-1)/2)]+values[Math.floor(values.length/2)])/2,
+        count:values.length,minimum:values[0],maximum:values.at(-1)};
+    }
+    return out;
+  }
   function profile(row){
     const factors=FACTORS.filter(k=>finite(row.drivers?.[k])).sort((a,b)=>row.drivers[b]-row.drivers[a]);
     return {relativeStrengths:factors.slice(0,2),relativeConstraints:factors.slice(-2).reverse()};
   }
   function format(v,digits=1){return finite(v)?v.toLocaleString('en-US',{maximumFractionDigits:digits}):'N/A';}
-  return {FACTORS,PRESETS,observations,weightsFor,percentiles,screen,staticShock,localProjects,profile,format};
+  return {FACTORS,PRESETS,observations,weightsFor,percentiles,screen,staticShock,localProjects,attachInequality,inequalityContext,groupedProvinceMedians,profile,format};
 });
