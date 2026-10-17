@@ -4,11 +4,16 @@ on:
   push:
     paths:
       - 'sli-research-ai.html'
+      - 'sli-research-evidence-preview.html'
+      - 'css/sli-research-assistant.css'
+      - 'js/sli-research-assistant.js'
+      - 'data/sli-research-assistant-config.json'
       - 'js/sli-research-ai.js'
       - 'js/sli-research-analysis.mjs'
       - 'data/sli-research-province-preview.json'
       - 'data/sli-research-evidence-preview.json'
       - 'research-api/**'
+      - 'tests/qa-sli-research-conversation.mjs'
       - 'tests/qa-sli-research-ai.mjs'
       - 'tests/qa-sli-research-analysis.mjs'
       - 'js/sli-navigation.js'
@@ -26,9 +31,11 @@ jobs:
           node-version: '22'
       - name: Check research JavaScript syntax
         run: |
+          node --check js/sli-research-assistant.js
+          node --check research-api/src/assistant-core.mjs
           node --check js/sli-research-ai.js
           node --check js/sli-research-analysis.mjs
           node --check research-api/src/index.js
           node --check research-api/src/core.mjs
       - name: Validate open evidence, secure planned RAG and traceability
-        run: node --test tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs
+        run: node --test tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs
