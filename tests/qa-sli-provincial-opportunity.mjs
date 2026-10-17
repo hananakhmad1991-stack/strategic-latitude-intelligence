@@ -41,7 +41,7 @@ test('ties are equal, unavailable values remain unscored, zero weights are safe'
  assert.equal(Object.values(weights).reduce((a,b)=>a+b,0),1);
 });
 test('scenario arithmetic is an observed-2025 partial accounting counterfactual, never a forecast',()=>{
- const row=engine.screen(data).find(x=>x.name==='West Java');
+ const row=engine.screen(data).find(x=>x.name==='Jawa Barat');
  assert.ok(row);
  assert.equal(engine.staticShock(row,0,0),0);
  assert.ok(engine.staticShock(row,5,10)<0);
@@ -56,6 +56,9 @@ test('project attribution is sourced, non-additive, with national unspecified si
  const java=engine.localProjects(registry,'West Java');
  assert.ok(java.some(x=>x.name.includes('Cisokan')));
  assert.ok(java.every(x=>x.provinces.includes('West Java')));
+ const westJava=engine.localProjects(registry,'Jawa Barat');
+ assert.ok(westJava.some(x=>x.name.includes('Cisokan')));
+ assert.ok(engine.localProjects(registry,'Jawa Timur').some(x=>x.name.includes('Manyar')));
  assert.equal(engine.localProjects(registry,'Not a province').length,0);
  assert.ok(registry.records.some(x=>x.provinces.length===0));
  assert.ok(registry.records.every(x=>x.source_url.startsWith('https://')&&x.amount_basis));
