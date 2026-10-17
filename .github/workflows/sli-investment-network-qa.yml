@@ -1,15 +1,14 @@
-name: SLI Investment Connections QA
+name: SLI Indonesia Power Profile QA
 on:
   push:
     paths:
       - 'geopolitical-impact-assessment.html'
       - 'indonesia-investment-navigator.html'
-      - 'js/sli-investment-network.js'
-      - 'data/sli-investment-network.json'
-      - 'data/sli-investment-network-map.geojson'
+      - 'js/sli-indonesia-power-profile.js'
+      - 'data/sli-indonesia-power-profile.json'
       - 'index.html'
       - 'intelligence-labs.html'
-      - 'tests/qa-investment-network.mjs'
+      - 'tests/qa-indonesia-power-profile.mjs'
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,5 +21,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Test country ranking, maps, source periods and interactive switching
-        run: node --test tests/qa-investment-network.mjs
+      - name: Test Lowy country profile rankings, measures, annual changes and bilateral influence
+        run: node --test tests/qa-indonesia-power-profile.mjs
