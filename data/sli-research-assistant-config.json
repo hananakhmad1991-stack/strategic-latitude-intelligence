@@ -16,10 +16,10 @@
   "published_notice_en": "SLI Research AI is pending activation. The owner can deploy the separate Cloudflare Owner Test service with server-side secrets; never put API keys in GitHub Pages.",
   "preview_url": "sli-research-evidence-preview.html",
   "owner_test": {
-    "enabled": false,
-    "endpoint": null,
+    "enabled": true,
+    "endpoint": "https://sli-research-owner-test.hananakhmad1991.workers.dev/v1/owner-research",
     "scope": "owner_only_staging_with_public_curated_SLI_evidence",
     "auth": "private_server_side_random_token_48_or_more_characters",
-    "status": "requires_Cloudflare_Worker_deployment_and_OpenAI_API_secret"
+    "status": "configured_owner_test_no_paid_subscriber_access"
   }
 }
