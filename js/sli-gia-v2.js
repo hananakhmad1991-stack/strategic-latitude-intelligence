@@ -4,7 +4,7 @@
 const $=id=>document.getElementById(id),newEl=(tag,val)=>{const e=document.createElement(tag);if(val!==undefined)e.textContent=String(val);return e};
 const link=(url,label)=>{const a=newEl('a',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a};
 const safeUrl=x=>typeof x==='string'&&/^https:\/\//.test(x);
-const number=(id)=>Number($(id).value), f=(x,d=1)=>Number(x).toLocaleString('en-US',{maximumFractionDigits:d});
+const number=(id)=>{const raw=String($(id).value??'').trim();return raw===''?NaN:Number(raw)}, f=(x,d=1)=>Number(x).toLocaleString('en-US',{maximumFractionDigits:d});
 let config=null,feed=[],snapshot=null,lastResults=null,worldLoaded=false;const engine=window.SLIGIA;
 if(!engine){$('alertState').textContent='Risk engine could not be loaded. Refresh the dashboard.';return}
 async function getJSON(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
@@ -79,17 +79,17 @@ function updateAll(){
   $('riskScore').textContent=f(score)+' / 100';$('riskClass').textContent=risk[0]+' · analyst-assumed proxy, not empirical country risk';
   const warning=engine.actionState(score,number('threshold'));
   const state=$('alertState');state.replaceChildren();
-  state.append(newEl('strong',warning.alert?'SCENARIO WARNING · assumed threshold exceeded':'SCENARIO MONITOR · within selected threshold'));
+  state.append(newEl('strong',warning.label==='Unassessed'?'SCENARIO UNASSESSED · enter a threshold from 1 to 100':warning.alert?'SCENARIO WARNING · assumed threshold exceeded':'SCENARIO MONITOR · within selected threshold'));
   state.append(newEl('p',selectedCountry().name+': '+f(score)+' / 100 vs configured alert '+number('threshold')+'. This is NOT an observed real-time change or push alert.'));
   state.append(newEl('p','Confirm current events through primary reporting before acting. Potential responses are research options, not trade orders.'));
   lastResults={...lastResults,score,country:selectedCountry().code,scenario:selectedScenario().id,sector:$('sector').value,drivers:input,threshold:number('threshold'),alert:warning.alert,generated_at:new Date().toISOString()};
- }catch(e){$('riskScore').textContent='N/A';$('riskClass').textContent=e.message;lastResults=null}
+ }catch(e){$('riskScore').textContent='N/A';$('riskClass').textContent=e.message;$('alertState').textContent='SCENARIO UNASSESSED · '+e.message;lastResults=null}
  try{
   const response=engine.scenario({value:number('portfolioValue'),exposure:number('exposure'),prob:[number('bullProbability'),number('baseProbability'),number('bearProbability')],shocks:[number('bullShock'),number('baseShock'),number('bearShock')]});
   $('modelError').textContent='';
   for(const [id,impact] of [['bullImpact',response.losses[0]],['baseImpact',response.losses[1]],['bearImpact',response.losses[2]]])$(id).textContent=(impact<0?'Potential gain ':'Potential loss ')+f(Math.abs(impact),2)+' M';
   $('expectedLoss').textContent=(response.expected<0?'–':'')+'$'+f(Math.abs(response.expected),2)+' M';
-  $('var95').textContent='$'+f(response.p95,2)+' M';$('downside').textContent='$'+f(response.downside,2)+' M';
+  $('var95').textContent=(response.p95<0?'Potential gain $':'Potential loss $')+f(Math.abs(response.p95),2)+' M';$('downside').textContent='$'+f(response.downside,2)+' M';
   lastResults={...lastResults,financial:response};
  }catch(e){$('modelError').textContent=e.message;for(const id of ['bullImpact','baseImpact','bearImpact','expectedLoss','var95','downside'])$(id).textContent='N/A';if(lastResults)delete lastResults.financial}
  refreshMap();
