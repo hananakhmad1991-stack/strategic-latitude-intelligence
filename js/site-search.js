@@ -5,20 +5,24 @@
  */
 (function() {
  "use strict";
- const INDEX_URL="data/site-search-index.json?v=20261016-search2";
+ const INDEX_URL="data/site-search-index.json?v=20261017-search3";
  const ID="sliGlobalSearchRoot",MAX=25;
  const alias={
-  batubara:["coal"],"minyak":["oil","migas"],"migas":["oil","gas"],"nikel":["nickel"],
-  "panas":["geothermal"],"bumi":["geothermal"],"surya":["solar","plts"],
-  "listrik":["power","electricity","pln"],"pembangkit":["power","generation"],
-  "konsumsi":["consumption","demand"],"ekspor":["export","exports"],"impor":["import","imports"],
-  "kilang":["refinery"],"provinsi":["province","provincial"],"cadangan":["reserve","reserves"],
-  "investasi":["investment","investor"],"harga":["price","tariff"],"pengusaha":["entrepreneur","investor","forbes"],
-  "gas":["migas"],"charging":["spklu"],"smelter":["refining","processing"],"peta":["map"],
-  "data":["dataset"],"bbm":["fuel"],"ebt":["renewable"],"energi":["energy"],
-  "stasiun":["station"],"geothermal":["panas","bumi"],"coal":["batubara"],"nickel":["nikel"],
-  "oil":["minyak"],"energy":["energi"],"solar":["surya","plts"],"investment":["investasi"],
-  "hydro":["plta"],"ev":["spklu"]
+  batubara:["coal"],coal:["batubara"],minyak:["oil"],oil:["minyak"],migas:["oil","gas"],nikel:["nickel"],nickel:["nikel"],
+  panas:["geothermal"],bumi:["geothermal"],surya:["solar","plts"],plts:["solar","photovoltaic"],geothermal:["panas","pltp"],
+  listrik:["electricity","power"],electricity:["listrik"],pembangkit:["power","generation"],konsumsi:["consumption"],
+  ekspor:["export","exports"],impor:["import","imports"],kilang:["refinery"],refinery:["kilang"],provinsi:["province","provincial"],
+  province:["provinsi"],cadangan:["reserves","reserve"],investasi:["investment","investor"],investment:["investasi"],
+  harga:["price","tariff"],pengusaha:["entrepreneur","investor"],charging:["spklu"],smelter:["smelters","refining","processing"],
+  peta:["map"],bbm:["fuel","diesel"],ebt:["renewable"],energi:["energy"],energy:["energi"],stasiun:["station"],
+  solar:["surya","plts","diesel"],hydro:["plta"],ev:["spklu","electric","vehicle"],gini:["inequality","ketimpangan"],
+  ketimpangan:["gini","inequality"],pdrb:["grdp"],grdp:["pdrb"],pertumbuhan:["growth"],growth:["pertumbuhan"],
+  elektrifikasi:["electrification"],electrification:["elektrifikasi"],industri:["industry","industrial"],industry:["industri"],
+  smelter:["smelters","refining","processing"],pusat:["central"],tengah:["central"],central:["tengah"],
+  utara:["north"],north:["utara"],selatan:["south"],south:["selatan"],barat:["west"],west:["barat"],
+  timur:["east"],east:["timur"],tenggara:["southeast"],southeast:["tenggara"],jawa:["java"],java:["jawa"],
+  sumatera:["sumatra"],sumatra:["sumatera"],kalimantan:["borneo"],borneo:["kalimantan"],
+  kepulauan:["islands"],"dkı":["dki"]
  };
  const norm=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("en").replace(/[^a-z0-9]+/g," ").trim();
  const collapse=x=>norm(x).replace(/\s+/g," ");
@@ -27,24 +31,33 @@
    page=collapse(entry.page||"");
   return {title,subtitle,key,page,all:[title,subtitle,key,page].join(" ")};
  };
+ // Match complete normalized words, not arbitrary substrings. "gas" must not match "migas",
+ // and "PLN" must not match letters within an unrelated word. Permit regular English plurals.
+ const wordMatch=(field,needle)=>{
+  const term=collapse(needle);if(!term)return false;
+  return new RegExp("(?:^| )"+term+"(?:s|es)?(?= |$)").test(field);
+ };
  const passes=(entry,query)=>{
-  const hay=entry._tokens||lookup(entry);const tokens=norm(query).split(/\s+/).filter(Boolean);
-  if(tokens.length===0)return 0;
-  let score=0;
+  const hay=entry._tokens||lookup(entry),tokens=norm(query).split(/\s+/).filter(Boolean);
+  if(!tokens.length)return 0;
+  let score=0,exact=0;
   for(const token of tokens){
-   const variants=[token,...(alias[token]||[])];
-   const used=variants.find(v=>hay.all.includes(v));
-   if(!used)return 0;
-   if(hay.title===used)score+=38;
-   else if(hay.title.startsWith(used))score+=20;
-   else if(hay.title.includes(used))score+=12;
-   else if(hay.subtitle.includes(used))score+=5;
-   else if(hay.key.includes(used))score+=3;
-   else score+=1;
+   let best=0;
+   for(const v of [token,...(alias[token]||[])]){
+    const isExact=v===token;
+    const quality=wordMatch(hay.title,v)?(hay.title===v?46:22):wordMatch(hay.subtitle,v)?10:
+      wordMatch(hay.key,v)?6:wordMatch(hay.page,v)?2:0;
+    if(quality){const points=Math.round(quality*(isExact?1:0.62));best=Math.max(best,points);if(isExact)exact++}
+   }
+   if(!best)return 0;
+   score+=best;
   }
-  if(hay.title.includes(norm(query)))score+=14;
-  if(entry.kind==="section")score+=3;
-  if(entry.kind==="dashboard")score+=6;
+  if(wordMatch(hay.title,norm(query)))score+=24;
+  else if(wordMatch(hay.subtitle,norm(query)))score+=12;
+  if(entry.kind==="section")score+=4;
+  if(entry.kind==="dashboard")score+=5;
+  // Prefer actual keyword matches to merely semantically related alias matches.
+  score+=exact*3;
   return score;
  };
  const rank=(items,q,page,scope="all",limit=MAX)=>{
@@ -52,10 +65,23 @@
   for(const item of items){
    if(scope==="page"&&item.page!==page)continue;
    if(scope!=="page"&&scope!=="all"&&item.page!==scope)continue;
-   const value=passes(item,q);if(value>0)found.push({entry:item,score:value+(item.page===page?2:0)});
+   const value=passes(item,q);
+   if(value>0)found.push({entry:item,score:value+(item.page===page?2:0)});
   }
   found.sort((a,b)=>b.score-a.score||a.entry.title.localeCompare(b.entry.title));
-  return found.slice(0,limit).map(x=>x.entry);
+  // A generic keyword such as "solar" previously returned 25 nearly identical
+  // province rows, burying other sectors and navigation destinations.
+  const diverse=[],seen=new Set(),clusterCounts=new Map();
+  for(const {entry} of found){
+   const key=[entry.page,entry.anchor,entry.kind,entry.title].join("|");
+   if(seen.has(key))continue;
+   const parts=entry.title.split(" · ");
+   const cluster=entry.kind==="record"&&parts.length>1?entry.page+"|"+parts.slice(0,-1).join(" · "):null;
+   if(cluster&&((clusterCounts.get(cluster)||0)>=4))continue;
+   seen.add(key);if(cluster)clusterCounts.set(cluster,(clusterCounts.get(cluster)||0)+1);
+   diverse.push(entry);if(diverse.length>=limit)break;
+  }
+  return diverse;
  };
  function init(options){
   const root=document.getElementById(ID);if(!root||root.dataset.ready==="true")return;
@@ -161,6 +187,34 @@
   function goToRecord(item){
    const requestToken=++requested;
    close();input.value="";
+   const allowPages=new Set(["provincial-intelligence.html","provincial-opportunity-engine.html",
+    "gini-inequality.html","indonesia-macroeconomic-intelligence.html","intelligence-labs.html",
+    "climate-environment.html","geopolitical-impact-assessment.html","sli-data-automation-center.html",
+    "pln-electricity-statistics.html","ai-infrastructure.html"]);
+   if(item.path&&allowPages.has(item.path)){
+    window.location.assign("./"+item.path);return;
+   }
+   function displayFocus(anchor){
+    if(!["record","indicator","topic"].includes(item.kind))return null;
+    const host=document.getElementById("content");if(!host)return null;
+    host.querySelectorAll(".sli-search-focus").forEach(e=>e.remove());
+    const card=document.createElement("aside");card.className="sli-search-focus";
+    card.setAttribute("role","status");
+    const eyebrow=document.createElement("small");eyebrow.textContent=id()?"HASIL PENCARIAN TERPILIH":"SELECTED SEARCH RESULT";
+    const title=document.createElement("strong");title.textContent=item.title;
+    const description=document.createElement("p");description.textContent=item.description||"";
+    const note=document.createElement("small");
+    note.textContent=id()?"Sumber terindeks; bagian dashboard dapat berisi data agregat.":"Indexed source record; dashboard section may show aggregate rather than row-level data.";
+    card.append(eyebrow,title,description,note);
+    if(item.source&&/^data\/[a-z0-9-]+\.json$/.test(item.source)){
+     const link=document.createElement("a");link.textContent=id()?"Lihat data sumber JSON ↗":"Open indexed source JSON ↗";
+     link.href="./"+item.source;link.target="_blank";link.rel="noopener noreferrer";
+     card.append(link);
+    }
+    if(anchor?.parentNode?.insertBefore)anchor.parentNode.insertBefore(card,anchor);
+    else if(host.insertBefore)host.insertBefore(card,host.firstChild);
+    return card;
+   }
    const previous=getPage();const target=item.page;
    if(target&&target!==previous)navigate(target);
    // The page shell is synchronous; many charts load asynchronously. Retry only
@@ -170,9 +224,11 @@
    const attempt=(delay)=>{
     setTimeout(()=>{
      if(requestToken!==requested)return;
-     const el=item.anchor?document.getElementById(item.anchor):document.getElementById("content");
-     if(!el)return;
-     if(!jumped){el.scrollIntoView({behavior:delay?"smooth":"auto",block:"start"});jumped=true}
+     const target=item.anchor?document.getElementById(item.anchor):document.getElementById("content");
+     // Wait for async dashboard sections; fall back to page content only on final retry.
+     if(!target&&delay<1600)return;
+     const el=target||document.getElementById("content");if(!el)return;
+     if(!jumped){const focus=displayFocus(el);(focus||el).scrollIntoView({behavior:delay?"smooth":"auto",block:"start"});jumped=true}
      if(item.komdigi_tab){
       const tab=[...el.querySelectorAll("button.kd25-tab")].find(b=>b.dataset.tab===item.komdigi_tab);
       if(tab&&tab.getAttribute("aria-selected")!=="true")tab.click();
