@@ -17,3 +17,18 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .sli-data-note{color:#bfd0de;font-size:12px;line-height:1.55}
 @media(max-width:750px){.sli-page-links a{flex:1 1 auto;text-align:center}main{min-width:0}table{max-width:none}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{scroll-behavior:auto!important}}
+
+/* Unified charts, tables and content: non-destructive presentation constraints. */
+#content,#content>.panel,#content .panel,#content .card,.main,.panel,.card{min-width:0}
+#content img,.panel img,.card img{max-width:100%;height:auto}
+#content svg,.panel svg,.card svg{max-width:100%}
+#content canvas,.panel canvas,.card canvas{max-width:100%}
+.sli-table-scroll{max-width:100%;overflow-x:auto;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch;border-radius:8px;scrollbar-width:thin}
+.sli-table-scroll>table{min-width:540px;width:100%}
+.sli-table-scroll:focus-visible{outline:2px solid #edcf91}
+.sli-scroll-hint{font-size:11px;color:#afc5d6;margin:4px 0 8px}
+.sli-external-note{font-size:11px;color:#b3c9d9}
+.sli-empty-state{border:1px dashed #526f85;border-radius:9px;padding:15px;color:#c1d4e0;background:#10273a}
+#content select,#content input,#content textarea{max-width:100%}
+@media(max-width:760px){#content .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}#content .cols{grid-template-columns:minmax(0,1fr)}#content .section{flex-wrap:wrap;gap:7px}.sli-table-scroll>table{min-width:490px}}
+@media(max-width:480px){#content .grid{grid-template-columns:minmax(0,1fr)}.main{padding-left:14px!important;padding-right:14px!important}.sli-table-scroll>table{min-width:440px}}
