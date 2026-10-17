@@ -44,6 +44,15 @@ assert.ok(result("nickel").some(x=>x.page==="minerals"||x.page==="map"),"Nickel 
 assert.ok(result("Rokan").some(x=>x.page==="map"||x.page==="investment"),"Project operator source");
 assert.ok(result("investment","investment","page").every(x=>x.page==="investment"),"This dashboard scope only");
 assert.ok(!result("SPKLU","ai","page").some(x=>x.page==="energy"),"Local filter excludes other pages");
+assert.ok(result("Gini Jawa Barat").some(x=>x.path==="gini-inequality.html"&&x.province==="Jawa Barat"),"Exact Gini province deep link");
+assert.ok(result("investment Jawa Barat").some(x=>x.path==="provincial-intelligence.html"&&x.province==="Jawa Barat"),"Investor dossier exact province deep link");
+assert.ok(result("smelter sulawesi tengah").some(x=>x.page==="map"||x.page==="investment"),"Bilingual Indonesian province + sector queries");
+assert.ok(result("BPS Gini").some(x=>x.path==="gini-inequality.html"),"Gini dashboard must be searchable");
+const mini=(title,description="",keywords="")=>({title,description,keywords,page:"energy",kind:"record"});
+assert.equal(api.passes(mini("Migas production"),"gas"),0,"Do not match gas inside migas");
+assert.equal(api.passes(mini("Saplne tower"),"pln"),0,"Do not match arbitrary token fragments");
+assert.ok(api.passes(mini("Smelters in Central Sulawesi"),"smelter sulawesi tengah")>0,"Geographic translation and plurals");
+for(const item of index.entries.filter(x=>x.path))assert.ok(/^[a-z0-9-]+\\.html$/.test(item.path),"Deep link must be a local HTML path");
 assert.equal(result("ZZZX1_UNLIKELY_QUERY").length,0);
 const nav=html.indexOf('id="sliGlobalSearchRoot"'),content=html.indexOf('id="content"');
 assert.ok(nav>0&&nav<content,"Persistent search must live in the global header, not dynamic content");
