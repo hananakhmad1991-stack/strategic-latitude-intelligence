@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-16T21:33:53.122791+00:00",
+  "checked_at_utc": "2026-10-17T00:46:50.643595+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -13,7 +13,7 @@
       "subsector": "general",
       "title": "Ship attack reports near Hormuz reach record high as oil exports slow - BBC",
       "publisher": "BBC",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE0tX0lUUUZkSGJKWXUyb0drR0dsY0M5ZDZ3Q091QlYxSjg2cWJIekZYWEVlb2VRNGFNdWxKX1ZaWnpYajlibzEtQ2FWTjVxUHBqbEJrby1tWUJrWng1Y1E?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5vbTJaWk05Ny1JSFlaa1RLTTV4QkdUX21kdXRkdUhRT1dvZmI1RGdMZ3hQdjlTM2JELXc1aXZ0Y3hVQlhMY3RXYXpIUVYwa08zVVFaUEdzU3AtaVU?oc=5",
       "indexed_at_utc": "2026-10-16T05:00:17+00:00",
       "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
@@ -154,29 +154,12 @@
       "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Geothermal and renewable financing",
-      "topic_id": "nre_geothermal",
-      "type": "NRE investment",
-      "sector": "nre",
-      "sector_tags": [
-        "nre"
-      ],
-      "subsector": "hydro_geothermal",
-      "title": "Mitsui Fudosan eyes Japan's first next-gen geothermal power site - Nikkei Asia",
-      "publisher": "Nikkei Asia",
-      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOWklVejZOdy1ka216TDFNSUw1VzRpMXc1d3U0OUVCMDJEQ1lXSzBBVFZ5Q0ZrOVN3c1hROUVLdlJISENfY2FBS1VLcDZrRFNORmhwS09XRWt4UjFhNWNqa0R0VEstYVR1eEJEMFJYQkhVTl9TcmpPRkdEZ19PdGFJRjNXWTJiaXFHNHloSVhxLTdpNFFXZ0hOT0V6d3dyRmZhZ1M3QW1GYw?oc=5",
-      "indexed_at_utc": "2026-10-13T21:40:00+00:00",
-      "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
     }
   ],
   "sector_counts": {
     "oil_gas": 4,
     "coal": 4,
-    "nre": 2,
+    "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
   },
