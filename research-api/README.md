@@ -1,6 +1,6 @@
 # SLI Research AI · future Pro/Enterprise secure RAG backend
 
-**Not deployed.** This is server-side staging code; public `sli-research-ai.html` runs a limited curated evidence preview with deterministic retrieval. It is NOT connected to an LLM today.
+**Not deployed.** This is server-side staging code; public `sli-research-ai.html` runs a limited curated evidence preview with rule-based source-grounded analytical narratives and strict province matching. It is NOT connected to an LLM today.
 
 ## Planned secure endpoint
 `POST /v1/research` (private Cloudflare Worker). Requires configured allowed `WEB_ORIGIN`, verified Supabase Auth JWT through the existing `membership-api` verifier, D1 subscription entitlement (Pro or Enterprise with non-expired active status), and a Cloudflare rate-limit binding.
