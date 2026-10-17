@@ -73,7 +73,7 @@ test("National questions return short analytical assessments, not unrelated regi
  assert.ok(["theme","insufficient"].includes(unknown.kind)); // never invent Mars figures
 });
 test("Research UI is a module using analysis engine and two independently dated snapshots",()=>{
- const html=read("sli-research-ai.html"),script=read("js/sli-research-ai.js");
+ const html=read("sli-research-evidence-preview.html"),script=read("js/sli-research-ai.js");
  assert.match(html,/type="module" src="\.\/js\/sli-research-ai\.js/);
  assert.match(script,/import \{buildResearchReport,reportToText/);
  assert.match(script,/sli-research-province-preview\.json/);
