@@ -52,7 +52,7 @@ const mini=(title,description="",keywords="")=>({title,description,keywords,page
 assert.equal(api.passes(mini("Migas production"),"gas"),0,"Do not match gas inside migas");
 assert.equal(api.passes(mini("Saplne tower"),"pln"),0,"Do not match arbitrary token fragments");
 assert.ok(api.passes(mini("Smelters in Central Sulawesi"),"smelter sulawesi tengah")>0,"Geographic translation and plurals");
-for(const item of index.entries.filter(x=>x.path))assert.ok(/^[a-z0-9-]+\\.html$/.test(item.path),"Deep link must be a local HTML path");
+for(const item of index.entries.filter(x=>x.path))assert.ok(/^[a-z0-9-]+\.html$/.test(item.path),"Deep link must be a local HTML path");
 assert.equal(result("ZZZX1_UNLIKELY_QUERY").length,0);
 const nav=html.indexOf('id="sliGlobalSearchRoot"'),content=html.indexOf('id="content"');
 assert.ok(nav>0&&nav<content,"Persistent search must live in the global header, not dynamic content");
