@@ -72,6 +72,7 @@
     if(!finite(c)||!finite(i)||c<0||i<0||!finite(row?.grdp)||row.grdp<=0||!finite(row.household)||!finite(row.capital))return null;
     // A partial expenditure-accounting counterfactual, NOT an econometric forecast.
     // Both shocks are changes from reported 2025 expenditure components, everything else held constant.
+    if(c===0 && i===0)return 0;
     return -100*(row.household*(c/100)+row.capital*(i/100))/row.grdp;
   }
   // BPS source province labels are Indonesian; selected project register province labels are English.
