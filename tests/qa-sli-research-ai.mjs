@@ -5,7 +5,7 @@ import {rankEvidence,validateResearchQuestion,extractModelText,citationsValid} f
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const corpus=JSON.parse(read("data/sli-research-evidence-preview.json"));
 test("Research AI published page is a sourced, honest, bilingual Open preview",()=>{
- const h=read("sli-research-ai.html"),index=read("index.html"),nav=read("js/sli-navigation.js");
+ const h=read("sli-research-evidence-preview.html"),index=read("index.html"),nav=read("js/sli-navigation.js");
  assert.match(h,/SLI Research AI/);
  assert.match(h,/BUKAN AI generatif/);
  assert.match(h,/private backend|backend privat/);
@@ -55,6 +55,6 @@ test("Future private backend never embeds API keys, does not activate publicly a
  assert.match(worker,/OPENAI_API_KEY/);assert.match(worker,/AI_LIMITER\.limit/);
  assert.match(worker,/plan==="open"/);assert.match(worker,/store:false/);
  assert.match(worker,/citationsValid/);
- const h=read("sli-research-ai.html"),js=read("js/sli-research-ai.js");
+ const h=read("sli-research-evidence-preview.html"),js=read("js/sli-research-ai.js");
  assert.ok(!/api\.openai\.com|OPENAI_API_KEY|sk-[A-Za-z0-9]{20}/.test(h+js),"Public code must have no model credentials/endpoints");
 });
