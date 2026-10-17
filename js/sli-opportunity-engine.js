@@ -74,8 +74,26 @@
     // Both shocks are changes from reported 2025 expenditure components, everything else held constant.
     return -100*(row.household*(c/100)+row.capital*(i/100))/row.grdp;
   }
+  // BPS source province labels are Indonesian; selected project register province labels are English.
+  // Exact aliases only; no fuzzy geocoding, no inferred locations.
+  const PROVINCE_ALIASES={
+    'Sumatra Utara':'North Sumatra','Sumatra Barat':'West Sumatra','Sumatra Selatan':'South Sumatra',
+    'Kepulauan Bangka Belitung':'Bangka Belitung Islands','Kepulauan Riau':'Riau Islands',
+    'Jawa Barat':'West Java','Jawa Tengah':'Central Java','Jawa Timur':'East Java',
+    'Nusa Tenggara Barat':'West Nusa Tenggara','Nusa Tenggara Timur':'East Nusa Tenggara',
+    'Kalimantan Barat':'West Kalimantan','Kalimantan Tengah':'Central Kalimantan',
+    'Kalimantan Selatan':'South Kalimantan','Kalimantan Timur':'East Kalimantan',
+    'Kalimantan Utara':'North Kalimantan','Sulawesi Utara':'North Sulawesi',
+    'Sulawesi Tengah':'Central Sulawesi','Sulawesi Selatan':'South Sulawesi',
+    'Sulawesi Tenggara':'Southeast Sulawesi','Sulawesi Barat':'West Sulawesi',
+    'Maluku Utara':'North Maluku','Papua Barat':'West Papua',
+    'Papua Barat Daya':'Southwest Papua','Papua Selatan':'South Papua',
+    'Papua Tengah':'Central Papua','Papua Pegunungan':'Highland Papua'
+  };
   function localProjects(registry,province){
-    return (registry?.records||[]).filter(x=>Array.isArray(x.provinces)&&x.provinces.includes(province));
+    const alias=PROVINCE_ALIASES[province]||province;
+    return (registry?.records||[]).filter(x=>Array.isArray(x.provinces)&&
+      (x.provinces.includes(province)||x.provinces.includes(alias)));
   }
   function profile(row){
     const factors=FACTORS.filter(k=>finite(row.drivers?.[k])).sort((a,b)=>row.drivers[b]-row.drivers[a]);
