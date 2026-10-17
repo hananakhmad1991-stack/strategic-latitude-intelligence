@@ -34,7 +34,7 @@ test("Membership API denies unauthenticated, missing configuration, forged claim
   const valid=await makeJWT(keys.privateKey,claims);
   const health=await worker.fetch(request("/healthz",{site:null}),{});
   assert.equal(health.status,200);assert.equal((await health.json()).state,"prelaunch");
-  assert.equal((await worker.fetch(request("/v1/me",{bearer:valid}),{})).status,503);
+  assert.equal((await worker.fetch(request("/v1/me",{bearer:valid,site:null}),{})).status,503);
   assert.equal((await worker.fetch(request("/v1/me"),environment())).status,401);
   assert.equal((await worker.fetch(request("/v1/me",{bearer:valid,site:"https://attacker.example"}),environment())).status,403);
   const forged=valid.slice(0,-4)+"abcd";
