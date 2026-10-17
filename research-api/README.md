@@ -7,7 +7,7 @@
 
 The private R2 key `pro/research-evidence.json` is reserved for a vetted `documents` array. Documents need `id, title, text, source_url, period, source_date, publisher, topic, geo, access`. Allowed access values are `pro` and `enterprise`; server filters Enterprise-only material for Enterprise subscribers. The R2 bucket must have **no public URL**.
 
-The Worker ranks up to eight bounded internal excerpts and calls the configured model via the server's `OPENAI_API_KEY` and `RESEARCH_MODEL`. The Responses API request sets `store:false`; no key is exposed in browser code. Grounded answers must contain numbered source citations; answers without valid citations are withheld. This checking verifies citation *structure*, not every claim's factual accuracy; rigorous evaluation and human review remain necessary.
+The Worker enforces a 3,000-character JSON body limit, then ranks up to eight bounded internal excerpts and calls the configured model via the server's `OPENAI_API_KEY` and `RESEARCH_MODEL`. The Responses API request sets `store:false`; no key is exposed in browser code. Grounded answers must contain numbered source citations; answers without valid citations are withheld. This checking verifies citation *structure*, not every claim's factual accuracy; rigorous evaluation and human review remain necessary.
 
 ## Deployment prerequisites (do not skip)
 
