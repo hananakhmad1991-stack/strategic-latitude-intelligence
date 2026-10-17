@@ -1,0 +1,95 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Indonesia Gini Ratio | SLI Economic & Regional Intelligence</title>
+<meta name="description" content="Official BPS March 2026 expenditure Gini ratio nationally, urban-rural and for all 38 provinces; regional province distributions, verified source and download.">
+<link rel="stylesheet" href="./css/sli-site-ux.css">
+<style>
+:root{color-scheme:dark;--bg:#081827;--panel:#10293d;--line:#3d586d;--muted:#b9cbd8;--gold:#dfbc7c;--teal:#80c8c4;--white:#f3f6f8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:14px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:linear-gradient(115deg,#17364d,#0a1c2e);border-bottom:1px solid var(--line);padding:27px max(20px,calc((100vw - 1250px)/2))}
+h1{font:normal clamp(30px,4.3vw,44px)/1.2 Georgia,serif;margin:9px 0}h2{font-size:21px;margin:0 0 12px}h3{font-size:16px;margin:5px 0}p{color:var(--muted)}a{color:#f6d49b}
+.eyebrow{color:var(--gold);font-size:11px;letter-spacing:.15em;font-weight:800}.lead{font-size:15px;max-width:890px}
+.toplinks{display:flex;gap:17px;flex-wrap:wrap;margin-top:18px;font-size:12px}
+main{max-width:1300px;margin:auto;padding:24px 20px 75px}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.kpi{padding:23px;border:1px solid var(--line);border-radius:13px;background:#142d42}
+.kpi .big{font-size:clamp(29px,4vw,43px);font-weight:800;color:var(--gold);line-height:1.5}.kpi small{color:var(--muted)}
+.panel{border:1px solid var(--line);background:var(--panel);border-radius:13px;padding:20px;margin:17px 0}
+.sidebyside{display:grid;grid-template-columns:1.1fr 1fr;gap:17px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.barbox{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.time-row{display:flex;align-items:center;gap:18px;border-top:1px solid #29455b;padding:16px 0}.time-row>strong{width:100px;flex:none}
+.time-bars{display:grid;grid-template-columns:repeat(3,minmax(50px,1fr));align-items:end;gap:14px;flex:1}
+.time-col{height:124px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px}.time-col>span{font-weight:700}.time-col small{font-size:10px;color:var(--muted)}
+.time-bar{width:min(64px,100%);background:linear-gradient(#e7be77,#9d815c);border-radius:6px 6px 0 0;min-height:2px}
+.note{padding:12px 15px;background:#18384d;border-left:3px solid var(--gold);border-radius:5px;color:#d2e4eb;font-size:12px}
+.region-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:11px}
+.region-item{background:#0e2437;color:var(--white);border:1px solid #395971;text-align:left;border-radius:11px;padding:14px;cursor:pointer;min-height:120px}
+.region-item:hover,.region-item[aria-pressed=true]{border-color:#e5bb79;background:#193b50}
+.rhead,.rval{display:flex;gap:9px;justify-content:space-between;align-items:baseline}.rhead span{font-size:11px;color:var(--muted)}
+.rval{margin:7px 0}.rval strong{font-size:26px;color:#e8c583}.rval span{font-size:10px;color:#adcad7;text-align:right}
+.rtrack{position:relative;height:7px;background:#2c4255;border-radius:8px;margin-top:15px}
+.rband{position:absolute;background:#6baea9;top:0;height:7px;border-radius:8px}.rmark{position:absolute;top:-4px;width:3px;height:15px;background:#f7d18e}
+.controls{display:grid;grid-template-columns:1fr 1fr 1fr 1.3fr auto;gap:12px;align-items:end;margin-bottom:13px}
+label{color:#cddce6;font-size:12px;display:block;font-weight:650}
+select,input{margin-top:5px;padding:10px;width:100%;border:1px solid #728fa4;background:#0b2134;border-radius:7px;color:var(--white);font:inherit}
+button{font:inherit}.btn{background:#cfad78;border:1px solid #cfad78;color:#102236;border-radius:8px;padding:11px 15px;font-weight:700;cursor:pointer}
+.scroll{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{padding:11px;text-align:right;border-bottom:1px solid #315064;font-size:12px}th{color:#afc9d7;font-weight:800;text-transform:uppercase;letter-spacing:.045em;font-size:11px}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}tr[aria-selected=true]{background:#29485c}
+.textbutton{border:0;background:none;color:#f3d394;text-align:left;font-weight:720;cursor:pointer;padding:2px}
+.textbutton:hover{text-decoration:underline}.focus-value{color:#f3c87e;font-weight:750}.tinytrack{width:110px;height:8px;border-radius:8px;background:#29465b;overflow:hidden;margin-left:auto}.tinytrack span{display:block;background:#79beb7;height:100%}
+.detail-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:13px}.detail-title span{font-size:12px;color:var(--muted)}
+.detailgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.detailmetric{padding:15px;border:1px solid #39556a;border-radius:9px;background:#0d2234}.detailmetric small{display:block;color:var(--muted)}.detailmetric strong{display:block;font-size:29px;color:#e7c788}.detailmetric span{font-size:11px;color:var(--muted)}
+.small{font-size:12px}.source{display:flex;flex-wrap:wrap;gap:18px;font-size:12px}
+footer{color:var(--muted);border-top:1px solid var(--line);padding:22px;text-align:center}
+@media(max-width:1000px){.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.sidebyside{grid-template-columns:1fr}}
+@media(max-width:600px){.kpis{grid-template-columns:1fr 1fr}.kpi{padding:14px}.kpi .big{font-size:30px}.controls{grid-template-columns:1fr 1fr}.panel{padding:14px}.detailgrid{grid-template-columns:1fr 1fr}.region-list{grid-template-columns:1fr 1fr}.rhead,.rval{display:block}.rval span{display:block;text-align:left}}
+</style></head><body>
+<header>
+<div class="eyebrow">STRATEGIC LATITUDE INTELLIGENCE · SOCIOECONOMIC INDICATORS</div>
+<h1>Indonesia Gini Ratio <span style="color:#e7c486">Explorer</span></h1>
+<p class="lead">Official BPS inequality in expenditure—not wealth or income—across Indonesia, urban versus rural areas, all 38 provinces, and seven geographic regional groupings. All measurements have a dated source and are kept separate from SLI investment fit scores.</p>
+<nav class="toplinks" aria-label="Related dashboards"><a href="./index.html#overview">← SLI Overview</a><a href="./geopolitical-impact-assessment.html#regional">Regional Economic Data</a><a href="./provincial-opportunity-engine.html">Provincial Opportunity Engine</a><a href="./sli-glossary-methodology.html">Glossary</a></nav>
+</header>
+<main>
+<p id="giniStatus" class="note" role="status">Loading BPS Gini values…</p>
+<div class="kpis" style="margin-top:16px">
+ <article class="kpi"><small>National · urban + rural</small><div class="big" id="giniNational">—</div><small>Official national coefficient</small></article>
+ <article class="kpi"><small>Urban population</small><div class="big" id="giniUrban">—</div><small>Official national urban coefficient</small></article>
+ <article class="kpi"><small>Rural population</small><div class="big" id="giniRural">—</div><small>Official national rural coefficient</small></article>
+</div>
+<p class="small" id="giniPeriod"></p><p class="small" id="giniChange"></p>
+<section class="panel">
+<h2>National time comparison</h2>
+<p class="small">Three BPS reference periods from the August 2026 release. The y-axis baseline is zero, with a common visual scale across areas; period spacing is categorical.</p>
+<div id="nationalHistory" aria-label="National Gini ratio bars for March 2025, September 2025 and March 2026"></div>
+</section>
+<section class="panel">
+<h2>Regional view · distribution of provincial Gini</h2>
+<p id="regionDescription" class="small">Loading region groupings…</p>
+<p class="note"><strong>Statistical distinction:</strong> these cards show the median and minimum–maximum of province-level values within SLI geographic regions. They do <strong>not</strong> represent official Gini coefficients for Sumatra, Java, Kalimantan, or other combined regions. Pooling survey microdata is required for a true aggregate Gini.</p>
+<div id="regionOverview" class="region-list" style="margin-top:17px"></div>
+</section>
+<section class="panel">
+<h2>Provincial comparisons · 38 provinces</h2>
+<div class="controls">
+<label for="area">Population area<select id="area"><option value="combined">Urban + rural</option><option value="urban">Urban</option><option value="rural">Rural</option></select></label>
+<label for="region">Geographic region<select id="region"><option value="">All regions</option></select></label>
+<label for="sort">Order<select id="sort"><option value="desc">Higher Gini first</option><option value="asc">Lower Gini first</option></select></label>
+<label for="search">Province search<input id="search" type="search" placeholder="Search: Jawa Barat, Papua…"></label>
+<button id="export" class="btn" type="button">Export CSV</button>
+</div>
+<p class="small" id="resultCount"></p><p class="small">Selected column: <strong id="viewName">Urban + rural</strong>. Missing BPS observations are shown as N/A, never zero. Click a province for more detail.</p>
+<div class="scroll"><table><thead><tr><th>Province</th><th>Region (SLI)</th><th>Gini · Total</th><th>Urban</th><th>Rural</th><th>Selected value</th></tr></thead><tbody id="provinceRows"></tbody></table></div>
+</section>
+<section class="panel"><h2>Province detail</h2><div id="provinceDetail"></div></section>
+<section class="panel">
+<h2>Source & interpretation notes</h2><div id="sourceLinks" class="source"></div>
+<div class="grid2" style="margin-top:13px">
+<p class="small">Gini ratio measures dispersion of expenditure, with 0 representing perfect equality and 1 extreme inequality. It does not measure income level, poverty incidence, total spending or the purchasing power of a province.</p>
+<p class="small">Urban, rural and combined Gini are independently estimated and must not be averaged. Likewise, national Gini is <strong>not</strong> calculated by averaging provincial coefficients. Urban/rural combined may be above both subgroup values because the pooled distribution includes between-group differences.</p>
+<p class="small">Source vintage: March 2026 observations; BPS publication date 5 August 2026. 2025 provincial and new-Papua historical comparisons are intentionally not inferred from missing source periods. Geographic regions are organizational filters only.</p>
+<p class="small">SLI publishes source-attributed statistical comparisons; it does not use these measurements as political rankings, predictive risks or verified investment returns. For redistribution or commercial data licensing, check BPS usage terms.</p>
+</div>
+</section>
+</main><footer>© Strategic Latitude Intelligence · Indonesia Socioeconomic Data. Official values attributed to BPS, while presentation and geographic groupings are SLI editorial work.</footer>
+<script defer src="./js/sli-bps-gini-explorer.js?v=20261017-gini1"></script>
+<script defer src="./js/sli-public-usability.js"></script>
+</body></html>
