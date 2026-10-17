@@ -39,7 +39,7 @@ jobs:
           assert 'id="energyBiofuelsRoot"' in s
           assert 'js/energy-biofuels.js' in s
           assert 'css/energy-biofuels.css' in s
-          assert "initSLIBiofuels()" in s
+          assert "initSLIBiofuels?.()" in s or "initSLIBiofuels()" in s
           assert d["blend"]["current"]=="B50" and d["blend"]["effective"]=="2026-07-01"
           assert d["allocation"]["initial_2026_kl"]==d["allocation"]["pso_kl"]+d["allocation"]["non_pso_kl"]
           assert d["installed_capacity"]["million_kl_per_year"]==22
