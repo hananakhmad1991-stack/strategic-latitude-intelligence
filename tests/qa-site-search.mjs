@@ -50,6 +50,7 @@ assert.ok(result("smelter sulawesi tengah").some(x=>x.page==="map"||x.page==="in
 assert.ok(result("BPS Gini").some(x=>x.path==="gini-inequality.html"),"Gini dashboard must be searchable");
 assert.ok(result("Leontief inverse").some(x=>x.path==="sli-glossary-methodology.html"&&x.anchor==="term-leontief-inverse"),"Source glossary term deep link");
 assert.ok(result("how to use SLI").some(x=>x.path==="sli-user-guide.html"),"Reader guide discoverable from global search");
+assert.ok(result("SLI membership").some(x=>x.path==="sli-membership.html"),"Membership plan accessible from global search");
 assert.equal(index.entries.filter(x=>x.path==="sli-glossary-methodology.html"&&x.anchor.startsWith("term-")).length,312,"Complete 312-term search glossary coverage");
 const mini=(title,description="",keywords="")=>({title,description,keywords,page:"energy",kind:"record"});
 assert.equal(api.passes(mini("Migas production"),"gas"),0,"Do not match gas inside migas");
