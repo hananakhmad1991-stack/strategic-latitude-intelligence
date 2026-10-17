@@ -210,6 +210,46 @@
       "source_url": "https://www.bps.go.id/id/publication/2025/12/22/8bc8ad59afe1985f822fce41/statistik-politik-2025.html",
       "publisher": "BPS citing KPU",
       "display": "545"
+    },
+    {
+      "id": "police_recorded_2024",
+      "label": "Crimes recorded by police",
+      "value": 561993,
+      "unit": "events",
+      "period": "2024",
+      "publisher": "BPS / Polri",
+      "source_url": "https://www.bps.go.id/id/publication/2025/12/12/2edc8ea4c35b19ba912fc7e4/statistik-kriminal-2024-2025.html",
+      "display": "561,993"
+    },
+    {
+      "id": "victim_survey_2024",
+      "label": "Population experienced crime",
+      "value": 0.73,
+      "unit": "% population",
+      "period": "2024",
+      "publisher": "BPS Susenas",
+      "source_url": "https://www.bps.go.id/id/publication/2025/12/12/2edc8ea4c35b19ba912fc7e4/statistik-kriminal-2024-2025.html",
+      "display": "0.73%"
+    },
+    {
+      "id": "reporting_survey_2024",
+      "label": "Victims who reported to police",
+      "value": 20.28,
+      "unit": "% survey victims",
+      "period": "2024",
+      "publisher": "BPS Susenas",
+      "source_url": "https://www.bps.go.id/id/publication/2025/12/12/2edc8ea4c35b19ba912fc7e4/statistik-kriminal-2024-2025.html",
+      "display": "20.28%"
+    },
+    {
+      "id": "village_conflict_2024",
+      "label": "Village areas reporting mass conflict",
+      "value": 2.41,
+      "unit": "% villages/kelurahan",
+      "period": "2024",
+      "publisher": "BPS Podes",
+      "source_url": "https://www.bps.go.id/id/publication/2025/12/12/2edc8ea4c35b19ba912fc7e4/statistik-kriminal-2024-2025.html",
+      "display": "2.41%"
     }
   ],
   "domains": [
@@ -493,6 +533,42 @@
           ],
           "analysis": "Indonesia held simultaneous 2024 regional elections across 545 jurisdictions: 37 provinces, 415 regencies and 93 municipalities. The published registered-voter table describes the DPT, not observed turnout or later regulatory changes.",
           "watch": "Follow published election administration records and current local government regulations, permissions and implementation decisions rather than projecting future outcomes from an election count."
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Public Safety & Institutional Security",
+      "strap": "Observed criminal reports, household victimization and village conflict",
+      "summary": "Police-recorded events, household victimization and village conflict show different aspects of local security. Their denominators and jurisdictions cannot be merged into a single investment or political risk score.",
+      "topics": [
+        {
+          "id": "registered",
+          "title": "Registered crime and underreporting",
+          "metric_ids": [
+            "police_recorded_2024",
+            "victim_survey_2024"
+          ],
+          "analysis": "Polri registered 561,993 incidents in 2024, down from 584,991 in 2023, while Susenas estimated that 0.73% of the population experienced crime in 2024 versus 0.45% in 2023. Different series have different coverage; a fall in police records does not prove fewer victim experiences.",
+          "watch": "Check year, police jurisdiction, reporting practices and Susenas sampling uncertainty before relating figures to a specific project or location."
+        },
+        {
+          "id": "reporting",
+          "title": "Victim reporting and public-service accessibility",
+          "metric_ids": [
+            "reporting_survey_2024"
+          ],
+          "analysis": "Only 20.28% of surveyed victims said they reported crimes to police in 2024, versus 23.36% in 2023. This records respondents' reporting behaviour, not the percentage of crimes solved or an institutional effectiveness score.",
+          "watch": "Consider independent reporting channels, employee safety protocols and actual on-site due diligence; avoid conflating victim reporting with police clearance."
+        },
+        {
+          "id": "local",
+          "title": "Village-level mass-conflict observations",
+          "metric_ids": [
+            "village_conflict_2024"
+          ],
+          "analysis": "Podes reported 2.41% of villages/kelurahan had a mass-conflict event in the previous year in 2024, compared with 1.85% in 2021. This is the share of localities observing any such event, not the number of events or the chance of future conflict.",
+          "watch": "Use village-specific verified developments, permits and stakeholder consultations for project evaluation. Province-wide Podes totals cannot identify the risk of an individual project site."
         }
       ]
     }
