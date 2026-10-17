@@ -312,7 +312,7 @@ function attach(){
  $('consumerShock').addEventListener('input',recompute);$('capitalShock').addEventListener('input',recompute);
  $('giniArea').addEventListener('change',()=>{renderTable();renderComparison();renderInequality();renderBrief();});
  $('filter').addEventListener('input',renderTable);$('clearSelection').addEventListener('click',()=>{selected.clear();recompute();});
- $('reset').addEventListener('click',()=>{$('preset').value='balanced';custom=null;$('consumerShock').value=5;$('capitalShock').value=10;$('filter').value='';selected.clear();rows.slice(0,2).forEach(r=>selected.add(r.name));recompute();});
+ $('reset').addEventListener('click',()=>{$('preset').value='balanced';custom=null;$('consumerShock').value=5;$('capitalShock').value=10;$('giniArea').value='combined';$('filter').value='';selected.clear();rows.slice(0,2).forEach(r=>selected.add(r.name));recompute();});
  $('export').addEventListener('click',exportCsv);
  $('copyBrief').addEventListener('click',async()=>{const text=$('brief').textContent;const button=$('copyBrief');try{await navigator.clipboard.writeText(text);button.textContent='Copied to clipboard';}catch(e){button.textContent='Copy unavailable · select text';}});
 }
@@ -323,13 +323,28 @@ async function init(){
   if(responses.some(x=>!x.ok))throw Error('One or more source feeds returned an error.');
   [data,registry]=await Promise.all(responses.map(x=>x.json()));
   if(!Array.isArray(data.provinces)||data.provinces.length!==38||!Array.isArray(registry.records))throw Error('Coverage check failed; source dataset may have changed.');
-  rows=core.screen(data);
+  // Optional independently attributed socioeconomic source. GRDP screening remains usable
+  // if it fails; no Gini figures are guessed or silently replaced by old values.
+  try{
+   const response=await fetch('./data/sli-bps-gini-2026.json',{cache:'no-store'});
+   if(!response.ok)throw Error('Gini source HTTP '+response.status);
+   const candidate=await response.json();
+   const names=new Set(data.provinces.map(p=>p.name));
+   if(candidate.schema!=='sli-bps-gini-ratio-v1'||candidate.provinces?.length!==38||
+      new Set(candidate.provinces.map(p=>p.name)).size!==38||
+      candidate.provinces.some(p=>!names.has(p.name))||
+      !Number.isFinite(candidate.national?.combined))throw Error('Gini province coverage incompatible');
+   gini=candidate;
+  }catch(err){gini=null;}
+  rows=core.attachInequality(core.screen(data),gini);
   selected=new Set(rows.slice(0,2).map(r=>r.name));
   $('coverage').textContent=data.provinces.length+'/38';$('vintage').textContent=String(data.grdp_years.at(-1));
+  $('giniNational').textContent=gini?fmt(gini.national.combined,3):'N/A';
+  $('giniVintage').textContent=gini?'BPS '+gini.measurement_period+' · released '+gini.published_at:'Gini source unavailable';
   $('projectTotal').textContent=String(registry.records.filter(r=>r.provinces?.length).length)+' / '+registry.records.length;
-  const sources=$('sourceLinks');sources.replaceChildren(makeLink(data.sources.pdrb.url,'BPS expenditure GRDP, 2021–2025 ↗'),makeLink('https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/blob/main/data/sli-project-registry.json','SLI curated project register ↗'));
-  const note=$('sourceDates');note.textContent='BPS release: '+data.sources.pdrb.released+' · 2025 provincial values preliminary · registry as of: '+registry.as_of+' · update is not simultaneous across sources. Regional policy and project execution require independent verification.';
-  $('status').textContent='Source-linked screening ready. Fit scores compare provincial indicators relative to observed peers; scenario effects are hypothetical, not forecasts.';
+  const sources=$('sourceLinks');sources.replaceChildren(makeLink(data.sources.pdrb.url,'BPS expenditure GRDP, 2021–2025 ↗'),makeLink('https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/blob/main/data/sli-project-registry.json','SLI curated project register ↗'),makeLink(gini?.sources?.[0]?.url,'BPS March 2026 Gini provincial data ↗'));
+  const note=$('sourceDates');note.textContent='BPS release: '+data.sources.pdrb.released+' · 2025 provincial values preliminary · registry as of: '+registry.as_of+' · Gini: '+(gini?gini.measurement_period+' released '+gini.published_at:'source unavailable')+' · datasets are different periods and not synchronized. Regional policy and project execution require independent verification.';
+  $('status').textContent='Source-linked screening ready. 2025 economic fit scoring is unchanged; '+(gini?'BPS March 2026 expenditure Gini is now integrated as independent socioeconomic context.':'Gini context unavailable; no values imputed.')+' Stress calculations are hypothetical, not forecasts.';
   recompute();
  }catch(err){$('status').textContent='Analysis unavailable: '+err.message+' The engine does not substitute invented figures when data cannot be loaded.';}
 }
