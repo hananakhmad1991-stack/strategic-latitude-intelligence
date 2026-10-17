@@ -16,6 +16,12 @@ on:
       - 'css/sli-site-ux.css'
       - 'tests/qa-sitewide-functions.mjs'
       - 'tests/qa-sitewide-ux.mjs'
+      - 'tests/qa-sli-information-architecture.mjs'
+      - 'js/sli-navigation.js'
+      - 'css/sli-navigation.css'
+      - 'sli-user-guide.html'
+      - 'sli-glossary-methodology.html'
+      - 'data/sli-unified-glossary.json'
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,4 +35,4 @@ jobs:
         with:
           node-version: '22'
       - name: Verify all critical scripts, navigation, filters and export controls
-        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs
+        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs
