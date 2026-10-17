@@ -7,6 +7,9 @@ on:
       - 'js/sli-automation-health-dashboard.js'
       - 'sli-data-automation-center.html'
       - 'index.html'
+      - 'sli-user-guide.html'
+      - 'sli-glossary-methodology.html'
+      - 'js/sli-navigation.js'
       - 'scripts/validate_sli_live_delivery.py'
       - '.github/workflows/sli-live-delivery-qa.yml'
 permissions:
