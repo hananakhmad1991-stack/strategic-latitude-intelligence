@@ -1,0 +1,26 @@
+name: SLI Investment Connections QA
+on:
+  push:
+    paths:
+      - 'geopolitical-impact-assessment.html'
+      - 'indonesia-investment-navigator.html'
+      - 'js/sli-investment-network.js'
+      - 'data/sli-investment-network.json'
+      - 'data/sli-investment-network-map.geojson'
+      - 'index.html'
+      - 'intelligence-labs.html'
+      - 'tests/qa-investment-network.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test country ranking, maps, source periods and interactive switching
+        run: node --test tests/qa-investment-network.mjs
