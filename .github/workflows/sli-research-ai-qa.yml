@@ -1,0 +1,30 @@
+name: SLI Research AI Evidence & Security QA
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'sli-research-ai.html'
+      - 'js/sli-research-ai.js'
+      - 'data/sli-research-evidence-preview.json'
+      - 'research-api/**'
+      - 'tests/qa-sli-research-ai.mjs'
+      - 'js/sli-navigation.js'
+      - '.github/workflows/sli-research-ai-qa.yml'
+permissions:
+  contents: read
+jobs:
+  evidence-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check research JavaScript syntax
+        run: |
+          node --check js/sli-research-ai.js
+          node --check research-api/src/index.js
+          node --check research-api/src/core.mjs
+      - name: Validate open evidence, secure planned RAG and traceability
+        run: node --test tests/qa-sli-research-ai.mjs
