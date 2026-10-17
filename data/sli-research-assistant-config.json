@@ -1,0 +1,18 @@
+{
+  "schema": "sli-research-assistant-config-v1",
+  "version": "2026-10-17.1",
+  "generation_status": "not_connected",
+  "api_enabled": false,
+  "api_endpoint": null,
+  "login_enabled": false,
+  "research_modes": [
+    "executive_summary",
+    "deep_research",
+    "comparative_analysis",
+    "risk_opportunity"
+  ],
+  "source_policy": "Private R2 curated sources and exact province matching, with dated numbered citations",
+  "published_notice_id": "Research AI generatif menunggu aktivasi autentikasi, layanan model, dan corpus riset privat. Evidence Preview tetap bisa dicoba tanpa klaim generatif.",
+  "published_notice_en": "Generative Research AI requires authenticated access, server-side model service, and a private licensed corpus. A separate evidence preview remains available.",
+  "preview_url": "sli-research-evidence-preview.html"
+}
