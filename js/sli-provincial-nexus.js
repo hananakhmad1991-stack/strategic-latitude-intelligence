@@ -29,6 +29,7 @@ function extract(text){
 }
 function resolve(text){
  if(!text||/\b(nationwide|national|all indonesia|multiple provinces|multi[- ]?province|various regions)\b/i.test(text))return {province:null,quality:'unlocated'};
+ if(/\b(east|west|north|south|central|southeast)\s*\/\s*(east|west|north|south|central|southeast)\b/i.test(text))return {province:null,quality:'ambiguous'};
  const matches=extract(text);
  return matches.length===1?{province:matches[0],quality:'source-named'}:{province:null,quality:matches.length?'ambiguous':'unlocated'};
 }
@@ -136,9 +137,10 @@ function scenario({investmentBillion,grdpBillion,multiplier,source}){
  const invest=Number(investmentBillion),base=Number(grdpBillion);
  if(!valid(invest)||invest<=0||!valid(base)||base<=0)return {status:'invalid',reason:'Positive scenario amount and known nominal provincial GRDP required.'};
  const m=multiplier==null||multiplier===''?null:Number(multiplier);
+ const sourceURL=typeof source==='string'&&/^https:\/\//i.test(source.trim())?source.trim():null;
  const directSize=100*invest/base;
- if(!valid(m)||m<0||!String(source||'').trim())return {status:'unestimated',directSize,multiplier:null,output:null,reason:'No sourced province/industry-specific input-output coefficient: multiplier unavailable; the investment-to-GRDP ratio is a scale comparison, not a GRDP contribution.'};
- return {status:'conditional',directSize,multiplier:m,output:invest*m,source,reason:'Conditional gross-output sensitivity only (NOT GRDP value-added, employment, net output or incremental realized spending). Requires coefficient matching sector, geography and reporting basis.'};
+ if(!valid(m)||m<0||!sourceURL)return {status:'unestimated',directSize,multiplier:null,output:null,reason:'No sourced province/industry-specific input-output coefficient: multiplier unavailable; the investment-to-GRDP ratio is a scale comparison, not a GRDP contribution.'};
+ return {status:'conditional',directSize,multiplier:m,output:invest*m,source:sourceURL,reason:'Conditional gross-output sensitivity only (NOT GRDP value-added, employment, net output or incremental realized spending). Requires coefficient matching sector, geography and reporting basis.'};
 }
 return {ALIASES,SOURCES,extract,resolve,locate,assets,projects,power,annual,province,pearson,correlations,laggedPanel,scenario};
 });
