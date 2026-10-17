@@ -43,3 +43,6 @@ test('old navigator removed from SLI navigation and legacy geo fragment redirect
  assert.match(labs,/geopolitical-impact-assessment\.html/);
  assert.doesNotMatch(labs,/id="impactEvent"/);
 });
+
+test('bundled world map covers real Natural Earth country polygons and GIA uses local geography',()=>{const geo=JSON.parse(get('data/sli-gia-world-110m.geojson'));assert.equal(geo.type,'FeatureCollection');assert.ok(geo.features.length>=170);assert.ok(geo.features.some(f=>f.properties.ISO_A3==='IDN'));assert.ok(geo.features.every(f=>['Polygon','MultiPolygon'].includes(f.geometry.type)));assert.match(get('js/sli-gia-v2.js'),/sli-gia-world-110m\.geojson/);});
+test('source monitoring alert is separate from assumed country score',()=>{const page=get('geopolitical-impact-assessment.html'),app=get('js/sli-gia-v2.js');assert.match(page,/id="signalThreshold"/);assert.match(page,/id="sourceWatchStatus"/);assert.match(app,/function updateSourceWatch/);assert.match(app,/NOT verified escalation/);});
