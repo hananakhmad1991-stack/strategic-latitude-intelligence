@@ -156,6 +156,8 @@ function renderDossiers(){
  $('issueAnalysis').textContent=topic.analysis;
  $('issueWatch').textContent=topic.watch;
  $('issueEvidence').replaceChildren(...evidence(topic.metric_ids).children);
+ $('issueSourceLinks').replaceChildren();$('issueRelatedSources').hidden=!(topic.related_sources?.length);
+ for(const src of topic.related_sources||[]){if(!src.url?.startsWith('https://'))continue;const line=make('p');line.append(officialLink(src.url,src.title+' ↗'),make('span',' · '+src.period));$('issueSourceLinks').append(line)}
  if(!topic.metric_ids.length){
   const empty=make('div','This SLI assessment is qualitative. No numeric statistic is asserted for this issue.');empty.className='empty';$('issueEvidence').append(empty);
  }
