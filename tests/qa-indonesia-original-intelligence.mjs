@@ -95,3 +95,14 @@ test('source fetch failure is clearly reported, not replaced by estimated measur
  assert.match(els.leadTitle.textContent,/unavailable/);
  assert.match(els.asOf.textContent,/unavailable/);
 });
+test('qualitative trade and AI dossiers link directly to dated source documents',async()=>{
+ const trade=await mount('#dossiers/trade/counterparty');
+ assert.equal(trade.els.issueName.textContent,'Partner concentration');
+ assert.equal(trade.els.issueEvidence.children.length,1);
+ assert.equal(trade.els.issueRelatedSources.hidden,false);
+ assert.match(trade.els.issueSourceLinks.textContent,/BPS bilateral/);
+ const tech=await mount('#dossiers/technology/datacenters');
+ assert.equal(tech.els.issueRelatedSources.hidden,false);
+ assert.match(tech.els.issueSourceLinks.textContent,/announced, not realized/);
+ assert.match(tech.els.issueSourceLinks.textContent,/operational launch/);
+});
