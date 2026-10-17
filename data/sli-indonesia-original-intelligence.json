@@ -274,11 +274,16 @@
         {
           "id": "counterparty",
           "title": "Partner concentration",
-          "metric_ids": [
-            "surplus"
-          ],
+          "metric_ids": [],
           "analysis": "Bilateral relationships are asymmetric: the importance of China as a supplier differs from that of the US and India as net export markets.",
-          "watch": "Watch bilateral tariffs, origin rules and buyer concentration."
+          "watch": "Watch bilateral tariffs, origin rules and buyer concentration.",
+          "related_sources": [
+            {
+              "title": "BPS bilateral merchandise trade 2025",
+              "url": "https://www.bps.go.id/en/statistics-table/2/MzM2IzI%3D/balance-of-trade-of-selected-countrics.html",
+              "period": "2025"
+            }
+          ]
         },
         {
           "id": "shipping",
@@ -323,7 +328,14 @@
             "investment"
           ],
           "analysis": "Investment announcements, construction and production are different stages. Project-level due diligence must separate them.",
-          "watch": "Verify financing, permits and operational commissioning."
+          "watch": "Verify financing, permits and operational commissioning.",
+          "related_sources": [
+            {
+              "title": "BKPM realised investment publication",
+              "url": "https://www.bkpm.go.id/index.php/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+              "period": "H1 2026"
+            }
+          ]
         }
       ]
     },
@@ -378,7 +390,19 @@
             "investment"
           ],
           "analysis": "Cloud and AI investment plans require reliable electricity, connectivity, cybersecurity and skilled operators. Capital announcements are not installed compute capacity.",
-          "watch": "Check operational MW and verified project milestones."
+          "watch": "Check operational MW and verified project milestones.",
+          "related_sources": [
+            {
+              "title": "Microsoft AI and cloud investment commitment (announced, not realized)",
+              "url": "https://news.microsoft.com/apac/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions/",
+              "period": "2024 announcement"
+            },
+            {
+              "title": "Indonesia Central cloud region operational launch",
+              "url": "https://news.microsoft.com/id-id/2025/06/26/building-indonesias-digital-ecosystem-ready-for-the-ai-era/",
+              "period": "2025 operations"
+            }
+          ]
         },
         {
           "id": "talent",
@@ -387,7 +411,14 @@
             "investment"
           ],
           "analysis": "Local procurement, certifications and applied R&D determine whether infrastructure spending creates enduring domestic know-how.",
-          "watch": "Review technical workforce, supplier contracts and technology transfer."
+          "watch": "Review technical workforce, supplier contracts and technology transfer.",
+          "related_sources": [
+            {
+              "title": "Microsoft AI-skilling and workforce initiative",
+              "url": "https://news.microsoft.com/apac/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions/",
+              "period": "2024 announcement"
+            }
+          ]
         },
         {
           "id": "controls",
