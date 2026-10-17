@@ -34,7 +34,9 @@ const modules={
  climate:['Climate & Environment','Iklim & Lingkungan','climate-environment.html','Environmental exposure, dated monitoring and official alerts.','Risiko lingkungan, monitoring dan peringatan resmi.'],
  ria:['Policy & Regulatory Intelligence','Intelijen Kebijakan & Regulasi','policy-regulatory-intelligence.html','Rules, institutional implementation and linked policy evaluations.','Regulasi, pelaksana dan evaluasi kebijakan.'],
  glossary:['Glossary & Methodology','Glosarium & Metodologi','sli-glossary-methodology.html','Single canonical definitions, methods, units, sources and caveats.','Satu sumber definisi, metodologi, satuan dan batasan.'],
- freshness:['Data Freshness & QA','Kebaruan Data & QA','sli-data-automation-center.html','Review latest observed period, update coverage and system QA.','Periksa periode observasi, pembaruan dan pengujian.']
+ freshness:['Data Freshness & QA','Kebaruan Data & QA','sli-data-automation-center.html','Review latest observed period, update coverage and system QA.','Periksa periode observasi, pembaruan dan pengujian.'],
+ methodology:['Research Methods · Main Site','Metodologi · Situs Utama','index.html#methodology','Concise research principles and links to detailed methodology.','Prinsip riset ringkas dan tautan metodologi lengkap.'],
+ about:['About SLI','Tentang SLI','index.html#about','Editorial purpose, independence and research contact.','Tujuan editorial, independensi dan kontak riset.']
 };
 const related={
  overview:['investment','energy','ai','indo'],investment:['province','opportunity','gini','labs'],map:['investment','energy','province'],
@@ -45,7 +47,7 @@ const related={
  aihub:['ai','komdigi','digital','electricity'],komdigi:['aihub','digital','digitalgov'],
  digital:['aihub','komdigi','digitalgov'],digitalgov:['aihub','digital','ria'],
  indo:['policy','province','climate','macro'],climate:['indo','policy','map'],ria:['policy','indo','labs'],
- glossary:['guide','freshness'],freshness:['glossary','guide'],guide:['overview','glossary','freshness']
+ glossary:['guide','freshness'],freshness:['glossary','guide'],methodology:['glossary','guide','freshness'],about:['guide','overview'],guide:['overview','glossary','freshness']
 };
 const path=location.pathname.split('/').pop()||'index.html';
 const page=()=>path==='index.html'?(modules[location.hash.slice(1)]?location.hash.slice(1):'overview'):(Object.keys(modules).find(id=>modules[id][2].split('#')[0]===path)||'guide');
