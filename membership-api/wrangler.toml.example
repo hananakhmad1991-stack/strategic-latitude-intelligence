@@ -1,0 +1,21 @@
+name = "sli-membership-api"
+main = "src/index.js"
+compatibility_date = "2026-10-17"
+
+# This is an UNDEPLOYED reference configuration. Replace placeholders and set
+# a real trusted WEB_ORIGIN before production; staging should use a separate Worker.
+[vars]
+WEB_ORIGIN = "https://hananakhmad1991-stack.github.io"
+SUPABASE_URL = "https://REPLACE_WITH_PROJECT_REF.supabase.co"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "sli-memberships"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[[r2_buckets]]
+binding = "PREMIUM_BUCKET"
+bucket_name = "sli-private-premium"
+
+# Keep private R2 public bucket access disabled. Public URLs bypass entitlements.
+# Do not deploy until R2/D1 bindings and the identity service really exist.
