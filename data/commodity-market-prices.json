@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-17T03:24:48.634315+00:00",
+  "checked_at_utc": "2026-10-17T03:59:30.467650+00:00",
   "status": "ok",
   "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
   "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
@@ -23,10 +23,6 @@
       "market": "ICE Brent continuous",
       "refresh_class": "Indicative / may be delayed",
       "history": [
-        {
-          "observed_at_utc": "2026-09-16T04:00:00+00:00",
-          "value": 105.830002
-        },
         {
           "observed_at_utc": "2026-09-17T04:00:00+00:00",
           "value": 104.82
@@ -136,10 +132,6 @@
       "refresh_class": "Indicative / may be delayed",
       "history": [
         {
-          "observed_at_utc": "2026-09-16T04:00:00+00:00",
-          "value": 102.43
-        },
-        {
           "observed_at_utc": "2026-09-17T04:00:00+00:00",
           "value": 101.910004
         },
@@ -247,10 +239,6 @@
       "market": "NYMEX Henry Hub continuous",
       "refresh_class": "Indicative / may be delayed",
       "history": [
-        {
-          "observed_at_utc": "2026-09-16T04:00:00+00:00",
-          "value": 2.891
-        },
         {
           "observed_at_utc": "2026-09-17T04:00:00+00:00",
           "value": 2.901
@@ -360,10 +348,6 @@
       "refresh_class": "Indicative / may be delayed",
       "history": [
         {
-          "observed_at_utc": "2026-09-16T04:00:00+00:00",
-          "value": 6.4315
-        },
-        {
           "observed_at_utc": "2026-09-17T04:00:00+00:00",
           "value": 6.5865
         },
@@ -472,10 +456,6 @@
       "refresh_class": "Indicative / may be delayed",
       "history": [
         {
-          "observed_at_utc": "2026-09-16T04:00:00+00:00",
-          "value": 4387.5
-        },
-        {
           "observed_at_utc": "2026-09-17T04:00:00+00:00",
           "value": 4399.700195
         },
@@ -583,10 +563,6 @@
       "market": "COMEX SI",
       "refresh_class": "Indicative / may be delayed",
       "history": [
-        {
-          "observed_at_utc": "2026-09-16T04:00:00+00:00",
-          "value": 64.288002
-        },
         {
           "observed_at_utc": "2026-09-17T04:00:00+00:00",
           "value": 65.470001
