@@ -30,9 +30,9 @@ async function mount(initialHash='',fail=false){
  return {els,tabs,location};
 }
 test('SLI owns the intelligence model, has seven independent research domains, and contains no reused external power indices',()=>{
- assert.equal(data.domains.length,7);
- assert.equal(data.domains.reduce((n,d)=>n+d.topics.length,0),21);
- assert.equal(data.metrics.length,18);
+ assert.equal(data.domains.length,8);
+ assert.equal(data.domains.reduce((n,d)=>n+d.topics.length,0),24);
+ assert.equal(data.metrics.length,22);
  assert.equal(data.partners.length,5);
  assert.equal(data.sectors.length,6);
  assert.ok(data.domains.every(d=>d.topics.every(t=>t.analysis&&t.watch&&Array.isArray(t.metric_ids))));
@@ -55,7 +55,7 @@ test('overview indicators, global trade, sector cards and dossiers render',async
  assert.equal(els.partnerList.children.length,5);
  assert.equal(els.partnerName.textContent,'China');
  assert.equal(els.sectorGrid.children.length,6);
- assert.equal(els.dossierGrid.children.length,7);
+ assert.equal(els.dossierGrid.children.length,8);
  assert.match(els.leadText.textContent,/Q2 2026 growth/);
 });
 test('clicking domain then issue shows original analysis, sourced statistic and shareable route',async()=>{
