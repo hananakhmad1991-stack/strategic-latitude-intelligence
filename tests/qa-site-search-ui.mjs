@@ -91,4 +91,9 @@ const giniHit=root.querySelectorAll(".sli-search-result").find(b=>(b.textContent
 assert.ok(giniHit,"Exact Gini provincial result visible");
 giniHit.click();
 assert.ok(navigated.some(x=>String(x).includes("gini-inequality.html?province=Jawa%20Barat")),"Exact target province must be in link");
+input.focus();input.value="Leontief inverse";input.dispatchEvent({type:"input"});
+const termHit=root.querySelectorAll(".sli-search-result").find(b=>(b.textContent||"").includes("Leontief inverse"));
+assert.ok(termHit,"Glossary exact term is indexed and selectable");
+termHit.click();
+assert.ok(navigated.some(x=>String(x).includes("sli-glossary-methodology.html#term-leontief-inverse")),"Glossary result opens the exact term, not just a generic page");
 console.log("PASS: SLI search DOM smoke · input opens, 1080 indexed entries searchable, provincial result navigates, escape closes, Ctrl+K focuses");
