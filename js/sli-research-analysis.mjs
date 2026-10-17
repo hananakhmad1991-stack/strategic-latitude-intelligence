@@ -167,7 +167,6 @@ export function generateThematicReport(question,corpus,lang="id",scope="all"){
   ai:["aiproject-digital-edge-cgk","aiproject-pdg-jc3","aiproject-pdg-jc4"],
   minerals:["project-sli-project-001","project-sli-project-004","project-sli-project-006"]
  };
- let group=ch﻿osen||null;
  const priority=["interest","currency","inflation","inequality","trade","econometric","ai","minerals","energy","growth","investment"];
  let concept=priority.find(x=>intents.includes(x))||null;
  if(chosen){
