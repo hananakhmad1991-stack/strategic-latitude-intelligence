@@ -86,7 +86,7 @@ function answer(question){
    tile.append(el("span","",d.metric.label),val,el("small","",d.metric.period+" · ["+(i+1)+"]"));
    highlights.append(tile)
   });
-  out.insertBefore(highlights,ol);
+  out.append(highlights);
  }
  out.append(ol,el("p","sli-ra-caution",dict[state.language].brief));
  byId("raSourceHeading").textContent=dict[state.language].source+" ("+docs.length+")";
