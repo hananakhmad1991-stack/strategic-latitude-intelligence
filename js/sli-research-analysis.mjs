@@ -99,7 +99,7 @@ function analyseOne(p,query,lang,metadata){
   sections.push({title:local(lang,"Keseimbangan pertumbuhan dan ketimpangan","Growth and distribution"),body:inequality});
  }
  const projectFocus=intent.includes("ai")||intent.includes("minerals")||intent.includes("energy")||intent.includes("industry");
- const words=projectFocus?(p.project_examples||[]).filter(x=>(intent.includes("ai")&&/ai|data|cloud/i.test(x.sector+" "+x.title))||(intent.includes("minerals")&&/mineral|battery|smelter|hpal|nickel/i.test(x.sector+" "+x.title))||(intent.includes("energy")&&/energy|power|listrik|renewable|biofuel/i.test(x.sector+" "+x.title))||(intent.includes("industry")&&/industrial|factory|smelter|manufactur/i.test(x.sector+" "+x.title))):[];
+ const words=projectFocus?(p.project_examples||[]).filter(x=>(intent.includes("ai")&&/ai|data|cloud/i.test(x.sector+" "+x.title))||(intent.includes("minerals")&&/mineral|battery|smelter|hpal|nickel/i.test(x.sector+" "+x.title))||(intent.includes("energy")&&/energy|power|listrik|renewable|biofuel/i.test(x.sector+" "+x.title))||(intent.includes("industry")&&/industrial|smelter|manufactur/i.test(x.sector+" "+x.title))):[];
  if(words.length){
   const relevant=words.slice(0,2);
   const strings=[];
