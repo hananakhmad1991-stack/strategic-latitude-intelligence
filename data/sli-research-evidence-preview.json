@@ -21,17 +21,21 @@
     "investment",
     "minerals",
     "ai",
+    "energy",
+    "news",
     "methodology"
   ],
   "examples_id": [
     "Bagaimana prospek investasi pusat data di Jawa Barat?",
     "Berapa pertumbuhan ekonomi dan inflasi Indonesia terbaru yang tercatat?",
+    "Berapa harga Brent dan apa risiko energi terkini yang belum terverifikasi?",
     "Bagaimana membaca Rasio Gini dibanding pertumbuhan provinsi?",
     "Apa status proyek smelter dan baterai EV Indonesia?"
   ],
   "examples_en": [
     "What does the source evidence say about West Java data centers?",
     "What are the dated GDP growth and inflation indicators?",
+    "What are the latest dated Brent and natural gas observations?",
     "How should provincial growth be compared with expenditure Gini?",
     "What is the reported status of Indonesia's EV battery and smelter projects?"
   ],
@@ -446,6 +450,94 @@
       "source_url": "https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html",
       "sli_path": "sli-glossary-methodology.html",
       "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "energy-brent",
+      "topic": "energy",
+      "kind": "dated_market_observation",
+      "title": "Brent spot · dated energy market",
+      "text": "Observasi pasar yang tercatat untuk Brent spot: 126.55 USD/bbl per 2026-10-14 menurut seri DCOILBRENTEU (FRED/EIA). Angka historis, bukan kuotasi perdagangan real-time; tidak otomatis menunjukkan harga domestik Indonesia atau biaya kilang.",
+      "metric": {
+        "label": "Brent spot",
+        "value": 126.55,
+        "unit": "USD/bbl",
+        "period": "2026-10-14"
+      },
+      "period": "2026-10-14",
+      "source_date": "2026-10-14",
+      "publisher": "FRED / EIA",
+      "source_url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
+      "sli_path": "index.html#energy",
+      "geo": "Global",
+      "access": "open_preview"
+    },
+    {
+      "id": "energy-wti",
+      "topic": "energy",
+      "kind": "dated_market_observation",
+      "title": "WTI spot · dated energy market",
+      "text": "Observasi pasar yang tercatat untuk WTI spot: 101.91 USD/bbl per 2026-10-14 menurut seri DCOILWTICO (FRED/EIA). Angka historis, bukan kuotasi perdagangan real-time; tidak otomatis menunjukkan harga domestik Indonesia atau biaya kilang.",
+      "metric": {
+        "label": "WTI spot",
+        "value": 101.91,
+        "unit": "USD/bbl",
+        "period": "2026-10-14"
+      },
+      "period": "2026-10-14",
+      "source_date": "2026-10-14",
+      "publisher": "FRED / EIA",
+      "source_url": "https://fred.stlouisfed.org/series/DCOILWTICO",
+      "sli_path": "index.html#energy",
+      "geo": "Global",
+      "access": "open_preview"
+    },
+    {
+      "id": "energy-henry_hub",
+      "topic": "energy",
+      "kind": "dated_market_observation",
+      "title": "Henry Hub natural gas · dated energy market",
+      "text": "Observasi pasar yang tercatat untuk Henry Hub natural gas: 3.22 USD/MMBtu per 2026-10-14 menurut seri DHHNGSP (FRED/EIA). Angka historis, bukan kuotasi perdagangan real-time; tidak otomatis menunjukkan harga domestik Indonesia atau biaya kilang.",
+      "metric": {
+        "label": "Henry Hub natural gas",
+        "value": 3.22,
+        "unit": "USD/MMBtu",
+        "period": "2026-10-14"
+      },
+      "period": "2026-10-14",
+      "source_date": "2026-10-14",
+      "publisher": "FRED / EIA",
+      "source_url": "https://fred.stlouisfed.org/series/DHHNGSP",
+      "sli_path": "index.html#energy",
+      "geo": "Global",
+      "access": "open_preview"
+    },
+    {
+      "id": "newssample-0",
+      "topic": "news",
+      "kind": "unverified_news_lead",
+      "title": "Ship attack reports near Hormuz reach record high as oil exports slow - BBC",
+      "text": "Headline / lead berita tentang Hormuz and Gulf energy dari BBC; indeks: 2026-10-16T05:00:17+00:00. Jalur pengaruh yang mungkin terhadap Indonesia: Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs. Status: belum terverifikasi sebagai kejadian fisik atau dampak aktual. Jangan menyajikannya sebagai insiden terkonfirmasi.",
+      "period": "2026-10-16",
+      "source_date": "2026-10-16",
+      "publisher": "BBC (aggregated news lead)",
+      "source_url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE0tX0lUUUZkSGJKWXUyb0drR0dsY0M5ZDZ3Q091QlYxSjg2cWJIekZYWEVlb2VRNGFNdWxKX1ZaWnpYajlibzEtQ2FWTjVxUHBqbEJrby1tWUJrWng1Y1E?oc=5",
+      "sli_path": "index.html#geopolitical",
+      "geo": "Global",
+      "access": "open_preview"
+    },
+    {
+      "id": "newssample-1",
+      "topic": "news",
+      "kind": "unverified_news_lead",
+      "title": "Seven crew missing after drone attack leaves tanker ablaze off Romania's coast - BBC",
+      "text": "Headline / lead berita tentang Russia and energy sanctions dari BBC; indeks: 2026-10-15T14:51:30+00:00. Jalur pengaruh yang mungkin terhadap Indonesia: Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices. Status: belum terverifikasi sebagai kejadian fisik atau dampak aktual. Jangan menyajikannya sebagai insiden terkonfirmasi.",
+      "period": "2026-10-15",
+      "source_date": "2026-10-15",
+      "publisher": "BBC (aggregated news lead)",
+      "source_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA0OXJ4RE9wV0VmeUZhMlRkczVwcXB1UGl3aENvbm5TeERrVWNCQnc4cGFVZWRZWEQ1d0pfbURXa21uanFDdUlld01rOTJBYkYtN3ZDZFg4RlpIeUU?oc=5",
+      "sli_path": "index.html#geopolitical",
+      "geo": "Global",
       "access": "open_preview"
     }
   ]
