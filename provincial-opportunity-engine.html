@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SLI · Provincial Opportunity & Stress Engine</title>
+<meta name="description" content="Evidence-led Indonesia provincial investment fit and accounting stress scenarios, using sourced BPS expenditure data and project milestones.">
+<link rel="stylesheet" href="./css/sli-site-ux.css">
+<style>
+:root{color-scheme:dark;--bg:#091625;--surface:#11273a;--surface2:#142f45;--border:#365267;--ink:#f5f7fa;--muted:#b1c6d2;--gold:#e4bc74;--aqua:#78c4bf}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--ink);margin:0;font:14px/1.56 system-ui,-apple-system,Segoe UI,sans-serif}a{color:#f0cc88}a:hover{text-decoration:underline}
+header{background:linear-gradient(120deg,#122940,#0a1a2c 68%);border-bottom:1px solid var(--border);padding:28px max(20px,calc((100vw - 1260px)/2))}
+main{max-width:1300px;padding:26px 20px 70px;margin:auto}.eyebrow{font-size:11px;letter-spacing:.16em;color:var(--gold);font-weight:750}
+h1{font:normal clamp(28px,4vw,43px)/1.16 Georgia,serif;margin:12px 0}h2{font-size:19px;margin:0 0 10px}h3{font-size:15px;margin:0 0 8px}
+p{color:var(--muted)}.intro{max-width:900px;font-size:15px;margin:12px 0 20px}.navlinks{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:20px;margin:0 0 17px}.columns{display:grid;grid-template-columns:minmax(280px,1fr) minmax(350px,1.65fr);gap:17px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}.stat{border:1px solid #354f63;border-radius:10px;background:#0c2235;padding:15px}.stat strong{font-size:25px;display:block;color:#fff}.stat small{color:var(--muted)}
+label{font-weight:650;display:block;margin:12px 0 6px;font-size:12px;color:#c9dce5}select,input{width:100%;padding:10px;border:1px solid #718da3;border-radius:8px;color:#fff;background:#0a1c2d;font:inherit}input[type=range]{padding:0;accent-color:var(--gold);cursor:pointer}
+button{cursor:pointer;font:inherit}.btn{border:1px solid #819caf;background:#1a4059;color:#fff;padding:10px 13px;border-radius:8px;font-weight:650}.btn:hover,.btn:focus-visible{border-color:var(--gold)}.btn-gold{background:#d8b575;color:#112436;border-color:#d8b575}
+.weight-row{display:grid;grid-template-columns:1fr 1fr 48px;gap:10px;align-items:center;padding:7px 0}.weight-row label{margin:0}.weight-row output{font-variant-numeric:tabular-nums;text-align:right;color:var(--gold)}
+.small{font-size:12px;color:var(--muted)}.tiny{font-size:11px;color:var(--muted)}.status{padding:12px;border-left:3px solid var(--gold);background:#183148;border-radius:5px}.note{border-top:1px solid #385267;padding-top:12px;margin-top:15px}
+.scroll{overflow-x:auto}.table{width:100%;border-collapse:collapse;font-size:12px}.table th,.table td{padding:12px 11px;text-align:right;border-bottom:1px solid #29465a;white-space:nowrap}.table th{color:#bcd0dd;text-transform:uppercase;font-size:10px;letter-spacing:.06em}.table th:nth-child(2),.table td:nth-child(2){text-align:left}.table tbody tr{cursor:pointer}.table tbody tr:hover{background:#1c3a51}.table tbody tr[aria-selected=true]{background:#28455a}.table td:nth-child(2){font-weight:650}.table .fit{color:#f6c980;font-weight:800;font-size:14px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}.legend{display:flex;gap:17px;flex-wrap:wrap;color:var(--muted);font-size:12px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.chart{width:100%;background:#0c2133;border:1px solid #274659;border-radius:10px;padding:11px}.chart svg{display:block;width:100%;height:auto}.compare-card{background:#0b2032;border:1px solid #3b5669;border-radius:10px;padding:14px}.compare-card p{font-size:12px;margin:7px 0}.compare-card strong{color:#f4cc85}.tag{display:inline-block;color:#e0eee9;border:1px solid #4d7679;border-radius:30px;padding:2px 8px;margin:3px 4px 3px 0;font-size:11px}
+.project{border-top:1px solid #355268;padding:11px 0}.project:first-child{border-top:0}.project .title{font-weight:750}.project small{color:#acc6d5;display:block}.project a{font-size:12px}.source{font-size:12px;line-height:1.8}.source a{overflow-wrap:anywhere}.sources{display:flex;gap:20px;flex-wrap:wrap}
+footer{text-align:center;padding:20px;color:var(--muted);border-top:1px solid var(--border)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #ecc77b;outline-offset:2px}
+@media(max-width:850px){.columns{grid-template-columns:1fr}.panel{padding:15px}.table th,.table td{padding:11px 8px}}@media(max-width:550px){.weight-row{grid-template-columns:1fr 1fr 41px}.stat strong{font-size:21px}}
+</style></head><body>
+<header>
+<div class="eyebrow">STRATEGIC LATITUDE INTELLIGENCE · ORIGINAL RESEARCH PRODUCT</div>
+<h1>Provincial Opportunity <span style="color:#e4bc74">&amp; Stress Engine</span></h1>
+<p class="intro">Where should an investor investigate next—and what happens to the regional expenditure picture if demand or capital formation weakens? Compare all 38 Indonesian provinces with reproducible, adjustable screening lenses and a clearly bounded accounting stress test.</p>
+<nav class="navlinks" aria-label="Related dashboards"><a href="./index.html#overview">← SLI Overview</a><a href="./index.html#investment">Investment Tracker</a><a href="./intelligence-labs.html#investor">Project Screener</a><a href="./intelligence-labs.html#scenario">Operating Scenario Lab</a><a href="./geopolitical-impact-assessment.html#regional">BPS Regional Data</a><a href="./sli-glossary-methodology.html">Terms &amp; Units</a></nav>
+</header>
+<main>
+<div class="status" id="status" role="status">Loading source-dated provincial and project data…</div>
+<section class="grid" style="margin:18px 0" aria-label="Evidence coverage">
+<div class="stat"><small>Provincial coverage</small><strong id="coverage">—</strong><small>38 BPS provinces expected</small></div>
+<div class="stat"><small>Source vintage</small><strong id="vintage">—</strong><small>2025 provisional GRDP data</small></div>
+<div class="stat"><small>Matched project records</small><strong id="projectTotal">—</strong><small>Not a complete national project inventory</small></div>
+<div class="stat"><small>Screening lens</small><strong id="lensName" style="font-size:17px">—</strong><small>User-adjustable, relative comparison</small></div>
+</section>
+<div class="columns">
+<section class="panel" aria-label="Analysis controls">
+<h2>1 · Define the investment lens</h2>
+<p class="small">Choose what matters to the proposed investment. The fit score is a within-dataset percentile aggregation; it does not measure financial returns, project viability or political risk.</p>
+<label for="preset">Investment objective</label>
+<select id="preset"><option value="balanced">Balanced regional activity</option><option value="market">Consumer-facing market</option><option value="expansion">Industrial expansion</option><option value="custom">Custom weights</option></select>
+<div id="weights">
+<div class="weight-row"><label for="scaleWeight">2025 economic scale</label><input id="scaleWeight" type="range" min="0" max="100" step="5" value="30"><output id="scaleOutput">30%</output></div>
+<div class="weight-row"><label for="growthWeight">2025 real momentum</label><input id="growthWeight" type="range" min="0" max="100" step="5" value="25"><output id="growthOutput">25%</output></div>
+<div class="weight-row"><label for="consumptionWeight">Household spending share</label><input id="consumptionWeight" type="range" min="0" max="100" step="5" value="20"><output id="consumptionOutput">20%</output></div>
+<div class="weight-row"><label for="formationWeight">Fixed-capital formation share</label><input id="formationWeight" type="range" min="0" max="100" step="5" value="25"><output id="formationOutput">25%</output></div>
+</div>
+<p id="weightNote" class="tiny">Weights sum to 100%. A higher PMTB or consumption share is a user-selected signal, not universally better.</p>
+<hr style="border:0;border-top:1px solid #395368;margin:22px 0">
+<h2>2 · Test a conditional stress</h2>
+<p class="small">Specify simultaneous hypothetical reductions from the observed 2025 expenditure components. These are not sourced probability estimates.</p>
+<label for="consumerShock">Household expenditure reduction: <output id="consumerShockVal">5%</output></label><input id="consumerShock" type="range" min="0" max="25" value="5">
+<label for="capitalShock">Fixed-capital formation reduction: <output id="capitalShockVal">10%</output></label><input id="capitalShock" type="range" min="0" max="25" value="10">
+<p class="status small">A mechanical change in 2025 nominal GRDP components, holding everything else unchanged; <strong>not a GDP forecast</strong>, business loss estimate or policy recommendation.</p>
+<div class="row" style="margin-top:15px"><button class="btn" id="reset">Reset assumptions</button><button class="btn btn-gold" id="export">Export screening CSV</button></div>
+</section>
+<section class="panel">
+<div class="row"><div><h2>Relative positioning · 38 provinces</h2><p class="small">X: 2025 real GRDP growth (YoY). Y: 2025 fixed-capital formation / GRDP. Select dots to compare provinces.</p></div></div>
+<div class="chart" id="scatter" role="img" aria-label="Interactive provincial growth versus fixed capital formation scatterplot"></div>
+<div class="legend"><span><span class="dot" style="background:#e4bc74"></span>Selected provinces</span><span><span class="dot" style="background:#78c4bf"></span>Other provinces</span><span>Dot size: relative 2025 nominal GRDP</span></div>
+<p class="tiny">These variables are descriptive, not permits, energy availability, investment yields or causal drivers. Smaller bubble does not imply weaker project economics.</p>
+</section>
+</div>
+<section class="panel">
+<div class="row"><div><h2>Province fit &amp; accounting sensitivity</h2><p class="small">Click table rows to select up to three provinces. Sort order reflects your chosen weights, not an official Indonesian investment ranking.</p></div><div style="width:min(100%,270px)"><label for="filter">Find a province</label><input id="filter" type="search" placeholder="Search 38 provinces"></div></div>
+<div class="scroll"><table class="table" id="ranking"><thead><tr><th>Position</th><th>Province</th><th>Fit / 100</th><th>GRDP · IDR tn</th><th>Real growth</th><th>Household share</th><th>PMTB share</th><th>Stress · pp*</th><th>Projects†</th></tr></thead><tbody id="rankingBody"></tbody></table></div>
+<p class="tiny">* Static nominal expenditure accounting effect expressed as a percent of baseline GRDP, not a projected real-growth change. † Records with named provincial attribution only; multi-site announcements may appear in several provinces, and cannot be summed.</p>
+</section>
+<div class="columns">
+<section class="panel"><div class="row"><h2>3 · Compare selected provinces</h2><button id="clearSelection" class="btn" type="button">Clear</button></div><p class="small">Up to three provinces. Strengths and constraints mean relative metric positioning only.</p><div id="compare" class="grid"></div></section>
+<section class="panel"><h2>2022–2025 historical momentum</h2><p class="small">Actual annual change in BPS constant-2010-price GRDP. Missing years remain blank.</p><div class="chart" id="trend"></div></section>
+</div>
+<section class="panel"><h2>Evidence behind selected regions</h2><p class="small">Registry evidence is included for due-diligence navigation, not added to fit scores. An announcement, MoU, groundbreaking, and operating facility are distinct stages. Reported investment is never assumed to be realized capital.</p><div id="projectEvidence"></div><p class="small"><a href="./intelligence-labs.html#investor">Explore complete sourced project registry ↗</a></p></section>
+<section class="panel">
+<h2>Interpretation &amp; source boundaries</h2>
+<div class="grid">
+<div><h3>What the engine measures</h3><p class="small">A user-weighted relative combination of four observed 2025 provincial indicators. Percentile values are computed among provinces with available values, with ties handled equally. The mechanical stress equals −(household expenditure × shock + PMTB × shock) / nominal GRDP.</p></div>
+<div><h3>What it deliberately does not measure</h3><p class="small">No investment return, solvency/default probability, land cost, permit readiness, grid headroom, clean-power availability, crime-based investment risk, political-actor ranking, or claim that project announcements are realized investment.</p></div>
+<div><h3>How to use it</h3><p class="small">Shortlist provinces, inspect observed bottlenecks and registered project milestones, then validate sector-specific infrastructure, legal requirements, company filings and energy readiness in the other SLI dashboards. Scores should not be used without examining underlying values.</p></div>
+</div>
+<div class="sources source" id="sourceLinks"></div><p class="tiny" id="sourceDates"></p>
+</section>
+</main>
+<footer>© Strategic Latitude Intelligence · Original deterministic screening and explanatory scenario · Research only; not investment, legal or financial advice. Source and license verification required before redistribution.</footer>
+<script src="./js/sli-opportunity-engine.js?v=20261017-a"></script>
+<script>
+(function(){
+'use strict';
+const core=window.SLIOpportunityEngine;
+const $=id=>document.getElementById(id);
+const el=(tag,text)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=String(text);return node;};
+const svgEl=(tag,attrs)=>{const node=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v] of Object.entries(attrs||{}))node.setAttribute(k,String(v));return node;};
+const fmt=core.format;
+let data=null,registry=null,rows=[],selected=new Set(),custom=null;
+const factorLabels={scale:'Scale',growth:'Real growth',consumption:'Household share',formation:'PMTB share'};
+function renderWeights(){
+ const actual=core.weightsFor($('preset').value,custom);
+ for(const k of core.FACTORS){
+   const input=$(k+'Weight'),out=$(k+'Output');
+   if(!custom)input.value=core.PRESETS[$('preset').value]?.[k]??core.PRESETS.balanced[k];
+   out.textContent=fmt(actual[k]*100,0)+'%';
+ }
+ $('lensName').textContent=$('preset').selectedOptions[0].textContent;
+}
+function shock(row){return core.staticShock(row,+$('consumerShock').value,+$('capitalShock').value);}
+function makeLink(url,label){if(typeof url!=='string'||!url.startsWith('https://'))return el('span',label);const a=el('a',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
+function recompute(){
+ if(!data)return;
+ rows=core.screen(data,{preset:$('preset').value,weights:custom});
+ $('consumerShockVal').textContent=$('consumerShock').value+'%';
+ $('capitalShockVal').textContent=$('capitalShock').value+'%';
+ renderWeights();renderTable();renderScatter();renderComparison();renderTrend();renderProjects();
+}
+function select(name){
+ if(selected.has(name))selected.delete(name);
+ else{if(selected.size===3)selected.delete(selected.values().next().value);selected.add(name);}
+ renderTable();renderScatter();renderComparison();renderTrend();renderProjects();
+}
+function renderTable(){
+ const tbody=$('rankingBody');tbody.replaceChildren();
+ const term=$('filter').value.toLowerCase().trim();
+ rows.filter(row=>row.name.toLowerCase().includes(term)).forEach(row=>{
+  const tr=el('tr');tr.tabIndex=0;tr.setAttribute('role','button');tr.setAttribute('aria-selected',selected.has(row.name));tr.setAttribute('aria-label','Compare '+row.name);
+  const idx=rows.indexOf(row)+1;
+  [idx,row.name,fmt(row.score,1),fmt(row.scale,1),fmt(row.growth,2)+'%',fmt(row.consumption,1)+'%',fmt(row.formation,1)+'%',fmt(shock(row),2),core.localProjects(registry,row.name).length].forEach((v,i)=>{
+   const td=el('td',v);if(i===2)td.className='fit';tr.append(td);
+  });
+  tr.addEventListener('click',()=>select(row.name));tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(row.name);}});
+  tbody.append(tr);
+ });
+ if(!tbody.children.length){const tr=el('tr'),td=el('td','No matching province');td.colSpan=9;tr.append(td);tbody.append(tr);}
+}
+function scatterText(svg,x,y,text,anchor='start'){const node=svgEl('text',{x,y,fill:'#c2d4df','font-size':11,'text-anchor':anchor});node.textContent=text;svg.append(node);}
+function renderScatter(){
+ const host=$('scatter');host.replaceChildren();
+ const all=rows.filter(r=>Number.isFinite(r.growth)&&Number.isFinite(r.formation));
+ if(!all.length){host.textContent='No comparable provincial series available.';return;}
+ const w=840,h=350,p={l:65,r:34,t:26,b:46};
+ const minX=Math.min(...all.map(x=>x.growth)),maxX=Math.max(...all.map(x=>x.growth));
+ const minY=Math.min(...all.map(x=>x.formation)),maxY=Math.max(...all.map(x=>x.formation));
+ const x=v=>p.l+(v-(minX-0.7))/((maxX+0.7)-(minX-0.7))*(w-p.l-p.r);
+ const y=v=>h-p.b-(v-(minY-2))/((maxY+2)-(minY-2))*(h-p.t-p.b);
+ const svg=svgEl('svg',{viewBox:'0 0 '+w+' '+h,'aria-hidden':'true'});
+ for(let i=0;i<=4;i++){
+   const yy=p.t+(h-p.t-p.b)*i/4,xx=p.l+(w-p.l-p.r)*i/4;
+   svg.append(svgEl('line',{x1:p.l,y1:yy,x2:w-p.r,y2:yy,stroke:'#36536b','stroke-dasharray':'3 5'}));
+   svg.append(svgEl('line',{x1:xx,y1:p.t,x2:xx,y2:h-p.b,stroke:'#29485d','stroke-dasharray':'3 5'}));
+   scatterText(svg,p.l-8,yy+4,fmt(maxY+2-((maxY+2)-(minY-2))*i/4,0)+'%','end');
+   scatterText(svg,xx,h-p.b+20,fmt(minX-0.7+((maxX+0.7)-(minX-0.7))*i/4,1)+'%','middle');
+ }
+ for(const row of all){
+   const circle=svgEl('circle',{cx:x(row.growth),cy:y(row.formation),r:Math.min(14,Math.max(4,Math.sqrt(row.scale||1)*0.42)),fill:selected.has(row.name)?'#e4bc74':'#78c4bf',opacity:selected.has(row.name)?1:0.75,stroke:selected.has(row.name)?'#fff':'#134055','stroke-width':selected.has(row.name)?2:1});
+   const tooltip=svgEl('title');tooltip.textContent=row.name+': growth '+fmt(row.growth,2)+'%, PMTB share '+fmt(row.formation,1)+'%, fit '+fmt(row.score,1)+'/100';circle.append(tooltip);
+   circle.setAttribute('tabindex','0');circle.setAttribute('role','button');circle.setAttribute('aria-label','Select '+row.name);
+   circle.addEventListener('click',()=>select(row.name));circle.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(row.name);}});
+   svg.append(circle);
+   if(selected.has(row.name))scatterText(svg,x(row.growth)+11,y(row.formation)-9,row.name);
+ }
+ scatterText(svg,w/2,h-5,'Real GRDP growth · 2025 YoY','middle');
+ const axis=svgEl('text',{x:17,y:h/2,transform:'rotate(-90 17 '+h/2+')',fill:'#cadce7','font-size':11,'text-anchor':'middle'});axis.textContent='PMTB / nominal GRDP · 2025';svg.append(axis);
+ host.append(svg);
+}
+function renderComparison(){
+ const box=$('compare');box.replaceChildren();
+ if(!selected.size){box.append(el('p','Choose up to three provinces from the table or scatterplot.'));return;}
+ for(const name of selected){
+  const row=rows.find(x=>x.name===name);if(!row)continue;
+  const card=el('article');card.className='compare-card';
+  card.append(el('h3',name),el('p','Fit: '+fmt(row.score,1)+'/100 · Real growth: '+fmt(row.growth,2)+'%'),el('p','GRDP: IDR '+fmt(row.scale,1)+'tn · Household '+fmt(row.consumption,1)+'% · PMTB '+fmt(row.formation,1)+'%'));
+  const t=el('p','Conditional accounting exposure: '+fmt(shock(row),2)+'% of baseline nominal GRDP');t.style.color='#f3c980';card.append(t);
+  const drivers=core.profile(row);
+  const good=el('p','Relatively high signal: '+drivers.relativeStrengths.map(k=>factorLabels[k]).join(', '));
+  const lower=el('p','Relatively lower signal: '+drivers.relativeConstraints.map(k=>factorLabels[k]).join(', '));
+  card.append(good,lower);
+  const remove=el('button','Remove');remove.className='btn';remove.addEventListener('click',()=>select(name));card.append(remove);box.append(card);
+ }
+}
+function renderTrend(){
+ const host=$('trend');host.replaceChildren();
+ const picked=rows.filter(x=>selected.has(x.name));
+ if(!picked.length){host.append(el('p','Select a province to display its 2022–2025 historical growth.'));return;}
+ const values=picked.map(row=>({row,series:row.constantSeries.map((v,i,a)=>i&&Number.isFinite(v)&&Number.isFinite(a[i-1])&&a[i-1]>0?100*(v/a[i-1]-1):null).slice(1)}));
+ const nums=values.flatMap(o=>o.series).filter(Number.isFinite);
+ if(!nums.length){host.textContent='Comparable growth series not available.';return;}
+ const yMin=Math.min(-1,...nums)-0.5,yMax=Math.max(1,...nums)+0.5;
+ const svg=svgEl('svg',{viewBox:'0 0 600 270','aria-label':'Historical annual real growth, selected provinces'});
+ const x=i=>54+i*165,y=v=>224-(v-yMin)/(yMax-yMin)*180;
+ for(let j=0;j<=4;j++){const v=yMin+(yMax-yMin)*j/4,yy=y(v);svg.append(svgEl('line',{x1:49,y1:yy,x2:553,y2:yy,stroke:'#385366','stroke-dasharray':'3 5'}));scatterText(svg,44,yy+3,fmt(v,1)+'%','end');}
+ [2022,2023,2024,2025].forEach((year,i)=>scatterText(svg,x(i),250,String(year),'middle'));
+ const colors=['#e4bc74','#79c6bf','#c2a1ec'];
+ values.forEach((o,j)=>{const points=o.series.map((v,i)=>Number.isFinite(v)?[x(i),y(v)]:null);let previous=null;points.forEach((point,i)=>{if(!point){previous=null;return;}if(previous)svg.append(svgEl('line',{x1:previous[0],y1:previous[1],x2:point[0],y2:point[1],stroke:colors[j],'stroke-width':3}));const c=svgEl('circle',{cx:point[0],cy:point[1],r:5,fill:colors[j]});const title=svgEl('title');title.textContent=o.row.name+' '+(2022+i)+': '+fmt(o.series[i],2)+'%';c.append(title);svg.append(c);previous=point;});});
+ host.append(svg);const legend=el('div');legend.className='legend';values.forEach((o,j)=>{const span=el('span',o.row.name);span.style.color=colors[j];legend.append(span);});host.append(legend);
+}
+function renderProjects(){
+ const box=$('projectEvidence');box.replaceChildren();
+ if(!selected.size){box.append(el('p','Choose one or more provinces for source-linked project evidence.'));return;}
+ for(const name of selected){
+  const wrapper=el('section'),heading=el('h3',name),projects=core.localProjects(registry,name);wrapper.append(heading);
+  if(!projects.length){wrapper.append(el('p','No provincially attributed projects in this 25-record selected registry; this does not imply no projects exist.'));}
+  for(const p of projects){
+    const item=el('div');item.className='project';item.append(el('div',p.name),el('small',p.stage+' · '+(p.evidence_date||'Evidence date not specified')+' · '+(p.investor||'Investor not documented')));
+    item.append(el('p',(p.amount_basis||'')+' '+(p.status_note||'')));
+    item.append(makeLink(p.source_url,'Project source ↗'));wrapper.append(item);
+  }
+  box.append(wrapper);
+ }
+}
+function exportCsv(){
+ const headers=['province','relative_position','fit_score_0_100','nominal_grdp_idr_trillion_2025_preliminary','real_grdp_growth_yoy_2025_pct','household_spending_share_pct','fixed_capital_formation_share_pct','hypothetical_static_grdp_effect_pct','source_url'];
+ const source=data.sources.pdrb.url;const vals=[headers.join(',')];
+ for(let i=0;i<rows.length;i++){const r=rows[i],v=[r.name,i+1,r.score,r.scale,r.growth,r.consumption,r.formation,shock(r),source];vals.push(v.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(','));}
+ const blob=new Blob([vals.join('\r\n')],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='sli-provincial-opportunity-screen-2025.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+function attach(){
+ $('preset').addEventListener('change',()=>{custom=null;recompute();});
+ for(const k of core.FACTORS)$((k)+'Weight').addEventListener('input',()=>{custom=Object.fromEntries(core.FACTORS.map(z=>[z,+$(z+'Weight').value]));$('preset').value='custom';recompute();});
+ $('consumerShock').addEventListener('input',recompute);$('capitalShock').addEventListener('input',recompute);
+ $('filter').addEventListener('input',renderTable);$('clearSelection').addEventListener('click',()=>{selected.clear();recompute();});
+ $('reset').addEventListener('click',()=>{$('preset').value='balanced';custom=null;$('consumerShock').value=5;$('capitalShock').value=10;$('filter').value='';selected.clear();rows.slice(0,2).forEach(r=>selected.add(r.name));recompute();});
+ $('export').addEventListener('click',exportCsv);
+}
+async function init(){
+ attach();
+ try{
+  const responses=await Promise.all([fetch('./data/sli-bps-regional-intelligence.json',{cache:'no-store'}),fetch('./data/sli-project-registry.json',{cache:'no-store'})]);
+  if(responses.some(x=>!x.ok))throw Error('One or more source feeds returned an error.');
+  [data,registry]=await Promise.all(responses.map(x=>x.json()));
+  if(!Array.isArray(data.provinces)||data.provinces.length!==38||!Array.isArray(registry.records))throw Error('Coverage check failed; source dataset may have changed.');
+  rows=core.screen(data);
+  selected=new Set(rows.slice(0,2).map(r=>r.name));
+  $('coverage').textContent=data.provinces.length+'/38';$('vintage').textContent=String(data.grdp_years.at(-1));
+  $('projectTotal').textContent=String(registry.records.filter(r=>r.provinces?.length).length)+' / '+registry.records.length;
+  const sources=$('sourceLinks');sources.replaceChildren(makeLink(data.sources.pdrb.url,'BPS expenditure GRDP, 2021–2025 ↗'),makeLink(registry.source?.url,'SLI project-register sources ↗'));
+  const note=$('sourceDates');note.textContent='BPS release: '+data.sources.pdrb.released+' · 2025 provincial values preliminary · registry as of: '+registry.as_of+' · update is not simultaneous across sources. Regional policy and project execution require independent verification.';
+  $('status').textContent='Source-linked screening ready. Fit scores compare provincial indicators relative to observed peers; scenario effects are hypothetical, not forecasts.';
+  recompute();
+ }catch(err){$('status').textContent='Analysis unavailable: '+err.message+' The engine does not substitute invented figures when data cannot be loaded.';}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script><script defer src="./js/sli-public-usability.js"></script>
+</body></html>
