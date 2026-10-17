@@ -71,6 +71,10 @@ test('page integrates existing registers with source bounds, clear user control,
  assert.match(html,/id="consumerShock"/);
  assert.match(html,/id="capitalShock"/);
  assert.match(html,/id="export"/);
+ assert.match(html,/id="brief"/);
+ assert.match(html,/id="copyBrief"/);
+ assert.match(html,/function renderBrief\(/);
+ assert.match(html,/Due-diligence priorities/);
  assert.match(html,/aria-label="Interactive provincial growth/);
  assert.match(html,/not a GDP forecast/i);
  assert.match(html,/not added to fit scores/i);
