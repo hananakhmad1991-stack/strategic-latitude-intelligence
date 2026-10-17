@@ -219,6 +219,53 @@ function renderProjects(){
   box.append(wrapper);
  }
 }
+function renderInequality(){
+ const host=$('equityScatter');host.replaceChildren();
+ const area=$('giniArea').value,national=gini?.national?.[area];
+ $('nationalAreaGini').textContent=Number.isFinite(national)?fmt(national,3):'N/A';
+ $('giniObserved').textContent=gini?.measurement_period||'Unavailable';
+ const valid=rows.filter(r=>Number.isFinite(r.growth)&&Number.isFinite(r.inequality?.[area]));
+ $('giniCoverage').textContent=valid.length+' / '+rows.length;
+ if(!gini||!valid.length||!Number.isFinite(national)){
+  host.append(el('p','BPS Gini data for this population area are unavailable. No missing values were imputed; economic screening remains usable.'));
+  $('equityInterpretation').textContent='No inferred inequality or inclusive-growth conclusion when source values are missing.';
+  return;
+ }
+ const g=valid.map(r=>r.growth).sort((a,b)=>a-b);
+ const median=(g[(g.length-1)>>1]+g[g.length>>1])/2;
+ const minX=Math.min(...g)-.7,maxX=Math.max(...g)+.7;
+ const minY=Math.min(national,...valid.map(r=>r.inequality[area]))-.018;
+ const maxY=Math.max(national,...valid.map(r=>r.inequality[area]))+.018;
+ const w=840,h=350,p={l:62,r:36,t:25,b:48};
+ const x=v=>p.l+(v-minX)/(maxX-minX)*(w-p.l-p.r);
+ const y=v=>h-p.b-(v-minY)/(maxY-minY)*(h-p.t-p.b);
+ const svg=svgEl('svg',{viewBox:'0 0 '+w+' '+h,role:'img','aria-label':'2025 GRDP growth against March 2026 expenditure Gini, '+area});
+ for(let i=0;i<=4;i++){
+  const xx=p.l+(w-p.l-p.r)*i/4,yy=p.t+(h-p.t-p.b)*i/4;
+  svg.append(svgEl('line',{x1:p.l,y1:yy,x2:w-p.r,y2:yy,stroke:'#344d64','stroke-dasharray':'3 5'}));
+  svg.append(svgEl('line',{x1:xx,y1:p.t,x2:xx,y2:h-p.b,stroke:'#344d64','stroke-dasharray':'3 5'}));
+  scatterText(svg,p.l-8,yy+3,fmt(maxY-(maxY-minY)*i/4,3),'end');
+  scatterText(svg,xx,h-p.b+20,fmt(minX+(maxX-minX)*i/4,1)+'%','middle');
+ }
+ svg.append(svgEl('line',{x1:p.l,y1:y(national),x2:w-p.r,y2:y(national),stroke:'#e4bc74','stroke-width':2,'stroke-dasharray':'7 5'}));
+ svg.append(svgEl('line',{x1:x(median),y1:p.t,x2:x(median),y2:h-p.b,stroke:'#bc9fe2','stroke-width':2,'stroke-dasharray':'7 5'}));
+ scatterText(svg,w-p.r-2,Math.max(p.t+10,y(national)-8),'National Gini '+fmt(national,3),'end');
+ scatterText(svg,Math.min(w-p.r-155,x(median)+5),p.t+10,'Growth median '+fmt(median,2)+'%');
+ for(const row of valid){
+  const active=selected.has(row.name);
+  const c=svgEl('circle',{cx:x(row.growth),cy:y(row.inequality[area]),r:active?8:5,fill:active?'#e4bc74':'#78c4bf',stroke:active?'#fff':'#124657','stroke-width':active?2:1,opacity:active?1:.8,tabindex:0,role:'button','aria-label':'Compare '+row.name});
+  const t=svgEl('title');t.textContent=row.name+' · growth '+fmt(row.growth,2)+'% · Gini '+fmt(row.inequality[area],3)+' · fit '+fmt(row.score,1)+'/100';c.append(t);
+  c.addEventListener('click',()=>select(row.name));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(row.name);}});
+  svg.append(c);
+  if(active)scatterText(svg,Math.min(w-p.r-120,x(row.growth)+10),Math.max(p.t+18,y(row.inequality[area])-9),row.name);
+ }
+ scatterText(svg,w/2,h-7,'2025 real GRDP growth (YoY)','middle');
+ const ylab=svgEl('text',{x:16,y:h/2,transform:'rotate(-90 16 '+h/2+')',fill:'#cadce7','font-size':11,'text-anchor':'middle'});ylab.textContent='Expenditure Gini · March 2026';svg.append(ylab);
+ host.append(svg);
+ const bands={highHigh:0,highLow:0,lowHigh:0,lowLow:0};
+ for(const r of valid){const key=(r.growth>=median?'high':'low')+(r.inequality[area]>=national?'High':'Low');bands[key]++;}
+ $('equityInterpretation').textContent='Observed cross-tab (not a forecast): '+bands.highHigh+' provinces with growth at/above the provincial median and Gini at/above the same-area national value; '+bands.highLow+' higher growth/lower Gini; '+bands.lowHigh+' lower growth/higher Gini; '+bands.lowLow+' lower on both measures. These comparisons use different observation periods, do not establish causality, and do not alter the investor-fit ranking.';
+}
 function renderBrief(){
  const box=$('brief');box.replaceChildren();
  const picked=rows.filter(x=>selected.has(x.name));
