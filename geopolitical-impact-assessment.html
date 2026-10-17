@@ -32,6 +32,29 @@ select{background:#153748;border:1px solid #557081;color:#f2f7f7;border-radius:8
 .source{background:#112834;border:1px solid var(--line);border-radius:11px;padding:17px 20px;margin-top:30px;font-size:12px}.source summary{cursor:pointer;color:var(--gold);font-weight:700}.source p{line-height:1.65}.footer{color:#8caab4;font-size:11px;margin:22px 0 0}
 @media(max-width:860px){.hero,.influence-layout{grid-template-columns:1fr}.measure-grid{grid-template-columns:1fr 1fr}}@media(max-width:610px){main{padding:22px 12px 42px}.sitehead{padding:14px 12px}.sitehead nav{gap:9px}.navtabs{flex-wrap:nowrap;overflow-x:auto}.navtabs button{padding:12px 11px;flex:1;font-size:12px}.insights,.measure-grid{grid-template-columns:1fr}.annual-row{grid-template-columns:1fr 85px 60px;gap:8px}.annual-row .annual-mid{grid-column:1 / -1;grid-row:2}.annual-row .rank-move{text-align:right}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Drill-down explorer: measure → sub-measure → indicator. */
+.drill-panel{margin-top:18px;background:#102934;border:1px solid #476471;border-radius:14px;padding:20px}
+.drill-header{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.drill-crumbs{font-size:12px;color:#b6d3d5;display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.drill-crumbs button{border:0;padding:2px 4px;background:transparent;color:#e9d297;cursor:pointer;text-decoration:underline}
+.drill-crumbs span{color:#9cbbc5}
+.drill-header h3{font-size:20px;margin:0 0 4px}
+.drill-header p{max-width:750px;font-size:13px;margin:0 0 9px}
+.drill-back{border:1px solid #69808b;background:#213f4a;color:#eaf1ef;border-radius:8px;padding:9px 13px}
+.drill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.drill-option{text-align:left;cursor:pointer;display:flex;gap:12px;align-items:center;justify-content:space-between;background:#173744;color:#eaf3f1;border:1px solid #405e6b;border-radius:10px;padding:14px;min-height:92px}
+.drill-option:hover,.drill-option:focus-visible{background:#224956;border-color:#c9aa76}
+.drill-option strong{display:block;font-size:14px}
+.drill-option small{display:block;color:#b7cdd3;font-size:11px;margin-top:5px;line-height:1.45}
+.drill-option .micro{color:#e5cb9b;font-size:11px;white-space:nowrap}
+.drill-option .chev{color:#e9c991;font-weight:700;font-size:17px}
+.drill-detail{margin-top:15px;background:#1a3b45;border-left:3px solid #e4c487;padding:15px;border-radius:0 8px 8px 0}
+.drill-detail .big-number{font-size:27px;color:#edd091;font-weight:740}
+.drill-detail .meta-small{color:#b9ced1;font-size:12px}
+.drill-alert{padding:10px;border:1px dashed #5b7c83;border-radius:8px;color:#c0d0d5;font-size:12px;margin:12px 0}
+.drill-source{display:inline-block;margin-top:9px;color:#ecd394;font-size:12px}
+@media(max-width:680px){.drill-panel{padding:13px}.drill-grid{grid-template-columns:1fr}.drill-option{min-height:70px}}
 </style>
 </head><body>
 <div class="sitehead"><div class="brand">STRATEGIC LATITUDE INTELLIGENCE</div><nav aria-label="Other SLI sections"><a href="./index.html#overview">Overview ↗</a><a href="./index.html#energy">Energy Security ↗</a><a href="./sli-glossary-methodology.html">Glossary ↗</a></nav></div>
@@ -69,6 +92,22 @@ select{background:#153748;border:1px solid #557081;color:#f2f7f7;border-radius:8
 <div class="toolbar"><span class="small">2025 published scores · scales vary by measure</span><label for="scoreSort">Sort by <select id="scoreSort"><option value="rank">Best ranking</option><option value="score">Highest score</option><option value="name">Name A–Z</option></select></label></div>
 <div id="measureCards" class="measure-grid"><p>Loading…</p></div>
 <div class="focus" id="measureDetail" aria-live="polite"><h3 id="selectedMeasure">Choose a measure</h3><p id="selectedMeasureDefinition"></p><p id="selectedMeasureInterpretation"></p><p><a id="measureSource" href="https://power.lowyinstitute.org/countries/indonesia/" target="_blank" rel="noopener noreferrer">Read Lowy source ↗</a></p></div>
+<section class="drill-panel" id="drillExplorer" aria-labelledby="drillTitle">
+<div class="drill-header"><div>
+<nav id="drillBreadcrumb" class="drill-crumbs" aria-label="Indicator detail navigation">Scores › Select a measure</nav>
+<h3 id="drillTitle">Explore all underlying indicators</h3>
+<p id="drillIntro">Click a power measure, then a sub-measure, then a specific indicator. Scores only appear when verified against Lowy's published data.</p>
+</div><button type="button" id="drillBack" class="drill-back" hidden>← Back</button></div>
+<div id="drillStatus" class="drill-alert" role="status" aria-live="polite">Loading Lowy indicator structure…</div>
+<div id="drillList" class="drill-grid"></div>
+<div id="drillIndicator" class="drill-detail" hidden aria-live="polite">
+<div class="eyebrow">Indicator detail · official source</div><h3 id="indicatorTitle">—</h3>
+<div id="indicatorNumber" class="big-number">N/A</div>
+<p id="indicatorExplanation"></p>
+<p id="indicatorPeriod" class="meta-small"></p>
+<a id="indicatorSource" class="drill-source" target="_blank" rel="noopener noreferrer" href="https://power.lowyinstitute.org/countries/indonesia/">Explore source on Lowy ↗</a>
+</div>
+</section>
 </section>
 <details class="source"><summary>Sources, definitions &amp; data limitations</summary>
 <p><strong>Primary source:</strong> Lowy Institute, Asia Power Index, Indonesia country profile, 2025 edition. <a href="https://power.lowyinstitute.org/countries/indonesia/" target="_blank" rel="noopener noreferrer">Open original Indonesia profile ↗</a>.</p>
