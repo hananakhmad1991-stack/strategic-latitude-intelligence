@@ -185,6 +185,11 @@ function renderComparison(){
   const drivers=core.profile(row);
   const good=el('p','Relatively high signal: '+drivers.relativeStrengths.map(k=>factorLabels[k]).join(', '));
   const lower=el('p','Relatively lower signal: '+drivers.relativeConstraints.map(k=>factorLabels[k]).join(', '));
+  const c=giniContext(row),regional=regionContext(row);
+  if(gini&&c.value!==null){
+   card.append(el('p','BPS March 2026 expenditure Gini ('+$('giniArea').selectedOptions[0].textContent+'): '+fmt(c.value,3)+' · '+c.comparison.toLowerCase()+' national '+fmt(c.national,3)+' (difference '+(c.difference>0?'+':'')+fmt(c.difference,3)+').'));
+   if(regional)card.append(el('p','SLI region '+row.inequalityRegion+': province-level median '+fmt(regional.median,3)+' and range '+fmt(regional.minimum,3)+'–'+fmt(regional.maximum,3)+' (n='+regional.count+'). These are NOT official regional Gini estimates.'));
+  }else card.append(el('p','BPS expenditure Gini unavailable for selected population area (not zero).'));
   card.append(good,lower);
   const remove=el('button','Remove');remove.className='btn';remove.addEventListener('click',()=>select(name));card.append(remove);box.append(card);
  }
@@ -284,18 +289,28 @@ function renderBrief(){
  const lens=$('preset').value;
  const question=lens==='market'?'Local purchasing power, distribution access and consumer-market segmentation':lens==='expansion'?'Reliable grid connections, industrial land, permits, logistics and investment realization':'Grid and logistics readiness, subnational permitting, supply-chain exposure and locally relevant demand';
  box.append(el('p','Due-diligence priorities: '+question+'. Confirm project-stage evidence, operating economics and current regulatory requirements before any capital decision. BPS 2025 GRDP data are preliminary; this engine uses no political or public-safety proxy for a financial risk rating.'));
- box.append(el('p','Source: '+data.sources.pdrb.title+' ('+data.sources.pdrb.released+'); SLI selected project registry as of '+registry.as_of+'. Model is descriptive and scenarios are hypothetical.'));
+ if(gini){
+  const area=$('giniArea').value;
+  for(const row of picked){
+   const c=core.inequalityContext(row,gini,area),rg=regionContext(row);
+   if(c.value===null){box.append(el('p',row.name+': BPS '+area+' Gini unavailable. No missing value has been inferred.'));continue;}
+   const regional=rg?' SLI geographic group '+row.inequalityRegion+' contains '+rg.count+' measured provinces with median Gini '+fmt(rg.median,3)+' (range '+fmt(rg.minimum,3)+'–'+fmt(rg.maximum,3)+'), not an official region Gini.':'';
+   box.append(el('p','Socioeconomic context for '+row.name+': March 2026 BPS '+area+' expenditure Gini '+fmt(c.value,3)+' versus national '+fmt(c.national,3)+' ('+c.comparison.toLowerCase()+', difference '+(c.difference>0?'+':'')+fmt(c.difference,3)+').'+regional+' When interpreting 2025 GRDP expansion, this separate inequality measure flags a question for market segmentation, not proof that growth was inclusive/exclusive or that inequality caused it. Gini does not measure purchasing power.'));
+  }
+ }else box.append(el('p','The independent BPS Gini feed is unavailable: no inequality interpretation has been inferred.'));
+ box.append(el('p','Source: '+data.sources.pdrb.title+' ('+data.sources.pdrb.released+'); SLI selected project registry as of '+registry.as_of+'; '+(gini?'BPS March 2026 Gini (released '+gini.published_at+').':'BPS Gini unavailable.')+' Gini does not contribute to the fit score. The cross-period analysis is descriptive; scenarios are hypothetical.'));
 }
 function exportCsv(){
- const headers=['province','relative_position','fit_score_0_100','nominal_grdp_idr_trillion_2025_preliminary','real_grdp_growth_yoy_2025_pct','household_spending_share_pct','fixed_capital_formation_share_pct','hypothetical_static_grdp_effect_pct','source_url'];
+ const headers=['province','relative_position','fit_score_0_100','nominal_grdp_idr_trillion_2025_preliminary','real_grdp_growth_yoy_2025_pct','household_spending_share_pct','fixed_capital_formation_share_pct','selected_gini_area','gini_coefficient_march_2026','national_gini_selected_area_march_2026','hypothetical_static_grdp_effect_pct','grdp_source_url','gini_source_url'];
  const source=data.sources.pdrb.url;const vals=[headers.join(',')];
- for(let i=0;i<rows.length;i++){const r=rows[i],v=[r.name,i+1,r.score,r.scale,r.growth,r.consumption,r.formation,shock(r),source];vals.push(v.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(','));}
- const blob=new Blob([vals.join('\r\n')],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='sli-provincial-opportunity-screen-2025.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
+ for(let i=0;i<rows.length;i++){const r=rows[i],c=giniContext(r),v=[r.name,i+1,r.score,r.scale,r.growth,r.consumption,r.formation,$('giniArea').value,c.value??'',c.national??'',shock(r),source,gini?.sources?.[0]?.url||''];vals.push(v.map(x=>'"'+String(x??'').replace(/"/g,'""')+'"').join(','));}
+ const blob=new Blob([vals.join('\r\n')],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='sli-provincial-opportunity-inequality-context.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
 function attach(){
  $('preset').addEventListener('change',()=>{custom=null;recompute();});
  for(const k of core.FACTORS)$((k)+'Weight').addEventListener('input',()=>{custom=Object.fromEntries(core.FACTORS.map(z=>[z,+$(z+'Weight').value]));$('preset').value='custom';recompute();});
  $('consumerShock').addEventListener('input',recompute);$('capitalShock').addEventListener('input',recompute);
+ $('giniArea').addEventListener('change',()=>{renderTable();renderComparison();renderInequality();renderBrief();});
  $('filter').addEventListener('input',renderTable);$('clearSelection').addEventListener('click',()=>{selected.clear();recompute();});
  $('reset').addEventListener('click',()=>{$('preset').value='balanced';custom=null;$('consumerShock').value=5;$('capitalShock').value=10;$('filter').value='';selected.clear();rows.slice(0,2).forEach(r=>selected.add(r.name));recompute();});
  $('export').addEventListener('click',exportCsv);
