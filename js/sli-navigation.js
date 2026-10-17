@@ -2,7 +2,7 @@
    Static local links only, no analytics, redirects, network dependency or injected source data. */
 (()=>{'use strict';
 const groups=[
- ['Start here','Mulai di sini','overview','guide','membership'],
+ ['Start here','Mulai di sini','overview','research','guide','membership'],
  ['Investment & regions','Investasi & daerah','investment','macro','opportunity','province','gini','labs'],
  ['Energy, trade & assets','Energi, perdagangan & aset','energy','map','trade','minerals','electricity','ruptl'],
  ['Technology & AI','Teknologi & AI','ai','aihub','komdigi','digital','digitalgov'],
@@ -11,6 +11,7 @@ const groups=[
 ];
 const modules={
  overview:['Overview · Big picture','Gambaran besar · Overview','index.html#overview','National executive context; go deeper for tables, project records and source detail.','Konteks nasional; buka modul detail untuk tabel dan sumber.'],
+ research:['Research AI · Evidence Desk','Riset AI · Meja Bukti','sli-research-ai.html','Ask questions and inspect cited public evidence excerpts; generative AI not connected.','Tanya-jawab dengan cuplikan bukti bersumber; AI generatif belum terhubung.'],
  membership:['Membership · Open / Pro / Enterprise','Keanggotaan · Open / Pro / Enterprise','sli-membership.html','Plans and early-access requests; payments are not active yet.','Paket dan permintaan akses awal; pembayaran belum aktif.'],
  guide:['User guide · Start here','Panduan pengguna · Mulai di sini','sli-user-guide.html','Task-based paths, navigation, dates, sources, filters and limitations.','Alur penggunaan, navigasi, tanggal, sumber dan batasan.'],
  investment:['Investment Tracker','Pelacak Investasi','index.html#investment','Projects, investors, capital and execution status.','Proyek, investor, modal dan status pelaksanaan.'],
@@ -40,7 +41,7 @@ const modules={
  about:['About SLI','Tentang SLI','index.html#about','Editorial purpose, independence and research contact.','Tujuan editorial, independensi dan kontak riset.']
 };
 const related={
- membership:['overview','guide','glossary'],overview:['investment','energy','ai','indo'],investment:['province','opportunity','gini','labs'],map:['investment','energy','province'],
+ research:['overview','macro','opportunity','aihub'],membership:['overview','research','guide','glossary'],overview:['research','investment','energy','ai'],investment:['province','opportunity','gini','labs'],map:['investment','energy','province'],
  trade:['minerals','energy','macro'],energy:['electricity','ruptl','map','trade'],minerals:['map','trade','investment'],
  ai:['aihub','komdigi','digital','digitalgov'],policy:['ria','indo','climate'],macro:['opportunity','gini','investment'],
  opportunity:['province','gini','labs'],province:['opportunity','gini','map','electricity'],gini:['province','opportunity','macro'],
@@ -71,7 +72,7 @@ function renderBar(){
  const sep=node('span','sli-separator',' › ');position.append(sep,node('strong','',label(current)));
  const actions=node('div','sli-universal-actions');
  const guide=link('guide','sli-guide-link');guide.textContent=text('Help & how to use','Panduan pemakaian');
- actions.append(link('membership'),guide,link('glossary'),link('freshness'));
+ actions.append(link('research'),link('membership'),guide,link('glossary'),link('freshness'))
  const dropdown=node('details','sli-explore-menu'),summary=node('summary','',text('Explore all modules','Jelajahi semua modul'));
  dropdown.append(summary);
  const list=node('div','sli-modules-grid');
