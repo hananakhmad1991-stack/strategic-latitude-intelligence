@@ -11,7 +11,7 @@ const orig=JSON.parse(fs.readFileSync("data/energy-infrastructure-security.json"
 const policy=JSON.parse(fs.readFileSync("data/energy-governance-ccs.json","utf8"));
 for(const source of [governance,assessment,fs.readFileSync("js/energy-appendix.js","utf8"),fs.readFileSync("js/i18n.js","utf8"),
  fs.readFileSync("js/energy-ev.js","utf8"),fs.readFileSync("js/energy-biofuels.js","utf8")])new Function(source);
-const script=index.match(/<script>([\s\S]*?)<\/script>\s*<\/body>/);
+const script=[...index.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].find(m=>m[1].includes("function energyMonitor(){return `"));
 assert(script,"Expected main inline dashboard script");
 new Function(script[1]);
 const start=script[1].indexOf("function energyMonitor(){return `");
