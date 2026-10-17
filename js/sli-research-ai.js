@@ -1,4 +1,4 @@
-import {buildResearchReport,reportToText,detectIntents} from "./sli-research-analysis.mjs";
+import {buildResearchReport,reportToText,detectIntents} from "./sli-research-analysis.mjs?v=20261017-analytic4";
 /* SLI Research AI · honest Open preview: source retrieval, not an LLM.
  * User queries remain inside this browser. Only the curated public corpus is fetched.
  * No hidden Pro data, no API keys, no hallucinated statistics or automated forecasts.
