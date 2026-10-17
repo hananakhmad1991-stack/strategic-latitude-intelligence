@@ -48,3 +48,23 @@ test("Worker never trusts browser tier claims or exposes unverified payment rout
  assert.ok(!worker.includes('"/v1/checkout"'));
  assert.ok(!worker.includes("clientProvidedPlan"));
 });
+
+test("Target tier policy is deliberately preview-limited and single-device is not falsely active",()=>{
+ const p=JSON.parse(read("data/sli-membership-plans.json"));
+ assert.equal(p.entitlement_activation_status,"planned_not_enforced_on_public_github_pages");
+ assert.equal(p.policy.single_device_limit_is_live,false);
+ assert.equal(p.access_design.device_policy.status,"design_only_not_enforced");
+ assert.equal(p.tiers[0].active_devices_per_user,1);
+ assert.equal(p.tiers[1].active_devices_per_user,1);
+ assert.equal(p.open_preview_limits.news_monitoring.includes("five"),true);
+ assert.match(p.open_preview_limits.strategic_map,/limited|Selected/i);
+ assert.match(p.tiers[1].features.join(" "),/38-province/);
+ assert.match(p.tiers[2].features.join(" "),/Weekly sector-specific monitoring/);
+ assert.equal(p.tiers[2].delivery.weekly_sector_report,"weekly_when_explicitly_included_in_signed_contract");
+ const html=read("sli-membership.html");
+ for(const text of ["satu perangkat","mingguan","data nasional","GitHub Pages","1 akun"]){
+   assert.ok(html.includes(text),"Missing copy "+text);
+ }
+ assert.match(html,/pembatasan perangkat, paywall dan pembayaran belum aktif/i);
+ assert.match(html,/no active|not active/i);
+});
