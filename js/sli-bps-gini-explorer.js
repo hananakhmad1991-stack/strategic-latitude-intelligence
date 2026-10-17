@@ -105,6 +105,11 @@ function start(){
  fetch('./data/sli-bps-gini-2026.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();}).then(d=>{
   if(d.schema!=='sli-bps-gini-ratio-v1'||d.provinces?.length!==38||new Set(d.provinces.map(p=>p.name)).size!==38||!d.national?.history?.length)throw Error('Incomplete Gini dataset');
   if(d.provinces.some(p=>!finite(p.combined)||p.combined<0||p.combined>1))throw Error('Invalid provincial Gini values');
+  // Deep links from the global site search select the exact published province.
+  const requested=new URLSearchParams(window.location.search).get('province');
+  if(requested&&d.provinces.some(p=>p.name===requested)){
+   selected=requested;query=requested;$('search').value=requested;
+  }
   DATA=d;header();
   const sel=$('region');for(const g of groups()){const o=el('option',g.name);o.value=g.name;sel.append(o);}
   const source=$('sourceLinks');for(const src of d.sources)source.append(link(src.url,src.title+' ↗'));
