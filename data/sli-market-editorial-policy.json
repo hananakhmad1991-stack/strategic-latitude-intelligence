@@ -1,0 +1,28 @@
+{
+  "version": "2026-10-17",
+  "purpose": "Editorial and product restrictions on SLI financial-sector monitoring under POJK 6/2026. Not a legal opinion.",
+  "regulation": "https://ojk.go.id/id/regulasi/Pages/POJK-6-Tahun-2026-Perilaku-Penyampai-Informasi-Sektor-Jasa-Keuangan.aspx",
+  "market_data_rights": "https://www.idx.id/id/syarat-penggunaan",
+  "market_data_licensing": "https://www.idx.id/id/produk/layanan-data-bei/",
+  "mode": "independent_general_market_research",
+  "prohibited": [
+    "buy_sell_hold_trade_instruction",
+    "personalized_security_recommendation",
+    "target_price_or_guaranteed_return",
+    "automatic_bullish_bearish_trade_signal",
+    "unsourced_security_ranking",
+    "undisclosed_paid_promotion",
+    "unlicensed_idx_market_data_republication"
+  ],
+  "required": [
+    "source_and_observation_date",
+    "risk_of_capital_loss",
+    "clearly_label_hypotheses",
+    "distinguish_price_from_estimate",
+    "conflict_and_paid_relationship_disclosure_if_applicable",
+    "market_data_display_rights_review"
+  ],
+  "disclosure_status": "No paid affiliation or brokerage relationship is asserted; disclose and update any relationship before publishing commercial material.",
+  "publisher_licensing_status": "not_assessed_by_counsel",
+  "data_licence_state": "IDX market data redistribution authorization not evidenced; disable IDX numerical redistribution until verified"
+}
