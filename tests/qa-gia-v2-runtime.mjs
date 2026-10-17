@@ -17,7 +17,7 @@ class Element{
 async function page(){
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);const els=Object.fromEntries(ids.map(x=>[x,new Element(x)]));
  const doc={getElementById:k=>els[k],querySelectorAll:()=>[],createElement:tag=>new Element(tag),createElementNS:(_ns,tag)=>new Element(tag),body:new Element('body')};
- const ctx={document:doc,window:{},fetch:async url=>{const p=url.replace(/^\.\//,'');if(p.includes('raw.githubusercontent.com'))throw Error('Network unavailable');const contents={ 'data/sli-gia-v2-config.json':read('data/sli-gia-v2-config.json'),'data/research-signal-radar.json':read('data/research-signal-radar.json')};return {ok:!!contents[p],status:contents[p]?200:404,json:async()=>JSON.parse(contents[p])}},Blob,URL:{createObjectURL:()=> 'blob:test',revokeObjectURL(){}},setTimeout:fn=>fn(),Date,Intl,Number,Math,console};
+ const ctx={document:doc,window:{},fetch:async url=>{const p=url.replace(/^\.\//,'');if(p.includes('raw.githubusercontent.com'))throw Error('Network unavailable');const contents={ 'data/sli-gia-v2-config.json':read('data/sli-gia-v2-config.json'),'data/research-signal-radar.json':read('data/research-signal-radar.json'),'data/sli-gia-world-110m.geojson':read('data/sli-gia-world-110m.geojson')};return {ok:!!contents[p],status:contents[p]?200:404,json:async()=>JSON.parse(contents[p])}},Blob,URL:{createObjectURL:()=> 'blob:test',revokeObjectURL(){}},setTimeout:fn=>fn(),Date,Intl,Number,Math,console};
  ctx.window=ctx;runInNewContext(read('js/sli-gia-v2-engine.js'),ctx);runInNewContext(script,ctx);
  for(let i=0;i<90;i++)await Promise.resolve();
  return els;
@@ -28,7 +28,9 @@ test('GIA renders a risk proxy, scenario financials, country map fallback and so
  assert.match(els.expectedLoss.textContent,/6.3/);
  assert.match(els.var95.textContent,/15/);
  assert.equal(els.mapPins.children.filter(x=>x.tag==='circle').length,17);
- assert.match(els.mapStatus.textContent,/Country selector|reference points|N\/A/i);
+ assert.equal(els.mapShapes.children.length,177);
+ assert.match(els.sourceWatchStatus.textContent,/SOURCE WATCH/);
+ assert.match(els.mapStatus.textContent,/Natural Earth boundary map loaded/i);
  assert.equal(els.newsItems.children.length,12);
  assert.match(els.feedCount.textContent,/\d+/);
 });
