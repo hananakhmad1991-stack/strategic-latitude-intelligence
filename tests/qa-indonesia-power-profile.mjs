@@ -6,6 +6,7 @@ const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const html=read('geopolitical-impact-assessment.html');
 const code=read('js/sli-indonesia-power-profile.js');
 const data=JSON.parse(read('data/sli-indonesia-power-profile.json'));
+const taxonomy=JSON.parse(read('data/sli-indonesia-power-detail.json'));
 test('Lowy source-dated Indonesia country snapshot is grounded and internally consistent',()=>{
  const power=data.overview.comprehensive_power;
  assert.equal(data.source.publisher,'Lowy Institute');
@@ -43,17 +44,17 @@ class Element{
  replaceChildren(...items){this.children=[...items];this._text='';this.lastChild=this.children.at(-1);}
  setAttribute(k,v){this.attrs[k]=String(v);}
  addEventListener(k,cb){(this.handlers[k]??=[]).push(cb);}
- fire(k){for(const cb of this.handlers[k]||[])cb({preventDefault(){}});}
+ fire(k){if(k==='click'&&typeof this.onclick==='function')this.onclick({preventDefault(){}});for(const cb of this.handlers[k]||[])cb({preventDefault(){}});}
  scrollIntoView(){}
 }
-async function mount(broken=false){
+async function mount(broken=false,initialHash='',detailMissing=false){
  const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
  const els=Object.fromEntries(ids.map(x=>[x,new Element()]));
  const tabs=['overview','changes','influence','scores'].map(name=>{const b=new Element('button');b.dataset.tab=name;return b;});
  const document={readyState:'complete',getElementById:id=>els[id],querySelectorAll:sel=>sel==='[data-tab]'?tabs:[],createElement:tag=>new Element(tag)};
- const location={hash:''};
+ const location={hash:initialHash};
  const window={history:{replaceState:(_a,_b,hash)=>location.hash=hash},addEventListener(){}};
- const fetch=async()=>broken?{ok:false,status:503}:{ok:true,json:async()=>data};
+ const fetch=async uri=>broken?{ok:false,status:503}:uri.includes('sli-indonesia-power-detail.json')?detailMissing?{ok:false,status:404}:{ok:true,json:async()=>taxonomy}:{ok:true,json:async()=>data};
  runInNewContext(code,{document,window,location,fetch,Intl});
  for(let i=0;i<50;i++)await Promise.resolve();
  return {els,tabs,location};
@@ -89,4 +90,56 @@ test('on missing source, the page reports missing data instead of inventing rank
  const {els}=await mount(true);
  assert.match(els.powerSummary.textContent,/could not be loaded/);
  assert.match(els.annualRows.textContent,/unavailable/);
+});
+test('all published categories support three-level exploration without invented data values',()=>{
+ assert.equal(taxonomy.measures.length,8);
+ assert.equal(taxonomy.measures.reduce((n,m)=>n+m.parts.length,0),30);
+ assert.equal(taxonomy.measures.reduce((n,m)=>n+m.total_indicators,0),134);
+ for(const m of taxonomy.measures){assert.match(m.source_url,/^https:\/\/power\.lowyinstitute\.org\/explore\//);assert.equal(m.parts.reduce((n,p)=>n+p.indicators.length,0),m.total_indicators);
+  for(const p of m.parts){assert.ok(p.description&&p.indicators.length);for(const ind of p.indicators){assert.ok(ind.name);assert.ok(ind.indonesia||ind.status==='source_indicator_not_imported')}}}
+});
+test('clicking measure then sub-measure then indicator shows source-traceable Indonesian value',async()=>{
+ const {els,location}=await mount();
+ const economic=els.measureCards.children.find(x=>x.dataset.id==='economic');
+ assert.ok(economic);economic.fire('click');
+ assert.equal(els.drillList.children.length,4);
+ assert.match(els.drillTitle.textContent,/Economic capability/);
+ assert.equal(location.hash,'#scores/economic');
+ els.drillList.children[2].fire('click');
+ assert.equal(els.drillList.children.length,8);
+ assert.match(els.drillStatus.textContent,/19/);
+ assert.equal(location.hash,'#scores/economic/technology');
+ els.drillList.children[1].fire('click');
+ assert.equal(els.indicatorTitle.textContent,'Productivity');
+ assert.match(els.indicatorNumber.textContent,/9,278/);
+ assert.match(els.indicatorExplanation.textContent,/rank #16/);
+ assert.match(els.indicatorSource.href,/\/technology\/productivity\//);
+ assert.equal(location.hash,'#scores/economic/technology/1');
+ els.drillBack.fire('click');
+ assert.equal(els.drillIndicator.hidden,true);
+ assert.equal(els.drillList.children.length,8);
+ els.drillBack.fire('click');
+ assert.equal(els.drillList.children.length,4);
+});
+test('unimported underlying indicators must show N/A and link only to official source',async()=>{
+ const {els}=await mount();
+ els.measureCards.children.find(x=>x.dataset.id==='resilience').fire('click');
+ els.drillList.children[1].fire('click'); // Resource security
+ assert.match(els.drillStatus.textContent,/54\.1/);
+ els.drillList.children[0].fire('click'); // Energy trade balance
+ assert.equal(els.indicatorNumber.textContent,'N/A');
+ assert.match(els.indicatorExplanation.textContent,/not imported/);
+ assert.match(els.indicatorSource.href,/power\.lowyinstitute\.org\/data\/resilience\/resource-security/);
+});
+test('shared deep links open the right indicator on load',async()=>{
+ const {els}=await mount(false,'#scores/economic/technology/1');
+ assert.equal(els.scores.hidden,false);
+ assert.equal(els.indicatorTitle.textContent,'Productivity');
+ assert.equal(els.indicatorNumber.textContent,'US$9,278 per worker (constant 2021 dollars)');
+});
+test('when detailed hierarchy is unavailable, published high-level profile remains readable',async()=>{
+ const {els}=await mount(false,'',true);
+ assert.equal(els.overallRank.textContent,'#9');
+ assert.equal(els.measureCards.children.length,8);
+ assert.match(els.drillStatus.textContent,/Detail catalogue unavailable/);
 });
