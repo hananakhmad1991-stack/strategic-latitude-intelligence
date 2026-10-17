@@ -15,6 +15,14 @@ Independent, open-source-based analysis of Indonesia's strategic investment, ene
 - `membership-api/tests/auth.test.mjs`, `tests/qa-sli-membership.mjs` and `.github/workflows/sli-membership-qa.yml` cover token forgery, authorisation, expiry, private storage, origin restrictions, catalog truth and absence of unintended payments.
 - Next production dependencies: confirmed business identity, legal pages, controlled domain, identity/hosting account setup, selected payment provider and approved pricing, verified payment webhook and refund/cancel workflow, data licensing, staged security checks. No automatic charging without these authorizations.
 
+## SLI Research AI / Evidence Preview (17 October 2026)
+
+- **[SLI Research AI](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-research-ai.html)** has a bilingual plain-language query interface, topic filters, 28 curated dated evidence excerpts from existing SLI sources, source-side citations, follow-up prompts and copyable extractive summaries.
+- **Important:** Open currently performs **deterministic retrieval and citation assembly, not generative AI**; all queries are handled locally in the browser and the public corpus is intentionally sampled. News leads are unverified, and official observed periods differ.
+- `research-api/` contains undeployed Cloudflare Worker staging for authenticated Pro/Enterprise source-grounded generation: verified subscription entitlement, private R2 corpus, Cloudflare rate limiting, server-side model credentials, citation structure validation. No live LLM endpoint, premium corpus or purchase is wired to the public page.
+- Future production requires legal rights for model processing, user privacy, active device policy, paid subscription controls, measured retrieval accuracy, vulnerability/prompt-injection review, independent source validation and cost ceilings.
+- `.github/workflows/sli-research-ai-qa.yml` tests structural reliability and security invariants. Public Open access cannot be described as a functioning paid AI service.
+
 ## Reader-first navigation and documentation (17 October 2026)
 
 - **[SLI Overview](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/)** is the national big-picture decision brief. Detailed dashboards own tables, projects, sources, maps, filters and specialized analysis; they are not duplicated on Overview.
