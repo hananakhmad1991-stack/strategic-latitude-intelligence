@@ -15,14 +15,14 @@ class Element{
  remove(){}
 }
 async function page(){
- const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);const els=Object.fromEntries(ids.map(x=>[x,new Element(x)]));
+ const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);const els=Object.fromEntries(ids.map(x=>[x,new Element(x)]));els.signalThreshold.value='3';
  const doc={getElementById:k=>els[k],querySelectorAll:()=>[],createElement:tag=>new Element(tag),createElementNS:(_ns,tag)=>new Element(tag),body:new Element('body')};
  const ctx={document:doc,window:{},fetch:async url=>{const p=url.replace(/^\.\//,'');if(p.includes('raw.githubusercontent.com'))throw Error('Network unavailable');const contents={ 'data/sli-gia-v2-config.json':read('data/sli-gia-v2-config.json'),'data/research-signal-radar.json':read('data/research-signal-radar.json'),'data/sli-gia-world-110m.geojson':read('data/sli-gia-world-110m.geojson')};return {ok:!!contents[p],status:contents[p]?200:404,json:async()=>JSON.parse(contents[p])}},Blob,URL:{createObjectURL:()=> 'blob:test',revokeObjectURL(){}},setTimeout:fn=>fn(),Date,Intl,Number,Math,console};
  ctx.window=ctx;runInNewContext(read('js/sli-gia-v2-engine.js'),ctx);runInNewContext(script,ctx);
  for(let i=0;i<90;i++)await Promise.resolve();
  return els;
 }
-test('GIA renders a risk proxy, scenario financials, country map fallback and source-dated news',async()=>{
+test('GIA renders a risk proxy, scenario financials, locally bundled country boundaries and dated news',async()=>{
  const els=await page();
  assert.match(els.riskScore.textContent,/43.5/);
  assert.match(els.expectedLoss.textContent,/6.3/);
