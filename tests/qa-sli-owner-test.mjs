@@ -1,0 +1,66 @@
+import {test} from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
+const worker=read("research-api/src/owner-test-worker.mjs");
+const page=read("sli-research-ai.html");
+const script=read("js/sli-research-assistant.js");
+const config=JSON.parse(read("data/sli-research-assistant-config.json"));
+const docs=JSON.parse(read("data/sli-research-evidence-preview.json"));
+const regions=JSON.parse(read("data/sli-research-province-preview.json"));
+
+test("Owner test is opt-in, disabled until secure backend is deployed",()=>{
+ assert.equal(config.owner_test.enabled,false);
+ assert.equal(config.owner_test.endpoint,null);
+ assert.equal(config.api_enabled,false);
+ assert.equal(config.login_enabled,false);
+ assert.equal(config.api_endpoint,null);
+ assert.match(page,/raOwnerPanel/);
+ assert.match(page,/raOwnerToken/);
+ assert.match(page,/type="password"/);
+ assert.match(page,/OWNER_TEST_SETUP\.md/);
+ assert.match(script,/ownerConfigured\(\)/);
+ assert.match(script,/x-sli-owner-test-token/);
+ assert.match(script,/owner_test\.endpoint/);
+ assert.ok(!script.includes("localStorage.setItem"));
+ assert.ok(!script.includes("sessionStorage.setItem"));
+});
+test("Owner test cannot leak OpenAI credentials in client or public config",()=>{
+ const exposed=page+script+JSON.stringify(config);
+ assert.ok(!/sk-[A-Za-z0-9_-]{20,}/.test(exposed));
+ assert.ok(!exposed.includes("OPENAI_API_KEY"));
+ assert.match(worker,/env\.OPENAI_API_KEY/);
+ assert.match(worker,/env\.OWNER_TEST_TOKEN/);
+ assert.match(worker,/STAGING_ONLY/);
+ assert.match(worker,/validOrigin/);
+ assert.match(worker,/equalToken/);
+ assert.match(worker,/AI_LIMITER\.limit/);
+ assert.match(worker,/readBody/);
+ assert.match(worker,/store:false|modelRequest/);
+});
+test("Staging corpus is public evidence only and includes 38 provinces",()=>{
+ assert.equal(regions.provinces.length,38);
+ assert.ok(docs.documents.length>=20);
+ assert.ok(docs.documents.every(d=>d.access==="open_preview"&&d.source_url.startsWith("https://")));
+ assert.match(worker,/sli-research-evidence-preview\.json/);
+ assert.match(worker,/sli-research-province-preview\.json/);
+ assert.match(worker,/provinces\.sources\.grdp\.url/);
+ assert.match(worker,/provinces\.sources\.gini\.url/);
+ assert.ok(!worker.includes("enterprise/research-evidence.json"));
+ assert.ok(!worker.includes("RESEARCH_BUCKET.get("));
+ assert.match(worker,/verifyResearchAnswer/);
+});
+test("Cloudflare configuration remains separately gated with per-minute rate limit",()=>{
+ const toml=read("research-api/wrangler.owner-test.toml.example");
+ assert.match(toml,/main = "src\/owner-test-worker\.mjs"/);
+ assert.match(toml,/STAGING_ONLY = "true"/);
+ assert.match(toml,/WEB_ORIGIN = "https:\/\/hananakhmad1991-stack\.github\.io"/);
+ assert.match(toml,/name = "AI_LIMITER"/);
+ assert.match(toml,/limit = 2/);
+ assert.match(toml,/period = 60/);
+ const guide=read("research-api/OWNER_TEST_SETUP.md");
+ assert.match(guide,/wrangler secret put OPENAI_API_KEY/);
+ assert.match(guide,/wrangler secret put OWNER_TEST_TOKEN/);
+ assert.match(guide,/randomBytes\(32\)/);
+ assert.match(guide,/NOT DEPLOYED/);
+});
