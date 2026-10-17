@@ -5,6 +5,7 @@ on:
       - 'provincial-opportunity-engine.html'
       - 'js/sli-opportunity-engine.js'
       - 'data/sli-bps-regional-intelligence.json'
+      - 'data/sli-bps-gini-2026.json'
       - 'data/sli-project-registry.json'
       - 'tests/qa-sli-provincial-opportunity.mjs'
       - '.github/workflows/sli-provincial-opportunity-qa.yml'
