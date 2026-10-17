@@ -34,7 +34,7 @@ footer{text-align:center;padding:20px;color:var(--muted);border-top:1px solid va
 <div class="stat"><small>Provincial coverage</small><strong id="coverage">—</strong><small>38 BPS provinces expected</small></div>
 <div class="stat"><small>Source vintage</small><strong id="vintage">—</strong><small>2025 provisional GRDP data</small></div>
 <div class="stat"><small>Matched project records</small><strong id="projectTotal">—</strong><small>Not a complete national project inventory</small></div>
-<div class="stat"><small>Screening lens</small><strong id="lensName" style="font-size:17px">—</strong><small>User-adjustable, relative comparison</small></div>
+<div class="stat"><small>Screening lens</small><strong id="lensName" style="font-size:17px">—</strong><small>User-adjustable, relative comparison</small></div><div class="stat"><small>National Gini · expenditure</small><strong id="giniNational">—</strong><small id="giniVintage">BPS Susenas · socioeconomic context</small></div>
 </section>
 <div class="columns">
 <section class="panel" aria-label="Analysis controls">
@@ -66,20 +66,27 @@ footer{text-align:center;padding:20px;color:var(--muted);border-top:1px solid va
 </div>
 <section class="panel">
 <div class="row"><div><h2>Province fit &amp; accounting sensitivity</h2><p class="small">Click table rows to select up to three provinces. Sort order reflects your chosen weights, not an official Indonesian investment ranking.</p></div><div style="width:min(100%,270px)"><label for="filter">Find a province</label><input id="filter" type="search" placeholder="Search 38 provinces"></div></div>
-<div class="scroll"><table class="table" id="ranking"><thead><tr><th>Position</th><th>Province</th><th>Fit / 100</th><th>GRDP · IDR tn</th><th>Real growth</th><th>Household share</th><th>PMTB share</th><th>Stress · pp*</th><th>Projects†</th></tr></thead><tbody id="rankingBody"></tbody></table></div>
-<p class="tiny">* Static nominal expenditure accounting effect expressed as a percent of baseline GRDP, not a projected real-growth change. † Records with named provincial attribution only; multi-site announcements may appear in several provinces, and cannot be summed.</p>
+<div class="scroll"><table class="table" id="ranking"><thead><tr><th>Position</th><th>Province</th><th>Fit / 100</th><th>GRDP · IDR tn</th><th>Real growth</th><th>Household share</th><th>PMTB share</th><th>Gini‡</th><th>Stress · pp*</th><th>Projects†</th></tr></thead><tbody id="rankingBody"></tbody></table></div>
+<p class="tiny">* Static nominal expenditure accounting effect expressed as a percent of baseline GRDP, not a projected real-growth change. † Records with named provincial attribution only; multi-site announcements may appear in several provinces, and cannot be summed. ‡ Gini is a socioeconomic context indicator and not part of the investment fit score.</p>
 </section>
 <div class="columns">
 <section class="panel"><div class="row"><h2>3 · Compare selected provinces</h2><button id="clearSelection" class="btn" type="button">Clear</button></div><p class="small">Up to three provinces. Strengths and constraints mean relative metric positioning only.</p><div id="compare" class="grid"></div></section>
 <section class="panel"><h2>2022–2025 historical momentum</h2><p class="small">Actual annual change in BPS constant-2010-price GRDP. Missing years remain blank.</p><div class="chart" id="trend"></div></section>
 </div>
+<section class="panel" id="equityPanel">
+<div class="row"><div><h2>Growth × Inequality · Socioeconomic intelligence</h2><p class="small">Compare BPS 2025 real GRDP growth with March 2026 expenditure Gini across the same provinces. Different observation periods; this is descriptive, not a causal analysis.</p></div><div style="width:min(100%,220px)"><label for="giniArea">Population area</label><select id="giniArea"><option value="combined">Urban + rural</option><option value="urban">Urban</option><option value="rural">Rural</option></select></div></div>
+<div class="grid" style="margin:16px 0"><div class="stat"><small>Official national Gini · selected area</small><strong id="nationalAreaGini">—</strong><small>Not an average of province Gini</small></div><div class="stat"><small>Valid province observations</small><strong id="giniCoverage">—</strong><small>No missing-value interpolation</small></div><div class="stat"><small>Source observation</small><strong id="giniObserved">—</strong><small>Separate from GRDP year</small></div></div>
+<div class="chart" id="equityScatter" role="img" aria-label="Interactive real growth and expenditure Gini scatter plot"></div>
+<p id="equityInterpretation" class="note small" style="margin-top:13px"></p>
+<p class="tiny">The vertical benchmark is the median of available 2025 provincial real growth; the horizontal benchmark is the official BPS March 2026 national Gini for the same population area. Neither benchmark measures an investment return, project viability or causality. The regional statistics quoted below are medians/ranges of provincial observations, not official aggregate regional Gini. DKI Jakarta has no reported rural Gini.</p>
+<p class="small"><a href="./gini-inequality.html">Explore BPS inequality source dashboard ↗</a></p></section>
 <section class="panel"><div class="row"><h2>SLI Analyst Brief · Decision-support synthesis</h2><button class="btn" id="copyBrief" type="button">Copy analyst brief</button></div><p class="small">Generated from observed BPS indicators, your screening objective and the scenario assumptions. Interpretation is comparative, not a recommendation or verified project due diligence.</p><div id="brief" aria-live="polite"></div></section>
 <section class="panel"><h2>Evidence behind selected regions</h2><p class="small">Registry evidence is included for due-diligence navigation, not added to fit scores. An announcement, MoU, groundbreaking, and operating facility are distinct stages. Reported investment is never assumed to be realized capital.</p><div id="projectEvidence"></div><p class="small"><a href="./intelligence-labs.html#investor">Explore complete sourced project registry ↗</a></p></section>
 <section class="panel">
 <h2>Interpretation &amp; source boundaries</h2>
 <div class="grid">
 <div><h3>What the engine measures</h3><p class="small">A user-weighted relative combination of four observed 2025 provincial indicators. Percentile values are computed among provinces with available values, with ties handled equally. The mechanical stress equals −(household expenditure × shock + PMTB × shock) / nominal GRDP.</p></div>
-<div><h3>What it deliberately does not measure</h3><p class="small">No investment return, solvency/default probability, land cost, permit readiness, grid headroom, clean-power availability, crime-based investment risk, political-actor ranking, or claim that project announcements are realized investment.</p></div>
+<div><h3>Distributional context</h3><p class="small">BPS Gini coefficients measure inequality of expenditure, not income, wealth or purchasing power. March 2026 Gini is used only to describe socioeconomic context alongside 2025 economic observations. It is never used to change the score or stress calculation.</p></div><div><h3>What it deliberately does not measure</h3><p class="small">No investment return, solvency/default probability, land cost, permit readiness, grid headroom, clean-power availability, crime-based investment risk, political-actor ranking, or claim that project announcements are realized investment.</p></div>
 <div><h3>How to use it</h3><p class="small">Shortlist provinces, inspect observed bottlenecks and registered project milestones, then validate sector-specific infrastructure, legal requirements, company filings and energy readiness in the other SLI dashboards. Scores should not be used without examining underlying values.</p></div>
 </div>
 <div class="sources source" id="sourceLinks"></div><p class="tiny" id="sourceDates"></p>
@@ -95,7 +102,7 @@ const $=id=>document.getElementById(id);
 const el=(tag,text)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=String(text);return node;};
 const svgEl=(tag,attrs)=>{const node=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v] of Object.entries(attrs||{}))node.setAttribute(k,String(v));return node;};
 const fmt=core.format;
-let data=null,registry=null,rows=[],selected=new Set(),custom=null;
+let data=null,registry=null,gini=null,rows=[],selected=new Set(),custom=null;
 const factorLabels={scale:'Scale',growth:'Real growth',consumption:'Household share',formation:'PMTB share'};
 function renderWeights(){
  const actual=core.weightsFor($('preset').value,custom);
@@ -110,29 +117,32 @@ function shock(row){return core.staticShock(row,+$('consumerShock').value,+$('ca
 function makeLink(url,label){if(typeof url!=='string'||!url.startsWith('https://'))return el('span',label);const a=el('a',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
 function recompute(){
  if(!data)return;
- rows=core.screen(data,{preset:$('preset').value,weights:custom});
+ rows=core.attachInequality(core.screen(data,{preset:$('preset').value,weights:custom}),gini);
  $('consumerShockVal').textContent=$('consumerShock').value+'%';
  $('capitalShockVal').textContent=$('capitalShock').value+'%';
- renderWeights();renderTable();renderScatter();renderComparison();renderTrend();renderProjects();renderBrief();
+ renderWeights();renderTable();renderScatter();renderComparison();renderTrend();renderProjects();renderInequality();renderBrief();
 }
 function select(name){
  if(selected.has(name))selected.delete(name);
  else{if(selected.size===3)selected.delete(selected.values().next().value);selected.add(name);}
- renderTable();renderScatter();renderComparison();renderTrend();renderProjects();renderBrief();
+ renderTable();renderScatter();renderComparison();renderTrend();renderProjects();renderInequality();renderBrief();
 }
+function giniContext(row){return core.inequalityContext(row,gini,$('giniArea').value);}
+function giniValue(row){const c=giniContext(row);return c.value===null?'N/A':fmt(c.value,3);}
+function regionContext(row){const all=core.groupedProvinceMedians(rows,$('giniArea').value);return row.inequalityRegion?all[row.inequalityRegion]||null:null;}
 function renderTable(){
  const tbody=$('rankingBody');tbody.replaceChildren();
  const term=$('filter').value.toLowerCase().trim();
  rows.filter(row=>row.name.toLowerCase().includes(term)).forEach(row=>{
   const tr=el('tr');tr.tabIndex=0;tr.setAttribute('role','button');tr.setAttribute('aria-selected',selected.has(row.name));tr.setAttribute('aria-label','Compare '+row.name);
   const idx=rows.indexOf(row)+1;
-  [idx,row.name,fmt(row.score,1),fmt(row.scale,1),fmt(row.growth,2)+'%',fmt(row.consumption,1)+'%',fmt(row.formation,1)+'%',fmt(shock(row),2),core.localProjects(registry,row.name).length].forEach((v,i)=>{
+  [idx,row.name,fmt(row.score,1),fmt(row.scale,1),fmt(row.growth,2)+'%',fmt(row.consumption,1)+'%',fmt(row.formation,1)+'%',giniValue(row),fmt(shock(row),2),core.localProjects(registry,row.name).length].forEach((v,i)=>{
    const td=el('td',v);if(i===2)td.className='fit';tr.append(td);
   });
   tr.addEventListener('click',()=>select(row.name));tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(row.name);}});
   tbody.append(tr);
  });
- if(!tbody.children.length){const tr=el('tr'),td=el('td','No matching province');td.colSpan=9;tr.append(td);tbody.append(tr);}
+ if(!tbody.children.length){const tr=el('tr'),td=el('td','No matching province');td.colSpan=10;tr.append(td);tbody.append(tr);}
 }
 function scatterText(svg,x,y,text,anchor='start'){const node=svgEl('text',{x,y,fill:'#c2d4df','font-size':11,'text-anchor':anchor});node.textContent=text;svg.append(node);}
 function renderScatter(){
