@@ -84,4 +84,11 @@ assert.equal(input.attrs["aria-expanded"],"false","Escape closes");
 const shortcuts=handlers.keydown;assert.equal(typeof shortcuts,"function");
 shortcuts({key:"k",ctrlKey:true,metaKey:false,preventDefault(){}});
 assert.equal(document.activeElement,input,"Ctrl+K focuses search anywhere");
-console.log("PASS: SLI search DOM smoke · input opens, 853 index records searchable, provincial result navigates, escape closes, Ctrl+K focuses");
+// Exact standalone page navigation: the selected Gini province must survive the click.
+ctx.window.location={assign:url=>navigated.push(url)};
+input.focus();input.value="Gini Jawa Barat";input.dispatchEvent({type:"input"});
+const giniHit=root.querySelectorAll(".sli-search-result").find(b=>(b.textContent||"").includes("Gini Ratio · Jawa Barat"));
+assert.ok(giniHit,"Exact Gini provincial result visible");
+giniHit.click();
+assert.ok(navigated.some(x=>String(x).includes("gini-inequality.html?province=Jawa%20Barat")),"Exact target province must be in link");
+console.log("PASS: SLI search DOM smoke · input opens, 1080 indexed entries searchable, provincial result navigates, escape closes, Ctrl+K focuses");
