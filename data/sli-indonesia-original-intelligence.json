@@ -180,6 +180,36 @@
       "source_url": "https://esdm.go.id/en/media-center/news-archives/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat",
       "publisher": "ESDM",
       "display": "15,630 MW"
+    },
+    {
+      "id": "idi_2024",
+      "label": "Indonesia Democracy Index (IDI), national",
+      "value": 79.81,
+      "unit": "index points",
+      "period": "2024",
+      "source_url": "https://www.bps.go.id/id/publication/2025/12/22/8bc8ad59afe1985f822fce41/statistik-politik-2025.html",
+      "publisher": "BPS",
+      "display": "79.81"
+    },
+    {
+      "id": "press_freedom_2024",
+      "label": "National Press Freedom Index (IKP)",
+      "value": 69.36,
+      "unit": "index points",
+      "period": "2024",
+      "source_url": "https://www.bps.go.id/id/publication/2025/12/22/8bc8ad59afe1985f822fce41/statistik-politik-2025.html",
+      "publisher": "BPS citing Dewan Pers",
+      "display": "69.36"
+    },
+    {
+      "id": "pilkada_2024_regions",
+      "label": "Regional elections conducted",
+      "value": 545,
+      "unit": "election jurisdictions",
+      "period": "2024",
+      "source_url": "https://www.bps.go.id/id/publication/2025/12/22/8bc8ad59afe1985f822fce41/statistik-politik-2025.html",
+      "publisher": "BPS citing KPU",
+      "display": "545"
     }
   ],
   "domains": [
@@ -430,6 +460,41 @@
           "watch": "Follow official restrictions, vendor concentration and licences."
         }
       ]
+    },
+    {
+      "id": "governance",
+      "title": "Governance & Civic Institutions",
+      "strap": "Historical democracy, public information and regional election administration",
+      "summary": "Institutional statistics help describe Indonesia's governance environment, but a democracy score, press index or election count must not be used as a direct prediction of investment outcomes.",
+      "topics": [
+        {
+          "id": "democracy",
+          "title": "Indonesia Democracy Index",
+          "metric_ids": [
+            "idi_2024"
+          ],
+          "analysis": "The 2024 national Indonesia Democracy Index (IDI) was 79.81, compared with 79.51 in 2023 according to BPS. It measures the national index framework, not the probability of regulatory disruption or an evaluation of particular political actors.",
+          "watch": "Read the different provincial and central index components and their observation year; consult current official regulations for operational policy."
+        },
+        {
+          "id": "press",
+          "title": "Press freedom and information environment",
+          "metric_ids": [
+            "press_freedom_2024"
+          ],
+          "analysis": "Dewan Pers reported a national Press Freedom Index (IKP) of 69.36 for 2024, reproduced in Statistik Politik 2025. The index differs in scope from IDI and should not be added to or averaged with it.",
+          "watch": "Track the series and its publisher-specific indicator definition. Changes in public information quality may affect OSINT coverage, not mechanically project or election risk."
+        },
+        {
+          "id": "regional_elections",
+          "title": "Regional election administration",
+          "metric_ids": [
+            "pilkada_2024_regions"
+          ],
+          "analysis": "Indonesia held simultaneous 2024 regional elections across 545 jurisdictions: 37 provinces, 415 regencies and 93 municipalities. The published registered-voter table describes the DPT, not observed turnout or later regulatory changes.",
+          "watch": "Follow published election administration records and current local government regulations, permissions and implementation decisions rather than projecting future outcomes from an election count."
+        }
+      ]
     }
   ],
   "partners": [
@@ -552,5 +617,5 @@
       "domain": "trade"
     }
   ],
-  "notes": "Observed statistics are sourced to original government releases; analysis and implications are editorial interpretations of SLI. No third-party composite power ratings or copied methodology."
+  "notes": "Observed statistics are sourced to original government releases; analysis and implications are editorial interpretations of SLI. No third-party composite power ratings or copied methodology. The historical governance and civic statistics do not assign political quality rankings or predictions to elected officials."
 }
