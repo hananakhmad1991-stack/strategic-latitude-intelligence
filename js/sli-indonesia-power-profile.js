@@ -71,7 +71,7 @@ function selectMetric(id,changeUrl=false){
  $('selectedMeasureDefinition').textContent=m.description;
  $('selectedMeasureInterpretation').textContent=m.interpretation+' 2025 score change: '+signed(m.score_change,'points')+'; rank movement: '+rankMove(m.rank_change)+'.';
  $('measureSource').href=m.source_url||sourceUrl;
- drillStage='submeasures';selectedSub=null;selectedIndicator=null;renderDrill();if(changeUrl)writeDrillUrl();
+ drillStage='submeasures';selectedSub=null;selectedIndicator=null;renderDrill();if(changeUrl){writeDrillUrl();$('drillExplorer').scrollIntoView?.({block:'start'})}
 }
 
 const currentDetail=()=>detailIndex?.measures?.find(x=>x.id===selectedMetric);
@@ -85,12 +85,12 @@ function writeDrillUrl(){
 function selectSub(id,changeUrl=false){
  const part=currentDetail()?.parts.find(x=>x.id===id);if(!part)return;
  selectedSub=id;selectedIndicator=null;drillStage='indicators';renderDrill();
- if(changeUrl)writeDrillUrl();
+ if(changeUrl){writeDrillUrl();$('drillExplorer').scrollIntoView?.({block:'start'})}
 }
 function selectIndicator(index,changeUrl=false){
  const part=currentSub();if(!part||!part.indicators[index])return;
  selectedIndicator=index;drillStage='indicator';renderDrill();
- if(changeUrl)writeDrillUrl();
+ if(changeUrl){writeDrillUrl();$('drillIndicator').scrollIntoView?.({block:'nearest'})}
 }
 function restoreDrill(){
  if(!data||!detailIndex)return;
@@ -171,7 +171,7 @@ function renderScores(){
   const score=el('div',fmt(m.score));score.className='score';
   top.append(name,score);card.append(top);
   const bar=el('div');bar.className='bar';const fill=el('span');fill.style.width=Math.max(0,Math.min(100,m.score))+'%';bar.append(fill);card.append(bar);
-  const desc=el('p',m.description);desc.className='description';card.append(desc);
+  const desc=el('p',m.description);desc.className='description';card.append(desc);const cta=el('span','Explore sub-measures & indicators →');cta.className='drill-source';card.append(cta);card.setAttribute('aria-label','Explore '+m.name+' sub-measures and indicators');
   card.addEventListener('click',()=>selectMetric(m.id,true));
   root.append(card);
  }
