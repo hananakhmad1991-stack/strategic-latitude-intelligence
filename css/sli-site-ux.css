@@ -1,0 +1,19 @@
+/* SLI sitewide usability layer: restrained, responsive, accessible. */
+:root{--sli-focus:#edcf91}
+html{scroll-behavior:smooth}
+body{overflow-x:hidden}
+a,button,select,input,summary{touch-action:manipulation}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--sli-focus);outline-offset:3px}
+.sli-subnav{display:grid;gap:4px;padding:4px 0 7px 10px;margin:0;border-left:1px solid #40586e}
+.sli-subnav summary{cursor:pointer;color:#c9d9e8;font-size:12px;padding:9px 7px;list-style:auto}
+.sli-subnav a{display:block!important;margin:2px 0!important;padding:9px 10px!important;border-left:2px solid #d7b678!important;color:#e4d1a3!important;text-decoration:none;border-radius:5px;font-size:12px!important;line-height:1.5}
+.sli-subnav a:hover{background:#24435d}
+.sli-nav-label{font-size:10px}
+.sli-skip{position:absolute;top:-100px;left:14px;z-index:99999;background:#edcf91;color:#092032;padding:11px 16px;border-radius:6px}
+.sli-skip:focus{top:10px}
+.sli-page-links{display:flex;gap:9px;flex-wrap:wrap;margin:13px 0 18px}
+.sli-page-links a{font-size:12px;padding:8px 11px;border:1px solid #57758b;border-radius:18px;color:#e9d7ae;text-decoration:none}
+.sli-page-links a:hover{background:#2a4c67}
+.sli-data-note{color:#bfd0de;font-size:12px;line-height:1.55}
+@media(max-width:750px){.sli-page-links a{flex:1 1 auto;text-align:center}main{min-width:0}table{max-width:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{scroll-behavior:auto!important}}
