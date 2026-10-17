@@ -126,7 +126,7 @@ test('unimported underlying indicators must show N/A and link only to official s
  els.measureCards.children.find(x=>x.dataset.id==='resilience').fire('click');
  els.drillList.children[1].fire('click'); // Resource security
  assert.match(els.drillStatus.textContent,/54\.1/);
- els.drillList.children[0].fire('click'); // Energy trade balance
+ els.drillList.children[4].fire('click'); // Rare-earth metals supply remains unimported
  assert.equal(els.indicatorNumber.textContent,'N/A');
  assert.match(els.indicatorExplanation.textContent,/not imported/);
  assert.match(els.indicatorSource.href,/power\.lowyinstitute\.org\/data\/resilience\/resource-security/);
@@ -142,4 +142,23 @@ test('when detailed hierarchy is unavailable, published high-level profile remai
  assert.equal(els.overallRank.textContent,'#9');
  assert.equal(els.measureCards.children.length,8);
  assert.match(els.drillStatus.textContent,/Detail catalogue unavailable/);
+});
+
+test('verified deep indicators identify underlying source year and exact Lowy ranking page',async()=>{
+ const {els}=await mount();
+ els.measureCards.children.find(x=>x.dataset.id==='resilience').fire('click');
+ els.drillList.children[1].fire('click');
+ els.drillList.children[0].fire('click');
+ assert.match(els.indicatorNumber.textContent,/246 Mtoe/);
+ assert.match(els.indicatorPeriod.textContent,/observation period: 2023/);
+ assert.match(els.indicatorSource.href,/energy-trade-balance/);
+ assert.match(els.indicatorExplanation.textContent,/rank #3/);
+ assert.match(els.drillLevelSource.href,/resource-security/);
+});
+test('new source-backed sample indicator coverage across military, investment and energy',()=>{
+ const verified=taxonomy.measures.flatMap(x=>x.parts.flatMap(p=>p.indicators)).filter(i=>i.indonesia);
+ assert.equal(verified.length,7);
+ assert.ok(verified.every(i=>i.indonesia.rank>=1&&i.indonesia.score>=0&&i.indonesia.score<=100&&i.source_url?.startsWith('https://power.lowyinstitute.org/data/')));
+ assert.equal(verified.find(i=>i.name==='Air warfare: Fighters').indonesia.value.includes('45*'),true);
+ assert.match(verified.find(i=>i.name==='Investment attractiveness').indonesia.value,/250 billion/);
 });
