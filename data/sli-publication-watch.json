@@ -1,12 +1,28 @@
 {
   "schema_version": "1.0",
-  "checked_at_utc": "2026-10-16T15:31:07Z",
+  "checked_at_utc": "2026-10-17T02:54:29Z",
   "state": "sources_scanned",
   "source_count": 10,
   "healthy_source_count": 4,
   "scan_errors": 6,
-  "new_review_leads": 0,
+  "new_review_leads": 1,
   "events": [
+    {
+      "id": "5c359368ea3ec99234c6",
+      "publisher": "Bank Indonesia",
+      "source_id": "bi_releases",
+      "title": "Indikator Terpilih Moneter dan Sistem Pembayaran (ITEMs)",
+      "url": "https://www.bi.go.id/id/statistik/ekonomi-keuangan/items/default.aspx",
+      "linked_datasets": [
+        "data/sli-macro-indonesia-2026.json",
+        "data/investment-market.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-17T02:54:29Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "new_candidate"
+    },
     {
       "id": "24800f26cd697707119d",
       "publisher": "ESDM",
@@ -20,7 +36,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -37,7 +53,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -54,7 +70,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -71,7 +87,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -88,7 +104,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -105,7 +121,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -122,7 +138,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -139,7 +155,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -156,7 +172,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -173,7 +189,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -190,7 +206,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -207,7 +223,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -224,7 +240,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -241,7 +257,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -258,7 +274,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -275,7 +291,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -291,7 +307,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -323,7 +339,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -339,7 +355,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -355,7 +371,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -371,7 +387,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -387,7 +403,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -403,7 +419,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -419,7 +435,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -435,7 +451,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -451,7 +467,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -467,7 +483,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -483,7 +499,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-16T15:31:07Z",
+      "last_seen_utc": "2026-10-17T02:54:29Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -514,10 +530,10 @@
         "data/investment-market.json"
       ],
       "health": "ok",
-      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "last_attempt_utc": "2026-10-17T02:54:29Z",
       "observed_items": 3,
       "error": null,
-      "last_success_utc": "2026-10-16T15:31:07Z"
+      "last_success_utc": "2026-10-17T02:54:29Z"
     },
     {
       "id": "bps_brs",
@@ -529,7 +545,7 @@
         "data/investment-sector-evidence.json"
       ],
       "health": "unavailable",
-      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "last_attempt_utc": "2026-10-17T02:54:29Z",
       "observed_items": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "last_success_utc": null
@@ -543,7 +559,7 @@
         "data/energy-fundamentals.json"
       ],
       "health": "unavailable",
-      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "last_attempt_utc": "2026-10-17T02:54:29Z",
       "observed_items": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "last_success_utc": null
@@ -558,10 +574,10 @@
         "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
       ],
       "health": "ok",
-      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "last_attempt_utc": "2026-10-17T02:54:29Z",
       "observed_items": 16,
       "error": null,
-      "last_success_utc": "2026-10-16T15:31:07Z"
+      "last_success_utc": "2026-10-17T02:54:29Z"
     },
     {
       "id": "kemenkeu_news",
@@ -572,7 +588,7 @@
         "data/energy-prices-fiscal.json"
       ],
       "health": "no_readable_publisher_links",
-      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "last_attempt_utc": "2026-10-17T02:54:29Z",
       "observed_items": 0,
       "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
       "last_success_utc": null
@@ -586,7 +602,7 @@
         "data/ai-intelligence.json"
       ],
       "health": "no_readable_publisher_links",
-      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "last_attempt_utc": "2026-10-17T02:54:29Z",
       "observed_items": 0,
       "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
       "last_success_utc": null
@@ -601,7 +617,7 @@
         "data/energy-fundamentals.json"
       ],
       "health": "no_readable_publisher_links",
-      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "last_attempt_utc": "2026-10-17T02:54:29Z",
       "observed_items": 0,
       "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
       "last_success_utc": null
@@ -616,7 +632,7 @@
         "data/energy-fundamentals.json"
       ],
       "health": "unavailable",
-      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "last_attempt_utc": "2026-10-17T02:54:29Z",
       "observed_items": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "last_success_utc": null
@@ -630,10 +646,10 @@
         "data/indonesia-ai-compute-power-asean.json"
       ],
       "health": "ok",
-      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "last_attempt_utc": "2026-10-17T02:54:29Z",
       "observed_items": 9,
       "error": null,
-      "last_success_utc": "2026-10-16T15:31:07Z"
+      "last_success_utc": "2026-10-17T02:54:29Z"
     },
     {
       "id": "usgs_minerals",
@@ -644,10 +660,10 @@
         "data/esdm-2025-mineral-performance.json"
       ],
       "health": "ok",
-      "last_attempt_utc": "2026-10-16T15:31:07Z",
+      "last_attempt_utc": "2026-10-17T02:54:29Z",
       "observed_items": 1,
       "error": null,
-      "last_success_utc": "2026-10-16T15:31:07Z"
+      "last_success_utc": "2026-10-17T02:54:29Z"
     }
   ],
   "notes": [
