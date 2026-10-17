@@ -2,6 +2,15 @@
 
 Independent, open-source-based analysis of Indonesia's strategic investment, energy security, critical minerals, AI infrastructure, and public policy.
 
+## SLI Membership · Open / Pro / Enterprise (17 October 2026)
+
+- **[Membership plan comparison](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-membership.html)** is published in Bahasa Indonesia and English. **Open is free. Pro pricing is not announced. Enterprise is quotation-based.** No checkout or signup is active.
+- The public feature and account state is stored in `data/sli-membership-plans.json`; this file explicitly keeps `checkout_enabled=false` and account registration/payment disabled. Inquiries link to the published professional research contact; no sensitive subscriber records are collected in GitHub Pages.
+- **[Secure membership backend staging manual](membership-api/README.md)** describes an **undeployed Cloudflare Worker** using verified Supabase Auth asymmetric JWTs, D1 entitlements and private R2 analytic resources, with a deny-by-default subscription-expiry check and no browser-side upgrade.
+- **Critical security boundary:** All existing GitHub Pages HTML, JavaScript and JSON remain public, including provincial and scenario dashboards. These are NOT technically protected until exclusive legally owned/licensed assets are moved into private storage and authenticated reads are live. Never market the current frontend as an active paywall.
+- `membership-api/tests/auth.test.mjs`, `tests/qa-sli-membership.mjs` and `.github/workflows/sli-membership-qa.yml` cover token forgery, authorisation, expiry, private storage, origin restrictions, catalog truth and absence of unintended payments.
+- Next production dependencies: confirmed business identity, legal pages, controlled domain, identity/hosting account setup, selected payment provider and approved pricing, verified payment webhook and refund/cancel workflow, data licensing, staged security checks. No automatic charging without these authorizations.
+
 ## Reader-first navigation and documentation (17 October 2026)
 
 - **[SLI Overview](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/)** is the national big-picture decision brief. Detailed dashboards own tables, projects, sources, maps, filters and specialized analysis; they are not duplicated on Overview.
