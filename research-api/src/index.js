@@ -29,7 +29,9 @@ export default {
   try{plan=await planOf(user,env.DB)}catch{return result(503,{error:"entitlement_unavailable"},wanted)}
   if(plan==="open")return result(403,{error:"pro_membership_required"},wanted);
   if(!/^application\/json(?:;|$)/i.test(req.headers.get("content-type")||"")||Number(req.headers.get("content-length")||0)>3000)return result(415,{error:"invalid_json_type_or_size"},wanted);
-  let body;try{body=await req.json()}catch{return result(400,{error:"malformed_json"},wanted)}
+  let raw;try{raw=await req.text()}catch{return result(400,{error:"invalid_body"},wanted)}
+  if(raw.length>3000)return result(413,{error:"request_too_large"},wanted);
+  let body;try{body=JSON.parse(raw)}catch{return result(400,{error:"malformed_json"},wanted)}
   const question=validateResearchQuestion(body?.question);
   if(!question)return result(422,{error:"invalid_question"},wanted);
   const rate=await env.AI_LIMITER.limit({key:user});
