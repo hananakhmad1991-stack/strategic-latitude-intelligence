@@ -7,7 +7,7 @@
 - \`sli-membership.html\`: bilingual plan comparison for **Open (free)**, **Pro (price TBA)** and **Enterprise (custom quote)**. Open links to the existing public dashboard. Pro/Enterprise inquiries open the SLI professional profile; there is no fake signup or payment link.
 - \`data/sli-membership-plans.json\`: the canonical tier, price-state and feature policy. \`checkout_enabled=false\`, \`registration_enabled=false\`.
 - The main navigation links to Membership from all research pages.
-- Public official-source references, methodology and the public overview remain free.
+- Official-source links, attribution, general methodology and glossary remain publicly available. SLI Open is now designed as a limited curated Overview/Strategic Map/news preview, NOT full national statistical explorers.
 
 ## Prepared, not launched
 
@@ -51,9 +51,18 @@ node --test membership-api/tests/auth.test.mjs tests/qa-sli-membership.mjs
 
 This checks implementation invariants **offline**; it does not simulate a real Supabase/Cloudflare deployment or prove billing compliance. Any future change to plan status must include backend entitlement tests, not just the public pricing page.
 
+## Updated tier and delivery policy (17 October 2026)
+
+- **Open:** selected Overview indicator cards; selected sector snapshots; limited Strategic Map layers/sample assets; news headline samples (maximum five); no complete in-app national history, asset intelligence, sector archives, premium analysis or bulk export. Public-source original websites still retain their own access terms.
+- **Pro:** full permitted SLI national and sector explorers; detailed Strategic Map; full curated sector monitoring and archives; 38-province comparisons, validated scenario/econometric modules as released, advanced export, original SLI analytical briefs. Single personal account/active registered device once login launches.
+- **Enterprise:** all Pro capabilities, planned named-seat team workspaces, special contracted research and consulting, weekly sector-specific monitoring reports with bespoke analysis, risk/opportunity assessment, scenarios and action recommendations. Weekly delivery must be specifically stated in the signed contract; no automated weekly task or email delivery is presently running. Any datasets follow reuse/licence rights, seat count and redistribution terms.
+- **Advice scope:** tailored energy/technology/industrial/policy and strategic investment intelligence within the agreed scope is distinct from regulated personalised securities/financial investment advice requiring proper authorisation.
+- **Privacy-first access design:** future server-side session/device registry with a revocable opaque registered-device identity, one active registration for Open and Pro; revoke prior session upon approved replacement, rate-limit switching, allow account recovery and appeals. A per-browser UI toggle or IP match does not enforce this.
+- **Current limitation:** GitHub Pages files already published in the public repo remain accessible even if a future Open menu visually truncates them. Do not describe any full national data/map/news archive as protected until rights-compliant private migration, authorisation checks and anonymous access tests pass.
+
 ## Controls and principles
 
-- Public/Open = no sign-in required.
+- Anonymous visitors = landing page and publicly published preview material. **After authentication rollout**, Open = free verified personal account limited to one active registered device; Pro = paid personal account limited to one active registered device. These device limits are planned only and are **not enforced today**. No covert fingerprinting; provide a secure revoke/replace-device mechanism. Enterprise seats/workspaces are per signed contract.
 - Pro/Enterprise = never infer access from a localStorage flag, \`data-plan\` attribute, JWT self-reported \`plan\` claim, or unverified payment callback.
 - Prices/discounts/checkout = **disabled until business owner approves figures and provider**.
 - Enterprise agreements specify named legal contracting entity, number of seats, permitted redistribution and dataset rights.
