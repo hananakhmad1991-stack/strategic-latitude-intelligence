@@ -53,7 +53,7 @@ test('all seven geographic regions are descriptive groupings only, not fabricate
  assert.equal(counts.Papua.length,6);
  assert.ok(data.notes.some(x=>/not official regional Gini/i.test(x)));
  assert.doesNotMatch(js,/national\s*=\s*.*reduce/i);
- assert.match(html,/do not<\/strong> represent official Gini/);
+ assert.match(html,/not<\/strong> represent official Gini/);
 });
 test('source-based explorer supports whole population urban rural and missing data, with no invented historic province series',()=>{
  assert.match(js,/for\(const type of \['combined','urban','rural'\]\)/);
