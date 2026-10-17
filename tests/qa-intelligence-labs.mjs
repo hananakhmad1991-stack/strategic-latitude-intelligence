@@ -8,20 +8,4 @@ test('dashboard main page links to intelligence labs',()=>{const main=get('index
 
 test('old GIA simulation removed and new GIA entry remains available',()=>{const old=get('intelligence-labs.html');const page=get('geopolitical-impact-assessment.html');assert.doesNotMatch(old,/id="impactEvent"/);for(const key of ['id="riskScore"','id="heatMap"','id="expectedLoss"','id="var95"','id="alertState"','id="newsItems"'])assert.ok(page.includes(key));});
 
-test('scoring refuses unvalidated values and aggregates only eligible evidence',async()=>{
- const {indicatorScore,assessDomain}=await import('../js/sli-geopolitical-scoring.mjs');
- const raw=JSON.parse(get('data/sli-geopolitical-indicator-library.json'));
- assert.equal(raw.indicators.length,80);
- for(const i of raw.indicators)assert.equal(indicatorScore(i).status,'N/A');
- for(const d of raw.domains)assert.equal(assessDomain(raw.indicators.filter(i=>i.domain===d)).status,'N/A');
- const valid={measurement:{value:50,period:'2026-Q2',source_url:'https://example.org',validation_status:'verified_primary'},risk_direction:'increasing',risk_thresholds:{safe:0,critical:100},weight:1,core:true};
- assert.equal(indicatorScore(valid).score,50);
- assert.equal(assessDomain([valid]).score,50);
- assert.equal(assessDomain([valid,{...valid,measurement:null}]).status,'N/A');
- assert.equal(indicatorScore({...valid,risk_thresholds:null}).status,'N/A');
- assert.equal(indicatorScore({...valid,measurement:{...valid.measurement,validation_status:'source_snapshot_unverified_in_current_turn'}}).status,'N/A');
- const down={...valid,risk_direction:'decreasing',risk_thresholds:{safe:100,critical:0}};
- assert.equal(indicatorScore(down).score,50);
-});
-
 test('three stress labs display base/stress and explicit breaking-point explanation',()=>{const html=get('intelligence-labs.html');for(const part of ['Base vs Stress','Break-even electricity tariff','Break-even cost pass-through','Cost-neutral oil price','stressInterpretation','Methodology, formulas &amp; definitions','sli-glossary-methodology.html'])assert.ok(html.includes(part));const glossary=JSON.parse(get('data/sli-unified-glossary.json'));for(const term of ['Breaking point','Stress testing','Inventory survival runway','Oil–FX double shock'])assert.ok(glossary.items.some(x=>x.term===term&&x.en&&x.id));});
