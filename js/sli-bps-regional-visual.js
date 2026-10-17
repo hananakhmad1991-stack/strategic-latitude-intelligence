@@ -15,7 +15,7 @@ const source=()=>DATA.sources[opts.family==='economy'?'pdrb':'politics'];
 const values=(province,metric=opts.metric)=> {
  if(!province)return [];
  const yrs=metric==='press_freedom'?DATA.press_years:metric==='dpt_2024'||metric==='dpt_female'?[2024]:DATA.grdp_years;
- return yrs.map((year,i)=>{
+ const result=yrs.map((year,i)=>{
   if(metric==='dpt_2024')return province.dpt_2024?.[2]??null;
   if(metric==='dpt_female'){const n=province.dpt_2024?.[2];return n&&province.dpt_2024?.[1]!=null?100*province.dpt_2024[1]/n:null}
   if(metric==='real_growth'){
@@ -28,6 +28,7 @@ const values=(province,metric=opts.metric)=> {
   }
   return province[metric]?.[i]??null;
  });
+ return metric==='real_growth'?result.slice(1):result;
 };
 const selected=()=>DATA?.provinces.find(p=>p.id===Number(opts.province));
 const unit=()=>opts.metric==='press_freedom'?'index points':opts.metric==='dpt_2024'?'registered persons':['real_growth','pmtb_share','dpt_female'].includes(opts.metric)?'%':'IDR billion';
@@ -105,7 +106,7 @@ function render(){
  $('regPrimarySource').href=source().url;
  $('regPrimarySource').textContent='BPS publication · '+source().released+' ↗';
  $('regSummary').textContent=opts.family==='economy'?
- 'Provincial expenditure accounts, original tables '+DATA.metrics[opts.metric]?.appendix+'. PMTB / GRDP is a derived account ratio, not realized investment from BKPM. Provincial boundary changes in Papua affect some historical comparisons.':
+ 'Provincial expenditure accounts, '+(DATA.metrics[opts.metric]?.appendix?'BPS appendix '+DATA.metrics[opts.metric].appendix:'derived using BPS published province data')+'. PMTB / GRDP is a derived account ratio, not realized investment from BKPM. Provincial boundary changes in Papua affect some historical comparisons.':
  'Historical civic and institutional observations. Index figures are sourced, not SLI political risk assessments. DPT records eligible registered voters for provincial elections, not votes cast.';
  if(['real_growth','pmtb_share','dpt_female'].includes(opts.metric))$('regSummary').textContent+=' This selected percentage is calculated from BPS source values.';
  $('regSeriesNote').textContent='BPS source observation years: '+yr.join(', ')+'. Values with missing source entries are not imputed.';
