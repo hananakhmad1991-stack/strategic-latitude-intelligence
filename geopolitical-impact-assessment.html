@@ -1,47 +1,81 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Indonesia Investment Network | Strategic Latitude Intelligence</title>
-<meta name="description" content="Explore Indonesia's two-way investment connections by country, with source-dated investment flows from BKPM and the Lowy Institute.">
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Indonesia | Asia Power Profile · Strategic Latitude Intelligence</title>
+<meta name="description" content="A clear, source-attributed Indonesia country profile: regional power, annual changes, bilateral trade influence and eight measures of the Lowy Asia Power Index.">
 <link rel="stylesheet" href="./css/sli-site-ux.css">
 <style>
-:root{color-scheme:dark;--bg:#091825;--card:#10283a;--border:#385568;--ink:#eef4f5;--muted:#b2c7d1;--gold:#e5c28b;--teal:#81d1bd}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
-a{color:var(--gold)}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.top{max-width:1280px;padding:19px 24px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #294052}
-.brand{font-size:11px;letter-spacing:.16em;font-weight:750;color:#a7c4d1}.top nav{display:flex;gap:20px;flex-wrap:wrap}.top nav a{font-size:12px;text-decoration:none;color:#c9d9e1}
-main{max-width:1280px;margin:auto;padding:35px 24px 70px}.eyebrow{color:var(--gold);font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
-h1{font-size:clamp(29px,4.1vw,52px);line-height:1.16;letter-spacing:-.035em;margin:6px 0 10px}h2{font-size:clamp(18px,2.5vw,24px);margin:0 0 12px;font-weight:650;line-height:1.35}.desc{max-width:760px;color:var(--muted);font-size:14px;margin:0}
-.switch{display:flex;gap:7px;flex-wrap:wrap;margin:24px 0 15px;padding:5px;background:#102535;border:1px solid #3c5465;border-radius:12px;width:max-content;max-width:100%}
-.switch button{border:0;border-radius:8px;background:transparent;color:#bfd0d9;padding:10px 19px;min-height:44px}
-.switch button[aria-pressed="true"]{background:var(--gold);color:#112433;font-weight:750}
-.metrics{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0 21px;color:#c8d8df;font-size:12px}.metrics span{border-left:1px solid #466073;padding:0 12px}.metrics span:first-child{border-left:0;padding-left:0}.metrics strong{color:#f1d8ab}
-.visual{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(315px,.75fr);gap:22px;align-items:stretch}
-.map-panel,.rank-panel{background:var(--card);border:1px solid var(--border);border-radius:15px;overflow:hidden;min-width:0}
-.map-head{padding:17px 19px 0;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.map-head h2{font-size:17px;margin:0}.map-head p{font-size:12px;color:#afc7d2;margin:2px 0}
-.map-wrap{position:relative;min-height:385px}.map-wrap svg{display:block;width:100%;height:auto;max-height:450px;background:radial-gradient(circle at 48% 52%,#193f53 0,#10283a 65%)}
-#mapShapes path{fill:#29465a;stroke:#547184;stroke-width:.75;pointer-events:none}#mapLines path{fill:none;stroke:#78b7b5;stroke-opacity:.3;stroke-linecap:round;transition:stroke-opacity .2s,stroke-width .2s}#mapLines path.selected{stroke:var(--gold);stroke-opacity:1}#mapDots .partner{cursor:pointer;stroke:#e4eef2;stroke-width:1.4}#mapDots .partner:focus-visible{stroke-width:3;outline:none}#mapDots text{font:12px system-ui,sans-serif;fill:#f3e4c7;pointer-events:none;paint-order:stroke;stroke:#11283c;stroke-width:3px}#mapDots .origin{fill:var(--gold);stroke:#fff4dc;stroke-width:2}#mapDots .id-text{font-weight:750}
-.map-footer{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid #304a60;padding:11px 17px;font-size:11px;color:#b2c7d1}
-.rank-panel{padding:19px}.rank-panel h2{font-size:18px}.rank-panel>p{color:var(--muted);font-size:12px;margin:0 0 16px}.rankings{display:flex;flex-direction:column;gap:4px}
-.rank{width:100%;display:block;text-align:left;border:1px solid transparent;background:transparent;color:#ebf2f5;border-radius:10px;padding:11px;min-height:65px;transition:background .15s,border-color .15s}
-.rank:hover{background:#19374a}.rank[aria-pressed="true"]{background:#203e50;border-color:#ad936c}
-.rank-top{display:flex;gap:10px;justify-content:space-between;align-items:flex-start}.rank-name{font-weight:700}.rank-value{font-size:15px;font-weight:750;color:#edce94;white-space:nowrap}.rank-sub{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:#b9cdd7;margin:3px 0 8px}
-.track{height:4px;border-radius:8px;background:#294758;overflow:hidden}.fill{height:100%;background:#84bdb8;border-radius:8px}.rank[aria-pressed="true"] .fill{background:var(--gold)}
-.detail{margin-top:22px;padding:17px 19px;border:1px solid #3b586c;background:#102638;border-radius:11px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px}
-.detail h3{font-size:16px;margin:0 0 2px}.detail p{color:#b6cbd5;font-size:12px;margin:3px 0}.detail .big{font-size:24px;font-weight:750;color:#edce94;white-space:nowrap}
-.sourcebox{margin-top:21px;border-top:1px solid #385568;padding-top:18px;font-size:12px;color:#b9cbd6}.sourcebox summary{cursor:pointer;color:#ead19e;font-weight:650}.sourcebox a{white-space:normal}.sourcebox p{max-width:970px}
-.empty{padding:25px;color:#e2d2a4}.credit{margin:20px 0;color:#96adbb;font-size:11px}
-@media(max-width:950px){.visual{grid-template-columns:1fr}.map-wrap{min-height:0}.rank-panel{padding:17px}.rankings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){main{padding:22px 12px 40px}.top{padding:15px 12px}.top nav{gap:10px}.switch{width:100%}.switch button{flex:1;padding:10px 7px}.metrics{gap:9px}.metrics span{border-left:0;padding:0}.rankings{grid-template-columns:1fr}.map-head{padding:12px}.detail{grid-template-columns:1fr}.detail .big{font-size:22px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rank{transition:none}#mapLines path{transition:none}}
-</style></head><body>
-<div class="top"><div class="brand">STRATEGIC LATITUDE INTELLIGENCE</div><nav aria-label="Related dashboards"><a href="./index.html#overview">Overview ↗</a><a href="./index.html#investment">Investment Tracker ↗</a><a href="./sli-glossary-methodology.html">Methodology ↗</a></nav></div>
-<main><div class="eyebrow">Network intelligence · Indonesia</div><h1>Investment connections</h1><p class="desc">A clear view of the countries linked to Indonesia through foreign investment. Select a direction, then click a country to explore its reported investment relationship.</p>
-<div class="switch" role="group" aria-label="Investment direction"><button type="button" id="modeInbound" aria-pressed="true">Into Indonesia</button><button type="button" id="modeOutbound" aria-pressed="false">From Indonesia</button></div>
-<h2 id="question">Loading investment relationships…</h2><p class="desc" id="subtitle">Loading publisher-attributed data…</p>
-<div class="metrics" aria-live="polite"><span><strong id="period">—</strong></span><span id="measure">Investment flows</span><span><strong id="sourceName">—</strong></span></div>
-<div class="visual"><section class="map-panel" aria-labelledby="mapTitle"><div class="map-head"><div><h2 id="mapTitle">Asia-Pacific investment map</h2><p>Investment connections · select a highlighted partner</p></div><span class="eyebrow">Indonesia</span></div><div class="map-wrap"><svg id="networkMap" viewBox="0 0 1000 530" role="img" aria-label="Interactive map of investment partner economies in Asia-Pacific"><defs><clipPath id="mapClip"><rect x="0" y="0" width="1000" height="530"/></clipPath></defs><g id="mapShapes" clip-path="url(#mapClip)"></g><g id="mapLines"></g><g id="mapDots"></g></svg></div><div class="map-footer"><span id="mapStatus" aria-live="polite">Loading regional geography…</span><span>Approximate country positions · not facility coordinates</span></div></section>
-<section class="rank-panel" aria-labelledby="rankTitle"><h2 id="rankTitle">Investment partners</h2><p id="rankCaption">Reported capital flows · source-year specific.</p><div class="rankings" id="rankings" aria-live="polite"><p>Loading data…</p></div></section></div>
-<section class="detail" aria-live="polite"><div><h3 id="selectedName">Select a partner economy</h3><p id="selectedDescription">The amounts and definitions come from the original publisher.</p><p><a id="selectedSource" href="#" target="_blank" rel="noopener noreferrer">Read original source ↗</a></p></div><div><div class="big" id="selectedAmount">—</div><div class="small" id="selectedShare"></div></div></section>
-<details class="sourcebox"><summary>Sources, years &amp; how to interpret this chart</summary><p id="scopeNote"></p><p id="denominatorNote"></p><p><strong>Important:</strong> BKPM 2025 describes inward realized investment by immediate source economy. Lowy's 2015–2024 outward figures describe Indonesia's relative importance to receiving economies. They are different datasets, not directly comparable; a low share is not a geopolitical risk rating.</p><p><a id="primarySource" href="#" target="_blank" rel="noopener noreferrer">Open the primary dataset ↗</a> · <a href="https://power.lowyinstitute.org/network-power/investment/indonesia/" target="_blank" rel="noopener noreferrer">Design reference: Lowy Institute Network Power ↗</a></p></details>
-<p class="credit">Geographical reference: Natural Earth (public domain), simplified for dashboard use. SLI presentation is independent and is not affiliated with the Lowy Institute or BKPM. Figures are not securities recommendations.</p></main>
-<script defer src="./js/sli-investment-network.js?v=20261017-v1"></script></body></html>
+:root{color-scheme:dark;--bg:#091923;--surface:#102733;--surface2:#142f3f;--line:#304e5d;--text:#ecf3f1;--muted:#aec3cc;--gold:#f0ce88;--teal:#71c5b7;--red:#eb9e93}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.6 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+button{cursor:pointer;font:inherit}a{color:var(--gold)}button:focus-visible,a:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sitehead{display:flex;justify-content:space-between;gap:15px;align-items:center;max-width:1240px;margin:auto;padding:17px 25px;border-bottom:1px solid var(--line)}
+.brand{color:#a9c9cb;letter-spacing:.13em;font-size:11px;font-weight:800}.sitehead nav{display:flex;flex-wrap:wrap;gap:18px}.sitehead nav a{font-size:12px;text-decoration:none;color:#c1d3d6}
+main{max-width:1240px;margin:auto;padding:29px 25px 58px}h1{font-size:clamp(36px,5vw,58px);letter-spacing:-.04em;line-height:1.1;margin:5px 0 9px}h2{font-size:clamp(21px,2.8vw,29px);line-height:1.3;margin:0 0 13px;letter-spacing:-.012em}h3{margin:0 0 5px;font-size:16px}p{color:var(--muted);margin:7px 0}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:750;color:var(--gold)}
+.intro{max-width:780px;font-size:15px;color:#bdd0d5}.meta{display:flex;flex-wrap:wrap;gap:9px;margin:17px 0 22px}.meta span{border:1px solid #416171;border-radius:20px;padding:5px 12px;font-size:11px;color:#cbdae0}
+.navtabs{display:flex;flex-wrap:wrap;gap:7px;border-bottom:1px solid var(--line);margin:15px 0 27px}.navtabs button{background:transparent;border:0;border-bottom:3px solid transparent;padding:14px 19px;margin-bottom:-1px;color:#b6cbd1;white-space:nowrap}.navtabs button[aria-selected=true]{border-color:var(--gold);color:var(--gold);font-weight:750}
+.profile-panel[hidden]{display:none!important}.section-intro{max-width:800px;margin:0 0 21px;color:var(--muted)}
+.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(245px,.65fr);gap:18px;margin:18px 0 22px}
+.block{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+.feature{background:linear-gradient(130deg,#173c45,#102733 75%)}.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stats .value{font-size:clamp(34px,4.6vw,56px);font-weight:760;color:var(--gold);line-height:1.12;margin:4px 0}.stats .unit{font-size:13px;color:#b8cdd4}.stats .mini{font-size:11px;color:#a9bec6}
+.band{border-top:1px solid var(--line);margin-top:19px;padding-top:15px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.band strong{color:#9addc8}
+.insights{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.insights .block{min-height:140px}.insights h3{color:#f4d5a0}.side-details{display:flex;flex-direction:column;gap:9px}.side-details .statline{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #365665}.statline strong{color:var(--gold);font-size:22px}.small{font-size:12px;color:#b7cbd0}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:11px;flex-wrap:wrap;margin:12px 0 19px}
+select{background:#153748;border:1px solid #557081;color:#f2f7f7;border-radius:8px;padding:10px;min-width:180px}
+.measure-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.measure{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:left;width:100%;color:inherit}.measure:hover{background:#1a3946}.measure[aria-pressed=true]{border-color:#cfaa6e;background:#193b47}.measure .measure-top{display:flex;justify-content:space-between;gap:13px}.measure .score{font-size:25px;color:var(--gold);font-weight:750}.measure .rank{font-size:11px;color:#d4e3e6}.bar{height:7px;background:#2d5060;border-radius:12px;margin:12px 0 9px;overflow:hidden}.bar>span{display:block;height:100%;background:var(--teal);border-radius:12px}.measure[aria-pressed=true] .bar>span{background:var(--gold)}.measure .description{font-size:12px;color:#b9cdd1}
+.focus{margin-top:17px;border-left:3px solid var(--gold);padding:17px;background:#142f3d;border-radius:0 9px 9px 0}.focus p{margin:4px 0}.annual-table{display:grid;gap:10px}.annual-row{display:grid;grid-template-columns:minmax(170px,1.3fr) minmax(140px,2fr) minmax(65px,.5fr) minmax(90px,.7fr);gap:12px;align-items:center;border-bottom:1px solid var(--line);padding:12px 0}
+.annual-mid{height:11px;background:#284450;border-radius:10px;position:relative;overflow:hidden}.annual-mid:before{content:"";position:absolute;left:50%;height:100%;width:1px;background:#d2dfe0;z-index:2}.annual-mid .annual-segment{position:absolute;top:0;height:100%;border-radius:10px;background:var(--teal)}
+.annual-mid .annual-segment.negative{background:var(--red)}.chg{font-weight:750}.chg.negative{color:var(--red)}.chg.positive{color:#a6e2c5}.chg.zero{color:#acc1c9}.rank-move{font-size:12px;color:#cbdce0}
+.toggle{display:inline-flex;padding:4px;border:1px solid #3f5d6c;background:#102833;border-radius:11px;gap:3px}.toggle button{background:transparent;color:#c1d3d8;border:0;padding:9px 15px;border-radius:8px}.toggle button[aria-pressed=true]{background:#e6c586;color:#17303b;font-weight:800}
+.influence-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.influence-list{display:flex;flex-direction:column;gap:5px}.country{border:1px solid transparent;background:transparent;color:#e4eff0;border-radius:9px;padding:10px;text-align:left;width:100%}.country:hover{background:#1c3b47}.country[aria-pressed=true]{border-color:#be9f6e;background:#1c3e49}.country-top{display:flex;justify-content:space-between;gap:10px;font-weight:680}.country-top strong{color:var(--gold)}.country .bar{height:6px;margin:8px 0 0}.country .bar>span{background:#89bfb8}.share-big{font-size:45px;font-weight:770;line-height:1.1;color:var(--gold);margin:7px 0}.explain{border-top:1px solid var(--line);margin-top:14px;padding-top:12px}
+.source{background:#112834;border:1px solid var(--line);border-radius:11px;padding:17px 20px;margin-top:30px;font-size:12px}.source summary{cursor:pointer;color:var(--gold);font-weight:700}.source p{line-height:1.65}.footer{color:#8caab4;font-size:11px;margin:22px 0 0}
+@media(max-width:860px){.hero,.influence-layout{grid-template-columns:1fr}.measure-grid{grid-template-columns:1fr 1fr}}@media(max-width:610px){main{padding:22px 12px 42px}.sitehead{padding:14px 12px}.sitehead nav{gap:9px}.navtabs{flex-wrap:nowrap;overflow-x:auto}.navtabs button{padding:12px 11px;flex:1;font-size:12px}.insights,.measure-grid{grid-template-columns:1fr}.annual-row{grid-template-columns:1fr 85px 60px;gap:8px}.annual-row .annual-mid{grid-column:1 / -1;grid-row:2}.annual-row .rank-move{text-align:right}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head><body>
+<div class="sitehead"><div class="brand">STRATEGIC LATITUDE INTELLIGENCE</div><nav aria-label="Other SLI sections"><a href="./index.html#overview">Overview ↗</a><a href="./index.html#energy-security">Energy Security ↗</a><a href="./sli-glossary-methodology.html">Glossary ↗</a></nav></div>
+<main>
+<div class="eyebrow">Country Intelligence · Asia Pacific</div><h1>Indonesia</h1><p class="intro">Explore Indonesia’s regional position, changes over time and bilateral influence, using source-attributed Asia Power Index indicators.</p>
+<div class="meta"><span id="edition">2025 Asia Power Index</span><span>27 indexed economies</span><span>Lowy Institute methodology</span><span>Historical snapshot · not live</span></div>
+<nav class="navtabs" aria-label="Country profile views">
+<button type="button" data-tab="overview" aria-selected="true">Overview</button>
+<button type="button" data-tab="changes" aria-selected="false">Annual changes</button>
+<button type="button" data-tab="influence" aria-selected="false">Influence</button>
+<button type="button" data-tab="scores" aria-selected="false">Scores</button>
+</nav>
+<section id="overview" class="profile-panel">
+<div class="hero"><div class="block feature"><div class="eyebrow">Comprehensive power</div><h2>Indonesia in the regional balance</h2><div class="stats">
+<div><div class="small">Rank in Asia</div><div class="value" id="overallRank">—</div><div class="unit" id="rankContext">of 27 economies</div></div>
+<div><div class="small">Overall index score</div><div class="value" id="overallScore">—</div><div class="unit">out of 100</div></div>
+</div><div class="band"><span>2025 annual change in overall score</span><strong id="overallChange">—</strong></div></div>
+<div class="block"><div class="eyebrow">Country assessment</div><h3 id="powerClass">Loading…</h3><p id="powerSummary" class="small"></p><div class="side-details">
+<div class="statline"><span>Strongest score</span><strong id="strongest">—</strong></div>
+<div class="statline"><span>Highest-ranking measures</span><strong id="bestRank">—</strong></div>
+<div class="statline"><span>Lowest-ranking measure</span><strong id="lowestRank">—</strong></div></div></div></div>
+<h2>What stands out?</h2><div class="insights" id="keyInsights"></div>
+<div class="band"><span class="small">Explore the underlying evidence rather than relying on one headline score.</span><a href="#scores" id="goScores">View the eight measures →</a></div>
+</section>
+<section id="changes" class="profile-panel" hidden><h2>What changed in 2025?</h2><p class="section-intro">Year-on-year changes in the eight index measures. Score changes are measured in points; ranking changes are measured in places. An improved score does not always mean an improved rank.</p>
+<div class="block"><div class="toolbar"><span class="eyebrow">2024 → 2025 · score-point change</span><span class="small">Right = increase · left = decrease</span></div>
+<div id="annualRows" class="annual-table"><p>Loading…</p></div></div>
+<div class="focus"><h3>Key distinction</h3><p>Economic relationships gained score points despite dropping in rank. Other countries can improve faster, so rank and score may move in opposite directions.</p></div></section>
+<section id="influence" class="profile-panel" hidden><h2>Indonesia’s bilateral trade influence</h2><p class="section-intro">Select a direction to see different perspectives on trade exposure. These are percentages of different denominators—not political allegiance or country risk scores.</p>
+<div class="toolbar"><div class="toggle" role="group" aria-label="Trade influence direction"><button type="button" id="intoCountry" aria-pressed="true">Partners influencing Indonesia</button><button type="button" id="fromCountry" aria-pressed="false">Indonesia’s influence abroad</button></div><span class="small">Trade data · 2024</span></div>
+<div class="influence-layout"><div class="block"><h3 id="influenceTitle">Loading…</h3><p id="influenceSubtitle" class="small"></p><div id="countryList" class="influence-list"><p>Loading…</p></div></div>
+<div class="block"><div class="eyebrow">Selected trade relationship</div><h2 id="selectedCountry">—</h2><div class="share-big" id="selectedPercent">—</div><p id="selectedMeaning"></p><div class="explain"><div class="eyebrow">The denominator matters</div><p id="influenceDenominator"></p></div><p class="small">This is a share of trade, not a forecast, an investment flow, or a risk rating.</p></div></div>
+</section>
+<section id="scores" class="profile-panel" hidden><h2>The eight measures of regional power</h2><p class="section-intro">Select a measure to see its score, ranking, definition and Indonesia-specific observation. These are Lowy’s published 2025 scores; SLI has not recalculated them.</p>
+<div class="toolbar"><span class="small">2025 published scores · scales vary by measure</span><label for="scoreSort">Sort by <select id="scoreSort"><option value="rank">Best ranking</option><option value="score">Highest score</option><option value="name">Name A–Z</option></select></label></div>
+<div id="measureCards" class="measure-grid"><p>Loading…</p></div>
+<div class="focus" id="measureDetail" aria-live="polite"><h3 id="selectedMeasure">Choose a measure</h3><p id="selectedMeasureDefinition"></p><p id="selectedMeasureInterpretation"></p><p><a id="measureSource" href="https://power.lowyinstitute.org/countries/indonesia/" target="_blank" rel="noopener noreferrer">Read Lowy source ↗</a></p></div>
+</section>
+<details class="source"><summary>Sources, definitions &amp; data limitations</summary>
+<p><strong>Primary source:</strong> Lowy Institute, Asia Power Index, Indonesia country profile, 2025 edition. <a href="https://power.lowyinstitute.org/countries/indonesia/" target="_blank" rel="noopener noreferrer">Open original Indonesia profile ↗</a>.</p>
+<p><strong>Different measures:</strong> Comprehensive power is Lowy’s weighted index, not a simple sum of eight displayed scores. Bilateral trade shares reflect 2024 data with a different denominator in each influence view. Rank changes are positions; score changes are index points.</p>
+<p><strong>What SLI does and does not do:</strong> this independently designed page presents a dated Lowy snapshot. It does not invent an SLI geopolitical risk score, calculate portfolio losses, recreate Lowy’s proprietary methodology, represent current-year live data, or provide trading recommendations. See <a href="./sli-glossary-methodology.html">SLI terminology ↗</a>.</p>
+</details>
+<p class="footer">Independent Strategic Latitude Intelligence presentation · Original analysis and data attribution: Lowy Institute Asia Power Index. Not affiliated with Lowy Institute.</p>
+</main>
+<script defer src="./js/sli-indonesia-power-profile.js?v=20261017-profile1"></script>
+</body></html>
