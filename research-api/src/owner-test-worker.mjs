@@ -29,7 +29,7 @@ function publicCorpus(){
   const capital=(p.pmtb_share_2025_pct??"not available");
   const consumers=(p.household_share_2025_pct??"not available");
   const gini=(p.gini_expenditure_2026_03??"not available");
-  const context="Preliminary 2025 expenditure GRDP for "+p.name+" ("+p.name_en+"): nominal "+p.grdp_current_2025_bn+
+  const context="Preliminary 2025 expenditure GRDP for "+p.name+" ("+p.name_en+"): nominal "+(p.grdp_current_2025_bn??"not available")+
    " IDR billion; real GRDP growth "+growth+"% YoY; household consumption share "+consumers+
    "%; PMTB/GFCF share "+capital+"%. PMTB/GFCF is a national accounts measure, NOT realized BKPM project investment. Rates and levels belong to different denominators.";
   const grdp=sourceDoc({id:"province_grdp_"+p.name_en,title:p.name+" / "+p.name_en+" · Regional GRDP 2025",
