@@ -1,0 +1,452 @@
+{
+  "schema": "sli-research-preview-v1",
+  "as_of": "2026-10-17",
+  "access": "open_preview",
+  "source_policy": "SLI-curated public evidence snippets only; not the full national/provincial database. Upstream official sources remain publicly accessible at their respective websites.",
+  "generation_mode": "deterministic_source_retrieval_no_live_llm",
+  "rights_note": "Each excerpt is newly authored from dated public-source observations. Original source publisher retains rights to underlying publications.",
+  "limitations": [
+    "Not a generative AI model or prediction service.",
+    "Pro full-corpus RAG requires private source migration and authentication.",
+    "Publication dates and observed statistical periods may differ.",
+    "Absence of relevant evidence must never be replaced with invented figures.",
+    "Citations link to primary or original organizational sources; review official revisions."
+  ],
+  "topics": [
+    "all",
+    "macroeconomy",
+    "regional",
+    "inequality",
+    "trade",
+    "investment",
+    "minerals",
+    "ai",
+    "methodology"
+  ],
+  "examples_id": [
+    "Bagaimana prospek investasi pusat data di Jawa Barat?",
+    "Berapa pertumbuhan ekonomi dan inflasi Indonesia terbaru yang tercatat?",
+    "Bagaimana membaca Rasio Gini dibanding pertumbuhan provinsi?",
+    "Apa status proyek smelter dan baterai EV Indonesia?"
+  ],
+  "examples_en": [
+    "What does the source evidence say about West Java data centers?",
+    "What are the dated GDP growth and inflation indicators?",
+    "How should provincial growth be compared with expenditure Gini?",
+    "What is the reported status of Indonesia's EV battery and smelter projects?"
+  ],
+  "documents": [
+    {
+      "id": "macro-real_gdp_growth",
+      "topic": "macroeconomy",
+      "kind": "official_statistic",
+      "title": "Real GDP growth · Indonesia",
+      "text": "Real GDP growth: 5.29 % YoY. Periode observasi: 2026-Q2. Catatan pembacaan: GDP growth vs Q2 2025; not full-year growth Nilai tidak otomatis merupakan angka tahun kalender penuh.",
+      "metric": {
+        "label": "Real GDP growth",
+        "value": 5.29,
+        "unit": "% YoY",
+        "period": "2026-Q2"
+      },
+      "period": "2026-Q2",
+      "source_date": "2026-08-05",
+      "publisher": "BPS",
+      "source_url": "https://www.bps.go.id/en/pressrelease/2026/08/05/2605/indonesia-s-economic-in-q2-2026-was-5-29-percent--y-on-y-.html",
+      "sli_path": "indonesia-macroeconomic-intelligence.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "macro-inflation_yoy",
+      "topic": "macroeconomy",
+      "kind": "official_statistic",
+      "title": "CPI headline inflation · Indonesia",
+      "text": "CPI headline inflation: 3.28 % YoY. Periode observasi: 2026-09. Catatan pembacaan: September 2026 YoY (not month-to-month inflation) Nilai tidak otomatis merupakan angka tahun kalender penuh.",
+      "metric": {
+        "label": "CPI headline inflation",
+        "value": 3.28,
+        "unit": "% YoY",
+        "period": "2026-09"
+      },
+      "period": "2026-09",
+      "source_date": "2026-10-01",
+      "publisher": "BPS",
+      "source_url": "https://www.bps.go.id/en/pressrelease/2026/10/01/2623/the-year-on-year--y-on-y--headline-inflation-in-september-2026-was-recorded-at-3-28-percent-.html",
+      "sli_path": "indonesia-macroeconomic-intelligence.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "macro-bi_policy_rate",
+      "topic": "macroeconomy",
+      "kind": "official_statistic",
+      "title": "BI policy rate · Indonesia",
+      "text": "BI policy rate: 5.75 %. Periode observasi: 2026-09-23. Catatan pembacaan: BI-Rate as of 23 September 2026 decision; not today’s overnight interbank rate Nilai tidak otomatis merupakan angka tahun kalender penuh.",
+      "metric": {
+        "label": "BI policy rate",
+        "value": 5.75,
+        "unit": "%",
+        "period": "2026-09-23"
+      },
+      "period": "2026-09-23",
+      "source_date": "2026-09-29",
+      "publisher": "Bank Indonesia",
+      "source_url": "https://www.bi.go.id/en/publikasi/laporan/Pages/TKM-September-2026.aspx",
+      "sli_path": "indonesia-macroeconomic-intelligence.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "macro-usd_idr_jisdor",
+      "topic": "macroeconomy",
+      "kind": "official_statistic",
+      "title": "USD/IDR JISDOR · Indonesia",
+      "text": "USD/IDR JISDOR: 18,052 IDR per USD. Periode observasi: 2026-10-16. Catatan pembacaan: BI reference rate; NOT a bank retail exchange quote or intraday FX Nilai tidak otomatis merupakan angka tahun kalender penuh.",
+      "metric": {
+        "label": "USD/IDR JISDOR",
+        "value": 18052,
+        "unit": "IDR per USD",
+        "period": "2026-10-16"
+      },
+      "period": "2026-10-16",
+      "source_date": "2026-10-16",
+      "publisher": "Bank Indonesia",
+      "source_url": "https://www.bi.go.id/en/statistik/informasi-kurs/jisdor/Default.aspx",
+      "sli_path": "indonesia-macroeconomic-intelligence.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "macro-unemployment_rate",
+      "topic": "macroeconomy",
+      "kind": "official_statistic",
+      "title": "Open unemployment rate · Indonesia",
+      "text": "Open unemployment rate: 4.68 %. Periode observasi: 2026-02. Catatan pembacaan: BPS Sakernas February 2026 definition; not U.S. payroll statistics Nilai tidak otomatis merupakan angka tahun kalender penuh.",
+      "metric": {
+        "label": "Open unemployment rate",
+        "value": 4.68,
+        "unit": "%",
+        "period": "2026-02"
+      },
+      "period": "2026-02",
+      "source_date": "2026-05-05",
+      "publisher": "BPS",
+      "source_url": "https://www.bps.go.id/en/pressrelease/2026/05/05/2574/unemployment-rate-was-4-68-percent-and-the-average-wage-of-employees-was-3-29-million-rupiah-.html",
+      "sli_path": "indonesia-macroeconomic-intelligence.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "macro-poverty_rate",
+      "topic": "macroeconomy",
+      "kind": "official_statistic",
+      "title": "National poverty rate · Indonesia",
+      "text": "National poverty rate: 8.07 % people. Periode observasi: 2026-03. Catatan pembacaan: BPS national poverty line, NOT World Bank USD8.30 PPP poverty line Nilai tidak otomatis merupakan angka tahun kalender penuh.",
+      "metric": {
+        "label": "National poverty rate",
+        "value": 8.07,
+        "unit": "% people",
+        "period": "2026-03"
+      },
+      "period": "2026-03",
+      "source_date": "2026-08-05",
+      "publisher": "BPS",
+      "source_url": "https://www.bps.go.id/en/pressrelease/2026/08/05/2594/persentase-penduduk-miskin-maret-2026-turun-menjadi-8-07-persen-.html",
+      "sli_path": "indonesia-macroeconomic-intelligence.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "macro-exports_month",
+      "topic": "trade",
+      "kind": "official_statistic",
+      "title": "Merchandise exports · Indonesia",
+      "text": "Merchandise exports: 26.61 USD billion. Periode observasi: 2026-08. Catatan pembacaan: Goods exports, August only, not goods/services Nilai tidak otomatis merupakan angka tahun kalender penuh.",
+      "metric": {
+        "label": "Merchandise exports",
+        "value": 26.61,
+        "unit": "USD billion",
+        "period": "2026-08"
+      },
+      "period": "2026-08",
+      "source_date": "2026-10-01",
+      "publisher": "BPS",
+      "source_url": "https://www.bps.go.id/en/pressrelease/2026/10/01/2621/exports-and-imports-of-indonesia-in-august-2026-reached-usd26-61-billion-and-usd23-06-billion--respectively.html",
+      "sli_path": "indonesia-macroeconomic-intelligence.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "macro-imports_month",
+      "topic": "trade",
+      "kind": "official_statistic",
+      "title": "Merchandise imports · Indonesia",
+      "text": "Merchandise imports: 23.06 USD billion. Periode observasi: 2026-08. Catatan pembacaan: Goods imports, August only Nilai tidak otomatis merupakan angka tahun kalender penuh.",
+      "metric": {
+        "label": "Merchandise imports",
+        "value": 23.06,
+        "unit": "USD billion",
+        "period": "2026-08"
+      },
+      "period": "2026-08",
+      "source_date": "2026-10-01",
+      "publisher": "BPS",
+      "source_url": "https://www.bps.go.id/en/pressrelease/2026/10/01/2621/exports-and-imports-of-indonesia-in-august-2026-reached-usd26-61-billion-and-usd23-06-billion--respectively.html",
+      "sli_path": "indonesia-macroeconomic-intelligence.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "macro-forex_reserves",
+      "topic": "macroeconomy",
+      "kind": "official_statistic",
+      "title": "Official reserve assets · Indonesia",
+      "text": "Official reserve assets: 146.3 USD billion. Periode observasi: 2026-09-end. Catatan pembacaan: Official BI reserves including monetary gold and reserve assets Nilai tidak otomatis merupakan angka tahun kalender penuh.",
+      "metric": {
+        "label": "Official reserve assets",
+        "value": 146.3,
+        "unit": "USD billion",
+        "period": "2026-09-end"
+      },
+      "period": "2026-09-end",
+      "source_date": "2026-10-07",
+      "publisher": "Bank Indonesia",
+      "source_url": "https://www.bi.go.id/en/publikasi/ruang-media/news-release/Pages/sp_2821426.aspx",
+      "sli_path": "indonesia-macroeconomic-intelligence.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "macro-fiscal_balance",
+      "topic": "macroeconomy",
+      "kind": "official_statistic",
+      "title": "APBN balance / GDP · Indonesia",
+      "text": "APBN balance / GDP: −1.24 % GDP. Periode observasi: 2026-Jan–Sep. Catatan pembacaan: Realized Jan–Sep deficit as share of GDP, negative sign; not full-year deficit Nilai tidak otomatis merupakan angka tahun kalender penuh.",
+      "metric": {
+        "label": "APBN balance / GDP",
+        "value": -1.24,
+        "unit": "% GDP",
+        "period": "2026-Jan–Sep"
+      },
+      "period": "2026-Jan–Sep",
+      "source_date": "2026-10-09",
+      "publisher": "Kementerian Keuangan",
+      "source_url": "https://www.kemenkeu.go.id/informasi-publik/publikasi/berita-utama/Menkeu-Suahasil-APBN-KiTA-September-2026",
+      "sli_path": "indonesia-macroeconomic-intelligence.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "gini-national",
+      "topic": "inequality",
+      "kind": "official_statistic",
+      "title": "Indonesia · Rasio Gini Pengeluaran",
+      "text": "Rasio Gini pengeluaran BPS Maret 2026 nasional 0.368, perkotaan 0.387, perdesaan 0.296. Ini ketimpangan pengeluaran, bukan ketimpangan pendapatan atau kekayaan. Tanggal publikasi 2026-08-05; tidak dapat digunakan sendirian untuk menyimpulkan risiko investasi.",
+      "metric": {
+        "label": "Rasio Gini nasional",
+        "value": 0.368,
+        "unit": "koefisien",
+        "period": "2026-03"
+      },
+      "period": "2026-03",
+      "source_date": "2026-08-05",
+      "publisher": "BPS-Statistics Indonesia",
+      "source_url": "https://www.bps.go.id/id/pressrelease/2026/08/05/2595/gini-ratio-maret-2026-tercatat-sebesar-0-368-.html",
+      "sli_path": "gini-inequality.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "province-12",
+      "topic": "regional",
+      "kind": "regional_sample",
+      "title": "Jawa Barat · Sampel ekonomi provinsi",
+      "text": "PDRB harga berlaku 2025 3,038,667.95 miliar rupiah (status angka sementara). Pertumbuhan riil PDRB harga konstan 2010 tahun 2025 sekitar 5.32% YoY berdasarkan nilai 2024–2025. Data pengeluaran provinsi berasal dari BPS; PMTB tidak sama dengan realisasi investasi BKPM. Ini adalah cuplikan, bukan profil lengkap 38 provinsi.",
+      "metric": {
+        "label": "PDRB ADHB",
+        "value": 3038667.95,
+        "unit": "IDR miliar",
+        "period": "2025"
+      },
+      "period": "2025",
+      "source_date": "2026-04-30",
+      "publisher": "BPS",
+      "source_url": "https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html",
+      "sli_path": "provincial-opportunity-engine.html",
+      "geo": "Jawa Barat",
+      "access": "open_preview"
+    },
+    {
+      "id": "province-23",
+      "topic": "regional",
+      "kind": "regional_sample",
+      "title": "Kalimantan Timur · Sampel ekonomi provinsi",
+      "text": "PDRB harga berlaku 2025 889,072.55 miliar rupiah (status angka sementara). Pertumbuhan riil PDRB harga konstan 2010 tahun 2025 sekitar 4.53% YoY berdasarkan nilai 2024–2025. Data pengeluaran provinsi berasal dari BPS; PMTB tidak sama dengan realisasi investasi BKPM. Ini adalah cuplikan, bukan profil lengkap 38 provinsi.",
+      "metric": {
+        "label": "PDRB ADHB",
+        "value": 889072.55,
+        "unit": "IDR miliar",
+        "period": "2025"
+      },
+      "period": "2025",
+      "source_date": "2026-04-30",
+      "publisher": "BPS",
+      "source_url": "https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html",
+      "sli_path": "provincial-opportunity-engine.html",
+      "geo": "Kalimantan Timur",
+      "access": "open_preview"
+    },
+    {
+      "id": "province-28",
+      "topic": "regional",
+      "kind": "regional_sample",
+      "title": "Sulawesi Tenggara · Sampel ekonomi provinsi",
+      "text": "PDRB harga berlaku 2025 204,333.57 miliar rupiah (status angka sementara). Pertumbuhan riil PDRB harga konstan 2010 tahun 2025 sekitar 5.79% YoY berdasarkan nilai 2024–2025. Data pengeluaran provinsi berasal dari BPS; PMTB tidak sama dengan realisasi investasi BKPM. Ini adalah cuplikan, bukan profil lengkap 38 provinsi.",
+      "metric": {
+        "label": "PDRB ADHB",
+        "value": 204333.57,
+        "unit": "IDR miliar",
+        "period": "2025"
+      },
+      "period": "2025",
+      "source_date": "2026-04-30",
+      "publisher": "BPS",
+      "source_url": "https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html",
+      "sli_path": "provincial-opportunity-engine.html",
+      "geo": "Sulawesi Tenggara",
+      "access": "open_preview"
+    },
+    {
+      "id": "province-1",
+      "topic": "regional",
+      "kind": "regional_sample",
+      "title": "Aceh · Sampel ekonomi provinsi",
+      "text": "PDRB harga berlaku 2025 257,502.43 miliar rupiah (status angka sementara). Pertumbuhan riil PDRB harga konstan 2010 tahun 2025 sekitar 2.97% YoY berdasarkan nilai 2024–2025. Data pengeluaran provinsi berasal dari BPS; PMTB tidak sama dengan realisasi investasi BKPM. Ini adalah cuplikan, bukan profil lengkap 38 provinsi.",
+      "metric": {
+        "label": "PDRB ADHB",
+        "value": 257502.43,
+        "unit": "IDR miliar",
+        "period": "2025"
+      },
+      "period": "2025",
+      "source_date": "2026-04-30",
+      "publisher": "BPS",
+      "source_url": "https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html",
+      "sli_path": "provincial-opportunity-engine.html",
+      "geo": "Aceh",
+      "access": "open_preview"
+    },
+    {
+      "id": "project-sli-project-001",
+      "topic": "minerals",
+      "kind": "project_milestone",
+      "title": "Integrated EV battery ecosystem",
+      "text": "Sektor: Critical minerals. Lokasi: Karawang, West Java; East Halmahera, North Maluku (multi-site). Status yang dilaporkan: Under construction. Investor/pihak: ANTAM · IBC · Ningbo Contemporary Brunp Lygend (CBL). Nilai diumumkan 5.9 USD billion, BUKAN belanja modal terealisasi. Groundbreaking of the six-subproject integrated ecosystem confirmed 29 June 2025. This is a consortium-wide figure, not single-factory spending. Sumber sampai 2025-06-29; bukan konfirmasi kondisi real-time.",
+      "period": "2025-06-29",
+      "source_date": "2025-06-29",
+      "publisher": "Project public-source registry",
+      "source_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai",
+      "sli_path": "provincial-opportunity-engine.html",
+      "geo": "North Maluku",
+      "access": "open_preview"
+    },
+    {
+      "id": "project-sli-project-002",
+      "topic": "ai",
+      "kind": "project_milestone",
+      "title": "Microsoft Indonesia cloud and AI program",
+      "text": "Sektor: AI infrastructure. Lokasi: Indonesia (multi-location program). Status yang dilaporkan: Announced. Investor/pihak: Microsoft. Nilai diumumkan 1.7 USD billion, BUKAN belanja modal terealisasi. Microsoft announced a four-year program in April 2024; Komdigi reaffirmed commitment September 2026. Value includes cloud/AI infrastructure and skilling, not verified data-center construction spending. Sumber sampai 2024-04-30; bukan konfirmasi kondisi real-time.",
+      "period": "2024-04-30",
+      "source_date": "2024-04-30",
+      "publisher": "Project public-source registry",
+      "source_url": "https://news.microsoft.com/source/asia/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions/",
+      "sli_path": "provincial-opportunity-engine.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    },
+    {
+      "id": "project-sli-project-004",
+      "topic": "minerals",
+      "kind": "project_milestone",
+      "title": "IGP Pomalaa — mine and HPAL",
+      "text": "Sektor: Critical minerals. Lokasi: Kolaka, Southeast Sulawesi. Status yang dilaporkan: Under construction. Investor/pihak: PT Vale Indonesia · PT Kolaka Nickel Indonesia · Huayou · Ford (project partners). Nilai diumumkan 4.5 USD billion, BUKAN belanja modal terealisasi. PT Vale disclosed 62% overall project progress in February 2026; ore-sales milestone in March 2026 should not be conflated with HPAL operation. Sumber sampai 2026-02-25; bukan konfirmasi kondisi real-time.",
+      "period": "2026-02-25",
+      "source_date": "2026-02-25",
+      "publisher": "Project public-source registry",
+      "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion",
+      "sli_path": "provincial-opportunity-engine.html",
+      "geo": "Southeast Sulawesi",
+      "access": "open_preview"
+    },
+    {
+      "id": "project-sli-project-006",
+      "topic": "minerals",
+      "kind": "project_milestone",
+      "title": "PTFI Manyar copper smelter",
+      "text": "Sektor: Critical minerals. Lokasi: Gresik, East Java. Status yang dilaporkan: Operational. Investor/pihak: PT Freeport Indonesia (PTFI); shareholder groups MIND ID / PT IPMM / FCX. Nilai belum diverifikasi. FCX reports May 2025 startup and July 2025 first cathode; 2025 production and post-September 2025 concentrate constraints mean operational status does not equal full utilization. Sumber sampai 2025-12-31; bukan konfirmasi kondisi real-time.",
+      "period": "2025-12-31",
+      "source_date": "2025-12-31",
+      "publisher": "Project public-source registry",
+      "source_url": "https://www.fcx.com/operations/indonesia",
+      "sli_path": "provincial-opportunity-engine.html",
+      "geo": "East Java",
+      "access": "open_preview"
+    },
+    {
+      "id": "aiproject-digital-edge-cgk",
+      "topic": "ai",
+      "kind": "project_milestone",
+      "title": "Digital Edge CGK Campus · data center",
+      "text": "Operator: Digital Edge. Lokasi GIIC, Bekasi (West Java). Tahap: under construction; kapasitas 500 MW (initial planned capacity); bukan kapasitas sudah beroperasi. Geocode sourced to facility directory; phase I commissioning not established. Periode sumber: 2026-06-01.",
+      "period": "2026-06-01",
+      "source_date": "2026-06-01",
+      "publisher": "Digital Edge",
+      "source_url": "https://www.peeringdb.com/fac/17150",
+      "sli_path": "ai-intelligence-hub.html",
+      "geo": "West Java",
+      "access": "open_preview"
+    },
+    {
+      "id": "aiproject-pdg-jc3",
+      "topic": "ai",
+      "kind": "project_milestone",
+      "title": "PDG JC3 · data center",
+      "text": "Operator: Princeton Digital Group. Lokasi GIIC, Bekasi (West Java). Tahap: under construction; kapasitas 120 MW (planned capacity); bukan kapasitas sudah beroperasi. Contracted dual grid feeds; reported Q4 2026 phase-one target. Periode sumber: 2025-11-19.",
+      "period": "2025-11-19",
+      "source_date": "2025-11-19",
+      "publisher": "Princeton Digital Group",
+      "source_url": "https://princetondg.com/press-releases/princeton-digital-group-breaks-ground-on-milestone-usd-1-billion-120-mw-greater-jakarta-campus/",
+      "sli_path": "ai-intelligence-hub.html",
+      "geo": "West Java",
+      "access": "open_preview"
+    },
+    {
+      "id": "aiproject-pdg-jc4",
+      "topic": "ai",
+      "kind": "project_milestone",
+      "title": "PDG JC4 · data center",
+      "text": "Operator: Princeton Digital Group. Lokasi GIIC, Bekasi (West Java). Tahap: under construction; kapasitas 240 MW (planned capacity); bukan kapasitas sudah beroperasi. Construction reported commenced; located about 1.7 km from JC3. Periode sumber: 2026-04-30.",
+      "period": "2026-04-30",
+      "source_date": "2026-04-30",
+      "publisher": "Princeton Digital Group",
+      "source_url": "https://princetondg.com/press-releases/pdg-acquires-240-mw-of-powered-land-in-jakarta-advancing-its-rapid-expansion-across-asia/",
+      "sli_path": "ai-intelligence-hub.html",
+      "geo": "West Java",
+      "access": "open_preview"
+    },
+    {
+      "id": "method-growth-gini",
+      "topic": "methodology",
+      "kind": "method_note",
+      "title": "Cara membaca pertumbuhan, Gini, dan investasi",
+      "text": "Pertumbuhan riil PDRB dan Rasio Gini pengeluaran diukur pada periode berbeda, sehingga hubungan keduanya bersifat deskriptif dan tidak membuktikan kausalitas. PMTB adalah komponen pembentukan modal dalam neraca daerah, bukan realisasi proyek BKPM. Multiplier effect memerlukan data input-output dan model yang diuji; tidak boleh disimpulkan dari korelasi saja.",
+      "period": "2026",
+      "source_date": "2026-10-17",
+      "publisher": "SLI methodological interpretation of BPS publications",
+      "source_url": "https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html",
+      "sli_path": "sli-glossary-methodology.html",
+      "geo": "Indonesia",
+      "access": "open_preview"
+    }
+  ]
+}
