@@ -159,7 +159,7 @@
     results=[];active=-1;count.textContent="";
     const msg=document.createElement("p");msg.className="sli-search-empty";
     msg.textContent=id()?"Tulis minimal 2 karakter. Contoh: SPKLU, Rokan, nikel, PLN, batubara.":"Type 2+ characters. Try SPKLU, Rokan, nickel, PLN or coal.";
-    list.append(msg);footer.textContent=id()?"Cari lintas 9 dashboard · sumber publik, bukan data real-time.":"Search across 9 dashboards · sourced records, not live telemetry.";return;
+    list.append(msg);footer.textContent=id()?"Cari seluruh modul SLI · sumber publik, bukan data real-time.":"Search all SLI modules · sourced records, not live telemetry.";return;
    }
    const candidates=[...data.entries||[],...pages(),...currentHeadings()];
    results=rank(candidates,q,getPage(),scope.value,MAX);
