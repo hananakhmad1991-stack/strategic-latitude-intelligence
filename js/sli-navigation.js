@@ -11,7 +11,7 @@ const groups=[
 ];
 const modules={
  overview:['Overview · Big picture','Gambaran besar · Overview','index.html#overview','National executive context; go deeper for tables, project records and source detail.','Konteks nasional; buka modul detail untuk tabel dan sumber.'],
- research:['Research AI · Evidence Desk','Riset AI · Meja Bukti','sli-research-ai.html','Ask questions and inspect cited public evidence excerpts; generative AI not connected.','Tanya-jawab dengan cuplikan bukti bersumber; AI generatif belum terhubung.'],
+ research:['Research AI Assistant · Prelaunch','Asisten Research AI · Pra-peluncuran','sli-research-ai.html','Write full research briefs, choose report formats and plan multi-turn sourced analysis; generative model not connected yet.','Tulis instruksi riset lengkap, pilih format laporan dan susun percakapan analitis; model AI generatif belum terhubung.'],
  membership:['Membership · Open / Pro / Enterprise','Keanggotaan · Open / Pro / Enterprise','sli-membership.html','Plans and early-access requests; payments are not active yet.','Paket dan permintaan akses awal; pembayaran belum aktif.'],
  guide:['User guide · Start here','Panduan pengguna · Mulai di sini','sli-user-guide.html','Task-based paths, navigation, dates, sources, filters and limitations.','Alur penggunaan, navigasi, tanggal, sumber dan batasan.'],
  investment:['Investment Tracker','Pelacak Investasi','index.html#investment','Projects, investors, capital and execution status.','Proyek, investor, modal dan status pelaksanaan.'],
