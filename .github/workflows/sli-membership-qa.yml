@@ -1,0 +1,27 @@
+name: SLI Membership & Secure Access QA
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'sli-membership.html'
+      - 'data/sli-membership-plans.json'
+      - 'membership-api/**'
+      - 'tests/qa-sli-membership.mjs'
+      - 'index.html'
+      - 'js/sli-navigation.js'
+      - '.github/workflows/sli-membership-qa.yml'
+permissions:
+  contents: read
+jobs:
+  membership-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate public catalog, private API and negative authorization cases
+        run: |
+          node --check membership-api/src/index.js
+          node --test tests/qa-sli-membership.mjs membership-api/tests/auth.test.mjs
