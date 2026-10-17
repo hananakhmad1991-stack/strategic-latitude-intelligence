@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="id"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SLI Evidence Preview | Strategic Latitude Intelligence</title>
+<meta name="description" content="Ask questions about Indonesia macroeconomics, investment, provinces, critical minerals and AI infrastructure using sourced SLI research excerpts. Limited open preview.">
+<link rel="stylesheet" href="./css/sli-site-ux.css">
+<link rel="stylesheet" href="./css/sli-navigation.css">
+<script src="./js/sli-live-data.js?v=20261017-research1"></script>
+<style>
+:root{color-scheme:dark;--ra-bg:#071624;--ra-card:#10273b;--ra-line:#36536a;--ra-gold:#e9c58c;--ra-text:#edf5fa;--ra-muted:#afc5d5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ra-bg);color:var(--ra-text);font:14px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1250px;margin:auto;padding:25px 22px 70px}h1{font:normal clamp(35px,5vw,58px)/1.17 Georgia,serif;letter-spacing:-.025em;margin:14px 0}h2{font-size:21px;line-height:1.3}h3{font-size:16px;margin:5px 0}p{color:var(--ra-muted)}a{color:var(--ra-gold)}
+.hero{position:relative;padding:33px 37px 38px;border:1px solid #577187;border-radius:18px;background:radial-gradient(ellipse at 89% 20%,#284b67 0%,#152f46 40%,#0d2236 80%);margin-top:12px}
+.tag{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--ra-gold);font-weight:800}.hero>p{max-width:730px;font-size:16px;margin:0 0 18px}.controls{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+button,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #e6cc9b;outline-offset:3px}
+button[disabled]{cursor:not-allowed;opacity:.6}.language{border:1px solid #7690a3;background:#162f43;border-radius:25px;color:#fff;padding:8px 15px}
+.sli-ra-live-note{border-left:3px solid #dec189;background:#3b3122;color:#f7e6c8;border-radius:6px;padding:11px 14px;font-size:12px;margin:22px 0}
+.research-form{background:#102a40;border:1px solid #627e91;border-radius:14px;padding:16px;margin-top:20px}
+.research-form label{display:block;font-size:12px;font-weight:750;margin-bottom:10px}
+textarea{resize:vertical;min-height:92px;width:100%;background:#071b2d;border:1px solid #57758e;border-radius:9px;color:#fff;padding:13px;line-height:1.6}
+.form-bottom{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;justify-content:space-between}.form-bottom label{margin:0}
+select{background:#0d2336;border:1px solid #57758e;color:#fff;border-radius:8px;padding:10px;max-width:100%}
+.primary{background:var(--ra-gold);border:1px solid #f4d6a0;color:#11253a;padding:12px 24px;border-radius:9px;font-weight:800}
+.secondary{background:#193b53;border:1px solid #57748d;color:#eaf5ff;padding:10px 18px;border-radius:8px}
+.examples{margin:24px 0}.examples h2{font-size:15px;margin:0 0 12px}.examples-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.sli-ra-example,.sli-ra-follow-chip{text-align:left;color:#d5e8f4;border:1px solid #46657c;border-radius:9px;padding:13px;background:#153249}.sli-ra-example:hover,.sli-ra-follow-chip:hover{border-color:var(--ra-gold)}
+.stats{display:flex;gap:20px;align-items:center;flex-wrap:wrap;color:#cad9e4;font-size:12px;margin-top:17px}
+#raStatus[data-level=warning]{color:#ffd19b}#raStatus[data-level=ok]{color:#d6eebc}
+.results{margin-top:34px;scroll-margin-top:26px}.results-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:16px}
+.answer,.sources{background:var(--ra-card);border:1px solid var(--ra-line);border-radius:14px;padding:24px;min-width:0}
+.sli-ra-query{border-left:3px solid var(--ra-gold);color:#fff;padding:8px 15px;margin:15px 0 24px;background:#1b374b}
+.sli-ra-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px;margin:17px 0}
+.sli-ra-metric{border:1px solid #456a86;background:#17384f;border-radius:9px;padding:12px;display:flex;flex-direction:column;gap:4px}
+.sli-ra-metric>span{font-size:11px;color:#cfdeea}.sli-ra-metric>strong{font-size:19px;color:#f3d9a7}.sli-ra-metric>small{font-size:10px;color:#b4cddd}
+.sli-ra-analysis-lead{font:normal 18px/1.58 Georgia,serif;color:#f0e6d0;border-bottom:1px solid var(--ra-line);padding-bottom:18px}
+.sli-ra-analysis-section{padding:12px 0;border-top:1px solid #314e64}.sli-ra-analysis-section h3{font-size:15px;color:#efd5a9;margin:4px 0 8px}.sli-ra-analysis-section p{color:#d0e0ea;font-size:14px;margin:0;line-height:1.85}.sli-ra-transparency{font-size:11px;color:#afc4d3}
+.sli-ra-summary{padding-left:22px}.sli-ra-summary li{margin-bottom:16px;color:#d8e5ed;line-height:1.75}
+.sli-ra-inline-ref{font-weight:800;color:var(--ra-gold);white-space:nowrap}.sli-ra-caution{border:1px solid #8e7950;padding:12px;border-radius:8px;color:#efdbb8;font-size:12px}
+.sli-ra-source{border-top:1px solid var(--ra-line);padding:15px 0}.sli-ra-source p{font-size:12px;margin:9px 0}
+.sli-ra-source-heading{display:flex;align-items:flex-start;gap:8px;line-height:1.4}.sli-ra-source-heading strong{font-size:13px}
+.sli-ra-number{font-weight:800;color:var(--ra-gold)}.sli-ra-source small{font-size:10px;color:#b0c7d9;letter-spacing:.08em}
+.sli-ra-meta{font-size:11px;color:#91abc0}.sli-ra-source-links{display:flex;gap:13px;flex-wrap:wrap;font-size:12px;margin-top:8px}
+.follow{background:#10273b;border:1px solid var(--ra-line);border-radius:13px;padding:20px;margin-top:13px}
+.follow-grid{display:flex;gap:9px;flex-wrap:wrap}.sli-ra-follow-chip{font-size:12px}
+.subtitle{font-size:12px;color:#bad3e3;margin:0}.sli-ra-footer{margin-top:29px;font-size:12px;color:#acbfd0;border-top:1px solid var(--ra-line);padding-top:16px}
+@media(max-width:850px){.results-grid{grid-template-columns:1fr}.hero{padding:24px}.examples-grid{grid-template-columns:1fr}}
+@media(max-width:530px){main{padding:13px 12px 55px}.hero{padding:19px}.form-bottom{align-items:stretch}.form-bottom>div,.form-bottom>button{width:100%}.primary{width:100%}.answer,.sources{padding:16px}}
+</style></head>
+<body><main>
+<header class="hero">
+<div class="controls"><span class="tag">STRATEGIC LATITUDE INTELLIGENCE · RESEARCH DESK</span><button id="raLanguage" class="language" type="button" aria-label="Change language">English</button></div>
+<h1>SLI Research AI <span style="color:var(--ra-gold)">/ Evidence Preview</span></h1>
+<p data-id="Ajukan pertanyaan spesifik, misalnya “Jawa Tengah”, “Jawa Tengah vs Jawa Barat”, atau “peluang investasi AI di Jawa Tengah”. Dapatkan penilaian ekonomi, interpretasi indikator, batasan proyek, dan sumber asli." data-en="Ask specific questions such as “Central Java”, “Central Java vs West Java” or “AI investment in Central Java”. Get analytical assessments, economic context, project caveats and verifiable source links.">Ajukan pertanyaan dalam bahasa sehari-hari tentang ekonomi, provinsi, mineral kritis, investasi, dan infrastruktur AI Indonesia. Temukan cuplikan bukti bertanggal yang bisa diperiksa langsung ke sumbernya.</p>
+<div class="sli-ra-live-note"><strong data-id="Tahap awal · transparansi" data-en="Early access · transparency">Tahap awal · transparansi</strong> — <span data-id="Mode Open kini menyusun interpretasi analitis dari data BPS bertanggal untuk 38 provinsi, indikator makro, serta bukti proyek terpilih. Ini BUKAN AI generatif, rekomendasi investasi, atau akses data Pro lengkap. RAG generatif memerlukan backend privat yang belum aktif." data-en="Open now builds bounded analytical interpretations from dated BPS observations for 38 provinces, macro indicators and selected project evidence. This is NOT a generative model, investment advice or full Pro access. Generative RAG requires a private backend that is not active.">Mode Open menggunakan pencarian dan penyusunan bukti deterministik, BUKAN jawaban dari model AI generatif. Corpus hanya sampel, tanpa akses dataset lengkap atau data premium. Sistem RAG generatif untuk Pro memerlukan backend privat, autentikasi, dan model API yang belum diaktifkan.</span></div>
+<form id="raForm" class="research-form">
+<label for="raQuestion" data-id="Apa yang ingin Anda teliti?" data-en="What would you like to research?">Apa yang ingin Anda teliti?</label>
+<textarea id="raQuestion" minlength="4" maxlength="500" required placeholder="Contoh: Bagaimana prospek investasi data center di Jawa Tengah?" aria-label="Research question"></textarea>
+<div class="form-bottom"><div><label for="raTopic" data-id="Lingkup bukti" data-en="Evidence scope">Lingkup bukti</label>
+<select id="raTopic" name="topic">
+<option value="all" data-id="Semua topik" data-en="All topics">Semua topik</option>
+<option value="macroeconomy" data-id="Makroekonomi" data-en="Macroeconomy">Makroekonomi</option>
+<option value="regional" data-id="Provinsi / kawasan" data-en="Provinces / regions">Provinsi / kawasan</option>
+<option value="inequality" data-id="Ketimpangan dan Gini" data-en="Inequality and Gini">Ketimpangan dan Gini</option>
+<option value="trade" data-id="Perdagangan" data-en="Trade">Perdagangan</option>
+<option value="minerals" data-id="Mineral kritis" data-en="Critical minerals">Mineral kritis</option>
+<option value="energy" data-id="Energi dan harga komoditas" data-en="Energy and commodity prices">Energi dan harga komoditas</option>
+<option value="news" data-id="Berita (lead belum terverifikasi)" data-en="News (unverified leads)">Berita (lead belum terverifikasi)</option>
+<option value="ai" data-id="AI dan data center" data-en="AI and data centers">AI dan data center</option>
+<option value="methodology" data-id="Metodologi" data-en="Methodology">Metodologi</option>
+</select></div>
+<button type="submit" class="primary" data-id="Cari bukti ↗" data-en="Find evidence ↗">Cari bukti ↗</button></div>
+</form>
+<div class="stats"><span><strong id="raCount">—</strong> <span data-id="cuplikan terkurasi" data-en="curated excerpts">cuplikan terkurasi</span></span><span data-id="Snapshot corpus:" data-en="Corpus snapshot:">Snapshot corpus:</span><strong id="raDate">—</strong><span id="raStatus" role="status" aria-live="polite">Memuat katalog…</span></div>
+</header>
+<section class="examples"><h2 data-id="Coba pertanyaan berikut" data-en="Try these questions">Coba pertanyaan berikut</h2><div id="raExamples" class="examples-grid"></div></section>
+<section id="raResults" class="results" aria-label="Research results" hidden>
+<div class="results-grid"><div>
+<div id="raAnswer" class="answer" aria-live="polite"></div>
+<div class="follow"><div class="controls"><h3 id="raFollowHeading">Pertanyaan lanjutan</h3><button id="raCopy" type="button" class="secondary" disabled>Salin jawaban</button></div><div id="raFollow" class="follow-grid"></div></div>
+</div>
+<aside class="sources"><h2 id="raSourceHeading">Periksa sumber asli</h2><p class="subtitle" data-id="Nomor [1] dst. merujuk pada bukti yang ditampilkan. Selalu periksa tanggal data dan publikasi aslinya." data-en="Citations [1], etc. refer to the evidence shown. Always check the original source and observed period.">Nomor [1] dst. merujuk pada bukti yang ditampilkan. Selalu periksa tanggal data dan publikasi aslinya.</p><div id="raSources"></div></aside></div>
+</section>
+<section class="sli-ra-footer">
+<strong data-id="Kebijakan akses dan metodologi" data-en="Access policy and methodology">Kebijakan akses dan metodologi</strong>
+<p data-id="Tidak ada pertanyaan yang dikirim ke model AI atau disimpan oleh fitur preview ini. Materi berlisensi, data premium, dan analisis kontraktual tidak diunduh oleh browser. Angka, periode observasi, dan tahap proyek harus divalidasi sebelum keputusan investasi; hasil ini bukan nasihat investasi." data-en="This preview does not send questions to an AI model or store them. The browser does not download premium/licensed research content. Check original data dates and project milestones before investment decisions; this is not investment advice.">Tidak ada pertanyaan yang dikirim ke model AI atau disimpan oleh fitur preview ini. Materi berlisensi, data premium, dan analisis kontraktual tidak diunduh oleh browser. Angka, periode observasi, dan tahap proyek harus divalidasi sebelum keputusan investasi; hasil ini bukan nasihat investasi.</p>
+<a href="./sli-membership.html" data-id="Lihat rencana SLI Pro / Enterprise ↗" data-en="See SLI Pro / Enterprise plans ↗">Lihat rencana SLI Pro / Enterprise ↗</a> · <a href="./sli-glossary-methodology.html" data-id="Baca metodologi ↗" data-en="Read methodology ↗">Baca metodologi ↗</a>
+</section>
+</main>
+<script type="module" src="./js/sli-research-ai.js?v=20261017-analytic4"></script>
+<script defer src="./js/sli-navigation.js?v=20261017-research1"></script>
+<script defer src="./js/sli-shared-appendix.js?v=20261017-research1"></script>
+<script defer src="./js/sli-public-usability.js"></script>
+</body></html>
