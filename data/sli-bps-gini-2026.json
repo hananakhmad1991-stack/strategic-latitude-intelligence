@@ -1,0 +1,328 @@
+{
+  "schema": "sli-bps-gini-ratio-v1",
+  "measurement_period": "2026-03",
+  "published_at": "2026-08-05",
+  "digitized_at": "2026-10-17",
+  "publisher": "BPS-Statistics Indonesia",
+  "measure": "Gini ratio of household expenditure, based on Susenas",
+  "unit": "coefficient (0–1)",
+  "region_grouping": "SLI geographic grouping of BPS province data; not independently computed regional Gini",
+  "national": {
+    "combined": 0.368,
+    "urban": 0.387,
+    "rural": 0.296,
+    "history": [
+      {
+        "period": "2025-03",
+        "combined": 0.375,
+        "urban": 0.395,
+        "rural": 0.299
+      },
+      {
+        "period": "2025-09",
+        "combined": 0.363,
+        "urban": 0.383,
+        "rural": 0.295
+      },
+      {
+        "period": "2026-03",
+        "combined": 0.368,
+        "urban": 0.387,
+        "rural": 0.296
+      }
+    ]
+  },
+  "provinces": [
+    {
+      "name": "Aceh",
+      "region": "Sumatra",
+      "urban": 0.323,
+      "rural": 0.221,
+      "combined": 0.275
+    },
+    {
+      "name": "Sumatra Utara",
+      "region": "Sumatra",
+      "urban": 0.299,
+      "rural": 0.23,
+      "combined": 0.278
+    },
+    {
+      "name": "Sumatra Barat",
+      "region": "Sumatra",
+      "urban": 0.304,
+      "rural": 0.231,
+      "combined": 0.285
+    },
+    {
+      "name": "Riau",
+      "region": "Sumatra",
+      "urban": 0.33,
+      "rural": 0.264,
+      "combined": 0.301
+    },
+    {
+      "name": "Jambi",
+      "region": "Sumatra",
+      "urban": 0.33,
+      "rural": 0.283,
+      "combined": 0.305
+    },
+    {
+      "name": "Sumatra Selatan",
+      "region": "Sumatra",
+      "urban": 0.346,
+      "rural": 0.212,
+      "combined": 0.285
+    },
+    {
+      "name": "Bengkulu",
+      "region": "Sumatra",
+      "urban": 0.403,
+      "rural": 0.282,
+      "combined": 0.34
+    },
+    {
+      "name": "Lampung",
+      "region": "Sumatra",
+      "urban": 0.314,
+      "rural": 0.26,
+      "combined": 0.29
+    },
+    {
+      "name": "Kepulauan Bangka Belitung",
+      "region": "Sumatra",
+      "urban": 0.226,
+      "rural": 0.191,
+      "combined": 0.214
+    },
+    {
+      "name": "Kepulauan Riau",
+      "region": "Sumatra",
+      "urban": 0.356,
+      "rural": 0.244,
+      "combined": 0.354
+    },
+    {
+      "name": "DKI Jakarta",
+      "region": "Java",
+      "urban": 0.435,
+      "rural": null,
+      "combined": 0.435
+    },
+    {
+      "name": "Jawa Barat",
+      "region": "Java",
+      "urban": 0.424,
+      "rural": 0.312,
+      "combined": 0.413
+    },
+    {
+      "name": "Jawa Tengah",
+      "region": "Java",
+      "urban": 0.384,
+      "rural": 0.298,
+      "combined": 0.354
+    },
+    {
+      "name": "DI Yogyakarta",
+      "region": "Java",
+      "urban": 0.412,
+      "rural": 0.329,
+      "combined": 0.411
+    },
+    {
+      "name": "Jawa Timur",
+      "region": "Java",
+      "urban": 0.377,
+      "rural": 0.326,
+      "combined": 0.365
+    },
+    {
+      "name": "Banten",
+      "region": "Java",
+      "urban": 0.312,
+      "rural": 0.22,
+      "combined": 0.312
+    },
+    {
+      "name": "Bali",
+      "region": "Bali & Nusa Tenggara",
+      "urban": 0.34,
+      "rural": 0.281,
+      "combined": 0.342
+    },
+    {
+      "name": "Nusa Tenggara Barat",
+      "region": "Bali & Nusa Tenggara",
+      "urban": 0.381,
+      "rural": 0.319,
+      "combined": 0.358
+    },
+    {
+      "name": "Nusa Tenggara Timur",
+      "region": "Bali & Nusa Tenggara",
+      "urban": 0.273,
+      "rural": 0.307,
+      "combined": 0.319
+    },
+    {
+      "name": "Kalimantan Barat",
+      "region": "Kalimantan",
+      "urban": 0.344,
+      "rural": 0.26,
+      "combined": 0.311
+    },
+    {
+      "name": "Kalimantan Tengah",
+      "region": "Kalimantan",
+      "urban": 0.299,
+      "rural": 0.257,
+      "combined": 0.278
+    },
+    {
+      "name": "Kalimantan Selatan",
+      "region": "Kalimantan",
+      "urban": 0.313,
+      "rural": 0.276,
+      "combined": 0.301
+    },
+    {
+      "name": "Kalimantan Timur",
+      "region": "Kalimantan",
+      "urban": 0.309,
+      "rural": 0.31,
+      "combined": 0.312
+    },
+    {
+      "name": "Kalimantan Utara",
+      "region": "Kalimantan",
+      "urban": 0.253,
+      "rural": 0.244,
+      "combined": 0.253
+    },
+    {
+      "name": "Sulawesi Utara",
+      "region": "Sulawesi",
+      "urban": 0.341,
+      "rural": 0.335,
+      "combined": 0.344
+    },
+    {
+      "name": "Sulawesi Tengah",
+      "region": "Sulawesi",
+      "urban": 0.302,
+      "rural": 0.242,
+      "combined": 0.277
+    },
+    {
+      "name": "Sulawesi Selatan",
+      "region": "Sulawesi",
+      "urban": 0.36,
+      "rural": 0.332,
+      "combined": 0.355
+    },
+    {
+      "name": "Sulawesi Tenggara",
+      "region": "Sulawesi",
+      "urban": 0.362,
+      "rural": 0.332,
+      "combined": 0.356
+    },
+    {
+      "name": "Gorontalo",
+      "region": "Sulawesi",
+      "urban": 0.38,
+      "rural": 0.363,
+      "combined": 0.384
+    },
+    {
+      "name": "Sulawesi Barat",
+      "region": "Sulawesi",
+      "urban": 0.418,
+      "rural": 0.266,
+      "combined": 0.314
+    },
+    {
+      "name": "Maluku",
+      "region": "Maluku",
+      "urban": 0.267,
+      "rural": 0.217,
+      "combined": 0.281
+    },
+    {
+      "name": "Maluku Utara",
+      "region": "Maluku",
+      "urban": 0.339,
+      "rural": 0.22,
+      "combined": 0.288
+    },
+    {
+      "name": "Papua Barat",
+      "region": "Papua",
+      "urban": 0.283,
+      "rural": 0.421,
+      "combined": 0.384
+    },
+    {
+      "name": "Papua Barat Daya",
+      "region": "Papua",
+      "urban": 0.26,
+      "rural": 0.481,
+      "combined": 0.362
+    },
+    {
+      "name": "Papua",
+      "region": "Papua",
+      "urban": 0.32,
+      "rural": 0.468,
+      "combined": 0.398
+    },
+    {
+      "name": "Papua Selatan",
+      "region": "Papua",
+      "urban": 0.284,
+      "rural": 0.423,
+      "combined": 0.405
+    },
+    {
+      "name": "Papua Tengah",
+      "region": "Papua",
+      "urban": 0.196,
+      "rural": 0.325,
+      "combined": 0.315
+    },
+    {
+      "name": "Papua Pegunungan",
+      "region": "Papua",
+      "urban": 0.243,
+      "rural": 0.301,
+      "combined": 0.301
+    }
+  ],
+  "sources": [
+    {
+      "type": "BPS provincial table",
+      "title": "Gini Ratio by Province and Area, March 2026",
+      "url": "https://www.bps.go.id/assets/statistics-table/2/OTgjMg%3D%3D/gini-rasio--maret-2026.html",
+      "last_updated": "2026-08-05"
+    },
+    {
+      "type": "BPS official release",
+      "title": "Gini ratio March 2026 was 0.368",
+      "url": "https://www.bps.go.id/id/pressrelease/2026/08/05/2595/gini-ratio-maret-2026-tercatat-sebesar-0-368-.html",
+      "last_updated": "2026-08-05"
+    }
+  ],
+  "notes": [
+    "All figures represent Gini of expenditure, not income or wealth inequality. National Gini is not an arithmetic mean of provincial Gini.",
+    "Values 0–1; higher means more unequal expenditure distribution within the measured area. The Gini is not a welfare or purchasing-power index.",
+    "Regional group summaries report the median, range and distribution of published province-level Gini, NOT official regional Gini. No region Gini is computed from provincial coefficients.",
+    "Urban and rural coefficients use within-area samples; the combined coefficient can lie outside the urban-rural pair due to between-area inequality.",
+    "DKI Jakarta rural Gini is not reported by BPS (null). A dash or missing observation never means zero.",
+    "Comparisons across the new Papua provinces and their 2024 boundary changes require care; do not splice unadjusted pre-split historical series.",
+    "National March 2025, September 2025 and March 2026 values cited in the BPS release. Province historical time series not provided in this snapshot.",
+    "Values copied from official BPS table, in the table's province order. SLI geographic-region tags are editorial organization only.",
+    "Official Gini values must not be transformed into political-security scoring, investment recommendations or fabricated causal forecasts."
+  ]
+}
