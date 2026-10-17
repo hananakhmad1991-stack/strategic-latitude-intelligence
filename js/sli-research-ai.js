@@ -89,6 +89,7 @@ function localize(){
  byId("raLanguage").textContent=state.language==="id"?"English":"Bahasa Indonesia";
  const list=byId("raExamples");list.replaceChildren();
  for(const ex of state.corpus?.["examples_"+state.language]||[]){const b=el("button","sli-ra-example",ex);b.type="button";b.addEventListener("click",()=>{byId("raQuestion").value=ex;answer(ex)});list.append(b)}
+ byId("raCopy").textContent=dict[state.language].copy;
  if(state.last)answer(state.last.query);
 }
 function init(corpus){
