@@ -17,6 +17,10 @@ Independent, open-source-based analysis of Indonesia's strategic investment, ene
 
 ## SLI Research AI Assistant · Conversational Research (17 October 2026)
 
+- **Owner Test Mode is prepared, NOT deployed**: a separate Cloudflare Worker can call a real generative model on a limited set of existing public SLI snippets with two private server-side secrets. It does not require unfinished subscription login, but remains restricted to the owner via a long random token and per-minute limits. Follow [OWNER_TEST_SETUP.md](research-api/OWNER_TEST_SETUP.md). Never paste an OpenAI API key or test token in GitHub source or this chat.
+- The main research page now keeps the prompt above the fold and places the owner test control below it; redundant full site navigation has been removed from this focused workspace. The secure owner test endpoint must be deployed and its public URL inserted in `data/sli-research-assistant-config.json` before the owner test input becomes usable.
+
+
 - **[SLI Research AI](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-research-ai.html)** is now a separate bilingual conversation-first research workspace: long-form natural-language instructions, Executive Summary / Deep Research / Comparative Analysis / Risk & Opportunity modes, follow-up messages, source/citation sidebar, copy and Markdown export UI. Generative service **is NOT active** yet; no model-generated responses are claimed.
 - **[Evidence Preview](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-research-evidence-preview.html)** preserves the former source-grounded rule-based analytical feature separately; it is not marketed as generative AI.
 - `js/sli-research-assistant.js` reads `data/sli-research-assistant-config.json`; configuration defaults to `api_enabled=false`, `login_enabled=false`, `api_endpoint=null`. The page fails closed and never sends instructions to an unconfigured model.
