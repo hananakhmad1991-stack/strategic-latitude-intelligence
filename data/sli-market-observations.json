@@ -1,0 +1,21 @@
+{
+  "schema": "sli-market-observations-v1",
+  "checked_at": "2026-10-17",
+  "status": "no_licensed_feed_connected",
+  "publisher": "",
+  "licence_id": null,
+  "permission_to_redistribute": false,
+  "observations": [],
+  "requirements": [
+    "symbol",
+    "value",
+    "unit",
+    "observation_date",
+    "published_at",
+    "source_url",
+    "provider",
+    "delay_class",
+    "rights_basis"
+  ],
+  "warning": "Market indicators deliberately N/A unless source-dated observations with redistribution permission pass validation."
+}
