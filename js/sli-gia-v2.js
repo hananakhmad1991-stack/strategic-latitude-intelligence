@@ -54,6 +54,13 @@ async function initWorld(){
  }catch(_e){status.textContent='World geometry unavailable. Country selector and interactive reference points remain functional.';}
  refreshMap();
 }
+function updateSourceWatch(){
+ const dest=$('sourceWatchStatus');if(!dest||!config)return;
+ const sc=selectedScenario(),tags=sc?.tags||[],match=engine.keywordMatches(feed,tags);
+ const threshold=number('signalThreshold'),valid=Number.isInteger(threshold)&&threshold>=1&&threshold<=50;
+ if(!valid){dest.textContent='Set an integer headline-match threshold from 1 to 50.';return}
+ dest.textContent=tags.length?(match.length>=threshold?'SOURCE WATCH · keyword count reached threshold: ':'SOURCE WATCH · below keyword count threshold: ')+match.length+' / '+threshold+' matches across '+feed.length+' sourced headlines. Last feed: '+(snapshot?.generated_at_utc||'undated')+'. This is monitoring volume, NOT verified escalation.':'Custom scenario has no keyword dictionary; source watch N/A.';
+}
 function scenarioText(){
  const sc=selectedScenario(),sector=selectedSector();if(!sc)return;
  $('riskPath').textContent=sc.pathway;
@@ -63,7 +70,7 @@ function scenarioText(){
 }
 function updateAll(){
  if(!config)return;
- scenarioText();
+ scenarioText();updateSourceWatch();
  for(const id of ['macroRisk','mesoRisk','microRisk'])$(id.replace('Risk','Val')).textContent=$(id).value;
  const input={macro:number('macroRisk'),meso:number('mesoRisk'),micro:number('microRisk')};
  try{
@@ -111,7 +118,7 @@ async function loadFeed(){
   $('feedCount').textContent=String(feed.length);
   $('feedCoverage').textContent=Object.keys(snapshot.groups||{}).join(' / ')||'None';
  }catch(e){feed=[];$('feedDate').textContent='Unavailable';$('feedCount').textContent='N/A';$('feedCoverage').textContent='Source unavailable';}
- renderFeed();
+ renderFeed();updateSourceWatch();
 }
 function download(){
  if(!lastResults)return;const summary={schema:'sli-gia-scenario-export-v2',status:'assumptions_not_verified_risk',context:{scenario:selectedScenario()?.name,country:selectedCountry()?.name,sector:$('sector').value},risk:lastResults,feed:{source:'SLI research-signal-radar',generated_at_utc:snapshot?.generated_at_utc||null,count:feed.length},methodology:config.methodology,not_advice:true};
@@ -130,6 +137,7 @@ function initialize(){
  $('scenario').addEventListener('change',()=>{const c=selectedScenario();if(c)$('country').value=c.country;updateAll()});
  for(const id of ['country','sector','macroRisk','mesoRisk','microRisk','threshold','portfolioValue','exposure','bullProbability','baseProbability','bearProbability','bullShock','baseShock','bearShock'])$(id).addEventListener('input',updateAll);
  for(const id of ['newsSearch','newsFilter'])$(id).addEventListener('input',renderFeed);
+ $('signalThreshold').addEventListener('input',updateSourceWatch);
  $('recalculate').addEventListener('click',updateAll);$('resetScenario').addEventListener('click',reset);$('exportGia').addEventListener('click',download);$('refreshFeed').addEventListener('click',loadFeed);
  reset();initWorld();loadFeed();
 }
