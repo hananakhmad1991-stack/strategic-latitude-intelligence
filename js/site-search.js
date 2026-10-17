@@ -18,11 +18,11 @@
   solar:["surya","plts","diesel"],hydro:["plta"],ev:["spklu","electric","vehicle"],gini:["inequality","ketimpangan"],
   ketimpangan:["gini","inequality"],pdrb:["grdp"],grdp:["pdrb"],pertumbuhan:["growth"],growth:["pertumbuhan"],
   elektrifikasi:["electrification"],electrification:["elektrifikasi"],industri:["industry","industrial"],industry:["industri"],
-  smelter:["smelters","refining","processing"],pusat:["central"],tengah:["central"],central:["tengah"],
+  pusat:["central"],tengah:["central"],central:["tengah"],
   utara:["north"],north:["utara"],selatan:["south"],south:["selatan"],barat:["west"],west:["barat"],
   timur:["east"],east:["timur"],tenggara:["southeast"],southeast:["tenggara"],jawa:["java"],java:["jawa"],
   sumatera:["sumatra"],sumatra:["sumatera"],kalimantan:["borneo"],borneo:["kalimantan"],
-  kepulauan:["islands"],"dkı":["dki"]
+  kepulauan:["islands"]
  };
  const norm=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("en").replace(/[^a-z0-9]+/g," ").trim();
  const collapse=x=>norm(x).replace(/\s+/g," ");
@@ -192,7 +192,7 @@
     "climate-environment.html","geopolitical-impact-assessment.html","sli-data-automation-center.html",
     "pln-electricity-statistics.html","ai-infrastructure.html"]);
    if(item.path&&allowPages.has(item.path)){
-    window.location.assign("./"+item.path);return;
+    window.location.assign("./"+item.path+(item.province?"?province="+encodeURIComponent(item.province):""));return;
    }
    function displayFocus(anchor){
     if(!["record","indicator","topic"].includes(item.kind))return null;
