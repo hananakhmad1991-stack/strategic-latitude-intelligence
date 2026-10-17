@@ -3,7 +3,7 @@
   "edition": 2025,
   "source": "Lowy Institute Asia Power Index",
   "source_url": "https://power.lowyinstitute.org/countries/indonesia/",
-  "provenance_notice": "Hierarchies and named indicators transcribed from the Lowy Institute explore pages. Scores of submeasures/indicators appear ONLY for a limited set verified on Lowy's official 2025 indicator ranking pages; all others are N/A in SLI. SLI does not recompute the published Lowy Index.",
+  "provenance_notice": "Lowy 2025 country data hierarchy independently structured from Lowy's official explore pages. Some indicators now have independently confirmed exact Indonesia 2025-ranked scores and source-year values. All other indicators remain N/A in SLI until individually verified. Indexed edition year can differ from raw observation year.",
   "measures": [
     {
       "id": "economic",
@@ -125,7 +125,15 @@
           "indicators": [
             {
               "name": "Global exports",
-              "status": "source_indicator_not_imported"
+              "status": "verified_2025",
+              "indonesia": {
+                "score": 7.4,
+                "rank": 13,
+                "value": "US$263 billion merchandise and services exports (2024)",
+                "year": 2025,
+                "source_year": 2024
+              },
+              "source_url": "https://power.lowyinstitute.org/data/economic-capability/connectivity/global-exports/"
             },
             {
               "name": "Global imports",
@@ -229,7 +237,15 @@
             },
             {
               "name": "Air warfare: Fighters",
-              "status": "source_indicator_not_imported"
+              "status": "verified_2025",
+              "indonesia": {
+                "score": 1.8,
+                "rank": 12,
+                "value": "45* fighter / ground-attack aircraft (2025; Lowy definition)",
+                "year": 2025,
+                "source_year": 2025
+              },
+              "source_url": "https://power.lowyinstitute.org/data/military-capability/weapons-and-platforms/air-warfare-fighters/"
             },
             {
               "name": "Air warfare: Enablers",
@@ -345,7 +361,15 @@
           "indicators": [
             {
               "name": "Energy trade balance",
-              "status": "source_indicator_not_imported"
+              "status": "verified_2025",
+              "indonesia": {
+                "score": 69.8,
+                "rank": 3,
+                "value": "246 Mtoe net energy exports (2023)",
+                "year": 2025,
+                "source_year": 2023
+              },
+              "source_url": "https://power.lowyinstitute.org/data/resilience/resource-security/energy-trade-balance/"
             },
             {
               "name": "Energy self-sufficiency",
@@ -357,7 +381,15 @@
             },
             {
               "name": "Fuel security",
-              "status": "source_indicator_not_imported"
+              "status": "verified_2025",
+              "indonesia": {
+                "score": 88.9,
+                "rank": 14,
+                "value": "−1.0% refined petroleum balance / GDP (2023)",
+                "year": 2025,
+                "source_year": 2023
+              },
+              "source_url": "https://power.lowyinstitute.org/data/resilience/resource-security/fuel-security/"
             },
             {
               "name": "Rare-earth metals supply",
@@ -587,7 +619,15 @@
             },
             {
               "name": "Investment attractiveness",
-              "status": "source_indicator_not_imported"
+              "status": "verified_2025",
+              "indonesia": {
+                "score": 22.1,
+                "rank": 5,
+                "value": "US$250 billion cumulative inward foreign capital (2015–2024)",
+                "year": 2025,
+                "source_year": "2015–2024"
+              },
+              "source_url": "https://power.lowyinstitute.org/data/economic-relationships/regional-investment-ties/investment-attractiveness/"
             }
           ]
         },
