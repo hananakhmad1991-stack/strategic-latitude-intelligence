@@ -15,6 +15,9 @@ const conceptGroups={
  energy:["energi","energy","oil","gas","batubara","coal","brent","wti","renewables","listrik","electricity"],
  trade:["ekspor","export","import","impor","perdagangan","trade","neraca"],
  inflation:["inflasi","inflation","cpi","harga konsumen"],
+ interest:["suku bunga","bi rate","interest rate","policy rate","bunga acuan"],
+ currency:["rupiah","kurs","usd idr","jisdor","exchange rate"],
+ news:["berita","news","monitoring","headlines"],
  risk:["risiko","risk","hambatan","challenges","tantangan","swot","prospek","outlook"],
  econometric:["ekonometrika","econometric","multiplier","kausal","causal","regresi","regression"]
 };
@@ -91,7 +94,7 @@ function analyseOne(p,query,lang,metadata){
   sections.push({title:local(lang,"Keseimbangan pertumbuhan dan ketimpangan","Growth and distribution"),body:inequality});
  }
  const projectFocus=intent.includes("ai")||intent.includes("minerals")||intent.includes("energy");
- const words=(p.project_examples||[]).filter(x=>!projectFocus||(intent.includes("ai")&&/ai|data|cloud/i.test(x.sector+" "+x.title))||(intent.includes("minerals")&&/mineral|battery|smelter|hpal|nickel/i.test(x.sector+" "+x.title))||(intent.includes("energy")&&/energy|power|listrik|renewable/i.test(x.sector+" "+x.title)));
+ const words=projectFocus?(p.project_examples||[]).filter(x=>(intent.includes("ai")&&/ai|data|cloud/i.test(x.sector+" "+x.title))||(intent.includes("minerals")&&/mineral|battery|smelter|hpal|nickel/i.test(x.sector+" "+x.title))||(intent.includes("energy")&&/energy|power|listrik|renewable/i.test(x.sector+" "+x.title))):[];
  if(words.length){
   const relevant=words.slice(0,2);
   const strings=[];
@@ -108,6 +111,7 @@ function analyseOne(p,query,lang,metadata){
   "Dalam sampel proyek SLI saat ini belum ada bukti spesifik "+(intent.includes("ai")?"data center/AI":intent.includes("minerals")?"hilirisasi mineral":"energi")+" yang cukup untuk "+name+". Ini BUKAN berarti tidak ada proyek di wilayah tersebut. Pemeriksaan proyek dan kapasitas sektor memerlukan registri yang lebih lengkap sebelum menyimpulkan kelayakan investasi.",
   "The current curated SLI sample does not contain sufficient province-specific "+(intent.includes("ai")?"AI/data center":intent.includes("minerals")?"critical mineral":"energy")+" project evidence for "+name+". That does NOT mean no projects exist. Additional registered project and operating-capacity sources are required before due diligence.")});
  }
+ if(intent.includes("risk")&& !words.length)sections.push({title:local(lang,"Risiko dan keterbatasan riset","Risks and due-diligence gaps"),body:local(lang,"Kelayakan investasi tidak dapat disimpulkan dari PDRB dan PMTB saja. Periksa sumber daya, biaya energi, jaringan listrik, pasar, regulasi, logistik, dan kualitas informasi proyek secara spesifik.","Investment viability cannot be inferred from GRDP and GFCF alone. Validate resource economics, energy and grid supply, logistics, market access, permitting and source reliability.")});
  if(intent.includes("inflation"))sections.push({title:local(lang,"Indikator yang belum tersedia","Unavailable indicators"),body:local(lang,"Tidak ada seri inflasi/IHK khusus "+name+" dalam corpus Research Open. Angka inflasi nasional tidak boleh diberi label sebagai inflasi provinsi.", "Province-specific CPI/inflation for "+name+" is not in this Open research corpus. National inflation must not be represented as provincial inflation.")});
  if(intent.includes("econometric"))sections.push({title:local(lang,"Batas model ekonometrika","Econometric model limits"),body:local(lang,"Angka ini bersifat deskriptif. Tidak ada estimasi koefisien kausal, model input-output, regresi panel, atau proyeksi multiplier effect yang tervalidasi untuk pertanyaan ini. Simulasi memerlukan asumsi, data input-output, dan pengujian model.", "These observations are descriptive. No tested causal coefficient, input-output multiplier, panel regression, or project return forecast is available for this question. Modelling requires specified assumptions and validation.")});
  const limit=local(lang,"Ini cuplikan analisis daerah, bukan seluruh profil sektoral, komparasi 38 provinsi, atau rekomendasi investasi. Data PDRB 2025 bersifat sementara; data Gini Maret 2026 menggunakan periode survei berbeda.","This is a limited provincial analytical preview, not full sector dossiers, 38-province screening, or investment advice. The 2025 GRDP figures are preliminary and March 2026 Gini refers to a different measurement period.");
@@ -149,14 +153,15 @@ export function generateProvinceReport(question,scope,lang="id"){
 export function generateThematicReport(question,corpus,lang="id",scope="all"){
  if(!Array.isArray(corpus?.documents))throw Error("Invalid evidence corpus");
  const intents=detectIntents(question);
- const focus={ai:"ai",minerals:"minerals",energy:"energy",inflation:"macroeconomy",growth:"macroeconomy",trade:"trade",inequality:"inequality",investment:"minerals"};
+ const focus={ai:"ai",minerals:"minerals",energy:"energy",inflation:"macroeconomy",growth:"macroeconomy",trade:"trade",inequality:"inequality",investment:"methodology",interest:"macroeconomy",currency:"macroeconomy",news:"news"};
  const desired=scope!=="all"?scope:(intents.map(x=>focus[x]).find(Boolean)||null);
  const synonyms=terms(question);
  const ranked=corpus.documents.filter(x=>scope==="all"||x.topic===scope).map(d=>{
    const title=normalize(d.title+" "+(d.title_en||"")),text=normalize(d.text+" "+(d.text_en||""));
-   let score=(d.topic===desired?12:0);
-   for(const t of synonyms){if(title.includes(t))score+=5;if(text.includes(t))score+=1}
+   let score=0;
+   for(const t of synonyms){if(title.split(" ").includes(t))score+=7;else if(title.includes(t))score+=3;if(text.includes(t))score+=1}
    for(const intent of intents){if(conceptGroups[intent]?.some(alias=>inPhrase(title+" "+text,alias)))score+=3}
+   if(score>0&&d.topic===desired)score+=8;
    return {...d,_score:score};
  }).filter(d=>d._score>0).sort((a,b)=>b._score-a._score||a.id.localeCompare(b.id)).slice(0,4);
  if(!ranked.length)return {kind:"insufficient",title:local(lang,"Bukti belum cukup","Insufficient evidence"),lead:local(lang,"Data terkurasi untuk pertanyaan ini belum cukup. Periksa direktori sumber dan tentukan sektor atau wilayah lebih spesifik; sistem tidak akan mengarang kesimpulan.","This preview lacks evidence to answer that specific question. Try a narrower sector or region; the system will not invent a conclusion."),sections:[],sources:[],metrics:[],limit:"",geo:[],suggestions:[]};
