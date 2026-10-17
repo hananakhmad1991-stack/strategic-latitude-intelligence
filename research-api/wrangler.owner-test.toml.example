@@ -1,0 +1,24 @@
+# SLI OWNER TEST ONLY — not public subscriber production.
+# Rename/copy to wrangler.toml locally. Do NOT place any credential here.
+name = "sli-research-owner-test"
+main = "src/owner-test-worker.mjs"
+compatibility_date = "2026-10-17"
+workers_dev = true
+
+[vars]
+WEB_ORIGIN = "https://hananakhmad1991-stack.github.io"
+STAGING_ONLY = "true"
+RESEARCH_MODEL = "gpt-5.4-mini"
+OWNER_MAX_OUTPUT_TOKENS = "2400"
+
+[[ratelimits]]
+name = "AI_LIMITER"
+namespace_id = "10113"
+[ratelimits.simple]
+limit = 2
+period = 60
+
+# TWO secrets created interactively after deployment:
+# OPENAI_API_KEY (model provider secret; NEVER enter on SLI website)
+# OWNER_TEST_TOKEN (64-character cryptographic random value; enter in masked Owner Test input).
+# Define an OpenAI API project budget to cap test spending.
