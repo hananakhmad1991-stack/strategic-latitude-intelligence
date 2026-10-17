@@ -58,7 +58,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.equal(assetType.value,"all","Asset type default all");
  assert.ok(all.some(n=>n.className==="map-advanced"),"Raw source-registry selector is in advanced details");
  const glossarySections=all.filter(n=>n.className==="map-glossary-section");
- assert.ok(glossarySections.length>=1,"Map retains a short source-context appendix, not a duplicated full glossary");
+ assert.equal(glossarySections.length,0,"Do not recreate the redundant full map glossary inside Strategic Map");
  const glossaryData=JSON.parse(fs.readFileSync(path.join(ROOT,"data/strategic-map-glossary.json"),"utf8"));
  assert.ok(glossaryData.sections.flatMap(x=>x.items).length>=80,"Exhaustive bilingual terms, units and methods");
  assert.ok(glossaryData.sections.flatMap(x=>x.items).every(x=>x.term&&x.definition_en&&x.definition_id),"Each term has EN and ID definition");
