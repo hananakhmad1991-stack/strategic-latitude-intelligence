@@ -32,7 +32,7 @@ test("Membership API denies unauthenticated, missing configuration, forged claim
   globalThis.fetch=async path=>{assert.match(String(path),/\/auth\/v1\/\.well-known\/jwks\.json$/);return new Response(JSON.stringify({keys:[pub]}),{status:200,headers:{"content-type":"application/json"}})};
   const now=Math.floor(Date.now()/1000),claims={iss:"https://test-project.supabase.co/auth/v1",sub:uid,aud:"authenticated",role:"authenticated",iat:now-60,exp:now+3600,plan:"enterprise"};
   const valid=await makeJWT(keys.privateKey,claims);
-  const health=await worker.fetch(request("/healthz"),{});
+  const health=await worker.fetch(request("/healthz",{site:null}),{});
   assert.equal(health.status,200);assert.equal((await health.json()).state,"prelaunch");
   assert.equal((await worker.fetch(request("/v1/me",{bearer:valid}),{})).status,503);
   assert.equal((await worker.fetch(request("/v1/me"),environment())).status,401);
