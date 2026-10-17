@@ -96,7 +96,7 @@
  function init(){
   $('modeInbound').addEventListener('click',()=>setMode('inbound'));
   $('modeOutbound').addEventListener('click',()=>setMode('outbound'));
-  Promise.allSettled([json('./data/sli-investment-network.json'),json('./data/sli-gia-world-110m.geojson')]).then(results=>{
+  Promise.allSettled([json('./data/sli-investment-network.json'),json('./data/sli-investment-network-map.geojson')]).then(results=>{
    if(results[0].status==='rejected'){ $('question').textContent='Investment data unavailable';$('rankings').textContent='Unable to load source data. Please try again later.';$('mapStatus').textContent='No investment relationships can be displayed until data is available.';return;}
    catalog=results[0].value;
    if(!catalog?.views?.inbound?.records?.length||!catalog?.views?.outbound?.records?.length)throw Error('Missing investment records');
