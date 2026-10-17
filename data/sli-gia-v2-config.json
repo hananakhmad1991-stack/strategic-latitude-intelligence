@@ -1,0 +1,299 @@
+{
+  "schema": "sli-geopolitical-impact-v2",
+  "as_of": "2026-10-17",
+  "scope": "Scenario intelligence for Indonesia-linked investments; country scores are scenario assumptions, not observed country risk, official GPR or validated NLP.",
+  "methodology": {
+    "macro_weight": 0.35,
+    "meso_weight": 0.4,
+    "micro_weight": 0.25,
+    "score_type": "USER_SCENARIO_0_100",
+    "loss_model": "exposed asset value multiplied by scenario change in valuation",
+    "quantile": "Discrete scenario-weighted 95th percentile (not statistically calibrated market VaR)",
+    "news_type": "Source-dated media leads; keyword matching for triage only (not sentiment validation)",
+    "excluded": [
+      "country scores from raw headline counts",
+      "trade recommendations",
+      "NLP-generated sentiment without audited model"
+    ]
+  },
+  "countries": [
+    {
+      "code": "IDN",
+      "name": "Indonesia",
+      "lon": 117,
+      "lat": -2
+    },
+    {
+      "code": "CHN",
+      "name": "China",
+      "lon": 104,
+      "lat": 35
+    },
+    {
+      "code": "USA",
+      "name": "United States",
+      "lon": -99,
+      "lat": 39
+    },
+    {
+      "code": "TWN",
+      "name": "Taiwan",
+      "lon": 121,
+      "lat": 24
+    },
+    {
+      "code": "SGP",
+      "name": "Singapore",
+      "lon": 103.85,
+      "lat": 1.3
+    },
+    {
+      "code": "MYS",
+      "name": "Malaysia",
+      "lon": 102,
+      "lat": 4
+    },
+    {
+      "code": "JPN",
+      "name": "Japan",
+      "lon": 138,
+      "lat": 37
+    },
+    {
+      "code": "KOR",
+      "name": "South Korea",
+      "lon": 127.8,
+      "lat": 36
+    },
+    {
+      "code": "RUS",
+      "name": "Russia",
+      "lon": 96,
+      "lat": 61
+    },
+    {
+      "code": "UKR",
+      "name": "Ukraine",
+      "lon": 31,
+      "lat": 49
+    },
+    {
+      "code": "IRN",
+      "name": "Iran",
+      "lon": 53,
+      "lat": 33
+    },
+    {
+      "code": "SAU",
+      "name": "Saudi Arabia",
+      "lon": 45,
+      "lat": 24
+    },
+    {
+      "code": "IND",
+      "name": "India",
+      "lon": 79,
+      "lat": 21
+    },
+    {
+      "code": "AUS",
+      "name": "Australia",
+      "lon": 134,
+      "lat": -25
+    },
+    {
+      "code": "DEU",
+      "name": "Germany",
+      "lon": 10,
+      "lat": 51
+    },
+    {
+      "code": "GBR",
+      "name": "United Kingdom",
+      "lon": -2,
+      "lat": 54
+    },
+    {
+      "code": "ARE",
+      "name": "UAE",
+      "lon": 54,
+      "lat": 24
+    }
+  ],
+  "drivers": [
+    {
+      "key": "macro",
+      "title": "Macro — Country and political risk",
+      "signals": [
+        "Regime change, electoral uncertainty, conflict escalation, abrupt tax or currency controls"
+      ]
+    },
+    {
+      "key": "meso",
+      "title": "Meso — Trade and supply chain",
+      "signals": [
+        "Sanctions, logistics chokepoints, tariffs and critical-input disruptions"
+      ]
+    },
+    {
+      "key": "micro",
+      "title": "Micro — Portfolio specific",
+      "signals": [
+        "Revenue concentration, location exposure, vendor substitution and hedging capacity"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "maritime",
+      "name": "Maritime chokepoint disruption",
+      "country": "IDN",
+      "pathway": "Shipping interruptions → freight costs and delivery delays → imported inputs, inflation and exporter margins.",
+      "tags": [
+        "shipping",
+        "red sea",
+        "suez",
+        "hormuz",
+        "strait",
+        "oil",
+        "freight"
+      ],
+      "watch": [
+        "Port traffic and freight indices",
+        "Energy benchmark and FX",
+        "Issuer logistics and cost disclosures"
+      ],
+      "mitigation": [
+        "Review route concentration and contractual force majeure",
+        "Compare alternate suppliers and delivery lead times",
+        "Evaluate, not automatically execute, FX hedging"
+      ]
+    },
+    {
+      "id": "trade",
+      "name": "Major-power trade restrictions",
+      "country": "CHN",
+      "pathway": "Tariffs/export controls → suppliers and technology access → relocation feasibility and cost of production.",
+      "tags": [
+        "tariff",
+        "trade",
+        "export control",
+        "semiconductor",
+        "china",
+        "sanction"
+      ],
+      "watch": [
+        "Published tariff and export-control notices",
+        "Customer destination mix",
+        "Technology origin, ownership and contractual restrictions"
+      ],
+      "mitigation": [
+        "Stress-test alternate export markets and suppliers",
+        "Review rules-of-origin compliance",
+        "Check counterparty and sanctions exposure"
+      ]
+    },
+    {
+      "id": "energy",
+      "name": "Global energy-price shock",
+      "country": "SAU",
+      "pathway": "Energy supply shock → fuel, logistics and input costs → Indonesian terms of trade and portfolio margin.",
+      "tags": [
+        "energy",
+        "oil",
+        "coal",
+        "gas",
+        "opec",
+        "lng"
+      ],
+      "watch": [
+        "Crude/LNG/coal benchmarks with contract dates",
+        "Domestic import bills and fiscal exposures",
+        "Company procurement and price pass-through"
+      ],
+      "mitigation": [
+        "Review supply contracts and inventory resilience",
+        "Compare oil importers and energy exporters separately",
+        "Assess hedging economics with qualified advisers"
+      ]
+    },
+    {
+      "id": "technology",
+      "name": "Semiconductor and AI supply disruption",
+      "country": "TWN",
+      "pathway": "Technology controls → chips / GPU availability → data center capex, equipment lead times and digital investment.",
+      "tags": [
+        "semiconductor",
+        "chips",
+        "gpu",
+        "taiwan",
+        "ai",
+        "data center"
+      ],
+      "watch": [
+        "Official export-control changes",
+        "Vendor delivery timelines",
+        "Domestic data-center energy and procurement contracts"
+      ],
+      "mitigation": [
+        "Document single-vendor dependencies",
+        "Explore compliant supplier diversification",
+        "Review capex and implementation milestones"
+      ]
+    },
+    {
+      "id": "custom",
+      "name": "Custom geopolitical event",
+      "country": "IDN",
+      "pathway": "Define your own transmission chain and scenario assumptions before interpretation.",
+      "tags": [],
+      "watch": [
+        "Identify primary official evidence",
+        "Set affected countries, sectors and asset exposures",
+        "Document assumptions and uncertainty"
+      ],
+      "mitigation": [
+        "Validate event and legal implications",
+        "Re-run downside sensitivity under multiple assumptions",
+        "Escalate material exposures for professional review"
+      ]
+    }
+  ],
+  "sector_matrix": [
+    {
+      "sector": "Energy / Coal",
+      "maritime": "Commodity price exposure may be positive but logistics and fuel costs may rise.",
+      "trade": "Trade restrictions and customer concentration may reduce demand.",
+      "energy": "Export benefit varies by contracts and input costs.",
+      "technology": "Indirect via energy demand and industrial activity."
+    },
+    {
+      "sector": "Critical Minerals / Battery",
+      "maritime": "Shipping and process inputs may become costlier.",
+      "trade": "Rules of origin, tariffs, and mineral sourcing may change access.",
+      "energy": "Smelter margins depend on electricity/fuel inputs.",
+      "technology": "Downstream electronics demand can affect expansion plans."
+    },
+    {
+      "sector": "AI / Data Centers",
+      "maritime": "Cooling and electrical equipment delays may affect buildouts.",
+      "trade": "GPU and connectivity supply restrictions can constrain capacity.",
+      "energy": "Power tariffs, availability and clean power access are critical.",
+      "technology": "High direct dependency on high-end compute supply."
+    },
+    {
+      "sector": "Manufacturing / Logistics",
+      "maritime": "Route delays and freight prices affect working capital.",
+      "trade": "Import/export tariffs and relocation feasibility matter.",
+      "energy": "Energy intensive operations face cost pressure.",
+      "technology": "Chip lead times can interrupt output."
+    },
+    {
+      "sector": "Banks / Capital Market",
+      "maritime": "Indirect via inflation, credit quality and market sentiment.",
+      "trade": "Borrower export exposure and currency mismatch matter.",
+      "energy": "Inflation and sovereign rate responses can alter funding.",
+      "technology": "Sectoral lending and investor risk appetite may change."
+    }
+  ]
+}
