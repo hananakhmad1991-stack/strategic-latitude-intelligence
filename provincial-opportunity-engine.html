@@ -73,6 +73,7 @@ footer{text-align:center;padding:20px;color:var(--muted);border-top:1px solid va
 <section class="panel"><div class="row"><h2>3 · Compare selected provinces</h2><button id="clearSelection" class="btn" type="button">Clear</button></div><p class="small">Up to three provinces. Strengths and constraints mean relative metric positioning only.</p><div id="compare" class="grid"></div></section>
 <section class="panel"><h2>2022–2025 historical momentum</h2><p class="small">Actual annual change in BPS constant-2010-price GRDP. Missing years remain blank.</p><div class="chart" id="trend"></div></section>
 </div>
+<section class="panel"><div class="row"><h2>SLI Analyst Brief · Decision-support synthesis</h2><button class="btn" id="copyBrief" type="button">Copy analyst brief</button></div><p class="small">Generated from observed BPS indicators, your screening objective and the scenario assumptions. Interpretation is comparative, not a recommendation or verified project due diligence.</p><div id="brief" aria-live="polite"></div></section>
 <section class="panel"><h2>Evidence behind selected regions</h2><p class="small">Registry evidence is included for due-diligence navigation, not added to fit scores. An announcement, MoU, groundbreaking, and operating facility are distinct stages. Reported investment is never assumed to be realized capital.</p><div id="projectEvidence"></div><p class="small"><a href="./intelligence-labs.html#investor">Explore complete sourced project registry ↗</a></p></section>
 <section class="panel">
 <h2>Interpretation &amp; source boundaries</h2>
@@ -112,12 +113,12 @@ function recompute(){
  rows=core.screen(data,{preset:$('preset').value,weights:custom});
  $('consumerShockVal').textContent=$('consumerShock').value+'%';
  $('capitalShockVal').textContent=$('capitalShock').value+'%';
- renderWeights();renderTable();renderScatter();renderComparison();renderTrend();renderProjects();
+ renderWeights();renderTable();renderScatter();renderComparison();renderTrend();renderProjects();renderBrief();
 }
 function select(name){
  if(selected.has(name))selected.delete(name);
  else{if(selected.size===3)selected.delete(selected.values().next().value);selected.add(name);}
- renderTable();renderScatter();renderComparison();renderTrend();renderProjects();
+ renderTable();renderScatter();renderComparison();renderTrend();renderProjects();renderBrief();
 }
 function renderTable(){
  const tbody=$('rankingBody');tbody.replaceChildren();
@@ -208,6 +209,26 @@ function renderProjects(){
   box.append(wrapper);
  }
 }
+function renderBrief(){
+ const box=$('brief');box.replaceChildren();
+ const picked=rows.filter(x=>selected.has(x.name));
+ if(!picked.length){box.append(el('p','Choose up to three provinces to generate a short sourced investment screening brief.'));return;}
+ const growth=rows.map(x=>x.growth).filter(Number.isFinite).sort((a,b)=>a-b);
+ const med=growth.length?(growth[(growth.length-1)>>1]+growth[growth.length>>1])/2:null;
+ const leading=[...picked].sort((a,b)=>b.score-a.score)[0];
+ const p1=el('p','Under the '+$('preset').selectedOptions[0].textContent.toLowerCase()+' lens, '+leading.name+' has the strongest user-weighted screening fit among the selected provinces ('+fmt(leading.score,1)+'/100; position '+(rows.indexOf(leading)+1)+' of '+rows.length+'). This is relative expenditure-data positioning, not a measured return or investment feasibility assessment.');
+ box.append(p1);
+ for(const row of picked){
+  const relative=Number.isFinite(med)?(row.growth>=med?'at or above':'below')+' the 2025 provincial median of '+fmt(med,2)+'%':'not comparable with the national sample';
+  const local=core.localProjects(registry,row.name);
+  const stages=[...new Set(local.map(x=>x.stage))];
+  box.append(el('p',row.name+': 2025 observed real GRDP growth was '+fmt(row.growth,2)+'% ('+relative+'), the household share was '+fmt(row.consumption,1)+'%, and the PMTB share was '+fmt(row.formation,1)+'%. Under your hypothetical shocks the mechanical nominal expenditure-accounting effect is '+fmt(shock(row),2)+'% of baseline GRDP. The selected evidence register attributes '+local.length+' project record(s) to the province'+(stages.length?'; recorded stages include '+stages.join(', '):'')+'. These are not additive investment amounts or evidence of complete province-wide coverage.'));
+ }
+ const lens=$('preset').value;
+ const question=lens==='market'?'Local purchasing power, distribution access and consumer-market segmentation':lens==='expansion'?'Reliable grid connections, industrial land, permits, logistics and investment realization':'Grid and logistics readiness, subnational permitting, supply-chain exposure and locally relevant demand';
+ box.append(el('p','Due-diligence priorities: '+question+'. Confirm project-stage evidence, operating economics and current regulatory requirements before any capital decision. BPS 2025 GRDP data are preliminary; this engine uses no political or public-safety proxy for a financial risk rating.'));
+ box.append(el('p','Source: '+data.sources.pdrb.title+' ('+data.sources.pdrb.released+'); SLI selected project registry as of '+registry.as_of+'. Model is descriptive and scenarios are hypothetical.'));
+}
 function exportCsv(){
  const headers=['province','relative_position','fit_score_0_100','nominal_grdp_idr_trillion_2025_preliminary','real_grdp_growth_yoy_2025_pct','household_spending_share_pct','fixed_capital_formation_share_pct','hypothetical_static_grdp_effect_pct','source_url'];
  const source=data.sources.pdrb.url;const vals=[headers.join(',')];
@@ -221,6 +242,7 @@ function attach(){
  $('filter').addEventListener('input',renderTable);$('clearSelection').addEventListener('click',()=>{selected.clear();recompute();});
  $('reset').addEventListener('click',()=>{$('preset').value='balanced';custom=null;$('consumerShock').value=5;$('capitalShock').value=10;$('filter').value='';selected.clear();rows.slice(0,2).forEach(r=>selected.add(r.name));recompute();});
  $('export').addEventListener('click',exportCsv);
+ $('copyBrief').addEventListener('click',async()=>{const text=$('brief').textContent;const button=$('copyBrief');try{await navigator.clipboard.writeText(text);button.textContent='Copied to clipboard';}catch(e){button.textContent='Copy unavailable · select text';}});
 }
 async function init(){
  attach();
