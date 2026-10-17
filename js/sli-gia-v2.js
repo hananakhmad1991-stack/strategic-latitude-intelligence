@@ -124,6 +124,7 @@ function download(){
  if(!lastResults)return;const summary={schema:'sli-gia-scenario-export-v2',status:'assumptions_not_verified_risk',context:{scenario:selectedScenario()?.name,country:selectedCountry()?.name,sector:$('sector').value},risk:lastResults,feed:{source:'SLI research-signal-radar',generated_at_utc:snapshot?.generated_at_utc||null,count:feed.length},methodology:config.methodology,not_advice:true};
  const blob=new Blob([JSON.stringify(summary,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=newEl('a');a.href=url;a.download='sli-gia-scenario-impact.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),300);
 }
+const mitigationReviews={concentration:'Review project revenue, sourcing and route concentration; identify any single-country, supplier or commodity dependencies; verify evidence from annual reports, invoices and contracts.',hedging:'Map FX assets/liabilities and cash-flow timing, quantify sensitivity, then request independent professional evaluation of hedging costs and counterparty risk. No hedge or trade is executed.',compliance:'Check current sanctions lists, licensing conditions, beneficial ownership, origin requirements and local permits against primary legal sources before any commitment.'};
 function reset(){
  const values={macroRisk:40,mesoRisk:55,microRisk:30,threshold:65,portfolioValue:100,exposure:60,bullProbability:20,baseProbability:50,bearProbability:30,bullShock:-5,baseShock:8,bearShock:25};
  for(const [id,v] of Object.entries(values))$(id).value=v;updateAll();
@@ -138,6 +139,7 @@ function initialize(){
  for(const id of ['country','sector','macroRisk','mesoRisk','microRisk','threshold','portfolioValue','exposure','bullProbability','baseProbability','bearProbability','bullShock','baseShock','bearShock'])$(id).addEventListener('input',updateAll);
  for(const id of ['newsSearch','newsFilter'])$(id).addEventListener('input',renderFeed);
  $('signalThreshold').addEventListener('input',updateSourceWatch);
+ document.querySelectorAll('[data-mitigation]').forEach(btn=>btn.addEventListener('click',()=>{$('mitigationDetail').textContent=mitigationReviews[btn.dataset.mitigation]||'No checklist available.'}));
  $('recalculate').addEventListener('click',updateAll);$('resetScenario').addEventListener('click',reset);$('exportGia').addEventListener('click',download);$('refreshFeed').addEventListener('click',loadFeed);
  reset();initWorld();loadFeed();
 }
