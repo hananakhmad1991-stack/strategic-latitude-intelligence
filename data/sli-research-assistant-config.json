@@ -12,7 +12,14 @@
     "risk_opportunity"
   ],
   "source_policy": "Private R2 curated sources and exact province matching, with dated numbered citations",
-  "published_notice_id": "Research AI generatif menunggu aktivasi autentikasi, layanan model, dan corpus riset privat. Evidence Preview tetap bisa dicoba tanpa klaim generatif.",
-  "published_notice_en": "Generative Research AI requires authenticated access, server-side model service, and a private licensed corpus. A separate evidence preview remains available.",
-  "preview_url": "sli-research-evidence-preview.html"
+  "published_notice_id": "SLI Research AI menunggu aktivasi. Untuk uji model generatif, pemilik SLI dapat mengaktifkan Owner Test Mode di Cloudflare; jangan masukkan API key ke GitHub Pages.",
+  "published_notice_en": "SLI Research AI is pending activation. The owner can deploy the separate Cloudflare Owner Test service with server-side secrets; never put API keys in GitHub Pages.",
+  "preview_url": "sli-research-evidence-preview.html",
+  "owner_test": {
+    "enabled": false,
+    "endpoint": null,
+    "scope": "owner_only_staging_with_public_curated_SLI_evidence",
+    "auth": "private_server_side_random_token_48_or_more_characters",
+    "status": "requires_Cloudflare_Worker_deployment_and_OpenAI_API_secret"
+  }
 }
