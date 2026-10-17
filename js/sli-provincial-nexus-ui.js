@@ -209,7 +209,8 @@ async function init(){
  datasets.assets=Object.fromEntries(N.SOURCES.filter(s=>datasets[s.id]).map(s=>[s.id,datasets[s.id]]));
  const prov=datasets.bps.provinces.map(p=>p.name),selector=$('province');
  selector.replaceChildren();for(const name of prov)selector.append(option(name,name));
- sel=prov.includes('Jawa Barat')?'Jawa Barat':prov[0];selector.value=sel;
+ const requested=new URLSearchParams(window.location.search).get('province');
+ sel=requested&&prov.includes(requested)?requested:(prov.includes('Jawa Barat')?'Jawa Barat':prov[0]);selector.value=sel;
  $('state').textContent='38-province economy loaded · '+(N.SOURCES.filter(s=>datasets[s.id]).length)+' of '+N.SOURCES.length+' asset layers loaded · '+failures.length+' missing feeds. Charts, correlations and scenarios are source-dependent. This is independent research, not an audited investment recommendation.';
  render();showSourceStatus();
 }
