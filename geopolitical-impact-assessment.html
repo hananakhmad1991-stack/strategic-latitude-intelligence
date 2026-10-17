@@ -51,6 +51,9 @@ h1{font-size:clamp(37px,5vw,58px);line-height:1.1;letter-spacing:-.04em;margin:7
 .reg-note{color:#bbd0d9;font-size:12px;line-height:1.6}
 .reg-action{background:#204557;border:1px solid #7f9da7;color:#f0f5f5;padding:9px 12px;border-radius:8px}
 @media(max-width:650px){.regfacts{grid-template-columns:1fr}.reg-scroll{max-height:380px}}
+
+.safety-intro{max-width:860px;color:#b9d1d9}.saf-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:15px 0 18px}.saf-kpi{border:1px solid #425e6c;border-radius:10px;padding:15px;background:#112f3e}.saf-kpi .num{font-size:clamp(23px,2.5vw,31px);font-weight:760;letter-spacing:-.02em;color:#f0d093}.saf-kpi small{display:block;color:#b9ccd4;margin-bottom:7px}.saf-kpi span{font-size:11px;color:#a9c6cb}.saf-flag{display:inline-block;border:1px solid #6e8290;border-radius:18px;padding:4px 10px;font-size:11px;color:#c4d5dc}.saf-controls{display:flex;gap:10px;flex-wrap:wrap;margin:17px 0}.saf-controls label{display:grid;gap:5px;flex:1 1 170px;min-width:145px;color:#bdd0da;font-size:12px}.saf-controls select,.saf-controls input{width:100%;padding:10px;border:1px solid #59798c;border-radius:7px;background:#153647;color:#e9f3ef}.saf-series{width:100%;height:auto;max-height:240px;background:#0c2837;border-radius:10px;margin-top:13px}.saf-series text{fill:#b8cfd7;font-size:12px}.saf-series .line{stroke:#ecc98d;stroke-width:3;fill:none}.saf-series .dot{fill:#edca8d}.saf-row{display:block;text-align:left;background:transparent;border:1px solid #365566;color:#edf4f1;width:100%;padding:10px 11px;border-radius:9px;margin-bottom:6px}.saf-row:hover,.saf-row[aria-pressed=true]{background:#204454;border-color:#e2c68c}.saf-row .head{display:flex;justify-content:space-between;gap:10px}.saf-row .head strong{color:#efd08d}.saf-row .track{height:6px;background:#21485b;border-radius:8px;overflow:hidden;margin-top:7px}.saf-row .fill{height:100%;background:#80c2b3;border-radius:8px}.saf-list{max-height:460px;overflow-y:auto}.saf-emphasis{border-left:3px solid #e5bc85;padding:12px 16px;background:#183b4c;margin:13px 0;border-radius:0 8px 8px 0}.saf-emphasis p{font-size:12px}.saf-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.saf-facts .num{font-size:29px;color:#edca8d;font-weight:720}.saf-export{background:#23495a;border:1px solid #8cabb0;color:#eff7f6;padding:9px 14px;border-radius:7px;margin-top:10px}.saf-status{color:#afcad2;font-size:12px;margin-top:10px}
+@media(max-width:850px){.saf-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:650px){.saf-facts{grid-template-columns:1fr}.saf-kpis{gap:7px}.saf-kpi{padding:10px}}
 </style></head><body>
 <header><div class="brand">STRATEGIC LATITUDE INTELLIGENCE</div><nav aria-label="SLI navigation"><a href="./index.html#overview">Main dashboard ↗</a><a href="./index.html#energy">Energy intelligence ↗</a><a href="./index.html#investment">Investment tracker ↗</a></nav></header>
 <main>
@@ -63,6 +66,7 @@ h1{font-size:clamp(37px,5vw,58px);line-height:1.1;letter-spacing:-.04em;margin:7
 <button type="button" data-view="sectors" aria-selected="false">Sector Outlook</button>
 <button type="button" data-view="dossiers" aria-selected="false">Deep Dives</button>
 <button type="button" data-view="regional" aria-selected="false">Regional Data</button>
+<button type="button" data-view="safety" aria-selected="false">Public Safety</button>
 </nav>
 <section id="snapshot" class="view"><h2 id="leadTitle">Indonesia's external position</h2><p class="lead" id="leadText">Loading SLI assessment…</p><div class="kpis" id="headlineKpis" aria-live="polite"></div><h2>Strategic reading</h2><div class="grid" id="highlights"></div><div class="footline"><a href="#dossiers" id="seeDossiers">Explore supporting evidence and analysis →</a></div></section>
 <section id="global" class="view" hidden><h2>Global relationships</h2><p class="lead">Selected BPS bilateral merchandise-trade relationships, full-year 2025. These are not foreign investment flows, diplomatic alignment scores or a ranking of every partner economy.</p>
@@ -72,6 +76,53 @@ h1{font-size:clamp(37px,5vw,58px);line-height:1.1;letter-spacing:-.04em;margin:7
 <div class="breadcrumb" id="dossierBreadcrumb" aria-label="Research dossier navigation"></div><button id="dossierBack" type="button" class="back" hidden>← Back</button>
 <div id="dossierHeading"></div><div id="dossierGrid" class="dossier-grid"></div><article id="issueDetail" class="panel" hidden aria-live="polite"><div class="eyebrow">SLI analytical assessment</div><h2 id="issueName">—</h2><p id="issueAnalysis"></p><div class="divider"></div><h3>Evidence behind this assessment</h3><div id="issueEvidence" class="evidence"></div><div id="issueRelatedSources" class="footline" hidden><strong>Relevant original documents</strong><div id="issueSourceLinks"></div></div><div class="watch"><strong>What to monitor</strong><p id="issueWatch"></p></div></article></section>
 
+
+<section id="safety" class="view" hidden>
+ <div class="eyebrow">Official security data · 2023–2024</div>
+ <h2>Public Safety &amp; Security Intelligence</h2>
+ <p class="safety-intro">Three distinct views: <strong>reported police incidents</strong>, <strong>household victimization and confidence in reporting</strong>, and <strong>village-level conflict observations</strong>. All figures are historical, published by BPS in December 2025—not a current safety rating or a forecast.</p>
+ <div class="saf-kpis" id="safSummary">
+  <div class="saf-kpi"><small>Police-reported crime · 2024</small><div class="num">561,993</div><span>Recorded events · Polri</span></div>
+  <div class="saf-kpi"><small>Recorded rate · 2024</small><div class="num">204</div><span>Per 100,000 people · Polri</span></div>
+  <div class="saf-kpi"><small>Population victimization · 2024</small><div class="num">0.73%</div><span>Susenas population share</span></div>
+  <div class="saf-kpi"><small>Victims reporting · 2024</small><div class="num">20.28%</div><span>Susenas survey victims</span></div>
+ </div>
+ <div class="saf-emphasis"><strong>What the evidence means for Indonesia</strong><p>SLI assessment: the registered incident count fell between 2023 and 2024, while self-reported victimization increased and reporting among victims declined. Different sources are not contradictory counts; they use different measurement populations. For investors, these historical trends support questions about insurance, personnel welfare, logistics and local due diligence—not automatic project risk labels.</p></div>
+ <div class="saf-controls">
+  <label>Evidence source<select id="safFamily"><option value="susenas">Susenas · 38 provinces</option><option value="police">Polri · 34 Polda jurisdictions</option><option value="podes">Podes · 38 provinces</option></select></label>
+  <label>Indicator<select id="safMetric"></select></label>
+  <label>Observation year<select id="safYear"></select></label>
+  <label>Area<select id="safArea"></select></label>
+ </div>
+ <div class="grid">
+  <div class="panel highlight">
+   <div class="minihead"><h3 id="safSelectedArea">Selected area</h3><span class="saf-flag" id="safStatus">Historical · published</span></div>
+   <div class="saf-facts">
+    <div><p id="safMetricTitle">Selected measure</p><div class="num" id="safValue">—</div><p id="safUnitYear" class="micro">—</p></div>
+    <div><p>Change from previous observation</p><div class="num" id="safChange">—</div><p id="safChangeContext" class="micro">—</p></div>
+   </div>
+   <svg id="safTrend" class="saf-series" viewBox="0 0 620 230" role="img" aria-label="Historical source series for selected area"></svg>
+   <p id="safCaveat" class="reg-note">Select a measure to inspect its source.</p>
+   <div class="reg-source"><p id="safSourceLabel" class="reg-note">BPS original publication</p><a id="safSourceLink" target="_blank" rel="noopener noreferrer" href="https://www.bps.go.id/">Open BPS publication ↗</a></div>
+  </div>
+  <div class="panel">
+   <h3>Compare areas <span id="safAreaScope" class="saf-flag"></span></h3>
+   <div class="saf-controls"><label>Search area<input type="search" id="safSearch" placeholder="Province or Polda"></label><label>Sort<select id="safSort"><option value="alpha">Area name A–Z</option><option value="value">Observation value descending</option></select></label></div>
+   <div class="saf-list" id="safAreaBars" aria-live="polite">Loading historical observations…</div>
+   <p class="saf-status" id="safCount"></p><button id="safDownload" class="saf-export" type="button">Export selected series (CSV)</button>
+  </div>
+ </div>
+ <div class="grid" style="margin-top:14px">
+  <div class="panel"><h3>National trends are not one composite measure</h3>
+   <div id="safNationalNotes" class="reg-note"><p><strong>Police records:</strong> 584,991 recorded crimes (2023) versus 561,993 (2024).</p><p><strong>Susenas:</strong> survey prevalence 0.45% (2023) versus 0.73% (2024); victim reporting 23.36% versus 20.28%.</p><p><strong>Podes:</strong> villages reporting a mass-conflict event 1.85% (2021) versus 2.41% (2024).</p></div>
+  </div>
+  <div class="panel"><h3>Geography, sampling and interpretation</h3>
+   <p class="reg-note"><strong>Polri geography ≠ province.</strong> Polda Metro Jaya includes Mabes Polri and reaches outside DKI; Polda Papua covers four administrative provinces, and Polda Papua Barat covers two. Police values must not be reassigned to individual provinces.</p>
+   <p class="reg-note"><strong>Susenas estimates</strong> include reporting bias and sample uncertainty; police records undercount unreported crime. <strong>Podes</strong> counts villages with at least one event, not event totals. N/A does not mean zero.</p>
+   <p class="reg-note">Source: BPS <em>Statistik Kriminal 2024/2025</em> (released 12 December 2025). Historical statistical observations, not a live threat feed, safety rating or investment recommendation.</p>
+  </div>
+ </div>
+</section>
 <section id="regional" class="view" hidden>
 <div class="eyebrow">Digitized official statistics · 2021–2025</div><h2>Indonesia's provincial economy and civic landscape</h2><p class="lead">Explore selected official BPS indicators across provinces and years. Economic scale and capital formation appear separately from election administration and institutional indicators. No combined political or investment-risk score is computed.</p>
 <div class="reg-controls">
@@ -101,4 +152,5 @@ h1{font-size:clamp(37px,5vw,58px);line-height:1.1;letter-spacing:-.04em;margin:7
 </main>
 <script defer src="./js/sli-indonesia-original-intelligence.js?v=20261017-original1"></script>
 <script defer src="./js/sli-bps-regional-visual.js?v=20261017-bps1"></script>
+<script defer src="./js/sli-bps-safety-visual.js?v=20261017-safety1"></script>
 </body></html>
