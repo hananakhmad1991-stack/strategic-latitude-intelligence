@@ -19,7 +19,7 @@ test("Research AI published page is a sourced, honest, bilingual Open preview",(
 });
 test("Open corpus only exposes limited source citations and never private Pro materials",()=>{
  assert.equal(corpus.access,"open_preview");
- assert.equal(corpus.generation_mode,"deterministic_source_retrieval_no_live_llm");
+ assert.equal(corpus.generation_mode,"deterministic_source_grounded_analytical_synthesis_no_live_llm");
  assert.ok(corpus.documents.length>=18&&corpus.documents.length<=35);
  const ids=corpus.documents.map(x=>x.id);
  assert.equal(new Set(ids).size,ids.length);
