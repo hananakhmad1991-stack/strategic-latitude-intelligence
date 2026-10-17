@@ -2,6 +2,16 @@
 
 Independent, open-source-based analysis of Indonesia's strategic investment, energy security, critical minerals, AI infrastructure, and public policy.
 
+## SLI Provincial Opportunity & Stress Engine (October 2026)
+
+- **[Interactive 38-province opportunity engine](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/provincial-opportunity-engine.html)** unites observed BPS 2021–2025 provincial expenditure GRDP, historical real growth, household expenditure intensity, fixed-capital formation (PMTB) intensity, and selected source-linked project milestones.
+- **Source contracts:** `data/sli-bps-regional-intelligence.json` and `data/sli-project-registry.json`; no duplicate model-specific data snapshots or invented missing values. 2025 regional data are preliminary.
+- **SLI-original lenses:** balanced regional activity, consumer-market, industrial expansion, and custom weights; transparent within-sample percentile composition, 0–100. The ranking is an adjustable screening fit, NOT expected investor returns, credit risk, project feasibility, or an official provincial grade.
+- **Conditional accounting stress:** user-controlled percentage reductions in 2025 household spending and fixed-capital formation, with other components held unchanged. This is a partial expenditure-accounting counterfactual, not a model of real GDP, probabilities, taxes or propagation through supply chains.
+- **Due diligence:** compare up to three provinces, inspect 2022–2025 real GDP growth, explore interactive growth-vs-PMTB scatterplot, see stage-specific project records and source URLs, and export the current screening assumptions/results to CSV.
+- The project registry is curated, **not exhaustive**. Multi-site records cannot be summed across provinces; announcements are not actual expenditure. Political/civic statistics and criminality are *not* mixed into an unverified investment-risk rating. Grid headroom, permits, project economics and bankability remain unknown until independently checked.
+- **Quality gate:** `.github/workflows/sli-provincial-opportunity-qa.yml` runs `tests/qa-sli-provincial-opportunity.mjs` when source data, analytical logic or interface changes.
+
 ## Unified Appendix, Glossary & Methodology (October 2026)
 
 - **[Unified Appendix & Methodology](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-glossary-methodology.html)** is the shared bilingual reader reference for every SLI dashboard. It has **257 unique terms** merged from the original Energy Security appendix and Strategic Map taxonomy, with added macroeconomic, AI infrastructure, investment, law and policy-evaluation definitions.
