@@ -1,0 +1,525 @@
+{
+  "schema": "sli-indonesia-original-intelligence-v1",
+  "updated_at": "2026-10-17",
+  "identity": "Strategic Latitude Intelligence independent analytical research",
+  "overview": {
+    "headline": "Indonesia grows, but external risks travel through trade, energy and capital costs.",
+    "narrative": "Q2 2026 growth reached 5.29%, while realized investment in the first half of 2026 reached Rp1,010.6 trillion. Yet Indonesia's oil-and-gas trade deficit and global financial conditions expose different industries to very different geopolitical shocks.",
+    "as_of": "2026-10-17",
+    "byline": "Strategic Latitude Intelligence",
+    "highlights": [
+      {
+        "domain": "economy",
+        "title": "Growth is positive; composition matters",
+        "text": "Watch whether investment and household demand can sustain expansion without accelerating inflation."
+      },
+      {
+        "domain": "external",
+        "title": "Buffers coexist with pressure",
+        "text": "US$146.3bn of official reserves provides breathing room but not immunity from fuel and currency shocks."
+      },
+      {
+        "domain": "trade",
+        "title": "Geopolitics affects counterparties differently",
+        "text": "Selected 2025 BPS data show a goods deficit with China but surpluses with the United States and India."
+      },
+      {
+        "domain": "capital",
+        "title": "Downstreaming remains material",
+        "text": "Rp300.1tn of H1 2026 realized investment went to downstream sectors; project quality and power access will shape outcomes."
+      }
+    ]
+  },
+  "metrics": [
+    {
+      "id": "gdp",
+      "label": "GDP growth",
+      "value": 5.29,
+      "unit": "% YoY",
+      "period": "2026 Q2",
+      "source_url": "https://www.bps.go.id/en/pressrelease/2026/08/05/2605/indonesia-s-economic-in-q2-2026-was-5-29-percent--y-on-y-.html",
+      "publisher": "BPS",
+      "display": "5.29%"
+    },
+    {
+      "id": "inflation",
+      "label": "Headline inflation",
+      "value": 3.28,
+      "unit": "% YoY",
+      "period": "2026 Sep",
+      "source_url": "https://www.bps.go.id/en/pressrelease/2026/10/01/2623/the-year-on-year--y-on-y--headline-inflation-in-september-2026-was-recorded-at-3-28-percent-.html",
+      "publisher": "BPS",
+      "display": "3.28%"
+    },
+    {
+      "id": "fx",
+      "label": "JISDOR USD/IDR",
+      "value": 18052,
+      "unit": "IDR per USD",
+      "period": "2026-10-16",
+      "source_url": "https://www.bi.go.id/id/statistik/indikator/Default.aspx",
+      "publisher": "Bank Indonesia",
+      "display": "Rp18,052"
+    },
+    {
+      "id": "reserves",
+      "label": "Official FX reserves",
+      "value": 146.3,
+      "unit": "USD bn",
+      "period": "2026 Sep",
+      "source_url": "https://www.bi.go.id/en/publikasi/ruang-media/news-release/Pages/sp_2821426.aspx",
+      "publisher": "Bank Indonesia",
+      "display": "US$146.3bn"
+    },
+    {
+      "id": "exports",
+      "label": "Goods exports YTD",
+      "value": 193.64,
+      "unit": "USD bn",
+      "period": "2026 Jan–Aug",
+      "source_url": "https://www.bps.go.id/assets/pressrelease/2026/10/01/2621/ekspor-dan-impor-indonesia-agustus-2026-masing-masing-tercatat-usd-26-61-miliar-dan-usd-23-06-miliar.html",
+      "publisher": "BPS",
+      "display": "US$193.64bn"
+    },
+    {
+      "id": "imports",
+      "label": "Goods imports YTD",
+      "value": 186.39,
+      "unit": "USD bn",
+      "period": "2026 Jan–Aug",
+      "source_url": "https://www.bps.go.id/assets/pressrelease/2026/10/01/2621/ekspor-dan-impor-indonesia-agustus-2026-masing-masing-tercatat-usd-26-61-miliar-dan-usd-23-06-miliar.html",
+      "publisher": "BPS",
+      "display": "US$186.39bn"
+    },
+    {
+      "id": "surplus",
+      "label": "Goods trade surplus YTD",
+      "value": 7.25,
+      "unit": "USD bn",
+      "period": "2026 Jan–Aug",
+      "source_url": "https://www.bps.go.id/assets/pressrelease/2026/10/01/2621/ekspor-dan-impor-indonesia-agustus-2026-masing-masing-tercatat-usd-26-61-miliar-dan-usd-23-06-miliar.html",
+      "publisher": "BPS",
+      "display": "US$7.25bn"
+    },
+    {
+      "id": "oil_deficit",
+      "label": "Oil and gas trade balance",
+      "value": -21.29,
+      "unit": "USD bn",
+      "period": "2026 Jan–Aug",
+      "source_url": "https://www.bps.go.id/assets/pressrelease/2026/10/01/2621/ekspor-dan-impor-indonesia-agustus-2026-masing-masing-tercatat-usd-26-61-miliar-dan-usd-23-06-miliar.html",
+      "publisher": "BPS",
+      "display": "−US$21.29bn"
+    },
+    {
+      "id": "investment",
+      "label": "Total realized investment",
+      "value": 1010.6,
+      "unit": "IDR tn",
+      "period": "2026 H1",
+      "source_url": "https://www.bkpm.go.id/index.php/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+      "publisher": "BKPM",
+      "display": "Rp1,010.6tn"
+    },
+    {
+      "id": "fdi",
+      "label": "Realized foreign investment",
+      "value": 507.6,
+      "unit": "IDR tn",
+      "period": "2026 H1",
+      "source_url": "https://www.bkpm.go.id/index.php/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+      "publisher": "BKPM",
+      "display": "Rp507.6tn"
+    },
+    {
+      "id": "downstream",
+      "label": "Realized downstream investment",
+      "value": 300.1,
+      "unit": "IDR tn",
+      "period": "2026 H1",
+      "source_url": "https://www.bkpm.go.id/index.php/id/info/siaran-pers/realisasi-investasi-semester-i-2026-tembus-rp-1-010-t-serap-1-4-juta-tenaga-kerja-langsung",
+      "publisher": "BKPM",
+      "display": "Rp300.1tn"
+    },
+    {
+      "id": "coal",
+      "label": "Coal production",
+      "value": 790,
+      "unit": "million tonnes",
+      "period": "2025",
+      "source_url": "https://esdm.go.id/en/media-center/news-archives/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat",
+      "publisher": "ESDM",
+      "display": "790 Mt"
+    },
+    {
+      "id": "coal_export",
+      "label": "Coal exports",
+      "value": 514,
+      "unit": "million tonnes",
+      "period": "2025",
+      "source_url": "https://esdm.go.id/en/media-center/news-archives/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat",
+      "publisher": "ESDM",
+      "display": "514 Mt"
+    },
+    {
+      "id": "renewable",
+      "label": "Renewable energy mix",
+      "value": 15.75,
+      "unit": "%",
+      "period": "2025",
+      "source_url": "https://esdm.go.id/en/media-center/news-archives/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat",
+      "publisher": "ESDM",
+      "display": "15.75%"
+    },
+    {
+      "id": "renewable_mw",
+      "label": "Installed renewable power",
+      "value": 15630,
+      "unit": "MW",
+      "period": "2025 Dec",
+      "source_url": "https://esdm.go.id/en/media-center/news-archives/capaian-positif-tahun-2025-negara-hadir-penuhi-kebutuhan-energi-masyarakat",
+      "publisher": "ESDM",
+      "display": "15,630 MW"
+    }
+  ],
+  "domains": [
+    {
+      "id": "economy",
+      "title": "Economic fundamentals",
+      "strap": "Growth, inflation and purchasing power",
+      "summary": "Demand remains a source of growth, but investment quality depends on productive capacity and inflation-adjusted returns.",
+      "topics": [
+        {
+          "id": "growth",
+          "title": "Growth and demand",
+          "metric_ids": [
+            "gdp"
+          ],
+          "analysis": "Output kept expanding in Q2 2026. Demand composition and productivity matter more for durable investment returns than a single headline growth rate.",
+          "watch": "Monitor household spending, private investment and sector-specific growth."
+        },
+        {
+          "id": "prices",
+          "title": "Inflation and real costs",
+          "metric_ids": [
+            "inflation"
+          ],
+          "analysis": "September inflation at 3.28% creates different cost pressures across households and imported inputs. The national rate conceals regional differences.",
+          "watch": "Track core inflation, food price volatility and wage growth."
+        },
+        {
+          "id": "policy",
+          "title": "Currency and policy conditions",
+          "metric_ids": [
+            "fx",
+            "reserves"
+          ],
+          "analysis": "FX volatility transmits global finance conditions to importers and foreign-currency borrowers; buffers reduce but do not eliminate pressure.",
+          "watch": "Monitor rate decisions, reserve adequacy and FX liabilities."
+        }
+      ]
+    },
+    {
+      "id": "external",
+      "title": "External resilience",
+      "strap": "Currency buffers and fuel import dependence",
+      "summary": "Foreign reserves help absorb shocks, while foreign-currency costs and petroleum imports are channels of vulnerability.",
+      "topics": [
+        {
+          "id": "buffers",
+          "title": "External buffers",
+          "metric_ids": [
+            "reserves"
+          ],
+          "analysis": "US$146.3bn in reserve assets offers external cover, but the buffer is not a guarantee against persistent outflows.",
+          "watch": "Compare import cover, external financing and market liquidity."
+        },
+        {
+          "id": "fxshock",
+          "title": "Rupiah transmission",
+          "metric_ids": [
+            "fx"
+          ],
+          "analysis": "A weaker rupiah raises imported capital-equipment and fuel costs but can improve revenues for exporters with USD receipts. Sector balance sheets determine the net impact.",
+          "watch": "Compare foreign-currency assets, liabilities and hedging."
+        },
+        {
+          "id": "energyimport",
+          "title": "Imported petroleum exposure",
+          "metric_ids": [
+            "oil_deficit"
+          ],
+          "analysis": "The US$21.29bn oil-and-gas deficit shows that a major energy exporter can remain vulnerable to fuel supply and tanker-route disruptions.",
+          "watch": "Watch crude oil, refined product imports and logistics."
+        }
+      ]
+    },
+    {
+      "id": "trade",
+      "title": "Trade interdependence",
+      "strap": "Export markets, bilateral asymmetries and shipping",
+      "summary": "Global trade shocks do not affect all Indonesian exporters or industrial importers in the same direction.",
+      "topics": [
+        {
+          "id": "balance",
+          "title": "Headline goods balance",
+          "metric_ids": [
+            "exports",
+            "imports",
+            "surplus"
+          ],
+          "analysis": "A US$7.25bn Jan–Aug 2026 goods surplus coexisted with fast-growing imports and a large petroleum deficit. Do not assume all sectors are net beneficiaries.",
+          "watch": "Examine commodity composition, volumes and trade terms."
+        },
+        {
+          "id": "counterparty",
+          "title": "Partner concentration",
+          "metric_ids": [
+            "surplus"
+          ],
+          "analysis": "Bilateral relationships are asymmetric: the importance of China as a supplier differs from that of the US and India as net export markets.",
+          "watch": "Watch bilateral tariffs, origin rules and buyer concentration."
+        },
+        {
+          "id": "shipping",
+          "title": "Shipping disruptions",
+          "metric_ids": [
+            "oil_deficit"
+          ],
+          "analysis": "Supply-chain shocks increase freight, insurance and energy costs even where commodity export prices rise. Net effect differs by company.",
+          "watch": "Track chokepoint closures, freight charges and fuel costs."
+        }
+      ]
+    },
+    {
+      "id": "capital",
+      "title": "Investment and industrial delivery",
+      "strap": "FDI, industrial capacity and delivery risk",
+      "summary": "Investment realization is strong, yet project readiness and downstream production outcomes are the next tests.",
+      "topics": [
+        {
+          "id": "deployment",
+          "title": "Realized capital",
+          "metric_ids": [
+            "investment",
+            "fdi"
+          ],
+          "analysis": "BKPM reports Rp1,010.6tn invested in H1 2026, including Rp507.6tn of foreign investment. Realized investment is not proof of profit or completed operations.",
+          "watch": "Validate commissioning milestones and investment locations."
+        },
+        {
+          "id": "downstream",
+          "title": "Downstream processing",
+          "metric_ids": [
+            "downstream"
+          ],
+          "analysis": "Rp300.1tn of downstream investment in H1 2026 gives processing a central role. Clean power access, permits and global market access determine sustained value addition.",
+          "watch": "Check electricity sources, project progress and offtake."
+        },
+        {
+          "id": "execution",
+          "title": "Project execution",
+          "metric_ids": [
+            "investment"
+          ],
+          "analysis": "Investment announcements, construction and production are different stages. Project-level due diligence must separate them.",
+          "watch": "Verify financing, permits and operational commissioning."
+        }
+      ]
+    },
+    {
+      "id": "energy",
+      "title": "Energy and transition",
+      "strap": "Coal exports, renewable capacity and oil imports",
+      "summary": "Indonesia earns from coal while facing imported petroleum costs and industrial clean-power demand.",
+      "topics": [
+        {
+          "id": "coalmarket",
+          "title": "Coal export dependence",
+          "metric_ids": [
+            "coal",
+            "coal_export"
+          ],
+          "analysis": "ESDM recorded 790Mt coal production and 514Mt exports in 2025. Export earnings are exposed to buyer demand and transition regulation.",
+          "watch": "Track coal export destinations, prices and domestic obligations."
+        },
+        {
+          "id": "power",
+          "title": "Renewable power capacity",
+          "metric_ids": [
+            "renewable",
+            "renewable_mw"
+          ],
+          "analysis": "The 15.75% renewable energy mix and 15,630MW installed power figure show progress, but grid location and electricity delivery determine industrial relevance.",
+          "watch": "Track renewable PPAs, grid expansion and curtailment."
+        },
+        {
+          "id": "double",
+          "title": "Energy transition dilemma",
+          "metric_ids": [
+            "oil_deficit",
+            "coal_export"
+          ],
+          "analysis": "Coal exports and imported fuels produce opposing sensitivities to energy price shocks; a single green/red sector signal would oversimplify Indonesia's position.",
+          "watch": "Compare energy import bills, coal revenue and fiscal exposure."
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "title": "Technology and infrastructure",
+      "strap": "Data centers, skills and supply dependencies",
+      "summary": "Capacity announcements must translate into deployed digital infrastructure and locally retained capabilities.",
+      "topics": [
+        {
+          "id": "datacenters",
+          "title": "AI and cloud deployment",
+          "metric_ids": [
+            "investment"
+          ],
+          "analysis": "Cloud and AI investment plans require reliable electricity, connectivity, cybersecurity and skilled operators. Capital announcements are not installed compute capacity.",
+          "watch": "Check operational MW and verified project milestones."
+        },
+        {
+          "id": "talent",
+          "title": "Technology capability retention",
+          "metric_ids": [
+            "investment"
+          ],
+          "analysis": "Local procurement, certifications and applied R&D determine whether infrastructure spending creates enduring domestic know-how.",
+          "watch": "Review technical workforce, supplier contracts and technology transfer."
+        },
+        {
+          "id": "controls",
+          "title": "Technology supply disruption",
+          "metric_ids": [
+            "imports"
+          ],
+          "analysis": "Advanced computing equipment faces external export controls, supplier concentration and longer lead times. Compliance depends on equipment and customer origin.",
+          "watch": "Follow official restrictions, vendor concentration and licences."
+        }
+      ]
+    }
+  ],
+  "partners": [
+    {
+      "country": "China",
+      "exports": 67.0378,
+      "imports": 87.5373,
+      "balance": -20.4995,
+      "analysis": "Strong two-way exposure with a goods deficit; imported industrial inputs and export access are both relevant.",
+      "unit": "USD billion",
+      "period": "2025 full year",
+      "source_url": "https://www.bps.go.id/en/statistics-table/2/MzM2IzI%3D/balance-of-trade-of-selected-countrics.html"
+    },
+    {
+      "country": "United States",
+      "exports": 30.9584,
+      "imports": 12.8456,
+      "balance": 18.1128,
+      "analysis": "Net export market with important sensitivity to tariffs and rules of origin.",
+      "unit": "USD billion",
+      "period": "2025 full year",
+      "source_url": "https://www.bps.go.id/en/statistics-table/2/MzM2IzI%3D/balance-of-trade-of-selected-countrics.html"
+    },
+    {
+      "country": "India",
+      "exports": 18.3247,
+      "imports": 4.836,
+      "balance": 13.4887,
+      "analysis": "Goods-trade surplus partner; commodity demand and import restrictions matter.",
+      "unit": "USD billion",
+      "period": "2025 full year",
+      "source_url": "https://www.bps.go.id/en/statistics-table/2/MzM2IzI%3D/balance-of-trade-of-selected-countrics.html"
+    },
+    {
+      "country": "Philippines",
+      "exports": 10.2218,
+      "imports": 1.8016,
+      "balance": 8.4202,
+      "analysis": "Regional export relationship exposed to ASEAN transport and demand conditions.",
+      "unit": "USD billion",
+      "period": "2025 full year",
+      "source_url": "https://www.bps.go.id/en/statistics-table/2/MzM2IzI%3D/balance-of-trade-of-selected-countrics.html"
+    },
+    {
+      "country": "Australia",
+      "exports": 3.7335,
+      "imports": 9.3587,
+      "balance": -5.6252,
+      "analysis": "Selected bilateral imports exceed exports; study merchandise composition before drawing conclusions.",
+      "unit": "USD billion",
+      "period": "2025 full year",
+      "source_url": "https://www.bps.go.id/en/statistics-table/2/MzM2IzI%3D/balance-of-trade-of-selected-countrics.html"
+    }
+  ],
+  "partner_scope": "Selected BPS 2025 goods-trade partners; not a ranked all-country list, and not investment flows.",
+  "sectors": [
+    {
+      "id": "minerals",
+      "name": "Critical minerals & metals",
+      "opportunity": "Downstream value capture",
+      "exposure": "Process technology, clean power and export-market compliance.",
+      "metric_ids": [
+        "downstream",
+        "investment"
+      ],
+      "domain": "capital"
+    },
+    {
+      "id": "fuel",
+      "name": "Oil, gas & refining",
+      "opportunity": "Supply security and domestic processing",
+      "exposure": "Fuel imports, shipping disruptions and fiscal subsidy exposure.",
+      "metric_ids": [
+        "oil_deficit",
+        "fx"
+      ],
+      "domain": "external"
+    },
+    {
+      "id": "coal",
+      "name": "Coal and thermal power",
+      "opportunity": "Export receipts and energy availability",
+      "exposure": "Buyer concentration, transition policy and coal-market cycles.",
+      "metric_ids": [
+        "coal",
+        "coal_export"
+      ],
+      "domain": "energy"
+    },
+    {
+      "id": "renewable",
+      "name": "Renewable power & electricity grid",
+      "opportunity": "Industrial clean power and network investment",
+      "exposure": "Transmission constraints, dispatchability and project bankability.",
+      "metric_ids": [
+        "renewable",
+        "renewable_mw"
+      ],
+      "domain": "energy"
+    },
+    {
+      "id": "digital",
+      "name": "AI and digital infrastructure",
+      "opportunity": "Cloud, compute and high-skill services",
+      "exposure": "Power reliability, equipment restrictions and skills shortages.",
+      "metric_ids": [
+        "investment"
+      ],
+      "domain": "technology"
+    },
+    {
+      "id": "manufacturing",
+      "name": "Manufacturing & logistics",
+      "opportunity": "Supply-chain diversification",
+      "exposure": "Freight costs, imported inputs, tariffs and origin rules.",
+      "metric_ids": [
+        "exports",
+        "imports"
+      ],
+      "domain": "trade"
+    }
+  ],
+  "notes": "Observed statistics are sourced to original government releases; analysis and implications are editorial interpretations of SLI. No third-party composite power ratings or copied methodology."
+}
