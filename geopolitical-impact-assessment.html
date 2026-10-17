@@ -42,6 +42,15 @@ h1{font-size:clamp(37px,5vw,58px);line-height:1.1;letter-spacing:-.04em;margin:7
 @media(max-width:930px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.dossier-grid,.grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){header{padding:14px 12px}main{padding:23px 12px 45px}.grid,.dossier-grid,.grid.three{grid-template-columns:1fr}.tabs button{padding:12px 10px;font-size:12px}.kpis{gap:7px}.kpi{padding:11px}.kpi .value{font-size:23px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.reg-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:15px 0}.reg-controls label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:#c0d3dc;flex:1 1 180px}.reg-controls select,.reg-controls input{background:#153848;color:#eaf4f2;border:1px solid #577687;border-radius:8px;padding:10px;width:100%}
+.reg-plot{width:100%;height:auto;max-height:260px;background:#0e2939;border-radius:8px;margin:10px 0}.reg-plot .axis{stroke:#547384;stroke-width:1}.reg-plot polyline{fill:none;stroke:#ecc88b;stroke-width:3;stroke-linejoin:round}.reg-plot circle{fill:#ecc88b}.reg-plot text{fill:#bcd1d8;font-size:12px}
+.regbar{background:#102d3c;border:1px solid #365465;border-radius:9px;padding:10px;margin:6px 0;color:#e5eff1;text-align:left;width:100%}.regbar:hover,.regbar[aria-pressed=true]{border-color:#e6c684;background:#1a4150}.regbar-top{display:flex;gap:10px;justify-content:space-between}.regbar-top strong{color:#e9c88d}.regbar-track{height:6px;background:#254758;border-radius:6px;margin-top:6px;overflow:hidden}.regbar-fill{height:100%;background:#81beb1;border-radius:6px}.regbar[aria-pressed=true] .regbar-fill{background:#e8c687}.reg-scroll{max-height:480px;overflow:auto;overscroll-behavior:contain}
+.regfacts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.regfacts .value{font-size:26px;font-weight:750;color:#e9c78d}.regfacts .meta{font-size:12px;color:#afc5cf}
+.reg-source{border-top:1px solid #416377;padding-top:12px;margin-top:14px;font-size:12px}.regstatus{font-size:12px;color:#c5d6df}.reg-source a{font-weight:650}
+.reg-note{color:#bbd0d9;font-size:12px;line-height:1.6}
+.reg-action{background:#204557;border:1px solid #7f9da7;color:#f0f5f5;padding:9px 12px;border-radius:8px}
+@media(max-width:650px){.regfacts{grid-template-columns:1fr}.reg-scroll{max-height:380px}}
 </style></head><body>
 <header><div class="brand">STRATEGIC LATITUDE INTELLIGENCE</div><nav aria-label="SLI navigation"><a href="./index.html#overview">Main dashboard ↗</a><a href="./index.html#energy">Energy intelligence ↗</a><a href="./index.html#investment">Investment tracker ↗</a></nav></header>
 <main>
@@ -53,6 +62,7 @@ h1{font-size:clamp(37px,5vw,58px);line-height:1.1;letter-spacing:-.04em;margin:7
 <button type="button" data-view="global" aria-selected="false">Global Links</button>
 <button type="button" data-view="sectors" aria-selected="false">Sector Outlook</button>
 <button type="button" data-view="dossiers" aria-selected="false">Deep Dives</button>
+<button type="button" data-view="regional" aria-selected="false">Regional Data</button>
 </nav>
 <section id="snapshot" class="view"><h2 id="leadTitle">Indonesia's external position</h2><p class="lead" id="leadText">Loading SLI assessment…</p><div class="kpis" id="headlineKpis" aria-live="polite"></div><h2>Strategic reading</h2><div class="grid" id="highlights"></div><div class="footline"><a href="#dossiers" id="seeDossiers">Explore supporting evidence and analysis →</a></div></section>
 <section id="global" class="view" hidden><h2>Global relationships</h2><p class="lead">Selected BPS bilateral merchandise-trade relationships, full-year 2025. These are not foreign investment flows, diplomatic alignment scores or a ranking of every partner economy.</p>
@@ -61,7 +71,34 @@ h1{font-size:clamp(37px,5vw,58px);line-height:1.1;letter-spacing:-.04em;margin:7
 <section id="dossiers" class="view" hidden><div class="tools"><div><h2>SLI research dossiers</h2><p>Six areas of Indonesia's strategic position. Choose a theme, then open an issue to read the underlying evidence and SLI assessment.</p></div><input id="researchSearch" class="search" type="search" placeholder="Search themes or issues…" aria-label="Search intelligence dossiers"></div>
 <div class="breadcrumb" id="dossierBreadcrumb" aria-label="Research dossier navigation"></div><button id="dossierBack" type="button" class="back" hidden>← Back</button>
 <div id="dossierHeading"></div><div id="dossierGrid" class="dossier-grid"></div><article id="issueDetail" class="panel" hidden aria-live="polite"><div class="eyebrow">SLI analytical assessment</div><h2 id="issueName">—</h2><p id="issueAnalysis"></p><div class="divider"></div><h3>Evidence behind this assessment</h3><div id="issueEvidence" class="evidence"></div><div id="issueRelatedSources" class="footline" hidden><strong>Relevant original documents</strong><div id="issueSourceLinks"></div></div><div class="watch"><strong>What to monitor</strong><p id="issueWatch"></p></div></article></section>
+
+<section id="regional" class="view" hidden>
+<div class="eyebrow">Digitized official statistics · 2021–2025</div><h2>Indonesia's provincial economy and civic landscape</h2><p class="lead">Explore selected official BPS indicators across provinces and years. Economic scale and capital formation appear separately from election administration and institutional indicators. No combined political or investment-risk score is computed.</p>
+<div class="reg-controls">
+ <label>Explore dataset<select id="regFamily"><option value="economy">Regional economy · BPS PDRB 2021–25</option><option value="civic">Civic and institutional statistics · BPS Politik 2025</option></select></label>
+ <label>Indicator<select id="regMetric"></select></label>
+ <label>Year<select id="regYear"></select></label>
+ <label>Province<select id="regProvince"></select></label>
+</div>
+<div class="grid">
+ <div class="panel highlight">
+  <div class="minihead"><h3 id="regSelectedTitle">Selected province</h3><span class="pill" id="regDataStatus">Official historical</span></div>
+  <div class="regfacts"><div><p id="regCurrentLabel">Value</p><div class="value" id="regCurrentValue">—</div><div class="meta" id="regCurrentPeriod">—</div></div><div><p id="regChangeLabel">Change</p><div class="value" id="regChangeValue">—</div><div class="meta" id="regChangePeriod">—</div></div></div>
+  <svg id="regTrend" class="reg-plot" viewBox="0 0 620 250" role="img" aria-label="Historic series for selected provincial indicator"></svg><p id="regSeriesNote" class="reg-note"></p>
+  <div class="reg-source"><p id="regSummary" class="reg-note">Loading official data…</p><a id="regPrimarySource" href="https://www.bps.go.id/" rel="noopener noreferrer" target="_blank">Open original BPS publication ↗</a></div>
+ </div>
+ <div class="panel"><div class="minihead"><h3>Compare provinces</h3><span class="pill">38 provinces</span></div>
+ <div class="reg-controls"><label>Search province<input type="search" id="regSearch" placeholder="e.g., Sulawesi Tengah"></label><label>Display order<select id="regOrder"><option value="alpha">Province name A–Z</option><option value="value">Statistical value descending</option></select></label></div>
+ <div class="reg-scroll" id="regProvinceBars" aria-live="polite"><p>Loading comparison…</p></div><p id="regResultCount" class="regstatus"></p><button class="reg-action" id="regExport" type="button">Export selected indicator (CSV)</button>
+ </div>
+</div>
+<div class="grid" style="margin-top:14px">
+ <div class="panel"><h3>Indonesia · Democracy Index (IDI)</h3><p class="small">BPS national composite, 2021–2024; not a forecast or investment risk rating.</p><svg id="regIDITrend" class="reg-plot" viewBox="0 0 620 250" role="img" aria-label="IDI national composite series 2021 through 2024"></svg><p class="reg-note">National IDI covers both central and provincial components; it is not directly the same as the Press Freedom Index.</p></div>
+ <div class="panel"><h3>Read the data correctly</h3><p class="reg-note">GRDP and PMTB use <strong>IDR billion</strong>. Current-price and 2010 constant-price figures are distinct measures. PMTB measures gross fixed capital formation, <strong>not</strong> BKPM PMA/PMDN investment realization. Growth computed from constant-price GRDP is a derived real growth rate.</p><p class="reg-note">PDRB 2024 figures are revised (*) and 2025 provisional (**). Four new Papua provinces lack comparable 2021–2022 entries. Registered voters (DPT) are not actual turnout; a dash is N/A, not zero.</p><p class="reg-note">All provincial press freedom scores are Dewan Pers index observations reproduced in BPS Statistik Politik 2025. They are not SLI's judgments of political institutions. BPS attribution and original publication links are provided for every selection.</p></div>
+</div>
+</section>
 <p class="footer">Strategic Latitude Intelligence · Original independent research. Data values come from their named publishers; all editorial assessments are SLI interpretations, not official government conclusions. Coverage is dated, not a live risk rating, and does not constitute financial advice.</p>
 </main>
 <script defer src="./js/sli-indonesia-original-intelligence.js?v=20261017-original1"></script>
+<script defer src="./js/sli-bps-regional-visual.js?v=20261017-bps1"></script>
 </body></html>
