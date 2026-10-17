@@ -50,10 +50,11 @@ def find_table(rows):
             c=next((i for i,v in enumerate(labels) if any(t in v for t in terms)),None)
             if c is not None:mapping[key]=c
         if len(mapping)<3:continue
+        if "flood" not in mapping or "extreme_weather" not in mapping:continue
         data=[]
         for row in rows[idx+1:]:
             province=str(row[province_col]).strip() if len(row)>province_col else ""
-            if not province or normalize(province) in ("total","jumlah","indonesia"):continue
+            if not province or any(word in normalize(province) for word in ("total","jumlah","indonesia","sumber","catatan")):continue
             if not re.search(r"[A-Za-z]",province):continue
             events={}
             for key,c in mapping.items():
@@ -62,13 +63,14 @@ def find_table(rows):
                 if not re.fullmatch(r"\d+(?:[.,]\d{3})*",v):raise ValueError(f"Unexpected value {v!r} for {province} / {key}")
                 events[key]=int(v.replace(".","").replace(",",""))
             data.append({"province":province,"year":2025,"events":events})
-        if 30<=len(data)<=45 and len(set(normalize(x["province"]) for x in data))==len(data):
+        if 35<=len(data)<=40 and len(set(normalize(x["province"]) for x in data))==len(data) and sum((r["events"].get("flood") or 0) for r in data)>0:
             return data,mapping
     raise ValueError("Official workbook did not contain a validated province/hazard table")
 def main():
     request=urllib.request.Request(URL,headers={"User-Agent":"StrategicLatitudeIntelligence/1.0 public research"})
     with urllib.request.urlopen(request,timeout=35) as response:raw=response.read(8_000_000)
     if not raw.startswith(b"PK"):raise ValueError("Official response is not XLSX")
+    if len(raw)>=8_000_000:raise ValueError("XLSX exceeds safe download limit")
     errors=[]
     for sheet,rows in parse_xlsx(raw):
         try: records,mapping=find_table(rows);break
