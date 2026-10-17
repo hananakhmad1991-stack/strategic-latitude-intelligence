@@ -3,10 +3,10 @@
   "as_of": "2026-10-17",
   "access": "open_preview",
   "source_policy": "SLI-curated public evidence snippets only; not the full national/provincial database. Upstream official sources remain publicly accessible at their respective websites.",
-  "generation_mode": "deterministic_source_retrieval_no_live_llm",
+  "generation_mode": "deterministic_source_grounded_analytical_synthesis_no_live_llm",
   "rights_note": "Each excerpt is newly authored from dated public-source observations. Original source publisher retains rights to underlying publications.",
   "limitations": [
-    "Not a generative AI model or prediction service.",
+    "Not a live generative AI model: interprets selected BPS provincial indicators and curated evidence through explicit analytic rules; no causal forecasts.",
     "Pro full-corpus RAG requires private source migration and authentication.",
     "Publication dates and observed statistical periods may differ.",
     "Absence of relevant evidence must never be replaced with invented figures.",
@@ -26,18 +26,16 @@
     "methodology"
   ],
   "examples_id": [
-    "Bagaimana prospek investasi pusat data di Jawa Barat?",
-    "Berapa pertumbuhan ekonomi dan inflasi Indonesia terbaru yang tercatat?",
-    "Berapa harga Brent dan apa risiko energi terkini yang belum terverifikasi?",
-    "Bagaimana membaca Rasio Gini dibanding pertumbuhan provinsi?",
-    "Apa status proyek smelter dan baterai EV Indonesia?"
+    "Jawa Tengah",
+    "Bandingkan Jawa Tengah dengan Jawa Barat",
+    "Bagaimana prospek investasi data center di Jawa Tengah?",
+    "Berapa inflasi nasional dan apa implikasinya?"
   ],
   "examples_en": [
-    "What does the source evidence say about West Java data centers?",
-    "What are the dated GDP growth and inflation indicators?",
-    "What are the latest dated Brent and natural gas observations?",
-    "How should provincial growth be compared with expenditure Gini?",
-    "What is the reported status of Indonesia's EV battery and smelter projects?"
+    "Central Java",
+    "Compare Central Java and West Java",
+    "What is the source-based AI investment outlook for Central Java?",
+    "How should Indonesia's recorded inflation be interpreted?"
   ],
   "documents": [
     {
