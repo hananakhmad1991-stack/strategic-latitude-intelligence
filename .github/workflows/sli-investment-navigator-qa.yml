@@ -3,7 +3,7 @@ on:
   push:
     paths:
       - 'indonesia-investment-navigator.html'
-      - 'js/sli-investment-navigator.mjs'
+      - 'js/sli-investment-navigator.js'
       - 'data/sli-indonesia-investment-navigator.json'
       - 'intelligence-labs.html'
       - 'index.html'
