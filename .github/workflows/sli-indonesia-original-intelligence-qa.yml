@@ -5,12 +5,15 @@ on:
       - 'geopolitical-impact-assessment.html'
       - 'js/sli-indonesia-original-intelligence.js'
       - 'js/sli-bps-regional-visual.js'
+      - 'js/sli-bps-safety-visual.js'
       - 'data/sli-indonesia-original-intelligence.json'
       - 'data/sli-bps-regional-intelligence.json'
+      - 'data/sli-bps-public-safety.json'
       - 'index.html'
       - 'intelligence-labs.html'
       - 'tests/qa-indonesia-original-intelligence.mjs'
       - 'tests/qa-sli-bps-regional.mjs'
+      - 'tests/qa-sli-bps-safety.mjs'
   workflow_dispatch:
 permissions:
   contents: read
@@ -24,4 +27,4 @@ jobs:
         with:
           node-version: '22'
       - name: Verify independently sourced SLI indicators, interactive dossiers and data gaps
-        run: node --test tests/qa-indonesia-original-intelligence.mjs tests/qa-sli-bps-regional.mjs
+        run: node --test tests/qa-indonesia-original-intelligence.mjs tests/qa-sli-bps-regional.mjs tests/qa-sli-bps-safety.mjs
