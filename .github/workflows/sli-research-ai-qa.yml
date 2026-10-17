@@ -5,9 +5,12 @@ on:
     paths:
       - 'sli-research-ai.html'
       - 'js/sli-research-ai.js'
+      - 'js/sli-research-analysis.mjs'
+      - 'data/sli-research-province-preview.json'
       - 'data/sli-research-evidence-preview.json'
       - 'research-api/**'
       - 'tests/qa-sli-research-ai.mjs'
+      - 'tests/qa-sli-research-analysis.mjs'
       - 'js/sli-navigation.js'
       - '.github/workflows/sli-research-ai-qa.yml'
 permissions:
@@ -24,7 +27,8 @@ jobs:
       - name: Check research JavaScript syntax
         run: |
           node --check js/sli-research-ai.js
+          node --check js/sli-research-analysis.mjs
           node --check research-api/src/index.js
           node --check research-api/src/core.mjs
       - name: Validate open evidence, secure planned RAG and traceability
-        run: node --test tests/qa-sli-research-ai.mjs
+        run: node --test tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs
