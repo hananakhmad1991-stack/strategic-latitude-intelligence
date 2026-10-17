@@ -31,12 +31,12 @@ function refreshMap(){
   const title=document.createElementNS('http://www.w3.org/2000/svg','title');title.textContent=country.name+(chosen?' · selected scenario proxy '+(score??'N/A'):' · N/A');c.append(title);pins.append(c);
   if(chosen){const t=document.createElementNS('http://www.w3.org/2000/svg','text');t.setAttribute('x',String(Math.min(875,x+9)));t.setAttribute('y',String(y-10));t.textContent=country.name; pins.append(t)}
  }
- $('mapStatus').textContent=(worldLoaded?'Natural Earth boundary map loaded. ':'Map reference points ready; remote country polygons unavailable. ')+select.name+' is the sole scored country in this hypothetical scenario; all others N/A.';
+ $('mapStatus').textContent=(worldLoaded?'Natural Earth boundary map loaded. ':'Map reference points ready; boundary geometry unavailable. ')+select.name+' is the sole scored country in this hypothetical scenario; all others N/A.';
 }
 async function initWorld(){
  const status=$('mapStatus');status.textContent='Loading Natural Earth country outlines…';
  try{
-  const url='https://raw.githubusercontent.com/datasets/geo-boundaries-world-110m/master/countries.geojson';
+  const url='./data/sli-gia-world-110m.geojson';
   const data=await getJSON(url);
   if(!Array.isArray(data.features))throw Error('Geometry absent');
   const root=$('mapShapes');root.replaceChildren();const countryByCode=new Map(config.countries.map(x=>[x.code,x]));
@@ -50,7 +50,7 @@ async function initWorld(){
    if(found){const select=()=>{$('country').value=found.code;updateAll()};shape.addEventListener('click',select);shape.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();select()}})}
    const title=document.createElementNS('http://www.w3.org/2000/svg','title');title.textContent=props.ADMIN||props.name||'Country';shape.append(title);root.append(shape);
   }
-  worldLoaded=true;
+  if(root.children.length<150)throw Error('Country geometry incomplete');worldLoaded=true;
  }catch(_e){status.textContent='World geometry unavailable. Country selector and interactive reference points remain functional.';}
  refreshMap();
 }
