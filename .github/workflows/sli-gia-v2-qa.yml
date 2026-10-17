@@ -1,0 +1,26 @@
+name: SLI Geopolitical Impact Assessment QA
+on:
+  push:
+    paths:
+      - 'geopolitical-impact-assessment.html'
+      - 'js/sli-gia-v2.js'
+      - 'js/sli-gia-v2-engine.js'
+      - 'data/sli-gia-v2-config.json'
+      - 'data/research-signal-radar.json'
+      - 'intelligence-labs.html'
+      - 'index.html'
+      - 'tests/qa-gia-v2.mjs'
+      - 'tests/qa-intelligence-labs.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/qa-gia-v2.mjs tests/qa-intelligence-labs.mjs
