@@ -29,7 +29,7 @@ async function mount(initialHash='',fail=false){
  for(let i=0;i<80;i++)await Promise.resolve();
  return {els,tabs,location};
 }
-test('SLI owns the intelligence model, has six distinct topics, and contains no reused external power indices',()=>{
+test('SLI owns the intelligence model, has seven independent research domains, and contains no reused external power indices',()=>{
  assert.equal(data.domains.length,7);
  assert.equal(data.domains.reduce((n,d)=>n+d.topics.length,0),21);
  assert.equal(data.metrics.length,18);
@@ -105,4 +105,13 @@ test('qualitative trade and AI dossiers link directly to dated source documents'
  assert.equal(tech.els.issueRelatedSources.hidden,false);
  assert.match(tech.els.issueSourceLinks.textContent,/announced, not realized/);
  assert.match(tech.els.issueSourceLinks.textContent,/operational launch/);
+});
+
+test('governance dossier uses BPS historical indicators without scoring or forecasting political actors',async()=>{
+ const {els}=await mount('#dossiers/governance/democracy');
+ assert.equal(els.issueName.textContent,'Indonesia Democracy Index');
+ assert.match(els.issueAnalysis.textContent,/2024 national/);
+ assert.equal(els.issueEvidence.children.length,1);
+ assert.match(els.issueEvidence.textContent,/79.81/);
+ assert.match(data.domains.find(x=>x.id==='governance').summary,/not be used as a direct prediction/);
 });
