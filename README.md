@@ -12,6 +12,16 @@ Independent, open-source-based analysis of Indonesia's strategic investment, ene
 - The project registry is curated, **not exhaustive**. Multi-site records cannot be summed across provinces; announcements are not actual expenditure. Political/civic statistics and criminality are *not* mixed into an unverified investment-risk rating. Grid headroom, permits, project economics and bankability remain unknown until independently checked.
 - **Quality gate:** `.github/workflows/sli-provincial-opportunity-qa.yml` runs `tests/qa-sli-provincial-opportunity.mjs` when source data, analytical logic or interface changes.
 
+## BPS National & Provincial Gini Ratio Explorer (October 2026)
+
+- **[Gini Ratio dashboard](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/gini-inequality.html)**: national, urban and rural official expenditure-inequality coefficients as of March 2026, released by BPS 5 August 2026. National Gini 0.368; urban 0.387; rural 0.296.
+- Digitized 38 provincial observations (urban, rural and combined, with unavailable values preserved as null). Reference: `data/sli-bps-gini-2026.json`; official BPS [provincial table](https://www.bps.go.id/assets/statistics-table/2/OTgjMg%3D%3D/gini-rasio--maret-2026.html) and [national release](https://www.bps.go.id/id/pressrelease/2026/08/05/2595/gini-ratio-maret-2026-tercatat-sebesar-0-368-.html).
+- Seven **SLI geographic groupings** let readers compare province-level medians and ranges. These descriptive province statistics are **not officially reported regional Gini** and may not be interpreted as a survey-microdata-based regional coefficient. National Gini is not an average of province Gini.
+- Supports date-stamped national trend for March 2025 / September 2025 / March 2026, filters by geographic group, population area and search, sortable province results, selected province detail and CSV export. No unsupported provincial historic series.
+- The indicator measures expenditure inequality only, not income distribution, welfare level, political risk or investment suitability. Official data do not automatically update until a new release is independently verified. BPS reuse and commercial-licensing terms must be checked.
+- Integrates from SLI main navigation, Indonesia Intelligence / Regional Data, and Provincial Opportunity Engine as a separate social-context indicator, never as a hidden investment score input.
+- CI gate: `.github/workflows/sli-bps-gini-qa.yml` validates source dates, national and provincial reference values, missingness, seven groupings and dashboard links.
+
 ## Unified Appendix, Glossary & Methodology (October 2026)
 
 - **[Unified Appendix & Methodology](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-glossary-methodology.html)** is the shared bilingual reader reference for every SLI dashboard. It has **257 unique terms** merged from the original Energy Security appendix and Strategic Map taxonomy, with added macroeconomic, AI infrastructure, investment, law and policy-evaluation definitions.
