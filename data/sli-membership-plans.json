@@ -145,11 +145,21 @@
     "preview_url": "sli-research-ai.html",
     "open_status": "live_deterministic_source_grounded_analytical_preview_not_generative_ai",
     "open_scope": "Curated 28 source excerpts plus limited individual analytical mini-briefs for all 38 provinces; selected BPS 2025 structure and March 2026 Gini, reported project milestones and bounded two-province comparisons. No complete historical dossiers, full national data platform, econometric estimates, or bulk exports.",
-    "pro_status": "planned_authenticated_private_rag",
-    "pro_scope": "Private licensed/owned SLI corpus, LLM-assisted synthesis with citations and validated scenario research, subject to launch.",
-    "enterprise_status": "planned_contract_based",
+    "pro_status": "generative_research_assistant_backend_staged_not_deployed",
+    "pro_scope": "Research AI full generative reports with verified source citations, 4 research formats and follow-up dialogue; requires private RAG, paid entitlement, and verified authentication not yet activated.",
+    "enterprise_status": "custom_contract_research_assistant_and_human_review_planned",
     "enterprise_scope": "Custom research briefs and weekly sector monitoring with human review per signed agreement.",
     "privacy": "Preview queries run only in-browser. Future private AI requires server-only keys, verified account entitlements, anti-abuse, and a privacy policy.",
-    "security": "No provider API token or premium dataset in GitHub Pages."
+    "security": "No provider API token or premium dataset in GitHub Pages.",
+    "assistant_url": "sli-research-ai.html",
+    "evidence_preview_url": "sli-research-evidence-preview.html",
+    "assistant_interface_status": "conversation_first_ui_implemented_generative_service_not_connected",
+    "api_config_enabled": false,
+    "activation_requirements": [
+      "Verified Pro/Enterprise login",
+      "Server-only model API key and approved model",
+      "Cloudflare private Worker, D1 and R2 licensed corpus",
+      "Source validation, model QA and abuse/billing controls"
+    ]
   }
 }
