@@ -8,6 +8,7 @@ on:
       - 'intelligence-labs.html'
       - 'index.html'
       - 'tests/qa-investment-navigator.mjs'
+      - 'tests/qa-investment-navigator-runtime.mjs'
       - 'data/sli-market-editorial-policy.json'
       - 'data/sli-market-observations.json'
       - 'scripts/validate_market_feed.py'
@@ -22,6 +23,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --test tests/qa-investment-navigator.mjs
+      - run: node --test tests/qa-investment-navigator.mjs tests/qa-investment-navigator-runtime.mjs
       - name: Verify market data provenance and distribution rights
         run: python3 scripts/validate_market_feed.py data/sli-market-observations.json
