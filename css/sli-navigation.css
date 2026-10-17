@@ -1,0 +1,17 @@
+/* Shared SLI wayfinding. Compact on desktop; collapsible module index on small devices. */
+.sli-universal-nav{position:relative;z-index:22;margin:0 0 19px;border:1px solid #3f5d75;border-radius:12px;background:#10283e;color:#eff5f7;padding:11px 15px;font:12px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;display:grid;gap:10px}
+.sli-universal-nav a{color:#ead09e;text-decoration:none;overflow-wrap:anywhere}.sli-universal-nav a:hover,.sli-universal-nav a:focus-visible{text-decoration:underline;color:#ffe3b1}
+.sli-location{display:flex;gap:6px;align-items:center;min-width:0;flex-wrap:wrap}.sli-location strong{color:#f1f5fb;font-weight:750}.sli-separator{color:#95aebf}
+.sli-universal-actions{display:flex;gap:13px;align-items:center;flex-wrap:wrap}.sli-guide-link{font-weight:800;color:#f3ce8f!important}
+.sli-related-links{display:flex;align-items:center;gap:7px 14px;flex-wrap:wrap;border-top:1px solid #365167;padding-top:9px;color:#bfd0dd}.sli-related-links>a{font-size:11px}
+.sli-explore-menu{position:relative;margin-left:auto}.sli-explore-menu>summary{color:#fff;cursor:pointer;font-weight:680;border:1px solid #6a8294;border-radius:7px;padding:5px 10px;list-style:revert}
+.sli-explore-menu[open]>summary{border-color:#ebcb96}
+.sli-modules-grid{display:grid;grid-template-columns:repeat(3,minmax(190px,1fr));gap:13px;padding:18px;background:#112c44;border:1px solid #618096;border-radius:10px;box-shadow:0 18px 40px #020b15ad;position:absolute;right:0;top:calc(100% + 7px);z-index:800;width:min(770px,85vw);max-height:65vh;overflow:auto}
+.sli-menu-group{display:grid;align-content:start;gap:7px}.sli-menu-group h3{font-size:12px;margin:0 0 3px;color:#fff!important}.sli-menu-group a{display:block;font-size:12px}.sli-menu-group [aria-current=page]{text-decoration:underline;font-weight:800}
+.sli-guide-group{margin:22px 0}.sli-guide-group h3{font-size:19px;margin:0 0 12px;color:#f0d19d}
+.sli-guide-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:11px}
+.sli-guide-card{border:1px solid #3e5e75;background:#122c42;border-radius:10px;padding:14px}.sli-guide-card-link{color:#f0d19d;font-weight:780;font-size:14px;text-decoration:none}.sli-guide-card p{color:#c5d6e0;font-size:12px;line-height:1.58;margin:7px 0 0}
+.sli-help-note{border-left:3px solid #dcb878;background:#173349;padding:12px 16px;margin:16px 0;color:#d8e5ec;border-radius:5px}
+.sli-help-steps{padding-left:23px}.sli-help-steps li{padding:6px 0}.sli-help-table{overflow:auto}.sli-help-table table{border-collapse:collapse;width:100%;min-width:610px;font-size:12px}.sli-help-table th,.sli-help-table td{padding:10px 12px;border-bottom:1px solid #3a5770;text-align:left;vertical-align:top}.sli-help-table th{color:#f0d19d}
+@media(max-width:720px){.sli-universal-nav{padding:11px}.sli-explore-menu{margin-left:0}.sli-modules-grid{grid-template-columns:repeat(1,minmax(0,1fr));width:min(340px,89vw);max-height:60vh}.sli-related-links{font-size:11px}.sli-universal-actions{gap:9px}}
+@media(prefers-reduced-motion:reduce){.sli-universal-nav *{scroll-behavior:auto!important}}
