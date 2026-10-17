@@ -1,11 +1,11 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "updated_at": "2026-10-17",
   "publication_status": "prelaunch",
   "checkout_enabled": false,
   "currency": null,
   "pricing_policy": "Harga belum diumumkan. Jangan tampilkan atau bebankan tarif tanpa persetujuan pemilik dan integrasi pembayaran produksi yang terverifikasi.",
-  "baseline_access_policy": "Public data and primary-source citations remain open. Only original analytical services and licensed/owned private materials may be restricted after secure backend migration.",
+  "baseline_access_policy": "SLI Open will offer only curated national overview and sector/news/map previews. Full national-series explorers, full strategic assets and original analytics will require authenticated Pro access after private migration. Official public statistical facts remain available at their original sources; provenance, glossary and general methodology are never hidden.",
   "tiers": [
     {
       "id": "open",
@@ -17,13 +17,15 @@
       "audience_id": "Publik, mahasiswa, jurnalis, dan pengguna baru",
       "audience_en": "Public, students, journalists and first-time readers",
       "features": [
-        "National overview and dated indicators",
-        "Sector executive summaries",
-        "Open maps and official-source descriptions",
-        "Unified glossary, methodology and user guide",
-        "Source links and basic search"
+        "Selected national Overview: key indicators and compact summary only, not SLI full national datasets",
+        "Short sector summaries; sampled news monitoring (up to five curated items)",
+        "Strategic Map preview: limited public layers, selected asset samples, no detailed asset intelligence or downloads",
+        "Public glossary, general methodology, citations and basic navigation",
+        "Planned free account: one account / one active registered device"
       ],
-      "readiness": "live_public"
+      "readiness": "public_preview_available_access_controls_pending",
+      "account_model": "free_registration_required_after_auth_launch",
+      "active_devices_per_user": 1
     },
     {
       "id": "pro",
@@ -35,13 +37,16 @@
       "audience_id": "Peneliti, analis, konsultan, investor individual",
       "audience_en": "Researchers, analysts, consultants and individual investors",
       "features": [
-        "Everything in Open",
-        "Advanced 38-province comparisons and screening",
-        "Scenario laboratory and analytical workbooks",
-        "Advanced exports and premium original analyst briefs",
-        "Saved research preferences (when account infrastructure is enabled)"
+        "Everything in SLI Open",
+        "Full SLI national and sector data explorers, full Strategic Map, sector monitoring news and research archives",
+        "Advanced 38-province analysis and cross-sector/provincial comparisons",
+        "Investment scenarios, econometrics and advanced research models (only as validated and released)",
+        "Advanced exports and original SLI analyst reports",
+        "One personal account / one active registered device, with secure replacement flow (planned)"
       ],
-      "readiness": "planned_secure_access"
+      "readiness": "planned_secure_access",
+      "account_model": "individual_personal_account",
+      "active_devices_per_user": 1
     },
     {
       "id": "enterprise",
@@ -53,13 +58,29 @@
       "audience_id": "Perusahaan, investor institusional, konsultan, tim riset",
       "audience_en": "Companies, institutional investors, consultancies and research teams",
       "features": [
-        "Everything in Pro",
-        "Workspace and multiple managed seats",
-        "Commissioned research and custom reports by contract",
-        "Authorized licensed datasets subject to original publisher terms",
-        "Institutional research assistance and agreed support"
+        "All SLI Pro capabilities",
+        "Managed team seats and workspaces, with seat count per contract (planned)",
+        "Contract-based commissioned research, tailored strategic consulting and actionable sector advice within agreed legal scope",
+        "Weekly sector-specific monitoring reports with original bespoke analysis, risks, scenarios and recommendations per contract",
+        "Contracted briefings and expert support, plus special alerts where agreed",
+        "Datasets and redistribution only where SLI has lawful usage and source licensing rights"
       ],
-      "readiness": "contract_only"
+      "readiness": "contract_only_inquiry_no_active_workspaces",
+      "account_model": "named_team_seats_as_contracted",
+      "delivery": {
+        "weekly_sector_report": "weekly_when_explicitly_included_in_signed_contract",
+        "scope": "contract_selected_sectors_and_regions",
+        "includes": [
+          "key_events",
+          "source_provenance",
+          "risk_and_opportunity_assessment",
+          "original_strategic_analysis",
+          "scenario_changes",
+          "recommended_actions"
+        ],
+        "human_review": "required_before_delivery",
+        "custom_advice": "strategic_research_and_advisory_within_contract_only"
+      }
     }
   ],
   "account": {
@@ -77,6 +98,44 @@
     ],
     "entitlements_enforced_by": "server_only",
     "premium_blob_location": "private_object_storage_not_public_github",
-    "payment_activation": "verified_provider_webhook_not_browser"
+    "payment_activation": "verified_provider_webhook_not_browser",
+    "non_restricted_references": [
+      "Original official source links",
+      "General methodology",
+      "Glossary and publicly accessible definitions",
+      "Attribution and legal citations"
+    ],
+    "planned_gated_sli_views": [
+      "Full SLI national datasets and data explorers",
+      "Detailed Strategic Map project and asset intelligence",
+      "Full curated sector news monitoring and archives",
+      "38-province comparisons, premium models, reports and exports"
+    ],
+    "single_device_limit_is_live": false,
+    "no_professional_investment_advice_without_authorisation": true
+  },
+  "entitlement_activation_status": "planned_not_enforced_on_public_github_pages",
+  "access_design": {
+    "unauthenticated": "Public landing, selected introductory previews and all source attribution; no premium entitlements.",
+    "open": "Future free verified account, one active registered device at a time; selected Overview indicators, map/news samples, and introductory research only.",
+    "pro": "Future paid verified account, one active registered device at a time; full SLI national/provincial dashboards, analytics and permitted export.",
+    "enterprise": "Contracted named seats and managed workspace (not yet built); seat count and privileges follow signed contract.",
+    "device_policy": {
+      "model": "one_active_registered_device_per_account",
+      "applies_to": [
+        "open",
+        "pro"
+      ],
+      "enforce_when": "authentication_and_server_session_registry_live",
+      "status": "design_only_not_enforced",
+      "privacy": "Consent-based revocable server-issued device session identifiers; no covert fingerprinting; users can revoke or replace their device."
+    }
+  },
+  "open_preview_limits": {
+    "national_data": "Selected high-level indicator cards and snapshots; no full time-series explorer, full national database or bulk export through SLI Open.",
+    "strategic_map": "Selected public map layers and a small illustrative asset sample; no complete asset details, advanced filters or data downloads.",
+    "news_monitoring": "Curated sample of up to five headline cards; no complete sector feed, archives, intelligence filters or advanced alerts.",
+    "provincial_analysis": "Overview summaries only; 38-province comparison, quantitative research and sector drill-down reserved for Pro.",
+    "terms": "Glossary, non-exclusive definitions, sources and general methodology remain accessible."
   }
 }
