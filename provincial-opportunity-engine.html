@@ -187,7 +187,7 @@ function renderComparison(){
   const lower=el('p','Relatively lower signal: '+drivers.relativeConstraints.map(k=>factorLabels[k]).join(', '));
   const c=giniContext(row),regional=regionContext(row);
   if(gini&&c.value!==null){
-   card.append(el('p','BPS March 2026 expenditure Gini ('+$('giniArea').selectedOptions[0].textContent+'): '+fmt(c.value,3)+' · '+c.comparison.toLowerCase()+' national '+fmt(c.national,3)+' (difference '+(c.difference>0?'+':'')+fmt(c.difference,3)+').'));
+   card.append(el('p','BPS March 2026 expenditure Gini ('+$('giniArea').selectedOptions[0].textContent+'): '+fmt(c.value,3)+' · '+c.comparison.toLowerCase()+' benchmark '+fmt(c.national,3)+' (difference '+(c.difference>0?'+':'')+fmt(c.difference,3)+').'));
    if(regional)card.append(el('p','SLI region '+row.inequalityRegion+': province-level median '+fmt(regional.median,3)+' and range '+fmt(regional.minimum,3)+'–'+fmt(regional.maximum,3)+' (n='+regional.count+'). These are NOT official regional Gini estimates.'));
   }else card.append(el('p','BPS expenditure Gini unavailable for selected population area (not zero).'));
   card.append(good,lower);
