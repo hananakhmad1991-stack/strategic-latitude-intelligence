@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {runInNewContext} from 'node:vm';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
-const page=read('indonesia-investment-navigator.html'),code=read('js/sli-investment-navigator.mjs');
+const page=read('indonesia-investment-navigator.html'),code=read('js/sli-investment-navigator.js');
 const filenames=['data/sli-indonesia-investment-navigator.json','data/sli-macro-indonesia-2026.json','data/sli-market-observations.json','data/research-signal-radar.json','data/sli-project-registry.json'];
 class Element{
  constructor(tag='div'){this.tagName=tag;this.children=[];this.attrs={};this.handlers={};this.dataset={};this.value='';this._text='';this.disabled=false;this.hidden=false;}
