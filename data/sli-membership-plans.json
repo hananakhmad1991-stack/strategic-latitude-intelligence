@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-10-17",
+  "publication_status": "prelaunch",
+  "checkout_enabled": false,
+  "currency": null,
+  "pricing_policy": "Harga belum diumumkan. Jangan tampilkan atau bebankan tarif tanpa persetujuan pemilik dan integrasi pembayaran produksi yang terverifikasi.",
+  "baseline_access_policy": "Public data and primary-source citations remain open. Only original analytical services and licensed/owned private materials may be restricted after secure backend migration.",
+  "tiers": [
+    {
+      "id": "open",
+      "name": "SLI Open",
+      "rank": 0,
+      "pricing_status": "free",
+      "monthly_price": null,
+      "annual_price": null,
+      "audience_id": "Publik, mahasiswa, jurnalis, dan pengguna baru",
+      "audience_en": "Public, students, journalists and first-time readers",
+      "features": [
+        "National overview and dated indicators",
+        "Sector executive summaries",
+        "Open maps and official-source descriptions",
+        "Unified glossary, methodology and user guide",
+        "Source links and basic search"
+      ],
+      "readiness": "live_public"
+    },
+    {
+      "id": "pro",
+      "name": "SLI Pro",
+      "rank": 1,
+      "pricing_status": "tba",
+      "monthly_price": null,
+      "annual_price": null,
+      "audience_id": "Peneliti, analis, konsultan, investor individual",
+      "audience_en": "Researchers, analysts, consultants and individual investors",
+      "features": [
+        "Everything in Open",
+        "Advanced 38-province comparisons and screening",
+        "Scenario laboratory and analytical workbooks",
+        "Advanced exports and premium original analyst briefs",
+        "Saved research preferences (when account infrastructure is enabled)"
+      ],
+      "readiness": "planned_secure_access"
+    },
+    {
+      "id": "enterprise",
+      "name": "SLI Enterprise",
+      "rank": 2,
+      "pricing_status": "custom_quote",
+      "monthly_price": null,
+      "annual_price": null,
+      "audience_id": "Perusahaan, investor institusional, konsultan, tim riset",
+      "audience_en": "Companies, institutional investors, consultancies and research teams",
+      "features": [
+        "Everything in Pro",
+        "Workspace and multiple managed seats",
+        "Commissioned research and custom reports by contract",
+        "Authorized licensed datasets subject to original publisher terms",
+        "Institutional research assistance and agreed support"
+      ],
+      "readiness": "contract_only"
+    }
+  ],
+  "account": {
+    "registration_enabled": false,
+    "login_enabled": false,
+    "sign_in_provider": "not_connected",
+    "payment_provider": "not_selected",
+    "premium_api": "not_deployed"
+  },
+  "policy": {
+    "do_not_gate": [
+      "Publicly sourced BPS/ESDM/PLN/BI datasets as such",
+      "Source URLs, original attribution and methodology",
+      "Public overview and basic navigational search"
+    ],
+    "entitlements_enforced_by": "server_only",
+    "premium_blob_location": "private_object_storage_not_public_github",
+    "payment_activation": "verified_provider_webhook_not_browser"
+  }
+}
