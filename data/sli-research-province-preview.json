@@ -186,7 +186,30 @@
       "household_share_2025_pct": 41.4,
       "pmtb_share_2025_pct": 44.38,
       "gini_expenditure_2026_03": 0.354,
-      "project_examples": []
+      "project_examples": [
+        {
+          "id": "ai-range-batam",
+          "title": "Range IDC / EGS",
+          "sector": "AI infrastructure",
+          "stage": "planning power",
+          "evidence_date": "2026-10-14",
+          "source_url": "https://bpbatam.go.id/",
+          "entity": "Equator Gate System / Range IDC",
+          "investment_basis": "Capacity not disclosed",
+          "location": "Nongsa, Batam"
+        },
+        {
+          "id": "ai-dayone-firmus",
+          "title": "DayOne / Firmus–NVIDIA",
+          "sector": "AI infrastructure",
+          "stage": "planning power",
+          "evidence_date": "2026-10-14",
+          "source_url": "https://www.dayonedc.com/",
+          "entity": "DayOne / Firmus",
+          "investment_basis": "360 MW AI factory plan; may overlap 450 MW power supply",
+          "location": "Kabil, Batam"
+        }
+      ]
     },
     {
       "name": "DKI Jakarta",
@@ -201,7 +224,19 @@
       "household_share_2025_pct": 62.8,
       "pmtb_share_2025_pct": 33.79,
       "gini_expenditure_2026_03": 0.435,
-      "project_examples": []
+      "project_examples": [
+        {
+          "id": "ai-aws-jakarta",
+          "title": "AWS Jakarta Region",
+          "sector": "AI infrastructure",
+          "stage": "operational cloud",
+          "evidence_date": "2021-12-14",
+          "source_url": "https://aws.amazon.com/about-aws/global-infrastructure/regions_az/",
+          "entity": "AWS",
+          "investment_basis": "Capacity not disclosed",
+          "location": "Jakarta metropolitan region"
+        }
+      ]
     },
     {
       "name": "Jawa Barat",
@@ -265,7 +300,19 @@
       "household_share_2025_pct": 60.89,
       "pmtb_share_2025_pct": 30.91,
       "gini_expenditure_2026_03": 0.354,
-      "project_examples": []
+      "project_examples": [
+        {
+          "id": "ai-zankore-batang",
+          "title": "ZanKore AI Factory",
+          "sector": "AI infrastructure",
+          "stage": "planning financing",
+          "evidence_date": "2026-09-09",
+          "source_url": "https://zankore.com/zankore-expands-southeast-asias-ai-compute-infrastructure-with-nvidia",
+          "entity": "ZanKore / Indosat",
+          "investment_basis": "1000 MW long-term target not phase-one commissioned",
+          "location": "Batang industrial zone"
+        }
+      ]
     },
     {
       "name": "DI Yogyakarta",
