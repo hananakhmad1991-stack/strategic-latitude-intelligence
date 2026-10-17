@@ -34,6 +34,7 @@ const PROMPTS={
  mineral:{mode:"risk_opportunity",id:"Susun Risk & Opportunity Assessment mengenai mineral kritis dan hilirisasi Indonesia, khususnya nikel, tembaga dan rantai nilai baterai. Evaluasi cadangan dan kapasitas, pelaksanaan smelter, pengaruh investor asing, energi, ESG, geopolitik rantai pasok, insentif, risiko regulasi, dan skenario hingga 2030. Cantumkan sumber data dan rekomendasi strategis yang bisa diuji.",en:"Prepare a risk and opportunity assessment of Indonesia's critical minerals downstreaming, focusing on nickel, copper and batteries. Evaluate project implementation, foreign investors, energy, ESG exposure, geopolitical supply chains, incentives, legal uncertainties and scenario assumptions to 2030, with evidence and verifiable recommendations."}
 };
 const state={language:"id",config:null,history:[],lastResult:null,busy:false,sequence:0};
+const ownerConfigured=()=>state.config?.owner_test?.enabled===true&&!!safeUrl(state.config?.owner_test?.endpoint||"")&&new URL(state.config.owner_test.endpoint).pathname==="/v1/owner-research";
 function tr(key){return MESSAGES[state.language][key]||key}
 function node(tag,cls,text){const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=String(text);return x}
 function safeUrl(url){try{const u=new URL(url);return u.protocol==="https:"?u.href:null}catch{return null}}
@@ -113,16 +114,23 @@ async function submit(){
  if(state.busy)return;
  const id=++state.sequence;
  append("user",question);$("raPrompt").value="";
- if(!isConfigured()){append("system",tr("inactive"));status(tr("prelaunch"));return}
+ if(!isConfigured()&&!ownerConfigured()){append("system",tr("inactive"));status(tr("prelaunch"));return}
+ const usingOwner=ownerConfigured();
  let bearer;
- try{bearer=await window.SLIResearchAuth?.getAccessToken?.()}catch{bearer=null}
- if(!bearer||typeof bearer!=="string"){append("system",tr("missing"));status(tr("missing"));return}
+ if(usingOwner){bearer=$("raOwnerToken").value.trim();
+  if(bearer.length<48){append("system",state.language==="id"?"Masukkan token Owner Test dari Cloudflare (bukan OpenAI API key).":"Enter the Cloudflare Owner Test token (not your OpenAI API key).");return;}
+ }else{
+  try{bearer=await window.SLIResearchAuth?.getAccessToken?.()}catch{bearer=null}
+  if(!bearer||typeof bearer!=="string"){append("system",tr("missing"));status(tr("missing"));return}
+ }
  state.busy=true;enableControls();
  const loading=append("system",tr("busy"));
  const requestBody={question,mode,language:state.language,history:state.history.slice(-8)};
  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),60000);
  try{
-  const response=await fetch(state.config.api_endpoint,{method:"POST",headers:{"content-type":"application/json","authorization":"Bearer "+bearer},body:JSON.stringify(requestBody),cache:"no-store",signal:controller.signal});
+  const endpoint=usingOwner?state.config.owner_test.endpoint:state.config.api_endpoint;
+  const headers=usingOwner?{"content-type":"application/json","x-sli-owner-test-token":bearer}:{"content-type":"application/json","authorization":"Bearer "+bearer};
+  const response=await fetch(endpoint,{method:"POST",headers,body:JSON.stringify(requestBody),cache:"no-store",signal:controller.signal});
   const payload=await response.json().catch(()=>null);
   if(id!==state.sequence)return;
   if(!response.ok)throw Error(payload?.error||"HTTP "+response.status);
@@ -145,7 +153,7 @@ function switchLang(){
  document.querySelectorAll("[data-id][data-en]").forEach(el=>el.textContent=el.getAttribute("data-"+state.language));
  $("raLang").textContent=state.language==="id"?"EN / ID":"ID / EN";
  $("raPrompt").placeholder=state.language==="id"?"Contoh: Buat executive summary ketahanan energi Indonesia dengan sitasi dan implikasi investasi.":"Example: Write an executive summary of Indonesia's energy security with citations and investment implications.";
- if(!isConfigured())status(state.language==="id"?(state.config?.published_notice_id||tr("prelaunch")):(state.config?.published_notice_en||tr("prelaunch")));
+ if(!isConfigured()&&!ownerConfigured())status(state.language==="id"?(state.config?.published_notice_id||tr("prelaunch")):(state.config?.published_notice_en||tr("prelaunch")));
 }
 async function init(){
  $("raAssistantForm").addEventListener("submit",e=>{e.preventDefault();submit()});
@@ -159,8 +167,20 @@ async function init(){
   const r=await fetch("./data/sli-research-assistant-config.json",{cache:"no-store"});
   if(!r.ok)throw Error("config_http");
   state.config=await r.json();
-  if(isConfigured()){$("raAccessLabel").textContent="Research AI · Pro / Enterprise";status(tr("ready"),"ready")}
-  else {$("raAccessLabel").textContent="Research AI · Pre-launch";status(state.language==="id"?(state.config.published_notice_id||tr("prelaunch")):(state.config.published_notice_en||tr("prelaunch")))}
+  if(ownerConfigured()){
+   $("raOwnerInputRow").hidden=false;
+   $("raOwnerState").textContent="Ready for owner-token test";
+   $("raAccessLabel").textContent="Research AI · Owner Test";
+   status(state.language==="id"?"Backend Owner Test tersedia. Masukkan token pribadi pada panel, lalu tulis prompt riset.":"Owner test backend available. Enter the private token and send a research prompt.","ready");
+  }else if(isConfigured()){
+   $("raAccessLabel").textContent="Research AI · Pro / Enterprise";
+   $("raOwnerState").textContent="Pro / Enterprise";
+   status(tr("ready"),"ready");
+  }else{
+   $("raAccessLabel").textContent="Research AI · Pre-launch";
+   $("raOwnerState").textContent=state.language==="id"?"Belum terhubung":"Not connected";
+   status(state.language==="id"?(state.config.published_notice_id||tr("prelaunch")):(state.config.published_notice_en||tr("prelaunch")));
+  }
  }catch{status(tr("invalid"))}
 }
 document.addEventListener("DOMContentLoaded",init);
