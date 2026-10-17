@@ -1,0 +1,28 @@
+# TEMPLATE ONLY. Replace IDs, model name, origin and domain before testing.
+name = "sli-research-ai"
+main = "src/index.js"
+compatibility_date = "2026-10-17"
+workers_dev = false
+
+[vars]
+WEB_ORIGIN = "https://hananakhmad1991-stack.github.io"
+SUPABASE_URL = "https://REPLACE_WITH_PROJECT.supabase.co"
+RESEARCH_MODEL = "REPLACE_WITH_APPROVED_MODEL"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "REPLACE_PRIVATE_MEMBERSHIP_DATABASE"
+database_id = "REPLACE_WITH_REAL_D1_UUID"
+
+[[r2_buckets]]
+binding = "RESEARCH_BUCKET"
+bucket_name = "REPLACE_PRIVATE_RESEARCH_BUCKET"
+
+[[ratelimits]]
+name = "AI_LIMITER"
+namespace_id = "10042"
+[ratelimits.simple]
+limit = 3
+period = 60
+
+# OPENAI_API_KEY must be a Worker secret (wrangler secret put), never in this file.
