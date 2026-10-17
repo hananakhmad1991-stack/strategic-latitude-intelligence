@@ -1,0 +1,32 @@
+name: SLI Sitewide Functional QA
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'intelligence-labs.html'
+      - 'climate-environment.html'
+      - 'ai-infrastructure.html'
+      - 'ai-intelligence-hub.html'
+      - 'digital-economy-readiness.html'
+      - 'digital-governance-data-centers.html'
+      - 'js/strategic-map.js'
+      - 'js/investment-tracker.js'
+      - 'js/commodity-trade-flow.js'
+      - 'js/sli-public-usability.js'
+      - 'css/sli-site-ux.css'
+      - 'tests/qa-sitewide-functions.mjs'
+      - 'tests/qa-sitewide-ux.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify all critical scripts, navigation, filters and export controls
+        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs
