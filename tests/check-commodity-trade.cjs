@@ -7,7 +7,7 @@ assert.equal(data.bilateral.period,"2025");
 assert.equal(data.latest_bps.exports_total_musd,193643.2);
 assert.equal(data.latest_bps.imports_total_musd,186392.1);
 assert.equal(Math.round((data.latest_bps.exports_oil_gas_musd-data.latest_bps.imports_oil_gas_musd)*10)/10,-21288.5);
-assert.equal(data.bilateral.products.length,6);
+assert.equal(data.bilateral.products.length,7,"Seven published HS product groups, including cross-border electricity");
 for(const p of data.bilateral.products){
  assert.ok(/^\d{2,6}$/.test(p.hs),"HS code "+p.id);
  for(const d of ["exports","imports"]){
@@ -53,5 +53,5 @@ const all=n=>n instanceof Node?[n,...n.children.flatMap(all)]:[];
  ctx.window.SLIi18n.language="id";listeners["sli:languagechange"]();
  nodes=all(mount);assert.ok(nodes.some(x=>x.textContent.includes("Perdagangan Komoditas Indonesia")),"Bilingual view");
  const sources=nodes.filter(x=>x.tagName==="a");assert.ok(sources.length>0&&sources.every(x=>!x.href||x.href.startsWith("https://")),"Sources should be safe");
- console.log("PASS 2025 country commodity Sankey, 2026 BPS dated macro, all six HS baskets, trade balances, reversed direction, source safety, bilingual render");
+ console.log("PASS 2025 country commodity Sankey, 2026 BPS dated macro, all seven HS baskets, trade balances, reversed direction, source safety, bilingual render");
 })().catch(e=>{console.error(e);process.exitCode=1});
