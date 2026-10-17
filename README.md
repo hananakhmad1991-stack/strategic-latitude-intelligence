@@ -2,6 +2,16 @@
 
 Independent, open-source-based analysis of Indonesia's strategic investment, energy security, critical minerals, AI infrastructure, and public policy.
 
+## Reader-first navigation and documentation (17 October 2026)
+
+- **[SLI Overview](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/)** is the national big-picture decision brief. Detailed dashboards own tables, projects, sources, maps, filters and specialized analysis; they are not duplicated on Overview.
+- **[How to Use SLI](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-user-guide.html)** provides task-based paths (investor, provincial, energy, minerals, AI, trade, policy, climate), a grouped active module directory, search/export instructions, confidence/date interpretation and troubleshooting.
+- **[Unified Glossary & Methodology](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-glossary-methodology.html)** provides the 312-term canonical English/Indonesian dictionary, source links and a workflow-based methodology table. No duplicated full glossary is embedded in sector maps.
+- **`js/sli-navigation.js` + `css/sli-navigation.css`** add consistent Overview to detail to glossary/help/freshness navigation to every published HTML entrypoint, with related dashboards grouped by research purpose.
+- **`js/sli-live-data.js`** is included once per HTML entrypoint; it fetches repository-owned JSON with GitHub-main preference and same-origin fallback. Transport success is not proof of a new primary-source observation or that every upstream feed updates automatically.
+- **Quality gates:** `tests/qa-sli-information-architecture.mjs`, `tests/qa-sitewide-functions.mjs`, `tests/qa-sitewide-ux.mjs`, canonical glossary QA and whole-dashboard delivery QA. These tests do not replace hands-on browser or source validation.
+- Legacy redirects are preserved for bookmarked URLs, not published as duplicate navigation destinations. Gini labels specify expenditure, and modelled scenarios are distinct from observed data.
+
 ## SLI Provincial Opportunity & Stress Engine (October 2026)
 
 - **[Interactive 38-province opportunity engine](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/provincial-opportunity-engine.html)** unites observed BPS 2021–2025 provincial expenditure GRDP, historical real growth, household expenditure intensity, fixed-capital formation (PMTB) intensity, and selected source-linked project milestones.
@@ -26,12 +36,12 @@ Independent, open-source-based analysis of Indonesia's strategic investment, ene
 
 ## Unified Appendix, Glossary & Methodology (October 2026)
 
-- **[Unified Appendix & Methodology](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-glossary-methodology.html)** is the shared bilingual reader reference for every SLI dashboard. It has **257 unique terms** merged from the original Energy Security appendix and Strategic Map taxonomy, with added macroeconomic, AI infrastructure, investment, law and policy-evaluation definitions.
+- **[Unified Appendix & Methodology](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-glossary-methodology.html)** is the shared bilingual reader reference for every SLI dashboard. It has **312 unique terms** merged from the original Energy Security appendix and Strategic Map taxonomy, with added macroeconomic, AI infrastructure, investment, law and policy-evaluation definitions.
 - **`data/sli-unified-glossary.json`** is the single canonical, searchable glossary. Normalize Unicode dashes/spacing/case to prevent duplicate term labels; preserve original Energy and Strategic Map source attribution. Selective sector filters and term deep links are supported.
 - **`js/sli-shared-appendix.js`** embeds **one short context-specific reading guide** in each dashboard entrypoint, with links to the canonical glossary. It does not repeat full definitions or override source-specific metric definitions and calculation caveats. Main SLI nav has a permanent Appendix link.
 - **Energy Security** retains five energy-only interpretation notes; the original separate list of 84 terms is no longer redundantly rendered. The **Strategic Map** keeps detailed geocoding, source-layer and double-counting caveats while sharing the primary asset/abbreviation dictionary.
 - The appendix explicitly distinguishes **MW/MVA/GWh, targets vs actuals, equipment capacity vs local grid headroom, investment promises vs actual spending, source-check timestamps vs observation years, missing values vs zero, legal hierarchy vs international obligations, and provisional analysis vs verified policy outcomes**.
-- **`scripts/validate_sli_glossary.py` and `.github/workflows/sli-glossary-qa.yml`** check uniqueness, bilingual coverage, original provenance, all 24 HTML entrypoints, appendix links and JS syntax.
+- **`scripts/validate_sli_glossary.py` and `.github/workflows/sli-glossary-qa.yml`** check uniqueness, bilingual coverage, original provenance, all published HTML entrypoints, appendix links and JS syntax.
 
 Current source values, dates, geographic denominators and technical evidence **override general glossary shorthand**. This is explanatory research, not certification of a specific project, investor, asset, permission or legal status.
 
