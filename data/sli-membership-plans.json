@@ -19,6 +19,7 @@
       "features": [
         "Selected national Overview: key indicators and compact summary only, not SLI full national datasets",
         "Short sector summaries; sampled news monitoring (up to five curated items)",
+        "SLI Research AI evidence search: curated public snippet preview with citations (no live generative model)",
         "Strategic Map preview: limited public layers, selected asset samples, no detailed asset intelligence or downloads",
         "Public glossary, general methodology, citations and basic navigation",
         "Planned free account: one account / one active registered device"
@@ -39,6 +40,7 @@
       "features": [
         "Everything in SLI Open",
         "Full SLI national and sector data explorers, full Strategic Map, sector monitoring news and research archives",
+        "SLI Research AI full grounded Q&A on licensed/private corpus (future secure generative RAG)",
         "Advanced 38-province analysis and cross-sector/provincial comparisons",
         "Investment scenarios, econometrics and advanced research models (only as validated and released)",
         "Advanced exports and original SLI analyst reports",
@@ -60,6 +62,7 @@
       "features": [
         "All SLI Pro capabilities",
         "Managed team seats and workspaces, with seat count per contract (planned)",
+        "Custom source-grounded AI-assisted research reports with expert review under contract",
         "Contract-based commissioned research, tailored strategic consulting and actionable sector advice within agreed legal scope",
         "Weekly sector-specific monitoring reports with original bespoke analysis, risks, scenarios and recommendations per contract",
         "Contracted briefings and expert support, plus special alerts where agreed",
@@ -137,5 +140,16 @@
     "news_monitoring": "Curated sample of up to five headline cards; no complete sector feed, archives, intelligence filters or advanced alerts.",
     "provincial_analysis": "Overview summaries only; 38-province comparison, quantitative research and sector drill-down reserved for Pro.",
     "terms": "Glossary, non-exclusive definitions, sources and general methodology remain accessible."
+  },
+  "research_ai": {
+    "preview_url": "sli-research-ai.html",
+    "open_status": "live_curated_source_retrieval_not_generative_ai",
+    "open_scope": "Curated sourced evidence snippets and up to six citation cards per question; no full corpus access.",
+    "pro_status": "planned_authenticated_private_rag",
+    "pro_scope": "Private licensed/owned SLI corpus, LLM-assisted synthesis with citations and validated scenario research, subject to launch.",
+    "enterprise_status": "planned_contract_based",
+    "enterprise_scope": "Custom research briefs and weekly sector monitoring with human review per signed agreement.",
+    "privacy": "Preview queries run only in-browser. Future private AI requires server-only keys, verified account entitlements, anti-abuse, and a privacy policy.",
+    "security": "No provider API token or premium dataset in GitHub Pages."
   }
 }
