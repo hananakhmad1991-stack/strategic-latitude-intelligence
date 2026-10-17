@@ -44,7 +44,7 @@ const all=(el)=>el instanceof Element?[el,...el.children.flatMap(all)]:[];
  assert.ok(urls.length>=cards.length,"Every metric should link to source");
  assert.ok(urls.every(x=>x.href.startsWith("https://")&&x.rel==="noopener noreferrer"),"Source links must use HTTPS and safe rel");
  const filters=els.filter(x=>x.className==="sp-filter");
- assert.equal(filters.length,4,"All, energy, investment and geopolitics filters");
+ assert.deepEqual(filters.map(x=>x.dataset.type),["all","energy","investment","technology","geopolitics"],"Five public monitoring filters including AI & Technology");
  const signalList=els.find(x=>x.className==="sp-signals");
  assert.ok(signalList&&signalList.children.length>0,"Should display sourced headline leads");
  filters.find(x=>x.dataset.type==="investment").events.click();
