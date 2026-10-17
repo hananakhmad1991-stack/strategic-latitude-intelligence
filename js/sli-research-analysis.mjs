@@ -12,12 +12,13 @@ const conceptGroups={
  consumption:["konsumsi","consumption","household","rumah tangga","pasar","market"],
  ai:["ai","data center","datacenter","pusat data","cloud","gpu","komputasi","computing"],
  minerals:["nikel","nickel","smelter","hp al","hpal","minerals","mineral","baterai","battery","tambang"],
- energy:["energi","energy","oil","gas","batubara","coal","brent","wti","renewables","listrik","electricity"],
+ energy:["energi","energy","oil","gas","migas","batubara","coal","brent","wti","renewables","ebt","nre","listrik","electricity","pltu","pltd","pln","geothermal","panas bumi","spklu","elektrifikasi","biofuel","biodiesel","nuklir","power grid","electric vehicle","kendaraan listrik"],
  trade:["ekspor","export","import","impor","perdagangan","trade","neraca"],
  inflation:["inflasi","inflation","cpi","harga konsumen"],
  interest:["suku bunga","bi rate","interest rate","policy rate","bunga acuan"],
  currency:["rupiah","kurs","usd idr","jisdor","exchange rate"],
  news:["berita","news","monitoring","headlines"],
+ industry:["industri","industrial","manufaktur","manufacturing","kawasan industri","pabrik","factory"],
  risk:["risiko","risk","hambatan","challenges","tantangan","swot","prospek","outlook"],
  econometric:["ekonometrika","econometric","multiplier","kausal","causal","regresi","regression"]
 };
@@ -82,7 +83,11 @@ function analyseOne(p,query,lang,metadata){
  "In 2025, "+name+" registered real GRDP growth of "+(datum(growth)?fmt(growth,lang)+"%":"N/A")+". Household spending accounted for "+(datum(h)?fmt(h,lang)+"%":"N/A")+" of current-price GRDP and gross fixed capital formation (GFCF) for "+(datum(cap)?fmt(cap,lang)+"%":"N/A")+". These expenditure shares reveal economic structure but cannot establish realized investor spending or project profitability."+cite(1));
  sections.push({title:local(lang,"Pembacaan ekonomi daerah","Regional economic assessment"),body:general});
  if(intent.includes("investment")||intent.includes("risk")||intent.length===0||intent.includes("growth")){
-  const profile=local(lang,
+  const interpretation=local(lang,
+  datum(h)&&h>=50?"Pangsa konsumsi rumah tangga yang melampaui separuh PDRB dapat menjadi dasar awal untuk menguji pasar konsumsi dan jaringan distribusi. Namun besarnya porsi bukan ukuran langsung pendapatan per kapita atau daya beli konsumen.":"Porsi konsumsi rumah tangga berada di bawah separuh PDRB, sehingga sumber pembentukan nilai tambah lain perlu dianalisis sebelum memilih sektor investasi. Nilai PDRB tetap bukan ukuran pendapatan penduduk.",
+  datum(h)&&h>=50?"Household consumption exceeds half of GRDP, suggesting consumer-facing market and distribution hypotheses worth testing; the share alone does not measure per-capita income or consumer purchasing power.":"Household consumption contributes less than half of GRDP. Other components need investigation before prioritizing sectors, and GRDP is not household income.");
+ sections.push({title:local(lang,"Hipotesis pasar dan permintaan","Demand-side investment hypothesis"),body:interpretation+cite(1)});
+ const profile=local(lang,
   "PMTB sebesar "+(datum(cap)?fmt(cap,lang)+"%":"N/A")+" adalah komponen neraca pengeluaran ekonomi daerah—bukan nilai investasi BKPM atau multiplier effect. Dalam tahap penyaringan investasi, indikator ini perlu dipasangkan dengan ketersediaan daya listrik, logistik, izin, tenaga kerja, permintaan sektoral, dan data proyek yang telah diverifikasi." +cite(1),
   "GFCF at "+(datum(cap)?fmt(cap,lang)+"%":"N/A")+" is an expenditure-accounting component, NOT BKPM realized investment or a multiplier-effect estimate. Investor screening should also test power availability, logistics, permits, skills, demand and independently verified project economics."+cite(1));
   sections.push({title:local(lang,"Implikasi untuk investasi","Implications for investment"),body:profile});
@@ -93,8 +98,8 @@ function analyseOne(p,query,lang,metadata){
    "March 2026 expenditure Gini was "+(datum(g)?fmt(g,lang,3):"N/A")+" against the same-period national coefficient of 0.368. "+(datum(g)?(g>0.368?"The province has higher measured expenditure inequality.":g<0.368?"The province has lower measured expenditure inequality.":"The coefficient equals the national value."):"The observation is unavailable.")+" This is neither income inequality nor purchasing power and says nothing causal about growth. The 2026 Gini and 2025 growth observations refer to different periods."+cite(2));
   sections.push({title:local(lang,"Keseimbangan pertumbuhan dan ketimpangan","Growth and distribution"),body:inequality});
  }
- const projectFocus=intent.includes("ai")||intent.includes("minerals")||intent.includes("energy");
- const words=projectFocus?(p.project_examples||[]).filter(x=>(intent.includes("ai")&&/ai|data|cloud/i.test(x.sector+" "+x.title))||(intent.includes("minerals")&&/mineral|battery|smelter|hpal|nickel/i.test(x.sector+" "+x.title))||(intent.includes("energy")&&/energy|power|listrik|renewable/i.test(x.sector+" "+x.title))):[];
+ const projectFocus=intent.includes("ai")||intent.includes("minerals")||intent.includes("energy")||intent.includes("industry");
+ const words=projectFocus?(p.project_examples||[]).filter(x=>(intent.includes("ai")&&/ai|data|cloud/i.test(x.sector+" "+x.title))||(intent.includes("minerals")&&/mineral|battery|smelter|hpal|nickel/i.test(x.sector+" "+x.title))||(intent.includes("energy")&&/energy|power|listrik|renewable|biofuel/i.test(x.sector+" "+x.title))||(intent.includes("industry")&&/industrial|factory|smelter|manufactur/i.test(x.sector+" "+x.title))):[];
  if(words.length){
   const relevant=words.slice(0,2);
   const strings=[];
@@ -102,16 +107,17 @@ function analyseOne(p,query,lang,metadata){
    const num=evidence.length+1;
    evidence.push(source(row.title,row.source_url,row.evidence_date,row.entity||"Public project record",row.evidence_date));
    strings.push(local(lang,
-   row.title+" tercatat sebagai proyek terkurasi, status sumber: "+row.stage+" ("+row.evidence_date+"). Pengumuman atau tahap konstruksi bukan bukti belanja terealisasi maupun kapasitas operasi.",
-   row.title+" appears in the curated project register at reported stage "+row.stage+" ("+row.evidence_date+"). An announcement or construction milestone is not proof of realized capital expenditure or operational capacity.")+cite(num));
+   row.title+" tercatat sebagai proyek terkurasi, status sumber: "+row.stage+" ("+row.evidence_date+"). "+(row.investment_basis?"Skala/basis yang dilaporkan: "+row.investment_basis+". ":"")+"Pengumuman atau tahap konstruksi bukan bukti belanja terealisasi maupun kapasitas operasi.",
+   row.title+" appears in the curated project register at reported stage "+row.stage+" ("+row.evidence_date+"). "+(row.investment_basis?"Reported scale/basis: "+row.investment_basis+". ":"")+"An announcement or construction milestone is not proof of realized capital expenditure or operational capacity.")+cite(num));
   }
   sections.push({title:local(lang,"Contoh proyek terlapor","Reported project examples"),body:strings.join(" ")});
  } else if(projectFocus){
   sections.push({title:local(lang,"Kesenjangan bukti sektoral","Sector evidence gap"),body:local(lang,
-  "Dalam sampel proyek SLI saat ini belum ada bukti spesifik "+(intent.includes("ai")?"data center/AI":intent.includes("minerals")?"hilirisasi mineral":"energi")+" yang cukup untuk "+name+". Ini BUKAN berarti tidak ada proyek di wilayah tersebut. Pemeriksaan proyek dan kapasitas sektor memerlukan registri yang lebih lengkap sebelum menyimpulkan kelayakan investasi.",
-  "The current curated SLI sample does not contain sufficient province-specific "+(intent.includes("ai")?"AI/data center":intent.includes("minerals")?"critical mineral":"energy")+" project evidence for "+name+". That does NOT mean no projects exist. Additional registered project and operating-capacity sources are required before due diligence.")});
+  "Dalam sampel proyek SLI saat ini belum ada bukti spesifik "+(intent.includes("ai")?"data center/AI":intent.includes("minerals")?"hilirisasi mineral":intent.includes("industry")?"industri/manufaktur":normalize(query).includes("spklu")?"SPKLU":normalize(query).includes("batubara")?"batubara":"energi")+" yang cukup untuk "+name+". Ini BUKAN berarti tidak ada proyek di wilayah tersebut. Pemeriksaan proyek dan kapasitas sektor memerlukan registri yang lebih lengkap sebelum menyimpulkan kelayakan investasi.",
+  "The current curated SLI sample does not contain sufficient province-specific "+(intent.includes("ai")?"AI/data center":intent.includes("minerals")?"critical mineral":intent.includes("industry")?"industrial/manufacturing":"energy")+" project evidence for "+name+". That does NOT mean no projects exist. Additional registered project and operating-capacity sources are required before due diligence.")});
  }
  if(intent.includes("risk")&& !words.length)sections.push({title:local(lang,"Risiko dan keterbatasan riset","Risks and due-diligence gaps"),body:local(lang,"Kelayakan investasi tidak dapat disimpulkan dari PDRB dan PMTB saja. Periksa sumber daya, biaya energi, jaringan listrik, pasar, regulasi, logistik, dan kualitas informasi proyek secara spesifik.","Investment viability cannot be inferred from GRDP and GFCF alone. Validate resource economics, energy and grid supply, logistics, market access, permitting and source reliability.")});
+ if(intent.includes("news"))sections.push({title:local(lang,"Cakupan monitoring lokal","Local monitoring coverage"),body:local(lang,"Belum tersedia arsip berita terverifikasi khusus "+name+" dalam sampel Research Open. Berita nasional atau headline sektor lain tidak boleh diklaim sebagai peristiwa di provinsi tersebut.","No verified province-specific news archive is available for "+name+" in this Open preview. National or unrelated sector headlines must not be presented as events in this province.")});
  if(intent.includes("inflation"))sections.push({title:local(lang,"Indikator yang belum tersedia","Unavailable indicators"),body:local(lang,"Tidak ada seri inflasi/IHK khusus "+name+" dalam corpus Research Open. Angka inflasi nasional tidak boleh diberi label sebagai inflasi provinsi.", "Province-specific CPI/inflation for "+name+" is not in this Open research corpus. National inflation must not be represented as provincial inflation.")});
  if(intent.includes("econometric"))sections.push({title:local(lang,"Batas model ekonometrika","Econometric model limits"),body:local(lang,"Angka ini bersifat deskriptif. Tidak ada estimasi koefisien kausal, model input-output, regresi panel, atau proyeksi multiplier effect yang tervalidasi untuk pertanyaan ini. Simulasi memerlukan asumsi, data input-output, dan pengujian model.", "These observations are descriptive. No tested causal coefficient, input-output multiplier, panel regression, or project return forecast is available for this question. Modelling requires specified assumptions and validation.")});
  const limit=local(lang,"Ini cuplikan analisis daerah, bukan seluruh profil sektoral, komparasi 38 provinsi, atau rekomendasi investasi. Data PDRB 2025 bersifat sementara; data Gini Maret 2026 menggunakan periode survei berbeda.","This is a limited provincial analytical preview, not full sector dossiers, 38-province screening, or investment advice. The 2025 GRDP figures are preliminary and March 2026 Gini refers to a different measurement period.");
