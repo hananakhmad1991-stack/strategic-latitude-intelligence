@@ -1,22 +1,34 @@
-# SLI Research AI · future Pro/Enterprise secure RAG backend
+# SLI Research AI · conversational generative research integration
 
-**Not deployed.** This is server-side staging code; public `sli-research-ai.html` runs a limited curated evidence preview with rule-based source-grounded analytical narratives and strict province matching. It is NOT connected to an LLM today.
+**Not deployed or connected.** The main page `sli-research-ai.html` now provides a genuine conversation-oriented UI: 5,000-character prompts, four report formats (Executive Summary, Deep Research, Comparative Analysis, Risk & Opportunity), follow-up turns, sources sidebar, copy and Markdown export. It explicitly reports that generative AI is unavailable until secure infrastructure is activated. No fake AI-generated results appear.
 
-## Planned secure endpoint
-`POST /v1/research` (private Cloudflare Worker). Requires configured allowed `WEB_ORIGIN`, verified Supabase Auth JWT through the existing `membership-api` verifier, D1 subscription entitlement (Pro or Enterprise with non-expired active status), and a Cloudflare rate-limit binding.
+`sli-research-evidence-preview.html` preserves the former *non-generative* source-based analytics.
 
-The private R2 key `pro/research-evidence.json` is reserved for a vetted `documents` array. Documents need `id, title, text, source_url, period, source_date, publisher, topic, geo, access`. Allowed access values are `pro` and `enterprise`; server filters Enterprise-only material for Enterprise subscribers. The R2 bucket must have **no public URL**.
+## Server design
 
-The Worker enforces a 3,000-character JSON body limit, then ranks up to eight bounded internal excerpts and calls the configured model via the server's `OPENAI_API_KEY` and `RESEARCH_MODEL`. The Responses API request sets `store:false`; no key is exposed in browser code. Grounded answers must contain numbered source citations; answers without valid citations are withheld. This checking verifies citation *structure*, not every claim's factual accuracy; rigorous evaluation and human review remain necessary.
+`POST /v1/research` on private Cloudflare Worker `src/index.js` accepts the JSON keys `question`, `mode`, `language` (id/en) and `history` (up to eight bounded user/assistant turns). The server does not trust client-provided membership, sources, role overrides or API keys. It verifies Supabase Auth signature and expiry, D1 Pro/Enterprise entitlement, permitted Origin and MIME, request size, and per-user Cloudflare rate limiting. Open members have no access.
 
-## Deployment prerequisites (do not skip)
+Only server-curated `pro/research-evidence.json` in a **private R2 bucket** is retrieved. Its `documents` are objects with `id,title,text,source_url,publisher,period,source_date,geo,topic,access`, with `access` restricted to `pro` or `enterprise`. Source licensing must permit such model processing. Documents are geographically filtered for exact provinces; Central Java does not silently become West Java. Enterprise-specific records are excluded from Pro results.
 
-1. Secure identity and session/device registry with one registered active device per individual Open/Pro account, account recovery, consent and privacy notice.
-2. Subscription entitlements and payment/contract rights: paid Pro user gets Pro corpus; Enterprise seat rights are checked individually.
-3. Written source licensing and explicit clearance for sharing selected data with the contracted model provider. No confidential client documents or redistributed premium files without rights.
-4. Provision private R2 and D1, configure origin and Supabase issuer; create a Cloudflare rate-limit binding named `AI_LIMITER`.
-5. Set server secrets `OPENAI_API_KEY`, config `RESEARCH_MODEL` and related bindings in the Cloudflare control plane. Never store credentials in repository or public JS.
-6. Implement abuse quotas, model spend caps, audit metadata without saving raw questions by default, vulnerability assessment, red-team prompt-injection tests, source freshness/version checks, per-claim citation verification, and evaluation on representative Indonesia research queries.
-7. Wire an authenticated Pro UI to the private endpoint *only after* all gates above pass. Do not enable until commercial/legal approval and a model billing account exist.
+The Worker calls the Responses API with server-held `OPENAI_API_KEY`, configured `RESEARCH_MODEL`, `store:false`, up to ten numbered evidence excerpts, and strict analytical/citation instructions. It produces a structured report with numbered citations, research limitations and a source list. Invalid citation numbers fail closed; citation presence **does not prove factual entailment** and all reports must be reviewed before high-stakes decisions.
 
-Never pretend the public preview is a working generative assistant; never use browser-side API keys, skip expired subscription checks or grant access from a user-supplied tier.
+## Owner-controlled activation steps
+
+1. Verify SLI legal/privacy/subscription terms, source rights and consent for model processing; do not place licensed or private materials in public GitHub Pages.
+2. Configure Supabase Auth staging and real verified login/logout. Implement the still-missing authenticated frontend adapter `window.SLIResearchAuth.getAccessToken()`; device/session policy for one active device remains a separate unimplemented requirement.
+3. Provision Cloudflare D1 subscription store (see `../membership-api/schema.sql`), a private R2 bucket without public access, Workers rate limiter and model spending limits.
+4. Copy `wrangler.toml.example` to a secure local configuration, replace placeholder identifiers, select a valid model, bind a verified HTTPS route/domain and set `OPENAI_API_KEY` using `wrangler secret put OPENAI_API_KEY`. NEVER commit a key or subscriber records.
+5. Populate `pro/research-evidence.json` with dated, verified, licensed-to-process evidence and exact geographic metadata. The public preview corpus is NOT the private production corpus.
+6. Run CI and staging E2E tests: source provenance, wrong-province questions, revoked/expired tokens, Enterprise separation, follow-up turns, fabricated citations, leakage, prompt injection, cost and latency.
+7. **Only after verified login and API successfully work**, set `data/sli-research-assistant-config.json` to `api_enabled:true`, `login_enabled:true`, `generation_status:"enabled"`, and `api_endpoint:"https://VERIFIED_WORKER_DOMAIN/v1/research"`. Never change these just to make buttons look enabled.
+
+GitHub QA: `.github/workflows/sli-research-ai-qa.yml`. This tests code/contracts, not real deployed generation, paid billing, or model answer accuracy.
+
+## Local checks
+
+```bash
+node --check js/sli-research-assistant.js
+node --check research-api/src/assistant-core.mjs
+node --check research-api/src/index.js
+node --test tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs
+```
