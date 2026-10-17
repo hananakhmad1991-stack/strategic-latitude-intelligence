@@ -1,0 +1,769 @@
+{
+  "schema": "sli-research-province-preview-v1",
+  "as_of": "2026-10-17",
+  "tier": "open_preview",
+  "coverage": "All 38 BPS provinces can be individually identified and given a limited analytical preview, not 38 full provincial dossiers or data export. BPS 2025 provincial GRDP preliminary and Gini March 2026 observational periods differ.",
+  "units": {
+    "grdp": "IDR billion current prices",
+    "growth": "percent real year-on-year from 2010-constant-price GRDP",
+    "shares": "percent of 2025 current-price expenditure GRDP",
+    "gini": "expenditure coefficient 0–1, March 2026"
+  },
+  "sources": {
+    "grdp": {
+      "publisher": "BPS",
+      "title": "PDRB Provinsi-Provinsi Menurut Pengeluaran 2021–2025, Volume 12 (2026)",
+      "url": "https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html",
+      "released": "2026-04-30"
+    },
+    "gini": {
+      "type": "BPS provincial table",
+      "title": "Gini Ratio by Province and Area, March 2026",
+      "url": "https://www.bps.go.id/assets/statistics-table/2/OTgjMg%3D%3D/gini-rasio--maret-2026.html",
+      "last_updated": "2026-08-05"
+    }
+  },
+  "interpretation_policy": "Growth, investment share and expenditure inequality are descriptive indicators; not causal investment returns or officially ranked province scores. PMTB differs from BKPM realized investment. Curated listed project stages are not verified latest status or realized capex.",
+  "provinces": [
+    {
+      "name": "Aceh",
+      "name_en": "Aceh",
+      "aliases": [],
+      "region": "Sumatra",
+      "grdp_current_2025_bn": 257502.43,
+      "growth_real_2025_pct": 2.97,
+      "household_share_2025_pct": 53.67,
+      "pmtb_share_2025_pct": 31.09,
+      "gini_expenditure_2026_03": 0.275,
+      "project_examples": []
+    },
+    {
+      "name": "Sumatra Utara",
+      "name_en": "North Sumatra",
+      "aliases": [
+        "sumut"
+      ],
+      "region": "Sumatra",
+      "grdp_current_2025_bn": 1236193.57,
+      "growth_real_2025_pct": 4.53,
+      "household_share_2025_pct": 51.12,
+      "pmtb_share_2025_pct": 27.21,
+      "gini_expenditure_2026_03": 0.278,
+      "project_examples": [
+        {
+          "id": "sli-project-020",
+          "title": "PLTA Batang Toru — 510 MW",
+          "sector": "Hydropower & Storage",
+          "stage": "Under construction",
+          "evidence_date": "2026-08-02",
+          "source_url": "https://nshe.co.id/en/",
+          "entity": "PT North Sumatra Hydro Energy",
+          "investment_basis": "No source-verified current realized project capex included",
+          "location": "North Sumatra · South Tapanuli"
+        }
+      ]
+    },
+    {
+      "name": "Sumatra Barat",
+      "name_en": "West Sumatra",
+      "aliases": [
+        "sumbar"
+      ],
+      "region": "Sumatra",
+      "grdp_current_2025_bn": 352189.4,
+      "growth_real_2025_pct": 3.37,
+      "household_share_2025_pct": 51.5,
+      "pmtb_share_2025_pct": 28.51,
+      "gini_expenditure_2026_03": 0.285,
+      "project_examples": []
+    },
+    {
+      "name": "Riau",
+      "name_en": "Riau",
+      "aliases": [],
+      "region": "Sumatra",
+      "grdp_current_2025_bn": 1201383.76,
+      "growth_real_2025_pct": 4.79,
+      "household_share_2025_pct": 34.39,
+      "pmtb_share_2025_pct": 30.54,
+      "gini_expenditure_2026_03": 0.301,
+      "project_examples": []
+    },
+    {
+      "name": "Jambi",
+      "name_en": "Jambi",
+      "aliases": [],
+      "region": "Sumatra",
+      "grdp_current_2025_bn": 349662.6,
+      "growth_real_2025_pct": 4.93,
+      "household_share_2025_pct": 40.88,
+      "pmtb_share_2025_pct": 20.46,
+      "gini_expenditure_2026_03": 0.305,
+      "project_examples": []
+    },
+    {
+      "name": "Sumatra Selatan",
+      "name_en": "South Sumatra",
+      "aliases": [
+        "sumsel"
+      ],
+      "region": "Sumatra",
+      "grdp_current_2025_bn": 720205.22,
+      "growth_real_2025_pct": 5.35,
+      "household_share_2025_pct": 61.33,
+      "pmtb_share_2025_pct": 29.8,
+      "gini_expenditure_2026_03": 0.285,
+      "project_examples": [
+        {
+          "id": "sli-project-009",
+          "title": "PLTP Lumut Balai Unit 2",
+          "sector": "Energy",
+          "stage": "Operational",
+          "evidence_date": "2025-06-29",
+          "source_url": "https://www.pge.pertamina.com/id/siaran-pers/pltp-lumut-balai-unit-2-beroperasi-penuh-pge-tambah-kapasitas-terpasang-55-mw-menuju-target-1-gw",
+          "entity": "PT Pertamina Geothermal Energy Tbk",
+          "investment_basis": "No distinct project capex amount verified in cited COD release",
+          "location": "Muara Enim, South Sumatra"
+        },
+        {
+          "id": "sli-project-025",
+          "title": "PLTP Lumut Balai Unit 3 — 55 MW development",
+          "sector": "Geothermal",
+          "stage": "Early works",
+          "evidence_date": "2026-01",
+          "source_url": "https://www.pge.pertamina.com/id/siaran-pers/pge-resmi-mulai-tahap-eksekusi-proyek-pltp-lumut-balai-unit-3-berkapasitas-55-mw-perkuat-pasokan-energi-bersih-nasional",
+          "entity": "PT Pertamina Geothermal Energy Tbk (PGEO)",
+          "investment_basis": "PGE stated JICA on-lending planned facility / Green Book amount, NOT plant final CAPEX or loan cash already drawn",
+          "location": "South Sumatra · Muara Enim"
+        }
+      ]
+    },
+    {
+      "name": "Bengkulu",
+      "name_en": "Bengkulu",
+      "aliases": [],
+      "region": "Sumatra",
+      "grdp_current_2025_bn": 111829.42,
+      "growth_real_2025_pct": 4.8,
+      "household_share_2025_pct": 60.23,
+      "pmtb_share_2025_pct": 37.17,
+      "gini_expenditure_2026_03": 0.34,
+      "project_examples": []
+    },
+    {
+      "name": "Lampung",
+      "name_en": "Lampung",
+      "aliases": [],
+      "region": "Sumatra",
+      "grdp_current_2025_bn": 523846.54,
+      "growth_real_2025_pct": 5.28,
+      "household_share_2025_pct": 62.61,
+      "pmtb_share_2025_pct": 30.99,
+      "gini_expenditure_2026_03": 0.29,
+      "project_examples": []
+    },
+    {
+      "name": "Kepulauan Bangka Belitung",
+      "name_en": "Bangka Belitung Islands",
+      "aliases": [],
+      "region": "Sumatra",
+      "grdp_current_2025_bn": 116811.75,
+      "growth_real_2025_pct": 4.09,
+      "household_share_2025_pct": 54,
+      "pmtb_share_2025_pct": 23.37,
+      "gini_expenditure_2026_03": 0.214,
+      "project_examples": []
+    },
+    {
+      "name": "Kepulauan Riau",
+      "name_en": "Riau Islands",
+      "aliases": [
+        "kepri"
+      ],
+      "region": "Sumatra",
+      "grdp_current_2025_bn": 381729.88,
+      "growth_real_2025_pct": 6.94,
+      "household_share_2025_pct": 41.4,
+      "pmtb_share_2025_pct": 44.38,
+      "gini_expenditure_2026_03": 0.354,
+      "project_examples": []
+    },
+    {
+      "name": "DKI Jakarta",
+      "name_en": "Jakarta",
+      "aliases": [
+        "dki",
+        "jakarta"
+      ],
+      "region": "Java",
+      "grdp_current_2025_bn": 3926153.3,
+      "growth_real_2025_pct": 5.21,
+      "household_share_2025_pct": 62.8,
+      "pmtb_share_2025_pct": 33.79,
+      "gini_expenditure_2026_03": 0.435,
+      "project_examples": []
+    },
+    {
+      "name": "Jawa Barat",
+      "name_en": "West Java",
+      "aliases": [
+        "jabar",
+        "west java"
+      ],
+      "region": "Java",
+      "grdp_current_2025_bn": 3038667.95,
+      "growth_real_2025_pct": 5.32,
+      "household_share_2025_pct": 65.51,
+      "pmtb_share_2025_pct": 24.46,
+      "gini_expenditure_2026_03": 0.413,
+      "project_examples": [
+        {
+          "id": "sli-project-001",
+          "title": "Integrated EV battery ecosystem",
+          "sector": "Critical minerals",
+          "stage": "Under construction",
+          "evidence_date": "2025-06-29",
+          "source_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai",
+          "entity": "ANTAM · IBC · Ningbo Contemporary Brunp Lygend (CBL)",
+          "investment_basis": "Announced integrated ecosystem project investment; not verified realized capex",
+          "location": "Karawang, West Java; East Halmahera, North Maluku (multi-site)"
+        },
+        {
+          "id": "sli-project-014",
+          "title": "PSEL Bogor Raya 1 — waste-to-energy",
+          "sector": "Energy",
+          "stage": "Under construction",
+          "evidence_date": "2026-09-17",
+          "source_url": "https://www.danantaraindonesia.co.id/zh/media-center/press-releases/psel-bogor-raya-1-construction",
+          "entity": "PT Daya Energi Bersih Nusantara (Denera), Danantara Investment Management platform and future selected partners",
+          "investment_basis": "Project budget not established in this official construction announcement; do not impute sector programme-wide estimate.",
+          "location": "Galuga, Cibungbulang, Bogor Regency, West Java"
+        },
+        {
+          "id": "sli-project-021",
+          "title": "Upper Cisokan Pumped Storage — 1,040 MW",
+          "sector": "Hydropower & Storage",
+          "stage": "Under construction",
+          "evidence_date": "2025-12-02",
+          "source_url": "https://documents1.worldbank.org/curated/en/099120125205526878/pdf/P172256-a3decd36-a5b6-4182-af6c-aa1c6c7f3222.pdf",
+          "entity": "PT PLN (Persero), World Bank / AIIB loans (NOT owners)",
+          "investment_basis": "External financing approvals and construction expenditure must not be equated with one publicly verified project-level realized capex number",
+          "location": "West Java · West Bandung and Cianjur"
+        }
+      ]
+    },
+    {
+      "name": "Jawa Tengah",
+      "name_en": "Central Java",
+      "aliases": [
+        "jateng",
+        "central java"
+      ],
+      "region": "Java",
+      "grdp_current_2025_bn": 1943187.66,
+      "growth_real_2025_pct": 5.37,
+      "household_share_2025_pct": 60.89,
+      "pmtb_share_2025_pct": 30.91,
+      "gini_expenditure_2026_03": 0.354,
+      "project_examples": []
+    },
+    {
+      "name": "DI Yogyakarta",
+      "name_en": "Yogyakarta",
+      "aliases": [
+        "diy",
+        "jogja",
+        "jogjakarta",
+        "yogya"
+      ],
+      "region": "Java",
+      "grdp_current_2025_bn": 208133.8,
+      "growth_real_2025_pct": 5.49,
+      "household_share_2025_pct": 61.63,
+      "pmtb_share_2025_pct": 35.65,
+      "gini_expenditure_2026_03": 0.411,
+      "project_examples": []
+    },
+    {
+      "name": "Jawa Timur",
+      "name_en": "East Java",
+      "aliases": [
+        "jatim",
+        "east java"
+      ],
+      "region": "Java",
+      "grdp_current_2025_bn": 3403166.85,
+      "growth_real_2025_pct": 5.33,
+      "household_share_2025_pct": 60.78,
+      "pmtb_share_2025_pct": 27.22,
+      "gini_expenditure_2026_03": 0.365,
+      "project_examples": [
+        {
+          "id": "sli-project-006",
+          "title": "PTFI Manyar copper smelter",
+          "sector": "Critical minerals",
+          "stage": "Operational",
+          "evidence_date": "2025-12-31",
+          "source_url": "https://www.fcx.com/operations/indonesia",
+          "entity": "PT Freeport Indonesia (PTFI); shareholder groups MIND ID / PT IPMM / FCX",
+          "investment_basis": "Not included: no single current realized-capex figure verified in this source",
+          "location": "Gresik, East Java"
+        }
+      ]
+    },
+    {
+      "name": "Banten",
+      "name_en": "Banten",
+      "aliases": [],
+      "region": "Java",
+      "grdp_current_2025_bn": 936203.98,
+      "growth_real_2025_pct": 5.37,
+      "household_share_2025_pct": 53.04,
+      "pmtb_share_2025_pct": 34.4,
+      "gini_expenditure_2026_03": 0.312,
+      "project_examples": [
+        {
+          "id": "sli-project-012",
+          "title": "Chandra Asri CA-EDC — Cilegon",
+          "sector": "Other",
+          "stage": "Announced",
+          "evidence_date": "2026-03-03",
+          "source_url": "https://www.danantaraindonesia.co.id/media-center/press-releases/reducing-import-dependency-danantara-and-ina-sign-investment-agreement-in-chandra-asri-groups-ca-edc-project",
+          "entity": "PT Chandra Asri Alkali (CAA) · Chandra Asri Group; Danantara Indonesia and INA as conditional equity participants",
+          "investment_basis": "Total announced project value; separate US$200m conditional joint subscription by Danantara + INA, not an incremental addition to the US$800m budget",
+          "location": "Cilegon, Banten"
+        }
+      ]
+    },
+    {
+      "name": "Bali",
+      "name_en": "Bali",
+      "aliases": [],
+      "region": "Bali & Nusa Tenggara",
+      "grdp_current_2025_bn": 324148.94,
+      "growth_real_2025_pct": 5.82,
+      "household_share_2025_pct": 52.52,
+      "pmtb_share_2025_pct": 27.57,
+      "gini_expenditure_2026_03": 0.342,
+      "project_examples": []
+    },
+    {
+      "name": "Nusa Tenggara Barat",
+      "name_en": "West Nusa Tenggara",
+      "aliases": [
+        "ntb"
+      ],
+      "region": "Bali & Nusa Tenggara",
+      "grdp_current_2025_bn": 192951.54,
+      "growth_real_2025_pct": 3.22,
+      "household_share_2025_pct": 58.23,
+      "pmtb_share_2025_pct": 34.31,
+      "gini_expenditure_2026_03": 0.358,
+      "project_examples": []
+    },
+    {
+      "name": "Nusa Tenggara Timur",
+      "name_en": "East Nusa Tenggara",
+      "aliases": [
+        "ntt"
+      ],
+      "region": "Bali & Nusa Tenggara",
+      "grdp_current_2025_bn": 148373.38,
+      "growth_real_2025_pct": 5.14,
+      "household_share_2025_pct": 65.16,
+      "pmtb_share_2025_pct": 41.63,
+      "gini_expenditure_2026_03": 0.319,
+      "project_examples": []
+    },
+    {
+      "name": "Kalimantan Barat",
+      "name_en": "West Kalimantan",
+      "aliases": [
+        "kalbar"
+      ],
+      "region": "Kalimantan",
+      "grdp_current_2025_bn": 328569.51,
+      "growth_real_2025_pct": 5.39,
+      "household_share_2025_pct": 48.51,
+      "pmtb_share_2025_pct": 33.08,
+      "gini_expenditure_2026_03": 0.311,
+      "project_examples": []
+    },
+    {
+      "name": "Kalimantan Tengah",
+      "name_en": "Central Kalimantan",
+      "aliases": [
+        "kalteng"
+      ],
+      "region": "Kalimantan",
+      "grdp_current_2025_bn": 241055.7,
+      "growth_real_2025_pct": 4.8,
+      "household_share_2025_pct": 36.51,
+      "pmtb_share_2025_pct": 36.32,
+      "gini_expenditure_2026_03": 0.278,
+      "project_examples": []
+    },
+    {
+      "name": "Kalimantan Selatan",
+      "name_en": "South Kalimantan",
+      "aliases": [
+        "kalsel"
+      ],
+      "region": "Kalimantan",
+      "grdp_current_2025_bn": 305126.93,
+      "growth_real_2025_pct": 5.22,
+      "household_share_2025_pct": 42.86,
+      "pmtb_share_2025_pct": 21.89,
+      "gini_expenditure_2026_03": 0.301,
+      "project_examples": []
+    },
+    {
+      "name": "Kalimantan Timur",
+      "name_en": "East Kalimantan",
+      "aliases": [
+        "kaltim"
+      ],
+      "region": "Kalimantan",
+      "grdp_current_2025_bn": 889072.55,
+      "growth_real_2025_pct": 4.53,
+      "household_share_2025_pct": 17.78,
+      "pmtb_share_2025_pct": 35.97,
+      "gini_expenditure_2026_03": 0.312,
+      "project_examples": [
+        {
+          "id": "sli-project-017",
+          "title": "IKN Solar Power Plant — 50 MW",
+          "sector": "Solar PV",
+          "stage": "Operational",
+          "evidence_date": "2025-11-28",
+          "source_url": "https://www.ikn.go.id/storage/press-release/2025/20251128-siaran-pers-tandatangani-kerja-sama-dengan-pt-nsse%2C-otorita-ikn-siap-percepat-optimalisasi-penggunaan-energi-bersih.pdf",
+          "entity": "PT Nusantara Sembcorp Solar Energi · PLN Nusantara Power · Sembcorp Utilities",
+          "investment_basis": "OIKN's stated project investment amount; not auditor-verified disbursement by 2026",
+          "location": "East Kalimantan · IKN Sepaku"
+        }
+      ]
+    },
+    {
+      "name": "Kalimantan Utara",
+      "name_en": "North Kalimantan",
+      "aliases": [
+        "kaltara"
+      ],
+      "region": "Kalimantan",
+      "grdp_current_2025_bn": 156025.74,
+      "growth_real_2025_pct": 4.56,
+      "household_share_2025_pct": 14.85,
+      "pmtb_share_2025_pct": 28.38,
+      "gini_expenditure_2026_03": 0.253,
+      "project_examples": []
+    },
+    {
+      "name": "Sulawesi Utara",
+      "name_en": "North Sulawesi",
+      "aliases": [
+        "sulut"
+      ],
+      "region": "Sulawesi",
+      "grdp_current_2025_bn": 204747.14,
+      "growth_real_2025_pct": 5.66,
+      "household_share_2025_pct": 43.64,
+      "pmtb_share_2025_pct": 31.6,
+      "gini_expenditure_2026_03": 0.344,
+      "project_examples": []
+    },
+    {
+      "name": "Sulawesi Tengah",
+      "name_en": "Central Sulawesi",
+      "aliases": [
+        "sulteng"
+      ],
+      "region": "Sulawesi",
+      "grdp_current_2025_bn": 415477.22,
+      "growth_real_2025_pct": 8.47,
+      "household_share_2025_pct": 27.86,
+      "pmtb_share_2025_pct": 39.56,
+      "gini_expenditure_2026_03": 0.277,
+      "project_examples": [
+        {
+          "id": "sli-project-005",
+          "title": "IGP Morowali — mine and HPAL / BNSI",
+          "sector": "Critical minerals",
+          "stage": "Under construction",
+          "evidence_date": "2026-07-22",
+          "source_url": "https://vale.com/in/w/sambalagi-hpal-project-reaches-major-milestone-with-autoclave-arrival-strengthening-the-future-of-sustainable-downstreaming/-/categories",
+          "entity": "PT Vale Indonesia · PT Bahodopi Nickel Smelting Indonesia (BNSI) · GEM · EcoPro",
+          "investment_basis": "Integrated IGP Morowali project investment estimate (mine and HPAL), not disbursed capital",
+          "location": "Morowali, Central Sulawesi"
+        },
+        {
+          "id": "sli-project-018",
+          "title": "PLTA Poso Peaker — 515 MW",
+          "sector": "Hydropower & Storage",
+          "stage": "Operational",
+          "evidence_date": "2022-02-25",
+          "source_url": "https://www.esdm.go.id/en/media-center/news-archives/presiden-joko-widodo-resmikan-plta-di-kabupaten-poso",
+          "entity": "PT Poso Energy (Kalla Group project)",
+          "investment_basis": "ESDM's historical 2018 total investment estimate, not audited final 2022 capital expenditure",
+          "location": "Central Sulawesi · Poso"
+        }
+      ]
+    },
+    {
+      "name": "Sulawesi Selatan",
+      "name_en": "South Sulawesi",
+      "aliases": [
+        "sulsel"
+      ],
+      "region": "Sulawesi",
+      "grdp_current_2025_bn": 753077.16,
+      "growth_real_2025_pct": 5.43,
+      "household_share_2025_pct": 53.6,
+      "pmtb_share_2025_pct": 35.85,
+      "gini_expenditure_2026_03": 0.355,
+      "project_examples": [
+        {
+          "id": "sli-project-019",
+          "title": "PLTB Tolo 1 — 72 MW",
+          "sector": "Wind",
+          "stage": "Operational",
+          "evidence_date": "2019-09-06",
+          "source_url": "https://www.esdm.go.id/en/media-center/arsip-berita/pltb-tolo-sukses-beroperasi-komersial-tahap-ii-siap-dikembangkan",
+          "entity": "PT Energi Bayu Jeneponto / Vena Energy development",
+          "investment_basis": "Historical ESDM project investment estimate from Feb 2018; NOT actual paid-in or final capex",
+          "location": "South Sulawesi · Jeneponto"
+        }
+      ]
+    },
+    {
+      "name": "Sulawesi Tenggara",
+      "name_en": "Southeast Sulawesi",
+      "aliases": [
+        "sultra"
+      ],
+      "region": "Sulawesi",
+      "grdp_current_2025_bn": 204333.57,
+      "growth_real_2025_pct": 5.79,
+      "household_share_2025_pct": 46.01,
+      "pmtb_share_2025_pct": 33.66,
+      "gini_expenditure_2026_03": 0.356,
+      "project_examples": [
+        {
+          "id": "sli-project-004",
+          "title": "IGP Pomalaa — mine and HPAL",
+          "sector": "Critical minerals",
+          "stage": "Under construction",
+          "evidence_date": "2026-02-25",
+          "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion",
+          "entity": "PT Vale Indonesia · PT Kolaka Nickel Indonesia · Huayou · Ford (project partners)",
+          "investment_basis": "Company-described full project investment (mine and HPAL); not verified realized cash outlay, not limited to KNI equity",
+          "location": "Kolaka, Southeast Sulawesi"
+        }
+      ]
+    },
+    {
+      "name": "Gorontalo",
+      "name_en": "Gorontalo",
+      "aliases": [],
+      "region": "Sulawesi",
+      "grdp_current_2025_bn": 58977.51,
+      "growth_real_2025_pct": 5.71,
+      "household_share_2025_pct": 61.55,
+      "pmtb_share_2025_pct": 27.32,
+      "gini_expenditure_2026_03": 0.384,
+      "project_examples": []
+    },
+    {
+      "name": "Sulawesi Barat",
+      "name_en": "West Sulawesi",
+      "aliases": [],
+      "region": "Sulawesi",
+      "grdp_current_2025_bn": 71162.44,
+      "growth_real_2025_pct": 5.36,
+      "household_share_2025_pct": 46.67,
+      "pmtb_share_2025_pct": 25.39,
+      "gini_expenditure_2026_03": 0.314,
+      "project_examples": []
+    },
+    {
+      "name": "Maluku",
+      "name_en": "Maluku",
+      "aliases": [],
+      "region": "Maluku",
+      "grdp_current_2025_bn": 66313.12,
+      "growth_real_2025_pct": 4.56,
+      "household_share_2025_pct": 70.3,
+      "pmtb_share_2025_pct": 27.59,
+      "gini_expenditure_2026_03": 0.281,
+      "project_examples": [
+        {
+          "id": "sli-project-001",
+          "title": "Integrated EV battery ecosystem",
+          "sector": "Critical minerals",
+          "stage": "Under construction",
+          "evidence_date": "2025-06-29",
+          "source_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai",
+          "entity": "ANTAM · IBC · Ningbo Contemporary Brunp Lygend (CBL)",
+          "investment_basis": "Announced integrated ecosystem project investment; not verified realized capex",
+          "location": "Karawang, West Java; East Halmahera, North Maluku (multi-site)"
+        },
+        {
+          "id": "sli-project-007",
+          "title": "Abadi LNG Masela — onshore/offshore LNG and CCS",
+          "sector": "Energy",
+          "stage": "Under construction",
+          "evidence_date": "2026-07-16",
+          "source_url": "https://esdm.go.id/id/media-center/arsip-berita/pembangunan-lng-abadi-masela-mulai-jalan-pemerintah-dorong-pertumbuhan-ekonomi-lokal-",
+          "entity": "INPEX Masela (operator, PSC 65%) · PHE Masela (20%) · PETRONAS Masela (15%)",
+          "investment_basis": "Estimated integrated project budget / national project value announced by ESDM; not proven actual disbursement",
+          "location": "Tanimbar Islands, Maluku"
+        },
+        {
+          "id": "sli-project-013",
+          "title": "Weda Bay nickel ecosystem — eleven facilities (portfolio)",
+          "sector": "Critical minerals",
+          "stage": "Mixed implementation",
+          "evidence_date": "2026-10-08",
+          "source_url": "https://www.setneg.go.id/baca/index/presiden_prabowo_luncurkan_11_proyek_hilirisasi_dengan_total_investasi_senilai_rp180_triliun_di_maluku_utara",
+          "entity": "Multiple Indonesian and foreign industrial investors; Tsingshan and Huayou representatives present, but portfolio-level source does not establish each facility's shareholder percentages",
+          "investment_basis": "Government-reported collective value of eleven facilities; includes four commercialization milestones and seven groundbreaking milestones; NOT independent CAPEX realization for eleven completed assets",
+          "location": "Indonesia Weda Bay Industrial Park, Central Halmahera, North Maluku"
+        }
+      ]
+    },
+    {
+      "name": "Maluku Utara",
+      "name_en": "North Maluku",
+      "aliases": [
+        "malut"
+      ],
+      "region": "Maluku",
+      "grdp_current_2025_bn": 133620.32,
+      "growth_real_2025_pct": 34.17,
+      "household_share_2025_pct": 23.34,
+      "pmtb_share_2025_pct": 41.32,
+      "gini_expenditure_2026_03": 0.288,
+      "project_examples": [
+        {
+          "id": "sli-project-001",
+          "title": "Integrated EV battery ecosystem",
+          "sector": "Critical minerals",
+          "stage": "Under construction",
+          "evidence_date": "2025-06-29",
+          "source_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai",
+          "entity": "ANTAM · IBC · Ningbo Contemporary Brunp Lygend (CBL)",
+          "investment_basis": "Announced integrated ecosystem project investment; not verified realized capex",
+          "location": "Karawang, West Java; East Halmahera, North Maluku (multi-site)"
+        },
+        {
+          "id": "sli-project-013",
+          "title": "Weda Bay nickel ecosystem — eleven facilities (portfolio)",
+          "sector": "Critical minerals",
+          "stage": "Mixed implementation",
+          "evidence_date": "2026-10-08",
+          "source_url": "https://www.setneg.go.id/baca/index/presiden_prabowo_luncurkan_11_proyek_hilirisasi_dengan_total_investasi_senilai_rp180_triliun_di_maluku_utara",
+          "entity": "Multiple Indonesian and foreign industrial investors; Tsingshan and Huayou representatives present, but portfolio-level source does not establish each facility's shareholder percentages",
+          "investment_basis": "Government-reported collective value of eleven facilities; includes four commercialization milestones and seven groundbreaking milestones; NOT independent CAPEX realization for eleven completed assets",
+          "location": "Indonesia Weda Bay Industrial Park, Central Halmahera, North Maluku"
+        }
+      ]
+    },
+    {
+      "name": "Papua Barat",
+      "name_en": "West Papua",
+      "aliases": [],
+      "region": "Papua",
+      "grdp_current_2025_bn": 81807.57,
+      "growth_real_2025_pct": 6.46,
+      "household_share_2025_pct": 18.23,
+      "pmtb_share_2025_pct": 9.92,
+      "gini_expenditure_2026_03": 0.384,
+      "project_examples": [
+        {
+          "id": "sli-project-008",
+          "title": "Tangguh Ubadari CCUS Compression (UCC)",
+          "sector": "Energy",
+          "stage": "Under construction",
+          "evidence_date": "2026-06-03",
+          "source_url": "https://www.spglobal.com/energy/en/news-research/latest-news/lng/060326-bp-expects-tangguh-lng-domestic-deliveries-to-rise-to-89-cargoes-in-2026",
+          "entity": "bp operator and Tangguh production sharing contract partners",
+          "investment_basis": "2024 approved final investment decision for UCC development; not investment realization",
+          "location": "Bintuni Bay, West Papua"
+        }
+      ]
+    },
+    {
+      "name": "Papua Barat Daya",
+      "name_en": "Southwest Papua",
+      "aliases": [
+        "papua barat daya"
+      ],
+      "region": "Papua",
+      "grdp_current_2025_bn": 39219.64,
+      "growth_real_2025_pct": 4.03,
+      "household_share_2025_pct": 47.68,
+      "pmtb_share_2025_pct": 16.88,
+      "gini_expenditure_2026_03": 0.362,
+      "project_examples": []
+    },
+    {
+      "name": "Papua",
+      "name_en": "Papua",
+      "aliases": [],
+      "region": "Papua",
+      "grdp_current_2025_bn": 90513.18,
+      "growth_real_2025_pct": 3.97,
+      "household_share_2025_pct": 55.17,
+      "pmtb_share_2025_pct": 37.74,
+      "gini_expenditure_2026_03": 0.398,
+      "project_examples": [
+        {
+          "id": "sli-project-008",
+          "title": "Tangguh Ubadari CCUS Compression (UCC)",
+          "sector": "Energy",
+          "stage": "Under construction",
+          "evidence_date": "2026-06-03",
+          "source_url": "https://www.spglobal.com/energy/en/news-research/latest-news/lng/060326-bp-expects-tangguh-lng-domestic-deliveries-to-rise-to-89-cargoes-in-2026",
+          "entity": "bp operator and Tangguh production sharing contract partners",
+          "investment_basis": "2024 approved final investment decision for UCC development; not investment realization",
+          "location": "Bintuni Bay, West Papua"
+        }
+      ]
+    },
+    {
+      "name": "Papua Selatan",
+      "name_en": "South Papua",
+      "aliases": [],
+      "region": "Papua",
+      "grdp_current_2025_bn": 35687.86,
+      "growth_real_2025_pct": 3.39,
+      "household_share_2025_pct": 73.04,
+      "pmtb_share_2025_pct": 34.74,
+      "gini_expenditure_2026_03": 0.405,
+      "project_examples": []
+    },
+    {
+      "name": "Papua Tengah",
+      "name_en": "Central Papua",
+      "aliases": [],
+      "region": "Papua",
+      "grdp_current_2025_bn": 160519.15,
+      "growth_real_2025_pct": -21.8,
+      "household_share_2025_pct": 25.04,
+      "pmtb_share_2025_pct": 21.26,
+      "gini_expenditure_2026_03": 0.315,
+      "project_examples": []
+    },
+    {
+      "name": "Papua Pegunungan",
+      "name_en": "Highland Papua",
+      "aliases": [],
+      "region": "Papua",
+      "grdp_current_2025_bn": 28377.77,
+      "growth_real_2025_pct": 3.75,
+      "household_share_2025_pct": 86.49,
+      "pmtb_share_2025_pct": 47.53,
+      "gini_expenditure_2026_03": 0.301,
+      "project_examples": []
+    }
+  ]
+}
