@@ -84,7 +84,7 @@ function drawCompare(){
  for(const {p,value} of all){
   const b=el('button');b.type='button';b.className='regbar';b.setAttribute('aria-pressed',String(opts.province===p.id));
   const top=el('div');top.className='regbar-top';top.append(el('span',p.name),el('strong',format(value)));b.append(top);
-  const track=el('div');track.className='regbar-track';const fill=el('div');fill.className='regbar-fill';fill.style.width=(value==null?0:100*Math.abs(value)/max).toFixed(2)+'%';track.append(fill);b.append(track);
+  const track=el('div');track.className='regbar-track';const fill=el('div');fill.className='regbar-fill';fill.style.width=(value==null?0:100*Math.abs(value)/max).toFixed(2)+'%';if(value!=null&&value<0)fill.style.background='#d59b91';track.append(fill);b.append(track);
   b.addEventListener('click',()=>{opts.province=p.id;$('regProvince').value=String(p.id);render()});root.append(b);
  }
  if(!all.length){const msg=el('p','No matching province. Try a different search.');msg.className='empty';root.append(msg)}
@@ -107,7 +107,7 @@ function render(){
  $('regPrimarySource').textContent='BPS publication · '+source().released+' ↗';
  $('regSummary').textContent=opts.family==='economy'?
  'Provincial expenditure accounts, '+(DATA.metrics[opts.metric]?.appendix?'BPS appendix '+DATA.metrics[opts.metric].appendix:'derived using BPS published province data')+'. PMTB / GRDP is a derived account ratio, not realized investment from BKPM. Provincial boundary changes in Papua affect some historical comparisons.':
- 'Historical civic and institutional observations. Index figures are sourced, not SLI political risk assessments. DPT records eligible registered voters for provincial elections, not votes cast.';
+ 'Historical civic and institutional observations from BPS Statistik Politik 2025, '+(opts.metric==='press_freedom'?'Appendix 44 (PDF page 180), original source Dewan Pers.':'Appendix 25 (PDF page 152), original source KPU.')+' Index observations are not SLI political risk ratings; DPT records registered voters, not votes cast.';
  if(['real_growth','pmtb_share','dpt_female'].includes(opts.metric))$('regSummary').textContent+=' This selected percentage is calculated from BPS source values.';
  $('regSeriesNote').textContent='BPS source observation years: '+yr.join(', ')+'. Values with missing source entries are not imputed.';
  plot($('regTrend'),yr,series,p.name+' '+opts.metric+' by source year');
