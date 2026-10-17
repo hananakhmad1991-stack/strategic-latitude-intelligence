@@ -167,7 +167,7 @@ async function load(){
   const r=await fetch('./data/sli-indonesia-original-intelligence.json',{cache:'no-store'});
   if(!r.ok)throw Error('HTTP '+r.status);
   const x=await r.json();
-  if(x.schema!=='sli-indonesia-original-intelligence-v1'||x.metrics.length<10||x.domains.length!==7||!x.partners?.length)throw Error('Incomplete editorial dataset');
+  if(x.schema!=='sli-indonesia-original-intelligence-v1'||x.metrics.length<10||x.domains.length!==8||!x.partners?.length)throw Error('Incomplete editorial dataset');
   DATA=x;snapshot();globalLinks();sectors();renderDossiers();readHash();
  }catch(e){
   $('leadTitle').textContent='Source data unavailable';$('leadText').textContent='Could not load the verified SLI research snapshot. Refresh this page and check the official data portals.';
