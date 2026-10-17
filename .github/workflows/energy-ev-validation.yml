@@ -38,7 +38,7 @@ jobs:
           assert 'id="energyEVRoot"' in site
           assert 'js/energy-ev.js' in site
           assert 'css/energy-ev.css' in site
-          assert 'initSLIEV()' in site
+          assert 'initSLIEV?.()' in site or 'initSLIEV()' in site
           assert len(d["types"])>=5
           assert d["cars"]["gaikindo_wholesale"]["value"]==117218
           assert d["cars"]["production"]["value"]==79818
