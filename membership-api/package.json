@@ -1,0 +1,9 @@
+{
+  "name": "sli-membership-api",
+  "private": true,
+  "type": "module",
+  "description": "Undeployed fail-closed SLI membership API prototype",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  }
+}
