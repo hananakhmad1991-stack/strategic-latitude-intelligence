@@ -6,7 +6,7 @@ const $=id=>document.getElementById(id);
 const make=(tag,value)=>{const n=document.createElement(tag);if(value!==undefined)n.textContent=String(value);return n};
 const fmt=(n)=>new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(n);
 const officialLink=(url,label)=>{const a=make('a',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a};
-const views=['snapshot','global','sectors','dossiers','regional'];
+const views=['snapshot','global','sectors','dossiers','regional','safety'];
 let DATA=null,activeView='snapshot',activePartner=null,activeSector=null,domain=null,issue=null,search='';
 const domainById=id=>DATA?.domains.find(d=>d.id===id);
 const issueById=()=>domainById(domain)?.topics.find(t=>t.id===issue);
