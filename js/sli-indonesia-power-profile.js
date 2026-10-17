@@ -106,7 +106,7 @@ function crumb(label,onClick){
 }
 function renderDrill(){
  const status=$('drillStatus'),list=$('drillList'),detailBox=$('drillIndicator'),bread=$('drillBreadcrumb'),back=$('drillBack');
- list.replaceChildren();bread.replaceChildren();detailBox.hidden=true;
+ list.replaceChildren();bread.replaceChildren();detailBox.hidden=true;$('drillLevelSource').href=sourceUrl;$('drillLevelSource').textContent='Original Indonesia profile ↗';
  if(!detailIndex){
   $('drillTitle').textContent='Explore underlying indicators';
   $('drillIntro').textContent='Awaiting the published Lowy hierarchy. Scores already displayed above remain available.';
@@ -115,7 +115,7 @@ function renderDrill(){
  }
  const measure=currentDetail();
  if(!measure){status.textContent='Choose one of the eight measures above.';return}
- const m=data?.metrics.find(x=>x.id===measure.id);
+ const m=data?.metrics.find(x=>x.id===measure.id);$('drillLevelSource').href=measure.source_url||sourceUrl;$('drillLevelSource').textContent='Lowy measure methodology ↗';
  bread.append(crumb('Eight measures',()=>{tabChange('scores');$('scores').scrollIntoView?.({block:'start'})}));
  bread.append(el('span','›'));
  bread.append(crumb(measure.name,()=>{selectedSub=null;selectedIndicator=null;drillStage='submeasures';renderDrill();writeDrillUrl()}));
@@ -136,6 +136,7 @@ function renderDrill(){
   return;
  }
  const part=currentSub();if(!part){status.textContent='Choose a valid sub-measure.';return}
+ $('drillLevelSource').href=part.source_url||measure.source_url||sourceUrl;$('drillLevelSource').textContent=part.source_url?'Original sub-measure ranking ↗':'Lowy measure methodology ↗';
  back.hidden=false;
  back.textContent=drillStage==='indicator'?'← All indicators':'← Sub-measures';
  back.onclick=()=>{if(drillStage==='indicator'){selectedIndicator=null;drillStage='indicators'}else{selectedSub=null;drillStage='submeasures'}renderDrill();writeDrillUrl()};
@@ -158,8 +159,9 @@ function renderDrill(){
  $('indicatorExplanation').textContent=ind.indonesia?
   'Lowy Indonesia index indicator: normalized score '+fmt(ind.indonesia.score)+'/100, regional rank #'+ind.indonesia.rank+'.':
   'The indicator is part of Lowy’s published methodology. SLI has not imported a source-verified Indonesia value; N/A is not zero and is not an assessment of performance.';
- $('indicatorPeriod').textContent='Lowy Institute Asia Power Index, '+(ind.indonesia?.year||detailIndex.edition)+' edition · '+measure.name+' / '+part.name;
+ $('indicatorPeriod').textContent='Lowy Asia Power Index '+detailIndex.edition+' edition · '+(ind.indonesia?.source_year?'observation period: '+ind.indonesia.source_year+' · ':'')+measure.name+' / '+part.name;
  $('indicatorSource').href=ind.source_url||part.source_url||measure.source_url||sourceUrl;
+ $('indicatorSource').textContent=ind.source_url?'View the exact Lowy indicator ↗':part.source_url?'View Lowy sub-measure data ↗':'Browse indicator definitions on Lowy ↗';
 }
 
 function renderScores(){
