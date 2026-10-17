@@ -26,12 +26,25 @@ export function detectIntents(query){
 export function findProvinces(query,profiles){
  const q=normalize(query);
  if(!q||!Array.isArray(profiles))return [];
- const matched=[];
+ const hits=[];
  for(const p of profiles){
-  const names=[p.name,p.name_en,...(p.aliases||[])].filter(Boolean).sort((a,b)=>normalize(b).length-normalize(a).length);
-  if(names.some(n=>inPhrase(q,n)))matched.push(p);
+  for(const label of [p.name,p.name_en,...(p.aliases||[])].filter(Boolean)){
+   const alias=normalize(label),hay=" "+q+" ",needle=" "+alias+" ";
+   let pos=hay.indexOf(needle);
+   while(pos>=0){
+    hits.push({profile:p,start:pos,end:pos+needle.length,weight:alias.length});
+    pos=hay.indexOf(needle,pos+1);
+   }
+  }
  }
- return matched;
+ hits.sort((a,b)=>b.weight-a.weight||a.start-b.start);
+ const accepted=[];
+ for(const hit of hits){
+  if(accepted.some(x=>Math.max(x.start,hit.start)<Math.min(x.end,hit.end)))continue;
+  accepted.push(hit);
+ }
+ accepted.sort((a,b)=>a.start-b.start);
+ return [...new Map(accepted.map(x=>[x.profile.name,x.profile])).values()];
 }
 export function validateProfiles(data){
  return !!(data&&data.schema==="sli-research-province-preview-v1"&&Array.isArray(data.provinces)&&data.provinces.length===38&&data.provinces.every(p=>p.name&&Array.isArray(p.project_examples)&&p.name_en)&&new Set(data.provinces.map(p=>p.name)).size===38);
