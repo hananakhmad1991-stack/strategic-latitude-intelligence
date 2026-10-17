@@ -88,3 +88,70 @@ test('the ranking cannot silently blend political, safety or police figures',()=
  assert.match(code,/PMTB|capital/);
  assert.match(html,/not investment, legal or financial advice/);
 });
+
+const gini=JSON.parse(read('data/sli-bps-gini-2026.json'));
+test('Gini socioeconomic context joins all 38 provinces without modifying their fit score',()=>{
+ const base=engine.screen(data);
+ const linked=engine.attachInequality(base,gini);
+ assert.equal(linked.length,38);
+ assert.deepEqual([...new Set(linked.map(x=>x.name))].sort(),[...new Set(gini.provinces.map(x=>x.name))].sort());
+ assert.equal(linked.every((x,i)=>x.score===base[i].score),true);
+ assert.equal(linked.find(x=>x.name==='DKI Jakarta').inequality.combined,0.435);
+ assert.equal(linked.find(x=>x.name==='DKI Jakarta').inequality.rural,null);
+ assert.equal(linked.find(x=>x.name==='Jawa Barat').inequality.combined,0.413);
+ assert.equal(gini.national.combined,0.368);
+ assert.equal(gini.national.urban,0.387);
+ assert.equal(gini.national.rural,0.296);
+});
+test('National, urban and rural inequality are compared only within like-for-like population areas',()=>{
+ const linked=engine.attachInequality(engine.screen(data),gini);
+ const jakarta=linked.find(x=>x.name==='DKI Jakarta');
+ const combined=engine.inequalityContext(jakarta,gini,'combined');
+ assert.equal(combined.value,0.435);
+ assert.equal(combined.national,0.368);
+ assert.equal(combined.difference,0.067);
+ assert.equal(combined.comparison,'Above national');
+ const rural=engine.inequalityContext(jakarta,gini,'rural');
+ assert.equal(rural.value,null);
+ assert.equal(rural.national,0.296);
+ assert.equal(rural.comparison,'Not available');
+ const java=linked.find(x=>x.name==='Jawa Barat');
+ const urb=engine.inequalityContext(java,gini,'urban');
+ assert.equal(urb.national,0.387);
+ assert.equal(urb.value,0.424);
+});
+test('Geographic medians summarize separate provinces without producing unsupported regional Gini',()=>{
+ const linked=engine.attachInequality(engine.screen(data),gini);
+ const groups=engine.groupedProvinceMedians(linked,'combined');
+ assert.equal(Object.keys(groups).length,7);
+ assert.equal(groups.Java.count,6);
+ assert.equal(groups.Java.median,0.388);
+ assert.ok(groups.Sumatra.minimum<=groups.Sumatra.median);
+ assert.ok(groups.Sumatra.median<=groups.Sumatra.maximum);
+ assert.equal(engine.groupedProvinceMedians(linked,'rural').Java.count,5);
+});
+test('Gini source failure leaves economic model scored and its inequality observations missing',()=>{
+ const base=engine.screen(data),linked=engine.attachInequality(base,null);
+ assert.equal(linked.length,38);
+ assert.equal(linked.every((x,i)=>x.score===base[i].score&&x.inequality.combined===null),true);
+ const c=engine.inequalityContext(linked[0],null);
+ assert.equal(c.value,null);
+ assert.equal(c.comparison,'Not available');
+});
+test('Original investment interface integrates Gini context, comparative visualization, dated analyst briefs and CSV',()=>{
+ assert.match(html,/sli-bps-gini-2026\.json/);
+ assert.match(html,/id="giniArea"/);
+ assert.match(html,/id="equityScatter"/);
+ assert.match(html,/id="nationalAreaGini"/);
+ assert.match(html,/function renderInequality\(/);
+ assert.match(html,/Socioeconomic context for/);
+ assert.match(html,/gini_coefficient_march_2026/);
+ assert.match(html,/national_gini_selected_area_march_2026/);
+ assert.match(html,/Gini does not contribute to the fit score/);
+ assert.match(html,/datasets are different periods and not synchronized/);
+ assert.match(html,/not official regional Gini/i);
+ assert.match(html,/gini-inequality\.html/);
+ const inline=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
+ assert.equal(inline.length,1);
+ assert.doesNotThrow(()=>new Function(inline[0][1]));
+});
