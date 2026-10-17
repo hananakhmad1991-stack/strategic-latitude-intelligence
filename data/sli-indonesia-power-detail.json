@@ -1,0 +1,916 @@
+{
+  "schema": "sli-indonesia-power-detail-v1",
+  "edition": 2025,
+  "source": "Lowy Institute Asia Power Index",
+  "source_url": "https://power.lowyinstitute.org/countries/indonesia/",
+  "provenance_notice": "Hierarchies and named indicators transcribed from the Lowy Institute explore pages. Scores of submeasures/indicators appear ONLY for a limited set verified on Lowy's official 2025 indicator ranking pages; all others are N/A in SLI. SLI does not recompute the published Lowy Index.",
+  "measures": [
+    {
+      "id": "economic",
+      "name": "Economic capability",
+      "parts": [
+        {
+          "id": "size",
+          "name": "Size",
+          "description": "The economy's scale measured through purchasing-power-parity GDP",
+          "source_url": "https://power.lowyinstitute.org/data/economic-capability/size/",
+          "verified_indonesia_2025": {
+            "score": 12,
+            "rank": 6
+          },
+          "indicators": [
+            {
+              "name": "GDP",
+              "status": "verified_2025",
+              "indonesia": {
+                "score": 12,
+                "rank": 6,
+                "value": "US$5.016 trillion PPP",
+                "year": 2025
+              },
+              "source_url": "https://power.lowyinstitute.org/data/economic-capability/size/gross-domestic-product/"
+            }
+          ]
+        },
+        {
+          "id": "leverage",
+          "name": "International leverage",
+          "description": "Financial, legal and sanctioning resources and their international reach",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Corporate giants",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Global reserve currency",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "International currency share",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Official reserves",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Export credit agencies",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Sovereign wealth funds",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "technology",
+          "name": "Technology",
+          "description": "Technological and scientific sophistication",
+          "source_url": "https://power.lowyinstitute.org/data/economic-capability/technology/",
+          "verified_indonesia_2025": {
+            "score": 7.1,
+            "rank": 19
+          },
+          "indicators": [
+            {
+              "name": "High-tech exports",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Productivity",
+              "status": "verified_2025",
+              "indonesia": {
+                "score": 6.3,
+                "rank": 16,
+                "value": "US$9,278 per worker (constant 2021 dollars)",
+                "year": 2025
+              },
+              "source_url": "https://power.lowyinstitute.org/data/economic-capability/technology/productivity/"
+            },
+            {
+              "name": "Human resources in R&D",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "R&D spending (% of GDP)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Nobel prizes (sciences)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Supercomputers",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Satellites launched",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Renewable energy",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "connectivity",
+          "name": "Connectivity",
+          "description": "Capital flows and international transport and travel connections",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Global exports",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Global imports",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Global investment outflows",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Global investment inflows",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Merchant fleet",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Global travel connectivity",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        }
+      ],
+      "source_url": "https://power.lowyinstitute.org/explore/economic-capability/",
+      "total_indicators": 21,
+      "total_submeasures": 4
+    },
+    {
+      "id": "military",
+      "name": "Military capability",
+      "parts": [
+        {
+          "id": "spending",
+          "name": "Defence spending",
+          "description": "Annual military and defence-sector expenditure",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Military expenditure, market exchange rates",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Military expenditure, defence sector PPP",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "forces",
+          "name": "Armed forces",
+          "description": "Active and paramilitary forces, readiness and organisation",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Military and paramilitary forces",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Training, readiness and sustainment",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Organisation: Combat experience",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Organisation: Command and control",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "platforms",
+          "name": "Weapons and platforms",
+          "description": "Land, maritime and air warfare forces and supporting capabilities",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Land warfare: Manoeuvre",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Land warfare: Firepower",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Maritime warfare: Sea control",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Maritime warfare: Firepower",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Maritime warfare: Sea denial",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Air warfare: Fighters",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Air warfare: Enablers",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Technology, maintenance and range",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "signature",
+          "name": "Signature capabilities",
+          "description": "Capabilities that confer tactical and strategic advantages",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Ground-based missile launchers",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Ballistic missile submarines",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Long-range maritime force projection",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Area denial capabilities",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Intelligence capabilities",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Cyber capabilities",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "posture",
+          "name": "Asian military posture",
+          "description": "Capacity to deploy and sustain forces in an Asian conflict",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Ground forces deployment",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Naval deployment",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        }
+      ],
+      "source_url": "https://power.lowyinstitute.org/explore/military-capability/",
+      "total_indicators": 22,
+      "total_submeasures": 5
+    },
+    {
+      "id": "resilience",
+      "name": "Resilience",
+      "parts": [
+        {
+          "id": "stability",
+          "name": "Internal stability",
+          "description": "Institutional and environmental stability of a state",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Government effectiveness",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Political stability",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Climate change resilience",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Internal conflict years",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "High-intensity internal conflict years",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Infant mortality",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "resources",
+          "name": "Resource security",
+          "description": "Access to energy, fuel and critical resources",
+          "source_url": "https://power.lowyinstitute.org/data/resilience/resource-security/",
+          "verified_indonesia_2025": {
+            "score": 54.1,
+            "rank": 7
+          },
+          "indicators": [
+            {
+              "name": "Energy trade balance",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Energy self-sufficiency",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Fuel trade balance",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Fuel security",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Rare-earth metals supply",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "geoeconomic",
+          "name": "Geoeconomic security",
+          "description": "Resistance to coercion and trade dependence",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Diversity of export products",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Diversity of export markets",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Dependency on global trade",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Dependency on primary trade partner",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "geopolitical",
+          "name": "Geopolitical security",
+          "description": "Geography, territorial security and historical disputes",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Population relative to neighbours",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Landmass deterrent",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Demographic deterrent",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Interstate conflict legacies",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Boundary disputes",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "nuclear",
+          "name": "Nuclear deterrence",
+          "description": "Nuclear forces and retaliatory capability",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Nuclear weapons capability",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Nuclear weapons range",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Ground-based nuclear missile launchers",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Nuclear second-strike capability",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        }
+      ],
+      "source_url": "https://power.lowyinstitute.org/explore/resilience/",
+      "total_indicators": 24,
+      "total_submeasures": 5
+    },
+    {
+      "id": "future",
+      "name": "Future resources",
+      "parts": [
+        {
+          "id": "economy2035",
+          "name": "Economic resources 2035",
+          "description": "Projected economic capacity",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "GDP baseline",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "GDP forecast 2035",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Economic capability 2035",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "defence2035",
+          "name": "Defence resources 2035",
+          "description": "Projected defence spending and capability",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Military expenditure baseline",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Military expenditure forecast 2035",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Military capability enhancement 2024–35",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "broad2035",
+          "name": "Broad resources 2035",
+          "description": "Estimated broad resources at future GDP and military expenditure levels",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Estimated broad resources 2035",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "population2050",
+          "name": "Demographic resources 2050",
+          "description": "Long-run labour force and demographic resources",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Working-age population baseline",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Working-age population forecast 2050",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Labour dividend (climate adjusted) 2024–50",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        }
+      ],
+      "source_url": "https://power.lowyinstitute.org/explore/future-resources/",
+      "total_indicators": 10,
+      "total_submeasures": 4
+    },
+    {
+      "id": "economic_rel",
+      "name": "Economic relationships",
+      "parts": [
+        {
+          "id": "regionaltrade",
+          "name": "Regional trade relations",
+          "description": "Bilateral trade leverage in Asia",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Trade with region",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Primary trade partner",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Regional selling power",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Regional buying power",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "investment",
+          "name": "Regional investment ties",
+          "description": "Direct investment flows and relative interdependence",
+          "source_url": "https://power.lowyinstitute.org/data/economic-relationships/regional-investment-ties/",
+          "verified_indonesia_2025": {
+            "score": 9.2,
+            "rank": 10
+          },
+          "indicators": [
+            {
+              "name": "Foreign investment in region",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Primary foreign investor",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Average share of foreign investment",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Investment attractiveness",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "diplomacy",
+          "name": "Economic diplomacy",
+          "description": "Economic statecraft and trade and aid mechanisms",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Global FTAs",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Regional FTAs",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Foreign assistance (global)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Foreign assistance (regional)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Economic Statecraft",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        }
+      ],
+      "source_url": "https://power.lowyinstitute.org/explore/economic-relationships/",
+      "total_indicators": 13,
+      "total_submeasures": 3
+    },
+    {
+      "id": "defence",
+      "name": "Defence networks",
+      "parts": [
+        {
+          "id": "alliances",
+          "name": "Regional alliance network",
+          "description": "Formal alliances and combined strength",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Regional military alliances",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Allied foreign forces",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Joint training (allies)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Combined operation years (allies)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Arms procurements (allies)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Alliance force multiplier",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "diplomacy",
+          "name": "Regional defence diplomacy",
+          "description": "Defence consultations and partnerships outside alliances",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Defence dialogues",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Defence consultation pacts",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Foreign forces and deployments",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Joint training (non-allies)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Combined operation years (non-allies)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Arms procurements (non-allies)",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "global",
+          "name": "Global defence partnerships",
+          "description": "International military equipment and arms trading relationships",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Global arms trade",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Arms export partnerships",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        }
+      ],
+      "source_url": "https://power.lowyinstitute.org/explore/defence-networks/",
+      "total_indicators": 14,
+      "total_submeasures": 3
+    },
+    {
+      "id": "diplomacy",
+      "name": "Diplomatic influence",
+      "parts": [
+        {
+          "id": "network",
+          "name": "Diplomatic network",
+          "description": "Regional and global overseas mission footprint",
+          "source_url": "https://power.lowyinstitute.org/data/diplomatic-influence/diplomatic-network/",
+          "verified_indonesia_2025": {
+            "score": 53.7,
+            "rank": 8
+          },
+          "indicators": [
+            {
+              "name": "Embassies (regional)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Embassies (global)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Second-tier diplomatic network (regional)",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "multilateral",
+          "name": "Multilateral power",
+          "description": "Representation and participation in international forums",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Summits, clubs and organisations",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Institutional voting shares",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "UN capital contributions",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Voting alignment",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Voting partners",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Diplomatic Dialogues (Multilateral)",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "policy",
+          "name": "Foreign policy",
+          "description": "Capacity to advance international interests",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Political leadership (regional)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Political leadership (global)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Strategic ambition",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Diplomatic service",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Diplomatic Dialogues (Bilateral)",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Convening power",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        }
+      ],
+      "source_url": "https://power.lowyinstitute.org/explore/diplomatic-influence/",
+      "total_indicators": 15,
+      "total_submeasures": 3
+    },
+    {
+      "id": "culture",
+      "name": "Cultural influence",
+      "parts": [
+        {
+          "id": "projection",
+          "name": "Cultural projection",
+          "description": "Exported culture, reputation and attractiveness",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Online search interest",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Cultural exports",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Global brands",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Prestige: Skyscrapers",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Status: Visa-free travel",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Cultural heritage",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "media",
+          "name": "Information flows",
+          "description": "Audience for media and universities",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Asia-Pacific international students",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Regional influence: News agencies",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Regional influence: Newspapers",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Regional influence: TV broadcasters",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Regional influence: Radio broadcasters",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        },
+        {
+          "id": "people",
+          "name": "People exchanges",
+          "description": "Diaspora, migration and travel connections",
+          "source_url": null,
+          "verified_indonesia_2025": null,
+          "indicators": [
+            {
+              "name": "Diaspora influence",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Migrant drawing power",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Regional travel destination",
+              "status": "source_indicator_not_imported"
+            },
+            {
+              "name": "Regional travel connectivity",
+              "status": "source_indicator_not_imported"
+            }
+          ]
+        }
+      ],
+      "source_url": "https://power.lowyinstitute.org/explore/cultural-influence/",
+      "total_indicators": 15,
+      "total_submeasures": 3
+    }
+  ]
+}
