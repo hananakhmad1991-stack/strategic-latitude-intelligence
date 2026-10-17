@@ -77,6 +77,17 @@ function answer(question){
  out.append(el("p","",dict[state.language].intro+" "+docs.length+" "+dict[state.language].results.toLowerCase()+"."));
  const ol=el("ol","sli-ra-summary");
  docs.slice(0,4).forEach((doc,i)=>{const li=el("li","",docTitle(doc)+": "+docText(doc));li.append(el("span","sli-ra-inline-ref"," ["+(i+1)+"]"));ol.append(li)});
+ const numbers=docs.map((d,i)=>({d,i})).filter(x=>x.d.metric&&Number.isFinite(x.d.metric.value)).slice(0,3);
+ if(numbers.length){
+  const highlights=el("div","sli-ra-metrics");
+  numbers.forEach(({d,i})=>{
+   const tile=el("div","sli-ra-metric");
+   const val=el("strong","",d.metric.value.toLocaleString(state.language==="id"?"id-ID":"en-US")+" "+d.metric.unit);
+   tile.append(el("span","",d.metric.label),val,el("small","",d.metric.period+" · ["+(i+1)+"]"));
+   highlights.append(tile)
+  });
+  out.insertBefore(highlights,ol);
+ }
  out.append(ol,el("p","sli-ra-caution",dict[state.language].brief));
  byId("raSourceHeading").textContent=dict[state.language].source+" ("+docs.length+")";
  docs.forEach((doc,i)=>list.append(resultCard(doc,i)));
