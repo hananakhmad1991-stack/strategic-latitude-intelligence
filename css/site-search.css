@@ -29,3 +29,11 @@
 .sli-search-empty{padding:14px;color:#bcd3e1;font-size:12px;margin:0}
 @media(max-width:1050px){.sli-top-actions{width:min(320px,43vw)}.sli-search-shortcut{display:none}}
 @media(max-width:650px){.main>.top{display:flex;align-items:stretch;flex-direction:column;gap:13px}.sli-top-actions{order:0;align-items:stretch;width:100%;min-width:0}.sli-search-popover{left:0;right:0;width:100%;max-height:min(55vh,520px)}.sli-top-actions>.chip{align-self:flex-start;margin-top:0}.sli-search-input-wrap{height:45px}.sli-search-shortcut{display:inline-block}}
+
+/* Explicit record-level focus when an indexed result cannot open a dedicated row. */
+.sli-search-focus{scroll-margin-top:80px;display:grid;gap:6px;border:1px solid #d6ab69;border-left:4px solid #e7c58e;border-radius:9px;background:#183950;padding:15px 18px;margin:16px 0;color:#eaf4f9;max-width:100%;overflow-wrap:anywhere}
+.sli-search-focus>small:first-child{font-size:10px;letter-spacing:.1em;font-weight:800;color:#e9c789}
+.sli-search-focus>strong{font-size:16px;line-height:1.4}
+.sli-search-focus>p{margin:0;color:#e2eaf0;font-size:13px}
+.sli-search-focus>small{color:#bad1dd;font-size:11px}
+.sli-search-focus>a{color:#f4d39d;font-size:12px;width:max-content;max-width:100%}
