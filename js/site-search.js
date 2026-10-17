@@ -5,7 +5,7 @@
  */
 (function() {
  "use strict";
- const INDEX_URL="data/site-search-index.json?v=20261017-search3";
+ const INDEX_URL="data/site-search-index.json?v=20261017-search4";
  const ID="sliGlobalSearchRoot",MAX=25;
  const alias={
   batubara:["coal"],coal:["batubara"],minyak:["oil"],oil:["minyak"],migas:["oil","gas"],nikel:["nickel"],nickel:["nikel"],
@@ -190,9 +190,10 @@
    const allowPages=new Set(["provincial-intelligence.html","provincial-opportunity-engine.html",
     "gini-inequality.html","indonesia-macroeconomic-intelligence.html","intelligence-labs.html",
     "climate-environment.html","geopolitical-impact-assessment.html","sli-data-automation-center.html",
-    "pln-electricity-statistics.html","ai-infrastructure.html"]);
+    "pln-electricity-statistics.html","ai-infrastructure.html","sli-user-guide.html","sli-glossary-methodology.html"]);
    if(item.path&&allowPages.has(item.path)){
-    window.location.assign("./"+item.path+(item.province?"?province="+encodeURIComponent(item.province):""));return;
+    const fragment=item.path==="sli-glossary-methodology.html"&&/^term-[a-z0-9-]+$/.test(item.anchor||"")?"#"+item.anchor:"";
+    window.location.assign("./"+item.path+(item.province?"?province="+encodeURIComponent(item.province):"")+fragment);return;
    }
    function displayFocus(anchor){
     if(!["record","indicator","topic"].includes(item.kind))return null;
