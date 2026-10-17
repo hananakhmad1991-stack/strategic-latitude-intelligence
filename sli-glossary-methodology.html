@@ -69,4 +69,4 @@
 <script>
 (function(){const button=document.getElementById('sliLanguageToggle');const stored=(()=>{try{return localStorage.getItem('sli-ui-language')}catch(_){return null}})();let language=stored==='id'?'id':'en';window.SLIi18n={language};function redraw(){window.SLIi18n.language=language;document.dispatchEvent(new CustomEvent('sli:languagechange'));button.textContent='Glossary / Glosarium: '+language.toUpperCase();}button.onclick=()=>{language=language==='id'?'en':'id';try{localStorage.setItem('sli-ui-language',language)}catch(_){ }redraw()};redraw()})()
 </script>
-<script src="./js/sli-shared-appendix.js?v=20261016-unified1"></script></body></html>
+<script src="./js/sli-shared-appendix.js?v=20261016-unified1"></script><script defer src="./js/sli-public-usability.js"></script></body></html>
