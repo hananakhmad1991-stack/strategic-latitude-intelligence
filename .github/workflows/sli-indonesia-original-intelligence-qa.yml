@@ -1,0 +1,24 @@
+name: SLI Original Indonesia Intelligence QA
+on:
+  push:
+    paths:
+      - 'geopolitical-impact-assessment.html'
+      - 'js/sli-indonesia-original-intelligence.js'
+      - 'data/sli-indonesia-original-intelligence.json'
+      - 'index.html'
+      - 'intelligence-labs.html'
+      - 'tests/qa-indonesia-original-intelligence.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify independently sourced SLI indicators, interactive dossiers and data gaps
+        run: node --test tests/qa-indonesia-original-intelligence.mjs
