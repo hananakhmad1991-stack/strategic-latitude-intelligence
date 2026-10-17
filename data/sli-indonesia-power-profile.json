@@ -1,0 +1,261 @@
+{
+  "schema": "sli-indonesia-power-profile-v1",
+  "as_of": "2026-10-17",
+  "title": "Indonesia Power Profile",
+  "publication": "2025 Asia Power Index",
+  "period": 2025,
+  "scope": "Lowy Institute Asia Power Index, not a Strategic Latitude geopolitical risk or investment advice rating.",
+  "source": {
+    "publisher": "Lowy Institute",
+    "title": "Asia Power Index — Indonesia country profile",
+    "url": "https://power.lowyinstitute.org/countries/indonesia/",
+    "edition": 2025,
+    "accessed": "2026-10-17"
+  },
+  "overview": {
+    "country": "Indonesia",
+    "classification": "Middle power in Asia (Lowy Institute classification)",
+    "comprehensive_power": {
+      "rank": 9,
+      "universe": 27,
+      "score": 22.5,
+      "scale_max": 100,
+      "annual_score_change": 0.2
+    },
+    "analysis_points": [
+      "Indonesia remains a middle power and ranks ninth among 27 indexed economies.",
+      "Future resources and diplomatic influence are its highest-ranked dimensions (fifth).",
+      "Resilience improved, while defence networks declined most sharply in the latest annual comparison.",
+      "A positive power gap indicates that Indonesia exercises more influence than its resource base alone would suggest; its exact magnitude is not given here."
+    ]
+  },
+  "metrics": [
+    {
+      "id": "economic",
+      "name": "Economic capability",
+      "rank": 10,
+      "score": 10.1,
+      "rank_change": 0,
+      "score_change": 0,
+      "description": "Economic size and geopolitical economic capacity",
+      "interpretation": "Relatively modest compared with Indonesia's regional demographic and resource weight.",
+      "source_url": "https://power.lowyinstitute.org/countries/indonesia/"
+    },
+    {
+      "id": "military",
+      "name": "Military capability",
+      "rank": 13,
+      "score": 15.9,
+      "rank_change": 0,
+      "score_change": 0,
+      "description": "Conventional military strength",
+      "interpretation": "Indonesia's lowest-ranking of the eight measures in 2025.",
+      "source_url": "https://power.lowyinstitute.org/countries/indonesia/"
+    },
+    {
+      "id": "resilience",
+      "name": "Resilience",
+      "rank": 9,
+      "score": 34.5,
+      "rank_change": 2,
+      "score_change": 2.5,
+      "description": "Ability to withstand and deter threats to national stability",
+      "interpretation": "Biggest annual score gain, with resource security among contributing factors.",
+      "source_url": "https://power.lowyinstitute.org/countries/indonesia/"
+    },
+    {
+      "id": "future",
+      "name": "Future resources",
+      "rank": 5,
+      "score": 12.8,
+      "rank_change": 1,
+      "score_change": 0,
+      "description": "Projected future economic, military and demographic resources",
+      "interpretation": "Top-five ranking; its rank improved despite an unchanged measure score.",
+      "source_url": "https://power.lowyinstitute.org/countries/indonesia/"
+    },
+    {
+      "id": "economic_rel",
+      "name": "Economic relationships",
+      "rank": 11,
+      "score": 18.5,
+      "rank_change": -2,
+      "score_change": 0.7,
+      "description": "Influence through international economic interdependencies",
+      "interpretation": "The rank fell even as the underlying score rose; these are different measures.",
+      "source_url": "https://power.lowyinstitute.org/countries/indonesia/"
+    },
+    {
+      "id": "defence",
+      "name": "Defence networks",
+      "rank": 12,
+      "score": 14.8,
+      "rank_change": -4,
+      "score_change": -4.3,
+      "description": "Defence partnerships as multipliers of military capability",
+      "interpretation": "Largest annual score decline; rank also fell.",
+      "source_url": "https://power.lowyinstitute.org/countries/indonesia/"
+    },
+    {
+      "id": "diplomacy",
+      "name": "Diplomatic influence",
+      "rank": 5,
+      "score": 67.2,
+      "rank_change": 1,
+      "score_change": 1.6,
+      "description": "Reach and standing of foreign relations",
+      "interpretation": "Indonesia's highest-scoring measure and joint-best rank.",
+      "source_url": "https://power.lowyinstitute.org/countries/indonesia/"
+    },
+    {
+      "id": "culture",
+      "name": "Cultural influence",
+      "rank": 10,
+      "score": 22.1,
+      "rank_change": 0,
+      "score_change": 0,
+      "description": "Regional and international cultural attraction and engagement",
+      "interpretation": "Score unchanged in 2025.",
+      "source_url": "https://power.lowyinstitute.org/countries/indonesia/"
+    }
+  ],
+  "annual_change": {
+    "period": "2024 to 2025",
+    "notes": "Score change and rank movement are distinct. Score deltas expressed in points; rank movements expressed in places.",
+    "records": [
+      {
+        "id": "economic",
+        "name": "Economic capability",
+        "score_change": 0,
+        "rank_change": 0,
+        "rank_2025": 10,
+        "score_2025": 10.1
+      },
+      {
+        "id": "military",
+        "name": "Military capability",
+        "score_change": 0,
+        "rank_change": 0,
+        "rank_2025": 13,
+        "score_2025": 15.9
+      },
+      {
+        "id": "resilience",
+        "name": "Resilience",
+        "score_change": 2.5,
+        "rank_change": 2,
+        "rank_2025": 9,
+        "score_2025": 34.5
+      },
+      {
+        "id": "future",
+        "name": "Future resources",
+        "score_change": 0,
+        "rank_change": 1,
+        "rank_2025": 5,
+        "score_2025": 12.8
+      },
+      {
+        "id": "economic_rel",
+        "name": "Economic relationships",
+        "score_change": 0.7,
+        "rank_change": -2,
+        "rank_2025": 11,
+        "score_2025": 18.5
+      },
+      {
+        "id": "defence",
+        "name": "Defence networks",
+        "score_change": -4.3,
+        "rank_change": -4,
+        "rank_2025": 12,
+        "score_2025": 14.8
+      },
+      {
+        "id": "diplomacy",
+        "name": "Diplomatic influence",
+        "score_change": 1.6,
+        "rank_change": 1,
+        "rank_2025": 5,
+        "score_2025": 67.2
+      },
+      {
+        "id": "culture",
+        "name": "Cultural influence",
+        "score_change": 0,
+        "rank_change": 0,
+        "rank_2025": 10,
+        "score_2025": 22.1
+      }
+    ]
+  },
+  "influence": {
+    "year": 2024,
+    "category": "Bilateral merchandise and services trade, current USD (Lowy bilateral trade influence presentation)",
+    "views": {
+      "into_indonesia": {
+        "title": "Which partners account for Indonesia's trade?",
+        "subtitle": "Share of Indonesia's trade by partner, as presented in the Lowy country profile.",
+        "denominator": "Percent of Indonesia's reported global bilateral trade (2024).",
+        "records": [
+          {
+            "name": "China",
+            "percent": 27.3
+          },
+          {
+            "name": "United States",
+            "percent": 8
+          },
+          {
+            "name": "Japan",
+            "percent": 7.2
+          },
+          {
+            "name": "Singapore",
+            "percent": 6.9
+          },
+          {
+            "name": "European Union",
+            "percent": 6.4
+          }
+        ]
+      },
+      "indonesia_influence": {
+        "title": "Which economies depend most on trade with Indonesia?",
+        "subtitle": "Indonesia's share of each partner's trade, as presented in the Lowy country profile.",
+        "denominator": "Share of each recipient/partner economy's own trade accounted for by Indonesia (2024), NOT percentages of Indonesia's exports.",
+        "records": [
+          {
+            "name": "Timor-Leste",
+            "percent": 35.4
+          },
+          {
+            "name": "Singapore",
+            "percent": 5.8
+          },
+          {
+            "name": "Philippines",
+            "percent": 5.4
+          },
+          {
+            "name": "Myanmar",
+            "percent": 4.3
+          },
+          {
+            "name": "Pakistan",
+            "percent": 4.1
+          }
+        ]
+      }
+    },
+    "network_reference": "https://power.lowyinstitute.org/network-power/trade/indonesia/"
+  },
+  "constraints": [
+    "Do not confuse Asia Power Index scores with country investment-risk ratings.",
+    "The eight measure scores do not sum to overall comprehensive power because the index uses Lowy's weighting/methodology.",
+    "Rank movements and score-point changes are not interchangeable.",
+    "Trade partner percentages and recipient-economy exposure percentages have different denominators.",
+    "Snapshot is the 2025 published index; not a live real-time power score.",
+    "Original Lowy analysis and graphics are not reproduced; this page presents an independently designed source-attributed summary."
+  ]
+}
