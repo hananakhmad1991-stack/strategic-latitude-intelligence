@@ -5,8 +5,8 @@
  const NS='http://www.w3.org/2000/svg';
  const make=(tag,value)=>{const el=document.createElement(tag);if(value!==undefined)el.textContent=String(value);return el;};
  const svg=(tag,attrs={})=>{const el=document.createElementNS(NS,tag);for(const [k,v] of Object.entries(attrs))el.setAttribute(k,String(v));return el;};
- const formatter=new Intl.NumberFormat('en-US',{maximumFractionDigits:1});
- const money=v=>v>=1?'$'+formatter.format(v)+' bn':'$'+formatter.format(v*1000)+' m';
+ const formatter=new Intl.NumberFormat('en-US',{maximumFractionDigits:2});
+ const money=v=>v>=1?'$'+formatter.format(v)+' bn':'$'+formatter.format(Math.round(v*1000))+' m';
  const fmtPct=v=>v===null?'Not published':formatter.format(v)+'%';
  const idn=[118.2,-2.4],view={west:59,east:161,north:56,south:-27},W=1000,H=530;
  const point=(lon,lat)=>({x:(lon-view.west)/(view.east-view.west)*W,y:(view.north-lat)/(view.north-view.south)*H});
