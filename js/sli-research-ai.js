@@ -18,9 +18,11 @@ function expanded(s){
  for(const group of SYN){if(group.some(x=>n.includes(norm(x))&&norm(x).length>=3)){group.forEach(x=>tokens(x).forEach(t=>terms.add(t)))}}
  return [...terms]
 }
+function docText(doc){return state.language==="en"?(doc.text_en||doc.text):doc.text}
+function docTitle(doc){return state.language==="en"?(doc.title_en||doc.title):doc.title}
 function topicMatch(doc,topic){return topic==="all"||doc.topic===topic}
 function score(doc,query){
- const q=norm(query),title=norm(doc.title),body=norm(doc.text),geo=norm(doc.geo),whole=title+" "+body+" "+geo+" "+norm(doc.topic);
+ const q=norm(query),title=norm(doc.title+" "+(doc.title_en||"")),body=norm(doc.text+" "+(doc.text_en||"")),geo=norm(doc.geo),whole=title+" "+body+" "+geo+" "+norm(doc.topic);
  let sum=0;
  for(const t of expanded(query)){if(title.split(" ").includes(t))sum+=7;else if(title.includes(t))sum+=4;if(geo.split(" ").includes(t))sum+=5;if(body.includes(t))sum+=1.25;if(norm(doc.topic).includes(t))sum+=2}
  for(const pair of SYN){if(pair.some(x=>q.includes(norm(x))&&norm(x).length>=4)&&pair.some(x=>whole.includes(norm(x))))sum+=3}
@@ -36,10 +38,10 @@ function url(src){try{const u=new URL(src);return u.protocol==="https:"?u.href:n
 function sourceLink(doc,label){const a=el("a","sli-ra-link",label);const u=url(doc.source_url);if(!u){a.removeAttribute("href");return a}a.href=u;a.target="_blank";a.rel="noopener noreferrer";return a}
 function resultCard(doc,i){
  const box=el("article","sli-ra-source"),head=el("div","sli-ra-source-heading");
- head.append(el("span","sli-ra-number","["+(i+1)+"]"),el("strong","",doc.title));
+ head.append(el("span","sli-ra-number","["+(i+1)+"]"),el("strong","",docTitle(doc)));
  const badge=el("small","",doc.kind==="official_statistic"?"OFFICIAL STATISTIC":doc.kind==="regional_sample"?"PROVINCE SAMPLE":doc.kind==="method_note"?"METHOD NOTE":"REPORTED MILESTONE");
  box.append(head,badge);
- const p=el("p","",doc.text);box.append(p);
+ const p=el("p","",docText(doc));box.append(p);
  const meta=el("div","sli-ra-meta",doc.publisher+" · "+dict[state.language].period+": "+(doc.period||"N/A")+" · "+dict[state.language].last+": "+doc.source_date);
  box.append(meta);
  const actions=el("div","sli-ra-source-links");
@@ -52,7 +54,7 @@ function setStatus(t,warning=false){byId("raStatus").textContent=t;byId("raStatu
 function synthesize(docs,query){
  const lead=state.language==="id"?"Pertanyaan: ":"Question: ";
  const intro=state.language==="id"?"Cuplikan paling relevan yang tersedia dalam katalog Open:":"Most relevant matches in the Open preview catalog:";
- const rows=docs.map((d,i)=>"["+(i+1)+"] "+d.title+" — "+d.text+" ("+d.publisher+"; "+d.period+")");
+ const rows=docs.map((d,i)=>"["+(i+1)+"] "+docTitle(d)+" — "+docText(d)+" ("+d.publisher+"; "+d.period+")");
  const sources=docs.map((d,i)=>"["+(i+1)+"] "+d.source_url);
  return lead+query+"\n\n"+intro+"\n\n"+rows.join("\n\n")+"\n\n"+(state.language==="id"?"Sumber:":"Sources:")+"\n"+sources.join("\n")+"\n\n"+dict[state.language].brief
 }
@@ -74,7 +76,7 @@ function answer(question){
  if(!docs.length){out.append(el("p","sli-ra-caution",dict[state.language].no));byId("raCopy").disabled=true;setStatus(dict[state.language].none,true);return}
  out.append(el("p","",dict[state.language].intro+" "+docs.length+" "+dict[state.language].results.toLowerCase()+"."));
  const ol=el("ol","sli-ra-summary");
- docs.slice(0,4).forEach((doc,i)=>{const li=el("li","",doc.title+": "+doc.text);li.append(el("span","sli-ra-inline-ref"," ["+(i+1)+"]"));ol.append(li)});
+ docs.slice(0,4).forEach((doc,i)=>{const li=el("li","",docTitle(doc)+": "+docText(doc));li.append(el("span","sli-ra-inline-ref"," ["+(i+1)+"]"));ol.append(li)});
  out.append(ol,el("p","sli-ra-caution",dict[state.language].brief));
  byId("raSourceHeading").textContent=dict[state.language].source+" ("+docs.length+")";
  docs.forEach((doc,i)=>list.append(resultCard(doc,i)));
