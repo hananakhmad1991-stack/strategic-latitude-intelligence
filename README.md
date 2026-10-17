@@ -15,13 +15,14 @@ Independent, open-source-based analysis of Indonesia's strategic investment, ene
 - `membership-api/tests/auth.test.mjs`, `tests/qa-sli-membership.mjs` and `.github/workflows/sli-membership-qa.yml` cover token forgery, authorisation, expiry, private storage, origin restrictions, catalog truth and absence of unintended payments.
 - Next production dependencies: confirmed business identity, legal pages, controlled domain, identity/hosting account setup, selected payment provider and approved pricing, verified payment webhook and refund/cancel workflow, data licensing, staged security checks. No automatic charging without these authorizations.
 
-## SLI Research AI / Evidence Preview (17 October 2026)
+## SLI Research AI Assistant · Conversational Research (17 October 2026)
 
-- **[SLI Research AI](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-research-ai.html)** has a bilingual analytical question interface, strict province-entity resolution across all 38 provinces, 28 dated source excerpts, BPS/sector-linked mini-assessments, bounded two-province comparisons, source citations and copyable analytical narratives.
-- **Important:** Open now performs **deterministic source-grounded analytical synthesis, not generative AI**; queries run in the browser, all 38 provinces have limited sourced previews, and the Open corpus remains intentionally sampled. News leads are unverified, and official observed periods differ.
-- `research-api/` contains undeployed Cloudflare Worker staging for authenticated Pro/Enterprise source-grounded generation: verified subscription entitlement, private R2 corpus, Cloudflare rate limiting, server-side model credentials, citation structure validation. No live LLM endpoint, premium corpus or purchase is wired to the public page. Exact province matching and reasoning tests are in `tests/qa-sli-research-analysis.mjs`; do not interpret preview output as audited causal econometrics.
-- Future production requires legal rights for model processing, user privacy, active device policy, paid subscription controls, measured retrieval accuracy, vulnerability/prompt-injection review, independent source validation and cost ceilings.
-- `.github/workflows/sli-research-ai-qa.yml` tests structural reliability and security invariants. Public Open access cannot be described as a functioning paid AI service.
+- **[SLI Research AI](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-research-ai.html)** is now a separate bilingual conversation-first research workspace: long-form natural-language instructions, Executive Summary / Deep Research / Comparative Analysis / Risk & Opportunity modes, follow-up messages, source/citation sidebar, copy and Markdown export UI. Generative service **is NOT active** yet; no model-generated responses are claimed.
+- **[Evidence Preview](https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-research-evidence-preview.html)** preserves the former source-grounded rule-based analytical feature separately; it is not marketed as generative AI.
+- `js/sli-research-assistant.js` reads `data/sli-research-assistant-config.json`; configuration defaults to `api_enabled=false`, `login_enabled=false`, `api_endpoint=null`. The page fails closed and never sends instructions to an unconfigured model.
+- **Prepared only:** `research-api/src/index.js`, `research-api/src/assistant-core.mjs` and `research-api/wrangler.toml.example` implement staging architecture for verified Supabase JWT + D1 subscription + R2 private data + 10 source excerpts + OpenAI Responses API with `store:false` and numbered-citation rules. `window.SLIResearchAuth.getAccessToken` integration, curated private production corpus, credentials, and server deployment are still missing.
+- `tests/qa-sli-research-conversation.mjs` covers long instructions, geographic precision, source-tier boundaries, citations, and fail-closed behavior alongside the existing province analytical regression tests. CI is not proof of production model accuracy, data licensing, or payments.
+
 
 ## Reader-first navigation and documentation (17 October 2026)
 
