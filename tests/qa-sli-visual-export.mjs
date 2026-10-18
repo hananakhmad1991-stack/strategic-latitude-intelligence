@@ -152,6 +152,9 @@ test("One-click one-observation inspector is shared while rich specialist panels
  assert.match(core,/tr\[data-sli-inspectable\]/,"Table rows support keyboard selection");
  assert.match(core,/sourceUrl=extra\?\.sourceUrl\|\|rowSource\|\|meta.sourceUrl/,"Selected record source takes precedence");
  assert.match(core,/#sliMapRoot,#geo-commodity-timeline/,"Specialist maps bypass generic panel");
+ assert.match(core,/svg\.stake-svg,#energyOilGasStakeholdersRoot,#energyCoalStakeholdersRoot/,"Dedicated stakeholder inspectors are not overridden");
+ assert.match(core,/sourceUrl:meta\?\.sourceUrl\|\|""/,"Unrelated nearby hyperlinks must not masquerade as evidence");
+ assert.match(core,/barHost&&isChart\(barHost\)/,"Unrelated cards cannot trigger the bar inspector");
  assert.match(css,/tr\[data-sli-inspectable\]:focus-visible/);
  assert.match(commodity,/data-sli-point-index/);
  assert.match(commodity,/registerInsight\?\.\(svg,/);
@@ -163,4 +166,15 @@ test("One-click one-observation inspector is shared while rich specialist panels
  assert.match(trade,/OTHER is a computed remainder/,"Unattributed remainder cannot masquerade as a named partner");
  assert.match(local,/currentPointLabel/,"The map retains dedicated point inspection");
  assert.match(read("js/sli-geopolitical-timeline.js"),/eventInsight\(/,"Geopolitical source-aware inspector must remain intact");
+});
+
+test("Energy Security investment chart selects specific ESDM year and source instead of an entire series",()=>{
+ const energy=read("js/energy-prices-fiscal.js");
+ assert.doesNotThrow(()=>new Function(energy));
+ assert.match(energy,/data-sli-year/);
+ assert.match(energy,/data-sli-series/);
+ assert.match(energy,/SLIVisualExport.registerInsight\?\.\(svg,/);
+ assert.match(energy,/Realized investment/);
+ assert.match(energy,/Year-on-year change/);
+ assert.match(energy,/ESDM reported realization/);
 });
