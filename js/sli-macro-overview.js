@@ -14,6 +14,12 @@ function sparkline(pts){
 window.initSLIMacroOverview=async function(){
  const root=document.getElementById("sliMacroOverviewRoot");if(!root)return;
  root.innerHTML='<section class="sli-macro-preview"><div class="section"><h2>Indonesia Macroeconomic Intelligence</h2><span>Loading source-dated BPS, BI and fiscal indicators…</span></div></section>';
+  const spark=root.querySelector('svg[aria-label*="JISDOR"]');
+  if(spark&&window.SLIVisualExport)window.SLIVisualExport.register(spark,{
+   getData:()=>({headers:["Period","IDR per USD"],rows:(fx?.points||[]).map(p=>[p.period,p.value]),kind:"verified-provider"}),
+   getMeta:()=>({source:"Bank Indonesia JISDOR",sourceUrl:"https://www.bi.go.id/",period:(fx?.points||[]).map(p=>p.period).join(" – "),completeness:"All source observations shown in sparkline"})
+  });
+
  try{
   const r=await fetch("./data/sli-macro-indonesia-2026.json",{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);
   const d=await r.json();
