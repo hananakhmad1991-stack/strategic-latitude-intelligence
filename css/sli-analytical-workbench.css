@@ -86,3 +86,26 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output strong{color:#17466
  display:block;font:700 12px/1.6 system-ui,sans-serif;color:#436783;
  margin:0 0 9px
 }
+
+
+/* Regression diagnostics & FE configuration; preserve contrast inside navy page. */
+#raAnalyticalWorkbench .ra-wb-advanced{border:1px solid #d5e2e9;background:#f7fafc;border-radius:10px;margin:14px 0;padding:16px;display:grid;gap:12px}
+#raAnalyticalWorkbench .ra-wb-advanced[hidden],
+#raAnalyticalWorkbench #raExtraGroup[hidden],
+#raAnalyticalWorkbench #raPanelGroup[hidden]{display:none!important}
+#raAnalyticalWorkbench .ra-wb-advanced label{display:block;color:#24506c;font-weight:700;font-size:12px;margin-bottom:6px}
+#raAnalyticalWorkbench .ra-wb-advanced select{width:100%;max-width:100%;display:block;border:1px solid #b9ceda;background:#fff;color:#163952;border-radius:8px;padding:9px;font-size:12px}
+#raAnalyticalWorkbench .ra-wb-advanced small{display:block;color:#587288;font-size:11px;margin-top:8px;line-height:1.55}
+#raAnalyticalWorkbench .ra-wb-panel-check{display:flex;align-items:center;gap:8px;margin-top:13px}
+#raAnalyticalWorkbench .ra-wb-panel-check input{margin:0}
+#raAnalyticalWorkbench #raPanelGroup{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;align-items:end}
+#raAnalyticalWorkbench #raPanelGroup>.ra-wb-panel-check,#raAnalyticalWorkbench #raPanelGroup>small{grid-column:1/-1}
+#raAnalyticalWorkbench .ra-wb-subhead{font:750 16px/1.4 system-ui,sans-serif;color:#1c4b6e!important;margin:23px 0 11px}
+#raAnalyticalWorkbench .ra-wb-plot{background:white;border:1px solid #cedce6;border-radius:10px;padding:12px;max-width:100%;overflow:auto}
+#raAnalyticalWorkbench .ra-wb-plot svg{display:block;width:100%;min-width:530px;height:auto;max-height:520px}
+#raAnalyticalWorkbench .ra-wb-next small{font:12px/1.5 system-ui,sans-serif;color:#49647c}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-advanced{color:#25485f}
+@media(max-width:650px){
+ #raAnalyticalWorkbench #raPanelGroup{grid-template-columns:1fr}
+ #raAnalyticalWorkbench .ra-wb-plot svg{min-width:475px}
+}
