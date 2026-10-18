@@ -39,7 +39,7 @@ export function scatterPlot(fit,alternate=null){
  svg.append(S("text",{x:18,y:182,transform:"rotate(-90 18 182)","text-anchor":"middle",fill:"#2c4c65","font-size":13,"font-weight":700},fit.outcome));
  return svg;
 }
-export function investorMarkdown(fit,filename,sensitivity){
+export function investorMarkdown(fit,filename,sensitivity,stability=null){
  const f=v=>round(v),panel=fit.method==="panel_fe",terms=panel?fit.coefficients:fit.coefficient_terms,diagnostics=fit.residual_diagnostics||{};
  const row=c=>"| "+[c.name,f(c.estimate),f(c.std_error_hc1),f(c.ci95_low),f(c.ci95_high),c.p_value_approx===0?"<0,000001":f(c.p_value_approx)].join(" | ")+" |";
  const impact=terms.filter(t=>t.name!=="Intercept").map(t=>"- **"+t.name+"**: koefisien "+f(t.estimate)+", interval kepercayaan 95% ["+f(t.ci95_low)+", "+f(t.ci95_high)+"]. Hubungan ini tidak membuktikan kausalitas.").join("\n");
@@ -47,6 +47,30 @@ export function investorMarkdown(fit,filename,sensitivity){
  const coeffTable=["| Variable | Estimate | Std error | 95% CI lower | 95% CI upper | Approx. p |","|---|---:|---:|---:|---:|---:|",...terms.map(row)].join("\n");
  const reversed=/(?:grdp|pdrb|gdp).*growth|growth.*(?:grdp|pdrb|gdp)/i.test(fit.predictors[0]||"")&&/pmtb/i.test(fit.outcome);
  const directionWarning=reversed?"**PERINGATAN MODEL:** Pertumbuhan PDRB dipilih sebagai X, sedangkan PMTB sebagai Y. Koefisien ini tidak mengestimasi PMTB terhadap pertumbuhan. Bila tujuan riset PMTB → pertumbuhan, model harus dihitung ulang dengan variabel yang dibalik.":"Arah Y dan X harus diverifikasi sebelum interpretasi ekonomi.";
+ const robustness=stability?.method==="panel_fe_stability"?(()=>{
+  const blocks=["## Robustness and specification stability",
+   "The baseline is recalculated after excluding each entity and each annual period in turn. These tests check fragility, not external validity or causality."];
+  for(const [label,item] of [["Leave-one-entity-out",stability.leave_one_entity_out],["Leave-one-year-out",stability.leave_one_year_out]]){
+   blocks.push("### "+label);
+   if(!item?.available){blocks.push(item?.note||"Unavailable");continue}
+   blocks.push("Successful refits "+item.successful+"/"+item.total_candidates+(item.exhaustive?" (all)":" (sample only)"));
+   blocks.push("| Variable | Baseline β | Min β | Max β | Max % change | Sign flips |\n|---|---:|---:|---:|---:|---:|");
+   for(const c of item.metrics||[]){
+    blocks.push("| "+[c.name,f(c.baseline),f(c.min),f(c.max),c.max_relative_shift_pct===null?"n/a":f(c.max_relative_shift_pct),c.sign_reversals??"n/a"].join(" | ")+" |");
+   }
+   if(item.failures?.length)blocks.push("Refit failures: "+item.failures.map(x=>x.excluded+" ("+x.reason+")").join("; "));
+  }
+  blocks.push("### Alternative time specification");
+  if(stability.alternative_time_specification?.available){
+   const a=stability.alternative_time_specification;
+   blocks.push("Alternative: "+a.specification);
+   blocks.push("| Variable | Baseline β | Alternative β | Change % |\n|---|---:|---:|---:|");
+   for(const c of a.coefficients)blocks.push("| "+[c.name,f(c.baseline),f(c.alternative),c.relative_change_pct===null?"n/a":f(c.relative_change_pct)].join(" | ")+" |");
+  }else blocks.push(stability.alternative_time_specification?.reason||"Unavailable");
+  blocks.push("**Analytical interpretation:** "+stability.screening);
+  blocks.push("**Limitations:** "+stability.limitations);
+  return blocks.join("\n\n");
+ })():stability?.error?"## Robustness status\n\n"+stability.error:"";
  const sen=sensitivity?.reduced?"\n## Uji sensitivitas\n\nR² seluruh observasi: "+f(sensitivity.full.r_squared)+" (n="+sensitivity.full.n+"). Setelah mengecualikan pertumbuhan di luar −15% hingga +15% secara **ilustratif**: R² "+f(sensitivity.reduced.r_squared)+" (n="+sensitivity.reduced.n+"). Baris dikecualikan sementara: "+sensitivity.excluded_rows.join(", ")+". Bukan alasan untuk menghapus nilai ekstrem tanpa justifikasi.\n":"";
  return [
  "# Strategic Latitude Intelligence — Investor Analytical Report",
@@ -65,6 +89,7 @@ export function investorMarkdown(fit,filename,sensitivity){
  "## Economic interpretation",
  impact,
  sen,
+ robustness,
  "## Residual and outlier diagnostics",
  "- Residual standard deviation: "+f(fit.residual_sd),
  "- RMSE: "+f(fit.rmse),
