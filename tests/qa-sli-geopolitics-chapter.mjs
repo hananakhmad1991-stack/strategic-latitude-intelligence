@@ -148,3 +148,40 @@ test("1950 historical axis and safe multi-benchmark computation",()=>{
  assert.match(graph,/tx\("From year","Mulai tahun"\)/);
  assert.match(graph,/1950,1960,1970/);
 });
+
+test("Multi-commodity atlas actually renders three independent charts with selectable benchmarks",async()=>{
+ const root=new Element("div");root.id="sliGeoTimelineRoot";
+ const doc={
+  createElement:t=>new Element(t),
+  createElementNS:(_ns,t)=>new Element(t),
+  getElementById:id=>id==="sliGeoTimelineRoot"?root:null
+ };
+ const events=JSON.parse(read("data/sli-geopolitical-events.json"));
+ const prices=JSON.parse(read("data/sli-geopolitical-commodity-prices.json"));
+ const fetch=async url=>({ok:true,json:async()=>{
+  if(url.endsWith("sli-geopolitical-events.json"))return events;
+  if(url.endsWith("sli-geopolitical-commodity-prices.json"))return prices;
+  return {articles:[]};
+ }});
+ const win={SLIi18n:{language:"id"}};
+ runInNewContext(read("js/sli-geopolitical-timeline.js"),{window:win,document:doc,fetch,URL,Intl,Date,Math,Number,Set,Map,Promise,console},{filename:"sli-geopolitical-timeline.js"});
+ await win.initSLIGeopoliticalTimeline();
+ const all=flatten(root);
+ const labels=all.map(x=>x.textContent||"");
+ for(const name of ["Komoditas energi","Komoditas mineral dan logam","Perbandingan lintas komoditas","1950","Minyak WTI","Nikel"]){
+  assert.ok(labels.some(x=>x.includes(name)),"Missing chart control or historical year: "+name);
+ }
+ assert.equal(all.filter(x=>x.className==="sli-geo-timeline-panel").length,4);
+ assert.equal(all.filter(x=>x.className==="sli-geo-timeline-plot").length,3);
+ assert.ok(all.filter(x=>x.tag==="svg").length>=6,"Three graph/scatter pairs must render");
+ assert.ok(labels.some(x=>x.includes("basis")), "Index baseline should be disclosed");
+ const selectors=all.filter(x=>x.tag==="select");
+ assert.ok(selectors.length>=5);
+ const year=selectors[0];
+ year.value="1990";year.listeners.get("change")?.();
+ assert.ok(flatten(root).some(x=>(x.textContent||"").includes("1990")));
+ // Switching to Single drops the other selections in the energy panel.
+ const energyMode=selectors[2];energyMode.value="single";energyMode.listeners.get("change")?.();
+ const plot=flatten(root).find(x=>x.className==="sli-geo-timeline-legend");
+ assert.ok(plot&&plot.children.length===1,"Single should display exactly one series");
+});
