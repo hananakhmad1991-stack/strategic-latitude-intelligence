@@ -70,7 +70,7 @@ export function investorMarkdown(fit,filename,sensitivity,stability=null,officia
   lines.push("**Ingestion rule:** "+structuralLens.research_gate.minimum_checks);
   for(const p of structuralLens.historic_sources)lines.push("- "+p.id+" "+p.years[0]+"–"+p.years.at(-1)+" | "+p.status+" | "+p.url);
   lines.push("**Limits:** Do not append undigitized 2019–2020 figures, invent industry shares, or infer nickel's causal fraction of growth.");
-  return lines.join("\\n\\n");
+  return lines.join("\n\n");
  })():"";
 
  const robustness=stability?.method==="panel_fe_stability"?(()=>{
