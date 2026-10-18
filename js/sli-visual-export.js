@@ -22,7 +22,7 @@ function title(host){
 function metadata(host){
  const provider=providers.get(host);const meta=typeof provider?.getMeta==="function"?provider.getMeta():provider?.meta;
  const a=host.closest("section,article")?.querySelector("a[href^='https://']")||document.querySelector('a[href*="worldbank.org"]');
- return {title:title(host),source:meta?.source||"Source in the dashboard; inspect original references before reuse",
+ return {title:meta?.title||title(host),source:meta?.source||"Source in the dashboard; inspect original references before reuse",
   sourceUrl:meta?.sourceUrl||a?.href||"",period:meta?.period||"",completeness:meta?.completeness||"Visible chart elements only; full numeric source not exposed by this visualization"};
 }
 function isChart(node){
