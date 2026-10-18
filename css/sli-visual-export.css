@@ -73,3 +73,36 @@ table tr.sli-visual-insight-selected{background:#2a4559!important}
  .sli-visual-insight-split{gap:9px}
  .sli-visual-insight-split>.sli-visual-insight{max-height:55vh}
 }
+
+/* One selected observation, one right-hand inspector throughout SLI.
+   This is a reading layer, not a second copy of an entire filtered registry. */
+.sli-visual-insight-split{isolation:isolate;max-width:100%;box-sizing:border-box}
+.sli-visual-insight-split>.sli-visual-export-host{box-sizing:border-box}
+.sli-visual-insight-split>.sli-visual-insight{
+ flex:1 1 290px;align-self:flex-start;box-shadow:0 7px 22px rgba(0,0,0,.14);
+}
+.sli-visual-insight .sli-visual-insight-period{font-size:11px;color:#bbd0de}
+.sli-visual-insight-split .sli-visual-insight-fields{
+ grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
+}
+.sli-visual-insight-split .sli-visual-insight-fields dt,
+.sli-visual-insight-split .sli-visual-insight-fields dd{line-height:1.5;min-width:0}
+.sli-visual-insight-split .sli-visual-insight-fields dd{font-variant-numeric:tabular-nums}
+.sli-visual-insight-split>.sli-visual-export-host svg [data-sli-point],
+.sli-visual-insight-split>.sli-visual-export-host .regbar,
+.sli-visual-insight-split>.sli-visual-export-host .bar-row,
+tr[data-sli-inspectable]{cursor:pointer}
+.sli-visual-export-host svg [data-sli-point]:hover,
+.sli-visual-export-host svg [data-sli-point]:focus-visible{
+ stroke:#ffe3a0;stroke-width:3;filter:drop-shadow(0 0 3px #d5aa57);outline:none
+}
+tr[data-sli-inspectable]:hover{background:rgba(215,182,120,.11)}
+tr[data-sli-inspectable]:focus-visible{outline:2px solid #d7b678;outline-offset:-2px}
+.sli-visual-insight-head button:focus-visible{outline:2px solid #dfbd82;outline-offset:2px}
+@media(max-width:1050px){
+ .sli-visual-insight-split>.sli-visual-insight{position:static;max-height:min(60vh,600px)}
+}
+@media(max-width:580px){
+ .sli-visual-insight-split .sli-visual-insight-fields{grid-template-columns:1fr}
+ .sli-visual-insight-split .sli-visual-insight-fields dt{border:0;padding-bottom:0}
+}
