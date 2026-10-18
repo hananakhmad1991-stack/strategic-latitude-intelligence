@@ -104,3 +104,18 @@ test("Commissioned report enforces research design, method execution honesty, ac
  assert.equal(request.store,false);
  assert.match(JSON.stringify(request.input),/Sulawesi Tengah/);
 });
+
+test("Official energy-security index and 4A components are mandatory national evidence, with APA 7 reporting",()=>{
+ const corpus=nationalEnergyEvidence();
+ const index=corpus.find(d=>d.id==="sli_energy_official_security_index_2025");
+ assert.ok(index,"SLI already publishes official IKE and it must reach the AI corpus");
+ assert.match(index.text,/7\.04\/10/);
+ for(const pillar of ["availability","accessibility","affordability","acceptability"])
+  assert.ok(corpus.some(d=>d.id==="sli_energy_ike_4a_"+pillar));
+ const picked=selectResearchEvidence(corpus,"Analisis ketahanan energi Indonesia dan indeks ketahanan energi nasional",[],"pro",12);
+ assert.ok(picked.some(d=>d.id===index.id));
+ const payload=validateAssistantPayload({question:"Analisis ketahanan energi Indonesia nasional",history:[],mode:"deep_research"});
+ const req=modelRequest(payload,picked,"test-model");
+ assert.match(req.instructions,/APA 7/);
+ assert.match(JSON.stringify(req.input),/7\.04\/10/);
+});
