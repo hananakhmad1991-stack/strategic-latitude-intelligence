@@ -21,7 +21,7 @@
  * 35 public HTML pages use this stylesheet; Research AI and home have their own masthead. */
 body.sli-dashboard-unified{background:#091625;color:#edf4f8}
 .sli-platform-mast[hidden]{display:none!important}
-header.sli-platform-mast{position:relative;z-index:1011;background:#091625!important;border:0!important;border-bottom:1px solid #30475b!important;padding:0 clamp(15px,2.5vw,39px)!important;margin:0!important;color:#f2f6f9!important;min-height:80px;box-shadow:none!important;max-width:none!important}
+header.sli-platform-mast{position:sticky;top:0;z-index:1011;background:#091625!important;border:0!important;border-bottom:1px solid #30475b!important;padding:0 clamp(15px,2.5vw,39px)!important;margin:0!important;color:#f2f6f9!important;min-height:80px;box-shadow:none!important;max-width:none!important}
 .sli-platform-mast-inner{max-width:1490px;min-height:80px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:22px}
 .sli-platform-brand{display:inline-flex;align-items:center;gap:12px;flex:0 0 auto;text-decoration:none!important;color:#f4f6f8!important;line-height:1.1}
 .sli-platform-monogram{display:block;color:#e3c083;font:800 31px/.98 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.075em;padding:1px 12px 1px 0;border-right:1px solid #5b6470}
@@ -38,7 +38,7 @@ nav.sli-platform-links{display:flex!important;flex:0 1 auto;align-items:center;j
 .sli-platform-explorer>summary::-webkit-details-marker{display:none}
 .sli-platform-explorer>summary:after{content:"⌄";padding-left:6px;font-size:12px}
 .sli-platform-explorer[open]>summary{color:#f0d399!important}
-.sli-platform-sector-menu{position:absolute;z-index:3000;right:-80px;top:calc(100% + 11px);width:min(900px,88vw);max-height:min(70vh,680px);overflow:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;background:#112c44;border:1px solid #668198;border-radius:12px;padding:20px;box-shadow:0 22px 60px rgba(0,0,0,.5)}
+.sli-platform-sector-menu{position:fixed!important;z-index:3000;left:50%!important;right:auto!important;top:86px!important;transform:translateX(-50%)!important;width:min(1020px,calc(100vw - 36px))!important;box-sizing:border-box;max-height:min(76dvh,calc(100dvh - 104px))!important;overflow-y:auto;overflow-x:hidden;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px;background:#112c44;border:1px solid #668198;border-radius:12px;padding:20px;box-shadow:0 22px 60px rgba(0,0,0,.5);scrollbar-width:thin;scrollbar-color:#7190a7 #132f46;overscroll-behavior:contain}
 .sli-platform-sector-group{display:grid;gap:7px;align-content:start}
 .sli-platform-sector-group h3{font:750 12px/1.4 system-ui,sans-serif!important;color:#f0d49e!important;margin:0 0 3px!important}
 .sli-platform-sector-group a{font:500 11px/1.45 system-ui,sans-serif!important;color:#d7e6ee!important;text-decoration:none!important;overflow-wrap:anywhere}
@@ -76,7 +76,7 @@ body.sli-dashboard-unified .sli-data-guide{margin:0 0 15px}
  .sli-platform-mast-inner{flex-wrap:wrap;gap:10px 17px;padding:11px 0}
  nav.sli-platform-links{order:3;width:100%;justify-content:flex-start;gap:18px;border-top:1px solid #254157!important;padding-top:4px!important;overflow-x:auto;scrollbar-width:thin}
  .sli-platform-tools{margin-left:auto}
- .sli-platform-sector-menu{left:0;right:auto;width:min(800px,87vw)}
+ .sli-platform-sector-menu{top:126px!important;max-height:calc(100dvh - 142px)!important;grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:650px){
  header.sli-platform-mast{padding:0 15px!important}
@@ -86,12 +86,12 @@ body.sli-dashboard-unified .sli-data-guide{margin:0 0 15px}
  .sli-platform-mast-inner{gap:7px 12px}
  nav.sli-platform-links{gap:15px;white-space:nowrap;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
  .sli-platform-link,.sli-platform-explorer>summary{font-size:11px!important}
- .sli-platform-sector-menu{position:fixed;top:118px;left:12px;right:12px;width:auto;max-height:68vh;grid-template-columns:repeat(2,minmax(0,1fr));padding:15px}
+ .sli-platform-sector-menu{top:125px!important;width:calc(100vw - 24px)!important;max-height:calc(100dvh - 138px)!important;grid-template-columns:repeat(2,minmax(0,1fr));padding:15px}
  body.sli-dashboard-unified .sli-universal-nav{flex-wrap:wrap;padding:8px 11px}
  body.sli-dashboard-unified .sli-universal-actions{width:100%;justify-content:space-between}
  body.sli-dashboard-unified .sli-explore-menu{margin-left:auto}
 }
-@media(max-width:410px){.sli-platform-sector-menu{grid-template-columns:1fr;top:112px}.sli-platform-brand-name strong{font-size:9px}}
+@media(max-width:410px){.sli-platform-sector-menu{grid-template-columns:1fr;top:125px!important}.sli-platform-brand-name strong{font-size:9px}}
 
 /* Consistent hero treatment for standalone specialist pages while retaining their content. */
 body.sli-dashboard-unified > header:not(.sli-platform-mast){background:linear-gradient(120deg,#142e45,#0e2236)!important;border-bottom:1px solid #304b62!important;padding-top:25px!important;padding-bottom:23px!important}
@@ -116,3 +116,23 @@ body.sli-dashboard-unified > header:not(.sli-platform-mast) h1{font-family:Georg
 .sli-news-evidence-level{font-size:10px!important;color:#b8ccd9!important;margin:4px 0 0!important}
 .sli-news-empty{font-size:12px;color:#bdcedb}
 @media(max-width:750px){.sli-news-results{grid-template-columns:1fr}.sli-news-summary{padding:12px}.sli-news-count{margin-left:0}.sli-news-controls{display:grid}.sli-news-controls select,.sli-news-controls input{width:100%;min-width:0}}
+
+/* First paint: a brief branded loading surface replaces the deprecated sidebar/layout
+   until the current route and shared masthead are mounted. A load fallback lives in
+   the inline bootstrap so site content is never permanently hidden on errors. */
+html.sli-chrome-pending body > .layout,
+html.sli-chrome-pending body > header:not(.sli-platform-mast),
+html.sli-chrome-pending body > main {visibility:hidden!important}
+html.sli-chrome-pending body::before{
+ content:"SLI  ·  STRATEGIC LATITUDE INTELLIGENCE";position:fixed;left:50%;top:44%;
+ transform:translate(-50%,-50%);font:750 15px/1.5 system-ui,sans-serif;
+ text-align:center;letter-spacing:.14em;color:#e5c585;padding:18px 26px;z-index:2147483600;
+ background:#10273b;border:1px solid #395870;border-radius:12px;
+ box-shadow:0 15px 55px rgba(0,0,0,.25);max-width:calc(100vw - 40px)}
+.sli-platform-sector-menu::-webkit-scrollbar{width:8px}
+.sli-platform-sector-menu::-webkit-scrollbar-track{background:#132f46;border-radius:10px}
+.sli-platform-sector-menu::-webkit-scrollbar-thumb{background:#628199;border-radius:10px}
+@media(max-width:750px){
+ .sli-platform-sector-group{min-width:0}
+ .sli-platform-sector-menu{gap:14px}
+}
