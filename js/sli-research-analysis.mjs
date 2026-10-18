@@ -36,7 +36,7 @@ export function findProvinces(query,profiles){
    const alias=normalize(label),hay=" "+q+" ",needle=" "+alias+" ";
    let pos=hay.indexOf(needle);
    while(pos>=0){
-    hits.push({profile:p,start:pos,end:pos+needle.length,weight:alias.length});
+    hits.push({profile:p,start:pos+1,end:pos+1+alias.length,weight:alias.length});
     pos=hay.indexOf(needle,pos+1);
    }
   }

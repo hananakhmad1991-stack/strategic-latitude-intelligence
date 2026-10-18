@@ -53,7 +53,9 @@ test("Future private backend never embeds API keys, does not activate publicly a
  const worker=read("research-api/src/index.js");
  assert.match(worker,/verifyUserToken/);assert.match(worker,/get\("pro\/research-evidence.json"\)/);
  assert.match(worker,/OPENAI_API_KEY/);assert.match(worker,/AI_LIMITER\.limit/);
- assert.match(worker,/plan==="open"/);assert.match(worker,/store:false/);
+ assert.match(worker,/plan==="open"/);assert.match(worker,/modelRequest\(/);
+ const modelCore=read("research-api/src/assistant-core.mjs");
+ assert.match(modelCore,/store:false/);
  assert.match(worker,/citationsValid/);
  const h=read("sli-research-evidence-preview.html"),js=read("js/sli-research-ai.js");
  assert.ok(!/api\.openai\.com|OPENAI_API_KEY|sk-[A-Za-z0-9]{20}/.test(h+js),"Public code must have no model credentials/endpoints");
