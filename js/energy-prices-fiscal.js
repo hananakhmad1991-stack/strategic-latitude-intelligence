@@ -76,6 +76,7 @@ function investment(root,d){
      shape("rect",{x:xx-25+(key==="migas"?0:24),y:yy,width:select.value==="both"?22:44,height:HY-yy,fill:colors[key],rx:3,tabindex:0,role:"button"},svg):
      shape("circle",{cx:xx,cy:yy,r:6.5,fill:colors[key],tabindex:0,role:"button"},svg);
     v.style.cursor="pointer";v.setAttribute("aria-label",r.year+" "+key+" "+fmt(r[key])+" billion USD");
+    v.setAttribute("data-sli-point","");v.setAttribute("data-sli-year",String(r.year));v.setAttribute("data-sli-series",key);
     const update=()=>{info.textContent=r.year+" · "+(key==="migas"?"Oil and Gas":"EBTKE")+" realized investment: US$"+fmt(r[key])+" billion (ESDM)."};
     v.addEventListener("click",update);v.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();update()}});
    });
@@ -83,11 +84,35 @@ function investment(root,d){
   years.forEach((r,i)=>{const t=shape("text",{x:X(i),y:292,fill:"#bfd2e0","text-anchor":"middle","font-size":12},svg);t.textContent=r.year});
   const t=shape("text",{x:75,y:14,fill:"#bfd2e0","font-size":11},svg);t.textContent="US$ billion";
   info.textContent="2025: Migas US$"+fmt(inv.latest.migas)+"bn, EBTKE US$"+fmt(inv.latest.ebtke)+"bn. Select series or a point for annual values.";
-  if(window.SLIVisualExport)window.SLIVisualExport.register(svg,{
-   getData:()=>({headers:["Year",...lines.map(k=>k==="migas"?"Oil & Gas (USD billion)":"EBTKE (USD billion)")],
-    rows:years.map(r=>[r.year,...lines.map(k=>r[k])]),kind:"verified-provider"}),
-   getMeta:()=>({source:"Indonesia Ministry of Energy and Mineral Resources (ESDM)",sourceUrl:inv.source_url||"https://www.esdm.go.id/",period:years[0]?.year+" – "+years.at(-1)?.year})
-  });
+  const registerInvestment=()=>{
+   if(!svg.isConnected||!window.SLIVisualExport)return;
+   window.SLIVisualExport.register(svg,{
+    getData:()=>({headers:["Year",...lines.map(k=>k==="migas"?"Oil & Gas (USD billion)":"EBTKE (USD billion)")],
+     rows:years.map(r=>[r.year,...lines.map(k=>r[k])]),kind:"verified-provider"}),
+    getMeta:()=>({source:"Indonesia Ministry of Energy and Mineral Resources (ESDM)",sourceUrl:inv.source_url||"https://www.esdm.go.id/",period:years[0]?.year+" – "+years.at(-1)?.year})
+   });
+   window.SLIVisualExport.registerInsight?.(svg,{
+    getInsight:({event})=>{
+     const mark=event?.target?.closest?.("[data-sli-series][data-sli-year]");
+     if(!mark)return null;
+     const year=Number(mark.getAttribute("data-sli-year")),key=mark.getAttribute("data-sli-series");
+     const i=years.findIndex(r=>Number(r.year)===year),row=years[i];
+     if(!row||!["migas","ebtke"].includes(key))return null;
+     const previous=i>0&&Number(years[i-1].year)===year-1?Number(years[i-1][key]):null;
+     const movement=previous>0?((Number(row[key])/previous-1)*100):null;
+     return {title:(key==="migas"?"Oil & Gas":"EBTKE")+" · "+year,
+      details:[["Reporting year",String(year)],["Realized investment","US$"+fmt(row[key])+" billion"],
+       ["Year-on-year change",movement===null?"Not comparable":(movement>=0?"+":"")+movement.toFixed(2)+"%"],
+       ["Series",key==="migas"?"Oil and gas investment":"EBTKE investment"],
+       ["Data status","ESDM reported realization; not planned capex"]],
+      source:"ESDM energy investment realization",sourceUrl:inv.source_url||"https://www.esdm.go.id/",period:String(year),
+      lesson:"This is the selected ESDM-reported annual realized investment figure. A change from the preceding year is descriptive and does not establish policy impact or a forecast."
+     };
+    }
+   });
+  };
+  if(window.SLIVisualExport)registerInvestment();
+  else document.addEventListener("sli:exportready",registerInvestment,{once:true});
 
  }
  select.addEventListener("change",draw);kind.addEventListener("change",draw);draw();
