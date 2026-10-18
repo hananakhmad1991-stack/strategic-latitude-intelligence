@@ -107,3 +107,40 @@ test("Investor workbench DOM: panel FE actually estimates 12 entities x 6 years,
  dom.window.close();
  delete globalThis.window;delete globalThis.document;
 });
+
+test("BPS official-data shortcut builds 34-province annual panel, models lagged PMTB and preserves source caveats",async()=>{
+ const dom=new JSDOM(read("sli-research-ai.html"),{url:"https://example.org/sli-research-ai.html",runScripts:"outside-only",pretendToBeVisual:true});
+ globalThis.window=dom.window;globalThis.document=dom.window.document;
+ const previousFetch=globalThis.fetch;
+ let requested="";
+ globalThis.fetch=async(url)=>{requested=String(url);return {ok:true,json:async()=>JSON.parse(read("data/sli-bps-regional-intelligence.json"))}};
+ try{
+  await import("../js/sli-analytical-workbench-ui.mjs?qa-bps=20261018");
+  const $=id=>dom.window.document.getElementById(id);
+  assert.ok($("raLoadOfficialBps"),"Source must have explicit opt-in button");
+  assert.match($("raOfficialBpsSource").textContent,/34 provinsi/);
+  $("raLoadOfficialBps").click();
+  await new Promise(resolve=>setImmediate(resolve));await new Promise(resolve=>setImmediate(resolve));
+  assert.equal(requested,"./data/sli-bps-regional-intelligence.json");
+  assert.match($("raModelResult").textContent,/136 observasi/);
+  assert.equal($("raMethod").value,"panel_fe");
+  assert.equal($("raOutcome").value,"real_grdp_growth_pct");
+  assert.equal($("raPredictor").value,"pmtb_share_lag1_pct");
+  assert.equal($("raPanelEntity").value,"province");
+  assert.equal($("raPanelTime").value,"year");
+  assert.equal($("raYearFE").checked,true);
+  assert.match($("raMethodInfo").textContent,/BPS 2021–2025/);
+  $("raRunMethod").click();
+  assert.match($("raModelResult").textContent,/34 entitas × 4 periode, 136 observasi/);
+  assert.match($("raModelResult").textContent,/DATA RESMI BPS/);
+  assert.match($("raModelResult").textContent,/Empat provinsi baru Papua/);
+  assert.match($("raModelResult").textContent,/Uji kestabilan koefisien/);
+  assert.match($("raModelResult").textContent,/2024 berstatus revisi dan 2025 sementara/);
+  assert.doesNotMatch($("raModelResult").textContent,/DATA SIMULASI/);
+  assert.match($("raModelResult").textContent,/Unduh Investor Analytical Report/);
+ }finally{
+  globalThis.fetch=previousFetch;
+  dom.window.close();
+  delete globalThis.window;delete globalThis.document;
+ }
+});
