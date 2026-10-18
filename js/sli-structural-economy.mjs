@@ -58,6 +58,8 @@ export function structuralEconomyEvidence(panel, register,smelterRegistry){
   yearSeries,
   latest:{
    ...recent,
+   malut_real_grdp_growth_pct:facts.real_grdp_growth_pct,
+   grdp_calculated_from_BPS_ADHK_pct:recent.malut_real_grdp_growth_pct,
    manufacturing_real_growth_pct:facts.manufacturing_real_growth_pct,
    export_goods_services_growth_pct:facts.export_goods_services_growth_pct,
    source:facts.source,source_date:facts.source_date,
