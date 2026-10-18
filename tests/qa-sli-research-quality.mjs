@@ -83,3 +83,24 @@ test("Energy headline monitoring labels discovery only, verifies age and never p
  assert.match(read("sli-research-ai.html"),/raMonitoringSignals/);
  assert.match(read("js/sli-research-assistant.js"),/renderMonitoringSignals/);
 });
+
+
+test("Commissioned report enforces research design, method execution honesty, academic integrity and readable conclusions",()=>{
+ const payload=validateAssistantPayload({question:"Evaluasi investasi hilirisasi nikel di Sulawesi Tengah, hitung multiplier dan jelaskan dampak risiko energi",history:[],language:"id",mode:"deep_research",methodology:"auto"});
+ assert.ok(payload);
+ const request=modelRequest(payload,[], "test-model");
+ const rules=request.instructions;
+ for(const required of [
+  /research commission/i,
+  /professional research REPORT/,
+  /methodological audit/i,
+  /independently executed calculation/i,
+  /peer-reviewed methodology/i,
+  /do not invent books, authors, papers, DOIs/i,
+  /geography.*chronology.*sample denominators/i,
+  /Leontief inversion/,
+  /NO MATCHING SLI EVIDENCE/
+ ])assert.match(rules,required);
+ assert.equal(request.store,false);
+ assert.match(JSON.stringify(request.input),/Sulawesi Tengah/);
+});
