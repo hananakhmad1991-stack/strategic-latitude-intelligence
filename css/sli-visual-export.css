@@ -52,14 +52,14 @@ table tr.sli-visual-insight-selected{background:#2a4559!important}
 /* Source-grounded click-through insights: shared two-column Power BI-like reading
    pattern for SVG, HTML bar charts and tables on every SLI dashboard. */
 .sli-visual-insight-split{
- display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.85fr);
+ display:flex;flex-wrap:wrap;
  gap:14px;align-items:start;min-width:0;max-width:100%;width:100%;
 }
 .sli-visual-insight-split>.sli-visual-export-host{
- min-width:0;max-width:100%;width:100%;overflow-x:auto;
+ flex:1 1 565px;min-width:0;max-width:100%;overflow-x:auto;
 }
 .sli-visual-insight-split>.sli-visual-insight{
- box-sizing:border-box;margin:0;min-width:0;max-width:100%;
+ flex:1 1 280px;box-sizing:border-box;margin:0;min-width:0;max-width:100%;
  position:sticky;top:95px;max-height:min(75vh,740px);overflow-y:auto;overflow-x:hidden;
  overscroll-behavior:contain;overflow-wrap:anywhere;
  scrollbar-width:thin;scrollbar-color:#55758d #132e43;
