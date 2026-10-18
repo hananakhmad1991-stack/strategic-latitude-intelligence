@@ -390,6 +390,46 @@ function renderPanelStability(stability){
  };
  showTable(id?"Keluarkan satu entitas (LOEO)":"Leave-one-entity-out",stability.leave_one_entity_out);
  showTable(id?"Keluarkan satu tahun (LOYO)":"Leave-one-year-out",stability.leave_one_year_out);
+ const showRefitDetails=(title,part,open)=>{
+  if(!part?.refits?.length)return;
+  const details=document.createElement("details");details.className="ra-wb-refit-details";details.open=open;
+  const summary=document.createElement("summary");summary.textContent=title+" ("+part.refits.length+" estimasi)";details.append(summary);
+  const note=document.createElement("p");note.textContent=id?
+   "Satu baris = model yang dihitung ulang setelah unit/tahun tersebut dikeluarkan. Δβ = koefisien baru dikurangi baseline; pergantian tanda ditandai. Pengujian ini bukan estimasi dampak ekonomi.":
+   "Each row is a refit excluding the stated entity/year. Δβ = refitted coefficient minus baseline. Sign changes are marked; this does not estimate causal effects.";
+  details.append(note);
+  const scroll=document.createElement("div");scroll.className="ra-wb-table-scroller";
+  const table=document.createElement("table"),head=document.createElement("tr");
+  const isYear=title.includes("tahun")||title.includes("year");
+  const names=["Yang dikeluarkan",...stability.baseline_predictors.flatMap(n=>[n+" β",n+" Δβ",n+" tanda"])];
+  for(const label of names){const th=document.createElement("th");th.textContent=label;head.append(th)}table.append(head);
+  const refs=[...part.refits].sort((u,v)=>isYear?String(u.excluded).localeCompare(String(v.excluded)):
+   Number(v.coefficients.some(x=>x.sign_changed))-Number(u.coefficients.some(x=>x.sign_changed))||String(u.excluded).localeCompare(String(v.excluded)));
+  for(const entry of refs){
+   const tr=document.createElement("tr");
+   if(entry.coefficients.some(c=>c.sign_changed))tr.className="ra-wb-refit-sign-flip";
+   const first=document.createElement("td");first.textContent=entry.excluded;tr.append(first);
+   for(const c of entry.coefficients){
+    const cells=[c.estimate,c.absolute_shift,c.sign_changed?"Berubah":"Tetap"];
+    for(let i=0;i<cells.length;i++){
+     const td=document.createElement("td");td.textContent=String(cells[i]);
+     if(i===2&&c.sign_changed)td.className="ra-wb-stability-flag";
+     tr.append(td);
+    }
+   }
+   table.append(tr);
+  }
+  scroll.append(table);details.append(scroll);section.append(details);
+ };
+ showRefitDetails(id?"Detail setiap tahun yang dikeluarkan":"Every omitted year",stability.leave_one_year_out,true);
+ showRefitDetails(id?"Detail setiap provinsi yang dikeluarkan":"Every omitted entity",stability.leave_one_entity_out,false);
+ if(stability.baseline_year_count<=4){
+  const note=document.createElement("p");note.className="ra-wb-short-panel-warning";
+  note.textContent=id?
+   "PERHATIAN: baseline hanya "+stability.baseline_year_count+" tahun. Uji LOYO menyisakan 3 periode dan mengestimasi ulang efek tetap tahun; koefisien dapat berubah besar akibat sampel sangat pendek. Gunakan seri lebih panjang sebelum membuat kesimpulan untuk investor.":
+   "CAUTION: only "+stability.baseline_year_count+" baseline years. Removing one year leaves 3 periods; fixed effects are re-estimated on this short sample. Longer consistent series are needed for investor inference.";
+  section.append(note);
+ }
  if(officialBps&&stability.baseline_entity_count===32){
   const context=document.createElement("p");context.className="ra-wb-stability-evidence";
   const names=new Set((stability.leave_one_entity_out?.metrics||[]).map(m=>m.most_influential_exclusion));
