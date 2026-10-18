@@ -29,7 +29,7 @@ const columns=line=>line.trim().replace(/^\|/,"").replace(/\|$/,"").split("|").m
 function renderMarkdown(answer,where,sources=[]){
  where.replaceChildren();
  let list=null,listType="";
- const lines=String(answer||"").slice(0,24000).split("\n");
+ const lines=String(answer||"").split("\n");
  for(let i=0;i<lines.length;i++){
   const line=lines[i].trim();
   if(!line){list=null;listType="";continue}
