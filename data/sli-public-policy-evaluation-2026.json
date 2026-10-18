@@ -131,20 +131,20 @@
     "source_catalog": [
       {
         "id": "pln_ruptl_excerpt",
-        "label": "RUPTL PLN 2025–2034 — cuplikan 100 halaman, angka target halaman PDF 5",
-        "url": "./data/pln-ruptl-uploaded-excerpt-2025-2034.json",
+        "label": "RUPTL PLN 2025–2034 · halaman dokumen penerbit resmi (bukan berkas JSON SLI)",
+        "url": "https://www.pln.co.id/hubungan-investor-id/informasi-perusahaan-id/ruptl-id-1",
         "scope": "approved_plan_and_design_rules_not_actuals"
       },
       {
         "id": "pln_statistics_2024",
-        "label": "PLN Statistics 2024 — baseline aset dan sistem",
-        "url": "./data/pln-statistics-regional-baseline-2024.json",
+        "label": "Statistik PLN 2024 · PDF asli penerbit",
+        "url": "https://web.pln.co.id/statics/uploads/2025/09/Statistik-PLN-2024-Ind-Eng.pdf",
         "scope": "historical_asset_inventory_not_policy_effect"
       },
       {
         "id": "law_graph",
-        "label": "SLI Policy Legal Register — tautan JDIH/peraturan nasional",
-        "url": "./data/sli-policy-regulatory-graph-2026.json",
+        "label": "SLI register kebijakan · setiap instrumen memiliki tautan peraturan resmi",
+        "url": "./policy-regulatory-intelligence.html",
         "scope": "normative_instruments_not_outcome_measurements"
       },
       {
