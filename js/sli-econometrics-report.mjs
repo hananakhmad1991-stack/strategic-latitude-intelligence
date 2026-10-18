@@ -54,14 +54,17 @@ export function investorMarkdown(fit,filename,sensitivity,stability=null,officia
  const directionWarning=reversed?"**PERINGATAN MODEL:** Pertumbuhan PDRB dipilih sebagai X, sedangkan PMTB sebagai Y. Koefisien ini tidak mengestimasi PMTB terhadap pertumbuhan. Bila tujuan riset PMTB → pertumbuhan, model harus dihitung ulang dengan variabel yang dibalik.":"Arah Y dan X harus diverifikasi sebelum interpretasi ekonomi.";
  const robustness=stability?.method==="panel_fe_stability"?(()=>{
   const blocks=["## Robustness and specification stability",
+   "**Investment inference status:** "+(stability.decision_readiness==="not_robust_for_investment_inference"?
+   "NOT ROBUST; do not infer a dependable sign, regional investment effect or multiplier.":"EXPLORATORY ONLY; not causal or investment advice."),
    "The baseline is recalculated after excluding each entity and each annual period in turn. These tests check fragility, not external validity or causality."];
   for(const [label,item] of [["Leave-one-entity-out",stability.leave_one_entity_out],["Leave-one-year-out",stability.leave_one_year_out]]){
    blocks.push("### "+label);
    if(!item?.available){blocks.push(item?.note||"Unavailable");continue}
    blocks.push("Successful refits "+item.successful+"/"+item.total_candidates+(item.exhaustive?" (all)":" (sample only)"));
-   blocks.push("| Variable | Baseline β | Min β | Max β | Max % change | Sign flips |\n|---|---:|---:|---:|---:|---:|");
+   blocks.push("| Variable | Baseline β | Min β | Max β | Max absolute β change | Max % change | Sign flips |\n|---|---:|---:|---:|---:|---:|---:|");
    for(const c of item.metrics||[]){
-    blocks.push("| "+[c.name,f(c.baseline),f(c.min),f(c.max),c.max_relative_shift_pct===null?"n/a":f(c.max_relative_shift_pct),c.sign_reversals??"n/a"].join(" | ")+" |");
+    blocks.push("| "+[c.name,f(c.baseline),f(c.min),f(c.max),f(c.max_absolute_shift),c.max_relative_shift_pct===null?"n/a":f(c.max_relative_shift_pct),c.sign_reversals??"n/a"].join(" | ")+" |");
+    if(c.relative_change_near_zero_denominator)blocks.push("*"+c.name+": percent shifts amplified by a near-zero baseline; compare absolute coefficient changes.*");
    }
    if(item.failures?.length)blocks.push("Refit failures: "+item.failures.map(x=>x.excluded+" ("+x.reason+")").join("; "));
   }
@@ -72,6 +75,13 @@ export function investorMarkdown(fit,filename,sensitivity,stability=null,officia
    blocks.push("| Variable | Baseline β | Alternative β | Change % |\n|---|---:|---:|---:|");
    for(const c of a.coefficients)blocks.push("| "+[c.name,f(c.baseline),f(c.alternative),c.relative_change_pct===null?"n/a":f(c.relative_change_pct)].join(" | ")+" |");
   }else blocks.push(stability.alternative_time_specification?.reason||"Unavailable");
+  if(officialSource?.publisher==="BPS (Badan Pusat Statistik)"&&stability.baseline_entity_count===32){
+   const leaders=new Set((stability.leave_one_entity_out?.metrics||[]).map(m=>m.most_influential_exclusion));
+   if(leaders.has("Maluku Utara"))
+    blocks.push("### Maluku Utara special structural context\n\nBPS Maluku Utara reported 34.17% real GRDP growth in 2025 with manufacturing growth 62.64%. Its contribution to sample sensitivity warrants separate nickel downstream-industry controls; do not delete a valid economic observation solely to obtain significance. Official BPS: https://malut.bps.go.id/id/pressrelease/2026/02/05/843/ekonomi-maluku-utara-triwulan-iv-2025-tumbuh-29-81-persen-y-on-y-.html");
+   if((stability.leave_one_year_out?.metrics||[]).some(m=>m.most_influential_exclusion==="2025"))
+    blocks.push("**Annual vintage risk:** 2025 is preliminary; four annual periods provide limited scope for inference. Sign reversals when dropping 2025 prevent robust investment-impact conclusions.");
+  }
   blocks.push("**Analytical interpretation:** "+stability.screening);
   blocks.push("**Limitations:** "+stability.limitations);
   return blocks.join("\n\n");
