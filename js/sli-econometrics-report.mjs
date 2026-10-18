@@ -43,7 +43,8 @@ export function investorMarkdown(fit,filename,sensitivity){
  const f=v=>round(v),panel=fit.method==="panel_fe",terms=panel?fit.coefficients:fit.coefficient_terms,diagnostics=fit.residual_diagnostics||{};
  const row=c=>"| "+[c.name,f(c.estimate),f(c.std_error_hc1),f(c.ci95_low),f(c.ci95_high),f(c.p_value_approx)].join(" | ")+" |";
  const impact=terms.filter(t=>t.name!=="Intercept").map(t=>"- **"+t.name+"**: koefisien "+f(t.estimate)+", interval kepercayaan 95% ["+f(t.ci95_low)+", "+f(t.ci95_high)+"]. Hubungan ini tidak membuktikan kausalitas.").join("\n");
- const flags=(diagnostics.flagged||[]).map(t=>"- Observasi ke-"+t.index+"; Cook D "+f(t.cook_d)+"; residual terstandardisasi "+f(t.standardized_residual)).join("\n");
+ const flags=(diagnostics.flagged||[]).map(t=>"- "+(fit.observations?.[t.index-1]?.name||("Observasi ke-"+t.index))+"; Cook D "+f(t.cook_d)+"; residual terstandardisasi "+f(t.standardized_residual)).join("\n");
+ const coeffTable=["| Variable | Estimate | Std error | 95% CI lower | 95% CI upper | Approx. p |","|---|---:|---:|---:|---:|---:|",...terms.map(row)].join("\n");
  const sen=sensitivity?.reduced?"\n## Uji sensitivitas\n\nR² seluruh observasi: "+f(sensitivity.full.r_squared)+" (n="+sensitivity.full.n+"). Setelah mengecualikan pertumbuhan di luar −15% hingga +15% secara **ilustratif**: R² "+f(sensitivity.reduced.r_squared)+" (n="+sensitivity.reduced.n+"). Baris dikecualikan sementara: "+sensitivity.excluded_rows.join(", ")+". Bukan alasan untuk menghapus nilai ekstrem tanpa justifikasi.\n":"";
  return [
  "# Strategic Latitude Intelligence — Investor Analytical Report",
@@ -56,9 +57,7 @@ export function investorMarkdown(fit,filename,sensitivity){
  "## Executive assessment",
  "Model ini mengidentifikasi asosiasi statistik dalam sampel yang ditentukan pengguna. Estimasi tidak mewakili multiplier effect, prediksi pasti, maupun hubungan sebab-akibat. "+(panel?"Panel mencakup "+fit.unit_count+" unit dan "+fit.time_count+" periode; "+(fit.two_way_fe?"unit dan year effects":"unit effects")+" dikontrol.":"R² sampel: "+f(fit.r_squared)+"."),
  "## Results · estimates and uncertainty",
- "| Variable | Estimate | Std error | 95% CI lower | 95% CI upper | Approx. p |",
- "|---|---:|---:|---:|---:|---:|",
- ...terms.map(row),
+ coeffTable,
  "**Variance estimator:** "+fit.se_type+". Confidence intervals and p-values are model-based approximations subject to identification and sampling assumptions.",
  "## Economic interpretation",
  impact,
