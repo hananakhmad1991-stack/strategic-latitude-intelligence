@@ -43,15 +43,18 @@ export function investorMarkdown(fit,filename,sensitivity,stability=null,officia
  const f=v=>round(v),panel=fit.method==="panel_fe",terms=panel?fit.coefficients:fit.coefficient_terms,diagnostics=fit.residual_diagnostics||{};
  const provenance=officialSource?.publisher==="BPS (Badan Pusat Statistik)"&&/^https:\/\/www\.bps\.go\.id\//.test(officialSource.url||"")?
  "## Data provenance and measurement\n\nOriginal BPS publication: **"+officialSource.title+"** ("+officialSource.published+"). Source: "+officialSource.url+
- "\n\nThe 2022–2025 32-province, 128-observation geographically screened annual panel is DERIVED by SLI from 2021–2025 published GRDP series. The lagged PMTB share uses prior-year current-price PMTB/current-price GRDP while growth uses constant-2010-price GRDP. The pre-split Papua and Papua Barat observations are excluded entirely because 2023 administrative boundaries are not comparable with pre-2023 predecessor provinces: the apparent 2023 collapses should NOT be interpreted as actual economic contractions. Four new Papua provinces have no comparable 2021–2022 history and are also excluded (no imputation). Source status: 2024 revised, 2025 preliminary. This is NOT a BPS-conducted regression. BPS substantial-table commercial republication may require permission.\n":
+ "\n\nThe 2022–2025 32-province, 128-observation geographically screened annual panel is DERIVED by SLI from 2021–2025 published GRDP series. The panel provides both contemporaneous PMTB share (t) and lagged PMTB share (t−1); inspect the declared X in this report to know which one the fitted model actually used. Real GRDP growth uses constant-2010-price GRDP. The pre-split Papua and Papua Barat observations are excluded entirely because 2023 administrative boundaries are not comparable with pre-2023 predecessor provinces: the apparent 2023 collapses should NOT be interpreted as actual economic contractions. Four new Papua provinces have no comparable 2021–2022 history and are also excluded (no imputation). Source status: 2024 revised, 2025 preliminary. This is NOT a BPS-conducted regression. BPS substantial-table commercial republication may require permission.\n":
  "## User dataset provenance\n\nThis is locally uploaded or unverified client data; definitions, vintages and legal usage rights must be independently checked.\n";
 
  const row=c=>"| "+[c.name,f(c.estimate),f(c.std_error_hc1),f(c.ci95_low),f(c.ci95_high),c.p_value_approx===0?"<0,000001":f(c.p_value_approx)].join(" | ")+" |";
  const impact=terms.filter(t=>t.name!=="Intercept").map(t=>"- **"+t.name+"**: koefisien "+f(t.estimate)+", interval kepercayaan 95% ["+f(t.ci95_low)+", "+f(t.ci95_high)+"]. Hubungan ini tidak membuktikan kausalitas.").join("\n");
- const flags=(diagnostics.flagged||[]).map(t=>"- "+(fit.observations?.[t.index-1]?.name||("Observasi ke-"+t.index))+"; Cook D "+f(t.cook_d)+"; residual terstandardisasi "+f(t.standardized_residual)).join("\n");
+ const flags=(diagnostics.flagged||[]).map(t=>"- "+(t.name||fit.observations?.[t.index-1]?.name||("Observasi ke-"+t.index))+"; Cook D "+f(t.cook_d)+"; residual terstandardisasi "+f(t.standardized_residual)).join("\n");
  const coeffTable=["| Variable | Estimate | Std error | 95% CI lower | 95% CI upper | Approx. p |","|---|---:|---:|---:|---:|---:|",...terms.map(row)].join("\n");
  const reversed=/(?:grdp|pdrb|gdp).*growth|growth.*(?:grdp|pdrb|gdp)/i.test(fit.predictors[0]||"")&&/pmtb/i.test(fit.outcome);
  const directionWarning=reversed?"**PERINGATAN MODEL:** Pertumbuhan PDRB dipilih sebagai X, sedangkan PMTB sebagai Y. Koefisien ini tidak mengestimasi PMTB terhadap pertumbuhan. Bila tujuan riset PMTB → pertumbuhan, model harus dihitung ulang dengan variabel yang dibalik.":"Arah Y dan X harus diverifikasi sebelum interpretasi ekonomi.";
+ const temporalWarning=officialSource&&panel&&fit.predictors.includes("pmtb_share_pct")?
+ "**PERINGATAN SPESIFIKASI:** X memuat pmtb_share_pct (PMTB pada tahun t), BUKAN pmtb_share_lag1_pct (PMTB tahun t−1). Hasil ini model kontemporer dan tidak dapat dibandingkan langsung dengan baseline lagged-PMTB. Kenaikan simultanitas dan endogenitas mungkin timbul; untuk baseline lag-1 jalankan model ulang dengan X1 pmtb_share_lag1_pct.":"";
+
  const robustness=stability?.method==="panel_fe_stability"?(()=>{
   const blocks=["## Robustness and specification stability",
    "**Investment inference status:** "+(stability.decision_readiness==="not_robust_for_investment_inference"?
@@ -96,6 +99,7 @@ export function investorMarkdown(fit,filename,sensitivity,stability=null,officia
  "**Outcome (Y):** "+fit.outcome+"  ",
  "**Prediktor (X):** "+fit.predictors.join(", "),
  directionWarning,
+ temporalWarning,
  provenance,
  "## Executive assessment",
  "Model ini mengidentifikasi asosiasi statistik dalam sampel yang ditentukan pengguna. Estimasi tidak mewakili multiplier effect, prediksi pasti, maupun hubungan sebab-akibat. "+(panel?"Panel mencakup "+fit.unit_count+" unit dan "+fit.time_count+" periode; "+(fit.two_way_fe?"unit dan year effects":"unit effects")+" dikontrol.":"R² sampel: "+f(fit.r_squared)+"."),
