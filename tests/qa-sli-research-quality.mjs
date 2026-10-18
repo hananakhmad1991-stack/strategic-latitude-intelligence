@@ -131,3 +131,15 @@ test("APA reference panel, model statement and gated news monitoring in owner UI
  assert.match(client,/evidence_status==="publisher_page_matched"/);
  assert.match(client,/reportBody\(text\)/);
 });
+
+test("Complete research narratives are not truncated and APA references remain legible",()=>{
+ const visual=read("js/sli-research-visuals.js"),ui=read("js/sli-research-assistant.js"),css=read("css/sli-research-assistant.css");
+ assert.doesNotMatch(visual,/slice\(0,24000\)/);
+ assert.match(ui,/never truncate substantive conclusions/);
+ assert.match(css,/#raConversation #raSourcesList \.sli-ra-source-card>a/);
+ assert.match(css,/text-overflow:clip/);
+ const question=validateAssistantPayload({question:"Analisis risiko impor energi Indonesia secara mendalam",mode:"deep_research",history:[]});
+ const request=modelRequest(question,nationalEnergyEvidence().slice(0,3),"test-model");
+ assert.match(request.instructions,/general reader/);
+ assert.match(request.instructions,/opinion-column style/);
+});
