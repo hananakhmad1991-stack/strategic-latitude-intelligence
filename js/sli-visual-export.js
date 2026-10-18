@@ -21,9 +21,10 @@ function title(host){
 }
 function metadata(host){
  const provider=providers.get(host);const meta=typeof provider?.getMeta==="function"?provider.getMeta():provider?.meta;
- const a=host.closest("section,article")?.querySelector("a[href^='https://']")||document.querySelector('a[href*="worldbank.org"]');
- return {title:meta?.title||title(host),source:meta?.source||"Source in the dashboard; inspect original references before reuse",
-  sourceUrl:meta?.sourceUrl||a?.href||"",period:meta?.period||"",completeness:meta?.completeness||"Visible chart elements only; full numeric source not exposed by this visualization"};
+ // Do NOT infer an observation's original source from a nearby unrelated link.
+ // Only registered metadata or a source link attached to the selected row qualifies.
+ return {title:meta?.title||title(host),source:meta?.source||"Check the dashboard's source register for this observation",
+  sourceUrl:meta?.sourceUrl||"",period:meta?.period||"",completeness:meta?.completeness||"Visible chart elements only; full numeric source not exposed by this visualization"};
 }
 function isChart(node){
  if(!node||!node.isConnected||node.closest(".sli-visual-export-toolbar,svg .sli-visual-export-toolbar"))return false;
@@ -311,10 +312,12 @@ function openVisualInsight(event){
  const target=event.target;
  if(!(target instanceof Element)||target.closest(".sli-visual-export-toolbar,.sli-visual-insight,[role=menu],a,button,select,input,textarea"))return;
  const svg=target.closest("svg"),table=target.closest("table"),canvas=target.closest("canvas");
- const bar=target.closest(".regbar,.bar-row,[class*=bar-item]");
- const visual=svg||table||canvas||bar;if(!visual)return;
+ const barCandidate=target.closest(".regbar,.bar-row,[class*=bar-item]");
+ const barHost=barCandidate?.closest(BAR_SELECTOR);
+ const bar=barHost&&isChart(barHost)?barCandidate:null;
+ const visual=svg||table||canvas||barHost;if(!visual)return;
  // Rich local inspectors retain control: asset maps and geopolitical event chronologies.
- if(visual.closest("#sliMapRoot,#geo-commodity-timeline,.sli-geo-timeline-panel,.sli-geo-timeline-plot,.sli-geo-timeline-scatter"))return;
+ if(visual.closest("#sliMapRoot,#geo-commodity-timeline,.sli-geo-timeline-panel,.sli-geo-timeline-plot,.sli-geo-timeline-scatter,svg.stake-svg,#energyOilGasStakeholdersRoot,#energyCoalStakeholdersRoot"))return;
  const host=visual.closest(".sli-visual-export-host")||findHost(visual);if(!host||!host.isConnected)return;
  const meta=metadata(host),provider=pointInsights.get(visual)||pointInsights.get(host);
  let heading="",details=[],selection=null,scope="";
@@ -392,9 +395,11 @@ function openVisualInsight(event){
  const source=extra?.source||meta.source;
  const rowSource=table?selection?.querySelector('a[href^="https://"]')?.href:"";
  const sourceUrl=extra?.sourceUrl||rowSource||meta.sourceUrl;
+ const preciseSource=Boolean(extra?.sourceUrl||rowSource||pointInsights.get(visual)?.getInsight||providers.get(host)?.getMeta);
+ const sourceLinkLabel=preciseSource?tr("Read original source ↗","Buka sumber asli ↗"):tr("Related source ↗","Sumber terkait ↗");
  const credit=$("p",{class:"sli-visual-insight-credit"},tr("Source / provenance: ","Sumber / asal data: ")+source);
  if(/^https:\/\/[^/\s]+/i.test(sourceUrl||"")){
-  const a=$("a",{href:sourceUrl,target:"_blank",rel:"noopener noreferrer"},tr("Read original source ↗","Buka sumber asli ↗"));credit.append(" · ",a)
+  const a=$("a",{href:sourceUrl,target:"_blank",rel:"noopener noreferrer"},sourceLinkLabel);credit.append(" · ",a)
  }
  inspector.append(credit);
  host.querySelectorAll(".sli-visual-insight-selected").forEach(x=>x.classList.remove("sli-visual-insight-selected"));
