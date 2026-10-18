@@ -89,3 +89,29 @@
 
 .sli-ra-evidence-note{padding:10px 13px;margin:2px 0 15px;border:1px solid #bfcfdf;background:#f1f6fb;color:#3b5d78;border-radius:8px;font-size:12px;line-height:1.6}
 .sli-ra-source-role{display:inline-block!important;border:1px solid #d2e1ec;border-radius:5px;padding:2px 6px;margin:7px 0 2px!important;font-size:10px!important;font-weight:650;color:#365c77!important;background:#f5f9fc}
+
+
+/* Chat-first investor experience: advanced methodology tools remain available but optional. */
+.sli-ra-chat-promise{max-width:850px;margin:14px auto 6px;color:#315b76;font:650 14px/1.6 system-ui,sans-serif}
+.sli-ra-chat-attachment{margin:10px 0 14px;padding:12px;border:1px solid #d3e2eb;border-radius:12px;background:#f6f9fc;display:flex;flex-direction:column;gap:7px}
+.sli-ra-chat-attachment>label:first-child{font:800 13px/1.4 system-ui,sans-serif;color:#165278}
+.sli-ra-chat-attachment input[type=file]{max-width:100%;font:12px/1.5 system-ui,sans-serif;color:#395a71}
+.sli-ra-chat-attachment small,.sli-ra-chat-attachment #raAttachmentStatus{color:#5f7789;font:11px/1.55 system-ui,sans-serif}
+.sli-ra-chat-attachment .sli-ra-upload-consent{display:flex;gap:8px;align-items:flex-start;margin-top:4px;color:#3c5f79;font:11px/1.6 system-ui,sans-serif}
+.sli-ra-chat-attachment .sli-ra-upload-consent input{margin:3px 0 0;flex:0 0 auto;accent-color:#1c658e}
+.sli-ra-chat-preferences{min-width:0;flex:1 1 300px;border:1px solid #d1e0ea;border-radius:10px;padding:9px 11px;background:#f4f8fb}
+.sli-ra-chat-preferences summary{font:750 12px/1.5 system-ui,sans-serif;color:#285a7a;cursor:pointer}
+.sli-ra-chat-preferences .sli-ra-selects{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:12px}
+.sli-ra-chat-preferences select{width:100%;max-width:100%;font:12px system-ui,sans-serif}
+.sli-ra-chat-preferences small{color:#648095;font:11px/1.6 system-ui,sans-serif}
+.sli-ra-template-featured{grid-column:1/-1;background:#e9f4f9!important;border-color:#86b8ce!important}
+.sli-ra-template-featured strong{color:#124767!important}
+.sli-ra-owner summary{cursor:pointer;font:750 12px/1.6 system-ui,sans-serif;color:#204e71}
+.sli-ra-owner:not([open]){padding:10px 16px;max-width:950px;margin:0 auto 16px}
+.sli-ra-owner:not([open])>*:not(summary){display:none!important}
+.sli-ra-owner[open]>summary{margin-bottom:12px}
+.sli-ra-advanced-lab{max-width:1510px;margin:24px auto;border:1px solid #d0dfe9;border-radius:14px;background:#f9fbfd;padding:11px 15px}
+.sli-ra-advanced-lab>summary{cursor:pointer;font:800 13px/1.5 system-ui,sans-serif;color:#265b7f;padding:5px 8px}
+.sli-ra-advanced-lab:not([open]) #raAnalyticalWorkbench{display:none}
+.sli-ra-advanced-lab[open]>summary{margin-bottom:14px}
+@media(max-width:650px){.sli-ra-chat-promise{font-size:12px}.sli-ra-template-featured{grid-column:auto}.sli-ra-chat-preferences{flex:1 1 100%}}
