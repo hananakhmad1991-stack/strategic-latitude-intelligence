@@ -208,8 +208,10 @@
     note.textContent=id()?"Sumber terindeks; bagian dashboard dapat berisi data agregat.":"Indexed source record; dashboard section may show aggregate rather than row-level data.";
     card.append(eyebrow,title,description,note);
     if(item.source&&/^data\/[a-z0-9-]+\.json$/.test(item.source)){
-     const link=document.createElement("a");link.textContent=id()?"Lihat data sumber JSON ↗":"Open indexed source JSON ↗";
-     link.href="./"+item.source;link.target="_blank";link.rel="noopener noreferrer";
+     const link=document.createElement("a");
+     link.textContent=id()?"Lihat sumber & metodologi SLI ↗":"View SLI sources & methodology ↗";
+     link.href="./sli-source-viewer.html?dataset="+encodeURIComponent(item.source.slice("data/".length));
+     link.rel="noopener noreferrer";
      card.append(link);
     }
     if(anchor?.parentNode?.insertBefore)anchor.parentNode.insertBefore(card,anchor);
