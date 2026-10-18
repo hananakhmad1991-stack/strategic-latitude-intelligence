@@ -8,6 +8,7 @@ import provinces from "../../data/sli-research-province-preview.json";
 import {validateAssistantPayload,selectResearchEvidence,modelRequest,verifyResearchAnswer,verifyMethodOnlyAnswer} from "./assistant-core.mjs";
 import {extractModelText} from "./core.mjs";
 import {buildResearchCharts} from "./chart-data.mjs";
+import {auditReport} from "./report-audit.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
@@ -155,7 +156,10 @@ export default{
   }catch{return send(502,{error:"model_unreachable"},origin)}
   if(!(evidence.length?verifyResearchAnswer(answer,evidence):verifyMethodOnlyAnswer(answer)))
    return send(502,{error:evidence.length?"invalid_or_missing_source_citations":"invalid_unsourced_research_design"},origin);
-  return send(200,{mode:"generative_rag",research_format:payload.mode,answer,
+  // Structural lint only. Do not mistake valid citation indices for source verification.
+  const qa=auditReport(answer,evidence,{minWords:payload.mode==="deep_research"?150:80,requireConclusion:payload.mode==="deep_research"});
+  const quality_audit={review_scope:qa.review_scope,structural_status:qa.pass?"complete_structure":"needs_editorial_review",issues:qa.issues,word_count:qa.words,section_count:qa.sections,citation_count:qa.citations,has_conclusion:qa.hasConclusion};
+  return send(200,{mode:"generative_rag",research_format:payload.mode,answer,quality_audit,
    charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:evidence.length?"owner_staging_source_dated_energy_corpus":"methodology_design_only_no_verified_sli_evidence",
    corpus_as_of:energyCorpusAudit().assessment_date,
    corpus_version:"sli-energy-official-v2",
