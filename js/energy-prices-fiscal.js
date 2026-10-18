@@ -83,6 +83,12 @@ function investment(root,d){
   years.forEach((r,i)=>{const t=shape("text",{x:X(i),y:292,fill:"#bfd2e0","text-anchor":"middle","font-size":12},svg);t.textContent=r.year});
   const t=shape("text",{x:75,y:14,fill:"#bfd2e0","font-size":11},svg);t.textContent="US$ billion";
   info.textContent="2025: Migas US$"+fmt(inv.latest.migas)+"bn, EBTKE US$"+fmt(inv.latest.ebtke)+"bn. Select series or a point for annual values.";
+  if(window.SLIVisualExport)window.SLIVisualExport.register(svg,{
+   getData:()=>({headers:["Year",...lines.map(k=>k==="migas"?"Oil & Gas (USD billion)":"EBTKE (USD billion)")],
+    rows:years.map(r=>[r.year,...lines.map(k=>r[k])]),kind:"verified-provider"}),
+   getMeta:()=>({source:"Indonesia Ministry of Energy and Mineral Resources (ESDM)",sourceUrl:inv.source_url||"https://www.esdm.go.id/",period:years[0]?.year+" – "+years.at(-1)?.year})
+  });
+
  }
  select.addEventListener("change",draw);kind.addEventListener("change",draw);draw();
  dl.addEventListener("click",()=>{
