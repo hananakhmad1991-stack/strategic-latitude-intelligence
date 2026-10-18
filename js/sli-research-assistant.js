@@ -273,7 +273,7 @@ async function submit(){
   const response=await fetch(endpoint,{method:"POST",headers,body:JSON.stringify(requestBody),cache:"no-store",signal:controller.signal});
   const payload=await response.json().catch(()=>null);
   if(id!==state.sequence)return;
-  if(!response.ok)throw Error(payload?.error||"HTTP "+response.status);
+  if(!response.ok){const code=String(payload?.error||"http_"+response.status),detail=String(payload?.reason||"").slice(0,90);throw Error(code+(detail?" · "+detail:"")+" · HTTP "+response.status)}
   if(!payload||typeof payload.answer!=="string"||payload.mode!=="generative_rag"||!Array.isArray(payload.sources))throw Error("invalid_response");
   loading.parentNode?.remove();
   state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],question,mode};
@@ -295,7 +295,7 @@ async function submit(){
   $("raFollowupPrompt").value="";
   status(usingOwner?(state.language==="id"?"Laporan Owner Test selesai; verifikasi sitasi dan grafik sebelum digunakan.":"Owner Test report completed; verify citations and figures before use."):tr("ready"),"ready");
  }catch(err){
-  if(id===state.sequence){loading.parentNode?.remove();append("system",tr("requestFail")+" ("+String(err?.message||"unavailable").slice(0,75)+")");status(tr("requestFail"))}
+  if(id===state.sequence){loading.parentNode?.remove();const detail=String(err?.name==="AbortError"?"request_timeout_60s":err?.message||"network_unavailable").slice(0,190);append("system",tr("requestFail")+"\nDiagnosis: "+detail+"\nCatatan: backend Cloudflare Owner Test memerlukan deployment terpisah dari GitHub Pages.");status("Permintaan gagal · "+detail)}
  }finally{
   clearTimeout(timeout);if(id===state.sequence){state.busy=false;enableControls();}
  }
