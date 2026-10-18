@@ -192,7 +192,7 @@ export function panelFixedEffects(rows,predictors,outcome,entityField,timeField,
  const yearTerms=includeYearFE?times.slice(1):[];
  const X= predictorsWithin.map((row,i)=>[...row,...yearTerms.map(t=>Number(pairs[i].time===t)-mean(group.get(pairs[i].entity).map(z=>Number(z.time===t))))]);
  const names=[...predictors,...yearTerms.map(t=>"time:"+t)];
- const fit=regression(yWithin,X,{names,intercept:false,clusters:pairs.map(d=>d.entity),lostDf:units.length-1});
+ const fit=regression(yWithin,X,{names,intercept:false,clusters:pairs.map(d=>d.entity),lostDf:units.length});
  return {method:"panel_fe",outcome,predictors,entity_field:entityField,time_field:timeField,
   unit_count:units.length,time_count:times.length,two_way_fe:includeYearFE,rows_used:fit.n,rows_excluded:rows.length-fit.n,
   coefficients:fit.coefficient_terms.filter(v=>predictors.includes(v.name)),
