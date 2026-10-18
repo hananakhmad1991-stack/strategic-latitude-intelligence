@@ -246,3 +246,18 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-bps-provenance p{
 #raAnalyticalWorkbench .ra-wb-dataset-status[data-source="model"]{
  color:#665126;background:#fdf8ed;border-color:#dfd0b1
 }
+
+
+/* Independent source-audit results: provenance, coverage and indicator readiness. */
+#raAnalyticalWorkbench .ra-wb-quality{margin:14px 0 23px;padding:16px 18px;border:1px solid #cbdde9;border-radius:11px;background:#f6fafc}
+#raAnalyticalWorkbench .ra-wb-quality[hidden]{display:none!important}
+#raAnalyticalWorkbench .ra-wb-quality h3{color:#144b70;font:800 17px/1.4 system-ui,sans-serif;margin:0 0 8px}
+#raAnalyticalWorkbench .ra-wb-quality p{font:12px/1.65 system-ui,sans-serif;color:#335972!important;margin:9px 0}
+#raAnalyticalWorkbench .ra-wb-quality .ra-wb-quality-caution{background:#fdf8ee;color:#77552d!important;border-left:3px solid #b9934a;padding:10px 12px;border-radius:7px}
+#raAnalyticalWorkbench .ra-wb-quality .ra-wb-quality-error{background:#fff0ec;color:#8a342b!important;border-left:3px solid #be655b;padding:10px}
+#raAnalyticalWorkbench .ra-wb-quality-controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:12px 0}
+#raAnalyticalWorkbench .ra-wb-quality-controls button{background:#164d78;color:#fff;border:1px solid #164d78;border-radius:8px;padding:10px 14px;cursor:pointer;font:700 12px/1.5 system-ui,sans-serif}
+#raAnalyticalWorkbench .ra-wb-quality-controls small{color:#5b7082;font:11px/1.6 system-ui,sans-serif}
+#raAnalyticalWorkbench .ra-wb-quality-details{border-top:1px solid #d2e0e9;padding-top:10px;margin-top:13px}
+#raAnalyticalWorkbench .ra-wb-quality-details summary{cursor:pointer;color:#205780;font:750 12px/1.6 system-ui,sans-serif}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-quality-details th,body.sli-research-brand #raAnalyticalWorkbench .ra-wb-quality-details td{font-size:11px!important;white-space:normal;min-width:105px}
