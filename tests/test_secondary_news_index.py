@@ -6,6 +6,8 @@ import datetime as dt
 import json
 import tempfile
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts.build_secondary_news_index import build, normalize_row, flatten
 
 NOW = dt.datetime(2026, 10, 18, 13, 0, tzinfo=dt.timezone.utc)
