@@ -34,7 +34,7 @@ function start(root,db){
  const charts=n("div","rel-chart-grid"),barsWrap=n("section","rel-viz"),trendWrap=n("section","rel-viz");
  const barsTitle=n("h3",null,"PLN service-unit comparison");
  const barsNote=n("p","rel-mininote","Click a reporting unit to inspect scope, source, trend and interpretation.");
- const bars=n("div","sli-reliability-bars");bars.setAttribute("data-sli-visual-bars","");bars.dataset.sliVisualExportId="pln-saidi-saifi-unit-bars";
+ const bars=n("div","sli-reliability-bars");bars.setAttribute("data-sli-visual-bars","");bars.dataset.sliVisualExportId="pln-saidi-saifi-unit-bars";const rows=n("div","rel-rows");bars.append(rows);
  barsWrap.append(barsTitle,barsNote,bars);
  const trendHead=n("h3",null,"Historical continuity · 2023–2025");
  const trendText=n("p","rel-mininote","National published aggregate and selected PLN reporting unit; no province-level interpolation.");
@@ -87,15 +87,15 @@ function start(root,db){
  }
  function drawBars(){
   const m=state.metric,y=state.year,max=Math.max(...db.records.map(x=>unitValue(x))),arr=state.view==="province"&&state.province?linkedUnits():db.records.slice();
-  arr.sort((a,b)=>unitValue(b)-unitValue(a));bars.replaceChildren();
-  if(!arr.length){bars.append(n("p","rel-scope-warning","No verified reporting-unit observation for the selected province; choose All PLN reporting units to inspect the published table."));return;}
+  arr.sort((a,b)=>unitValue(b)-unitValue(a));rows.replaceChildren();
+  if(!arr.length){rows.append(n("p","rel-scope-warning","No verified reporting-unit observation for the selected province; choose All PLN reporting units to inspect the published table."));return;}
   for(const u of arr){
    const v=unitValue(u),pct=100*(state.scale==="sqrt"?Math.sqrt(v/max):v/max);
-   const button=n("button","rel-row"+(state.unit===u.id?" active":""),null);button.type="button";button.title="Inspect "+u.unit+" · "+y;button.dataset.unit=u.id;
+   const button=n("button","rel-row bar-row"+(state.unit===u.id?" active":""),null);button.type="button";button.title="Inspect "+u.unit+" · "+y;button.dataset.unit=u.id;
    const first=n("span","rel-name",u.unit),track=n("span","rel-track"),fill=n("span","rel-fill");fill.style.width=Math.max(2,pct)+"%";track.append(fill);
    const number=n("span","rel-value",fmt(v));button.append(first,track,number);
-   button.addEventListener("click",()=>{state.unit=u.id;drawBars();drawTrend();drawKpis();detail();});
-   bars.append(button);
+   button.addEventListener("click",()=>{if(state.province&&!linkedUnits().some(x=>x.id===u.id)){state.province="";province.value="";}state.unit=u.id;drawBars();drawTrend();drawKpis();detail();});
+   rows.append(button);
   }
   barsNote.textContent="Reporting year "+y+" · "+db.indicators[m].unit+". Ordered from higher to lower interruption impact; bar width "+(state.scale==="sqrt"?"uses a square-root visual scale to preserve smaller values":"uses a linear visual scale")+". The printed numbers are always the original reported values.";
  }
@@ -126,6 +126,9 @@ function start(root,db){
  scope.addEventListener("change",()=>{state.view=scope.value;draw();});
  scale.addEventListener("change",()=>{state.scale=scale.value;draw();});
  document.addEventListener("sli:exportready",exportRegister);
+ const masterProvince=document.getElementById("province");
+ if(masterProvince&&masterProvince!==province)masterProvince.addEventListener("change",()=>{const name=masterProvince.value;if(db.provinces.some(x=>x.name===name)){state.province=name;province.value=name;state.unit=linkedUnits()[0]?.id||"";draw();}});
+
  const params=new URLSearchParams(location.search),p=params.get("province");if(p&&db.provinces.some(x=>x.name===p)){state.province=p;province.value=p;state.unit=linkedUnits()[0]?.id||"";}
  draw();
 }
