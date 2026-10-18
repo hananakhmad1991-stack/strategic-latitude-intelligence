@@ -22,3 +22,21 @@ test("Every dashboard loads shared source routing and source viewer is listed as
  for(const t of ["js/sli-navigation.js","css/sli-navigation.css","js/sli-shared-appendix.js","js/sli-live-data.js"])assert.ok(source.includes(t),p+" missing "+t);
  }
 });
+
+test("All internal static HTML anchor targets exist and PDF-labeled links never point to JSON",()=>{
+ const known=new Set(readdirSync(new URL("../",import.meta.url)).filter(x=>x.endsWith(".html")));
+ const data=new Set(readdirSync(new URL("../data/",import.meta.url)));
+ const pages=[...known].sort();
+ for(const filename of pages){
+  const html=load(filename);
+  const anchors=[...html.matchAll(/<a\b[^>]{0,850}href=["']([^"']+)["'][^>]*>([\s\S]{0,450}?)<\/a>/gi)];
+  for(const [,href,body] of anchors){
+   const title=body.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
+   assert.ok(!(/\.json(?:[?#]|$)/i.test(href)&&/\bPDF\b/i.test(title)),filename+" claims a PDF but links to JSON: "+href);
+   if(!href.startsWith("./"))continue;
+   const local=href.slice(2).split(/[?#]/)[0];
+   if(local.endsWith(".html"))assert.ok(known.has(local),filename+" broken HTML route: "+href);
+   else if(local.startsWith("data/")&&local.endsWith(".json"))assert.ok(data.has(local.slice(5)),filename+" missing dataset: "+href);
+  }
+ }
+});
