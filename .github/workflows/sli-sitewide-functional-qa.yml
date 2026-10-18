@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'index.html'
+      - 'css/sli-home-portal.css'
+      - 'tests/qa-sli-home-portal.mjs'
       - 'sli-research-ai.html'
       - 'js/sli-research-assistant.js'
       - 'intelligence-labs.html'
@@ -41,6 +43,6 @@ jobs:
         with:
           node-version: '22'
       - name: Verify all critical scripts, navigation, filters and export controls
-        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs
+        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs
       - name: Validate published SLI JSON and asset integrity
         run: node scripts/audit-sli-content-quality.mjs
