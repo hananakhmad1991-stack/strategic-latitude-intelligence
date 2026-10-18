@@ -1,208 +1,296 @@
-/* SLI Geopolitical Timeline & Commodity Event Study: source-linked, descriptive (not causal). */
+/* SLI Geopolitics 1950—present: multi-benchmark, source-dated, descriptive event study */
 (()=>{"use strict";
-const ENDPOINTS={events:"./data/sli-geopolitical-events.json",prices:"./data/sli-geopolitical-commodity-prices.json",news:"./data/sli-secondary-news-index.json"};
-const catalog={brent:["Brent crude · USD/bbl","Minyak Brent · USD/barel"],gold:["Gold · USD/toz","Emas · USD/troy oz"],copper:["Copper · USD/mt","Tembaga · USD/ton"],nickel:["Nickel · USD/mt","Nikel · USD/ton"],gas_europe:["European natural gas · USD/mmbtu","Gas Eropa · USD/mmbtu"]};
-const colors={line:"#83c6ed",event:"#f5c56c",grid:"#334a60",text:"#c6d8e9",scatter:"#5c859c"};
-const ns="http://www.w3.org/2000/svg";
+const ROOT="sliGeoTimelineRoot", ns="http://www.w3.org/2000/svg";
+const URLS={events:"./data/sli-geopolitical-events.json",prices:"./data/sli-geopolitical-commodity-prices.json",news:"./data/sli-secondary-news-index.json"};
+const ITEMS={
+ brent:["Brent crude","Minyak Brent","energy"],wti:["WTI crude","Minyak WTI","energy"],dubai:["Dubai crude","Minyak Dubai","energy"],oil_average:["World Bank crude average","Rata-rata minyak World Bank","energy"],
+ coal_australia:["Australian coal","Batu bara Australia","energy"],coal_south_africa:["South African coal","Batu bara Afrika Selatan","energy"],
+ gas_us:["US natural gas","Gas alam AS","energy"],gas_europe:["European natural gas","Gas alam Eropa","energy"],lng_japan:["Japan LNG import benchmark","Acuan LNG impor Jepang","energy"],
+ nickel:["Nickel","Nikel","minerals"],copper:["Copper","Tembaga","minerals"],tin:["Tin","Timah","minerals"],aluminum:["Aluminum","Aluminium","minerals"],iron_ore:["Iron ore","Bijih besi","minerals"],zinc:["Zinc","Seng","minerals"],lead:["Lead","Timbal","minerals"],gold:["Gold","Emas","minerals"],silver:["Silver","Perak","minerals"],cobalt:["Cobalt","Kobalt","minerals"]
+};
+const DEFAULTS={energy:["brent","wti","dubai"],minerals:["nickel","copper","gold"],cross:["brent","coal_australia","nickel","copper","gold"]};
+const PALETTE=["#76c3f3","#edc376","#83d2a0","#d49cf1","#f6a79b"];
+const groupLabels={energy:["Energy commodities","Komoditas energi"],minerals:["Mineral and metal commodities","Komoditas mineral dan logam"],cross:["Cross-commodity comparison","Perbandingan lintas komoditas"]};
+const categoryNames={all:["All events","Semua peristiwa"],conflict:["Conflict","Konflik"],macro:["Macro shocks","Guncangan ekonomi"],trade:["Trade and oil policy","Perdagangan dan kebijakan minyak"],shipping:["Maritime routes","Jalur maritim"],health:["Health crisis","Krisis kesehatan"]};
+const modeNames={single:["Single","Tunggal"],compare:["Compare · absolute","Bandingkan · nominal"],indexed:["Indexed Compare · 100","Perbandingan indeks · 100"]};
 const tx=(en,id)=>window.SLIi18n?.language==="id"?id:en;
-const localized=(o,key)=>window.SLIi18n?.language==="id"&&o["id_"+key]?o["id_"+key]:o[key];
-const el=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e};
-const svg=(tag,attrs,parent,label)=>{const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs||{}))e.setAttribute(k,String(v));if(label){const t=document.createElementNS(ns,"title");t.textContent=label;e.appendChild(t);}if(parent)parent.appendChild(e);return e};
-const validLink=x=>typeof x==="string"&&/^https:\/\/[^\s]+$/i.test(x)?x:null;
-const fetchJSON=async url=>{const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);return r.json()};
-const monthOf=date=>String(date||"").slice(0,7);
-const formatNum=(n,d=1)=>Number(n).toLocaleString(window.SLIi18n?.language==="id"?"id-ID":"en-US",{maximumFractionDigits:d,minimumFractionDigits:d});
-const mean=arr=>arr.length?arr.reduce((a,b)=>a+b,0)/arr.length:null;
+const local=(o,k)=>window.SLIi18n?.language==="id"&&o["id_"+k]?o["id_"+k]:o[k];
+const text=(v)=>String(v===undefined||v===null?"":v);
+const el=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=text(value);return e};
+const svg=(tag,attrs={},parent,tooltip)=>{const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,text(v));if(tooltip){const t=document.createElementNS(ns,"title");t.textContent=tooltip;e.appendChild(t)}if(parent)parent.appendChild(e);return e};
+const fmt=(n,d=1)=>Number(n).toLocaleString(window.SLIi18n?.language==="id"?"id-ID":"en-US",{maximumFractionDigits:d,minimumFractionDigits:d});
+const parse=async url=>{const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status+" "+url);return r.json()};
+const validUrl=s=>typeof s==="string"&&/^https:\/\/[^\s]+$/i.test(s);
+const link=(url,label)=>{const a=el("a",null,label);a.href=validUrl(url)?url:"https://www.worldbank.org/en/research/commodity-markets";a.rel="noopener noreferrer";a.target="_blank";return a};
+const month=d=>text(d).slice(0,7);
+const num=v=>v!==null&&v!==undefined&&v!==""&&Number.isFinite(Number(v))&&Number(v)>0?Number(v):null;
+const average=vals=>vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;
+const pct=(a,b)=>Number.isFinite(a)&&Number.isFinite(b)&&b>0?(a/b-1)*100:null;
+const absMonth=m=>Number(m.slice(0,4))*12+Number(m.slice(5,7))-1;
+function seriesFrom(rows,key,year){
+ return (rows||[]).filter(r=>r&&/^\d{4}-\d\d$/.test(r.month)&&r.month.slice(0,4)>=String(year)&&num(r[key])!==null)
+ .map(r=>({month:r.month,value:num(r[key])})).sort((a,b)=>a.month.localeCompare(b.month));
+}
 function pearson(xs,ys){
- const n=xs.length;if(n<3)return null;
- const ax=mean(xs),ay=mean(ys);let xx=0,yy=0,xy=0;
- for(let i=0;i<n;i++){const a=xs[i]-ax,b=ys[i]-ay;xx+=a*a;yy+=b*b;xy+=a*b}
- return xx>0&&yy>0?xy/Math.sqrt(xx*yy):null;
+ if(xs.length<3||xs.length!==ys.length)return null;
+ const mx=average(xs),my=average(ys);let cov=0,vx=0,vy=0;
+ for(let i=0;i<xs.length;i++){const a=xs[i]-mx,b=ys[i]-my;cov+=a*b;vx+=a*a;vy+=b*b}
+ return vx>0&&vy>0?cov/Math.sqrt(vx*vy):null;
 }
-function pct(a,b){return Number.isFinite(a)&&Number.isFinite(b)&&b>0?(a/b-1)*100:null}
-function safeSeries(observations,key,year){
- return (observations||[]).filter(o=>/^\d{4}-\d{2}$/.test(o.month)&&o.month.slice(0,4)>=String(year)&&Number.isFinite(Number(o[key]))&&Number(o[key])>0)
-  .map(o=>({month:o.month,value:Number(o[key])})).sort((a,b)=>a.month.localeCompare(b.month));
+function returns(points){
+ let result=[];for(let i=1;i<points.length;i++){
+  if(absMonth(points[i].month)-absMonth(points[i-1].month)!==1)continue;
+  const change=pct(points[i].value,points[i-1].value);
+  if(change!==null)result.push({month:points[i].month,change});
+ }return result;
 }
-function panelLink(url,title){const a=el("a",null,title);a.href=validLink(url)||"https://www.worldbank.org/en/research/commodity-markets";a.target="_blank";a.rel="noopener noreferrer";return a}
-function createPriceGraph(points,selectedEvents,key,recentReports=[]){
- const view=svg("svg",{viewBox:"0 0 940 335",role:"img","aria-label":tx("Monthly commodity price series with dated geopolitical event markers","Harga komoditas bulanan dengan penanda peristiwa geopolitik")});
- if(!points.length)return view;
- const W=940,H=335,L=75,R=25,T=30,B=48;
- const lo=Math.min(...points.map(x=>x.value)),hi=Math.max(...points.map(x=>x.value));
- const yrange=Math.max(1,hi-lo),months=new Map(points.map((p,i)=>[p.month,i]));
- const x=i=>L+i/Math.max(1,points.length-1)*(W-L-R);
- const y=v=>T+(hi-v)/yrange*(H-T-B);
- for(let i=0;i<=4;i++){
-  const val=lo+i*yrange/4,py=y(val);
-  svg("line",{x1:L,y1:py,x2:W-R,y2:py,stroke:colors.grid},view);
-  const t=svg("text",{x:L-10,y:py+4,fill:colors.text,"font-size":12,"text-anchor":"end"},view);t.textContent=formatNum(val,0);
- }
- for(let i=0;i<points.length;i++){
-  if(!points[i].month.endsWith("-01"))continue;
-  const year=Number(points[i].month.slice(0,4));
-  if(year%((points.length>250)?5:2)!==0)continue;
-  const t=svg("text",{x:x(i),y:H-16,fill:colors.text,"font-size":12,"text-anchor":"middle"},view);t.textContent=year;
- }
- const path=points.map((v,i)=>(i?"L":"M")+x(i).toFixed(1)+","+y(v.value).toFixed(1)).join(" ");
- svg("path",{d:path,fill:"none",stroke:colors.line,"stroke-width":2.5,"stroke-linejoin":"round"},view);
- for(const ev of selectedEvents){
-  const idx=months.get(monthOf(ev.date));if(idx===undefined)continue;
-  const xx=x(idx),py=y(points[idx].value);
-  svg("line",{x1:xx,y1:T,x2:xx,y2:H-B,stroke:colors.event,"stroke-opacity":".23","stroke-dasharray":"3 4"},view);
-  const c=svg("circle",{cx:xx,cy:py,r:5.5,fill:colors.event,stroke:"#192b40","stroke-width":1.5,tabindex:0,role:"img","aria-label":localized(ev,"title")+" · "+ev.date},view);
-  svg("title",{},c,localized(ev,"title")+" · "+ev.date+" · "+formatNum(points[idx].value,2)+" "+(key==="brent"?"USD/bbl":"USD"));
- }
- // Publisher-dated recent escalation reports are rendered as hollow mint rings,
- // never used as verified historical milestones or counted in Pearson r.
- const reportedMonths=new Map();
- for(const report of recentReports){
-  const month=monthOf(report.published_at_utc);
-  if(months.has(month)&&!reportedMonths.has(month))reportedMonths.set(month,report);
- }
- for(const [month,report] of reportedMonths){
-  const idx=months.get(month),cx=x(idx),cy=y(points[idx].value);
-  svg("circle",{cx,cy,r:10,fill:"none",stroke:"#8fe3c6","stroke-width":2.4,"stroke-dasharray":"3 2"},view,
-   tx("Publisher-reported escalation","Eskalasi dilaporkan penerbit")+": "+report.publisher+" · "+month+" · "+report.title);
- }
- return view;
+function eventStats(points,events){
+ const eventMonths=new Set(events.map(e=>month(e.date)));
+ const monthly=returns(points),re=monthly.filter(o=>eventMonths.has(o.month)).map(o=>o.change),other=monthly.filter(o=>!eventMonths.has(o.month)).map(o=>o.change);
+ return {monthly,events:re.length,other:other.length,meanEvent:average(re),meanOther:average(other),r:re.length>=3&&other.length>=3?pearson(monthly.map(o=>eventMonths.has(o.month)?1:0),monthly.map(o=>o.change)):null};
 }
-function createCorrelationScatter(returns,eventMonths){
- const plot=svg("svg",{viewBox:"0 0 400 234",role:"img","aria-label":tx("Scatter of monthly commodity price changes versus event-month indicator","Sebaran perubahan harga bulanan dibanding indikator bulan peristiwa")});
- const L=43,R=20,T=13,B=37,H=234,W=400;
- const mag=Math.max(7,Math.min(100,Math.ceil(Math.max(...returns.map(x=>Math.abs(x.change)),7)/5)*5));
- const y=v=>T+(mag-v)/(2*mag)*(H-T-B);
- for(const v of [-mag,0,mag]){
-  svg("line",{x1:L,y1:y(v),x2:W-R,y2:y(v),stroke:colors.grid},plot);
-  const t=svg("text",{x:L-6,y:y(v)+4,fill:colors.text,"font-size":11,"text-anchor":"end"},plot);t.textContent=v+"%";
- }
- for(const [xx,label] of [[130,tx("Other months","Bulan lain")],[300,tx("Event month","Bulan peristiwa")]]){
-  const t=svg("text",{x:xx,y:H-9,fill:colors.text,"font-size":12,"text-anchor":"middle"},plot);t.textContent=label;
- }
- returns.forEach((r,i)=>{
-  const match=eventMonths.has(r.month);
-  const drift=(((i*41)%29)-14)*2.2;
-  const xx=(match?300:130)+drift;
-  const yy=y(Math.max(-mag,Math.min(mag,r.change)));
-  svg("circle",{cx:xx,cy:yy,r:match?4.3:2.3,fill:match?colors.event:colors.scatter,opacity:match?.95:.5},plot,
-   r.month+": "+formatNum(r.change,2)+"%");
- });
- return plot;
-}
-const categoryNames={all:["All events","Semua peristiwa"],conflict:["Conflict","Konflik"],macro:["Macro shocks","Guncangan ekonomi"],trade:["Trade tensions","Ketegangan dagang"],shipping:["Maritime routes","Jalur maritim"],health:["Health crisis","Krisis kesehatan"]};
-function eventRows(events,points){
- const map=new Map(points.map(p=>[p.month,p]));
- const box=el("div","sli-geo-timeline-events");
- const prior=new Map(points.map((p,i)=>[p.month,i>0?points[i-1]:null]));
- for(const ev of [...events].reverse()){
-  const row=el("article","sli-geo-timeline-event");
-  const date=el("time","sli-geo-timeline-date",ev.date);date.dateTime=ev.date;
-  const content=el("div");
-  const name=panelLink(ev.source_url,localized(ev,"title")+" ↗");name.className="sli-geo-timeline-title";
-  content.append(name,el("p",null,localized(ev,"mechanism")));
-  const price=map.get(monthOf(ev.date)),before=prior.get(monthOf(ev.date));
-  if(price&&before){
-   const change=pct(price.value,before.value);
-   content.append(el("small","sli-geo-timeline-move",tx("Event-month price: ","Harga bulan peristiwa: ")+formatNum(price.value,2)+
-    (change===null?"":(" · "+(change>=0?"+":"")+formatNum(change,1)+"% "+tx("MoM","bulanan")))));
-  }else content.append(el("small","sli-geo-timeline-move",ev.publisher+" · "+tx("Historical record","Catatan historis")));
-  row.append(date,content);box.append(row);
- }
- return box;
-}
-function latestSignals(news){
- const entries=(news?.articles||[]),maxAge=45*86400000,now=Date.now();
+function latestSignals(index){
+ const now=Date.now(),maxAge=45*86400000;
  const eventRe=/\b(attack|attacks|strikes|missile|war|conflict|blockade|closed|closure|escalat\w*|vessel|shipping|sanction|retaliat\w*|tariff|tanker|serangan|perang|konflik|blokade|penutupan|rudal|kapal|sanksi|eskalasi)\b/i;
- const geoRe=/\b(iran|israel|hormuz|russia|russian|ukraine|red sea|gulf|yemen|houthi|taiwan|china|united states|middle east|laut merah|selat|teluk|tiongkok|amerika)\b/i;
- return entries.filter(x=>x?.evidence_level==="publisher_attributed_news_report"&&
- x.date_type==="publisher_publication_date"&&validLink(x.url)&&
- eventRe.test(x.title||"")&&geoRe.test(x.title||"")&&
- Number.isFinite(Date.parse(x.published_at_utc))&&now-Date.parse(x.published_at_utc)>=0&&now-Date.parse(x.published_at_utc)<=maxAge)
+ const location=/\b(iran|israel|hormuz|russia|russian|ukraine|red sea|gulf|yemen|houthi|taiwan|china|united states|middle east|laut merah|selat|teluk|tiongkok|amerika)\b/i;
+ return (index?.articles||[]).filter(x=>x?.evidence_level==="publisher_attributed_news_report"&&x.date_type==="publisher_publication_date"&&validUrl(x.url)&&
+  eventRe.test(x.title||"")&&location.test(x.title||"")&&Number.isFinite(Date.parse(x.published_at_utc))&&
+  now-Date.parse(x.published_at_utc)>=0&&now-Date.parse(x.published_at_utc)<=maxAge)
  .sort((a,b)=>b.published_at_utc.localeCompare(a.published_at_utc)).slice(0,7);
 }
+function graphLines(series,events,signals,year,lastMonth,isIndex){
+ const root=svg("svg",{viewBox:"0 0 1040 350",role:"img","aria-label":tx("Geopolitical milestones over monthly commodity prices","Peristiwa geopolitik dan harga komoditas bulanan")});
+ const W=1040,H=350,L=78,R=26,T=38,B=49;
+ const origin=year*12,finish=absMonth(lastMonth),span=Math.max(1,finish-origin);
+ const xx=m=>L+(absMonth(m)-origin)/span*(W-L-R);
+ const all=series.flatMap(s=>s.points.map(p=>p.value));if(!all.length)return root;
+ const smallest=Math.min(...all),largest=Math.max(...all),pad=Math.max((largest-smallest)*0.08,0.0001);
+ const lower=Math.min(0,smallest-pad),upper=largest+pad,dy=upper-lower||1;
+ const yy=value=>T+(upper-value)/dy*(H-T-B);
+ for(let i=0;i<=4;i++){
+  const value=lower+dy*i/4,py=yy(value);
+  svg("line",{x1:L,x2:W-R,y1:py,y2:py,stroke:"#36516b","stroke-width":1},root);
+  const t=svg("text",{x:L-9,y:py+4,fill:"#bed0e0","font-size":12,"text-anchor":"end"},root);t.textContent=fmt(value,isIndex?0:2);
+ }
+ const interval=span>600?10:span>320?5:span>160?3:2;
+ for(let yr=year;yr<=Math.floor(finish/12);yr++){
+  if(yr%interval)continue;const x=L+(yr*12-origin)/span*(W-L-R);
+  const t=svg("text",{x,y:H-19,fill:"#c2d5e4","font-size":13,"text-anchor":"middle"},root);t.textContent=yr;
+ }
+ for(const e of events){
+  const m=month(e.date);if(absMonth(m)<origin||absMonth(m)>finish)continue;
+  const x=xx(m);
+  svg("line",{x1:x,x2:x,y1:T,y2:H-B,stroke:"#f1c56e","stroke-opacity":".26","stroke-dasharray":"3 5"},root,
+    e.date+" · "+local(e,"title"));
+  svg("circle",{cx:x,cy:T,r:4,fill:"#f1c56e"},root,local(e,"title")+" · "+e.date);
+ }
+ for(const report of signals){
+  const m=month(report.published_at_utc);if(absMonth(m)<origin||absMonth(m)>finish)continue;
+  svg("circle",{cx:xx(m),cy:T+13,r:6,stroke:"#8ae8c1",fill:"none","stroke-width":2},root,
+    tx("Attributed report: ","Berita teratribusi: ")+report.title+" · "+report.publisher);
+ }
+ series.forEach((s,i)=>{
+  const parts=[];let prev=null;
+  for(const p of s.points){
+   const xpos=xx(p.month).toFixed(2),ypos=yy(p.value).toFixed(2);
+   parts.push((prev!==null&&absMonth(p.month)-absMonth(prev)===1?"L":"M")+xpos+","+ypos);prev=p.month;
+  }
+  if(parts.length)svg("path",{d:parts.join(" "),stroke:PALETTE[i%PALETTE.length],"stroke-width":2.4,fill:"none","stroke-linejoin":"round"},root,
+    tx(...ITEMS[s.key])+" · "+(s.points[0]?.month||"")+"–"+(s.points.at(-1)?.month||""));
+  for(let j=0;j<s.points.length;j++){
+   const p=s.points[j];if(j%12!==0&&!events.some(e=>month(e.date)===p.month))continue;
+   svg("circle",{cx:xx(p.month),cy:yy(p.value),r:3,fill:PALETTE[i%PALETTE.length],opacity:.85},root,
+    tx(...ITEMS[s.key])+" · "+p.month+" · "+fmt(p.value,2)+(isIndex?" (index)":""));
+  }
+ });
+ return root;
+}
+function scatter(points,events){
+ const chart=svg("svg",{viewBox:"0 0 400 218",role:"img","aria-label":tx("Event month versus monthly returns scatter","Scatter bulan kejadian versus perubahan harga")});
+ const monthly=returns(points),ev=new Set(events.map(e=>month(e.date)));
+ if(!monthly.length)return chart;
+ const absMax=Math.max(8,Math.min(100,Math.ceil(Math.max(...monthly.map(p=>Math.abs(p.change)))/5)*5));
+ const py=p=>14+(absMax-Math.max(-absMax,Math.min(absMax,p)))/(2*absMax)*164;
+ for(const value of [-absMax,0,absMax]){
+  svg("line",{x1:40,x2:391,y1:py(value),y2:py(value),stroke:"#35546a"},chart);
+  const label=svg("text",{x:37,y:py(value)+3,"text-anchor":"end",fill:"#b9cddb","font-size":11},chart);label.textContent=value+"%";
+ }
+ monthly.forEach((p,i)=>{
+  const event=ev.has(p.month);
+  svg("circle",{cx:(event?290:112)+((i*31)%35-17),cy:py(p.change),r:event?4:2.2,fill:event?"#f1c56e":"#58869e",opacity:event?.9:.48},chart,p.month+" · "+fmt(p.change,2)+"%");
+ });
+ for(const [x,t] of [[112,tx("Other months","Bulan lain")],[290,tx("Event months","Bulan kejadian")]]){
+  const label=svg("text",{x,y:208,"text-anchor":"middle",fill:"#c7d9e7","font-size":12},chart);label.textContent=t;
+ }
+ return chart;
+}
+function eventRows(events,points){
+ const container=el("div","sli-geo-timeline-events"),map=new Map(points.map((p,i)=>[p.month,{p,prior:i>0?points[i-1]:null}]));
+ for(const e of [...events].reverse()){
+  const article=el("article","sli-geo-timeline-event"),date=el("time","sli-geo-timeline-date",e.date),body=el("div");
+  date.dateTime=e.date;const a=link(e.source_url,local(e,"title")+" ↗");a.className="sli-geo-timeline-title";
+  body.append(a,el("p",null,local(e,"mechanism")));
+  const match=map.get(month(e.date));
+  if(match?.prior&&absMonth(match.p.month)-absMonth(match.prior.month)===1){
+   const delta=pct(match.p.value,match.prior.value);
+   if(delta!==null)body.append(el("small","sli-geo-timeline-move",tx("Selected benchmark in event month: ","Acuan harga bulan kejadian: ")+fmt(match.p.value,2)+" ("+(delta>=0?"+":"")+fmt(delta,1)+"% MoM)"));
+  }else body.append(el("small","sli-geo-timeline-move",e.publisher+" · "+tx("No matching price observation","Tidak ada observasi harga terkait")));
+  article.append(date,body);container.append(article);
+ }
+ return container;
+}
+function select(label,choices,initial,parent){
+ const lab=el("label",null,label),s=el("select");
+ for(const [v,t] of choices){const opt=el("option",null,t);opt.value=v;s.append(opt)}
+ s.value=initial;lab.append(s);parent.append(lab);return s;
+}
+function initPanels(root,prices,events,signals){
+ const rows=Array.isArray(prices?.observations)?prices.observations:[];
+ const coverage=prices?.series_coverage||{},available=Object.keys(ITEMS).filter(k=>coverage[k]?.count>3);
+ root.replaceChildren();
+ const wrapper=el("section","geo-intel-section sli-geo-timeline");wrapper.id="geo-commodity-timeline";
+ wrapper.append(el("h2",null,tx("03 · Geopolitical events & commodity-price atlas · 1950–present","03 · Atlas peristiwa geopolitik & harga komoditas · 1950–sekarang")),
+ el("p","geo-intel-muted",tx("Milestones begin in 1950. World Bank nominal monthly prices begin in 1960, with later start dates for several benchmarks. Missing years stay blank; do not interpret every reported headline as an independently established event.",
+ "Kronologi dimulai 1950. Harga bulanan nominal World Bank tersedia sejak 1960, sedangkan beberapa acuan baru tersedia setelahnya. Tahun tanpa data tetap kosong; berita monitoring tidak otomatis menjadi bukti kejadian independen.")));
+ const controls=el("div","sli-geo-timeline-controls");
+ const year=select(tx("From year","Mulai tahun"),[1950,1960,1970,1980,1990,2000,2010,2020].map(y=>[String(y),String(y)]),"1950",controls);
+ const kind=select(tx("Historical event filter","Filter kejadian historis"),Object.entries(categoryNames).map(([k,v])=>[k,tx(...v)]),"all",controls);
+ wrapper.append(controls);
+ const overview=el("div","sli-geo-timeline-meta");
+ overview.textContent=(prices?.source||"World Bank Pink Sheet")+" · "+tx("Monthly data through ","Data bulanan hingga ")+(prices?.latest_month||"—")+" · "+
+  tx("History since ","Kronologi sejak ")+events[0]?.date.slice(0,4)+" · "+tx("Series available: ","Seri tersedia: ")+available.length;
+ wrapper.append(overview);
+ if(!rows.length)wrapper.append(el("p","sli-geo-timeline-status",tx("Verified price synchronization is pending; event chronology remains available.","Sinkronisasi harga terverifikasi belum tersedia; kronologi tetap dapat diakses.")));
+ const contexts=[];
+ for(const group of ["energy","minerals","cross"]){
+  const section=el("section","sli-geo-timeline-panel");
+  section.append(el("h3",null,tx(...groupLabels[group])));
+  const note=el("p","sli-geo-timeline-meta",group==="cross"?
+    tx("One indexed chart across sectors, common first overlapping observation = 100.","Satu grafik indeks antar-sektor, observasi pertama yang tumpang tindih = 100."):
+    tx("Select up to five benchmarks; absolute comparison requires the same unit.","Pilih maksimal lima komoditas; perbandingan nominal membutuhkan satuan yang sama."));
+  section.append(note);
+  const action=el("div","sli-geo-timeline-panel-controls");
+  const modes=group==="cross"?[["indexed",tx(...modeNames.indexed)]]:Object.entries(modeNames).map(([k,v])=>[k,tx(...v)]);
+  const mode=select(tx("Display mode","Mode grafik"),modes,group==="cross"?"indexed":"indexed",action);
+  const pick=el("div","sli-geo-timeline-picks");
+  const keys=group==="cross"?available:available.filter(k=>ITEMS[k][2]===group);
+  const selected=new Set(DEFAULTS[group].filter(k=>keys.includes(k)));if(!selected.size&&keys.length)selected.add(keys[0]);
+  const status=el("p","sli-geo-timeline-meta");
+  const chart=el("div","sli-geo-timeline-plot"),legend=el("div","sli-geo-timeline-legend"),reports=el("div","sli-geo-timeline-grid");
+  const boxes=new Map();
+  for(const k of keys){
+   const option=el("label","sli-geo-timeline-option"),check=el("input");check.type="checkbox";check.checked=selected.has(k);
+   option.append(check,el("span",null,tx(ITEMS[k][0],ITEMS[k][1])));
+   check.addEventListener("change",()=>{
+    if(check.checked&&selected.size>=5){check.checked=false;status.textContent=tx("Maximum five lines per chart.","Maksimal lima garis dalam satu grafik.");return}
+    if(check.checked)selected.add(k);else selected.delete(k);
+    if(!selected.size){check.checked=true;selected.add(k);return}draw();
+   });
+   boxes.set(k,check);pick.append(option);
+  }
+  section.append(action,pick,status,chart,legend,reports);
+  wrapper.append(section);
+  function draw(){
+   status.textContent="";
+   chart.replaceChildren();legend.replaceChildren();reports.replaceChildren();
+   if(!rows.length||!selected.size){chart.append(el("p","sli-geo-timeline-status",tx("No verified series available.","Belum ada seri data yang terverifikasi.")));return}
+   const start=Number(year.value),chosenEvents=events.filter(e=>e.date>=year.value+"-01-01"&&(kind.value==="all"||e.category===kind.value));
+   const keys=[...selected].filter(k=>available.includes(k)).slice(0,5);
+   let active=mode.value==="single"?keys.slice(0,1):keys;
+   let drawMode=mode.value;
+   if(drawMode==="compare"&&new Set(active.map(k=>coverage[k].unit)).size>1){
+    drawMode="indexed";mode.value="indexed";
+    status.textContent=tx("Different physical units detected; switched to indexed comparison with a common baseline.",
+     "Satuan fisik berbeda; otomatis diganti ke perbandingan indeks dengan basis bersama.");
+   }
+   const raw=active.map(key=>({key,points:seriesFrom(rows,key,start)})).filter(s=>s.points.length);
+   if(!raw.length){chart.append(el("p","sli-geo-timeline-status",tx("No published monthly price observations for the selected years.","Belum ada harga bulanan terbit untuk periode yang dipilih.")));return}
+   let common=null;
+   if(drawMode==="indexed"){
+    const m=new Map();
+    for(const s of raw)for(const p of s.points)m.set(p.month,(m.get(p.month)||0)+1);
+    common=[...m].filter(([key,n])=>n===raw.length).map(([key])=>key).sort()[0]||null;
+    if(!common){chart.append(el("p","sli-geo-timeline-status",tx("No overlapping monthly observation for selected commodities.","Tidak ada observasi bulanan yang beririsan untuk komoditas terpilih.")));return}
+   }
+   const series=raw.map(s=>{
+    if(drawMode!=="indexed")return s;
+    const base=s.points.find(p=>p.month===common)?.value;
+    return {key:s.key,points:s.points.filter(p=>p.month>=common).map(p=>({month:p.month,value:p.value/base*100}))};
+   }).filter(s=>s.points.length);
+   const last=prices.latest_month||rows.at(-1).month;
+   chart.append(graphLines(series,chosenEvents,signals,start,last,drawMode==="indexed"));
+   chart.append(el("p","sli-geo-timeline-meta",drawMode==="indexed"?
+    tx("Index base = 100 at the first common observed month: ","Basis indeks = 100 pada bulan pertama yang sama: ")+common+
+     tx(". Pre-baseline values are deliberately not plotted.",". Data sebelum basis sengaja tidak diplot."):
+    tx("Nominal price units: ","Satuan harga nominal: ")+coverage[series[0].key].unit));
+   series.forEach((s,i)=>{
+    const item=el("span","sli-geo-timeline-legend-item");
+    const swatch=el("i","sli-geo-timeline-swatch");swatch.style.background=PALETTE[i%PALETTE.length];
+    const cov=coverage[s.key];item.append(swatch,el("span",null,tx(ITEMS[s.key][0],ITEMS[s.key][1])+" · "+cov.first+"–"+cov.last));
+    legend.append(item);
+   });
+   const focus=raw.find(s=>s.key===series[0].key);
+   const stats=eventStats(focus.points,chosenEvents);
+   const valid=raw.map(s=>({key:s.key,stats:eventStats(s.points,chosenEvents)}));
+   const info=el("article","sli-geo-timeline-interpretation");
+   const first=valid[0];
+   info.append(el("h4",null,tx("SLI analytical note","Catatan analisis SLI")));
+   const message=first.stats.r===null?
+    tx("The selected event sample has too few overlapping monthly observations to estimate a meaningful Pearson coefficient.",
+       "Sampel peristiwa terpilih belum memiliki cukup observasi bulanan yang beririsan untuk menghitung koefisien Pearson yang bermakna."):
+    tx(ITEMS[first.key][0],ITEMS[first.key][1])+
+     tx(" shows a descriptive event-month Pearson r of "," memiliki korelasi deskriptif Pearson r bulan kejadian sebesar ")+
+     fmt(first.stats.r,2)+tx(" across "," dari ")+first.stats.monthly.length+
+     tx(" observed monthly returns."," perubahan harga bulanan teramati.");
+   info.append(el("p",null,message));
+   let second=valid.slice(1).find(x=>x.stats.r!==null);
+   info.append(el("p","sli-geo-timeline-caution",second?
+    tx("For comparison, ","Sebagai pembanding, ")+tx(ITEMS[second.key][0],ITEMS[second.key][1])+
+      " r = "+fmt(second.stats.r,2)+". "+tx("These associations are not causal estimates: demand, policy, inventory and timing also affect prices.",
+      "Asosiasi ini bukan perkiraan sebab-akibat: permintaan, kebijakan, persediaan, dan waktu turut memengaruhi harga."):
+    tx("Event dates are matched only to their calendar month, without pretending to measure intraday effects or causal direction.",
+      "Tanggal peristiwa dicocokkan pada bulan kalender, tanpa mengklaim mengukur dampak harian maupun arah kausalitas.")));
+   const sc=el("article","sli-geo-timeline-scatter");
+   sc.append(el("h4",null,tx("Monthly return vs event indicator · ","Perubahan bulanan vs indikator kejadian · ")+tx(ITEMS[focus.key][0],ITEMS[focus.key][1])),scatter(focus.points,chosenEvents));
+   reports.append(info,sc);
+  }
+  mode.addEventListener("change",draw);
+  contexts.push(draw);
+ }
+ const note=el("p","sli-geo-timeline-footer");
+ note.append(tx("Benchmark dates differ. The 1950s contain geopolitical events, not World Bank monthly price observations. No interpolation, zero-filling, implicit currency conversion or causal inference. ",
+ "Tanggal awal setiap acuan berbeda. Periode 1950-an memuat peristiwa geopolitik, bukan observasi harga bulanan World Bank. Tidak dilakukan interpolasi, pengisian nol, konversi mata uang diam-diam, ataupun klaim kausal. "),
+ link(prices?.source_url,tx("World Bank Pink Sheet ↗","World Bank Pink Sheet ↗")));
+ wrapper.append(note);
+ const history=el("section","sli-geo-timeline-panel");history.append(el("h3",null,tx("Source-linked historical milestones · 1950–present","Kronologi historis dengan sumber · 1950–sekarang")));
+ const list=el("div");history.append(list);wrapper.append(history);
+ const news=el("section","sli-geo-timeline-monitoring");
+ news.append(el("h3",null,tx("Latest escalation watch · secondary reports","Pemantauan eskalasi terbaru · berita sekunder")),
+ el("p","sli-geo-timeline-meta",tx("Updated through SLI's hourly news index. Reported headlines are visually distinct and excluded from statistical event indicators until reviewed.",
+ "Diperbarui melalui indeks berita SLI setiap jam. Headline yang dilaporkan diberi penanda berbeda dan dikecualikan dari indikator statistik hingga ditinjau.")));
+ for(const report of signals){const item=el("article","sli-geo-timeline-signal");
+ item.append(link(report.url,report.title+" ↗"),el("small",null,report.publisher+" · "+report.published_at_utc.slice(0,10)));news.append(item)}
+ if(!signals.length)news.append(el("p","sli-geo-timeline-status",tx("No qualifying recent escalations in this feed.","Tidak ada eskalasi terbaru yang cocok pada feed ini.")));
+ wrapper.append(news);root.append(wrapper);
+ function refresh(){
+  for(const render of contexts)render();
+  const selected=events.filter(e=>e.date>=year.value+"-01-01"&&(kind.value==="all"||e.category===kind.value));
+  list.replaceChildren(eventRows(selected,seriesFrom(rows,"brent",Number(year.value))));
+ }
+ year.addEventListener("change",refresh);kind.addEventListener("change",refresh);
+ refresh();
+}
 async function init(){
- const root=document.getElementById("sliGeoTimelineRoot");if(!root)return;
- root.replaceChildren(el("p","sli-geo-timeline-status",tx("Loading geopolitical chronology and source-linked market observations…","Memuat kronologi geopolitik dan harga pasar berbasis sumber…")));
- const fetched=await Promise.allSettled([fetchJSON(ENDPOINTS.events),fetchJSON(ENDPOINTS.prices),fetchJSON(ENDPOINTS.news)]);
+ const root=document.getElementById(ROOT);if(!root)return;
+ root.replaceChildren(el("p","sli-geo-timeline-status",tx("Loading verified benchmarks…","Memuat acuan harga terverifikasi…")));
+ const fetched=await Promise.allSettled([parse(URLS.events),parse(URLS.prices),parse(URLS.news)]);
  if(!root.isConnected)return;
  const events=fetched[0].status==="fulfilled"?(fetched[0].value.events||[]):[];
- const priceData=fetched[1].status==="fulfilled"?fetched[1].value:null;
- const monitoring=fetched[2].status==="fulfilled"?fetched[2].value:null;
- root.replaceChildren();
- const sec=el("section","geo-intel-section sli-geo-timeline");
- sec.id="geo-commodity-timeline";
- sec.append(el("h2",null,tx("03 · Geopolitical timeline and commodity-price relationships · 1990–present","03 · Timeline geopolitik dan hubungan harga komoditas · 1990–sekarang")),
- el("p","geo-intel-muted",tx("Source-linked historical milestones (1990 onward) are overlaid on World Bank monthly commodity benchmarks. Escalation headlines below refresh from SLI's secondary-news index, but are not added to confirmed events or correlation calculations without review.",
- "Peristiwa historis teratribusi sumber (sejak 1990) ditampilkan bersama harga komoditas bulanan World Bank. Berita eskalasi di bawah diperbarui dari indeks berita sekunder SLI, tetapi tidak otomatis dianggap kejadian terverifikasi ataupun dihitung dalam korelasi.")));
- if(!events.length){
-  sec.append(el("p","sli-geo-timeline-status",tx("The historical event register is unavailable.","Registri peristiwa historis belum tersedia.")));root.append(sec);return;
- }
- const controls=el("div","sli-geo-timeline-controls");
- function selectItem(label,options,value){const group=el("label",null,label),sel=el("select");for(const [key,name] of options){const op=el("option",null,name);op.value=key;sel.append(op)}sel.value=value;group.append(sel);controls.append(group);return sel}
- const commodity=selectItem(tx("Commodity","Komoditas"),Object.keys(catalog).map(k=>[k,tx(...catalog[k])]),"brent");
- const since=selectItem(tx("From year","Mulai tahun"),[["1990","1990"],["2000","2000"],["2015","2015"],["2020","2020"]],"1990");
- const kind=selectItem(tx("Event type","Jenis kejadian"),Object.entries(categoryNames).map(([k,v])=>[k,tx(...v)]),"all");
- sec.append(controls);
- const meta=el("p","sli-geo-timeline-meta"),plot=el("div","sli-geo-timeline-plot"),summary=el("div","sli-geo-timeline-grid"),eventHeading=el("h3",null,tx("Historical milestones · click source to inspect","Peristiwa historis · klik sumber untuk memeriksa")),rows=el("div");
- sec.append(meta,plot,summary,eventHeading,rows);
- const obs=Array.isArray(priceData?.observations)?priceData.observations:[];
- const signals=latestSignals(monitoring);
- function update(){
-  const year=Number(since.value),selected=events.filter(x=>x.date>=year+"-01-01"&&(kind.value==="all"||x.category===kind.value));
-  const points=safeSeries(obs,commodity.value,year);
-  meta.textContent=tx("Source: ","Sumber: ")+(priceData?.source||"World Bank Pink Sheet")+" · "+
-   (obs.length?tx("Available through ","Tersedia hingga ")+priceData.latest_month:tx("Price source refresh pending","Pembaruan sumber harga belum selesai"))+
-   " · "+tx("Selected milestones: ","Peristiwa terpilih: ")+selected.length;
-  plot.replaceChildren();summary.replaceChildren();rows.replaceChildren();
-  if(points.length<24){
-   plot.append(el("p","sli-geo-timeline-status",tx("Historical event list is available. Verified monthly prices are awaiting the first World Bank sync; no values have been estimated.","Daftar peristiwa tersedia. Harga bulanan terverifikasi menunggu sinkronisasi pertama World Bank; tidak ada angka yang direkayasa.")));
-   rows.append(eventRows(selected,[]));return;
-  }
-  const priceGraph=createPriceGraph(points,selected,commodity.value,signals);
-  const frame=el("div","sli-geo-timeline-graph");frame.append(priceGraph);plot.append(frame);
- plot.append(el("p","sli-geo-timeline-meta",tx("Gold = curated, source-attributed event; mint ring = recent reported escalation (not independently confirmed, excluded from correlation).",
- "Emas = peristiwa historis teratribusi; lingkar hijau = eskalasi terbaru yang dilaporkan (belum dikonfirmasi independen, tidak masuk korelasi).")));
- const unpriced=signals.filter(report=>monthOf(report.published_at_utc)>points[points.length-1].month);
- if(unpriced.length)plot.append(el("p","sli-geo-timeline-meta",tx("Additional reports published after the latest priced month are listed below without an invented price observation.",
- "Laporan setelah bulan harga terbaru ditampilkan di daftar bawah tanpa membuat angka harga perkiraan.")));
-  const eventSet=new Set(selected.map(x=>monthOf(x.date)));
-  const monthly=points.slice(1).map((o,i)=>({...o,change:pct(o.value,points[i].value)})).filter(o=>o.change!==null&&Number.isFinite(o.change));
-  const x=monthly.map(o=>eventSet.has(o.month)?1:0),y=monthly.map(o=>o.change);
-  const mEvent=monthly.filter(o=>eventSet.has(o.month)).map(o=>o.change),mOther=monthly.filter(o=>!eventSet.has(o.month)).map(o=>o.change);
-  const corr=mEvent.length>=3&&mOther.length>=3?pearson(x,y):null;
-  const analysis=el("article","sli-geo-timeline-interpretation");
-  analysis.append(el("h4",null,tx("SLI interpretation · one-month event study","Interpretasi SLI · studi bulan kejadian")),
-    el("p",null,corr===null?
-     tx("The selected events do not provide enough matching monthly observations for a stable descriptive correlation. Interpret source-linked price changes individually.","Peristiwa terpilih belum menghasilkan cukup observasi bulanan untuk korelasi deskriptif yang stabil. Baca perubahan harga satu per satu."):
-     tx("Across ","Dalam ")+monthly.length+tx(" monthly observations, the event-month indicator versus "," observasi bulanan, hubungan indikator bulan kejadian terhadap perubahan ")+
-      tx(...catalog[commodity.value])+tx(" month-on-month returns has Pearson r = "," bulanan memiliki korelasi Pearson r = ")+
-      formatNum(corr,2)+tx("; event months average ","; rata-rata bulan kejadian ")+formatNum(mean(mEvent),2)+"% "+
-      tx("versus ","dibanding ")+formatNum(mean(mOther),2)+"% "+tx("in other months.","pada bulan lainnya.")),
-    el("p","sli-geo-timeline-caution",tx("This is a selected-event association, not proof of causation: demand, inventories, policy, timing and other shocks also move prices. Events are assigned to calendar months, so intramonth and lagged responses can be obscured.",
-     "Ini asosiasi peristiwa terpilih, bukan bukti sebab-akibat: permintaan, persediaan, kebijakan, waktu kejadian, dan guncangan lain juga menggerakkan harga. Resolusi bulanan dapat menyamarkan respons harian atau tertunda.")));
-  const scatter=el("article","sli-geo-timeline-scatter");
-  scatter.append(el("h4",null,tx("Monthly returns vs event indicator","Perubahan harga bulanan vs indikator kejadian")),createCorrelationScatter(monthly,eventSet));
-  summary.append(analysis,scatter);
-  rows.append(eventRows(selected,points));
- }
- for(const ctrl of [commodity,since,kind])ctrl.addEventListener("change",update);
- update();
- const note=el("p","sli-geo-timeline-footer");note.append(tx("The prices are monthly nominal US-dollar benchmarks, not domestic retail prices. ","Harga merupakan acuan bulanan nominal USD, bukan harga eceran domestik. "),
- panelLink(priceData?.source_url||"https://www.worldbank.org/en/research/commodity-markets",tx("World Bank Pink Sheet ↗","World Bank Pink Sheet ↗")));
- sec.append(note);
- const signalSec=el("section","sli-geo-timeline-monitoring");
- signalSec.append(el("h3",null,tx("Latest escalation watch · attributed media signals","Pemantauan eskalasi terkini · sinyal dari media teratribusi")));
- // Reuse already validated recent signals.
- const caption=el("p","sli-geo-timeline-meta",tx("Automatically filtered publisher-dated secondary reports, last 45 days. They are not independently verified events; chronology inclusion requires editorial review.",
- "Berita sekunder bertanggal publikasi yang tersaring otomatis selama 45 hari. Ini bukan peristiwa terverifikasi secara independen; pencantuman ke kronologi membutuhkan peninjauan editorial."));
- signalSec.append(caption);
- if(!signals.length)signalSec.append(el("p","sli-geo-timeline-status",tx("No qualifying escalation headlines in this snapshot.","Tidak ada headline eskalasi yang cocok pada snapshot ini.")));
- for(const n of signals){
-  const item=el("article","sli-geo-timeline-signal");
-  item.append(panelLink(n.url,n.title+" ↗"),el("small",null,n.publisher+" · "+n.published_at_utc.slice(0,10)+" · "+tx("Publisher report","Laporan penerbit")));
-  signalSec.append(item);
- }
- sec.append(signalSec);root.append(sec);
+ const prices=fetched[1].status==="fulfilled"?fetched[1].value:null;
+ const news=fetched[2].status==="fulfilled"?fetched[2].value:null;
+ if(!events.length){root.replaceChildren(el("p","sli-geo-timeline-status",tx("Historical event register is unavailable.","Registri peristiwa historis tidak tersedia.")));return}
+ initPanels(root,prices,events,latestSignals(news));
 }
+window.SLIGeoTimelineCompute={seriesFrom,pearson,eventStats,returns};
 window.initSLIGeopoliticalTimeline=init;
 })();
