@@ -498,6 +498,9 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
  }
  mapSection.append(legend);grid.append(mapSection);
  const side=node("section","map-results"),resultsHead=node("div","map-results-head"),heading=node("h3",null,label("Mapped evidence","Bukti terpetakan")),info=node("p","map-muted"),list=node("div","map-list");
+ const insight=node("section","map-asset-insight");
+ insight.setAttribute("aria-label",label("Selected asset insight and source details","Analisis aset terpilih dan sumber"));
+ insight.setAttribute("aria-live","polite");
  const expand=node("button","map-btn map-expand",label("Expand full list","Bentangkan seluruh daftar"));expand.type="button";
  let expanded=false;
  expand.addEventListener("click",()=>{
@@ -507,7 +510,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   expand.setAttribute("aria-expanded",String(expanded));
  });
  expand.setAttribute("aria-expanded","false");
- resultsHead.append(heading,info,expand);side.append(resultsHead,list);grid.append(side);root.append(grid);
+ resultsHead.append(heading,info,expand);side.append(resultsHead,insight,list);grid.append(side);root.append(grid);
  const outside=node("details","map-footer"),summary=node("summary",null,label("APPENDIX · All terms, abbreviations, units, classification and methodology","LAMPIRAN · Istilah, singkatan, satuan, klasifikasi dan metodologi"));
  const appendix=node("div");
  const guide=data.glossary;
@@ -576,6 +579,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
  const countsText=node("p","map-muted");appendix.append(countsText);
  outside.append(summary,appendix);root.append(outside);
  let currentKind="all",currentProvince=null,currentKepriCluster=null,currentPoint=null,lastQuery="",currentSector="all",currentType="all",currentStage="all",currentLocation="all";
+ let selectedRecordId=null;
  let viewport={x:0,y:0,w:W,h:H},drag=null,dragged=false;
  function setView(v){viewport=v;svg.setAttribute("viewBox",[v.x,v.y,v.w,v.h].join(" "))}
  function zoomAt(factor){const v=viewport,ratio=factor,uw=Math.max(250,Math.min(W*1.1,v.w*ratio)),uh=Math.max(110,Math.min(H*1.1,v.h*ratio));setView({x:v.x+(v.w-uw)/2,y:v.y+(v.h-uh)/2,w:uw,h:uh})}
@@ -629,6 +633,140 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    &&(currentAccuracy==="all"||accuracyOf(r)===currentAccuracy)
    &&(!lastQuery||[r.name,r.operator,r.region,r.province,...provinceAssociations(r),r.sector,r.stage,r.kind].join(" ").toLowerCase().includes(lastQuery));
  });
+
+ function describeMarket(r){
+  const sector=sectorLabel(r.sectorKey),type=assetLabel(r.assetType);
+  if(r.kind==="smelters"){
+   return label(
+    "This facility belongs to the "+type+" value chain. Its announced/rated capacity must not be read as realized production; inspect commissioning, product and actual reported output separately.",
+    "Fasilitas ini merupakan bagian dari rantai nilai "+type+". Kapasitas desain/rencana bukan produksi yang telah terealisasi; periksa commissioning, produk, dan output aktual secara terpisah."
+   );
+  }
+  if(r.kind==="digital"){
+   return label(
+    "Digital infrastructure in "+(r.province||r.region||"Indonesia")+" depends on power availability, connectivity and implementation milestones. AI-ready status alone is not evidence of installed GPUs or operating compute.",
+    "Infrastruktur digital di "+(r.province||r.region||"Indonesia")+" bergantung pada ketersediaan listrik, konektivitas dan tahap pelaksanaan. Status AI-ready bukan bukti GPU atau komputasi AI sudah beroperasi."
+   );
+  }
+  if(r.sectorKey==="Power Generation"){
+   return label("The listed "+type+" capacity is a source-reported rating, not verified annual electricity output. Grid connections, dispatch and offtake require separate evidence.",
+    "Kapasitas "+type+" adalah rating menurut sumber, bukan bukti produksi listrik tahunan. Koneksi jaringan, dispatch dan penyerapan daya memerlukan data terpisah.");
+  }
+  if(r.sectorKey==="Oil & Gas")return label(
+   "This oil-and-gas record concerns "+type+". Project announcements, investment decisions, commissioning and actual flows have different economic meanings and should not be combined.",
+   "Catatan migas ini berkaitan dengan "+type+". Pengumuman proyek, keputusan investasi, commissioning dan aliran produksi aktual merupakan tahap berbeda dan tidak boleh disamakan.");
+  return label("This is an attributed "+sector+" asset record. Any economic or supply-chain effects depend on operational status, physical capacity and realized investment evidence.",
+   "Ini merupakan catatan aset "+sector+" yang teratribusi. Dampak ekonomi atau rantai pasoknya bergantung pada status operasi, kapasitas fisik dan bukti investasi terealisasi.");
+ }
+ function describeLesson(r){
+  const hasActual=r.production?.value!=null;
+  if(hasActual)return label(
+   "Lesson: compare the "+r.production.year+" reported output with rated capacity only when the product, unit, utilization period and reporting boundary match. Avoid counting parent facilities and subunits twice.",
+   "Pelajaran: bandingkan output aktual "+r.production.year+" dengan kapasitas hanya jika produk, satuan, periode operasi dan cakupan pelaporannya sama. Hindari penghitungan ganda fasilitas induk dan unit.");
+  if(r.phase==="Construction / Testing")return label(
+   "Lesson: construction or testing is not commercial operation. Check commissioning, completion percentage and first-output evidence before counting realized capacity.",
+   "Pelajaran: konstruksi atau pengujian belum sama dengan operasi komersial. Periksa commissioning, progres penyelesaian dan bukti produksi pertama sebelum menghitung kapasitas terealisasi.");
+  if(r.phase==="Planned / Agreed")return label(
+   "Lesson: plans, MoUs and signed agreements are not proof of physical execution. Confirm financing, permits, site works and operator disclosures.",
+   "Pelajaran: rencana, MoU, dan perjanjian belum membuktikan pembangunan fisik. Periksa pendanaan, perizinan, pekerjaan lapangan dan pengungkapan operator.");
+  if(r.phase==="Historical / Verify"||r.phase==="Status / Verify")return label(
+   "Lesson: the latest operating status is not independently established in this record. Retain its source date and seek a newer company or government confirmation.",
+   "Pelajaran: status operasi terbaru belum dapat dipastikan secara independen dari catatan ini. Pertahankan tanggal sumber dan cari konfirmasi baru dari perusahaan atau pemerintah.");
+  return label("Lesson: distinguish operator reporting from independently confirmed operations, and do not sum overlapping asset records as new investment.",
+   "Pelajaran: bedakan pelaporan operator dari operasi terkonfirmasi secara independen, dan jangan menjumlahkan aset yang tumpang tindih sebagai investasi baru.");
+ }
+ function insightSection(title,value){
+  const block=node("div","map-insight-section");
+  block.append(node("h5",null,title),node("p",null,value));
+  return block;
+ }
+ function renderAssetInsight(chosen){
+  insight.replaceChildren();
+  const actionable=Boolean(currentPoint||currentProvince||currentKepriCluster);
+  if(!chosen.length||(!actionable&&!selectedRecordId)){
+   insight.append(node("div","map-insight-empty",label(
+    "SELECT A POINT · Click a teal location, a gold cluster, a province or a record below to inspect its evidence, implementation and research lesson.",
+    "PILIH TITIK · Klik titik hijau, klaster emas, provinsi, atau catatan di bawah untuk melihat bukti, pelaksanaan dan pelajaran analitis."
+   )));
+   return;
+  }
+  let selected=chosen.find(r=>r.id===selectedRecordId);
+  if(!selected&&chosen.length===1){selected=chosen[0];selectedRecordId=selected.id}
+  const bar=node("div","map-insight-toolbar");
+  const title=node("strong",null,label("SELECTED ASSET INSIGHT","ANALISIS ASET TERPILIH"));
+  const clear=node("button","map-btn map-insight-reset",label("Clear selection","Hapus pilihan"));
+  clear.type="button";
+  clear.addEventListener("click",()=>{selectedRecordId=null;currentPoint=null;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";draw()});
+  bar.append(title,clear);insight.append(bar);
+  const scope=label("Matched source records: ","Catatan bersumber terkait: ")+chosen.length+" · "+
+   (currentPoint?label("approximate locality cluster, not project GPS","klaster wilayah perkiraan, bukan GPS proyek"):
+    currentProvince?currentProvince+" · "+label("province association","asosiasi provinsi"):label("record selected","catatan terpilih"));
+  insight.append(node("p","map-insight-scope",scope));
+  if(chosen.length>1){
+   const picker=node("label","map-insight-picker");
+   picker.append(node("span",null,label("Choose one of the records at this point","Pilih salah satu catatan pada titik ini")));
+   const select=node("select","map-select");select.setAttribute("aria-label",label("Select source record","Pilih catatan bersumber"));
+   const initial=node("option",null,label("Select a specific asset","Pilih aset tertentu"));initial.value="";select.append(initial);
+   for(const r of chosen){const option=node("option",null,r.name+" · "+(r.operator||r.region||r.id));option.value=r.id;select.append(option)}
+   select.value=selected?.id||"";
+   select.addEventListener("change",()=>{selectedRecordId=select.value||null;renderAssetInsight(chosen)});
+   picker.append(select);insight.append(picker);
+   if(!selected){insight.append(node("p","map-insight-hint",label(
+    "A map cluster can represent multiple independent facilities. Select an asset above to view its specific source and lesson; the records below remain available.",
+    "Satu klaster dapat mewakili sejumlah fasilitas yang berbeda. Pilih aset di atas untuk melihat sumber dan pelajaran khusus; seluruh catatan tetap tersedia di bawah."
+   )));return}
+  }
+  if(!selected)return;
+  const card=node("article","map-insight-detail");
+  card.append(node("h4",null,selected.name));
+  const tags=node("div","map-insight-tags");
+  for(const item of [sectorLabel(selected.sectorKey),assetLabel(selected.assetType),phaseLabel(selected.phase)])tags.append(node("span","map-tag",item));
+  card.append(tags);
+  const provinces=provinceAssociations(selected);
+  card.append(insightSection(label("01 · Identity & evidence","01 · Identitas & bukti"),
+   label("Operator / sponsor: ","Operator / investor: ")+(selected.operator||label("Not published","Tidak tersedia"))+
+   " · "+label("Source period: ","Periode sumber: ")+(selected.date||label("Not dated","Belum bertanggal"))));
+  card.append(insightSection(label("02 · Geography & status","02 · Wilayah & status"),
+   (selected.region||provinces.join(" + ")||label("Location undisclosed","Lokasi tidak diungkap"))+
+   " · "+label("Reported status: ","Status yang dilaporkan: ")+(selected.stage||label("Unspecified","Tidak disebutkan"))));
+  const loc=pointFor(selected);
+  card.append(node("p","map-insight-precision",loc?label(
+   "Approximate named-locality reference: ","Titik referensi wilayah perkiraan: ")+loc.label+
+   " ("+loc.lat.toFixed(3)+"°, "+loc.lon.toFixed(3)+"°) · "+label("NOT facility GPS","BUKAN GPS fasilitas"):
+   label("Province-only or undisclosed location; no precise project coordinates asserted.",
+    "Lokasi hanya tingkat provinsi atau tidak diungkap; tidak mengklaim koordinat proyek yang presisi.")));
+  const numbers=[];
+  if(selected.capacity?.value!=null)numbers.push(label("Rated/reported capacity: ","Kapasitas yang dilaporkan: ")+fmt(selected.capacity.value)+" "+selected.capacity.unit+(selected.capacity.scope?" · "+selected.capacity.scope:""));
+  if(selected.production?.value!=null)numbers.push(label("ACTUAL reported output: ","Output AKTUAL yang dilaporkan: ")+fmt(selected.production.value)+" "+selected.production.unit+" ("+selected.production.year+")");
+  if(selected.amount?.amount!=null)numbers.push(label("Reported investment/amount: ","Investasi/nilai yang dilaporkan: ")+selected.amount.unit+" "+fmt(selected.amount.amount)+(selected.amount.basis?" · "+selected.amount.basis:""));
+  if(selected.product)numbers.push(label("Product: ","Produk: ")+selected.product);
+  if(selected.technology)numbers.push(label("Technology: ","Teknologi: ")+selected.technology);
+  if(selected.ownership)numbers.push(label("Ownership: ","Kepemilikan: ")+selected.ownership);
+  if(selected.investors)numbers.push(label("Investors: ","Investor: ")+selected.investors);
+  if(selected.progress)numbers.push(label("Implementation milestone: ","Tahapan implementasi: ")+selected.progress);
+  card.append(insightSection(label("03 · Available project metrics","03 · Angka & pelaksanaan"),numbers.length?numbers.join("\n"):
+   label("No source-verified numerical capacity, investment or output for this record. Unknown is not zero.",
+    "Belum ada angka kapasitas, investasi atau output terverifikasi dalam catatan ini. Tidak tersedia bukan berarti nol.")));
+  if(selected.note)card.append(insightSection(label("Source context","Konteks sumber"),selected.note));
+  card.append(insightSection(label("04 · Sector transmission · interpretive, not causal","04 · Implikasi sektoral · bukan bukti kausalitas"),describeMarket(selected)));
+  card.append(insightSection(label("05 · Lesson learned & next verification","05 · Pelajaran & verifikasi berikutnya"),describeLesson(selected)));
+  const foot=node("div","map-insight-sources");
+  foot.append(srcLink(selected.source,label("Read original record source","Baca sumber asli")));
+  if(loc?.source)foot.append(srcLink(loc.source,label("Locality reference · approximate","Sumber titik wilayah · perkiraan")));
+  card.append(foot);
+  if(chosen.length>1){
+   const nav=node("div","map-insight-nav");
+   const i=chosen.findIndex(r=>r.id===selected.id);
+   for(const [direction,caption] of [[-1,label("◀ Previous record","◀ Catatan sebelumnya")],[1,label("Next record ▶","Catatan berikutnya ▶")]]){
+    const button=node("button","map-btn",caption);button.type="button";button.disabled=i+direction<0||i+direction>=chosen.length;
+    button.addEventListener("click",()=>{selectedRecordId=chosen[i+direction].id;renderAssetInsight(chosen)});
+    nav.append(button);
+   }
+   card.append(nav);
+  }
+  insight.append(card);
+ }
+
  function kepriCluster(r){
   if(!provinceAssociations(r).includes("Kepulauan Riau"))return null;
   const raw=String(r.region||"")+" "+String(r.name||"");
@@ -636,9 +774,9 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   if(/\bbatam\b|\bnongsa\b|\bkabil\b/i.test(raw))return "batam";
   return "province-only";
  }
- function focusProvince(name){currentProvince=currentProvince===name?null:name;currentKepriCluster=null;currentPoint=null;provinceSelect.value=currentProvince||"all";draw()}
+ function focusProvince(name){currentProvince=currentProvince===name?null:name;currentKepriCluster=null;currentPoint=null;selectedRecordId=null;provinceSelect.value=currentProvince||"all";draw()}
  function focusKepriCluster(cluster){
-  currentProvince="Kepulauan Riau";currentKepriCluster=cluster;currentPoint=null;provinceSelect.value=currentProvince;draw();
+  currentProvince="Kepulauan Riau";currentKepriCluster=cluster;currentPoint=null;selectedRecordId=null;provinceSelect.value=currentProvince;draw();
  }
  function draw(){
   const base=filtered(),mapped=base.filter(r=>provinceAssociations(r).length>0),unmapped=base.length-mapped.length;
@@ -686,7 +824,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    const title=snode("title");title.textContent=name+" · "+refs.length+" "+label("records only known at province scale","catatan hanya diketahui sampai provinsi");
    marker.append(box,title);
    function selectProvinceReference(){
-    currentPoint=null;currentProvince=name;currentKepriCluster=null;provinceSelect.value=name;
+    currentPoint=null;selectedRecordId=null;currentProvince=name;currentKepriCluster=null;provinceSelect.value=name;
     currentAccuracy="province";
     for(const button of geoButtons)button.setAttribute("aria-pressed",String(button.dataset.accuracy==="province"));
     draw();
@@ -724,8 +862,15 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    const tooltip=snode("title");tooltip.textContent=[...c.names].join(", ")+" · "+count+" "+label("source records · approximate locality, click to inspect","catatan bersumber · perkiraan wilayah, klik untuk periksa");
    pin.append(dot,tooltip);
    if(count>1){const num=snode("text",{x,y,class:"map-geopoint-label"});num.textContent=count;pin.append(num)}
-   pin.addEventListener("click",()=>{if(dragged)return;currentPoint=currentPoint===geoKey?null:geoKey;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";draw()});
-   pin.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();currentPoint=currentPoint===geoKey?null:geoKey;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";draw()}});
+   function selectCluster(){
+    if(dragged)return;
+    currentPoint=currentPoint===geoKey?null:geoKey;currentProvince=null;currentKepriCluster=null;
+    selectedRecordId=currentPoint&&count===1?c.records[0].id:null;
+    provinceSelect.value="all";draw();
+    side.scrollTop=0;
+   }
+   pin.addEventListener("click",selectCluster);
+   pin.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectCluster()}});
    pinLayer.append(pin);
   }
   const chosen=base.filter(x=>(!currentProvince||provinceAssociations(x).includes(currentProvince))&&(!currentKepriCluster||currentProvince!=="Kepulauan Riau"||kepriCluster(x)===currentKepriCluster)&&(!currentPoint||currentPoint.split("|").includes(x.id)))
@@ -737,7 +882,10 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   const provinceCount=base.filter(r=>accuracyOf(r)==="province").length;
   geoCount.textContent=localityCount+" "+label("locality-referenced","titik wilayah")+" · "+provinceCount+" "+label("province-only","hanya provinsi")+" · "+(base.length-localityCount-provinceCount)+" "+label("unlocated","tanpa lokasi");
   info.textContent=label("Registry: ","Registri: ")+scopeName+" · "+display.length+" "+label("shown in list / ","ditampilkan / ")+base.length+" "+label("matching records · ","catatan cocok · ")+mapped.length+" "+label("province-mapped · ","terpetakan · ")+unmapped+" "+label("unlocated","tanpa lokasi");
+  renderAssetInsight(chosen);
+  const oldScroll=list.scrollTop;
   list.replaceChildren();
+  list.scrollTop=oldScroll;
   if(!chosen.length)list.append(node("p","map-muted",label("No records match these filters or this province. Choose another province or reset filters.","Tidak ada catatan sesuai filter atau provinsi ini. Pilih provinsi lain atau reset filter.")));
   let lastGroup="",lastType="";
   for(const r of display){
@@ -749,7 +897,15 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
     list.append(node("div","map-type-label",assetLabel(r.assetType)));
     lastType=r.assetType;
    }
-   const card=node("article","map-list-item");
+   const card=node("article","map-list-item"+(selectedRecordId===r.id?" map-list-item-selected":""));
+   card.tabIndex=0;
+   card.setAttribute("role","button");
+   card.setAttribute("aria-label",label("Open asset insight: ","Buka analisis aset: ")+r.name);
+   card.setAttribute("aria-pressed",String(selectedRecordId===r.id));
+   const inspect=()=>{selectedRecordId=r.id;renderAssetInsight(chosen);side.scrollTop=0;};
+   card.addEventListener("click",e=>{if(e.target.closest("a,button,select"))return;inspect()});
+   card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();inspect()}});
+
    const layerName=assetLabel(r.assetType);
    const dateName=r.kind==="assets"?label("dataset reviewed","dataset ditinjau"):r.kind==="refineries"?label("facility verified","fasilitas diverifikasi"):r.kind==="sites"?label("dated corporate evidence","bukti korporasi bertanggal"):["wk","power","industry","regional","digital","pltu"].includes(r.kind)?label("source record","rekam sumber"):label("evidence date","tanggal bukti");
    const provinces=provinceAssociations(r);
@@ -783,14 +939,14 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   list.append(node("p","map-muted",label("All matching records shown: ","Semua catatan yang cocok ditampilkan: ")+chosen.length+" · "+label("scroll this list or filter to browse","gulir daftar atau gunakan filter untuk menjelajah")));
   countsText.textContent=label("For this selection: ","Untuk pilihan ini: ")+base.length+label(" records, "," catatan, ")+mapped.length+label(" mapped, "," terpetakan, ")+unmapped+label(" unlocated. The map does not quantify realized investment value."," tanpa lokasi. Peta tidak menghitung total realisasi investasi.");
  }
- kind.addEventListener("change",()=>{currentPoint=null;currentKind=kind.value;currentSector="all";currentType="all";currentStage="all";currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";filtersRebuild();draw()});
- provinceSelect.addEventListener("change",()=>{currentPoint=null;currentProvince=provinceSelect.value==="all"?null:provinceSelect.value;currentKepriCluster=null;draw()});
- location.addEventListener("change",()=>{currentPoint=null;currentLocation=location.value;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";draw()});
- group.addEventListener("change",()=>{currentPoint=null;currentSector=group.value;currentType="all";currentStage="all";filtersRebuild();draw()});
- assetType.addEventListener("change",()=>{currentPoint=null;currentType=assetType.value;currentStage="all";filtersRebuild();draw()});
- stage.addEventListener("change",()=>{currentPoint=null;currentStage=stage.value;draw()});
- search.addEventListener("input",()=>{currentPoint=null;lastQuery=search.value.toLowerCase().trim();draw()});
- reset.addEventListener("click",()=>{currentPoint=null;currentType="all";currentAccuracy="all";for(const b of geoButtons)b.setAttribute("aria-pressed",String(b.dataset.accuracy==="all"));kind.value="all";currentKind="all";location.value="all";currentLocation="all";provinceSelect.value="all";currentProvince=null;currentKepriCluster=null;currentSector="all";currentStage="all";search.value="";lastQuery="";filtersRebuild();setView({x:0,y:0,w:W,h:H});draw()});
+ kind.addEventListener("change",()=>{selectedRecordId=null;currentPoint=null;currentKind=kind.value;currentSector="all";currentType="all";currentStage="all";currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";filtersRebuild();draw()});
+ provinceSelect.addEventListener("change",()=>{selectedRecordId=null;currentPoint=null;currentProvince=provinceSelect.value==="all"?null:provinceSelect.value;currentKepriCluster=null;draw()});
+ location.addEventListener("change",()=>{selectedRecordId=null;currentPoint=null;currentLocation=location.value;currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";draw()});
+ group.addEventListener("change",()=>{selectedRecordId=null;currentPoint=null;currentSector=group.value;currentType="all";currentStage="all";filtersRebuild();draw()});
+ assetType.addEventListener("change",()=>{selectedRecordId=null;currentPoint=null;currentType=assetType.value;currentStage="all";filtersRebuild();draw()});
+ stage.addEventListener("change",()=>{selectedRecordId=null;currentPoint=null;currentStage=stage.value;draw()});
+ search.addEventListener("input",()=>{selectedRecordId=null;currentPoint=null;lastQuery=search.value.toLowerCase().trim();draw()});
+ reset.addEventListener("click",()=>{selectedRecordId=null;currentPoint=null;currentType="all";currentAccuracy="all";for(const b of geoButtons)b.setAttribute("aria-pressed",String(b.dataset.accuracy==="all"));kind.value="all";currentKind="all";location.value="all";currentLocation="all";provinceSelect.value="all";currentProvince=null;currentKepriCluster=null;currentSector="all";currentStage="all";search.value="";lastQuery="";filtersRebuild();setView({x:0,y:0,w:W,h:H});draw()});
  filtersRebuild();draw();
 }
 window.SLIProvinceFor=provinceFor;
