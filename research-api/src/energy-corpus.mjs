@@ -71,7 +71,8 @@ if(invest)add("realized_investment_2025","Realized sector investment · ESDM 202
  fiscal.investment?.sources?.[0]||fundamentals.sources?.migas2025,"2025","ESDM","investment");
 for(const row of assessment.points||[]){
  // Source-derived qualitative synthesis is supporting analysis, not new independently confirmed facts.
- const url=row.sources?.find(valid)||fundamentals.sources?.migas2025;
+ const url=row.baseline_sources?.find(s=>valid(s?.url))?.url;
+ if(!url)continue;
  add("daily_"+row.id,"SLI reviewed source-grounded lens · "+row.heading,
  "SLI deterministic editorial analysis produced "+assessment.assessment_date_wib+": "+row.finding+
  " Important: this is an analytical synthesis, NOT an independent confirmation of monitored news stories.",
