@@ -279,3 +279,21 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability>a{
  color:#195c87;font:700 12px/1.5 system-ui,sans-serif;text-decoration:underline;
  display:inline-block;margin-bottom:12px
 }
+
+
+/* BPS current-period vs lagged model distinction: research comparability warning. */
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-spec-warning{
+ margin:12px 0;padding:14px 16px;background:#fff3e6;border:1px solid #ddb487;
+ border-left:4px solid #b06e2f;border-radius:8px;color:#76471f
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-spec-warning p{
+ color:#76471f!important;font:650 12px/1.65 system-ui,sans-serif;margin:0 0 10px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-restore-lag{
+ appearance:none;background:#16547e;color:#fff;border:1px solid #104c76;border-radius:8px;
+ padding:10px 14px;cursor:pointer;font:700 12px/1.4 system-ui,sans-serif
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-restore-lag:hover{background:#093d5d}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-restore-lag:focus-visible{
+ outline:3px solid #ae8b4a;outline-offset:3px
+}
