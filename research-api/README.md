@@ -1,6 +1,6 @@
 # SLI Research AI · conversational generative research integration
 
-**Not deployed or connected.** The main page `sli-research-ai.html` now provides a genuine conversation-oriented UI: 5,000-character prompts, four report formats (Executive Summary, Deep Research, Comparative Analysis, Risk & Opportunity), follow-up turns, sources sidebar, copy and Markdown export. It explicitly reports that generative AI is unavailable until secure infrastructure is activated. No fake AI-generated results appear.
+**Production Pro/Enterprise is not deployed or connected.** The separate **Owner Test staging Worker** has been deployed for private owner testing only. The main page `sli-research-ai.html` now provides a genuine conversation-oriented UI: 5,000-character prompts, four report formats (Executive Summary, Deep Research, Comparative Analysis, Risk & Opportunity), follow-up turns, sources sidebar, copy and Markdown export. It explicitly reports that generative AI is unavailable until secure infrastructure is activated. No fake AI-generated results appear.
 
 `sli-research-evidence-preview.html` preserves the former *non-generative* source-based analytics.
 
@@ -22,7 +22,7 @@ The Worker calls the Responses API with server-held `OPENAI_API_KEY`, configured
 6. Run CI and staging E2E tests: source provenance, wrong-province questions, revoked/expired tokens, Enterprise separation, follow-up turns, fabricated citations, leakage, prompt injection, cost and latency.
 7. **Only after verified login and API successfully work**, set `data/sli-research-assistant-config.json` to `api_enabled:true`, `login_enabled:true`, `generation_status:"enabled"`, and `api_endpoint:"https://VERIFIED_WORKER_DOMAIN/v1/research"`. Never change these just to make buttons look enabled.
 
-GitHub QA: `.github/workflows/sli-research-ai-qa.yml`. This tests code/contracts, not real deployed generation, paid billing, or model answer accuracy.
+GitHub QA: `.github/workflows/sli-research-ai-qa.yml`. This tests code/contracts, not real deployed generation, paid billing, or model answer accuracy. See [`RESEARCH_VALIDATION_PLAYBOOK.md`](RESEARCH_VALIDATION_PLAYBOOK.md) for the 12-case live evaluation plan, structural audit limitations, and commercial release gates.
 
 ## Local checks
 
