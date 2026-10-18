@@ -164,7 +164,7 @@
 .map-insight-nav button{flex:1 1 135px;white-space:normal}
 .map-insight-nav button:disabled{opacity:.45;cursor:not-allowed}
 .map-list-item{cursor:pointer}
-.map-list-item-selected{border-color:#e4c07e!important;box-shadow:inset 4px 0 #efc980;background:#223c50!important}
+.map-list-item[aria-pressed=true]{border-color:#e4c07e!important;box-shadow:inset 4px 0 #efc980;background:#223c50!important}
 .map-list-item:focus-visible{outline:2px solid #efc980;outline-offset:2px}
 .map-geopoint:focus-visible .map-geopoint-dot,.map-site-cluster:focus-visible .map-site-bubble,.map-admin-reference:focus-visible .map-admin-square{stroke:#ffe6a7;stroke-width:4}
 @media(max-width:900px){.map-insight-detail{max-height:60vh}}
