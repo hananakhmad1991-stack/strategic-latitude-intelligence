@@ -8,6 +8,8 @@ on:
       - 'sli-research-ai.html'
       - 'sli-research-evidence-preview.html'
       - 'css/sli-research-assistant.css'
+      - 'css/sli-research-brand.css'
+      - 'tests/qa-sli-research-brand.mjs'
       - 'js/sli-research-assistant.js'
       - 'scripts/audit-sli-content-quality.mjs'
       - 'tests/qa-sli-content-quality.mjs'
@@ -47,4 +49,4 @@ jobs:
           node --check research-api/src/owner-test-worker.mjs
           node --check research-api/src/core.mjs
       - name: Validate open evidence, secure planned RAG and traceability
-        run: node --test tests/qa-sli-research-visuals.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs tests/qa-sli-content-quality.mjs
+        run: node --test tests/qa-sli-research-brand.mjs tests/qa-sli-research-visuals.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs tests/qa-sli-content-quality.mjs

@@ -135,16 +135,22 @@ async function submit(){
   clearTimeout(timeout);if(id===state.sequence){state.busy=false;enableControls();}
  }
 }
-function switchLang(){
- state.language=state.language==="id"?"en":"id";document.documentElement.lang=state.language;
- document.querySelectorAll("[data-id][data-en]").forEach(el=>el.textContent=el.getAttribute("data-"+state.language));
- $("raLang").textContent=state.language==="id"?"EN / ID":"ID / EN";
- $("raPrompt").placeholder=state.language==="id"?"Contoh: Buat executive summary ketahanan energi Indonesia dengan sitasi dan implikasi investasi.":"Example: Write an executive summary of Indonesia's energy security with citations and investment implications.";
- if(!isConfigured()&&!ownerConfigured())status(state.language==="id"?(state.config?.published_notice_id||tr("prelaunch")):(state.config?.published_notice_en||tr("prelaunch")));
+function setResearchLanguage(language){
+ if(language!=="en"&&language!=="id")return;
+ state.language=language;document.documentElement.lang=language;
+ document.querySelectorAll("[data-id][data-en]").forEach(el=>el.textContent=el.getAttribute("data-"+language));
+ document.querySelectorAll("[data-ra-lang]").forEach(button=>{
+  const active=button.dataset.raLang===language;
+  button.classList.toggle("active",active);
+  button.setAttribute("aria-pressed",String(active));
+ });
+ $("raPrompt").placeholder=language==="id"?"Contoh: Buat executive summary ketahanan energi Indonesia dengan sitasi dan implikasi investasi.":"Example: Write an executive summary of Indonesia's energy security with citations and investment implications.";
+ if(state.config&&!isConfigured()&&!ownerConfigured())status(language==="id"?(state.config.published_notice_id||tr("prelaunch")):(state.config.published_notice_en||tr("prelaunch")));
 }
 async function init(){
  $("raAssistantForm").addEventListener("submit",e=>{e.preventDefault();submit()});
- $("raLang").addEventListener("click",switchLang);
+ document.querySelectorAll("[data-ra-lang]").forEach(button=>button.addEventListener("click",()=>setResearchLanguage(button.dataset.raLang)));
+ setResearchLanguage(state.language);
  $("raNew").addEventListener("click",reset);
  $("raCopy").addEventListener("click",async()=>{if(!state.lastResult)return;try{await navigator.clipboard.writeText(makeExport());status(tr("copied"),"ready")}catch{status(tr("copyFail"))}});
  $("raExport").addEventListener("click",()=>{if(!state.lastResult)return;const file=new Blob([makeExport()],{type:"text/markdown;charset=utf-8"});const url=URL.createObjectURL(file);const a=node("a");a.href=url;a.download="SLI-research-brief.md";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url)});
