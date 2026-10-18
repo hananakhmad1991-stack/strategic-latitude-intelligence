@@ -18,8 +18,24 @@
     "regulatory-monitor",
     "publication-watch"
   ],
-  "count": 491,
+  "count": 492,
   "articles": [
+    {
+      "id": "sli_feed_4dc6336e9b57898e641ee3e4a",
+      "title": "BMKG: Asap Sempat Terpantau Sesaat di Jabodetabek, Kini Sudah Menjauh - BMKG",
+      "publisher": "BMKG",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOZFZNT29LNzFlcndncEVnYV9UbzBHa1h5TS1UaWl0RjBGd3Q2Yk5KZUJWMU9oMGNsUTN2UC14X3VDeVVBem0tcmpiVDdMcjZ3MktOeFlpSUh5WV9qQXpQX3VnenFaUXk0NU9qVEpJLXE5RnNvWW9oRkc1Tl82Y0I3UFZmcnZiYXowOWZab1FwYXRjUTBud0I3VW9tLWtZSS02clBBSQ?oc=5",
+      "published_at_utc": "2026-10-18T19:00:05Z",
+      "date_type": "publisher_publication_date",
+      "sector": "energy",
+      "topic": "forest_fire",
+      "geo": "Indonesia and global context",
+      "monitor_source": "domestic-energy",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
     {
       "id": "sli_feed_8042d7c0908bed78c24172d84",
       "title": "Dirut PLN Batam Bantah Isu Data Center Jadi Penyebab Blackout - Bisnis.com",
@@ -56,7 +72,7 @@
       "id": "sli_feed_a9add74ca7ab3edb8e2fe821e",
       "title": "PLN Batam: Pemulihan listrik Batam-Bintan 100 persen pada Rabu - ANTARA News Kepri",
       "publisher": "ANTARA News Kepri",
-      "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxPYU13WmZHOGJjbTNyUTRRTG1vRFMyU2I1MzJLVTFxdkI0YzFyM1BtQ2VnSVB5dzBSeEtGOFJidXhFeU1CN1hvU0pIZDdlNzE4M1NETmViVmV6R1hweF9LM1ZGTGo1OUdUSENMVGtDb1luRkZxOUsya3A0bUpjdGVCSWFSTHdzcDR4Ym1nUHNGeE90Tk0zR2Q1WlNjc2hsWW5EdUo2US0xWlpxZ1FMMlNTT0Z1Z091aFE0VThRZElrbEVTR2RUVGJkNC1VSU9vRHhUcmJRUE55RnppWVlHdjV3X0lvVkhlLUw5ZnRrUEQ0WGtheFdfLUVUa2tqdUhKbzFTd0RMUnMxaw?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNeU5JcTFweU5JQnk5RTlwUS0xZ193ZFVUOEE1djJHZzM2OTVrZGhhemVBRlQzendPR2pQSUxWUFlONi0zRmE1QTBHdmtFTi1OeWlvVFJ1VG1kb1BkYVVEVld0TWwtQkRZOVV6WkZIYkp0UGtkT0lORV9vcEdfVEd5NkZfLVVicmxuU1N0b2dBYVVEYmdncjRMLWZtN2lDdUh5QnJ0WWRoMA?oc=5",
       "published_at_utc": "2026-10-18T15:05:41Z",
       "date_type": "publisher_publication_date",
       "sector": "energy",
@@ -398,7 +414,7 @@
       "sector": "energy",
       "topic": "forest_fire",
       "geo": "Indonesia and global context",
-      "monitor_source": "domestic-energy",
+      "monitor_source": "daily-energy-assessment",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -591,22 +607,6 @@
       "topic": "power",
       "geo": "Indonesia and global context",
       "monitor_source": "daily-energy-assessment",
-      "link_kind": "aggregator",
-      "evidence_level": "publisher_attributed_news_report",
-      "article_body_checked": false,
-      "claim_corroborated": false
-    },
-    {
-      "id": "sli_feed_4dc6336e9b57898e641ee3e4a",
-      "title": "BMKG: Asap Sempat Terpantau Sesaat di Jabodetabek, Kini Sudah Menjauh - BMKG",
-      "publisher": "BMKG",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOZFZNT29LNzFlcndncEVnYV9UbzBHa1h5TS1UaWl0RjBGd3Q2Yk5KZUJWMU9oMGNsUTN2UC14X3VDeVVBem0tcmpiVDdMcjZ3MktOeFlpSUh5WV9qQXpQX3VnenFaUXk0NU9qVEpJLXE5RnNvWW9oRkc1Tl82Y0I3UFZmcnZiYXowOWZab1FwYXRjUTBud0I3VW9tLWtZSS02clBBSQ?oc=5",
-      "published_at_utc": "2026-10-18T00:00:05Z",
-      "date_type": "publisher_publication_date",
-      "sector": "energy",
-      "topic": "forest_fire",
-      "geo": "Indonesia and global context",
-      "monitor_source": "domestic-energy",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -3167,6 +3167,22 @@
       "topic": "power_water",
       "geo": "Indonesia and global context",
       "monitor_source": "research-signal-radar",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_3b5d1369a17f97b71466c7b38",
+      "title": "Pertamina Patra Niaga dukung langkah Pemprov Lampung perkuat pengawasan biosolar - ANTARA News Lampung",
+      "publisher": "ANTARA News Lampung",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQSnlHczBzX3UyQl9iZmRoVDBUbGdKTF84X0toT2ZjVzZGdndPN0h1SDVWc2tUbzdPdkM4dFgwUm5EeWlCSVBHdExic0tGbXprbUFGNGsxN1NUOGlJNlhkcUxSMHdnMnUwemNEc1ZnYkQwWGFxSG1KUXU0WTVzZ2pNR3pXa0cwUVJyejNlMmNER29mUVpUZEJNeW95Y1VwaHR0VnQ5REZ0V3VhUktCUmtZbmdwYlBGN3BUeGN2RDhBWmtONzQ?oc=5",
+      "published_at_utc": "2026-10-15T02:06:18Z",
+      "date_type": "publisher_publication_date",
+      "sector": "energy",
+      "topic": "Distribution",
+      "geo": "Indonesia and global context",
+      "monitor_source": "energy-biofuels-watch",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -7877,5 +7893,5 @@
       "claim_corroborated": false
     }
   ],
-  "updated_at_utc": "2026-10-18T19:56:35.462172Z"
+  "updated_at_utc": "2026-10-18T21:59:08.067882Z"
 }
