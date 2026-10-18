@@ -1,6 +1,6 @@
 import {test} from "node:test";
 import assert from "node:assert/strict";
-import {multivariateOLS,panelFixedEffects,studentP,studentCritical,sensitivityOLS,detectPanelColumns} from "../js/sli-econometrics.mjs";
+import {multivariateOLS,panelFixedEffects,studentP,studentCritical,sensitivityOLS,detectPanelColumns,panelStability} from "../js/sli-econometrics.mjs";
 test("Student's t tail probabilities and 95% critical values are numerically correct",()=>{
  assert.ok(Math.abs(studentCritical(10)-2.22813885)<0.001);
  assert.ok(Math.abs(studentCritical(1000)-1.96233908)<0.001);
@@ -77,4 +77,29 @@ test("Panel identifiers must repeat by entity and year; economic percentages can
  assert.throws(()=>panelFixedEffects(rows,["pmtb_share_pct"],"real_grdp_growth_pct","electricity_access_pct","year",true),/repeated province\/entity identifier|at least two years/);
  assert.equal(detectPanelColumns(rows.filter(r=>r.year===2025)).recommendedEntity,null);
  assert.equal(detectPanelColumns(rows.filter(r=>r.year===2025)).recommendedTime,null);
+});
+
+test("Panel stability quantifies one-unit/year refits and a time-FE specification comparison",()=>{
+ const rows=[];
+ for(let p=0;p<12;p++)for(let year=2020;year<2026;year++){
+  const x=(year-2020)+((p*year)%7)/5+p/9,z=((year+p*2)%7)*0.3;
+  const y=12+p*7+1.5*x-0.65*z+1.1*(year-2020)+Math.sin(p*7+year)*0.05;
+  rows.push({province:"P"+p,year,x,z,y});
+ }
+ const report=panelStability(rows,["x","z"],"y","province","year",true);
+ assert.equal(report.method,"panel_fe_stability");
+ assert.equal(report.leave_one_entity_out.total_candidates,12);
+ assert.equal(report.leave_one_entity_out.successful,12);
+ assert.equal(report.leave_one_entity_out.exhaustive,true);
+ assert.equal(report.leave_one_year_out.successful,6);
+ assert.equal(report.leave_one_year_out.exhaustive,true);
+ assert.equal(report.leave_one_entity_out.metrics.length,2);
+ assert.ok(report.leave_one_entity_out.metrics.every(m=>Number.isFinite(m.min)&&Number.isFinite(m.max)&&m.max_relative_shift_pct>=0));
+ assert.ok(report.leave_one_year_out.metrics.every(m=>Number.isFinite(m.max_relative_shift_pct)));
+ assert.equal(report.alternative_time_specification.specification,"entity_only_FE");
+ assert.equal(report.alternative_time_specification.coefficients.length,2);
+ const only8=rows.filter(r=>Number(r.province.slice(1))<8);
+ const limited=panelStability(only8,["x"],"y","province","year",true);
+ assert.equal(limited.leave_one_entity_out.available,false);
+ assert.equal(limited.leave_one_year_out.successful,6);
 });
