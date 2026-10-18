@@ -137,3 +137,30 @@ test("Energy Fundamentals chart actually renders six working export controls wit
  assert.deepEqual(exports.map(x=>x.fmt),["csv","xlsx","png","jpg","pdf","embed"]);
  assert.ok(handlers.has("sli:exportready"),"Should register even if universal export loads after the chart");
 });
+
+test("One-click one-observation inspector is shared while rich specialist panels remain independent",()=>{
+ const macro=read("js/sli-macro-overview.js");
+ const commodity=read("js/commodity-market-prices.js");
+ const trade=read("js/commodity-trade-flow.js");
+ const local=read("js/strategic-map.js");
+ for(const [name,src] of [
+  ["shared inspector",core],["commodity chart",commodity],["macro chart",macro],["trade Sankey",trade]
+ ])assert.doesNotThrow(()=>new Function(src),name+" JavaScript must parse");
+ assert.match(core,/activeInspectorHost/);
+ assert.match(core,/clearChartInsight\(activeInspectorHost\)/,"Selecting another chart clears the previous inspector");
+ assert.match(core,/one selected table row|Satu baris tabel terpilih/i);
+ assert.match(core,/tr\[data-sli-inspectable\]/,"Table rows support keyboard selection");
+ assert.match(core,/sourceUrl=extra\?\.sourceUrl\|\|rowSource\|\|meta.sourceUrl/,"Selected record source takes precedence");
+ assert.match(core,/#sliMapRoot,#geo-commodity-timeline/,"Specialist maps bypass generic panel");
+ assert.match(css,/tr\[data-sli-inspectable\]:focus-visible/);
+ assert.match(commodity,/data-sli-point-index/);
+ assert.match(commodity,/registerInsight\?\.\(svg,/);
+ assert.match(commodity,/previous saved observation/,"Commodity change must use dated saved points only");
+ assert.match(macro,/const spark=root.querySelector/);
+ assert.match(macro,/window.SLIVisualExport.registerInsight\?\.\(spark,/);
+ assert.match(trade,/data-sli-trade-key/,"Sankey ribbons resolve to one selected partner and product");
+ assert.match(trade,/edges.find\(e=>e.p.id\+"\|"\+e.c/);
+ assert.match(trade,/OTHER is a computed remainder/,"Unattributed remainder cannot masquerade as a named partner");
+ assert.match(local,/currentPointLabel/,"The map retains dedicated point inspection");
+ assert.match(read("js/sli-geopolitical-timeline.js"),/eventInsight\(/,"Geopolitical source-aware inspector must remain intact");
+});
