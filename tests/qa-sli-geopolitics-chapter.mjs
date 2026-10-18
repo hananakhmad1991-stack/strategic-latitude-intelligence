@@ -168,7 +168,7 @@ test("Multi-commodity atlas actually renders three independent charts with selec
  runInNewContext(read("js/sli-geopolitical-timeline.js"),{window:win,document:doc,fetch,URL,Intl,Date,Math,Number,Set,Map,Promise,console},{filename:"sli-geopolitical-timeline.js"});
  await win.initSLIGeopoliticalTimeline();
  const all=flatten(root);
- const labels=all.map(x=>x.textContent||"");
+ const labels=all.map(x=>String(x.textContent||""));
  for(const name of ["Komoditas energi","Komoditas mineral dan logam","Perbandingan lintas komoditas","1950","Minyak WTI","Nikel"]){
   assert.ok(labels.some(x=>x.includes(name)),"Missing chart control or historical year: "+name);
  }
