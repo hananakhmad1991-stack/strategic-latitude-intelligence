@@ -166,6 +166,14 @@ test("BPS official-data shortcut builds geographically screened 32-province annu
   assert.match($("raModelResult").textContent,/32 entitas × 4 periode, 128 observasi/);
   assert.match($("raModelResult").textContent,/Re-estimations: 32\/32/);
   assert.match($("raModelResult").textContent,/Re-estimations: 4\/4/);
+  const refitDetails=[...$("raModelResult").querySelectorAll(".ra-wb-refit-details")];
+  assert.equal(refitDetails.length,2);
+  assert.equal(refitDetails[0].open,true,"Year-by-year details should be expanded by default");
+  assert.equal(refitDetails[0].querySelectorAll("tr").length,5,"Four annual refits plus header");
+  assert.equal(refitDetails[1].querySelectorAll("tr").length,33,"32 provincial refits plus header");
+  assert.match(refitDetails[0].textContent,/2022/);
+  assert.match(refitDetails[0].textContent,/2025/);
+  assert.match($("raModelResult").textContent,/PERHATIAN: baseline hanya 4 tahun/);
   assert.match($("raModelResult").textContent,/HASIL TIDAK STABIL/);
   assert.match($("raModelResult").textContent,/Maks \|Δβ\|/);
   assert.match($("raModelResult").textContent,/Maks Δ \(%\)/);
