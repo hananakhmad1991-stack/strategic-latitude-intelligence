@@ -14,7 +14,7 @@ test("Every SLI page inherits shared visual-export bootstrap without external ch
  assert.match(nav,/initSLIUniversalExport/);
  for(const path of ["sli-visual-export.js","sli-visual-export-formats.js","sli-visual-export.css"])assert.ok(nav.includes(path));
  assert.match(core,/MutationObserver/);
- assert.match(core,/register,export:exportVisual,refresh:queue/);
+ assert.match(core,/register,registerInsight,export:exportVisual,refresh:queue/);
  assert.match(core,/sli_embed/);
  assert.match(core,/SLIVisualFormats\.save/);
  assert.match(core,/getData\(host,visual\)/);
@@ -22,6 +22,14 @@ test("Every SLI page inherits shared visual-export bootstrap without external ch
  assert.match(css,/content:"SLI"/);
  assert.match(css,/rgba\(151,162,177,.19\)/);
  assert.match(css,/sli-visual-export-toolbar/);
+ assert.match(core,/function openVisualInsight\(event\)/);
+ assert.match(core,/pointInsights\.set\(visual,provider\)/);
+ assert.match(core,/document\.addEventListener\('click',openVisualInsight\)/);
+ assert.match(core,/#sliMapRoot,#geo-commodity-timeline/);
+ assert.match(core,/This visual observation alone cannot establish cause and effect/);
+ assert.match(css,/\.sli-visual-insight-fields/);
+ assert.match(css,/\.sli-visual-insight-selected/);
+
  assert.match(core,/\["jpg","JPG"\]/);
  assert.match(core,/host\.insertBefore\(toolbar,host\.firstChild\)/);
  assert.match(core,/data-sli-export-external-controls/);
