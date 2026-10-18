@@ -98,6 +98,7 @@ test("Panel stability quantifies one-unit/year refits and a time-FE specificatio
  assert.ok(report.leave_one_year_out.metrics.every(m=>Number.isFinite(m.max_relative_shift_pct)));
  assert.equal(report.alternative_time_specification.specification,"entity_only_FE");
  assert.equal(report.alternative_time_specification.coefficients.length,2);
+ assert.match(report.screening,/year fixed effects|time-FE specifications/i);
  const only8=rows.filter(r=>Number(r.province.slice(1))<8);
  const limited=panelStability(only8,["x"],"y","province","year",true);
  assert.equal(limited.leave_one_entity_out.available,false);
