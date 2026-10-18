@@ -1,7 +1,7 @@
 import {METHODS,getMethod,parseCsv,toRows,describe,evaluate} from "./sli-analytical-core.mjs?v=20261018-econ5";
 import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns,panelStability} from "./sli-econometrics.mjs?v=20261018-econ8";
 import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs?v=20261018-econ7";
-import {buildBpsOfficialPanel,BPS_PANEL_META} from "./sli-bps-official-panel.mjs?v=20261018-bps1";
+import {buildBpsOfficialPanel,BPS_PANEL_META} from "./sli-bps-official-panel.mjs?v=20261018-bps3";
 const $=id=>document.getElementById(id);
 const box=document.createElement("section");
 box.id="raAnalyticalWorkbench";box.className="sli-ra-method-workbench";
@@ -17,7 +17,7 @@ box.innerHTML=`<div class="ra-wb-header"><div><span class="ra-wb-kicker">SLI · 
 <p class="ra-wb-footnote">Data yang diunggah bukan sumber SLI terverifikasi. Model statistik lokal bersifat eksploratif; p-value, hubungan sebab-akibat, multiplier ekonomi dan hasil peramalan memerlukan desain riset serta validasi khusus.</p>`;
 const evidenceOptions=document.createElement("section");
 evidenceOptions.id="raOfficialBpsSource";evidenceOptions.className="ra-wb-official-source";
-evidenceOptions.innerHTML='<div><strong>Official Data Lab · BPS 2021–2025</strong><p>Gunakan panel provinsi 2022–2025 yang dihitung dari publikasi resmi PDRB BPS. Baseline seimbang: 34 provinsi × 4 tahun (136 observasi); empat provinsi baru di Papua tidak diimputasi. X bawaan: porsi PMTB tahun sebelumnya, Y: pertumbuhan PDRB riil.</p></div><div class="ra-wb-official-actions"><button type="button" id="raLoadOfficialBps">Gunakan data resmi BPS · 34 provinsi</button><a href="https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html" target="_blank" rel="noopener noreferrer">Baca sumber BPS ↗</a></div><small>Tidak termasuk rasio Gini 2026 atau data PLN 2024 sebagai seri tahunan. Nilai 2024 direvisi, 2025 sementara. Hanya analisis eksploratif; izin penggunaan ulang tabel komersial perlu diperiksa.</small>';
+evidenceOptions.innerHTML='<div><strong>Official Data Lab · BPS 2021–2025</strong><p>Gunakan panel provinsi 2022–2025 yang dihitung dari publikasi resmi PDRB BPS. Baseline validasi wilayah: 32 provinsi × 4 tahun (128 observasi). Papua dan Papua Barat lama tidak dimodelkan karena pemekaran 2023; empat provinsi Papua baru belum punya seri historis 2021–2022 yang sebanding. X bawaan: porsi PMTB tahun sebelumnya, Y: pertumbuhan PDRB riil.</p></div><div class="ra-wb-official-actions"><button type="button" id="raLoadOfficialBps">Gunakan panel BPS tersaring · 32 provinsi</button><a href="https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html" target="_blank" rel="noopener noreferrer">Baca sumber BPS ↗</a></div><small>Tidak termasuk rasio Gini 2026 atau data PLN 2024 sebagai seri tahunan. Nilai 2024 direvisi, 2025 sementara. Hanya analisis eksploratif; izin penggunaan ulang tabel komersial perlu diperiksa.</small>';
 box.prepend(evidenceOptions);
 const anchor=$("raOwnerPanel");anchor?.parentNode?.insertBefore(box,anchor);
 
@@ -28,7 +28,7 @@ function updateDatasetStatus(){
  if(officialBps&&data){
   el.dataset.source="bps";
   el.textContent="DATA AKTIF · BPS 2021–2025 · "+officialBps.entity_count+" provinsi × 4 tahun · "+data.length+
-   " observasi turunan. Sumber internal SLI sudah dimuat; kolom upload hanya untuk file milik pengguna.";
+   " observasi turunan. Sumber internal SLI sudah dimuat; kolom upload hanya untuk file milik pengguna. Papua/Papua Barat dikeluarkan karena perubahan wilayah administratif.";
  }else if(data){
   el.dataset.source="upload";
   el.textContent="DATA AKTIF · Upload pengguna · "+(filename||"dataset")+" · "+data.length+
@@ -72,7 +72,7 @@ function desc(){
    detail.textContent+=" PERHATIAN: arah ini menempatkan pertumbuhan sebagai X. Untuk PMTB → pertumbuhan, balik X dan Y.";
  }
  if(officialBps&&data&&["panel_fe","multivariate_ols"].includes(method.value))
-  detail.textContent+=" · DATA BPS 2021–2025: PMTB lag-1 dapat mengurangi keserentakan waktu, tetapi endogenitas tetap mungkin. Angka 2024 revisi/2025 sementara. Bukan estimasi kausal.";
+  detail.textContent+=" · PANEL TERSARING BPS 2021–2025: 32 wilayah stabil; Papua/Papua Barat dikeluarkan dari regresi karena pemekaran 2023. PMTB lag-1 bukan identifikasi kausal. Angka 2024 revisi/2025 sementara.";
  if(data&&method.value==="panel_fe"){
   if(!entity.value)detail.textContent+=" · Panel tidak siap: dataset tidak memiliki sedikitnya 8 identitas wilayah/perusahaan yang berulang di sejumlah tahun. Gunakan kolom province/entity dengan nilai kategori berulang.";
   if(!time.value)detail.textContent+=" · Panel tidak siap: kolom tahun (YYYY) tidak ditemukan.";
@@ -144,7 +144,7 @@ $("raLoadOfficialBps").addEventListener("click",async()=>{
   desc();
   show("Sumber terverifikasi sebagai publikasi BPS yang tercatat dalam SLI. "+p.n+" observasi turunan dari "+
    p.entity_count+" provinsi (2022–2025). X = PMTB share lag-1; Y = pertumbuhan PDRB riil. "+
-   "Model belum dihitung: tekan Hitung di Browser. Empat provinsi Papua baru tidak diimputasi.");
+   "Model belum dihitung: tekan Hitung di Browser. Enam wilayah Papua dikecualikan dari panel seimbang (dua wilayah induk berubah batas 2023, empat provinsi baru tanpa back-series).");
   result.dataset.origin="official_bps_derived";
   result.dataset.state="ready";
   updateDatasetStatus();
@@ -152,7 +152,7 @@ $("raLoadOfficialBps").addEventListener("click",async()=>{
   data=null;officialBps=null;model=null;last=null;
   error("Data BPS tidak siap: "+String(err.message||err).slice(0,220)+". Tidak ada observasi yang diimputasi.");
   updateDatasetStatus();
- }finally{button.disabled=false;button.textContent="Gunakan data resmi BPS · 34 provinsi"}
+ }finally{button.disabled=false;button.textContent="Gunakan panel BPS tersaring · 32 provinsi"}
 });
 
 datafile.addEventListener("change",async()=>{
@@ -362,10 +362,15 @@ function renderEconometricResult(fit,stability=null){
   p.textContent="Sumber: PDRB Provinsi Menurut Pengeluaran 2021–2025 (terbit 30 April 2026). "+
    "Panel "+officialBps.entity_count+" provinsi × 4 tahun (2022–2025); "+
    "pertumbuhan = perubahan PDRB ADHK 2010; PMTB lag-1 = PMTB tahun t−1 / PDRB ADHB tahun t−1 × 100. "+
-   "Empat provinsi baru Papua tanpa seri 2021–2022 tidak dimasukkan atau diimputasi. "+
+   "Papua dan Papua Barat dikeluarkan karena cakupan wilayah berubah pada 2023, sehingga penurunan PDRB akibat pemekaran tidak menjadi pertumbuhan ekonomi palsu. Empat provinsi Papua baru juga dikecualikan karena tidak ada seri 2021–2022. "+
    "PDRB 2024 berstatus revisi dan 2025 sementara. Hubungan statistik tidak membuktikan dampak kausal investasi.";
   prov.append(p);
   const link=document.createElement("a");link.href=officialBps.publication.url;link.textContent="Sumber primer BPS ↗";link.target="_blank";link.rel="noopener noreferrer";prov.append(link);
+  const audit=document.createElement("a");
+  audit.href="https://papuabarat.bps.go.id/id/publication/2024/04/04/038627aa90c2a310aaf907c6/gross-regional-domestic-product-of-papua-barat-province-by-industry-20192023.html";
+  audit.target="_blank";audit.rel="noopener noreferrer";
+  audit.textContent="BPS: perubahan wilayah Papua Barat 2023 ↗";
+  audit.style.marginLeft="12px";prov.append(audit);
   result.append(prov);
  }
  if(/(?:synthet|sintet|demo|simulation|simulasi)/i.test(filename)){
