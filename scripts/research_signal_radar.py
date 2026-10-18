@@ -41,6 +41,7 @@ TOPICS = [
     ("ai", "geopolitical", "chip_controls", "(AI chip OR GPU OR H100 OR H200 OR Blackwell OR semiconductor) (US China export restrictions OR export controls OR licensing OR tariffs) Southeast Asia", "GPU/semiconductor export controls", "Controls on accelerated computing or chips may change procurement access, costs and Indonesian AI infrastructure timelines."),
     ("ai", "geopolitical", "compute_competition", "(AI data centers OR AI datacenters OR hyperscale OR AI infrastructure) (Singapore Malaysia Indonesia Southeast Asia investment OR geopolitics)", "Regional data-center investment competition", "Regional power, connectivity and investment competition may affect relative project attractiveness and capital allocation."),
     ("ai", "geopolitical", "data_governance", "(cross-border data OR data sovereignty OR cloud sovereignty OR cyber sanctions) (ASEAN OR US OR China OR Singapore OR EU) regulation", "Cross-border data and sovereignty", "Cross-border data policy or cyber controls may affect compliance and cloud operating models in Indonesia."),
+    ("ai", "geopolitical", "china_ai", "(CGTN OR China Global Television Network) (artificial intelligence OR AI data center OR semiconductor OR AI model) (China OR Asia OR computing)", "China AI technologies and strategic development", "Chinese media reporting may signal relevant compute, model or semiconductor developments; compare with alternative market, academic and official sources."),
     ("ai", "geopolitical", "subsea", "(submarine cables OR undersea internet cables OR cloud connectivity) (South China Sea OR Singapore OR cyberattack OR disruption OR Asia)", "Subsea cable and connectivity resilience", "External network incidents may affect resilience or redundancy planning, not necessarily verified Indonesia outages."),
 
     # Onshore deployment, land/water/power, Komdigi governance and cloud operations
@@ -87,6 +88,7 @@ TITLE_RULES = {
     "environment": r"\\b(nikel|nickel|smelter|tambang|tailing|morowali|weda|mineral)\\b",
     "mineral_investment": r"\\b(freeport|inalum|antam|vale|mempawah|gresik|pomalaa|sorowako|baterai|battery)\\b",
     "chip_controls": r"\\b(gpu|semiconductor|semikonduktor|nvidia|chip|h100|h200|blackwell|ai accelerator)\\b",
+    "china_ai": r"\\b(ai|artificial intelligence|semiconductor|chip|gpu|data center|data centre|datacenter|machine learning|llm|ai model)\\b",
     "compute_competition": r"\\b(data\\s*cent(?:er|re)|hyperscale|data center|data centre|ai infrastructure|infrastruktur ai)\\b",
     "data_governance": r"\\b(sovereignty|data governance|cross.border data|cloud policy|data privacy|data protection|cyber|siber|pdpa|gdpr)\\b",
     "subsea": r"\\b(submarine cable|subsea|undersea|cable|kabel bawah laut|connectivity)\\b",
