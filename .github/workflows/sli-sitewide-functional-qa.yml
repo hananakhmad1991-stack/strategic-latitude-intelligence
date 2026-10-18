@@ -31,6 +31,9 @@ on:
       - 'tests/qa-sli-source-links.mjs'
       - 'sli-source-viewer.html'
       - 'js/sli-navigation.js'
+      - 'js/commodity-market-prices.js'
+      - 'js/sli-macro-overview.js'
+      - 'js/energy-prices-fiscal.js'
       - 'js/sli-visual-export.js'
       - 'js/sli-visual-export-formats.js'
       - 'css/sli-visual-export.css'
@@ -66,5 +69,8 @@ jobs:
           node --check js/sli-geopolitical-timeline.js
           node --check js/sli-visual-export.js
           node --check js/sli-visual-export-formats.js
+          node --check js/commodity-market-prices.js
+          node --check js/sli-macro-overview.js
+          node --check js/energy-prices-fiscal.js
       - name: Validate published SLI JSON and asset integrity
         run: node scripts/audit-sli-content-quality.mjs
