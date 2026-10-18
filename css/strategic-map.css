@@ -181,3 +181,39 @@
  .map-asset-insight{max-height:none}
  .map-insight-detail{max-height:58vh}
 }
+
+
+/* SLI 19 Oct 2026: primary asset insight, secondary opt-in catalogue.
+   Keep the evidence inspector within its own right column and scroll it;
+   never let long source dossiers paint over appendix / adjacent dashboards. */
+#sliMapRoot .map-mapgrid{grid-template-columns:minmax(0,1.55fr) minmax(330px,.95fr);align-items:start}
+#sliMapRoot .map-results{
+  box-sizing:border-box;min-width:0;height:clamp(440px,65vh,710px);
+  max-height:none!important;overflow:hidden;display:flex;flex-direction:column;
+  contain:layout;
+}
+#sliMapRoot .map-results-head{flex:0 0 auto;padding:12px 15px}
+#sliMapRoot .map-asset-insight{
+  flex:1 1 auto;min-height:0;max-height:none!important;
+  overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;
+  scrollbar-width:thin;scrollbar-color:#56778e #102a3c;
+}
+#sliMapRoot .map-insight-detail{max-height:none!important;overflow:visible;padding-bottom:22px}
+#sliMapRoot .map-insight-section p,#sliMapRoot .map-insight-scope{overflow-wrap:anywhere;word-break:normal}
+#sliMapRoot .map-results .map-list{display:none;min-height:0!important;flex:0 0 auto;max-height:220px!important;overflow-y:auto!important}
+#sliMapRoot .map-results.show-list .map-list{display:block}
+#sliMapRoot .map-results .map-list-item{padding:10px 4px}
+#sliMapRoot .map-results .map-list-item>p,#sliMapRoot .map-results .map-list-item>div{display:none}
+#sliMapRoot .map-results .map-list-item h4{margin:4px 0}
+#sliMapRoot .map-expand{margin-top:5px}
+#sliMapRoot .map-results .map-list-item[aria-pressed="true"]{background:#29485c!important}
+@media(max-width:1070px){
+ #sliMapRoot .map-mapgrid{grid-template-columns:minmax(0,1fr)}
+ #sliMapRoot .map-results{height:auto;min-height:270px;max-height:none!important;contain:none}
+ #sliMapRoot .map-asset-insight{max-height:min(65vh,650px)!important;flex:none}
+ #sliMapRoot .map-results .map-list{max-height:260px!important}
+}
+@media(max-width:650px){
+ #sliMapRoot .map-results-head{padding:10px 12px}
+ #sliMapRoot .map-insight-detail h4{font-size:15px!important}
+}
