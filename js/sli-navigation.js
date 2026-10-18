@@ -68,7 +68,7 @@ function mastLink(to,caption,current){
  if(current)a.setAttribute('aria-current','page');return a;
 }
 function renderPlatformMast(){
- const use=dashboardPage();
+ const use=path==='sli-source-viewer.html'?false:dashboardPage();
  document.body.classList.toggle('sli-dashboard-unified',use);
  let mast=document.getElementById('sliPlatformMast');
  if(!use){if(mast)mast.hidden=true;return}
@@ -154,6 +154,7 @@ function renderPlatformMast(){
 }
 
 function renderBar(){
+ if(path==='sli-source-viewer.html')return;
  renderPlatformMast();
  const target=document.querySelector('main.main')||document.querySelector('main')||document.body;
  let bar=document.getElementById('sliUniversalNavigation');
@@ -211,6 +212,9 @@ function normalizeSLISourceLinks(){
   const target=sliSourceViewerHref(a.getAttribute("href"));
   if(!target)continue;
   a.dataset.sliHumanSourceLink="1";
+  const visible=(a.textContent||"").trim();
+  if(/\bPDF\b/i.test(visible))a.textContent='Buka rujukan dokumen (PDF jika tersedia) ↗';
+  else if(/\bJSON\b/i.test(visible))a.textContent='Lihat keterangan sumber & unduh JSON ↗';
   a.href=target;
   a.title=(a.title?a.title+" · ":"")+"Source notes and publisher PDF where available; raw JSON via explicit download";
  }
