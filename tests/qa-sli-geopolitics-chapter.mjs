@@ -186,3 +186,54 @@ test("Multi-commodity atlas actually renders three independent charts with selec
  const plot=flatten(root).find(x=>x.className==="sli-geo-timeline-legend");
  assert.ok(plot&&plot.children.length===1,"Single should display exactly one series");
 });
+
+test("Clicking a gold event synchronizes all three charts and opens sourced bilingual lessons with prices",async()=>{
+ const root=new Element("div");root.id="sliGeoTimelineRoot";
+ const doc={createElement:t=>new Element(t),createElementNS:(_ns,t)=>new Element(t),getElementById:id=>id==="sliGeoTimelineRoot"?root:null};
+ const events=JSON.parse(read("data/sli-geopolitical-events.json"));
+ const prices=JSON.parse(read("data/sli-geopolitical-commodity-prices.json"));
+ const fetch=async uri=>({ok:true,json:async()=>{
+  if(uri.endsWith("sli-geopolitical-events.json"))return events;
+  if(uri.endsWith("sli-geopolitical-commodity-prices.json"))return prices;
+  return {articles:[]};
+ }});
+ const win={SLIi18n:{language:"id"}};
+ runInNewContext(read("js/sli-geopolitical-timeline.js"),{window:win,document:doc,fetch,URL,Intl,Date,Math,Number,Set,Map,Promise,console});
+ await win.initSLIGeopoliticalTimeline();
+ let nodes=flatten(root);
+ const marker=nodes.find(x=>x.tag==="g"&&x.attrs["data-event-date"]==="2022-02-24");
+ assert.ok(marker,"Event dot must have an interactive SVG hit target");
+ assert.equal(marker.attrs.role,"button");
+ assert.equal(marker.attrs.tabindex,0);
+ assert.ok(marker.listeners.has("click")&&marker.listeners.has("keydown"));
+ assert.ok(nodes.some(x=>x.tag==="circle"&&x.attrs.r===19),"Marker must have a generous transparent hit area");
+ marker.listeners.get("click")();
+ nodes=flatten(root);
+ assert.equal(nodes.filter(x=>x.tag==="g"&&x.attrs["data-event-date"]==="2022-02-24"&&x.attrs["aria-pressed"]==="true").length,3);
+ const insights=nodes.filter(x=>(x.className||"").includes("sli-geo-event-insight"));
+ assert.equal(insights.length,3,"Every chart's note must switch to this event lesson");
+ assert.ok(nodes.some(x=>String(x.textContent||"").includes("Rusia memulai invasi skala penuh")));
+ assert.ok(nodes.some(x=>String(x.textContent||"").includes("Bulan kejadian MoM")));
+ assert.ok(nodes.some(x=>String(x.textContent||"").includes("Pelajaran yang bisa diambil")));
+ assert.ok(nodes.some(x=>String(x.textContent||"").includes("Peristiwa terpilih: ")));
+ const next=nodes.find(x=>x.className==="sli-geo-event-nav-next");
+ assert.ok(next&&!next.disabled);
+ next.listeners.get("click")();
+ nodes=flatten(root);
+ assert.ok(nodes.some(x=>x.tag==="g"&&x.attrs["data-event-date"]==="2023-07-17"&&x.attrs["aria-pressed"]==="true"),"Next jumps to chronological event");
+ const reset=nodes.find(x=>x.className==="sli-geo-event-nav-reset");
+ reset.listeners.get("click")();
+ nodes=flatten(root);
+ assert.equal(nodes.filter(x=>(x.className||"").includes("sli-geo-event-insight")).length,0,"Reset restores general analysis");
+ assert.equal(nodes.filter(x=>(x.className||"").includes("sli-geo-timeline-interpretation")).length,3);
+ // Keyboard interaction and events predating price data retain accurate missing-observation labels.
+ const first=nodes.find(x=>x.tag==="g"&&x.attrs["data-event-date"]==="1950-06-25");
+ assert.ok(first);
+ first.listeners.get("keydown")({key:"Enter",preventDefault(){}});
+ nodes=flatten(root);
+ assert.ok(nodes.some(x=>String(x.textContent||"").includes("Belum ada observasi acuan pada 1950-06")));
+ assert.equal(nodes.filter(x=>x.tag==="g"&&x.attrs["data-event-date"]==="1950-06-25"&&x.attrs["aria-pressed"]==="true").length,3);
+ for(const event of events.events)for(const k of ["chronology","id_chronology","market_context","id_market_context","lesson","id_lesson"]){
+  assert.ok(typeof event[k]==="string"&&event[k].length>=35,event.date+" missing "+k);
+ }
+});
