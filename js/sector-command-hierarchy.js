@@ -33,7 +33,7 @@ source.then(db=>{
  const legend=el("div","sli-hier-legend");for(const [key,title] of Object.entries(typeName)){if(["reporting","policy","coordination","planning","portfolio","equity","minority","research","market","oversight","joint-venture"].includes(key))legend.append(el("span","sli-hier-key "+key,title))}main.append(legend);
  main.append(el("p","sli-hier-foot",db.updated_note+" Reported shareholding and direct official reporting must not be conflated with coordination or related-industry links."));
  root.replaceChildren(main);
- const defaultExpanded=new Set(["pres","minister","industrial","investment","komdigi","dgE","dgI","bpi","dam","mind","telkom","brin"]);
+ const defaultExpanded=new Set(["pres","minister","esdm","industrial","investment","komdigi","dgE","dgI","bpi","dam","mind","telkom","brin","bpbum-ai","kemendagri-ai"]);
  // The energy adapter has source-indexed IDs. Resolve the same L2 visibility
  // by actor title rather than only static IDs from the minerals/AI registers.
  for(const a of actors)if(/Kementerian ESDM \/ Minister|Kementerian Dalam Negeri|BP BUMN|Coordinating Ministry for Downstreaming/i.test(a.title))defaultExpanded.add(a.id);
