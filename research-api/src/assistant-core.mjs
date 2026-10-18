@@ -84,6 +84,11 @@ export function classifyResearchSector(question){
 }
 export function evidenceSector(d){
  const topic=normalize(d.topic),title=normalize(d.title),text=normalize(d.text).slice(0,220);
+ if(topic.startsWith("energy security indonesia national ")){
+  const sector=topic.slice("energy security indonesia national ".length).trim();
+  if(["oil_gas","coal","renewables","power","energy"].includes(sector))return sector;
+  if(["fiscal","investment","assessment"].includes(sector))return "energy";
+ }
  const combined=title+" "+topic+" "+text;
  if(hasPhrase(topic,"minerals")||hasPhrase(topic,"mineral")||hasPhrase(topic,"critical minerals")||/smelter|hpal|nickel|nikel|copper|tembaga/.test(topic))return "minerals";
  if(topic==="ai"||hasPhrase(topic,"ai infrastructure")||hasPhrase(topic,"digital infrastructure")||hasPhrase(topic,"data center"))return "ai";
@@ -182,8 +187,8 @@ export function validateAssistantPayload(body){
 }
 export function selectResearchEvidence(documents,question,history=[],tier="pro",max=10){
  const latestPrevious=[...history].reverse().find(h=>h.role==="user")?.content||"";
- const scopedQuery=question.length<65&&/^(why|how|what|and|bagaimana|lalu|kenapa|mengapa|dampaknya|apa lagi|risikonya)/i.test(question)?
-  latestPrevious+" "+question:question;
+ const referential=question.length<220&&/^(why|how|what|and|bagaimana|lalu|kenapa|mengapa|dampaknya|apa lagi|risikonya|perdalam|lanjut|lanjutkan|koreksi|revisi|perbaiki|tambahkan data|perbarui|bandingkan hasil|tolong jelaskan|jelaskan lagi|buat lebih rinci)/i.test(question);
+ const scopedQuery=referential&&latestPrevious?latestPrevious+" "+question:question;
  const geos=requestedProvinces(scopedQuery),intent=classifyResearchSector(scopedQuery);
  const eligible=(Array.isArray(documents)?documents:[]).slice(0,10000).filter(d=>
   d&&typeof d.id==="string"&&/^[a-zA-Z0-9_-]{2,90}$/.test(d.id)&&
@@ -194,8 +199,31 @@ export function selectResearchEvidence(documents,question,history=[],tier="pro",
  const ranked=eligible.map(d=>({d,score:relevance(d,scopedQuery)+(geos.includes(canonicalRegion(d.geo))?40:0)+
   (intent.primary&&evidenceSector(d)===intent.primary?60:0)}))
   .filter(x=>x.score>0).sort((a,b)=>b.score-a.score||a.d.id.localeCompare(b.d.id));
- const chosen=[],seenProjects=new Set();
+ const chosen=[],seenProjects=new Set(),selectedIds=new Set();
+ // Broad national energy security questions need minimum cross-sector coverage,
+ // not 10 similar oil-price/project hits caused by lexical overlap.
+ const broadNationalEnergy=intent.primary==="energy"&&geos.length===0&&
+  /ketahanan energi|energy security|energy resilience|pasokan energi nasional|national energy supply/i.test(scopedQuery);
+ if(broadNationalEnergy){
+  const priority=[
+   "sli_energy_oil_production","sli_energy_gas_production",
+   "sli_energy_fuel_quota_pertalite","sli_energy_subsidy_compensation_2026",
+   "sli_energy_coal_production","sli_energy_coal_dmo",
+   "sli_energy_nre_policy","sli_energy_rupTL",
+   "sli_energy_realized_investment_2025","sli_energy_daily_geopolitics"
+  ];
+  for(const id of priority){
+   const d=eligible.find(d=>d.id===id);
+   if(!d||selectedIds.has(id)||chosen.length>=max)continue;
+   selectedIds.add(d.id);
+  chosen.push({id:d.id,title:d.title,text:d.text.slice(0,2000),source_url:d.source_url,
+    period:String(d.period||"not specified"),source_date:String(d.source_date||"not specified"),
+    publisher:String(d.publisher||"undisclosed"),geo:String(d.geo||"unclassified"),topic:String(d.topic||"")});
+   selectedIds.add(id);
+  }
+ }
  for(const {d} of ranked){
+  if(selectedIds.has(d.id))continue;
   const match=d.id.match(/sli-project-\d+|aiproject-[a-z0-9-]+/);
   if(match&&seenProjects.has(match[0]))continue;
   if(match)seenProjects.add(match[0]);
@@ -231,6 +259,10 @@ export function modelRequest(payload,evidence,model){
  let instruction=[
  "You are Strategic Latitude Intelligence Research AI, a general-purpose academic, scientific, policy and professional research assistant. Serve researchers, universities, students, businesses and investors across disciplines, not only Indonesian economy and investment.",
  "Generate actual analytical prose—not search results or a list of clickable links. Analyse relationships, distinguish facts from inferences and avoid generic filler.",
+ "A factual synthesis of energy security must compare at least: 2025 upstream production/lifting, 2026 quota/import/price exposure where available, fiscal subsidy-vs-compensation, coal DMO, electricity capacity reliability, energy-transition realized vs planned figures, and dated exogenous risks. Never generalize a national assessment from one LNG project or global Brent spot prices alone.",
+ "First state the most important numeric official indicators, with year/unit/source citations, and explain what each DOES and DOES NOT establish. Explicitly name gaps such as crude/refined product import volume where credible harmonised series have not been supplied; do not substitute unrelated proxies.",
+ "Sourced SLI snapshots are current only through their source and corpus dates. Headlines discovered by monitoring are unverified until checked against original reporting; do not present them as confirmed real-time news or invent live web-search actions.",
+ "For a user follow-up, correction, or dissatisfaction, address the precise critique directly, preserve the relevant earlier topic and source context, revise unsupported statements, and identify what changed. Do not repeat an unchanged original report.",
  "The user may be a NONTECHNICAL INVESTOR, not an econometrician. Translate the business question into research steps; select the most suitable method automatically when the user has not chosen one. Do NOT demand X/Y variable selection, regression terminology or 49 method menus from the user.",
  "The SLI catalogue lists 49 research methods but only seven have implemented browser calculators. A method in the catalogue is NOT evidence its estimator ran or its required datasets exist. State explicitly whether a method was actually run with validated inputs, was only suggested, or cannot be computed yet.",
  "For refinery/oil-and-gas investment cases, identify refinery type and capacity, crude feedstock, procurement/offtake, suitable ports, electricity, industrial water, environmental permits, operational risks, costs and logistics before discussing economic returns. Treat an investor's indicative IDR 5 trillion as a BUDGET CEILING, not proven sufficient CAPEX or financing.",
