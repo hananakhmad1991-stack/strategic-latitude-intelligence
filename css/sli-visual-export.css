@@ -1,0 +1,31 @@
+/* Strategic Latitude Intelligence — universal provenance and export controls */
+.sli-visual-export-host{position:relative!important;isolation:isolate;min-width:0}
+.sli-visual-export-host::after{
+  content:"SLI";position:absolute;right:14px;bottom:49px;z-index:3;
+  font:900 clamp(21px,3.3vw,46px)/1 system-ui,Arial,sans-serif;
+  letter-spacing:.08em;color:rgba(151,162,177,.19);pointer-events:none!important;
+  user-select:none!important;text-shadow:0 1px 0 rgba(17,38,55,.1);
+}
+.sli-visual-export-host:has(>table)::after{bottom:48px}
+.sli-visual-export-toolbar{
+  display:flex;align-items:center;justify-content:flex-end;gap:5px 7px;flex-wrap:wrap;
+  min-height:38px;padding:7px 7px 5px;margin:8px 0 0;background:rgba(13,35,53,.78);
+  border-top:1px solid rgba(109,132,152,.35);border-radius:0 0 7px 7px;
+  position:relative;z-index:5;box-sizing:border-box;
+}
+.sli-visual-export-toolbar button{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:28px;min-width:42px;padding:4px 8px;cursor:pointer;
+  font:700 11px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;
+  border:1px solid #4d667f;border-radius:6px;background:#213c53;color:#e8edf3;
+}
+.sli-visual-export-toolbar button:hover:not(:disabled){background:#355771;border-color:#e9c67f;color:#fff4df}
+.sli-visual-export-toolbar button:focus-visible{outline:2px solid #f1ce8a;outline-offset:2px}
+.sli-visual-export-toolbar button:disabled{opacity:.55;cursor:wait}
+.sli-visual-export-feedback{font:500 11px/1.3 system-ui,sans-serif;color:#d8c28e;max-width:300px;min-height:13px}
+@media(max-width:550px){
+  .sli-visual-export-toolbar{justify-content:flex-start;padding:6px;gap:5px}
+  .sli-visual-export-toolbar button{min-height:32px;min-width:43px}
+  .sli-visual-export-host::after{font-size:24px;right:9px;bottom:50px}
+}
+@media print{.sli-visual-export-toolbar{display:none!important}.sli-visual-export-host::after{opacity:.55}}
