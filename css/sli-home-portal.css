@@ -1,6 +1,7 @@
 /* Original SLI Navy–Gold portal: navigation-first homepage.
    Legacy #overview and all existing sector dashboards are preserved.
    Does not change the Research AI workspace palette or layout. */
+@media(min-width:651px){body.sli-home-active .sidebar{position:sticky;top:0;height:100vh;height:100dvh;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#4d6980 #0d1e30}}
 body.sli-home-active .main>.top{gap:16px;align-items:center}
 body.sli-home-active .main>.top h1{font-size:23px}
 body.sli-home-active .main>.top .eyebrow{font-size:10px}
