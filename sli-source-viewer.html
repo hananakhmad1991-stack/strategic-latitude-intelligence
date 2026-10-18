@@ -16,6 +16,19 @@ const D={
 "usgs-indonesia-minerals-2026.json":["USGS Mineral Commodity Summaries · Indonesia","US Geological Survey","2026","https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf","https://www.usgs.gov/centers/national-minerals-information-center","Data mineral dengan satuan dan tahun observasi yang berbeda-beda."]
 };
 const safely=url=>typeof url==="string"&&/^https:\/\//.test(url)&&!/\.(json|csv)(?:[?#]|$)/i.test(url);
+const collectReferences=data=>{
+ const out=[],seen=new Set();
+ const visit=(x,depth)=>{
+  if(depth>4||out.length>=7||x==null)return;
+  if(Array.isArray(x)){for(const v of x.slice(0,22))visit(v,depth+1);return}
+  if(typeof x!=="object")return;
+  for(const [key,v] of Object.entries(x).slice(0,32)){
+   if(["url","source","source_url","pdf_url","report_url","publication_url","publisher_url","landing_page","source_pdf","document_url"].includes(key)&&safely(v)&&!seen.has(v)){seen.add(v);out.push(v)}
+   else if(typeof v==="object")visit(v,depth+1);
+  }
+ };
+ visit(data,0);return out;
+};
 const external=(label,url,cls,id)=>{if(!safely(url))return;const a=document.createElement("a");a.textContent=label;a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.className=cls||"";$(id).append(a)};
 if(!correct){$("status").textContent="Tautan sumber tidak valid. Silakan kembali ke dashboard.";return}
 const record=D[name]||[name.replace(/\.json$/,"").replace(/[-_]+/g," "),"SLI data inventory (original publisher pending)","Periode sumber bervariasi",null,null,"Belum ada tautan PDF penerbit yang terverifikasi pada registri ini. Data mentah ini merupakan bahan dashboard; jangan disebut PDF asli."];
@@ -26,6 +39,9 @@ try{
  $("title").textContent=record[0];$("publisher").textContent=record[1];$("period").textContent=record[2];$("description").textContent=record[5];
  if(record[3]&&/\.pdf(?:[?#]|$)/i.test(record[3]))external("Buka PDF asli dari penerbit ↗",record[3],"primary","actions");
  if(record[4])external("Buka halaman dokumen resmi ↗",record[4],"secondary","actions");
+ const references=collectReferences(data).filter(url=>url!==record[3]&&url!==record[4]);
+ for(const url of references){const host=new URL(url).hostname;external((/\\.pdf(?:[?#]|$)/i.test(url)?"PDF dirujuk di metadata: ":"Referensi dari metadata: ")+host+" ↗",url,"secondary","actions")}
+ if(references.length){const label=document.createElement("p");label.textContent="Tautan dari metadata sumber: versi, cakupan dan aksesibilitas perlu dicek di penerbit; bukan pengesahan verifikasi independen.";label.className="notice";$("actions").append(label)}
  if(!$("actions").children.length)$("actions").textContent="Belum ada PDF asli/halaman penerbit yang dapat diidentifikasi dari sumber ini.";
  const fields=Array.isArray(data)?["Array: "+data.length+" record",...Object.keys(data[0]||{}).slice(0,15)]:Object.keys(data||{}).slice(0,18);
  for(const v of fields){const li=document.createElement("li");li.textContent=v;$("fields").append(li)}
