@@ -105,7 +105,7 @@ test("1950–present geopolitical events, source-dated commodity plots, and moni
  assert.match(chapterJs,/initSLIGeopoliticalTimeline/);
  assert.match(graph,/function pearson\(/);
  assert.match(graph,/publisher_publication_date/);
- assert.match(graph,/claim_corroborated|without review|peninjauan editorial/i);
+ assert.match(graph,/until reviewed|tidak otomatis|excluded from statistical event indicators/i);
  assert.equal(JSON.parse(read("data/sli-geopolitical-chapter.json")).assessments.length,8);
  assert.ok(Array.isArray(prices.observations));
  if(prices.observations.length){
@@ -115,4 +115,36 @@ test("1950–present geopolitical events, source-dated commodity plots, and moni
   assert.ok(prices.series_coverage.coal_australia);
   assert.ok(prices.observations.every(o=>Number.isFinite(o.brent)&&o.brent>0));
  }
+});
+
+test("1950 historical axis and safe multi-benchmark computation",()=>{
+ const graph=read("js/sli-geopolitical-timeline.js");
+ const win={SLIi18n:{language:"en"}},doc={};
+ runInNewContext(graph,{window:win,document:doc,URL,Intl,Date,Math,Number,Set,Map,Promise,console},{filename:"sli-geopolitical-timeline.js"});
+ const tools=win.SLIGeoTimelineCompute;
+ assert.ok(tools);
+ const prices=JSON.parse(read("data/sli-geopolitical-commodity-prices.json"));
+ const events=JSON.parse(read("data/sli-geopolitical-events.json")).events;
+ assert.ok(events[0].date.startsWith("1950"));
+ assert.equal(prices.observations[0].month,"1960-01");
+ assert.ok(prices.series_coverage.wti.first.startsWith("1982"));
+ for(const key of ["brent","wti","dubai","coal_australia","gas_europe","lng_japan","nickel","copper","tin","aluminum","gold","silver"]){
+  assert.ok(prices.series_coverage[key]?.count>300,key+" data coverage missing");
+  const series=tools.seriesFrom(prices.observations,key,1950);
+  assert.equal(series[0].month,prices.series_coverage[key].first,key+" improperly backfilled");
+  assert.ok(series.every(p=>p.value>0&&p.month>="1960-01"),key+" includes invalid or pre-1960 observations");
+ }
+ assert.equal(tools.returns([{month:"2020-01",value:100},{month:"2020-03",value:150}]).length,0,"Do not infer changes across missing February");
+ assert.equal(tools.returns([{month:"2020-01",value:100},{month:"2020-02",value:110}]).length,1);
+ const wti=tools.seriesFrom(prices.observations,"wti",1950);
+ const desc=tools.eventStats(wti,events);
+ assert.ok(desc.monthly.length>300);
+ assert.ok(desc.r===null||(desc.r>=-1&&desc.r<=1));
+ assert.match(graph,/common|first common observed month/);
+ assert.match(graph,/group==="cross"/);
+ assert.match(graph,/Different physical units detected/);
+ assert.match(graph,/Maximum five lines per chart/);
+ assert.match(graph,/year\*12/);
+ assert.match(graph,/tx\("From year","Mulai tahun"\)/);
+ assert.match(graph,/1950,1960,1970/);
 });
