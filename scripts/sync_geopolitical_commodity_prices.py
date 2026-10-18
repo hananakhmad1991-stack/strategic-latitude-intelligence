@@ -54,8 +54,8 @@ def download():
  raise RuntimeError(f"World Bank monthly workbook unavailable: {err}")
 
 def find_header(sheet):
- for r in range(1,min(sheet.max_row,25)+1):
-  cells={c: str(sheet.cell(r,c).value or "").strip().lower() for c in range(1,min(sheet.max_column,100)+1)}
+ for r,values in enumerate(sheet.iter_rows(min_row=1,max_row=min(sheet.max_row,25),values_only=True),1):
+  cells={col: str(value or "").strip().lower() for col,value in enumerate(values[:100],1)}
   matches={}
   for key,pats in COLS.items():
    for col,label in cells.items():
@@ -78,14 +78,13 @@ def parse(blob):
  sheet,header,columns=best
  items={}
  today=dt.datetime.now(dt.timezone.utc).strftime("%Y-%m")
- for r in range(header+1,sheet.max_row+1):
-  row=[sheet.cell(r,c).value for c in range(1,max(columns.values())+1)]
+ for row in sheet.iter_rows(min_row=header+1,values_only=True):
   month=month_of(row[0])
   if not month and len(row)>1: month=month_of(row[1])
   if not month or month < "1990-01" or month > today: continue
   obj={"month":month}
   for key,column in columns.items():
-   raw=row[column-1]
+   raw=row[column-1] if column<=len(row) else None
    try:
     numeric=float(raw)
     if not (numeric>0 and numeric<1000000): continue
