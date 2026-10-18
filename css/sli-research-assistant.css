@@ -63,3 +63,24 @@
 .sli-ra-owner-input{margin:12px 0;display:flex;flex-direction:column;gap:5px}.sli-ra-owner-input label{font-size:12px;font-weight:650}
 .sli-ra-owner-input input{max-width:490px;border:1px solid #96b0c6;border-radius:9px;background:#fff;color:#20384a;padding:10px 12px;font-size:14px}
 .sli-ra-owner-input[hidden]{display:none}
+
+/* Deterministic visual insights, source-cited and accessible without chart libraries */
+.sli-ra-visuals{margin:4px 0 20px;padding:14px;border:1px solid #c4d9ea;border-radius:12px;background:#f7fbff}
+.sli-ra-visuals>h3{margin:0 0 12px;font-size:14px!important;letter-spacing:.01em}
+.sli-ra-chart{background:#fff;border:1px solid #d8e5ef;border-radius:10px;margin:12px 0;padding:16px;max-width:100%}
+.sli-ra-chart-heading{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;margin-bottom:13px}
+.sli-ra-chart-heading strong{font-size:13px}.sli-ra-chart-heading span{font-size:11px;color:#607a90}
+.sli-ra-chart-row{display:grid;grid-template-columns:minmax(105px,1fr) minmax(55px,2fr) minmax(60px,auto);gap:9px;align-items:center;margin:9px 0}
+.sli-ra-chart-label{font-size:11px;line-height:1.25;overflow-wrap:anywhere}
+.sli-ra-chart-track{height:16px;border-radius:4px;background:#eaf1f7;position:relative;overflow:hidden}
+.sli-ra-chart-bar{height:100%;background:#276abe;border-radius:4px;min-width:2px}
+.sli-ra-chart-value{font-size:11px;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;color:#214564}
+.sli-ra-chart-source a{font-size:10px}.sli-ra-chart-note{font-size:11px!important;line-height:1.45;color:#617789!important;margin:12px 0 0!important}
+.sli-ra-table-wrap{max-width:100%;overflow-x:auto;margin:12px 0}
+.sli-ra-report-table{border-collapse:collapse;width:100%;font-size:12px;min-width:340px}
+.sli-ra-report-table th,.sli-ra-report-table td{border:1px solid #d4e0e9;padding:8px;text-align:left;vertical-align:top}
+.sli-ra-report-table th{background:#edf5fa;color:#214d6b}
+.sli-ra-msg-text h4{font-size:14px;color:#2a5677;margin:13px 0 5px}
+.sli-ra-msg-text ol{margin:8px 0 14px;padding-left:23px}
+.sli-ra-msg-text code{background:#eef4f9;padding:1px 3px;border-radius:3px;font-size:.92em}
+@media(max-width:650px){.sli-ra-visuals{padding:8px}.sli-ra-chart{padding:11px}.sli-ra-chart-row{grid-template-columns:minmax(65px,1fr) minmax(48px,1fr) minmax(48px,auto);gap:6px}.sli-ra-chart-label,.sli-ra-chart-value{font-size:10px}}

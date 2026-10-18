@@ -55,7 +55,7 @@ function append(role,text){
  box.append(node("div","sli-ra-msg-meta",role==="user"?tr("user"):role==="assistant"?tr("assistant"):tr("system")));
  const body=node("div","sli-ra-msg-text");
  box.append(body);$("raMessages").append(box);
- if(role==="assistant")renderMarkdown(text,body);else body.textContent=text;
+ if(role==="assistant"&&window.SLIResearchVisuals)window.SLIResearchVisuals.renderMarkdown(text,body,state.lastResult?.sources||[]);else body.textContent=text;
  return body;
 }
 function renderParagraph(text,where){
@@ -105,7 +105,8 @@ function makeExport(){
  if(!state.lastResult)return "";
  const last=state.lastResult,heading=state.language==="id"?"Laporan SLI Research AI":"SLI Research AI Report";
  const citations=last.sources.map((s,i)=>"["+(i+1)+"] "+String(s.title||"Source")+" — "+String(s.period||"n.d.")+" — "+String(s.source_url||"")).join("\n");
- return "# "+heading+"\n\n"+last.answer+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
+ const figures=(last.charts||[]).map(c=>"### "+c.title+" ("+c.period+" · "+c.unit+")\n"+c.points.map(p=>"- "+p.label+": "+p.value+" ["+p.source+"]").join("\n")+"\n"+c.note).join("\n\n");
+ return "# "+heading+"\n\n"+last.answer+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
  "\n\n"+(state.language==="id"?"Dihasilkan oleh layanan AI; sumber tetap harus diverifikasi.":"AI-assisted draft; verify all original sources.")+"\n";
 }
 async function submit(){
@@ -136,12 +137,13 @@ async function submit(){
   if(!response.ok)throw Error(payload?.error||"HTTP "+response.status);
   if(!payload||typeof payload.answer!=="string"||payload.mode!=="generative_rag"||!Array.isArray(payload.sources))throw Error("invalid_response");
   loading.parentNode?.remove();
-  state.lastResult={answer:payload.answer,sources:payload.sources,question,mode};
-  append("assistant",payload.answer);
+  state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],question,mode};
+  const report=append("assistant",payload.answer);
+  window.SLIResearchVisuals?.renderCharts(state.lastResult.charts,report,state.lastResult.sources,state.language);
   renderSources(payload.sources);
   state.history.push({role:"user",content:question},{role:"assistant",content:payload.answer.slice(0,5000)});
   state.history=state.history.slice(-8);
-  status(tr("ready"),"ready");
+  status(usingOwner?(state.language==="id"?"Laporan Owner Test selesai; verifikasi sitasi dan grafik sebelum digunakan.":"Owner Test report completed; verify citations and figures before use."):tr("ready"),"ready");
  }catch(err){
   if(id===state.sequence){loading.parentNode?.remove();append("system",tr("requestFail")+" ("+String(err?.message||"unavailable").slice(0,75)+")");status(tr("requestFail"))}
  }finally{
