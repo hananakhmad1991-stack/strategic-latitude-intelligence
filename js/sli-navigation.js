@@ -195,6 +195,16 @@ window.addEventListener('hashchange',()=>renderBar());
 document.addEventListener('sli:pagechange',()=>renderBar());
 document.addEventListener('sli:languagechange',render);
 window.SLIArchitecture={modules,groups,related,refresh:render};
+ // Shared context for all dashboards: attributable secondary news and dated OSINT.
+ function mountSecondaryEvidence(){
+  if(document.getElementById('sliSecondaryEvidenceLoader'))return;
+  const script=document.createElement('script');script.id='sliSecondaryEvidenceLoader';
+  script.src='./js/sli-secondary-evidence.js?v=20261018-sitewide1';script.defer=true;
+  document.head.appendChild(script);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mountSecondaryEvidence,{once:true});
+ else mountSecondaryEvidence();
+
 
 // SLI source attribution: JSON is machine data, not an original PDF.
 function sliSourceViewerHref(href){
