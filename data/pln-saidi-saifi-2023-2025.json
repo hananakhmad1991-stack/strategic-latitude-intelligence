@@ -1,0 +1,863 @@
+{
+  "title": "PLN Electricity Continuity — SAIDI & SAIFI",
+  "source_table": "Table 16, PLN Statistics, annual 2023/2024/2025",
+  "original_publisher": "PT PLN (Persero)",
+  "data_status": "official_reported_pln_unit_observations",
+  "as_of": "2026-10-19",
+  "latest_reporting_year": 2025,
+  "indicators": {
+    "saidi": {
+      "label": "SAIDI",
+      "definition": "System Average Interruption Duration Index: average duration of sustained customer interruptions.",
+      "unit": "hours/customer/year",
+      "lower_is_better": true
+    },
+    "saifi": {
+      "label": "SAIFI",
+      "definition": "System Average Interruption Frequency Index: average frequency of sustained customer interruptions.",
+      "unit": "interruptions/customer/year",
+      "lower_is_better": true
+    }
+  },
+  "sources": {
+    "2023": "https://web.pln.co.id/statics/uploads/2024/08/Statistik-PLN-2023-29.7.24-1.pdf",
+    "2024": "https://web.pln.co.id/statics/uploads/2025/09/Statistik-PLN-2024-Ind-Eng.pdf",
+    "2025": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf"
+  },
+  "national": {
+    "2023": {
+      "saidi": 5.64,
+      "saifi": 4.27
+    },
+    "2024": {
+      "saidi": 5.34,
+      "saifi": 3.23
+    },
+    "2025": {
+      "saidi": 8.48,
+      "saifi": 3.23
+    }
+  },
+  "regions": {
+    "2023": {
+      "java": {
+        "saidi": 3.92,
+        "saifi": 3.15
+      },
+      "outside_java": {
+        "saidi": 8.17,
+        "saifi": 5.93
+      }
+    },
+    "2024": {
+      "java": {
+        "saidi": 2.69,
+        "saifi": 2.16
+      },
+      "outside_java": {
+        "saidi": 9.2,
+        "saifi": 4.79
+      }
+    },
+    "2025": {
+      "java": {
+        "saidi": 2.58,
+        "saifi": 2.2
+      },
+      "outside_java": {
+        "saidi": 17.02,
+        "saifi": 4.73
+      }
+    }
+  },
+  "provinces": [
+    {
+      "name": "Aceh",
+      "reporting_unit_ids": [
+        "aceh"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Sumatera Utara",
+      "reporting_unit_ids": [
+        "sumut"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Sumatera Barat",
+      "reporting_unit_ids": [
+        "sumbar"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Riau",
+      "reporting_unit_ids": [
+        "riau_kepri"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Kepulauan Riau",
+      "reporting_unit_ids": [
+        "riau_kepri",
+        "batam"
+      ],
+      "granularity": "multiple_overlapping_pln_service_units"
+    },
+    {
+      "name": "Jambi",
+      "reporting_unit_ids": [
+        "sumsel_jambi_bengkulu"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Sumatera Selatan",
+      "reporting_unit_ids": [
+        "sumsel_jambi_bengkulu"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Bengkulu",
+      "reporting_unit_ids": [
+        "sumsel_jambi_bengkulu"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Kepulauan Bangka Belitung",
+      "reporting_unit_ids": [
+        "babel"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Lampung",
+      "reporting_unit_ids": [
+        "lampung"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Banten",
+      "reporting_unit_ids": [
+        "banten"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "DKI Jakarta",
+      "reporting_unit_ids": [
+        "jakarta"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Jawa Barat",
+      "reporting_unit_ids": [
+        "jabar"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Jawa Tengah",
+      "reporting_unit_ids": [
+        "jateng_diy"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "DI Yogyakarta",
+      "reporting_unit_ids": [
+        "jateng_diy"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Jawa Timur",
+      "reporting_unit_ids": [
+        "jatim"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Bali",
+      "reporting_unit_ids": [
+        "bali"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Nusa Tenggara Barat",
+      "reporting_unit_ids": [
+        "ntb"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Nusa Tenggara Timur",
+      "reporting_unit_ids": [
+        "ntt"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Kalimantan Barat",
+      "reporting_unit_ids": [
+        "kalbar"
+      ],
+      "granularity": "single_province_labelled_pln_unit"
+    },
+    {
+      "name": "Kalimantan Tengah",
+      "reporting_unit_ids": [
+        "kalsel_kalteng"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Kalimantan Selatan",
+      "reporting_unit_ids": [
+        "kalsel_kalteng"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Kalimantan Timur",
+      "reporting_unit_ids": [
+        "kaltim_kaltara"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Kalimantan Utara",
+      "reporting_unit_ids": [
+        "kaltim_kaltara"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Sulawesi Utara",
+      "reporting_unit_ids": [
+        "sulut_sulteng_gorontalo"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Gorontalo",
+      "reporting_unit_ids": [
+        "sulut_sulteng_gorontalo"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Sulawesi Tengah",
+      "reporting_unit_ids": [
+        "sulut_sulteng_gorontalo"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Sulawesi Barat",
+      "reporting_unit_ids": [
+        "sulsel_sultra_sulbar"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Sulawesi Selatan",
+      "reporting_unit_ids": [
+        "sulsel_sultra_sulbar"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Sulawesi Tenggara",
+      "reporting_unit_ids": [
+        "sulsel_sultra_sulbar"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Maluku",
+      "reporting_unit_ids": [
+        "maluku_malut"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Maluku Utara",
+      "reporting_unit_ids": [
+        "maluku_malut"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Papua Barat",
+      "reporting_unit_ids": [
+        "papua_pabar"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Papua",
+      "reporting_unit_ids": [
+        "papua_pabar"
+      ],
+      "granularity": "multi_province_unit_proxy"
+    },
+    {
+      "name": "Papua Selatan",
+      "reporting_unit_ids": [],
+      "granularity": "province_data_not_separately_available"
+    },
+    {
+      "name": "Papua Tengah",
+      "reporting_unit_ids": [],
+      "granularity": "province_data_not_separately_available"
+    },
+    {
+      "name": "Papua Pegunungan",
+      "reporting_unit_ids": [],
+      "granularity": "province_data_not_separately_available"
+    },
+    {
+      "name": "Papua Barat Daya",
+      "reporting_unit_ids": [],
+      "granularity": "province_data_not_separately_available"
+    }
+  ],
+  "records": [
+    {
+      "id": "aceh",
+      "unit": "UID Aceh",
+      "provinces": [
+        "Aceh"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 7.19,
+          "saifi": 5.51
+        },
+        "2024": {
+          "saidi": 10.38,
+          "saifi": 5.13
+        },
+        "2025": {
+          "saidi": 212.47,
+          "saifi": 9.46
+        }
+      }
+    },
+    {
+      "id": "sumut",
+      "unit": "UID Sumatera Utara",
+      "provinces": [
+        "Sumatera Utara"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 7.05,
+          "saifi": 5.22
+        },
+        "2024": {
+          "saidi": 6.15,
+          "saifi": 3.56
+        },
+        "2025": {
+          "saidi": 8.55,
+          "saifi": 2.39
+        }
+      }
+    },
+    {
+      "id": "sumbar",
+      "unit": "UID Sumatera Barat",
+      "provinces": [
+        "Sumatera Barat"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 3.62,
+          "saifi": 2.03
+        },
+        "2024": {
+          "saidi": 6.55,
+          "saifi": 3.46
+        },
+        "2025": {
+          "saidi": 25.38,
+          "saifi": 1.84
+        }
+      }
+    },
+    {
+      "id": "riau_kepri",
+      "unit": "UID Riau dan Kepulauan Riau",
+      "provinces": [
+        "Riau",
+        "Kepulauan Riau"
+      ],
+      "scope": "multi_province_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 7.51,
+          "saifi": 5.14
+        },
+        "2024": {
+          "saidi": 3.79,
+          "saifi": 1.5
+        },
+        "2025": {
+          "saidi": 7.42,
+          "saifi": 5.82
+        }
+      }
+    },
+    {
+      "id": "sumsel_jambi_bengkulu",
+      "unit": "UID Sumatera Selatan, Jambi dan Bengkulu",
+      "provinces": [
+        "Sumatera Selatan",
+        "Jambi",
+        "Bengkulu"
+      ],
+      "scope": "multi_province_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 9.03,
+          "saifi": 5.21
+        },
+        "2024": {
+          "saidi": 13.93,
+          "saifi": 5.38
+        },
+        "2025": {
+          "saidi": 11.9,
+          "saifi": 5.74
+        }
+      }
+    },
+    {
+      "id": "babel",
+      "unit": "UIW Bangka Belitung",
+      "provinces": [
+        "Kepulauan Bangka Belitung"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 1.66,
+          "saifi": 2.48
+        },
+        "2024": {
+          "saidi": 0.88,
+          "saifi": 1.94
+        },
+        "2025": {
+          "saidi": 0.74,
+          "saifi": 1.93
+        }
+      }
+    },
+    {
+      "id": "lampung",
+      "unit": "UID Lampung",
+      "provinces": [
+        "Lampung"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 12.01,
+          "saifi": 6.33
+        },
+        "2024": {
+          "saidi": 27.75,
+          "saifi": 6.33
+        },
+        "2025": {
+          "saidi": 6.15,
+          "saifi": 4.05
+        }
+      }
+    },
+    {
+      "id": "kalbar",
+      "unit": "UID Kalimantan Barat",
+      "provinces": [
+        "Kalimantan Barat"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 14.87,
+          "saifi": 13.47
+        },
+        "2024": {
+          "saidi": 11.86,
+          "saifi": 11.42
+        },
+        "2025": {
+          "saidi": 13.01,
+          "saifi": 11.11
+        }
+      }
+    },
+    {
+      "id": "kalsel_kalteng",
+      "unit": "UID Kalimantan Selatan dan Tengah",
+      "provinces": [
+        "Kalimantan Selatan",
+        "Kalimantan Tengah"
+      ],
+      "scope": "multi_province_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 9.53,
+          "saifi": 6.88
+        },
+        "2024": {
+          "saidi": 5.89,
+          "saifi": 5.37
+        },
+        "2025": {
+          "saidi": 7.77,
+          "saifi": 5.09
+        }
+      }
+    },
+    {
+      "id": "kaltim_kaltara",
+      "unit": "UID Kalimantan Timur dan Utara",
+      "provinces": [
+        "Kalimantan Timur",
+        "Kalimantan Utara"
+      ],
+      "scope": "multi_province_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 11.3,
+          "saifi": 9.18
+        },
+        "2024": {
+          "saidi": 8.12,
+          "saifi": 7.35
+        },
+        "2025": {
+          "saidi": 4.62,
+          "saifi": 4.25
+        }
+      }
+    },
+    {
+      "id": "sulut_sulteng_gorontalo",
+      "unit": "UID Sulawesi Utara, Tengah dan Gorontalo",
+      "provinces": [
+        "Sulawesi Utara",
+        "Sulawesi Tengah",
+        "Gorontalo"
+      ],
+      "scope": "multi_province_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 11.73,
+          "saifi": 10.61
+        },
+        "2024": {
+          "saidi": 19.48,
+          "saifi": 8.92
+        },
+        "2025": {
+          "saidi": 9.82,
+          "saifi": 8.4
+        }
+      }
+    },
+    {
+      "id": "sulsel_sultra_sulbar",
+      "unit": "UID Sulawesi Selatan, Tenggara dan Barat",
+      "provinces": [
+        "Sulawesi Selatan",
+        "Sulawesi Tenggara",
+        "Sulawesi Barat"
+      ],
+      "scope": "multi_province_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 11.75,
+          "saifi": 7.64
+        },
+        "2024": {
+          "saidi": 7.58,
+          "saifi": 5.28
+        },
+        "2025": {
+          "saidi": 8.34,
+          "saifi": 5.27
+        }
+      }
+    },
+    {
+      "id": "maluku_malut",
+      "unit": "UIW Maluku dan Maluku Utara",
+      "provinces": [
+        "Maluku",
+        "Maluku Utara"
+      ],
+      "scope": "multi_province_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 1.29,
+          "saifi": 3.14
+        },
+        "2024": {
+          "saidi": 1.03,
+          "saifi": 2.51
+        },
+        "2025": {
+          "saidi": 1.18,
+          "saifi": 2.29
+        }
+      }
+    },
+    {
+      "id": "papua_pabar",
+      "unit": "UIW Papua dan Papua Barat",
+      "provinces": [
+        "Papua",
+        "Papua Barat"
+      ],
+      "scope": "legacy_unit_label_scope_unverified",
+      "values": {
+        "2023": {
+          "saidi": 7.5,
+          "saifi": 6.78
+        },
+        "2024": {
+          "saidi": 5.57,
+          "saifi": 4.44
+        },
+        "2025": {
+          "saidi": 4.35,
+          "saifi": 3.77
+        }
+      }
+    },
+    {
+      "id": "bali",
+      "unit": "UID Bali",
+      "provinces": [
+        "Bali"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 0.91,
+          "saifi": 0.86
+        },
+        "2024": {
+          "saidi": 1.04,
+          "saifi": 0.91
+        },
+        "2025": {
+          "saidi": 5.28,
+          "saifi": 2.19
+        }
+      }
+    },
+    {
+      "id": "ntb",
+      "unit": "UIW Nusa Tenggara Barat",
+      "provinces": [
+        "Nusa Tenggara Barat"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 3.61,
+          "saifi": 3.13
+        },
+        "2024": {
+          "saidi": 3.03,
+          "saifi": 2.59
+        },
+        "2025": {
+          "saidi": 2.48,
+          "saifi": 2.31
+        }
+      }
+    },
+    {
+      "id": "ntt",
+      "unit": "UIW Nusa Tenggara Timur",
+      "provinces": [
+        "Nusa Tenggara Timur"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 2.51,
+          "saifi": 4.11
+        },
+        "2024": {
+          "saidi": 1.59,
+          "saifi": 2.03
+        },
+        "2025": {
+          "saidi": 1.66,
+          "saifi": 2.05
+        }
+      }
+    },
+    {
+      "id": "batam",
+      "unit": "PT PLN Batam",
+      "provinces": [
+        "Kepulauan Riau"
+      ],
+      "scope": "distinct_operator_batam",
+      "values": {
+        "2023": {
+          "saidi": 8.51,
+          "saifi": 3.6
+        },
+        "2024": {
+          "saidi": 2.17,
+          "saifi": 2.45
+        },
+        "2025": {
+          "saidi": 1.7,
+          "saifi": 2.25
+        }
+      }
+    },
+    {
+      "id": "jatim",
+      "unit": "UID Jawa Timur",
+      "provinces": [
+        "Jawa Timur"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 2.91,
+          "saifi": 2.49
+        },
+        "2024": {
+          "saidi": 1.63,
+          "saifi": 1.78
+        },
+        "2025": {
+          "saidi": 1.59,
+          "saifi": 1.64
+        }
+      }
+    },
+    {
+      "id": "jateng_diy",
+      "unit": "UID Jawa Tengah dan Yogyakarta",
+      "provinces": [
+        "Jawa Tengah",
+        "DI Yogyakarta"
+      ],
+      "scope": "multi_province_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 4.73,
+          "saifi": 3.62
+        },
+        "2024": {
+          "saidi": 2.95,
+          "saifi": 2.28
+        },
+        "2025": {
+          "saidi": 3.01,
+          "saifi": 2.3
+        }
+      }
+    },
+    {
+      "id": "jabar",
+      "unit": "UID Jawa Barat",
+      "provinces": [
+        "Jawa Barat"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 5.64,
+          "saifi": 4.49
+        },
+        "2024": {
+          "saidi": 4.28,
+          "saifi": 3.11
+        },
+        "2025": {
+          "saidi": 3.9,
+          "saifi": 3.3
+        }
+      }
+    },
+    {
+      "id": "banten",
+      "unit": "UID Banten",
+      "provinces": [
+        "Banten"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 1.88,
+          "saifi": 1.33
+        },
+        "2024": {
+          "saidi": 1.67,
+          "saifi": 1.04
+        },
+        "2025": {
+          "saidi": 0.37,
+          "saifi": 0.58
+        }
+      }
+    },
+    {
+      "id": "jakarta",
+      "unit": "UID Jakarta Raya",
+      "provinces": [
+        "DKI Jakarta"
+      ],
+      "scope": "single_province_labelled_pln_unit",
+      "values": {
+        "2023": {
+          "saidi": 0.5,
+          "saifi": 0.71
+        },
+        "2024": {
+          "saidi": 0.43,
+          "saifi": 0.65
+        },
+        "2025": {
+          "saidi": 1.82,
+          "saifi": 1.18
+        }
+      }
+    }
+  ],
+  "quality_notes": [
+    "Publisher reports SAIDI and SAIFI by PLN service unit, not a complete 38-province standalone series. Each shared-unit value must NOT be copied as a separately observed province value.",
+    "Kepulauan Riau has overlapping UID Riau dan Kepulauan Riau and PT PLN Batam; values must NOT be summed or averaged into an unverified provincial number.",
+    "The 2023–2025 UIW Papua dan Papua Barat unit label predates the current six-province Papua territorial structure. Separate statistics for Papua Selatan, Tengah, Pegunungan and Barat Daya are not verified here.",
+    "Single-province-labelled PLN units should be described as utility service-unit values rather than official geographic province estimates.",
+    "Comparisons describe published interruptions but are not causal analysis; confirm severe disturbances, boundary changes and exceptional events before interpreting abrupt shifts (notably Aceh 2025).",
+    "National aggregates are publisher-reported, not unweighted averages of reporting units. No imputations, prorating or synthetic province-wide estimates have been introduced.",
+    "Source reports document annual observations; a new publication must be independently reviewed before automatic replacement. 2025 table transcribed from PLN Statistics 2025, p.18 (printed), Table 16."
+  ]
+}
