@@ -110,13 +110,15 @@ function ensure(host,visual){
  visuals.set(id,host);
  const toolbar=$("div",{class:"sli-visual-export-toolbar",role:"group","aria-label":tr("Export this visualization","Ekspor visualisasi ini")});
  const announce=$("span",{class:"sli-visual-export-feedback","aria-live":"polite"},"");
- const buttons=[["csv","CSV"],["xlsx","Excel"],["png","PNG"],["pdf","PDF"],["embed",tr("Embed","Sematkan")]];
+ const buttons=[["csv","CSV"],["xlsx","Excel"],["png","PNG"],["jpg","JPG"],["pdf","PDF"],["embed",tr("Embed","Sematkan")]];
  for(const [format,label] of buttons){
   const b=$("button",{type:"button","data-sli-export-format":format,title:tr("Export ","Ekspor ")+label},label);
   b.addEventListener("click",()=>exportOne(host,format,b,announce));
   toolbar.append(b);
  }
- toolbar.append(announce);host.append(toolbar);
+ toolbar.append(announce);
+ if(host.hasAttribute("data-sli-export-external-controls"))toolbar.hidden=true;
+ host.insertBefore(toolbar,host.firstChild);
  if(new URLSearchParams(location.search).get("sli_embed")===id)showEmbed(host);
 }
 function scan(){
@@ -235,6 +237,7 @@ function copyString(s){
  const ok=document.execCommand?.("copy");t.remove();if(!ok)throw Error("Clipboard unavailable");return Promise.resolve();
 }
 async function exportOne(host,format,button,feedback){
+ button=button||{disabled:false};feedback=feedback||{textContent:""};
  button.disabled=true;feedback.textContent=tr("Preparing…","Menyiapkan…");
  try{
   const visual=activeVisual(host);if(!visual)throw Error("No supported chart/table currently rendered");
@@ -245,10 +248,10 @@ async function exportOne(host,format,button,feedback){
    meta.completeness=raw.kind==="verified-provider"?"Full registered plotted observations":
     raw.kind==="table"?"Visible table rows":"VISIBLE ELEMENTS ONLY — NOT full underlying numeric dataset";
    blob=format==="csv"?window.SLIVisualFormats.csv({...raw,meta}):window.SLIVisualFormats.xlsx({...raw,meta});
-  }else if(format==="png"||format==="pdf"){
+  }else if(format==="png"||format==="jpg"||format==="pdf"){
    const canvas=await capture(host,visual,meta);
    if(format==="pdf")blob=window.SLIVisualFormats.pdf(canvas);
-   else blob=await new Promise((resolve,reject)=>canvas.toBlob(x=>x?resolve(x):reject(Error("PNG encoding failed")),"image/png"));
+   else blob=await new Promise((resolve,reject)=>canvas.toBlob(x=>x?resolve(x):reject(Error(format.toUpperCase()+" encoding failed")),format==="jpg"?"image/jpeg":"image/png",.93));
   }else if(format==="embed"){
    const url=new URL(location.href);url.searchParams.set("sli_embed",host.dataset.sliVisualExportId);
    const iframe='<iframe src="'+url.toString().replace(/&/g,"&amp;").replace(/"/g,"&quot;")+'" title="SLI — '+meta.title.replace(/&/g,"&amp;").replace(/"/g,"&quot;")+'" width="100%" height="520" loading="lazy" style="border:1px solid #37536b;border-radius:8px"></iframe>';
@@ -271,6 +274,17 @@ function start(){
  document.addEventListener("sli:pagechange",queue);
  document.addEventListener("sli:languagechange",queue);
 }
-window.SLIVisualExport={version:VERSION,register,refresh:queue,inspect:(id)=>{const h=visuals.get(id);const visual=h&&activeVisual(h);return visual?{...metadata(h),rows:getData(h,visual).rows.length}:null}};
+async function exportVisual(target,format,feedback){
+ if(typeof target==="string")target=document.getElementById(target)||visuals.get(target);
+ if(!target)throw Error("Export visualization not found");
+ const host=target.classList?.contains("sli-visual-export-host")?target:(isChart(target)?findHost(target):target);
+ if(!host)throw Error("Export host not found");
+ const visual=isChart(target)?target:activeVisual(host);
+ if(!visual)throw Error("Chart data not rendered");
+ ensure(host,visual);
+ return exportOne(host,format,null,feedback);
+}
+window.SLIVisualExport={version:VERSION,register,export:exportVisual,refresh:queue,inspect:(id)=>{const h=visuals.get(id);const visual=h&&activeVisual(h);return visual?{...metadata(h),rows:getData(h,visual).rows.length}:null}};
+document.dispatchEvent(new Event("sli:exportready"));
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
 })();
