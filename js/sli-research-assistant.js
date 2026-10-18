@@ -28,18 +28,19 @@ const MESSAGES={id:{
  example:"Use as research prompt",noSources:"No sources were returned by the service.",caution:"Verify important facts and primary publications."
 }};
 const PROMPTS={
+ refinery:{mode:"deep_research",id:"Saya memiliki anggaran investasi Rp5 triliun dan mempertimbangkan pembangunan kilang minyak bumi di Nusa Tenggara Barat (NTB). Saya investor nonteknis. Pilihkan metodologi yang paling sesuai. Susun screening investasi awal: jenis dan kapasitas kilang (jika belum diketahui tanyakan asumsi kunci), sumber dan jaminan pasokan crude, permintaan BBM, pilihan lokasi, logistik pelabuhan, energi, air, izin dan lingkungan, pembiayaan, risiko, serta peluang tenaga kerja. Jelaskan bagaimana menghitung multiplier effect dengan tabel Input-Output resmi Indonesia / IRIO jika tersedia; JANGAN mengarang angka multiplier, IRR, NPV, pekerjaan atau kelayakan proyek tanpa data input dan model numerik yang dijalankan. Berikan skenario transparan, visualisasi hanya bila angka sumber tersedia, dan rekomendasi due diligence dengan sitasi.",en:"I have an indicative IDR 5 trillion budget to develop an oil refinery in West Nusa Tenggara (NTB). I am a nontechnical investor. Choose suitable methodologies automatically. Screen refining scope/capacity and feedstock (ask for any missing critical inputs), crude supply, fuel demand, port and power infrastructure, water, permits and environmental issues, financing, project risks, sector employment. Explain how official Indonesia IO/IRIO tables would be used to calculate multipliers, but DO NOT fabricate multiplier, IRR, NPV, jobs or project feasibility values. Provide transparent scenario data requirements and source-cited due diligence recommendations."},
  energy:{mode:"executive_summary",id:"Buat executive summary komprehensif tentang ketahanan energi Indonesia berdasarkan data terbaru yang tersedia di SLI. Bahas produksi migas, kebutuhan impor, subsidi BBM dan listrik, transisi energi, risiko geopolitik jalur perdagangan, ketahanan pasokan, serta rekomendasi kebijakan dan implikasi investasi. Pisahkan data terverifikasi, analisis dan ketidakpastian. Sertakan sitasi dan tanggal data.",en:"Create a source-grounded executive summary of Indonesia's energy security. Assess oil and gas production, import dependence, fuel and electricity subsidies, energy transition, geopolitical shipping risks, supply resilience and strategic investment implications. Distinguish verified observations from inference and uncertainty, with dated citations."},
  ai:{mode:"deep_research",id:"Lakukan riset mendalam mengenai prospek pembangunan AI data center Indonesia hingga 2030. Analisis proyek investor utama, kapasitas rencana versus kapasitas beroperasi, kebutuhan listrik dan pendinginan, Batam versus Jawa Barat, insentif, tantangan regulasi, kelayakan investasi dan peluang kerja sama Korea Selatan. Buat analisis menyeluruh dengan sumber, bukan daftar berita.",en:"Conduct an in-depth research assessment of Indonesia's AI data center prospects through 2030. Analyse investor project pipeline, planned versus operational capacity, power and cooling constraints, Batam versus West Java, investment incentives, regulation and Korean cooperation. Provide an evidence-backed report, not a list of links."},
  province:{mode:"comparative_analysis",id:"Bandingkan Jawa Tengah dan Jawa Barat untuk investasi industri dan data center. Gunakan pertumbuhan PDRB, PMTB, konsumsi rumah tangga, ketimpangan pengeluaran, infrastruktur energi, bukti proyek, risiko izin dan tenaga kerja. Jelaskan perbedaan periode statistik, peluang sektoral, keterbatasan data, dan pertanyaan due diligence yang harus dijawab investor. Hindari mencampur data kedua provinsi.",en:"Compare Central Java and West Java for industrial and data center investment using GRDP growth, capital formation, household spending, expenditure inequality, energy infrastructure, project milestones and due diligence risks. Keep the regions and reporting periods strictly separate, and explain what the evidence cannot establish."},
  mineral:{mode:"risk_opportunity",id:"Susun Risk & Opportunity Assessment mengenai mineral kritis dan hilirisasi Indonesia, khususnya nikel, tembaga dan rantai nilai baterai. Evaluasi cadangan dan kapasitas, pelaksanaan smelter, pengaruh investor asing, energi, ESG, geopolitik rantai pasok, insentif, risiko regulasi, dan skenario hingga 2030. Cantumkan sumber data dan rekomendasi strategis yang bisa diuji.",en:"Prepare a risk and opportunity assessment of Indonesia's critical minerals downstreaming, focusing on nickel, copper and batteries. Evaluate project implementation, foreign investors, energy, ESG exposure, geopolitical supply chains, incentives, legal uncertainties and scenario assumptions to 2030, with evidence and verifiable recommendations."}
 };
-const state={language:"id",config:null,history:[],lastResult:null,busy:false,sequence:0};
+const state={language:"id",config:null,history:[],lastResult:null,busy:false,sequence:0,filesSupported:false,features:null};
 const ownerConfigured=()=>state.config?.owner_test?.enabled===true&&!!safeUrl(state.config?.owner_test?.endpoint||"")&&new URL(state.config.owner_test.endpoint).pathname==="/v1/owner-research";
 function tr(key){return MESSAGES[state.language][key]||key}
 function node(tag,cls,text){const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=String(text);return x}
 function safeUrl(url){try{const u=new URL(url);return u.protocol==="https:"?u.href:null}catch{return null}}
 function status(text,level="warning"){$("raNotice").textContent=text;$("raNotice").dataset.level=level}
-function enableControls(){const hasResult=!!state.lastResult;$("raCopy").disabled=!hasResult;$("raExport").disabled=!hasResult;$("raSend").disabled=state.busy}
+function enableControls(){const hasResult=!!state.lastResult;$("raCopy").disabled=!hasResult;$("raExport").disabled=!hasResult;$("raSend").disabled=state.busy;$("raChatFiles").disabled=state.busy}
 function isConfigured(){
  const c=state.config;
  return c?.schema==="sli-research-assistant-config-v1"&&c.api_enabled===true&&c.login_enabled===true&&c.generation_status==="enabled"&&!!safeUrl(c.api_endpoint||"");
@@ -80,6 +81,7 @@ function renderSources(sources,answer="",charts=[]){
 function reset(){
  state.sequence++;state.history=[];state.lastResult=null;state.busy=false;
  $("raMessages").replaceChildren();$("raSourcesList").replaceChildren();$("raConversation").hidden=true;$("raPrompt").value="";
+ $("raChatFiles").value="";$("raChatUploadConsent").checked=false;updateFileStatus();
  enableControls();$("raPrompt").focus();
 }
 function makeExport(){
@@ -90,10 +92,40 @@ function makeExport(){
  return "# "+heading+"\n\n"+(state.language==="id"?"**Cakupan:** Analisis corpus terkurasi, bukan data live. Periksa sumber dan tanggal.":"**Scope:** Curated corpus, not live data. Verify sources and observation dates.")+"\n\n"+last.answer+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
  "\n\n"+(state.language==="id"?"Dihasilkan oleh layanan AI; sumber tetap harus diverifikasi.":"AI-assisted draft; verify all original sources.")+"\n";
 }
+function updateFileStatus(){
+ const files=[...$("raChatFiles").files];
+ const el=$("raAttachmentStatus");
+ if(!files.length){el.textContent=state.language==="id"?"Belum ada lampiran.":"No attachments.";return}
+ try{
+  if(!state.features)throw Error("Attachment validation module has not loaded");
+  state.features.recognizedFiles(files);
+  el.textContent=files.map(f=>f.name+" ("+Math.ceil(f.size/1024)+" KB)").join(" · ")+
+   (ownerConfigured()?" · Uji privat: akan dikirim HANYA jika Anda menyetujui dan mengirim pertanyaan.":" · Belum dapat dikirim: unggahan multimodal baru tersedia pada Owner Test.");
+ }catch(e){el.textContent="Lampiran belum bisa digunakan: "+String(e.message||e)}
+}
+function methodStatus(){
+ const select=$("raChatMethod"),el=$("raChatMethodStatus");
+ if(select.value==="auto"){
+  el.textContent=state.language==="id"?"AI memilih rancangan metodologi sesuai tujuan dan bukti. Model numerik hanya dijalankan jika mesin dan inputnya tersedia.":"AI recommends methodology based on objective and evidence. Numeric execution requires an available engine and valid inputs.";
+  return;
+ }
+ const m=state.features?.METHODS?.find(x=>x.id===select.value);
+ el.textContent=m?.status==="local"?
+  "Mesin lokal tersedia bila data yang memenuhi syarat diberikan. Memilih nama metode dalam chat tidak otomatis menjalankan perhitungan.":
+  "Metode tersedia sebagai panduan desain riset; kalkulasi numeriknya BELUM tersedia. AI tidak boleh mengklaim telah menjalankannya.";
+}
+
 async function submit(){
  const question=$("raPrompt").value.trim(),mode=$("raMode").value;
  if(question.length<6||question.length>5000){status(state.language==="id"?"Tuliskan instruksi 6–5000 karakter.":"Enter an instruction with 6–5000 characters.");return}
  if(state.busy)return;
+ const files=[...$("raChatFiles").files];
+ if(files.length){
+  if(!ownerConfigured()){status("Unggah PDF/gambar/office belum aktif untuk pelanggan. Uji privat saja; kirim pertanyaan tanpa lampiran.");return;}
+  if(!$("raChatUploadConsent").checked){status("Setujui pengiriman lampiran ke penyedia AI atau kosongkan unggahan file.");return;}
+  try{if(!state.features)state.features=await import("./sli-investor-chat.mjs?v=20261018-chatfirst1");state.features.recognizedFiles(files)}
+  catch(e){status("Lampiran ditolak: "+String(e.message||e).slice(0,150));return}
+ }
  const id=++state.sequence;
  append("user",question);$("raPrompt").value="";
  if(!isConfigured()&&!ownerConfigured()){append("system",tr("inactive"));status(tr("prelaunch"));return}
@@ -110,7 +142,14 @@ async function submit(){
  let workbenchAddon={methodology:"auto"};
  try{workbenchAddon=window.SLIAnalyticalWorkbench?.getRequestAddon?.()||workbenchAddon}
  catch(e){loading.parentNode?.remove();state.busy=false;enableControls();append("system",String(e.message||"Invalid uploaded data context"));return}
- const requestBody={question,mode,language:state.language,history:state.history.slice(-8),...workbenchAddon};
+ const requestedMethod=$("raChatMethod").value||"auto";
+ const requestBody={question,mode,language:state.language,history:state.history.slice(-8),...workbenchAddon,methodology:requestedMethod};
+ if(files.length){
+  try{
+   requestBody.attachments=await state.features.encodeAttachments(files);
+   requestBody.upload_consent=true;
+  }catch(e){loading.parentNode?.remove();state.busy=false;enableControls();status("Lampiran belum dikirim: "+String(e.message||e).slice(0,180));return}
+ }
  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),60000);
  try{
   const endpoint=usingOwner?state.config.owner_test.endpoint:state.config.api_endpoint;
@@ -131,6 +170,7 @@ async function submit(){
   renderSources(payload.sources,payload.answer,state.lastResult.charts);
   state.history.push({role:"user",content:question},{role:"assistant",content:payload.answer.slice(0,5000)});
   state.history=state.history.slice(-8);
+  $("raChatFiles").value="";$("raChatUploadConsent").checked=false;delete requestBody.attachments;updateFileStatus();
   status(usingOwner?(state.language==="id"?"Laporan Owner Test selesai; verifikasi sitasi dan grafik sebelum digunakan.":"Owner Test report completed; verify citations and figures before use."):tr("ready"),"ready");
  }catch(err){
   if(id===state.sequence){loading.parentNode?.remove();append("system",tr("requestFail")+" ("+String(err?.message||"unavailable").slice(0,75)+")");status(tr("requestFail"))}
@@ -147,13 +187,19 @@ function setResearchLanguage(language){
   button.classList.toggle("active",active);
   button.setAttribute("aria-pressed",String(active));
  });
- $("raPrompt").placeholder=language==="id"?"Contoh: Buat executive summary ketahanan energi Indonesia dengan sitasi dan implikasi investasi.":"Example: Write an executive summary of Indonesia's energy security with citations and investment implications.";
+ $("raPrompt").placeholder=language==="id"?"Contoh: Saya punya Rp5 triliun untuk bangun kilang migas di NTB. Pilihkan metode dan analisis risiko serta multiplier jika datanya memungkinkan.":"Example: I have IDR 5 trillion for an oil refinery in NTB. Choose the methods and evaluate risks and multipliers if evidence permits.";
  if(state.config&&!isConfigured()&&!ownerConfigured())status(language==="id"?(state.config.published_notice_id||tr("prelaunch")):(state.config.published_notice_en||tr("prelaunch")));
 }
 async function init(){
+ try{
+  state.features=await import("./sli-investor-chat.mjs?v=20261018-chatfirst1");
+  state.features.fillChatMethods($("raChatMethod"));
+ }catch(e){status("Library metodologi belum bisa dimuat; mode otomatis tetap tersedia.");}
+ $("raChatMethod").addEventListener("change",methodStatus);
+ $("raChatFiles").addEventListener("change",updateFileStatus);
  $("raAssistantForm").addEventListener("submit",e=>{e.preventDefault();submit()});
  document.querySelectorAll("[data-ra-lang]").forEach(button=>button.addEventListener("click",()=>setResearchLanguage(button.dataset.raLang)));
- setResearchLanguage(state.language);
+ setResearchLanguage(state.language);methodStatus();updateFileStatus();
  $("raNew").addEventListener("click",reset);
  $("raCopy").addEventListener("click",async()=>{if(!state.lastResult)return;try{await navigator.clipboard.writeText(makeExport());status(tr("copied"),"ready")}catch{status(tr("copyFail"))}});
  $("raExport").addEventListener("click",()=>{if(!state.lastResult)return;const file=new Blob([makeExport()],{type:"text/markdown;charset=utf-8"});const url=URL.createObjectURL(file);const a=node("a");a.href=url;a.download="SLI-research-brief.md";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url)});
@@ -165,6 +211,7 @@ async function init(){
   state.config=await r.json();
   if(ownerConfigured()){
    $("raOwnerInputRow").hidden=false;
+   $("raOwnerPanel").open=true;
    $("raOwnerState").textContent="Ready for owner-token test";
    $("raAccessLabel").textContent="Research AI · Owner Test";
    status(state.language==="id"?"Backend Owner Test tersedia. Masukkan token pribadi pada panel, lalu tulis prompt riset.":"Owner test backend available. Enter the private token and send a research prompt.","ready");
@@ -180,5 +227,5 @@ async function init(){
  }catch{status(tr("invalid"))}
 }
 document.addEventListener("DOMContentLoaded",init);
-window.SLIResearchAssistant=Object.freeze({version:"2026-10-18-quality",generation_requires_backend:true});
+window.SLIResearchAssistant=Object.freeze({version:"2026-10-18-chat-first",generation_requires_backend:true,method_catalog_count:49,owner_attachment_staging:true});
 })();
