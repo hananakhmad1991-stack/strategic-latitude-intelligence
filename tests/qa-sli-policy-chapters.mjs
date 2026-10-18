@@ -13,6 +13,8 @@ test("All Policy chapters 01–05 have data-led panels and safe first-party inte
  assert.match(index,/css\/sli-policy-chapter-insights\.css/);
  assert.match(styles,/sli-policy-insight-grid/);
  assert.match(styles,/sli-policy-recommendations/);
+ assert.match(js,/collapseGenericBaselines\(\)/);
+ assert.match(styles,/sli-policy-baseline-details/);
 });
 test("Policy analytical evidence exists for every chapter, with linked legal sources",()=>{
  const legalIDs=["uu2minerba","pp40","pp28","uu27pdp","pres112","pres110carbon","kepmen188","pp5old","pp79old"];

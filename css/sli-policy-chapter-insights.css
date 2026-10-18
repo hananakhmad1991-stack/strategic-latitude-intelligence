@@ -32,3 +32,10 @@
 .sli-policy-recommendations p{color:#d3e1ea;font-size:12px;margin:4px 0;line-height:1.6}
 .sli-policy-loading,.sli-policy-loading-error{border-left:3px solid #d7b678;background:#19374c;padding:12px;font-size:12px;color:#f1dfbf}
 @media(max-width:700px){.sli-policy-insight-grid{grid-template-columns:1fr}.sli-policy-chart-row{grid-template-columns:minmax(95px,1fr) minmax(50px,1fr) 24px;gap:7px}.sli-policy-table-wrap table{min-width:650px}}
+
+/* Keep original policy checklist cards available, but remove their redundant visual length. */
+.sli-policy-baseline-details{margin:18px 0 0;padding:10px 14px;background:#0e2538;border:1px solid #38546b;border-radius:9px}
+.sli-policy-baseline-details>summary{font-size:12px;font-weight:650;color:#dec38f;cursor:pointer;padding:5px 0;line-height:1.6}
+.sli-policy-baseline-details[open]>summary{margin-bottom:10px}
+.sli-policy-baseline-details .sli-research-grid{margin-top:7px}
+.sli-policy-baseline-details:focus-within{border-color:#d7b678}
