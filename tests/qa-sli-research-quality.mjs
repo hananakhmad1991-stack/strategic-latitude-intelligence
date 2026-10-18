@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "../research-api/src/energy-corpus.mjs";
 import {selectResearchEvidence,evidenceSector,modelRequest,validateAssistantPayload} from "../research-api/src/assistant-core.mjs";
+import {selectEnergyHeadlineLeads,fetchEnergyMonitoring,monitoringPromptContext} from "../research-api/src/monitoring-context.mjs";
 const read=path=>readFileSync(new URL("../"+path,import.meta.url),"utf8");
 test("National energy security prompt retrieves actual SLI oil, gas, fuel, fiscal, coal, renewables and RUPTL",()=>{
  const corpus=nationalEnergyEvidence(),audit=energyCorpusAudit();
@@ -55,4 +56,30 @@ test("UI shows one readable column and real correction and followup form, preser
  assert.match(worker,/nationalEnergyEvidence/);
  assert.match(worker,/owner_staging_source_dated_energy_corpus/);
  assert.doesNotMatch(page,/sk-[A-Za-z0-9_-]{20,}/);
+});
+
+test("Energy headline monitoring labels discovery only, verifies age and never promotes RSS to official ESDM evidence",async()=>{
+ const now=Date.parse("2026-10-18T08:00:00Z");
+ const doc={assessment_date_wib:"2026-10-18",generated_at_utc:"2026-10-18T07:00:00Z",
+  points:[{id:"oil-gas",recent_news_leads:[
+   {title:"Dated energy headline — NOT a fact",publisher:"Example",url:"https://news.google.com/rss/articles/TEST",published_at_utc:"2026-10-18T07:20:00Z"},
+   {title:"Ancient energy headline",publisher:"Example",url:"https://news.google.com/rss/articles/TEST2",published_at_utc:"2026-09-01T07:20:00Z"}
+  ]}]};
+ const signals=selectEnergyHeadlineLeads(doc,now);
+ assert.equal(signals.length,1);
+ assert.match(signals[0].evidence_status,/UNVERIFIED/);
+ assert.equal(selectEnergyHeadlineLeads(doc,Date.parse("2026-10-30T07:20:00Z")).length,0);
+ // Actual snapshot network is hardcoded to the public SLI dashboard (not user-controlled).
+ const fake=async url=>({ok:true,headers:{get:()=>null},text:async()=>JSON.stringify(doc)});
+ const response=await fetchEnergyMonitoring(fake);
+ assert.equal(response.status,"source_dated_public_monitoring");
+ assert.match(monitoringPromptContext({signals}),/UNVERIFIED DISCOVERY ONLY/);
+ const bad=await fetchEnergyMonitoring(async()=>({ok:false}));
+ assert.equal(bad.status,"monitoring_unavailable");
+ assert.deepEqual(bad.signals,[]);
+ const worker=read("research-api/src/owner-test-worker.mjs");
+ assert.match(worker,/monitoringPromptContext/);
+ assert.match(worker,/monitoring_signals/);
+ assert.match(read("sli-research-ai.html"),/raMonitoringSignals/);
+ assert.match(read("js/sli-research-assistant.js"),/renderMonitoringSignals/);
 });
