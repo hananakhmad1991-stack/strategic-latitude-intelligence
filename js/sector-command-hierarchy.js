@@ -2,7 +2,7 @@
 (function(){"use strict";
 const el=(tag,cl,text)=>{const x=document.createElement(tag);if(cl)x.className=cl;if(text!==undefined)x.textContent=String(text);return x};
 const link=(url,label)=>{const a=el("a","sli-hier-link",label||"Original source ↗");if(/^https:\/\//.test(url||"")){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}else{a.textContent="No verified source"}return a};
-const typeName={root:"National direction",policy:"Sector policy",coordination:"Coordinating ministry",planning:"National development planning",reporting:"Administrative reporting",portfolio:"State portfolio",equity:"Shareholding / member",minority:"Minority investment / associate",oversight:"Independent constitutional oversight",research:"Research / applied innovation","strategic-interface":"Functional demand interface","joint-venture":"Joint venture / cross-holding",market:"Independent commercial market","security":"Cybersecurity"};
+const typeName={root:"National direction",policy:"Sector policy",advisory:"Presidential advisory",administrative:"DEN administrative support", "local-government":"Regional administration & RUED","zone-interface":"Investment-zone functional interface",coordination:"Coordinating ministry",planning:"National development planning",reporting:"Administrative reporting",portfolio:"State portfolio",equity:"Shareholding / member",minority:"Minority investment / associate",oversight:"Independent constitutional oversight",research:"Research / applied innovation","strategic-interface":"Functional demand interface","joint-venture":"Joint venture / cross-holding",market:"Independent commercial market","security":"Cybersecurity"};
 function init(which,root,provided){if(!root)return;root.replaceChildren(el("p","sli-hier-status","Loading verified institutional and corporate hierarchy…"));
 const source=provided?Promise.resolve(provided):fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Hierarchy source unavailable");return r.json()});
 source.then(db=>{
@@ -34,6 +34,9 @@ source.then(db=>{
  main.append(el("p","sli-hier-foot",db.updated_note+" Reported shareholding and direct official reporting must not be conflated with coordination or related-industry links."));
  root.replaceChildren(main);
  const defaultExpanded=new Set(["pres","minister","industrial","investment","komdigi","dgE","dgI","bpi","dam","mind","telkom","brin"]);
+ // The energy adapter has source-indexed IDs. Resolve the same L2 visibility
+ // by actor title rather than only static IDs from the minerals/AI registers.
+ for(const a of actors)if(/Kementerian ESDM \/ Minister|Kementerian Dalam Negeri|BP BUMN|Coordinating Ministry for Downstreaming/i.test(a.title))defaultExpanded.add(a.id);
  let openIds=new Set(defaultExpanded);
  let selectedId="pres";
  function profile(a){
@@ -83,11 +86,19 @@ source.then(db=>{
   const show=domainVisible(filter.value||"all","government");
   if(!show)return;
   const mode=filter.value||"all";
-  const roots=govs.filter(a=>a.parent===rootNode.id||!a.parent);
+  const roots=govs.filter(a=>a.parent===rootNode.id||!a.parent)
+   .sort((a,b)=>{
+    const priority=x=>/Penasihat Khusus Presiden/i.test(x.title)?0:
+     /Kemenko Hilirisasi|Coordinating Ministry for Downstreaming/i.test(x.title)?1:
+     /Kementerian ESDM \/ Minister|Ministry of Energy & Mineral Resources/i.test(x.title)?2:
+     /Kementerian Dalam Negeri/i.test(x.title)?3:
+     /BP BUMN/i.test(x.title)?4:10;
+    return priority(a)-priority(b);
+   });
   let relevant=mode==="research"?roots.filter(a=>["research"].includes(a.relation)||a.id==="defense"||a.id==="highered"):
     mode==="policy"?roots.filter(a=>["policy","coordination","planning"].includes(a.relation)):roots;
   const section=renderSection("GOVERNMENT · POLICY & PUBLIC INSTITUTIONS",
-    "President → coordinating ministries and ministries → directorates. BRIN and executive agencies have separate mandates; DPR/BPK are independent oversight bodies, not presidential subordinates.",
+    "Public advisory → coordination → ministries → execution. DEN Secretariat is administratively linked to ESDM and functionally to DEN. Provincial autonomy is preserved under Kemendagri guidance; BP Batam has a separate legal mandate and is not subordinate to BP BUMN. DPR/BPK exercise independent oversight.",
     govs.length+1+independent.length,"government");
   const grid=el("div","sli-hier-domain-grid");
   for(const a of relevant){const c=el("article","sli-hier-lane");c.append(nested(a,1,mode));grid.append(c)}
