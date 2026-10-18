@@ -1,6 +1,6 @@
 import {METHODS,getMethod,parseCsv,toRows,describe,evaluate} from "./sli-analytical-core.mjs?v=20261018-econ5";
-import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns,panelStability} from "./sli-econometrics.mjs?v=20261018-econ6";
-import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs?v=20261018-econ5";
+import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns,panelStability} from "./sli-econometrics.mjs?v=20261018-econ7";
+import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs?v=20261018-econ7";
 const $=id=>document.getElementById(id);
 const box=document.createElement("section");
 box.id="raAnalyticalWorkbench";box.className="sli-ra-method-workbench";
