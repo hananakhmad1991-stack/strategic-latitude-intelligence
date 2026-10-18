@@ -581,7 +581,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
  const countsText=node("p","map-muted");appendix.append(countsText);
  outside.append(summary,appendix);root.append(outside);
  let currentKind="all",currentProvince=null,currentKepriCluster=null,currentPoint=null,lastQuery="",currentSector="all",currentType="all",currentStage="all",currentLocation="all";
- let selectedRecordId=null;
+ let selectedRecordId=null,lastInspectorSelection=null;
  let viewport={x:0,y:0,w:W,h:H},drag=null,dragged=false;
  function setView(v){viewport=v;svg.setAttribute("viewBox",[v.x,v.y,v.w,v.h].join(" "))}
  function zoomAt(factor){const v=viewport,ratio=factor,uw=Math.max(250,Math.min(W*1.1,v.w*ratio)),uh=Math.max(110,Math.min(H*1.1,v.h*ratio));setView({x:v.x+(v.w-uw)/2,y:v.y+(v.h-uh)/2,w:uw,h:uh})}
@@ -682,13 +682,87 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   block.append(node("h5",null,title),node("p",null,value));
   return block;
  }
+ function showAllProvince(record){
+  // A geographic selection must not be mistaken for a sector-specific no-data result.
+  // Restore the full source catalogue for this province without inventing records.
+  currentKind="all";kind.value="all";currentSector="all";currentType="all";currentStage="all";
+  currentLocation="all";location.value="all";currentAccuracy="all";
+  currentPoint=null;currentKepriCluster=null;lastQuery="";search.value="";
+  provinceSelect.value=currentProvince||"all";
+  for(const b of geoButtons)b.setAttribute("aria-pressed",String(b.dataset.accuracy==="all"));
+  selectedRecordId=record?.id||null;
+  filtersRebuild();draw();
+ }
+ function provinceEvidence(chosen){
+  const province=currentProvince;
+  const allProvince=allRows.filter(r=>provinceAssociations(r).includes(province));
+  const counts=new Map();
+  for(const r of allProvince)counts.set(r.sectorKey,(counts.get(r.sectorKey)||0)+1);
+  const sectors=[...counts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));
+  const card=node("section","map-province-insight");
+  card.append(node("div","map-province-kicker",label("PROVINCE INTELLIGENCE","INTELIJEN PROVINSI")));
+  card.append(node("h4",null,province));
+  const summary=node("div","map-province-numbers");
+  const a=node("div");a.append(node("strong",null,chosen.length),node("span",null,label("records under active filters","catatan sesuai filter aktif")));
+  const b=node("div");b.append(node("strong",null,allProvince.length),node("span",null,label("records in full SLI catalogue","catatan pada katalog lengkap SLI")));
+  summary.append(a,b);card.append(summary);
+  if(sectors.length){
+   card.append(insightSection(label("Source-backed sector coverage","Sektor yang memiliki catatan bersumber"),
+    sectors.map(([name,total])=>sectorLabel(name)+" · "+total+" "+label("records","catatan")).join("\n")));
+  }else{
+   card.append(insightSection(label("Registry coverage","Cakupan registri"),
+    label("No individually attributed source record is currently indexed to this province. This is a data coverage gap, not proof that no facilities or investment exist.",
+     "Belum ada catatan sumber individual yang dipetakan ke provinsi ini. Ini keterbatasan cakupan data, bukan bukti bahwa tidak ada fasilitas atau investasi.")));
+  }
+  if(!chosen.length){
+   const sector=currentSector==="all"?label("all industries","semua sektor"):sectorLabel(currentSector);
+   const reasons=[sector,currentType==="all"?"":assetLabel(currentType),currentStage==="all"?"":phaseLabel(currentStage),lastQuery?label("search: ","pencarian: ")+lastQuery:""].filter(Boolean).join(" · ");
+   card.append(node("p","map-province-no-match",label(
+    "No records pass the current registry, sector, status or search filters for this province. The count of zero describes the filtered SLI catalogue—not the number of actual projects in this province.",
+    "Tidak ada catatan yang lolos kombinasi filter registri, sektor, status, atau pencarian untuk provinsi ini. Angka nol merujuk pada katalog SLI yang tersaring, BUKAN jumlah proyek yang sebenarnya di provinsi ini.")));
+   card.append(node("p","map-province-filter",label("Active sector / filters: ","Sektor / filter aktif: ")+reasons));
+  }else{
+   card.append(node("p","map-province-note",label(
+    "Record counts are not the number of unique facilities or realized investments; different source layers and reporting years can overlap.",
+    "Jumlah catatan bukan jumlah fasilitas unik atau investasi terealisasi; lapisan dan tahun sumber dapat saling tumpang tindih.")));
+  }
+  if(allProvince.length&&(!chosen.length||currentKind!=="all"||currentSector!=="all"||currentType!=="all")){
+   const openAll=node("button","map-btn map-province-all",label("View every sector in this province","Lihat semua sektor di provinsi ini"));
+   openAll.type="button";openAll.addEventListener("click",()=>showAllProvince());
+   card.append(openAll);
+  }
+  if(!chosen.length&&allProvince.length){
+   card.append(node("h5","map-province-related-heading",label("Explore existing SLI records","Jelajahi catatan SLI yang tersedia")));
+   const suggested=node("div","map-province-related");
+   for(const record of allProvince.slice(0,6)){
+    const btn=node("button","map-province-related-link",record.name);
+    btn.type="button";
+    btn.setAttribute("aria-label",label("Open source-backed record: ","Buka catatan bersumber: ")+record.name);
+    btn.append(node("small",null,sectorLabel(record.sectorKey)));
+    btn.addEventListener("click",()=>showAllProvince(record));
+    suggested.append(btn);
+   }
+   card.append(suggested);
+   const link=allProvince.find(r=>/^https:\/\//.test(r.source||""));
+   if(link)card.append(node("div","map-insight-sources",null)).lastChild.append(srcLink(link.source,label("Example original source","Contoh sumber asli")));
+  }
+  return card;
+ }
  function renderAssetInsight(chosen){
   insight.replaceChildren();
   const actionable=Boolean(currentPoint||currentProvince||currentKepriCluster);
-  if(!chosen.length||(!actionable&&!selectedRecordId)){
+  if(!actionable&&!selectedRecordId){
    insight.append(node("div","map-insight-empty",label(
     "SELECT A POINT · Click a teal location, a gold cluster, a province or a record below to inspect its evidence, implementation and research lesson.",
     "PILIH TITIK · Klik titik hijau, klaster emas, provinsi, atau catatan di bawah untuk melihat bukti, pelaksanaan dan pelajaran analitis."
+   )));
+   return;
+  }
+  if(currentProvince)insight.append(provinceEvidence(chosen));
+  if(!chosen.length){
+   if(!currentProvince)insight.append(node("div","map-insight-empty",label(
+    "No matching records remain for this selected map point. Reset the sector or geographic filters to inspect source evidence.",
+    "Tidak ada catatan yang cocok untuk titik terpilih. Reset filter sektor atau geografi untuk memeriksa buktinya."
    )));
    return;
   }
@@ -885,8 +959,14 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   const localityCount=base.filter(r=>accuracyOf(r)==="locality").length;
   const provinceCount=base.filter(r=>accuracyOf(r)==="province").length;
   geoCount.textContent=localityCount+" "+label("locality-referenced","titik wilayah")+" · "+provinceCount+" "+label("province-only","hanya provinsi")+" · "+(base.length-localityCount-provinceCount)+" "+label("unlocated","tanpa lokasi");
-  info.textContent=label("Registry: ","Registri: ")+scopeName+" · "+display.length+" "+label("shown in list / ","ditampilkan / ")+base.length+" "+label("matching records · ","catatan cocok · ")+mapped.length+" "+label("province-mapped · ","terpetakan · ")+unmapped+" "+label("unlocated","tanpa lokasi");
+  info.textContent=(currentProvince?currentProvince+" · "+display.length+" "+label("records in province / ","catatan di provinsi / "):label("Registry: ","Registri: ")+scopeName+" · "+display.length+" "+label("shown in list / ","ditampilkan / "))+base.length+" "+label("nationally matched · ","cocok secara nasional · ")+mapped.length+" "+label("province-mapped · ","terpetakan · ")+unmapped+" "+label("unlocated","tanpa lokasi");
+  if(!chosen.length&&expanded){
+   expanded=false;side.className="map-results";expand.textContent=label("Browse matching assets","Lihat daftar aset terkait");expand.setAttribute("aria-expanded","false");
+  }
+  expand.disabled=!chosen.length;
   renderAssetInsight(chosen);
+  const selectionKey=[currentProvince||"",currentKepriCluster||"",currentPoint||"",selectedRecordId||"",currentSector,currentType,currentStage,currentKind,lastQuery].join("|");
+  if(selectionKey!==lastInspectorSelection){insight.scrollTop=0;lastInspectorSelection=selectionKey}
   const oldScroll=list.scrollTop;
   list.replaceChildren();
   if(!chosen.length)list.append(node("p","map-muted",label("No records match these filters or this province. Choose another province or reset filters.","Tidak ada catatan sesuai filter atau provinsi ini. Pilih provinsi lain atau reset filter.")));
