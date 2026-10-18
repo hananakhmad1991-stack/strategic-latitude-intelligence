@@ -59,7 +59,69 @@ const label=id=>modules[id]?.[lang()==='id'?1:0]||id;
 const href=id=>'./'+modules[id][2];
 function node(tag,classes,txt){const n=document.createElement(tag);if(classes)n.className=classes;if(txt)n.textContent=txt;return n}
 function link(id,cls){const a=node('a',cls,label(id));a.href=href(id);return a}
+
+/* Unified SLI masthead for detailed dashboards. Index #home and Research AI
+   retain their purpose-built headers. Other pages keep original data and tools. */
+function dashboardPage(){return path==='index.html'&&(document.body.classList.contains('sli-home-active')||!location.hash||location.hash==='#home')?false:path!=='sli-research-ai.html'}
+function mastLink(to,caption,current){
+ const a=node('a','sli-platform-link',caption);a.href=to;
+ if(current)a.setAttribute('aria-current','page');return a;
+}
+function renderPlatformMast(){
+ const use=dashboardPage();
+ document.body.classList.toggle('sli-dashboard-unified',use);
+ let mast=document.getElementById('sliPlatformMast');
+ if(!use){if(mast)mast.hidden=true;return}
+ if(!mast){
+  mast=node('header','sli-platform-mast');mast.id='sliPlatformMast';
+  mast.setAttribute('aria-label','Strategic Latitude Intelligence dashboard navigation');
+  document.body.insertBefore(mast,document.body.firstChild);
+ }
+ mast.hidden=false;mast.replaceChildren();
+ const inner=node('div','sli-platform-mast-inner');
+ const brand=node('a','sli-platform-brand');brand.href='./index.html#home';brand.setAttribute('aria-label','SLI — Strategic Latitude Intelligence home');
+ brand.append(node('span','sli-platform-monogram','SLI'));
+ const names=node('span','sli-platform-brand-name');names.append(node('strong','', 'STRATEGIC LATITUDE'),node('small','', 'INTELLIGENCE'));brand.append(names);
+ const primary=node('nav','sli-platform-links');primary.setAttribute('aria-label','Main SLI navigation');
+ const current=page();
+ primary.append(mastLink('./index.html#home',text('Home','Beranda'),false));
+ const explorer=node('details','sli-platform-explorer'),summary=node('summary','',text('Explore Data','Jelajahi Data'));
+ summary.setAttribute('aria-label',text('Browse SLI sector dashboards','Jelajahi dashboard sektoral SLI'));
+ explorer.append(summary);
+ const sectors=node('div','sli-platform-sector-menu');
+ for(const group of groups){
+  const col=node('div','sli-platform-sector-group');col.append(node('h3','',text(group[0],group[1])));
+  for(const id of group.slice(2)){const a=link(id);if(id===current)a.setAttribute('aria-current','page');col.append(a)}
+  sectors.append(col);
+ }
+ explorer.append(sectors);
+ primary.append(explorer);
+ primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
+ primary.append(mastLink('./sli-research-ai.html','Research AI',false));
+ primary.append(mastLink('./index.html#overview',text('Full Overview','Overview Lengkap'),path==='index.html'&&current==='overview'));
+ const tools=node('div','sli-platform-tools');
+ // The main SPA already has a functioning EN/ID control in its preserved sidebar.
+ // Forward clicks rather than pretending a specialist dashboard is translated.
+ if(path==='index.html'){
+  const langs=node('div','sli-platform-language');langs.setAttribute('role','group');langs.setAttribute('aria-label','Language / Bahasa');
+  for(const code of ['en','id']){
+   const button=node('button','',code.toUpperCase());button.type='button';button.dataset.sliMastLanguage=code;
+   const active=lang()===code;button.setAttribute('aria-pressed',String(active));
+   if(active)button.classList.add('active');
+   button.addEventListener('click',()=>{
+    const old=document.querySelector('.sidebar [data-sli-locale="'+code+'"]');
+    if(old){old.click();renderPlatformMast()}
+   });
+   langs.append(button);
+  }
+  tools.append(langs);
+ }
+ inner.append(brand,primary,tools);mast.append(inner);
+ // Clicking a module navigates normally; no overlay intercepts data controls.
+}
+
 function renderBar(){
+ renderPlatformMast();
  const target=document.querySelector('main.main')||document.querySelector('main')||document.body;
  let bar=document.getElementById('sliUniversalNavigation');
  if(!bar){bar=node('nav','sli-universal-nav');bar.id='sliUniversalNavigation';bar.setAttribute('aria-label','Cross-dashboard navigation and user help');

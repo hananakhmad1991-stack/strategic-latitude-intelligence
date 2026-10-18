@@ -15,3 +15,80 @@
 .sli-help-steps{padding-left:23px}.sli-help-steps li{padding:6px 0}.sli-help-table{overflow:auto}.sli-help-table table{border-collapse:collapse;width:100%;min-width:610px;font-size:12px}.sli-help-table th,.sli-help-table td{padding:10px 12px;border-bottom:1px solid #3a5770;text-align:left;vertical-align:top}.sli-help-table th{color:#f0d19d}
 @media(max-width:720px){.sli-universal-nav{padding:11px}.sli-explore-menu{margin-left:0}.sli-modules-grid{grid-template-columns:repeat(1,minmax(0,1fr));width:min(340px,89vw);max-height:60vh}.sli-related-links{font-size:11px}.sli-universal-actions{gap:9px}}
 @media(prefers-reduced-motion:reduce){.sli-universal-nav *{scroll-behavior:auto!important}}
+
+
+/* Shared SLI dashboard chrome, original Navy–Gold identity. No charts/data are restyled.
+ * 35 public HTML pages use this stylesheet; Research AI and home have their own masthead. */
+body.sli-dashboard-unified{background:#091625;color:#edf4f8}
+.sli-platform-mast[hidden]{display:none!important}
+header.sli-platform-mast{position:relative;z-index:1011;background:#091625!important;border:0!important;border-bottom:1px solid #30475b!important;padding:0 clamp(15px,2.5vw,39px)!important;margin:0!important;color:#f2f6f9!important;min-height:80px;box-shadow:none!important;max-width:none!important}
+.sli-platform-mast-inner{max-width:1490px;min-height:80px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.sli-platform-brand{display:inline-flex;align-items:center;gap:12px;flex:0 0 auto;text-decoration:none!important;color:#f4f6f8!important;line-height:1.1}
+.sli-platform-monogram{display:block;color:#e3c083;font:800 31px/.98 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.075em;padding:1px 12px 1px 0;border-right:1px solid #5b6470}
+.sli-platform-brand-name{display:grid;gap:2px;letter-spacing:.09em}
+.sli-platform-brand-name strong{font:720 12px/1.2 system-ui,sans-serif;color:#f4f6f8;white-space:nowrap}
+.sli-platform-brand-name small{font:730 9px/1.2 system-ui,sans-serif;color:#d7b678;letter-spacing:.2em}
+.sli-platform-brand:hover .sli-platform-monogram,.sli-platform-brand:focus-visible .sli-platform-monogram{color:#f6dca7}
+nav.sli-platform-links{display:flex!important;flex:0 1 auto;align-items:center;justify-content:center;gap:clamp(10px,1.5vw,25px);margin:0!important;min-width:0;background:transparent!important;padding:0!important;border:0!important}
+.sli-platform-link,.sli-platform-explorer>summary{display:inline-flex;align-items:center;min-height:40px;white-space:nowrap;text-decoration:none!important;color:#d5e2ed!important;font:600 12px/1.3 system-ui,sans-serif!important;background:transparent!important;border:0!important;border-bottom:2px solid transparent!important;padding:9px 0!important;border-radius:0!important;cursor:pointer}
+.sli-platform-link:hover,.sli-platform-link:focus-visible,.sli-platform-explorer>summary:hover,.sli-platform-explorer>summary:focus-visible{color:#f1d69d!important;border-bottom-color:#d7b678!important}
+.sli-platform-link[aria-current=page],.sli-platform-explorer>summary[aria-current=page]{color:#f0d399!important;border-bottom-color:#d7b678!important}
+.sli-platform-explorer{display:block!important;position:relative!important;min-width:0}
+.sli-platform-explorer>summary{list-style:none}
+.sli-platform-explorer>summary::-webkit-details-marker{display:none}
+.sli-platform-explorer>summary:after{content:"⌄";padding-left:6px;font-size:12px}
+.sli-platform-explorer[open]>summary{color:#f0d399!important}
+.sli-platform-sector-menu{position:absolute;z-index:3000;right:-80px;top:calc(100% + 11px);width:min(900px,88vw);max-height:min(70vh,680px);overflow:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;background:#112c44;border:1px solid #668198;border-radius:12px;padding:20px;box-shadow:0 22px 60px rgba(0,0,0,.5)}
+.sli-platform-sector-group{display:grid;gap:7px;align-content:start}
+.sli-platform-sector-group h3{font:750 12px/1.4 system-ui,sans-serif!important;color:#f0d49e!important;margin:0 0 3px!important}
+.sli-platform-sector-group a{font:500 11px/1.45 system-ui,sans-serif!important;color:#d7e6ee!important;text-decoration:none!important;overflow-wrap:anywhere}
+.sli-platform-sector-group a:hover,.sli-platform-sector-group a:focus-visible,.sli-platform-sector-group a[aria-current=page]{color:#f5d79e!important;text-decoration:underline!important}
+.sli-platform-tools{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.sli-platform-language{display:flex;gap:2px;border:1px solid #3a5670;background:#132d44;padding:3px;border-radius:8px}
+.sli-platform-language button{font:650 11px/1.2 system-ui,sans-serif!important;color:#b8cad9!important;background:transparent!important;border:0!important;border-radius:5px!important;padding:8px 9px!important;margin:0!important;min-width:35px;min-height:32px;cursor:pointer}
+.sli-platform-language button.active,.sli-platform-language button[aria-pressed=true]{background:#ddbf85!important;color:#0e2436!important}
+body.sli-dashboard-unified .sli-universal-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 13px;margin:0 0 17px;border-color:#35536c;background:#10283e;max-width:100%}
+body.sli-dashboard-unified .sli-universal-actions{gap:10px}
+body.sli-dashboard-unified .sli-universal-actions>a:not(.sli-guide-link){display:none}
+body.sli-dashboard-unified .sli-related-links{display:none}
+body.sli-dashboard-unified .sli-explore-menu{margin-left:0}
+body.sli-dashboard-unified .sli-location{font-size:11px}
+body.sli-dashboard-unified .sli-explore-menu>summary{font-size:11px;padding:7px 10px}
+body.sli-dashboard-unified h1{color:#f4f6f8}
+body.sli-dashboard-unified h2{color:#f2f4f8}
+body.sli-dashboard-unified main{min-width:0}
+body.sli-dashboard-unified :is(button,select,input,textarea):focus-visible{outline:2px solid #e0bf80;outline-offset:2px}
+body.sli-dashboard-unified :is(.panel,.card,.metric,.kpi):not(.sli-platform-sector-menu){min-width:0}
+body.sli-dashboard-unified .sli-table-scroll{max-width:100%}
+body.sli-dashboard-unified .sli-platform-explorer[open] .sli-platform-sector-menu{color:#ecf3f8}
+
+/* For index.html, remove legacy 255px sidebar only on detailed SPA sections.
+   All original sidebar links remain reachable in Explore Data's complete module index. */
+body.sli-dashboard-unified:has(.layout>.sidebar) .layout{display:block!important;min-height:0}
+body.sli-dashboard-unified:has(.layout>.sidebar) .layout>.sidebar{display:none!important}
+body.sli-dashboard-unified:has(.layout>.sidebar) .layout>.main{width:100%!important;max-width:1490px!important;margin:auto!important;padding:20px clamp(15px,2.6vw,39px) 60px!important}
+body.sli-dashboard-unified .layout>.main>.sli-portal-mast{display:none!important}
+body.sli-dashboard-unified .layout>.main>.top{margin-bottom:17px}
+body.sli-dashboard-unified .layout>.main>.top h1{font-size:clamp(26px,3vw,34px)}
+body.sli-dashboard-unified .layout>.main>.hero{margin:14px 0 23px;padding:clamp(20px,3vw,30px)}
+body.sli-dashboard-unified .sli-data-guide{margin:0 0 15px}
+@media(max-width:1090px){
+ .sli-platform-mast-inner{flex-wrap:wrap;gap:10px 17px;padding:11px 0}
+ nav.sli-platform-links{order:3;width:100%;justify-content:flex-start;gap:18px;border-top:1px solid #254157!important;padding-top:4px!important;overflow-x:auto;scrollbar-width:thin}
+ .sli-platform-tools{margin-left:auto}
+ .sli-platform-sector-menu{left:0;right:auto;width:min(800px,87vw)}
+}
+@media(max-width:650px){
+ header.sli-platform-mast{padding:0 15px!important}
+ .sli-platform-monogram{font-size:27px;padding-right:9px}
+ .sli-platform-brand-name strong{font-size:10px}
+ .sli-platform-brand-name small{font-size:8px}
+ .sli-platform-mast-inner{gap:7px 12px}
+ nav.sli-platform-links{gap:15px;white-space:nowrap;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .sli-platform-link,.sli-platform-explorer>summary{font-size:11px!important}
+ .sli-platform-sector-menu{position:fixed;top:118px;left:12px;right:12px;width:auto;max-height:68vh;grid-template-columns:repeat(2,minmax(0,1fr));padding:15px}
+ body.sli-dashboard-unified .sli-universal-nav{flex-wrap:wrap;padding:8px 11px}
+ body.sli-dashboard-unified .sli-universal-actions{width:100%;justify-content:space-between}
+ body.sli-dashboard-unified .sli-explore-menu{margin-left:auto}
+}
+@media(max-width:410px){.sli-platform-sector-menu{grid-template-columns:1fr;top:112px}.sli-platform-brand-name strong{font-size:9px}}
