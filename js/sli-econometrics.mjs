@@ -132,8 +132,10 @@ function cleanRows(rows,predictors,outcome){
 export function multivariateOLS(rows,predictors,outcome){
  const used=cleanRows(rows,predictors,outcome);
  const fit=regression(used.map(d=>d.y),used.map(d=>d.x),{names:predictors});
- return {method:"multivariate_ols",outcome,predictors,rows_used:fit.n,rows_excluded:rows.length-fit.n,
-  ...fit,observations:used.map((d,i)=>({name:d.label,source_row:d.index+1,x:d.x,y:d.y,
+ // Spread regression diagnostics first. Its integer 'predictors' count must never overwrite the
+ // actual string[] predictor names consumed by the chart, model label and downloadable report.
+ return {...fit,method:"multivariate_ols",outcome,predictors,predictor_count:predictors.length,
+  rows_used:fit.n,rows_excluded:rows.length-fit.n,observations:used.map((d,i)=>({name:d.label,source_row:d.index+1,x:d.x,y:d.y,
    fitted:fit.fitted[i],residual:fit.residual[i],
    influential:fit.residual_diagnostics.flagged.some(o=>o.index===i+1)})),
   inference_note:"HC1 robust SE; 95% approximate t intervals. Cross-sectional association, not policy or investment treatment effect."};
