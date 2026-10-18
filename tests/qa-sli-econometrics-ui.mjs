@@ -59,8 +59,16 @@ test("Investor workbench DOM: panel FE actually estimates 12 entities x 6 years,
  $("raMethod").value="panel_fe";$("raMethod").dispatchEvent(new dom.window.Event("change"));
  assert.match($("raMethodInfo").textContent,/Y = real_grdp_growth_pct; X = pmtb_share_pct/);
  $("raYearFE").checked=true;
- [...$("raExtraPredictors").options].find(o=>o.value==="electricity_access_pct").selected=true;
+ assert.match($("raActivePredictors").textContent,/Total prediktor: 1/);
  $("raRunMethod").click();
+ assert.equal($("raModelResult").querySelectorAll("table")[0].querySelectorAll("tr").length,2,"Baseline panel contains exactly one X coefficient");
+ const addX2=$("raModelResult").querySelector(".ra-wb-add-predictor");
+ assert.ok(addX2,"One-predictor panel result must offer a simple X2 comparison");
+ assert.match(addX2.textContent,/Tambahkan akses listrik sebagai X2/);
+ addX2.click();
+ assert.equal([...$("raExtraPredictors").selectedOptions][0].value,"electricity_access_pct");
+ assert.match($("raActivePredictors").textContent,/Total prediktor: 2/);
+ assert.equal($("raModelResult").querySelectorAll("table")[0].querySelectorAll("tr").length,3,"Two-predictor model must show two coefficients");
  assert.match($("raModelResult").textContent,/Panel Fixed Effects/);
  assert.match($("raModelResult").textContent,/12 entitas/);
  assert.match($("raModelResult").textContent,/cluster-robust/i);
