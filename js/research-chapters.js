@@ -241,6 +241,7 @@ const note=E("p","sli-research-footer","Source ownership: this chapter contains 
   const policyEvidence=E("div","sli-policy-source-brief");root.append(policyEvidence);
   window.initSLISourceBridge("policy",policyEvidence);
  }
+ if(which==="policy"&&typeof window.initSLIPolicyInsights==="function")window.initSLIPolicyInsights();
 }
 
 function makeEnergyStructure(which,root){

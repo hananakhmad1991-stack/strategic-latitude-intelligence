@@ -13,6 +13,8 @@ on:
       - 'js/regulatory-monitor-dashboard.js'
       - 'scripts/validate_regulatory_intelligence.py'
       - 'js/research-chapters.js'
+      - 'js/sli-policy-chapter-insights.js'
+      - 'tests/qa-sli-policy-chapters.mjs'
       - '.github/workflows/policy-regulatory-qa.yml'
 permissions:
   contents: read
@@ -41,6 +43,7 @@ jobs:
           PY
           node --check /tmp/sli-policy-inline.js
           node --check js/regulatory-monitor-dashboard.js
+          node --test tests/qa-sli-policy-chapters.mjs
           python - <<'PY'
           from pathlib import Path
           import re

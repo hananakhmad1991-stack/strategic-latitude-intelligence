@@ -1,0 +1,34 @@
+/* SLI Policy & Risk Chapters 01-05 · coherent original Navy–Gold research.
+ * Only the verified source-linked content is rendered; no estimated outcome scores. */
+.sli-policy-insight{border-top:1px solid #47637b;margin:22px 0 4px;padding-top:22px;min-width:0}
+.sli-policy-insight>h4{font:600 clamp(19px,2.4vw,24px)/1.25 Georgia,"Times New Roman",serif;color:#f2dbab;margin:8px 0}
+.sli-policy-kicker{font:750 10px/1.4 system-ui,sans-serif;letter-spacing:.12em;color:#d7b678;text-transform:uppercase;margin:2px 0 7px}
+.sli-policy-caveat{color:#c1d2dc;font-size:12px;line-height:1.66;max-width:1100px}
+.sli-policy-insight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px;margin:17px 0}
+.sli-policy-insight-card{background:#112c42;border:1px solid #3a5972;border-radius:10px;padding:16px;min-width:0;line-height:1.6}
+.sli-policy-insight-card h4{font-size:14px;color:#ebcf95;margin:0 0 7px;line-height:1.4}
+.sli-policy-insight-card p{font-size:12px;color:#d2e0e8;margin:8px 0}
+.sli-policy-insight a{display:inline-block;font-size:12px;font-weight:650;color:#efd293;text-decoration:underline;text-underline-offset:3px;margin:8px 0 3px;overflow-wrap:anywhere}
+.sli-policy-status{display:inline-block;font-size:10px;color:#f2d499;border:1px solid #7c7257;background:#26394a;border-radius:6px;padding:3px 8px;line-height:1.4}
+.sli-policy-status-chart{margin:18px 0;padding:15px;background:#0b2032;border:1px solid #375269;border-radius:10px}
+.sli-policy-status-chart h5{font-size:13px;color:#f4e2bd;margin:0 0 12px}
+.sli-policy-chart-row{display:grid;grid-template-columns:minmax(120px,1fr) minmax(70px,2fr) 28px;gap:11px;align-items:center;margin:8px 0;font-size:11px;color:#d2e3ed}
+.sli-policy-chart-row strong{font-variant-numeric:tabular-nums;text-align:right;color:#f4dda9}
+.sli-policy-chart-track{height:13px;background:#29445a;border-radius:5px;overflow:hidden}
+.sli-policy-chart-bar{display:block;height:100%;min-width:2px;background:#d7b678;border-radius:5px}
+.sli-policy-table-wrap{width:100%;max-width:100%;overflow-x:auto;border:1px solid #3d5a73;border-radius:10px;margin:15px 0}
+.sli-policy-table-wrap table{width:100%;min-width:720px;border-collapse:collapse;background:#0d2539;font-size:12px}
+.sli-policy-table-wrap th,.sli-policy-table-wrap td{padding:11px 12px;vertical-align:top;text-align:left;border-bottom:1px solid #344f65;color:#d9e5ed;line-height:1.5}
+.sli-policy-table-wrap th{color:#efd39b;background:#1b3a51;font-size:11px}
+.sli-policy-table-wrap td:first-child{font-weight:650}
+.sli-policy-table-wrap tbody tr:hover{background:#18364d}
+.sli-policy-options{margin:11px 0 0;padding:0 0 0 18px;color:#e0e8ee;font-size:12px}
+.sli-policy-options li{margin:9px 0}
+.sli-policy-recommendations{border:1px solid #846f48;border-radius:11px;background:linear-gradient(125deg,#153249,#112536);padding:19px;margin:20px 0}
+.sli-policy-recommendations h4{color:#f0d7a5;font-size:19px;margin:0 0 11px}
+.sli-policy-recommendations ol{padding-left:22px}
+.sli-policy-recommendations li{color:#f2dbad;margin:12px 0}
+.sli-policy-recommendations strong{font-size:13px}
+.sli-policy-recommendations p{color:#d3e1ea;font-size:12px;margin:4px 0;line-height:1.6}
+.sli-policy-loading,.sli-policy-loading-error{border-left:3px solid #d7b678;background:#19374c;padding:12px;font-size:12px;color:#f1dfbf}
+@media(max-width:700px){.sli-policy-insight-grid{grid-template-columns:1fr}.sli-policy-chart-row{grid-template-columns:minmax(95px,1fr) minmax(50px,1fr) 24px;gap:7px}.sli-policy-table-wrap table{min-width:650px}}

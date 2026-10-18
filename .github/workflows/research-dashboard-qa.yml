@@ -9,6 +9,13 @@ on:
       - 'tests/qa-site-search.mjs'
       - 'tests/qa-site-search-ui.mjs'
       - 'js/research-chapters.js'
+      - 'js/sli-policy-chapter-insights.js'
+      - 'css/sli-policy-chapter-insights.css'
+      - 'tests/qa-sli-policy-chapters.mjs'
+      - 'data/sli-policy-regulatory-graph-2026.json'
+      - 'data/sli-public-policy-evaluation-2026.json'
+      - 'data/sli-sector-regulatory-ria-deepdives.json'
+      - 'data/regulatory-monitor.json'
       - 'js/komdigi-digital-2025.js'
       - 'css/komdigi-digital-2025.css'
       - 'data/komdigi-digital-infrastructure-2025.json'
@@ -74,6 +81,8 @@ jobs:
       - name: Compile and render both specialist modules
         run: |
           node tests/qa-research-dashboard.mjs
+          node --check js/sli-policy-chapter-insights.js
+          node --test tests/qa-sli-policy-chapters.mjs
           node --check js/komdigi-digital-2025.js
           node tests/qa-komdigi-digital-2025.mjs
           node --check js/site-search.js
