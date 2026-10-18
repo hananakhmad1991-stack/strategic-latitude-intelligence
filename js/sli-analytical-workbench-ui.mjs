@@ -27,7 +27,12 @@ evidenceOptions.insertAdjacentElement("afterend",quality);
 const structuralSection=document.createElement("section");
 structuralSection.id="raStructuralEconomy";structuralSection.className="ra-wb-structural-economy";structuralSection.hidden=true;
 quality.insertAdjacentElement("afterend",structuralSection);
-const anchor=$("raOwnerPanel");anchor?.parentNode?.insertBefore(box,anchor);
+const anchor=$("raOwnerPanel");
+const lab=document.createElement("details");lab.className="sli-ra-advanced-lab";lab.id="raAdvancedLab";
+const label=document.createElement("summary");
+label.textContent="Laboratorium metode & ekonometrika · Opsional bagi analis";
+lab.append(label,box);
+anchor?.parentNode?.insertBefore(lab,anchor);
 
 const method=$("raMethod"),datafile=$("raDataFile"),x=$("raPredictor"),y=$("raOutcome"),detail=$("raMethodInfo"),result=$("raModelResult"),varGroup=$("raVariables"),consent=$("raDataConsent");
 let data=null,model=null,filename="",last=null,officialBps=null,structuralLens=null;
