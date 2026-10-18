@@ -12,6 +12,8 @@ on:
       - 'tests/qa-sli-research-brand.mjs'
       - 'js/sli-research-assistant.js'
       - 'js/sli-analytical-core.mjs'
+      - 'js/sli-investor-chat.mjs'
+      - 'tests/qa-sli-investor-chat.mjs'
       - 'js/sli-analytical-workbench-ui.mjs'
       - 'css/sli-analytical-workbench.css'
       - 'js/sli-contextual-briefs.mjs'
@@ -63,6 +65,7 @@ jobs:
         run: |
           node --check js/sli-research-assistant.js
           node --check js/sli-analytical-core.mjs
+          node --check js/sli-investor-chat.mjs
           node --check js/sli-econometrics.mjs
           node --check js/sli-econometrics-report.mjs
           node --check js/sli-bps-official-panel.mjs
@@ -82,7 +85,7 @@ jobs:
       - name: Install DOM smoke-test runner
         run: npm install --no-save --no-audit --no-fund jsdom@26
       - name: Validate open evidence, secure planned RAG and traceability
-        run: node --test tests/qa-sli-structural-economy.mjs tests/qa-sli-provincial-data-integrity.mjs tests/qa-sli-official-bps-panel.mjs tests/qa-sli-econometrics.mjs tests/qa-sli-methodology-workbench.mjs tests/qa-sli-research-brand.mjs tests/qa-sli-research-visuals.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs tests/qa-sli-content-quality.mjs
+        run: node --test tests/qa-sli-investor-chat.mjs tests/qa-sli-structural-economy.mjs tests/qa-sli-provincial-data-integrity.mjs tests/qa-sli-official-bps-panel.mjs tests/qa-sli-econometrics.mjs tests/qa-sli-methodology-workbench.mjs tests/qa-sli-research-brand.mjs tests/qa-sli-research-visuals.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs tests/qa-sli-content-quality.mjs
       - name: Browser-like econometrics integration smoke
         run: node --test tests/qa-sli-econometrics-ui.mjs
       - uses: actions/setup-python@v5
