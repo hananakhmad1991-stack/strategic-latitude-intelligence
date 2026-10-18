@@ -501,12 +501,14 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
  const insight=node("section","map-asset-insight");
  insight.setAttribute("aria-label",label("Selected asset insight and source details","Analisis aset terpilih dan sumber"));
  insight.setAttribute("aria-live","polite");
- const expand=node("button","map-btn map-expand",label("Expand full list","Bentangkan seluruh daftar"));expand.type="button";
+ const expand=node("button","map-btn map-expand",label("Browse matching assets","Lihat daftar aset terkait"));expand.type="button";
  let expanded=false;
  expand.addEventListener("click",()=>{
   expanded=!expanded;
-  side.className="map-results"+(expanded?" expanded":"");
-  expand.textContent=expanded?label("Collapse list","Ringkas daftar"):label("Expand full list","Bentangkan seluruh daftar");
+  // The record list is secondary to the selected insight. Never expand the
+  // entire right column past the map or force the user to scroll past a dossier.
+  side.classList.toggle("show-list",expanded);
+  expand.textContent=expanded?label("Hide asset list","Sembunyikan daftar aset"):label("Browse matching assets","Lihat daftar aset terkait");
   expand.setAttribute("aria-expanded",String(expanded));
  });
  expand.setAttribute("aria-expanded","false");
@@ -690,8 +692,10 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    )));
    return;
   }
+  // Opening a map pin, cluster or province must show evidence immediately.
+  // Default to its first source record, retaining the chooser for multi-asset clusters.
   let selected=chosen.find(r=>r.id===selectedRecordId);
-  if(!selected&&chosen.length===1){selected=chosen[0];selectedRecordId=selected.id}
+  if(!selected){selected=chosen[0];selectedRecordId=selected.id}
   const bar=node("div","map-insight-toolbar");
   const title=node("strong",null,label("SELECTED ASSET INSIGHT","ANALISIS ASET TERPILIH"));
   const clear=node("button","map-btn map-insight-reset",label("Clear selection","Hapus pilihan"));
@@ -711,10 +715,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    select.value=selected?.id||"";
    select.addEventListener("change",()=>{selectedRecordId=select.value||null;draw()});
    picker.append(select);insight.append(picker);
-   if(!selected){insight.append(node("p","map-insight-hint",label(
-    "A map cluster can represent multiple independent facilities. Select an asset above to view its specific source and lesson; the records below remain available.",
-    "Satu klaster dapat mewakili sejumlah fasilitas yang berbeda. Pilih aset di atas untuk melihat sumber dan pelajaran khusus; seluruh catatan tetap tersedia di bawah."
-   )));return}
+   // The first record is immediately inspected; a user can switch records here.
   }
   if(!selected)return;
   const card=node("article","map-insight-detail");
