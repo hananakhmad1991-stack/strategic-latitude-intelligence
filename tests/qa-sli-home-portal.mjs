@@ -14,13 +14,27 @@ test("SLI portal is the default view and the original comprehensive overview is 
  assert.match(html,/href="#overview"/);
 });
 test("Portfolio homepage links to research and six functioning sector portals, with dedicated geopolitical chapter",()=>{
- for(const ref of ["#energy","#investment","#minerals","#geopolitics","indonesia-macroeconomic-intelligence.html","ai-intelligence-hub.html","sli-research-ai.html","provincial-intelligence.html"])
+ for(const ref of ["#energy","#investment","#minerals","#policy","#geopolitics","indonesia-macroeconomic-intelligence.html","ai-intelligence-hub.html","sli-research-ai.html","provincial-intelligence.html"])
   assert.ok(html.includes('href="'+ref+'"')||html.includes('href="./'+ref+'"'),ref);
  assert.match(html,/data-sli-home-search/);
  assert.match(html,/sliGlobalSearchInput/);
  assert.match(html,/selectedPage==='home'\?'overview'/);
  assert.match(html,/LIMITED TEST|Owner Test remains restricted/);
 });
+test("Policy and Geopolitics have separate homepage cards, distinct destinations, and independent dashboard content",()=>{
+ assert.match(html,/<a href="#policy" class="sli-portal-sector"[^>]*>[\\s\\S]*?<strong>Policy &amp; Regulation<\\/strong>/);
+ assert.match(html,/<a href="#geopolitics" class="sli-portal-sector"[^>]*>[\\s\\S]*?<strong>Geopolitical Intelligence<\\/strong>/);
+ assert.doesNotMatch(html,/<strong>Policy &amp; Geopolitics<\\/strong>/);
+ assert.match(html,/data-page="policy"/);
+ assert.match(html,/data-page="geopolitics"/);
+ assert.match(html,/page==='geopolitics'\\?'<div id="sliGeoChapterRoot"/);
+ assert.match(html,/\\['minerals','ai','policy'\\]\\.includes\\(page\\)/);
+ assert.match(html,/window\\.initSLIResearch\\(page\\)/);
+ assert.match(html,/if\\(page==='policy'\\)return/);
+ assert.match(style,/grid-template-columns:repeat\\(4,minmax\\(0,1fr\\)\\)/);
+ assert.match(style,/@media\\(max-width:1220px\\)/);
+});
+
 test("Homepage shares SLI original navy/gold identity, stays mobile responsive, and Research AI retains separate visual system",()=>{
  assert.match(html,/css\/sli-home-portal\.css/);
  assert.ok(existsSync(new URL("../css/sli-home-portal.css",import.meta.url)));
