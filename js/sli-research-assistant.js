@@ -83,9 +83,25 @@ function renderSources(sources,answer="",charts=[]){
   list.append(card);
  });
 }
+function renderMonitoringSignals(payload){
+ const wrap=$("raMonitoringSignals");wrap.replaceChildren();
+ const signals=Array.isArray(payload?.monitoring_signals)?payload.monitoring_signals.slice(0,5):[];
+ if(!signals.length)return;
+ const header=node("h3",null,"Monitoring berita SLI · perlu konfirmasi");
+ const disclaimer=node("p","sli-ra-evidence-note","Headline ditemukan dari RSS dan belum diverifikasi terhadap isi artikel asli. Ini bukan fakta kejadian yang sudah dikonfirmasi atau berita real-time tanpa jeda.");
+ wrap.append(header,disclaimer);
+ for(const s of signals){
+  if(typeof s?.title!=="string"||!safeUrl(s.url))continue;
+  const card=node("div","sli-ra-source-card");
+  const a=node("a",null,s.title.slice(0,260));a.href=s.url;a.target="_blank";a.rel="noopener noreferrer";
+  card.append(a,node("p",null,[s.publisher,s.published_at_utc].filter(Boolean).join(" · ")));
+  wrap.append(card);
+ }
+}
+
 function reset(){
  state.sequence++;state.history=[];state.lastResult=null;state.busy=false;
- $("raMessages").replaceChildren();$("raSourcesList").replaceChildren();$("raConversation").hidden=true;$("raPrompt").value="";
+ $("raMessages").replaceChildren();$("raSourcesList").replaceChildren();$("raMonitoringSignals").replaceChildren();$("raConversation").hidden=true;$("raPrompt").value="";
  $("raChatFiles").value="";$("raChatUploadConsent").checked=false;updateFileStatus();
  $("raFollowupPrompt").value="";
  enableControls();$("raPrompt").focus();
@@ -242,6 +258,7 @@ async function submit(){
    (state.language==="id"?"Periksa tanggal dan dokumen sumber sebelum menggunakan hasil.":"Review source dates and primary documents before use."));
   report.prepend(note);
   renderSources(payload.sources,payload.answer,state.lastResult.charts);
+  renderMonitoringSignals(payload);
   state.history.push({role:"user",content:question},{role:"assistant",content:payload.answer.slice(0,5000)});
   state.history=state.history.slice(-8);
   $("raChatFiles").value="";$("raChatUploadConsent").checked=false;delete requestBody.attachments;updateFileStatus();
