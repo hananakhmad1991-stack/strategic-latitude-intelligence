@@ -261,3 +261,21 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-bps-provenance p{
 #raAnalyticalWorkbench .ra-wb-quality-details{border-top:1px solid #d2e0e9;padding-top:10px;margin-top:13px}
 #raAnalyticalWorkbench .ra-wb-quality-details summary{cursor:pointer;color:#205780;font:750 12px/1.6 system-ui,sans-serif}
 body.sli-research-brand #raAnalyticalWorkbench .ra-wb-quality-details th,body.sli-research-brand #raAnalyticalWorkbench .ra-wb-quality-details td{font-size:11px!important;white-space:normal;min-width:105px}
+
+
+/* Full-panel stress testing and provenance-sourced investment risk warnings. */
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-robustness-warning{
+ padding:13px 15px;margin:12px 0;background:#fff4e8;
+ border:1px solid #ddac85;border-left:4px solid #ac662e;
+ border-radius:8px;color:#713e1c!important;
+ font:750 12px/1.7 system-ui,sans-serif
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability-evidence{
+ padding:11px 14px;margin:13px 0 8px;background:#edf4fb;
+ border:1px solid #cedee9;border-radius:8px;color:#264e6f!important;
+ font:650 12px/1.7 system-ui,sans-serif
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability>a{
+ color:#195c87;font:700 12px/1.5 system-ui,sans-serif;text-decoration:underline;
+ display:inline-block;margin-bottom:12px
+}
