@@ -1,0 +1,52 @@
+/* SLI · outage reliability visual module. Matches navy, gold and evidence-inspector patterns across Energy Security. */
+.sli-rel-root{color:#eef5fa;margin:23px 0 29px;border:1px solid #35566f;border-radius:14px;background:#0d2336;padding:20px;min-width:0;scroll-margin-top:105px}
+.sli-rel-root *{box-sizing:border-box}
+.rel-head{margin:0 0 15px}
+.rel-kicker,.rel-inspector-kicker{font-size:10px;font-weight:800;letter-spacing:.14em;color:#dbb878;text-transform:uppercase}
+.rel-head h2{font:normal clamp(23px,3vw,30px)/1.2 Georgia,serif;color:#f6f6f2;margin:9px 0 8px}
+.rel-head p{font-size:12.5px;max-width:920px;color:#bbd0df;line-height:1.7}
+.rel-controls{display:flex;flex-wrap:wrap;gap:11px 14px;align-items:flex-end;margin:18px 0}
+.rel-control{display:flex;flex-direction:column;gap:5px;flex:1 1 150px;min-width:136px}
+.rel-control:first-child{flex-basis:220px}
+.rel-control>span{font-size:11px;font-weight:750;color:#d1e0ea}
+.rel-control select{color:#f2f6f9;border:1px solid #54728a;border-radius:8px;background:#17344b;padding:10px 11px;min-height:39px;width:100%;font:600 12px system-ui,sans-serif}
+.rel-control select:focus-visible{outline:2px solid #eccf9b;outline-offset:2px}
+.rel-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:15px 0}
+.rel-kpi{background:#142d42;border:1px solid #385a74;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.rel-kpi small{font-size:10px;color:#b3d0e2;text-transform:uppercase;letter-spacing:.055em}
+.rel-kpi strong{font:750 clamp(17px,2.35vw,26px)/1.24 system-ui,sans-serif;color:#edc887;overflow-wrap:anywhere}
+.rel-kpi p{font-size:11px;line-height:1.55;color:#bed0df;margin:0}
+.rel-layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(270px,1fr);gap:15px;align-items:start}
+.rel-left{min-width:0}
+.rel-chart-grid{display:grid;gap:14px}
+.rel-viz{border:1px solid #35516a;background:#10293c;border-radius:11px;padding:15px;min-width:0}
+.rel-viz h3,.rel-inspector h3{font-size:16px;color:#f4e0b8;margin:0 0 8px}
+.rel-mininote,.rel-method-note{font-size:11px;line-height:1.6;color:#b7cad8;margin:8px 0 13px}
+.sli-reliability-bars{max-height:510px;overflow-y:auto;min-width:0}
+.rel-row{display:grid;grid-template-columns:minmax(120px,1.25fr) minmax(90px,1fr) minmax(50px,.3fr);gap:9px;align-items:center;border:1px solid transparent;border-bottom:1px solid #314f65;width:100%;background:transparent;color:#d6e5ef;text-align:left;padding:8px 5px;min-height:40px;font:500 11px/1.4 system-ui,sans-serif;cursor:pointer}
+.rel-row:hover,.rel-row.active{background:#1b3b51;border-color:#637d8d;border-radius:6px}
+.rel-row.active{outline:1px solid #daba79}
+.rel-row:focus-visible{outline:2px solid #f1d39b;outline-offset:2px}
+.rel-name{overflow-wrap:anywhere}
+.rel-track{height:12px;border-radius:8px;background:#263e50;position:relative;overflow:hidden;display:block}
+.rel-fill{height:100%;background:linear-gradient(90deg,#7fb6cd,#d7b678);border-radius:8px;display:block}
+.rel-value{font-variant-numeric:tabular-nums;text-align:right;font-weight:750;color:#edc887}
+.rel-inspector{position:sticky;top:95px;border:1px solid #9c895e;border-left:3px solid #dabe85;background:#162e42;padding:18px;border-radius:11px;max-height:min(80vh,810px);overflow:auto;min-width:0;overflow-wrap:anywhere}
+.rel-inspector h3{margin:12px 0;font-size:18px}
+.rel-scope-warning{font-size:11.5px;line-height:1.6;background:#273b48;border-left:3px solid #e5ba69;color:#f2dfc0;padding:10px;border-radius:5px}
+.rel-data{display:grid;grid-template-columns:minmax(90px,1fr) minmax(0,1.35fr);gap:0 8px;margin:13px 0}
+.rel-datum{display:contents}
+.rel-datum dt,.rel-datum dd{border-bottom:1px solid #3d5669;padding:9px 0;margin:0;font-size:11px;overflow-wrap:anywhere}
+.rel-datum dt{font-weight:700;color:#e7c383}
+.rel-datum dd{color:#e1ebf3;font-variant-numeric:tabular-nums}
+.rel-inspector a,.rel-sources a{font-size:11px;color:#f1cf8d}
+.rel-plot{overflow-x:auto;width:100%;position:relative}
+.rel-plot svg{min-width:400px;width:100%;height:auto;display:block;background:#0c2335;border-radius:6px}
+.rel-method{margin-top:17px;padding:14px 16px;border:1px solid #3a576c;border-radius:9px;background:#122d41}
+.rel-method strong{font-size:12px;color:#edd0a2}
+.rel-method p{font-size:11px;line-height:1.75;color:#b8cfdd;margin:9px 0}
+.rel-sources{margin-top:12px!important}
+.sli-rel-root .sli-visual-export-toolbar{z-index:3}
+.sli-rel-root .sli-visual-export-host{background:transparent}
+@media(max-width:1040px){.rel-layout{grid-template-columns:minmax(0,1fr)}.rel-inspector{position:static;max-height:none}}
+@media(max-width:690px){.sli-rel-root{padding:13px;margin:15px 0}.rel-kpis{grid-template-columns:1fr}.rel-controls{gap:9px}.rel-control{flex:1 1 145px}.rel-control:first-child{flex-basis:100%}.rel-row{grid-template-columns:minmax(110px,1fr) minmax(55px,.55fr) minmax(45px,.27fr);gap:5px;font-size:10px}.rel-viz{padding:11px}.rel-inspector{padding:13px}.rel-data{grid-template-columns:minmax(80px,1fr) minmax(0,1.2fr)}}
