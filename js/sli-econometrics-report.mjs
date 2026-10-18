@@ -39,8 +39,13 @@ export function scatterPlot(fit,alternate=null){
  svg.append(S("text",{x:18,y:182,transform:"rotate(-90 18 182)","text-anchor":"middle",fill:"#2c4c65","font-size":13,"font-weight":700},fit.outcome));
  return svg;
 }
-export function investorMarkdown(fit,filename,sensitivity,stability=null){
+export function investorMarkdown(fit,filename,sensitivity,stability=null,officialSource=null){
  const f=v=>round(v),panel=fit.method==="panel_fe",terms=panel?fit.coefficients:fit.coefficient_terms,diagnostics=fit.residual_diagnostics||{};
+ const provenance=officialSource?.publisher==="BPS (Badan Pusat Statistik)"&&/^https:\/\/www\.bps\.go\.id\//.test(officialSource.url||"")?
+ "## Data provenance and measurement\n\nOriginal BPS publication: **"+officialSource.title+"** ("+officialSource.published+"). Source: "+officialSource.url+
+ "\n\nThe 2022–2025 34-province annual observations are DERIVED by SLI from 2021–2025 published provincial GRDP series. The lagged PMTB share uses prior-year current-price PMTB/current-price GRDP while growth uses constant-2010-price GRDP. Four new Papua provinces have no comparable BPS 2021–2022 history and are not imputed. Source status: 2024 revised, 2025 preliminary. This is NOT a BPS-conducted regression. BPS substantial-table commercial republication may require permission.\n":
+ "## User dataset provenance\n\nThis is locally uploaded or unverified client data; definitions, vintages and legal usage rights must be independently checked.\n";
+
  const row=c=>"| "+[c.name,f(c.estimate),f(c.std_error_hc1),f(c.ci95_low),f(c.ci95_high),c.p_value_approx===0?"<0,000001":f(c.p_value_approx)].join(" | ")+" |";
  const impact=terms.filter(t=>t.name!=="Intercept").map(t=>"- **"+t.name+"**: koefisien "+f(t.estimate)+", interval kepercayaan 95% ["+f(t.ci95_low)+", "+f(t.ci95_high)+"]. Hubungan ini tidak membuktikan kausalitas.").join("\n");
  const flags=(diagnostics.flagged||[]).map(t=>"- "+(fit.observations?.[t.index-1]?.name||("Observasi ke-"+t.index))+"; Cook D "+f(t.cook_d)+"; residual terstandardisasi "+f(t.standardized_residual)).join("\n");
@@ -75,12 +80,13 @@ export function investorMarkdown(fit,filename,sensitivity,stability=null){
  return [
  "# Strategic Latitude Intelligence — Investor Analytical Report",
  "**Tanggal:** "+new Date().toISOString().slice(0,10)+"  ",
- "**Dataset:** "+(filename||"Unggahan lokal / tanpa verifikasi")+"  ",
+ "**Dataset:** "+(officialSource?"SLI DERIVED FROM BPS OFFICIAL 2021–2025":"Unggahan lokal (belum diverifikasi)")+" · "+(filename||"No filename")+"  ",
  "**Estimator:** "+fit.method+"  ",
  "**Observasi digunakan:** "+(fit.rows_used||fit.n)+"  ",
  "**Outcome (Y):** "+fit.outcome+"  ",
  "**Prediktor (X):** "+fit.predictors.join(", "),
  directionWarning,
+ provenance,
  "## Executive assessment",
  "Model ini mengidentifikasi asosiasi statistik dalam sampel yang ditentukan pengguna. Estimasi tidak mewakili multiplier effect, prediksi pasti, maupun hubungan sebab-akibat. "+(panel?"Panel mencakup "+fit.unit_count+" unit dan "+fit.time_count+" periode; "+(fit.two_way_fe?"unit dan year effects":"unit effects")+" dikontrol.":"R² sampel: "+f(fit.r_squared)+"."),
  "## Results · estimates and uncertainty",
@@ -105,7 +111,7 @@ export function investorMarkdown(fit,filename,sensitivity,stability=null){
  "## Limitations and recommendation",
  fit.limitations,
  "Proceed to a sector-specific panel and independent data verification before making any investment allocation. News headlines require separate fact checking; this report does not assert a current event.",
- "**Research prototype — based on user-uploaded data, not independently verified by SLI. Not investment advice.**"
+ "**SLI research prototype · "+(officialSource?"BPS-sourced input, SLI-derived estimated association — not official BPS model results":"unverified user-uploaded input")+" · Not investment advice.**"
  ].join("\n\n");
 }
 export function downloadMarkdown(content){
