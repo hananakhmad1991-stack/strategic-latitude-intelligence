@@ -1,4 +1,6 @@
 import {METHODS,getMethod,parseCsv,toRows,describe,evaluate} from "./sli-analytical-core.mjs";
+import {multivariateOLS,panelFixedEffects,sensitivityOLS} from "./sli-econometrics.mjs";
+import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs";
 const $=id=>document.getElementById(id);
 const box=document.createElement("section");
 box.id="raAnalyticalWorkbench";box.className="sli-ra-method-workbench";
@@ -15,6 +17,12 @@ box.innerHTML=`<div class="ra-wb-header"><div><span class="ra-wb-kicker">SLI · 
 const anchor=$("raOwnerPanel");anchor?.parentNode?.insertBefore(box,anchor);
 const method=$("raMethod"),datafile=$("raDataFile"),x=$("raPredictor"),y=$("raOutcome"),detail=$("raMethodInfo"),result=$("raModelResult"),varGroup=$("raVariables"),consent=$("raDataConsent");
 let data=null,model=null,filename="",last=null;
+const advanced=document.createElement("section");
+advanced.className="ra-wb-advanced";advanced.id="raAdvancedControls";advanced.hidden=true;
+advanced.innerHTML='<div id="raExtraGroup"><label for="raExtraPredictors">Additional predictors (Ctrl / Cmd + click for multiple)</label><select multiple size="4" id="raExtraPredictors" aria-label="Additional regression explanatory variables"></select><small>Max 5 independent variables in total. Leave blank for one-predictor robust OLS.</small></div><div id="raPanelGroup" hidden><label>Panel province / entity<select id="raPanelEntity"></select></label><label>Time / year column<select id="raPanelTime"></select></label><label class="ra-wb-panel-check"><input type="checkbox" id="raYearFE"> Include common year fixed effects</label><small>Panel needs ≥8 entities and ≥3 years per dataset, with repeated entity-year observations. A 38-province, single-year snapshot is NOT valid panel data.</small></div>';
+varGroup.insertAdjacentElement("afterend",advanced);
+const extra=$("raExtraPredictors"),entity=$("raPanelEntity"),time=$("raPanelTime"),yearFE=$("raYearFE"),panelGroup=$("raPanelGroup"),extraGroup=$("raExtraGroup");
+
 const STATUS={local:"Executable locally in the browser",design:"Research design / feasibility guidance only — estimator not yet implemented"};
 const groups=[...new Set(METHODS.map(m=>m.group))];
 for(const group of groups){
@@ -27,7 +35,13 @@ function desc(){
  detail.textContent=m?`${m.name} — ${STATUS[m.status]}. Input: ${m.requires}.`:
  "Auto method selection: AI can propose a method but must check data suitability, assumptions and estimator availability. No model output is fabricated.";
  const numeric=data?describe(data).filter(v=>v.n>=3).map(v=>v.column):[];
- varGroup.hidden=!(data&&["pearson","ols"].includes(method.value)&&numeric.length>=2);
+ varGroup.hidden=!(data&&["pearson","ols","multivariate_ols","panel_fe"].includes(method.value)&&numeric.length>=2);
+ advanced.hidden=!(data&&["multivariate_ols","panel_fe"].includes(method.value));
+ panelGroup.hidden=method.value!=="panel_fe";
+ extraGroup.hidden=!["multivariate_ols","panel_fe"].includes(method.value);
+ if(method.value==="panel_fe"&&data&&!Object.keys(data[0]).some(k=>/^(year|tahun|period|periode)$/i.test(k)))
+ detail.textContent+=" Data ini belum memiliki kolom tahun; gunakan panel multi-tahun agar fixed effects dapat dihitung.";
+
 }
 function error(message){result.textContent=message;result.dataset.state="error";last=null}
 function show(message){result.textContent=message;result.dataset.state="ready"}
@@ -36,6 +50,13 @@ function fillVariables(){
  for(const select of [x,y]){select.replaceChildren();for(const name of numeric){const opt=document.createElement("option");opt.value=name;opt.textContent=name;select.append(opt)}}
  if(numeric.includes("pmtb_share_2025_pct")&&numeric.includes("real_grdp_growth_2025_pct")){x.value="pmtb_share_2025_pct";y.value="real_grdp_growth_2025_pct";}
  else if(numeric.length>1)y.value=numeric[1];
+ for(const select of [extra,entity,time])select.replaceChildren();
+ const cols=Object.keys(data?.[0]||{});
+ for(const key of numeric){const opt=document.createElement("option");opt.value=key;opt.textContent=key;extra.append(opt)}
+ for(const key of cols){for(const sel of [entity,time]){const option=document.createElement("option");option.value=key;option.textContent=key;sel.append(option)}}
+ const province=cols.find(v=>/^(province|provinsi|region|entity|unit|district)$/i.test(v)),yr=cols.find(v=>/^(year|tahun|period|periode)$/i.test(v));
+ if(province)entity.value=province;
+ if(yr)time.value=yr;else time.value="";
  desc();
 }
 datafile.addEventListener("change",async()=>{
@@ -152,18 +173,87 @@ function renderCalculation(output){
  }
  const note=document.createElement("small");note.textContent=output.limitation||"Review source assumptions and uncertainty before any investment decision.";result.append(note);
 }
+
+function addEconometricAppendix(fit,sensitivity=null){
+ const appendHeading=(label)=>{const h=document.createElement("h3");h.className="ra-wb-subhead";h.textContent=label;result.append(h)};
+ const text=(tag,val)=>{const el=document.createElement(tag);el.textContent=val;result.append(el);return el};
+ const visual=scatterPlot(fit,sensitivity?.reduced||null);
+ if(visual){
+  appendHeading(fit.predictors.length===1?"Scatter plot · 38 provinsi / observed vs fitted":"Model diagnostic · observed vs predicted");
+  const wrap=document.createElement("div");wrap.className="ra-wb-plot";wrap.append(visual);result.append(wrap);
+  text("small",fit.predictors.length===1?"Biru: OLS semua observasi · jingga putus-putus: sensitivitas tanpa pertumbuhan ekstrem · merah: observasi berpengaruh (Cook D atau residual). Hover titik untuk identitas provinsi.":"Biru: data / identitas OLS · merah: observasi berpengaruh. Arah sumbu memperlihatkan observasi vs nilai prediksi.");
+ }
+ const d=fit.residual_diagnostics;
+ const flagged=(d?.flagged||[]).map(o=>fit.observations?.[o.index-1]?.name||("Baris "+o.index));
+ text("p","Observasi berpengaruh ("+(flagged.length||0)+"): "+(flagged.join(", ")||"tidak ada pada ambang diagnosis sederhana")+". Penanda ini membutuhkan pemeriksaan data, bukan penghapusan otomatis.");
+ if(sensitivity?.reduced)text("p","Perbandingan ilustratif: R² keseluruhan "+fit.r_squared+" (n="+fit.n+"), sensitivitas "+sensitivity.reduced.r_squared+" (n="+sensitivity.reduced.n+"). Tidak membuktikan sebab-akibat.");
+ const controls=document.createElement("div");controls.className="ra-wb-next";
+ const button=document.createElement("button");button.type="button";button.textContent="Unduh Investor Analytical Report (.md)";
+ button.addEventListener("click",()=>downloadMarkdown(investorMarkdown(fit,filename,sensitivity)));
+ controls.append(button);
+ const notice=document.createElement("small");notice.textContent="Report berisi hasil nyata, batasan identifikasi, pemeriksaan data, temuan dan rekomendasi due diligence. Tidak menyertakan data mentah.";
+ controls.append(notice);result.append(controls);
+}
+function renderEconometricResult(fit){
+ const id=document.documentElement.lang!=="en";
+ result.replaceChildren();
+ const subtitle=document.createElement("strong");
+ subtitle.textContent=fit.method==="panel_fe"?"Panel Fixed Effects · "+(fit.two_way_fe?"unit + year":"unit"):
+ "Multiple OLS · HC1 robust standard errors";
+ result.append(subtitle);
+ const p=document.createElement("p");p.textContent=fit.method==="panel_fe"?
+  "Panel yang digunakan: "+fit.unit_count+" entitas × "+fit.time_count+" periode, "+fit.rows_used+" observasi (complete cases); uncertainty menggunakan cluster-robust per entitas.":
+  "Model regresi dengan "+fit.predictors.length+" prediktor dan "+fit.rows_used+" observasi lengkap; R² = "+fit.r_squared+".";
+ result.append(p);
+ const scroller=document.createElement("div");scroller.className="ra-wb-table-scroller";
+ const table=document.createElement("table");
+ const header=document.createElement("tr");
+ for(const label of ["Parameter","Koefisien","Std. error","CI 95% bawah","CI 95% atas","p (approx.)"]){const th=document.createElement("th");th.textContent=label;header.append(th)}
+ table.append(header);
+ const terms=fit.method==="panel_fe"?fit.coefficients:fit.coefficient_terms;
+ for(const c of terms){const tr=document.createElement("tr");for(const v of [c.name,c.estimate,c.std_error_hc1,c.ci95_low,c.ci95_high,c.p_value_approx]){const td=document.createElement("td");td.textContent=String(v??"—");tr.append(td)}table.append(tr)}
+ scroller.append(table);result.append(scroller);
+ const analysis=document.createElement("section");analysis.className="ra-wb-analysis";
+ const heading=document.createElement("strong");heading.textContent=id?"Interpretasi untuk investor":"Investor interpretation";analysis.append(heading);
+ const body=document.createElement("p");
+ body.textContent=fit.method==="panel_fe"?
+ "Koefisien memperlihatkan hubungan perubahan variabel di dalam unit yang sama dari tahun ke tahun, setelah mengendalikan karakteristik unit yang konstan. Cluster-robust standard errors memperhitungkan korelasi dalam kelompok, tetapi tidak menjamin identifikasi kausal maupun mengoreksi seluruh guncangan waktu.":
+ "Koefisien dengan standard error HC1 dan interval kepercayaan 95% mengukur asosiasi bersyarat pada prediktor yang dipilih. Periksa korelasi antarprediktor, outlier, potensi endogenitas dan perbedaan satuan sebelum menggunakannya untuk penilaian investasi.";
+ analysis.append(body);
+ const caveat=document.createElement("p");caveat.textContent=fit.limitations;analysis.append(caveat);result.append(analysis);
+ addEconometricAppendix(fit);
+}
+
 $("raRunMethod").addEventListener("click",()=>{
  const selected=method.value;
  if(selected==="auto"){error("Choose a specific executable method to calculate locally; Auto helps formulate the AI research plan.");return}
  if(getMethod(selected)?.status!=="local"){error("Method available in design library only. SLI AI can discuss identification, assumptions and data requirements, but this estimator is not executed.");return}
  try{
   if(!data&&!model)throw Error("Upload a compatible CSV/JSON dataset before running a model");
-  const output=evaluate({method:selected,rows:data,x:x.value,y:y.value,model});
-  last=output;consent.checked=false;result.dataset.state="ready";
-  renderCalculation(output);
+  if(selected==="multivariate_ols"||selected==="panel_fe"){
+   if(!data)throw Error("Multivariable econometrics requires a CSV/JSON table, not standalone AHP parameters");
+   const extras=[...extra.selectedOptions].map(o=>o.value).filter(v=>v!==x.value&&v!==y.value).slice(0,4);
+   const xs=[x.value,...extras];
+   if(selected==="panel_fe"&&!time.value)throw Error("Panel FE needs an actual time/year column. Upload multi-year province-year data; this single-year cross section is not valid panel.");
+   const output=selected==="panel_fe"?panelFixedEffects(data,xs,y.value,entity.value,time.value,yearFE.checked):multivariateOLS(data,xs,y.value);
+   last=output;consent.checked=false;result.dataset.state="ready";
+   renderEconometricResult(output);
+  }else{
+   const output=evaluate({method:selected,rows:data,x:x.value,y:y.value,model});
+   last=output;consent.checked=false;result.dataset.state="ready";
+   renderCalculation(output);
+   if(selected==="ols"&&data?.length>=16){
+    try{
+     const enhanced=multivariateOLS(data,[x.value],y.value);
+     last=enhanced;
+     const sensitivity=y.value==="real_grdp_growth_2025_pct"?sensitivityOLS(data,x.value,y.value):null;
+     addEconometricAppendix(enhanced,sensitivity);
+    }catch(e){const note=document.createElement("small");note.textContent="Additional inference diagnostics unavailable: "+e.message;result.append(note)}
+   }
+  }
  }catch(e){error("Model could not run: "+String(e.message).slice(0,200))}
 });
-$("raClearData").addEventListener("click",()=>{data=null;model=null;filename="";last=null;datafile.value="";consent.checked=false;varGroup.hidden=true;show("Dataset cleared. Nothing was stored in the browser.");desc()});
+$("raClearData").addEventListener("click",()=>{data=null;model=null;filename="";last=null;datafile.value="";consent.checked=false;varGroup.hidden=true;advanced.hidden=true;show("Dataset cleared. Nothing was stored in the browser.");desc()});
 function language(){
  const id=document.documentElement.lang!=="en";
  const p=box.querySelector("[data-wb-i18n=intro]");
