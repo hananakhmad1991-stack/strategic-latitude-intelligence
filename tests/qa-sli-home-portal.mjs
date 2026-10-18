@@ -15,7 +15,7 @@ test("SLI portal is the default view and the original comprehensive overview is 
 });
 test("Portfolio homepage links to research and six functioning sector portals",()=>{
  for(const ref of ["#energy","#investment","#minerals","#policy","indonesia-macroeconomic-intelligence.html","ai-intelligence-hub.html","sli-research-ai.html","provincial-intelligence.html"])
-  assert.ok(html.includes('href="'+(ref.startsWith('#')?'./'+ref:ref)+'"')||html.includes('href="'+ref+'"'),ref);
+  assert.ok(html.includes('href="'+ref+'"')||html.includes('href="./'+ref+'"'),ref);
  assert.match(html,/data-sli-home-search/);
  assert.match(html,/sliGlobalSearchInput/);
  assert.match(html,/selectedPage==='home'\?'overview'/);
