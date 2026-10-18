@@ -323,3 +323,66 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-short-panel-warning{
  color:#7c3e25!important;border-left:4px solid #b16a33;
  border-radius:7px;font:700 12px/1.7 system-ui,sans-serif
 }
+
+
+/* SLI Structural Economy Lab: traceable descriptive industrial evidence, never model-ready by implication. */
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-economy{
+ background:#f7fafc;border:1px solid #bfd4e1;border-left:4px solid #b79a59;
+ border-radius:12px;margin:16px 0 23px;padding:16px 18px;color:#234864
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-economy[hidden]{display:none!important}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-economy h3{
+ color:#184e70;font:800 18px/1.35 system-ui,sans-serif;margin:0 0 10px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-economy h4{
+ color:#205776;font:750 14px/1.4 system-ui,sans-serif;margin:17px 0 8px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-economy p,
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-economy li{
+ font:12px/1.75 system-ui,sans-serif;color:#345b75!important
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-economy .ra-wb-structural-gate{
+ background:#fff5e8;color:#825221!important;border-left:3px solid #bd8a45;
+ padding:10px 13px;border-radius:7px;font-weight:700;margin:9px 0 15px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-metrics{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-metric{
+ display:flex;flex-direction:column;gap:5px;background:#fff;
+ border:1px solid #d7e3eb;border-radius:9px;padding:12px;min-width:0
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-metric span{
+ color:#507189;font:650 11px/1.4 system-ui,sans-serif
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-metric strong{
+ color:#144b71;font:800 22px/1.25 system-ui,sans-serif
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-metric small{
+ color:#658096;font:11px/1.5 system-ui,sans-serif
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-synthesis{
+ margin:15px 0;padding:10px 13px;border:1px solid #cfdfe8;
+ background:#eaf3f8;border-radius:8px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-source-links{margin:12px 0}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-economy a{
+ color:#15658f;font:700 12px/1.6 system-ui,sans-serif;text-decoration:underline
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-details{
+ border-top:1px solid #d2e0e7;padding:10px 0;margin:10px 0
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-details summary{
+ font:750 12px/1.6 system-ui,sans-serif;color:#265c80;cursor:pointer
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-details ul{
+ padding-left:20px;margin:10px 0
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-economy>small{
+ color:#6b7f90;font:11px/1.65 system-ui,sans-serif
+}
+@media(max-width:700px){
+ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-metrics{
+  grid-template-columns:1fr
+ }
+}
