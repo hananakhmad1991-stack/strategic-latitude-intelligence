@@ -70,8 +70,8 @@ function renderLane(parent,data,sector,scope){
  head.append(left,E("strong","sli-radar-count",items.length+" "+tr("leads","headline")));lane.append(head);
  lane.append(histogram(items));
  const note=E("p","sli-radar-lane-note",scope==="geopolitical"?
-   tr("Transmission pathways to Indonesia, not confirmed domestic impacts.","Jalur dampak potensial ke Indonesia, bukan dampak domestik terkonfirmasi."):
-   tr("Policy, construction, operations and incident leads; each needs primary-source checking.","Pantauan regulasi, proyek, operasi, dan insiden; masing-masing perlu pemeriksaan sumber primer."));
+   tr("Publisher-attributed international reporting is secondary research evidence; compare impacts with SLI statistics and OSINT.","Laporan media internasional teratribusi adalah sumber data sekunder; uji dampaknya dengan statistik SLI dan OSINT."):
+   tr("Publisher-attributed reporting is indexed as secondary evidence; project and policy implementation still need source comparisons.","Berita media teratribusi menjadi data sekunder; status pelaksanaan proyek dan kebijakan tetap perlu perbandingan sumber."));
  lane.append(note);
  const panel=E("div","sli-radar-search-row"),search=E("input","sli-radar-search"),select=E("select","sli-radar-select");
  search.type="search";search.placeholder=tr("Search headlines or publishers","Cari judul atau penerbit");
@@ -100,7 +100,7 @@ function renderLane(parent,data,sector,scope){
    article.append(row,E("h5",null,""),E("p","sli-radar-publisher",(item.publisher||"")+" · "+stamp(item.published_at_utc)));
    article.querySelector("h5").append(link(item.url,item.title));
    if(item.impact_pathway)article.append(E("p","sli-radar-path",tr("Potential pathway: ","Jalur dampak potensial: ")+item.impact_pathway));
-   article.append(E("small","sli-radar-caveat",tr("Attributed headline · unverified","Headline bersumber · belum diverifikasi")));
+   article.append(E("small","sli-radar-caveat",tr("Attributed secondary news · headline metadata; original article not inspected","Berita sekunder teratribusi · metadata judul; isi artikel belum diperiksa")));
    list.append(article);
   }
   footer.replaceChildren(E("span",null,tr("Displaying ","Menampilkan ")+view.length+" / "+filtered.length+" "+tr("saved leads","headline tersimpan")));
