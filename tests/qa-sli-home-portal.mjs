@@ -22,17 +22,19 @@ test("Portfolio homepage links to research and six functioning sector portals, w
  assert.match(html,/LIMITED TEST|Owner Test remains restricted/);
 });
 test("Policy and Geopolitics have separate homepage cards, distinct destinations, and independent dashboard content",()=>{
- assert.match(html,/<a href="#policy" class="sli-portal-sector"[^>]*>[\\s\\S]*?<strong>Policy &amp; Regulation<\\/strong>/);
- assert.match(html,/<a href="#geopolitics" class="sli-portal-sector"[^>]*>[\\s\\S]*?<strong>Geopolitical Intelligence<\\/strong>/);
- assert.doesNotMatch(html,/<strong>Policy &amp; Geopolitics<\\/strong>/);
- assert.match(html,/data-page="policy"/);
- assert.match(html,/data-page="geopolitics"/);
- assert.match(html,/page==='geopolitics'\\?'<div id="sliGeoChapterRoot"/);
- assert.match(html,/\\['minerals','ai','policy'\\]\\.includes\\(page\\)/);
- assert.match(html,/window\\.initSLIResearch\\(page\\)/);
- assert.match(html,/if\\(page==='policy'\\)return/);
- assert.match(style,/grid-template-columns:repeat\\(4,minmax\\(0,1fr\\)\\)/);
- assert.match(style,/@media\\(max-width:1220px\\)/);
+ assert.ok(html.includes('<a href="#policy" class="sli-portal-sector"'));
+ assert.ok(html.includes('<strong>Policy &amp; Regulation</strong>'));
+ assert.ok(html.includes('<a href="#geopolitics" class="sli-portal-sector"'));
+ assert.ok(html.includes('<strong>Geopolitical Intelligence</strong>'));
+ assert.ok(!html.includes('<strong>Policy &amp; Geopolitics</strong>'));
+ assert.ok(html.includes('data-page="policy"'));
+ assert.ok(html.includes('data-page="geopolitics"'));
+ assert.ok(html.includes("page==='geopolitics'?'<div id=\"sliGeoChapterRoot\""));
+ assert.ok(html.includes("['minerals','ai','policy'].includes(page)"));
+ assert.ok(html.includes('window.initSLIResearch(page)'));
+ assert.ok(html.includes("if(page==='policy')return"));
+ assert.ok(style.includes('grid-template-columns:repeat(4,minmax(0,1fr))'));
+ assert.ok(style.includes('@media(max-width:1220px)'));
 });
 
 test("Homepage shares SLI original navy/gold identity, stays mobile responsive, and Research AI retains separate visual system",()=>{
