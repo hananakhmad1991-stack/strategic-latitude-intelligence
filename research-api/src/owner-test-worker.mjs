@@ -9,6 +9,7 @@ import {validateAssistantPayload,selectResearchEvidence,modelRequest,verifyResea
 import {extractModelText} from "./core.mjs";
 import {buildResearchCharts} from "./chart-data.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
+import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
 import {validateOwnerAttachments,buildOwnerFileParts} from "../../js/sli-investor-chat.mjs";
 
 const HEADERS={"content-type":"application/json;charset=utf-8","cache-control":"no-store,private","x-content-type-options":"nosniff","vary":"Origin"};
@@ -122,7 +123,14 @@ export default{
   // No source match does not prevent academic methodology assistance.
   // Without evidence, only a clearly scoped research-design response is allowed;
   // there is no empirical claim, SLI numeric data or fabricated citation.
+  const energyQuestion=/ketahanan energi|energy security|energy resilience|produksi migas|supply minyak|harga bbm|subsidi energi|transisi energi|pasokan bbm/i.test(payload.question+" "+(payload.history||[]).filter(h=>h.role==="user").slice(-1).map(h=>h.content).join(" "));
+  const monitoring=energyQuestion?await fetchEnergyMonitoring():{status:"not_requested",as_of:null,signals:[]};
   const params=modelRequest(payload,evidence,env.RESEARCH_MODEL);
+  const monitoringText=monitoringPromptContext(monitoring);
+  if(monitoringText){
+   params.input[0].content.push({type:"input_text",text:monitoringText});
+   params.instructions+="\nWhen using monitoring leads distinguish headline discovery from official energy statistics and NEVER cite it as fact. Keep findings section grounded in numbered official sources. The user can inspect each monitor link separately.";
+  }
   if(ownerFiles.length){
    // Never include the binary blob as chat history or store in public SLI corpus.
    // Only the current authenticated/consented request passes directly to OpenAI.
@@ -150,6 +158,9 @@ export default{
    corpus_as_of:energyCorpusAudit().assessment_date,
    corpus_version:"sli-energy-official-v2",
    retrieved_sources_count:evidence.length,
+   monitoring_status:monitoring.status,
+   monitoring_as_of:monitoring.as_of,
+   monitoring_signals:monitoring.signals.slice(0,5),
    sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo}))},origin);
  }
 };
