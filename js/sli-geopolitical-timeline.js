@@ -58,7 +58,7 @@ function latestSignals(index){
   now-Date.parse(x.published_at_utc)>=0&&now-Date.parse(x.published_at_utc)<=maxAge)
  .sort((a,b)=>b.published_at_utc.localeCompare(a.published_at_utc)).slice(0,7);
 }
-function graphLines(series,events,signals,year,lastMonth,isIndex){
+function graphLines(series,events,signals,year,lastMonth,isIndex,activeDate,onChoose){
  const root=svg("svg",{viewBox:"0 0 1040 350",role:"img","aria-label":tx("Geopolitical milestones over monthly commodity prices","Peristiwa geopolitik dan harga komoditas bulanan")});
  const W=1040,H=350,L=78,R=26,T=38,B=49;
  const origin=year*12,finish=absMonth(lastMonth),span=Math.max(1,finish-origin);
@@ -77,12 +77,29 @@ function graphLines(series,events,signals,year,lastMonth,isIndex){
   if(yr%interval)continue;const x=L+(yr*12-origin)/span*(W-L-R);
   const t=svg("text",{x,y:H-19,fill:"#c2d5e4","font-size":13,"text-anchor":"middle"},root);t.textContent=yr;
  }
- for(const e of events){
-  const m=month(e.date);if(absMonth(m)<origin||absMonth(m)>finish)continue;
-  const x=xx(m);
-  svg("line",{x1:x,x2:x,y1:T,y2:H-B,stroke:"#f1c56e","stroke-opacity":".26","stroke-dasharray":"3 5"},root,
-    e.date+" · "+local(e,"title"));
-  svg("circle",{cx:x,cy:T,r:4,fill:"#f1c56e"},root,local(e,"title")+" · "+e.date);
+ // Source-attributed event markers. The entire marker has a generous pointer/keyboard hit area.
+ let lastYearLabelX=-100;
+ for(const event of events){
+  const m=month(event.date);if(absMonth(m)<origin||absMonth(m)>finish)continue;
+  const x=xx(m),chosen=activeDate===event.date;
+  const tooltip=local(event,"title")+" · "+event.date+" · "+tx("Open chronology, market evidence and lesson learned","Buka kronologi, bukti pasar dan pelajaran");
+  const marker=svg("g",{"class":"sli-geo-event-marker"+(chosen?" is-selected":""),role:"button",tabindex:0,
+   "aria-label":tooltip,"aria-pressed":chosen?"true":"false","data-event-date":event.date},root,tooltip);
+  const line=svg("line",{x1:x,x2:x,y1:T,y2:H-B,stroke:"#f3c871",
+   "stroke-width":chosen?4:2.1,"stroke-opacity":chosen?".96":".53","stroke-dasharray":chosen?"none":"5 6",
+   "class":"sli-geo-event-line"},marker);
+  svg("circle",{cx:x,cy:T,r:chosen?12:8.8,fill:"#ffce70",stroke:chosen?"#fff9de":"#142e43",
+   "stroke-width":chosen?3.5:2.5,"class":"sli-geo-event-dot"},marker);
+  // This extra transparent target makes the point easy to click on touch screens.
+  svg("circle",{cx:x,cy:T,r:19,fill:"transparent",stroke:"none","class":"sli-geo-event-hit"},marker);
+  if(x-lastYearLabelX>31||chosen){
+   const label=svg("text",{x,y:T-21,"text-anchor":"middle",fill:chosen?"#fff0b8":"#ecd49a",
+    "font-size":chosen?16:12,"font-weight":chosen?800:600,"class":"sli-geo-event-year"},marker);
+   label.textContent=event.date.slice(0,4);lastYearLabelX=x;
+  }
+  const choose=()=>onChoose?.(event.date);
+  marker.addEventListener("click",choose);
+  marker.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();choose()}});
  }
  for(const report of signals){
   const m=month(report.published_at_utc);if(absMonth(m)<origin||absMonth(m)>finish)continue;
@@ -124,12 +141,14 @@ function scatter(points,events){
  }
  return chart;
 }
-function eventRows(events,points){
+function eventRows(events,points,onChoose,activeDate){
  const container=el("div","sli-geo-timeline-events"),map=new Map(points.map((p,i)=>[p.month,{p,prior:i>0?points[i-1]:null}]));
  for(const e of [...events].reverse()){
-  const article=el("article","sli-geo-timeline-event"),date=el("time","sli-geo-timeline-date",e.date),body=el("div");
+  const article=el("article","sli-geo-timeline-event"+(activeDate===e.date?" is-selected":"")),date=el("time","sli-geo-timeline-date",e.date),body=el("div");
   date.dateTime=e.date;const a=link(e.source_url,local(e,"title")+" ↗");a.className="sli-geo-timeline-title";
-  body.append(a,el("p",null,local(e,"mechanism")));
+  const selectEvent=el("button","sli-geo-timeline-open",tx("View event lesson","Lihat pelajaran peristiwa"));selectEvent.type="button";
+  selectEvent.addEventListener("click",()=>onChoose?.(e.date));
+  body.append(a,el("p",null,local(e,"mechanism")),selectEvent);
   const match=map.get(month(e.date));
   if(match?.prior&&absMonth(match.p.month)-absMonth(match.prior.month)===1){
    const delta=pct(match.p.value,match.prior.value);
@@ -144,6 +163,55 @@ function select(label,choices,initial,parent){
  for(const [v,t] of choices){const opt=el("option",null,t);opt.value=v;s.append(opt)}
  s.value=initial;lab.append(s);parent.append(lab);return s;
 }
+
+function labelBlock(name,body){
+ const block=el("section","sli-geo-insight-block");
+ block.append(el("h5",null,name),el("p",null,body||"—"));return block;
+}
+function marketMoves(event,series,coverage){
+ // Report observed event-month and following-month benchmark changes, never causal attribution.
+ const container=el("div","sli-geo-insight-moves");
+ if(!series.length){container.append(el("p","sli-geo-timeline-meta",tx("Select a benchmark to see market observations.","Pilih acuan untuk melihat observasi pasar.")));return container}
+ const eventMonth=month(event.date),ref=absMonth(eventMonth);
+ for(const s of series){
+  const m=new Map(s.points.map(p=>[absMonth(p.month),p.value]));
+  const price=m.get(ref),prior=m.get(ref-1),next=m.get(ref+1);
+  const row=el("div","sli-geo-insight-move"),name=el("strong",null,tx(ITEMS[s.key][0],ITEMS[s.key][1]));
+  const fmtChange=(a,b)=>{const p=pct(a,b);return p===null?null:(p>=0?"+":"")+fmt(p,1)+"%"};
+  row.append(name);
+  if(price===undefined){
+   row.append(el("span",null,tx("No published benchmark in ","Belum ada observasi acuan pada ")+eventMonth));
+  }else{
+   const unit=coverage[s.key]?.unit||"",m1=fmtChange(price,prior),m2=next===undefined?null:fmtChange(next,price);
+   row.append(el("span",null,fmt(price,2)+" "+unit));
+   row.append(el("span",null,tx("Event month MoM: ","Bulan kejadian MoM: ")+(m1??tx("N/A","T/A"))));
+   row.append(el("span",null,tx("Following month MoM: ","Bulan berikutnya MoM: ")+(m2??tx("N/A","T/A"))));
+  }
+  container.append(row);
+ }
+ return container;
+}
+function eventInsight(event,series,coverage,onReset){
+ const panel=el("article","sli-geo-timeline-interpretation sli-geo-event-insight");
+ const header=el("div","sli-geo-insight-head");
+ const headText=el("div");
+ headText.append(el("small","sli-geo-insight-kicker",tx("SELECTED EVENT · LESSON LEARNED","PERISTIWA TERPILIH · PELAJARAN")),
+ el("h4",null,local(event,"title")),
+ el("p","sli-geo-insight-date",event.date+" · "+event.publisher));
+ const reset=el("button","sli-geo-insight-reset",tx("Back to general analysis","Kembali ke analisis umum"));reset.type="button";reset.addEventListener("click",onReset);
+ header.append(headText,reset);panel.append(header);
+ panel.append(labelBlock(tx("1. What happened · chronology","1. Apa yang terjadi · kronologi"),local(event,"chronology")||local(event,"mechanism")));
+ panel.append(labelBlock(tx("2. Transmission pathways · possible mechanisms","2. Jalur transmisi · mekanisme potensial"),local(event,"mechanism")));
+ panel.append(labelBlock(tx("3. Commodity-market context","3. Konteks pasar komoditas"),local(event,"market_context")));
+ panel.append(marketMoves(event,series,coverage));
+ panel.append(labelBlock(tx("4. Lesson learned","4. Pelajaran yang bisa diambil"),local(event,"lesson")));
+ const source=el("p","sli-geo-timeline-caution");
+ source.append(tx("Historical narrative: ","Kronologi historis: "),link(event.source_url,event.publisher+" ↗"));
+ panel.append(source,el("p","sli-geo-timeline-caution",tx("Monthly price changes are descriptive observations from the World Bank, not a causal estimate of this event. Other demand, policy, inventory and timing factors may matter.",
+ "Perubahan harga bulanan adalah observasi deskriptif dari World Bank, bukan estimasi dampak kausal peristiwa ini. Faktor permintaan, kebijakan, persediaan, dan waktu juga mungkin berpengaruh.")));
+ return panel;
+}
+
 function initPanels(root,prices,events,signals){
  const rows=Array.isArray(prices?.observations)?prices.observations:[];
  const coverage=prices?.series_coverage||{},available=Object.keys(ITEMS).filter(k=>coverage[k]?.count>3);
@@ -161,6 +229,37 @@ function initPanels(root,prices,events,signals){
   tx("History since ","Kronologi sejak ")+events[0]?.date.slice(0,4)+" · "+tx("Series available: ","Seri tersedia: ")+available.length;
  wrapper.append(overview);
  if(!rows.length)wrapper.append(el("p","sli-geo-timeline-status",tx("Verified price synchronization is pending; event chronology remains available.","Sinkronisasi harga terverifikasi belum tersedia; kronologi tetap dapat diakses.")));
+ let activeDate=null;
+ const nav=el("nav","sli-geo-event-navigation");nav.setAttribute("aria-label",tx("Event lessons navigation","Navigasi pelajaran peristiwa"));
+ const indicator=el("p","sli-geo-event-selection",tx("Select a gold event dot on any chart to explore its historical lesson.","Klik dot emas pada grafik mana pun untuk mempelajari kronologi dan dampaknya."));
+ indicator.setAttribute("aria-live","polite");
+ const controlsNav=el("div","sli-geo-event-nav-buttons");
+ const previous=el("button","sli-geo-event-nav-prev",tx("◀ Previous event","◀ Peristiwa sebelumnya"));
+ const next=el("button","sli-geo-event-nav-next",tx("Next event ▶","Peristiwa berikutnya ▶"));
+ const reset=el("button","sli-geo-event-nav-reset",tx("Reset to overview","Kembali ke gambaran umum"));
+ for(const btn of [previous,next,reset]){btn.type="button";controlsNav.append(btn)}
+ nav.append(indicator,controlsNav);wrapper.append(nav);
+ const visibleEvents=()=>events.filter(e=>e.date>=year.value+"-01-01"&&(kind.value==="all"||e.category===kind.value));
+ function chooseEvent(date){
+  const ev=events.find(e=>e.date===date);
+  if(!ev||!visibleEvents().some(e=>e.date===date))return;
+  activeDate=date;refresh();
+ }
+ function resetEvent(){activeDate=null;refresh()}
+ previous.addEventListener("click",()=>navigate(-1));next.addEventListener("click",()=>navigate(1));
+ reset.addEventListener("click",resetEvent);
+ function navigate(direction){
+  const list=visibleEvents();const i=list.findIndex(e=>e.date===activeDate);
+  if(i<0)return;const target=list[i+direction];if(target)chooseEvent(target.date);
+ }
+ function updateEventNav(){
+  const ev=events.find(e=>e.date===activeDate);
+  const list=visibleEvents(),i=ev?list.findIndex(e=>e.date===ev.date):-1;
+  indicator.textContent=ev?
+   tx("Selected event: ","Peristiwa terpilih: ")+local(ev,"title")+" · "+ev.date:
+   tx("Select a gold event dot on any chart to read a chronology, price evidence and lesson learned.","Klik dot emas pada grafik mana pun untuk membaca kronologi, bukti harga, dan pelajaran.");
+  previous.disabled=i<=0;next.disabled=i<0||i>=list.length-1;reset.disabled=!ev;
+ }
  const contexts=[];
  for(const group of ["energy","minerals","cross"]){
   const section=el("section","sli-geo-timeline-panel");
@@ -221,7 +320,7 @@ function initPanels(root,prices,events,signals){
     return {key:s.key,points:s.points.filter(p=>p.month>=common).map(p=>({month:p.month,value:p.value/base*100}))};
    }).filter(s=>s.points.length);
    const last=prices.latest_month||rows.at(-1).month;
-   chart.append(graphLines(series,chosenEvents,signals,start,last,drawMode==="indexed"));
+   chart.append(graphLines(series,chosenEvents,signals,start,last,drawMode==="indexed",activeDate,chooseEvent));
    chart.append(el("p","sli-geo-timeline-meta",drawMode==="indexed"?
     tx("Index base = 100 at the first common observed month: ","Basis indeks = 100 pada bulan pertama yang sama: ")+common+
      tx(". Pre-baseline values are deliberately not plotted.",". Data sebelum basis sengaja tidak diplot."):
@@ -235,6 +334,14 @@ function initPanels(root,prices,events,signals){
    const focus=raw.find(s=>s.key===series[0].key);
    const stats=eventStats(focus.points,chosenEvents);
    const valid=raw.map(s=>({key:s.key,stats:eventStats(s.points,chosenEvents)}));
+   const chosen=activeDate?events.find(e=>e.date===activeDate):null;
+   if(chosen){
+    const eventPanel=eventInsight(chosen,raw,coverage,resetEvent);
+    const sc=el("article","sli-geo-timeline-scatter");
+    sc.append(el("h4",null,tx("Event-month indicator vs monthly returns · ","Indikator kejadian vs perubahan bulanan · ")+tx(ITEMS[focus.key][0],ITEMS[focus.key][1])),scatter(focus.points,chosenEvents));
+    reports.append(eventPanel,sc);
+    return;
+   }
    const info=el("article","sli-geo-timeline-interpretation");
    const first=valid[0];
    info.append(el("h4",null,tx("SLI analytical note","Catatan analisis SLI")));
@@ -282,9 +389,11 @@ function initPanels(root,prices,events,signals){
  if(!signals.length)news.append(el("p","sli-geo-timeline-status",tx("No qualifying recent escalations in this feed.","Tidak ada eskalasi terbaru yang cocok pada feed ini.")));
  wrapper.append(news);root.append(wrapper);
  function refresh(){
+  if(activeDate&&!visibleEvents().some(e=>e.date===activeDate))activeDate=null;
+  updateEventNav();
   for(const render of contexts)render();
   const selected=events.filter(e=>e.date>=year.value+"-01-01"&&(kind.value==="all"||e.category===kind.value));
-  list.replaceChildren(eventRows(selected,seriesFrom(rows,"brent",Number(year.value))));
+  list.replaceChildren(eventRows(selected,seriesFrom(rows,"brent",Number(year.value)),chooseEvent,activeDate));
  }
  year.addEventListener("change",refresh);kind.addEventListener("change",refresh);
  refresh();
