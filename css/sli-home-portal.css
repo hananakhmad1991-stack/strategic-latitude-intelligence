@@ -90,11 +90,12 @@ body.sli-home-active .main>.top .sli-search-input{font-size:14px}
 body.sli-home-active .main>.top .sli-search-popover{left:0;right:auto;width:min(820px,92vw)}
 body.sli-home-active .main>.top .chip{display:none}
 body.sli-home-active .sli-portal-mast{display:flex;align-items:center;justify-content:space-between;gap:19px;border-bottom:1px solid #2e4459;padding:14px 3px;min-height:73px}
-.sli-portal-brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none!important;flex-shrink:0}
-.sli-portal-brand-emblem{display:grid;place-items:center;border:2px solid #d7b678;color:#e5c687;font-size:25px;width:37px;height:37px;border-radius:50%;line-height:1}
-.sli-portal-brand>span:last-child{display:grid;gap:1px;letter-spacing:.09em}
-.sli-portal-brand strong{color:#f4f6f8;font-size:13px;line-height:1.2}
-.sli-portal-brand small{color:#d7b678;font-size:9px;letter-spacing:.22em;font-weight:750}
+.sli-portal-brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none!important;flex-shrink:0;min-width:0}
+.sli-portal-brand-monogram{display:block;color:#e3c083;font:800 31px/.98 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.075em;padding:1px 12px 1px 0;border-right:1px solid #5b6470}
+.sli-portal-brand-name{display:grid;gap:2px;letter-spacing:.09em;min-width:0}
+.sli-portal-brand-name strong{color:#f4f6f8;font-size:12px;line-height:1.2;white-space:nowrap;font-weight:720}
+.sli-portal-brand-name small{color:#d7b678;font-size:9px;letter-spacing:.2em;font-weight:730}
+.sli-portal-brand:hover .sli-portal-brand-monogram,.sli-portal-brand:focus-visible .sli-portal-brand-monogram{color:#f4dba8}
 .sli-portal-topnav{display:flex;align-items:center;justify-content:center;gap:clamp(11px,1.6vw,25px);flex-wrap:wrap;min-width:0}
 .sli-portal-topnav a{display:inline-flex;align-items:center;min-height:39px;white-space:nowrap;font-size:12px;color:#d5e2ed;text-decoration:none!important;font-weight:600;border-bottom:2px solid transparent}
 .sli-portal-topnav a:hover,.sli-portal-topnav a:focus-visible{border-bottom-color:#d7b678;color:#f4d79f}
@@ -124,7 +125,7 @@ body.sli-home-active .sli-portal-heading{margin:19px 0 11px;scroll-margin-top:17
  body.sli-home-active .main>.top .sli-top-actions{width:100%;min-width:0;display:block}
  body.sli-home-active .main>.top .sli-search-popover{width:100%;max-height:55vh}
  body.sli-home-active .sli-portal-mast{padding:12px 0;gap:10px}
- .sli-portal-brand strong{font-size:11px}.sli-portal-brand small{font-size:8px}
+ .sli-portal-brand-monogram{font-size:28px;padding-right:9px}.sli-portal-brand-name strong{font-size:10px}.sli-portal-brand-name small{font-size:8px}
  .sli-portal-topnav{overflow-x:auto;white-space:nowrap;flex-wrap:nowrap;gap:17px;scrollbar-width:thin;scrollbar-color:#51718d transparent}
  .sli-portal-topnav a{font-size:11px}
  body.sli-home-active .sli-portal-hero{padding:21px}

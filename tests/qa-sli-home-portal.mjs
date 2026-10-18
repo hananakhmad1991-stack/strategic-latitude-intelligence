@@ -66,3 +66,12 @@ test("Home mode uses a complete lightweight top-nav without exposing the long le
  assert.match(html,/id="nav"/);
  assert.match(html,/class="sidebar"/);
 });
+
+test("SLI primary homepage brand uses an original typography-only monogram, not the former compass emblem",()=>{
+ assert.match(html,/<span class="sli-portal-brand-monogram" aria-hidden="true">SLI<\/span>/);
+ assert.match(html,/<span class="sli-portal-brand-name"><strong>STRATEGIC LATITUDE<\/strong><small>INTELLIGENCE<\/small><\/span>/);
+ assert.doesNotMatch(html,/class="sli-portal-brand-emblem"/);
+ assert.match(style,/\.sli-portal-brand-monogram\{/);
+ assert.match(style,/border-right:1px solid #5b6470/);
+ assert.ok(html.includes(style),"Home page embedded styles must match the latest standalone CSS");
+});
