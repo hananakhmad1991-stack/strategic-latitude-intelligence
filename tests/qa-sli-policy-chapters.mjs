@@ -7,7 +7,7 @@ const legal=JSON.parse(read("data/sli-policy-regulatory-graph-2026.json"));
 const evaluations=JSON.parse(read("data/sli-public-policy-evaluation-2026.json"));
 const ria=JSON.parse(read("data/sli-sector-regulatory-ria-deepdives.json"));
 test("All Policy chapters 01–05 have data-led panels and safe first-party integration",()=>{
- for(const id of ["01","02","03","04","05"])assert.match(js,new RegExp('area\\\\("'+id+'"'));
+ for(const id of ["01","02","03","04","05"])assert.ok(js.includes('area("'+id+'"'),"Missing data-led chapter "+id);
  assert.match(view,/window\.initSLIPolicyInsights\(\)/);
  assert.match(index,/js\/sli-policy-chapter-insights\.js/);
  assert.match(index,/css\/sli-policy-chapter-insights\.css/);
