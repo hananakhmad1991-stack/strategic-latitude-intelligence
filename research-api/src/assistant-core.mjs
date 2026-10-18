@@ -309,13 +309,13 @@ export function modelRequest(payload,evidence,model){
   instructions:instruction,input:[{role:"user",content:[{type:"input_text",text:JSON.stringify(userData)}]}]};
 }
 export function verifyMethodOnlyAnswer(answer){
- if(typeof answer!=="string"||answer.trim().length<50||answer.length>24000)return false;
+ if(typeof answer!=="string"||answer.trim().length<50||answer.length>50000)return false;
  if(/\[[0-9]+\]/.test(answer))return false;
  if(/\b(?:sumber resmi SLI|verified SLI data|SLI-confirmed findings)\b/i.test(answer))return false;
  return true;
 }
 export function verifyResearchAnswer(answer,evidence){
- if(typeof answer!=="string"||answer.trim().length<50||answer.length>24000||!citationsValid(answer,evidence))return false;
+ if(typeof answer!=="string"||answer.trim().length<50||answer.length>50000||!citationsValid(answer,evidence))return false;
  const refs=[...answer.matchAll(/\[(\d+)\]/g)].map(x=>Number(x[1]));
  return refs.length>0&&refs.every(i=>i>=1&&i<=evidence.length);
 }
