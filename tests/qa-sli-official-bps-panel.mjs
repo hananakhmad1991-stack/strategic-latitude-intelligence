@@ -67,8 +67,11 @@ test("Official source BPS panel supports real exploratory entity/year FE, but ne
   "No 2023 -71.34% Papua administrative break may reach official-growth regression");
  assert.match(fit.limitations,/no causality/);
  const robust=panelStability(p.rows,["pmtb_share_lag1_pct"],"real_grdp_growth_pct","province","year",true);
- assert.equal(robust.leave_one_entity_out.exhaustive,false);
- assert.equal(robust.leave_one_entity_out.tested,25);
+ assert.equal(robust.leave_one_entity_out.exhaustive,true);
+ assert.equal(robust.leave_one_entity_out.tested,32);
+ assert.equal(robust.leave_one_entity_out.successful,32);
+ assert.equal(robust.all_refits_complete,true);
+ assert.equal(robust.leave_one_year_out.successful,4);
  assert.equal(robust.leave_one_year_out.tested,4);
  assert.match(robust.limitations,/do not infer causal/);
 });
