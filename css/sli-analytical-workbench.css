@@ -160,3 +160,15 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability .ra-wb-stability
 body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability .ra-wb-table-scroller{
  max-width:100%;overflow-x:auto
 }
+
+
+/* Transparent interpretation of magnitude/uncertainty and small-cluster inference. */
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-coefficient-interpretation{
+ border-top:1px solid #d0dee9;padding-top:9px;margin-top:11px;
+ color:#214861!important;font-size:12px;line-height:1.7
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-small-sample{
+ padding:11px 13px;margin:11px 0;background:#fff6e9;
+ border-left:3px solid #b68a49;border-radius:6px;color:#684e2a!important;
+ font-size:12px;line-height:1.65
+}
