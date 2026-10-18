@@ -43,9 +43,9 @@ document.querySelectorAll('.labtype').forEach(x=>x.addEventListener('click',()=>
   ...Object.entries(calc).map(([name,value])=>['Scenario result',name,normalize(value)]),
   ['Note','Evidence status','Illustrative conditional scenario; user assumptions are not independently verified'],
   ['Note','Generated',new Date().toISOString()]];
- const safe=value=>{let s=String(value??'');if(/^\\s*[=+@-]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};
- const csv=entries.map(row=>row.map(safe).join(',')).join('\\r\\n');
- const url=URL.createObjectURL(new Blob(['\\ufeff'+csv],{type:'text/csv;charset=utf-8'}));const a=el('a');
+ const safe=value=>{let s=String(value??'');if(/^\s*[=+@-]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};
+ const csv=entries.map(row=>row.map(safe).join(',')).join('\r\n');
+ const url=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));const a=el('a');
  a.href=url;a.download='sli-scenario-'+selectedModel+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)
 });
 </script><script>if(location.hash==='#geo')location.replace('./geopolitical-impact-assessment.html');</script><script defer src="./js/sli-public-usability.js"></script><script defer src="./js/sli-navigation.js?v=20261018-source1"></script><script defer src="./js/sli-shared-appendix.js?v=20261017-unified2"></script></body></html>
