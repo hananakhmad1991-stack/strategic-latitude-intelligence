@@ -148,6 +148,8 @@ export default{
   return send(200,{mode:"generative_rag",research_format:payload.mode,answer,
    charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:evidence.length?"owner_staging_source_dated_energy_corpus":"methodology_design_only_no_verified_sli_evidence",
    corpus_as_of:energyCorpusAudit().assessment_date,
+   corpus_version:"sli-energy-official-v2",
+   retrieved_sources_count:evidence.length,
    sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo}))},origin);
  }
 };
