@@ -36,8 +36,11 @@ jobs:
           e=json.load(open("data/sli-geopolitical-events.json"))
           p=json.load(open("data/sli-geopolitical-commodity-prices.json"))
           assert len(e["events"])>=15
-          assert all("1990-01-01"<=x["date"]<=date.today().isoformat() and x["source_url"].startswith("https://") for x in e["events"])
-          assert len(p["observations"])>=360
+          assert all("1950-01-01"<=x["date"]<=date.today().isoformat() and x["source_url"].startswith("https://") for x in e["events"])
+          assert len(p["observations"])>=780
+          assert p["observations"][0]["month"]=="1960-01"
+          assert "wti" in p["series_coverage"]
+          assert len(p["series_coverage"])>=12
           assert len(set(x["month"] for x in p["observations"]))==len(p["observations"])
           assert p["latest_month"]==p["observations"][-1]["month"]
           PY
