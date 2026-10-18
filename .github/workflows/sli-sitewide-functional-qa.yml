@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'index.html'
+      - 'sli-research-ai.html'
+      - 'js/sli-research-assistant.js'
       - 'intelligence-labs.html'
       - 'climate-environment.html'
       - 'ai-infrastructure.html'
