@@ -194,4 +194,40 @@ window.addEventListener('hashchange',()=>renderBar());
 document.addEventListener('sli:pagechange',()=>renderBar());
 document.addEventListener('sli:languagechange',render);
 window.SLIArchitecture={modules,groups,related,refresh:render};
+
+// SLI source attribution: JSON is machine data, not an original PDF.
+function sliSourceViewerHref(href){
+ try{
+  const u=new URL(href,document.baseURI);
+  if(u.origin!==location.origin)return null;
+  const m=u.pathname.match(/\/data\/([a-z0-9][a-z0-9._-]*\.json)$/i);
+  return m?new URL("./sli-source-viewer.html?dataset="+encodeURIComponent(m[1]),document.baseURI).href:null;
+ }catch{return null}
+}
+function normalizeSLISourceLinks(){
+ if(!document.querySelectorAll)return;
+ for(const a of document.querySelectorAll("a[href]")){
+  if(a.hasAttribute("download")||a.dataset.sliHumanSourceLink==="1")continue;
+  const target=sliSourceViewerHref(a.getAttribute("href"));
+  if(!target)continue;
+  a.dataset.sliHumanSourceLink="1";
+  a.href=target;
+  a.title=(a.title?a.title+" · ":"")+"Source notes and publisher PDF where available; raw JSON via explicit download";
+ }
+}
+let sourceLinksQueued=false;
+function queueSourceLinks(){
+ if(sourceLinksQueued)return;
+ sourceLinksQueued=true;
+ Promise.resolve().then(()=>{sourceLinksQueued=false;normalizeSLISourceLinks()});
+}
+function initSourceLinks(){
+ queueSourceLinks();
+ if(typeof MutationObserver!=="undefined"&&document.body)
+  new MutationObserver(queueSourceLinks).observe(document.body,{subtree:true,childList:true});
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",initSourceLinks,{once:true});
+else initSourceLinks();
+document.addEventListener("sli:pagechange",queueSourceLinks);
+document.addEventListener("sli:languagechange",queueSourceLinks);
 })();
