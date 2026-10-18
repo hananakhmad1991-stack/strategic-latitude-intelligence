@@ -100,7 +100,7 @@ function updateFileStatus(){
   if(!state.features)throw Error("Attachment validation module has not loaded");
   state.features.recognizedFiles(files);
   el.textContent=files.map(f=>f.name+" ("+Math.ceil(f.size/1024)+" KB)").join(" · ")+
-   (ownerConfigured()?" · Uji privat: akan dikirim HANYA jika Anda menyetujui dan mengirim pertanyaan.":" · Belum dapat dikirim: unggahan multimodal baru tersedia pada Owner Test.");
+   (ownerConfigured()&&state.config?.owner_test?.attachments_enabled===true?" · Uji privat: akan dikirim HANYA jika Anda menyetujui dan mengirim pertanyaan.":" · Belum dapat dikirim: pemrosesan lampiran menunggu aktivasi Worker privat.");
  }catch(e){el.textContent="Lampiran belum bisa digunakan: "+String(e.message||e)}
 }
 function methodStatus(){
@@ -121,7 +121,7 @@ async function submit(){
  if(state.busy)return;
  const files=[...$("raChatFiles").files];
  if(files.length){
-  if(!ownerConfigured()){status("Unggah PDF/gambar/office belum aktif untuk pelanggan. Uji privat saja; kirim pertanyaan tanpa lampiran.");return;}
+  if(!ownerConfigured()||state.config?.owner_test?.attachments_enabled!==true){status("Unggah PDF/gambar/office BELUM aktif sampai Cloudflare Owner Worker baru terpasang dan diverifikasi. Silakan kirim pertanyaan tanpa file.");return;}
   if(!$("raChatUploadConsent").checked){status("Setujui pengiriman lampiran ke penyedia AI atau kosongkan unggahan file.");return;}
   try{if(!state.features)state.features=await import("./sli-investor-chat.mjs?v=20261018-chatfirst1");state.features.recognizedFiles(files)}
   catch(e){status("Lampiran ditolak: "+String(e.message||e).slice(0,150));return}
