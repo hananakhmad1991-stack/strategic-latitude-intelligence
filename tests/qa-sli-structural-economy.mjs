@@ -26,7 +26,7 @@ test("Maluku Utara structural 2022–25 comparator uses official BPS province gr
  assert.equal(model.research_gate.panel_industry_regressors_ready,false);
  assert.match(model.research_gate.reason,/not yet been digitized/i);
  assert.match(model.synthesis.join(" "),/NOT the share of growth caused by nickel/);
- assert.match(model.methodological_limits.join(" "),/sector GDP SHARES/);
+ assert.match(model.methodological_limits.join(" "),/contribution\/share to annual GRDP growth/);
  assert.equal(model.facilityExamples.length,5);
  assert.ok(model.facilityExamples.every(r=>r.source.startsWith("https://")&&r.caveat.includes("not a provincially exhaustive")));
 });
