@@ -12,6 +12,7 @@ import {auditReport} from "./report-audit.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
+import {fetchReviewedSecondaryArticles} from "./secondary-news.mjs";
 import {validateOwnerAttachments,buildOwnerFileParts} from "../../js/sli-investor-chat.mjs";
 
 const HEADERS={"content-type":"application/json;charset=utf-8","cache-control":"no-store,private","x-content-type-options":"nosniff","vary":"Origin"};
@@ -122,13 +123,19 @@ export default{
    return send(422,{error:"explicit_file_transfer_consent_required"},origin);
   let rate;try{rate=await env.AI_LIMITER.limit({key:(await sha256(env.OWNER_TEST_TOKEN)).slice(0,16).join("-")})}catch{return send(503,{error:"rate_limiter_not_ready"},origin)}
   if(!rate?.success)return send(429,{error:"owner_test_rate_limit"},origin);
-  const evidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",12);
+  // Reviewed publisher claims are additional dated SECONDARY evidence, never a substitute
+  // for SLI's official baselines. Google RSS leads cannot enter this collection.
+  const primaryEvidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",10);
+  const reviewed=await fetchReviewedSecondaryArticles();
+  const secondaryEvidence=selectResearchEvidence(reviewed.articles,payload.question,payload.history,"pro",2);
+  const evidence=[...primaryEvidence,...secondaryEvidence];
   // No source match does not prevent academic methodology assistance.
   // Without evidence, only a clearly scoped research-design response is allowed;
   // there is no empirical claim, SLI numeric data or fabricated citation.
   const energyQuestion=/ketahanan energi|energy security|energy resilience|produksi migas|supply minyak|harga bbm|subsidi energi|transisi energi|pasokan bbm/i.test(payload.question+" "+(payload.history||[]).filter(h=>h.role==="user").slice(-1).map(h=>h.content).join(" "));
   const monitoring=energyQuestion?await fetchEnergyMonitoring():{status:"not_requested",as_of:null,signals:[]};
   const params=modelRequest(payload,evidence,env.RESEARCH_MODEL);
+  if(secondaryEvidence.length)params.instructions+="\nVERIFIED-PUBLICATION SECONDARY NEWS: Any excerpt prefixed ATTRIBUTED SECONDARY MEDIA REPORT comes from a publisher article whose specific reported claim underwent editorial review. Cite its [n] marker, name the publisher and publication date, and use reported/alleged rather than assert independent verification. Never equate an article with audited CAPEX, commissioned MW, confirmed policy enactment or official statistical releases. Do not repeat or copy publisher copyrighted passages.";
   const monitoringText=monitoringPromptContext(monitoring);
   if(monitoringText){
    params.input[0].content.push({type:"input_text",text:monitoringText});
@@ -164,9 +171,10 @@ export default{
    corpus_as_of:energyCorpusAudit().assessment_date,
    corpus_version:"sli-energy-official-v2",
    retrieved_sources_count:evidence.length,
+   reviewed_secondary_sources:secondaryEvidence.length,secondary_news_status:reviewed.status,
    monitoring_status:monitoring.status,
    monitoring_as_of:monitoring.as_of,
    monitoring_signals:monitoring.signals.slice(0,5),
-   sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo}))},origin);
+   sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo,source_type:id.startsWith("sli_news_")?"secondary_news":"curated_baseline"}))},origin);
  }
 };
