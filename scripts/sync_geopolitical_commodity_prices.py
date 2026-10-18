@@ -14,6 +14,7 @@ from pathlib import Path
 from openpyxl import load_workbook
 
 URLS = [
+ "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
  "https://thedocs.worldbank.org/en/doc/18675f1d1639c7a34d463f59263ba0a2-0050012025/related/CMO-Historical-Data-Monthly.xlsx",
  "https://thedocs.worldbank.org/en/doc/5d903e848db1d1b83e0ec8f744e55570-0350012021/related/CMO-Historical-Data-Monthly.xlsx"
 ]
@@ -94,8 +95,9 @@ def parse(blob):
  observations=[items[k] for k in sorted(items)]
  if len(observations)<360 or observations[0]["month"]>"1990-03":
   raise RuntimeError(f"Incomplete World Bank monthly data: {len(observations)} valid rows")
- if observations[-1]["month"]<"2025-01":
-  raise RuntimeError(f"World Bank source stale: {observations[-1]['month']}")
+ cutoff=(dt.date.today().replace(day=1)-dt.timedelta(days=125)).strftime("%Y-%m")
+ if observations[-1]["month"]<cutoff:
+  raise RuntimeError(f"World Bank source stale: {observations[-1]['month']} < {cutoff}")
  return observations
 
 def main():
