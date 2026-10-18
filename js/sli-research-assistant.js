@@ -279,7 +279,7 @@ async function submit(){
    // Do not label such an unfinished report successful or allow it to be exported.
    if(payload.answer.length===9000)throw Error(state.language==="id"?"Backend Cloudflare masih versi lama: laporan terpotong pada 9.000 karakter. Deploy ulang Worker riset SLI.":"Cloudflare backend is outdated: report truncated at 9,000 characters. Redeploy the SLI research Worker.");
   loading.parentNode?.remove();
-  state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],question,mode};
+  state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],qualityAudit:payload.quality_audit||null,question,mode};
   const report=append("assistant",payload.answer);
   window.SLIResearchVisuals?.renderCharts(state.lastResult.charts,report,state.lastResult.sources,state.language);
   const modernBackend=payload.evidence_status==="owner_staging_source_dated_energy_corpus";
@@ -289,6 +289,23 @@ async function submit(){
     (state.language==="id"?"BACKEND OWNER TEST LAMA · Analisis ini mungkin masih memakai corpus kecil. Pemutakhiran Cloudflare Worker diperlukan agar data energi SLI yang baru tersambung.":"OLD OWNER TEST BACKEND · May still be using the limited corpus. Deploy the updated Cloudflare Worker to connect the new energy data.")):
    (state.language==="id"?"Periksa tanggal dan dokumen sumber sebelum menggunakan hasil.":"Review source dates and primary documents before use."));
   report.prepend(note);
+  const audit=payload.quality_audit;
+  if(audit?.review_scope==="structural_only_not_factual_verification"){
+   const warning=audit.structural_status!=="complete_structure";
+   const title=state.language==="id"?(warning?"Perlu tinjauan struktur laporan":"Struktur laporan lolos pemeriksaan awal"):(warning?"Report structure needs review":"Report structure passed initial checks");
+   const issueNames={
+    too_short:state.language==="id"?"teks terlalu pendek":"too short",
+    too_few_sections:state.language==="id"?"bagian laporan kurang":"too few sections",
+    missing_citations:state.language==="id"?"sitasi belum ada":"no citations",
+    invalid_citation_indices:state.language==="id"?"nomor sitasi tidak sesuai":"invalid citation index",
+    requested_geography_missing:state.language==="id"?"wilayah belum disebut":"requested geography missing",
+    conclusion_heading_missing:state.language==="id"?"bagian kesimpulan belum teridentifikasi":"no conclusion section",
+    possibly_truncated_ending:state.language==="id"?"bagian akhir mungkin terpotong":"ending may be truncated"
+   };
+   const names=(Array.isArray(audit.issues)?audit.issues:[]).map(s=>issueNames[s]||s).join(", ");
+   const caveat=state.language==="id"?"Ini BUKAN verifikasi fakta, kecocokan sitasi, angka atau metode.":"This is NOT verification of factual claims, citation accuracy, numbers or methods.";
+   report.prepend(node("p","sli-ra-evidence-note",title+(warning&&names?" · "+names:"")+" · "+caveat));
+  }
   renderSources(payload.sources,payload.answer,state.lastResult.charts);
   renderModelStatement(payload.answer,payload);
   renderMonitoringSignals(payload);
