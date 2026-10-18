@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build source-dated monthly commodity observations, 1990 onward, from World Bank Pink Sheet.
+"""Build multi-commodity monthly observations (as available from 1960) from World Bank Pink Sheet.
 No imputation, no invented 2026 observations; write only after full parse and validation.
 """
 from __future__ import annotations
@@ -19,14 +19,38 @@ URLS = [
  "https://thedocs.worldbank.org/en/doc/5d903e848db1d1b83e0ec8f744e55570-0350012021/related/CMO-Historical-Data-Monthly.xlsx"
 ]
 TARGET = Path("data/sli-geopolitical-commodity-prices.json")
+# Display only source-published benchmarks. Missing years stay null, not interpolated.
+# These are World Bank Pink Sheet column labels; units follow World Bank commodity definitions.
 COLS = {
- "brent": [r"crude oil,? brent", r"brent"],
- "gold": [r"^gold$", r"gold \("],
- "copper": [r"^copper$", r"copper \("],
- "nickel": [r"^nickel$", r"nickel \("],
- "gas_europe": [r"natural gas.*europe", r"natural gas.*european", r"europe.*natural gas"],
+ "brent": [r"^crude oil,? brent$",r"^crude oil - brent$"],
+ "wti": [r"^crude oil,? wti$",r"^crude oil,? west texas intermediate$"],
+ "dubai": [r"^crude oil,? dubai$"],
+ "oil_average": [r"^crude oil,? average$"],
+ "coal_australia": [r"^coal,? australian$",r"^coal,? australia$"],
+ "coal_south_africa": [r"^coal,? south african$",r"^coal,? south africa$"],
+ "gas_us": [r"^natural gas,? us$",r"^natural gas,? u\\.?s\\.?$"],
+ "gas_europe": [r"^natural gas,? europe$",r"^natural gas,? european$"],
+ "lng_japan": [r"^liquefied natural gas,? japan$",r"^natural gas,? japan$"],
+ "gold": [r"^gold$"],
+ "silver": [r"^silver$"],
+ "copper": [r"^copper$"],
+ "nickel": [r"^nickel$"],
+ "tin": [r"^tin$"],
+ "aluminum": [r"^aluminum$",r"^aluminium$"],
+ "iron_ore": [r"^iron ore$"],
+ "zinc": [r"^zinc$"],
+ "lead": [r"^lead$"],
+ "cobalt": [r"^cobalt$"]
 }
-UNITS = {"brent":"USD/bbl","gold":"USD/troy oz","copper":"USD/mt","nickel":"USD/mt","gas_europe":"USD/mmbtu"}
+UNITS = {
+ "brent":"USD/bbl","wti":"USD/bbl","dubai":"USD/bbl","oil_average":"USD/bbl",
+ "coal_australia":"USD/mt","coal_south_africa":"USD/mt",
+ "gas_us":"USD/mmbtu","gas_europe":"USD/mmbtu","lng_japan":"USD/mmbtu",
+ "gold":"USD/troy oz","silver":"USD/troy oz",
+ "copper":"USD/mt","nickel":"USD/mt","tin":"USD/mt",
+ "aluminum":"USD/mt","iron_ore":"USD/dmt","zinc":"USD/mt","lead":"USD/mt","cobalt":"USD/mt"
+}
+# Cobalt and other optional series are omitted automatically if source lacks them.
 
 def month_of(value):
  if isinstance(value, (dt.datetime, dt.date)):
@@ -82,7 +106,7 @@ def parse(blob):
  for row in sheet.iter_rows(min_row=header+1,values_only=True):
   month=month_of(row[0])
   if not month and len(row)>1: month=month_of(row[1])
-  if not month or month < "1990-01" or month > today: continue
+  if not month or month < "1960-01" or month > today: continue
   obj={"month":month}
   for key,column in columns.items():
    raw=row[column-1] if column<=len(row) else None
@@ -91,26 +115,32 @@ def parse(blob):
     if not (numeric>0 and numeric<1000000): continue
     obj[key]=round(numeric,4)
    except (ValueError,TypeError): continue
-  if obj.get("brent") and len(obj)>2: items[month]=obj
+  if len(obj)>1: items[month]=obj
  observations=[items[k] for k in sorted(items)]
- if len(observations)<360 or observations[0]["month"]>"1990-03":
+ if len(observations)<600 or observations[0]["month"]>"1960-03":
   raise RuntimeError(f"Incomplete World Bank monthly data: {len(observations)} valid rows")
  cutoff=(dt.date.today().replace(day=1)-dt.timedelta(days=125)).strftime("%Y-%m")
  if observations[-1]["month"]<cutoff:
   raise RuntimeError(f"World Bank source stale: {observations[-1]['month']} < {cutoff}")
- return observations
+ return observations, columns
 
 def main():
  blob,url=download()
- obs=parse(blob)
+ obs,columns=parse(blob)
+ first_last={}
+ for key in columns:
+  available=[o["month"] for o in obs if key in o]
+  if available: first_last[key]={"first":available[0],"last":available[-1],"count":len(available),"unit":UNITS[key]}
  out={
-  "schema_version":"sli-geopolitical-commodity-prices-v1",
+  "schema_version":"sli-geopolitical-commodity-prices-v2",
   "source":"World Bank Commodity Markets — Pink Sheet, monthly historical data",
   "source_url":url,
   "period":"Monthly, nominal US dollars, no seasonal adjustment",
   "earliest_month":obs[0]["month"],
   "latest_month":obs[-1]["month"],
-  "unit_by_series":UNITS,
+  "unit_by_series":{k:UNITS[k] for k in first_last},
+  "series_coverage":first_last,
+  "methodology":"Missing observations are omitted. Monthly nominal benchmark, not a retail price. WTI/Brent/Dubai and other benchmarks begin at different dates. 1950s events may predate monthly World Bank coverage.",
   "observations":obs
  }
  encoded=json.dumps(out,ensure_ascii=False,separators=(",",":"))+"\n"
