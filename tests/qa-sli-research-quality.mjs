@@ -20,7 +20,8 @@ test("National energy security prompt retrieves actual SLI oil, gas, fuel, fisca
  assert.ok(docs.some(d=>/581/.test(d.text)),"Real 2025 oil output must be present");
  assert.ok(docs.some(d=>/376\.8/.test(d.text)),"Subsidy PLUS compensation is required");
  assert.ok(docs.some(d=>/15\.75/.test(d.text)),"EBT actual should be retrievable");
- assert.equal(evidenceSector(docs[0]),"oil_gas");
+ assert.equal(docs[0].id,"sli_energy_official_security_index_2025");
+ assert.ok(docs.some(d=>evidenceSector(d)==="oil_gas"));
  const ids=new Set(docs.map(d=>d.id));assert.equal(ids.size,docs.length);
  const payload=validateAssistantPayload({question:"Buat analisis ketahanan energi Indonesia yang konkret dan bersumber",history:[],language:"id",mode:"deep_research",methodology:"auto"});
  assert.ok(payload);
