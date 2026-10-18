@@ -237,9 +237,36 @@ function renderEconometricResult(fit){
   "; X (prediktor) = "+fit.predictors.join(", ")+
   (fit.method==="panel_fe"?" · Efek tetap: unit"+(fit.two_way_fe?" + tahun":""):"");
  result.append(specification);
+ if(/(?:synthet|sintet|demo|simulation|simulasi)/i.test(filename)){
+  const sourceNotice=document.createElement("p");sourceNotice.className="ra-wb-synthetic-warning";
+  sourceNotice.textContent=id?"DATA SIMULASI: angka pada dataset ini hanya untuk menguji fungsi SLI. Koefisien dan p-value tidak boleh dipakai sebagai bukti keadaan ekonomi atau rekomendasi investasi aktual.":"SYNTHETIC SAMPLE: these figures test software functionality only. Coefficients and p-values do not establish real economic conditions.";
+  result.append(sourceNotice);
+ }
  if(/(?:grdp|pdrb|gdp).*growth|growth.*(?:grdp|pdrb|gdp)/i.test(fit.predictors[0])&&/pmtb/i.test(fit.outcome)){
-  const warning=document.createElement("p");warning.className="ra-wb-orientation-warning";
-  warning.textContent="Perhatian: pertumbuhan PDRB menjadi X dan PMTB menjadi Y. Model ini BUKAN PMTB → pertumbuhan. Jika tujuan riset adalah menjelaskan pertumbuhan, tukar X dan Y di atas, lalu hitung kembali.";
+  const warning=document.createElement("div");warning.className="ra-wb-orientation-warning";warning.setAttribute("role","alert");
+  const explanation=document.createElement("p");
+  explanation.textContent=id?"Perhatian: pertumbuhan PDRB menjadi X dan PMTB menjadi Y. Model ini BUKAN PMTB → pertumbuhan. Jika tujuan riset adalah menjelaskan pertumbuhan, balik arah model lalu hitung ulang.":"Warning: GRDP growth is the predictor and PMTB is the outcome. This is NOT PMTB → growth. Reverse X/Y to test the intended economic question.";
+  warning.append(explanation);
+  const switchButton=document.createElement("button");
+  switchButton.type="button";switchButton.className="ra-wb-correct-orientation";
+  switchButton.textContent=id?"Balik X/Y dan hitung ulang":"Reverse X/Y and rerun";
+  switchButton.setAttribute("aria-label",id?"Balik arah regresi PMTB terhadap pertumbuhan dan hitung ulang":"Reverse PMTB and growth model direction and rerun");
+  switchButton.addEventListener("click",()=>{
+   // Require the current selection to match the result being corrected, so a stale warning
+   // cannot silently overwrite a researcher's more recent variable choices.
+   if(x.value!==fit.predictors[0]||y.value!==fit.outcome){
+    const msg=document.createElement("small");msg.textContent=id?"Pilihan variabel sudah berubah. Periksa X/Y dan klik Hitung di Browser.":"Variable selection has changed. Check X/Y and run the model.";
+    warning.append(msg);return;
+   }
+   if(![...x.options].some(o=>o.value===fit.outcome)||![...y.options].some(o=>o.value===fit.predictors[0]))return;
+   x.value=fit.outcome;
+   y.value=fit.predictors[0];
+   // Additional predictors remain intact; only the first X and dependent Y swap.
+   last=null;consent.checked=false;desc();
+   $("raRunMethod").click();
+   if(typeof result.scrollIntoView==="function")result.scrollIntoView({block:"start",behavior:"smooth"});
+  });
+  warning.append(switchButton);
   result.append(warning);
  }
  const p=document.createElement("p");p.textContent=fit.method==="panel_fe"?
