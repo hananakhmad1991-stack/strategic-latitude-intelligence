@@ -143,3 +143,11 @@ test("Complete research narratives are not truncated and APA references remain l
  assert.match(request.instructions,/general reader/);
  assert.match(request.instructions,/opinion-column style/);
 });
+
+test("Main AI report contains no duplicated bibliography; APA lives only in reference UI",()=>{
+ const payload=validateAssistantPayload({question:"Analisis ketahanan energi Indonesia secara komprehensif",mode:"deep_research",history:[]});
+ const req=modelRequest(payload,nationalEnergyEvidence().slice(0,4),"test-model");
+ assert.match(req.instructions,/Do not generate a bibliography/);
+ assert.match(req.instructions,/clickable APA 7 reference panel/);
+ assert.match(read("js/sli-research-assistant.js"),/function apaEntry/);
+});
