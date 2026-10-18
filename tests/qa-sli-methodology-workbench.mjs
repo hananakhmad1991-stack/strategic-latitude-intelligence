@@ -1,5 +1,6 @@
 import {test} from "node:test";
 import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
 import {METHODS,getMethod,parseCsv,describe,correlation,ols,ahp,stockFlow,evaluate} from "../js/sli-analytical-core.mjs";
 import {validateAssistantPayload,modelRequest} from "../research-api/src/assistant-core.mjs";
 test("Curated methodology catalog reports executable vs design-only estimators",()=>{
@@ -40,4 +41,19 @@ test("Private worker accepts opt-in summarized data and rejects unconsented uplo
  assert.match(input,/user_uploaded_analysis/);assert.match(req.instructions,/NEVER infer/);
  assert.equal(validateAssistantPayload({...base,user_analysis:{...user_analysis,consent:false}}),null);
  assert.equal(validateAssistantPayload({...base,methodology:"invented_method"}),null);
+});
+
+test("Workbench usability: navy-shell styles cannot white-out light statistical tables",()=>{
+ const css=readFileSync(new URL("../css/sli-analytical-workbench.css",import.meta.url),"utf8");
+ const js=readFileSync(new URL("../js/sli-analytical-workbench-ui.mjs",import.meta.url),"utf8");
+ const html=readFileSync(new URL("../sli-research-ai.html",import.meta.url),"utf8");
+ assert.match(css,/body\.sli-research-brand #raAnalyticalWorkbench \.ra-wb-output th/);
+ assert.match(css,/\.ra-wb-output td\{/);
+ assert.match(css,/color:#173a55!important/);
+ assert.match(css,/#raAnalyticalWorkbench \.ra-wb-variables\[hidden\]\{display:none!important\}/);
+ assert.match(js,/id\?"Interpretasi untuk investor"/);
+ assert.match(js,/Lanjut: jalankan regresi PMTB/);
+ assert.match(js,/method\.value="ols";desc\(\)/);
+ assert.match(html,/sli-analytical-workbench\.css\?v=20261018-model2/);
+ assert.match(html,/sli-analytical-workbench-ui\.mjs\?v=20261018-model2/);
 });
