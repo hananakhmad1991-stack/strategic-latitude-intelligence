@@ -29,6 +29,10 @@ test("Every SLI page inherits shared visual-export bootstrap without external ch
  assert.match(core,/This visual observation alone cannot establish cause and effect/);
  assert.match(css,/\.sli-visual-insight-fields/);
  assert.match(css,/\.sli-visual-insight-selected/);
+ assert.match(css,/\.sli-visual-insight-split/,"Selected visual observations have a shared two-column layout");
+ assert.match(core,/split\.append\(inspector\)/,"Insight panel belongs beside its chart");
+ assert.match(core,/host\.parentNode\.insertBefore\(split,host\)/,"Chart and inspector are wrapped together");
+ assert.match(core,/split\.parentNode\.insertBefore\(host,split\)/,"Closing restores the original DOM");
 
  assert.match(core,/\["jpg","JPG"\]/);
  assert.match(core,/host\.insertBefore\(toolbar,host\.firstChild\)/);
