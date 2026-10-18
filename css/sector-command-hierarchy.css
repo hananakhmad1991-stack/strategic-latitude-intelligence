@@ -92,3 +92,18 @@
 .sli-hier-entry.planning>.sli-hier-card{border-left:3px solid #9bc8ad}
 @media(max-width:1000px){.sli-hier-market-classifications{grid-template-columns:1fr 1fr}}
 @media(max-width:700px){.sli-hier-domain{padding:12px}.sli-hier-domain-grid{grid-template-columns:1fr}.sli-hier-market-classifications{grid-template-columns:1fr}.sli-hier-domain-head h4{font-size:18px}}
+
+/* SLI institutional functional-vs-command links 19 Oct: never imply an equity
+   or statutory reporting relationship from a research interface placement. */
+.sli-hier-entry.advisory>.sli-hier-card{border-left:4px solid #e0bb72}
+.sli-hier-entry.administrative>.sli-hier-card{border-left:3px solid #8db9d1}
+.sli-hier-entry.local-government>.sli-hier-card{border-left:3px solid #8cb7a8}
+.sli-hier-entry.zone-interface>.sli-hier-card{border-left:3px dashed #dfbb7b}
+.sli-hier-entry.zone-interface>.sli-hier-card small{color:#efd29c}
+.sli-ai-government-organization{max-width:100%;min-width:0;margin:24px 0}
+.sli-ai-government-organization>.sli-hierarchy-mount{max-width:100%;min-width:0}
+.sli-ai-government-organization .sli-hier-root{max-width:100%;width:100%;box-sizing:border-box}
+.sli-ai-government-organization .sli-hier-profile{overflow-wrap:anywhere}
+.sli-ai-government-organization .sli-hier-tools{gap:8px}
+@media(max-width:760px){.sli-ai-government-organization .sli-hier-tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:470px){.sli-ai-government-organization .sli-hier-tools{grid-template-columns:minmax(0,1fr)}}
