@@ -172,3 +172,22 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-small-sample{
  border-left:3px solid #b68a49;border-radius:6px;color:#684e2a!important;
  font-size:12px;line-height:1.65
 }
+
+/* Panel specification controls and practical X2 comparison. */
+#raAnalyticalWorkbench .ra-wb-active-predictors{
+ padding:9px 12px;color:#1f4d6c!important;background:#e5f1f8;border-radius:7px;
+ font:700 12px/1.55 system-ui,sans-serif;overflow-wrap:anywhere
+}
+#raAnalyticalWorkbench .ra-wb-model-extension{
+ background:#f1f7fb;border:1px solid #bfd8e9;border-left:4px solid #347fa9;
+ padding:13px 16px;margin:14px 0;border-radius:8px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-model-extension p{
+ color:#264b65!important;font:13px/1.6 system-ui,sans-serif;margin:0 0 10px
+}
+#raAnalyticalWorkbench .ra-wb-add-predictor{
+ border:1px solid #1d5883;background:#1b5682;color:#fff;border-radius:8px;
+ padding:9px 13px;cursor:pointer;font:700 12px/1.35 system-ui,sans-serif
+}
+#raAnalyticalWorkbench .ra-wb-add-predictor:hover{background:#103f62}
+#raAnalyticalWorkbench .ra-wb-add-predictor:focus-visible{outline:3px solid #ae8b4b;outline-offset:2px}
