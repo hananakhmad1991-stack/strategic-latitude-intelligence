@@ -9,7 +9,7 @@ workers_dev = true
 WEB_ORIGIN = "https://hananakhmad1991-stack.github.io"
 STAGING_ONLY = "true"
 RESEARCH_MODEL = "gpt-5.4-mini"
-OWNER_MAX_OUTPUT_TOKENS = "2400"
+OWNER_MAX_OUTPUT_TOKENS = "4800"
 
 [[ratelimits]]
 name = "AI_LIMITER"

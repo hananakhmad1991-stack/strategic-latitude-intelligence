@@ -9,9 +9,9 @@ const config=JSON.parse(read("data/sli-research-assistant-config.json"));
 const docs=JSON.parse(read("data/sli-research-evidence-preview.json"));
 const regions=JSON.parse(read("data/sli-research-province-preview.json"));
 
-test("Owner test is opt-in, disabled until secure backend is deployed",()=>{
- assert.equal(config.owner_test.enabled,false);
- assert.equal(config.owner_test.endpoint,null);
+test("Owner test is explicitly enabled for owner-only staging while paid access remains closed",()=>{
+ assert.equal(config.owner_test.enabled,true);
+ assert.equal(config.owner_test.endpoint,"https://sli-research-owner-test.hananakhmad1991.workers.dev/v1/owner-research");
  assert.equal(config.api_enabled,false);
  assert.equal(config.login_enabled,false);
  assert.equal(config.api_endpoint,null);
@@ -62,5 +62,8 @@ test("Cloudflare configuration remains separately gated with per-minute rate lim
  assert.match(guide,/wrangler secret put OPENAI_API_KEY/);
  assert.match(guide,/wrangler secret put OWNER_TEST_TOKEN/);
  assert.match(guide,/randomBytes\(32\)/);
- assert.match(guide,/NOT DEPLOYED/);
+ assert.match(guide,/Owner Test Worker deployed/);
+ assert.match(toml,/OWNER_MAX_OUTPUT_TOKENS = "4800"/);
+ assert.match(worker,/params.reasoning=\{effort:"low"\}/);
+ assert.match(worker,/model_response_incomplete/);
 });

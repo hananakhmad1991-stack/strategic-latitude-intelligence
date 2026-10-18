@@ -2,7 +2,7 @@
 
 This is the shortest way to test **real generative AI** in the SLI website without first implementing subscriber login. The production Pro/Enterprise backend remains closed. Owner Test uses **only pre-existing public, short SLI-authored evidence excerpts** and selected 38-province indicator mini-profiles, not any private report or third-party licensed dataset.
 
-**Current deployment status: NOT DEPLOYED.** The main research page shows "Belum terhubung" until steps below are completed. It must never pretend the model is live.
+**Deployment status (2026-10-18): Owner Test Worker deployed, and its public endpoint configured in the SLI research page.** Owner-only generative model output is still being validated. Pro/Enterprise production access is NOT active. The UI must never pretend a failed model request produced a report.
 
 ## Prerequisites
 
@@ -81,7 +81,8 @@ This calls a real OpenAI model through Cloudflare, uses past conversation contex
 - Page asks for token: paste `OWNER_TEST_TOKEN` from your password manager, **never OPENAI_API_KEY**.
 - HTTP 401: test token wrong or missing.
 - HTTP 429: too many research requests in the last minute.
-- HTTP 502: model returned an error, incomplete output or missing source citations; verify provider billing, model access and Cloudflare Worker logs.
+- HTTP 502 `model_response_incomplete`: the model did not complete its response, commonly due to the total output budget (which includes reasoning tokens). This Owner Test uses low reasoning effort, a concise answer target and a 4800-token budget; verify `incomplete_details.reason` using the returned `reason` field and inspect Cloudflare Worker logs if needed. Do not auto-retry paid model requests.
+- Other HTTP 502 errors: model request failed or lacked valid source citations; verify provider billing, model access and Cloudflare Worker logs.
 - HTTP 503: missing `STAGING_ONLY` configuration or Worker secrets/binding.
 - Cross-origin error: set `WEB_ORIGIN` to the actual published SLI **origin** (not the site path) and ensure `workers.dev` Worker address is configured correctly.
 

@@ -93,13 +93,17 @@ export default{
     "The limited SLI test corpus has insufficient matching evidence. No unsupported report was generated.",
     sources:[],evidence_status:"insufficient",research_format:payload.mode},origin);
   const params=modelRequest(payload,evidence,env.RESEARCH_MODEL);
-  params.max_output_tokens=Math.min(params.max_output_tokens,Number(env.OWNER_MAX_OUTPUT_TOKENS)||1800);
+  // The Responses API output budget includes reasoning tokens as well as visible prose.
+  // Keep owner-only tests concise, with enough room for analysis and numbered citations.
+  params.instructions+="\nOWNER TEST: Target 450–650 words, 4–6 concise sections with numbered citations and a clear ending; acknowledge source gaps rather than expanding unsupported claims.";
+  if(/^gpt-5(?:\.|-)/.test(env.RESEARCH_MODEL))params.reasoning={effort:"low"};
+  params.max_output_tokens=Math.min(6000,Math.max(2500,Number(env.OWNER_MAX_OUTPUT_TOKENS)||4800));
   let answer;
   try{
    const res=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"authorization":"Bearer "+env.OPENAI_API_KEY,"content-type":"application/json"},body:JSON.stringify(params)});
    if(!res.ok)return send(502,{error:"model_request_failed"},origin);
    const json=await res.json();
-   if(json.status!=="completed")return send(502,{error:"model_response_incomplete"},origin);
+   if(json.status!=="completed")return send(502,{error:"model_response_incomplete",reason:json.incomplete_details?.reason||"unknown"},origin);
    answer=extractModelText(json);
   }catch{return send(502,{error:"model_unreachable"},origin)}
   if(!verifyResearchAnswer(answer,evidence))return send(502,{error:"invalid_or_missing_source_citations"},origin);
