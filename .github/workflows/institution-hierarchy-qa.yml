@@ -1,0 +1,32 @@
+name: SLI Institutional Hierarchy QA
+on:
+  push:
+    paths:
+      - 'data/energy-governance-ccs.json'
+      - 'data/sector-command-hierarchy.json'
+      - 'js/energy-hierarchy-adapter.js'
+      - 'js/sector-command-hierarchy.js'
+      - 'js/research-chapters.js'
+      - 'ai-infrastructure.html'
+      - 'ai-intelligence-hub.html'
+      - 'index.html'
+      - 'tests/check-institution-hierarchy.cjs'
+      - '.github/workflows/institution-hierarchy-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-institution-tree:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript and source-backed parent relationships
+        run: |
+          node --check js/sector-command-hierarchy.js
+          node --check js/energy-hierarchy-adapter.js
+          node --check js/research-chapters.js
+          node tests/check-institution-hierarchy.cjs
