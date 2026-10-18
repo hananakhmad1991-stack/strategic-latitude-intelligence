@@ -1,0 +1,67 @@
+/* SLI Geopolitical Intelligence chapter: user-facing, responsive, no fabricated risk scores. */
+#sliGeoChapterRoot{max-width:1250px;min-width:0;color:#f0f5fa;font:14px/1.7 system-ui,-apple-system,Segoe UI,sans-serif}
+#sliGeoChapterRoot *{box-sizing:border-box}
+#sliGeoChapterRoot h1,#sliGeoChapterRoot h2,#sliGeoChapterRoot h3,#sliGeoChapterRoot h4{color:#f3f7fb;line-height:1.28;letter-spacing:-.01em}
+#sliGeoChapterRoot h1{font:600 clamp(30px,4.5vw,49px)/1.15 Georgia,serif;letter-spacing:-.025em;margin:12px 0}
+#sliGeoChapterRoot h2{font-size:clamp(20px,2.5vw,26px);margin:0 0 11px}
+#sliGeoChapterRoot h3{font-size:19px;margin:9px 0}
+#sliGeoChapterRoot h4{font-size:14px;margin:0 0 6px;color:#f1ce91}
+#sliGeoChapterRoot p{margin:7px 0 14px;color:#cadbe6}
+#sliGeoChapterRoot a{color:#f0c785;text-decoration:none;overflow-wrap:anywhere}
+#sliGeoChapterRoot a:hover,#sliGeoChapterRoot a:focus-visible{text-decoration:underline}
+.geo-intel-hero{background:linear-gradient(125deg,#173751,#0b2033 80%);padding:clamp(19px,3vw,33px);border:1px solid #426077;border-radius:15px;margin:6px 0 15px}
+#sliGeoChapterRoot .geo-intel-lead{font-size:clamp(14px,1.5vw,17px);max-width:880px;line-height:1.75}
+#sliGeoChapterRoot .geo-intel-kicker{font-size:10px;font-weight:750;letter-spacing:.15em;color:#e3bd79;text-transform:uppercase}
+.geo-intel-meta-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}
+.geo-intel-meta-row span{border:1px solid #53718a;border-radius:19px;padding:5px 10px;font-size:11px;color:#d3dfec}
+.geo-intel-jump{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0 20px}
+.geo-intel-jump a,.geo-intel-links a{display:inline-block;border:1px solid #516b80;border-radius:8px;padding:7px 11px;background:#122e45;font-size:12px}
+.geo-intel-section{margin:27px 0 36px;scroll-margin-top:50px}
+.geo-intel-muted{max-width:1000px;font-size:13px}
+.geo-intel-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;margin:16px 0}
+.geo-intel-metric{min-width:0;background:#132c42;border:1px solid #3f5d72;border-radius:10px;padding:16px}
+#sliGeoChapterRoot .geo-intel-metric-label{font-size:12px;color:#d7e4ed;margin:0 0 11px}
+.geo-intel-num{display:block;font-size:clamp(21px,2.5vw,30px);color:#e8c98a;line-height:1.25;overflow-wrap:anywhere}
+#sliGeoChapterRoot .geo-intel-date{font-size:11px;color:#b4c8d6;margin:9px 0}
+.geo-intel-metric a{font-size:11px}
+#sliGeoChapterRoot .geo-intel-source-note{font-size:11px;color:#b7cbd8;border-left:3px solid #d9b879;padding:10px 12px;background:#132a3e;margin:12px 0}
+.geo-intel-tradechart{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.geo-intel-traderow{border:1px solid #3e5870;border-radius:10px;background:#132b40;padding:14px}
+.geo-intel-tradehead{display:flex;justify-content:space-between;align-items:center;gap:9px;margin-bottom:10px}
+.geo-intel-tradehead strong{font-size:15px}.geo-intel-tradehead span{font-size:13px;color:#efcb89;font-weight:750}
+.geo-intel-bardesc{display:grid;grid-template-columns:53px 1fr 93px;gap:9px;align-items:center;margin:7px 0;font-size:11px;color:#d1e2ef}
+.geo-intel-bardesc b{font-weight:600;text-align:right;color:#e7f1f5}
+.geo-intel-tradebar{background:#244054;height:9px;border-radius:9px;overflow:hidden}
+.geo-intel-tradefill{display:block;height:100%;min-width:1px;border-radius:9px}
+.geo-intel-tradefill.exports{background:#dfbf7b}.geo-intel-tradefill.imports{background:#79b3d4}
+.geo-intel-traderow a{display:inline-block;margin-top:9px;font-size:10px}
+.geo-intel-chooser{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:17px 0 13px}
+.geo-intel-topic{display:grid;gap:5px;align-content:start;text-align:left;padding:13px;min-height:123px;border-radius:10px;border:1px solid #526d83;color:#edf3f9;background:#122d42;cursor:pointer;font:inherit}
+.geo-intel-topic:hover,.geo-intel-topic:focus-visible,.geo-intel-topic.active{background:#1d3c50;border-color:#edce92;outline-offset:3px}
+.geo-intel-topic-index{color:#e2bd7c;font-size:11px;font-weight:800}.geo-intel-topic strong{font-size:13px;line-height:1.4}
+.geo-intel-topic small{font-size:11px;color:#bbcfdd;line-height:1.5}
+.geo-intel-topicdetail{border:1px solid #54718a;border-radius:13px;padding:clamp(16px,2.3vw,24px);background:linear-gradient(125deg,#16374a,#10283b)}
+#sliGeoChapterRoot .geo-intel-topic-thesis{font-weight:700;color:#ebd2a3;font-size:14px}
+.geo-intel-analysis-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:17px 0}
+.geo-intel-analytical-panel{background:#10283c;border:1px solid #3b5b73;padding:15px;border-radius:9px}
+.geo-intel-analytical-panel p{font-size:12.5px;margin:0!important;line-height:1.7}
+.geo-intel-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
+.geo-intel-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:13px 0 15px}
+.geo-intel-select,.geo-intel-search{font:inherit;color:#f1f6fa;background:#0e293e;border:1px solid #607b92;border-radius:8px;padding:10px;min-height:40px;min-width:0}
+.geo-intel-select{width:min(380px,100%)}.geo-intel-search{flex:1;min-width:170px}
+.geo-intel-news-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.geo-intel-news-grid > .geo-intel-meta{grid-column:1/-1}
+.geo-intel-news-item{border:1px solid #3d6079;border-radius:9px;background:#122e44;padding:13px}
+.geo-intel-headline{font-size:13px;font-weight:720}
+#sliGeoChapterRoot .geo-intel-meta{color:#aec9dc;font-size:11px;margin:8px 0!important}
+#sliGeoChapterRoot .geo-intel-small{font-size:11px;margin:6px 0 0;color:#b6d1dc}
+.geo-intel-scenarios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.geo-intel-scenario{border:1px solid #4b647b;background:#122f44;border-radius:11px;padding:16px}
+.geo-intel-scenario h3{font-size:15px!important;color:#edd09a!important;margin:0 0 9px!important}
+.geo-intel-scenario p{font-size:12.5px}
+.geo-intel-conclusion{background:#142c40;border:1px solid #49647b;border-radius:12px;padding:22px}
+.geo-intel-assessment{padding:0 0 0 23px;columns:2;column-gap:32px}
+.geo-intel-assessment li{break-inside:avoid;padding:0 12px 13px 2px;color:#d1e2ec;line-height:1.8;font-size:13px}
+@media(max-width:1050px){.geo-intel-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){.geo-intel-tradechart,.geo-intel-analysis-grid,.geo-intel-news-grid{grid-template-columns:1fr}.geo-intel-chooser{grid-template-columns:repeat(2,minmax(0,1fr))}.geo-intel-scenarios{grid-template-columns:1fr}.geo-intel-assessment{columns:1}.geo-intel-topic{min-height:112px}}
+@media(max-width:450px){.geo-intel-facts,.geo-intel-chooser{grid-template-columns:1fr} .geo-intel-topic{min-height:0}.geo-intel-bardesc{grid-template-columns:46px 1fr 89px;gap:5px}}
