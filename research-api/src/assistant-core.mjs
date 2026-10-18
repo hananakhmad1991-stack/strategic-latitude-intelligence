@@ -187,7 +187,7 @@ export function validateAssistantPayload(body){
 }
 export function selectResearchEvidence(documents,question,history=[],tier="pro",max=10){
  const latestPrevious=[...history].reverse().find(h=>h.role==="user")?.content||"";
- const referential=question.length<220&&/^(why|how|what|and|bagaimana|lalu|kenapa|mengapa|dampaknya|apa lagi|risikonya|perdalam|lanjut|lanjutkan|koreksi|revisi|perbaiki|tambahkan data|perbarui|bandingkan hasil|tolong jelaskan|jelaskan lagi|buat lebih rinci)/i.test(question);
+ const referential=question.length<220&&/^(why|how|what|and|bagaimana|lalu|kenapa|mengapa|dampaknya|apa lagi|risikonya|perdalam|audit|lanjut|lanjutkan|koreksi|revisi|perbaiki|tambahkan data|perbarui|bandingkan hasil|tolong jelaskan|jelaskan lagi|buat lebih rinci)/i.test(question);
  const scopedQuery=referential&&latestPrevious?latestPrevious+" "+question:question;
  const geos=requestedProvinces(scopedQuery),intent=classifyResearchSector(scopedQuery);
  const eligible=(Array.isArray(documents)?documents:[]).slice(0,10000).filter(d=>
@@ -215,8 +215,7 @@ export function selectResearchEvidence(documents,question,history=[],tier="pro",
   for(const id of priority){
    const d=eligible.find(d=>d.id===id);
    if(!d||selectedIds.has(id)||chosen.length>=max)continue;
-   selectedIds.add(d.id);
-  chosen.push({id:d.id,title:d.title,text:d.text.slice(0,2000),source_url:d.source_url,
+   chosen.push({id:d.id,title:d.title,text:d.text.slice(0,2000),source_url:d.source_url,
     period:String(d.period||"not specified"),source_date:String(d.source_date||"not specified"),
     publisher:String(d.publisher||"undisclosed"),geo:String(d.geo||"unclassified"),topic:String(d.topic||"")});
    selectedIds.add(id);
