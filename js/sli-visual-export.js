@@ -265,8 +265,94 @@ async function exportOne(host,format,button,feedback){
   console.error("[SLI export]",err);feedback.textContent=tr("Export failed: ","Ekspor gagal: ")+txt(err.message).slice(0,90);
  }finally{button.disabled=false}
 }
+
+/* Universal click-for-context fallback for published tables, source-labelled SVGs and
+ * CSS bar charts. Specialty modules (strategic map, geopolitical events) have their
+ * own richer, record-specific inspectors and are deliberately not intercepted.
+ * No numeric data or causal interpretation is inferred from pixel positions. */
+const pointInsights=new WeakMap();
+function registerInsight(visual,provider){
+ if(typeof visual==="string")visual=document.getElementById(visual);
+ if(!visual||!provider)return false;
+ pointInsights.set(visual,provider);return true;
+}
+function insightName(meta){return meta?.title||tr("Selected visual evidence","Bukti visual terpilih")}
+function detailValue(node){return txt(node?.innerText||node?.textContent).trim()}
+function genericLesson(){
+ return tr("Compare like-for-like units, dates, definitions and reporting statuses. This visual observation alone cannot establish cause and effect.",
+ "Bandingkan satuan, waktu, definisi, dan status pelaporan yang sepadan. Satu observasi visual tidak membuktikan sebab-akibat.");
+}
+function openVisualInsight(event){
+ const target=event.target;
+ if(!(target instanceof Element)||target.closest(".sli-visual-export-toolbar,.sli-visual-insight,[role=menu],a,button,select,input,textarea"))return;
+ const svg=target.closest("svg"),table=target.closest("table"),canvas=target.closest("canvas");
+ const bar=target.closest(".regbar,.bar-row,[class*=bar-item]");
+ const visual=svg||table||canvas||bar;if(!visual)return;
+ if(visual.closest("#sliMapRoot,#geo-commodity-timeline,.sli-geo-timeline-panel,.sli-geo-timeline-plot,.sli-geo-timeline-scatter"))return;
+ const host=visual.closest(".sli-visual-export-host")||findHost(visual);if(!host)return;
+ let heading="",details=[],selection=target,scope="";const meta=metadata(host);
+ const provider=pointInsights.get(visual)||pointInsights.get(host);
+ if(table){
+  const row=target.closest("tr");if(!row||!row.querySelector("td"))return;
+  const raw=extractTable(table),rows=Array.from(table.querySelectorAll("tr")).filter(r=>r.querySelector("td"));
+  const index=rows.indexOf(row);
+  const item=raw.rows[index]||[];
+  heading=item[0]||tr("Selected row","Baris terpilih");
+  details=raw.headers.map((key,i)=>[key,item[i]]).filter(x=>x[1]!==undefined&&x[1]!=="").slice(0,12);
+  selection=row;scope=tr("Visible table record","Catatan tabel terpilih");
+ }else if(svg){
+  const shape=target.closest("circle,rect,path,polyline,polygon,g,[data-sli-point]");
+  if(!shape||shape===svg)return;
+  const ownTitle=shape.querySelector(":scope > title")||shape.parentElement?.querySelector(":scope > title");
+  const titleText=detailValue(ownTitle)||shape.getAttribute("aria-label")||shape.dataset.sliPointLabel||"";
+  if(!titleText)return; // Axis/grid decoration is not a documented data observation.
+  heading=titleText.slice(0,300);
+  details=[[tr("Original displayed label","Label yang ditampilkan"),heading]];
+  selection=shape;scope=tr("Source-labelled SVG point","Titik SVG berlabel sumber");
+ }else if(bar){
+  const extraction=extractBars(bar.parentElement||bar);
+  const text=detailValue(bar);
+  if(!text)return;
+  heading=text.slice(0,200);
+  details=[[tr("Displayed bar / metric","Batang / indikator"),heading]];
+  scope=tr("Visible CSS chart record","Catatan grafik CSS terpilih");
+ }else if(canvas){
+  const supplied=provider?.getInsight?.({event,visual});
+  if(!supplied)return; // Canvas pixels cannot reliably be mapped to raw observations.
+  heading=supplied.title||meta.title;details=(supplied.details||[]).map(x=>[x[0],x[1]]);
+  scope=tr("Provider-registered observation","Observasi terdaftar oleh penyedia");
+ }
+ const supplemental=provider?.getInsight?.({event,visual,heading,details});
+ if(supplemental){heading=supplemental.title||heading;details=supplemental.details||details}
+ let inspector=host.querySelector(":scope > .sli-visual-insight");
+ if(!inspector){inspector=$("section",{class:"sli-visual-insight",role:"region","aria-live":"polite","aria-label":tr("SLI visual evidence inspector","Inspektor bukti visual SLI")});host.append(inspector)}
+ inspector.replaceChildren();
+ const header=$("div",{class:"sli-visual-insight-head"});
+ const labelEl=$("strong",{},tr("SELECTED VISUAL INSIGHT","ANALISIS VISUAL TERPILIH"));
+ const close=$("button",{type:"button"},tr("Close","Tutup"));
+ close.addEventListener("click",()=>{
+  inspector.remove();host.querySelectorAll(".sli-visual-insight-selected").forEach(x=>x.classList.remove("sli-visual-insight-selected"));
+ });
+ header.append(labelEl,close);
+ inspector.append(header,$("h4",{},heading),$("p",{class:"sli-visual-insight-kind"},scope));
+ const items=$("dl",{class:"sli-visual-insight-fields"});
+ for(const [key,value] of details.slice(0,14)){
+  if(value===undefined||value===null||!txt(value).trim())continue;
+  items.append($("dt",{},key),$("dd",{},txt(value)));
+ }
+ inspector.append(items);
+ if(meta.period)inspector.append($("p",{},tr("Reporting period: ","Periode pelaporan: ")+meta.period));
+ inspector.append($("p",{class:"sli-visual-insight-lesson"},supplemental?.lesson||genericLesson()));
+ const credit=$("p",{class:"sli-visual-insight-credit"},tr("Data source: ","Sumber data: ")+meta.source);
+ if(/^https:\/\//i.test(meta.sourceUrl)){const a=$("a",{href:meta.sourceUrl,target:"_blank",rel:"noopener noreferrer"},tr("Open source ↗","Buka sumber ↗"));credit.append(" · ",a)}
+ inspector.append(credit);
+ host.querySelectorAll(".sli-visual-insight-selected").forEach(x=>x.classList.remove("sli-visual-insight-selected"));
+ if(selection?.classList)selection.classList.add("sli-visual-insight-selected");
+}
+
 function start(){
  if(!document.body)return;
+ document.addEventListener('click',openVisualInsight);
  queue();
  if(!observing&&typeof MutationObserver!=="undefined"){
   observing=true;new MutationObserver(queue).observe(document.body,{subtree:true,childList:true});
@@ -284,7 +370,7 @@ async function exportVisual(target,format,feedback){
  ensure(host,visual);
  return exportOne(host,format,null,feedback);
 }
-window.SLIVisualExport={version:VERSION,register,export:exportVisual,refresh:queue,inspect:(id)=>{const h=visuals.get(id);const visual=h&&activeVisual(h);return visual?{...metadata(h),rows:getData(h,visual).rows.length}:null}};
+window.SLIVisualExport={version:VERSION,register,registerInsight,export:exportVisual,refresh:queue,inspect:(id)=>{const h=visuals.get(id);const visual=h&&activeVisual(h);return visual?{...metadata(h),rows:getData(h,visual).rows.length}:null}};
 document.dispatchEvent(new Event("sli:exportready"));
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});else start();
 })();
