@@ -32,7 +32,7 @@ test("Investor workbench DOM: load BPS-backed 38-province data, plot OLS, reject
  assert.ok($("raModelResult").querySelector(".ra-wb-plot svg"));
  $("raMethod").value="panel_fe";$("raMethod").dispatchEvent(new dom.window.Event("change"));
  $("raRunMethod").click();
- assert.match($("raModelResult").textContent,/actual time\/year column|annual year/i);
+ assert.match($("raModelResult").textContent,/actual time\/year column|annual year|identitas panel yang berulang/i);
  assert.equal(dom.window.SLIAnalyticalWorkbench.hasUserData(),true);
  dom.window.close();
  delete globalThis.window;delete globalThis.document;
@@ -52,6 +52,10 @@ test("Investor workbench DOM: panel FE actually estimates 12 entities x 6 years,
  $("raDataFile").dispatchEvent(new dom.window.Event("change",{bubbles:true}));await tick();
  assert.equal($("raPredictor").value,"pmtb_share_pct","Default X must represent capital formation, not annual year or economic growth");
  assert.equal($("raOutcome").value,"real_grdp_growth_pct","Default Y must be growth");
+ assert.equal($("raPanelEntity").value,"province","Entity selector must default to province, not electricity");
+ assert.deepEqual([...$("raPanelEntity").options].map(o=>o.value),["province"],"Numeric KPI variables are not legitimate entity identifiers");
+ assert.deepEqual([...$("raPanelTime").options].map(o=>o.value),["year"],"Annual time selector must not offer other numerics");
+
  $("raMethod").value="panel_fe";$("raMethod").dispatchEvent(new dom.window.Event("change"));
  assert.match($("raMethodInfo").textContent,/Y = real_grdp_growth_pct; X = pmtb_share_pct/);
  $("raYearFE").checked=true;
