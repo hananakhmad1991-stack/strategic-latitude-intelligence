@@ -28,7 +28,8 @@ test("Six original geopolitical analyses, citations, bilingual methods and bound
 });
 test("Homepage card routes to actual geopolitical SPA chapter, with dedicated sidebar and cross-navigation",()=>{
  const html=read("index.html"),nav=read("js/sli-navigation.js");
- assert.match(html,/<a href="#geopolitics" class="sli-portal-sector"[^>]*>[\s\S]*?Policy &amp; Geopolitics/);
+ assert.ok(html.includes('<a href="#geopolitics" class="sli-portal-sector"') && html.includes('<strong>Geopolitical Intelligence</strong>'));
+ assert.ok(html.includes('<a href="#policy" class="sli-portal-sector"') && html.includes('<strong>Policy &amp; Regulation</strong>'));
  assert.match(html,/data-page="geopolitics"/);
  assert.match(html,/data-link="geopolitics"/);
  assert.match(html,/geopolitics:\["Geopolitical Intelligence"/);
