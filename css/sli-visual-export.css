@@ -29,3 +29,21 @@
   .sli-visual-export-host::after{font-size:24px;right:9px;bottom:50px}
 }
 @media print{.sli-visual-export-toolbar{display:none!important}.sli-visual-export-host::after{opacity:.55}}
+
+/* Common chart/table point selection for source-labelled observations */
+.sli-visual-insight{min-width:0;margin:10px 5px 7px;padding:13px 15px;background:#142e43;border:1px solid #a88c60;border-left:3px solid #e0bd7d;border-radius:9px;color:#e4edf4;position:relative;z-index:5}
+.sli-visual-insight-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+.sli-visual-insight-head strong{font:800 11px/1.5 system-ui,sans-serif;letter-spacing:.09em;color:#f6ce86}
+.sli-visual-insight-head button{font:650 11px system-ui,sans-serif;cursor:pointer;background:#27455a;border:1px solid #71879b;border-radius:5px;color:#fff1d4;padding:6px 10px}
+.sli-visual-insight h4{font:750 15px/1.4 system-ui,sans-serif;color:#f8e6bf;margin:7px 0 6px;overflow-wrap:anywhere}
+.sli-visual-insight p{font:400 12px/1.6 system-ui,sans-serif;color:#cfdfeb;margin:7px 0}
+.sli-visual-insight-kind{font-size:11px!important;color:#a9cadb!important}
+.sli-visual-insight-fields{display:grid;grid-template-columns:minmax(95px,1fr) minmax(0,2fr);gap:3px 12px;margin:8px 0;max-width:100%}
+.sli-visual-insight-fields dt,.sli-visual-insight-fields dd{padding:6px 0;margin:0;border-bottom:1px solid #345169;font:400 11px/1.5 system-ui,sans-serif;overflow-wrap:anywhere}
+.sli-visual-insight-fields dt{color:#e5c689;font-weight:700}.sli-visual-insight-fields dd{color:#e0edf6}
+.sli-visual-insight .sli-visual-insight-lesson{padding:10px;background:#1e3b51;border-left:2px solid #a8cfca;color:#e3f0f5}
+.sli-visual-insight-credit a{color:#ffda91}
+.sli-visual-insight-selected{outline:2px solid #f8cb73!important;outline-offset:2px}
+svg .sli-visual-insight-selected{stroke:#f5cf82!important;stroke-width:3px!important;filter:drop-shadow(0 0 3px #d4a954)}
+table tr.sli-visual-insight-selected{background:#2a4559!important}
+@media(max-width:540px){.sli-visual-insight{padding:11px}.sli-visual-insight-fields{grid-template-columns:1fr;gap:0}.sli-visual-insight-fields dt{padding-bottom:1px;border-bottom:0}}
