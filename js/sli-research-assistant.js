@@ -58,13 +58,19 @@ function append(role,text){
  if(role==="assistant"&&window.SLIResearchVisuals)window.SLIResearchVisuals.renderMarkdown(text,body,state.lastResult?.sources||[]);else body.textContent=text;
  return body;
 }
-function renderSources(sources){
+function renderSources(sources,answer="",charts=[]){
+ const cited=new Set([...String(answer).matchAll(/\[(\d+)\]/g)].map(m=>Number(m[1])));
+ const graphed=new Set((Array.isArray(charts)?charts:[]).flatMap(c=>Array.isArray(c.source_refs)?c.source_refs:[]).filter(Number.isInteger));
  const list=$("raSourcesList");list.replaceChildren();
  const valid=Array.isArray(sources)?sources.slice(0,12):[];
  if(!valid.length){list.append(node("p",null,tr("noSources")));return}
  valid.forEach((s,i)=>{
   const card=node("div","sli-ra-source-card");
   card.append(node("strong",null,"["+(i+1)+"] "+String(s.title||tr("source"))));
+  const role=cited.has(i+1)?(state.language==="id"?"Dikutip dalam laporan":"Cited in report"):
+   graphed.has(i+1)?(state.language==="id"?"Sumber grafik":"Chart evidence"):
+   (state.language==="id"?"Konteks terpilih; belum dikutip":"Selected context; not cited");
+  card.append(node("p","sli-ra-source-role",role));
   card.append(node("p",null,[s.publisher,s.period,s.source_date].filter(Boolean).join(" · ")));
   const url=safeUrl(s.source_url||"");
   if(url){const a=node("a",null,state.language==="id"?"Buka sumber asli ↗":"Open original source ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";card.append(a)}
@@ -79,9 +85,9 @@ function reset(){
 function makeExport(){
  if(!state.lastResult)return "";
  const last=state.lastResult,heading=state.language==="id"?"Laporan SLI Research AI":"SLI Research AI Report";
- const citations=last.sources.map((s,i)=>"["+(i+1)+"] "+String(s.title||"Source")+" — "+String(s.period||"n.d.")+" — "+String(s.source_url||"")).join("\n");
+ const citations=last.sources.map((s,i)=>"["+(i+1)+"] "+String(s.title||"Source")+" — "+String(s.period||"n.d.")+" — "+String(s.source_date||"n.d.")+" — "+String(s.source_url||"")).join("\n");
  const figures=(last.charts||[]).map(c=>"### "+c.title+" ("+c.period+" · "+c.unit+")\n"+c.points.map(p=>"- "+p.label+": "+p.value+" ["+p.source+"]").join("\n")+"\n"+c.note).join("\n\n");
- return "# "+heading+"\n\n"+last.answer+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
+ return "# "+heading+"\n\n"+(state.language==="id"?"**Cakupan:** Analisis corpus terkurasi, bukan data live. Periksa sumber dan tanggal.":"**Scope:** Curated corpus, not live data. Verify sources and observation dates.")+"\n\n"+last.answer+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
  "\n\n"+(state.language==="id"?"Dihasilkan oleh layanan AI; sumber tetap harus diverifikasi.":"AI-assisted draft; verify all original sources.")+"\n";
 }
 async function submit(){
@@ -115,7 +121,11 @@ async function submit(){
   state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],question,mode};
   const report=append("assistant",payload.answer);
   window.SLIResearchVisuals?.renderCharts(state.lastResult.charts,report,state.lastResult.sources,state.language);
-  renderSources(payload.sources);
+  const note=node("div","sli-ra-evidence-note",usingOwner?
+   (state.language==="id"?"CORPUS UJI TERBATAS · Analisis dari sumber SLI terkurasi, bukan penelusuran real-time. Periode sumber dapat berbeda; periksa dokumen asli sebelum keputusan investasi.":"LIMITED TEST CORPUS · Curated SLI evidence, not live retrieval. Source periods may differ; verify primary documents before decisions."):
+   (state.language==="id"?"Periksa tanggal dan dokumen sumber sebelum menggunakan hasil.":"Review source dates and primary documents before use."));
+  report.prepend(note);
+  renderSources(payload.sources,payload.answer,state.lastResult.charts);
   state.history.push({role:"user",content:question},{role:"assistant",content:payload.answer.slice(0,5000)});
   state.history=state.history.slice(-8);
   status(usingOwner?(state.language==="id"?"Laporan Owner Test selesai; verifikasi sitasi dan grafik sebelum digunakan.":"Owner Test report completed; verify citations and figures before use."):tr("ready"),"ready");
@@ -161,5 +171,5 @@ async function init(){
  }catch{status(tr("invalid"))}
 }
 document.addEventListener("DOMContentLoaded",init);
-window.SLIResearchAssistant=Object.freeze({version:"2026-10-17",generation_requires_backend:true});
+window.SLIResearchAssistant=Object.freeze({version:"2026-10-18-quality",generation_requires_backend:true});
 })();

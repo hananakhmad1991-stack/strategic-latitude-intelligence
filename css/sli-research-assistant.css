@@ -86,3 +86,6 @@
 @media(max-width:650px){.sli-ra-visuals{padding:8px}.sli-ra-chart{padding:11px}.sli-ra-chart-row{grid-template-columns:minmax(65px,1fr) minmax(48px,1fr) minmax(48px,auto);gap:6px}.sli-ra-chart-label,.sli-ra-chart-value{font-size:10px}}
 
 .sli-ra-chart-none{border-left:3px solid #b8cddd;background:#f4f8fb;padding:9px 12px;color:#657b8f;font-size:12px;margin:0 0 13px!important}
+
+.sli-ra-evidence-note{padding:10px 13px;margin:2px 0 15px;border:1px solid #bfcfdf;background:#f1f6fb;color:#3b5d78;border-radius:8px;font-size:12px;line-height:1.6}
+.sli-ra-source-role{display:inline-block!important;border:1px solid #d2e1ec;border-radius:5px;padding:2px 6px;margin:7px 0 2px!important;font-size:10px!important;font-weight:650;color:#365c77!important;background:#f5f9fc}
