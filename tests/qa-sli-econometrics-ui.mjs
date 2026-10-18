@@ -59,6 +59,7 @@ test("Investor workbench DOM: panel FE actually estimates 12 entities x 6 years,
  $("raMethod").value="panel_fe";$("raMethod").dispatchEvent(new dom.window.Event("change"));
  assert.match($("raMethodInfo").textContent,/Y = real_grdp_growth_pct; X = pmtb_share_pct/);
  $("raYearFE").checked=true;
+ [...$("raExtraPredictors").options].find(o=>o.value==="electricity_access_pct").selected=true;
  $("raRunMethod").click();
  assert.match($("raModelResult").textContent,/Panel Fixed Effects/);
  assert.match($("raModelResult").textContent,/12 entitas/);
@@ -66,12 +67,28 @@ test("Investor workbench DOM: panel FE actually estimates 12 entities x 6 years,
  assert.match($("raModelResult").textContent,/Unduh Investor Analytical Report/);
  assert.match($("raModelResult").textContent,/Y \(variabel terikat\) = real_grdp_growth_pct; X \(prediktor\) = pmtb_share_pct/);
  assert.equal($("raModelResult").querySelector("table tr:nth-child(2) td:first-child").textContent,"pmtb_share_pct");
+ assert.match($("raModelResult").textContent,/DATA SIMULASI/);
+ assert.match($("raModelResult").textContent,/electricity_access_pct/);
  // A deliberately reversed specification must be explicitly identified as a different economic question.
  $("raPredictor").value="real_grdp_growth_pct";
  $("raOutcome").value="pmtb_share_pct";
  $("raPredictor").dispatchEvent(new dom.window.Event("change"));
  $("raRunMethod").click();
  assert.match($("raModelResult").textContent,/BUKAN PMTB → pertumbuhan/);
+ const correct=$("raModelResult").querySelector(".ra-wb-correct-orientation");
+ assert.ok(correct,"Reversed X/Y result must offer functional one-click correction");
+ assert.match(correct.textContent,/Balik X\/Y dan hitung ulang/);
+ correct.click();
+ assert.equal($("raPredictor").value,"pmtb_share_pct");
+ assert.equal($("raOutcome").value,"real_grdp_growth_pct");
+ assert.equal($("raPanelEntity").value,"province");
+ assert.equal($("raPanelTime").value,"year");
+ assert.equal($("raYearFE").checked,true);
+ assert.equal([...$("raExtraPredictors").selectedOptions][0].value,"electricity_access_pct");
+ assert.match($("raModelResult").textContent,/Panel Fixed Effects/);
+ assert.doesNotMatch($("raModelResult").textContent,/BUKAN PMTB → pertumbuhan/);
+ assert.match($("raModelResult").textContent,/Y \(variabel terikat\) = real_grdp_growth_pct; X \(prediktor\) = pmtb_share_pct, electricity_access_pct/);
+ assert.equal($("raModelResult").querySelector("table tr:nth-child(2) td:first-child").textContent,"pmtb_share_pct");
  dom.window.close();
  delete globalThis.window;delete globalThis.document;
 });
