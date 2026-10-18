@@ -41,6 +41,12 @@ function desc(){
  extraGroup.hidden=!["multivariate_ols","panel_fe"].includes(method.value);
  if(method.value==="panel_fe"&&data&&!Object.keys(data[0]).some(k=>/^(year|tahun|period|periode)$/i.test(k)))
  detail.textContent+=" Data ini belum memiliki kolom tahun; gunakan panel multi-tahun agar fixed effects dapat dihitung.";
+ if(data&&!varGroup.hidden){
+  detail.textContent+=" · Model pilihan: Y = "+(y.value||"belum dipilih")+"; X = "+(x.value||"belum dipilih")+".";
+  if(/(?:grdp|pdrb|gdp).*growth|growth.*(?:grdp|pdrb|gdp)/i.test(x.value)&&/pmtb/i.test(y.value))
+   detail.textContent+=" PERHATIAN: arah ini menempatkan pertumbuhan sebagai X. Untuk PMTB → pertumbuhan, balik X dan Y.";
+ }
+
 
 }
 function error(message){result.textContent=message;result.dataset.state="error";last=null}
@@ -48,7 +54,13 @@ function show(message){result.textContent=message;result.dataset.state="ready"}
 function fillVariables(){
  const numeric=data?describe(data).filter(v=>v.n>=3).map(v=>v.column):[];
  for(const select of [x,y]){select.replaceChildren();for(const name of numeric){const opt=document.createElement("option");opt.value=name;opt.textContent=name;select.append(opt)}}
- if(numeric.includes("pmtb_share_2025_pct")&&numeric.includes("real_grdp_growth_2025_pct")){x.value="pmtb_share_2025_pct";y.value="real_grdp_growth_2025_pct";}
+ // Suggest an economic research direction, not a claim of causal identification.
+ // Numeric CSV year fields are legitimate time IDs but should not become the default Y.
+ const grdpGrowth=numeric.find(v=>/(?:grdp|pdrb|gdp).*growth|growth.*(?:grdp|pdrb|gdp)|pertumbuhan[_-]?(?:ekonomi|pdrb)/i.test(v));
+ const capitalShare=numeric.find(v=>/pmtb|gross[_-]?fixed[_-]?capital/i.test(v));
+ const nonYear=numeric.filter(v=>!/^(year|tahun|time|period|periode)$/i.test(v));
+ if(grdpGrowth&&capitalShare&&grdpGrowth!==capitalShare){x.value=capitalShare;y.value=grdpGrowth;}
+ else if(nonYear.length>=2){x.value=nonYear[0];y.value=nonYear[1]}
  else if(numeric.length>1)y.value=numeric[1];
  for(const select of [extra,entity,time])select.replaceChildren();
  const cols=Object.keys(data?.[0]||{});
@@ -78,6 +90,7 @@ datafile.addEventListener("change",async()=>{
  }catch(e){data=null;model=null;error("Cannot read dataset: "+String(e.message).slice(0,200))}
 });
 method.addEventListener("change",()=>{last=null;consent.checked=false;desc();});
+for(const select of [x,y,entity,time])select.addEventListener("change",()=>{last=null;consent.checked=false;desc()});
 function renderCalculation(output){
  const id=document.documentElement.lang!=="en";
  const num=v=>typeof v==="number"&&Number.isFinite(v)?new Intl.NumberFormat(id?"id-ID":"en-GB",{maximumFractionDigits:4}).format(v):String(v??"—");
@@ -201,6 +214,17 @@ function renderEconometricResult(fit){
  subtitle.textContent=fit.method==="panel_fe"?"Panel Fixed Effects · "+(fit.two_way_fe?"unit + year":"unit"):
  "Multiple OLS · HC1 robust standard errors";
  result.append(subtitle);
+ const specification=document.createElement("p");
+ specification.className="ra-wb-specification";
+ specification.textContent=(id?"Model yang dihitung: Y (variabel terikat) = ":"Estimated model: Y (dependent) = ")+fit.outcome+
+  "; X (prediktor) = "+fit.predictors.join(", ")+
+  (fit.method==="panel_fe"?" · Efek tetap: unit"+(fit.two_way_fe?" + tahun":""):"");
+ result.append(specification);
+ if(/(?:grdp|pdrb|gdp).*growth|growth.*(?:grdp|pdrb|gdp)/i.test(fit.predictors[0])&&/pmtb/i.test(fit.outcome)){
+  const warning=document.createElement("p");warning.className="ra-wb-orientation-warning";
+  warning.textContent="Perhatian: pertumbuhan PDRB menjadi X dan PMTB menjadi Y. Model ini BUKAN PMTB → pertumbuhan. Jika tujuan riset adalah menjelaskan pertumbuhan, tukar X dan Y di atas, lalu hitung kembali.";
+  result.append(warning);
+ }
  const p=document.createElement("p");p.textContent=fit.method==="panel_fe"?
   "Panel yang digunakan: "+fit.unit_count+" entitas × "+fit.time_count+" periode, "+fit.rows_used+" observasi (complete cases); uncertainty menggunakan cluster-robust per entitas.":
   "Model regresi dengan "+fit.predictors.length+" prediktor dan "+fit.rows_used+" observasi lengkap; R² = "+fit.r_squared+".";
@@ -211,8 +235,19 @@ function renderEconometricResult(fit){
  for(const label of ["Parameter","Koefisien","Std. error","CI 95% bawah","CI 95% atas","p (approx.)"]){const th=document.createElement("th");th.textContent=label;header.append(th)}
  table.append(header);
  const terms=fit.method==="panel_fe"?fit.coefficients:fit.coefficient_terms;
- for(const c of terms){const tr=document.createElement("tr");for(const v of [c.name,c.estimate,c.std_error_hc1,c.ci95_low,c.ci95_high,c.p_value_approx]){const td=document.createElement("td");td.textContent=String(v??"—");tr.append(td)}table.append(tr)}
+ for(const c of terms){
+  const tr=document.createElement("tr");
+  for(const [index,v] of [c.name,c.estimate,c.std_error_hc1,c.ci95_low,c.ci95_high,c.p_value_approx].entries()){
+   const td=document.createElement("td");
+   td.textContent=index===5&&v===0?"<0,000001":String(v??"—");
+   tr.append(td);
+  }
+  table.append(tr);
+ }
  scroller.append(table);result.append(scroller);
+ const inferenceNote=document.createElement("small");
+ inferenceNote.textContent="p (approx.) adalah estimasi statistik; nilai yang dibulatkan menjadi 0 ditulis <0,000001, bukan probabilitas nol. Interval dan p-value bergantung pada asumsi model.";
+ result.append(inferenceNote);
  const analysis=document.createElement("section");analysis.className="ra-wb-analysis";
  const heading=document.createElement("strong");heading.textContent=id?"Interpretasi untuk investor":"Investor interpretation";analysis.append(heading);
  const body=document.createElement("p");
