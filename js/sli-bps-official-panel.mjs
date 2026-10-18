@@ -63,15 +63,17 @@ export function buildBpsOfficialPanel(src,{balanced=true}={}){
    const pmtbLag=100*p.pmtb_current[i-1]/prevCurrent;
    const pmtbCurrent=100*p.pmtb_current[i]/currentCurrent;
    const householdCurrent=100*p.household_current[i]/currentCurrent;
-   if(![growth,pmtbLag,pmtbCurrent,householdCurrent].every(Number.isFinite)||
+   const householdLag=100*p.household_current[i-1]/prevCurrent;
+   if(![growth,pmtbLag,pmtbCurrent,householdCurrent,householdLag].every(Number.isFinite)||
      pmtbLag<0||pmtbLag>250||pmtbCurrent<0||pmtbCurrent>250||
-     householdCurrent<0||householdCurrent>250||growth<-99||growth>500)
+     householdCurrent<0||householdCurrent>250||householdLag<0||householdLag>250||growth<-99||growth>500)
     throw Error("Implausible BPS-derived provincial values; inspect publication and units");
    rows.push({
     province:name,year:years[i],
     pmtb_share_lag1_pct:round(pmtbLag),
     real_grdp_growth_pct:round(growth),
     pmtb_share_pct:round(pmtbCurrent),
+    household_share_lag1_pct:round(householdLag),
     household_share_pct:round(householdCurrent),
     grdp_current_rp_billion:round(currentCurrent),
     grdp_constant_2010_rp_billion:round(p.grdp_constant[i]),
