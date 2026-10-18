@@ -54,6 +54,21 @@ test("Workbench usability: navy-shell styles cannot white-out light statistical 
  assert.match(js,/id\?"Interpretasi untuk investor"/);
  assert.match(js,/Lanjut: jalankan regresi PMTB/);
  assert.match(js,/method\.value="ols";desc\(\)/);
- assert.match(html,/sli-analytical-workbench\.css\?v=20261018-model2/);
- assert.match(html,/sli-analytical-workbench-ui\.mjs\?v=20261018-model2/);
+ assert.match(html,/sli-analytical-workbench\.css\?v=20261018-econometrics\d+/);
+ assert.match(html,/sli-analytical-workbench-ui\.mjs\?v=20261018-econometrics\d+/);
+});
+
+test("New local econometrics are catalogued and connected to truthful UI plus research report",()=>{
+ const html=readFileSync(new URL("../sli-research-ai.html",import.meta.url),"utf8");
+ const src=readFileSync(new URL("../js/sli-analytical-workbench-ui.mjs",import.meta.url),"utf8");
+ const report=readFileSync(new URL("../js/sli-econometrics-report.mjs",import.meta.url),"utf8");
+ assert.equal(getMethod("multivariate_ols")?.status,"local");
+ assert.equal(getMethod("panel_fe")?.status,"local");
+ assert.equal(getMethod("did")?.status,"design");
+ assert.match(src,/renderEconometricResult\(output\)/);
+ assert.match(src,/panelFixedEffects\(data,xs,y\.value/);
+ assert.match(src,/scatterPlot\(fit,sensitivity\?\.reduced/);
+ assert.match(src,/downloadMarkdown\(investorMarkdown/);
+ assert.match(report,/Cook D/);
+ assert.match(html,/sli-analytical-workbench-ui\.mjs/);
 });
