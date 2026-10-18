@@ -47,3 +47,29 @@
 svg .sli-visual-insight-selected{stroke:#f5cf82!important;stroke-width:3px!important;filter:drop-shadow(0 0 3px #d4a954)}
 table tr.sli-visual-insight-selected{background:#2a4559!important}
 @media(max-width:540px){.sli-visual-insight{padding:11px}.sli-visual-insight-fields{grid-template-columns:1fr;gap:0}.sli-visual-insight-fields dt{padding-bottom:1px;border-bottom:0}}
+
+
+/* Source-grounded click-through insights: shared two-column Power BI-like reading
+   pattern for SVG, HTML bar charts and tables on every SLI dashboard. */
+.sli-visual-insight-split{
+ display:grid;grid-template-columns:minmax(0,1.55fr) minmax(270px,.85fr);
+ gap:14px;align-items:start;min-width:0;max-width:100%;width:100%;
+}
+.sli-visual-insight-split>.sli-visual-export-host{
+ min-width:0;max-width:100%;width:100%;overflow-x:auto;
+}
+.sli-visual-insight-split>.sli-visual-insight{
+ box-sizing:border-box;margin:0;min-width:0;max-width:100%;
+ position:sticky;top:95px;max-height:min(75vh,740px);overflow-y:auto;overflow-x:hidden;
+ overscroll-behavior:contain;overflow-wrap:anywhere;
+ scrollbar-width:thin;scrollbar-color:#55758d #132e43;
+}
+.sli-visual-insight-split .sli-visual-insight-fields{grid-template-columns:minmax(70px,1fr) minmax(0,1.6fr)}
+@media(max-width:1080px){
+ .sli-visual-insight-split{grid-template-columns:minmax(0,1fr)}
+ .sli-visual-insight-split>.sli-visual-insight{position:static;max-height:440px}
+}
+@media(max-width:650px){
+ .sli-visual-insight-split{gap:9px}
+ .sli-visual-insight-split>.sli-visual-insight{max-height:55vh}
+}
