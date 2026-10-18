@@ -1,0 +1,28 @@
+name: PLN SAIDI-SAIFI Reliability QA
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/pln-saidi-saifi-2023-2025.json'
+      - 'js/pln-saidi-saifi.js'
+      - 'css/pln-saidi-saifi.css'
+      - 'tests/qa-pln-saidi-saifi.mjs'
+      - 'index.html'
+      - 'pln-electricity-statistics.html'
+      - 'provincial-intelligence.html'
+      - '.github/workflows/pln-reliability-qa.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: node --check js/pln-saidi-saifi.js
+      - name: Run data coverage, source scope and SLI integration QA
+        run: node --test tests/qa-pln-saidi-saifi.mjs
