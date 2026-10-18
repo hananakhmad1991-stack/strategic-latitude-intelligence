@@ -198,7 +198,15 @@ export function panelFixedEffects(rows,predictors,outcome,entityField,timeField,
   coefficients:fit.coefficient_terms.filter(v=>predictors.includes(v.name)),
   time_controls:includeYearFE?yearTerms.map(x=>"time:"+x):[],
   within_r_squared:fit.r_squared,degrees_freedom:fit.degrees_freedom,
-  residual_sd:fit.residual_sd,rmse:fit.rmse,residual_diagnostics:fit.residual_diagnostics,
+  residual_sd:fit.residual_sd,rmse:fit.rmse,
+  residual_diagnostics:{...fit.residual_diagnostics,
+   flagged:fit.residual_diagnostics.flagged.map(o=>({
+    ...o,entity:pairs[o.index-1]?.entity||null,year:pairs[o.index-1]?.time||null,
+    source_row:pairs[o.index-1]?.index+1||o.index,
+    name:pairs[o.index-1]?pairs[o.index-1].entity+" ("+pairs[o.index-1].time+")":"Observation "+o.index
+   })),
+   note:"Influence screening uses the entity-within-transformed regression design. Cook's D and leverage are approximate diagnostic flags, NOT full original fixed-effects leverage or grounds for deleting a province."
+  },
   se_type:fit.se_type,
   limitations:"Within-entity fixed effects remove time-invariant entity characteristics only. Time-varying confounding, reverse causation, panel dependence and model validity require independent assessment; no causality or investment multiplier is established."};
 }
@@ -213,7 +221,7 @@ export function sensitivityOLS(rows,x,y,lower=-15,upper=15){
 
 /* Refit exactly the same estimator to test how fragile the estimates are.
  * The LOO tests are diagnostics, not out-of-sample validation or causal inference.
- * At most 25 entities / 10 years are tested automatically to limit browser work.
+ * At most 64 entities / 12 years are tested automatically to limit browser work.
  */
 export function panelStability(rows,predictors,outcome,entityField,timeField,includeYearFE=true){
  const base=panelFixedEffects(rows,predictors,outcome,entityField,timeField,includeYearFE);
