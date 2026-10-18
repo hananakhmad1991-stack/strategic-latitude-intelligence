@@ -24,3 +24,65 @@
 .ra-wb-output th,.ra-wb-output td{text-align:right;border-bottom:1px solid #dde7ed;padding:7px 9px;white-space:nowrap}
 .ra-wb-output th:first-child,.ra-wb-output td:first-child{text-align:left}
 .ra-wb-output small{display:block;white-space:normal;color:#71869a;font:11px/1.55 system-ui,sans-serif;margin:10px 0 2px}
+
+
+/* Research AI navy shell surrounds a deliberately LIGHT workbench. Never inherit
+   global white-on-navy table typography into this white output panel. */
+body.sli-research-brand #raAnalyticalWorkbench,
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output{color:#1d3d57}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output{
+ color:#1e3c55!important;background:#f8fafc;border-color:#bfceda;
+ min-height:110px;max-height:none;overflow:visible;white-space:normal
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output[data-state=error]{
+ color:#8c302a!important;background:#fff4f1;border-color:#dcaaa3
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output table{
+ display:table;width:100%;border-collapse:collapse;background:#fff;
+ font:12px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;
+ margin:12px 0;min-width:660px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output .ra-wb-table-scroller{
+ width:100%;overflow-x:auto;max-width:100%;border:1px solid #d7e1e8;border-radius:8px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output th,
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output td{
+ padding:10px 12px;border-bottom:1px solid #d9e4ec;
+ background:#fff;color:#173a55!important;
+ font-size:12px;line-height:1.4;text-align:right
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output th{
+ background:#e6eef5!important;color:#16344d!important;font-weight:800
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output tr:nth-child(odd) td{
+ background:#f2f6f9!important
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output tr:hover td{
+ background:#e9f1f8!important
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output td:first-child,
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output th:first-child{
+ text-align:left;min-width:180px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output small{color:#4f6478!important}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output p{color:#284b66!important}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-output strong{color:#17466a!important}
+/* [hidden] must win against the authored display:grid rule. */
+#raAnalyticalWorkbench .ra-wb-variables[hidden]{display:none!important}
+#raAnalyticalWorkbench .ra-wb-analysis{
+ padding:14px 16px;border-left:3px solid #ae8950;background:#eef4f8;
+ border-radius:8px;margin:14px 0;white-space:normal
+}
+#raAnalyticalWorkbench .ra-wb-analysis strong{display:block;margin-bottom:5px}
+#raAnalyticalWorkbench .ra-wb-analysis p{margin:7px 0;color:#284b66}
+#raAnalyticalWorkbench .ra-wb-next{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:13px 0}
+#raAnalyticalWorkbench .ra-wb-next button{
+ border:1px solid #1c5786;color:#fff;background:#1c5786;
+ border-radius:8px;font:700 12px system-ui,sans-serif;cursor:pointer;
+ padding:9px 13px
+}
+#raAnalyticalWorkbench .ra-wb-next button:hover{background:#103f66}
+#raAnalyticalWorkbench .ra-wb-step{
+ display:block;font:700 12px/1.6 system-ui,sans-serif;color:#436783;
+ margin:0 0 9px
+}
