@@ -120,8 +120,13 @@ test("BPS official-data shortcut builds geographically screened 32-province annu
  const requested=[];
  globalThis.fetch=async(url)=>{
   requested.push(String(url));
-  const file=String(url).endsWith("sli-research-province-preview.json")?"data/sli-research-province-preview.json":"data/sli-bps-regional-intelligence.json";
-  return {ok:true,json:async()=>JSON.parse(read(file))};
+  const file="./"+String(url).replace(/^\.\//,"");
+  const known=new Set([
+   "./data/sli-bps-regional-intelligence.json","./data/sli-research-province-preview.json",
+   "./data/sli-structural-industry-source-register.json","./data/strategic-map-smelter-2026.json"
+  ]);
+  if(!known.has(file))return {ok:false,status:404};
+  return {ok:true,json:async()=>JSON.parse(read(file.slice(2)))};
  };
  try{
   await import("../js/sli-analytical-workbench-ui.mjs?qa-bps=20261018");
@@ -130,7 +135,20 @@ test("BPS official-data shortcut builds geographically screened 32-province annu
   assert.match($("raOfficialBpsSource").textContent,/32 provinsi/);
   $("raLoadOfficialBps").click();
   await new Promise(resolve=>setImmediate(resolve));await new Promise(resolve=>setImmediate(resolve));
-  assert.deepEqual(requested,["./data/sli-bps-regional-intelligence.json","./data/sli-research-province-preview.json"]);
+  assert.deepEqual(requested,[
+   "./data/sli-bps-regional-intelligence.json","./data/sli-research-province-preview.json",
+   "./data/sli-structural-industry-source-register.json","./data/strategic-map-smelter-2026.json"
+  ]);
+  assert.equal($("raStructuralEconomy").hidden,false);
+  assert.match($("raStructuralEconomy").textContent,/SLI Structural Economy Lab/);
+  assert.match($("raStructuralEconomy").textContent,/34.17%/);
+  assert.match($("raStructuralEconomy").textContent,/62.64%/);
+  assert.match($("raStructuralEconomy").textContent,/BUKAN pangsa industri/);
+  assert.equal($("raStructuralEconomy").querySelectorAll("table tr").length,5);
+  assert.match($("raStructuralEconomy").textContent,/Data Quality|2020–2024|2020–2025|2021–2025/);
+  assert.match($("raStructuralEconomy").textContent,/menunggu digitalisasi|belum dimasukkan/);
+  assert.equal([...$("raStructuralEconomy").querySelectorAll("details")].length,2);
+
   assert.match($("raModelResult").textContent,/128 observasi/);
   assert.equal($("raOfficialDataQA").hidden,false);
   assert.match($("raOfficialDataQA").textContent,/Audit: LULUS DENGAN CATATAN/);
