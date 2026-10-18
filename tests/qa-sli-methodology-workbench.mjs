@@ -65,7 +65,7 @@ test("New local econometrics are catalogued and connected to truthful UI plus re
  assert.equal(getMethod("multivariate_ols")?.status,"local");
  assert.equal(getMethod("panel_fe")?.status,"local");
  assert.equal(getMethod("did")?.status,"design");
- assert.match(src,/renderEconometricResult\(output\)/);
+ assert.match(src,/renderEconometricResult\(output,robustness\)/);
  assert.match(src,/panelFixedEffects\(data,xs,y\.value/);
  assert.match(src,/scatterPlot\(fit,sensitivity\?\.reduced/);
  assert.match(src,/downloadMarkdown\(investorMarkdown/);
