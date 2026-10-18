@@ -20,6 +20,8 @@
     "endpoint": "https://sli-research-owner-test.hananakhmad1991.workers.dev/v1/owner-research",
     "scope": "owner_only_staging_with_public_curated_SLI_evidence",
     "auth": "private_server_side_random_token_48_or_more_characters",
-    "status": "configured_owner_test_no_paid_subscriber_access"
+    "status": "configured_owner_test_no_paid_subscriber_access",
+    "attachments_enabled": false,
+    "attachments_note": "Owner Worker code supports validated opt-in multimodal attachments; PUBLIC uploads remain disabled until the new Cloudflare Worker is deployed and tested. Do not enable merely by changing GitHub Pages."
   }
 }
