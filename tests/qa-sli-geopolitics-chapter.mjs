@@ -83,6 +83,7 @@ test("Real DOM-like rendering produces detailed geopolitics, clickable themes, s
 class Element{
  constructor(tag){this.tag=tag;this.children=[];this.id="";this.className="";this.textContent="";this.style={};this.listeners=new Map();this.attrs={};this.isConnected=true;this.value=""}
  append(...items){this.children.push(...items)}
+ appendChild(item){this.children.push(item);return item}
  replaceChildren(...items){this.children=[...items]}
  setAttribute(k,v){this.attrs[k]=v}
  addEventListener(k,fn){this.listeners.set(k,fn)}
