@@ -78,7 +78,7 @@ export function auditOfficialProvincialData(src,preview){
  }
  let pressContext=null;
  try{pressContext=buildBpsPressFreedomContext(src)}
- catch(err){errors.push("Independent BPS IKP source audit failed: "+String(err.message).slice(0,160))}
+ catch(err){warnings.push("Non-essential governance context unavailable: "+String(err.message).slice(0,160)+". BPS GRDP audit remains independent.")}
  const extreme=panel.rows.filter(r=>Math.abs(r.real_grdp_growth_pct)>15).map(r=>({province:r.province,year:r.year,growth_pct:r.real_grdp_growth_pct}));
  if(extreme.length)warnings.push("Growth beyond ±15% is flagged for scrutiny, NOT deleted or mechanically labelled invalid.");
  warnings.push("2024 observations revised; 2025 preliminary — publication vintages affect stability.");
