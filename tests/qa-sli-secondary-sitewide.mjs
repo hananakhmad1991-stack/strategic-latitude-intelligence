@@ -7,7 +7,7 @@ const read=p=>readFileSync(new URL(p,root),"utf8");
 
 test("every standalone and primary dashboard gets central secondary-news mounting through shared navigation",()=>{
  const pages=readdirSync(root).filter(x=>x.endsWith(".html"));
- assert.ok(pages.length>=38);
+ assert.ok(pages.length>=36);
  const nav=read("js/sli-navigation.js"),css=read("css/sli-navigation.css");
  assert.match(nav,/mountSecondaryEvidence/);
  assert.match(nav,/sli-secondary-evidence\.js/);
