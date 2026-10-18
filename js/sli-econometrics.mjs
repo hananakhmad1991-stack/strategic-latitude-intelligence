@@ -250,6 +250,7 @@ export function panelStability(rows,predictors,outcome,entityField,timeField,inc
     min_excluded:lo.excluded,max_excluded:hi.excluded,
     max_absolute_shift:rnd(delta),max_relative_shift_pct:rnd(relative),most_influential_exclusion:biggest.excluded,
     sign_reversals:values.filter(v=>Math.sign(v.value)!==Math.sign(baseline[name])).length,
+    relative_change_near_zero_denominator:Math.abs(baseline[name])<0.05,
     sensitivity:relative===null?"near_zero_baseline":relative>25?"high":relative>10?"moderate":"low"};
   });
   return {available:true,tested:selected.length,successful:fits.length,total_candidates:entry.candidates.length,
@@ -265,19 +266,31 @@ export function panelStability(rows,predictors,outcome,entityField,timeField,inc
     relative_change_pct:Math.abs(baseline[t.name])>1e-8?rnd(100*(t.estimate-baseline[t.name])/Math.abs(baseline[t.name])):null
    }))};
  }catch(e){alternative={available:false,reason:String(e.message).slice(0,170)}}
- const looEntity=finish("leave_one_entity_out",entityField,25),looYear=finish("leave_one_year_out",timeField,10);
+ const looEntity=finish("leave_one_entity_out",entityField,64),looYear=finish("leave_one_year_out",timeField,12);
  const significantShifts=[...((looEntity.metrics||[])),...((looYear.metrics||[]))].filter(m=>m.sensitivity==="high"||m.sign_reversals>0);
  const timeSpecShifts=alternative?.available?(alternative.coefficients||[]).filter(m=>
   m.relative_change_pct!==null&&Math.abs(m.relative_change_pct)>25):[];
+ const signUnstable=[...((looEntity.metrics||[])),...((looYear.metrics||[]))].some(m=>(m.sign_reversals||0)>0);
+ const allRefitsComplete=looEntity.exhaustive&&looYear.exhaustive&&
+  looEntity.successful===looEntity.total_candidates&&looYear.successful===looYear.total_candidates;
+ const fragile=signUnstable||significantShifts.length>0||timeSpecShifts.length>0||
+  !allRefitsComplete;
+ const nearZero=baseline&&Object.entries(baseline).filter(([name,value])=>Math.abs(value)<0.05).map(([name])=>name);
  const caution=[
-  significantShifts.length?"At least one leave-one-out refit shifts an estimate more than 25% or reverses its sign.":"No >25% leave-one-out coefficient change or sign reversal among successful refits.",
-  timeSpecShifts.length?"Removing/adding year fixed effects changes "+timeSpecShifts.map(x=>x.name).join(", ")+" coefficient(s) by >25%; time specification is influential.":"No >25% change across the compared time-FE specifications, or the alternate specification was unavailable."
- ].join(" ");
+  signUnstable?"At least one leave-one-out refit reverses a coefficient sign; direction of association is not robust across periods/entities.":"No coefficient sign reversal detected in successful refits.",
+  significantShifts.length?"At least one leave-one-out refit shifts an estimate by >25% of the baseline magnitude.":"No >25% leave-one-out relative shift in successful refits.",
+  timeSpecShifts.length?"Removing/adding year fixed effects changes "+timeSpecShifts.map(x=>x.name).join(", ")+" coefficient(s) by >25%; time specification is influential.":"No >25% change across the compared time-FE specifications, or the alternate specification was unavailable.",
+  nearZero.length?"Percentage coefficient changes for near-zero baseline terms ("+nearZero.join(", ")+") can be extremely large because of a small denominator; inspect absolute shifts and sign changes instead.":"",
+  !allRefitsComplete?"Some leave-one-out tests were not run or failed; no full-sample robustness claim is warranted.":"All available entity and year exclusion tests were run successfully."
+ ].filter(Boolean).join(" ");
  return {method:"panel_fe_stability",entity_field:entityField,time_field:timeField,
   baseline_entity_count:base.unit_count,baseline_year_count:base.time_count,
   baseline_predictors:predictors,baseline_outcome:outcome,baseline_year_fe:includeYearFE,
   leave_one_entity_out:looEntity,leave_one_year_out:looYear,
   alternative_time_specification:alternative,
+  decision_readiness:fragile?"not_robust_for_investment_inference":"exploratory_only",
+  sign_unstable:signUnstable,
+  all_refits_complete:allRefitsComplete,
   screening:caution,
   limitations:"Exploratory leave-one-entity/year refits and alternate time controls; do not infer causal identification, model generalisation, statistical significance or investment returns from stability alone."};
 }
