@@ -1,7 +1,7 @@
 import {test} from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {ahpFromQuestionnaire,ahpFromJson,analyseAhpText,isAhpQuestion,isAhpTable,ahpResultMarkdown} from "../js/sli-research-questionnaire.mjs";
+import {ahpFromQuestionnaire,ahpFromJson,analyseAhpText,isAhpQuestion,isAhpTable,ahpResultMarkdown,supplementarySliContext,requestedResearchProvinces} from "../js/sli-research-questionnaire.mjs";
 import {verifyMethodOnlyAnswer,modelRequest,validateAssistantPayload} from "../research-api/src/assistant-core.mjs";
 import {parseCsv} from "../js/sli-analytical-core.mjs";
 const read=path=>readFileSync(new URL("../"+path,import.meta.url),"utf8");
@@ -69,4 +69,22 @@ test("Research UI routes eligible AHP questionnaire files to local calculator be
  assert.match(html,/academic_generic/);
  assert.match(html,/ahp-questionnaire-sample\.csv/);
  assert.match(html,/tanpa token AI/);
+});
+
+test("SLI province context supplements AHP academic report without changing respondent scores",()=>{
+ const data=JSON.parse(read("data/sli-research-province-preview.json"));
+ const matched=requestedResearchProvinces("Riset lokasi Maluku Utara dan Sulawesi Tengah",data);
+ assert.deepEqual(matched.map(x=>x.name),["Maluku Utara","Sulawesi Tengah"]);
+ assert.equal(requestedResearchProvinces("AHP untuk Maluku Utara",data).length,1);
+ assert.equal(requestedResearchProvinces("AHP metodologi umum saja",data).length,0);
+ const context=supplementarySliContext("AHP pengembangan ekonomi Maluku Utara",data);
+ assert.deepEqual(context.provinces,["Maluku Utara"]);
+ assert.match(context.markdown,/34,17%/);
+ assert.match(context.markdown,/41,32%/);
+ assert.match(context.markdown,/bukan bagian dari bobot AHP/i);
+ assert.match(context.markdown,/bps.go.id/);
+ const ahp=ahpFromQuestionnaire(parseCsv(csv));
+ assert.equal(ahp.n_respondents,3);
+ assert.equal(ahp.group.acceptable,true);
+ assert.equal(supplementarySliContext("metodologi AHP untuk universitas",data),null);
 });
