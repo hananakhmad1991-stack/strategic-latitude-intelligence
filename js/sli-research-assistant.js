@@ -71,8 +71,20 @@ function apaEntry(s){
  return publisher+". ("+date+"). "+title+". "+String(s.source_url||"");
 }
 function reportBody(answer){
- return String(answer||"").split(/\n(?=##?\s+(?:References|Daftar Pustaka|Bibliography|Keterbatasan|Limitations|Evidence limitations|Batasan data|Source limitations|Model Statement)\b)/i)[0].trim();
+ // Remove only ancillary sections; never truncate substantive conclusions after them.
+ const lines=String(answer||"").split("\n"),out=[];
+ let skipping=false;
+ for(const line of lines){
+  const section=/^#{1,3}\s+(.+)$/.exec(line.trim());
+  if(section){
+   const title=section[1].replace(/\*\*/g,"").trim();
+   skipping=/^(references|daftar pustaka|bibliography|keterbatasan(?: data)?|limitations|evidence limitations|batasan data|source limitations|model statement)\b/i.test(title);
+  }
+  if(!skipping)out.push(line);
+ }
+ return out.join("\n").trim();
 }
+
 function renderModelStatement(answer,payload={}){
  const target=$("raModelStatementBody");if(!target)return;
  target.replaceChildren();
