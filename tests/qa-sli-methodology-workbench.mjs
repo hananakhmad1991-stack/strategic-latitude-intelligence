@@ -54,8 +54,8 @@ test("Workbench usability: navy-shell styles cannot white-out light statistical 
  assert.match(js,/id\?"Interpretasi untuk investor"/);
  assert.match(js,/Lanjut: jalankan regresi PMTB/);
  assert.match(js,/method\.value="ols";desc\(\)/);
- assert.match(html,/sli-analytical-workbench\.css\?v=20261018-econometrics\d+/);
- assert.match(html,/sli-analytical-workbench-ui\.mjs\?v=20261018-econometrics\d+/);
+ assert.match(html,/sli-analytical-workbench\.css\?v=20261018-(?:econometrics\d+|bps\d+)/);
+ assert.match(html,/sli-analytical-workbench-ui\.mjs\?v=20261018-(?:econometrics\d+|bps\d+)/);
 });
 
 test("New local econometrics are catalogued and connected to truthful UI plus research report",()=>{
