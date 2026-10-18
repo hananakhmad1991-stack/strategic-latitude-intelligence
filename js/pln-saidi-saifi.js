@@ -91,7 +91,7 @@ function start(root,db){
   if(!arr.length){rows.append(n("p","rel-scope-warning","No verified reporting-unit observation for the selected province; choose All PLN reporting units to inspect the published table."));return;}
   for(const u of arr){
    const v=unitValue(u),pct=100*(state.scale==="sqrt"?Math.sqrt(v/max):v/max);
-   const button=n("button","rel-row bar-row"+(state.unit===u.id?" active":""),null);button.type="button";button.title="Inspect "+u.unit+" · "+y;button.dataset.unit=u.id;
+   const button=n("button","rel-row rel-bar-item"+(state.unit===u.id?" active":""),null);button.type="button";button.title="Inspect "+u.unit+" · "+y;button.dataset.unit=u.id;
    const first=n("span","rel-name",u.unit),track=n("span","rel-track"),fill=n("span","rel-fill");fill.style.width=Math.max(2,pct)+"%";track.append(fill);
    const number=n("span","rel-value",fmt(v));button.append(first,track,number);
    button.addEventListener("click",()=>{if(state.province&&!linkedUnits().some(x=>x.id===u.id)){state.province="";province.value="";}state.unit=u.id;drawBars();drawTrend();drawKpis();detail();});
