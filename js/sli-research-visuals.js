@@ -60,7 +60,7 @@ function renderCharts(charts,where,sources=[],lang="id"){
  if(!Array.isArray(charts)||!charts.length)return;
  const section=create("section","sli-ra-visuals");
  section.append(create("h3",null,lang==="id"?"Visual Insights · Data terverifikasi":"Visual Insights · Source-linked data"));
- for(const chart of charts.slice(0,3)){
+ for(const chart of charts.slice(0,4)){
   if(chart?.type!=="bar"||!Array.isArray(chart.points)||chart.points.length<2||chart.points.length>12)continue;
   if(!chart.points.every(p=>typeof p.label==="string"&&p.label.length<100&&typeof p.value==="number"&&Number.isFinite(p.value)&&p.value>=0&&Number.isInteger(p.source)&&p.source>0&&p.source<=sources.length))continue;
   const max=Math.max(...chart.points.map(p=>p.value));if(max<=0)continue;

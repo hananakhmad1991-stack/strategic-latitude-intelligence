@@ -11,13 +11,23 @@ function normalizedStage(input){
  if(/planning|early works|announced|feasibility|design/.test(s))return "Announced / planning";
  return null;
 }
-export function buildResearchCharts(evidence,language="id"){
+function metricRequested(series,question){
+ if(!question||!question.trim())return true;
+ const q=" "+question.toLowerCase()+" ";
+ if(series==="gini_expenditure")return /\b(gini|inequality|ketimpangan)\b/.test(q);
+ if(series==="real_grdp_growth")return /\b(pdrb|grdp|growth|pertumbuhan|ekonomi|economic)\b/.test(q);
+ if(series==="pmtb_share")return /\b(pmtb|modal|investasi|capital formation|investment)\b/.test(q);
+ if(series==="monthly_merchandise_trade")return /\b(ekspor|impor|export|import|trade|neraca)\b/.test(q);
+ if(series==="dated_crude_spot")return /\b(brent|wti|crude|oil|minyak|harga energi)\b/.test(q);
+ return false;
+}
+export function buildResearchCharts(evidence,language="id",question=""){
  if(!Array.isArray(evidence)||!evidence.length)return [];
  const groups=new Map(),project=new Map();
  evidence.slice(0,12).forEach((src,i)=>{
   const cite=i+1;
   for(const m of Array.isArray(src.chart_measures)?src.chart_measures:[]){
-   if(!m||!validText(m.series)||!validText(m.category)||!validText(m.unit)||!validText(m.period)||
+   if(!m||!metricRequested(m.series,question)||!validText(m.series)||!validText(m.category)||!validText(m.unit)||!validText(m.period)||
     typeof m.value!=="number"||!Number.isFinite(m.value))continue;
    const key=[m.series,m.unit,m.period].join("|");
    if(!groups.has(key))groups.set(key,{title:m.label||m.series,unit:m.unit,period:m.period,values:new Map(),order:i});
@@ -30,14 +40,14 @@ export function buildResearchCharts(evidence,language="id"){
  const charts=[];
  for(const g of [...groups.values()].sort((a,b)=>a.order-b.order)){
   const data=[...g.values.values()];
-  if(data.length<2||data.length>38)continue;
+  if(data.length<2||data.length>38||data.some(p=>p.value<0))continue;
   charts.push({
    type:"bar",title:g.title,unit:g.unit,period:g.period,points:data.slice(0,12),
    source_refs:[...new Set(data.map(d=>d.source))],
    note:language==="en"?"Observed values from selected cited evidence; identical measure, unit and period. No causal inference.":
     "Nilai observasi dari sumber terpilih; indikator, satuan dan periode sama. Bukan hubungan kausal."
   });
-  if(charts.length>=2)break;
+  if(charts.length>=3)break;
  }
  const counts=new Map(),refs=new Map();
  for(const entry of project.values()){
@@ -56,5 +66,5 @@ export function buildResearchCharts(evidence,language="id"){
     "Jumlah hanya mencakup proyek unik dalam bukti terpilih, bukan total nasional, jumlah fasilitas atau kapasitas beroperasi."
   });
  }
- return charts.slice(0,3);
+ return charts.slice(0,4);
 }

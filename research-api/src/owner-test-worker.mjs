@@ -131,7 +131,7 @@ export default{
   }catch{return send(502,{error:"model_unreachable"},origin)}
   if(!verifyResearchAnswer(answer,evidence))return send(502,{error:"invalid_or_missing_source_citations"},origin);
   return send(200,{mode:"generative_rag",research_format:payload.mode,answer,
-   charts:buildResearchCharts(evidence,payload.language),evidence_status:"owner_staging_verify_sources",
+   charts:buildResearchCharts(evidence,payload.language,payload.question),evidence_status:"owner_staging_verify_sources",
    sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo}))},origin);
  }
 };
