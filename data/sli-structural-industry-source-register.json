@@ -1,0 +1,138 @@
+{
+  "schema": "sli-structural-industry-source-register-v1",
+  "as_of": "2026-10-18",
+  "purpose": "Document publisher sources for province-industry panel backcasting and Maluku Utara downstreaming. Source discovery is NOT numeric-digitization verification.",
+  "publications": [
+    {
+      "id": "bps_exp_2021_2025",
+      "type": "expenditure_grdp",
+      "publisher": "BPS Indonesia",
+      "years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "published": "2026-04-30",
+      "url": "https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html",
+      "status": "numeric_ingested_sli",
+      "usage": "Current official SLI province panel baseline, geographic exclusion controls"
+    },
+    {
+      "id": "bps_exp_2020_2024",
+      "type": "expenditure_grdp",
+      "publisher": "BPS Indonesia",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "published": "2025-04-30",
+      "url": "https://www.bps.go.id/id/publication/2025/04/30/844e1c10df6aaf240a5d41e4/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2020-2024.html",
+      "status": "publication_found_numeric_not_ingested",
+      "usage": "Candidate for 2020 historic linkage, only after overlap year 2021–2024 value reconciliation and boundary code validation"
+    },
+    {
+      "id": "bps_exp_2019_2023",
+      "type": "expenditure_grdp",
+      "publisher": "BPS Indonesia",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "published": "2024-04-30",
+      "url": "https://www.bps.go.id/id/publication/2024/04/30/9385278595f148282c3d1051/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2019-2023.html",
+      "status": "publication_found_numeric_not_ingested",
+      "usage": "Historical 2019 backcast prospect; vintages may differ, must reconcile overlapping values"
+    },
+    {
+      "id": "bps_industry_2021_2025",
+      "type": "production_industry_grdp",
+      "publisher": "BPS Indonesia",
+      "years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "published": "2026-04-13",
+      "url": "https://www.bps.go.id/id/publication/2026/04/13/71d97fa95c70c5049deecbab/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-lapangan-usaha-2021-2025.html",
+      "status": "publication_found_numeric_not_ingested",
+      "usage": "17-industry KBLI 2009 ADHB/ADHK 2010 province annual totals, to derive manufacturing share and manufacturing growth after verified extraction"
+    },
+    {
+      "id": "bps_industry_2020_2024",
+      "type": "production_industry_grdp",
+      "publisher": "BPS Indonesia",
+      "years": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "published": "2025-04-11",
+      "url": "https://www.bps.go.id/id/publication/2025/04/11/95c729ee8c6fb5e2cb86b00f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-lapangan-usaha-2020-2024.html",
+      "status": "publication_found_numeric_not_ingested",
+      "usage": "Check 2020 overlap and industry vintage consistency; not safe to join without 2021–2024 matched cells"
+    },
+    {
+      "id": "bps_malut_industry_2021_2025",
+      "type": "malut_industry_grdp",
+      "publisher": "BPS Maluku Utara",
+      "years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "published": "2026-04-06",
+      "revised": "2026-09-16",
+      "url": "https://malut.bps.go.id/id/publication/2026/04/06/8c71b4460b5b8b97db9b1dcd/produk-domestik-regional-bruto-provinsi-maluku-utara-menurut-lapangan-usaha-2021-2025.html",
+      "status": "publication_found_numeric_not_ingested",
+      "usage": "Sector-subtotal validation for Maluku Utara; check revisions vs Feb 2026 press release before interpretation"
+    }
+  ],
+  "case_facts": {
+    "province": "Maluku Utara",
+    "year": 2025,
+    "publisher": "BPS Maluku Utara",
+    "source": "https://malut.bps.go.id/id/pressrelease/2026/02/05/843/maluku-utara-economy-quarter-iv-2025-grows-29-81-percent--y-on-y-.html",
+    "source_date": "2026-02-05",
+    "observation_vintage": "2025 reported in February 2026 release; later annual-sector publication revised September 2026",
+    "real_grdp_growth_pct": 34.17,
+    "manufacturing_real_growth_pct": 62.64,
+    "export_goods_services_growth_pct": 40.13,
+    "note": "Manufacturing 62.64% is sector GROWTH rate, not manufacturing's GRDP SHARE or growth contribution. No refinery-specific or nickel-causal fraction can be inferred."
+  },
+  "validation_policy": {
+    "approved_panel_years": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "approved_entities": 32,
+    "approved_observations": 128,
+    "excludes": [
+      "Papua",
+      "Papua Barat",
+      "Papua Barat Daya",
+      "Papua Selatan",
+      "Papua Tengah",
+      "Papua Pegunungan"
+    ],
+    "allow_historical_extension": false,
+    "allow_industry_controls": false,
+    "require": "Digitize annual ADHB and ADHK by 17 industries/province and 2019–2020 expenditure figures from official tables, match geographic codes and KBLI, reconcile common years between publication vintages, verify total by expenditure-vs-production discrepancy and sector subtotal shares before enabling panel regression.",
+    "no_automatic_causal_conclusions": true
+  }
+}
