@@ -67,6 +67,11 @@ test("Investor workbench DOM: panel FE actually estimates 12 entities x 6 years,
  assert.match($("raModelResult").textContent,/Unduh Investor Analytical Report/);
  assert.match($("raModelResult").textContent,/Y \(variabel terikat\) = real_grdp_growth_pct; X \(prediktor\) = pmtb_share_pct/);
  assert.equal($("raModelResult").querySelector("table tr:nth-child(2) td:first-child").textContent,"pmtb_share_pct");
+ assert.match($("raModelResult").textContent,/Uji kestabilan koefisien/);
+ assert.match($("raModelResult").textContent,/Keluarkan satu entitas/);
+ assert.match($("raModelResult").textContent,/Keluarkan satu tahun/);
+ assert.match($("raModelResult").textContent,/Perbandingan spesifikasi efek waktu/);
+ assert.ok($("raModelResult").querySelectorAll(".ra-wb-stability table").length>=3);
  assert.match($("raModelResult").textContent,/DATA SIMULASI/);
  assert.match($("raModelResult").textContent,/electricity_access_pct/);
  // A deliberately reversed specification must be explicitly identified as a different economic question.
