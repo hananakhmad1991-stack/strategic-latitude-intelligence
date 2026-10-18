@@ -28,7 +28,7 @@ export function requestedProvinces(text){
   for(const name of names){
    const n=normalize(name);
    const where=(" "+query+" ").indexOf(" "+n+" ");
-   if(where>=0)hits.push({id:names[0],size:n.length,start:where,end:where+n.length+2});
+   if(where>=0)hits.push({id:names[0],size:n.length,start:where+1,end:where+1+n.length});
   }
  }
  hits.sort((a,b)=>b.size-a.size||a.start-b.start);
@@ -79,7 +79,7 @@ export function classifyResearchSector(question){
  const primary=scored[0];
  // Only genuinely multi-sector questions can add secondary evidence; a passing mention
  // of "energy" in a nickel investment prompt does not grant blanket access to energy news.
- return {primary:primary.id,secondary:scored.slice(1).filter(x=>x.id!=="energy"&&x.score>=8&&x.score>=primary.score*0.65).slice(0,2).map(x=>x.id)};
+ return {primary:primary.id,secondary:scored.slice(1).filter(x=>x.id!=="energy"&&x.score>=9&&x.score>=primary.score*0.25).slice(0,2).map(x=>x.id)};
 }
 export function evidenceSector(d){
  const topic=normalize(d.topic),title=normalize(d.title),text=normalize(d.text).slice(0,220);
@@ -133,7 +133,7 @@ function commodityMismatched(d,query){
  const requested=Object.entries(vocab).filter(([,terms])=>terms.some(t=>hasPhrase(q,t))).map(([id])=>id);
  if(!requested.length)return false;
  // Broad "mineral kritis" studies can legitimately include multiple mineral value chains.
- if(hasPhrase(q,"mineral kritis")||hasPhrase(q,"critical minerals")||hasPhrase(q,"hilirisasi"))return false;
+ if(hasPhrase(q,"mineral kritis")||hasPhrase(q,"critical minerals"))return false;
  const seen=Object.entries(vocab).filter(([,terms])=>terms.some(t=>hasPhrase(sample,t))).map(([id])=>id);
  return seen.length>0&&seen.every(id=>!requested.includes(id));
 }
