@@ -134,6 +134,17 @@ function show05(legal,evaluation,ria){
  root.append(E("p","Evidence: legal register "+(legal.updated_at||"unknown")+", policy evaluation "+(evaluation.as_of||"unknown")+", sector scenarios "+(ria.version||"unknown")+". These interpretations are not legal advice.","sli-policy-caveat"));
  addLink(root,"Open sector-by-sector RIA-lite ↗","./policy-sector-ria.html");
 }
+function collapseGenericBaselines(){
+ for(const id of ["01","02","03","04","05"]){
+  const chapter=document.getElementById("sli-chapter-"+id);
+  const original=chapter?.querySelector(".sli-research-grid");
+  if(!original)continue;
+  const details=E("details",undefined,"sli-policy-baseline-details");
+  const summary=E("summary","Original policy definitions & editorial checklists (optional)");
+  chapter.insertBefore(details,original);
+  details.append(summary,original);
+ }
+}
 let pending;
 async function initPolicyInsights(){
  const section=document.getElementById("sli-chapter-01");if(!section)return;
@@ -144,6 +155,7 @@ async function initPolicyInsights(){
   if(!document.getElementById("sli-chapter-01"))return;
   if(!Array.isArray(legal.nodes)||!Array.isArray(legal.cases)||!Array.isArray(evaluation.profiles)||!ria.cases)throw Error("Policy schema invalid");
   show01(legal,monitor);show02(legal);show03(legal,evaluation);show04(evaluation);show05(legal,evaluation,ria);
+  collapseGenericBaselines();
   loading.remove();
  }catch(error){
   pending=null;loading.textContent="The enhanced policy evidence could not load. Existing source-linked chapter baselines remain available. Open the Policy & Regulatory and Evaluation dashboards for full records.";
