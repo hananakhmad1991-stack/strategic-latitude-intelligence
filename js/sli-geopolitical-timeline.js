@@ -150,8 +150,8 @@ function initPanels(root,prices,events,signals){
  root.replaceChildren();
  const wrapper=el("section","geo-intel-section sli-geo-timeline");wrapper.id="geo-commodity-timeline";
  wrapper.append(el("h2",null,tx("03 · Geopolitical events & commodity-price atlas · 1950–present","03 · Atlas peristiwa geopolitik & harga komoditas · 1950–sekarang")),
- el("p","geo-intel-muted",tx("Milestones begin in 1950. World Bank nominal monthly prices begin in 1960, with later start dates for several benchmarks. Missing years stay blank; do not interpret every reported headline as an independently established event.",
- "Kronologi dimulai 1950. Harga bulanan nominal World Bank tersedia sejak 1960, sedangkan beberapa acuan baru tersedia setelahnya. Tahun tanpa data tetap kosong; berita monitoring tidak otomatis menjadi bukti kejadian independen.")));
+ el("p","geo-intel-muted",tx("Milestones begin in 1950. World Bank nominal monthly prices begin in 1960, with later start dates for several benchmarks. Historical Brent values before the modern benchmark emerged should be read as the World Bank's retrospective series, not contemporaneous traded spot quotes. Missing years stay blank; news headlines are not independent event confirmation.",
+ "Kronologi dimulai 1950. Harga bulanan nominal World Bank tersedia sejak 1960, sedangkan beberapa acuan baru tersedia setelahnya. Seri historis Brent sebelum perdagangan acuannya berkembang perlu dibaca sebagai seri rekonstruksi World Bank, bukan harga spot sezaman. Tahun tanpa data tetap kosong; berita monitoring tidak otomatis menjadi bukti kejadian independen.")));
  const controls=el("div","sli-geo-timeline-controls");
  const year=select(tx("From year","Mulai tahun"),[1950,1960,1970,1980,1990,2000,2010,2020].map(y=>[String(y),String(y)]),"1950",controls);
  const kind=select(tx("Historical event filter","Filter kejadian historis"),Object.entries(categoryNames).map(([k,v])=>[k,tx(...v)]),"all",controls);
@@ -182,6 +182,9 @@ function initPanels(root,prices,events,signals){
    const option=el("label","sli-geo-timeline-option"),check=el("input");check.type="checkbox";check.checked=selected.has(k);
    option.append(check,el("span",null,tx(ITEMS[k][0],ITEMS[k][1])));
    check.addEventListener("change",()=>{
+    if(check.checked&&mode.value==="single"){
+     selected.clear();for(const other of boxes.values())other.checked=false;check.checked=true;
+    }
     if(check.checked&&selected.size>=5){check.checked=false;status.textContent=tx("Maximum five lines per chart.","Maksimal lima garis dalam satu grafik.");return}
     if(check.checked)selected.add(k);else selected.delete(k);
     if(!selected.size){check.checked=true;selected.add(k);return}draw();
@@ -254,7 +257,13 @@ function initPanels(root,prices,events,signals){
    sc.append(el("h4",null,tx("Monthly return vs event indicator · ","Perubahan bulanan vs indikator kejadian · ")+tx(ITEMS[focus.key][0],ITEMS[focus.key][1])),scatter(focus.points,chosenEvents));
    reports.append(info,sc);
   }
-  mode.addEventListener("change",draw);
+  mode.addEventListener("change",()=>{
+   if(mode.value==="single"){
+    const first=[...selected][0];selected.clear();selected.add(first);
+    for(const [k,box] of boxes)box.checked=k===first;
+   }
+   draw();
+  });
   contexts.push(draw);
  }
  const note=el("p","sli-geo-timeline-footer");
