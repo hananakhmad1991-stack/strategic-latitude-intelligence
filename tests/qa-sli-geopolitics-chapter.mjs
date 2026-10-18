@@ -206,7 +206,7 @@ test("Clicking a gold event synchronizes all three charts and opens sourced bili
  assert.equal(marker.attrs.role,"button");
  assert.equal(marker.attrs.tabindex,"0");
  assert.ok(marker.listeners.has("click")&&marker.listeners.has("keydown"));
- assert.ok(nodes.some(x=>x.tag==="circle"&&x.attrs.r===19),"Marker must have a generous transparent hit area");
+ assert.ok(nodes.some(x=>x.tag==="circle"&&x.attrs.r==="19"),"Marker must have a generous transparent hit area");
  marker.listeners.get("click")();
  nodes=flatten(root);
  assert.equal(nodes.filter(x=>x.tag==="g"&&x.attrs["data-event-date"]==="2022-02-24"&&x.attrs["aria-pressed"]==="true").length,3);
