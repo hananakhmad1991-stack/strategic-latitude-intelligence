@@ -17,6 +17,7 @@ const field=(x,k)=>lang()==="id"&&(x["id_"+k]||x["id_"+k]===0)?x["id_"+k]:x[k];
 function safeUrl(url){
  try{
   if(/^\.\/[a-z0-9/_-]+(?:\.html)?(?:#[a-z0-9_-]+)?$/i.test(url))return url;
+  if(/^\.\/sli-source-viewer\.html\?dataset=[a-z0-9._-]+\.json$/i.test(url))return url;
   const u=new URL(url);if(u.protocol==="https:"&&!u.username&&!u.password)return u.href;
  }catch{}return null;
 }
