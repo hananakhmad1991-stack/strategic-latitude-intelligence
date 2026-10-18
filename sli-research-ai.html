@@ -4,7 +4,7 @@
 <meta name="description" content="SLI Research AI: a source-grounded conversational research assistant for Indonesia's economy, energy, strategic investment, geopolitics and technology. Owner-only generative research testing is active; subscriber access is not yet available.">
 <link rel="stylesheet" href="./css/sli-site-ux.css">
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-unified1">
-<link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261018-chatfirst1">
+<link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261018-academic1">
 <link rel="stylesheet" href="./css/sli-research-brand.css?v=20261018-brand1">
 <link rel="stylesheet" href="./css/sli-analytical-workbench.css?v=20261018-bps8">
 <link rel="stylesheet" href="./css/sli-contextual-briefs.css?v=20261018-insight1">
@@ -28,7 +28,7 @@
 <div id="raNotice" class="sli-ra-notice" role="status" aria-live="polite" data-id="Memeriksa status layanan Research AI dan akses Owner Test…" data-en="Checking Research AI service and Owner Test access…">Memeriksa status layanan Research AI dan akses Owner Test…</div>
 <section class="sli-ra-intro" id="raIntro">
  <div class="sli-ra-eyebrow" data-id="SLI · ASISTEN RISET INTELIJEN STRATEGIS" data-en="SLI · STRATEGIC INTELLIGENCE RESEARCH ASSISTANT">SLI · ASISTEN RISET INTELIJEN STRATEGIS</div>
- <div class="sli-ra-chat-promise">Ceritakan rencana Anda. AI membantu memilih metode, menelusuri bukti, dan menyusun riset — tidak perlu mengerti rumus statistik.</div>
+ <div class="sli-ra-chat-promise">Untuk peneliti, mahasiswa, dosen, konsultan, perusahaan, dan investor. Ceritakan kebutuhan Anda; SLI membantu memilih metode dan menyiapkan analisis tanpa mewajibkan rumus atau pengaturan teknis.</div>
  <h1>Research <em>AI</em> <span data-id="by Strategic Latitude" data-en="by Strategic Latitude">by Strategic Latitude</span></h1>
  <p data-id="Satu instruksi, riset analitis yang didukung data, konteks dan sumber yang dapat diperiksa." data-en="One prompt. Analytical research grounded in data, context and verifiable sources.">Satu instruksi, riset analitis yang didukung data, konteks dan sumber yang dapat diperiksa.</p>
  <div class="sli-ra-access-label" id="raAccessLabel">Research AI · Pre-launch</div>
@@ -42,9 +42,10 @@
  <div class="sli-ra-chat-attachment">
   <label for="raChatFiles">＋ Lampirkan data (opsional)</label>
   <input type="file" id="raChatFiles" accept=".pdf,.docx,.xlsx,.pptx,.csv,.json,.txt,.png,.jpg,.jpeg,.webp" multiple aria-describedby="raAttachmentNote">
-  <small id="raAttachmentNote">PDF, Word, Excel, PowerPoint, CSV, teks, atau gambar · maksimal 2 file, masing-masing 600 KB · uji privat Owner Test. Tanpa lampiran pun AI dapat merancang riset.</small>
+  <small id="raAttachmentNote">AHP kuesioner CSV/JSON dapat dihitung langsung di browser tanpa token AI. PDF, Word, Excel, PowerPoint, dan gambar memerlukan pemrosesan Cloudflare privat yang belum diaktifkan. Maksimal 2 file, masing-masing 600 KB.</small>
+  <a class="sli-ra-ahp-sample" href="./examples/ahp-questionnaire-sample.csv" download>Unduh contoh kuesioner AHP CSV ↧</a>
   <div id="raAttachmentStatus" role="status" aria-live="polite">Belum ada lampiran.</div>
-  <label class="sli-ra-upload-consent"><input type="checkbox" id="raChatUploadConsent"> Saya setuju file pilihan dikirim dari browser melalui Cloudflare ke penyedia AI untuk dianalisis. Data belum terverifikasi; jangan unggah dokumen rahasia tanpa izin.</label>
+  <label class="sli-ra-upload-consent"><input type="checkbox" id="raChatUploadConsent"> Hanya jika menggunakan pemrosesan AI privat: saya setuju file pilihan dikirim ke penyedia AI. Untuk AHP CSV/JSON yang dihitung lokal, centang ini TIDAK diperlukan. Jangan unggah dokumen rahasia tanpa izin.</label>
  </div>
  <div class="sli-ra-composer-bottom">
   <details class="sli-ra-chat-preferences" id="raChatPreferences">
@@ -74,8 +75,10 @@
 </details>
  <div class="sli-ra-caution" data-id="AI dapat membuat kesalahan. Selalu periksa sumber asli, periode statistik, status proyek dan asumsi analisis." data-en="AI can make mistakes. Always verify primary sources, measurement dates, project status and analytical assumptions.">AI dapat membuat kesalahan. Selalu periksa sumber asli, periode statistik, status proyek dan asumsi analisis.</div>
  <div class="sli-ra-templates" id="raTemplates">
-  <h2 data-id="Contoh pertanyaan investor · cukup klik lalu kirim" data-en="Example investor questions · click and send">Contoh pertanyaan investor · cukup klik lalu kirim</h2>
+  <h2 data-id="Contoh pertanyaan riset · pilih sesuai kebutuhan" data-en="Example research questions · choose your goal">Contoh pertanyaan riset · pilih sesuai kebutuhan</h2>
   <div class="sli-ra-template-grid">
+   <button type="button" class="sli-ra-template sli-ra-template-featured" data-template="academic_ahp"><strong>Olahlah kuesioner AHP saya</strong><span>Peneliti atau universitas · unggah CSV/JSON kuesioner; bobot, consistency ratio, grafik dan laporan dihitung lokal di browser.</span></button>
+   <button type="button" class="sli-ra-template" data-template="academic_generic"><strong>Bantu metodologi skripsi / jurnal</strong><span>Rancang metode, variabel, hipotesis dan validasi untuk topik penelitian apa pun. Metode bisa dipilih AI atau pengguna.</span></button>
    <button type="button" class="sli-ra-template sli-ra-template-featured" data-template="refinery"><strong>Investasi Rp5 triliun · Kilang migas NTB</strong><span>Analisis investasi, lokasi, input-output, kebutuhan data, risiko dan skenario — tanpa harus memilih metode.</span></button>
    <button type="button" class="sli-ra-template" data-template="energy"><strong data-id="Ketahanan Energi Indonesia" data-en="Indonesia Energy Security">Ketahanan Energi Indonesia</strong><span data-id="Executive summary: ketahanan energi, subsidi, impor, transisi dan risiko geopolitik." data-en="Executive summary: supply, subsidies, imports, transition and geopolitical risks.">Executive summary: ketahanan energi, subsidi, impor, transisi dan risiko geopolitik.</span></button>
    <button type="button" class="sli-ra-template" data-template="ai"><strong data-id="Prospek Infrastruktur AI" data-en="AI Infrastructure Outlook">Prospek Infrastruktur AI</strong><span data-id="Deep dive: pusat data, daya listrik, kapasitas, investor dan tantangan." data-en="Deep dive: data centers, grid power, capacity, investors and constraints.">Deep dive: pusat data, daya listrik, kapasitas, investor dan tantangan.</span></button>
@@ -101,7 +104,7 @@
 </main>
 <script defer src="./js/sli-navigation.js?v=20261018-source1"></script>
 <script defer src="./js/sli-research-visuals.js?v=20261018-visual2"></script>
-<script defer src="./js/sli-research-assistant.js?v=20261018-chatfirst1"></script>
+<script defer src="./js/sli-research-assistant.js?v=20261018-academic1"></script>
 <script type="module" src="./js/sli-analytical-workbench-ui.mjs?v=20261018-bps8"></script>
 <script type="module" src="./js/sli-contextual-briefs.mjs?v=20261018-insight1"></script>
 <script defer src="./js/sli-shared-appendix.js?v=20261017-conversation4"></script>
