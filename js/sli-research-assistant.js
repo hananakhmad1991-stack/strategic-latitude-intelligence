@@ -28,6 +28,8 @@ const MESSAGES={id:{
  example:"Use as research prompt",noSources:"No sources were returned by the service.",caution:"Verify important facts and primary publications."
 }};
 const PROMPTS={
+ academic_ahp:{mode:"deep_research",id:"Saya peneliti universitas. Tolong olah hasil kuesioner AHP terlampir, hitung bobot tiap kriteria, peringkat prioritas, consistency ratio (CR) kelompok dan tiap responden. Jangan imputasi jawaban kosong. Berikan grafik, interpretasi akademik, dan rekomendasi pemeriksaan jika tidak konsisten.",en:"I am a university researcher. Please process the attached AHP questionnaire, calculate criterion weights, ranking and group and respondent consistency ratios. Do not impute missing judgments. Provide a chart, academic interpretation and methodological limitations."},
+ academic_generic:{mode:"deep_research",id:"Saya peneliti universitas dan ingin dibantu menyusun metodologi riset. Bantu memilih metode paling sesuai dengan pertanyaan penelitian saya, jelaskan jenis data yang diperlukan, langkah analisis dan bagaimana menguji validitas, serta hasil laporan yang dapat dihasilkan. Jangan mengklaim perhitungan dilakukan jika datanya belum tersedia.",en:"I am a university researcher. Help design a rigorous methodology for my research question: select suitable methods, required data, analysis steps, limitations and validation. Do not claim any numerical model was run before its inputs are available."},
  refinery:{mode:"deep_research",id:"Saya memiliki anggaran investasi Rp5 triliun dan mempertimbangkan pembangunan kilang minyak bumi di Nusa Tenggara Barat (NTB). Saya investor nonteknis. Pilihkan metodologi yang paling sesuai. Susun screening investasi awal: jenis dan kapasitas kilang (jika belum diketahui tanyakan asumsi kunci), sumber dan jaminan pasokan crude, permintaan BBM, pilihan lokasi, logistik pelabuhan, energi, air, izin dan lingkungan, pembiayaan, risiko, serta peluang tenaga kerja. Jelaskan bagaimana menghitung multiplier effect dengan tabel Input-Output resmi Indonesia / IRIO jika tersedia; JANGAN mengarang angka multiplier, IRR, NPV, pekerjaan atau kelayakan proyek tanpa data input dan model numerik yang dijalankan. Berikan skenario transparan, visualisasi hanya bila angka sumber tersedia, dan rekomendasi due diligence dengan sitasi.",en:"I have an indicative IDR 5 trillion budget to develop an oil refinery in West Nusa Tenggara (NTB). I am a nontechnical investor. Choose suitable methodologies automatically. Screen refining scope/capacity and feedstock (ask for any missing critical inputs), crude supply, fuel demand, port and power infrastructure, water, permits and environmental issues, financing, project risks, sector employment. Explain how official Indonesia IO/IRIO tables would be used to calculate multipliers, but DO NOT fabricate multiplier, IRR, NPV, jobs or project feasibility values. Provide transparent scenario data requirements and source-cited due diligence recommendations."},
  energy:{mode:"executive_summary",id:"Buat executive summary komprehensif tentang ketahanan energi Indonesia berdasarkan data terbaru yang tersedia di SLI. Bahas produksi migas, kebutuhan impor, subsidi BBM dan listrik, transisi energi, risiko geopolitik jalur perdagangan, ketahanan pasokan, serta rekomendasi kebijakan dan implikasi investasi. Pisahkan data terverifikasi, analisis dan ketidakpastian. Sertakan sitasi dan tanggal data.",en:"Create a source-grounded executive summary of Indonesia's energy security. Assess oil and gas production, import dependence, fuel and electricity subsidies, energy transition, geopolitical shipping risks, supply resilience and strategic investment implications. Distinguish verified observations from inference and uncertainty, with dated citations."},
  ai:{mode:"deep_research",id:"Lakukan riset mendalam mengenai prospek pembangunan AI data center Indonesia hingga 2030. Analisis proyek investor utama, kapasitas rencana versus kapasitas beroperasi, kebutuhan listrik dan pendinginan, Batam versus Jawa Barat, insentif, tantangan regulasi, kelayakan investasi dan peluang kerja sama Korea Selatan. Buat analisis menyeluruh dengan sumber, bukan daftar berita.",en:"Conduct an in-depth research assessment of Indonesia's AI data center prospects through 2030. Analyse investor project pipeline, planned versus operational capacity, power and cooling constraints, Batam versus West Java, investment incentives, regulation and Korean cooperation. Provide an evidence-backed report, not a list of links."},
@@ -48,6 +50,9 @@ function isConfigured(){
 function selectPrompt(key){
  const prompt=PROMPTS[key];if(!prompt)return;
  $("raPrompt").value=prompt[state.language];$("raMode").value=prompt.mode;
+ if(key==="academic_ahp")$("raChatMethod").value="ahp";
+ else $("raChatMethod").value="auto";
+ methodStatus();
  $("raPrompt").focus();$("raPrompt").scrollIntoView({behavior:"smooth",block:"center"});
 }
 function append(role,text){
@@ -87,6 +92,7 @@ function reset(){
 function makeExport(){
  if(!state.lastResult)return "";
  const last=state.lastResult,heading=state.language==="id"?"Laporan SLI Research AI":"SLI Research AI Report";
+ if(last.mode==="local_ahp")return "# SLI · Academic AHP Analysis\n\n"+last.answer+"\n\n**Calculation:** Local AHP; respondent data never sent to SLI/AI server. Verify inputs and review CR.\n";
  const citations=last.sources.map((s,i)=>"["+(i+1)+"] "+String(s.title||"Source")+" — "+String(s.period||"n.d.")+" — "+String(s.source_date||"n.d.")+" — "+String(s.source_url||"")).join("\n");
  const figures=(last.charts||[]).map(c=>"### "+c.title+" ("+c.period+" · "+c.unit+")\n"+c.points.map(p=>"- "+p.label+": "+p.value+" ["+p.source+"]").join("\n")+"\n"+c.note).join("\n\n");
  return "# "+heading+"\n\n"+(state.language==="id"?"**Cakupan:** Analisis corpus terkurasi, bukan data live. Periksa sumber dan tanggal.":"**Scope:** Curated corpus, not live data. Verify sources and observation dates.")+"\n\n"+last.answer+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
@@ -96,6 +102,10 @@ function updateFileStatus(){
  const files=[...$("raChatFiles").files];
  const el=$("raAttachmentStatus");
  if(!files.length){el.textContent=state.language==="id"?"Belum ada lampiran.":"No attachments.";return}
+ if(files.length===1&&/\.(?:csv|json)$/i.test(files[0].name)){
+  el.textContent=files[0].name+" · Jika berisi kuesioner AHP, dapat dihitung lokal tanpa mengirim berkas ke AI.";
+  return;
+ }
  try{
   if(!state.features)throw Error("Attachment validation module has not loaded");
   state.features.recognizedFiles(files);
@@ -115,11 +125,63 @@ function methodStatus(){
   "Metode tersedia sebagai panduan desain riset; kalkulasi numeriknya BELUM tersedia. AI tidak boleh mengklaim telah menjalankannya.";
 }
 
+async function tryLocalAhp(files,question,requestedMethod){
+ if(files.length!==1||!/\.(?:csv|json)$/i.test(files[0].name))return false;
+ if(!state.features)state.features=await import("./sli-investor-chat.mjs?v=20261018-chatfirst1");
+ const module=await import("./sli-research-questionnaire.mjs?v=20261018-ahp1");
+ const selected=requestedMethod==="ahp"||module.isAhpQuestion(question);
+ const f=files[0];
+ if(f.size>600000||!f.size){if(selected)throw Error("AHP local: file must be 1–600 KB");return false}
+ const raw=await f.text();
+ if(!selected){
+  try{
+   if(/\.csv$/i.test(f.name)){
+    const parsed=(await import("./sli-analytical-core.mjs")).parseCsv(raw);
+    if(!module.isAhpTable(parsed))return false;
+   }else{
+    const parsed=JSON.parse(raw);
+    if(!(parsed?.pairwise&&parsed?.criteria)&&!module.isAhpTable(parsed?.rows||parsed))return false;
+   }
+  }catch{return false}
+ }
+ const output=module.analyseAhpText(raw,f.name);
+ const markdown=module.ahpResultMarkdown(output,state.language);
+ const currentQuestion=question;append("user",question+" · File: "+f.name);
+ const card=append("assistant",markdown);
+ const plot=node("div","sli-ra-local-ahp-chart");
+ plot.append(node("strong",null,state.language==="id"?"Visualisasi bobot kriteria · AHP lokal":"Criterion weights · local AHP"));
+ for(const c of output.ranking){
+  const row=node("div","sli-ra-local-ahp-row");
+  const caption=node("span",null,c.name);
+  const track=node("div","sli-ra-local-ahp-track");
+  const bar=node("div","sli-ra-local-ahp-bar");bar.style.width=(100*c.weight).toFixed(2)+"%";track.append(bar);
+  row.append(caption,track,node("span",null,(100*c.weight).toFixed(2)+"%"));plot.append(row);
+ }
+ card.append(plot);
+ const explanation=node("p","sli-ra-evidence-note",
+  state.language==="id"?
+   "DIHITUNG DI BROWSER · Tidak ada berkas dikirim ke layanan AI. Hasil berasal dari kuesioner pengguna dan bukan verifikasi sumber resmi SLI; konsistensi AHP bukan validitas empiris.":
+   "COMPUTED IN YOUR BROWSER · No files sent to an AI service. These are unverified questionnaire judgments, not validated SLI statistics; AHP consistency is not empirical validity.");
+ card.prepend(explanation);
+ state.lastResult={answer:markdown,question:currentQuestion,mode:"local_ahp",sources:[],charts:[]};
+ renderSources([],markdown,[]);
+ state.history.push({role:"user",content:question},{role:"assistant",content:markdown.slice(0,4500)});
+ state.history=state.history.slice(-8);
+ $("raChatFiles").value="";$("raChatUploadConsent").checked=false;updateFileStatus();
+ enableControls();status(state.language==="id"?"AHP berhasil dihitung secara lokal. Laporan tersedia untuk diekspor.":"AHP computed locally. Report available for export.","ready");
+ return true;
+}
+
 async function submit(){
  const question=$("raPrompt").value.trim(),mode=$("raMode").value;
  if(question.length<6||question.length>5000){status(state.language==="id"?"Tuliskan instruksi 6–5000 karakter.":"Enter an instruction with 6–5000 characters.");return}
  if(state.busy)return;
  const files=[...$("raChatFiles").files];
+ const methodValue=$("raChatMethod").value||"auto";
+ if(files.length===1&&/\.(?:csv|json)$/i.test(files[0].name)){
+  try{if(await tryLocalAhp(files,question,methodValue)){$("raPrompt").value="";return}}
+  catch(e){status("Kuesioner AHP belum dapat dihitung: "+String(e.message||e).slice(0,210));return}
+ }
  if(files.length){
   if(!ownerConfigured()||state.config?.owner_test?.attachments_enabled!==true){status("Unggah PDF/gambar/office BELUM aktif sampai Cloudflare Owner Worker baru terpasang dan diverifikasi. Silakan kirim pertanyaan tanpa file.");return;}
   if(!$("raChatUploadConsent").checked){status("Setujui pengiriman lampiran ke penyedia AI atau kosongkan unggahan file.");return;}
@@ -187,7 +249,7 @@ function setResearchLanguage(language){
   button.classList.toggle("active",active);
   button.setAttribute("aria-pressed",String(active));
  });
- $("raPrompt").placeholder=language==="id"?"Contoh: Saya punya Rp5 triliun untuk bangun kilang migas di NTB. Pilihkan metode dan analisis risiko serta multiplier jika datanya memungkinkan.":"Example: I have IDR 5 trillion for an oil refinery in NTB. Choose the methods and evaluate risks and multipliers if evidence permits.";
+ $("raPrompt").placeholder=language==="id"?"Tanyakan apa saja: olah kuesioner AHP penelitian saya, bandingkan provinsi, bantu metodologi skripsi, atau analisis proyek investasi.":"Ask any research question: analyse my AHP questionnaire, compare regions, design a university study, or assess an investment project.";
  if(state.config&&!isConfigured()&&!ownerConfigured())status(language==="id"?(state.config.published_notice_id||tr("prelaunch")):(state.config.published_notice_en||tr("prelaunch")));
 }
 async function init(){
