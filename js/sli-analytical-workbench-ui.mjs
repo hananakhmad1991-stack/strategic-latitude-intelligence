@@ -1,5 +1,5 @@
 import {METHODS,getMethod,parseCsv,toRows,describe,evaluate} from "./sli-analytical-core.mjs?v=20261018-econ3";
-import {multivariateOLS,panelFixedEffects,sensitivityOLS} from "./sli-econometrics.mjs?v=20261018-econ3";
+import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns} from "./sli-econometrics.mjs?v=20261018-econ4";
 import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs?v=20261018-econ3";
 const $=id=>document.getElementById(id);
 const box=document.createElement("section");
@@ -46,6 +46,16 @@ function desc(){
   if(/(?:grdp|pdrb|gdp).*growth|growth.*(?:grdp|pdrb|gdp)/i.test(x.value)&&/pmtb/i.test(y.value))
    detail.textContent+=" PERHATIAN: arah ini menempatkan pertumbuhan sebagai X. Untuk PMTB → pertumbuhan, balik X dan Y.";
  }
+ if(data&&method.value==="panel_fe"){
+  if(!entity.value)detail.textContent+=" · Panel tidak siap: dataset tidak memiliki sedikitnya 8 identitas wilayah/perusahaan yang berulang di sejumlah tahun. Gunakan kolom province/entity dengan nilai kategori berulang.";
+  if(!time.value)detail.textContent+=" · Panel tidak siap: kolom tahun (YYYY) tidak ditemukan.";
+  if(entity.value&&time.value)detail.textContent+=" · Unit panel terdeteksi: "+entity.value+"; waktu: "+time.value+". Jangan gunakan indikator listrik/pertumbuhan sebagai identitas unit.";
+ }
+ for(const option of extra.options){
+  const shouldDisable=[x.value,y.value,entity.value,time.value].includes(option.value)||/^(year|tahun|time|period|periode)$/i.test(option.value);
+  option.disabled=shouldDisable;
+  if(shouldDisable)option.selected=false;
+ }
 
 
 }
@@ -65,10 +75,17 @@ function fillVariables(){
  for(const select of [extra,entity,time])select.replaceChildren();
  const cols=Object.keys(data?.[0]||{});
  for(const key of numeric){const opt=document.createElement("option");opt.value=key;opt.textContent=key;extra.append(opt)}
- for(const key of cols){for(const sel of [entity,time]){const option=document.createElement("option");option.value=key;option.textContent=key;sel.append(option)}}
- const province=cols.find(v=>/^(province|provinsi|region|entity|unit|district)$/i.test(v)),yr=cols.find(v=>/^(year|tahun|period|periode)$/i.test(v));
- if(province)entity.value=province;
- if(yr)time.value=yr;else time.value="";
+ const detected=detectPanelColumns(data);
+ const idLang=document.documentElement.lang!=="en";
+ for(const [sel,columns,missingText] of [
+  [entity,detected.entities,idLang?"Tidak ada identitas entitas berulang":"No repeated entity identifier detected"],
+  [time,detected.times,idLang?"Tidak ada kolom tahun valid":"No valid annual year field detected"]
+ ]){
+  if(!columns.length){const opt=document.createElement("option");opt.value="";opt.disabled=true;opt.textContent=missingText;sel.append(opt);sel.value="";}
+  else for(const key of columns){const opt=document.createElement("option");opt.value=key;opt.textContent=key;sel.append(opt)}
+ }
+ entity.value=detected.recommendedEntity||"";
+ time.value=detected.recommendedTime||"";
  desc();
 }
 datafile.addEventListener("change",async()=>{
@@ -269,6 +286,7 @@ $("raRunMethod").addEventListener("click",()=>{
    if(!data)throw Error("Multivariable econometrics requires a CSV/JSON table, not standalone AHP parameters");
    const extras=[...extra.selectedOptions].map(o=>o.value).filter(v=>v!==x.value&&v!==y.value).slice(0,4);
    const xs=[x.value,...extras];
+   if(selected==="panel_fe"&&!entity.value)throw Error("Pilih identitas panel yang berulang seperti province. Kolom angka seperti electricity_access_pct bukan penanda entitas. Pastikan tiap province memiliki data beberapa tahun.");
    if(selected==="panel_fe"&&!time.value)throw Error("Panel FE needs an actual time/year column. Upload multi-year province-year data; this single-year cross section is not valid panel.");
    const output=selected==="panel_fe"?panelFixedEffects(data,xs,y.value,entity.value,time.value,yearFE.checked):multivariateOLS(data,xs,y.value);
    last=output;consent.checked=false;result.dataset.state="ready";
