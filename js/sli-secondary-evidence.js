@@ -94,7 +94,7 @@ function apply(){
    const opt=el('option',null,label(key));opt.value=key;sector.append(opt)}
   const search=el('input','sli-news-search');search.type='search';search.placeholder=tr('Search topics, publishers, regions…','Cari isu, media, wilayah…');
   search.setAttribute('aria-label',tr('Search secondary research news','Cari berita data sekunder'));search.setAttribute('data-sli-news-search','');
-  const sources=el('a','sli-news-policy',tr('Data provenance & export ↗','Provenansi data & ekspor ↗'));sources.href='./sli-source-viewer.html?dataset=sli-secondary-news-index.json';
+  const sources=el('a','sli-news-policy',tr('News sources & methodology ↗','Sumber berita & metodologi ↗'));sources.href='./sli-source-viewer.html?dataset=sli-secondary-news-index.json';
   controls.append(sector,search,sources);inner.append(controls);
   const meta=el('small','sli-news-meta',tr('Loading source register…','Memuat indeks sumber…'));meta.setAttribute('data-sli-news-meta','');
   inner.append(meta);
