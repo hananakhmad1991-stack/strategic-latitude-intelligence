@@ -146,7 +146,16 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(list().length>0&&list().length<total,"Unlocated records retained");
  precision[0].events.click();
  assert.equal(list().length,total,"All records can be restored");
+ // Regression for owner bug: drag pointer capture swallowed clicks on SVG markers.
+ // The right column must switch from the complete catalogue to the clicked asset.
+ const mapSvg=flatten(root).find(n=>n.className==="map-viz");
+ let markerPointerCaptures=0;mapSvg.setPointerCapture=()=>{markerPointerCaptures++};
+ mapSvg.events.pointerdown({pointerType:"mouse",target:{closest:()=>batangg},clientX:230,clientY:180,pointerId:2});
+ assert.equal(markerPointerCaptures,0,"Map markers cannot be hijacked by SVG pan capture");
+ expand.events.click();assert.equal(expand.attributes["aria-expanded"],"true","Catalogue can be expanded independently");
  batangg.events.click();
+ assert.equal(expand.attributes["aria-expanded"],"false","Clicking a map point must close the national catalogue");
+ assert.equal(flatten(root).find(n=>n.className==="map-results").className,"map-results","Right panel is no longer in list mode");
  assert.ok(list().length>0&&list().length<total,"Clicking Batang locality marker filters the project list");
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Batang"))),"Batang PLTU/area project displayed after click");
  const rightPanel=()=>flatten(root).find(n=>n.className==="map-asset-insight");
