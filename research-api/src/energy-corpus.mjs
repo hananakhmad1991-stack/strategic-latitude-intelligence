@@ -2,10 +2,10 @@
  * This is NOT live scraping; bundled datasets update on next Worker deployment.
  * News/headline monitoring is intentionally excluded from VERIFIED observations.
  */
-import fundamentals from "../../data/energy-fundamentals.json";
-import fiscal from "../../data/energy-prices-fiscal.json";
-import transition from "../../data/energy-transition.json";
-import assessment from "../../data/daily-energy-assessment.json";
+import fundamentals from "../../data/energy-fundamentals.json" with {type:"json"};
+import fiscal from "../../data/energy-prices-fiscal.json" with {type:"json"};
+import transition from "../../data/energy-transition.json" with {type:"json"};
+import assessment from "../../data/daily-energy-assessment.json" with {type:"json"};
 const valid=u=>typeof u==="string"&&u.startsWith("https://");
 const docs=[];
 function add(id,title,text,url,period,publisher="ESDM",type="baseline"){
