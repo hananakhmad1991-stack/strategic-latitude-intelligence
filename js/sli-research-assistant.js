@@ -107,7 +107,10 @@ async function submit(){
  }
  state.busy=true;enableControls();
  const loading=append("system",tr("busy"));
- const requestBody={question,mode,language:state.language,history:state.history.slice(-8)};
+ let workbenchAddon={methodology:"auto"};
+ try{workbenchAddon=window.SLIAnalyticalWorkbench?.getRequestAddon?.()||workbenchAddon}
+ catch(e){loading.parentNode?.remove();state.busy=false;enableControls();append("system",String(e.message||"Invalid uploaded data context"));return}
+ const requestBody={question,mode,language:state.language,history:state.history.slice(-8),...workbenchAddon};
  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),60000);
  try{
   const endpoint=usingOwner?state.config.owner_test.endpoint:state.config.api_endpoint;
