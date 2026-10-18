@@ -31,6 +31,10 @@ on:
       - 'tests/qa-sli-source-links.mjs'
       - 'sli-source-viewer.html'
       - 'js/sli-navigation.js'
+      - 'js/sli-visual-export.js'
+      - 'js/sli-visual-export-formats.js'
+      - 'css/sli-visual-export.css'
+      - 'tests/qa-sli-visual-export.mjs'
       - 'js/sli-secondary-evidence.js'
       - 'tests/qa-sli-secondary-sitewide.mjs'
       - 'sli-interactive-analytics.html'
@@ -55,10 +59,12 @@ jobs:
         with:
           node-version: '22'
       - name: Verify all critical scripts, navigation, filters and export controls
-        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs
+        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs
       - name: Geopolitical chapter JavaScript syntax
         run: |
           node --check js/sli-geopolitics-chapter.js
           node --check js/sli-geopolitical-timeline.js
+          node --check js/sli-visual-export.js
+          node --check js/sli-visual-export-formats.js
       - name: Validate published SLI JSON and asset integrity
         run: node scripts/audit-sli-content-quality.mjs
