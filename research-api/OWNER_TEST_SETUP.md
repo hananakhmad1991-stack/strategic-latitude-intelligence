@@ -87,3 +87,11 @@ This calls a real OpenAI model through Cloudflare, uses past conversation contex
 - Cross-origin error: set `WEB_ORIGIN` to the actual published SLI **origin** (not the site path) and ensure `workers.dev` Worker address is configured correctly.
 
 After owner testing passes, the next stage is genuine subscriber authentication, entitlements, private R2 corpus and licensed dataset ingestion—see [Research API README](README.md).
+
+## Source relevance and visual insights (2026-10-18)
+
+- Owner Test now classifies research sector intent before ranking evidence. Sector/commodity and exact province matching exclude unrelated investment, crude price, and waste-to-energy evidence from specific minerals questions; unverified news discoveries are not admissible factual evidence.
+- The Worker calculates `charts[]` deterministically from **selected** public, dated and source-cited numeric evidence. Chart series never mix incompatible units or observation periods; project stage counts refer only to distinct retrieved project records, not all Indonesian projects, completed facilities or operational capacity.
+- The frontend safely renders simple bar charts, source citations and limited Markdown emphasis/tables with DOM text nodes, never as trusted model HTML.
+- The model instruction closes with **Kesimpulan dan Rekomendasi Strategis** / **Conclusions and Strategic Recommendations**, giving 3–5 actionable pointers. It remains generative, so users must verify output and source attribution.
+- Graphs appear only when there are at least two comparable sourced observations or two meaningful project stage groups. Gaps are intentional; do not fabricate chart values to fill them. The full proprietary sector data platform is still not linked to this public staging corpus.

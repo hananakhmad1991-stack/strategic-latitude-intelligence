@@ -76,6 +76,11 @@ function renderCharts(charts,where,sources=[],lang="id"){
    value.append(" ",source);row.append(label,track,value);fig.append(row);
   }
   fig.append(create("p","sli-ra-chart-note",String(chart.note||"").slice(0,450)));
+  const provenance=create("p","sli-ra-chart-note");
+  provenance.append(document.createTextNode(lang==="id"?"Bukti grafik: ":"Chart evidence: "));
+  const refs=Array.isArray(chart.source_refs)?chart.source_refs.filter(n=>Number.isInteger(n)&&n>0&&n<=sources.length).slice(0,12):[];
+  inline([...new Set(refs)].map(n=>"["+n+"]").join(", "),provenance,sources);
+  fig.append(provenance);
   section.append(fig);
  }
  if(section.children.length>1)where.prepend(section);

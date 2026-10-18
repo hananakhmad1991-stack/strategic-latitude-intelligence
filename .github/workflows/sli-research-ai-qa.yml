@@ -15,6 +15,8 @@ on:
       - 'data/sli-research-province-preview.json'
       - 'data/sli-research-evidence-preview.json'
       - 'research-api/**'
+      - 'js/sli-research-visuals.js'
+      - 'tests/qa-sli-research-visuals.mjs'
       - 'tests/qa-sli-research-conversation.mjs'
       - 'tests/qa-sli-research-ai.mjs'
       - 'tests/qa-sli-research-analysis.mjs'
@@ -34,6 +36,8 @@ jobs:
       - name: Check research JavaScript syntax
         run: |
           node --check js/sli-research-assistant.js
+          node --check js/sli-research-visuals.js
+          node --check research-api/src/chart-data.mjs
           node --check research-api/src/assistant-core.mjs
           node --check js/sli-research-ai.js
           node --check js/sli-research-analysis.mjs
@@ -41,4 +45,4 @@ jobs:
           node --check research-api/src/owner-test-worker.mjs
           node --check research-api/src/core.mjs
       - name: Validate open evidence, secure planned RAG and traceability
-        run: node --test tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs
+        run: node --test tests/qa-sli-research-visuals.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs
