@@ -14,6 +14,8 @@ on:
       - 'js/sli-analytical-core.mjs'
       - 'js/sli-analytical-workbench-ui.mjs'
       - 'css/sli-analytical-workbench.css'
+      - 'js/sli-contextual-briefs.mjs'
+      - 'css/sli-contextual-briefs.css'
       - 'tests/qa-sli-methodology-workbench.mjs'
       - 'scripts/audit-sli-content-quality.mjs'
       - 'tests/qa-sli-content-quality.mjs'
@@ -46,6 +48,7 @@ jobs:
           node --check js/sli-research-assistant.js
           node --check js/sli-analytical-core.mjs
           node --check js/sli-analytical-workbench-ui.mjs
+          node --check js/sli-contextual-briefs.mjs
           node --check js/sli-research-visuals.js
           node --check research-api/src/chart-data.mjs
           node --check research-api/src/assistant-core.mjs
