@@ -1,24 +1,7 @@
 {
-  "checked_at_utc": "2026-10-18T03:33:51.680854+00:00",
+  "checked_at_utc": "2026-10-18T06:38:57.126301+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
-    {
-      "topic": "Hormuz and Gulf energy",
-      "topic_id": "oil_shipping",
-      "type": "Maritime chokepoint",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "Ship attack reports near Hormuz reach record high as oil exports slow - BBC",
-      "publisher": "BBC",
-      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE0tX0lUUUZkSGJKWXUyb0drR0dsY0M5ZDZ3Q091QlYxSjg2cWJIekZYWEVlb2VRNGFNdWxKX1ZaWnpYajlibzEtQ2FWTjVxUHBqbEJrby1tWUJrWng1Y1E?oc=5",
-      "indexed_at_utc": "2026-10-16T05:00:17+00:00",
-      "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
     {
       "topic": "Red Sea and Bab el-Mandeb",
       "topic_id": "oil_shipping",
@@ -67,6 +50,23 @@
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNaEkyMXd6ZEtSX2xLbGRHWEp4WmVjSjIwaGdvb2hkSm1YT2k1c2VrZ3FjU3doRzJ2WVRtM3ZzY3JheWM4ZHVyby1SdE5YR1h5XzRJT0xtemFDc1hfTkpTY055UzliSGdGWlM4cHhvZDQ4c3I5b25Helppd29NRVJzaXdidng?oc=5",
       "indexed_at_utc": "2026-10-13T10:00:10+00:00",
       "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Global crude oil & OPEC supply",
+      "topic_id": "oil_supply",
+      "type": "Oil markets",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "general",
+      "title": "U.S crude oil tops $99 as market monitors Middle East supply risks - CNBC",
+      "publisher": "CNBC",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOOUM3Y1VtZmpxNzQzbzRUaFY1a0ZvRXZZTEt0azRoX0I3VFg5bW1OMGVpc1FwSmZ5YzJPalBhOFNYclliMzNpMFRpUXl1cVJiSk5ScVBjTy1Yc3JUVm9leFNGOWhTUFl5aUxxam91N0p2akNWZG5ick0waHoyaWVGWU9BczNyVkEteHFR0gGQAUFVX3lxTE93SUdZYllJeTY0am9seE9EU0lqYnN1LTlzZnlKbUFRNzdqTWtCTEF0NUR0bkM1UWp5QWdEb3lmdkdlNUNhT1NtOU93Yk16U3dRSlNZZE5vYW5fdTJXUHFiWXRkV1VBakdIWlhkV3ZWS2E4LWtQVDktVHhnS0htYmNDMlpScHdsWUpPU2wtTnp1Zg?oc=5",
+      "indexed_at_utc": "2026-10-16T10:07:39+00:00",
+      "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
