@@ -245,4 +245,29 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 else initSourceLinks();
 document.addEventListener("sli:pagechange",queueSourceLinks);
 document.addEventListener("sli:languagechange",queueSourceLinks);
+
+/* Shared visual export bootstrap: every published SLI HTML page imports this navigation module.
+ * Load once; keep export JS/CSS isolated from existing dashboard rendering. */
+(function initSLIUniversalExport(){
+ try{
+  if(document.querySelector('[data-sli-export-bootstrap]'))return;
+  const current=document.currentScript?.src||document.querySelector('script[src*="/js/sli-navigation.js"]')?.src;
+  if(!current)return;
+  const css=document.createElement("link");css.rel="stylesheet";
+  css.href=new URL("../css/sli-visual-export.css?v=20261018-brand1",current).href;
+  css.dataset.sliExportBootstrap="css";document.head.append(css);
+  const formats=document.createElement("script");
+  formats.src=new URL("./sli-visual-export-formats.js?v=20261018-brand1",current).href;
+  formats.dataset.sliExportBootstrap="formats";
+  formats.onload=function(){
+   const core=document.createElement("script");
+   core.src=new URL("./sli-visual-export.js?v=20261018-brand1",current).href;
+   core.dataset.sliExportBootstrap="core";
+   document.head.append(core);
+  };
+  formats.onerror=function(){console.warn("[SLI] Visual exporter formats could not load")};
+  document.head.append(formats);
+ }catch(error){console.error("[SLI] Visual exporter boot",error)}
+})();
+
 })();
