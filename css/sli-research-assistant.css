@@ -171,3 +171,15 @@
  .sli-ra-followup{padding:13px}
  .sli-ra-followup-form button{width:100%;align-self:stretch}
 }
+
+/* Accessible, full-width research bibliography and model disclosure. */
+#raConversation #raSourcesList .sli-ra-source-card{min-width:0;overflow:visible;padding:15px 17px;margin:10px 0;border:1px solid #d0dee8;background:#fff;border-radius:10px}
+#raConversation #raSourcesList .sli-ra-source-card>a{display:block;color:#12507b!important;font:500 15px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif!important;letter-spacing:0;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;word-break:break-word;overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:3px}
+#raConversation #raSourcesList .sli-ra-source-card>a:focus-visible{outline:3px solid #3477b2;outline-offset:3px}
+#raConversation #raSourcesList .sli-ra-source-role{font:600 12px/1.5 system-ui,sans-serif!important;color:#476478!important;white-space:normal!important}
+#raConversation #raSourcesPanel,#raConversation #raModelStatement{font-size:15px!important;line-height:1.7;max-height:none!important;overflow:visible!important}
+#raConversation #raModelStatement{border:1px solid #d1dfeb;background:#fbfdff;border-radius:12px;padding:14px 18px}
+#raConversation #raModelStatement summary{font:700 15px/1.65 system-ui,sans-serif;color:#194d70;cursor:pointer}
+#raConversation #raModelStatementBody{font:400 15px/1.75 system-ui,sans-serif;color:#2b4357;white-space:pre-wrap;overflow-wrap:anywhere}
+#raConversation .sli-ra-msg-text{font-size:16px!important;line-height:1.85!important;overflow:visible!important;max-height:none!important}
+@media(max-width:650px){#raConversation #raSourcesList .sli-ra-source-card>a{font-size:14px!important}#raConversation .sli-ra-msg-text{font-size:15px!important}}
