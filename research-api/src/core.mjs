@@ -24,7 +24,9 @@ export function rankEvidence(items,query,maxResults=8){
 }
 export function extractModelText(raw){
  if(!raw||!Array.isArray(raw.output))return "";
- return raw.output.filter(x=>x.type==="message"&&Array.isArray(x.content)).flatMap(x=>x.content.filter(p=>p.type==="output_text"&&typeof p.text==="string").map(p=>p.text)).join("\n").trim().slice(0,9000)
+ // Never cut generative reports at a character count: this used to silently stop mid-sentence at 9,000 chars.
+  // Output length is bounded by the model token budget and validated by the caller.
+  return raw.output.filter(x=>x.type==="message"&&Array.isArray(x.content)).flatMap(x=>x.content.filter(p=>p.type==="output_text"&&typeof p.text==="string").map(p=>p.text)).join("\n").trim()
 }
 export function citationsValid(answer,evidence){
  if(!answer||!evidence?.length)return false;
