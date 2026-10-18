@@ -13,7 +13,7 @@ for(const name of dataFiles){
  try{
   const raw=read("data/"+name),obj=JSON.parse(raw);
   if(!obj||typeof obj!=="object")fail.push(name+": unexpected root type");
-  if(/sk-(?:proj-)?[A-Za-z0-9_-]{25,}/.test(raw))fail.push(name+": potential API credential");
+  if(/(?<![A-Za-z0-9_-])sk-(?:proj-)?[A-Za-z0-9_-]{25,}/.test(raw))fail.push(name+": potential API credential");
   parsed[name]=obj;
  }catch(e){fail.push(name+": invalid JSON: "+e.message)}
 }
