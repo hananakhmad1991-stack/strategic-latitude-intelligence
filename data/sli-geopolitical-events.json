@@ -1,5 +1,5 @@
 {
-  "schema_version": "sli-geopolitical-events-v2",
+  "schema_version": "sli-geopolitical-events-v3",
   "scope": "Selected sourced historical milestones from 1950; event dates are curated, not an exhaustive conflict register. A few monthly-reference milestones have an illustrative first-of-month date; not all markers have overlapping price data. Event associations are not causal claims.",
   "start_year": 1950,
   "events": [
@@ -12,7 +12,18 @@
       "id_mechanism": "Eskalasi keamanan Perang Dingin di Asia Timur mengubah perdagangan regional, pembangunan kembali, dan prioritas pasokan strategis.",
       "source_url": "https://history.state.gov/milestones/1945-1952/korean-war",
       "publisher": "U.S. State Department",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "North Korea crossed the 38th parallel, beginning the Korean War. Fighting and international intervention expanded the regional security crisis.",
+      "id_chronology": "Pasukan Korea Utara melintasi paralel ke-38 dan memulai Perang Korea. Pertempuran serta intervensi internasional memperluas krisis keamanan kawasan.",
+      "market_context": "War procurement, transport disruption and strategic material demand were plausible transmission channels; no comparable World Bank monthly commodity prices exist for this date.",
+      "id_market_context": "Kebutuhan material perang, gangguan transportasi, dan permintaan bahan strategis merupakan jalur transmisi yang mungkin; data harga bulanan World Bank belum tersedia untuk tanggal ini.",
+      "lesson": "Historical supply-security events can precede the availability of comparable price series.",
+      "id_lesson": "Peristiwa keamanan pasokan dapat terjadi sebelum tersedia seri harga yang dapat diperbandingkan.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "1955-04-18",
@@ -23,7 +34,18 @@
       "id_mechanism": "Tonggak diplomasi kerja sama ekonomi pascakolonial, bukan guncangan harga komoditas yang telah terukur.",
       "source_url": "https://history.state.gov/milestones/1953-1960/bandung-conf",
       "publisher": "U.S. State Department",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Delegates from Asian and African countries met in Bandung to discuss cooperation, sovereignty and decolonization. The meeting was a diplomatic milestone rather than an acute military event.",
+      "id_chronology": "Delegasi negara Asia-Afrika berkumpul di Bandung membahas kerja sama, kedaulatan, dan dekolonisasi. Pertemuan ini merupakan tonggak diplomasi, bukan peristiwa militer mendadak.",
+      "market_context": "Long-run trade relationships and policy choices matter more here than an event-month spot-price spike; monthly benchmark prices are unavailable in the 1950s.",
+      "id_market_context": "Hubungan perdagangan dan pilihan kebijakan jangka panjang lebih relevan daripada lonjakan harga satu bulan; harga acuan bulanan tidak tersedia pada 1950-an.",
+      "lesson": "Do not force every geopolitical milestone into a short-run commodity-price shock.",
+      "id_lesson": "Tidak semua tonggak geopolitik layak dipaksakan menjadi guncangan harga komoditas jangka pendek.",
+      "channels": [
+        "policy",
+        "demand",
+        "trade"
+      ]
     },
     {
       "date": "1956-07-26",
@@ -34,7 +56,18 @@
       "id_mechanism": "Nasionalisasi Suez dan perang berikutnya meningkatkan risiko jalur pelayaran Eropa–Asia.",
       "source_url": "https://history.state.gov/milestones/1953-1960/suez",
       "publisher": "U.S. State Department",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Egypt announced the nationalization of the Suez Canal Company. The subsequent Suez crisis involved military intervention and heightened shipping-route uncertainty.",
+      "id_chronology": "Mesir mengumumkan nasionalisasi perusahaan Terusan Suez. Krisis Suez berikutnya melibatkan intervensi militer dan meningkatkan ketidakpastian jalur pelayaran.",
+      "market_context": "Longer voyages, freight, insurance and shipping availability are the relevant potential channels; no monthly benchmark observations are available for 1956 in this dataset.",
+      "id_market_context": "Rute lebih panjang, biaya angkut, asuransi, dan ketersediaan kapal merupakan jalur risiko potensial; data harga acuan bulanan 1956 tidak tersedia pada dataset ini.",
+      "lesson": "A maritime bottleneck can affect delivered cost without an identical response in every commodity benchmark.",
+      "id_lesson": "Hambatan pelayaran dapat meningkatkan biaya pengiriman tanpa menyebabkan perubahan harga acuan yang sama untuk setiap komoditas.",
+      "channels": [
+        "routing",
+        "freight",
+        "insurance"
+      ]
     },
     {
       "date": "1960-09-14",
@@ -45,7 +78,18 @@
       "id_mechanism": "Negara produsen minyak membentuk koordinasi kebijakan perminyakan dan stabilitas pasar.",
       "source_url": "https://www.opec.org/pr-detail/47-14-sep-2023.html",
       "publisher": "OPEC",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Five oil-exporting countries founded OPEC in Baghdad, establishing an organization for producer coordination. This was an institutional change, not a one-day interruption to production.",
+      "id_chronology": "Lima negara pengekspor minyak mendirikan OPEC di Baghdad untuk mengoordinasikan kebijakan produsen. Ini perubahan kelembagaan, bukan penghentian produksi satu hari.",
+      "market_context": "Oil-output policy and expectations about future supply are plausible price channels; an event-month correlation alone cannot measure a structural policy shift.",
+      "id_market_context": "Kebijakan produksi minyak dan ekspektasi pasokan merupakan jalur harga yang mungkin; korelasi satu bulan tidak dapat mengukur perubahan kebijakan struktural.",
+      "lesson": "Separate long-horizon market institutions from short-horizon conflict or supply incidents.",
+      "id_lesson": "Bedakan perubahan kelembagaan pasar jangka panjang dari konflik atau insiden pasokan jangka pendek.",
+      "channels": [
+        "policy",
+        "demand",
+        "trade"
+      ]
     },
     {
       "date": "1967-06-05",
@@ -56,7 +100,18 @@
       "id_mechanism": "Perang Arab–Israel meningkatkan ketidakpastian keamanan dan transportasi kawasan.",
       "source_url": "https://www.britannica.com/event/Six-Day-War",
       "publisher": "Encyclopaedia Britannica",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "The Six-Day War began in the Middle East in June 1967. Military fighting heightened regional uncertainty around trade and transport.",
+      "id_chronology": "Perang Enam Hari pecah di Timur Tengah pada Juni 1967. Pertempuran meningkatkan ketidakpastian perdagangan dan transportasi kawasan.",
+      "market_context": "Shipping route restrictions and risk premiums may transmit the shock, but price observations must be compared with demand and production conditions.",
+      "id_market_context": "Pembatasan rute pelayaran dan premi risiko dapat menyalurkan guncangan, tetapi data harga tetap harus dibandingkan dengan kondisi permintaan dan produksi.",
+      "lesson": "Map the affected route and commodity rather than assuming a uniform global impact.",
+      "id_lesson": "Petakan rute dan komoditas yang terdampak, bukan mengasumsikan dampak global yang seragam.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "1973-10-17",
@@ -67,7 +122,18 @@
       "id_mechanism": "Pembatasan ekspor dan pemotongan produksi berkontribusi terhadap guncangan harga minyak global.",
       "source_url": "https://history.state.gov/milestones/1969-1976/oil-embargo",
       "publisher": "U.S. State Department",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "In October 1973, Arab oil producers announced production restrictions and an oil embargo during the Arab–Israeli conflict. Importing economies faced intensified supply-security concerns.",
+      "id_chronology": "Pada Oktober 1973, produsen minyak Arab mengumumkan pembatasan produksi dan embargo minyak saat konflik Arab–Israel. Negara pengimpor menghadapi kekhawatiran keamanan pasokan.",
+      "market_context": "An explicit export restriction is a direct supply-policy channel; observed benchmark prices and subsequent months must still be distinguished from attributed causation.",
+      "id_market_context": "Pembatasan ekspor merupakan jalur kebijakan pasokan yang langsung; perubahan harga teramati tetap tidak boleh disamakan dengan bukti kausalitas tunggal.",
+      "lesson": "Policy restrictions can amplify geopolitical risk where import dependence and substitution limits are high.",
+      "id_lesson": "Pembatasan kebijakan dapat memperbesar risiko geopolitik ketika ketergantungan impor tinggi dan substitusi terbatas.",
+      "channels": [
+        "policy",
+        "demand",
+        "trade"
+      ]
     },
     {
       "date": "1979-02-11",
@@ -78,7 +144,18 @@
       "id_mechanism": "Gangguan produksi Iran dan ketidakpastian kawasan Teluk mengubah ekspektasi pasokan minyak.",
       "source_url": "https://www.britannica.com/event/Iranian-Revolution",
       "publisher": "Encyclopaedia Britannica",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Iran's revolution culminated in February 1979 after months of upheaval. Political instability raised questions about oil production and export continuity.",
+      "id_chronology": "Revolusi Iran mencapai puncaknya pada Februari 1979 setelah pergolakan berbulan-bulan. Ketidakstabilan memunculkan pertanyaan tentang kelangsungan produksi dan ekspor minyak.",
+      "market_context": "Export continuity, refinery availability and inventory expectations form potential transmission channels; monitor both event-month and lagged monthly returns.",
+      "id_market_context": "Kelangsungan ekspor, ketersediaan kilang, dan ekspektasi persediaan merupakan jalur transmisi potensial; pantau perubahan harga bulan kejadian dan sesudahnya.",
+      "lesson": "A prolonged political transition can create a multi-month commodity risk rather than a single-day effect.",
+      "id_lesson": "Transisi politik berkepanjangan dapat menciptakan risiko komoditas berbulan-bulan, bukan hanya dampak sehari.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "1980-09-22",
@@ -89,7 +166,18 @@
       "id_mechanism": "Perang dua produsen minyak besar meningkatkan risiko pasokan dan pelayaran Teluk Persia.",
       "source_url": "https://www.britannica.com/event/Iran-Iraq-War",
       "publisher": "Encyclopaedia Britannica",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Iraq attacked Iran in September 1980 and a prolonged war followed. Both countries were major Persian Gulf petroleum producers.",
+      "id_chronology": "Irak menyerang Iran pada September 1980 dan perang berkepanjangan pun berlangsung. Keduanya merupakan produsen minyak penting di Teluk Persia.",
+      "market_context": "Infrastructure damage, cargo risks and output disruption are the key supply channels; observed prices also reflect other producers' responses.",
+      "id_market_context": "Kerusakan infrastruktur, risiko kargo, dan gangguan produksi menjadi jalur pasokan utama; harga teramati juga dipengaruhi respons produsen lain.",
+      "lesson": "Track actual production, spare capacity and tanker routes, not only conflict intensity.",
+      "id_lesson": "Pantau produksi aktual, kapasitas cadangan, dan rute tanker, bukan hanya intensitas konflik.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "1986-01-01",
@@ -100,7 +188,17 @@
       "id_mechanism": "Kelebihan pasokan minyak menggambarkan perubahan harga tanpa satu pemicu militer; Januari hanya bulan rujukan, bukan tanggal kejadian tepat.",
       "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=51798",
       "publisher": "EIA",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "World oil prices fell sharply during 1986 amid market oversupply and changes in producer behavior. January is used as a reference month, not an exact event date.",
+      "id_chronology": "Harga minyak dunia turun tajam sepanjang 1986 akibat kelebihan pasokan dan perubahan perilaku produsen. Januari digunakan sebagai bulan rujukan, bukan tanggal kejadian tepat.",
+      "market_context": "This market rebalancing illustrates supply competition and demand fundamentals without a discrete new battlefield event.",
+      "id_market_context": "Penyeimbangan pasar ini menggambarkan persaingan pasokan dan fundamental permintaan tanpa peristiwa militer baru yang tunggal.",
+      "lesson": "A major commodity shock need not originate in armed conflict.",
+      "id_lesson": "Guncangan harga komoditas besar tidak selalu berasal dari konflik bersenjata.",
+      "channels": [
+        "demand",
+        "finance"
+      ]
     },
     {
       "date": "1989-11-09",
@@ -111,7 +209,18 @@
       "id_mechanism": "Perubahan menjelang berakhirnya Perang Dingin membentuk ulang institusi keamanan dan ekonomi Eropa.",
       "source_url": "https://history.state.gov/milestones/1989-1992/fall-of-communism",
       "publisher": "U.S. State Department",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "The Berlin Wall opened in November 1989 amid political changes across Eastern Europe. The Cold War order underwent a major transition.",
+      "id_chronology": "Tembok Berlin dibuka pada November 1989 di tengah perubahan politik Eropa Timur. Tata dunia Perang Dingin mengalami transisi besar.",
+      "market_context": "Trade realignment and investment expectations matter over years; single-month price moves do not measure systemic geopolitical restructuring.",
+      "id_market_context": "Penyesuaian perdagangan dan ekspektasi investasi lebih relevan dalam hitungan tahun; perubahan harga satu bulan tidak mengukur restrukturisasi sistem geopolitik.",
+      "lesson": "Distinguish slow structural geopolitical transitions from abrupt supply shocks.",
+      "id_lesson": "Bedakan transisi geopolitik struktural yang lambat dari guncangan pasokan yang mendadak.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "1990-08-02",
@@ -122,7 +231,18 @@
       "id_mechanism": "Kekhawatiran pasokan Teluk menjadi risiko pasar minyak global.",
       "source_url": "https://history.state.gov/milestones/1989-1992/gulf-war",
       "publisher": "U.S. Office of the Historian",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Iraq invaded Kuwait on 2 August 1990. The Gulf security crisis raised concerns about Kuwaiti and Iraqi oil exports.",
+      "id_chronology": "Irak menginvasi Kuwait pada 2 Agustus 1990. Krisis keamanan Teluk menimbulkan kekhawatiran atas ekspor minyak Kuwait dan Irak.",
+      "market_context": "Threats to export supply and shipping insurance are relevant mechanisms; judge price changes using the benchmark and month shown.",
+      "id_market_context": "Ancaman terhadap pasokan ekspor dan asuransi pelayaran merupakan mekanisme relevan; nilai perubahan harga harus mengikuti acuan dan bulan yang ditampilkan.",
+      "lesson": "A regional oil disruption can have wider effects through import bills and fiscal exposure.",
+      "id_lesson": "Gangguan minyak regional dapat berdampak lebih luas melalui biaya impor dan risiko fiskal.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "1991-01-17",
@@ -133,7 +253,18 @@
       "id_mechanism": "Perang dan pembebasan Kuwait mengubah ekspektasi risiko pasokan minyak Teluk.",
       "source_url": "https://history.state.gov/milestones/1989-1992/gulf-war",
       "publisher": "U.S. Office of the Historian",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Coalition forces launched an air campaign against Iraq in January 1991 after Kuwait's occupation. The conflict and expected resolution changed perceptions of Gulf supply risk.",
+      "id_chronology": "Pasukan koalisi memulai operasi udara terhadap Irak pada Januari 1991 setelah pendudukan Kuwait. Konflik dan harapan penyelesaiannya mengubah persepsi risiko pasokan Teluk.",
+      "market_context": "Prices can respond to both escalation and the removal of previously priced risks; a military event does not mechanically imply higher oil prices.",
+      "id_market_context": "Harga dapat merespons eskalasi maupun berkurangnya risiko yang sudah diperhitungkan pasar; perang tidak otomatis menaikkan harga minyak.",
+      "lesson": "Market expectations may reverse when the worst-case disruption becomes less likely.",
+      "id_lesson": "Ekspektasi pasar dapat berbalik ketika skenario gangguan terburuk dinilai semakin kecil kemungkinannya.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "1997-07-02",
@@ -144,7 +275,17 @@
       "id_mechanism": "Arus modal keluar dan pelemahan permintaan regional memperburuk tekanan ekonomi.",
       "source_url": "https://www.imf.org/external/pubs/ft/op/opfinsec/index.htm",
       "publisher": "IMF",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Thailand allowed the baht to float in July 1997, marking the onset of the Asian financial crisis. Financial distress spread across several regional economies.",
+      "id_chronology": "Thailand membiarkan baht mengambang pada Juli 1997, menandai awal krisis keuangan Asia. Tekanan keuangan kemudian menyebar ke berbagai negara kawasan.",
+      "market_context": "Weaker industrial demand, currency pressures and investment contraction can affect metals and fuel consumption beyond direct physical supply.",
+      "id_market_context": "Melemahnya permintaan industri, tekanan nilai tukar, dan kontraksi investasi dapat memengaruhi logam dan konsumsi bahan bakar tanpa gangguan fisik pasokan.",
+      "lesson": "Macroeconomic and demand shocks can dominate commodity-price movements during geopolitical turbulence.",
+      "id_lesson": "Guncangan makroekonomi dan permintaan dapat mendominasi pergerakan harga komoditas di tengah gejolak geopolitik.",
+      "channels": [
+        "demand",
+        "finance"
+      ]
     },
     {
       "date": "2001-09-11",
@@ -155,7 +296,18 @@
       "id_mechanism": "Guncangan keamanan mengubah persepsi risiko dan mobilitas global.",
       "source_url": "https://www.911memorial.org/learn/about-911",
       "publisher": "9/11 Memorial",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Coordinated terrorist attacks took place in the United States on 11 September 2001. Security responses and economic uncertainty followed.",
+      "id_chronology": "Serangan teror terkoordinasi terjadi di Amerika Serikat pada 11 September 2001. Respons keamanan dan ketidakpastian ekonomi menyusul.",
+      "market_context": "Aviation demand, transport activity and risk aversion are plausible commodity channels, but offsetting macroeconomic effects can change the sign.",
+      "id_market_context": "Permintaan penerbangan, kegiatan transportasi, dan penghindaran risiko merupakan jalur komoditas potensial, tetapi efek makro dapat mengubah arahnya.",
+      "lesson": "Identify the demand channel separately from any anticipated supply-security premium.",
+      "id_lesson": "Pisahkan jalur permintaan dari premi keamanan pasokan yang diperkirakan pasar.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "2003-03-20",
@@ -166,7 +318,18 @@
       "id_mechanism": "Perang Irak meningkatkan ketidakpastian pasokan di kawasan Teluk.",
       "source_url": "https://www.britannica.com/event/Iraq-War",
       "publisher": "Encyclopaedia Britannica",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "US-led forces invaded Iraq in March 2003. Military operations intensified uncertainty around Iraqi oil infrastructure and exports.",
+      "id_chronology": "Pasukan pimpinan AS menginvasi Irak pada Maret 2003. Operasi militer meningkatkan ketidakpastian infrastruktur dan ekspor minyak Irak.",
+      "market_context": "Supply expectations and the speed of restoring operations matter, alongside the global business cycle.",
+      "id_market_context": "Ekspektasi pasokan dan kecepatan pemulihan operasi penting, bersamaan dengan siklus bisnis global.",
+      "lesson": "Commodity reactions depend on the disruption actually realized, not the conflict headline alone.",
+      "id_lesson": "Respons harga komoditas bergantung pada gangguan yang benar-benar terjadi, bukan judul konflik saja.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "2008-09-15",
@@ -177,7 +340,17 @@
       "id_mechanism": "Keruntuhan permintaan menjadi contoh besar perubahan harga komoditas tanpa perang.",
       "source_url": "https://www.federalreservehistory.org/essays/great-recession-of-200709",
       "publisher": "Federal Reserve History",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Lehman Brothers filed for bankruptcy in September 2008 during the global financial crisis. Demand and credit conditions deteriorated rapidly.",
+      "id_chronology": "Lehman Brothers mengajukan kebangkrutan pada September 2008 di tengah krisis finansial global. Permintaan dan kondisi kredit memburuk cepat.",
+      "market_context": "Industrial demand, liquidity and inventory destocking are important explanations for metals and oil; no war-related disruption is required.",
+      "id_market_context": "Permintaan industri, likuiditas, dan pengurangan persediaan penting untuk menjelaskan logam dan minyak; tidak memerlukan gangguan akibat perang.",
+      "lesson": "Include economic crises as counterexamples before attributing commodity changes to geopolitics.",
+      "id_lesson": "Sertakan krisis ekonomi sebagai pembanding sebelum mengaitkan perubahan komoditas semata dengan geopolitik.",
+      "channels": [
+        "demand",
+        "finance"
+      ]
     },
     {
       "date": "2011-02-15",
@@ -188,7 +361,18 @@
       "id_mechanism": "Pergolakan politik memicu kekhawatiran produksi minyak Afrika Utara.",
       "source_url": "https://www.britannica.com/event/Arab-Spring",
       "publisher": "Encyclopaedia Britannica",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Protests and political unrest escalated in Libya in February 2011. The conflict developed into a major national and regional security crisis.",
+      "id_chronology": "Protes dan pergolakan politik meningkat di Libya pada Februari 2011. Konflik berkembang menjadi krisis keamanan nasional dan kawasan.",
+      "market_context": "Potential interruptions to Libyan crude output and shipping are the relevant direct supply channels.",
+      "id_market_context": "Potensi gangguan produksi minyak Libya dan pengiriman merupakan jalur pasokan langsung yang relevan.",
+      "lesson": "Production disruptions require measured export or output evidence alongside price movements.",
+      "id_lesson": "Gangguan produksi membutuhkan bukti volume output atau ekspor bersama pergerakan harga.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "2014-03-18",
@@ -199,7 +383,18 @@
       "id_mechanism": "Sanksi, keamanan energi, dan Laut Hitam saling berkaitan sebagai risiko.",
       "source_url": "https://www.britannica.com/place/Crimea",
       "publisher": "Encyclopaedia Britannica",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Russia formalized its annexation of Crimea in March 2014 amid the Ukraine crisis. Sanctions and security tensions subsequently affected economic relationships.",
+      "id_chronology": "Rusia meresmikan aneksasi Krimea pada Maret 2014 di tengah krisis Ukraina. Sanksi dan ketegangan keamanan kemudian memengaruhi hubungan ekonomi.",
+      "market_context": "Sanctions, financing and energy-contract exposure are important channels, but cannot be reduced to a single monthly price point.",
+      "id_market_context": "Sanksi, pembiayaan, dan keterpaparan kontrak energi merupakan jalur penting, tetapi tidak dapat direduksi menjadi satu titik harga bulanan.",
+      "lesson": "Map sanction scope and contract exposure before estimating commodity consequences.",
+      "id_lesson": "Petakan cakupan sanksi dan kontrak sebelum mengestimasi konsekuensi terhadap komoditas.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "2018-07-06",
@@ -210,7 +405,18 @@
       "id_mechanism": "Eskalasi tarif memengaruhi ekspektasi permintaan logam industri.",
       "source_url": "https://www.piie.com/blogs/trade-and-investment-policy-watch/2018/trumps-trade-war-timeline-date-guide",
       "publisher": "PIIE",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "The United States and China implemented an initial round of tariffs on each other's goods in July 2018. Trade-policy uncertainty spread to global supply chains.",
+      "id_chronology": "Amerika Serikat dan Tiongkok memberlakukan putaran awal tarif atas barang masing-masing pada Juli 2018. Ketidakpastian kebijakan dagang menyebar ke rantai pasok.",
+      "market_context": "Demand for industrial metals, investment confidence and supply-chain relocation matter more directly than oil-shipping security.",
+      "id_market_context": "Permintaan logam industri, keyakinan investasi, dan relokasi rantai pasok lebih langsung terkait dibanding keamanan pengiriman minyak.",
+      "lesson": "Trade tensions may affect industrial commodities indirectly through expected manufacturing activity.",
+      "id_lesson": "Ketegangan dagang dapat memengaruhi komoditas industri secara tidak langsung melalui ekspektasi kegiatan manufaktur.",
+      "channels": [
+        "policy",
+        "demand",
+        "trade"
+      ]
     },
     {
       "date": "2020-03-11",
@@ -221,7 +427,17 @@
       "id_mechanism": "Pelemahan permintaan dan gangguan logistik menggerakkan komoditas secara berbeda.",
       "source_url": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
       "publisher": "WHO",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "WHO characterized COVID-19 as a pandemic in March 2020. Travel restrictions and economic shutdowns disrupted global demand and logistics.",
+      "id_chronology": "WHO menetapkan COVID-19 sebagai pandemi pada Maret 2020. Pembatasan perjalanan dan penutupan kegiatan ekonomi mengganggu permintaan serta logistik global.",
+      "market_context": "Demand destruction, storage pressure, logistical bottlenecks and policy responses can move energy and metals in different directions.",
+      "id_market_context": "Runtuhnya permintaan, tekanan penyimpanan, hambatan logistik, dan respons kebijakan dapat menggerakkan energi dan logam dengan arah berbeda.",
+      "lesson": "Supply-side headlines are insufficient when the dominant shock is demand or global mobility.",
+      "id_lesson": "Berita gangguan pasokan tidak cukup saat guncangan dominan berasal dari permintaan atau mobilitas global.",
+      "channels": [
+        "demand",
+        "logistics"
+      ]
     },
     {
       "date": "2022-02-24",
@@ -232,7 +448,18 @@
       "id_mechanism": "Minyak, gas, pangan, logistik, dan sanksi menghadapi guncangan bersamaan.",
       "source_url": "https://www.un.org/en/black-sea-grain-initiative/background",
       "publisher": "United Nations",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Russia launched a full-scale invasion of Ukraine in February 2022. Fighting and ensuing policy responses heightened energy, grain and logistics uncertainty.",
+      "id_chronology": "Rusia memulai invasi skala penuh terhadap Ukraina pada Februari 2022. Pertempuran dan respons kebijakan meningkatkan ketidakpastian energi, pangan, dan logistik.",
+      "market_context": "Gas supply, oil sanctions, grain exports, insurance and substitution pressures represent distinct channels with different benchmark exposures.",
+      "id_market_context": "Pasokan gas, sanksi minyak, ekspor gandum, asuransi, dan tekanan substitusi merupakan jalur berbeda dengan paparan acuan harga yang tidak sama.",
+      "lesson": "Avoid treating European gas, oil, food and industrial metals as one synchronized market.",
+      "id_lesson": "Jangan menganggap gas Eropa, minyak, pangan, dan logam industri sebagai satu pasar yang bergerak serempak.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "2023-07-17",
@@ -243,7 +470,18 @@
       "id_mechanism": "Ketidakpastian pengiriman pangan naik setelah perjanjian koridor berakhir.",
       "source_url": "https://www.un.org/en/black-sea-grain-initiative/background",
       "publisher": "United Nations",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "The Black Sea grain initiative was not renewed in July 2023. Uncertainty increased around grain shipments from Ukrainian ports.",
+      "id_chronology": "Prakarsa pengiriman gandum Laut Hitam tidak diperpanjang pada Juli 2023. Ketidakpastian meningkat di sekitar pengiriman pangan dari pelabuhan Ukraina.",
+      "market_context": "Agricultural freight and food-export access are more direct channels than metal or petroleum supply; commodity choice matters.",
+      "id_market_context": "Angkutan pangan dan akses ekspor pertanian lebih langsung daripada pasokan logam atau minyak; pemilihan komoditas penting.",
+      "lesson": "A geopolitical event may chiefly affect a commodity not included in a particular chart.",
+      "id_lesson": "Sebuah peristiwa geopolitik mungkin terutama memengaruhi komoditas yang tidak ada pada grafik tertentu.",
+      "channels": [
+        "routing",
+        "freight",
+        "insurance"
+      ]
     },
     {
       "date": "2023-11-19",
@@ -254,7 +492,18 @@
       "id_mechanism": "Pengalihan kapal via Tanjung Harapan menambah waktu dan paparan ongkos angkut.",
       "source_url": "https://unctad.org/news/red-sea-crisis-and-implications-trade-facilitation-africa",
       "publisher": "UNCTAD",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "A commercial vessel was seized near Yemen in November 2023 amid escalating Red Sea shipping threats. Later incidents increased vessel-routing concerns.",
+      "id_chronology": "Sebuah kapal komersial disita di dekat Yaman pada November 2023 di tengah meningkatnya ancaman pelayaran Laut Merah. Insiden berikutnya menambah kekhawatiran perubahan rute.",
+      "market_context": "Shipping diversions, vessel availability, freight and insurance are key risk channels; fuel benchmark changes may not match delivered freight costs.",
+      "id_market_context": "Pengalihan rute, ketersediaan kapal, ongkos angkut, dan asuransi merupakan jalur utama; harga acuan bahan bakar bisa berbeda dari biaya pengiriman aktual.",
+      "lesson": "Track route-level logistics before projecting Indonesian import or export price effects.",
+      "id_lesson": "Pantau logistik rute tertentu sebelum memproyeksikan dampak harga impor atau ekspor Indonesia.",
+      "channels": [
+        "routing",
+        "freight",
+        "insurance"
+      ]
     },
     {
       "date": "2025-06-13",
@@ -265,7 +514,18 @@
       "id_mechanism": "Serangan udara dan rudal balasan kembali memengaruhi risiko energi Teluk.",
       "source_url": "https://www.reuters.com/world/middle-east/israel-says-it-strikes-iran-amid-nuclear-tensions-2025-06-13/",
       "publisher": "Reuters",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Military strikes between Israel and Iran escalated in June 2025. Energy infrastructure and Gulf shipping routes drew renewed market attention.",
+      "id_chronology": "Serangan militer antara Israel dan Iran meningkat pada Juni 2025. Infrastruktur energi dan jalur pelayaran Teluk kembali menjadi perhatian pasar.",
+      "market_context": "Risk premia, tanker flows and possible production interruptions should be separated from confirmed supply losses.",
+      "id_market_context": "Premi risiko, arus tanker, dan potensi gangguan produksi harus dibedakan dari kerugian pasokan yang sudah terkonfirmasi.",
+      "lesson": "Risk pricing can move first; confirm the physical interruption separately.",
+      "id_lesson": "Harga dapat merespons risiko lebih dahulu; gangguan fisik harus dikonfirmasi secara terpisah.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "2026-02-28",
@@ -276,7 +536,18 @@
       "id_mechanism": "Eskalasi membuka risiko terhadap infrastruktur energi dan pelayaran Teluk.",
       "source_url": "https://www.reuters.com/world/middle-east/israel-says-it-launched-pre-emptive-attack-against-iran-2026-02-28/",
       "publisher": "Reuters",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Reports described a major US–Israeli military operation against Iran in late February 2026 and ensuing regional escalation. Exact operational implications require source-level checks.",
+      "id_chronology": "Laporan menggambarkan operasi militer besar AS–Israel terhadap Iran pada akhir Februari 2026 dan eskalasi kawasan setelahnya. Implikasi operasional harus diperiksa pada sumbernya.",
+      "market_context": "Oil transport, refinery conditions, sanctions and shipping insurance are possible price-transmission channels; reported closures require operational corroboration.",
+      "id_market_context": "Transportasi minyak, kondisi kilang, sanksi, dan asuransi pelayaran merupakan jalur transmisi harga potensial; kabar penutupan membutuhkan konfirmasi operasional.",
+      "lesson": "Separate the reported military event from independently established export loss or trade-route closure.",
+      "id_lesson": "Pisahkan peristiwa militer yang diberitakan dari kehilangan ekspor atau penutupan rute yang terbukti secara independen.",
+      "channels": [
+        "supply",
+        "risk_premium",
+        "logistics"
+      ]
     },
     {
       "date": "2026-03-12",
@@ -287,7 +558,19 @@
       "id_mechanism": "Gangguan pelayaran dan minyak yang dilaporkan perlu verifikasi operasional per rute.",
       "source_url": "https://www.reuters.com/business/energy/oil-climbs-tankers-are-attacked-iraqi-waters-amid-middle-east-war-2026-03-12/",
       "publisher": "Reuters",
-      "record_status": "historical_source_attributed"
+      "record_status": "historical_source_attributed",
+      "chronology": "Reports described attacks on vessels around the Gulf during the wider Middle East war. They signaled heightened shipping and energy security concerns.",
+      "id_chronology": "Laporan menyebut serangan terhadap kapal di sekitar Teluk selama perang Timur Tengah yang lebih luas. Kejadian tersebut menandakan meningkatnya kekhawatiran keamanan pelayaran dan energi.",
+      "market_context": "Tanker movements, route access, insurance and refinery export capacity must be checked before quantifying a market disruption.",
+      "id_market_context": "Pergerakan tanker, akses rute, asuransi, dan kapasitas ekspor kilang harus diperiksa sebelum menghitung besarnya gangguan pasar.",
+      "lesson": "Use attributed reporting for early warning, then confirm operations and commodity exposures before causal claims.",
+      "id_lesson": "Gunakan laporan media teratribusi sebagai peringatan dini, kemudian pastikan kondisi operasional dan keterpaparan komoditas sebelum menyimpulkan kausalitas.",
+      "channels": [
+        "routing",
+        "freight",
+        "insurance"
+      ]
     }
-  ]
+  ],
+  "lesson_method": "Curated event-specific chronology and plausible channels are descriptive and source-attributed; market-price changes, if displayed, are separately computed from World Bank monthly observations and not assumed causal."
 }
