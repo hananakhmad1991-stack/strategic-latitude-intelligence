@@ -267,11 +267,17 @@ export function panelStability(rows,predictors,outcome,entityField,timeField,inc
  }catch(e){alternative={available:false,reason:String(e.message).slice(0,170)}}
  const looEntity=finish("leave_one_entity_out",entityField,25),looYear=finish("leave_one_year_out",timeField,10);
  const significantShifts=[...((looEntity.metrics||[])),...((looYear.metrics||[]))].filter(m=>m.sensitivity==="high"||m.sign_reversals>0);
+ const timeSpecShifts=alternative?.available?(alternative.coefficients||[]).filter(m=>
+  m.relative_change_pct!==null&&Math.abs(m.relative_change_pct)>25):[];
+ const caution=[
+  significantShifts.length?"At least one leave-one-out refit shifts an estimate more than 25% or reverses its sign.":"No >25% leave-one-out coefficient change or sign reversal among successful refits.",
+  timeSpecShifts.length?"Removing/adding year fixed effects changes "+timeSpecShifts.map(x=>x.name).join(", ")+" coefficient(s) by >25%; time specification is influential.":"No >25% change across the compared time-FE specifications, or the alternate specification was unavailable."
+ ].join(" ");
  return {method:"panel_fe_stability",entity_field:entityField,time_field:timeField,
   baseline_entity_count:base.unit_count,baseline_year_count:base.time_count,
   baseline_predictors:predictors,baseline_outcome:outcome,baseline_year_fe:includeYearFE,
   leave_one_entity_out:looEntity,leave_one_year_out:looYear,
   alternative_time_specification:alternative,
-  screening:significantShifts.length?"Review parameter sensitivity and excluded identifiers before making any claims.":"No >25% LOO coefficient shift or sign reversal among successful refits; this does not prove economic validity.",
+  screening:caution,
   limitations:"Exploratory leave-one-entity/year refits and alternate time controls; do not infer causal identification, model generalisation, statistical significance or investment returns from stability alone."};
 }
