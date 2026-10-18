@@ -19,7 +19,7 @@ const method=$("raMethod"),datafile=$("raDataFile"),x=$("raPredictor"),y=$("raOu
 let data=null,model=null,filename="",last=null;
 const advanced=document.createElement("section");
 advanced.className="ra-wb-advanced";advanced.id="raAdvancedControls";advanced.hidden=true;
-advanced.innerHTML='<div id="raExtraGroup"><label for="raExtraPredictors">Additional predictors (Ctrl / Cmd + click for multiple)</label><select multiple size="4" id="raExtraPredictors" aria-label="Additional regression explanatory variables"></select><small>Max 5 independent variables in total. Leave blank for one-predictor robust OLS.</small></div><div id="raPanelGroup" hidden><label>Panel province / entity<select id="raPanelEntity"></select></label><label>Time / year column<select id="raPanelTime"></select></label><label class="ra-wb-panel-check"><input type="checkbox" id="raYearFE"> Include common year fixed effects</label><small>Panel needs ≥8 entities and ≥3 years per dataset, with repeated entity-year observations. A 38-province, single-year snapshot is NOT valid panel data.</small></div>';
+advanced.innerHTML='<div id="raExtraGroup"><label for="raExtraPredictors">Prediktor tambahan / Additional predictors (X2–X5)</label><select multiple size="4" id="raExtraPredictors" aria-label="Additional regression explanatory variables"></select><small>Tekan Ctrl / Cmd untuk memilih lebih dari satu di daftar ini. Model satu prediktor tetap bisa dijalankan. Maksimal 5 X total.</small><p id="raActivePredictors" class="ra-wb-active-predictors" role="status" aria-live="polite"></p></div><div id="raPanelGroup" hidden><label>Panel province / entity<select id="raPanelEntity"></select></label><label>Time / year column<select id="raPanelTime"></select></label><label class="ra-wb-panel-check"><input type="checkbox" id="raYearFE"> Include common year fixed effects</label><small>Panel needs ≥8 entities and ≥3 years per dataset, with repeated entity-year observations. A 38-province, single-year snapshot is NOT valid panel data.</small></div>';
 varGroup.insertAdjacentElement("afterend",advanced);
 const extra=$("raExtraPredictors"),entity=$("raPanelEntity"),time=$("raPanelTime"),yearFE=$("raYearFE"),panelGroup=$("raPanelGroup"),extraGroup=$("raExtraGroup");
 
@@ -56,6 +56,11 @@ function desc(){
   option.disabled=shouldDisable;
   if(shouldDisable)option.selected=false;
  }
+ const currentExtras=[...extra.selectedOptions].filter(o=>!o.disabled).map(o=>o.value);
+ const active=$("raActivePredictors");
+ if(active)active.textContent="Model saat ini: Y = "+(y.value||"—")+"; "+(x.value?"X1 = "+x.value:"X1 belum dipilih")+
+  (currentExtras.length?"; "+currentExtras.map((v,i)=>"X"+(i+2)+" = "+v).join("; "):"; belum ada X2–X5.")+
+  " Total prediktor: "+(x.value?currentExtras.length+1:0)+".";
 
 
 }
@@ -107,7 +112,7 @@ datafile.addEventListener("change",async()=>{
  }catch(e){data=null;model=null;error("Cannot read dataset: "+String(e.message).slice(0,200))}
 });
 method.addEventListener("change",()=>{last=null;consent.checked=false;desc();});
-for(const select of [x,y,entity,time])select.addEventListener("change",()=>{last=null;consent.checked=false;desc()});
+for(const select of [x,y,entity,time,extra])select.addEventListener("change",()=>{last=null;consent.checked=false;desc()});
 function renderCalculation(output){
  const id=document.documentElement.lang!=="en";
  const num=v=>typeof v==="number"&&Number.isFinite(v)?new Intl.NumberFormat(id?"id-ID":"en-GB",{maximumFractionDigits:4}).format(v):String(v??"—");
@@ -323,6 +328,31 @@ function renderEconometricResult(fit,stability=null){
   "Panel yang digunakan: "+fit.unit_count+" entitas × "+fit.time_count+" periode, "+fit.rows_used+" observasi (complete cases); uncertainty menggunakan cluster-robust per entitas.":
   "Model regresi dengan "+fit.predictors.length+" prediktor dan "+fit.rows_used+" observasi lengkap; R² = "+fit.r_squared+".";
  result.append(p);
+ if(fit.method==="panel_fe"&&fit.predictors.length===1){
+  const electricOption=[...extra.options].find(o=>!o.disabled&&/electricity.*access|electric.*access|rasio.*elektrifikasi|electrification/i.test(o.value));
+  if(electricOption&&electricOption.value!==fit.outcome){
+   const n=document.createElement("section");n.className="ra-wb-model-extension";
+   const info=document.createElement("p");
+   info.textContent=id?
+    "Model ini baru memakai satu variabel penjelas (X1: "+fit.predictors[0]+"). Akses listrik belum dikontrol. Bandingkan dengan model X1 + akses listrik agar perubahan koefisien dan ketidakpastian terlihat.":
+    "This model has one predictor (X1: "+fit.predictors[0]+"). Electricity access is not controlled for. Compare with the two-predictor specification.";
+   n.append(info);
+   const button=document.createElement("button");button.type="button";button.className="ra-wb-add-predictor";
+   button.textContent=id?"Tambahkan akses listrik sebagai X2 dan hitung ulang":"Add electricity access as X2 and rerun";
+   button.addEventListener("click",()=>{
+    if(!data||!["panel_fe","multivariate_ols"].includes(method.value)||x.value!==fit.predictors[0]||y.value!==fit.outcome){
+     const text=document.createElement("small");text.textContent=id?"Konfigurasi telah berubah; periksa variabel X/Y sebelum menghitung lagi.":"Model changed. Check X/Y before rerunning.";n.append(text);return;
+    }
+    const choice=[...extra.options].find(o=>o.value===electricOption.value&&!o.disabled);
+    if(!choice)return;
+    choice.selected=true;
+    last=null;consent.checked=false;desc();
+    $("raRunMethod").click();
+    if(typeof result.scrollIntoView==="function")result.scrollIntoView({block:"start",behavior:"smooth"});
+   });
+   n.append(button);result.append(n);
+  }
+ }
  const scroller=document.createElement("div");scroller.className="ra-wb-table-scroller";
  const table=document.createElement("table");
  const header=document.createElement("tr");
