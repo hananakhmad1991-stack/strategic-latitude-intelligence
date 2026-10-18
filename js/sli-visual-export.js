@@ -5,6 +5,7 @@
  */
 (()=>{"use strict";
 const VERSION="2026.10.18",NS="http://www.w3.org/2000/svg";
+const BAR_SELECTOR='[id$="Bars"],.bar-chart,.sli-bar-chart,.reg-bars,[data-sli-visual-bars]';
 const providers=new WeakMap(),known=new WeakSet(),visuals=new Map();let counter=0,scheduled=false,observing=false;
 const $=(name,attrs={},text)=>{const e=document.createElement(name);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=String(text);return e};
 const txt=s=>String(s==null?"":s);
@@ -26,12 +27,13 @@ function metadata(host){
 }
 function isChart(node){
  if(!node||!node.isConnected||node.closest(".sli-visual-export-toolbar,svg .sli-visual-export-toolbar"))return false;
+ if(node.matches(BAR_SELECTOR))return node.querySelectorAll(".regbar,.bar-row,[class*=bar-item]").length>=2;
  if(node.matches("table")){
   return node.querySelectorAll("tr").length>=2&&!node.closest(".sli-visual-export-toolbar");
  }
  if(node.matches("svg")){
   if(node.closest("button,a,.sidebar,.sli-universal-nav,.sli-visual-export-toolbar"))return false;
-  const box=node.viewBox?.baseVal;return box?.width>=260&&box?.height>=110||
+  const box=node.viewBox?.baseVal;return box?.width>=260&&box?.height>=60||
    (Number(node.getAttribute("width"))>=260&&Number(node.getAttribute("height"))>=110)||
    (node.getBoundingClientRect().width>=260&&node.getBoundingClientRect().height>=110);
  }
@@ -39,6 +41,7 @@ function isChart(node){
  return false;
 }
 function findHost(node){
+ if(node.matches(BAR_SELECTOR))return node;
  if(node.matches("table")){
   return node.closest(".scroll,.table-wrap,.table-scroll,.table-container,.sli-table-wrap,figure")||node.parentElement;
  }
@@ -62,6 +65,15 @@ function extractSVG(sv){
  }
  return {headers:["Visible element","Displayed text / tooltip"],rows:data,kind:"visible-labels"};
 }
+function extractBars(target){
+ const rows=Array.from(target.querySelectorAll(".regbar,.bar-row,[class*=bar-item]"));
+ return {headers:["Item","Visible value","Bar fill (%)"],rows:rows.map((r,i)=>{
+  const name=r.querySelector(".regbar-top span,.bar-label,[class*=bar-name]")?.textContent?.trim()||r.querySelector("span")?.textContent?.trim()||"Item "+(i+1);
+  const value=r.querySelector(".regbar-top strong,.bar-value,[class*=bar-value]")?.textContent?.trim()||r.textContent?.trim()||"";
+  const fill=r.querySelector(".regbar-fill,.bar-fill,[class*=bar-fill]");
+  return [name,value,fill?.style?.width||""];
+ }),kind:"visible-bars"};
+}
 function extractCanvas(canvas){return {headers:["Scope","Details"],rows:[["Image-only visualization","Raw numeric observations not supplied by this chart"]],kind:"image-only"}}
 function getData(host,visual){
  const provider=providers.get(host);
@@ -70,7 +82,7 @@ function getData(host,visual){
   if(result&&Array.isArray(result.headers)&&Array.isArray(result.rows))
    return {headers:result.headers,rows:result.rows,kind:result.kind||"verified-provider"};
  }
- return visual.matches("table")?extractTable(visual):visual.matches("svg")?extractSVG(visual):extractCanvas(visual);
+ return visual.matches("table")?extractTable(visual):visual.matches("svg")?extractSVG(visual):visual.matches("canvas")?extractCanvas(visual):extractBars(visual);
 }
 function filename(host,ext){return "SLI-"+slug(title(host)).slice(0,42)+"-"+new Date().toISOString().slice(0,10)+"."+ext}
 function register(host,provider){
@@ -109,7 +121,7 @@ function ensure(host,visual){
 }
 function scan(){
  scheduled=false;
- const nodes=document.querySelectorAll("svg,canvas,table");
+ const nodes=document.querySelectorAll("svg,canvas,table,"+BAR_SELECTOR);
  for(const n of nodes){
   if(!isChart(n))continue;const h=findHost(n);
   if(h)ensure(h,n);
@@ -136,6 +148,7 @@ function heightWidth(visual){
   return {w,h};
  }
  if(visual.matches("canvas"))return {w:visual.width,h:visual.height};
+ if(visual.matches(BAR_SELECTOR))return {w:1100,h:Math.min(1900,140+extractBars(visual).rows.length*33)};
  return {w:1150,h:Math.min(1500,140+visual.querySelectorAll("tr").length*30)};
 }
 function inlineSvgStyles(source,clone){
@@ -158,6 +171,22 @@ async function drawSVG(ctx,source,left,top,width,height){
   await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(Error("SVG contains unsupported content or external assets"));img.src=url});
   ctx.drawImage(img,left,top,width,height);
  }finally{URL.revokeObjectURL(url)}
+}
+function drawBars(ctx,bar,top,width,height){
+ const entries=extractBars(bar).rows;
+ ctx.fillStyle="#122d42";ctx.fillRect(0,top,width,height);
+ ctx.textBaseline="middle";
+ entries.slice(0,46).forEach((r,i)=>{
+  const y=top+12+i*33;
+  ctx.font="12px system-ui,sans-serif";ctx.fillStyle="#e3edf7";
+  ctx.fillText(r[0].slice(0,42),12,y+10,240);
+  ctx.fillStyle="#244359";ctx.fillRect(260,y+3,width-410,19);
+  const fraction=Math.max(0,Math.min(100,Number.parseFloat(r[2])||0));
+  ctx.fillStyle="#d9b46e";ctx.fillRect(260,y+3,(width-410)*fraction/100,19);
+  ctx.fillStyle="#e9eff4";ctx.font="600 12px system-ui,sans-serif";
+  ctx.fillText(r[1].slice(0,34),width-140,y+11,136);
+ });
+ if(entries.length>46){ctx.fillStyle="#f1c878";ctx.font="12px sans-serif";ctx.fillText(tr("Preview first 46 rows; CSV/Excel include all","Gambar 46 baris pertama; CSV/Excel mencakup semua"),12,top+height-15)}
 }
 function drawTable(ctx,table,top,width,height){
  const extract=extractTable(table),data=[extract.headers,...extract.rows.slice(0,36)];
@@ -185,7 +214,8 @@ async function capture(host,visual,meta){
  ctx.save();ctx.scale(scale,scale);
  if(visual.matches("svg"))await drawSVG(ctx,visual,0,0,size.w,size.h);
  else if(visual.matches("canvas"))ctx.drawImage(visual,0,0,size.w,size.h);
- else drawTable(ctx,visual,0,size.w,size.h);
+ else if(visual.matches("table"))drawTable(ctx,visual,0,size.w,size.h);
+ else drawBars(ctx,visual,0,size.w,size.h);
  ctx.restore();
  // Burn a subtle large SLI wordmark into the chart itself, plus full footer attribution.
  ctx.save();ctx.textAlign="right";ctx.fillStyle="rgba(169,180,192,0.18)";ctx.font="900 "+Math.max(36,Math.round(width*.092))+"px system-ui,sans-serif";ctx.fillText("SLI",width-20,height-28);ctx.restore();
@@ -196,8 +226,8 @@ async function capture(host,visual,meta){
  return canvas;
 }
 function activeVisual(host){
- const candidates=Array.from(host.querySelectorAll("svg,canvas,table")).filter(isChart);
- return candidates.find(n=>n.matches("svg,canvas"))||candidates[0]||null;
+ const candidates=Array.from(host.querySelectorAll("svg,canvas,table,"+BAR_SELECTOR)).filter(isChart);
+ return (isChart(host)?host:null)||candidates.find(n=>n.matches("svg,canvas"))||candidates[0]||null;
 }
 function copyString(s){
  if(navigator.clipboard?.writeText)return navigator.clipboard.writeText(s);
