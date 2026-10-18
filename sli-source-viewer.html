@@ -40,7 +40,7 @@ try{
  if(record[3]&&/\.pdf(?:[?#]|$)/i.test(record[3]))external("Buka PDF asli dari penerbit ↗",record[3],"primary","actions");
  if(record[4])external("Buka halaman dokumen resmi ↗",record[4],"secondary","actions");
  const references=collectReferences(data).filter(url=>url!==record[3]&&url!==record[4]);
- for(const url of references){const host=new URL(url).hostname;external((/\\.pdf(?:[?#]|$)/i.test(url)?"PDF dirujuk di metadata: ":"Referensi dari metadata: ")+host+" ↗",url,"secondary","actions")}
+ for(const url of references){const host=new URL(url).hostname;external((/\.pdf(?:[?#]|$)/i.test(url)?"PDF dirujuk di metadata: ":"Referensi dari metadata: ")+host+" ↗",url,"secondary","actions")}
  if(references.length){const label=document.createElement("p");label.textContent="Tautan dari metadata sumber: versi, cakupan dan aksesibilitas perlu dicek di penerbit; bukan pengesahan verifikasi independen.";label.className="notice";$("actions").append(label)}
  if(!$("actions").children.length)$("actions").textContent="Belum ada PDF asli/halaman penerbit yang dapat diidentifikasi dari sumber ini.";
  const fields=Array.isArray(data)?["Array: "+data.length+" record",...Object.keys(data[0]||{}).slice(0,15)]:Object.keys(data||{}).slice(0,18);
