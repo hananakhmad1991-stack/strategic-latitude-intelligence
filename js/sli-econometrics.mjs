@@ -209,3 +209,69 @@ export function sensitivityOLS(rows,x,y,lower=-15,upper=15){
  return {full,reduced,excluded_rows:rows.filter(r=>finite(nval(r[y]))&&(nval(r[y])<lower||nval(r[y])>upper)).map(r=>String(r.province||r.name||"unknown")),
  note:"Sensitivity only. The +/-15 percent growth threshold is illustrative, not a valid automatic rule for excluding economic observations."};
 }
+
+
+/* Refit exactly the same estimator to test how fragile the estimates are.
+ * The LOO tests are diagnostics, not out-of-sample validation or causal inference.
+ * At most 25 entities / 10 years are tested automatically to limit browser work.
+ */
+export function panelStability(rows,predictors,outcome,entityField,timeField,includeYearFE=true){
+ const base=panelFixedEffects(rows,predictors,outcome,entityField,timeField,includeYearFE);
+ const id=r=>String(r[entityField]??"").trim(),year=r=>String(r[timeField]??"").trim();
+ // Test on the complete-case sample used by the baseline estimator.
+ const valid=cleanRows(rows,predictors,outcome).map(o=>rows[o.index]);
+ const entities=[...new Set(valid.map(id))].sort();
+ const years=[...new Set(valid.map(year))].sort();
+ const samples={
+  "leave_one_entity_out":{available:entities.length>8,candidates:entities},
+  "leave_one_year_out":{available:years.length>3,candidates:years}
+ };
+ const baseline=Object.fromEntries(base.coefficients.map(t=>[t.name,t.estimate]));
+ const finish=(key,field,limit)=>{
+  const entry=samples[key],selected=entry.candidates.slice(0,limit),fits=[],failures=[];
+  if(!entry.available){
+   return {available:false,tested:0,total_candidates:entry.candidates.length,
+    note:key==="leave_one_entity_out"?"Need at least nine units so removal leaves eight.":"Need at least four years so removal leaves three."};
+  }
+  for(const candidate of selected){
+   try{
+    const subset=valid.filter(r=>String(r[field]??"").trim()!==candidate);
+    const model=panelFixedEffects(subset,predictors,outcome,entityField,timeField,includeYearFE);
+    fits.push({excluded:candidate,estimates:Object.fromEntries(model.coefficients.map(t=>[t.name,t.estimate]))});
+   }catch(e){failures.push({excluded:candidate,reason:String(e.message).slice(0,120)})}
+  }
+  const metrics=predictors.map(name=>{
+   const values=fits.map(f=>({excluded:f.excluded,value:f.estimates[name]})).filter(v=>finite(v.value));
+   if(!values.length)return {name,baseline:baseline[name],valid_refits:0,min:null,max:null,max_absolute_shift:null,max_relative_shift_pct:null,sign_reversals:null};
+   const lo=values.reduce((a,b)=>a.value<b.value?a:b),hi=values.reduce((a,b)=>a.value>b.value?a:b);
+   const biggest=values.reduce((a,b)=>Math.abs(a.value-baseline[name])>Math.abs(b.value-baseline[name])?a:b);
+   const delta=Math.abs(biggest.value-baseline[name]),relative=Math.abs(baseline[name])>1e-8?100*delta/Math.abs(baseline[name]):null;
+   return {name,baseline:baseline[name],valid_refits:values.length,min:rnd(lo.value),max:rnd(hi.value),
+    min_excluded:lo.excluded,max_excluded:hi.excluded,
+    max_absolute_shift:rnd(delta),max_relative_shift_pct:rnd(relative),most_influential_exclusion:biggest.excluded,
+    sign_reversals:values.filter(v=>Math.sign(v.value)!==Math.sign(baseline[name])).length,
+    sensitivity:relative===null?"near_zero_baseline":relative>25?"high":relative>10?"moderate":"low"};
+  });
+  return {available:true,tested:selected.length,successful:fits.length,total_candidates:entry.candidates.length,
+   exhaustive:selected.length===entry.candidates.length,metrics,failures,
+   note:"Re-estimate after dropping one entity/one annual period, holding predictor set and fixed-effects specification constant. Not a causal robustness test."};
+ };
+ let alternative=null;
+ try{
+  const fit=panelFixedEffects(valid,predictors,outcome,entityField,timeField,!includeYearFE);
+  alternative={available:true,specification:!includeYearFE?"entity_and_year_FE":"entity_only_FE",
+   coefficients:fit.coefficients.map(t=>({
+    name:t.name,baseline:baseline[t.name],alternative:t.estimate,change:rnd(t.estimate-baseline[t.name]),
+    relative_change_pct:Math.abs(baseline[t.name])>1e-8?rnd(100*(t.estimate-baseline[t.name])/Math.abs(baseline[t.name])):null
+   }))};
+ }catch(e){alternative={available:false,reason:String(e.message).slice(0,170)}}
+ const looEntity=finish("leave_one_entity_out",entityField,25),looYear=finish("leave_one_year_out",timeField,10);
+ const significantShifts=[...((looEntity.metrics||[])),...((looYear.metrics||[]))].filter(m=>m.sensitivity==="high"||m.sign_reversals>0);
+ return {method:"panel_fe_stability",entity_field:entityField,time_field:timeField,
+  baseline_entity_count:base.unit_count,baseline_year_count:base.time_count,
+  baseline_predictors:predictors,baseline_outcome:outcome,baseline_year_fe:includeYearFE,
+  leave_one_entity_out:looEntity,leave_one_year_out:looYear,
+  alternative_time_specification:alternative,
+  screening:significantShifts.length?"Review parameter sensitivity and excluded identifiers before making any claims.":"No >25% LOO coefficient shift or sign reversal among successful refits; this does not prove economic validity.",
+  limitations:"Exploratory leave-one-entity/year refits and alternate time controls; do not infer causal identification, model generalisation, statistical significance or investment returns from stability alone."};
+}
