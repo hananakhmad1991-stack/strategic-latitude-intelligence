@@ -90,3 +90,26 @@ class Element{
 function flatten(n){
  return [n,...(n.children||[]).flatMap(v=>v&&typeof v==="object"?flatten(v):[])];
 }
+
+test("1990–present geopolitical events, source-dated commodity plots, and monitoring integration",()=>{
+ const events=JSON.parse(read("data/sli-geopolitical-events.json"));
+ const prices=JSON.parse(read("data/sli-geopolitical-commodity-prices.json"));
+ const html=read("index.html"),chapterJs=read("js/sli-geopolitics-chapter.js"),graph=read("js/sli-geopolitical-timeline.js");
+ assert.ok(events.events.length>=15);
+ assert.equal(events.events[0].date.slice(0,4),"1990");
+ assert.ok(events.events.every(x=>x.source_url.startsWith("https://")&&x.record_status==="historical_source_attributed"));
+ assert.match(html,/sli-geopolitical-timeline\.js/);
+ assert.match(html,/sli-geopolitical-timeline\.css/);
+ assert.match(chapterJs,/id="sliGeoTimelineRoot"/);
+ assert.match(chapterJs,/initSLIGeopoliticalTimeline/);
+ assert.match(graph,/function pearson\(/);
+ assert.match(graph,/publisher_publication_date/);
+ assert.match(graph,/claim_corroborated|without review|peninjauan editorial/i);
+ assert.equal(JSON.parse(read("data/sli-geopolitical-chapter.json")).assessments.length,8);
+ assert.ok(Array.isArray(prices.observations));
+ if(prices.observations.length){
+  assert.ok(prices.observations.length>=360);
+  assert.ok(prices.observations[0].month.startsWith("1990"));
+  assert.ok(prices.observations.every(o=>Number.isFinite(o.brent)&&o.brent>0));
+ }
+});
