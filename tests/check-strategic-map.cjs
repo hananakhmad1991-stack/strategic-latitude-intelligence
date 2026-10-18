@@ -162,7 +162,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("Sector transmission")),"Inspector separates sector analysis from raw source metrics");
  assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("Lesson learned")),"Inspector explains verification lessons");
  assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("Read original record source")),"Inspection shows source attribution");
- const insightReset=flatten(rightPanel()).find(n=>n.className==="map-insight-reset");
+ const insightReset=flatten(rightPanel()).find(n=>n.className?.includes("map-insight-reset"));
  assert.ok(insightReset);insightReset.events.click();
  assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("SELECT A POINT")),"Clear selection restores overview guidance");
 
