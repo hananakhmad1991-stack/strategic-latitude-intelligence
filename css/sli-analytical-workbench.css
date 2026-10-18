@@ -109,3 +109,8 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-advanced{color:#25485f}
  #raAnalyticalWorkbench #raPanelGroup{grid-template-columns:1fr}
  #raAnalyticalWorkbench .ra-wb-plot svg{min-width:475px}
 }
+
+
+/* Explicit econometric specification: avoid silently reversing dependent and explanatory variables. */
+#raAnalyticalWorkbench .ra-wb-specification{padding:10px 13px;margin:12px 0;color:#173c57!important;background:#e9f3f9;border-left:3px solid #21679e;font-weight:740;font-size:13px;line-height:1.7;overflow-wrap:anywhere;border-radius:6px}
+#raAnalyticalWorkbench .ra-wb-orientation-warning{padding:12px 14px;margin:12px 0;background:#fff3e8;color:#813e22!important;border:1px solid #e4ad7a;border-left:4px solid #bd7835;border-radius:7px;font-weight:690;font-size:12px;line-height:1.65}
