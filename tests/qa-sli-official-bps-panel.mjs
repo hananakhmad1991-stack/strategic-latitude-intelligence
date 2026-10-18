@@ -97,6 +97,18 @@ test("BPS 32×4 multivariable model checks ALL 32 LOEO and all 4 LOYO with sign-
  assert.equal(risk.all_refits_complete,true);
  assert.equal(risk.decision_readiness,"not_robust_for_investment_inference");
  assert.equal(risk.sign_unstable,true);
+ assert.equal(risk.leave_one_year_out.refits.length,4);
+ assert.equal(risk.leave_one_entity_out.refits.length,32);
+ assert.deepEqual(risk.leave_one_year_out.refits.map(r=>r.excluded),["2022","2023","2024","2025"]);
+ assert.ok(risk.leave_one_year_out.refits.every(r=>r.coefficients.length===2));
+ assert.ok(risk.leave_one_year_out.refits.every(r=>r.coefficients.every(c=>Number.isFinite(c.estimate)&&Number.isFinite(c.absolute_shift))));
+ for(const name of ["pmtb_share_lag1_pct","household_share_lag1_pct"]){
+  const expected=risk.leave_one_year_out.metrics.find(x=>x.name===name).sign_reversals;
+  const actual=risk.leave_one_year_out.refits.filter(r=>r.coefficients.find(c=>c.name===name).sign_changed).length;
+  assert.equal(actual,expected,"Sign reversal count must reconcile with individual annual estimates");
+ }
+ assert.ok(risk.leave_one_year_out.refits.find(r=>r.excluded==="2025"),"Must identify annual sensitivity to 2025");
+
  assert.ok(risk.leave_one_year_out.metrics.some(m=>m.sign_reversals>=1));
  assert.ok(risk.leave_one_entity_out.metrics.every(m=>Number.isFinite(m.max_absolute_shift)&&m.max_absolute_shift>=0));
  assert.ok(risk.leave_one_entity_out.metrics.some(m=>m.relative_change_near_zero_denominator));
