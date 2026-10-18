@@ -42,7 +42,7 @@ function tr(key){return MESSAGES[state.language][key]||key}
 function node(tag,cls,text){const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=String(text);return x}
 function safeUrl(url){try{const u=new URL(url);return u.protocol==="https:"?u.href:null}catch{return null}}
 function status(text,level="warning"){$("raNotice").textContent=text;$("raNotice").dataset.level=level}
-function enableControls(){const hasResult=!!state.lastResult;$("raCopy").disabled=!hasResult;$("raExport").disabled=!hasResult;$("raSend").disabled=state.busy;$("raChatFiles").disabled=state.busy}
+function enableControls(){const hasResult=!!state.lastResult;$("raCopy").disabled=!hasResult;$("raExport").disabled=!hasResult;$("raSend").disabled=state.busy;$("raFollowupSend").disabled=state.busy;$("raChatFiles").disabled=state.busy}
 function isConfigured(){
  const c=state.config;
  return c?.schema==="sli-research-assistant-config-v1"&&c.api_enabled===true&&c.login_enabled===true&&c.generation_status==="enabled"&&!!safeUrl(c.api_endpoint||"");
@@ -87,6 +87,7 @@ function reset(){
  state.sequence++;state.history=[];state.lastResult=null;state.busy=false;
  $("raMessages").replaceChildren();$("raSourcesList").replaceChildren();$("raConversation").hidden=true;$("raPrompt").value="";
  $("raChatFiles").value="";$("raChatUploadConsent").checked=false;updateFileStatus();
+ $("raFollowupPrompt").value="";
  enableControls();$("raPrompt").focus();
 }
 function makeExport(){
@@ -234,13 +235,14 @@ async function submit(){
   const report=append("assistant",payload.answer);
   window.SLIResearchVisuals?.renderCharts(state.lastResult.charts,report,state.lastResult.sources,state.language);
   const note=node("div","sli-ra-evidence-note",usingOwner?
-   (state.language==="id"?"CORPUS UJI TERBATAS · Analisis dari sumber SLI terkurasi, bukan penelusuran real-time. Periode sumber dapat berbeda; periksa dokumen asli sebelum keputusan investasi.":"LIMITED TEST CORPUS · Curated SLI evidence, not live retrieval. Source periods may differ; verify primary documents before decisions."):
+   (state.language==="id"?"DATA SLI BERTANGGAL · Angka energi resmi dan ringkasan SLI mengikuti versi corpus Worker yang dipasang; ini bukan scraping internet secara langsung. Periksa periode setiap sitasi.":"DATED SLI DATA · Official energy statistics and SLI synthesis reflect the deployed Worker corpus version, not live web scraping. Check every citation date."):
    (state.language==="id"?"Periksa tanggal dan dokumen sumber sebelum menggunakan hasil.":"Review source dates and primary documents before use."));
   report.prepend(note);
   renderSources(payload.sources,payload.answer,state.lastResult.charts);
   state.history.push({role:"user",content:question},{role:"assistant",content:payload.answer.slice(0,5000)});
   state.history=state.history.slice(-8);
   $("raChatFiles").value="";$("raChatUploadConsent").checked=false;delete requestBody.attachments;updateFileStatus();
+  $("raFollowupPrompt").value="";
   status(usingOwner?(state.language==="id"?"Laporan Owner Test selesai; verifikasi sitasi dan grafik sebelum digunakan.":"Owner Test report completed; verify citations and figures before use."):tr("ready"),"ready");
  }catch(err){
   if(id===state.sequence){loading.parentNode?.remove();append("system",tr("requestFail")+" ("+String(err?.message||"unavailable").slice(0,75)+")");status(tr("requestFail"))}
@@ -268,6 +270,28 @@ async function init(){
  $("raChatMethod").addEventListener("change",methodStatus);
  $("raChatFiles").addEventListener("change",updateFileStatus);
  $("raAssistantForm").addEventListener("submit",e=>{e.preventDefault();submit()});
+ $("raFollowupForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  if(state.busy)return;
+  const next=$("raFollowupPrompt").value.trim();
+  if(next.length<6){status("Tuliskan pertanyaan lanjutan minimal enam karakter.");return;}
+  $("raPrompt").value=next;
+  submit();
+ });
+ const templates={
+  detail:"Perdalam laporan terakhir dengan angka resmi SLI yang konkret dan sitasi lengkap. Jelaskan minimal 4 dimensi relevan dengan angka, periode, unit, serta batasannya; jangan mengulang kesimpulan umum.",
+  correct:"Audit jawaban Anda sebelumnya. Identifikasi klaim tidak didukung sumber atau keliru, koreksi dengan angka dan sitasi SLI yang tersedia, jelaskan perubahan dan bagian yang belum bisa diverifikasi.",
+  compare:"Lanjutkan topik tadi dengan perbandingan skenario atau wilayah yang paling relevan. Susun tabel data sebanding, asumsi, risiko, dan hal yang perlu diverifikasi.",
+  gaps:"Jelaskan secara spesifik data penting yang tersedia dan belum tersedia di corpus SLI untuk menjawab pertanyaan tadi. Usulkan sumber resmi dan metode tambahan tanpa mengarang angka."
+ };
+ document.querySelectorAll("[data-followup]").forEach(button=>button.addEventListener("click",()=>{
+  const key=button.dataset.followup;
+  if(!state.lastResult)return;
+  $("raFollowupPrompt").value=templates[key]||"Mohon lanjutkan analisis dengan data dan sitasi yang relevan.";
+  $("raFollowupPrompt").focus();
+  $("raFollowupPrompt").scrollIntoView?.({block:"center",behavior:"smooth"});
+ }));
+
  document.querySelectorAll("[data-ra-lang]").forEach(button=>button.addEventListener("click",()=>setResearchLanguage(button.dataset.raLang)));
  setResearchLanguage(state.language);methodStatus();updateFileStatus();
  $("raNew").addEventListener("click",reset);
@@ -297,5 +321,5 @@ async function init(){
  }catch{status(tr("invalid"))}
 }
 document.addEventListener("DOMContentLoaded",init);
-window.SLIResearchAssistant=Object.freeze({version:"2026-10-18-chat-first",generation_requires_backend:true,method_catalog_count:49,owner_attachment_staging:true});
+window.SLIResearchAssistant=Object.freeze({version:"2026-10-18-research-followups",generation_requires_backend:true,method_catalog_count:49,follow_up_chat:true,owner_attachment_staging:true});
 })();
