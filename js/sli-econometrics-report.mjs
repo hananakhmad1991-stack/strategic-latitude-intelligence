@@ -39,7 +39,7 @@ export function scatterPlot(fit,alternate=null){
  svg.append(S("text",{x:18,y:182,transform:"rotate(-90 18 182)","text-anchor":"middle",fill:"#2c4c65","font-size":13,"font-weight":700},fit.outcome));
  return svg;
 }
-export function investorMarkdown(fit,filename,sensitivity,stability=null,officialSource=null){
+export function investorMarkdown(fit,filename,sensitivity,stability=null,officialSource=null,structuralLens=null){
  const f=v=>round(v),panel=fit.method==="panel_fe",terms=panel?fit.coefficients:fit.coefficient_terms,diagnostics=fit.residual_diagnostics||{};
  const provenance=officialSource?.publisher==="BPS (Badan Pusat Statistik)"&&/^https:\/\/www\.bps\.go\.id\//.test(officialSource.url||"")?
  "## Data provenance and measurement\n\nOriginal BPS publication: **"+officialSource.title+"** ("+officialSource.published+"). Source: "+officialSource.url+
@@ -54,6 +54,24 @@ export function investorMarkdown(fit,filename,sensitivity,stability=null,officia
  const directionWarning=reversed?"**PERINGATAN MODEL:** Pertumbuhan PDRB dipilih sebagai X, sedangkan PMTB sebagai Y. Koefisien ini tidak mengestimasi PMTB terhadap pertumbuhan. Bila tujuan riset PMTB → pertumbuhan, model harus dihitung ulang dengan variabel yang dibalik.":"Arah Y dan X harus diverifikasi sebelum interpretasi ekonomi.";
  const temporalWarning=officialSource&&panel&&fit.predictors.includes("pmtb_share_pct")?
  "**PERINGATAN SPESIFIKASI:** X memuat pmtb_share_pct (PMTB pada tahun t), BUKAN pmtb_share_lag1_pct (PMTB tahun t−1). Hasil ini model kontemporer dan tidak dapat dibandingkan langsung dengan baseline lagged-PMTB. Kenaikan simultanitas dan endogenitas mungkin timbul; untuk baseline lag-1 jalankan model ulang dengan X1 pmtb_share_lag1_pct.":"";
+
+ const structural=structuralLens?.schema==="sli-structural-economy-lens-v1"&&officialSource?.publisher==="BPS (Badan Pusat Statistik)"?(()=>{
+  const lines=["## Structural economy and downstreaming (descriptive; not a regression control)",
+   "**Geography:** Maluku Utara; BPS reference 2022–2025, 32 screened provinces.",
+   "**Source and vintage:** "+structuralLens.latest.source+" (BPS release "+structuralLens.latest.source_date+").",
+   "| Year | Maluku Utara real growth % | Median screened provinces % | Excess vs median (pp) | Rank of 32 |",
+   "|---|---:|---:|---:|---:|"];
+  for(const r of structuralLens.yearSeries)lines.push("| "+[r.year,r.malut_real_grdp_growth_pct,r.province_median_real_growth_pct,r.malut_minus_median_pp,r.rank_descending].join(" | ")+" |");
+  lines.push("**2025 industry context:** manufacturing real growth "+structuralLens.latest.manufacturing_real_growth_pct+"%, exports of goods/services growth "+structuralLens.latest.export_goods_services_growth_pct+"%. These are GROWTH RATES, not sector GDP SHARES or causal contributions.");
+  for(const p of structuralLens.synthesis)lines.push(p);
+  lines.push("**Facility cases:** Existing operator project dossiers are not a census, not current utilisation, and not an annual province-level sector series.");
+  for(const f of structuralLens.facilityExamples)lines.push("- "+f.name+" ("+f.operator+"; "+f.stage+"), source: "+f.source);
+  lines.push("**Historical-data readiness:** "+structuralLens.research_gate.reason);
+  lines.push("**Ingestion rule:** "+structuralLens.research_gate.minimum_checks);
+  for(const p of structuralLens.historic_sources)lines.push("- "+p.id+" "+p.years[0]+"–"+p.years.at(-1)+" | "+p.status+" | "+p.url);
+  lines.push("**Limits:** Do not append undigitized 2019–2020 figures, invent industry shares, or infer nickel's causal fraction of growth.");
+  return lines.join("\\n\\n");
+ })():"";
 
  const robustness=stability?.method==="panel_fe_stability"?(()=>{
   const blocks=["## Robustness and specification stability",
@@ -120,6 +138,7 @@ export function investorMarkdown(fit,filename,sensitivity,stability=null,officia
  impact,
  sen,
  robustness,
+ structural,
  "## Residual and outlier diagnostics",
  "- Residual standard deviation: "+f(fit.residual_sd),
  "- RMSE: "+f(fit.rmse),
