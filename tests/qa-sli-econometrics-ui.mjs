@@ -25,7 +25,9 @@ test("Investor workbench DOM: load BPS-backed 38-province data, plot OLS, reject
  assert.equal($("raModelResult").querySelectorAll("circle").length,38);
  assert.match($("raModelResult").textContent,/Unduh Investor Analytical Report/);
  $("raMethod").value="multivariate_ols";$("raMethod").dispatchEvent(new dom.window.Event("change"));
- $("raExtraPredictors").options[2].selected=true;
+ const giniExtra=[...$("raExtraPredictors").options].find(o=>o.value==="gini_expenditure_mar2026");
+ assert.ok(giniExtra,"Extra-predictor picker must offer the eligible Gini indicator by name");
+ giniExtra.selected=true;
  $("raRunMethod").click();
  assert.match($("raModelResult").textContent,/Multiple OLS/);
  assert.ok($("raModelResult").querySelector("table"));
