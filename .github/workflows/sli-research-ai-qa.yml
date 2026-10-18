@@ -50,8 +50,11 @@ on:
       - 'research-api/**'
       - 'tests/qa-sli-evidence-bridge.mjs'
       - 'tests/qa-sli-hybrid-retrieval.mjs'
-      - 'tests/qa-sli-report-audit.mjs'
+      - 'tests/qa-sli-report-audit.mjs tests/qa-sli-monitoring-evidence.mjs'
       - 'tests/qa-sli-source-verification.mjs'
+      - 'tests/qa-sli-monitoring-evidence.mjs'
+      - 'research-api/src/monitoring-evidence.mjs'
+      - 'data/sli-secondary-news-index.json'
       - 'tests/qa-sli-mineral-corpus.mjs'
       - 'data/energy-fundamentals.json'
       - 'data/energy-prices-fiscal.json'
@@ -102,6 +105,7 @@ jobs:
           node --check research-api/src/evidence-bridge.mjs
           node --check research-api/src/hybrid-retrieval.mjs
           node --check research-api/src/report-audit.mjs
+          node --check research-api/src/monitoring-evidence.mjs
           node --check research-api/src/source-verification.mjs
           node --check research-api/src/energy-corpus.mjs
           node --check research-api/src/mineral-corpus.mjs
