@@ -87,7 +87,7 @@ function evidence(panel,point){
   sources(inner,point.baseline_sources);
   const leads=Array.isArray(point.recent_news_leads)?point.recent_news_leads.filter(x=>x.url&&x.title):[];
   if(leads.length){
-   inner.append(E("p","oa-note",local("Monitored headlines are attributable discovery leads, not verified operational impacts.","Berita yang terpantau baru merupakan temuan bersumber, bukan dampak operasional yang telah diverifikasi.")));
+   inner.append(E("p","oa-note",local("Attributed monitoring news is secondary research evidence of publisher reporting, not independent proof of operational impact.","Berita terpantau merupakan data sekunder teratribusi, tetapi bukan bukti independen dampak operasional.")));
    const list=E("div","oa-daily-leads");
    leads.slice(0,2).forEach(x=>{const row=E("div","oa-daily-headline"),a0=link(x.url,x.title+" ↗");if(a0)row.append(a0,E("div","oa-daily-meta",(x.publisher||local("Source","Sumber"))+" · "+dateTime(x.published_at_utc)));list.append(row)});
    inner.append(list);
