@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {requestedProvinces,validateAssistantPayload,cleanHistory,selectResearchEvidence,modelRequest,verifyResearchAnswer} from "../research-api/src/assistant-core.mjs";
 import worker from "../research-api/src/index.js";
+import {extractModelText} from "../research-api/src/core.mjs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const documents=[
  {id:"central-java",title:"Central Java GRDP",text:"Central Java GRDP real growth was 5.37 percent in 2025",geo:"Central Java",topic:"regional",access:"pro",period:"2025",source_date:"2026-04-30",publisher:"BPS",source_url:"https://www.bps.go.id"},
@@ -82,4 +83,15 @@ test("Main page is conversational, the old search tool is explicitly separate, a
  assert.equal(config.login_enabled,false);
  assert.ok(!/sk-[a-zA-Z0-9]{20,}/.test(page+client));
  assert.ok(!page.includes("api.openai.com"));
+});
+
+// Regression: a complete report must not be silently cut at the previous 9,000-char limit.
+test("Long model report retains scenario, conclusions and final paragraph beyond 9000 chars",()=>{
+  const report="## Temuan utama\\n"+("Analisis risiko, biaya, dampak dan bukti terukur yang perlu diverifikasi [1].\\n".repeat(190))+"\\n## Kesimpulan dan Rekomendasi Strategis\\n1. Verifikasi proyek dan status operasi [1].";
+  assert.ok(report.length>9000);
+  const raw={status:"completed",output:[{type:"message",content:[{type:"output_text",text:report}]}]};
+  assert.equal(extractModelText(raw),report);
+  assert.ok(verifyResearchAnswer(extractModelText(raw),[documents[0]]));
+  const client=read("js/sli-research-assistant.js");
+  assert.match(client,/payload\\.answer\\.length===9000/,"Front end must warn about an outdated, truncating Worker");
 });
