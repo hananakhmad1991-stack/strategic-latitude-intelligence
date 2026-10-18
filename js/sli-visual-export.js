@@ -324,14 +324,24 @@ function openVisualInsight(event){
  }
  const supplemental=provider?.getInsight?.({event,visual,heading,details});
  if(supplemental){heading=supplemental.title||heading;details=supplemental.details||details}
- let inspector=host.querySelector(":scope > .sli-visual-insight");
- if(!inspector){inspector=$("section",{class:"sli-visual-insight",role:"region","aria-live":"polite","aria-label":tr("SLI visual evidence inspector","Inspektor bukti visual SLI")});host.append(inspector)}
+ // Put the selected observation beside its visualization on wide screens.
+ // Wrap just this host, rather than modifying the dashboard's existing grid.
+ let split=host.parentElement?.classList?.contains("sli-visual-insight-split")?host.parentElement:null;
+ if(!split){
+  split=$("div",{class:"sli-visual-insight-split"});
+  host.parentNode.insertBefore(split,host);
+  split.append(host);
+ }
+ let inspector=split.querySelector(":scope > .sli-visual-insight");
+ if(!inspector){inspector=$("section",{class:"sli-visual-insight",role:"region","aria-live":"polite","aria-label":tr("SLI visual evidence inspector","Inspektor bukti visual SLI")});split.append(inspector)}
  inspector.replaceChildren();
  const header=$("div",{class:"sli-visual-insight-head"});
  const labelEl=$("strong",{},tr("SELECTED VISUAL INSIGHT","ANALISIS VISUAL TERPILIH"));
  const close=$("button",{type:"button"},tr("Close","Tutup"));
  close.addEventListener("click",()=>{
   inspector.remove();host.querySelectorAll(".sli-visual-insight-selected").forEach(x=>x.classList.remove("sli-visual-insight-selected"));
+  // Restore the original dashboard DOM when the inspector is closed.
+  if(split.isConnected&&host.parentNode===split){split.parentNode.insertBefore(host,split);split.remove()}
  });
  header.append(labelEl,close);
  inspector.append(header,$("h4",{},heading),$("p",{class:"sli-visual-insight-kind"},scope));
