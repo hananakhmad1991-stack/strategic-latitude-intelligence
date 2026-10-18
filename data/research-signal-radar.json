@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-18T00:59:16.358710+00:00",
-  "last_attempt_at_utc": "2026-10-18T00:59:16.358710+00:00",
+  "generated_at_utc": "2026-10-18T01:44:43.810132+00:00",
+  "last_attempt_at_utc": "2026-10-18T01:44:43.810132+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
@@ -58,21 +58,6 @@
           "publisher": "Mining.com",
           "publisher_url": "https://www.mining.com",
           "published_at_utc": "2026-10-14T14:31:47+00:00",
-          "sector": "minerals",
-          "scope": "geopolitical",
-          "topic_id": "copper_supply",
-          "channel": "Copper, alumina and aluminium exposure",
-          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "copper-supply-centinela-copper-output-concerns-create-scope-for-other-miners-mining-com-au",
-          "title": "Centinela copper output concerns create scope for other miners - Mining.com.au",
-          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOTktVMVA1OHB1QU5fejNvRTR1a0xQd3NVbFFtOVNwcXltbXJweEpRd3RrekJaSUJJd3lTNEtrNXd3dzdydjdwNThMMVBOSDFZQ09TOHBSNklXNEJPc1pRQ29vZWpndDFxNmJMOG5hTTYyaGVWU19FdmhsYU9ib2hYLXRyZ2VqNzNJX3FmbXR3?oc=5",
-          "publisher": "Mining.com.au",
-          "publisher_url": "https://mining.com.au",
-          "published_at_utc": "2026-10-14T14:03:10+00:00",
           "sector": "minerals",
           "scope": "geopolitical",
           "topic_id": "copper_supply",
@@ -664,7 +649,7 @@
   },
   "counts": {
     "minerals": {
-      "geopolitical": 11,
+      "geopolitical": 10,
       "domestic": 14
     },
     "ai": {
@@ -695,7 +680,7 @@
       "id": "copper_supply",
       "scope": "minerals/geopolitical",
       "state": "scanned",
-      "found": 6
+      "found": 5
     },
     {
       "id": "smelter_projects",
