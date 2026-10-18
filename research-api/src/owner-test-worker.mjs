@@ -13,6 +13,7 @@ import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
 import {fetchReviewedSecondaryArticles} from "./secondary-news.mjs";
+import {fetchMonitoringEvidence} from "./monitoring-evidence.mjs";
 import {validateOwnerAttachments,buildOwnerFileParts} from "../../js/sli-investor-chat.mjs";
 
 const HEADERS={"content-type":"application/json;charset=utf-8","cache-control":"no-store,private","x-content-type-options":"nosniff","vary":"Origin"};
@@ -123,11 +124,13 @@ export default{
    return send(422,{error:"explicit_file_transfer_consent_required"},origin);
   let rate;try{rate=await env.AI_LIMITER.limit({key:(await sha256(env.OWNER_TEST_TOKEN)).slice(0,16).join("-")})}catch{return send(503,{error:"rate_limiter_not_ready"},origin)}
   if(!rate?.success)return send(429,{error:"owner_test_rate_limit"},origin);
-  // Reviewed publisher claims are additional dated SECONDARY evidence, never a substitute
-  // for SLI's official baselines. Google RSS leads cannot enter this collection.
-  const primaryEvidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",10);
-  const reviewed=await fetchReviewedSecondaryArticles();
-  const secondaryEvidence=selectResearchEvidence(reviewed.articles,payload.question,payload.history,"pro",2);
+  // Admit ALL attributed publishers from curated SLI monitoring snapshots as SECONDARY
+  // evidence for the reports they published, NOT definitive proof of the event.
+  const primaryEvidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",8);
+  const [monitored,reviewed]=await Promise.all([fetchMonitoringEvidence(),fetchReviewedSecondaryArticles()]);
+  const reviewedEvidence=selectResearchEvidence(reviewed.articles,payload.question,payload.history,"pro",1);
+  const monitoringEvidence=selectResearchEvidence(monitored.documents,payload.question,payload.history,"pro",reviewedEvidence.length?3:4);
+  const secondaryEvidence=[...reviewedEvidence,...monitoringEvidence];
   const evidence=[...primaryEvidence,...secondaryEvidence];
   // No source match does not prevent academic methodology assistance.
   // Without evidence, only a clearly scoped research-design response is allowed;
@@ -135,7 +138,7 @@ export default{
   const energyQuestion=/ketahanan energi|energy security|energy resilience|produksi migas|supply minyak|harga bbm|subsidi energi|transisi energi|pasokan bbm/i.test(payload.question+" "+(payload.history||[]).filter(h=>h.role==="user").slice(-1).map(h=>h.content).join(" "));
   const monitoring=energyQuestion?await fetchEnergyMonitoring():{status:"not_requested",as_of:null,signals:[]};
   const params=modelRequest(payload,evidence,env.RESEARCH_MODEL);
-  if(secondaryEvidence.length)params.instructions+="\nVERIFIED-PUBLICATION SECONDARY NEWS: Any excerpt prefixed ATTRIBUTED SECONDARY MEDIA REPORT comes from a publisher article whose specific reported claim underwent editorial review. Cite its [n] marker, name the publisher and publication date, and use reported/alleged rather than assert independent verification. Never equate an article with audited CAPEX, commissioned MW, confirmed policy enactment or official statistical releases. Do not repeat or copy publisher copyrighted passages.";
+  if(secondaryEvidence.length)params.instructions+="\nSLI SECONDARY NEWS IS ADMISSIBLE: Every numbered SECONDARY MONITORING RECORD is evidence that the named outlet REPORTED the headline at its dated time; ATTRIBUTED SECONDARY MEDIA REPORT additionally reflects claim-level article review. Include Reuters, CGTN, ANTARA and other publishers without arbitrary exclusion. Cite as [n] and name publisher/date; if only an RSS link is provided never pretend the full article was read. For a Reuters headline claiming Hormuz closed, say 'Reuters reported a closure [n]' and compare with shipping, energy, and SLI data. Neither media reputation nor RSS metadata independently proves event truth or quantified impacts. Assess corroboration and conflicting reports. Never claim verified legislation, completed projects, actual CAPEX, MW in service or Indonesian freight impact from headlines alone. Separate attributed reporting from government statistics, source-confirmed event, and modeled downstream effects. Avoid repeated generic caveats; make substantive source comparisons. Never reproduce copyrighted text." ;
   const monitoringText=monitoringPromptContext(monitoring);
   if(monitoringText){
    params.input[0].content.push({type:"input_text",text:monitoringText});
@@ -171,10 +174,10 @@ export default{
    corpus_as_of:energyCorpusAudit().assessment_date,
    corpus_version:"sli-energy-official-v2",
    retrieved_sources_count:evidence.length,
-   reviewed_secondary_sources:secondaryEvidence.length,secondary_news_status:reviewed.status,
+   reviewed_secondary_sources:reviewedEvidence.length,attributed_secondary_sources:monitoringEvidence.length,secondary_news_index_count:monitored.registered_count,secondary_news_index_as_of:monitored.updated_at,secondary_news_status:monitored.status,
    monitoring_status:monitoring.status,
    monitoring_as_of:monitoring.as_of,
    monitoring_signals:monitoring.signals.slice(0,5),
-   sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo,source_type:id.startsWith("sli_news_")?"secondary_news":"curated_baseline"}))},origin);
+   sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo,source_type:id.startsWith("sli_news_")||id.startsWith("sli_feed_")?"secondary_news":"curated_baseline"}))},origin);
  }
 };
