@@ -36,8 +36,43 @@ function buildExplorer(root,data){
  const scopes=[["oil_gas","Oil and Gas"],["coal","Coal, DMO & Exports"],["reserves","Proved Reserves"],["renewable","Renewable Share"]];
  for(const [category,label] of scopes){const grp=node("optgroup");grp.label=label;Object.entries(data.series).filter(([k,v])=>v.domain===category).forEach(([k,v])=>{const opt=node("option",null,v.name);opt.value=k;grp.append(opt)});series.append(grp)}
  const type=field("Chart style",node("select","ef-select"));for(const mode of ["line","bar"]){const o=node("option",null,mode==="line"?"Line":"Bar");o.value=mode;type.append(o)}
- const from=field("From year",node("select","ef-select"));const reset=node("button","ef-btn","Reset");reset.type="button";const dl=node("button","ef-btn","Download CSV");dl.type="button";controls.append(reset,dl);
- const plot=node("div","ef-plot");const svg=elSvg("svg",{role:"img","aria-label":"Interactive energy fundamentals series",style:"width:100%;min-width:400px;display:block"},plot);
+ const from=field("From year",node("select","ef-select"));const reset=node("button","ef-btn","Reset");reset.type="button";
+ const actions=node("div","ef-export-actions");actions.style.cssText="display:flex;flex-wrap:wrap;align-items:center;gap:7px";
+ const feedback=node("span","ef-export-feedback");feedback.setAttribute("aria-live","polite");feedback.style.cssText="color:#dfc28c;font-size:12px;max-width:240px";
+ controls.append(reset,actions,feedback);
+ const plot=node("div","ef-plot");plot.id="energy-fundamentals-historical-chart";plot.setAttribute("data-sli-export-external-controls","");
+ const svg=elSvg("svg",{role:"img","aria-label":"Interactive energy fundamentals series",style:"width:100%;min-width:400px;display:block"},plot);
+ const formats=[["csv","CSV"],["xlsx","Excel"],["png","PNG"],["jpg","JPG"],["pdf","PDF"],["embed","Embed"]];
+ for(const [format,label] of formats){
+  const button=node("button","ef-btn",label);button.type="button";button.setAttribute("data-sli-export-format",format);
+  button.title=format==="embed"?"Copy embeddable chart code":"Download currently selected indicator as "+label;
+  button.addEventListener("click",async()=>{
+   if(!window.SLIVisualExport?.export){feedback.textContent="Export service loading. Try again shortly.";return}
+   button.disabled=true;
+   try{await window.SLIVisualExport.export(svg,format,feedback)}
+   catch(error){feedback.textContent="Export unavailable: "+error.message}
+   finally{button.disabled=false}
+  });
+  actions.append(button);
+ }
+ const getVisibleRows=()=>{
+  const s=data.series[series.value];
+  return Object.entries(s.values).filter(([year])=>Number(year)>=Number(from.value))
+    .sort((a,b)=>Number(a[0])-Number(b[0]));
+ };
+ const exportSource=()=>data.series[series.value];
+ const provider={
+  getData:()=>{const s=exportSource();return {kind:"verified-provider",
+   headers:["Year","Value","Unit","Indicator","Source"],
+   rows:getVisibleRows().map(([year,value])=>[Number(year),Number(value),s.unit,s.name,s.sources[0]||""])}},
+  getMeta:()=>{const s=exportSource(),rows=getVisibleRows();return {
+   title:"Historical "+s.name,source:"Indonesia Ministry of Energy and Mineral Resources (ESDM)",
+   sourceUrl:s.sources[0]||"",period:(rows[0]?.[0]||"")+"–"+(rows.at(-1)?.[0]||""),
+   completeness:"All displayed source observations; no estimated or interpolated values."}}
+ };
+ function registerExporter(){window.SLIVisualExport?.register(svg,provider)}
+ document.addEventListener("sli:exportready",registerExporter);
+
  const info=node("p","ef-detail","Click a bar or point to read a dated observation.");
  const foot=node("p","ef-detail");
  const sources=node("div","ef-source");pane.append(controls,plot,info,foot,sources);
@@ -51,6 +86,7 @@ function buildExplorer(root,data){
  const current=data.series[series.value];const pts=Object.entries(current.values).filter(([year])=>Number(year)>=Number(from.value)).map(([year,value])=>[year,Number(value)]).sort((a,b)=>Number(a[0])-Number(b[0]));
  if(!pts.length)return;
  plot.style.overflowX="auto";chart(svg,pts,type.value,current.unit,(year,value)=>{info.textContent=year+" · "+current.name+": "+fmt(value)+" "+current.unit});
+ registerExporter();
  info.textContent="Latest annual observation: "+pts[pts.length-1][0]+" · "+fmt(pts[pts.length-1][1])+" "+current.unit+" · Click chart marks for any year.";
  foot.textContent=current.note;
  sources.replaceChildren(node("span",null,"Primary sources: "));
@@ -60,12 +96,7 @@ function buildExplorer(root,data){
  series.addEventListener("change",render);type.addEventListener("change",draw);
  from.addEventListener("change",draw);
  reset.addEventListener("click",()=>{series.value="oil_lifting";type.value="line";render()});
- dl.addEventListener("click",()=>{
- const s=data.series[series.value];const rows=Object.entries(s.values).filter(([y])=>Number(y)>=Number(from.value));
- const clean=x=>'"'+String(x).replace(/"/g,'""')+'"';
- const csv=[["year","value","unit","indicator","source"],...rows.map(([y,v])=>[y,v,s.unit,s.name,s.sources[0]])].map(r=>r.map(clean).join(",")).join("\r\n");
- const obj=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}));const a=node("a");a.href=obj;a.download="SLI-"+series.value+".csv";a.click();setTimeout(()=>URL.revokeObjectURL(obj),1000);
- });
+
 }
 function buildReserves(root,d){
  root.append(heading("Indonesia's Proven Reserves & Coal Resource Base","Different geological and commercial classifications"));
