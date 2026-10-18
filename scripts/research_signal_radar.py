@@ -54,7 +54,7 @@ GROUPS = (("minerals", "geopolitical"), ("minerals", "domestic"),
 
 # Only publisher-attributed titles from known news organisations or governmental/corporate sources.
 PUBLISHER_PATTERNS = (
-    "reuters", "associated press", "ap news", "bloomberg", "nikkei", "financial times",
+    "reuters", "cgtn", "associated press", "ap news", "bloomberg", "nikkei", "financial times",
     "cnbc", "bbc", "the jakarta post", "jakarta globe", "antaranews", "antara",
     "kompas", "bisnis", "katadata", "kontan", "tempo", "detik", "cnn indonesia",
     "south china morning post", "scmp", "thinkchina", "tech in asia", "datacenterdynamics",
