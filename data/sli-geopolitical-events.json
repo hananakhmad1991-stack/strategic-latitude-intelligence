@@ -1,8 +1,118 @@
 {
-  "schema_version": "sli-geopolitical-events-v1",
-  "scope": "Selected, source-attributed milestones; not an exhaustive conflict database or an objective geopolitical-intensity index. A curated event is not a causal explanation for commodity returns.",
-  "start_year": 1990,
+  "schema_version": "sli-geopolitical-events-v2",
+  "scope": "Selected sourced historical milestones from 1950; event dates are curated, not an exhaustive conflict register. A few monthly-reference milestones have an illustrative first-of-month date; not all markers have overlapping price data. Event associations are not causal claims.",
+  "start_year": 1950,
   "events": [
+    {
+      "date": "1950-06-25",
+      "title": "Korean War begins",
+      "id_title": "Perang Korea dimulai",
+      "category": "conflict",
+      "mechanism": "Cold War security escalation in East Asia affected regional trade, rebuilding and strategic supply priorities.",
+      "id_mechanism": "Eskalasi keamanan Perang Dingin di Asia Timur mengubah perdagangan regional, pembangunan kembali, dan prioritas pasokan strategis.",
+      "source_url": "https://history.state.gov/milestones/1945-1952/korean-war",
+      "publisher": "U.S. State Department",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1955-04-18",
+      "title": "Bandung Asian-African Conference opens",
+      "id_title": "Konferensi Asia Afrika Bandung dibuka",
+      "category": "trade",
+      "mechanism": "An important diplomatic milestone for postcolonial economic cooperation, not a quantified commodity-price shock.",
+      "id_mechanism": "Tonggak diplomasi kerja sama ekonomi pascakolonial, bukan guncangan harga komoditas yang telah terukur.",
+      "source_url": "https://history.state.gov/milestones/1953-1960/bandung-conf",
+      "publisher": "U.S. State Department",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1956-07-26",
+      "title": "Egypt nationalizes Suez Canal Company",
+      "id_title": "Mesir menasionalisasi Terusan Suez",
+      "category": "shipping",
+      "mechanism": "Suez nationalization and subsequent war heightened risk to the Europe–Asia shipping route.",
+      "id_mechanism": "Nasionalisasi Suez dan perang berikutnya meningkatkan risiko jalur pelayaran Eropa–Asia.",
+      "source_url": "https://history.state.gov/milestones/1953-1960/suez",
+      "publisher": "U.S. State Department",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1960-09-14",
+      "title": "OPEC founded in Baghdad",
+      "id_title": "OPEC didirikan di Baghdad",
+      "category": "trade",
+      "mechanism": "Oil-producing states established coordination over petroleum policy and market stability.",
+      "id_mechanism": "Negara produsen minyak membentuk koordinasi kebijakan perminyakan dan stabilitas pasar.",
+      "source_url": "https://www.opec.org/pr-detail/47-14-sep-2023.html",
+      "publisher": "OPEC",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1967-06-05",
+      "title": "Six-Day War begins",
+      "id_title": "Perang Enam Hari dimulai",
+      "category": "conflict",
+      "mechanism": "Arab–Israeli war introduced regional security and transport uncertainty.",
+      "id_mechanism": "Perang Arab–Israel meningkatkan ketidakpastian keamanan dan transportasi kawasan.",
+      "source_url": "https://www.britannica.com/event/Six-Day-War",
+      "publisher": "Encyclopaedia Britannica",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1973-10-17",
+      "title": "Arab oil embargo and production restrictions",
+      "id_title": "Embargo minyak Arab dan pembatasan produksi",
+      "category": "trade",
+      "mechanism": "Export restrictions and production cuts contributed to a global oil-price shock.",
+      "id_mechanism": "Pembatasan ekspor dan pemotongan produksi berkontribusi terhadap guncangan harga minyak global.",
+      "source_url": "https://history.state.gov/milestones/1969-1976/oil-embargo",
+      "publisher": "U.S. State Department",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1979-02-11",
+      "title": "Iranian Revolution triumphs",
+      "id_title": "Revolusi Iran mencapai puncaknya",
+      "category": "conflict",
+      "mechanism": "Iranian production and Gulf geopolitical uncertainty altered petroleum supply expectations.",
+      "id_mechanism": "Gangguan produksi Iran dan ketidakpastian kawasan Teluk mengubah ekspektasi pasokan minyak.",
+      "source_url": "https://www.britannica.com/event/Iranian-Revolution",
+      "publisher": "Encyclopaedia Britannica",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1980-09-22",
+      "title": "Iran–Iraq War begins",
+      "id_title": "Perang Iran–Irak dimulai",
+      "category": "conflict",
+      "mechanism": "War between large oil producers increased Persian Gulf petroleum-shipping risks.",
+      "id_mechanism": "Perang dua produsen minyak besar meningkatkan risiko pasokan dan pelayaran Teluk Persia.",
+      "source_url": "https://www.britannica.com/event/Iran-Iraq-War",
+      "publisher": "Encyclopaedia Britannica",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1986-01-01",
+      "title": "Oil-price collapse during 1986",
+      "id_title": "Harga minyak merosot pada 1986",
+      "category": "macro",
+      "mechanism": "Oil-market oversupply illustrates commodity-price changes without a single discrete military trigger; January is a reference month, not an exact event day.",
+      "id_mechanism": "Kelebihan pasokan minyak menggambarkan perubahan harga tanpa satu pemicu militer; Januari hanya bulan rujukan, bukan tanggal kejadian tepat.",
+      "source_url": "https://www.eia.gov/todayinenergy/detail.php?id=51798",
+      "publisher": "EIA",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1989-11-09",
+      "title": "Berlin Wall opens",
+      "id_title": "Tembok Berlin dibuka",
+      "category": "conflict",
+      "mechanism": "End-of-Cold-War changes reshaped European strategic and economic institutions.",
+      "id_mechanism": "Perubahan menjelang berakhirnya Perang Dingin membentuk ulang institusi keamanan dan ekonomi Eropa.",
+      "source_url": "https://history.state.gov/milestones/1989-1992/fall-of-communism",
+      "publisher": "U.S. State Department",
+      "record_status": "historical_source_attributed"
+    },
     {
       "date": "1990-08-02",
       "title": "Iraq invades Kuwait",
