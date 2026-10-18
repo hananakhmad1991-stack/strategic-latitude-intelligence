@@ -149,12 +149,13 @@ function render(root,chapter,official,news){
  stateIntro.append(line,p(tx("These are distinct observation periods and units; do not aggregate them or treat them as a geopolitical risk index.",
  "Indikator ini memiliki satuan dan periode berbeda; jangan menjumlahkan atau menganggapnya sebagai indeks risiko geopolitik."),"geo-intel-source-note"));root.append(stateIntro);
  root.append(createTradeChart(official?.partners||[]));
- const desk=el("section","geo-intel-section");desk.append(h(2,tx("03 · Six geopolitical theatres shaping Indonesia","03 · Enam medan geopolitik yang memengaruhi Indonesia")),
+ const timelineRoot=el("div");timelineRoot.id="sliGeoTimelineRoot";root.append(timelineRoot);
+ const desk=el("section","geo-intel-section");desk.append(h(2,tx("04 · Six geopolitical theatres shaping Indonesia","04 · Enam medan geopolitik yang memengaruhi Indonesia")),
  p(tx("Choose a theatre to read mechanisms, counterevidence, measured indicators and issues to monitor. Analysis is editorial and conditional; numbers come only from the original data register.",
  "Pilih tema untuk membaca mekanisme, bukti pembanding, indikator terukur, serta perkembangan yang perlu dipantau. Analisis bersifat editorial dan bersyarat; angka hanya berasal dari registri data asli."),"geo-intel-muted"));
  const chooser=el("div","geo-intel-chooser"),details=el("div","geo-intel-detail-slot");desk.append(chooser,details);root.append(desk);
  const feed=el("section","geo-intel-section");feed.id="geo-news";
- feed.append(h(2,tx("04 · News and OSINT · attributed secondary evidence","04 · Berita dan OSINT · data sekunder teratribusi")),
+ feed.append(h(2,tx("05 · News and OSINT · attributed secondary evidence","05 · Berita dan OSINT · data sekunder teratribusi")),
  p(tx("Reuters, CGTN, ANTARA and other monitored publishers are eligible. The original media headline is usable evidence of what a publisher reported; the occurrence, magnitude and quantified Indonesian impact require further comparison with official records and independent OSINT.",
  "Reuters, CGTN, ANTARA, dan media monitoring lainnya dapat digunakan. Headline merupakan bukti apa yang dilaporkan penerbit; kejadian, besaran, dan dampak terukur bagi Indonesia perlu diuji dengan data resmi dan OSINT lain."),"geo-intel-muted"));
  const filter=el("div","geo-intel-controls"),topic=el("select","geo-intel-select"),
@@ -166,14 +167,14 @@ function render(root,chapter,official,news){
  search.type="search";search.placeholder=tx("Search publisher or issue…","Cari media atau isu…");search.setAttribute("aria-label","Search geopolitical news archive");
  filter.append(topic,search,link("./sli-source-viewer.html?dataset=sli-secondary-news-index.json",tx("Source register ↗","Registri sumber ↗")));
  const listing=el("div","geo-intel-news-grid");feed.append(filter,listing);root.append(feed);
- const scenarios=el("section","geo-intel-section");scenarios.append(h(2,tx("05 · Scenario pathways, not probability forecasts","05 · Jalur skenario, bukan ramalan probabilitas")));
+ const scenarios=el("section","geo-intel-section");scenarios.append(h(2,tx("06 · Scenario pathways, not probability forecasts","06 · Jalur skenario, bukan ramalan probabilitas")));
  const cases=el("div","geo-intel-scenarios");
  for(const s of chapter.scenarios||[]){
   const card=el("article","geo-intel-scenario");
   card.append(h(3,field(s,"title")),p(field(s,"narrative")));cases.append(card)
  }scenarios.append(cases);root.append(scenarios);
  const conclusion=el("section","geo-intel-section geo-intel-conclusion");
- conclusion.append(h(2,tx("06 · Overall strategic assessment","06 · Penilaian strategis keseluruhan")));
+ conclusion.append(h(2,tx("07 · Overall strategic assessment","07 · Penilaian strategis keseluruhan")));
  const ordered=el("ol","geo-intel-assessment");
  for(const [en,id] of chapter.assessments||[])ordered.append(el("li",null,tx(en,id)));
  conclusion.append(ordered,
@@ -203,6 +204,7 @@ async function init(){
  }
  render(root,chapter.value,official.status==="fulfilled"?official.value:null,
   news.status==="fulfilled"?news.value:null);
+ if(typeof window.initSLIGeopoliticalTimeline==="function")window.initSLIGeopoliticalTimeline().catch(err=>console.error("[SLI geopolitical timeline]",err));
 }
 window.initSLIGeopoliticsChapter=init;
 document.addEventListener("sli:languagechange",()=>{if(document.getElementById("sliGeoChapterRoot"))init()});
