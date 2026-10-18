@@ -152,6 +152,7 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  const rightPanel=()=>flatten(root).find(n=>n.className==="map-asset-insight");
  assert.ok(rightPanel(),"Interactive map has an inspectable evidence panel on the right");
  assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("SELECTED ASSET INSIGHT")),"Clicking a locality marker updates the right-hand panel");
+ assert.ok(flatten(rightPanel()).some(n=>n.className==="map-insight-detail"),"Map clicks must immediately show a source-backed dossier without a second selection");
  const batPicker=flatten(rightPanel()).find(n=>n.className==="map-insight-picker");
  if(batPicker){
   const selector=batPicker.children.find(n=>n.tagName==="select");
