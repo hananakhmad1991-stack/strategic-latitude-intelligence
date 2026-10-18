@@ -23,7 +23,7 @@ const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className
 window.initSLIInvestmentMedia=async function(){
  const root=document.getElementById("investmentMediaRoot");if(!root)return;
  root.replaceChildren();
- const p=el("p","tr-detail","Investment media discovery spans biofuels, renewable power, EVs, smelters, digital infrastructure and corporate actions. Headlines are attributed leads, not confirmed price sentiment, investment realization or asset commissioning.");
+ const p=el("p","tr-detail","Investment secondary-media evidence covers biofuels, renewable power, EVs, smelters, digital infrastructure and corporate actions. Compare attributed reporting with SLI data; headline claims alone do not prove investment disbursement, market sentiment or asset commissioning.");
  const controls=el("div","tr-controls"),type=el("select","tr-select"),search=el("input","tr-select"),status=el("p","tr-status","Loading dated source scans…"),list=el("div","tr-news");
  search.type="search";search.placeholder="Search investor, project, province…";search.setAttribute("aria-label","Search investment headlines");
  [["all","All investment topics"],...TAX.map(([name])=>[name,name])].forEach(([v,t])=>{const x=el("option",null,t);x.value=v;type.append(x)});
@@ -37,7 +37,7 @@ window.initSLIInvestmentMedia=async function(){
   rows.forEach(x=>{
    const card=el("article","tr-news-card"),label=el("div","eyebrow",x.topic+" · "+x.publisher+" · "+x.source),link=el("a",null,x.title),date=el("p","tr-detail",x.date||"Publication date unavailable");
    link.href=x.url;link.target="_blank";link.rel="noopener noreferrer";
-   card.append(label,link,date,el("p","tr-detail",x.topic==="Corporate actions & market"?"Market reaction NOT measured: review IDX filing, actual transaction close, trading prices and volume before interpreting sentiment.":"Unverified headline lead: verify project stage, corporate source and implementation evidence."));
+   card.append(label,link,date,el("p","tr-detail",x.topic==="Corporate actions & market"?"Market reaction NOT measured: review IDX filing, actual transaction close, trading prices and volume before interpreting sentiment.":"Attributed secondary news report: compare project stage, corporate source and implementation evidence."));
    list.append(card);
   });
  }
