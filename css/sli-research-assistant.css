@@ -115,3 +115,14 @@
 .sli-ra-advanced-lab:not([open]) #raAnalyticalWorkbench{display:none}
 .sli-ra-advanced-lab[open]>summary{margin-bottom:14px}
 @media(max-width:650px){.sli-ra-chat-promise{font-size:12px}.sli-ra-template-featured{grid-column:auto}.sli-ra-chat-preferences{flex:1 1 100%}}
+
+
+/* Academic research assistant: accessible, deterministic AHP results inside chat. */
+.sli-ra-ahp-sample{color:#22608e;font:700 11px/1.5 system-ui,sans-serif;text-decoration:underline;align-self:flex-start}
+.sli-ra-local-ahp-chart{background:#f4f8fc;border:1px solid #cadce7;border-radius:11px;padding:13px;margin:15px 0 7px}
+.sli-ra-local-ahp-chart>strong{display:block;font:750 13px/1.5 system-ui,sans-serif;color:#185377;margin-bottom:10px}
+.sli-ra-local-ahp-row{display:grid;grid-template-columns:minmax(85px,1.1fr) minmax(110px,2.5fr) 65px;gap:9px;align-items:center;margin:9px 0;font:12px/1.5 system-ui,sans-serif;color:#335873}
+.sli-ra-local-ahp-row>span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.sli-ra-local-ahp-track{height:15px;background:#e3edf4;border-radius:5px;overflow:hidden}
+.sli-ra-local-ahp-bar{height:100%;background:#276e9e;border-radius:5px}
+@media(max-width:550px){.sli-ra-local-ahp-row{grid-template-columns:minmax(68px,1fr) minmax(76px,1.4fr) 52px;gap:6px;font-size:10px}}
