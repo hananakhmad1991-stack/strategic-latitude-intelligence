@@ -145,7 +145,15 @@ async function tryLocalAhp(files,question,requestedMethod){
   }catch{return false}
  }
  const output=module.analyseAhpText(raw,f.name);
- const markdown=module.ahpResultMarkdown(output,state.language);
+ let markdown=module.ahpResultMarkdown(output,state.language);
+ // Optional public SLI background: never used to alter respondent weights.
+ try{
+  const r=await fetch("./data/sli-research-province-preview.json",{cache:"no-store"});
+  if(r.ok){
+   const evidence=module.supplementarySliContext(question,await r.json());
+   if(evidence)markdown+="\n\n"+evidence.markdown;
+  }
+ }catch{}
  const currentQuestion=question;append("user",question+" · File: "+f.name);
  const card=append("assistant",markdown);
  const plot=node("div","sli-ra-local-ahp-chart");
