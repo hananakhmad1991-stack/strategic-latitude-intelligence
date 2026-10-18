@@ -744,7 +744,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    }
    card.append(suggested);
    const link=allProvince.find(r=>/^https:\/\//.test(r.source||""));
-   if(link)card.append(node("div","map-insight-sources",null)).lastChild.append(srcLink(link.source,label("Example original source","Contoh sumber asli")));
+   if(link){const sources=node("div","map-insight-sources");sources.append(srcLink(link.source,label("Example original source","Contoh sumber asli")));card.append(sources)}
   }
   return card;
  }
