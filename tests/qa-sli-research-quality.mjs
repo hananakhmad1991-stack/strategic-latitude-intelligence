@@ -120,3 +120,14 @@ test("Official energy-security index and 4A components are mandatory national ev
  assert.match(req.instructions,/APA 7/);
  assert.match(JSON.stringify(req.input),/7\.04\/10/);
 });
+
+test("APA reference panel, model statement and gated news monitoring in owner UI",()=>{
+ const html=read("sli-research-ai.html"),client=read("js/sli-research-assistant.js");
+ assert.match(html,/raModelStatementBody/);
+ assert.match(html,/Referensi penelitian \(APA 7\)/);
+ assert.match(client,/function apaEntry/);
+ assert.match(client,/function renderModelStatement/);
+ assert.match(client,/sources\.slice\(0,40\)/);
+ assert.match(client,/evidence_status==="publisher_page_matched"/);
+ assert.match(client,/reportBody\(text\)/);
+});
