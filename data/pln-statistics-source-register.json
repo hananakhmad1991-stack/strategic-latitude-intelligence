@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-16",
+  "updated_at": "2026-10-19",
   "title": "PLN Statistics Source Registry for SLI",
   "landing_page": "https://www.pln.co.id/hubungan-investor-id/publikasi-investor-id/laporan-statistik-id",
   "verified_publication_links": [
@@ -57,8 +57,15 @@
     },
     {
       "topic": "SAIDI and SAIFI electricity reliability",
-      "destination": "Energy Security · security and resilience",
-      "status": "pending_pdf_table_extraction"
+      "destination": "Energy Security · electricity continuity + 38-province locator + PLN statistics",
+      "status": "table_16_official_2023_2025_digitized_pln_unit_granularity",
+      "dataset": "data/pln-saidi-saifi-2023-2025.json",
+      "completeness": "23 official PLN unit series per year; national and Java/non-Java aggregates; 38-province locator is not 38 independent observations",
+      "original_sources": [
+        "https://web.pln.co.id/statics/uploads/2024/08/Statistik-PLN-2023-29.7.24-1.pdf",
+        "https://web.pln.co.id/statics/uploads/2025/09/Statistik-PLN-2024-Ind-Eng.pdf",
+        "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf"
+      ]
     },
     {
       "topic": "Electrification ratio, electricity use per capita",
@@ -171,5 +178,21 @@
       "B4"
     ],
     "note": "Original full RUPTL and 2025 Statistics download remain unsuccessful. Annex titles indexed on PDF page 27, detailed annex schedules not in uploaded excerpt."
+  },
+  "reliability_table_16": {
+    "dataset": "data/pln-saidi-saifi-2023-2025.json",
+    "observation_years": [
+      2023,
+      2024,
+      2025
+    ],
+    "coverage": "23 PLN reporting units/year; 38-province locator with explicit shared-UID flags and missing separate Papua observations",
+    "indicator_units": {
+      "SAIDI": "hours/customer",
+      "SAIFI": "interruptions/customer"
+    },
+    "latest_source": "https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf",
+    "methodology": "National aggregate published by PLN; no arithmetic disaggregation to province-level totals.",
+    "source_access_note": "Selected source Table 16 figures indexed and manually transcribed; the full 2025 PDF download and independent all-table extraction are not claimed."
   }
 }
