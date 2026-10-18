@@ -1,6 +1,6 @@
 import {METHODS,getMethod,parseCsv,toRows,describe,evaluate} from "./sli-analytical-core.mjs?v=20261018-econ5";
-import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns,panelStability} from "./sli-econometrics.mjs?v=20261018-econ11";
-import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs?v=20261018-econ11";
+import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns,panelStability} from "./sli-econometrics.mjs?v=20261018-econ12";
+import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs?v=20261018-econ12";
 import {buildBpsOfficialPanel,BPS_PANEL_META} from "./sli-bps-official-panel.mjs?v=20261018-bps3";
 import {auditOfficialProvincialData} from "./sli-provincial-data-integrity.mjs?v=20261018-audit1";
 const $=id=>document.getElementById(id);
