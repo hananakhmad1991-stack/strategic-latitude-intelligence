@@ -128,7 +128,7 @@ function methodStatus(){
 async function tryLocalAhp(files,question,requestedMethod){
  if(files.length!==1||!/\.(?:csv|json)$/i.test(files[0].name))return false;
  if(!state.features)state.features=await import("./sli-investor-chat.mjs?v=20261018-chatfirst1");
- const module=await import("./sli-research-questionnaire.mjs?v=20261018-ahp1");
+ const module=await import("./sli-research-questionnaire.mjs?v=20261018-ahp2");
  const selected=requestedMethod==="ahp"||module.isAhpQuestion(question);
  const f=files[0];
  if(f.size>600000||!f.size){if(selected)throw Error("AHP local: file must be 1–600 KB");return false}
