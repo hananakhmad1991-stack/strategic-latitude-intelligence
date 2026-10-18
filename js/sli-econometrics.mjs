@@ -261,8 +261,17 @@ export function panelStability(rows,predictors,outcome,entityField,timeField,inc
     relative_change_near_zero_denominator:Math.abs(baseline[name])<0.05,
     sensitivity:relative===null?"near_zero_baseline":relative>25?"high":relative>10?"moderate":"low"};
   });
+  const refits=fits.map(entry=>({
+   excluded:entry.excluded,
+   coefficients:predictors.map(name=>{
+    const estimate=entry.estimates[name],reference=baseline[name];
+    return {name,estimate:rnd(estimate),baseline:rnd(reference),
+     absolute_shift:rnd(estimate-reference),
+     sign_changed:Math.abs(reference)>1e-12&&Math.abs(estimate)>1e-12&&Math.sign(estimate)!==Math.sign(reference)};
+   })
+  }));
   return {available:true,tested:selected.length,successful:fits.length,total_candidates:entry.candidates.length,
-   exhaustive:selected.length===entry.candidates.length,metrics,failures,
+   exhaustive:selected.length===entry.candidates.length,metrics,failures,refits,
    note:"Re-estimate after dropping one entity/one annual period, holding predictor set and fixed-effects specification constant. Not a causal robustness test."};
  };
  let alternative=null;
@@ -283,7 +292,7 @@ export function panelStability(rows,predictors,outcome,entityField,timeField,inc
   looEntity.successful===looEntity.total_candidates&&looYear.successful===looYear.total_candidates;
  const fragile=signUnstable||significantShifts.length>0||timeSpecShifts.length>0||
   !allRefitsComplete;
- const nearZero=baseline&&Object.entries(baseline).filter(([name,value])=>Math.abs(value)<0.05).map(([name])=>name);
+ const nearZero=Object.entries(baseline).filter(([name,value])=>Math.abs(value)<0.05).map(([name])=>name);
  const caution=[
   signUnstable?"At least one leave-one-out refit reverses a coefficient sign; direction of association is not robust across periods/entities.":"No coefficient sign reversal detected in successful refits.",
   significantShifts.length?"At least one leave-one-out refit shifts an estimate by >25% of the baseline magnitude.":"No >25% leave-one-out relative shift in successful refits.",
