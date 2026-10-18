@@ -47,17 +47,27 @@ test("Investor workbench DOM: panel FE actually estimates 12 entities x 6 years,
   const p=i*.4+(yr-2020)+(i*yr%7)*.2,q=(yr+i*3)%6;
   records.push(["P"+i,yr,p,q,11+i*4+1.9*p-.6*q+.8*(yr-2020)+Math.sin(i+yr)*.05].join(","));
  }
- const csv=["province,year,pmtb,gini,growth",...records].join("\n");
+ const csv=["province,year,pmtb_share_pct,electricity_access_pct,real_grdp_growth_pct",...records].join("\n");
  Object.defineProperty($("raDataFile"),"files",{configurable:true,value:[{name:"synthetic_panel.csv",size:csv.length,text:async()=>csv}]});
  $("raDataFile").dispatchEvent(new dom.window.Event("change",{bubbles:true}));await tick();
+ assert.equal($("raPredictor").value,"pmtb_share_pct","Default X must represent capital formation, not annual year or economic growth");
+ assert.equal($("raOutcome").value,"real_grdp_growth_pct","Default Y must be growth");
  $("raMethod").value="panel_fe";$("raMethod").dispatchEvent(new dom.window.Event("change"));
- $("raPredictor").value="pmtb";$("raOutcome").value="growth";
+ assert.match($("raMethodInfo").textContent,/Y = real_grdp_growth_pct; X = pmtb_share_pct/);
  $("raYearFE").checked=true;
  $("raRunMethod").click();
  assert.match($("raModelResult").textContent,/Panel Fixed Effects/);
  assert.match($("raModelResult").textContent,/12 entitas/);
  assert.match($("raModelResult").textContent,/cluster-robust/i);
  assert.match($("raModelResult").textContent,/Unduh Investor Analytical Report/);
+ assert.match($("raModelResult").textContent,/Y \(variabel terikat\) = real_grdp_growth_pct; X \(prediktor\) = pmtb_share_pct/);
+ assert.equal($("raModelResult").querySelector("table tr:nth-child(2) td:first-child").textContent,"pmtb_share_pct");
+ // A deliberately reversed specification must be explicitly identified as a different economic question.
+ $("raPredictor").value="real_grdp_growth_pct";
+ $("raOutcome").value="pmtb_share_pct";
+ $("raPredictor").dispatchEvent(new dom.window.Event("change"));
+ $("raRunMethod").click();
+ assert.match($("raModelResult").textContent,/BUKAN PMTB → pertumbuhan/);
  dom.window.close();
  delete globalThis.window;delete globalThis.document;
 });
