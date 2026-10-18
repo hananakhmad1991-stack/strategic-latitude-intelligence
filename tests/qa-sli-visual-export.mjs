@@ -80,3 +80,48 @@ test("PDF emits binary PDF with embedded JPEG page, cross-ref table and EOF",asy
  assert.ok(text.includes("xref\n0 6"));
  assert.ok(text.trimEnd().endsWith("%%EOF"));
 });
+
+
+test("Energy Fundamentals chart actually renders six working export controls with verified oil lifting values",async()=>{
+ class FakeNode{
+  constructor(tag){this.tag=tag;this.children=[];this.id="";this.className="";this.textContent="";this.style={};this.attrs={};this.listeners=new Map();this.value="";this.isConnected=true}
+  append(...children){this.children.push(...children)}
+  appendChild(child){this.children.push(child);return child}
+  replaceChildren(...children){this.children=children}
+  setAttribute(k,v){this.attrs[k]=String(v)}
+  addEventListener(k,fn){this.listeners.set(k,fn)}
+ }
+ const walk=(x)=>x&&typeof x==="object"?[x,...(x.children||[]).flatMap(walk)]:[];
+ const root=new FakeNode("div");root.id="energyFundamentalsRoot";
+ const handlers=new Map(),registrations=[],exports=[];
+ const document={
+  getElementById:id=>id==="energyFundamentalsRoot"?root:null,
+  createElement:tag=>new FakeNode(tag),
+  createElementNS:(_ns,tag)=>new FakeNode(tag),
+  createTextNode:text=>({textContent:String(text)}),
+  addEventListener:(name,callback)=>handlers.set(name,callback)
+ };
+ const window={SLIVisualExport:{
+  register:(svg,provider)=>{registrations.push({svg,provider});return true},
+  export:async(svg,fmt,feedback)=>{exports.push({svg,fmt});feedback.textContent="File ready"}
+ }};
+ const data=JSON.parse(read("data/energy-fundamentals.json"));
+ const fetch=async()=>({ok:true,json:async()=>data});
+ runInNewContext(read("js/energy-fundamentals.js"),{document,window,fetch,URL,Intl,Date,Math,Number,console},{filename:"energy-fundamentals.js"});
+ await window.initEnergyFundamentals();
+ const nodes=walk(root);
+ const controls=nodes.filter(x=>x.tag==="button"&&x.attrs?.["data-sli-export-format"]);
+ assert.deepEqual(controls.map(x=>x.attrs["data-sli-export-format"]),["csv","xlsx","png","jpg","pdf","embed"]);
+ assert.ok(nodes.some(x=>x.id==="energy-fundamentals-historical-chart"));
+ assert.ok(registrations.length>0,"Chart registered numerical data on first render");
+ const provider=registrations[0].provider;
+ const csvData=provider.getData();
+ assert.deepEqual(Array.from(csvData.headers),["Year","Value","Unit","Indicator","Source"]);
+ assert.equal(csvData.rows.length,5);
+ assert.equal(csvData.rows.at(-1)[0],2025);
+ assert.equal(csvData.rows.at(-1)[1],605.3);
+ assert.ok(provider.getMeta().sourceUrl.startsWith("https://www.esdm.go.id"));
+ for(const item of controls)await item.listeners.get("click")();
+ assert.deepEqual(exports.map(x=>x.fmt),["csv","xlsx","png","jpg","pdf","embed"]);
+ assert.ok(handlers.has("sli:exportready"),"Should register even if universal export loads after the chart");
+});
