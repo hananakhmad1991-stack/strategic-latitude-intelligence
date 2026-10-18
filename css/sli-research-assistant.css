@@ -84,3 +84,5 @@
 .sli-ra-msg-text ol{margin:8px 0 14px;padding-left:23px}
 .sli-ra-msg-text code{background:#eef4f9;padding:1px 3px;border-radius:3px;font-size:.92em}
 @media(max-width:650px){.sli-ra-visuals{padding:8px}.sli-ra-chart{padding:11px}.sli-ra-chart-row{grid-template-columns:minmax(65px,1fr) minmax(48px,1fr) minmax(48px,auto);gap:6px}.sli-ra-chart-label,.sli-ra-chart-value{font-size:10px}}
+
+.sli-ra-chart-none{border-left:3px solid #b8cddd;background:#f4f8fb;padding:9px 12px;color:#657b8f;font-size:12px;margin:0 0 13px!important}

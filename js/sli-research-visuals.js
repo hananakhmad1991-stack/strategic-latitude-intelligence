@@ -57,7 +57,10 @@ function renderMarkdown(answer,where,sources=[]){
  }
 }
 function renderCharts(charts,where,sources=[],lang="id"){
- if(!Array.isArray(charts)||!charts.length)return;
+ if(!Array.isArray(charts)||!charts.length){
+  where.prepend(create("p","sli-ra-chart-none",lang==="id"?"Visualisasi belum tersedia: sumber terpilih tidak memiliki angka sebanding yang cukup.":"No chart: the selected evidence lacks sufficient comparable numeric observations."));
+  return;
+ }
  const section=create("section","sli-ra-visuals");
  section.append(create("h3",null,lang==="id"?"Visual Insights · Data terverifikasi":"Visual Insights · Source-linked data"));
  for(const chart of charts.slice(0,4)){

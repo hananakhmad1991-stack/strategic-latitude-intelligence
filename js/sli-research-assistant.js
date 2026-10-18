@@ -58,31 +58,6 @@ function append(role,text){
  if(role==="assistant"&&window.SLIResearchVisuals)window.SLIResearchVisuals.renderMarkdown(text,body,state.lastResult?.sources||[]);else body.textContent=text;
  return body;
 }
-function renderParagraph(text,where){
- // Only numbered citations become links to the separately rendered, validated source references.
- const p=node("p");const parts=String(text).split(/(\[\d+\])/g);
- for(const piece of parts){
-  const m=/^\[(\d+)\]$/.exec(piece);
-  if(m&&state.lastResult?.sources?.[Number(m[1])-1]){
-   const evidence=state.lastResult.sources[Number(m[1])-1];
-   const a=node("a",null,piece);a.href=safeUrl(evidence.source_url)||"#raSourcesPanel";a.target="_blank";a.rel="noopener noreferrer";a.title=evidence.title||tr("source");p.append(a);
-  } else p.append(document.createTextNode(piece));
- }
- where.append(p);
-}
-function renderMarkdown(text,where){
- where.replaceChildren();
- let bullets=null;
- for(const line of String(text||"").slice(0,24000).split("\n")){
-  const clean=line.trim();
-  if(!clean){bullets=null;continue}
-  const h=/^(#{1,4})\s+(.+)$/.exec(clean);
-  if(h){bullets=null;where.append(node("h3",null,h[2]));continue}
-  const bullet=/^(?:[-*]|\d+\.)\s+(.+)$/.exec(clean);
-  if(bullet){if(!bullets){bullets=node("ul");where.append(bullets)}const li=node("li");renderParagraph(bullet[1],li);bullets.append(li);continue}
-  bullets=null;renderParagraph(clean,where);
- }
-}
 function renderSources(sources){
  const list=$("raSourcesList");list.replaceChildren();
  const valid=Array.isArray(sources)?sources.slice(0,12):[];
