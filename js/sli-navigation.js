@@ -207,7 +207,7 @@ window.SLIArchitecture={modules,groups,related,refresh:render};
  else mountSecondaryEvidence();
 
 
-// SLI source attribution: JSON is machine data, not an original PDF.
+// SLI source attribution: machine-readable back-end records are not user-facing downloads or original publisher reports.
 function sliSourceViewerHref(href){
  try{
   const u=new URL(href,document.baseURI);
@@ -219,15 +219,19 @@ function sliSourceViewerHref(href){
 function normalizeSLISourceLinks(){
  if(!document.querySelectorAll)return;
  for(const a of document.querySelectorAll("a[href]")){
-  if(a.hasAttribute("download")||a.dataset.sliHumanSourceLink==="1")continue;
+  if(a.dataset.sliHumanSourceLink==="1")continue;
   const target=sliSourceViewerHref(a.getAttribute("href"));
   if(!target)continue;
   a.dataset.sliHumanSourceLink="1";
+  a.removeAttribute("download");
   const visible=(a.textContent||"").trim();
-  if(/\bPDF\b/i.test(visible))a.textContent='Buka rujukan dokumen (PDF jika tersedia) ↗';
-  else if(/\bJSON\b/i.test(visible))a.textContent='Lihat keterangan sumber & unduh JSON ↗';
+  const useId=window.SLIi18n?.language==="id"||document.documentElement.lang?.toLowerCase().startsWith("id");
+  a.textContent=/\bPDF\b/i.test(visible)?
+   (useId?"Referensi & dokumen penerbit (jika tersedia) ↗":"Publisher references & documents (if available) ↗"):
+   (useId?"Sumber & metodologi SLI ↗":"SLI sources & methodology ↗");
   a.href=target;
-  a.title=(a.title?a.title+" · ":"")+"Source notes and publisher PDF where available; raw JSON via explicit download";
+  a.title="Review dataset provenance, original publishers and SLI methodology; no raw-data download";
+  a.removeAttribute("target");
  }
 }
 let sourceLinksQueued=false;
