@@ -69,7 +69,7 @@ function signalRows(d){
 }
 function renderSignals(root,rows,feeds){
  root.append(dom("h3","sp-panel-title",tr("Monitoring signals","Sinyal pemantauan")));
- root.append(dom("p","sp-panel-sub",tr("Source-attributed headlines for investigation, NOT verified incidents or confirmed trades.","Judul berita bersumber untuk diperiksa, BUKAN insiden terverifikasi atau transaksi pasti.")));
+ root.append(dom("p","sp-panel-sub",tr("Attributed secondary-media reports for comparison with SLI statistics; headlines alone do not prove incidents or transactions.","Berita media teratribusi sebagai data sekunder untuk dibandingkan dengan statistik SLI; judul saja belum membuktikan insiden atau transaksi.")));
  const bar=dom("div","sp-filter-bar"),list=dom("div","sp-signals"),meta=dom("p","sp-panel-sub");
  const options=[["all",tr("All","Semua")],["energy",tr("Energy","Energi")],["investment",tr("Investment","Investasi")],["technology",tr("AI & Technology","AI & Teknologi")],["geopolitics",tr("Geopolitics","Geopolitik")]];
  let category="all";
@@ -81,7 +81,7 @@ function renderSignals(root,rows,feeds){
   for(const row of selection){
    const item=dom("article","sp-signal");
    item.append(link(row.url,row.title),dom("div","sp-signal-meta",row.publisher+" · "+dateOnly(row.date)+" · "+row.type+" / "+row.topic));
-   item.append(dom("p","sp-signal-note",tr("Unverified monitoring lead; check original publication and follow-up documents.","Temuan monitoring belum diverifikasi; periksa publikasi asli dan dokumen lanjutannya.")));
+   item.append(dom("p","sp-signal-note",tr("Attributed secondary news; compare the publisher report with official documents and subsequent coverage.","Berita sekunder teratribusi; bandingkan laporan penerbit dengan dokumen resmi dan liputan lanjutannya.")));
    list.append(item);
   }
   meta.textContent=tr("Showing ","Menampilkan ")+selection.length+tr(" of "," dari ")+rows.filter(r=>category==="all"||r.type===category).length+tr(" dated leads. Headlines are not a factual risk score."," temuan bertanggal. Judul berita bukan skor risiko faktual.");
