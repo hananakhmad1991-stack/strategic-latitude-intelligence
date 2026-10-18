@@ -5,7 +5,7 @@
  */
 import preview from "../../data/sli-research-evidence-preview.json";
 import provinces from "../../data/sli-research-province-preview.json";
-import {validateAssistantPayload,selectResearchEvidence,modelRequest,verifyResearchAnswer} from "./assistant-core.mjs";
+import {validateAssistantPayload,selectResearchEvidence,modelRequest,verifyResearchAnswer,verifyMethodOnlyAnswer} from "./assistant-core.mjs";
 import {extractModelText} from "./core.mjs";
 import {buildResearchCharts} from "./chart-data.mjs";
 import {validateOwnerAttachments,buildOwnerFileParts} from "../../js/sli-investor-chat.mjs";
@@ -117,10 +117,9 @@ export default{
   let rate;try{rate=await env.AI_LIMITER.limit({key:(await sha256(env.OWNER_TEST_TOKEN)).slice(0,16).join("-")})}catch{return send(503,{error:"rate_limiter_not_ready"},origin)}
   if(!rate?.success)return send(429,{error:"owner_test_rate_limit"},origin);
   const evidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",10);
-  if(!evidence.length)return send(200,{mode:"generative_rag",answer:payload.language==="id"?
-    "Belum cukup bukti sesuai pertanyaan ini dalam corpus uji terbatas SLI. Tidak ada analisis generatif yang dibuat karena sumbernya tidak memadai.":
-    "The limited SLI test corpus has insufficient matching evidence. No unsupported report was generated.",
-    sources:[],charts:[],evidence_status:"insufficient",research_format:payload.mode},origin);
+  // No source match does not prevent academic methodology assistance.
+  // Without evidence, only a clearly scoped research-design response is allowed;
+  // there is no empirical claim, SLI numeric data or fabricated citation.
   const params=modelRequest(payload,evidence,env.RESEARCH_MODEL);
   if(ownerFiles.length){
    // Never include the binary blob as chat history or store in public SLI corpus.
@@ -142,9 +141,10 @@ export default{
    if(json.status!=="completed")return send(502,{error:"model_response_incomplete",reason:json.incomplete_details?.reason||"unknown"},origin);
    answer=extractModelText(json);
   }catch{return send(502,{error:"model_unreachable"},origin)}
-  if(!verifyResearchAnswer(answer,evidence))return send(502,{error:"invalid_or_missing_source_citations"},origin);
+  if(!(evidence.length?verifyResearchAnswer(answer,evidence):verifyMethodOnlyAnswer(answer)))
+   return send(502,{error:evidence.length?"invalid_or_missing_source_citations":"invalid_unsourced_research_design"},origin);
   return send(200,{mode:"generative_rag",research_format:payload.mode,answer,
-   charts:buildResearchCharts(evidence,payload.language,payload.question),evidence_status:"owner_staging_verify_sources",
+   charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:evidence.length?"owner_staging_verify_sources":"methodology_design_only_no_verified_sli_evidence",
    sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo}))},origin);
  }
 };
