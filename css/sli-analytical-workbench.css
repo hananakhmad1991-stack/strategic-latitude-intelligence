@@ -297,3 +297,29 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-restore-lag:hover{backgrou
 body.sli-research-brand #raAnalyticalWorkbench .ra-wb-restore-lag:focus-visible{
  outline:3px solid #ae8b4a;outline-offset:3px
 }
+
+
+/* Reproducibility: individual omitted-year and omitted-province refits. */
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-refit-details{
+ border:1px solid #ccdae7;border-radius:9px;padding:11px 13px;
+ margin:13px 0;background:#f8fbfe
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-refit-details summary{
+ font:750 13px/1.5 system-ui,sans-serif;color:#1d5278;cursor:pointer;
+ padding:4px 0
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-refit-details p{
+ color:#496b83!important;font:12px/1.65 system-ui,sans-serif;margin:9px 0
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-refit-details td,
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-refit-details th{
+ font:12px/1.6 system-ui,sans-serif;white-space:nowrap
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-refit-sign-flip td{
+ background:#fff6ea;color:#783f26!important
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-short-panel-warning{
+ padding:12px 15px;margin:15px 0;background:#fff3e7;
+ color:#7c3e25!important;border-left:4px solid #b16a33;
+ border-radius:7px;font:700 12px/1.7 system-ui,sans-serif
+}
