@@ -3,7 +3,7 @@
  */
 const markers=s=>[...String(s).matchAll(/\[(\d+)\]/g)].map(x=>Number(x[1]));
 const headingPattern=/^#{1,4}\s+(.+)$/gm;
-const conclusionPattern=/\b(kesimpulan|rekomendasi|simpulan|penutup|langkah berikutnya|conclusions?|recommendations?|next steps?|strategic implications?)\b/i;
+const conclusionPattern=/\b(kesimpulan|rekomendasi|simpulan|penutup|langkah berikutnya|langkah penelitian|ringkasan penelitian|rencana penelitian|conclusions?|recommendations?|next steps?|strategic implications?)\b/i;
 
 function reportEnding(text){
  const lines=String(text).split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
