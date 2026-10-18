@@ -149,6 +149,23 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  batangg.events.click();
  assert.ok(list().length>0&&list().length<total,"Clicking Batang locality marker filters the project list");
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Batang"))),"Batang PLTU/area project displayed after click");
+ const rightPanel=()=>flatten(root).find(n=>n.className==="map-asset-insight");
+ assert.ok(rightPanel(),"Interactive map has an inspectable evidence panel on the right");
+ assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("SELECTED ASSET INSIGHT")),"Clicking a locality marker updates the right-hand panel");
+ const batPicker=flatten(rightPanel()).find(n=>n.className==="map-insight-picker");
+ if(batPicker){
+  const selector=batPicker.children.find(n=>n.tagName==="select");
+  assert.ok(selector&&selector.children.length>1,"Cluster should have a source-record picker");
+  selector.value=selector.children[1].value;selector.events.change();
+ }
+ assert.ok(flatten(rightPanel()).some(n=>n.className==="map-insight-detail"),"Selecting an individual project opens the analysis card");
+ assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("Sector transmission")),"Inspector separates sector analysis from raw source metrics");
+ assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("Lesson learned")),"Inspector explains verification lessons");
+ assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("Read original record source")),"Inspection shows source attribution");
+ const insightReset=flatten(rightPanel()).find(n=>n.className==="map-insight-reset");
+ assert.ok(insightReset);insightReset.events.click();
+ assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("SELECT A POINT")),"Clear selection restores overview guidance");
+
  
  for(const x of [...wk,...power,...industry]){
   assert.ok(x.source_url?.startsWith("https://"),"Dataset source must be HTTPS: "+x.id);
@@ -207,6 +224,14 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("BNSI Sambalagi"))),"2026 Sambalagi HPAL evidence is on map");
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("Ownership / equity"))),"Equity/ownership details available");
  assert.ok(list().some(x=>flatten(x).some(n=>String(n.textContent).includes("ACTUAL reported output"))),"Measured production shown separately from nameplate capacity");
+ const valeCard=list().find(n=>flatten(n).some(y=>String(y.textContent).includes("PT Vale Sorowako")));
+ assert.ok(valeCard,"Vale output evidence available to click");
+ valeCard.events.click({target:{closest:()=>null}});
+ const insightAfterClick=flatten(rightPanel());
+ assert.ok(insightAfterClick.some(n=>String(n.textContent).includes("PT Vale Sorowako")),"Clicking a dossier updates same right-hand inspector");
+ assert.ok(insightAfterClick.some(n=>String(n.textContent).includes("ACTUAL reported output")),"Detail separates real reported output from rated capacity");
+ assert.ok(insightAfterClick.some(n=>String(n.textContent).includes("Locality"))||insightAfterClick.some(n=>String(n.textContent).includes("NOT facility GPS")),"Shows coordinate precision disclaimer");
+
  assert.ok(all.some(x=>x.className==="map-pln-baseline map-smelter-baseline"),"2025 official ESDM reference separate from tracker");
  reset.events.click();
  province.value="Kepulauan Riau";province.events.change();
