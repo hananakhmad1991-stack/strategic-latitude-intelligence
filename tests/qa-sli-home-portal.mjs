@@ -26,6 +26,9 @@ test("Homepage shares SLI original navy/gold identity, stays mobile responsive, 
  assert.ok(existsSync(new URL("../css/sli-home-portal.css",import.meta.url)));
  assert.match(style,/\.sli-portal-hero/);
  assert.match(style,/#d7b678/);
+ assert.match(html,/id="sli-home-portal-embedded-css"/);
+ assert.ok(html.includes(style),"Embedded fallback CSS matches standalone portal CSS");
+ assert.match(style,/body\.sli-home-active \.sli-universal-nav\{display:none!important\}/);
  assert.match(style,/@media\(max-width:460px\)/);
  const assistant=read("sli-research-ai.html");
  assert.ok(!assistant.includes("sli-home-portal.css"));

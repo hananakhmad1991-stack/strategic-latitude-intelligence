@@ -130,3 +130,7 @@ body.sli-home-active .sli-portal-heading{margin:19px 0 11px;scroll-margin-top:17
  body.sli-home-active .sli-portal-hero{padding:21px}
  body.sli-home-active .sli-portal-hero h2{font-size:31px}
 }
+
+/* Quiet landing chrome; detailed breadcrumb/disclosures remain on non-home dashboard pages. */
+body.sli-home-active .sli-universal-nav{display:none!important}
+body.sli-home-active .main>.top>.eyebrow{display:none}
