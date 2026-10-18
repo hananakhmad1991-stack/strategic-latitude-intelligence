@@ -17,3 +17,10 @@
 .ra-wb-consent{display:flex;gap:9px;align-items:flex-start;font-size:12px;line-height:1.55;color:#36556c;margin-top:14px}
 .ra-wb-consent input{margin-top:3px;flex:none}
 @media(max-width:650px){.sli-ra-method-workbench{padding:15px}.ra-wb-grid{grid-template-columns:1fr}.ra-wb-marker{font-size:9px}}
+
+.ra-wb-output strong{display:block;font:700 14px/1.45 system-ui,sans-serif;color:#1b4f77;margin-bottom:8px}
+.ra-wb-output p{white-space:normal;font:13px/1.65 system-ui,sans-serif;color:#38566e;margin:7px 0 12px}
+.ra-wb-output table{width:100%;border-collapse:collapse;display:block;overflow-x:auto;font-size:11px}
+.ra-wb-output th,.ra-wb-output td{text-align:right;border-bottom:1px solid #dde7ed;padding:7px 9px;white-space:nowrap}
+.ra-wb-output th:first-child,.ra-wb-output td:first-child{text-align:left}
+.ra-wb-output small{display:block;white-space:normal;color:#71869a;font:11px/1.55 system-ui,sans-serif;margin:10px 0 2px}
