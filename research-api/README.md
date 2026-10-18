@@ -32,3 +32,13 @@ node --check research-api/src/assistant-core.mjs
 node --check research-api/src/index.js
 node --test tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs
 ```
+
+## Analytical Workbench · first stage (October 18, 2026)
+
+The public Research AI interface now includes a curated, explicit **48-method registry**, of which **five** have deterministic local estimators (descriptives, Pearson, simple OLS, AHP consistency/weights, and a simple discrete stock-flow simulation). The other 43 are **design-only**, NOT executed estimators. Users can import local CSV or JSON (<=1 MiB, <=3,000 rows, <=30 columns); Excel requires CSV export for now. Results include transparent caveats and simple tables/trajectory visualization. The private AI request includes only the calculated summary, not raw rows, and **only when the owner/user selects the upload-consent checkbox and submits**. Uploaded data are explicitly marked user-supplied/unverified, separate from SLI-owned curated citations. No commercial multi-tenant upload storage or public paid login is implied.
+
+Method selection and optional user-derived summaries are validated in `research-api/src/assistant-core.mjs`; the model must not pretend that a design-only estimator ran or invent coefficients. The Owner Test Worker is still authenticated with a single owner-only token, **not** customer-safe multi-user authentication. Enterprise files, Excel ingestion, linked-panel data joins, econometric standard errors, methods such as Monte Carlo/CGE/DiD, and tenant-specific encrypted storage need separate implementation and security reviews.
+
+The contextual sector briefs compare dated SLI baselines with **publisher-attributed monitoring leads** and explain plausible impact pathways in 2–3 sentences while expressly NOT treating RSS headlines as verified project status or realised investment. The AI/critical mineral sector dashboards also display the context notes. Neither source-linked brief is live model-generated text.
+
+Smoke tests: `node --check js/sli-analytical-core.mjs && node --check js/sli-analytical-workbench-ui.mjs && node --test tests/qa-sli-methodology-workbench.mjs`.
