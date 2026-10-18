@@ -276,14 +276,14 @@ document.addEventListener("sli:languagechange",queueSourceLinks);
   const current=document.currentScript?.src||document.querySelector('script[src*="/js/sli-navigation.js"]')?.src;
   if(!current)return;
   const css=document.createElement("link");css.rel="stylesheet";
-  css.href=new URL("../css/sli-visual-export.css?v=20261019-rightpanel3",current).href;
+  css.href=new URL("../css/sli-visual-export.css?v=20261019-onepoint6",current).href;
   css.dataset.sliExportBootstrap="css";document.head.append(css);
   const formats=document.createElement("script");
   formats.src=new URL("./sli-visual-export-formats.js?v=20261019-insights1",current).href;
   formats.dataset.sliExportBootstrap="formats";
   formats.onload=function(){
    const core=document.createElement("script");
-   core.src=new URL("./sli-visual-export.js?v=20261019-rightpanel3",current).href;
+   core.src=new URL("./sli-visual-export.js?v=20261019-onepoint6",current).href;
    core.dataset.sliExportBootstrap="core";
    document.head.append(core);
   };
