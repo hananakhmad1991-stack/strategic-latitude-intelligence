@@ -131,3 +131,32 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-advanced{color:#25485f}
  color:#754e20!important;background:#fff5e6;
  border-left:3px solid #bd934f;border-radius:6px;font:700 12px/1.6 system-ui,sans-serif
 }
+
+
+/* Econometric stability section · reproducible leave-one-out diagnostics. */
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability{
+ margin:20px 0 12px;padding:16px 18px;
+ background:#f5f9fc;border:1px solid #c3d7e6;
+ border-radius:12px;color:#1b3d57
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability h3{
+ margin:2px 0 10px;color:#154b71;font:800 17px/1.4 system-ui,sans-serif
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability h4{
+ margin:18px 0 8px;color:#214e6e;font:750 13px/1.4 system-ui,sans-serif
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability p{
+ color:#365b75!important;font:12px/1.65 system-ui,sans-serif;margin:8px 0
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability .ra-wb-stability-meta{
+ font-size:11px;color:#54718a!important
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability-flag{
+ color:#953c31!important;font-weight:800
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability .ra-wb-stability-summary{
+ margin-top:15px;padding:12px;background:#edf4fa;border-left:3px solid #bf9955;border-radius:6px
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-stability .ra-wb-table-scroller{
+ max-width:100%;overflow-x:auto
+}
