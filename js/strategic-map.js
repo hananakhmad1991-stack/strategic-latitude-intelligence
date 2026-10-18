@@ -507,7 +507,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   expanded=!expanded;
   // The record list is secondary to the selected insight. Never expand the
   // entire right column past the map or force the user to scroll past a dossier.
-  side.classList.toggle("show-list",expanded);
+  side.className="map-results"+(expanded?" show-list":"");
   expand.textContent=expanded?label("Hide asset list","Sembunyikan daftar aset"):label("Browse matching assets","Lihat daftar aset terkait");
   expand.setAttribute("aria-expanded",String(expanded));
  });
