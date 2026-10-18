@@ -2,6 +2,7 @@ import {METHODS,getMethod,parseCsv,toRows,describe,evaluate} from "./sli-analyti
 import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns,panelStability} from "./sli-econometrics.mjs?v=20261018-econ8";
 import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs?v=20261018-econ7";
 import {buildBpsOfficialPanel,BPS_PANEL_META} from "./sli-bps-official-panel.mjs?v=20261018-bps3";
+import {auditOfficialProvincialData} from "./sli-provincial-data-integrity.mjs?v=20261018-audit1";
 const $=id=>document.getElementById(id);
 const box=document.createElement("section");
 box.id="raAnalyticalWorkbench";box.className="sli-ra-method-workbench";
@@ -19,10 +20,58 @@ const evidenceOptions=document.createElement("section");
 evidenceOptions.id="raOfficialBpsSource";evidenceOptions.className="ra-wb-official-source";
 evidenceOptions.innerHTML='<div><strong>Official Data Lab · BPS 2021–2025</strong><p>Gunakan panel provinsi 2022–2025 yang dihitung dari publikasi resmi PDRB BPS. Baseline validasi wilayah: 32 provinsi × 4 tahun (128 observasi). Papua dan Papua Barat lama tidak dimodelkan karena pemekaran 2023; empat provinsi Papua baru belum punya seri historis 2021–2022 yang sebanding. X bawaan: porsi PMTB tahun sebelumnya, Y: pertumbuhan PDRB riil.</p></div><div class="ra-wb-official-actions"><button type="button" id="raLoadOfficialBps">Gunakan panel BPS tersaring · 32 provinsi</button><a href="https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html" target="_blank" rel="noopener noreferrer">Baca sumber BPS ↗</a></div><small>Tidak termasuk rasio Gini 2026 atau data PLN 2024 sebagai seri tahunan. Nilai 2024 direvisi, 2025 sementara. Hanya analisis eksploratif; izin penggunaan ulang tabel komersial perlu diperiksa.</small>';
 box.prepend(evidenceOptions);
+const quality=document.createElement("section");
+quality.id="raOfficialDataQA";quality.className="ra-wb-quality";quality.hidden=true;
+evidenceOptions.insertAdjacentElement("afterend",quality);
 const anchor=$("raOwnerPanel");anchor?.parentNode?.insertBefore(box,anchor);
 
 const method=$("raMethod"),datafile=$("raDataFile"),x=$("raPredictor"),y=$("raOutcome"),detail=$("raMethodInfo"),result=$("raModelResult"),varGroup=$("raVariables"),consent=$("raDataConsent");
 let data=null,model=null,filename="",last=null,officialBps=null;
+function renderOfficialQuality(audit){
+ quality.replaceChildren();quality.hidden=false;
+ const h=document.createElement("h3");h.textContent="SLI Data Quality & Source Readiness";quality.append(h);
+ const summary=document.createElement("p");
+ summary.textContent="Audit: "+(audit.status==="passed_with_caveats"?"LULUS DENGAN CATATAN":"TERBLOKIR")+
+  " · "+audit.panel.entities+" provinsi, "+audit.panel.n+" observasi (2022–2025)"+
+  " · Pemeriksaan pertumbuhan BPS 2025: "+audit.crosscheck.sample_size+" pasangan, selisih terbesar "+
+  audit.crosscheck.max_abs_diff_pp+" poin persentase.";
+ quality.append(summary);
+ const explain=document.createElement("p");explain.className="ra-wb-quality-caution";
+ explain.textContent="32 provinsi dengan cakupan administratif sebanding. Dua provinsi induk Papua dan empat provinsi baru tidak termasuk. Tahun 2024 direvisi, 2025 sementara. Listrik PLN 2024, Gini 2026 dan IKP BPS 2022–2024 tidak otomatis dimasukkan sebagai panel listrik/ketimpangan.";
+ quality.append(explain);
+ if(audit.errors.length){
+  const err=document.createElement("p");err.className="ra-wb-quality-error";
+  err.textContent="Data diblokir: "+audit.errors.join("; ");quality.append(err);return;
+ }
+ const controls=document.createElement("div");controls.className="ra-wb-quality-controls";
+ const add=document.createElement("button");add.type="button";add.id="raAddHouseholdLag";
+ add.textContent="Uji prediktor X2: konsumsi rumah tangga lag-1";
+ add.addEventListener("click",()=>{
+  if(!officialBps||method.value!=="panel_fe"||x.value!=="pmtb_share_lag1_pct"||y.value!=="real_grdp_growth_pct")return;
+  const option=[...extra.options].find(o=>o.value==="household_share_lag1_pct");
+  if(!option||option.disabled)return;
+  option.selected=true;consent.checked=false;last=null;desc();$("raRunMethod").click();
+ });
+ controls.append(add);
+ const note=document.createElement("small");note.textContent="Konsumsi RT dan PMTB adalah komponen PDRB; uji X2 hanya eksploratif. Periksa kolinearitas, komposisi dan endogenitas.";controls.append(note);quality.append(controls);
+ const details=document.createElement("details");details.className="ra-wb-quality-details";
+ const heading=document.createElement("summary");heading.textContent="Lihat 10 indikator resmi: siap panel, konteks, atau belum tersedia di SLI";details.append(heading);
+ const scroller=document.createElement("div");scroller.className="ra-wb-table-scroller";
+ const table=document.createElement("table");const row=document.createElement("tr");
+ for(const label of ["Indikator","Periode","Kelayakan di SLI","Sumber"]){const th=document.createElement("th");th.textContent=label;row.append(th)}table.append(row);
+ const status={panel_ready:"Siap untuk panel",context_only:"Konteks, bukan X otomatis",no_year_panel:"Snapshot, bukan panel",geography_mismatch:"Wilayah tidak sebanding",source_not_ingested:"Belum diimpor/divalidasi"};
+ for(const item of audit.sources){
+  const tr=document.createElement("tr");
+  for(const val of [item.label,item.years,status[item.readiness]||item.readiness]){
+   const td=document.createElement("td");td.textContent=val;tr.append(td);
+  }
+  const td=document.createElement("td");
+  if(item.source){const a=document.createElement("a");a.href=item.source;a.target="_blank";a.rel="noopener noreferrer";a.textContent=item.publisher+" ↗";td.append(a)}
+  else td.textContent="Belum ada sumber tervalidasi di SLI";
+  tr.append(td);table.append(tr);
+ }scroller.append(table);details.append(scroller);quality.append(details);
+}
+
 function updateDatasetStatus(){
  const el=$("raDatasetStatus");if(!el)return;
  if(officialBps&&data){
@@ -131,9 +180,15 @@ $("raLoadOfficialBps").addEventListener("click",async()=>{
  const button=$("raLoadOfficialBps");
  button.disabled=true;button.textContent="Memeriksa metadata BPS dan menyiapkan panel…";
  try{
-  const response=await fetch("./data/sli-bps-regional-intelligence.json",{cache:"no-store"});
-  if(!response.ok)throw Error("Sumber data SLI-BPS tidak dapat dibaca (HTTP "+response.status+")");
-  const source=await response.json();
+  const [sourceResponse,previewResponse]=await Promise.all([
+   fetch("./data/sli-bps-regional-intelligence.json",{cache:"no-store"}),
+   fetch("./data/sli-research-province-preview.json",{cache:"no-store"})
+  ]);
+  if(!sourceResponse.ok||!previewResponse.ok)throw Error("Gagal memuat BPS corpus dan cross-check provinsi 2025; blokir model sampai sumber lengkap.");
+  const [source,preview]=await Promise.all([sourceResponse.json(),previewResponse.json()]);
+  const audit=auditOfficialProvincialData(source,preview);
+  renderOfficialQuality(audit);
+  if(audit.errors.length)throw Error("Audit BPS gagal: "+audit.errors.join("; "));
   const p=buildBpsOfficialPanel(source,{balanced:true});
   data=p.rows;officialBps=p;model=null;last=null;filename="BPS_2021-2025_PANEL_TURUNAN";consent.checked=false;
   datafile.value="";
@@ -157,6 +212,7 @@ $("raLoadOfficialBps").addEventListener("click",async()=>{
 
 datafile.addEventListener("change",async()=>{
  data=null;model=null;last=null;filename="";officialBps=null;consent.checked=false;
+ quality.hidden=true;quality.replaceChildren();
  const file=datafile.files?.[0];if(!file){show("No dataset loaded");updateDatasetStatus();return}
  if(file.size>1048576){error("File exceeds 1 MB client-side limit");updateDatasetStatus();return}
  try{
@@ -520,7 +576,7 @@ $("raRunMethod").addEventListener("click",()=>{
   }
  }catch(e){error("Model could not run: "+String(e.message).slice(0,200))}
 });
-$("raClearData").addEventListener("click",()=>{data=null;model=null;filename="";last=null;officialBps=null;datafile.value="";consent.checked=false;varGroup.hidden=true;advanced.hidden=true;show("Dataset cleared. Nothing was stored in the browser.");desc();updateDatasetStatus()});
+$("raClearData").addEventListener("click",()=>{data=null;model=null;filename="";last=null;officialBps=null;datafile.value="";consent.checked=false;varGroup.hidden=true;advanced.hidden=true;quality.hidden=true;quality.replaceChildren();show("Dataset cleared. Nothing was stored in the browser.");desc();updateDatasetStatus()});
 function language(){
  const id=document.documentElement.lang!=="en";
  const p=box.querySelector("[data-wb-i18n=intro]");
