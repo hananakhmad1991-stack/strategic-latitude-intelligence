@@ -333,13 +333,13 @@ function addEconometricAppendix(fit,sensitivity=null,stability=null){
  const text=(tag,val)=>{const el=document.createElement(tag);el.textContent=val;result.append(el);return el};
  const visual=scatterPlot(fit,sensitivity?.reduced||null);
  if(visual){
-  appendHeading(fit.predictors.length===1?"Scatter plot · 38 provinsi / observed vs fitted":"Model diagnostic · observed vs predicted");
+  appendHeading(fit.predictors.length===1?"Scatter plot · "+(fit.observations?.length||"n")+" observasi / observed vs fitted":"Model diagnostic · observed vs predicted");
   const wrap=document.createElement("div");wrap.className="ra-wb-plot";wrap.append(visual);result.append(wrap);
   text("small",fit.predictors.length===1?"Biru: OLS semua observasi · jingga putus-putus: sensitivitas tanpa pertumbuhan ekstrem · merah: observasi berpengaruh (Cook D atau residual). Hover titik untuk identitas provinsi.":"Biru: data / identitas OLS · merah: observasi berpengaruh. Arah sumbu memperlihatkan observasi vs nilai prediksi.");
  }
  const d=fit.residual_diagnostics;
- const flagged=(d?.flagged||[]).map(o=>fit.observations?.[o.index-1]?.name||("Baris "+o.index));
- text("p","Observasi berpengaruh ("+(flagged.length||0)+"): "+(flagged.join(", ")||"tidak ada pada ambang diagnosis sederhana")+". Penanda ini membutuhkan pemeriksaan data, bukan penghapusan otomatis.");
+ const flagged=(d?.flagged||[]).map(o=>o.name||fit.observations?.[o.index-1]?.name||("Baris "+o.index));
+ text("p","Observasi yang terindikasi berpengaruh ("+(flagged.length||0)+"): "+(flagged.join(", ")||"tidak ada pada ambang diagnosis sederhana")+". "+(fit.method==="panel_fe"?"Diagnostik Cook dihitung pada desain transformasi fixed effects dan bersifat pemeriksaan awal, bukan ukuran leverage FE lengkap. ":"")+"Penanda membutuhkan pemeriksaan data, bukan penghapusan otomatis.");
  if(sensitivity?.reduced)text("p","Perbandingan ilustratif: R² keseluruhan "+fit.r_squared+" (n="+fit.n+"), sensitivitas "+sensitivity.reduced.r_squared+" (n="+sensitivity.reduced.n+"). Tidak membuktikan sebab-akibat.");
  const controls=document.createElement("div");controls.className="ra-wb-next";
  const button=document.createElement("button");button.type="button";button.textContent="Unduh Investor Analytical Report (.md)";
@@ -421,7 +421,8 @@ function renderPanelStability(stability){
   });scroll.append(table);section.append(scroll);
  }else{const p=document.createElement("p");p.textContent=other?.reason||"Spesifikasi alternatif belum tersedia.";section.append(p)}
  const interpretation=document.createElement("p");interpretation.className="ra-wb-stability-summary";
- interpretation.textContent="Assessment: "+stability.screening+" Analisis didasarkan pada data unggahan dan belum memverifikasi mekanisme ekonomi, potensi endogenitas, atau kausalitas.";
+ interpretation.textContent="Assessment: "+stability.screening+
+  (officialBps?" Analisis menggunakan input statistik terbitan BPS yang diolah SLI, dengan komparabilitas wilayah disaring; validitas mekanisme ekonomi, endogenitas, dan kausalitas tetap belum terbukti.":" Analisis didasarkan pada data unggahan yang belum diverifikasi oleh SLI; mekanisme ekonomi, endogenitas dan kausalitas belum terbukti.");
  section.append(interpretation);result.append(section);
 }
 
@@ -438,13 +439,31 @@ function renderEconometricResult(fit,stability=null){
   "; X (prediktor) = "+fit.predictors.join(", ")+
   (fit.method==="panel_fe"?" · Efek tetap: unit"+(fit.two_way_fe?" + tahun":""):"");
  result.append(specification);
+ if(officialBps&&fit.method==="panel_fe"&&fit.predictors.includes("pmtb_share_pct")){
+  const warning=document.createElement("section");warning.className="ra-wb-spec-warning";warning.setAttribute("role","status");
+  const text=document.createElement("p");
+  text.textContent="PERHATIAN SPESIFIKASI: Model ini memakai pmtb_share_pct (PMTB tahun berjalan), bukan pmtb_share_lag1_pct (PMTB tahun sebelumnya). Koefisien dan uji sensitivitas tidak boleh dibandingkan langsung dengan baseline lag-1. PMTB tahun berjalan juga lebih rentan terhadap simultanitas dengan pertumbuhan pada tahun yang sama.";
+  warning.append(text);
+  const correct=document.createElement("button");correct.type="button";correct.className="ra-wb-restore-lag";
+  correct.textContent="Gunakan baseline PMTB lag-1 dan hitung ulang";
+  correct.addEventListener("click",()=>{
+   if(!officialBps||method.value!=="panel_fe")return;
+   const lag="pmtb_share_lag1_pct";
+   if(![...x.options].some(o=>o.value===lag))return;
+   x.value=lag;
+   for(const o of extra.options)if(o.value==="pmtb_share_pct")o.selected=false;
+   last=null;consent.checked=false;desc();$("raRunMethod").click();
+   if(typeof result.scrollIntoView==="function")result.scrollIntoView({block:"start",behavior:"smooth"});
+  });
+  warning.append(correct);result.append(warning);
+ }
  if(officialBps&&fit.method==="panel_fe"){
   const prov=document.createElement("section");prov.className="ra-wb-bps-provenance";
   const h=document.createElement("strong");h.textContent="DATA RESMI BPS · PERHITUNGAN TURUNAN SLI · BUKAN ESTIMASI RESMI BPS";prov.append(h);
   const p=document.createElement("p");
   p.textContent="Sumber: PDRB Provinsi Menurut Pengeluaran 2021–2025 (terbit 30 April 2026). "+
    "Panel "+officialBps.entity_count+" provinsi × 4 tahun (2022–2025); "+
-   "pertumbuhan = perubahan PDRB ADHK 2010; PMTB lag-1 = PMTB tahun t−1 / PDRB ADHB tahun t−1 × 100. "+
+   "pertumbuhan = perubahan PDRB ADHK 2010; pmtb_share_lag1_pct = PMTB tahun t−1 / PDRB ADHB tahun t−1 × 100; pmtb_share_pct = PMTB tahun t / PDRB ADHB tahun t × 100. Lihat variabel pada spesifikasi yang benar-benar dihitung. "+
    "Papua dan Papua Barat dikeluarkan karena cakupan wilayah berubah pada 2023, sehingga penurunan PDRB akibat pemekaran tidak menjadi pertumbuhan ekonomi palsu. Empat provinsi Papua baru juga dikecualikan karena tidak ada seri 2021–2022. "+
    "PDRB 2024 berstatus revisi dan 2025 sementara. Hubungan statistik tidak membuktikan dampak kausal investasi.";
   prov.append(p);
