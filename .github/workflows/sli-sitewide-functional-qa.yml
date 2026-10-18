@@ -6,6 +6,8 @@ on:
       - 'css/sli-home-portal.css'
       - 'css/sli-geopolitics-chapter.css'
       - 'js/sli-geopolitics-chapter.js'
+      - 'js/sli-geopolitical-timeline.js'
+      - 'css/sli-geopolitical-timeline.css'
       - 'tests/qa-sli-geopolitics-chapter.mjs'
       - 'js/sli-home-portal.js'
       - 'tests/qa-sli-home-portal.mjs'
@@ -55,6 +57,8 @@ jobs:
       - name: Verify all critical scripts, navigation, filters and export controls
         run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs
       - name: Geopolitical chapter JavaScript syntax
-        run: node --check js/sli-geopolitics-chapter.js
+        run: |
+          node --check js/sli-geopolitics-chapter.js
+          node --check js/sli-geopolitical-timeline.js
       - name: Validate published SLI JSON and asset integrity
         run: node scripts/audit-sli-content-quality.mjs
