@@ -1,24 +1,7 @@
 {
-  "checked_at_utc": "2026-10-18T09:33:14.035933+00:00",
+  "checked_at_utc": "2026-10-18T12:38:23.943108+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
-    {
-      "topic": "Red Sea and Bab el-Mandeb",
-      "topic_id": "oil_shipping",
-      "type": "Maritime chokepoint",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "Two ships sink near Hormuz after being hit by projectiles amid surge in attacks - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVlQtcHJibXBpYWEwWTQ4dFdfWUFJbTVteGY0WThGcTFybEdUTERvVG9DcGdoY09vUjh0TG1QeG5zMWx0LTFvV09teVNXY1NLdXZVNlpuMVBIV3pndWJKWVBRdENjLVd0dnVwdUxPTHFPU002S0ZqR0lkcjgyNVl2ZFFXc05MdTJHenM3LVNUSlBUb1RyeDVxY3VTdUxEamxrbS1OXzJJR3o3SlltandncHAwVXFNSTFYcmJXblh2U25vN2xMMW1ibQ?oc=5",
-      "indexed_at_utc": "2026-10-16T11:13:21+00:00",
-      "impact_pathway": "Routing changes -> transit time and shipping insurance -> delivered commodity cost",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
     {
       "topic": "Global coal and energy policy",
       "topic_id": "coal_markets",
@@ -44,46 +27,12 @@
       "sector_tags": [
         "coal"
       ],
-      "subsector": "general",
-      "title": "How America’s dying coal industry found a lifeline in Trump’s White House - Financial Times",
-      "publisher": "Financial Times",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNaEkyMXd6ZEtSX2xLbGRHWEp4WmVjSjIwaGdvb2hkSm1YT2k1c2VrZ3FjU3doRzJ2WVRtM3ZzY3JheWM4ZHVyby1SdE5YR1h5XzRJT0xtemFDc1hfTkpTY055UzliSGdGWlM4cHhvZDQ4c3I5b25Helppd29NRVJzaXdidng?oc=5",
-      "indexed_at_utc": "2026-10-13T10:00:10+00:00",
-      "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Global crude oil & OPEC supply",
-      "topic_id": "oil_supply",
-      "type": "Oil markets",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "U.S crude oil tops $99 as market monitors Middle East supply risks - CNBC",
-      "publisher": "CNBC",
-      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOOUM3Y1VtZmpxNzQzbzRUaFY1a0ZvRXZZTEt0azRoX0I3VFg5bW1OMGVpc1FwSmZ5YzJPalBhOFNYclliMzNpMFRpUXl1cVJiSk5ScVBjTy1Yc3JUVm9leFNGOWhTUFl5aUxxam91N0p2akNWZG5ick0waHoyaWVGWU9BczNyVkEteHFR0gGQAUFVX3lxTE93SUdZYllJeTY0am9seE9EU0lqYnN1LTlzZnlKbUFRNzdqTWtCTEF0NUR0bkM1UWp5QWdEb3lmdkdlNUNhT1NtOU93Yk16U3dRSlNZZE5vYW5fdTJXUHFiWXRkV1VBakdIWlhkV3ZWS2E4LWtQVDktVHhnS0htYmNDMlpScHdsWUpPU2wtTnp1Zg?oc=5",
-      "indexed_at_utc": "2026-10-16T10:07:39+00:00",
-      "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Coal exports and Asian import demand",
-      "topic_id": "coal_markets",
-      "type": "Coal trade",
-      "sector": "coal",
-      "sector_tags": [
-        "coal"
-      ],
       "subsector": "dmo_power",
       "title": "Coal prices up 40% this year on LNG replacement demand, supply uncertainty - Nikkei Asia",
       "publisher": "Nikkei Asia",
       "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPamxPTUcyVnRjSFJxTkhqZ1hhR2E4T2haMzFKelgyci1oNVNiMjYxTklJdDctcHZFV0JIRVNpWlFySGV1ZXNrWE5naDZ3UXE2MWFVTlo1NzFLWUdjaG11MzdHTjVlbFdQZXczM2twU2VFemRCZU1xaWpGR0VaV2VXSW5LUnZ0SndVSmMzMzdyRURBc19pQXdjSm9UdnBDTXJNWldfNUhIZDJ4MlhmTkF0V2tR?oc=5",
       "indexed_at_utc": "2026-10-14T16:35:00+00:00",
-      "impact_pathway": "Asian coal import shifts -> Indonesian exporter revenues, DMO opportunity cost and benchmark prices",
+      "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -123,8 +72,8 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 2,
-    "coal": 4,
+    "oil_gas": 0,
+    "coal": 3,
     "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
