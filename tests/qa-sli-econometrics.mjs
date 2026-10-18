@@ -1,6 +1,6 @@
 import {test} from "node:test";
 import assert from "node:assert/strict";
-import {multivariateOLS,panelFixedEffects,studentP,studentCritical,sensitivityOLS} from "../js/sli-econometrics.mjs";
+import {multivariateOLS,panelFixedEffects,studentP,studentCritical,sensitivityOLS,detectPanelColumns} from "../js/sli-econometrics.mjs";
 test("Student's t tail probabilities and 95% critical values are numerically correct",()=>{
  assert.ok(Math.abs(studentCritical(10)-2.22813885)<0.001);
  assert.ok(Math.abs(studentCritical(1000)-1.96233908)<0.001);
@@ -60,4 +60,21 @@ test("Single-year province cross section and duplicate entity-year data must be 
  const panel=[];for(let p=0;p<10;p++)for(let t=2020;t<2025;t++)panel.push({province:"P"+p,year:t,x:t+p,y:t-p});
  panel.push({...panel[0]});
  assert.throws(()=>panelFixedEffects(panel,["x"],"y","province","year"),/Duplicate/);
+});
+
+test("Panel identifiers must repeat by entity and year; economic percentages cannot be entity IDs",()=>{
+ const rows=[];
+ for(let p=0;p<12;p++)for(let year=2020;year<=2025;year++){
+  rows.push({province:"P"+p,year,electricity_access_pct:55+p*3+(year-2020)*0.17,
+   pmtb_share_pct:20+p*0.7+(year-2020)*.2,
+   real_grdp_growth_pct:2+p*.12+(year-2020)*.3});
+ }
+ const detected=detectPanelColumns(rows);
+ assert.equal(detected.recommendedEntity,"province");
+ assert.equal(detected.recommendedTime,"year");
+ assert.deepEqual(detected.entities,["province"]);
+ assert.deepEqual(detected.times,["year"]);
+ assert.throws(()=>panelFixedEffects(rows,["pmtb_share_pct"],"real_grdp_growth_pct","electricity_access_pct","year",true),/repeated province\/entity identifier|at least two years/);
+ assert.equal(detectPanelColumns(rows.filter(r=>r.year===2025)).recommendedEntity,null);
+ assert.equal(detectPanelColumns(rows.filter(r=>r.year===2025)).recommendedTime,null);
 });
