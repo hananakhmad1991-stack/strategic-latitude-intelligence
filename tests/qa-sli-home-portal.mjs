@@ -41,7 +41,7 @@ test("National KPI cards read observed values, source URLs and reporting periods
  assert.match(source,/fetch\("\.\/data\/sli-macro-indonesia-2026\.json"/);
  assert.match(source,/source\.publisher/);
  assert.match(source,/m\.period/);
- assert.match(source,/source\.url/);
+ assert.match(source,/source\?\.url/);
  for(const id of ["real_gdp_growth","inflation_yoy","bi_policy_rate","usd_idr_jisdor"]){
   const row=macro.metrics.find(x=>x.id===id);
   assert.ok(row&&Number.isFinite(row.value)&&row.period&&macro.sources[row.source_id]?.url,"Missing curated "+id);
