@@ -87,6 +87,10 @@ function renderPlatformMast(){
  const current=page();
  primary.append(mastLink('./index.html#home',text('Home','Beranda'),false));
  const explorer=node('details','sli-platform-explorer'),summary=node('summary','',text('Explore Data','Jelajahi Data'));
+ summary.setAttribute('aria-haspopup','true');summary.setAttribute('aria-expanded','false');
+ explorer.addEventListener('toggle',()=>{
+  summary.setAttribute('aria-expanded',explorer.open?'true':'false');
+ });
  summary.setAttribute('aria-label',text('Browse SLI sector dashboards','Jelajahi dashboard sektoral SLI'));
  explorer.append(summary);
  const sectors=node('div','sli-platform-sector-menu');
@@ -190,7 +194,21 @@ function renderGuide(){
    card.append(a,node('p','',modules[id][lang()==='id'?4:3]));grid.append(card)}
   section.append(grid);target.append(section)}
 }
-function render(){renderBar();renderGuide()}
+function render(){
+ try{renderBar();renderGuide()}
+ finally{document.documentElement.classList.remove('sli-chrome-pending')}
+}
+function closeSectorMenu(event){
+ const opened=document.querySelector('.sli-platform-explorer[open]');
+ if(!opened)return;
+ if(event.type==='keydown'){
+  if(event.key==='Escape'){opened.open=false;opened.querySelector('summary')?.focus()}
+  return;
+ }
+ if(!opened.contains(event.target))opened.open=false;
+}
+document.addEventListener('pointerdown',closeSectorMenu);
+document.addEventListener('keydown',closeSectorMenu);
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render,{once:true});else render();
 window.addEventListener('hashchange',()=>renderBar());
 document.addEventListener('sli:pagechange',()=>renderBar());
