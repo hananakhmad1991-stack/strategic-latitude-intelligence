@@ -15,6 +15,8 @@ test("Multivariable QR OLS recovers intercept and two slopes with uncertainty co
  }
  const fit=multivariateOLS(rows,["x","z"],"y");
  assert.equal(fit.n,90);
+ assert.deepEqual(fit.predictors,["x","z"],"Predictor names must survive model output serialization");
+ assert.equal(fit.predictor_count,2);
  assert.ok(Math.abs(fit.coefficient_terms[0].estimate-5)<0.1);
  assert.ok(Math.abs(fit.coefficient_terms[1].estimate-1.7)<0.02);
  assert.ok(Math.abs(fit.coefficient_terms[2].estimate+0.8)<0.02);
