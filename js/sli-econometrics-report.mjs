@@ -71,6 +71,16 @@ export function investorMarkdown(fit,filename,sensitivity,stability=null,officia
    }
    if(item.failures?.length)blocks.push("Refit failures: "+item.failures.map(x=>x.excluded+" ("+x.reason+")").join("; "));
   }
+  const precise=v=>typeof v==="number"&&Number.isFinite(v)?v.toFixed(6):"n/a";
+  for(const [label,item] of [["Annual refit detail",stability.leave_one_year_out],["Province refit detail",stability.leave_one_entity_out]]){
+   if(!item?.refits?.length)continue;
+   blocks.push("### "+label+" (all successful refits)");
+   blocks.push("| Excluded unit/year | Predictor | Baseline beta | Re-estimated beta | Delta beta | Reversed sign? |\\n|---|---|---:|---:|---:|---|");
+   for(const entry of item.refits)for(const c of entry.coefficients){
+    blocks.push("| "+[entry.excluded,c.name,precise(c.baseline),precise(c.estimate),precise(c.absolute_shift),c.sign_changed?"YES":"no"].join(" | ")+" |");
+   }
+  }
+  if(stability.baseline_year_count<=4)blocks.push("**Short-panel fragility:** Only "+stability.baseline_year_count+" years are used. Leave-one-year-out leaves three annual periods and re-estimates time effects; signs, confidence intervals and effect magnitudes may be unstable. Do not treat any annual refit as a causal investment-impact estimate.");
   blocks.push("### Alternative time specification");
   if(stability.alternative_time_specification?.available){
    const a=stability.alternative_time_specification;
