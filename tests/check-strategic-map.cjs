@@ -186,6 +186,23 @@ assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, Nor
  assert.ok(flatten(root).some(n=>n.className==="map-results-head"&&flatten(n).some(y=>y.textContent==="Riau")),"Province click shows province panel");
  const reset=all.find(n=>n.tagName==="button"&&n.textContent==="Reset filters");
  reset.events.click();assert.equal(list().length,total,"Reset restores every record");
+ // Regression: a user can select Central Java while viewing coal mines.
+ // The selected province cannot revert to the generic "select a point" prompt.
+ sector.value="Coal Mining";sector.events.change();
+ const centralJava=flatten(root).find(n=>n.tagName==="path"&&String(n.attributes["aria-label"]||"").startsWith("Jawa Tengah —"));
+ assert.ok(centralJava,"Central Java is a selectable province even with a sector filter");
+ centralJava.events.click();
+ const noMatchPanel=flatten(rightPanel());
+ assert.ok(noMatchPanel.some(n=>n.className==="map-province-insight"),"Zero-match province shows a contextual inspector");
+ assert.ok(!noMatchPanel.some(n=>String(n.textContent).includes("SELECT A POINT")),"No empty inspector prompt after province click");
+ assert.ok(noMatchPanel.some(n=>n.className==="map-province-related-link"),"Alternative source-backed sectors are clickable");
+ assert.ok(noMatchPanel.some(n=>String(n.textContent).includes("Power Generation")),"Coal-mine filter must not hide available power evidence");
+ const crossSector=noMatchPanel.find(n=>n.className==="map-province-related-link");
+ crossSector.events.click();
+ assert.equal(sector.value,"all","Opening related source restores all-sector mode");
+ assert.ok(flatten(rightPanel()).some(n=>n.className==="map-insight-detail"),"Related source record opens a populated evidence panel");
+ assert.ok(flatten(rightPanel()).some(n=>String(n.textContent).includes("Read original record source")),"Cross-sector record preserves primary source access");
+ reset.events.click();assert.equal(list().length,total,"After switching province sectors, reset restores full map");
  const clusters=all.filter(n=>n.className==="map-site-cluster");
  const batam=clusters.find(n=>String(n.attributes["aria-label"]||"").startsWith("Batam —"));
  const natuna=clusters.find(n=>String(n.attributes["aria-label"]||"").startsWith("Natuna —"));
