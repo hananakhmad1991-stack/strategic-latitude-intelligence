@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-18T23:19:40.051103+00:00",
+  "checked_at_utc": "2026-10-18T23:50:04.490222+00:00",
   "status": "ok",
   "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
   "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
@@ -11,12 +11,12 @@
       "name": "Brent crude futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 108.7,
+      "value": 108.4,
       "previous": 103.87,
-      "change": 4.83,
-      "change_percent": 4.65,
+      "change": 4.53,
+      "change_percent": 4.3612,
       "unit": "USD/bbl",
-      "observed_at_utc": "2026-10-18T23:09:06+00:00",
+      "observed_at_utc": "2026-10-18T23:38:16+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF",
       "symbol": "BZ=F",
@@ -108,8 +108,8 @@
           "value": 109.860001
         },
         {
-          "observed_at_utc": "2026-10-18T23:09:06+00:00",
-          "value": 108.699997
+          "observed_at_utc": "2026-10-18T23:38:16+00:00",
+          "value": 108.400002
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -119,12 +119,12 @@
       "name": "WTI crude futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 98.17,
+      "value": 97.94,
       "previous": 100.3,
-      "change": -2.13,
-      "change_percent": -2.1236,
+      "change": -2.36,
+      "change_percent": -2.3529,
       "unit": "USD/bbl",
-      "observed_at_utc": "2026-10-18T23:09:40+00:00",
+      "observed_at_utc": "2026-10-18T23:39:53+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/CL%3DF",
       "symbol": "CL=F",
@@ -216,8 +216,8 @@
           "value": 101.410004
         },
         {
-          "observed_at_utc": "2026-10-18T23:09:40+00:00",
-          "value": 98.169998
+          "observed_at_utc": "2026-10-18T23:39:53+00:00",
+          "value": 97.940002
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -227,12 +227,12 @@
       "name": "US natural gas futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 3.057,
+      "value": 3.054,
       "previous": 2.912,
-      "change": 0.145,
-      "change_percent": 4.9794,
+      "change": 0.142,
+      "change_percent": 4.8764,
       "unit": "USD/MMBtu",
-      "observed_at_utc": "2026-10-18T23:09:09+00:00",
+      "observed_at_utc": "2026-10-18T23:39:41+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/NG%3DF",
       "symbol": "NG=F",
@@ -324,8 +324,8 @@
           "value": 3.116
         },
         {
-          "observed_at_utc": "2026-10-18T23:09:09+00:00",
-          "value": 3.057
+          "observed_at_utc": "2026-10-18T23:39:41+00:00",
+          "value": 3.054
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -335,12 +335,12 @@
       "name": "Copper futures (COMEX)",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 6.5695,
+      "value": 6.5725,
       "previous": 6.615,
-      "change": -0.0455,
-      "change_percent": -0.6878,
+      "change": -0.0425,
+      "change_percent": -0.6425,
       "unit": "USD/lb",
-      "observed_at_utc": "2026-10-18T23:06:22+00:00",
+      "observed_at_utc": "2026-10-18T23:33:15+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/HG%3DF",
       "symbol": "HG=F",
@@ -432,8 +432,8 @@
           "value": 6.531
         },
         {
-          "observed_at_utc": "2026-10-18T23:06:22+00:00",
-          "value": 6.5695
+          "observed_at_utc": "2026-10-18T23:33:15+00:00",
+          "value": 6.5725
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -443,12 +443,12 @@
       "name": "Gold futures",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 4199.5,
+      "value": 4203.4,
       "previous": 4424.9,
-      "change": -225.4,
-      "change_percent": -5.0939,
+      "change": -221.5,
+      "change_percent": -5.0058,
       "unit": "USD/troy oz",
-      "observed_at_utc": "2026-10-18T23:09:39+00:00",
+      "observed_at_utc": "2026-10-18T23:40:02+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/GC%3DF",
       "symbol": "GC=F",
@@ -540,8 +540,8 @@
           "value": 4181.100098
         },
         {
-          "observed_at_utc": "2026-10-18T23:09:39+00:00",
-          "value": 4199.5
+          "observed_at_utc": "2026-10-18T23:40:02+00:00",
+          "value": 4203.399902
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -551,12 +551,12 @@
       "name": "Silver futures",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 57.445,
+      "value": 57.43,
       "previous": 66.556,
-      "change": -9.111,
-      "change_percent": -13.6892,
+      "change": -9.126,
+      "change_percent": -13.7118,
       "unit": "USD/troy oz",
-      "observed_at_utc": "2026-10-18T23:09:28+00:00",
+      "observed_at_utc": "2026-10-18T23:40:02+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/SI%3DF",
       "symbol": "SI=F",
@@ -648,8 +648,8 @@
           "value": 56.994999
         },
         {
-          "observed_at_utc": "2026-10-18T23:09:28+00:00",
-          "value": 57.445
+          "observed_at_utc": "2026-10-18T23:40:02+00:00",
+          "value": 57.43
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
