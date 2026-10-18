@@ -7,21 +7,40 @@ import preview from "../../data/sli-research-evidence-preview.json";
 import provinces from "../../data/sli-research-province-preview.json";
 import {validateAssistantPayload,selectResearchEvidence,modelRequest,verifyResearchAnswer} from "./assistant-core.mjs";
 import {extractModelText} from "./core.mjs";
+import {buildResearchCharts} from "./chart-data.mjs";
 
 const HEADERS={"content-type":"application/json;charset=utf-8","cache-control":"no-store,private","x-content-type-options":"nosniff","vary":"Origin"};
 const send=(status,body,origin)=>new Response(JSON.stringify(body),{status,headers:{...HEADERS,...(origin?{"access-control-allow-origin":origin}:{})}});
 function validOrigin(input){try{const u=new URL(input);return u.protocol==="https:"&&u.pathname==="/"&&!u.search&&!u.hash&&!u.username&&!u.password?u.origin:null}catch{return null}}
 function safeSource(src){try{const u=new URL(src);return u.protocol==="https:"?u.href:null}catch{return null}}
 const cleanId=id=>String(id).replace(/[^a-zA-Z0-9_-]/g,"_").slice(0,80);
-function sourceDoc({id,title,text,source_url,source_date,period,publisher,topic,geo}){
+function sourceDoc({id,title,text,source_url,source_date,period,publisher,topic,geo,chart_measures,chart_project}){
  if(!safeSource(source_url)||!text)return null;
- return {id:cleanId(id),title,text,source_url,source_date,period,publisher,topic,geo,access:"pro"};
+ return {id:cleanId(id),title,text,source_url,source_date,period,publisher,topic,geo,access:"pro",chart_measures,chart_project};
+}
+function previewMeasures(d){
+ const m=d.metric;
+ if(!m||typeof m.value!=="number"||!Number.isFinite(m.value)||typeof m.unit!=="string"||typeof m.period!=="string")return [];
+ if(["macro-exports_month","macro-imports_month"].includes(d.id)){
+  return [{series:"monthly_merchandise_trade",label:"Merchandise trade / perdagangan barang",category:d.id==="macro-exports_month"?"Exports":"Imports",value:m.value,unit:m.unit,period:m.period}];
+ }
+ if(["energy-brent","energy-wti"].includes(d.id)){
+  return [{series:"dated_crude_spot",label:"Crude oil spot / harga minyak spot",category:d.id==="energy-brent"?"Brent":"WTI",value:m.value,unit:m.unit,period:m.period}];
+ }
+ return []; // One metric cannot constitute a meaningful comparison chart.
+}
+function previewProject(d){
+ if(!/^(project-|aiproject-)/.test(d.id))return null;
+ const text=String(d.text_en||d.text||"");
+ const m=text.match(/Reported stage:\s*([^.]+)(?:\.|$)/i);
+ return m?{id:d.id.replace(/^project-/,""),stage:m[1].trim()}:null;
 }
 function publicCorpus(){
  const docs=[];
  for(const d of preview.documents||[]){
   const row=sourceDoc({id:d.id,title:d.title+" / "+(d.title_en||d.title),
-   text:(d.text_en||d.text).slice(0,1700),source_url:d.source_url,source_date:d.source_date,period:d.period,publisher:d.publisher,topic:d.topic,geo:d.geo});
+   text:(d.text_en||d.text).slice(0,1700),source_url:d.source_url,source_date:d.source_date,period:d.period,publisher:d.publisher,topic:d.topic,geo:d.geo,
+   chart_measures:previewMeasures(d),chart_project:previewProject(d)});
   if(row)docs.push(row);
  }
  for(const p of provinces.provinces||[]){
@@ -34,13 +53,17 @@ function publicCorpus(){
    "%; PMTB/GFCF share "+capital+"%. PMTB/GFCF is a national accounts measure, NOT realized BKPM project investment. Rates and levels belong to different denominators.";
   const grdp=sourceDoc({id:"province_grdp_"+p.name_en,title:p.name+" / "+p.name_en+" · Regional GRDP 2025",
    text:context,source_url:provinces.sources.grdp.url,source_date:provinces.sources.grdp.released,
-   period:"2025 preliminary",publisher:"BPS",topic:"regional economy investment growth",geo:p.name_en});
+   period:"2025 preliminary",publisher:"BPS",topic:"regional economy investment growth",geo:p.name_en,
+   chart_measures:[
+    {series:"real_grdp_growth",label:"Pertumbuhan PDRB riil / Real GRDP growth",category:p.name,value:p.growth_real_2025_pct,unit:"% YoY",period:"2025"},
+    {series:"pmtb_share",label:"Porsi PMTB / GFCF share of GRDP",category:p.name,value:p.pmtb_share_2025_pct,unit:"% PDRB",period:"2025"}]});
   if(grdp)docs.push(grdp);
   const unequal=sourceDoc({id:"province_gini_"+p.name_en,title:p.name+" / "+p.name_en+" · Expenditure Gini March 2026",
    text:"Expenditure Gini for "+p.name+" ("+p.name_en+") in March 2026 was "+gini+
     " on scale 0–1. This is expenditure inequality, not income inequality and not a causal index of investment performance. Indonesia national expenditure Gini was 0.368 in March 2026; province and national numbers cannot be averaged.",
    source_url:provinces.sources.gini.url,source_date:provinces.sources.gini.last_updated,
-   period:"2026-03",publisher:"BPS",topic:"regional inequality gini",geo:p.name_en});
+   period:"2026-03",publisher:"BPS",topic:"regional inequality gini",geo:p.name_en,
+   chart_measures:[{series:"gini_expenditure",label:"Rasio Gini pengeluaran / Expenditure Gini",category:p.name,value:p.gini_expenditure_2026_03,unit:"koefisien 0–1",period:"2026-03"}]});
   if(unequal)docs.push(unequal);
   for(const item of p.project_examples||[]){
    const project=sourceDoc({id:"province_project_"+p.name_en+"_"+item.id,
@@ -49,7 +72,7 @@ function publicCorpus(){
      "; description of reported scale "+(item.investment_basis||"not validated")+
      ". Announced/planned/in construction is NOT evidence of completed capex or operational capacity.",
     source_url:item.source_url,source_date:item.evidence_date,period:item.evidence_date,publisher:item.entity||"Original project announcement",
-    topic:item.sector+" project investment",geo:p.name_en});
+    topic:item.sector+" project investment",geo:p.name_en,chart_project:{id:item.id,stage:item.stage}});
    if(project)docs.push(project);
   }
  }
@@ -91,7 +114,7 @@ export default{
   if(!evidence.length)return send(200,{mode:"generative_rag",answer:payload.language==="id"?
     "Belum cukup bukti sesuai pertanyaan ini dalam corpus uji terbatas SLI. Tidak ada analisis generatif yang dibuat karena sumbernya tidak memadai.":
     "The limited SLI test corpus has insufficient matching evidence. No unsupported report was generated.",
-    sources:[],evidence_status:"insufficient",research_format:payload.mode},origin);
+    sources:[],charts:[],evidence_status:"insufficient",research_format:payload.mode},origin);
   const params=modelRequest(payload,evidence,env.RESEARCH_MODEL);
   // The Responses API output budget includes reasoning tokens as well as visible prose.
   // Keep owner-only tests concise, with enough room for analysis and numbered citations.
@@ -108,7 +131,7 @@ export default{
   }catch{return send(502,{error:"model_unreachable"},origin)}
   if(!verifyResearchAnswer(answer,evidence))return send(502,{error:"invalid_or_missing_source_citations"},origin);
   return send(200,{mode:"generative_rag",research_format:payload.mode,answer,
-   evidence_status:"owner_staging_verify_sources",
+   charts:buildResearchCharts(evidence,payload.language),evidence_status:"owner_staging_verify_sources",
    sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo}))},origin);
  }
 };

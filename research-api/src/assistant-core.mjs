@@ -179,7 +179,7 @@ export function selectResearchEvidence(documents,question,history=[],tier="pro",
   chosen.push({id:d.id,title:d.title,text:d.text.slice(0,2000),source_url:d.source_url,
    period:String(d.period||"not specified"),source_date:String(d.source_date||"not specified"),
    publisher:String(d.publisher||"undisclosed"),geo:String(d.geo||"unclassified"),topic:String(d.topic||""),
-   ...(d.chart_measure?{chart_measure:d.chart_measure}:{}),...(d.chart_project?{chart_project:d.chart_project}:{})});
+   ...(d.chart_measures?{chart_measures:d.chart_measures}:{}),...(d.chart_project?{chart_project:d.chart_project}:{})});
   if(chosen.length>=max)break;
  }
  return chosen;
