@@ -191,3 +191,39 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-model-extension p{
 }
 #raAnalyticalWorkbench .ra-wb-add-predictor:hover{background:#103f62}
 #raAnalyticalWorkbench .ra-wb-add-predictor:focus-visible{outline:3px solid #ae8b4b;outline-offset:2px}
+
+/* Evidence-first official BPS panel, never confuse SLI-derived estimates with BPS output. */
+#raAnalyticalWorkbench .ra-wb-official-source{
+ padding:15px 17px;margin:0 0 23px;background:#f4f8fb;
+ border:1px solid #c2d8e5;border-left:4px solid #b89b5b;
+ border-radius:12px;color:#244c6b
+}
+#raAnalyticalWorkbench .ra-wb-official-source strong{
+ color:#154b70;font:800 15px/1.4 system-ui,sans-serif
+}
+#raAnalyticalWorkbench .ra-wb-official-source p{
+ color:#496c83!important;font:13px/1.6 system-ui,sans-serif;margin:7px 0
+}
+#raAnalyticalWorkbench .ra-wb-official-actions{
+ display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:13px 0
+}
+#raAnalyticalWorkbench .ra-wb-official-actions button{
+ appearance:none;border:1px solid #205883;background:#195581;color:#fff;
+ border-radius:8px;padding:11px 15px;font:750 13px system-ui,sans-serif;cursor:pointer
+}
+#raAnalyticalWorkbench .ra-wb-official-actions button:disabled{cursor:wait;opacity:.6}
+#raAnalyticalWorkbench .ra-wb-official-actions a,
+#raAnalyticalWorkbench .ra-wb-bps-provenance a{font:700 12px/1.5 system-ui,sans-serif;color:#256a9d;text-decoration:underline}
+#raAnalyticalWorkbench .ra-wb-official-source small{
+ color:#627f95!important;font:11px/1.6 system-ui,sans-serif
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-bps-provenance{
+ padding:12px 15px;margin:12px 0 15px;border:1px solid #d4dfc6;
+ border-left:4px solid #71906d;border-radius:8px;background:#f4faf1
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-bps-provenance strong{
+ font:800 12px/1.5 system-ui,sans-serif;color:#2e6143!important
+}
+body.sli-research-brand #raAnalyticalWorkbench .ra-wb-bps-provenance p{
+ color:#325945!important;font:12px/1.7 system-ui,sans-serif
+}
