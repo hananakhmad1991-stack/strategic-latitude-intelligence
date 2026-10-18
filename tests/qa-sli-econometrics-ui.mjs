@@ -52,6 +52,9 @@ test("Investor workbench DOM: panel FE actually estimates 12 entities x 6 years,
  $("raDataFile").dispatchEvent(new dom.window.Event("change",{bubbles:true}));await tick();
  assert.equal($("raPredictor").value,"pmtb_share_pct","Default X must represent capital formation, not annual year or economic growth");
  assert.equal($("raOutcome").value,"real_grdp_growth_pct","Default Y must be growth");
+ assert.equal($("raDatasetStatus").dataset.source,"upload");
+ assert.match($("raDatasetStatus").textContent,/72 observasi/);
+ assert.ok(![...$("raExtraPredictors").options].some(o=>["year","pmtb_share_pct","real_grdp_growth_pct"].includes(o.value)));
  assert.equal($("raPanelEntity").value,"province","Entity selector must default to province, not electricity");
  assert.deepEqual([...$("raPanelEntity").options].map(o=>o.value),["province"],"Numeric KPI variables are not legitimate entity identifiers");
  assert.deepEqual([...$("raPanelTime").options].map(o=>o.value),["year"],"Annual time selector must not offer other numerics");
@@ -123,12 +126,18 @@ test("BPS official-data shortcut builds 34-province annual panel, models lagged 
   await new Promise(resolve=>setImmediate(resolve));await new Promise(resolve=>setImmediate(resolve));
   assert.equal(requested,"./data/sli-bps-regional-intelligence.json");
   assert.match($("raModelResult").textContent,/136 observasi/);
+  assert.equal($("raDatasetStatus").dataset.source,"bps");
+  assert.match($("raDatasetStatus").textContent,/DATA AKTIF · BPS 2021–2025/);
+  assert.match($("raDatasetStatus").textContent,/kolom upload hanya untuk file milik pengguna/);
   assert.equal($("raMethod").value,"panel_fe");
   assert.equal($("raOutcome").value,"real_grdp_growth_pct");
   assert.equal($("raPredictor").value,"pmtb_share_lag1_pct");
   assert.equal($("raPanelEntity").value,"province");
   assert.equal($("raPanelTime").value,"year");
   assert.equal($("raYearFE").checked,true);
+  const availableExtras=[...$("raExtraPredictors").options].map(o=>o.value);
+  assert.deepEqual(availableExtras,["pmtb_share_pct","household_share_pct","grdp_current_rp_billion","grdp_constant_2010_rp_billion"]);
+  assert.ok(!availableExtras.includes("year")&&!availableExtras.includes("real_grdp_growth_pct")&&!availableExtras.includes("pmtb_share_lag1_pct"));
   assert.match($("raMethodInfo").textContent,/BPS 2021–2025/);
   $("raRunMethod").click();
   assert.match($("raModelResult").textContent,/34 entitas × 4 periode, 136 observasi/);
