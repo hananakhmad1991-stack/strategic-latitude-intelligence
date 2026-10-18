@@ -204,7 +204,7 @@ test("Clicking a gold event synchronizes all three charts and opens sourced bili
  const marker=nodes.find(x=>x.tag==="g"&&x.attrs["data-event-date"]==="2022-02-24");
  assert.ok(marker,"Event dot must have an interactive SVG hit target");
  assert.equal(marker.attrs.role,"button");
- assert.equal(marker.attrs.tabindex,0);
+ assert.equal(marker.attrs.tabindex,"0");
  assert.ok(marker.listeners.has("click")&&marker.listeners.has("keydown"));
  assert.ok(nodes.some(x=>x.tag==="circle"&&x.attrs.r===19),"Marker must have a generous transparent hit area");
  marker.listeners.get("click")();
