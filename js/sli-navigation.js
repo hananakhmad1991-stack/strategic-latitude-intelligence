@@ -6,7 +6,7 @@ const groups=[
  ['Investment & regions','Investasi & daerah','investment','macro','opportunity','province','gini','labs'],
  ['Energy, trade & assets','Energi, perdagangan & aset','energy','map','trade','minerals','electricity','ruptl'],
  ['Technology & AI','Teknologi & AI','ai','aihub','komdigi','digital','digitalgov'],
- ['Policy, environment & intelligence','Kebijakan, lingkungan & intelijen','policy','indo','climate','ria'],
+ ['Policy, environment & intelligence','Kebijakan, lingkungan & intelijen','policy','geopolitics','indo','climate','ria'],
  ['Reference & transparency','Referensi & transparansi','glossary','freshness']
 ];
 const modules={
@@ -32,6 +32,7 @@ const modules={
  digital:['Digital Economy Readiness','Kesiapan Ekonomi Digital','digital-economy-readiness.html','Readiness, connectivity, talent and public digital services.','Kesiapan, konektivitas, talenta dan layanan digital.'],
  digitalgov:['Digital Governance & Data Centres','Tata Kelola Digital & Pusat Data','digital-governance-data-centers.html','Public sector digital infrastructure and data governance.','Infrastruktur digital pemerintah dan tata kelola data.'],
  policy:['Policy & Risk','Kebijakan & Risiko','index.html#policy','Policy summary and evidence-linked regulatory context.','Ringkasan kebijakan dan konteks regulasi.'],
+  geopolitics:['Geopolitical Intelligence','Intelijen Geopolitik','index.html#geopolitics','Six geopolitical theatres, Indonesia exposure, dated official metrics and secondary-news monitoring.','Enam tema geopolitik, paparan Indonesia, data resmi bertanggal dan monitoring berita sekunder.'],
  indo:['Indonesia Intelligence','Intelijen Indonesia','geopolitical-impact-assessment.html','Integrated geopolitical, economy, regional and public safety intelligence.','Intelijen geopolitik, ekonomi, wilayah dan keselamatan publik.'],
  climate:['Climate & Environment','Iklim & Lingkungan','climate-environment.html','Environmental exposure, dated monitoring and official alerts.','Risiko lingkungan, monitoring dan peringatan resmi.'],
  ria:['Policy & Regulatory Intelligence','Intelijen Kebijakan & Regulasi','policy-regulatory-intelligence.html','Rules, institutional implementation and linked policy evaluations.','Regulasi, pelaksana dan evaluasi kebijakan.'],
@@ -43,7 +44,7 @@ const modules={
 const related={
  research:['overview','macro','opportunity','aihub'],membership:['overview','research','guide','glossary'],overview:['research','investment','energy','ai'],investment:['province','opportunity','gini','labs'],map:['investment','energy','province'],
  trade:['minerals','energy','macro'],energy:['electricity','ruptl','map','trade'],minerals:['map','trade','investment'],
- ai:['aihub','komdigi','digital','digitalgov'],policy:['ria','indo','climate'],macro:['opportunity','gini','investment'],
+ ai:['aihub','komdigi','digital','digitalgov'],policy:['geopolitics','ria','indo','climate'],geopolitics:['policy','indo','trade','energy'],macro:['opportunity','gini','investment'],
  opportunity:['province','gini','labs'],province:['opportunity','gini','map','electricity'],gini:['province','opportunity','macro'],
  labs:['province','opportunity','indo'],electricity:['energy','ruptl','province'],ruptl:['energy','electricity','aihub'],
  aihub:['ai','komdigi','digital','electricity'],komdigi:['aihub','digital','digitalgov'],
