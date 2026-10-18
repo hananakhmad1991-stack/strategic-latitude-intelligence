@@ -15,8 +15,7 @@ const lngamma=z=>{
 };
 function betacf(a,b,x){
  const FPMIN=1e-300,EPS=3e-13;
- let c=1,d=1-(a+b)*x/(a+1-b+1); // overwritten with canonical continued-fraction first denominator
- d=1-(a+b)*x/(a+1);if(Math.abs(d)<FPMIN)d=FPMIN;
+ let c=1,d=1-(a+b)*x/(a+1);if(Math.abs(d)<FPMIN)d=FPMIN;
  d=1/d;let h=d;
  for(let m=1;m<=240;m++){
   const m2=2*m;
@@ -147,6 +146,7 @@ export function panelFixedEffects(rows,predictors,outcome,entityField,timeField,
  for(const d of pairs){const id=JSON.stringify([d.entity,d.time]);if(seen.has(id))throw Error("Duplicate entity-period rows: aggregate or correct repeated observations");seen.add(id)}
  const units=[...new Set(pairs.map(d=>d.entity))],times=[...new Set(pairs.map(d=>d.time))];
  if(units.length<8||times.length<3)throw Error("Panel FE requires at least 8 entities and 3 periods; 38 provinces observed for only one year are NOT a panel");
+ if(times.some(t=>!/^(19|20)\d{2}$/.test(t)))throw Error("Panel FE currently requires a genuine annual year field (YYYY), not region categories or period labels");
  const sizes=units.map(id=>pairs.filter(d=>d.entity===id).length);
  if(sizes.some(v=>v<2))throw Error("Each entity needs at least two years for the within estimator");
  if(pairs.length<units.length+times.length+predictors.length+15)throw Error("Panel too short for reliable exploratory FE estimation");
