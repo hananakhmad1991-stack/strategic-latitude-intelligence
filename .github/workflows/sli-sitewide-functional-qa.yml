@@ -22,6 +22,9 @@ on:
       - 'sli-user-guide.html'
       - 'sli-glossary-methodology.html'
       - 'data/sli-unified-glossary.json'
+      - 'data/**'
+      - 'scripts/audit-sli-content-quality.mjs'
+      - 'tests/qa-sli-content-quality.mjs'
       - '.github/workflows/sli-sitewide-functional-qa.yml'
   workflow_dispatch:
 permissions:
@@ -36,4 +39,6 @@ jobs:
         with:
           node-version: '22'
       - name: Verify all critical scripts, navigation, filters and export controls
-        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs
+        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs
+      - name: Validate published SLI JSON and asset integrity
+        run: node scripts/audit-sli-content-quality.mjs
