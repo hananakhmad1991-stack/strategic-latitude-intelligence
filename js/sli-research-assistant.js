@@ -61,25 +61,34 @@ function append(role,text){
  box.append(node("div","sli-ra-msg-meta",role==="user"?tr("user"):role==="assistant"?tr("assistant"):tr("system")));
  const body=node("div","sli-ra-msg-text");
  box.append(body);$("raMessages").append(box);
- if(role==="assistant"&&window.SLIResearchVisuals)window.SLIResearchVisuals.renderMarkdown(text,body,state.lastResult?.sources||[]);else body.textContent=text;
+ if(role==="assistant"&&window.SLIResearchVisuals)window.SLIResearchVisuals.renderMarkdown(reportBody(text),body,state.lastResult?.sources||[]);else body.textContent=text;
  return body;
+}
+function apaEntry(s){
+ const publisher=String(s.publisher||"Research institution").trim();
+ const date=String(s.source_date||s.period||"").match(/20\d{2}/)?.[0]||"n.d.";
+ const title=String(s.title||"Research document").replace(/\s*\/\s*[^/]+$/,"").trim();
+ return publisher+". ("+date+"). "+title+". "+String(s.source_url||"");
+}
+function reportBody(answer){
+ return String(answer||"").split(/\n(?=##?\s+(?:References|Daftar Pustaka|Bibliography|Keterbatasan|Limitations|Evidence limitations|Batasan data|Source limitations|Model Statement)\b)/i)[0].trim();
 }
 function renderSources(sources,answer="",charts=[]){
  const cited=new Set([...String(answer).matchAll(/\[(\d+)\]/g)].map(m=>Number(m[1])));
  const graphed=new Set((Array.isArray(charts)?charts:[]).flatMap(c=>Array.isArray(c.source_refs)?c.source_refs:[]).filter(Number.isInteger));
  const list=$("raSourcesList");list.replaceChildren();
- const valid=Array.isArray(sources)?sources.slice(0,12):[];
+ const valid=Array.isArray(sources)?sources.slice(0,40):[];
  if(!valid.length){list.append(node("p",null,tr("noSources")));return}
  valid.forEach((s,i)=>{
   const card=node("div","sli-ra-source-card");
-  card.append(node("strong",null,"["+(i+1)+"] "+String(s.title||tr("source"))));
+  const sourceLink=node("a",null,"["+(i+1)+"] "+apaEntry(s));const href=safeUrl(s.source_url||"");if(href){sourceLink.href=href;sourceLink.target="_blank";sourceLink.rel="noopener noreferrer"}card.append(sourceLink);
   const role=cited.has(i+1)?(state.language==="id"?"Dikutip dalam laporan":"Cited in report"):
    graphed.has(i+1)?(state.language==="id"?"Sumber grafik":"Chart evidence"):
    (state.language==="id"?"Konteks terpilih; belum dikutip":"Selected context; not cited");
   card.append(node("p","sli-ra-source-role",role));
-  card.append(node("p",null,[s.publisher,s.period,s.source_date].filter(Boolean).join(" · ")));
+
   const url=safeUrl(s.source_url||"");
-  if(url){const a=node("a",null,state.language==="id"?"Buka sumber asli ↗":"Open original source ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";card.append(a)}
+
   list.append(card);
  });
 }
@@ -87,7 +96,7 @@ function renderMonitoringSignals(payload){
  const wrap=$("raMonitoringSignals");wrap.replaceChildren();
  const signals=Array.isArray(payload?.monitoring_signals)?payload.monitoring_signals.slice(0,5):[];
  if(!signals.length)return;
- const header=node("h3",null,"Monitoring berita SLI · perlu konfirmasi");
+ const header=node("h3",null,"Monitoring sumber berita");
  const disclaimer=node("p","sli-ra-evidence-note","Headline ditemukan dari RSS dan belum diverifikasi terhadap isi artikel asli. Ini bukan fakta kejadian yang sudah dikonfirmasi atau berita real-time tanpa jeda.");
  wrap.append(header,disclaimer);
  for(const s of signals){
@@ -110,9 +119,9 @@ function makeExport(){
  if(!state.lastResult)return "";
  const last=state.lastResult,heading=state.language==="id"?"Laporan SLI Research AI":"SLI Research AI Report";
  if(last.mode==="local_ahp")return "# SLI · Academic AHP Analysis\n\n"+last.answer+"\n\n**Calculation:** Local AHP; respondent data never sent to SLI/AI server. Verify inputs and review CR.\n";
- const citations=last.sources.map((s,i)=>"["+(i+1)+"] "+String(s.title||"Source")+" — "+String(s.period||"n.d.")+" — "+String(s.source_date||"n.d.")+" — "+String(s.source_url||"")).join("\n");
+ const citations=last.sources.map((s,i)=>"["+(i+1)+"] "+apaEntry(s)).join("\n");
  const figures=(last.charts||[]).map(c=>"### "+c.title+" ("+c.period+" · "+c.unit+")\n"+c.points.map(p=>"- "+p.label+": "+p.value+" ["+p.source+"]").join("\n")+"\n"+c.note).join("\n\n");
- return "# "+heading+"\n\n"+(state.language==="id"?"**Cakupan:** Analisis corpus terkurasi, bukan data live. Periksa sumber dan tanggal.":"**Scope:** Curated corpus, not live data. Verify sources and observation dates.")+"\n\n"+last.answer+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
+ return "# "+heading+"\n\n"+(state.language==="id"?"**Cakupan:** Analisis corpus terkurasi, bukan data live. Periksa sumber dan tanggal.":"**Scope:** Curated corpus, not live data. Verify sources and observation dates.")+"\n\n"+reportBody(last.answer)+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
  "\n\n"+(state.language==="id"?"Dihasilkan oleh layanan AI; sumber tetap harus diverifikasi.":"AI-assisted draft; verify all original sources.")+"\n";
 }
 function updateFileStatus(){
