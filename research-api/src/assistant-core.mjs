@@ -3,6 +3,7 @@
 */
 import {normalize,queryTokens,extractModelText,citationsValid} from "./core.mjs";
 import {getMethod,getMethodAdvice,inferMethod} from "../../js/sli-analytical-core.mjs";
+import {bridgeEvidence} from "./evidence-bridge.mjs";
 export const MODES=Object.freeze(["executive_summary","deep_research","comparative_analysis","risk_opportunity"]);
 const GEO=[
  ["Aceh","Aceh"],["Sumatra Utara","North Sumatra","Sumut"],["Sumatra Barat","West Sumatra","Sumbar"],
@@ -256,9 +257,11 @@ const FORMAT={
 };
 export function modelRequest(payload,evidence,model){
  const numbered=evidence.map((d,i)=>({citation:"["+(i+1)+"]",id:d.id,title:d.title,geo:d.geo,period:d.period,source_date:d.source_date,publisher:d.publisher,excerpt:d.text}));
+ const crossSectorLinks=bridgeEvidence(payload.question,evidence).map(link=>({...link,citation:"["+(evidence.findIndex(d=>d.id===link.id)+1)+"]"}));
  let instruction=[
  "You are Strategic Latitude Intelligence Research AI, a general-purpose academic, scientific, policy and professional research assistant. Serve researchers, universities, students, businesses and investors across disciplines, not only Indonesian economy and investment.",
  "Generate actual analytical prose—not search results or a list of clickable links. Analyse relationships, distinguish facts from inferences and avoid generic filler.",
+ "Cross-sector evidence links in the user input are traceability hints, NOT demonstrated correlations. Explain the hypothesised mechanism connecting two cited indicators, their units/periods/geography, alternative explanations and what quantitative test is needed. Never infer statistical correlation, causation or multiplier from a thematic link alone.",
  "Treat each user request as a research commission. Internally identify the exact research question, decision objective, units of analysis, region, time period, deliverable and whether the user supplied data. Select a defensible analytical design before writing. Do not ask a routine clarification when a clearly marked assumption permits useful progress.",
  "Deliver a coherent professional research REPORT, not a search page: title and precise scope; executive assessment directly answering the question; source-and-data baseline (vintage, geography, units); analytical findings with mechanisms and alternatives; methodology and execution status; scenarios/limitations as applicable; final actionable recommendations. Use Markdown section headings and tables when they improve precision. Adapt the length and headings to the request rather than adding empty boilerplate.",
  "For every proposed method, perform an internal methodological audit: suitability to the research question; required sample/data and units; assumptions and identification; missingness/outliers; comparator/counterfactual; diagnostics and robustness; interpretation limits; and reproducibility. Separate (A) independently executed calculation with available validated data, (B) supported qualitative application, and (C) unexecuted research proposal. Never describe B or C as completed empirical estimation.",
@@ -297,7 +300,7 @@ export function modelRequest(payload,evidence,model){
  "Never cite unrelated energy, macroeconomy or waste-to-energy sources in a specific critical-minerals report unless the request expressly involves that comparison. Use no unsupported quantities or pseudo-precision."
  ].join("\n");
  if(numbered.length===0)instruction+="\nNO MATCHING SLI EVIDENCE. The response must be methodological or research design guidance only, not an empirical answer; no fabricated citations or observed statistical claims. Clearly label limitations.";
- const userData={current_research_instruction:payload.question,requested_format:payload.mode,requested_methodology:payload.methodology||"auto",method_execution_status:payload.methodology&&getMethod(payload.methodology)?.status==="local"?"browser_only_if_user_supplies_computed_results":"research_design_only_no_server_side_estimator",user_uploaded_analysis:payload.user_analysis||null,history_for_follow_up_only:payload.history.slice(-8),source_evidence:numbered};
+ const userData={current_research_instruction:payload.question,requested_format:payload.mode,requested_methodology:payload.methodology||"auto",method_execution_status:payload.methodology&&getMethod(payload.methodology)?.status==="local"?"browser_only_if_user_supplies_computed_results":"research_design_only_no_server_side_estimator",user_uploaded_analysis:payload.user_analysis||null,history_for_follow_up_only:payload.history.slice(-8),cross_sector_evidence_links:crossSectorLinks,source_evidence:numbered};
  return {model,store:false,max_output_tokens:payload.mode==="deep_research"?3200:payload.mode==="executive_summary"?2100:2700,
   instructions:instruction,input:[{role:"user",content:[{type:"input_text",text:JSON.stringify(userData)}]}]};
 }
