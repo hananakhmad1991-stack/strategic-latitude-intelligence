@@ -9,23 +9,31 @@ test("Official BPS source and exact year vintage are verified before constructin
  const p=buildBpsOfficialPanel(src);
  assert.equal(p.publication.url,src.sources.pdrb.url);
  assert.equal(p.publication.url,BPS_PANEL_META.url);
- assert.equal(p.entity_count,34);
- assert.equal(p.n,136);
+ assert.equal(p.entity_count,32);
+ assert.equal(p.n,128);
  assert.deepEqual(p.growth_years,[2022,2023,2024,2025]);
- assert.deepEqual(p.year_counts,{"2022":34,"2023":34,"2024":34,"2025":34});
- assert.equal(p.excluded_provinces.length,4);
- assert.deepEqual(p.excluded_provinces.map(x=>x.province).sort(),["Papua Barat Daya","Papua Pegunungan","Papua Selatan","Papua Tengah"].sort());
+ assert.deepEqual(p.year_counts,{"2022":32,"2023":32,"2024":32,"2025":32});
+ assert.equal(p.excluded_provinces.length,6);
+ assert.ok(p.excluded_provinces.some(x=>x.province==="Papua"&&/boundary break/.test(x.reason)));
+ assert.ok(p.excluded_provinces.some(x=>x.province==="Papua Barat"&&/boundary break/.test(x.reason)));
+ assert.doesNotMatch(JSON.stringify(p.rows),/"province":"Papua( Barat)?"/);
+ assert.match(p.comparability_warning,/NOT economic contraction/);
+ assert.equal(p.publication.admin_boundary_sources.length,2);
+
+ assert.deepEqual(p.excluded_provinces.map(x=>x.province).sort(),["Papua","Papua Barat","Papua Barat Daya","Papua Pegunungan","Papua Selatan","Papua Tengah"].sort());
  assert.ok(p.rows.every(r=>r.year>=2022&&r.year<=2025));
  assert.ok(p.rows.every(r=>Number.isFinite(r.pmtb_share_lag1_pct)&&Number.isFinite(r.real_grdp_growth_pct)));
- assert.equal(new Set(p.rows.map(r=>r.province+"|"+r.year)).size,136);
+ assert.equal(new Set(p.rows.map(r=>r.province+"|"+r.year)).size,128);
  assert.equal(detectPanelColumns(p.rows).recommendedEntity,"province");
  assert.equal(detectPanelColumns(p.rows).recommendedTime,"year");
 });
-test("Unbalanced 38-province panel preserves legitimate gaps rather than inventing new Papua back-series",()=>{
+test("Unbalanced geographically screened 36-province panel preserves legitimate gaps and boundary changes",()=>{
  const p=buildBpsOfficialPanel(src,{balanced:false});
- assert.equal(p.n,144);
- assert.equal(p.entity_count,38);
- assert.deepEqual(p.year_counts,{"2022":34,"2023":34,"2024":38,"2025":38});
+ assert.equal(p.n,136);
+ assert.equal(p.entity_count,36);
+ assert.deepEqual(p.year_counts,{"2022":32,"2023":32,"2024":36,"2025":36});
+ for(const name of ["Papua","Papua Barat"])
+  assert.equal(p.rows.filter(r=>r.province===name).length,0,"Never mix old-boundary Papua values in official regression");
  for(const name of ["Papua Barat Daya","Papua Selatan","Papua Tengah","Papua Pegunungan"])
   assert.deepEqual(p.rows.filter(r=>r.province===name).map(r=>r.year),[2024,2025]);
 });
@@ -38,11 +46,12 @@ test("2025 published BPS GRDP constant-price growth matches existing verified SL
   maxDiff=Math.max(maxDiff,Math.abs(r.real_grdp_growth_pct-prior.growth_real_2025_pct));
  }
  assert.ok(maxDiff<.005,"published derived real GRDP growth must agree with SLI 2025 BPS snapshot after rounding");
+ assert.equal(p.rows.filter(r=>r.year===2025).length,36);
 });
 test("Official source BPS panel supports real exploratory entity/year FE, but never causal effect claim",()=>{
  const p=buildBpsOfficialPanel(src);
  const fit=panelFixedEffects(p.rows,["pmtb_share_lag1_pct"],"real_grdp_growth_pct","province","year",true);
- assert.equal(fit.unit_count,34);assert.equal(fit.time_count,4);assert.equal(fit.rows_used,136);
+ assert.equal(fit.unit_count,32);assert.equal(fit.time_count,4);assert.equal(fit.rows_used,128);
  assert.equal(fit.coefficients.length,1);
  assert.ok(Number.isFinite(fit.coefficients[0].estimate));
  assert.ok(Number.isFinite(fit.coefficients[0].std_error_hc1));
