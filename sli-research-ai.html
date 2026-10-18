@@ -4,7 +4,7 @@
 <meta name="description" content="SLI Research AI: a source-grounded conversational research assistant for Indonesia's economy, energy, strategic investment, geopolitics and technology. Owner-only generative research testing is active; subscriber access is not yet available.">
 <link rel="stylesheet" href="./css/sli-site-ux.css">
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-unified1">
-<link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261018-quality3">
+<link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261018-chatfirst1">
 <link rel="stylesheet" href="./css/sli-research-brand.css?v=20261018-brand1">
 <link rel="stylesheet" href="./css/sli-analytical-workbench.css?v=20261018-bps8">
 <link rel="stylesheet" href="./css/sli-contextual-briefs.css?v=20261018-insight1">
@@ -28,6 +28,7 @@
 <div id="raNotice" class="sli-ra-notice" role="status" aria-live="polite" data-id="Memeriksa status layanan Research AI dan akses Owner Test…" data-en="Checking Research AI service and Owner Test access…">Memeriksa status layanan Research AI dan akses Owner Test…</div>
 <section class="sli-ra-intro" id="raIntro">
  <div class="sli-ra-eyebrow" data-id="SLI · ASISTEN RISET INTELIJEN STRATEGIS" data-en="SLI · STRATEGIC INTELLIGENCE RESEARCH ASSISTANT">SLI · ASISTEN RISET INTELIJEN STRATEGIS</div>
+ <div class="sli-ra-chat-promise">Ceritakan rencana Anda. AI membantu memilih metode, menelusuri bukti, dan menyusun riset — tidak perlu mengerti rumus statistik.</div>
  <h1>Research <em>AI</em> <span data-id="by Strategic Latitude" data-en="by Strategic Latitude">by Strategic Latitude</span></h1>
  <p data-id="Satu instruksi, riset analitis yang didukung data, konteks dan sumber yang dapat diperiksa." data-en="One prompt. Analytical research grounded in data, context and verifiable sources.">Satu instruksi, riset analitis yang didukung data, konteks dan sumber yang dapat diperiksa.</p>
  <div class="sli-ra-access-label" id="raAccessLabel">Research AI · Pre-launch</div>
@@ -37,9 +38,21 @@
 <section class="sli-ra-workspace" aria-label="Research conversation workspace">
  <form id="raAssistantForm" class="sli-ra-composer">
  <label for="raPrompt" class="sli-ra-sr" data-id="Instruksi riset" data-en="Research instruction">Instruksi riset</label>
- <textarea id="raPrompt" rows="4" maxlength="5000" placeholder="Buat executive summary tentang prospek investasi data center Indonesia sampai 2030, termasuk kapasitas, kebutuhan listrik, kebijakan pemerintah, risiko proyek dan peluang investor Korea Selatan. Gunakan sumber dan analisis." required></textarea>
+ <textarea id="raPrompt" rows="4" maxlength="5000" placeholder="Saya punya modal Rp5 triliun untuk membangun kilang migas di NTB. Tolong analisis kelayakan awal, risiko, lokasi, kebutuhan pasokan, dan multiplier effect bila datanya memungkinkan." required></textarea>
+ <div class="sli-ra-chat-attachment">
+  <label for="raChatFiles">＋ Lampirkan data (opsional)</label>
+  <input type="file" id="raChatFiles" accept=".pdf,.docx,.xlsx,.pptx,.csv,.json,.txt,.png,.jpg,.jpeg,.webp" multiple aria-describedby="raAttachmentNote">
+  <small id="raAttachmentNote">PDF, Word, Excel, PowerPoint, CSV, teks, atau gambar · maksimal 2 file, masing-masing 600 KB · uji privat Owner Test. Tanpa lampiran pun AI dapat merancang riset.</small>
+  <div id="raAttachmentStatus" role="status" aria-live="polite">Belum ada lampiran.</div>
+  <label class="sli-ra-upload-consent"><input type="checkbox" id="raChatUploadConsent"> Saya setuju file pilihan dikirim dari browser melalui Cloudflare ke penyedia AI untuk dianalisis. Data belum terverifikasi; jangan unggah dokumen rahasia tanpa izin.</label>
+ </div>
  <div class="sli-ra-composer-bottom">
+  <details class="sli-ra-chat-preferences" id="raChatPreferences">
+   <summary>Pengaturan analisis (opsional) · Biarkan AI memilih</summary>
   <div class="sli-ra-selects">
+   <label for="raChatMethod">Metodologi riset · AI memilih secara otomatis</label>
+   <select id="raChatMethod" aria-label="Optional research methodology"><option value="auto">AI pilih metode terbaik · Otomatis</option></select>
+   <small id="raChatMethodStatus">49 metodologi dalam katalog; yang bisa dihitung akan dipilih sesuai data dan ketersediaan mesin.</small>
    <label for="raMode" data-id="Format riset" data-en="Research format">Format riset</label>
    <select id="raMode" aria-label="Research output format">
     <option value="executive_summary" data-id="Executive Summary" data-en="Executive Summary">Executive Summary</option>
@@ -48,19 +61,22 @@
     <option value="risk_opportunity" data-id="Risk & Opportunity" data-en="Risk & Opportunity">Risk & Opportunity</option>
    </select>
   </div>
+  </details>
   <button type="submit" class="sli-ra-send" id="raSend"><span data-id="Riset dengan AI" data-en="Research with AI">Riset dengan AI</span><span aria-hidden="true">↗</span></button>
  </div>
  </form>
-<section class="sli-ra-owner" id="raOwnerPanel" aria-label="Private Owner Test activation">
+<details class="sli-ra-owner" id="raOwnerPanel" aria-label="Private Owner Test activation">
+ <summary>Pengujian privat pemilik SLI · koneksi AI</summary>
  <div class="sli-ra-owner-heading"><strong data-id="Uji AI Generatif · Khusus Pemilik SLI" data-en="Generative AI Owner Test · Private">Uji AI Generatif · Khusus Pemilik SLI</strong><span id="raOwnerState" class="sli-ra-owner-state">Belum terhubung</span></div>
  <p id="raOwnerInfo" data-id="Mode uji generatif terbatas untuk pemilik SLI. Masukkan token pribadi di bawah untuk mengakses layanan Cloudflare; kunci OpenAI hanya tersimpan di server." data-en="Limited generative testing for the SLI owner. Enter your private token below to access the Cloudflare service; the OpenAI key stays only on the server.">Mode uji generatif terbatas untuk pemilik SLI. Masukkan token pribadi di bawah untuk mengakses layanan Cloudflare; kunci OpenAI hanya tersimpan di server.</p>
  <div id="raOwnerInputRow" class="sli-ra-owner-input" hidden><label for="raOwnerToken" data-id="Token pengujian pribadi (bukan API key OpenAI)" data-en="Private test token (not an OpenAI API key)">Token pengujian pribadi (bukan API key OpenAI)</label><input type="password" id="raOwnerToken" autocomplete="off" spellcheck="false" placeholder="Owner test token"></div>
  <a href="https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/blob/main/research-api/OWNER_TEST_SETUP.md" target="_blank" rel="noopener noreferrer" data-id="Petunjuk aktivasi Owner Test ↗" data-en="Owner Test setup instructions ↗">Petunjuk aktivasi Owner Test ↗</a>
-</section>
+</details>
  <div class="sli-ra-caution" data-id="AI dapat membuat kesalahan. Selalu periksa sumber asli, periode statistik, status proyek dan asumsi analisis." data-en="AI can make mistakes. Always verify primary sources, measurement dates, project status and analytical assumptions.">AI dapat membuat kesalahan. Selalu periksa sumber asli, periode statistik, status proyek dan asumsi analisis.</div>
  <div class="sli-ra-templates" id="raTemplates">
-  <h2 data-id="Mulai dari instruksi riset" data-en="Start with a research brief">Mulai dari instruksi riset</h2>
+  <h2 data-id="Contoh pertanyaan investor · cukup klik lalu kirim" data-en="Example investor questions · click and send">Contoh pertanyaan investor · cukup klik lalu kirim</h2>
   <div class="sli-ra-template-grid">
+   <button type="button" class="sli-ra-template sli-ra-template-featured" data-template="refinery"><strong>Investasi Rp5 triliun · Kilang migas NTB</strong><span>Analisis investasi, lokasi, input-output, kebutuhan data, risiko dan skenario — tanpa harus memilih metode.</span></button>
    <button type="button" class="sli-ra-template" data-template="energy"><strong data-id="Ketahanan Energi Indonesia" data-en="Indonesia Energy Security">Ketahanan Energi Indonesia</strong><span data-id="Executive summary: ketahanan energi, subsidi, impor, transisi dan risiko geopolitik." data-en="Executive summary: supply, subsidies, imports, transition and geopolitical risks.">Executive summary: ketahanan energi, subsidi, impor, transisi dan risiko geopolitik.</span></button>
    <button type="button" class="sli-ra-template" data-template="ai"><strong data-id="Prospek Infrastruktur AI" data-en="AI Infrastructure Outlook">Prospek Infrastruktur AI</strong><span data-id="Deep dive: pusat data, daya listrik, kapasitas, investor dan tantangan." data-en="Deep dive: data centers, grid power, capacity, investors and constraints.">Deep dive: pusat data, daya listrik, kapasitas, investor dan tantangan.</span></button>
    <button type="button" class="sli-ra-template" data-template="province"><strong data-id="Bandingkan Provinsi" data-en="Compare Provinces">Bandingkan Provinsi</strong><span data-id="Analisis komparatif Jawa Tengah vs Jawa Barat berbasis data 2025–2026." data-en="Compare Central Java and West Java with dated 2025–2026 observations.">Analisis komparatif Jawa Tengah vs Jawa Barat berbasis data 2025–2026.</span></button>
@@ -85,7 +101,7 @@
 </main>
 <script defer src="./js/sli-navigation.js?v=20261018-source1"></script>
 <script defer src="./js/sli-research-visuals.js?v=20261018-visual2"></script>
-<script defer src="./js/sli-research-assistant.js?v=20261018-quality3"></script>
+<script defer src="./js/sli-research-assistant.js?v=20261018-chatfirst1"></script>
 <script type="module" src="./js/sli-analytical-workbench-ui.mjs?v=20261018-bps8"></script>
 <script type="module" src="./js/sli-contextual-briefs.mjs?v=20261018-insight1"></script>
 <script defer src="./js/sli-shared-appendix.js?v=20261017-conversation4"></script>
