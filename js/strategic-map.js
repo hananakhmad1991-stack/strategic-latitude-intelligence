@@ -786,7 +786,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    const name=feature.properties.name,count=counts.get(name)||0;
    const p=snode("path",{d:projectPath(feature),class:"map-province"+(currentProvince===name?" active":""),fill:currentProvince===name?"#cb9f58":count?(count>=5?"#648fad":count>=3?"#4d7798":"#345773"):"#152f44",tabindex:"0",role:"button","aria-label":name+" — "+count+" "+label("records","catatan")});
    const title=snode("title");title.textContent=name+" · "+count+" "+label("mapped records","catatan terpetakan");p.append(title);
-   p.addEventListener("click",()=>{if(!dragged)focusProvince(name)});
+   p.addEventListener("click",()=>{if(!dragged){focusProvince(name);if(window.matchMedia?.("(max-width:1070px)")?.matches)side.scrollIntoView?.({behavior:"smooth",block:"start"})}});
    p.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();focusProvince(name)}});
    shapeLayer.append(p);
    if(count&&name==="Kepulauan Riau"){
@@ -804,7 +804,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
      const numberLabel=snode("text",{x,y,class:"map-bubble-text"});numberLabel.textContent=number;
      const placeName=snode("text",{x,y:y+26,class:"map-site-label"});placeName.textContent=ref.name.toUpperCase();
      marker.append(circle,numberLabel,placeName);
-     marker.addEventListener("click",()=>{if(!dragged)focusKepriCluster(cluster)});
+     marker.addEventListener("click",()=>{if(!dragged){focusKepriCluster(cluster);if(window.matchMedia?.("(max-width:1070px)")?.matches)side.scrollIntoView?.({behavior:"smooth",block:"start"})}});
      marker.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();focusKepriCluster(cluster)}});
      bubbleLayer.append(marker);
     }
@@ -869,7 +869,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
     provinceSelect.value="all";draw();
     side.scrollTop=0;
    }
-   pin.addEventListener("click",selectCluster);
+   pin.addEventListener("click",()=>{selectCluster();if(window.matchMedia?.("(max-width:1070px)")?.matches)side.scrollIntoView?.({behavior:"smooth",block:"start"})});
    pin.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectCluster()}});
    pinLayer.append(pin);
   }
@@ -878,6 +878,9 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   const display=chosen; // Do not silently hide entries behind a 20-item list cap.
   const scopeName=currentKind==="all"?label("all saved source records","seluruh catatan bersumber"):currentKind==="assets"?label("operator assets","aset operator"):currentKind==="projects"?label("investment projects","proyek investasi"):currentKind==="sites"?label("mine and industrial sites","tambang dan fasilitas industri"):currentKind==="wk"?label("WK / upstream oil and gas","WK / hulu migas"):currentKind==="power"?label("fossil and renewable power plants","pembangkit fosil dan EBT"):currentKind==="industry"?label("biodiesel and smelter plants","pabrik biodiesel dan smelter"):currentKind==="smelters"?label("smelter facility / project tracker","pelacak fasilitas / proyek smelter"):currentKind==="regional"?label("regional cross-checks","pemeriksaan sumber regional"):currentKind==="digital"?label("Digital / AI (all registries)","Digital / AI (seluruh registri)"):label("refineries","kilang");
   heading.textContent=currentPoint?label("Selected coordinate cluster","Klaster koordinat terpilih"):currentProvince?(currentProvince+(currentKepriCluster?" · "+KEPRI_REFERENCES[currentKepriCluster].name:"")):label("Mapped evidence","Bukti terpetakan");
+  place.textContent=currentPoint?label("Selected location cluster · view project insight on the right","Klaster lokasi terpilih · lihat analisis proyek di kanan"):
+   currentProvince?currentProvince+" · "+label("Province evidence selected","Bukti provinsi terpilih"):
+   label("38 provinces · administrative boundaries","38 provinsi · batas administratif");
   const localityCount=base.filter(r=>accuracyOf(r)==="locality").length;
   const provinceCount=base.filter(r=>accuracyOf(r)==="province").length;
   geoCount.textContent=localityCount+" "+label("locality-referenced","titik wilayah")+" · "+provinceCount+" "+label("province-only","hanya provinsi")+" · "+(base.length-localityCount-provinceCount)+" "+label("unlocated","tanpa lokasi");
