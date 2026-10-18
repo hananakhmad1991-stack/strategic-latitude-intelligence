@@ -1,0 +1,19 @@
+.sli-ra-method-workbench{margin:24px 0 15px;padding:22px;background:#fff;border:1px solid #c9d7e2;border-radius:15px;box-shadow:0 8px 27px rgba(14,52,83,.04)}
+.ra-wb-header{display:flex;justify-content:space-between;align-items:start;gap:15px}
+.ra-wb-header h2{margin:3px 0 5px;font-size:21px;line-height:1.25;color:#163b5b}
+.ra-wb-header p{margin:0;color:#5a7187;font-size:13px;max-width:660px}
+.ra-wb-kicker{font-size:10px;font-weight:800;letter-spacing:1.6px;color:#b28b45}
+.ra-wb-marker{flex:none;background:#f8f3e9;color:#84612c;border-radius:8px;padding:8px;font-size:11px;font-weight:800}
+.ra-wb-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:20px}
+.ra-wb-grid label{display:flex;flex-direction:column;gap:5px;color:#385c79;font-size:12px;font-weight:700}
+.ra-wb-grid select,.ra-wb-grid input[type=file]{width:100%;min-height:40px;padding:8px;border:1px solid #c7d5e0;background:#fafdff;border-radius:9px;color:#23405b;font-size:12px}
+.ra-wb-detail,.ra-wb-footnote{font-size:12px;color:#708398;margin:13px 0}
+.ra-wb-detail{background:#f1f6fa;padding:10px 12px;border-left:3px solid #b18e52;border-radius:6px}
+.ra-wb-buttons{display:flex;gap:9px;flex-wrap:wrap;margin:13px 0}
+.ra-wb-buttons button{border:1px solid #c2d2dc;padding:10px 14px;border-radius:9px;cursor:pointer;background:#f4f7fa;color:#1b4c74;font-weight:750;font-size:12px}
+.ra-wb-buttons button:first-child{background:#174e83;color:#fff;border-color:#174e83}
+.ra-wb-output{padding:14px;border:1px solid #d9e3eb;border-radius:9px;background:#fbfcfe;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:270px;overflow:auto}
+.ra-wb-output[data-state=error]{color:#923b39;border-color:#eacccc}
+.ra-wb-consent{display:flex;gap:9px;align-items:flex-start;font-size:12px;line-height:1.55;color:#36556c;margin-top:14px}
+.ra-wb-consent input{margin-top:3px;flex:none}
+@media(max-width:650px){.sli-ra-method-workbench{padding:15px}.ra-wb-grid{grid-template-columns:1fr}.ra-wb-marker{font-size:9px}}
