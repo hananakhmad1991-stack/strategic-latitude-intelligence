@@ -27,6 +27,9 @@ SOURCES = {
     "energy-biofuels-watch": "data/energy-biofuels-watch.json",
     "energy-ev-watch": "data/energy-ev-watch.json",
     "daily-energy-assessment": "data/daily-energy-assessment.json",
+    "domestic-energy": "data/domestic-energy.json",
+    "geopolitical-energy": "data/geopolitical-energy.json",
+    "climate-official-alerts": "data/sli-climate-official-alerts.json",
     "regulatory-monitor": "data/regulatory-monitor.json",
     "publication-watch": "data/sli-publication-watch.json",
 }
@@ -49,6 +52,7 @@ def parse_date(value):
     try:
         d = dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
         if d.tzinfo: return d.astimezone(UTC)
+        if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", value): return d.replace(tzinfo=UTC)
     except ValueError: pass
     try:
         d = email.utils.parsedate_to_datetime(value)
@@ -63,7 +67,7 @@ def infer_sector(row, source):
     if source == "ai-monitoring": return "ai"
     if source == "investment-news": return "regional"
     if source == "climate-monitoring": return "energy"
-    if source in ("energy-policy-leads", "energy-infrastructure-watch", "energy-biofuels-watch", "energy-ev-watch", "daily-energy-assessment"): return "energy"
+    if source in ("energy-policy-leads", "energy-infrastructure-watch", "energy-biofuels-watch", "energy-ev-watch", "daily-energy-assessment", "domestic-energy", "geopolitical-energy", "climate-official-alerts"): return "energy"
     if source in ("regulatory-monitor", "publication-watch"):
         sectors = [str(v).lower() for v in row.get("sectors", []) if isinstance(v, str)]
         if "energy" in sectors: return "energy"
@@ -86,6 +90,7 @@ def flatten(source, doc):
                 if isinstance(row, dict): yield {**row, "_scope": point.get("id", "")}
     else:
         key = {"investment-news": "reports", "ai-monitoring": "reports", "climate-monitoring": "events",
+               "domestic-energy": "reports", "geopolitical-energy": "events", "climate-official-alerts": "alerts",
                "energy-policy-leads": "items", "energy-infrastructure-watch": "leads",
                "energy-biofuels-watch": "items", "energy-ev-watch": "items",
                "regulatory-monitor": "events", "publication-watch": "events"}.get(source)
@@ -100,9 +105,10 @@ def normalize_row(row, source, now):
     if not publisher and source == "regulatory-monitor": publisher = "Official regulatory listing (issuer not confirmed)"
     if not title or len(title) < 12 or not publisher or len(publisher) < 3 or not safe_link(url):
         return None
-    date_type = "first_seen_in_monitor" if candidate else "publisher_publication_date"
-    pub = parse_date(row.get("published_at_utc") or row.get("published") or (
-        row.get("first_seen_utc") if candidate else None))
+    date_type = "first_seen_in_monitor" if candidate or source == "geopolitical-energy" else "publisher_publication_date"
+    pub = parse_date(row.get("published_at_utc") or row.get("published") or
+        (row.get("first_seen_utc") if candidate else None) or
+        (row.get("indexed_at_utc") if source == "geopolitical-energy" else None))
     if not pub or pub > now + dt.timedelta(minutes=10) or pub < now - dt.timedelta(days=RETENTION_DAYS):
         return None
     article_url = url
@@ -118,7 +124,7 @@ def normalize_row(row, source, now):
         "geo": str(row.get("geo") or "Indonesia and global context")[:90],
         "monitor_source": source, "link_kind": link_kind,
         "evidence_level": "official_metadata_change_candidate" if candidate else "publisher_attributed_news_report",
-        "article_body_checked": False, "claim_corroborrated": False
+        "article_body_checked": False, "claim_corroborated": False
     }
 def build(now=None, root=ROOT):
     now = now or dt.datetime.now(UTC)
@@ -153,8 +159,8 @@ def build(now=None, root=ROOT):
                     item["link_kind"] = existing["link_kind"]
                 if existing.get("article_body_checked"):
                     item["article_body_checked"] = True
-                if existing.get("claim_corroborrated"):
-                    item["claim_corroborrated"] = True
+                if existing.get("claim_corroborated"):
+                    item["claim_corroborated"] = True
             records[item["id"]] = item
         count_by_source[source] = n
     ordered = sorted(records.values(), key=lambda r: r["published_at_utc"], reverse=True)[:MAX_ITEMS]
