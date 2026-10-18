@@ -21,6 +21,8 @@ on:
       - 'tests/qa-sli-methodology-workbench.mjs'
       - 'js/sli-econometrics.mjs'
       - 'tests/qa-sli-econometrics.mjs'
+      - 'tests/qa-sli-econometrics-ui.mjs'
+      - 'js/sli-econometrics-report.mjs'
       - 'scripts/audit-sli-content-quality.mjs'
       - 'tests/qa-sli-content-quality.mjs'
       - 'data/sli-research-assistant-config.json'
@@ -52,6 +54,7 @@ jobs:
           node --check js/sli-research-assistant.js
           node --check js/sli-analytical-core.mjs
           node --check js/sli-econometrics.mjs
+          node --check js/sli-econometrics-report.mjs
           node --check js/sli-analytical-workbench-ui.mjs
           node --check js/sli-contextual-briefs.mjs
           node --check js/sli-sector-context-portal.mjs
@@ -63,5 +66,9 @@ jobs:
           node --check research-api/src/index.js
           node --check research-api/src/owner-test-worker.mjs
           node --check research-api/src/core.mjs
+      - name: Install DOM smoke-test runner
+        run: npm install --no-save --no-audit --no-fund jsdom@26
       - name: Validate open evidence, secure planned RAG and traceability
         run: node --test tests/qa-sli-econometrics.mjs tests/qa-sli-methodology-workbench.mjs tests/qa-sli-research-brand.mjs tests/qa-sli-research-visuals.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs tests/qa-sli-content-quality.mjs
+      - name: Browser-like econometrics integration smoke
+        run: node --test tests/qa-sli-econometrics-ui.mjs
