@@ -55,6 +55,31 @@ datafile.addEventListener("change",async()=>{
  }catch(e){data=null;model=null;error("Cannot read dataset: "+String(e.message).slice(0,200))}
 });
 method.addEventListener("change",()=>{last=null;consent.checked=false;desc();});
+function renderCalculation(output){
+ result.replaceChildren();
+ const title=document.createElement("strong");title.textContent="Local model result · "+output.method+" (unverified user data)";result.append(title);
+ const summary=document.createElement("p");
+ if(output.method==="descriptive")summary.textContent=`Dataset contains ${output.rows} observations. Descriptive statistics summarise the observed sample only; no regional causal or population inference is established.`;
+ else if(output.method==="pearson")summary.textContent=`Pearson correlation between ${output.x} and ${output.y}: r = ${output.r} for ${output.n} complete pairs. This measures linear association, not causal impact or a forecast.`;
+ else if(output.method==="ols")summary.textContent=`Estimated sample equation: ${output.y} = ${output.intercept} + (${output.slope} × ${output.x}), with R² = ${output.r_squared} and n = ${output.n}. Omitted variables, selection bias and residual diagnostics remain unresolved.`;
+ else if(output.method==="ahp")summary.textContent=`Pairwise judgement weights were computed using row geometric means. Consistency ratio: ${output.consistency_ratio??"n/a for two criteria"}; ${output.acceptable?"within the conventional 0.10 threshold":"requires revisiting inconsistent comparisons"}. These are subjective preferences, not measured economic effects.`;
+ else if(output.method==="stock_flow")summary.textContent=`Illustrative stock-flow path from ${output.initial_stock} to ${output.final_stock} across ${output.periods} periods, using fixed inflow ${output.inflow_per_period} and outflow rate ${output.outflow_rate}. This is a transparent simulation, not a calibrated projection.`;
+ result.append(summary);
+ if(output.method==="descriptive"){
+  const table=document.createElement("table");const tr=document.createElement("tr");
+  ["Variable","N","Missing","Mean","Median","SD","Min","Max"].forEach(h=>{const th=document.createElement("th");th.textContent=h;tr.append(th)});table.append(tr);
+  output.columns.filter(c=>c.n>0).slice(0,10).forEach(c=>{const row=document.createElement("tr");[c.column,c.n,c.missing,c.mean,c.median,c.sd,c.min,c.max].forEach(v=>{const td=document.createElement("td");td.textContent=String(v??"—");row.append(td)});table.append(row)});result.append(table);
+ }else if(output.method==="ahp"){
+  const table=document.createElement("table");for(const c of [...output.criteria].sort((a,b)=>b.weight-a.weight)){const row=document.createElement("tr"),n=document.createElement("td"),w=document.createElement("td");n.textContent=c.name;w.textContent=(c.weight*100).toFixed(2)+"%";row.append(n,w);table.append(row)}result.append(table);
+ }else if(output.method==="stock_flow"){
+  const values=output.trajectory.map(v=>v.stock),lo=Math.min(...values),hi=Math.max(...values),spread=hi-lo||1;
+  const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");svg.setAttribute("viewBox","0 0 440 130");svg.setAttribute("role","img");svg.setAttribute("aria-label","Simulated stock trajectory over time");svg.style.width="100%";
+  const line=document.createElementNS("http://www.w3.org/2000/svg","polyline");
+  line.setAttribute("points",values.map((v,i)=>`${20+(i/(values.length-1))*400},${110-((v-lo)/spread)*90}`).join(" "));
+  line.setAttribute("fill","none");line.setAttribute("stroke","#235f9d");line.setAttribute("stroke-width","3");svg.append(line);result.append(svg);
+ }
+ const note=document.createElement("small");note.textContent=output.limitation||"Review source assumptions and statistical uncertainty before any investment decision.";result.append(note);
+}
 $("raRunMethod").addEventListener("click",()=>{
  const selected=method.value;
  if(selected==="auto"){error("Choose a specific executable method to calculate locally; Auto helps formulate the AI research plan.");return}
@@ -63,8 +88,7 @@ $("raRunMethod").addEventListener("click",()=>{
   if(!data&&!model)throw Error("Upload a compatible CSV/JSON dataset before running a model");
   const output=evaluate({method:selected,rows:data,x:x.value,y:y.value,model});
   last=output;consent.checked=false;result.dataset.state="ready";
-  const out=JSON.stringify(output,null,2);
-  result.textContent=(out.length>5400?out.slice(0,5400)+"\n… (display truncated; full result remains in memory)":out);
+  renderCalculation(output);
  }catch(e){error("Model could not run: "+String(e.message).slice(0,200))}
 });
 $("raClearData").addEventListener("click",()=>{data=null;model=null;filename="";last=null;datafile.value="";consent.checked=false;varGroup.hidden=true;show("Dataset cleared. Nothing was stored in the browser.");desc()});
