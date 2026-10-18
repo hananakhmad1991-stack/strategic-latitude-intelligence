@@ -8,6 +8,7 @@ import provinces from "../../data/sli-research-province-preview.json";
 import {validateAssistantPayload,selectResearchEvidence,modelRequest,verifyResearchAnswer,verifyMethodOnlyAnswer} from "./assistant-core.mjs";
 import {extractModelText} from "./core.mjs";
 import {buildResearchCharts} from "./chart-data.mjs";
+import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {validateOwnerAttachments,buildOwnerFileParts} from "../../js/sli-investor-chat.mjs";
 
 const HEADERS={"content-type":"application/json;charset=utf-8","cache-control":"no-store,private","x-content-type-options":"nosniff","vary":"Origin"};
@@ -77,6 +78,7 @@ function publicCorpus(){
    if(project)docs.push(project);
   }
  }
+ docs.push(...nationalEnergyEvidence());
  return docs;
 }
 const DATA=publicCorpus();
@@ -116,7 +118,7 @@ export default{
    return send(422,{error:"explicit_file_transfer_consent_required"},origin);
   let rate;try{rate=await env.AI_LIMITER.limit({key:(await sha256(env.OWNER_TEST_TOKEN)).slice(0,16).join("-")})}catch{return send(503,{error:"rate_limiter_not_ready"},origin)}
   if(!rate?.success)return send(429,{error:"owner_test_rate_limit"},origin);
-  const evidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",10);
+  const evidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",12);
   // No source match does not prevent academic methodology assistance.
   // Without evidence, only a clearly scoped research-design response is allowed;
   // there is no empirical claim, SLI numeric data or fabricated citation.
@@ -130,7 +132,7 @@ export default{
   }
   // The Responses API output budget includes reasoning tokens as well as visible prose.
   // Keep owner-only tests concise, with enough room for analysis and numbered citations.
-  params.instructions+="\nOWNER TEST: Target 450–650 words, 4–6 concise sections with numbered citations and a clear ending; acknowledge source gaps rather than expanding unsupported claims.";
+  params.instructions+="\nOWNER TEST: For substantive factual research, produce 600–900 words when the cited evidence covers at least four distinct dimensions; use 5–7 organised sections and one source-dated evidence table. Don't repeat the same caveat as separate findings. Answer the precise research request, distinguish official baselines from source-dated editorial analysis, and give concrete numerical magnitudes where available. Do not call static bundled corpus live scraping or invent current events. On correction/follow-up requests revise the previous answer instead of resetting the topic.";
   if(/^gpt-5(?:\.|-)/.test(env.RESEARCH_MODEL))params.reasoning={effort:"low"};
   params.max_output_tokens=Math.min(6000,Math.max(2500,Number(env.OWNER_MAX_OUTPUT_TOKENS)||4800));
   let answer;
@@ -144,7 +146,8 @@ export default{
   if(!(evidence.length?verifyResearchAnswer(answer,evidence):verifyMethodOnlyAnswer(answer)))
    return send(502,{error:evidence.length?"invalid_or_missing_source_citations":"invalid_unsourced_research_design"},origin);
   return send(200,{mode:"generative_rag",research_format:payload.mode,answer,
-   charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:evidence.length?"owner_staging_verify_sources":"methodology_design_only_no_verified_sli_evidence",
+   charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:evidence.length?"owner_staging_source_dated_energy_corpus":"methodology_design_only_no_verified_sli_evidence",
+   corpus_as_of:energyCorpusAudit().assessment_date,
    sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo}))},origin);
  }
 };
