@@ -4,6 +4,7 @@
  */
 import {verifyUserToken} from "../../membership-api/src/index.js";
 import {citationsValid,extractModelText} from "./core.mjs";
+import {auditReport} from "./report-audit.mjs";
 import {validateAssistantPayload,selectResearchEvidence,modelRequest,verifyResearchAnswer,verifyMethodOnlyAnswer} from "./assistant-core.mjs";
 const J={"content-type":"application/json; charset=utf-8","cache-control":"private, no-store","x-content-type-options":"nosniff","vary":"Origin, Authorization"};
 function response(status,body,origin){
@@ -82,9 +83,11 @@ export default {
   const answer=extractModelText(raw);
   if(!(evidence.length?(verifyResearchAnswer(answer,evidence)&&citationsValid(answer,evidence)):verifyMethodOnlyAnswer(answer)))
     return response(502,{error:evidence.length?"citation_validation_failed":"invalid_unsourced_research_design",message:"AI output withheld because it failed the source or methodology-only policy."},allowed);
+  const qa=auditReport(answer,evidence,{minWords:payload.mode==="deep_research"?150:80,requireConclusion:payload.mode==="deep_research"});
+  const quality_audit={review_scope:qa.review_scope,structural_status:qa.pass?"complete_structure":"needs_editorial_review",issues:qa.issues,word_count:qa.words,section_count:qa.sections,citation_count:qa.citations,has_conclusion:qa.hasConclusion};
   return response(200,{
    mode:"generative_rag",research_format:payload.mode,
-   answer,sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo})),
+   answer,quality_audit,sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo})),
    evidence_status:evidence.length?"generated_references_require_fact_check":"methodology_design_only_no_verified_sli_evidence"
   },allowed);
  }
