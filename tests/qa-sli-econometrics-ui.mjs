@@ -117,8 +117,12 @@ test("BPS official-data shortcut builds geographically screened 32-province annu
  const dom=new JSDOM(read("sli-research-ai.html"),{url:"https://example.org/sli-research-ai.html",runScripts:"outside-only",pretendToBeVisual:true});
  globalThis.window=dom.window;globalThis.document=dom.window.document;
  const previousFetch=globalThis.fetch;
- let requested="";
- globalThis.fetch=async(url)=>{requested=String(url);return {ok:true,json:async()=>JSON.parse(read("data/sli-bps-regional-intelligence.json"))}};
+ const requested=[];
+ globalThis.fetch=async(url)=>{
+  requested.push(String(url));
+  const file=String(url).endsWith("sli-research-province-preview.json")?"data/sli-research-province-preview.json":"data/sli-bps-regional-intelligence.json";
+  return {ok:true,json:async()=>JSON.parse(read(file))};
+ };
  try{
   await import("../js/sli-analytical-workbench-ui.mjs?qa-bps=20261018");
   const $=id=>dom.window.document.getElementById(id);
@@ -126,8 +130,13 @@ test("BPS official-data shortcut builds geographically screened 32-province annu
   assert.match($("raOfficialBpsSource").textContent,/32 provinsi/);
   $("raLoadOfficialBps").click();
   await new Promise(resolve=>setImmediate(resolve));await new Promise(resolve=>setImmediate(resolve));
-  assert.equal(requested,"./data/sli-bps-regional-intelligence.json");
+  assert.deepEqual(requested,["./data/sli-bps-regional-intelligence.json","./data/sli-research-province-preview.json"]);
   assert.match($("raModelResult").textContent,/128 observasi/);
+  assert.equal($("raOfficialDataQA").hidden,false);
+  assert.match($("raOfficialDataQA").textContent,/Audit: LULUS DENGAN CATATAN/);
+  assert.match($("raOfficialDataQA").textContent,/Pemeriksaan pertumbuhan BPS 2025: 32 pasangan/);
+  assert.equal($("raOfficialDataQA").querySelectorAll("details table tr").length,11);
+
   assert.equal($("raDatasetStatus").dataset.source,"bps");
   assert.match($("raDatasetStatus").textContent,/DATA AKTIF · BPS 2021–2025/);
   assert.match($("raDatasetStatus").textContent,/kolom upload hanya untuk file milik pengguna/);
@@ -138,7 +147,7 @@ test("BPS official-data shortcut builds geographically screened 32-province annu
   assert.equal($("raPanelTime").value,"year");
   assert.equal($("raYearFE").checked,true);
   const availableExtras=[...$("raExtraPredictors").options].map(o=>o.value);
-  assert.deepEqual(availableExtras,["pmtb_share_pct","household_share_pct","grdp_current_rp_billion","grdp_constant_2010_rp_billion"]);
+  assert.deepEqual(availableExtras,["pmtb_share_pct","household_share_lag1_pct","household_share_pct","grdp_current_rp_billion","grdp_constant_2010_rp_billion"]);
   assert.ok(!availableExtras.includes("year")&&!availableExtras.includes("real_grdp_growth_pct")&&!availableExtras.includes("pmtb_share_lag1_pct"));
   assert.match($("raMethodInfo").textContent,/BPS 2021–2025/);
   $("raRunMethod").click();
@@ -149,6 +158,13 @@ test("BPS official-data shortcut builds geographically screened 32-province annu
   assert.match($("raModelResult").textContent,/2024 berstatus revisi dan 2025 sementara/);
   assert.doesNotMatch($("raModelResult").textContent,/DATA SIMULASI/);
   assert.match($("raModelResult").textContent,/Unduh Investor Analytical Report/);
+  const next=$("raAddHouseholdLag");
+  assert.ok(next,"Actual official lagged household share must be available as a selectable verified X2");
+  next.click();
+  assert.equal([...$("raExtraPredictors").selectedOptions][0].value,"household_share_lag1_pct");
+  assert.match($("raModelResult").textContent,/household_share_lag1_pct/);
+  assert.match($("raModelResult").textContent,/32 entitas × 4 periode, 128 observasi/);
+
  }finally{
   globalThis.fetch=previousFetch;
   dom.window.close();
