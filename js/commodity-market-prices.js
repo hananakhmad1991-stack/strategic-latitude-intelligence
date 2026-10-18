@@ -59,20 +59,60 @@ function chart(root,q){
   text.textContent=format(mx-(mx-mn)*i/4);svg.append(text);
  }
  const shape=document.createElementNS(svg.namespaceURI,"polyline");shape.setAttribute("points",data.map((x,i)=>pt(x,i).join(",")).join(" "));shape.setAttribute("fill","none");shape.setAttribute("stroke","#d2ad69");shape.setAttribute("stroke-width","2.7");shape.setAttribute("stroke-linejoin","round");shape.setAttribute("stroke-linecap","round");svg.append(shape);
+ // All actual source snapshots in this series are selectable; no cursor interpolation.
+ data.forEach((row,i)=>{
+  const [x,y]=pt(row,i),mark=document.createElementNS(svg.namespaceURI,"circle");
+  for(const [k,v] of Object.entries({cx:x,cy:y,r:data.length>85?3.5:5,fill:"#6dc3d0",stroke:"#102b42","stroke-width":1.5,"data-sli-point":"","data-sli-point-index":i,tabindex:0,role:"button"}))mark.setAttribute(k,v);
+  mark.style.cursor="pointer";
+  mark.setAttribute("aria-label",row.observed_at_utc+" · "+format(row.value)+" "+q.unit);
+  const tip=document.createElementNS(svg.namespaceURI,"title");
+  tip.textContent=row.observed_at_utc+" · "+format(row.value)+" "+q.unit;
+  mark.append(tip);svg.append(mark);
+ });
  for(const i of [0,data.length-1]){
   const d=data[i],a=document.createElementNS(svg.namespaceURI,"text");a.setAttribute("x",pt(d,i)[0]);a.setAttribute("y",H-8);a.setAttribute("font-size","11");a.setAttribute("fill","#a6c1d4");a.setAttribute("text-anchor",i?"end":"start");a.textContent=d.observed_at_utc.slice(0,10);svg.append(a);
  }
- const tip=el("p","cp-muted",lang("Historical dates and units retained. Prices from separate markets are not interchangeable.","Tanggal dan satuan historis dipertahankan. Harga berbagai pasar tidak setara."));
+ const tip=el("p","cp-muted",lang("Click a blue point for its original date, value and source. Prices from separate markets are not interchangeable.","Klik titik biru untuk melihat tanggal, nilai, dan sumbernya. Harga dari pasar berbeda tidak dapat disamakan."));
  const provenance=el("p","cp-source");provenance.append(el("span",null,(q.market||"")+" · "));
  if(/^https:\/\//.test(q.source_url||""))provenance.append(link(q.source_url,lang("Original price source ↗","Sumber harga asli ↗")));
  if(q.tier==="monthly_reference")provenance.append(el("span",null,lang(" · Period average, not live"," · Rata-rata periode, bukan live")));
  if(q.availability==="last_good_source_unavailable")provenance.append(el("span",null,lang(" · Last available quote, upstream unavailable"," · Harga terakhir, sumber gagal")));
 
  root.append(svg,tip,provenance);
- if(window.SLIVisualExport)window.SLIVisualExport.register(svg,{
-  getData:()=>({headers:["Observed at (UTC)","Price ("+q.unit+")"],rows:data.map(x=>[x.observed_at_utc,x.value]),kind:"verified-provider"}),
-  getMeta:()=>({source:q.market||q.name||"Source-linked commodity market",sourceUrl:q.source_url||"",period:data[0]?.observed_at_utc+" – "+data.at(-1)?.observed_at_utc,completeness:"Full source-quoted history shown on chart"})
- });
+ const registerHistory=()=>{
+  if(!svg.isConnected||!window.SLIVisualExport)return;
+  window.SLIVisualExport.register(svg,{
+   getData:()=>({headers:["Observed at (UTC)","Price ("+q.unit+")"],rows:data.map(x=>[x.observed_at_utc,x.value]),kind:"verified-provider"}),
+   getMeta:()=>({source:q.market||q.name||"Source-linked commodity market",sourceUrl:q.source_url||"",period:data[0]?.observed_at_utc+" – "+data.at(-1)?.observed_at_utc,completeness:"Full source-quoted history shown on chart"})
+  });
+  window.SLIVisualExport.registerInsight?.(svg,{
+   getInsight:({event})=>{
+    const marker=event?.target?.closest?.("[data-sli-point-index]");
+    if(!marker)return null;
+    const i=Number(marker.getAttribute("data-sli-point-index")),row=data[i];
+    if(!row)return null;
+    const previous=i>0?data[i-1]:null;
+    const change=previous&&valid(previous.value)?((row.value/previous.value-1)*100):null;
+    return {
+     title:(LABELS[q.id]?.[window.SLIi18n?.language==="id"?1:0]||q.name)+" · "+row.observed_at_utc.slice(0,10),
+     details:[
+      [lang("Observation time (UTC)","Waktu observasi (UTC)"),row.observed_at_utc],
+      [lang("Reported quotation","Harga dilaporkan"),format(row.value)+" "+q.unit],
+      [lang("Market / basis","Pasar / basis"),q.market||q.tier||lang("Source quoted","Dikutip dari sumber")],
+      [lang("Change from previous saved observation","Perubahan dari observasi tersimpan sebelumnya"),change===null?lang("Not available","Tidak tersedia"):(change>=0?"+":"")+change.toFixed(2)+"%"],
+      [lang("Data status","Status data"),quoteState(q).label]
+     ],
+     source:q.market||q.name||lang("Commodity market source","Sumber pasar komoditas"),
+     sourceUrl:q.source_url||"",
+     period:row.observed_at_utc,
+     lesson:lang("This is a dated source quotation, not a live trade or forecast. Percentage change uses the previous saved observation, which may be at an unequal time interval.",
+      "Ini kutipan harga bertanggal, bukan transaksi langsung atau prediksi. Perubahan persentase memakai observasi tercatat sebelumnya yang mungkin memiliki jeda waktu tidak sama.")
+    };
+   }
+  });
+ };
+ if(window.SLIVisualExport)registerHistory();
+ else document.addEventListener("sli:exportready",registerHistory,{once:true});
 
 }
 function card(q,onSelect){
