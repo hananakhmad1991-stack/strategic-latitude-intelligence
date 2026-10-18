@@ -3,6 +3,7 @@
  * alone NEVER constitutes a verified statistical or input-output calculation.
  */
 import {METHODS} from "./sli-analytical-core.mjs";
+export {METHODS};
 export const LIMIT_BYTES=600000;
 export const MAX_FILES=2;
 export const UPLOAD_EXT=Object.freeze({
