@@ -172,6 +172,21 @@ test("BPS official-data shortcut builds geographically screened 32-province annu
   assert.match($("raModelResult").textContent,/berubah tanda|Perubahan tanda|Ganti tanda/i);
   assert.ok($("raModelResult").querySelector(".ra-wb-stability-evidence"));
   assert.match($("raModelResult").textContent,/2025/);
+  assert.match($("raModelResult").textContent,/Observasi yang terindikasi berpengaruh/);
+  assert.doesNotMatch($("raModelResult").textContent,/Observasi yang terindikasi berpengaruh \(4\): Baris/, "Panel influence cases must use province-year labels");
+  // Contemporaneous PMTB is a user-selectable alternative, NOT the vetted lagged-PMTB baseline.
+  $("raPredictor").value="pmtb_share_pct";
+  $("raPredictor").dispatchEvent(new dom.window.Event("change"));
+  $("raRunMethod").click();
+  assert.match($("raModelResult").textContent,/PERHATIAN SPESIFIKASI/);
+  assert.match($("raModelResult").textContent,/bukan pmtb_share_lag1_pct/);
+  const restore=$("raModelResult").querySelector(".ra-wb-restore-lag");
+  assert.ok(restore, "Restore lagged PMTB must be immediately actionable");
+  restore.click();
+  assert.equal($("raPredictor").value,"pmtb_share_lag1_pct");
+  assert.equal([...$("raExtraPredictors").selectedOptions][0].value,"household_share_lag1_pct");
+  assert.doesNotMatch($("raModelResult").textContent,/PERHATIAN SPESIFIKASI/);
+  assert.match($("raModelResult").textContent,/Re-estimations: 32\/32/);
 
 
  }finally{
