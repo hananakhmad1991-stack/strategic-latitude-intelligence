@@ -1,0 +1,319 @@
+{
+  "schema_version": "sli-geopolitical-chapter-v1",
+  "as_of": "2026-10-18",
+  "editorial_scope": "Original Indonesia-focused qualitative geopolitical assessment comparing dated BPS, BKPM, BI and ESDM metrics with attributed secondary monitoring headlines. No composite geopolitical score, military conflict forecast, independently verified closure, or inferred numerical effect.",
+  "themes": [
+    {
+      "id": "maritime",
+      "order": 1,
+      "region": "West Asia · Indo-Pacific",
+      "tag": "MARITIME CHOKEPOINTS",
+      "title": "Strait of Hormuz and trade-route disruptions",
+      "id_title": "Selat Hormuz dan gangguan rute perdagangan",
+      "thesis": "Shipping disruptions turn geopolitics into supply-chain economics.",
+      "id_thesis": "Gangguan pelayaran mengubah geopolitik menjadi persoalan biaya dan ketahanan pasokan.",
+      "mechanism": "Tanker rerouting, insurance premia, freight contracts and vessel availability can transmit a Gulf security shock into crude and refined-product costs, even if Indonesia's domestic oil fields and refineries remain operational. LNG exposure depends on the origin and physical route of each contracted cargo; an oil-price shock alone does not prove an Indonesian LNG shortage.",
+      "id_mechanism": "Perubahan rute kapal tanker, premi asuransi, tarif angkut, dan ketersediaan kapal dapat menyalurkan guncangan keamanan Teluk ke biaya minyak mentah dan produk BBM, meskipun ladang dan kilang di Indonesia tetap beroperasi. Risiko LNG bergantung pada negara asal dan rute tiap kargo; kenaikan harga minyak saja bukan bukti kelangkaan LNG di Indonesia.",
+      "indonesia": "Indonesia's source-dated oil-and-gas trade deficit is a vulnerability channel, but the amount affected by any particular maritime incident cannot be computed without origin-by-product imports, shipping routes, contract terms and domestic pass-through assumptions. Consider import costs, the rupiah, fiscal compensation and strategic reserves together rather than equating one headline with a supply disruption.",
+      "id_indonesia": "Defisit perdagangan migas Indonesia pada periode rujukan resmi merupakan jalur kerentanan, tetapi nilai yang terdampak insiden pelayaran tertentu tidak bisa dihitung tanpa rincian impor per asal dan produk, rute kapal, kontrak, serta asumsi transmisi ke harga domestik. Nilai impor, kurs rupiah, kompensasi fiskal, dan cadangan perlu dibaca bersama; satu judul berita tidak sama dengan putusnya pasokan.",
+      "counter": "A newspaper report about attacks near Hormuz is evidence that an outlet reported attacks; it is not necessarily evidence that the whole strait was closed. A full closure claim requires separate confirmation from shipping advisories, port/traffic observations or competent authorities.",
+      "id_counter": "Berita serangan kapal di sekitar Hormuz membuktikan bahwa media tersebut melaporkan serangan; itu belum tentu berarti seluruh selat ditutup. Klaim penutupan penuh memerlukan konfirmasi tersendiri melalui pemberitahuan pelayaran, data pergerakan kapal, atau otoritas yang berwenang.",
+      "watch": "Watch IMO and shipping advisories, physical vessel routing, freight and insurance prices, oil-product import composition, Indonesian fuel inventories and official energy prices.",
+      "id_watch": "Pantau IMO dan pemberitahuan pelayaran, pergerakan fisik kapal, biaya angkut dan asuransi, komposisi impor BBM, stok energi nasional, serta harga energi resmi.",
+      "evidence": [
+        "oil_deficit",
+        "reserves",
+        "fx"
+      ],
+      "search": [
+        "hormuz",
+        "iran",
+        "red sea",
+        "bab el",
+        "tanker",
+        "lng",
+        "shipping",
+        "oil",
+        "strait"
+      ],
+      "links": [
+        {
+          "label": "Indonesia Energy Security",
+          "url": "./index.html#energy"
+        },
+        {
+          "label": "Geopolitical energy monitoring",
+          "url": "./index.html#energy"
+        }
+      ]
+    },
+    {
+      "id": "greatpowers",
+      "order": 2,
+      "region": "United States · China · ASEAN",
+      "tag": "GEOECONOMIC COMPETITION",
+      "title": "US–China competition and Indonesia's trade choices",
+      "id_title": "Persaingan AS–China dan pilihan perdagangan Indonesia",
+      "thesis": "Tariffs and industrial policy create asymmetric winners and losers.",
+      "id_thesis": "Tarif dan kebijakan industri menimbulkan dampak berbeda antarsektor.",
+      "mechanism": "Trade restrictions can redirect orders, raise compliance and rules-of-origin costs, alter sourcing of intermediate inputs and shift investment between production locations. A higher bilateral goods deficit with one country should not be called a national economic loss without examining imported capital goods, processing inputs and the associated value added.",
+      "id_mechanism": "Pembatasan perdagangan dapat mengalihkan pesanan, menaikkan biaya kepatuhan dan ketentuan asal barang, mengubah pemasok input antara, serta memindahkan lokasi investasi. Defisit barang dengan satu negara tidak otomatis menjadi kerugian nasional tanpa menilai impor barang modal, input pengolahan, dan nilai tambah yang dihasilkan.",
+      "indonesia": "SLI's BPS 2025 bilateral merchandise observations show different balances with China, the US and India. Indonesia therefore faces both export-market dependence and imported-equipment dependence. For investors, the relevant question is whether a new tariff shifts production advantage or merely raises imported manufacturing costs.",
+      "id_indonesia": "Data perdagangan barang bilateral BPS tahun 2025 dalam SLI menunjukkan neraca yang berbeda dengan China, AS, dan India. Indonesia menghadapi ketergantungan pasar ekspor sekaligus kebutuhan alat dan input impor. Bagi investor, pertanyaannya apakah tarif baru benar-benar meningkatkan keunggulan lokasi produksi atau justru menambah biaya manufaktur.",
+      "counter": "A changing trade balance does not measure the strength of diplomatic alignment or total welfare. Goods-trade flows should not be confused with investment stocks, services balances or technology transfers.",
+      "id_counter": "Perubahan neraca perdagangan tidak mengukur kekuatan hubungan diplomatik atau kesejahteraan nasional. Perdagangan barang tidak boleh dicampur dengan stok investasi, neraca jasa, ataupun transfer teknologi.",
+      "watch": "Track effective tariff schedules, export-control text, rules of origin, BPS HS-category trade, BKPM realization and local supply-chain content.",
+      "id_watch": "Pantau tarif yang berlaku, naskah kontrol ekspor, ketentuan asal barang, perdagangan BPS per kode HS, realisasi investasi BKPM, dan kandungan lokal rantai pasok.",
+      "evidence": [
+        "exports",
+        "imports",
+        "surplus",
+        "investment"
+      ],
+      "search": [
+        "china",
+        "united states",
+        "tariff",
+        "sanction",
+        "trade war",
+        "export control",
+        "india"
+      ],
+      "links": [
+        {
+          "label": "Trade Flows",
+          "url": "./index.html#trade"
+        },
+        {
+          "label": "Macroeconomic Intelligence",
+          "url": "./indonesia-macroeconomic-intelligence.html"
+        }
+      ]
+    },
+    {
+      "id": "natuna",
+      "order": 3,
+      "region": "North Natuna Sea · ASEAN",
+      "tag": "MARITIME SECURITY",
+      "title": "South China Sea, North Natuna and maritime rights",
+      "id_title": "Laut China Selatan, Natuna Utara, dan hak maritim",
+      "thesis": "Security pressure may affect the economics of maritime infrastructure.",
+      "id_thesis": "Tekanan keamanan dapat memengaruhi keekonomian infrastruktur maritim.",
+      "mechanism": "Disputes over maritime jurisdiction, the conduct of vessels, and navigational safety can increase operational uncertainty for offshore energy, fisheries, surveillance, insurance and subsea connectivity. Indonesia's EEZ rights under UNCLOS are conceptually different from sovereignty claims over disputed islands elsewhere in the South China Sea.",
+      "id_mechanism": "Sengketa yurisdiksi maritim, aktivitas kapal, dan keselamatan navigasi bisa meningkatkan ketidakpastian bagi energi lepas pantai, perikanan, pengawasan, asuransi, dan kabel bawah laut. Hak ZEE Indonesia menurut UNCLOS berbeda dari klaim kedaulatan pulau yang disengketakan di wilayah lain Laut China Selatan.",
+      "indonesia": "Indonesia's priority is the ability to exercise lawful jurisdiction and support secure commercial activity in the North Natuna Sea. A specific incident report should be linked to its date, location and official follow-up before being translated into a quantified GDP, shipping or upstream-production loss.",
+      "id_indonesia": "Prioritas Indonesia adalah menjalankan yurisdiksi yang sah dan memastikan aktivitas ekonomi di Laut Natuna Utara berlangsung aman. Berita insiden tertentu harus dicocokkan dengan waktu, lokasi, dan tindak lanjut resmi sebelum dihitung sebagai kerugian PDB, pelayaran, atau produksi migas.",
+      "counter": "Political claims, routine patrols, law-enforcement notices and actual interruptions to energy production are different evidence classes. No automatic conflict probability or loss estimate is generated.",
+      "id_counter": "Klaim politik, patroli rutin, pemberitahuan penegakan hukum, dan gangguan produksi energi merupakan kelas bukti berbeda. SLI tidak menghasilkan probabilitas konflik atau estimasi kerugian otomatis.",
+      "watch": "Track official Indonesian foreign ministry and maritime authority releases, vessel incidents, licenses, production interruptions and subsea-cable outage confirmations.",
+      "id_watch": "Pantau pernyataan Kemenlu dan otoritas maritim, insiden kapal, perizinan, gangguan produksi, serta konfirmasi gangguan kabel bawah laut.",
+      "evidence": [
+        "reserves",
+        "investment"
+      ],
+      "search": [
+        "natuna",
+        "south china sea",
+        "maritime",
+        "coast guard",
+        "asean",
+        "uncLOS",
+        "submarine cable"
+      ],
+      "links": [
+        {
+          "label": "Investment & Assets",
+          "url": "./index.html#investment"
+        },
+        {
+          "label": "Indonesia Intelligence Dossiers",
+          "url": "./geopolitical-impact-assessment.html#dossiers"
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "order": 4,
+      "region": "China · US · Southeast Asia",
+      "tag": "TECHNOLOGY SOVEREIGNTY",
+      "title": "AI chips, cloud sovereignty and data-center competition",
+      "id_title": "Chip AI, kedaulatan cloud, dan kompetisi pusat data",
+      "thesis": "Compute capacity depends on technology access, energy and skills.",
+      "id_thesis": "Kemampuan komputasi ditentukan akses teknologi, energi, dan talenta.",
+      "mechanism": "Export licenses and supply concentration for GPUs, advanced memory, networking and cooling can slow planned AI campuses even when land and grid contracts exist. Cross-border data rules, operational cybersecurity and electricity reliability further differentiate commercial cloud availability from physical AI-compute readiness.",
+      "id_mechanism": "Izin ekspor dan konsentrasi pasokan GPU, memori canggih, jaringan, serta pendinginan dapat memperlambat kampus AI yang direncanakan meskipun lahan dan kontrak listrik tersedia. Regulasi data lintas negara, keamanan siber, dan keandalan listrik membuat layanan cloud komersial berbeda dari kapasitas komputasi AI fisik yang siap digunakan.",
+      "indonesia": "Batam, Greater Jakarta and West Java compete partly on connectivity and electricity, not merely planned MW. Investment announcements and vendor partnerships need separate checks for financing, commissioned power, operational racks, GPU inventory and retained Indonesian engineering capabilities.",
+      "id_indonesia": "Batam, Jabodetabek, dan Jawa Barat bersaing pada konektivitas dan listrik, bukan sekadar MW rencana. Pengumuman investasi dan kemitraan vendor perlu diperiksa terpisah menurut pembiayaan, daya tersambung, rak beroperasi, inventaris GPU, serta kemampuan rekayasa yang benar-benar tinggal di Indonesia.",
+      "counter": "A launch announcement by a supplier or a CGTN technology story is valid attributed secondary reporting; it does not prove Indonesia has purchased or deployed the announced hardware.",
+      "id_counter": "Pengumuman vendor atau berita teknologi CGTN sah sebagai sumber sekunder teratribusi, tetapi tidak otomatis membuktikan Indonesia telah membeli atau memasang perangkat yang diumumkan.",
+      "watch": "Track original export-control instruments, customs classification, GPU procurement, data protection requirements, grid/renewables delivery and data-center commissioning milestones.",
+      "id_watch": "Pantau naskah kontrol ekspor, klasifikasi bea cukai, pengadaan GPU, aturan pelindungan data, pasokan listrik/EBT, dan tahap operasi pusat data.",
+      "evidence": [
+        "investment",
+        "renewable_mw"
+      ],
+      "search": [
+        "cgtn",
+        "gpu",
+        "chip",
+        "semiconductor",
+        "ai",
+        "cloud",
+        "data center",
+        "data centre",
+        "export control"
+      ],
+      "links": [
+        {
+          "label": "AI Intelligence Hub",
+          "url": "./ai-intelligence-hub.html"
+        },
+        {
+          "label": "Regulatory Intelligence",
+          "url": "./policy-regulatory-intelligence.html"
+        }
+      ]
+    },
+    {
+      "id": "minerals",
+      "order": 5,
+      "region": "Indonesia · East Asia · Global markets",
+      "tag": "CRITICAL MINERALS",
+      "title": "Nickel, copper and industrial supply-chain power",
+      "id_title": "Nikel, tembaga, dan geopolitik rantai pasok industri",
+      "thesis": "A larger processing footprint is not automatically greater value capture.",
+      "id_thesis": "Kapasitas pengolahan yang lebih besar belum otomatis berarti nilai tambah domestik lebih tinggi.",
+      "mechanism": "Restrictions on technology, foreign-investment rules, buyer certification and consumer-market policies can alter demand for processed Indonesian minerals. Export restrictions and localization requirements may increase domestic processing while profitability remains sensitive to energy costs, processing yields, product specifications and global commodity prices.",
+      "id_mechanism": "Pembatasan teknologi, aturan investasi asing, sertifikasi pembeli, dan kebijakan negara konsumen memengaruhi permintaan mineral olahan Indonesia. Pembatasan ekspor dan kewajiban hilirisasi bisa meningkatkan pengolahan lokal, sementara laba tetap bergantung pada biaya listrik, rendemen, mutu produk, dan harga komoditas global.",
+      "indonesia": "Indonesia's downstream-investment realization is an economy-wide aggregate covering multiple commodities and industries, not evidence that any named smelter is already operating at nameplate capacity. Investors need asset-level project stage, ownership, offtake, power source and output quality.",
+      "id_indonesia": "Realisasi investasi hilirisasi adalah agregat banyak komoditas dan industri, bukan bukti bahwa smelter tertentu beroperasi pada kapasitas terpasang. Investor memerlukan data tahap proyek, pemegang saham, pembeli, sumber listrik, dan mutu output per fasilitas.",
+      "counter": "News about a proposed smelter, export levy or offtake memorandum is evidence of reporting and commercial intent; verified plant utilization and realized CAPEX require separate primary records.",
+      "id_counter": "Berita rencana smelter, bea ekspor, atau nota kesepahaman pembelian membuktikan laporan dan niat komersial; utilisasi pabrik dan belanja modal yang terealisasi membutuhkan data primer terpisah.",
+      "watch": "Track USGS minerals definitions, ESDM mine and refining data, project operating reports, grid sourcing, global EV chemistries and market access rules.",
+      "id_watch": "Pantau definisi mineral USGS, data tambang dan pengolahan ESDM, laporan operasi proyek, sumber listrik, teknologi kimia baterai global, dan aturan akses pasar.",
+      "evidence": [
+        "downstream",
+        "fdi",
+        "renewable_mw"
+      ],
+      "search": [
+        "nickel",
+        "nikel",
+        "copper",
+        "tembaga",
+        "battery",
+        "smelter",
+        "mineral",
+        "rare earth"
+      ],
+      "links": [
+        {
+          "label": "Critical Minerals",
+          "url": "./index.html#minerals"
+        },
+        {
+          "label": "Investment Tracker",
+          "url": "./index.html#investment"
+        }
+      ]
+    },
+    {
+      "id": "energyclimate",
+      "order": 6,
+      "region": "Indonesia · International capital",
+      "tag": "ENERGY & CLIMATE DIPLOMACY",
+      "title": "Coal, climate finance and transition credibility",
+      "id_title": "Batu bara, pembiayaan iklim, dan kredibilitas transisi",
+      "thesis": "Energy geopolitics operates through both export earnings and power reliability.",
+      "id_thesis": "Geopolitik energi memengaruhi penerimaan ekspor sekaligus keandalan listrik.",
+      "mechanism": "Indonesia is exposed to global coal demand and benchmark prices while industrial electrification and AI data centers increase demand for dependable generation and grids. Climate finance and trade-related carbon rules can change project capital costs, but foreign pledges, signed financing and actual commissioned renewable capacity are different measures.",
+      "id_mechanism": "Indonesia terpengaruh permintaan dan harga acuan batu bara global ketika elektrifikasi industri serta pusat data AI menaikkan kebutuhan pembangkit dan jaringan andal. Pembiayaan iklim dan aturan karbon perdagangan dapat mengubah biaya modal, tetapi janji pendanaan, dana yang dicairkan, dan kapasitas EBT yang benar-benar beroperasi merupakan ukuran berbeda.",
+      "indonesia": "The latest SLI ESDM energy baseline should be compared against annual fuel use, verified new renewable MW, coal DMO and province-by-province grid constraints. Higher reported energy-transition investment does not mean power-system decarbonization progressed at the same rate.",
+      "id_indonesia": "Data dasar energi ESDM dalam SLI perlu dibandingkan dengan konsumsi bahan bakar, tambahan MW EBT yang telah beroperasi, DMO batu bara, dan kendala jaringan per provinsi. Kenaikan investasi transisi tidak otomatis berarti dekarbonisasi sistem kelistrikan meningkat secepat itu.",
+      "counter": "A media claim about a global energy-price jump is market reporting, not a measured increase in electricity tariffs or fuel subsidy expenditure inside Indonesia.",
+      "id_counter": "Klaim media mengenai lonjakan harga energi global merupakan laporan pasar, bukan pengukuran kenaikan tarif listrik atau belanja subsidi BBM di Indonesia.",
+      "watch": "Track dated ESDM and PLN data, actual generation and consumption, grid investments, coal contract exposure, carbon trade rules and committed versus disbursed transition finance.",
+      "id_watch": "Pantau data ESDM dan PLN bertanggal, produksi/konsumsi aktual, investasi jaringan, paparan kontrak batu bara, aturan perdagangan karbon, serta pendanaan transisi yang dijanjikan dan dicairkan.",
+      "evidence": [
+        "coal",
+        "coal_export",
+        "renewable",
+        "renewable_mw"
+      ],
+      "search": [
+        "coal",
+        "pln",
+        "carbon",
+        "climate",
+        "transition",
+        "electricity",
+        "renewable",
+        "jetp",
+        "energy"
+      ],
+      "links": [
+        {
+          "label": "Energy Security",
+          "url": "./index.html#energy"
+        },
+        {
+          "label": "PLN RUPTL & Grid",
+          "url": "./pln-ruptl-energy-investment.html"
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "baseline",
+      "title": "Baseline · Fragmented but functioning trade",
+      "id_title": "Dasar · Perdagangan tetap berjalan meski terfragmentasi",
+      "narrative": "Shocks are localized, shipping and technology routes remain viable, and Indonesia absorbs higher compliance and logistics costs unevenly by sector. Investment screening emphasizes operating projects, imported inputs and execution costs.",
+      "id_narrative": "Guncangan terbatas; jalur pelayaran dan pasokan teknologi tetap berjalan, sementara biaya logistik dan kepatuhan bertambah secara tidak merata. Penyaringan investasi menekankan proyek beroperasi, input impor, dan biaya realisasi."
+    },
+    {
+      "id": "adverse",
+      "title": "Downside · Simultaneous shipping, trade and funding stress",
+      "id_title": "Negatif · Tekanan bersamaan pada pelayaran, perdagangan, dan pendanaan",
+      "narrative": "Freight disruptions, policy controls and foreign-currency funding pressure overlap. Energy imports and capital-intensive technology projects face cost and schedule risks. These are conditional channels, not a prediction or quantitative loss estimate.",
+      "id_narrative": "Gangguan logistik, kontrol kebijakan, dan tekanan pendanaan valas terjadi bersamaan. Impor energi serta proyek teknologi padat modal menghadapi risiko biaya dan jadwal. Ini jalur risiko bersyarat, bukan ramalan atau estimasi kerugian numerik."
+    },
+    {
+      "id": "resilience",
+      "title": "Resilience · Diversification and implementation discipline",
+      "id_title": "Ketahanan · Diversifikasi dan disiplin pelaksanaan",
+      "narrative": "Diversified supply, documented reserve policy, grid resilience, deeper local engineering skills and transparent contract/project stages reduce exposure. Gains are contingent on delivery and independently measured outcomes.",
+      "id_narrative": "Diversifikasi pemasok, kebijakan cadangan yang terdokumentasi, jaringan listrik lebih andal, keterampilan rekayasa lokal, serta transparansi tahap proyek mengurangi risiko. Manfaat baru dapat dinilai setelah pelaksanaan dan hasilnya terukur."
+    }
+  ],
+  "assessments": [
+    [
+      "Indonesia's vulnerability is asymmetric: petroleum import exposure can rise even while coal export revenue improves.",
+      "Kerentanan Indonesia tidak simetris: biaya impor migas dapat meningkat bersamaan dengan naiknya penerimaan ekspor batu bara."
+    ],
+    [
+      "Bilateral trade balances differ significantly; treat export-market and intermediate-input dependence separately.",
+      "Neraca bilateral berbeda nyata; bedakan ketergantungan pasar ekspor dari kebutuhan input antara."
+    ],
+    [
+      "Maritime headlines are usable secondary evidence, but closure, duration and affected volumes require separate operational checks.",
+      "Berita maritim sah sebagai data sekunder, tetapi penutupan jalur, durasi, dan volume terdampak perlu bukti operasional lain."
+    ],
+    [
+      "AI data-center pipeline and physical compute commissioning are distinct; track energy access and equipment delivery.",
+      "Rencana pusat data AI berbeda dari komputasi yang benar-benar beroperasi; pantau akses listrik dan pengiriman perangkat."
+    ],
+    [
+      "Mineral downstreaming value capture depends on energy, specifications, financing and market access—not smelter announcements alone.",
+      "Nilai tambah hilirisasi tergantung energi, spesifikasi, pembiayaan, dan akses pasar—bukan sekadar pengumuman smelter."
+    ],
+    [
+      "Natuna and regional sea-lane security require location-specific maritime evidence, not generalized conflict scoring.",
+      "Keamanan Natuna dan jalur laut regional membutuhkan bukti maritim sesuai lokasi, bukan skor konflik umum."
+    ],
+    [
+      "For every scenario, distinguish publisher reports, official measured data, proposed policy and editorial inference.",
+      "Setiap skenario harus membedakan laporan media, statistik resmi, kebijakan usulan, dan inferensi editorial."
+    ]
+  ]
+}
