@@ -234,8 +234,11 @@ async function submit(){
   state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],question,mode};
   const report=append("assistant",payload.answer);
   window.SLIResearchVisuals?.renderCharts(state.lastResult.charts,report,state.lastResult.sources,state.language);
+  const modernBackend=payload.evidence_status==="owner_staging_source_dated_energy_corpus";
   const note=node("div","sli-ra-evidence-note",usingOwner?
-   (state.language==="id"?"DATA SLI BERTANGGAL · Angka energi resmi dan ringkasan SLI mengikuti versi corpus Worker yang dipasang; ini bukan scraping internet secara langsung. Periksa periode setiap sitasi.":"DATED SLI DATA · Official energy statistics and SLI synthesis reflect the deployed Worker corpus version, not live web scraping. Check every citation date."):
+   (modernBackend?
+    (state.language==="id"?"CORPUS ENERGI SLI AKTIF · Angka berasal dari sumber bertanggal dan bukan scraping real-time; asesmen sumber tetap perlu diperiksa. Versi data energi: "+(payload.corpus_as_of||"sesuai Worker")+".":"SLI ENERGY CORPUS ACTIVE · Source-dated data, not live scraping; verify original publications. Corpus snapshot: "+(payload.corpus_as_of||"Worker version")+"."):
+    (state.language==="id"?"BACKEND OWNER TEST LAMA · Analisis ini mungkin masih memakai corpus kecil. Pemutakhiran Cloudflare Worker diperlukan agar data energi SLI yang baru tersambung.":"OLD OWNER TEST BACKEND · May still be using the limited corpus. Deploy the updated Cloudflare Worker to connect the new energy data.")):
    (state.language==="id"?"Periksa tanggal dan dokumen sumber sebelum menggunakan hasil.":"Review source dates and primary documents before use."));
   report.prepend(note);
   renderSources(payload.sources,payload.answer,state.lastResult.charts);
