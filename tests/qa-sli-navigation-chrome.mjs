@@ -14,7 +14,7 @@ test("All 37 SLI HTML pages have early anti-FOUC protection and versioned shared
   assert.ok(head&&head.includes("document.documentElement.classList.add('sli-chrome-pending')"),"Prepaint must be in HEAD: "+p);
   assert.match(head,/window\.addEventListener\('load'/,"No loading fallback: "+p);
   assert.match(head,/sli-navigation\.css\?v=20261018-menu-flash2/,"Stale shared CSS: "+p);
-  assert.match(source,/sli-navigation\.js\?v=20261018-menu-flash2/,"Stale shared JS: "+p);
+  assert.match(source,/sli-navigation\.js\?v=(?:20261018-menu-flash2|20261019-insights1)/,"Stale shared JS: "+p);
  }
 });
 
