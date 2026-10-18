@@ -24,6 +24,9 @@ on:
       - 'tests/qa-sli-econometrics-ui.mjs'
       - 'js/sli-econometrics-report.mjs'
       - 'js/sli-bps-official-panel.mjs'
+      - 'js/sli-provincial-data-integrity.mjs'
+      - 'tests/qa-sli-provincial-data-integrity.mjs'
+      - 'scripts/verify_bps_panel_statsmodels.py'
       - 'data/sli-bps-regional-intelligence.json'
       - 'tests/qa-sli-official-bps-panel.mjs'
       - 'scripts/audit-sli-content-quality.mjs'
@@ -59,6 +62,7 @@ jobs:
           node --check js/sli-econometrics.mjs
           node --check js/sli-econometrics-report.mjs
           node --check js/sli-bps-official-panel.mjs
+          node --check js/sli-provincial-data-integrity.mjs
           node --check js/sli-analytical-workbench-ui.mjs
           node --check js/sli-contextual-briefs.mjs
           node --check js/sli-sector-context-portal.mjs
@@ -73,6 +77,13 @@ jobs:
       - name: Install DOM smoke-test runner
         run: npm install --no-save --no-audit --no-fund jsdom@26
       - name: Validate open evidence, secure planned RAG and traceability
-        run: node --test tests/qa-sli-official-bps-panel.mjs tests/qa-sli-econometrics.mjs tests/qa-sli-methodology-workbench.mjs tests/qa-sli-research-brand.mjs tests/qa-sli-research-visuals.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs tests/qa-sli-content-quality.mjs
+        run: node --test tests/qa-sli-provincial-data-integrity.mjs tests/qa-sli-official-bps-panel.mjs tests/qa-sli-econometrics.mjs tests/qa-sli-methodology-workbench.mjs tests/qa-sli-research-brand.mjs tests/qa-sli-research-visuals.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs tests/qa-sli-content-quality.mjs
       - name: Browser-like econometrics integration smoke
         run: node --test tests/qa-sli-econometrics-ui.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install independent econometric verifier
+        run: python -m pip install --disable-pip-version-check --quiet "statsmodels==0.14.6" "scipy==1.16.2"
+      - name: Independently cross-check BPS FE estimates against statsmodels
+        run: python scripts/verify_bps_panel_statsmodels.py
