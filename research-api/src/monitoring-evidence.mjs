@@ -1,3 +1,4 @@
+import {queryTokens,normalize} from "./core.mjs";
 /* All monitored SLI news may become ATTRIBUTED SECONDARY evidence; none is silently
  * promoted to an independently confirmed event or official numeric baseline.
  * Source is a fixed, public GitHub Pages index, never a URL supplied by a user.
@@ -45,4 +46,38 @@ export async function fetchMonitoringEvidence(fetcher=fetch){
   const documents=normalizeMonitoringEvidence(parsed);
   return {status:"attributed_secondary_monitoring_index",documents,registered_count:documents.length,updated_at:parsed.updated_at_utc||null};
  }catch{return {status:"secondary_monitoring_unavailable",documents:[],registered_count:0,updated_at:null}}
+}
+
+const SYNONYMS={
+ energi:["energy","oil","gas","lng","bbm","minyak","listrik","coal","hormuz","selat"],
+ energy:["energi","oil","gas","lng","bbm","minyak","power","hormuz"],
+ minyak:["oil","crude","fuel","petroleum"],gas:["lng","lpg","natural gas"],
+ geopolitik:["geopolitical","hormuz","iran","sanctions","sanksi"],
+ ai:["data center","datacenter","semiconductor","gpu","kecerdasan","chip"],
+ data:["datacenter","data center","pusat data"],
+ mineral:["nickel","nikel","copper","tembaga","smelter"],
+ nikel:["nickel","smelter"],tembaga:["copper"],investasi:["investment","capex","investor"]
+};
+export function selectMonitoringNewsEvidence(documents,question,history=[],maxResults=4){
+ const prev=[...history].reverse().find(x=>x.role==="user")?.content||"";
+ const referential=/^(lanjut|perdalam|koreksi|jelaskan lagi|bandingkan|apa dampaknya|what about|continue|correct)/i.test(question.trim());
+ const q=referential&&prev?prev+" "+question:question;
+ const terms=queryTokens(q).filter(x=>x.length>=3);
+ const extended=[...new Set(terms.flatMap(x=>[x,...(SYNONYMS[x]||[])]))];
+ if(!extended.length)return [];
+ const results=[];
+ for(const d of (Array.isArray(documents)?documents:[])){
+  if(!d||d.source_type!=="secondary_news")continue;
+  const headline=normalize(d.title),publisher=normalize(d.publisher),corpus=normalize(d.text).slice(0,450);
+  let score=0;
+  for(const term of extended){
+   const needle=normalize(term);if(!needle)continue;
+   if(headline.includes(needle))score+=terms.includes(term)?14:5;
+   if(publisher.includes(needle))score+=3;
+   if(corpus.includes(needle))score+=1;
+  }
+  if(score>0)results.push({d,score});
+ }
+ results.sort((a,b)=>b.score-a.score||String(b.d.source_date).localeCompare(String(a.d.source_date))||a.d.id.localeCompare(b.d.id));
+ return results.slice(0,maxResults).map(x=>x.d);
 }
