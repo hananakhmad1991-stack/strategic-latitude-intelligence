@@ -267,10 +267,22 @@ window.SLIAnalyticalWorkbench=Object.freeze({
   const addon={methodology:m?.id||"auto"};
   if(!consent.checked||(!last&&!data))return addon;
   const cols=data?describe(data).filter(c=>c.n>0).slice(0,8):[];
-  const safeResult=last?{...last}:null;
+  let safeResult=last?{...last}:null;
   if(safeResult?.trajectory)safeResult.trajectory=[safeResult.trajectory[0],safeResult.trajectory.at(-1)];
   if(safeResult?.columns)safeResult.columns=safeResult.columns.slice(0,8);
-  const summary={origin:"user_uploaded_unverified",file_name:filename,rows:data?.length||0,columns:cols,computed:safeResult,scope:"User-provided observational sample, never independently verified by SLI",consent:true};
+  if(safeResult&&["multivariate_ols","panel_fe"].includes(safeResult.method)){
+   const info=safeResult;
+   safeResult={method:info.method,outcome:info.outcome,predictors:info.predictors,rows_used:info.rows_used,
+    rows_excluded:info.rows_excluded,r_squared:info.r_squared??info.within_r_squared,
+    se_type:info.se_type,residual_sd:info.residual_sd,rmse:info.rmse,
+    ...(info.method==="panel_fe"?{unit_count:info.unit_count,time_count:info.time_count,two_way_fe:info.two_way_fe}:{ }),
+    coefficient_terms:(info.coefficient_terms||info.coefficients||[]).slice(0,7).map(t=>({
+     name:String(t.name||"").slice(0,65),estimate:t.estimate,std_error_hc1:t.std_error_hc1,ci95_low:t.ci95_low,ci95_high:t.ci95_high,p_value_approx:t.p_value_approx
+    })),
+    influential_count:info.residual_diagnostics?.flagged_count||0,
+    limitations:"User-computed exploratory model; source and inference assumptions remain unverified"};
+  }
+  const summary={origin:"user_uploaded_unverified",file_name:filename,rows:data?.length||0,columns:cols.slice(0,5),computed:safeResult,scope:"User-reported statistical summary, not independently verified by SLI",consent:true};
   const encoded=JSON.stringify(summary);
   if(encoded.length>4400)throw Error("Derived data summary exceeds private AI context limit");
   addon.user_analysis=summary;
