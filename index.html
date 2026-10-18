@@ -595,6 +595,7 @@ function show(page){if(!pages[page])page='overview';const globalHero=document.qu
  const runModule=(name,fn)=>{try{if(typeof fn==='function'){const result=fn();if(result&&typeof result.catch==='function')result.catch(err=>console.error('[SLI] '+name+' failed',err));}}catch(err){console.error('[SLI] '+name+' failed',err);}};
  const tasks=[
   ['Infrastructure',()=>window.initSLIInfrastructure?.()],
+   ['PLN SAIDI / SAIFI reliability',()=>window.initSLIReliability?.()],
   ['Biofuels',()=>window.initSLIBiofuels?.()],
   ['EV',()=>window.initSLIEV?.()],
   ['Events',()=>window.initEnergyEvents?.()],
