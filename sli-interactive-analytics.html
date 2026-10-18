@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SLI Interactive Analytics</title>
+<link rel="stylesheet" href="./css/sli-navigation.css">
+<link rel="stylesheet" href="./css/sli-interactive-analytics.css"></head>
+<body><main class="analytics"><h1>SLI Interactive Analytics</h1>
+<p>Eksplorasi indikator PDRB dan PMTB provinsi dari publikasi BPS.</p>
+<div class="filters"><label>Indikator<select id="metric"><option value="grdp_current">PDRB nominal</option><option value="grdp_constant">PDRB riil</option><option value="pmtb_current">PMTB</option><option value="household_current">Konsumsi rumah tangga</option><option value="real_growth">Pertumbuhan riil</option><option value="pmtb_share">Porsi PMTB</option></select></label><label>Tahun<select id="year"></select></label><label>Provinsi<select id="province"></select></label><label>Cari<input id="search" type="search" placeholder="Nama provinsi"></label></div>
+<div id="headline" aria-live="polite"></div>
+<div class="layout"><section><h2>Bandingkan provinsi</h2><p>Klik provinsi untuk memperbarui tren.</p><div id="bars"></div></section><section><h2>Tren provinsi</h2><div id="trend"></div></section></div>
+<section><h2>Data indikator</h2><div class="scroll"><table><thead><tr><th>Provinsi</th><th>Tahun</th><th>Nilai</th></tr></thead><tbody id="rows"></tbody></table></div><button id="export">Ekspor CSV</button></section>
+<footer id="sources"></footer></main>
+<script defer src="./js/sli-interactive-analytics.js"></script><script defer src="./js/sli-navigation.js"></script></body></html>
