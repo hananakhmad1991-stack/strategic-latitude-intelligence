@@ -3,9 +3,13 @@ const load=x=>readFileSync(new URL("../"+x,import.meta.url),"utf8");
 const nav=load("js/sli-navigation.js"),page=load("sli-source-viewer.html"),policy=JSON.parse(load("data/sli-public-policy-evaluation-2026.json"));
 test("No raw JSON from source anchors; real original PDFs stay distinguishable",()=>{
  assert.match(nav,/function sliSourceViewerHref/);assert.match(nav,/sli-source-viewer\.html\?dataset=/);
- assert.match(nav,/a\.hasAttribute\("download"\)/);assert.match(nav,/MutationObserver/);
- assert.match(nav,/Buka rujukan dokumen/);assert.match(page,/PDF asli dari penerbit/);
- assert.match(page,/\.json/);assert.match(page,/source notes|hasil digitalisasi|hasil digital/i);
+ assert.match(nav,/a\.removeAttribute\("download"\)/);assert.match(nav,/MutationObserver/);
+ assert.match(nav,/Sumber & metodologi SLI/);assert.match(page,/PDF asli dari penerbit/);
+ assert.match(page,/Sumber &amp; Metodologi SLI/);
+ assert.ok(!page.includes('id="raw"')&&!page.includes('raw.download'),"Source viewer should never offer a raw JSON download");
+ assert.match(load("js/site-search.js"),/sli-source-viewer\.html\?dataset=/);
+ assert.ok(!load("js/site-search.js").includes("Lihat data sumber JSON"),"Search card should cite sources, not raw JSON");
+ assert.match(load("js/sli-secondary-evidence.js"),/Sumber berita & metodologi/);
 });
 test("Policy visible references use official publication links",()=>{
  for(const id of ["pln_ruptl_excerpt","pln_statistics_2024","law_graph"]){
@@ -33,10 +37,24 @@ test("All internal static HTML anchor targets exist and PDF-labeled links never 
   for(const [,href,body] of anchors){
    const title=body.replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
    assert.ok(!(/\.json(?:[?#]|$)/i.test(href)&&/\bPDF\b/i.test(title)),filename+" claims a PDF but links to JSON: "+href);
+   assert.ok(!/^\.?\/?data\/[a-z0-9._-]+\.json(?:[?#]|$)/i.test(href),filename+" still exposes raw JSON anchor: "+href);
    if(!href.startsWith("./"))continue;
    const local=href.slice(2).split(/[?#]/)[0];
    if(local.endsWith(".html"))assert.ok(known.has(local),filename+" broken HTML route: "+href);
    else if(local.startsWith("data/")&&local.endsWith(".json"))assert.ok(data.has(local.slice(5)),filename+" missing dataset: "+href);
   }
+ }
+});
+
+test("All SLI user-facing source routes keep machine-data links internal",()=>{
+ const lab=load("intelligence-labs.html");
+ assert.ok(!/\.download\s*=\s*['"][^'"]+\.json['"]/.test(lab),"Investor Labs must export CSV instead of JSON");
+ assert.ok(lab.includes("Export scenario & assumptions CSV"));
+ const regulatory=load("js/regulatory-monitor-dashboard.js");
+ assert.ok(!regulatory.includes("Unduh snapshot audit JSON"),"Regulatory monitoring should link to sources");
+ assert.ok(regulatory.includes("Sumber monitoring &amp; metodologi SLI"));
+ for(const f of ["js/sli-navigation.js","js/site-search.js","js/regulatory-monitor-dashboard.js"]){
+  const text=load(f);
+  assert.ok(!/Lihat keterangan sumber & unduh JSON|Lihat data sumber JSON|Open indexed source JSON/i.test(text),f+" has legacy JSON UI label");
  }
 });
