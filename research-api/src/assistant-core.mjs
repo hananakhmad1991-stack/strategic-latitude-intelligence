@@ -86,7 +86,7 @@ export function evidenceSector(d){
  const combined=title+" "+topic+" "+text;
  if(hasPhrase(topic,"minerals")||hasPhrase(topic,"mineral")||hasPhrase(topic,"critical minerals")||/smelter|hpal|nickel|nikel|copper|tembaga/.test(topic))return "minerals";
  if(topic==="ai"||hasPhrase(topic,"ai infrastructure")||hasPhrase(topic,"digital infrastructure")||hasPhrase(topic,"data center"))return "ai";
- if(topic==="regional"||topic==="inequality"||topic==="methodology"||hasPhrase(topic,"regional economy"))return "regional";
+ if(topic==="regional"||topic==="inequality"||topic==="methodology"||hasPhrase(topic,"regional")||hasPhrase(topic,"inequality")||hasPhrase(topic,"gini"))return "regional";
  if(topic==="macroeconomy")return "macro";
  if(topic==="trade")return "trade";
  if(topic==="food")return "food";
@@ -129,6 +129,9 @@ function relevance(d,q){
 }
 function commodityMismatched(d,query){
  const q=normalize(query),sample=normalize(d.title+" "+d.topic+" "+d.text.slice(0,300));
+ // Specific Brent/WTI comparisons exclude unrelated gas, LNG and project evidence.
+ if((hasPhrase(q,"brent")||hasPhrase(q,"wti"))&&!hasPhrase(q,"lng")&&!hasPhrase(q,"natural gas")&&
+    !(hasPhrase(sample,"brent")||hasPhrase(sample,"wti")))return true;
  const vocab={nickel:["nickel","nikel","hpal","weda bay"],copper:["copper","tembaga"],bauxite:["bauxite","bauksit","alumina"],tin:["timah","tin"]};
  const requested=Object.entries(vocab).filter(([,terms])=>terms.some(t=>hasPhrase(q,t))).map(([id])=>id);
  if(!requested.length)return false;
