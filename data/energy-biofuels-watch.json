@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-18T00:55:25.774666+00:00",
+  "checked_at_utc": "2026-10-18T01:41:11.848343+00:00",
   "items": [
     {
       "category": "Policy",
@@ -238,8 +238,45 @@
       "found": 0
     }
   ],
-  "errors": [],
-  "stale_previous_results": false,
+  "errors": [
+    {
+      "category": "Policy",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    },
+    {
+      "category": "Capacity",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    },
+    {
+      "category": "Production",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    },
+    {
+      "category": "Feedstock",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    },
+    {
+      "category": "Distribution",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    },
+    {
+      "category": "Bioethanol",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    },
+    {
+      "category": "Sustainability",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    },
+    {
+      "category": "SAF",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    },
+    {
+      "category": "Prices",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    }
+  ],
+  "stale_previous_results": true,
   "methodology": "Google News RSS headline discovery only. No article-body scraping; respect original publisher terms. Headline is not independently checked supply, amended law, site-level capacity or audited production.",
   "baseline_updates": "No automatic modification of data/energy-biofuels.json; expert review required for official publications and regulatory amendments."
 }
