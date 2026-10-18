@@ -58,3 +58,18 @@ body.sli-home-active .main>.top .chip{display:none}
  .sli-portal-hero h2{font-size:32px}
  .sli-portal-primary{width:100%}}
 @media(prefers-reduced-motion:reduce){.sli-portal-sector{transition:none}.sli-portal-sector:hover{transform:none}}
+
+/* National KPI preview: every displayed metric is sourced, dated, and never live-labelled. */
+.sli-portal-indicators{margin-top:25px}
+.sli-portal-indicators .sli-portal-heading{margin:0 0 12px}
+.sli-portal-indicators .sli-portal-heading a{color:#e6cc9b;font-size:11px;text-decoration:none}
+.sli-portal-metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.sli-portal-metric-card{display:flex;flex-direction:column;gap:5px;background:#11283d;border:1px solid #34516a;border-radius:10px;padding:15px 16px;min-height:144px}
+.sli-portal-metric-card>span{font-size:11px;color:#b7cad8}
+.sli-portal-metric-card>strong{font-size:24px;font-variant-numeric:tabular-nums;letter-spacing:-.035em;color:#f6f4ea;font-weight:760}
+.sli-portal-metric-card>small{font-size:10px;color:#a5bdd0}
+.sli-portal-metric-card>a{font-size:10px;color:#e3c189;text-decoration:none;margin-top:auto}
+.sli-portal-metrics-note{color:#9eb5c6;font-size:10px;margin:9px 0 0;line-height:1.6}
+.sli-portal-metric-loading{padding:17px;color:#c0d1de;font-size:12px}
+@media(max-width:1060px){.sli-portal-metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:460px){.sli-portal-metric-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.sli-portal-metric-card{padding:12px;min-height:148px}.sli-portal-metric-card>strong{font-size:19px}}

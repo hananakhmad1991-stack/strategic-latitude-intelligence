@@ -32,3 +32,18 @@ test("Homepage shares SLI original navy/gold identity, stays mobile responsive, 
  const assistantCSS=read("css/sli-research-assistant.css");
  assert.match(assistantCSS,/--rai-ink/);
 });
+
+test("National KPI cards read observed values, source URLs and reporting periods from approved macro register",()=>{
+ const source=read("js/sli-home-portal.js");
+ const macro=JSON.parse(read("data/sli-macro-indonesia-2026.json"));
+ assert.match(html,/id="sliPortalMetrics"/);
+ assert.match(html,/initSLIPortalMetrics/);
+ assert.match(source,/fetch\("\.\/data\/sli-macro-indonesia-2026\.json"/);
+ assert.match(source,/source\.publisher/);
+ assert.match(source,/m\.period/);
+ assert.match(source,/source\.url/);
+ for(const id of ["real_gdp_growth","inflation_yoy","bi_policy_rate","usd_idr_jisdor"]){
+  const row=macro.metrics.find(x=>x.id===id);
+  assert.ok(row&&Number.isFinite(row.value)&&row.period&&macro.sources[row.source_id]?.url,"Missing curated "+id);
+ }
+});
