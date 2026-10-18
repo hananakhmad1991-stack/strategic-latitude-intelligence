@@ -86,7 +86,8 @@ export function evidenceSector(d){
  const topic=normalize(d.topic),title=normalize(d.title),text=normalize(d.text).slice(0,220);
  if(topic.startsWith("energy security indonesia national ")){
   const sector=topic.slice("energy security indonesia national ".length).trim();
-  if(["oil_gas","coal","renewables","power","energy"].includes(sector))return sector;
+  if(sector==="oil gas")return "oil_gas"; // normalize() converts underscores to spaces
+  if(["coal","renewables","power","energy"].includes(sector))return sector;
   if(["fiscal","investment","assessment"].includes(sector))return "energy";
  }
  const combined=title+" "+topic+" "+text;
