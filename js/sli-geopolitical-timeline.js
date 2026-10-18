@@ -25,7 +25,7 @@ function safeSeries(observations,key,year){
   .map(o=>({month:o.month,value:Number(o[key])})).sort((a,b)=>a.month.localeCompare(b.month));
 }
 function panelLink(url,title){const a=el("a",null,title);a.href=validLink(url)||"https://www.worldbank.org/en/research/commodity-markets";a.target="_blank";a.rel="noopener noreferrer";return a}
-function createPriceGraph(points,selectedEvents,key){
+function createPriceGraph(points,selectedEvents,key,recentReports=[]){
  const view=svg("svg",{viewBox:"0 0 940 335",role:"img","aria-label":tx("Monthly commodity price series with dated geopolitical event markers","Harga komoditas bulanan dengan penanda peristiwa geopolitik")});
  if(!points.length)return view;
  const W=940,H=335,L=75,R=25,T=30,B=48;
@@ -52,6 +52,18 @@ function createPriceGraph(points,selectedEvents,key){
   svg("line",{x1:xx,y1:T,x2:xx,y2:H-B,stroke:colors.event,"stroke-opacity":".23","stroke-dasharray":"3 4"},view);
   const c=svg("circle",{cx:xx,cy:py,r:5.5,fill:colors.event,stroke:"#192b40","stroke-width":1.5,tabindex:0,role:"img","aria-label":localized(ev,"title")+" · "+ev.date},view);
   svg("title",{},c,localized(ev,"title")+" · "+ev.date+" · "+formatNum(points[idx].value,2)+" "+(key==="brent"?"USD/bbl":"USD"));
+ }
+ // Publisher-dated recent escalation reports are rendered as hollow mint rings,
+ // never used as verified historical milestones or counted in Pearson r.
+ const reportedMonths=new Map();
+ for(const report of recentReports){
+  const month=monthOf(report.published_at_utc);
+  if(months.has(month)&&!reportedMonths.has(month))reportedMonths.set(month,report);
+ }
+ for(const [month,report] of reportedMonths){
+  const idx=months.get(month),cx=x(idx),cy=y(points[idx].value);
+  svg("circle",{cx,cy,r:10,fill:"none",stroke:"#8fe3c6","stroke-width":2.4,"stroke-dasharray":"3 2"},view,
+   tx("Publisher-reported escalation","Eskalasi dilaporkan penerbit")+": "+report.publisher+" · "+month+" · "+report.title);
  }
  return view;
 }
@@ -134,6 +146,7 @@ async function init(){
  const meta=el("p","sli-geo-timeline-meta"),plot=el("div","sli-geo-timeline-plot"),summary=el("div","sli-geo-timeline-grid"),eventHeading=el("h3",null,tx("Historical milestones · click source to inspect","Peristiwa historis · klik sumber untuk memeriksa")),rows=el("div");
  sec.append(meta,plot,summary,eventHeading,rows);
  const obs=Array.isArray(priceData?.observations)?priceData.observations:[];
+ const signals=latestSignals(monitoring);
  function update(){
   const year=Number(since.value),selected=events.filter(x=>x.date>=year+"-01-01"&&(kind.value==="all"||x.category===kind.value));
   const points=safeSeries(obs,commodity.value,year);
@@ -145,8 +158,13 @@ async function init(){
    plot.append(el("p","sli-geo-timeline-status",tx("Historical event list is available. Verified monthly prices are awaiting the first World Bank sync; no values have been estimated.","Daftar peristiwa tersedia. Harga bulanan terverifikasi menunggu sinkronisasi pertama World Bank; tidak ada angka yang direkayasa.")));
    rows.append(eventRows(selected,[]));return;
   }
-  const priceGraph=createPriceGraph(points,selected,commodity.value);
+  const priceGraph=createPriceGraph(points,selected,commodity.value,signals);
   const frame=el("div","sli-geo-timeline-graph");frame.append(priceGraph);plot.append(frame);
+ plot.append(el("p","sli-geo-timeline-meta",tx("Gold = curated, source-attributed event; mint ring = recent reported escalation (not independently confirmed, excluded from correlation).",
+ "Emas = peristiwa historis teratribusi; lingkar hijau = eskalasi terbaru yang dilaporkan (belum dikonfirmasi independen, tidak masuk korelasi).")));
+ const unpriced=signals.filter(report=>monthOf(report.published_at_utc)>points[points.length-1].month);
+ if(unpriced.length)plot.append(el("p","sli-geo-timeline-meta",tx("Additional reports published after the latest priced month are listed below without an invented price observation.",
+ "Laporan setelah bulan harga terbaru ditampilkan di daftar bawah tanpa membuat angka harga perkiraan.")));
   const eventSet=new Set(selected.map(x=>monthOf(x.date)));
   const monthly=points.slice(1).map((o,i)=>({...o,change:pct(o.value,points[i].value)})).filter(o=>o.change!==null&&Number.isFinite(o.change));
   const x=monthly.map(o=>eventSet.has(o.month)?1:0),y=monthly.map(o=>o.change);
