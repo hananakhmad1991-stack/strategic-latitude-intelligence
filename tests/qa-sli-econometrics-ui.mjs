@@ -67,6 +67,8 @@ test("Investor workbench DOM: panel FE actually estimates 12 entities x 6 years,
  assert.match($("raModelResult").textContent,/Unduh Investor Analytical Report/);
  assert.match($("raModelResult").textContent,/Y \(variabel terikat\) = real_grdp_growth_pct; X \(prediktor\) = pmtb_share_pct/);
  assert.equal($("raModelResult").querySelector("table tr:nth-child(2) td:first-child").textContent,"pmtb_share_pct");
+ assert.match($("raModelResult").textContent,/pmtb_share_pct: hubungan positif/);
+ assert.match($("raModelResult").textContent,/Keterbatasan inferensi: hanya 12 klaster entitas/);
  assert.match($("raModelResult").textContent,/Uji kestabilan koefisien/);
  assert.match($("raModelResult").textContent,/Keluarkan satu entitas/);
  assert.match($("raModelResult").textContent,/Keluarkan satu tahun/);
