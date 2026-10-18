@@ -47,3 +47,19 @@ test("National KPI cards read observed values, source URLs and reporting periods
   assert.ok(row&&Number.isFinite(row.value)&&row.period&&macro.sources[row.source_id]?.url,"Missing curated "+id);
  }
 });
+
+test("Home mode uses a complete lightweight top-nav without exposing the long legacy sidebar and legal disclosures",()=>{
+ assert.match(html,/sli-portal-mast/);
+ assert.match(html,/sli-portal-topnav/);
+ assert.match(html,/data-sli-locale="en"/);
+ assert.match(html,/data-sli-locale="id"/);
+ assert.match(html,/id="sliPortalSectors"/);
+ assert.match(style,/body\.sli-home-active \.layout>\.sidebar\{display:none!important\}/);
+ assert.match(style,/body\.sli-home-active \.main>\.sli-data-guide\{display:none!important\}/);
+ assert.match(style,/body\.sli-home-active \.main>\.top \.sli-top-actions/);
+ assert.match(style,/@media\(max-width:650px\)/);
+ // Legacy disclosures and navigation remain present for #overview and sector pages.
+ assert.match(html,/id="sliDataGuide"/);
+ assert.match(html,/id="nav"/);
+ assert.match(html,/class="sidebar"/);
+});
