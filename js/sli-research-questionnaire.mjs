@@ -105,3 +105,50 @@ export function ahpResultMarkdown(r,lang="id"){
  for(const warning of r.limitations)lines.push("- "+warning);
  return lines.join("\n\n");
 }
+
+/** Evidence supplementation does NOT enter AHP weights or matrices.
+ * Only regions named in the research question may be shown; no implicit geography.
+ */
+export function requestedResearchProvinces(question,preview){
+ const regions=Array.isArray(preview?.provinces)?preview.provinces:[];
+ const q=String(question||"").toLocaleLowerCase("id").normalize("NFKC");
+ const candidates=[];
+ for(const r of regions){
+  const labels=[r.name,r.name_en,...(Array.isArray(r.aliases)?r.aliases:[])].filter(x=>typeof x==="string"&&x.length>=2);
+  for(const label of labels){
+   const name=label.toLocaleLowerCase("id").normalize("NFKC");
+   const start=q.indexOf(name);
+   if(start<0)continue;
+   const before=start===0?"":q[start-1],after=q[start+name.length]||"";
+   if((before&&/[\\p{L}\\p{N}]/u.test(before))||(after&&/[\\p{L}\\p{N}]/u.test(after)))continue;
+   candidates.push({row:r,start,end:start+name.length,length:name.length});
+  }
+ }
+ candidates.sort((a,b)=>b.length-a.length||a.start-b.start);
+ const matched=[];
+ for(const r of candidates){
+  if(matched.some(x=>x.start<r.end&&r.start<x.end))continue;
+  if(matched.some(x=>x.row.name===r.row.name))continue;
+  matched.push(r);
+ }
+ return matched.sort((a,b)=>a.start-b.start).slice(0,4).map(x=>x.row);
+}
+export function supplementarySliContext(question,preview){
+ const provinces=requestedResearchProvinces(question,preview);
+ const grdp=preview?.sources?.grdp,gini=preview?.sources?.gini;
+ if(!provinces.length||!grdp?.url?.startsWith("https://www.bps.go.id/")||
+    !gini?.url?.startsWith("https://www.bps.go.id/"))return null;
+ const lines=[
+  "### Data SLI pendukung (bukan bagian dari bobot AHP)",
+  "Angka resmi berikut hanya konteks geografis yang disebut dalam pertanyaan pengguna. Bobot AHP tetap berasal dari penilaian responden, bukan angka PDRB atau rasio Gini."
+ ];
+ for(const p of provinces){
+  const known=x=>typeof x==="number"&&Number.isFinite(x)?x.toLocaleString("id-ID",{maximumFractionDigits:3}):"tidak tersedia";
+  lines.push("**"+p.name+"** · pertumbuhan PDRB riil 2025 (sementara) "+known(p.growth_real_2025_pct)+"% · porsi PMTB dalam PDRB 2025 "+
+   known(p.pmtb_share_2025_pct)+"% · rasio Gini pengeluaran Maret 2026 "+known(p.gini_expenditure_2026_03)+".");
+ }
+ lines.push("Sumber PDRB: "+grdp.url+" (terbit "+grdp.released+").");
+ lines.push("Sumber rasio Gini: "+gini.url+" (diperbarui "+gini.last_updated+").");
+ lines.push("Periode, satuan dan definisi indikator berbeda; angka ini bukan penilaian perbandingan berpasangan AHP, tidak menentukan bobot ataupun membuktikan dampak kausal.");
+ return {provinces:provinces.map(x=>x.name),markdown:lines.join("\n\n"),source_ids:["bps_provincial_expenditure_grdp","bps_gini_2026"]};
+}
