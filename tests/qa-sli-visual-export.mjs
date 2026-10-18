@@ -29,7 +29,7 @@ test("Every SLI page inherits shared visual-export bootstrap without external ch
  const energy=read("js/energy-fundamentals.js");
  assert.match(energy,/data-sli-export-format/);
  assert.match(energy,/SLIVisualExport\.export\(svg,format,feedback\)/);
- assert.match(energy,/SLIVisualExport\.register\(svg,provider\)/);
+ assert.match(energy,/SLIVisualExport\?\.register\(svg,provider\)/);
  assert.match(energy,/sli:exportready/);
  assert.match(energy,/energy-fundamentals-historical-chart/);
  assert.ok(!energy.includes("Download CSV"),"Remove legacy CSV-only button");
