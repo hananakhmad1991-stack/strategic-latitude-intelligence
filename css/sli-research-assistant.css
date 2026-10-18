@@ -126,3 +126,48 @@
 .sli-ra-local-ahp-track{height:15px;background:#e3edf4;border-radius:5px;overflow:hidden}
 .sli-ra-local-ahp-bar{height:100%;background:#276e9e;border-radius:5px}
 @media(max-width:550px){.sli-ra-local-ahp-row{grid-template-columns:minmax(68px,1fr) minmax(76px,1.4fr) 52px;gap:6px;font-size:10px}}
+
+
+/* One actual reading column; citations follow the answer instead of squeezing prose. */
+#raConversation .sli-ra-conversation-layout{
+ display:flex!important;flex-direction:column!important;
+ grid-template-columns:none!important;gap:18px;width:100%;min-width:0
+}
+#raConversation #raMessages{display:flex!important;flex-direction:column!important;
+ width:100%;max-width:100%;min-width:0;gap:16px}
+#raConversation .sli-ra-message{display:block!important;width:100%;max-width:100%;
+ min-width:0;column-count:1!important;columns:auto!important;overflow-wrap:break-word}
+#raConversation .sli-ra-msg-text{display:block!important;max-width:100%;
+ min-width:0;white-space:normal!important;column-count:1!important;columns:auto!important;
+ word-break:normal;overflow-wrap:break-word;line-height:1.78;writing-mode:horizontal-tb!important}
+#raConversation .sli-ra-msg-text>*{max-width:100%;column-count:1!important;break-inside:avoid-column}
+#raConversation .sli-ra-msg-text p{margin:10px 0 14px;line-height:1.75}
+#raConversation .sli-ra-msg-text h3{margin:20px 0 10px;line-height:1.45}
+#raConversation #raSourcesPanel{display:block!important;position:static!important;
+ max-height:none!important;overflow:visible!important;width:100%;max-width:100%;
+ background:#f8fbfd;padding:12px 16px}
+#raConversation #raSourcesPanel:not([open])>*:not(summary){display:none!important}
+#raConversation #raSourcesPanel>summary{cursor:pointer;font-weight:800;color:#1d5377;padding:7px 2px}
+#raConversation #raSourcesPanel[open]>summary{border-bottom:1px solid #dae5ed;margin-bottom:14px}
+.sli-ra-followup{margin:18px 0 26px;padding:19px 21px;background:#f2f7fb;
+ border:1px solid #cddce8;border-radius:15px;max-width:100%}
+.sli-ra-followup-heading{font:800 14px/1.5 system-ui,sans-serif;color:#194d72;margin-bottom:13px}
+.sli-ra-followup-actions{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 15px}
+.sli-ra-followup-actions button{padding:8px 12px;border:1px solid #a7c4da;border-radius:8px;
+ color:#205375;background:#fff;font:700 12px/1.4 system-ui,sans-serif;cursor:pointer}
+.sli-ra-followup-actions button:hover{background:#e4f0f8}
+.sli-ra-followup-form{display:flex;flex-direction:column;gap:9px}
+.sli-ra-followup-form label{font-weight:750;color:#285a78;font-size:12px}
+.sli-ra-followup-form textarea{width:100%;min-height:84px;padding:13px 14px;
+ background:#fff;border:1px solid #a7bbca;border-radius:10px;font:14px/1.6 system-ui,sans-serif;
+ color:#1d3d5d;resize:vertical}
+.sli-ra-followup-form button{align-self:flex-end;background:#1d5683;border:0;
+ color:white;border-radius:9px;padding:12px 18px;font:750 12px system-ui,sans-serif;cursor:pointer}
+.sli-ra-followup-form button:disabled{opacity:.6;cursor:wait}
+.sli-ra-followup-disclaimer{margin:12px 0 0;color:#657e90;font:11px/1.55 system-ui,sans-serif}
+@media(max-width:650px){
+ #raConversation .sli-ra-message{padding:13px!important}
+ #raConversation .sli-ra-msg-text{font-size:13px;line-height:1.75}
+ .sli-ra-followup{padding:13px}
+ .sli-ra-followup-form button{width:100%;align-self:stretch}
+}
