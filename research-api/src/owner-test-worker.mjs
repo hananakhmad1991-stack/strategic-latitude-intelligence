@@ -9,6 +9,7 @@ import {validateAssistantPayload,selectResearchEvidence,modelRequest,verifyResea
 import {extractModelText} from "./core.mjs";
 import {buildResearchCharts} from "./chart-data.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
+import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
 import {validateOwnerAttachments,buildOwnerFileParts} from "../../js/sli-investor-chat.mjs";
 
@@ -80,6 +81,7 @@ function publicCorpus(){
   }
  }
  docs.push(...nationalEnergyEvidence());
+ docs.push(...nationalMineralEvidence());
  return docs;
 }
 const DATA=publicCorpus();
