@@ -192,7 +192,7 @@ async function init(){
  sec.append(note);
  const signalSec=el("section","sli-geo-timeline-monitoring");
  signalSec.append(el("h3",null,tx("Latest escalation watch · attributed media signals","Pemantauan eskalasi terkini · sinyal dari media teratribusi")));
- const signals=latestSignals(monitoring);
+ // Reuse already validated recent signals.
  const caption=el("p","sli-geo-timeline-meta",tx("Automatically filtered publisher-dated secondary reports, last 45 days. They are not independently verified events; chronology inclusion requires editorial review.",
  "Berita sekunder bertanggal publikasi yang tersaring otomatis selama 45 hari. Ini bukan peristiwa terverifikasi secara independen; pencantuman ke kronologi membutuhkan peninjauan editorial."));
  signalSec.append(caption);
