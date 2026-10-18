@@ -12,10 +12,12 @@ root = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("sli_research_radar", root / "scripts" / "research_signal_radar.py")
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
-assert len(module.TOPICS) == 16
+assert len(module.TOPICS) == 17
 assert {(t[0], t[1]) for t in module.TOPICS} == set(module.GROUPS)
 assert all(t[2] and t[3] and t[4] and t[5] for t in module.TOPICS)
 assert module.source_ok("Reuters", "https://www.reuters.com/")
+assert module.source_ok("CGTN", "https://news.cgtn.com/")
+assert module.TITLE_RULES["china_ai"].search("China expands AI data center development")
 assert module.source_ok("Kementerian ESDM", "https://esdm.go.id/")
 assert not module.source_ok("Unknown Personal Blog", "https://example.com")
 assert not module.source_ok("Kompasiana.com", "https://www.kompasiana.com/")
@@ -53,4 +55,4 @@ assert data["schema_version"]==1
 assert set(data["groups"])=={"minerals","ai"}
 assert all(set(data["groups"][s])=={"domestic","geopolitical"} for s in ("minerals","ai"))
 assert data.get("status") in ("ok","partial","awaiting_first_scan","upstream_unavailable_last_good_preserved")
-print("PASS: strict-source RSS metadata, 16 topics, timestamps, category isolation and four-channel dataset")
+print("PASS: strict-source RSS metadata, 17 topics, Reuters CGTN coverage, timestamps, category isolation and four-channel dataset")
