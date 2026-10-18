@@ -73,6 +73,14 @@ function apaEntry(s){
 function reportBody(answer){
  return String(answer||"").split(/\n(?=##?\s+(?:References|Daftar Pustaka|Bibliography|Keterbatasan|Limitations|Evidence limitations|Batasan data|Source limitations|Model Statement)\b)/i)[0].trim();
 }
+function renderModelStatement(answer,payload={}){
+ const target=$("raModelStatementBody");if(!target)return;
+ target.replaceChildren();
+ const found=String(answer||"").match(/(?:^|\n)#{1,3}\s+(?:Keterbatasan|Limitations|Evidence limitations|Batasan data|Source limitations|Model Statement)\b[^\n]*\n([\s\S]*?)(?=\n#{1,3}\s+|$)/i);
+ const statement=found?.[1]?.trim()||"Metode dan kesimpulan mengikuti bukti bertanggal yang dipilih; tidak semua hubungan lintas sektor membuktikan kausalitas.";
+ target.append(node("p",null,statement.slice(0,3500)));
+ if(payload.corpus_as_of)target.append(node("p",null,"Snapshot data: "+payload.corpus_as_of));
+}
 function renderSources(sources,answer="",charts=[]){
  const cited=new Set([...String(answer).matchAll(/\[(\d+)\]/g)].map(m=>Number(m[1])));
  const graphed=new Set((Array.isArray(charts)?charts:[]).flatMap(c=>Array.isArray(c.source_refs)?c.source_refs:[]).filter(Number.isInteger));
@@ -94,10 +102,10 @@ function renderSources(sources,answer="",charts=[]){
 }
 function renderMonitoringSignals(payload){
  const wrap=$("raMonitoringSignals");wrap.replaceChildren();
- const signals=Array.isArray(payload?.monitoring_signals)?payload.monitoring_signals.slice(0,5):[];
+ const signals=Array.isArray(payload?.monitoring_signals)?payload.monitoring_signals.filter(s=>s?.evidence_status==="publisher_page_matched").slice(0,8):[];
  if(!signals.length)return;
  const header=node("h3",null,"Monitoring sumber berita");
- const disclaimer=node("p","sli-ra-evidence-note","Headline ditemukan dari RSS dan belum diverifikasi terhadap isi artikel asli. Ini bukan fakta kejadian yang sudah dikonfirmasi atau berita real-time tanpa jeda.");
+ const disclaimer=node("p","sli-ra-evidence-note","Tautan menuju halaman penerbit yang telah diperiksa; klaim peristiwa tetap harus didukung isi artikel.");
  wrap.append(header,disclaimer);
  for(const s of signals){
   if(typeof s?.title!=="string"||!safeUrl(s.url))continue;
@@ -110,7 +118,7 @@ function renderMonitoringSignals(payload){
 
 function reset(){
  state.sequence++;state.history=[];state.lastResult=null;state.busy=false;
- $("raMessages").replaceChildren();$("raSourcesList").replaceChildren();$("raMonitoringSignals").replaceChildren();$("raConversation").hidden=true;$("raPrompt").value="";
+ $("raMessages").replaceChildren();$("raSourcesList").replaceChildren();$("raMonitoringSignals").replaceChildren();$("raModelStatementBody")?.replaceChildren();$("raConversation").hidden=true;$("raPrompt").value="";
  $("raChatFiles").value="";$("raChatUploadConsent").checked=false;updateFileStatus();
  $("raFollowupPrompt").value="";
  enableControls();$("raPrompt").focus();
@@ -267,6 +275,7 @@ async function submit(){
    (state.language==="id"?"Periksa tanggal dan dokumen sumber sebelum menggunakan hasil.":"Review source dates and primary documents before use."));
   report.prepend(note);
   renderSources(payload.sources,payload.answer,state.lastResult.charts);
+  renderModelStatement(payload.answer,payload);
   renderMonitoringSignals(payload);
   state.history.push({role:"user",content:question},{role:"assistant",content:payload.answer.slice(0,5000)});
   state.history=state.history.slice(-8);
