@@ -34,7 +34,9 @@ function show(message){result.textContent=message;result.dataset.state="ready"}
 function fillVariables(){
  const numeric=data?describe(data).filter(v=>v.n>=3).map(v=>v.column):[];
  for(const select of [x,y]){select.replaceChildren();for(const name of numeric){const opt=document.createElement("option");opt.value=name;opt.textContent=name;select.append(opt)}}
- if(numeric.length>1)y.value=numeric[1];desc();
+ if(numeric.includes("pmtb_share_2025_pct")&&numeric.includes("real_grdp_growth_2025_pct")){x.value="pmtb_share_2025_pct";y.value="real_grdp_growth_2025_pct";}
+ else if(numeric.length>1)y.value=numeric[1];
+ desc();
 }
 datafile.addEventListener("change",async()=>{
  data=null;model=null;last=null;filename="";consent.checked=false;
@@ -56,29 +58,99 @@ datafile.addEventListener("change",async()=>{
 });
 method.addEventListener("change",()=>{last=null;consent.checked=false;desc();});
 function renderCalculation(output){
+ const id=document.documentElement.lang!=="en";
+ const num=v=>typeof v==="number"&&Number.isFinite(v)?new Intl.NumberFormat(id?"id-ID":"en-GB",{maximumFractionDigits:4}).format(v):String(v??"—");
+ const paragraph=(parent,text)=>{const p=document.createElement("p");p.textContent=text;parent.append(p);return p};
  result.replaceChildren();
- const title=document.createElement("strong");title.textContent="Local model result · "+output.method+" (unverified user data)";result.append(title);
- const summary=document.createElement("p");
- if(output.method==="descriptive")summary.textContent=`Dataset contains ${output.rows} observations. Descriptive statistics summarise the observed sample only; no regional causal or population inference is established.`;
- else if(output.method==="pearson")summary.textContent=`Pearson correlation between ${output.x} and ${output.y}: r = ${output.r} for ${output.n} complete pairs. This measures linear association, not causal impact or a forecast.`;
- else if(output.method==="ols")summary.textContent=`Estimated sample equation: ${output.y} = ${output.intercept} + (${output.slope} × ${output.x}), with R² = ${output.r_squared} and n = ${output.n}. Omitted variables, selection bias and residual diagnostics remain unresolved.`;
- else if(output.method==="ahp")summary.textContent=`Pairwise judgement weights were computed using row geometric means. Consistency ratio: ${output.consistency_ratio??"n/a for two criteria"}; ${output.acceptable?"within the conventional 0.10 threshold":"requires revisiting inconsistent comparisons"}. These are subjective preferences, not measured economic effects.`;
- else if(output.method==="stock_flow")summary.textContent=`Illustrative stock-flow path from ${output.initial_stock} to ${output.final_stock} across ${output.periods} periods, using fixed inflow ${output.inflow_per_period} and outflow rate ${output.outflow_rate}. This is a transparent simulation, not a calibrated projection.`;
- result.append(summary);
+ const step=document.createElement("span");step.className="ra-wb-step";
+ step.textContent=id?"LANGKAH 2 · HASIL PENGOLAHAN DATA LOKAL":"STEP 2 · LOCAL DATA ANALYSIS";
+ result.append(step);
+ const title=document.createElement("strong");title.textContent=(id?"Hasil model: ":"Model result: ")+(
+  {descriptive:id?"Statistik deskriptif":"Descriptive statistics",pearson:id?"Korelasi Pearson":"Pearson correlation",ols:id?"Regresi OLS sederhana":"Simple OLS regression",ahp:"AHP",stock_flow:"Stock–Flow"}[output.method]||output.method);
+ result.append(title);
  if(output.method==="descriptive"){
-  const table=document.createElement("table");const tr=document.createElement("tr");
-  ["Variable","N","Missing","Mean","Median","SD","Min","Max"].forEach(h=>{const th=document.createElement("th");th.textContent=h;tr.append(th)});table.append(tr);
-  output.columns.filter(c=>c.n>0).slice(0,10).forEach(c=>{const row=document.createElement("tr");[c.column,c.n,c.missing,c.mean,c.median,c.sd,c.min,c.max].forEach(v=>{const td=document.createElement("td");td.textContent=String(v??"—");row.append(td)});table.append(row)});result.append(table);
+  paragraph(result,id?`Berhasil memproses ${output.rows} observasi. Tabel berikut memperlihatkan distribusi tiap indikator, bukan hubungan sebab-akibat atau prediksi.`:`Processed ${output.rows} observations. The table summarises each variable, not causal effects or forecasts.`);
+ }else if(output.method==="pearson"){
+  paragraph(result,id?`Korelasi Pearson ${output.x} terhadap ${output.y}: r = ${num(output.r)} dari ${output.n} pasangan observasi. Korelasi tidak membuktikan sebab-akibat.`:`Pearson correlation between ${output.x} and ${output.y}: r = ${num(output.r)}, based on ${output.n} complete pairs. Correlation does not establish causality.`);
+ }else if(output.method==="ols"){
+  paragraph(result,id?`Regresi: ${output.y} = ${num(output.intercept)} + (${num(output.slope)} × ${output.x}); R² = ${num(output.r_squared)}; n = ${output.n}. Ini hubungan linear pada sampel, bukan pengaruh kausal investasi.`:`Sample fitted equation: ${output.y} = ${num(output.intercept)} + (${num(output.slope)} × ${output.x}); R² = ${num(output.r_squared)}; n = ${output.n}. This is not a causal estimate.`);
  }else if(output.method==="ahp"){
-  const table=document.createElement("table");for(const c of [...output.criteria].sort((a,b)=>b.weight-a.weight)){const row=document.createElement("tr"),n=document.createElement("td"),w=document.createElement("td");n.textContent=c.name;w.textContent=(c.weight*100).toFixed(2)+"%";row.append(n,w);table.append(row)}result.append(table);
+  paragraph(result,id?`Bobot kriteria dihitung dari penilaian berpasangan. Consistency Ratio = ${num(output.consistency_ratio)}; ${output.acceptable?"konsistensi berada dalam ambang konvensional.":"konsistensi perlu diperiksa kembali."} Bobot bersifat subjektif, bukan pengukuran dampak ekonomi.`:`Weights reflect pairwise judgments. Consistency Ratio = ${num(output.consistency_ratio)}; ${output.acceptable?"within the conventional consistency threshold.":"judgment consistency needs review."} Weights are subjective.`);
+ }else if(output.method==="stock_flow"){
+  paragraph(result,id?`Skenario simulasi: stok bergerak dari ${num(output.initial_stock)} ke ${num(output.final_stock)} dalam ${output.periods} periode. Arus masuk dan laju keluar bersifat tetap; hasil bukan proyeksi terkalibrasi.`:`Illustrative stock simulation: ${num(output.initial_stock)} to ${num(output.final_stock)} across ${output.periods} periods. These fixed-parameter results are not calibrated forecasts.`);
+ }
+ if(output.method==="descriptive"){
+  const scroll=document.createElement("div");scroll.className="ra-wb-table-scroller";
+  const table=document.createElement("table");
+  const tr=document.createElement("tr");
+  (id?["Indikator","N","Kosong","Rata-rata","Median","SD","Min","Maks"]:["Variable","N","Missing","Mean","Median","SD","Min","Max"]).forEach(h=>{const th=document.createElement("th");th.textContent=h;tr.append(th)});table.append(tr);
+  output.columns.filter(c=>c.n>0).slice(0,20).forEach(c=>{const row=document.createElement("tr");[c.column,c.n,c.missing,c.mean,c.median,c.sd,c.min,c.max].forEach(v=>{const td=document.createElement("td");td.textContent=num(v);row.append(td)});table.append(row)});
+  scroll.append(table);result.append(scroll);
+ }else if(output.method==="ahp"){
+  const scroll=document.createElement("div");scroll.className="ra-wb-table-scroller";
+  const table=document.createElement("table");
+  const head=document.createElement("tr");for(const v of [id?"Kriteria":"Criterion",id?"Bobot":"Weight"]){const th=document.createElement("th");th.textContent=v;head.append(th)}table.append(head);
+  for(const c of [...output.criteria].sort((a,b)=>b.weight-a.weight)){const row=document.createElement("tr"),n=document.createElement("td"),w=document.createElement("td");n.textContent=c.name;w.textContent=(c.weight*100).toFixed(2)+"%";row.append(n,w);table.append(row)}
+  scroll.append(table);result.append(scroll);
  }else if(output.method==="stock_flow"){
   const values=output.trajectory.map(v=>v.stock),lo=Math.min(...values),hi=Math.max(...values),spread=hi-lo||1;
-  const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");svg.setAttribute("viewBox","0 0 440 130");svg.setAttribute("role","img");svg.setAttribute("aria-label","Simulated stock trajectory over time");svg.style.width="100%";
+  const svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+  svg.setAttribute("viewBox","0 0 440 130");svg.setAttribute("role","img");
+  svg.setAttribute("aria-label","Simulated stock trajectory over time");svg.style.width="100%";
   const line=document.createElementNS("http://www.w3.org/2000/svg","polyline");
   line.setAttribute("points",values.map((v,i)=>`${20+(i/(values.length-1))*400},${110-((v-lo)/spread)*90}`).join(" "));
   line.setAttribute("fill","none");line.setAttribute("stroke","#235f9d");line.setAttribute("stroke-width","3");svg.append(line);result.append(svg);
  }
- const note=document.createElement("small");note.textContent=output.limitation||"Review source assumptions and statistical uncertainty before any investment decision.";result.append(note);
+ const context=document.createElement("section");context.className="ra-wb-analysis";
+ const contextHeading=document.createElement("strong");
+ contextHeading.textContent=id?"Interpretasi untuk investor":"Investor interpretation";context.append(contextHeading);
+ if(output.method==="descriptive"){
+  const growth=output.columns.find(c=>c.column==="real_grdp_growth_2025_pct");
+  const pmtb=output.columns.find(c=>c.column==="pmtb_share_2025_pct");
+  const gini=output.columns.find(c=>c.column==="gini_expenditure_mar2026");
+  if(growth&&pmtb){
+   paragraph(context,id?
+    `Pertumbuhan PDRB riil dalam dataset rata-rata ${num(growth.mean)}% dengan median ${num(growth.median)}%; rentangnya ${num(growth.min)}% hingga ${num(growth.max)}%, yang menandakan variasi wilayah sangat lebar. Porsi PMTB rata-rata ${num(pmtb.mean)}%, namun PMTB sebagai komponen PDRB bukan nilai realisasi investasi BKPM.`:
+    `Observed mean real GRDP growth is ${num(growth.mean)}% (median ${num(growth.median)}%), ranging from ${num(growth.min)}% to ${num(growth.max)}%; provincial growth is highly heterogeneous. Mean PMTB expenditure share is ${num(pmtb.mean)}%, not the same measure as BKPM realised investment.`);
+   paragraph(context,id?
+    `Dataset ini dapat diteruskan ke regresi untuk menguji asosiasi PMTB dan pertumbuhan, tetapi pengaruh observasi ekstrem harus diperiksa sebelum kesimpulan investasi dibuat.`:
+    `A simple regression may test observed PMTB-growth association, but extreme observations and model identification must be assessed before investment conclusions.`);
+  }else paragraph(context,id?"Bandingkan satuan, sebaran, median, dan data hilang sebelum memilih model. Angka deskriptif belum membuktikan pengaruh suatu variabel.":"Review units, distributions, median and missingness before choosing an estimator.");
+  if(gini)paragraph(context,id?"Rasio Gini Maret 2026 dibandingkan dengan indikator ekonomi 2025; perbedaan periode harus dinyatakan dan tidak boleh disebut bukti dampak investasi.":"Gini (March 2026) and GRDP (2025) use different reference periods; this does not establish the effect of investment.");
+ }else if(output.method==="ols"){
+  const r2=output.r_squared;
+  paragraph(context,id?
+   `R² sebesar ${num(r2)} berarti sekitar ${num(r2*100)}% variasi Y pada sampel dijelaskan oleh spesifikasi linear satu prediktor. Kemampuan menjelaskan sampel tidak sama dengan ketepatan peramalan atau hubungan kausal.`:
+   `R² = ${num(r2)} accounts for about ${num(r2*100)}% of sample Y variance in this one-predictor fit. It is neither an out-of-sample forecast nor proof of causation.`);
+  if(data&&output.y==="real_grdp_growth_2025_pct"){
+   const filtered=data.filter(r=>{const v=Number(r[output.y]);return Number.isFinite(v)&&v>=-15&&v<=15});
+   if(filtered.length>=8&&filtered.length<data.length){
+    try{const check=evaluate({method:"ols",rows:filtered,x:output.x,y:output.y});
+     paragraph(context,id?
+       `Uji sensitivitas dengan observasi pertumbuhan di luar -15% hingga 15% dikeluarkan sementara: R² menjadi ${num(check.r_squared)} (n=${check.n}). Ambang ini hanya ilustrasi; observasi ekstrem tidak semestinya dihapus tanpa alasan metodologis.`:
+       `Exploratory sensitivity test excluding growth outside -15% to 15%: R² becomes ${num(check.r_squared)} (n=${check.n}). The threshold is illustrative; do not exclude extreme values without methodological justification.`);
+    }catch{ /* no misleading fallback if model fails */ }
+   }
+  }
+  paragraph(context,id?"Analisis keputusan investasi membutuhkan variabel kontrol, pendekatan panel/time series yang sesuai, diagnosa residual, serta identifikasi faktor kausal.":"Investment appraisal needs controls, an appropriate panel/time-series design, diagnostics and credible causal identification.");
+ }else if(output.method==="pearson"){
+  paragraph(context,id?
+   `Nilai absolut r sebesar ${num(Math.abs(output.r))} mengukur kedekatan linear dalam data berpasangan. Korelasi dapat dipengaruhi outlier dan pola tren, sehingga sebaiknya dibandingkan dengan plot sebar dan regresi robust.`:
+   `The absolute correlation ${num(Math.abs(output.r))} measures linear association, subject to outliers and trends; consider scatterplots and robust checks.`);
+ }else if(output.method==="ahp")paragraph(context,id?"Periksa perubahan urutan alternatif saat bobot diubah dan validitas penilaian tiap kriteria sebelum menggunakannya untuk investasi.":"Check weight sensitivity and underlying evidence before ranking investment alternatives.");
+ else if(output.method==="stock_flow")paragraph(context,id?"Bandingkan skenario arus masuk, tingkat keluaran, kapasitas dan asumsi awal. Model ini belum mencakup feedback dan kalibrasi empiris.":"Stress-test inflows, outflows and capacities. This model has no calibrated feedback loops.");
+ result.append(context);
+ if(output.method==="descriptive"&&data&&["pmtb_share_2025_pct","real_grdp_growth_2025_pct"].every(v=>Object.hasOwn(data[0]||{},v))){
+  const follow=document.createElement("div");follow.className="ra-wb-next";
+  const btn=document.createElement("button");btn.type="button";
+  btn.textContent=id?"Lanjut: jalankan regresi PMTB → Pertumbuhan":"Next: run PMTB → Growth regression";
+  btn.addEventListener("click",()=>{
+   method.value="ols";desc();x.value="pmtb_share_2025_pct";y.value="real_grdp_growth_2025_pct";
+   $("raRunMethod").click();
+  });
+  follow.append(btn);result.append(follow);
+ }
+ const note=document.createElement("small");note.textContent=output.limitation||"Review source assumptions and uncertainty before any investment decision.";result.append(note);
 }
 $("raRunMethod").addEventListener("click",()=>{
  const selected=method.value;
