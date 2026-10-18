@@ -22,6 +22,28 @@ export const OFFICIAL_INDICATORS=Object.freeze([
 ]);
 const finite=n=>typeof n==="number"&&Number.isFinite(n);
 const round=n=>Math.round(n*1e6)/1e6;
+/** Governance-context series, not automatically a growth determinant. 2025 absent. */
+export function buildBpsPressFreedomContext(src){
+ if(src?.sources?.politics?.url!==BPS_POLITICS||src?.press_years?.join(",")!=="2020,2021,2022,2023,2024")
+  throw Error("BPS Politik press-freedom index year or provenance changed");
+ const panel=buildBpsOfficialPanel(src,{balanced:true});
+ const selected=new Set(panel.rows.map(r=>r.province));
+ const records=[];
+ for(const province of src.provinces.filter(p=>selected.has(p.name))){
+  if(!Array.isArray(province.press_freedom)||province.press_freedom.length!==5)throw Error("IKP source columns malformed");
+  for(let yr=2022;yr<=2024;yr++){
+   const value=province.press_freedom[src.press_years.indexOf(yr)];
+   if(!finite(value)||value<0||value>100)throw Error("IKP missing or outside 0-100 for "+province.name+" "+yr);
+   records.push({province:province.name,year:yr,press_freedom_ikp:value});
+  }
+ }
+ if(records.length!==96||new Set(records.map(r=>r.province)).size!==32)throw Error("IKP province-year sample mismatch");
+ return {publisher:"BPS (source: Dewan Pers)",source:BPS_POLITICS,scope:"governance-context-only",year_counts:{"2022":32,"2023":32,"2024":32},n:96,
+  missing_2025:true,not_a_causal_growth_control:true,
+  caution:"IKP index is an institutional context series; 2025 missing. Avoid automatic joining to 2025 and no causal investment claims.",
+  rows:records};
+}
+
 export function auditOfficialProvincialData(src,preview){
  const panel=buildBpsOfficialPanel(src,{balanced:true});
  const errors=[],warnings=[],details={};
@@ -54,6 +76,9 @@ export function auditOfficialProvincialData(src,preview){
    if(err>0.005)errors.push("2025 growth mismatch >0.005 percentage points: "+row.province);
   }
  }
+ let pressContext=null;
+ try{pressContext=buildBpsPressFreedomContext(src)}
+ catch(err){errors.push("Independent BPS IKP source audit failed: "+String(err.message).slice(0,160))}
  const extreme=panel.rows.filter(r=>Math.abs(r.real_grdp_growth_pct)>15).map(r=>({province:r.province,year:r.year,growth_pct:r.real_grdp_growth_pct}));
  if(extreme.length)warnings.push("Growth beyond ±15% is flagged for scrutiny, NOT deleted or mechanically labelled invalid.");
  warnings.push("2024 observations revised; 2025 preliminary — publication vintages affect stability.");
@@ -68,6 +93,7 @@ export function auditOfficialProvincialData(src,preview){
    excluded:panel.excluded_provinces,missing_policy:panel.missingness_policy},
   source_coverage:details,
   crosscheck:{sample_size:differences.length,max_abs_diff_pp:differences.length?round(Math.max(...differences.map(d=>d.absolute_diff_pp))):null,tolerance_pp:0.005},
+  governance_context:pressContext?{rows:pressContext.n,years:[2022,2023,2024],publisher:pressContext.publisher,source:pressContext.source,missing_2025:true,status:"context_only"}:null,
   review_queue:{extreme_growth:extreme,extreme_count:extreme.length},
   errors,warnings,
   sources:OFFICIAL_INDICATORS.map(({id,label,publisher,years,grain,readiness,source,units,role,rule})=>({id,label,publisher,years,grain,readiness,source,units,role,rule}))
