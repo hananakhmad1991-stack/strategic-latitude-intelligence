@@ -227,3 +227,22 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-bps-provenance strong{
 body.sli-research-brand #raAnalyticalWorkbench .ra-wb-bps-provenance p{
  color:#325945!important;font:12px/1.7 system-ui,sans-serif
 }
+
+
+/* Clear data-origin status next to the file input (native chooser stays empty for BPS source). */
+#raAnalyticalWorkbench .ra-wb-dataset-status{
+ display:block;margin:11px 0 13px;padding:11px 15px;border-radius:9px;
+ font:700 12px/1.65 system-ui,sans-serif;color:#395a70;
+ background:#f0f5f9;border:1px solid #d4e1ea
+}
+#raAnalyticalWorkbench .ra-wb-dataset-status[data-source="bps"]{
+ color:#285641;background:#eff8f1;border-color:#adcbb7;
+ border-left:4px solid #578b67
+}
+#raAnalyticalWorkbench .ra-wb-dataset-status[data-source="upload"]{
+ color:#21496a;background:#eef6fc;border-color:#b9d5ea;
+ border-left:4px solid #357da9
+}
+#raAnalyticalWorkbench .ra-wb-dataset-status[data-source="model"]{
+ color:#665126;background:#fdf8ed;border-color:#dfd0b1
+}
