@@ -321,6 +321,20 @@ function initPanels(root,prices,events,signals){
    }).filter(s=>s.points.length);
    const last=prices.latest_month||rows.at(-1).month;
    chart.append(graphLines(series,chosenEvents,signals,start,last,drawMode==="indexed",activeDate,chooseEvent));
+   if(window.SLIVisualExport){
+    window.SLIVisualExport.register(chart,{
+     getData:()=>{
+      const months=[...new Set(raw.flatMap(s=>s.points.map(p=>p.month)))].sort();
+      const dict=raw.map(s=>new Map(s.points.map(p=>[p.month,p.value])));
+      return {headers:["Month",...raw.map(s=>ITEMS[s.key][0]+" ("+(coverage[s.key]?.unit||"")+")")],
+       rows:months.map(m=>[m,...dict.map(map=>map.has(m)?map.get(m):"")]),kind:"verified-provider"};
+     },
+     getMeta:()=>({source:prices.source,sourceUrl:prices.source_url,
+      period:raw[0]?.points[0]?.month+"–"+prices.latest_month,
+      completeness:"Full published source observations for selected commodities; raw prices, not visual index values."})
+    });
+   }
+
    chart.append(el("p","sli-geo-timeline-meta",drawMode==="indexed"?
     tx("Index base = 100 at the first common observed month: ","Basis indeks = 100 pada bulan pertama yang sama: ")+common+
      tx(". Pre-baseline values are deliberately not plotted.",". Data sebelum basis sengaja tidak diplot."):
@@ -340,6 +354,12 @@ function initPanels(root,prices,events,signals){
     const sc=el("article","sli-geo-timeline-scatter");
     sc.append(el("h4",null,tx("Event-month indicator vs monthly returns · ","Indikator kejadian vs perubahan bulanan · ")+tx(ITEMS[focus.key][0],ITEMS[focus.key][1])),scatter(focus.points,chosenEvents));
     reports.append(eventPanel,sc);
+    if(window.SLIVisualExport)window.SLIVisualExport.register(sc,{
+     getData:()=>({headers:["Month","Price change (% MoM)","Curated event month"],
+      rows:returns(focus.points).map(r=>[r.month,r.change,chosenEvents.some(e=>month(e.date)===r.month)?1:0]),kind:"verified-provider"}),
+     getMeta:()=>({source:prices.source,sourceUrl:prices.source_url,period:start+"–"+prices.latest_month})
+    });
+
     return;
    }
    const info=el("article","sli-geo-timeline-interpretation");
@@ -363,6 +383,12 @@ function initPanels(root,prices,events,signals){
    const sc=el("article","sli-geo-timeline-scatter");
    sc.append(el("h4",null,tx("Monthly return vs event indicator · ","Perubahan bulanan vs indikator kejadian · ")+tx(ITEMS[focus.key][0],ITEMS[focus.key][1])),scatter(focus.points,chosenEvents));
    reports.append(info,sc);
+    if(window.SLIVisualExport)window.SLIVisualExport.register(sc,{
+     getData:()=>({headers:["Month","Price change (% MoM)","Curated event month"],
+      rows:returns(focus.points).map(r=>[r.month,r.change,chosenEvents.some(e=>month(e.date)===r.month)?1:0]),kind:"verified-provider"}),
+     getMeta:()=>({source:prices.source,sourceUrl:prices.source_url,period:start+"–"+prices.latest_month})
+    });
+
   }
   mode.addEventListener("change",()=>{
    if(mode.value==="single"){
