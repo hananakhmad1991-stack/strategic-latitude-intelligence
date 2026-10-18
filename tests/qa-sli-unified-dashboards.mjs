@@ -35,3 +35,11 @@ test("All public dashboards load one shared navigation and source features stay 
  assert.match(evidence,/id="raSourcesPanel"/);
  assert.match(evidence,/id="raExport"/);
 });
+
+test("All detailed specialist destinations remain visible in the shared sector explorer",()=>{
+ for(const path of ["ai-electricity-demand-forecast.html","ai-investment-geography.html","ai-project-grid-finance.html","indonesia-ai-compute-power.html","pln-regional-grid-baseline-2024.html","policy-impact-evaluation.html","ruplt-investor-digitization.html","index.html#about","index.html#methodology"]){
+  assert.ok(nav.includes(path),path);
+ }
+ assert.match(nav,/\|\|'detail'/);
+ assert.match(nav,/document\.title/);
+});

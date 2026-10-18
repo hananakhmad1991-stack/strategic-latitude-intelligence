@@ -64,9 +64,9 @@ body.sli-dashboard-unified .sli-platform-explorer[open] .sli-platform-sector-men
 
 /* For index.html, remove legacy 255px sidebar only on detailed SPA sections.
    All original sidebar links remain reachable in Explore Data's complete module index. */
-body.sli-dashboard-unified:has(.layout>.sidebar) .layout{display:block!important;min-height:0}
-body.sli-dashboard-unified:has(.layout>.sidebar) .layout>.sidebar{display:none!important}
-body.sli-dashboard-unified:has(.layout>.sidebar) .layout>.main{width:100%!important;max-width:1490px!important;margin:auto!important;padding:20px clamp(15px,2.6vw,39px) 60px!important}
+body.sli-dashboard-unified .layout{display:block!important;min-height:0}
+body.sli-dashboard-unified .layout>.sidebar{display:none!important}
+body.sli-dashboard-unified .layout>.main{width:100%!important;max-width:1490px!important;margin:auto!important;padding:20px clamp(15px,2.6vw,39px) 60px!important}
 body.sli-dashboard-unified .layout>.main>.sli-portal-mast{display:none!important}
 body.sli-dashboard-unified .layout>.main>.top{margin-bottom:17px}
 body.sli-dashboard-unified .layout>.main>.top h1{font-size:clamp(26px,3vw,34px)}
@@ -92,3 +92,7 @@ body.sli-dashboard-unified .sli-data-guide{margin:0 0 15px}
  body.sli-dashboard-unified .sli-explore-menu{margin-left:auto}
 }
 @media(max-width:410px){.sli-platform-sector-menu{grid-template-columns:1fr;top:112px}.sli-platform-brand-name strong{font-size:9px}}
+
+/* Consistent hero treatment for standalone specialist pages while retaining their content. */
+body.sli-dashboard-unified > header:not(.sli-platform-mast){background:linear-gradient(120deg,#142e45,#0e2236)!important;border-bottom:1px solid #304b62!important;padding-top:25px!important;padding-bottom:23px!important}
+body.sli-dashboard-unified > header:not(.sli-platform-mast) h1{font-family:Georgia,"Times New Roman",serif;color:#f1f5f8!important}

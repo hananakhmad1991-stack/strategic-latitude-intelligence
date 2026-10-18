@@ -52,10 +52,10 @@ const related={
  glossary:['guide','freshness'],freshness:['glossary','guide'],methodology:['glossary','guide','freshness'],about:['guide','overview'],guide:['overview','glossary','freshness']
 };
 const path=location.pathname.split('/').pop()||'index.html';
-const page=()=>path==='index.html'?(modules[location.hash.slice(1)]?location.hash.slice(1):'overview'):(Object.keys(modules).find(id=>modules[id][2].split('#')[0]===path)||'guide');
+const page=()=>path==='index.html'?(modules[location.hash.slice(1)]?location.hash.slice(1):'overview'):(Object.keys(modules).find(id=>modules[id][2].split('#')[0]===path)||'detail');
 const lang=()=>window.SLIi18n?.language==='id'||document.documentElement.lang==='id'?'id':'en';
 const text=(en,id)=>lang()==='id'?id:en;
-const label=id=>modules[id]?.[lang()==='id'?1:0]||id;
+const label=id=>id==='detail'?(document.title||document.querySelector('h1')?.textContent||'SLI Dashboard').split('|')[0].trim().slice(0,90):(modules[id]?.[lang()==='id'?1:0]||id);
 const href=id=>'./'+modules[id][2];
 function node(tag,classes,txt){const n=document.createElement(tag);if(classes)n.className=classes;if(txt)n.textContent=txt;return n}
 function link(id,cls){const a=node('a',cls,label(id));a.href=href(id);return a}
@@ -92,6 +92,39 @@ function renderPlatformMast(){
  for(const group of groups){
   const col=node('div','sli-platform-sector-group');col.append(node('h3','',text(group[0],group[1])));
   for(const id of group.slice(2)){const a=link(id);if(id===current)a.setAttribute('aria-current','page');col.append(a)}
+  sectors.append(col);
+ }
+ // Direct routes for the remaining specialist pages; none of the full datasets are removed.
+ const specialist=[
+  ['AI project & compute',[
+    ['Electricity demand forecast','ai-electricity-demand-forecast.html'],
+    ['AI investment geography','ai-investment-geography.html'],
+    ['AI investors & partner projects','ai-investor-layer.html'],
+    ['Project grid & finance','ai-project-grid-finance.html'],
+    ['Regional grid opportunities','ai-regional-grid-opportunities.html'],
+    ['AI compute & power','indonesia-ai-compute-power.html'],
+    ['International AI benchmarks','indonesia-ai-global-benchmarks.html'],
+    ['AI evidence inventory','indonesia-ai-source-inventory.html']]],
+  ['Energy & investment detail',[
+    ['Investment navigator','indonesia-investment-navigator.html'],
+    ['Regional PLN grid baseline','pln-regional-grid-baseline-2024.html'],
+    ['RUPTL source intelligence','pln-ruptl-2025-2034-source-intelligence.html'],
+    ['RUPTL investor digitization','ruplt-investor-digitization.html']]],
+  ['Policy & research detail',[
+    ['Policy impact evaluation','policy-impact-evaluation.html'],
+    ['Sector regulatory impact','policy-sector-ria.html'],
+    ['Research evidence preview','sli-research-evidence-preview.html'],
+    ['SLI editorial background','index.html#about'],
+    ['Research methodology','index.html#methodology']]]
+ ];
+ for(const [heading,items] of specialist){
+  const col=node('div','sli-platform-sector-group');
+  col.append(node('h3','',heading));
+  for(const [title,url] of items){
+   const a=node('a','',title);a.href='./'+url;
+   if(path===url)a.setAttribute('aria-current','page');
+   col.append(a);
+  }
   sectors.append(col);
  }
  explorer.append(sectors);
