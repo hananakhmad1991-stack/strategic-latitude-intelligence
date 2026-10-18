@@ -148,9 +148,9 @@ export default{
   let answer;
   try{
    const res=await fetch("https://api.openai.com/v1/responses",{method:"POST",headers:{"authorization":"Bearer "+env.OPENAI_API_KEY,"content-type":"application/json"},body:JSON.stringify(params)});
-   if(!res.ok)return send(502,{error:"model_request_failed"},origin);
+   if(!res.ok)return send(502,{error:"model_request_failed",reason:res.status===429?"provider_rate_or_quota_limit":res.status===400?"provider_rejected_request":res.status===401?"provider_credential_rejected":"provider_http_"+res.status},origin);
    const json=await res.json();
-   if(json.status!=="completed")return send(502,{error:"model_response_incomplete",reason:json.incomplete_details?.reason||"unknown"},origin);
+   if(json.status!=="completed")return send(502,{error:"model_response_incomplete",reason:json.incomplete_details?.reason||json.status||"unknown"},origin);
    answer=extractModelText(json);
   }catch{return send(502,{error:"model_unreachable"},origin)}
   if(!(evidence.length?verifyResearchAnswer(answer,evidence):verifyMethodOnlyAnswer(answer)))
