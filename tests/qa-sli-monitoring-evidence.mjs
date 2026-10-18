@@ -1,7 +1,7 @@
 import {test} from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {normalizeMonitoringEvidence,fetchMonitoringEvidence} from "../research-api/src/monitoring-evidence.mjs";
+import {normalizeMonitoringEvidence,fetchMonitoringEvidence,selectMonitoringNewsEvidence} from "../research-api/src/monitoring-evidence.mjs";
 import {selectResearchEvidence} from "../research-api/src/assistant-core.mjs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const make=(publisher,title,sector="energy",n=1)=>({
@@ -22,6 +22,10 @@ test("Reuters and CGTN are admitted without preapproval but never promoted to ch
  assert.match(all[0].text,/reported in a news headline/);
  assert.match(all[0].text,/not article-body or independent event verification/);
  assert.equal(all[1].publisher,"CGTN");
+ const geopolitical=selectMonitoringNewsEvidence(all,"Apa perkembangan terbaru Selat Hormuz?",[],4);
+ assert.equal(geopolitical[0]?.publisher,"Reuters","Cross-sector Hormuz search must include energy/shipping media even if question is geopolitical");
+ const aiFollowup=selectMonitoringNewsEvidence(all,"Perdalam berita tadi",[{role:"user",content:"CGTN AI data center expansion and cooperation"}],4);
+ assert.equal(aiFollowup[0]?.publisher,"CGTN");
  const matches=selectResearchEvidence(all,"Reuters reports closure of Hormuz oil tanker shipping lane",[],"pro",4);
  assert.equal(matches[0]?.publisher,"Reuters");
  const ai=selectResearchEvidence(all,"Chinese AI data center cooperation",[],"pro",4);
