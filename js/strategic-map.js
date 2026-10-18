@@ -709,7 +709,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    const initial=node("option",null,label("Select a specific asset","Pilih aset tertentu"));initial.value="";select.append(initial);
    for(const r of chosen){const option=node("option",null,r.name+" · "+(r.operator||r.region||r.id));option.value=r.id;select.append(option)}
    select.value=selected?.id||"";
-   select.addEventListener("change",()=>{selectedRecordId=select.value||null;renderAssetInsight(chosen)});
+   select.addEventListener("change",()=>{selectedRecordId=select.value||null;draw()});
    picker.append(select);insight.append(picker);
    if(!selected){insight.append(node("p","map-insight-hint",label(
     "A map cluster can represent multiple independent facilities. Select an asset above to view its specific source and lesson; the records below remain available.",
@@ -759,7 +759,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    const i=chosen.findIndex(r=>r.id===selected.id);
    for(const [direction,caption] of [[-1,label("◀ Previous record","◀ Catatan sebelumnya")],[1,label("Next record ▶","Catatan berikutnya ▶")]]){
     const button=node("button","map-btn",caption);button.type="button";button.disabled=i+direction<0||i+direction>=chosen.length;
-    button.addEventListener("click",()=>{selectedRecordId=chosen[i+direction].id;renderAssetInsight(chosen)});
+    button.addEventListener("click",()=>{selectedRecordId=chosen[i+direction].id;draw()});
     nav.append(button);
    }
    card.append(nav);
@@ -885,7 +885,6 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
   renderAssetInsight(chosen);
   const oldScroll=list.scrollTop;
   list.replaceChildren();
-  list.scrollTop=oldScroll;
   if(!chosen.length)list.append(node("p","map-muted",label("No records match these filters or this province. Choose another province or reset filters.","Tidak ada catatan sesuai filter atau provinsi ini. Pilih provinsi lain atau reset filter.")));
   let lastGroup="",lastType="";
   for(const r of display){
@@ -897,13 +896,13 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
     list.append(node("div","map-type-label",assetLabel(r.assetType)));
     lastType=r.assetType;
    }
-   const card=node("article","map-list-item"+(selectedRecordId===r.id?" map-list-item-selected":""));
+   const card=node("article","map-list-item");
    card.tabIndex=0;
    card.setAttribute("role","button");
    card.setAttribute("aria-label",label("Open asset insight: ","Buka analisis aset: ")+r.name);
    card.setAttribute("aria-pressed",String(selectedRecordId===r.id));
-   const inspect=()=>{selectedRecordId=r.id;renderAssetInsight(chosen);side.scrollTop=0;};
-   card.addEventListener("click",e=>{if(e.target.closest("a,button,select"))return;inspect()});
+   const inspect=()=>{selectedRecordId=r.id;list.scrollTop=0;draw();side.scrollTop=0;};
+   card.addEventListener("click",e=>{if(e.target?.closest?.("a,button,select"))return;inspect()});
    card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();inspect()}});
 
    const layerName=assetLabel(r.assetType);
@@ -937,6 +936,7 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
    list.append(card);
   }
   list.append(node("p","map-muted",label("All matching records shown: ","Semua catatan yang cocok ditampilkan: ")+chosen.length+" · "+label("scroll this list or filter to browse","gulir daftar atau gunakan filter untuk menjelajah")));
+  list.scrollTop=oldScroll;
   countsText.textContent=label("For this selection: ","Untuk pilihan ini: ")+base.length+label(" records, "," catatan, ")+mapped.length+label(" mapped, "," terpetakan, ")+unmapped+label(" unlocated. The map does not quantify realized investment value."," tanpa lokasi. Peta tidak menghitung total realisasi investasi.");
  }
  kind.addEventListener("change",()=>{selectedRecordId=null;currentPoint=null;currentKind=kind.value;currentSector="all";currentType="all";currentStage="all";currentProvince=null;currentKepriCluster=null;provinceSelect.value="all";filtersRebuild();draw()});
