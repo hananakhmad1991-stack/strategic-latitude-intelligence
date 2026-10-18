@@ -13,7 +13,7 @@ import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
 import {fetchReviewedSecondaryArticles} from "./secondary-news.mjs";
-import {fetchMonitoringEvidence} from "./monitoring-evidence.mjs";
+import {fetchMonitoringEvidence,selectMonitoringNewsEvidence} from "./monitoring-evidence.mjs";
 import {validateOwnerAttachments,buildOwnerFileParts} from "../../js/sli-investor-chat.mjs";
 
 const HEADERS={"content-type":"application/json;charset=utf-8","cache-control":"no-store,private","x-content-type-options":"nosniff","vary":"Origin"};
@@ -126,10 +126,10 @@ export default{
   if(!rate?.success)return send(429,{error:"owner_test_rate_limit"},origin);
   // Admit ALL attributed publishers from curated SLI monitoring snapshots as SECONDARY
   // evidence for the reports they published, NOT definitive proof of the event.
-  const primaryEvidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",8);
+  const primaryEvidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",9);
   const [monitored,reviewed]=await Promise.all([fetchMonitoringEvidence(),fetchReviewedSecondaryArticles()]);
   const reviewedEvidence=selectResearchEvidence(reviewed.articles,payload.question,payload.history,"pro",1);
-  const monitoringEvidence=selectResearchEvidence(monitored.documents,payload.question,payload.history,"pro",reviewedEvidence.length?3:4);
+  const monitoringEvidence=selectMonitoringNewsEvidence(monitored.documents,payload.question,payload.history,reviewedEvidence.length?3:4);
   const secondaryEvidence=[...reviewedEvidence,...monitoringEvidence];
   const evidence=[...primaryEvidence,...secondaryEvidence];
   // No source match does not prevent academic methodology assistance.
@@ -142,7 +142,7 @@ export default{
   const monitoringText=monitoringPromptContext(monitoring);
   if(monitoringText){
    params.input[0].content.push({type:"input_text",text:monitoringText});
-   params.instructions+="\nWhen using monitoring leads distinguish headline discovery from official energy statistics and NEVER cite it as fact. Keep findings section grounded in numbered official sources. The user can inspect each monitor link separately.";
+   params.instructions+="\nStandalone, UNCITED monitoring leads are discovery context only. News records with numbered [n] citations in EVIDENCE are permitted as attributed secondary reports. Keep factual quantitative figures grounded in original records; when multiple outlets disagree, compare their dated coverage without declaring any side automatically correct.";
   }
   if(ownerFiles.length){
    // Never include the binary blob as chat history or store in public SLI corpus.
