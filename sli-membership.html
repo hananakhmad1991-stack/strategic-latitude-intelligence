@@ -105,7 +105,7 @@ footer{border-top:1px solid var(--line);margin-top:34px;padding-top:17px;color:#
 <script>
 (()=>{'use strict';const button=document.getElementById('sliMembershipLanguage');let language='id';function render(){document.documentElement.lang=language;for(const el of document.querySelectorAll('[data-en][data-id]'))el.textContent=el.dataset[language];button.textContent=language==='id'?'ID / EN':'EN / ID';window.SLIi18n={language};document.dispatchEvent(new CustomEvent('sli:languagechange'))}button.addEventListener('click',()=>{language=language==='id'?'en':'id';render()});render()})();
 </script>
-<script defer src="./js/sli-navigation.js?v=20261018-unified1"></script>
+<script defer src="./js/sli-navigation.js?v=20261018-source1"></script>
 <script defer src="./js/sli-shared-appendix.js?v=20261017-membership1"></script>
 <script defer src="./js/sli-public-usability.js"></script>
 </body></html>

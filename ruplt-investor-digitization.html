@@ -19,4 +19,4 @@ Promise.all([fetch('./data/ruplt-2025-2034-partial-source-intelligence.json',{ca
 ['province','damstatus','search','dedup'].forEach(k=>$(k).addEventListener('input',renderPV));$('amiend').addEventListener('change',renderAMI);
 $('exportpv').onclick=()=>csv('SLI_RUPTL_109_reservoirs_filtered.csv',[['source_row','reservoir','province','dam_status','area_ha','potential_mw','pdf_page'],...solarRows().map(x=>[x.source_row,x.reservoir,x.province,x.dam_status,x.area_ha,x.potential_mw,x.pdf_page])]);
 $('exportami').onclick=()=>csv('SLI_RUPTL_AMI_2022-2045_as_published.csv',[['year','annual_target','cumulative_target','source_pdf_page','quality'],...plan.ami_rollout_table_2_4.rows.map(x=>[x.year,x.annual_target,x.cumulative_target,x.source_pdf_page,x.quality])]);
-</script><script defer src="./js/sli-navigation.js?v=20261018-unified1"></script></body></html>
+</script><script defer src="./js/sli-navigation.js?v=20261018-source1"></script></body></html>
