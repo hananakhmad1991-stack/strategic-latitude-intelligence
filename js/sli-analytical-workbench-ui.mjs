@@ -356,6 +356,11 @@ function renderPanelStability(stability){
  const subtitle=document.createElement("p");
  subtitle.textContent=id?"SLI menghitung ulang model saat satu entitas atau satu tahun dikeluarkan secara bergantian. Hasil membandingkan perubahan koefisien; ini bukan pembuktian sebab-akibat.":"The same estimator is refitted after excluding one entity/year at a time. These are diagnostic comparisons, not causal evidence.";
  section.append(subtitle);
+ if(stability.decision_readiness==="not_robust_for_investment_inference"){
+  const warning=document.createElement("p");warning.className="ra-wb-robustness-warning";warning.setAttribute("role","status");
+  warning.textContent="HASIL TIDAK STABIL — Jangan menyimpulkan dampak atau arah hubungan ekonomi untuk keputusan investasi berdasarkan spesifikasi ini. Bandingkan perubahan tanda, interval kepercayaan, serta ketergantungan pada tahun/provinsi.";
+  section.append(warning);
+ }
  const showTable=(title,part)=>{
   const h=document.createElement("h4");h.textContent=title;section.append(h);
   if(!part?.available){const p=document.createElement("p");p.textContent=part?.note||"Uji tidak tersedia";section.append(p);return}
@@ -365,19 +370,41 @@ function renderPanelStability(stability){
   const scroll=document.createElement("div");scroll.className="ra-wb-table-scroller";
   const table=document.createElement("table");
   const tr=document.createElement("tr");
-  for(const head of ["X / Variabel","Baseline β","Min β","Max β","Maks Δ (%)","Paling berpengaruh","Status"]){const th=document.createElement("th");th.textContent=head;tr.append(th)}
+  for(const head of ["X / Variabel","Baseline β","Min β","Max β","Maks |Δβ|","Maks Δ (%)","Ganti tanda","Paling berpengaruh","Status"]){const th=document.createElement("th");th.textContent=head;tr.append(th)}
   table.append(tr);
   for(const m of part.metrics||[]){
-   const vals=[m.name,m.baseline,m.min,m.max,m.max_relative_shift_pct===null?"n/a":m.max_relative_shift_pct,m.most_influential_exclusion||"—",
+   const vals=[m.name,m.baseline,m.min,m.max,m.max_absolute_shift??"n/a",
+    m.max_relative_shift_pct===null?"n/a":m.max_relative_shift_pct,
+    m.sign_reversals??"n/a",m.most_influential_exclusion||"—",
     m.sign_reversals>0?"Perubahan tanda":m.sensitivity==="high"?"Sensitif":m.sensitivity==="moderate"?"Perlu perhatian":"Relatif stabil"];
    const r=document.createElement("tr");
-   vals.forEach((value,i)=>{const td=document.createElement("td");td.textContent=String(value??"—");if(i===6&&["Sensitif","Perubahan tanda"].includes(value))td.className="ra-wb-stability-flag";r.append(td)});
+   vals.forEach((value,i)=>{const td=document.createElement("td");td.textContent=String(value??"—");if(i===8&&["Sensitif","Perubahan tanda"].includes(value))td.className="ra-wb-stability-flag";r.append(td)});
    table.append(r);
   }scroll.append(table);section.append(scroll);
+  if((part.metrics||[]).some(m=>m.relative_change_near_zero_denominator)){
+   const denominatorNote=document.createElement("p");denominatorNote.className="ra-wb-stability-meta";
+   denominatorNote.textContent="Catatan: persen perubahan terhadap koefisien awal mendekati nol dapat terlihat sangat besar. Bandingkan kolom Maks |Δβ| (perubahan absolut) dan jumlah pergantian tanda.";
+   section.append(denominatorNote);
+  }
   if(part.failures.length){const fail=document.createElement("small");fail.textContent="Some refits could not be estimated: "+part.failures.map(x=>x.excluded+": "+x.reason).slice(0,3).join(" · ");section.append(fail)}
  };
  showTable(id?"Keluarkan satu entitas (LOEO)":"Leave-one-entity-out",stability.leave_one_entity_out);
  showTable(id?"Keluarkan satu tahun (LOYO)":"Leave-one-year-out",stability.leave_one_year_out);
+ if(officialBps&&stability.baseline_entity_count===32){
+  const context=document.createElement("p");context.className="ra-wb-stability-evidence";
+  const names=new Set((stability.leave_one_entity_out?.metrics||[]).map(m=>m.most_influential_exclusion));
+  const critical2025=(stability.leave_one_year_out?.metrics||[]).some(m=>m.most_influential_exclusion==="2025");
+  context.textContent=(names.has("Maluku Utara")?
+   "KONTEKS RESMI: Maluku Utara tumbuh 34,17% selama 2025 menurut BPS, dipimpin pertumbuhan industri pengolahan 62,64%. Observasi ini harus diuji secara sektoral, bukan otomatis dihapus sebagai error. ":"")+
+   (critical2025?"Tahun 2025 (angka PDRB sementara) berpengaruh pada koefisien. Empat tahun observasi terlalu pendek untuk kesimpulan investasi yang stabil. ":"")+
+   "Panel ini mengukur asosiasi ekonomi, bukan dampak hilirisasi nikel atau multiplier investasi.";
+  section.append(context);
+  if(names.has("Maluku Utara")){
+   const cite=document.createElement("a");cite.href="https://malut.bps.go.id/id/pressrelease/2026/02/05/843/ekonomi-maluku-utara-triwulan-iv-2025-tumbuh-29-81-persen-y-on-y-.html";
+   cite.target="_blank";cite.rel="noopener noreferrer";cite.textContent="BPS Maluku Utara · Pertumbuhan 2025 ↗";section.append(cite);
+  }
+ }
+
  const other=stability.alternative_time_specification;
  const h=document.createElement("h4");h.textContent=id?"Perbandingan spesifikasi efek waktu":"Alternative time fixed-effects specification";section.append(h);
  if(other?.available){
