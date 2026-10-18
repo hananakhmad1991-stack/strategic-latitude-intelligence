@@ -67,7 +67,13 @@ function chart(root,q){
  if(/^https:\/\//.test(q.source_url||""))provenance.append(link(q.source_url,lang("Original price source ↗","Sumber harga asli ↗")));
  if(q.tier==="monthly_reference")provenance.append(el("span",null,lang(" · Period average, not live"," · Rata-rata periode, bukan live")));
  if(q.availability==="last_good_source_unavailable")provenance.append(el("span",null,lang(" · Last available quote, upstream unavailable"," · Harga terakhir, sumber gagal")));
+
  root.append(svg,tip,provenance);
+ if(window.SLIVisualExport)window.SLIVisualExport.register(svg,{
+  getData:()=>({headers:["Observed at (UTC)","Price ("+q.unit+")"],rows:data.map(x=>[x.observed_at_utc,x.value]),kind:"verified-provider"}),
+  getMeta:()=>({source:q.market||q.name||"Source-linked commodity market",sourceUrl:q.source_url||"",period:data[0]?.observed_at_utc+" – "+data.at(-1)?.observed_at_utc,completeness:"Full source-quoted history shown on chart"})
+ });
+
 }
 function card(q,onSelect){
  const node=el("button","cp-quote-card");node.type="button";
