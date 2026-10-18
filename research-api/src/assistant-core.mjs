@@ -208,7 +208,7 @@ export function selectResearchEvidence(documents,question,history=[],tier="pro",
   /ketahanan energi|energy security|energy resilience|pasokan energi nasional|national energy supply/i.test(scopedQuery);
  if(broadNationalEnergy){
   const priority=[
-   "sli_energy_official_security_index_2025","sli_energy_ike_4a_availability","sli_energy_ike_4a_accessibility","sli_energy_ike_4a_affordability","sli_energy_ike_4a_acceptability",
+   "sli_energy_official_security_index_2025",
    "sli_energy_oil_production","sli_energy_gas_production",
    "sli_energy_fuel_quota_pertalite","sli_energy_subsidy_compensation_2026",
    "sli_energy_coal_production","sli_energy_coal_dmo",
