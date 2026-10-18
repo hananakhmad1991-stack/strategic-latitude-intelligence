@@ -58,6 +58,10 @@ on:
       - 'data/energy-transition.json'
       - 'data/daily-energy-assessment.json'
       - 'tests/qa-sli-research-quality.mjs'
+      - 'sli-interactive-analytics.html'
+      - 'js/sli-interactive-analytics.js'
+      - 'css/sli-interactive-analytics.css'
+      - 'tests/qa-sli-interactive-analytics.mjs'
       - 'js/sli-research-visuals.js'
       - 'tests/qa-sli-research-visuals.mjs'
       - 'tests/qa-sli-research-conversation.mjs'
@@ -78,6 +82,7 @@ jobs:
           node-version: '22'
       - name: Check research JavaScript syntax
         run: |
+          node --check js/sli-interactive-analytics.js
           node --check js/sli-research-assistant.js
           node --check js/sli-analytical-core.mjs
           node --check js/sli-regional-method-engines.mjs
@@ -109,7 +114,7 @@ jobs:
       - name: Install DOM smoke-test runner
         run: npm install --no-save --no-audit --no-fund jsdom@26
       - name: Validate open evidence, secure planned RAG and traceability
-        run: node --test tests/qa-sli-mineral-corpus.mjs tests/qa-sli-source-verification.mjs tests/qa-sli-report-audit.mjs tests/qa-sli-hybrid-retrieval.mjs tests/qa-sli-evidence-bridge.mjs tests/qa-sli-regional-method-engines.mjs tests/qa-sli-research-quality.mjs tests/qa-sli-research-questionnaire.mjs tests/qa-sli-investor-chat.mjs tests/qa-sli-structural-economy.mjs tests/qa-sli-provincial-data-integrity.mjs tests/qa-sli-official-bps-panel.mjs tests/qa-sli-econometrics.mjs tests/qa-sli-methodology-workbench.mjs tests/qa-sli-research-brand.mjs tests/qa-sli-research-visuals.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs tests/qa-sli-content-quality.mjs
+        run: node --test tests/qa-sli-interactive-analytics.mjs tests/qa-sli-mineral-corpus.mjs tests/qa-sli-source-verification.mjs tests/qa-sli-report-audit.mjs tests/qa-sli-hybrid-retrieval.mjs tests/qa-sli-evidence-bridge.mjs tests/qa-sli-regional-method-engines.mjs tests/qa-sli-research-quality.mjs tests/qa-sli-research-questionnaire.mjs tests/qa-sli-investor-chat.mjs tests/qa-sli-structural-economy.mjs tests/qa-sli-provincial-data-integrity.mjs tests/qa-sli-official-bps-panel.mjs tests/qa-sli-econometrics.mjs tests/qa-sli-methodology-workbench.mjs tests/qa-sli-research-brand.mjs tests/qa-sli-research-visuals.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-research-conversation.mjs tests/qa-sli-research-ai.mjs tests/qa-sli-research-analysis.mjs tests/qa-sli-content-quality.mjs
       - name: Browser-like econometrics integration smoke
         run: node --test tests/qa-sli-econometrics-ui.mjs
       - uses: actions/setup-python@v5
