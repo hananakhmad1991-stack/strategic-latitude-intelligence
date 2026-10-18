@@ -12,6 +12,7 @@ on:
       - 'js/sli-policy-chapter-insights.js'
       - 'css/sli-policy-chapter-insights.css'
       - 'tests/qa-sli-policy-chapters.mjs'
+      - 'tests/qa-sli-policy-chapters-runtime.mjs'
       - 'data/sli-policy-regulatory-graph-2026.json'
       - 'data/sli-public-policy-evaluation-2026.json'
       - 'data/sli-sector-regulatory-ria-deepdives.json'
@@ -83,6 +84,7 @@ jobs:
           node tests/qa-research-dashboard.mjs
           node --check js/sli-policy-chapter-insights.js
           node --test tests/qa-sli-policy-chapters.mjs
+          node --test tests/qa-sli-policy-chapters-runtime.mjs
           node --check js/komdigi-digital-2025.js
           node tests/qa-komdigi-digital-2025.mjs
           node --check js/site-search.js
