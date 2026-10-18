@@ -39,7 +39,7 @@ function render(){
  let records=Object.values(d.watched_law_records||{});
  html+=records.length?records.map(s=>'<div class="selectrow"><strong><a href="'+e(s.source_url)+'" target="_blank" rel="noopener noreferrer">'+e(s.reference)+'</a></strong> · <span class="chip">'+e(s.health||'unknown')+'</span><div class="mini">'+e((s.latest_candidate_review||'').replaceAll('_',' '))+'</div></div>').join(''):'<p class="mini">Belum ada pemindaian halaman langsung tersimpan.</p>';
  html+='</div></div>';
- html+='<p class="mini">Fakta legal tetap merujuk ke register sumber resmi. SLI tidak mengubah otomatis status UU/PP/Perda ketika menemukan headline atau perubahan metadata. <a href="./data/regulatory-monitor.json">Unduh snapshot audit JSON ↗</a>. <a href="./data/regulatory-monitor-sources.json">Daftar sumber dan interval pemindaian ↗</a>.</p>';
+ html+='<p class="mini">Fakta legal tetap merujuk ke register sumber resmi. SLI tidak mengubah otomatis status UU/PP/Perda ketika menemukan headline atau perubahan metadata. <a href="./sli-source-viewer.html?dataset=regulatory-monitor.json">Sumber monitoring &amp; metodologi SLI ↗</a>. <a href="./sli-source-viewer.html?dataset=regulatory-monitor-sources.json">Daftar sumber &amp; jadwal pemeriksaan ↗</a>.</p>';
  root.innerHTML=html;
  document.getElementById('policy-monitor-group').onchange=x=>{groupFilter=x.target.value;render()};
  document.getElementById('policy-monitor-sector').onchange=x=>{selectedSector=x.target.value;render()};
