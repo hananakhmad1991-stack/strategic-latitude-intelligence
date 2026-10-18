@@ -3,6 +3,7 @@ import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns,pane
 import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs?v=20261018-econ12";
 import {buildBpsOfficialPanel,BPS_PANEL_META} from "./sli-bps-official-panel.mjs?v=20261018-bps3";
 import {auditOfficialProvincialData} from "./sli-provincial-data-integrity.mjs?v=20261018-audit1";
+import {structuralEconomyEvidence} from "./sli-structural-economy.mjs?v=20261018-struct1";
 const $=id=>document.getElementById(id);
 const box=document.createElement("section");
 box.id="raAnalyticalWorkbench";box.className="sli-ra-method-workbench";
@@ -23,10 +24,13 @@ box.prepend(evidenceOptions);
 const quality=document.createElement("section");
 quality.id="raOfficialDataQA";quality.className="ra-wb-quality";quality.hidden=true;
 evidenceOptions.insertAdjacentElement("afterend",quality);
+const structuralSection=document.createElement("section");
+structuralSection.id="raStructuralEconomy";structuralSection.className="ra-wb-structural-economy";structuralSection.hidden=true;
+quality.insertAdjacentElement("afterend",structuralSection);
 const anchor=$("raOwnerPanel");anchor?.parentNode?.insertBefore(box,anchor);
 
 const method=$("raMethod"),datafile=$("raDataFile"),x=$("raPredictor"),y=$("raOutcome"),detail=$("raMethodInfo"),result=$("raModelResult"),varGroup=$("raVariables"),consent=$("raDataConsent");
-let data=null,model=null,filename="",last=null,officialBps=null;
+let data=null,model=null,filename="",last=null,officialBps=null,structuralLens=null;
 function renderOfficialQuality(audit){
  quality.replaceChildren();quality.hidden=false;
  const h=document.createElement("h3");h.textContent="SLI Data Quality & Source Readiness";quality.append(h);
@@ -70,6 +74,77 @@ function renderOfficialQuality(audit){
   else td.textContent="Belum ada sumber tervalidasi di SLI";
   tr.append(td);table.append(tr);
  }scroller.append(table);details.append(scroller);quality.append(details);
+}
+
+function renderStructuralEconomy(lens){
+ structuralSection.replaceChildren();structuralSection.hidden=false;
+ const head=document.createElement("h3");head.textContent="SLI Structural Economy Lab · Maluku Utara";structuralSection.append(head);
+ if(!lens){
+  const text=document.createElement("p");text.textContent="Sumber struktur industri belum dapat diverifikasi/dimuat. Baseline regresi BPS tetap dapat dipakai, tetapi analisis sektoral tidak tersedia. Jangan menganggap data industri sudah lengkap.";
+  structuralSection.append(text);return;
+ }
+ const banner=document.createElement("p");banner.className="ra-wb-structural-gate";
+ banner.textContent="STATUS: ANALISIS DESKRIPTIF · Panel manufaktur historis belum siap untuk regresi. Jangan menyamakan pertumbuhan industri dengan kontribusi industri terhadap PDRB.";
+ structuralSection.append(banner);
+ const metrics=document.createElement("div");metrics.className="ra-wb-structural-metrics";
+ for(const [title,val,note] of [
+  ["Pertumbuhan Maluku Utara 2025",lens.latest.malut_real_grdp_growth_pct+"%","PDRB riil · data BPS"],
+  ["Median 32 provinsi 2025",lens.latest.province_median_real_growth_pct+"%","Median tidak tertimbang"],
+  ["Pertumbuhan industri pengolahan",lens.latest.manufacturing_real_growth_pct+"%","Laju sektor 2025 · BUKAN pangsa industri"],
+  ["Pertumbuhan ekspor barang dan jasa",lens.latest.export_goods_services_growth_pct+"%","Laju komponen pengeluaran 2025"]
+ ]){
+  const item=document.createElement("div");item.className="ra-wb-structural-metric";
+  const titleEl=document.createElement("span");titleEl.textContent=title;
+  const valueEl=document.createElement("strong");valueEl.textContent=val;
+  const noteEl=document.createElement("small");noteEl.textContent=note;
+  item.append(titleEl,valueEl,noteEl);metrics.append(item);
+ }
+ structuralSection.append(metrics);
+ const h=document.createElement("h4");h.textContent="Pembanding pertumbuhan riil 2022–2025";structuralSection.append(h);
+ const tableScroll=document.createElement("div");tableScroll.className="ra-wb-table-scroller";
+ const table=document.createElement("table");
+ const row=document.createElement("tr");
+ for(const head of ["Tahun","Maluku Utara (%)","Median 32 provinsi (%)","Selisih (pp)","Peringkat pertumbuhan"]){
+  const th=document.createElement("th");th.textContent=head;row.append(th);
+ }table.append(row);
+ for(const r of lens.yearSeries){
+  const tr=document.createElement("tr");
+  for(const v of [r.year,r.malut_real_grdp_growth_pct,r.province_median_real_growth_pct,r.malut_minus_median_pp,r.rank_descending+" / 32"]){
+   const td=document.createElement("td");td.textContent=String(v);tr.append(td);
+  }
+  table.append(tr);
+ }tableScroll.append(table);structuralSection.append(tableScroll);
+ const synthesis=document.createElement("div");synthesis.className="ra-wb-structural-synthesis";
+ for(const sentence of lens.synthesis){const p=document.createElement("p");p.textContent=sentence;synthesis.append(p)}
+ structuralSection.append(synthesis);
+ const sources=document.createElement("div");sources.className="ra-wb-structural-source-links";
+ const link=document.createElement("a");link.href=lens.latest.source;link.target="_blank";link.rel="noopener noreferrer";
+ link.textContent="BPS Maluku Utara · Rilis pertumbuhan 2025 ↗";sources.append(link);structuralSection.append(sources);
+ const facilities=document.createElement("details");facilities.className="ra-wb-structural-details";
+ const summary=document.createElement("summary");summary.textContent="Contoh fasilitas hilirisasi dalam dossier SLI ("+lens.facilityExamples.length+" referensi, bukan jumlah seluruh pabrik)";facilities.append(summary);
+ if(lens.facilityExamples.length){
+  const ul=document.createElement("ul");
+  for(const f of lens.facilityExamples){
+   const li=document.createElement("li");
+   const src=document.createElement("a");src.href=f.source;src.target="_blank";src.rel="noopener noreferrer";src.textContent=f.name;li.append(src);
+   const t=document.createElement("span");t.textContent=" · "+f.operator+" · "+f.stage+" · Bukti "+f.evidence_date;li.append(t);ul.append(li);
+  }facilities.append(ul);
+ }
+ const facilityWarning=document.createElement("p");facilityWarning.textContent=lens.facility_disclosure;facilities.append(facilityWarning);
+ structuralSection.append(facilities);
+ const pending=document.createElement("details");pending.className="ra-wb-structural-details";
+ const ph=document.createElement("summary");ph.textContent="Sumber historis/struktur industri yang menunggu digitalisasi dan rekonsiliasi ("+lens.historic_sources.length+")";pending.append(ph);
+ const ul=document.createElement("ul");
+ for(const source of lens.historic_sources){
+  const li=document.createElement("li");
+  const link=document.createElement("a");link.href=source.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent=source.id+" · "+source.years[0]+"–"+source.years.at(-1);li.append(link);
+  li.append(document.createTextNode(" — "+(source.status==="numeric_ingested_sli"?"Tersedia sebagai input resmi SLI":"Angka belum dimasukkan/diuji dalam SLI")));
+  ul.append(li);
+ }pending.append(ul);
+ const warning=document.createElement("p");warning.textContent=lens.research_gate.reason;pending.append(warning);
+ structuralSection.append(pending);
+ const sourceNote=document.createElement("small");sourceNote.textContent="BPS 2025 dari rilis Februari 2026; data sektoral terbit kemudian dan dapat mengalami revisi. Perlu pemeriksaan konsistensi antaredisi sebelum membuat panel industri 2020–2025.";
+ structuralSection.append(sourceNote);
 }
 
 function updateDatasetStatus(){
@@ -190,6 +265,17 @@ $("raLoadOfficialBps").addEventListener("click",async()=>{
   renderOfficialQuality(audit);
   if(audit.errors.length)throw Error("Audit BPS gagal: "+audit.errors.join("; "));
   const p=buildBpsOfficialPanel(source,{balanced:true});
+  let structure=null;
+  try{
+   const [catalogueResponse,smelterResponse]=await Promise.all([
+    fetch("./data/sli-structural-industry-source-register.json",{cache:"no-store"}),
+    fetch("./data/strategic-map-smelter-2026.json",{cache:"no-store"})
+   ]);
+   if(!catalogueResponse.ok||!smelterResponse.ok)throw Error("Missing sector provenance or smelter dossier");
+   const [catalogue,smelterRegistry]=await Promise.all([catalogueResponse.json(),smelterResponse.json()]);
+   structure=structuralEconomyEvidence(p,catalogue,smelterRegistry);
+  }catch(e){console.warn("SLI structural evidence unavailable; model inputs unchanged:",String(e.message||e).slice(0,150))}
+  structuralLens=structure;renderStructuralEconomy(structure);
   data=p.rows;officialBps=p;model=null;last=null;filename="BPS_2021-2025_PANEL_TURUNAN";consent.checked=false;
   datafile.value="";
   fillVariables();
@@ -204,15 +290,16 @@ $("raLoadOfficialBps").addEventListener("click",async()=>{
   result.dataset.state="ready";
   updateDatasetStatus();
  }catch(err){
-  data=null;officialBps=null;model=null;last=null;
+  data=null;officialBps=null;model=null;last=null;structuralLens=null;
+  structuralSection.hidden=true;structuralSection.replaceChildren();
   error("Data BPS tidak siap: "+String(err.message||err).slice(0,220)+". Tidak ada observasi yang diimputasi.");
   updateDatasetStatus();
  }finally{button.disabled=false;button.textContent="Gunakan panel BPS tersaring · 32 provinsi"}
 });
 
 datafile.addEventListener("change",async()=>{
- data=null;model=null;last=null;filename="";officialBps=null;consent.checked=false;
- quality.hidden=true;quality.replaceChildren();
+ data=null;model=null;last=null;filename="";officialBps=null;structuralLens=null;consent.checked=false;
+ quality.hidden=true;quality.replaceChildren();structuralSection.hidden=true;structuralSection.replaceChildren();
  const file=datafile.files?.[0];if(!file){show("No dataset loaded");updateDatasetStatus();return}
  if(file.size>1048576){error("File exceeds 1 MB client-side limit");updateDatasetStatus();return}
  try{
@@ -343,7 +430,7 @@ function addEconometricAppendix(fit,sensitivity=null,stability=null){
  if(sensitivity?.reduced)text("p","Perbandingan ilustratif: R² keseluruhan "+fit.r_squared+" (n="+fit.n+"), sensitivitas "+sensitivity.reduced.r_squared+" (n="+sensitivity.reduced.n+"). Tidak membuktikan sebab-akibat.");
  const controls=document.createElement("div");controls.className="ra-wb-next";
  const button=document.createElement("button");button.type="button";button.textContent="Unduh Investor Analytical Report (.md)";
- button.addEventListener("click",()=>downloadMarkdown(investorMarkdown(fit,filename,sensitivity,stability,officialBps?.publication||null)));
+ button.addEventListener("click",()=>downloadMarkdown(investorMarkdown(fit,filename,sensitivity,stability,officialBps?.publication||null,structuralLens)));
  controls.append(button);
  const notice=document.createElement("small");notice.textContent="Report berisi hasil nyata, batasan identifikasi, pemeriksaan data, temuan dan rekomendasi due diligence. Tidak menyertakan data mentah.";
  controls.append(notice);result.append(controls);
@@ -662,7 +749,7 @@ $("raRunMethod").addEventListener("click",()=>{
   }
  }catch(e){error("Model could not run: "+String(e.message).slice(0,200))}
 });
-$("raClearData").addEventListener("click",()=>{data=null;model=null;filename="";last=null;officialBps=null;datafile.value="";consent.checked=false;varGroup.hidden=true;advanced.hidden=true;quality.hidden=true;quality.replaceChildren();show("Dataset cleared. Nothing was stored in the browser.");desc();updateDatasetStatus()});
+$("raClearData").addEventListener("click",()=>{data=null;model=null;filename="";last=null;officialBps=null;structuralLens=null;datafile.value="";consent.checked=false;structuralSection.hidden=true;structuralSection.replaceChildren();varGroup.hidden=true;advanced.hidden=true;quality.hidden=true;quality.replaceChildren();show("Dataset cleared. Nothing was stored in the browser.");desc();updateDatasetStatus()});
 function language(){
  const id=document.documentElement.lang!=="en";
  const p=box.querySelector("[data-wb-i18n=intro]");
