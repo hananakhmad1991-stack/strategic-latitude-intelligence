@@ -7,7 +7,7 @@ const ns="http://www.w3.org/2000/svg";
 const tx=(en,id)=>window.SLIi18n?.language==="id"?id:en;
 const localized=(o,key)=>window.SLIi18n?.language==="id"&&o["id_"+key]?o["id_"+key]:o[key];
 const el=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e};
-const svg=(tag,attrs,parent,label)=>{const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs||{}))e.setAttribute(k,String(v));if(label)e.appendChild(svg("title",{},null,label));if(parent)parent.appendChild(e);return e};
+const svg=(tag,attrs,parent,label)=>{const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs||{}))e.setAttribute(k,String(v));if(label){const t=document.createElementNS(ns,"title");t.textContent=label;e.appendChild(t);}if(parent)parent.appendChild(e);return e};
 const validLink=x=>typeof x==="string"&&/^https:\/\/[^\s]+$/i.test(x)?x:null;
 const fetchJSON=async url=>{const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);return r.json()};
 const monthOf=date=>String(date||"").slice(0,7);
