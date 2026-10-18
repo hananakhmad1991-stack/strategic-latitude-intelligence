@@ -153,7 +153,7 @@ body.sli-home-active .main>.top .chip{display:none}
 .sli-portal-heading{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;margin:24px 0 12px}
 .sli-portal-heading h3{font-size:19px;color:#f2f5f8;margin:0}
 .sli-portal-heading span{color:#9fb5c7;font-size:11px}
-.sli-portal-sectors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sli-portal-sectors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .sli-portal-sector{border:1px solid #35516a;background:#11283d;border-radius:12px;padding:19px;min-height:156px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-decoration:none!important;transition:background .18s,border-color .18s,transform .18s}
 .sli-portal-sector:hover,.sli-portal-sector:focus-visible{background:#193751;border-color:#d7b678;transform:translateY(-2px)}
 .sli-portal-glyph{font-size:20px;color:#d7b678;background:#1e3a54;border:1px solid #38536b;width:36px;height:36px;border-radius:9px;display:grid;place-items:center}
@@ -174,7 +174,7 @@ body.sli-home-active .main>.top .chip{display:none}
 .sli-portal-links a{font-size:11px;text-decoration:none;color:#c9deec}
 .sli-portal-links a:hover{text-decoration:underline;color:#f4d498}
 .sli-portal-footnote{font-size:10px;color:#9fb7c8;line-height:1.5;margin:7px 0 0}
-@media(max-width:1040px){.sli-portal-sectors{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1220px){.sli-portal-sectors{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:740px){body.sli-home-active .main>.top{display:flex;flex-direction:column;align-items:stretch}
  .sli-portal-feature-grid{grid-template-columns:1fr}
  .sli-portal-bottom{align-items:flex-start;flex-direction:column}
@@ -320,7 +320,8 @@ function homePortal(){return `<section class="sli-portal" aria-label="SLI intell
   <a href="#minerals" class="sli-portal-sector"><span class="sli-portal-glyph" aria-hidden="true">◇</span><strong>Critical Minerals</strong><span>Nickel, copper, smelters and supply chains</span><small>Mineral Intelligence →</small></a>
   <a href="#investment" class="sli-portal-sector"><span class="sli-portal-glyph" aria-hidden="true">▦</span><strong>Investment</strong><span>Investors, projects and delivery milestones</span><small>Investment Tracker →</small></a>
   <a href="./ai-intelligence-hub.html" class="sli-portal-sector"><span class="sli-portal-glyph" aria-hidden="true">⌘</span><strong>AI &amp; Technology</strong><span>Data centers, digital infrastructure and compute</span><small>AI Intelligence →</small></a>
-  <a href="#geopolitics" class="sli-portal-sector"><span class="sli-portal-glyph" aria-hidden="true">◎</span><strong>Policy &amp; Geopolitics</strong><span>Regulation, domestic risk and external shocks</span><small>Strategic Intelligence →</small></a>
+  <a href="#policy" class="sli-portal-sector" aria-label="Open Policy and Regulation dashboard"><span class="sli-portal-glyph" aria-hidden="true">▤</span><strong>Policy &amp; Regulation</strong><span>Laws, regulatory status, government policy and implementation</span><small>Policy Intelligence →</small></a>
+  <a href="#geopolitics" class="sli-portal-sector" aria-label="Open Geopolitical Intelligence dashboard"><span class="sli-portal-glyph" aria-hidden="true">◎</span><strong>Geopolitical Intelligence</strong><span>Global conflicts, energy shocks, trade routes and commodity risk</span><small>Geopolitical Intelligence →</small></a>
  </div>
  <div class="sli-portal-feature-grid">
   <section class="sli-portal-feature sli-portal-feature-strong">
