@@ -6,6 +6,7 @@ import fundamentals from "../../data/energy-fundamentals.json" with {type:"json"
 import fiscal from "../../data/energy-prices-fiscal.json" with {type:"json"};
 import transition from "../../data/energy-transition.json" with {type:"json"};
 import assessment from "../../data/daily-energy-assessment.json" with {type:"json"};
+import infrastructure from "../../data/energy-infrastructure-security.json" with {type:"json"};
 const valid=u=>typeof u==="string"&&u.startsWith("https://");
 const docs=[];
 function add(id,title,text,url,period,publisher="ESDM",type="baseline"){
@@ -69,6 +70,25 @@ if(invest)add("realized_investment_2025","Realized sector investment · ESDM 202
  "bn; EBTKE US$"+invest.ebtke+"bn; electricity US$"+invest.electricity+
  "bn; mining US$"+invest.minerba+"bn. Administrative sector classifications vary from BKPM.",
  fiscal.investment?.sources?.[0]||fundamentals.sources?.migas2025,"2025","ESDM","investment");
+const ike=infrastructure.energy_security?.official;
+if(ike&&Number.isFinite(ike.index)&&valid(ike.source)){
+ add("official_security_index_2025","Official Indonesia Energy Security Index (IKE) 2025 · 4A",
+  "Official 2025 Indeks Ketahanan Energi (IKE): "+ike.index+"/10; classification "+ike.status+
+  "; provisional "+ike.provisional+". Scale "+ike.scale+". Comparison with 2024 reference: "+
+  ike.previous_comparable_2024+"/10 (verify methodology and vintage before interpreting changes). "+
+  ike.method+" This is an actual national official composite index; do NOT assert that SLI has no single energy security index.",
+  ike.source,String(ike.year),"ESDM / Dewan Energi Nasional","energy");
+ for(const pillar of infrastructure.energy_security.aspects||[]){
+  add("ike_4a_"+pillar.code.toLowerCase(),"Official IKE 2025 · "+pillar.name,
+   "Official energy security 4A pillar "+pillar.name+": score 2025 "+pillar.score2025+
+   "/10 versus 2024 "+pillar.score2024+
+   "/10. Component indicators (code, name, 2024, 2025): "+
+   pillar.indicators.map(x=>x.join(" | ")).join("; ")+
+   ". Analytical limitation: "+pillar.weakness+
+   ". These pillar figures must NOT be averaged to reconstruct the weighted overall IKE.",
+   ike.source,String(ike.year),"ESDM / Dewan Energi Nasional","energy");
+ }
+}
 for(const row of assessment.points||[]){
  // Source-derived qualitative synthesis is supporting analysis, not new independently confirmed facts.
  const url=row.baseline_sources?.find(s=>valid(s?.url))?.url;
