@@ -135,7 +135,10 @@ function renderIntelligence(which,root){const d=intelligence[which];if(!d)return
  mapMount.id=which==="minerals"?"sliMineralsOrganigram":"sliAIOrganigram";
  intro.querySelector("h3").textContent="Institutions, Governance & Policy";
  const explorer=E("details","sli-extra-network");
- const summary=E("summary",null,"Explore institution network, named officials and 9 issue pathways");
+ // The AI infrastructure institution hierarchy is a primary chapter, not a hidden appendix.
+ // Energy and other chapters may still opt in to a collapsed network.
+ if(which==="ai")explorer.open=true;
+ const summary=E("summary",null,which==="ai"?"AI Infrastructure · Government / Danantara / Private (interactive chart)":"Explore institution network, named officials and 9 issue pathways");
  const switcher=E("div","sli-sector-explorer-switcher");
  switcher.setAttribute("role","tablist");
  switcher.setAttribute("aria-label","Institutional intelligence views");
