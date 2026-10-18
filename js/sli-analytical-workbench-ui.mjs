@@ -1,5 +1,5 @@
 import {METHODS,getMethod,parseCsv,toRows,describe,evaluate} from "./sli-analytical-core.mjs?v=20261018-econ5";
-import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns} from "./sli-econometrics.mjs?v=20261018-econ5";
+import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns,panelStability} from "./sli-econometrics.mjs?v=20261018-econ6";
 import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs?v=20261018-econ5";
 const $=id=>document.getElementById(id);
 const box=document.createElement("section");
@@ -204,7 +204,7 @@ function renderCalculation(output){
  const note=document.createElement("small");note.textContent=output.limitation||"Review source assumptions and uncertainty before any investment decision.";result.append(note);
 }
 
-function addEconometricAppendix(fit,sensitivity=null){
+function addEconometricAppendix(fit,sensitivity=null,stability=null){
  const appendHeading=(label)=>{const h=document.createElement("h3");h.className="ra-wb-subhead";h.textContent=label;result.append(h)};
  const text=(tag,val)=>{const el=document.createElement(tag);el.textContent=val;result.append(el);return el};
  const visual=scatterPlot(fit,sensitivity?.reduced||null);
@@ -219,12 +219,62 @@ function addEconometricAppendix(fit,sensitivity=null){
  if(sensitivity?.reduced)text("p","Perbandingan ilustratif: R² keseluruhan "+fit.r_squared+" (n="+fit.n+"), sensitivitas "+sensitivity.reduced.r_squared+" (n="+sensitivity.reduced.n+"). Tidak membuktikan sebab-akibat.");
  const controls=document.createElement("div");controls.className="ra-wb-next";
  const button=document.createElement("button");button.type="button";button.textContent="Unduh Investor Analytical Report (.md)";
- button.addEventListener("click",()=>downloadMarkdown(investorMarkdown(fit,filename,sensitivity)));
+ button.addEventListener("click",()=>downloadMarkdown(investorMarkdown(fit,filename,sensitivity,stability)));
  controls.append(button);
  const notice=document.createElement("small");notice.textContent="Report berisi hasil nyata, batasan identifikasi, pemeriksaan data, temuan dan rekomendasi due diligence. Tidak menyertakan data mentah.";
  controls.append(notice);result.append(controls);
 }
-function renderEconometricResult(fit){
+function renderPanelStability(stability){
+ const id=document.documentElement.lang!=="en";
+ const section=document.createElement("section");section.className="ra-wb-stability";
+ const heading=document.createElement("h3");heading.textContent=id?"Uji kestabilan koefisien · Panel FE":"Coefficient stability · Panel FE";section.append(heading);
+ if(stability.error){const p=document.createElement("p");p.textContent=stability.error;section.append(p);result.append(section);return}
+ const subtitle=document.createElement("p");
+ subtitle.textContent=id?"SLI menghitung ulang model saat satu entitas atau satu tahun dikeluarkan secara bergantian. Hasil membandingkan perubahan koefisien; ini bukan pembuktian sebab-akibat.":"The same estimator is refitted after excluding one entity/year at a time. These are diagnostic comparisons, not causal evidence.";
+ section.append(subtitle);
+ const showTable=(title,part)=>{
+  const h=document.createElement("h4");h.textContent=title;section.append(h);
+  if(!part?.available){const p=document.createElement("p");p.textContent=part?.note||"Uji tidak tersedia";section.append(p);return}
+  const info=document.createElement("p");info.className="ra-wb-stability-meta";
+  info.textContent="Re-estimations: "+part.successful+"/"+part.total_candidates+" · "+(part.exhaustive?"Semua entitas/periode diuji":"Sebagian entitas/periode diuji")+" · Failed: "+part.failures.length;
+  section.append(info);
+  const scroll=document.createElement("div");scroll.className="ra-wb-table-scroller";
+  const table=document.createElement("table");
+  const tr=document.createElement("tr");
+  for(const head of ["X / Variabel","Baseline β","Min β","Max β","Maks Δ (%)","Paling berpengaruh","Status"]){const th=document.createElement("th");th.textContent=head;tr.append(th)}
+  table.append(tr);
+  for(const m of part.metrics||[]){
+   const vals=[m.name,m.baseline,m.min,m.max,m.max_relative_shift_pct===null?"n/a":m.max_relative_shift_pct,m.most_influential_exclusion||"—",
+    m.sign_reversals>0?"Perubahan tanda":m.sensitivity==="high"?"Sensitif":m.sensitivity==="moderate"?"Perlu perhatian":"Relatif stabil"];
+   const r=document.createElement("tr");
+   vals.forEach((value,i)=>{const td=document.createElement("td");td.textContent=String(value??"—");if(i===6&&["Sensitif","Perubahan tanda"].includes(value))td.className="ra-wb-stability-flag";r.append(td)});
+   table.append(r);
+  }scroll.append(table);section.append(scroll);
+  if(part.failures.length){const fail=document.createElement("small");fail.textContent="Some refits could not be estimated: "+part.failures.map(x=>x.excluded+": "+x.reason).slice(0,3).join(" · ");section.append(fail)}
+ };
+ showTable(id?"Keluarkan satu entitas (LOEO)":"Leave-one-entity-out",stability.leave_one_entity_out);
+ showTable(id?"Keluarkan satu tahun (LOYO)":"Leave-one-year-out",stability.leave_one_year_out);
+ const other=stability.alternative_time_specification;
+ const h=document.createElement("h4");h.textContent=id?"Perbandingan spesifikasi efek waktu":"Alternative time fixed-effects specification";section.append(h);
+ if(other?.available){
+  const tag=document.createElement("p");tag.textContent="Spesifikasi alternatif: "+(other.specification==="entity_only_FE"?"Hanya unit fixed effects":"Unit + year fixed effects");
+  section.append(tag);
+  const scroll=document.createElement("div");scroll.className="ra-wb-table-scroller";
+  const table=document.createElement("table");const tr=document.createElement("tr");
+  for(const name of ["Variabel","Baseline β","Alternatif β","Δ (%)"]){const th=document.createElement("th");th.textContent=name;tr.append(th)}
+  table.append(tr);
+  other.coefficients.forEach(c=>{
+   const tr=document.createElement("tr");
+   [c.name,c.baseline,c.alternative,c.relative_change_pct??"n/a"].forEach(z=>{const td=document.createElement("td");td.textContent=String(z);tr.append(td)});
+   table.append(tr);
+  });scroll.append(table);section.append(scroll);
+ }else{const p=document.createElement("p");p.textContent=other?.reason||"Spesifikasi alternatif belum tersedia.";section.append(p)}
+ const interpretation=document.createElement("p");interpretation.className="ra-wb-stability-summary";
+ interpretation.textContent="Assessment: "+stability.screening+" Analisis didasarkan pada data unggahan dan belum memverifikasi mekanisme ekonomi, potensi endogenitas, atau kausalitas.";
+ section.append(interpretation);result.append(section);
+}
+
+function renderEconometricResult(fit,stability=null){
  const id=document.documentElement.lang!=="en";
  result.replaceChildren();
  const subtitle=document.createElement("strong");
@@ -300,7 +350,8 @@ function renderEconometricResult(fit){
  "Koefisien dengan standard error HC1 dan interval kepercayaan 95% mengukur asosiasi bersyarat pada prediktor yang dipilih. Periksa korelasi antarprediktor, outlier, potensi endogenitas dan perbedaan satuan sebelum menggunakannya untuk penilaian investasi.";
  analysis.append(body);
  const caveat=document.createElement("p");caveat.textContent=fit.limitations;analysis.append(caveat);result.append(analysis);
- addEconometricAppendix(fit);
+ if(fit.method==="panel_fe"&&stability)renderPanelStability(stability);
+ addEconometricAppendix(fit,null,stability);
 }
 
 $("raRunMethod").addEventListener("click",()=>{
@@ -316,8 +367,13 @@ $("raRunMethod").addEventListener("click",()=>{
    if(selected==="panel_fe"&&!entity.value)throw Error("Pilih identitas panel yang berulang seperti province. Kolom angka seperti electricity_access_pct bukan penanda entitas. Pastikan tiap province memiliki data beberapa tahun.");
    if(selected==="panel_fe"&&!time.value)throw Error("Panel FE needs an actual time/year column. Upload multi-year province-year data; this single-year cross section is not valid panel.");
    const output=selected==="panel_fe"?panelFixedEffects(data,xs,y.value,entity.value,time.value,yearFE.checked):multivariateOLS(data,xs,y.value);
+   let robustness=null;
+   if(selected==="panel_fe"){
+    try{robustness=panelStability(data,xs,y.value,entity.value,time.value,yearFE.checked)}
+    catch(e){robustness={error:"Robustness check unavailable: "+String(e.message||e).slice(0,150)}}
+   }
    last=output;consent.checked=false;result.dataset.state="ready";
-   renderEconometricResult(output);
+   renderEconometricResult(output,robustness);
   }else{
    const output=evaluate({method:selected,rows:data,x:x.value,y:y.value,model});
    last=output;consent.checked=false;result.dataset.state="ready";
