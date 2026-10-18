@@ -70,7 +70,30 @@ function buildExplorer(root,data){
    sourceUrl:s.sources[0]||"",period:(rows[0]?.[0]||"")+"–"+(rows.at(-1)?.[0]||""),
    completeness:"All displayed source observations; no estimated or interpolated values."}}
  };
- function registerExporter(){window.SLIVisualExport?.register(svg,provider)}
+ const insightProvider={
+  getInsight:({event})=>{
+   const match=String(event?.target?.getAttribute?.("aria-label")||"").match(/^(\d{4}):/);
+   if(!match)return null;
+   const year=Number(match[1]),source=exportSource(),items=getVisibleRows();
+   const i=items.findIndex(([y])=>Number(y)===year);
+   if(i<0)return null;
+   const price=Number(items[i][1]);
+   const previous=i>0&&Number(items[i-1][0])===year-1?Number(items[i-1][1]):null;
+   const delta=previous>0?((price/previous-1)*100):null;
+   const change=delta===null?"No adjacent prior-year observation":
+    (delta>=0?"+":"")+delta.toFixed(2)+"% compared with "+(year-1);
+   return {
+    title:source.name+" · "+year,
+    details:[["Reporting year",String(year)],["Observed value",fmt(price)+" "+source.unit],
+     ["Annual movement",change],["Original source",source.sources[0]||"Official ESDM dataset"]],
+    lesson:"The annual change is a descriptive calculation from the dated source series. Do not interpret it as a causal impact without considering measurement boundaries, activity levels and source revisions."
+   };
+  }
+ };
+ function registerExporter(){
+  window.SLIVisualExport?.register(svg,provider);
+  window.SLIVisualExport?.registerInsight?.(svg,insightProvider);
+ }
  document.addEventListener("sli:exportready",registerExporter);
 
  const info=node("p","ef-detail","Click a bar or point to read a dated observation.");
