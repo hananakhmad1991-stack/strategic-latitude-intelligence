@@ -169,3 +169,15 @@
 .map-geopoint:focus-visible .map-geopoint-dot,.map-site-cluster:focus-visible .map-site-bubble,.map-admin-reference:focus-visible .map-admin-square{stroke:#ffe6a7;stroke-width:4}
 @media(max-width:900px){.map-insight-detail{max-height:60vh}}
 @media(max-width:650px){.map-insight-toolbar,.map-insight-detail{padding-left:12px;padding-right:12px}.map-insight-picker{padding-left:12px;padding-right:12px}}
+
+/* Keep the selected record clearly visible above the catalogue at desktop widths. */
+@media(min-width:1071px){
+ .map-results{max-height:min(84vh,820px);overflow:hidden}
+ .map-asset-insight{flex:0 1 auto;min-height:0;overflow-y:auto;max-height:calc(100% - 175px)}
+ .map-asset-insight .map-insight-detail{max-height:44vh}
+ .map-list{min-height:130px;flex:1 1 180px;overflow-y:auto}
+}
+@media(max-width:1070px){
+ .map-asset-insight{max-height:none}
+ .map-insight-detail{max-height:58vh}
+}
