@@ -59,7 +59,7 @@ async function radar(root,force){
   const t=d.checked_at_utc?new Date(d.checked_at_utc):null;
   const age=t&&Number.isFinite(t.getTime())?(Date.now()-t.getTime())/3600000:null;
   add(out,"p","bio-note","Last public-source scan: "+(t?t.toLocaleString("id-ID",{timeZone:"Asia/Jakarta",dateStyle:"medium",timeStyle:"short"})+" WIB":"unknown")+
-    (age!==null&&age>6?" · STALE (>6 hours)":"")+(d.errors&&d.errors.length?" · source errors reported":"")+". Headlines are discovery leads, not confirmed incidents or enacted regulations.");
+    (age!==null&&age>6?" · STALE (>6 hours)":"")+(d.errors&&d.errors.length?" · source errors reported":"")+". Attributed media headlines are usable secondary evidence; incidents, policy enactment and fuel volumes still need original data checks.");
   const controls=el("div","bio-chips");const types=["All","Policy","Capacity","Production","Feedstock","Distribution","Bioethanol","Sustainability","Prices","SAF"];const list=el("div","bio-radar-list");out.append(controls,list);
   const news=(d.items||[]).filter(x=>x.title&&x.url);
   function draw(type){list.replaceChildren();const showing=news.filter(x=>type==="All"||x.category===type).slice(0,18);
