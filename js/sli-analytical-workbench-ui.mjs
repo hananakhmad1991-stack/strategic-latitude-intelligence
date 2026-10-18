@@ -349,6 +349,26 @@ function renderEconometricResult(fit,stability=null){
  "Koefisien memperlihatkan hubungan perubahan variabel di dalam unit yang sama dari tahun ke tahun, setelah mengendalikan karakteristik unit yang konstan. Cluster-robust standard errors memperhitungkan korelasi dalam kelompok, tetapi tidak menjamin identifikasi kausal maupun mengoreksi seluruh guncangan waktu.":
  "Koefisien dengan standard error HC1 dan interval kepercayaan 95% mengukur asosiasi bersyarat pada prediktor yang dipilih. Periksa korelasi antarprediktor, outlier, potensi endogenitas dan perbedaan satuan sebelum menggunakannya untuk penilaian investasi.";
  analysis.append(body);
+ const estimates=fit.method==="panel_fe"?fit.coefficients:fit.coefficient_terms.filter(t=>t.name!=="Intercept");
+ for(const coeff of estimates){
+  const lower=coeff.ci95_low,upper=coeff.ci95_high;
+  const association=coeff.estimate>0?"positif":coeff.estimate<0?"negatif":"mendekati nol";
+  const crossing=lower<=0&&upper>=0;
+  const coefficientDetail=document.createElement("p");coefficientDetail.className="ra-wb-coefficient-interpretation";
+  const unitHint=/_pct$/i.test(fit.outcome)&&/_pct$/i.test(coeff.name)?
+   "Untuk kenaikan 1 poin persentase pada X, taksiran perubahan Y adalah "+coeff.estimate+" poin persentase, dengan variabel lainnya tetap. ":
+   "Perubahan satu unit X berasosiasi dengan perubahan Y sebesar "+coeff.estimate+" unit, dengan variabel lainnya tetap. ";
+  coefficientDetail.textContent=coeff.name+": hubungan "+association+" (β="+coeff.estimate+
+   "; interval kepercayaan 95% ["+lower+", "+upper+"]). "+unitHint+
+   (crossing?"Interval mencakup nol; arah hubungan masih tidak pasti dalam model ini.":"Interval tidak mencakup nol, tetapi bukan bukti kausal.")+
+   " Seluruh angka merujuk pada data unggahan, bukan verifikasi SLI.";
+  analysis.append(coefficientDetail);
+ }
+ if(fit.method==="panel_fe"&&fit.unit_count<30){
+  const smallSample=document.createElement("p");smallSample.className="ra-wb-small-sample";
+  smallSample.textContent="Keterbatasan inferensi: hanya "+fit.unit_count+" klaster entitas. Standard error dan interval kepercayaan cluster-robust dengan jumlah klaster kecil merupakan aproksimasi; gunakan bootstrap/robustness tambahan sebelum membuat keputusan.";
+  analysis.append(smallSample);
+ }
  const caveat=document.createElement("p");caveat.textContent=fit.limitations;analysis.append(caveat);result.append(analysis);
  if(fit.method==="panel_fe"&&stability)renderPanelStability(stability);
  addEconometricAppendix(fit,null,stability);
