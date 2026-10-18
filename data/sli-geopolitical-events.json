@@ -1,0 +1,183 @@
+{
+  "schema_version": "sli-geopolitical-events-v1",
+  "scope": "Selected, source-attributed milestones; not an exhaustive conflict database or an objective geopolitical-intensity index. A curated event is not a causal explanation for commodity returns.",
+  "start_year": 1990,
+  "events": [
+    {
+      "date": "1990-08-02",
+      "title": "Iraq invades Kuwait",
+      "id_title": "Irak menginvasi Kuwait",
+      "category": "conflict",
+      "mechanism": "Gulf supply-security fears became a global oil-market risk.",
+      "id_mechanism": "Kekhawatiran pasokan Teluk menjadi risiko pasar minyak global.",
+      "source_url": "https://history.state.gov/milestones/1989-1992/gulf-war",
+      "publisher": "U.S. Office of the Historian",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1991-01-17",
+      "title": "Coalition begins Gulf War air campaign",
+      "id_title": "Koalisi memulai operasi udara Perang Teluk",
+      "category": "conflict",
+      "mechanism": "Conflict and subsequent liberation altered Gulf oil-risk expectations.",
+      "id_mechanism": "Perang dan pembebasan Kuwait mengubah ekspektasi risiko pasokan minyak Teluk.",
+      "source_url": "https://history.state.gov/milestones/1989-1992/gulf-war",
+      "publisher": "U.S. Office of the Historian",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "1997-07-02",
+      "title": "Asian financial crisis begins in Thailand",
+      "id_title": "Krisis keuangan Asia bermula di Thailand",
+      "category": "macro",
+      "mechanism": "Capital flight and weaker regional demand amplified economic stress.",
+      "id_mechanism": "Arus modal keluar dan pelemahan permintaan regional memperburuk tekanan ekonomi.",
+      "source_url": "https://www.imf.org/external/pubs/ft/op/opfinsec/index.htm",
+      "publisher": "IMF",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2001-09-11",
+      "title": "September 11 attacks in the United States",
+      "id_title": "Serangan 11 September di Amerika Serikat",
+      "category": "conflict",
+      "mechanism": "A sharp security shock affected risk perception and global travel.",
+      "id_mechanism": "Guncangan keamanan mengubah persepsi risiko dan mobilitas global.",
+      "source_url": "https://www.911memorial.org/learn/about-911",
+      "publisher": "9/11 Memorial",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2003-03-20",
+      "title": "Invasion of Iraq begins",
+      "id_title": "Invasi Irak dimulai",
+      "category": "conflict",
+      "mechanism": "The Iraq war intensified geopolitical supply uncertainty in the Gulf.",
+      "id_mechanism": "Perang Irak meningkatkan ketidakpastian pasokan di kawasan Teluk.",
+      "source_url": "https://www.britannica.com/event/Iraq-War",
+      "publisher": "Encyclopaedia Britannica",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2008-09-15",
+      "title": "Lehman collapse and global financial crisis",
+      "id_title": "Kebangkrutan Lehman dan krisis keuangan global",
+      "category": "macro",
+      "mechanism": "The demand collapse is a major non-war commodity-price counterexample.",
+      "id_mechanism": "Keruntuhan permintaan menjadi contoh besar perubahan harga komoditas tanpa perang.",
+      "source_url": "https://www.federalreservehistory.org/essays/great-recession-of-200709",
+      "publisher": "Federal Reserve History",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2011-02-15",
+      "title": "Libyan uprising escalates",
+      "id_title": "Pergolakan Libya meningkat",
+      "category": "conflict",
+      "mechanism": "Political upheaval raised concerns about North African oil production.",
+      "id_mechanism": "Pergolakan politik memicu kekhawatiran produksi minyak Afrika Utara.",
+      "source_url": "https://www.britannica.com/event/Arab-Spring",
+      "publisher": "Encyclopaedia Britannica",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2014-03-18",
+      "title": "Russia annexes Crimea",
+      "id_title": "Rusia menganeksasi Krimea",
+      "category": "conflict",
+      "mechanism": "Sanctions, energy security and Black Sea tensions became connected risks.",
+      "id_mechanism": "Sanksi, keamanan energi, dan Laut Hitam saling berkaitan sebagai risiko.",
+      "source_url": "https://www.britannica.com/place/Crimea",
+      "publisher": "Encyclopaedia Britannica",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2018-07-06",
+      "title": "US-China tariffs enter into force",
+      "id_title": "Tarif dagang AS–Tiongkok mulai berlaku",
+      "category": "trade",
+      "mechanism": "Tariff escalation affected industrial-metal demand expectations.",
+      "id_mechanism": "Eskalasi tarif memengaruhi ekspektasi permintaan logam industri.",
+      "source_url": "https://www.piie.com/blogs/trade-and-investment-policy-watch/2018/trumps-trade-war-timeline-date-guide",
+      "publisher": "PIIE",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2020-03-11",
+      "title": "WHO characterizes COVID-19 as a pandemic",
+      "id_title": "WHO menyatakan COVID-19 sebagai pandemi",
+      "category": "health",
+      "mechanism": "Demand destruction and supply-chain interruptions moved commodities in different directions.",
+      "id_mechanism": "Pelemahan permintaan dan gangguan logistik menggerakkan komoditas secara berbeda.",
+      "source_url": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019",
+      "publisher": "WHO",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2022-02-24",
+      "title": "Russia launches full-scale invasion of Ukraine",
+      "id_title": "Rusia memulai invasi skala penuh ke Ukraina",
+      "category": "conflict",
+      "mechanism": "Oil, gas, grains, logistics and sanctions faced simultaneous shocks.",
+      "id_mechanism": "Minyak, gas, pangan, logistik, dan sanksi menghadapi guncangan bersamaan.",
+      "source_url": "https://www.un.org/en/black-sea-grain-initiative/background",
+      "publisher": "United Nations",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2023-07-17",
+      "title": "Black Sea grain deal expires",
+      "id_title": "Kesepakatan gandum Laut Hitam berakhir",
+      "category": "shipping",
+      "mechanism": "Agricultural shipment uncertainty rose when the corridor agreement expired.",
+      "id_mechanism": "Ketidakpastian pengiriman pangan naik setelah perjanjian koridor berakhir.",
+      "source_url": "https://www.un.org/en/black-sea-grain-initiative/background",
+      "publisher": "United Nations",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2023-11-19",
+      "title": "Red Sea shipping attacks begin",
+      "id_title": "Serangan terhadap kapal di Laut Merah dimulai",
+      "category": "shipping",
+      "mechanism": "Rerouting through the Cape of Good Hope raised time and freight exposure.",
+      "id_mechanism": "Pengalihan kapal via Tanjung Harapan menambah waktu dan paparan ongkos angkut.",
+      "source_url": "https://unctad.org/news/red-sea-crisis-and-implications-trade-facilitation-africa",
+      "publisher": "UNCTAD",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2025-06-13",
+      "title": "Israel-Iran military escalation",
+      "id_title": "Eskalasi militer Israel–Iran",
+      "category": "conflict",
+      "mechanism": "Airstrikes and retaliatory missiles renewed Gulf energy-risk pricing.",
+      "id_mechanism": "Serangan udara dan rudal balasan kembali memengaruhi risiko energi Teluk.",
+      "source_url": "https://www.reuters.com/world/middle-east/israel-says-it-strikes-iran-amid-nuclear-tensions-2025-06-13/",
+      "publisher": "Reuters",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2026-02-28",
+      "title": "US-Israel strikes on Iran start new war",
+      "id_title": "Serangan AS–Israel ke Iran memulai perang baru",
+      "category": "conflict",
+      "mechanism": "Military escalation exposed Gulf energy infrastructure and shipping to conflict.",
+      "id_mechanism": "Eskalasi membuka risiko terhadap infrastruktur energi dan pelayaran Teluk.",
+      "source_url": "https://www.reuters.com/world/middle-east/israel-says-it-launched-pre-emptive-attack-against-iran-2026-02-28/",
+      "publisher": "Reuters",
+      "record_status": "historical_source_attributed"
+    },
+    {
+      "date": "2026-03-12",
+      "title": "Hormuz disruption and energy market shock",
+      "id_title": "Gangguan Hormuz dan guncangan pasar energi",
+      "category": "shipping",
+      "mechanism": "Reported shipping and petroleum disruptions make route-level verification essential.",
+      "id_mechanism": "Gangguan pelayaran dan minyak yang dilaporkan perlu verifikasi operasional per rute.",
+      "source_url": "https://www.reuters.com/business/energy/oil-climbs-tankers-are-attacked-iraqi-waters-amid-middle-east-war-2026-03-12/",
+      "publisher": "Reuters",
+      "record_status": "historical_source_attributed"
+    }
+  ]
+}
