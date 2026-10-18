@@ -31,7 +31,8 @@ test("CSV protects spreadsheet formula injection and discloses data provenance",
  const format=await loadFormats();
  const blob=format.csv({headers:["Month","Value","Comment"],rows:[["2026-09",123.4,"=HYPERLINK(\"https://evil.example\")"],["2026-10",88,"+1+2"]],meta:{title:"SLI market risk",source:"World Bank",period:"2026-09"}});
  const text=await blob.text();
- assert.match(text,/\ufeff/);
+ const bytes=new Uint8Array(await blob.arrayBuffer());
+ assert.deepEqual(Array.from(bytes.slice(0,3)),[0xef,0xbb,0xbf]);
  assert.match(text,/World Bank/);
  assert.match(text,/SLI market risk/);
  assert.match(text,/'=HYPERLINK/);
