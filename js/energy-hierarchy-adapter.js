@@ -68,7 +68,7 @@ function build(governance,asOf){
   else if(a.idx===3||a.idx===4)lane=oversight;
   // Keep public-audit / legislative oversight out of the executive organization chart.
   if(a.name.startsWith("BPK RI"))lane=oversight;
-  const person=a.person_name && !/^(Minister of|Head of|President Director|Institutional leadership|Governor|National|Office of|Research organization|Agency leadership|Board \/)/i.test(a.person_name)?a.person_name:null;
+  const person=a.person_name && !/^(Minister of|Head of|President Director|Institutional leadership|Governor|Designated local|National|Office of|Research organization|Agency leadership|Board \/)/i.test(a.person_name)?a.person_name:null;
   const node={
    id:a.id,title:a.name,person:a.name==="Kemenko Hilirisasi dan Transisi Energi"?"Bahlil Lahadalia":person,
    role:a.name.startsWith("Sekretariat Jenderal DEN")?
