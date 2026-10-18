@@ -171,7 +171,7 @@ export function validateAssistantPayload(body){
    typeof c.column!=="string"||c.column.length>65||!Number.isInteger(c.n)||c.n<0||c.n>d.rows||
    ["mean","median","sd","min","max"].some(k=>c[k]!==null&&c[k]!==undefined&&!Number.isFinite(c[k]))))return null;
   if(d.computed!==null&&d.computed!==undefined&&(!d.computed||typeof d.computed!=="object"||
-   !["descriptive","pearson","ols","ahp","stock_flow"].includes(d.computed.method)))return null;
+   !["descriptive","pearson","ols","multivariate_ols","panel_fe","ahp","stock_flow"].includes(d.computed.method)))return null;
   // Only opt-in descriptive summaries are passed, never the raw file or secret tokens.
   if(JSON.stringify(d).length>4400)return null;
   user_analysis={origin:"user_uploaded_unverified",rows:d.rows,
