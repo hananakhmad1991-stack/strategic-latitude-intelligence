@@ -1,0 +1,3 @@
+import {test} from "node:test";import assert from "node:assert/strict";import {auditReport} from "../research-api/src/report-audit.mjs";
+test("reject invalid source markers and province omission",()=>{const a=auditReport("## Findings\nJawa Barat [3].\n## Conclusion\nFurther research required.",[{id:"a"}],{expectedGeography:["Jawa Tengah"],minWords:4});assert.equal(a.pass,false);assert.deepEqual(a.invalidCitations,[3]);assert.deepEqual(a.missingGeographies,["Jawa Tengah"]);});
+test("accept structure when explicit source and geography are present",()=>{const a=auditReport("## Penilaian\nJawa Tengah: indikator bersumber [1].\n## Keterbatasan\nTemuan belum membuktikan kausalitas.",[{id:"a"}],{expectedGeography:["Jawa Tengah"],minWords:8});assert.equal(a.pass,true);});
