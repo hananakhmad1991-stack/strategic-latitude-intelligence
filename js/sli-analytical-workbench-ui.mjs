@@ -9,7 +9,7 @@ box.setAttribute("aria-label","SLI methodology and investor data workbench");
 box.innerHTML=`<div class="ra-wb-header"><div><span class="ra-wb-kicker">SLI · ANALYTICAL WORKBENCH</span><h2>Research Methods & Data Lab</h2><p data-wb-i18n="intro">Pilih pendekatan analitis, lalu gabungkan dataset CSV/JSON milik Anda dengan hasil riset SLI. Perhitungan awal berjalan lokal di browser.</p></div><span class="ra-wb-marker">49 METODE</span></div>
 <div class="ra-wb-grid"><label>Metodologi / Method<select id="raMethod" aria-label="Select quantitative or qualitative methodology"><option value="auto">Auto · AI chooses the suitable method</option></select></label>
 <label>Dataset pengguna / Your data<input id="raDataFile" type="file" accept=".csv,.json,text/csv,application/json" aria-label="Upload CSV or JSON dataset"></label></div>
-<p id="raMethodInfo" class="ra-wb-detail" role="status">Auto: SLI memilih metodologi berdasar pertanyaan dan kelayakan data; bukan mengklaim semua metode sudah dijalankan.</p>
+<p id="raDatasetStatus" class="ra-wb-dataset-status" role="status" aria-live="polite">Belum ada dataset aktif. Gunakan data BPS atau unggah CSV/JSON.</p>\n<p id="raMethodInfo" class="ra-wb-detail" role="status">Auto: SLI memilih metodologi berdasar pertanyaan dan kelayakan data; bukan mengklaim semua metode sudah dijalankan.</p>
 <div class="ra-wb-grid ra-wb-variables" id="raVariables" hidden><label>Predictor / X<select id="raPredictor"></select></label><label>Outcome / Y<select id="raOutcome"></select></label></div>
 <div class="ra-wb-buttons"><button type="button" id="raRunMethod">Hitung di Browser / Run Local Model</button><button type="button" id="raClearData">Hapus Data / Clear</button></div>
 <div class="ra-wb-output" id="raModelResult" role="status" aria-live="polite">Belum ada dataset. CSV/JSON maksimum 1 MB dan 3.000 observasi; XLSX bisa diekspor dahulu sebagai CSV.</div>
@@ -23,6 +23,25 @@ const anchor=$("raOwnerPanel");anchor?.parentNode?.insertBefore(box,anchor);
 
 const method=$("raMethod"),datafile=$("raDataFile"),x=$("raPredictor"),y=$("raOutcome"),detail=$("raMethodInfo"),result=$("raModelResult"),varGroup=$("raVariables"),consent=$("raDataConsent");
 let data=null,model=null,filename="",last=null,officialBps=null;
+function updateDatasetStatus(){
+ const el=$("raDatasetStatus");if(!el)return;
+ if(officialBps&&data){
+  el.dataset.source="bps";
+  el.textContent="DATA AKTIF · BPS 2021–2025 · "+officialBps.entity_count+" provinsi × 4 tahun · "+data.length+
+   " observasi turunan. Sumber internal SLI sudah dimuat; kolom upload hanya untuk file milik pengguna.";
+ }else if(data){
+  el.dataset.source="upload";
+  el.textContent="DATA AKTIF · Upload pengguna · "+(filename||"dataset")+" · "+data.length+
+   " observasi. Sumber belum diverifikasi oleh SLI.";
+ }else if(model){
+  el.dataset.source="model";
+  el.textContent="MODEL INPUT AKTIF · "+(filename||"parameter pengguna")+". Hasil belum dihitung.";
+ }else{
+  el.dataset.source="empty";
+  el.textContent="Belum ada dataset aktif. Klik Gunakan data resmi BPS atau unggah CSV/JSON.";
+ }
+}
+
 const advanced=document.createElement("section");
 advanced.className="ra-wb-advanced";advanced.id="raAdvancedControls";advanced.hidden=true;
 advanced.innerHTML='<div id="raExtraGroup"><label for="raExtraPredictors">Prediktor tambahan / Additional predictors (X2–X5)</label><select multiple size="4" id="raExtraPredictors" aria-label="Additional regression explanatory variables"></select><small>Tekan Ctrl / Cmd untuk memilih lebih dari satu di daftar ini. Model satu prediktor tetap bisa dijalankan. Maksimal 5 X total.</small><p id="raActivePredictors" class="ra-wb-active-predictors" role="status" aria-live="polite"></p></div><div id="raPanelGroup" hidden><label>Panel province / entity<select id="raPanelEntity"></select></label><label>Time / year column<select id="raPanelTime"></select></label><label class="ra-wb-panel-check"><input type="checkbox" id="raYearFE"> Include common year fixed effects</label><small>Panel needs ≥8 entities and ≥3 years per dataset, with repeated entity-year observations. A 38-province, single-year snapshot is NOT valid panel data.</small></div>';
@@ -59,12 +78,19 @@ function desc(){
   if(!time.value)detail.textContent+=" · Panel tidak siap: kolom tahun (YYYY) tidak ditemukan.";
   if(entity.value&&time.value)detail.textContent+=" · Unit panel terdeteksi: "+entity.value+"; waktu: "+time.value+". Jangan gunakan indikator listrik/pertumbuhan sebagai identitas unit.";
  }
- for(const option of extra.options){
-  const shouldDisable=[x.value,y.value,entity.value,time.value].includes(option.value)||/^(year|tahun|time|period|periode)$/i.test(option.value);
-  option.disabled=shouldDisable;
-  if(shouldDisable)option.selected=false;
+ // Keep the extra-predictor picker limited to eligible numeric columns.
+ // Do not display year, dependent Y or the already-selected primary X as disabled options.
+ const previousSelected=new Set([...extra.selectedOptions].map(o=>o.value));
+ const excluded=new Set([x.value,y.value,entity.value,time.value]);
+ const candidates=numeric.filter(name=>!excluded.has(name)&&!/^(year|tahun|time|period|periode)$/i.test(name));
+ if([...extra.options].map(o=>o.value).join("|")!==candidates.join("|")){
+  extra.replaceChildren();
+  for(const name of candidates){
+   const option=document.createElement("option");option.value=name;option.textContent=name;
+   option.selected=previousSelected.has(name);extra.append(option);
+  }
  }
- const currentExtras=[...extra.selectedOptions].filter(o=>!o.disabled).map(o=>o.value);
+ const currentExtras=[...extra.selectedOptions].map(o=>o.value);
  const active=$("raActivePredictors");
  if(active)active.textContent="Model saat ini: Y = "+(y.value||"—")+"; "+(x.value?"X1 = "+x.value:"X1 belum dipilih")+
   (currentExtras.length?"; "+currentExtras.map((v,i)=>"X"+(i+2)+" = "+v).join("; "):"; belum ada X2–X5.")+
@@ -87,7 +113,7 @@ function fillVariables(){
  else if(numeric.length>1)y.value=numeric[1];
  for(const select of [extra,entity,time])select.replaceChildren();
  const cols=Object.keys(data?.[0]||{});
- for(const key of numeric){const opt=document.createElement("option");opt.value=key;opt.textContent=key;extra.append(opt)}
+ // Extra-predictor candidates are populated by desc() after Y, X and entity/time are resolved.
  const detected=detectPanelColumns(data);
  const idLang=document.documentElement.lang!=="en";
  for(const [sel,columns,missingText] of [
@@ -121,16 +147,18 @@ $("raLoadOfficialBps").addEventListener("click",async()=>{
    "Model belum dihitung: tekan Hitung di Browser. Empat provinsi Papua baru tidak diimputasi.");
   result.dataset.origin="official_bps_derived";
   result.dataset.state="ready";
+  updateDatasetStatus();
  }catch(err){
   data=null;officialBps=null;model=null;last=null;
   error("Data BPS tidak siap: "+String(err.message||err).slice(0,220)+". Tidak ada observasi yang diimputasi.");
+  updateDatasetStatus();
  }finally{button.disabled=false;button.textContent="Gunakan data resmi BPS · 34 provinsi"}
 });
 
 datafile.addEventListener("change",async()=>{
  data=null;model=null;last=null;filename="";officialBps=null;consent.checked=false;
- const file=datafile.files?.[0];if(!file){show("No dataset loaded");return}
- if(file.size>1048576){error("File exceeds 1 MB client-side limit");return}
+ const file=datafile.files?.[0];if(!file){show("No dataset loaded");updateDatasetStatus();return}
+ if(file.size>1048576){error("File exceeds 1 MB client-side limit");updateDatasetStatus();return}
  try{
   const text=await file.text(),type=file.name.toLowerCase();filename=file.name.replace(/[^a-zA-Z0-9._ -]/g,"").slice(0,90);
   if(type.endsWith(".csv"))data=parseCsv(text);
@@ -143,7 +171,8 @@ datafile.addEventListener("change",async()=>{
   }else throw Error("Only CSV and JSON are accepted. Export Excel (.xlsx) as CSV first.");
   if(data){fillVariables();show(`Local dataset ready: ${data.length} rows × ${Object.keys(data[0]).length} columns. Choose a method and run calculations; data stays in browser unless you opt in.`)}
   else{desc();show("Structured model loaded locally. Select AHP or Stock-flow and run calculations.")}
- }catch(e){data=null;model=null;error("Cannot read dataset: "+String(e.message).slice(0,200))}
+  updateDatasetStatus();
+ }catch(e){data=null;model=null;error("Cannot read dataset: "+String(e.message).slice(0,200));updateDatasetStatus()}
 });
 method.addEventListener("change",()=>{last=null;consent.checked=false;desc();});
 for(const select of [x,y,entity,time,extra])select.addEventListener("change",()=>{last=null;consent.checked=false;desc()});
@@ -486,14 +515,14 @@ $("raRunMethod").addEventListener("click",()=>{
   }
  }catch(e){error("Model could not run: "+String(e.message).slice(0,200))}
 });
-$("raClearData").addEventListener("click",()=>{data=null;model=null;filename="";last=null;officialBps=null;datafile.value="";consent.checked=false;varGroup.hidden=true;advanced.hidden=true;show("Dataset cleared. Nothing was stored in the browser.");desc()});
+$("raClearData").addEventListener("click",()=>{data=null;model=null;filename="";last=null;officialBps=null;datafile.value="";consent.checked=false;varGroup.hidden=true;advanced.hidden=true;show("Dataset cleared. Nothing was stored in the browser.");desc();updateDatasetStatus()});
 function language(){
  const id=document.documentElement.lang!=="en";
  const p=box.querySelector("[data-wb-i18n=intro]");
  if(p)p.textContent=id?"Pilih pendekatan analitis, unggah data sendiri, dan padukan ringkasan analitisnya dengan bukti SLI.":"Select a research methodology, upload your data, and combine its analytical summary with SLI evidence.";
 }
 document.querySelectorAll("[data-ra-lang]").forEach(b=>b.addEventListener("click",language));
-language();desc();
+language();desc();updateDatasetStatus();
 window.SLIAnalyticalWorkbench=Object.freeze({
  getRequestAddon(){
   const m=getMethod(method.value);
