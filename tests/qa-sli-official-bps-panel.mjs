@@ -80,3 +80,22 @@ test("Fail closed on conflicting BPS publication or province coverage",()=>{
  assert.throws(()=>buildBpsOfficialPanel({...src,provinces:src.provinces.slice(1)}),/exactly 38/);
  assert.throws(()=>buildBpsOfficialPanel({...src,sources:{pdrb:{url:"https://evil.example"}}}),/Unexpected BPS/);
 });
+
+test("BPS 32×4 multivariable model checks ALL 32 LOEO and all 4 LOYO with sign-risk metadata",()=>{
+ const p=buildBpsOfficialPanel(src,{balanced:true});
+ const fit=panelFixedEffects(p.rows,["pmtb_share_lag1_pct","household_share_lag1_pct"],"real_grdp_growth_pct","province","year",true);
+ const risk=panelStability(p.rows,["pmtb_share_lag1_pct","household_share_lag1_pct"],"real_grdp_growth_pct","province","year",true);
+ assert.equal(fit.coefficients.length,2);
+ assert.equal(risk.leave_one_entity_out.tested,32);
+ assert.equal(risk.leave_one_entity_out.successful,32);
+ assert.equal(risk.leave_one_entity_out.exhaustive,true);
+ assert.equal(risk.leave_one_year_out.tested,4);
+ assert.equal(risk.leave_one_year_out.successful,4);
+ assert.equal(risk.all_refits_complete,true);
+ assert.equal(risk.decision_readiness,"not_robust_for_investment_inference");
+ assert.equal(risk.sign_unstable,true);
+ assert.ok(risk.leave_one_year_out.metrics.some(m=>m.sign_reversals>=1));
+ assert.ok(risk.leave_one_entity_out.metrics.every(m=>Number.isFinite(m.max_absolute_shift)&&m.max_absolute_shift>=0));
+ assert.ok(risk.leave_one_entity_out.metrics.some(m=>m.relative_change_near_zero_denominator));
+ assert.match(risk.screening,/near-zero baseline|reverses a coefficient sign/);
+});
