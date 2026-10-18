@@ -140,6 +140,35 @@ export function multivariateOLS(rows,predictors,outcome){
    influential:fit.residual_diagnostics.flagged.some(o=>o.index===i+1)})),
   inference_note:"HC1 robust SE; 95% approximate t intervals. Cross-sectional association, not policy or investment treatment effect."};
 }
+/* Detect entity and annual time identifiers from repeated observations, not arbitrary numeric KPIs.
+ * Intentional: a one-year cross section has no executable panel identifier pair. */
+export function detectPanelColumns(rows){
+ if(!Array.isArray(rows)||!rows.length||typeof rows[0]!=="object")return {entities:[],times:[],recommendedEntity:null,recommendedTime:null};
+ const cols=Object.keys(rows[0]);
+ const times=cols.filter(key=>{
+  if(!/^(year|tahun|fiscal[_ -]?year|calendar[_ -]?year|periode|period|time)$/i.test(key))return false;
+  const vals=rows.map(r=>String(r?.[key]??"").trim());
+  return vals.every(v=>/^(19|20)\d{2}$/.test(v))&&new Set(vals).size>=2;
+ });
+ const recommendedTime=times.find(k=>/^(year|tahun)$/i.test(k))||times[0]||null;
+ const entities=cols.filter(key=>{
+  if(times.includes(key)||/^(year|tahun|time|period|periode)$/i.test(key))return false;
+  const values=rows.map(r=>String(r?.[key]??"").trim());
+  if(values.some(v=>!v))return false;
+  const counts=new Map();for(const v of values)counts.set(v,(counts.get(v)||0)+1);
+  if(counts.size<8||counts.size>=rows.length)return false;
+  const nameLooksLikeId=/^(province|provinsi|region|district|kabupaten|kota|county|municipality|entity|unit|firm|company|area|province_code|region_code|entity_id|unit_id|kode[_ -]?(?:provinsi|wilayah))$/i.test(key);
+  if(!nameLooksLikeId&&values.every(v=>v!==""&&Number.isFinite(Number(v))))return false;
+  if(recommendedTime){
+   const perEntity=new Map();
+   for(const r of rows){const v=String(r[key]).trim(),t=String(r[recommendedTime]).trim();if(!perEntity.has(v))perEntity.set(v,new Set());perEntity.get(v).add(t)}
+   if([...perEntity.values()].filter(v=>v.size>=2).length<8)return false;
+  }else if([...counts.values()].filter(n=>n>=2).length<8)return false;
+  return true;
+ });
+ entities.sort((a,b)=>Number(!/^(province|provinsi|region|entity|unit|district)$/i.test(a))-Number(!/^(province|provinsi|region|entity|unit|district)$/i.test(b)));
+ return {entities,times,recommendedEntity:entities[0]||null,recommendedTime};
+}
 export function panelFixedEffects(rows,predictors,outcome,entityField,timeField,includeYearFE=false){
  if(typeof entityField!=="string"||typeof timeField!=="string"||entityField===timeField)throw Error("Panel needs different entity and time identifier columns");
  const raw=cleanRows(rows,predictors,outcome);
@@ -149,6 +178,11 @@ export function panelFixedEffects(rows,predictors,outcome,entityField,timeField,
  const units=[...new Set(pairs.map(d=>d.entity))],times=[...new Set(pairs.map(d=>d.time))];
  if(units.length<8||times.length<3)throw Error("Panel FE requires at least 8 entities and 3 periods; 38 provinces observed for only one year are NOT a panel");
  if(times.some(t=>!/^(19|20)\d{2}$/.test(t)))throw Error("Panel FE currently requires a genuine annual year field (YYYY), not region categories or period labels");
+ const panelColumns=detectPanelColumns(rows);
+ if(!panelColumns.entities.includes(entityField))
+  throw Error("Panel entity must be a repeated province/entity identifier, not a continuously changing numeric indicator (for example electricity_access_pct). Choose province or an equivalent repeated ID column.");
+ if(!panelColumns.times.includes(timeField))
+  throw Error("Panel time must be a genuine annual year column (YYYY), not an economic indicator.");
  const sizes=units.map(id=>pairs.filter(d=>d.entity===id).length);
  if(sizes.some(v=>v<2))throw Error("Each entity needs at least two years for the within estimator");
  if(pairs.length<units.length+times.length+predictors.length+15)throw Error("Panel too short for reliable exploratory FE estimation");
