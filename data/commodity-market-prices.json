@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-18T03:25:07.761895+00:00",
+  "checked_at_utc": "2026-10-18T03:59:58.596109+00:00",
   "status": "ok",
   "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
   "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
@@ -232,7 +232,7 @@
       "change": 0.225,
       "change_percent": 7.7828,
       "unit": "USD/MMBtu",
-      "observed_at_utc": "2026-10-16T20:59:57+00:00",
+      "observed_at_utc": "2026-10-15T20:59:57+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/NG%3DF",
       "symbol": "NG=F",
@@ -552,9 +552,9 @@
       "sector": "minerals",
       "tier": "indicative_futures",
       "value": 57.305,
-      "previous": 64.288,
-      "change": -6.983,
-      "change_percent": -10.8621,
+      "previous": 66.556,
+      "change": -9.251,
+      "change_percent": -13.8996,
       "unit": "USD/troy oz",
       "observed_at_utc": "2026-10-16T20:59:57+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
@@ -563,10 +563,6 @@
       "market": "COMEX SI",
       "refresh_class": "Indicative / may be delayed",
       "history": [
-        {
-          "observed_at_utc": "2026-09-17T04:00:00+00:00",
-          "value": 65.470001
-        },
         {
           "observed_at_utc": "2026-09-18T04:00:00+00:00",
           "value": 66.556
@@ -649,7 +645,7 @@
         },
         {
           "observed_at_utc": "2026-10-16T04:00:00+00:00",
-          "value": 56.994999
+          "value": 57.305
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
