@@ -55,6 +55,16 @@ test("Official source BPS panel supports real exploratory entity/year FE, but ne
  assert.equal(fit.coefficients.length,1);
  assert.ok(Number.isFinite(fit.coefficients[0].estimate));
  assert.ok(Number.isFinite(fit.coefficients[0].std_error_hc1));
+ assert.ok(Math.abs(fit.coefficients[0].estimate-(-0.068438))<.0001,
+  "Audited 32-province beta must match independent two-way demeaned calculation; reject old boundary-corrupted +0.122396 estimate");
+ assert.ok(fit.coefficients[0].ci95_low<0&&fit.coefficients[0].ci95_high>0,
+  "Uncertain association must not be advertised as statistically distinct from zero");
+ const growth2023=p.rows.filter(r=>r.year===2023).map(r=>r.real_grdp_growth_pct);
+ const mean2023=growth2023.reduce((a,b)=>a+b,0)/growth2023.length;
+ assert.ok(Math.abs(mean2023-5.4780957)<.0001,
+  "2023 mean growth must not contain spurious Papua/Papua Barat territorial contractions");
+ assert.ok(growth2023.every(v=>v>-50),
+  "No 2023 -71.34% Papua administrative break may reach official-growth regression");
  assert.match(fit.limitations,/no causality/);
  const robust=panelStability(p.rows,["pmtb_share_lag1_pct"],"real_grdp_growth_pct","province","year",true);
  assert.equal(robust.leave_one_entity_out.exhaustive,false);
