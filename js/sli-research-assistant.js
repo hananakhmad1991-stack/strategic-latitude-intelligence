@@ -275,6 +275,9 @@ async function submit(){
   if(id!==state.sequence)return;
   if(!response.ok){const code=String(payload?.error||"http_"+response.status),detail=String(payload?.reason||"").slice(0,90);throw Error(code+(detail?" · "+detail:"")+" · HTTP "+response.status)}
   if(!payload||typeof payload.answer!=="string"||payload.mode!=="generative_rag"||!Array.isArray(payload.sources))throw Error("invalid_response");
+   // Older deployed Workers silently sliced model output at exactly 9,000 characters.
+   // Do not label such an unfinished report successful or allow it to be exported.
+   if(payload.answer.length===9000)throw Error(state.language==="id"?"Backend Cloudflare masih versi lama: laporan terpotong pada 9.000 karakter. Deploy ulang Worker riset SLI.":"Cloudflare backend is outdated: report truncated at 9,000 characters. Redeploy the SLI research Worker.");
   loading.parentNode?.remove();
   state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],question,mode};
   const report=append("assistant",payload.answer);
