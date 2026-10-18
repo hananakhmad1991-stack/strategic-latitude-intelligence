@@ -164,6 +164,15 @@ test("BPS official-data shortcut builds geographically screened 32-province annu
   assert.equal([...$("raExtraPredictors").selectedOptions][0].value,"household_share_lag1_pct");
   assert.match($("raModelResult").textContent,/household_share_lag1_pct/);
   assert.match($("raModelResult").textContent,/32 entitas × 4 periode, 128 observasi/);
+  assert.match($("raModelResult").textContent,/Re-estimations: 32\/32/);
+  assert.match($("raModelResult").textContent,/Re-estimations: 4\/4/);
+  assert.match($("raModelResult").textContent,/HASIL TIDAK STABIL/);
+  assert.match($("raModelResult").textContent,/Maks \|Δβ\|/);
+  assert.match($("raModelResult").textContent,/Maks Δ \(%\)/);
+  assert.match($("raModelResult").textContent,/berubah tanda|Perubahan tanda|Ganti tanda/i);
+  assert.ok($("raModelResult").querySelector(".ra-wb-stability-evidence"));
+  assert.match($("raModelResult").textContent,/2025/);
+
 
  }finally{
   globalThis.fetch=previousFetch;
