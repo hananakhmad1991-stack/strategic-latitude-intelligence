@@ -81,12 +81,18 @@ function view(){
  function path(x1,x2,y1,y2,w){const d=(x2-x1)*.45;return "M"+x1+","+y1+" C"+(x1+d)+","+y1+" "+(x2-d)+","+y2+" "+x2+","+y2+" L"+x2+","+(y2+w)+" C"+(x2-d)+","+(y2+w)+" "+(x1+d)+","+(y1+w)+" "+x1+","+(y1+w)+" Z"}
  const ordered=edges.sort((a,b)=>sumProduct(b.p.id)-sumProduct(a.p.id)||sumCountry(b.c)-sumCountry(a.c));
  for(const e of ordered){const p=P.get(e.p.id),c=C.get(e.c),w=e.v*scale,sy=dir==="exports"?all.y+all.used:c.y+c.used,ty=p.y+p.used;
- const r=sv("path",{d:path(xL+bar,xM,sy,ty,w),fill:"#60acbc",opacity:".25"},lines);sv("title",{},r).textContent=e.p.name_en+" / "+partnerName(e.c)+" · "+usd(e.v);
+ const r=sv("path",{d:path(xL+bar,xM,sy,ty,w),fill:"#60acbc",opacity:".25"},lines);
+ r.setAttribute("data-sli-point","");r.setAttribute("data-sli-trade-key",e.p.id+"|"+e.c);
+ r.setAttribute("tabindex","0");r.setAttribute("role","button");r.style.cursor="pointer";
+ sv("title",{},r).textContent=e.p.name_en+" / "+partnerName(e.c)+" · "+usd(e.v);
  if(dir==="exports")all.used+=w;else c.used+=w;p.used+=w}
  for(const p of P.values())p.used=0;
  for(const e of ordered){const p=P.get(e.p.id),c=C.get(e.c),w=e.v*scale,sy=p.y+p.used,ty=dir==="exports"?c.y+c.used:all.y+all.used;
  const active=!state.query||partnerName(e.c).toLowerCase().includes(state.query);
- const r=sv("path",{d:path(xM+bar,xR,sy,ty,w),fill:dir==="exports"?"#d2b079":"#64bdc0",opacity:active?".62":".07"},lines);sv("title",{},r).textContent=e.p.name_en+" / "+partnerName(e.c)+" · "+usd(e.v);
+ const r=sv("path",{d:path(xM+bar,xR,sy,ty,w),fill:dir==="exports"?"#d2b079":"#64bdc0",opacity:active?".62":".07"},lines);
+ r.setAttribute("data-sli-point","");r.setAttribute("data-sli-trade-key",e.p.id+"|"+e.c);
+ r.setAttribute("tabindex","0");r.setAttribute("role","button");r.style.cursor="pointer";
+ sv("title",{},r).textContent=e.p.name_en+" / "+partnerName(e.c)+" · "+usd(e.v);
  p.used+=w;if(dir==="exports")c.used+=w;else all.used+=w}
  function node(x,y,h,caption,color,align){sv("rect",{x,y,width:bar,height:Math.max(1,h),rx:2,fill:color},boxes);
  const txt=sv("text",{x:align==="left"?x-9:x+bar+9,y:y+Math.max(10,Math.min(h/2+4,25)),fill:"#f2f8fc","font-size":12,"text-anchor":align==="left"?"end":"start"},boxes);txt.textContent=caption.length>25?caption.slice(0,24)+"…":caption;sv("title",{},txt).textContent=caption}
@@ -95,6 +101,47 @@ function view(){
  for(const c of countries){const z=C.get(c);node(dir==="exports"?xR:xL,z.y,z.h,partnerName(c),"#8cbdcc",dir==="exports"?"right":"left")}
  for(const [x,copy] of [[xL,dir==="exports"?t("INDONESIA · EXPORTS","INDONESIA · EKSPOR"):t("COUNTRY OF ORIGIN","NEGARA ASAL")],[xM,t("HS PRODUCT","PRODUK HS")],[xR,dir==="exports"?t("DESTINATION","TUJUAN"):t("INDONESIA · IMPORTS","INDONESIA · IMPOR")]]){
  const a=sv("text",{x,y:24,fill:"#e3c68d","font-size":12,"font-weight":700},paper);a.textContent=copy}
+ // Both halves of each Sankey ribbon resolve to the SAME single sourced flow,
+ // never the complete national commodity catalogue.
+ const registerSankey=()=>{
+  if(!paper.isConnected||!window.SLIVisualExport)return;
+  window.SLIVisualExport.register(paper,{
+   getData:()=>({kind:"verified-provider",headers:["HS group","Partner","Direction","Value (US$ million)","Year","Provenance"],
+    rows:edges.map(e=>[e.p.hs,partnerName(e.c),dir,e.v,2025,e.p[dir].source_url||""])}),
+   getMeta:()=>({title:t("2025 Indonesian commodity flows","Arus komoditas Indonesia 2025"),
+    source:t("Source-dated customs HS register","Registri kepabeanan HS bersumber"),period:"2025",
+    completeness:"Selected HS groups and visible partners; OTHER is a computed remainder, not a separate trade partner."})
+  });
+  window.SLIVisualExport.registerInsight?.(paper,{
+   getInsight:({event})=>{
+    const mark=event?.target?.closest?.("[data-sli-trade-key]");
+    if(!mark)return null;
+    const record=edges.find(e=>e.p.id+"|"+e.c===mark.getAttribute("data-sli-trade-key"));
+    if(!record)return null;
+    const actualPartner=record.c!=="OTHER"&&record.c!=="UNKNOWN";
+    const basis=record.p[dir],worldTotal=basis.world_musd;
+    const share=worldTotal>0?(100*record.v/worldTotal).toFixed(2)+"%":t("Unavailable","Tidak tersedia");
+    return {
+     title:t(record.p.name_en,record.p.name_id)+" · "+partnerName(record.c),
+     details:[
+      [t("Reporting year","Tahun laporan"),"2025"],
+      [t("Direction","Arah"),dir==="exports"?t("Indonesia exports","Ekspor Indonesia"):t("Indonesia imports","Impor Indonesia")],
+      [t("HS commodity","Komoditas HS"),record.p.hs+" · "+t(record.p.name_en,record.p.name_id)],
+      [t("Partner / category","Mitra / kategori"),partnerName(record.c)],
+      [t("Flow value","Nilai arus"),"US$ "+fmt(record.v)+" "+t("million","juta")],
+      [t("Share of this HS world total","Pangsa total dunia kelompok HS"),share],
+      [t("Evidence classification","Klasifikasi bukti"),actualPartner?t("Published country allocation","Alokasi negara bersumber"):t("Unattributed / reconciled remainder","Residu / belum teratribusi")]
+     ],period:"2025",source:"2025 HS commodity customs source",sourceUrl:basis.source_url||"",
+     lesson:actualPartner?t(
+      "This is one selected product–partner trade value, not total bilateral trade or a physical volume. Export FOB and import CIF valuations differ.",
+      "Ini nilai perdagangan untuk satu produk dan satu negara, bukan total perdagangan bilateral atau volume fisik. Ekspor FOB dan impor CIF memakai basis berbeda."):
+      t("OTHER is a computed remainder and UNKNOWN lacks a verified partner allocation. Neither may be treated as a named trading country.","OTHER adalah sisa hasil perhitungan dan UNKNOWN belum memiliki atribusi negara yang terverifikasi. Keduanya bukan negara mitra tertentu.")
+    };
+   }
+  });
+ };
+ if(window.SLIVisualExport)registerSankey();
+ else document.addEventListener("sli:exportready",registerSankey,{once:true});
  }
  meta.append(el("p",null,(dir==="exports"?t("Exports","Ekspor"):t("Imports","Impor"))+" · "+usd(world)+" · "+t("full year 2025","tahun penuh 2025")));
  const residual=edges.filter(e=>e.c==="OTHER").reduce((n,e)=>n+e.v,0),unknown=edges.filter(e=>e.c==="UNKNOWN").reduce((n,e)=>n+e.v,0);
