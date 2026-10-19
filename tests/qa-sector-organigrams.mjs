@@ -83,7 +83,7 @@ for(const sector of ['minerals','ai']){
  for(let i=0;i<25;i++)await Promise.resolve();
  const stages=root.children.filter(x=>x.classList.contains('es-stage'));
  assert.equal(stages.length,9,'Energy Security structural parity');
- assert.equal(stages[0].querySelector('.sli-hier-root'),null,'Hierarchy should not be duplicated outside the single explorer');
+ assert.equal(stages[0].querySelectorAll('.sli-hier-root').length,1,'Hierarchy must appear exactly once inside the consolidated explorer');
  const expandable=stages[0].querySelector('.sli-extra-network');
  assert.ok(expandable,'Single consolidated institutional explorer must exist');
  assert.ok(expandable.children[0].textContent.includes('Explore institution network, named officials and 9 issue pathways'));
