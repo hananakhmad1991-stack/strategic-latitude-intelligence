@@ -66,9 +66,13 @@ function append(role,text){
 }
 function apaEntry(s){
  const publisher=String(s.publisher||"Research institution").trim();
- const date=String(s.source_date||s.period||"").match(/20\d{2}/)?.[0]||"n.d.";
- const title=String(s.title||"Research document").replace(/\s*\/\s*[^/]+$/,"").trim();
- return publisher+". ("+date+"). "+title+". "+String(s.source_url||"");
+ const isLaw=["reviewed_primary_article_paraphrase","legal_index_metadata"].includes(String(s.source_type||""));
+ // Review timestamp is NOT the original enactment year of a legal instrument.
+ const title=String(s.title||"Research document").trim();
+ const legalYear=title.match(/\b(?:UU|PP|Perpres|Perda|Permen|Pergub|Perbup|Perwali)\s*(?:No\.?|Nomor)?\s*\d+\s*(?:\/|-|Tahun\s+)((?:19|20)\d{2})\b/i)?.[1];
+ const year=isLaw?(legalYear||"n.d."):(String(s.publication_date||s.published_at||s.source_date||s.period||"").match(/(?:19|20)\d{2}/)?.[0]||"n.d.");
+ const sourceLabel=isLaw?(String(s.source_type)==="legal_index_metadata"?"Indeks regulasi: ":"Ringkasan pasal terkurasi: "):"";
+ return publisher+". ("+year+"). "+sourceLabel+title+". "+String(s.source_url||"");
 }
 function reportBody(answer){
  // Remove only ancillary sections; never truncate substantive conclusions after them.
@@ -78,7 +82,7 @@ function reportBody(answer){
   const section=/^#{1,3}\s+(.+)$/.exec(line.trim());
   if(section){
    const title=section[1].replace(/\*\*/g,"").trim();
-   skipping=/^(references|daftar pustaka|bibliography|keterbatasan(?: data)?|limitations|evidence limitations|batasan data|source limitations|model statement)\b/i.test(title);
+   skipping=/^(references|daftar pustaka|bibliography|keterbatasan(?: data)?|limitations|evidence limitations|batasan data|source limitations|sumber\s*\/\s*evidence panel|sources?\s*\/\s*evidence panel|model statement)\b/i.test(title);
   }
   if(!skipping)out.push(line);
  }
@@ -282,7 +286,10 @@ async function submit(){
   loading.parentNode?.remove();
   state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],qualityAudit:payload.quality_audit||null,question,mode};
   const report=append("assistant",payload.answer);
-  window.SLIResearchVisuals?.renderCharts(state.lastResult.charts,report,state.lastResult.sources,state.language);
+  const articleReading=String(payload.evidence_status||"").includes("legal")||!!payload.quality_audit?.legal_article_gate;
+  if(!articleReading||state.lastResult.charts.length){
+   window.SLIResearchVisuals?.renderCharts(state.lastResult.charts,report,state.lastResult.sources,state.language);
+  }
   const statusCode=String(payload.evidence_status||"");
   const modernBackend=[
    "owner_staging_source_dated_corpus",
@@ -304,7 +311,7 @@ async function submit(){
    (state.language==="id"?"OWNER TEST · Periksa sumber asli dan tanggal sebelum menggunakan analisis.":"OWNER TEST · Verify source documents and dates before relying on the analysis.");
   const note=node("div","sli-ra-evidence-note",summaryText);
   report.prepend(note);
-  if(Number.isInteger(payload.secondary_news_index_count)&&payload.secondary_news_index_count>0){
+  if(!articleReading&&Number.isInteger(payload.secondary_news_index_count)&&payload.secondary_news_index_count>0){
    const count=payload.secondary_news_index_count,used=Number(payload.attributed_secondary_sources)||0;
    const description=state.language==="id"?
     "INDEKS BERITA SEKUNDER SLI · "+count+" catatan monitoring teratribusi, "+used+" dipakai sebagai bahan laporan. Dibandingkan dengan data resmi dan OSINT; atribusi media bukan otomatis verifikasi semua klaimnya.":
