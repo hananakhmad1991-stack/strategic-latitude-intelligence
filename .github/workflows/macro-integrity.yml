@@ -32,7 +32,9 @@ jobs:
           import re
           p=Path('indonesia-macroeconomic-intelligence.html').read_text(encoding='utf-8')
           blocks=re.findall(r'<script>([\s\S]*?)</script>',p)
-          assert len(blocks)==1
-          Path('/tmp/sli-macro-chart.js').write_text(blocks[0],encoding='utf-8')
+          assert len(blocks)==2, 'Expected early language prepaint and macro chart code'
+          assert 'sli-chrome-pending' in blocks[0]
+          for i, code in enumerate(blocks):
+             Path(f'/tmp/sli-macro-inline-{i}.js').write_text(code,encoding='utf-8')
           PY
-          node --check /tmp/sli-macro-chart.js
+          for js in /tmp/sli-macro-inline-*.js; do node --check "$js"; done
