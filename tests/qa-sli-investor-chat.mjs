@@ -21,7 +21,9 @@ test("Investor interface makes chat primary while advanced methods optional",()=
 });
 test("SLI names all 49 methodologies but never equates catalogue to implemented engines",()=>{
  assert.equal(METHODS.length,49);
- assert.equal(METHODS.filter(m=>m.status==="local").length,7);
+ const implemented=METHODS.filter(m=>m.status==="local");
+ assert.ok(implemented.length>=7&&implemented.length<METHODS.length,"Must distinguish implemented local methods from full design catalogue");
+ for(const id of ["descriptive","pearson","ols","multivariate_ols","ahp","stock_flow"]){assert.ok(implemented.some(m=>m.id===id),id+" engine must remain available")};
  assert.equal(recommendInvestorMethod("Saya punya Rp5 triliun untuk kilang migas di NTB, hitung multiplier effect").id,"input_output");
  assert.equal(recommendInvestorMethod("hitung multiplier effect NTB").can_execute,false);
  assert.equal(recommendInvestorMethod("pilih lokasi dengan AHP").id,"ahp");
