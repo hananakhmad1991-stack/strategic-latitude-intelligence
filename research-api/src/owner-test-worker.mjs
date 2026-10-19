@@ -206,11 +206,11 @@ export default{
    quality_audit.issues=[...new Set([...quality_audit.issues,"legal_content_withheld_pending_primary_source_verification"])];
   }
   return send(200,{mode:"generative_rag",research_format:payload.mode,answer,quality_audit,
-   charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:legalRecovery?.source_limited?"owner_staging_source_limited_legal_review":evidence.length?(articleEvidence.length||legalEvidence.length?"owner_staging_legal_articles_and_index_metadata_status_not_certified":"owner_staging_source_dated_corpus"):"methodology_design_only_no_verified_sli_evidence",
+   charts:focusedArticleReading?[]:(evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[]),evidence_status:legalRecovery?.source_limited?"owner_staging_source_limited_legal_review":evidence.length?(articleEvidence.length||legalEvidence.length?"owner_staging_legal_articles_and_index_metadata_status_not_certified":"owner_staging_source_dated_corpus"):"methodology_design_only_no_verified_sli_evidence",
    corpus_as_of:energyCorpusAudit().assessment_date,
    corpus_version:"sli-energy-official-v2",
    retrieved_sources_count:evidence.length,
-   reviewed_secondary_sources:reviewedEvidence.length,attributed_secondary_sources:monitoringEvidence.length,secondary_news_index_count:monitored.registered_count,secondary_news_index_as_of:monitored.updated_at,secondary_news_status:monitored.status,
+   reviewed_secondary_sources:reviewedEvidence.length,attributed_secondary_sources:monitoringEvidence.length,secondary_news_index_count:focusedArticleReading?0:monitored.registered_count,secondary_news_index_as_of:focusedArticleReading?null:monitored.updated_at,secondary_news_status:focusedArticleReading?"not_relevant_to_focused_statute_query":monitored.status,
    monitoring_status:monitoring.status,
    monitoring_as_of:monitoring.as_of,
    monitoring_signals:monitoring.signals.slice(0,5),
