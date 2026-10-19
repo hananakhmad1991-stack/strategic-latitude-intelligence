@@ -26,9 +26,13 @@ function inline(input,container,sources){
  }
 }
 const columns=line=>line.trim().replace(/^\|/,"").replace(/\|$/,"").split("|").map(s=>s.trim()).slice(0,8);
+/* Some model outputs repeat Markdown "1." after blank explanatory paragraphs.
+ * Continue the rendered sequence until the next section heading instead of
+ * displaying several disconnected single-item lists all numbered 1. */
+const orderedStart=(authored,previous)=>previous>0&&authored===1?previous+1:(Number.isInteger(authored)&&authored>0?authored:1);
 function renderMarkdown(answer,where,sources=[]){
  where.replaceChildren();
- let list=null,listType="";
+ let list=null,listType="",orderedCount=0;
  const lines=String(answer||"").split("\n");
  for(let i=0;i<lines.length;i++){
   const line=lines[i].trim();
@@ -46,12 +50,22 @@ function renderMarkdown(answer,where,sources=[]){
    table.append(body);wrap.append(table);where.append(wrap);list=null;listType="";continue;
   }
   const heading=/^(#{1,4})\s+(.+)$/.exec(line);
-  if(heading){const h=create(heading[1].length<=2?"h3":"h4");inline(heading[2],h,sources);where.append(h);list=null;listType="";continue}
+  if(heading){const h=create(heading[1].length<=2?"h3":"h4");inline(heading[2],h,sources);where.append(h);list=null;listType="";orderedCount=0;continue}
   const numbered=/^\d+[\.)]\s+(.+)$/.exec(line),bullet=/^[-*]\s+(.+)$/.exec(line);
   if(numbered||bullet){
    const kind=numbered?"ol":"ul";
-   if(!list||listType!==kind){list=create(kind);where.append(list);listType=kind}
-   const li=create("li");inline((numbered||bullet)[1],li,sources);list.append(li);continue;
+   if(!list||listType!==kind){
+    list=create(kind);
+    if(numbered){
+     const authored=Number(line.match(/^\\d+/)?.[0]||1);
+     list.start=orderedStart(authored,orderedCount);
+     orderedCount=list.start-1;
+    }else orderedCount=0;
+    where.append(list);listType=kind;
+   }
+   const li=create("li");inline((numbered||bullet)[1],li,sources);list.append(li);
+   if(numbered)orderedCount++;
+   continue;
   }
   list=null;listType="";const p=create("p");inline(line,p,sources);where.append(p);
  }
