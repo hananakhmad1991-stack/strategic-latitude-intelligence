@@ -11,6 +11,15 @@ STAGING_ONLY = "true"
 RESEARCH_MODEL = "gpt-5.4-mini"
 OWNER_MAX_OUTPUT_TOKENS = "4800"
 
+# Public World Bank API; no credentials needed. Only curated national indicators are fetched.
+WORLD_BANK_ENABLED = "true"
+# OFF by default. Each opted-in owner request can consume ONE Tavily search credit.
+TAVILY_ENABLED = "false"
+# OFF by default; the exact gateway account/gateway identifiers must be configured first.
+CF_AI_GATEWAY_ENABLED = "false"
+# CF_AI_GATEWAY_ACCOUNT_ID = "your_32_hex_character_account_id"
+# CF_AI_GATEWAY_ID = "sli-research"
+
 [[ratelimits]]
 name = "AI_LIMITER"
 namespace_id = "10113"
@@ -21,4 +30,7 @@ period = 60
 # TWO secrets created interactively after deployment:
 # OPENAI_API_KEY (model provider secret; NEVER enter on SLI website)
 # OWNER_TEST_TOKEN (64-character cryptographic random value; enter in masked Owner Test input).
+# TAVILY_API_KEY (optional, enable TAVILY_ENABLED only after key and usage cap set).
+# CF_AI_GATEWAY_TOKEN (optional if your Cloudflare AI Gateway requires authentication).
+# API keys must NEVER appear in this TOML or static GitHub Pages.
 # Define an OpenAI API project budget to cap test spending.

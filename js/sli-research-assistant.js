@@ -71,7 +71,7 @@ function apaEntry(s){
  // Review timestamp is NOT the original enactment year of a legal instrument.
  const title=String(s.title||"Research document").trim();
  const legalYear=title.match(/\b(?:UU|PP|Perpres|Perda|Permen|Pergub|Perbup|Perwali)\s*(?:No\.?|Nomor)?\s*\d+\s*(?:\/|-|Tahun\s+)((?:19|20)\d{2})\b/i)?.[1];
- const year=isLaw?(legalYear||"n.d."):(String(s.publication_date||s.published_at||s.source_date||s.period||"").match(/(?:19|20)\d{2}/)?.[0]||"n.d.");
+ const year=isLaw?(legalYear||"n.d."):(String(s.source_type==="official_numeric_api"?(s.period||s.source_date):s.publication_date||s.published_at||s.source_date||s.period||"").match(/(?:19|20)\d{2}/)?.[0]||"n.d.");
  const sourceLabel=isLaw?(String(s.source_type)==="legal_index_metadata"?"Indeks regulasi: ":"Ringkasan pasal terkurasi: "):"";
  return publisher+". ("+year+"). "+sourceLabel+title+". "+String(s.source_url||"");
 }
@@ -155,6 +155,8 @@ function renderSources(sources,answer="",charts=[]){
   if(s.source_type==="official_policy_context_metadata")card.append(node("p","sli-ra-source-role",state.language==="id"?"Metadata regulasi resmi · cek status terkini":"Official regulation registry · check current legal status"));
   if(s.source_type==="legal_index_metadata")card.append(node("p","sli-ra-source-role",state.language==="id"?"Metadata registri · status peraturan belum dipastikan":"Legal registry metadata · current status not certified"));
   if(s.source_type==="secondary_news")card.append(node("p","sli-ra-source-role",state.language==="id"?"Berita sekunder teratribusi · laporan media, bukan otomatis fakta independen atau statistik resmi.":"Attributed secondary reporting · not automatically verified as an independent fact or official statistic."));
+  if(s.source_type==="official_numeric_api")card.append(node("p","sli-ra-source-role",state.language==="id"?"API angka resmi World Bank · nasional Indonesia; periksa tahun observasi dan perbedaan metodologi dengan BPS.":"Official World Bank numerical API · Indonesia national series; check observation year and BPS methodological differences."));
+  if(s.source_type==="live_web_discovery")card.append(node("p","sli-ra-source-role",state.language==="id"?"Temuan pencarian eksternal · cuplikan belum diverifikasi, BUKAN konfirmasi fakta.":"External web discovery · snippet not independently checked; NOT fact confirmation."));
 
   const url=safeUrl(s.source_url||"");
 
@@ -180,7 +182,7 @@ function renderMonitoringSignals(payload){
 function reset(){
  state.sequence++;state.history=[];state.lastResult=null;state.busy=false;
  $("raMessages").replaceChildren();$("raSourcesList").replaceChildren();$("raMonitoringSignals").replaceChildren();$("raModelStatementBody")?.replaceChildren();$("raConversation").hidden=true;$("raPrompt").value="";
- $("raChatFiles").value="";$("raChatUploadConsent").checked=false;updateFileStatus();
+ $("raChatFiles").value="";$("raChatUploadConsent").checked=false;$("raExternalSearchConsent").checked=false;updateFileStatus();
  $("raFollowupPrompt").value="";
  enableControls();$("raPrompt").focus();
 }
@@ -308,7 +310,9 @@ async function submit(){
  try{workbenchAddon=window.SLIAnalyticalWorkbench?.getRequestAddon?.()||workbenchAddon}
  catch(e){loading.parentNode?.remove();state.busy=false;enableControls();append("system",String(e.message||"Invalid uploaded data context"));return}
  const requestedMethod=$("raChatMethod").value||"auto";
- const requestBody={question,mode,language:state.language,history:state.history.slice(-8),...workbenchAddon,methodology:requestedMethod};
+ const requestBody={question,mode,language:state.language,history:state.history.slice(-8),...workbenchAddon,methodology:requestedMethod,
+  external_search:usingOwner&&$("raExternalSearchConsent")?.checked===true};
+ $("raExternalSearchConsent").checked=false; // One-question consent; no automatic subsequent disclosure.
  if(files.length){
   try{
    requestBody.attachments=await state.features.encodeAttachments(files);
@@ -356,10 +360,20 @@ async function submit(){
    legalResult?
    (state.language==="id"?"SLI REGULATORY AI · Rujukan hukum tersedia dalam corpus terbatas. Status berlaku, perubahan, dan isi pasal di luar bukti tetap harus diperiksa melalui JDIH.":"SLI REGULATORY AI · Limited legal evidence available. Verify legal status and unreviewed articles through the issuing JDIH."):
    modernBackend?
-   (state.language==="id"?"SUMBER SLI TERKURASI · Gunakan tanggal dan periode sumber; catatan indeks bukan pemantauan real-time.":"CURATED SLI EVIDENCE · Check original publication dates; this is not live retrieval."):
+   ((Number(payload.external_evidence?.added_official_records)||0)+(Number(payload.external_evidence?.added_search_leads)||0)>0
+    ?(state.language==="id"?"SUMBER SLI + API · Sumber eksternal memiliki status bukti berbeda; sumber web masih perlu diverifikasi.":"SLI + EXTERNAL API EVIDENCE · Sources have different verification levels; web discovery still needs review.")
+    :(state.language==="id"?"SUMBER SLI TERKURASI · Gunakan tanggal dan periode sumber; catatan indeks bukan pemantauan real-time.":"CURATED SLI EVIDENCE · Check original publication dates; this is not live retrieval.")):
    (state.language==="id"?"OWNER TEST · Periksa sumber asli dan tanggal sebelum menggunakan analisis.":"OWNER TEST · Verify source documents and dates before relying on the analysis.");
   const note=node("div","sli-ra-evidence-note",summaryText);
   report.prepend(note);
+  if(payload.external_evidence){
+   const ext=payload.external_evidence;
+   const official=Number(ext.added_official_records)||0,leads=Number(ext.added_search_leads)||0;
+   if(official||leads)report.prepend(node("p","sli-ra-evidence-note",
+    state.language==="id"
+     ?"API eksternal: "+official+" data World Bank nasional dan "+leads+" temuan web belum terverifikasi. Periksa periode dan rujukan asli."
+     :"External APIs: "+official+" national World Bank data point(s) and "+leads+" unverified web discovery lead(s). Check dates and originals."));
+  }
   if(!articleReading&&Number.isInteger(payload.secondary_news_index_count)&&payload.secondary_news_index_count>0){
    const count=payload.secondary_news_index_count,used=Number(payload.attributed_secondary_sources)||0;
    const description=state.language==="id"?
