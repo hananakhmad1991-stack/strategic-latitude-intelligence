@@ -184,7 +184,7 @@ source.then(db=>{
  const main=el("section","sli-hier-root");
  const h=el("div","sli-hier-header");h.append(el("div","eyebrow","INSTITUTIONAL & CORPORATE COMMAND STRUCTURE"),el("h3",null,"Government · Danantara & SOEs · Private Sector"),el("p",null,"Three separate systems: public institutions, state corporate portfolios and independent domestic/foreign investors. The Presidency anchors public-sector authority; corporate ownership is not regulatory command."));
  const tools=el("div","sli-hier-tools"),search=el("input","sli-hier-search"),expand=el("button","sli-hier-button","Expand all"),collapse=el("button","sli-hier-button","Collapse all"),filter=el("select","sli-hier-select");
- search.type="search";search.placeholder="Find people, directorates, companies…";search.setAttribute("aria-label","Search the hierarchy");
+ search.type="search";search.placeholder=ui("Find people, directorates, companies…");search.setAttribute("aria-label",ui("Search the hierarchy"));
  const opts=[["all","All sectors · grouped"],["government","Government & public institutions"],["policy","Public policy & regulators"],["portfolio","Danantara / BUMN"],["research","BRIN / research / defence"],["market","Private (all)"],["domestic","Private · Indonesia"],["foreign","Private · foreign"],["joint","Private · cross-border JVs"]];
  for(const [key,title] of opts){const op=el("option",null,title);op.value=key;filter.append(op)}
  for(const button of [expand,collapse])button.type="button";
