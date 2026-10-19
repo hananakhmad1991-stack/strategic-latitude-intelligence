@@ -995,37 +995,37 @@
       "number": 30,
       "name": "Nilai Tukar Petani nasional",
       "pdfPage": 49,
-      "structured": false
+      "structured": true
     },
     {
       "number": 31,
       "name": "NTP tanpa perikanan nasional",
       "pdfPage": 50,
-      "structured": false
+      "structured": true
     },
     {
       "number": 32,
       "name": "NTP tanaman pangan",
       "pdfPage": 51,
-      "structured": false
+      "structured": true
     },
     {
       "number": 33,
       "name": "NTP hortikultura",
       "pdfPage": 52,
-      "structured": false
+      "structured": true
     },
     {
       "number": 34,
       "name": "NTP perkebunan rakyat",
       "pdfPage": 53,
-      "structured": false
+      "structured": true
     },
     {
       "number": 35,
       "name": "NTP peternakan",
       "pdfPage": 54,
-      "structured": false
+      "structured": true
     },
     {
       "number": 36,
@@ -1198,7 +1198,7 @@
   ],
   "quality": {
     "review": "Manually source-checked April trade, NTP/NTUP (38 provinces), and May retail price readings (34 source-listed places, 11 commodities). Review exact source page for decisions.",
-    "coverage": "15 cumulative trade series; 38 NTP/NTUP provinces; 11 market price commodities x 34 regional labels; 63 indexed original tables; 60 monthly trade series across Jan–Apr 2026",
+    "coverage": "15 cumulative trade series; 38 NTP/NTUP provinces; 11 market price commodities x 34 regional labels; 63 indexed original tables; 60 monthly trade series across Jan–Apr 2026; 12 national NTP/NTUP monthly/baseline index series for six agriculture groups",
     "missing": "Missing publisher observations are null, not zero. Full 63-table numeric extraction pending verified ingestion.",
     "monthly_auto_updates": false
   },
@@ -1761,5 +1761,139 @@
       "unit": "ribu USD",
       "period": "2026-04"
     }
-  ]
+  ],
+  "nationalFarmerIndices": {
+    "unit": "indeks 2018=100",
+    "periods": [
+      "2025-05",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05"
+    ],
+    "source_note": "Pusdatin June 2026, source BPS. Comparisons across index observation dates; 2025 May is not part of the consecutive Jan-May 2026 range.",
+    "series": [
+      {
+        "name": "Nasional",
+        "table": 30,
+        "ntp": [
+          121.15,
+          123.6,
+          125.45,
+          125.35,
+          125.24,
+          127.73
+        ],
+        "ntup": [
+          124.7,
+          128.15,
+          130.74,
+          130.92,
+          130.3,
+          132.84
+        ]
+      },
+      {
+        "name": "Nasional tanpa perikanan",
+        "table": 31,
+        "ntp": [
+          121.86,
+          124.24,
+          126.11,
+          125.96,
+          125.91,
+          128.49
+        ],
+        "ntup": [
+          125.44,
+          128.81,
+          131.43,
+          131.55,
+          130.99,
+          133.61
+        ]
+      },
+      {
+        "name": "Tanaman Pangan",
+        "table": 32,
+        "ntp": [
+          107.64,
+          113.43,
+          112.43,
+          111.81,
+          112.29,
+          113.79
+        ],
+        "ntup": [
+          110.95,
+          117.96,
+          117.77,
+          117.49,
+          117.48,
+          119.07
+        ]
+      },
+      {
+        "name": "Hortikultura",
+        "table": 33,
+        "ntp": [
+          117.9,
+          119.62,
+          139.57,
+          138.64,
+          131.28,
+          140.58
+        ],
+        "ntup": [
+          122.44,
+          124.95,
+          146.42,
+          145.71,
+          137.21,
+          146.66
+        ]
+      },
+      {
+        "name": "Perkebunan Rakyat",
+        "table": 34,
+        "ntp": [
+          160.45,
+          157.96,
+          158.34,
+          158.57,
+          161.14,
+          164.24
+        ],
+        "ntup": [
+          163.96,
+          162.94,
+          163.71,
+          164.08,
+          166.13,
+          169.4
+        ]
+      },
+      {
+        "name": "Peternakan",
+        "table": 35,
+        "ntp": [
+          101.76,
+          101.91,
+          103.62,
+          105.09,
+          103.42,
+          103.86
+        ],
+        "ntup": [
+          104.88,
+          104.97,
+          107.16,
+          108.92,
+          106.96,
+          107.15
+        ]
+      }
+    ]
+  }
 }
