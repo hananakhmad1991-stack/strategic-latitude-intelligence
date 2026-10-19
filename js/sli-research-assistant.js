@@ -151,6 +151,8 @@ function renderSources(sources,answer="",charts=[]){
   card.append(node("p","sli-ra-source-role",role));
   if(s.source_type==="reviewed_primary_article_paraphrase")card.append(node("p","sli-ra-source-role",state.language==="id"?"Ringkasan pasal diperiksa · bukan teks UU konsolidasi":"Reviewed article summary · not consolidated statutory text"));
   if(s.source_type==="primary_treaty_depositary_record")card.append(node("p","sli-ra-source-role",state.language==="id"?"Registri Depositary PBB · status dan tanggal berlakunya perjanjian":"UN Treaty Depositary · ratification and entry-into-force status"));
+  if(s.source_type==="official_ndc_registry")card.append(node("p","sli-ra-source-role",state.language==="id"?"Registri NDC resmi UNFCCC":"Official UNFCCC NDC registry"));
+  if(s.source_type==="official_policy_context_metadata")card.append(node("p","sli-ra-source-role",state.language==="id"?"Metadata regulasi resmi · cek status terkini":"Official regulation registry · check current legal status"));
   if(s.source_type==="legal_index_metadata")card.append(node("p","sli-ra-source-role",state.language==="id"?"Metadata registri · status peraturan belum dipastikan":"Legal registry metadata · current status not certified"));
   if(s.source_type==="secondary_news")card.append(node("p","sli-ra-source-role",state.language==="id"?"Berita sekunder teratribusi · laporan media, bukan otomatis fakta independen atau statistik resmi.":"Attributed secondary reporting · not automatically verified as an independent fact or official statistic."));
 
