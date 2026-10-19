@@ -186,13 +186,48 @@ function reset(){
  $("raFollowupPrompt").value="";
  enableControls();$("raPrompt").focus();
 }
+function externalApiDiagnostic(payload,language="id"){
+ const id=language!=="en",ext=payload?.external_evidence;
+ if(!ext)return id
+  ?"KONEKTOR API · Backend belum melaporkan status Tavily atau World Bank. Pastikan Worker Research AI versi terbaru terpasang."
+  :"API CONNECTORS · Backend did not report Tavily/World Bank status. Check the deployed Research AI Worker revision.";
+ const web=String(ext.web_search||"unknown"),wb=String(ext.world_bank||"unknown");
+ const count=Math.max(0,Number(ext.added_search_leads)||0);
+ const official=Math.max(0,Number(ext.added_official_records)||0);
+ const tavily={
+  discovery_available:id?"Berhasil: "+count+" temuan web (belum diverifikasi)":"Available: "+count+" unverified web discovery leads",
+  consent_not_granted:id?"Tidak dijalankan: kotak izin pencarian belum dicentang":"Not run: per-question search consent was not checked",
+  not_configured:id?"Belum aktif: periksa TAVILY_ENABLED dan TAVILY_API_KEY di Worker":"Not configured: check TAVILY_ENABLED and TAVILY_API_KEY on Worker",
+  files_not_sent_to_search:id?"Tidak dijalankan karena permintaan berisi lampiran; data privat tidak dikirim ke pencarian":"Not run because files are attached; private attachments were not sent to search",
+  query_not_eligible:id?"Ditahan: pertanyaan mengandung indikasi informasi sensitif":"Blocked: the question appears to include sensitive information",
+  no_discovery_results:id?"Pencarian selesai tetapi tidak ada cuplikan sumber yang lolos pemeriksaan awal":"Search completed without usable source snippets",
+  timeout:id?"Gagal: Tavily melewati batas waktu":"Failed: Tavily timed out",
+  upstream_unavailable:id?"Gagal: penyedia pencarian tidak terjangkau":"Failed: search provider unreachable"
+ }[web]||(web==="provider_http_401"||web==="provider_http_403"
+  ?(id?"Token Tavily ditolak (HTTP "+web.slice(-3)+")":"Tavily credential rejected (HTTP "+web.slice(-3)+")")
+  :web==="provider_http_429"?(id?"Batas pemakaian Tavily tercapai (HTTP 429)":"Tavily quota or rate limit (HTTP 429)")
+  :/^provider_http_[45][0-9]{2}$/.test(web)?(id?"Kesalahan API Tavily: "+web.slice(-3):"Tavily API error: "+web.slice(-3))
+  :(id?"Status belum dikenal: "+web.slice(0,48):"Unknown status: "+web.slice(0,48)));
+ const worldbank={
+  retrieved:id?"Berhasil: "+official+" observasi nasional bertanggal":"Available: "+official+" dated national observations",
+  partial:id?"Parsial: "+official+" observasi nasional, beberapa indikator tidak tersedia":"Partial: "+official+" national observations; some indicators unavailable",
+  no_matching_national_indicators:id?"Tidak diperlukan untuk pertanyaan ini":"No matched indicators for this question",
+  disabled:id?"Belum diaktifkan di Worker":"Not enabled on Worker",
+  unavailable_or_no_numeric_observation:id?"Data tidak tersedia / permintaan API gagal":"No numeric observation or API unavailable"
+ }[wb]||(id?"Status "+wb.slice(0,48):"Status "+wb.slice(0,48));
+ const route=payload?.model_route==="cloudflare_ai_gateway"?"Cloudflare AI Gateway":
+  payload?.model_route==="direct_openai"?"OpenAI langsung / Direct OpenAI":
+  (id?"rute belum dilaporkan":"route not reported");
+ return "TAVILY: "+tavily+" · WORLD BANK: "+worldbank+" · GPT: "+route+
+  (id?" · Status API bukan verifikasi akurasi klaim.":" · API status is not claim-level fact verification.");
+}
 function makeExport(){
  if(!state.lastResult)return "";
  const last=state.lastResult,heading=state.language==="id"?"Laporan SLI Research AI":"SLI Research AI Report";
  if(last.mode==="local_ahp")return "# SLI · Academic AHP Analysis\n\n"+last.answer+"\n\n**Calculation:** Local AHP; respondent data never sent to SLI/AI server. Verify inputs and review CR.\n";
  const citations=last.sources.map((s,i)=>"["+(i+1)+"] "+apaEntry(s)).join("\n");
  const figures=(last.charts||[]).map(c=>"### "+c.title+" ("+c.period+" · "+c.unit+")\n"+c.points.map(p=>"- "+p.label+": "+p.value+" ["+p.source+"]").join("\n")+"\n"+c.note).join("\n\n");
- return "# "+heading+"\n\n"+(state.language==="id"?"**Cakupan:** Analisis corpus terkurasi, bukan data live. Periksa sumber dan tanggal.":"**Scope:** Curated corpus, not live data. Verify sources and observation dates.")+"\n\n"+reportBody(last.answer,state.language)+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
+ return "# "+heading+"\n\n"+(state.language==="id"?"**Cakupan:** Analisis bukti SLI terkurasi dan konektor API bila aktif; sumber web bukan fakta terverifikasi. Periksa periode dan rujukan asli.":"**Scope:** Curated SLI evidence plus optional API sources where enabled; web excerpts are not fact-checked. Verify dates and originals.")+"\n\n"+externalApiDiagnostic({external_evidence:last.externalEvidence,model_route:last.modelRoute},state.language)+"\n\n"+reportBody(last.answer,state.language)+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
  "\n\n"+(state.language==="id"?"Dihasilkan oleh layanan AI; sumber tetap harus diverifikasi.":"AI-assisted draft; verify all original sources.")+"\n";
 }
 function updateFileStatus(){
@@ -332,7 +367,7 @@ async function submit(){
    // Do not label such an unfinished report successful or allow it to be exported.
    if(payload.answer.length===9000)throw Error(state.language==="id"?"Backend Cloudflare masih versi lama: laporan terpotong pada 9.000 karakter. Deploy ulang Worker riset SLI.":"Cloudflare backend is outdated: report truncated at 9,000 characters. Redeploy the SLI research Worker.");
   loading.parentNode?.remove();
-  state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],qualityAudit:payload.quality_audit||null,evidenceStatus:String(payload.evidence_status||""),question,mode};
+  state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],qualityAudit:payload.quality_audit||null,evidenceStatus:String(payload.evidence_status||""),externalEvidence:payload.external_evidence||null,modelRoute:String(payload.model_route||""),question,mode};
   const report=append("assistant",payload.answer);
   const articleReading=String(payload.evidence_status||"").includes("legal")||!!payload.quality_audit?.legal_article_gate;
   const legalLabels={detail:"Telusuri aturan & sumber",correct:"Koreksi analisis hukum",compare:"Bandingkan perubahan aturan",gaps:"Periksa kekurangan bukti"};
@@ -366,14 +401,9 @@ async function submit(){
    (state.language==="id"?"OWNER TEST · Periksa sumber asli dan tanggal sebelum menggunakan analisis.":"OWNER TEST · Verify source documents and dates before relying on the analysis.");
   const note=node("div","sli-ra-evidence-note",summaryText);
   report.prepend(note);
-  if(payload.external_evidence){
-   const ext=payload.external_evidence;
-   const official=Number(ext.added_official_records)||0,leads=Number(ext.added_search_leads)||0;
-   if(official||leads)report.prepend(node("p","sli-ra-evidence-note",
-    state.language==="id"
-     ?"API eksternal: "+official+" data World Bank nasional dan "+leads+" temuan web belum terverifikasi. Periksa periode dan rujukan asli."
-     :"External APIs: "+official+" national World Bank data point(s) and "+leads+" unverified web discovery lead(s). Check dates and originals."));
-  }
+  // Always show provider status — including disabled, missing consent and failed API calls.
+  // A model answer can succeed solely on cached/curated SLI evidence while web discovery fails.
+  report.prepend(node("p","sli-ra-evidence-note",externalApiDiagnostic(payload,state.language)));
   if(!articleReading&&Number.isInteger(payload.secondary_news_index_count)&&payload.secondary_news_index_count>0){
    const count=payload.secondary_news_index_count,used=Number(payload.attributed_secondary_sources)||0;
    const description=state.language==="id"?
