@@ -248,7 +248,7 @@ document.addEventListener('keydown',closeSectorMenu);
 
 // Common entity identity loaded once on every specialist page; no unreviewed remote bios.
 (function bootstrapIdentity(){
- const here=document.currentScript?.src||document.querySelector('script[src*="/js/sli-navigation.js"]')?.src;
+ const here=document.currentScript?.src||document.querySelector?.('script[src*="/js/sli-navigation.js"]')?.src;
  if(!here)return;
  if(!document.querySelector('link[data-sli-identity-css]')){const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/sli-entity-identity.css?v=20261019-p1p5',here).href;css.dataset.sliIdentityCss='1';document.head.append(css)}
  if(!window.SLIEntityIdentity&&!document.querySelector('script[data-sli-identity-js]')){
