@@ -21,7 +21,7 @@ test("Investor interface makes chat primary while advanced methods optional",()=
 });
 test("SLI names all 49 methodologies but never equates catalogue to implemented engines",()=>{
  assert.equal(METHODS.length,49);
- assert.equal(METHODS.filter(m=>m.status==="local").length,7);
+ assert.equal(METHODS.filter(m=>m.status==="local").length,10);
  assert.equal(recommendInvestorMethod("Saya punya Rp5 triliun untuk kilang migas di NTB, hitung multiplier effect").id,"input_output");
  assert.equal(recommendInvestorMethod("hitung multiplier effect NTB").can_execute,false);
  assert.equal(recommendInvestorMethod("pilih lokasi dengan AHP").id,"ahp");
