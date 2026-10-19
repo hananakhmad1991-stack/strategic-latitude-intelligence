@@ -2459,3 +2459,9 @@ window.SLI_TRANSLATIONS_ID.set("BNPB 2025 · Provincial Disaster Observations","
 window.SLI_TRANSLATIONS_ID.set("Official annual provincial counts where available. Historical incident frequency is NOT a project hazard probability, and administrative centroids are not project coordinates.","Jumlah kejadian tahunan resmi menurut provinsi bila tersedia. Frekuensi historis bukan probabilitas bahaya suatu proyek, dan titik pusat administratif bukan koordinat lokasi proyek.");
 window.SLI_TRANSLATIONS_ID.set("Retrieving normalized source data…","Mengambil data sumber yang telah distandarkan…");
 window.SLI_TRANSLATIONS_ID.set("Technical review · Location verification status","Pemeriksaan teknis · Status verifikasi lokasi");
+
+/* Reviewed SLI Entity Intelligence homepage and navigation copy (19 Oct 2026). */
+window.SLI_TRANSLATIONS_ID.set("Entities","Entitas");
+window.SLI_TRANSLATIONS_ID.set("Entity Intelligence","Intelijen Entitas");
+window.SLI_TRANSLATIONS_ID.set("People, institutions, companies and evidence-linked projects","Tokoh, lembaga, perusahaan, dan proyek yang ditautkan ke sumber bukti");
+window.SLI_TRANSLATIONS_ID.set("Entity dossiers →","Profil entitas →");
