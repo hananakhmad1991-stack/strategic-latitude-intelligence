@@ -1,0 +1,336 @@
+{
+  "schema": "sli-legal-coverage-register-v1",
+  "updated_at": "2026-10-19",
+  "description": "Coverage and source discovery status for 38 provinces, NOT a claim of current regulation completeness.",
+  "regional_document_types": [
+    "Perda Provinsi",
+    "Pergub",
+    "Perda Kabupaten/Kota",
+    "Perbup",
+    "Perwali"
+  ],
+  "metadata_policy": "Unlisted sources and regulations remain unknown, never counted as no law. JDIH homepage confirmation does not verify individual rules or continued validity.",
+  "official_national_sources": [
+    {
+      "id": "djpp",
+      "label": "DJPP Peraturan.go.id",
+      "url": "https://peraturan.go.id/"
+    },
+    {
+      "id": "jdihn",
+      "label": "JDIHN BPHN",
+      "url": "https://jdihn.go.id/"
+    },
+    {
+      "id": "bpk",
+      "label": "JDIH BPK legal references",
+      "url": "https://peraturan.bpk.go.id/"
+    }
+  ],
+  "provinces": [
+    {
+      "id": "prov_01",
+      "name": "Aceh",
+      "source_url": "https://jdih.acehprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_02",
+      "name": "Sumatera Utara",
+      "source_url": "https://jdih.sumutprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_03",
+      "name": "Sumatera Barat",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_04",
+      "name": "Riau",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_05",
+      "name": "Jambi",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_06",
+      "name": "Sumatera Selatan",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_07",
+      "name": "Bengkulu",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_08",
+      "name": "Lampung",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_09",
+      "name": "Kepulauan Bangka Belitung",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_10",
+      "name": "Kepulauan Riau",
+      "source_url": "https://jdih.kepriprov.go.id/",
+      "discovery_status": "from_existing_monitor",
+      "monitor_source_id": "kepri_jdih",
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_11",
+      "name": "DKI Jakarta",
+      "source_url": "https://jdih.jakarta.go.id/",
+      "discovery_status": "from_existing_monitor",
+      "monitor_source_id": "dki_jdih",
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_12",
+      "name": "Jawa Barat",
+      "source_url": "https://jdih.jabarprov.go.id/",
+      "discovery_status": "from_existing_monitor",
+      "monitor_source_id": "jabar_jdih",
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_13",
+      "name": "Jawa Tengah",
+      "source_url": "https://jdih.jatengprov.go.id/",
+      "discovery_status": "from_existing_monitor",
+      "monitor_source_id": "jateng_jdih",
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_14",
+      "name": "DI Yogyakarta",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_15",
+      "name": "Jawa Timur",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_16",
+      "name": "Banten",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_17",
+      "name": "Bali",
+      "source_url": "https://jdih.baliprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_18",
+      "name": "Nusa Tenggara Barat",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_19",
+      "name": "Nusa Tenggara Timur",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_20",
+      "name": "Kalimantan Barat",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_21",
+      "name": "Kalimantan Tengah",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_22",
+      "name": "Kalimantan Selatan",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_23",
+      "name": "Kalimantan Timur",
+      "source_url": "https://jdih.kaltimprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_24",
+      "name": "Kalimantan Utara",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_25",
+      "name": "Sulawesi Utara",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_26",
+      "name": "Sulawesi Tengah",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_27",
+      "name": "Sulawesi Selatan",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_28",
+      "name": "Sulawesi Tenggara",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_29",
+      "name": "Gorontalo",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_30",
+      "name": "Sulawesi Barat",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_31",
+      "name": "Maluku",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_32",
+      "name": "Maluku Utara",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_33",
+      "name": "Papua",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_34",
+      "name": "Papua Barat",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_35",
+      "name": "Papua Selatan",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_36",
+      "name": "Papua Tengah",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_37",
+      "name": "Papua Pegunungan",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    },
+    {
+      "id": "prov_38",
+      "name": "Papua Barat Daya",
+      "source_url": null,
+      "discovery_status": "not_yet_confirmed",
+      "monitor_source_id": null,
+      "verification_scope": "portal_directory_only_not_rule_text"
+    }
+  ]
+}
