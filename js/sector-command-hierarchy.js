@@ -349,7 +349,7 @@ source.then(db=>{
  search.addEventListener("input",draw);filter.addEventListener("change",draw);
  if(restore?.mode)filter.value=restore.mode;if(restore?.query)search.value=restore.query;
   profile(byId.get(selectedId)||market.find(a=>a.id===selectedId)||rootNode);draw();
-  document.addEventListener("sli:languagechange",()=>{if(root.isConnected)init(which,root,db,{mode:filter.value,query:search.value,selectedId,openIds:new Set(openIds)});},{once:true});
+  document.addEventListener?.("sli:languagechange",()=>{if(root.isConnected)init(which,root,db,{mode:filter.value,query:search.value,selectedId,openIds:new Set(openIds)});},{once:true});
 }).catch(error=>{console.error("[SLI command hierarchy]",error);root.replaceChildren(el("p","sli-hier-status","Hierarchy data cannot be loaded. The Energy-style institutional network remains available below."))});
 }
 window.initSLICommandHierarchy=init;
