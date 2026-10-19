@@ -4,6 +4,7 @@
  * URL comes from an already allowlisted citation, with no redirects.
  */
 import {sourceIsApproved} from "./source-verification.mjs";
+import {compareQuotedNumbers} from "./claim-evidence-audit.mjs";
 const PRIMARY_ONLY=new Set(["esdm.go.id","www.esdm.go.id","bps.go.id","www.bps.go.id",
  "bi.go.id","www.bi.go.id","pln.co.id","www.pln.co.id","web.pln.co.id",
  "kemenkeu.go.id","www.kemenkeu.go.id","iea.org","www.iea.org",
@@ -12,8 +13,6 @@ export function isPrimaryPublisherUrl(value){
  if(!sourceIsApproved(value))return false;
  try{return PRIMARY_ONLY.has(new URL(value).hostname.toLowerCase())}catch{return false}
 }
-const digits=t=>[...new Set((String(t||"").replace(/\[(\d+)\]/g,"").match(/\b\d[\d.,]*\b/g)||[])
- .map(x=>x.replace(/(?<=\d)[,](?=\d{3}(?:\D|$))/g,"").trim()).filter(x=>x.length>1))].slice(0,12);
 function htmlText(source){
  return String(source||"").replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi," ")
   .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi," ").replace(/<[^>]+>/g," ")
@@ -35,7 +34,11 @@ async function probeOne(row,fetcher){
   const source=(await response.text());
   if(source.length>180000)return {...base,status:"publisher_html_too_large"};
   const text=htmlText(source).replace(/(?<=\d)[,](?=\d{3}(?:\D|$))/g,"");
-  const wanted=digits(row.claim),found=wanted.filter(n=>text.includes(n)),miss=wanted.filter(n=>!text.includes(n));
+  // Reuse the same decimal/magnitude/unit screening rules as claim triage.
+  // Prevent false negatives for "20,9 miliar" versus "20.9 billion" (or US$7 billion).
+  const comparison=compareQuotedNumbers(row.claim,text);
+  const wanted=comparison.claim_numbers.map(x=>x.raw),miss=comparison.missing,
+        found=wanted.filter(n=>!miss.includes(n));
   return {...base,status:wanted.length?(miss.length?"publisher_page_numbers_incomplete":"publisher_page_numbers_present"):"publisher_page_readable_no_numeric_match",
    claim_numbers_present:found,claim_numbers_absent:miss};
  }catch{return {...base,status:"publisher_fetch_failed_or_timed_out"}}
