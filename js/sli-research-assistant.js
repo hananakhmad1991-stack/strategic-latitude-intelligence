@@ -71,8 +71,8 @@ function apaEntry(s){
  // Review timestamp is NOT the original enactment year of a legal instrument.
  const title=String(s.title||"Research document").trim();
  const legalYear=title.match(/\b(?:UU|PP|Perpres|Perda|Permen|Pergub|Perbup|Perwali)\s*(?:No\.?|Nomor)?\s*\d+\s*(?:\/|-|Tahun\s+)((?:19|20)\d{2})\b/i)?.[1];
- const year=isLaw?(legalYear||"n.d."):(String(s.source_type==="official_numeric_api"?(s.period||s.source_date):s.publication_date||s.published_at||s.source_date||s.period||"").match(/(?:19|20)\d{2}/)?.[0]||"n.d.");
- const sourceLabel=isLaw?(String(s.source_type)==="legal_index_metadata"?"Indeks regulasi: ":"Ringkasan pasal terkurasi: "):"";
+ const year=isLaw?(legalYear||"n.d."):(String(s.source_type==="official_numeric_api"?(s.period||s.source_date):s.source_type==="live_web_discovery"?(s.period==="publication_date_unverified"?"":s.period):s.publication_date||s.published_at||s.source_date||s.period||"").match(/(?:19|20)\d{2}/)?.[0]||"n.d.");
+ const sourceLabel=s.source_type==="live_web_discovery"?"Temuan web belum diverifikasi: ":isLaw?(String(s.source_type)==="legal_index_metadata"?"Indeks regulasi: ":"Ringkasan pasal terkurasi: "):"";
  return publisher+". ("+year+"). "+sourceLabel+title+". "+String(s.source_url||"");
 }
 /* Normalise model-generated repeated "1." list markers for rendered output and
@@ -162,6 +162,33 @@ function renderSources(sources,answer="",charts=[]){
 
   list.append(card);
  });
+}
+function renderLiveDiscovery(payload,report,language="id"){
+ const leads=(Array.isArray(payload?.sources)?payload.sources:[])
+  .map((s,i)=>({...s,reference:i+1})).filter(s=>s.source_type==="live_web_discovery"&&safeUrl(s.source_url||"")).slice(0,6);
+ if(!leads.length)return;
+ const id=language!=="en";
+ const section=node("section","sli-ra-live-discovery");
+ const heading=node("h3",null,id?"Sumber baru yang ditemukan Tavily — belum terverifikasi":"New Tavily search leads — not yet verified");
+ section.append(heading);
+ section.append(node("p","sli-ra-evidence-note",id
+  ?"Temuan ini berasal dari cuplikan pencarian web, bukan pemeriksaan artikel penuh. Bandingkan dengan status proyek dalam korpus SLI. Tanggal akses bukan tanggal publikasi."
+  :"These are search snippets, not fully reviewed publisher articles. Compare them against SLI project baselines. Retrieval date is not publication date."));
+ const cited=new Set([...String(payload.answer||"").matchAll(/\[(\d+)\]/g)].map(x=>Number(x[1])));
+ const list=node("div","sli-ra-live-discovery-list");
+ leads.forEach(s=>{
+  const item=node("div","sli-ra-source-card");
+  const a=node("a",null,"["+s.reference+"] "+String(s.title||s.publisher||"Source").slice(0,190));
+  a.href=safeUrl(s.source_url);a.target="_blank";a.rel="noopener noreferrer";
+  item.append(a);
+  const date=String(s.period||"").trim(),pubDate=/^(?:19|20)\d{2}-\d{2}-\d{2}$/.test(date)?date:(id?"tanggal terbit belum diketahui":"publication date unknown");
+  item.append(node("p","sli-ra-source-role",String(s.publisher||"")+" · "+pubDate+" · "+
+   (cited.has(s.reference)?(id?"Dikutip sebagai temuan pencarian; klaim belum diverifikasi":"Cited as discovery; claims unverified"):
+     (id?"Belum digunakan dalam analisis; periksa relevansi dan sumber aslinya":"Not used in analysis; review relevance and original source"))));
+  list.append(item);
+ });
+ section.append(list);
+ report.append(section);
 }
 function renderMonitoringSignals(payload){
  const wrap=$("raMonitoringSignals");wrap.replaceChildren();
@@ -429,6 +456,7 @@ async function submit(){
    report.prepend(node("p","sli-ra-evidence-note",title+(warning&&names?" · "+names:"")+" · "+caveat));
   }
   renderSources(payload.sources,payload.answer,state.lastResult.charts);
+  renderLiveDiscovery(payload,report,state.language);
   renderModelStatement(payload.answer,payload);
   renderMonitoringSignals(payload);
   state.history.push({role:"user",content:question},{role:"assistant",content:payload.answer.slice(0,5000)});
