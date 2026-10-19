@@ -1,10 +1,10 @@
 {
-  "version": "2026-10-16.6",
-  "updated_at": "2026-10-16",
+  "version": "2026-10-19.1",
+  "updated_at": "2026-10-19",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
     "not_legal_advice": true,
-    "exhaustiveness": "Curated high-signal illustrative register; not every Indonesian legal instrument. Confirm consolidated texts/implementing rules at time of transaction.",
+    "exhaustiveness": "Curated cross-sector national and regional baseline; NOT every Indonesian legal instrument. Full Perda/Pergub/Perbup/Perwali coverage requires province-by-province JDIH discovery and source confirmation. Missing record does not mean no applicable law.",
     "status_dictionary": {
       "enacted": "officially enacted instrument; later changes may still require review",
       "repealed": "repeal supported by successor official source",
@@ -67,7 +67,9 @@
     },
     "cross_ministry_implementation": "Parallel regulations from BKPM/OSS, ATR/BPN, KLH/BPLH, ESDM, Kemenperin and Komdigi must be mapped by KBLI, permits and legal delegation, not mistaken for a joint regulation or one ministry's rules governing another.",
     "international_law_notes": "Treaties, investment agreements and arbitration rules differ in binding parties, forum and domestic implementation. WTO dispute DS592 is state-to-state and under appeal with a non-functioning Appellate Body in published record; ICSID is investor-state subject to consent, while New York Convention covers arbitral award recognition; UNCITRAL Arbitration Rules operate if adopted. No investor wins/loses automatically.",
-    "foreign_law_notes": "Foreign EU and US regulations are separate market-access/transactional applicability branches, not levels in Indonesian hierarchy; check destination, product nomenclature, counterparty, implementation dates, license requirements and foreign jurisdictional scope."
+    "foreign_law_notes": "Foreign EU and US regulations are separate market-access/transactional applicability branches, not levels in Indonesian hierarchy; check destination, product nomenclature, counterparty, implementation dates, license requirements and foreign jurisdictional scope.",
+    "regional_coverage": "Initial verified national and selected local examples. All provincial/city legal sources must be progressively catalogued; no nationwide exhaustive coverage claim.",
+    "source_update_policy": "Automated JDIH/news monitoring creates review candidates; enactment, amendment, repeal and jurisdiction are not automatically legally determined from a news headline or page fingerprint."
   },
   "nodes": [
     {
@@ -230,14 +232,20 @@
       "id": "uu23local",
       "tier": "uu",
       "ref": "UU 23/2014",
-      "label": "Regional-government competency and authority",
+      "label": "Pemerintahan Daerah — pembagian urusan pusat, provinsi dan kabupaten/kota",
       "sector": "cross",
-      "source": "https://peraturan.go.id/id/uu-no-23-tahun-2014",
-      "note": "Defines central/regional division of authority; read with amendments and sector-specific delegations.",
-      "status": "check_current",
+      "source": "https://peraturan.bpk.go.id/details/38685/uu-no-23-tahun-2014",
+      "note": "Pasal 15 dan lampiran membagi urusan pemerintahan konkuren. Telah diubah berulang, termasuk UU 6/2023 dan perubahan terbatas Pasal 238 oleh UU 1/2026. Periksa juga UU sektoral untuk kewenangan dan pendelegasian.",
+      "status": "amended",
       "kind": "legislation",
       "owner": "Interior / Regional",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia",
+      "topics": [
+        "otonomi daerah",
+        "kewenangan daerah",
+        "perizinan"
+      ]
     },
     {
       "id": "pp40",
@@ -388,8 +396,8 @@
       "ref": "Perpres 110/2025",
       "label": "Carbon economic instruments and GHG governance",
       "sector": "carbon",
-      "source": "https://peraturan.go.id/id/perpres-no-110-tahun-2025",
-      "note": "Carbon compliance, accounting and trading exposure needs transaction-specific verification.",
+      "source": "https://peraturan.bpk.go.id/Details/334733/perpres-no-110-tahun-2025",
+      "note": "Berlaku 10 Oktober 2025 dan secara eksplisit mencabut Perpres 98/2021 menurut JDIH BPK. Atur instrumen NEK, NDC, pelaporan dan tata kelola emisi; pertimbangkan aturan pelaksana dan transisi.",
       "status": "check_current",
       "kind": "presidential_regulation",
       "owner": "President / KLH",
@@ -1075,14 +1083,21 @@
       "id": "uu16paris",
       "tier": "uu",
       "ref": "UU 16/2016",
-      "label": "Persetujuan Paris Agreement",
+      "label": "Pengesahan Paris Agreement atas UNFCCC (UU 16/2016)",
       "sector": "carbon",
-      "source": "https://peraturan.go.id/id/uu-no-16-tahun-2016",
-      "note": "Pengesahan Paris Agreement di Indonesia; penerapan kepada fasilitas perlu regulasi nasional dan persetujuan lingkungan.",
+      "source": "https://peraturan.bpk.go.id/Details/37573/uu-no-16-tahun-2016",
+      "note": "JDIH BPK menyatakan berlaku sejak 25 Oktober 2016. UU ratifikasi perjanjian iklim; kewajiban proyek tertentu ditentukan peraturan pelaksanaan yang relevan, bukan secara otomatis oleh ratifikasi.",
       "status": "enacted",
       "kind": "ratification_legislation",
       "owner": "Indonesia / KLH",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "Paris Agreement",
+        "iklim",
+        "NDC",
+        "karbon"
+      ]
     },
     {
       "id": "eu_cbam",
@@ -1135,6 +1150,125 @@
       "kind": "foreign_market_regulation_not_indonesian_law",
       "owner": "U.S. Bureau of Industry and Security",
       "evidence": "official_foreign_regulation"
+    },
+    {
+      "id": "uu1hkpd2022",
+      "tier": "uu",
+      "ref": "UU 1/2022",
+      "label": "Hubungan Keuangan antara Pemerintah Pusat dan Pemerintahan Daerah (HKPD)",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
+      "note": "Pajak dan retribusi daerah, transfer ke daerah, belanja, pembiayaan daerah dan sinergi fiskal; cek pajak/retribusi sesuai Perda lokasi proyek, putusan MK dan perubahan terkini.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "Kemenkeu / Kemendagri / Pemda",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "otonomi daerah",
+        "investasi",
+        "fiskal",
+        "pajak daerah"
+      ]
+    },
+    {
+      "id": "uu1penyesuaian2026",
+      "tier": "uu",
+      "ref": "UU 1/2026",
+      "label": "Penyesuaian Pidana — termasuk ketentuan pidana UU Pemda dan pembentukan Perda",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/337869/uu-no-1-tahun-2026",
+      "note": "Perubahan spesifik Pasal 238 UU 23/2014 dan Pasal 15 UU 12/2011; bukan pengalihan menyeluruh kewenangan otonomi daerah. Berlaku 2 Januari 2026 menurut JDIH BPK.",
+      "status": "amending_instrument",
+      "kind": "legislation",
+      "owner": "Pembentuk UU / Kemendagri",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "otonomi daerah",
+        "produk hukum daerah",
+        "penyesuaian pidana"
+      ]
+    },
+    {
+      "id": "perda_dki_rtrw2024",
+      "tier": "perda",
+      "ref": "Perda DKI 7/2024",
+      "label": "RTRW Provinsi DKI Jakarta 2024–2044",
+      "sector": "cross",
+      "source": "https://jdih.jakarta.go.id/dokumen/detail/14185",
+      "note": "JDIH DKI menyatakan berlaku; relevan untuk penggunaan lahan, koridor infrastruktur, pusat data, energi dan izin kegiatan di Jakarta; RDTR/KKPR tingkat lokasi tetap diperiksa terpisah.",
+      "status": "listed_active_review_alignment",
+      "kind": "provincial_regulation",
+      "owner": "Pemprov DKI Jakarta",
+      "evidence": "primary_official",
+      "region": "DKI Jakarta",
+      "topics": [
+        "RTRW",
+        "tata ruang",
+        "data center",
+        "investasi"
+      ]
+    },
+    {
+      "id": "perda_jabar_rtrw2022",
+      "tier": "perda",
+      "ref": "Perda Jabar 9/2022",
+      "label": "RTRW Provinsi Jawa Barat 2022–2042",
+      "sector": "cross",
+      "source": "https://jdih.jabarprov.go.id/page/info/produk/31142",
+      "note": "JDIH Jabar menyatakan berlaku; mencabut Perda 22/2010 dan Perda 5/2019. Kesesuaian proyek industri, energi, dan fasilitas digital memerlukan cek RDTR serta KKPR setempat.",
+      "status": "listed_active_review_alignment",
+      "kind": "provincial_regulation",
+      "owner": "Pemprov Jawa Barat",
+      "evidence": "primary_official",
+      "region": "Jawa Barat",
+      "topics": [
+        "RTRW",
+        "tata ruang",
+        "industri",
+        "investasi"
+      ]
+    },
+    {
+      "id": "perda_dki_pdrd2024",
+      "tier": "perda",
+      "ref": "Perda DKI 1/2024",
+      "label": "Pajak Daerah dan Retribusi Daerah Provinsi DKI Jakarta",
+      "sector": "cross",
+      "source": "https://jdih.jakarta.go.id/index.php/dokumen/detail/13908",
+      "note": "JDIH DKI menyatakan berlaku; tarif, objek, pengecualian dan kewajiban aktual tetap bergantung pada transaksi, lokasi, keputusan/aturan pelaksana dan perubahan regulasi.",
+      "status": "listed_active_review_alignment",
+      "kind": "provincial_regulation",
+      "owner": "Pemprov DKI Jakarta / Bapenda",
+      "evidence": "primary_official",
+      "region": "DKI Jakarta",
+      "topics": [
+        "pajak daerah",
+        "retribusi",
+        "investasi",
+        "otonomi daerah"
+      ]
+    },
+    {
+      "id": "pres98repealed",
+      "tier": "perpres",
+      "ref": "Perpres 98/2021",
+      "label": "Former carbon economic value and emissions control framework (dicabut)",
+      "sector": "carbon",
+      "source": "https://peraturan.bpk.go.id/Details/161979/perpres-no-98-tahun-2021",
+      "note": "Dicabut Perpres 110/2025 per JDIH BPK. Peraturan pelaksana lama tertentu dapat tetap berlaku sepanjang tidak bertentangan dan belum diganti; jangan perlakukan Perpres 98/2021 sebagai payung hukum utama saat ini.",
+      "status": "repealed",
+      "kind": "presidential_regulation",
+      "owner": "Pemerintah Pusat / KLH",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "Paris Agreement",
+        "karbon",
+        "iklim",
+        "emisi"
+      ]
     }
   ],
   "edges": [
@@ -1637,6 +1771,71 @@
       "from": "us_bis_ear",
       "to": "pdp",
       "type": "cloud_infrastructure_operational_context"
+    },
+    {
+      "from": "uu23local",
+      "to": "uu1hkpd2022",
+      "type": "fiscal_decentralization_context"
+    },
+    {
+      "from": "uu23local",
+      "to": "uu1penyesuaian2026",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu12",
+      "to": "uu1penyesuaian2026",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu23local",
+      "to": "perda_dki_rtrw2024",
+      "type": "regional_authority_context"
+    },
+    {
+      "from": "uu23local",
+      "to": "perda_jabar_rtrw2022",
+      "type": "regional_authority_context"
+    },
+    {
+      "from": "uu23local",
+      "to": "perda_dki_pdrd2024",
+      "type": "regional_authority_context"
+    },
+    {
+      "from": "uu1hkpd2022",
+      "to": "perda_dki_pdrd2024",
+      "type": "implementation"
+    },
+    {
+      "from": "uu26spatial",
+      "to": "perda_dki_rtrw2024",
+      "type": "spatial_alignment_review"
+    },
+    {
+      "from": "uu26spatial",
+      "to": "perda_jabar_rtrw2022",
+      "type": "spatial_alignment_review"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_dki_rtrw2024",
+      "type": "regional_spatial_implementation"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_jabar_rtrw2022",
+      "type": "regional_spatial_implementation"
+    },
+    {
+      "from": "uu16paris",
+      "to": "pres110carbon",
+      "type": "climate_policy_context_not_direct_project_rule"
+    },
+    {
+      "from": "pres110carbon",
+      "to": "pres98repealed",
+      "type": "repeals"
     }
   ],
   "cases": [
