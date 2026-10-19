@@ -35,6 +35,17 @@ jobs:
         run: |
           node --check scripts/sli-agent-auto-propose.mjs
           node --test tests/qa-sli-agent-self-eval.mjs tests/qa-sli-agent-auto-propose.mjs tests/qa-sli-method-execution-v2.mjs tests/qa-sli-cross-sector-evidence-v2.mjs
+      - name: Identify previously proposed improvement branches
+        run: |
+          set -euo pipefail
+          # Keep completed or still-reviewed proposals out of future auto-patch selection.
+          # Branches are never rewritten or force-pushed by this workflow.
+          EXISTING=$(git ls-remote --heads origin 'refs/heads/sli-agent/method-*' \
+            | awk '{print $2}' \
+            | sed 's#refs/heads/sli-agent/method-##' \
+            | paste -sd, -)
+          echo "SLI_AGENT_PROPOSED_IDS=$EXISTING" >> "$GITHUB_ENV"
+          echo "Previously proposed method candidates: ${EXISTING:-none}"
       - name: Generate at most one reviewed, bounded source patch
         id: diff
         run: |
