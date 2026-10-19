@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="./css/sli-site-ux.css">
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
 <link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261018-qualityfix2">
-<link rel="stylesheet" href="./css/sli-research-brand.css?v=20261019-legal-cohesion1">
+<link rel="stylesheet" href="./css/sli-research-brand.css?v=20261019-compact-quickstart1">
 <link rel="stylesheet" href="./css/sli-analytical-workbench.css?v=20261018-bps8">
 
 <script src="./js/sli-live-data.js?v=20261017-research1"></script></head>
@@ -74,17 +74,26 @@
  <a href="https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/blob/main/research-api/OWNER_TEST_SETUP.md" target="_blank" rel="noopener noreferrer" data-id="Petunjuk aktivasi Owner Test ↗" data-en="Owner Test setup instructions ↗">Petunjuk aktivasi Owner Test ↗</a>
 </details>
  <div class="sli-ra-caution" data-id="AI dapat membuat kesalahan. Selalu periksa sumber asli, periode statistik, status proyek dan asumsi analisis." data-en="AI can make mistakes. Always verify primary sources, measurement dates, project status and analytical assumptions.">AI dapat membuat kesalahan. Selalu periksa sumber asli, periode statistik, status proyek dan asumsi analisis.</div>
- <div class="sli-ra-templates" id="raTemplates">
-  <h2 data-id="Contoh pertanyaan riset · pilih sesuai kebutuhan" data-en="Example research questions · choose your goal">Contoh pertanyaan riset · pilih sesuai kebutuhan</h2>
-  <div class="sli-ra-template-grid">
-   <button type="button" class="sli-ra-template sli-ra-template-featured" data-template="academic_ahp"><strong>Olahlah kuesioner AHP saya</strong><span>Peneliti atau universitas · unggah CSV/JSON kuesioner; bobot, consistency ratio, grafik dan laporan dihitung lokal di browser.</span></button>
-   <button type="button" class="sli-ra-template" data-template="academic_generic"><strong>Bantu metodologi skripsi / jurnal</strong><span>Rancang metode, variabel, hipotesis dan validasi untuk topik penelitian apa pun. Metode bisa dipilih AI atau pengguna.</span></button>
-   <button type="button" class="sli-ra-template sli-ra-template-featured" data-template="refinery"><strong>Investasi Rp5 triliun · Kilang migas NTB</strong><span>Analisis investasi, lokasi, input-output, kebutuhan data, risiko dan skenario — tanpa harus memilih metode.</span></button>
-   <button type="button" class="sli-ra-template" data-template="energy"><strong data-id="Ketahanan Energi Indonesia" data-en="Indonesia Energy Security">Ketahanan Energi Indonesia</strong><span data-id="Executive summary: ketahanan energi, subsidi, impor, transisi dan risiko geopolitik." data-en="Executive summary: supply, subsidies, imports, transition and geopolitical risks.">Executive summary: ketahanan energi, subsidi, impor, transisi dan risiko geopolitik.</span></button>
-   <button type="button" class="sli-ra-template" data-template="ai"><strong data-id="Prospek Infrastruktur AI" data-en="AI Infrastructure Outlook">Prospek Infrastruktur AI</strong><span data-id="Deep dive: pusat data, daya listrik, kapasitas, investor dan tantangan." data-en="Deep dive: data centers, grid power, capacity, investors and constraints.">Deep dive: pusat data, daya listrik, kapasitas, investor dan tantangan.</span></button>
-   <button type="button" class="sli-ra-template" data-template="province"><strong data-id="Bandingkan Provinsi" data-en="Compare Provinces">Bandingkan Provinsi</strong><span data-id="Analisis komparatif Jawa Tengah vs Jawa Barat berbasis data 2025–2026." data-en="Compare Central Java and West Java with dated 2025–2026 observations.">Analisis komparatif Jawa Tengah vs Jawa Barat berbasis data 2025–2026.</span></button>
-   <button type="button" class="sli-ra-template" data-template="mineral"><strong data-id="Mineral Kritis & Hilirisasi" data-en="Critical Minerals & Downstreaming">Mineral Kritis & Hilirisasi</strong><span data-id="Risiko dan peluang mineral kritis Indonesia untuk investor." data-en="Risks and opportunities in Indonesia's critical minerals sector.">Risiko dan peluang mineral kritis Indonesia untuk investor.</span></button>
+ <div class="sli-ra-templates" id="raTemplates" aria-label="Contoh instruksi riset">
+  <div class="sli-ra-templates-head">
+   <span data-id="Coba salah satu contoh" data-en="Try a sample question">Coba salah satu contoh</span>
+   <span class="sli-ra-templates-hint" data-id="Opsional · pertanyaan bebas tetap bisa diketik" data-en="Optional · type any research question">Opsional · pertanyaan bebas tetap bisa diketik</span>
   </div>
+  <div class="sli-ra-template-grid" role="group" aria-label="Contoh riset cepat">
+   <button type="button" class="sli-ra-template" data-template="regulation"><span data-id="Telaah regulasi" data-en="Review a regulation">Telaah regulasi</span><span aria-hidden="true">↗</span></button>
+   <button type="button" class="sli-ra-template" data-template="refinery"><span data-id="Screening investasi" data-en="Investment screening">Screening investasi</span><span aria-hidden="true">↗</span></button>
+   <button type="button" class="sli-ra-template" data-template="province"><span data-id="Bandingkan provinsi" data-en="Compare provinces">Bandingkan provinsi</span><span aria-hidden="true">↗</span></button>
+   <button type="button" class="sli-ra-template" data-template="academic_ahp"><span data-id="Analisis AHP" data-en="AHP analysis">Analisis AHP</span><span aria-hidden="true">↗</span></button>
+  </div>
+  <details class="sli-ra-template-more" id="raMoreExamples">
+   <summary data-id="Contoh lainnya" data-en="More examples">Contoh lainnya</summary>
+   <div class="sli-ra-template-grid sli-ra-template-grid-secondary" role="group" aria-label="Contoh riset tambahan">
+    <button type="button" class="sli-ra-template" data-template="academic_generic"><span data-id="Metode riset akademik" data-en="Academic research design">Metode riset akademik</span><span aria-hidden="true">↗</span></button>
+    <button type="button" class="sli-ra-template" data-template="energy"><span data-id="Ketahanan energi" data-en="Energy security">Ketahanan energi</span><span aria-hidden="true">↗</span></button>
+    <button type="button" class="sli-ra-template" data-template="ai"><span data-id="Infrastruktur AI" data-en="AI infrastructure">Infrastruktur AI</span><span aria-hidden="true">↗</span></button>
+    <button type="button" class="sli-ra-template" data-template="mineral"><span data-id="Mineral kritis" data-en="Critical minerals">Mineral kritis</span><span aria-hidden="true">↗</span></button>
+   </div>
+  </details>
  </div>
 </section>
 <section id="raConversation" class="sli-ra-conversation" aria-label="Research conversation" hidden>
@@ -120,7 +129,7 @@
 </main>
 <script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script>
 <script defer src="./js/sli-research-visuals.js?v=20261019-numbering1"></script>
-<script defer src="./js/sli-research-assistant.js?v=20261019-legal-treaty3"></script>
+<script defer src="./js/sli-research-assistant.js?v=20261019-compact-quickstart1"></script>
 <script type="module" src="./js/sli-analytical-workbench-ui.mjs?v=20261018-bps8"></script>
 <!-- Research AI is a focused conversation; stand-alone sector briefs belong on sector dashboards. -->
 <script defer src="./js/sli-shared-appendix.js?v=20261017-conversation4"></script>
