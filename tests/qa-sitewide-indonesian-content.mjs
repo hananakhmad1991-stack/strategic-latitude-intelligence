@@ -44,15 +44,15 @@ test("All published SLI pages initialize the same up-to-date EN/ID engine",()=>{
  assert.ok(pages.length>=37,"Sitewide navigation should cover every page, not a partial subset");
  for(const p of pages){
   const page=fs.readFileSync(p,"utf8");
-  assert.match(page,/sli-navigation\.js\?v=20261019-id-audit8/,"Stale language bootstrap: "+p);
+  assert.match(page,/sli-navigation\.js\?v=20261019-id-audit9/,"Stale language bootstrap: "+p);
   assert.match(page,/localStorage\.getItem\('sli-ui-language'\)/,"Persisted locale must be read before paint: "+p);
  }
  const nav=fs.readFileSync("js/sli-navigation.js","utf8");
- assert.match(nav,/i18n-dictionary\.js\?v=20261019-id-audit8/);
- assert.match(nav,/i18n\.js\?v=20261019-id-audit8/);
+ assert.match(nav,/i18n-dictionary\.js\?v=20261019-id-audit9/);
+ assert.match(nav,/i18n\.js\?v=20261019-id-audit9/);
  const index=fs.readFileSync("index.html","utf8");
- assert.match(index,/i18n-dictionary\.js\?v=20261019-id-audit8/);
- assert.match(index,/i18n\.js\?v=20261019-id-audit8/);
+ assert.match(index,/i18n-dictionary\.js\?v=20261019-id-audit9/);
+ assert.match(index,/i18n\.js\?v=20261019-id-audit9/);
  assert.match(index,/function homePortal\(\)/);
 });
 test("Runtime can identify untranslated content for the next editorial pass",()=>{
