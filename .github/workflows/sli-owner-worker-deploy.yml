@@ -28,6 +28,7 @@ jobs:
         run: |
           node --check research-api/src/owner-test-worker.mjs
           node --check research-api/src/legal-provisions.mjs
+          node --check research-api/src/legal-citation-audit.mjs
           node --check research-api/src/policy-corpus.mjs
           node --test tests/qa-sli-policy-ai.mjs
 
