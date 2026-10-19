@@ -1,8 +1,23 @@
 {
-  "version": "2026-10-19.1",
+  "version": "2026-10-19.2",
   "purpose": "Selected official national/sectoral/local law and government policy feeds; candidate detection only, NOT exhaustive Indonesian legislation or automatic legal status amendment.",
   "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
+    {
+      "id": "jdihn_national",
+      "label": "JDIHN BPHN — Pencarian Dokumen Hukum Nasional dan Daerah",
+      "url": "https://jdihn.go.id/pencarian?jenis=10",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdihn.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/pencarian",
+        "/dokumen",
+        "/detail"
+      ],
+      "limit": 60
+    },
     {
       "id": "esdm_news",
       "label": "ESDM — Arsip Berita",
