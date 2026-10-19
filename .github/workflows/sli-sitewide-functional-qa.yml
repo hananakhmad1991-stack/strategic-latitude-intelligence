@@ -3,6 +3,10 @@ on:
   push:
     paths:
       - 'index.html'
+      - 'food-agriculture-intelligence.html'
+      - 'js/food-agriculture-intelligence.js'
+      - 'css/food-agriculture-intelligence.css'
+      - 'tests/qa-sli-food-agriculture.mjs'
       - 'css/sli-home-portal.css'
       - 'css/sli-geopolitics-chapter.css'
       - 'js/sli-geopolitics-chapter.js'
@@ -63,12 +67,13 @@ jobs:
         with:
           node-version: '22'
       - name: Verify all critical scripts, navigation, filters and export controls
-        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs
+        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs tests/qa-sli-food-agriculture.mjs
       - name: Geopolitical chapter JavaScript syntax
         run: |
           node --check js/sli-geopolitics-chapter.js
           node --check js/sli-geopolitical-timeline.js
           node --check js/sli-navigation.js
+          node --check js/food-agriculture-intelligence.js
           node --check js/sli-visual-export.js
           node --check js/sli-visual-export-formats.js
           node --check js/commodity-market-prices.js
