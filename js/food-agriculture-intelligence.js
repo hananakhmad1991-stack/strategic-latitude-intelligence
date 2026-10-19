@@ -66,7 +66,8 @@ function attachProvider(id,headers,rows){
 }
 function renderTrade(){
  const scope=$("faTradeScope").value;tradeScope=scope;
- const rows=data.trade.filter(x=>x.scope===scope);
+ const period=$("faTradeMonth").value;
+ const rows=(period==="2026-01/2026-04"?data.trade:data.tradeMonthly).filter(x=>x.scope===scope&&(period==="2026-01/2026-04"||x.period===period));
  const plotted=rows.filter(x=>x.sector!=="Pertanian Total");
  const max=Math.max(...plotted.map(x=>Math.abs(x.balance)));
  const chart=$("faTradeChart");chart.replaceChildren();chart.classList.add("sli-bar-chart");
@@ -76,8 +77,8 @@ function renderTrade(){
  rows.forEach(item=>{const tr=el("tr");for(const [val,cls] of [[item.sector,""],[integer(item.export),""],[integer(item.import),""],[integer(item.balance),item.balance<0?"fa-negative":"fa-positive"]]){tr.append(el("td",val,cls))}tbody.append(tr)});
  const i=scope==="Segar + olahan"?1:scope==="Segar"?2:3;
  $("faTradeSource").href=rowSource(data,i);
- $("faTradeInsight").textContent=t("Select a sector bar to inspect its trade balance and limits.","Klik salah satu batang untuk melihat neraca dan batasan interpretasinya.");
- attachProvider("faTradeChartCard",[t("Subsector","Sub-sektor"),t("Export (thousand USD)","Ekspor (ribu USD)"),t("Import (thousand USD)","Impor (ribu USD)"),t("Balance (thousand USD)","Neraca (ribu USD)"),"Source"],rows.map(r=>[r.sector,r.export,r.import,r.balance,rowSource(data,i)]));
+ $("faTradeInsight").textContent=t("Period / Periode: ","Periode data: ")+period+". "+t("Select a bar to inspect its source value.","Klik batang untuk melihat angka bersumber.");
+ attachProvider("faTradeChartCard",[t("Subsector","Sub-sektor"),t("Export (thousand USD)","Ekspor (ribu USD)"),t("Import (thousand USD)","Impor (ribu USD)"),t("Balance (thousand USD)","Neraca (ribu USD)"),"Source"],rows.map(r=>[r.sector,r.export,r.import,r.balance,rowSource(data,i)+" · "+period]));
 }
 function farmerValues(){return farmerMetric==="ntup"?data.ntp.ntup:farmerMetric==="ntp_april"?data.ntp.april:data.ntp.may}
 function renderFarmer(){
@@ -126,7 +127,7 @@ function renderOrg(){
   }
   root.append(row);
  }
- const profile=node(),out=$("faOrgDetail");out.replaceChildren(el("h3",en()?profile.en:profile.name),el("p",en()?profile.role:profile.role));
+ const profile=node(),out=$("faOrgDetail");out.replaceChildren(el("h3",en()?profile.en:profile.name),el("p",en()?profile.roleEn:profile.role));
  const dl=el("dl");detailLine(dl,t("Institution type","Jenis lembaga"),en()?profile.tagEn:profile.tag);
  detailLine(dl,t("Evidence status","Status bukti"),t("Official institutional mandate","Mandat kelembagaan resmi"));out.append(dl);
  out.append(anchor(profile.link,t("Open primary institutional source ↗","Buka sumber kelembagaan primer ↗")));
@@ -168,11 +169,12 @@ function renderAll(){
 async function init(){
  try{
   const res=await fetch("./data/food-agriculture-2026.json",{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);
-  data=await res.json();if(data.schema!=="sli-food-2026-launch-v1"||data.provinces.length!==38||data.tables.length!==63||data.trade.length!==15)throw Error("Food source dataset failed integrity test");
+  data=await res.json();if(data.schema!=="sli-food-2026-launch-v1"||data.provinces.length!==38||data.tables.length!==63||data.trade.length!==15||data.tradeMonthly?.length!==60)throw Error("Food source dataset failed integrity test");
   selectOptions("faFarmerProvince",data.provinces,selectedProvince);
   selectOptions("faPricePlace",data.prices.places,selectedPlace);
   selectOptions("faCommodity",data.prices.items.map(x=>x.name),0);
   $("faTradeScope").addEventListener("change",renderTrade);
+  $("faTradeMonth").addEventListener("change",renderTrade);
   $("faFarmerMetric").addEventListener("change",()=>{farmerMetric=$("faFarmerMetric").value;renderFarmer()});
   $("faFarmerProvince").addEventListener("change",()=>{selectedProvince=Number($("faFarmerProvince").value);renderFarmer()});
   $("faCommodity").addEventListener("change",()=>{priceCommodity=Number($("faCommodity").value);renderPrices()});
