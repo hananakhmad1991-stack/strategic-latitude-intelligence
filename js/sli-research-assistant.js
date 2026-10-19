@@ -176,8 +176,18 @@ function renderClaimReview(qualityAudit,report,language="id"){
   uncited+(isId?" tanpa sitasi langsung":" missing local citations"));
  card.append(title);
  card.append(node("p",null,isId
-  ?"Audit ini hanya membandingkan teks laporan dengan cuplikan sumber yang terpilih. Belum membaca atau memverifikasi langsung isi setiap dokumen primer. Tidak ada klaim yang dinyatakan otomatis terverifikasi."
-  :"This checks report text against selected source excerpts only. It does not independently read or verify each primary document. No claims are automatically certified."));
+  ?"Audit membandingkan klaim dengan cuplikan sumber. Pemeriksaan halaman sumber primer dibatasi dan tidak membaca PDF; kecocokan angka BUKAN pembuktian klaim. Tidak ada klaim yang dinyatakan otomatis terverifikasi."
+  :"Review compares claims with cited excerpts. Original publisher HTML checks are limited and do not parse PDFs; numeric presence is NOT claim verification. No claims are automatically certified."));
+ const probe=qualityAudit?.primary_source_probe;
+ if(probe){
+  card.append(node("p","sli-ra-source-role",(isId?"HALAMAN PRIMER: ":"PRIMARY PAGES: ")+
+   String(Number(probe.checked)||0)+(isId?" dokumen diperiksa terbatas; URL hanya dari penerbit yang diizinkan.":" limited publisher page checks; allowlisted URLs only.")));
+  for(const x of (Array.isArray(probe.results)?probe.results.slice(0,2):[])){
+   card.append(node("p","sli-ra-source-role","["+String(x.citation||"?")+"] "+String(x.status||"unknown")+
+    (Array.isArray(x.claim_numbers_absent)&&x.claim_numbers_absent.length?" · "+
+      (isId?"Angka tidak ditemukan: ":"Missing from page: ")+x.claim_numbers_absent.join(", "):"")));
+  }
+ }
  const items=Array.isArray(review.items)?review.items.slice(0,8):[];
  for(const item of items){
   const p=node("p",null,"["+(Array.isArray(item.citations)?item.citations.join(","):"")+"] "+
