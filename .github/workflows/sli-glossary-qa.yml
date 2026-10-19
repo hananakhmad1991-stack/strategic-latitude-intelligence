@@ -12,6 +12,9 @@ on:
       - 'scripts/validate_sli_glossary.py'
       - '.github/workflows/sli-glossary-qa.yml'
       - 'tests/qa-unified-glossary-ui.mjs'
+      - 'tests/qa-sli-docs-locale.mjs'
+      - 'data/sli-publication-source-catalog.json'
+      - 'data/sli-automation-policy.json'
       - 'tests/qa-sli-navigation-ui.mjs'
       - 'js/sli-navigation.js'
       - 'data/pln-saidi-saifi-2023-2025.json'
@@ -53,3 +56,4 @@ jobs:
           npm install --no-save --no-package-lock --silent jsdom@25
           node tests/qa-unified-glossary-ui.mjs
           node --test tests/qa-sli-navigation-ui.mjs
+          node --test tests/qa-sli-docs-locale.mjs
