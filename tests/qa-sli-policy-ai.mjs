@@ -88,7 +88,7 @@ test("primary article reference pilot preserves law-to-article and source proven
  assert.match(worker,/\.\.\.articleEvidence,\.\.\.legalEvidence/);
 });
 test("unsupported article citations fail closed in owner-only legal model output", async()=>{
- const {auditLegalArticleCitations}=await import("../research-api/src/legal-citation-audit.mjs");
+ const {auditLegalArticleCitations,recoverUnsupportedLegalAnswer}=await import("../research-api/src/legal-citation-audit.mjs");
  const source={source_url:"https://peraturan.go.id/files/uu16-2016bt.pdf",provision_anchor:{article:"Pasal 1",instrument_ref:"UU 16/2016"}};
  assert.equal(auditLegalArticleCitations("Pasal 1 UU 16/2016 mengesahkan perjanjian [1].",[source]).pass,true);
  assert.equal(auditLegalArticleCitations("Pasal 9 UU 16/2016 mensyaratkan izin [1].",[source]).pass,false);
@@ -96,7 +96,14 @@ test("unsupported article citations fail closed in owner-only legal model output
  assert.equal(auditLegalArticleCitations("Pasal 1 UU 23/2014 [1].",[source]).pass,false);
  assert.equal(auditLegalArticleCitations("Pasal 1 mengesahkan perjanjian [1].",[source]).pass,false);
  assert.equal(auditLegalArticleCitations("Perlu verifikasi naskah resmi dan ketentuan peralihan.",[source]).pass,true);
- assert.match(worker,/unsupported_article_citation/);
+ assert.equal(auditLegalArticleCitations("Pasal 1 mengesahkan persetujuan [1].",[source]).pass,true);
+ const recovery=recoverUnsupportedLegalAnswer("Pasal 9 UU 16/2016 membutuhkan bukti lain [1].",[source]);
+ assert.equal(recovery.recovered,true);
+ assert.equal(recovery.source_limited,true);
+ assert.equal(recovery.audit.pass,true);
+ assert.match(recovery.answer,/pemeriksaan sumber hukum/i);
+ assert.doesNotMatch(recovery.answer,/Pasal 9/);
+ assert.match(worker,/recoverUnsupportedLegalAnswer/);
 });
 test("modified source modules pass the JavaScript parser",()=>{
  for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
