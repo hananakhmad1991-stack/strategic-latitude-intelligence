@@ -85,7 +85,7 @@ test("primary article reference pilot preserves law-to-article and source proven
  assert.match(bridge,/legalProvisionEvidence/);
  assert.match(worker,/import \{legalProvisionEvidence\}/);
  assert.match(worker,/ARTICLE CITATIONS/);
- assert.match(worker,/\.\.\.articleEvidence,\.\.\.legalEvidence/);
+ assert.match(worker,/\.\.\.articleEvidence,\.\.\.treatyChronologyEvidence,\.\.\.legalEvidence/);
 });
 test("unsupported article citations fail closed in owner-only legal model output", async()=>{
  const {auditLegalArticleCitations,recoverUnsupportedLegalAnswer}=await import("../research-api/src/legal-citation-audit.mjs");
