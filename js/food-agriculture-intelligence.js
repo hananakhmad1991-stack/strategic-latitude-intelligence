@@ -80,6 +80,48 @@ function renderTrade(){
  $("faTradeInsight").textContent=t("Period / Periode: ","Periode data: ")+period+". "+t("Select a bar to inspect its source value.","Klik batang untuk melihat angka bersumber.");
  attachProvider("faTradeChartCard",[t("Subsector","Sub-sektor"),t("Export (thousand USD)","Ekspor (ribu USD)"),t("Import (thousand USD)","Impor (ribu USD)"),t("Balance (thousand USD)","Neraca (ribu USD)"),"Source"],rows.map(r=>[r.sector,r.export,r.import,r.balance,rowSource(data,i)+" · "+period]));
 }
+const ns="http://www.w3.org/2000/svg";
+function svgNode(name,attrs={}){const p=document.createElementNS(ns,name);for(const [key,value] of Object.entries(attrs))p.setAttribute(key,String(value));return p}
+function renderNationalTrend(){
+ const groupIndex=Number($("faNationalGroup").value)||0;
+ const metric=$("faNationalMetric").value==="ntup"?"ntup":"ntp";
+ const item=data.nationalFarmerIndices.series[groupIndex];
+ const vals=item[metric],dates=data.nationalFarmerIndices.periods;
+ // The first observation May 2025 is eight calendar months before January 2026.
+ const months=[0,8,9,10,11,12],m=70,M=720,top=28,bottom=248;
+ const lo=Math.floor((Math.min(...vals)-3)/5)*5,hi=Math.ceil((Math.max(...vals)+3)/5)*5;
+ const x=i=>m+months[i]/12*(M-m),y=v=>bottom-(v-lo)/(hi-lo)*(bottom-top);
+ const area=$("faNationalTrend");area.replaceChildren();
+ const svg=svgNode("svg",{viewBox:"0 0 780 295","aria-label":"NTP/NTUP "+item.name+" "+dates.join(", "),role:"img"});
+ svg.classList.add("fa-national-svg");
+ for(let t=0;t<=4;t++){
+  const v=lo+(hi-lo)*t/4,yy=y(v);
+  svg.append(svgNode("line",{x1:m,y1:yy,x2:M,y2:yy,stroke:"#36566b","stroke-width":"1"}));
+  const label=svgNode("text",{x:m-10,y:yy+4,fill:"#b7cedb","font-size":"12","text-anchor":"end"});
+  label.textContent=decimal(v,1);svg.append(label);
+ }
+ const curve=vals.map((v,i)=>(i?"L":"M")+x(i).toFixed(1)+" "+y(v).toFixed(1)).join(" ");
+ svg.append(svgNode("path",{d:curve,fill:"none",stroke:"#d7b678","stroke-width":"3","stroke-linejoin":"round"}));
+ vals.forEach((v,i)=>{
+  const cx=x(i),cy=y(v);
+  const btn=svgNode("circle",{cx,cy,r:i===5?7:5,fill:i===5?"#f1d396":"#81c7ac",stroke:"#183449","stroke-width":"2",tabindex:"0",role:"button","aria-label":dates[i]+": "+decimal(v),style:"cursor:pointer"});
+  const show=()=>{
+   $("faNationalDetail").textContent=item.name+" · "+metric.toUpperCase()+" · "+dates[i]+": "+decimal(v)+". "+t("Published index 2018=100; not household income.","Indeks sumber 2018=100; bukan pendapatan rumah tangga.");
+   svg.querySelectorAll("circle").forEach(n=>n.setAttribute("stroke-width","2"));btn.setAttribute("stroke-width","5");
+  };
+  btn.addEventListener("click",show);
+  btn.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();show()}});
+  svg.append(btn);
+  const text=svgNode("text",{x:cx,y:bottom+27,fill:"#d4e1e9","text-anchor":"middle","font-size":"12"});
+  text.textContent=["May 25","Jan 26","Feb 26","Mar 26","Apr 26","May 26"][i];svg.append(text);
+ });
+ area.append(svg);
+ const last=vals.at(-1),earlier=vals.at(-2);
+ $("faNationalDetail").textContent=item.name+" · "+metric.toUpperCase()+": "+decimal(last)+" ("+t("May 2026","Mei 2026")+"), "+t("monthly change","perubahan bulanan")+" "+(last-earlier>=0?"+":"")+decimal(last-earlier)+" "+t("index points","poin indeks")+". "+t("Click any chart point for a source-dated reading.","Klik titik grafik untuk melihat data bersumber.");
+ $("faNationalSource").href=rowSource(data,item.table);
+ attachProvider("faNationalTrendCard",["Reference period",item.name+" "+metric.toUpperCase()+" (2018=100)","Source"],dates.map((day,i)=>[day,vals[i],rowSource(data,item.table)]));
+}
+
 function farmerValues(){return farmerMetric==="ntup"?data.ntp.ntup:farmerMetric==="ntp_april"?data.ntp.april:data.ntp.may}
 function renderFarmer(){
  const values=farmerValues();
@@ -164,17 +206,20 @@ function renderSourceList(){
 }
 function selectOptions(elId,values,selected){const parent=$(elId);parent.replaceChildren();values.forEach((x,i)=>{const o=el("option",x);o.value=String(i);parent.append(o)});parent.value=String(selected)}
 function renderAll(){
- titleLocalized();renderKpis();renderTrade();renderFarmer();renderPrices();renderOrg();assessments();renderSourceList();
+ titleLocalized();renderKpis();renderTrade();renderNationalTrend();renderFarmer();renderPrices();renderOrg();assessments();renderSourceList();
 }
 async function init(){
  try{
   const res=await fetch("./data/food-agriculture-2026.json",{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);
-  data=await res.json();if(data.schema!=="sli-food-2026-launch-v1"||data.provinces.length!==38||data.tables.length!==63||data.trade.length!==15||data.tradeMonthly?.length!==60)throw Error("Food source dataset failed integrity test");
+  data=await res.json();if(data.schema!=="sli-food-2026-launch-v1"||data.provinces.length!==38||data.tables.length!==63||data.trade.length!==15||data.tradeMonthly?.length!==60||data.nationalFarmerIndices?.series?.length!==6)throw Error("Food source dataset failed integrity test");
+  selectOptions("faNationalGroup",data.nationalFarmerIndices.series.map(x=>x.name),0);
   selectOptions("faFarmerProvince",data.provinces,selectedProvince);
   selectOptions("faPricePlace",data.prices.places,selectedPlace);
   selectOptions("faCommodity",data.prices.items.map(x=>x.name),0);
   $("faTradeScope").addEventListener("change",renderTrade);
   $("faTradeMonth").addEventListener("change",renderTrade);
+  $("faNationalGroup").addEventListener("change",renderNationalTrend);
+  $("faNationalMetric").addEventListener("change",renderNationalTrend);
   $("faFarmerMetric").addEventListener("change",()=>{farmerMetric=$("faFarmerMetric").value;renderFarmer()});
   $("faFarmerProvince").addEventListener("change",()=>{selectedProvince=Number($("faFarmerProvince").value);renderFarmer()});
   $("faCommodity").addEventListener("change",()=>{priceCommodity=Number($("faCommodity").value);renderPrices()});
