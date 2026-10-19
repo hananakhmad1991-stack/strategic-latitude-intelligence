@@ -206,10 +206,10 @@
       "parent_id": "phe",
       "name": "PT Pertamina Hulu Indonesia",
       "business_id": "Operasi migas regional Kalimantan",
-      "source_url": "https://phi.pertamina.com/pdf/Sustainability%20Report%20PHI%202024.pdf",
-      "source_date": "2024-12-31",
+      "source_url": "https://phi.pertamina.com/id/relasi-investor-dan-pengadaan/relasi-investor/pemegang-saham",
+      "source_date": "2026-10-19",
       "relationship": "subsidiary",
-      "ownership_pct": null,
+      "ownership_pct": 99.93,
       "website_domain": "phi.pertamina.com",
       "directors": [
         {
@@ -231,9 +231,9 @@
       "source_url": "https://phi.pertamina.com/pdf/Sustainability%20Report%20PHI%202024.pdf",
       "source_date": "2024-12-31",
       "relationship": "subsidiary",
-      "ownership_pct": null,
+      "ownership_pct": 99,
       "website_domain": null,
-      "source_note": "Relasi menurut diagram PHI FY2024; lakukan pemeriksaan ulang akibat restrukturisasi setelah 2024",
+      "source_note": "Diagram hukum saham PHI FY2024 menunjukkan 99% saham PHR oleh PHI, tetapi operasi PHR berada di Regional 1 Sumatera, bukan Regional 3 Kalimantan. Jangan samakan bagan kepemilikan hukum dengan garis pelaporan operasional; verifikasi status saham setelah reorganisasi 2025.",
       "tier": 3,
       "tier_label": "cicit"
     },
@@ -246,7 +246,7 @@
       "source_url": "https://phi.pertamina.com/pdf/Sustainability%20Report%20PHI%202024.pdf",
       "source_date": "2024-12-31",
       "relationship": "subsidiary",
-      "ownership_pct": null,
+      "ownership_pct": 99.93,
       "website_domain": null,
       "tier": 3,
       "tier_label": "cicit"
@@ -383,10 +383,10 @@
       "parent_id": "phe",
       "name": "PT Badak NGL",
       "business_id": "Pengolahan dan operasional LNG",
-      "source_url": "https://phe.pertamina.com/assets/files/compro-shu-15112022_compressed.pdf",
-      "source_date": "2022-11-15",
+      "source_url": "https://www.badaklng.com/shareholders",
+      "source_date": "2026-10-19",
       "relationship": "subsidiary",
-      "ownership_pct": null,
+      "ownership_pct": 55,
       "website_domain": null,
       "tier": 2,
       "tier_label": "cucu"
@@ -1486,6 +1486,21 @@
       "website_domain": null,
       "tier": 2,
       "tier_label": "cucu"
+    },
+    {
+      "id": "bche",
+      "group": "pertamina",
+      "parent_id": "badak",
+      "tier": 3,
+      "tier_label": "cicit",
+      "name": "Badak Chiyoda Enerproco LLC (BChE)",
+      "business_id": "Jasa engineering dan teknologi fasilitas LNG di Houston",
+      "source_url": "https://badaklng.com/images/2023/Report/annual-report-badak-lng-2022.pdf",
+      "source_date": "2022-12-31",
+      "relationship": "subsidiary",
+      "ownership_pct": 51,
+      "website_domain": null,
+      "source_note": "Laporan resmi Badak NGL FY2022. Status dan komposisi saham terbaru perlu ditinjau."
     }
   ]
 }
