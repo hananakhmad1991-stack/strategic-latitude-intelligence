@@ -40,7 +40,7 @@ const energyGovernance=page.slice(page.indexOf('function governance(root,data,as
 assert.ok(energyGovernance.startsWith('function governance('),'Energy governance view must be exported as an isolated testable function');
 const E=(tag,cls,label)=>{const v=document.createElement(tag);if(cls)v.className=cls;if(label!==undefined&&label!==null)v.textContent=label;return v};
 const LINK=(url,label)=>{const a=E('a',null,label);a.href=url;return a};
-const govContext={...context,E,LINK,showActorWatch:()=>{}};
+const govContext={...context,E,LINK,translated:s=>String(s),ENID:(en,id)=>window.SLIi18n?.language==='id'?id:en,showActorWatch:()=>{}};
 vm.runInNewContext(energyGovernance,govContext);
 const build=window.buildSLIEnergyHierarchy(data.governance,data.as_of);
 const org=build.sectors.energy;
@@ -87,4 +87,22 @@ assert.equal(sourceMap.querySelectorAll('.stake-tab').length,3,'Keep Overview / 
 tabs[1].events.click();
 assert.equal(hierarchy.hidden,false);
 assert.equal(network.hidden,true);
+// Critical regression: ID changes the institutional data body, not just the nav button.
+window.SLIi18n={language:'id'};
+const idRoot=new FakeNode('section');
+window.initSLICommandHierarchy('energy',idRoot,build);
+for(let i=0;i<18;i++)await Promise.resolve();
+const idHierarchy=idRoot.querySelector('.sli-hier-root');
+assert.ok(idHierarchy,'Indonesian institutional tree must load');
+assert.match(idHierarchy.textContent,/Terdapat tiga sistem berbeda/, 'Executive institution introduction still English');
+assert.match(idHierarchy.textContent,/PEMERINTAH · KEBIJAKAN & LEMBAGA PUBLIK/, 'Government grouping still English');
+assert.match(idHierarchy.textContent,/Kepresidenan \/ Dewan Energi Nasional/, 'Presidency title still English');
+assert.match(idHierarchy.textContent,/Presiden dan Ketua DEN/, 'Original energy actor role still English');
+assert.match(idHierarchy.textContent,/Semua sektor · berkelompok/, 'Filter choices still English');
+assert.match(idHierarchy.textContent,/entitas terpetakan/, 'Dynamic entity counts still English');
+assert.ok(!idHierarchy.textContent.includes('Three separate systems:'), 'An untranslated source English paragraph is visible in ID mode');
+assert.ok(!idHierarchy.textContent.includes('GOVERNMENT · POLICY & PUBLIC INSTITUTIONS'), 'English sector heading visible after selecting Indonesian');
+const idProfile=idRoot.querySelector('.sli-hier-profile');
+assert.match(idProfile.textContent,/Jenis bukti:/, 'Right inspector provenance has not been localized');
+
 console.log('Energy Security parity QA PASS: '+org.nodes.length+' institutional/oversight/state nodes; '+org.market.length+' operators; one explorer, two tabs, original interactive network retained.');
