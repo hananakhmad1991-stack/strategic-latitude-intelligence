@@ -75,6 +75,9 @@ export function selectPolicyEvidence(question,max=4,documents=policyLegalEvidenc
  const geoList=batam?["kepulauan riau","batam"]:bekasi?["jawa barat","bekasi"]:semarang?["jawa tengah","semarang"]:[];
  const key=(String(question).match(/\b(uu|pp|perpres|perda)\s*(?:no(?:mor)?\s*)?(\d+)\s*[/\-]\s*((?:19|20)\d{2})\b/i)||[]);
  const refKey=key.length?simplify(key[1]+" "+key[2]+" "+key[3]):"";
+ const wantsDigital=/pusat data|data center|data centre|komputasi|artificial intelligence|ai\b|pdp/.test(q);
+ const wantsClimate=/paris|iklim|climate|carbon|karbon|emisi|ndc|nze/.test(q);
+ const wantsMineral=/minerba|mineral|nikel|nickel|smelter|tambang/.test(q);
  return documents.map(d=>{
   const area=simplify(d.geo||"");
   if(geoList.length&&area!=="indonesia"&&!geoList.some(x=>area.includes(x)||x.includes(area)))return null;
@@ -82,6 +85,11 @@ export function selectPolicyEvidence(question,max=4,documents=policyLegalEvidenc
   let score=0;
   for(const t of terms){if(title.split(" ").includes(t))score+=7;else if(title.includes(t))score+=4;else if(text.includes(t))score+=1;}
   if(refKey&&title.replace(/\s+/g,"").includes(refKey.replace(/\s+/g,"")))score+=100;
+  if(wantsDigital&&d.topic==="ai")score+=18;
+  if(wantsMineral&&d.topic==="minerals")score+=24;
+  if(wantsClimate&&d.topic==="energy")score+=10;
+  // A Paris Agreement question must not retrieve unrelated foreign treaty doctrines.
+  if(q.includes("paris")&&area!=="indonesia"&&!/paris|unfccc|climate|iklim/.test(title))return null;
   if(geoList.length&&area!=="indonesia")score+=7;
   if(q.includes("paris")&&d.id==="policy_law_uu16paris")score+=40;
   if(q.includes("otonomi")&&d.id==="policy_law_uu23local")score+=40;
