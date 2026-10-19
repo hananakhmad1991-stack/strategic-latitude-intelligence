@@ -1,4 +1,4 @@
-import {METHODS,getMethod,parseCsv,toRows,describe,evaluate} from "./sli-analytical-core.mjs?v=20261018-econ5";
+import {METHODS,getMethod,parseCsv,toRows,describe,evaluate,recommendExecutableMethod,METHOD_FORMULAS} from "./sli-analytical-core.mjs?v=20261020-methods1";
 import {multivariateOLS,panelFixedEffects,sensitivityOLS,detectPanelColumns,panelStability} from "./sli-econometrics.mjs?v=20261018-econ12";
 import {scatterPlot,investorMarkdown,downloadMarkdown} from "./sli-econometrics-report.mjs?v=20261018-econ12";
 import {buildBpsOfficialPanel,BPS_PANEL_META} from "./sli-bps-official-panel.mjs?v=20261018-bps3";
@@ -11,7 +11,7 @@ box.setAttribute("aria-label","SLI methodology and investor data workbench");
 box.innerHTML=`<div class="ra-wb-header"><div><span class="ra-wb-kicker">SLI · ANALYTICAL WORKBENCH</span><h2>Research Methods & Data Lab</h2><p data-wb-i18n="intro">Pilih pendekatan analitis, lalu gabungkan dataset CSV/JSON milik Anda dengan hasil riset SLI. Perhitungan awal berjalan lokal di browser.</p></div><span class="ra-wb-marker">49 METODE</span></div>
 <div class="ra-wb-grid"><label>Metodologi / Method<select id="raMethod" aria-label="Select quantitative or qualitative methodology"><option value="auto">Auto · AI chooses the suitable method</option></select></label>
 <label>Dataset pengguna / Your data<input id="raDataFile" type="file" accept=".csv,.json,text/csv,application/json" aria-label="Upload CSV or JSON dataset"></label></div>
-<p id="raDatasetStatus" class="ra-wb-dataset-status" role="status" aria-live="polite">Belum ada dataset aktif. Gunakan data BPS atau unggah CSV/JSON.</p>\n<p id="raMethodInfo" class="ra-wb-detail" role="status">Auto: SLI memilih metodologi berdasar pertanyaan dan kelayakan data; bukan mengklaim semua metode sudah dijalankan.</p>
+<p id="raDatasetStatus" class="ra-wb-dataset-status" role="status" aria-live="polite">Belum ada dataset aktif. Gunakan data BPS atau unggah CSV/JSON.</p>\n<p id="raMethodInfo" class="ra-wb-detail" role="status">Auto memilih metode sesuai data; tidak mengklaim model yang tidak dijalankan.</p><details id="raMethodCard" class="ra-wb-detail"><summary>Rumus, sumber & batasan / Method statement</summary><p id="raMethodFormula"></p><p id="raMethodRequirements"></p><a id="raMethodFormulaSource" target="_blank" rel="noopener noreferrer" hidden>Rujukan metode ↗</a></details>
 <div class="ra-wb-grid ra-wb-variables" id="raVariables" hidden><label>Predictor / X<select id="raPredictor"></select></label><label>Outcome / Y<select id="raOutcome"></select></label></div>
 <div class="ra-wb-buttons"><button type="button" id="raRunMethod">Hitung di Browser / Run Local Model</button><button type="button" id="raClearData">Hapus Data / Clear</button></div>
 <div class="ra-wb-output" id="raModelResult" role="status" aria-live="polite">Belum ada dataset. CSV/JSON maksimum 1 MB dan 3.000 observasi; XLSX bisa diekspor dahulu sebagai CSV.</div>
@@ -186,8 +186,12 @@ for(const group of groups){
 }
 function desc(){
  const m=getMethod(method.value);
- detail.textContent=m?`${m.name} — ${STATUS[m.status]}. Input: ${m.requires}.`:
- "Auto method selection: AI can propose a method but must check data suitability, assumptions and estimator availability. No model output is fabricated.";
+ detail.textContent=m?`${m.name} — ${STATUS[m.status]}. Input: ${m.requires}.`:"Auto: hanya metode yang kompatibel dan punya estimator bisa dihitung; tidak ada hasil karangan.";
+ const formula=m?METHOD_FORMULAS[m.id]:null;
+ $("raMethodFormula").textContent=formula?.formula||(m?"Estimator belum tersedia: desain metodologi saja.":"Pilih metode untuk melihat persamaan.");
+ $("raMethodRequirements").textContent=m?"Syarat: "+m.requires+". Status: "+STATUS[m.status]+".":"Otomatis hanya jika data dan mesin tersedia.";
+ const source=$("raMethodFormulaSource");source.hidden=!formula?.source;
+ if(formula?.source)source.href=formula.source;else source.removeAttribute("href");
  const numeric=data?describe(data).filter(v=>v.n>=3).map(v=>v.column):[];
  varGroup.hidden=!(data&&["pearson","ols","multivariate_ols","panel_fe"].includes(method.value)&&numeric.length>=2);
  advanced.hidden=!(data&&["multivariate_ols","panel_fe"].includes(method.value));
@@ -314,11 +318,14 @@ datafile.addEventListener("change",async()=>{
    const raw=JSON.parse(text);
    if(Array.isArray(raw))data=toRows(raw);
    else if(raw&&typeof raw==="object"&&Array.isArray(raw.rows))data=toRows(raw.rows);
-   else if(raw&&typeof raw==="object"&&(Array.isArray(raw.pairwise)||Object.hasOwn(raw,"initial_stock")))model=raw;
-   else throw Error("JSON must contain rows, AHP pairwise criteria or stock-flow parameters");
+   else if(raw&&typeof raw==="object"&&(Array.isArray(raw.pairwise)||Object.hasOwn(raw,"initial_stock")||
+    (Array.isArray(raw.alternatives)&&Array.isArray(raw.criteria)&&Array.isArray(raw.matrix))||
+    ["regionalIndustry","regionalTotal","nationalIndustry","nationalTotal"].every(k=>Object.hasOwn(raw,k))||
+    ["regionalIndustryBase","regionalIndustryEnd","nationalIndustryBase","nationalIndustryEnd","nationalTotalBase","nationalTotalEnd"].every(k=>Object.hasOwn(raw,k))))model=raw;
+   else throw Error("JSON needs rows or AHP, TOPSIS, LQ, Shift-share or Stock-flow parameters");
   }else throw Error("Only CSV and JSON are accepted. Export Excel (.xlsx) as CSV first.");
   if(data){fillVariables();show(`Local dataset ready: ${data.length} rows × ${Object.keys(data[0]).length} columns. Choose a method and run calculations; data stays in browser unless you opt in.`)}
-  else{desc();show("Structured model loaded locally. Select AHP or Stock-flow and run calculations.")}
+  else{desc();show("Model terstruktur siap. Pilih AHP, TOPSIS, LQ, Shift-share atau Stock-flow lalu hitung.")}
   updateDatasetStatus();
  }catch(e){data=null;model=null;error("Cannot read dataset: "+String(e.message).slice(0,200));updateDatasetStatus()}
 });
