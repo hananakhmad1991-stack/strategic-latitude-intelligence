@@ -100,6 +100,7 @@ test("unsupported article citations fail closed in owner-only legal model output
  assert.equal(auditLegalArticleCitations("Pasal 1 UU Nomor 16 Tahun 2016 [1].",[source]).pass,true);
  assert.equal(auditLegalArticleCitations("Pasal 1 UU No. 23 Tahun 2014 [1].",[source]).pass,false);
  assert.equal(auditLegalArticleCitations("Pasal 1 ayat (2) UU 16/2016 [1].",[source]).pass,false);
+ assert.equal(auditLegalArticleCitations("### 2) Isi Pasal 1: Makna pengesahan", [source]).pass,true,"Headings alone should not be interpreted as statutory claims");
  const recovery=recoverUnsupportedLegalAnswer("Pasal 9 UU 16/2016 membutuhkan bukti lain [1].",[source]);
  assert.equal(recovery.recovered,true);
  assert.equal(recovery.source_limited,true);
@@ -134,6 +135,18 @@ test("legal research references preserve original law year and readable source p
  assert.match(clean,/Batas verifikasi hukum/);
  assert.match(css,/Research sources: dark Navy/);
  assert.match(css,/#raSourcesPanel>h3/);
+});
+test("research conversation presents readable disclosures without unrelated sector cards",()=>{
+ const html=file("sli-research-ai.html");
+ const client=file("js/sli-research-assistant.js");
+ const css=file("css/sli-research-brand.css");
+ assert.doesNotMatch(html,/<script[^>]+src="\.\/js\/sli-contextual-briefs\.mjs/);
+ assert.match(html,/<details id="raModelStatement"[^>]*hidden/);
+ assert.match(html,/data-id="Catatan metode/);
+ assert.match(client,/if\(!statement&&!legalAudit\?\.recovered\)/);
+ assert.match(css,/#raFollowupPanel textarea/);
+ assert.match(css,/#raConversation #raModelStatementBody/);
+ assert.match(html,/20261019-legal-cohesion1/);
 });
 test("modified source modules pass the JavaScript parser",()=>{
  for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
