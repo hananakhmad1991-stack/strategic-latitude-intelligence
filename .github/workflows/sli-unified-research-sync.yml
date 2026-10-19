@@ -9,6 +9,8 @@ on:
       - 'scripts/sli_research_source_adapters.py'
       - 'research-api/src/claim-evidence-audit.mjs'
       - 'tests/qa-sli-claim-audit.mjs'
+      - 'research-api/src/primary-claim-probe.mjs'
+      - 'tests/qa-sli-primary-claim-probe.mjs'
       - 'scripts/audit_sli_research_index.py'
       - 'research-api/src/dashboard-corpus.mjs'
       - 'research-api/src/owner-test-worker.mjs'
@@ -51,7 +53,7 @@ jobs:
           node --check research-api/src/claim-evidence-audit.mjs
           python -m py_compile scripts/sli_research_source_adapters.py
           node --check research-api/src/owner-test-worker.mjs
-          node --test tests/qa-sli-dashboard-corpus.mjs tests/qa-sli-claim-audit.mjs
+          node --test tests/qa-sli-dashboard-corpus.mjs tests/qa-sli-claim-audit.mjs tests/qa-sli-primary-claim-probe.mjs
       - name: Explain actual coverage, not fake fact verification
         run: |
           python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
