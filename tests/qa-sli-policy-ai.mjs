@@ -152,8 +152,28 @@ test("research conversation presents readable disclosures without unrelated sect
  assert.match(css,/#raConversation #raModelStatementBody/);
  assert.match(html,/20261019-legal-cohesion1/);
 });
+test("report export toolbar uses stable table host, and separated numbered list items remain sequential",()=>{
+ const exporter=file("js/sli-visual-export.js");
+ const markdown=file("js/sli-research-visuals.js");
+ assert.match(exporter,/node\.closest\("\.sli-ra-table-wrap"\)/);
+ assert.match(exporter,/if\(reportHost\)return reportHost;/);
+ const begin=markdown.indexOf("const orderedStart="),end=markdown.indexOf("\nfunction renderMarkdown(",begin);
+ assert.ok(begin>0&&end>begin,"Ordered-list helper must exist");
+ const sequence=new Function(markdown.slice(begin,end).replace("const orderedStart=","return "))();
+ assert.equal(sequence(1,0),1);
+ assert.equal(sequence(1,1),2);
+ assert.equal(sequence(1,2),3);
+ assert.equal(sequence(4,0),4);
+ assert.match(markdown,/orderedCount=0;continue/);
+});
+test("statutory analysis does not conflate ratification with project-level obligations",()=>{
+ assert.match(worker,/Separate treaty ratification, international commitments, and nationally enforceable sector\/project duties/);
+ assert.match(worker,/avoid redundant numbered lists or tables/);
+ assert.match(worker,/Never claim a named ministry, current NDC version, specific implementing rule/);
+ assert.match(worker,/No unrelated news, charts, self-generated source list/);
+});
 test("modified source modules pass the JavaScript parser",()=>{
- for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
+ for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-research-visuals.js","js/sli-visual-export.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
   const p=spawnSync(process.execPath,["--check",new URL("../"+path,import.meta.url).pathname],{encoding:"utf8"});
   assert.equal(p.status,0,path+": "+p.stderr);
  }
