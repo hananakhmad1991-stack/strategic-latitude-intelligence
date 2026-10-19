@@ -45,3 +45,14 @@ test("disabled probe sends no requests and retains transparent review scope",asy
  const o=await probeCitedPrimaryPages(review,docs,{enabled:false,fetcher:async()=>{count++;throw Error("should not run")}});
  assert.equal(count,0);assert.equal(o.checked,0);assert.match(o.review_scope,/not_verification/);
 });
+
+test("publisher numeric probe handles USD20.9 billion against a cited USD20,9 miliar claim",async()=>{
+ const review={items:[{claim:"Proyek LNG Masela senilai USD 20,9 miliar pada 2026 [1].",citations:[1]}]};
+ const fetcher=async()=>({ok:true,status:200,headers:{get:k=>k==="content-type"?"text/html":null},
+  text:async()=>"<html><body>16 July 2026. Integrated LNG Abadi project is USD20.9 billion.</body></html>"});
+ const r=await probeCitedPrimaryPages(review,docs,{fetcher});
+ assert.equal(r.results.length,1);
+ assert.equal(r.results[0].status,"publisher_page_numbers_present");
+ assert.deepEqual(r.results[0].claim_numbers_absent,[]);
+ assert.match(r.review_scope,/not_verification/);
+});

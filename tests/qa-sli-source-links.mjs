@@ -58,3 +58,14 @@ test("All SLI user-facing source routes keep machine-data links internal",()=>{
   assert.ok(!/Lihat keterangan sumber & unduh JSON|Lihat data sumber JSON|Open indexed source JSON/i.test(text),f+" has legacy JSON UI label");
  }
 });
+
+test("Agriculture dashboard retains shared source transport and Research AI shows sampled claim-review limits",()=>{
+ const agriculture=load("food-agriculture-intelligence.html");
+ assert.equal(agriculture.split("js/sli-shared-appendix.js").length-1,1);
+ assert.match(agriculture,/SLI chrome prepaint/);
+ const research=load("js/sli-research-assistant.js");
+ assert.match(research,/Number\(review.shown_claims\)/);
+ assert.match(research,/publisher_page_numbers_present:/);
+ assert.match(research,/Angka tertulis pada halaman, belum membuktikan klaim/);
+ assert.doesNotMatch(research,/Angka belum ditemukan pada cuplikan sumber:/);
+});
