@@ -12,6 +12,7 @@ import {auditReport} from "./report-audit.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {policyLegalEvidence,selectPolicyEvidence} from "./policy-corpus.mjs";
+import {legalProvisionEvidence} from "./legal-provisions.mjs";
 import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
 import {fetchReviewedSecondaryArticles} from "./secondary-news.mjs";
 import {fetchMonitoringEvidence,selectMonitoringNewsEvidence} from "./monitoring-evidence.mjs";
@@ -129,20 +130,22 @@ export default{
   // evidence for the reports they published, NOT definitive proof of the event.
   // Law-specific owner queries can draw on source-linked public SLI policy metadata.
   // This is not full legal text and never an automatic claim of current enforceability.
-  const legalQuestion=/\b(?:uu|pp)\s*\d+|peraturan|regulasi|undang.undang|perpres|perda|pergub|jdih|izin|perizinan|otonomi|legal|regulatory|regulation|law\b|compliance|kewenangan daerah/i.test(payload.question);
+  const legalQuestion=/\b(?:uu|pp)\s*\d+|peraturan|regulasi|undang.undang|perpres|perda|pergub|jdih|izin|perizinan|otonomi|legal|regulatory|regulation|law\b|compliance|kewenangan daerah|paris|unfccc|ratifikasi|pasal/i.test(payload.question);
+  const articleEvidence=legalProvisionEvidence(payload.question,2);
   const legalEvidence=legalQuestion?selectPolicyEvidence(payload.question,4,policyLegalEvidence()):[];
   const primaryEvidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",legalEvidence.length?5:9);
   const [monitored,reviewed]=await Promise.all([fetchMonitoringEvidence(),fetchReviewedSecondaryArticles()]);
   const reviewedEvidence=selectResearchEvidence(reviewed.articles,payload.question,payload.history,"pro",1);
   const monitoringEvidence=selectMonitoringNewsEvidence(monitored.documents,payload.question,payload.history,reviewedEvidence.length?3:4);
   const secondaryEvidence=[...reviewedEvidence,...monitoringEvidence];
-  const evidence=[...legalEvidence,...primaryEvidence,...secondaryEvidence];
+  const evidence=[...articleEvidence,...legalEvidence,...primaryEvidence,...secondaryEvidence];
   // No source match does not prevent academic methodology assistance.
   // Without evidence, only a clearly scoped research-design response is allowed;
   // there is no empirical claim, SLI numeric data or fabricated citation.
   const energyQuestion=/ketahanan energi|energy security|energy resilience|produksi migas|supply minyak|harga bbm|subsidi energi|transisi energi|pasokan bbm/i.test(payload.question+" "+(payload.history||[]).filter(h=>h.role==="user").slice(-1).map(h=>h.content).join(" "));
   const monitoring=energyQuestion?await fetchEnergyMonitoring():{status:"not_requested",as_of:null,signals:[]};
   const params=modelRequest(payload,evidence,env.RESEARCH_MODEL);
+  if(articleEvidence.length)params.instructions+="\nARTICLE CITATIONS: Only the specifically named articles appearing in PRIMARY legal provision evidence may be discussed as article-grounded paraphrases. Source PDF URL plus an article anchor are required; DO NOT assert this is a verified consolidated law, final compliance decision, or that all article text is in the model context. Point out when further primary text is needed.";
   if(legalEvidence.length)params.instructions+="\nIMPORTANT LEGAL EVIDENCE BOUNDARY: SLI Policy source snippets are CURATED INDEX METADATA, NOT statute text, current consolidated law or verified article-level authority. Cite a linked legal record only for the limited claim in that metadata. Do not fabricate article numbers, current legal force, licence entitlement, tax incentive, legal compliance or a definitive conclusion. State which primary document/version and government JDIH confirmation is still needed.";
   if(secondaryEvidence.length)params.instructions+="\nSLI SECONDARY NEWS IS ADMISSIBLE: Every numbered SECONDARY MONITORING RECORD is evidence that the named outlet REPORTED the headline at its dated time; ATTRIBUTED SECONDARY MEDIA REPORT additionally reflects claim-level article review. Include Reuters, CGTN, ANTARA and other publishers without arbitrary exclusion. Cite as [n] and name publisher/date; if only an RSS link is provided never pretend the full article was read. For a Reuters headline claiming Hormuz closed, say 'Reuters reported a closure [n]' and compare with shipping, energy, and SLI data. Neither media reputation nor RSS metadata independently proves event truth or quantified impacts. Assess corroboration and conflicting reports. Never claim verified legislation, completed projects, actual CAPEX, MW in service or Indonesian freight impact from headlines alone. Separate attributed reporting from government statistics, source-confirmed event, and modeled downstream effects. Avoid repeated generic caveats; make substantive source comparisons. Never reproduce copyrighted text." ;
   const monitoringText=monitoringPromptContext(monitoring);
