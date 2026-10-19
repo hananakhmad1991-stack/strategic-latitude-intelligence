@@ -1,0 +1,28 @@
+/* SLI unified visual identities — quiet navy, restrained gold; official-site favicon is not a verified logo. */
+.sli-entity-brand{display:inline-flex;align-items:center;justify-content:center;flex:0 0 34px;width:34px;height:34px;border:1px solid #42617a;background:#19344b;color:#d9be87;border-radius:10px;overflow:hidden;vertical-align:middle}
+.sli-entity-brand .sli-entity-icon{width:19px;height:19px;flex:none}
+.sli-entity-brand .sli-entity-favicon{display:block;width:24px;height:24px;object-fit:contain;border-radius:4px}
+.sli-entity-icon{width:17px;height:17px;flex:none;vertical-align:middle}
+.sli-person-link{color:#f0cf92;text-decoration:none;font-weight:700;overflow-wrap:anywhere}
+.sli-person-link[href]:hover,.sli-person-link[href]:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.sli-hier-inline-person{display:inline-flex;margin:5px 4px 6px 7px;padding:3px 7px;font-size:11px;max-width:100%;line-height:1.35;overflow-wrap:anywhere}
+.sli-portal-glyph .sli-entity-icon{width:29px;height:29px}
+.sli-hier-card-title{display:flex;align-items:center;gap:8px;width:100%;line-height:1.4}
+.sli-hier-card-title strong{min-width:0;overflow-wrap:anywhere}
+.sli-hier-card-title .sli-entity-brand{flex-basis:28px;width:28px;height:28px;border-radius:8px}
+.sli-hier-card-title .sli-entity-brand .sli-entity-favicon{width:21px;height:21px}
+.sli-hier-profile-title{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+.sli-hier-profile-title h4{margin:0}
+.sli-hier-person{display:flex;gap:5px;flex-wrap:wrap;align-items:baseline}
+.sli-nav-icon{width:15px;height:15px;margin-right:5px}
+.sli-platform-sector-group a,.sli-menu-group a{display:flex;gap:5px;align-items:center}
+.sli-platform-sector-group a .sli-nav-icon,.sli-menu-group a .sli-nav-icon{opacity:.8}
+.sli-platform-link .sli-nav-icon,.sli-related-links a .sli-nav-icon{width:14px;height:14px}
+.sli-universal-nav.sli-nav-compact{gap:0;padding:8px 14px}
+.sli-universal-nav.sli-nav-compact .sli-explore-menu{display:none}
+.sli-universal-nav.sli-nav-compact .sli-related-links{display:none}
+.sli-universal-nav.sli-nav-compact .sli-universal-actions>a:not(.sli-guide-link){display:none}
+.sli-universal-nav.sli-nav-compact .sli-universal-actions{gap:0}
+.sli-universal-nav.sli-nav-compact .sli-location{font-size:12px}
+.sli-universal-nav.sli-nav-compact .sli-guide-link{font-size:11px}
+@media(max-width:740px){.sli-hier-card-title{gap:6px}.sli-universal-nav.sli-nav-compact .sli-guide-link{display:none}}
