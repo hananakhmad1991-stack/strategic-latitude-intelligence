@@ -110,6 +110,8 @@ function renderSources(sources,answer="",charts=[]){
    graphed.has(i+1)?(state.language==="id"?"Sumber grafik":"Chart evidence"):
    (state.language==="id"?"Konteks terpilih; belum dikutip":"Selected context; not cited");
   card.append(node("p","sli-ra-source-role",role));
+  if(s.source_type==="reviewed_primary_article_paraphrase")card.append(node("p","sli-ra-source-role",state.language==="id"?"Ringkasan pasal diperiksa · bukan teks UU konsolidasi":"Reviewed article summary · not consolidated statutory text"));
+  if(s.source_type==="legal_index_metadata")card.append(node("p","sli-ra-source-role",state.language==="id"?"Metadata registri · status peraturan belum dipastikan":"Legal registry metadata · current status not certified"));
   if(s.source_type==="secondary_news")card.append(node("p","sli-ra-source-role",state.language==="id"?"Berita sekunder teratribusi · laporan media, bukan otomatis fakta independen atau statistik resmi.":"Attributed secondary reporting · not automatically verified as an independent fact or official statistic."));
 
   const url=safeUrl(s.source_url||"");
@@ -319,7 +321,7 @@ async function submit(){
    report.prepend(node("p","sli-ra-evidence-note",description));
   }
   const audit=payload.quality_audit;
-  if(audit?.review_scope==="structural_only_not_factual_verification"){
+  if(audit?.review_scope==="structural_only_not_factual_verification"&&!legalRecovered){
    const warning=audit.structural_status!=="complete_structure";
    const title=state.language==="id"?(warning?"Perlu tinjauan struktur laporan":"Struktur laporan lolos pemeriksaan awal"):(warning?"Report structure needs review":"Report structure passed initial checks");
    const issueNames={
