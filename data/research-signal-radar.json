@@ -1,26 +1,11 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-19T08:01:53.135720+00:00",
-  "last_attempt_at_utc": "2026-10-19T08:01:53.135720+00:00",
+  "generated_at_utc": "2026-10-19T08:56:36.860451+00:00",
+  "last_attempt_at_utc": "2026-10-19T08:56:36.860451+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
-        {
-          "id": "copper-supply-antofagasta-nets-its-highest-ever-copper-treatment-charges-in-auction-sources-say-mining-com",
-          "title": "Antofagasta nets its highest ever copper treatment charges in auction, sources say - Mining.com",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNRVZ2cF9VblNFdFNFQ2pJTzJVMkxXWEk0WkNGdUdZaGhPY2FPYkdNVWhhd210R0pUSlJtT3pUUGRQd1c5VTV4VEdDVk1FbHU5Q3RtVzNUOERtcHd1M2F4dnZ2YnlYcmtTQ3hUczRxVFlKdWZ1QXpVeFRZTVlYbnVva2U5TEZzLXFFR1pyRlhJeVZaZFRtdDNON2s3RXhSejZDQ18tQkNMS3VxeVN4TFE?oc=5",
-          "publisher": "Mining.com",
-          "publisher_url": "https://www.mining.com",
-          "published_at_utc": "2026-10-16T16:43:41+00:00",
-          "sector": "minerals",
-          "scope": "geopolitical",
-          "topic_id": "copper_supply",
-          "channel": "Copper, alumina and aluminium exposure",
-          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
         {
           "id": "copper-supply-tech-giants-come-knocking-for-a-piece-of-anglo-american-as-copper-scarcity-bites-wanblad-tells-ft-mining-com",
           "title": "Tech giants come knocking for a piece of Anglo American as copper scarcity bites, Wanblad tells FT - Mining.com",
@@ -754,7 +739,7 @@
   },
   "counts": {
     "minerals": {
-      "geopolitical": 12,
+      "geopolitical": 11,
       "domestic": 13
     },
     "ai": {
@@ -785,7 +770,7 @@
       "id": "copper_supply",
       "scope": "minerals/geopolitical",
       "state": "scanned",
-      "found": 6
+      "found": 5
     },
     {
       "id": "smelter_projects",
