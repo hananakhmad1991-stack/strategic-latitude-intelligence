@@ -42,6 +42,19 @@ test("province farmer indices cover 38 BPS places with consistent numeric arrays
  assert.equal(data.ntp.may[37],93.93);
  assert.equal(data.ntp.unit,"indeks 2018=100");
 });
+test("national index comparison preserves source calendar periods and all original subsectors",()=>{
+ const v=data.nationalFarmerIndices;
+ assert.equal(v.series.length,6);
+ assert.deepEqual(v.periods,["2025-05","2026-01","2026-02","2026-03","2026-04","2026-05"]);
+ for(const r of v.series){
+  assert.equal(r.ntp.length,6);assert.equal(r.ntup.length,6);
+  assert.ok(r.ntp.every(x=>Number.isFinite(x)&&x>0));
+  assert.ok(r.ntup.every(x=>Number.isFinite(x)&&x>0));
+  assert.ok(data.tables.find(t=>t.number===r.table).structured);
+ }
+ assert.equal(v.series[0].ntp[5],127.73);
+ assert.equal(v.series[3].ntp[5],140.58);
+});
 test("all eleven 34-place commodity price series distinguish true missing values from zero",()=>{
  assert.equal(data.prices.places.length,34);
  assert.equal(data.prices.items.length,11);
@@ -69,7 +82,7 @@ test("food UX follows existing Energy/SLI architecture with genuine interactive 
  const css=read("css/food-agriculture-intelligence.css");
  const nav=read("js/sli-navigation.js"),home=read("index.html");
  for(const id of ["fa-overview","fa-trade","fa-farmers","fa-prices","fa-governance","fa-analysis","fa-sources"])assert.ok(page.includes('id="'+id+'"'));
- for(const id of ["faTradeScope","faTradeMonth","faFarmerProvince","faCommodity","faPricePlace","faOrgGraph","faSourceSearch"])assert.ok(page.includes('id="'+id+'"'));
+ for(const id of ["faTradeScope","faTradeMonth","faNationalGroup","faNationalMetric","faFarmerProvince","faCommodity","faPricePlace","faOrgGraph","faSourceSearch"])assert.ok(page.includes('id="'+id+'"'));
  assert.match(page,/sli-live-data\.js/);
  assert.match(page,/sli-navigation\.js\?v=20261019-id-audit9/);
  assert.match(page,/localStorage\.getItem\('sli-ui-language'\)/);
