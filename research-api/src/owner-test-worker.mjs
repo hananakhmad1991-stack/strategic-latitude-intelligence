@@ -131,9 +131,10 @@ export default{
   // evidence for the reports they published, NOT definitive proof of the event.
   // Law-specific owner queries can draw on source-linked public SLI policy metadata.
   // This is not full legal text and never an automatic claim of current enforceability.
-  const legalQuestion=/\b(?:uu|pp)\s*\d+|peraturan|regulasi|undang.undang|perpres|perda|pergub|jdih|izin|perizinan|otonomi|legal|regulatory|regulation|law\b|compliance|kewenangan daerah|paris|unfccc|ratifikasi|pasal/i.test(payload.question);
-  const articleEvidence=legalProvisionEvidence(payload.question,2);
-  const legalEvidence=legalQuestion?selectPolicyEvidence(payload.question,4,policyLegalEvidence()):[];
+  const legalScope=(payload.history||[]).filter(h=>h.role==="user").slice(-2).map(h=>h.content).join(" ")+" "+payload.question;
+  const legalQuestion=/\b(?:uu|pp)\s*\d+|peraturan|regulasi|undang.undang|perpres|perda|pergub|jdih|izin|perizinan|otonomi|legal|regulatory|regulation|law\b|compliance|kewenangan daerah|paris|unfccc|ratifikasi|pasal/i.test(legalScope);
+  const articleEvidence=legalQuestion?legalProvisionEvidence(legalScope,2):[];
+  const legalEvidence=legalQuestion?selectPolicyEvidence(legalScope,4,policyLegalEvidence()):[];
   const primaryEvidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",legalEvidence.length?5:9);
   const [monitored,reviewed]=await Promise.all([fetchMonitoringEvidence(),fetchReviewedSecondaryArticles()]);
   const reviewedEvidence=selectResearchEvidence(reviewed.articles,payload.question,payload.history,"pro",1);
