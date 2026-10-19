@@ -162,7 +162,7 @@ export function markdown(report){
  if(!failed.length)out.push("- No failing offline regression cases.");
  for(const x of failed)out.push("- "+x.id+" ("+x.domain+"): "+x.note);
  for(const x of report.source_alerts)out.push("- Upstream data warning: "+x.issue+" — "+x.status);
- out.push("","### Safeguards","- No OpenAI/Tavily charge and no autonomous code writes, source overrides or deployments.","- Human feedback becomes new regression cases only after review.","- Original publisher claim-to-source correctness and real generative output still need human/owner-staging evaluation.");
+ out.push("","### Safeguards","- No OpenAI/Tavily charge; autonomous agent may propose a reviewed branch, but never writes directly to main, overrides primary data or deploys.","- Human feedback becomes new regression cases only after review.","- Original publisher claim-to-source correctness and real generative output still need human/owner-staging evaluation.");
  return out.join("\n")+"\n";
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
