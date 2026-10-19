@@ -15,6 +15,9 @@ test("food is a new source-dated sector, never a synthetic live quote",()=>{
 });
 test("food trade totals preserve original thousands USD and raw/processed differences",()=>{
  assert.equal(data.trade.length,15);
+ assert.equal(data.tradeMonthly.length,60,"3 coverage scopes × 5 sectors × 4 months");
+ assert.equal(new Set(data.tradeMonthly.map(r=>r.period)).size,4);
+ assert.ok(data.tradeMonthly.every(r=>Math.abs(r.export-r.import-r.balance)<=2));
  for(const scope of ["Segar + olahan","Segar","Olahan"]){
   const total=find(scope,"Pertanian Total");
   assert.ok(total&&total.unit==="ribu USD");
@@ -66,7 +69,7 @@ test("food UX follows existing Energy/SLI architecture with genuine interactive 
  const css=read("css/food-agriculture-intelligence.css");
  const nav=read("js/sli-navigation.js"),home=read("index.html");
  for(const id of ["fa-overview","fa-trade","fa-farmers","fa-prices","fa-governance","fa-analysis","fa-sources"])assert.ok(page.includes('id="'+id+'"'));
- for(const id of ["faTradeScope","faFarmerProvince","faCommodity","faPricePlace","faOrgGraph","faSourceSearch"])assert.ok(page.includes('id="'+id+'"'));
+ for(const id of ["faTradeScope","faTradeMonth","faFarmerProvince","faCommodity","faPricePlace","faOrgGraph","faSourceSearch"])assert.ok(page.includes('id="'+id+'"'));
  assert.match(page,/sli-live-data\.js/);
  assert.match(page,/sli-navigation\.js\?v=20261019-id-audit9/);
  assert.match(page,/localStorage\.getItem\('sli-ui-language'\)/);
