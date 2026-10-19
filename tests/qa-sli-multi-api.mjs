@@ -153,3 +153,40 @@ test('Tavily discovery links are surfaced with publisher date and actual citatio
  assert.match(read('research-api/src/owner-test-worker.mjs'),/RECENT-WEB COMPARISON RULE/);
  assert.match(script,/renderLiveDiscovery\(payload,report,state\.language\)/);
 });
+
+
+test('Owner CCS bridge activates only for relevant CCS prompts and includes public project dossiers',async()=>{
+ const {isCCSQuestion,ccsResearchEvidence}=await import('../research-api/src/ccs-corpus.mjs');
+ for(const q of ['Analisis investasi CCS Indonesia 2026','Perkembangan CCUS di Sukowati','carbon capture storage infrastructure'])assert.ok(isCCSQuestion(q));
+ assert.equal(isCCSQuestion('Harga BBM dan pembangunan LNG Indonesia 2026'),false);
+ assert.deepEqual(ccsResearchEvidence('Harga BBM dan gas LNG'),[]);
+ const evidence=ccsResearchEvidence('Analisis perkembangan investasi CCS Indonesia 2026');
+ assert.ok(evidence.length>=11);
+ for(const name of ['Tangguh','Gundih','Sukowati','Masela','Jatibarang','Arun','Asri']){
+  assert.ok(evidence.some(x=>x.title.toLowerCase().includes(name.toLowerCase())),name);
+ }
+ assert.ok(evidence.some(x=>x.id==='sli_ccs_bp_ucc_fabrication_2025'));
+ assert.ok(evidence.some(x=>x.id==='sli_ccs_inpex_abadi_offtake_2026'));
+ assert.ok(evidence.some(x=>x.id==='sli_ccs_esdm_abadi_groundbreaking_2026'));
+ assert.equal(new Set(evidence.map(x=>x.id)).size,evidence.length);
+ for(const row of evidence){
+  assert.match(row.source_url,/^https:\/\//);
+  assert.ok(row.title&&row.text.length>70&&row.period&&row.publisher);
+  assert.match(row.topic,/CCS CCUS/);
+ }
+});
+test('CCS project stages and primary milestones are not conflated with commissioned carbon injection',async()=>{
+ const {ccsResearchEvidence}=await import('../research-api/src/ccs-corpus.mjs');
+ const docs=ccsResearchEvidence('Perkembangan CCS Indonesia 2026');
+ const masela=docs.find(x=>x.title.includes('Abadi Masela gas development'));
+ assert.ok(masela);assert.match(masela.text,/Wider gas project groundbreaking/);
+ assert.match(masela.text,/NOT inauguration of CCS injection/);
+ assert.match(docs.find(x=>x.id==='sli_ccs_esdm_abadi_groundbreaking_2026').text,/does NOT independently establish/);
+ assert.match(docs.find(x=>x.id==='sli_ccs_bp_ucc_fabrication_2025').text,/NOT verified commercial CO2 injection/);
+ assert.match(docs.find(x=>x.id==='sli_ccs_inpex_abadi_offtake_2026').text,/final investment decision/);
+ const worker=read('research-api/src/owner-test-worker.mjs');
+ assert.match(worker,/const ccsEvidence=ccsQuestion\?ccsResearchEvidence/);
+ assert.match(worker,/\.\.\.ccsEvidence,\.\.\.primaryEvidence/);
+ assert.match(worker,/CCS PROJECT STAGE RULE/);
+ assert.match(worker,/primaryEvidence0\.filter\(d=>!\/masela\|abadi lng\//);
+});
