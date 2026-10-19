@@ -153,6 +153,7 @@ test('Original investment interface integrates Gini context, comparative visuali
  assert.match(html,/not official regional Gini/i);
  assert.match(html,/gini-inequality\.html/);
  const inline=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
- assert.equal(inline.length,1);
- assert.doesNotThrow(()=>new Function(inline[0][1]));
+ assert.equal(inline.length,2,'Persisted locale prepaint and investment interactive JS are both required');
+ assert.match(inline[0][1],/sli-chrome-pending/);
+ for(const item of inline)assert.doesNotThrow(()=>new Function(item[1]));
 });
