@@ -1,0 +1,91 @@
+{
+  "schema_version": "sli-agent-eval-cases-v1",
+  "scope": "PUBLIC synthetic and nonconfidential regression cases; not factual certification or live LLM grading",
+  "human_review_status": "seed_cases_pending_domain_expert_review",
+  "update_policy": "Promote feedback into this file only in reviewed pull requests. Never automatically add raw user prompts, client records, credentials or unverified model answers.",
+  "cases": [
+    {
+      "id": "method_ahp",
+      "category": "method",
+      "prompt": "Tolong olah AHP kuesioner saya",
+      "expected": "ahp"
+    },
+    {
+      "id": "method_did",
+      "category": "method",
+      "prompt": "Use DiD to estimate treatment effects",
+      "expected": "did",
+      "expected_status": "design"
+    },
+    {
+      "id": "method_lq",
+      "category": "method",
+      "prompt": "Hitung LQ untuk provinsi",
+      "expected": "lq"
+    },
+    {
+      "id": "method_topsis",
+      "category": "method",
+      "prompt": "Rank investasi dengan TOPSIS",
+      "expected": "topsis"
+    },
+    {
+      "id": "method_ols",
+      "category": "method",
+      "prompt": "Regresi linear sederhana OLS",
+      "expected": "ols"
+    },
+    {
+      "id": "method_shiftshare",
+      "category": "method",
+      "prompt": "Analisis shift-share industri regional",
+      "expected": "shift_share"
+    },
+    {
+      "id": "method_montecarlo",
+      "category": "method",
+      "prompt": "Jalankan simulasi Monte Carlo untuk risiko",
+      "expected": "monte_carlo",
+      "expected_status": "design"
+    },
+    {
+      "id": "method_no_keyword",
+      "category": "method",
+      "prompt": "Bagaimana prospek energi Indonesia?",
+      "expected": "auto"
+    },
+    {
+      "id": "geo_jateng",
+      "category": "geography",
+      "prompt": "Analisis investasi Jawa Tengah",
+      "expected": [
+        "Jawa Tengah"
+      ]
+    },
+    {
+      "id": "geo_jabar",
+      "category": "geography",
+      "prompt": "Data center Jawa Barat",
+      "expected": [
+        "Jawa Barat"
+      ]
+    },
+    {
+      "id": "geo_papua_barat_daya",
+      "category": "geography",
+      "prompt": "Prospek Papua Barat Daya",
+      "expected": [
+        "Papua Barat Daya"
+      ]
+    },
+    {
+      "id": "geo_pair",
+      "category": "geography",
+      "prompt": "Bandingkan Jawa Tengah dan Jawa Barat",
+      "expected": [
+        "Jawa Tengah",
+        "Jawa Barat"
+      ]
+    }
+  ]
+}
