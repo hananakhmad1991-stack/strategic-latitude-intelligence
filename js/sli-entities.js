@@ -37,12 +37,24 @@ function fromProjects(db){
   upsert({key:'project:'+I().nameKey(p.id),type:'project',title:p.name,person:'',source:safe(p.source_url),role:p.sector||'',date:p.evidence_date||db.as_of||'',sectors:['projects'],records:[{projectId:p.id,sector:p.sector,source:p.source_url}],summary:p.status_note||'',original:p});
  }
 }
+function fromCorporateGroups(db){
+ for(const n of db.records||[]){
+  if(!n?.id||!n.name||!safe(n.source_url))continue;
+  const rec={sector:'corporate',actorId:n.id,parentId:n.parent_id,relation:n.relationship,verification:'source-dated',source:n.source_url};
+  const key='company:'+I().nameKey(n.name);
+  upsert({key,type:'company',title:n.name,person:n.directors?.find(d=>d.title_id==='Direktur Utama')?.name||'',source:n.source_url,role:n.business_id,date:n.source_date,sectors:['corporate'],records:[rec],summary:n.business_id,original:n});
+  for(const d of n.directors||[]){
+   if(!d?.name||!safe(d.source_url))continue;
+   upsert({key:'person:'+I().nameKey(d.name),type:'person',title:d.name,person:d.name,source:d.source_url,role:d.title_id+' · '+n.name,date:d.source_date,sectors:['corporate'],records:[rec],summary:T('Source-dated director of ','Direksi yang tercatat di ')+n.name,original:n});
+  }
+ }
+}
 const typeLabels={person:['Person','Tokoh'],institution:['Institution','Lembaga'],company:['Company','Perusahaan'],project:['Project','Proyek']};
-const sectorLabels={minerals:['Critical minerals','Mineral kritis'],ai:['AI & digital','AI & digital'],projects:['Project register','Registri proyek']};
+const sectorLabels={corporate:['SOE Corporate Groups','Grup BUMN'],minerals:['Critical minerals','Mineral kritis'],ai:['AI & digital','AI & digital'],projects:['Project register','Registri proyek']};
 const labelType=a=>typeLabels[a.type]?.[id()?1:0]||a.type;
 function applyLanguage(){
  for(const e of document.querySelectorAll('[data-id][data-en]'))e.textContent=e.dataset[id()?'id':'en'];
- for(const [selector,opts] of [['sliEntityType',[['all','All entities','Semua entitas'],['person','People','Tokoh'],['institution','Institutions','Lembaga'],['company','Companies','Perusahaan'],['project','Projects','Proyek']]],['sliEntitySector',[['all','All sectors','Semua sektor'],['ai','AI & digital','AI & digital'],['minerals','Minerals','Mineral'],['projects','Project register','Registri proyek']]]]){
+ for(const [selector,opts] of [['sliEntityType',[['all','All entities','Semua entitas'],['person','People','Tokoh'],['institution','Institutions','Lembaga'],['company','Companies','Perusahaan'],['project','Projects','Proyek']]],['sliEntitySector',[['all','All sectors','Semua sektor'],['ai','AI & digital','AI & digital'],['minerals','Minerals','Mineral'],['projects','Project register','Registri proyek'],['corporate','Corporate groups','Grup BUMN']]]]){
   const select=$(selector);if(!select)continue;for(const [k,en,bahasa] of opts){const opt=[...select.options].find(x=>x.value===k);if(opt)opt.textContent=T(en,bahasa)}
  }
 }
@@ -112,9 +124,9 @@ function exportCSV(){
 }
 async function load(){
  try{
-  const results=await Promise.all(['./data/sector-command-hierarchy.json','./data/sli-project-registry.json'].map(async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(url+' HTTP '+r.status);return r.json()}));
-  if(!results[0]?.sectors||!Array.isArray(results[1]?.records))throw new Error('Entity schemas invalid');
-  fromHierarchy(results[0]);fromProjects(results[1]);
+  const results=await Promise.all(['./data/sector-command-hierarchy.json','./data/sli-project-registry.json','./data/sli-corporate-group-registry.json'].map(async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(url+' HTTP '+r.status);return r.json()}));
+  if(!results[0]?.sectors||!Array.isArray(results[1]?.records)||!Array.isArray(results[2]?.records))throw new Error('Entity schemas invalid');
+  fromHierarchy(results[0]);fromProjects(results[1]);fromCorporateGroups(results[2]);
   all=[...catalog.values()].sort((a,b)=>a.title.localeCompare(b.title,'id'));
   const hash=decodeURIComponent(location.hash.slice(1));selected=catalog.has(hash)?hash:'';
   applyLanguage();filter();

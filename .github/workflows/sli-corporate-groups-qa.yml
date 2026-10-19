@@ -1,0 +1,39 @@
+name: SLI Corporate Groups Ownership & Director QA
+on:
+  push:
+    paths:
+      - 'data/sli-corporate-group-registry.json'
+      - 'js/sli-corporate-groups.js'
+      - 'css/sli-corporate-groups.css'
+      - 'js/sli-entities.js'
+      - 'js/sli-entity-identity.js'
+      - 'sli-entities.html'
+      - 'tests/qa-sli-corporate-groups.mjs'
+      - '.github/workflows/sli-corporate-groups-qa.yml'
+  pull_request:
+    paths:
+      - 'data/sli-corporate-group-registry.json'
+      - 'js/sli-corporate-groups.js'
+      - 'css/sli-corporate-groups.css'
+      - 'js/sli-entities.js'
+      - 'js/sli-entity-identity.js'
+      - 'sli-entities.html'
+      - 'tests/qa-sli-corporate-groups.mjs'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  ownership-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Static syntax validation
+        run: |
+          node --check js/sli-corporate-groups.js
+          node --check js/sli-entities.js
+          node --check js/sli-entity-identity.js
+      - name: Ownership, evidence, linked people and UI regression
+        run: |
+          node --test tests/qa-sli-corporate-groups.mjs tests/qa-sli-entities.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-unified-dashboards.mjs
