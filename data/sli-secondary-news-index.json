@@ -18,8 +18,24 @@
     "regulatory-monitor",
     "publication-watch"
   ],
-  "count": 625,
+  "count": 626,
   "articles": [
+    {
+      "id": "sli_feed_71039c93b87755fc51909bf02",
+      "title": "Uu Nomor 2 Tahun 2024 tentang Provinsi Daerah Khusus Jakarta",
+      "publisher": "JDIH DKI Jakarta — Peraturan Daerah dan Kepala Daerah",
+      "url": "https://jdih.jakarta.go.id/dokumen/detail/14034",
+      "published_at_utc": "2026-10-19T11:39:56Z",
+      "date_type": "first_seen_in_monitor",
+      "sector": "regional",
+      "topic": "official_policy_news",
+      "geo": "Indonesia and global context",
+      "monitor_source": "regulatory-monitor",
+      "link_kind": "publisher_or_official_link",
+      "evidence_level": "official_metadata_change_candidate",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
     {
       "id": "sli_feed_10910db7e4d1b344359276ac8",
       "title": "Deforestasi Sawit Naik Seiring Produksi Biodiesel - Tempo.co",
@@ -81,22 +97,6 @@
       "monitor_source": "domestic-energy",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
-      "article_body_checked": false,
-      "claim_corroborated": false
-    },
-    {
-      "id": "sli_feed_71039c93b87755fc51909bf02",
-      "title": "Uu Nomor 2 Tahun 2024 tentang Provinsi Daerah Khusus Jakarta",
-      "publisher": "JDIH DKI Jakarta — Peraturan Daerah dan Kepala Daerah",
-      "url": "https://jdih.jakarta.go.id/dokumen/detail/14034",
-      "published_at_utc": "2026-10-19T08:02:14Z",
-      "date_type": "first_seen_in_monitor",
-      "sector": "regional",
-      "topic": "official_policy_news",
-      "geo": "Indonesia and global context",
-      "monitor_source": "regulatory-monitor",
-      "link_kind": "publisher_or_official_link",
-      "evidence_level": "official_metadata_change_candidate",
       "article_body_checked": false,
       "claim_corroborated": false
     },
@@ -1529,6 +1529,22 @@
       "title": "China's economic growth picks up as AI boom boosts exports - BBC",
       "publisher": "BBC",
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBKZDdHVkpOendSakJEYTM3TW1fY1JQS3BpYnZkSmtiRDJEdDlyNWZzcmFTclR6WEp5S1VtUS1ZZ0g5aE15YS14c0dsZnc4Z052M1hPZjJha0hWclk?oc=5",
+      "published_at_utc": "2026-10-19T02:03:04Z",
+      "date_type": "publisher_publication_date",
+      "sector": "ai",
+      "topic": "china_ai",
+      "geo": "Indonesia and global context",
+      "monitor_source": "research-signal-radar",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_2d3a031b754b46e09d0258c6b",
+      "title": "China economy: Growth accelerates as AI export boom outweighs domestic weakness - BBC",
+      "publisher": "BBC",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBiRHNscmo4QS1PNzdVejAzOTJHbzRXc1M4aHowZE8xaUl2VEFYaERGenhZcVAyVmVjTWVhallfSVdzOVMxREJldG1EUUxVQS0xQUl6SW9MZ0FwcERETFE?oc=5",
       "published_at_utc": "2026-10-19T02:03:04Z",
       "date_type": "publisher_publication_date",
       "sector": "ai",
@@ -3820,7 +3836,7 @@
       "published_at_utc": "2026-10-16T10:27:04Z",
       "date_type": "publisher_publication_date",
       "sector": "energy",
-      "topic": "Policy",
+      "topic": "Feedstock",
       "geo": "Indonesia and global context",
       "monitor_source": "energy-biofuels-watch",
       "link_kind": "aggregator",
@@ -6556,7 +6572,7 @@
       "published_at_utc": "2026-10-12T07:00:01Z",
       "date_type": "publisher_publication_date",
       "sector": "energy",
-      "topic": "Production",
+      "topic": "Policy",
       "geo": "Indonesia and global context",
       "monitor_source": "energy-biofuels-watch",
       "link_kind": "aggregator",
@@ -10021,5 +10037,5 @@
       "claim_corroborated": false
     }
   ],
-  "updated_at_utc": "2026-10-19T11:08:13.554787Z"
+  "updated_at_utc": "2026-10-19T12:10:32.601283Z"
 }
