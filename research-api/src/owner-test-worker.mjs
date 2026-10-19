@@ -137,7 +137,7 @@ export default{
   // not unrelated dated media reports or sector charts.
   const focusedArticleReading=legalQuestion&&/(?:\bpasal\s*\d+|\barticle\s*\d+|isi pasal|bunyi pasal)/i.test(payload.question);
   const articleEvidence=legalQuestion?legalProvisionEvidence(legalScope,2):[];
-  const legalEvidence=legalQuestion?selectPolicyEvidence(legalScope,4,policyLegalEvidence()):[];
+  const legalEvidence=legalQuestion?selectPolicyEvidence(legalScope,focusedArticleReading?2:4,policyLegalEvidence()):[];
   const primaryEvidence=focusedArticleReading?[]:selectResearchEvidence(DATA,payload.question,payload.history,"pro",legalEvidence.length?5:9);
   const [monitored,reviewed]=await Promise.all([fetchMonitoringEvidence(),fetchReviewedSecondaryArticles()]);
   const reviewedEvidence=focusedArticleReading?[]:selectResearchEvidence(reviewed.articles,payload.question,payload.history,"pro",1);
