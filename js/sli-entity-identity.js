@@ -68,7 +68,7 @@ function brand(title,type='building',className=''){
 function siteBrand(domain,type='building'){
  const wrap=document.createElement('span');wrap.className='sli-entity-brand';wrap.setAttribute('aria-hidden','true');
  const normalized=String(domain||'').toLowerCase().trim();
- if(!/^(?:[a-z0-9-]+\\.)+[a-z]{2,20}$/.test(normalized)){wrap.append(icon(type));return wrap}
+ if(!/^(?:[a-z0-9-]+\.)+[a-z]{2,20}$/.test(normalized)){wrap.append(icon(type));return wrap}
  const img=document.createElement('img');img.className='sli-entity-favicon';img.width=30;img.height=30;img.alt='';img.loading='lazy';img.referrerPolicy='no-referrer';
  img.src='https://www.google.com/s2/favicons?domain='+encodeURIComponent(normalized)+'&sz=64';
  img.addEventListener('error',()=>{img.remove();wrap.append(icon(type))},{once:true});
