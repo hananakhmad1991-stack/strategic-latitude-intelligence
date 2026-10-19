@@ -1,0 +1,50 @@
+name: SLI Entity Explorer and Unified UX QA
+on:
+  push:
+    paths:
+      - 'sli-entities.html'
+      - 'js/sli-entity-identity.js'
+      - 'js/sli-entities.js'
+      - 'css/sli-entity-identity.css'
+      - 'css/sli-entities.css'
+      - 'js/sli-navigation.js'
+      - 'js/sector-command-hierarchy.js'
+      - 'js/sli-research-ai.js'
+      - 'index.html'
+      - 'tests/qa-sli-entities.mjs'
+      - '.github/workflows/sli-entity-explorer-qa.yml'
+  pull_request:
+    paths:
+      - 'sli-entities.html'
+      - 'js/sli-entity-identity.js'
+      - 'js/sli-entities.js'
+      - 'css/sli-entity-identity.css'
+      - 'css/sli-entities.css'
+      - 'js/sli-navigation.js'
+      - 'js/sector-command-hierarchy.js'
+      - 'js/sli-research-ai.js'
+      - 'index.html'
+      - 'tests/qa-sli-entities.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check js/sli-entity-identity.js
+          node --check js/sli-entities.js
+          node --check js/sli-navigation.js
+          node --check js/sector-command-hierarchy.js
+          node --check js/sli-research-ai.js
+      - name: Entity, shared chrome and data regression tests
+        run: |
+          node --test tests/qa-sli-entities.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-home-portal.mjs
+          node tests/qa-command-hierarchy.mjs
