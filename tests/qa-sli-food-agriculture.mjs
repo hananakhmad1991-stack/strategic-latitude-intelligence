@@ -39,9 +39,9 @@ test("province farmer indices cover 38 BPS places with consistent numeric arrays
  assert.equal(data.ntp.may[37],93.93);
  assert.equal(data.ntp.unit,"indeks 2018=100");
 });
-test("seven 34-place commodity price series distinguish true missing values from zero",()=>{
+test("all eleven 34-place commodity price series distinguish true missing values from zero",()=>{
  assert.equal(data.prices.places.length,34);
- assert.equal(data.prices.items.length,7);
+ assert.equal(data.prices.items.length,11);
  assert.ok(data.prices.items.some(x=>x.table===49));
  assert.ok(data.prices.items.some(x=>x.values.includes(null)));
  for(const item of data.prices.items){
