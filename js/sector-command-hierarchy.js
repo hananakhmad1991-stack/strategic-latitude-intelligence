@@ -235,7 +235,9 @@ source.then(db=>{
  btn.append(el("small",null,ui(typeName[a.relation]||a.relation)+" · L"+depth),heading);
  if(a.person)btn.append(el("span","sli-hier-lead",a.person));
  if(a.stake)btn.append(el("span","sli-hier-share",a.stake));
- btn.addEventListener("click",()=>{selectedId=a.id;profile(a);draw()});wrap.append(btn);return wrap
+ btn.addEventListener("click",()=>{selectedId=a.id;profile(a);draw()});wrap.append(btn);
+ if(a.person&&window.SLIEntityIdentity){const person=window.SLIEntityIdentity.personLink(a.person,a.source);person.classList.add("sli-hier-inline-person");wrap.append(person)}
+ return wrap
  }
  function nested(a,depth,scope,maxDepth=8){
  const node=card(a,depth),children=actors.filter(x=>x.parent===a.id && x.lane===a.lane && x.relation!=="market");
