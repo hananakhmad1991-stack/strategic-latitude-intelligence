@@ -74,6 +74,20 @@ function apaEntry(s){
  const sourceLabel=isLaw?(String(s.source_type)==="legal_index_metadata"?"Indeks regulasi: ":"Ringkasan pasal terkurasi: "):"";
  return publisher+". ("+year+"). "+sourceLabel+title+". "+String(s.source_url||"");
 }
+/* Normalise model-generated repeated "1." list markers for rendered output and
+ * Markdown exports, while keeping headings, source citations and prose intact. */
+function normalizeReportListNumbers(markdown){
+ let count=0;
+ return String(markdown||"").split("\n").map(line=>{
+  if(/^#{1,6}\s/.test(line.trim())){count=0;return line}
+  const item=/^(\s*)(\d+)([.)])(\s+.+)$/.exec(line);
+  if(!item||item[1].length>0)return line;
+  const authored=Number(item[2]);
+  const resolved=authored===1&&count>0?count+1:authored;
+  if(Number.isInteger(resolved)&&resolved>=1&&resolved<=100){count=resolved;return item[1]+resolved+item[3]+item[4]}
+  return line;
+ }).join("\n");
+}
 function reportBody(answer){
  // Remove only ancillary sections; never truncate substantive conclusions after them.
  const lines=String(answer||"").split("\n"),out=[];
@@ -86,7 +100,7 @@ function reportBody(answer){
   }
   if(!skipping)out.push(line);
  }
- return out.join("\n").trim();
+ return normalizeReportListNumbers(out.join("\n").trim());
 }
 
 function renderModelStatement(answer,payload={}){
