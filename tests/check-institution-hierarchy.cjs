@@ -62,5 +62,5 @@ for(const p of ["ai-infrastructure.html","ai-intelligence-hub.html"]){
 }
 const homepage=read("index.html");
 assert.match(homepage,/energy-hierarchy-adapter\.js\?v=20261019-structure5/);
-assert.match(homepage,/research-chapters\.js\?v=20261019-structure4/);
+assert.match(homepage,/research-chapters\.js\?v=20261019-idcontent5/);
 console.log("PASS: presidential advice L1, Menko Bahlil L1, DEN/regions/Batam contextual L2, 30 AI institutions, visible navigable AI hierarchy.");
