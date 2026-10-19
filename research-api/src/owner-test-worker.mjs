@@ -135,7 +135,7 @@ export default{
   const legalQuestion=/\b(?:uu|pp)\s*\d+|peraturan|regulasi|undang.undang|perpres|perda|pergub|jdih|izin|perizinan|otonomi|legal|regulatory|regulation|law\b|compliance|kewenangan daerah|paris|unfccc|ratifikasi|pasal/i.test(legalScope);
   // An article-focused legal reading needs primary text and the regulatory registry,
   // not unrelated dated media reports or sector charts.
-  const focusedArticleReading=legalQuestion&&/(?:\\bpasal\\s*\\d+|\\barticle\\s*\\d+|isi pasal|bunyi pasal)/i.test(payload.question);
+  const focusedArticleReading=legalQuestion&&/(?:\bpasal\s*\d+|\barticle\s*\d+|isi pasal|bunyi pasal)/i.test(payload.question);
   const articleEvidence=legalQuestion?legalProvisionEvidence(legalScope,2):[];
   const legalEvidence=legalQuestion?selectPolicyEvidence(legalScope,4,policyLegalEvidence()):[];
   const primaryEvidence=focusedArticleReading?[]:selectResearchEvidence(DATA,payload.question,payload.history,"pro",legalEvidence.length?5:9);
