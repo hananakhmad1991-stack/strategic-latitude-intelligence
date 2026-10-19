@@ -86,8 +86,17 @@ test("primary article reference pilot preserves law-to-article and source proven
  assert.match(worker,/ARTICLE CITATIONS/);
  assert.match(worker,/\.\.\.articleEvidence,\.\.\.legalEvidence/);
 });
+test("unsupported article citations fail closed in owner-only legal model output", async()=>{
+ const {auditLegalArticleCitations}=await import("../research-api/src/legal-citation-audit.mjs");
+ const source={source_url:"https://peraturan.go.id/files/uu16-2016bt.pdf",provision_anchor:{article:"Pasal 1"}};
+ assert.equal(auditLegalArticleCitations("Pasal 1 mengesahkan perjanjian [1].",[source]).pass,true);
+ assert.equal(auditLegalArticleCitations("Pasal 9 mensyaratkan izin [1].",[source]).pass,false);
+ assert.equal(auditLegalArticleCitations("Article 3 of the law [1].",[source]).pass,false);
+ assert.equal(auditLegalArticleCitations("Perlu verifikasi naskah resmi dan ketentuan peralihan.",[source]).pass,true);
+ assert.match(worker,/unsupported_article_citation/);
+});
 test("modified source modules pass the JavaScript parser",()=>{
- for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
+ for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
   const p=spawnSync(process.execPath,["--check",new URL("../"+path,import.meta.url).pathname],{encoding:"utf8"});
   assert.equal(p.status,0,path+": "+p.stderr);
  }
