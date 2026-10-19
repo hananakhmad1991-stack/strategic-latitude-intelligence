@@ -59,6 +59,122 @@ function ui(s){if(!isId()||s==null)return s;let v=String(s);if(Object.prototype.
 const el=(tag,cl,text)=>{const x=document.createElement(tag);if(cl)x.className=cl;if(text!==undefined)x.textContent=ui(text);return x};
 const link=(url,label)=>{const a=el("a","sli-hier-link",label||"Original source ↗");if(/^https:\/\//.test(url||"")){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}else{a.textContent="No verified source"}return a};
 const typeName={root:"National direction",policy:"Sector policy",advisory:"Presidential advisory",administrative:"DEN administrative support", "local-government":"Regional administration & RUED","zone-interface":"Investment-zone functional interface",coordination:"Coordinating ministry",planning:"National development planning",reporting:"Administrative reporting",portfolio:"State portfolio",equity:"Shareholding / member",minority:"Minority investment / associate",oversight:"Independent constitutional oversight",research:"Research / applied innovation","strategic-interface":"Functional demand interface","joint-venture":"Joint venture / cross-holding",market:"Independent commercial market","security":"Cybersecurity"};
+
+/* Publisher source names remain intact. Indonesian summaries are curated,
+ * explicit and not asserted as direct translations of official source texts. */
+const ENERGY_ROLE_ID=[
+["Menetapkan arah kebijakan dan prioritas ketahanan energi nasional selaku Presiden dan Ketua DEN; bukan operator langsung fasilitas.",
+"Memberikan pertimbangan strategis kepada Presiden mengenai kebijakan dan pilihan energi; tidak mengeluarkan izin proyek.",
+"Menyiapkan administrasi, rapat, koordinasi dan kajian DEN; bertanggung jawab secara fungsional kepada DEN dan administratif kepada Menteri ESDM.",
+"Mengoordinasikan kementerian terkait hilirisasi dan transisi energi. Menko juga menjabat Menteri ESDM pada periode yang tercatat.",
+"Menetapkan kebijakan dan mengawasi sektor listrik, migas, EBT, mineral, serta CCS/CCUS sesuai kewenangan peraturan.",
+"Menangani APBN, subsidi, kompensasi, insentif perpajakan dan risiko fiskal; bukan operator fasilitas energi.",
+"Menyusun arah pembangunan nasional, target dan penyelarasan RPJMN dengan pembiayaan serta infrastruktur energi.",
+"Memfasilitasi persetujuan dan promosi investasi; perizinan teknis energi tetap mengikuti ketentuan ESDM.",
+"Menangani kebutuhan listrik industri, manufaktur strategis, hilirisasi dan dekarbonisasi sektor industri.",
+"Menangani perlindungan lingkungan, persetujuan dampak, dan pengawasan pencemaran; mandatnya berbeda dari pengaturan teknis penyimpanan karbon.",
+"Menangani perlindungan dan perizinan kawasan hutan yang berkaitan dengan energi panas bumi, air, biomassa dan jaringan.",
+"Membina pemerintahan daerah, RUED dan pertautan perizinan lokal dengan kebijakan nasional tanpa menghapus otonomi daerah.",
+"Menangani keselamatan pelabuhan, pelayaran BBM/LNG, transportasi dan logistik energi."],
+["BP BUMN menjalankan fungsi pengaturan dan pengawasan BUMN serta hak khusus saham Seri A Dwiwarna negara berdasarkan UU 16/2025; berbeda dari pengelolaan komersial Danantara.",
+"Ditjen Migas mengatur kegiatan migas, aspek teknis hulu, kebijakan komersial serta aturan CCS/CCUS sesuai mandat ESDM.",
+"Ditjen EBTKE mengurus energi terbarukan, bioenergi dan konservasi; target rencana harus dibedakan dari pembangkit beroperasi.",
+"Ditjen Ketenagalistrikan mengatur penyediaan tenaga listrik, tarif dan pengawasan sektor; PLN dan pengembang menjalankan aset.",
+"Ditjen Minerba menangani izin pertambangan, penerimaan/royalti, perencanaan produksi, harga acuan serta DMO.",
+"Badan Geologi memetakan sumber daya, panas bumi dan data bawah permukaan untuk menilai lokasi penyimpanan CO₂.",
+"SKK Migas mengelola kontrak kerja sama hulu (KKS/PSC) dan mengawasi pelaksanaan oleh KKKS.",
+"BPH Migas mengatur dan mengawasi penyaluran BBM, kuota BBM tertentu serta pengangkutan gas melalui pipa; berbeda dari SKK Migas.",
+"BPMA melaksanakan pengelolaan kegiatan hulu migas Aceh sesuai pengaturan kelembagaan khususnya.",
+"BAPETEN mengawasi keselamatan nuklir dan radiasi secara independen; berbeda dari lembaga riset.",
+"BRIN melakukan penelitian sistem energi, nuklir, dan inovasi; bukan badan pemberi izin pembangkit nuklir.",
+"LEMIGAS memberi pengujian dan bukti teknis terkait reservoir, migas dan penyimpanan karbon; kajian bukan bukti bahwa proyek sudah layak secara komersial."],
+["PLN mengelola pembangkitan, transmisi, distribusi, pengadaan dan pelayanan listrik. Profil pimpinan memerlukan verifikasi tanggal sumber.",
+"Pertamina mengelola kelompok usaha migas, BBM, investasi energi, serta pengawasan perusahaan anak dan subholding.",
+"Pertamina Patra Niaga menjalankan usaha hilir termasuk BBM, distribusi, perdagangan, ritel, dan logistik setelah restrukturisasi yang tercatat.",
+"Pertamina Hulu Energi mengelola kegiatan hulu, eksplorasi, produksi, aset gas, investasi PSC dan akuisisi; regulasinya berada pada ESDM/SKK Migas.",
+"Pertamina Hulu Indonesia menangani operasi hulu regional Kalimantan, produksi, pengeboran dan pengembangan.",
+"Pertamina Geothermal Energy mengembangkan dan mengoperasikan proyek panas bumi; cek tahapan COD dan keputusan investasinya.",
+"PLN Indonesia Power mengoperasikan dan mengembangkan pembangkit, termasuk kolaborasi energi terbarukan dalam grup PLN.",
+"PLN Energi Primer Indonesia mengelola rantai pasok batu bara, gas, biomassa dan energi primer untuk pembangkit PLN.",
+"PGN mengelola transmisi dan distribusi gas, LNG dan infrastruktur gas domestik. Aliran jaringan bukan produksi hulu.",
+"Geo Dipa mengembangkan proyek panas bumi terkait negara; status proyek dan investasi aktual harus dicek terpisah.",
+"Danantara menangani kepentingan ekonomi dan portofolio investasi BUMN berdasarkan UU 16/2025; bukan regulator teknis sektor energi.",
+"SMI dan lembaga pembiayaan publik menyalurkan pembiayaan proyek, pendanaan campuran, dan dukungan infrastruktur; bukan jumlah proyek yang diumumkan.",
+"Kelompok pengembang swasta, IPP dan kontraktor EPC; ini kategori pelaku, bukan satu perusahaan atau anak usaha Danantara.",
+"Danantara Sumberdaya Indonesia menjalankan fungsi perdagangan/fasilitasi komoditas seperti batu bara, CPO dan feropaduan; bukan badan izin ESDM.",
+"Danantara Asset Management mengelola kinerja dan restrukturisasi portofolio perusahaan negara; berbeda dari regulator BUMN.",
+"Danantara Investment Management menangani alokasi investasi dan pendanaan; komitmen harus dipisahkan dari dana yang sudah dicairkan.",
+"Medco adalah perusahaan energi swasta Indonesia dengan kepentingan operasi hulu termasuk Natuna; kepemilikan tiap blok perlu ditelusuri.",
+"ExxonMobil Cepu adalah kontraktor kegiatan hulu Cepu/Banyu Urip di bawah pengawasan SKK Migas; produksi diukur pada lapangan.",
+"bp Indonesia menangani proyek gas/LNG termasuk Tangguh bersama mitra PSC; bukan bagian dari pengendalian Danantara.",
+"INPEX Masela mengembangkan proyek Abadi LNG bersama mitra; perjanjian penjualan gas tidak membuktikan gas pertama sudah diproduksi.",
+"Searah merupakan usaha patungan Eni–PETRONAS di wilayah Kutei; berita transaksi saham harus dibedakan dari penyelesaian transaksi.",
+"Rukun Raharja merupakan kelompok swasta Indonesia dalam perdagangan gas industri, jaringan pipa dan kegiatan migas.",
+"Harbour Energy memiliki kepentingan PSC Andaman sesuai perkembangan divestasi; wilayah Natuna/Tuna lama tidak boleh otomatis dihitung lagi.",
+"Mubadala Energy adalah badan usaha energi milik negara asing yang berinvestasi dalam PSC Andaman; bukan regulator pemerintah Indonesia."],
+["Komisi XII DPR RI mengawasi kebijakan energi, SDA, lingkungan dan investasi melalui fungsi legislasi, anggaran, dan pengawasan.",
+"Komisi VI DPR RI mengawasi tata kelola dan kinerja BUMN, bukan pemberi izin sumber daya energi.",
+"Komisi VII DPR RI mengawasi industri, hilirisasi dan daya saing manufaktur, bukan regulator teknis energi.",
+"Komisi XI DPR RI menangani pengawasan fiskal, keuangan dan pembiayaan pembangunan yang berkaitan dengan subsidi energi.",
+"Badan Anggaran DPR RI membahas APBN, subsidi dan kompensasi energi, ICP serta asumsi fiskal bersama pemerintah.",
+"Badan Legislasi DPR RI melakukan harmonisasi dan perencanaan legislasi termasuk pembahasan aturan energi.",
+"BPK RI melakukan pemeriksaan keuangan negara secara independen; temuannya berbeda dari pengawasan kebijakan kementerian."],
+["DPD RI mewakili kepentingan daerah dalam kebijakan nasional, SDA, otonomi daerah dan pemerataan fiskal.",
+"Komite II DPD RI membahas SDA, energi, infrastruktur dan lingkungan serta kepentingan daerah dalam kebijakan.",
+"Komite IV DPD RI menangani pendapatan dan transfer daerah, DBH, royalti sumber daya dan kapasitas pembiayaan provinsi.",
+"DPD RI menyampaikan pertimbangan tentang penyelarasan aturan daerah dan rancangan terkait SDA; bukan penerbit izin migas."],
+["Pemerintah provinsi menjalankan RUED dan program energi daerah, koordinasi lokasi proyek dan izin sesuai kewenangan; otonomi daerah tetap berlaku.",
+"BP Batam dan otoritas kawasan memfasilitasi lahan, infrastruktur serta investasi industri dan energi; BP Batam bukan bawahan hukum BP BUMN, meski ditempatkan sebagai penghubung pada bagan.",
+"BNPB/BPBD menangani peringatan dan penanganan kebakaran, banjir serta gangguan infrastruktur; laporan bahaya tidak otomatis berarti aset energi terhenti.",
+"BMKG menyediakan informasi cuaca, iklim dan peringatan ekstrem untuk menilai risiko banjir, kekeringan dan jaringan listrik.",
+"Unit PLN daerah menangani penyaluran listrik, pemulihan gangguan dan logistik energi lokal; pemimpin korporasi pusat bukan pengganti penanggung jawab lapangan."]
+];
+function actorTitle(a){
+ const original=String(a.title||"");
+ if(!isId())return original;
+ if(a.title_id)return a.title_id;
+ return original.replace(/^Presidency \/ National Energy Council \(DEN\)$/,"Kepresidenan / Dewan Energi Nasional (DEN)")
+ .replace(/^PRESIDENCY ·/,"KEPRESIDENAN ·")
+ .replace(/Kementerian ESDM \/ Minister/g,"Kementerian ESDM / Menteri")
+ .replace(/Ministry of National Development Planning/g,"Kementerian Perencanaan Pembangunan Nasional")
+ .replace(/Coordinating Ministry for Downstreaming & Energy Transition/g,"Kementerian Koordinator Bidang Hilirisasi dan Transisi Energi")
+ .replace(/Ministry of Energy & Mineral Resources/g,"Kementerian Energi dan Sumber Daya Mineral")
+ .replace(/Ministry of Investment/g,"Kementerian Investasi")
+ .replace(/Ministry of Industry/g,"Kementerian Perindustrian")
+ .replace(/Ministry of Home Affairs/g,"Kementerian Dalam Negeri")
+ .replace(/National Development Planning/g,"Perencanaan Pembangunan Nasional")
+ .replace(/State-Owned Enterprises Regulatory Agency/g,"Badan Pengaturan BUMN")
+ .replace(/national utility/gi,"perusahaan listrik nasional")
+ .replace(/parent company/gi,"perusahaan induk")
+ .replace(/regional upstream/gi,"hulu regional")
+ .replace(/upstream/gi,"hulu").replace(/downstream/gi,"hilir")
+ .replace(/public financing institutions/gi,"lembaga pembiayaan publik")
+ .replace(/investment holding/gi,"induk investasi")
+ .replace(/SOE portfolio ownership & capital/gi,"kepemilikan dan modal portofolio BUMN")
+ .replace(/South Andaman/gi,"Andaman Selatan")
+ .replace(/Indonesian provincial governments/gi,"pemerintah provinsi Indonesia")
+ .replace(/Provincial governments/gi,"Pemerintah provinsi")
+ .replace(/Private domestic/gi,"Swasta domestik")
+ .replace(/Foreign private/gi,"Swasta asing")
+ .replace(/Government/gi,"Pemerintah")
+ .replace(/Public policy/gi,"Kebijakan publik")
+ .replace(/Independent/gi,"Independen")
+ .replace(/Energy & nuclear research/gi,"Riset energi dan nuklir")
+ .replace(/Operator/gi,"Operator");
+}
+function actorRole(a,sector){
+ if(!isId())return a.role||"";
+ if(a.role_id)return a.role_id;
+ const m=String(a.id||"").match(/^en-(\d+)-(\d+)$/);
+ if(m&&ENERGY_ROLE_ID[+m[1]]?.[+m[2]])return ENERGY_ROLE_ID[+m[1]][+m[2]];
+ const area=sector==="minerals"?"mineral, pertambangan dan hilirisasi":sector==="ai"?"AI, infrastruktur digital, komputasi dan pusat data":"ketahanan dan infrastruktur energi";
+ const type=ui(typeName[a.relation]||a.relation||"Koordinasi");
+ const org=actorTitle(a);
+ const explicit=/^(Kementerian|Ministry|Direktorat|Ditjen|BRIN|Bappenas)/i.test(org)?"sesuai mandat kelembagaannya":a.lane==="private"?"berdasarkan proyek dan kontrak komersial yang didokumentasikan":a.lane==="state"?"sesuai kepemilikan dan mandat usaha yang didokumentasikan":"sesuai kewenangan dan batas tanggung jawab yang berlaku";
+ return "Peran "+type.toLowerCase()+" pada "+area+", "+explicit+". Rincian tanggung jawab dan status terbaru perlu diverifikasi melalui sumber asli yang tercantum.";
+}
+function actorVerification(a){return isId()?"Status bukti sesuai sumber pada periode pelaporan; periksa tanggal dan dokumen asli":(a.verification||"Source not dated")}
+
 function init(which,root,provided){if(!root)return;root.replaceChildren(el("p","sli-hier-status","Loading verified institutional and corporate hierarchy…"));
 const source=provided?Promise.resolve(provided):fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Hierarchy source unavailable");return r.json()});
 source.then(db=>{
