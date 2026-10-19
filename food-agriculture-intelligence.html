@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="id">
+<head>
+<script>try{var l=localStorage.getItem('sli-ui-language');if(l==='en'||l==='id')document.documentElement.lang=l}catch(_){ }document.documentElement.classList.add('sli-chrome-pending');window.addEventListener('load',function(){setTimeout(function(){document.documentElement.classList.remove('sli-chrome-pending')},1400)},{once:true});</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Strategic Latitude Intelligence: food security, Indonesian agriculture, farmer welfare, prices, trade, government institutions and source-led analysis.">
+<title>Food & Agriculture Intelligence | Strategic Latitude Intelligence</title>
+<script src="./js/sli-live-data.js?v=20261019-id-audit9"></script>
+<link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
+<link rel="stylesheet" href="./css/food-agriculture-intelligence.css?v=20261020-food1">
+</head>
+<body>
+<main class="fa-shell" id="foodAgricultureRoot">
+ <header class="fa-hero">
+  <div class="fa-kicker" data-en="SLI · FOOD & AGRICULTURE INTELLIGENCE" data-id="SLI · INTELIJEN PANGAN & PERTANIAN">SLI · INTELIJEN PANGAN & PERTANIAN</div>
+  <h1 data-en="Food & Agriculture Intelligence" data-id="Intelijen Pangan & Pertanian">Intelijen Pangan & Pertanian</h1>
+  <p class="fa-lead" data-en="Indonesia's agricultural trade, farmer welfare, food prices, institutions, resilience and investable value chains — from dated official evidence." data-id="Perdagangan pertanian, kesejahteraan petani, harga pangan, kelembagaan, ketahanan pasokan, dan rantai nilai Indonesia berdasarkan sumber resmi yang bertanggal.">Perdagangan pertanian, kesejahteraan petani, harga pangan, kelembagaan, ketahanan pasokan, dan rantai nilai Indonesia berdasarkan sumber resmi yang bertanggal.</p>
+  <div class="fa-hero-actions"><a href="#fa-overview" data-en="Explore overview" data-id="Jelajahi ringkasan">Jelajahi ringkasan</a><a href="#fa-governance" data-en="Institutional map" data-id="Peta kelembagaan">Peta kelembagaan</a><a href="#fa-sources" data-en="63 source tables" data-id="63 tabel sumber">63 tabel sumber</a></div>
+  <p class="fa-fresh"><strong data-en="Baseline: Pusdatin June 2026." data-id="Baseline: Pusdatin Juni 2026.">Baseline: Pusdatin Juni 2026.</strong> <span data-en="Trade through April 2026; farmer indices and food prices through May 2026. Newer editions exist and are not mixed into these indicators." data-id="Perdagangan sampai April 2026; indeks petani dan harga pangan sampai Mei 2026. Edisi lebih baru tersedia, tetapi tidak dicampur ke indikator ini.">Perdagangan sampai April 2026; indeks petani dan harga pangan sampai Mei 2026. Edisi lebih baru tersedia, tetapi tidak dicampur ke indikator ini.</span> <a href="https://satudata.pertanian.go.id/datasets/publikasi/index.php" target="_blank" rel="noopener noreferrer">Satu Data Kementan ↗</a></p>
+ </header>
+ <nav class="fa-jumps" aria-label="Food dashboard sections">
+  <a href="#fa-overview" data-en="Overview" data-id="Ringkasan">Ringkasan</a>
+  <a href="#fa-trade" data-en="Agricultural trade" data-id="Perdagangan pertanian">Perdagangan pertanian</a>
+  <a href="#fa-farmers" data-en="Farmer welfare" data-id="Indeks petani">Indeks petani</a>
+  <a href="#fa-prices" data-en="Food prices" data-id="Harga pangan">Harga pangan</a>
+  <a href="#fa-governance" data-en="Institutions" data-id="Kelembagaan">Kelembagaan</a>
+  <a href="#fa-analysis" data-en="Assessment" data-id="Analisis">Analisis</a>
+  <a href="#fa-sources" data-en="Source data" data-id="Sumber data">Sumber data</a>
+ </nav>
+ <section id="fa-overview" class="fa-section">
+  <div class="fa-heading"><div><span class="fa-step">01 / NATIONAL PICTURE</span><h2 data-en="National agriculture snapshot" data-id="Gambaran pertanian nasional">Gambaran pertanian nasional</h2></div><small data-en="Official historical observations — not live figures" data-id="Observasi historis resmi — bukan angka real-time">Observasi historis resmi — bukan angka real-time</small></div>
+  <div class="fa-kpis" id="faKpis" aria-live="polite"></div>
+  <div class="fa-two">
+   <article class="fa-card"><h3 data-en="How to read the dashboard" data-id="Cara membaca dashboard">Cara membaca dashboard</h3><div id="faReadMe"></div></article>
+   <article class="fa-card"><h3 data-en="Source freshness and methodology" data-id="Kebaruan sumber & metodologi">Kebaruan sumber & metodologi</h3><div id="faFreshness"></div></article>
+  </div>
+ </section>
+ <section id="fa-trade" class="fa-section">
+  <div class="fa-heading"><div><span class="fa-step">02 / INTERNATIONAL EXPOSURE</span><h2 data-en="Exports, imports and trade balances" data-id="Ekspor, impor & neraca perdagangan">Ekspor, impor & neraca perdagangan</h2></div><small data-en="January–April 2026; thousand US dollars" data-id="Januari–April 2026; ribu dolar AS">Januari–April 2026; ribu dolar AS</small></div>
+  <div class="fa-toolbar"><label for="faTradeScope" data-en="Product coverage" data-id="Cakupan produk">Cakupan produk</label><select id="faTradeScope"><option>Segar + olahan</option><option>Segar</option><option>Olahan</option></select><span class="fa-help" data-en="BTKI 2022 HS classification; agriculture scope from BPS/Pusdatin" data-id="Klasifikasi HS BTKI 2022; cakupan pertanian menurut BPS/Pusdatin">Klasifikasi HS BTKI 2022; cakupan pertanian menurut BPS/Pusdatin</span></div>
+  <div class="fa-two">
+   <article class="fa-card" id="faTradeChartCard"><h3 data-en="Trade balance by subsector" data-id="Neraca perdagangan menurut sub-sektor">Neraca perdagangan menurut sub-sektor</h3><div id="faTradeChart" class="fa-chart" role="group"></div><div class="fa-detail" id="faTradeInsight" aria-live="polite"></div></article>
+   <article class="fa-card"><h3 data-en="Source-linked trade table" data-id="Tabel perdagangan bersumber">Tabel perdagangan bersumber</h3><div class="fa-table-wrap"><table id="faTradeTable"><thead><tr><th data-en="Subsector" data-id="Sub-sektor">Sub-sektor</th><th data-en="Export" data-id="Ekspor">Ekspor</th><th data-en="Import" data-id="Impor">Impor</th><th data-en="Balance" data-id="Neraca">Neraca</th></tr></thead><tbody></tbody></table></div><p class="fa-source"><a id="faTradeSource" target="_blank" rel="noopener noreferrer">Pusdatin · Tabel 1–3 ↗</a></p></article>
+  </div>
+ </section>
+ <section id="fa-farmers" class="fa-section">
+  <div class="fa-heading"><div><span class="fa-step">03 / RURAL ECONOMY</span><h2 data-en="Farmer terms of trade: 38 provinces" data-id="Nilai tukar petani: 38 provinsi">Nilai tukar petani: 38 provinsi</h2></div><small data-en="NTP/NTUP indices, 2018=100; May 2026" data-id="Indeks NTP/NTUP, 2018=100; Mei 2026">Indeks NTP/NTUP, 2018=100; Mei 2026</small></div>
+  <div class="fa-toolbar"><label for="faFarmerMetric" data-en="Indicator" data-id="Indikator">Indikator</label><select id="faFarmerMetric"><option value="ntp">NTP · Mei 2026</option><option value="ntup">NTUP · Mei 2026</option><option value="ntp_april">NTP · April 2026</option></select><label for="faFarmerProvince" data-en="Province" data-id="Provinsi">Provinsi</label><select id="faFarmerProvince"></select></div>
+  <div class="fa-two fa-two-wide">
+   <article class="fa-card" id="faFarmerChartCard"><h3 data-en="Province comparison (click a bar)" data-id="Perbandingan provinsi (klik batang)">Perbandingan provinsi (klik batang)</h3><div id="faFarmerChart" class="fa-chart fa-ranked"></div><p class="fa-source"><a id="faFarmerSource" target="_blank" rel="noopener noreferrer">Pusdatin · Tabel 38–39 ↗</a></p></article>
+   <aside class="fa-card fa-inspector" aria-live="polite"><span class="fa-step" data-en="SELECTED PROVINCE" data-id="PROVINSI DIPILIH">PROVINSI DIPILIH</span><div id="faFarmerDetail"></div></aside>
+  </div>
+ </section>
+ <section id="fa-prices" class="fa-section">
+  <div class="fa-heading"><div><span class="fa-step">04 / DOMESTIC MARKET</span><h2 data-en="Food price monitor" data-id="Pemantauan harga pangan">Pemantauan harga pangan</h2></div><small data-en="Consumer prices at traditional markets; May 2026" data-id="Harga konsumen di pasar tradisional; Mei 2026">Harga konsumen di pasar tradisional; Mei 2026</small></div>
+  <div class="fa-toolbar"><label for="faCommodity" data-en="Commodity" data-id="Komoditas">Komoditas</label><select id="faCommodity"></select><label for="faPricePlace" data-en="Place" data-id="Lokasi">Lokasi</label><select id="faPricePlace"></select></div>
+  <div class="fa-two fa-two-wide">
+   <article class="fa-card" id="faPricesChartCard"><h3 data-en="Reported prices by region (click a bar)" data-id="Harga menurut wilayah (klik batang)">Harga menurut wilayah (klik batang)</h3><div id="faPricesChart" class="fa-chart fa-ranked"></div><p class="fa-source"><a id="faPriceSource" target="_blank" rel="noopener noreferrer">Pusdatin · Tabel harga provinsi ↗</a></p></article>
+   <aside class="fa-card fa-inspector" aria-live="polite"><span class="fa-step" data-en="SELECTED MARKET" data-id="PASAR/WILAYAH DIPILIH">PASAR/WILAYAH DIPILIH</span><div id="faPriceDetail"></div></aside>
+  </div>
+ </section>
+ <section id="fa-governance" class="fa-section">
+  <div class="fa-heading"><div><span class="fa-step">05 / INSTITUTIONAL INTELLIGENCE</span><h2 data-en="Food policy and agricultural governance" data-id="Kebijakan pangan & tata kelola pertanian">Kebijakan pangan & tata kelola pertanian</h2></div><small data-en="Functional accountability, not legal subordination" data-id="Hubungan tugas/fungsi, bukan otomatis hierarki hukum">Hubungan tugas/fungsi, bukan otomatis hierarki hukum</small></div>
+  <p class="fa-note" data-en="Select an institution to inspect mandates, implementation roles and primary sources. Coordinator, regulator, statistical publisher and SOE operator are distinct." data-id="Klik lembaga untuk melihat mandat, fungsi pelaksanaan, dan sumber primer. Koordinator, regulator, penerbit statistik, dan operator BUMN dibedakan.">Klik lembaga untuk melihat mandat, fungsi pelaksanaan, dan sumber primer. Koordinator, regulator, penerbit statistik, dan operator BUMN dibedakan.</p>
+  <div class="fa-two fa-two-wide">
+   <article class="fa-card"><h3 data-en="Institutional ecosystem" data-id="Ekosistem kelembagaan">Ekosistem kelembagaan</h3><div id="faOrgGraph" class="fa-org" role="group" aria-label="Interactive food and agriculture institutional graph"></div></article>
+   <aside class="fa-card fa-inspector" id="faOrgInspector" aria-live="polite"><span class="fa-step" data-en="INSTITUTION PROFILE" data-id="PROFIL LEMBAGA">PROFIL LEMBAGA</span><div id="faOrgDetail"></div></aside>
+  </div>
+ </section>
+ <section id="fa-analysis" class="fa-section">
+  <div class="fa-heading"><div><span class="fa-step">06 / RESEARCH SYNTHESIS</span><h2 data-en="Overall food and agriculture assessment" data-id="Penilaian menyeluruh pangan & pertanian">Penilaian menyeluruh pangan & pertanian</h2></div><small data-en="Conditional conclusions · explicit evidence periods" data-id="Kesimpulan bersyarat · periode data jelas">Kesimpulan bersyarat · periode data jelas</small></div>
+  <div class="fa-analysis-grid" id="faAssessment"></div>
+  <p class="fa-disclaimer" data-en="Analysis identifies patterns in source-dated descriptive data, not causal proof, price forecasts or bankable investment recommendations." data-id="Analisis menyoroti pola data deskriptif bertanggal, bukan bukti kausal, ramalan harga, atau rekomendasi investasi yang telah dinilai kelayakannya.">Analisis menyoroti pola data deskriptif bertanggal, bukan bukti kausal, ramalan harga, atau rekomendasi investasi yang telah dinilai kelayakannya.</p>
+ </section>
+ <section id="fa-sources" class="fa-section">
+  <div class="fa-heading"><div><span class="fa-step">07 / TRANSPARENCY</span><h2 data-en="63 original source tables" data-id="63 tabel sumber asli">63 tabel sumber asli</h2></div><small data-en="Pusdatin publication June 2026" data-id="Publikasi Pusdatin Juni 2026">Publikasi Pusdatin Juni 2026</small></div>
+  <p class="fa-note" data-en="All table records are linked to the original PDF page. Numeric series currently structured for trade, NTP/NTUP and seven food commodities; other source tables remain openable rather than presented as invented extracted data." data-id="Semua judul tabel ditautkan ke halaman PDF asli. Seri angka yang sudah diolah tersedia untuk perdagangan, NTP/NTUP, dan tujuh komoditas harga. Tabel lain tetap dapat dibuka dari sumber, bukan ditampilkan seolah sudah diekstraksi.">Semua judul tabel ditautkan ke halaman PDF asli. Seri angka yang sudah diolah tersedia untuk perdagangan, NTP/NTUP, dan tujuh komoditas harga. Tabel lain tetap dapat dibuka dari sumber, bukan ditampilkan seolah sudah diekstraksi.</p>
+  <div class="fa-toolbar"><label for="faSourceSearch" data-en="Search tables" data-id="Cari tabel">Cari tabel</label><input id="faSourceSearch" type="search" placeholder="Beras, NTP, hortikultura, impor…" aria-label="Search source tables"/><label for="faSourceScope" data-en="Coverage" data-id="Cakupan">Cakupan</label><select id="faSourceScope"><option value="all">Semua / All</option><option value="numeric">Tervalidasi numerik / Numeric</option><option value="catalog">Indeks sumber / Source links</option></select></div>
+  <p id="faSourceCount" class="fa-note" role="status"></p><div class="fa-source-list" id="faSourceList"></div>
+  <div class="fa-source-footer"><a href="https://satudata.pertanian.go.id/datasets/publikasi/index.php" target="_blank" rel="noopener noreferrer">Portal pembaruan Pusdatin ↗</a><a href="https://www.bps.go.id/" target="_blank" rel="noopener noreferrer">BPS ↗</a><a href="./sli-glossary-methodology.html">Glosarium & metodologi ↗</a></div>
+ </section>
+ <footer class="fa-footer">Strategic Latitude Intelligence · Data with periods, provenance, and human-verifiable methods. © SLI</footer>
+</main>
+<script src="./js/food-agriculture-intelligence.js?v=20261020-food1" defer></script>
+<script src="./js/sli-navigation.js?v=20261019-id-audit9" defer></script>
+</body></html>
