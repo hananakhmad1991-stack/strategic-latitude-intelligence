@@ -67,3 +67,16 @@ test("autonomous upgrade CI only proposes draft PRs; no auto-merge or production
  assert.match(prQa,/contents: read/);
  assert.doesNotMatch(prQa,/pull-requests: write|contents: write/);
 });
+
+test("automatic proposer advances beyond previous review branches without changing or merging them",()=>{
+ const skipped=["method-multivariate-bahasa"];
+ const chosen=selectCandidate({skipCandidates:skipped});
+ assert.ok(chosen,"at least one pending reviewed candidate should remain for this regression fixture");
+ assert.equal(chosen.id,"method-did-bahasa");
+ const plan=planPatch({skipCandidates:skipped});
+ assert.equal(plan.candidate_id,chosen.id);
+ assert.equal(plan.expected_status,"design");
+ assert.ok(plan.output.routes.includes(JSON.stringify("perbedaan dalam perbedaan")));
+ assert.equal(selectCandidate({skipCandidates:skipped.concat(["method-did-bahasa"])}).id,"method-porter-bahasa");
+ assert.equal(selectCandidate({skipCandidates:skipped.concat(["method-did-bahasa","method-porter-bahasa"])}),null);
+});
