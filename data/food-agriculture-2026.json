@@ -1,0 +1,1055 @@
+{
+  "schema": "sli-food-2026-launch-v1",
+  "publication": {
+    "title": "Statistik Terkini Ekonomi Pertanian — Juni 2026",
+    "release": "2026-06-30",
+    "source": "Pusdatin Kementerian Pertanian (BPS/BI, publisher compilation)",
+    "pdf": "https://satudata.pertanian.go.id/assets/docs/publikasi/d5bf740911a49e295dd8a1176d4f6f5d.pdf",
+    "publisher_page": "https://satudata.pertanian.go.id/datasets/publikasi/15",
+    "trade_data_until": "2026-04",
+    "price_ntp_data_until": "2026-05",
+    "note": "Source publication also contains tables 1–62 and table 64; table number 63 is skipped by publisher. June PDF is an immutable baseline, not the latest issued edition."
+  },
+  "trade": [
+    {
+      "scope": "Segar + olahan",
+      "sector": "Tanaman Pangan",
+      "export": 50153,
+      "import": 3170852,
+      "balance": -3120699,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Hortikultura",
+      "export": 318981,
+      "import": 1174551,
+      "balance": -855570,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Perkebunan",
+      "export": 13598515,
+      "import": 2293633,
+      "balance": 11304882,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Peternakan",
+      "export": 495896,
+      "import": 1553300,
+      "balance": -1057404,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Pertanian Total",
+      "export": 14463545,
+      "import": 8192336,
+      "balance": 6271208,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Tanaman Pangan",
+      "export": 8274,
+      "import": 1939284,
+      "balance": -1931010,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Hortikultura",
+      "export": 136736,
+      "import": 969660,
+      "balance": -832924,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Perkebunan",
+      "export": 1014440,
+      "import": 861688,
+      "balance": 152753,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Peternakan",
+      "export": 155509,
+      "import": 195925,
+      "balance": -40416,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Pertanian Total",
+      "export": 1314959,
+      "import": 3966557,
+      "balance": -2651598,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Tanaman Pangan",
+      "export": 41879,
+      "import": 1231568,
+      "balance": -1189689,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Hortikultura",
+      "export": 182245,
+      "import": 204891,
+      "balance": -22646,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Perkebunan",
+      "export": 12584074,
+      "import": 1431945,
+      "balance": 11152129,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Peternakan",
+      "export": 340387,
+      "import": 1357375,
+      "balance": -1016988,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Pertanian Total",
+      "export": 13148586,
+      "import": 4225779,
+      "balance": 8922806,
+      "unit": "ribu USD",
+      "period": "2026-01/2026-04"
+    }
+  ],
+  "provinces": [
+    "Aceh",
+    "Sumatera Utara",
+    "Sumatera Barat",
+    "Riau",
+    "Jambi",
+    "Sumatera Selatan",
+    "Bengkulu",
+    "Lampung",
+    "Kep. Bangka Belitung",
+    "Kepulauan Riau",
+    "DKI Jakarta",
+    "Jawa Barat",
+    "Jawa Tengah",
+    "D.I. Yogyakarta",
+    "Jawa Timur",
+    "Banten",
+    "Bali",
+    "Nusa Tanggara Barat",
+    "Nusa Tenggara Timur",
+    "Kalimantan Barat",
+    "Kalimantan Tengah",
+    "Kalimantan Selatan",
+    "Kalimantan Timur",
+    "Kalimantan Utara",
+    "Sulawesi Utara",
+    "Sulawesi Tengah",
+    "Sulawesi Selatan",
+    "Sulawesi Tenggara",
+    "Gorontalo",
+    "Sulawesi Barat",
+    "Maluku",
+    "Maluku Utara",
+    "Papua Barat",
+    "Papua Barat Daya",
+    "Papua",
+    "Papua Selatan",
+    "Papua Tengah",
+    "Papua Pegunungan"
+  ],
+  "ntp": {
+    "period": "2026-05",
+    "april": [
+      124.25,
+      162.45,
+      125.79,
+      206.19,
+      183.8,
+      132.76,
+      201.99,
+      123.93,
+      155.42,
+      106.29,
+      110.68,
+      116.86,
+      114.9,
+      106.53,
+      116.46,
+      109.93,
+      106.05,
+      128,
+      99.41,
+      174.93,
+      139.43,
+      128.99,
+      149.83,
+      117.55,
+      127.54,
+      94.33,
+      115.52,
+      98.15,
+      125.77,
+      122.82,
+      93.77,
+      101.58,
+      103.29,
+      97.33,
+      102.99,
+      111.13,
+      100.1,
+      94.4
+    ],
+    "may": [
+      124.92,
+      159.92,
+      130.73,
+      207.41,
+      186.71,
+      141.54,
+      201.95,
+      128.01,
+      158.65,
+      107.4,
+      109.86,
+      118.3,
+      117.39,
+      109.16,
+      120.33,
+      110.57,
+      105.9,
+      130.44,
+      99.86,
+      178.38,
+      139.72,
+      131.24,
+      150.68,
+      117.88,
+      133.37,
+      98.77,
+      118.3,
+      101.64,
+      121.92,
+      120.92,
+      93,
+      101.88,
+      100.79,
+      97.29,
+      100.78,
+      110.89,
+      100.74,
+      93.93
+    ],
+    "ntup": [
+      129.45,
+      164.03,
+      137.36,
+      201.88,
+      191.98,
+      146.1,
+      201.46,
+      133.97,
+      153.75,
+      109.34,
+      119.53,
+      123.09,
+      122.53,
+      113.87,
+      125.84,
+      117.06,
+      113.14,
+      135.28,
+      104.86,
+      183.91,
+      144.55,
+      136.77,
+      157.02,
+      122.99,
+      138.09,
+      101.9,
+      123.84,
+      105.52,
+      126.94,
+      134.11,
+      103.95,
+      103.41,
+      107.11,
+      102.76,
+      103.98,
+      113.8,
+      108.01,
+      96.14
+    ],
+    "unit": "indeks 2018=100",
+    "table": 38,
+    "ntup_table": 39,
+    "source_province_label_warning": "Nusa Tanggara Barat spelling preserved from source; use Nusa Tenggara Barat for internal normalized identity."
+  },
+  "prices": {
+    "places": [
+      "Aceh",
+      "Sumatera Utara",
+      "Sumatera Barat",
+      "Riau",
+      "Kepulauan Riau",
+      "Jambi",
+      "Bengkulu",
+      "Sumatera Selatan",
+      "Kepulauan Bangka Belitung",
+      "Lampung",
+      "Banten",
+      "Jawa Barat",
+      "DKI Jakarta",
+      "Jawa Tengah",
+      "DI Yogyakarta",
+      "Jawa Timur",
+      "Bali",
+      "Nusa Tenggara Barat",
+      "Nusa Tenggara Timur",
+      "Kalimantan Barat",
+      "Kalimantan Selatan",
+      "Kalimantan Tengah",
+      "Kalimantan Timur",
+      "Kalimantan Utara",
+      "Gorontalo",
+      "Sulawesi Selatan",
+      "Sulawesi Tenggara",
+      "Sulawesi Tengah",
+      "Sulawesi Utara",
+      "Sulawesi Barat",
+      "Maluku",
+      "Maluku Utara",
+      "Papua",
+      "Papua Barat"
+    ],
+    "items": [
+      {
+        "name": "Beras medium II",
+        "table": 49,
+        "unit": "Rp/kg",
+        "period": "2026-05",
+        "values": [
+          14907,
+          15186,
+          18362,
+          16600,
+          15355,
+          16150,
+          16195,
+          16461,
+          15784,
+          14914,
+          15150,
+          14745,
+          16071,
+          14733,
+          14150,
+          14117,
+          15800,
+          12500,
+          15000,
+          16634,
+          21581,
+          18350,
+          16374,
+          17836,
+          null,
+          14450,
+          15600,
+          15567,
+          15386,
+          14398,
+          16879,
+          16750,
+          18752,
+          17019
+        ]
+      },
+      {
+        "name": "Bawang merah",
+        "table": 50,
+        "unit": "Rp/kg",
+        "period": "2026-05",
+        "values": [
+          43255,
+          45098,
+          41298,
+          42545,
+          33190,
+          41333,
+          51952,
+          43118,
+          54705,
+          45250,
+          54298,
+          51390,
+          56610,
+          46912,
+          43762,
+          44836,
+          38426,
+          41286,
+          44345,
+          50392,
+          43850,
+          47883,
+          48862,
+          49724,
+          51290,
+          39376,
+          50008,
+          45686,
+          48162,
+          41771,
+          53495,
+          65238,
+          69281,
+          59643
+        ]
+      },
+      {
+        "name": "Cabai rawit merah",
+        "table": 54,
+        "unit": "Rp/kg",
+        "period": "2026-05",
+        "values": [
+          null,
+          36469,
+          null,
+          60783,
+          72236,
+          69936,
+          77262,
+          76550,
+          77197,
+          69955,
+          82917,
+          82462,
+          85112,
+          72326,
+          77298,
+          72498,
+          72076,
+          77826,
+          80755,
+          75758,
+          75593,
+          88143,
+          70688,
+          94248,
+          52300,
+          50000,
+          50915,
+          55281,
+          51002,
+          41217,
+          82131,
+          100000,
+          77736,
+          55714
+        ]
+      },
+      {
+        "name": "Daging ayam",
+        "table": 56,
+        "unit": "Rp/kg",
+        "period": "2026-05",
+        "values": [
+          35293,
+          41826,
+          49921,
+          30879,
+          40679,
+          35945,
+          37798,
+          35521,
+          38413,
+          35026,
+          40286,
+          37124,
+          37538,
+          36152,
+          35821,
+          35414,
+          42424,
+          39298,
+          51269,
+          35239,
+          40793,
+          35607,
+          35895,
+          45683,
+          32269,
+          28288,
+          35100,
+          30571,
+          39648,
+          29369,
+          47645,
+          45500,
+          52274,
+          50086
+        ]
+      },
+      {
+        "name": "Telur ayam",
+        "table": 57,
+        "unit": "Rp/kg",
+        "period": "2026-05",
+        "values": [
+          29745,
+          31007,
+          29648,
+          30345,
+          29798,
+          26755,
+          29248,
+          28887,
+          33750,
+          26876,
+          27552,
+          27419,
+          27938,
+          25821,
+          26329,
+          25924,
+          30852,
+          29826,
+          33198,
+          30003,
+          30626,
+          32695,
+          31114,
+          30764,
+          35157,
+          25712,
+          31033,
+          31310,
+          33110,
+          26945,
+          36390,
+          44100,
+          41226,
+          36933
+        ]
+      },
+      {
+        "name": "Gula pasir lokal",
+        "table": 58,
+        "unit": "Rp/kg",
+        "period": "2026-05",
+        "values": [
+          19360,
+          19314,
+          18886,
+          19088,
+          15710,
+          19281,
+          19060,
+          18616,
+          18787,
+          18638,
+          18900,
+          18576,
+          19629,
+          17817,
+          18000,
+          17290,
+          18731,
+          19379,
+          19429,
+          19745,
+          19221,
+          19414,
+          19457,
+          19845,
+          20793,
+          18148,
+          19400,
+          20150,
+          19500,
+          18595,
+          20019,
+          20500,
+          22019,
+          20655
+        ]
+      },
+      {
+        "name": "Minyak goreng curah",
+        "table": 59,
+        "unit": "Rp/kg",
+        "period": "2026-05",
+        "values": [
+          24183,
+          23143,
+          23129,
+          22074,
+          19417,
+          23000,
+          23881,
+          21363,
+          18955,
+          21410,
+          24933,
+          22724,
+          23200,
+          22326,
+          23440,
+          22179,
+          23083,
+          23024,
+          23026,
+          22700,
+          24133,
+          23162,
+          22812,
+          22867,
+          29100,
+          21510,
+          24108,
+          24293,
+          21490,
+          24088,
+          24124,
+          21500,
+          26043,
+          23098
+        ]
+      }
+    ]
+  },
+  "tables": [
+    {
+      "number": 1,
+      "name": "Ekspor impor total pertanian (segar + olahan)",
+      "pdfPage": 15,
+      "structured": true
+    },
+    {
+      "number": 2,
+      "name": "Ekspor impor pertanian segar",
+      "pdfPage": 16,
+      "structured": true
+    },
+    {
+      "number": 3,
+      "name": "Ekspor impor pertanian olahan",
+      "pdfPage": 17,
+      "structured": true
+    },
+    {
+      "number": 4,
+      "name": "Volume ekspor tanaman pangan",
+      "pdfPage": 18,
+      "structured": false
+    },
+    {
+      "number": 5,
+      "name": "Nilai ekspor tanaman pangan",
+      "pdfPage": 19,
+      "structured": false
+    },
+    {
+      "number": 6,
+      "name": "Volume impor tanaman pangan",
+      "pdfPage": 20,
+      "structured": false
+    },
+    {
+      "number": 7,
+      "name": "Nilai impor tanaman pangan",
+      "pdfPage": 21,
+      "structured": false
+    },
+    {
+      "number": 8,
+      "name": "Neraca volume tanaman pangan",
+      "pdfPage": 22,
+      "structured": false
+    },
+    {
+      "number": 9,
+      "name": "Neraca nilai tanaman pangan",
+      "pdfPage": 23,
+      "structured": false
+    },
+    {
+      "number": 10,
+      "name": "Volume ekspor hortikultura",
+      "pdfPage": 24,
+      "structured": false
+    },
+    {
+      "number": 11,
+      "name": "Nilai ekspor hortikultura",
+      "pdfPage": 25,
+      "structured": false
+    },
+    {
+      "number": 12,
+      "name": "Volume impor hortikultura",
+      "pdfPage": 26,
+      "structured": false
+    },
+    {
+      "number": 13,
+      "name": "Nilai impor hortikultura",
+      "pdfPage": 27,
+      "structured": false
+    },
+    {
+      "number": 14,
+      "name": "Neraca volume hortikultura",
+      "pdfPage": 28,
+      "structured": false
+    },
+    {
+      "number": 15,
+      "name": "Neraca nilai hortikultura",
+      "pdfPage": 29,
+      "structured": false
+    },
+    {
+      "number": 16,
+      "name": "Volume ekspor perkebunan",
+      "pdfPage": 30,
+      "structured": false
+    },
+    {
+      "number": 17,
+      "name": "Nilai ekspor perkebunan",
+      "pdfPage": 31,
+      "structured": false
+    },
+    {
+      "number": 18,
+      "name": "Volume impor perkebunan",
+      "pdfPage": 32,
+      "structured": false
+    },
+    {
+      "number": 19,
+      "name": "Nilai impor perkebunan",
+      "pdfPage": 33,
+      "structured": false
+    },
+    {
+      "number": 20,
+      "name": "Neraca volume perkebunan",
+      "pdfPage": 34,
+      "structured": false
+    },
+    {
+      "number": 21,
+      "name": "Neraca nilai perkebunan",
+      "pdfPage": 35,
+      "structured": false
+    },
+    {
+      "number": 22,
+      "name": "Volume ekspor peternakan",
+      "pdfPage": 36,
+      "structured": false
+    },
+    {
+      "number": 23,
+      "name": "Nilai ekspor peternakan",
+      "pdfPage": 37,
+      "structured": false
+    },
+    {
+      "number": 24,
+      "name": "Volume impor peternakan",
+      "pdfPage": 38,
+      "structured": false
+    },
+    {
+      "number": 25,
+      "name": "Nilai impor peternakan",
+      "pdfPage": 39,
+      "structured": false
+    },
+    {
+      "number": 26,
+      "name": "Neraca volume peternakan",
+      "pdfPage": 40,
+      "structured": false
+    },
+    {
+      "number": 27,
+      "name": "Neraca nilai peternakan",
+      "pdfPage": 41,
+      "structured": false
+    },
+    {
+      "number": 28,
+      "name": "Indeks Harga Konsumen",
+      "pdfPage": 45,
+      "structured": false
+    },
+    {
+      "number": 29,
+      "name": "Inflasi menurut kelompok",
+      "pdfPage": 46,
+      "structured": false
+    },
+    {
+      "number": 30,
+      "name": "Nilai Tukar Petani nasional",
+      "pdfPage": 49,
+      "structured": false
+    },
+    {
+      "number": 31,
+      "name": "NTP tanpa perikanan nasional",
+      "pdfPage": 50,
+      "structured": false
+    },
+    {
+      "number": 32,
+      "name": "NTP tanaman pangan",
+      "pdfPage": 51,
+      "structured": false
+    },
+    {
+      "number": 33,
+      "name": "NTP hortikultura",
+      "pdfPage": 52,
+      "structured": false
+    },
+    {
+      "number": 34,
+      "name": "NTP perkebunan rakyat",
+      "pdfPage": 53,
+      "structured": false
+    },
+    {
+      "number": 35,
+      "name": "NTP peternakan",
+      "pdfPage": 54,
+      "structured": false
+    },
+    {
+      "number": 36,
+      "name": "Indeks harga diterima petani (IT) provinsi",
+      "pdfPage": 55,
+      "structured": false
+    },
+    {
+      "number": 37,
+      "name": "Indeks harga dibayar petani (IB) provinsi",
+      "pdfPage": 56,
+      "structured": false
+    },
+    {
+      "number": 38,
+      "name": "NTP menurut provinsi",
+      "pdfPage": 57,
+      "structured": true
+    },
+    {
+      "number": 39,
+      "name": "NTUP menurut provinsi",
+      "pdfPage": 58,
+      "structured": true
+    },
+    {
+      "number": 40,
+      "name": "IT tanpa perikanan provinsi",
+      "pdfPage": 59,
+      "structured": false
+    },
+    {
+      "number": 41,
+      "name": "IB tanpa perikanan provinsi",
+      "pdfPage": 60,
+      "structured": false
+    },
+    {
+      "number": 42,
+      "name": "NTP tanpa perikanan provinsi",
+      "pdfPage": 61,
+      "structured": false
+    },
+    {
+      "number": 43,
+      "name": "NTUP tanpa perikanan provinsi",
+      "pdfPage": 62,
+      "structured": false
+    },
+    {
+      "number": 44,
+      "name": "Harga gabah di petani",
+      "pdfPage": 65,
+      "structured": false
+    },
+    {
+      "number": 45,
+      "name": "Harga gabah di penggilingan",
+      "pdfPage": 66,
+      "structured": false
+    },
+    {
+      "number": 46,
+      "name": "Harga beras grosir",
+      "pdfPage": 67,
+      "structured": false
+    },
+    {
+      "number": 47,
+      "name": "Harga produsen perkebunan",
+      "pdfPage": 68,
+      "structured": false
+    },
+    {
+      "number": 48,
+      "name": "Harga produsen peternakan",
+      "pdfPage": 69,
+      "structured": false
+    },
+    {
+      "number": 49,
+      "name": "Harga beras medium II menurut provinsi",
+      "pdfPage": 70,
+      "structured": true
+    },
+    {
+      "number": 50,
+      "name": "Harga bawang merah menurut provinsi",
+      "pdfPage": 71,
+      "structured": true
+    },
+    {
+      "number": 51,
+      "name": "Harga bawang putih menurut provinsi",
+      "pdfPage": 72,
+      "structured": false
+    },
+    {
+      "number": 52,
+      "name": "Harga cabai merah besar menurut provinsi",
+      "pdfPage": 73,
+      "structured": false
+    },
+    {
+      "number": 53,
+      "name": "Harga cabai merah keriting menurut provinsi",
+      "pdfPage": 74,
+      "structured": false
+    },
+    {
+      "number": 54,
+      "name": "Harga cabai rawit merah menurut provinsi",
+      "pdfPage": 75,
+      "structured": true
+    },
+    {
+      "number": 55,
+      "name": "Harga daging sapi kualitas I menurut provinsi",
+      "pdfPage": 76,
+      "structured": false
+    },
+    {
+      "number": 56,
+      "name": "Harga daging ayam menurut provinsi",
+      "pdfPage": 77,
+      "structured": true
+    },
+    {
+      "number": 57,
+      "name": "Harga telur ayam menurut provinsi",
+      "pdfPage": 78,
+      "structured": true
+    },
+    {
+      "number": 58,
+      "name": "Harga gula pasir lokal menurut provinsi",
+      "pdfPage": 79,
+      "structured": true
+    },
+    {
+      "number": 59,
+      "name": "Harga minyak goreng curah menurut provinsi",
+      "pdfPage": 80,
+      "structured": true
+    },
+    {
+      "number": 60,
+      "name": "Harga sayur buah rempah Pasar Induk Kramat Jati",
+      "pdfPage": 81,
+      "structured": false
+    },
+    {
+      "number": 61,
+      "name": "Pasokan sayur buah rempah Pasar Induk Kramat Jati",
+      "pdfPage": 82,
+      "structured": false
+    },
+    {
+      "number": 62,
+      "name": "Harga internasional komoditas pertanian",
+      "pdfPage": 83,
+      "structured": false
+    },
+    {
+      "number": 64,
+      "name": "Kurs transaksi Bank Indonesia",
+      "pdfPage": 87,
+      "structured": false
+    }
+  ],
+  "quality": {
+    "review": "manual extraction of selected source tables; cross-check source links before investment decisions",
+    "coverage": "15 cumulative trade series; 38 NTP/NTUP provinces; 7 market price commodities x 34 regional labels; 63 indexed original tables",
+    "missing": "Missing publisher observations are null, not zero. Full 63-table numeric extraction pending verified ingestion.",
+    "monthly_auto_updates": false
+  },
+  "policy_sources": [
+    {
+      "title": "Kemenko Pangan: fungsi koordinasi",
+      "url": "https://www.kemenkopangan.go.id/tugas-fungsi"
+    },
+    {
+      "title": "Kementan: struktur organisasi",
+      "url": "https://pertanian.go.id/index.php/page/view/7?lang=id"
+    },
+    {
+      "title": "Bapanas: tugas fungsi",
+      "url": "https://badanpangan.go.id/wiki/tugas-fungsi"
+    },
+    {
+      "title": "Organisasi Kementan, perubahan kedua 2026",
+      "url": "https://jdih.pertanian.go.id/peraturan/permentan-19-2026"
+    }
+  ]
+}
