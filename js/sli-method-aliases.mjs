@@ -3,6 +3,8 @@
  * Curated phrases are NOT training data or evidence of estimator execution.
  */
 export const CURATED_METHOD_SYNONYMS=Object.freeze([
+ {phrase:"regresi linear berganda",method:"multivariate_ols"},
+ {phrase:"perbedaan dalam perbedaan",method:"did"},
 ]);
 const normalize=s=>String(s||"").normalize("NFKC").toLowerCase()
  .replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();

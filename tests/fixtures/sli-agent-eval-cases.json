@@ -86,6 +86,34 @@
         "Jawa Tengah",
         "Jawa Barat"
       ]
+    },
+    {
+      "id": "auto_method-multivariate-bahasa",
+      "category": "method",
+      "prompt": "Tolong hitung regresi linear berganda untuk data investasi provinsi",
+      "expected": "multivariate_ols",
+      "expected_status": "local"
+    },
+    {
+      "id": "auto_method-did-bahasa",
+      "category": "method",
+      "prompt": "Gunakan metode perbedaan dalam perbedaan untuk evaluasi kebijakan",
+      "expected": "did",
+      "expected_status": "design"
+    },
+    {
+      "id": "auto_multivariate_followup_id",
+      "category": "method",
+      "prompt": "Mohon uji regresi linear berganda untuk kelayakan investasi NTB",
+      "expected": "multivariate_ols",
+      "expected_status": "local"
+    },
+    {
+      "id": "auto_did_policy_id",
+      "category": "method",
+      "prompt": "Analisis subsidi menggunakan perbedaan dalam perbedaan",
+      "expected": "did",
+      "expected_status": "design"
     }
   ]
 }
