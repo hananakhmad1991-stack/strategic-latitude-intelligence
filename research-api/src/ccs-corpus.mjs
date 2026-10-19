@@ -97,6 +97,6 @@ export function ccsResearchEvidence(question){
  const projects=PROJECTS.map(projectDocument).filter(Boolean);
  // Front-load actual physical UCC fabrication and the distinction between LNG construction and CCS operation;
  // preserve the full local dossiers even if underlying main project registry returns only Masela.
- const ordered=[primary[0],primary[3],primary[2],primary[1],primary[5],primary[6],primary[7],...projects,primary[4]];
+ const ordered=[primary[0],primary[3],primary[2],primary[1],primary[4],primary[5],primary[6],...projects,primary[7]];
  const seen=new Set();return ordered.filter(d=>{if(seen.has(d.id))return false;seen.add(d.id);return true});
 }
