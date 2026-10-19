@@ -220,8 +220,27 @@ test("legal recovery does not duplicate an existing verification heading",async(
  assert.doesNotMatch(out.answer,/## Batas verifikasi hukum/);
  assert.match(out.answer,/Pemeriksaan otomatis SLI: 1 bagian tidak ditampilkan/);
 });
+test("official Paris treaty chronology is separate from domestic enactment",async()=>{
+ const record=JSON.parse(file("data/sli-paris-treaty-status.json"));
+ const treatyCode=file("research-api/src/treaty-status.mjs");
+ const provisions=JSON.parse(file("data/sli-verified-legal-provisions.json"));
+ assert.equal(record.schema,"sli-paris-treaty-status-v1");
+ assert.equal(record.records.length,2);
+ const [deposit,effect]=record.records;
+ assert.equal(deposit.date,"2016-10-31");
+ assert.equal(effect.date,"2016-11-30");
+ assert.match(effect.source_url,/^https:\/\/treaties\.un\.org\//);
+ assert.match(provisions.items.find(x=>x.id==="uu16paris_pasal2").excerpt_id,/25 Oktober 2016/);
+ assert.match(provisions.items.find(x=>x.id==="uu16paris_pasal2").legal_effect_limit,/30 November 2016/);
+ assert.match(treatyCode,/export function parisTreatyTimelineEvidence/);
+ assert.match(worker,/import \{parisTreatyTimelineEvidence\}/);
+ assert.match(worker,/\.{3}articleEvidence,\.{3}treatyChronologyEvidence/);
+ assert.match(worker,/TREATY STATUS CHRONOLOGY/);
+ const client=file("js/sli-research-assistant.js");
+ assert.match(client,/primary_treaty_depositary_record/);
+});
 test("modified source modules pass the JavaScript parser",()=>{
- for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-research-visuals.js","js/sli-visual-export.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
+ for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-research-visuals.js","js/sli-visual-export.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/treaty-status.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
   const p=spawnSync(process.execPath,["--check",new URL("../"+path,import.meta.url).pathname],{encoding:"utf8"});
   assert.equal(p.status,0,path+": "+p.stderr);
  }
