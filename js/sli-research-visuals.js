@@ -37,6 +37,7 @@ function renderMarkdown(answer,where,sources=[]){
  for(let i=0;i<lines.length;i++){
   const line=lines[i].trim();
   if(!line){list=null;listType="";continue}
+  if(/^(?:-{3,}|\*{3,}|_{3,})$/.test(line)){where.append(create("hr","sli-ra-report-divider"));list=null;listType="";continue}
   const divider=lines[i+1]&&/^\s*\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(lines[i+1]);
   if(line.includes("|")&&divider){
    const headings=columns(line),wrap=create("div","sli-ra-table-wrap"),table=create("table","sli-ra-report-table"),thead=create("thead"),head=create("tr");
@@ -76,7 +77,7 @@ function renderCharts(charts,where,sources=[],lang="id"){
   return;
  }
  const section=create("section","sli-ra-visuals");
- section.append(create("h3",null,lang==="id"?"Visual Insights · Data terverifikasi":"Visual Insights · Source-linked data"));
+ section.append(create("h3",null,lang==="id"?"Visualisasi · Data bersumber":"Visual insights · Source-linked data"));
  for(const chart of charts.slice(0,4)){
   if(chart?.type!=="bar"||!Array.isArray(chart.points)||chart.points.length<2||chart.points.length>12)continue;
   if(!chart.points.every(p=>typeof p.label==="string"&&p.label.length<100&&typeof p.value==="number"&&Number.isFinite(p.value)&&p.value>=0&&Number.isInteger(p.source)&&p.source>0&&p.source<=sources.length))continue;
