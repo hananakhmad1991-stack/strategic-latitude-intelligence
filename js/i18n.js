@@ -5,6 +5,9 @@ const stored=(()=>{try{return localStorage.getItem("sli-ui-language")}catch(e){r
 let lang=stored==="id"?"id":"en";
 const history=new WeakMap(),attributes=new WeakMap();
 const labels=window.SLI_TRANSLATIONS_ID instanceof Map?window.SLI_TRANSLATIONS_ID:new Map();
+const normalizedLabel=(s)=>String(s).replace(/\u00a0/g," ").replace(/\s+/g," ").trim();
+const normalizedTranslations=new Map([...labels].map(([k,v])=>[normalizedLabel(k),v]));
+const approvedLabel=(s)=>labels.get(s)||normalizedTranslations.get(normalizedLabel(s));
 const exclusions="script,style,pre,code,textarea,option[data-original],[data-sli-no-translate],.bio-news .bio-source,.bio-news a,.oa-daily-headline a,.events-card h3,.gov-lead a,.tr-news-card a,.infra-watch-card a,.gov-policy h3,.gov-policy .gov-leader,#geoEvents article a,.ev-news-card a,svg";
 const polishedEnglish=new Map([
  ["Jargas","Household Gas Networks (Jargas)"],
@@ -66,11 +69,11 @@ function translate(text,code=lang){
  const prefix=input.match(/^\s*/)[0],suffix=input.match(/\s*$/)[0],body=input.slice(prefix.length,input.length-suffix.length);
  if(!body)return input;
  // Preserve symbolic nav icons but translate their labels.
- const decor=body.match(/^([◈▦ϟ◇⌘▤☷]\s*)(.+)$/);
+ const decor=body.match(/^([◈▦ϟ◇⌘▤☷✦✧✴◎◉♙▥↗↖✷]+\s*)(.+)$/);
  const leading=decor?decor[1]:"",plain=decor?decor[2]:body;
  if(code==="en")return prefix+leading+(polishedEnglish.get(plain)||lexical(plain,"en"))+suffix;
  // Translate complete human-edited sentences before attempting a glossary fallback.
- const direct=labels.get(plain) || labels.get(lexical(plain,"en"));
+ const direct=approvedLabel(plain) || approvedLabel(lexical(plain,"en"));
  if(direct)return prefix+leading+direct+suffix;
  // Short, data-driven headings are normalized. Long expert commentary is not mistranslated.
  if(plain.length<=56)return prefix+leading+lexical(plain,"id")+suffix;
@@ -89,7 +92,7 @@ function updateText(node){
  record.last=newText;history.set(node,record);
  if(current!==newText)node.nodeValue=newText;
 }
-const translatableAttributes=["placeholder","aria-label","title"];
+const translatableAttributes=["placeholder","aria-label","title","data-tooltip"];
 function updateAttributes(element){
  if(!element||element.nodeType!==1||skipped(element))return;
  let records=attributes.get(element);
@@ -166,6 +169,35 @@ function init(){
  });
  observer.observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:["placeholder","title","aria-label","label"]});
 }
-window.SLIi18n={get language(){return lang},setLanguage,translate,refresh:()=>scan(document.body),dictionarySize:labels.size};
+function coverage(root=document.body){
+ const result={language:lang,translated:0,untranslated:0,originalSources:0,samples:[]};
+ if(!root||!document.createTreeWalker)return result;
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),seen=new Set();
+ for(let n; (n=walker.nextNode());){
+  const raw=(n.nodeValue||"").trim();if(raw.length<18||!/[a-z]{3}/i.test(raw))continue;
+  if(skipped(n.parentElement)){result.originalSources++;continue}
+  const saved=history.get(n)?.raw||raw;
+  if(approvedLabel(saved)){result.translated++;continue}
+  // This is a REVIEW QUEUE, not automatic proof that English is being shown:
+  // names, technical terms and bilingual original text may be legitimate.
+  if(/[a-z]{3,}\s+[a-z]{3,}/i.test(raw)&&/[a-z]{3,}\s+[a-z]{3,}/i.test(saved)){
+   result.untranslated++;
+   if(result.samples.length<30&&!seen.has(saved)){result.samples.push(saved.slice(0,190));seen.add(saved)}
+  }
+ }
+ return result;
+}
+function registerTranslations(entries){
+ if(!entries)return;
+ for(const [en,id] of entries instanceof Map?entries:Object.entries(entries)){
+  if(typeof en==="string"&&typeof id==="string"&&en.trim()&&id.trim()){
+   labels.set(en,id);normalizedTranslations.set(normalizedLabel(en),id);
+  }
+ }
+ scan(document.body);
+}
+window.SLIi18n={get language(){return lang},setLanguage,translate,refresh:()=>scan(document.body),coverage,registerTranslations,get dictionarySize(){return labels.size}};
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
+document.addEventListener?.("sli:pagechange",()=>schedule(document.body));
+window.addEventListener?.("load",()=>schedule(document.body),{once:true});
 })();
