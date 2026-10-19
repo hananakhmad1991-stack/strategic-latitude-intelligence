@@ -62,7 +62,8 @@ function renderDetails(){
  if(n.directors?.length){
   for(const d of n.directors){
    const card=E('div','sli-cg-director');const symbol=I()?.icon?.('person');if(symbol)card.append(symbol);
-   const stack=E('div','sli-cg-director-body');stack.append(E('strong','',d.name),E('small','',d.title_id+' · '+d.source_date));
+   const stack=E('div','sli-cg-director-body');const name=I()?.personLink?.(d.name,d.source_url)||E('strong','',d.name);
+   stack.append(name,E('small','',d.title_id+' · '+d.source_date));
    stack.append(aLink(d.source_url,T('Official appointment / roster source ↗','Sumber resmi jabatan / susunan direksi ↗')));card.append(stack);directors.append(card)
   }
  }else directors.append(E('p','sli-cg-small',T('Director roster not sufficiently verified from a dated source.','Susunan direksi belum cukup terverifikasi dari sumber bertanggal.')));
