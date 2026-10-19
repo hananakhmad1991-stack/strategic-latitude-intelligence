@@ -24,12 +24,12 @@ class FakeNode{
  querySelectorAll(selector){let out=[];const matches=n=>selector.startsWith('.')?n.className.split(' ').includes(selector.slice(1)):selector.startsWith('#')?n.id===selector.slice(1):n.tagName===selector;const walk=n=>{for(const child of n.children){if(matches(child))out.push(child);walk(child)}};walk(this);return out}
  querySelector(selector){return this.querySelectorAll(selector)[0]||null}
 }
-const window={};const document={
+const langListeners=[];const window={};const document={
  createElement:t=>new FakeNode(t),
  createElementNS:(_,t)=>new FakeNode(t),
  createTextNode:v=>{const n=new FakeNode('#text');n.textContent=v;return n},
  querySelector:()=>null,
- addEventListener(){}
+ addEventListener:(type,handler)=>{if(type==='sli:languagechange')langListeners.push(handler)}
 };
 const fetch=async()=>({ok:true,json:async()=>({checked_at_utc:null,checks:[]})});
 const context={window,document,fetch,console};
@@ -104,5 +104,14 @@ assert.ok(!idHierarchy.textContent.includes('Three separate systems:'), 'An untr
 assert.ok(!idHierarchy.textContent.includes('GOVERNMENT · POLICY & PUBLIC INSTITUTIONS'), 'English sector heading visible after selecting Indonesian');
 const idProfile=idRoot.querySelector('.sli-hier-profile');
 assert.match(idProfile.textContent,/Jenis bukti:/, 'Right inspector provenance has not been localized');
+const idFilter=idRoot.querySelector('.sli-hier-select');
+idFilter.value='portfolio';
+window.SLIi18n.language='en';
+for(const callback of langListeners.splice(0))callback();
+for(let i=0;i<18;i++)await Promise.resolve();
+assert.match(idRoot.textContent,/Three separate systems:/, 'Switching ID → EN must re-render body copy');
+assert.ok(!idRoot.textContent.includes('Terdapat tiga sistem berbeda'), 'Old Indonesian text remained after EN switch');
+assert.equal(idRoot.querySelector('.sli-hier-select').value,'portfolio', 'Language switch must preserve active hierarchy filter');
+
 
 console.log('Energy Security parity QA PASS: '+org.nodes.length+' institutional/oversight/state nodes; '+org.market.length+' operators; one explorer, two tabs, original interactive network retained.');
