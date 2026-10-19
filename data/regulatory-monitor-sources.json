@@ -1,6 +1,6 @@
 {
-  "version": "2026-10-16.3",
-  "purpose": "Official-law and government policy news monitoring; candidate detection only, never automatic legal status amendment.",
+  "version": "2026-10-19.1",
+  "purpose": "Selected official national/sectoral/local law and government policy feeds; candidate detection only, NOT exhaustive Indonesian legislation or automatic legal status amendment.",
   "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
     {
@@ -188,6 +188,49 @@
         "/produk-hukum/"
       ],
       "limit": 40
+    },
+    {
+      "id": "dki_jdih",
+      "label": "JDIH DKI Jakarta — Peraturan Daerah dan Kepala Daerah",
+      "url": "https://jdih.jakarta.go.id/statistik/Peraturan%20Daerah",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.jakarta.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/dokumen/",
+        "/statistik/"
+      ],
+      "limit": 55
+    },
+    {
+      "id": "atr_jdih",
+      "label": "JDIH ATR/BPN — Peraturan dan Tata Ruang",
+      "url": "https://jdih.atrbpn.go.id/pencarian/peraturan",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.atrbpn.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/peraturan/",
+        "/pencarian/"
+      ],
+      "limit": 45
+    },
+    {
+      "id": "kemenkeu_jdih",
+      "label": "JDIH Kementerian Keuangan — Regulasi Fiskal",
+      "url": "https://jdih.kemenkeu.go.id/direktori",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.kemenkeu.go.id",
+        "www.jdih.kemenkeu.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/dok/",
+        "/direktori"
+      ],
+      "limit": 45
     }
   ],
   "watched_laws": [
@@ -222,7 +265,15 @@
     "eu_cbam",
     "eu_crma",
     "eu_batteries",
-    "us_bis_ear"
+    "us_bis_ear",
+    "uu23local",
+    "uu1hkpd2022",
+    "uu1penyesuaian2026",
+    "perda_dki_rtrw2024",
+    "perda_jabar_rtrw2022",
+    "perda_dki_pdrd2024",
+    "pres98repealed",
+    "uu26spatial"
   ],
   "keywords": [
     "energi",
@@ -320,12 +371,30 @@
     "advanced computing",
     "gpu",
     "foreign arbitration",
-    "investor-state"
+    "investor-state",
+    "otonomi daerah",
+    "hubungan keuangan",
+    "keuangan daerah",
+    "pemerintahan daerah",
+    "pajak daerah",
+    "retribusi daerah",
+    "penataan ruang wilayah",
+    "kewenangan daerah",
+    "paris agreement",
+    "ratifikasi",
+    "pengurangan emisi",
+    "perubahan iklim",
+    "ndc",
+    "rencana detail tata ruang",
+    "pembaruan perda",
+    "penyesuaian pidana",
+    "pengesahan",
+    "daerah khusus jakarta"
   ],
   "item_retention": 150,
   "source_item_cap": 65,
   "monitoring_window_days": 90,
-  "notes": "Official sources may be unavailable, slow, or under maintenance. An unavailable source is NOT evidence there are no legal changes. Candidate news and document-page changes require primary-text examination; only human-reviewed records may change legal in-force/repeal statuses.",
+  "notes": "Scope expanded to DKI, ATR/BPN and fiscal JDIH where accessible. Most local JDIH are not yet connected; a source outage/403 is not proof of no changes. Datasets and enacted/dicabut status remain subject to official-text and human legal review.",
   "monitor_groups": [
     {
       "id": "domestic_policy",
