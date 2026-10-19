@@ -229,12 +229,12 @@ document.addEventListener('keydown',closeSectorMenu);
  if(window.SLIi18n?.setLanguage||document.querySelector?.('script[src*="/js/i18n.js"]'))return;
  if(document.querySelector?.('script[data-sli-global-i18n]'))return;
  const dictionary=document.createElement('script');
- dictionary.src=new URL('./i18n-dictionary.js?v=20261019-sitewide2',current).href;
+ dictionary.src=new URL('./i18n-dictionary.js?v=20261019-id-audit7',current).href;
  dictionary.dataset.sliGlobalI18n='dictionary';
  dictionary.onload=()=>{
    if(window.SLIi18n?.setLanguage)return;
    const core=document.createElement('script');
-   core.src=new URL('./i18n.js?v=20261019-sitewide2',current).href;
+   core.src=new URL('./i18n.js?v=20261019-id-audit7',current).href;
    core.dataset.sliGlobalI18n='runtime';
    document.head.appendChild(core);
  };
