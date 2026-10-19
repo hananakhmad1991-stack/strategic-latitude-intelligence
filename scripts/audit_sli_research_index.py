@@ -19,7 +19,7 @@ for d in obj["records"]:
  assert u.scheme=="https" and u.netloc and not u.username and not u.password
  assert d["title"] and d["text"] and d["dataset"] and d["publisher"]
  assert "DASHBOARD SNAPSHOT" in d["text"]
- assert "source_link_record_not_claim_verified" in d["source_type"]
+ assert d["source_type"]=="public_dashboard_source_record_not_claim_verified"
  if d["verification_status"]=="project_stage_change_pending_review":
   assert "PROJECT_STATUS_CHANGE_PENDING_PRIMARY_REVIEW" in d["text"]
   assert any(x["project_id"].split("|")[0]==d["dataset"] for x in audit["changes"])
