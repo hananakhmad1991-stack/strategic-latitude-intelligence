@@ -65,6 +65,15 @@ function brand(title,type='building',className=''){
  }else wrap.append(icon(type));
  return wrap;
 }
+function siteBrand(domain,type='building'){
+ const wrap=document.createElement('span');wrap.className='sli-entity-brand';wrap.setAttribute('aria-hidden','true');
+ const normalized=String(domain||'').toLowerCase().trim();
+ if(!/^(?:[a-z0-9-]+\\.)+[a-z]{2,20}$/.test(normalized)){wrap.append(icon(type));return wrap}
+ const img=document.createElement('img');img.className='sli-entity-favicon';img.width=30;img.height=30;img.alt='';img.loading='lazy';img.referrerPolicy='no-referrer';
+ img.src='https://www.google.com/s2/favicons?domain='+encodeURIComponent(normalized)+'&sz=64';
+ img.addEventListener('error',()=>{img.remove();wrap.append(icon(type))},{once:true});
+ wrap.append(img);return wrap;
+}
 function personLink(person,officialSource){const meta=safeProfile(person,officialSource),a=document.createElement(meta.url?'a':'span');a.className='sli-person-link';a.textContent=person||'';if(meta.url){a.href=meta.url;a.target='_blank';a.rel='noopener noreferrer';a.title=meta.kind==='wikipedia'?'Wikipedia · profil publik; jabatan terbaru harus dicek dari sumber resmi':'Dokumen organisasi / sumber tentang tokoh (bukan biografi terverifikasi)';a.append(' ↗')}return a}
 function decoratePortal(){
  const icons={'#energy':'energy','#minerals':'mineral','#investment':'project','#policy':'government','#geopolitics':'globe','sli-entities.html':'building','ai-intelligence-hub.html':'technology','indonesia-macroeconomic-intelligence.html':'project'};
@@ -74,7 +83,7 @@ function decoratePortal(){
   const key=Object.keys(icons).find(x=>href.endsWith(x));if(key)mark.replaceChildren(icon(icons[key]));
  }
 }
-window.SLIEntityIdentity=Object.freeze({icon,brand,personLink,safeProfile,website,isHttps,nameKey,typeFor});
+window.SLIEntityIdentity=Object.freeze({icon,brand,siteBrand,personLink,safeProfile,website,isHttps,nameKey,typeFor});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',decoratePortal,{once:true});else decoratePortal();
 document.addEventListener('sli:pagechange',decoratePortal);
 })();
