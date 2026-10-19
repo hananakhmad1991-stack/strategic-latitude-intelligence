@@ -132,8 +132,18 @@ function schedule(root){
  pending.add(root);if(scheduled)return;scheduled=true;
  queueMicrotask(()=>{scheduled=false;const roots=[...pending];pending.clear();for(const node of roots)scan(node)});
 }
+let lastDocumentTitle={raw:null,last:null};
+function localizeTitle(){
+ if(typeof document?.title!=="string")return;
+ const current=document.title;
+ if(lastDocumentTitle.raw===null||current!==lastDocumentTitle.last)lastDocumentTitle={raw:current,last:current};
+ const localized=translate(lastDocumentTitle.raw);
+ if(localized!==current)document.title=localized;
+ lastDocumentTitle.last=localized;
+}
 function refreshSwitch(){
  document.documentElement.lang=lang==="id"?"id":"en";
+ localizeTitle();
  document.querySelectorAll("[data-sli-locale]").forEach(button=>{
   const active=button.dataset.sliLocale===lang;
   button.classList.toggle("active",active);
