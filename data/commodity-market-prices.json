@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-19T21:26:25.497829+00:00",
+  "checked_at_utc": "2026-10-19T21:59:04.895693+00:00",
   "status": "ok",
   "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
   "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
@@ -219,12 +219,12 @@
       "name": "US natural gas futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 3.211,
+      "value": 3.039,
       "previous": 2.912,
-      "change": 0.299,
-      "change_percent": 10.2679,
+      "change": 0.127,
+      "change_percent": 4.3613,
       "unit": "USD/MMBtu",
-      "observed_at_utc": "2026-10-15T20:59:57+00:00",
+      "observed_at_utc": "2026-10-19T20:59:58+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/NG%3DF",
       "symbol": "NG=F",
@@ -310,6 +310,10 @@
         {
           "observed_at_utc": "2026-10-16T04:00:00+00:00",
           "value": 3.116
+        },
+        {
+          "observed_at_utc": "2026-10-19T04:00:00+00:00",
+          "value": 3.039
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
