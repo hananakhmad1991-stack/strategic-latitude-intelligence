@@ -88,6 +88,13 @@
       ]
     },
     {
+      "id": "auto_method-multivariate-bahasa",
+      "category": "method",
+      "prompt": "Tolong hitung regresi linear berganda untuk data investasi provinsi",
+      "expected": "multivariate_ols",
+      "expected_status": "local"
+    },
+    {
       "id": "auto_method-did-bahasa",
       "category": "method",
       "prompt": "Gunakan metode perbedaan dalam perbedaan untuk evaluasi kebijakan",
