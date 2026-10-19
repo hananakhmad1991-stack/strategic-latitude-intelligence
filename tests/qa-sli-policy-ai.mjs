@@ -113,12 +113,27 @@ test("unsupported article citations fail closed in owner-only legal model output
  assert.match(orphan.answer,/### Pasal 1/);
  assert.match(worker,/recoverUnsupportedLegalAnswer/);
 });
+test("Paris ratification timeline does not pull in unrelated projects or charts",()=>{
+ assert.match(worker,/const focusedTreatyChronology=legalQuestion/);
+ assert.match(worker,/const focusedLegalReading=focusedArticleReading\|\|focusedTreatyChronology/);
+ assert.match(worker,/focusedLegalReading\?\[\]:selectResearchEvidence\(DATA/);
+ assert.match(worker,/focusedLegalReading\?\[\]:selectMonitoringNewsEvidence/);
+ assert.match(worker,/const energyQuestion=!focusedLegalReading/);
+ assert.match(worker,/charts:focusedLegalReading\?\[\]:/);
+ assert.match(worker,/FOCUSED TREATY CHRONOLOGY/);
+ const detection=worker.match(/const focusedTreatyChronology=legalQuestion&&([^;]+);/);
+ assert.ok(detection,"Treaty chronology detection must be present");
+ const match=new Function("payload","legalQuestion","return "+detection[1]) ;
+ assert.equal(match({question:"Jelaskan perbedaan tanggal berlakunya UU Nomor 16 Tahun 2016, deposit ratifikasi Paris Agreement dan tanggal Paris Agreement mulai berlaku bagi Indonesia."},true),true);
+ assert.equal(match({question:"Bandingkan proyek pusat data AI di Batam dan Jawa Barat"},true),false);
+ assert.equal(match({question:"Jelaskan investasi energi Indonesia untuk 2030"},false),false);
+});
 test("focused statute AI excludes irrelevant monitoring evidence and charts",()=>{
  assert.match(worker,/const focusedArticleReading=legalQuestion/);
- assert.match(worker,/focusedArticleReading\?\[\]:selectResearchEvidence/);
- assert.match(worker,/focusedArticleReading\?\[\]:selectMonitoringNewsEvidence/);
- assert.match(worker,/charts:focusedArticleReading\?\[\]:/);
- assert.match(worker,/secondary_news_index_count:focusedArticleReading\?0:/);
+ assert.match(worker,/focusedLegalReading\?\[\]:selectResearchEvidence/);
+ assert.match(worker,/focusedLegalReading\?\[\]:selectMonitoringNewsEvidence/);
+ assert.match(worker,/charts:focusedLegalReading\?\[\]:/);
+ assert.match(worker,/secondary_news_index_count:focusedLegalReading\?0:/);
 });
 test("legal research references preserve original law year and readable source panel",()=>{
  const client=file("js/sli-research-assistant.js");
