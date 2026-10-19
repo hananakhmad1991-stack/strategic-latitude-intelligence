@@ -35,19 +35,20 @@ export function validatedCandidates(queue=load(QUEUE),catalog=METHODS){
  }
  return out.sort((a,b)=>a.priority-b.priority||a.id.localeCompare(b.id));
 }
-export function selectCandidate({queue=load(QUEUE),infer=inferMethod}={}){
+export function selectCandidate({queue=load(QUEUE),infer=inferMethod,skipCandidates=[]}={}){
  const cases=load(BASELINE).cases||[];
  const used=new Set(cases.map(c=>norm(c.prompt)));
+ const skip=new Set(skipCandidates);
  for(const c of validatedCandidates(queue)){
-  if(used.has(norm(c.prompt)))continue;
+  if(skip.has(c.id)||used.has(norm(c.prompt)))continue;
   if(infer(c.prompt)===c.method)continue;
   if(infer(c.prompt)!=="auto")continue; // do not override a different explicit methodology
   return c;
  }
  return null;
 }
-export function planPatch({queue=load(QUEUE),routes=readFileSync(resolve(ROOT,ROUTES),"utf8"),fixture=load(BASELINE)}={}){
- const c=selectCandidate({queue});
+export function planPatch({queue=load(QUEUE),routes=readFileSync(resolve(ROOT,ROUTES),"utf8"),fixture=load(BASELINE),skipCandidates=[]}={}){
+ const c=selectCandidate({queue,skipCandidates});
  if(!c)return {status:"no_safe_candidate",changed:false,files:[]};
  const anchor="export const CURATED_METHOD_SYNONYMS=Object.freeze([\n";
  if(!routes.includes(anchor))failure("production alias module changed; manual review required");
@@ -69,7 +70,8 @@ export function planPatch({queue=load(QUEUE),routes=readFileSync(resolve(ROOT,RO
 function main(){
  const apply=process.argv.includes("--apply");
  const reportArg=process.argv.find(v=>v.startsWith("--report="));
- const plan=planPatch();
+ const skipCandidates=String(process.env.SLI_AGENT_PROPOSED_IDS||"").split(",").filter(x=>/^[a-z0-9][a-z0-9-]{4,49}$/.test(x));
+ const plan=planPatch({skipCandidates});
  if(apply&&plan.changed){
   writeFileSync(resolve(ROOT,ROUTES),plan.output.routes);
   writeFileSync(resolve(ROOT,BASELINE),plan.output.fixture);
