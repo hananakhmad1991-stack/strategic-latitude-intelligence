@@ -47,6 +47,10 @@
   <div id="raAttachmentStatus" role="status" aria-live="polite">Belum ada lampiran.</div>
   <label class="sli-ra-upload-consent"><input type="checkbox" id="raChatUploadConsent"> Hanya jika menggunakan pemrosesan AI privat: saya setuju file pilihan dikirim ke penyedia AI. Untuk AHP CSV/JSON yang dihitung lokal, centang ini TIDAK diperlukan. Jangan unggah dokumen rahasia tanpa izin.</label>
  </div>
+ <label class="sli-ra-upload-consent" style="display:flex;align-items:flex-start;gap:9px;margin:9px 0 13px">
+  <input type="checkbox" id="raExternalSearchConsent" style="margin-top:4px">
+  <span data-id="Izinkan pencarian web eksternal untuk pertanyaan INI saja (Owner Test, jika API tersedia). Hanya teks pertanyaan dikirim ke penyedia pencarian; jangan centang untuk riset rahasia. Temuan web belum otomatis terverifikasi." data-en="Allow external web search for THIS question only (Owner Test, if configured). Only the question text is sent to the search provider; leave unchecked for confidential research. Web findings are not independently verified.">Izinkan pencarian web eksternal untuk pertanyaan INI saja (Owner Test, jika API tersedia). Hanya teks pertanyaan dikirim ke penyedia pencarian; jangan centang untuk riset rahasia. Temuan web belum otomatis terverifikasi.</span>
+ </label>
  <div class="sli-ra-composer-bottom">
   <details class="sli-ra-chat-preferences" id="raChatPreferences">
    <summary>Pengaturan analisis (opsional) · Biarkan AI memilih</summary>
