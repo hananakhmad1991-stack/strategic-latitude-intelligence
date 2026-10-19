@@ -2465,3 +2465,8 @@ window.SLI_TRANSLATIONS_ID.set("Entities","Entitas");
 window.SLI_TRANSLATIONS_ID.set("Entity Intelligence","Intelijen Entitas");
 window.SLI_TRANSLATIONS_ID.set("People, institutions, companies and evidence-linked projects","Tokoh, lembaga, perusahaan, dan proyek yang ditautkan ke sumber bukti");
 window.SLI_TRANSLATIONS_ID.set("Entity dossiers →","Profil entitas →");
+
+/* Approved Indonesian Food & Agriculture homepage labels · Oct 2026 */
+window.SLI_TRANSLATIONS_ID.set("Food & Agriculture","Pangan & Pertanian");
+window.SLI_TRANSLATIONS_ID.set("Agricultural trade, farmer welfare, prices, institutions and food resilience","Perdagangan pertanian, kesejahteraan petani, harga, kelembagaan, dan ketahanan pangan");
+window.SLI_TRANSLATIONS_ID.set("Food Intelligence →","Intelijen Pangan →");
