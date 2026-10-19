@@ -239,9 +239,11 @@
       mapSelected=window.SLIMapSearchRecord({id:String(item.keywords||"").split(/\s+/)[0],title:item.title})===true;
      }
      if(!jumped){
-      // An exact map asset opens its inspector; other indexed records retain a visible source card.
-      const focus=mapSelected?null:displayFocus(el);
-      (focus||el).scrollIntoView({behavior:delay?"smooth":"auto",block:"start"});
+      // The map handler already scrolls to its exact asset inspector; do not jump back to the map top.
+      if(!mapSelected){
+       const focus=displayFocus(el);
+       (focus||el).scrollIntoView({behavior:delay?"smooth":"auto",block:"start"});
+      }
       jumped=true;
      }
      if(item.komdigi_tab){
