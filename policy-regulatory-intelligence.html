@@ -78,7 +78,7 @@ $('caseDocs').innerHTML=c.basis.map(id=>{let n=d.nodes.find(x=>x.id===id);return
 }
 function init(data){d=data;for(let id of ['sector','view','search'])$(id).addEventListener(id==='search'?'input':'change',()=>{selected=null;detail();graph()});
 $('reset').onclick=()=>{$('sector').value='all';$('view').value='linked';$('search').value='';selected=null;detail();graph()};
-const quick=q=>{$('sector').value='all';$('view').value='linked';$('search').value=q;selected=null;graph();detail();$('mindmap').scrollIntoView({behavior:'smooth'})};
+const quick=q=>{$('sector').value='all';$('view').value='linked';$('search').value=q;selected=d.nodes.find(n=>(n.ref+' '+n.label).toLowerCase().includes(q.toLowerCase()))?.id||null;detail();graph();$('mindmap').scrollIntoView({behavior:'smooth'})};
 $('quickParis').onclick=()=>quick('UU 16/2016');$('quickLocal').onclick=()=>quick('UU 23/2014');$('quickRTRW').onclick=()=>quick('RTRW');
 $('csv').onclick=()=>download('sli_policy_regulatory_register_2026.csv',[['id','tier','reference','title','sector','status','authority','official_url','note'],...d.nodes.map(n=>[n.id,n.tier,n.ref,n.label,n.sector,n.status,n.owner,n.source,n.note])]);
 for(let region of [...new Set(d.nodes.map(x=>x.region||'Indonesia'))].sort((a,b)=>a.localeCompare(b,'id')))$('regionFilter').innerHTML+='<option value="'+safe(region)+'">'+safe(region)+'</option>';
