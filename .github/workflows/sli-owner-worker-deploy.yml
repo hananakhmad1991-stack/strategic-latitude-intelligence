@@ -1,0 +1,63 @@
+name: SLI owner Worker · controlled deployment
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Choose validation only or explicitly deploy the owner-only staging Worker
+        type: choice
+        required: true
+        default: validate-only
+        options:
+          - validate-only
+          - deploy-owner-staging
+
+permissions:
+  contents: read
+
+jobs:
+  policy-gate:
+    name: Verify policy AI and owner scope
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate policy source and model boundaries
+        run: |
+          node --check research-api/src/owner-test-worker.mjs
+          node --check research-api/src/legal-provisions.mjs
+          node --check research-api/src/policy-corpus.mjs
+          node --test tests/qa-sli-policy-ai.mjs
+
+  deploy-owner-staging:
+    needs: policy-gate
+    if: ${{ inputs.action == 'deploy-owner-staging' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    environment: sli-owner-staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check Cloudflare deploy credentials are configured
+        env:
+          CF_DEPLOY_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_DEPLOY_TOKEN" ] || [ -z "$CF_ACCOUNT" ]; then
+            echo "::error::Missing CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID as GitHub Actions secrets."
+            exit 1
+          fi
+      - name: Deploy owner-only Worker (never deploy the Pro customer endpoint)
+        working-directory: research-api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 deploy --config wrangler.owner-test.toml.example
+      - name: Note independent smoke-test requirement
+        run: |
+          echo "Deployment submitted. Verify the owner-only endpoint with its existing Cloudflare-stored OWNER_TEST_TOKEN and current OPENAI_API_KEY secrets."
+          echo "No model completion or article-level legal accuracy has been certified by this action."
