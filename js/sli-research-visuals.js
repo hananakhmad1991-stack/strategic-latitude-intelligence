@@ -57,7 +57,7 @@ function renderMarkdown(answer,where,sources=[]){
    if(!list||listType!==kind){
     list=create(kind);
     if(numbered){
-     const authored=Number(line.match(/^\\d+/)?.[0]||1);
+     const authored=Number(line.match(/^\d+/)?.[0]||1);
      list.start=orderedStart(authored,orderedCount);
      orderedCount=list.start-1;
     }else orderedCount=0;
