@@ -1,0 +1,34 @@
+name: SLI Multi-API Evidence Security QA
+on:
+  push:
+    paths:
+      - 'research-api/**'
+      - 'js/sli-research-assistant.js'
+      - 'sli-research-ai.html'
+      - 'tests/qa-sli-multi-api.mjs'
+      - '.github/workflows/sli-multi-api-qa.yml'
+  pull_request:
+    paths:
+      - 'research-api/**'
+      - 'js/sli-research-assistant.js'
+      - 'sli-research-ai.html'
+      - 'tests/qa-sli-multi-api.mjs'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  multi-api-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Validate syntax
+        run: |
+          node --check research-api/src/external-research.mjs
+          node --check research-api/src/model-transport.mjs
+          node --check research-api/src/owner-test-worker.mjs
+          node --check js/sli-research-assistant.js
+      - name: Test consent, provider separation, evidence labeling and regression
+        run: |
+          node --test tests/qa-sli-multi-api.mjs tests/qa-sli-owner-test.mjs tests/qa-sli-source-verification.mjs tests/qa-sli-research-ai.mjs
