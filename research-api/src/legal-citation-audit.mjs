@@ -76,6 +76,15 @@ export function recoverUnsupportedLegalAnswer(answer,evidence){
  if(first.pass)return {answer:String(answer||""),recovered:false,omitted:0,source_limited:false,audit:first};
  const excluded=new Set(first.violations.map(v=>v.paragraph_index));
  const paragraphs=splitParagraphs(answer);
+ // Avoid orphaned legal headings when the only substantive paragraph under
+ // a heading was withheld. Never hide valid neighboring paragraphs.
+ for(let i=0;i<paragraphs.length;i++){
+  if(!/^#{1,6}\s+[^\n]+$/.test(paragraphs[i].trim()))continue;
+  let next=i+1;
+  while(next<paragraphs.length&&!/^#{1,6}\s+[^\n]+$/.test(paragraphs[next].trim()))next++;
+  const substantive=paragraphs.slice(i+1,next).some((p,j)=>!excluded.has(i+1+j)&&p.trim().length>0);
+  if(!substantive)excluded.add(i);
+ }
  const kept=paragraphs.filter((_,i)=>!excluded.has(i)).join("\n\n").trim();
  const excludedCount=excluded.size;
  const warning="Catatan verifikasi SLI: "+excludedCount+" bagian jawaban AI tidak ditampilkan karena mengandung rujukan pasal yang belum cocok dengan dokumen hukum primer dalam corpus. Jangan gunakan hasil ini sebagai opini hukum atau konfirmasi status peraturan.";
