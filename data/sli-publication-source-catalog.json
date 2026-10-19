@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "as_of": "2026-10-16",
+  "as_of": "2026-10-19",
   "purpose": "Watch official/public original publishers for newly linked reports and news releases affecting curated SLI historical and 2026 snapshot data. New links create editorial review leads, not changes in official numeric values.",
   "sources": [
     {
@@ -68,11 +68,12 @@
         "www.pln.co.id",
         "pln.co.id"
       ],
-      "title_pattern": "statistik pln|laporan statistik|statistik ketenagalistrikan",
+      "title_pattern": "statistik pln|laporan statistik|statistik ketenagalistrikan|saidi|saifi|keandalan listrik|reliability",
       "datasets": [
         "data/pln-statistics-regional-baseline-2024.json",
         "data/pln-statistics-source-register.json",
-        "data/energy-fundamentals.json"
+        "data/energy-fundamentals.json",
+        "data/pln-saidi-saifi-2023-2025.json"
       ]
     },
     {
@@ -153,5 +154,6 @@
     "The watcher records newly seen matching publisher links as candidates after initial baseline. Full PDF/table extraction and legal/project verification remain separate.",
     "Only source URLs on the publisher's allowlist are stored. Publisher report numeric values are never changed by this watcher.",
     "Official BPS host may forbid cloud crawlers (403), and PLN report portal may require Javascript. Flag as unparsed rather than claiming no new publication."
-  ]
+  ],
+  "change_control": "Publisher discovery automatically flags candidate editions; parsed SAIDI/SAIFI data may only be replaced after scope, edition year and Table 16 values have been verified. Never overwrite history from a headline."
 }
