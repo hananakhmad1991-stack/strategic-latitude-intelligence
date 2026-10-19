@@ -14,6 +14,9 @@ on:
       - 'tests/qa-unified-glossary-ui.mjs'
       - 'tests/qa-sli-navigation-ui.mjs'
       - 'js/sli-navigation.js'
+      - 'data/pln-saidi-saifi-2023-2025.json'
+      - 'js/i18n-dictionary.js'
+      - 'js/i18n.js'
       - 'sli-user-guide.html'
 permissions:
   contents: read
@@ -41,8 +44,8 @@ jobs:
           import re
           x=Path('sli-glossary-methodology.html').read_text(encoding='utf-8')
           scripts=re.findall(r'<script>([\s\S]*?)</script>',x)
-          assert len(scripts)==1
-          Path('/tmp/sli-glossary-inline.js').write_text(scripts[0],encoding='utf-8')
+          assert len(scripts)>=2  # shared chrome prepaint and glossary language controller
+          Path('/tmp/sli-glossary-inline.js').write_text('\n'.join(scripts),encoding='utf-8')
           PY
           node --check /tmp/sli-glossary-inline.js
       - name: Smoke-test interactive dictionary and dashboard appendix in DOM
