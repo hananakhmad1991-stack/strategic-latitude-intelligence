@@ -354,5 +354,7 @@ source.then(db=>{
   document.addEventListener?.("sli:languagechange",()=>{if(root.isConnected)init(which,root,db,{mode:filter.value,query:search.value,selectedId,openIds:new Set(openIds)});},{once:true});
 }).catch(error=>{console.error("[SLI command hierarchy]",error);root.replaceChildren(el("p","sli-hier-status","Hierarchy data cannot be loaded. The Energy-style institutional network remains available below."))});
 }
+window.SLITranslateEnergyRole=function(layer,index,original){if(!isId())return original||"";return ENERGY_ROLE_ID[layer]?.[index]||original||""};
+window.SLITranslateInstitutionName=function(name){return actorTitle({title:name})};
 window.initSLICommandHierarchy=init;
 })();
