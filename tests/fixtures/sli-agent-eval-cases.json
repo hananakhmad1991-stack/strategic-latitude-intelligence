@@ -86,6 +86,13 @@
         "Jawa Tengah",
         "Jawa Barat"
       ]
+    },
+    {
+      "id": "auto_method-multivariate-bahasa",
+      "category": "method",
+      "prompt": "Tolong hitung regresi linear berganda untuk data investasi provinsi",
+      "expected": "multivariate_ols",
+      "expected_status": "local"
     }
   ]
 }
