@@ -7,9 +7,9 @@ const html=read("index.html");
 const js=read("js/site-search.js");
 const css=read("css/site-search.css");
 assert.equal(index.schema,"sli-search-1");
-assert.equal(index.pages.length,9);
+assert.equal(index.pages.length,11);
 assert.ok(index.entries.length>=800,"Global index must contain real assets and provincial records");
-const expected=["overview","investment","map","trade","energy","minerals","ai","policy","methodology"];
+const expected=["overview","investment","map","trade","energy","food","minerals","ai","policy","geopolitics","methodology"];
 assert.deepEqual(index.pages.map(p=>p.id),expected);
 assert.equal(new Set(index.entries.map(x=>x.id)).size,index.entries.length);
 for(const item of index.entries){
@@ -20,7 +20,7 @@ for(const item of index.entries){
  if(item.source)assert.match(item.source,/^data\/[a-z0-9-]+\.json$/i);
 }
 const counts=Object.fromEntries(["dashboard","section","topic","record","indicator"].map(k=>[k,index.entries.filter(x=>x.kind===k).length]));
-assert.equal(counts.dashboard,9);
+assert.equal(counts.dashboard,11);
 assert.ok(counts.record>=650);
 assert.ok(counts.indicator>=100);
 assert.ok(index.entries.some(x=>x.page==="energy"&&x.layer==="spklu"&&x.province==="Jawa Barat"));
@@ -41,6 +41,9 @@ const spklu=result("SPKLU Jawa Barat");
 assert.ok(spklu.some(x=>x.page==="energy"&&x.layer==="spklu"&&x.province==="Jawa Barat"),"Search province detail");
 assert.ok(result("batubara").some(x=>x.page==="energy"||x.page==="map"),"Bahasa ↔ English alias");
 assert.ok(result("nickel").some(x=>x.page==="minerals"||x.page==="map"),"Nickel data");
+assert.ok(result("beras pertanian").some(x=>x.path==="food-agriculture-intelligence.html"),"Food search opens Food dashboard");
+assert.ok(result("geopolitik").some(x=>x.page==="geopolitics"),"Geopolitical chapter is indexed");
+assert.ok(result("regulasi perda").some(x=>x.path==="policy-regulatory-intelligence.html"),"Regulatory rules open policy specialist");
 assert.ok(result("Rokan").some(x=>x.page==="map"||x.page==="investment"),"Project operator source");
 assert.ok(result("investment","investment","page").every(x=>x.page==="investment"),"This dashboard scope only");
 assert.ok(!result("SPKLU","ai","page").some(x=>x.page==="energy"),"Local filter excludes other pages");
@@ -73,4 +76,4 @@ assert.match(js,/fetch\(INDEX_URL/);
 assert.match(css,/sli-search-popover/);
 assert.match(css,/@media\(max-width:650px\)/);
 assert.match(css,/sli-search-popover\[hidden\]/);
-console.log("PASS: site-wide search | 9 dashboards | "+index.entries.length+" source records | bilingual keywords | scope filters | navigation anchors | accessibility | mobile styles");
+console.log("PASS: site-wide search | 11 indexed navigation categories | "+index.entries.length+" source records | bilingual keywords | scope filters | navigation anchors | accessibility | mobile styles");
