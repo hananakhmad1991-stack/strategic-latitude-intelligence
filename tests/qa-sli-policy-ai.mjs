@@ -108,6 +108,28 @@ test("unsupported article citations fail closed in owner-only legal model output
  assert.doesNotMatch(recovery.answer,/Pasal 9/);
  assert.match(worker,/recoverUnsupportedLegalAnswer/);
 });
+test("focused statute AI excludes irrelevant monitoring evidence and charts",()=>{
+ assert.match(worker,/const focusedArticleReading=legalQuestion/);
+ assert.match(worker,/focusedArticleReading\?\[\]:selectResearchEvidence/);
+ assert.match(worker,/focusedArticleReading\?\[\]:selectMonitoringNewsEvidence/);
+ assert.match(worker,/charts:focusedArticleReading\?\[\]:/);
+ assert.match(worker,/secondary_news_index_count:focusedArticleReading\?0:/);
+});
+test("legal research references preserve original law year and readable source panel",()=>{
+ const client=file("js/sli-research-assistant.js");
+ const css=file("css/sli-research-brand.css");
+ const start=client.indexOf("function apaEntry(s){");
+ const end=client.indexOf("\nfunction reportBody",start);
+ assert.ok(start>=0&&end>start);
+ const format=new Function("return "+client.slice(start,end))();
+ const entry=format({title:"UU 16/2016, Pasal 1 — penjelasan terbatas tingkat pasal",publisher:"Lembaran Negara RI",source_type:"reviewed_primary_article_paraphrase",source_date:"2026-10-19",source_url:"https://peraturan.go.id/files/uu16-2016bt.pdf"});
+ assert.match(entry,/\(2016\)/);
+ assert.doesNotMatch(entry,/\(2026\)/);
+ assert.match(entry,/UU 16\/2016, Pasal 1/);
+ assert.match(client,/sumber\\s\*\\\\\/\\s\*evidence panel|sumber\\s\*\\\/\\s\*evidence panel/i);
+ assert.match(css,/Research sources: dark Navy/);
+ assert.match(css,/#raSourcesPanel>h3/);
+});
 test("modified source modules pass the JavaScript parser",()=>{
  for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
   const p=spawnSync(process.execPath,["--check",new URL("../"+path,import.meta.url).pathname],{encoding:"utf8"});
