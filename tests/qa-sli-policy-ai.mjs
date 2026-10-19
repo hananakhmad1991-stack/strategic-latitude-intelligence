@@ -152,6 +152,20 @@ test("research conversation presents readable disclosures without unrelated sect
  assert.match(css,/#raConversation #raModelStatementBody/);
  assert.match(html,/20261019-legal-cohesion1/);
 });
+test("report body and markdown download use sequential numbering even across explanatory paragraphs",()=>{
+ const client=file("js/sli-research-assistant.js");
+ const start=client.indexOf("function normalizeReportListNumbers(");
+ const end=client.indexOf("\nfunction reportBody",start);
+ assert.ok(start>=0&&end>start);
+ const normalize=new Function("return "+client.slice(start,end))();
+ const input="### Konsekuensi kebijakan\n\n1. Penguatan koordinasi.\n\nPenjelasan lebih lanjut.\n\n1. Rencana sektor energi.\n\nPenjelasan kedua.\n\n1. Perizinan harus diperiksa.\n\n### Tindak lanjut\n\n1. Audit sumber.";
+ const output=normalize(input);
+ assert.match(output,/1\. Penguatan koordinasi/);
+ assert.match(output,/2\. Rencana sektor energi/);
+ assert.match(output,/3\. Perizinan harus diperiksa/);
+ assert.match(output,/### Tindak lanjut\n\n1\. Audit sumber/);
+ assert.match(client,/return normalizeReportListNumbers\(out\.join/);
+});
 test("report export toolbar uses stable table host, and separated numbered list items remain sequential",()=>{
  const exporter=file("js/sli-visual-export.js");
  const markdown=file("js/sli-research-visuals.js");
