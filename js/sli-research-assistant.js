@@ -157,6 +157,7 @@ function renderSources(sources,answer="",charts=[]){
   if(s.source_type==="secondary_news")card.append(node("p","sli-ra-source-role",state.language==="id"?"Berita sekunder teratribusi · laporan media, bukan otomatis fakta independen atau statistik resmi.":"Attributed secondary reporting · not automatically verified as an independent fact or official statistic."));
   if(s.source_type==="official_numeric_api")card.append(node("p","sli-ra-source-role",state.language==="id"?"API angka resmi World Bank · nasional Indonesia; periksa tahun observasi dan perbedaan metodologi dengan BPS.":"Official World Bank numerical API · Indonesia national series; check observation year and BPS methodological differences."));
   if(s.source_type==="live_web_discovery")card.append(node("p","sli-ra-source-role",state.language==="id"?"Temuan pencarian eksternal · cuplikan belum diverifikasi, BUKAN konfirmasi fakta.":"External web discovery · snippet not independently checked; NOT fact confirmation."));
+  if(s.source_type==="public_dashboard_source_record_not_claim_verified")card.append(node("p","sli-ra-source-role",state.language==="id"?"Indeks dashboard publik SLI · catatan bertanggal dan tautan sumber; belum diverifikasi terhadap artikel primer.":"Public SLI dashboard index · dated source-linked record, not independently checked against the primary publication."));
 
   const url=safeUrl(s.source_url||"");
 
@@ -394,7 +395,7 @@ async function submit(){
    // Do not label such an unfinished report successful or allow it to be exported.
    if(payload.answer.length===9000)throw Error(state.language==="id"?"Backend Cloudflare masih versi lama: laporan terpotong pada 9.000 karakter. Deploy ulang Worker riset SLI.":"Cloudflare backend is outdated: report truncated at 9,000 characters. Redeploy the SLI research Worker.");
   loading.parentNode?.remove();
-  state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],qualityAudit:payload.quality_audit||null,evidenceStatus:String(payload.evidence_status||""),externalEvidence:payload.external_evidence||null,modelRoute:String(payload.model_route||""),question,mode};
+  state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],qualityAudit:payload.quality_audit||null,evidenceStatus:String(payload.evidence_status||""),externalEvidence:payload.external_evidence||null,dashboardEvidence:payload.dashboard_evidence||null,modelRoute:String(payload.model_route||""),question,mode};
   const report=append("assistant",payload.answer);
   const articleReading=String(payload.evidence_status||"").includes("legal")||!!payload.quality_audit?.legal_article_gate;
   const legalLabels={detail:"Telusuri aturan & sumber",correct:"Koreksi analisis hukum",compare:"Bandingkan perubahan aturan",gaps:"Periksa kekurangan bukti"};
@@ -431,6 +432,16 @@ async function submit(){
   // Always show provider status — including disabled, missing consent and failed API calls.
   // A model answer can succeed solely on cached/curated SLI evidence while web discovery fails.
   report.prepend(node("p","sli-ra-evidence-note",externalApiDiagnostic(payload,state.language)));
+  if(payload.dashboard_evidence){
+   const d=payload.dashboard_evidence,used=Math.max(0,Number(d.selected_records)||0);
+   const coverage=Math.max(0,Number(d.indexed_datasets)||0),status=String(d.status||"unknown");
+   const label=status==="matched"?(state.language==="id"
+      ?"DASHBOARD SLI · "+used+" bukti terkait dipilih dari "+coverage+" dataset bersumber; catatan bukan verifikasi independen."
+      :"SLI DASHBOARDS · "+used+" relevant records retrieved across an index of "+coverage+" sourced datasets; not independently fact-checked.")
+     :(state.language==="id"?"DASHBOARD SLI · Indeks belum menyediakan bukti tambahan ("+status+"); analisis memakai bukti lain yang tersedia."
+       :"SLI DASHBOARDS · Index did not supply additional evidence ("+status+"); other available evidence used.");
+   report.prepend(node("p","sli-ra-evidence-note",label));
+  }
   if(!articleReading&&Number.isInteger(payload.secondary_news_index_count)&&payload.secondary_news_index_count>0){
    const count=payload.secondary_news_index_count,used=Number(payload.attributed_secondary_sources)||0;
    const description=state.language==="id"?
