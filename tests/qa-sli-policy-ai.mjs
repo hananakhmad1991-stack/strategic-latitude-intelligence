@@ -54,8 +54,40 @@ test("owner RAG holds legal-index boundaries and never auto-enables customer acc
  assert.equal(config.api_enabled,false,"subscriber service remains disabled");
  assert.equal(config.login_enabled,false,"subscriber service remains disabled");
 });
+test("JDIH completeness dashboard reports gaps across exactly 38 provinces",()=>{
+ const coverage=JSON.parse(file("data/sli-policy-source-coverage.json"));
+ assert.equal(coverage.provinces.length,38);
+ assert.equal(new Set(coverage.provinces.map(p=>p.name)).size,38);
+ assert.ok(coverage.provinces.some(p=>p.source_url===null),"incomplete source discovery must be disclosed");
+ assert.ok(coverage.provinces.filter(p=>p.source_url).every(p=>/^https:\/\//.test(p.source_url)));
+ assert.match(coverage.metadata_policy,/never counted as no law/i);
+ assert.match(html,/id="policyCoverageDashboard"/);
+ assert.match(html,/js\/sli-policy-coverage\.js/);
+ const coverageClient=file("js/sli-policy-coverage.js");
+ assert.match(coverageClient,/coverage_schema/);
+ assert.match(coverageClient,/portal.*belum|Perlu penelusuran/i);
+});
+test("primary article reference pilot preserves law-to-article and source provenance",()=>{
+ const articleDb=JSON.parse(file("data/sli-verified-legal-provisions.json"));
+ const bridge=file("research-api/src/legal-provisions.mjs");
+ const ids=new Set(graph.nodes.map(n=>n.id));
+ assert.equal(articleDb.schema,"sli-legal-provisions-v1");
+ assert.ok(articleDb.items.length>=2);
+ for(const provision of articleDb.items){
+  assert.ok(ids.has(provision.law_node_id));
+  assert.match(provision.source_url,/^https:\/\//);
+  assert.match(provision.article,/^Pasal\s+[0-9]+/);
+  assert.equal(provision.current_status_certified,false);
+  assert.equal(provision.excerpt_kind,"reviewed_paraphrase_not_verbatim");
+  assert.ok(provision.page_reference);
+ }
+ assert.match(bridge,/legalProvisionEvidence/);
+ assert.match(worker,/import \{legalProvisionEvidence\}/);
+ assert.match(worker,/ARTICLE CITATIONS/);
+ assert.match(worker,/\.\.\.articleEvidence,\.\.\.legalEvidence/);
+});
 test("modified source modules pass the JavaScript parser",()=>{
- for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-regulatory-explorer.js","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
+ for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
   const p=spawnSync(process.execPath,["--check",new URL("../"+path,import.meta.url).pathname],{encoding:"utf8"});
   assert.equal(p.status,0,path+": "+p.stderr);
  }
