@@ -2,9 +2,10 @@
 *Prepared 18 October 2026. Operational checklist, not a certification.*
 
 ## Verified scope and limitations
+- **20 October 2026 update:** SLI has a scheduled deterministic AI self-evaluation pipeline with human review and scorecard artifacts (`.github/workflows/sli-agent-self-evaluation.yml`). This does **not** verify live generative answers or retrain/upgrade AI models by itself.
 - Owner Test is an owner-authenticated Cloudflare Worker at the configured staging endpoint. **It is not public, multi-tenant Pro/Enterprise authentication.**
 - A complete AI response does not prove the facts are true. Automated report audit checks only structure, cited marker indices and suspiciously unfinished endings; it does not check whether sentences are supported by original documents.
-- The SLI 49-method catalogue currently has **7 runnable browser calculations**, with **42 method designs not backed by executed estimators**. A method listed in the UI must never be marketed as an executed computation.
+- The SLI 49-method catalogue currently has **10 runnable browser calculations**, with **39 method designs not backed by executed estimators**. A method listed in the UI must never be marketed as an executed computation.
 - Source-dated static corpus and automated monitoring leads are **not** universal live web retrieval. Media leads require verification before being promoted to confirmed project facts.
 - Never copy owner tokens, API keys, subscriber details, confidential client documents or licensed data into public GitHub pages, example prompts, screenshots or CI logs.
 
@@ -15,7 +16,7 @@
 | R1. Response integrity | No silent cut-off, unfinished final heading or malformed ending in tested full reports | Automated structural audit; exported Markdown spot checks | Partial: owner confirmed one complete report; broad sample pending |
 | R2. Factual provenance | Every high-impact quantitative claim has correct period, unit, territory and publication; source actually supports the claim | Human reviewer checks each claim in a sample of reports against original records | Not yet verified |
 | R3. Geography and intent | Exact province, commodity, project status and requested period respected | Regression prompts + original outputs | Partial: code tests exist; live matrix pending |
-| R4. Methodological honesty | No invented multipliers, regression coefficients, NPV/IRR, CR or AHP weights; 7 executable methods distinguished from other 42 | Known-answer datasets + method trace and unsupported-data negative cases | Partial: code tests; full live matrix pending |
+| R4. Methodological honesty | No invented multipliers, regression coefficients, NPV/IRR, CR or AHP weights; 10 executable methods distinguished from other 39 | Known-answer datasets + method trace and unsupported-data negative cases | Partial: code tests; full live matrix pending |
 | R5. Security and licensing | Verified subscriber identity, active entitlements, per-user isolation, source rights, consent, quota/spend limit and revocation | Threat-model tests, licensing register, customer privacy terms | **Release blocker** |
 | R6. Service reliability | Tested timeout/failure handling, retry policy, clear errors, mobile reading, copy/export and stable quota | Repeated staging E2E tests with timestamps and measured cost | Not yet verified |
 | R7. Commercial operations | Published plans, support channel, refund/billing/privacy policies, secure payment flow, domain, terms and entitlement provisioning | Approved launch checklist | **Release blocker** |
