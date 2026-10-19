@@ -27,4 +27,4 @@ $('resetScore').onclick=()=>{overrides={};render()};
 $('csv').onclick=()=>{let rows=[['sector','issue','dimension','weight','analyst_exposure_1to5','reason','mitigation'],...c.issues.map(i=>[c.name,i.title,i.id,graph.methodology.ria_lite.dimensions.find(x=>x.id===i.id).weight,overrides[i.id]??i.exposure,i.reason,i.mitigation])];let csv=rows.map(row=>row.map(x=>'"'+String(x).replaceAll('"','""')+'"').join(',')).join('\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='sli_policy_ria_'+selected+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
 }
 Promise.all(['./data/sli-policy-regulatory-graph-2026.json','./data/sli-sector-regulatory-ria-deepdives.json'].map(u=>fetch(u,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(u+' HTTP '+r.status);return r.json()}))).then(a=>{[graph,deep]=a;render()}).catch(err=>$('sectorContent').textContent='Regulatory sector data unavailable: '+err.message);
-</script><script defer src="./js/sli-navigation.js?v=20261019-id-audit7"></script></body></html>
+</script><script defer src="./js/sli-navigation.js?v=20261019-id-audit8"></script></body></html>
