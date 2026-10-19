@@ -57,7 +57,7 @@ const UI_ID={
 function ui(s){if(!isId()||s==null)return s;let v=String(s);if(Object.prototype.hasOwnProperty.call(UI_ID,v))return UI_ID[v];v=v.replace(/^(\d+) mapped entities$/,"$1 entitas terpetakan").replace(/^Matching actors · (\d+)$/,"Tokoh atau lembaga cocok · $1").replace(/^(\d+) subordinate \/ linked entities$/,"$1 entitas bawahan / terkait");return v;}
 
 const el=(tag,cl,text)=>{const x=document.createElement(tag);if(cl)x.className=cl;if(text!==undefined)x.textContent=ui(text);return x};
-const link=(url,label)=>{const a=el("a","sli-hier-link",label||"Original source ↗");if(/^https:\/\//.test(url||"")){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}else{a.textContent="No verified source"}return a};
+const link=(url,label)=>{const a=el("a","sli-hier-link",label||"Original source ↗");if(/^https:\/\//.test(url||"")){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}else{a.textContent=ui("No verified source")}return a};
 const typeName={root:"National direction",policy:"Sector policy",advisory:"Presidential advisory",administrative:"DEN administrative support", "local-government":"Regional administration & RUED","zone-interface":"Investment-zone functional interface",coordination:"Coordinating ministry",planning:"National development planning",reporting:"Administrative reporting",portfolio:"State portfolio",equity:"Shareholding / member",minority:"Minority investment / associate",oversight:"Independent constitutional oversight",research:"Research / applied innovation","strategic-interface":"Functional demand interface","joint-venture":"Joint venture / cross-holding",market:"Independent commercial market","security":"Cybersecurity"};
 
 /* Publisher source names remain intact. Indonesian summaries are curated,
@@ -175,7 +175,7 @@ function actorRole(a,sector){
 }
 function actorVerification(a){return isId()?"Status bukti sesuai sumber pada periode pelaporan; periksa tanggal dan dokumen asli":(a.verification||"Source not dated")}
 
-function init(which,root,provided){if(!root)return;root.replaceChildren(el("p","sli-hier-status","Loading verified institutional and corporate hierarchy…"));
+function init(which,root,provided,restore){if(!root)return;root.replaceChildren(el("p","sli-hier-status","Loading verified institutional and corporate hierarchy…"));
 const source=provided?Promise.resolve(provided):fetch("data/sector-command-hierarchy.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Hierarchy source unavailable");return r.json()});
 source.then(db=>{
  const record=db.sectors?.[which];if(!root.isConnected||!record)return;
@@ -191,46 +191,46 @@ source.then(db=>{
  tools.append(filter,search,expand,collapse);main.append(h,tools);
  const watch=el("div","sli-hier-watch","Official leadership source watch: awaiting the next dated source scan.");main.append(watch);
  if(which==="energy"){
-  watch.textContent="Official leadership source verification and research notes are available within this Energy Security institution panel. The two views use the same source-dated governance data.";
+  watch.textContent=ui("Official leadership source verification and research notes are available within this Energy Security institution panel. The two views use the same source-dated governance data.");
  }else fetch("data/sector-leadership-watch.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
-  if(!d?.checked_at_utc){watch.textContent="Leadership roster source monitoring is configured but has not completed its first scan. Names are source-dated, not live confirmed.";return}
+  if(!d?.checked_at_utc){watch.textContent=ui("Leadership roster source monitoring is configured but has not completed its first scan. Names are source-dated, not live confirmed.");return}
   const items=(d.checks||[]).filter(x=>x.sector===which),ok=items.filter(x=>x.status==="name_present_in_source").length,
     review=items.filter(x=>x.status==="name_not_detected_needs_review").length,
     unavailable=items.filter(x=>x.status==="source_access_unavailable").length;
-  watch.textContent="Official page scan "+d.checked_at_utc.slice(0,16)+" UTC · "+ok+" names seen in linked source pages · "+review+" need review · "+unavailable+" sources inaccessible. Automated page matching is not proof of incumbent appointment.";
- }).catch(()=>{watch.textContent="Leadership source scanner status temporarily unavailable; original links remain visible."});
+  watch.textContent=isId()?"Pemeriksaan situs resmi "+d.checked_at_utc.slice(0,16)+" UTC · "+ok+" nama ditemukan pada halaman sumber · "+review+" memerlukan pemeriksaan · "+unavailable+" sumber tidak bisa diakses. Pencocokan otomatis bukan bukti pengangkatan pejabat.":"Official page scan "+d.checked_at_utc.slice(0,16)+" UTC · "+ok+" names seen in linked source pages · "+review+" need review · "+unavailable+" sources inaccessible. Automated page matching is not proof of incumbent appointment.";
+ }).catch(()=>{watch.textContent=ui("Leadership source scanner status temporarily unavailable; original links remain visible.")});
 
  const top=el("div","sli-hier-president"),lanes=el("div","sli-hier-lanes"),outsiders=el("section","sli-hier-market"),info=el("aside","sli-hier-profile");
  main.append(top,lanes,outsiders,info);
  const legend=el("div","sli-hier-legend");for(const [key,title] of Object.entries(typeName)){if(["reporting","policy","coordination","planning","portfolio","equity","minority","research","market","oversight","joint-venture"].includes(key))legend.append(el("span","sli-hier-key "+key,title))}main.append(legend);
- main.append(el("p","sli-hier-foot",db.updated_note+" Reported shareholding and direct official reporting must not be conflated with coordination or related-industry links."));
+ main.append(el("p","sli-hier-foot",T(db.updated_note+" Reported shareholding and direct official reporting must not be conflated with coordination or related-industry links.","Bagan ini bersumber pada registri tata kelola dan kepemilikan bertanggal "+db.as_of+". Hubungan koordinasi, kepemilikan saham, pelaporan administratif, dan pengawasan konstitusional bukan hubungan bawahan yang sama. Periksa sumber resmi pada profil setiap lembaga.")));
  root.replaceChildren(main);
  const defaultExpanded=new Set(["pres","minister","esdm","industrial","investment","komdigi","dgE","dgI","bpi","dam","mind","telkom","brin","bpbum-ai","kemendagri-ai"]);
  // The energy adapter has source-indexed IDs. Resolve the same L2 visibility
  // by actor title rather than only static IDs from the minerals/AI registers.
  for(const a of actors)if(/Kementerian ESDM \/ Minister|Kementerian Dalam Negeri|BP BUMN|Coordinating Ministry for Downstreaming/i.test(a.title))defaultExpanded.add(a.id);
- let openIds=new Set(defaultExpanded);
- let selectedId="pres";
+ let openIds=restore?.openIds?new Set(restore.openIds):new Set(defaultExpanded);
+ let selectedId=restore?.selectedId||"pres";
  function profile(a){
- info.replaceChildren(el("div","eyebrow","SOURCE-DATED ACTOR PROFILE"),el("h4",null,a.title));
- if(a.person)info.append(el("p","sli-hier-person","Actor / leader: "+a.person));else info.append(el("p","sli-hier-missing","Named incumbent is not independently verified in this register."));
- info.append(el("p",null,a.role),el("p","sli-hier-type","Relationship: "+(typeName[a.relation]||a.relation)));
- if(a.stake)info.append(el("p","sli-hier-stake","Reported stake: "+a.stake));
- if(a.affiliation)info.append(el("p",null,"Corporate affiliation: "+a.affiliation));
- info.append(el("p","sli-hier-provenance","Evidence class: "+a.verification+" · research snapshot "+db.as_of),link(a.source,"View original institutional or issuer source ↗"));
- const path=[];let p=a;while(p&&path.length<8){path.unshift(p.title);p=byId.get(p.parent)}
- if(path.length>1)info.append(el("p","sli-hier-path","Trace: "+path.join(" → ")));
+ info.replaceChildren(el("div","eyebrow","SOURCE-DATED ACTOR PROFILE"),el("h4",null,actorTitle(a)));
+ if(a.person)info.append(el("p","sli-hier-person",T("Actor / leader: ","Tokoh / pimpinan: ")+a.person));else info.append(el("p","sli-hier-missing","Named incumbent is not independently verified in this register."));
+ info.append(el("p",null,actorRole(a,which)),el("p","sli-hier-type",T("Relationship: ","Hubungan: ")+ui(typeName[a.relation]||a.relation)));
+ if(a.stake)info.append(el("p","sli-hier-stake",T("Reported stake: ","Kepemilikan dilaporkan: ")+a.stake));
+ if(a.affiliation)info.append(el("p",null,T("Corporate affiliation: ","Afiliasi perusahaan: ")+a.affiliation));
+ info.append(el("p","sli-hier-provenance",T("Evidence class: ","Jenis bukti: ")+actorVerification(a)+T(" · research snapshot "," · cuplikan riset ")+db.as_of),link(a.source,"View original institutional or issuer source ↗"));
+ const path=[];let p=a;while(p&&path.length<8){path.unshift(actorTitle(p));p=byId.get(p.parent)}
+ if(path.length>1)info.append(el("p","sli-hier-path",T("Trace: ","Jalur: ")+path.join(" → ")));
  }
  function card(a,depth=0){
  const wrap=el("div","sli-hier-entry "+a.relation),btn=el("button","sli-hier-card"+(selectedId===a.id?" selected":""),undefined);
- btn.type="button";btn.append(el("small",null,(typeName[a.relation]||a.relation)+" · L"+depth),el("strong",null,a.title));
+ btn.type="button";btn.append(el("small",null,ui(typeName[a.relation]||a.relation)+" · L"+depth),el("strong",null,actorTitle(a)));
  if(a.person)btn.append(el("span","sli-hier-lead",a.person));
  if(a.stake)btn.append(el("span","sli-hier-share",a.stake));
  btn.addEventListener("click",()=>{selectedId=a.id;profile(a);draw()});wrap.append(btn);return wrap
  }
  function nested(a,depth,scope,maxDepth=8){
  const node=card(a,depth),children=actors.filter(x=>x.parent===a.id && x.lane===a.lane && x.relation!=="market");
- if(children.length&&depth<maxDepth){const disclosure=el("button","sli-hier-toggle",(openIds.has(a.id)?"−":"+")+" "+children.length+" subordinate / linked entities");disclosure.type="button";
+ if(children.length&&depth<maxDepth){const disclosure=el("button","sli-hier-toggle",(openIds.has(a.id)?"−":"+")+" "+children.length+T(" subordinate / linked entities"," entitas bawahan / terkait"));disclosure.type="button";
  disclosure.setAttribute("aria-expanded",String(openIds.has(a.id)));disclosure.addEventListener("click",()=>{if(openIds.has(a.id))openIds.delete(a.id);else openIds.add(a.id);draw()});node.append(disclosure);
  if(openIds.has(a.id)){const branch=el("div","sli-hier-children");for(const ch of children)branch.append(nested(ch,depth+1,scope,maxDepth));node.append(branch)}}
  return node
@@ -333,7 +333,7 @@ source.then(db=>{
    const result=el("div","sli-hier-search-hits");
    result.append(el("h4",null,"Matching actors · "+matches.length));
    for(const a of matches.slice(0,30)){
-    const b=el("button","sli-hier-match",a.title+(a.person?" · "+a.person:""));
+    const b=el("button","sli-hier-match",actorTitle(a)+(a.person?" · "+a.person:""));
     b.type="button";
     b.addEventListener("click",()=>{
      selectedId=a.id;
@@ -347,7 +347,9 @@ source.then(db=>{
  expand.addEventListener("click",()=>{openIds=new Set(actors.map(x=>x.id));draw()});
  collapse.addEventListener("click",()=>{openIds=new Set();draw()});
  search.addEventListener("input",draw);filter.addEventListener("change",draw);
- profile(rootNode);draw();
+ if(restore?.mode)filter.value=restore.mode;if(restore?.query)search.value=restore.query;
+  profile(byId.get(selectedId)||market.find(a=>a.id===selectedId)||rootNode);draw();
+  document.addEventListener("sli:languagechange",()=>{if(root.isConnected)init(which,root,db,{mode:filter.value,query:search.value,selectedId,openIds:new Set(openIds)});},{once:true});
 }).catch(error=>{console.error("[SLI command hierarchy]",error);root.replaceChildren(el("p","sli-hier-status","Hierarchy data cannot be loaded. The Energy-style institutional network remains available below."))});
 }
 window.initSLICommandHierarchy=init;
