@@ -15,8 +15,8 @@ test("All SLI HTML pages have early anti-FOUC protection and supported versioned
   assert.match(head,/window\.addEventListener\('load'/,"No loading fallback: "+p);
   assert.match(head,/sli-navigation\.css\?v=20261018-menu-flash2/,"Stale shared CSS: "+p);
   assert.match(head,/var pref=localStorage\.getItem\(\x27sli-ui-language\x27\)/,"Early locale preference missing: "+p);
-  assert.match(source,/sli-navigation\.js\?v=20261019-id-audit7/,"Stale EN\/ID language runtime: "+p);
-  assert.match(source,/sli-navigation\.js\?v=(?:20261018-menu-flash2|20261019-insights1|20261019-onepoint6|20261019-locale2|20261019-id-audit7)/,"Stale shared JS: "+p);
+  assert.match(source,/sli-navigation\.js\?v=20261019-id-audit8/,"Stale EN\/ID language runtime: "+p);
+  assert.match(source,/sli-navigation\.js\?v=(?:20261018-menu-flash2|20261019-insights1|20261019-onepoint6|20261019-locale2|20261019-id-audit8)/,"Stale shared JS: "+p);
  }
 });
 
