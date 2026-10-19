@@ -13,6 +13,7 @@ import {fetchDashboardEvidence} from "./dashboard-corpus.mjs";
 import {openAITransport} from "./model-transport.mjs";
 import {buildResearchCharts} from "./chart-data.mjs";
 import {auditReport} from "./report-audit.mjs";
+import {auditResearchClaims} from "./claim-evidence-audit.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {policyLegalEvidence,selectPolicyEvidence} from "./policy-corpus.mjs";
@@ -225,7 +226,8 @@ export default{
 
   // Structural lint only. Do not mistake valid citation indices for source verification.
   const qa=auditReport(answer,evidence,{minWords:payload.mode==="deep_research"?150:80,requireConclusion:payload.mode==="deep_research"});
-  const quality_audit={review_scope:qa.review_scope,structural_status:qa.pass?"complete_structure":"needs_editorial_review",issues:qa.issues,word_count:qa.words,section_count:qa.sections,citation_count:qa.citations,has_conclusion:qa.hasConclusion};
+  const quality_audit={review_scope:qa.review_scope,structural_status:qa.pass?"complete_structure":"needs_editorial_review",issues:qa.issues,word_count:qa.words,section_count:qa.sections,citation_count:qa.citations,has_conclusion:qa.hasConclusion,
+   claim_review:auditResearchClaims(answer,evidence)};
   if(legalAudit)quality_audit.legal_article_gate={
    pass:legalAudit.pass,review_scope:legalAudit.scope,
    reviewed_article_anchors:legalAudit.reviewed_article_anchors,
