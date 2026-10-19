@@ -1,24 +1,7 @@
 {
-  "checked_at_utc": "2026-10-19T06:48:52.366270+00:00",
+  "checked_at_utc": "2026-10-19T09:41:47.084108+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
-    {
-      "topic": "Global coal and energy policy",
-      "topic_id": "coal_markets",
-      "type": "Coal markets",
-      "sector": "coal",
-      "sector_tags": [
-        "coal"
-      ],
-      "subsector": "dmo_power",
-      "title": "China September coal imports fall 6% on high inventories, Indonesia supply constraints - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNMk1UZlVmWjJQMVU0SHNvcmxIcF9pdXhSaEZWaWNOODY1M29OWGJCRk1MUzNvQXhJYzRNVUhicnhTNXBhZkRCQXFJMDVfWThiLW1LbmRWX1hkSG5tczJwQ0kwWUZ1aTFfZFN4X2t4NXUwOXVDdEtGRGJnMHFhWVdCbzlsb3pOWnM5dXJJWHVjYVEtdzlFQUxwTWpkOWZtdXIzdVZSZU9rV2xIM1h4RkpuREwxay1sRDN1MWFVN2hB?oc=5",
-      "indexed_at_utc": "2026-10-14T07:25:43+00:00",
-      "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
     {
       "topic": "Global coal and energy policy",
       "topic_id": "coal_markets",
@@ -45,7 +28,7 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Brent crude hovers near $109 a barrel as Ukraine resumes energy strikes, tankers attacked in Middle East - CNBC",
+      "title": "Oil prices slide as sanctions relief on Russian crude raises hopes of increased supply - CNBC",
       "publisher": "CNBC",
       "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQUUdqTmNWUUFKcWcydVFMaU5uUkthdnpkZ3Z1Y0FaTU54UjdfZDlfYnNJcTU0WTNGU1hRa0Etc3pFNjNPQjBXcjB5S3pFbGMyRUlLTjVoTzdNQjNWVTJsZTNVUER4NDdDQWZMdWdhWnBGR1NkWDJQYnlVT3lJUGsyZmlMY1BKQXliNUZMVHZXWdIBlAFBVV95cUxQMnMyZDFwdWNxYnZScnhQRUlrUnJzcGZPcHQtRTFNWXNURXFBZC1CMThXXzlCLWt4NFpIRDFvREpUSDlVU1h4RDF5UU51Z1VOaVU1WHBWWFN1V1NhSjFMM0hTS3pqOVZXTi1jbnIzYUlNMGo1eGh1RjA0eHRvSWRQT05WNVpUOGl0SkhlU01MdzlsYnhu?oc=5",
       "indexed_at_utc": "2026-10-18T22:15:39+00:00",
@@ -73,7 +56,7 @@
   ],
   "sector_counts": {
     "oil_gas": 1,
-    "coal": 2,
+    "coal": 1,
     "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
