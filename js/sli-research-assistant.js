@@ -88,7 +88,8 @@ function normalizeReportListNumbers(markdown,language="id"){
    count=0;
    const title=heading[2].trim();
    const translated=language==="id"&&/^(?:verification note|legal verification note|evidence limitations note)$/i.test(title)
-    ?"Catatan Verifikasi Hukum":title;
+    ?"Catatan Verifikasi Hukum":language==="id"&&/^executive summary$/i.test(title)
+    ?"Ringkasan Eksekutif":title;
    return heading[1]+translated;
   }
   const item=/^(\s*)(\d+)([.)])(\s+.+)$/.exec(line);
@@ -110,7 +111,7 @@ function reportBody(answer,language="id"){
   const section=/^#{1,3}\s+(.+)$/.exec(line.trim());
   if(section){
    const title=section[1].replace(/\*\*/g,"").trim();
-   skipping=/^(references|daftar pustaka|bibliography|keterbatasan(?: data)?|limitations|evidence limitations|batasan data|source limitations|sumber\s*\/\s*evidence panel|sources?\s*\/\s*evidence panel|model statement)\b/i.test(title);
+   skipping=/^(references|daftar pustaka|bibliography|keterbatasan(?: data)?|limitations|evidence limitations|batasan data|source limitations|sumber\s*\/\s*evidence panel|sources?\s*\/\s*evidence panel|model statement|source statement|source statement and provenance|pernyataan sumber)\b/i.test(title);
   }
   if(!skipping)out.push(line);
  }
