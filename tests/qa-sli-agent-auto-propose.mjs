@@ -54,3 +54,16 @@ test("production synonym module is a finite rule list, never unrestricted self-m
  const core=read("js/sli-analytical-core.mjs");
  assert.match(core,/inferCuratedMethod\(q\)/);
 });
+
+test("autonomous upgrade CI only proposes draft PRs; no auto-merge or production writes",()=>{
+ const workflow=read(".github/workflows/sli-agent-autonomous-proposals.yml");
+ const prQa=read(".github/workflows/sli-agent-proposed-change-qa.yml");
+ assert.match(workflow,/gh pr create.+--draft/);
+ assert.match(workflow,/github\.ref == 'refs\/heads\/main'/);
+ assert.match(workflow,/expected.*file change|unexpected file change/);
+ assert.doesNotMatch(workflow,/gh pr merge|git push origin HEAD:main|wrangler deploy|OPENAI_API_KEY/);
+ assert.match(prQa,/pull_request:/);
+ assert.match(prQa,/Refuse unintended code or evidence changes/);
+ assert.match(prQa,/contents: read/);
+ assert.doesNotMatch(prQa,/pull-requests: write|contents: write/);
+});
