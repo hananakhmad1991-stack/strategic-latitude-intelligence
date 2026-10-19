@@ -24,11 +24,13 @@ jobs:
           node-version: '22'
       - name: Refuse unintended code or evidence changes in agent-proposed PRs
         if: github.event_name == 'pull_request' && startsWith(github.head_ref, 'sli-agent/method-')
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           set -euo pipefail
-          mapfile -t changed < <(git diff --name-only "$BASE_SHA" HEAD)
+          # GitHub pull_request checkout points at refs/pull/N/merge.
+          # Diff against the synthetic merge commit's FIRST PARENT (current base).
+          # An old event base SHA would incorrectly count unrelated newer main commits.
+          git rev-parse HEAD^2 >/dev/null 2>&1 || { echo "Missing synthetic PR merge commit; fail closed" >&2; exit 1; }
+          mapfile -t changed < <(git diff --name-only HEAD^1 HEAD)
           if [ "${#changed[@]}" -ne 2 ] || [ "${changed[0]}" != "js/sli-method-aliases.mjs" ] || [ "${changed[1]}" != "tests/fixtures/sli-agent-eval-cases.json" ]; then
             printf 'Blocked autonomous PR: unexpected files\n'; printf '%s\n' "${changed[@]}"; exit 1
           fi
