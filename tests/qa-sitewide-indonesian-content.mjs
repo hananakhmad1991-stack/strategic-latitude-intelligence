@@ -74,6 +74,19 @@ test("English publisher titles and unapproved factual copy are not silently mach
  assert.match(source,/\[data-sli-no-translate\]/);
  assert.match(source,/\.bio-news/);
 });
+test("Homepage portal has zero unreviewed English headings and descriptions in ID mode",()=>{
+ const html=fs.readFileSync("index.html","utf8");
+ const start=html.indexOf("function homePortal(){return \x60".replace("\\x60","\x60"));
+ const end=html.indexOf("function overview(){return \x60".replace("\\x60","\x60"));
+ assert.ok(start>=0&&end>start,"Homepage portal must be a separately testable interface");
+ const portal=html.slice(start,end);
+ const values=[...portal.matchAll(/>([^<>]{3,1000})</g)].map(x=>x[1].replace(/&amp;/g,"&").replace(/&nbsp;/g," ").replace(/\s+/g," ").trim())
+ .filter(t=>/[a-z]{3}/i.test(t)&&!/^\s*https?:/.test(t));
+ const normalize=s=>s.replace(/\s+/g," ").trim();
+ const accepted=new Set([...dictionary.keys()].map(normalize));
+ const missing=values.filter(t=>!accepted.has(normalize(t)));
+ assert.deepEqual(missing,[],"Homepage ID still contains nonlocalized copy: "+JSON.stringify(missing));
+});
 test("Find candidate untranslated page prose as transparent QA review queue",()=>{
  const pages=fs.readdirSync(repo).filter(p=>p.endsWith(".html")),rows=[];
  for(const p of pages){
@@ -85,6 +98,11 @@ test("Find candidate untranslated page prose as transparent QA review queue",()=
  const remaining=rows.reduce((sum,x)=>sum+x.candidates,0);
  console.log("SLI ID prose review queue (possible English / source text): "+remaining+" candidates across "+pages.length+" pages");
  console.log(JSON.stringify(rows.filter(x=>x.candidates>0).sort((a,b)=>b.candidates-a.candidates).slice(0,12)));
+ fs.writeFileSync("sli-i18n-screening.json",JSON.stringify({
+  version:"2026-10-19",languages:["en","id"],scope:"Static HTML candidate audit; includes official/source text and EN-only fallback content",pages:rows.length,
+  candidateCount:remaining,rows:rows.filter(x=>x.candidates>0).sort((a,b)=>b.candidates-a.candidates)
+ },null,2)+"\n","utf8");
+ assert.ok(remaining<=390,"New English copy exceeds reviewed screening budget; audit translations or adjust baseline with documented review");
  // Legacy content intentionally remains on the review queue; do not fake a
  // "100% translated" result or turn source titles into unaudited translations.
  assert.equal(rows.length,pages.length);
