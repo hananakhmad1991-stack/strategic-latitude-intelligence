@@ -179,7 +179,7 @@ export default{
   const qa=auditReport(answer,evidence,{minWords:payload.mode==="deep_research"?150:80,requireConclusion:payload.mode==="deep_research"});
   const quality_audit={review_scope:qa.review_scope,structural_status:qa.pass?"complete_structure":"needs_editorial_review",issues:qa.issues,word_count:qa.words,section_count:qa.sections,citation_count:qa.citations,has_conclusion:qa.hasConclusion};
   return send(200,{mode:"generative_rag",research_format:payload.mode,answer,quality_audit,
-   charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:evidence.length?"owner_staging_source_dated_energy_corpus":"methodology_design_only_no_verified_sli_evidence",
+   charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:evidence.length?(articleEvidence.length||legalEvidence.length?"owner_staging_legal_articles_and_index_metadata_status_not_certified":"owner_staging_source_dated_corpus"):"methodology_design_only_no_verified_sli_evidence",
    corpus_as_of:energyCorpusAudit().assessment_date,
    corpus_version:"sli-energy-official-v2",
    retrieved_sources_count:evidence.length,
@@ -187,6 +187,6 @@ export default{
    monitoring_status:monitoring.status,
    monitoring_as_of:monitoring.as_of,
    monitoring_signals:monitoring.signals.slice(0,5),
-   sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo,source_type:id.startsWith("sli_news_")||id.startsWith("sli_feed_")?"secondary_news":"curated_baseline"}))},origin);
+   sources:evidence.map(({id,title,source_url,period,source_date,publisher,geo},i)=>({index:i+1,id,title,source_url,period,source_date,publisher,geo,source_type:id.startsWith("primary_")?"reviewed_primary_article_paraphrase":id.startsWith("policy_law_")?"legal_index_metadata":id.startsWith("sli_news_")||id.startsWith("sli_feed_")?"secondary_news":"curated_baseline"}))},origin);
  }
 };
