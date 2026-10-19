@@ -9,7 +9,7 @@
     "Perbup",
     "Perwali"
   ],
-  "metadata_policy": "Unlisted sources and regulations remain unknown, never counted as no law. JDIH homepage confirmation does not verify individual rules or continued validity.",
+  "metadata_policy": "Unlisted sources and regulations remain unknown, never counted as no law. JDIH homepage confirmation does not verify individual rules or continued validity. Registered monitoring sources may fail or have zero qualified matches; that alone never proves no provincial law.",
   "official_national_sources": [
     {
       "id": "djpp",
@@ -33,7 +33,7 @@
       "name": "Aceh",
       "source_url": "https://jdih.acehprov.go.id/",
       "discovery_status": "web_checked_official_jdih",
-      "monitor_source_id": null,
+      "monitor_source_id": "aceh_jdih",
       "verification_scope": "portal_directory_only_not_rule_text"
     },
     {
@@ -41,7 +41,7 @@
       "name": "Sumatera Utara",
       "source_url": "https://jdih.sumutprov.go.id/",
       "discovery_status": "web_checked_official_jdih",
-      "monitor_source_id": null,
+      "monitor_source_id": "sumut_jdih",
       "verification_scope": "portal_directory_only_not_rule_text"
     },
     {
@@ -161,7 +161,7 @@
       "name": "Bali",
       "source_url": "https://jdih.baliprov.go.id/",
       "discovery_status": "web_checked_official_jdih",
-      "monitor_source_id": null,
+      "monitor_source_id": "bali_jdih",
       "verification_scope": "portal_directory_only_not_rule_text"
     },
     {
@@ -209,7 +209,7 @@
       "name": "Kalimantan Timur",
       "source_url": "https://jdih.kaltimprov.go.id/",
       "discovery_status": "web_checked_official_jdih",
-      "monitor_source_id": null,
+      "monitor_source_id": "kaltim_jdih",
       "verification_scope": "portal_directory_only_not_rule_text"
     },
     {
