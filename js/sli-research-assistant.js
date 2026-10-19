@@ -167,13 +167,15 @@ function renderSources(sources,answer="",charts=[]){
 function renderClaimReview(qualityAudit,report,language="id"){
  const review=qualityAudit?.claim_review;if(!review||review.scope!=="citation_and_local_excerpt_triage_only_not_claim_fact_check")return;
  const isId=language!=="en",count=Number(review.assessed_claims)||0,
+       shown=Math.max(0,Number(review.shown_claims)||0),
        gaps=Number(review.quantity_excerpts_mismatch)||0,
        uncited=Number(review.unattributed_claims)||0;
  const card=node("details","sli-ra-evidence-note");
- const title=node("summary",null,(isId?"AUDIT KLAIM · ":"CLAIM REVIEW · ")+count+
-  (isId?" pernyataan diperiksa secara terbatas, ":" limited claims examined, ")+
-  gaps+(isId?" perlu cek angka, ":" quantitative discrepancies, ")+
-  uncited+(isId?" tanpa sitasi langsung":" missing local citations"));
+ const title=node("summary",null,(isId?"AUDIT KLAIM · ":"CLAIM REVIEW · ")+
+  count+(isId?" kandidat klaim; ":" candidate claims; ")+shown+
+  (isId?" ditinjau, ":" shown, ")+gaps+
+  (isId?" angka perlu dibandingkan, ":" numeric comparisons pending, ")+uncited+
+  (isId?" tanpa sitasi":" without local citations"));
  card.append(title);
  card.append(node("p",null,isId
   ?"Audit membandingkan klaim dengan cuplikan sumber. Pemeriksaan halaman sumber primer dibatasi dan tidak membaca PDF; kecocokan angka BUKAN pembuktian klaim. Tidak ada klaim yang dinyatakan otomatis terverifikasi."
@@ -183,18 +185,38 @@ function renderClaimReview(qualityAudit,report,language="id"){
   card.append(node("p","sli-ra-source-role",(isId?"HALAMAN PRIMER: ":"PRIMARY PAGES: ")+
    String(Number(probe.checked)||0)+(isId?" dokumen diperiksa terbatas; URL hanya dari penerbit yang diizinkan.":" limited publisher page checks; allowlisted URLs only.")));
   for(const x of (Array.isArray(probe.results)?probe.results.slice(0,2):[])){
-   card.append(node("p","sli-ra-source-role","["+String(x.citation||"?")+"] "+String(x.status||"unknown")+
+   const statuses={
+    publisher_page_numbers_present:isId?"Angka tertulis pada halaman, belum membuktikan klaim":"Numbers present on page; claim unverified",
+    publisher_page_numbers_incomplete:isId?"Sebagian angka belum ditemukan pada halaman":"Some numbers not found on page",
+    publisher_page_readable_no_numeric_match:isId?"Halaman terbaca, tidak ada angka klaim untuk dicocokkan":"Page readable, no claim numbers to compare",
+    pdf_requires_document_review:isId?"PDF: perlu peninjauan dokumen":"PDF: document review needed",
+    publisher_unavailable_or_redirect:isId?"Halaman tidak tersedia atau dialihkan":"Publisher page unavailable or redirected",
+    publisher_html_too_large:isId?"Halaman terlalu besar untuk pemeriksaan terbatas":"Page exceeds bounded HTML check",
+    publisher_not_html:isId?"Sumber bukan HTML":"Source is not HTML",
+    publisher_fetch_failed_or_timed_out:isId?"Gagal memuat halaman atau kedaluwarsa":"Publisher request failed or timed out"
+   };
+   card.append(node("p","sli-ra-source-role","["+String(x.citation||"?")+"] "+
+    (statuses[String(x.status||"")]||(isId?"Belum diperiksa":"Not checked"))+
     (Array.isArray(x.claim_numbers_absent)&&x.claim_numbers_absent.length?" · "+
-      (isId?"Angka tidak ditemukan: ":"Missing from page: ")+x.claim_numbers_absent.join(", "):"")));
+      (isId?"Perlu cek: ":"Review: ")+x.claim_numbers_absent.join(", "):"")));
   }
  }
  const items=Array.isArray(review.items)?review.items.slice(0,8):[];
  for(const item of items){
-  const p=node("p",null,"["+(Array.isArray(item.citations)?item.citations.join(","):"")+"] "+
-   String(item.category||"factual")+" · "+String(item.claim||"").slice(0,230));
+  const ids=Array.isArray(item.citations)?item.citations:[];
+  const citation=ids.length?"["+ids.join(",")+"]":(isId?"Tanpa sitasi":"No citation");
+  const types={commercial_operation:isId?"Status operasi":"Operations status",
+   investment_decision:isId?"Keputusan investasi / FID":"Investment decision / FID",
+   realized_investment:isId?"Nilai/realisasi investasi":"Investment amount / realization",
+   law_status:isId?"Status peraturan":"Legal status",
+   construction:isId?"Status pembangunan":"Construction stage",
+   quantitative:isId?"Klaim kuantitatif":"Quantitative claim",
+   factual:isId?"Pernyataan faktual":"Factual statement"};
+  const p=node("p",null,citation+" "+(types[item.category]||String(item.category||"factual"))+
+   " · "+String(item.claim||"").slice(0,260));
   card.append(p);
   if(Array.isArray(item.missing_numbers)&&item.missing_numbers.length)
-   card.append(node("p","sli-ra-source-role",(isId?"Angka belum ditemukan pada cuplikan sumber: ":"Numbers absent from cited excerpts: ")+item.missing_numbers.join(", ")));
+   card.append(node("p","sli-ra-source-role",(isId?"Format/nilai angka belum cocok dengan cuplikan: ":"Number/format not matched in cited excerpt: ")+item.missing_numbers.join(", ")));
  }
  report.prepend(card);
 }
