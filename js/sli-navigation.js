@@ -316,7 +316,7 @@ document.addEventListener("sli:languagechange",queueSourceLinks);
   formats.dataset.sliExportBootstrap="formats";
   formats.onload=function(){
    const core=document.createElement("script");
-   core.src=new URL("./sli-visual-export.js?v=20261019-onepoint6",current).href;
+   core.src=new URL("./sli-visual-export.js?v=20261019-reporttoolbar1",current).href;
    core.dataset.sliExportBootstrap="core";
    document.head.append(core);
   };
