@@ -268,7 +268,7 @@ function sliSourceViewerHref(href){
  }catch{return null}
 }
 function normalizeSLISourceLinks(){
- if(!document.querySelectorAll)return;
+ if(typeof document==='undefined'||!document?.querySelectorAll)return;
  for(const a of document.querySelectorAll("a[href]")){
   if(a.dataset.sliHumanSourceLink==="1")continue;
   const target=sliSourceViewerHref(a.getAttribute("href"));
