@@ -37,7 +37,28 @@ const PRIMARY=[
   text:"PRIMARY GOVERNMENT REPORT (16 July 2026): Kementerian ESDM reported a groundbreaking and commencement of physical development for the INTEGRATED Abadi Masela LNG PROJECT with a reported whole-project value of USD20.9 billion. This does NOT independently establish that the CCS sub-facility entered mechanical construction or commissioned CO2 injection. Separate LNG-wide commencement, CCS-specific EPC progress, and full-scale storage operation. Amount refers to whole LNG project, NOT dedicated CCS capex or actual disbursement. INPEX previously described ongoing FEED and pre-FID commercial preparations."
  },
  {
-  id:"sli_ccs_esdm_national_2025_report",
+  id:"sli_ccs_phe_sukowati_phase1_injection_2024",
+  name:"Sukowati CO2-EOR — Pertamina reports successful historical phase-1 pilot",
+  date:"2024-11",location:"East Java",publisher:"Pertamina Corporate Newsletter",
+  source:"https://www.pertamina.com/Media/File/CNU%20November%202024.pdf",
+  text:"PRIMARY COMPANY DISCLOSURE (Pertamina November 2024, retrospective): Pertamina reported SUKOWATI Phase-1 Huff & Puff CO2 INJECTION was SUCCESSFULLY carried out in 2023. It described an August 2024 Joint Study Agreement for Phase-2 inter-well injection and a planned Q4 2024 start; the stated plan is not proof phase-2 injection occurred. This contradicts an older stage label 'study/pilot planned' if interpreted as NO past injection. A historical CO2-EOR pilot test does NOT establish full-scale commercial CCS storage operation in 2026, certified stored tonnes or CCS-only realized investment. Preserve source dates and distinguish operator statement from independently audited measurement."
+ },
+ {
+  id:"sli_ccs_esdm_sukowati_trial_2024",
+  name:"Sukowati and Jatibarang — ESDM confirms CO2-EOR trial injections had begun",
+  date:"2024-08-01",location:"East Java and West Java",publisher:"Kementerian ESDM",
+  source:"https://www.esdm.go.id/en/media-center/news-archives/penyimpanan-karbon-jadi-solusi-reduksi-emisi-dan-capai-target-nze-di-2060",
+  text:"PRIMARY GOVERNMENT STATEMENT (1 August 2024, Press Release 395.Pers/04/SJI/2024): ESDM stated trial CO2 injections especially for enhanced oil recovery had ALREADY STARTED in some fields, naming Sukowati and Jatibarang operated by Pertamina. This supports a historical pilot-injection milestone, NOT continuous commercial operation of a dedicated 2026 geological CCS storage service. The statement does not establish injection date per well, 2026 throughput, independently measured stored volume or realised CCS-only capital spending."
+ },
+ {
+  id:"sli_ccs_esdm_gundih_pilot_statement_2022",
+  name:"Gundih CCS/CCUS — ESDM historical statement on pilot injection",
+  date:"2022-03-24",location:"Central Java",publisher:"Ditjen Migas Kementerian ESDM",
+  source:"https://migas.esdm.go.id/post/jaring-perspektif-pengembangan-ccs-ccus-kementerian-esdm-diskusi-dengan-negara-mitra",
+  text:"PRIMARY GOVERNMENT STATEMENT (24 March 2022): Indonesia's Director General of Oil and Gas said historical Gundih CCS studies dating back around a decade had REACHED a pilot-injection stage and described an ambition to transition to CCUS. This is an attributed regulator statement, not an operator metering report. The Gundih dashboard's 'study/pre-FEED' label may refer to a different later full-scale development. Do NOT conclude Gundih never piloted injection; also do NOT equate historical pilot to commercially operating CCS/CCUS in 2026, completed storage infrastructure, a FID, or certified cumulative CO2 sequestered."
+ },
+ {
+   id:"sli_ccs_esdm_national_2025_report",
   name:"Indonesia CCS/CCUS national potential-project roster — ESDM 2025 performance report",
   date:"2025",location:"Indonesia",publisher:"Ditjen Migas Kementerian ESDM",
   source:"https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf",
@@ -64,7 +85,7 @@ function projectDocument(p,i){
     ". Investment scope: "+clean(p.investment_basis,260)+". "+investment+
     ". Storage metric: "+clean(p.storage_basis,230)+". "+capacity+
     ". Forward target: "+clean(p.target,230)+". Actual injection/capex caution: "+clean(p.realization,260)+
-    ". CRITICAL: gas/LNG project-wide groundbreaking, FEED, FID, a pilot, physical CCUS-platform construction and COMMERCIAL CO2 injection are NOT interchangeable. Never claim 2026 commercial CCS operating from an older target year."};
+    ". CRITICAL: this stage label is a DATED DASHBOARD SNAPSHOT and may predate later public operator/regulator pilot milestones. Use newer dated primary disclosures where available, not the stale label alone. Gas/LNG groundbreaking, FEED, FID, historic pilot injection, CCUS-platform fabrication and COMMERCIAL CO2 injection are NOT interchangeable. Never claim 2026 commercial CCS operating from an older target year."};
 }
 function primaryDocument(p){
  return {id:p.id,title:p.name,geo:p.location,period:p.date,source_date:p.date,
@@ -76,6 +97,6 @@ export function ccsResearchEvidence(question){
  const projects=PROJECTS.map(projectDocument).filter(Boolean);
  // Front-load actual physical UCC fabrication and the distinction between LNG construction and CCS operation;
  // preserve the full local dossiers even if underlying main project registry returns only Masela.
- const ordered=[primary[0],primary[3],primary[2],primary[1],...projects,primary[4]];
+ const ordered=[primary[0],primary[3],primary[2],primary[1],primary[4],primary[5],primary[6],...projects,primary[7]];
  const seen=new Set();return ordered.filter(d=>{if(seen.has(d.id))return false;seen.add(d.id);return true});
 }

@@ -190,3 +190,34 @@ test('CCS project stages and primary milestones are not conflated with commissio
  assert.match(worker,/CCS PROJECT STAGE RULE/);
  assert.match(worker,/primaryEvidence0\.filter\(d=>!\/masela\|abadi lng\//);
 });
+
+test('CCS primary evidence dates show historical pilot injection for Sukowati and Gundih without claiming commercial CCS',async()=>{
+ const {ccsResearchEvidence}=await import('../research-api/src/ccs-corpus.mjs');
+ const docs=ccsResearchEvidence('Analisis CCS Indonesia 2026 Sukowati Gundih');
+ const byId=id=>docs.find(x=>x.id===id);
+ const sukowati=byId('sli_ccs_phe_sukowati_phase1_injection_2024');
+ const esdm=byId('sli_ccs_esdm_sukowati_trial_2024');
+ const gundih=byId('sli_ccs_esdm_gundih_pilot_statement_2022');
+ assert.ok(sukowati&&esdm&&gundih);
+ assert.match(sukowati.text,/SUCCESSFULLY carried out in 2023/);
+ assert.match(sukowati.text,/NOT establish full-scale commercial/);
+ assert.match(esdm.text,/ALREADY STARTED/);
+ assert.match(gundih.text,/historical Gundih CCS studies/);
+ assert.match(gundih.text,/NOT equate historical pilot/);
+ for(const [newSource,projectName] of [[sukowati,'Sukowati'],[gundih,'Gundih']]){
+  const primaryPos=docs.findIndex(x=>x.id===newSource.id);
+  const oldDossierPos=docs.findIndex(x=>x.id.startsWith('sli_ccs_project_')&&x.title.includes(projectName));
+  assert.ok(primaryPos>=0&&primaryPos<8,projectName+' original evidence must be near front');
+  if(oldDossierPos>=0)assert.ok(primaryPos<oldDossierPos,projectName+' pilot should outrank older project snapshot');
+ }
+ for(const x of [sukowati,esdm,gundih]){
+  assert.match(x.source_url,/^https:\/\//);
+  assert.match(x.period,/^20\d{2}-/);
+ }
+ const worker=read('research-api/src/owner-test-worker.mjs');
+ assert.match(worker,/CCS HISTORIC PILOT RECONCILIATION/);
+ assert.match(worker,/stale dashboard line/);
+ const registry=JSON.parse(read('data/energy-governance-ccs.json'));
+ const labelled=registry.ccs.projects.find(x=>x.name.includes('Sukowati'));
+ assert.equal(labelled.stage,'Study / pilot planned','Do not autonomously promote baseline stage without approved registry review');
+});
