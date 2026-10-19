@@ -90,12 +90,22 @@ function reportBody(answer){
 }
 
 function renderModelStatement(answer,payload={}){
- const target=$("raModelStatementBody");if(!target)return;
+ const target=$("raModelStatementBody"),panel=$("raModelStatement");
+ if(!target||!panel)return;
  target.replaceChildren();
- const found=String(answer||"").match(/(?:^|\n)#{1,3}\s+(?:Keterbatasan|Limitations|Evidence limitations|Batasan data|Source limitations|Model Statement)\b[^\n]*\n([\s\S]*?)(?=\n#{1,3}\s+|$)/i);
- const statement=found?.[1]?.trim()||"Metode dan kesimpulan mengikuti bukti bertanggal yang dipilih; tidak semua hubungan lintas sektor membuktikan kausalitas.";
- target.append(node("p",null,statement.slice(0,3500)));
- if(payload.corpus_as_of)target.append(node("p",null,"Snapshot data: "+payload.corpus_as_of));
+ const found=String(answer||"").match(/(?:^|\n)#{1,3}\s+(?:Keterbatasan|Limitations|Evidence limitations|Batasan data|Source limitations|Model Statement|Catatan metodologis)\b[^\n]*\n([\s\S]*?)(?=\n#{1,3}\s+|$)/i);
+ const statement=found?.[1]?.trim()||"";
+ const legalAudit=payload.quality_audit?.legal_article_gate;
+ if(!statement&&!legalAudit?.recovered){
+  panel.hidden=true;
+  return;
+ }
+ panel.hidden=false;
+ if(legalAudit?.recovered)target.append(node("p",null,
+  state.language==="id"
+   ?"Sebagian analisis hukum ditahan karena tidak cocok dengan bukti primer. Periksa sumber dan versi regulasi sebelum mengandalkan kesimpulan."
+   :"Some legal assertions were withheld for lack of matching primary evidence. Verify the legal texts and versions before reliance."));
+ if(statement)target.append(node("p",null,statement.slice(0,3500)));
 }
 function renderSources(sources,answer="",charts=[]){
  const cited=new Set([...String(answer).matchAll(/\[(\d+)\]/g)].map(m=>Number(m[1])));
@@ -361,6 +371,7 @@ function setResearchLanguage(language){
   button.setAttribute("aria-pressed",String(active));
  });
  $("raPrompt").placeholder=language==="id"?"Tanyakan apa saja: olah kuesioner AHP penelitian saya, bandingkan provinsi, bantu metodologi skripsi, atau analisis proyek investasi.":"Ask any research question: analyse my AHP questionnaire, compare regions, design a university study, or assess an investment project.";
+ $("raFollowupPrompt").placeholder=language==="id"?"Contoh: jelaskan aturan pelaksana, cek perubahan terbaru, atau lengkapi sumber resmi yang belum tersedia.":"Example: explain the implementing rules, check recent amendments, or identify missing primary sources.";
  if(state.config&&!isConfigured()&&!ownerConfigured())status(language==="id"?(state.config.published_notice_id||tr("prelaunch")):(state.config.published_notice_en||tr("prelaunch")));
 }
 async function init(){
