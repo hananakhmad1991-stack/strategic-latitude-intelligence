@@ -23,14 +23,14 @@ export function legalProvisionEvidence(question,max=2){
    ". Current status NOT CERTIFIED; verify latest amendments and official full wording before legal reliance.",
   publisher:x.publisher,source_url:x.source_url,source_date:x.as_of,period:"2016 published law; checked "+x.as_of,
   topic:"legal_provision climate energy regulation",geo:"Indonesia",access:"pro",
-  provision_anchor:{law_node_id:x.law_node_id,article:x.article,source_kind:x.source_type}
+  provision_anchor:{law_node_id:x.law_node_id,instrument_ref:x.instrument_ref,article:x.article,source_kind:x.source_type}
  }));
 }
 export function validateProvisionRegistry(){
  if(verified.schema!=="sli-legal-provisions-v1"||!Array.isArray(verified.items))throw Error("legal_provisions_schema");
  const ids=new Set();
  for(const x of verified.items){
-  if(ids.has(x.id)||!x.article||!x.law_node_id||!x.source_url||!/^https:\/\//.test(x.source_url)||x.current_status_certified!==false)throw Error("legal_provisions_unverified");
+  if(ids.has(x.id)||!x.article||!x.law_node_id||!x.instrument_ref||!x.source_url||!/^https:\/\//.test(x.source_url)||x.current_status_certified!==false)throw Error("legal_provisions_unverified");
   ids.add(x.id);
  }
  return {entries:ids.size,full_corpus:false,all_status_uncertified:true};
