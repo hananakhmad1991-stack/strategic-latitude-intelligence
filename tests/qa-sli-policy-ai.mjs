@@ -80,7 +80,7 @@ test("primary article reference pilot preserves law-to-article and source proven
   assert.equal(provision.current_status_certified,false);
   assert.equal(provision.excerpt_kind,"reviewed_paraphrase_not_verbatim");
   assert.ok(provision.page_reference);
-  assert.match(provision.instrument_ref,/^UU\\s+\\d+\\/\\d{4}$/);
+  assert.match(provision.instrument_ref,/^UU\s+\d+\/\d{4}$/);
  }
  assert.match(bridge,/legalProvisionEvidence/);
  assert.match(worker,/import \{legalProvisionEvidence\}/);
