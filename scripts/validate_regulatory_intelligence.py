@@ -29,6 +29,13 @@ assert lookup["perdirjen2007"]["status"]=="archival_not_verified"
 assert lookup["kepmen188"]["status"]=="issued_plan_not_commissioned"
 assert lookup["keppres41batam"]["status"]=="archival_not_verified"
 assert lookup["perda_kepri"]["source"].startswith("https://jdih.kepriprov.go.id/")
+# Baseline national climate/otonomi/fiscal laws and selected current provincial law must stay discoverable.
+for k in ("uu16paris","uu23local","uu1hkpd2022","uu1penyesuaian2026","pres110carbon","pres98repealed","perda_dki_rtrw2024","perda_jabar_rtrw2022","perda_dki_pdrd2024"):
+    assert k in lookup and lookup[k].get("source","").startswith("https://"), k
+assert lookup["pres98repealed"]["status"]=="repealed"
+assert any(e["from"]=="pres110carbon" and e["to"]=="pres98repealed" and e["type"]=="repeals" for e in data["edges"])
+assert all(lookup[k]["region"]!="Indonesia" for k in ("perda_dki_rtrw2024","perda_jabar_rtrw2022","perda_bekasi"))
+
 assert data["methodology"]["ria_lite"]["purpose"]
 dimensions = data["methodology"]["ria_lite"]["dimensions"]
 weights = {x["id"]:x["weight"] for x in dimensions}
@@ -43,6 +50,9 @@ for case in data["cases"]:
     print(f"RIA-lite {case['id']}: {score:.1f}/100 (unvalidated scenario)")
 html=(ROOT/"policy-regulatory-intelligence.html").read_text(encoding="utf-8")
 assert "data/sli-policy-regulatory-graph-2026.json" in html
+assert 'id="full-register"' in html and 'id="regionFilter"' in html and 'id="tableSearch"' in html
+assert 'id="quickParis"' in html and 'id="quickLocal"' in html
+assert '<option value="all" selected>Semua sektor SLI</option>' in html
 assert "new Function(" not in html, "Avoid dynamic script evaluation in dashboard"
 assert "international:12,foreignlaw:12" in html, "Foreign law graph must render in its own branch"
 assert "inpres:10" in html, "Presidential instruction must not be presented as Article 7 rung"
