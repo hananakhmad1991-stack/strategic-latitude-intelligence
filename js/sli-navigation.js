@@ -54,7 +54,7 @@ const related={
 };
 const path=location.pathname.split('/').pop()||'index.html';
 const page=()=>path==='index.html'?(modules[location.hash.slice(1)]?location.hash.slice(1):'overview'):(Object.keys(modules).find(id=>modules[id][2].split('#')[0]===path)||'detail');
-const lang=()=>window.SLIi18n?.language==='id'||document.documentElement.lang==='id'?'id':'en';
+const lang=()=>window.SLIi18n?.language==='id'||document.documentElement.lang==='id'||(!window.SLIi18n&&(()=>{try{return localStorage.getItem('sli-ui-language')==='id'}catch{return false}})())?'id':'en';
 const text=(en,id)=>lang()==='id'?id:en;
 const label=id=>id==='detail'?(document.title||document.querySelector('h1')?.textContent||'SLI Dashboard').split('|')[0].trim().slice(0,90):(modules[id]?.[lang()==='id'?1:0]||id);
 const href=id=>'./'+modules[id][2];
@@ -138,17 +138,22 @@ function renderPlatformMast(){
  primary.append(mastLink('./sli-research-ai.html','Research AI',false));
  primary.append(mastLink('./index.html#overview',text('Full Overview','Overview Lengkap'),path==='index.html'&&current==='overview'));
  const tools=node('div','sli-platform-tools');
- // The main SPA already has a functioning EN/ID control in its preserved sidebar.
- // Forward clicks rather than pretending a specialist dashboard is translated.
- if(path==='index.html'){
+ // All specialist dashboards share the same persisted EN/ID preference as the homepage.
+ // Never show a decorative language button that does not apply the language.
+ {
   const langs=node('div','sli-platform-language');langs.setAttribute('role','group');langs.setAttribute('aria-label','Language / Bahasa');
   for(const code of ['en','id']){
    const button=node('button','',code.toUpperCase());button.type='button';button.dataset.sliMastLanguage=code;
    const active=lang()===code;button.setAttribute('aria-pressed',String(active));
    if(active)button.classList.add('active');
    button.addEventListener('click',()=>{
-    const old=document.querySelector('.sidebar [data-sli-locale="'+code+'"]');
-    if(old){old.click();renderPlatformMast()}
+    if(window.SLIi18n?.setLanguage)window.SLIi18n.setLanguage(code);
+    else {
+     const sidebar=document.querySelector('.sidebar [data-sli-locale="'+code+'"]');
+     if(sidebar)sidebar.click();
+     else {try{localStorage.setItem('sli-ui-language',code)}catch(_){};document.documentElement.lang=code;document.dispatchEvent(new CustomEvent('sli:languagechange',{detail:{language:code}}))}
+    }
+    renderPlatformMast();
    });
    langs.append(button);
   }
@@ -209,6 +214,34 @@ function closeSectorMenu(event){
 }
 document.addEventListener('pointerdown',closeSectorMenu);
 document.addEventListener('keydown',closeSectorMenu);
+
+// Load the same localized UI runtime on every SLI dashboard; index.html already
+// imports it explicitly, so do not double-initialize there.
+(function bootstrapSLIUniversalLanguage(){
+ const current=document.currentScript?.src||document.querySelector('script[src*="/js/sli-navigation.js"]')?.src;
+ if(!current)return;
+ try{
+  if(!window.SLIi18n?.setLanguage){
+   const saved=localStorage.getItem('sli-ui-language');
+   if(saved==='id'||saved==='en')document.documentElement.lang=saved;
+  }
+ }catch(_){}
+ if(window.SLIi18n?.setLanguage||document.querySelector('script[src*="/js/i18n.js"]'))return;
+ if(document.querySelector('script[data-sli-global-i18n]'))return;
+ const dictionary=document.createElement('script');
+ dictionary.src=new URL('./i18n-dictionary.js?v=20261019-sitewide2',current).href;
+ dictionary.dataset.sliGlobalI18n='dictionary';
+ dictionary.onload=()=>{
+   if(window.SLIi18n?.setLanguage)return;
+   const core=document.createElement('script');
+   core.src=new URL('./i18n.js?v=20261019-sitewide2',current).href;
+   core.dataset.sliGlobalI18n='runtime';
+   document.head.appendChild(core);
+ };
+ dictionary.onerror=()=>console.warn('[SLI] Indonesian language dictionary unavailable; original-language content retained.');
+ document.head.appendChild(dictionary);
+})();
+
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render,{once:true});else render();
 window.addEventListener('hashchange',()=>renderBar());
 document.addEventListener('sli:pagechange',()=>renderBar());
