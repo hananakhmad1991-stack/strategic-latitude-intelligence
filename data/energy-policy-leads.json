@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-19T01:16:03.820596+00:00",
+  "checked_at_utc": "2026-10-19T07:28:56.343482+00:00",
   "window_days": 21,
   "items": [
     {
@@ -165,7 +165,20 @@
       "requires_review": true
     }
   ],
-  "scan_errors": [],
-  "stale_previous_results": false,
-  "disclaimer": "Google News RSS is only a discovery index. Headlines and publisher labels are not proof of passage, effective date, regulatory scope or legal validity. Verify original legal publication in JDIH before updating the curated enacted-policy register."
+  "scan_errors": [
+    {
+      "group": "ESDM legal instrument candidates",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    },
+    {
+      "group": "Official energy policy announcements",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    },
+    {
+      "group": "Official upstream and CCS implementation",
+      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+    }
+  ],
+  "stale_previous_results": true,
+  "disclaimer": "Latest scan failed; displayed candidates are carried over and NOT verified enactments."
 }
