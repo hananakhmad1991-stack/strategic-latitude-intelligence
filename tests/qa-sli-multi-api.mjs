@@ -88,3 +88,33 @@ test('Owner Worker and frontend preserve consent boundary and source labeling',(
  assert.ok(cfg.indexOf('keep_vars = true')<cfg.indexOf('[vars]'));
  assert.doesNotMatch(worker,/fetch\("https:\/\/api\.openai\.com\/v1\/responses"/);
 });
+
+test('Research UI reports real Tavily statuses instead of silently treating zero results as cached evidence',async()=>{
+ const {runInNewContext}=await import('node:vm');
+ const source=read('js/sli-research-assistant.js');
+ const start=source.indexOf('function externalApiDiagnostic(');
+ const end=source.indexOf('function makeExport(){',start);
+ assert.ok(start>=0&&end>start,'pure diagnostic helper must be present before export logic');
+ const f=runInNewContext(source.slice(start,end)+'\nexternalApiDiagnostic;',{});
+ const cases=[
+  ['consent_not_granted','belum dicentang'],
+  ['not_configured','TAVILY_ENABLED'],
+  ['provider_http_401','ditolak'],
+  ['provider_http_429','Batas pemakaian'],
+  ['timeout','batas waktu'],
+  ['discovery_available','3 temuan web']
+ ];
+ for(const [status,expected] of cases){
+  const label=f({external_evidence:{web_search:status,world_bank:'no_matching_national_indicators',
+   added_search_leads:status==='discovery_available'?3:0,added_official_records:0},
+   model_route:'direct_openai'},'id');
+  assert.ok(label.includes(expected),status+': '+label);
+  assert.match(label,/WORLD BANK:/);assert.match(label,/Direct OpenAI/);
+ }
+ assert.match(f({},'id'),/belum melaporkan status Tavily/);
+ assert.match(f({external_evidence:{web_search:'discovery_available',world_bank:'retrieved',added_search_leads:2,added_official_records:1},
+  model_route:'cloudflare_ai_gateway'},'en'),/Cloudflare AI Gateway/);
+ assert.match(source,/report\.prepend\(node\("p","sli-ra-evidence-note",externalApiDiagnostic\(payload,state\.language\)\)\)/);
+ assert.match(source,/externalEvidence:payload\.external_evidence\|\|null/);
+ assert.match(source,/externalApiDiagnostic\(\{external_evidence:last\.externalEvidence,model_route:last\.modelRoute\}/);
+});
