@@ -13,6 +13,7 @@ import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {policyLegalEvidence,selectPolicyEvidence} from "./policy-corpus.mjs";
 import {legalProvisionEvidence} from "./legal-provisions.mjs";
+import {auditLegalArticleCitations} from "./legal-citation-audit.mjs";
 import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
 import {fetchReviewedSecondaryArticles} from "./secondary-news.mjs";
 import {fetchMonitoringEvidence,selectMonitoringNewsEvidence} from "./monitoring-evidence.mjs";
@@ -175,9 +176,14 @@ export default{
   }catch{return send(502,{error:"model_unreachable"},origin)}
   if(!(evidence.length?verifyResearchAnswer(answer,evidence):verifyMethodOnlyAnswer(answer)))
    return send(502,{error:evidence.length?"invalid_or_missing_source_citations":"invalid_unsourced_research_design"},origin);
+  const legalAudit=legalQuestion?auditLegalArticleCitations(answer,evidence):null;
+  if(legalAudit&&!legalAudit.pass)
+   return send(502,{error:"unsupported_article_citation",unsupported_articles:legalAudit.unsupported_articles,reason:"Article-level citation was not present in the verified provision records."},origin);
+
   // Structural lint only. Do not mistake valid citation indices for source verification.
   const qa=auditReport(answer,evidence,{minWords:payload.mode==="deep_research"?150:80,requireConclusion:payload.mode==="deep_research"});
   const quality_audit={review_scope:qa.review_scope,structural_status:qa.pass?"complete_structure":"needs_editorial_review",issues:qa.issues,word_count:qa.words,section_count:qa.sections,citation_count:qa.citations,has_conclusion:qa.hasConclusion};
+  if(legalAudit)quality_audit.legal_article_gate={pass:legalAudit.pass,review_scope:legalAudit.scope,reviewed_article_anchors:legalAudit.reviewed_article_anchors};
   return send(200,{mode:"generative_rag",research_format:payload.mode,answer,quality_audit,
    charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:evidence.length?(articleEvidence.length||legalEvidence.length?"owner_staging_legal_articles_and_index_metadata_status_not_certified":"owner_staging_source_dated_corpus"):"methodology_design_only_no_verified_sli_evidence",
    corpus_as_of:energyCorpusAudit().assessment_date,
