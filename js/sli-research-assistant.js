@@ -296,9 +296,14 @@ async function submit(){
    // Do not label such an unfinished report successful or allow it to be exported.
    if(payload.answer.length===9000)throw Error(state.language==="id"?"Backend Cloudflare masih versi lama: laporan terpotong pada 9.000 karakter. Deploy ulang Worker riset SLI.":"Cloudflare backend is outdated: report truncated at 9,000 characters. Redeploy the SLI research Worker.");
   loading.parentNode?.remove();
-  state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],qualityAudit:payload.quality_audit||null,question,mode};
+  state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],qualityAudit:payload.quality_audit||null,evidenceStatus:String(payload.evidence_status||""),question,mode};
   const report=append("assistant",payload.answer);
   const articleReading=String(payload.evidence_status||"").includes("legal")||!!payload.quality_audit?.legal_article_gate;
+  const legalLabels={detail:"Telusuri aturan & sumber",correct:"Koreksi analisis hukum",compare:"Bandingkan perubahan aturan",gaps:"Periksa kekurangan bukti"};
+  const regularLabels={detail:"Perdalam dengan angka & sumber",correct:"Koreksi jawaban sebelumnya",compare:"Bandingkan skenario / wilayah",gaps:"Periksa kekurangan data"};
+  document.querySelectorAll("[data-followup]").forEach(b=>{
+   if(state.language==="id")b.textContent=(articleReading?legalLabels:regularLabels)[b.dataset.followup]||b.textContent;
+  });
   if(!articleReading||state.lastResult.charts.length){
    window.SLIResearchVisuals?.renderCharts(state.lastResult.charts,report,state.lastResult.sources,state.language);
   }
@@ -396,10 +401,17 @@ async function init(){
   compare:"Lanjutkan topik tadi dengan perbandingan skenario atau wilayah yang paling relevan. Susun tabel data sebanding, asumsi, risiko, dan hal yang perlu diverifikasi.",
   gaps:"Jelaskan secara spesifik data penting yang tersedia dan belum tersedia di corpus SLI untuk menjawab pertanyaan tadi. Usulkan sumber resmi dan metode tambahan tanpa mengarang angka."
  };
+ const legalTemplates={
+  detail:"Telusuri aturan pelaksana yang relevan dengan analisis hukum tadi. Pisahkan teks primer yang tersedia, aturan turunan yang belum diverifikasi, relasi perubahan dan sitasi yang benar; jangan mengarang pasal.",
+  correct:"Periksa setiap pernyataan hukum dalam jawaban sebelumnya. Koreksi jika sumber yang dikutip tidak mendukung klaim, bedakan ringkasan pasal dari naskah asli, serta sebutkan status hukum yang masih harus diperiksa.",
+  compare:"Bandingkan instrumen hukum dan perubahannya yang benar-benar tercatat dalam corpus SLI. Jelaskan kewenangan, hubungan regulasi, dan celah bukti tanpa menyatakan aturan yang belum diverifikasi sebagai berlaku.",
+  gaps:"Sebutkan dokumen, pasal, ketentuan peralihan, aturan pelaksana, dan data status JDIH yang masih belum tersedia untuk melengkapi analisis ini. Buat daftar verifikasi, bukan kesimpulan hukum tanpa bukti."
+ };
  document.querySelectorAll("[data-followup]").forEach(button=>button.addEventListener("click",()=>{
   const key=button.dataset.followup;
   if(!state.lastResult)return;
-  $("raFollowupPrompt").value=templates[key]||"Mohon lanjutkan analisis dengan data dan sitasi yang relevan.";
+  const legal=String(state.lastResult.evidenceStatus||"").includes("legal")||!!state.lastResult.qualityAudit?.legal_article_gate;
+  $("raFollowupPrompt").value=(legal?legalTemplates[key]:templates[key])||"Mohon lanjutkan analisis dengan sumber yang relevan.";
   $("raFollowupPrompt").focus();
   $("raFollowupPrompt").scrollIntoView?.({block:"center",behavior:"smooth"});
  }));
