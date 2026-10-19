@@ -1,0 +1,37 @@
+name: SLI Policy AI quality gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'policy-regulatory-intelligence.html'
+      - 'js/sli-policy-assistant.js'
+      - 'css/sli-policy-assistant.css'
+      - 'js/sli-regulatory-explorer.js'
+      - 'js/sli-research-assistant.js'
+      - 'data/sli-policy-regulatory-graph-2026.json'
+      - 'research-api/src/policy-corpus.mjs'
+      - 'research-api/src/owner-test-worker.mjs'
+      - 'tests/qa-sli-policy-ai.mjs'
+      - '.github/workflows/sli-policy-ai-qa.yml'
+  pull_request:
+    paths:
+      - 'policy-regulatory-intelligence.html'
+      - 'js/sli-policy-assistant.js'
+      - 'css/sli-policy-assistant.css'
+      - 'js/sli-regulatory-explorer.js'
+      - 'js/sli-research-assistant.js'
+      - 'data/sli-policy-regulatory-graph-2026.json'
+      - 'research-api/src/policy-corpus.mjs'
+      - 'research-api/src/owner-test-worker.mjs'
+      - 'tests/qa-sli-policy-ai.mjs'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate policy assistant and legal evidence guardrails
+        run: node --test tests/qa-sli-policy-ai.mjs
