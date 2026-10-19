@@ -30,5 +30,13 @@ jobs:
         run: |
           node --test tests/qa-sitewide-indonesian-content.mjs
           node tests/check-i18n.cjs
-      - name: Save English prose review candidates
-        run: echo "See QA log for remaining source-language/editorial review queue; passed tests do not claim 100% translated content."
+      - name: Publish bilingual editorial screening report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-indonesian-screening
+          path: sli-i18n-screening.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: State translation limitations
+        run: echo "Passing tests verifies homepage and source-controlled mappings, not all async prose or a human-reviewed browser session."
