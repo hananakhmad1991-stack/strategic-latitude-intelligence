@@ -39,6 +39,7 @@ export function summarize(results){
   critical_failures:criticalFailures.length,release_regression:criticalFailures.length>0};
 }
 export function evaluate(){
+ tests.length=0;
  const fixture=methodCases.cases||[];
  check("seed_cases_present","learning",true,()=>{
   checked(methodCases.schema_version==="sli-agent-eval-cases-v1"&&fixture.length>=10,"missing versioned evaluation cases");
