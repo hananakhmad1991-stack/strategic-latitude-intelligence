@@ -86,7 +86,7 @@ function init(corpus,profiles){
 document.addEventListener("DOMContentLoaded",()=>{
  byId("raForm").addEventListener("submit",e=>{e.preventDefault();answer(byId("raQuestion").value)});
  byId("raLanguage").addEventListener("click",()=>{state.language=state.language==="id"?"en":"id";localize()});
- byId("raCopy").addEventListener("click",async()=>{if(!state.last?.docs?.length)return;try{await navigator.clipboard.writeText(state.last.summary);setStatus(dict[state.language].copied)}catch{setStatus(state.language==="id"?"Salin tidak tersedia di browser ini.":"Browser clipboard unavailable.",true)}});
+ byId("raCopy").addEventListener("click",async()=>{if(!state.last?.summary)return;try{await navigator.clipboard.writeText(state.last.summary);setStatus(dict[state.language].copied)}catch{setStatus(state.language==="id"?"Salin tidak tersedia di browser ini.":"Browser clipboard unavailable.",true)}});
  Promise.all(["./data/sli-research-evidence-preview.json","./data/sli-research-province-preview.json"].map(path=>fetch(path,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(path+" HTTP "+r.status);return r.json()}))).then(([corpus,profiles])=>init(corpus,profiles)).catch(()=>setStatus(dict[state.language].error,true));
 });
 window.SLIResearchPreview=Object.freeze({mode:"rule-based-analytical-evidence-not-generative"});
