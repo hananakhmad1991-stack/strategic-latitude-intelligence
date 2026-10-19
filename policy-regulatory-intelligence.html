@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
 <link rel="stylesheet" href="./css/sli-regulatory-explorer.css?v=20261019-policy-reader2">
 <link rel="stylesheet" href="./css/sli-policy-assistant.css?v=20261019-pai1">
+<link rel="stylesheet" href="./css/sli-policy-coverage.css?v=20261019-coverage1">
 </head>
 <body class="policy-reader">
 <main class="policy-app">
@@ -27,6 +28,13 @@
 <div class="policy-metric"><span>Riwayat perubahan tercatat</span><strong id="changeLaws">—</strong></div>
 <div class="policy-metric"><span>Dokumen hukum daerah</span><strong id="regionalLaws">—</strong></div>
 </div>
+<details id="policyCoverageDashboard" aria-label="Cakupan indeks regulasi daerah">
+<summary>Cakupan 38 provinsi dan sumber JDIH <span style="font-weight:400;color:#a8c3d5;font-size:12px">· Periksa daerah yang belum lengkap</span></summary>
+<p id="policyCoverageSummary">Menyiapkan matriks sumber nasional dan daerah…</p>
+<p>Pemetaan wilayah membedakan alamat portal JDIH yang ditemukan dari regulasi yang sudah masuk indeks. Semua hukum nasional yang relevan tetap harus diperiksa untuk proyek daerah. Tidak adanya satu Perda di SLI bukan bukti Perda tersebut tidak berlaku.</p>
+<div class="policy-coverage-scroll"><table id="policyCoverageTable" aria-label="Cakupan regulasi 38 provinsi"><tbody><tr><td>Memuat data…</td></tr></tbody></table></div>
+<p id="policyCoverageDate"></p>
+</details>
 <section id="policyAskAi" class="policy-assistant" aria-label="Asisten penelusuran kebijakan dan regulasi">
 <div class="pa-head"><div><div class="policy-kicker">SLI / ASK POLICY</div><h2>Tanya kebijakan dan regulasi dengan bahasa sehari-hari.</h2>
 <p>Mulai dari pertanyaan investasi, AI, energi, tata ruang, perubahan peraturan, atau kewenangan daerah. SLI menghubungkan pertanyaan dengan dokumen resmi dalam indeks, lalu Anda dapat membuka riset generatif di Research AI.</p></div><span class="pa-tag">Evidence-first · Tahap awal</span></div>
@@ -97,6 +105,7 @@
 <script>window.SLI_POLICY_EXPLORER_VERSION="20261019-policy-reader2";</script>
 <script defer src="./js/sli-regulatory-explorer.js?v=20261019-policy-reader3"></script>
 <script defer src="./js/sli-policy-assistant.js?v=20261019-pai1"></script>
+<script defer src="./js/sli-policy-coverage.js?v=20261019-coverage1"></script>
 <script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script>
 </body>
 </html>
