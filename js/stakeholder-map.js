@@ -4,7 +4,74 @@
 (function(){
 "use strict";
 const NS="http://www.w3.org/2000/svg";
+const isID=()=>window.SLIi18n?.language==="id"||document.documentElement?.lang==="id";
+const ID_TEXT=new Map([
+["PRESIDENCY","KEPRESIDENAN"],["& DIRECTION","& ARAHAN"],["REGULATORS","REGULATOR"],["& INSTITUTIONS","& LEMBAGA"],["OWNERSHIP","KEPEMILIKAN"],["& OPERATORS","& OPERATOR"],["& SCRUTINY","& PENGAWASAN"],["& REGIONS","& DAERAH"],["LOCAL","DAERAH"],["& DELIVERY","& PELAKSANAAN"],
+["Strategic","Strategis"],["Implementation","Pelaksanaan"],["Oversight","Pengawasan"],
+["INDONESIA","INDONESIA"],["ENERGY","TATA KELOLA"],["GOVERNANCE","ENERGI"],["SELECT A NODE →","PILIH SATU TITIK →"],["CATEGORICAL ASSOCIATIONS · NOT REPORTING LINES","HUBUNGAN FUNGSIONAL · BUKAN GARIS KOMANDO"],
+["01 · POLICY","01 · KEBIJAKAN"],["02 · RULES","02 · ATURAN"],["03 · ASSETS","03 · ASET"],["04 · CHECKS","04 · PENGAWASAN"],["05 · LOCALS","05 · DAERAH"],["Strategic direction","Arah strategis"],["Regulator & budget","Regulator dan anggaran"],["Operators / execution","Operator dan pelaksanaan"],["DPR / DPD scrutiny","Pengawasan DPR/DPD"],["Regional implementation","Pelaksanaan daerah"],["CLICK TO READ →","KLIK UNTUK MEMBACA →"],
+["Institutions","Lembaga"],["Influence groups","Kelompok pengaruh"],["Issue lenses","Jalur isu"],["Overview","Gambaran Umum"],["Explore actors","Jelajahi pelaku"],["Issue focus","Fokus isu"],
+["Six stakeholder systems. SOE portfolio ownership, sector regulators, independent BUMS operators and parliamentary scrutiny remain distinct. Select a node to explore.","Enam sistem pemangku kepentingan ditampilkan terpisah: kepemilikan portofolio BUMN, regulator sektor, operator swasta, dan pengawasan parlemen. Klik bagian peta untuk mempelajarinya."],
+["STRATEGIC LATITUDE INTELLIGENCE · STAKEHOLDER POWER MAP","STRATEGIC LATITUDE INTELLIGENCE · PETA PEMANGKU KEPENTINGAN"],
+["Indonesia Energy Power Map","Peta Kelembagaan Energi Indonesia"],
+["SOE ownership vs regulation · UU 16/2025 · expand mandate diagram","Kepemilikan vs pengaturan BUMN · UU 16/2025 · buka bagan kewenangan"],
+["GOVERNMENT · SPECIAL RIGHTS","PEMERINTAH · HAK KHUSUS"],["ECONOMIC SHAREHOLDING","KEPEMILIKAN EKONOMI"],
+["State strategic shareholding rights and corporate regulation. Does not license PSCs or supervise private KKKS.","Hak kepemilikan strategis negara dan pengaturan BUMN. Bukan pemberi izin PSC maupun pengawas langsung KKKS swasta."],
+["BUMN portfolio investment and operational holding mandate, including Pertamina / PLN; board execution stays with each corporate group.","Mandat investasi portofolio BUMN dan pengelolaan induk operasional termasuk Pertamina/PLN. Pelaksanaan tetap berada pada direksi masing-masing grup."],
+["The legal 1%/99% split concerns defined state-shareholding rights: it does not mean Danantara owns 99% of every listed BUMN’s total market equity. Verify each issuer’s share register. Separate chain: ESDM (energy regulation) → SKK Migas/BPMA (upstream PSC management) → KKKS (BUMN, private or foreign field operator). BPH Migas supervises downstream fuel and gas-transport matters. Neither SKK Migas nor BPH Migas is a Danantara subsidiary.","Pembagian 1%/99% berkaitan dengan hak saham negara yang ditentukan hukum, bukan bukti Danantara memiliki 99% seluruh saham beredar setiap BUMN terbuka. Periksa daftar pemegang saham. ESDM mengatur energi, SKK Migas/BPMA mengelola kontrak hulu, KKKS melaksanakan operasi lapangan, dan BPH Migas mengawasi distribusi BBM serta pengangkutan gas. SKK maupun BPH Migas bukan anak perusahaan Danantara."],
+["UU 16/2025 legal text ↗","Naskah UU 16/2025 ↗"],["Danantara official mandate ↗","Mandat resmi Danantara ↗"],
+["President / DEN Chair","Presiden / Ketua DEN"],["Minister of Energy and Mineral Resources","Menteri ESDM"],["Coordinating Minister for Downstreaming & Energy Transition","Menko Hilirisasi dan Transisi Energi"],["DEN Secretary General","Sekretaris Jenderal DEN"],["SKK Migas Head","Kepala SKK Migas"],["BPI Danantara / CEO","BPI Danantara / CEO"],
+["Choose functional institutional branch","Pilih kelompok fungsi kelembagaan"],["Choose an energy policy issue","Pilih isu kebijakan energi"],["Search Simon Mantiri, Purnomo, DPR XII…","Cari tokoh, DPR, dan lembaga…"],["Search all stakeholders by person or institution","Cari seluruh pelaku menurut tokoh atau lembaga"],
+["Select a highlighted node to drill down","Pilih titik yang ditandai untuk membuka rincian"],
+["Analytical policy influence only. Not statutory reporting lines.","Hanya menggambarkan pengaruh kebijakan secara analitis, bukan garis pertanggungjawaban menurut hukum."],
+["Browse complete source-dated stakeholder directory","Jelajahi direktori pelaku dan sumber bertanggal"],
+["No matching actors","Tidak ditemukan pelaku yang sesuai"],["READ THE MAP","CARA MEMBACA PETA"],
+["Explore who shapes Indonesia’s energy policy","Jelajahi lembaga yang memengaruhi kebijakan energi Indonesia"],
+["Only six institutional clusters are shown to keep the overview legible. Open a cluster to inspect its responsible people and organizations.","Peta ringkas menampilkan enam kelompok lembaga agar mudah dibaca. Buka kelompok untuk melihat tokoh, organisasi, peran, dan sumber."],
+["Select a branch","Pilih kelompok"],["Open a focused map of its actors.","Buka peta pelaku pada kelompok tersebut."],
+["Select an actor","Pilih tokoh atau lembaga"],["View the incumbent, mandate, links and cited source.","Baca pimpinan, mandat, hubungan, dan sumber yang dicantumkan."],
+["Trace an energy issue","Telusuri isu energi"],["Compare policy, regulator, operator, parliament and region.","Bandingkan kebijakan, regulator, operator, parlemen, dan daerah."],
+["Explore Pertamina & PLN →","Jelajahi Pertamina & PLN →"],
+["INSTITUTIONAL BRANCH","KELOMPOK KELEMBAGAAN"],["Explore source-dated members and responsibilities.","Jelajahi anggota, tanggung jawab, dan tanggal sumber."],
+["Inspect a key actor","Periksa pelaku utama"],["STAKEHOLDER PROFILE","PROFIL PEMANGKU KEPENTINGAN"],["Leadership to verify","Pimpinan perlu diverifikasi"],
+["Responsibility","Tanggung jawab"],["Role under review","Peran masih dikaji"],
+["Decision authority","Batas kewenangan"],["Institutional scope; actual mandate must be verified.","Batas kewenangan harus diperiksa menurut dokumen hukum asli."],
+["Official appointment / institutional source ↗","Sumber pengangkatan / lembaga resmi ↗"],["Later official leadership confirmation ↗","Konfirmasi pejabat terbaru ↗"],["Related stakeholders","Pelaku terkait"],
+["POLICY ACCOUNTABILITY LENS","ANALISIS AKUNTABILITAS KEBIJAKAN"],["Operator / assets","Operator / aset"],["DPR / DPD oversight","Pengawasan DPR/DPD"],
+["SLI analytical test","Pemeriksaan analitis SLI"],
+["Issue pathway reflects functional responsibilities, not statutory command relationships.","Jalur isu menunjukkan tanggung jawab fungsional, bukan garis komando yang diatur undang-undang."],
+["National decision and influence systems","Sistem pengambilan keputusan dan pengaruh nasional"],
+["Issue lens","Analisis isu"],["Six hubs only. Click any branch to drill down.","Enam kelompok ditampilkan. Klik satu kelompok untuk membuka rincian."],
+["Five accountability stages","Lima tahapan akuntabilitas"],["Choose a stage for responsibilities and analytical checks","Pilih tahapan untuk melihat tanggung jawab dan pemeriksaan analitis"],
+["← All branches","← Semua kelompok"],["Lines indicate stakeholder membership in the selected influence cluster—not formal reporting.","Garis menunjukkan keterkaitan pemangku kepentingan, bukan hubungan pelaporan formal."],
+["DPR and DPD independent scrutiny are shown separately from regulatory / corporate execution.","Pengawasan independen DPR dan DPD dipisahkan dari pelaksanaan oleh regulator dan perusahaan."],
+["STRATEGIC LATITUDE INTELLIGENCE · STAKEHOLDER POWER MAP","STRATEGIC LATITUDE INTELLIGENCE · PETA PEMANGKU KEPENTINGAN"]
+]);
+function tx(v){const str=String(v??"");if(!isID())return str;return ID_TEXT.get(str)||window.SLIi18n?.translate?.(str,"id")||str}
+const LAYER_ID=[
+["Pengambilan keputusan presiden, penasihat, dan koordinasi nasional","Arahan dan nasihat strategis berbeda dari keputusan kementerian yang berwenang serta persetujuan operasional."],
+["Direktorat teknis ESDM serta regulator hulu dan hilir","Mandat pengawasan berlaku sesuai sektor dan berbeda dari pekerjaan operasi lapangan."],
+["Kepemilikan negara, investasi, BUMN, dan operator swasta","Danantara mengelola kepentingan portofolio saham Seri B BUMN; BP BUMN memiliki hak Seri A tersendiri. Regulator, operator swasta, dan pengurus BUMN mempunyai mandat hukum berbeda."],
+["DPR RI: legislasi, pengawasan BUMN dan fiskal","Pengawasan parlemen terpisah dari kewenangan pelaksanaan pemerintah."],
+["DPD RI: kepentingan energi daerah dan pemerataan fiskal","DPD mewakili daerah; kewenangannya berbeda dari legislasi DPR dan pengaturan ESDM."],
+["Pelaksanaan provinsi, lingkungan dan risiko lokasi","Pelaksanaan proyek, penggunaan lahan, RUED, perlindungan lingkungan, dan tanggap darurat tersebar pada berbagai lembaga."]
+];
+const ISSUE_ID=[
+["Kelangkaan BBM / LPG","Uji stok nasional, terminal, pembongkaran kapal, distribusi dan jam SPBU. Antrean di satu daerah tidak membuktikan pasokan nasional kolaps."],
+["Pemadaman listrik atau pembatasan beban","Bedakan gangguan pembangkit, jaringan, cadangan daya, waktu pemulihan, dan pelanggan terdampak; periksa pernyataan teknis PLN yang bertanggal."],
+["Perizinan CCS/CCUS dan realisasi komersial","Periksa izin lokasi, PoD, FID, fasilitas penangkapan beroperasi, volume injeksi terukur, dan belanja modal aktual. Estimasi potensi geologi bukan realisasi CCS."],
+["DMO batu bara dan kepatuhan pertambangan","Pisahkan produksi batu bara, alokasi DMO, pasokan aktual PLN, dan pembayaran. Cocokkan volume serta periode data."],
+["Energi terbarukan dan investasi jaringan","Telusuri lelang, PPA, pembiayaan/FID, kesiapan transmisi, konstruksi, dan COD. MW yang diumumkan bukan kapasitas beroperasi."],
+["Subsidi energi, kuota BBM, dan APBN","Bedakan rancangan APBN, pagu yang disahkan, subsidi dibayar, kompensasi pemerintah, serta BBM benar-benar disalurkan."],
+["Investasi energi strategis dan hilirisasi","Pisahkan rencana investasi, pendanaan final, modal disetor, belanja pembangunan, dan operasi komersial."],
+["Hulu migas: PSC, lifting, dan investasi","Portofolio ekonomi BUMN Danantara tidak menjadikan SKK Migas atau kontraktor swasta sebagai anak usaha. Bedakan cadangan, produksi, lifting, realisasi belanja dan transaksi akuisisi yang telah tuntas."],
+["Gas industri, LNG dan jargas","Bandingkan produksi gas hulu, penjualan domestik, alokasi HGBT, kapasitas dan aliran pipa, serta sambungan jargas aktual. Kontrak LNG bukan bukti gas telah diterima konsumen."]
+];
+
 const palette=["#D8BD80","#83BACB","#82B5A3","#B9A2D8","#D9A780","#95AED6"];
+const energyLayerTitle=(index,layer)=>isID()?(LAYER_ID[index]?.[0]||layer.title):layer.title;
+const energyLayerSummary=(index,layer)=>isID()?(LAYER_ID[index]?.[1]||layer.summary):layer.summary;
+const energyIssue=(index,field,original)=>isID()?(ISSUE_ID[index]?.[field==="issue"?0:1]||original):original;
 const titles=[
  ["PRESIDENCY","& DIRECTION"],
  ["REGULATORS","& INSTITUTIONS"],
@@ -17,11 +84,11 @@ const kinds=[
  {label:"Strategic",match:[0]}, {label:"Implementation",match:[1,2,5]},
  {label:"Oversight",match:[3,4]}
 ];
-const $=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!==undefined)e.textContent=String(txt);return e};
+const $=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!==undefined)e.textContent=tx(txt);return e};
 const sv=(t,attrs={},txt)=>{
  const e=document.createElementNS(NS,t);
  for(const [k,v] of Object.entries(attrs))e.setAttribute(k,String(v));
- if(txt!==undefined)e.textContent=String(txt);
+ if(txt!==undefined)e.textContent=tx(txt);
  return e;
 };
 function text(svg,x,y,words,attrs={}){
