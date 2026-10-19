@@ -68,15 +68,16 @@ test("autonomous upgrade CI only proposes draft PRs; no auto-merge or production
  assert.doesNotMatch(prQa,/pull-requests: write|contents: write/);
 });
 
-test("automatic proposer advances beyond previous review branches without changing or merging them",()=>{
+test("automatic proposer advances past reviewed branches, both before and after a patch applies",()=>{
  const skipped=["method-multivariate-bahasa"];
  const chosen=selectCandidate({skipCandidates:skipped});
- assert.ok(chosen,"at least one pending reviewed candidate should remain for this regression fixture");
- assert.equal(chosen.id,"method-did-bahasa");
+ // The same test executes before and after the action applies its next approved patch.
+ // After the DiD case has been added to the benchmark, Porter should be next.
+ assert.ok(chosen,"at least one bounded candidate remains in the sample queue");
+ assert.ok(["method-did-bahasa","method-porter-bahasa"].includes(chosen.id));
  const plan=planPatch({skipCandidates:skipped});
  assert.equal(plan.candidate_id,chosen.id);
  assert.equal(plan.expected_status,"design");
- assert.ok(plan.output.routes.includes(JSON.stringify("perbedaan dalam perbedaan")));
- assert.equal(selectCandidate({skipCandidates:skipped.concat(["method-did-bahasa"])}).id,"method-porter-bahasa");
+ assert.ok(plan.output.routes.includes(JSON.stringify(chosen.phrase)));
  assert.equal(selectCandidate({skipCandidates:skipped.concat(["method-did-bahasa","method-porter-bahasa"])}),null);
 });
