@@ -1,0 +1,30 @@
+{
+  "schema": "sli-paris-treaty-status-v1",
+  "checked_at": "2026-10-19",
+  "scope": "Status Indonesia sebagai pihak Paris Agreement, dibedakan dari tanggal mulai berlaku UU 16/2016. Bukan verifikasi seluruh instrumen pelaksana.",
+  "legal_guardrail": "Tanggal mulai berlaku UU pengesahan nasional tidak sama dengan tanggal berlakunya treaty bagi Indonesia menurut UN Depositary. Status kedua rezim hukum harus dikutip terpisah.",
+  "records": [
+    {
+      "id": "sli_treaty_paris_indonesia_deposit",
+      "event": "Indonesia mendepositkan instrumen ratifikasi Paris Agreement di PBB",
+      "date": "2016-10-31",
+      "year": 2016,
+      "title": "Paris Agreement — Indonesia: deposit of ratification instrument",
+      "publisher": "United Nations Treaty Collection — Depositary",
+      "source_url": "https://treaties.un.org/Pages/showDetails.aspx?clang=_en&objid=0800000280458f37",
+      "retrieval_kind": "official_treaty_depositary_register",
+      "summary": "Indonesia: Ratification, Date of Notification/Deposit 31 October 2016. Ini berbeda dari pengundangan UU pengesahan nasional pada 25 Oktober 2016."
+    },
+    {
+      "id": "sli_treaty_paris_indonesia_effect",
+      "event": "Paris Agreement mulai berlaku untuk Indonesia menurut pencatatan Depositary PBB",
+      "date": "2016-11-30",
+      "year": 2016,
+      "title": "Paris Agreement — effective for Indonesia: 30 November 2016",
+      "publisher": "United Nations Treaty Collection — Depositary",
+      "source_url": "https://treaties.un.org/Pages/showDetails.aspx?clang=_en&objid=0800000280458f37",
+      "retrieval_kind": "official_treaty_depositary_register",
+      "summary": "Indonesia: Ratification 31 October 2016; Date of Effect 30 November 2016. Jangan menyamakan tanggal efektif treaty ini dengan berlakunya UU 16/2016 pada 25 Oktober 2016."
+    }
+  ]
+}
