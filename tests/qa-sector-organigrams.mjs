@@ -86,7 +86,7 @@ for(const sector of ['minerals','ai']){
  assert.equal(stages[0].querySelectorAll('.sli-hier-root').length,sector==='ai'?1:0,'AI institution explorer opens by default; minerals waits until the user opens it');
  const expandable=stages[0].querySelector('.sli-extra-network');
  assert.ok(expandable,'Single consolidated institutional explorer must exist');
- assert.ok(expandable.children[0].textContent.includes('Explore institution network, named officials and 9 issue pathways'));
+ assert.ok(expandable.children[0].textContent.includes(sector==='ai'?'AI Infrastructure · Government / Danantara / Private':'Explore institution network, named officials and 9 issue pathways'),'Explorer summary matches sector-specific label');
  assert.ok(!expandable.children[0].textContent.includes('Energy Security-style'),'Remove internal style comparison from heading');
  const internalTabs=expandable.querySelectorAll('.sli-sector-explorer-tab');
  assert.equal(internalTabs.length,2,'Network and hierarchy are two views in a single panel');
