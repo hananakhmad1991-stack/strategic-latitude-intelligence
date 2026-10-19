@@ -173,6 +173,7 @@ test("report export toolbar uses stable table host, and separated numbered list 
  const markdown=file("js/sli-research-visuals.js");
  assert.match(exporter,/node\.closest\("\.sli-ra-table-wrap"\)/);
  assert.match(exporter,/if\(reportHost\)return reportHost;/);
+ assert.ok(markdown.includes(String.raw`line.match(/^\d+/)`),"Original authored list numbers must be parsed by the Markdown renderer");
  const begin=markdown.indexOf("const orderedStart="),end=markdown.indexOf("\nfunction renderMarkdown(",begin);
  assert.ok(begin>0&&end>begin,"Ordered-list helper must exist");
  const sequence=new Function(markdown.slice(begin,end).replace("const orderedStart=","return "))();
