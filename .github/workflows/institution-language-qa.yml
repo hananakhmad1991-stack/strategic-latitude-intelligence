@@ -1,0 +1,33 @@
+name: SLI EN-ID Institutional Content QA
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'js/sector-command-hierarchy.js'
+      - 'js/energy-governance-ccs.js'
+      - 'js/i18n-dictionary.js'
+      - 'tests/qa-energy-institution-explorer.mjs'
+      - 'tests/qa-command-hierarchy.mjs'
+      - 'index.html'
+      - 'ai-infrastructure.html'
+      - 'ai-intelligence-hub.html'
+      - '.github/workflows/institution-language-qa.yml'
+permissions:
+  contents: read
+jobs:
+  verify-real-content:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate actual Energy hierarchy Indonesian text, investor classifications and inspector
+        run: |
+          node --check js/sector-command-hierarchy.js
+          node --check js/energy-governance-ccs.js
+          node --check js/i18n-dictionary.js
+          node tests/qa-energy-institution-explorer.mjs
+          node tests/qa-command-hierarchy.mjs
