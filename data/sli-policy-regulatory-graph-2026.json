@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.4",
+  "version": "2026-10-19.5",
   "updated_at": "2026-10-19",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -1536,6 +1536,88 @@
         "pembentukan regulasi"
       ],
       "enacted_date": "2022-06-16"
+    },
+    {
+      "id": "pp86food2019",
+      "tier": "pp",
+      "ref": "PP 86/2019",
+      "label": "Keamanan Pangan — aturan pelaksanaan UU Pangan",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/129230/pp-no-86-tahun-2019",
+      "note": "Berlaku dengan perubahan PP 1/2026. Periksa teks yang telah disesuaikan untuk persyaratan keamanan pangan sesuai kegiatan dan komoditas.",
+      "status": "amended",
+      "kind": "general_regulation",
+      "owner": "Badan Pangan Nasional / BPOM / Kementerian terkait",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "pangan",
+        "keamanan pangan",
+        "industri pangan"
+      ],
+      "verified_at": "2026-10-19"
+    },
+    {
+      "id": "pp1food2026",
+      "tier": "pp",
+      "ref": "PP 1/2026",
+      "label": "Perubahan PP 86/2019 tentang Keamanan Pangan",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/348700/pp-no-1-tahun-2026",
+      "note": "Berlaku 5 Januari 2026, mengubah ketentuan PP 86/2019. Dasar terbaru untuk telaah keamanan pangan bersama PP induk serta aturan teknis.",
+      "status": "amending_instrument",
+      "kind": "general_regulation_amendment",
+      "owner": "Pemerintah Pusat / Badan Pangan Nasional",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "pangan",
+        "keamanan pangan",
+        "industri pangan"
+      ],
+      "enacted_date": "2026-01-05",
+      "verified_at": "2026-10-19"
+    },
+    {
+      "id": "perban11food2025",
+      "tier": "agency",
+      "ref": "Peraturan Bapanas 11/2025",
+      "label": "Tata cara pengawasan ketersediaan dan/atau kecukupan pangan pokok",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/339134/peraturan-bapanas-no-11-tahun-2025",
+      "note": "Instrumen pengawasan ketersediaan dan kecukupan pangan pokok, mengacu antara lain UU 18/2012 dan PP 17/2015.",
+      "status": "enacted",
+      "kind": "agency_regulation",
+      "owner": "Badan Pangan Nasional",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "ketahanan pangan",
+        "ketersediaan pangan",
+        "distribusi pangan"
+      ],
+      "enacted_date": "2025-10-10",
+      "verified_at": "2026-10-19"
+    },
+    {
+      "id": "perban5food2025",
+      "tier": "agency",
+      "ref": "Peraturan Bapanas 5/2025",
+      "label": "Pengelolaan Sistem Distribusi Pangan",
+      "sector": "cross",
+      "source": "https://jdih.badanpangan.go.id/doc/35b50d12-3688-4347-8190-3e2bfc490bd6",
+      "note": "Instrumen distribusi pangan 2025; perlu diperiksa bersama PP 17/2015 dan ketentuan pengawasan pangan nasional dan lokal.",
+      "status": "enacted",
+      "kind": "agency_regulation",
+      "owner": "Badan Pangan Nasional",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "distribusi pangan",
+        "ketahanan pangan"
+      ],
+      "enacted_date": "2025-07-02",
+      "verified_at": "2026-10-19"
     }
   ],
   "edges": [
@@ -2188,6 +2270,26 @@
       "from": "uu2minerba",
       "to": "uu3minerba",
       "type": "amends"
+    },
+    {
+      "from": "pp86food2019",
+      "to": "pp1food2026",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu18food2012",
+      "to": "pp86food2019",
+      "type": "implementation_context"
+    },
+    {
+      "from": "uu18food2012",
+      "to": "perban11food2025",
+      "type": "implementation_context"
+    },
+    {
+      "from": "uu18food2012",
+      "to": "perban5food2025",
+      "type": "implementation_context"
     }
   ],
   "cases": [
