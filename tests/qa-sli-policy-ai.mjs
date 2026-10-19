@@ -97,6 +97,9 @@ test("unsupported article citations fail closed in owner-only legal model output
  assert.equal(auditLegalArticleCitations("Pasal 1 mengesahkan perjanjian [1].",[source]).pass,false);
  assert.equal(auditLegalArticleCitations("Perlu verifikasi naskah resmi dan ketentuan peralihan.",[source]).pass,true);
  assert.equal(auditLegalArticleCitations("Pasal 1 mengesahkan persetujuan [1].",[source]).pass,true);
+ assert.equal(auditLegalArticleCitations("Pasal 1 UU Nomor 16 Tahun 2016 [1].",[source]).pass,true);
+ assert.equal(auditLegalArticleCitations("Pasal 1 UU No. 23 Tahun 2014 [1].",[source]).pass,false);
+ assert.equal(auditLegalArticleCitations("Pasal 1 ayat (2) UU 16/2016 [1].",[source]).pass,false);
  const recovery=recoverUnsupportedLegalAnswer("Pasal 9 UU 16/2016 membutuhkan bukti lain [1].",[source]);
  assert.equal(recovery.recovered,true);
  assert.equal(recovery.source_limited,true);
