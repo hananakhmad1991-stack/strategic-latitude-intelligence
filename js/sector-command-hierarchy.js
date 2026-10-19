@@ -214,8 +214,11 @@ source.then(db=>{
  let openIds=restore?.openIds?new Set(restore.openIds):new Set(defaultExpanded);
  let selectedId=restore?.selectedId||"pres";
  function profile(a){
- info.replaceChildren(el("div","eyebrow","SOURCE-DATED ACTOR PROFILE"),el("h4",null,actorTitle(a)));
- if(a.person)info.append(el("p","sli-hier-person",T("Actor / leader: ","Tokoh / pimpinan: ")+a.person));else info.append(el("p","sli-hier-missing","Named incumbent is not independently verified in this register."));
+ info.replaceChildren(el("div","eyebrow","SOURCE-DATED ACTOR PROFILE"));
+ const identity=window.SLIEntityIdentity;
+ const heading=el("div","sli-hier-profile-title");if(identity)heading.append(identity.brand(a.title,a.lane==="private"||a.lane==="state"?"building":"government"));
+ heading.append(el("h4",null,actorTitle(a)));info.append(heading);
+ if(a.person){const person=el("p","sli-hier-person",T("Actor / leader: ","Tokoh / pimpinan: "));person.append(identity?identity.personLink(a.person,a.source):el("span",null,a.person));info.append(person)}else info.append(el("p","sli-hier-missing","Named incumbent is not independently verified in this register."));
  info.append(el("p",null,actorRole(a,which)),el("p","sli-hier-type",T("Relationship: ","Hubungan: ")+ui(typeName[a.relation]||a.relation)));
  if(a.stake)info.append(el("p","sli-hier-stake",T("Reported stake: ","Kepemilikan dilaporkan: ")+a.stake));
  if(a.affiliation)info.append(el("p",null,T("Corporate affiliation: ","Afiliasi perusahaan: ")+a.affiliation));
@@ -225,7 +228,11 @@ source.then(db=>{
  }
  function card(a,depth=0){
  const wrap=el("div","sli-hier-entry "+a.relation),btn=el("button","sli-hier-card"+(selectedId===a.id?" selected":""),undefined);
- btn.type="button";btn.append(el("small",null,ui(typeName[a.relation]||a.relation)+" · L"+depth),el("strong",null,actorTitle(a)));
+ btn.type="button";
+ const id=window.SLIEntityIdentity,heading=el("span","sli-hier-card-title");
+ if(id)heading.append(id.brand(a.title,a.lane==="private"||a.lane==="state"?"building":"government"));
+ heading.append(el("strong",null,actorTitle(a)));
+ btn.append(el("small",null,ui(typeName[a.relation]||a.relation)+" · L"+depth),heading);
  if(a.person)btn.append(el("span","sli-hier-lead",a.person));
  if(a.stake)btn.append(el("span","sli-hier-share",a.stake));
  btn.addEventListener("click",()=>{selectedId=a.id;profile(a);draw()});wrap.append(btn);return wrap
