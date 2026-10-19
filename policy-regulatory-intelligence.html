@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id"><head><script>/* SLI chrome prepaint: prevent flash of legacy layout */document.documentElement.classList.add('sli-chrome-pending');window.addEventListener('load',function(){setTimeout(function(){document.documentElement.classList.remove('sli-chrome-pending')},1400)},{once:true});</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="id"><head><script>/* SLI chrome prepaint: prevent flash of legacy layout */try{var pref=localStorage.getItem('sli-ui-language');if(pref==='en'||pref==='id')document.documentElement.lang=pref}catch(_){ }document.documentElement.classList.add('sli-chrome-pending');window.addEventListener('load',function(){setTimeout(function(){document.documentElement.classList.remove('sli-chrome-pending')},1400)},{once:true});</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Policy & Risk Intelligence | Strategic Latitude Intelligence</title>
 <meta name="description" content="Interactive Indonesia energy investment policy hierarchy, regulatory linkage map and transparent RIA-lite screening with official legal sources.">
 <style>
@@ -77,4 +77,4 @@ $('case').innerHTML=d.cases.map(x=>'<option value="'+safe(x.id)+'">'+safe(x.name
 $('riskCsv').onclick=()=>{let c=getCase();download('sli_regulatory_issues_'+caseId+'.csv',[['investment_case','dimension','weight','analyst_exposure_1to5','reason','evidence_status','mitigation'],...c.issues.map(x=>[c.name,x.id,d.methodology.ria_lite.dimensions.find(q=>q.id===x.id).weight,scores[x.id]??x.exposure,x.reason,x.evidence,x.mitigation])])};
 selected='pp28';detail();graph();register();buildIssue()}
 fetch('./data/sli-policy-regulatory-graph-2026.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Legal register unavailable');return r.json()}).then(init).catch(e=>{$('graph').textContent='Cannot load policy register: '+e.message;$('issues').textContent='Dataset unavailable'});
-</script><script src="./js/regulatory-monitor-dashboard.js?v=20261016-policy4"></script><script defer src="./js/sli-navigation.js?v=20261019-onepoint6"></script></body></html>
+</script><script src="./js/regulatory-monitor-dashboard.js?v=20261016-policy4"></script><script defer src="./js/sli-navigation.js?v=20261019-locale2"></script></body></html>
