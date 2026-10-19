@@ -164,6 +164,40 @@ function renderSources(sources,answer="",charts=[]){
   list.append(card);
  });
 }
+function renderClaimReview(qualityAudit,report,language="id"){
+ const review=qualityAudit?.claim_review;if(!review||review.scope!=="citation_and_local_excerpt_triage_only_not_claim_fact_check")return;
+ const isId=language!=="en",count=Number(review.assessed_claims)||0,
+       gaps=Number(review.quantity_excerpts_mismatch)||0,
+       uncited=Number(review.unattributed_claims)||0;
+ const card=node("details","sli-ra-evidence-note");
+ const title=node("summary",null,(isId?"AUDIT KLAIM · ":"CLAIM REVIEW · ")+count+
+  (isId?" pernyataan diperiksa secara terbatas, ":" limited claims examined, ")+
+  gaps+(isId?" perlu cek angka, ":" quantitative discrepancies, ")+
+  uncited+(isId?" tanpa sitasi langsung":" missing local citations"));
+ card.append(title);
+ card.append(node("p",null,isId
+  ?"Audit membandingkan klaim dengan cuplikan sumber. Pemeriksaan halaman sumber primer dibatasi dan tidak membaca PDF; kecocokan angka BUKAN pembuktian klaim. Tidak ada klaim yang dinyatakan otomatis terverifikasi."
+  :"Review compares claims with cited excerpts. Original publisher HTML checks are limited and do not parse PDFs; numeric presence is NOT claim verification. No claims are automatically certified."));
+ const probe=qualityAudit?.primary_source_probe;
+ if(probe){
+  card.append(node("p","sli-ra-source-role",(isId?"HALAMAN PRIMER: ":"PRIMARY PAGES: ")+
+   String(Number(probe.checked)||0)+(isId?" dokumen diperiksa terbatas; URL hanya dari penerbit yang diizinkan.":" limited publisher page checks; allowlisted URLs only.")));
+  for(const x of (Array.isArray(probe.results)?probe.results.slice(0,2):[])){
+   card.append(node("p","sli-ra-source-role","["+String(x.citation||"?")+"] "+String(x.status||"unknown")+
+    (Array.isArray(x.claim_numbers_absent)&&x.claim_numbers_absent.length?" · "+
+      (isId?"Angka tidak ditemukan: ":"Missing from page: ")+x.claim_numbers_absent.join(", "):"")));
+  }
+ }
+ const items=Array.isArray(review.items)?review.items.slice(0,8):[];
+ for(const item of items){
+  const p=node("p",null,"["+(Array.isArray(item.citations)?item.citations.join(","):"")+"] "+
+   String(item.category||"factual")+" · "+String(item.claim||"").slice(0,230));
+  card.append(p);
+  if(Array.isArray(item.missing_numbers)&&item.missing_numbers.length)
+   card.append(node("p","sli-ra-source-role",(isId?"Angka belum ditemukan pada cuplikan sumber: ":"Numbers absent from cited excerpts: ")+item.missing_numbers.join(", ")));
+ }
+ report.prepend(card);
+}
 function renderLiveDiscovery(payload,report,language="id"){
  const leads=(Array.isArray(payload?.sources)?payload.sources:[])
   .map((s,i)=>({...s,reference:i+1})).filter(s=>s.source_type==="live_web_discovery"&&safeUrl(s.source_url||"")).slice(0,6);
@@ -467,6 +501,7 @@ async function submit(){
    report.prepend(node("p","sli-ra-evidence-note",title+(warning&&names?" · "+names:"")+" · "+caveat));
   }
   renderSources(payload.sources,payload.answer,state.lastResult.charts);
+  renderClaimReview(payload.quality_audit,report,state.language);
   renderLiveDiscovery(payload,report,state.language);
   renderModelStatement(payload.answer,payload);
   renderMonitoringSignals(payload);
