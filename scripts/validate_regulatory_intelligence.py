@@ -33,6 +33,9 @@ assert lookup["perda_kepri"]["source"].startswith("https://jdih.kepriprov.go.id/
 for k in ("uu16paris","uu23local","uu1hkpd2022","uu1penyesuaian2026","pres110carbon","pres98repealed","perda_dki_rtrw2024","perda_jabar_rtrw2022","perda_dki_pdrd2024"):
     assert k in lookup and lookup[k].get("source","").startswith("https://"), k
 assert lookup["pres98repealed"]["status"]=="repealed"
+assert lookup["pp39minerba"]["source"]=="https://peraturan.bpk.go.id/Details/331105/pp-no-39-tahun-2025"
+assert any(e["from"]=="pp96min" and e["to"]=="pp39minerba" and e["type"]=="amended_by" for e in data["edges"])
+assert any(e["from"]=="uu23local" and e["to"]=="uu1hkpd2022" and e["type"]=="partially_repealed_by" for e in data["edges"])
 assert any(e["from"]=="pres110carbon" and e["to"]=="pres98repealed" and e["type"]=="repeals" for e in data["edges"])
 assert all(lookup[k]["region"]!="Indonesia" for k in ("perda_dki_rtrw2024","perda_jabar_rtrw2022","perda_bekasi"))
 
@@ -49,14 +52,16 @@ for case in data["cases"]:
     assert 0<=score<=100
     print(f"RIA-lite {case['id']}: {score:.1f}/100 (unvalidated scenario)")
 html=(ROOT/"policy-regulatory-intelligence.html").read_text(encoding="utf-8")
-assert "data/sli-policy-regulatory-graph-2026.json" in html
-assert 'id="full-register"' in html and 'id="regionFilter"' in html and 'id="tableSearch"' in html
-assert 'id="quickParis"' in html and 'id="quickLocal"' in html
-assert '<option value="all" selected>Semua sektor SLI</option>' in html
+assert "js/sli-regulatory-explorer.js" in html and "css/sli-regulatory-explorer.css" in html, "Missing reader-first canonical explorer"
 assert "new Function(" not in html, "Avoid dynamic script evaluation in dashboard"
-assert "international:12,foreignlaw:12" in html, "Foreign law graph must render in its own branch"
-assert "inpres:10" in html, "Presidential instruction must not be presented as Article 7 rung"
-assert "policy-monitor-sector" not in html or "sli-regulatory-monitor-root" in html
+for element in ('id="query"','id="topic"','id="region"','id="tier"','id="status"','id="lawResults"','id="details"','data-tab="changes"','data-tab="regional"','data-tab="alerts"'):
+    assert element in html, element
+explorer=(ROOT/"js/sli-regulatory-explorer.js").read_text(encoding="utf-8")
+assert "sli-policy-regulatory-graph-2026.json" in explorer
+assert "regulatory-monitor.json" in explorer
+assert "partially_repealed_by" in explorer
+assert "history.replaceState" in explorer, "Selected legal instrument must be deep-linkable"
+assert "sli-regulatory-monitor-root" not in html, "Redundant monitoring panel must be removed"
 assert all(k in lookup for k in ("inpres1_2025","inpres14_2025","inpres16_2025","uu7wto","ds592","icsid","newyork","eu_cbam","eu_crma","eu_batteries","us_bis_ear"))
 assert all(lookup[k]["tier"]=="inpres" for k in ("inpres1_2025","inpres14_2025","inpres16_2025"))
 assert all(lookup[k]["tier"] in ("international","foreignlaw") for k in ("gattxi","icsid","eu_cbam","us_bis_ear"))
