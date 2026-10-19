@@ -1,7 +1,9 @@
 /* SLI Energy Governance / Policy Register / CCS-CCUS Project Intelligence. */
 (function(){
 "use strict";
-const E=(tag,cl,text)=>{const e=document.createElement(tag);if(cl)e.className=cl;if(text!==undefined&&text!==null)e.textContent=String(text);return e};
+const translated=(text)=>window.SLIi18n?.translate?.(String(text))??String(text);
+const ENID=(en,id)=>window.SLIi18n?.language==="id"?id:en;
+const E=(tag,cl,text)=>{const e=document.createElement(tag);if(cl)e.className=cl;if(text!==undefined&&text!==null)e.textContent=translated(text);return e};
 const LINK=(url,label)=>{if(!/^https:\/\//i.test(url||""))return E("span",null,label||"Source unavailable");const a=E("a",null,label||"Source ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";return a};
 const section=(p,t,sub)=>{const x=E("div","section");x.append(E("h2",null,t),E("span",null,sub));p.append(x);return x};
 const note=(p,text,cls="gov-note")=>p.append(E("div",cls,text));
@@ -51,6 +53,14 @@ function governance(root,data,asOf){
  tabs.setAttribute("aria-label","Energy institutional intelligence views");
  const networkTab=E("button","sli-sector-explorer-tab","Institution network & 9 issues");
  const hierarchyTab=E("button","sli-sector-explorer-tab active","Government / Danantara & BUMN / Private");
+ const localization=()=>{
+  heading.textContent=translated("Explore institution network, named officials and 9 issue pathways");
+  networkTab.textContent=translated("Institution network & 9 issues");
+  hierarchyTab.textContent=translated("Government / Danantara & BUMN / Private");
+  tabs.setAttribute("aria-label",translated("Energy institutional intelligence views"));
+ };
+ document.addEventListener("sli:languagechange",()=>{if(root.isConnected)localization()});
+ localization();
  const networkPane=E("div","sli-sector-explorer-pane");
  const hierarchyPane=E("div","sli-sector-explorer-pane sli-sector-hierarchy-pane");
  for(const [tab,pane,id] of [[networkTab,networkPane,"energy-institution-network"],[hierarchyTab,hierarchyPane,"energy-command-hierarchy"]]){
@@ -267,7 +277,7 @@ window.initEnergyGovernance=async function(){
   const d=await r.json();if(!d.governance?.layers||!d.policies?.items||!d.ccs?.projects)throw Error("Incomplete research data");
   document.documentElement.dataset.govAsOf=d.as_of;
   root.replaceChildren();
-  const hero=E("div","gov-hero");hero.append(E("div","eyebrow","INDONESIA · ENERGY GOVERNANCE"),E("h2",null,"Institutional responsibilities & accountability"),E("p",null,"Who directs policy, who regulates and who executes it · verified as of "+d.as_of));root.append(hero);
+  const hero=E("div","gov-hero");hero.append(E("div","eyebrow","INDONESIA · ENERGY GOVERNANCE"),E("h2",null,"Institutional responsibilities & accountability"),E("p",null,ENID("Who directs policy, who regulates and who executes it · verified as of ","Siapa yang mengarahkan kebijakan, siapa yang mengatur, dan siapa yang melaksanakannya · diverifikasi per ")+d.as_of));root.append(hero);
   governance(root,d.governance,d.as_of);
   const policyRoot=document.getElementById("energyPolicyRoot")||root;
   const ccsRoot=document.getElementById("energyCCSRoot")||root;
