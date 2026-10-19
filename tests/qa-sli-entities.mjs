@@ -25,7 +25,7 @@ test('Clear provenance, accessible source-linked UI and no user-entered HTML inj
  for(const p of ['css/sli-entities.css','css/sli-entity-identity.css','js/sli-entities.js','js/sli-entity-identity.js'])assert.ok(existsSync(new URL('../'+p,import.meta.url)),p);
  assert.doesNotMatch(read('js/sli-entities.js'),/\.innerHTML\s*=/);
  assert.match(read('js/sli-entities.js'),/textContent/);
- assert.match(read('js/sli-entities.js'),/replace\/g/); // CSV quote escaping
+ assert.ok(read('js/sli-entities.js').includes('replace(/"/g')); // CSV quote escaping
  assert.match(page,/Wikipedia bukan bukti pejabat masih menjabat/);
 });
 test('Public links never silently guess biographies, and full page has source qualifiers',()=>{
