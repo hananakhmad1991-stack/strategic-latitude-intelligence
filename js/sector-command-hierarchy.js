@@ -1,6 +1,62 @@
 /* SLI source-dated TOP-DOWN institutional / corporate organization explorer */
 (function(){"use strict";
-const el=(tag,cl,text)=>{const x=document.createElement(tag);if(cl)x.className=cl;if(text!==undefined)x.textContent=String(text);return x};
+
+const isId=()=>window.SLIi18n?.language==="id"||document.documentElement?.lang==="id";
+const T=(en,id)=>isId()?id:en;
+/* Curated platform copy: translated at render time, never modify original official sources. */
+const UI_ID={
+"Original source ↗":"Sumber asli ↗","No verified source":"Sumber belum terverifikasi",
+"National direction":"Arahan nasional","Sector policy":"Kebijakan sektor","Presidential advisory":"Penasihat presiden",
+"DEN administrative support":"Dukungan administrasi DEN","Regional administration & RUED":"Pemerintahan daerah & RUED",
+"Investment-zone functional interface":"Hubungan fungsional kawasan investasi","Coordinating ministry":"Kementerian koordinator",
+"National development planning":"Perencanaan pembangunan nasional","Administrative reporting":"Pelaporan administratif",
+"State portfolio":"Portofolio BUMN","Shareholding / member":"Kepemilikan saham / anggota",
+"Minority investment / associate":"Investasi minoritas / entitas asosiasi",
+"Independent constitutional oversight":"Pengawasan konstitusional independen","Research / applied innovation":"Riset / inovasi terapan",
+"Functional demand interface":"Hubungan fungsional kebutuhan","Joint venture / cross-holding":"Usaha patungan / kepemilikan silang",
+"Independent commercial market":"Pasar komersial independen","Cybersecurity":"Keamanan siber",
+"Loading verified institutional and corporate hierarchy…":"Memuat struktur lembaga dan perusahaan yang diverifikasi…",
+"INSTITUTIONAL & CORPORATE COMMAND STRUCTURE":"STRUKTUR KELEMBAGAAN DAN KEPEMILIKAN PERUSAHAAN",
+"Government · Danantara & SOEs · Private Sector":"Pemerintah · Danantara & BUMN · Sektor Swasta",
+"Three separate systems: public institutions, state corporate portfolios and independent domestic/foreign investors. The Presidency anchors public-sector authority; corporate ownership is not regulatory command.":"Terdapat tiga sistem berbeda: lembaga publik, kelompok perusahaan negara, serta investor swasta dalam dan luar negeri. Presiden memimpin kewenangan pemerintahan; kepemilikan perusahaan bukan kewenangan pengaturan.",
+"Expand all":"Buka semua","Collapse all":"Tutup semua","Find people, directorates, companies…":"Cari tokoh, direktorat, perusahaan…",
+"Search the hierarchy":"Cari dalam struktur kelembagaan",
+"All sectors · grouped":"Semua sektor · berkelompok","Government & public institutions":"Pemerintah & lembaga publik",
+"Public policy & regulators":"Kebijakan publik & regulator","Danantara / BUMN":"Danantara / BUMN",
+"BRIN / research / defence":"BRIN / riset / pertahanan","Private (all)":"Semua swasta",
+"Private · Indonesia":"Swasta · Indonesia","Private · foreign":"Swasta · asing","Private · cross-border JVs":"Swasta · usaha patungan lintas negara",
+"Official leadership source watch: awaiting the next dated source scan.":"Pemantauan sumber pejabat: menunggu pemeriksaan sumber berikutnya.",
+"Official leadership source verification and research notes are available within this Energy Security institution panel. The two views use the same source-dated governance data.":"Pemeriksaan sumber resmi pejabat dan catatan penelitian tersedia pada panel kelembagaan Ketahanan Energi. Kedua tampilan menggunakan data tata kelola dengan tanggal sumber yang sama.",
+"Leadership roster source monitoring is configured but has not completed its first scan. Names are source-dated, not live confirmed.":"Pemantauan daftar pejabat telah diatur tetapi pemeriksaan pertama belum selesai. Nama merujuk tanggal sumber, bukan konfirmasi langsung saat ini.",
+"Leadership source scanner status temporarily unavailable; original links remain visible.":"Status pemeriksaan sumber pejabat sementara tidak tersedia; tautan sumber asli tetap dapat dibuka.",
+"Reported shareholding and direct official reporting must not be conflated with coordination or related-industry links.":"Kepemilikan saham dan hubungan pelaporan resmi tidak boleh disamakan dengan koordinasi atau keterkaitan industri.",
+"SOURCE-DATED ACTOR PROFILE":"PROFIL LEMBAGA BERDASARKAN TANGGAL SUMBER",
+"Named incumbent is not independently verified in this register.":"Pejabat yang menjabat belum diverifikasi secara independen dalam registri ini.",
+"View original institutional or issuer source ↗":"Lihat sumber resmi lembaga atau penerbit ↗",
+"DOMESTIC PRIVATE · INDONESIA":"SWASTA DOMESTIK · INDONESIA",
+"FOREIGN PRIVATE · INTERNATIONAL":"SWASTA ASING · INTERNASIONAL",
+"MIXED OWNERSHIP & CROSS-BORDER JVs":"KEPEMILIKAN CAMPURAN & USAHA PATUNGAN INTERNASIONAL",
+"Indonesian-headquartered private and listed businesses. Individual project JVs must still be checked.":"Perusahaan swasta dan emiten yang berkantor pusat di Indonesia. Status masing-masing usaha patungan proyek tetap harus diperiksa.",
+"Foreign-headquartered companies and providers. Local incorporation does not make the parent Indonesian-owned.":"Perusahaan dan penyedia berkantor pusat di luar negeri. Pendirian badan hukum lokal tidak berarti induknya milik Indonesia.",
+"Joint ventures and companies with mixed domestic/foreign shareholding, kept separate from purely domestic or foreign parents.":"Perusahaan patungan dengan pemegang saham domestik dan asing, dipisahkan dari perusahaan dengan kepemilikan tunggal.",
+"01 · PUBLIC INSTITUTIONS":"01 · LEMBAGA PUBLIK",
+"02 · PUBLIC CORPORATE PORTFOLIO":"02 · PORTOFOLIO PERUSAHAAN NEGARA",
+"03 · COMMERCIAL MARKET":"03 · PASAR KOMERSIAL",
+"GOVERNMENT · POLICY & PUBLIC INSTITUTIONS":"PEMERINTAH · KEBIJAKAN & LEMBAGA PUBLIK",
+"Public advisory → coordination → ministries → execution. DEN Secretariat is administratively linked to ESDM and functionally to DEN. Provincial autonomy is preserved under Kemendagri guidance; BP Batam has a separate legal mandate and is not subordinate to BP BUMN. DPR/BPK exercise independent oversight.":"Penasihat publik → koordinasi → kementerian → pelaksanaan. Sekretariat Jenderal DEN terhubung secara administratif dengan ESDM dan secara fungsional dengan DEN. Otonomi daerah tetap berlaku meskipun Kemendagri melakukan pembinaan. BP Batam memiliki kewenangan hukum sendiri, bukan bawahan BP BUMN. DPR dan BPK melakukan pengawasan independen.",
+"Independent parliamentary & financial oversight":"Pengawasan parlemen dan keuangan independen",
+"DPR RI and BPK RI are NOT directorates under the President or ministers.":"DPR RI dan BPK RI bukan direktorat di bawah Presiden atau kementerian.",
+"DANANTARA · STATE-OWNED ENTERPRISES":"DANANTARA · BADAN USAHA MILIK NEGARA",
+"Corporate portfolio and equity relationships are shown separately from government regulatory mandates. MIND ID group members, DSI, Telkom and other state-linked companies have different legal roles.":"Portofolio perusahaan dan hubungan kepemilikan saham dipisahkan dari kewenangan regulator pemerintah. Anggota MIND ID, DSI, Telkom dan perusahaan terkait negara lain memiliki peran hukum berbeda.",
+"PRIVATE SECTOR · DOMESTIC & FOREIGN":"SEKTOR SWASTA · DALAM & LUAR NEGERI",
+"Commercial companies and corporate nationality are separated from the government and Danantara/BUMN organizational chart. Connections to the state are regulatory or contractual, not statutory subordination.":"Perusahaan komersial dan negara asal kepemilikannya dipisahkan dari bagan pemerintah serta Danantara/BUMN. Hubungannya dengan negara bersifat regulasi atau kontraktual, bukan hubungan bawahan berdasarkan undang-undang.",
+"GOVERNMENT · HEAD OF STATE / EXECUTIVE DIRECTION":"PEMERINTAH · KEPALA NEGARA / ARAHAN EKSEKUTIF",
+"STATE PORTFOLIO · OWNERSHIP / INVESTMENT":"PORTOFOLIO NEGARA · KEPEMILIKAN / INVESTASI",
+"Hierarchy data cannot be loaded. The Energy-style institutional network remains available below.":"Data struktur belum dapat dimuat. Jaringan kelembagaan alternatif masih tersedia di bagian bawah."
+};
+function ui(s){if(!isId()||s==null)return s;let v=String(s);if(Object.prototype.hasOwnProperty.call(UI_ID,v))return UI_ID[v];v=v.replace(/^(\d+) mapped entities$/,"$1 entitas terpetakan").replace(/^Matching actors · (\d+)$/,"Tokoh atau lembaga cocok · $1").replace(/^(\d+) subordinate \/ linked entities$/,"$1 entitas bawahan / terkait");return v;}
+
+const el=(tag,cl,text)=>{const x=document.createElement(tag);if(cl)x.className=cl;if(text!==undefined)x.textContent=ui(text);return x};
 const link=(url,label)=>{const a=el("a","sli-hier-link",label||"Original source ↗");if(/^https:\/\//.test(url||"")){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}else{a.textContent="No verified source"}return a};
 const typeName={root:"National direction",policy:"Sector policy",advisory:"Presidential advisory",administrative:"DEN administrative support", "local-government":"Regional administration & RUED","zone-interface":"Investment-zone functional interface",coordination:"Coordinating ministry",planning:"National development planning",reporting:"Administrative reporting",portfolio:"State portfolio",equity:"Shareholding / member",minority:"Minority investment / associate",oversight:"Independent constitutional oversight",research:"Research / applied innovation","strategic-interface":"Functional demand interface","joint-venture":"Joint venture / cross-holding",market:"Independent commercial market","security":"Cybersecurity"};
 function init(which,root,provided){if(!root)return;root.replaceChildren(el("p","sli-hier-status","Loading verified institutional and corporate hierarchy…"));
