@@ -1,0 +1,37 @@
+{
+  "schema_version": "sli-reviewed-autonomous-change-candidates-v1",
+  "mode": "auto_propose_branch_and_pr_not_auto_merge",
+  "security": "Only reviewed, finite, synthetic method-routing alias fixes; no arbitrary model generated code, secrets or data",
+  "candidates": [
+    {
+      "id": "method-multivariate-bahasa",
+      "category": "method_route",
+      "priority": 1,
+      "phrase": "regresi linear berganda",
+      "method": "multivariate_ols",
+      "prompt": "Tolong hitung regresi linear berganda untuk data investasi provinsi",
+      "expected_status": "local",
+      "review_note": "Indonesian expression for multiple OLS, already an implemented numerical method."
+    },
+    {
+      "id": "method-did-bahasa",
+      "category": "method_route",
+      "priority": 2,
+      "phrase": "perbedaan dalam perbedaan",
+      "method": "did",
+      "prompt": "Gunakan metode perbedaan dalam perbedaan untuk evaluasi kebijakan",
+      "expected_status": "design",
+      "review_note": "Indonesian translation of DiD. Remains a research design until a tested causal estimator exists."
+    },
+    {
+      "id": "method-porter-bahasa",
+      "category": "method_route",
+      "priority": 3,
+      "phrase": "lima kekuatan porter",
+      "method": "porter",
+      "prompt": "Analisis lima kekuatan porter sektor data center",
+      "expected_status": "design",
+      "review_note": "Qualitative framework routing; no empirical execution or claim of measured rivalry."
+    }
+  ]
+}
