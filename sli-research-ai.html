@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="./css/sli-site-ux.css">
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
 <link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261018-qualityfix2">
-<link rel="stylesheet" href="./css/sli-research-brand.css?v=20261019-legal-readability2">
+<link rel="stylesheet" href="./css/sli-research-brand.css?v=20261019-legal-cohesion1">
 <link rel="stylesheet" href="./css/sli-analytical-workbench.css?v=20261018-bps8">
-<link rel="stylesheet" href="./css/sli-contextual-briefs.css?v=20261018-insight1">
+
 <script src="./js/sli-live-data.js?v=20261017-research1"></script></head>
 <body class="sli-research-brand">
 <main class="sli-assistant" id="sliResearchMain">
@@ -94,7 +94,7 @@
  <summary data-id="Referensi penelitian (APA 7) · lihat sumber asli" data-en="APA 7 references · open original documents">Sumber riset, dokumen asli &amp; sitasi · buka rincian</summary>
  <h3 data-id="Daftar pustaka & sumber riset" data-en="References and original sources">Sumber terpilih &amp; sitasi</h3>
  <p data-id="Label sumber membedakan sitasi laporan, bukti grafik, dan konteks yang belum dikutip. Tanggal pengamatan dan publikasi dapat berbeda." data-en="Source labels distinguish report citations, chart evidence, and context not cited. Measurement and publication dates can differ.">Label sumber membedakan sitasi laporan, bukti grafik, dan konteks yang belum dikutip. Tanggal pengamatan dan publikasi dapat berbeda.</p>
- <div id="raSourcesList"></div><div id="raMonitoringSignals"></div></details><details id="raModelStatement" class="sli-ra-sources"><summary>Model Statement · cakupan data dan batasan analisis</summary><div id="raModelStatementBody"></div></details></div>
+ <div id="raSourcesList"></div><div id="raMonitoringSignals"></div></details><details id="raModelStatement" class="sli-ra-sources" hidden><summary data-id="Catatan metode · sumber dan keterbatasan" data-en="Method notes · sources and limitations">Catatan metode · sumber dan keterbatasan</summary><div id="raModelStatementBody"></div></details></div>
  <div class="sli-ra-followup" id="raFollowupPanel">
   <div class="sli-ra-followup-heading">Belum puas dengan hasilnya? Lanjutkan atau koreksi riset yang sama.</div>
   <div class="sli-ra-followup-actions">
@@ -105,7 +105,7 @@
   </div>
   <form id="raFollowupForm" class="sli-ra-followup-form">
    <label for="raFollowupPrompt">Tanyakan lanjutan, revisi kesimpulan, atau beri arahan baru</label>
-   <textarea id="raFollowupPrompt" rows="3" maxlength="5000" placeholder="Contoh: perbaiki bagian impor minyak, tambahkan data produksi ESDM, jelaskan angka dan sitasinya." required></textarea>
+   <textarea id="raFollowupPrompt" rows="3" maxlength="5000" placeholder="Contoh: jelaskan peraturan pelaksanaan, periksa status hukumnya, atau perdalam analisis dengan sumber." required></textarea>
    <button id="raFollowupSend" type="submit">Kirim pertanyaan lanjutan ↗</button>
   </form>
   <p class="sli-ra-followup-disclaimer">SLI mempertahankan konteks beberapa pertukaran terakhir selama halaman terbuka. Data resmi tetap dibedakan dari berita monitoring yang belum diverifikasi.</p>
@@ -120,9 +120,9 @@
 </main>
 <script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script>
 <script defer src="./js/sli-research-visuals.js?v=20261018-visual2"></script>
-<script defer src="./js/sli-research-assistant.js?v=20261019-legal-references3"></script>
+<script defer src="./js/sli-research-assistant.js?v=20261019-legal-cohesion1"></script>
 <script type="module" src="./js/sli-analytical-workbench-ui.mjs?v=20261018-bps8"></script>
-<script type="module" src="./js/sli-contextual-briefs.mjs?v=20261018-insight1"></script>
+<!-- Research AI is a focused conversation; stand-alone sector briefs belong on sector dashboards. -->
 <script defer src="./js/sli-shared-appendix.js?v=20261017-conversation4"></script>
 <script defer src="./js/sli-public-usability.js"></script>
 </body></html>
