@@ -372,6 +372,25 @@ async function init(){
 
  document.querySelectorAll("[data-ra-lang]").forEach(button=>button.addEventListener("click",()=>setResearchLanguage(button.dataset.raLang)));
  setResearchLanguage(state.language);methodStatus();updateFileStatus();
+ // One-time same-tab Policy & Regulation handoff. Never auto-submit a legal question.
+ // The prompt is a search lead only: the Worker must retrieve and verify its own evidence.
+ try{
+  const raw=sessionStorage.getItem("sli-policy-research-handoff");
+  sessionStorage.removeItem("sli-policy-research-handoff");
+  if(raw){
+   const handoff=JSON.parse(raw);
+   if(handoff.version===1&&Number.isFinite(handoff.created)&&Date.now()-handoff.created<10*60*1000&&typeof handoff.prompt==="string"&&handoff.prompt.length>=8&&handoff.prompt.length<=5000){
+    $("raPrompt").value=handoff.prompt;
+    $("raMode").value="deep_research";
+    const note=document.createElement("p");
+    note.className="sli-policy-handoff-note";
+    note.setAttribute("role","status");
+    note.textContent="Pertanyaan regulasi dari Policy Explorer telah disalin ke instruksi riset. Periksa kembali sebelum mengirim; rujukan dalam prompt belum menjadi bukti yang diverifikasi model.";
+    note.style.cssText="border-left:3px solid #d7b678;padding:11px 13px;color:#dfcda7;background:#163146;border-radius:7px;font-size:12px;";
+    $("raPrompt").insertAdjacentElement("beforebegin",note);
+   }
+  }
+ }catch(_){/* storage unavailable or expired handoff — use the normal research form */}
  $("raNew").addEventListener("click",reset);
  $("raCopy").addEventListener("click",async()=>{if(!state.lastResult)return;try{await navigator.clipboard.writeText(makeExport());status(tr("copied"),"ready")}catch{status(tr("copyFail"))}});
  $("raExport").addEventListener("click",()=>{if(!state.lastResult)return;const file=new Blob([makeExport()],{type:"text/markdown;charset=utf-8"});const url=URL.createObjectURL(file);const a=node("a");a.href=url;a.download="SLI-research-brief.md";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url)});
