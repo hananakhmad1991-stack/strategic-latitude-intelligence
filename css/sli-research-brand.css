@@ -89,3 +89,33 @@ body.sli-research-brand .sli-universal-nav{display:none!important}
 .sli-assistant button:focus-visible,.sli-assistant a:focus-visible,.sli-assistant select:focus-visible,.sli-assistant textarea:focus-visible{outline:3px solid #e0bf80;outline-offset:3px}
 @media(max-width:1030px){.sli-ra-mast{flex-wrap:wrap}.sli-ra-primary-nav{order:3;width:100%;justify-content:flex-start;gap:18px;border-top:1px solid #264257;padding-top:3px}.sli-ra-mastlinks{margin-left:auto}}
 @media(max-width:650px){body.sli-research-brand .sli-assistant{padding:0 15px 40px}.sli-ra-mast{align-items:center;flex-direction:row;gap:10px;padding:12px 0}.sli-ra-brand{gap:10px}.sli-ra-brand-monogram{font-size:27px;padding-right:9px}.sli-ra-brand-name strong{font-size:10px}.sli-ra-brand-name small{font-size:8px}.sli-ra-primary-nav{overflow-x:auto;flex-wrap:nowrap;gap:17px;scrollbar-width:thin}.sli-ra-primary-nav a{font-size:11px}.sli-ra-intro{margin:24px auto 20px}.sli-ra-intro h1{font-size:42px}.sli-ra-intro h1 span{display:block;font-size:.49em;margin-top:5px}.sli-ra-composer{padding:13px}.sli-ra-message,.sli-ra-sources{padding:15px}}
+
+/* Research sources: dark Navy–Gold throughout, including light-mode source panel overrides. */
+body.sli-research-brand #raConversation #raSourcesPanel{
+ background:#122c42!important;border:1px solid #45637a!important;
+ border-radius:13px;color:#eaf2f8!important;padding:18px 20px!important;
+}
+body.sli-research-brand #raConversation #raSourcesPanel>summary{
+ color:#f2d79f!important;border-bottom-color:#426279!important;
+}
+body.sli-research-brand #raConversation #raSourcesPanel>h3{
+ color:#f5f7fa!important;font-size:17px!important;
+}
+body.sli-research-brand #raConversation #raSourcesPanel>p{
+ color:#c5d7e3!important;font-size:13px!important;
+}
+body.sli-research-brand #raConversation #raSourcesList .sli-ra-source-card{
+ background:#0e2538!important;border:1px solid #3e5c72!important;
+ color:#ebf3f9!important;border-radius:10px;
+}
+body.sli-research-brand #raConversation #raSourcesList .sli-ra-source-card>a{
+ color:#e8cb93!important;text-underline-offset:4px;line-height:1.65!important;
+}
+body.sli-research-brand #raConversation #raSourcesList .sli-ra-source-role{
+ background:#193c53!important;border-color:#547389!important;
+ color:#e1e9ed!important;
+}
+body.sli-research-brand #raConversation #raSourcesList .sli-ra-source-card a:focus-visible{
+ outline:3px solid #e5c88f!important;outline-offset:3px;
+}
+@media(max-width:650px){body.sli-research-brand #raConversation #raSourcesPanel{padding:14px!important}}
