@@ -1,0 +1,58 @@
+{
+  "schema": "sli-agent-offline-regression-v1",
+  "scope": "Public synthetic cases only, does not call OpenAI or verify live external information",
+  "retrieval": [
+    {
+      "id": "ccs_operator",
+      "query": "Tangguh UCC carbon capture development",
+      "dataset": "energy-governance-ccs.json"
+    },
+    {
+      "id": "pln_saidi",
+      "query": "SAIDI keandalan PLN Aceh 2025",
+      "dataset": "pln-saidi-saifi-2023-2025.json"
+    },
+    {
+      "id": "bps_gini",
+      "query": "Gini pengeluaran Aceh Maret 2026",
+      "dataset": "sli-bps-gini-2026.json"
+    },
+    {
+      "id": "heesi_power",
+      "query": "Installed power steam generation HEESI",
+      "dataset": "heesi-2025-power-technologies.json"
+    },
+    {
+      "id": "skkmigas",
+      "query": "Oil lifting SKK Migas 2025",
+      "dataset": "skkmigas-annual-2025.json"
+    },
+    {
+      "id": "ai",
+      "query": "Digital Edge CGK AI data center development",
+      "dataset": "sector-evidence-catalog.json"
+    },
+    {
+      "id": "macro",
+      "query": "inflation Indonesia CPI headline",
+      "dataset": "sli-macro-indonesia-2026.json"
+    }
+  ],
+  "claims": [
+    {
+      "id": "missing_numeric",
+      "answer": "The plant is commercially operating at 999 GW in 2026 [1].",
+      "expect_issue": "numbers_absent_from_cited_excerpts"
+    },
+    {
+      "id": "headline_uncertainty",
+      "answer": "The plant has reached commercial operation in 2026 [2].",
+      "expect_issue": "original_primary_document_not_established"
+    },
+    {
+      "id": "no_citation",
+      "answer": "The facility completed construction in 2026.",
+      "expect_issue": "no_local_citation"
+    }
+  ]
+}
