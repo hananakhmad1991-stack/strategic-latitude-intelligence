@@ -283,12 +283,26 @@ async function submit(){
   state.lastResult={answer:payload.answer,sources:payload.sources,charts:Array.isArray(payload.charts)?payload.charts:[],qualityAudit:payload.quality_audit||null,question,mode};
   const report=append("assistant",payload.answer);
   window.SLIResearchVisuals?.renderCharts(state.lastResult.charts,report,state.lastResult.sources,state.language);
-  const modernBackend=payload.evidence_status==="owner_staging_source_dated_energy_corpus";
-  const note=node("div","sli-ra-evidence-note",usingOwner?
-   (modernBackend?
-    (state.language==="id"?"CORPUS ENERGI SLI AKTIF · Angka berasal dari sumber bertanggal dan bukan scraping real-time; asesmen sumber tetap perlu diperiksa. Versi data energi: "+(payload.corpus_as_of||"sesuai Worker")+".":"SLI ENERGY CORPUS ACTIVE · Source-dated data, not live scraping; verify original publications. Corpus snapshot: "+(payload.corpus_as_of||"Worker version")+"."):
-    (state.language==="id"?"BACKEND OWNER TEST LAMA · Analisis ini mungkin masih memakai corpus kecil. Pemutakhiran Cloudflare Worker diperlukan agar data energi SLI yang baru tersambung.":"OLD OWNER TEST BACKEND · May still be using the limited corpus. Deploy the updated Cloudflare Worker to connect the new energy data.")):
-   (state.language==="id"?"Periksa tanggal dan dokumen sumber sebelum menggunakan hasil.":"Review source dates and primary documents before use."));
+  const statusCode=String(payload.evidence_status||"");
+  const modernBackend=[
+   "owner_staging_source_dated_corpus",
+   "owner_staging_source_dated_energy_corpus",
+   "owner_staging_legal_articles_and_index_metadata_status_not_certified",
+   "owner_staging_source_limited_legal_review"
+  ].includes(statusCode);
+  const legalLimited=payload.quality_audit?.legal_article_gate?.source_limited===true;
+  const legalRecovered=payload.quality_audit?.legal_article_gate?.recovered===true;
+  const legalResult=statusCode.includes("legal")||legalRecovered;
+  const summaryText=legalLimited?
+   (state.language==="id"?"HASIL TERBATAS · AI menemukan rujukan pasal yang tidak cocok dengan dokumen primer tersedia. Interpretasi hukum tidak ditampilkan; hanya sumber dan langkah pemeriksaan yang dapat disajikan.":"SOURCE-LIMITED RESULT · Unsupported article claims were withheld. Only source references and verification steps are shown."):
+   legalRecovered?
+   (state.language==="id"?"PERLU VERIFIKASI · Sebagian analisis pasal dihilangkan karena bukti primer belum memadai. Tinjau naskah hukum resmi sebelum menggunakan hasil.":"NEEDS LEGAL REVIEW · Unsupported article paragraphs were removed. Review primary statute text before relying on the result."):
+   legalResult?
+   (state.language==="id"?"SLI REGULATORY AI · Rujukan hukum tersedia dalam corpus terbatas. Status berlaku, perubahan, dan isi pasal di luar bukti tetap harus diperiksa melalui JDIH.":"SLI REGULATORY AI · Limited legal evidence available. Verify legal status and unreviewed articles through the issuing JDIH."):
+   modernBackend?
+   (state.language==="id"?"SUMBER SLI TERKURASI · Gunakan tanggal dan periode sumber; catatan indeks bukan pemantauan real-time.":"CURATED SLI EVIDENCE · Check original publication dates; this is not live retrieval."):
+   (state.language==="id"?"OWNER TEST · Periksa sumber asli dan tanggal sebelum menggunakan analisis.":"OWNER TEST · Verify source documents and dates before relying on the analysis.");
+  const note=node("div","sli-ra-evidence-note",summaryText);
   report.prepend(note);
   if(Number.isInteger(payload.secondary_news_index_count)&&payload.secondary_news_index_count>0){
    const count=payload.secondary_news_index_count,used=Number(payload.attributed_secondary_sources)||0;
