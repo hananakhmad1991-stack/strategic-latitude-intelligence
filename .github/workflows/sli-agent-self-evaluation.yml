@@ -1,0 +1,94 @@
+name: SLI Agent Continuous Evaluation & Human Review
+on:
+  workflow_dispatch:
+  schedule:
+    # UTC. Best-effort: 09:13 WIB, may be delayed by GitHub Actions.
+    - cron: '13 2 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sli-agent-self-eval.mjs'
+      - 'tests/qa-sli-agent-self-eval.mjs'
+      - 'tests/fixtures/sli-agent-eval-cases.json'
+      - 'js/sli-analytical-core.mjs'
+      - 'js/sli-decision-methods.mjs'
+      - 'js/sli-regional-method-engines.mjs'
+      - 'research-api/src/report-audit.mjs'
+      - 'js/sli-research-analysis.mjs'
+      - 'sli-methodology-models.html'
+      - '.github/workflows/sli-agent-self-evaluation.yml'
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: sli-agent-self-evaluation
+  cancel-in-progress: false
+jobs:
+  offline-regression-evaluation:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check evaluator JavaScript syntax
+        id: syntax
+        run: |
+          node --check scripts/sli-agent-self-eval.mjs
+          node --check tests/qa-sli-agent-self-eval.mjs
+      - name: Run deterministic self-evaluation and selected scientific/data regression tests
+        id: regression
+        run: |
+          node --test \
+            tests/qa-sli-agent-self-eval.mjs \
+            tests/qa-sli-method-execution-v2.mjs \
+            tests/qa-sli-regional-method-engines.mjs \
+            tests/qa-sli-cross-sector-evidence-v2.mjs \
+            tests/qa-sli-report-audit.mjs
+      - name: Write source-safe scorecard and proposed improvement queue
+        id: score
+        if: always()
+        run: |
+          mkdir -p artifacts
+          node scripts/sli-agent-self-eval.mjs --out=artifacts/sli-agent-self-eval-scorecard.json
+      - name: Retain scorecard for human review (30 days)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-agent-learning-scorecard
+          path: artifacts/sli-agent-self-eval-scorecard.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Open one non-duplicate human-review issue when an evaluation regresses
+        if: ${{ always() && (steps.syntax.outcome == 'failure' || steps.regression.outcome == 'failure' || steps.score.outcome == 'failure') }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -eu
+          MARKER="SLI-AGENT-SELF-EVAL-REVIEW"
+          existing=$(gh issue list --state open --search "$MARKER in:body" --json number --jq '.[0].number // empty' 2>/dev/null || true)
+          if [ -n "$existing" ]; then
+            echo "Self-evaluation findings are already tracked in issue #$existing; avoiding duplicate issue spam."
+            exit 0
+          fi
+          cat > /tmp/sli-agent-review.md <<EOF
+          Automated offline SLI regression tests have failed and require a human-reviewed code/data investigation.
+
+          Workflow: $RUN_URL
+
+          Please inspect the scorecard artifact and job logs; reproduce the failing fixture; fix in a reviewed PR; run affected and full regression tests before deployment.
+
+          **Not a fact-check**: test pass/fail only measures selected software/data invariants. Do not auto-promote media claims, change legal/project statuses or pay for model calls from this issue.
+
+          Reviewer decision: [ ] accepted [ ] revised [ ] rejected
+          Follow-up issue/PR: (human to complete)
+
+          $MARKER
+          EOF
+          gh issue create --title "SLI Agent: review automatic regression failure" --body-file /tmp/sli-agent-review.md
+      - name: Fail workflow on any regression (no auto-fix, auto-merge or auto-deploy)
+        if: ${{ always() && (steps.syntax.outcome == 'failure' || steps.regression.outcome == 'failure' || steps.score.outcome == 'failure') }}
+        run: exit 1
