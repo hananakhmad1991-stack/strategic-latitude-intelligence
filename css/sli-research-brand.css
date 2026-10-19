@@ -119,3 +119,55 @@ body.sli-research-brand #raConversation #raSourcesList .sli-ra-source-card a:foc
  outline:3px solid #e5c88f!important;outline-offset:3px;
 }
 @media(max-width:650px){body.sli-research-brand #raConversation #raSourcesPanel{padding:14px!important}}
+
+
+/* Conversation disclosures and follow-ups share the navy/gold research theme.
+   Specificity intentionally beats the old light-mode CSS used on other pages. */
+body.sli-research-brand #raConversation #raModelStatement{
+ background:#132d43!important;border:1px solid #41647d!important;
+ color:#dfebf2!important;border-radius:13px!important;
+ max-width:100%!important;width:100%!important;
+ box-sizing:border-box!important;
+}
+body.sli-research-brand #raConversation #raModelStatement>summary{
+ color:#f2d49c!important;background:transparent!important;
+ cursor:pointer;
+}
+body.sli-research-brand #raConversation #raModelStatementBody,
+body.sli-research-brand #raConversation #raModelStatementBody p{
+ color:#d6e5ed!important;background:transparent!important;
+ opacity:1!important;line-height:1.7!important;
+}
+body.sli-research-brand #raFollowupPanel{
+ max-width:100%;width:100%;box-sizing:border-box;
+ background:#122c41!important;border:1px solid #426179!important;
+ color:#e8f0f5!important;
+}
+body.sli-research-brand #raFollowupPanel .sli-ra-followup-heading,
+body.sli-research-brand #raFollowupPanel .sli-ra-followup-form label{
+ color:#f0d49c!important;
+}
+body.sli-research-brand #raFollowupPanel .sli-ra-followup-actions button{
+ color:#f1e5cd!important;background:#1b4059!important;
+ border:1px solid #597991!important;min-height:39px;
+}
+body.sli-research-brand #raFollowupPanel .sli-ra-followup-actions button:hover{
+ background:#2a5168!important;border-color:#ebcd92!important;
+}
+body.sli-research-brand #raFollowupPanel textarea{
+ background:#0b2236!important;border:1px solid #5c7d95!important;
+ color:#f3f7fa!important;min-height:120px;
+}
+body.sli-research-brand #raFollowupPanel textarea::placeholder{color:#b1c6d4!important;opacity:1!important}
+body.sli-research-brand #raFollowupPanel .sli-ra-followup-disclaimer{color:#c1d2df!important}
+body.sli-research-brand #raFollowupPanel .sli-ra-followup-form button{
+ background:#dfbf82!important;color:#102637!important;
+ font-weight:750!important
+}
+body.sli-research-brand #raFollowupPanel .sli-ra-followup-form button:hover{
+ background:#f2d6a1!important;
+}
+@media(max-width:700px){
+ body.sli-research-brand #raFollowupPanel{padding:14px!important}
+ body.sli-research-brand #raFollowupPanel .sli-ra-followup-actions button{flex:1 1 170px;white-space:normal}
+}
