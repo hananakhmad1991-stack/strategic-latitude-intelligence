@@ -1,0 +1,12 @@
+/* Legal coverage: progressive disclosure keeps the main policy search uncluttered. */
+#policyCoverageDashboard{border:1px solid #34516b;border-radius:13px;background:#10273a;padding:16px 20px;margin:12px 0 19px}
+#policyCoverageDashboard summary{color:#e9d8b4;font-size:15px;font-weight:700;cursor:pointer;line-height:1.5}
+#policyCoverageDashboard summary:focus-visible{outline:2px solid #d7b678;outline-offset:5px}
+#policyCoverageDashboard p{font-size:12px;color:#bdcfdf;line-height:1.6}
+.policy-coverage-scroll{max-height:460px;overflow:auto;border:1px solid #355169;border-radius:8px}
+#policyCoverageTable{border-collapse:collapse;width:100%;font-size:12px;min-width:580px}
+#policyCoverageTable th,#policyCoverageTable td{text-align:left;padding:10px 12px;border-bottom:1px solid #334c62;vertical-align:middle}
+#policyCoverageTable th{position:sticky;top:0;background:#122e44;color:#e5cc94}
+#policyCoverageTable td strong{color:#f5f8fa}
+#policyCoverageTable a{color:#e7c984}
+@media(max-width:700px){#policyCoverageDashboard{padding:13px}#policyCoverageTable{min-width:550px}}
