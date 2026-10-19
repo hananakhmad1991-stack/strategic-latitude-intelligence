@@ -69,6 +69,7 @@ test('all source terms are unique, bilingual, reference-linked and self-consiste
  const page=read('sli-glossary-methodology.html');
  assert.match(page,/Methodology by research task/);
  assert.match(page,/sli-user-guide\.html/);
- assert.match(page,/312 unique terms/);
+ assert.match(page,/id="sliGlossaryMain"/);
+ assert.ok(gloss.items.length>=317,'New canonical bilingual terms should be retained');
 });
 console.log('SLI information architecture checks complete: '+files.length+' HTML pages · '+Object.keys(modules).length+' canonical navigation destinations.');
