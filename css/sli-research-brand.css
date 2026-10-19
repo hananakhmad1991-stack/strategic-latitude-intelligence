@@ -171,3 +171,73 @@ body.sli-research-brand #raFollowupPanel .sli-ra-followup-form button:hover{
  body.sli-research-brand #raFollowupPanel{padding:14px!important}
  body.sli-research-brand #raFollowupPanel .sli-ra-followup-actions button{flex:1 1 170px;white-space:normal}
 }
+
+
+/* Compact quick-start: optional examples never dominate a research conversation. */
+body.sli-research-brand #raTemplates{
+ margin:18px 0 14px!important;max-width:100%;
+ background:transparent!important;padding:0!important;border:0!important;
+}
+body.sli-research-brand #raTemplates .sli-ra-templates-head{
+ display:flex;gap:8px 18px;align-items:center;flex-wrap:wrap;margin:0 0 10px;
+}
+body.sli-research-brand #raTemplates .sli-ra-templates-head>span:first-child{
+ color:#ebd19d;font:750 12px/1.4 system-ui,sans-serif;
+}
+body.sli-research-brand #raTemplates .sli-ra-templates-hint{
+ color:#a7c0d1;font:450 11px/1.5 system-ui,sans-serif;
+}
+body.sli-research-brand #raTemplates .sli-ra-template-grid{
+ display:flex!important;flex-wrap:wrap;gap:8px!important;align-items:stretch;
+}
+body.sli-research-brand #raTemplates .sli-ra-template,
+body.sli-research-brand #raTemplates .sli-ra-template-featured{
+ display:inline-flex!important;flex-direction:row!important;align-items:center;
+ justify-content:space-between;gap:12px;flex:0 1 auto!important;
+ min-width:0!important;width:auto!important;grid-column:auto!important;
+ margin:0!important;padding:9px 13px!important;min-height:39px!important;
+ border:1px solid #4a6478!important;border-radius:9px!important;
+ background:#142e43!important;color:#e3edf4!important;
+ font:600 12px/1.4 system-ui,sans-serif!important;box-shadow:none!important;
+ text-align:left;letter-spacing:0;transition:background .15s,border-color .15s;
+}
+body.sli-research-brand #raTemplates .sli-ra-template span{
+ color:inherit!important;font:inherit!important;
+}
+body.sli-research-brand #raTemplates .sli-ra-template span[aria-hidden]{
+ color:#dfbd83!important;font-size:13px!important;
+}
+body.sli-research-brand #raTemplates .sli-ra-template:hover{
+ background:#23465b!important;border-color:#dfbd83!important;
+}
+body.sli-research-brand #raTemplates .sli-ra-template:focus-visible,
+body.sli-research-brand #raTemplates summary:focus-visible{
+ outline:2px solid #e6c587!important;outline-offset:3px;
+}
+body.sli-research-brand #raTemplates .sli-ra-template-more{
+ background:none!important;border:0!important;padding:0!important;
+ margin:9px 0 0!important;color:#b7cddc!important;
+}
+body.sli-research-brand #raTemplates .sli-ra-template-more>summary{
+ width:max-content;cursor:pointer;color:#cbd8e2!important;
+ font:600 11px/1.5 system-ui,sans-serif;padding:5px 1px;
+}
+body.sli-research-brand #raTemplates .sli-ra-template-grid-secondary{
+ margin-top:8px!important;
+}
+body.sli-research-brand #raConversation:not([hidden]) ~ #raTemplates{
+ display:none!important;
+}
+/* The chat transcript is the focus after the first completed instruction. */
+body.sli-research-brand:has(#raConversation:not([hidden])) #raTemplates{
+ display:none!important;
+}
+@media(max-width:650px){
+ body.sli-research-brand #raTemplates .sli-ra-template-grid{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ }
+ body.sli-research-brand #raTemplates .sli-ra-template{
+  width:100%!important;justify-content:space-between;
+  white-space:normal!important;padding:9px 10px!important;
+ }
+}
