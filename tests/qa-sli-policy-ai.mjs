@@ -80,6 +80,7 @@ test("primary article reference pilot preserves law-to-article and source proven
   assert.equal(provision.current_status_certified,false);
   assert.equal(provision.excerpt_kind,"reviewed_paraphrase_not_verbatim");
   assert.ok(provision.page_reference);
+  assert.match(provision.instrument_ref,/^UU\\s+\\d+\\/\\d{4}$/);
  }
  assert.match(bridge,/legalProvisionEvidence/);
  assert.match(worker,/import \{legalProvisionEvidence\}/);
@@ -88,10 +89,12 @@ test("primary article reference pilot preserves law-to-article and source proven
 });
 test("unsupported article citations fail closed in owner-only legal model output", async()=>{
  const {auditLegalArticleCitations}=await import("../research-api/src/legal-citation-audit.mjs");
- const source={source_url:"https://peraturan.go.id/files/uu16-2016bt.pdf",provision_anchor:{article:"Pasal 1"}};
- assert.equal(auditLegalArticleCitations("Pasal 1 mengesahkan perjanjian [1].",[source]).pass,true);
- assert.equal(auditLegalArticleCitations("Pasal 9 mensyaratkan izin [1].",[source]).pass,false);
- assert.equal(auditLegalArticleCitations("Article 3 of the law [1].",[source]).pass,false);
+ const source={source_url:"https://peraturan.go.id/files/uu16-2016bt.pdf",provision_anchor:{article:"Pasal 1",instrument_ref:"UU 16/2016"}};
+ assert.equal(auditLegalArticleCitations("Pasal 1 UU 16/2016 mengesahkan perjanjian [1].",[source]).pass,true);
+ assert.equal(auditLegalArticleCitations("Pasal 9 UU 16/2016 mensyaratkan izin [1].",[source]).pass,false);
+ assert.equal(auditLegalArticleCitations("Article 3 UU 16/2016 [1].",[source]).pass,false);
+ assert.equal(auditLegalArticleCitations("Pasal 1 UU 23/2014 [1].",[source]).pass,false);
+ assert.equal(auditLegalArticleCitations("Pasal 1 mengesahkan perjanjian [1].",[source]).pass,false);
  assert.equal(auditLegalArticleCitations("Perlu verifikasi naskah resmi dan ketentuan peralihan.",[source]).pass,true);
  assert.match(worker,/unsupported_article_citation/);
 });
