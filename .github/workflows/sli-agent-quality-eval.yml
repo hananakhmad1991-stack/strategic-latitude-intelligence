@@ -1,0 +1,99 @@
+name: SLI Research Agent Weekly Quality Evaluation
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "41 3 * * 1"
+  push:
+    paths:
+      - 'scripts/evaluate_sli_research_agent.mjs'
+      - 'tests/fixtures/sli-agent-offline-regression.json'
+      - 'research-api/src/claim-evidence-audit.mjs'
+      - 'scripts/sli_research_source_adapters.py'
+      - '.github/workflows/sli-agent-quality-eval.yml'
+  pull_request:
+    paths:
+      - 'scripts/evaluate_sli_research_agent.mjs'
+      - 'tests/fixtures/sli-agent-offline-regression.json'
+      - 'research-api/src/claim-evidence-audit.mjs'
+      - 'scripts/sli_research_source_adapters.py'
+      - '.github/workflows/sli-agent-quality-eval.yml'
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: sli-research-agent-quality-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  offline-evidence-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Rebuild public evidence index for fresh benchmark coverage
+        run: |
+          python scripts/build_research_unified_index.py
+          python scripts/audit_sli_research_index.py
+          node --check research-api/src/claim-evidence-audit.mjs
+          node --test tests/qa-sli-claim-audit.mjs
+      - name: Score public evidence retrieval and claim-audit regression
+        id: evaluation
+        continue-on-error: true
+        run: node scripts/evaluate_sli_research_agent.mjs
+      - name: Write machine-readable summary
+        if: always()
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,os
+          p="artifacts/sli-research-agent-eval.json"
+          if not os.path.exists(p):
+              print("Evaluation artifact unavailable; needs operator review.");raise SystemExit(0)
+          d=json.load(open(p))
+          print("### Research Agent Offline Evaluation")
+          print("Pass:",d["passed"],"/",d["total"]," · Fail:",d["failed"])
+          print("Coverage:",d["indexed_datasets"],"source-linked public datasets")
+          print("No live model/API evaluation, self-upgrade, production mutation or fact verification occurred.")
+          for x in d["cases"]:
+              if not x["passed"]:print("- NEEDS REVIEW:",x["id"],x["detail"])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-agent-quality-offline-review
+          path: artifacts/sli-research-agent-eval.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Open review issue on regression only
+        if: always() && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os,subprocess
+          p="artifacts/sli-research-agent-eval.json"
+          if not os.path.isfile(p):
+              failures=["Evaluation artifact missing"]
+          else:
+              d=json.load(open(p));failures=[x["id"]+": "+x["detail"] for x in d["cases"] if not x["passed"]]
+          if not failures:
+              print("Agent offline QA passed; no issue");raise SystemExit(0)
+          marker="SLI_RESEARCH_AGENT_OFFLINE_QA_REVIEW"
+          q=subprocess.run(["gh","issue","list","--state","open","--search",marker+" in:body","--json","number","--limit","20"],capture_output=True,text=True)
+          if q.returncode:raise SystemExit("Could not check existing issues; avoiding duplicate")
+          if json.loads(q.stdout):
+              print("Existing open agent QA review issue");raise SystemExit(0)
+          body=("Scheduled public offline Research AI benchmarks detected review candidates. This is NOT a live LLM evaluation.\n"
+                "Do not automatically modify prompts, methods, code or project stages.\n\n"+
+                "\n".join("- "+x[:300] for x in failures[:25])+"\n\n"+marker)
+          r=subprocess.run(["gh","issue","create","--title","SLI Research Agent: offline regression requires expert review","--body",body],capture_output=True,text=True)
+          if r.returncode:raise SystemExit(r.stderr)
+          print(r.stdout)
+          PY
+      - name: Fail closed on offline regression
+        if: steps.evaluation.outcome == 'failure'
+        run: exit 1
