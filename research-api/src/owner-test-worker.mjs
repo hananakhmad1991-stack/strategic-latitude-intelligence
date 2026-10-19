@@ -147,7 +147,7 @@ export default{
   // No source match does not prevent academic methodology assistance.
   // Without evidence, only a clearly scoped research-design response is allowed;
   // there is no empirical claim, SLI numeric data or fabricated citation.
-  const energyQuestion=/ketahanan energi|energy security|energy resilience|produksi migas|supply minyak|harga bbm|subsidi energi|transisi energi|pasokan bbm/i.test(payload.question+" "+(payload.history||[]).filter(h=>h.role==="user").slice(-1).map(h=>h.content).join(" "));
+  const energyQuestion=!focusedArticleReading&&/ketahanan energi|energy security|energy resilience|produksi migas|supply minyak|harga bbm|subsidi energi|transisi energi|pasokan bbm/i.test(payload.question+" "+(payload.history||[]).filter(h=>h.role==="user").slice(-1).map(h=>h.content).join(" "));
   const monitoring=energyQuestion?await fetchEnergyMonitoring():{status:"not_requested",as_of:null,signals:[]};
   const params=modelRequest(payload,evidence,env.RESEARCH_MODEL);
   if(focusedArticleReading)params.instructions+="\nFOCUSED STATUTORY READING: Answer exactly the named law and provisions. No unrelated statistics, news digests, arbitrary charts, repeated caveats or self-generated sources list. Keep the legal analysis substantive and proportionate to the verified text. Mention only source-backed article numbers with their numbered source identifiers. If text or legal status is unavailable, explicitly label that precise limitation rather than inventing a clause.";
