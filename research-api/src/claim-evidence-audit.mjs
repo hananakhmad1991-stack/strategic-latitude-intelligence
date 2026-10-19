@@ -69,8 +69,7 @@ function citations(text,total){
  return [...new Set([...String(text).matchAll(CITE)].map(m=>Number(m[1])).filter(x=>x>0&&x<=total))];
 }
 function paragraphs(text){
- return String(text||"").split(/\n\s*\n+/).flatMap(block=>
-  block.split(/\n(?=\|)/).map(x=>x.trim()).filter(Boolean)).slice(0,130);
+ return String(text||"").split(/\n+/).map(x=>x.trim()).filter(Boolean).slice(0,130);
 }
 function claimSegments(block){
  const lines=block.split(/\n/).map(x=>x.trim()).filter(Boolean);
@@ -80,7 +79,7 @@ function claimSegments(block){
  }).slice(0,35);
 }
 function candidate(part){
- if(part.length<42||SKIP.test(part))return false;
+ if(part.length<28||SKIP.test(part))return false;
  const text=part.replace(/\*\*/g,"").replace(/^\|\s*/,"");
  return FACT.test(text)&&!/^[-–*]?\s*(?:FID|Commissioning|Construction)\s*means\b/i.test(text);
 }
