@@ -1198,7 +1198,7 @@
   ],
   "quality": {
     "review": "Manually source-checked April trade, NTP/NTUP (38 provinces), and May retail price readings (34 source-listed places, 11 commodities). Review exact source page for decisions.",
-    "coverage": "15 cumulative trade series; 38 NTP/NTUP provinces; 11 market price commodities x 34 regional labels; 63 indexed original tables",
+    "coverage": "15 cumulative trade series; 38 NTP/NTUP provinces; 11 market price commodities x 34 regional labels; 63 indexed original tables; 60 monthly trade series across Jan–Apr 2026",
     "missing": "Missing publisher observations are null, not zero. Full 63-table numeric extraction pending verified ingestion.",
     "monthly_auto_updates": false
   },
@@ -1218,6 +1218,548 @@
     {
       "title": "Organisasi Kementan, perubahan kedua 2026",
       "url": "https://jdih.pertanian.go.id/peraturan/permentan-19-2026"
+    }
+  ],
+  "tradeMonthly": [
+    {
+      "scope": "Segar + olahan",
+      "sector": "Tanaman Pangan",
+      "export": 10626,
+      "import": 875607,
+      "balance": -864981,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Hortikultura",
+      "export": 72616,
+      "import": 263712,
+      "balance": -191096,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Perkebunan",
+      "export": 3648935,
+      "import": 472252,
+      "balance": 3176683,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Peternakan",
+      "export": 138021,
+      "import": 367469,
+      "balance": -229448,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Pertanian Total",
+      "export": 3870197,
+      "import": 1979039,
+      "balance": 1891158,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Tanaman Pangan",
+      "export": 10987,
+      "import": 815268,
+      "balance": -804281,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Hortikultura",
+      "export": 74812,
+      "import": 216383,
+      "balance": -141571,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Perkebunan",
+      "export": 3812914,
+      "import": 698941,
+      "balance": 3113972,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Peternakan",
+      "export": 110726,
+      "import": 334578,
+      "balance": -223852,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Pertanian Total",
+      "export": 4009439,
+      "import": 2065170,
+      "balance": 1944269,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Tanaman Pangan",
+      "export": 9842,
+      "import": 639276,
+      "balance": -629433,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Hortikultura",
+      "export": 66261,
+      "import": 293423,
+      "balance": -227162,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Perkebunan",
+      "export": 2573534,
+      "import": 478167,
+      "balance": 2095367,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Peternakan",
+      "export": 109798,
+      "import": 351644,
+      "balance": -241847,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Pertanian Total",
+      "export": 2759435,
+      "import": 1762510,
+      "balance": 996926,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Tanaman Pangan",
+      "export": 18697,
+      "import": 840702,
+      "balance": -822005,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Hortikultura",
+      "export": 105293,
+      "import": 401034,
+      "balance": -295741,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Perkebunan",
+      "export": 3563132,
+      "import": 644272,
+      "balance": 2918859,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Peternakan",
+      "export": 137351,
+      "import": 499609,
+      "balance": -362258,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Segar + olahan",
+      "sector": "Pertanian Total",
+      "export": 3824473,
+      "import": 2385617,
+      "balance": 1438856,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Tanaman Pangan",
+      "export": 1968,
+      "import": 518791,
+      "balance": -516823,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Hortikultura",
+      "export": 33306,
+      "import": 203279,
+      "balance": -169973,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Perkebunan",
+      "export": 278396,
+      "import": 247090,
+      "balance": 31305,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Peternakan",
+      "export": 58409,
+      "import": 11505,
+      "balance": 46904,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Pertanian Total",
+      "export": 372079,
+      "import": 980666,
+      "balance": -608587,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Tanaman Pangan",
+      "export": 1227,
+      "import": 511749,
+      "balance": -510522,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Hortikultura",
+      "export": 29766,
+      "import": 169119,
+      "balance": -139353,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Perkebunan",
+      "export": 254670,
+      "import": 247545,
+      "balance": 7125,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Peternakan",
+      "export": 30027,
+      "import": 43017,
+      "balance": -12990,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Pertanian Total",
+      "export": 315690,
+      "import": 971430,
+      "balance": -655740,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Tanaman Pangan",
+      "export": 2149,
+      "import": 405877,
+      "balance": -403728,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Hortikultura",
+      "export": 20593,
+      "import": 256428,
+      "balance": -235835,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Perkebunan",
+      "export": 195542,
+      "import": 171475,
+      "balance": 24067,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Peternakan",
+      "export": 34753,
+      "import": 50174,
+      "balance": -15421,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Pertanian Total",
+      "export": 253037,
+      "import": 883954,
+      "balance": -630917,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Tanaman Pangan",
+      "export": 2931,
+      "import": 502868,
+      "balance": -499937,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Hortikultura",
+      "export": 53071,
+      "import": 340834,
+      "balance": -287763,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Perkebunan",
+      "export": 285833,
+      "import": 195577,
+      "balance": 90256,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Peternakan",
+      "export": 32320,
+      "import": 91229,
+      "balance": -58909,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Segar",
+      "sector": "Pertanian Total",
+      "export": 374154,
+      "import": 1130507,
+      "balance": -756354,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Tanaman Pangan",
+      "export": 8658,
+      "import": 356816,
+      "balance": -348158,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Hortikultura",
+      "export": 39310,
+      "import": 60432,
+      "balance": -21123,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Perkebunan",
+      "export": 3370539,
+      "import": 225161,
+      "balance": 3145378,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Peternakan",
+      "export": 79612,
+      "import": 355964,
+      "balance": -276352,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Pertanian Total",
+      "export": 3498118,
+      "import": 998373,
+      "balance": 2499745,
+      "unit": "ribu USD",
+      "period": "2026-01"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Tanaman Pangan",
+      "export": 9761,
+      "import": 303519,
+      "balance": -293758,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Hortikultura",
+      "export": 45046,
+      "import": 47264,
+      "balance": -2218,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Perkebunan",
+      "export": 3558244,
+      "import": 451396,
+      "balance": 3106848,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Peternakan",
+      "export": 80699,
+      "import": 291561,
+      "balance": -210862,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Pertanian Total",
+      "export": 3693749,
+      "import": 1093740,
+      "balance": 2600009,
+      "unit": "ribu USD",
+      "period": "2026-02"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Tanaman Pangan",
+      "export": 7694,
+      "import": 233399,
+      "balance": -225705,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Hortikultura",
+      "export": 45668,
+      "import": 36995,
+      "balance": 8673,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Perkebunan",
+      "export": 2377992,
+      "import": 306692,
+      "balance": 2071300,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Peternakan",
+      "export": 75045,
+      "import": 301470,
+      "balance": -226425,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Pertanian Total",
+      "export": 2506399,
+      "import": 878556,
+      "balance": 1627843,
+      "unit": "ribu USD",
+      "period": "2026-03"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Tanaman Pangan",
+      "export": 15767,
+      "import": 337834,
+      "balance": -322068,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Hortikultura",
+      "export": 52222,
+      "import": 60200,
+      "balance": -7978,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Perkebunan",
+      "export": 3277299,
+      "import": 448696,
+      "balance": 2828603,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Peternakan",
+      "export": 105031,
+      "import": 408380,
+      "balance": -303349,
+      "unit": "ribu USD",
+      "period": "2026-04"
+    },
+    {
+      "scope": "Olahan",
+      "sector": "Pertanian Total",
+      "export": 3450319,
+      "import": 1255110,
+      "balance": 2195209,
+      "unit": "ribu USD",
+      "period": "2026-04"
     }
   ]
 }
