@@ -1,0 +1,67 @@
+name: SLI Agent — Masukan kualitas AI
+description: Laporkan kesalahan Research AI, metodologi, sumber, data atau dashboard untuk evaluasi dan peninjauan manusia.
+title: "SLI Agent Feedback: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Umpan balik membantu menyempurnakan kasus uji dan kualitas SLI. **Jangan unggah API key, token, data pribadi, laporan rahasia, materi klien, atau konten berlisensi yang tidak boleh dibagikan.**
+        Laporan ini menjadi usulan evaluasi; sistem **tidak otomatis menganggap isi laporan sebagai fakta**.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area yang bermasalah
+      options:
+        - Research AI — akurasi atau sitasi
+        - Research AI — wilayah/komoditas salah
+        - Pemilihan metodologi atau hasil perhitungan
+        - Pembaruan atau status sumber data
+        - Dashboard, bahasa, navigasi atau ekspor
+        - Keamanan, privasi atau biaya API
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Langkah untuk mengulangi masalah (tanpa data rahasia)
+      description: Cantumkan pertanyaan contoh yang aman dibagikan dan langkah reproduksi.
+      placeholder: "Contoh: saat bertanya tentang Jawa Tengah, laporan menampilkan data Jawa Barat."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Hasil yang seharusnya
+      description: Uraikan keluaran yang benar dan metodologi/sumber asli jika ada.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: Hasil yang terlihat
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Sumber asli atau tautan rujukan (opsional)
+      placeholder: "https://..."
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Dampak
+      options:
+        - Kritis — keamanan, klaim tidak berdasar atau kebocoran data
+        - Tinggi — salah fakta/angka/metode
+        - Sedang — fungsi sebagian gagal
+        - Rendah — tampilan/terjemahan
+    validations:
+      required: true
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Konfirmasi
+      options:
+        - label: Saya sudah menghapus informasi rahasia dan memahami laporan harus ditinjau sebelum masuk ke benchmark.
+          required: true
