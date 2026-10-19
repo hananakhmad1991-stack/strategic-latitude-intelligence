@@ -8,7 +8,8 @@ const CATEGORY=[
  ["commercial_operation",/beroperasi|operasi komersial|commercial operation|first gas|onstream|commissioned|commissioning|injeksi komersial/i],
  ["realized_investment",/realisasi (?:investasi|capex)|spent|disbursed|capital expenditure realized|terealisasi|dana terserap|\b(?:USD|US\$|\$)\s*[\d.,]+\s*(?:billion|miliar|triliun|million)/i],
  ["law_status",/mulai berlaku|efektif|dicabut|diubah|diundangkan|ratifikas|berlaku sejak|legal status/i],
- ["construction",/under construction|konstruksi|pembangunan fisik|first steel|groundbreaking|fabrication|fabrikasi|pembangunan dimulai|\bFID\b/i],
+ ["investment_decision",/\bFID\b|final investment decision|keputusan investasi (?:akhir|final)/i],
+ ["construction",/under construction|konstruksi|pembangunan fisik|first steel|groundbreaking|fabrication|fabrikasi|pembangunan dimulai/i],
  ["quantitative",/[\d.,]+\s*(?:MW|GW|MVA|USD|Rp|triliun|miliar|billion|million|tCO2|%)/i]
 ];
 const SKIP=/^(?:#{1,6}\s|(?:fid|konstruksi fisik|commissioning|operasi komersial)\s+(?:berarti|adalah)|(?:itu penting karena|sebagai prinsip metodologi|secara metodologis|secara praktis ini berarti))/i;
@@ -85,7 +86,7 @@ function candidate(part){
 }
 function kindOf(text){return CATEGORY.find(([,r])=>r.test(text))?.[0]||"factual"}
 function relevantRisk(kind,hasAmount){
- return (kind==="commercial_operation"||kind==="law_status"?70:kind==="realized_investment"?65:kind==="construction"?50:kind==="quantitative"?40:20)
+ return (kind==="commercial_operation"||kind==="law_status"?70:kind==="realized_investment"?65:kind==="investment_decision"?55:kind==="construction"?50:kind==="quantitative"?40:20)
    +(hasAmount?10:0);
 }
 export function auditResearchClaims(answer,evidence,{maxItems=15}={}){
@@ -141,6 +142,7 @@ export function auditResearchClaims(answer,evidence,{maxItems=15}={}){
    "The audit displays a capped, prioritised sample; issue counts refer to displayed claims only.",
    "Equivalent decimal comma/point and Indonesian/English magnitude words are treated as screening matches, not verification.",
    "An excerpt, a source URL, and matching numbers do NOT prove the publisher supports the statement.",
+   "Publisher articles/PDFs were NOT independently fetched by this claim triage; any separate original-page check is limited to HTML numeric tokens.",
    "Publisher HTML numeric presence is a separate limited check, not factual or legal certification."
   ]};
 }
