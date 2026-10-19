@@ -1,0 +1,40 @@
+name: SLI Agent Proposal PR Quality Gate
+on:
+  pull_request:
+    paths:
+      - 'js/sli-method-aliases.mjs'
+      - 'tests/fixtures/sli-agent-eval-cases.json'
+      - 'scripts/sli-agent-auto-propose.mjs'
+      - 'tests/qa-sli-agent-auto-propose.mjs'
+      - '.github/workflows/sli-agent-proposed-change-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  proposed-method-router:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate source syntax and reviewed code scope
+        run: |
+          node --check js/sli-method-aliases.mjs
+          node --check js/sli-analytical-core.mjs
+          node --check scripts/sli-agent-auto-propose.mjs
+          node --check tests/qa-sli-agent-auto-propose.mjs
+      - name: Run agent benchmark, all relevant estimator checks, security/source regressions
+        run: |
+          node --test \
+            tests/qa-sli-agent-self-eval.mjs \
+            tests/qa-sli-agent-auto-propose.mjs \
+            tests/qa-sli-method-execution-v2.mjs \
+            tests/qa-sli-regional-method-engines.mjs \
+            tests/qa-sli-cross-sector-evidence-v2.mjs \
+            tests/qa-sli-research-quality.mjs
+      - name: Confirm all 49 methods retain their truthful implementation status
+        run: node -e "import('./js/sli-analytical-core.mjs').then(x=>{if(x.METHODS.length!==49||x.METHODS.filter(y=>y.status==='local').length<10)process.exit(1)})"
