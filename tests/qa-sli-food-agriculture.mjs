@@ -7,7 +7,7 @@ const data=JSON.parse(read("data/food-agriculture-2026.json"));
 const find=(scope,sector)=>data.trade.find(r=>r.scope===scope&&r.sector===sector);
 test("food is a new source-dated sector, never a synthetic live quote",()=>{
  assert.equal(data.schema,"sli-food-2026-launch-v1");
- assert.equal(data.publication.release,"2026-06-30");
+ assert.equal(data.publication.release,"2026-06");
  assert.equal(data.publication.trade_data_until,"2026-04");
  assert.equal(data.publication.price_ntp_data_until,"2026-05");
  assert.match(data.publication.pdf,/satudata\.pertanian\.go\.id\/assets\/docs\/publikasi\//);
