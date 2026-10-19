@@ -116,19 +116,23 @@ def main():
     plumbers=pdfplumber.open(io.BytesIO(raw))
     tables={}
     for i,page in enumerate(fit):
+        if i<12:continue # Cover and table of contents repeat references, not original tables.
         text=page.get_text()
         match=re.search(r"Tabel\s+(\d{1,2})\.",text)
         if not match:continue
         num=int(match.group(1))
-        if num<1 or num>63 or num in tables:continue
+        if num<1 or num>64 or num in tables:continue
         info=meta(text,num,i)
         info["numeric_rows"]=[]
         if (36<=num<=43 or 49<=num<=59):
             info["numeric_rows"]=province_rows(page)
             info["geography_label"]="Provinsi (as reported)" if num<=43 else "Pasar Tradisional menurut Provinsi/nama lokasi (as reported)"
         tables[num]=info
-    if sorted(tables)!=list(range(1,64)):
-        raise RuntimeError("Expected exactly 63 numbered source tables; found "+str(sorted(tables)))
+    # Publisher's June edition skips Tabel 63 and labels the final FX table Tabel 64.
+    # Never relabel source material to repair publication numbering silently.
+    original_ids=[n for n in range(1,65) if n!=63]
+    if sorted(tables)!=original_ids:
+        raise RuntimeError("Expected publisher table IDs 1..62 and 64; found "+str(sorted(tables)))
     trades=[]
     for no,scope in [(1,"segar_olahan"),(2,"segar"),(3,"olahan")]:
         trades+=trade_rows(plumbers.pages[tables[no]["pdf_page"]-1],scope)
@@ -137,17 +141,18 @@ def main():
     grand=next(r for r in trades if r["scope"]=="segar_olahan" and r["sector"]==SECTORS[-1] and r["unit"]=="thousand_usd" and r["measure"]=="balance")
     if grand["series"]["2026-01:04"]!=6271208:
         raise RuntimeError("trade USD balance reconciliation failed: expected Pusdatin table 1 original units")
-    coverage={str(n):{"rows_extracted":len(tables[n]["numeric_rows"]),"pdf_page":tables[n]["pdf_page"]} for n in range(1,64)}
+    coverage={str(n):{"rows_extracted":len(tables[n]["numeric_rows"]),"pdf_page":tables[n]["pdf_page"]} for n in original_ids}
     snapshot={"schema_version":"sli-food-agriculture-v1",
       "publication":{"title":"Statistik Terkini Ekonomi Pertanian — Juni 2026","publisher":"Pusdatin, Kementerian Pertanian",
         "release_date":"2026-06-30","pdf_url":OFFICIAL,"source_portal":"https://satudata.pertanian.go.id/datasets/publikasi/15",
         "pdf_pages":len(fit),"tables":63,"trade_data_through":"2026-04","other_indicators_through":"2026-05",
         "precision_note":"Publisher uses Indonesian thousands dots and decimal commas. Missing values remain null.",
         "freshness_note":"Source June 2026 is a dated official baseline, not the newest Pusdatin release. Later publications need independent validation."},
-      "tables":[tables[n] for n in range(1,64)],
+      "tables":[tables[n] for n in original_ids],
       "trade":trades,"coverage":coverage,
       "quality":{"trade_series":len(trades),"provincial_ntp_rows":len(tables[38]["numeric_rows"]),
         "structured_table_count":sum(bool(t["numeric_rows"]) for t in tables.values())+3,
+        "source_table_numbering_anomaly":"Source jumps from table 62 to table 64 (63 not printed). Preserve publisher numbering.",
         "remaining_tables":"Linked in source catalog; not all commodity rows are machine-validated.",
         "source_validation":"automated PDF original numbers + structural checks; not independently certified by BPS"},
       "no_imputation":True}
