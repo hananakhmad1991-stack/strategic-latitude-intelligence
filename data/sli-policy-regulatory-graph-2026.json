@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.1",
+  "version": "2026-10-19.3",
   "updated_at": "2026-10-19",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -1350,6 +1350,91 @@
         "iklim",
         "emisi"
       ]
+    },
+    {
+      "id": "uu18food2012",
+      "tier": "uu",
+      "ref": "UU 18/2012",
+      "label": "Pangan — ketahanan, kemandirian dan keamanan pangan",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/id/uu-no-18-tahun-2012",
+      "note": "Landasan kebijakan pangan dan keamanan pangan bagi data pertanian, distribusi dan risiko pangan SLI; status perubahan terbaru serta peraturan pelaksana harus dicek sebelum analisis hukum.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "Pemerintah Pusat / Badan Pangan Nasional / Kementan / Pemda",
+      "evidence": "official_record",
+      "region": "Indonesia",
+      "topics": [
+        "ketahanan pangan",
+        "pertanian",
+        "distribusi",
+        "food security",
+        "provinsi"
+      ]
+    },
+    {
+      "id": "uu24disaster2007",
+      "tier": "uu",
+      "ref": "UU 24/2007",
+      "label": "Penanggulangan Bencana — risiko, kelembagaan dan tanggap darurat",
+      "sector": "environment",
+      "source": "https://www.peraturan.go.id/files/uu24-2007.pdf",
+      "note": "Kerangka penanggulangan bencana terkait hazard, kerentanan wilayah, kesiapsiagaan dan investasi infrastruktur. Periksa aturan pelaksana dan perubahannya sebelum keputusan proyek.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "BNPB / BPBD / Pemda",
+      "evidence": "official_record",
+      "region": "Indonesia",
+      "topics": [
+        "bencana",
+        "risiko iklim",
+        "BNPB",
+        "BPBD",
+        "tata ruang",
+        "investasi"
+      ]
+    },
+    {
+      "id": "uu4geo2011",
+      "tier": "uu",
+      "ref": "UU 4/2011",
+      "label": "Informasi Geospasial — tata kelola data spasial dan referensi lokasi",
+      "sector": "cross",
+      "source": "https://www.peraturan.go.id/files/uu4-2011.pdf",
+      "note": "Dasar Informasi Geospasial Dasar/Tematik untuk peta strategis, risiko dan perencanaan SLI. Validasi kewenangan penyedia data, metadata, pembaruan dan aturan pelaksana terbaru.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "BIG / Kementerian terkait / Pemda",
+      "evidence": "official_record",
+      "region": "Indonesia",
+      "topics": [
+        "geospasial",
+        "peta strategis",
+        "tata ruang",
+        "spatial",
+        "metadata"
+      ]
+    },
+    {
+      "id": "uu17water2019",
+      "tier": "uu",
+      "ref": "UU 17/2019",
+      "label": "Sumber Daya Air — pengelolaan air dan pemanfaatan sumber daya",
+      "sector": "environment",
+      "source": "https://peraturan.go.id/id/uu-no-17-tahun-2019",
+      "note": "Relevan bagi proyek industri, pusat data dan pertanian yang bergantung pada ketersediaan air. Cek izin, kewenangan dan peraturan pelaksana setempat; keberadaan UU tidak membuktikan izin tertentu dibutuhkan.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "Kementerian PU / Pemda / Pengelola wilayah sungai",
+      "evidence": "official_record",
+      "region": "Indonesia",
+      "topics": [
+        "sumber daya air",
+        "air industri",
+        "pendinginan data center",
+        "kekeringan",
+        "irigasi"
+      ]
     }
   ],
   "edges": [
@@ -1917,6 +2002,36 @@
       "from": "pres110carbon",
       "to": "pres98repealed",
       "type": "repeals"
+    },
+    {
+      "from": "uu23local",
+      "to": "uu18food2012",
+      "type": "regional_implementation_context"
+    },
+    {
+      "from": "uu23local",
+      "to": "uu24disaster2007",
+      "type": "regional_implementation_context"
+    },
+    {
+      "from": "uu23local",
+      "to": "uu17water2019",
+      "type": "regional_implementation_context"
+    },
+    {
+      "from": "uu4geo2011",
+      "to": "uu26spatial",
+      "type": "geospatial_data_context"
+    },
+    {
+      "from": "uu24disaster2007",
+      "to": "uu26spatial",
+      "type": "disaster_risk_spatial_planning_context"
+    },
+    {
+      "from": "uu17water2019",
+      "to": "pp22env",
+      "type": "water_and_environmental_compliance_context"
     }
   ],
   "cases": [
