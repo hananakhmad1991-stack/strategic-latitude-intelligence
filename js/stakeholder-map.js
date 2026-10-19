@@ -47,6 +47,19 @@ const ID_TEXT=new Map([
 ["DPR and DPD independent scrutiny are shown separately from regulatory / corporate execution.","Pengawasan independen DPR dan DPD dipisahkan dari pelaksanaan oleh regulator dan perusahaan."],
 ["STRATEGIC LATITUDE INTELLIGENCE · STAKEHOLDER POWER MAP","STRATEGIC LATITUDE INTELLIGENCE · PETA PEMANGKU KEPENTINGAN"]
 ]);
+const ISSUE_STAGES_ID=[
+["Kebijakan harga dan subsidi energi oleh ESDM/Kemenkeu; DEN dilibatkan dalam kondisi nasional.","Ditjen Migas/BPH Migas mengawasi distribusi; Kemenkeu menangani subsidi dan kompensasi.","Pertamina Patra Niaga, terminal, distributor dan SPBU menyalurkan BBM/LPG.","DPR XII mengawasi kebijakan/kuota, DPR VI kinerja Pertamina, DPD II dampak daerah.","Gubernur, BPBD dan pemerintah daerah terdampak mengoordinasikan pelayanan."],
+["Kebijakan elektrifikasi dan kecukupan pasokan listrik nasional.","Ditjen Ketenagalistrikan ESDM mengatur penyediaan listrik dan keselamatan.","PLN, unit jaringan dan pengatur beban, perusahaan pembangkit, serta IPP.","DPR XII menilai kebijakan listrik, DPR VI PLN, DPD II layanan daerah.","Pemulihan sistem lokal dan koordinasi kedaruratan provinsi."],
+["KEN/NZE, Perpres 14/2024 dan arah kebijakan pengelolaan karbon ESDM.","Ditjen Migas, SKK/BPMA, otoritas wilayah penyimpanan dan KLH menurut izin proyek.","Kontraktor penyimpanan, penangkapan dan transportasi termasuk bp, Pertamina, INPEX serta mitra.","DPR XII mengawasi kerangka perizinan dan investasi; DPD II dampak daerah.","Penggunaan lahan, jalur transportasi dan perlindungan masyarakat setempat."],
+["Pasokan energi nasional dan kebijakan ekspor/penerimaan batu bara.","Ditjen Minerba ESDM, Kemenkeu dan KLH sesuai kewenangannya.","Operator tambang, logistik, PLN EPI dan pembangkit penerima batu bara.","DPR XII mengawasi batu bara/listrik, DPR XI anggaran, DPD II daerah.","Izin, reklamasi, tanah dan masyarakat terdampak menurut mandat daerah."],
+["Target KEN/RUPTL/EBT serta koordinasi Kemenko Hilirisasi dan Transisi Energi.","Ditjen EBTKE dan Gatrik, BKPM, KLH serta Kementerian Kehutanan.","PLN, Indonesia Power, PGE, Geo Dipa, IPP dan kontraktor EPC.","DPR XII mengawasi EBT, DPR VI investasi BUMN, DPD II daerah.","Pelaksanaan RUED, izin lahan, sambungan listrik dan pengguna lokal."],
+["Kebijakan fiskal nasional dan ketepatan sasaran subsidi energi.","Kemenkeu menangani anggaran, ESDM/BPH Migas mengatur alokasi dan pengawasan.","Pertamina Patra Niaga serta PLN melakukan penyaluran dan operasi.","DPR XII memeriksa asumsi, DPR XI/Banggar APBN, DPR VI BUMN, DPD IV fiskal daerah.","Rumah tangga dan pulau terpencil, stok lokal dan kelayakan penerima."],
+["Presiden/DEN, Kemenko Hilirisasi, serta BKPM mengarahkan investasi.","ESDM mengatur teknis, Kemenperin industri, KLH lingkungan, Kemenkeu insentif.","Danantara/BUMN dan investor swasta melaksanakan proyek menurut kontraknya.","DPR XII mengawasi energi, DPR VII industri, DPR VI BUMN, DPD II daerah.","Kawasan industri, pelabuhan, BP Batam/KEK dan pemerintah daerah."],
+["ESDM/Ditjen Migas menetapkan kebijakan hulu, wilayah kerja, dan target.","SKK Migas mengelola PSC luar Aceh; BPMA di Aceh. BP BUMN bukan pemberi izin PSC.","Pertamina Hulu Energi dan KKKS swasta/asing menjalankan kontrak wilayahnya.","DPR XII mengawasi migas, DPR VI BUMN, DPR XI/Banggar fiskal, DPD II daerah.","Lokasi produksi, fasilitas, keselamatan, dan perlindungan masyarakat lokal."],
+["Pemerintah/ESDM menentukan alokasi gas, HGBT, pasokan dan prioritas domestik.","Ditjen Migas mengatur gas, SKK/BPMA kontrak hulu, BPH Migas pengangkutan pipa.","KKKS, PGN, PLN EPI, operator LNG/pipa dan penyedia jargas.","DPR XII mengawasi gas, DPR VI operator BUMN, DPD II pemerataan.","Terminal LNG, pipa, kawasan industri, sambungan rumah tangga dan izin daerah."]
+];
+const energyStage=(idx,stage,original)=>isID()?(ISSUE_STAGES_ID[idx]?.[stage]||"Periksa peran dan dokumen lembaga terkait."):original;
+const actorRole=(data,a)=>{if(!isID())return a.role||"";for(let i=0;i<data.layers.length;i++){let j=data.layers[i].actors.indexOf(a);if(j>=0)return window.SLITranslateEnergyRole?.(i,j,a.role)||a.role}return a.role||""};
 function tx(v){const str=String(v??"");if(!isID())return str;return ID_TEXT.get(str)||window.SLIi18n?.translate?.(str,"id")||str}
 const LAYER_ID=[
 ["Pengambilan keputusan presiden, penasihat, dan koordinasi nasional","Arahan dan nasihat strategis berbeda dari keputusan kementerian yang berwenang serta persetujuan operasional."],
@@ -160,7 +173,7 @@ function overview(svg,data,choose){
   g.append(sv("rect",{x:x-w/2+15,y:y-h/2+15,width:5,height:h-30,rx:3,fill:c}));
   text(g,x-99,y-13,titles[i][0],{fill:"#f0f3f8","font-size":14,"font-weight":720,"letter-spacing":.4});
   text(g,x-99,y+7,titles[i][1],{fill:"#f0f3f8","font-size":13,"font-weight":600});
-  text(g,x+100,y+27,data.layers[i].actors.length+" actors",{"text-anchor":"end",fill:c,"font-size":11,"font-weight":700});
+  text(g,x+100,y+27,data.layers[i].actors.length+(isID()?" pelaku":" actors"),{"text-anchor":"end",fill:c,"font-size":11,"font-weight":700});
   interactive(g,()=>choose(i),"Open "+data.layers[i].title+" — "+data.layers[i].actors.length+" stakeholders");
   const tt=sv("title",{},data.layers[i].title+" · Select to explore");g.append(tt);
   svg.append(g);
@@ -234,10 +247,10 @@ function issueGraph(svg,routes,idx,select){
   g.append(sv("title",{},body));svg.append(g);
  });
 }
-window.renderSLIStakeholderMap=function(root,data){
+window.renderSLIStakeholderMap=function(root,data,restore){
  if(!data||!Array.isArray(data.layers)||!data.layers.length){root.append($("p","gov-note","Institutional actor data is unavailable."));return;}
  const all=data.layers.flatMap((layer,group)=>layer.actors.map(a=>({a,group}))),routes=data.accountability_routes||[];
- const state={mode:"overview",group:0,selected:"",issue:0,issueStep:0,query:""};
+ const state={mode:"overview",group:0,selected:"",issue:0,issueStep:0,query:"",...(restore||{})};
  const wrapper=$("section","stake-shell");
  wrapper.setAttribute("aria-label","Interactive Indonesia energy stakeholder network");
  const header=$("div","stake-header");
@@ -298,11 +311,11 @@ window.renderSLIStakeholderMap=function(root,data){
  });
  const groupSelect=$("select","stake-select");
  groupSelect.setAttribute("aria-label","Choose functional institutional branch");
- data.layers.forEach((layer,i)=>{const op=$("option",null,layer.title.replace(/^\d+\s*·\s*/,""));op.value=i;groupSelect.append(op)});
+ data.layers.forEach((layer,i)=>{const op=$("option",null,energyLayerTitle(i,layer).replace(/^\d+\s*·\s*/,""));op.value=i;groupSelect.append(op)});
  groupSelect.addEventListener("change",()=>{state.group=Number(groupSelect.value);state.mode="layer";state.selected="";draw()});
  const issueSelect=$("select","stake-select");
  issueSelect.setAttribute("aria-label","Choose an energy policy issue");
- routes.forEach((r,i)=>{const op=$("option",null,r.issue);op.value=i;issueSelect.append(op)});
+ routes.forEach((r,i)=>{const op=$("option",null,energyIssue(i,"issue",r.issue));op.value=i;issueSelect.append(op)});
  issueSelect.addEventListener("change",()=>{state.issue=Number(issueSelect.value);state.issueStep=0;state.mode="issue";draw()});
  const input=$("input","stake-search");
  input.type="search";input.placeholder="Search Simon Mantiri, Purnomo, DPR XII…";
@@ -359,8 +372,8 @@ window.renderSLIStakeholderMap=function(root,data){
   preferred.addEventListener("click",()=>{state.mode="layer";state.group=2;draw()});inspector.append(preferred);
  }
  function paintGroupPanel(layer){
-  inspector.append($("div","stake-eyebrow","INSTITUTIONAL BRANCH"),$("h3",null,layer.title.replace(/^\d+\s*·\s*/,"")));
-  inspector.append($("p",null,layer.summary||"Explore source-dated members and responsibilities."));
+  inspector.append($("div","stake-eyebrow","INSTITUTIONAL BRANCH"),$("h3",null,energyLayerTitle(data.layers.indexOf(layer),layer).replace(/^\d+\s*·\s*/,"")));
+  inspector.append($("p",null,energyLayerSummary(data.layers.indexOf(layer),layer)||"Explore source-dated members and responsibilities."));
   inspector.append($("div","stake-mini-count",layer.actors.length+" mapped institutions and stakeholders"));
   const lead=$("div","stake-quick-links");
   layer.actors.slice(0,Math.min(layer.actors.length,5)).forEach(a=>{
@@ -373,10 +386,9 @@ window.renderSLIStakeholderMap=function(root,data){
   inspector.append($("h3",null,a.name));
   const tag=$("span","stake-role-badge",a.kind+" · "+a.scope);inspector.append(tag);
   inspector.append($("div","stake-person",a.lead||"Leadership to verify"));
-  inspector.append($("h4",null,"Responsibility"),$("p",null,a.role||"Role under review"));
-  inspector.append($("h4",null,"Decision authority"),$("p",null,a.authority||"Institutional scope; actual mandate must be verified."));
-  inspector.append($("div","stake-date","Source reference: "+(a.verified||"undated")+
-      " · "+(a.evidence_status||a.verification_status||"Monitor appointment status")));
+  inspector.append($("h4",null,"Responsibility"),$("p",null,actorRole(data,a)||"Role under review"));
+  inspector.append($("h4",null,"Decision authority"),$("p",null,isID()?"Mandat dan batas kewenangan mengikuti aturan lembaga. Baca dokumen resmi pada tautan di bawah profil serta peran yang dijelaskan di atas.":a.authority||"Institutional scope; actual mandate must be verified."));
+  inspector.append($("div","stake-date",(isID()?"Tanggal sumber: ":"Source reference: ")+(a.verified||(isID()?"tidak diketahui":"undated"))+(isID()?" · Status pejabat perlu dicek kembali pada dokumen asli":" · "+(a.evidence_status||a.verification_status||"Monitor appointment status"))));
   if(a.source)inspector.append(panelLink(a.source,"Official appointment / institutional source ↗"));
   if(a.latest_source&&a.latest_source!==a.source)inspector.append(panelLink(a.latest_source,"Later official leadership confirmation ↗"));
   const references=(a.connections||[]).filter(v=>find(v));
@@ -392,15 +404,15 @@ window.renderSLIStakeholderMap=function(root,data){
  }
  function paintIssuePanel(r){
   const keys=[
-   ["Strategic direction",r.strategic],
-   ["Regulator & budget",r.regulators],
-   ["Operator / assets",r.operators],
-   ["DPR / DPD oversight",r.oversight],
-   ["Regional implementation",r.regional]
+   ["Strategic direction",energyStage(routes.indexOf(r),0,r.strategic)],
+   ["Regulator & budget",energyStage(routes.indexOf(r),1,r.regulators)],
+   ["Operator / assets",energyStage(routes.indexOf(r),2,r.operators)],
+   ["DPR / DPD oversight",energyStage(routes.indexOf(r),3,r.oversight)],
+   ["Regional implementation",energyStage(routes.indexOf(r),4,r.regional)]
   ];
   const i=Math.max(0,Math.min(state.issueStep,keys.length-1));
   inspector.append($("div","stake-eyebrow","POLICY ACCOUNTABILITY LENS"));
-  inspector.append($("h3",null,r.issue));
+  inspector.append($("h3",null,energyIssue(routes.indexOf(r),"issue",r.issue)));
   inspector.append($("span","stake-role-badge",(i+1)+" / 5 · "+keys[i][0]));
   inspector.append($("p","stake-issue-read",keys[i][1]));
   const nav=$("div","stake-issue-nav");
@@ -409,7 +421,7 @@ window.renderSLIStakeholderMap=function(root,data){
    if(j===i)b.classList.add("active");b.setAttribute("aria-label","Inspect "+label);
    b.addEventListener("click",()=>{state.issueStep=j;draw()});nav.append(b);
   });inspector.append(nav);
-  inspector.append($("h4",null,"SLI analytical test"),$("p",null,r.assessment));
+  inspector.append($("h4",null,"SLI analytical test"),$("p",null,energyIssue(routes.indexOf(r),"assessment",r.assessment)));
   inspector.append($("p","stake-date","Issue pathway reflects functional responsibilities, not statutory command relationships."));
  }
  function renderDirectory(){
@@ -438,7 +450,7 @@ window.renderSLIStakeholderMap=function(root,data){
   const isLayer=state.mode==="layer";
   const isIssue=state.mode==="issue";
   const title=isOverview?"National decision and influence systems":isLayer?
-    data.layers[state.group].title.replace(/^\d+\s*·\s*/,""):routes[state.issue]?.issue||"Issue lens";
+    energyLayerTitle(state.group,data.layers[state.group]).replace(/^\d+\s*·\s*/,""):routes[state.issue]?.issue||"Issue lens";
   plotTitle.replaceChildren($("strong",null,title),$("span",null,isOverview?"6 clickable branches":isLayer?"Select one of "+data.layers[state.group].actors.length+" actor nodes":"Five accountability stages"));
   const svg=createSvg(960,isOverview?560:isIssue?480:640,title);
   if(isOverview)overview(svg,data,i=>{state.mode="layer";state.group=i;state.selected="";draw()});
@@ -487,5 +499,6 @@ window.renderSLIStakeholderMap=function(root,data){
   if(details.open)renderDirectory();
  }
  results.hidden=true;draw();
+ document.addEventListener?.("sli:languagechange",()=>{if(root.isConnected)window.renderSLIStakeholderMap(root,data,{...state});},{once:true});
 };
 })();
