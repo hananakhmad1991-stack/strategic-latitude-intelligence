@@ -38,8 +38,9 @@ jobs:
           import re
           html=Path("policy-regulatory-intelligence.html").read_text()
           scripts=re.findall(r"<script>([\s\S]*?)</script>",html)
-          assert len(scripts)==1
-          Path("/tmp/sli-policy-inline.js").write_text(scripts[0])
+          assert len(scripts)==2, 'Expect locale prepaint plus regulatory visualization runtime'
+          assert 'sli-chrome-pending' in scripts[0]
+          Path("/tmp/sli-policy-inline.js").write_text(scripts[1])
           PY
           node --check /tmp/sli-policy-inline.js
           node --check js/regulatory-monitor-dashboard.js
@@ -49,8 +50,9 @@ jobs:
           import re
           text=Path('policy-sector-ria.html').read_text()
           code=re.findall(r'<script>([\s\S]*?)</script>',text)
-          assert len(code)==1
-          Path('/tmp/sli-sector-ria.js').write_text(code[0])
+          assert len(code)==2, 'Expect locale prepaint plus interactive policy runtime'
+          assert 'sli-chrome-pending' in code[0]
+          Path('/tmp/sli-sector-ria.js').write_text(code[1])
           PY
           node --check /tmp/sli-sector-ria.js
           python - <<'PY'
@@ -58,7 +60,8 @@ jobs:
           import re
           text=Path('policy-impact-evaluation.html').read_text()
           code=re.findall(r'<script>([\s\S]*?)</script>',text)
-          assert len(code)==1
-          Path('/tmp/sli-policy-impact-evaluation.js').write_text(code[0])
+          assert len(code)==2, 'Expect locale prepaint plus interactive policy runtime'
+          assert 'sli-chrome-pending' in code[0]
+          Path('/tmp/sli-policy-impact-evaluation.js').write_text(code[1])
           PY
           node --check /tmp/sli-policy-impact-evaluation.js
