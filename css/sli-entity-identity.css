@@ -5,6 +5,8 @@
 .sli-entity-icon{width:17px;height:17px;flex:none;vertical-align:middle}
 .sli-person-link{color:#f0cf92;text-decoration:none;font-weight:700;overflow-wrap:anywhere}
 .sli-person-link[href]:hover,.sli-person-link[href]:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.sli-hier-inline-person{display:inline-flex;margin:5px 4px 6px 7px;padding:3px 7px;font-size:11px;max-width:100%;line-height:1.35;overflow-wrap:anywhere}
+.sli-portal-glyph .sli-entity-icon{width:29px;height:29px}
 .sli-hier-card-title{display:flex;align-items:center;gap:8px;width:100%;line-height:1.4}
 .sli-hier-card-title strong{min-width:0;overflow-wrap:anywhere}
 .sli-hier-card-title .sli-entity-brand{flex-basis:28px;width:28px;height:28px;border-radius:8px}
