@@ -44,6 +44,11 @@ function isChart(node){
 function findHost(node){
  if(node.matches(BAR_SELECTOR))return node;
  if(node.matches("table")){
+  // Research AI tables can be wrapped a second time for mobile scrolling.
+  // Always use the stable report-table shell, otherwise the global observer
+  // attaches a second toolbar when .sli-table-scroll is inserted later.
+  const reportHost=node.closest(".sli-ra-table-wrap");
+  if(reportHost)return reportHost;
   return node.closest(".scroll,.table-wrap,.table-scroll,.table-container,.sli-table-wrap,figure")||node.parentElement;
  }
  return node.closest(".sli-geo-timeline-plot,.sli-geo-timeline-scatter,figure,[data-sli-visual],[class*='chart-wrap'],[class*='chart-container'],[class*='visual-wrap'],[class*='visualization']")||node.parentElement;
