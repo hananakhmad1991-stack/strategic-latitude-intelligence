@@ -22,7 +22,8 @@
   utara:["north"],north:["utara"],selatan:["south"],south:["selatan"],barat:["west"],west:["barat"],
   timur:["east"],east:["timur"],tenggara:["southeast"],southeast:["tenggara"],jawa:["java"],java:["jawa"],
   sumatera:["sumatra"],sumatra:["sumatera"],kalimantan:["borneo"],borneo:["kalimantan"],
-  kepulauan:["islands"]
+  kepulauan:["islands"],pangan:["food","agriculture"],pertanian:["agriculture","farming"],beras:["rice"],padi:["rice"],
+  rice:["beras","padi"],food:["pangan"],agriculture:["pertanian"],geopolitik:["geopolitics"],geopolitics:["geopolitik"]
  };
  const norm=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("en").replace(/[^a-z0-9]+/g," ").trim();
  const collapse=x=>norm(x).replace(/\s+/g," ");
@@ -101,7 +102,7 @@
   pop.hidden=true;const controls=document.createElement("div");controls.className="sli-search-controls";
   const scope=document.createElement("select");scope.className="sli-search-scope";
   scope.setAttribute("aria-label","Search scope");
-  for(const [v,l] of [["all","All dashboards"],["page","This dashboard"],["overview","Overview"],["investment","Investment"],["map","Strategic Map"],["trade","Trade"],["energy","Energy"],["minerals","Critical Minerals"],["ai","AI Infrastructure"],["policy","Policy"],["methodology","Methodology"]]){const o=document.createElement("option");o.value=v;o.textContent=l;scope.append(o)}
+  for(const [v,l] of [["all","All dashboards"],["page","This dashboard"],["overview","Overview"],["investment","Investment"],["map","Strategic Map"],["trade","Trade"],["energy","Energy"],["food","Food & Agriculture"],["minerals","Critical Minerals"],["ai","AI Infrastructure"],["policy","Policy"],["geopolitics","Geopolitics"],["methodology","Methodology"]]){const o=document.createElement("option");o.value=v;o.textContent=l;scope.append(o)}
   const count=document.createElement("span");count.className="sli-search-count";
   controls.append(scope,count);
   const list=document.createElement("div");list.className="sli-search-list";
@@ -229,8 +230,10 @@
      if(requestToken!==requested||getPage()!==target)return;
      const section=item.anchor?document.getElementById(item.anchor):document.getElementById("content");
      if(!section)return;
-     const busy=section.textContent?.trim().startsWith("Loading ")&&section.children?.length<=1;
-     if(busy&&delay<6500)return;
+     const deferredRoot=/^(sliMapRoot|sliResearchRoot|sliKomdigiAI2025Root|he25InvestorAtlasEnergyRoot|skkMigas2025EnergyRoot)$/.test(item.anchor||"");
+     const busy=deferredRoot&&((section.children?.length||0)===0||
+      (section.children?.length===1&&/^(Loading|Memuat)\b/i.test(section.textContent?.trim()||"")));
+     if((busy||(item.page==="map"&&item.kind==="record"&&typeof window.SLIMapSearchRecord!=="function"))&&delay<6500)return;
      const el=section;
      if(item.page==="map"&&item.kind==="record"&&!mapSelected&&typeof window.SLIMapSearchRecord==="function"){
       mapSelected=window.SLIMapSearchRecord({id:String(item.keywords||"").split(/\s+/)[0],title:item.title})===true;
@@ -285,7 +288,7 @@
   document.addEventListener("pointerdown",e=>{if(open&&!root.contains(e.target))close()});
   document.addEventListener("sli:languagechange",()=>{labels();if(open)update()});
   // Page changes may occur from the sidebar while the popover is open.
-  document.addEventListener("sli:pagechange",()=>{if(pendingTarget&&getPage()!==pendingTarget){requested++;pendingTarget=null}if(open)update()});
+  document.addEventListener("sli:pagechange",event=>{if(pendingTarget&&event.detail?.page&&event.detail.page!==pendingTarget){requested++;pendingTarget=null}if(open)update()});
   labels();
   window.SLISearch={open:()=>input.focus(),close,refresh:()=>{loading=null;data={pages:[],entries:[]};return preload()},rank};
  }
