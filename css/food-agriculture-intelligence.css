@@ -71,3 +71,9 @@
 @media(max-width:1000px){.fa-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.fa-two-wide{grid-template-columns:1fr}.fa-inspector{position:static}.fa-source-list{grid-template-columns:1fr}}
 @media(max-width:650px){.fa-shell{padding:90px 16px 35px}.fa-hero{padding:20px}.fa-hero h1{font-size:33px}.fa-two,.fa-analysis-grid{grid-template-columns:1fr}.fa-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.fa-kpi{padding:13px;min-height:140px}.fa-bar{grid-template-columns:minmax(75px,115px) minmax(60px,1fr) minmax(62px,90px);gap:7px}.fa-bar-name,.fa-bar-value{font-size:10px}.fa-card{padding:15px}.fa-toolbar label{width:100%;min-height:auto}.fa-toolbar select,.fa-toolbar input{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Source-index time series uses calendar-spaced x coordinates; compatible with SLI SVG export. */
+#faNationalTrendCard{margin:14px 0 20px}
+#faNationalTrend{max-width:100%;min-height:240px;overflow:auto;background:#0c2337;border-radius:10px;padding:10px}
+#faNationalTrend svg{display:block;min-width:680px;width:100%;height:auto}
+#faNationalTrend svg circle:focus-visible{stroke:#fff;stroke-width:5;outline:none}
