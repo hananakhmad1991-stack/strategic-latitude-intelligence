@@ -132,7 +132,7 @@ test("legal research references preserve original law year and readable source p
  assert.doesNotMatch(entry,/\(2026\)/);
  assert.match(entry,/UU 16\/2016, Pasal 1/);
  const helperStart=client.indexOf("function normalizeReportListNumbers(");
- const begin=client.indexOf("function reportBody(answer){"),finish=client.indexOf("\nfunction renderModelStatement",begin);
+ const begin=client.indexOf("function reportBody("),finish=client.indexOf("\nfunction renderModelStatement",begin);
  assert.ok(helperStart>=0&&begin>helperStart&&finish>begin);
  // reportBody delegates to normalizeReportListNumbers; load both functions together.
  const cleanReport=new Function(client.slice(helperStart,finish)+"\nreturn reportBody;")();
