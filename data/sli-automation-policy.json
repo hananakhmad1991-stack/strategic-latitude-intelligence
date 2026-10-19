@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "as_of": "2026-10-16",
+  "as_of": "2026-10-19",
   "purpose": "Audit whole SLI dashboard, distinguish automatically refreshed data, candidate-only news, archival sources and manually curated reference tables; no fabricated auto-update completeness.",
   "schedule": "4 checks per day, approximately 07:07, 13:07, 19:07, 01:07 WIB (GitHub Actions delays possible)",
   "model": {
@@ -173,6 +173,11 @@
       "mode": "computed_from_sources",
       "priority": "high",
       "note": "Operational inventory derived from SLI source files and GitHub Actions workflow metadata; does not verify every numeric fact."
+    },
+    "data/pln-saidi-saifi-2023-2025.json": {
+      "mode": "curated_snapshot",
+      "priority": "high",
+      "note": "PLN Statistics Table 16, 2023–2025; 23 utility reporting units and 38-province locator. Official annual new edition is discovered by source-watch but must be validated before numbers are updated; multi-province service units cannot be split into fabricated province observations."
     }
   },
   "readiness_rules": {
@@ -192,6 +197,7 @@
     "note": "Workflow delivery health re-evaluated periodically; success is not an indication legal project or historical metrics were changed.",
     "publication_rule": "When published by GitHub Actions using GITHUB_TOKEN, raw main JSON is primary live-data source with Pages fallback. UI site code must still be deployed.",
     "known_gap": "Curated/report PDFs, BPS/BI/Kemenkeu current national release cards, site project financing, energy stakeholder law/legal force and historical source editions cannot be fully rebuilt from news detection without primary source extraction.",
-    "publication_checks": "Official publication source watcher currently checks 10 catalogs daily; inaccessible pages flag a gap. The data readiness dashboard classifies every file including publication watcher."
+    "publication_checks": "Official publication source watcher currently checks 10 catalogs daily; inaccessible pages flag a gap. The data readiness dashboard classifies every file including publication watcher.",
+    "documentation": "New source-backed modules require canonical glossary, user guide, ID/EN copy and documentation QA on commits. GitHub Actions can detect source changes or failures but does not interpret future chat instructions autonomously."
   }
 }
