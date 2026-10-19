@@ -33,3 +33,21 @@ Use the existing authenticated local Cloudflare session and existing private `wr
 5. **Export & production:** verified legal memo, policy brief, Word/PDF, source list and access-control entitlements; independently tested and approved for production.
 
 Do not copy Hukumonline's content, private API or proprietary database. Build on official and appropriately licensed references.
+
+## 19 October 2026 · Next-stage implementation update
+
+- **JDIH coverage:** `data/sli-policy-source-coverage.json` now enumerates all 38 provinces, with eight official provincial portal homepages sourced/identified and gaps explicitly visible in a collapsed Policy Explorer reader panel. It does **not** claim eight complete provincial legal databases. Source URLs are not equivalent to individual ingested documents.
+- **Monitoring expanded:** `data/regulatory-monitor-sources.json` now schedules 25 official and contextual listing sources, adding Aceh, Sumatera Utara, Bali, and Kalimantan Timur. The latest *stored snapshot* may still contain only 21 sources until the twice-daily scheduled monitor finishes and commits a new snapshot. New source first observations are baselines, not newly issued rules.
+- **Article citation pilot:** `data/sli-verified-legal-provisions.json` includes individually corroborated, nonverbatim summaries of **UU 16/2016 Pasal 1 and Pasal 2**, with the official Lembaran Negara PDF URL, cited article, instrument identity, page reference and explicit uncertainty about later law status. This is a TWO-PROVISION PILOT, not a full law text index.
+- **Fail-closed article gate:** `research-api/src/legal-citation-audit.mjs` rejects model answers that cite a numbered article without a matching reviewed article **and statute reference** in the available evidence. This guards reference identifiers, **not** semantic accuracy, validity of regulations, or interpretation. Human fact-check remains essential.
+- **One-click GitHub deployment path prepared, not run:** workflow `.github/workflows/sli-owner-worker-deploy.yml` has `validate-only` and `deploy-owner-staging` actions. The latter cannot proceed without valid repository Action secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`; the Worker keeps existing private `OPENAI_API_KEY` and `OWNER_TEST_TOKEN` in Cloudflare. The workflow does not silently deploy on each push.
+- **No customer production activation:** `api_enabled=false` remains intentional. GitHub Actions source/CI success cannot certify model answers or complete updated law coverage.
+
+### Owner-only deployment through GitHub (without PowerShell)
+
+1. In the private GitHub repository Actions secrets settings, securely set `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` for the existing account if not already present. Scope the API token to the least privilege needed for Workers deployment. **Never share these values in a chat, screenshots, public repo, or browser HTML.**
+2. In GitHub **Actions**, open **SLI owner Worker · controlled deployment**, choose **Run workflow** → **validate-only**. Review any failed tests first.
+3. Only after tests pass, rerun with **deploy-owner-staging**. It updates only the explicitly named Owner Test Worker with the existing private Cloudflare secrets, not the separate Pro/Enterprise service.
+4. Refresh the SLI Research AI page, enter the existing owner-only token into its masked field, and test **UU 16/2016 Pasal 1 / Pasal 2** as well as an unrelated article reference that must be withheld. Check return citations and the Cloudflare logs; do not interpret a successful deployment as a passing model audit.
+5. If GitHub permissions or credentials are unavailable, the established local alternative remains `cd research-api && npx wrangler deploy` using the existing secure local `wrangler.toml`. The public site cannot deploy this private Worker by itself.
+
