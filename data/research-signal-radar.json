@@ -1,26 +1,11 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-19T22:46:14.759884+00:00",
-  "last_attempt_at_utc": "2026-10-19T22:46:14.759884+00:00",
+  "generated_at_utc": "2026-10-19T23:46:23.568264+00:00",
+  "last_attempt_at_utc": "2026-10-19T23:46:23.568264+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
-        {
-          "id": "copper-supply-ls-considers-cut-to-copper-processing-capacity-mining-com",
-          "title": "LS considers cut to copper processing capacity - Mining.com",
-          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1JOU5iOU1qcjdPTHZaLWFaeDFWOUxhQUhvOHN0cFk5TDJNODRUYTV6cTlZSjVKYTBOLUh0WHdkWGhaNkdyQWtIUDFRMkhMRUp1aXR2dUY3bTYyb3RyT3JMWDY2UFhqTkQ5YjZuSUJQQ3I0RjRLdUxHVHB0WGl2b2M?oc=5",
-          "publisher": "Mining.com",
-          "publisher_url": "https://www.mining.com",
-          "published_at_utc": "2026-10-19T16:47:29+00:00",
-          "sector": "minerals",
-          "scope": "geopolitical",
-          "topic_id": "copper_supply",
-          "channel": "Copper, alumina and aluminium exposure",
-          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
         {
           "id": "nickel-market-govt-targets-up-to-us-50-billion-in-nickel-exports-by-2026-antara-news",
           "title": "Govt targets up to US$50 billion in nickel exports by 2026 - ANTARA News",
@@ -73,6 +58,21 @@
           "publisher": "Mining.com",
           "publisher_url": "https://www.mining.com",
           "published_at_utc": "2026-10-14T14:31:47+00:00",
+          "sector": "minerals",
+          "scope": "geopolitical",
+          "topic_id": "copper_supply",
+          "channel": "Copper, alumina and aluminium exposure",
+          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "copper-supply-column-aluminium-s-calm-belies-lingering-supply-chain-stress-mining-com-au",
+          "title": "Column: Aluminium’s calm belies lingering supply-chain stress - Mining.com.au",
+          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNeTJyUm9COEtoQW10cy02WVJzS2VRU19OdXI0Z040TjBoY0pReDNPVlU3RlZGdjFaMFl0S2lfM3pjZERvWlp0M3lrWjk1MGZ2T0pIczZYWVpfaEtRcmhMbGw4MzVQbnZZaU83aGp0SGdqY2pwSTdqc2p1bEJpVUxFSVFsNC1PNGExWkE?oc=5",
+          "publisher": "Mining.com.au",
+          "publisher_url": "https://mining.com.au",
+          "published_at_utc": "2026-10-14T11:57:14+00:00",
           "sector": "minerals",
           "scope": "geopolitical",
           "topic_id": "copper_supply",
@@ -373,21 +373,6 @@
     "ai": {
       "geopolitical": [
         {
-          "id": "china-ai-beijing-seeks-tighter-grip-on-ai-exports-amid-us-rivalry-reuters",
-          "title": "Beijing seeks tighter grip on AI exports amid US rivalry - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNMWNnS1haU3c5T3lybTBzQUNxZF9lMmhWaFp0Yk5UbzhDdklobHpkRHk2dExFU1dWZmVMVENFNEVLOW9JWDdscm15VDhObXhhc1JwYjlIelZjeFJuMG9jVERmTHRNRTZtSlBRYndNc2IxZTRkdWtPUGdlWDhoSEZQTHVZNzIwMFUzWVhjT3gxUWl1X2VpM1VOM29BZElFRjlaek1uRDFQb2N5aF9FTlF4U1N4WFZRVmtyUTBLdmVJc0Rzb3E2NkZ5ZQ?oc=5",
-          "publisher": "Reuters",
-          "publisher_url": "https://www.reuters.com",
-          "published_at_utc": "2026-10-16T18:59:17+00:00",
-          "sector": "ai",
-          "scope": "geopolitical",
-          "topic_id": "china_ai",
-          "channel": "China AI technologies and strategic development",
-          "impact_pathway": "Chinese media reporting may signal relevant compute, model or semiconductor developments; compare with alternative market, academic and official sources.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
           "id": "china-ai-china-unveils-draft-export-controls-on-ai-technologies-and-chips-financial-times",
           "title": "China unveils draft export controls on AI technologies and chips - Financial Times",
           "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQZFJrS1d0QjRNNDFCeDlGc2x2cHJhTWN6SEJtWjFucjRFWnc2LWlUMFFMbjFuX3BOWGpJcVhLdnVRRnFjaUVpRXh0UHNQcWl6UkF3clZ3VExPc1dVX1hvc2o4Tnl3Mm15VE03Y1h6NHJzU3hnUmlFWlpha0hkeElUaUg1SFY?oc=5",
@@ -489,6 +474,21 @@
           "topic_id": "compute_competition",
           "channel": "Regional data-center investment competition",
           "impact_pathway": "Regional power, connectivity and investment competition may affect relative project attractiveness and capital allocation.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "china-ai-imf-says-ai-investment-keeps-global-growth-around-3-but-brings-massive-disruption-reuters",
+          "title": "IMF says AI investment keeps global growth around 3% but brings massive disruption - Reuters",
+          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxONXItVGZaTjNISE9iMlVzZzhlV2ZmYzFDR29feFhfWFRhRzJFdWlwYXk5QkZpUHQ3WVhLZEZId2xobTNmc1E2Y25FN2c1TTg1eldiR3RLR003ajh2RUpSN1RxYXVzYjJ4TW5ZMW1ZcVljRndfSUpoNVVlLUE3eWc1MkhqUUtGQTdYdC1zVUxIbnNJWVJYb2ZIcVN1S3QzWWhQUmdsQ3VFVG9xSEs4NDVvOTZ5dHJRZUNNaUtsazVSMThYQQ?oc=5",
+          "publisher": "Reuters",
+          "publisher_url": "https://www.reuters.com",
+          "published_at_utc": "2026-10-12T12:45:33+00:00",
+          "sector": "ai",
+          "scope": "geopolitical",
+          "topic_id": "china_ai",
+          "channel": "China AI technologies and strategic development",
+          "impact_pathway": "Chinese media reporting may signal relevant compute, model or semiconductor developments; compare with alternative market, academic and official sources.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
