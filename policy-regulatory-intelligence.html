@@ -8,6 +8,7 @@
 <script>try{var pref=localStorage.getItem("sli-ui-language");if(pref==="en"||pref==="id")document.documentElement.lang=pref}catch(_){}document.documentElement.classList.add("sli-chrome-pending");window.addEventListener("load",()=>setTimeout(()=>document.documentElement.classList.remove("sli-chrome-pending"),1100),{once:true});</script>
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
 <link rel="stylesheet" href="./css/sli-regulatory-explorer.css?v=20261019-policy-reader2">
+<link rel="stylesheet" href="./css/sli-policy-assistant.css?v=20261019-pai1">
 </head>
 <body class="policy-reader">
 <main class="policy-app">
@@ -26,6 +27,26 @@
 <div class="policy-metric"><span>Riwayat perubahan tercatat</span><strong id="changeLaws">—</strong></div>
 <div class="policy-metric"><span>Dokumen hukum daerah</span><strong id="regionalLaws">—</strong></div>
 </div>
+<section id="policyAskAi" class="policy-assistant" aria-label="Asisten penelusuran kebijakan dan regulasi">
+<div class="pa-head"><div><div class="policy-kicker">SLI / ASK POLICY</div><h2>Tanya kebijakan dan regulasi dengan bahasa sehari-hari.</h2>
+<p>Mulai dari pertanyaan investasi, AI, energi, tata ruang, perubahan peraturan, atau kewenangan daerah. SLI menghubungkan pertanyaan dengan dokumen resmi dalam indeks, lalu Anda dapat membuka riset generatif di Research AI.</p></div><span class="pa-tag">Evidence-first · Tahap awal</span></div>
+<form id="paForm" novalidate>
+<label class="pa-input-label" for="paAsk">Apa yang ingin Anda ketahui?</label>
+<div class="pa-input-row"><textarea id="paAsk" rows="3" maxlength="1200" disabled placeholder="Misal: Aturan apa saja yang perlu diperiksa sebelum membangun data center 100 MW di Batam?" aria-describedby="paReady"></textarea>
+<button id="paAskButton" type="submit" disabled>Telusuri peraturan →</button></div>
+</form>
+<div class="pa-quick" aria-label="Contoh pertanyaan">
+<button type="button" data-pa-question="Apa aturan investasi dan pusat data AI yang perlu diperiksa di Batam?">AI data center di Batam</button>
+<button type="button" data-pa-question="Bagaimana kaitan UU 23/2014 dengan kewenangan daerah dan aturan pelaksanaannya?">UU Pemerintahan Daerah</button>
+<button type="button" data-pa-question="Bagaimana UU 16/2016 tentang Persetujuan Paris berkaitan dengan regulasi transisi energi Indonesia?">Paris Agreement &amp; energi</button>
+<button type="button" data-pa-question="Peraturan pertambangan mineral apa yang sudah diubah dan perlu diperiksa statusnya?">Perubahan aturan minerba</button></div>
+<p id="paReady" role="status" aria-live="polite">Memuat sumber regulasi SLI…</p>
+<p class="pa-disclaimer"><strong>Penting:</strong> tahap ini adalah penelusuran bukti berbantuan algoritme, bukan jawaban dari model generatif dan bukan opini hukum. Status resmi, bunyi pasal, kewajiban, dan izin harus ditelaah pada naskah primer. Research AI hanya berfungsi jika backend dan autentikasi pengguna tersedia; tidak ada jawaban buatan ketika koneksi gagal.</p>
+<section id="paEvidenceSection" hidden aria-label="Dokumen yang ditemukan">
+<div class="pa-evidence-head"><h3>Rujukan yang ditemukan</h3><button id="paOpenResearch" disabled type="button">Lanjut analisis di Research AI ↗</button></div>
+<p id="paSummary" role="status" aria-live="polite"></p><p id="paConversation"></p>
+<div id="paEvidence" class="pa-evidence-grid"></div>
+</section></section>
 <section class="policy-search-panel" aria-label="Pencarian dan penyaringan">
 <label for="query">Cari peraturan, nomor, kata kunci, lokasi atau lembaga</label>
 <div class="policy-search-line">
@@ -75,6 +96,7 @@
 </main>
 <script>window.SLI_POLICY_EXPLORER_VERSION="20261019-policy-reader2";</script>
 <script defer src="./js/sli-regulatory-explorer.js?v=20261019-policy-reader2"></script>
+<script defer src="./js/sli-policy-assistant.js?v=20261019-pai1"></script>
 <script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script>
 </body>
 </html>
