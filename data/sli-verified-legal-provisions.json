@@ -1,0 +1,40 @@
+{
+  "schema": "sli-legal-provisions-v1",
+  "version": "2026-10-19.1",
+  "scope": "Manually reviewed article-level summaries from primary government documents. Not a consolidated law database.",
+  "legal_verification_policy": "Allow article references only when both official source document and an individually identified provision are corroborated. No automatic cross-statute compliance or current-validity conclusions.",
+  "items": [
+    {
+      "id": "uu16paris_pasal1",
+      "law_node_id": "uu16paris",
+      "citation_label": "UU 16/2016, Pasal 1",
+      "article": "Pasal 1",
+      "page_reference": "LN RI 2016 No. 204, halaman bertanda -3-",
+      "source_url": "https://peraturan.go.id/files/uu16-2016bt.pdf",
+      "publisher": "Peraturan.go.id / Lembaran Negara RI",
+      "source_type": "official_promulgated_pdf",
+      "as_of": "2026-10-19",
+      "source_review_method": "Official gazette PDF text indexed and article-specific corroboration; check current official link before external legal reliance",
+      "excerpt_kind": "reviewed_paraphrase_not_verbatim",
+      "excerpt_id": "Pasal 1 mengesahkan Persetujuan Paris atas UNFCCC, dengan naskah asli dan terjemahan yang dilampirkan sebagai bagian tidak terpisahkan dari UU.",
+      "legal_effect_limit": "Ratification is not by itself an approval of individual carbon, data-center or energy projects.",
+      "current_status_certified": false
+    },
+    {
+      "id": "uu16paris_pasal2",
+      "law_node_id": "uu16paris",
+      "citation_label": "UU 16/2016, Pasal 2",
+      "article": "Pasal 2",
+      "page_reference": "LN RI 2016 No. 204, halaman bertanda -3-",
+      "source_url": "https://peraturan.go.id/files/uu16-2016bt.pdf",
+      "publisher": "Peraturan.go.id / Lembaran Negara RI",
+      "source_type": "official_promulgated_pdf",
+      "as_of": "2026-10-19",
+      "source_review_method": "Official gazette PDF text indexed and article-specific corroboration; check current official link before external legal reliance",
+      "excerpt_kind": "reviewed_paraphrase_not_verbatim",
+      "excerpt_id": "Undang-undang mulai berlaku pada tanggal diundangkan. Dokumen Lembaran Negara mencatat pengundangan pada 25 Oktober 2016.",
+      "legal_effect_limit": "The commencement article does not certify no later legal amendment, repeal or new implementing legislation.",
+      "current_status_certified": false
+    }
+  ]
+}
