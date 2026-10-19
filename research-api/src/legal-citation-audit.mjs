@@ -28,12 +28,11 @@ function splitParagraphs(answer){
 }
 function references(text){return [...text.matchAll(citationReg)].map(m=>Number(m[1]));}
 function explicitLawsNear(paragraph,offset){
- // Examine one logical sentence so an unrelated statute elsewhere in the report
- // cannot falsely authorise a legal provision.
- const start=Math.max(paragraph.lastIndexOf(".",offset-1)+1,paragraph.lastIndexOf("\n",offset-1)+1,0);
- const nextStop=[paragraph.indexOf(".",offset),paragraph.indexOf("\n",offset)].filter(x=>x>=0);
- const end=nextStop.length?Math.min(...nextStop):paragraph.length;
- return [...paragraph.slice(start,end).matchAll(lawReg)].map(m=>lawKey(m[1],m[2],m[3]));
+ // Keep common legal abbreviations such as "UU No. 23 Tahun 2014" intact.
+ // A bounded surrounding window is intentionally conservative when multiple
+ // instruments are mixed into one sentence or the author omitted the statute.
+ const context=paragraph.slice(Math.max(0,offset-95),Math.min(paragraph.length,offset+150));
+ return [...context.matchAll(lawReg)].map(m=>lawKey(m[1],m[2],m[3]));
 }
 export function auditLegalArticleCitations(answer,evidence){
  const anchors=anchorsFrom(evidence),violations=[];
