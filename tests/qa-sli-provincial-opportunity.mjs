@@ -80,8 +80,9 @@ test('page integrates existing registers with source bounds, clear user control,
  assert.match(html,/not added to fit scores/i);
  assert.match(html,/2025 provincial values preliminary/i);
  const inline=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
- assert.equal(inline.length,1);
- assert.doesNotThrow(()=>new Function(inline[0]));
+ assert.equal(inline.length,2,'Locale prepaint and provincial dashboard runtime must both remain present');
+ assert.match(inline[0],/sli-chrome-pending/,'Keep language preference prepaint');
+ for(const script of inline)assert.doesNotThrow(()=>new Function(script));
 });
 test('the ranking cannot silently blend political, safety or police figures',()=>{
  assert.doesNotMatch(code,/police_districts|victim_prevalence|dpt_2024|press_freedom|political_risk/);
