@@ -218,7 +218,7 @@ document.addEventListener('keydown',closeSectorMenu);
 // Load the same localized UI runtime on every SLI dashboard; index.html already
 // imports it explicitly, so do not double-initialize there.
 (function bootstrapSLIUniversalLanguage(){
- const current=document.currentScript?.src||document.querySelector('script[src*="/js/sli-navigation.js"]')?.src;
+ const current=document.currentScript?.src||document.querySelector?.('script[src*="/js/sli-navigation.js"]')?.src;
  if(!current)return;
  try{
   if(!window.SLIi18n?.setLanguage){
@@ -226,8 +226,8 @@ document.addEventListener('keydown',closeSectorMenu);
    if(saved==='id'||saved==='en')document.documentElement.lang=saved;
   }
  }catch(_){}
- if(window.SLIi18n?.setLanguage||document.querySelector('script[src*="/js/i18n.js"]'))return;
- if(document.querySelector('script[data-sli-global-i18n]'))return;
+ if(window.SLIi18n?.setLanguage||document.querySelector?.('script[src*="/js/i18n.js"]'))return;
+ if(document.querySelector?.('script[data-sli-global-i18n]'))return;
  const dictionary=document.createElement('script');
  dictionary.src=new URL('./i18n-dictionary.js?v=20261019-sitewide2',current).href;
  dictionary.dataset.sliGlobalI18n='dictionary';
