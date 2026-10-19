@@ -7,6 +7,8 @@ on:
     paths:
       - 'scripts/evaluate_sli_research_agent.mjs'
       - 'tests/fixtures/sli-agent-offline-regression.json'
+      - 'js/sli-investor-chat.mjs'
+      - 'scripts/build_research_unified_index.py'
       - 'research-api/src/claim-evidence-audit.mjs'
       - 'research-api/src/primary-claim-probe.mjs'
       - 'tests/qa-sli-primary-claim-probe.mjs'
@@ -16,6 +18,8 @@ on:
     paths:
       - 'scripts/evaluate_sli_research_agent.mjs'
       - 'tests/fixtures/sli-agent-offline-regression.json'
+      - 'js/sli-investor-chat.mjs'
+      - 'scripts/build_research_unified_index.py'
       - 'research-api/src/claim-evidence-audit.mjs'
       - 'scripts/sli_research_source_adapters.py'
       - '.github/workflows/sli-agent-quality-eval.yml'
