@@ -134,7 +134,7 @@ function drawFull(data){
  const anchor=decodeURIComponent(location.hash).replace(/^#/,'');
  if(anchor.startsWith('term-')){
    const target=data.items.find(x=>'term-'+x.slug===anchor);
-   if(target){domain='all';category='all';query=target.term;limit=50;search.value=query;root.querySelector('#sli-dict-domain').value='all';update();requestAnimationFrame(()=>document.getElementById(anchor)?.scrollIntoView({block:'center'}));return}
+   if(target){domain='all';category='all';query=target.term;limit=50;search.value=query;root.querySelector('#sli-dict-domain').value='all';update();requestAnimationFrame(()=>document.getElementById(anchor)?.scrollIntoView?.({block:'center'}));return}
  }
  update();
 }
