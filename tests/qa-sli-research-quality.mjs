@@ -55,7 +55,7 @@ test("UI shows one readable column and real correction and followup form, preser
  assert.match(css,/\.sli-ra-followup-form textarea/);
  const worker=read("research-api/src/owner-test-worker.mjs");
  assert.match(worker,/nationalEnergyEvidence/);
- assert.match(worker,/owner_staging_source_dated_energy_corpus/);
+ assert.match(worker,/owner_staging_source_dated_corpus/);
  assert.doesNotMatch(page,/sk-[A-Za-z0-9_-]{20,}/);
 });
 
@@ -129,7 +129,7 @@ test("APA reference panel, model statement and gated news monitoring in owner UI
  assert.match(client,/function renderModelStatement/);
  assert.match(client,/sources\.slice\(0,40\)/);
  assert.match(client,/evidence_status==="publisher_page_matched"/);
- assert.match(client,/reportBody\(text\)/);
+ assert.match(client,/reportBody\(text,state\.language\)/);
 });
 
 test("Complete research narratives are not truncated and APA references remain legible",()=>{
