@@ -69,7 +69,8 @@
     "international_law_notes": "Treaties, investment agreements and arbitration rules differ in binding parties, forum and domestic implementation. WTO dispute DS592 is state-to-state and under appeal with a non-functioning Appellate Body in published record; ICSID is investor-state subject to consent, while New York Convention covers arbitral award recognition; UNCITRAL Arbitration Rules operate if adopted. No investor wins/loses automatically.",
     "foreign_law_notes": "Foreign EU and US regulations are separate market-access/transactional applicability branches, not levels in Indonesian hierarchy; check destination, product nomenclature, counterparty, implementation dates, license requirements and foreign jurisdictional scope.",
     "regional_coverage": "Initial verified national and selected local examples. All provincial/city legal sources must be progressively catalogued; no nationwide exhaustive coverage claim.",
-    "source_update_policy": "Automated JDIH/news monitoring creates review candidates; enactment, amendment, repeal and jurisdiction are not automatically legally determined from a news headline or page fingerprint."
+    "source_update_policy": "Automated JDIH/news monitoring creates review candidates; enactment, amendment, repeal and jurisdiction are not automatically legally determined from a news headline or page fingerprint.",
+    "regional_coverage_detail": "Wilayah pada setiap instrumen adalah cakupan administratif asal/otoritas, bukan penetapan bahwa izin atau aturan tersebut diterapkan persis demikian pada setiap proyek. Pemilihan lokasi proyek perlu kajian RTRW, RDTR, KKPR, Perda serta kewenangan lokal."
   },
   "nodes": [
     {
@@ -83,7 +84,8 @@
       "status": "constitutional_foundation",
       "kind": "constitution",
       "owner": "State",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "tap",
@@ -96,7 +98,8 @@
       "status": "not_applicable",
       "kind": "tier_marker",
       "owner": "",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu12",
@@ -109,7 +112,8 @@
       "status": "check_current",
       "kind": "legislation",
       "owner": "Lawmakers",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu6",
@@ -122,7 +126,8 @@
       "status": "enacted",
       "kind": "legislation",
       "owner": "Lawmakers",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu30energy",
@@ -135,7 +140,8 @@
       "status": "check_current",
       "kind": "legislation",
       "owner": "ESDM / DEN",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu30power",
@@ -148,7 +154,8 @@
       "status": "check_current",
       "kind": "legislation",
       "owner": "ESDM / Gatrik",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu22oil",
@@ -161,7 +168,8 @@
       "status": "check_current",
       "kind": "legislation",
       "owner": "ESDM / SKK Migas / BPH Migas",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu4minerba",
@@ -174,7 +182,8 @@
       "status": "amended",
       "kind": "legislation",
       "owner": "ESDM / Minerba",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu3minerba",
@@ -187,7 +196,8 @@
       "status": "amending_instrument",
       "kind": "legislation",
       "owner": "ESDM / Minerba",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu2minerba",
@@ -200,7 +210,8 @@
       "status": "amending_instrument",
       "kind": "legislation",
       "owner": "ESDM / Minerba",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu32env",
@@ -213,7 +224,8 @@
       "status": "check_current",
       "kind": "legislation",
       "owner": "KLH / BPLH",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu27pdp",
@@ -226,7 +238,8 @@
       "status": "enacted",
       "kind": "legislation",
       "owner": "Komdigi",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu23local",
@@ -258,7 +271,8 @@
       "status": "enacted",
       "kind": "general_regulation",
       "owner": "ESDM / DEN",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pp79old",
@@ -271,7 +285,8 @@
       "status": "repealed",
       "kind": "general_regulation",
       "owner": "ESDM / DEN",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pp28",
@@ -284,7 +299,8 @@
       "status": "enacted",
       "kind": "general_regulation",
       "owner": "Investment Ministry / OSS",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pp5old",
@@ -297,7 +313,8 @@
       "status": "repealed",
       "kind": "general_regulation",
       "owner": "Investment Ministry / OSS",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pp14power",
@@ -310,7 +327,8 @@
       "status": "check_current",
       "kind": "general_regulation",
       "owner": "ESDM / Gatrik",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pp25energy",
@@ -323,7 +341,8 @@
       "status": "check_current",
       "kind": "general_regulation",
       "owner": "ESDM",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pp22env",
@@ -336,7 +355,8 @@
       "status": "check_current",
       "kind": "general_regulation",
       "owner": "KLH / BPLH",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pp96min",
@@ -349,7 +369,8 @@
       "status": "amended",
       "kind": "general_regulation",
       "owner": "ESDM / Minerba",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pp25min",
@@ -362,7 +383,8 @@
       "status": "amending_instrument",
       "kind": "general_regulation",
       "owner": "ESDM / Minerba",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pres112",
@@ -375,7 +397,8 @@
       "status": "check_current",
       "kind": "presidential_regulation",
       "owner": "President / ESDM",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pres14ccs",
@@ -388,7 +411,8 @@
       "status": "check_current",
       "kind": "presidential_regulation",
       "owner": "President / ESDM",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pres110carbon",
@@ -401,7 +425,8 @@
       "status": "check_current",
       "kind": "presidential_regulation",
       "owner": "President / KLH",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pres22ruen",
@@ -414,7 +439,8 @@
       "status": "transition_review",
       "kind": "presidential_regulation",
       "owner": "ESDM / DEN",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "perda_jabar",
@@ -427,7 +453,8 @@
       "status": "listed_active_review_alignment",
       "kind": "provincial_regulation",
       "owner": "West Java",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Jawa Barat"
     },
     {
       "id": "perda_jateng",
@@ -440,7 +467,8 @@
       "status": "listed_active_review_alignment",
       "kind": "provincial_regulation",
       "owner": "Central Java",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Jawa Tengah"
     },
     {
       "id": "perda_kepri",
@@ -453,7 +481,8 @@
       "status": "listed_active_review_alignment",
       "kind": "provincial_regulation",
       "owner": "Riau Islands",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Kepulauan Riau"
     },
     {
       "id": "permen11",
@@ -466,7 +495,8 @@
       "status": "check_current",
       "kind": "ministerial_regulation",
       "owner": "ESDM / Gatrik",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "permen5",
@@ -479,7 +509,8 @@
       "status": "enacted",
       "kind": "ministerial_regulation",
       "owner": "ESDM / PLN",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "permen2solar",
@@ -492,7 +523,8 @@
       "status": "check_current",
       "kind": "ministerial_regulation",
       "owner": "ESDM / PLN",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "permen8",
@@ -505,7 +537,8 @@
       "status": "check_current",
       "kind": "ministerial_regulation",
       "owner": "ESDM",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "permen2service",
@@ -518,7 +551,8 @@
       "status": "amending_instrument",
       "kind": "ministerial_regulation",
       "owner": "ESDM / PLN",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "permen14oil",
@@ -531,7 +565,8 @@
       "status": "check_current",
       "kind": "ministerial_regulation",
       "owner": "ESDM / Migas",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "kepmen188",
@@ -544,7 +579,8 @@
       "status": "issued_plan_not_commissioned",
       "kind": "administrative_decision",
       "owner": "ESDM / PLN",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "kepmen77",
@@ -557,7 +593,8 @@
       "status": "issued_review_scope",
       "kind": "administrative_decision",
       "owner": "ESDM / PLN",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "perdirjen2007",
@@ -570,7 +607,8 @@
       "status": "archival_not_verified",
       "kind": "director_general_regulation",
       "owner": "Dirjen Gatrik (historic)",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "slo",
@@ -583,7 +621,8 @@
       "status": "project_specific",
       "kind": "implementation_evidence",
       "owner": "ESDM / accredited inspectors",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "amdal",
@@ -596,7 +635,8 @@
       "status": "project_specific",
       "kind": "implementation_evidence",
       "owner": "KLH / regional authorities",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "oss",
@@ -609,7 +649,8 @@
       "status": "project_specific",
       "kind": "implementation_evidence",
       "owner": "Investment Ministry / OSS",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "grid",
@@ -622,7 +663,8 @@
       "status": "project_specific",
       "kind": "implementation_evidence",
       "owner": "PLN / PLN Batam",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pdp",
@@ -635,7 +677,8 @@
       "status": "project_specific",
       "kind": "implementation_evidence",
       "owner": "Komdigi / operating entity",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "carbon_mrv",
@@ -648,7 +691,8 @@
       "status": "project_specific",
       "kind": "implementation_evidence",
       "owner": "KLH / carbon ecosystem",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "keppres41batam",
@@ -661,7 +705,8 @@
       "status": "archival_not_verified",
       "kind": "presidential_decree_historical",
       "owner": "President / BP Batam",
-      "evidence": "official_bp_batam_history"
+      "evidence": "official_bp_batam_history",
+      "region": "Indonesia"
     },
     {
       "id": "uu26spatial",
@@ -674,7 +719,8 @@
       "status": "check_current",
       "kind": "legislation",
       "owner": "ATR/BPN; PUPR; Pemda",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu25investment",
@@ -687,7 +733,8 @@
       "status": "check_current",
       "kind": "legislation",
       "owner": "Investasi/BKPM; Kemenkeu",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "uu3industry",
@@ -700,7 +747,8 @@
       "status": "check_current",
       "kind": "legislation",
       "owner": "Kemenperin",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "pp21spatial",
@@ -713,7 +761,8 @@
       "status": "check_current",
       "kind": "general_regulation",
       "owner": "ATR/BPN; Pemda",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "permenatr13",
@@ -726,7 +775,8 @@
       "status": "listed_active_review_alignment",
       "kind": "ministerial_regulation",
       "owner": "ATR/BPN",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "permenlhk4",
@@ -739,7 +789,8 @@
       "status": "check_current",
       "kind": "ministerial_regulation",
       "owner": "KLH/BPLH",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "permenbkpm5",
@@ -752,7 +803,8 @@
       "status": "enacted",
       "kind": "ministerial_regulation",
       "owner": "Investasi/BKPM",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "permenperin37",
@@ -765,7 +817,8 @@
       "status": "enacted",
       "kind": "ministerial_regulation",
       "owner": "Kemenperin",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "perda_bekasi",
@@ -778,7 +831,8 @@
       "status": "listed_active_review_alignment",
       "kind": "regency_regulation",
       "owner": "Pemkab Bekasi",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Kabupaten Bekasi, Jawa Barat"
     },
     {
       "id": "pergub_jateng29",
@@ -791,7 +845,8 @@
       "status": "listed_active_review_alignment",
       "kind": "governor_regulation",
       "owner": "Pemprov Jawa Tengah",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Jawa Tengah"
     },
     {
       "id": "perbup_bekasi7",
@@ -804,7 +859,8 @@
       "status": "listed_active_review_alignment",
       "kind": "regent_regulation",
       "owner": "Pemkab Bekasi",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Kabupaten Bekasi, Jawa Barat"
     },
     {
       "id": "perwali_semarang2",
@@ -817,7 +873,8 @@
       "status": "listed_active_review_alignment",
       "kind": "mayor_regulation",
       "owner": "Pemkot Semarang",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Kota Semarang, Jawa Tengah"
     },
     {
       "id": "kkpr",
@@ -830,7 +887,8 @@
       "status": "project_specific",
       "kind": "implementation_evidence",
       "owner": "ATR/BPN; Investasi/BKPM; Pemda",
-      "evidence": "official_record"
+      "evidence": "official_record",
+      "region": "Indonesia"
     },
     {
       "id": "inpres1_2025",
@@ -843,7 +901,8 @@
       "status": "issued_directive",
       "kind": "presidential_instruction",
       "owner": "Presiden; Kemenkeu; Kemendagri",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Indonesia"
     },
     {
       "id": "inpres14_2025",
@@ -856,7 +915,8 @@
       "status": "issued_directive",
       "kind": "presidential_instruction",
       "owner": "Presiden; Kementerian lintas sektor; Pemda",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Indonesia"
     },
     {
       "id": "inpres16_2025",
@@ -869,7 +929,8 @@
       "status": "issued_directive",
       "kind": "presidential_instruction",
       "owner": "Presiden; Menko Pangan; Menteri ATR/BPN",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Indonesia"
     },
     {
       "id": "uu7wto",
@@ -882,7 +943,8 @@
       "status": "enacted",
       "kind": "ratification_legislation",
       "owner": "Indonesia / Kemendag",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Indonesia"
     },
     {
       "id": "gattxi",
@@ -895,7 +957,8 @@
       "status": "treaty_obligation",
       "kind": "wto_multilateral_agreement",
       "owner": "WTO Members / Kemendag",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "scm",
@@ -908,7 +971,8 @@
       "status": "treaty_obligation",
       "kind": "wto_multilateral_agreement",
       "owner": "WTO Members / Kemendag",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "trims",
@@ -921,7 +985,8 @@
       "status": "treaty_obligation",
       "kind": "wto_multilateral_agreement",
       "owner": "WTO Members / Kemendag",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "gats",
@@ -934,7 +999,8 @@
       "status": "treaty_obligation",
       "kind": "wto_multilateral_agreement",
       "owner": "WTO Members / Kemendag",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "dsu",
@@ -947,7 +1013,8 @@
       "status": "treaty_obligation",
       "kind": "wto_dispute_mechanism",
       "owner": "WTO Members",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "ds592",
@@ -960,7 +1027,8 @@
       "status": "dispute_appealed_not_final",
       "kind": "wto_case_not_law",
       "owner": "WTO / Kemendag / ESDM",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "uu30arb",
@@ -973,7 +1041,8 @@
       "status": "check_current",
       "kind": "arbitration_legislation",
       "owner": "Pengadilan / parties",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Indonesia"
     },
     {
       "id": "perma3arb",
@@ -986,7 +1055,8 @@
       "status": "listed_active_review_alignment",
       "kind": "judicial_regulation",
       "owner": "Mahkamah Agung",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Indonesia"
     },
     {
       "id": "kp34newyork",
@@ -999,7 +1069,8 @@
       "status": "ratification_instrument",
       "kind": "presidential_ratification_decision",
       "owner": "Indonesia / Pengadilan",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Indonesia"
     },
     {
       "id": "uu5icsid",
@@ -1012,7 +1083,8 @@
       "status": "check_current",
       "kind": "investment_arbitration_ratification",
       "owner": "Indonesia / ICSID",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Indonesia"
     },
     {
       "id": "icsid",
@@ -1025,7 +1097,8 @@
       "status": "convention_in_force_conditional_jurisdiction",
       "kind": "investment_state_arbitration",
       "owner": "Indonesia / ICSID",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "newyork",
@@ -1038,7 +1111,8 @@
       "status": "convention_in_force",
       "kind": "foreign_award_recognition",
       "owner": "Indonesia / Courts",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "uncitral",
@@ -1051,7 +1125,8 @@
       "status": "contractual_if_adopted",
       "kind": "arbitration_rules_not_treaty",
       "owner": "UNCITRAL / parties",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "bit",
@@ -1064,7 +1139,8 @@
       "status": "project_specific",
       "kind": "treaty_applicability_workstream",
       "owner": "Treaty parties / Investor",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "paris",
@@ -1077,7 +1153,8 @@
       "status": "treaty_obligation",
       "kind": "multilateral_environment_agreement",
       "owner": "UNFCCC Parties / KLH",
-      "evidence": "primary_official"
+      "evidence": "primary_official",
+      "region": "Internasional"
     },
     {
       "id": "uu16paris",
@@ -1110,7 +1187,8 @@
       "status": "foreign_rule_conditional_scope",
       "kind": "foreign_market_regulation_not_indonesian_law",
       "owner": "European Union",
-      "evidence": "official_foreign_regulation"
+      "evidence": "official_foreign_regulation",
+      "region": "Internasional"
     },
     {
       "id": "eu_crma",
@@ -1123,7 +1201,8 @@
       "status": "foreign_rule_conditional_scope",
       "kind": "foreign_market_regulation_not_indonesian_law",
       "owner": "European Union",
-      "evidence": "official_foreign_regulation"
+      "evidence": "official_foreign_regulation",
+      "region": "Internasional"
     },
     {
       "id": "eu_batteries",
@@ -1136,7 +1215,8 @@
       "status": "foreign_rule_conditional_scope",
       "kind": "foreign_market_regulation_not_indonesian_law",
       "owner": "European Union",
-      "evidence": "official_foreign_regulation"
+      "evidence": "official_foreign_regulation",
+      "region": "Internasional"
     },
     {
       "id": "us_bis_ear",
@@ -1149,7 +1229,8 @@
       "status": "foreign_rule_conditional_scope",
       "kind": "foreign_market_regulation_not_indonesian_law",
       "owner": "U.S. Bureau of Industry and Security",
-      "evidence": "official_foreign_regulation"
+      "evidence": "official_foreign_regulation",
+      "region": "Internasional"
     },
     {
       "id": "uu1hkpd2022",
