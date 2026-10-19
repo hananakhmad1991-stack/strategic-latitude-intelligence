@@ -18,6 +18,7 @@ test('World Bank selects exact Indonesia national series rather than province or
  assert.deepEqual(worldBankCandidates('inflasi Jawa Barat'),[]);
  assert.deepEqual(worldBankCandidates('PDRB Provinsi Papua'),[]);
  assert.deepEqual(worldBankCandidates('analisis kelayakan PLTU Batam'),[]);
+ assert.deepEqual(worldBankCandidates('inflasi China'),[]);
  const d=normaliseWorldBankResponse(wb,worldBankCandidates('pertumbuhan ekonomi')[0],'2026-10-19');
  assert.equal(d.metric.value,4.9);assert.equal(d.period,'2025');
  assert.equal(d.source_date,'2026-10-19');assert.equal(d.metric.code,'NY.GDP.MKTP.KD.ZG');
