@@ -11,7 +11,7 @@ import {buildResearchCharts} from "./chart-data.mjs";
 import {auditReport} from "./report-audit.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
-import {policyLegalEvidence} from "./policy-corpus.mjs";
+import {policyLegalEvidence,selectPolicyEvidence} from "./policy-corpus.mjs";
 import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
 import {fetchReviewedSecondaryArticles} from "./secondary-news.mjs";
 import {fetchMonitoringEvidence,selectMonitoringNewsEvidence} from "./monitoring-evidence.mjs";
@@ -130,7 +130,7 @@ export default{
   // Law-specific owner queries can draw on source-linked public SLI policy metadata.
   // This is not full legal text and never an automatic claim of current enforceability.
   const legalQuestion=/\b(?:uu|pp)\s*\d+|peraturan|regulasi|undang.undang|perpres|perda|pergub|jdih|izin|perizinan|otonomi|legal|regulatory|regulation|law\b|compliance|kewenangan daerah/i.test(payload.question);
-  const legalEvidence=legalQuestion?selectResearchEvidence(policyLegalEvidence(),payload.question,payload.history,"pro",4):[];
+  const legalEvidence=legalQuestion?selectPolicyEvidence(payload.question,4,policyLegalEvidence()):[];
   const primaryEvidence=selectResearchEvidence(DATA,payload.question,payload.history,"pro",legalEvidence.length?5:9);
   const [monitored,reviewed]=await Promise.all([fetchMonitoringEvidence(),fetchReviewedSecondaryArticles()]);
   const reviewedEvidence=selectResearchEvidence(reviewed.articles,payload.question,payload.history,"pro",1);
