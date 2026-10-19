@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-19T21:47:06.109519+00:00",
-  "last_attempt_at_utc": "2026-10-19T21:47:06.109519+00:00",
+  "generated_at_utc": "2026-10-19T22:46:14.759884+00:00",
+  "last_attempt_at_utc": "2026-10-19T22:46:14.759884+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
@@ -570,6 +570,21 @@
       ],
       "domestic": [
         {
+          "id": "campus-projects-investasi-ebt-untuk-data-center-kontan",
+          "title": "Investasi EBT untuk Data Center - KONTAN",
+          "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBJQWVHNjBGa2ZmRUp2SVVHZXQ5aThlNWtPeFhhRzhwVEU3ZG9KNUVQZnpWQnpvUmtuNzJNVENna2hjcTdMcXhpM2Ytb3FDelZmMW1pVTZ6SFBzOEJQM3hSVkdrNnpMN0J5M3V1c3NCT2p3bWM?oc=5",
+          "publisher": "KONTAN",
+          "publisher_url": "https://insight.kontan.co.id",
+          "published_at_utc": "2026-10-19T21:42:53+00:00",
+          "sector": "ai",
+          "scope": "domestic",
+          "topic_id": "campus_projects",
+          "channel": "Data-center campuses and implementation",
+          "impact_pathway": "Track announced megawatts separately from grid energisation, commissioning, leased capacity and AI GPU deployments.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
           "id": "power-water-indonesia-berlomba-bangun-data-center-ini-potensinya-bagi-ekonomi-detiknews",
           "title": "Indonesia Berlomba Bangun Data Center, Ini Potensinya bagi Ekonomi - detikNews",
           "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQaW9oYmwyYVAwM2tNNDg4NThjREhGVFFjWV96TGM2ajNTODh0dHFVRUhCSVZaTnVwRlpDcHZnbWJTTlZ0MHFTQ0J6VjJIUWZtQmZMSmZMY1FfeFF2OFZUNC01RXZSQU5iMVotaUxQb2NLcnd3bjRTb1l1UjNRYVNySlY2a2Zxb1NMb0hIWFdzWjAxWG5ZaTBRV3FqWXNOdEJLeC1oTkNXbDTSAa4BQVVfeXFMTWFIVVVJYjBLZjhqejhIaTdncWdpU3o5enoxUEVzNkg2azN0REZyNkV3UXJ2eEJpby1nZ2xRMDRDa3M4RmpXbVNFck1KWFF0dEU4Z0NfMG5Ed3NJZ3dvNHhTMUVTZTNuOUVuWkJ0MGRweTNBODFOazBURlU5TGotbWo4bC1Sc19DMjRfSFFLUzRMWjgxVmRFOF9Pc2hSN3IzeHBIMko3eEg1Y2JFNV9B?oc=5",
@@ -675,7 +690,7 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
-          "id": "campus-projects-data-center-konsumsi-air-ratusan-juta-galon-perusahaan-putar-otak-cnbc-indonesia",
+          "id": "power-water-data-center-konsumsi-air-ratusan-juta-galon-perusahaan-putar-otak-cnbc-indonesia",
           "title": "Data Center Konsumsi Air Ratusan Juta Galon, Perusahaan Putar Otak - CNBC Indonesia",
           "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQR2MwUGgxZ3oxdlRMM2xqRDZkeF9yRnBDSG1WWGJpTkttR2g1R1M5d3VWSU1ORmlQMFBITWlmRXR5SDVjR0xyLWZmTTFqMlMyWHo4Q2RGakVtY3NieHRUQVJLd01KYlZKY3JlTGNKYzc1ZFBGeXdidGNqdTU1MDJvc0NtTmRndndDbGktWFZIN0dhNVB3dC1xdDRiZG1razN1UnNnRm5BcEgzeVEzdHVCNXRmbE5lcXE5TGF0dmJPaE9QdlZIWHkyZWt3?oc=5",
           "publisher": "CNBC Indonesia",
@@ -683,9 +698,9 @@
           "published_at_utc": "2026-10-10T07:00:00+00:00",
           "sector": "ai",
           "scope": "domestic",
-          "topic_id": "campus_projects",
-          "channel": "Data-center campuses and implementation",
-          "impact_pathway": "Track announced megawatts separately from grid energisation, commissioning, leased capacity and AI GPU deployments.",
+          "topic_id": "power_water",
+          "channel": "Grid, water and cooling",
+          "impact_pathway": "Power contracts, cooling and water availability can affect delivery; contracted MVA is not operating IT MW.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -729,7 +744,7 @@
     },
     "ai": {
       "geopolitical": 13,
-      "domestic": 10
+      "domestic": 11
     }
   },
   "topic_status": [
