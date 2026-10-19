@@ -1,46 +1,43 @@
-name: SLI Food & Agriculture — Official Source Baseline QA
+name: SLI Food & Agriculture — Source & Dashboard Quality
 on:
   workflow_dispatch:
+  schedule:
+    # Weekly validation of already curated baseline; no claim of live numerical sync.
+    - cron: '27 23 * * 0'
   push:
     branches: [main]
     paths:
+      - 'food-agriculture-intelligence.html'
+      - 'css/food-agriculture-intelligence.css'
+      - 'js/food-agriculture-intelligence.js'
+      - 'data/food-agriculture-2026.json'
+      - 'js/sli-navigation.js'
+      - 'tests/qa-sli-food-agriculture.mjs'
       - 'scripts/build_food_agriculture.py'
-      - 'tests/test_food_agriculture_snapshot.py'
       - '.github/workflows/sli-food-agriculture-source-sync.yml'
-  schedule:
-    # Weekly 06:27 WIB: frozen June benchmark only; checks official PDF, no automatic promotion of newer editions.
-    - cron: '27 23 * * 0'
 permissions:
-  contents: write
-concurrency:
-  group: sli-food-agriculture-official-baseline
-  cancel-in-progress: false
+  contents: read
 jobs:
-  validate-publisher-pdf:
+  verify-curated-source-snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 13
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install pinned PDF table extractors
-        run: python -m pip install --disable-pip-version-check --quiet 'PyMuPDF==1.26.5' 'pdfplumber==0.11.7'
-      - name: Parse 63 original Pusdatin tables and guard numerical identities
-        run: python scripts/build_food_agriculture.py --out data/food-agriculture-june-2026.json
-      - name: Validate source-dated sector data schema and coverage
-        run: python tests/test_food_agriculture_snapshot.py
-      - name: Commit validated source snapshot only when numeric data changed
-        if: github.event_name != 'pull_request'
+      - name: Static source/model/UX review
         run: |
-          set -euo pipefail
-          if git diff --quiet -- data/food-agriculture-june-2026.json && [ -f data/food-agriculture-june-2026.json ]; then
-            echo "No validated source data change."
-            exit 0
-          fi
-          git config user.name 'sli-data-intelligence[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- data/food-agriculture-june-2026.json
-          git diff --cached --quiet && exit 0
-          git commit -m 'data(food): publish validated immutable June 2026 Pusdatin baseline [skip ci]'
-          git push
+          node --check js/food-agriculture-intelligence.js
+          node --check js/sli-navigation.js
+          python -m py_compile scripts/build_food_agriculture.py
+          node --test tests/qa-sli-food-agriculture.mjs
+      - name: Disclose PDF source-sync status and newer-publication requirement
+        run: |
+          echo '## Food & Agriculture publication provenance' >> "$GITHUB_STEP_SUMMARY"
+          echo 'June 2026 Kementan 63-table baseline is dated and validated against archived extracted records.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Original June PDF download at Pusdatin returns HTTP 403 from GitHub Actions runner. Automatic numerical promotion of newer editions is **not operational**.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The dashboard does not claim a live October price or auto-updated NTP. To refresh, ingest the newer official PDF through a reviewed, source-backed extraction workflow and rerun tests.' >> "$GITHUB_STEP_SUMMARY"
