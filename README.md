@@ -15,9 +15,15 @@ Independent, open-source-based analysis of Indonesia's strategic investment, ene
 - `membership-api/tests/auth.test.mjs`, `tests/qa-sli-membership.mjs` and `.github/workflows/sli-membership-qa.yml` cover token forgery, authorisation, expiry, private storage, origin restrictions, catalog truth and absence of unintended payments.
 - Next production dependencies: confirmed business identity, legal pages, controlled domain, identity/hosting account setup, selected payment provider and approved pricing, verified payment webhook and refund/cancel workflow, data licensing, staged security checks. No automatic charging without these authorizations.
 
+## Policy & Regulatory Intelligence AI · First stage (19 October 2026)
+
+- The Policy explorer now offers an evidence-first question input over the existing curated 100-node / 131-relation legal graph. Results show sourced instruments and amendment-context caveats; **this client-side retrieval is not itself a generative legal opinion**.
+- One-time session handoff opens a prepared prompt in Research AI without auto-submitting it. Owner Test backend now includes an optional, owner-only public-law metadata RAG bridge (91 source-linked law records) with explicit no-full-text/no-article-level-verdict rules. **Cloudflare Worker must be redeployed separately** to use the new bridge; Pro/Enterprise generative backend remains disabled.
+- See [deployment and legal-evidence safeguards](docs/sli-policy-ai-rollout.md) and the Policy AI QA workflow. Publication of source code or passing CI does not establish complete regulatory coverage or current legal applicability.
+
 ## SLI Research AI Assistant · Conversational Research (17 October 2026)
 
-- **Owner Test Mode is prepared, NOT deployed**: a separate Cloudflare Worker can call a real generative model on a limited set of existing public SLI snippets with two private server-side secrets. It does not require unfinished subscription login, but remains restricted to the owner via a long random token and per-minute limits. Follow [OWNER_TEST_SETUP.md](research-api/OWNER_TEST_SETUP.md). Never paste an OpenAI API key or test token in GitHub source or this chat.
+- **Owner Test Mode is deployed for owner-only staging (as documented 18 October 2026), but model responses require live validation**: a separate Cloudflare Worker can call a generative model on limited public SLI snippets with private server secrets. Updated Policy legal-index retrieval requires a SEPARATE Worker redeployment after the 19 October code change. It does not require unfinished subscription login, but remains restricted to the owner via a long random token and per-minute limits. Follow [OWNER_TEST_SETUP.md](research-api/OWNER_TEST_SETUP.md). Never paste an OpenAI API key or test token in GitHub source or this chat.
 - The main research page now keeps the prompt above the fold and places the owner test control below it; redundant full site navigation has been removed from this focused workspace. The secure owner test endpoint must be deployed and its public URL inserted in `data/sli-research-assistant-config.json` before the owner test input becomes usable.
 
 
