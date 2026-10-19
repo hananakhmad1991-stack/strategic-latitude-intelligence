@@ -76,7 +76,7 @@ function drawList(){
  $("lawResults").innerHTML=rows.length?rows.slice(0,state.limit).map(itemCard).join(""):'<div class="empty-state">Tidak ada dokumen dalam indeks ini yang cocok. Coba hapus filter, atau lanjutkan pencarian ke portal resmi.</div>';
  $("loadMore").hidden=rows.length<=state.limit;
  bindLaw($("lawResults"));
- $("sourceSearch").href="https://peraturan.bpk.go.id/Search?keywords="+encodeURIComponent(state.q||"peraturan");
+ $("sourceSearch").href="https://peraturan.bpk.go.id/Search?search="+encodeURIComponent(state.q||"peraturan");
  $("sourceSearch").title="Cari langsung pada portal JDIH BPK";
  $("nationalSearch").href="https://peraturan.go.id/";
  $("regionHint").textContent=state.region==="all"?"": "Filter wilayah menampilkan aturan daerah terindeks; hukum pusat tetap perlu diperiksa untuk setiap proyek.";
@@ -95,7 +95,7 @@ function drawDetails(){
  const n=index.get(state.selected);
  if(!n){$("detailBody").innerHTML='<div class="detail-placeholder"><div class="placeholder-symbol">§</div><h3>Pilih regulasi</h3><p>Klik hasil di sebelah kiri untuk melihat status, riwayat perubahan, peraturan terkait, dan sumber resmi.</p></div>';return}
  const relations=relatedCards(n),law=relations.filter(x=>legalTypes.has(x.type)),other=relations.filter(x=>!legalTypes.has(x.type));
- const dateInfo=n.verified_at?"Tinjauan sumber terakhir: "+n.verified_at:"Status belum dikonfirmasi ulang secara menyeluruh";
+ const watch=monitor?.watched_law_records?.[n.id];const latestCheck=watch?.last_success_utc?" · Portal sumber diperiksa otomatis: "+watch.last_success_utc.slice(0,10):"";const changedAlert=watch?.latest_candidate_review==="source_page_metadata_changed_review_required"?" · Perubahan halaman resmi perlu ditinjau":"";const dateInfo=(n.verified_at?"Status ditelaah: "+n.verified_at:"Status belum dikonfirmasi ulang secara menyeluruh")+latestCheck+changedAlert;
  const legalHistory=law.length?law.map(r=>linkChip(r,index)).join(""):'<p class="quiet">Belum ada relasi amandemen atau pencabutan yang tervalidasi dalam indeks SLI. Ini <b>bukan</b> bukti tidak ada perubahan.</p>';
  const linked=other.length?other.slice(0,12).map(r=>linkChip(r,index)).join(""):'<p class="quiet">Belum ada relasi sektor lain yang dipetakan.</p>';
  $("detailBody").innerHTML='<div class="detail-kicker">'+safe(types[n.tier]||n.tier)+' · '+safe(regionOf(n))+'</div>'+
@@ -110,7 +110,7 @@ function drawDetails(){
  bindLaw($("detailBody"));
  $("shareReg").onclick=()=>{const url=new URL(window.location.href);url.searchParams.set("law",n.id);navigator.clipboard?.writeText(url.toString()).then(()=>{$("shareReg").textContent="Tautan tersalin";}).catch(()=>{$("shareReg").textContent="Salin lewat address bar";});};
 }
-function choose(id){state.selected=id;drawList();drawDetails();let url=new URL(window.location.href);url.searchParams.set("law",id);history.replaceState(null,"",url.toString());if(window.matchMedia("(max-width:900px)").matches)$("details").scrollIntoView({behavior:"smooth",block:"start"});}
+function choose(id){if(!getFiltered().some(n=>n.id===id)){state.q="";state.topic="all";state.region="all";state.tier="all";state.status="all";state.tab="all";state.limit=20;for(const k of ["query","topic","region","tier","status"])$(k).value=k==="query"?"":"all";document.querySelectorAll("[data-tab]").forEach(b=>{b.classList.toggle("active",b.dataset.tab==="all");b.setAttribute("aria-selected",String(b.dataset.tab==="all"))});$("catalogue").hidden=false;$("alertsPanel").hidden=true;}state.selected=id;drawList();drawDetails();let url=new URL(window.location.href);url.searchParams.set("law",id);history.replaceState(null,"",url.toString());if(window.matchMedia("(max-width:900px)").matches)$("details").scrollIntoView({behavior:"smooth",block:"start"});}
 function setTab(v){state.tab=v;state.limit=20;document.querySelectorAll("[data-tab]").forEach(b=>{const on=b.dataset.tab===v;b.classList.toggle("active",on);b.setAttribute("aria-selected",String(on));});$("catalogue").hidden=v==="alerts";$("alertsPanel").hidden=v!=="alerts";if(v==="alerts")renderMonitor();else drawList();}
 function addOptions(id,entries){const el=$(id);for(const [value,label] of entries){const opt=document.createElement("option");opt.value=value;opt.textContent=label;el.appendChild(opt);}}
 function exportCsv(){
@@ -142,7 +142,7 @@ async function start(){
   addOptions("region",[...new Set(db.nodes.map(regionOf))].sort((a,b)=>a.localeCompare(b,"id")).map(x=>[x,x]));
   addOptions("tier",[...new Set(db.nodes.map(n=>n.tier))].sort().map(x=>[x,types[x]||x]));
   const initialId=new URL(window.location.href).searchParams.get("law");
-  state.selected=ids.has(initialId)?initialId:(db.nodes.some(n=>n.id==="uu23local")?"uu23local":db.nodes[0]?.id);
+  state.selected=ids.has(initialId)?initialId:getFiltered()[0]?.id;
   for(const [id,key] of [["query","q"],["topic","topic"],["region","region"],["tier","tier"],["status","status"],["sort","sort"]]){$(id).addEventListener(id==="query"?"input":"change",ev=>{state[key]=ev.target.value;state.limit=20;drawList();});}
   document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>setTab(b.dataset.tab)));
   $("resetAll").addEventListener("click",()=>{for(const id of ["query","topic","region","tier","status","sort"])$(id).value=id==="query"?"":id==="sort"?"priority":"all";Object.assign(state,{q:"",topic:"all",region:"all",tier:"all",status:"all",sort:"priority",limit:20});setTab("all");});
@@ -152,7 +152,7 @@ async function start(){
   for(const btn of document.querySelectorAll("[data-shortcut]"))btn.addEventListener("click",()=>{const id=btn.dataset.shortcut;state.q="";$("query").value="";state.topic="all";$("topic").value="all";setTab("all");choose(id);});
   setTab("all");drawDetails();
   // Retain source attribution, even when monitoring fails.
-  fetch("./data/regulatory-monitor.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{monitor=j;if(state.tab==="alerts")renderMonitor()}).catch(()=>{monitor=null});
+  fetch("./data/regulatory-monitor.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{monitor=j;drawDetails();if(state.tab==="alerts")renderMonitor()}).catch(()=>{monitor=null});
  }catch(error){$("lawResults").innerHTML='<p class="empty-state">Registri belum bisa dimuat: '+safe(error.message)+'. Coba muat ulang atau gunakan portal hukum resmi.</p>';$("detailBody").innerHTML='<p class="quiet">Panel detail menunggu data yang valid.</p>';}
 }
 document.addEventListener("DOMContentLoaded",start);
