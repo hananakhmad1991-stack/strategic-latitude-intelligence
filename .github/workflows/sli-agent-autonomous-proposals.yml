@@ -35,7 +35,22 @@ jobs:
         run: |
           node --check scripts/sli-agent-auto-propose.mjs
           node --test tests/qa-sli-agent-self-eval.mjs tests/qa-sli-agent-auto-propose.mjs tests/qa-sli-method-execution-v2.mjs tests/qa-sli-cross-sector-evidence-v2.mjs
+      - name: Block overlapping proposals while an agent PR awaits owner review
+        id: review_gate
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          OPEN=$(gh pr list --repo "$REPO" --state open --limit 100 --json headRefName --jq '[.[] | select(.headRefName | startswith("sli-agent/method-"))] | length')
+          if [ "$OPEN" -gt 0 ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Found $OPEN pending agent PR(s): pause proposals until human approval or closure."
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
       - name: Identify previously proposed improvement branches
+        if: steps.review_gate.outputs.ready == 'true'
         run: |
           set -euo pipefail
           # Keep completed or still-reviewed proposals out of future auto-patch selection.
@@ -47,6 +62,7 @@ jobs:
           echo "SLI_AGENT_PROPOSED_IDS=$EXISTING" >> "$GITHUB_ENV"
           echo "Previously proposed method candidates: ${EXISTING:-none}"
       - name: Generate at most one reviewed, bounded source patch
+        if: steps.review_gate.outputs.ready == 'true'
         id: diff
         run: |
           mkdir -p artifacts
@@ -63,7 +79,7 @@ jobs:
           fi
           echo "changed=true" >> "$GITHUB_OUTPUT"
       - name: Verify proposed code and newly added regression tests
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.review_gate.outputs.ready == 'true' && steps.diff.outputs.changed == 'true'
         run: |
           node --check js/sli-method-aliases.mjs
           node --check js/sli-analytical-core.mjs
@@ -77,7 +93,7 @@ jobs:
           if-no-files-found: warn
           retention-days: 30
       - name: Create separate branch and DRAFT PR, never merge or deploy
-        if: steps.diff.outputs.changed == 'true'
+        if: steps.review_gate.outputs.ready == 'true' && steps.diff.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
