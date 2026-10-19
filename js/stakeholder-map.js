@@ -165,7 +165,7 @@ function overview(svg,data,choose){
  text(svg,cx,cy-4,"ENERGY",{"text-anchor":"middle",fill:"#f5f4eb","font-size":24,"font-weight":700,"letter-spacing":1});
  text(svg,cx,cy+18,"GOVERNANCE",{"text-anchor":"middle",fill:"#f5f4eb","font-size":16,"font-weight":600,"letter-spacing":1.4});
  const count=data.layers.reduce((sum,x)=>sum+x.actors.length,0);
- text(svg,cx,cy+43,count+" actors · "+data.layers.length+" branches",{"text-anchor":"middle",fill:"#a4c3d7","font-size":11});
+ text(svg,cx,cy+43,count+(isID()?" pelaku · ":" actors · ")+data.layers.length+(isID()?" kelompok":" branches"),{"text-anchor":"middle",fill:"#a4c3d7","font-size":11});
  positions.forEach(([x,y],i)=>{
   const w=238,h=88,c=palette[i],g=sv("g",{class:"stake-svg-node"}); 
   const rect=sv("rect",{x:x-w/2,y:y-h/2,width:w,height:h,rx:14,fill:"#142d43",stroke:c,"stroke-width":1.35});
@@ -189,7 +189,7 @@ function layerGraph(svg,layer,index,select,back,selectedName){
  const short=titles[index];
  text(hub,62,cy-37,short[0],{fill:c,"font-size":15,"font-weight":700,"letter-spacing":1});
  text(hub,62,cy-12,short[1],{fill:"#eff5f7","font-size":19,"font-weight":700});
- text(hub,62,cy+20,actors.length+" institutions & actors",{fill:"#accbda","font-size":12});
+ text(hub,62,cy+20,actors.length+(isID()?" lembaga dan pelaku":" institutions & actors"),{fill:"#accbda","font-size":12});
  text(hub,62,cy+45,"SELECT A NODE →",{fill:c,"font-size":10,"letter-spacing":1.1});
  interactive(hub,back,"Back to main energy stakeholder map");
  const positions=actors.map((a,i)=>{
@@ -332,7 +332,7 @@ window.renderSLIStakeholderMap=function(root,data,restore){
  const zoomHint=$("div","stake-hint","Select a highlighted node to drill down");
  figure.append(plotTitle,canvas,mobile,zoomHint);layout.append(figure,inspector);wrapper.append(layout);
  const legend=$("div","stake-legend");
- const note=$("p","stake-disclaimer",data.warning||"Analytical policy influence only. Not statutory reporting lines.");
+ const note=$("p","stake-disclaimer",isID()?"Peta ini menjelaskan hubungan fungsional secara analitis, bukan garis komando menurut hukum. Periksa sumber, tanggal dan batasan pada setiap profil.":data.warning||"Analytical policy influence only. Not statutory reporting lines.");
  wrapper.append(legend,note);
  const details=$("details","stake-directory");
  const summary=$("summary",null,"Browse complete source-dated stakeholder directory");
@@ -384,8 +384,8 @@ window.renderSLIStakeholderMap=function(root,data,restore){
  function paintActorPanel(a){
   inspector.append($("div","stake-eyebrow","STAKEHOLDER PROFILE"));
   inspector.append($("h3",null,a.name));
-  const tag=$("span","stake-role-badge",a.kind+" · "+a.scope);inspector.append(tag);
-  inspector.append($("div","stake-person",a.lead||"Leadership to verify"));
+  const tag=$("span","stake-role-badge",isID()?"Kelembagaan · "+energyLayerTitle(state.group,data.layers[state.group]).replace(/^\d+\s*·\s*/,""):a.kind+" · "+a.scope);inspector.append(tag);
+  inspector.append($("div","stake-person",isID()?(a.person_name||"Pimpinan perlu diverifikasi dari sumber resmi"):(a.lead||"Leadership to verify")));
   inspector.append($("h4",null,"Responsibility"),$("p",null,actorRole(data,a)||"Role under review"));
   inspector.append($("h4",null,"Decision authority"),$("p",null,isID()?"Mandat dan batas kewenangan mengikuti aturan lembaga. Baca dokumen resmi pada tautan di bawah profil serta peran yang dijelaskan di atas.":a.authority||"Institutional scope; actual mandate must be verified."));
   inspector.append($("div","stake-date",(isID()?"Tanggal sumber: ":"Source reference: ")+(a.verified||(isID()?"tidak diketahui":"undated"))+(isID()?" · Status pejabat perlu dicek kembali pada dokumen asli":" · "+(a.evidence_status||a.verification_status||"Monitor appointment status"))));
