@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.2",
+  "version": "2026-10-19.3",
   "purpose": "Selected official national/sectoral/local law and government policy feeds; candidate detection only, NOT exhaustive Indonesian legislation or automatic legal status amendment.",
   "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
@@ -288,7 +288,9 @@
     "perda_jabar_rtrw2022",
     "perda_dki_pdrd2024",
     "pres98repealed",
-    "uu26spatial"
+    "uu26spatial",
+    "uu18food2012",
+    "uu17water2019"
   ],
   "keywords": [
     "energi",
@@ -404,7 +406,20 @@
     "pembaruan perda",
     "penyesuaian pidana",
     "pengesahan",
-    "daerah khusus jakarta"
+    "daerah khusus jakarta",
+    "ketahanan pangan",
+    "keamanan pangan",
+    "swasembada pangan",
+    "bencana",
+    "penanggulangan bencana",
+    "geospasial",
+    "sumber daya air",
+    "air bersih",
+    "irigasi",
+    "tata ruang provinsi",
+    "pajak retribusi daerah",
+    "bpbd",
+    "bnpb"
   ],
   "item_retention": 150,
   "source_item_cap": 65,
