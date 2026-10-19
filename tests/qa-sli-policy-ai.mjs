@@ -189,6 +189,37 @@ test("statutory analysis does not conflate ratification with project-level oblig
  assert.match(worker,/Never claim a named ministry, current NDC version, specific implementing rule/);
  assert.match(worker,/No unrelated news, charts, self-generated source list/);
 });
+test("latest legal report normalizes mixed list markers and localizes verification labels",()=>{
+ const client=file("js/sli-research-assistant.js");
+ const start=client.indexOf("function normalizeReportListNumbers(");
+ const end=client.indexOf("\nfunction renderModelStatement",start);
+ assert.ok(start>=0&&end>start);
+ const funcs=new Function(client.slice(start,end)+"\nreturn {normalizeReportListNumbers,reportBody};")();
+ const sample="### Executive Summary\n\n#### Temuan kunci\n\n1. Pasal 1 [1].\n\n2) Pasal 2 [2].\n\n3. Kewajiban internasional [3].\n\n4) Implikasi nasional [4].\n\n### Verification Note\n\nStatus aturan harus diverifikasi.";
+ const output=funcs.reportBody(sample,"id");
+ assert.match(output,/1\. Pasal 1/);
+ assert.match(output,/2\. Pasal 2/);
+ assert.match(output,/3\. Kewajiban internasional/);
+ assert.match(output,/4\. Implikasi nasional/);
+ assert.doesNotMatch(output,/\n[24]\) /);
+ assert.match(output,/### Catatan Verifikasi Hukum/);
+ assert.doesNotMatch(output,/Verification Note/);
+ const english=funcs.reportBody(sample,"en");
+ assert.match(english,/### Verification Note/);
+});
+test("legal recovery does not duplicate an existing verification heading",async()=>{
+ const {recoverUnsupportedLegalAnswer}=await import("../research-api/src/legal-citation-audit.mjs");
+ const evidence=[{source_url:"https://peraturan.go.id/files/uu16-2016bt.pdf",provision_anchor:{article:"Pasal 1",instrument_ref:"UU 16/2016"}}];
+ const answer="### Executive Summary\n\nPasal 1 UU 16/2016 mengesahkan persetujuan iklim [1].\n\n### Analisis\n\nPasal 99 UU 16/2016 memberikan izin [1].\n\n### Verification Note\n\nPeriksa sumber resmi.";
+ const out=recoverUnsupportedLegalAnswer(answer,evidence);
+ assert.equal(out.audit.pass,true);
+ assert.equal(out.recovered,true);
+ assert.equal(out.omitted,1);
+ assert.doesNotMatch(out.answer,/### Analisis|Pasal 99/);
+ assert.equal((out.answer.match(/### Verification Note/g)||[]).length,1);
+ assert.doesNotMatch(out.answer,/## Batas verifikasi hukum/);
+ assert.match(out.answer,/Pemeriksaan otomatis SLI: 1 bagian tidak ditampilkan/);
+});
 test("modified source modules pass the JavaScript parser",()=>{
  for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-research-visuals.js","js/sli-visual-export.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
   const p=spawnSync(process.execPath,["--check",new URL("../"+path,import.meta.url).pathname],{encoding:"utf8"});
