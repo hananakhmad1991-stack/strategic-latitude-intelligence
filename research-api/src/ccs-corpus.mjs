@@ -3,7 +3,7 @@
  * Project-wide LNG, drilling, FID and CO2-injection commissioning are distinct.
  * This is NOT a complete 2026 national project audit.
  */
-import governance from "../../data/energy-governance-ccs.json";
+import governance from "../../data/energy-governance-ccs.json" with {type:"json"};
 
 const PROJECTS=governance.ccs?.projects||[];
 const PRIMARY=[
