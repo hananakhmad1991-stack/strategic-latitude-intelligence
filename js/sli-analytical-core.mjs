@@ -82,7 +82,7 @@ export const METHOD_FORMULAS=Object.freeze({
  ahp:{formula:"A w = lambda_max w; CI=(lambda_max-n)/(n-1); CR=CI/RI",source:"https://doi.org/10.1016/0270-0255(87)90473-8"},
  stock_flow:{formula:"S_(t+1) = S_t + inflow_t - rate*S_t",source:"https://en.wikipedia.org/wiki/Stock_and_flow"},
  lq:{formula:"LQ = (regional_industry/regional_total)/(national_industry/national_total)",source:"https://www.bls.gov/cew/about-data/location-quotients-explained.htm"},
- shift_share:{formula:"change = national_growth_effect + industry_mix_effect + regional_competitive_effect",source:"https://www.bls.gov/cew/about-data/location-quotients-explained.htm"},
+ shift_share:{formula:"change = national_growth_effect + industry_mix_effect + regional_competitive_effect",source:"https://link.springer.com/article/10.1007/s00168-024-01309-7"},
  topsis:{formula:"r_ij=x_ij/sqrt(sum_i x_ij^2); v_ij=w_j*r_ij; C_i=D_i^-/(D_i^+ + D_i^-)",source:"https://doi.org/10.3390/bdcc10050138"}
 });
 
