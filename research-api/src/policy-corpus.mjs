@@ -56,3 +56,36 @@ export const policyCorpusAudit=Object.freeze({
  legalMetadataCount:policyLegalEvidence().length,
  disclaimer:"Source URLs and index notes, no article text; not a consolidated up-to-date statute database."
 });
+
+/* Policy retrieval uses its own legal identifiers and jurisdiction guardrails;
+ * generic sector RAG exclusion must not discard cross-ministry investment laws. */
+const policyStop=new Set("apa bagaimana apakah yang dari pada dengan untuk saya ingin perlu jelaskan serta tentang adalah saja dalam aturan hukum regulasi kebijakan peraturan undang undang tahun nomor terbaru permen negara indonesia terhadap dan atau bagi dapat".split(" "));
+const simplify=v=>String(v||"").normalize("NFKD").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+function queryTerms(question){
+ const q=simplify(question),t=new Set(q.split(" ").filter(x=>x.length>2&&!policyStop.has(x)));
+ if(/pusat data|data center|data centre|komputasi|artificial intelligence/.test(q))["data","digital","ai","pdp"].forEach(x=>t.add(x));
+ if(/penanaman modal|perizinan|investor|investasi/.test(q))["investasi","perizinan","oss","bkpm"].forEach(x=>t.add(x));
+ if(/paris|karbon|emisi|iklim|nze/.test(q))["paris","climate","lingkungan","energi"].forEach(x=>t.add(x));
+ if(/otonomi|daerah|kewenangan/.test(q))["daerah","otonomi","kewenangan"].forEach(x=>t.add(x));
+ return [...t];
+}
+export function selectPolicyEvidence(question,max=4,documents=policyLegalEvidence()){
+ const q=simplify(question), terms=queryTerms(question);
+ const batam=q.includes("batam"),bekasi=q.includes("bekasi"),semarang=q.includes("semarang");
+ const geoList=batam?["kepulauan riau","batam"]:bekasi?["jawa barat","bekasi"]:semarang?["jawa tengah","semarang"]:[];
+ const key=(String(question).match(/\b(uu|pp|perpres|perda)\s*(?:no(?:mor)?\s*)?(\d+)\s*[/\-]\s*((?:19|20)\d{2})\b/i)||[]);
+ const refKey=key.length?simplify(key[1]+" "+key[2]+" "+key[3]):"";
+ return documents.map(d=>{
+  const area=simplify(d.geo||"");
+  if(geoList.length&&area!=="indonesia"&&!geoList.some(x=>area.includes(x)||x.includes(area)))return null;
+  const title=simplify(d.title),text=simplify(d.text);
+  let score=0;
+  for(const t of terms){if(title.split(" ").includes(t))score+=7;else if(title.includes(t))score+=4;else if(text.includes(t))score+=1;}
+  if(refKey&&title.replace(/\s+/g,"").includes(refKey.replace(/\s+/g,"")))score+=100;
+  if(geoList.length&&area!=="indonesia")score+=7;
+  if(q.includes("paris")&&d.id==="policy_law_uu16paris")score+=40;
+  if(q.includes("otonomi")&&d.id==="policy_law_uu23local")score+=40;
+  return {d,score};
+ }).filter(x=>x&&x.score>=3).sort((a,b)=>b.score-a.score||a.d.id.localeCompare(b.d.id))
+  .slice(0,Math.max(0,Math.min(max,8))).map(x=>x.d);
+}
