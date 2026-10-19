@@ -53,6 +53,7 @@ const document={
 const ids=new Map();
 const root=new E("div",document);const content=new E("div",document);
 ids.set("sliGlobalSearchRoot",root);ids.set("content",content);
+const mapHost=new E("div",document);mapHost.append(new E("article",document));ids.set("sliMapRoot",mapHost);
 const energy=new E("div",document);ids.set("he25InvestorAtlasEnergyRoot",energy);
 const pages=["overview","investment","map","trade","energy","minerals","ai","policy","methodology"];
 const buttons=pages.map(id=>{const b=new E("button",document);b.dataset.page=id;b.textContent=id;return b});
@@ -96,4 +97,14 @@ const termHit=root.querySelectorAll(".sli-search-result").find(b=>(b.textContent
 assert.ok(termHit,"Glossary exact term is indexed and selectable");
 termHit.click();
 assert.ok(navigated.some(x=>String(x).includes("sli-glossary-methodology.html#term-leontief-inverse")),"Glossary result opens the exact term, not just a generic page");
+const mapSelections=[];
+ctx.window.SLIMapSearchRecord=detail=>{mapSelections.push(detail);return true};
+input.focus();input.value="Kaltim Prima Coal Sangatta";input.dispatchEvent({type:"input"});
+const mineHit=root.querySelectorAll(".sli-search-result").find(b=>(b.textContent||"").includes("Sangatta mine operations"));
+assert.ok(mineHit,"Specific mapped mine appears");
+mineHit.click();
+assert.equal(current,"map","Mapped asset selection opens map dashboard");
+assert.equal(mapSelections.length,1,"Map inspector receives one exact record selection");
+assert.equal(mapSelections[0].id,"coal-kpc-sangatta","Search must pass actual registered asset ID");
+
 console.log("PASS: SLI search DOM smoke · input opens, 1080 indexed entries searchable, provincial result navigates, escape closes, Ctrl+K focuses");

@@ -40,3 +40,9 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .sli-data-guide-grid>div{background:#0b2033;border:1px solid #31506a;border-radius:7px;padding:11px}
 .sli-data-guide-grid strong{font-size:12px;color:#e1eaf1}
 .sli-data-guide-grid p,.sli-data-guide-footer{font-size:12px;line-height:1.55;color:#bfcedc;margin:6px 0}
+
+/* Single modern transition state: do not briefly render the deprecated static chapter. */
+.sli-dashboard-loading{margin:16px 0;padding:19px 21px;min-height:96px;border:1px solid #34536b;border-radius:12px;background:#122c41;color:#d9e5ed;font-size:13px;display:flex;align-items:center;gap:12px}
+.sli-dashboard-loading:before{content:"";width:14px;height:14px;border:2px solid #6e89a2;border-top-color:#e6c78d;border-radius:50%;animation:sli-chapter-spin .9s linear infinite;flex:none}
+@keyframes sli-chapter-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.sli-dashboard-loading:before{animation:none}}
