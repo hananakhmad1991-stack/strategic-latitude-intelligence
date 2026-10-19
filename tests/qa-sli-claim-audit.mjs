@@ -1,6 +1,6 @@
 import {test} from "node:test";
 import assert from "node:assert/strict";
-import {auditResearchClaims} from "../research-api/src/claim-evidence-audit.mjs";
+import {auditResearchClaims,compareQuotedNumbers,numericTokens} from "../research-api/src/claim-evidence-audit.mjs";
 const evidence=[
  {id:"sli_primary_01",title:"Official operator status",text:"The official operator said first steel cutting of platform in July 2025. Capacity 120 MW planned, not commissioned.",source_url:"https://example.com/operator"},
  {id:"dashboard_123",title:"Source-linked dashboard snapshot",text:"A dated investment dashboard reports 2026 planned 240 MW.",source_url:"https://example.com/dashboard",source_type:"public_dashboard_source_record_not_claim_verified"},
@@ -34,4 +34,48 @@ test("review cannot read original docs, is bounded and has no external side effe
  assert.ok(r.shown_claims<=8);
  assert.ok(r.assessed_claims>=8);
  assert.ok(r.limitations.some(x=>/NOT independently fetched/.test(x)));
+});
+
+test("USD 7 miliar and USD20,9 miliar compare to English billion and decimal point as screening equivalents",()=>{
+ const sources="bp operator: $7 billion integrated Tangguh UCC, ESDM: USD 20.9 billion LNG project announced 16 July 2026.";
+ const claimed="Tangguh UCC USD 7 miliar; Masela USD 20,9 miliar; groundbreaking 16 Juli 2026";
+ const r=compareQuotedNumbers(claimed,sources);
+ assert.deepEqual(r.missing,[]);
+ assert.ok(numericTokens(claimed).some(x=>x.number==="20.9"&&x.scale==="billion"));
+ assert.ok(numericTokens(sources).some(x=>x.number==="20.9"&&x.scale==="billion"));
+});
+test("same number in incompatible explicit currency or physical unit is NOT treated as excerpt support",()=>{
+ assert.ok(compareQuotedNumbers("Proyek memiliki kapasitas 10 MW","Investasi 10 GW").missing.includes("10 MW"));
+ assert.ok(compareQuotedNumbers("Investasi USD 7 miliar","Perusahaan melaporkan Rp 7 miliar").missing.some(x=>x.includes("USD")));
+ assert.ok(compareQuotedNumbers("Volume penyimpanan 15 juta ton","Target penyimpanan 15 juta ton").missing.length===0);
+});
+test("a trailing paragraph citation supports earlier factual sentences within the same paragraph, not adjacent blocks",()=>{
+ const docs=[{id:"bp_release",title:"Operator release",text:"Tangguh UCC 2024 FID. bp began first steel cutting 2025 for platform fabrication.",period:"2025",source_url:"https://www.bp.com/press"}];
+ const answer="Tangguh UCC mencapai FID pada 2024. Pada 2025 dimulai fabrikasi fisik platform [1].\n\nProyek lain dinyatakan konstruksi fisik pada 2026.";
+ const r=auditResearchClaims(answer,docs);
+ const first=r.items.find(x=>x.claim.startsWith("Tangguh UCC"));
+ assert.ok(first);
+ assert.deepEqual(first.citations,[1]);
+ assert.equal(first.citation_scope,"same_paragraph");
+ assert.ok(!first.issues.includes("no_local_citation"));
+ const unrelated=r.items.find(x=>x.claim.startsWith("Proyek lain"));
+ assert.ok(unrelated?.issues.includes("no_local_citation"));
+ assert.deepEqual(unrelated.citations,[]);
+});
+test("methodology definitions are not misclassified as unsupported project milestones",()=>{
+ const docs=[{id:"release",title:"Tangguh UCC investment",text:"Final Investment Decision reached on 21 November 2024.",source_url:"https://example.com"}];
+ const ans="FID berarti keputusan investasi final sudah diambil; konstruksi fisik berarti aset dibangun. Operasi komersial berarti bisnis sudah berjalan.\n\nTangguh UCC mencapai FID pada 2024 [1].";
+ const a=auditResearchClaims(ans,docs);
+ assert.ok(a.items.some(x=>x.category==="investment_decision"));
+ assert.ok(!a.items.some(x=>/^FID berarti/.test(x.claim)));
+ assert.equal(a.primary_claims_automatically_verified,0);
+});
+test("reported issue counts refer to capped material claim sample, not all raw sentences",()=>{
+ const d=[{id:"gov",title:"Official project",text:"Budget $7 billion for development in 2024",source_url:"https://example.org"}];
+ const ans=Array.from({length:33},(_,i)=>"Project "+i+" began physical construction in 2026 [1].").join("\n\n");
+ const r=auditResearchClaims(ans,d,{maxItems:5});
+ assert.ok(r.assessed_claims>=25);
+ assert.equal(r.shown_claims,5);
+ assert.ok(r.quantity_excerpts_mismatch<=5);
+ assert.ok(r.limitations.some(x=>/capped/.test(x)));
 });
