@@ -13,7 +13,7 @@ import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {policyLegalEvidence,selectPolicyEvidence} from "./policy-corpus.mjs";
 import {legalProvisionEvidence} from "./legal-provisions.mjs";
-import {auditLegalArticleCitations} from "./legal-citation-audit.mjs";
+import {auditLegalArticleCitations,recoverUnsupportedLegalAnswer} from "./legal-citation-audit.mjs";
 import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
 import {fetchReviewedSecondaryArticles} from "./secondary-news.mjs";
 import {fetchMonitoringEvidence,selectMonitoringNewsEvidence} from "./monitoring-evidence.mjs";
@@ -146,7 +146,7 @@ export default{
   const energyQuestion=/ketahanan energi|energy security|energy resilience|produksi migas|supply minyak|harga bbm|subsidi energi|transisi energi|pasokan bbm/i.test(payload.question+" "+(payload.history||[]).filter(h=>h.role==="user").slice(-1).map(h=>h.content).join(" "));
   const monitoring=energyQuestion?await fetchEnergyMonitoring():{status:"not_requested",as_of:null,signals:[]};
   const params=modelRequest(payload,evidence,env.RESEARCH_MODEL);
-  if(articleEvidence.length)params.instructions+="\nARTICLE CITATIONS: Only the specifically named articles appearing in PRIMARY legal provision evidence may be discussed as article-grounded paraphrases. Source PDF URL plus an article anchor are required; DO NOT assert this is a verified consolidated law, final compliance decision, or that all article text is in the model context. Point out when further primary text is needed.";
+  if(articleEvidence.length)params.instructions+="\nARTICLE CITATIONS: Cite a reviewed Pasal ONLY with its matching numbered PRIMARY provision source, e.g. Pasal 1 [1] if evidence [1] expressly covers that Pasal. Do not cite unreviewed articles or ayat/huruf, and do not infer the current consolidated legal text. Source index metadata alone cannot ground a Pasal. For unsupported articles, say primary text is unavailable without naming or interpreting that article as a fact.";
   if(legalEvidence.length)params.instructions+="\nIMPORTANT LEGAL EVIDENCE BOUNDARY: SLI Policy source snippets are CURATED INDEX METADATA, NOT statute text, current consolidated law or verified article-level authority. Cite a linked legal record only for the limited claim in that metadata. Do not fabricate article numbers, current legal force, licence entitlement, tax incentive, legal compliance or a definitive conclusion. State which primary document/version and government JDIH confirmation is still needed.";
   if(secondaryEvidence.length)params.instructions+="\nSLI SECONDARY NEWS IS ADMISSIBLE: Every numbered SECONDARY MONITORING RECORD is evidence that the named outlet REPORTED the headline at its dated time; ATTRIBUTED SECONDARY MEDIA REPORT additionally reflects claim-level article review. Include Reuters, CGTN, ANTARA and other publishers without arbitrary exclusion. Cite as [n] and name publisher/date; if only an RSS link is provided never pretend the full article was read. For a Reuters headline claiming Hormuz closed, say 'Reuters reported a closure [n]' and compare with shipping, energy, and SLI data. Neither media reputation nor RSS metadata independently proves event truth or quantified impacts. Assess corroboration and conflicting reports. Never claim verified legislation, completed projects, actual CAPEX, MW in service or Indonesian freight impact from headlines alone. Separate attributed reporting from government statistics, source-confirmed event, and modeled downstream effects. Avoid repeated generic caveats; make substantive source comparisons. Never reproduce copyrighted text." ;
   const monitoringText=monitoringPromptContext(monitoring);
@@ -176,16 +176,32 @@ export default{
   }catch{return send(502,{error:"model_unreachable"},origin)}
   if(!(evidence.length?verifyResearchAnswer(answer,evidence):verifyMethodOnlyAnswer(answer)))
    return send(502,{error:evidence.length?"invalid_or_missing_source_citations":"invalid_unsourced_research_design"},origin);
+  // Do not publish ungrounded article claims. Recover by removing offending paragraphs,
+  // or by returning a clearly labelled source-limited brief instead of generic HTTP 502.
+  const legalRecovery=legalQuestion?recoverUnsupportedLegalAnswer(answer,evidence):null;
+  if(legalRecovery?.recovered)answer=legalRecovery.answer;
   const legalAudit=legalQuestion?auditLegalArticleCitations(answer,evidence):null;
   if(legalAudit&&!legalAudit.pass)
-   return send(502,{error:"unsupported_article_citation",unsupported_articles:legalAudit.unsupported_articles,reason:"Article-level citation was not present in the verified provision records."},origin);
+   return send(502,{error:"legal_recovery_validation_failed",reason:"Unable to generate a source-safe legal response."},origin);
+  if(legalRecovery?.recovered&&!verifyResearchAnswer(answer,evidence))
+   return send(502,{error:"legal_recovery_citations_failed",reason:"Recovered answer did not retain valid numbered source citations."},origin);
 
   // Structural lint only. Do not mistake valid citation indices for source verification.
   const qa=auditReport(answer,evidence,{minWords:payload.mode==="deep_research"?150:80,requireConclusion:payload.mode==="deep_research"});
   const quality_audit={review_scope:qa.review_scope,structural_status:qa.pass?"complete_structure":"needs_editorial_review",issues:qa.issues,word_count:qa.words,section_count:qa.sections,citation_count:qa.citations,has_conclusion:qa.hasConclusion};
-  if(legalAudit)quality_audit.legal_article_gate={pass:legalAudit.pass,review_scope:legalAudit.scope,reviewed_article_anchors:legalAudit.reviewed_article_anchors};
+  if(legalAudit)quality_audit.legal_article_gate={
+   pass:legalAudit.pass,review_scope:legalAudit.scope,
+   reviewed_article_anchors:legalAudit.reviewed_article_anchors,
+   recovered:!!legalRecovery?.recovered,
+   source_limited:!!legalRecovery?.source_limited,
+   omitted_paragraphs:legalRecovery?.omitted||0
+  };
+  if(legalRecovery?.recovered){
+   quality_audit.structural_status="needs_editorial_review";
+   quality_audit.issues=[...new Set([...quality_audit.issues,"legal_content_withheld_pending_primary_source_verification"])];
+  }
   return send(200,{mode:"generative_rag",research_format:payload.mode,answer,quality_audit,
-   charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:evidence.length?(articleEvidence.length||legalEvidence.length?"owner_staging_legal_articles_and_index_metadata_status_not_certified":"owner_staging_source_dated_corpus"):"methodology_design_only_no_verified_sli_evidence",
+   charts:evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[],evidence_status:legalRecovery?.source_limited?"owner_staging_source_limited_legal_review":evidence.length?(articleEvidence.length||legalEvidence.length?"owner_staging_legal_articles_and_index_metadata_status_not_certified":"owner_staging_source_dated_corpus"):"methodology_design_only_no_verified_sli_evidence",
    corpus_as_of:energyCorpusAudit().assessment_date,
    corpus_version:"sli-energy-official-v2",
    retrieved_sources_count:evidence.length,
