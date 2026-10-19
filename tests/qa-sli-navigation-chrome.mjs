@@ -5,7 +5,7 @@ const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const css=read("css/sli-navigation.css"),js=read("js/sli-navigation.js");
 const pages=readdirSync(new URL("../",import.meta.url)).filter(p=>p.endsWith(".html")).sort();
 
-test("All 37 SLI HTML pages have early anti-FOUC protection and versioned shared chrome",()=>{
+test("All SLI HTML pages have early anti-FOUC protection and supported versioned shared chrome",()=>{
  assert.ok(pages.length>=37);
  for(const p of pages){
   const source=read(p);
@@ -14,7 +14,7 @@ test("All 37 SLI HTML pages have early anti-FOUC protection and versioned shared
   assert.ok(head&&head.includes("document.documentElement.classList.add('sli-chrome-pending')"),"Prepaint must be in HEAD: "+p);
   assert.match(head,/window\.addEventListener\('load'/,"No loading fallback: "+p);
   assert.match(head,/sli-navigation\.css\?v=20261018-menu-flash2/,"Stale shared CSS: "+p);
-  assert.match(source,/sli-navigation\.js\?v=(?:20261018-menu-flash2|20261019-insights1)/,"Stale shared JS: "+p);
+  assert.match(source,/sli-navigation\.js\?v=(?:20261018-menu-flash2|20261019-insights1|20261019-onepoint6|20261019-locale2)/,"Stale shared JS: "+p);
  }
 });
 
