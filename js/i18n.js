@@ -153,6 +153,9 @@ function init(){
  refreshSwitch();
  document.querySelectorAll("[data-sli-locale]").forEach(button=>button.addEventListener("click",()=>setLanguage(button.dataset.sliLocale)));
  scan(document.body);
+ // Standalone dashboards may have rendered their glossary/list before the
+ // async sitewide dictionary loaded. Re-render data-driven ID UI once initialized.
+ if(lang==='id')document.dispatchEvent(new CustomEvent('sli:languagechange',{detail:{language:lang,initial:true}}));
  if(observer)return;
  observer=new MutationObserver(mutations=>{
   for(const m of mutations){
