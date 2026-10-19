@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.3",
+  "version": "2026-10-19.4",
   "purpose": "Selected official national/sectoral/local law and government policy feeds; candidate detection only, NOT exhaustive Indonesian legislation or automatic legal status amendment.",
   "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
@@ -246,6 +246,46 @@
         "/direktori"
       ],
       "limit": 45
+    },
+    {
+      "id": "bpk_regulation_register",
+      "label": "JDIH BPK — daftar peraturan nasional dan daerah",
+      "url": "https://peraturan.bpk.go.id/Search",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "peraturan.bpk.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/Details/",
+        "/details/"
+      ],
+      "limit": 100
+    },
+    {
+      "id": "bapanas_jdih",
+      "label": "Badan Pangan Nasional — JDIH",
+      "url": "https://jdih.badanpangan.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.badanpangan.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/doc/"
+      ],
+      "limit": 65
+    },
+    {
+      "id": "bnpb_jdih",
+      "label": "BNPB — JDIH peraturan penanggulangan bencana",
+      "url": "https://jdih.bnpb.go.id/dokumen?tipeDok=peraturan",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.bnpb.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/dokumen/"
+      ],
+      "limit": 65
     }
   ],
   "watched_laws": [
@@ -290,7 +330,15 @@
     "pres98repealed",
     "uu26spatial",
     "uu18food2012",
-    "uu17water2019"
+    "uu17water2019",
+    "pp39minerba",
+    "pp96min",
+    "pp1food2026",
+    "pp86food2019",
+    "perban11food2025",
+    "perban5food2025",
+    "uu9local2015",
+    "uu2local2015"
   ],
   "keywords": [
     "energi",
@@ -419,12 +467,23 @@
     "tata ruang provinsi",
     "pajak retribusi daerah",
     "bpbd",
-    "bnpb"
+    "bnpb",
+    "peraturan badan pangan",
+    "pengawasan pangan",
+    "perubahan kedua",
+    "perubahan ketiga",
+    "perubahan keempat",
+    "dicabut",
+    "mencabut",
+    "diubah",
+    "berlaku",
+    "peraturan daerah",
+    "produk hukum daerah"
   ],
-  "item_retention": 150,
+  "item_retention": 450,
   "source_item_cap": 65,
   "monitoring_window_days": 90,
-  "notes": "Scope expanded to DKI, ATR/BPN and fiscal JDIH where accessible. Most local JDIH are not yet connected; a source outage/403 is not proof of no changes. Datasets and enacted/dicabut status remain subject to official-text and human legal review.",
+  "notes": "Expanded to official BPK, Bapanas, BNPB and selected local JDIH. These feeds provide *candidate* discovery, not comprehensive national/provincial historical crawling or legally adjudicated status. Degraded/403 source is displayed; never infer no legal change.",
   "monitor_groups": [
     {
       "id": "domestic_policy",
