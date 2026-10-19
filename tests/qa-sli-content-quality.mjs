@@ -17,7 +17,7 @@ test("Sitewide and Research AI continuous integration include quality checks",()
 });
 test("Research AI labels staging scope and cited versus selected evidence",()=>{
  const s=read("js/sli-research-assistant.js"),h=read("sli-research-ai.html");
- for(const t of ["CORPUS ENERGI SLI AKTIF","BACKEND OWNER TEST LAMA","Dikutip dalam laporan","Sumber grafik","Konteks terpilih; belum dikutip"])
+ for(const t of ["SUMBER SLI TERKURASI","OWNER TEST ·","Dikutip dalam laporan","Sumber grafik","Konteks terpilih; belum dikutip"])
   assert.ok(s.includes(t));
  assert.match(h,/Sumber terpilih/);
 });
