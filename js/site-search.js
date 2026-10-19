@@ -5,7 +5,7 @@
  */
 (function() {
  "use strict";
- const INDEX_URL="data/site-search-index.json?v=20261017-membership1";
+ const INDEX_URL="./data/site-search-index.json?v=20261020-search-routing1";
  const ID="sliGlobalSearchRoot",MAX=25;
  const alias={
   batubara:["coal"],coal:["batubara"],minyak:["oil"],oil:["minyak"],migas:["oil","gas"],nikel:["nickel"],nickel:["nikel"],
@@ -107,7 +107,7 @@
   const list=document.createElement("div");list.className="sli-search-list";
   const footer=document.createElement("p");footer.className="sli-search-footer";
   pop.append(controls,list,footer);root.append(shell,pop);
-  let open=false,data=[],loading=null,results=[],active=-1,requested=0;
+  let open=false,data=[],loading=null,results=[],active=-1,requested=0,pendingTarget=null;
   const lang=()=>window.SLIi18n?.language||document.documentElement.lang||"en";
   const id=()=>lang()==="id";
   function labels(){
@@ -179,20 +179,18 @@
   }
   function preload(){
    if(loading)return loading;
-   loading=fetch(INDEX_URL,{cache:"force-cache"}).then(r=>{if(!r.ok)throw Error("Index temporarily unavailable");return r.json()})
+   loading=fetch(INDEX_URL,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Index temporarily unavailable");return r.json()})
     .then(v=>{if(v?.schema!=="sli-search-1"||!Array.isArray(v.entries))throw Error("Invalid public search index");data=v;data.entries.forEach(x=>{x._tokens=lookup(x)});if(open)update();return data})
     .catch(err=>{console.warn("[SLI Search] Site index unavailable, navigation only",err);data={pages:[],entries:[]};if(open)update();return data});
    return loading;
   }
   function goToRecord(item){
    const requestToken=++requested;
-   close();input.value="";
-   const allowPages=new Set(["provincial-intelligence.html","provincial-opportunity-engine.html",
-    "gini-inequality.html","indonesia-macroeconomic-intelligence.html","intelligence-labs.html",
-    "climate-environment.html","geopolitical-impact-assessment.html","sli-data-automation-center.html",
-    "pln-electricity-statistics.html","ai-infrastructure.html","sli-user-guide.html","sli-glossary-methodology.html","sli-membership.html"]);
-   if(item.path&&allowPages.has(item.path)){
-    const fragment=item.path==="sli-glossary-methodology.html"&&/^term-[a-z0-9-]+$/.test(item.anchor||"")?"#"+item.anchor:"";
+   close();input.value="";input.blur();
+   // Only same-site HTML paths from the trusted index can open a specialist dashboard.
+   // The old hard-coded allowlist silently sent new Food/AI/Policy results to a generic tab.
+   if(item.path&&/^[a-z0-9-]+\.html$/.test(item.path)){
+    const fragment=/^[a-z][a-z0-9-]*$/.test(item.anchor||"")?"#"+encodeURIComponent(item.anchor):"";
     window.location.assign("./"+item.path+(item.province?"?province="+encodeURIComponent(item.province):"")+fragment);return;
    }
    function displayFocus(anchor){
@@ -214,24 +212,35 @@
      link.rel="noopener noreferrer";
      card.append(link);
     }
-    if(anchor?.parentNode?.insertBefore)anchor.parentNode.insertBefore(card,anchor);
-    else if(host.insertBefore)host.insertBefore(card,host.firstChild);
+    // Persist above the asynchronous dashboard root: replacing charts must not erase the selected hit.
+    if(host.insertBefore)host.insertBefore(card,host.firstChild);
     return card;
    }
    const previous=getPage();const target=item.page;
+   pendingTarget=target;
    if(target&&target!==previous)navigate(target);
    // The page shell is synchronous; many charts load asynchronously. Retry only
    // until the target section and relevant filter exist, without creating GPS or
    // inventing a record-specific deep link where no exact detail panel exists.
-   let jumped=false;
+   let jumped=false,mapSelected=false;
    const attempt=(delay)=>{
     setTimeout(()=>{
-     if(requestToken!==requested)return;
-     const target=item.anchor?document.getElementById(item.anchor):document.getElementById("content");
-     // Wait for async dashboard sections; fall back to page content only on final retry.
-     if(!target&&delay<1600)return;
-     const el=target||document.getElementById("content");if(!el)return;
-     if(!jumped){const focus=displayFocus(el);(focus||el).scrollIntoView({behavior:delay?"smooth":"auto",block:"start"});jumped=true}
+     // Clicking a different sidebar dashboard cancels obsolete delayed scroll/filter actions.
+     if(requestToken!==requested||getPage()!==target)return;
+     const section=item.anchor?document.getElementById(item.anchor):document.getElementById("content");
+     if(!section)return;
+     const busy=section.textContent?.trim().startsWith("Loading ")&&section.children?.length<=1;
+     if(busy&&delay<6500)return;
+     const el=section;
+     if(item.page==="map"&&item.kind==="record"&&!mapSelected&&typeof window.SLIMapSearchRecord==="function"){
+      mapSelected=window.SLIMapSearchRecord({id:String(item.keywords||"").split(/\s+/)[0],title:item.title})===true;
+     }
+     if(!jumped){
+      // An exact map asset opens its inspector; other indexed records retain a visible source card.
+      const focus=mapSelected?null:displayFocus(el);
+      (focus||el).scrollIntoView({behavior:delay?"smooth":"auto",block:"start"});
+      jumped=true;
+     }
      if(item.komdigi_tab){
       const tab=[...el.querySelectorAll("button.kd25-tab")].find(b=>b.dataset.tab===item.komdigi_tab);
       if(tab&&tab.getAttribute("aria-selected")!=="true")tab.click();
@@ -252,7 +261,7 @@
      }
     },delay);
    };
-   [0,140,450,900,1600].forEach(attempt);
+   [0,180,500,1100,2200,4000,6500].forEach(attempt);
   }
   function selectItem(item){goToRecord(item)}
   function begin(){show();labels();preload();update()}
@@ -276,7 +285,7 @@
   document.addEventListener("pointerdown",e=>{if(open&&!root.contains(e.target))close()});
   document.addEventListener("sli:languagechange",()=>{labels();if(open)update()});
   // Page changes may occur from the sidebar while the popover is open.
-  document.addEventListener("sli:pagechange",()=>{if(open)update()});
+  document.addEventListener("sli:pagechange",()=>{if(pendingTarget&&getPage()!==pendingTarget){requested++;pendingTarget=null}if(open)update()});
   labels();
   window.SLISearch={open:()=>input.focus(),close,refresh:()=>{loading=null;data={pages:[],entries:[]};return preload()},rank};
  }
