@@ -254,6 +254,36 @@ test("official Paris treaty chronology is separate from domestic enactment",asyn
  const client=file("js/sli-research-assistant.js");
  assert.match(client,/primary_treaty_depositary_record/);
 });
+test("research quick-start is compact, optional and stays functional",()=>{
+ const page=file("sli-research-ai.html");
+ const css=file("css/sli-research-brand.css");
+ const client=file("js/sli-research-assistant.js");
+ assert.match(page,/id="raTemplates"/);
+ assert.match(page,/id="raMoreExamples"/);
+ assert.match(page,/data-template="regulation"/);
+ assert.match(page,/data-template="academic_ahp"/);
+ assert.match(page,/data-template="province"/);
+ assert.match(page,/data-template="refinery"/);
+ assert.doesNotMatch(page,/sli-ra-template-featured/);
+ assert.match(css,/#raTemplates \\.sli-ra-template-grid/);
+ assert.match(css,/:has\\(#raConversation:not\\(\\[hidden\\]\\)\\) #raTemplates/);
+ assert.match(client,/regulation:\\{mode:"executive_summary"/);
+ assert.match(client,/querySelectorAll\\("\\[data-template\\]"\\)/);
+});
+test("source statements are shown only in source panel and legal headings stay localized",()=>{
+ const client=file("js/sli-research-assistant.js");
+ const begin=client.indexOf("function normalizeReportListNumbers(");
+ const end=client.indexOf("\\nfunction renderModelStatement",begin);
+ assert.ok(begin>=0&&end>begin);
+ const render=new Function(client.slice(begin,end)+"\\nreturn reportBody;")();
+ const input="### Executive Summary\\n\\nBukti resmi [1].\\n\\n### Source Statement\\n\\nKutip ulang sumber [1].\\n\\n### Verification Note\\n\\nStatus hukum belum lengkap [1].";
+ const out=render(input,"id");
+ assert.match(out,/### Ringkasan Eksekutif/);
+ assert.doesNotMatch(out,/Source Statement|Kutip ulang sumber/);
+ assert.match(out,/### Catatan Verifikasi Hukum/);
+ const chart=file("js/sli-research-visuals.js");
+ assert.match(chart,/sli-ra-report-divider/);
+});
 test("modified source modules pass the JavaScript parser",()=>{
  for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-research-visuals.js","js/sli-visual-export.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/treaty-status.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
   const p=spawnSync(process.execPath,["--check",new URL("../"+path,import.meta.url).pathname],{encoding:"utf8"});
