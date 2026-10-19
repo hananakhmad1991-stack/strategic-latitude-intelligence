@@ -118,3 +118,38 @@ test('Research UI reports real Tavily statuses instead of silently treating zero
  assert.match(source,/externalEvidence:payload\.external_evidence\|\|null/);
  assert.match(source,/externalApiDiagnostic\(\{external_evidence:last\.externalEvidence,model_route:last\.modelRoute\}/);
 });
+
+test('Tavily discovery links are surfaced with publisher date and actual citation-use status',async()=>{
+ const {runInNewContext}=await import('node:vm');
+ const script=read('js/sli-research-assistant.js');
+ const start=script.indexOf('function renderLiveDiscovery(');
+ const end=script.indexOf('function renderMonitoringSignals(',start);
+ assert.ok(start>=0&&end>start,'source discovery panel must exist');
+ const elements=[];
+ const node=(tag,cls,label)=>{const n={tag,cls,label:label||'',children:[],append(...args){this.children.push(...args)}};elements.push(n);return n};
+ const safeUrl=u=>{try{const v=new URL(u);return v.protocol==='https:'?v.href:null}catch{return null}};
+ const render=runInNewContext(script.slice(start,end)+'\nrenderLiveDiscovery;',{node,safeUrl});
+ const report={children:[],append(x){this.children.push(x)}};
+ const sources=[
+ {title:'SLI baseline',source_url:'https://example.com/base',source_type:'curated_baseline'},
+ {title:'Recent investment announcement',source_url:'https://example.com/news',source_type:'live_web_discovery',
+  publisher:'Publisher One',period:'publication_date_unverified'},
+ {title:'New operator update',source_url:'https://example.net/update',source_type:'live_web_discovery',
+  publisher:'Publisher Two',period:'2026-10-10'},
+ {title:'Blocked source',source_url:'javascript:alert(1)',source_type:'live_web_discovery'}
+ ];
+ render({sources,answer:'Search finds a lead [2] but no independently confirmed commissioning.'},report,'id');
+ assert.equal(report.children.length,1);
+ const panel=report.children[0],text=JSON.stringify(panel);
+ assert.match(text,/Sumber baru yang ditemukan Tavily/);
+ assert.match(text,/Recent investment announcement/);
+ assert.match(text,/New operator update/);
+ assert.match(text,/Dikutip sebagai temuan pencarian; klaim belum diverifikasi/);
+ assert.match(text,/Belum digunakan dalam analisis/);
+ assert.match(text,/tanggal terbit belum diketahui/);
+ assert.match(text,/2026-10-10/);
+ assert.doesNotMatch(text,/Blocked source/);
+ assert.doesNotMatch(text,/SLI baseline/);
+ assert.match(read('research-api/src/owner-test-worker.mjs'),/RECENT-WEB COMPARISON RULE/);
+ assert.match(script,/renderLiveDiscovery\(payload,report,state\.language\)/);
+});
