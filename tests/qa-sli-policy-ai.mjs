@@ -40,7 +40,7 @@ test("ask policy panel is visible, valid, and source-first",()=>{
  assert.doesNotMatch(front,/OPENAI_API_KEY|Bearer\s+sk-/);
 });
 test("owner RAG holds legal-index boundaries and never auto-enables customer access",()=>{
- assert.match(worker,/import \{policyLegalEvidence\}/);
+ assert.match(worker,/import \{policyLegalEvidence,selectPolicyEvidence\}/);
  assert.match(worker,/legalEvidence=legalQuestion\?selectPolicyEvidence/);
  assert.match(policyBridge,/export function selectPolicyEvidence/);
  assert.match(worker,/LEGAL EVIDENCE BOUNDARY/);
