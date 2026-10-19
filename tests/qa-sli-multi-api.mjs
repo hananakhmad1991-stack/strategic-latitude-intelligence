@@ -79,6 +79,12 @@ test('Owner Worker and frontend preserve consent boundary and source labeling',(
  assert.match(worker,/collectOptionalLiveEvidence/);assert.match(worker,/openAITransport/);assert.match(worker,/body\.external_search===true/);
  assert.match(worker,/official_numeric_api/);assert.match(worker,/live_web_discovery/);assert.match(worker,/external_evidence:/);
  assert.match(front,/external_search:usingOwner&&/);assert.match(ui,/id="raExternalSearchConsent"/);
- assert.match(cfg,/WORLD_BANK_ENABLED = "true"/);assert.match(cfg,/TAVILY_ENABLED = "false"/);assert.match(cfg,/CF_AI_GATEWAY_ENABLED = "false"/);
+ assert.match(cfg,/WORLD_BANK_ENABLED = "true"/);
+ assert.match(cfg,/keep_vars = true/);
+ assert.match(cfg,/CF_AI_GATEWAY_ACCOUNT_ID = "df48c020a08ce74cf7158baf9cc9443b"/);
+ assert.match(cfg,/CF_AI_GATEWAY_ID = "sli-research"/);
+ assert.doesNotMatch(cfg,/^TAVILY_ENABLED = /m);
+ assert.doesNotMatch(cfg,/^CF_AI_GATEWAY_ENABLED = /m);
+ assert.ok(cfg.indexOf('keep_vars = true')<cfg.indexOf('[vars]'));
  assert.doesNotMatch(worker,/fetch\("https:\/\/api\.openai\.com\/v1\/responses"/);
 });
