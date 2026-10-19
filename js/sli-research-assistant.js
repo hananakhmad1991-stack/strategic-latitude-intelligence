@@ -308,7 +308,8 @@ async function submit(){
  try{workbenchAddon=window.SLIAnalyticalWorkbench?.getRequestAddon?.()||workbenchAddon}
  catch(e){loading.parentNode?.remove();state.busy=false;enableControls();append("system",String(e.message||"Invalid uploaded data context"));return}
  const requestedMethod=$("raChatMethod").value||"auto";
- const requestBody={question,mode,language:state.language,history:state.history.slice(-8),...workbenchAddon,methodology:requestedMethod};
+ const requestBody={question,mode,language:state.language,history:state.history.slice(-8),...workbenchAddon,methodology:requestedMethod,
+  external_search:usingOwner&&$("raExternalSearchConsent")?.checked===true};
  if(files.length){
   try{
    requestBody.attachments=await state.features.encodeAttachments(files);
