@@ -66,5 +66,15 @@ function brand(title,type='building',className=''){
  return wrap;
 }
 function personLink(person,officialSource){const meta=safeProfile(person,officialSource),a=document.createElement(meta.url?'a':'span');a.className='sli-person-link';a.textContent=person||'';if(meta.url){a.href=meta.url;a.target='_blank';a.rel='noopener noreferrer';a.title=meta.kind==='wikipedia'?'Wikipedia · profil publik; jabatan terbaru harus dicek dari sumber resmi':'Dokumen organisasi / sumber tentang tokoh (bukan biografi terverifikasi)';a.append(' ↗')}return a}
+function decoratePortal(){
+ const icons={'#energy':'energy','#minerals':'mineral','#investment':'project','#policy':'government','#geopolitics':'globe','sli-entities.html':'building','ai-intelligence-hub.html':'technology','indonesia-macroeconomic-intelligence.html':'project'};
+ for(const a of document.querySelectorAll('.sli-portal-sector')){
+  const mark=a.querySelector('.sli-portal-glyph');if(!mark)continue;
+  const href=a.getAttribute('href')||'';
+  const key=Object.keys(icons).find(x=>href.endsWith(x));if(key)mark.replaceChildren(icon(icons[key]));
+ }
+}
 window.SLIEntityIdentity=Object.freeze({icon,brand,personLink,safeProfile,website,isHttps,nameKey,typeFor});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',decoratePortal,{once:true});else decoratePortal();
+document.addEventListener('sli:pagechange',decoratePortal);
 })();
