@@ -307,7 +307,7 @@ source.then(db=>{
    if(!["all","market",meta.key].includes(mode))continue;
    const filtered=market.filter(a=>(a.ownership_category||"joint")===meta.key).filter(a=>!query||[a.title,a.person,a.role,a.affiliation].join(" ").toLowerCase().includes(query));
    const col=el("div","sli-hier-market-class "+meta.key);
-   col.append(el("h5",null,meta.title+" · "+filtered.length),el("p",null,meta.description));
+   col.append(el("h5",null,ui(meta.title)+" · "+filtered.length),el("p",null,meta.description));
    const list=el("div","sli-hier-market-grid");
    filtered.forEach(a=>list.append(card(a,1)));col.append(list);body.append(col);
   }
