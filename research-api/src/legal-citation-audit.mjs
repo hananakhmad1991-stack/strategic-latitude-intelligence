@@ -76,15 +76,14 @@ export function recoverUnsupportedLegalAnswer(answer,evidence){
  const kept=paragraphs.filter((_,i)=>!excluded.has(i)).join("\n\n").trim();
  const excludedCount=excluded.size;
  const warning="Catatan verifikasi SLI: "+excludedCount+" bagian jawaban AI tidak ditampilkan karena mengandung rujukan pasal yang belum cocok dengan dokumen hukum primer dalam corpus. Jangan gunakan hasil ini sebagai opini hukum atau konfirmasi status peraturan.";
- const refs=(Array.isArray(evidence)?evidence:[]).slice(0,4);
  const citations=(Array.isArray(evidence)?evidence:[]).map((d,i)=>({...d,source_index:i+1}))
   .filter(d=>d.provision_anchor?.article&&d.provision_anchor?.instrument_ref).slice(0,4);
- const minCitations=(Array.isArray(evidence)?evidence:[]).slice(0,1).map((x,i)=>({title:x.title||"Dokumen sumber SLI",index:i+1}));
+ const minCitations=(Array.isArray(evidence)?evidence:[]).slice(0,1).map((x,i)=>({title:"Dokumen rujukan dalam indeks SLI (bukan naskah hukum terkonsolidasi)",index:i+1}));
  if(kept.length>=80&&/\[\d+\]/.test(kept)&&auditLegalArticleCitations(kept,evidence).pass){
   const restored=kept+"\n\n## Batas verifikasi hukum\n\n"+warning;
   return {answer:restored,recovered:true,omitted:excludedCount,source_limited:false,audit:auditLegalArticleCitations(restored,evidence)};
  }
- const links=(citations.length?citations.map(d=>"- "+d.title+" ["+d.source_index+"]"):minCitations.map(d=>"- "+d.title+" ["+d.index+"]")).join("\n");
+ const links=(citations.length?citations.map(d=>"- Dokumen primer tentang "+d.provision_anchor.instrument_ref+", "+d.provision_anchor.article+" ["+d.source_index+"]"):minCitations.map(d=>"- "+d.title+" ["+d.index+"]")).join("\n");
  const fallback=[
   "## Hasil pemeriksaan sumber hukum",
   "Permintaan telah diproses, tetapi analisis pasal yang dihasilkan AI tidak dapat diverifikasi terhadap sumber primer yang tersedia. Karena itu, SLI menahan interpretasi tersebut, bukan menyajikannya sebagai fakta.",
