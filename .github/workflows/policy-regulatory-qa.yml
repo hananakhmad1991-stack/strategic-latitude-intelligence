@@ -5,6 +5,8 @@ on:
     paths:
       - 'data/sli-policy-regulatory-graph-2026.json'
       - 'policy-regulatory-intelligence.html'
+      - 'js/sli-regulatory-explorer.js'
+      - 'css/sli-regulatory-explorer.css'
       - 'policy-sector-ria.html'
       - 'policy-impact-evaluation.html'
       - 'data/sli-public-policy-evaluation-2026.json'
@@ -43,6 +45,7 @@ jobs:
           Path("/tmp/sli-policy-inline.js").write_text(scripts[1])
           PY
           node --check /tmp/sli-policy-inline.js
+          node --check js/sli-regulatory-explorer.js
           node --check js/regulatory-monitor-dashboard.js
           node --test tests/qa-sli-policy-chapters.mjs
           python - <<'PY'
