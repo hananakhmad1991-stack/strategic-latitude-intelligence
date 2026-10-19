@@ -61,7 +61,7 @@ function append(role,text){
  box.append(node("div","sli-ra-msg-meta",role==="user"?tr("user"):role==="assistant"?tr("assistant"):tr("system")));
  const body=node("div","sli-ra-msg-text");
  box.append(body);$("raMessages").append(box);
- if(role==="assistant"&&window.SLIResearchVisuals)window.SLIResearchVisuals.renderMarkdown(reportBody(text),body,state.lastResult?.sources||[]);else body.textContent=text;
+ if(role==="assistant"&&window.SLIResearchVisuals)window.SLIResearchVisuals.renderMarkdown(reportBody(text,state.language),body,state.lastResult?.sources||[]);else body.textContent=text;
  return body;
 }
 function apaEntry(s){
@@ -76,19 +76,32 @@ function apaEntry(s){
 }
 /* Normalise model-generated repeated "1." list markers for rendered output and
  * Markdown exports, while keeping headings, source citations and prose intact. */
-function normalizeReportListNumbers(markdown){
- let count=0;
+function normalizeReportListNumbers(markdown,language="id"){
+ let count=0,inFence=false;
  return String(markdown||"").split("\n").map(line=>{
-  if(/^#{1,6}\s/.test(line.trim())){count=0;return line}
+  // Never rewrite code examples or headings inside fenced source blocks.
+  if(/^\s*`{3,}/.test(line)){inFence=!inFence;return line}
+  if(inFence)return line;
+  const heading=/^(#{1,6}\s+)(.+)$/.exec(line.trim());
+  if(heading){
+   count=0;
+   const title=heading[2].trim();
+   const translated=language==="id"&&/^(?:verification note|legal verification note|evidence limitations note)$/i.test(title)
+    ?"Catatan Verifikasi Hukum":title;
+   return heading[1]+translated;
+  }
   const item=/^(\s*)(\d+)([.)])(\s+.+)$/.exec(line);
   if(!item||item[1].length>0)return line;
   const authored=Number(item[2]);
   const resolved=authored===1&&count>0?count+1:authored;
-  if(Number.isInteger(resolved)&&resolved>=1&&resolved<=100){count=resolved;return item[1]+resolved+item[3]+item[4]}
+  if(Number.isInteger(resolved)&&resolved>=1&&resolved<=100){
+   count=resolved;
+   return item[1]+resolved+"."+item[4];
+  }
   return line;
  }).join("\n");
 }
-function reportBody(answer){
+function reportBody(answer,language="id"){
  // Remove only ancillary sections; never truncate substantive conclusions after them.
  const lines=String(answer||"").split("\n"),out=[];
  let skipping=false;
@@ -100,7 +113,7 @@ function reportBody(answer){
   }
   if(!skipping)out.push(line);
  }
- return normalizeReportListNumbers(out.join("\n").trim());
+ return normalizeReportListNumbers(out.join("\n").trim(),language);
 }
 
 function renderModelStatement(answer,payload={}){
@@ -172,7 +185,7 @@ function makeExport(){
  if(last.mode==="local_ahp")return "# SLI · Academic AHP Analysis\n\n"+last.answer+"\n\n**Calculation:** Local AHP; respondent data never sent to SLI/AI server. Verify inputs and review CR.\n";
  const citations=last.sources.map((s,i)=>"["+(i+1)+"] "+apaEntry(s)).join("\n");
  const figures=(last.charts||[]).map(c=>"### "+c.title+" ("+c.period+" · "+c.unit+")\n"+c.points.map(p=>"- "+p.label+": "+p.value+" ["+p.source+"]").join("\n")+"\n"+c.note).join("\n\n");
- return "# "+heading+"\n\n"+(state.language==="id"?"**Cakupan:** Analisis corpus terkurasi, bukan data live. Periksa sumber dan tanggal.":"**Scope:** Curated corpus, not live data. Verify sources and observation dates.")+"\n\n"+reportBody(last.answer)+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
+ return "# "+heading+"\n\n"+(state.language==="id"?"**Cakupan:** Analisis corpus terkurasi, bukan data live. Periksa sumber dan tanggal.":"**Scope:** Curated corpus, not live data. Verify sources and observation dates.")+"\n\n"+reportBody(last.answer,state.language)+"\n\n## "+(state.language==="id"?"Data grafik":"Chart data")+"\n"+(figures||"Tidak tersedia / Not available")+"\n\n## "+(state.language==="id"?"Sumber":"Sources")+"\n"+citations+
  "\n\n"+(state.language==="id"?"Dihasilkan oleh layanan AI; sumber tetap harus diverifikasi.":"AI-assisted draft; verify all original sources.")+"\n";
 }
 function updateFileStatus(){
