@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.4",
+  "version": "2026-10-19.5",
   "purpose": "Selected official national/sectoral/local law and government policy feeds; candidate detection only, NOT exhaustive Indonesian legislation or automatic legal status amendment.",
   "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
@@ -286,6 +286,58 @@
         "/dokumen/"
       ],
       "limit": 65
+    },
+    {
+      "id": "aceh_jdih",
+      "label": "JDIH Aceh — produk hukum provinsi dan kabupaten/kota",
+      "url": "https://jdih.acehprov.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.acehprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/"
+      ],
+      "limit": 35
+    },
+    {
+      "id": "sumut_jdih",
+      "label": "JDIH Sumatera Utara — peraturan daerah",
+      "url": "https://jdih.sumutprov.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.sumutprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/"
+      ],
+      "limit": 35
+    },
+    {
+      "id": "bali_jdih",
+      "label": "JDIH Bali — peraturan gubernur dan daerah",
+      "url": "https://jdih.baliprov.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.baliprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/"
+      ],
+      "limit": 35
+    },
+    {
+      "id": "kaltim_jdih",
+      "label": "JDIH Kalimantan Timur — produk hukum daerah",
+      "url": "https://jdih.kaltimprov.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.kaltimprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/"
+      ],
+      "limit": 35
     }
   ],
   "watched_laws": [
@@ -483,7 +535,7 @@
   "item_retention": 450,
   "source_item_cap": 65,
   "monitoring_window_days": 90,
-  "notes": "Expanded to official BPK, Bapanas, BNPB and selected local JDIH. These feeds provide *candidate* discovery, not comprehensive national/provincial historical crawling or legally adjudicated status. Degraded/403 source is displayed; never infer no legal change.",
+  "notes": "Expanded to official BPK, Bapanas, BNPB and selected local JDIH. These feeds provide *candidate* discovery, not comprehensive national/provincial historical crawling or legally adjudicated status. Degraded/403 source is displayed; never infer no legal change. On 19 October 2026 four additional public provincial JDIH portals (Aceh, North Sumatra, Bali, East Kalimantan) were added for candidate-only discovery. Newly identified sources require successful baseline scans before change alerts; watch failures are explicit.",
   "monitor_groups": [
     {
       "id": "domestic_policy",
