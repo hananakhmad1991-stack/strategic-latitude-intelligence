@@ -260,23 +260,21 @@ test("research quick-start is compact, optional and stays functional",()=>{
  const client=file("js/sli-research-assistant.js");
  assert.match(page,/id="raTemplates"/);
  assert.match(page,/id="raMoreExamples"/);
- assert.match(page,/data-template="regulation"/);
- assert.match(page,/data-template="academic_ahp"/);
- assert.match(page,/data-template="province"/);
- assert.match(page,/data-template="refinery"/);
+ for(const prompt of ["regulation","academic_ahp","province","refinery"])
+  assert.ok(page.includes('data-template="'+prompt+'"'));
  assert.doesNotMatch(page,/sli-ra-template-featured/);
- assert.match(css,/#raTemplates \\.sli-ra-template-grid/);
- assert.match(css,/:has\\(#raConversation:not\\(\\[hidden\\]\\)\\) #raTemplates/);
- assert.match(client,/regulation:\\{mode:"executive_summary"/);
- assert.match(client,/querySelectorAll\\("\\[data-template\\]"\\)/);
+ assert.ok(css.includes("#raTemplates .sli-ra-template-grid"));
+ assert.ok(css.includes(":has(#raConversation:not([hidden])) #raTemplates"));
+ assert.ok(client.includes('regulation:{mode:"executive_summary"'));
+ assert.ok(client.includes('document.querySelectorAll("[data-template]")'));
 });
 test("source statements are shown only in source panel and legal headings stay localized",()=>{
  const client=file("js/sli-research-assistant.js");
  const begin=client.indexOf("function normalizeReportListNumbers(");
- const end=client.indexOf("\\nfunction renderModelStatement",begin);
+ const end=client.indexOf("\nfunction renderModelStatement",begin);
  assert.ok(begin>=0&&end>begin);
- const render=new Function(client.slice(begin,end)+"\\nreturn reportBody;")();
- const input="### Executive Summary\\n\\nBukti resmi [1].\\n\\n### Source Statement\\n\\nKutip ulang sumber [1].\\n\\n### Verification Note\\n\\nStatus hukum belum lengkap [1].";
+ const render=new Function(client.slice(begin,end)+"\nreturn reportBody;")();
+ const input="### Executive Summary\n\nBukti resmi [1].\n\n### Source Statement\n\nKutip ulang sumber [1].\n\n### Verification Note\n\nStatus hukum belum lengkap [1].";
  const out=render(input,"id");
  assert.match(out,/### Ringkasan Eksekutif/);
  assert.doesNotMatch(out,/Source Statement|Kutip ulang sumber/);
