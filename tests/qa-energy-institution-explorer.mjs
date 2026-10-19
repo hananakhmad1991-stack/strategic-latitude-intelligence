@@ -102,6 +102,15 @@ assert.match(idHierarchy.textContent,/Semua sektor · berkelompok/, 'Filter choi
 assert.match(idHierarchy.textContent,/entitas terpetakan/, 'Dynamic entity counts still English');
 assert.ok(!idHierarchy.textContent.includes('Three separate systems:'), 'An untranslated source English paragraph is visible in ID mode');
 assert.ok(!idHierarchy.textContent.includes('GOVERNMENT · POLICY & PUBLIC INSTITUTIONS'), 'English sector heading visible after selecting Indonesian');
+const localizedNetwork=new FakeNode('section');
+window.renderSLIStakeholderMap(localizedNetwork,data.governance);
+assert.match(localizedNetwork.textContent,/Peta Kelembagaan Energi Indonesia/,"Secondary Energy Power Map still has an English heading");
+assert.match(localizedNetwork.textContent,/Enam sistem pemangku kepentingan/,"Secondary Energy Power Map still has English analysis");
+assert.match(localizedNetwork.textContent,/Kebijakan harga dan subsidi energi|Pilih kelompok/,"Secondary Energy Power Map shows no Indonesian source context");
+const localizedTabs=localizedNetwork.querySelectorAll('.stake-tab');
+assert.equal(localizedTabs.length,3,"Stakeholder network has three controls");
+localizedTabs[1].events.click();
+assert.match(localizedNetwork.querySelector('.stake-inspector').textContent,/Akuntabilitas|Pengambilan keputusan|Peran|Peta|lembaga/i,"Inspector should explain the institution in Indonesian");
 const idProfile=idRoot.querySelector('.sli-hier-profile');
 assert.match(idProfile.textContent,/Jenis bukti:/, 'Right inspector provenance has not been localized');
 const idFilter=idRoot.querySelector('.sli-hier-select');
