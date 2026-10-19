@@ -6,6 +6,8 @@ legal validity, promote project milestones, modify AI model weights, or use APIs
 from __future__ import annotations
 import argparse, hashlib, json, pathlib, re, urllib.parse
 from collections import Counter
+from itertools import chain
+from sli_research_source_adapters import adapted_rows
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 DATA=ROOT/"data"
@@ -108,7 +110,7 @@ def build():
   except (UnicodeError,json.JSONDecodeError) as e:raise SystemExit(f"Malformed {file.name}: {e}")
   stages.update(stage_entries(file.name,raw))
   candidates=0
-  for path,r in walk(raw):
+  for path,r in chain(walk(raw),adapted_rows(file.name,raw)):
    if candidates>=LIMIT_PER_DATASET or len(rows)>=LIMIT_TOTAL:break
    url=rec_source(r);title=rec_title(r)
    if not url or not title:continue

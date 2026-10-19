@@ -102,6 +102,24 @@ export function fillChatMethods(select){
 }
 export function recommendInvestorMethod(question){
  const q=String(question||"").toLowerCase();
+ // Explicit scientific-method request wins over generic sector keywords.
+ // An available engine is NOT an executed estimator until the required input is supplied.
+ const methodCues=[
+  [/\b(?:difference[- ]in[- ]differences|difference in differences|did)\b/i,"did"],
+  [/\b(?:location quotient|lq)\b/i,"lq"],
+  [/\b(?:topsis)\b/i,"topsis"],
+  [/\b(?:ordinary least squares|regresi linear sederhana|regresi linier sederhana|\bols\b)\b/i,"ols"],
+  [/\b(?:shift[- ]share|shift share)\b/i,"shift_share"],
+  [/\b(?:monte[- ]carlo|monte carlo)\b/i,"monte_carlo"]
+ ];
+ for(const [cue,id] of methodCues){
+  if(!cue.test(q))continue;
+  const method=METHODS.find(m=>m.id===id);
+  const implemented=method?.status==="local";
+  return {id,can_execute:implemented,reason:implemented?
+   "Mesin lokal tersedia; hasil numerik hanya setelah input, asumsi dan uji kelayakan valid disediakan.":
+   "Metode ada dalam katalog desain, tetapi estimator lokal belum tersedia. Jangan mengarang hasil perhitungan."};
+ }
  if(/multiplier|pengganda|dampak ekonomi sektor|input.output|leontief/.test(q))
   return {id:"input_output",can_execute:false,reason:"Butuh tabel input-output resmi yang selaras sektor, wilayah, tahun, dan pengeluaran investasi."};
  if(/kilang|refinery|migas|terminal minyak|petrokimia/.test(q))
