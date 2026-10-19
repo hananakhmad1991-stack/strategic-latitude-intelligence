@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.3",
+  "version": "2026-10-19.4",
   "updated_at": "2026-10-19",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -70,7 +70,8 @@
     "foreign_law_notes": "Foreign EU and US regulations are separate market-access/transactional applicability branches, not levels in Indonesian hierarchy; check destination, product nomenclature, counterparty, implementation dates, license requirements and foreign jurisdictional scope.",
     "regional_coverage": "Initial verified national and selected local examples. All provincial/city legal sources must be progressively catalogued; no nationwide exhaustive coverage claim.",
     "source_update_policy": "Automated JDIH/news monitoring creates review candidates; enactment, amendment, repeal and jurisdiction are not automatically legally determined from a news headline or page fingerprint.",
-    "regional_coverage_detail": "Wilayah pada setiap instrumen adalah cakupan administratif asal/otoritas, bukan penetapan bahwa izin atau aturan tersebut diterapkan persis demikian pada setiap proyek. Pemilihan lokasi proyek perlu kajian RTRW, RDTR, KKPR, Perda serta kewenangan lokal."
+    "regional_coverage_detail": "Wilayah pada setiap instrumen adalah cakupan administratif asal/otoritas, bukan penetapan bahwa izin atau aturan tersebut diterapkan persis demikian pada setiap proyek. Pemilihan lokasi proyek perlu kajian RTRW, RDTR, KKPR, Perda serta kewenangan lokal.",
+    "legal_status_explanation": "Berlaku dengan perubahan is NOT the same as repealed. Histories distinguish amendment, partial repeal and entire repeal; verified legal links carry source and date. Future source discoveries stay pending until official text reviewed."
   },
   "nodes": [
     {
@@ -108,12 +109,13 @@
       "label": "Formation and hierarchy of legislation",
       "sector": "cross",
       "source": "https://peraturan.go.id/files/uu12-2011bt.pdf",
-      "note": "Pasal 7 formal hierarchy; Pasal 8 recognizes other regulations if authorized. Interpret together with UU 13/2022.",
-      "status": "check_current",
+      "note": "UU pembentukan peraturan; dibaca dengan perubahan UU 15/2019, UU 13/2022, dan perubahan spesifik Pasal 15 oleh UU 1/2026. Rujuk hierarki formal Pasal 7 dan aturan pejabat pembentuk berdasarkan Pasal 8.",
+      "status": "amended",
       "kind": "legislation",
       "owner": "Lawmakers",
       "evidence": "official_record",
-      "region": "Indonesia"
+      "region": "Indonesia",
+      "verified_at": "2026-10-19"
     },
     {
       "id": "uu6",
@@ -205,13 +207,14 @@
       "ref": "UU 2/2025",
       "label": "Fourth amendment to mining law",
       "sector": "minerba",
-      "source": "https://peraturan.go.id/id/uu-no-2-tahun-2025",
+      "source": "https://peraturan.bpk.go.id/Details/316682/uu-no-2-tahun-2025",
       "note": "Mining investment and concessions require the current consolidated mining framework.",
       "status": "amending_instrument",
       "kind": "legislation",
       "owner": "ESDM / Minerba",
       "evidence": "official_record",
-      "region": "Indonesia"
+      "region": "Indonesia",
+      "verified_at": "2026-10-19"
     },
     {
       "id": "uu32env",
@@ -248,7 +251,7 @@
       "label": "Pemerintahan Daerah — pembagian urusan pusat, provinsi dan kabupaten/kota",
       "sector": "cross",
       "source": "https://peraturan.bpk.go.id/details/38685/uu-no-23-tahun-2014",
-      "note": "Pasal 15 dan lampiran membagi urusan pemerintahan konkuren. Telah diubah berulang, termasuk UU 6/2023 dan perubahan terbatas Pasal 238 oleh UU 1/2026. Periksa juga UU sektoral untuk kewenangan dan pendelegasian.",
+      "note": "Status berlaku dengan perubahan. Diubah antara lain UU 2/2015, UU 9/2015, UU 6/2023, dan UU 1/2026 (khusus Pasal 238). Ketentuan tertentu dicabut sebagian oleh UU 1/2022 dan UU 17/2019; sejumlah pasal terkena putusan MK. Baca teks dan lampiran perubahan sebelum menyimpulkan kewenangan.",
       "status": "amended",
       "kind": "legislation",
       "owner": "Interior / Regional",
@@ -258,7 +261,8 @@
         "otonomi daerah",
         "kewenangan daerah",
         "perizinan"
-      ]
+      ],
+      "verified_at": "2026-10-19"
     },
     {
       "id": "pp40",
@@ -266,13 +270,15 @@
       "ref": "PP 40/2025",
       "label": "National Energy Policy (KEN)",
       "sector": "energy",
-      "source": "https://peraturan.go.id/files/pp-no-40-tahun-2025.pdf",
-      "note": "Latest national policy basis; transitional provisions preserve implementing rules insofar as consistent.",
+      "source": "https://peraturan.bpk.go.id/Details/328789/pp-no-40-tahun-2025",
+      "note": "KEN berlaku 15 September 2025 dan mencabut PP 79/2014. RUEN/RUED lama perlu kajian keselarasan dan ketentuan peralihan.",
       "status": "enacted",
       "kind": "general_regulation",
       "owner": "ESDM / DEN",
       "evidence": "official_record",
-      "region": "Indonesia"
+      "region": "Indonesia",
+      "enacted_date": "2025-09-15",
+      "verified_at": "2026-10-19"
     },
     {
       "id": "pp79old",
@@ -281,12 +287,13 @@
       "label": "Former national energy policy",
       "sector": "energy",
       "source": "https://peraturan.go.id/id/pp-no-79-tahun-2014",
-      "note": "Historical KEN superseded by PP 40/2025; avoid citing old mix targets as current new KEN.",
+      "note": "Dicabut PP 40/2025 pada 15 September 2025; jangan gunakan target KEN 2014 sebagai kebijakan nasional terkini tanpa penandaan historis.",
       "status": "repealed",
       "kind": "general_regulation",
       "owner": "ESDM / DEN",
       "evidence": "official_record",
-      "region": "Indonesia"
+      "region": "Indonesia",
+      "verified_at": "2026-10-19"
     },
     {
       "id": "pp28",
@@ -294,13 +301,15 @@
       "ref": "PP 28/2025",
       "label": "Risk-based business licensing",
       "sector": "cross",
-      "source": "https://peraturan.go.id/files/pp-no-28-tahun-2025.pdf",
-      "note": "Replaces PP 5/2021. Project KBLI, NIB, risk tier and permits need activity-level assessment.",
+      "source": "https://peraturan.bpk.go.id/Details/319773/pp-no-28-tahun-2025",
+      "note": "PBBR/OSS berlaku 5 Juni 2025 dan mencabut PP 5/2021. Klasifikasi KBLI dan persyaratan khusus tetap perlu cek lampiran dan aturan teknis terbaru.",
       "status": "enacted",
       "kind": "general_regulation",
       "owner": "Investment Ministry / OSS",
       "evidence": "official_record",
-      "region": "Indonesia"
+      "region": "Indonesia",
+      "enacted_date": "2025-06-05",
+      "verified_at": "2026-10-19"
     },
     {
       "id": "pp5old",
@@ -309,12 +318,13 @@
       "label": "Former risk-based business licensing",
       "sector": "cross",
       "source": "https://peraturan.go.id/id/pp-no-5-tahun-2021",
-      "note": "Explicitly revoked by PP 28/2025; historical reference only.",
+      "note": "Dicabut PP 28/2025 pada 5 Juni 2025; hanya sebagai pembanding historis izin OSS.",
       "status": "repealed",
       "kind": "general_regulation",
       "owner": "Investment Ministry / OSS",
       "evidence": "official_record",
-      "region": "Indonesia"
+      "region": "Indonesia",
+      "verified_at": "2026-10-19"
     },
     {
       "id": "pp14power",
@@ -364,13 +374,14 @@
       "ref": "PP 96/2021",
       "label": "Mining business implementation",
       "sector": "minerba",
-      "source": "https://peraturan.go.id/id/pp-no-96-tahun-2021",
-      "note": "Read with PP 25/2024 and UU 2/2025; evolving concession and processing rules.",
+      "source": "https://peraturan.bpk.go.id/Details/160549/pp-no-96-tahun-2021",
+      "note": "Kerangka pelaksanaan Minerba; ketentuan harus dibaca bersama perubahan PP 25/2024 dan PP 39/2025, serta UU Minerba sebagaimana diubah UU 2/2025.",
       "status": "amended",
       "kind": "general_regulation",
       "owner": "ESDM / Minerba",
       "evidence": "official_record",
-      "region": "Indonesia"
+      "region": "Indonesia",
+      "verified_at": "2026-10-19"
     },
     {
       "id": "pp25min",
@@ -422,11 +433,13 @@
       "sector": "carbon",
       "source": "https://peraturan.bpk.go.id/Details/334733/perpres-no-110-tahun-2025",
       "note": "Berlaku 10 Oktober 2025 dan secara eksplisit mencabut Perpres 98/2021 menurut JDIH BPK. Atur instrumen NEK, NDC, pelaporan dan tata kelola emisi; pertimbangkan aturan pelaksana dan transisi.",
-      "status": "check_current",
+      "status": "enacted",
       "kind": "presidential_regulation",
       "owner": "President / KLH",
       "evidence": "official_record",
-      "region": "Indonesia"
+      "region": "Indonesia",
+      "enacted_date": "2025-10-10",
+      "verified_at": "2026-10-19"
     },
     {
       "id": "pres22ruen",
@@ -1174,7 +1187,9 @@
         "iklim",
         "NDC",
         "karbon"
-      ]
+      ],
+      "enacted_date": "2016-10-25",
+      "verified_at": "2026-10-19"
     },
     {
       "id": "eu_cbam",
@@ -1239,7 +1254,7 @@
       "label": "Hubungan Keuangan antara Pemerintah Pusat dan Pemerintahan Daerah (HKPD)",
       "sector": "cross",
       "source": "https://peraturan.bpk.go.id/Details/195696/uu-no-1-tahun-2022",
-      "note": "Pajak dan retribusi daerah, transfer ke daerah, belanja, pembiayaan daerah dan sinergi fiskal; cek pajak/retribusi sesuai Perda lokasi proyek, putusan MK dan perubahan terkini.",
+      "note": "Hubungan Keuangan Pusat-Daerah. Peraturan ini mencabut sebagian sejumlah ketentuan UU 23/2014, terutama pajak, retribusi dan hubungan fiskal daerah. Verifikasi Perda fiskal lokasi proyek.",
       "status": "check_current",
       "kind": "legislation",
       "owner": "Kemenkeu / Kemendagri / Pemda",
@@ -1250,7 +1265,8 @@
         "investasi",
         "fiskal",
         "pajak daerah"
-      ]
+      ],
+      "verified_at": "2026-10-19"
     },
     {
       "id": "uu1penyesuaian2026",
@@ -1269,7 +1285,9 @@
         "otonomi daerah",
         "produk hukum daerah",
         "penyesuaian pidana"
-      ]
+      ],
+      "enacted_date": "2026-01-02",
+      "verified_at": "2026-10-19"
     },
     {
       "id": "perda_dki_rtrw2024",
@@ -1337,8 +1355,8 @@
       "ref": "Perpres 98/2021",
       "label": "Former carbon economic value and emissions control framework (dicabut)",
       "sector": "carbon",
-      "source": "https://peraturan.bpk.go.id/Details/187122/perpres-no-98-ta-",
-      "note": "Dicabut Perpres 110/2025 per JDIH BPK. Peraturan pelaksana lama tertentu dapat tetap berlaku sepanjang tidak bertentangan dan belum diganti; jangan perlakukan Perpres 98/2021 sebagai payung hukum utama saat ini.",
+      "source": "https://peraturan.bpk.go.id/Details/187122/perpres-no-98-tahun-2021",
+      "note": "Tidak berlaku sejak dicabut Perpres 110/2025 pada 10 Oktober 2025. Ditampilkan sebagai arsip historis, bukan dasar operasional regulasi NEK terkini.",
       "status": "repealed",
       "kind": "presidential_regulation",
       "owner": "Pemerintah Pusat / KLH",
@@ -1349,7 +1367,8 @@
         "karbon",
         "iklim",
         "emisi"
-      ]
+      ],
+      "verified_at": "2026-10-19"
     },
     {
       "id": "uu18food2012",
@@ -1422,7 +1441,7 @@
       "label": "Sumber Daya Air — pengelolaan air dan pemanfaatan sumber daya",
       "sector": "environment",
       "source": "https://peraturan.go.id/id/uu-no-17-tahun-2019",
-      "note": "Relevan bagi proyek industri, pusat data dan pertanian yang bergantung pada ketersediaan air. Cek izin, kewenangan dan peraturan pelaksana setempat; keberadaan UU tidak membuktikan izin tertentu dibutuhkan.",
+      "note": "Mengatur SDA dan sekaligus mencabut sebagian ketentuan pembagian kewenangan SDA/geologi dalam lampiran UU 23/2014; cek aturan pelaksanaan dan ruang lingkup proyek.",
       "status": "check_current",
       "kind": "legislation",
       "owner": "Kementerian PU / Pemda / Pengelola wilayah sungai",
@@ -1434,7 +1453,89 @@
         "pendinginan data center",
         "kekeringan",
         "irigasi"
+      ],
+      "verified_at": "2026-10-19"
+    },
+    {
+      "id": "pp39minerba",
+      "tier": "pp",
+      "ref": "PP 39/2025",
+      "label": "Perubahan kedua atas PP 96/2021 tentang usaha pertambangan minerba",
+      "sector": "minerba",
+      "source": "https://peraturan.bpk.go.id/Details/331105/pp-no-39-tahun-2025",
+      "note": "Perubahan kedua sesudah PP 25/2024; berlaku sejak 11 September 2025. Termasuk pencabutan sebagian aturan prioritas WIUP/WIUPK Perpres 70/2023 jo. 76/2024; baca ketentuan terbaru bersama PP 96/2021.",
+      "status": "amending_instrument",
+      "kind": "government_regulation_amendment",
+      "owner": "Pemerintah / ESDM",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "minerba",
+        "IUP",
+        "WIUP",
+        "WIUPK",
+        "hilirisasi"
+      ],
+      "enacted_date": "2025-09-11",
+      "verified_at": "2026-10-19"
+    },
+    {
+      "id": "uu9local2015",
+      "tier": "uu",
+      "ref": "UU 9/2015",
+      "label": "Perubahan kedua UU 23/2014 tentang Pemerintahan Daerah",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/id/uu-no-9-tahun-2015",
+      "note": "Instrumen perubahan terhadap UU 23/2014; harus dibaca bersama perubahan sesudahnya termasuk UU 6/2023 dan perubahan terbatas UU 1/2026.",
+      "status": "amending_instrument",
+      "kind": "legislation",
+      "owner": "Pembentuk UU / Kemendagri",
+      "evidence": "official_record",
+      "region": "Indonesia",
+      "topics": [
+        "otonomi daerah",
+        "pemerintahan daerah",
+        "kewenangan"
       ]
+    },
+    {
+      "id": "uu2local2015",
+      "tier": "uu",
+      "ref": "UU 2/2015",
+      "label": "Pengesahan Perppu 2/2014 sebagai perubahan UU 23/2014 Pemerintahan Daerah",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/id/uu-no-2-tahun-2015",
+      "note": "Instrumen perubahan Pemerintahan Daerah yang bersifat historis untuk dibaca bersama seluruh perubahan berikutnya.",
+      "status": "amending_instrument",
+      "kind": "legislation",
+      "owner": "Pembentuk UU / Kemendagri",
+      "evidence": "official_record",
+      "region": "Indonesia",
+      "topics": [
+        "otonomi daerah",
+        "pemerintahan daerah"
+      ]
+    },
+    {
+      "id": "uu13p32022",
+      "tier": "uu",
+      "ref": "UU 13/2022",
+      "label": "Perubahan kedua UU 12/2011 tentang Pembentukan Peraturan Perundang-undangan",
+      "sector": "cross",
+      "source": "https://peraturan.go.id/files/uu13-2022.pdf",
+      "note": "Mengatur perkembangan tata cara pembentukan peraturan termasuk omnibus dan partisipasi bermakna. Pasal 15 UU 12/2011 kemudian berubah terbatas melalui UU 1/2026.",
+      "status": "amending_instrument",
+      "kind": "legislation",
+      "owner": "Pembentuk UU / Kemenkum",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "hierarki regulasi",
+        "perda",
+        "peraturan",
+        "pembentukan regulasi"
+      ],
+      "enacted_date": "2022-06-16"
     }
   ],
   "edges": [
@@ -2032,6 +2133,61 @@
       "from": "uu17water2019",
       "to": "pp22env",
       "type": "water_and_environmental_compliance_context"
+    },
+    {
+      "from": "pp96min",
+      "to": "pp39minerba",
+      "type": "amended_by"
+    },
+    {
+      "from": "pp25min",
+      "to": "pp39minerba",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu23local",
+      "to": "uu9local2015",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu23local",
+      "to": "uu2local2015",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu23local",
+      "to": "uu6",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu23local",
+      "to": "uu1hkpd2022",
+      "type": "partially_repealed_by"
+    },
+    {
+      "from": "uu23local",
+      "to": "uu17water2019",
+      "type": "partially_repealed_by"
+    },
+    {
+      "from": "uu12",
+      "to": "uu13p32022",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu13p32022",
+      "to": "uu1penyesuaian2026",
+      "type": "specific_provision_amended_by"
+    },
+    {
+      "from": "uu2minerba",
+      "to": "uu4minerba",
+      "type": "amends"
+    },
+    {
+      "from": "uu2minerba",
+      "to": "uu3minerba",
+      "type": "amends"
     }
   ],
   "cases": [
