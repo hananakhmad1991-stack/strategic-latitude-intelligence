@@ -85,7 +85,7 @@ test("primary article reference pilot preserves law-to-article and source proven
  assert.match(bridge,/legalProvisionEvidence/);
  assert.match(worker,/import \{legalProvisionEvidence\}/);
  assert.match(worker,/ARTICLE CITATIONS/);
- assert.match(worker,/\.\.\.articleEvidence,\.\.\.treatyChronologyEvidence,\.\.\.legalEvidence/);
+ assert.match(worker,/\.\.\.articleEvidence,\.\.\.treatyChronologyEvidence,\.\.\.implementationEvidence,\.\.\.legalEvidence/);
 });
 test("unsupported article citations fail closed in owner-only legal model output", async()=>{
  const {auditLegalArticleCitations,recoverUnsupportedLegalAnswer}=await import("../research-api/src/legal-citation-audit.mjs");
@@ -282,8 +282,29 @@ test("source statements are shown only in source panel and legal headings stay l
  const chart=file("js/sli-research-visuals.js");
  assert.match(chart,/sli-ra-report-divider/);
 });
+test("post-Paris official policy context is scoped, dated and separate from the ratification law",()=>{
+ const registry=JSON.parse(file("data/sli-paris-policy-context.json"));
+ const module=file("research-api/src/paris-policy-context.mjs");
+ assert.equal(registry.schema,"sli-paris-policy-context-v1");
+ assert.equal(registry.records.length,3);
+ assert.equal(new Set(registry.records.map(x=>x.id)).size,3);
+ for(const rec of registry.records){
+  assert.match(rec.source_url,/^https:\/\//);
+  assert.match(rec.document_date,/^2025-/);
+  assert.ok(rec.limitation.length>40);
+ }
+ assert.match(registry.records[0].title,/Second/);
+ assert.match(registry.records[1].summary,/PP 79\/2014/);
+ assert.match(registry.records[2].summary,/Perpres 98\/2021/);
+ assert.match(module,/export function parisImplementationContextEvidence/);
+ assert.match(worker,/import \{parisImplementationContextEvidence\}/);
+ assert.match(worker,/const implementationEvidence=focusedLegalReading/);
+ assert.match(worker,/POST-2016 INDONESIAN IMPLEMENTATION EVIDENCE/);
+ assert.match(worker,/sli_policy_second_ndc/);
+ assert.match(worker,/official_policy_context_metadata/);
+});
 test("modified source modules pass the JavaScript parser",()=>{
- for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-research-visuals.js","js/sli-visual-export.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/treaty-status.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
+ for(const path of ["js/sli-policy-assistant.js","js/sli-research-assistant.js","js/sli-research-visuals.js","js/sli-visual-export.js","js/sli-regulatory-explorer.js","js/sli-policy-coverage.js","research-api/src/legal-provisions.mjs","research-api/src/treaty-status.mjs","research-api/src/paris-policy-context.mjs","research-api/src/legal-citation-audit.mjs","research-api/src/policy-corpus.mjs","research-api/src/owner-test-worker.mjs"]){
   const p=spawnSync(process.execPath,["--check",new URL("../"+path,import.meta.url).pathname],{encoding:"utf8"});
   assert.equal(p.status,0,path+": "+p.stderr);
  }
