@@ -1,0 +1,110 @@
+name: SLI Unified Research Evidence Sync & Review
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 2,8,14,20 * * *"
+  push:
+    paths:
+      - 'scripts/build_research_unified_index.py'
+      - 'scripts/audit_sli_research_index.py'
+      - 'research-api/src/dashboard-corpus.mjs'
+      - 'research-api/src/owner-test-worker.mjs'
+      - 'data/sli-research-project-stage-baseline.json'
+      - '.github/workflows/sli-unified-research-sync.yml'
+  pull_request:
+    paths:
+      - 'scripts/build_research_unified_index.py'
+      - 'scripts/audit_sli_research_index.py'
+      - 'research-api/src/dashboard-corpus.mjs'
+      - 'research-api/src/owner-test-worker.mjs'
+      - 'data/sli-research-project-stage-baseline.json'
+      - '.github/workflows/sli-unified-research-sync.yml'
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: sli-unified-research-index-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  index-and-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Generate source-linked evidence and audit changes
+        run: |
+          python scripts/build_research_unified_index.py
+          python scripts/audit_sli_research_index.py
+          node --check research-api/src/dashboard-corpus.mjs
+          node --check research-api/src/owner-test-worker.mjs
+          node --test tests/qa-sli-dashboard-corpus.mjs
+      - name: Explain actual coverage, not fake fact verification
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          c=json.load(open('data/sli-research-unified-index.json'))['coverage']
+          r=json.load(open('artifacts/sli-research-stage-review.json'))
+          print('### Source-linked SLI dashboard retrieval')
+          print('Records:',c['rows'],'Indexed datasets:',c['datasets_indexed'],'Datasets inspected:',c['datasets_scanned'])
+          print('Project-stage differences needing primary-source review:',len(r['changes']))
+          print('Indexed records are dated leads, not publisher-page or claim-level verification.')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-unified-research-evidence-review
+          path: |
+            data/sli-research-unified-index.json
+            artifacts/sli-research-stage-review.json
+          retention-days: 14
+      - name: Publish dated index only, preserving concurrent main updates
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        run: |
+          git config user.name "sli-research-index[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/build_research_unified_index.py
+            python scripts/audit_sli_research_index.py
+            git add data/sli-research-unified-index.json
+            if git diff --cached --quiet; then echo "No new index changes"; break; fi
+            git commit -m "data: sync source-linked public Research AI index [skip ci]"
+            if git push origin HEAD:main; then echo "Published updated index"; break; fi
+            [ "$attempt" -eq 3 ] && exit 1
+            sleep $((attempt * 4))
+          done
+      - name: Create one review issue when project's reported stage changes
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,subprocess
+          r=json.load(open('artifacts/sli-research-stage-review.json'))
+          changes=r.get('changes',[])
+          if not changes:
+              print('No stage-review differences');raise SystemExit(0)
+          marker='SLI_UNIFIED_STAGE_REVIEW_QUEUE'
+          q=subprocess.run(['gh','issue','list','--state','open','--search',marker+' in:body','--json','number','--limit','30'],capture_output=True,text=True)
+          if q.returncode:raise SystemExit('Issue lookup failed; avoid duplicate alerts')
+          if json.loads(q.stdout):
+              print('Existing review issue; no duplicate');raise SystemExit(0)
+          lines=['Public source-linked project labels differ from pinned baseline. NOT verified.', '',
+            'Do not promote changes automatically; review dated original operator/regulator releases.',
+            '', '| Project | Approved baseline | New candidate |', '|---|---|---|']
+          for c in changes[:25]:
+              cell=lambda x:str(x).replace('|','/').replace('\n',' ')[:130]
+              lines.append('| '+cell(c['project_id'])+' | '+cell(c['approved_stage'])+' | '+cell(c['candidate_stage'])+' |')
+          lines+=['','The Research AI index suppresses automatic promotion of changed labels.',marker]
+          cmd=['gh','issue','create','--title','Research AI: review project-stage changes against primary sources','--body','\n'.join(lines)]
+          ret=subprocess.run(cmd,capture_output=True,text=True)
+          if ret.returncode:raise SystemExit(ret.stderr)
+          print(ret.stdout)
+          PY
