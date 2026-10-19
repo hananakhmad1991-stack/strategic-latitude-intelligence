@@ -126,7 +126,12 @@ test("legal research references preserve original law year and readable source p
  assert.match(entry,/\(2016\)/);
  assert.doesNotMatch(entry,/\(2026\)/);
  assert.match(entry,/UU 16\/2016, Pasal 1/);
- assert.match(client,/sumber\\s\*\\\\\/\\s\*evidence panel|sumber\\s\*\\\/\\s\*evidence panel/i);
+ const begin=client.indexOf("function reportBody(answer){"),finish=client.indexOf("\nfunction renderModelStatement",begin);
+ assert.ok(begin>=0&&finish>begin);
+ const cleanReport=new Function("return "+client.slice(begin,finish))();
+ const clean=cleanReport("### Ringkasan\n\nAnalisis Pasal 1 [1].\n\n### Sumber / Evidence Panel\n\n- [1] tautan sumber\n\n### Batas verifikasi hukum\n\nPerlu pemeriksaan resmi.");
+ assert.doesNotMatch(clean,/Sumber \/ Evidence Panel|tautan sumber/);
+ assert.match(clean,/Batas verifikasi hukum/);
  assert.match(css,/Research sources: dark Navy/);
  assert.match(css,/#raSourcesPanel>h3/);
 });
