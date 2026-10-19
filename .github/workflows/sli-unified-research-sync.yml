@@ -6,6 +6,9 @@ on:
   push:
     paths:
       - 'scripts/build_research_unified_index.py'
+      - 'scripts/sli_research_source_adapters.py'
+      - 'research-api/src/claim-evidence-audit.mjs'
+      - 'tests/qa-sli-claim-audit.mjs'
       - 'scripts/audit_sli_research_index.py'
       - 'research-api/src/dashboard-corpus.mjs'
       - 'research-api/src/owner-test-worker.mjs'
@@ -14,6 +17,9 @@ on:
   pull_request:
     paths:
       - 'scripts/build_research_unified_index.py'
+      - 'scripts/sli_research_source_adapters.py'
+      - 'research-api/src/claim-evidence-audit.mjs'
+      - 'tests/qa-sli-claim-audit.mjs'
       - 'scripts/audit_sli_research_index.py'
       - 'research-api/src/dashboard-corpus.mjs'
       - 'research-api/src/owner-test-worker.mjs'
@@ -42,8 +48,10 @@ jobs:
           python scripts/build_research_unified_index.py
           python scripts/audit_sli_research_index.py
           node --check research-api/src/dashboard-corpus.mjs
+          node --check research-api/src/claim-evidence-audit.mjs
+          python -m py_compile scripts/sli_research_source_adapters.py
           node --check research-api/src/owner-test-worker.mjs
-          node --test tests/qa-sli-dashboard-corpus.mjs
+          node --test tests/qa-sli-dashboard-corpus.mjs tests/qa-sli-claim-audit.mjs
       - name: Explain actual coverage, not fake fact verification
         run: |
           python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
