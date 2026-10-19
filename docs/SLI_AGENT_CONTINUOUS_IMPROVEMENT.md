@@ -21,9 +21,24 @@ Local run: `node --test tests/qa-sli-agent-self-eval.mjs && node scripts/sli-age
 
 **API/cost:** The daily test sends **zero OpenAI, Tavily or other paid AI calls**. It is deterministic code and metadata evaluation; GitHub-hosted runner resource use still applies. Do not reuse the owner's private Research AI token in CI.
 
+## Autonomous tested-change proposer (Phase 2 active)
+
+The GitHub Action `.github/workflows/sli-agent-autonomous-proposals.yml` runs daily around **10:41 WIB** (best-effort) or on manually requested execution and relevant main-branch source updates. Unlike the offline scorecard, this job may **edit code and regression fixtures in an isolated proposed branch**, provided a corresponding candidate is already reviewed and committed to `tests/fixtures/sli-reviewed-autonomous-candidates.json`.
+
+- **Detect:** find the first failing, nonconflicting method-intent candidate from a small nonconfidential approved backlog, without overriding another explicit method.
+- **Prepare:** edit only `js/sli-method-aliases.mjs` (one finite new synonym) and `tests/fixtures/sli-agent-eval-cases.json` (one permanent regression check). These rules affect AI *method-routing behavior*, not OpenAI weights.
+- **Verify:** run existing scientific, geographic, source, security and agent regression checks before the patch, and the same relevant checks plus the new regression case after the patch. Disallow changes outside two exact allowlisted files.
+- **Propose:** push `sli-agent/method-<candidate-id>` branch and open a **draft PR**, never merging automatically. CI in `.github/workflows/sli-agent-proposed-change-qa.yml` additionally rejects any out-of-scope files in agent PRs.
+- **Approve:** the owner reviews code, methodology, tests, cost and security. Only merging an explicitly approved PR to `main` applies the change; GitHub Pages may deploy afterward.
+- **Permission fallback:** some repositories disable GitHub Actions bot-created PRs even with `pull-requests: write`. If creation is blocked, the workflow **keeps its tested proposal branch** and opens an Issue with branch/run details; humans must open the PR. To permit automatic draft-PR creation, configure GitHub repository **Settings → Actions → General → Workflow permissions → Allow GitHub Actions to create and approve pull requests** (if available and the owner accepts the risk). That setting does not itself cause this workflow to approve or merge changes. Protect `main` with required PR reviews and status checks; the linked GitHub integration may be unable to inspect or manage administrative protection settings.
+
+**Demonstrated on 20 October 2026:** the agent generated a reviewed Indonesian routing correction for "regresi linear berganda" in a separate branch; tests succeeded; GitHub denied creation of a draft PR by Actions, so Issue #15 was opened. Draft PR #16 was subsequently created via the authorized GitHub connector for the human to review. Production code was not changed by the agent branch.
+
+**Scope:** This is a narrowly bounded automatic **code proposal** engine. It is not general-purpose autonomous software engineering or unsupervised model retraining. Expansion to prompt experiments/model selection must include approved benchmark suites, real model-output quality scoring, cost caps, private staging, rollback and explicit code-owner review; do not automatically claim model improvement from offline checks alone.
+
 ## What does not happen automatically
 - No change to AI model weights, fine-tuning, private prompt secrets, or automatic GPT model replacement.
-- No self-modifying code, auto-merge, cloud Worker redeployment, live customer account creation or payment.
+- No self-modification on **main**, auto-merge, cloud Worker redeployment, live customer account creation or payment. Reviewed finite code proposals may be generated on isolated branches.
 - No silent elevation of unreviewed RSS/news headlines to primary facts, current law, realized project capex or operating status.
 - No auto-selection of a new source licence, external service, paid evaluation budget or model API account.
 - No claim that a passing structural citation audit verifies the citation actually supports an argument.
@@ -42,4 +57,4 @@ The scorecard includes source-health warnings when upstream data ingestion fails
 Use **Issues → New issue → SLI Agent — Masukan kualitas AI**, specifying a nonconfidential reproduction, expected vs observed output, affected sector/province, primary URL and impact. The feedback is NOT automatically learned as fact; reviewers promote approved anonymous synthetic cases to the regression suite.
 
 ## Current operational limits
-This is **Phase 1: automated self-testing, degradation identification and proposal generation with human approval**. It is a working CI foundation for improvement, not a fully autonomous learning agent or continuously operating production AI. Real production accuracy, live Owner Worker behaviour, full source entailment and all 49 estimators require separate evaluation and development.
+Phase 1 automated self-testing is active, and Phase 2 bounded source-code proposal generation is active on separate branches. Neither is automatic weight retraining, unlimited general code rewriting, or autonomous production deployment. Real production accuracy, live Owner Worker behaviour, factual entailment and 49 estimator development still need separate validation. Real production accuracy, live Owner Worker behaviour, full source entailment and all 49 estimators require separate evaluation and development.
