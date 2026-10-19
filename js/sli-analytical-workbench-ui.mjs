@@ -727,8 +727,14 @@ function renderEconometricResult(fit,stability=null){
 }
 
 $("raRunMethod").addEventListener("click",()=>{
- const selected=method.value;
- if(selected==="auto"){error("Choose a specific executable method to calculate locally; Auto helps formulate the AI research plan.");return}
+ let selected=method.value;
+ if(selected==="auto"){
+  const question=document.getElementById("raPrompt")?.value||"";
+  const resolved=recommendExecutableMethod(question,{rows:data,model});
+  if(resolved.status!=="local"){error(resolved.method==="auto"?
+   "Belum ada metode executable yang cocok. Unggah dataset CSV/JSON atau isi instruksi riset.":getMethod(resolved.method)?.name+" belum memiliki estimator yang dapat dijalankan; tidak ada hasil yang dibuat-buat.");return}
+  selected=resolved.method;method.value=selected;desc();
+ }
  if(getMethod(selected)?.status!=="local"){error("Method available in design library only. SLI AI can discuss identification, assumptions and data requirements, but this estimator is not executed.");return}
  try{
   if(!data&&!model)throw Error("Upload a compatible CSV/JSON dataset before running a model");
@@ -778,6 +784,7 @@ window.SLIAnalyticalWorkbench=Object.freeze({
   let safeResult=last?{...last}:null;
   if(safeResult?.trajectory)safeResult.trajectory=[safeResult.trajectory[0],safeResult.trajectory.at(-1)];
   if(safeResult?.columns)safeResult.columns=safeResult.columns.slice(0,8);
+  if(safeResult?.ranking)safeResult.ranking=safeResult.ranking.slice(0,6).map(r=>({rank:r.rank,name:r.name,score:r.score}));
   if(safeResult&&["multivariate_ols","panel_fe"].includes(safeResult.method)){
    const info=safeResult;
    safeResult={method:info.method,outcome:info.outcome,predictors:info.predictors,rows_used:info.rows_used,
