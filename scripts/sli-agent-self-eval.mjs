@@ -5,7 +5,7 @@
 import {readFileSync,writeFileSync,mkdirSync,appendFileSync} from "node:fs";
 import {resolve,dirname} from "node:path";
 import {fileURLToPath} from "node:url";
-import {METHODS,getMethod,inferMethod,METHOD_FORMULAS,evaluate} from "../js/sli-analytical-core.mjs";
+import {METHODS,getMethod,inferMethod,METHOD_FORMULAS,evaluate as executeMethod} from "../js/sli-analytical-core.mjs";
 import {findProvinces,validateProfiles} from "../js/sli-research-analysis.mjs";
 import {auditReport} from "../research-api/src/report-audit.mjs";
 
@@ -61,22 +61,22 @@ export function evaluate(){
   return "expected method selected";
  });
  check("method_did_blocks_fabrication","methodology",true,()=>{
-  let rejected=false;try{evaluate({method:"did",rows:[]})}catch(e){rejected=/not executable/.test(String(e.message))}
+  let rejected=false;try{executeMethod({method:"did",rows:[]})}catch(e){rejected=/not executable/.test(String(e.message))}
   checked(rejected,"DiD design-only model executed an unsupported estimator");
  });
  check("method_lq_reference","methodology",true,()=>{
-  const r=evaluate({method:"lq",model:{regionalIndustry:200,regionalTotal:1000,nationalIndustry:1000,nationalTotal:10000}});
+  const r=executeMethod({method:"lq",model:{regionalIndustry:200,regionalTotal:1000,nationalIndustry:1000,nationalTotal:10000}});
   checked(Math.abs(r.value-2)<1e-12&&r.causal===false,"LQ benchmark/reference result incorrect");
  });
  check("method_shiftshare_reconciliation","methodology",true,()=>{
-  const r=evaluate({method:"shift_share",model:{regionalIndustryBase:100,regionalIndustryEnd:125,nationalIndustryBase:1000,nationalIndustryEnd:1200,nationalTotalBase:10000,nationalTotalEnd:11000}});
+  const r=executeMethod({method:"shift_share",model:{regionalIndustryBase:100,regionalIndustryEnd:125,nationalIndustryBase:1000,nationalIndustryEnd:1200,nationalTotalBase:10000,nationalTotalEnd:11000}});
   checked(Math.abs(r.explainedChange-r.observedChange)<1e-10,"shift-share identities fail to reconcile");
  });
  check("method_topsis_bounded","methodology",true,()=>{
   const model={alternatives:["A","B","C"],criteria:[{name:"Grid",weight:.6,type:"benefit"},{name:"Cost",weight:.4,type:"cost"}],matrix:[[90,120],[80,70],[50,150]]};
-  const r=evaluate({method:"topsis",model});
+  const r=executeMethod({method:"topsis",model});
   checked(r.ranking.length===3&&r.ranking.every(x=>x.score>=0&&x.score<=1),"TOPSIS ranking is invalid");
-  let rejected=false;try{evaluate({method:"topsis",model:{...model,matrix:[[90,120],[80,null],[50,150]]}})}catch{rejected=true}
+  let rejected=false;try{executeMethod({method:"topsis",model:{...model,matrix:[[90,120],[80,null],[50,150]]}})}catch{rejected=true}
   checked(rejected,"TOPSIS silently accepted missing numeric observation");
  });
  check("all_province_profiles","geography",true,()=>{
