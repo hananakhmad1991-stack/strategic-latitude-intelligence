@@ -39,9 +39,9 @@ const PRIMARY=[
  {
   id:"sli_ccs_esdm_national_2025_report",
   name:"Indonesia CCS/CCUS national potential-project roster — ESDM 2025 performance report",
-  date:"2026-03-01",location:"Indonesia",publisher:"Ditjen Migas Kementerian ESDM",
+  date:"2025",location:"Indonesia",publisher:"Ditjen Migas Kementerian ESDM",
   source:"https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf",
-  text:"OFFICIAL 2025 REPORT (publication month to be separately confirmed): ESDM enumerates multiple potential CCS/CCUS projects and historical studies, including Tangguh UCC, Gundih, Sukowati, Jatibarang, Arun, Sunda-Asri, Sakakemang, East Kalimantan and Donggi Matindok. They are a potential-project/study ROSTER, not a live census of commissioned sites as of 2026. National estimated geological storage potential is NOT injectivity-tested, licensed or operating capacity. Original report should be consulted for the project-by-project vintage."
+  text:"OFFICIAL 2025 REPORT (publication date not established in this source summary): ESDM enumerates multiple potential CCS/CCUS projects and historical studies, including Tangguh UCC, Gundih, Sukowati, Jatibarang, Arun, Sunda-Asri, Sakakemang, East Kalimantan and Donggi Matindok. They are a potential-project/study ROSTER, not a live census of commissioned sites as of 2026. National estimated geological storage potential is NOT injectivity-tested, licensed or operating capacity. Original report should be consulted for the project-by-project vintage."
  }
 ];
 const clean=(s,n=350)=>String(s??"").replace(/[\u0000-\u001f\u007f]/g," ").replace(/\s+/g," ").trim().slice(0,n);
