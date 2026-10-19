@@ -1,0 +1,118 @@
+name: SLI Autonomous Agent — Tested Draft Improvements
+on:
+  workflow_dispatch:
+  schedule:
+    # 10:41 WIB daily; GitHub may delay scheduled workflow.
+    - cron: '41 3 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sli-agent-auto-propose.mjs'
+      - 'js/sli-method-aliases.mjs'
+      - 'tests/qa-sli-agent-auto-propose.mjs'
+      - 'tests/fixtures/sli-reviewed-autonomous-candidates.json'
+      - '.github/workflows/sli-agent-autonomous-proposals.yml'
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+concurrency:
+  group: sli-reviewed-autonomous-improvements
+  cancel-in-progress: false
+jobs:
+  propose-reviewed-change:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pass existing scientific, provenance and safety checks before proposing changes
+        run: |
+          node --check scripts/sli-agent-auto-propose.mjs
+          node --test tests/qa-sli-agent-self-eval.mjs tests/qa-sli-agent-auto-propose.mjs tests/qa-sli-method-execution-v2.mjs tests/qa-sli-cross-sector-evidence-v2.mjs
+      - name: Generate at most one reviewed, bounded source patch
+        id: diff
+        run: |
+          mkdir -p artifacts
+          node scripts/sli-agent-auto-propose.mjs --apply --report=artifacts/sli-agent-draft-proposal.json
+          mapfile -t changed < <(git diff --name-only)
+          if [ "${#changed[@]}" -eq 0 ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No unresolved approved regression case, no code change."
+            exit 0
+          fi
+          if [ "${#changed[@]}" -ne 2 ] || [ "${changed[0]}" != "js/sli-method-aliases.mjs" ] || [ "${changed[1]}" != "tests/fixtures/sli-agent-eval-cases.json" ]; then
+            echo "Refusing unexpected file change in autonomous patch" >&2
+            exit 1
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Verify proposed code and newly added regression tests
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          node --check js/sli-method-aliases.mjs
+          node --check js/sli-analytical-core.mjs
+          node --test tests/qa-sli-agent-self-eval.mjs tests/qa-sli-agent-auto-propose.mjs tests/qa-sli-method-execution-v2.mjs tests/qa-sli-regional-method-engines.mjs tests/qa-sli-cross-sector-evidence-v2.mjs tests/qa-sli-research-quality.mjs
+      - name: Upload tested proposal manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-autonomous-draft-manifest
+          path: artifacts/sli-agent-draft-proposal.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Create separate branch and DRAFT PR, never merge or deploy
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ID=$(node -e "const x=require('./artifacts/sli-agent-draft-proposal.json');if(!/^[a-z0-9][a-z0-9-]{4,49}$/.test(x.candidate_id))process.exit(1);console.log(x.candidate_id)")
+          BRANCH="sli-agent/method-$ID"
+          PRIOR=$(gh pr list --repo "$REPO" --state all --head "$BRANCH" --json number --jq '.[0].number // empty')
+          if [ -n "$PRIOR" ]; then
+            echo "PR #$PRIOR already exists or was reviewed; never duplicate or overwrite."
+            exit 0
+          fi
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+            echo "Previously proposed branch exists; no force push or silent reactivation."
+            exit 0
+          fi
+          git config user.name "sli-agent-proposal[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add -- js/sli-method-aliases.mjs tests/fixtures/sli-agent-eval-cases.json
+          git commit -m "agent: propose reviewed method-routing quality improvement [$ID]"
+          git push origin "HEAD:refs/heads/$BRANCH"
+          cat > /tmp/sli-proposal.md <<EOF
+          ## Autonomous proposal — requires owner approval
+
+          Detected a reviewed method-routing regression and generated a narrow code patch plus permanent synthetic regression case. All selected scientific and security checks must pass.
+
+          - Candidate: $ID
+          - Scope: method-routing synonyms and synthetic method selection tests ONLY
+          - Evidence: $RUN_URL
+          - No OpenAI/Tavily API call or new spend
+          - **DRAFT: DO NOT MERGE until human reviews correctness, source assumptions and affected model routes.**
+          - No model-weight training, no licensing changes, no project/fiscal/legal data writes, no auth/payment/secret changes, no self-deploy.
+
+          Human sign-off checklist:
+          - [ ] Check original question and intended methodological interpretation
+          - [ ] Check the exact 2-file diff and impact on other models
+          - [ ] Confirm baseline regression checks and applicable CI are green
+          - [ ] Approve merge to main; GitHub Pages may deploy automatically after merge
+          EOF
+          if gh pr create --repo "$REPO" --base main --head "$BRANCH" --draft --title "SLI Agent (review required): method selection $ID" --body-file /tmp/sli-proposal.md; then
+            echo "Human-review DRAFT PR created. No production changes applied."
+          else
+            echo "GitHub policy blocked bot-created PR; preserving branch and opening a human action issue."
+            gh issue create --repo "$REPO" --title "SLI Agent approval required: open PR from $BRANCH" \
+              --body "Tested agent proposal branch: $BRANCH. GitHub Actions could not create PR (repository permission). Review 2-file diff and open draft PR manually; **do not merge without human approval**. Run: $RUN_URL"
+          fi
