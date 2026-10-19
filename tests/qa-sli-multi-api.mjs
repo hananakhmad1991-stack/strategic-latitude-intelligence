@@ -204,8 +204,12 @@ test('CCS primary evidence dates show historical pilot injection for Sukowati an
  assert.match(esdm.text,/ALREADY STARTED/);
  assert.match(gundih.text,/historical Gundih CCS studies/);
  assert.match(gundih.text,/NOT equate historical pilot/);
- assert.ok(docs.findIndex(x=>x.id===sukowati.id)<docs.findIndex(x=>x.title==='Sukowati CO₂-EOR / CCUS'));
- assert.ok(docs.findIndex(x=>x.id===gundih.id)<docs.findIndex(x=>x.title==='Gundih CCUS / EGR'));
+ for(const [newSource,projectName] of [[sukowati,'Sukowati'],[gundih,'Gundih']]){
+  const primaryPos=docs.findIndex(x=>x.id===newSource.id);
+  const oldDossierPos=docs.findIndex(x=>x.id.startsWith('sli_ccs_project_')&&x.title.includes(projectName));
+  assert.ok(primaryPos>=0&&primaryPos<8,projectName+' original evidence must be near front');
+  if(oldDossierPos>=0)assert.ok(primaryPos<oldDossierPos,projectName+' pilot should outrank older project snapshot');
+ }
  for(const x of [sukowati,esdm,gundih]){
   assert.match(x.source_url,/^https:\/\//);
   assert.match(x.period,/^20\d{2}-/);
