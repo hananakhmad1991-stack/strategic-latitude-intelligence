@@ -1053,6 +1053,23 @@ for(const [cls,txt] of [["map-legend-pin",label("Approximate locality pin","Titi
  search.addEventListener("input",()=>{selectedRecordId=null;currentPoint=null;lastQuery=search.value.toLowerCase().trim();draw()});
  reset.addEventListener("click",()=>{selectedRecordId=null;currentPoint=null;currentType="all";currentAccuracy="all";for(const b of geoButtons)b.setAttribute("aria-pressed",String(b.dataset.accuracy==="all"));kind.value="all";currentKind="all";location.value="all";currentLocation="all";provinceSelect.value="all";currentProvince=null;currentKepriCluster=null;currentSector="all";currentStage="all";search.value="";lastQuery="";filtersRebuild();setView({x:0,y:0,w:W,h:H});draw()});
  filtersRebuild();draw();
+ // Cross-dashboard search selects the exact indexed project in the existing inspector.
+ // SLI registry IDs are used directly; no new location or project status is inferred.
+ window.SLIMapSearchRecord=function({id,title}={}){
+  if(root!==document.getElementById("sliMapRoot"))return false;
+  const key=String(id||"").trim(),name=String(title||"").trim().toLowerCase();
+  const record=allRows.find(r=>r.id===key)||(name?allRows.find(r=>r.name.toLowerCase()===name):null);
+  if(!record)return false;
+  collapseCatalogue();
+  currentKind="all";kind.value="all";currentSector="all";currentType="all";currentStage="all";
+  currentLocation="all";location.value="all";currentAccuracy="all";
+  currentProvince=null;currentKepriCluster=null;currentPoint=null;currentPointLabel=null;
+  provinceSelect.value="all";search.value="";lastQuery="";
+  for(const b of geoButtons)b.setAttribute("aria-pressed",String(b.dataset.accuracy==="all"));
+  selectedRecordId=record.id;
+  filtersRebuild();draw();insight.scrollIntoView?.({behavior:"smooth",block:"start"});
+  return true;
+ };
 }
 window.SLIProvinceFor=provinceFor;
 window.initSLIStrategicMap=async function(){
