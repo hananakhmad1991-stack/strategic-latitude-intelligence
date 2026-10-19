@@ -107,7 +107,7 @@ test("unsupported article citations fail closed in owner-only legal model output
  assert.equal(recovery.audit.pass,true);
  assert.match(recovery.answer,/pemeriksaan sumber hukum/i);
  assert.doesNotMatch(recovery.answer,/Pasal 9/);
- const orphan=recoverUnsupportedLegalAnswer("### Pasal 1\\n\\nPasal 1 UU 16/2016 mengesahkan Persetujuan Paris sebagai dasar ratifikasi perjanjian internasional dan naskah terjemahannya dilampirkan dalam peraturan tersebut [1].\\n\\n### Klaim Pasal 9\\n\\nPasal 9 tidak didukung [1].",[source]);
+ const orphan=recoverUnsupportedLegalAnswer("### Pasal 1\n\nPasal 1 UU 16/2016 mengesahkan Persetujuan Paris sebagai dasar ratifikasi perjanjian internasional dan naskah terjemahannya dilampirkan dalam peraturan tersebut [1].\n\n### Klaim Pasal 9\n\nPasal 9 tidak didukung [1].",[source]);
  assert.equal(orphan.audit.pass,true);
  assert.doesNotMatch(orphan.answer,/### Klaim Pasal 9/);
  assert.match(orphan.answer,/### Pasal 1/);
