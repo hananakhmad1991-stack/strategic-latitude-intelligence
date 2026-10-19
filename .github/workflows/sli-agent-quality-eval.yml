@@ -8,6 +8,8 @@ on:
       - 'scripts/evaluate_sli_research_agent.mjs'
       - 'tests/fixtures/sli-agent-offline-regression.json'
       - 'research-api/src/claim-evidence-audit.mjs'
+      - 'research-api/src/primary-claim-probe.mjs'
+      - 'tests/qa-sli-primary-claim-probe.mjs'
       - 'scripts/sli_research_source_adapters.py'
       - '.github/workflows/sli-agent-quality-eval.yml'
   pull_request:
@@ -40,7 +42,7 @@ jobs:
           python scripts/build_research_unified_index.py
           python scripts/audit_sli_research_index.py
           node --check research-api/src/claim-evidence-audit.mjs
-          node --test tests/qa-sli-claim-audit.mjs
+          node --test tests/qa-sli-claim-audit.mjs tests/qa-sli-primary-claim-probe.mjs
       - name: Score public evidence retrieval and claim-audit regression
         id: evaluation
         continue-on-error: true
