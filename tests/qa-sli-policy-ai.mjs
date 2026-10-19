@@ -41,7 +41,8 @@ test("ask policy panel is visible, valid, and source-first",()=>{
 });
 test("owner RAG holds legal-index boundaries and never auto-enables customer access",()=>{
  assert.match(worker,/import \{policyLegalEvidence\}/);
- assert.match(worker,/legalEvidence=legalQuestion\?selectResearchEvidence/);
+ assert.match(worker,/legalEvidence=legalQuestion\?selectPolicyEvidence/);
+ assert.match(policyBridge,/export function selectPolicyEvidence/);
  assert.match(worker,/LEGAL EVIDENCE BOUNDARY/);
  assert.match(worker,/OWNER_TEST_TOKEN/);
  assert.match(policyBridge,/full official statute has NOT been provided/i);
