@@ -24,7 +24,8 @@ test("Membership marketing page is an honest bilingual prelaunch page with genui
  assert.ok(s.includes("https://www.linkedin.com/in/akhmad-hanan-a9129a21a/"));
  assert.ok(!s.includes("stripe.com/checkout")&&!s.includes("midtrans.com/checkout"));
  const scripts=[...s.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(x=>x[1]).filter(x=>x.trim());
- assert.equal(scripts.length,1);
+ assert.equal(scripts.length,2,'Locale prepaint and membership runtime must both remain present');
+ assert.match(scripts[0],/sli-chrome-pending/,'Language preference must apply before paint');
  for(const code of scripts)assert.doesNotThrow(()=>new Function(code));
  assert.equal((s.match(/js\/sli-navigation\.js/g)||[]).length,1);
  assert.equal((s.match(/js\/sli-shared-appendix\.js/g)||[]).length,1);
