@@ -41,7 +41,7 @@ export function auditLegalArticleCitations(answer,evidence){
   // Markdown section headings (including "Isi Pasal 1") are navigational labels,
   // not statutory content claims. Do not delete a heading solely because it
   // lacks a citation; its substantive paragraphs remain strictly audited.
-  if(/^#{1,6}\\s+[^\\n]+$/.test(paragraph.trim()))return;
+  if(/^#{1,6}\s+[^\n]+$/.test(paragraph.trim()))return;
   const refs=references(paragraph);
   for(const m of paragraph.matchAll(articleReg)){
    const article="pasal "+m[1].toLowerCase();
