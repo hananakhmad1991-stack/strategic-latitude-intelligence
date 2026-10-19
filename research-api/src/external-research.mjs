@@ -30,8 +30,9 @@ function allowedSearchQuestion(question){
 }
 export function worldBankCandidates(question){
  const q=textField(question,5000);
- // World Bank country series must not substitute for subnational figures.
+ // World Bank country series must not substitute for subnational figures or another country's figures.
  if(/\b(?:provinsi|kabupaten|kota|jawa barat|jawa tengah|jawa timur|sumatera|sulawesi|kalimantan|papua|bali|ntb|ntt)\b/i.test(q))return [];
+ if(/\b(?:china|tiongkok|united states|amerika serikat|jepang|japan|south korea|korea selatan)\b/i.test(q)&&!/\bindonesia\b/i.test(q))return [];
  return INDICATORS.filter(x=>x.terms.some(r=>r.test(q))).slice(0,2);
 }
 export function normaliseWorldBankResponse(data,indicator,retrievedAt=ISO()){
