@@ -86,7 +86,7 @@ export function recoverUnsupportedLegalAnswer(answer,evidence){
   if(!substantive)excluded.add(i);
  }
  const kept=paragraphs.filter((_,i)=>!excluded.has(i)).join("\n\n").trim();
- const excludedCount=excluded.size;
+ const excludedCount=new Set(first.violations.map(v=>v.paragraph_index)).size;
  const warning="Catatan verifikasi SLI: "+excludedCount+" bagian jawaban AI tidak ditampilkan karena mengandung rujukan pasal yang belum cocok dengan dokumen hukum primer dalam corpus. Jangan gunakan hasil ini sebagai opini hukum atau konfirmasi status peraturan.";
  const citations=(Array.isArray(evidence)?evidence:[]).map((d,i)=>({...d,source_index:i+1}))
   .filter(d=>d.provision_anchor?.article&&d.provision_anchor?.instrument_ref).slice(0,4);
