@@ -2,7 +2,7 @@
    Static local links only, no analytics, redirects, network dependency or injected source data. */
 (()=>{'use strict';
 const groups=[
- ['Start here','Mulai di sini','overview','terminal','research','guide','membership'],
+ ['Start here','Mulai di sini','overview','terminal','research','datahub','guide','membership'],
  ['Investment & regions','Investasi & daerah','investment','entities','macro','opportunity','province','gini','labs'],
  ['Energy, trade & assets','Energi, perdagangan & aset','energy','map','trade','minerals','electricity','ruptl'],
  ['Food & agriculture','Pangan & pertanian','food'],
@@ -12,6 +12,7 @@ const groups=[
 ];
 const modules={
  overview:['Overview · Big picture','Gambaran besar · Overview','index.html#overview','National executive context; go deeper for tables, project records and source detail.','Konteks nasional; buka modul detail untuk tabel dan sumber.'],
+ datahub:['SLI Data Library · BPS / IEA / PLN','Perpustakaan Data SLI · BPS / IEA / PLN','sli-sector-data-library.html','Source-linked, dated crime, democracy, socioeconomic, critical mineral and environmental data; no missing figures invented.','Dataset kriminalitas, demokrasi, sosial-ekonomi, mineral IEA dan lingkungan, dengan periode serta status sumber yang jelas.'],
  terminal:['SLI Decision Terminal · Cross-source workspace','SLI Decision Terminal · Workspace lintas sumber','sli-decision-terminal.html','Issuer, attributed-news and policy search with local watchlists and Research AI handoff. Not a live trading terminal.','Pencarian emiten, berita, dan regulasi dengan watchlist lokal serta jalur DERGUBA AI. Bukan terminal perdagangan langsung.'],
  research:['DERGUBA AI · SLI Research Intelligence · Owner Test','DERGUBA AI · Asisten Riset SLI · Uji Pemilik','sli-research-ai.html','Owner-only generative research is in limited testing; subscriber access is not active.','Riset generatif masih uji khusus pemilik dengan sumber terbatas; akses pelanggan belum aktif.'],
  membership:['Membership · Open / Pro / Enterprise','Keanggotaan · Open / Pro / Enterprise','sli-membership.html','Plans and early-access requests; payments are not active yet.','Paket dan permintaan akses awal; pembayaran belum aktif.'],
