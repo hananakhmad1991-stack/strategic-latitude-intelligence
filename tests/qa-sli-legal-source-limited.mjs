@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import {missingLegalArticleBrief} from "../research-api/src/legal-source-limited.mjs";
 import {auditLegalArticleCitations} from "../research-api/src/legal-citation-audit.mjs";
+import {legalProvisionEvidence} from "../research-api/src/legal-provisions.mjs";
 import {makeResearchReport} from "../js/sli-report-content.mjs";
 import {printableResearchHtml} from "../js/sli-report-pdf.mjs";
 import {docxBytes} from "../js/sli-report-docx.mjs";
@@ -84,4 +85,51 @@ test("Worker source excludes speculative model run for single missing Pasal and 
  assert.match(worker,/model_route:"not_invoked_missing_legal_article"/);
  assert.match(worker,/article_text_verified:false/);
  assert.match(action,/qa-sli-legal-source-limited\.mjs/);
+});
+
+test("Full formal names, abbreviations, and duplicated same-law mentions resolve to one Pasal identity",()=>{
+ const formal={...metadata,title:"Undang-Undang Nomor 7 Tahun 2021 · Harmonisasi Peraturan Perpajakan"};
+ const r=answer("Jelaskan Pasal 99 Undang-Undang Nomor 7 Tahun 2021", [formal], []);
+ assert.equal(r.request.law_ref,"UU 7/2021");
+ assert.equal(r.sources.length,1,"formal legal index should match the canonical identity");
+ assert.equal(r.sources[0].source_type,"legal_index_metadata");
+ assert.equal(r.model_called,false);
+ assert.equal(auditLegalArticleCitations(r.answer,[]).pass,true);
+ const repeated=answer("Jelaskan Pasal 99 UU 7/2021 (Undang-Undang Nomor 7 Tahun 2021)",[formal],[]);
+ assert.equal(repeated.request.law_ref,"UU 7/2021");
+ assert.equal(repeated.sources.length,1);
+ const pp=answer("Jelaskan Pasal 99 Peraturan Pemerintah Nomor 28 Tahun 2025",[],[]);
+ assert.equal(pp.request.law_ref,"PP 28/2025");
+ assert.equal(pp.sources.length,0);
+ const perpres=answer("Jelaskan Article 99 Peraturan Presiden Nomor 110 Tahun 2025",[],[]);
+ assert.equal(perpres.request.law_ref,"Perpres 110/2025");
+});
+test("Existing reviewed Pasal is not accidentally withheld when user spells out full law name",()=>{
+ const question="Jelaskan Pasal 1 Undang-Undang Nomor 16 Tahun 2016";
+ const records=legalProvisionEvidence(question,3);
+ assert.ok(records.some(s=>s.provision_anchor?.instrument_ref==="UU 16/2016"&&s.provision_anchor?.article==="Pasal 1"),
+  "reviewed Pasal 1 must be retrieved with full formal law name");
+ const guarded=missingLegalArticleBrief({question,articleEvidence:records,policyEvidence:[]});
+ assert.equal(guarded,null,"matched reviewed Pasal must proceed through normal cited-answer audit");
+});
+test("Formal law name source-limited report has substantive text after every heading and never counts index-only metadata",()=>{
+ const q="Apa isi Pasal 99 Undang-Undang Nomor 7 Tahun 2021?";
+ const r=answer(q,[{...metadata,title:"Undang-Undang Nomor 7 Tahun 2021 · HPP"}],[]);
+ const doc=makeResearchReport({question:q,answer:r.answer,sources:r.sources,language:"id"});
+ assert.equal(doc.report_scope,"focused_legal_article");
+ assert.equal(doc.refs.required_minimum,1);
+ assert.equal(doc.refs.metadata_complete_candidates,0);
+ assert.equal(doc.refs.metadata_only_legal_index,1);
+ assert.equal(doc.refs.ready_for_publication,false);
+ for(let i=0;i<doc.body.length;i++){
+  if(!/^h[1-3]$/.test(doc.body[i].type))continue;
+  const next=doc.body[i+1];
+  assert.equal(next?.type,"p","No orphan heading after report parsing");
+  assert.ok(next?.text?.length>50,"Each legal heading needs a meaningful supporting paragraph");
+ }
+ const html=printableResearchHtml(doc);
+ assert.match(html,/tidak ada teks pasal primer/);
+ assert.match(html,/DRAF BERBANTUAN AI/);
+ assert.doesNotMatch(html,/target minimum 1/);
+ assert.ok(docxBytes(doc).byteLength>3000);
 });

@@ -34,8 +34,8 @@ const originalSource=read("research-api/src/legal-provisions.mjs");
 assert.match(originalSource,/import verified from/);
 assert.match(originalSource,/import graph from/);
 const browserNeutral=originalSource
- .replace('import verified from "../../data/sli-verified-legal-provisions.json";','const verified='+JSON.stringify(registry)+';')
- .replace('import graph from "../../data/sli-policy-regulatory-graph-2026.json";','const graph='+JSON.stringify(graph)+';');
+ .replace(/import verified from "\.\.\/\.\.\/data\/sli-verified-legal-provisions\.json"(?:\s+with\s+\{[^}]+\})?;/,'const verified='+JSON.stringify(registry)+';')
+ .replace(/import graph from "\.\.\/\.\.\/data\/sli-policy-regulatory-graph-2026\.json"(?:\s+with\s+\{[^}]+\})?;/,'const graph='+JSON.stringify(graph)+';');
 const {legalProvisionEvidence,validateProvisionRegistry}=await import("data:text/javascript;charset=utf-8,"+encodeURIComponent(browserNeutral));
 
 test("Verified legal corpus has bounded original-PDF passage anchors across twenty-one distinct laws",()=>{
