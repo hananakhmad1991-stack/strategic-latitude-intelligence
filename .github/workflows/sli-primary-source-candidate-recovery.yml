@@ -15,7 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Retrieve four WDI official annual indicators for Indonesia
-        continue-on-error: true
         run: python3 scripts/fetch-environment-wdi-review.py
       - uses: actions/upload-artifact@v4
         if: always()
@@ -35,8 +34,24 @@ jobs:
           sudo apt-get install -y -qq poppler-utils
           python3 -m pip install --disable-pip-version-check --quiet pymupdf
       - name: Locate possible project-annex pages within PLN official 2025-2034 RUPTL
-        continue-on-error: true
         run: python3 scripts/audit-ruptl-official-full-pdf.py
+      - name: Report RUPTL data quality gate explicitly
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path("artifacts/sli-ruptl-full-project-page-candidates.json")
+          data=json.loads(p.read_text()) if p.exists() else {"status":"audit_job_error_no_artifact"}
+          status=data.get("status","unknown")
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf8") as out:
+              out.write("### RUPTL official-document audit\n\n")
+              out.write("**Result: "+status+"**\n\n")
+              for x in data.get("attempted_official_sources",[]):
+                  out.write("- "+x.get("source_name","Official source")+": "+("complete" if x.get("pdf_eof") else x.get("status","incomplete"))+"\n")
+              out.write("\nProject candidates are NOT verified operational assets, even if this retrieval succeeds.\n")
+          if status!="full_official_pdf_accessed_page_leads_only_not_approved_project_registry":
+              print("::warning::RUPTL PDF incomplete or not audited. No project annex values are approved.")
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
