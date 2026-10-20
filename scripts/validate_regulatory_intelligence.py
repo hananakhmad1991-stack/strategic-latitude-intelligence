@@ -25,6 +25,12 @@ assert "repeals" in types and "compliance_check" in types and "implements" in ty
 lookup = {n["id"]:n for n in nodes}
 assert lookup["pp5old"]["status"]=="repealed"
 assert lookup["pp79old"]["status"]=="repealed"
+# 2026 expansion safeguards — each must exist, provenance must be HTTPS, and amendment links must remain explicit.
+for k in ("uu11ite","uu19ite","uu1ite2024","pp71pste","pp80pmse","permendag31pmse","permendag19pmse2026","perpres39onedata","perpres95spbe","perpres132spbe","pp12daerah","permendagri77daerah","permendagri90daerah","perpres10invest","perpres49invest","perpres66bapanas","perpres83bgn","perpres125cpp","uu22budidaya","perpres55minerba","uu7hpp","uu4p2sk","uu4p2sk2026"):
+    assert k in lookup and lookup[k]["source"].startswith("https://peraturan.bpk.go.id/Details/"), k
+assert lookup["permendag31pmse"]["status"]=="repealed"
+for parent, successor, rel in (("uu4p2sk","uu4p2sk2026","amended_by"),("perpres10invest","perpres49invest","amended_by"),("perpres66bapanas","perpres83bgn","partially_repealed_by"),("permendag19pmse2026","permendag31pmse","repeals"),("uu11ite","uu1ite2024","amended_by")):
+    assert any(e["from"]==parent and e["to"]==successor and e["type"]==rel for e in data["edges"]), (parent, successor, rel)
 assert lookup["perdirjen2007"]["status"]=="archival_not_verified"
 assert lookup["kepmen188"]["status"]=="issued_plan_not_commissioned"
 assert lookup["keppres41batam"]["status"]=="archival_not_verified"
