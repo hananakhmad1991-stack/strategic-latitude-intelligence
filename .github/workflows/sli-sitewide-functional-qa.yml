@@ -6,6 +6,8 @@ on:
       - 'food-agriculture-intelligence.html'
       - 'css/food-governance-hierarchy.css'
       - 'js/food-governance-hierarchy.js'
+      - 'js/food-governance-tree.js'
+      - 'css/food-governance-tree.css'
       - 'js/food-agriculture-intelligence.js'
       - 'css/food-agriculture-intelligence.css'
       - 'tests/qa-sli-food-agriculture.mjs'
@@ -90,6 +92,7 @@ jobs:
           node --check js/sli-navigation.js
           node --check js/food-agriculture-intelligence.js
           node --check js/food-governance-hierarchy.js
+          node --check js/food-governance-tree.js
           node --check js/sli-visual-export.js
           node --check js/sli-province-map.js
           node --check js/sli-interactive-analytics.js
