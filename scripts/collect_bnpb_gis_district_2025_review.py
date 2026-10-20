@@ -68,12 +68,30 @@ def main():
         new_codes={x["admin_code"] for x in normalized}
         overlap={"matched_kabkot_codes":len(new_codes & old_codes),"old_only":len(old_codes-new_codes),"new_only":len(new_codes-old_codes),
           "note":"Overlap metadata only. No automatic year-on-year % until source coverage, type definitions and revisions checked."}
+    provincial_file=Path("data/sli-bnpb-provincial-2025.json")
+    provincial_audit={}
+    if provincial_file.is_file():
+        provincial=json.loads(provincial_file.read_text(encoding="utf-8"))
+        comparison={"flood_events":"floods","extreme_weather_events":"extreme_weather","landslide_events":"landslides"}
+        for gis_field,prov_field in comparison.items():
+            gis_total=totals[gis_field]
+            reported=provincial["published_national_totals"][prov_field]
+            provincial_audit[gis_field]={"gis_feature_sum":gis_total,
+                "province_official_national_2025_total":reported,
+                "ratio":round(gis_total/reported,3) if reported else None,
+                "same_event_count_definition_verified":False}
+    conflicted=any(x["ratio"] is not None and (x["ratio"]>1.15 or x["ratio"]<0.85)
+      for x in provincial_audit.values())
+    if conflicted:
+        print("::warning::BNPB 2025 GIS district sums materially differ from published provincial 2025 official event totals; DO NOT PROMOTE.")
     result={
       "schema":"sli-bnpb-gis-district-2025-candidate-v1","period":"2025",
       "publisher":"BNPB official geospatial service",
       "source_url":BASE,"source_layer":"Jumlah_Bencana_kabkot", "source_layer_id":13,
       "retrieved_at":datetime.now(timezone.utc).isoformat(),
-      "status":"publisher_gis_layer_observations_review_only_not_yet_accepted_by_editor",
+      "status":"blocked_gis_vs_province_event_definition_conflict_not_published" if conflicted else "publisher_gis_layer_observations_review_only_not_yet_accepted_by_editor",
+      "source_definition_consistency_gate":"blocked_pending_aggregation_method_review" if conflicted else "candidate_needs_manual_review",
+      "source_comparison_with_2025_provincial_bnpb":provincial_audit,
       "geography":"kabupaten/kota boundaries, publisher feature set; not complete national jurisdiction coverage unless separately proven",
       "record_count":len(normalized),"records":normalized,"source_feature_count":expected,"unmatched_source_rows":unmapped,"source_totals_unreviewed":totals,
       "missing_values":missing,"overlap_with_2024_resource":overlap,
@@ -82,11 +100,11 @@ def main():
        "The GIS layer fields are reported number of events, not physical hazard intensity, population exposure, climate attribution or asset-specific loss.",
        "The Jml_hdro source field is retained verbatim but NOT assumed to equal the sum of reported hazard subcategories.",
        "Year-over-year comparisons require matching geographic coverage/definitions; omitted districts are missing, NOT zero.",
-       "2025 GIS layer totals can differ from 2025 BNPB official provincial spreadsheet because of publication snapshots / definitions."
+       "This 2025 GIS layer has UNRECONCILED sums versus published BNPB 2025 provincial national totals; do not identify it as comparable calendar-2025 event counts until BNPB methodology is documented."
       ]}
     out=Path("artifacts/sli-bnpb-gis-district-2025-review.json")
     out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("BNPB_GIS2025_SOURCE_RESULT="+json.dumps({"count":len(normalized),"totals":totals,"missing":missing,"overlap":overlap,
-         "first_three":normalized[:3],"unmapped_source_count":len(unmapped),"unmapped_examples":unmapped[:6]},ensure_ascii=False,separators=(",",":")))
+         "first_three":normalized[:3],"unmapped_source_count":len(unmapped),"unmapped_examples":unmapped[:6],"comparisons":provincial_audit,"source_gate_blocked":conflicted},ensure_ascii=False,separators=(",",":")))
 if __name__=="__main__":main()
