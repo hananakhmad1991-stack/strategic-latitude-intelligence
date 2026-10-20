@@ -9,6 +9,7 @@ const link=(url,label)=>{const a=e('a',label);if(typeof url==='string'&&url.star
 const SOURCE_LIST=[
 {id:'bps',path:'data/sli-bps-regional-intelligence.json',required:true,label:'BPS provincial expenditure GRDP (2021–2025)'},
 {id:'gini',path:'data/sli-bps-gini-2026.json',label:'BPS March 2026 provincial Gini'},
+{id:'bnpb',path:'data/sli-bnpb-provincial-2025.json',label:'BNPB 2025 official 38-province disaster events; national earthquake total discrepancy flagged'},
 {id:'energy',path:'data/energy-infrastructure-security.json',label:'ESDM household/village electrification'},
 {id:'projects',path:'data/sli-project-registry.json',label:'Curated investment project registry'},
 ...N.SOURCES.map(z=>({id:z.id,path:z.path,label:z.label,asset:true}))
@@ -26,6 +27,30 @@ function showSourceStatus(){
  }
  const a=N.assets(datasets);
  $('coverage').textContent='38 provinces · '+a.total+' asset-layer records scanned · '+a.assigned.length+' conservatively matched to a single province · '+a.excluded.length+' excluded as ambiguous, multi-site or unlocated. Source lists overlap: matched records cannot be added as project totals. '+failures.length+' source feeds unavailable. No full 38-province household electrification coverage is asserted.';
+}
+/* Historical BNPB administrative-province event counts, not climate risk scores or verified site exposure. */
+const HAZARD_LABELS={floods:'banjir',wildfires:'karhutla',extreme_weather:'cuaca ekstrem',landslides:'longsor'};
+function bnpbProvince(name){
+ const d=datasets.bnpb;
+ if(!d||d.year!==2025||!Array.isArray(d.records)||d.records.length!==38)return null;
+ const norm=window.SLIProvinceMap?.normalize;
+ return d.records.find(x=>norm?norm(x.province)===norm(name):x.province===name)||null;
+}
+function renderBnpbProvince(){
+ const row=bnpbProvince(sel),d=datasets.bnpb;
+ for(const [field,node] of Object.entries({floods:'provinceFloods',wildfires:'provinceWildfires',
+  extreme_weather:'provinceExtremeWeather',landslides:'provinceLandslides'})){
+  $(node).textContent=row&&Number.isInteger(row[field])?num(row[field],0):'N/A';
+ }
+ const c=$('provinceDisasterContext');
+ if(!row){c.textContent='BNPB 2025: data historis '+sel+' belum dapat dimuat. N/A bukan nol kejadian, dan absennya data bukan bukti tidak ada bencana.';return}
+ const types=(d?.disaster_types||[]).filter(x=>Number.isInteger(row[x]));
+ const total=types.reduce((sum,k)=>sum+row[k],0);
+ const anomaly=d?.quality_checks?.national_aggregate_discrepancies||[];
+ const msg=Object.keys(HAZARD_LABELS).map(k=>HAZARD_LABELS[k]+' '+num(row[k],0)).join(' · ');
+ c.textContent='BNPB '+d.year+' · '+row.province+': '+msg+'. Jumlah '+num(total,0)+' kejadian dari '+types.length+' jenis bahaya (jumlah frekuensi kejadian, bukan kerugian atau probabilitas risiko proyek). '+
+ (anomaly.length?'Catatan audit: gempa 38 provinsi berjumlah '+num(d.recomputed_provincial_totals?.earthquakes,0)+' vs baris Indonesia '+num(d.published_national_totals?.earthquakes,0)+'. ':'')+
+ 'Perbandingan provinsi memerlukan penyesuaian paparan dan denominator; angka ini tidak digunakan sebagai peringkat risiko otomatis.';
 }
 function renderTrend(series){
  const root=$('timeline');root.replaceChildren();
@@ -181,14 +206,20 @@ function renderProvinceMap(){
  const giniByName=new Map((datasets.gini?.provinces||[]).map(x=>[x.name,x.combined]));
  const rows=datasets.bps.provinces.map(p=>{
   const last=p.grdp_current?.[4],prior=p.grdp_constant?.[3],current=p.grdp_constant?.[4],invest=p.pmtb_current?.[4];
-  const values={grdp:Number.isFinite(last)?last/1000:null,growth:Number.isFinite(current)&&Number.isFinite(prior)&&prior>0?100*(current/prior-1):null,
+  const hazard=bnpbProvince(p.name);
+   const values={grdp:Number.isFinite(last)?last/1000:null,growth:Number.isFinite(current)&&Number.isFinite(prior)&&prior>0?100*(current/prior-1):null,
    pmtb:Number.isFinite(last)&&last>0&&Number.isFinite(invest)?100*invest/last:null,
-   gini:giniByName.get(p.name)??null};
-  return {name:p.name,value:values[metric],period:metric==='gini'?(datasets.gini?.measurement_period||'Maret 2026'):'2025'};
+   gini:giniByName.get(p.name)??null,
+    floods:Number.isInteger(hazard?.floods)?hazard.floods:null,
+    wildfires:Number.isInteger(hazard?.wildfires)?hazard.wildfires:null,
+    extreme_weather:Number.isInteger(hazard?.extreme_weather)?hazard.extreme_weather:null,
+    landslides:Number.isInteger(hazard?.landslides)?hazard.landslides:null};
+  return {name:p.name,value:values[metric],period:Object.hasOwn(HAZARD_LABELS,metric)?'BNPB 2025':metric==='gini'?(datasets.gini?.measurement_period||'Maret 2026'):'2025'};
  });
  window.SLIProvinceMap.render('provincialDossierMap',{records:rows,selected:sel,
-  period:metric==='gini'?'BPS Susenas Maret 2026':'BPS PDRB menurut Pengeluaran 2025 (angka sementara)',
-  source:metric==='gini'?'BPS · Gini pengeluaran':'BPS · PDRB dan PMTB',digits:metric==='gini'?3:2,unit:metric==='gini'?'':(metric==='grdp'?'Rp triliun':'%'),
+  period:Object.hasOwn(HAZARD_LABELS,metric)?'BNPB Satu Data 2025 · jumlah kejadian':metric==='gini'?'BPS Susenas Maret 2026':'BPS PDRB menurut Pengeluaran 2025 (angka sementara)',
+  source:Object.hasOwn(HAZARD_LABELS,metric)?'BNPB · '+HAZARD_LABELS[metric]+' (bukan skor risiko)':metric==='gini'?'BPS · Gini pengeluaran':'BPS · PDRB dan PMTB',
+  digits:Object.hasOwn(HAZARD_LABELS,metric)?0:metric==='gini'?3:2,unit:Object.hasOwn(HAZARD_LABELS,metric)?'kejadian':metric==='gini'?'':(metric==='grdp'?'Rp triliun':'%'),
   onSelect:name=>{const match=datasets.bps.provinces.find(p=>window.SLIProvinceMap.normalize(p.name)===window.SLIProvinceMap.normalize(name));if(!match)return;sel=match.name;filter='';$('province').value=sel;render();}
  });
 }
@@ -201,7 +232,7 @@ function render(){
  $('gini').textContent=p.gini?fixed(p.gini.combined):'N/A';
  $('giniBasis').textContent=p.gini?'BPS '+datasets.gini.measurement_period+' · Gini national '+fixed(p.nationalGini):'No source observation';
  $('assetCount').textContent=num(p.assets.length,0);
- renderProvinceMap();renderTrend(p.annual);renderPower(p);renderIndustry(p);renderProjects(p);renderBrief(p);
+ renderBnpbProvince();renderProvinceMap();renderTrend(p.annual);renderPower(p);renderIndustry(p);renderProjects(p);renderBrief(p);
  simulate();renderStatistics();
  $('macroNote').textContent='BPS expenditure GRDP vintage '+(datasets.bps?.sources?.pdrb?.released||'not specified')+'. 2025 values preliminary; new Papua provinces have missing early-year observations. The plot has separate y-axis scales and does not constitute a growth forecast.';
 }

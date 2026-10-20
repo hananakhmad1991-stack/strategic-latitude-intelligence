@@ -51,7 +51,20 @@ footer{text-align:center;padding:20px;color:var(--secondary);font-size:11px;bord
 <div class="metric"><small>Source-linked facility records</small><strong id="assetCount">—</strong><em>May overlap across SLI source layers</em></div>
 </div>
 </section>
-<section class="panel"><div class="kicker">01A · Provincial geography</div><h2>Indonesia · verified provincial comparisons</h2><p class="small">Choose an indicator and click a province to open its evidence dossier. Multi-site projects and PLN service regions are never silently assigned to one province.</p><div class="controls"><label for="provinceMapMetric">Peta indikator<select id="provinceMapMetric"><option value="growth">PDRB riil · pertumbuhan 2025 (%)</option><option value="grdp">PDRB nominal 2025 (Rp triliun)</option><option value="pmtb">PMTB / PDRB 2025 (%)</option><option value="gini">Gini pengeluaran Maret 2026</option></select></label></div><div id="provincialDossierMap" class="sli-province-map"></div></section>
+<section class="panel" id="provincialDisasterEvidence" aria-labelledby="provincialDisasterHeading">
+ <div class="kicker">01B · BNPB / HISTORICAL DISASTER DATA 2025</div>
+ <h2 id="provincialDisasterHeading">Keamanan lingkungan &amp; kejadian bencana provinsi · BNPB 2025</h2>
+ <p class="small">Jumlah kejadian resmi BNPB yang dilaporkan di tiap provinsi pada 2025. Ini <strong>bukan skor risiko proyek, probabilitas bencana, maupun ukuran kerugian ekonomi</strong>. Statistik kejahatan BPS/Polri berada di <a href="./sli-sector-data-library.html#security">data keamanan domestik ↗</a>.</p>
+ <div class="grid" id="provincialDisasterCards" aria-live="polite">
+ <div class="metric"><small>Banjir 2025</small><strong id="provinceFloods">—</strong><em>Jumlah kejadian · BNPB</em></div>
+ <div class="metric"><small>Karhutla 2025</small><strong id="provinceWildfires">—</strong><em>Jumlah kejadian · BNPB</em></div>
+ <div class="metric"><small>Cuaca ekstrem 2025</small><strong id="provinceExtremeWeather">—</strong><em>Jumlah kejadian · BNPB</em></div>
+ <div class="metric"><small>Tanah longsor 2025</small><strong id="provinceLandslides">—</strong><em>Jumlah kejadian · BNPB</em></div>
+ </div>
+ <p id="provinceDisasterContext" class="note" role="status">Menunggu data kejadian provinsi dari BNPB…</p>
+ <p class="small">Bandingkan melalui <a href="./sli-sector-data-library.html#disasters">Perpustakaan Data SLI · 38 provinsi &amp; 9 jenis bencana ↗</a> atau periksa <a href="https://data.bnpb.go.id/dataset/kompilasi-data-kejadian-dan-dampak-bencana-2025/resource/df39e8c3-117e-40fa-b518-ff1037743955" target="_blank" rel="noopener noreferrer">data primer BNPB ↗</a>. Total gempa 2025 dari penjumlahan provinsi berbeda satu kejadian dari baris nasional yang diterbitkan BNPB.</p>
+</section>
+<section class="panel"><div class="kicker">01A · Provincial geography</div><h2>Indonesia · verified provincial comparisons</h2><p class="small">Choose an indicator and click a province to open its evidence dossier. Multi-site projects and PLN service regions are never silently assigned to one province.</p><div class="controls"><label for="provinceMapMetric">Peta indikator<select id="provinceMapMetric"><option value="growth">PDRB riil · pertumbuhan 2025 (%)</option><option value="grdp">PDRB nominal 2025 (Rp triliun)</option><option value="pmtb">PMTB / PDRB 2025 (%)</option><option value="gini">Gini pengeluaran Maret 2026</option><option value="floods">BNPB 2025 · jumlah kejadian banjir</option><option value="wildfires">BNPB 2025 · jumlah kejadian karhutla</option><option value="extreme_weather">BNPB 2025 · jumlah cuaca ekstrem</option><option value="landslides">BNPB 2025 · jumlah kejadian longsor</option></select></label></div><div id="provincialDossierMap" class="sli-province-map"></div></section>
 <div class="columns">
 <section class="panel">
 <div class="kicker">02 · Economic profile</div><h2>2021–2025 observed macro trend</h2>
