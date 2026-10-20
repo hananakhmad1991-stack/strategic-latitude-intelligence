@@ -1,0 +1,1518 @@
+{
+  "schema_version": "sli-catalyst-baseline-v2",
+  "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
+  "news_ids": [
+    "sli_feed_71039c93b87755fc51909bf02",
+    "sli_feed_ded1c1e087b45b200c0cf5b25",
+    "sli_feed_f58e5a42f8165c8a25a812959",
+    "sli_feed_afcb88114ff4d1ec7a824e59e",
+    "sli_feed_bf54fc53f6d813514ead5a87b",
+    "sli_feed_573392dfe47b2f03380c22ae4",
+    "sli_feed_0d69649441898e5c569bd8a5b",
+    "sli_feed_d37786e932e0a338278bf8f18",
+    "sli_feed_12a04962b3464086978f2f4b9",
+    "sli_feed_8a435205549561f334ca077c4",
+    "sli_feed_c810a62891c16c811dff20b2f",
+    "sli_feed_89a2d32fa075b1374f4aa14ec",
+    "sli_feed_c8337791936e37aceec6f0568",
+    "sli_feed_24fa9935dca3b30dceb446195",
+    "sli_feed_27abc34ab0590edcc4697ea2c",
+    "sli_feed_b3945fb8688c31b29a255f3aa",
+    "sli_feed_42aa9c7d6c9ca6b2dbd2e2417",
+    "sli_feed_d08e02080b12452311ace0c82",
+    "sli_feed_0e420a3f965a397b60e7ca5ce",
+    "sli_feed_d49e95e198c68d7e480b940d5",
+    "sli_feed_43955c53a299b6331ab84a5c1",
+    "sli_feed_8a4ebfde7f9f6cd769dd5229e",
+    "sli_feed_f04f893f09e241a720a62729a",
+    "sli_feed_fe4faedbe6a0415b0d7febfa9",
+    "sli_feed_c84355b9dc6b45c3b6430df1b",
+    "sli_feed_35a5ec756ca788dcfa90aa4c7",
+    "sli_feed_fba45c0eb088d382819e8844e",
+    "sli_feed_f52174127ad9148e4c5a4bda1",
+    "sli_feed_fb29b182e3fd80a53e7470272",
+    "sli_feed_6242ea23626e4aa73272321ed",
+    "sli_feed_2ad8c8e2c3c3625488013e120",
+    "sli_feed_520a8225366b539d4fdf0d8ce",
+    "sli_feed_8b435dd2eca137197217a93b6",
+    "sli_feed_4dc6336e9b57898e641ee3e4a",
+    "sli_feed_62b65c2e7e877c5c672c4d618",
+    "sli_feed_4ec8c3ad03b1c10c6d233ef7a",
+    "sli_feed_f5795b7fe67ab4ec3f51980aa",
+    "sli_feed_0f082913a736769f56786e8d8",
+    "sli_feed_69f8356b1101c4bf3806d5887",
+    "sli_feed_67627eea72aabac7452bdd6ba",
+    "sli_feed_b83487de003b4e8a8fd4fa957",
+    "sli_feed_69c7a1721a361404b8285bedf",
+    "sli_feed_e0353d3a0886b181fb0fbe1a8",
+    "sli_feed_60da40f0711ffcfac3d7cc9b9",
+    "sli_feed_0e8a7c88c3f53077ce3ce9442",
+    "sli_feed_fd14a36dfd7ec0ac262337baa",
+    "sli_feed_436049cf8524f695cde48cc7a",
+    "sli_feed_4ea451c4fdf77888ba4409c09",
+    "sli_feed_a5208f7b31bd4d1fc46dab256",
+    "sli_feed_c38c985d7c107541396ffe589",
+    "sli_feed_eaee3b29fa3c5f4ea5fd3ce2b",
+    "sli_feed_fd4331379e4dd882bab903400",
+    "sli_feed_9053f1b34635fbbcbf25ee600",
+    "sli_feed_1389a73ce04437ca6c8822953",
+    "sli_feed_e23ef8dfaf260b218d095bdcd",
+    "sli_feed_aa1272e10fa6fffbc35db4d7c",
+    "sli_feed_b191977f6c0b329c5826c0975",
+    "sli_feed_01123bbd37fb7462e20d601ab",
+    "sli_feed_dee901aa7a09658955dd09f55",
+    "sli_feed_633828cfd19f3710d080879d7",
+    "sli_feed_f08ea5f9b55b4a560f21d3f17",
+    "sli_feed_6995a11360d0006b0930d0bd1",
+    "sli_feed_f46bba404ac4affde812dc0db",
+    "sli_feed_0fb6dd0ebd760608a67358ccc",
+    "sli_feed_bc0656f52e5ffbd7a16d5e4c7",
+    "sli_feed_95895c9821f9e0ed9c90f27e2",
+    "sli_feed_50ef0c0ce5d84372da0da0a46",
+    "sli_feed_1ba1691d71e88162fe6906207",
+    "sli_feed_8658d0be833dc7ec7fc9d873a",
+    "sli_feed_0ffd48f42467887a7d72142b6",
+    "sli_feed_792a53fb5f1e907087c2b9a48",
+    "sli_feed_752cb211cfc044fc9919806a5",
+    "sli_feed_dca6ba9930428d1ffbed9c8e7",
+    "sli_feed_8cc86376dd1279dcc02b189c6",
+    "sli_feed_2e1a767db65cc4ae7dd00e309",
+    "sli_feed_e339512a3cb69a3dad6d93ca3",
+    "sli_feed_af9a47456eb35152db057da10",
+    "sli_feed_bc3b917fcb179f1fa03b118ad",
+    "sli_feed_c84d271f3c6e86744e6c59f63",
+    "sli_feed_a81cc00123405bd03c01c75cf",
+    "sli_feed_228a89c0e2f009492d510d740",
+    "sli_feed_6590830d8a45f83792999c48b",
+    "sli_feed_eb867aedc10bc5d6344094f2d",
+    "sli_feed_45bbaf4d395e77443e39e3bf5",
+    "sli_feed_c4a478bc791b68986188dbc7c",
+    "sli_feed_d2798e99835acfee905eb5e87",
+    "sli_feed_61f9a14b0a65f3f05e062f665",
+    "sli_feed_4ea8d06571ddbecbf18f61fdb",
+    "sli_feed_fa000057d2c8c638f5fb53fc2",
+    "sli_feed_2329ad4bf8393bbfb50458b89",
+    "sli_feed_00b72f83756d4dafa17c9bd4c",
+    "sli_feed_98d33c40533980c9cc188944d",
+    "sli_feed_34b065445b3c364a6ededa9f0",
+    "sli_feed_aeac202a31f65a5c5569e3056",
+    "sli_feed_e22df06e820c25ee71bd7a26a",
+    "sli_feed_10910db7e4d1b344359276ac8",
+    "sli_feed_356bca5e61f30d550cbdace25",
+    "sli_feed_7e40ba010d5f10d1cd74a727f",
+    "sli_feed_36aca09c8f8a042b53e239b0e",
+    "sli_feed_c1da10b4c355c40e891cad9c7",
+    "sli_feed_940abf5937ba63eb3c12963db",
+    "sli_feed_16dd6ef7408f63dce1ddbf5c7",
+    "sli_feed_fd4c56b61246ac7235de6d3d8",
+    "sli_feed_75f9a754bdbff89c169b74ca2",
+    "sli_feed_8ce2bac01a29f4a3ad3d787c9",
+    "sli_feed_171a796015492a4b04112d698",
+    "sli_feed_0acf7e194c905e6f246db17a8",
+    "sli_feed_10d21980c003809cd9d55e806",
+    "sli_feed_751fd5bcbf3db4831513baccb",
+    "sli_feed_610afb077cef90ba30b3f82ec",
+    "sli_feed_613d592e8c156c95804df6863",
+    "sli_feed_30665c9d7c2d5e9b4fc778bad",
+    "sli_feed_402c88c4657977176ef047aa8",
+    "sli_feed_db4fe8e326fd43161a1c440be",
+    "sli_feed_6fa5f4fd92af74463d2ba83b6",
+    "sli_feed_3ad0f81096348b8da647ce657",
+    "sli_feed_312ab16ff536042800f832d60",
+    "sli_feed_80442f7064cd972e540274299",
+    "sli_feed_c520173f959ed2056c7b82e30",
+    "sli_feed_d8c77e5faea301be40dbc6f54",
+    "sli_feed_eec727369d22fe16b6cfcc420",
+    "sli_feed_f12392582fc4bb51fa65bb430",
+    "sli_feed_dd673056fd995600f903cf4c4",
+    "sli_feed_9a3b2672aa48333f43ccfb4f8",
+    "sli_feed_687b87b743e81ef1da91c0704",
+    "sli_feed_355edccc8804aac5c7bf0b581",
+    "sli_feed_8a2540867f02b191c94217199",
+    "sli_feed_a23b5bd2621a20ba342465f46",
+    "sli_feed_748a23bfea9c1bd32fcaef4ba",
+    "sli_feed_7f64f1d45527ae1b3f7bdd5c7",
+    "sli_feed_f1140fd26c389aa324a902083",
+    "sli_feed_f14b2692438b50b631909a3f1",
+    "sli_feed_55538744e606a6ac90fb3a100",
+    "sli_feed_1d8ac1dc4eb68a2a5224ac8fa",
+    "sli_feed_b1743f460426cb6404f62542e",
+    "sli_feed_9458d713a1993e09356cf30d8",
+    "sli_feed_e7f5a1909e5eb664b4863235b",
+    "sli_feed_3eecbb3dcd7029ff3dc050d74",
+    "sli_feed_39f45f6b41d3104a7311eb61c",
+    "sli_feed_e12903e0675a74eaee36706ef",
+    "sli_feed_f62c25eda2bb943cfb0e4d4bf",
+    "sli_feed_0a3273dafc1b44958248a15a3",
+    "sli_feed_7487aed29f79479e8032cb774",
+    "sli_feed_8bf4c5df81980c7ef1e91e990",
+    "sli_feed_2c1572c923cb76b6a65cc5f98",
+    "sli_feed_503e4e3c837ca41e739bb795f",
+    "sli_feed_16bdcd9494282bfe3386e0682",
+    "sli_feed_8f879fdd45cce1b2aa28ce395",
+    "sli_feed_f8a525c13bf40c3d9646c83f8",
+    "sli_feed_3327b6e6b7292800be01e5c7d",
+    "sli_feed_960f006ab3b9081c3df229537",
+    "sli_feed_c7f4e7cf6bd9b3ec83a9b930c",
+    "sli_feed_c776997745c7617edd67a5af8",
+    "sli_feed_7c8a21097d91c7e832be64867",
+    "sli_feed_19ca49c6c27af642988c2a6f4",
+    "sli_feed_23dd5d996d1ce3cebe8c9e420",
+    "sli_feed_1e7b79bad75f9ce6fcf764fda",
+    "sli_feed_53ffe18c3471d5390ed05529d",
+    "sli_feed_99ce23c80f4718ff601cfe289",
+    "sli_feed_546fc11ab02b99d388578d560",
+    "sli_feed_8c65e62bf35f371ee2c5abf18",
+    "sli_feed_3917d457cd1b657a7d05f624f",
+    "sli_feed_a9be0645b57b5dcfc169b7001",
+    "sli_feed_90d0891b8b400995827fb6c9a",
+    "sli_feed_7cfdcda9e0f90c01f1f5bbd70",
+    "sli_feed_d31e8cbedbafb86fa9dd6418e",
+    "sli_feed_31820793cc3a9e64ae4543f3b",
+    "sli_feed_fc0fcb74dd8794146a50fa1b0",
+    "sli_feed_6b6fe06c691f625008871ab40",
+    "sli_feed_578d516af0db22aa455d6a230",
+    "sli_feed_79e59729fb43d7bc434073d20",
+    "sli_feed_052ead1e8f332d8506a3c1197",
+    "sli_feed_efa88c9b529bb4914b5f5dde1",
+    "sli_feed_47c92cee4774ad17cef4d14fb",
+    "sli_feed_669611ba39d2f52e897195412",
+    "sli_feed_43d64989277923d9eed0f5451",
+    "sli_feed_d7626d54b280395eb7ec0a463",
+    "sli_feed_51b79f50e8b5d2423572f4a36",
+    "sli_feed_0df974afde9d892eb0af69ebc",
+    "sli_feed_0423714c607b8f12cea69e23a",
+    "sli_feed_f79465976daeae458bbdeee2a",
+    "sli_feed_c2c7e0094460d7ecc5cc6aceb",
+    "sli_feed_ce546f44cf03a4a92f1d077b0",
+    "sli_feed_1d12e6b3eb2ca87eaed1f4c21",
+    "sli_feed_cebcc6597aed86d7df9b08bfb",
+    "sli_feed_d1a65b07d78cbebdecea96421",
+    "sli_feed_7051c202d7e01f07792fe4f4e",
+    "sli_feed_334fcbe649966b6cd6173f4d0",
+    "sli_feed_7de146e9602b3f5d003354284",
+    "sli_feed_94bfcc9dac6464fe3db535352",
+    "sli_feed_be7d9705f579255bc7a645aa5",
+    "sli_feed_9f1af003d37efe62b5788d664",
+    "sli_feed_78000cb7ab7bbe5a2b02b0d5b",
+    "sli_feed_aef17fc20ce207c03af6425d7",
+    "sli_feed_84158da6c0f22b434f4542494",
+    "sli_feed_fe1cdaa98c3b5209bce84fb26",
+    "sli_feed_7e40f2d3c1ba4b466fd4275d7",
+    "sli_feed_f1b76ce6e1c49c9b7fa0f9ff6",
+    "sli_feed_ea2bc09acc7e3c74cb07678c6",
+    "sli_feed_9b85cd3ca67c193b9b4050730",
+    "sli_feed_fef5d57f6141f2cf147a27fd5",
+    "sli_feed_2d3a031b754b46e09d0258c6b",
+    "sli_feed_c9afb9df78427c2e44d7f0af8",
+    "sli_feed_c448f3b04b79931caf2f733da",
+    "sli_feed_acc7c272686551d426deb4e2d",
+    "sli_feed_0a1c3fd9f51692ce056e7ba36",
+    "sli_feed_974dc5838cc7106fd44edfa3e",
+    "sli_feed_e26db941711c51576fad957c6",
+    "sli_feed_65b6d002dd6c63a72a95c1763",
+    "sli_feed_3c6b8bdb349f090a8f5e893c7",
+    "sli_feed_2942797d004e285f22290c5e7",
+    "sli_feed_94923398b26ef237b4c62822c",
+    "sli_feed_e83b997fdb7616f835a6d9004",
+    "sli_feed_9f440f7fcad616b3f6ce84710",
+    "sli_feed_db00def4830a5a952854f4511",
+    "sli_feed_5afd9305d20e26886e64cedd1",
+    "sli_feed_8042d7c0908bed78c24172d84",
+    "sli_feed_2658ea106f5b02ed19481dba9",
+    "sli_feed_a9add74ca7ab3edb8e2fe821e",
+    "sli_feed_f53e0036f812b612d7126e613",
+    "sli_feed_3d0b43751bc06cbd718ac1746",
+    "sli_feed_719bdada16b2ad835fb776623",
+    "sli_feed_90c14311a0932df67e40f681d",
+    "sli_feed_25e7b9f384ef5dbfc610da87e",
+    "sli_feed_04e8bb1869a68c31349cc0ec8",
+    "sli_feed_faf57d680c480ea367c6efbd5",
+    "sli_feed_ecbeaaa6706575f238fceb5cc",
+    "sli_feed_2f6efc6170b15ee05bccfeb0c",
+    "sli_feed_f6eb7a7515ed2c63df5e3651a",
+    "sli_feed_f19db1866e3e21fd5a0806356",
+    "sli_feed_5279ad6d79c3a974b835409e6",
+    "sli_feed_f26c2f4c5e813fac16e2784e6",
+    "sli_feed_76aba895e8c08a7d5ac26327b",
+    "sli_feed_4c28028b7ddd62148a9774697",
+    "sli_feed_befef32e63bfd16f8347add58",
+    "sli_feed_3812ed68c6cda0075357a4541",
+    "sli_feed_fe81e8e5a411e48a4e772b6f6",
+    "sli_feed_08fed97a7fa6ad91daf6b5856",
+    "sli_feed_596f424026397e7a33830256e",
+    "sli_feed_9ceb8978cb5b15ffae720312d",
+    "sli_feed_e52c1520f6509ef27643e04af",
+    "sli_feed_e27e97a3e6f6f3c8f1853c0e2",
+    "sli_feed_dbacba4a83e2ed547c39fa3b3",
+    "sli_feed_bb9061a030440929938f3e584",
+    "sli_feed_a3222049d32f19ca5b2fc65e9",
+    "sli_feed_4370c4fe5ba548360f2890228",
+    "sli_feed_df232096f667da67d70c8371f",
+    "sli_feed_57bf1ac8fd2222ca5f211151b",
+    "sli_feed_8efe69f70e64205817318d7c2",
+    "sli_feed_79e6229c059614d4da16f2121",
+    "sli_feed_c48a0ac500f4b194978033f80",
+    "sli_feed_4df09f666a44357400452274a",
+    "sli_feed_fc15d8b949006f6b7889f0a8d",
+    "sli_feed_b2e32ce3bebaa99a6d39dd626",
+    "sli_feed_7d315394aec424b784d17ce60",
+    "sli_feed_f1c40bdfb22bd09942dbaa2d8",
+    "sli_feed_0592f3faa2719d35f851bd70d",
+    "sli_feed_df31d962022de97fb774578e8",
+    "sli_feed_a5c7d0cc513dd83dd3bb5e69c",
+    "sli_feed_b2230bc2a802caa98f44dc931",
+    "sli_feed_a845b74987f33e0a429db0440",
+    "sli_feed_a16b526b6f690d4a4d9edd407",
+    "sli_feed_0fcd47778cd7fc7b4fe9f6ec2",
+    "sli_feed_80d882c251f547d36c849ab4b",
+    "sli_feed_ff32938183304ec2e179f9012",
+    "sli_feed_332989b8de1de0166750ff5e5",
+    "sli_feed_e8f9e7d4e7d0bc4e2de9afa5d",
+    "sli_feed_4fafd1e6e39d10e43498f474f",
+    "sli_feed_80b0f1039c2ea07bca9e9ccdf",
+    "sli_feed_e12ef270dc8d014451439dfec",
+    "sli_feed_766230e185a410c5e89b1f4d8",
+    "sli_feed_c804b4fcd2d9a6aa59080ea59",
+    "sli_feed_a22abe1101afa25f4686984f6",
+    "sli_feed_65817aea96123d3455e250b76",
+    "sli_feed_9a38252d1aa6127fd38a2623f",
+    "sli_feed_3dc3f0cebdf1c42d2f7fcb4c1",
+    "sli_feed_8aa324e786ad78eac26b6c159",
+    "sli_feed_c49096a75d6e0c8782610a23e",
+    "sli_feed_7381589346b1c019f90cd20d7",
+    "sli_feed_f96f7bcf963906dea12acbf72",
+    "sli_feed_e80da49964a0597b28c10e2af",
+    "sli_feed_ceb0413df71c9bbdc5e82b827",
+    "sli_feed_9d515b7967b1319dfcaf1a64d",
+    "sli_feed_234738e0acfe608216f2d7459",
+    "sli_feed_60ed25684346ef339437a1023",
+    "sli_feed_9ddddea79f87ffd4a1fc22ccf",
+    "sli_feed_2ed61a4e4c1478496bac6434b",
+    "sli_feed_e3d7f381ffa6323eb1fe528f9",
+    "sli_feed_1337fb94bcd14284d532ca1f2",
+    "sli_feed_0170040234466e070a14b0b28",
+    "sli_feed_988a3f5cf5baa526d51bd98be",
+    "sli_feed_56bd5cbb99b9d6f1068803326",
+    "sli_feed_3eb174bd425e15cfcf3d7c4cb",
+    "sli_feed_a74fb8609a526d793fe603ee2",
+    "sli_feed_33360600faa8ccc67aac44a83",
+    "sli_feed_c2b828fcea3c829a94847acc1",
+    "sli_feed_c0d8651587a21c1455140814e",
+    "sli_feed_f78d3bdb6b5a1ce7298f46219",
+    "sli_feed_4384803346b93fffefed72cbd",
+    "sli_feed_f4ec67e93b607e0c4eb18ed70",
+    "sli_feed_487f96d0bc1abf16ad24c6baf",
+    "sli_feed_a9a1a5178e2fd9658465ee449",
+    "sli_feed_110c641676f9a66e2064fbc63",
+    "sli_feed_e6e320cc8a6b881ad53134e2e",
+    "sli_feed_a117f8d74efee8e4de85eb736",
+    "sli_feed_5379d3b507c9e94597b4931c3",
+    "sli_feed_2a90e80986874ffb9a255b077",
+    "sli_feed_ef9f49befeb99a03001d7998d",
+    "sli_feed_afc5a31a6c87b42856d2b233e",
+    "sli_feed_8f8cb0ada59d5561388f65df7",
+    "sli_feed_8f1e2edfd27065228c597e6f1",
+    "sli_feed_9f29d84639e773154b70e9853",
+    "sli_feed_314bc35be1e7cfdb153b9535e",
+    "sli_feed_879388800e772ce512f592ed6",
+    "sli_feed_97efdbc5259572bd60b51066f",
+    "sli_feed_514bac0e8488069e2e4e69e6a",
+    "sli_feed_a82e9cc6360058b7efaaec3d1",
+    "sli_feed_d48f8dc24a158e53a5775f04c",
+    "sli_feed_f2d346947ad33edb4b642585c",
+    "sli_feed_a8a42947843e1108f0cb63126",
+    "sli_feed_0d3f7b6da8038a0cbe3285080",
+    "sli_feed_7287cd8790104aa2132329483",
+    "sli_feed_2085ad201601f88b283eaed1b",
+    "sli_feed_f8d15b6cdbd4d51a6116c3267",
+    "sli_feed_fb17f43089d13284c590b4ebe",
+    "sli_feed_26374efe01aabb69e9fd3359f",
+    "sli_feed_1ebe622fdf57b7fc936fddd5a",
+    "sli_feed_085a465705adf92229f4b73a7",
+    "sli_feed_d8b0120492575de8f6937e93d",
+    "sli_feed_2f9bf7ab2dd6b3a3f5009e5aa",
+    "sli_feed_52b5c8bca176fd5440bb7e0cb",
+    "sli_feed_e2aa58d177ecad69cd53a1e9b",
+    "sli_feed_eeeb118928c02ac12a18d950d",
+    "sli_feed_6866541e35eb6018940acd59d",
+    "sli_feed_2a9374193a92a8c4f005856ce",
+    "sli_feed_26fb1f26733f2489be8ce5f1d",
+    "sli_feed_f705a5263ac5103ad77350c17",
+    "sli_feed_0f0fac16b974cee42449fa5b2",
+    "sli_feed_88085a868aca03483d820d50b",
+    "sli_feed_00092a966a0de143b7fadd7c4",
+    "sli_feed_ff7c621bdc5641451aff65e83",
+    "sli_feed_aa737ec389db24180cfa02244",
+    "sli_feed_73d050f233e73de3dd6b4ad22",
+    "sli_feed_bbd062b55f453d523c53488b2",
+    "sli_feed_73d08b8cf0587c653e78d53c8",
+    "sli_feed_22e774732975c9d3074c6bc52",
+    "sli_feed_3df3c1b0362c0647b44ddabf1",
+    "sli_feed_a2c29d56dc4f8e38cadf688b2",
+    "sli_feed_e1cf329d285e3cb006a059025",
+    "sli_feed_02400182012b9f635559babb4",
+    "sli_feed_d0be10993b6c268c183a45c9a",
+    "sli_feed_cc2c804796146fa85f30a9a4c",
+    "sli_feed_2466979a9edf3ede600984e8b",
+    "sli_feed_93da2d1f8676cad5cb4b723d4",
+    "sli_feed_118d647a25fd52335ea2e218d",
+    "sli_feed_e7d5a386f7d42e9d9df3e9319",
+    "sli_feed_98eb12bc7e3833dc715efa2e2",
+    "sli_feed_6246a33030661f09510c896c0",
+    "sli_feed_0ae77b3b7af889618e8e4b2b4",
+    "sli_feed_495f509403dcf8fabdd5287cc",
+    "sli_feed_74acbaa46b2b1ccd61610ca72",
+    "sli_feed_f545153c5403efee0cbac1edb",
+    "sli_feed_85c68fa6d01e0f26b6c0f99c1",
+    "sli_feed_303a0a37dd75fd693db62bce8",
+    "sli_feed_83265dbf2e01a3a68617482d8",
+    "sli_feed_16ff5a03147ace16c482e51fe",
+    "sli_feed_f9905bf99db6c7ef5c5ecbcd9",
+    "sli_feed_fb8f013181852ae2d0949927b",
+    "sli_feed_771a88abfb0094c165e6c0ff9",
+    "sli_feed_e3a7e80d091b07aea7529bc21",
+    "sli_feed_1eccba31a58b50f3842a063d6",
+    "sli_feed_be2a8fd7bc398a31dfaa95267",
+    "sli_feed_c50a4d2ae3c3bbfb83e2c6fc7",
+    "sli_feed_13603850e82bd220ebab02dd9",
+    "sli_feed_ac0c581f85d3aa0bae930a55d",
+    "sli_feed_6e93771e0085988171ce193dc",
+    "sli_feed_c1280419cfdbf7214d5ea8c9d",
+    "sli_feed_e62c2db830c9159b23edca6de",
+    "sli_feed_f71216d1a781af8c00c4812fd",
+    "sli_feed_4b71923caf3ac790f6b74f20c",
+    "sli_feed_aaf7ce433a1d775f83f8b7e64",
+    "sli_feed_a84bac76bbc1da95578fb09ca",
+    "sli_feed_037aac566f500d2f49daed0a7",
+    "sli_feed_bcd63606fd1775f8249889116",
+    "sli_feed_ec627498b4d7bd4a62366aa2d",
+    "sli_feed_08214f0fec89201ec896b475a",
+    "sli_feed_c27445b5183d30582449fe9e8",
+    "sli_feed_0388868910c1ad981e635ee80",
+    "sli_feed_45518d518677efee7dc79c751",
+    "sli_feed_b7fdc56c1bc8ed72183b9c149",
+    "sli_feed_6537961c7cfe9e943241f22be",
+    "sli_feed_d387a54c11e3692152412fb0c",
+    "sli_feed_09a354c127f1d4a7e4e5509b0",
+    "sli_feed_38913c4cd2c0009ce122f1fa6",
+    "sli_feed_70039c3523eb64fce4e2ad2eb",
+    "sli_feed_2daa0575aa6346c68bdb46089",
+    "sli_feed_367af883a2e135630598d8abc",
+    "sli_feed_65313ca358a701e9b1c10bd2f",
+    "sli_feed_5c561d9b458f7356e3cc4ad67",
+    "sli_feed_1bcbca99497cd4141b5527a2c",
+    "sli_feed_c5282f7503574d85ee308f06d",
+    "sli_feed_465143ca9a2e13c6ff75881b2",
+    "sli_feed_3ab8362a9a8c214655cd11026",
+    "sli_feed_b44a28a4820e8e8a892621830",
+    "sli_feed_d8be13b5eb513b0df1afe17b6",
+    "sli_feed_20bc16e708f84ea3a1b856a9c",
+    "sli_feed_3e4f96d779b3403dae9650afa",
+    "sli_feed_b61c734fde881b9c8c36385cd",
+    "sli_feed_ab096e2958badb07d41e2704d",
+    "sli_feed_865417b41bd2745b0fb12f235",
+    "sli_feed_f55bb673d57b6badba106e170",
+    "sli_feed_f7b852059b9233da25db68755",
+    "sli_feed_1a7e10c6f3860d71524a3fa56",
+    "sli_feed_bc0bf252737aa55963890a4ac",
+    "sli_feed_676caa1b1fc6f60e086affc21",
+    "sli_feed_ac3336a801978a0664565fa51",
+    "sli_feed_5ed7a12f12b126f15bed28a1a",
+    "sli_feed_6adb58c38b503fc7e89cd477a",
+    "sli_feed_a51661c94b0b3890d9f0b7b93",
+    "sli_feed_a51ad332dfe4c2e7fa1f275a4",
+    "sli_feed_3f6ba9e39939ee4193a4464e6",
+    "sli_feed_cfeece44c9e2201054b08f986",
+    "sli_feed_8d9428fa85570327de17e6bfd",
+    "sli_feed_dd5f7ef33390a84ef9a97b02a",
+    "sli_feed_44fecc6f9ec4edb0a2e83c641",
+    "sli_feed_fdcfc83fb1441dba351a3129b",
+    "sli_feed_fc559dc843932ecac11fa1aab",
+    "sli_feed_6564aef833c2d4105e65bd201",
+    "sli_feed_5a3519fa8d66cebcc3a60c152",
+    "sli_feed_65ebdef4609f67c596ed250ec",
+    "sli_feed_20370e403b8e6a96a85f45f11",
+    "sli_feed_7517d69bd2e2a8c06fe69cb6a",
+    "sli_feed_cf46a3291c1dbc04b70468892",
+    "sli_feed_64ad40addc0488208aa9a6b6f",
+    "sli_feed_856e87b843cf606f353d26c9b",
+    "sli_feed_2b03d0eba0e20b839c581cdab",
+    "sli_feed_97cd84edb7ed0ad8d04c2ea75",
+    "sli_feed_ded2e1ae6a03462348a733f1b",
+    "sli_feed_cc705f0f3830b13277567b4f1",
+    "sli_feed_fdd7aa12d407c8dd3467d092d",
+    "sli_feed_a5d4442b2e71e17ca98865699",
+    "sli_feed_4b2773d8cfb1d395f3a3b2de5",
+    "sli_feed_87c9612a806acc93d14a814e5",
+    "sli_feed_3b5d1369a17f97b71466c7b38",
+    "sli_feed_52d201e379ae3c267db70464e",
+    "sli_feed_6c36964afa14c764aaeaa80b4",
+    "sli_feed_f50ba2e1a005fef042f1a07f2",
+    "sli_feed_da32ea1c123d6d655af33395a",
+    "sli_feed_0486d436b670d681acf853d25",
+    "sli_feed_8a9b0acc19282e9f9b4c3ea36",
+    "sli_feed_8b206c0c2f13952151594870e",
+    "sli_feed_bf09a48b439bf69f31b9e135d",
+    "sli_feed_90aec3c9c1d5e3309657dc29f",
+    "sli_feed_7c2875c22feea63f57e21601f",
+    "sli_feed_aed2fa31b60da0b193179e9d8",
+    "sli_feed_b3ad87381b2d967483ef750c1",
+    "sli_feed_dc40caf8d51bf1805ba2579ce",
+    "sli_feed_bb807ccce66e08fd401e717eb",
+    "sli_feed_149654e409f77efbf9fa58cc5",
+    "sli_feed_9a054f1db3aeb0a5d78d7f11f",
+    "sli_feed_4c4c00f8f767b07917c724611",
+    "sli_feed_f14f983ed65951408d40e335b",
+    "sli_feed_2ee65dcfedd4ed238890177c7",
+    "sli_feed_24eb8d02792303e97277d643b",
+    "sli_feed_a87a7068f476c0449179a0e06",
+    "sli_feed_4c8c4de99a32255fd2a125245",
+    "sli_feed_be58af6ca04920a5657da4c61",
+    "sli_feed_e811c249b05e7cdb7e6df4dbf",
+    "sli_feed_95aaab50eaa2eea3072ea429c",
+    "sli_feed_33f44f2900f2332927705747d",
+    "sli_feed_dea2c1d254d741e356db8a211",
+    "sli_feed_26ff35f7bbebe68175e802fbd",
+    "sli_feed_583cac73c2fde73f6199a1a48",
+    "sli_feed_c0213ddfe878372d96526ea7b",
+    "sli_feed_e8bbe171dc1e4fd83f74a2bc7",
+    "sli_feed_b486ef6e7ac11418faa668caa",
+    "sli_feed_7e5345b9c02a987de19acbc47",
+    "sli_feed_8a938a8eb3562d33d9943e5a8",
+    "sli_feed_cad5f17ba4c6db4d7ed671214",
+    "sli_feed_8cd73fab2c3e772d17e729862",
+    "sli_feed_3d93ce865ac2c80cb8c5aeb68",
+    "sli_feed_9f4b3e1c750bcf5e5f3270ccc",
+    "sli_feed_fafbabb568ae1cb9a2c455d36",
+    "sli_feed_fbf3de74d9b9298e699a0319e",
+    "sli_feed_1e2a0786ea2c5b55b26f5d5d3",
+    "sli_feed_bc40566c1bbcf8a7d2006b04c",
+    "sli_feed_dc128339b3cb20138fbfb4e8f",
+    "sli_feed_fc9aa1026e37fb1fa13eeea28",
+    "sli_feed_a9688a91fc53ce8174f9e4d76",
+    "sli_feed_e644c8b1aaecbfad7ea79c084",
+    "sli_feed_832bc8f248594fd368866ff05",
+    "sli_feed_5f9eb00a850437048887e28e0",
+    "sli_feed_20aaae90086fb94197d1c4aa1",
+    "sli_feed_fca45c4e90773100301d1e83b",
+    "sli_feed_0ac35b6148bb21d15c0d280c2",
+    "sli_feed_6f605d0beacf851a7b628c308",
+    "sli_feed_18d74624012d539148f6563c1",
+    "sli_feed_5f57326ee1c6ebe8ed5545481",
+    "sli_feed_64db2f1190cfb87523cd62218",
+    "sli_feed_c54bcee867f98ed93e59eed59",
+    "sli_feed_fe375429db86a7fd0e759f262",
+    "sli_feed_bafc1f226a30a474ec9c2c630",
+    "sli_feed_8fac19ae4ecffc800ba442d49",
+    "sli_feed_3902dcdd9ff1a6723e6c86611",
+    "sli_feed_47c146dc96df7e83a2a7b1086",
+    "sli_feed_0441966aca34f4b545bdd6318",
+    "sli_feed_a6b0dc1a4bdfd5564bf69f149",
+    "sli_feed_d9b2aae750dcc9660c71996ba",
+    "sli_feed_9004f8e59316d77ddbbff1454",
+    "sli_feed_c54243eb28d7781b7fca5929d",
+    "sli_feed_5c2988b55ef0211cfe4b14388",
+    "sli_feed_ab447a013cd6871e58a3c77c8",
+    "sli_feed_e39013e723dbd973eb4b16a0f",
+    "sli_feed_1ad1c5ff078078e7e81dc3691",
+    "sli_feed_acebb927ba47d4a2a0153eb45",
+    "sli_feed_1b60d94bbf9ee17b3909ee279",
+    "sli_feed_a2ddd83c146bbf224461a46ff",
+    "sli_feed_f6217cb5655e6dbddc463d673",
+    "sli_feed_17e490a92061ed02b739accc3",
+    "sli_feed_480ec9c1c237e261329373dba",
+    "sli_feed_5cc45d1a3975ac07a2bef0b97",
+    "sli_feed_1d0512c409fb6e2a6584468c8",
+    "sli_feed_f7fc741c9e6b5ff1bfcaf4ca3",
+    "sli_feed_19c998cd62c6292c9a1463444",
+    "sli_feed_2aa6da617774bcd4f924eec0e",
+    "sli_feed_d7bf0a0a0530900a2ee1d4146",
+    "sli_feed_882efb02fb3bf1464203fde60",
+    "sli_feed_c2f0be7b04e4e093018981952",
+    "sli_feed_5785b1f4335838f3c0abcb5f7",
+    "sli_feed_ae06a23658456ded9328dfc8f",
+    "sli_feed_862d493d2dc82b0df65a7df09",
+    "sli_feed_6223387476537831f43c844a8",
+    "sli_feed_12690c935a5dd5d5b80b22e65",
+    "sli_feed_07030ea1c994aba821edb67e9",
+    "sli_feed_3940dc53d0ac0649025ac72a3",
+    "sli_feed_815d765d695a40114d6b61324",
+    "sli_feed_66c9b53d44872d6fe3b0429b2",
+    "sli_feed_7c39077bf9ab217c07cd84345",
+    "sli_feed_26b64edd6ad7d94ced5df327d",
+    "sli_feed_a927aa2d924d83fdb72e7e576",
+    "sli_feed_cfbbfe32883943f8ad1c9d13f",
+    "sli_feed_72a7c401d9663bb9a478628db",
+    "sli_feed_25b3b0327c9b363abb889d38b",
+    "sli_feed_222c1a8d46fa017ac2fd7f9d7",
+    "sli_feed_0858dc0beb2ca7621bd335cf2",
+    "sli_feed_ec016392c2b28b33193f95c46",
+    "sli_feed_b32e706a9fc07c893ec7fec37",
+    "sli_feed_b62ee74d7fa343f31903d1528",
+    "sli_feed_8b7192b56f26cdf0152e299d7",
+    "sli_feed_6c45e6e0de349a3a409cb79eb",
+    "sli_feed_8bb576167d04e6456885b1453",
+    "sli_feed_254b651817f85f7942dfff71f",
+    "sli_feed_3eca0b5530884c0f1a9491b45",
+    "sli_feed_6cc89767ff1c97f9b5c9c0ed1",
+    "sli_feed_22fad9a9a8799690574fb577c",
+    "sli_feed_877ef431e00b876958e760932",
+    "sli_feed_f983710e9fbb8c68c5bbaf5f2",
+    "sli_feed_d7196534c8d192418b9ba94ac",
+    "sli_feed_b2aa7d839560d76f894eb7bcb",
+    "sli_feed_1bd414ab5fd374fdbdd3f6d0e",
+    "sli_feed_aa8d0f1840c83166a5d21685a",
+    "sli_feed_75dbc31da06999d512a9f93ef",
+    "sli_feed_8014c828a92c4047db1a807ef",
+    "sli_feed_47951340341872f9df13385e6",
+    "sli_feed_287b24835ede99e97ac2d95c2",
+    "sli_feed_cd35ee081dc440f406f9cfff0",
+    "sli_feed_198ca3558d5197bfebf93a7d6",
+    "sli_feed_95d91b8b825277ef3b4f471ae",
+    "sli_feed_95dae81865ac59fed6f7d2302",
+    "sli_feed_a39854dc2183a7ff4a51c4af6",
+    "sli_feed_e74749a6fdc5f505fbd5678af",
+    "sli_feed_868400d9650369e54b15dbe93",
+    "sli_feed_37c80d2de2b995a6a388b5f4e",
+    "sli_feed_50cb59c676150fa06cfa3869b",
+    "sli_feed_ab9c3721089fc14d4c9a301c1",
+    "sli_feed_b95b970d31f82a75028d3d1bf",
+    "sli_feed_ed426e4f535f9e782c7e98787",
+    "sli_feed_c408de29c887d9a49749d50a0",
+    "sli_feed_9abe71671eb86d484225cf163",
+    "sli_feed_df5f64dd61945ec3ad56f83c6",
+    "sli_feed_cc85f58ee960ba96e094f6687",
+    "sli_feed_d08cc7689eaaf93e0588c9ca1",
+    "sli_feed_3b203f5093c57edf4d2b8ee0a",
+    "sli_feed_59015d00a850516538b93eafa",
+    "sli_feed_d9e39bcef98667f27e0d57789",
+    "sli_feed_6d28228b94de681cccba5d8d1",
+    "sli_feed_d2e4e0e77099530971a056e20",
+    "sli_feed_68fc5d26cbb76da466b90e1b9",
+    "sli_feed_4d3782003b4c5b444b392cc88",
+    "sli_feed_930cc9e97412e433be803d8ea",
+    "sli_feed_ef9761d1444e9efdb8da39116",
+    "sli_feed_088074343d0dc6628019bc89b",
+    "sli_feed_23dffa201bcdb3278fe740bfb",
+    "sli_feed_7d260c97bf62cde478cc1321f",
+    "sli_feed_6b73549047143ab8e6ceed5a5",
+    "sli_feed_d7653005e6be55bb28cfa7b73",
+    "sli_feed_0386dcce2a4f8a5f500b9160d",
+    "sli_feed_f3eb3b691f4edba9b8a304af4",
+    "sli_feed_3961fa09d7e8cba3c109893f9",
+    "sli_feed_c47e2e3bbd1821c3d511b5e06",
+    "sli_feed_0f011c83f49775d92421b31b1",
+    "sli_feed_cd5732b8bc8a6303650cfdb0f",
+    "sli_feed_77fa6d0e87bf1b5eacb8ea403",
+    "sli_feed_b7b2db6de072d25657cfa351d",
+    "sli_feed_252c7389ad76973816d26fffd",
+    "sli_feed_54baef29c232700b6796ca7c8",
+    "sli_feed_2a847a40773791136f715daaf",
+    "sli_feed_7f045bf45c41767dbbf119d4f",
+    "sli_feed_ada1740381923acdd625eaee5",
+    "sli_feed_38cc16e256beae42a28563685",
+    "sli_feed_f9e7e11cedd2ac23bdcc895cf",
+    "sli_feed_fdd69bc769a716ab49096fc7a",
+    "sli_feed_a2bfc921b630a3dd7245bb59f",
+    "sli_feed_d3ade9a13e1046128c40defeb",
+    "sli_feed_752082c78be5314613679a7fd",
+    "sli_feed_06f3af2c39b6b17de5c8d53ac",
+    "sli_feed_5e3f9727a2dda114924c70227",
+    "sli_feed_4c4d61c3e4a63e4b99803cd38",
+    "sli_feed_7ccabc14addb6900f18138ca7",
+    "sli_feed_ce9cfe45265042e1d32fa3080",
+    "sli_feed_3b8dece7febf1e667392c0978",
+    "sli_feed_a29e2827910ba2feeabb1a5d1",
+    "sli_feed_c7b90e8c7d630042b5c6e612b",
+    "sli_feed_f081b20ec0e6aa5d97e4e3cb2",
+    "sli_feed_38bfe42af474730a37d2dbc5e",
+    "sli_feed_0c879498fdf5b8e6a4591d40b",
+    "sli_feed_cf63dc93abb76d748748db322",
+    "sli_feed_934c41bd2190dfb09b275b56d",
+    "sli_feed_0a2050846e3cda95d70004300",
+    "sli_feed_24527a1bc9613ac4a408a9b39",
+    "sli_feed_797758a3dabcf474602ff0180",
+    "sli_feed_ad4ed66aa149b56a808ac72ee",
+    "sli_feed_e21af3f1cac18f9de79fb5c46",
+    "sli_feed_5800e834abfd3aff0544a3d42",
+    "sli_feed_99ff940185bd447b8493e015b",
+    "sli_feed_ca62f7903f24b91347338371d",
+    "sli_feed_048e50248c08b7ba0d43a0d06",
+    "sli_feed_01e63f267ff9e9967fb9fa781",
+    "sli_feed_33aed7b943b2decace89e68c8",
+    "sli_feed_29edc149362a36d7bef4c5ce7",
+    "sli_feed_cc26bf2f06af2eb3ba87c713d",
+    "sli_feed_098bd567f1b1ae4e2a20a755b",
+    "sli_feed_eb3357fa458ffaf872ca834ab",
+    "sli_feed_9294b6b37993598bb1a7d2a16",
+    "sli_feed_33128512032f7348ba616ee47",
+    "sli_feed_01d04f9f27cb33a79ccd985ba",
+    "sli_feed_bd47d2440893c739373d68666",
+    "sli_feed_60371212bd1856c4835330927",
+    "sli_feed_a00f583ab32a548de0f2a1777",
+    "sli_feed_0fde8dead1ef5b89ac5152e65",
+    "sli_feed_4ef09cbba9aad0c11995ec063",
+    "sli_feed_de2863d3e76596fcd744c04e3",
+    "sli_feed_5e67b43a0658dfcd4cf8483f0",
+    "sli_feed_bdc5cbafa1e84a61b3e50ec63",
+    "sli_feed_0f266ce4f7699a16610807127",
+    "sli_feed_b6ec2e6693d2bced9664d9546",
+    "sli_feed_cd54ba514202c1551aeff501f",
+    "sli_feed_f80473ff1675463fe6da3cd8e",
+    "sli_feed_83ef54dd083791085a2f3c5ac",
+    "sli_feed_1d5bfd7dbee0927ebdf62129d",
+    "sli_feed_2893b4a945da58698a1ae9795",
+    "sli_feed_f2ce5fb12102b8dafa3d4015f",
+    "sli_feed_2cb15a94cf82664a6b6761932",
+    "sli_feed_e0b6deb9288a09df19ab39bc1",
+    "sli_feed_36278113833687f73333f7532",
+    "sli_feed_4a68f1641d1e90f77b6fc5f08",
+    "sli_feed_914924e5df6229d78ffaf0420",
+    "sli_feed_ad53768de8971ea8527e8c170",
+    "sli_feed_7197d3f6420f3a5afd5821f0b",
+    "sli_feed_9f433ae71aeec4e2a1970966a",
+    "sli_feed_85242cb44f09b5b088a348eac",
+    "sli_feed_6db115cd1072d24d7124a21e7",
+    "sli_feed_c83731e5343c483eba975bb60",
+    "sli_feed_e97aca44230659bcb0e31969e",
+    "sli_feed_b3e8cd7837f3b77c07b7ca9cc",
+    "sli_feed_15a792dc8f3c774681ff3b7bc",
+    "sli_feed_c9cd1b3d3d2b94289507675ba",
+    "sli_feed_40c2b07bac8735d377ffb87be",
+    "sli_feed_5586edbdbbff3f5969b12b8ba",
+    "sli_feed_e7061f0ded4e7c683d3862526",
+    "sli_feed_c8009ecb1a77db75ff05a476d",
+    "sli_feed_9a54fd18300b371fdc5a95174",
+    "sli_feed_c24b615e6900cbe46f98340f4",
+    "sli_feed_3655fd1e383e244084b8f1e41",
+    "sli_feed_728eb96c221d799f68dd1fadd",
+    "sli_feed_d67a6793107d9dd46043df300",
+    "sli_feed_ac3c555c041b83b44a2d2dddc",
+    "sli_feed_6c2ddef81e4164478c7c74846",
+    "sli_feed_737cb8d2c55e14d16b6daf41a",
+    "sli_feed_edbce97269db137c3f7cdb777",
+    "sli_feed_414caaa6440149ccf85640315",
+    "sli_feed_baae38484b771ad1c7e33465b",
+    "sli_feed_2953b89fd4bd097afa1718074",
+    "sli_feed_5a41bb26c977a18670abfd100",
+    "sli_feed_64b75aafd89f4fd8b1b9d6462",
+    "sli_feed_1ef0a6e87a7b9eaef779b0588",
+    "sli_feed_390c9612654bf211a9ba78d11",
+    "sli_feed_e296ef45bdcd4d33b8299f982",
+    "sli_feed_5f9798ce4c2ff76923f5e23ea",
+    "sli_feed_17f747eb37743c13384fe7047",
+    "sli_feed_1acca80868d4a120feef7fba5",
+    "sli_feed_2b17079fb79f7c804919dd5c9",
+    "sli_feed_8feddcdf0cd264e610acd77f9",
+    "sli_feed_f2d0ed69f8723630cee5de490",
+    "sli_feed_a34eeaaff1d36c6941f76d0d5",
+    "sli_feed_572d5b5cc462c1ca285e4b6f0",
+    "sli_feed_5ab283d881f40e8b2da91c482",
+    "sli_feed_212bc2108a80092580c317a8d",
+    "sli_feed_777be68b26badcefc51202fc8",
+    "sli_feed_fcb28d4fa933a0e00e6924306",
+    "sli_feed_8995eb92e475b3d4cc10571e3",
+    "sli_feed_8222ecce0135db2d447ccaa0c",
+    "sli_feed_da081cc91af35fa084c9fafcf",
+    "sli_feed_650a0b4dc98f8a49a019fdceb",
+    "sli_feed_c62d18ba6c0f9832308efbccd",
+    "sli_feed_685b5abd9fdd981502e3d0078",
+    "sli_feed_b5211c91f775af079e0b06a85",
+    "sli_feed_bf10af8acb4565fdeda5b8a69",
+    "sli_feed_afecc24bab03ceefe63ee366b",
+    "sli_feed_ce4e0ab061c5069d1ace86ce1",
+    "sli_feed_cec97440698d9654bab7ef4f6",
+    "sli_feed_c806f0da0c5be64f3b060c5f9",
+    "sli_feed_4f1ae45fc4195a40f27f7d757",
+    "sli_feed_391283ed3334aa743c76e048b",
+    "sli_feed_45cd76f087bd951a1decc02b0",
+    "sli_feed_43f02c8a5dc8bf8272344a43e",
+    "sli_feed_0bb4f94b0a1e0428a74a94b7c",
+    "sli_feed_9c57da4d1454cc5c4ce56322b",
+    "sli_feed_f4b971013716a280eed54c4d5",
+    "sli_feed_65f5df693f066b53030c1210a",
+    "sli_feed_4241264afd70db9445401e6be",
+    "sli_feed_d86d149d496188056661b9cff",
+    "sli_feed_d6245dc25d0675fb98b6b96e0",
+    "sli_feed_2c54ffe53196480f50e038584",
+    "sli_feed_a56d78f77b7b2e8a0a1ee247e",
+    "sli_feed_cc43260e7a26fa0a204ebecf8",
+    "sli_feed_4f3527d7213fccd3cb8eddbe5",
+    "sli_feed_0bcc482caa13424f22b3c3a67",
+    "sli_feed_ff14db71c94b39f5c6f4bd0f1",
+    "sli_feed_19f5fb154e8606c2bce1b4f4c",
+    "sli_feed_2f5615c8545c716586f696995",
+    "sli_feed_29bb08b226c0155a2b55316d8",
+    "sli_feed_3ab8b0801ffc4874d7d016811",
+    "sli_feed_4615be7b0efa5d701ccadf170",
+    "sli_feed_278becf97493cb0da83c6d0dc",
+    "sli_feed_5377ac9cb5c6f0f58845928e8",
+    "sli_feed_224c01fba1399d2a09385b221",
+    "sli_feed_686fae534bc8a92a12f67c377",
+    "sli_feed_8be9463dc90b0b014112ea567",
+    "sli_feed_7b1c1fa05e7a53eea74f3003e",
+    "sli_feed_053224b5c01e213c1707fc58f",
+    "sli_feed_02683760602b00dadc2284cde",
+    "sli_feed_2c5673736b2abd37746aad75e",
+    "sli_feed_9a0ede957420b97ea210253f9",
+    "sli_feed_230e3692b7d5e4acb6d92c53e",
+    "sli_feed_89e33260c6136103022a92827",
+    "sli_feed_a1b2277a0224d6b371db76c30",
+    "sli_feed_99175f5cb465535bceae7b279",
+    "sli_feed_05144d468cf03020c4f45bb78",
+    "sli_feed_10082d8247be8d9c998809db8",
+    "sli_feed_4d64cc7ae4b6bd352f72cb818",
+    "sli_feed_9c3965825e6c3ca3a5ea9a76e",
+    "sli_feed_015136a6345a7c3d4b3c917dd",
+    "sli_feed_fedb86b6baefbac4390be7cec",
+    "sli_feed_b17147273d2607ffd47d8d299",
+    "sli_feed_4e22405c3fa929f80e17649d9",
+    "sli_feed_ce7fc3cb2a317ed1fbb3af07d",
+    "sli_feed_070b7c464fa57d1a91cc42ea3",
+    "sli_feed_56f55dba6da643b46ebc89ee3",
+    "sli_feed_1eab7de26184459b7acf525ae",
+    "sli_feed_c7a8c37ab42407166a95a13ff",
+    "sli_feed_7dfc20e05d87e402dc28bdfd3",
+    "sli_feed_2bcca5cef2e55d7255c2b973d",
+    "sli_feed_3b359b4bef9a52055a3e8a22b",
+    "sli_feed_5d1dd3e245dad8bc7970b9969",
+    "sli_feed_6b726ee7015bb33b50b3e3af1",
+    "sli_feed_13456f2d28c02bb87f974b559",
+    "sli_feed_6d00f0ecd278e6c74bb64f904",
+    "sli_feed_72fb1f3309fa8105176cb4b0f",
+    "sli_feed_6182f72dd04b7e51a0850c6ec",
+    "sli_feed_5efdca0f5faeda84b9182562d",
+    "sli_feed_85b24754e610ed87a2f7a23a3",
+    "sli_feed_dfcd7caf52b6d4de93c361448",
+    "sli_feed_0783e8f10f747665ba7c2a33a",
+    "sli_feed_fe7b6a63c5afe5e292f0869e1",
+    "sli_feed_1935e09b77a98482472c09298",
+    "sli_feed_e1ede2d171b49344ef125c3b0",
+    "sli_feed_896ffe36c78694ec39e4d5215",
+    "sli_feed_087345e609f6108d4455980da",
+    "sli_feed_6a891f6f6a667fd49f0291360",
+    "sli_feed_4e55845fd951d37b866841bfe",
+    "sli_feed_ec3b8e9558f8fb0d7a8afb81a",
+    "sli_feed_ae255464be9556e2e185cb25a",
+    "sli_feed_1d8ed8eeb4bb6bee02bd9336d",
+    "sli_feed_5f1c3a1458fbe44ae6872d63b",
+    "sli_feed_a683e497b187ddd4e72f4a643",
+    "sli_feed_ce82fd4428e23cd13f9934fae",
+    "sli_feed_64ce368d03ea48a4d4491222e",
+    "sli_feed_dbd28f2118ea2b9547cee1173",
+    "sli_feed_3128172192d6563d3e00053a8"
+  ],
+  "projects": {
+    "sli-project-001": {
+      "stage": "Under construction",
+      "source_date": "2025-06-29"
+    },
+    "sli-project-002": {
+      "stage": "Announced",
+      "source_date": "2024-04-30"
+    },
+    "sli-project-003": {
+      "stage": "Under construction",
+      "source_date": "2026-04-29"
+    },
+    "sli-project-004": {
+      "stage": "Under construction",
+      "source_date": "2026-02-25"
+    },
+    "sli-project-005": {
+      "stage": "Under construction",
+      "source_date": "2026-07-22"
+    },
+    "sli-project-006": {
+      "stage": "Operational",
+      "source_date": "2025-12-31"
+    },
+    "sli-project-007": {
+      "stage": "Under construction",
+      "source_date": "2026-07-16"
+    },
+    "sli-project-008": {
+      "stage": "Under construction",
+      "source_date": "2026-06-03"
+    },
+    "sli-project-009": {
+      "stage": "Operational",
+      "source_date": "2025-06-29"
+    },
+    "sli-project-010": {
+      "stage": "Early works",
+      "source_date": "2026-03"
+    },
+    "sli-project-011": {
+      "stage": "Operational",
+      "source_date": "2025-05-15"
+    },
+    "sli-project-012": {
+      "stage": "Announced",
+      "source_date": "2026-03-03"
+    },
+    "sli-project-013": {
+      "stage": "Mixed implementation",
+      "source_date": "2026-10-08"
+    },
+    "sli-project-014": {
+      "stage": "Under construction",
+      "source_date": "2026-09-17"
+    },
+    "sli-project-015": {
+      "stage": "Operational",
+      "source_date": "2025-04-15"
+    },
+    "sli-project-016": {
+      "stage": "Operational",
+      "source_date": "2021-12-14"
+    },
+    "sli-project-017": {
+      "stage": "Operational",
+      "source_date": "2025-11-28"
+    },
+    "sli-project-018": {
+      "stage": "Operational",
+      "source_date": "2022-02-25"
+    },
+    "sli-project-019": {
+      "stage": "Operational",
+      "source_date": "2019-09-06"
+    },
+    "sli-project-020": {
+      "stage": "Under construction",
+      "source_date": "2026-08-02"
+    },
+    "sli-project-021": {
+      "stage": "Under construction",
+      "source_date": "2025-12-02"
+    },
+    "sli-project-022": {
+      "stage": "Site evaluation",
+      "source_date": "2025-07-30"
+    },
+    "sli-project-023": {
+      "stage": "MoU only",
+      "source_date": "2023-12-04"
+    },
+    "sli-project-024": {
+      "stage": "Operational",
+      "source_date": "2023-11-09"
+    },
+    "sli-project-025": {
+      "stage": "Early works",
+      "source_date": "2026-01"
+    }
+  },
+  "laws": {
+    "uud": {
+      "status": "constitutional_foundation",
+      "verified_at": ""
+    },
+    "uu12": {
+      "status": "amended",
+      "verified_at": "2026-10-19"
+    },
+    "uu6": {
+      "status": "enacted",
+      "verified_at": ""
+    },
+    "uu30energy": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu30power": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu22oil": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu4minerba": {
+      "status": "amended",
+      "verified_at": ""
+    },
+    "uu3minerba": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    },
+    "uu2minerba": {
+      "status": "amending_instrument",
+      "verified_at": "2026-10-19"
+    },
+    "uu32env": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu27pdp": {
+      "status": "enacted",
+      "verified_at": ""
+    },
+    "uu23local": {
+      "status": "amended",
+      "verified_at": "2026-10-19"
+    },
+    "pp40": {
+      "status": "enacted",
+      "verified_at": "2026-10-19"
+    },
+    "pp79old": {
+      "status": "repealed",
+      "verified_at": "2026-10-19"
+    },
+    "pp28": {
+      "status": "enacted",
+      "verified_at": "2026-10-19"
+    },
+    "pp5old": {
+      "status": "repealed",
+      "verified_at": "2026-10-19"
+    },
+    "pp14power": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pp25energy": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pp22env": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pp96min": {
+      "status": "amended",
+      "verified_at": "2026-10-19"
+    },
+    "pp25min": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    },
+    "pres112": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pres14ccs": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pres110carbon": {
+      "status": "enacted",
+      "verified_at": "2026-10-19"
+    },
+    "pres22ruen": {
+      "status": "transition_review",
+      "verified_at": ""
+    },
+    "perda_jabar": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_jateng": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_kepri": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "permen11": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "permen5": {
+      "status": "enacted",
+      "verified_at": ""
+    },
+    "permen2solar": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "permen8": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "permen2service": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    },
+    "permen14oil": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "kepmen188": {
+      "status": "issued_plan_not_commissioned",
+      "verified_at": ""
+    },
+    "kepmen77": {
+      "status": "issued_review_scope",
+      "verified_at": ""
+    },
+    "perdirjen2007": {
+      "status": "archival_not_verified",
+      "verified_at": ""
+    },
+    "slo": {
+      "status": "project_specific",
+      "verified_at": ""
+    },
+    "amdal": {
+      "status": "project_specific",
+      "verified_at": ""
+    },
+    "oss": {
+      "status": "project_specific",
+      "verified_at": ""
+    },
+    "grid": {
+      "status": "project_specific",
+      "verified_at": ""
+    },
+    "pdp": {
+      "status": "project_specific",
+      "verified_at": ""
+    },
+    "carbon_mrv": {
+      "status": "project_specific",
+      "verified_at": ""
+    },
+    "keppres41batam": {
+      "status": "archival_not_verified",
+      "verified_at": ""
+    },
+    "uu26spatial": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu25investment": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu3industry": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pp21spatial": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "permenatr13": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "permenlhk4": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "permenbkpm5": {
+      "status": "enacted",
+      "verified_at": ""
+    },
+    "permenperin37": {
+      "status": "enacted",
+      "verified_at": ""
+    },
+    "perda_bekasi": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "pergub_jateng29": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perbup_bekasi7": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perwali_semarang2": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "kkpr": {
+      "status": "project_specific",
+      "verified_at": ""
+    },
+    "inpres1_2025": {
+      "status": "issued_directive",
+      "verified_at": ""
+    },
+    "inpres14_2025": {
+      "status": "issued_directive",
+      "verified_at": ""
+    },
+    "inpres16_2025": {
+      "status": "issued_directive",
+      "verified_at": ""
+    },
+    "uu7wto": {
+      "status": "enacted",
+      "verified_at": ""
+    },
+    "gattxi": {
+      "status": "treaty_obligation",
+      "verified_at": ""
+    },
+    "scm": {
+      "status": "treaty_obligation",
+      "verified_at": ""
+    },
+    "trims": {
+      "status": "treaty_obligation",
+      "verified_at": ""
+    },
+    "gats": {
+      "status": "treaty_obligation",
+      "verified_at": ""
+    },
+    "dsu": {
+      "status": "treaty_obligation",
+      "verified_at": ""
+    },
+    "ds592": {
+      "status": "dispute_appealed_not_final",
+      "verified_at": ""
+    },
+    "uu30arb": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "perma3arb": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "kp34newyork": {
+      "status": "ratification_instrument",
+      "verified_at": ""
+    },
+    "uu5icsid": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "icsid": {
+      "status": "convention_in_force_conditional_jurisdiction",
+      "verified_at": ""
+    },
+    "newyork": {
+      "status": "convention_in_force",
+      "verified_at": ""
+    },
+    "uncitral": {
+      "status": "contractual_if_adopted",
+      "verified_at": ""
+    },
+    "bit": {
+      "status": "project_specific",
+      "verified_at": ""
+    },
+    "paris": {
+      "status": "treaty_obligation",
+      "verified_at": ""
+    },
+    "uu16paris": {
+      "status": "enacted",
+      "verified_at": "2026-10-19"
+    },
+    "eu_cbam": {
+      "status": "foreign_rule_conditional_scope",
+      "verified_at": ""
+    },
+    "eu_crma": {
+      "status": "foreign_rule_conditional_scope",
+      "verified_at": ""
+    },
+    "eu_batteries": {
+      "status": "foreign_rule_conditional_scope",
+      "verified_at": ""
+    },
+    "us_bis_ear": {
+      "status": "foreign_rule_conditional_scope",
+      "verified_at": ""
+    },
+    "uu1hkpd2022": {
+      "status": "check_current",
+      "verified_at": "2026-10-19"
+    },
+    "uu1penyesuaian2026": {
+      "status": "amending_instrument",
+      "verified_at": "2026-10-19"
+    },
+    "perda_dki_rtrw2024": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_jabar_rtrw2022": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_dki_pdrd2024": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "pres98repealed": {
+      "status": "repealed",
+      "verified_at": "2026-10-19"
+    },
+    "uu18food2012": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu24disaster2007": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu4geo2011": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu17water2019": {
+      "status": "check_current",
+      "verified_at": "2026-10-19"
+    },
+    "pp39minerba": {
+      "status": "amending_instrument",
+      "verified_at": "2026-10-19"
+    },
+    "uu9local2015": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    },
+    "uu2local2015": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    },
+    "uu13p32022": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    },
+    "pp86food2019": {
+      "status": "amended",
+      "verified_at": "2026-10-19"
+    },
+    "pp1food2026": {
+      "status": "amending_instrument",
+      "verified_at": "2026-10-19"
+    },
+    "perban11food2025": {
+      "status": "enacted",
+      "verified_at": "2026-10-19"
+    },
+    "perban5food2025": {
+      "status": "enacted",
+      "verified_at": "2026-10-19"
+    },
+    "uu19farmers2013": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu41land2009": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pp17food2015": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "permentan19org2026": {
+      "status": "amending_instrument",
+      "verified_at": "2026-10-20"
+    },
+    "uu11ite": {
+      "status": "amended",
+      "verified_at": ""
+    },
+    "uu19ite": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    },
+    "uu1ite2024": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    },
+    "pp71pste": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pp80pmse": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "permendag31pmse": {
+      "status": "repealed",
+      "verified_at": ""
+    },
+    "permendag19pmse2026": {
+      "status": "enacted",
+      "verified_at": ""
+    },
+    "perpres39onedata": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "perpres95spbe": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "perpres132spbe": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pp12daerah": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "permendagri77daerah": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "permendagri90daerah": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "perpres10invest": {
+      "status": "amended",
+      "verified_at": ""
+    },
+    "perpres49invest": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    },
+    "perpres66bapanas": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "perpres83bgn": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "perpres125cpp": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu22budidaya": {
+      "status": "amended",
+      "verified_at": ""
+    },
+    "perpres55minerba": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu7hpp": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "uu4p2sk": {
+      "status": "amended",
+      "verified_at": ""
+    },
+    "uu4p2sk2026": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    },
+    "perda_sulsel_cpp2025": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_sulsel_rpplh2024": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_sulsel_rtrw2022": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_sulsel_pdrd2024": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "pres82iiv2022": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pres47cyber2023": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "bssn5iiv2025": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pojk51sustain2017": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pp42psn2021": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "perda_jateng_rtrw2024": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_magelang_rtrw2024": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_magelang_rtrwold2011": {
+      "status": "repealed",
+      "verified_at": ""
+    },
+    "perda_banten_rtrw2023": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_diy_rtrw2023": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "perda_diy_pangan2026": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_bali_rtrw2023": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "perda_kaltim_rtrw2023": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_lampung_rtrw2023": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_ntb_rtrw2024": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_ntb_invest2024": {
+      "status": "listed_active_review_alignment",
+      "verified_at": ""
+    },
+    "perda_karawang_rtrw2013": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "kepmen88papuabaratdaya2026": {
+      "status": "issued_review_scope",
+      "verified_at": ""
+    },
+    "pp35hkpd2023": {
+      "status": "check_current",
+      "verified_at": ""
+    },
+    "pp10pdrdold2021": {
+      "status": "repealed",
+      "verified_at": ""
+    },
+    "perda_bengkulu_pdrd2023": {
+      "status": "amended",
+      "verified_at": ""
+    },
+    "perda_bengkulu_pdrd2026": {
+      "status": "amending_instrument",
+      "verified_at": ""
+    }
+  }
+}
