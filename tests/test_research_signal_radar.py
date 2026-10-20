@@ -12,7 +12,7 @@ root = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("sli_research_radar", root / "scripts" / "research_signal_radar.py")
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
-assert len(module.TOPICS) == 17
+assert len(module.TOPICS) == 24
 assert {(t[0], t[1]) for t in module.TOPICS} == set(module.GROUPS)
 assert all(t[2] and t[3] and t[4] and t[5] for t in module.TOPICS)
 assert module.source_ok("Reuters", "https://www.reuters.com/")
@@ -52,7 +52,9 @@ assert record["impact_status"].startswith("Potential impact")
 assert not any(k in record for k in ("actual_investment","confirmed_incident","probability"))
 data=json.loads((root/"data"/"research-signal-radar.json").read_text())
 assert data["schema_version"]==1
-assert set(data["groups"])=={"minerals","ai"}
-assert all(set(data["groups"][s])=={"domestic","geopolitical"} for s in ("minerals","ai"))
+assert set(data["groups"])=={"minerals","ai","food"}
+assert all(set(data["groups"][s])=={"domestic","geopolitical"} for s in ("minerals","ai","food"))
 assert data.get("status") in ("ok","partial","awaiting_first_scan","upstream_unavailable_last_good_preserved")
-print("PASS: strict-source RSS metadata, 17 topics, Reuters CGTN coverage, timestamps, category isolation and four-channel dataset")
+assert module.TITLE_RULES["rice_reserves"].search("BULOG announces rice reserves and stocks")
+assert module.FOCUS["food"].search("Indonesia beras rice stock report")
+print("PASS: safe RSS metadata, 24 topics, six food/mineral/AI channels and dated source segregation")
