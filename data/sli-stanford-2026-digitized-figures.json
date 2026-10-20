@@ -1,0 +1,170 @@
+{
+  "schema": "sli-stanford-ai-index-2026-digitized-figures-v1",
+  "reviewed_at": "2026-10-20",
+  "source": {
+    "publisher": "Stanford HAI",
+    "report": "AI Index Report 2026",
+    "official_url": "https://hai.stanford.edu/assets/files/ai_index_report_2026.pdf",
+    "independent_primary_study_validation": false
+  },
+  "editorial_policy": "Transcribed only printed numeric labels from original PDF pages. Not interpolated from pixels. Modelled power is NOT metered grid use; data center facility count is NOT MW. Global/country series are NOT Indonesia-specific.",
+  "figures": [
+    {
+      "id": "stanford-ai-dc-power-fig-1-2-4",
+      "figure_number": "1.2.4",
+      "pdf_page": 31,
+      "title_id": "Estimasi kapasitas daya pusat data AI global",
+      "title_en": "Estimated global AI data center power capacity",
+      "unit": "GW",
+      "geography": "Global",
+      "statistical_status": "modelled_capacity_estimate_from_epoch_ai_2026",
+      "source_credit": "Epoch AI, 2026, as reproduced in Stanford HAI AI Index 2026",
+      "source_chart_basis": "Printed data labels for total modelled power capacity in Figure 1.2.4; quarterly 2022Q1–2025Q4. Does not estimate actual electricity consumption.",
+      "values": [
+        {
+          "period": "2022Q1",
+          "value_gw": 0.15
+        },
+        {
+          "period": "2022Q2",
+          "value_gw": 0.37
+        },
+        {
+          "period": "2022Q3",
+          "value_gw": 0.6
+        },
+        {
+          "period": "2022Q4",
+          "value_gw": 0.87
+        },
+        {
+          "period": "2023Q1",
+          "value_gw": 1.2
+        },
+        {
+          "period": "2023Q2",
+          "value_gw": 1.73
+        },
+        {
+          "period": "2023Q3",
+          "value_gw": 2.52
+        },
+        {
+          "period": "2023Q4",
+          "value_gw": 3.56
+        },
+        {
+          "period": "2024Q1",
+          "value_gw": 5.39
+        },
+        {
+          "period": "2024Q2",
+          "value_gw": 7.62
+        },
+        {
+          "period": "2024Q3",
+          "value_gw": 10.27
+        },
+        {
+          "period": "2024Q4",
+          "value_gw": 13.51
+        },
+        {
+          "period": "2025Q1",
+          "value_gw": 17.67
+        },
+        {
+          "period": "2025Q2",
+          "value_gw": 21.96
+        },
+        {
+          "period": "2025Q3",
+          "value_gw": 27.25
+        },
+        {
+          "period": "2025Q4",
+          "value_gw": 29.56
+        }
+      ],
+      "caution_id": "Estimasi daya terpasang berbasis model chip AI, bukan penggunaan listrik yang terukur. Tidak merepresentasikan Indonesia.",
+      "caution_en": "Modelled AI power capacity, not measured electricity use or Indonesia data."
+    },
+    {
+      "id": "stanford-dc-country-fig-1-3-2",
+      "figure_number": "1.3.2",
+      "pdf_page": 33,
+      "title_id": "Jumlah fasilitas pusat data menurut negara",
+      "title_en": "Data center facility counts by country",
+      "unit": "facilities",
+      "geography": "15 countries in Stanford-reproduced Cloudscene rankings, 2025",
+      "year": 2025,
+      "statistical_status": "third_party_facility_count_cloudscene_2025",
+      "source_credit": "Cloudscene, 2025, as reproduced in Stanford HAI AI Index 2026",
+      "source_chart_basis": "All 15 printed bar labels in Figure 1.3.2. Facilities are not MW or capacity utilization.",
+      "values": [
+        {
+          "country": "Poland",
+          "count": 144
+        },
+        {
+          "country": "India",
+          "count": 153
+        },
+        {
+          "country": "Italy",
+          "count": 168
+        },
+        {
+          "country": "Mexico",
+          "count": 173
+        },
+        {
+          "country": "Brazil",
+          "count": 197
+        },
+        {
+          "country": "Japan",
+          "count": 222
+        },
+        {
+          "country": "Russia",
+          "count": 251
+        },
+        {
+          "country": "Netherlands",
+          "count": 298
+        },
+        {
+          "country": "Australia",
+          "count": 314
+        },
+        {
+          "country": "France",
+          "count": 322
+        },
+        {
+          "country": "Canada",
+          "count": 337
+        },
+        {
+          "country": "China",
+          "count": 449
+        },
+        {
+          "country": "United Kingdom",
+          "count": 523
+        },
+        {
+          "country": "Germany",
+          "count": 529
+        },
+        {
+          "country": "United States",
+          "count": 5427
+        }
+      ],
+      "caution_id": "Jumlah fasilitas tidak setara kapasitas MW, daya AI, ataupun tingkat utilisasi. Data Indonesia tidak disajikan pada grafik ini.",
+      "caution_en": "Number of facilities is not MW, AI compute, or utilization. Indonesia is not shown in this figure."
+    }
+  ]
+}

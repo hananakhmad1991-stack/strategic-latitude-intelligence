@@ -1,0 +1,53 @@
+import {test} from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
+const d=JSON.parse(read("data/sli-stanford-2026-digitized-figures.json"));
+const metrics=JSON.parse(read("data/sli-ai-stanford-worldbank-foundations-2025-2026.json"));
+test("Two original Stanford figures have verifiable page, unit, status and source",()=>{
+ assert.equal(d.figures.length,2);
+ assert.match(d.source.official_url,/hai\.stanford\.edu/);
+ assert.equal(d.source.independent_primary_study_validation,false);
+ for(const f of d.figures){
+  assert.ok([31,33].includes(f.pdf_page));
+  assert.ok(f.source_credit&&f.figure_number&&f.caution_id&&f.statistical_status);
+ }
+ assert.equal(metrics.figure_catalog_status.verified_numeric_figure_series_count,2);
+});
+test("Figure 1.2.4 follows original printed quarterly power estimates, not electricity consumption",()=>{
+ const f=d.figures.find(x=>x.figure_number==="1.2.4");
+ assert.equal(f.values.length,16);
+ assert.equal(f.values[0].period,"2022Q1");
+ assert.equal(f.values[0].value_gw,0.15);
+ assert.equal(f.values.at(-1).period,"2025Q4");
+ assert.equal(f.values.at(-1).value_gw,29.56);
+ assert.ok(f.values.every(x=>x.value_gw>0));
+ assert.match(f.statistical_status,/modelled/);
+ assert.match(f.caution_en,/not measured electricity/);
+});
+test("Figure 1.3.2 has precisely 15 printed facility counts, no Indonesian count invented",()=>{
+ const f=d.figures.find(x=>x.figure_number==="1.3.2");
+ assert.equal(f.values.length,15);
+ assert.equal(f.values.find(x=>x.country==="United States").count,5427);
+ assert.equal(f.values.find(x=>x.country==="Germany").count,529);
+ assert.equal(f.values.find(x=>x.country==="China").count,449);
+ assert.equal(f.values.some(x=>x.country==="Indonesia"),false);
+ assert.equal(f.values.every(x=>Number.isInteger(x.count)&&x.count>0),true);
+});
+test("Digitized figures displayed in both AI topic and sector data library with accessible tables",()=>{
+ for(const p of ["ai-intelligence-hub.html","sli-sector-data-library.html"]){
+  const html=read(p);
+  assert.match(html,/data-sli-ai-figures/);
+  assert.match(html,/sli-digitized-ai-figures\.js/);
+  assert.match(html,/sli-digitized-ai-figures\.css/);
+ }
+ const js=read("js/sli-digitized-ai-figures.js");
+ assert.match(js,/createElementNS/);
+ assert.match(js,/tabindex/);
+ assert.match(js,/SLIVisualExport\.register\(svgNode/);
+ assert.match(js,/sli:exportready/);
+ assert.match(js,/kind:"verified-provider"/);
+ assert.match(js,/sourceUrl:d.source.official_url/);
+ assert.match(js,/document\.createElement\("table"\)|el\("table"\)/);
+ assert.doesNotMatch(js,/innerHTML|Math\.random/);
+});
