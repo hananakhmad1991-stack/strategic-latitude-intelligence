@@ -709,5 +709,11 @@ window.SLIResearchAssistant=Object.freeze({version:"2026-10-20-professional-repo
  getExportData:()=>state.lastResult?{answer:reportBody(state.lastResult.answer,state.language),sources:state.lastResult.sources||[],
   charts:state.lastResult.charts||[],language:state.language,
   question:state.lastResult.question||"",mode:state.lastResult.mode||"",
-  title:(String(state.lastResult.answer||"").match(/^#{1,2}\s+(.+)$/m)?.[1]||String(state.lastResult.question||"").slice(0,125)||"Laporan Riset SLI").replace(/\*\*/g,"").slice(0,145)}:null});
+  title:(()=>{
+   const heading=String(state.lastResult.answer||"").match(/^#{1,2}\s+(.+)$/m)?.[1]?.replace(/\*\*/g,"").trim()||"";
+   const generic=/^(?:executive summary|ringkasan eksekutif|analisis|analysis|introduction|pendahuluan)$/i.test(heading);
+   const fromQuestion=String(state.lastResult.question||"").replace(/^(?:jelaskan|explain|analisis|analyze|analyse)\s+/i,"")
+    .split(/\b(?:sertakan|include|beserta referensi|dengan rujukan)\b/i)[0].replace(/[.,;:\s]+$/,"").trim();
+   return (heading&&!generic?heading:fromQuestion||heading||"Laporan Riset SLI").slice(0,145);
+  })()}:null});
 })();
