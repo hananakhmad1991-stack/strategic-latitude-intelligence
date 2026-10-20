@@ -183,3 +183,15 @@
 #raConversation #raModelStatementBody{font:400 15px/1.75 system-ui,sans-serif;color:#2b4357;white-space:pre-wrap;overflow-wrap:anywhere}
 #raConversation .sli-ra-msg-text{font-size:16px!important;line-height:1.85!important;overflow:visible!important;max-height:none!important}
 @media(max-width:650px){#raConversation #raSourcesList .sli-ra-source-card>a{font-size:14px!important}#raConversation .sli-ra-msg-text{font-size:15px!important}}
+
+/* Professional APA export source-coverage status: informational, not certification. */
+#raConversation .sli-ra-export-gate{
+  display:block;margin:9px 0 13px;padding:8px 12px;border:1px solid #bfd1dc;
+  border-radius:8px;background:#eff5f9;color:#22506d;
+  font:600 12px/1.5 Arial,Helvetica,sans-serif
+}
+#raConversation .sli-ra-export-gate[hidden]{display:none}
+#raConversation .sli-ra-export-gate[data-complete="false"]{
+  background:#faf4e9;border-color:#e8d4ab;color:#79501e
+}
+#raConversation .sli-ra-chat-actions{flex-wrap:wrap;gap:6px}

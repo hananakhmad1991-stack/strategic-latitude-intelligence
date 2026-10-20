@@ -4,7 +4,7 @@
 <meta name="description" content="SLI Research AI: a source-grounded conversational research assistant for Indonesia's economy, energy, strategic investment, geopolitics and technology. Owner-only generative research testing is active; subscriber access is not yet available.">
 <link rel="stylesheet" href="./css/sli-site-ux.css">
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
-<link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261018-qualityfix2">
+<link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261020-professional-export1">
 <link rel="stylesheet" href="./css/sli-research-brand.css?v=20261019-compact-quickstart1">
 <link rel="stylesheet" href="./css/sli-analytical-workbench.css?v=20261018-bps8">
 
@@ -101,7 +101,8 @@
  </div>
 </section>
 <section id="raConversation" class="sli-ra-conversation" aria-label="Research conversation" hidden>
- <div class="sli-ra-chat-head"><h2 data-id="Percakapan riset" data-en="Research conversation">Percakapan riset</h2><div class="sli-ra-chat-actions"><button id="raNew" type="button" data-id="Riset baru" data-en="New research">Riset baru</button><button id="raCopy" type="button" disabled data-id="Salin analisis" data-en="Copy analysis">Salin analisis</button><button id="raExport" type="button" disabled data-id="Ekspor Markdown" data-en="Export Markdown">Ekspor Markdown</button></div></div>
+ <div class="sli-ra-chat-head"><h2 data-id="Percakapan riset" data-en="Research conversation">Percakapan riset</h2><div class="sli-ra-chat-actions"><button id="raNew" type="button" data-id="Riset baru" data-en="New research">Riset baru</button><button id="raCopy" type="button" disabled data-id="Salin analisis" data-en="Copy analysis">Salin analisis</button><button id="raExport" type="button" disabled data-id="Ekspor Markdown" data-en="Export Markdown">Ekspor Markdown</button><button id="raWord" type="button" disabled data-id="Ekspor Word (.docx)" data-en="Export Word (.docx)">Ekspor Word (.docx)</button><button id="raPdf" type="button" disabled data-id="PDF (Cetak/Simpan)" data-en="PDF (Print/Save)">PDF (Cetak/Simpan)</button></div></div>
+ <p id="raExportApaGate" class="sli-ra-export-gate" role="status" aria-live="polite" hidden></p>
  <div class="sli-ra-conversation-layout"><div id="raMessages" class="sli-ra-messages" aria-live="polite"></div>
  <details id="raSourcesPanel" class="sli-ra-sources" aria-label="Research citations">
  <summary data-id="Referensi penelitian (APA 7) · lihat sumber asli" data-en="APA 7 references · open original documents">Sumber riset, dokumen asli &amp; sitasi · buka rincian</summary>
@@ -134,6 +135,7 @@
 <script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script>
 <script defer src="./js/sli-research-visuals.js?v=20261019-reportstyle2"></script>
 <script defer src="./js/sli-research-assistant.js?v=20261020-claim-evidence-ledger-phase3"></script>
+<script type="module" src="./js/sli-report-buttons.mjs?v=20261020-professional-export1"></script>
 <script type="module" src="./js/sli-analytical-workbench-ui.mjs?v=20261018-bps9"></script>
 <!-- Research AI is a focused conversation; stand-alone sector briefs belong on sector dashboards. -->
 <script defer src="./js/sli-shared-appendix.js?v=20261017-conversation4"></script>
