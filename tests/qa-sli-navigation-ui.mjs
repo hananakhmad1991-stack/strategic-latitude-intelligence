@@ -18,7 +18,10 @@ test('main Overview has one stable breadcrumb, detailed sector links and live ro
  assert.match(doc.querySelector('.sli-location strong').textContent,/Overview/);
  assert.ok(doc.querySelector('.sli-universal-actions a[href="./sli-user-guide.html"]'));
  assert.ok(doc.querySelector('.sli-universal-actions a[href="./sli-glossary-methodology.html"]'));
- assert.ok(doc.querySelector('.sli-modules-grid a[href="./provincial-intelligence.html"]'));
+ assert.equal(doc.querySelectorAll('.sli-platform-explorer').length,1,'One canonical Explore Data menu must serve the site');
+ assert.ok(doc.querySelector('.sli-platform-sector-menu a[href="./provincial-intelligence.html"]'));
+ assert.equal(doc.querySelectorAll('.sli-platform-sector-group').length,7);
+ assert.equal(doc.querySelectorAll('.sli-explore-menu').length,0,'Remove legacy duplicate explorer');
  d.window.location.hash='#energy';
  doc.dispatchEvent(new d.window.CustomEvent('sli:pagechange',{detail:{page:'energy'}}));
  assert.match(doc.querySelector('.sli-location strong').textContent,/Energy Security/);
