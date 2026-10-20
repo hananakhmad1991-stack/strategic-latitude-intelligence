@@ -21,7 +21,12 @@ function relevant(row,chosen,scope,q){
  return !q||corpus.includes(q);
 }
 function render(){
- if(!news)return;const root=$("sliNewsCards");root.replaceChildren();
+ if(!news)return;
+ for(const n of document.querySelectorAll("[data-en][data-id]"))n.textContent=en()?n.dataset.en:n.dataset.id;
+ for(const [value,idText,enText] of [["food","Pangan & Pertanian","Food & Agriculture"],["minerals","Mineral Kritis","Critical Minerals"],["all","Seluruh sektor","All monitored sectors"]]){
+  const n=Array.from($("sliNewsSector").options).find(x=>x.value===value);if(n)n.textContent=T(idText,enText);
+ }
+ const root=$("sliNewsCards");root.replaceChildren();
  const chosen=$("sliNewsSector").value,scope=$("sliNewsScope").value,q=$("sliNewsSearch").value.toLowerCase().trim();
  let arr=news.articles.filter(row=>relevant(row,chosen,scope,q)&&safe(row.url))
    .sort((a,b)=>Date.parse(b.published_at_utc||"")-Date.parse(a.published_at_utc||""));
