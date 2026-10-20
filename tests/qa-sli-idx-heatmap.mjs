@@ -22,7 +22,7 @@ test("SLI homepage embeds a native IDX heatmap with searchable strategic sectors
  assert.match(code,/sliIDXGroupFilter/);
  assert.match(code,/data\.sector|\.sector===activeSector/);
  assert.match(code,/company:idx:/);
- assert.match(code,/sli-entities\.html\?ticker=/);
+ assert.match(code,/sli-issuer\.html\?ticker=/);
  assert.match(entity,/a\.issuerRecord\?\.ticker===requestedTicker/);
  assert.match(css,/\.sli-idx-tiles/);
  assert.match(css,/\.sli-idx-tile\.has-quote\.positive/);
@@ -38,7 +38,7 @@ test("Strategic sector heatmap inherits real BEI candidate tickers, without clai
  for(const t of ["ANTM","PTBA","TLKM","INDF","ICBP","MEDC","GOTO","AMMN"])assert.ok(tickers.has(t),"Missing IDX ticker "+t);
  for(const v of list)assert.ok(["energy","minerals","coal","food","technology","infrastructure","transport","manufacturing"].includes(v.sector));
  assert.equal(tickers.size,list.length);
- assert.equal(m.tickerURL("ANTM"),"./sli-entities.html?ticker=ANTM#company%3Aidx%3AANTM");
+ assert.equal(m.tickerURL("ANTM"),"./sli-issuer.html?ticker=ANTM");
  assert.ok(universe.records.every(x=>x.market_cap===null),"Do not infer capitalization from the IDX seed");
 });
 test("Market colors and market-cap weighting remain neutral while no redistributable quote license exists",()=>{
