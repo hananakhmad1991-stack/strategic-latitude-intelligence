@@ -12,8 +12,13 @@ const cleanRef=s=>norm(s).replace(/\b(?:nomor|no|tahun)\b/g,"").replace(/\s+/g,"
 const refMatches=(q,ref)=>q.includes(cleanRef(ref)) ||
   // Both "UU No. 27 Tahun 2022" and "UU 27/2022" are recognized.
   new RegExp("\\b"+cleanRef(ref).split(" ").join("(?:\\s+|\\s*(?:no|nomor|tahun)\\s*)")+"\\b","i").test(q);
-const explicitLaws=q=>[...q.matchAll(/\b(uu|pp|perpres)\s*(?:(?:nomor|no)\s*)?(\d{1,3})\s*(?:tahun\s*)?(?:\/|\-|\s+)(\d{4})\b/gi)]
-  .map(m=>m[1].toLowerCase()+" "+m[2]+" "+m[3]);
+const explicitLaws=q=>[...q.matchAll(/\b(uu|undang undang|pp|peraturan pemerintah|perpres|peraturan presiden)\s*(?:(?:nomor|no)\s*)?(\d{1,3})\s*(?:tahun\s*)?(?:\/|\-|\s+)(\d{4})\b/gi)]
+  .map(m=>{
+   const type=m[1].toLowerCase();
+   const short=type==="undang undang"?"uu":type==="peraturan pemerintah"?"pp":
+    type==="peraturan presiden"?"perpres":type;
+   return short+" "+Number(m[2])+" "+m[3];
+  });
 const articleNumbers=q=>[...q.matchAll(/\b(?:pasal|article)\s+(\d{1,3}[a-z]?)\b/gi)].map(m=>m[1].toLowerCase());
 function sourceValid(record){
  try{
