@@ -23,7 +23,7 @@
 .sli-cg-entry-main .sli-cg-logo{width:29px;height:29px;flex-basis:29px}
 .sli-cg-fold{position:absolute;right:0;top:11px;width:28px;height:30px;border:1px solid #3d627d;border-radius:7px;color:#f3d4a0;background:#1b384f;cursor:pointer}
 .sli-cg-branch{margin-left:18px;padding-left:13px;border-left:1px solid #4e6378}
-.sli-cg-dossier{background:#112a40;border:1px solid #47657b;border-radius:13px;padding:18px;min-height:260px;position:sticky;top:100px;overflow-wrap:anywhere}
+.sli-cg-dossier{background:#112a40;border:1px solid #47657b;border-radius:13px;padding:18px;min-height:260px;position:sticky;top:calc(var(--sli-mast-offset, 80px) + 14px);max-height:calc(100dvh - var(--sli-mast-offset, 80px) - 28px);overflow-y:auto;overscroll-behavior:contain;overflow-wrap:anywhere}
 .sli-cg-profile-title{display:flex;align-items:center;gap:12px;margin:0 0 12px}
 .sli-cg-profile-title h3{margin:2px 0;font-size:19px;line-height:1.27}
 .sli-cg-profile-title small{font-size:10px;color:#b9cfd9;text-transform:uppercase}
@@ -47,7 +47,7 @@
 .sli-cg-small{font-size:11px;color:#aec2cf;line-height:1.45}
 .sli-cg-hit{display:block;margin:4px 0;padding:10px;border:1px solid #3b6179;border-radius:8px;background:#122a40;color:#e8edf2;cursor:pointer;text-align:left;width:100%;font-size:12px}
 .sli-cg-hit:hover{border-color:#d1b781}
-@media(max-width:930px){.sli-cg-workspace{grid-template-columns:minmax(0,1fr)}.sli-cg-dossier{position:static}.sli-cg-tree{max-height:520px}}
+@media(max-width:930px){.sli-cg-workspace{grid-template-columns:minmax(0,1fr)}.sli-cg-dossier{position:static;max-height:none;overflow:visible}.sli-cg-tree{max-height:520px}}
 @media(max-width:550px){.sli-cg-root{padding:12px}.sli-cg-branch{margin-left:9px;padding-left:7px}.sli-cg-entry-main{gap:6px;padding:6px}}
 
 /* Sector-led navigation and public-financial evidence, separate from ownership diagram. */
