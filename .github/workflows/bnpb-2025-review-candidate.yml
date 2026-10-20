@@ -1,0 +1,31 @@
+name: BNPB 2025 Provincial Candidate (Review Only)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/fetch-bnpb-2025-review-candidate.mjs'
+      - '.github/workflows/bnpb-2025-review-candidate.yml'
+  schedule:
+    - cron: '32 4 * * 1'
+permissions:
+  contents: read
+jobs:
+  retrieve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Request official BNPB CKAN rows (source may restrict network access)
+        continue-on-error: true
+        run: node scripts/fetch-bnpb-2025-review-candidate.mjs
+      - name: Publish candidate for source-by-source reviewer approval only
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bnpb-2025-review-candidate
+          path: artifacts/sli-bnpb-provincial-2025-review-candidate.json
+          if-no-files-found: warn
+          retention-days: 14
