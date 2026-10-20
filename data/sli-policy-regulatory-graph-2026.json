@@ -1,6 +1,6 @@
 {
-  "version": "2026-10-19.5",
-  "updated_at": "2026-10-19",
+  "version": "2026-10-20-food-policy-linked-v1",
+  "updated_at": "2026-10-20",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
     "not_legal_advice": true,
@@ -1375,7 +1375,7 @@
       "tier": "uu",
       "ref": "UU 18/2012",
       "label": "Pangan — ketahanan, kemandirian dan keamanan pangan",
-      "sector": "cross",
+      "sector": "food",
       "source": "https://peraturan.go.id/id/uu-no-18-tahun-2012",
       "note": "Landasan kebijakan pangan dan keamanan pangan bagi data pertanian, distribusi dan risiko pangan SLI; status perubahan terbaru serta peraturan pelaksana harus dicek sebelum analisis hukum.",
       "status": "check_current",
@@ -1542,7 +1542,7 @@
       "tier": "pp",
       "ref": "PP 86/2019",
       "label": "Keamanan Pangan — aturan pelaksanaan UU Pangan",
-      "sector": "cross",
+      "sector": "food",
       "source": "https://peraturan.bpk.go.id/Details/129230/pp-no-86-tahun-2019",
       "note": "Berlaku dengan perubahan PP 1/2026. Periksa teks yang telah disesuaikan untuk persyaratan keamanan pangan sesuai kegiatan dan komoditas.",
       "status": "amended",
@@ -1562,7 +1562,7 @@
       "tier": "pp",
       "ref": "PP 1/2026",
       "label": "Perubahan PP 86/2019 tentang Keamanan Pangan",
-      "sector": "cross",
+      "sector": "food",
       "source": "https://peraturan.bpk.go.id/Details/348700/pp-no-1-tahun-2026",
       "note": "Berlaku 5 Januari 2026, mengubah ketentuan PP 86/2019. Dasar terbaru untuk telaah keamanan pangan bersama PP induk serta aturan teknis.",
       "status": "amending_instrument",
@@ -1583,7 +1583,7 @@
       "tier": "agency",
       "ref": "Peraturan Bapanas 11/2025",
       "label": "Tata cara pengawasan ketersediaan dan/atau kecukupan pangan pokok",
-      "sector": "cross",
+      "sector": "food",
       "source": "https://peraturan.bpk.go.id/Details/339134/peraturan-bapanas-no-11-tahun-2025",
       "note": "Instrumen pengawasan ketersediaan dan kecukupan pangan pokok, mengacu antara lain UU 18/2012 dan PP 17/2015.",
       "status": "enacted",
@@ -1604,7 +1604,7 @@
       "tier": "agency",
       "ref": "Peraturan Bapanas 5/2025",
       "label": "Pengelolaan Sistem Distribusi Pangan",
-      "sector": "cross",
+      "sector": "food",
       "source": "https://jdih.badanpangan.go.id/doc/35b50d12-3688-4347-8190-3e2bfc490bd6",
       "note": "Instrumen distribusi pangan 2025; perlu diperiksa bersama PP 17/2015 dan ketentuan pengawasan pangan nasional dan lokal.",
       "status": "enacted",
@@ -1618,6 +1618,88 @@
       ],
       "enacted_date": "2025-07-02",
       "verified_at": "2026-10-19"
+    },
+    {
+      "id": "uu19farmers2013",
+      "tier": "uu",
+      "ref": "UU 19/2013",
+      "label": "Perlindungan dan Pemberdayaan Petani",
+      "sector": "food",
+      "source": "https://www.peraturan.go.id/files/uu19-2013bt.pdf",
+      "note": "Dokumen UU 19/2013 menjelaskan kerangka perlindungan dan pemberdayaan petani; status perubahan atau dampak UU Cipta Kerja harus diperiksa melalui konsolidasi JDIH.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "Pemerintah / Kementan / Pemda",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "petani",
+        "subsidi",
+        "pertanian",
+        "perlindungan"
+      ]
+    },
+    {
+      "id": "uu41land2009",
+      "tier": "uu",
+      "ref": "UU 41/2009",
+      "label": "Perlindungan Lahan Pertanian Pangan Berkelanjutan",
+      "sector": "food",
+      "source": "https://peraturan.go.id/files/uu41-2009.pdf",
+      "note": "Perlindungan lahan pangan dan kesesuaian tata ruang. Perubahan terbaru, aturan daerah, dan kewenangan pelaksanaan tetap perlu diverifikasi di JDIH.",
+      "status": "check_current",
+      "kind": "legislation",
+      "owner": "Pemerintah / ATR-BPN / Kementan / Pemda",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "lahan pertanian",
+        "lp2b",
+        "sawah",
+        "tata ruang"
+      ]
+    },
+    {
+      "id": "pp17food2015",
+      "tier": "pp",
+      "ref": "PP 17/2015",
+      "label": "Ketahanan Pangan dan Gizi",
+      "sector": "food",
+      "source": "https://peraturan.go.id/files/pp17-2015bt.pdf",
+      "note": "Regulasi tentang ketersediaan pangan, cadangan, distribusi dan gizi. Periksa status terkini dan hubungan dengan perangkat kebijakan BGN/Bapanas sebelum menarik kesimpulan hukum.",
+      "status": "check_current",
+      "kind": "implementing_regulation",
+      "owner": "Pemerintah / Bapanas / kementerian sektor",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "ketahanan pangan",
+        "cadangan pangan",
+        "gizi",
+        "distribusi"
+      ]
+    },
+    {
+      "id": "permentan19org2026",
+      "tier": "permen",
+      "ref": "Permentan 19/2026",
+      "label": "Perubahan Kedua atas Permentan 02/2025 tentang Organisasi dan Tata Kerja Kementerian Pertanian",
+      "sector": "food",
+      "source": "https://jdih.pertanian.go.id/peraturan/permentan-19-2026",
+      "note": "Ditetapkan 14 Oktober, diundangkan 15 Oktober 2026. JDIH Kementan mencatat berlaku saat ditinjau; dokumen ini perubahan organisasi, bukan instrumen baru penetapan cadangan atau harga komoditas.",
+      "status": "amending_instrument",
+      "kind": "ministerial_regulation",
+      "owner": "Kementerian Pertanian",
+      "evidence": "primary_official",
+      "region": "Indonesia",
+      "topics": [
+        "perubahan organisasi",
+        "pusdatin",
+        "pertanian",
+        "kewenangan",
+        "kelembagaan"
+      ],
+      "verified_at": "2026-10-20"
     }
   ],
   "edges": [
@@ -2275,6 +2357,36 @@
       "from": "uu18food2012",
       "to": "perban5food2025",
       "type": "implementation_context"
+    },
+    {
+      "from": "uud",
+      "to": "uu18food2012",
+      "type": "constitutional_context"
+    },
+    {
+      "from": "uud",
+      "to": "uu19farmers2013",
+      "type": "constitutional_context"
+    },
+    {
+      "from": "uud",
+      "to": "uu41land2009",
+      "type": "constitutional_context"
+    },
+    {
+      "from": "uu18food2012",
+      "to": "pp17food2015",
+      "type": "implementing_framework"
+    },
+    {
+      "from": "uu18food2012",
+      "to": "pp1food2026",
+      "type": "amendment_review_context"
+    },
+    {
+      "from": "uu41land2009",
+      "to": "permentan19org2026",
+      "type": "institutional_context_only"
     }
   ],
   "cases": [
