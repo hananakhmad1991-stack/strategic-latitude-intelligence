@@ -5,6 +5,8 @@ on:
     paths:
       - 'services/sli-user-intelligence/**'
       - 'js/sli-user-intelligence-client.js'
+      - 'js/sli-user-intelligence-qa.js'
+      - 'sli-user-intelligence-qa.html'
       - 'css/sli-user-intelligence.css'
       - 'config/sli-user-intelligence.json'
       - 'sli-issuer.html'
@@ -15,6 +17,8 @@ on:
     paths:
       - 'services/sli-user-intelligence/**'
       - 'js/sli-user-intelligence-client.js'
+      - 'js/sli-user-intelligence-qa.js'
+      - 'sli-user-intelligence-qa.html'
       - 'config/sli-user-intelligence.json'
       - '.github/workflows/sli-user-intelligence-security.yml'
 
@@ -40,6 +44,7 @@ jobs:
           node --check services/sli-user-intelligence/src/matcher.mjs
           node --check services/sli-user-intelligence/src/index.mjs
           node --check js/sli-user-intelligence-client.js
+          node --check js/sli-user-intelligence-qa.js
           node --test services/sli-user-intelligence/tests/*.test.mjs
           python services/sli-user-intelligence/tests/test_migration.py
       - name: Ensure production gate is still disabled until auth and D1 are configured
