@@ -1,0 +1,38 @@
+name: SLI Company Monitor Provenance QA
+
+on:
+  pull_request:
+    paths:
+      - 'js/sli-company-monitor.js'
+      - 'data/sli-idx-issuer-universe.json'
+      - 'data/sli-corporate-group-registry.json'
+      - 'data/sli-project-registry.json'
+      - 'data/sli-corporate-evidence-relationships.json'
+      - 'tests/company-monitor-provenance.cjs'
+      - 'sli-issuer.html'
+      - 'sli-decision-terminal.html'
+      - 'css/sli-company-monitor.css'
+      - '.github/workflows/company-monitor-provenance-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'js/sli-company-monitor.js'
+      - 'data/sli-idx-issuer-universe.json'
+      - 'data/sli-corporate-group-registry.json'
+      - 'data/sli-project-registry.json'
+      - 'data/sli-corporate-evidence-relationships.json'
+      - 'tests/company-monitor-provenance.cjs'
+      - '.github/workflows/company-monitor-provenance-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  provenance:
+    name: Verify sourced company/project joins
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate source-attributed joins
+        run: node tests/company-monitor-provenance.cjs
