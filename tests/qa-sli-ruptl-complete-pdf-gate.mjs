@@ -18,3 +18,9 @@ test("Never convert keyword-only page leads to commissioned assets",()=>{
  assert.match(code,/source_transfer_incomplete_no_project_annex_verified/);
  assert.match(code,/if not is_complete:/);
 });
+
+test("RUPTL retry includes official-domain migrated Gatrik storage candidate, never auto-accepts candidate host",()=>{
+ assert.match(code,/gatrik\.esdm\.go\.id\/gatrik\/gatrik-api\/storage\/migrasi\/download_index\/files\/b967d/);
+ assert.match(code,/with fitz\.open\(str\(DOCUMENT\)\) as integrity_doc/);
+ assert.match(code,/if not is_complete:/);
+});
