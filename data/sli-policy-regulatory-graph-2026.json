@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-20-official-jdih-cross-region-wave4",
+  "version": "2026-10-20-cross-region-fiscal-regulations-wave5",
   "updated_at": "2026-10-20",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -72,7 +72,7 @@
     "source_update_policy": "Automated JDIH/news monitoring creates review candidates; enactment, amendment, repeal and jurisdiction are not automatically legally determined from a news headline or page fingerprint. Expansion 20 Oct 2026: 23 source-linked nationally relevant instruments incl. 2026 amendments; links to official JDIH BPK records do not by themselves certify full consolidated current text, MK jurisprudence or future updates. New legal records must distinguish true law, agency rule, administrative decision and proposal. OJK 2026 consultation to revise POJK 51/2017 is NOT an enacted amendment; avoid false positive status changes.",
     "regional_coverage_detail": "Wilayah pada setiap instrumen adalah cakupan administratif asal/otoritas, bukan penetapan bahwa izin atau aturan tersebut diterapkan persis demikian pada setiap proyek. Pemilihan lokasi proyek perlu kajian RTRW, RDTR, KKPR, Perda serta kewenangan lokal. Four individual South Sulawesi Perda source records entered 20 October 2026: RTRW, RPPLH, provincial food reserve, and regional taxation.",
     "legal_status_explanation": "Berlaku dengan perubahan is NOT the same as repealed. Histories distinguish amendment, partial repeal and entire repeal; verified legal links carry source and date. Future source discoveries stay pending until official text reviewed.",
-    "regulatory_topic_coverage": "Extended digital (ITE/PSTE/SPBE/PMSE 2026), food (Bapanas/CPP), regional fiscal, investment, mining authority, tax/carbon and finance/P2SK 2026. Discovery is continuously incomplete, including most Perda. Wave 4: source-identified cyber/IIV rules, sustainable finance, PSN and 2023–26 provincial/city RTRW, food, investment and mineral area decisions. Older superseded regional RTRW remains visible as archive."
+    "regulatory_topic_coverage": "Extended digital (ITE/PSTE/SPBE/PMSE 2026), food (Bapanas/CPP), regional fiscal, investment, mining authority, tax/carbon and finance/P2SK 2026. Discovery is continuously incomplete, including most Perda. Wave 4: source-identified cyber/IIV rules, sustainable finance, PSN and 2023–26 provincial/city RTRW, food, investment and mineral area decisions. Older superseded regional RTRW remains visible as archive. Wave 5: explicit PP 35/2023 supersession of PP 10/2021; official 2026 Bengkulu provincial tax amendment properly linked to Perda 7/2023."
   },
   "nodes": [
     {
@@ -2439,6 +2439,74 @@
       "source_checked_at": "2026-10-20",
       "document_date": "2026-02-12",
       "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "pp35hkpd2023",
+      "tier": "pp",
+      "ref": "PP 35/2023",
+      "label": "Ketentuan Umum Pajak Daerah dan Retribusi Daerah",
+      "sector": "cross",
+      "source": "https://jdih.kemenkeu.go.id/dok/pp-35-tahun-2023/view",
+      "note": "Peraturan pelaksanaan fiskal daerah menurut UU HKPD; pada JDIH Kemenkeu mencabut PP 10/2021, PP 55/2016 dan PP 97/2012. Penerapan tarif dan objek tetap bergantung pada Perda yang relevan.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "region": "Indonesia",
+      "evidence": "official_jdih_individual_record_and_legislative_history",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2023-06-16",
+      "verification_scope": "law identity and explicit amendment metadata; text consolidation and future amendments require separate verification"
+    },
+    {
+      "id": "pp10pdrdold2021",
+      "tier": "pp",
+      "ref": "PP 10/2021",
+      "label": "Pajak Daerah dan Retribusi Daerah dalam Rangka Mendukung Kemudahan Berusaha (arsip)",
+      "sector": "cross",
+      "source": "https://jdih.kemenkeu.go.id/dok/pp-10-tahun-2021/files",
+      "note": "Dicabut PP 35/2023 menurut riwayat resmi JDIH Kemenkeu; tidak boleh dijadikan dasar perizinan atau insentif saat ini.",
+      "status": "repealed",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "region": "Indonesia",
+      "evidence": "official_jdih_individual_record_and_legislative_history",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2021",
+      "verification_scope": "law identity and explicit amendment metadata; text consolidation and future amendments require separate verification"
+    },
+    {
+      "id": "perda_bengkulu_pdrd2023",
+      "tier": "perda",
+      "ref": "Perda Bengkulu 7/2023",
+      "label": "Pajak Daerah dan Retribusi Daerah Provinsi Bengkulu",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/282127/perda-prov-bengkulu-no-7-tahun-2023",
+      "note": "Aturan dasar PDRD Bengkulu; telah diubah melalui Perda Bengkulu 1/2026. Perlu baca teks perubahan dan lampiran tarif, bukan mengandalkan versi 2023 tanpa konsolidasi.",
+      "status": "amended",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Bengkulu",
+      "region": "Bengkulu",
+      "evidence": "official_jdih_individual_record_and_legislative_history",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2023-12-29",
+      "verification_scope": "law identity and explicit amendment metadata; text consolidation and future amendments require separate verification"
+    },
+    {
+      "id": "perda_bengkulu_pdrd2026",
+      "tier": "perda",
+      "ref": "Perda Bengkulu 1/2026",
+      "label": "Perubahan atas Perda Bengkulu 7/2023 tentang Pajak Daerah dan Retribusi Daerah",
+      "sector": "cross",
+      "source": "https://jdih.bengkuluprov.go.id/produk-hukum/peraturan-daerah-provinsi-bengkulu-nomor-1-tahun-2026-tentang-perubahan-atas-peraturan-daerah-provinsi-bengkulu-nomor-7--410000",
+      "note": "JDIH Bengkulu mengonfirmasi diundangkan 1 April 2026 dan MENGUBAH Perda 7/2023. Ini bukan pencabutan total Perda dasar.",
+      "status": "amending_instrument",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Bengkulu",
+      "region": "Bengkulu",
+      "evidence": "official_jdih_individual_record_and_legislative_history",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2026-04-01",
+      "verification_scope": "law identity and explicit amendment metadata; text consolidation and future amendments require separate verification"
     }
   ],
   "edges": [
@@ -3406,6 +3474,31 @@
       "from": "uu4minerba",
       "to": "kepmen88papuabaratdaya2026",
       "type": "administrative_mining_area_context"
+    },
+    {
+      "from": "uu1hkpd2022",
+      "to": "pp35hkpd2023",
+      "type": "implements"
+    },
+    {
+      "from": "pp35hkpd2023",
+      "to": "pp10pdrdold2021",
+      "type": "repeals"
+    },
+    {
+      "from": "uu1hkpd2022",
+      "to": "perda_bengkulu_pdrd2023",
+      "type": "regional_fiscal_implementation_context"
+    },
+    {
+      "from": "perda_bengkulu_pdrd2023",
+      "to": "perda_bengkulu_pdrd2026",
+      "type": "amended_by"
+    },
+    {
+      "from": "pp35hkpd2023",
+      "to": "perda_bengkulu_pdrd2023",
+      "type": "regional_fiscal_implementation_context"
     }
   ],
   "cases": [
