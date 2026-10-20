@@ -1,7 +1,7 @@
 {
   "schema": "sli-legal-coverage-register-v1",
-  "updated_at": "2026-10-19",
-  "description": "Coverage and source discovery status for 38 provinces, NOT a claim of current regulation completeness.",
+  "updated_at": "2026-10-20",
+  "description": "38 province coverage/source discovery matrix, NOT complete regional regulation corpus. Expanded 20 Oct 2026 with 6 additional officially located provincial legal portals; only 4 distinct Sulsel Perda added as individually reviewed records.",
   "regional_document_types": [
     "Perda Provinsi",
     "Pergub",
@@ -55,8 +55,8 @@
     {
       "id": "prov_04",
       "name": "Riau",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.riau.go.id/peraturan/19/peraturan-daerah.html",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
       "verification_scope": "portal_directory_only_not_rule_text"
     },
@@ -135,8 +135,8 @@
     {
       "id": "prov_14",
       "name": "DI Yogyakarta",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih-dprd-diy.jogjaprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
       "verification_scope": "portal_directory_only_not_rule_text"
     },
@@ -151,8 +151,8 @@
     {
       "id": "prov_16",
       "name": "Banten",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.bantenprov.go.id/produkhukum/peraturan-daerah-provinsi?page=1",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
       "verification_scope": "portal_directory_only_not_rule_text"
     },
@@ -167,8 +167,8 @@
     {
       "id": "prov_18",
       "name": "Nusa Tenggara Barat",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.ntbprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
       "verification_scope": "portal_directory_only_not_rule_text"
     },
@@ -183,8 +183,8 @@
     {
       "id": "prov_20",
       "name": "Kalimantan Barat",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.kalbarprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
       "verification_scope": "portal_directory_only_not_rule_text"
     },
@@ -239,10 +239,10 @@
     {
       "id": "prov_27",
       "name": "Sulawesi Selatan",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.sulselprov.go.id/dokumen/bentuk/2/peraturan-daerah-provinsi",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "portal_confirmed_four_individual_regulations_in_legal_graph"
     },
     {
       "id": "prov_28",
