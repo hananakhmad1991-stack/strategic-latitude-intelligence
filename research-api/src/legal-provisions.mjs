@@ -7,12 +7,12 @@ import graph from "../../data/sli-policy-regulatory-graph-2026.json";
 
 const norm=s=>String(s||"").normalize("NFKD").toLowerCase()
   .replace(/[^a-z0-9]+/g," ").replace(/\s+/g," ").trim();
-const officialHosts=new Set(["peraturan.go.id","www.peraturan.go.id"]);
+const officialHosts=new Set(["peraturan.go.id","www.peraturan.go.id","peraturan.bpk.go.id","jdih.tanjungpinangkota.go.id"]);
 const cleanRef=s=>norm(s).replace(/\b(?:nomor|no|tahun)\b/g,"").replace(/\s+/g," ").trim();
 const refMatches=(q,ref)=>q.includes(cleanRef(ref)) ||
   // Both "UU No. 27 Tahun 2022" and "UU 27/2022" are recognized.
   new RegExp("\\b"+cleanRef(ref).split(" ").join("(?:\\s+|\\s*(?:no|nomor|tahun)\\s*)")+"\\b","i").test(q);
-const explicitLaws=q=>[...q.matchAll(/\b(uu|pp)\s*(?:(?:nomor|no)\s*)?(\d{1,3})\s*(?:tahun\s*)?(?:\/|\-|\s+)(\d{4})\b/gi)]
+const explicitLaws=q=>[...q.matchAll(/\b(uu|pp|perpres)\s*(?:(?:nomor|no)\s*)?(\d{1,3})\s*(?:tahun\s*)?(?:\/|\-|\s+)(\d{4})\b/gi)]
   .map(m=>m[1].toLowerCase()+" "+m[2]+" "+m[3]);
 const articleNumbers=q=>[...q.matchAll(/\b(?:pasal|article)\s+(\d{1,3}[a-z]?)\b/gi)].map(m=>m[1].toLowerCase());
 function sourceValid(record){
