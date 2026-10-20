@@ -55,9 +55,9 @@ function relevance(signal,ctx){
     return {level:"project",explain:"project-name-in-headline-plus-documentary-participation"};
   }
  }
- if((signal.type==="project-update"||signal.type==="project-added")&&ctx.projects.some(x=>x.project.id===signal.projectId))
+ if(["project-update","project-added","project-record"].includes(signal.type)&&ctx.projects.some(x=>x.project.id===signal.projectId))
   return {level:"project",explain:"exact-participation-register"};
- if(signal.type==="law-update"||signal.type==="law-added")
+ if(["law-update","law-added","law-record"].includes(signal.type))
   return {level:"sector",explain:"sector-regulation-only"};
  return {level:"sector",explain:"sector-context-only"};
 }
@@ -109,6 +109,15 @@ function baselineMerge(old,data){
   if(data[source])next[key]=s[key];
  return next;
 }
+function baselineRecords(data){
+ const projects=(data.projects?.records||[]).filter(p=>p.id&&sourceUrl(p.source_url)).map(p=>({
+  id:"project-record:"+p.id,type:"project-record",projectId:p.id,stamp:p.evidence_date||data.projects.as_of,preview:true
+ }));
+ const laws=(data.laws?.nodes||[]).filter(x=>x.id&&x.kind!=="tier_marker"&&sourceUrl(x.source)).map(n=>({
+  id:"law-record:"+n.id,type:"law-record",lawId:n.id,stamp:n.verified_at||data.laws.updated_at,preview:true
+ }));
+ return [...projects,...laws];
+}
 function eventsFromNews(data){
  return (data.news?.articles||[]).filter(a=>a.id&&sourceUrl(a.url)).slice(0,320)
  .map(a=>({id:"news:"+a.id,type:"news",recordId:a.id,stamp:a.published_at_utc,preview:true}));
@@ -121,13 +130,13 @@ function materialize(entry,data){
    sector:n.sector||"",note:n.topic||"",dateType:n.date_type||"publisher_publication_date",
    verified:false,mode:"publisher_headline_metadata"};
  }
- if(entry.type==="project-update"||entry.type==="project-added"){
+ if(["project-update","project-added","project-record"].includes(entry.type)){
   const p=(data.projects?.records||[]).find(x=>x.id===entry.projectId);
   if(!p||!sourceUrl(p.source_url))return null;
   return {...entry,title:p.name,url:p.source_url,sector:projectSector(p.sector),publisher:"SLI · project registry",
    note:p.verification_class||p.status_note||"",dateType:"source_registry_snapshot",verified:false,stage:p.stage,region:p.region||""};
  }
- if(entry.type==="law-update"||entry.type==="law-added"){
+ if(["law-update","law-added","law-record"].includes(entry.type)){
   const n=(data.laws?.nodes||[]).find(x=>x.id===entry.lawId);
   if(!n||!sourceUrl(n.source))return null;
   return {...entry,title:n.ref+" · "+n.label,url:n.source,sector:n.sector||"cross",
@@ -157,10 +166,10 @@ function researchPrompt(row,selected){
   "Tampilkan apa yang berubah, kapan, status verifikasi, pihak yang disebut langsung, implikasi bersyarat dan pertanyaan lanjutan."
  ].join(" ");
 }
-let data={},log=[],storage=null,ready=false,busy=false,selected="",scope="context",kind="all",since=false,focusId="",inited=false,lastChecked="";
+let data={},log=[],storage=null,ready=false,busy=false,scope="context",kind="all",since=false,query="",focusId="",inited=false,lastChecked="";
 function currentTicker(){
  const root=$(ROOT),fromTerminal=root?.dataset.mode==="terminal";
- if(fromTerminal)return window.SLIDecisionTerminal?.getSelection?.()||"";
+ if(fromTerminal)return window.SLIDecisionTerminal?.getContext?.().issuer?.ticker||"";
  const x=new URLSearchParams(location.search).get("ticker")||"";
  return /^[A-Z0-9]{4}$/.test(x.toUpperCase())?x.toUpperCase():"";
 }
@@ -181,9 +190,16 @@ function viewItems(){
  const contexts=codes.map(t=>buildContext(data,t)).filter(Boolean);
  const merged=new Map();
  // Current news are displayed as INDEXED reports, regardless of prior browser baseline.
- for(const item of eventsFromNews(data)){const full=materialize(item,data);if(full)merged.set(item.id,full)}
+ for(const item of [...eventsFromNews(data),...baselineRecords(data)]){
+  const full=materialize(item,data);if(full)merged.set(item.id,full);
+ }
  for(const item of log){const full=materialize(item,data);if(full)merged.set(item.id,{...full,preview:false})}
- let rows=[...merged.values()].filter(x=>kind==="all"||(kind==="changes"?x.type!=="news":x.type===kind));
+ let rows=[...merged.values()].filter(x=>kind==="all"||
+  (kind==="changes"?["project-update","project-added","law-update","law-added"].includes(x.type):
+   kind==="projects"?x.type.startsWith("project"):
+   kind==="laws"?x.type.startsWith("law"):x.type===kind));
+ const needle=norm(query);
+ if(needle)rows=rows.filter(x=>norm([x.title,x.note,x.region,x.sector,x.publisher].join(" ")).includes(needle));
  if(since)rows=rows.filter(x=>log.some(e=>e.id===x.id)&&!(storage?.read||[]).includes(x.id));
  if(scope==="watch"&&!contexts.length)return [];
  rows=rows.map(x=>{
@@ -199,7 +215,8 @@ function viewItems(){
   }
   return true;
  });
- const weight=x=>x.type==="news"?(x.matched.best.level==="named"?3:x.matched.best.level==="project"?2:1):4;
+ const weight=x=>x.type==="news"?(x.matched.best.level==="named"?3:x.matched.best.level==="project"?2:1):
+ (x.type==="project-update"||x.type==="law-update")?5:(x.type==="project-added"||x.type==="law-added")?4:0;
  return rows.sort((a,b)=>Number(b.unread)-Number(a.unread)||weight(b)-weight(a)||
  String(b.stamp||"").localeCompare(String(a.stamp||""))).slice(0,80);
 }
@@ -212,6 +229,8 @@ function label(row){
  if(row.type==="project-update")return T("PROJECT REGISTER CHANGE","PERUBAHAN REGISTRI PROYEK");
  if(row.type==="project-added")return T("Added to project index","Ditambahkan ke indeks proyek");
  if(row.type==="law-update")return T("REGULATORY INDEX CHANGE","PERUBAHAN INDEKS REGULASI");
+ if(row.type==="project-record")return T("Recorded project · baseline","Proyek tercatat · baseline");
+ if(row.type==="law-record")return T("Regulation record · baseline","Catatan regulasi · baseline");
  return T("Added to regulatory index","Ditambahkan ke indeks regulasi");
 }
 function describe(row){
@@ -222,6 +241,9 @@ function describe(row){
  if(row.type==="project-added"||row.type==="law-added")
   return T("First detected in the published SLI index, not necessarily newly announced in the world.",
    "Baru terdeteksi dalam indeks SLI, belum tentu baru diumumkan di dunia nyata.");
+ if(row.type==="project-record"||row.type==="law-record")return T(
+  "Dated entry from SLI's source registry. No historical change is claimed; verify present-day status using the original source.",
+  "Catatan bertanggal dalam registri SLI. Tidak ada klaim perubahan historis; periksa status terkini pada dokumen sumber.");
  return T("Publisher reported this headline; its underlying claims were not independently corroborated by SLI.",
   "Media menerbitkan judul tersebut; klaim di dalamnya belum diverifikasi secara independen oleh SLI.");
 }
@@ -287,12 +309,26 @@ function render(){
   ["context","Selected company/sector","Emiten/sektor terpilih"],["watch","Local ticker watchlist","Watchlist ticker lokal"],["all","All published signals","Semua sinyal terindeks"]
  ],scope,x=>scope=x));
  bar.append(selectBox(T("Signal type","Jenis sinyal"),[
-  ["all","News & index changes","Berita & perubahan indeks"],["news","Attributed headlines","Judul berita teratribusi"],["changes","Project & legal index changes","Perubahan indeks proyek & hukum"]
+  ["all","News & index changes","Berita & perubahan indeks"],["news","Attributed headlines","Judul berita teratribusi"],["changes","Detected changes only","Hanya perubahan terdeteksi"],
+  ["projects","Project records & changes","Catatan dan perubahan proyek"],
+  ["laws","Regulations & changes","Regulasi dan perubahannya"]
  ],kind,x=>kind=x));
+ const finder=E("label","sli-ca-control sli-ca-query");
+ finder.append(E("span",null,T("Project, province, regulation or topic","Proyek, provinsi, regulasi atau topik")));
+ const search=E("input");search.type="search";search.value=query;search.maxLength=140;
+ search.placeholder=T("e.g. Morowali, West Java, nickel, Paris","cth. Morowali, Jawa Barat, nikel, Paris");
+ search.addEventListener("input",()=>{query=search.value.trim();updateResults()});
+ finder.append(search);bar.append(finder);
  const only=E("label","sli-ca-only");const check=E("input");check.type="checkbox";check.checked=since;
  check.addEventListener("change",()=>{since=check.checked;render()});
  only.append(check,E("span",null,T("New since browser baseline","Baru sejak baseline browser")));bar.append(only);
  host.append(bar);
+ const region=E("div","sli-ca-results");region.id="sliCatalystResults";host.append(region);
+ renderResults(region);
+}
+function updateResults(){const region=$("sliCatalystResults");if(region)renderResults(region)}
+function renderResults(host){
+ host.replaceChildren();
  const rows=viewItems(),unread=rows.filter(x=>x.unread).length;
  const summary=E("p","sli-ca-summary",rows.length+" "+T("matching signals","sinyal sesuai")+
  " · "+unread+" "+T("unread changes since local baseline","perubahan belum dibaca sejak baseline lokal")+
@@ -314,6 +350,11 @@ function render(){
   top.append(E("small",null,label(row)));
   if(row.unread)top.append(E("small","sli-ca-unread",T("NEW IN INDEX","BARU DI INDEKS")));
   btn.append(top,E("strong",null,row.title),E("small","sli-ca-time",fmtStamp(row.stamp)+" · "+(row.sector||"cross")));
+ const relation=row.matched.best.level;
+ if(row.matched.tickers.length)btn.append(E("small","sli-ca-relation",relation==="named"?
+   T("Company named in headline","Perusahaan disebut di judul"):relation==="project"?
+   T("Project participant in register","Partisipasi proyek tercatat"):
+   T("Sector context only","Konteks sektor saja")));
   btn.addEventListener("click",()=>{focusId=row.id;markRead(row.id)});list.append(btn);
  }
  if(rows.length>40)list.append(E("p","sli-ca-foot",T("Top 40 shown; refine filters.","Menampilkan 40 teratas; persempit filter.")));
