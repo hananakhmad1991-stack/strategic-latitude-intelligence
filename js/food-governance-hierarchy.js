@@ -121,7 +121,11 @@ function profile(panel,db){
   item.related.forEach(id=>{const x=db.nodes.find(n=>n.id===id);if(x)related.append(button(T(x.name,x.en)+" ↗","fa-gvn-related-btn",()=>{state.group="all";state.issue="all";state.query="";state.selected=id;window.SLIFoodGovernance.render()}))});
   target.append(related);
  }
- target.append(E("h4",null,T("Rujukan dan bukti primer","Primary institutional references")));
+ const cross=E("div","fa-gvn-crosslinks");
+ for(const [idText,enText,href]of [["Berita pangan ↗","Food news ↗","./sli-sector-news.html?sector=food"],["Regulasi pangan ↗","Food regulations ↗","./policy-regulatory-intelligence.html"],["Research AI ↗","Research AI ↗","./sli-research-ai.html?prompt="+encodeURIComponent(T("Bandingkan mandat "+item.name+" dengan statistik pangan resmi, kebijakan dan berita teratribusi.","Compare the mandate of "+item.en+" against official food statistics, policies and attributed news."))]]){
+  const a=E("a",null,T(idText,enText));a.href=href;cross.append(a);
+ }
+ target.append(E("h4",null,T("Hubungkan analisis SLI","Linked SLI analysis")),cross,E("h4",null,T("Rujukan dan bukti primer","Primary institutional references")));
  const refs=E("div","fa-gvn-sources");
  (item.sources||[]).forEach((s,i)=>refs.append(A(s.url,(s.label||T("Dokumen resmi","Official document"))+" ↗")));
  if(item.leaderSource)refs.append(A(item.leaderSource,T("Sumber pimpinan bertanggal ↗","Dated officeholder source ↗")));
