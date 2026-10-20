@@ -32,7 +32,8 @@ const watchThemes={
  food:[["Supply and weather","Pasokan & cuaca"],["Import and trade rules","Aturan impor & perdagangan"],["Fertilizer and logistics","Pupuk & logistik"]],
  infrastructure:[["Construction status","Status pembangunan"],["Public procurement & permits","Pengadaan & perizinan"],["Power and materials","Energi & material"]],
  transport:[["Fuel and freight markets","Harga energi & angkutan"],["Port and trade flows","Pelabuhan & arus dagang"],["Operational and policy shifts","Perubahan operasi & kebijakan"]],
- manufacturing:[["Input commodity prices","Harga bahan baku"],["Energy and logistics","Energi & logistik"],["Industrial and trade rules","Aturan industri & perdagangan"]]
+ manufacturing:[["Input commodity prices","Harga bahan baku"],["Energy and logistics","Energi & logistik"],["Industrial and trade rules","Aturan industri & perdagangan"]],
+ finance:[["Sector financing and interest rates","Pembiayaan sektor dan suku bunga"],["Investment and project disclosures","Keterbukaan investasi dan proyek"],["Governance and compliance","Tata kelola dan kepatuhan"]]
 };
 let cache=null,pending=null,lastTicker="",activeProjectId="";
 const readJSON=path=>fetch(path,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(path+" HTTP "+r.status);return r.json()});
@@ -194,6 +195,7 @@ function render(){
    T("Reported relationship: ","Hubungan yang dilaporkan: ")+(r.row.relationship||"unspecified")+" · "+(r.row.source_date||"undated")));
   if(r.parent){
    cell.append(E("p",null,T("Parent node in SLI registry: ","Simpul induk dalam registri SLI: ")+r.parent.name));
+   if(safe(r.parent.source_url))cell.append(link(r.parent.source_url,T("Parent source ↗","Sumber induk ↗")));
   }
   if(r.children.length)cell.append(E("p",null,T("Directly linked nodes: ","Simpul turunan terkait: ")+r.children.slice(0,5).map(x=>x.name).join("; ")));
   cell.append(link(r.row.source_url,T("Corporate register source ↗","Sumber registri korporasi ↗")));
@@ -213,7 +215,9 @@ function render(){
  }
  const routes=E("div","sli-cm-sources");
  const dash=E("a","sli-cm-link",T("Sector dashboard →","Dashboard sektor →"));dash.href=sectorRoute[record.sector]||"./index.html#overview";
- const term=E("a","sli-cm-link",T("Decision Terminal →","Decision Terminal →"));term.href="./sli-decision-terminal.html?ticker="+encodeURIComponent(ticker);
+ const eligible=new Set(["energy","minerals","coal","food","technology","infrastructure","transport","manufacturing"]).has(record.sector);
+ const term=E("a","sli-cm-link",eligible?T("Decision Terminal →","Decision Terminal →"):T("Entity Intelligence →","Intelijen Entitas →"));
+ term.href=eligible?"./sli-decision-terminal.html?ticker="+encodeURIComponent(ticker):"./sli-entities.html";
  const research=E("a","sli-cm-link",T("Investigate with DERGUBA AI →","Riset dengan DERGUBA AI →"));
  const statement=T("Research ","Teliti ")+"IDX:"+ticker+" "+record.name+". "+T("Review source-dated project participation, corporate links, sector policies, commodities and reporting. Verify each cited document. Do not infer causality, company ownership or price effects from sector overlaps.",
  "Periksa partisipasi proyek bertanggal, hubungan korporasi, kebijakan, komoditas, dan pemberitaan sektoral dengan sumber. Jangan simpulkan sebab-akibat, kepemilikan, atau dampak harga dari kesamaan sektor.");
