@@ -76,7 +76,7 @@ test("Ticker search and group-tree jump preserve evidence status and avoid ficti
  const matches=walk(get('sliCgTree')).filter(n=>n.dataset?.issuerTicker);
  assert.equal(matches.length,1);
  assert.equal(matches[0].dataset.issuerTicker,'BREN');
- assert.ok(get('sliCgDossier').children.some(x=>String(x.textContent).includes('BREN')));
+ assert.ok(walk(get('sliCgDossier')).some(x=>String(x.textContent).includes('BREN')));
  const disclaimer=walk(get('sliCgDossier')).filter(n=>/direktori resmi|katalog kandidat/i.test(n.textContent||''));
  assert.ok(disclaimer.length>0,"Unverified catalogue must display provenance warning");
  search.value='';search.listeners.input({target:search});
