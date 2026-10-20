@@ -102,8 +102,25 @@ test("Find candidate untranslated page prose as transparent QA review queue",()=
   version:"2026-10-19",languages:["en","id"],scope:"Static HTML candidate audit; includes official/source text and EN-only fallback content",pages:rows.length,
   candidateCount:remaining,rows:rows.filter(x=>x.candidates>0).sort((a,b)=>b.candidates-a.candidates)
  },null,2)+"\n","utf8");
- assert.ok(remaining<=390,"New English copy exceeds reviewed screening budget; audit translations or adjust baseline with documented review");
+ assert.ok(remaining<=345,"New English/source-text candidates exceed the post-review budget (310 at 2026-10-20); inspect source headings, do not fake coverage");
+  for(const [page,ceiling] of [["sli-user-guide.html",35],["sli-glossary-methodology.html",30]]){
+    const found=rows.find(x=>x.page===page);
+    assert.ok(found&&found.candidates<=ceiling,"Priority bilingual guide/glossary content regressed: "+page);
+  }
  // Legacy content intentionally remains on the review queue; do not fake a
  // "100% translated" result or turn source titles into unaudited translations.
  assert.equal(rows.length,pages.length);
+});
+
+test("Curated Indonesian reader guidance preserves source dates and noncausality",()=>{
+ const entries=[
+  ["A practical guide to navigating Indonesia's strategic economy—from an executive big picture to verifiable provincial, sectoral and project evidence.","Panduan praktis menelusuri ekonomi strategis Indonesia, dari gambaran umum eksekutif hingga bukti provinsi, sektor, dan proyek yang dapat diverifikasi."],
+  ["The dashboard shows an empty chart or missing data","Dashboard menampilkan grafik kosong atau data yang tidak tersedia"],
+  ["Data measured in 2024 does not become 2026 output because the file was updated or rechecked in 2026. Show statistical period, issuer release, extraction or monitoring timestamp separately.","Data yang diukur pada 2024 tidak berubah menjadi hasil 2026 hanya karena berkas diperbarui atau diperiksa ulang pada 2026. Tampilkan periode statistik, tanggal publikasi, ekstraksi, dan waktu pemantauan secara terpisah."],
+  ["Missing/unknown values must remain empty, not zero. A stale page or inaccessible publisher cannot be treated as evidence of no change. Modelled projections require published assumptions and are not government outcomes.","Nilai yang hilang atau tidak diketahui harus tetap kosong, bukan nol. Halaman kedaluwarsa atau sumber penerbit yang tidak dapat diakses bukan bukti bahwa tidak ada perubahan. Proyeksi model memerlukan asumsi yang dinyatakan dan bukan hasil resmi pemerintah."]
+ ];
+ for(const [en,id] of entries){
+  assert.equal(runtime.translate(en,"id"),id,"Reader translation must be reviewed, not machine rewritten");
+  assert.equal(runtime.translate(en,"en"),en);
+ }
 });
