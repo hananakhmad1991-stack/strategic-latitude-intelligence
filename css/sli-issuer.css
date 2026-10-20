@@ -18,3 +18,18 @@
 .tradingview-widget-container{width:100%;height:480px;min-height:480px}.tradingview-widget-container__widget{height:460px;width:100%}.tradingview-widget-copyright{font-size:10px;padding:6px 2px;color:#adbccc}.tradingview-widget-copyright a{color:#e1c68d}
 @media(max-width:900px){.sli-issuer-content{grid-template-columns:1fr}.sli-issuer-shell{padding:92px 18px 30px}}
 @media(max-width:550px){.sli-issuer-facts{grid-template-columns:1fr}.sli-issuer-title h1{font-size:27px}}
+/* Source-owned historical IDX candles below the provider price quote. Dedicated
+   height avoids the collapsed/blank iframe issue seen with market widgets. */
+.sli-issuer-side{display:flex;flex-direction:column;gap:15px;align-self:start}
+.sli-issuer-tv .tradingview-widget-container{height:295px;min-height:295px}
+.sli-issuer-tv .tradingview-widget-container__widget{height:268px;min-height:268px;width:100%}
+.sli-issuer-history{background:#122d41;border:1px solid #516d81;border-radius:13px;min-width:0;padding:15px 16px 12px}
+.sli-issuer-history h3{font:400 clamp(19px,2vw,23px)/1.3 Georgia,serif!important;color:#f0d9ad;margin:3px 0 8px}
+.sli-issuer-history-intro{color:#b8cede;font-size:11px;line-height:1.65;margin:0 0 13px}
+.sli-issuer-history-frame{height:455px!important;min-height:455px!important;max-height:455px;width:100%;display:flex;flex-direction:column;background:#122d41;overflow:hidden;border:1px solid #324f66;border-radius:8px}
+.sli-issuer-history-frame>.tradingview-widget-container__widget{height:calc(100% - 27px);min-height:0;flex:1;width:100%}
+.sli-issuer-history-frame>.tradingview-widget-copyright{height:27px;flex:none;text-align:right;padding:6px 10px;font-size:10px}
+.sli-issuer-history-frame>.tradingview-widget-copyright a{color:#eac991;text-decoration:none}
+.sli-issuer-history-note{font-size:10px;line-height:1.65;color:#a9c0cf;margin:11px 1px 0}
+@media(max-width:900px){.sli-issuer-history-frame{height:460px!important;min-height:460px!important;max-height:460px}}
+@media(max-width:580px){.sli-issuer-history{padding:11px 9px}.sli-issuer-history-frame{height:365px!important;min-height:365px!important;max-height:365px}}
