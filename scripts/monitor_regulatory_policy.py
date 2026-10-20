@@ -6,6 +6,7 @@ import hashlib
 import json
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit, urlunsplit
 import requests
@@ -153,13 +154,30 @@ def main():
  # NEVER the legal conclusion that an instrument was amended or repealed.
  law_index={n["id"]:n for n in graph["nodes"]}
  watched={}
- for lawid in conf["watched_laws"]:
+ # Metadata checks are independent: bounded concurrency prevents large watches from
+ # exhausting the CI timeout. Output remains deterministic in watched_laws order.
+ # Each task uses its own requests.Session, avoiding shared mutable cookie state.
+ def fetch_law_detail(lawid):
   node=law_index.get(lawid)
-  if not node:continue
+  if node is None:return lawid,None,None,None
+  try:
+   with requests.Session() as client:
+    client.headers.update({"User-Agent":USER_AGENT,"Accept":"text/html,application/xhtml+xml"})
+    response=client.get(node["source"],timeout=(8,19),allow_redirects=True)
+    response.raise_for_status()
+    if len(response.content)>4_000_000:raise ValueError("HTML exceeds 4 MB")
+    if "pdf" in response.headers.get("content-type","").lower():raise ValueError("PDF response not HTML")
+    doc=BeautifulSoup(response.text,"html.parser")
+    if MAINTENANCE_PATTERN.search(clean(doc.get_text(" ",strip=True))[:3500]):raise ValueError("official portal in maintenance mode")
+    parsed=detail_digest(doc)
+    return lawid,node,parsed,(None if parsed else "Unreliable detail-page extraction")
+  except Exception as exc:
+   return lawid,node,None,f"{type(exc).__name__}: {str(exc)[:175]}"
+ with ThreadPoolExecutor(max_workers=8) as pool:
+  detailed=list(pool.map(fetch_law_detail,conf["watched_laws"]))
+ for lawid,node,parsed,err in detailed:
+  if node is None:continue
   old_item=legal_previous.get(lawid,{})
-  r,doc,err=get(node["source"])
-  parsed=detail_digest(doc) if not err else None
-  if not err and parsed is None:err="Unreliable detail-page extraction"
   current={"id":lawid,"reference":node["ref"],"source_url":node["source"],
            "health":"error" if err else "ok",
            "last_attempt_utc":now,
