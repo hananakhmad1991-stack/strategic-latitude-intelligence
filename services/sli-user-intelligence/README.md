@@ -48,3 +48,23 @@ CI checks authentication, D1 schema, cross-user access, no-old-events activation
 ## Next operational phases
 
 Cloudflare D1 Queues/batched fanout for larger audiences; real authenticated member plans/entitlements; email opt-in with verified address and unsubscribe; Web Push subscriptions/service-worker infrastructure; rate limiting and audit logging; retention and data-export tools. Do not claim these are enabled because of this commit.
+
+## Guided activation through GitHub Actions (added 20 Oct 2026)
+
+The exact workflow is [SLI Private User Backend — Manual Cloudflare Activation](../../.github/workflows/sli-user-intelligence-activate.yml). It has **no push/schedule trigger**. It never deploys automatically on merge.
+
+### Prerequisites that require the account owner
+
+Configure the GitHub Actions **environment** `sli-user-intelligence-production` and preferably add required reviewers. In that environment supply two encrypted secrets: `SLI_CF_ACCOUNT_ID` and a restricted `SLI_CF_API_TOKEN` (Cloudflare Workers deploy, D1 read/write, Access Apps and Policies read for the same account). Add four environment variables: `SLI_ACCESS_ISSUER` (https://TEAM.cloudflareaccess.com), `SLI_ACCESS_AUD` (Access app audience), `SLI_API_HOSTNAME` (dedicated private hostname in a Cloudflare-managed zone), and `SLI_D1_DATABASE_ID` (existing private D1 UUID). **Never paste these secrets into this repository, public issues, chat, or browser localStorage.**
+
+1. In Cloudflare Zero Trust, create a separate **self-hosted Access application** for the exact API hostname with an Allow policy restricted to authorized subscribers. Do not create a Bypass policy or public `/api` exception. Keep all `workers.dev` and preview URLs disabled. The runner verifies this via Cloudflare's Access API before any deployment.
+2. Configure Access **CORS** for only `https://hananakhmad1991-stack.github.io`, allow credentialed requests, methods GET/PUT/POST/DELETE/OPTIONS, and header Content-Type. Configure either *Bypass OPTIONS requests to origin* or an equivalent Access-managed preflight response; the Worker itself already validates the allowed origin. See [Cloudflare Access CORS instructions](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/). A preflight 403 will block cross-origin `PUT /api/preferences` regardless of a successful login.
+3. Create the D1 database if not yet created. Use the real UUID in GitHub environment variables. GitHub runner will apply migrations only after the owner selects deploy; it will not automatically create accounts or production databases.
+4. Open GitHub → **Actions** → **SLI Private User Backend — Manual Cloudflare Activation** → **Run workflow** with `mode=verify`. This makes read-only Cloudflare API calls and runs automated tests. It will fail closed if apps, CORS, bypass policies, or D1 IDs cannot be verified.
+5. Only when verify is green, select `mode=deploy` and enter the exact confirmation `DEPLOY_PRIVATE_SLI`. With approval from the protected GitHub environment (if configured), this performs remote D1 migration, deploys the Worker on the configured **exact custom domain**, then checks that anonymous users are blocked and that Access CORS permits the GitHub Pages origin. No real API token is committed to code.
+6. Keep `config/sli-user-intelligence.json` **disabled** after deployment until you complete live tests: sign in through Access, `GET /api/me`, save and retrieve watchlist from two devices, verify two distinct users' inbox isolation, mark notifications read, test logout/relogin, and verify Account DELETE. Confirm Chrome/Firefox/Safari cross-site cookie behavior. **A cross-origin Access cookie may be blocked by browser third-party-cookie policy**. Prefer a same-site SLI custom domain when needed rather than disabling auth or widening CORS.
+7. Once all end-to-end tests pass, enable the static client with the approved protected hostname, with a new reviewed PR. Do not set `enabled=true` automatically from the deployment workflow. Recheck at least two scheduled deliveries and their error logs; the first cron pass only initializes the activation baseline.
+
+### Operational boundaries
+
+The *verify* mode only inspects Cloudflare account configuration and runs tests. *Deploy* changes the private Worker and D1, but never activates email/push or paid memberships, never publishes user data, and does not change the static client flag. A test green in GitHub Actions is **not** evidence that a customer's browser session, CORS cookie, or GitHub Pages deployment has been validated. The account owner controls Cloudflare tokens, DNS/Access policies, D1, and production approval.
