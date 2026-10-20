@@ -75,6 +75,7 @@ export function markdownBlocks(md){
 export function makeResearchReport({answer,sources=[],language="id",title=null,charts=[],generatedAt=null}={}){
  const lang=language==="en"?"en":"id",refs=bibliographyReport(answer,sources);
  const body=markdownBlocks(substituteCitations(answer,refs.references)),chartBlocks=[];
+ if(title&&body[0]?.type==="h1"&&plain(body[0].text).toLowerCase()===plain(title).toLowerCase())body.shift();
  for(const ch of (Array.isArray(charts)?charts:[]).slice(0,12)){
   const points=Array.isArray(ch?.points)?ch.points:[];if(!points.length)continue;
   chartBlocks.push({type:"h3",text:trim(ch.title)||"Data"});
