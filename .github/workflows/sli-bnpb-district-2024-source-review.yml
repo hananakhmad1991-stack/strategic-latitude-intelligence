@@ -1,0 +1,40 @@
+name: SLI BNPB 2024 District Evidence Review
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/fetch_bnpb_2024_district_disasters.py'
+      - '.github/workflows/sli-bnpb-district-2024-source-review.yml'
+permissions:
+  contents: read
+jobs:
+  collect-official-district-2024:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve district disaster counts from official BNPB CKAN
+        run: python3 scripts/fetch_bnpb_2024_district_disasters.py
+      - name: Validate candidate before human source promotion
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("artifacts/sli-bnpb-district-2024-review.json").read_text())
+          assert d["year"]==2024 and 450<=d["district_count"]<=750
+          assert len({row["admin_code"] for row in d["records"]})==d["district_count"]
+          assert d["status"].endswith("pending_data_editor_review")
+          for field in ("flood_events","wildfire_events","landslide_events"):
+              seen=[row[field] for row in d["records"] if row[field] is not None]
+              assert len(seen)>=350,field
+              assert all(type(v) is int and v>=0 for v in seen)
+          print("BNPB_DISTRICT_SCHEMA_CHECK_OK",d["district_count"])
+          PY
+      - name: Upload review-only official district figures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-bnpb-2024-district-review-only
+          path: artifacts/sli-bnpb-district-2024-review.json
+          if-no-files-found: warn
+          retention-days: 15
