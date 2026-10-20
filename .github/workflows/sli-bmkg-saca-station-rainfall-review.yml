@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'scripts/audit_bmkg_saca_rr_station.py'
+      - 'scripts/verify_bmkg_station_quality_aggregation.py'
+      - 'data/sli-bmkg-cengkareng-historical-rainfall.json'
       - '.github/workflows/sli-bmkg-saca-station-rainfall-review.yml'
 permissions:
   contents: read
@@ -17,6 +19,10 @@ jobs:
         run: python3 -m py_compile scripts/audit_bmkg_saca_rr_station.py
       - name: Read official station ID and precipitation ZIP (review only)
         run: python3 scripts/audit_bmkg_saca_rr_station.py
+      - name: Verify historical published data against all original Q0 observations
+        run: |
+          python3 -m py_compile scripts/verify_bmkg_station_quality_aggregation.py
+          python3 scripts/verify_bmkg_station_quality_aggregation.py
       - name: Store date-bounded review candidate, not a current hazard reading
         if: always()
         uses: actions/upload-artifact@v4
