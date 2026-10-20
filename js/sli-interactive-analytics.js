@@ -18,7 +18,7 @@ function render(){if(!db)return;const q=current(),data=db.provinces.map(p=>({p,v
   const all=db.provinces.map(p=>({name:p.name,value:p.name.toLowerCase().includes(q.search)?value(p,q.metric,q.year):null,period:String(q.year)}));
   window.SLIProvinceMap.render("provinceMap",{records:all,selected:db.provinces.find(p=>p.id===q.province)?.name||"",
    period:String(q.year),source:"BPS · PDRB Provinsi menurut Pengeluaran",unit:unit(q.metric),digits:percent.has(q.metric)?2:1,
-   onSelect:name=>{const target=db.provinces.find(p=>p.name===name);if(target){$("province").value=String(target.id);$("search").value="";render();}}
+   onSelect:name=>{const target=db.provinces.find(p=>window.SLIProvinceMap.normalize(p.name)===window.SLIProvinceMap.normalize(name));if(target){$("province").value=String(target.id);$("search").value="";render();}}
   });
  }
  const p=db.provinces.find(x=>x.id===q.province),trend=$("trend");trend.replaceChildren();if(p){const h=document.createElement("h3");h.textContent=p.name+" · "+$("metric").selectedOptions[0].text;trend.append(h);
