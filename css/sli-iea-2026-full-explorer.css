@@ -1,0 +1,24 @@
+/* The 16-column IEA July 2026 model viewed as a source-limited, accessible conditional series. */
+.sli-iea-full{background:#112d43;border:1px solid #44617a;border-radius:13px;padding:20px 22px;margin:22px 0 15px;max-width:100%;color:#e8f1f7}
+.sli-iea-full>small{display:block;color:#e7c789;letter-spacing:.13em;font-size:10px;font-weight:850}
+.sli-iea-full h3{font-size:clamp(18px,2.3vw,23px);color:#f9f4eb;margin:8px 0 9px}
+.sli-iea-full p{font-size:12px;line-height:1.65;color:#c5d8e6}
+.sli-iea-full-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:14px 0 8px}
+.sli-iea-full-controls label{display:flex;flex-direction:column;gap:5px;font-size:11px;color:#cbdce9;font-weight:750}
+.sli-iea-full-controls select{font:inherit;min-width:0;max-width:100%;width:100%;background:#edf5f9;border:1px solid #9bb7c8;border-radius:8px;color:#15364f;padding:10px;font-size:12px}
+.sli-iea-full-controls select:focus-visible{outline:2px solid #e0c38a;outline-offset:2px}
+.sli-iea-full-chart{height:250px;min-height:210px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:end;gap:12px;background:#0a2235;border:1px solid #344e64;border-radius:10px;padding:16px 20px 12px;margin:13px 0 15px}
+.sli-iea-full-bar{height:100%;min-width:0;display:flex;align-items:center;flex-direction:column;justify-content:flex-end;gap:4px}
+.sli-iea-full-bar strong{font-variant-numeric:tabular-nums;font-size:11px;font-weight:740;color:#f4dec0;text-align:center;overflow-wrap:anywhere}
+.sli-iea-full-bar small{font:800 10px/1.4 system-ui,sans-serif;color:#c4d9e6}
+.sli-iea-full-track{position:relative;max-width:70px;width:65%;height:calc(100% - 46px);background:#1a384d;border-radius:6px 6px 2px 2px;overflow:hidden}
+.sli-iea-full-track i{display:block;background:linear-gradient(0deg,#bd9558,#eccd90);position:absolute;bottom:0;left:0;width:100%;border-radius:6px 6px 2px 2px}
+.sli-iea-full-bar:first-child .sli-iea-full-track i{background:#66a5b7}
+.sli-iea-full-scroll{max-width:100%;overflow-x:auto;border:1px solid #416077;border-radius:9px;scrollbar-width:thin}
+.sli-iea-full-scroll table{border-collapse:collapse;width:100%;min-width:700px;color:#f3f6f9;font-size:11px}
+.sli-iea-full-scroll th,.sli-iea-full-scroll td{padding:10px 12px;border-bottom:1px solid #42627b;text-align:right;font-variant-numeric:tabular-nums}
+.sli-iea-full-scroll th:first-child,.sli-iea-full-scroll td:first-child{text-align:left}
+.sli-iea-full-scroll th{background:#204459;color:#e1c38b;font-size:10px}
+.sli-iea-full a{color:#f1d79b}.sli-iea-full a:hover{color:#fff4da}
+.sli-iea-full-foot{margin:13px 0 0}
+@media(max-width:800px){.sli-iea-full-controls{grid-template-columns:1fr}.sli-iea-full{padding:15px}.sli-iea-full-chart{gap:5px;padding:10px 7px;height:215px}.sli-iea-full-bar strong{font-size:9px}.sli-iea-full-bar small{font-size:9px}.sli-iea-full-track{width:73%}}

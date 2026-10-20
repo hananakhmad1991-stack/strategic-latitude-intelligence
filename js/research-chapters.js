@@ -321,6 +321,12 @@ function makeEnergyStructure(which,root){
   sections[3].append(rawIEA);
   window.initSLIIEA2026Explorer("minerals",rawIEA);
  }
+ if(which==="minerals"&&typeof window.initSLIIEA2026FullExplorer==="function"){
+  const fullIEA=E("div","sli-iea-2026-full-model-mount");
+  fullIEA.id="sliIEA2026FullMineralsRoot";
+  sections[3].append(fullIEA);
+  Promise.resolve(window.initSLIIEA2026FullExplorer(fullIEA)).catch(err=>console.error("[SLI IEA full model]",err));
+ }
  // An independent source-vintage layer cross-links BKPM, ESDM and IEA without
  // overwriting the existing USGS/IEA mineral registry or named investment cases.
  if(typeof window.initSLISourceBridge==="function"){
