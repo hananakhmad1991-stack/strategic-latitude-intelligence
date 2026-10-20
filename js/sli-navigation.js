@@ -2,7 +2,7 @@
    Static local links only, no analytics, redirects, network dependency or injected source data. */
 (()=>{'use strict';
 const groups=[
- ['Start here','Mulai di sini','overview','research','guide','membership'],
+ ['Start here','Mulai di sini','overview','terminal','research','guide','membership'],
  ['Investment & regions','Investasi & daerah','investment','entities','macro','opportunity','province','gini','labs'],
  ['Energy, trade & assets','Energi, perdagangan & aset','energy','map','trade','minerals','electricity','ruptl'],
  ['Food & agriculture','Pangan & pertanian','food'],
@@ -12,6 +12,7 @@ const groups=[
 ];
 const modules={
  overview:['Overview · Big picture','Gambaran besar · Overview','index.html#overview','National executive context; go deeper for tables, project records and source detail.','Konteks nasional; buka modul detail untuk tabel dan sumber.'],
+ terminal:['SLI Decision Terminal · Cross-source workspace','SLI Decision Terminal · Workspace lintas sumber','sli-decision-terminal.html','Issuer, attributed-news and policy search with local watchlists and Research AI handoff. Not a live trading terminal.','Pencarian emiten, berita, dan regulasi dengan watchlist lokal serta jalur DERGUBA AI. Bukan terminal perdagangan langsung.'],
  research:['DERGUBA AI · SLI Research Intelligence · Owner Test','DERGUBA AI · Asisten Riset SLI · Uji Pemilik','sli-research-ai.html','Owner-only generative research is in limited testing; subscriber access is not active.','Riset generatif masih uji khusus pemilik dengan sumber terbatas; akses pelanggan belum aktif.'],
  membership:['Membership · Open / Pro / Enterprise','Keanggotaan · Open / Pro / Enterprise','sli-membership.html','Plans and early-access requests; payments are not active yet.','Paket dan permintaan akses awal; pembayaran belum aktif.'],
  guide:['User guide · Start here','Panduan pengguna · Mulai di sini','sli-user-guide.html','Task-based paths, navigation, dates, sources, filters and limitations.','Alur penggunaan, navigasi, tanggal, sumber dan batasan.'],
@@ -45,8 +46,9 @@ const modules={
  about:['About SLI','Tentang SLI','index.html#about','Editorial purpose, independence and research contact.','Tujuan editorial, independensi dan kontak riset.']
 };
 const related={
+ terminal:['entities','research','policy','geopolitics'],
  entities:['investment','aihub','energy','policy'],
- research:['overview','macro','opportunity','aihub'],membership:['overview','research','guide','glossary'],overview:['research','investment','energy','ai'],investment:['province','opportunity','gini','labs'],map:['investment','energy','province'],
+ research:['overview','terminal','macro','aihub'],membership:['overview','research','guide','glossary'],overview:['terminal','research','investment','energy'],investment:['province','opportunity','gini','labs'],map:['investment','energy','province'],
  trade:['minerals','energy','macro','food'],energy:['electricity','ruptl','map','trade','food'],food:['trade','macro','province','policy'],minerals:['map','trade','investment'],
  ai:['aihub','komdigi','digital','digitalgov'],policy:['geopolitics','ria','indo','climate'],geopolitics:['policy','indo','trade','energy'],macro:['opportunity','gini','investment'],
  opportunity:['province','gini','labs'],province:['opportunity','gini','map','electricity'],gini:['province','opportunity','macro'],
@@ -63,7 +65,7 @@ const text=(en,id)=>lang()==='id'?id:en;
 const label=id=>id==='detail'?(document.title||document.querySelector('h1')?.textContent||'SLI Dashboard').split('|')[0].trim().slice(0,90):(modules[id]?.[lang()==='id'?1:0]||id);
 const href=id=>'./'+modules[id][2];
 function node(tag,classes,txt){const n=document.createElement(tag);if(classes)n.className=classes;if(txt)n.textContent=txt;return n}
-const moduleIcon=Object.freeze({overview:'government',research:'technology',entities:'building',investment:'project',macro:'project',opportunity:'project',province:'globe',energy:'energy',food:'government',map:'globe',trade:'globe',minerals:'mineral',electricity:'energy',ruptl:'energy',ai:'technology',aihub:'technology',policy:'government',geopolitics:'globe',climate:'globe',ria:'government',guide:'link',glossary:'link',freshness:'project'});
+const moduleIcon=Object.freeze({overview:'government',terminal:'technology',research:'technology',entities:'building',investment:'project',macro:'project',opportunity:'project',province:'globe',energy:'energy',food:'government',map:'globe',trade:'globe',minerals:'mineral',electricity:'energy',ruptl:'energy',ai:'technology',aihub:'technology',policy:'government',geopolitics:'globe',climate:'globe',ria:'government',guide:'link',glossary:'link',freshness:'project'});
 function link(id,cls){const a=node('a',cls),identity=window.SLIEntityIdentity;if(identity){const i=identity.icon(moduleIcon[id]||'building');i.classList.add('sli-nav-icon');a.append(i)}a.append(node('span','',label(id)));a.href=href(id);return a}
 
 /* Unified SLI masthead for detailed dashboards. Index #home and Research AI
