@@ -16,7 +16,9 @@ test("Investor interface makes chat primary while advanced methods optional",()=
  assert.match(page,/Rp5 triliun/);
  assert.match(page,/<details class="sli-ra-chat-preferences"/);
  assert.match(ui,/sli-ra-advanced-lab/);
- assert.match(ui,/Laboratorium metode & ekonometrika/);
+ assert.match(ui,/Metode & Data Lab · Perhitungan lanjutan \(opsional\)/);
+  assert.match(ui,/lab\.open=false/);
+  assert.match(ui,/labShortcut\?\.addEventListener\("click"/);
  assert.ok(page.indexOf('id="raAssistantForm"')<page.indexOf('id="raOwnerPanel"'));
 });
 test("SLI names all 49 methodologies but never equates catalogue to implemented engines",()=>{
