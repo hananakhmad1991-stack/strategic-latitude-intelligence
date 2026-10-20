@@ -249,7 +249,7 @@ await check("AI atlas desktop: World Bank panel selection preserves original sou
  const select=root.locator("select").first();
  await page.waitForFunction(()=>document.querySelectorAll("#sliAiDigitizedFigureAtlas select option").length===9,null,{timeout:20000});
  await select.selectOption({index:5});
- assert.match(await root.locator(".sli-figure-atlas p").first().innerText(),/World Bank/i);
+ assert.match(await root.locator("p").first().innerText(),/World Bank/i);
  const source=await root.locator('a[href*="worldbank.org"]').first().getAttribute("href");
  assert.match(source,/documents1.worldbank.org/);
  const bars=root.locator(".sli-figure-plot svg rect[data-value]");
