@@ -7,7 +7,7 @@ import graph from "../../data/sli-policy-regulatory-graph-2026.json";
 
 const norm=s=>String(s||"").normalize("NFKD").toLowerCase()
   .replace(/[^a-z0-9]+/g," ").replace(/\s+/g," ").trim();
-const officialHosts=new Set(["peraturan.go.id","www.peraturan.go.id","peraturan.bpk.go.id","jdih.tanjungpinangkota.go.id"]);
+const officialHosts=new Set(["peraturan.go.id","www.peraturan.go.id","peraturan.bpk.go.id","jdih.tanjungpinangkota.go.id","jdih.pkp.go.id","jdih.kemenkoinfra.go.id"]);
 const cleanRef=s=>norm(s).replace(/\b(?:nomor|no|tahun)\b/g,"").replace(/\s+/g," ").trim();
 const refMatches=(q,ref)=>q.includes(cleanRef(ref)) ||
   // Both "UU No. 27 Tahun 2022" and "UU 27/2022" are recognized.
