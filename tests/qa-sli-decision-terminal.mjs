@@ -65,7 +65,7 @@ test("Attribution and cross-source filters remain distinct from verification and
  assert.match(source,/publisher_attributed_news_report/);
  assert.match(source,/not independently corroborated/);
  assert.match(source,/require verification at JDIH/);
- assert.match(source,/does not prove/);
+ assert.match(source,/do not prove/);
  assert.match(source,/sli-research-ai\.html/);
  assert.match(source,/sli-sector-news\.html/);
 });
