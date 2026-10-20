@@ -51,6 +51,43 @@ def run():
         member=files[0]
         if member.file_size>3500000:raise ValueError("Single station file too large")
         text=z.read(member).decode("utf-8-sig",errors="replace")
+        # Inventory candidate Indonesia stations by last NON-MISSING observation,
+        # not by nominal series end-date (the latter can be years after data stop).
+        indonesia={}
+        for line in station_text.splitlines():
+            parts=line.split(",")
+            if len(parts)<3 or parts[2].strip()!="ID":continue
+            try: sid=int(parts[0].strip())
+            except ValueError:continue
+            indonesia[sid]=parts[1].strip()
+        summaries=[]
+        for entry in members:
+            match=re.search(r"RR_STAID0*(\\d+)\\.txt$",entry.filename,re.I)
+            if not match or int(match.group(1)) not in indonesia:continue
+            if entry.file_size>3500000:continue
+            last_valid=None;valid_seen=0
+            content_lines=z.read(entry).decode("utf-8-sig",errors="replace").splitlines()
+            for line in reversed(content_lines):
+                cells=line.split(",")
+                if len(cells)<4:continue
+                day=cells[2].strip()
+                if not re.fullmatch(r"\\d{8}",day):continue
+                try: rr=int(cells[3].strip())
+                except ValueError:continue
+                if rr<0:continue
+                last_valid=day
+                break
+            summaries.append({"station_id":int(match.group(1)),
+                 "station_name":indonesia[int(match.group(1))],
+                 "last_observed_date":None if last_valid is None else
+                    f"{last_valid[:4]}-{last_valid[4:6]}-{last_valid[6:]}"})
+        result["indonesia_station_files_checked"]=len(summaries)
+        result["source_station_last_real_observation_candidates"]=sorted(
+            [q for q in summaries if q["last_observed_date"]],
+            key=lambda q:q["last_observed_date"],reverse=True)[:20]
+        print("BMKG_SACA_INDONESIA_STATION_CANDIDATES "+json.dumps(
+            result["source_station_last_real_observation_candidates"][:12],separators=(",",":")))
+
     result["station_filename"]=member.filename
     lines=[ln for ln in text.splitlines() if ln.strip() and not ln.lstrip().startswith("#")]
     header_index=next((i for i,ln in enumerate(lines) if "STAID" in ln.upper() and "DATE" in ln.upper() and "RR" in ln.upper()),None)
@@ -75,6 +112,11 @@ def run():
                      "source_value_tenth_mm":None if value==-9999 else value,"quality_flag":quality})
     if len(days)<100:raise ValueError("Too few official station days")
     days.sort(key=lambda x:x["date"])
+    valid=[x for x in days if x["rain_mm"] is not None]
+    if not valid:raise ValueError("No nonmissing station data")
+    result["first_numeric_observed_date"]=valid[0]["date"]
+    result["last_numeric_observed_date"]=valid[-1]["date"]
+    result["nonmissing_observation_days"]=len(valid)
     result.update(status="review_data_extracted_not_approved_for_live_alert",date_start=days[0]["date"],
                   date_end=days[-1]["date"],observation_days=len(days),missing_days=missing,
                   days_with_explicit_zero=sum(v["rain_mm"]==0 for v in days),
