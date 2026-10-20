@@ -1,0 +1,33 @@
+name: SLI BMKG Station Rainfall Source Review
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/audit_bmkg_saca_rr_station.py'
+      - 'scripts/verify_bmkg_station_quality_aggregation.py'
+      - 'data/sli-bmkg-cengkareng-historical-rainfall.json'
+      - '.github/workflows/sli-bmkg-saca-station-rainfall-review.yml'
+permissions:
+  contents: read
+jobs:
+  verify-bmkg-station:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Python collector
+        run: python3 -m py_compile scripts/audit_bmkg_saca_rr_station.py
+      - name: Read official station ID and precipitation ZIP (review only)
+        run: python3 scripts/audit_bmkg_saca_rr_station.py
+      - name: Verify historical published data against all original Q0 observations
+        run: |
+          python3 -m py_compile scripts/verify_bmkg_station_quality_aggregation.py
+          python3 scripts/verify_bmkg_station_quality_aggregation.py
+      - name: Store date-bounded review candidate, not a current hazard reading
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-bmkg-cengkareng-historical-rainfall-source-review
+          path: artifacts/sli-bmkg-saca-cengkareng-rain-review.json
+          if-no-files-found: warn
+          retention-days: 14
