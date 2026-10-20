@@ -1,0 +1,53 @@
+name: SLI Resolved Fix Learning Quality Gate
+on:
+  pull_request:
+    paths:
+      - 'tests/fixtures/sli-agent-resolved-lessons.json'
+      - 'scripts/sli-agent-resolved-learning.mjs'
+      - 'scripts/sli-agent-self-eval.mjs'
+      - 'tests/qa-sli-agent-resolved-lessons.mjs'
+      - 'tests/qa-sli-legal-source-limited.mjs'
+      - '.github/workflows/sli-agent-learning-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tests/fixtures/sli-agent-resolved-lessons.json'
+      - 'scripts/sli-agent-resolved-learning.mjs'
+      - 'scripts/sli-agent-self-eval.mjs'
+      - 'tests/qa-sli-agent-resolved-lessons.mjs'
+      - 'tests/qa-sli-legal-source-limited.mjs'
+      - '.github/workflows/sli-agent-learning-qa.yml'
+permissions:
+  contents: read
+jobs:
+  retain-tested-lessons:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test learning ledger, verified legal gate and existing agent scorecard
+        run: |
+          node --check scripts/sli-agent-resolved-learning.mjs
+          node --check scripts/sli-agent-self-eval.mjs
+          node --test tests/qa-sli-agent-resolved-lessons.mjs tests/qa-sli-legal-source-limited.mjs tests/qa-sli-agent-self-eval.mjs
+          node scripts/sli-agent-resolved-learning.mjs
+      - name: Prevent PR from removing or rewriting previously merged lessons
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          if git show "$BASE_SHA:tests/fixtures/sli-agent-resolved-lessons.json" > /tmp/sli-agent-prior-lessons.json 2>/dev/null; then
+            node scripts/sli-agent-resolved-learning.mjs --baseline=/tmp/sli-agent-prior-lessons.json
+          else
+            echo "Initial ledger addition; no previously retained lessons in base commit."
+          fi
+      - name: Declare learning boundary
+        run: |
+          echo "Only fixture/test provenance and regression reliability were checked; no model tuning, API calls, source truth certification, code auto-merge or production deployment." >> "$GITHUB_STEP_SUMMARY"
