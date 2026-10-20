@@ -12,7 +12,7 @@ test("Five original Stanford figures have verifiable page, unit, status and sour
   assert.ok([30,31,33,39].includes(f.pdf_page));
   assert.ok(f.source_credit&&f.figure_number&&f.caution_id&&f.statistical_status);
  }
- assert.equal(metrics.figure_catalog_status.verified_numeric_figure_series_count,9);
+ assert.equal(metrics.figure_catalog_status.verified_numeric_figure_series_count,10);
 });
 test("Figure 1.2.4 follows original printed quarterly power estimates, not electricity consumption",()=>{
  const f=d.figures.find(x=>x.figure_number==="1.2.4");
