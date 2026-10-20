@@ -7,10 +7,10 @@ const chapter=JSON.parse(read("data/sli-geopolitical-chapter.json"));
 const official=JSON.parse(read("data/sli-indonesia-original-intelligence.json"));
 const news=JSON.parse(read("data/sli-secondary-news-index.json"));
 
-test("Six original geopolitical analyses, citations, bilingual methods and bounded conclusions",()=>{
+test("Seven original geopolitical analyses, citations, bilingual methods and bounded conclusions",()=>{
  assert.equal(chapter.schema_version,"sli-geopolitical-chapter-v1");
- assert.equal(chapter.themes.length,6);
- assert.equal(new Set(chapter.themes.map(x=>x.id)).size,6);
+ assert.equal(chapter.themes.length,7);
+ assert.equal(new Set(chapter.themes.map(x=>x.id)).size,7);
  assert.ok(chapter.assessments.length>=7);
  const metricIds=new Set(official.metrics.map(x=>x.id));
  for(const x of chapter.themes){
@@ -71,7 +71,7 @@ test("Real DOM-like rendering produces detailed geopolitics, clickable themes, s
  assert.ok(texts.some(t=>t.includes("Two ships damaged near Hormuz")),"News record was not displayed");
  assert.ok(texts.some(t=>t.includes("CGTN reports expansion")),"AI coverage was not eligible");
  const topics=all.filter(x=>x.className.startsWith("geo-intel-topic")&&x.tag==="button");
- assert.equal(topics.length,6);
+ assert.equal(topics.length,7);
  topics[3].listeners.get("click")?.();
  assert.ok(flatten(root).some(x=>x.textContent==="AI chips, cloud sovereignty and data-center competition"));
  // Switching locale keeps the same source data but renders the original Bahasa narratives.
@@ -236,4 +236,13 @@ test("Clicking a gold event synchronizes all three charts and opens sourced bili
  for(const event of events.events)for(const k of ["chronology","id_chronology","market_context","id_market_context","lesson","id_lesson"]){
   assert.ok(typeof event[k]==="string"&&event[k].length>=35,event.date+" missing "+k);
  }
+});
+
+test("Food geopolitical pathway uses source-dated primary baseline and crosslinks to policy/Research AI",()=>{
+ const food=chapter.themes.find(x=>x.id==="foodsecurity");
+ assert.ok(food,"Missing food and agriculture geopolitics sector");
+ assert.ok(food.mechanism.includes("fertilizer")&&food.id_mechanism.includes("pupuk"));
+ assert.ok(food.links.some(x=>x.url.includes("food-agriculture-intelligence")));
+ assert.ok(food.links.some(x=>x.url.includes("sli-research-ai.html")));
+ assert.ok(food.search.includes("pangan")&&food.search.includes("rice"));
 });
