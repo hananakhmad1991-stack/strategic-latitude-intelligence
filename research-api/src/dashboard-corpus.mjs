@@ -13,7 +13,8 @@ export function selectDashboardEvidence(payload,question,limit=7){
  const q=tokens(question);if(!q.length)return [];
  const target=/\bccs\b|\bccus\b|carbon captur|penyimpanan karbon/i.test(question)?"ccs":
   /data center|\bai\b|artificial intelligence|pusat data/i.test(question)?"ai":
-  /nikel|nickel|tembaga|copper|mineral|smelter/i.test(question)?"minerals":
+  /nikel|nickel|tembaga|copper|mineral|smelter|bauksit|kobalt|timah/i.test(question)?"minerals":
+  /pangan|pertanian|agricultur|food security|beras|gabah|padi|rice|gandum|wheat|bulog|bapanas|pupuk|fertilizer|swasembada|petani/i.test(question)?"food":
   /pln|listrik|kelistrikan|pembangkit|grid/i.test(question)?"power":
   /iklim|climate|banjir|flood|bencana/i.test(question)?"climate":null;
  const results=[];
@@ -31,6 +32,7 @@ export function selectDashboardEvidence(payload,question,limit=7){
   if(target==="ai"&&!(/digital|ai-|ai_|data.center|cloud|compute|invest|power/.test(title+" "+dataset)))continue;
   if(target==="minerals"&&!(/mineral|nickel|nikel|copper|tembaga|smelter|tin|bauxite|bauksit/.test(title+" "+dataset)))continue;
   if(target==="power"&&!(/energy|pln|electric|listrik|power|ruptl|renewable/.test(title+" "+dataset)))continue;
+  if(target==="food"&&!(/food|pangan|pertanian|agricultur|petani|beras|rice|bulog|bapanas|farmer|pupuk|ntp|fertili/.test(title+" "+dataset)))continue;
   if(hits<8||primary===0)continue;
   results.push({d,score:hits});
  }
