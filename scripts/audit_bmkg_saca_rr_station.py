@@ -34,7 +34,7 @@ def run():
       "publication_rule":"Only verified station-date observations, no current alert or province-wide inference. 0 is dry when explicitly recorded; -9999 stays null.",
       "limits":"Historical archive may end many years before 2026 and source observations may have quality flags."}
     station_text=fetch(STATIONS,600000).decode("utf-8-sig",errors="replace")
-    meta=[ln for ln in station_text.splitlines() if re.match(r"^\s*132\s*,",ln)]
+    meta=[ln for ln in station_text.splitlines() if re.match(rf"^\s*{STAID}\s*,",ln)]
     if len(meta)!=1 or "SOEKARNO" not in meta[0].upper():
         raise ValueError("Station ID / location not confirmed in the official inventory")
     result["official_station_metadata_line"]=meta[0].strip()
