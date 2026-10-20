@@ -2,7 +2,7 @@
    Static local links only, no analytics, redirects, network dependency or injected source data. */
 (()=>{'use strict';
 const groups=[
- ['Start here','Mulai di sini','overview','terminal','research','datahub','guide','membership'],
+ ['Start here','Mulai di sini','overview','terminal','research','guide','membership'],
  ['Investment & regions','Investasi & daerah','investment','entities','macro','opportunity','province','gini','labs'],
  ['Energy, trade & assets','Energi, perdagangan & aset','energy','map','trade','minerals','electricity','ruptl'],
  ['Food & agriculture','Pangan & pertanian','food'],
@@ -108,9 +108,26 @@ function renderPlatformMast(){
  summary.setAttribute('aria-label',text('Browse SLI sector dashboards','Jelajahi dashboard sektoral SLI'));
  explorer.append(summary);
  const sectors=node('div','sli-platform-sector-menu');
+ // Keep source datasets under their parent domains, not a competing first-level category.
+ const topicalEvidence={
+  macro:[['Socioeconomic provincial data','Data sosial-ekonomi provinsi','socio']],
+  energy:[['PLN reliability data','Data keandalan PLN','power'],['RUPTL source tables','Tabel sumber RUPTL','ruptl']],
+  minerals:[['IEA mineral scenarios','Skenario mineral IEA','minerals']],
+  aihub:[['AI research data','Data riset AI','ai-reports']],
+  policy:[['Democracy & governance data','Data demokrasi & tata kelola','governance']],
+  indo:[['Public safety indicators','Indikator keamanan publik','security']],
+  climate:[['Climate & environment evidence','Bukti iklim & lingkungan','environment'],['BNPB disaster history','Riwayat bencana BNPB','disasters']]
+ };
  for(const group of groups){
   const col=node('div','sli-platform-sector-group');col.append(node('h3','',text(group[0],group[1])));
-  for(const id of group.slice(2)){const a=link(id);if(id===current)a.setAttribute('aria-current','page');col.append(a)}
+  for(const id of group.slice(2)){
+   const a=link(id);if(id===current)a.setAttribute('aria-current','page');col.append(a);
+   for(const [en,bahasa,anchor] of topicalEvidence[id]||[]){
+    const related=node('a','sli-platform-topic-source',text(en,bahasa));
+    related.href='./sli-sector-data-library.html#'+anchor;
+    col.append(related);
+   }
+  }
   sectors.append(col);
  }
  // Direct routes for the remaining specialist pages; none of the full datasets are removed.
