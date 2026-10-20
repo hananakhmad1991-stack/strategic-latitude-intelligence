@@ -1,0 +1,53 @@
+name: SLI IDX Issuer Universe Sync
+on:
+  schedule:
+    - cron: '0 22 * * 0' # Monday 05:00 WIB
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/sli-idx-issuer-universe.json'
+      - 'scripts/sync_sli_idx_issuers.py'
+      - 'tests/test_sli_idx_issuers.py'
+      - '.github/workflows/sli-idx-issuer-universe-sync.yml'
+  pull_request:
+    paths:
+      - 'data/sli-idx-issuer-universe.json'
+      - 'scripts/sync_sli_idx_issuers.py'
+      - 'tests/test_sli_idx_issuers.py'
+      - '.github/workflows/sli-idx-issuer-universe-sync.yml'
+permissions:
+  contents: write
+concurrency:
+  group: sli-idx-universe-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  validate-and-sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate saved data, official snapshot invariants and no invented market cap
+        run: |
+          python scripts/sync_sli_idx_issuers.py --validate-only
+          python -m unittest discover -s tests -p 'test_sli_idx_issuers.py' -v
+      - name: Pull public IDX directory with safe error handling
+        if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
+        run: python scripts/sync_sli_idx_issuers.py
+      - name: Commit verified directory snapshot if changed
+        if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
+        run: |
+          if git diff --quiet -- data/sli-idx-issuer-universe.json; then
+            echo 'No official directory updates'
+            exit 0
+          fi
+          python scripts/sync_sli_idx_issuers.py --validate-only
+          git config user.name 'sli-idx-source-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/sli-idx-issuer-universe.json
+          git commit -m 'data(idx): source-confirmed official issuer names and tickers'
+          git push origin HEAD:main
