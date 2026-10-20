@@ -94,8 +94,8 @@ function view(){
  const quotes=feed.size;
  const priceState=validQuotes&&quotes?
  tr(quotes+" verified EOD quotes · "+feedInfo.date+" · "+feedInfo.publisher+" · not intraday",""+quotes+" harga EOD bersumber · "+feedInfo.date+" · "+feedInfo.publisher+" · bukan intraday"):
- tr("The TradingView watchlist below displays provider-owned stock movements. The SLI issuer map stays neutral until a licensed market feed is connected; no fabricated percentages.",
- "Watchlist TradingView di bawah menampilkan pergerakan saham dari penyedia. Peta emiten SLI tetap netral sampai feed pasar berizin terhubung; tidak ada persentase rekaan.");
+ tr("TradingView market heatmap and watchlist display provider-owned figures. SLI ticker tiles remain neutral without licensed price data; they are company dossiers, not price returns.",
+ "Heatmap dan watchlist TradingView menampilkan angka milik penyedia. Kartu ticker SLI tetap netral tanpa data harga berizin; kartu ini profil emiten, bukan imbal hasil saham.");
  disclosure.append(text("span","sli-idx-disclosure-dot",validQuotes&&quotes?"●":"○"),text("span",null,priceState));root.append(disclosure);
  const provider=text("section","sli-idx-provider");provider.id="sliIDXTradingViewHeatmap";
  provider.append(text("h4","sli-idx-curated-heading",tr("IDX stock heatmap · price change (%) and market cap","Heatmap saham IDX · perubahan harga (%) dan kapitalisasi")));
