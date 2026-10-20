@@ -1,7 +1,7 @@
 {
   "schema": "sli-corporate-group-registry-v2",
   "as_of": "2026-10-20",
-  "disclaimer_id": "Cakupan belum seluruh entitas dalam laporan konsolidasi. Struktur anak/cucu/cicit dihitung dari relasi parent_id yang tertera, bukan total saham efektif. Beberapa relasi berasal dari laporan historis 2022-2025 dan diberi tanggal sumber; perlu validasi ulang. Anak usaha/JV/afiliasi tidak boleh disamakan. Nama direksi mengikuti rilis bertanggal dan tidak menyatakan telah diverifikasi secara real-time. Cakupan diperluas ke sektor mineral, batu bara, AI/data center, teknologi, dan pangan termasuk perusahaan swasta/asing. Daftar grup tidak menyiratkan seluruh hubungan kepemilikan. Kapitalisasi pasar dan metrik keuangan tidak diisi jika data perdagangan/laporan dan tanggalnya belum tersedia; perusahaan privat tidak memiliki kapitalisasi pasar bursa. Tautan IDX adalah rute profil publik, bukan feed harga real-time.",
+  "disclaimer_id": "Cakupan belum seluruh entitas dalam laporan konsolidasi. Struktur anak/cucu/cicit dihitung dari relasi parent_id yang tertera, bukan total saham efektif. Beberapa relasi berasal dari laporan historis 2022-2025 dan diberi tanggal sumber; perlu validasi ulang. Anak usaha/JV/afiliasi tidak boleh disamakan. Nama direksi mengikuti rilis bertanggal dan tidak menyatakan telah diverifikasi secara real-time. Cakupan diperluas ke sektor mineral, batu bara, AI/data center, teknologi, dan pangan termasuk perusahaan swasta/asing. Daftar grup tidak menyiratkan seluruh hubungan kepemilikan. Kapitalisasi pasar dan metrik keuangan tidak diisi jika data perdagangan/laporan dan tanggalnya belum tersedia; perusahaan privat tidak memiliki kapitalisasi pasar bursa. Tautan IDX adalah rute profil publik, bukan feed harga real-time. Penambahan holding pangan ID FOOD berdasar sumber resmi yang menjelaskan lima anggota, tanpa mengasumsikan perubahan 2026 telah final.",
   "groups": [
     {
       "id": "pertamina",
@@ -312,6 +312,96 @@
       "scope": "food",
       "coverage": "Curated source-attributed entities; standalone issuers do not imply parent/child relations.",
       "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/UNVR"
+    },
+    {
+      "id": "idfood",
+      "name": "ID FOOD · Holding Pangan BUMN",
+      "root_id": "idfood-root",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "scope": "food",
+      "coverage": "Sourced presence/group register, not a complete consolidation tree.",
+      "source_url": "https://idfood.co.id/p/klaster-pangan"
+    },
+    {
+      "id": "bulog",
+      "name": "Perum BULOG",
+      "root_id": "bulog-root",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "scope": "food",
+      "coverage": "Sourced presence/group register, not a complete consolidation tree.",
+      "source_url": "https://www.bulog.co.id/profil-perusahaan/"
+    },
+    {
+      "id": "pupuk",
+      "name": "Pupuk Indonesia",
+      "root_id": "pupuk-root",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "scope": "food",
+      "coverage": "Sourced presence/group register, not a complete consolidation tree.",
+      "source_url": "https://www.pupuk-indonesia.com/profile"
+    },
+    {
+      "id": "medco",
+      "name": "Medco Energi",
+      "root_id": "medc-root",
+      "sector": "energy",
+      "ownership_class": "indonesian-private",
+      "scope": "energy",
+      "coverage": "Sourced presence/group register, not a complete consolidation tree.",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/MEDC"
+    },
+    {
+      "id": "enrg",
+      "name": "Energi Mega Persada",
+      "root_id": "enrg-root",
+      "sector": "energy",
+      "ownership_class": "indonesian-private",
+      "scope": "energy",
+      "coverage": "Sourced presence/group register, not a complete consolidation tree.",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/ENRG"
+    },
+    {
+      "id": "akra",
+      "name": "AKR Corporindo",
+      "root_id": "akra-root",
+      "sector": "energy",
+      "ownership_class": "indonesian-private",
+      "scope": "energy",
+      "coverage": "Sourced presence/group register, not a complete consolidation tree.",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/AKRA"
+    },
+    {
+      "id": "essa",
+      "name": "ESSA Industries",
+      "root_id": "essa-root",
+      "sector": "energy",
+      "ownership_class": "indonesian-private",
+      "scope": "energy",
+      "coverage": "Sourced presence/group register, not a complete consolidation tree.",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/ESSA"
+    },
+    {
+      "id": "bpindo",
+      "name": "bp Indonesia",
+      "root_id": "bpindo-root",
+      "sector": "energy",
+      "ownership_class": "foreign",
+      "scope": "energy",
+      "coverage": "Sourced presence/group register, not a complete consolidation tree.",
+      "source_url": "https://www.bp.com/en_id/indonesia/home.html"
+    },
+    {
+      "id": "exxon",
+      "name": "ExxonMobil Indonesia",
+      "root_id": "exxon-root",
+      "sector": "energy",
+      "ownership_class": "foreign",
+      "scope": "energy",
+      "coverage": "Sourced presence/group register, not a complete consolidation tree.",
+      "source_url": "https://corporate.exxonmobil.com/locations/indonesia?content-lang=id"
     }
   ],
   "records": [
@@ -342,7 +432,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "phe",
@@ -420,7 +511,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "kpi",
@@ -441,7 +533,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pn",
@@ -470,7 +563,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "ppi",
@@ -491,7 +585,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pgn",
@@ -514,7 +609,8 @@
       "listing_status": "listed",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pis",
@@ -535,7 +631,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "phi",
@@ -564,7 +661,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "phr",
@@ -586,7 +684,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "phm",
@@ -607,7 +706,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "phss",
@@ -628,7 +728,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "phkt",
@@ -649,7 +750,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pha",
@@ -670,7 +772,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "phwg",
@@ -691,7 +794,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pep",
@@ -712,7 +816,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "epcepu",
@@ -733,7 +838,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "piep",
@@ -754,7 +860,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pdsi",
@@ -775,7 +882,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "elnusa",
@@ -798,7 +906,8 @@
       "listing_status": "listed",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "badak",
@@ -819,7 +928,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "kpb",
@@ -840,7 +950,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "prpp",
@@ -861,7 +972,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pge",
@@ -892,7 +1004,8 @@
       "listing_status": "listed",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pertagas",
@@ -921,7 +1034,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "saka",
@@ -942,7 +1056,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pgnlng",
@@ -963,7 +1078,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pgnmas",
@@ -984,7 +1100,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pgassol",
@@ -1005,7 +1122,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "gagas",
@@ -1026,7 +1144,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pgaskom",
@@ -1047,7 +1166,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "ptgn",
@@ -1068,7 +1188,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "arun",
@@ -1089,7 +1210,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "dayagas",
@@ -1110,7 +1232,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "samtan",
@@ -1131,7 +1254,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pln",
@@ -1220,7 +1344,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "epi",
@@ -1241,7 +1366,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "ip",
@@ -1262,7 +1388,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "np",
@@ -1283,7 +1410,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "icon",
@@ -1304,7 +1432,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "nusadaya",
@@ -1325,7 +1454,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "batam",
@@ -1346,7 +1476,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "hp",
@@ -1367,7 +1498,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "em",
@@ -1388,7 +1520,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "plne",
@@ -1409,7 +1542,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "mctn",
@@ -1430,7 +1564,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "plnes",
@@ -1451,7 +1586,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "plngg",
@@ -1473,7 +1609,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pba",
@@ -1495,7 +1632,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "ips",
@@ -1516,7 +1654,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "ipr",
@@ -1537,7 +1676,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "adc",
@@ -1558,7 +1698,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "indor",
@@ -1579,7 +1720,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "tmagra",
@@ -1601,7 +1743,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "nps",
@@ -1630,7 +1773,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "npc",
@@ -1651,7 +1795,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "nr",
@@ -1672,7 +1817,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "ppn",
@@ -1693,7 +1839,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "ni",
@@ -1714,7 +1861,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "suku",
@@ -1735,7 +1883,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "mkp",
@@ -1757,7 +1906,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "nri",
@@ -1778,7 +1928,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "tel",
@@ -1863,7 +2014,8 @@
       "total_assets": 287759,
       "financial_currency": "IDR billion",
       "financial_source_url": "https://www.telkom.co.id/sites/investor-relations/en_US/page/financial-highlights-542",
-      "financial_basis": "Consolidated: total revenues; profit for the year including non-controlling interests; total assets. Amounts in IDR billion, not attributable-profit figure."
+      "financial_basis": "Consolidated: total revenues; profit for the year including non-controlling interests; total assets. Amounts in IDR billion, not attributable-profit figure.",
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "sel",
@@ -1934,7 +2086,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "mit",
@@ -1957,7 +2110,8 @@
       "listing_status": "listed",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "telin",
@@ -1978,7 +2132,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "met",
@@ -1999,7 +2154,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "tde",
@@ -2020,7 +2176,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "tif",
@@ -2049,7 +2206,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "akses",
@@ -2070,7 +2228,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "satelit",
@@ -2091,7 +2250,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pins",
@@ -2112,7 +2272,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "infra",
@@ -2134,7 +2295,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "gsd",
@@ -2155,7 +2317,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "sigma",
@@ -2177,7 +2340,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "metranet",
@@ -2198,7 +2362,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "mdi",
@@ -2219,7 +2384,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "telsg",
@@ -2240,7 +2406,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "telhk",
@@ -2261,7 +2428,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "telaus",
@@ -2283,7 +2451,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "teltimor",
@@ -2305,7 +2474,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "ndsg",
@@ -2326,7 +2496,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "pst",
@@ -2347,7 +2518,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "umt",
@@ -2368,7 +2540,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "bche",
@@ -2390,7 +2563,8 @@
       "listing_status": "unlisted",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "source_date_basis": "dated_publication_or_report"
     },
     {
       "id": "mind-root",
@@ -2423,7 +2597,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "antm-mind",
@@ -2456,7 +2631,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "inalum-mind",
@@ -2489,7 +2665,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "ptba-mind",
@@ -2524,7 +2701,8 @@
       "financial_source_url": "https://www.ptba.co.id/api/storage/1777608216188-530aad52-cfc2-40fc-8d3c-0afcaa236e6c.pdf",
       "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
       "financial_currency": "IDR billion",
-      "financial_basis": "Consolidated revenue 2025 = IDR 42,651,724 million, converted to IDR billion (/1,000). Profit and assets not populated from this extract."
+      "financial_basis": "Consolidated revenue 2025 = IDR 42,651,724 million, converted to IDR billion (/1,000). Profit and assets not populated from this extract.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "tins-mind",
@@ -2557,7 +2735,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "ptfi-mind",
@@ -2590,7 +2769,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "vale-root",
@@ -2623,7 +2803,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "mdka-root",
@@ -2656,7 +2837,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "mbma-merdeka",
@@ -2689,7 +2871,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "ammn-root",
@@ -2722,7 +2905,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "nckl-root",
@@ -2755,7 +2939,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "adro-root",
@@ -2788,7 +2973,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "aadi-root",
@@ -2821,7 +3007,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "bumi-root",
@@ -2854,7 +3041,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "byan-root",
@@ -2887,7 +3075,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "itmg-root",
@@ -2920,7 +3109,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "dcii-root",
@@ -2953,7 +3143,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "edge-root",
@@ -2986,7 +3177,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "isat-root",
@@ -3019,7 +3211,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "excl-root",
@@ -3052,7 +3245,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "msft-root",
@@ -3085,7 +3279,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "amzn-root",
@@ -3118,7 +3313,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "aws-business",
@@ -3151,7 +3347,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "goog-root",
@@ -3184,7 +3381,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "gcloud-business",
@@ -3217,7 +3415,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "dayone-root",
@@ -3250,7 +3449,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "bdx-root",
@@ -3283,7 +3483,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "indf-root",
@@ -3316,7 +3517,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "icbp-indofood",
@@ -3349,7 +3551,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "cpin-root",
@@ -3382,7 +3585,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "jpfa-root",
@@ -3415,7 +3619,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "myor-root",
@@ -3448,7 +3653,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "aali-root",
@@ -3481,7 +3687,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "dsng-root",
@@ -3514,7 +3721,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "wilmar-root",
@@ -3547,7 +3755,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "cargill-root",
@@ -3580,7 +3789,8 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
     },
     {
       "id": "unvr-root",
@@ -3613,7 +3823,439 @@
       "total_assets": null,
       "financial_period": null,
       "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "source_date_basis": "registry_review"
+    },
+    {
+      "id": "idfood-root",
+      "group": "idfood",
+      "parent_id": null,
+      "name": "PT Rajawali Nusantara Indonesia (Persero) · ID FOOD",
+      "business_id": "Holding pangan BUMN mencakup perdagangan, benih, perikanan, peternakan dan garam",
+      "source_url": "https://idfood.co.id/p/klaster-pangan",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "holding",
+      "ownership_pct": null,
+      "website_domain": null,
+      "directors": [],
+      "tier": 0,
+      "tier_label": "induk",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "domicile": "indonesia",
+      "listing_status": "unlisted",
+      "ticker": null,
+      "exchange": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "market_cap_source_url": null,
+      "market_cap_currency": null,
+      "closing_price": null,
+      "shares_outstanding": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "financial_period": null,
+      "financial_source_url": null,
+      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan."
+    },
+    {
+      "id": "bulog-root",
+      "group": "bulog",
+      "parent_id": null,
+      "name": "Perum BULOG",
+      "business_id": "Pengadaan, pergudangan, distribusi dan stabilisasi pangan",
+      "source_url": "https://www.bulog.co.id/profil-perusahaan/",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "holding",
+      "ownership_pct": null,
+      "website_domain": null,
+      "directors": [],
+      "tier": 0,
+      "tier_label": "induk",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "domicile": "indonesia",
+      "listing_status": "unlisted",
+      "ticker": null,
+      "exchange": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "market_cap_source_url": null,
+      "market_cap_currency": null,
+      "closing_price": null,
+      "shares_outstanding": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "financial_period": null,
+      "financial_source_url": null,
+      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan."
+    },
+    {
+      "id": "pupuk-root",
+      "group": "pupuk",
+      "parent_id": null,
+      "name": "PT Pupuk Indonesia (Persero)",
+      "business_id": "Holding produksi dan distribusi pupuk, termasuk pupuk bersubsidi",
+      "source_url": "https://www.pupuk-indonesia.com/profile",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "holding",
+      "ownership_pct": null,
+      "website_domain": null,
+      "directors": [],
+      "tier": 0,
+      "tier_label": "induk",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "domicile": "indonesia",
+      "listing_status": "unlisted",
+      "ticker": null,
+      "exchange": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "market_cap_source_url": null,
+      "market_cap_currency": null,
+      "closing_price": null,
+      "shares_outstanding": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "financial_period": null,
+      "financial_source_url": null,
+      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan."
+    },
+    {
+      "id": "medc-root",
+      "group": "medco",
+      "parent_id": null,
+      "name": "PT Medco Energi Internasional Tbk",
+      "business_id": "Eksplorasi, produksi migas, pembangkit listrik dan energi",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/MEDC",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "holding",
+      "ownership_pct": null,
+      "website_domain": null,
+      "directors": [],
+      "tier": 0,
+      "tier_label": "induk",
+      "sector": "energy",
+      "ownership_class": "indonesian-private",
+      "domicile": "indonesia",
+      "listing_status": "listed",
+      "ticker": "MEDC",
+      "exchange": "IDX",
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "market_cap_source_url": null,
+      "market_cap_currency": null,
+      "closing_price": null,
+      "shares_outstanding": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "financial_period": null,
+      "financial_source_url": null,
+      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan."
+    },
+    {
+      "id": "enrg-root",
+      "group": "enrg",
+      "parent_id": null,
+      "name": "PT Energi Mega Persada Tbk",
+      "business_id": "Hulu migas dan pengembangan lapangan",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/ENRG",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "holding",
+      "ownership_pct": null,
+      "website_domain": null,
+      "directors": [],
+      "tier": 0,
+      "tier_label": "induk",
+      "sector": "energy",
+      "ownership_class": "indonesian-private",
+      "domicile": "indonesia",
+      "listing_status": "listed",
+      "ticker": "ENRG",
+      "exchange": "IDX",
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "market_cap_source_url": null,
+      "market_cap_currency": null,
+      "closing_price": null,
+      "shares_outstanding": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "financial_period": null,
+      "financial_source_url": null,
+      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan."
+    },
+    {
+      "id": "akra-root",
+      "group": "akra",
+      "parent_id": null,
+      "name": "PT AKR Corporindo Tbk",
+      "business_id": "Distribusi energi, logistik, petrokimia dan kawasan industri",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/AKRA",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "holding",
+      "ownership_pct": null,
+      "website_domain": null,
+      "directors": [],
+      "tier": 0,
+      "tier_label": "induk",
+      "sector": "energy",
+      "ownership_class": "indonesian-private",
+      "domicile": "indonesia",
+      "listing_status": "listed",
+      "ticker": "AKRA",
+      "exchange": "IDX",
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "market_cap_source_url": null,
+      "market_cap_currency": null,
+      "closing_price": null,
+      "shares_outstanding": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "financial_period": null,
+      "financial_source_url": null,
+      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan."
+    },
+    {
+      "id": "essa-root",
+      "group": "essa",
+      "parent_id": null,
+      "name": "PT ESSA Industries Indonesia Tbk",
+      "business_id": "Produksi amonia dan LPG serta aset energi",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/ESSA",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "holding",
+      "ownership_pct": null,
+      "website_domain": null,
+      "directors": [],
+      "tier": 0,
+      "tier_label": "induk",
+      "sector": "energy",
+      "ownership_class": "indonesian-private",
+      "domicile": "indonesia",
+      "listing_status": "listed",
+      "ticker": "ESSA",
+      "exchange": "IDX",
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "market_cap_source_url": null,
+      "market_cap_currency": null,
+      "closing_price": null,
+      "shares_outstanding": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "financial_period": null,
+      "financial_source_url": null,
+      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan."
+    },
+    {
+      "id": "bpindo-root",
+      "group": "bpindo",
+      "parent_id": null,
+      "name": "bp Indonesia",
+      "business_id": "Operasi LNG Tangguh dan produk energi Indonesia; unit operasi grup bp global",
+      "source_url": "https://www.bp.com/en_id/indonesia/home.html",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "holding",
+      "ownership_pct": null,
+      "website_domain": null,
+      "directors": [],
+      "tier": 0,
+      "tier_label": "induk",
+      "sector": "energy",
+      "ownership_class": "foreign",
+      "domicile": "foreign",
+      "listing_status": "unlisted",
+      "ticker": null,
+      "exchange": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "market_cap_source_url": null,
+      "market_cap_currency": null,
+      "closing_price": null,
+      "shares_outstanding": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "financial_period": null,
+      "financial_source_url": null,
+      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan."
+    },
+    {
+      "id": "exxon-root",
+      "group": "exxon",
+      "parent_id": null,
+      "name": "ExxonMobil Indonesia",
+      "business_id": "Operasi hulu migas Cepu, pelumas, produk dan kemitraan energi",
+      "source_url": "https://corporate.exxonmobil.com/locations/indonesia?content-lang=id",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "holding",
+      "ownership_pct": null,
+      "website_domain": null,
+      "directors": [],
+      "tier": 0,
+      "tier_label": "induk",
+      "sector": "energy",
+      "ownership_class": "foreign",
+      "domicile": "foreign",
+      "listing_status": "unlisted",
+      "ticker": null,
+      "exchange": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "market_cap_source_url": null,
+      "market_cap_currency": null,
+      "closing_price": null,
+      "shares_outstanding": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "financial_period": null,
+      "financial_source_url": null,
+      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan."
+    },
+    {
+      "id": "idfood-ppi",
+      "group": "idfood",
+      "parent_id": "idfood-root",
+      "name": "PT Perusahaan Perdagangan Indonesia",
+      "business_id": "Perdagangan dan distribusi komoditas",
+      "source_url": "https://idfood.co.id/p/klaster-pangan",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "reported-member",
+      "ownership_pct": null,
+      "directors": [],
+      "tier": 1,
+      "tier_label": "anak",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "domicile": "indonesia",
+      "listing_status": "unlisted",
+      "ticker": null,
+      "exchange": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "financial_period": null,
+      "source_note": "Keanggotaan holding menurut profil ID FOOD, bukan konfirmasi persentase saham pada 2026."
+    },
+    {
+      "id": "idfood-sanghyang",
+      "group": "idfood",
+      "parent_id": "idfood-root",
+      "name": "PT Sang Hyang Seri",
+      "business_id": "Benih tanaman dan layanan pertanian",
+      "source_url": "https://idfood.co.id/p/klaster-pangan",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "reported-member",
+      "ownership_pct": null,
+      "directors": [],
+      "tier": 1,
+      "tier_label": "anak",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "domicile": "indonesia",
+      "listing_status": "unlisted",
+      "ticker": null,
+      "exchange": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "financial_period": null,
+      "source_note": "Keanggotaan holding menurut profil ID FOOD, bukan konfirmasi persentase saham pada 2026."
+    },
+    {
+      "id": "idfood-perikanan",
+      "group": "idfood",
+      "parent_id": "idfood-root",
+      "name": "PT Perikanan Indonesia",
+      "business_id": "Perikanan tangkap, budidaya dan pemasaran",
+      "source_url": "https://idfood.co.id/p/klaster-pangan",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "reported-member",
+      "ownership_pct": null,
+      "directors": [],
+      "tier": 1,
+      "tier_label": "anak",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "domicile": "indonesia",
+      "listing_status": "unlisted",
+      "ticker": null,
+      "exchange": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "financial_period": null,
+      "source_note": "Keanggotaan holding menurut profil ID FOOD, bukan konfirmasi persentase saham pada 2026."
+    },
+    {
+      "id": "idfood-berdikari",
+      "group": "idfood",
+      "parent_id": "idfood-root",
+      "name": "PT Berdikari",
+      "business_id": "Peternakan dan pasokan protein hewani",
+      "source_url": "https://idfood.co.id/p/klaster-pangan",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "reported-member",
+      "ownership_pct": null,
+      "directors": [],
+      "tier": 1,
+      "tier_label": "anak",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "domicile": "indonesia",
+      "listing_status": "unlisted",
+      "ticker": null,
+      "exchange": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "financial_period": null,
+      "source_note": "Keanggotaan holding menurut profil ID FOOD, bukan konfirmasi persentase saham pada 2026."
+    },
+    {
+      "id": "idfood-garam",
+      "group": "idfood",
+      "parent_id": "idfood-root",
+      "name": "PT Garam",
+      "business_id": "Produksi dan perdagangan garam",
+      "source_url": "https://idfood.co.id/p/klaster-pangan",
+      "source_date": "2026-10-20",
+      "source_date_basis": "registry_review",
+      "relationship": "reported-member",
+      "ownership_pct": null,
+      "directors": [],
+      "tier": 1,
+      "tier_label": "anak",
+      "sector": "food",
+      "ownership_class": "indonesian-state",
+      "domicile": "indonesia",
+      "listing_status": "unlisted",
+      "ticker": null,
+      "exchange": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "financial_period": null,
+      "source_note": "Keanggotaan holding menurut profil ID FOOD, bukan konfirmasi persentase saham pada 2026."
     }
   ],
   "financial_methodology": {
