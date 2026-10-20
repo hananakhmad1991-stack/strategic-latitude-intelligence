@@ -123,7 +123,11 @@
       "status": "needs_numeric_ingestion",
       "observed_value": null,
       "source_date": null,
-      "confidence": "unassessed"
+      "confidence": "unassessed",
+      "related_historical_station_rainfall": "data/sli-bmkg-cengkareng-historical-rainfall.json",
+      "related_observation_semantics": "Single historical station Q0 daily rainfall sums for 2000–2014 with annual coverage flags. NOT drought anomaly, current warning, island-wide precipitation or asset flood hazard.",
+      "related_historical_station": "BMKG SACA&D STAID 46, Soekarno Hatta / Cengkareng",
+      "original_drought_anomaly_value_status": "unavailable_no_valid_baseline_or_local_hazard_score"
     },
     {
       "id": "CE-004",
@@ -385,6 +389,20 @@
       "related_context_only": [
         "CE-006"
       ]
+    }
+  ],
+  "historical_station_sources": [
+    {
+      "id": "saca-bmkg-station46-rainfall-2000-2014",
+      "linked_climate_id": "CE-003",
+      "dataset": "data/sli-bmkg-cengkareng-historical-rainfall.json",
+      "observation_type": "source-validated daily rainfall aggregate for available Q0 dates",
+      "station_id": 46,
+      "period": "2000–2014",
+      "last_actual_source_obs": "2020-03-30",
+      "geographic_scope": "station point; not full DKI Jakarta",
+      "source_url": "https://sacad.bmkg.go.id/ID/download/SACA_blend_rr.zip",
+      "not_same_as_anomaly": true
     }
   ]
 }
