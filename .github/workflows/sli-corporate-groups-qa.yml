@@ -3,22 +3,26 @@ on:
   push:
     paths:
       - 'data/sli-corporate-group-registry.json'
+      - 'data/sli-idx-issuer-universe.json'
       - 'js/sli-corporate-groups.js'
       - 'css/sli-corporate-groups.css'
       - 'js/sli-entities.js'
       - 'js/sli-entity-identity.js'
       - 'sli-entities.html'
       - 'tests/qa-sli-corporate-groups.mjs'
+      - 'tests/qa-sli-sector-issuer-explorer.mjs'
       - '.github/workflows/sli-corporate-groups-qa.yml'
   pull_request:
     paths:
       - 'data/sli-corporate-group-registry.json'
+      - 'data/sli-idx-issuer-universe.json'
       - 'js/sli-corporate-groups.js'
       - 'css/sli-corporate-groups.css'
       - 'js/sli-entities.js'
       - 'js/sli-entity-identity.js'
       - 'sli-entities.html'
       - 'tests/qa-sli-corporate-groups.mjs'
+      - 'tests/qa-sli-sector-issuer-explorer.mjs'
   workflow_dispatch:
 permissions: {contents: read}
 jobs:
@@ -36,4 +40,4 @@ jobs:
           node --check js/sli-entity-identity.js
       - name: Ownership, evidence, linked people and UI regression
         run: |
-          node --test tests/qa-sli-corporate-groups.mjs tests/qa-sli-entities.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-unified-dashboards.mjs
+          node --test tests/qa-sli-sector-issuer-explorer.mjs tests/qa-sli-corporate-groups.mjs tests/qa-sli-entities.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-unified-dashboards.mjs
