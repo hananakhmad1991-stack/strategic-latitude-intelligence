@@ -1,0 +1,20 @@
+*{box-sizing:border-box}body{margin:0;background:#0b1e30;color:#e8f0f7;font:13px/1.65 system-ui,sans-serif}
+.sli-issuer-shell{max-width:1350px;margin:0 auto;padding:110px clamp(17px,3vw,43px) 50px}
+.sli-issuer-breadcrumb{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px}.sli-issuer-breadcrumb a{color:#d8c494;font-size:12px}
+#sliIssuerStatus{font-size:11px;color:#aec3d3;margin-bottom:12px}
+.sli-issuer-kicker{font-size:11px;font-weight:800;letter-spacing:.13em;color:#dbba85}
+.sli-issuer-title{display:flex;align-items:center;gap:12px}.sli-issuer-title h1{font:400 clamp(25px,3.5vw,41px)/1.25 Georgia,serif;color:#f5e9d0;margin:11px 0}
+.sli-issuer-ticker{display:inline-block;font-size:15px;font-weight:800;background:#25465b;color:#f0d394;border:1px solid #738c9b;border-radius:8px;padding:6px 10px}
+.sli-issuer-sector{font-size:12px;color:#b8ceda}
+.sli-issuer-notice{padding:14px;border-left:3px solid #d6b981;background:#142e42;max-width:1000px;color:#d4d9d8;font-size:12px}
+.sli-issuer-content{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(310px,1fr);gap:17px;margin-top:25px}
+.sli-issuer-main,.sli-issuer-side{min-width:0}.sli-issuer-main>h2,.sli-issuer-related h2,.sli-issuer-side h3{font:400 23px Georgia,serif;color:#f0d9ad}
+.sli-issuer-facts{display:grid;grid-template-columns:180px minmax(0,1fr);gap:13px;border:1px solid #3e5d73;border-radius:12px;padding:20px;background:#142f43}
+.sli-issuer-facts dt{color:#afc4d5}.sli-issuer-facts dd{margin:0;color:#f0f4f7}
+.sli-issuer-links{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}.sli-issuer-links a{border:1px solid #557289;border-radius:7px;background:#17384d;padding:8px 11px;color:#eecf96;text-decoration:none;font-size:11px}
+.sli-issuer-related{margin-top:30px}.sli-issuer-related-row{border-bottom:1px solid #405b70;padding:14px 0}.sli-issuer-related-row small{display:block;color:#acbfd0}
+.sli-issuer-tv{border:1px solid #516d81;background:#122d41;border-radius:13px;padding:17px}
+.sli-issuer-tv-disclosure,.sli-issuer-missing{font-size:11px;color:#b5c8d7;line-height:1.7}
+.tradingview-widget-container{width:100%;height:480px;min-height:480px}.tradingview-widget-container__widget{height:460px;width:100%}.tradingview-widget-copyright{font-size:10px;padding:6px 2px;color:#adbccc}.tradingview-widget-copyright a{color:#e1c68d}
+@media(max-width:900px){.sli-issuer-content{grid-template-columns:1fr}.sli-issuer-shell{padding:92px 18px 30px}}
+@media(max-width:550px){.sli-issuer-facts{grid-template-columns:1fr}.sli-issuer-title h1{font-size:27px}}
