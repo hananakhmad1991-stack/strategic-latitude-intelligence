@@ -30,6 +30,27 @@ const refute=async(override,overrideApi=api)=>{
  await assert.rejects(preflight({...env,...override},overrideApi));
 };
 await refute({SLI_API_HOSTNAME:"unprotected.example.workers.dev"});
+const pilotEnv={...env,SLI_API_HOSTNAME:"sli-user-intelligence.test-account.workers.dev"};
+const pilotApp={...app,domain:pilotEnv.SLI_API_HOSTNAME};
+const pilotAPI=async (url)=>{
+ let result=[];
+ if(url.includes("/workers/subdomain"))result={subdomain:"test-account"};
+ else if(url.includes("/access/apps/app-id/policies"))result=[{decision:"allow"}];
+ else if(url.includes("/access/apps?"))result=[pilotApp];
+ else if(url.includes("/d1/database/"))result={uuid:env.SLI_D1_DATABASE_ID};
+ else throw Error("Unexpected Cloudflare API "+url);
+ return new Response(JSON.stringify({success:true,result}),{status:200});
+};
+const pilotVerified=await preflight(pilotEnv,pilotAPI);
+assert.equal(pilotVerified.mode,"workers_dev_pilot");
+assert.equal(pilotVerified.hostname,pilotEnv.SLI_API_HOSTNAME);
+await assert.rejects(preflight({...pilotEnv,SLI_API_HOSTNAME:"sli-user-intelligence.other-account.workers.dev"},pilotAPI),
+ /does not match this Cloudflare account/);
+await assert.rejects(preflight(pilotEnv,async url=>{
+ const value=url.includes("/access/apps?")?[]:url.includes("/workers/subdomain")?{subdomain:"test-account"}:null;
+ return new Response(JSON.stringify({success:true,result:value}),{status:200});
+}),/Access application/);
+
 await refute({CF_API_TOKEN:""});
 await refute({SLI_D1_DATABASE_ID:"abc"});
 await assert.rejects(preflight(env,async u=>{
@@ -60,5 +81,14 @@ try{
  assert.ok(s.includes("CF_ACCESS_ISSUER"));
  assert.ok(!s.includes(env.CF_API_TOKEN),"API bearer token must never enter Wrangler config");
  assert.ok(!s.includes("REPLACE_WITH_REAL_D1_DATABASE_ID"));
+
+ const pilotFile=await render(tmp,pilotEnv);
+ const pilot=await readFile(pilotFile,"utf8");
+ assert.match(pilot,/workers_dev = true/);
+ assert.match(pilot,/preview_urls = false/);
+ assert.ok(!pilot.includes("[[routes]]"),"workers.dev pilot must not create custom-domain routes");
+ assert.ok(!pilot.includes("custom_domain = true"));
+ assert.ok(!pilot.includes(env.CF_API_TOKEN));
+ assert.ok(pilot.includes("CF_ACCESS_AUD"));
 }finally{await rm(tmp,{recursive:true,force:true})}
 console.log("Cloudflare activation preflight and safe ephemeral config QA passed");
