@@ -22,7 +22,7 @@ const tr=(a,b)=>language()?b:a;
 const text=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=String(value);return e};
 const href=(url,label,external)=>{const a=text("a",null,label);a.href=url;if(external){a.target="_blank";a.rel="noopener noreferrer"}return a};
 const safe=(url)=>{try{const x=new URL(url);return x.protocol==="https:"&&!x.username&&!x.password?x.href:null}catch{return null}};
-const tickerURL=t=>"./sli-entities.html?ticker="+encodeURIComponent(t)+"#"+encodeURIComponent("company:idx:"+t);
+const tickerURL=t=>"./sli-issuer.html?ticker="+encodeURIComponent(t);
 const tradingView=t=>"https://www.tradingview.com/symbols/IDX-"+encodeURIComponent(t)+"/";
 const sectorText=k=>{const s=sectorDefs.find(v=>v[0]===k);return s?tr(s[1],s[2]):k};
 const fmt=(n,max=1)=>new Intl.NumberFormat(language()?"id-ID":"en-US",{maximumFractionDigits:max,minimumFractionDigits:max}).format(n);
@@ -73,9 +73,9 @@ function view(){
  if(!filtered.some(x=>x.ticker===selected))selected=filtered[0]?.ticker||"";
  const head=text("div","sli-idx-head");
  const meta=text("div");meta.append(text("span","sli-idx-eyebrow",tr("IDX / INDONESIAN LISTED ISSUER MAP","BEI / PETA EMITEN INDONESIA")),
- text("h3",null,tr("SLI Strategic Sectors · Stock Heatmap","Sektor Strategis SLI · Heatmap Saham")));
+ text("h3",null,tr("SLI IDX Watchlist & Entity Map","Watchlist IDX & Peta Emiten SLI")));
  meta.append(text("p",null,tr("Selected BEI/IDX issuer universe with direct links to sourced SLI company dossiers. This is not an official IHSG constituent list.",
- "Katalog emiten BEI/IDX sektor pilihan dengan tautan langsung ke profil perusahaan SLI. Bukan daftar resmi konstituen IHSG.")));
+ "Watchlist pasar TradingView menampilkan pergerakan merah/hijau, sedangkan peta SLI menyediakan 178 kode saham dengan tautan ke profil perusahaan masing-masing. Bukan daftar resmi konstituen IHSG.")));
  const anchor=href("https://www.tradingview.com/markets/stocks-indonesia/market-movers-all-stocks/",tr("IDX EOD market ↗","Pasar saham IDX EOD ↗"),true);anchor.className="sli-idx-external";
  const markets=text("div","sli-idx-market-links");markets.append(anchor,href("https://id.tradingview.com/symbols/IDX-COMPOSITE/",tr("IHSG / IDX Composite ↗","IHSG / Indeks Komposit ↗"),true));
  head.append(meta,markets);root.append(head);
@@ -94,9 +94,13 @@ function view(){
  const quotes=feed.size;
  const priceState=validQuotes&&quotes?
  tr(quotes+" verified EOD quotes · "+feedInfo.date+" · "+feedInfo.publisher+" · not intraday",""+quotes+" harga EOD bersumber · "+feedInfo.date+" · "+feedInfo.publisher+" · bukan intraday"):
- tr("Price-change colors and market-cap area will activate only when a properly licensed, dated EOD market feed is connected. Neutral cells mean unavailable, not 0%.",
- "Warna perubahan harga dan ukuran berdasarkan kapitalisasi hanya aktif jika data EOD berizin, bertanggal, dan tervalidasi sudah terhubung. Warna netral berarti data belum tersedia, bukan 0%.");
+ tr("The TradingView watchlist below displays provider-owned stock movements. The SLI issuer map stays neutral until a licensed market feed is connected; no fabricated percentages.",
+ "Watchlist TradingView di bawah menampilkan pergerakan saham dari penyedia. Peta emiten SLI tetap netral sampai feed pasar berizin terhubung; tidak ada persentase rekaan.");
  disclosure.append(text("span","sli-idx-disclosure-dot",validQuotes&&quotes?"●":"○"),text("span",null,priceState));root.append(disclosure);
+ const provider=text("section","sli-idx-provider");provider.id="sliIDXTradingViewWatchlist";
+ root.append(provider);
+ if(window.SLIIDXTradingView?.mount)window.SLIIDXTradingView.mount(provider,original,activeSector);
+ root.append(text("h4","sli-idx-curated-heading",tr("SLI issuer map · click any ticker for its dedicated company profile","Peta emiten SLI · klik kode saham untuk profil perusahaan khusus")));
  const workspace=text("div","sli-idx-workspace"),map=text("div","sli-idx-map"),panel=text("aside","sli-idx-detail");
  panel.id="sliIDXDetail";panel.setAttribute("aria-live","polite");workspace.append(map,panel);root.append(workspace);
  function updateFiltered(){
@@ -115,7 +119,7 @@ function view(){
     b.type="button";b.dataset.ticker=item.ticker;b.setAttribute("aria-pressed",String(item.ticker===selected));
     b.style.setProperty("--sli-idx-area",String(tileArea(item,records)));
     b.append(text("strong",null,item.ticker),text("small",null,item.name));
-    b.append(text("span","sli-idx-change",p?(p.change>0?"+":"")+fmt(p.change,2)+"%":tr("EOD N/A","EOD T/A")));
+    b.append(text("span","sli-idx-change",p?(p.change>0?"+":"")+fmt(p.change,2)+"%":tr("Open dossier ↗","Profil emiten ↗")));
     b.title=item.ticker+" · "+item.name+" · "+(p?fmt(p.change,2)+"% "+p.date:tr("Price not licensed","Harga belum berizin"));
     b.addEventListener("click",()=>{selected=item.ticker;const all=map.querySelectorAll(".sli-idx-tile");all.forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.ticker===selected)));drawDetail(panel,item)});
     grid.append(b);
@@ -143,21 +147,21 @@ function drawDetail(host,item){
  row(tr("Ticker / exchange","Kode / bursa"),"IDX:"+item.ticker);
  row(tr("Issuer directory status","Status direktori emiten"),item.verification==="official_exchange_snapshot"?
  tr("Official dated profile snapshot","Snapshot profil resmi bertanggal"):tr("SLI candidate · official IDX reconciliation pending","Kandidat SLI · rekonsiliasi BEI belum selesai"));
- row(tr("Observed close","Harga penutupan"),market?fmt(market.close,0)+" IDR · "+market.date:tr("Not available","Belum tersedia"));
- row(tr("Daily change","Perubahan harian"),market?(market.change>=0?"+":"")+fmt(market.change,2)+"%":tr("Not available","Belum tersedia"));
- row(tr("Market cap","Kapitalisasi pasar"),market&&market.marketCap?fmt(market.marketCap,0)+" IDR":tr("Not independently sourced","Belum tersedia dari sumber tervalidasi"));
+ if(market)row(tr("Observed close","Harga penutupan"),fmt(market.close,0)+" IDR · "+market.date);
+ if(market)row(tr("Daily change","Perubahan harian"),(market.change>=0?"+":"")+fmt(market.change,2)+"%");
+ if(market&&market.marketCap)row(tr("Market cap","Kapitalisasi pasar"),fmt(market.marketCap,0)+" IDR");
  host.append(dl);
  const links=text("div","sli-idx-links");
- const dossier=href(tickerURL(item.ticker),tr("Open SLI company profile ↗","Buka profil perusahaan SLI ↗"));dossier.className="sli-idx-entity-link";links.append(dossier);
+ const dossier=href(tickerURL(item.ticker),tr("Open IDX:"+item.ticker+" dedicated company dossier ↗","Buka dossier khusus emiten "+item.ticker+" ↗"));dossier.className="sli-idx-entity-link";links.append(dossier);
  if(safe(item.source_url))links.append(href(item.source_url,tr("IDX issuer source ↗","Sumber emiten BEI ↗"),true));
- links.append(href(tradingView(item.ticker),tr("TradingView IDX quote ↗","Kutipan IDX TradingView ↗"),true));
+ links.append(href(tradingView(item.ticker),tr("Provider market quote ↗","Harga pasar dari TradingView ↗"),true));
  if(market?.source_url)links.append(href(market.source_url,tr("EOD quote source ↗","Sumber harga EOD ↗"),true));
  const prompt=tr("Analyze IDX:"+item.ticker+" ("+item.name+"): sector "+item.sector+", official IDX disclosure, ownership, sourced fundamentals, and risks. Clearly separate observed facts from missing EOD quote and uncertainty.",
  "Analisis emiten IDX:"+item.ticker+" ("+item.name+"): sektor "+item.sector+", keterbukaan resmi BEI, kepemilikan, fundamental bersumber, dan risiko. Bedakan data yang teramati dari harga EOD yang belum tersedia.");
  links.append(href("./sli-research-ai.html?prompt="+encodeURIComponent(prompt),tr("Research AI ↗","Analisis Research AI ↗")));
  host.append(links);
- host.append(text("p","sli-idx-entity-note",tr("A company ticker connects to an SLI entity record; it is not proof of current IHSG membership, listing status or a quoted price.",
- "Kode saham terhubung ke entitas SLI; ini bukan bukti masih menjadi anggota IHSG, tetap tercatat di bursa, maupun memiliki harga yang sudah tervalidasi.")));
+ host.append(text("p","sli-idx-entity-note",tr("This ticker opens an issuer-specific SLI dossier. The TradingView watchlist displays provider quotes independently and cannot be imported into SLI internal price records.",
+ "Kode saham langsung membuka dossier emiten khusus. Watchlist TradingView menampilkan harga milik penyedia secara terpisah dan tidak menjadi data harga internal SLI.")));
 }
 async function read(){
  if(cached)return cached;
