@@ -11,8 +11,8 @@ from pathlib import Path
 
 URL="https://sacad.bmkg.go.id/ID/download/SACA_blend_rr.zip"
 STATIONS="https://sacad.bmkg.go.id/ID/download/data/stations_rr.txt"
-OUT=Path("artifacts/sli-bmkg-saca-darmaga-rain-review.json")
-STAID=132
+OUT=Path("artifacts/sli-bmkg-saca-cengkareng-rain-review.json")
+STAID=46
 def fetch(url,cap):
     req=urllib.request.Request(url,headers={"User-Agent":"SLI-official-BMKG-source-audit/1.0","Accept":"*/*"})
     with urllib.request.urlopen(req,timeout=100) as resp:
@@ -27,7 +27,7 @@ def run():
       "checked_at":datetime.now(timezone.utc).isoformat(),
       "publisher":"SACA&D operated by BMKG",
       "source_archive_url":URL,"station_metadata_url":STATIONS,
-      "station_id":STAID,"station_name":"DARMAGA-BOGOR",
+      "station_id":STAID,"station_name":"SOEKARNO HATTA / CENGKARENG",
       "data_class":"historical_station_daily_precipitation",
       "status":"candidate_source_not_published",
       "data_value_unit_original":"0.1 mm","missing_sentinel":-9999,
@@ -35,7 +35,7 @@ def run():
       "limits":"Historical archive may end many years before 2026 and source observations may have quality flags."}
     station_text=fetch(STATIONS,600000).decode("utf-8-sig",errors="replace")
     meta=[ln for ln in station_text.splitlines() if re.match(r"^\s*132\s*,",ln)]
-    if len(meta)!=1 or "DARMAGA" not in meta[0].upper():
+    if len(meta)!=1 or "SOEKARNO" not in meta[0].upper():
         raise ValueError("Station ID / location not confirmed in the official inventory")
     result["official_station_metadata_line"]=meta[0].strip()
     content=fetch(URL,330000000)
