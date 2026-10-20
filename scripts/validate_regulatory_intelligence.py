@@ -31,6 +31,8 @@ for k in ("uu11ite","uu19ite","uu1ite2024","pp71pste","pp80pmse","permendag31pms
 assert lookup["permendag31pmse"]["status"]=="repealed"
 for parent, successor, rel in (("uu4p2sk","uu4p2sk2026","amended_by"),("perpres10invest","perpres49invest","amended_by"),("perpres66bapanas","perpres83bgn","partially_repealed_by"),("permendag19pmse2026","permendag31pmse","repeals"),("uu11ite","uu1ite2024","amended_by")):
     assert any(e["from"]==parent and e["to"]==successor and e["type"]==rel for e in data["edges"]), (parent, successor, rel)
+for k in ("perda_sulsel_cpp2025","perda_sulsel_rpplh2024","perda_sulsel_rtrw2022","perda_sulsel_pdrd2024"):
+    assert k in lookup and lookup[k]["region"]=="Sulawesi Selatan" and lookup[k]["source"].startswith("https://jdih.sulselprov.go.id/dokumen/"), k
 assert lookup["perdirjen2007"]["status"]=="archival_not_verified"
 assert lookup["kepmen188"]["status"]=="issued_plan_not_commissioned"
 assert lookup["keppres41batam"]["status"]=="archival_not_verified"
