@@ -31,12 +31,39 @@ def download():
  return DOCUMENT.stat().st_size
 
 size=download()
-info=subprocess.run(["pdfinfo",str(DOCUMENT)],capture_output=True,text=True,check=True,timeout=60).stdout
-pages=int(re.search(r"^Pages:\s+(\d+)\b",info,re.M).group(1))
+with DOCUMENT.open("rb") as handle:
+ handle.seek(max(0,size-8192))
+ trailer=handle.read()
+print("RUPTL_PDF_TRANSFER bytes="+str(size)+" eof_found="+str(b"%%EOF" in trailer))
+probe=subprocess.run(["pdfinfo",str(DOCUMENT)],capture_output=True,text=True,timeout=80)
+if probe.returncode:
+ print("RUPTL_PDFINFO_ERROR "+re.sub(r"\\s+"," ",probe.stderr)[-850:])
+ try:
+  import fitz
+  recovered=fitz.open(str(DOCUMENT))
+  pages=len(recovered)
+  print("RUPTL_PYMUPDF_RECOVERY pages="+str(pages))
+  recovered.close()
+ except Exception as exc:
+  raise ValueError("Official PLN PDF cannot yet be read safely: "+str(exc)[:220]) from exc
+else:
+ pages=int(re.search(r"^Pages:\s+(\\d+)\\b",probe.stdout,re.M).group(1))
 if pages<=100 or pages>5000:raise ValueError("Complete PDF page count unexpectedly "+str(pages))
 print("RUPTL_FULL_PDF_OK bytes="+str(size)+" pages="+str(pages)+" origin=PLN")
 # The uploaded source ended at page 100; scan only pages missing from that original.
-text=subprocess.run(["pdftotext","-layout","-enc","UTF-8","-f","101","-l",str(pages),str(DOCUMENT),"-"],capture_output=True,text=True,check=True,timeout=210).stdout
+probe_text=subprocess.run(["pdftotext","-layout","-enc","UTF-8","-f","101","-l",str(pages),str(DOCUMENT),"-"],capture_output=True,text=True,timeout=210)
+if probe_text.returncode:
+ print("RUPTL_PDFTOTEXT_ERROR "+re.sub(r"\\s+"," ",probe_text.stderr)[-800:])
+ try:
+  import fitz
+  recovered=fitz.open(str(DOCUMENT))
+  text="\\f".join(recovered[n].get_text("text") for n in range(100,len(recovered)))
+  recovered.close()
+  print("RUPTL_PYMUPDF_TEXT_RECOVERED")
+ except Exception as exc:
+  raise ValueError("Official PLN PDF text extraction needs manual source recovery: "+str(exc)[:200]) from exc
+else:
+ text=probe_text.stdout
 page_chunks=text.split("\f")
 rows=[];identified_sections=[];candidate_count=0
 pat=re.compile(r"(?i)\b(PLTA|PLTS|PLTB|PLTP|PLTM|PLTMH|PLTG|PLTGU|PLTU|BESS|baterai|proyek pembangkit|rencana proyek|daftar proyek|rencana pengembangan sistem|tabel\s+[VXI]{1,5}[-. ]\d+)\b")
