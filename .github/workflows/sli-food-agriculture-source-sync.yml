@@ -8,6 +8,9 @@ on:
     branches: [main]
     paths:
       - 'food-agriculture-intelligence.html'
+      - 'css/food-governance-hierarchy.css'
+      - 'js/food-governance-hierarchy.js'
+      - 'data/food-governance-hierarchy.json'
       - 'css/food-agriculture-intelligence.css'
       - 'js/food-agriculture-intelligence.js'
       - 'data/food-agriculture-2026.json'
@@ -35,6 +38,7 @@ jobs:
       - name: Static source/model/UX review
         run: |
           node --check js/food-agriculture-intelligence.js
+          node --check js/food-governance-hierarchy.js
           node --check js/sli-navigation.js
           python -m py_compile scripts/build_food_agriculture.py
           python tests/test_food_officeholder_watch.py
