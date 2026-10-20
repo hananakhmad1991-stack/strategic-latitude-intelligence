@@ -14,6 +14,7 @@ import {openAITransport} from "./model-transport.mjs";
 import {buildResearchCharts} from "./chart-data.mjs";
 import {auditReport} from "./report-audit.mjs";
 import {auditResearchClaims} from "./claim-evidence-audit.mjs";
+import {buildClaimEvidenceLedger} from "./claim-evidence-ledger.mjs";
 import {probeCitedPrimaryPages} from "./primary-claim-probe.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
@@ -233,6 +234,9 @@ export default{
   // Maximum two strict allowlisted public original HTML pages; not factual certification.
   quality_audit.primary_source_probe=await probeCitedPrimaryPages(quality_audit.claim_review,evidence,
    {enabled:env.SLI_PRIMARY_CLAIM_PROBE_ENABLED!=="false"});
+  // Digest and trace cover the exact answer/evidence snapshot. No factual certification.
+  quality_audit.claim_ledger=await buildClaimEvidenceLedger(answer,evidence,
+   quality_audit.claim_review,quality_audit.primary_source_probe);
   if(legalAudit)quality_audit.legal_article_gate={
    pass:legalAudit.pass,review_scope:legalAudit.scope,
    reviewed_article_anchors:legalAudit.reviewed_article_anchors,
