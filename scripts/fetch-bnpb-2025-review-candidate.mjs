@@ -39,15 +39,26 @@ try{
   }
   return row;
  });
- if(!rows.some(x=>Object.keys(TYPES).some(k=>Number(x[TYPES[k]])>0)))throw Error("All provincial 2025 counts empty");
+ const national=rows.find(x=>key(x.province)==="INDONESIA");
+ const provinces=rows.filter(x=>key(x.province)!=="INDONESIA");
+ if(!national||provinces.length!==38||new Set(provinces.map(x=>x.admin_code)).size!==38)
+  throw Error("Expected 38 unique admin provinces and one Indonesia aggregate; got "+provinces.length);
+ if(!provinces.some(x=>Object.keys(TYPES).some(k=>Number(x[TYPES[k]])>0)))
+  throw Error("All provincial 2025 counts empty");
+ const metrics=Object.values(TYPES);
+ const nationalPublished=Object.fromEntries(metrics.map(k=>[k,national[k]]));
+ const nationalComputed=Object.fromEntries(metrics.map(k=>[k,provinces.reduce((sum,row)=>sum+row[k],0)]));
+ const anomalies=metrics.filter(k=>nationalPublished[k]!==nationalComputed[k]).map(k=>({indicator:k,provincial_sum:nationalComputed[k],source_national:nationalPublished[k],difference:nationalComputed[k]-nationalPublished[k]}));
  const out={schema:"sli-bnpb-provincial-disasters-v1",year:2025,source_url:page,source_ckan_resource_id:id,
   checked_at:new Date().toISOString(),status:"candidate_requires_reviewer_validation",
   original_publisher:"Badan Nasional Penanggulangan Bencana",rights:"Open Data Commons Attribution License per BNPB portal",scope:"Annual recorded province-level events by hazard type; not rates, damage values or site exposure scores",
-  disaster_types:Object.values(TYPES),records:rows,
-  warning:"Do not promote to production until the province/year/granularity/source workbook and totals are independently reconciled."};
+  disaster_types:metrics,records:provinces,source_national_aggregate:nationalPublished,
+  recomputed_province_aggregate:nationalComputed,
+  quality_checks:{provinces:provinces.length,metrics_checked:metrics.length,metrics_matched:metrics.length-anomalies.length,anomalies},
+  warning:"Source national/within-province discrepancies are preserved, not corrected. Candidate does NOT update production until source and administrative boundary review."};
  await mkdir("artifacts",{recursive:true});
  await writeFile("artifacts/sli-bnpb-provincial-2025-review-candidate.json",JSON.stringify(out,null,2)+"\n");
- console.log("BNPB_SOURCE_OK provinces="+rows.length+" source="+page);
+ console.log("BNPB_SOURCE_OK provinces="+provinces.length+" reconciled="+(metrics.length-anomalies.length)+"/"+metrics.length+" source="+page);
  // Public official data only; emit portable text for reviewer extraction when artifact download is unavailable.
  console.log("BNPB_JSON_BASE64="+Buffer.from(JSON.stringify(out),"utf8").toString("base64"));
 }catch(e){
