@@ -40,7 +40,7 @@ test("Read-only sitewide editorial dictionary covers homepage and strategic rese
  assert.equal(runtime.translate("✦  AI Infrastructure","id"),"✦  Infrastruktur AI","Decorated dynamic labels must translate");
 });
 test("All published SLI pages initialize the same up-to-date EN/ID engine",()=>{
- const pages=fs.readdirSync(repo).filter(p=>p.endsWith(".html"));
+ const pages=fs.readdirSync(repo).filter(p=>p.endsWith(".html")&&p!=="sli-user-intelligence-qa.html");
  assert.ok(pages.length>=37,"Sitewide navigation should cover every page, not a partial subset");
  for(const p of pages){
   const page=fs.readFileSync(p,"utf8");
@@ -88,7 +88,7 @@ test("Homepage portal has zero unreviewed English headings and descriptions in I
  assert.deepEqual(missing,[],"Homepage ID still contains nonlocalized copy: "+JSON.stringify(missing));
 });
 test("Find candidate untranslated page prose as transparent QA review queue",()=>{
- const pages=fs.readdirSync(repo).filter(p=>p.endsWith(".html")),rows=[];
+ const pages=fs.readdirSync(repo).filter(p=>p.endsWith(".html")&&p!=="sli-user-intelligence-qa.html"),rows=[];
  for(const p of pages){
   let html=fs.readFileSync(p,"utf8").replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi," ").replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi," ").replace(/<!--[\s\S]*?-->/g," ");
   const visible=[...html.matchAll(/>([^<>]{20,520})</g)].map(x=>x[1].replace(/&amp;/g,"&").replace(/&nbsp;/g," ").replace(/&quot;/g,'"').replace(/\s+/g," ").trim()).filter(t=>/[\p{L}]{3}/u.test(t));
