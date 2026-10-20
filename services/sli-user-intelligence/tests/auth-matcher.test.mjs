@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import {webcrypto,createPublicKey} from "node:crypto";
 import {requireIdentity,HttpError} from "../src/auth.mjs";
 import {validatePreferences,eligible,validateEvent} from "../src/matcher.mjs";
-globalThis.crypto=webcrypto;
 const b64=(x)=>Buffer.from(typeof x==="string"?x:JSON.stringify(x)).toString("base64url");
 const issuer="https://sli-testing.cloudflareaccess.com",aud="sli-app-aud";
 const env={CF_ACCESS_ISSUER:issuer,CF_ACCESS_AUD:aud};
