@@ -61,12 +61,40 @@ function renderDetails(){
  const n=byId?.get(selected);if(!n||n.group!==group){host.append(E('p','',T('Choose a company to view its dossier.','Pilih perusahaan untuk melihat profil.')));return}
  const head=E('div','sli-cg-profile-title');head.append(iconOf(n));const names=E('div');names.append(E('small','',depthName(n)),E('h3','',n.name));head.append(names);host.append(head);
  const chip=E('span','sli-cg-chip',n.relationship==='joint-venture'?T('Joint venture (not wholly owned)','Usaha patungan (bukan milik penuh)'):n.relationship==='subsidiary'?T('Reported subsidiary','Anak usaha terlapor'):T('Parent group','Induk grup'));host.append(chip);
+ host.append(E('p','sli-cg-company-tags',sectorName(n.sector||'energy')+' · '+className(n.ownership_class)+' · '+(n.listing_status==='listed'?T('Publicly listed','Emiten tercatat'):T('Unlisted / private / subsidiary','Tidak tercatat / privat / anak usaha'))));
  const desc=E('p','sli-cg-business',n.business_id);host.append(desc);
  const dl=E('dl','sli-cg-fields');
  const pairs=[[T('Generation','Generasi'),depthName(n)],[T('Snapshot source','Tanggal sumber'),n.source_date],
  [T('Reported ownership','Persentase terlapor'),n.ownership_pct===null?T('Not recorded · do not infer 100%','Tidak tersedia · jangan asumsikan 100%'):n.ownership_pct+'%'],
  [T('Parent entity','Induk langsung'),n.parent_id?byId.get(n.parent_id)?.name:T('Group holding','Induk grup')]];
  for(const [label,value] of pairs){dl.append(E('dt','',label),E('dd','',value))}host.append(dl);
+ const disclosure=E('section','sli-cg-finance');disclosure.append(E('h4','',T('Capital markets & financial disclosure','Pasar modal & keterbukaan keuangan')));
+ const fd=E('dl','sli-cg-fields'),listing=n.listing_status==='listed'&&n.ticker;
+ const shown=(value)=>typeof value==='number'&&Number.isFinite(value);
+ const line=(label,value)=>fd.append(E('dt','',label),E('dd','',value));
+ line(T('Issuer / exchange','Emiten / bursa'),listing?n.exchange+':'+n.ticker:T('No separate exchange ticker','Tidak memiliki kode saham tersendiri'));
+ if(listing){
+  line(T('Market capitalization','Kapitalisasi pasar'),shown(n.market_cap)&&n.market_cap_as_of&&n.market_cap_currency&&n.market_cap_source_url?
+   new Intl.NumberFormat(document.documentElement.lang==='id'?'id-ID':'en-US',{maximumFractionDigits:2}).format(n.market_cap)+' '+n.market_cap_currency+' · '+n.market_cap_as_of:
+   T('N/A · closing price and shares outstanding not ingested','N/A · harga penutupan dan saham beredar belum terindeks'));
+  line(T('Closing price × outstanding shares','Harga penutupan × saham beredar'),shown(n.closing_price)&&shown(n.shares_outstanding)&&n.market_cap_as_of?n.closing_price+' × '+n.shares_outstanding+' · '+n.market_cap_as_of:'N/A');
+ }else line(T('Market cap','Kapitalisasi pasar'),T('Not applicable: no separately listed shares','Tidak berlaku: tidak ada saham yang dicatatkan tersendiri'));
+ for(const [label,value] of [[T('Revenue','Pendapatan'),n.revenue],[T('Net profit','Laba bersih'),n.net_income],[T('Total assets','Total aset'),n.total_assets]]){
+  line(label,shown(value)&&n.financial_period&&n.financial_source_url?
+  new Intl.NumberFormat(document.documentElement.lang==='id'?'id-ID':'en-US').format(value)+' '+(n.financial_currency||'')+' · '+n.financial_period:'N/A · '+T('report/period pending source verification','perlu laporan dan periode terverifikasi'));
+ }
+ disclosure.append(fd);
+ const note=E('p','sli-cg-small',T('Capitalization is price × issued outstanding shares on the same dated trading session, not company asset value or project investment. Financial statements and shareholder percentages use their own reporting periods. Missing is not zero.','Kapitalisasi = harga saham × jumlah saham beredar pada tanggal perdagangan yang sama; bukan total aset atau nilai proyek. Laporan keuangan dan kepemilikan mengikuti tanggal serta cakupan sendiri. Data kosong bukan nol.'));
+ disclosure.append(note);
+ const financeLinks=E('div','sli-cg-source-links');
+ if(listing&&n.exchange==='IDX'){
+  financeLinks.append(aLink('https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/'+encodeURIComponent(n.ticker),T('IDX issuer profile ↗','Profil emiten BEI ↗')));
+  financeLinks.append(aLink('https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan/',T('IDX financial/annual reports ↗','Laporan keuangan & tahunan BEI ↗')));
+  financeLinks.append(aLink('https://www.idx.co.id/id/perusahaan-tercatat/data-kepemilikan-saham/',T('IDX/KSEI share ownership ↗','Kepemilikan saham BEI/KSEI ↗')));
+ }
+ if(source(n.financial_source_url))financeLinks.append(aLink(n.financial_source_url,T('Dated issuer financial report ↗','Laporan keuangan bertanggal ↗')));
+ if(source(n.market_cap_source_url))financeLinks.append(aLink(n.market_cap_source_url,T('Trading data for market cap ↗','Bukti perdagangan kapitalisasi ↗')));
+ disclosure.append(financeLinks);host.append(disclosure);
  const chain=E('div','sli-cg-chain'),p=path(n);chain.append(E('h4','',T('Ownership path','Jalur grup')));
  p.forEach((x,i)=>{if(i)chain.append(E('span','sli-cg-sep','›'));const b=E('button','sli-cg-path',x.name);b.type='button';b.addEventListener('click',()=>{selected=x.id;expand.add(x.parent_id);renderTree();renderDetails()});chain.append(b)});host.append(chain);
  const directors=E('section','sli-cg-board');directors.append(E('h4','',T('Named board of directors','Direksi yang teridentifikasi')));
@@ -87,8 +115,9 @@ function renderDetails(){
 }
 function csvCell(value){let s=String(value??'');if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}
 function exportRows(){
- if(!data)return;const columns=['group','tier','generation','entity_name','parent_entity','relationship','business','ownership_pct_reported','directors_names','source_date','original_source'];
- const rows=data.records.filter(n=>n.group===group).map(n=>[n.group,n.tier,n.tier_label,n.name,byId.get(n.parent_id)?.name||'',n.relationship,n.business_id,n.ownership_pct,n.directors?.map(d=>d.name+' — '+d.title_id).join('; ')||'',n.source_date,n.source_url]);
+ if(!data)return;
+ const columns=['group','sector','ownership_class','entity_name','parent_entity','relationship','exchange','ticker','listing_status','market_cap','market_cap_currency','market_cap_as_of','market_cap_source_url','revenue','net_income','total_assets','financial_currency','financial_period','financial_source_url','business','ownership_pct_reported','directors_names','source_date','original_source'];
+ const rows=data.records.filter(n=>n.group===group).map(n=>[n.group,n.sector,n.ownership_class,n.name,byId.get(n.parent_id)?.name||'',n.relationship,n.exchange,n.ticker,n.listing_status,n.market_cap,n.market_cap_currency,n.market_cap_as_of,n.market_cap_source_url,n.revenue,n.net_income,n.total_assets,n.financial_currency,n.financial_period,n.financial_source_url,n.business_id,n.ownership_pct,n.directors?.map(d=>d.name+' — '+d.title_id).join('; ')||'',n.source_date,n.source_url]);
  const content='\uFEFF'+[columns,...rows].map(c=>c.map(csvCell).join(',')).join('\r\n');
  const object=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'}));
  const link=document.createElement('a');link.href=object;link.download='sli-'+group+'-group-evidence.csv';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(object),1000);
