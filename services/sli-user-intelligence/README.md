@@ -1,5 +1,32 @@
 # SLI User Intelligence — Private Backend (Deployment Gated)
 
+## Domain-free private pilot (supported; no custom domain purchase required)
+
+Cloudflare supports securing a production `workers.dev` URL with an Access self-hosted application. The pilot may use **only** this exact form:
+
+```text
+sli-user-intelligence.<your-actual-cloudflare-account-subdomain>.workers.dev
+```
+
+The account subdomain is retrieved from Cloudflare at `GET /accounts/{account_id}/workers/subdomain`; **do not guess it** and do not substitute the hostname from an unrelated Worker. The deployment preflight verifies the suffix belongs to this Cloudflare account, checks the **exact** Access app audience and hostname (no wildcard or public bypass), credentialed CORS, Allow policies, and the D1 database. The generated deployment config enables the one production `workers.dev` route but disables Worker **preview URLs**. A custom domain is still preferred for a public paid SLI launch.
+
+### Owner steps for domain-free pilot
+
+1. In Cloudflare Workers, confirm your account's `workers.dev` subdomain. Enable Zero Trust in the Cloudflare account.
+2. In Zero Trust → Access → Applications, configure a self-hosted application protecting the **exact anticipated** `sli-user-intelligence.<account-subdomain>.workers.dev` hostname, allowing only your authorized pilot identities. Set credentialed CORS restricted to `https://hananakhmad1991-stack.github.io`, including the `Content-Type` preflight header and OPTIONS handling. Do **not** configure an Access Bypass policy for this API. Protect the production hostname before deployment.
+3. Create a private D1 database `sli-user-intelligence`. Configure the **GitHub Actions environment** and credentials described below; for `SLI_API_HOSTNAME` use the exact `workers.dev` pilot host above, not a custom domain.
+4. Run the manual Actions workflow with `mode=verify`. It performs read-only Cloudflare Access/D1 checks plus security tests. If it fails, do not deploy. Only after success, run `mode=deploy` with the explicit confirmation and any required environment-review approval.
+5. Verify that unauthenticated requests cannot read user data. Test **Access login first on the target workers.dev site** and then try watchlist sync from GitHub Pages in a normal browser. Because this is cross-site, some browsers block the required `CF_Authorization` cookie. If that happens, keep the frontend account-sync flag disabled; **do not weaken authentication or make CORS permissive**.
+6. Keep `config/sli-user-intelligence.json` disabled until two-account and cross-browser tests prove private inbox and sync really work. The scheduled backend may be tested independently of GitHub Pages login.
+
+The pilot does not send email or Web Push and is not an official multi-user paid launch. For the final launch, buy or bring a brand domain and move the dashboard/API to same-site HTTPS hostnames as appropriate.
+
+Official Cloudflare documentation:
+- https://developers.cloudflare.com/workers/configuration/cloudflare-access/
+- https://developers.cloudflare.com/workers/configuration/routing/workers-dev/
+- https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/
+- https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/
+
 **Status:** Source code and security tests only. This does **not** mean Cloudflare resources, Access policies, live inbox delivery, push, or email have been deployed.
 
 ## Architecture

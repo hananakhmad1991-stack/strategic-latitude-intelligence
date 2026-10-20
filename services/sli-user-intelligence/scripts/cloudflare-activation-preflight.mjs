@@ -9,10 +9,13 @@ const ORIGIN="https://hananakhmad1991-stack.github.io";
 const REQUIRED=["CF_ACCOUNT_ID","CF_API_TOKEN","SLI_ACCESS_AUD","SLI_API_HOSTNAME","SLI_ACCESS_ISSUER","SLI_D1_DATABASE_ID"];
 const die=(message)=>{throw Error(message)};
 const domain=x=>typeof x==="string"&&/^[a-z0-9](?:[a-z0-9.-]{1,251}[a-z0-9])$/.test(x)&&x.includes(".")&&!x.includes("..");
+export const isProtectedWorkersDevHost=hostname=>/^sli-user-intelligence\.[a-z0-9-]+\.workers\.dev$/.test(String(hostname||""));
 export function validateConfig(e){
  const absent=REQUIRED.filter(k=>!e[k]);if(absent.length)die("Missing configuration: "+absent.join(", "));
  if(!/^[a-f0-9-]{32,36}$/i.test(e.SLI_D1_DATABASE_ID))die("D1 database ID invalid");
- if(!domain(e.SLI_API_HOSTNAME)||e.SLI_API_HOSTNAME.endsWith(".workers.dev"))die("Dedicated protected custom hostname required");
+ if(!domain(e.SLI_API_HOSTNAME))die("Valid, dedicated protected hostname required");
+ if(e.SLI_API_HOSTNAME.endsWith(".workers.dev")&&!isProtectedWorkersDevHost(e.SLI_API_HOSTNAME))
+  die("workers.dev pilot must target EXACT sli-user-intelligence.<account-subdomain>.workers.dev");
  if(!/^https:\/\/[a-z0-9-]+\.cloudflareaccess\.com$/.test(e.SLI_ACCESS_ISSUER))die("Access team issuer invalid");
  if(e.SLI_API_HOSTNAME==="hananakhmad1991-stack.github.io")die("Cannot mount private Worker on static GitHub Pages origin");
  if(!/^[A-Za-z0-9_-]{8,128}$/.test(e.SLI_ACCESS_AUD))die("Invalid Access application AUD format");
@@ -51,6 +54,13 @@ async function api(endpoint,e,fetcher){
 }
 export async function preflight(e,fetcher=fetch){
  validateConfig(e);
+ // Domainless pilots are only allowed on the current account's own Workers subdomain.
+ // Never trust a user-entered third-party workers.dev hostname.
+ if(isProtectedWorkersDevHost(e.SLI_API_HOSTNAME)){
+  const subdomain=await api("/workers/subdomain",e,fetcher);
+  const expected="sli-user-intelligence."+String(subdomain?.subdomain||"")+".workers.dev";
+  if(e.SLI_API_HOSTNAME!==expected)die("workers.dev hostname does not match this Cloudflare account");
+ }
  const apps=await api("/access/apps?per_page=100",e,fetcher);
  if(!Array.isArray(apps))die("Access application list unreadable");
  const app=apps.find(x=>appMatches(x,e));
@@ -61,7 +71,9 @@ export async function preflight(e,fetcher=fetch){
  if(policies.some(x=>x.decision==="bypass"||x.decision==="non_identity"))die("Access bypass/non-identity policy not allowed");
  const d1=await api("/d1/database/"+e.SLI_D1_DATABASE_ID,e,fetcher);
  if(!d1||d1.uuid!==e.SLI_D1_DATABASE_ID)die("D1 database ID not confirmed by Cloudflare");
- return {access_app_id:app.id,hostname:e.SLI_API_HOSTNAME,database_verified:true,cors_origin:ORIGIN};
+ return {access_app_id:app.id,hostname:e.SLI_API_HOSTNAME,
+  mode:isProtectedWorkersDevHost(e.SLI_API_HOSTNAME)?"workers_dev_pilot":"custom_domain",
+  database_verified:true,cors_origin:ORIGIN};
 }
 if(process.argv[1]?.endsWith("cloudflare-activation-preflight.mjs")){
  preflight(process.env).then(r=>{console.log("SLI Cloudflare deployment preflight PASSED");console.log(JSON.stringify(r))})
