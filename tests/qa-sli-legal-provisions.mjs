@@ -82,7 +82,7 @@ test("Public legal reader has real article search and does not substitute index 
  assert.match(html,/sli-legal-provisions\.css/);
  const elements=new Map();
  class Element{
-  constructor(tag="div"){this.tagName=tag;this.children=[];this.value="all";this.textContent="";this.attrs={};this.handlers={};this.href="";}
+  constructor(tag="div"){this.tagName=tag;this.children=[];this.value="";this.textContent="";this.attrs={};this.handlers={};this.href="";}
   append(...items){this.children.push(...items)}
   replaceChildren(...items){this.children=items}
   addEventListener(k,cb){this.handlers[k]=cb}
@@ -99,7 +99,7 @@ test("Public legal reader has real article search and does not substitute index 
  get("policyProvisionLaw").value="pp71pste";
  get("policyProvisionLaw").handlers.change();
  assert.equal(get("policyProvisionList").children.length,2);
- get("policyProvisionQuery").value="privat";
+ get("policyProvisionQuery").value="pengawasan";
  get("policyProvisionQuery").handlers.input();
  assert.equal(get("policyProvisionList").children.length,1);
  const links=get("policyProvisionList").children[0].children.at(-1).children;
