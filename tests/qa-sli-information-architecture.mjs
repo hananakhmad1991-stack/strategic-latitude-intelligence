@@ -72,6 +72,24 @@ test('all source terms are unique, bilingual, reference-linked and self-consiste
  assert.match(page,/id="sliGlossaryMain"/);
  assert.ok(gloss.items.length>=317,'New canonical bilingual terms should be retained');
 });
+test('all public static HTML pages have a topical navigation owner (dynamic/private tools excepted)',()=>{
+ const dynamicOrPrivate=new Set(['sli-issuer.html','sli-user-intelligence-qa.html']);
+ for(const name of files){
+  if(dynamicOrPrivate.has(name))continue;
+  assert.ok(js.includes(name),'Public HTML page not discoverable in canonical taxonomy: '+name);
+ }
+ const unowned=files.filter(name=>!js.includes(name));
+ assert.deepEqual(unowned,['sli-issuer.html','sli-user-intelligence-qa.html'],'Every other published HTML route must have one topical entry');
+ const issuer=read('sli-issuer.html');
+ assert.match(issuer,/sliIssuerDossier/);
+ assert.doesNotMatch(issuer,/IDX Sector Heatmap<\/a>/,'Duplicate Home URL must not masquerade as a heatmap deep link');
+ const restricted=read('sli-user-intelligence-qa.html');
+ assert.match(restricted,/noindex, nofollow/,'Private QA endpoint must not appear as user research content');
+ const ownership=read('docs/SLI_INFORMATION_ARCHITECTURE_2026-10-20.md');
+ assert.match(ownership,/Seven visible topic families/);
+ assert.match(ownership,/not a public research category/);
+});
+
 test('seven topical families own specialist pages exactly once and distinguish overview from detail',()=>{
  assert.equal(groups.length,7,'Seven top-level navigational families, not miscellaneous extra categories');
  const all=groups.flatMap(g=>g.slice(2));
