@@ -180,7 +180,10 @@ async function load(){
     T('Official IDX profile snapshot · ','Snapshot profil resmi BEI · '):T('Initial candidate list; full IDX reconciliation pending · ','Daftar kandidat awal; rekonsiliasi penuh BEI belum selesai · '))+issuerCoverage.as_of+
    ' · '+T('Group-tree and verified reports remain separate.','Pohon grup dan laporan terverifikasi tetap dipisahkan.');
   all=[...catalog.values()].sort((a,b)=>a.title.localeCompare(b.title,'id'));
-  const hash=decodeURIComponent(location.hash.slice(1));selected=catalog.has(hash)?hash:'';
+  const hash=decodeURIComponent(location.hash.slice(1)),requestedTicker=new URLSearchParams(location.search).get('ticker')||'';
+  const target=[...catalog.values()].find(a=>a.type==='company'&&a.corporate?.exchange==='IDX'&&a.corporate?.ticker===requestedTicker);
+  selected=catalog.has(hash)?hash:(target?.key||'');
+  if(target){$('sliEntityType').value='company';$('sliEntitySector').value='all';$('sliEntitySearch').value=requestedTicker;}
   applyLanguage();filter();
  }catch(e){console.warn('[SLI entities]',e);$('sliEntityStatus').textContent=T('Source registers unavailable. Try again later; no records have been invented.','Registri sumber tidak dapat dibaca. Tidak ada data pengganti yang dibuat-buat.')}
 }
