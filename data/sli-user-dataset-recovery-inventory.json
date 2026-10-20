@@ -1,0 +1,171 @@
+{
+  "schema": "sli-user-provided-data-visibility-recovery-v1",
+  "reviewed_at": "2026-10-20",
+  "scope": "Previously uploaded public/official documents and already-reconciled SLI public datasets; not proof of completeness across all user conversations or connected accounts.",
+  "no_automatic_factual_promotion": true,
+  "datasets": [
+    {
+      "id": "bps_crime",
+      "source_upload": "statistik-kriminal-2024-2025.pdf",
+      "domain": "Domestic Security",
+      "source_agency": "BPS/Polri/Susenas/Podes",
+      "observation_period": "2023–2024 (Podes 2021/2024)",
+      "status": "numeric_in_repository_now_visible",
+      "public_dataset": "data/sli-bps-public-safety.json",
+      "main_dashboard": "geopolitical-impact-assessment.html#safety",
+      "detail_dashboard": "sli-sector-data-library.html#security",
+      "caution": "Polda is not a province; some reported data are survey proportions."
+    },
+    {
+      "id": "bps_politics",
+      "source_upload": "statistik-politik-2025.pdf",
+      "domain": "Governance",
+      "source_agency": "BPS/KPU/Dewan Pers",
+      "observation_period": "2021–2024 IDI; 2020–2024 IKP; 2024 DPT",
+      "status": "numeric_in_repository_now_visible",
+      "public_dataset": "data/sli-bps-regional-intelligence.json",
+      "main_dashboard": "geopolitical-impact-assessment.html#regional",
+      "detail_dashboard": "sli-sector-data-library.html#governance",
+      "caution": "IDI, press-freedom index and voter rolls are not interchangeable."
+    },
+    {
+      "id": "bps_grdp",
+      "source_upload": "produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.pdf",
+      "domain": "Socioeconomic",
+      "source_agency": "BPS",
+      "observation_period": "2021–2025",
+      "status": "numeric_in_repository_now_visible",
+      "public_dataset": "data/sli-bps-regional-intelligence.json",
+      "main_dashboard": "provincial-intelligence.html",
+      "detail_dashboard": "sli-sector-data-library.html#socio",
+      "caution": "2024 revised; 2025 preliminary; PMTB not BKPM realized investment."
+    },
+    {
+      "id": "bps_gini",
+      "source_upload": "BPS 2026 public original table (source-linked SLI compilation)",
+      "domain": "Socioeconomic",
+      "source_agency": "BPS/Susenas",
+      "observation_period": "2026-03",
+      "status": "numeric_in_repository_now_visible",
+      "public_dataset": "data/sli-bps-gini-2026.json",
+      "main_dashboard": "gini-inequality.html",
+      "detail_dashboard": "sli-sector-data-library.html#socio",
+      "caution": "Expenditure inequality, not income inequality."
+    },
+    {
+      "id": "iea_full",
+      "source_upload": "IEA Critical Minerals Dataset 2026.xlsx + iea_critical_minerals_2026_normalized.json",
+      "domain": "Minerals and Energy",
+      "source_agency": "IEA",
+      "observation_period": "IEA 2025 model baseline and 2030–2050 scenarios",
+      "status": "full_user_normalized_upload_restored_to_repository",
+      "public_dataset": "data/iea-critical-minerals-2026-full-scenarios.json",
+      "main_dashboard": "index.html#minerals",
+      "detail_dashboard": "sli-sector-data-library.html#minerals",
+      "license": "CC BY 4.0",
+      "caution": "Not actual 2026 production; scenarios are not forecasts certified for Indonesia."
+    },
+    {
+      "id": "iea_selected",
+      "source_upload": "IEA user workbook published selection",
+      "domain": "Minerals and Energy",
+      "source_agency": "IEA",
+      "observation_period": "2025 baseline; selected 2030/2040 scenarios",
+      "status": "numeric_in_repository_already",
+      "public_dataset": "data/iea-2026-workbook-dashboard.json",
+      "main_dashboard": "index.html#minerals",
+      "detail_dashboard": "sli-sector-data-library.html#minerals",
+      "caution": "Prior dashboard had only a subset of full workbook scenario columns."
+    },
+    {
+      "id": "pln_saidi",
+      "source_upload": "PLN Statistik 2023–2025 source-attributed data",
+      "domain": "Energy",
+      "source_agency": "PLN",
+      "observation_period": "2023–2025",
+      "status": "numeric_in_repository_now_visible",
+      "public_dataset": "data/pln-saidi-saifi-2023-2025.json",
+      "main_dashboard": "index.html#energy",
+      "detail_dashboard": "sli-sector-data-library.html#power",
+      "caution": "Service region not necessarily a province."
+    },
+    {
+      "id": "pln_ruptl",
+      "source_upload": "876718974-RUPTL-2025-2034-1.pdf and RUPTL extracted CSVs",
+      "domain": "Energy",
+      "source_agency": "PLN/ESDM",
+      "observation_period": "RUPTL 2025–2034",
+      "status": "partial_dataset_ingestion_needs_table_level_reconciliation",
+      "public_dataset": "data/pln-ruptl-2025-2034-verified-extract.json",
+      "main_dashboard": "index.html#energy",
+      "detail_dashboard": "sli-sector-data-library.html#power",
+      "caution": "Targets and project pipelines are plans, not completed assets."
+    },
+    {
+      "id": "environment",
+      "source_upload": "Previously supplied climate/environment research and official linked data",
+      "domain": "Environment",
+      "source_agency": "BMKG/BNPB/environmental agencies/NASA FIRMS",
+      "observation_period": "mixed",
+      "status": "source_registry_not_full_numeric_observations",
+      "public_dataset": "data/sli-climate-environment.json",
+      "main_dashboard": "climate-environment.html",
+      "detail_dashboard": "sli-sector-data-library.html#environment",
+      "caution": "No numerical values in 20-indicator registry; alerts, hazards, and assessed asset exposure require separate evidence."
+    },
+    {
+      "id": "bnpb_disasters",
+      "source_upload": "BNPB 2025 provincial disaster source identified",
+      "domain": "Environment",
+      "source_agency": "BNPB",
+      "observation_period": "2025",
+      "status": "pending_numeric_ingestion",
+      "public_dataset": "data/sli-bnpb-provincial-2025.json",
+      "main_dashboard": "climate-environment.html#climate-data",
+      "detail_dashboard": "sli-sector-data-library.html#environment",
+      "caution": "Do not infer 0 disasters from pending rows."
+    },
+    {
+      "id": "ai_index",
+      "source_upload": "ai_index_report_2026.pdf + sli_2025_2026_ai_report_inventory.json",
+      "domain": "AI and Technology",
+      "source_agency": "Stanford HAI and report source",
+      "observation_period": "2025–2026",
+      "status": "report_inventory_available_not_all_charts_numeric_verified",
+      "public_dataset": null,
+      "main_dashboard": "ai-intelligence-hub.html",
+      "detail_dashboard": "sli-sector-data-library.html",
+      "caution": "Figure inventory is not itself verified numeric dataset."
+    },
+    {
+      "id": "worldbank_ai",
+      "source_upload": "Digital Progress and Trends Report 2025, Strengthening AI Foundations.pdf",
+      "domain": "AI and Technology",
+      "source_agency": "World Bank",
+      "observation_period": "2025",
+      "status": "report_uploaded_numerical_ingestion_not_confirmed",
+      "public_dataset": null,
+      "main_dashboard": "ai-intelligence-hub.html",
+      "detail_dashboard": "sli-sector-data-library.html",
+      "caution": "Cannot claim all the report data appears in dashboard without figure-level checks."
+    },
+    {
+      "id": "ministry_esdm",
+      "source_upload": "content-handbook-of-energy-and-economic-statistics-of-indonesia-2025.pdf",
+      "domain": "Energy",
+      "source_agency": "ESDM",
+      "observation_period": "2025 edition",
+      "status": "uploaded_document_not_all_indicators_digitized",
+      "public_dataset": null,
+      "main_dashboard": "index.html#energy",
+      "detail_dashboard": "sli-sector-data-library.html#power",
+      "caution": "Needs an indicator-by-indicator source and version reconciliation."
+    }
+  ],
+  "limitations": [
+    "An accessible public JSON file does not mean every table in an uploaded PDF has been ingested.",
+    "Copyright and full-table reproduction permissions differ between BPS, IEA, PLN, Stanford and World Bank.",
+    "New sources are not automatically indexed as source-linked evidence in Research AI until exact provenance has been reviewed.",
+    "No local hidden file, private report or credentials are published from user uploads."
+  ]
+}
