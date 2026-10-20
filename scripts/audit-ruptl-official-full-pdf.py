@@ -17,7 +17,7 @@ DOCUMENT=Path("/tmp/sli-ruptl-pln-official.pdf")
 def download():
  request=urllib.request.Request(URL,headers={"User-Agent":"SLI-public-archive-science-review/1.0"})
  with urllib.request.urlopen(request,timeout=120) as resp:
-  if resp.geturl().split("/")[2].lower() not in ("www.pln.co.id","web.pln.co.id","pln.co.id"):
+  if resp.geturl().split("/")[2].lower() not in ("www.pln.co.id","web.pln.co.id","pln.co.id","gatrik.esdm.go.id"):
    raise ValueError("RUPTL PDF redirected to unknown domain")
   length=0
   with DOCUMENT.open("wb") as fd:
@@ -70,24 +70,52 @@ def try_http_ranges():
   print("RUPTL_RANGE_RECOVERY_FAILED "+type(exc).__name__+": "+str(exc)[:170])
   return False
 
-size=download()
-with DOCUMENT.open("rb") as handle:
- handle.seek(max(0,size-8192))
- trailer=handle.read()
-print("RUPTL_PDF_TRANSFER bytes="+str(size)+" eof_found="+str(b"%%EOF" in trailer))
-if b"%%EOF" not in trailer:
- print("RUPTL_PRIMARY_INCOMPLETE trying official byte ranges; incomplete CDN response will NOT be labelled a full PDF")
- if try_http_ranges():
-  size=DOCUMENT.stat().st_size
- else:
-  Path("artifacts").mkdir(exist_ok=True)
-  report={"schema":"sli-ruptl-source-availability-v1","status":"source_transfer_incomplete_no_project_annex_verified",
-   "source_url":URL,"bytes_received":size,"pdf_eof":False,
-   "source_discrepancy":"CDN returned incomplete PDF bytes. No annex projects, COD, ownership or MW may be imported from it.",
-   "next_step":"Try official alternative PLN/ESDM mirror or owner-supplied complete PDF with exact checksum."}
-  Path("artifacts/sli-ruptl-full-project-page-candidates.json").write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
-  print("RUPTL_BLOCKED_INCOMPLETE_SOURCE="+json.dumps(report,separators=(",",":")))
-  raise SystemExit(0)
+# Test both ministerially identified official hosts. No unofficial mirrors and no
+# assumption that a 200 response is a complete source document.
+OFFICIAL_SOURCES=[
+ ("PLN", "https://www.pln.co.id/webapi/media/file/webkorp/asset/b967d-ruptl-pln-2025-2034-pub-.pdf"),
+ ("Ditjen Gatrik ESDM", "https://gatrik.esdm.go.id/assets/uploads/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf"),
+]
+attempts=[]
+is_complete=False
+size=0
+for source_name,source_url in OFFICIAL_SOURCES:
+ URL=source_url
+ try:
+  size=download()
+  with DOCUMENT.open("rb") as handle:
+   handle.seek(max(0,size-8192))
+   trailer=handle.read()
+  eof_found=b"%%EOF" in trailer
+  print("RUPTL_PDF_TRANSFER source="+source_name+" bytes="+str(size)+" eof_found="+str(eof_found))
+  if not eof_found:
+   print("RUPTL_PRIMARY_INCOMPLETE trying byte ranges before other official sources")
+   if try_http_ranges():
+    size=DOCUMENT.stat().st_size
+    with DOCUMENT.open("rb") as handle:
+     handle.seek(max(0,size-8192))
+     eof_found=b"%%EOF" in handle.read()
+  attempts.append({"source_name":source_name,"source_url":source_url,"bytes_received":size,"pdf_eof":eof_found})
+  if eof_found:
+   is_complete=True
+   print("RUPTL_OFFICIAL_TRANSFER_COMPLETE source="+source_name+" bytes="+str(size))
+   break
+ except Exception as exc:
+  attempts.append({"source_name":source_name,"source_url":source_url,
+    "status":"download_error","error_type":type(exc).__name__,
+    "error_detail":str(exc)[:160]})
+  print("RUPTL_OFFICIAL_SOURCE_ERROR source="+source_name+" type="+type(exc).__name__+" detail="+str(exc)[:160])
+if not is_complete:
+ Path("artifacts").mkdir(exist_ok=True)
+ report={"schema":"sli-ruptl-source-availability-v1",
+  "status":"source_transfer_incomplete_no_project_annex_verified",
+  "source_url":OFFICIAL_SOURCES[0][1],"attempted_official_sources":attempts,
+  "pdf_eof":False,
+  "source_discrepancy":"Neither verified official response passed the PDF trailer integrity gate. No annex projects, COD, ownership or MW may be imported.",
+  "next_step":"Try a complete ESDM/PLN official copy or owner-supplied full document with exact checksum."}
+ Path("artifacts/sli-ruptl-full-project-page-candidates.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+ print("RUPTL_BLOCKED_INCOMPLETE_SOURCE="+json.dumps(report,separators=(",",":")))
+ raise SystemExit(0)
 
 probe=subprocess.run(["pdfinfo",str(DOCUMENT)],capture_output=True,text=True,timeout=80)
 if probe.returncode:
@@ -138,7 +166,7 @@ output={
  "schema":"sli-ruptl-full-official-pdf-page-index-v1",
  "source":"PT PLN (Persero) official full RUPTL 2025–2034 PDF",
  "source_url":URL, "checked_at":datetime.now(timezone.utc).isoformat(),
- "source_size_bytes":size,"source_pdf_total_pages":pages,"original_user_upload_pages":100,
+ "source_size_bytes":size,"source_pdf_total_pages":pages,"attempted_official_sources":attempts,"original_user_upload_pages":100,
  "scanned_missing_page_range":[101,pages],"scan_keyword_hits":candidate_count,
  "indexed_candidate_pages":len(rows),
  "status":"full_official_pdf_accessed_page_leads_only_not_approved_project_registry",
