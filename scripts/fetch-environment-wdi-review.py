@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 
 INDICATORS = {
     "AG.LND.FRST.ZS": {"name": "Forest area", "unit": "% of land area", "topic": "Forests", "scope": "land cover (not deforestation alerts)"},
-    "EN.ATM.CO2E.PC": {"name": "CO2 emissions per capita", "unit": "metric tons per person", "topic": "Emissions", "scope": "fossil-fuel and industrial CO2 per capita; check latest WDI metadata"},
+    "EN.GHG.CO2.PC.CE.AR5": {"name": "Carbon dioxide emissions excluding LULUCF per capita", "unit": "t CO2e/capita", "topic": "Emissions", "scope": "EDGAR/JRC CO2 emissions excluding land use, land-use change and forestry; NOT interchangeable with historical EN.ATM.CO2E.PC"},
     "EN.ATM.PM25.MC.M3": {"name": "PM2.5 mean annual exposure", "unit": "micrograms per cubic meter", "topic": "Air quality", "scope": "modelled population exposure; not live station AQI"},
     "EG.FEC.RNEW.ZS": {"name": "Renewable energy consumption", "unit": "% total final energy consumption", "topic": "Transition", "scope": "total final energy demand, NOT installed generation capacity or RUPTL target"},
 }
@@ -50,6 +50,7 @@ data={"schema":"sli-indonesia-environment-worldbank-wdi-candidate-v1",
       "publisher":"World Bank World Development Indicators",
       "geography":"Indonesia (IDN)",
       "status":"candidate_original_api_checked_pending_editorial_review",
+      "superseded_series_not_combined": {"legacy_code":"EN.ATM.CO2E.PC", "candidate_current_code":"EN.GHG.CO2.PC.CE.AR5", "rule":"Distinct underlying data / methodology; do not append historical legacy observations to current series"},
       "observations":[], "indicators":[], "review_warning":"Secondary World Bank cross-country indicators are dated annual model/statistical series; do NOT interpret as province forecasts, live fire alerts or 2026 observations."}
 failures=[]
 for code,detail in INDICATORS.items():
@@ -62,7 +63,8 @@ for code,detail in INDICATORS.items():
     data["indicators"].append({"indicator_code":code,**detail,
         "unit_of_observation":"Indonesia nation-year", "api_url":url,
         "latest_year":series[-1]["year"], "latest_value":series[-1]["value"],
-        "coverage_years":[series[0]["year"],series[-1]["year"]], "data_status":"source_api_series_extracted"})
+        "coverage_years":[series[0]["year"],series[-1]["year"]], "data_status":"source_api_series_extracted",
+        **({"series_break_note":"EDGAR-based CO2 excluding LULUCF. Not identical to EN.ATM.CO2E.PC, never splice."} if code=="EN.GHG.CO2.PC.CE.AR5" else {})})
     data["observations"].extend({"indicator_code":code,**row} for row in series)
     print("WORLD_BANK_WDI_SOURCE_OK "+code+" observations="+str(len(series))+
           " latest="+str(series[-1]["year"])+":"+str(series[-1]["value"]))
