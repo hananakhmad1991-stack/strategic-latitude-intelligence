@@ -27,7 +27,7 @@ const tradingView=t=>"https://www.tradingview.com/symbols/IDX-"+encodeURICompone
 const sectorText=k=>{const s=sectorDefs.find(v=>v[0]===k);return s?tr(s[1],s[2]):k};
 const fmt=(n,max=1)=>new Intl.NumberFormat(language()?"id-ID":"en-US",{maximumFractionDigits:max,minimumFractionDigits:max}).format(n);
 const VALID_TICKER=/^[A-Z0-9]{4}$/;
-let original=[],feed=new Map(),feedInfo=null,selected="",activeSector="all",query="",validQuotes=false;
+let original=[],feed=new Map(),feedInfo=null,selected="MEDC",activeSector="energy",query="",validQuotes=false;
 let cached=null,fetching=null,epoch=0;
 function uniqueSorted(rows){
  const unique=new Map();
@@ -83,7 +83,7 @@ function view(){
  const sectorLabel=text("label");sectorLabel.append(text("span",null,tr("SLI sector","Sektor SLI")));
  const select=text("select");select.id="sliIDXGroupFilter";select.setAttribute("aria-label",tr("Filter IDX issuers by SLI sector","Saring emiten IDX berdasarkan sektor SLI"));
  for(const [v,t] of [["all",tr("All strategic sectors","Semua sektor strategis")],...sectorDefs.map(x=>[x[0],sectorText(x[0])])]){const opt=text("option",null,t);opt.value=v;select.append(opt)}
- select.value=activeSector;select.addEventListener("change",()=>{activeSector=select.value;view()});sectorLabel.append(select);
+ select.value=activeSector;select.addEventListener("change",()=>{activeSector=select.value;selected=original.find(r=>activeSector==="all"?r.sector==="energy":r.sector===activeSector)?.ticker||"";view()});sectorLabel.append(select);
  const searchLabel=text("label");searchLabel.append(text("span",null,tr("Find ticker or company","Cari kode saham atau perusahaan")));
  const input=text("input");input.type="search";input.value=query;input.placeholder=tr("ANTM, TLKM, PTBA, Indofood…","ANTM, TLKM, PTBA, Indofood…");
  input.setAttribute("aria-label",tr("Search IDX stock ticker","Cari ticker BEI"));input.addEventListener("input",()=>{query=input.value.trim();updateFiltered()});
@@ -97,21 +97,33 @@ function view(){
  tr("The TradingView watchlist below displays provider-owned stock movements. The SLI issuer map stays neutral until a licensed market feed is connected; no fabricated percentages.",
  "Watchlist TradingView di bawah menampilkan pergerakan saham dari penyedia. Peta emiten SLI tetap netral sampai feed pasar berizin terhubung; tidak ada persentase rekaan.");
  disclosure.append(text("span","sli-idx-disclosure-dot",validQuotes&&quotes?"●":"○"),text("span",null,priceState));root.append(disclosure);
- const provider=text("section","sli-idx-provider");provider.id="sliIDXTradingViewWatchlist";
- root.append(provider);
- if(window.SLIIDXTradingView?.mount)window.SLIIDXTradingView.mount(provider,original,activeSector);
- root.append(text("h4","sli-idx-curated-heading",tr("SLI issuer map · click any ticker for its dedicated company profile","Peta emiten SLI · klik kode saham untuk profil perusahaan khusus")));
+ const provider=text("section","sli-idx-provider");provider.id="sliIDXTradingViewHeatmap";
+ provider.append(text("h4","sli-idx-curated-heading",tr("IDX stock heatmap · price change (%) and market cap","Heatmap saham IDX · perubahan harga (%) dan kapitalisasi")));
+ provider.append(text("p","sli-idx-provider-note",tr("TradingView's own IDX exchange-wide heatmap, not an exact SLI-sector universe. Green/red and size are calculated by the provider (IDX prices can be end-of-day).","Heatmap seluruh bursa IDX milik TradingView, bukan hanya ticker sektor SLI. Warna hijau/merah dan ukuran dihitung penyedia (harga IDX dapat berupa EOD).")));
+ const priceMount=text("div","sli-idx-heatmap-mount");provider.append(priceMount);root.append(provider);
+ if(window.SLIIDXTradingView?.mountHeatmap)window.SLIIDXTradingView.mountHeatmap(priceMount);
+ const fallback=href("https://www.tradingview.com/heatmap/stock/",tr("Open complete stock heatmap on TradingView ↗","Lihat heatmap saham lengkap di TradingView ↗"),true);
+ fallback.className="sli-idx-tv-fallback";provider.append(fallback);
+ const more=text("details","sli-idx-watchlist-accordion");more.id="sliIDXTradingViewWatchlist";
+ const moreTitle=text("summary",null,tr("More IDX quotes · watchlist by SLI strategic sector","Lihat harga IDX lainnya · watchlist per sektor strategis SLI"));
+ more.append(moreTitle);
+ const watchlistMount=text("div","sli-idx-watchlist-mount");more.append(watchlistMount);root.append(more);
+ // Lazy-create only when requested, avoiding large third-party iframes and nested scroll traps.
+ more.addEventListener("toggle",()=>{if(more.open&&window.SLIIDXTradingView?.mount)window.SLIIDXTradingView.mount(watchlistMount,original,activeSector)});
+ root.append(text("h4","sli-idx-curated-heading",tr("SLI sector issuers · select a ticker to inspect its matching dossier","Emiten sektor SLI · pilih kode untuk profil emiten yang sesuai")));
  const workspace=text("div","sli-idx-workspace"),map=text("div","sli-idx-map"),panel=text("aside","sli-idx-detail");
  panel.id="sliIDXDetail";panel.setAttribute("aria-live","polite");workspace.append(map,panel);root.append(workspace);
  function updateFiltered(){
   const matches=original.filter(x=>(activeSector==="all"||x.sector===activeSector)&&(!query||[x.ticker,x.name].join(" ").toLocaleLowerCase().includes(query.toLocaleLowerCase())));
+  if(!matches.some(x=>x.ticker===selected))selected=matches.find(x=>x.sector==="energy")?.ticker||matches[0]?.ticker||"";
   count.textContent=matches.length+" / "+original.length+" "+tr("mapped candidate tickers","kode kandidat terpetakan");
   map.replaceChildren();
   const groups=sectorDefs.filter(([code])=>activeSector==="all"||activeSector===code);
   for(const [category]of groups){
    const records=matches.filter(r=>r.sector===category);if(!records.length)continue;
-   const section=text("section","sli-idx-sector");section.setAttribute("data-sector",category);
-   const headline=text("h4",null,sectorText(category)+" · "+records.length);section.append(headline);
+   const section=text(activeSector==="all"?"details":"section","sli-idx-sector");section.setAttribute("data-sector",category);
+   if(activeSector==="all")section.open=records.some(r=>r.ticker===selected);
+   const headline=text(activeSector==="all"?"summary":"h4",null,sectorText(category)+" · "+records.length);section.append(headline);
    const grid=text("div","sli-idx-tiles");
    for(const item of records){
     const p=feed.get(item.ticker);
