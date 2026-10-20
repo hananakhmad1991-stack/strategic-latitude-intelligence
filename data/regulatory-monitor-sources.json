@@ -338,6 +338,46 @@
         "/"
       ],
       "limit": 35
+    },
+    {
+      "id": "kementan_jdih",
+      "label": "JDIH Kementan — Peraturan Menteri Pertanian",
+      "url": "https://jdih.pertanian.go.id/peraturan?jenis=permentan",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.pertanian.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/peraturan"
+      ],
+      "limit": 40
+    },
+    {
+      "id": "kementan_news",
+      "label": "Kementerian Pertanian — informasi resmi",
+      "url": "https://www.pertanian.go.id/",
+      "class": "official_policy_news",
+      "allowed_hosts": [
+        "www.pertanian.go.id",
+        "pertanian.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/"
+      ],
+      "limit": 40
+    },
+    {
+      "id": "bapanas_home",
+      "label": "Badan Pangan Nasional — Informasi Publik",
+      "url": "https://badanpangan.go.id/",
+      "class": "official_policy_news",
+      "allowed_hosts": [
+        "badanpangan.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/"
+      ],
+      "limit": 40
     }
   ],
   "watched_laws": [
@@ -530,7 +570,18 @@
     "diubah",
     "berlaku",
     "peraturan daerah",
-    "produk hukum daerah"
+    "produk hukum daerah",
+    "pangan",
+    "pertanian",
+    "pupuk",
+    "permentan",
+    "petani",
+    "bulog",
+    "bapanas",
+    "panen",
+    "gizi",
+    "beras",
+    "tambang"
   ],
   "item_retention": 450,
   "source_item_cap": 65,
