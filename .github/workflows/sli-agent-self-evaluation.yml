@@ -79,11 +79,11 @@ jobs:
           import fs from "node:fs";
           const r=JSON.parse(fs.readFileSync("artifacts/sli-agent-learning-candidates.json","utf8"));
           if(!r.pass)process.exit(1);
-          fs.appendFileSync(process.env.GITHUB_OUTPUT,"candidate_count="+r.discovery.discovered+"\\n");
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,"candidate_count="+r.discovery.discovered+"\n");
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
-            "\\n### Resolved-fix learning intake\\nExisting tested lessons: "+
+            "\n### Resolved-fix learning intake\nExisting tested lessons: "+
             r.total+"; fresh merged fix candidates for review: "+r.discovery.discovered+
-            ". No prompts, live model training or data promotion occurred.\\n");
+            ". No prompts, live model training or data promotion occurred.\n");
           NODE
       - name: Open one rolling nonduplicative review Issue for newly discovered fixes
         if: ${{ steps.lesson_intake.outputs.candidate_count != '' && steps.lesson_intake.outputs.candidate_count != '0' }}
@@ -101,11 +101,11 @@ jobs:
           node --input-type=module <<'NODE' > /tmp/sli-agent-learning-review.md
           import fs from "node:fs";
           const x=JSON.parse(fs.readFileSync("artifacts/sli-agent-learning-candidates.json","utf8"));
-          console.log("The daily SLI agent found merged fix PRs without a matching curated learning case. This is a REVIEW QUEUE, not self-training.\\n");
+          console.log("The daily SLI agent found merged fix PRs without a matching curated learning case. This is a REVIEW QUEUE, not self-training.\n");
           for(const c of x.discovery.candidates) console.log("- PR #"+c.pr_number+": "+c.pr_url);
-          console.log("\\nFor each relevant resolved bug: identify root cause; create a nonconfidential synthetic regression test; append a reviewed lesson with exact PR SHA and named test in \`tests/fixtures/sli-agent-resolved-lessons.json\`; obtain QA and owner approval.");
-          console.log("Do not copy issue bodies, real prompts, secrets, attachments or model output into the public ledger.\\n");
-          console.log("Run: "+process.env.RUN_URL+"\\n");
+          console.log("\nFor each relevant resolved bug: identify root cause; create a nonconfidential synthetic regression test; append a reviewed lesson with exact PR SHA and named test in \`tests/fixtures/sli-agent-resolved-lessons.json\`; obtain QA and owner approval.");
+          console.log("Do not copy issue bodies, real prompts, secrets, attachments or model output into the public ledger.\n");
+          console.log("Run: "+process.env.RUN_URL+"\n");
           console.log("SLI-AGENT-RESOLVED-FIX-LEARNING-REVIEW");
           NODE
           gh issue create --title "SLI Agent: review newly resolved fixes for learning tests" --body-file /tmp/sli-agent-learning-review.md
