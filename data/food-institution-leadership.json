@@ -1,0 +1,67 @@
+{
+  "schema_version": "sli-food-leadership-v1",
+  "as_of": "2026-10-14",
+  "review_status": "official_primary_source_verified",
+  "review_note": "Current officeholder is backed by official Bapanas roster and dated 14 October 2026 Bapanas press release. This curated record does not auto-update from AI-generated text.",
+  "source_priority": [
+    "formal_appointment_or_removal_instrument",
+    "current_official_institution_roster",
+    "dated_official_press_release",
+    "independent_secondary_news_for_follow_up_only"
+  ],
+  "appointments": [
+    {
+      "institution_id": "bapanas",
+      "office": "Kepala Badan Pangan Nasional",
+      "office_en": "Head of National Food Agency",
+      "person": "Andi Amran Sulaiman",
+      "concurrent_role": "Menteri Pertanian",
+      "concurrent_role_en": "Minister of Agriculture",
+      "appointed_on": "2025-10-09",
+      "instrument": "Keputusan Presiden Nomor 116/P Tahun 2025",
+      "replaces": "Arief Prasetyo Adi",
+      "last_official_confirmation": "2026-10-14",
+      "sources": [
+        {
+          "type": "official_head_profile",
+          "url": "https://badanpangan.go.id/wiki/profil-kepala-badan"
+        },
+        {
+          "type": "official_dated_press_release",
+          "url": "https://pustaka.badanpangan.go.id/publikasi/20d135f0f28185b84a4cf7aa51f29500"
+        },
+        {
+          "type": "official_appointment_report",
+          "url": "https://bpmsph.ditjenpkh.pertanian.go.id/index.php/berita/mentan-amran-dilantik-sebagai-kepala-bapanas-ciptakan-efisiensi-perkuat-tata-pangan-nasional"
+        }
+      ]
+    },
+    {
+      "institution_id": "kementan",
+      "office": "Menteri Pertanian",
+      "office_en": "Minister of Agriculture",
+      "person": "Andi Amran Sulaiman",
+      "concurrent_role": "Kepala Badan Pangan Nasional",
+      "concurrent_role_en": "Head of National Food Agency",
+      "appointed_on": null,
+      "instrument": null,
+      "last_official_confirmation": "2026-10-14",
+      "sources": [
+        {
+          "type": "official_head_profile",
+          "url": "https://badanpangan.go.id/wiki/profil-kepala-badan"
+        },
+        {
+          "type": "official_dated_press_release",
+          "url": "https://pustaka.badanpangan.go.id/publikasi/20d135f0f28185b84a4cf7aa51f29500"
+        }
+      ]
+    }
+  ],
+  "rules": {
+    "missing_officeholder": "show_unverified_do_not_guess",
+    "source_access_blocked": "retain_last_reviewed_record_and_flag_stale",
+    "change_candidate": "require_official_appointment_document_and_human_review_before_promotion",
+    "never_use_news_headline_alone": true
+  }
+}
