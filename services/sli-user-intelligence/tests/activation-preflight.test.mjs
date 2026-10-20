@@ -53,6 +53,7 @@ try{
  const outfile=await render(tmp,env);
  const s=await readFile(outfile,"utf8");
  assert.match(s,/workers_dev = false/);
+ assert.match(s,/preview_urls = false/);
  assert.match(s,/custom_domain = true/);
  assert.ok(s.includes('pattern = "'+env.SLI_API_HOSTNAME+'"'));
  assert.ok(s.includes(env.SLI_D1_DATABASE_ID));
