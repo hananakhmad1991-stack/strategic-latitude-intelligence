@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SLI Decision Terminal · Strategic Latitude Intelligence</title>
+<meta name="description" content="Workspace intelijen berbasis sumber untuk memantau emiten BEI, berita, regulasi, geopolitik dan riset lintas sektor Indonesia.">
+<script>/* SLI chrome prepaint: unified early locale and anti-FOUC */try{var pref=localStorage.getItem('sli-ui-language');if(pref==='en'||pref==='id')document.documentElement.lang=pref}catch(_){ }document.documentElement.classList.add('sli-chrome-pending');window.addEventListener('load',function(){setTimeout(function(){document.documentElement.classList.remove('sli-chrome-pending')},1400)},{once:true});</script>
+<script src="./js/sli-live-data.js?v=20261019-id-audit9"></script>
+<script defer src="./js/sli-shared-appendix.js?v=20261016-glossary1"></script>
+<link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
+<link rel="stylesheet" href="./css/sli-decision-terminal.css?v=20261020-terminal1">
+<script defer src="./js/sli-decision-terminal.js?v=20261020-terminal1"></script>
+<script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script>
+</head><body>
+<main class="sli-terminal-shell" id="sliTerminalRoot">
+<header class="sli-terminal-intro">
+<span class="sli-terminal-kicker">SLI · DECISION INTELLIGENCE</span>
+<h1 data-terminal-en="SLI Decision Terminal" data-terminal-id="SLI Decision Terminal">SLI Decision Terminal</h1>
+<p data-terminal-en="An integrated workspace for companies, attributed news, regulations and sector risks, grounded in existing SLI source records." data-terminal-id="Workspace terpadu untuk perusahaan, berita teratribusi, regulasi, dan risiko sektoral dari registri sumber SLI.">Workspace terpadu untuk perusahaan, berita teratribusi, regulasi, dan risiko sektoral dari registri sumber SLI.</p>
+<p class="sli-terminal-notice" data-terminal-en="Research-oriented preview, not a Bloomberg product or trading terminal. A source-linked report is not automatically fact-checked; ticker records are not validated live exchange membership. No live quotes, simulated returns or brokerage execution." data-terminal-id="Pratinjau workspace riset, bukan produk Bloomberg atau terminal perdagangan. Berita bersumber belum otomatis terverifikasi; daftar ticker bukan keanggotaan bursa yang sudah diperiksa langsung. Tidak ada harga live, imbal hasil simulasi, maupun eksekusi transaksi.">Pratinjau workspace riset, bukan produk Bloomberg atau terminal perdagangan. Berita bersumber belum otomatis terverifikasi; daftar ticker bukan keanggotaan bursa yang sudah diperiksa langsung. Tidak ada harga live, imbal hasil simulasi, maupun eksekusi transaksi.</p>
+</header>
+<section class="sli-terminal-controls" aria-label="Decision terminal controls">
+<label><span data-terminal-en="Workspace" data-terminal-id="Workspace">Workspace</span>
+<select id="sliTerminalRole"><option value="investor">Investor / Company</option><option value="research">Research / OSINT</option><option value="policy">Policy / Regulation</option></select></label>
+<label><span data-terminal-en="Strategic sector" data-terminal-id="Sektor strategis">Sektor strategis</span>
+<select id="sliTerminalSector"><option value="all">All sectors</option><option value="energy">Energy</option><option value="minerals">Critical minerals</option><option value="coal">Coal</option><option value="food">Food &amp; agriculture</option><option value="technology">Technology &amp; AI</option><option value="infrastructure">Infrastructure</option><option value="transport">Transport</option><option value="manufacturing">Manufacturing</option></select></label>
+<label class="sli-terminal-query"><span data-terminal-en="Find ticker, company, news, or regulation" data-terminal-id="Cari ticker, perusahaan, berita, atau peraturan">Cari ticker, perusahaan, berita, atau peraturan</span>
+<input type="search" id="sliTerminalSearch" placeholder="ANTM, nikel, beras, PLN, pajak..." autocomplete="off" aria-label="Search source-linked SLI records"/></label>
+</section>
+<div class="sli-terminal-hint" data-terminal-en="Shortcut: Ctrl/⌘ + K focuses search · Esc clears search. Choose a ticker to inspect relationships and launch a source-qualified Research AI question." data-terminal-id="Pintasan: Ctrl/⌘ + K untuk mencari · Esc menghapus pencarian. Pilih ticker untuk menelusuri hubungan dan membuat pertanyaan riset bersumber.">Pintasan: Ctrl/⌘ + K untuk mencari · Esc menghapus pencarian. Pilih ticker untuk menelusuri hubungan dan membuat pertanyaan riset bersumber.</div>
+<div id="sliTerminalStatus" class="sli-terminal-status" role="status" aria-live="polite">Menghubungkan sumber SLI…</div>
+<section class="sli-terminal-stats" id="sliTerminalStats" aria-label="Available source coverage"></section>
+<div class="sli-terminal-workspace">
+<section class="sli-terminal-panel sli-terminal-entities" aria-labelledby="sliTermEntitiesTitle">
+<div class="sli-terminal-panel-head"><h2 id="sliTermEntitiesTitle" data-terminal-en="Entities & local watchlist" data-terminal-id="Entitas & watchlist lokal">Entitas &amp; watchlist lokal</h2><span id="sliTerminalEntityCount"></span></div>
+<div id="sliTerminalEntityList" class="sli-terminal-entity-list"></div>
+<div id="sliTerminalSelected" aria-live="polite"></div>
+</section>
+<section class="sli-terminal-panel sli-terminal-feed" aria-labelledby="sliTermFeedTitle">
+<div class="sli-terminal-panel-head"><h2 id="sliTermFeedTitle" data-terminal-en="Source-attributed signal feed" data-terminal-id="Aliran sinyal bersumber">Aliran sinyal bersumber</h2></div>
+<div id="sliTerminalNews"></div>
+</section>
+<section class="sli-terminal-panel sli-terminal-policy" aria-labelledby="sliTermPoliciesTitle">
+<div class="sli-terminal-panel-head"><h2 id="sliTermPoliciesTitle" data-terminal-en="Policy, research & next steps" data-terminal-id="Kebijakan, riset & tindak lanjut">Kebijakan, riset &amp; tindak lanjut</h2></div>
+<div id="sliTerminalPolicy"></div>
+<nav id="sliTerminalActions" class="sli-terminal-actions" aria-label="Cross-sector research pathways"></nav>
+</section>
+</div>
+<p class="sli-terminal-footer" data-terminal-en="Sources and dates belong to the original datasets. Browser watchlists are local-only and do not create background alerts. Match to company or sector is for discovery, not evidence of price impact, violation, or causation." data-terminal-id="Sumber dan tanggal mengikuti dataset asal. Watchlist hanya tersimpan di browser dan tidak mengaktifkan notifikasi otomatis. Hubungan perusahaan atau sektor bertujuan untuk penelusuran, bukan bukti dampak harga, pelanggaran, atau sebab-akibat.">Sumber dan tanggal mengikuti dataset asal. Watchlist hanya tersimpan di browser dan tidak mengaktifkan notifikasi otomatis. Hubungan perusahaan atau sektor bertujuan untuk penelusuran, bukan bukti dampak harga, pelanggaran, atau sebab-akibat.</p>
+</main></body></html>
