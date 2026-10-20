@@ -215,14 +215,19 @@ await check("Navigation parity: Home and Full Overview open the SAME sector drop
   await page.waitForFunction(()=>document.querySelector("#sliPlatformMast .sli-platform-explorer")?.open===true,null,{timeout:6000});
   const menu=dropdown.locator(".sli-platform-sector-menu");
   assert.ok(await menu.isVisible(),"Explore Data dropdown not visible on "+chapter);
+  assert.equal(await menu.locator(".sli-platform-sector-group").count(),7,"Explorer must have seven coherent topical groups");
+  assert.ok(await menu.locator(".sli-platform-sector-group").nth(4).locator('a[href="./ai-investor-layer.html"]').count()===1,"AI specialist route must live inside AI group");
+  assert.ok(await menu.locator(".sli-platform-sector-group").nth(2).locator('a[href="./pln-ruptl-2025-2034-source-intelligence.html"]').count()===1,"RUPTL detail must live inside Energy group");
   assert.ok(await menu.locator('a[href="./index.html#energy"]').count()===1,"Energy sector missing from unified menu");
   assert.ok(await menu.locator('a[href="./sli-sector-data-library.html#power"]').count()===1,"Power source evidence not nested beneath Energy");
   assert.equal(await menu.locator('a[href="./sli-sector-data-library.html"]').count(),0,"Data Library is not a top-level category");
   await page.keyboard.press("Escape");
   assert.equal(await dropdown.getAttribute("open"),null,"Escape must close accessible Explore Data dropdown");
  }
- await page.locator("#sliPlatformMast .sli-platform-explorer summary").click();
- await page.locator('#sliPlatformMast .sli-platform-sector-menu a[href="./index.html#energy"]').click();
+ await page.locator("#sliPlatformMast .sli-platform-explorer > summary").click();
+ const energyFamily=page.locator("#sliPlatformMast .sli-platform-sector-group").nth(2);
+ await energyFamily.locator(":scope > summary").click();
+ await energyFamily.locator('a[href="./index.html#energy"]').click();
  await page.waitForURL(/#energy$/,{timeout:15000});
  assert.equal(await page.locator("body.sli-home-active").count(),0,"Choosing energy must open dashboard, not scroll homepage");
 });
