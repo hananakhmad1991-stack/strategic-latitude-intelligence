@@ -80,7 +80,7 @@ test("Word export builds a real WordprocessingML package: Arial 11pt, justified,
  assert.match(files.get("word/styles.xml"),/w:ind w:left="720" w:hanging="720"/);
  assert.match(files.get("word/header1.xml"),/STRATEGIC LATITUDE INTELLIGENCE/);
  assert.match(files.get("word/footer1.xml"),/PAGE/);
- assert.match(files.get("word/document.xml"),/Daftar Pustaka/);
+ assert.match(files.get("word/document.xml"),/Sumber dan Referensi/);
  assert.match(files.get("word/document.xml"),/w:tbl/);
  assert.match(files.get("word/document.xml"),/w:i\/>/);
 });
