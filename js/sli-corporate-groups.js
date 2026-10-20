@@ -258,7 +258,7 @@ function initialize(db){
  sectorSelect.addEventListener('change',()=>{sector=sectorSelect.value;
   const matches=db.groups.filter(g=>sector==='all'||g.sector===sector);
   if(!matches.some(g=>g.id===group)&&matches.length){group=matches[0].id;selected=matches[0].root_id}
-  if(!matches.length||view==='issuer')view='issuer';
+  view=issuerByTicker.size?'issuer':matches.length?'group':'issuer';
   selectedTicker=allSectorIssuers()[0]?.ticker||'';issuerLimit=60;query='';document.getElementById('sliCgSearch').value='';
   if(selected)expand.add(selected);renderTabs();renderTree();renderDetails();
  });
