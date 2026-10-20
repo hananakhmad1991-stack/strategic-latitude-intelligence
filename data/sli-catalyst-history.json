@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-10-20T13:20:17.096Z",
+  "published_at_utc": "2026-10-20T14:14:53.210Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-10-20T13:20:16.043916Z",
+    "news": "2026-10-20T14:14:49.743662Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-20",
     "participations": "2026-10-20"
   },
-  "count": 97,
+  "count": 98,
   "events": [
+    {
+      "id": "sli-catalyst-1c8ebe7ce5c4cbf9a5",
+      "kind": "news_indexed",
+      "title": "China Sets Up State-Owned Data Group to Drive its AI Ambitions - Bloomberg.com",
+      "detected_at_utc": "2026-10-20T14:14:53.210Z",
+      "source_at_utc": "2026-10-20T12:13:00Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOcTV1amNXT0VzMUNSRHRaYy1DekJHWUVsRkptWmRvQzE3MnhIWU8wek80bURmZVpxVldHT2FWcFFHX1ZCMzhaWHVFMnRGM19GZ1dPU3NjWEdyc3FsLWg3WHFCNHdpZURaQ3ZSTG52THBnYWd0S2IyZmd4SmpuVFUzcE82Xzg3WTE4SjIwbS1FWk9leEEyd0pqNkw2ZHRFWUQyc2ZKOXRXMlFXQlUycHVTR0ZHSQ?oc=5",
+      "publisher": "Bloomberg.com",
+      "sector": "ai",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-0feab8586530e7a78e",
       "kind": "news_indexed",
