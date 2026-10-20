@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perpustakaan Data SLI | Kriminalitas, Demokrasi, Sosial Ekonomi, IEA, Lingkungan</title>
+<meta name="description" content="Jelajahi dataset yang telah diproses SLI dari BPS, IEA, PLN dan sumber lingkungan: nilai, periode, cakupan, metode, serta ketidaktersediaan angka.">
+<link rel="stylesheet" href="./css/sli-sector-data-library.css?v=20261020-upload-restore1">
+</head><body>
+<a class="skip" href="#libraryMain">Langsung ke data</a>
+<header class="top"><a href="./index.html#home" class="brand">SLI <span>STRATEGIC LATITUDE<br>INTELLIGENCE</span></a>
+<nav aria-label="Navigasi SLI"><a href="./index.html#home">Beranda</a><a href="./geopolitical-impact-assessment.html">Indonesia Intelligence</a><a href="./climate-environment.html">Iklim</a><a href="./sli-research-ai.html">DERGUBA AI</a></nav></header>
+<main id="libraryMain">
+<section class="hero"><p class="eyebrow">SLI · SOURCE-LINKED DATA LIBRARY</p><h1>Perpustakaan Data <em>SLI</em></h1>
+<p>Data yang sudah diolah dan diberi rujukan ditampilkan sesuai bidangnya. Gunakan filter untuk membuka rincian kriminalitas, demokrasi, sosial-ekonomi, mineral IEA, lingkungan dan keandalan listrik.</p>
+<p class="important">Periode observasi dan unit ukur berbeda; arsip ini bukan data real-time atau penilaian risiko otomatis. Data tidak tersedia diberi label <strong>belum diimpor</strong>, bukan nol. Statistik BPS yang bersumber dari unggahan tetap memerlukan pemeriksaan izin penggunaan komersial.</p></section>
+<div id="libStatus" class="status" role="status" aria-live="polite">Memuat sumber data SLI…</div>
+<nav class="tabs" aria-label="Kelompok dataset">
+<a href="#security">Keamanan & kriminalitas</a><a href="#governance">Demokrasi & politik</a>
+<a href="#socio">Sosial-ekonomi</a><a href="#minerals">Mineral IEA</a>
+<a href="#environment">Lingkungan</a><a href="#power">Keandalan listrik</a>
+</nav>
+<section id="security" class="section"><div class="head"><div><p class="eyebrow">01 · POLRI / SUSENAS / PODES</p><h2>Keamanan & kriminalitas</h2></div><a href="./geopolitical-impact-assessment.html">Indonesia Intelligence ↗</a></div>
+<p>Rekap kepolisian berdasarkan wilayah Polda <strong>bukan</strong> tabel provinsi administratif. Susenas dan Podes menggunakan sampel/denominator berbeda dan tidak boleh dijumlahkan dengan kasus kepolisian.</p>
+<div id="securityKpis" class="metrics"></div>
+<div class="filter"><label for="securityView">Rincian menurut sumber</label><select id="securityView">
+<option value="susenas">Susenas/Podes · 38 provinsi administratif</option><option value="polda">Polri · wilayah Polda</option></select></div>
+<div id="securityTable" class="scroll" role="region" aria-label="Tabel indikator keamanan" tabindex="0"></div>
+<p class="note">Korban kejahatan dalam survei tidak sama dengan jumlah kejahatan yang tercatat kepolisian. Polda Metro Jaya dan Polda Papua tidak sepenuhnya sejajar dengan batas provinsi.</p>
+<p class="sources"><a target="_blank" rel="noopener noreferrer" href="https://www.bps.go.id/id/publication/2025/12/12/2edc8ea4c35b19ba912fc7e4/statistik-kriminal-2024-2025.html">BPS Statistik Kriminal 2024/2025 ↗</a></p></section>
+<section id="governance" class="section"><div class="head"><div><p class="eyebrow">02 · BPS / DEWAN PERS / KPU</p><h2>Demokrasi, pemilu & kebebasan pers</h2></div><a href="./geopolitical-impact-assessment.html">Governance dashboard ↗</a></div>
+<div id="idiSeries" class="metrics"></div><div id="governanceTable" class="scroll" role="region" aria-label="Tabel politik dan kebebasan pers" tabindex="0"></div>
+<p class="note">Indeks Demokrasi Indonesia (IDI), Indeks Kemerdekaan Pers (IKP), dan daftar pemilih tetap (DPT) adalah tiga ukuran yang berbeda. DPT bukan angka partisipasi pemilih.</p>
+<p class="sources"><a target="_blank" rel="noopener noreferrer" href="https://www.bps.go.id/id/publication/2025/12/22/8bc8ad59afe1985f822fce41/statistik-politik-2025.html">BPS Statistik Politik 2025 ↗</a></p></section>
+<section id="socio" class="section"><div class="head"><div><p class="eyebrow">03 · BPS PDRB / SUSENAS</p><h2>Sosial-ekonomi provinsi</h2></div><a href="./provincial-intelligence.html">Provincial Intelligence ↗</a></div>
+<div id="socioKpis" class="metrics"></div>
+<div class="filter"><label for="socioQuery">Cari provinsi</label><input id="socioQuery" type="search" placeholder="Contoh: Jawa Tengah, Aceh, Papua" autocomplete="off"></div>
+<div id="socioTable" class="scroll" role="region" aria-label="Tabel PDRB dan ketimpangan provinsi" tabindex="0"></div>
+<p class="note">PDRB 2025 merupakan angka sementara dan dinyatakan dalam miliar rupiah. Gini Maret 2026 mengukur ketimpangan pengeluaran, bukan pendapatan. PMTB adalah komponen PDRB, bukan investasi terealisasi BKPM. Provinsi Papua baru tidak memiliki seri historis yang sepenuhnya sebanding.</p>
+<p class="sources"><a target="_blank" rel="noopener noreferrer" href="https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html">BPS PDRB 2021–2025 ↗</a></p></section>
+<section id="minerals" class="section"><div class="head"><div><p class="eyebrow">04 · IEA JULY 2026 · CC BY 4.0</p><h2>Mineral kritis & skenario energi IEA</h2></div><a href="./index.html#minerals">Mineral Intelligence ↗</a></div>
+<p id="ieaSummary">Skenario model IEA: 2025 baseline dan 2030–2050 dalam CPS, STEPS dan HDS; <strong>bukan</strong> volume produksi aktual Indonesia 2026. Angka produksi pertambangan dan pemurnian tidak boleh dijumlahkan.</p>
+<div class="filter"><label for="ieaGroup">Kelompok tabel demand</label><select id="ieaGroup"></select>
+<label for="ieaMineral">Filter mineral atau teknologi</label><select id="ieaMineral"></select></div>
+<div id="ieaDemand" class="scroll" role="region" tabindex="0" aria-label="Tabel skenario IEA lengkap"></div>
+<h3>Produksi pertambangan dan pemurnian · proyeksi IEA</h3><div class="filter"><label for="ieaSupplyMineral">Mineral</label><select id="ieaSupplyMineral"></select></div>
+<div id="ieaSupply" class="scroll" role="region" tabindex="0" aria-label="Tabel pasokan negara menurut IEA"></div>
+<p class="note">Angka dinyatakan dalam ribu ton metrik (kt), kecuali tabel berkode “share”. Kredibilitas model mengacu pada dataset IEA, bukan pengesahan atau audit oleh SLI. Proyeksi tidak sama dengan observasi.</p>
+<p class="sources"><a href="https://www.iea.org/data-and-statistics/data-product/critical-minerals-dataset" target="_blank" rel="noopener noreferrer">IEA Critical Minerals Dataset 2026 ↗</a> · <a href="https://www.iea.org/data-and-statistics/data-tools/critical-minerals-data-explorer" target="_blank" rel="noopener noreferrer">IEA Data Explorer ↗</a></p>
+<p class="attribution">Source: IEA (2026), Critical Minerals Dataset, CC BY 4.0. User-provided workbook normalized by SLI. Not an IEA-endorsed dashboard.</p></section>
+<section id="environment" class="section"><div class="head"><div><p class="eyebrow">05 · BMKG / BNPB / ENVIRONMENT</p><h2>Lingkungan dan bahaya iklim</h2></div><a href="./climate-environment.html">Climate & Environment ↗</a></div>
+<div id="environmentStatus" class="metrics"></div><p>Indikator di bawah berasal dari registri sumber. Sebagian masih berupa daftar sumber atau rencana pengukuran, <strong>bukan angka observasi yang telah masuk SLI</strong>.</p>
+<div id="environmentTable" class="scroll" role="region" tabindex="0" aria-label="Status indikator lingkungan"></div><div id="environmentLinks" class="sourcegrid"></div>
+<p class="note">Jangan menginterpretasikan “belum ada angka” sebagai tidak ada banjir, kebakaran, pencemaran atau pelanggaran lingkungan. Periksa peringatan BMKG dan data resmi BNPB sesuai tanggal kejadian.</p></section>
+<section id="power" class="section"><div class="head"><div><p class="eyebrow">06 · PLN STATISTIK 2023–2025</p><h2>Keandalan listrik · SAIDI & SAIFI</h2></div><a href="./index.html#energy">Energy Intelligence ↗</a></div>
+<div id="powerKpis" class="metrics"></div><div id="powerTable" class="scroll" role="region" tabindex="0" aria-label="PLN SAIDI dan SAIFI historis"></div>
+<p class="note">SAIDI = durasi gangguan rata-rata (jam/pelanggan/tahun). SAIFI = frekuensi gangguan rata-rata (gangguan/pelanggan/tahun). Unit pelayanan PLN tertentu melayani lebih dari satu provinsi; jangan menyebutnya angka provinsi secara langsung.</p>
+<div class="sources"><a href="https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf" target="_blank" rel="noopener noreferrer">PLN Statistik 2025 ↗</a></div></section>
+<section class="section"><h2>Status pemulihan & keterbatasan</h2><p>Angka-angka di panel ini berasal dari dataset SLI yang sudah diberi sumber dan dataset IEA unggahan yang dinormalisasi kembali. Buku PDF BPS tidak diterbitkan ulang secara penuh. Data AI Index dan laporan World Bank yang pernah diunggah masih harus direkonsiliasi dengan tabel/lisensi serta dashboard sektoralnya sebelum dianggap sudah terintegrasi secara numerik.</p>
+<p>Periksa sumber asli, klasifikasi wilayah, periode, status revisi, izin penggunaan ulang dan metadata versi sebelum memakai angka untuk publikasi atau keputusan investasi.</p></section>
+</main><footer>© Strategic Latitude Intelligence · Data explorer bersumber · Status publikasi bukan verifikasi setiap angka · <a href="./sli-research-ai.html">Analisis lanjutan di DERGUBA AI ↗</a></footer>
+<script src="./js/sli-sector-data-library.js?v=20261020-upload-restore1" defer></script>
+</body></html>
