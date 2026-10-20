@@ -2,7 +2,7 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
 const ids={};
-const official=new Set(["peraturan.go.id","www.peraturan.go.id","peraturan.bpk.go.id","jdih.tanjungpinangkota.go.id"]);
+const official=new Set(["peraturan.go.id","www.peraturan.go.id","peraturan.bpk.go.id","jdih.tanjungpinangkota.go.id","jdih.pkp.go.id","jdih.kemenkoinfra.go.id"]);
 const normalize=s=>String(s||"").toLowerCase().normalize("NFKD").replace(/\s+/g," ").trim();
 function valid(r){
  try{const u=new URL(r.source_url);return u.protocol==="https:"&&official.has(u.hostname)&&
