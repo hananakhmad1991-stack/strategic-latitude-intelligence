@@ -123,20 +123,43 @@ function exportRows(){
  const link=document.createElement('a');link.href=object;link.download='sli-'+group+'-group-evidence.csv';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(object),1000);
 }
 function initialize(db){
- if(db?.schema!=='sli-corporate-group-registry-v1'||!Array.isArray(db.records)||db.groups?.length!==3)throw Error('Group registry schema invalid');
- const ids=new Set();for(const n of db.records){if(!n.id||ids.has(n.id)||!source(n.source_url)||!n.business_id||!n.source_date)throw Error('Bad record '+n.id);ids.add(n.id)}
- for(const n of db.records)if(n.parent_id&&!ids.has(n.parent_id))throw Error('Broken ownership parent '+n.id);
- data=db;byId=new Map(db.records.map(n=>[n.id,n]));expand=new Set(db.groups.map(g=>g.root_id));
- const hash=new URLSearchParams(location.search);const selectedGroup=hash.get('group');
- if(db.groups.some(g=>g.id===selectedGroup))group=selectedGroup;
- selected=db.groups.find(g=>g.id===group).root_id;
- document.querySelectorAll('[data-sli-cg-group]').forEach(b=>b.addEventListener('click',()=>{group=b.dataset.sliCgGroup;query='';document.getElementById('sliCgSearch').value='';selected=db.groups.find(g=>g.id===group).root_id;renderTree();renderDetails()}));
+ if(db?.schema!=='sli-corporate-group-registry-v2'||!Array.isArray(db.records)||!Array.isArray(db.groups)||db.groups.length<5)throw Error('Multisector registry schema invalid');
+ const ids=new Set(),groups=new Map(db.groups.map(g=>[g.id,g]));
+ for(const g of db.groups){if(!g.root_id||!['energy','minerals','coal','technology','food'].includes(g.sector))throw Error('Invalid group sector '+g.id)}
+ for(const n of db.records){
+  if(!n.id||ids.has(n.id)||!source(n.source_url)||!n.business_id||!n.source_date||!groups.has(n.group))throw Error('Unattributed company '+n?.id);
+  if(n.listing_status==='listed'&&(!n.ticker||!['IDX','NASDAQ','SGX'].includes(n.exchange)))throw Error('Listed issuer without documented market '+n.id);
+  if(n.market_cap!==null&&n.market_cap!==undefined&&(!n.market_cap_source_url||!n.market_cap_currency||!n.market_cap_as_of||!Number.isFinite(n.closing_price)||!Number.isFinite(n.shares_outstanding)))throw Error('Market cap without matched source, quote and float '+n.id);
+  if([n.revenue,n.net_income,n.total_assets].some(v=>v!==null&&v!==undefined)&&(!n.financial_source_url||!n.financial_period||!n.financial_currency))throw Error('Financial amount without dated report '+n.id);
+  ids.add(n.id);
+ }
+ const lookup=new Map(db.records.map(n=>[n.id,n]));
+ for(const n of db.records){
+  const root=groups.get(n.group);
+  if(n.parent_id){const p=lookup.get(n.parent_id);if(!p||p.group!==n.group)throw Error('Broken group relation '+n.id)}
+  let depth=0,parent=n,seen=new Set([n.id]);
+  while(parent.parent_id){parent=lookup.get(parent.parent_id);if(!parent||seen.has(parent.id))throw Error('Corporate ownership cycle '+n.id);seen.add(parent.id);depth++}
+  if(parent.id!==root.root_id||n.tier!==depth)throw Error('Broken group root or generation '+n.id);
+ }
+ data=db;byId=lookup;
+ const params=new URLSearchParams(location.search),requestedGroup=params.get('group');
+ if(groups.has(requestedGroup))group=requestedGroup;
+ sector=groups.get(group)?.sector||'energy';
+ if(['all','energy','minerals','coal','technology','food'].includes(params.get('sector'))&&params.get('sector')==='all')sector='all';
+ selected=groups.get(group)?.root_id;
+ expand=new Set([selected]);
+ const sectorSelect=document.getElementById('sliCgSector');sectorSelect.value=sector;
+ sectorSelect.addEventListener('change',()=>{sector=sectorSelect.value;
+  const matches=db.groups.filter(g=>sector==='all'||g.sector===sector);
+  if(!matches.some(g=>g.id===group)){group=matches[0].id;selected=matches[0].root_id}
+  query='';document.getElementById('sliCgSearch').value='';expand.add(selected);renderTabs();renderTree();renderDetails();
+ });
  document.getElementById('sliCgSearch').addEventListener('input',e=>{query=e.target.value.trim();renderTree()});
  document.getElementById('sliCgExpand').addEventListener('click',()=>{expand=new Set(data.records.filter(n=>n.group===group).map(n=>n.id));renderTree()});
- document.getElementById('sliCgCollapse').addEventListener('click',()=>{expand=new Set([db.groups.find(g=>g.id===group).root_id]);renderTree()});
+ document.getElementById('sliCgCollapse').addEventListener('click',()=>{expand=new Set([groups.get(group).root_id]);renderTree()});
  document.getElementById('sliCgCsv').addEventListener('click',exportRows);
- document.addEventListener('sli:languagechange',()=>{renderTree();renderDetails()});
- renderTree();renderDetails();
+ document.addEventListener('sli:languagechange',()=>{renderTabs();renderTree();renderDetails()});
+ renderTabs();renderTree();renderDetails();
 }
 function load(){
  const root=document.getElementById(ROOT);if(!root)return;
