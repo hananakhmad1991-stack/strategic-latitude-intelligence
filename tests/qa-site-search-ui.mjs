@@ -59,8 +59,9 @@ const pages=["overview","investment","map","trade","energy","minerals","ai","pol
 const buttons=pages.map(id=>{const b=new E("button",document);b.dataset.page=id;b.textContent=id;return b});
 let current="overview",navigated=[];
 const fetch=async()=>({ok:true,json:async()=>index});
+const deferred=[];
 const ctx={window:{SLIi18n:{language:"en"}},document,console,fetch,Event:class{constructor(type){this.type=type}},
- setTimeout:(fn,delay)=>{if(delay===0)fn();return 0}};
+ setTimeout:(fn,delay)=>{if(delay===0)fn();else deferred.push(fn);return deferred.length}};
 vm.runInNewContext(source,ctx,{filename:"site-search.js"});
 ctx.window.initSLISiteSearch({getPage:()=>current,navigate:p=>{current=p;navigated.push(p)}});
 assert.equal(root.dataset.ready,"true");
@@ -106,5 +107,18 @@ mineHit.click();
 assert.equal(current,"map","Mapped asset selection opens map dashboard");
 assert.equal(mapSelections.length,1,"Map inspector receives one exact record selection");
 assert.equal(mapSelections[0].id,"coal-kpc-sangatta","Search must pass actual registered asset ID");
+// All deferred retries from the selected hit must be inert once a destination resolves.
+for(const run of deferred.splice(0))run();
+assert.equal(mapSelections.length,1,"Delayed retries must not re-select or scroll the mapped asset");
+// Switching dashboards before a deferred search attempt must never resurrect the old result.
+input.focus();input.value="SPKLU Jawa Barat";input.dispatchEvent({type:"input"});
+const spkluLater=root.querySelectorAll(".sli-search-result").find(b=>(b.textContent||"").includes("SPKLU")&&(b.textContent||"").includes("Jawa Barat"));
+assert.ok(spkluLater);
+spkluLater.click();
+current="policy";
+handlers["sli:pagechange"]?.({detail:{page:"policy"}});
+for(const run of deferred.splice(0))run();
+assert.equal(current,"policy","Delayed search navigation must not reset a user's selected dashboard");
+assert.equal(mapSelections.length,1,"Late callbacks do not re-open a prior map record");
 
 console.log("PASS: SLI search DOM smoke · input opens, 1080 indexed entries searchable, provincial result navigates, escape closes, Ctrl+K focuses");
