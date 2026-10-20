@@ -95,3 +95,25 @@ test("food UX follows existing Energy/SLI architecture with genuine interactive 
  assert.match(home,/food-agriculture-intelligence\.html/);
  assert.doesNotMatch(page,/ONCLICK\s*=/i);
 });
+
+test("Bapanas leader is official-source verified and not overwritten by obsolete mockup data",()=>{
+ const registry=JSON.parse(read("data/food-institution-leadership.json"));
+ assert.equal(registry.schema_version,"sli-food-leadership-v1");
+ assert.equal(registry.review_status,"official_primary_source_verified");
+ const bapanas=registry.appointments.find(a=>a.institution_id==="bapanas");
+ const kemen=registry.appointments.find(a=>a.institution_id==="kementan");
+ assert.equal(bapanas.person,"Andi Amran Sulaiman");
+ assert.equal(kemen.person,bapanas.person,"double-hatted leadership should remain consistent");
+ assert.equal(bapanas.appointed_on,"2025-10-09");
+ assert.match(bapanas.instrument,/116\/P Tahun 2025/);
+ assert.equal(bapanas.replaces,"Arief Prasetyo Adi");
+ assert.equal(bapanas.last_official_confirmation,"2026-10-14");
+ assert.ok(bapanas.sources.some(s=>s.type==="official_head_profile"&&s.url==="https://badanpangan.go.id/wiki/profil-kepala-badan"));
+ assert.ok(bapanas.sources.some(s=>s.type==="official_dated_press_release"&&s.url.includes("badanpangan.go.id/")));
+ const js=read("js/food-agriculture-intelligence.js");
+ assert.match(js,/fetch\("\.\/data\/food-institution-leadership\.json"/);
+ assert.match(js,/review_status!=="official_primary_source_verified"/);
+ assert.match(js,/last_official_confirmation/);
+ assert.doesNotMatch(js,/Arief Prasetyo Adi/,"Do not hardcode superseded holder in live UI.");
+ assert.equal(registry.rules.missing_officeholder,"show_unverified_do_not_guess");
+});
