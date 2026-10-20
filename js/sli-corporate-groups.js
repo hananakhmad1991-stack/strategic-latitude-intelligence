@@ -39,6 +39,33 @@ function renderTabs(){
   b.addEventListener('click',()=>{group=g.id;selected=g.root_id;query='';document.getElementById('sliCgSearch').value='';expand.add(g.root_id);renderTabs();renderTree();renderDetails()});tabs.append(b)}
  const count=data.records.filter(n=>sector==='all'||n.sector===sector).length;
  document.getElementById('sliCgCoverage').textContent=count+' '+T('company records across ','entitas dalam ')+groups.length+' '+T('groups; dated, not exhaustive','grup; bersumber, belum menyeluruh');
+ renderIssuerTable();
+}
+function renderIssuerTable(){
+ const tbody=document.getElementById('sliCgIssuerRows'),count=document.getElementById('sliCgIssuerCount');
+ if(!tbody||!data)return;
+ tbody.replaceChildren();
+ const issuers=data.records.filter(n=>n.listing_status==='listed'&&n.ticker&&(sector==='all'||n.sector===sector)).sort((a,b)=>(a.exchange||'').localeCompare(b.exchange||'')||a.ticker.localeCompare(b.ticker));
+ count.textContent=issuers.length+' '+T('listed entities','emiten');
+ const finance=(n,k)=>typeof n[k]==='number'&&Number.isFinite(n[k])&&n.financial_period&&source(n.financial_source_url)?
+  new Intl.NumberFormat(document.documentElement.lang==='id'?'id-ID':'en-US',{maximumFractionDigits:2}).format(n[k])+' '+(n.financial_currency||''):'N/A';
+ for(const n of issuers){
+  const row=E('tr');row.setAttribute('data-sli-issuer',n.ticker);
+  const code=E('td','',n.exchange+':'+n.ticker),name=E('td'),button=E('button','sli-cg-issuer-open',n.name);
+  button.type='button';button.addEventListener('click',()=>{sector=n.sector;document.getElementById('sliCgSector').value=sector;
+   group=n.group;selected=n.id;query='';document.getElementById('sliCgSearch').value='';
+   for(const p of path(n))expand.add(p.id);
+   renderTabs();renderTree();renderDetails();
+   document.getElementById('sliCgDossier')?.scrollIntoView?.({block:'nearest',behavior:'smooth'});
+  });
+  name.append(button);
+  const cap=typeof n.market_cap==='number'&&Number.isFinite(n.market_cap)&&n.market_cap_as_of&&n.market_cap_source_url?
+   new Intl.NumberFormat(document.documentElement.lang==='id'?'id-ID':'en-US').format(n.market_cap)+' '+n.market_cap_currency+' · '+n.market_cap_as_of:'N/A';
+  const cells=[code,name,E('td','',sectorName(n.sector)),E('td','',cap),E('td','',finance(n,'revenue')),E('td','',finance(n,'net_income')),E('td','',finance(n,'total_assets')),E('td','',n.financial_period||T('Not verified','Belum terverifikasi'))];
+  for(const cell of cells)row.append(cell);
+  const src=E('td');src.append(aLink(n.financial_source_url||n.source_url,T('Disclosure ↗','Dokumen ↗')));row.append(src);tbody.append(row);
+ }
+ if(!issuers.length){const row=E('tr'),cell=E('td','',T('No listed issuers in this category.','Tidak ada emiten tercatat pada kategori ini.'));cell.colSpan=9;row.append(cell);tbody.append(row)}
 }
 function renderTree(){
  const mount=document.getElementById('sliCgTree');if(!mount||!data)return;mount.replaceChildren();
