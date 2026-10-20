@@ -46,7 +46,7 @@ def run():
         if len(members)>50000:raise ValueError("Archive has suspiciously many files")
         result["archive_entries"]=len(members)
         result["archive_preview"]=[m.filename[:95] for m in members[:8]]
-        files=[m for m in members if re.search(r"RR_STAID0*132\.(?:txt|csv)$",m.filename,re.I)]
+        files=[m for m in members if re.search(rf"RR_STAID0*{STAID}\.(?:txt|csv)$",m.filename,re.I)]
         if len(files)!=1:raise ValueError("SACA station rainfall file not uniquely located: "+str(result["archive_preview"]))
         member=files[0]
         if member.file_size>3500000:raise ValueError("Single station file too large")
