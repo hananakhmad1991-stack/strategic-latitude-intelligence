@@ -31,7 +31,7 @@ test("DERGUBA research acronym, bilingual narrative and accessibility remain int
  assert.match(page,/data-en="BORN IN DEREPAN · BUILT FOR THE WORLD"/);
  assert.match(page,/data-id="Nama DERGUBA berakar dari komunitas dan keindahan pegunungan dengan banyak angkrem di"/);
  assert.match(page,/data-en="The name DERGUBA is rooted in its community and the beauty of mountains dotted with locally known angkrem in"/);
- assert.match(page,/aria-label="Buka Dusun Derepan/);
+ assert.match(page,/aria-label="Buka lokasi Dusun Derepan/);
  assert.match(client,/document\.querySelectorAll\("\[data-id\]\[data-en\]"\)/);
  assert.match(style,/sli-ra-derepan-map:focus-visible/);
 });
