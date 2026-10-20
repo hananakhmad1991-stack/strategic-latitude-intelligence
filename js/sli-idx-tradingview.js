@@ -13,10 +13,22 @@ const SECTORS=[
 const T=(id,en)=>document.documentElement.lang==="id"?id:en;
 const E=(t,c,txt)=>{const n=document.createElement(t);if(c)n.className=c;if(txt!==undefined)n.textContent=txt;return n};
 const route="https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-issuer.html";
+const priority={
+ energy:["MEDC","PGAS","AKRA","PGEO","BREN","ELSA","TPIA","BRPT","ESSA"],
+ minerals:["ANTM","AMMN","INCO","MDKA","MBMA","NCKL","TINS","BRMS","HRUM"],
+ coal:["PTBA","ADRO","AADI","ITMG","BYAN","BUMI","INDY","GEMS","DSSA"],
+ food:["INDF","ICBP","CPIN","JPFA","MYOR","AALI","UNVR","CMRY","DSNG"],
+ technology:["TLKM","ISAT","EXCL","GOTO","DCII","MTEL","TOWR","TBIG","EMTK"],
+ infrastructure:["JSMR","WIKA","PTPP","ADHI","SSIA","CMNP","TOTL","WTON","WEGE"],
+ transport:["BIRD","SMDR","TMAS","ASSA","GIAA","WINS","MPMX","SHIP","MBSS"],
+ manufacturing:["UNTR","AUTO","SMGR","INKP","TKIM","INTP","AVIA","KRAS","IMAS"]
+};
 function watchlistConfig(rows,selected="all"){
  const ordered=SECTORS.filter(([s])=>selected==="all"||selected===s);
  const tabs=ordered.map(([sector,id,en])=>{
-  const picks=rows.filter(x=>x.sector===sector&&/^[A-Z0-9]{4}$/.test(x.ticker||"")).slice(0,9);
+  const picks=rows.filter(x=>x.sector===sector&&/^[A-Z0-9]{4}$/.test(x.ticker||""))
+   .sort((a,b)=>{const p=priority[sector]||[];const x=p.indexOf(a.ticker),y=p.indexOf(b.ticker);return (x<0?999:x)-(y<0?999:y)||a.ticker.localeCompare(b.ticker)})
+   .slice(0,9);
   return {title:T(id,en),originalTitle:en,symbols:picks.map(x=>({s:"IDX:"+x.ticker,d:x.ticker+" · "+x.name.slice(0,29)}))};
  }).filter(t=>t.symbols.length>0);
  return {colorTheme:"dark",dateRange:"1M",locale:document.documentElement.lang==="id"?"id":"en",
