@@ -1,0 +1,520 @@
+{
+  "schema": "sli-food-governance-v2",
+  "as_of": "2026-10-20",
+  "method_id": "Source-dated functional presentation; parent field only indicates internal unit membership or regional guidance and never implies all cross-institution coordination is administrative subordination.",
+  "nodes": [
+    {
+      "id": "pres",
+      "group": "root",
+      "name": "Presiden Republik Indonesia",
+      "en": "President of Indonesia",
+      "kind": "Arah kebijakan nasional",
+      "kindEn": "National executive direction",
+      "role": "Menetapkan arah dan prioritas pembangunan nasional, termasuk ketahanan pangan, pertanian, gizi, dan stabilitas pasokan.",
+      "roleEn": "Sets national policy direction and priorities on food security, agriculture, nutrition and supply stability.",
+      "limit": "Bukan pelaksana pengadaan komoditas atau penerbit setiap izin sektor.",
+      "limitEn": "Not the direct procurement operator or issuer of all sector permits.",
+      "sources": [
+        {
+          "url": "https://www.setneg.go.id/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "person": "Prabowo Subianto"
+    },
+    {
+      "id": "kemenkopangan",
+      "group": "coordination",
+      "name": "Kemenko Bidang Pangan",
+      "en": "Coordinating Ministry for Food",
+      "kind": "Koordinasi antarkementerian",
+      "kindEn": "Interministerial coordination",
+      "role": "Sinkronisasi kebijakan pangan, distribusi, perdagangan terkait pangan, pemantauan lintas lembaga, dan penyelesaian hambatan pelaksanaan.",
+      "roleEn": "Coordinates food policy, distribution, relevant trade and interagency execution; resolves cross-ministry bottlenecks.",
+      "limit": "Kementerian koordinator bukan atasan administratif semua kementerian teknis dan bukan penerbit seluruh izin.",
+      "limitEn": "A coordinating ministry is not the administrative parent of every technical ministry or the issuer of all permits.",
+      "sources": [
+        {
+          "url": "https://www.kemenkopangan.go.id/tugas-fungsi",
+          "label": "Sumber resmi"
+        }
+      ],
+      "person": "Zulkifli Hasan",
+      "confirmed": "2026-10-18",
+      "leaderSource": "https://www.kemenkopangan.go.id/detail-publikasi/menko-pangan-buka-kongres-nasional-ke-42-syarikat-islam-teguhkan-kemandirian-pangan",
+      "related": [
+        "kementan",
+        "bapanas",
+        "kemendag",
+        "kkp",
+        "bgn"
+      ]
+    },
+    {
+      "id": "bappenas",
+      "group": "coordination",
+      "name": "Kementerian PPN/Bappenas",
+      "en": "National Development Planning Ministry / Bappenas",
+      "kind": "Perencanaan pembangunan",
+      "kindEn": "National development planning",
+      "role": "Menyusun dan mengoordinasikan prioritas perencanaan pembangunan, program pangan dan gizi, beserta evaluasinya dalam siklus perencanaan nasional.",
+      "roleEn": "Plans and evaluates national development priorities, including food and nutrition programmes.",
+      "limit": "Bukan operator stok pangan ataupun pemberi izin pertanian.",
+      "limitEn": "Not a food-stock operator or agriculture permit authority.",
+      "sources": [
+        {
+          "url": "https://www.bappenas.go.id/id/berita/bpk-ri-sampaikan-lhp-kepada-bappenas-perkuat-strategi-ketahanan-pangan-MyLmF",
+          "label": "Sumber resmi"
+        }
+      ],
+      "person": "Rachmat Pambudy",
+      "confirmed": "2026-05-11",
+      "related": [
+        "kemenkopangan",
+        "kementan",
+        "bapanas"
+      ]
+    },
+    {
+      "id": "kemenkoekon",
+      "group": "coordination",
+      "name": "Kemenko Perekonomian",
+      "en": "Coordinating Ministry for Economic Affairs",
+      "kind": "Koordinasi ekonomi",
+      "kindEn": "Economic coordination",
+      "role": "Koordinasi kebijakan makroekonomi, perdagangan, investasi dan aspek daya saing rantai nilai pangan.",
+      "roleEn": "Coordinates macroeconomic, trade, investment and competitiveness policies affecting food value chains.",
+      "limit": "Tidak menggantikan kewenangan Kementan, Bapanas, atau Kemendag.",
+      "limitEn": "Does not replace the mandates of Agriculture, Bapanas or Trade.",
+      "sources": [
+        {
+          "url": "https://www.ekon.go.id/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "related": [
+        "kemendag",
+        "bappenas"
+      ]
+    },
+    {
+      "id": "kementan",
+      "group": "authority",
+      "name": "Kementerian Pertanian",
+      "en": "Ministry of Agriculture",
+      "kind": "Kementerian teknis",
+      "kindEn": "Sector ministry",
+      "role": "Kebijakan dan pelaksanaan produksi pertanian, tanaman pangan, hortikultura, perkebunan, peternakan, sarana produksi, lahan, penyuluhan dan modernisasi.",
+      "roleEn": "Agricultural production policy and implementation for crops, plantations, livestock, inputs, land, extension and modernization.",
+      "limit": "Produksi pertanian berbeda dari pengelolaan seluruh cadangan pangan nasional dan perdagangan lintas batas.",
+      "limitEn": "Farm production differs from national food reserve management and cross-border trade regulation.",
+      "sources": [
+        {
+          "url": "https://pertanian.go.id/page/view/7",
+          "label": "Struktur organisasi Kementan"
+        },
+        {
+          "url": "https://jdih.pertanian.go.id/peraturan/permentan-19-2026",
+          "label": "Permentan 19/2026: perubahan organisasi"
+        }
+      ],
+      "person": "Andi Amran Sulaiman",
+      "confirmed": "2026-10-14",
+      "leaderSource": "https://badanpangan.go.id/wiki/profil-kepala-badan",
+      "related": [
+        "bapanas",
+        "kemendag",
+        "pusdatin"
+      ]
+    },
+    {
+      "id": "bapanas",
+      "group": "authority",
+      "name": "Badan Pangan Nasional (Bapanas)",
+      "en": "National Food Agency (Bapanas)",
+      "kind": "Badan pangan nasional",
+      "kindEn": "National food authority",
+      "role": "Ketersediaan, stabilisasi pasokan dan harga, cadangan pangan pemerintah, kerawanan pangan, diversifikasi, dan tata kelola pangan menurut kewenangannya.",
+      "roleEn": "Food availability, supply and price stabilization, government reserves, food insecurity, diversification and governance within its mandate.",
+      "limit": "Bukan unit internal Kementan meskipun kepala badan dan menteri dijabat orang yang sama.",
+      "limitEn": "Not an internal unit of Agriculture merely because the same individual holds both offices.",
+      "sources": [
+        {
+          "url": "https://badanpangan.go.id/wiki/tugas-fungsi",
+          "label": "Sumber resmi"
+        }
+      ],
+      "person": "Andi Amran Sulaiman",
+      "confirmed": "2026-10-14",
+      "leaderSource": "https://badanpangan.go.id/wiki/profil-kepala-badan",
+      "related": [
+        "kementan",
+        "bulog",
+        "kemendag"
+      ]
+    },
+    {
+      "id": "kemendag",
+      "group": "authority",
+      "name": "Kementerian Perdagangan",
+      "en": "Ministry of Trade",
+      "kind": "Kementerian teknis",
+      "kindEn": "Sector ministry",
+      "role": "Tata niaga dan kebijakan perdagangan, kebijakan impor/ekspor dalam kewenangannya, dan fasilitasi kelancaran distribusi.",
+      "roleEn": "Regulates trade mechanisms and import/export policy within its statutory remit and facilitates distribution.",
+      "limit": "Tidak mengelola produksi pertanian sebagai tugas inti.",
+      "limitEn": "Not the principal agriculture-production authority.",
+      "sources": [
+        {
+          "url": "https://www.kemendag.go.id/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "related": [
+        "bapanas",
+        "kementan"
+      ]
+    },
+    {
+      "id": "kkp",
+      "group": "authority",
+      "name": "Kementerian Kelautan dan Perikanan",
+      "en": "Ministry of Marine Affairs and Fisheries",
+      "kind": "Kementerian teknis",
+      "kindEn": "Sector ministry",
+      "role": "Produksi dan tata kelola perikanan budidaya/tangkap, pengolahan dan daya saing produk perikanan sebagai bagian dari sistem pangan.",
+      "roleEn": "Governs capture and aquaculture production, fisheries processing and competitiveness within the food system.",
+      "limit": "Bukan instansi pembina budidaya tanaman pangan.",
+      "limitEn": "Not the authority for staple-crop cultivation.",
+      "sources": [
+        {
+          "url": "https://kkp.go.id/",
+          "label": "Sumber resmi"
+        }
+      ]
+    },
+    {
+      "id": "bgn",
+      "group": "authority",
+      "name": "Badan Gizi Nasional (BGN)",
+      "en": "National Nutrition Agency (BGN)",
+      "kind": "Badan layanan gizi",
+      "kindEn": "National nutrition agency",
+      "role": "Pelaksanaan pemenuhan gizi nasional, termasuk tata kelola, penyediaan, distribusi, pemantauan dan pengawasan program gizi.",
+      "roleEn": "Implements national nutrition delivery, including programme governance, distribution and oversight.",
+      "limit": "Bukan regulator tunggal harga pangan atau produksi pertanian.",
+      "limitEn": "Not the sole regulator of food prices or farm production.",
+      "sources": [
+        {
+          "url": "https://www.bgn.go.id/functions-duties",
+          "label": "Sumber resmi"
+        }
+      ],
+      "person": "Sudaryono",
+      "confirmed": "2026-07-22",
+      "leaderSource": "https://setneg.go.id/baca/index/presiden_prabowo_resmi_lantik_sudaryono_sebagai_kepala_bgn",
+      "related": [
+        "bapanas",
+        "kementan"
+      ]
+    },
+    {
+      "id": "kemendagri",
+      "group": "authority",
+      "name": "Kementerian Dalam Negeri",
+      "en": "Ministry of Home Affairs",
+      "kind": "Pembinaan pemerintahan daerah",
+      "kindEn": "Regional governance guidance",
+      "role": "Pembinaan dan pengawasan penyelenggaraan pemerintahan daerah sesuai pembagian urusan pusat dan daerah.",
+      "roleEn": "Guides and supervises regional governance within statutory decentralization.",
+      "limit": "Pemerintah provinsi/kabupaten/kota bukan direktorat dalam Kemendagri.",
+      "limitEn": "Provincial and local administrations are not internal ministry directorates.",
+      "sources": [
+        {
+          "url": "https://www.kemendagri.go.id/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "related": [
+        "pemda"
+      ]
+    },
+    {
+      "id": "kemenperin",
+      "group": "authority",
+      "name": "Kementerian Perindustrian",
+      "en": "Ministry of Industry",
+      "kind": "Kementerian teknis",
+      "kindEn": "Sector ministry",
+      "role": "Pembinaan industri pengolahan pangan, standardisasi industri, investasi industri dan pengembangan nilai tambah.",
+      "roleEn": "Oversees food processing industries, industrial standards and sector value addition.",
+      "limit": "Bukan pengelola cadangan beras pemerintah.",
+      "limitEn": "Not the government rice-reserve operator.",
+      "sources": [
+        {
+          "url": "https://kemenperin.go.id/",
+          "label": "Sumber resmi"
+        }
+      ]
+    },
+    {
+      "id": "bpom",
+      "group": "authority",
+      "name": "Badan Pengawas Obat dan Makanan (BPOM)",
+      "en": "National Agency of Drug and Food Control",
+      "kind": "Pengawasan keamanan pangan olahan",
+      "kindEn": "Processed-food safety regulator",
+      "role": "Pengawasan pangan olahan dan perizinan/pengawasan produk sesuai kewenangan.",
+      "roleEn": "Regulates and supervises processed food safety within its remit.",
+      "limit": "Bukan otoritas produksi primer seluruh komoditas pertanian.",
+      "limitEn": "Not the authority governing primary production of every crop.",
+      "sources": [
+        {
+          "url": "https://www.pom.go.id/",
+          "label": "Sumber resmi"
+        }
+      ]
+    },
+    {
+      "id": "pusdatin",
+      "group": "unit",
+      "name": "Pusdatin Kementan",
+      "en": "Agriculture Ministry Data & Information Centre",
+      "kind": "Unit internal Kementan",
+      "kindEn": "Internal agriculture ministry unit",
+      "role": "Walidata dan pengelola sistem informasi pertanian; mengompilasi, mengolah dan memublikasikan data, termasuk data yang bersumber dari BPS.",
+      "roleEn": "Agriculture data steward and information-system unit, compiling and publishing statistics including third-party data.",
+      "limit": "Tidak semua statistik yang diterbitkan dikumpulkan sendiri oleh Pusdatin.",
+      "limitEn": "Not all published series were collected directly by this unit.",
+      "sources": [
+        {
+          "url": "https://satudata.pertanian.go.id/",
+          "label": "Portal Satu Data Pertanian"
+        },
+        {
+          "url": "https://pertanian.go.id/page/view/7",
+          "label": "Bagan Kementan"
+        }
+      ],
+      "parent": "kementan"
+    },
+    {
+      "id": "ditjen-tp",
+      "group": "unit",
+      "name": "Ditjen Tanaman Pangan",
+      "en": "Directorate General of Food Crops",
+      "kind": "Unit internal Kementan",
+      "kindEn": "Internal ministry directorate",
+      "role": "Pelaksanaan kebijakan budidaya dan produksi tanaman pangan dalam lingkup Kementan.",
+      "roleEn": "Implements food-crop production policy within Agriculture.",
+      "limit": "Tidak sama dengan Bapanas dan tidak menjadi regulator seluruh pasar pangan.",
+      "limitEn": "Not equivalent to Bapanas or the regulator of all food markets.",
+      "sources": [
+        {
+          "url": "https://tanamanpangan.pertanian.go.id/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "parent": "kementan"
+    },
+    {
+      "id": "ditjen-horti",
+      "group": "unit",
+      "name": "Ditjen Hortikultura",
+      "en": "Directorate General of Horticulture",
+      "kind": "Unit internal Kementan",
+      "kindEn": "Internal ministry directorate",
+      "role": "Pengembangan produksi dan budidaya hortikultura dalam lingkup Kementan.",
+      "roleEn": "Oversees horticulture production and cultivation within Agriculture.",
+      "limit": "Fungsi khusus hortikultura, bukan seluruh subsektor pangan.",
+      "limitEn": "Horticulture-specific, not the entire food economy.",
+      "sources": [
+        {
+          "url": "https://hortikultura.pertanian.go.id/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "parent": "kementan"
+    },
+    {
+      "id": "ditjen-psp",
+      "group": "unit",
+      "name": "Ditjen Prasarana dan Sarana Pertanian",
+      "en": "Directorate General of Agricultural Infrastructure and Facilities",
+      "kind": "Unit internal Kementan",
+      "kindEn": "Internal ministry directorate",
+      "role": "Dukungan sarana, prasarana dan input produksi pertanian sesuai mandatnya.",
+      "roleEn": "Supports farm production facilities, infrastructure and inputs.",
+      "limit": "Pengaturan subsidi adalah kebijakan pemerintah; perusahaan pemasok bukan bawahannya.",
+      "limitEn": "Subsidy policy is a state matter; input suppliers are not its directorates.",
+      "sources": [
+        {
+          "url": "https://pertanian.go.id/page/view/7",
+          "label": "Sumber resmi"
+        }
+      ],
+      "parent": "kementan"
+    },
+    {
+      "id": "pemda",
+      "group": "unit",
+      "name": "Pemerintah Daerah / Dinas Pertanian dan Pangan",
+      "en": "Regional Governments / Food & Agriculture Offices",
+      "kind": "Pelaksanaan urusan otonomi daerah",
+      "kindEn": "Decentralized regional delivery",
+      "role": "Kebijakan dan pelayanan pertanian serta pangan yang menjadi kewenangan daerah, termasuk dinas dan penyuluhan wilayah.",
+      "roleEn": "Executes regional food and agriculture responsibilities assigned by decentralization law.",
+      "limit": "Ditempatkan dekat Kemendagri karena pembinaan; bukan bawahan administratif kementerian secara langsung.",
+      "limitEn": "Shown alongside Home Affairs for guidance, not as direct administrative subordination.",
+      "sources": [
+        {
+          "url": "https://www.kemendagri.go.id/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "parent": "kemendagri",
+      "relation": "Pembinaan otonomi daerah · bukan subordinasi",
+      "relationEn": "Regional autonomy guidance · not subordination"
+    },
+    {
+      "id": "bulog",
+      "group": "operator",
+      "name": "Perum BULOG",
+      "en": "BULOG",
+      "kind": "BUMN pelaksana penugasan",
+      "kindEn": "State enterprise / assigned operator",
+      "role": "Melaksanakan pengadaan, penyimpanan dan penyaluran pangan/cadangan tertentu sesuai penugasan pemerintah.",
+      "roleEn": "Carries out government-assigned food procurement, storage and distribution.",
+      "limit": "Bukan kementerian dan bukan penerbit seluruh kebijakan harga.",
+      "limitEn": "Not a ministry or the authority for every national food price policy.",
+      "sources": [
+        {
+          "url": "https://www.bulog.co.id/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "related": [
+        "bapanas",
+        "kemenkopangan"
+      ]
+    },
+    {
+      "id": "pupuk",
+      "group": "operator",
+      "name": "PT Pupuk Indonesia",
+      "en": "Pupuk Indonesia",
+      "kind": "BUMN input pertanian",
+      "kindEn": "State-owned agricultural input group",
+      "role": "Produksi dan distribusi pupuk serta pengembangan input pertanian dalam rantai pasok nasional.",
+      "roleEn": "Produces and distributes fertilizers and develops agricultural inputs.",
+      "limit": "Perusahaan bukan regulator penetapan besaran subsidi dan kuota pemerintah.",
+      "limitEn": "The company does not itself set the state's subsidy envelope or quotas.",
+      "sources": [
+        {
+          "url": "https://www.pupuk-indonesia.com/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "related": [
+        "kementan"
+      ]
+    },
+    {
+      "id": "idfood",
+      "group": "operator",
+      "name": "ID FOOD",
+      "en": "ID FOOD",
+      "kind": "Kelompok BUMN pangan",
+      "kindEn": "State food enterprise group",
+      "role": "Operasi usaha produksi, perdagangan dan distribusi komoditas pangan sesuai portofolio perusahaan.",
+      "roleEn": "Commercial production, trade and distribution across food commodities.",
+      "limit": "Bukan lembaga pemberi izin atau kementerian koordinator.",
+      "limitEn": "Not a licensing regulator or coordinating ministry.",
+      "sources": [
+        {
+          "url": "https://www.idfood.co.id/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "related": [
+        "bapanas",
+        "kemendag"
+      ]
+    },
+    {
+      "id": "bps",
+      "group": "evidence",
+      "name": "Badan Pusat Statistik (BPS)",
+      "en": "Statistics Indonesia (BPS)",
+      "kind": "Lembaga statistik pemerintah",
+      "kindEn": "Government statistical agency",
+      "role": "Menghasilkan statistik resmi termasuk NTP, produksi, inflasi dan perdagangan luar negeri sesuai metodologi dan periode publikasinya.",
+      "roleEn": "Publishes official farmer index, crop, price and international trade statistics.",
+      "limit": "Bukan unit Pusdatin atau pelaksana program produksi pangan.",
+      "limitEn": "Not an Agriculture data-centre subordinate or agricultural programme implementer.",
+      "sources": [
+        {
+          "url": "https://www.bps.go.id/",
+          "label": "Sumber resmi"
+        }
+      ],
+      "related": [
+        "pusdatin"
+      ]
+    },
+    {
+      "id": "bi",
+      "group": "evidence",
+      "name": "Bank Indonesia",
+      "en": "Bank Indonesia",
+      "kind": "Bank sentral independen",
+      "kindEn": "Independent central bank",
+      "role": "Menyediakan indikator moneter, nilai tukar dan analisis inflasi pangan sebagai konteks kebijakan.",
+      "roleEn": "Provides monetary, exchange-rate and food inflation context.",
+      "limit": "Bukan pengawas produksi tanaman atau operator cadangan pangan.",
+      "limitEn": "Not an agricultural-production authority or reserve operator.",
+      "sources": [
+        {
+          "url": "https://www.bi.go.id/",
+          "label": "Sumber resmi"
+        }
+      ]
+    },
+    {
+      "id": "bpk",
+      "group": "evidence",
+      "name": "Badan Pemeriksa Keuangan (BPK)",
+      "en": "Audit Board of Indonesia (BPK)",
+      "kind": "Lembaga pemeriksa konstitusional",
+      "kindEn": "Constitutional audit body",
+      "role": "Pemeriksaan pengelolaan dan tanggung jawab keuangan negara termasuk program pangan.",
+      "roleEn": "Audits management and accountability of state finances, including food programmes.",
+      "limit": "Independen; bukan direktorat kementerian maupun Bapanas.",
+      "limitEn": "Independent; not part of any sector ministry or Bapanas.",
+      "sources": [
+        {
+          "url": "https://www.bpk.go.id/",
+          "label": "Sumber resmi"
+        }
+      ]
+    },
+    {
+      "id": "dpr",
+      "group": "evidence",
+      "name": "DPR RI",
+      "en": "House of Representatives (DPR RI)",
+      "kind": "Legislatif nasional",
+      "kindEn": "National legislature",
+      "role": "Pembentukan undang-undang, anggaran dan pengawasan melalui mekanisme konstitusional dan alat kelengkapan.",
+      "roleEn": "Legislative, budget and constitutional oversight functions.",
+      "limit": "Bukan unit eksekutif di bawah Presiden.",
+      "limitEn": "Not an executive unit subordinate to the President.",
+      "sources": [
+        {
+          "url": "https://www.dpr.go.id/",
+          "label": "Sumber resmi"
+        }
+      ]
+    }
+  ]
+}
