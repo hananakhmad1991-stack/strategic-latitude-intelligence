@@ -44,7 +44,7 @@ test("All live TradingView watchlist symbols are IDX only and drawn from the sam
  assert.equal(ui.scriptUrl,"https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js");
  assert.ok(config.plotLineColorGrowing!==config.plotLineColorFalling);
  const single=ui.watchlistConfig(source,"food");
- assert.deepEqual(single.tabs.map(x=>x.title),["Pangan"]);
+ assert.equal(single.tabs.map(x=>x.title).join(","),"Pangan");
  for(const x of single.tabs[0].symbols)assert.ok(data.records.find(v=>v.ticker===x.s.slice(4)&&v.sector==="food"));
 });
 test("Provider-embedded IDX ticker links route to an actual named ticker dossier, not generic Entities",()=>{
