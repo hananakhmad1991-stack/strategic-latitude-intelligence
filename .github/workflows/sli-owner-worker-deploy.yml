@@ -28,9 +28,10 @@ jobs:
         run: |
           node --check research-api/src/owner-test-worker.mjs
           node --check research-api/src/legal-provisions.mjs
+          node --check js/sli-legal-provisions.js
           node --check research-api/src/legal-citation-audit.mjs
           node --check research-api/src/policy-corpus.mjs
-          node --test tests/qa-sli-policy-ai.mjs
+          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs
 
   deploy-owner-staging:
     needs: policy-gate
@@ -63,4 +64,5 @@ jobs:
       - name: Note independent smoke-test requirement
         run: |
           echo "Deployment submitted. Verify the owner-only endpoint with its existing Cloudflare-stored OWNER_TEST_TOKEN and current OPENAI_API_KEY secrets."
+          echo "SLI legal Pasal corpus deployment requires authenticated smoke test of a correctly cited approved Pasal (for example PP 28/2025 Pasal 4) and rejection of an unreviewed Pasal."
           echo "No model completion or article-level legal accuracy has been certified by this action."
