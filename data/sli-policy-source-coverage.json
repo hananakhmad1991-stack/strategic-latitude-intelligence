@@ -1,7 +1,7 @@
 {
   "schema": "sli-legal-coverage-register-v1",
   "updated_at": "2026-10-20",
-  "description": "Source-discovery coverage for 38 provinces (NOT comprehensive regulation coverage), with official reference pages and a documented 2026-10-20 audit wave. Province source identified does not imply all Perda are ingested.",
+  "description": "38-province directory discovery plus selected directly inspected city/regency JDIH references. Province-local source registration is an incremental convenience index, NOT an exhaustive legal census.",
   "regional_document_types": [
     "Perda Provinsi",
     "Pergub",
@@ -9,7 +9,7 @@
     "Perbup",
     "Perwali"
   ],
-  "metadata_policy": "Unlisted sources and regulations remain unknown, never counted as no law. JDIH homepage confirmation does not verify individual rules or continued validity. Registered monitoring sources may fail or have zero qualified matches; that alone never proves no provincial law. Added portal discovery wave Oct 20 2026. One East Java source is linked by other official regional JDIH and needs a direct live health check. Do not equate a portal with any specific current legal instrument.",
+  "metadata_policy": "Unlisted sources and regulations remain unknown, never counted as no law. JDIH homepage confirmation does not verify individual rules or continued validity. Registered monitoring sources may fail or have zero qualified matches; that alone never proves no provincial law. Added portal discovery wave Oct 20 2026. One East Java source is linked by other official regional JDIH and needs a direct live health check. Do not equate a portal with any specific current legal instrument. Selected kabupaten/kota records are linked for locality-aware access. A municipal source hyperlink does not prove municipality-wide regulatory completeness or current RTRW status.",
   "official_national_sources": [
     {
       "id": "djpp",
@@ -90,7 +90,7 @@
       "name": "Lampung",
       "source_url": "https://jdih.lampungprov.go.id/product-hukum/provinsi/10862/pages/rak-buku-online",
       "discovery_status": "web_checked_official_jdih",
-      "monitor_source_id": null,
+      "monitor_source_id": "lampung_jdih",
       "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
       "portal_checked_at": "2026-10-20"
     },
@@ -99,7 +99,7 @@
       "name": "Kepulauan Bangka Belitung",
       "source_url": "https://jdih.babelprov.go.id/data",
       "discovery_status": "web_checked_official_jdih",
-      "monitor_source_id": null,
+      "monitor_source_id": "babel_jdih",
       "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
       "portal_checked_at": "2026-10-20"
     },
@@ -140,7 +140,7 @@
       "name": "DI Yogyakarta",
       "source_url": "https://jdih.jogjaprov.go.id/",
       "discovery_status": "web_checked_official_jdih",
-      "monitor_source_id": null,
+      "monitor_source_id": "diy_jdih",
       "verification_scope": "executive_jdih_portal_plus_two_individual_documents_not_full_province_corpus",
       "portal_checked_at": "2026-10-20"
     },
@@ -174,7 +174,7 @@
       "name": "Nusa Tenggara Barat",
       "source_url": "https://jdih.ntbprov.go.id/",
       "discovery_status": "web_checked_official_jdih",
-      "monitor_source_id": null,
+      "monitor_source_id": "ntb_jdih",
       "verification_scope": "portal_directory_only_not_rule_text"
     },
     {
@@ -231,7 +231,7 @@
       "name": "Sulawesi Utara",
       "source_url": "https://jdih.sulutprov.go.id/",
       "discovery_status": "web_checked_official_jdih",
-      "monitor_source_id": null,
+      "monitor_source_id": "sulut_jdih",
       "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
       "portal_checked_at": "2026-10-20"
     },
@@ -240,7 +240,7 @@
       "name": "Sulawesi Tengah",
       "source_url": "https://jdih.sultengprov.go.id/",
       "discovery_status": "web_checked_official_jdih",
-      "monitor_source_id": null,
+      "monitor_source_id": "sulteng_jdih",
       "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
       "portal_checked_at": "2026-10-20"
     },
@@ -342,6 +342,40 @@
       "monitor_source_id": null,
       "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
       "portal_checked_at": "2026-10-20"
+    }
+  ],
+  "local_government_sources": [
+    {
+      "region": "Kabupaten Magelang",
+      "province": "Jawa Tengah",
+      "source_url": "https://jdih.magelangkab.go.id/hukum/detail/peraturan-daerah-kabupaten/7/2024",
+      "discovery_status": "official_jdih_individual_record_checked",
+      "monitor_source_id": "magelang_jdih",
+      "verification_scope": "at_least_two_specific_local_regulations_in_main_graph"
+    },
+    {
+      "region": "Kabupaten Karawang",
+      "province": "Jawa Barat",
+      "source_url": "https://jdih.karawangkab.go.id/document/peraturan-daerah/eyJpdiI6IkxhNXYwK0wzNlo0bGk2cHU3eUZJK2c9PSIsInZhbHVlIjoiZWpWcllPS0pHNkVtZXAySjIvSlV3dz09IiwibWFjIjoiZjlmOGFmYTE4MWY1NGVmYjFjYzlkZTFkOWNhOTNmZTJjYTA2NjAyNTJjNjI2MjBmOTc0MDRlMmI4MGRhNDI5NiIsInRhZyI6IiJ9",
+      "discovery_status": "official_jdih_individual_record_checked",
+      "monitor_source_id": null,
+      "verification_scope": "one_older_individual_rtrw_record_current_status_requires_review"
+    },
+    {
+      "region": "Kabupaten Bekasi",
+      "province": "Jawa Barat",
+      "source_url": "https://jdih.bekasikab.go.id/",
+      "discovery_status": "official_jdih_source_observed",
+      "monitor_source_id": null,
+      "verification_scope": "existing_historical_rtrw_document_not_complete_law_directory"
+    },
+    {
+      "region": "Kota Batam",
+      "province": "Kepulauan Riau",
+      "source_url": "https://jdih.batam.go.id/",
+      "discovery_status": "official_jdih_source_observed",
+      "monitor_source_id": null,
+      "verification_scope": "existing_old_official_perda_documents_only_no_automatic_current_status"
     }
   ]
 }
