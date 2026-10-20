@@ -25,7 +25,7 @@ body.sli-entity-page{background:#091625;color:#e8eef3;margin:0;font:14px/1.65 sy
 .sli-entity-card-body{min-width:0;display:grid;gap:2px}
 .sli-entity-card-body strong{overflow-wrap:anywhere;font-size:13px;line-height:1.36}
 .sli-entity-card-body small{font-size:11px;color:#acc4d2;line-height:1.32}
-.sli-entity-dossier{border:1px solid #49657b;background:#102a40;border-radius:12px;padding:20px;position:sticky;top:98px;min-height:270px;overflow-wrap:anywhere}
+.sli-entity-dossier{border:1px solid #49657b;background:#102a40;border-radius:12px;padding:20px;position:sticky;top:calc(var(--sli-mast-offset, 80px) + 14px);max-height:calc(100dvh - var(--sli-mast-offset, 80px) - 28px);overflow-y:auto;overscroll-behavior:contain;min-height:270px;overflow-wrap:anywhere}
 .sli-entity-dossier-title{display:flex;gap:13px;align-items:center;margin:0 0 12px}
 .sli-entity-dossier h2{font-size:21px;line-height:1.28;margin:0;color:#f2f6f8}
 .sli-entity-dossier h3{font-size:13px;color:#d7bb86;margin:20px 0 7px}
@@ -36,6 +36,6 @@ body.sli-entity-page{background:#091625;color:#e8eef3;margin:0;font:14px/1.65 sy
 .sli-entity-status-tag{display:inline-flex;border:1px solid #506c7a;border-radius:50px;padding:2px 9px;font-size:11px;color:#d9d3bd}
 .sli-entity-linked-sectors{display:flex;flex-wrap:wrap;gap:6px}.sli-entity-linked-sectors span{padding:3px 8px;border-radius:7px;background:#203d53;border:1px solid #49647c;font-size:11px;color:#d0e0e9}
 .sli-entity-footer{display:flex;gap:23px;flex-wrap:wrap;margin-top:22px;padding:18px 0;border-top:1px solid #344b5d;font-size:12px}
-@media(max-width:1000px){.sli-entity-workspace{grid-template-columns:1fr}.sli-entity-dossier{position:static}.sli-entity-cards{max-height:450px}}
+@media(max-width:1000px){.sli-entity-workspace{grid-template-columns:1fr}.sli-entity-dossier{position:static;max-height:none;overflow:visible}.sli-entity-cards{max-height:450px}}
 @media(max-width:560px){.sli-entity-cards{grid-template-columns:1fr}.sli-entity-panel{padding:13px}.sli-entity-field{flex:1 1 170px}.sli-entity-export{width:100%}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
