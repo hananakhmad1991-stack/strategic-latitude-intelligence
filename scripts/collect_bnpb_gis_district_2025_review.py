@@ -49,7 +49,9 @@ def main():
     normalized=[];seen_codes=set();seen_oids=set()
     for x in raw:
         code=x.get("Kode_Kab");oid=x.get("OBJECTID");name=str(x.get("Kabupaten_Kota") or "").strip()
-        if type(code) is not int or code<=0 or not name or type(oid) is not int:\n            print("BNPB_GIS2025_INVALID_ID_SAMPLE="+json.dumps({"OBJECTID":oid,"Kode_Kab":code,"Kabupaten_Kota":name,"kode_kab_s":x.get("kode_kab_s"),"nama_kab_1":x.get("nama_kab_1")},ensure_ascii=False))\n            raise ValueError("Invalid district identity")
+        if type(code) is not int or code<=0 or not name or type(oid) is not int:
+            print("BNPB_GIS2025_INVALID_ID_SAMPLE="+json.dumps({"OBJECTID":oid,"Kode_Kab":code,"Kabupaten_Kota":name,"kode_kab_s":x.get("kode_kab_s"),"nama_kab_1":x.get("nama_kab_1")},ensure_ascii=False))
+            raise ValueError("Invalid district identity")
         if oid in seen_oids:raise ValueError("Repeated GIS OBJECTID")
         seen_oids.add(oid)
         if code in seen_codes:raise ValueError("Repeated district code "+str(code))
