@@ -1,0 +1,47 @@
+name: SLI Research AI Advanced Lab UX QA
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'sli-research-ai.html'
+      - 'js/sli-analytical-workbench-ui.mjs'
+      - 'css/sli-analytical-workbench.css'
+      - 'tests/qa-sli-research-ai-lab-ux.mjs'
+      - '.github/workflows/sli-research-lab-ux-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'sli-research-ai.html'
+      - 'js/sli-analytical-workbench-ui.mjs'
+      - 'css/sli-analytical-workbench.css'
+      - 'tests/qa-sli-research-ai-lab-ux.mjs'
+      - '.github/workflows/sli-research-lab-ux-qa.yml'
+permissions:
+  contents: read
+jobs:
+  chat-first-layout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check method engine syntax and UX contract
+        run: |
+          node --check js/sli-analytical-workbench-ui.mjs
+          node --check js/sli-research-assistant.js
+          node --test tests/qa-sli-research-ai-lab-ux.mjs
+      - name: Check no duplicate details or hidden analytics wiring
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          script=Path("js/sli-analytical-workbench-ui.mjs").read_text()
+          page=Path("sli-research-ai.html").read_text()
+          assert script.count('lab.id="raAdvancedLab"')==1
+          assert 'id="raAdvancedLab"' not in page
+          assert 'id="raOpenDataLab"' in page
+          assert 'window.SLIAnalyticalWorkbench=Object.freeze' in script
+          assert script.count('document.createElement("details")')>=2
+          print("One lazy disclosure, one lab shortcut, calculation engine still attached")
+          PY

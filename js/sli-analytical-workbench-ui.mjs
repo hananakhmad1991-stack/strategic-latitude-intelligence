@@ -8,8 +8,8 @@ const $=id=>document.getElementById(id);
 const box=document.createElement("section");
 box.id="raAnalyticalWorkbench";box.className="sli-ra-method-workbench";
 box.setAttribute("aria-label","SLI methodology and investor data workbench");
-box.innerHTML=`<div class="ra-wb-header"><div><span class="ra-wb-kicker">SLI · ANALYTICAL WORKBENCH</span><h2>Research Methods & Data Lab</h2><p data-wb-i18n="intro">Pilih pendekatan analitis, lalu gabungkan dataset CSV/JSON milik Anda dengan hasil riset SLI. Perhitungan awal berjalan lokal di browser.</p></div><span class="ra-wb-marker">49 METODE</span></div>
-<p><a href="./sli-methodology-models.html" target="_blank" rel="noopener noreferrer">Buka Atlas 49 Metodologi: rumus, status & sumber ↗</a></p><div class="ra-wb-grid"><label>Metodologi / Method<select id="raMethod" aria-label="Select quantitative or qualitative methodology"><option value="auto">Auto · AI chooses the suitable method</option></select></label>
+box.innerHTML=`<div class="ra-wb-header"><div><span class="ra-wb-kicker">SLI · ADVANCED METHODS</span><h2 data-wb-i18n="lab-heading">Research Methods & Data Lab</h2><p data-wb-i18n="intro">Gunakan lab bila Anda ingin menguji metode atau menghitung dataset secara manual. Research AI tetap dapat digunakan langsung tanpa membuka lab ini.</p></div><span class="ra-wb-marker">49 METODE</span></div>
+<p><a href="./sli-methodology-models.html" target="_blank" rel="noopener noreferrer">Buka Atlas 49 Metodologi: rumus, status & sumber ↗</a></p><div class="ra-wb-grid"><label>Metodologi / Method<select id="raMethod" aria-label="Select quantitative or qualitative methodology"><option value="auto">Otomatis · rekomendasi metode sesuai data</option></select></label>
 <label>Dataset pengguna / Your data<input id="raDataFile" type="file" accept=".csv,.json,text/csv,application/json" aria-label="Upload CSV or JSON dataset"></label></div>
 <p id="raDatasetStatus" class="ra-wb-dataset-status" role="status" aria-live="polite">Belum ada dataset aktif. Gunakan data BPS atau unggah CSV/JSON.</p>\n<p id="raMethodInfo" class="ra-wb-detail" role="status">Auto memilih metode sesuai data; tidak mengklaim model yang tidak dijalankan.</p><details id="raMethodCard" class="ra-wb-detail"><summary>Rumus, sumber & batasan / Method statement</summary><p id="raMethodFormula"></p><p id="raMethodRequirements"></p><a id="raMethodFormulaSource" target="_blank" rel="noopener noreferrer" hidden>Rujukan metode ↗</a></details>
 <div class="ra-wb-grid ra-wb-variables" id="raVariables" hidden><label>Predictor / X<select id="raPredictor"></select></label><label>Outcome / Y<select id="raOutcome"></select></label></div>
@@ -17,22 +17,33 @@ box.innerHTML=`<div class="ra-wb-header"><div><span class="ra-wb-kicker">SLI · 
 <div class="ra-wb-output" id="raModelResult" role="status" aria-live="polite">Belum ada dataset. CSV/JSON maksimum 1 MB dan 3.000 observasi; XLSX bisa diekspor dahulu sebagai CSV.</div>
 <label class="ra-wb-consent"><input type="checkbox" id="raDataConsent"> <span>Saya setuju <strong>ringkasan dan hasil hitung</strong> dataset dikirim ke layanan AI privat ketika saya menekan “Riset dengan AI”. Data mentah tetap lokal. Jangan unggah rahasia dagang atau data pribadi.</span></label>
 <p class="ra-wb-footnote">Data yang diunggah bukan sumber SLI terverifikasi. Model statistik lokal bersifat eksploratif; p-value, hubungan sebab-akibat, multiplier ekonomi dan hasil peramalan memerlukan desain riset serta validasi khusus.</p>`;
-const evidenceOptions=document.createElement("section");
-evidenceOptions.id="raOfficialBpsSource";evidenceOptions.className="ra-wb-official-source";
-evidenceOptions.innerHTML='<div><strong>Official Data Lab · BPS 2021–2025</strong><p>Gunakan panel provinsi 2022–2025 yang dihitung dari publikasi resmi PDRB BPS. Baseline validasi wilayah: 32 provinsi × 4 tahun (128 observasi). Papua dan Papua Barat lama tidak dimodelkan karena pemekaran 2023; empat provinsi Papua baru belum punya seri historis 2021–2022 yang sebanding. X bawaan: porsi PMTB tahun sebelumnya, Y: pertumbuhan PDRB riil.</p></div><div class="ra-wb-official-actions"><button type="button" id="raLoadOfficialBps">Gunakan panel BPS tersaring · 32 provinsi</button><a href="https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html" target="_blank" rel="noopener noreferrer">Baca sumber BPS ↗</a></div><small>Tidak termasuk rasio Gini 2026 atau data PLN 2024 sebagai seri tahunan. Nilai 2024 direvisi, 2025 sementara. Hanya analisis eksploratif; izin penggunaan ulang tabel komersial perlu diperiksa.</small>';
-box.prepend(evidenceOptions);
+const evidenceOptions=document.createElement("details");
+evidenceOptions.id="raOfficialBpsSource";evidenceOptions.className="ra-wb-official-source ra-wb-bps-disclosure";
+evidenceOptions.innerHTML='<div><strong data-wb-i18n="bps-title">BPS · Panel PDRB 2022–2025 (publikasi 2021–2025)</strong><p data-wb-i18n="bps-description">Gunakan panel provinsi 2022–2025 yang dihitung dari publikasi resmi PDRB BPS. Baseline validasi wilayah: 32 provinsi × 4 tahun (128 observasi). Papua dan Papua Barat lama tidak dimodelkan karena pemekaran 2023; empat provinsi Papua baru belum punya seri historis 2021–2022 yang sebanding. X bawaan: porsi PMTB tahun sebelumnya, Y: pertumbuhan PDRB riil.</p></div><div class="ra-wb-official-actions"><button type="button" id="raLoadOfficialBps" data-wb-i18n="bps-load">Gunakan panel BPS tersaring · 32 provinsi</button><a href="https://www.bps.go.id/id/publication/2026/04/30/f01b7d753185ea2e879d321f/produk-domestik-regional-bruto-provinsi-provinsi-di-indonesia-menurut-pengeluaran-2021-2025.html" target="_blank" rel="noopener noreferrer">Baca sumber BPS ↗</a></div><small data-wb-i18n="bps-note">Tidak termasuk rasio Gini 2026 atau data PLN 2024 sebagai seri tahunan. Nilai 2024 direvisi, 2025 sementara. Hanya analisis eksploratif; izin penggunaan ulang tabel komersial perlu diperiksa.</small>';
+evidenceOptions.insertAdjacentHTML("afterbegin",'<summary data-wb-i18n="bps-summary">Dataset contoh BPS · 32 provinsi (2022–2025) <span>Opsional</span></summary>');
+box.querySelector(".ra-wb-grid")?.insertAdjacentElement("beforebegin",evidenceOptions);
 const quality=document.createElement("section");
 quality.id="raOfficialDataQA";quality.className="ra-wb-quality";quality.hidden=true;
 evidenceOptions.insertAdjacentElement("afterend",quality);
 const structuralSection=document.createElement("section");
 structuralSection.id="raStructuralEconomy";structuralSection.className="ra-wb-structural-economy";structuralSection.hidden=true;
 quality.insertAdjacentElement("afterend",structuralSection);
-const anchor=$("raOwnerPanel");
+// Put the optional calculation lab AFTER the conversation instead of interrupting
+// the primary Research AI composer, prompts, private Owner Test and answers.
+const anchor=document.querySelector(".sli-ra-next");
 const lab=document.createElement("details");lab.className="sli-ra-advanced-lab";lab.id="raAdvancedLab";
 const label=document.createElement("summary");
-label.textContent="Laboratorium metode & ekonometrika · Opsional bagi analis";
+label.textContent="Metode & Data Lab · Perhitungan lanjutan (opsional)";
 lab.append(label,box);
-anchor?.parentNode?.insertBefore(lab,anchor);
+lab.open=false;
+if(anchor?.parentNode)anchor.parentNode.insertBefore(lab,anchor);
+else document.querySelector("#sliResearchMain")?.append(lab);
+const labShortcut=$("raOpenDataLab");
+labShortcut?.addEventListener("click",event=>{
+ event.preventDefault();lab.open=true;
+ lab.scrollIntoView({behavior:"smooth",block:"start"});
+ box.querySelector("#raMethod")?.focus({preventScroll:true});
+});
 
 const method=$("raMethod"),datafile=$("raDataFile"),x=$("raPredictor"),y=$("raOutcome"),detail=$("raMethodInfo"),result=$("raModelResult"),varGroup=$("raVariables"),consent=$("raDataConsent");
 let data=null,model=null,filename="",last=null,officialBps=null,structuralLens=null;
@@ -790,7 +801,22 @@ $("raClearData").addEventListener("click",()=>{data=null;model=null;filename="";
 function language(){
  const id=document.documentElement.lang!=="en";
  const p=box.querySelector("[data-wb-i18n=intro]");
- if(p)p.textContent=id?"Pilih pendekatan analitis, unggah data sendiri, dan padukan ringkasan analitisnya dengan bukti SLI.":"Select a research methodology, upload your data, and combine its analytical summary with SLI evidence.";
+ if(p)p.textContent=id?"Untuk menghitung atau memeriksa data secara manual; tidak diperlukan untuk memakai Research AI.":"For manual calculations and dataset checks; not required to use Research AI.";
+ label.textContent=id?"Metode & Data Lab · Perhitungan lanjutan (opsional)":"Methods & Data Lab · Optional advanced calculations";
+ const localized={
+  "lab-heading":id?"Metode Riset & Laboratorium Data":"Research Methods & Data Lab",
+  "bps-title":id?"BPS · Panel PDRB 2022–2025 (publikasi 2021–2025)":"BPS · GRDP panel 2022–2025 (2021–2025 publication)",
+  "bps-summary":id?"Dataset contoh BPS · 32 provinsi (2022–2025) · Opsional":"BPS sample dataset · 32 provinces (2022–2025) · Optional",
+  "bps-description":id?"Dataset contoh turunan publikasi resmi PDRB BPS. Panel tersaring mencakup 32 provinsi × 4 tahun = 128 observasi, bukan seluruh 38 provinsi. Pemekaran Papua membuat seri awal tidak sebanding. X bawaan: porsi PMTB tahun sebelumnya; Y: pertumbuhan PDRB riil.":"Example derived from official BPS provincial GRDP releases. The filtered panel contains 32 provinces × 4 years = 128 observations, not a complete 38-province series. Papua administrative splits limit historical comparability. Default X: prior-year investment share; Y: real GRDP growth.",
+  "bps-load":id?"Gunakan contoh BPS · 32 provinsi":"Load BPS example · 32 provinces",
+  "bps-note":id?"Tidak mencakup Gini 2026 atau PLN 2024 sebagai deret tahunan. Angka 2024 direvisi, 2025 sementara. Analisis eksploratif; periksa izin penggunaan ulang secara komersial.":"Does not use 2026 Gini or 2024 PLN metrics as annual time series. 2024 figures revised and 2025 preliminary. Exploratory analysis only; check commercial table reuse permissions."
+ };
+ for(const [key,value] of Object.entries(localized)){
+  const target=box.querySelector('[data-wb-i18n="'+key+'"]')||evidenceOptions.querySelector('[data-wb-i18n="'+key+'"]');
+  if(target)target.textContent=value;
+ }
+ const defaultOption=method.querySelector('option[value="auto"]');
+ if(defaultOption)defaultOption.textContent=id?"Otomatis · rekomendasi metode sesuai data":"Auto · suggest method for the data";
 }
 document.querySelectorAll("[data-ra-lang]").forEach(b=>b.addEventListener("click",language));
 language();desc();updateDatasetStatus();
