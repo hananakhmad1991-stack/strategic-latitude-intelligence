@@ -1,26 +1,11 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-20T04:48:52.869705+00:00",
-  "last_attempt_at_utc": "2026-10-20T04:48:52.869705+00:00",
+  "generated_at_utc": "2026-10-20T05:47:41.539172+00:00",
+  "last_attempt_at_utc": "2026-10-20T05:47:41.539172+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
-        {
-          "id": "copper-supply-ls-considers-cut-to-copper-processing-capacity-mining-com",
-          "title": "LS considers cut to copper processing capacity - Mining.com",
-          "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1JOU5iOU1qcjdPTHZaLWFaeDFWOUxhQUhvOHN0cFk5TDJNODRUYTV6cTlZSjVKYTBOLUh0WHdkWGhaNkdyQWtIUDFRMkhMRUp1aXR2dUY3bTYyb3RyT3JMWDY2UFhqTkQ5YjZuSUJQQ3I0RjRLdUxHVHB0WGl2b2M?oc=5",
-          "publisher": "Mining.com",
-          "publisher_url": "https://www.mining.com",
-          "published_at_utc": "2026-10-19T16:47:29+00:00",
-          "sector": "minerals",
-          "scope": "geopolitical",
-          "topic_id": "copper_supply",
-          "channel": "Copper, alumina and aluminium exposure",
-          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
         {
           "id": "nickel-market-govt-targets-up-to-us-50-billion-in-nickel-exports-by-2026-antara-news",
           "title": "Govt targets up to US$50 billion in nickel exports by 2026 - ANTARA News",
@@ -58,6 +43,21 @@
           "publisher": "Mining.com",
           "publisher_url": "https://www.mining.com",
           "published_at_utc": "2026-10-14T16:31:40+00:00",
+          "sector": "minerals",
+          "scope": "geopolitical",
+          "topic_id": "copper_supply",
+          "channel": "Copper, alumina and aluminium exposure",
+          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "copper-supply-aurubis-raises-2027-european-copper-premium-to-record-347-a-ton-sources-say-mining-com",
+          "title": "Aurubis raises 2027 European copper premium to record $347 a ton, sources say - Mining.com",
+          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNS3l5SjNwVEl4NVp3R1F6TWNhRGxzZV9pQnE4djZjUUh1UVN5Wng4akdQSXhSN2Z5aC1MZ1BYZWUwYlRkd2hYR1ZvR2dISkdEZmpTRXJNeTFuRXA2STRkTDdNQ1BKR205TUN2bzEyWWVSTkFzZDRpR08wbHFNZVVINHNtaC1YNVFzQk9Qc3FkZmItMzFramVFWkZHVGJwRFNRb2JpQ0RR?oc=5",
+          "publisher": "Mining.com",
+          "publisher_url": "https://www.mining.com",
+          "published_at_utc": "2026-10-14T15:55:08+00:00",
           "sector": "minerals",
           "scope": "geopolitical",
           "topic_id": "copper_supply",
@@ -373,6 +373,21 @@
     "ai": {
       "geopolitical": [
         {
+          "id": "china-ai-china-economy-growth-accelerates-as-ai-export-boom-outweighs-domestic-weakness-bbc",
+          "title": "China economy: Growth accelerates as AI export boom outweighs domestic weakness - BBC",
+          "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBiRHNscmo4QS1PNzdVejAzOTJHbzRXc1M4aHowZE8xaUl2VEFYaERGenhZcVAyVmVjTWVhallfSVdzOVMxREJldG1EUUxVQS0xQUl6SW9MZ0FwcERETFE?oc=5",
+          "publisher": "BBC",
+          "publisher_url": "https://www.bbc.co.uk",
+          "published_at_utc": "2026-10-19T02:03:04+00:00",
+          "sector": "ai",
+          "scope": "geopolitical",
+          "topic_id": "china_ai",
+          "channel": "China AI technologies and strategic development",
+          "impact_pathway": "Chinese media reporting may signal relevant compute, model or semiconductor developments; compare with alternative market, academic and official sources.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
           "id": "china-ai-china-unveils-draft-export-controls-on-ai-technologies-and-chips-financial-times",
           "title": "China unveils draft export controls on AI technologies and chips - Financial Times",
           "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQZFJrS1d0QjRNNDFCeDlGc2x2cHJhTWN6SEJtWjFucjRFWnc2LWlUMFFMbjFuX3BOWGpJcVhLdnVRRnFjaUVpRXh0UHNQcWl6UkF3clZ3VExPc1dVX1hvc2o4Tnl3Mm15VE03Y1h6NHJzU3hnUmlFWlpha0hkeElUaUg1SFY?oc=5",
@@ -474,21 +489,6 @@
           "topic_id": "compute_competition",
           "channel": "Regional data-center investment competition",
           "impact_pathway": "Regional power, connectivity and investment competition may affect relative project attractiveness and capital allocation.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "china-ai-imf-says-ai-investment-keeps-global-growth-around-3-but-brings-massive-disruption-reuters",
-          "title": "IMF says AI investment keeps global growth around 3% but brings massive disruption - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxONXItVGZaTjNISE9iMlVzZzhlV2ZmYzFDR29feFhfWFRhRzJFdWlwYXk5QkZpUHQ3WVhLZEZId2xobTNmc1E2Y25FN2c1TTg1eldiR3RLR003ajh2RUpSN1RxYXVzYjJ4TW5ZMW1ZcVljRndfSUpoNVVlLUE3eWc1MkhqUUtGQTdYdC1zVUxIbnNJWVJYb2ZIcVN1S3QzWWhQUmdsQ3VFVG9xSEs4NDVvOTZ5dHJRZUNNaUtsazVSMThYQQ?oc=5",
-          "publisher": "Reuters",
-          "publisher_url": "https://www.reuters.com",
-          "published_at_utc": "2026-10-12T12:45:33+00:00",
-          "sector": "ai",
-          "scope": "geopolitical",
-          "topic_id": "china_ai",
-          "channel": "China AI technologies and strategic development",
-          "impact_pathway": "Chinese media reporting may signal relevant compute, model or semiconductor developments; compare with alternative market, academic and official sources.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -733,21 +733,6 @@
           "impact_pathway": "Power contracts, cooling and water availability can affect delivery; contracted MVA is not operating IT MW.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "power-water-menkomdigi-tanggapi-soal-proyek-data-center-ai-bdx-di-jatiluhur-yang-disetop-dedi-mulyadi-kompas-com",
-          "title": "Menkomdigi Tanggapi soal Proyek Data Center AI BDx di Jatiluhur yang Disetop Dedi Mulyadi - Kompas.com",
-          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQWUlSMUs1dDZVYldRbVk2QmhjWUQ1Ny0tYnVBMEpiT2ozNWUybnJOZXpQOThjeG9VRWduZ3k2dDlDbldwMEpuUk5hV0g5WVlFaVAteVZrWENoa0QwYy1IckRydE9QUTQ4Sy1IVUVfN3ZQV1JYTW5tM3VzTHdJVkNLVmxiaGx3ZllBSWdCb2lwWEdZeXN2eE8tUEpTaDdXb0JQU0FOdERTSDVVZ3lScTMwdElRVUJTRGZiN1dTWEZrQjl6MUs4VnotQQ?oc=5",
-          "publisher": "Kompas.com",
-          "publisher_url": "https://nasional.kompas.com",
-          "published_at_utc": "2026-10-07T07:00:00+00:00",
-          "sector": "ai",
-          "scope": "domestic",
-          "topic_id": "power_water",
-          "channel": "Grid, water and cooling",
-          "impact_pathway": "Power contracts, cooling and water availability can affect delivery; contracted MVA is not operating IT MW.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         }
       ]
     },
@@ -846,9 +831,24 @@
       ],
       "domestic": [
         {
+          "id": "food-policy-taruhan-besar-2-tahun-prabowo-gibran-bangun-swasembada-pangan-cnn-indonesia",
+          "title": "Taruhan Besar 2 Tahun Prabowo-Gibran Bangun Swasembada Pangan - CNN Indonesia",
+          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQbmMxNk5vVUdPc0xBbHZsU08xN1ZXTnlHOUtHNVcxNnVyaDFwTjVmTEV0OFdnRDlXeHY4cWpkdm92VEhXdkFfa09xSUpNZURDelIwYXpVRFJQUWVFZ216UmdnZVpkRldtaFZFUGFBZ2JNaDBaYmttLVJ4bjVOMnNiZ3dtMkQ3MW5oN041T2Z4ejhLU0lNY1VXbGwxbVlBcEZTQzF5YzlRRWJJN0p5S2Q1UFFoeUhBNDFQZ3dESTA3QnBud9IBxwFBVV95cUxQR3VRSUdHUnI2YzV4VzBldjlweXdodndMUTRGY1cweHkxVUJQd3I5V3NWV09jQjEybVBHX1M3ZHAtdXBLSGNkRkJCTUtEUTVmYjFCSUpYUll1Uy1JMk1VczJuV3BmUlpNNU8xaDRneWk4cnpTRlB5RmF6dUhBZHczVFNmZEtNV1FGYi1qazUtTklmQmNUZUVOQTRUbzFVcGVPSFJ6VFowRUhIOWJnalFqWUtXcjhySWlseVVtMTVCbGROY2ZqLXlv?oc=5",
+          "publisher": "CNN Indonesia",
+          "publisher_url": "https://www.cnnindonesia.com",
+          "published_at_utc": "2026-10-20T05:11:21+00:00",
+          "sector": "food",
+          "scope": "domestic",
+          "topic_id": "food_policy",
+          "channel": "Food governance and trade policy",
+          "impact_pathway": "Regulatory changes need primary legal documents; do not infer effective legal status from a headline.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
           "id": "rice-reserves-produksi-beras-2025-naik-13-29-persen-pengadaan-bulog-tembus-4-juta-ton-kompas-com",
           "title": "Produksi Beras 2025 Naik 13,29 Persen, Pengadaan Bulog Tembus 4 Juta Ton - Kompas.com",
-          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOT2dLMUdHMVBWWGVpaEc1TTVzNXZDZFF5cGNPem9zdjhNSUc2WEQtVkFHY0ZUaXN3QWZUS0FHWjQ0N0VuNWZFb3ZJRkRoek9jbVRCNVJxcVM4MDN6Rmx5bGFmcm56bFZSQk5Kbkhrd1NNaFgwY05XaU5MVFB2MVp5Y3ptNWdQeHJiYWJXNGRYTXJZSzdxdm5tTlZEdlJ0dFoxNWFxSFpNMk9NeDdRVFF2ZU5KMHhXb3JxWWswRmVXbFc?oc=5",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQOVVOeUtXS291VUZtRUswSmhrd1M5MURadHpUalljcjNqNlhmeWNzMU9ra1l3eVVyLS1OVXdsd0RtaFhBVWU1bHpJZi15UVd5dUFyRy1xZlJFQzg2Vkc3YU81SFUwQnpETkpmb2k1OVp6eE1UcXJlRFdWYmhHcGxOeFVFQjhGblBYVFg5dkhKaF90d1NLd3NmaGRNYnVHeF91RUpXdnpzdWtsc1JYaDBIUjY3TGhqVzBzeFJyRThsc1lzOHF2NzlmcmlBWlo?oc=5",
           "publisher": "Kompas.com",
           "publisher_url": "https://nasional.kompas.com",
           "published_at_utc": "2026-10-20T02:17:00+00:00",
@@ -917,6 +917,21 @@
           "topic_id": "rice_reserves",
           "channel": "Rice production, reserves and distribution",
           "impact_pathway": "Compare news claims about rice production, stock and distribution with BPS and Bapanas source-dated evidence.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "fertilizer-subsidy-tebus-pupuk-subsidi-di-koperasi-desa-cukup-pakai-ktp-simak-ketentuannya-kompas-com",
+          "title": "Tebus Pupuk Subsidi di Koperasi Desa Cukup Pakai KTP, Simak Ketentuannya - Kompas.com",
+          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQSmVQQTIwRjB1WE5hX0R1UHpkSVJxNm53OHNDc0VxUzkwYm1pQ1JzT2JiaVNzUDFzdXd4QlRXWUpfV2hmZUlfeWdIM250aEFLSnRUX2x5MXN5VHo5VGd4b21vWndlNVFicU1uZkhXZUwySzYzekJFSXprNnhWUHotcUdFN21LZXpYclNidktweEY3bUR5WjEyb0U0RU1mcU51eC1KQ0lBN1VwYmZZdy14aEZFb0JhWGhuSXpFNFlGbw?oc=5",
+          "publisher": "Kompas.com",
+          "publisher_url": "https://money.kompas.com",
+          "published_at_utc": "2026-10-18T14:14:00+00:00",
+          "sector": "food",
+          "scope": "domestic",
+          "topic_id": "fertilizer_subsidy",
+          "channel": "Fertilizer allocation and distribution",
+          "impact_pathway": "Subsidy allocation, commercial production and physical delivery are distinct observations.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -1041,36 +1056,6 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
-          "id": "food-policy-amran-ungkap-harga-beras-di-vietnam-tailan-anjlok-usai-ri-setop-impor-bisnis-com-ekonomi",
-          "title": "Amran Ungkap Harga Beras di Vietnam-Tailan Anjlok Usai RI Setop Impor - Bisnis.com - Ekonomi",
-          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPOTBxQjhhVk5KOVpOdndZRGxZX19XVThNNjRXUFotRk5NWHZtWmpUV01tWnRXV0NaTW41T3pFSkZDNzk3bHMzcTdLU1ZHaURzT20tRmhwVV84ckFHTk5lRVhMYWdWSzlWcFlNMWdGSXhHb1hzNG1CakRmUXlnQ0J3MzczWTVFY3JpRFRYeU8xdlZuVXBXLU9HQ204cklDQS1RRm9tWUtaMExmTnEybkxacFdTeTViMUdQNHdJalF3?oc=5",
-          "publisher": "Bisnis.com - Ekonomi",
-          "publisher_url": "https://ekonomi.bisnis.com",
-          "published_at_utc": "2026-10-13T10:38:00+00:00",
-          "sector": "food",
-          "scope": "domestic",
-          "topic_id": "food_policy",
-          "channel": "Food governance and trade policy",
-          "impact_pathway": "Regulatory changes need primary legal documents; do not infer effective legal status from a headline.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "fertilizer-subsidy-penyaluran-pupuk-subsidi-tak-sesuai-ketentuan-pi-rugi-rp21-9-m-bloomberg-technoz",
-          "title": "Penyaluran Pupuk Subsidi tak Sesuai Ketentuan, PI Rugi Rp21,9 M - Bloomberg Technoz",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOdExwak1QelBHQmlvVjJVTTdJeG9wNm5uWFB4SG9QektLWGtZMWphNkJKbEl3OVctaTBsWDBQVElRWDZRQmlibUlmaWFpZG1zZVdkUHpicHdmU19JbmxlQkw3ZFVXMk40Y19vWFBUWUpKOWl4Mm1uSEV0V0FyaTRZRWNuLTZZTUpQb1M1MllUTm9vX0l0aWl2MkQ4c0R6X2VEWVdFT3pveWVVcHYxd2h0RktleWc?oc=5",
-          "publisher": "Bloomberg Technoz",
-          "publisher_url": "https://www.bloombergtechnoz.com",
-          "published_at_utc": "2026-10-13T08:35:00+00:00",
-          "sector": "food",
-          "scope": "domestic",
-          "topic_id": "fertilizer_subsidy",
-          "channel": "Fertilizer allocation and distribution",
-          "impact_pathway": "Subsidy allocation, commercial production and physical delivery are distinct observations.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
           "id": "food-policy-paradoks-swasembada-di-tengah-mahalnya-beras-kompas-com",
           "title": "Paradoks Swasembada di Tengah Mahalnya Beras - Kompas.com",
           "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPTGZkVDVqY29QODY3aXZPNnhFSUZyUG9sRHpxZzJZc21MVVZLazN0NWVqZmtHOGVxeU9ET3o1ZDZCT2VKVjNPT0E5bnVsXy1SZnNSc3AzMm9mSmtjV0s3VnNQbHVpcDBTRVMyMFpkTWxUYjBTUF90ajNtYmcwQ0lVbFktVVJ0M0F2U2tray1naWtiSGY4UWVKZ05FYlNFdnZ3QVJKQ2stVQ?oc=5",
@@ -1170,7 +1155,7 @@
     },
     "ai": {
       "geopolitical": 13,
-      "domestic": 12
+      "domestic": 11
     },
     "food": {
       "geopolitical": 6,
