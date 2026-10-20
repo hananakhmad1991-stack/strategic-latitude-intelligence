@@ -36,6 +36,49 @@ function tradingview(host,ticker,name){
  const s=E("script");s.type="text/javascript";s.src=src;s.async=true;s.textContent=JSON.stringify(config);frame.append(s);
  outer.append(frame);host.append(outer);
 }
+
+/* Provider-owned historical TradingView widget; issuer code remains the exact IDX ticker
+ * already resolved from SLI's source-dated registry. No price data is copied into SLI.
+ */
+const TV_ADVANCED_CHART="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+function historicalChartConfig(ticker){
+ if(!/^[A-Z0-9]{4}$/.test(ticker))throw Error("Invalid IDX ticker for historical chart");
+ return {
+  autosize:true,symbol:"IDX:"+ticker,interval:"D",timezone:"Asia/Jakarta",
+  theme:"dark",backgroundColor:"#122d41",gridColor:"rgba(101,133,157,0.16)",
+  style:"1",locale:id()?"id":"en",hide_side_toolbar:true,
+  hide_top_toolbar:false,withdateranges:true,range:"12M",
+  allow_symbol_change:false,hide_legend:false,hide_volume:false,
+  save_image:false,calendar:false,details:false,hotlist:false,watchlist:[],
+  compareSymbols:[],studies:[],support_host:"https://www.tradingview.com"
+ };
+}
+function historicalChart(host,ticker){
+ const section=E("section","sli-issuer-history");
+ section.append(E("h3",null,T("Historical share price · IDX:"+ticker,"Historis harga saham · IDX:"+ticker)));
+ section.append(E("p","sli-issuer-history-intro",T(
+  "Interactive daily candlesticks, starting from the past year. Select a different timeframe or date range using the TradingView toolbar.",
+  "Grafik candlestick harian interaktif, dengan rentang awal satu tahun. Ubah interval atau rentang historis menggunakan toolbar TradingView."
+ )));
+ const frame=E("div","sli-issuer-history-frame tradingview-widget-container");
+ frame.setAttribute("aria-label",T("Interactive historical chart for IDX:"+ticker,"Grafik historis saham IDX:"+ticker));
+ const mount=E("div","tradingview-widget-container__widget");
+ frame.append(mount);
+ const legal=E("div","tradingview-widget-copyright");
+ legal.append(link("https://www.tradingview.com/symbols/IDX-"+ticker+"/",T(ticker+" historical chart by TradingView ↗",ticker+" · grafik historis TradingView ↗"),true));
+ frame.append(legal);
+ const script=E("script");
+ script.src=TV_ADVANCED_CHART;script.type="text/javascript";script.async=true;
+ script.textContent=JSON.stringify(historicalChartConfig(ticker));
+ frame.append(script);section.append(frame);
+ const note=E("p","sli-issuer-history-note",T(
+  "Historical prices are displayed and calculated by TradingView. Exchange data may be delayed, adjusted or unavailable for some symbols; this is not a verified SLI financial dataset.",
+  "Harga historis ditampilkan dan dihitung langsung oleh TradingView. Data bursa dapat tertunda, disesuaikan, atau tidak tersedia untuk sebagian saham; ini bukan dataset keuangan SLI yang telah diverifikasi."
+ ));
+ section.append(note);
+ host.append(section);
+}
+
 function render(data,ticker,groups){
  const root=$("sliIssuerDossier");root.replaceChildren();
  const name=data.name||ticker, related=groups.records.filter(n=>n.exchange==="IDX"&&n.ticker===ticker);
@@ -76,6 +119,7 @@ function render(data,ticker,groups){
  }
  left.append(relate);
  tradingview(side,ticker,name);
+ historicalChart(side,ticker);
  side.append(E("p","sli-issuer-missing",T("SLI has not published a licensed, auditable IDX EOD market-cap quote for this ticker. The embedded chart belongs to the provider and is separate from SLI internal statistics.",
  "SLI belum menerbitkan kutipan kapitalisasi/harga EOD berizin yang bisa diaudit untuk emiten ini. Grafik tersemat milik penyedia dan terpisah dari statistik internal SLI.")));
  content.append(left,side);root.append(content);
@@ -96,5 +140,5 @@ async function load(){
 }
 document.addEventListener("sli:languagechange",()=>load());
 document.addEventListener("DOMContentLoaded",load,{once:true});
-window.SLIIssuerRoute={tickerFrom};
+window.SLIIssuerRoute={tickerFrom,historicalChartConfig,historicalChartWidget:TV_ADVANCED_CHART};
 })();
