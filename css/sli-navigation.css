@@ -139,3 +139,11 @@ html.sli-chrome-pending body::before{
 
 /* Keep anchored dashboard sections visible below the live-height sticky platform masthead. */
 html{scroll-padding-top:calc(var(--sli-mast-offset, 0px) + 16px)}
+
+
+/* UI screening Oct 20: the explorer must clear the ACTUAL wrapping masthead.
+   Static 86/126px offsets were insufficient at browser zoom / mobile widths. */
+body.sli-dashboard-unified .sli-platform-sector-menu{
+ top:calc(var(--sli-mast-offset, 80px) + 7px)!important;
+ max-height:max(140px,calc(100dvh - var(--sli-mast-offset, 80px) - 22px))!important;
+}
