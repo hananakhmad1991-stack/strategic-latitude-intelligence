@@ -8,6 +8,19 @@ on:
     branches: [main]
     paths:
       - 'tests/qa-sli-browser-smoke.mjs'
+      - 'index.html'
+      - 'sli-sector-data-library.html'
+      - 'css/sli-home-portal.css'
+      - 'css/sli-sector-data-library.css'
+      - 'css/sli-navigation.css'
+      - 'js/sli-navigation.js'
+      - 'js/sli-sector-data-library.js'
+      - 'js/sli-idx-sector-watchlist.js'
+      - 'js/strategic-map.js'
+      - 'js/sli-visual-export.js'
+      - 'js/sli-visual-export-formats.js'
+      - 'data/sli-bnpb-provincial-2025.json'
+      - 'data/sli-idx-issuer-universe.json'
       - '.github/workflows/sli-browser-smoke-qa.yml'
 permissions:
   contents: read
