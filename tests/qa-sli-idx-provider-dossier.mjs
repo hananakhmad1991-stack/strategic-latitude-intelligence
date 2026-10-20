@@ -56,12 +56,12 @@ test("Sector-only ticker buttons lead to a specific SLI company dossier instead 
  }
  assert.equal(extract("https://sli.example/sli-issuer.html?tvwidgetsymbol=NASDAQ%3AAAPL"),null);
  assert.equal(extract("https://sli.example/sli-issuer.html?ticker=INVALID"),null);
- assert.match(s,/const tickerUrl=t=>"\\.\/sli-issuer\\.html\\?ticker="/);
+ assert.ok(s.includes('const tickerUrl=t=>"./sli-issuer.html?ticker="'));
  assert.match(html,/id="sliIssuerDossier"/);
- assert.match(code,/sli-idx-issuer-universe\\.json/);
- assert.match(code,/sli-corporate-group-registry\\.json/);
- assert.match(code,/data\\.source_url/);
- assert.match(code,/embed-widget-symbol-overview\\.js/);
+ assert.ok(code.includes('sli-idx-issuer-universe.json'));
+ assert.ok(code.includes('sli-corporate-group-registry.json'));
+ assert.ok(code.includes('data.source_url'));
+ assert.ok(code.includes('embed-widget-symbol-overview.js'));
  assert.match(code,/Research AI/);
- assert.doesNotMatch(code,/Math\\.random|fakePrice|syntheticMarketCap/);
+ assert.doesNotMatch(code,/Math\.random|fakePrice|syntheticMarketCap/);
 });
