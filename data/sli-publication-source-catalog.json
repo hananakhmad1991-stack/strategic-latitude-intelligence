@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "as_of": "2026-10-19",
+  "as_of": "2026-10-20",
   "purpose": "Watch official/public original publishers for newly linked reports and news releases affecting curated SLI historical and 2026 snapshot data. New links create editorial review leads, not changes in official numeric values.",
   "sources": [
     {
@@ -146,6 +146,59 @@
         "data/skkmigas-annual-2025.json",
         "data/skkmigas-2025-digitized-exhibits.json",
         "data/energy-fundamentals.json"
+      ]
+    },
+    {
+      "id": "kementan_stats",
+      "publisher": "Pusdatin Kementan",
+      "url": "https://satudata.pertanian.go.id/datasets/publikasi/index.php",
+      "allowed_hosts": [
+        "satudata.pertanian.go.id"
+      ],
+      "title_pattern": "statistik|pertanian|nilai tukar petani|ekspor|impor|produksi|harga",
+      "datasets": [
+        "data/food-agriculture-2026.json",
+        "data/food-governance-hierarchy.json"
+      ]
+    },
+    {
+      "id": "kementan_regulations",
+      "publisher": "JDIH Kementerian Pertanian",
+      "url": "https://jdih.pertanian.go.id/peraturan?jenis=permentan",
+      "allowed_hosts": [
+        "jdih.pertanian.go.id"
+      ],
+      "title_pattern": "permentan|pertanian|pangan|pupuk|petani|organisasi|lahan",
+      "datasets": [
+        "data/sli-policy-regulatory-graph-2026.json",
+        "data/food-governance-hierarchy.json"
+      ]
+    },
+    {
+      "id": "bapanas_public",
+      "publisher": "Badan Pangan Nasional",
+      "url": "https://badanpangan.go.id/",
+      "allowed_hosts": [
+        "badanpangan.go.id"
+      ],
+      "title_pattern": "pangan|beras|harga|cadangan|ketersediaan|bapanas",
+      "datasets": [
+        "data/food-agriculture-2026.json",
+        "data/food-governance-hierarchy.json"
+      ]
+    },
+    {
+      "id": "minerba_esdm",
+      "publisher": "ESDM Minerba",
+      "url": "https://www.esdm.go.id/id/media-center/arsip-berita",
+      "allowed_hosts": [
+        "www.esdm.go.id",
+        "esdm.go.id"
+      ],
+      "title_pattern": "mineral|minerba|nikel|smelter|tembaga|timah|bauksit|hilirisasi",
+      "datasets": [
+        "data/esdm-2025-mineral-performance.json",
+        "data/usgs-indonesia-minerals-2026.json"
       ]
     }
   ],
