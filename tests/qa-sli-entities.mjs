@@ -47,3 +47,30 @@ test('Navigation adds one dedicated directory without hiding legacy sector dashb
  assert.match(read('js/sector-command-hierarchy.js'),/personLink\(a\.person,a\.source\)/);
  assert.match(read('js/sli-research-ai.js'),/if\(!state\.last\?\.summary\)return/);
 });
+
+test('Broad company directory is diversified, traceable and honest about provisional IDX metadata',()=>{
+ const issuer=JSON.parse(read('data/sli-idx-issuer-universe.json'));
+ const corp=JSON.parse(read('data/sli-corporate-group-registry.json'));
+ assert.equal(issuer.schema,'sli-idx-issuer-universe-v1');
+ assert.ok(issuer.records.length>=250);
+ assert.ok(new Set(issuer.records.map(x=>x.ticker)).size===issuer.records.length,'No duplicate ticker IDs');
+ assert.ok(new Set(issuer.records.map(x=>x.sector)).size>=12,'Cover strategic and general economy sectors');
+ for(const e of issuer.records){
+  assert.match(e.ticker,/^[A-Z0-9]{4}$/);
+  assert.ok(e.name&&e.sector&&e.source_url.startsWith('https://www.idx.co.id/'));
+  assert.equal(e.market_cap,null);
+  assert.ok(['idx_seed_awaiting_official_refresh','official_exchange_snapshot'].includes(e.verification));
+ }
+ const overlap=new Set(corp.records.filter(x=>x.exchange==='IDX').map(x=>x.ticker));
+ const distinct=issuer.records.length+corp.records.length-issuer.records.filter(x=>overlap.has(x.ticker)).length;
+ assert.ok(distinct>=350,'At least 350 distinct corporate registry and IDX ticker records');
+ assert.match(page,/id="sliEntityMore"/);
+ assert.match(page,/id="sliIssuerDirectory"/);
+ assert.match(page,/id="sliEntityCoverage"/);
+ const js=read('js/sli-entities.js');
+ assert.match(js,/function fromIssuerUniverse/);
+ assert.match(js,/a\.corporate\?\.exchange==='IDX'/);
+ assert.match(js,/displayLimit\+=100/);
+ assert.match(js,/fromIssuerUniverse\(await response\.json\(\)\)/);
+ assert.doesNotMatch(js,/for\(const a of visible\.slice\(0,160\)\)/);
+});
