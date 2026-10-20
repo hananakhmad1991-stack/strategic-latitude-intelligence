@@ -53,6 +53,14 @@ function req(method,path,user="alice",body=null,originHeader=origin){
  return new Request("https://api.sli.example"+path,{method,headers,body:body===null?undefined:JSON.stringify(body)});
 }
 const query=async r=>{const response=await handleRequest(r,env,identify);return {status:response.status,json:await response.json()}};
+const corsPreflight=await handleRequest(req("OPTIONS","/api/preferences","visitor",null,origin),env,identify);
+assert.equal(corsPreflight.status,204);
+assert.equal(corsPreflight.headers.get("Access-Control-Allow-Origin"),origin);
+assert.equal(corsPreflight.headers.get("Access-Control-Allow-Credentials"),"true");
+assert.ok(corsPreflight.headers.get("Access-Control-Allow-Headers").includes("Content-Type"));
+const corsRejected=await handleRequest(req("OPTIONS","/api/preferences","visitor",null,"https://evil.example"),env,identify);
+assert.equal(corsRejected.status,403);
+assert.equal(corsRejected.headers.get("Access-Control-Allow-Origin"),null);
 assert.equal((await query(req("GET","/api/me"))).json.enrolled,false);
 assert.equal((await query(req("PUT","/api/preferences","alice",{tickers:["ANTM"],sectors:[],kinds:["news","project"],include_sector:false,in_app:true}))).status,200);
 assert.equal((await query(req("PUT","/api/preferences","bob",{tickers:["PGEO"],sectors:[],kinds:["news"],include_sector:false,in_app:true}))).status,200);
