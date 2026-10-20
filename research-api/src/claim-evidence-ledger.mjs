@@ -45,10 +45,12 @@ export async function buildClaimEvidenceLedger(answer,evidence,review,primaryPro
  }));
  const answerDigest=await sha256({answer:String(answer||"")});
  const evidenceDigest=await sha256({sources:sourceSnapshot});
+ const probes=Array.isArray(primaryProbe?.results)?primaryProbe.results:[];
  const reportDigest=await sha256({schema:"sli-claim-evidence-ledger-v1",
   answer_sha256:answerDigest,evidence_sha256:evidenceDigest,
-  sampled_claims:rows.map(r=>({claim:r.claim,citations:r.citations,issues:r.issues}))});
- const probes=Array.isArray(primaryProbe?.results)?primaryProbe.results:[];
+  sampled_claims:rows.map(r=>({claim:r.claim,citations:r.citations,issues:r.issues})),
+  bounded_page_checks:probes.map(p=>({citation:p.citation,claim:p.claim,status:p.status,
+   present:p.claim_numbers_present,absent:p.claim_numbers_absent}))});
  const claims=rows.map((r,i)=>{
   const citations=[...new Set((Array.isArray(r.citations)?r.citations:[])
    .filter(n=>Number.isInteger(n)&&n>=1&&n<=docs.length))].slice(0,MAX_TRACE);
@@ -80,7 +82,7 @@ export async function buildClaimEvidenceLedger(answer,evidence,review,primaryPro
  return {
   schema:"sli-claim-evidence-ledger-v1",review_scope:"machine_triage_sample_not_factual_verification",
   report_sha256:reportDigest,answer_sha256:answerDigest,evidence_snapshot_sha256:evidenceDigest,
-  hash_scope:"Answer, supplied source excerpts/metadata and sampled review rows. SHA-256 is change detection, not independent validation.",
+  hash_scope:"Answer, supplied source excerpts/metadata, sampled review rows and bounded publisher-check diagnostics. SHA-256 is change detection, not independent validation.",
   total_candidate_claims:total,sampled_claims:claims.length,
   not_sampled_candidates:Math.max(0,total-claims.length),
   claims,ready_for_external_use:false,
