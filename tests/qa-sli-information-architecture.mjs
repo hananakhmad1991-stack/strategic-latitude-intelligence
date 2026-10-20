@@ -80,7 +80,8 @@ test('all public static HTML pages have a topical navigation owner (dynamic/priv
   assert.ok(js.includes(name),'Public HTML page not discoverable in canonical taxonomy: '+name);
  }
  const unowned=files.filter(name=>!js.includes(name));
- assert.deepEqual(unowned,['sli-issuer.html','sli-user-intelligence-qa.html'],'Every other published HTML route must have one topical entry');
+ assert.deepEqual(unowned,['sli-user-intelligence-qa.html'],'Every other published route must be referenced in the shared architecture');
+ assert.match(js,/path==='sli-issuer\.html'/,'Ticker dossier must inherit active Entities navigation without becoming a top-level generic module');
  const issuer=read('sli-issuer.html');
  assert.match(issuer,/sliIssuerDossier/);
  assert.doesNotMatch(issuer,/IDX Sector Heatmap<\/a>/,'Duplicate Home URL must not masquerade as a heatmap deep link');
