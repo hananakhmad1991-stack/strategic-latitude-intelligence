@@ -32,6 +32,21 @@ function init(){
    return '<tr><td><strong>'+esc(p.name)+'</strong></td><td>'+count+' dalam indeks</td><td>'+esc(health)+'</td><td>'+(p.source_url?'<a href="'+esc(p.source_url)+'" target="_blank" rel="noopener noreferrer">Buka JDIH resmi ↗</a>':'<span class="quiet">Perlu penelusuran JDIHN</span>')+'</td></tr>';
   });
   $("policyCoverageTable").innerHTML='<thead><tr><th>Provinsi</th><th>Peraturan terindeks</th><th>Status sumber</th><th>Portal</th></tr></thead><tbody>'+rows.join("")+'</tbody>';
+  // The province catalogue and the municipality sample are distinct scopes;
+  // neither is an exhaustive legal record set for an administrative area.
+  const local=Array.isArray(catalog.local_government_sources)?catalog.local_government_sources:[];
+  const localNodeCount=local.reduce((sum,r)=>sum+rules.filter(n=>norm(n.region)===norm(r.region+", "+r.province)||norm(n.region)===norm(r.region)).length,0);
+  const localSummary=$("policyLocalCoverageSummary"),localTable=$("policyLocalCoverageTable");
+  if(localSummary)localSummary.textContent=local.length+" sumber kabupaten/kota prioritas ditemukan · "+localNodeCount+" dokumen terkait telah masuk indeks SLI. Ini bukan seluruh Perda kabupaten/kota.";
+  if(localTable){
+   const localRows=local.map(r=>{
+    const count=rules.filter(n=>norm(n.region)===norm(r.region+", "+r.province)||norm(n.region)===norm(r.region)).length;
+    const src=sources.get(r.monitor_source_id);
+    const health=src?(src.health==="ok"?"Sumber dapat diakses saat pemantauan":"Sumber gagal diakses saat pemantauan"):"Sumber resmi diidentifikasi; tidak dipantau otomatis";
+    return '<tr><td><strong>'+esc(r.region)+'</strong><span class="quiet"> · '+esc(r.province)+'</span></td><td>'+count+' dalam indeks</td><td>'+esc(health)+'</td><td><a href="'+esc(r.source_url)+'" target="_blank" rel="noopener noreferrer">Buka dokumen/JDIH ↗</a></td></tr>';
+   });
+   localTable.innerHTML='<thead><tr><th>Kabupaten/Kota</th><th>Peraturan terindeks</th><th>Status sumber</th><th>Dokumen</th></tr></thead><tbody>'+localRows.join("")+'</tbody>';
+  }
   $("policyCoverageDate").textContent="Diperiksa menurut data yang tersimpan pada "+(monitor?.checked_at_utc?.slice(0,10)||catalog.updated_at)+". Kegagalan akses tidak membuktikan portal atau aturannya tidak ada.";
  }).catch(err=>{
   $("policyCoverageSummary").textContent="Matriks cakupan belum dapat dimuat: "+err.message+". Jangan menyimpulkan tidak ada peraturan.";
