@@ -22,9 +22,9 @@ test("Portfolio homepage links to research and six functioning sector portals, w
  assert.match(html,/LIMITED TEST|Owner Test remains restricted/);
 });
 test("Policy and Geopolitics have separate homepage cards, distinct destinations, and independent dashboard content",()=>{
- assert.ok(html.includes('<a href="#policy" class="sli-portal-sector"'));
+ assert.ok(html.includes('<a href="#policy" class="sli-portal-topic-main"'));
  assert.ok(html.includes('<strong>Policy &amp; Regulation</strong>'));
- assert.ok(html.includes('<a href="#geopolitics" class="sli-portal-sector"'));
+ assert.ok(html.includes('<a href="#geopolitics" class="sli-portal-topic-main"'));
  assert.ok(html.includes('<strong>Geopolitical Intelligence</strong>'));
  assert.ok(!html.includes('<strong>Policy &amp; Geopolitics</strong>'));
  assert.ok(html.includes('data-page="policy"'));
