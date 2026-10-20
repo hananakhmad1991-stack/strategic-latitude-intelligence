@@ -58,3 +58,19 @@ Use **Issues → New issue → SLI Agent — Masukan kualitas AI**, specifying a
 
 ## Current operational limits
 Phase 1 automated self-testing is active, and Phase 2 bounded source-code proposal generation is active on separate branches. Neither is automatic weight retraining, unlimited general code rewriting, or autonomous production deployment. Real production accuracy, live Owner Worker behaviour, factual entailment and 49 estimator development still need separate validation. Real production accuracy, live Owner Worker behaviour, full source entailment and all 49 estimators require separate evaluation and development.
+
+## 20 Oktober 2026 · Belajar dari setiap bug yang sudah terselesaikan (cumulative regression memory)
+
+Setiap perbaikan yang telah di-*merge* dapat menjadi pelajaran permanen, **tetapi bukan pembaruan otomatis bobot GPT dan bukan izin untuk mengubah fakta**. Penerimaan pelajaran membutuhkan *root cause*, pencegahan, PR yang telah digabungkan, dan satu **tes bernama yang benar-benar dapat dieksekusi**.
+
+1. **Intake otomatis:** workflow evaluasi harian 09:13 WIB mengambil metadata hingga 100 PR yang sudah digabung. Judul yang tampak sebagai perbaikan/bug dalam tujuh hari terakhir, tetapi belum masuk daftar pelajaran, dilaporkan sebagai **kandidat review**. Ini deteksi calon masalah, bukan penentuan bahwa suatu model sudah lebih cerdas.
+2. **Review manusia:** Issue tunggal menautkan PR yang perlu diperiksa. Peninjau membaca diff dan akar masalah, membuat kasus sintetis aman, lalu menautkan tes yang membuktikan masalah lama tidak berulang. Jangan memasukkan raw prompt, isi issue privat, tangkapan layar rahasia atau sumber yang belum terverifikasi.
+3. **Retained learning ledger:** `tests/fixtures/sli-agent-resolved-lessons.json` menyimpan rekam perbaikan. Pemeriksa `scripts/sli-agent-resolved-learning.mjs` memastikan PR/SHA dan tes bernama tetap ada. Catatan yang sudah diterbitkan tidak boleh dibuang atau diubah diam-diam pada PR berikutnya.
+4. **Daily regressions:** `sli-agent-self-evaluation.yml` mengevaluasi ledger dan mengulang tes kasus yang sudah dipelajari. Skor menampilkan jumlah pelajaran dan PR asalnya; **skor adalah cakupan uji, bukan akurasi jawaban AI**. `sli-agent-learning-qa.yml` menguji penambahan dan sifat append-only sebelum masuk `main`.
+5. **Promosi terkontrol:** lesson baru dan kode/prompt perbaikan tetap melalui PR, CI dan persetujuan owner. Test hijau tidak mengaktifkan Cloudflare Worker; uji live dan keamanan produksi tetap terpisah.
+
+**Pelajaran awal:** PR #70 (`abc865f7`) memperbaiki pengaman Pasal yang tidak tersedia dan perbedaan indeks regulasi vs. teks pasal. PR #73 (`421c3df`) memperbaiki normalisasi penyebutan undang-undang serta menguji laporan bebas judul tanpa isi. Empat pelajaran ini kini ditautkan ke `tests/qa-sli-legal-source-limited.mjs` dan dijaga dalam scorecard.
+
+**Batasan operasional:** otomatisasi tidak melakukan fine-tuning model, tidak mempelajari informasi pengguna yang bersifat privat, tidak menyimpulkan status hukum, tidak menyatakan setiap merged PR sebagai peningkatan kualitas, dan tidak membiarkan AI melakukan *self-merge*. Pengujian lapangan diperlukan untuk mengukur penurunan kesalahan nyata.
+
+Untuk pemeriksaan manual: `node --test tests/qa-sli-agent-resolved-lessons.mjs tests/qa-sli-legal-source-limited.mjs && node scripts/sli-agent-resolved-learning.mjs`.

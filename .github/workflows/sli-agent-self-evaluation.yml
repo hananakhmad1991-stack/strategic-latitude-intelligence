@@ -9,6 +9,10 @@ on:
     paths:
       - 'scripts/sli-agent-self-eval.mjs'
       - 'tests/qa-sli-agent-self-eval.mjs'
+      - 'scripts/sli-agent-resolved-learning.mjs'
+      - 'tests/qa-sli-agent-resolved-lessons.mjs'
+      - 'tests/fixtures/sli-agent-resolved-lessons.json'
+      - 'tests/qa-sli-legal-source-limited.mjs'
       - 'tests/fixtures/sli-agent-eval-cases.json'
       - 'js/sli-analytical-core.mjs'
       - 'js/sli-decision-methods.mjs'
@@ -19,6 +23,7 @@ on:
       - '.github/workflows/sli-agent-self-evaluation.yml'
 permissions:
   contents: read
+  pull-requests: read
   issues: write
 concurrency:
   group: sli-agent-self-evaluation
@@ -38,11 +43,15 @@ jobs:
         run: |
           node --check scripts/sli-agent-self-eval.mjs
           node --check tests/qa-sli-agent-self-eval.mjs
+          node --check scripts/sli-agent-resolved-learning.mjs
+          node --check tests/qa-sli-agent-resolved-lessons.mjs
       - name: Run deterministic self-evaluation and selected scientific/data regression tests
         id: regression
         run: |
           node --test \
             tests/qa-sli-agent-self-eval.mjs \
+            tests/qa-sli-agent-resolved-lessons.mjs \
+            tests/qa-sli-legal-source-limited.mjs \
             tests/qa-sli-method-execution-v2.mjs \
             tests/qa-sli-regional-method-engines.mjs \
             tests/qa-sli-cross-sector-evidence-v2.mjs \
@@ -53,12 +62,61 @@ jobs:
         run: |
           mkdir -p artifacts
           node scripts/sli-agent-self-eval.mjs --out=artifacts/sli-agent-self-eval-scorecard.json
+      - name: Discover recent merged fix candidates for owner review (no code changes)
+        id: lesson_intake
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts
+          gh pr list --repo "${{ github.repository }}" --state merged --limit 100 \
+            --json number,title,mergedAt,url > /tmp/sli-agent-merged-prs.json
+          node scripts/sli-agent-resolved-learning.mjs \
+            --merged=/tmp/sli-agent-merged-prs.json \
+            --out=artifacts/sli-agent-learning-candidates.json
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+          const r=JSON.parse(fs.readFileSync("artifacts/sli-agent-learning-candidates.json","utf8"));
+          if(!r.pass)process.exit(1);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,"candidate_count="+r.discovery.discovered+"\n");
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+            "\n### Resolved-fix learning intake\nExisting tested lessons: "+
+            r.total+"; fresh merged fix candidates for review: "+r.discovery.discovered+
+            ". No prompts, live model training or data promotion occurred.\n");
+          NODE
+      - name: Open one rolling nonduplicative review Issue for newly discovered fixes
+        if: ${{ steps.lesson_intake.outputs.candidate_count != '' && steps.lesson_intake.outputs.candidate_count != '0' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          MARKER="SLI-AGENT-RESOLVED-FIX-LEARNING-REVIEW"
+          existing=$(gh issue list --state open --search "$MARKER in:body" --json number --jq '.[0].number // empty' 2>/dev/null || true)
+          if [ -n "$existing" ]; then
+            echo "Review issue #$existing already open. New discovery manifest attached to this run."
+            exit 0
+          fi
+          node --input-type=module <<'NODE' > /tmp/sli-agent-learning-review.md
+          import fs from "node:fs";
+          const x=JSON.parse(fs.readFileSync("artifacts/sli-agent-learning-candidates.json","utf8"));
+          console.log("The daily SLI agent found merged fix PRs without a matching curated learning case. This is a REVIEW QUEUE, not self-training.\n");
+          for(const c of x.discovery.candidates) console.log("- PR #"+c.pr_number+": "+c.pr_url);
+          console.log("\nFor each relevant resolved bug: identify root cause; create a nonconfidential synthetic regression test; append a reviewed lesson with exact PR SHA and named test in \`tests/fixtures/sli-agent-resolved-lessons.json\`; obtain QA and owner approval.");
+          console.log("Do not copy issue bodies, real prompts, secrets, attachments or model output into the public ledger.\n");
+          console.log("Run: "+process.env.RUN_URL+"\n");
+          console.log("SLI-AGENT-RESOLVED-FIX-LEARNING-REVIEW");
+          NODE
+          gh issue create --title "SLI Agent: review newly resolved fixes for learning tests" --body-file /tmp/sli-agent-learning-review.md
       - name: Retain scorecard for human review (30 days)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sli-agent-learning-scorecard
-          path: artifacts/sli-agent-self-eval-scorecard.json
+          path: |
+            artifacts/sli-agent-self-eval-scorecard.json
+            artifacts/sli-agent-learning-candidates.json
           if-no-files-found: warn
           retention-days: 30
       - name: Open one non-duplicate human-review issue when an evaluation regresses
@@ -90,5 +148,5 @@ jobs:
           EOF
           gh issue create --title "SLI Agent: review automatic regression failure" --body-file /tmp/sli-agent-review.md
       - name: Fail workflow on any regression (no auto-fix, auto-merge or auto-deploy)
-        if: ${{ always() && (steps.syntax.outcome == 'failure' || steps.regression.outcome == 'failure' || steps.score.outcome == 'failure') }}
+        if: ${{ always() && (steps.syntax.outcome == 'failure' || steps.regression.outcome == 'failure' || steps.score.outcome == 'failure' || steps.lesson_intake.outcome == 'failure') }}
         run: exit 1
