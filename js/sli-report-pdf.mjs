@@ -7,7 +7,7 @@ function blocks(items){
   const s=escapeMarkup(plain(b.text||""));
   if(/^h[123]$/.test(b.type))return "<"+b.type+">"+s+"</"+b.type+">";
   if(b.type==="table")return "<table>"+b.rows.map((row,i)=>"<tr>"+row.map(x=>
-   i===0?"<th>"+escapeMarkup(plain(x))+"</th>":"<td>"+escapeMarkup(plain(x))+"</td>").join(""))+"</tr>").join("")+"</table>";
+   i===0?"<th>"+escapeMarkup(plain(x))+"</th>":"<td>"+escapeMarkup(plain(x))+"</td>").join("")+"</tr>").join("")+"</table>";
   if(b.type==="ul"||b.type==="ol")return '<p class="listitem">'+(b.type==="ul"?"• ":"")+s+"</p>";
   return "<p>"+s+"</p>";
  }).join("\n");
