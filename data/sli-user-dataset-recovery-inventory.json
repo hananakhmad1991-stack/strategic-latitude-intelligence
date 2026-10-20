@@ -119,11 +119,12 @@
       "domain": "Environment",
       "source_agency": "BNPB",
       "observation_period": "2025",
-      "status": "official_xlsx_found_download_and_numeric_validation_pending",
+      "status": "pending_numeric_ingestion",
       "public_dataset": "data/sli-bnpb-provincial-2025.json",
       "main_dashboard": "climate-environment.html#climate-data",
       "detail_dashboard": "sli-sector-data-library.html#disasters",
-      "caution": "BNPB official CKAN resource includes 2025 province table definitions; no verified normalized 38-province rows yet."
+      "caution": "BNPB official CKAN resource includes 2025 province table definitions; no verified normalized 38-province rows yet.",
+      "source_discovery_status": "official_xlsx_found_download_and_numeric_validation_pending"
     },
     {
       "id": "ai_index",
