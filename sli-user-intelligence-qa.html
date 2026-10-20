@@ -36,7 +36,7 @@ a {color:#2254a2}
 <header>
 <div class="eyebrow">STRATEGIC LATITUDE INTELLIGENCE · OWNER QA</div>
 <h1>Uji koneksi akun privat</h1>
-<p>Periksa login Cloudflare Access, preferensi D1, dan inbox secara <strong>read-only</strong> dari domain GitHub Pages SLI.</p>
+<p>Periksa login Cloudflare Access, preferensi D1, dan inbox dari domain GitHub Pages SLI. Uji tulis hanya dilakukan setelah konfirmasi.</p>
 </header>
 <section class="panel" aria-label="Pemeriksaan koneksi">
 <p>Langkah pertama, login ke Worker melalui tautan terpisah. Setelah login sukses, kembali ke halaman ini dan tekan <strong>Periksa koneksi</strong>.</p>
@@ -51,7 +51,19 @@ a {color:#2254a2}
 </div>
 <p id="summary" role="status"></p>
 </section>
-<aside><strong>Keamanan:</strong> Halaman uji ini tidak menyimpan cookie/token, tidak menampilkan email atau isi inbox, dan tidak mengubah data akun. Jika login di Worker berhasil tetapi pengujian dari sini gagal, mungkin ada hambatan cookie lintas situs, bukan kegagalan database. Dashboard utama tetap nonaktif sampai QA selesai.</aside>
+<section class="panel" aria-label="Uji tulis opsional">
+<h2>Uji simpan watchlist (opsional)</h2>
+<p>Uji berikut menggunakan <strong>akun yang sedang login</strong>. Ticker contoh ditambahkan tanpa menghapus preferensi yang sudah ada. Klik tombol simpan hanya jika Bos mengizinkan perubahan data akun.</p>
+<label for="ticker">Ticker BEI untuk pengujian (4 karakter)</label>
+<div class="controls">
+<input id="ticker" type="text" value="ANTM" maxlength="4" spellcheck="false" autocomplete="off" autocapitalize="characters" style="font:inherit;padding:10px 12px;border:1px solid #bcc9dc;border-radius:8px;width:130px" aria-label="Ticker uji empat karakter">
+<button id="write" class="btn" type="button">Simpan &amp; verifikasi</button>
+<button id="restore" class="btn secondary" type="button" disabled>Pulihkan preferensi lama</button>
+</div>
+<p id="write-status" role="status">Belum ada uji tulis. Tidak ada perubahan akun yang dilakukan halaman ini secara otomatis.</p>
+<p><strong>Catatan:</strong> Jika akun sebelumnya belum terdaftar (<code>enrolled: false</code>), penyimpanan pertama akan mendaftarkan akun. Halaman ini tidak menghapus akun secara otomatis untuk kembali ke keadaan tersebut. Jika akun sudah terdaftar, tombol pulihkan mengembalikan preferensi sebelumnya dengan pemeriksaan konflik.</p>
+</section>
+<aside><strong>Keamanan:</strong> Halaman uji ini tidak menyimpan cookie/token, tidak menampilkan email atau isi inbox, dan hanya menulis preferensi setelah konfirmasi. Snapshot pemulihan disimpan di memori tab selama sesi, bukan pada server atau localStorage. Jika login di Worker berhasil tetapi pengujian dari sini gagal, mungkin ada hambatan cookie lintas situs. Dashboard utama tetap nonaktif sampai QA selesai.</aside>
 </main>
 </body>
 </html>
