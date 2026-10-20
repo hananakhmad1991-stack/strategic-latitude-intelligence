@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-20T15:38:20.304700+00:00",
+  "checked_at_utc": "2026-10-20T18:40:29.233486+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -45,10 +45,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Brent crude holds near five-month high on Middle East tension - CNBC Africa",
-      "publisher": "CNBC Africa",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOZWFsQzF6S2VSMkcyQ29HbFl2aFg5di1HMnhVUHZwUXZKSlRURUd1dFp1QU1wazFxclJqbjRtRTNjZVdXQWZTR3Q4c2hnSHY0Y3BBS3d5amF0MExWOHJjQTExZ1hRSWk2QlJmUEw3N1VpMUZHQzdkWW5OUkpjYVR1OThTRnlZcWh6NzdxTi1UdGlYSGVIVjJTOQ?oc=5",
-      "indexed_at_utc": "2026-10-20T12:16:27+00:00",
+      "title": "Opec-Plus: Crude Output Grows on Saudi Shift Back to Mideast Gulf - Energy Intelligence",
+      "publisher": "Energy Intelligence",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5YY0Y4OXJzNE9nRFdBZWlkOHpzbDJuMDd2bTZmSkxvX2xHNWZRcEp2cXZMYlk5cm9GbnlRM0NaSGFOUmdjdEJ4NUNQcU1BWnZZSUZrTDdqT29wNjBCeGhLMFIxTndaWnpMdjc3RTBvbG83Zw?oc=5",
+      "indexed_at_utc": "2026-10-20T16:43:45+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -86,29 +86,12 @@
       "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Geothermal and renewable financing",
-      "topic_id": "nre_geothermal",
-      "type": "NRE investment",
-      "sector": "nre",
-      "sector_tags": [
-        "nre"
-      ],
-      "subsector": "general",
-      "title": "Experts urge Nigeria, African nations to link renewable energy to industrial growth - The Guardian Nigeria News",
-      "publisher": "The Guardian Nigeria News",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQYW13ZkhYXzFFdkdoODFZbklQbXdPREgyd2hoRTN4TExtV0VLeXk1djV6c2JROFVrR1pVZldZYWNfaHdqYjgtdm4xRDlrWTdFb2xXYkV5QXVpb2Z1NXV3RUQyME1fX2YyNXVfWDlRYU1XbGNjcDBQMTNSQTc3Ni1oV3lsMW01S3Jad1Z0d1A2RjhOZ1ZWVTl0aDdKdnJzNlVqS05rRjZyN3BKcDRVTUpZ?oc=5",
-      "indexed_at_utc": "2026-10-15T17:10:00+00:00",
-      "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
     }
   ],
   "sector_counts": {
     "oil_gas": 3,
     "coal": 1,
-    "nre": 2,
+    "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
   },
