@@ -71,5 +71,6 @@ test("Inventory truthfully distinguishes ready from partial and published target
  }
  for(const id of ["ai_index","worldbank_ai"])
   assert.equal(d.datasets.find(x=>x.id===id).public_dataset,"data/sli-ai-stanford-worldbank-foundations-2025-2026.json");
- assert.equal(d.datasets.find(x=>x.id==="bnpb_disasters").status,"official_xlsx_found_download_and_numeric_validation_pending");
+ assert.equal(d.datasets.find(x=>x.id==="bnpb_disasters").status,"pending_numeric_ingestion");
+ assert.equal(d.datasets.find(x=>x.id==="bnpb_disasters").source_discovery_status,"official_xlsx_found_download_and_numeric_validation_pending");
 });
