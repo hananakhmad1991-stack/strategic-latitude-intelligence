@@ -66,5 +66,5 @@ jobs:
           git config user.name 'sli-idx-source-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/sli-idx-issuer-universe.json data/site-search-index.json
-          git commit -m 'data(idx): source-confirmed official issuer names and tickers'
+          git commit -m 'data(idx): update issuer catalogue and search with explicit verification status'
           git push origin HEAD:main
