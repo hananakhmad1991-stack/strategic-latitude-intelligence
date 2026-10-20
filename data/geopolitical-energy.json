@@ -1,24 +1,7 @@
 {
-  "checked_at_utc": "2026-10-20T09:37:35.356548+00:00",
+  "checked_at_utc": "2026-10-20T12:45:40.861114+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
-    {
-      "topic": "Hormuz and Gulf energy",
-      "topic_id": "oil_shipping",
-      "type": "Maritime chokepoint",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "Brent crude edges lower, even after Houthi attacks on Saudi infrastructure - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMmVLc19hd0VSYXIydVNTWENKZ2J5WVNvVDRQUjRfTUJXWGhjOGxGZkFHVm9SNnZzeU9TWUhrYnJTRU1sVFRnX1BwZVd3NHB5a0NLdThkbDRldlg2eHdhTll2b3RnQTJ4U3dHVGczM25FdjJHRGQ5WGJDV2Qxd1hzLV9EcjNWaUQ4cXEzbWVHRzNuS1dGVVNBSmdXWGR6THN1dXhvSUdFS0dMMTJZTnBBZEFfZ2JoYVVFSWNMZw?oc=5",
-      "indexed_at_utc": "2026-10-18T22:23:00+00:00",
-      "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
     {
       "topic": "Asian LNG and gas",
       "topic_id": "lng_asia",
@@ -45,10 +28,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Brent crude holds near five-month high on Middle East tension - Reuters",
+      "title": "Brent crude edges lower, even after Houthi attacks on Saudi infrastructure - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPZlA3RXBMd0lXRU1feWpodXpZQ2tnUERkUHFQSlFGX2hCMjdrOVdhRVd2eVk3dmhLYklUdVM1WGtoXzc0cUt2OG44WjBYVFVZazFvQWo1UmJWRlliNzJHWlZBU1hScTU1RU9sVEdDVllsSWE4UXh5b0ZHX0VlU01fNDc3ckpxRkw3ZGdaM0xxMW1qOEhWck1XYUlSVkJWeVZyZWRRSkpqdTFQSmZhejlBRmkxZUJmMGtPVWx6Ym82SnNTcElaWGc?oc=5",
-      "indexed_at_utc": "2026-10-20T00:58:00+00:00",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMmVLc19hd0VSYXIydVNTWENKZ2J5WVNvVDRQUjRfTUJXWGhjOGxGZkFHVm9SNnZzeU9TWUhrYnJTRU1sVFRnX1BwZVd3NHB5a0NLdThkbDRldlg2eHdhTll2b3RnQTJ4U3dHVGczM25FdjJHRGQ5WGJDV2Qxd1hzLV9EcjNWaUQ4cXEzbWVHRzNuS1dGVVNBSmdXWGR6THN1dXhvSUdFS0dMMTJZTnBBZEFfZ2JoYVVFSWNMZw?oc=5",
+      "indexed_at_utc": "2026-10-18T22:23:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -65,7 +48,7 @@
       "title": "Oil prices slide as sanctions relief on Russian crude raises hopes of increased supply - CNBC Africa",
       "publisher": "CNBC Africa",
       "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNc1MxSkhKcVBOc2lvejI1OGxiaU1CYU9nY1RjTFI1SVBULU1rckx4Tmx6U1d6b2oyc2tHWVQ4NEl1aXYtTThWZmFmNmV4UXpCT094T1NuemZ6dTFoNWl5aS1zdlhrVDljeHhFU25yTGU3VXhLTW9ZUkR1Ml91NU8xVXp4a3JfU2xGTGJLRVhSaXhsMlZiX3hXR0psWllhUGxsdnp3MGFiaE9oakJOQ3B4VFBGT0d2blVTaVE?oc=5",
-      "indexed_at_utc": "2026-10-19T07:28:45+00:00",
+      "indexed_at_utc": "2026-10-19T15:57:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -103,12 +86,29 @@
       "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Geothermal and renewable financing",
+      "topic_id": "nre_geothermal",
+      "type": "NRE investment",
+      "sector": "nre",
+      "sector_tags": [
+        "nre"
+      ],
+      "subsector": "general",
+      "title": "Experts urge Nigeria, African nations to link renewable energy to industrial growth - The Guardian Nigeria News",
+      "publisher": "The Guardian Nigeria News",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQYW13ZkhYXzFFdkdoODFZbklQbXdPREgyd2hoRTN4TExtV0VLeXk1djV6c2JROFVrR1pVZldZYWNfaHdqYjgtdm4xRDlrWTdFb2xXYkV5QXVpb2Z1NXV3RUQyME1fX2YyNXVfWDlRYU1XbGNjcDBQMTNSQTc3Ni1oV3lsMW01S3Jad1Z0d1A2RjhOZ1ZWVTl0aDdKdnJzNlVqS05rRjZyN3BKcDRVTUpZ?oc=5",
+      "indexed_at_utc": "2026-10-15T17:10:00+00:00",
+      "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
     }
   ],
   "sector_counts": {
-    "oil_gas": 4,
+    "oil_gas": 3,
     "coal": 1,
-    "nre": 1,
+    "nre": 2,
     "electricity": 0,
     "cross_cutting": 0
   },
