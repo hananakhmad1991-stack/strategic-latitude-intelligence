@@ -62,7 +62,7 @@ def run():
             indonesia[sid]=parts[1].strip()
         summaries=[]
         for entry in members:
-            match=re.search(r"RR_STAID0*(\\d+)\\.txt$",entry.filename,re.I)
+            match=re.search(r"RR_STAID0*(\d+)\.txt$",entry.filename,re.I)
             if not match or int(match.group(1)) not in indonesia:continue
             if entry.file_size>3500000:continue
             last_valid=None;valid_seen=0
@@ -71,7 +71,7 @@ def run():
                 cells=line.split(",")
                 if len(cells)<4:continue
                 day=cells[2].strip()
-                if not re.fullmatch(r"\\d{8}",day):continue
+                if not re.fullmatch(r"\d{8}",day):continue
                 try: rr=int(cells[3].strip())
                 except ValueError:continue
                 if rr<0:continue
