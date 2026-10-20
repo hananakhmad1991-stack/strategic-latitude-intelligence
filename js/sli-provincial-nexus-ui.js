@@ -189,7 +189,7 @@ function renderProvinceMap(){
  window.SLIProvinceMap.render('provincialDossierMap',{records:rows,selected:sel,
   period:metric==='gini'?'BPS Susenas Maret 2026':'BPS PDRB menurut Pengeluaran 2025 (angka sementara)',
   source:metric==='gini'?'BPS · Gini pengeluaran':'BPS · PDRB dan PMTB',digits:metric==='gini'?3:2,unit:metric==='gini'?'':(metric==='grdp'?'Rp triliun':'%'),
-  onSelect:name=>{if(!datasets.bps.provinces.some(p=>p.name===name))return;sel=name;filter='';$('province').value=name;render();}
+  onSelect:name=>{const match=datasets.bps.provinces.find(p=>window.SLIProvinceMap.normalize(p.name)===window.SLIProvinceMap.normalize(name));if(!match)return;sel=match.name;filter='';$('province').value=sel;render();}
  });
 }
 function render(){
