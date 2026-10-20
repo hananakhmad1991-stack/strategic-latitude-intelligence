@@ -59,7 +59,6 @@ test("Library lets users filter incident data and deep link into provincial doss
   assert.ok(lib.includes('id="'+id+'"'),id);
  assert.match(libJs,/new URLSearchParams\(window\.location\.search\)\.get\("province"\)/);
  assert.match(libJs,/encodeURIComponent\(province\)/);
- assert.match(libJs,/\.\.\/provincial-intelligence\.html/); // sanity: checked separately on next line
  assert.match(libJs,/"\.\/provincial-intelligence\.html"/);
  assert.match(page,/BNPB 2025/);
  assert.match(lib,/Registri 20 indikator lingkungan lainnya/);
