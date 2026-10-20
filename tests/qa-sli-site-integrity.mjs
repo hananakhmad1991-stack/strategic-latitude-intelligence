@@ -5,7 +5,7 @@ import {join} from "node:path";
 
 const root=new URL("../",import.meta.url).pathname;
 const read=p=>readFileSync(join(root,p),"utf8");
-const pages=readdirSync(root).filter(p=>p.endsWith(".html")).sort();
+const pages=readdirSync(root).filter(p=>p.endsWith(".html")&&p!=="sli-user-intelligence-qa.html").sort();
 const clean=ref=>ref.split(/[?#]/)[0].replace(/^\.\//,"");
 
 test("All published HTML routes have resolvable local assets and valid inline JavaScript",()=>{
@@ -30,6 +30,15 @@ test("All published HTML routes have resolvable local assets and valid inline Ja
  }
  assert.ok(localCount>=450,"Too few local routes checked");
  assert.ok(scriptCount>=60,"Too few inline scripts checked");
+});
+
+test("Private owner-account QA remains noindex and isolated from public dashboard navigation",()=>{
+ const qa=read("sli-user-intelligence-qa.html");
+ assert.match(qa,/name="robots" content="noindex, nofollow"/);
+ assert.match(qa,/Content-Security-Policy/);
+ assert.match(qa,/default-src 'none'/);
+ assert.doesNotMatch(qa,/js\/sli-navigation\.js/);
+ assert.doesNotMatch(qa,/js\/sli-secondary-evidence\.js/);
 });
 
 test("Search index source records and specialist deep links stay real",()=>{
