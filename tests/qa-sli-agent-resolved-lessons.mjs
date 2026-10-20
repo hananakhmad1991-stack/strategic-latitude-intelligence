@@ -1,7 +1,7 @@
 import {test} from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {assessResolvedFixes,discoverMergedFixes,loadLessons} from "../scripts/sli-agent-resolved-learning.mjs";
+import {assessResolvedFixes,compareRetainedLessons,discoverMergedFixes,loadLessons} from "../scripts/sli-agent-resolved-learning.mjs";
 
 test("Resolved DERGUBA fixes retain traceable merged PRs and executable regression names",()=>{
  const registry=loadLessons(),r=assessResolvedFixes(registry);
@@ -42,4 +42,12 @@ test("Learning registry never holds full user prompts or secret-based training p
  const fixture=JSON.parse(readFileSync(new URL("./fixtures/sli-agent-resolved-lessons.json",import.meta.url),"utf8"));
  assert.match(fixture.update_policy,/Never ingest raw client prompts/);
  assert.ok(fixture.lessons.every(l=>!Object.hasOwn(l,"user_prompt")&&!Object.hasOwn(l,"model_answer")&&!Object.hasOwn(l,"token")));
+});
+
+test("Earlier resolved lessons cannot be silently erased or rewritten in a new PR",()=>{
+ const before=loadLessons(),after={...before,lessons:before.lessons.slice(1)};
+ assert.match(compareRetainedLessons(before,after).failures[0],/removed_resolved_lesson/);
+ const changed={...before,lessons:before.lessons.map((x,i)=>i===0?{...x,preventive_rule:"Suppress all errors without tests"}:x)};
+ assert.match(compareRetainedLessons(before,changed).failures[0],/changed_resolved_lesson/);
+ assert.equal(compareRetainedLessons(before,{...before,lessons:[...before.lessons,{...before.lessons[0],id:"another-regression-case-accepted"}]}).pass,true);
 });
