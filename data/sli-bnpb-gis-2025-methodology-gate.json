@@ -1,0 +1,45 @@
+{
+  "schema": "sli-bnpb-2025-gis-vs-provincial-definition-review-v1",
+  "review_date": "2026-10-20",
+  "source_agency": "Badan Nasional Penanggulangan Bencana (BNPB)",
+  "source_endpoint": "https://gis.bnpb.go.id/server/rest/services/Jumlah_Bencana_kabkot_2025/MapServer/13",
+  "secondary_comparison_source": "https://data.bnpb.go.id/dataset/kompilasi-data-kejadian-dan-dampak-bencana-2025",
+  "review_evidence_run": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39419418363",
+  "geography": "kabupaten/kota polygons, Indonesia 2025",
+  "candidate_features": 514,
+  "valid_district_code_rows": 506,
+  "unmapped_blank_district_code_features": 8,
+  "coverage_intersection_with_2024_coded_rows": 450,
+  "status": "blocked_pending_aggregation_method_review",
+  "not_approved_for_district_2025_event_publication": true,
+  "not_approved_for_2024_2025_trend": true,
+  "discrepancy": {
+    "flood_events": {
+      "gis_candidate_sum": 8077,
+      "official_provincial_published_national_total": 2009,
+      "ratio": 4.02,
+      "definitions_reconciled": false
+    },
+    "extreme_weather_events": {
+      "gis_candidate_sum": 6145,
+      "official_provincial_published_national_total": 958,
+      "ratio": 6.414,
+      "definitions_reconciled": false
+    },
+    "landslide_events": {
+      "gis_candidate_sum": 3871,
+      "official_provincial_published_national_total": 330,
+      "ratio": 11.73,
+      "definitions_reconciled": false
+    }
+  },
+  "source_warning": "GIS polygon attributes are not automatically confirmed to represent comparable annual incident events. Totals differ materially from published BNPB 2025 provincial compilation; 8 GIS features have no usable district codes. A valid geographic key alone cannot establish statistical definition. No 2025 district values are approved for the SLI user dashboard.",
+  "what_remains_usable": "Existing source-vetted 2024 district-year observations remain separately published with their own coverage caveat. Official 2025 provincial values retain original provenance and documented total differences.",
+  "next_review_steps": [
+    "Obtain publisher's GIS layer metadata on whether BANJIR/CUACA_EKSTREM/TANAH_LONGSOR fields count incidents or another score/aggregation.",
+    "Reconcile exactly to 2025 BNPB CKAN provincial and national definitions/period/version.",
+    "Exclude or resolve eight null-code features explicitly without mapping them to invented districts.",
+    "Verify district roster coverage and coordinate/jurisdiction changes before any 2024–2025 trend.",
+    "Keep source blocked until methodology is verified by BNPB or a demonstrable official source table."
+  ]
+}
