@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-19.5",
+  "version": "2026-10-20.1",
   "purpose": "Selected official national/sectoral/local law and government policy feeds; candidate detection only, NOT exhaustive Indonesian legislation or automatic legal status amendment.",
   "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
@@ -430,7 +430,30 @@
     "perban11food2025",
     "perban5food2025",
     "uu9local2015",
-    "uu2local2015"
+    "uu2local2015",
+    "uu11ite",
+    "uu19ite",
+    "uu1ite2024",
+    "pp71pste",
+    "pp80pmse",
+    "permendag31pmse",
+    "permendag19pmse2026",
+    "perpres39onedata",
+    "perpres95spbe",
+    "perpres132spbe",
+    "pp12daerah",
+    "permendagri77daerah",
+    "permendagri90daerah",
+    "perpres10invest",
+    "perpres49invest",
+    "perpres66bapanas",
+    "perpres83bgn",
+    "perpres125cpp",
+    "uu22budidaya",
+    "perpres55minerba",
+    "uu7hpp",
+    "uu4p2sk",
+    "uu4p2sk2026"
   ],
   "keywords": [
     "energi",
@@ -586,7 +609,7 @@
   "item_retention": 450,
   "source_item_cap": 65,
   "monitoring_window_days": 90,
-  "notes": "Expanded to official BPK, Bapanas, BNPB and selected local JDIH. These feeds provide *candidate* discovery, not comprehensive national/provincial historical crawling or legally adjudicated status. Degraded/403 source is displayed; never infer no legal change. On 19 October 2026 four additional public provincial JDIH portals (Aceh, North Sumatra, Bali, East Kalimantan) were added for candidate-only discovery. Newly identified sources require successful baseline scans before change alerts; watch failures are explicit.",
+  "notes": "Expanded to official BPK, Bapanas, BNPB and selected local JDIH. These feeds provide *candidate* discovery, not comprehensive national/provincial historical crawling or legally adjudicated status. Degraded/403 source is displayed; never infer no legal change. On 19 October 2026 four additional public provincial JDIH portals (Aceh, North Sumatra, Bali, East Kalimantan) were added for candidate-only discovery. Newly identified sources require successful baseline scans before change alerts; watch failures are explicit. Added 23 source-linked national instruments to watched document list after legal register expansion. Watch result is candidate-level, not automatic legal status verification.",
   "monitor_groups": [
     {
       "id": "domestic_policy",
