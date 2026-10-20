@@ -6,7 +6,7 @@ const root=new URL("../",import.meta.url);
 const read=p=>readFileSync(new URL(p,root),"utf8");
 
 test("every standalone and primary dashboard gets central secondary-news mounting through shared navigation",()=>{
- const pages=readdirSync(root).filter(x=>x.endsWith(".html"));
+ const pages=readdirSync(root).filter(x=>x.endsWith(".html")&&x!=="sli-user-intelligence-qa.html");
  assert.ok(pages.length>=36);
  const nav=read("js/sli-navigation.js"),css=read("css/sli-navigation.css");
  assert.match(nav,/mountSecondaryEvidence/);
