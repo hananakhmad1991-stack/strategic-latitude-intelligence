@@ -77,7 +77,8 @@ function view(){
  meta.append(text("p",null,tr("Selected BEI/IDX issuer universe with direct links to sourced SLI company dossiers. This is not an official IHSG constituent list.",
  "Katalog emiten BEI/IDX sektor pilihan dengan tautan langsung ke profil perusahaan SLI. Bukan daftar resmi konstituen IHSG.")));
  const anchor=href("https://www.tradingview.com/markets/stocks-indonesia/market-movers-all-stocks/",tr("IDX EOD market ↗","Pasar saham IDX EOD ↗"),true);anchor.className="sli-idx-external";
- head.append(meta,anchor);root.append(head);
+ const markets=text("div","sli-idx-market-links");markets.append(anchor,href("https://id.tradingview.com/symbols/IDX-COMPOSITE/",tr("IHSG / IDX Composite ↗","IHSG / Indeks Komposit ↗"),true));
+ head.append(meta,markets);root.append(head);
  const form=text("div","sli-idx-tools");
  const sectorLabel=text("label");sectorLabel.append(text("span",null,tr("SLI sector","Sektor SLI")));
  const select=text("select");select.id="sliIDXGroupFilter";select.setAttribute("aria-label",tr("Filter IDX issuers by SLI sector","Saring emiten IDX berdasarkan sektor SLI"));
