@@ -113,7 +113,7 @@ if not is_complete:
   "pdf_eof":False,
   "source_discrepancy":"Neither verified official response passed the PDF trailer integrity gate. No annex projects, COD, ownership or MW may be imported.",
   "next_step":"Try a complete ESDM/PLN official copy or owner-supplied full document with exact checksum."}
- Path("artifacts/sli-ruptl-full-project-page-candidates.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+ Path("artifacts/sli-ruptl-full-project-page-candidates.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
  print("RUPTL_BLOCKED_INCOMPLETE_SOURCE="+json.dumps(report,separators=(",",":")))
  raise SystemExit(0)
 
