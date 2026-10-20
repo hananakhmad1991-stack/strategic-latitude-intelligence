@@ -239,24 +239,33 @@ function eventInsight(event,series,coverage,onReset){
  return panel;
 }
 
-function initPanels(root,prices,events,signals){
+function initPanels(root,prices,events,signals,presidencies=[]){
  const rows=Array.isArray(prices?.observations)?prices.observations:[];
  const coverage=prices?.series_coverage||{},available=Object.keys(ITEMS).filter(k=>coverage[k]?.count>3);
  root.replaceChildren();
  const wrapper=el("section","geo-intel-section sli-geo-timeline");wrapper.id="geo-commodity-timeline";
- wrapper.append(el("h2",null,tx("03 · Geopolitical events & commodity-price atlas · 1950–present","03 · Atlas peristiwa geopolitik & harga komoditas · 1950–sekarang")),
- el("p","geo-intel-muted",tx("Milestones begin in 1950. World Bank nominal monthly prices begin in 1960, with later start dates for several benchmarks. Historical Brent values before the modern benchmark emerged should be read as the World Bank's retrospective series, not contemporaneous traded spot quotes. Missing years stay blank; news headlines are not independent event confirmation.",
- "Kronologi dimulai 1950. Harga bulanan nominal World Bank tersedia sejak 1960, sedangkan beberapa acuan baru tersedia setelahnya. Seri historis Brent sebelum perdagangan acuannya berkembang perlu dibaca sebagai seri rekonstruksi World Bank, bukan harga spot sezaman. Tahun tanpa data tetap kosong; berita monitoring tidak otomatis menjadi bukti kejadian independen.")));
+ wrapper.append(el("h2",null,tx("03 · Geopolitical events, Indonesian presidents & commodity prices · 1945–present","03 · Atlas peristiwa geopolitik, presiden Indonesia & harga komoditas · 1945–sekarang")),
+ el("p","geo-intel-muted",tx("Indonesia presidential chronology begins 1945 and global geopolitical milestones in 1950. World Bank nominal monthly prices begin in 1960, with later start dates for several benchmarks. Historical Brent values before the modern benchmark emerged should be read as the World Bank's retrospective series, not contemporaneous traded spot quotes. Missing years stay blank; news headlines are not independent event confirmation.",
+ "Linimasa presiden Indonesia dimulai 1945 dan peristiwa geopolitik global sejak 1950. Harga bulanan nominal World Bank tersedia sejak 1960, sedangkan beberapa acuan baru tersedia setelahnya. Seri historis Brent sebelum perdagangan acuannya berkembang perlu dibaca sebagai seri rekonstruksi World Bank, bukan harga spot sezaman. Tahun tanpa data tetap kosong; berita monitoring tidak otomatis menjadi bukti kejadian independen.")));
  const controls=el("div","sli-geo-timeline-controls");
- const year=select(tx("From year","Mulai tahun"),[1950,1960,1970,1980,1990,2000,2010,2020].map(y=>[String(y),String(y)]),"1950",controls);
+ const year=select(tx("From year","Mulai tahun"),[1945,1950,1960,1970,1980,1990,2000,2010,2020].map(y=>[String(y),String(y)]),"1945",controls);
  const kind=select(tx("Historical event filter","Filter kejadian historis"),Object.entries(categoryNames).map(([k,v])=>[k,tx(...v)]),"all",controls);
+ const politicalToggle=el("label","sli-geo-political-toggle"),showPresidents=el("input");showPresidents.type="checkbox";showPresidents.checked=true;
+ politicalToggle.append(showPresidents,el("span",null,tx("Show Indonesian presidential/regime transitions (cyan diamonds)","Tampilkan pergantian presiden/rezim Indonesia (belah ketupat biru)")));
+ controls.append(politicalToggle);
  wrapper.append(controls);
+ const legendNote=el("div","sli-geo-political-legend");
+ legendNote.append(el("span",null,tx("● Gold · geopolitical events","● Emas · peristiwa geopolitik")),el("span",null,tx("◆ Cyan · Indonesia presidents & regime changes (context only)","◆ Biru · presiden & perubahan rezim Indonesia (hanya konteks)")));
+ wrapper.append(legendNote);
  const overview=el("div","sli-geo-timeline-meta");
  overview.textContent=(prices?.source||"World Bank Pink Sheet")+" · "+tx("Monthly data through ","Data bulanan hingga ")+(prices?.latest_month||"—")+" · "+
   tx("History since ","Kronologi sejak ")+events[0]?.date.slice(0,4)+" · "+tx("Series available: ","Seri tersedia: ")+available.length;
  wrapper.append(overview);
  if(!rows.length)wrapper.append(el("p","sli-geo-timeline-status",tx("Verified price synchronization is pending; event chronology remains available.","Sinkronisasi harga terverifikasi belum tersedia; kronologi tetap dapat diakses.")));
  let activeDate=null;
+ const allHistorical=[...events,...presidencies].sort((a,b)=>a.date.localeCompare(b.date));
+ const filteredGeo=()=>events.filter(e=>e.date>=year.value+"-01-01"&&(kind.value==="all"||e.category===kind.value));
+ const filteredPresidencies=()=>showPresidents.checked&&(kind.value==="all"||kind.value==="indonesia_presidency")?presidencies.filter(e=>e.date>=year.value+"-01-01"):[];
  const nav=el("nav","sli-geo-event-navigation");nav.setAttribute("aria-label",tx("Event lessons navigation","Navigasi pelajaran peristiwa"));
  const indicator=el("p","sli-geo-event-selection",tx("Select a gold event dot on any chart to explore its historical lesson.","Klik dot emas pada grafik mana pun untuk mempelajari kronologi dan dampaknya."));
  indicator.setAttribute("aria-live","polite");
@@ -266,9 +275,9 @@ function initPanels(root,prices,events,signals){
  const reset=el("button","sli-geo-event-nav-reset",tx("Reset to overview","Kembali ke gambaran umum"));
  for(const btn of [previous,next,reset]){btn.type="button";controlsNav.append(btn)}
  nav.append(indicator,controlsNav);wrapper.append(nav);
- const visibleEvents=()=>events.filter(e=>e.date>=year.value+"-01-01"&&(kind.value==="all"||e.category===kind.value));
+ const visibleEvents=()=>[...filteredGeo(),...filteredPresidencies()].sort((a,b)=>a.date.localeCompare(b.date));
  function chooseEvent(date){
-  const ev=events.find(e=>e.date===date);
+  const ev=allHistorical.find(e=>e.date===date);
   if(!ev||!visibleEvents().some(e=>e.date===date))return;
   activeDate=date;refresh();
  }
@@ -280,7 +289,7 @@ function initPanels(root,prices,events,signals){
   if(i<0)return;const target=list[i+direction];if(target)chooseEvent(target.date);
  }
  function updateEventNav(){
-  const ev=events.find(e=>e.date===activeDate);
+  const ev=allHistorical.find(e=>e.date===activeDate);
   const list=visibleEvents(),i=ev?list.findIndex(e=>e.date===ev.date):-1;
   indicator.textContent=ev?
    tx("Selected event: ","Peristiwa terpilih: ")+local(ev,"title")+" · "+ev.date:
@@ -288,7 +297,7 @@ function initPanels(root,prices,events,signals){
   previous.disabled=i<=0;next.disabled=i<0||i>=list.length-1;reset.disabled=!ev;
  }
  const contexts=[];
- for(const group of ["energy","minerals","cross"]){
+ for(const group of ["energy","minerals","food","cross"]){
   const section=el("section","sli-geo-timeline-panel");
   section.append(el("h3",null,tx(...groupLabels[group])));
   const note=el("p","sli-geo-timeline-meta",group==="cross"?
@@ -323,7 +332,7 @@ function initPanels(root,prices,events,signals){
    status.textContent="";
    chart.replaceChildren();legend.replaceChildren();reports.replaceChildren();
    if(!rows.length||!selected.size){chart.append(el("p","sli-geo-timeline-status",tx("No verified series available.","Belum ada seri data yang terverifikasi.")));return}
-   const start=Number(year.value),chosenEvents=events.filter(e=>e.date>=year.value+"-01-01"&&(kind.value==="all"||e.category===kind.value));
+   const start=Number(year.value),chosenEvents=filteredGeo(),chosenPolitical=filteredPresidencies();
    const keys=[...selected].filter(k=>available.includes(k)).slice(0,5);
    let active=mode.value==="single"?keys.slice(0,1):keys;
    let drawMode=mode.value;
@@ -347,7 +356,7 @@ function initPanels(root,prices,events,signals){
     return {key:s.key,points:s.points.filter(p=>p.month>=common).map(p=>({month:p.month,value:p.value/base*100}))};
    }).filter(s=>s.points.length);
    const last=prices.latest_month||rows.at(-1).month;
-   chart.append(graphLines(series,chosenEvents,signals,start,last,drawMode==="indexed",activeDate,chooseEvent));
+   chart.append(graphLines(series,chosenEvents,chosenPolitical,signals,start,last,drawMode==="indexed",activeDate,chooseEvent));
    if(window.SLIVisualExport){
     window.SLIVisualExport.register(chart,{
      getData:()=>{
@@ -375,7 +384,7 @@ function initPanels(root,prices,events,signals){
    const focus=raw.find(s=>s.key===series[0].key);
    const stats=eventStats(focus.points,chosenEvents);
    const valid=raw.map(s=>({key:s.key,stats:eventStats(s.points,chosenEvents)}));
-   const chosen=activeDate?events.find(e=>e.date===activeDate):null;
+   const chosen=activeDate?allHistorical.find(e=>e.date===activeDate):null;
    if(chosen){
     const eventPanel=eventInsight(chosen,raw,coverage,resetEvent);
     const sc=el("article","sli-geo-timeline-scatter");
@@ -431,7 +440,7 @@ function initPanels(root,prices,events,signals){
  "Tanggal awal setiap acuan berbeda. Periode 1950-an memuat peristiwa geopolitik, bukan observasi harga bulanan World Bank. Tidak dilakukan interpolasi, pengisian nol, konversi mata uang diam-diam, ataupun klaim kausal. "),
  link(prices?.source_url,tx("World Bank Pink Sheet ↗","World Bank Pink Sheet ↗")));
  wrapper.append(note);
- const history=el("section","sli-geo-timeline-panel");history.append(el("h3",null,tx("Source-linked historical milestones · 1950–present","Kronologi historis dengan sumber · 1950–sekarang")));
+ const history=el("section","sli-geo-timeline-panel");history.append(el("h3",null,tx("Geopolitical milestones & Indonesian presidents · 1945–present","Kronologi geopolitik & presiden Indonesia · 1945–sekarang")));
  const list=el("div");history.append(list);wrapper.append(history);
  const news=el("section","sli-geo-timeline-monitoring");
  news.append(el("h3",null,tx("Latest escalation watch · secondary reports","Pemantauan eskalasi terbaru · berita sekunder")),
@@ -445,10 +454,10 @@ function initPanels(root,prices,events,signals){
   if(activeDate&&!visibleEvents().some(e=>e.date===activeDate))activeDate=null;
   updateEventNav();
   for(const render of contexts)render();
-  const selected=events.filter(e=>e.date>=year.value+"-01-01"&&(kind.value==="all"||e.category===kind.value));
+  const selected=visibleEvents();
   list.replaceChildren(eventRows(selected,seriesFrom(rows,"brent",Number(year.value)),chooseEvent,activeDate));
  }
- year.addEventListener("change",refresh);kind.addEventListener("change",refresh);
+ year.addEventListener("change",refresh);kind.addEventListener("change",refresh);showPresidents.addEventListener("change",refresh);
  refresh();
 }
 async function init(){
@@ -457,10 +466,11 @@ async function init(){
  const fetched=await Promise.allSettled([parse(URLS.events),parse(URLS.prices),parse(URLS.news)]);
  if(!root.isConnected)return;
  const events=fetched[0].status==="fulfilled"?(fetched[0].value.events||[]):[];
+ const presidencies=fetched[0].status==="fulfilled"?(fetched[0].value.presidential_transitions||[]):[];
  const prices=fetched[1].status==="fulfilled"?fetched[1].value:null;
  const news=fetched[2].status==="fulfilled"?fetched[2].value:null;
  if(!events.length){root.replaceChildren(el("p","sli-geo-timeline-status",tx("Historical event register is unavailable.","Registri peristiwa historis tidak tersedia.")));return}
- initPanels(root,prices,events,latestSignals(news));
+ initPanels(root,prices,events,latestSignals(news),presidencies);
 }
 window.SLIGeoTimelineCompute={seriesFrom,pearson,eventStats,returns};
 window.initSLIGeopoliticalTimeline=init;
