@@ -37,6 +37,15 @@ TOPICS = [
     ("minerals", "domestic", "environment", "(tambang nikel OR smelter nikel OR tailing OR limbah tambang OR Morowali OR Weda Bay) (lingkungan OR pencemaran OR AMDAL OR banjir OR keselamatan OR kebakaran)", "Environment, safety and physical infrastructure", "Environmental and site-level reports may indicate permitting or continuity exposure; allegations are not established violations."),
     ("minerals", "domestic", "mineral_investment", "(Freeport Gresik OR INALUM Mempawah OR ANTAM Pomalaa OR Vale Sorowako OR Indonesia battery factory) (investasi OR beroperasi OR produksi OR smelter)", "Investment execution and ownership", "Corporate project disclosures may change financing, ownership or commissioning assumptions; confirm actual spending separately."),
 
+    # Food and Agriculture: both international transmission and domestic execution.
+    ("food", "geopolitical", "global_grains", "(global wheat OR rice markets OR food commodity prices) (Indonesia OR ASEAN OR FAO OR India OR China)", "Global rice, wheat and food prices", "Changes in global staple supply may affect import costs and food price expectations; published trade statistics are the baseline."),
+    ("food", "geopolitical", "fertilizer_shipping", "(fertilizer OR urea OR potash OR ammonia) (supply disruption OR freight OR Indonesia OR global prices)", "Fertilizer and input supply exposure", "Fertilizer prices and shipping constraints may affect crop production costs; confirm import dependence and actual prices."),
+    ("food", "geopolitical", "climate_food", "(El Nino OR La Nina OR drought OR floods) (rice production OR food security OR Indonesia OR ASEAN)", "Climate and regional food security", "Weather and production reporting may signal potential yield risks but is not a measured crop loss."),
+    ("food", "domestic", "rice_reserves", "(beras OR gabah OR cadangan beras pemerintah OR Bulog OR Bapanas) (produksi OR harga OR stok OR penyaluran) Indonesia", "Rice production, reserves and distribution", "Compare news claims about rice production, stock and distribution with BPS and Bapanas source-dated evidence."),
+    ("food", "domestic", "fertilizer_subsidy", "(pupuk subsidi OR Pupuk Indonesia OR alokasi pupuk) (harga OR penyaluran OR kebijakan OR stok) Indonesia", "Fertilizer allocation and distribution", "Subsidy allocation, commercial production and physical delivery are distinct observations."),
+    ("food", "domestic", "food_policy", "(Badan Pangan Nasional OR Kementerian Pertanian OR swasembada pangan OR impor pangan) (peraturan OR kebijakan OR harga OR revisi) Indonesia", "Food governance and trade policy", "Regulatory changes need primary legal documents; do not infer effective legal status from a headline."),
+    ("food", "domestic", "agri_weather", "(banjir sawah OR kekeringan pertanian OR gagal panen OR irigasi OR lahan pertanian) Indonesia", "Agricultural disruption and irrigation", "Floods and drought alerts are leads, not verified hectares lost or output impacts."),
+
     # External chips, trade controls, cross-border networks, cyber geopolitical spillovers
     ("ai", "geopolitical", "chip_controls", "(AI chip OR GPU OR H100 OR H200 OR Blackwell OR semiconductor) (US China export restrictions OR export controls OR licensing OR tariffs) Southeast Asia", "GPU/semiconductor export controls", "Controls on accelerated computing or chips may change procurement access, costs and Indonesian AI infrastructure timelines."),
     ("ai", "geopolitical", "compute_competition", "(AI data centers OR AI datacenters OR hyperscale OR AI infrastructure) (Singapore Malaysia Indonesia Southeast Asia investment OR geopolitics)", "Regional data-center investment competition", "Regional power, connectivity and investment competition may affect relative project attractiveness and capital allocation."),
@@ -51,7 +60,8 @@ TOPICS = [
     ("ai", "domestic", "cloud_operations", "(AWS OR Microsoft Azure OR Google Cloud OR DCI Indonesia OR Digital Edge OR PDG OR Equinix) (cloud region OR data center OR data centre OR Indonesia) (launch OR beroperasi OR investasi OR expansion)", "Commercial cloud and compute operations", "Services or commercial launch announcements do not independently prove physical GPU fleet size or realised capital expenditure."),
 ]
 GROUPS = (("minerals", "geopolitical"), ("minerals", "domestic"),
-          ("ai", "geopolitical"), ("ai", "domestic"))
+          ("ai", "geopolitical"), ("ai", "domestic"),
+           ("food", "geopolitical"), ("food", "domestic"))
 
 # Only publisher-attributed titles from known news organisations or governmental/corporate sources.
 PUBLISHER_PATTERNS = (
@@ -65,6 +75,7 @@ PUBLISHER_PATTERNS = (
     "komdigi", "kementerian", "esdm", "bkpm", "bappenas", "brin", "bssn",
     "pt pln", "pln", "pertamina", "mind id", "inalum", "antam", "vale",
     "freeport", "indonesia investment authority", "danantara",
+    "kementan", "badan pangan nasional", "bulog", "pupuk indonesia", "fao",
 )
 NEWS_DOMAINS = ("go.id", "reuters.com", "apnews.com", "bloomberg.com", "cnbc.com",
                 "antaranews.com", "kompas.com", "bisnis.com", "katadata.co.id",
@@ -73,12 +84,20 @@ NEWS_DOMAINS = ("go.id", "reuters.com", "apnews.com", "bloomberg.com", "cnbc.com
                 "datacenterdynamics.com", "techinasia.com", "scmp.com")
 FOCUS = {
     "minerals": re.compile(r"\b(nickel|nikel|smelter|mineral|copper|tembaga|cobalt|kobalt|rare earth|bauksit|bauxite|alumina|aluminium|timah|baterai|tin\b|hpal|rkef|battery material|bahan baterai|ore|tailing|hilirisasi)\b", re.I),
+    "food": re.compile(r"\b(beras|gabah|padi|rice|wheat|grain|food|pangan|pertanian|agricultur|pupuk|fertilizer|urea|potash|swasembada|ketahanan pangan|bulog|bapanas|gagal panen|irigasi|drought|elnino|el nino|la nina|flood)\b", re.I),
     "ai": re.compile(r"\b(AI|artificial intelligence|kecerdasan buatan|GPU|semiconductor|semikonduktor|chip|data cent(?:er|re)|data\s*center|pusat data|komputasi|cloud|hyperscale|cyber|siber|submarine cable|undersea cable|pdp)\b", re.I),
 }
 EXCLUDE_AI = re.compile(r"\b(football|soccer|celebrity|gaming laptop|smartphone reviews)\b", re.I)
 # A Google News query can match article text even when the headline concerns a
 # different topic. Require a topic-specific signal in the displayed headline.
 TITLE_RULES = {
+    "global_grains": r"\b(rice|wheat|grain|food|staple|beras|gandum|cereal)\b",
+    "fertilizer_shipping": r"\b(fertilizer|urea|potash|ammonia|pupuk)\b",
+    "climate_food": r"\b(el nino|elnino|la nina|drought|flood|rice|food security|ketahanan pangan)\b",
+    "rice_reserves": r"\b(beras|gabah|padi|rice|bulog|bapanas|cadangan pangan)\b",
+    "fertilizer_subsidy": r"\b(pupuk|fertilizer|subsidi pupuk|urea|potash)\b",
+    "food_policy": r"\b(pangan|pertanian|beras|bulog|bapanas|impor pangan|kementan|swasembada)\b",
+    "agri_weather": r"\b(sawah|padi|pertanian|irigasi|panen|agricultur|rice|drought|flood|kekeringan|banjir)\b",
     "nickel_market": r"\\b(nickel|nikel|lme|npi|ferronickel)\\b",
     "export_policy": r"\\b(nickel|nikel|copper|tembaga|cobalt|kobalt|rare earth|critical mineral|minerals|lithium|mineral kritis)\\b",
     "batteries": r"\\b(nickel|nikel|battery|batteries|baterai|lithium|cobalt|kobalt)\\b",
@@ -210,9 +229,9 @@ def main() -> int:
     payload = {
         "schema_version": 1, "status": state, "generated_at_utc": generated,
         "last_attempt_at_utc": now.isoformat(), "groups": groups,
-        "counts": {d: {s: len(groups[d][s]) for s in ("geopolitical", "domestic")} for d in ("minerals", "ai")},
+        "counts": {d: {s: len(groups[d][s]) for s in ("geopolitical", "domestic")} for d in ("minerals", "ai", "food")},
         "topic_status": status, "errors": errors, "reused_last_good_groups": reused,
-        "methodology": ("Automated, hourly scheduled Google News RSS discovery across 16 themed "
+        "methodology": ( "Automated, hourly scheduled Google News RSS discovery across 24 themed "
                         "searches; published dates belong to news articles. Source names are publisher "
                         "attributions, not a verification of facts. A successful scrape is not evidence "
                         "that any specific event occurred. No quantitative probability or actual loss is inferred."),
