@@ -1,12 +1,60 @@
 {
   "schema_version": "1.0",
-  "checked_at_utc": "2026-10-19T02:56:34Z",
+  "checked_at_utc": "2026-10-20T02:23:46Z",
   "state": "sources_scanned",
-  "source_count": 10,
-  "healthy_source_count": 4,
-  "scan_errors": 6,
+  "source_count": 14,
+  "healthy_source_count": 5,
+  "scan_errors": 9,
   "new_review_leads": 0,
   "events": [
+    {
+      "id": "ee4426c16329f396f6ed",
+      "publisher": "ESDM Minerba",
+      "source_id": "minerba_esdm",
+      "title": "Direktorat Jenderal Mineral dan Batubara",
+      "url": "https://www.esdm.go.id/id/profil/tugas-fungsi/direktorat-jenderal-mineral-dan-batubara",
+      "linked_datasets": [
+        "data/esdm-2025-mineral-performance.json",
+        "data/usgs-indonesia-minerals-2026.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-20T02:23:46Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "f9759a507f2e0b392b5d",
+      "publisher": "ESDM Minerba",
+      "source_id": "minerba_esdm",
+      "title": "SKM Ditjen Minerba",
+      "url": "https://www.esdm.go.id/id/indeks-kepuasan-masyarakat/skm-ditjen-minerba",
+      "linked_datasets": [
+        "data/esdm-2025-mineral-performance.json",
+        "data/usgs-indonesia-minerals-2026.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-20T02:23:46Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
+    {
+      "id": "defc832963e91985250a",
+      "publisher": "ESDM Minerba",
+      "source_id": "minerba_esdm",
+      "title": "Ekspor Nikel Ditargetkan Tembus USD45 Miliar pada 2026, Menko Bahlil: Hilirisasi Kunci Kemandirian Ekonomi",
+      "url": "https://www.esdm.go.id/id/media-center/arsip-berita/ekspor-nikel-ditargetkan-tembus-usd45-miliar-pada-2026-menko-bahlil-hilirisasi-kunci-kemandirian-ekonomi",
+      "linked_datasets": [
+        "data/esdm-2025-mineral-performance.json",
+        "data/usgs-indonesia-minerals-2026.json"
+      ],
+      "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
+      "first_seen_utc": "2026-10-20T02:23:46Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
+      "review_state": "pending_official_document_and_period_verification",
+      "event_kind": "initial_baseline"
+    },
     {
       "id": "5c359368ea3ec99234c6",
       "publisher": "Bank Indonesia",
@@ -19,7 +67,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-17T02:54:29Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "new_candidate"
     },
@@ -36,7 +84,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -53,7 +101,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -70,7 +118,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -87,7 +135,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -104,7 +152,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -121,7 +169,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -138,7 +186,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -155,7 +203,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -172,7 +220,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -189,7 +237,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -206,7 +254,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -223,7 +271,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -240,7 +288,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -257,7 +305,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -274,7 +322,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -291,7 +339,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -307,7 +355,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:31:07Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -339,7 +387,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -355,7 +403,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -371,7 +419,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -387,7 +435,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -403,7 +451,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -419,7 +467,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -435,7 +483,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -451,7 +499,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -467,7 +515,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -483,7 +531,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -499,7 +547,7 @@
       ],
       "classification": "UNVERIFIED_SOURCE_EDITION_CANDIDATE",
       "first_seen_utc": "2026-10-16T15:28:55Z",
-      "last_seen_utc": "2026-10-19T02:56:34Z",
+      "last_seen_utc": "2026-10-20T02:23:46Z",
       "review_state": "pending_official_document_and_period_verification",
       "event_kind": "initial_baseline"
     },
@@ -522,6 +570,20 @@
   ],
   "sources": [
     {
+      "id": "bapanas_public",
+      "publisher": "Badan Pangan Nasional",
+      "url": "https://badanpangan.go.id/",
+      "linked_datasets": [
+        "data/food-agriculture-2026.json",
+        "data/food-governance-hierarchy.json"
+      ],
+      "health": "unavailable",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
+      "observed_items": null,
+      "error": "URLError: <urlopen error timed out>",
+      "last_success_utc": null
+    },
+    {
       "id": "bi_releases",
       "publisher": "Bank Indonesia",
       "url": "https://www.bi.go.id/id/publikasi/ruang-media/news-release/default.aspx",
@@ -530,10 +592,10 @@
         "data/investment-market.json"
       ],
       "health": "ok",
-      "last_attempt_utc": "2026-10-19T02:56:34Z",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
       "observed_items": 3,
       "error": null,
-      "last_success_utc": "2026-10-19T02:56:34Z"
+      "last_success_utc": "2026-10-20T02:23:46Z"
     },
     {
       "id": "bps_brs",
@@ -545,7 +607,7 @@
         "data/investment-sector-evidence.json"
       ],
       "health": "unavailable",
-      "last_attempt_utc": "2026-10-19T02:56:34Z",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
       "observed_items": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "last_success_utc": null
@@ -559,7 +621,7 @@
         "data/energy-fundamentals.json"
       ],
       "health": "unavailable",
-      "last_attempt_utc": "2026-10-19T02:56:34Z",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
       "observed_items": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "last_success_utc": null
@@ -574,10 +636,10 @@
         "data/pln-ruptl-uploaded-excerpt-2025-2034.json"
       ],
       "health": "ok",
-      "last_attempt_utc": "2026-10-19T02:56:34Z",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
       "observed_items": 16,
       "error": null,
-      "last_success_utc": "2026-10-19T02:56:34Z"
+      "last_success_utc": "2026-10-20T02:23:46Z"
     },
     {
       "id": "kemenkeu_news",
@@ -588,9 +650,37 @@
         "data/energy-prices-fiscal.json"
       ],
       "health": "no_readable_publisher_links",
-      "last_attempt_utc": "2026-10-19T02:56:34Z",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
       "observed_items": 0,
       "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
+      "last_success_utc": null
+    },
+    {
+      "id": "kementan_regulations",
+      "publisher": "JDIH Kementerian Pertanian",
+      "url": "https://jdih.pertanian.go.id/peraturan?jenis=permentan",
+      "linked_datasets": [
+        "data/sli-policy-regulatory-graph-2026.json",
+        "data/food-governance-hierarchy.json"
+      ],
+      "health": "unavailable",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
+      "observed_items": null,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
+      "last_success_utc": null
+    },
+    {
+      "id": "kementan_stats",
+      "publisher": "Pusdatin Kementan",
+      "url": "https://satudata.pertanian.go.id/datasets/publikasi/index.php",
+      "linked_datasets": [
+        "data/food-agriculture-2026.json",
+        "data/food-governance-hierarchy.json"
+      ],
+      "health": "unavailable",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
+      "observed_items": null,
+      "error": "HTTPError: HTTP Error 403: Forbidden",
       "last_success_utc": null
     },
     {
@@ -602,10 +692,24 @@
         "data/ai-intelligence.json"
       ],
       "health": "no_readable_publisher_links",
-      "last_attempt_utc": "2026-10-19T02:56:34Z",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
       "observed_items": 0,
       "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
       "last_success_utc": null
+    },
+    {
+      "id": "minerba_esdm",
+      "publisher": "ESDM Minerba",
+      "url": "https://www.esdm.go.id/id/media-center/arsip-berita",
+      "linked_datasets": [
+        "data/esdm-2025-mineral-performance.json",
+        "data/usgs-indonesia-minerals-2026.json"
+      ],
+      "health": "ok",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
+      "observed_items": 3,
+      "error": null,
+      "last_success_utc": "2026-10-20T02:23:46Z"
     },
     {
       "id": "pln_statistics",
@@ -618,7 +722,7 @@
         "data/pln-saidi-saifi-2023-2025.json"
       ],
       "health": "no_readable_publisher_links",
-      "last_attempt_utc": "2026-10-19T02:56:34Z",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
       "observed_items": 0,
       "error": "Publisher HTML returned no parseable matching anchors; no new-publication inference possible.",
       "last_success_utc": null
@@ -633,7 +737,7 @@
         "data/energy-fundamentals.json"
       ],
       "health": "unavailable",
-      "last_attempt_utc": "2026-10-19T02:56:34Z",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
       "observed_items": null,
       "error": "HTTPError: HTTP Error 403: Forbidden",
       "last_success_utc": null
@@ -647,10 +751,10 @@
         "data/indonesia-ai-compute-power-asean.json"
       ],
       "health": "ok",
-      "last_attempt_utc": "2026-10-19T02:56:34Z",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
       "observed_items": 9,
       "error": null,
-      "last_success_utc": "2026-10-19T02:56:34Z"
+      "last_success_utc": "2026-10-20T02:23:46Z"
     },
     {
       "id": "usgs_minerals",
@@ -661,10 +765,10 @@
         "data/esdm-2025-mineral-performance.json"
       ],
       "health": "ok",
-      "last_attempt_utc": "2026-10-19T02:56:34Z",
+      "last_attempt_utc": "2026-10-20T02:23:46Z",
       "observed_items": 1,
       "error": null,
-      "last_success_utc": "2026-10-19T02:56:34Z"
+      "last_success_utc": "2026-10-20T02:23:46Z"
     }
   ],
   "notes": [
