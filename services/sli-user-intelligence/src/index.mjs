@@ -47,6 +47,13 @@ export async function handleRequest(request,env,identify=requireIdentity){
   const db=requireDB(env);
   const who=await identify(request,env);
   const me=who.id;
+  if(url.pathname==="/api/health"&&request.method==="GET"){
+   // Authenticated diagnostic only. Never expose user IDs, emails or raw errors.
+   const row=await db.prepare("SELECT value FROM service_state WHERE key='cron_monitor'").first();
+   let monitor=null;
+   if(row?.value){try{monitor=JSON.parse(row.value)}catch{}}
+   return json({scheduler:monitor||{status:"not_observed"},source:"sli_catalyst_history"},200,headers);
+  }
   if(url.pathname==="/api/me"&&request.method==="GET"){
    const row=await db.prepare("SELECT preferences_json,updated_at FROM user_profiles WHERE user_id=?").bind(me).first();
    return json({...prefsRow(row),identity_provider:"cloudflare_access",channels:{in_app:true,email:false,push:false}},200,headers);
@@ -93,9 +100,22 @@ export async function handleRequest(request,env,identify=requireIdentity){
  }
 }
 async function fetchLedger(fetcher){
- const r=await fetcher(HISTORY,{redirect:"error",headers:{Accept:"application/json"},signal:AbortSignal.timeout(7000)});
- if(!r.ok)throw new Error("SLI history HTTP "+r.status);
- const text=await r.text();if(text.length>2000000)throw new Error("SLI history size exceeded");
+ // Transient upstream/network failures should not destroy schedule progress.
+ // Only retry transport/429/5xx: malformed source data must fail closed.
+ let response=null;
+ for(let attempt=0;attempt<2;attempt++){
+  try{
+   response=await fetcher(HISTORY,{redirect:"error",headers:{Accept:"application/json"},signal:AbortSignal.timeout(7000)});
+  }catch(error){
+   if(attempt===0)continue;
+   throw new Error("SLI history request unavailable",{cause:error});
+  }
+  if(response.ok)break;
+  if(attempt===0&&(response.status===429||response.status>=500))continue;
+  throw new Error("SLI history HTTP "+response.status);
+ }
+ if(!response?.ok)throw new Error("SLI history request unavailable");
+ const text=await response.text();if(text.length>2000000)throw new Error("SLI history size exceeded");
  const d=JSON.parse(text);
  if(d.schema_version!=="sli-catalyst-history-v2"||!Array.isArray(d.events)||d.events.length>1800)
   throw new Error("Invalid SLI history schema");
@@ -135,9 +155,53 @@ export async function processEvents(env,fetcher=fetch){
  }
  return {initialized:false,delivered,processed:candidates.length};
 }
+function cronErrorCode(error){
+ const msg=String(error?.message||"");
+ if(msg==="SLI history request unavailable")return "source_transport";
+ if(/^SLI history HTTP (429|5\\d\\d)$/.test(msg))return "source_http_transient";
+ if(msg.startsWith("SLI history HTTP "))return "source_http";
+ if(msg==="Invalid SLI history schema"||msg==="SLI history size exceeded")return "source_schema";
+ if(error instanceof SyntaxError)return "source_json";
+ return "processing_error";
+}
+async function recordCron(env,status,err=null,result=null){
+ // This row is diagnostic metadata only, never private user information.
+ const db=requireDB(env);
+ const previous=await db.prepare("SELECT value FROM service_state WHERE key='cron_monitor'").first();
+ let old={};try{old=JSON.parse(previous?.value||"{}")}catch{}
+ const now=nowUTC();
+ const monitor={
+  status,last_run_at:now,
+  last_success_at:status==="ok"?now:(old.last_success_at||null),
+  last_error_at:status==="error"?now:(old.last_error_at||null),
+  error_code:status==="error"?cronErrorCode(err):null,
+  consecutive_failures:status==="error"?Math.min(10000,Number(old.consecutive_failures||0)+1):0,
+  last_processed:status==="ok"?Number(result?.processed||0):(old.last_processed??null),
+  last_delivered:status==="ok"?Number(result?.delivered||0):(old.last_delivered??null)
+ };
+ await db.prepare("INSERT INTO service_state(key,value) VALUES('cron_monitor',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value")
+  .bind(JSON.stringify(monitor)).run();
+ return monitor;
+}
+export async function runCron(env,runner=processEvents){
+ try{
+  const result=await runner(env);
+  await recordCron(env,"ok",null,result);
+  console.log("[SLI User Cron] run successful");
+  return result;
+ }catch(error){
+  // Preserve Cloudflare's exception signal while storing a bounded, generic
+  // status that the authenticated /api/health endpoint can inspect.
+  try{await recordCron(env,"error",error)}catch(writeError){
+   console.error("[SLI User Cron] status storage failed",String(writeError));
+  }
+  console.error("[SLI User Cron] run failed",cronErrorCode(error),String(error));
+  throw error;
+ }
+}
 export default {
  // Cloudflare invokes fetch(request, env, ctx). Do not forward ctx into
  // handleRequest's third parameter (test-only identity function injection).
  fetch(request,env,ctx){return handleRequest(request,env,(_req,_env)=>requireWorkerAccessIdentity(ctx?.access,env))},
- scheduled(_event,env,ctx){ctx.waitUntil(processEvents(env))}
+ scheduled(_event,env,ctx){ctx.waitUntil(runCron(env))}
 };

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {webcrypto} from "node:crypto";
-import worker, {handleRequest,processEvents} from "../src/index.mjs";
+import worker, {handleRequest,processEvents,runCron} from "../src/index.mjs";
 class FakeD1{
  constructor(){this.profiles=new Map;this.inbox=new Map;this.state=new Map;this.processed=new Map}
  prepare(sql){
@@ -28,8 +28,14 @@ class FakeD1{
   if(q.startsWith("UPDATE notification_inbox")){const n=this.inbox.get(a[1]);if(n?.user_id===a[2])n.read_at=a[0];return {changes:1}}
   if(q.startsWith("DELETE FROM notification_inbox")){for(const [k,x]of this.inbox)if(x.user_id===a[0])this.inbox.delete(k);return {changes:1}}
   if(q.startsWith("DELETE FROM user_profiles")){this.profiles.delete(a[0]);return {changes:1}}
-  if(q.startsWith("SELECT value FROM service_state"))return {first:this.state.has("first_activated_at")?{value:this.state.get("first_activated_at")}:null};
+  if(q.startsWith("SELECT value FROM service_state")){
+   const key=q.includes("'cron_monitor'")?"cron_monitor":"first_activated_at";
+   return {first:this.state.has(key)?{value:this.state.get(key)}:null};
+  }
   if(q.startsWith("INSERT OR IGNORE INTO service_state")){if(!this.state.has("first_activated_at"))this.state.set("first_activated_at",a[0]);return {changes:1}}
+  if(q.startsWith("INSERT INTO service_state(key,value) VALUES('cron_monitor',?)")){
+   this.state.set("cron_monitor",a[0]);return {changes:1};
+  }
   if(q.startsWith("SELECT event_id FROM processed_events"))return {results:[...this.processed.keys()].map(event_id=>({event_id}))};
   if(q.startsWith("SELECT user_id,preferences_json FROM user_profiles"))return {results:[...this.profiles.values()].slice(0,a[0])};
   if(q.startsWith("INSERT OR IGNORE INTO notification_inbox")){
@@ -129,4 +135,23 @@ assert.equal((await query(req("GET","/api/inbox","alice"))).json.unread,0);
 assert.equal((await query(req("DELETE","/api/me","alice"))).json.deleted,true);
 assert.equal(db.profiles.has("alice"),false);
 assert.equal(db.inbox.size,0);
-console.log("D1 backend API QA passed: ownership, origin, opt-in delivery, dedupe, read isolation and account erasure");
+// Observability is private, read-only, and never confuses a cron error with 0 deliveries.
+assert.equal((await query(req("GET","/api/health"))).json.scheduler.status,"not_observed");
+await runCron(env,async()=>({initialized:false,processed:2,delivered:1}));
+const healthy=(await query(req("GET","/api/health"))).json.scheduler;
+assert.equal(healthy.status,"ok");assert.equal(healthy.last_processed,2);
+assert.equal(healthy.last_delivered,1);assert.equal(healthy.consecutive_failures,0);
+await assert.rejects(runCron(env,async()=>{throw Error("SLI history request unavailable")}),/unavailable/);
+const failed=(await query(req("GET","/api/health"))).json.scheduler;
+assert.equal(failed.status,"error");assert.equal(failed.error_code,"source_transport");
+assert.equal(failed.last_processed,2);assert.equal(failed.last_delivered,1);
+assert.equal(failed.consecutive_failures,1);
+assert.equal(failed.last_success_at,healthy.last_success_at);
+await runCron(env,async()=>({initialized:false,processed:0,delivered:0}));
+const recovered=(await query(req("GET","/api/health"))).json.scheduler;
+assert.equal(recovered.status,"ok");assert.equal(recovered.error_code,null);
+assert.equal(recovered.consecutive_failures,0);
+assert.equal(recovered.last_delivered,0);
+assert.equal((await worker.fetch(req("GET","/api/health"),noJwtEnv,{waitUntil(){}})).status,401,
+ "Unauthenticated callers may not see backend health");
+console.log("D1 backend API QA passed: ownership, origin, opt-in delivery, dedupe, read isolation, account erasure and cron diagnostics");
