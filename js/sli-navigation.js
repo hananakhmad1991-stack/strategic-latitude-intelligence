@@ -168,7 +168,7 @@ function renderPlatformMast(){
  explorer.append(sectors);
  primary.append(explorer);
  primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
- primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'));
+ primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'||path==='sli-issuer.html'));
  primary.append(mastLink('./sli-research-ai.html','DERGUBA AI',false));
  primary.append(mastLink('./index.html#overview',text('Full Overview','Overview Lengkap'),path==='index.html'&&current==='overview'));
  const tools=node('div','sli-platform-tools');
