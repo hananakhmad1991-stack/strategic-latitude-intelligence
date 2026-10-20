@@ -7,6 +7,7 @@ on:
     paths:
       - 'scripts/sync_geopolitical_commodity_prices.py'
       - 'data/sli-geopolitical-events.json'
+      - 'tests/qa-sli-geopolitics-chapter.mjs'
       - '.github/workflows/sli-geopolitical-commodity-timeline.yml'
 permissions:
   contents: write
@@ -40,6 +41,13 @@ jobs:
           assert len(p["observations"])>=780
           assert p["observations"][0]["month"]=="1960-01"
           assert "wti" in p["series_coverage"]
+          food=("rice_thai_5","wheat_us_hrw","maize","soybeans","palm_oil","sugar_world","urea")
+          assert all(p["series_coverage"].get(k,{}).get("count",0)>=600 for k in food)
+          assert all(p["observations"][-1].get(k,0)>0 for k in food)
+          pres=e["presidential_transitions"]
+          assert len(pres)==10 and len({x["date"] for x in pres})==10
+          assert all(x["source_url"].startswith("https://") and x["statistical_event_eligible"] is False for x in pres)
+          assert {x["president"] for x in pres if x["kind"] in ("president","regime")}=={"Soekarno","Soeharto","B. J. Habibie","Abdurrahman Wahid","Megawati Soekarnoputri","Susilo Bambang Yudhoyono","Joko Widodo","Prabowo Subianto"}
           assert len(p["series_coverage"])>=12
           assert len(set(x["month"] for x in p["observations"]))==len(p["observations"])
           assert p["latest_month"]==p["observations"][-1]["month"]
