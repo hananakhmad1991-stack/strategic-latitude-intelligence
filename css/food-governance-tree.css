@@ -69,3 +69,7 @@
 .fa-actor-name .sli-entity-brand{width:28px;height:28px;flex-basis:28px}
 .fa-actor-name .sli-entity-favicon{width:22px;height:22px}
 .fa-gov-profile-name>h3{margin:0}
+
+.fa-gov-crosslinks{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0}
+.fa-gov-crosslinks a{font-size:11px;padding:8px 10px;border:1px solid #688298;border-radius:8px;background:#1b3a50;color:#f1d6a1;text-decoration:none}
+.fa-gov-crosslinks a:hover{border-color:#e5c589}
