@@ -73,6 +73,37 @@ assert.equal((await handleRequest(req("GET","/api/me"),{CF_ALLOWED_ORIGIN:origin
 // the public Worker fetch() handler. It must NOT be used as an identity callback.
 const noJwtEnv={...env,CF_ACCESS_ISSUER:"https://sli-testing.cloudflareaccess.com",
  CF_ACCESS_AUD:"sli-app-aud"};
+
+// Cloudflare itself vouches for the Worker-level Access context. Even a
+// client-supplied identity header or forged JWT must not substitute for it.
+const runtimeContext={access:{
+ aud:noJwtEnv.CF_ACCESS_AUD,
+ async getIdentity(){return {user_uuid:"7335d417-61da-459d-899c-0a01c76a2f94",email:"alice@example.org",
+  service_token_status:false}}
+}};
+const runtimeOK=await worker.fetch(req("GET","/api/me","attacker"),noJwtEnv,runtimeContext);
+assert.equal(runtimeOK.status,200,"Native Worker Access context must allow valid user");
+const runtimeBody=await runtimeOK.json();
+assert.equal(runtimeBody.identity_provider,"cloudflare_access");
+assert.equal(runtimeBody.enrolled,false);
+assert.ok(!JSON.stringify(runtimeBody).includes("alice@example.org"),"Do not expose email in API");
+const nativeUserHash=await webcrypto.subtle.digest("SHA-256",new TextEncoder().encode(
+ noJwtEnv.CF_ACCESS_ISSUER+"|"+noJwtEnv.CF_ACCESS_AUD+"|7335d417-61da-459d-899c-0a01c76a2f94"));
+assert.match(Buffer.from(nativeUserHash).toString("hex"),/^[0-9a-f]{64}$/);
+for(const context of [
+ {access:{...runtimeContext.access,aud:"another-application"}},
+ {access:{...runtimeContext.access,async getIdentity(){return {email:"alice@example.org"}}}},
+ {access:{...runtimeContext.access,async getIdentity(){return {user_uuid:"7335d417-61da-459d-899c-0a01c76a2f94",service_token_status:true}}}},
+ {access:{aud:noJwtEnv.CF_ACCESS_AUD,async getIdentity(){throw new Error("network failed")}}}
+]){
+ const result=await worker.fetch(req("GET","/api/me","attacker"),noJwtEnv,context);
+ assert.ok([403,503].includes(result.status),"Fail closed if Access identity missing or invalid");
+}
+const spoofed=new Request("https://api.sli.example/api/me",{
+ headers:{"Cf-Access-Jwt-Assertion":"attacker.unsigned.payload","Cf-Access-Authenticated-User-Email":"alice@example.org"}});
+assert.equal((await worker.fetch(spoofed,noJwtEnv,{waitUntil(){}})).status,401,
+ "Spoofed Access headers may never bypass missing runtime Access identity");
+
 const runtimeResponse=await worker.fetch(req("GET","/api/me"),noJwtEnv,{waitUntil(){}});
 assert.equal(runtimeResponse.status,401,"Worker fetch entrypoint must reject missing JWT, never respond 500");
 assert.equal((await runtimeResponse.json()).error,"Cloudflare Access login required");
