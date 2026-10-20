@@ -41,13 +41,21 @@ jobs:
           python -m unittest discover -s tests -p 'test_sli_idx_issuers.py' -v
           python scripts/reindex_sli_issuers.py --check
       - name: Pull public IDX directory with safe error handling
-        if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
-        run: python scripts/sync_sli_idx_issuers.py
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        run: |
+          python scripts/sync_sli_idx_issuers.py || {
+            status=$?
+            if [ "$status" -eq 2 ]; then
+              echo '::warning::Official IDX endpoint unavailable. Previous catalogue retained; do not label seed as verified.'
+            else
+              exit "$status"
+            fi
+          }
       - name: Rebuild global search IDX ticker deep links
-        if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
         run: python scripts/reindex_sli_issuers.py
       - name: Commit verified directory snapshot if changed
-        if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') }}
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
         run: |
           if git diff --quiet -- data/sli-idx-issuer-universe.json data/site-search-index.json; then
             echo 'No official directory updates'

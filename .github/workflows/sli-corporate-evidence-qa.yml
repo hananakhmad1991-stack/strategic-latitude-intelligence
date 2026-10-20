@@ -1,0 +1,69 @@
+name: SLI Corporate Relationship Evidence Sync
+on:
+  schedule:
+    - cron: '25 22 * * *' # 05:25 WIB daily; reflects upstream SLI corpus changes only
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/investment-ownership.json'
+      - 'data/sli-project-registry.json'
+      - 'data/sli-corporate-evidence-relationships.json'
+      - 'scripts/build_sli_corporate_evidence.py'
+      - 'js/sli-corporate-evidence-ui.js'
+      - 'css/sli-corporate-evidence.css'
+      - 'js/sli-entities.js'
+      - 'sli-entities.html'
+      - 'tests/qa-sli-corporate-evidence.mjs'
+      - '.github/workflows/sli-corporate-evidence-qa.yml'
+  pull_request:
+    paths:
+      - 'data/investment-ownership.json'
+      - 'data/sli-project-registry.json'
+      - 'data/sli-corporate-evidence-relationships.json'
+      - 'scripts/build_sli_corporate_evidence.py'
+      - 'js/sli-corporate-evidence-ui.js'
+      - 'css/sli-corporate-evidence.css'
+      - 'js/sli-entities.js'
+      - 'sli-entities.html'
+      - 'tests/qa-sli-corporate-evidence.mjs'
+      - '.github/workflows/sli-corporate-evidence-qa.yml'
+permissions:
+  contents: write
+concurrency:
+  group: sli-corporate-evidence-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  validate-and-refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rebuild source-derived relationships on main
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        run: python scripts/build_sli_corporate_evidence.py
+      - name: Validate that direct shares and project participation remain separate
+        run: |
+          python scripts/build_sli_corporate_evidence.py --check
+          node --check js/sli-corporate-evidence-ui.js
+          node --check js/sli-entities.js
+          node --test tests/qa-sli-corporate-evidence.mjs tests/qa-sli-entities.mjs
+      - name: Commit only genuine evidence changes
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        run: |
+          if git diff --quiet -- data/sli-corporate-evidence-relationships.json; then
+            echo 'No underlying source change'
+            exit 0
+          fi
+          git config user.name 'sli-evidence-source-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/sli-corporate-evidence-relationships.json
+          git commit -m 'data(entities): refresh sourced owner/project relationship evidence'
+          git push origin HEAD:main

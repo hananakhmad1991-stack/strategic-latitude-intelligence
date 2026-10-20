@@ -8,10 +8,12 @@
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
 <link rel="stylesheet" href="./css/sli-entity-identity.css?v=20261019-entities1" data-sli-identity-css="1">
 <link rel="stylesheet" href="./css/sli-entities.css?v=20261019-entities1"><link rel="stylesheet" href="./css/sli-corporate-groups.css?v=20261020-multisector1">
+<link rel="stylesheet" href="./css/sli-corporate-evidence.css?v=20261020-graph1">
 <script defer src="./js/sli-live-data.js?v=20261016-refresh1"></script>
 <script defer src="./js/sli-shared-appendix.js?v=20261016-glossary1"></script>
 <script defer src="./js/sli-entity-identity.js?v=20261019-entities1" data-sli-identity-js="1"></script>
 <script defer src="./js/sli-entities.js?v=20261020-idx-universe1"></script><script defer src="./js/sli-corporate-groups.js?v=20261020-multisector1"></script>
+<script defer src="./js/sli-corporate-evidence-ui.js?v=20261020-graph1"></script>
 <script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script>
 </head>
 <body class="sli-entity-page">
@@ -33,6 +35,20 @@
 <p id="sliCgCount" class="sli-cg-small" role="status" aria-live="polite">Memuat registri perusahaan…</p>
 <div class="sli-cg-workspace"><div id="sliCgTree" class="sli-cg-tree" role="tree" aria-label="Corporate family tree"><p class="sli-cg-small">Memuat data bersumber…</p></div><aside id="sliCgDossier" class="sli-cg-dossier" aria-label="Entity profile and cited directors"></aside></div>
 <details id="sliCgIssuerDisclosure" class="sli-cg-issuer-list"><summary>◈ <span data-id="Daftar emiten &amp; keterbukaan keuangan" data-en="Issuer list &amp; financial disclosure">Daftar emiten &amp; keterbukaan keuangan</span> · <span id="sliCgIssuerCount">—</span></summary><p class="sli-cg-small">Perusahaan yang tercatat di BEI, NASDAQ atau SGX ditampilkan terpisah dari perusahaan privat. Tahun fiskal dan kapitalisasi pasar tidak boleh disamakan. Klik perusahaan untuk membuka profil dan tautan laporan. N/A bukan nol.</p><div class="sli-cg-issuer-scroll"><table><thead><tr><th>Ticker / Bursa</th><th>Perusahaan</th><th>Sektor</th><th>Kapitalisasi pasar</th><th>Pendapatan</th><th>Laba tahun berjalan</th><th>Total aset</th><th>Periode</th><th>Sumber</th></tr></thead><tbody id="sliCgIssuerRows"></tbody></table></div></details>
+</section>
+<div id="sli-ownership-evidence" style="scroll-margin-top:110px"></div>
+<section id="sliCorporateEvidence" class="sli-evidence-directory" aria-label="Cited ownership and project participant relationships">
+<header class="sli-evidence-intro">
+ <small>SLI · VERIFIED-AND-DATED RELATIONSHIP EVIDENCE</small>
+ <h2 data-id="Jaringan Pemegang Saham &amp; Investor Proyek" data-en="Shareholders &amp; Project Participants Evidence">Jaringan Pemegang Saham &amp; Investor Proyek</h2>
+ <p data-id="Profil kepemilikan langsung diambil dari disclosure bertanggal; mitra proyek diambil dari registri proyek SLI. Partisipasi proyek tidak sama dengan kepemilikan saham, dan persentase saham tidak otomatis membuktikan pengendalian akhir." data-en="Direct shareholdings come from dated disclosures; project participation comes from SLI's project register. Project participation is not equity ownership, and equity percentages do not automatically prove ultimate control.">Profil kepemilikan langsung diambil dari disclosure bertanggal; mitra proyek diambil dari registri proyek SLI. Partisipasi proyek tidak sama dengan kepemilikan saham, dan persentase saham tidak otomatis membuktikan pengendalian akhir.</p>
+</header>
+<div class="sli-evidence-toolbar"><label for="sliEvidenceType" data-id="Jenis hubungan" data-en="Relationship type">Jenis hubungan</label>
+<select id="sliEvidenceType" aria-label="Relationship evidence type"><option value="all">Semua hubungan</option><option value="ownership">Kepemilikan langsung</option><option value="project">Partisipasi proyek</option></select>
+<input id="sliEvidenceSearch" type="search" placeholder="Cari pemegang saham, perusahaan, atau proyek" aria-label="Cari entitas dan hubungan perusahaan" />
+</div>
+<div class="sli-evidence-stat" id="sliEvidenceStat" aria-live="polite">Memuat bukti relasi…</div>
+<div class="sli-evidence-workspace"><div id="sliEvidenceList" class="sli-evidence-list" aria-label="Daftar entitas dan hubungan"></div><aside id="sliEvidenceDetail" class="sli-evidence-detail" aria-label="Rincian kepemilikan dan proyek" aria-live="polite"><p>Pilih entitas untuk meninjau keterbukaan sumber.</p></aside></div>
 </section>
 <section class="sli-entity-method-note" role="note"><strong data-id="Batas cakupan" data-en="Coverage limit">Batas cakupan</strong> <span data-id="Direktori ini memadukan kelompok BUMN, emiten BEI, perusahaan swasta nasional dan entitas asing dengan registri sektor serta proyek terkurasi. Data keuangan tanpa periode dan sumber tetap N/A. Jabatan adalah cuplikan bertanggal; Wikipedia bukan bukti pejabat masih menjabat. Favicon situs bukan logo terverifikasi." data-en="This directory combines dated minerals/AI governance, SOE groups and curated projects. It is not a comprehensive national listing. Officeholders are source-dated; Wikipedia does not establish current incumbency. Favicons are not certified logos.">Direktori ini menggabungkan registri kelembagaan mineral dan AI serta proyek terkurasi. Tidak berarti seluruh tokoh/perusahaan nasional sudah tercakup. Jabatan adalah cuplikan bertanggal; Wikipedia bukan bukti pejabat masih menjabat. Ikon situs bukan sertifikasi logo resmi.</span></section>
 <section class="sli-entity-panel" id="sliIssuerDirectory" aria-label="Entity finder">
