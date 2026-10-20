@@ -1,0 +1,49 @@
+name: SLI Catalyst Intelligence v2 QA
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/build_catalyst_history.mjs'
+      - 'tests/catalyst-history-qa.mjs'
+      - 'tests/catalyst-history-ui-qa.cjs'
+      - 'js/sli-catalyst-history-ui.js'
+      - 'css/sli-catalyst-history.css'
+      - 'data/sli-catalyst-state.json'
+      - 'data/sli-catalyst-history.json'
+      - 'sli-issuer.html'
+      - 'sli-decision-terminal.html'
+      - '.github/workflows/sli-secondary-news-index.yml'
+      - '.github/workflows/sli-catalyst-v2-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_catalyst_history.mjs'
+      - 'tests/catalyst-history-qa.mjs'
+      - 'tests/catalyst-history-ui-qa.cjs'
+      - 'js/sli-catalyst-history-ui.js'
+      - 'data/sli-catalyst-state.json'
+      - 'data/sli-catalyst-history.json'
+      - '.github/workflows/sli-catalyst-v2-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  shared-history:
+    name: Verify Catalyst v2 history and UX provenance
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Node syntax checks
+        run: |
+          node --check scripts/build_catalyst_history.mjs
+          node --check js/sli-catalyst-history-ui.js
+          node --check tests/catalyst-history-qa.mjs
+          node --check tests/catalyst-history-ui-qa.cjs
+      - name: Source-delta, failure and matching regressions
+        run: |
+          node tests/catalyst-history-qa.mjs
+          node tests/catalyst-history-ui-qa.cjs
+          node tests/catalyst-engine-qa.cjs
+          node tests/company-monitor-provenance.cjs
