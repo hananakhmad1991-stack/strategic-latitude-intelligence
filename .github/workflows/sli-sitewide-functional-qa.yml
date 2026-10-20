@@ -3,6 +3,10 @@ on:
   push:
     paths:
       - 'index.html'
+      - 'sli-decision-terminal.html'
+      - 'js/sli-decision-terminal.js'
+      - 'css/sli-decision-terminal.css'
+      - 'tests/qa-sli-decision-terminal.mjs'
       - 'food-agriculture-intelligence.html'
       - 'css/food-governance-hierarchy.css'
       - 'js/food-governance-hierarchy.js'
@@ -95,7 +99,7 @@ jobs:
         with:
           node-version: '22'
       - name: Verify all critical scripts, navigation, filters and export controls
-        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-idx-heatmap.mjs tests/qa-sli-idx-provider-dossier.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs tests/qa-sli-food-agriculture.mjs tests/qa-sli-cross-sector-integration.mjs tests/qa-sli-province-map.mjs
+        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sli-decision-terminal.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-idx-heatmap.mjs tests/qa-sli-idx-provider-dossier.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs tests/qa-sli-food-agriculture.mjs tests/qa-sli-cross-sector-integration.mjs tests/qa-sli-province-map.mjs
       - name: Sitewide link, inline runtime and search destination integrity
         run: node --test tests/qa-sli-site-integrity.mjs
       - name: Geopolitical chapter JavaScript syntax
@@ -103,6 +107,7 @@ jobs:
           node --check js/sli-geopolitics-chapter.js
           node --check js/sli-geopolitical-timeline.js
           node --check js/sli-navigation.js
+          node --check js/sli-decision-terminal.js
           node --check js/sli-idx-heatmap.js
           node --check js/sli-idx-sector-watchlist.js
           node --check js/sli-idx-tradingview.js
