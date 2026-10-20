@@ -200,7 +200,7 @@ function ruptl(solar,ex){
  };
  sel.addEventListener("change",display);display();
  table("ruptlAmi",["Tahun target","Target baru (meter)","Target kumulatif (meter)","Halaman PDF","Status sumber"],
-  ami.map(x=>[x.year,num(x.annual_target,0),num(x.cumulative_target,0),
+  ami.map(x=>[x.year,num(x.annual_installation_target,0),num(x.cumulative_installation_target,0),
    num(x.source_pdf_page||98,0),(x.quality||"rencana yang diterbitkan").replaceAll("_"," ")]));
 }
 function aiReports(d){
