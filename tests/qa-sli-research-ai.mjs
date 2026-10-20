@@ -11,7 +11,7 @@ test("Research AI published page is a sourced, honest, bilingual Open preview",(
  assert.match(h,/private backend|backend privat/);
  assert.match(h,/raQuestion/);assert.match(h,/raSources/);
  assert.ok(index.includes("sli-research-ai.html"));
- assert.ok(nav.includes("research:['Research AI"));
+ assert.match(nav,/research:\[\'(?:DERGUBA AI|Research AI)/,"Research module keeps a branded or transitional label");
  for(const name of ["sli-live-data.js","sli-shared-appendix.js","sli-navigation.js","sli-research-ai.js"]){
   assert.equal(h.split(name).length-1,1,"Exactly one script: "+name);
  }
