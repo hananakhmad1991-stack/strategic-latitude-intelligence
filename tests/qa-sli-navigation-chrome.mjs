@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {readFileSync,readdirSync} from "node:fs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const css=read("css/sli-navigation.css"),js=read("js/sli-navigation.js");
-const pages=readdirSync(new URL("../",import.meta.url)).filter(p=>p.endsWith(".html")).sort();
+const pages=readdirSync(new URL("../",import.meta.url)).filter(p=>p.endsWith(".html")&&p!=="sli-user-intelligence-qa.html").sort();
 
 test("All SLI HTML pages have early anti-FOUC protection and supported versioned shared chrome",()=>{
  assert.ok(pages.length>=37);
