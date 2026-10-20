@@ -73,6 +73,7 @@ def infer_sector(row, source):
         if "energy" in sectors: return "energy"
         if "minerals" in sectors: return "minerals"
         if "ai" in sectors: return "ai"
+        if "food" in sectors: return "food"
         return "regional"
     return "regional"
 def flatten(source, doc):
