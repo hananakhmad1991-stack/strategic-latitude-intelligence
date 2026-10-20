@@ -288,4 +288,40 @@ Promise.all(manifests.map(async([id,path])=>{
   "Belum tersedia: "+[...new Set(failed.map(x=>x.id))].join(", ")+". Cek jaringan atau sumber.":"Nilai ditampilkan berdasarkan periode masing-masing, tidak disatukan menjadi skor risiko.");
  status.dataset.status=failed.length?"partial":"ready";
 }).catch(e=>{$("libStatus").textContent="Gagal memuat indeks. "+plain(e.message);$("libStatus").dataset.status="error"});
+
+/* Deep links are now sector-owned detail views. The bare URL stays archival. */
+const topicalParents={
+ security:["Kebijakan & Tata Kelola","./index.html#policy"],
+ governance:["Kebijakan & Tata Kelola","./index.html#policy"],
+ socio:["Makroekonomi & Provinsi","./indonesia-macroeconomic-intelligence.html"],
+ minerals:["Mineral Kritis","./index.html#minerals"],
+ environment:["Geopolitik & Risiko Lingkungan","./index.html#geopolitics"],
+ disasters:["Geopolitik & Risiko Lingkungan","./index.html#geopolitics"],
+ power:["Energi & Ketenagalistrikan","./index.html#energy"],
+ ruptl:["Energi & Ketenagalistrikan","./index.html#energy"],
+ "ai-reports":["AI & Teknologi","./ai-intelligence-hub.html"]
+};
+function applyTopicView(){
+ const slug=decodeURIComponent(location.hash.slice(1));
+ const parent=topicalParents[slug],section=document.getElementById(slug);
+ const active=Boolean(parent&&section?.classList.contains("section"));
+ document.body.classList.toggle("sli-library-topic-mode",active);
+ let bar=document.getElementById("sliLibraryTopicParent");
+ if(active){
+  if(!bar){
+   bar=document.createElement("nav");bar.id="sliLibraryTopicParent";bar.className="sli-library-topic-parent";bar.setAttribute("aria-label","Topik terkait");
+   document.querySelector("#libraryMain .status")?.before(bar);
+  }
+  bar.replaceChildren();
+  const back=document.createElement("a");back.href=parent[1];back.textContent="← Kembali ke "+parent[0];
+  const archive=document.createElement("a");archive.href="./sli-sector-data-library.html";archive.textContent="Semua sumber (arsip) ↗";
+  bar.append(back,archive);bar.hidden=false;
+  document.title=section.querySelector("h2")?.textContent?.trim()+" · SLI Data & Sources";
+ }else{
+  if(bar)bar.hidden=true;
+  document.title="Perpustakaan Data SLI | Kriminalitas, Demokrasi, Sosial Ekonomi, IEA, Lingkungan";
+ }
+}
+window.addEventListener("hashchange",applyTopicView);
+applyTopicView();
 })();
