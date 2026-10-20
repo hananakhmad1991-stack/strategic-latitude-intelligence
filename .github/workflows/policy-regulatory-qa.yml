@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'data/sli-policy-regulatory-graph-2026.json'
+      - 'data/regulatory-monitor-sources.json'
       - 'data/sli-policy-source-coverage.json'
       - 'js/sli-policy-coverage.js'
       - 'tests/qa-sli-policy-coverage.mjs'
