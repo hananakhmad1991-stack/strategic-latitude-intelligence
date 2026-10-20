@@ -252,6 +252,13 @@ await check("AI atlas desktop: World Bank panel selection preserves original sou
  await page.goto(pageUrl("ai-intelligence-hub.html"),{waitUntil:"domcontentloaded",timeout:30000});
  const root=page.locator("#sliAiDigitizedFigureAtlas");
  const select=root.locator("select").first();
+ await page.waitForTimeout(2500);
+ console.log("ATLAS_DIAGNOSTIC",JSON.stringify(await page.evaluate(()=>{
+ const root=document.querySelector("#sliAiDigitizedFigureAtlas");
+ return {options:root?.querySelectorAll("select option")?.length,
+ rootPreview:root?.innerText?.slice(0,330),
+ scripts:[...document.scripts].filter(x=>x.src.includes("sli-digitized-ai-figures")).map(x=>x.src)};
+ })));
  await page.waitForFunction(()=>document.querySelectorAll("#sliAiDigitizedFigureAtlas select option").length>=12,null,{timeout:20000});
  await select.selectOption({index:5});
  assert.match(await root.locator("p").first().innerText(),/World Bank/i);
@@ -274,6 +281,13 @@ await check("AI atlas mobile: all twelve or more numeric panels stay navigable a
  await page.goto(pageUrl("ai-intelligence-hub.html"),{waitUntil:"domcontentloaded",timeout:30000});
  const root=page.locator("#sliAiDigitizedFigureAtlas");
  const select=root.locator("select").first();
+ await page.waitForTimeout(2500);
+ console.log("ATLAS_DIAGNOSTIC",JSON.stringify(await page.evaluate(()=>{
+ const root=document.querySelector("#sliAiDigitizedFigureAtlas");
+ return {options:root?.querySelectorAll("select option")?.length,
+ rootPreview:root?.innerText?.slice(0,330),
+ scripts:[...document.scripts].filter(x=>x.src.includes("sli-digitized-ai-figures")).map(x=>x.src)};
+ })));
  await page.waitForFunction(()=>document.querySelectorAll("#sliAiDigitizedFigureAtlas select option").length>=12,null,{timeout:20000});
  await select.selectOption({index:8});
  assert.equal(await root.locator(".sli-figure-plot svg rect[data-value]").count(),7);
