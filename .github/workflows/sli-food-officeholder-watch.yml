@@ -1,0 +1,72 @@
+name: SLI Food Officeholder Primary-Source Change Watch
+on:
+  workflow_dispatch:
+  schedule:
+    # Daily 09:20 WIB, best-effort GitHub schedule.
+    - cron: '20 2 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'data/food-institution-leadership.json'
+      - 'scripts/watch_food_officeholders.py'
+      - 'tests/test_food_officeholder_watch.py'
+      - '.github/workflows/sli-food-officeholder-watch.yml'
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: sli-food-officeholder-readonly-watch
+  cancel-in-progress: false
+jobs:
+  primary-source-monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check parser for former-head contamination
+        run: |
+          python -m py_compile scripts/watch_food_officeholders.py
+          python tests/test_food_officeholder_watch.py
+      - name: Read official current-head profile (without modifying leadership database)
+        run: python scripts/watch_food_officeholders.py --out=artifacts/food-leadership-monitor.json
+      - name: Save source-status report, even if official website blocks crawlers
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-food-official-leadership-source-watch
+          path: artifacts/food-leadership-monitor.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Open a single review issue for change candidates
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          REVIEW=$(python -c "import json;print(str(json.load(open('artifacts/food-leadership-monitor.json'))['requires_human_verification']).lower())")
+          if [ "$REVIEW" != "true" ]; then
+            echo "No confirmed source inconsistency. Unreachable sources are monitored without guessing a replacement."
+            exit 0
+          fi
+          TAG="SLI-FOOD-LEADERSHIP-REVIEW"
+          OPEN=$(gh issue list --repo "$REPO" --state open --limit 100 --search "$TAG in:body" --json number --jq '.[0].number // empty' || true)
+          if [ -n "$OPEN" ]; then
+            echo "Human review issue #$OPEN already tracks institutional source change; no duplicates."
+            exit 0
+          fi
+          cat > /tmp/food-leadership-review.md <<EOF
+          The official Bapanas leadership profile no longer matches the human-reviewed current-head evidence.
+
+          Monitor run: $RUN_URL
+
+          **Do not automatically replace the official:** Check latest Keppres/Setneg appointment or dismissal document and Bapanas official roster, and corroborate with a recent original dated government statement. Record exact effective date. Update registry only with reviewed evidence and QA.
+
+          This is a *change candidate*, not a confirmed appointment. News articles and historic mentions may contain superseded names.
+
+          $TAG
+          EOF
+          gh issue create --repo "$REPO" --title "SLI Food: verify possible leadership change at Bapanas" --body-file /tmp/food-leadership-review.md
