@@ -1,0 +1,18 @@
+.policy-provisions{margin:20px 0;padding:20px;border:1px solid #496071;border-radius:15px;background:#10283b;color:#e7f0f7}
+.policy-provisions h2{margin:0 0 8px;font-size:19px;color:#f5e1bb}
+.policy-provisions p{line-height:1.65}
+.policy-provisions .policy-provision-sub{max-width:880px;color:#bcd0dd;font-size:12px;margin:0 0 14px}
+.policy-provision-filters{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:12px 0}
+.policy-provision-filters label{display:flex;flex-direction:column;gap:5px;font-size:11px;color:#cedce6;flex:1;min-width:175px}
+.policy-provision-filters input,.policy-provision-filters select{border:1px solid #567389;border-radius:8px;padding:10px;background:#0b2131;color:#fff;min-height:39px}
+.policy-provision-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:12px;margin-top:12px}
+.policy-provision-card{background:#162f44;border:1px solid #355369;border-radius:10px;padding:15px;min-width:0}
+.policy-provision-ref{font-size:14px;color:#f1d09a}
+.policy-provision-paraphrase{font-size:12px;margin:8px 0 6px;color:#ecf2f4}
+.policy-provision-caution{font-size:11px;color:#d9bda7;margin:6px 0}
+.policy-provision-reviewed{font-size:10px;color:#b2c7d5;display:block;line-height:1.55}
+.policy-provision-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.policy-provision-actions a{display:inline-flex;border:1px solid #59758b;border-radius:7px;padding:8px 10px;color:#f3daa8;text-decoration:none;font-size:11px}
+.policy-provision-actions a:hover,.policy-provision-actions a:focus-visible{outline:2px solid #f1d09a}
+.policy-provision-empty{color:#cbdbe5;font-size:12px}
+@media(max-width:620px){.policy-provisions{padding:13px}.policy-provision-list{grid-template-columns:1fr}}
