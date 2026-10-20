@@ -79,7 +79,63 @@ function renderIssuerTable(){
  }
  if(!rows.length){const r=E('tr'),cell=E('td','',T('No issuer records for this sector yet.','Katalog sektor ini belum memiliki kode saham.'));cell.colSpan=9;r.append(cell);tbody.append(r)}
 }
+function renderSectorIssuerList(){
+ const mount=document.getElementById('sliCgTree');if(!mount)return;mount.replaceChildren();
+ const matches=sectorIssuers(),shown=matches.slice(0,issuerLimit);
+ const heading=E('p','sli-cg-small',matches.length+' '+T('IDX ticker records in selected sector; names/status may require a fresh exchange check.','catatan ticker BEI pada sektor terpilih; nama/status perlu pengecekan mutakhir di bursa.'));mount.append(heading);
+ for(const n of shown){
+  const btn=E('button','sli-cg-issuer-result');btn.type='button';btn.dataset.issuerTicker=n.ticker;
+  btn.setAttribute('aria-pressed',String(selectedTicker===n.ticker));
+  btn.append(E('strong','sli-cg-issuer-code',n.ticker),E('span','sli-cg-issuer-name',n.groupRecord?.name||n.name));
+  const detail=E('small','',n.groupRecord?T('Curated group profile available','Profil grup terkurasi tersedia'):T('IDX seed · verify current listing','Katalog BEI awal · verifikasi pencatatan'));
+  btn.append(detail);btn.addEventListener('click',()=>{selectedTicker=n.ticker;renderTree();renderDetails()});mount.append(btn);
+ }
+ if(matches.length>issuerLimit){
+  const more=E('button','sli-cg-load-more',T('Show next 60 tickers','Tampilkan 60 ticker berikutnya'));more.type='button';
+  more.addEventListener('click',()=>{issuerLimit+=60;renderTree()});mount.append(more);
+ }
+ if(!matches.length)mount.append(E('p','sli-cg-small',T('No matches for this sector. Try all sectors or change search.','Belum ada kecocokan. Coba Semua sektor atau ubah kata kunci.')));
+ document.getElementById('sliCgCount').textContent=matches.length+' '+T('sector ticker records (not independently reverified live)','catatan ticker sektor (belum semuanya diverifikasi ulang secara real-time)');
+}
+function renderIssuerDossier(){
+ const host=document.getElementById('sliCgDossier');if(!host)return;host.replaceChildren();
+ const n=issuerByTicker.get(selectedTicker);
+ if(!n){host.append(E('p','sli-cg-small',T('Choose a ticker from the issuer list.','Pilih ticker dari daftar emiten.')));return}
+ const gr=n.groupRecord,confirmed=n.verification==='official_exchange_snapshot';
+ const heading=E('div','sli-cg-profile-title');const title=E('div');title.append(E('small','',n.exchange+':'+n.ticker),E('h3','',gr?.name||n.name));heading.append(title);host.append(heading);
+ const status=E('p','sli-cg-warning',confirmed?T('Indexed from an official IDX company-directory snapshot; confirm subsequent actions.','Terindeks dari snapshot direktori resmi BEI; periksa aksi korporasi setelah tanggal snapshot.'):
+  T('Initial IDX ticker catalogue; current listing and issuer name have not been independently reconciled against the complete official IDX directory.','Katalog kandidat ticker BEI; status pencatatan dan nama emiten terkini belum direkonsiliasi menyeluruh dengan direktori resmi BEI.'));
+ host.append(status);
+ host.append(E('p','sli-cg-company-tags',sectorName(n.sector)+' · '+T('separate issuer record, not an inferred subsidiary','profil emiten tersendiri, bukan anak usaha yang diasumsikan')));
+ const dl=E('dl','sli-cg-fields');
+ const line=(label,value)=>dl.append(E('dt','',label),E('dd','',value));
+ line(T('Ticker','Kode saham'),n.exchange+':'+n.ticker);
+ line(T('Issuer catalogue observation','Tanggal pemeriksaan katalog'),issuerData?.as_of||gr?.source_date||'N/A');
+ line(T('Reported sector','Sektor tercatat dalam SLI'),sectorName(n.sector));
+ line(T('Market capitalization','Kapitalisasi pasar'),gr?.market_cap!=null&&gr.market_cap_source_url&&gr.market_cap_as_of?
+  new Intl.NumberFormat(document.documentElement.lang==='id'?'id-ID':'en-US').format(gr.market_cap)+' '+gr.market_cap_currency+' · '+gr.market_cap_as_of:'N/A · '+T('dated market feed unavailable','belum ada data pasar bertanggal terverifikasi'));
+ for(const [label,key] of [[T('Revenue','Pendapatan'),'revenue'],[T('Profit for year','Laba tahun berjalan'),'net_income'],[T('Total assets','Total aset'),'total_assets']]){
+  const value=gr?.[key],ok=typeof value==='number'&&Number.isFinite(value)&&gr.financial_period&&source(gr.financial_source_url);
+  line(label,ok?new Intl.NumberFormat(document.documentElement.lang==='id'?'id-ID':'en-US').format(value)+' '+(gr.financial_currency||'')+' · '+gr.financial_period:'N/A');
+ }
+ host.append(dl);
+ const sources=E('div','sli-cg-source-links');
+ sources.append(aLink(n.source_url,T('IDX company profile ↗','Profil perusahaan di BEI ↗')));
+ sources.append(aLink('https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan/',T('Financial reports ↗','Laporan keuangan BEI ↗')));
+ if(gr?.financial_source_url)sources.append(aLink(gr.financial_source_url,T('Verified dated report ↗','Laporan bertanggal ↗')));
+ host.append(sources);
+ if(gr){
+  host.append(E('p','sli-cg-small',T('The source-linked group dossier below is separate from this ticker catalogue.','Profil grup bersumber tersedia terpisah dari katalog ticker ini.')));
+  const jump=E('button','sli-cg-open-group',T('Open sourced corporate group tree ↗','Buka pohon grup bersumber ↗'));
+  jump.type='button';jump.addEventListener('click',()=>{view='group';group=gr.group;selected=gr.id;
+    sector=gr.sector;document.getElementById('sliCgSector').value=sector;
+    for(const item of path(gr))expand.add(item.id);query='';document.getElementById('sliCgSearch').value='';
+    renderTabs();renderTree();renderDetails()});host.append(jump);
+ }
+ host.append(E('p','sli-cg-small',T('Company groups are displayed only where explicit relationships were reviewed. Project participation and similarly named issuers do not prove equity ownership.','Bagan grup hanya untuk relasi yang didukung bukti. Partisipasi proyek dan kemiripan nama perusahaan tidak membuktikan kepemilikan saham.')));
+}
 function renderTree(){
+ if(view==='issuer'){renderSectorIssuerList();return}
  const mount=document.getElementById('sliCgTree');if(!mount||!data)return;mount.replaceChildren();
  const root=data.groups.find(g=>g.id===group);if(!root)return;
  const normalized=I().nameKey(query).split('-').filter(Boolean);
@@ -95,6 +151,7 @@ function renderTree(){
 }
 function cardSearch(n){const b=E('button','sli-cg-hit',n.name+' · '+(n.ticker?n.exchange+':'+n.ticker+' · ':'')+sectorName(n.sector));b.type='button';b.addEventListener('click',()=>{selected=n.id;group=n.group;renderTabs();renderDetails()});return b}
 function renderDetails(){
+ if(view==='issuer'){renderIssuerDossier();return}
  const host=document.getElementById('sliCgDossier');if(!host)return;
  host.replaceChildren();
  const n=byId?.get(selected);if(!n||n.group!==group){host.append(E('p','',T('Choose a company to view its dossier.','Pilih perusahaan untuk melihat profil.')));return}
