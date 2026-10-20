@@ -72,4 +72,29 @@ test('all source terms are unique, bilingual, reference-linked and self-consiste
  assert.match(page,/id="sliGlossaryMain"/);
  assert.ok(gloss.items.length>=317,'New canonical bilingual terms should be retained');
 });
+test('seven topical families own specialist pages exactly once and distinguish overview from detail',()=>{
+ assert.equal(groups.length,7,'Seven top-level navigational families, not miscellaneous extra categories');
+ const all=groups.flatMap(g=>g.slice(2));
+ assert.equal(new Set(all).size,all.length,'A canonical module must have one navigation owner');
+ for(const id of ['datahub','methodology','about']){
+  assert.ok(modules[id],'Historical route remains available without a duplicate top-level entry');
+  assert.ok(!all.includes(id),'Reference/legacy route should not compete with core topics');
+ }
+ const catalog=[
+  ['investment','index.html#investment'],['energy','index.html#energy'],
+  ['electricity','pln-electricity-statistics.html'],['ruptl','pln-ruptl-energy-investment.html'],
+  ['ai','index.html#ai'],['aihub','ai-intelligence-hub.html'],
+  ['policy','index.html#policy'],['ria','policy-regulatory-intelligence.html'],
+  ['glossary','sli-glossary-methodology.html']
+ ];
+ for(const [id,url] of catalog)assert.equal(modules[id][2],url,id+': changed canonical destination');
+ for(const [overview,detail] of [['ai','aihub'],['policy','ria'],['energy','electricity']])
+  assert.notEqual(modules[overview][0],modules[detail][0],'Ambiguous titles: '+overview+' vs '+detail);
+ assert.match(js,/specialistByGroup=\{/,'Specialized pages must be embedded under their topic');
+ assert.doesNotMatch(js,/const specialist=\[/,'Specialists must not reappear as peer categories');
+ assert.match(js,/const col=node\('details','sli-platform-sector-group'\)/,'Topical groups should be progressive disclosure');
+ assert.doesNotMatch(js,/node\('details','sli-explore-menu'\)/,'Do not repeat Explore Data in lower breadcrumb');
+ assert.match(js,/page=\(\)=>path==='index.html'\?\(\(!location\.hash/,'The real home route must not be labeled as Full Overview');
+});
+
 console.log('SLI information architecture checks complete: '+files.length+' HTML pages · '+Object.keys(modules).length+' canonical navigation destinations.');
