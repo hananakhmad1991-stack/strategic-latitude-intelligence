@@ -22,6 +22,10 @@ on:
       - 'js/sli-bnpb-gis-2025-gate.js'
       - 'tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
       - 'data/sli-ruptl-esdm-2025-2034-period-plan.json'
+      - 'data/sli-ruptl-full-official-annex-index.json'
+      - 'js/sli-ruptl-annex-index.js'
+      - 'css/sli-ruptl-annex-index.css'
+      - 'tests/qa-sli-ruptl-full-official-annex-index.mjs'
       - 'js/sli-ruptl-esdm-period-plan.js'
       - 'css/sli-ruptl-esdm-period-plan.css'
       - 'tests/qa-sli-ruptl-official-period-plan.mjs'
@@ -67,6 +71,10 @@ on:
       - 'js/sli-bnpb-gis-2025-gate.js'
       - 'tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
       - 'data/sli-ruptl-esdm-2025-2034-period-plan.json'
+      - 'data/sli-ruptl-full-official-annex-index.json'
+      - 'js/sli-ruptl-annex-index.js'
+      - 'css/sli-ruptl-annex-index.css'
+      - 'tests/qa-sli-ruptl-full-official-annex-index.mjs'
       - 'js/sli-ruptl-esdm-period-plan.js'
       - 'css/sli-ruptl-esdm-period-plan.css'
       - 'tests/qa-sli-ruptl-official-period-plan.mjs'
@@ -108,10 +116,11 @@ jobs:
           node --check js/sli-bnpb-district-2024.js
           node --check js/sli-bnpb-gis-2025-gate.js
           node --check js/sli-ruptl-esdm-period-plan.js
+          node --check js/sli-ruptl-annex-index.js
           node --check js/sli-digitized-ai-figures.js
           node --check js/sli-ai-figure-audit-status.js
           node --check js/sli-provincial-nexus-ui.js
-          node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs tests/qa-sli-provincial-bnpb-2025.mjs tests/qa-sli-ai-wdi-source-phase2.mjs tests/qa-sli-ai-digitized-figures.mjs tests/qa-sli-worldbank-digitized-panels.mjs tests/qa-sli-bnpb-district-2024.mjs tests/qa-sli-ruptl-official-period-plan.mjs
+          node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs tests/qa-sli-provincial-bnpb-2025.mjs tests/qa-sli-ai-wdi-source-phase2.mjs tests/qa-sli-ai-digitized-figures.mjs tests/qa-sli-worldbank-digitized-panels.mjs tests/qa-sli-bnpb-district-2024.mjs tests/qa-sli-ruptl-official-period-plan.mjs tests/qa-sli-ruptl-full-official-annex-index.mjs
       - name: Validate every page references a real public source dataset
         run: |
           python - <<'PY'
