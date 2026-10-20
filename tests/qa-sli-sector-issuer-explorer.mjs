@@ -85,6 +85,11 @@ test("Ticker search and group-tree jump preserve evidence status and avoid ficti
  search.value='';search.listeners.input({target:search});
  const antm=walk(get('sliCgTree')).find(n=>n.dataset?.issuerTicker==='ANTM');
  // "ANTM" belongs to another sector; select minerals then use same issuer panel.
+ // Search must continue to find non-listed subsidiary names in the original tree.
+ search.value='Pertagas';search.listeners.input({target:search});
+ assert.match(get('sliCgCount').textContent,/catatan grup terpilih/,"Non-listed company lookup must reopen sourced group search");
+ assert.ok(walk(get('sliCgTree')).some(n=>String(n.textContent).includes('Pertamina Gas')),"Search must not lose group-only subsidiaries");
+ search.value='';search.listeners.input({target:search});
  const sectors=get('sliCgSector');sectors.value='minerals';sectors.listeners.change();
  const antm2=walk(get('sliCgTree')).find(n=>n.dataset?.issuerTicker==='ANTM');
  assert.ok(antm2);
