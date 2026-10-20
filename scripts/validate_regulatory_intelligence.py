@@ -47,6 +47,18 @@ assert any(e["from"]=="uu23local" and e["to"]=="uu1hkpd2022" and e["type"]=="par
 assert any(e["from"]=="pres110carbon" and e["to"]=="pres98repealed" and e["type"]=="repeals" for e in data["edges"])
 assert all(lookup[k]["region"]!="Indonesia" for k in ("perda_dki_rtrw2024","perda_jabar_rtrw2022","perda_bekasi"))
 
+# Provincial directory coverage must distinguish source discovery from verified law text.
+coverage = json.loads((ROOT/"data/sli-policy-source-coverage.json").read_text(encoding="utf-8"))
+assert len(coverage["provinces"]) == 38
+with_portal = [p for p in coverage["provinces"] if p.get("source_url")]
+assert len(with_portal) >= 14, "Official source discovery unexpectedly regressed"
+assert all(p["source_url"].startswith("https://") for p in with_portal)
+assert all(p["discovery_status"] != "not_yet_confirmed" for p in with_portal)
+assert any(p["name"]=="Sulawesi Selatan" and p.get("source_url","").startswith("https://jdih.sulselprov.go.id/") for p in with_portal)
+watch_config = json.loads((ROOT/"data/regulatory-monitor-sources.json").read_text(encoding="utf-8"))
+assert len(watch_config["watched_laws"]) == len(set(watch_config["watched_laws"])), "Duplicate watched legal instrument"
+assert set(("uu4p2sk2026","permendag19pmse2026","perpres83bgn","perda_dki_rtrw2024")).issubset(watch_config["watched_laws"])
+assert all(w in node_ids for w in watch_config["watched_laws"]), "Watched law not in legal graph"
 assert data["methodology"]["ria_lite"]["purpose"]
 dimensions = data["methodology"]["ria_lite"]["dimensions"]
 weights = {x["id"]:x["weight"] for x in dimensions}
