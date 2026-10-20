@@ -93,7 +93,13 @@ function draw(root,detail,db){
    detail.append(E("h4",null,T("Lembaga terkait (hubungan fungsional)","Related institutions (functional links)")));
    const links=E("div","fa-gov-related");actor.related.forEach(id=>{const to=map.get(id);if(!to)return;const btn=E("button",null,T(to.name,to.en)+" ↗");btn.type="button";btn.addEventListener("click",()=>{state.selected=to.id;drawCards();drawInspector()});links.append(btn)});detail.append(links);
   }
-  detail.append(E("h4",null,T("Rujukan primer","Primary references")));
+  const cross=E("div","fa-gov-crosslinks");
+  for(const [idText,enText,href]of [["Berita ↗","News ↗","./sli-sector-news.html?sector=food"],
+   ["Regulasi ↗","Policy ↗","./policy-regulatory-intelligence.html"],
+   ["Research AI ↗","Research AI ↗","./sli-research-ai.html?prompt="+encodeURIComponent(T("Riset peran "+actor.name+" dalam ketahanan pangan, regulasi dan data Kementan/BPS, bedakan fakta dan berita teratribusi.","Research "+actor.en+" in food security, regulation and dated Kementan/BPS data, differentiating original evidence and reports."))]]){
+    const a=E("a",null,T(idText,enText));a.href=href;cross.append(a)
+  }
+  detail.append(cross,E("h4",null,T("Rujukan primer","Primary references")));
   const sources=E("div","fa-gov-sources");(actor.sources||[]).forEach(s=>sources.append(link(s.url,(s.label||T("Laman lembaga resmi","Official institution page"))+" ↗")));detail.append(sources);
   detail.append(E("p","fa-gov-warning",T("Diagram tidak menggantikan dasar hukum organisasi. Perubahan status dan pejabat diperiksa pada JDIH serta publikasi resmi bertanggal.","This diagram does not override statutory organization law. Verify subsequent changes against official gazettes and dated institutional records.")));
  }
