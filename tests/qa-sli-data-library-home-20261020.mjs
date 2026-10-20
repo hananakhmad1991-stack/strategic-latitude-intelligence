@@ -3,16 +3,34 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const json=p=>JSON.parse(read(p));
-test("Homepage displays a discoverable Data Library panel above national KPIs",()=>{
- const s=read("index.html");
- const pos=s.indexOf('id="sliPortalDataLibrary"'),kpi=s.indexOf('class="sli-portal-indicators"'),hero=s.indexOf('class="sli-portal-hero"');
- assert.ok(hero>=0&&pos>hero&&kpi>pos,"Home data library must be immediately after hero and before national KPIs");
- assert.ok(s.includes('href="./sli-sector-data-library.html" data-id="Perpustakaan Data"'));
- assert.ok(s.includes("sli-portal-data-library-cta"));
- assert.ok(s.includes("sli-portal-sector-library"));
- assert.ok(s.includes("@media(max-width:740px){.sli-portal-data-library"));
- for(const id of ["security","governance","socio","minerals","environment","power"])
-  assert.ok(s.includes('sli-sector-data-library.html#'+id),id);
+test("The homepage integrates public datasets into subject cards without a redundant library category",()=>{
+ const s=read("index.html"),nav=read("js/sli-navigation.js"),css=read("css/sli-home-portal.css");
+ const home=s.slice(s.indexOf("function homePortal(){"),s.indexOf('class="sli-portal-feature-grid"',s.indexOf("function homePortal(){")));
+ assert.ok(home.includes('id="sliPortalSectors"'),"Existing subjects must stay discoverable");
+ assert.ok(!home.includes('id="sliPortalDataLibrary"'),"Standalone library hero must be removed");
+ assert.ok(!home.includes('sli-portal-sector-library'),"No extra Data Library category card");
+ assert.ok(!home.includes('href="./sli-sector-data-library.html"'),"All library access goes through domain-specific anchors");
+ const mapping={
+  "./indonesia-macroeconomic-intelligence.html":["socio"],
+  "#energy":["power","ruptl"],
+  "#minerals":["minerals"],
+  "./ai-intelligence-hub.html":["ai-reports"],
+  "#policy":["governance","security"],
+  "#geopolitics":["environment","disasters"]
+ };
+ const groups=[...home.matchAll(/<div class="sli-portal-sector sli-portal-topic-card">([\\s\\S]*?)<\\/nav><\\/div>/g)].map(x=>x[1]);
+ assert.equal(groups.length,6,"Six existing sector cards receive source links without new categories");
+ for(const [primary,ids] of Object.entries(mapping)){
+  const owner=groups.find(block=>block.includes('href="'+primary+'" class="sli-portal-topic-main"'));
+  assert.ok(owner,"Missing existing sector card: "+primary);
+  for(const id of ids)assert.ok(owner.includes('href="./sli-sector-data-library.html#'+id+'"'),"Missing source link "+id+" within "+primary);
+ }
+ assert.match(nav,/topicalEvidence=\\{/);
+ assert.doesNotMatch(nav,/['"]overview['"],['"]terminal['"],['"]research['"],['"]datahub['"]/);
+ assert.match(css,/\\.sli-portal-topic-links/);
+ assert.ok(!css.includes(".sli-portal-sector-library"));
+ assert.match(read("sli-sector-data-library.html"),/id="security"/);
+ assert.match(read("sli-sector-data-library.html"),/id="ai-reports"/);
 });
 test("RUPTL 109-reservoir and 24-year AMI source reuse is exact",()=>{
  const solar=json("data/ruplt-2025-2034-floating-solar-potential.json");
