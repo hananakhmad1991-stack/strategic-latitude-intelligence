@@ -211,7 +211,7 @@ await check("Navigation parity: Home and Full Overview open the SAME sector drop
   await waitMast(page);await checkMast(page);
   assert.equal(await page.locator(".sli-portal-topnav").count(),0,"Duplicate standalone homepage navbar still present");
   const dropdown=page.locator("#sliPlatformMast .sli-platform-explorer");
-  await dropdown.locator("summary").click();
+  await dropdown.locator(":scope > summary").click();
   await page.waitForFunction(()=>document.querySelector("#sliPlatformMast .sli-platform-explorer")?.open===true,null,{timeout:6000});
   const menu=dropdown.locator(".sli-platform-sector-menu");
   assert.ok(await menu.isVisible(),"Explore Data dropdown not visible on "+chapter);
@@ -236,7 +236,7 @@ await check("Navigation mobile: dropdown remains visible and scrollable",{width:
  await waitMast(page);
  await page.locator('#sliPlatformMast [data-sli-mast-language="id"]').click();
  const dropdown=page.locator("#sliPlatformMast .sli-platform-explorer");
- await dropdown.locator("summary").click();
+ await dropdown.locator(":scope > summary").click();
  await page.waitForFunction(()=>document.querySelector("#sliPlatformMast .sli-platform-explorer")?.open===true,null,{timeout:6000});
  const geom=await page.evaluate(()=>{
   const m=document.querySelector("#sliPlatformMast .sli-platform-sector-menu"),r=m.getBoundingClientRect(),header=document.querySelector("#sliPlatformMast").getBoundingClientRect();
@@ -246,7 +246,7 @@ await check("Navigation mobile: dropdown remains visible and scrollable",{width:
  assert.ok(geom.top>=geom.headerBottom-4,"Mobile menu hidden underneath navbar: "+JSON.stringify(geom));
  assert.ok(geom.bottom<=844+4,"Dropdown goes beyond the viewport: "+JSON.stringify(geom));
  assert.equal(geom.overflow,"auto","Long module menu must support internal scrolling");
- assert.ok(await dropdown.locator("summary").innerText().then(x=>x.includes("Jelajahi Data")),"Indonesian menu label not displayed");
+ assert.ok(await dropdown.locator(":scope > summary").innerText().then(x=>x.includes("Jelajahi Data")),"Indonesian menu label not displayed");
 });
 await check("AI atlas desktop: World Bank panel selection preserves original source and CSV numeric values",{width:1366,height:850},async page=>{
  await page.goto(pageUrl("ai-intelligence-hub.html"),{waitUntil:"domcontentloaded",timeout:30000});
