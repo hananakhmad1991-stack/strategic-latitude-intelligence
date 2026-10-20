@@ -1,0 +1,90 @@
+name: SLI Rendered Browser and Interaction QA
+on:
+  workflow_dispatch:
+  schedule:
+    # ~12:27 WIB daily, GitHub schedule may be delayed.
+    - cron: '27 5 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'tests/qa-sli-browser-smoke.mjs'
+      - '.github/workflows/sli-browser-smoke-qa.yml'
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: sli-browser-smoke-main
+  cancel-in-progress: false
+jobs:
+  desktop-and-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Reuse runner Chrome; do not download a second browser
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          if [ -z "$CHROME" ]; then echo "Chromium/Google Chrome missing; browser QA cannot be claimed." >&2; exit 1; fi
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+      - name: Install lightweight browser automation client only
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Start loopback-only public SLI static server
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/sli-browser-server.log 2>&1 &
+          echo $! > /tmp/sli-browser-server.pid
+          for i in {1..25}; do
+            if curl -fsS http://127.0.0.1:8765/sli-entities.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/sli-browser-server.log
+          exit 1
+      - name: Check actual layout, links and click interactions in Chrome
+        id: browser
+        env:
+          SLI_BROWSER_TEST_BASE: http://127.0.0.1:8765
+        run: node tests/qa-sli-browser-smoke.mjs
+      - name: Retain browser evidence on any outcome
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-rendered-browser-smoke
+          path: artifacts/sli-browser-smoke/
+          retention-days: 21
+          if-no-files-found: warn
+      - name: Open deduplicated owner-review issue for rendered UI failures
+        if: ${{ failure() && github.ref == 'refs/heads/main' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          MARKER=SLI_RENDERED_BROWSER_SMOKE_REVIEW
+          EXISTING=$(gh issue list --repo "$REPO" --state open --search "$MARKER in:body" --json number --jq '.[0].number // empty' || true)
+          if [ -n "$EXISTING" ]; then echo "Incident already in issue #$EXISTING"; exit 0; fi
+          cat > /tmp/sli-browser-review.md <<EOF
+          Real desktop/mobile Chromium smoke check failed.
+          Run: $RUN_URL
+
+          Inspect the test artifact for rendered screenshots and failure messages.
+          This test checks local public routes, navbar, entity selection, migas inspector
+          and optional DERGUBA lab. It does NOT verify source facts or external data feeds.
+          Review before any CSS fix; do not auto-merge or self-deploy.
+
+          $MARKER
+          EOF
+          gh issue create --repo "$REPO" --title "SLI browser smoke regression needs owner review" --body-file /tmp/sli-browser-review.md
+      - name: Stop static server
+        if: always()
+        shell: bash
+        run: |
+          if [ -f /tmp/sli-browser-server.pid ]; then kill "$(cat /tmp/sli-browser-server.pid)" || true; fi
