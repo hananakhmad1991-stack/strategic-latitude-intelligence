@@ -2,7 +2,7 @@
    Static local links only, no analytics, redirects, network dependency or injected source data. */
 (()=>{'use strict';
 const groups=[
- ['Start here','Mulai di sini','overview','terminal','research','guide','membership'],
+ ['Start here','Mulai di sini','overview','terminal','research','datahub','guide','membership'],
  ['Investment & regions','Investasi & daerah','investment','entities','macro','opportunity','province','gini','labs'],
  ['Energy, trade & assets','Energi, perdagangan & aset','energy','map','trade','minerals','electricity','ruptl'],
  ['Food & agriculture','Pangan & pertanian','food'],
