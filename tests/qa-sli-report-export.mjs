@@ -84,3 +84,52 @@ test("Word export builds a real WordprocessingML package: Arial 11pt, justified,
  assert.match(files.get("word/document.xml"),/w:tbl/);
  assert.match(files.get("word/document.xml"),/w:i\/>/);
 });
+
+test("Focused Pasal 4 PP 28/2025 PDF keeps uniform numeric references and original law year",()=>{
+ const src=[
+  {title:"PP 28/2025, Pasal 4 — ringkasan tingkat pasal",
+   publisher:"JDIH Kementerian Perumahan dan Kawasan Permukiman",
+   source_date:"2026-10-20",source_type:"reviewed_primary_article_paraphrase",
+   provision_anchor:{instrument_ref:"PP 28/2025",article:"Pasal 4"},
+   source_url:"https://jdih.pkp.go.id/produk-hukum/file/pp-nomor-28-tahun-2025-2_1778147306.pdf"},
+  {title:"PP 28/2025 · Risk-based business licensing",publisher:"Investment Ministry / OSS",
+   source_date:"2026-10-20",source_type:"legal_index_metadata",
+   source_url:"https://peraturan.bpk.go.id/Details/319773/pp-no-28-tahun-2025"},
+  {title:"Permen Investasi/BKPM 5/2025 · Tata cara OSS",publisher:"Investasi/BKPM",
+   source_date:"",source_type:"legal_index_metadata",
+   source_url:"https://peraturan.bpk.go.id/Details/332573/permeninvesbkpm-no-5-tahun-2025"}
+ ];
+ const report=makeResearchReport({question:"Jelaskan Pasal 4 PP 28/2025 tentang data center AI",
+  mode:"deep_research",language:"id",sources:src,
+  answer:"# Ringkasan Eksekutif\n\nProses OSS [1][2] memerlukan verifikasi aturan sektoral [3]."});
+ assert.equal(report.report_scope,"focused_legal_article");
+ assert.equal(report.refs.required_minimum,1);
+ assert.equal(report.refs.metadata_complete_candidates,1);
+ assert.equal(report.refs.meets_preliminary_minimum,true);
+ assert.equal(report.refs.ready_for_publication,false);
+ assert.equal(report.refs.verified_sources,0);
+ assert.equal(report.refs.references[0].year,"2025");
+ assert.match(report.body.find(x=>x.type==="p").text,/OSS \[1\] \[2\]/);
+ assert.doesNotMatch(report.body.find(x=>x.type==="p").text,/\(JDIH/i);
+ const printable=printableResearchHtml(report);
+ assert.match(printable,/DRAF BERBANTUAN AI/);
+ assert.doesNotMatch(printable,/BELUM MEMENUHI MINIMUM 10/);
+ assert.match(printable,/\[1\]<\/strong>/);
+ assert.match(printable,/\[2\]<\/strong>/);
+ assert.match(printable,/\[3\]<\/strong>/);
+ assert.match(printable,/\(2025\)/);
+ assert.ok(!printable.includes("(JDIH Kementerian Perumahan dan Kawasan Permukiman, 2026)"));
+ const files=entries(docxBytes(report));
+ assert.match(files.get("word/document.xml"),/DRAF BERBANTUAN AI/);
+ assert.match(files.get("word/document.xml"),/\[1\]/);
+ assert.match(files.get("word/document.xml"),/\[2\]/);
+});
+test("Long-form research still keeps the 10-reference metadata threshold and draft status",()=>{
+ const general=makeResearchReport({question:"Analisis investasi nasional jangka panjang",
+  sources:fullSources.slice(0,3),answer:"# Analysis\n\nThree sources [1] [2] [3]."});
+ assert.equal(general.report_scope,"broad_research");
+ assert.equal(general.refs.required_minimum,10);
+ assert.equal(general.refs.meets_preliminary_minimum,false);
+ assert.match(printableResearchHtml(general),/DRAF BERBANTUAN AI/);
+ assert.match(general.refs.warning,/target minimum 10/);
+});
