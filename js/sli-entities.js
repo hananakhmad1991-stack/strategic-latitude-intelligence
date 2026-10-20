@@ -13,6 +13,7 @@ function upsert(record){
   if(!prev.source&&record.source)prev.source=record.source;
   if(!prev.person&&record.person)prev.person=record.person;
   if(!prev.role&&record.role)prev.role=record.role;
+  if(record.corporate)prev.corporate=record.corporate;
  }else catalog.set(record.key,record);
 }
 function fromHierarchy(db){
@@ -40,9 +41,9 @@ function fromProjects(db){
 function fromCorporateGroups(db){
  for(const n of db.records||[]){
   if(!n?.id||!n.name||!safe(n.source_url))continue;
-  const rec={sector:'corporate',actorId:n.id,parentId:n.parent_id,relation:n.relationship,verification:'source-dated',source:n.source_url};
+  const rec={sector:n.sector||'corporate',actorId:n.id,parentId:n.parent_id,relation:n.relationship,verification:'source-dated',source:n.source_url};
   const key='company:'+I().nameKey(n.name);
-  upsert({key,type:'company',title:n.name,person:n.directors?.find(d=>d.title_id==='Direktur Utama')?.name||'',source:n.source_url,role:n.business_id,date:n.source_date,sectors:['corporate'],records:[rec],summary:n.business_id,original:n});
+  upsert({key,type:'company',title:n.name,person:n.directors?.find(d=>d.title_id==='Direktur Utama')?.name||'',source:n.source_url,role:n.business_id,date:n.source_date,sectors:['corporate',n.sector||'corporate'],records:[rec],summary:n.business_id,original:n,corporate:n});
   for(const d of n.directors||[]){
    if(!d?.name||!safe(d.source_url))continue;
    upsert({key:'person:'+I().nameKey(d.name),type:'person',title:d.name,person:d.name,source:d.source_url,role:d.title_id+' · '+n.name,date:d.source_date,sectors:['corporate'],records:[rec],summary:T('Source-dated director of ','Direksi yang tercatat di ')+n.name,original:n});
@@ -50,11 +51,11 @@ function fromCorporateGroups(db){
  }
 }
 const typeLabels={person:['Person','Tokoh'],institution:['Institution','Lembaga'],company:['Company','Perusahaan'],project:['Project','Proyek']};
-const sectorLabels={corporate:['SOE Corporate Groups','Grup BUMN'],minerals:['Critical minerals','Mineral kritis'],ai:['AI & digital','AI & digital'],projects:['Project register','Registri proyek']};
+const sectorLabels={corporate:['Corporate groups','Grup perusahaan'],energy:['Energy','Energi'],minerals:['Critical minerals','Mineral kritis'],coal:['Coal','Batu bara'],technology:['AI, data centers & technology','AI, data center & teknologi'],food:['Food & agriculture','Pangan & pertanian'],ai:['AI & digital','AI & digital'],projects:['Project register','Registri proyek']};
 const labelType=a=>typeLabels[a.type]?.[id()?1:0]||a.type;
 function applyLanguage(){
  for(const e of document.querySelectorAll('[data-id][data-en]'))e.textContent=e.dataset[id()?'id':'en'];
- for(const [selector,opts] of [['sliEntityType',[['all','All entities','Semua entitas'],['person','People','Tokoh'],['institution','Institutions','Lembaga'],['company','Companies','Perusahaan'],['project','Projects','Proyek']]],['sliEntitySector',[['all','All sectors','Semua sektor'],['ai','AI & digital','AI & digital'],['minerals','Minerals','Mineral'],['projects','Project register','Registri proyek'],['corporate','Corporate groups','Grup BUMN']]]]){
+ for(const [selector,opts] of [['sliEntityType',[['all','All entities','Semua entitas'],['person','People','Tokoh'],['institution','Institutions','Lembaga'],['company','Companies','Perusahaan'],['project','Projects','Proyek']]],['sliEntitySector',[['all','All sectors','Semua sektor'],['ai','AI & digital','AI & digital'],['minerals','Minerals','Mineral'],['projects','Project register','Registri proyek'],['corporate','Corporate groups','Grup perusahaan'],['energy','Energy','Energi'],['coal','Coal','Batu bara'],['technology','AI & technology','AI & teknologi'],['food','Food & agriculture','Pangan & pertanian']]]]){
   const select=$(selector);if(!select)continue;for(const [k,en,bahasa] of opts){const opt=[...select.options].find(x=>x.value===k);if(opt)opt.textContent=T(en,bahasa)}
  }
 }
@@ -102,6 +103,23 @@ function drawDetail(){
   addDl(dl,T('Evidence class','Jenis bukti'),a.original?.verification||T('Source-linked register','Registri dengan sumber'));
   if(a.records.length>1)addDl(dl,T('Matched register rows','Baris registri terkait'),String(a.records.length));
  }
+ if(a.type==='company'&&a.corporate){
+  const c=a.corporate,listed=c.listing_status==='listed'&&c.ticker,fmt=v=>typeof v==='number'&&Number.isFinite(v)?new Intl.NumberFormat(id()?'id-ID':'en-US',{maximumFractionDigits:2}).format(v):null;
+  addDl(dl,T('Company segment','Segmen perusahaan'),c.sector||'');
+  addDl(dl,T('Business type','Kategori korporasi'),c.ownership_class||'');
+  addDl(dl,T('Listing / ticker','Pencatatan / kode saham'),listed?c.exchange+': '+c.ticker:T('Not separately listed','Tidak tercatat tersendiri'));
+  addDl(dl,T('Reported market capitalization','Kapitalisasi pasar terlapor'),listed?(fmt(c.market_cap)&&c.market_cap_as_of&&c.market_cap_source_url?fmt(c.market_cap)+' '+c.market_cap_currency+' · '+c.market_cap_as_of:'N/A · '+T('dated closing quote and shares outstanding not ingested','perlu harga penutupan dan saham beredar dengan tanggal sama')):T('Not applicable to unlisted company','Tidak berlaku untuk perusahaan non-Tbk'));
+  for(const [label,v] of [[T('Revenue','Pendapatan'),c.revenue],[T('Net income','Laba bersih'),c.net_income],[T('Total assets','Total aset'),c.total_assets]]){
+   addDl(dl,label,fmt(v)&&c.financial_source_url&&c.financial_period?fmt(v)+' '+(c.financial_currency||'')+' · '+c.financial_period:'N/A · '+T('dated issuer report unavailable','laporan emiten bertanggal belum tersedia'));
+  }
+  if(listed&&c.exchange==='IDX'){
+   const d=el('div','sli-entity-finance-links');
+   linkTo(d,'https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/'+encodeURIComponent(c.ticker),T('IDX company profile','Profil emiten BEI'));
+   linkTo(d,'https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan/',T('IDX issuer reports','Laporan emiten BEI'));
+   linkTo(d,'https://www.idx.co.id/id/perusahaan-tercatat/data-kepemilikan-saham/',T('IDX shareholder disclosures','Keterbukaan pemegang saham BEI'));
+   host.append(d);
+  }
+ }
  host.append(dl,el('h3','',T('Primary references and provenance','Referensi dan keterlacakan')));
  linkTo(host,a.source,T('Open original source','Buka sumber asli'));
  if(a.type==='person'){const person=I().safeProfile(a.title,a.source);if(person.kind==='wikipedia')linkTo(host,person.url,'Wikipedia · '+T('biographical context only','hanya konteks biografi'))}
@@ -109,15 +127,15 @@ function drawDetail(){
 }
 function filter(){
  const q=I().nameKey($('sliEntitySearch').value).split('-').filter(Boolean),type=$('sliEntityType').value,sector=$('sliEntitySector').value;
- visible=all.filter(a=>(type==='all'||a.type===type)&&(sector==='all'||a.sectors.includes(sector))&&q.every(term=>I().nameKey([a.title,a.role,a.summary,a.person,a.original?.region,a.original?.investor].join(' ')).split('-').some(t=>t.includes(term))));
+ visible=all.filter(a=>(type==='all'||a.type===type)&&(sector==='all'||a.sectors.includes(sector))&&q.every(term=>I().nameKey([a.title,a.role,a.summary,a.person,a.original?.region,a.original?.investor,a.corporate?.ticker,a.corporate?.exchange].join(' ')).split('-').some(t=>t.includes(term))));
  if(!visible.some(a=>a.key===selected))selected=visible[0]?.key||'';
  drawList();drawDetail();
 }
 function csvCell(v){let s=String(v??'');if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}
 function exportCSV(){
  if(!visible.length)return;
- const headers=['name','type','sectors','registry_date_or_evidence_date','source_url','role_or_sector','evidence_status'];
- const rows=visible.map(a=>[a.title,a.type,a.sectors.join('; '),a.date,a.source||'',a.role,a.original?.verification_class||a.original?.verification||'']);
+ const headers=['name','type','sectors','registry_date_or_evidence_date','source_url','role_or_sector','evidence_status','exchange','ticker','listing_status','market_cap','market_cap_as_of','revenue','net_income','total_assets','financial_period','financial_source_url'];
+ const rows=visible.map(a=>[a.title,a.type,a.sectors.join('; '),a.date,a.source||'',a.role,a.original?.verification_class||a.original?.verification||'',a.corporate?.exchange,a.corporate?.ticker,a.corporate?.listing_status,a.corporate?.market_cap,a.corporate?.market_cap_as_of,a.corporate?.revenue,a.corporate?.net_income,a.corporate?.total_assets,a.corporate?.financial_period,a.corporate?.financial_source_url]);
  const csv='\uFEFF'+[headers,...rows].map(row=>row.map(csvCell).join(',')).join('\r\n');
  const obj=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
  const l=document.createElement('a');l.href=obj;l.download='sli-entity-evidence-index.csv';document.body.append(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(obj),500);
