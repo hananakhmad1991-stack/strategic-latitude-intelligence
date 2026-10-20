@@ -4,6 +4,8 @@ on:
     paths:
       - 'index.html'
       - 'food-agriculture-intelligence.html'
+      - 'css/food-governance-hierarchy.css'
+      - 'js/food-governance-hierarchy.js'
       - 'js/food-agriculture-intelligence.js'
       - 'css/food-agriculture-intelligence.css'
       - 'tests/qa-sli-food-agriculture.mjs'
@@ -77,6 +79,7 @@ jobs:
           node --check js/sli-geopolitical-timeline.js
           node --check js/sli-navigation.js
           node --check js/food-agriculture-intelligence.js
+          node --check js/food-governance-hierarchy.js
           node --check js/sli-visual-export.js
           node --check js/sli-visual-export-formats.js
           node --check js/commodity-market-prices.js
