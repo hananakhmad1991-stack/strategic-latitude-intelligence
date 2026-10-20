@@ -62,7 +62,7 @@ function draw(root,detail,db){
    const section=E("section","fa-gov-lane lane-"+lane.id);
    section.append(E("h4",null,T(lane.idTitle,lane.enTitle)),E("p",null,T(lane.idHint,lane.enHint)));
    const cards=E("div","fa-gov-lane-grid");
-   const list=db.nodes.filter(n=>filtered?(n.group===lane.id||(n.group==="unit"&&lane.id==="authority"))&&match(n):n.group===lane.id);
+   const list=db.nodes.filter(n=>(n.group===lane.id&&match(n))||(Boolean(state.q)&&lane.id==="authority"&&n.group==="unit"&&match(n)));
    list.forEach(a=>{if(!filtered&&a.parent)return;cards.append(actorCard(a,false));total++});
    if(!cards.children.length)continue;
    section.append(cards);chunks.append(section);
