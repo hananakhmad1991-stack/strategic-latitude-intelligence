@@ -136,6 +136,8 @@ export async function processEvents(env,fetcher=fetch){
  return {initialized:false,delivered,processed:candidates.length};
 }
 export default {
- fetch:handleRequest,
+ // Cloudflare invokes fetch(request, env, ctx). Do not forward ctx into
+ // handleRequest's third parameter (test-only identity function injection).
+ fetch(request,env,_ctx){return handleRequest(request,env)},
  scheduled(_event,env,ctx){ctx.waitUntil(processEvents(env))}
 };
