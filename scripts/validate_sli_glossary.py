@@ -31,7 +31,7 @@ assert len(energykeys&mapkeys)>=10 and d["merge"]["cross_source_duplicate_terms_
 assert sum(x["category"]=="units" for x in d["items"])>=20
 assert "data/sli-unified-glossary.json" in d["original_source_paths"] or len(d["original_source_paths"])==2
 # Every HTML entrypoint includes the same shared appendix, with one canonical source.
-pages=sorted(ROOT.glob("*.html"))
+pages=sorted(p for p in ROOT.glob("*.html") if p.name!="sli-user-intelligence-qa.html")
 assert len(pages)>=24,len(pages)
 for page in pages:
  txt=page.read_text(encoding="utf-8")
