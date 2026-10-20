@@ -18,6 +18,11 @@ on:
       - 'tests/qa-sli-ai-wdi-source-phase2.mjs'
       - 'data/sli-environment-worldbank-wdi-indonesia.json'
       - 'data/sli-bnpb-district-2024.json'
+      - 'data/sli-bmkg-cengkareng-historical-rainfall.json'
+      - 'js/sli-bmkg-historical-rainfall.js'
+      - 'css/sli-bmkg-historical-rainfall.css'
+      - 'tests/qa-sli-bmkg-historical-station-rain.mjs'
+      - 'data/sli-climate-environment.json'
       - 'data/sli-bnpb-gis-2025-methodology-gate.json'
       - 'js/sli-bnpb-gis-2025-gate.js'
       - 'tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
@@ -63,6 +68,11 @@ on:
       - 'tests/qa-sli-ai-wdi-source-phase2.mjs'
       - 'data/sli-environment-worldbank-wdi-indonesia.json'
       - 'data/sli-bnpb-district-2024.json'
+      - 'data/sli-bmkg-cengkareng-historical-rainfall.json'
+      - 'js/sli-bmkg-historical-rainfall.js'
+      - 'css/sli-bmkg-historical-rainfall.css'
+      - 'tests/qa-sli-bmkg-historical-station-rain.mjs'
+      - 'data/sli-climate-environment.json'
       - 'data/sli-bnpb-gis-2025-methodology-gate.json'
       - 'js/sli-bnpb-gis-2025-gate.js'
       - 'tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
@@ -106,6 +116,7 @@ jobs:
           node --check js/sli-ai-report-evidence.js
           node --check js/sli-environment-wdi.js
           node --check js/sli-bnpb-district-2024.js
+          node --check js/sli-bmkg-historical-rainfall.js
           node --check js/sli-bnpb-gis-2025-gate.js
           node --check js/sli-ruptl-esdm-period-plan.js
           node --check js/sli-digitized-ai-figures.js
