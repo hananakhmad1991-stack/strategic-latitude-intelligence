@@ -29,14 +29,14 @@ p {margin:8px 0;color:#43536e}
 aside {font-size:.87rem;color:#576782;margin-top:25px}
 a {color:#2254a2}
 </style>
-<script defer src="./js/sli-user-intelligence-qa.js"></script>
+<script defer src="./js/sli-user-intelligence-qa.js?v=20261020-cron1"></script>
 </head>
 <body>
 <main>
 <header>
 <div class="eyebrow">STRATEGIC LATITUDE INTELLIGENCE · OWNER QA</div>
 <h1>Uji koneksi akun privat</h1>
-<p>Periksa login Cloudflare Access, preferensi D1, dan inbox dari domain GitHub Pages SLI. Uji tulis hanya dilakukan setelah konfirmasi.</p>
+<p>Periksa login Cloudflare Access, preferensi D1, inbox, dan status cron langsung dari domain GitHub Pages SLI. Uji tulis hanya dilakukan setelah konfirmasi.</p>
 </header>
 <section class="panel" aria-label="Pemeriksaan koneksi">
 <p>Langkah pertama, login ke Worker melalui tautan terpisah. Setelah login sukses, kembali ke halaman ini dan tekan <strong>Periksa koneksi</strong>.</p>
@@ -48,6 +48,7 @@ a {color:#2254a2}
 <div class="check"><div><b>Identitas akun</b><small>GET /api/me</small></div><span id="me" class="status">Belum diuji</span></div>
 <div class="check"><div><b>Preferensi watchlist</b><small>GET /api/preferences</small></div><span id="preferences" class="status">Belum diuji</span></div>
 <div class="check"><div><b>Inbox privat</b><small>GET /api/inbox?limit=1</small></div><span id="inbox" class="status">Belum diuji</span></div>
+<div class="check"><div><b>Jadwal notifikasi otomatis</b><small>GET /api/health — status cron 15 menit dari D1</small></div><span id="cron" class="status">Belum diuji</span></div>
 </div>
 <p id="summary" role="status"></p>
 </section>

@@ -36,14 +36,24 @@
   async function check() {
     button.disabled = true;
     summary.textContent = "Menghubungi backend privat SLI…";
-    for (const id of ["me", "preferences", "inbox"]) status(id, "Memeriksa…", "pending");
+    for (const id of ["me", "preferences", "inbox", "cron"]) status(id, "Memeriksa…", "pending");
     const tasks = [
       ["me", "/api/me", (data) => data.identity_provider === "cloudflare_access"
         ? "Login valid" : null],
       ["preferences", "/api/preferences", (data) => typeof data.enrolled === "boolean"
         ? (data.enrolled ? "Tersimpan" : "Belum disimpan (normal)") : null],
       ["inbox", "/api/inbox?limit=1", (data) => Array.isArray(data.items) && Number.isInteger(data.unread)
-        ? ("Inbox tersedia (" + data.unread + " belum dibaca)") : null]
+        ? ("Inbox tersedia (" + data.unread + " belum dibaca)") : null],
+      ["cron", "/api/health", (data) => {
+        const monitor = data?.scheduler;
+        if (!monitor || monitor.status !== "ok" || !Number.isFinite(Date.parse(monitor.last_run_at)))
+          return null;
+        if (monitor.consecutive_failures !== 0) return null;
+        // Verify the schedule actually ran recently, rather than reporting stale green.
+        const age = Date.now() - Date.parse(monitor.last_run_at);
+        if (age < -120000 || age > 35 * 60 * 1000) return null;
+        return "Cron sehat (terakhir " + new Date(monitor.last_run_at).toLocaleTimeString("id-ID") + ")";
+      }]
     ];
     let passed = 0;
     const details = [];
@@ -52,7 +62,9 @@
         try {
           const data = await get(path);
           const result = checker(data);
-          if (!result) throw Error("Format respons tidak sesuai");
+          if (!result) throw Error(id === "cron"
+            ? "Cron belum menunjukkan status sehat dan terbaru. Lihat /api/health setelah jadwal 15 menit berjalan."
+            : "Format respons tidak sesuai");
           status(id, result, "good");
           passed++;
         } catch (error) {
@@ -63,9 +75,9 @@
             : String(error?.message || "Permintaan gagal")));
         }
       }
-      summary.textContent = passed === 3
-        ? "3/3 pemeriksaan baca berhasil dari GitHub Pages. Berikutnya: uji penyimpanan watchlist dengan persetujuan pemilik dan akun kedua."
-        : passed + "/3 pemeriksaan berhasil. " + details.join(" | ");
+      summary.textContent = passed === 4
+        ? "4/4 pemeriksaan berhasil dari GitHub Pages. Perlu verifikasi isolasi akun kedua sebelum fitur publik diaktifkan."
+        : passed + "/4 pemeriksaan berhasil. " + details.join(" | ");
     } finally {
       button.disabled = false;
     }
