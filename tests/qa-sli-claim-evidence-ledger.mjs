@@ -49,6 +49,10 @@ test("publisher read is linked only to same claim, not every use of same citatio
  assert.equal(l.claims[0].source_traces[0].publisher_page_check,"publisher_page_numbers_present");
  assert.equal(l.claims[1].source_traces[0].publisher_page_check,"not_checked_for_this_claim");
  assert.equal(l.claims[0].independent_claim_validation,false);
+ const changed=await buildClaimEvidenceLedger("A",docs,r,
+  {results:[{citation:1,claim:"Project reached FID in 2024.",status:"publisher_fetch_failed_or_timed_out"}]});
+ assert.notEqual(l.report_sha256,changed.report_sha256);
+ assert.equal(l.evidence_snapshot_sha256,changed.evidence_snapshot_sha256);
 });
 test("non-public or malformed URLs are not supplied as source links",async()=>{
  const sources=[{id:"unsafe",source_url:"http://example.com/test",title:"Unsafe",text:"x"}];
