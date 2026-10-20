@@ -43,7 +43,7 @@ function tr(key){return MESSAGES[state.language][key]||key}
 function node(tag,cls,text){const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=String(text);return x}
 function safeUrl(url){try{const u=new URL(url);return u.protocol==="https:"?u.href:null}catch{return null}}
 function status(text,level="warning"){$("raNotice").textContent=text;$("raNotice").dataset.level=level}
-function enableControls(){const hasResult=!!state.lastResult;$("raCopy").disabled=!hasResult;$("raExport").disabled=!hasResult;$("raWord").disabled=!hasResult;$("raPdf").disabled=!hasResult;$("raSend").disabled=state.busy;$("raFollowupSend").disabled=state.busy;$("raChatFiles").disabled=state.busy}
+function enableControls(){const hasResult=!!state.lastResult;$("raCopy").disabled=!hasResult;$("raExport").disabled=!hasResult;$("raWord").disabled=!hasResult;$("raPdf").disabled=!hasResult;window.dispatchEvent(new Event("sli:research-export-state"));$("raSend").disabled=state.busy;$("raFollowupSend").disabled=state.busy;$("raChatFiles").disabled=state.busy}
 function isConfigured(){
  const c=state.config;
  return c?.schema==="sli-research-assistant-config-v1"&&c.api_enabled===true&&c.login_enabled===true&&c.generation_status==="enabled"&&!!safeUrl(c.api_endpoint||"");
