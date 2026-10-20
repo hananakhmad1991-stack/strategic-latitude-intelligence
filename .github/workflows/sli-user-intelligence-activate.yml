@@ -66,14 +66,14 @@ jobs:
         run: |
           set -eu
           node --test tests/*.test.mjs
-      - name: Confirm EXISTING Access app, CORS, allow policies, and D1 with Cloudflare API
+      - name: Confirm Access-protected hostname ownership, strict CORS, allow policies, and D1
         run: node scripts/cloudflare-activation-preflight.mjs
       - name: Render ephemeral Wrangler config after Access gate is proven
         run: node scripts/render-wrangler-config.mjs .
       - name: Apply private D1 migration (manual deploy only)
         if: ${{ inputs.mode == 'deploy' }}
         run: npx --yes wrangler@4 d1 migrations apply sli-user-intelligence --remote --config .wrangler.activation.toml
-      - name: Deploy exact Access-protected Worker custom domain (manual deploy only)
+      - name: Deploy exact Access-protected Worker hostname (manual deploy only)
         if: ${{ inputs.mode == 'deploy' }}
         run: npx --yes wrangler@4 deploy --config .wrangler.activation.toml
       - name: Reject public unauthenticated access and verify OPTIONS CORS (manual deploy only)
