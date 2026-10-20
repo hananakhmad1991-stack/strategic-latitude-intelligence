@@ -1,7 +1,7 @@
 {
   "schema": "sli-legal-coverage-register-v1",
   "updated_at": "2026-10-20",
-  "description": "38-province directory discovery plus selected directly inspected city/regency JDIH references. Province-local source registration is an incremental convenience index, NOT an exhaustive legal census.",
+  "description": "Coverage/source discovery for 38 Indonesian provincial administrations and selected kabupaten/kota JDIH. Not a verified inventory of every applicable regulation.",
   "regional_document_types": [
     "Perda Provinsi",
     "Pergub",
@@ -64,26 +64,29 @@
     {
       "id": "prov_05",
       "name": "Jambi",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.jambiprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "official_source_url_confirmed_not_exhaustive_regulation_inventory",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_06",
       "name": "Sumatera Selatan",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.sumselprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "official_source_url_confirmed_not_exhaustive_regulation_inventory",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_07",
       "name": "Bengkulu",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.bengkuluprov.go.id/produk-hukum?category=peraturan-daerah",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "official_source_url_confirmed_not_exhaustive_regulation_inventory",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_08",
@@ -197,18 +200,20 @@
     {
       "id": "prov_21",
       "name": "Kalimantan Tengah",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.kalteng.go.id/produk-hukum?bentuk=2",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "official_source_url_confirmed_not_exhaustive_regulation_inventory",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_22",
       "name": "Kalimantan Selatan",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.kalselprov.go.id/index.php/dokumen/view?id=1518",
+      "discovery_status": "official_individual_jdih_record_checked",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "official_source_url_confirmed_not_exhaustive_regulation_inventory",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_23",
