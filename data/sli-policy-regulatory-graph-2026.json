@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-20-food-policy-linked-v1",
+  "version": "2026-10-20-broad-regulation-expansion-v2",
   "updated_at": "2026-10-20",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -69,9 +69,10 @@
     "international_law_notes": "Treaties, investment agreements and arbitration rules differ in binding parties, forum and domestic implementation. WTO dispute DS592 is state-to-state and under appeal with a non-functioning Appellate Body in published record; ICSID is investor-state subject to consent, while New York Convention covers arbitral award recognition; UNCITRAL Arbitration Rules operate if adopted. No investor wins/loses automatically.",
     "foreign_law_notes": "Foreign EU and US regulations are separate market-access/transactional applicability branches, not levels in Indonesian hierarchy; check destination, product nomenclature, counterparty, implementation dates, license requirements and foreign jurisdictional scope.",
     "regional_coverage": "Initial verified national and selected local examples. All provincial/city legal sources must be progressively catalogued; no nationwide exhaustive coverage claim.",
-    "source_update_policy": "Automated JDIH/news monitoring creates review candidates; enactment, amendment, repeal and jurisdiction are not automatically legally determined from a news headline or page fingerprint.",
+    "source_update_policy": "Automated JDIH/news monitoring creates review candidates; enactment, amendment, repeal and jurisdiction are not automatically legally determined from a news headline or page fingerprint. Expansion 20 Oct 2026: 23 source-linked nationally relevant instruments incl. 2026 amendments; links to official JDIH BPK records do not by themselves certify full consolidated current text, MK jurisprudence or future updates.",
     "regional_coverage_detail": "Wilayah pada setiap instrumen adalah cakupan administratif asal/otoritas, bukan penetapan bahwa izin atau aturan tersebut diterapkan persis demikian pada setiap proyek. Pemilihan lokasi proyek perlu kajian RTRW, RDTR, KKPR, Perda serta kewenangan lokal.",
-    "legal_status_explanation": "Berlaku dengan perubahan is NOT the same as repealed. Histories distinguish amendment, partial repeal and entire repeal; verified legal links carry source and date. Future source discoveries stay pending until official text reviewed."
+    "legal_status_explanation": "Berlaku dengan perubahan is NOT the same as repealed. Histories distinguish amendment, partial repeal and entire repeal; verified legal links carry source and date. Future source discoveries stay pending until official text reviewed.",
+    "regulatory_topic_coverage": "Extended digital (ITE/PSTE/SPBE/PMSE 2026), food (Bapanas/CPP), regional fiscal, investment, mining authority, tax/carbon and finance/P2SK 2026. Discovery is continuously incomplete, including most Perda."
   },
   "nodes": [
     {
@@ -1700,6 +1701,374 @@
         "kelembagaan"
       ],
       "verified_at": "2026-10-20"
+    },
+    {
+      "id": "uu11ite",
+      "tier": "uu",
+      "ref": "UU 11/2008",
+      "label": "Informasi dan Transaksi Elektronik · ketentuan dasar ITE",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/37589/uu-no-11-tahun-2008",
+      "note": "Dasar transaksi dan informasi elektronik; telah diubah UU 19/2016 dan UU 1/2024. Gunakan naskah terkonsolidasi dan periksa putusan MK terkait.",
+      "status": "amended",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "uu19ite",
+      "tier": "uu",
+      "ref": "UU 19/2016",
+      "label": "Perubahan pertama atas UU Informasi dan Transaksi Elektronik",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/37582/uu-no-19-tahun-2016",
+      "note": "Instrumen perubahan UU 11/2008, kemudian diubah lagi dengan UU 1/2024. Bukan UU ITE baru yang berdiri sendiri.",
+      "status": "amending_instrument",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "uu1ite2024",
+      "tier": "uu",
+      "ref": "UU 1/2024",
+      "label": "Perubahan kedua atas UU Informasi dan Transaksi Elektronik",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/274494/uu-no-1-tahun-2024",
+      "note": "Mengubah UU 11/2008 sebagaimana diubah UU 19/2016. Putusan MK yang menafsir pasal tertentu harus dicek tersendiri sebelum kesimpulan kepatuhan.",
+      "status": "amending_instrument",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "pp71pste",
+      "tier": "pp",
+      "ref": "PP 71/2019",
+      "label": "Penyelenggaraan Sistem dan Transaksi Elektronik",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/122030/pp-no-71-tahun-2019",
+      "note": "Kerangka penyelenggaraan sistem dan transaksi elektronik; mengganti PP 82/2012. Tidak otomatis berlaku sama bagi semua jenis pusat data atau layanan.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "pp80pmse",
+      "tier": "pp",
+      "ref": "PP 80/2019",
+      "label": "Perdagangan Melalui Sistem Elektronik (PMSE)",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/126143/pp-no-80-tahun-2019",
+      "note": "Landasan PMSE dan pelaku perdagangan elektronik; aturan pelaksana Permendag 31/2023 sudah diganti oleh Permendag 19/2026.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "permendag31pmse",
+      "tier": "permen",
+      "ref": "Permendag 31/2023",
+      "label": "Perizinan, periklanan dan pengawasan PMSE · arsip dicabut",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/265202/permendag-no-31tahun-",
+      "note": "Sudah dicabut Permendag 19/2026; ditampilkan untuk audit riwayat, bukan sebagai aturan aktif.",
+      "status": "repealed",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "permendag19pmse2026",
+      "tier": "permen",
+      "ref": "Permendag 19/2026",
+      "label": "Penyelenggaraan Usaha Perdagangan Melalui Sistem Elektronik",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/351720/permendag-no-19-tahun-2026",
+      "note": "Aturan pelaksanaan PMSE yang mulai berlaku 8 Juni 2026, mencabut Permendag 31/2023; termasuk pengaturan pemanfaatan kecerdasan artifisial dalam PMSE. Tidak otomatis berlaku bagi setiap sistem AI.",
+      "status": "enacted",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "perpres39onedata",
+      "tier": "perpres",
+      "ref": "Perpres 39/2019",
+      "label": "Satu Data Indonesia",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/108813/perpres-no-39-tahun-2019",
+      "note": "Standar dan tata kelola pertukaran data pemerintah melalui produsen data, walidata dan pembina data; bukan dasar publikasi bebas seluruh data yang dibatasi hak.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "perpres95spbe",
+      "tier": "perpres",
+      "ref": "Perpres 95/2018",
+      "label": "Sistem Pemerintahan Berbasis Elektronik (SPBE)",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/96913/perpres-no-95-tahun-2018",
+      "note": "Kerangka nasional SPBE instansi pusat dan pemda; berkaitan dengan arsitektur layanan pemerintah, tidak otomatis mewajibkan semua pusat data swasta menjadi sistem pemerintah.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "perpres132spbe",
+      "tier": "perpres",
+      "ref": "Perpres 132/2022",
+      "label": "Arsitektur SPBE Nasional",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/233483/perpres-no-132-tahun-2022",
+      "note": "Menjabarkan arsitektur SPBE Nasional; lampiran periode 2020–2024 perlu ditinjau kesesuaiannya dengan perkembangan setelah periode perencanaan.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "pp12daerah",
+      "tier": "pp",
+      "ref": "PP 12/2019",
+      "label": "Pengelolaan Keuangan Daerah",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/103888/pp-no-12-tahun-2019",
+      "note": "Mengatur pengelolaan APBD; penting untuk menilai kemampuan pendanaan, belanja dan dukungan pemerintah daerah, bukan bukti bahwa proyek tertentu telah dianggarkan.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "permendagri77daerah",
+      "tier": "permen",
+      "ref": "Permendagri 77/2020",
+      "label": "Pedoman Teknis Pengelolaan Keuangan Daerah",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/162792/permendagri-no-77-tahun-2020",
+      "note": "Pedoman teknis administrasi keuangan daerah sejalan PP 12/2019; status rinci per ketentuan harus ditelusuri.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "permendagri90daerah",
+      "tier": "permen",
+      "ref": "Permendagri 90/2019",
+      "label": "Klasifikasi, Kodefikasi dan Nomenklatur Perencanaan Pembangunan dan Keuangan Daerah",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/139075/permendagri-no-90-tahun-2019",
+      "note": "Konteks pengkodean urusan perencanaan dan belanja daerah; pemutakhiran kode melalui keputusan berikutnya perlu ditinjau.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "perpres10invest",
+      "tier": "perpres",
+      "ref": "Perpres 10/2021",
+      "label": "Bidang Usaha Penanaman Modal",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/161806/perpres-no-10-tahun-2021",
+      "note": "Daftar prioritas/persyaratan bidang usaha penanaman modal; telah diubah oleh Perpres 49/2021. Cek sektor KBLI dan lampiran setelah perubahan.",
+      "status": "amended",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "perpres49invest",
+      "tier": "perpres",
+      "ref": "Perpres 49/2021",
+      "label": "Perubahan atas Perpres 10/2021 Bidang Usaha Penanaman Modal",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/168534/perpres-no-49-tahun-2021",
+      "note": "Mengubah pasal dan lampiran bidang usaha penanaman modal; gunakan versi terkonsolidasi untuk evaluasi investor.",
+      "status": "amending_instrument",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "perpres66bapanas",
+      "tier": "perpres",
+      "ref": "Perpres 66/2021",
+      "label": "Badan Pangan Nasional (Bapanas) · kewenangan kelembagaan",
+      "sector": "food",
+      "source": "https://peraturan.bpk.go.id/Details/175819/perpres-no-66-tahun-2021",
+      "note": "Masih tercatat berlaku, tetapi ketentuan tertentu mengenai kerawanan gizi dicabut sebagian oleh Perpres 83/2024. BUKAN pencabutan seluruh Perpres 66/2021.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "perpres83bgn",
+      "tier": "perpres",
+      "ref": "Perpres 83/2024",
+      "label": "Badan Gizi Nasional · pemisahan sebagian fungsi",
+      "sector": "food",
+      "source": "https://peraturan.bpk.go.id/Details/295857/perpres-no-83-tahun-2024",
+      "note": "Mencabut sebagian tugas/fungsi kerawanan gizi dari Perpres 66/2021, bukan menghapus keseluruhan kelembagaan Bapanas.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "perpres125cpp",
+      "tier": "perpres",
+      "ref": "Perpres 125/2022",
+      "label": "Penyelenggaraan Cadangan Pangan Pemerintah (CPP)",
+      "sector": "food",
+      "source": "https://peraturan.bpk.go.id/Details/230367/perpres-no-125-tahun-2022",
+      "note": "Mengatur komoditas, stok, penugasan Bulog/BUMN pangan dan pendanaan; mencabut Perpres 48/2016 jo. 20/2017.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "uu22budidaya",
+      "tier": "uu",
+      "ref": "UU 22/2019",
+      "label": "Sistem Budi Daya Pertanian Berkelanjutan",
+      "sector": "food",
+      "source": "https://peraturan.bpk.go.id/Details/123688/uu-no-22-tahun-",
+      "note": "Kerangka produksi, benih, lahan, perlindungan tanaman dan tata air pertanian; diubah lewat rezim Cipta Kerja termasuk UU 6/2023.",
+      "status": "amended",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "perpres55minerba",
+      "tier": "perpres",
+      "ref": "Perpres 55/2022",
+      "label": "Pendelegasian Perizinan Usaha Pertambangan Mineral dan Batubara",
+      "sector": "minerba",
+      "source": "https://peraturan.bpk.go.id/Details/206052/perpres-no-55-tahun-2022",
+      "note": "Pendelegasian kewenangan perizinan, pengawasan dan pembinaan tertentu di sektor minerba; cakupan izin harus diperiksa dari teks dan aturan terbaru.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "uu7hpp",
+      "tier": "uu",
+      "ref": "UU 7/2021",
+      "label": "Harmonisasi Peraturan Perpajakan (HPP)",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/185162/uu-no-7-tahun-2021",
+      "note": "Reformasi perpajakan termasuk pengaturan pajak karbon; pengenaan efektif, tarif dan pelaksanaan tidak dapat disimpulkan hanya dari UU induk.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "uu4p2sk",
+      "tier": "uu",
+      "ref": "UU 4/2023",
+      "label": "Pengembangan dan Penguatan Sektor Keuangan (P2SK)",
+      "sector": "finance",
+      "source": "https://peraturan.bpk.go.id/Details/240203/uu-no-4-tahun-2023",
+      "note": "Kerangka perbankan, pasar modal, fintech, keuangan berkelanjutan dan otoritas sektor keuangan; telah diubah UU 4/2026.",
+      "status": "amended",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "uu4p2sk2026",
+      "tier": "uu",
+      "ref": "UU 4/2026",
+      "label": "Perubahan atas UU 4/2023 Pengembangan dan Penguatan Sektor Keuangan",
+      "sector": "finance",
+      "source": "https://peraturan.bpk.go.id/Details/350166/uu-no-4-tahun-2026",
+      "note": "Perubahan P2SK tahun 2026 antara lain aspek LPS, pengawasan OJK, dan bursa mineral/komoditas strategis. Verifikasi aturan turunan per kegiatan.",
+      "status": "amending_instrument",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_regulatory_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
     }
   ],
   "edges": [
@@ -2387,6 +2756,151 @@
       "from": "uu41land2009",
       "to": "permentan19org2026",
       "type": "institutional_context_only"
+    },
+    {
+      "from": "uu11ite",
+      "to": "uu19ite",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu11ite",
+      "to": "uu1ite2024",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu19ite",
+      "to": "uu1ite2024",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu11ite",
+      "to": "pp71pste",
+      "type": "implementation_context"
+    },
+    {
+      "from": "uu27pdp",
+      "to": "pp71pste",
+      "type": "digital_compliance_context"
+    },
+    {
+      "from": "pp80pmse",
+      "to": "permendag19pmse2026",
+      "type": "implements"
+    },
+    {
+      "from": "permendag19pmse2026",
+      "to": "permendag31pmse",
+      "type": "repeals"
+    },
+    {
+      "from": "pp71pste",
+      "to": "pp80pmse",
+      "type": "digital_trade_context"
+    },
+    {
+      "from": "perpres95spbe",
+      "to": "perpres132spbe",
+      "type": "implements"
+    },
+    {
+      "from": "perpres39onedata",
+      "to": "perpres132spbe",
+      "type": "data_architecture_context"
+    },
+    {
+      "from": "perpres95spbe",
+      "to": "perpres39onedata",
+      "type": "interoperability_context"
+    },
+    {
+      "from": "uu23local",
+      "to": "pp12daerah",
+      "type": "implements"
+    },
+    {
+      "from": "pp12daerah",
+      "to": "permendagri77daerah",
+      "type": "implements"
+    },
+    {
+      "from": "pp12daerah",
+      "to": "permendagri90daerah",
+      "type": "regional_budget_classification_context"
+    },
+    {
+      "from": "uu1hkpd2022",
+      "to": "pp12daerah",
+      "type": "fiscal_harmonization_review"
+    },
+    {
+      "from": "uu25investment",
+      "to": "perpres10invest",
+      "type": "investment_policy_context"
+    },
+    {
+      "from": "perpres10invest",
+      "to": "perpres49invest",
+      "type": "amended_by"
+    },
+    {
+      "from": "perpres10invest",
+      "to": "pp28",
+      "type": "risk_based_licensing_context"
+    },
+    {
+      "from": "uu18food2012",
+      "to": "perpres66bapanas",
+      "type": "institutional_implementation_context"
+    },
+    {
+      "from": "perpres66bapanas",
+      "to": "perpres83bgn",
+      "type": "partially_repealed_by"
+    },
+    {
+      "from": "uu18food2012",
+      "to": "perpres125cpp",
+      "type": "implementation_context"
+    },
+    {
+      "from": "pp17food2015",
+      "to": "perpres125cpp",
+      "type": "implementation_context"
+    },
+    {
+      "from": "uu18food2012",
+      "to": "uu22budidaya",
+      "type": "related_primary_legislation"
+    },
+    {
+      "from": "uu22budidaya",
+      "to": "uu6",
+      "type": "amended_by"
+    },
+    {
+      "from": "pp96min",
+      "to": "perpres55minerba",
+      "type": "delegates_authority_context"
+    },
+    {
+      "from": "uu7hpp",
+      "to": "pres110carbon",
+      "type": "distinct_carbon_policy_instruments"
+    },
+    {
+      "from": "uu4p2sk",
+      "to": "uu4p2sk2026",
+      "type": "amended_by"
+    },
+    {
+      "from": "uu4p2sk",
+      "to": "uu25investment",
+      "type": "financial_sector_investment_context"
+    },
+    {
+      "from": "uu4p2sk2026",
+      "to": "uu2minerba",
+      "type": "commodity_exchange_sector_overlap"
     }
   ],
   "cases": [
