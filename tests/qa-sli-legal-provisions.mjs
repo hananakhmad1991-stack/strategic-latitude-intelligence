@@ -8,6 +8,23 @@ import {auditLegalArticleCitations} from "../research-api/src/legal-citation-aud
 const read=path=>fs.readFileSync(new URL("../"+path,import.meta.url),"utf8");
 const registry=JSON.parse(read("data/sli-verified-legal-provisions.json"));
 const graph=JSON.parse(read("data/sli-policy-regulatory-graph-2026.json"));
+const pending=JSON.parse(read("data/sli-legal-review-queue.json"));
+test("The 25-instrument target cannot mark four source-limited drafts as reviewed Pasal",()=>{
+ assert.equal(pending.schema,"sli-legal-article-review-queue-v1");
+ assert.equal(pending.goal_instruments,25);
+ assert.equal(pending.reviewed_instruments,21);
+ assert.equal(pending.pending_instruments,4);
+ assert.equal(pending.items.length,4);
+ const reviewed=new Set(registry.items.map(x=>x.law_node_id));
+ for(const item of pending.items){
+  assert.ok(!reviewed.has(item.id),"A pending law must not silently appear as reviewed");
+  assert.equal(item.current_status_certified,false);
+  assert.match(item.source_url,/^https:\/\//);
+  assert.match(item.status,/^pending_/);
+  assert.ok(item.issue.length>45);
+ }
+});
+
 /* Node 22 requires JSON import attributes; Workers/esbuild imports these local
    registry files directly. Evaluate the unchanged provision logic under Node
    with only its two JSON import declarations replaced by current fixture data. */
