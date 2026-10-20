@@ -48,3 +48,18 @@ test("Reader boots on current SLI data, searches Paris, filters regional laws an
  assert.ok(Number.parseInt(get("resultCount").textContent)>0);
  assert.ok(visited>=1);
 });
+
+test("Expanded legal register includes 2026 amendments, partial repeals, and distinct financial rules",()=>{
+ const nodes=new Map(law.nodes.map(n=>[n.id,n]));
+ assert.ok(law.nodes.length>=127);
+ assert.equal(nodes.get("uu4p2sk").status,"amended");
+ assert.equal(nodes.get("permendag31pmse").status,"repealed");
+ assert.equal(nodes.get("uu4p2sk2026").sector,"finance");
+ assert.ok(law.edges.some(x=>x.from==="uu4p2sk"&&x.to==="uu4p2sk2026"&&x.type==="amended_by"));
+ assert.ok(law.edges.some(x=>x.from==="perpres66bapanas"&&x.to==="perpres83bgn"&&x.type==="partially_repealed_by"));
+ assert.match(code,/Keuangan & pasar modal/);
+ assert.match(code,/finance:n=>n.sector==="finance"/);
+ for(const id of ["pp71pste","perpres39onedata","perpres125cpp","pp12daerah","perpres55minerba"]){
+  assert.match(nodes.get(id).source,/^https:\/\/peraturan\.bpk\.go\.id\/Details\//);
+ }
+});
