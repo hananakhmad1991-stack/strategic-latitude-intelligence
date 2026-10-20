@@ -2473,3 +2473,6 @@ window.SLI_TRANSLATIONS_ID.set("Food Intelligence →","Intelijen Pangan →");
 
 /* Approved bilingual IDX provider watchlist loading indicator. */
 window.SLI_TRANSLATIONS_ID.set("Loading IDX issuer map…","Memuat peta emiten IDX…");
+
+/* Reviewed SLI separated market heatmap and sectoral issuer loading copy · 20 Oct 2026 */
+window.SLI_TRANSLATIONS_ID.set("Loading sourced IDX sector issuers…","Memuat kode emiten sektoral bersumber…");
