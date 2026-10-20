@@ -13,3 +13,9 @@
 .sli-uib-note{border-left:3px solid #d8bc82;background:#233949;padding:10px}
 .sli-uib button:focus-visible,.sli-uib a:focus-visible{outline:2px solid #ecd299;outline-offset:2px}
 @media(max-width:640px){.sli-uib{padding:13px}.sli-uib-actions{flex-direction:column;align-items:stretch}.sli-uib-item{align-items:flex-start;flex-direction:column}}
+
+.sli-uib-sector{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 15px}
+.sli-uib-sector label{display:flex;align-items:center;gap:7px;cursor:pointer;font-size:11px;color:#cbd9e3}
+.sli-uib-sector input{width:17px;height:17px;accent-color:#e4c184}
+.sli-uib-sector select{background:#183e52;color:#e5f2f6;border:1px solid #628095;padding:9px 11px;border-radius:7px;font-size:11px;min-width:155px}
+.sli-uib-sector select:disabled{opacity:.55}
