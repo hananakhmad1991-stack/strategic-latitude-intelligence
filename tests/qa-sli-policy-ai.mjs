@@ -167,7 +167,7 @@ test("research conversation presents readable disclosures without unrelated sect
  assert.match(client,/if\(!statement&&!legalAudit\?\.recovered\)/);
  assert.match(css,/#raFollowupPanel textarea/);
  assert.match(css,/#raConversation #raModelStatementBody/);
- assert.match(html,/20261019-compact-quickstart1/);
+ assert.match(html,/css\/sli-research-brand\.css\?v=[A-Za-z0-9-]+/,"Research brand stylesheet remains versioned for cache safety");
 });
 test("report body and markdown download use sequential numbering even across explanatory paragraphs",()=>{
  const client=file("js/sli-research-assistant.js");

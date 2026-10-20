@@ -7,6 +7,10 @@ on:
       - 'js/sli-analytical-workbench-ui.mjs'
       - 'css/sli-analytical-workbench.css'
       - 'tests/qa-sli-research-ai-lab-ux.mjs'
+      - 'tests/qa-sli-derguba-origin-brand.mjs'
+      - 'css/sli-research-brand.css'
+      - 'js/sli-research-assistant.js'
+      - 'js/sli-navigation.js'
       - '.github/workflows/sli-research-lab-ux-qa.yml'
   push:
     branches: [main]
@@ -15,6 +19,10 @@ on:
       - 'js/sli-analytical-workbench-ui.mjs'
       - 'css/sli-analytical-workbench.css'
       - 'tests/qa-sli-research-ai-lab-ux.mjs'
+      - 'tests/qa-sli-derguba-origin-brand.mjs'
+      - 'css/sli-research-brand.css'
+      - 'js/sli-research-assistant.js'
+      - 'js/sli-navigation.js'
       - '.github/workflows/sli-research-lab-ux-qa.yml'
 permissions:
   contents: read
@@ -31,7 +39,7 @@ jobs:
         run: |
           node --check js/sli-analytical-workbench-ui.mjs
           node --check js/sli-research-assistant.js
-          node --test tests/qa-sli-research-ai-lab-ux.mjs
+          node --test tests/qa-sli-research-ai-lab-ux.mjs tests/qa-sli-derguba-origin-brand.mjs
       - name: Check no duplicate details or hidden analytics wiring
         run: |
           python - <<'PY'
