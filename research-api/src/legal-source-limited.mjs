@@ -3,20 +3,30 @@
  * Never describe metadata as actual statutory text. Do not call the paid model.
  */
 const clean=s=>String(s||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
-const lawRef=/\b(UU|PP|Perpres)\s*(?:(?:No\.?|Nomor)\s*)?(\d{1,3})\s*(?:\/|-|\s+Tahun\s+|\s+)(\d{4})\b/gi;
+const lawRef=/\b(UU|Undang[\s-]*Undang|PP|Peraturan\s+Pemerintah|Perpres|Peraturan\s+Presiden)\s*(?:(?:No\.?|Nomor)\s*)?(\d{1,3})\s*(?:\/|-|\s+Tahun\s+|\s+)(\d{4})\b/gi;
 const articleRef=/\b(?:pasal|article)\s+(\d{1,3}[a-z]?)\b/gi;
+function lawRefs(text){
+ return [...String(text||"").matchAll(lawRef)].map(x=>{
+  const type=clean(x[1]);
+  const short=type==="undang undang"?"uu":type==="peraturan pemerintah"?"pp":
+   type==="peraturan presiden"?"perpres":type;
+  const number=String(Number(x[2])),year=x[3];
+  return {key:short+" "+number+" "+year,short,number,year};
+ });
+}
 function lawInfo(prompt){
- const laws=[...String(prompt||"").matchAll(lawRef)];
+ const laws=lawRefs(prompt);
  const articles=[...String(prompt||"").matchAll(articleRef)];
- const uniqueLaws=[...new Set(laws.map(x=>clean(x[1]+" "+Number(x[2])+" "+x[3])))];
+ const uniqueLaws=[...new Set(laws.map(x=>x.key))];
  const uniqueArticles=[...new Set(articles.map(x=>x[1].toLowerCase()))];
  if(uniqueLaws.length!==1||uniqueArticles.length!==1)return null;
- const [type,number,year]=uniqueLaws[0].split(" ");
- return {law_key:uniqueLaws[0],law_ref:type.toUpperCase()==="PERPRES"?"Perpres "+number+"/"+year:type.toUpperCase()+" "+number+"/"+year,article:"Pasal "+uniqueArticles[0]};
+ const law=laws[0];
+ return {law_key:law.key,law_ref:law.short==="perpres"?"Perpres "+law.number+"/"+law.year:
+  law.short.toUpperCase()+" "+law.number+"/"+law.year,article:"Pasal "+uniqueArticles[0]};
 }
 function matchingAnchor(item,law,article){
  const a=item?.provision_anchor;
- return !!(a?.instrument_ref&&a?.article&&clean(a.instrument_ref)===law&&
+ return !!(a?.instrument_ref&&a?.article&&lawRefs(a.instrument_ref).some(x=>x.key===law)&&
   clean(a.article)===clean(article)&&/^https:\/\//.test(item.source_url||""));
 }
 export function missingLegalArticleBrief({question,articleEvidence=[],policyEvidence=[],language="id"}={}){
@@ -25,7 +35,7 @@ export function missingLegalArticleBrief({question,articleEvidence=[],policyEvid
  if(articleEvidence.some(x=>matchingAnchor(x,request.law_key,request.article)))return null;
  // No matching article is reviewed, even if the law itself is in the index.
  const match=(Array.isArray(policyEvidence)?policyEvidence:[]).find(x=>
-  clean(String(x.title||"").split("·")[0])===request.law_key &&
+  lawRefs(String(x.title||"").split("·")[0]).some(y=>y.key===request.law_key) &&
   /^https:\/\//.test(x.source_url||"") && String(x.id||"").startsWith("policy_law_"));
  const sources=match?[{index:1,id:match.id,title:match.title,source_url:match.source_url,
   source_date:match.source_date||null,publisher:match.publisher||"SLI legal index",
