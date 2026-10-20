@@ -2,12 +2,12 @@
  * parent_id is an observed snapshot of a reported relationship, not inference from naming.
  * No Wikipedia search-by-name or speculative director assignment. */
 (()=>{'use strict';
-const ROOT='sliCorporateGroups',FILE='./data/sli-corporate-group-registry.json';
+const ROOT='sliCorporateGroups',FILE='./data/sli-corporate-group-registry.json',ISSUERS='./data/sli-idx-issuer-universe.json';
 const T=(en,id)=>document.documentElement.lang==='id'?id:en;
 const E=(tag,cl,s)=>{const e=document.createElement(tag);if(cl)e.className=cl;if(s!==undefined)e.textContent=String(s);return e};
 const source=a=>{try{const u=new URL(a);return u.protocol==='https:'?u.href:null}catch{return null}};
 const I=()=>window.SLIEntityIdentity;
-let data,byId,group='pertamina',sector='energy',selected='per',query='',expand=new Set();
+let data,byId,group='pertamina',sector='energy',selected='per',query='',expand=new Set(),issuerData=null,issuerByTicker=new Map(),groupByTicker=new Map(),view='group',selectedTicker='',issuerLimit=60,issuerLoadFailed=false;
 function aLink(url,title){const valid=source(url),a=E(valid?'a':'span','sli-cg-link',title);if(valid){a.href=valid;a.target='_blank';a.rel='noopener noreferrer'}return a}
 function iconOf(n){
  const type=n.tier===0&&n.ownership_class==='indonesian-state'?'government':'building';
@@ -30,7 +30,7 @@ function card(n,depth=0){
  }
  return row;
 }
-function sectorName(key){return ({energy:T('Energy & utilities','Energi & utilitas'),minerals:T('Minerals & downstream','Mineral & hilirisasi'),coal:T('Coal','Batu bara'),technology:T('AI, data centers & technology','AI, pusat data & teknologi'),food:T('Food & agribusiness','Pangan & agribisnis')})[key]||key}
+function sectorName(key){return ({energy:T('Energy & utilities','Energi & utilitas'),minerals:T('Minerals & downstream','Mineral & hilirisasi'),coal:T('Coal','Batu bara'),technology:T('AI, data centers & technology','AI, pusat data & teknologi'),food:T('Food & agribusiness','Pangan & agribisnis'),finance:T('Banking & finance','Keuangan & perbankan'),infrastructure:T('Infrastructure & construction','Infrastruktur & konstruksi'),transport:T('Transport & logistics','Transportasi & logistik'),property:T('Property & industrial estates','Properti & kawasan industri'),healthcare:T('Health & pharma','Kesehatan & farmasi'),manufacturing:T('Manufacturing','Industri manufaktur'),retail:T('Retail','Perdagangan & ritel'),other:T('Other / unclassified','Lainnya / belum diklasifikasi')})[key]||key}
 function className(key){return ({'indonesian-state':T('State-owned / SOE','BUMN'),'indonesian-private':T('Indonesian private','Swasta Indonesia'),'foreign':T('Foreign company','Perusahaan asing'),'foreign-linked':T('Foreign-affiliated IDX issuer','Emiten dengan afiliasi asing'),'joint-venture':T('Joint venture / strategic investor','Usaha patungan / investor strategis')})[key]||T('Review control evidence','Verifikasi pengendalian')}
 function renderTabs(){
  const tabs=document.getElementById('sliCgGroupTabs');if(!tabs||!data)return;tabs.replaceChildren();
