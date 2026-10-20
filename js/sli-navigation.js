@@ -60,7 +60,7 @@ const related={
  glossary:['guide','freshness'],freshness:['glossary','guide'],methodology:['glossary','guide','freshness'],about:['guide','overview'],guide:['overview','glossary','freshness']
 };
 const path=location.pathname.split('/').pop()||'index.html';
-const page=()=>path==='index.html'?(modules[location.hash.slice(1)]?location.hash.slice(1):'overview'):(Object.keys(modules).find(id=>modules[id][2].split('#')[0]===path)||'detail');
+const page=()=>path==='index.html'?((!location.hash||location.hash==='#home'||location.hash==='#sliPortalSectors')?'home':(modules[location.hash.slice(1)]?location.hash.slice(1):'overview')):(Object.keys(modules).find(id=>modules[id][2].split('#')[0]===path)||'detail');
 const lang=()=>window.SLIi18n?.language==='id'||document.documentElement.lang==='id'||(!window.SLIi18n&&(()=>{try{return localStorage.getItem('sli-ui-language')==='id'}catch{return false}})())?'id':'en';
 const text=(en,id)=>lang()==='id'?id:en;
 const label=id=>id==='detail'?(document.title||document.querySelector('h1')?.textContent||'SLI Dashboard').split('|')[0].trim().slice(0,90):(modules[id]?.[lang()==='id'?1:0]||id);
@@ -219,12 +219,7 @@ function renderBar(){
  const actions=node('div','sli-universal-actions');
  const guide=link('guide','sli-guide-link');guide.textContent=text('Help & how to use','Panduan pemakaian');
  actions.append(link('research'),link('membership'),guide,link('glossary'),link('freshness'))
- const dropdown=node('details','sli-explore-menu'),summary=node('summary','',text('Explore all modules','Jelajahi semua modul'));
- dropdown.append(summary);
- const list=node('div','sli-modules-grid');
- for(const g of groups){const block=node('div','sli-menu-group'),h=node('h3','',text(g[0],g[1]));block.append(h);
-  for(const id of g.slice(2)){const a=link(id);if(id===current)a.setAttribute('aria-current','page');block.append(a)}list.append(block)}
- dropdown.append(list);actions.append(dropdown);
+ // Explore Data lives in the single shared masthead above; never duplicate it here.
  const relation=node('div','sli-related-links');
  relation.append(node('span','',text('Related:','Terkait:')));
  for(const id of (related[current]||['overview']).slice(0,4))relation.append(link(id));
