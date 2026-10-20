@@ -59,5 +59,28 @@ function mount(host,rows,selected){
  "If the external widget is blocked, use TradingView or select a symbol in the SLI ticker map below. Market prices may be delayed (EOD)."));
  host.append(fallback);
 }
-window.SLIIDXTradingView={watchlistConfig,mount,scriptUrl:SCRIPT,issuerRoute:route};
+
+/* Exchange-restricted TradingView Stock Heatmap. This is a provider visualization
+   for IDX (not a custom selection of SLI-listed companies and not internal market data).
+   Provider may reject unsupported market codes or block third-party embedding. */
+const HEATMAP_SCRIPT="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js";
+function heatmapConfig(){
+ return {dataSource:"IDX",exchanges:["IDX"],blockSize:"market_cap_basic",blockColor:"change",
+  grouping:"sector",locale:document.documentElement.lang==="id"?"id":"en",
+  symbolUrl:route,colorTheme:"dark",hasTopBar:true,isDataSetEnabled:false,
+  isZoomEnabled:true,hasSymbolTooltip:true,isMonoSize:false,width:"100%",height:"100%"};
+}
+function mountHeatmap(host){
+ if(!host)return;
+ host.replaceChildren();
+ const widget=E("div","sli-idx-priceheatmap tradingview-widget-container");
+ widget.append(E("div","tradingview-widget-container__widget"));
+ const legal=E("div","tradingview-widget-copyright");
+ const a=E("a",null,"TradingView Stock Heatmap ↗");a.href="https://www.tradingview.com/heatmap/stock/";
+ a.target="_blank";a.rel="noopener noreferrer nofollow";legal.append(a);widget.append(legal);
+ const script=E("script");script.type="text/javascript";script.src=HEATMAP_SCRIPT;script.async=true;
+ script.textContent=JSON.stringify(heatmapConfig());widget.append(script);host.append(widget);
+}
+
+window.SLIIDXTradingView={watchlistConfig,mount,scriptUrl:SCRIPT,issuerRoute:route,heatmapScriptUrl:HEATMAP_SCRIPT,heatmapConfig,mountHeatmap};
 })();
