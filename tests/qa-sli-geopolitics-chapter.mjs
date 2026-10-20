@@ -150,7 +150,7 @@ test("1950 historical axis and safe multi-benchmark computation",()=>{
  assert.match(graph,/1950,1960,1970/);
 });
 
-test("Multi-commodity atlas actually renders three independent charts with selectable benchmarks",async()=>{
+test("Multi-commodity atlas renders four independent charts, including food with selectable benchmarks",async()=>{
  const root=new Element("div");root.id="sliGeoTimelineRoot";
  const doc={
   createElement:t=>new Element(t),
@@ -169,12 +169,12 @@ test("Multi-commodity atlas actually renders three independent charts with selec
  await win.initSLIGeopoliticalTimeline();
  const all=flatten(root);
  const labels=all.map(x=>String(x.textContent||""));
- for(const name of ["Komoditas energi","Komoditas mineral dan logam","Perbandingan lintas komoditas","1950","Minyak WTI","Nikel"]){
+ for(const name of ["Komoditas energi","Komoditas mineral dan logam","Komoditas pangan & pertanian global","Perbandingan lintas komoditas","1950","Minyak WTI","Nikel","Beras Thailand 5%"]){
   assert.ok(labels.some(x=>x.includes(name)),"Missing chart control or historical year: "+name);
  }
- assert.equal(all.filter(x=>x.className==="sli-geo-timeline-panel").length,4);
- assert.equal(all.filter(x=>x.className==="sli-geo-timeline-plot").length,3);
- assert.ok(all.filter(x=>x.tag==="svg").length>=6,"Three graph/scatter pairs must render");
+ assert.equal(all.filter(x=>x.className==="sli-geo-timeline-panel").length,5);
+ assert.equal(all.filter(x=>x.className==="sli-geo-timeline-plot").length,4);
+ assert.ok(all.filter(x=>x.tag==="svg").length>=6,"Four graph/scatter pairs must render");
  assert.ok(labels.some(x=>x.includes("basis")), "Index baseline should be disclosed");
  const selectors=all.filter(x=>x.tag==="select");
  assert.ok(selectors.length>=5);
@@ -187,7 +187,7 @@ test("Multi-commodity atlas actually renders three independent charts with selec
  assert.ok(plot&&plot.children.length===1,"Single should display exactly one series");
 });
 
-test("Clicking a gold event synchronizes all three charts and opens sourced bilingual lessons with prices",async()=>{
+test("Clicking a gold event synchronizes all four charts and opens sourced bilingual lessons with prices",async()=>{
  const root=new Element("div");root.id="sliGeoTimelineRoot";
  const doc={createElement:t=>new Element(t),createElementNS:(_ns,t)=>new Element(t),getElementById:id=>id==="sliGeoTimelineRoot"?root:null};
  const events=JSON.parse(read("data/sli-geopolitical-events.json"));
@@ -209,9 +209,9 @@ test("Clicking a gold event synchronizes all three charts and opens sourced bili
  assert.ok(nodes.some(x=>x.tag==="circle"&&x.attrs.r==="19"),"Marker must have a generous transparent hit area");
  marker.listeners.get("click")();
  nodes=flatten(root);
- assert.equal(nodes.filter(x=>x.tag==="g"&&x.attrs["data-event-date"]==="2022-02-24"&&x.attrs["aria-pressed"]==="true").length,3);
+ assert.equal(nodes.filter(x=>x.tag==="g"&&x.attrs["data-event-date"]==="2022-02-24"&&x.attrs["aria-pressed"]==="true").length,4);
  const insights=nodes.filter(x=>(x.className||"").includes("sli-geo-event-insight"));
- assert.equal(insights.length,3,"Every chart's note must switch to this event lesson");
+ assert.equal(insights.length,4,"Every chart's note must switch to this event lesson");
  assert.ok(nodes.some(x=>String(x.textContent||"").includes("Rusia memulai invasi skala penuh")));
  assert.ok(nodes.some(x=>String(x.textContent||"").includes("Bulan kejadian MoM")));
  assert.ok(nodes.some(x=>String(x.textContent||"").includes("Pelajaran yang bisa diambil")));
@@ -225,14 +225,14 @@ test("Clicking a gold event synchronizes all three charts and opens sourced bili
  reset.listeners.get("click")();
  nodes=flatten(root);
  assert.equal(nodes.filter(x=>(x.className||"").includes("sli-geo-event-insight")).length,0,"Reset restores general analysis");
- assert.equal(nodes.filter(x=>(x.className||"").includes("sli-geo-timeline-interpretation")).length,3);
+ assert.equal(nodes.filter(x=>(x.className||"").includes("sli-geo-timeline-interpretation")).length,4);
  // Keyboard interaction and events predating price data retain accurate missing-observation labels.
  const first=nodes.find(x=>x.tag==="g"&&x.attrs["data-event-date"]==="1950-06-25");
  assert.ok(first);
  first.listeners.get("keydown")({key:"Enter",preventDefault(){}});
  nodes=flatten(root);
  assert.ok(nodes.some(x=>String(x.textContent||"").includes("Belum ada observasi acuan pada 1950-06")));
- assert.equal(nodes.filter(x=>x.tag==="g"&&x.attrs["data-event-date"]==="1950-06-25"&&x.attrs["aria-pressed"]==="true").length,3);
+ assert.equal(nodes.filter(x=>x.tag==="g"&&x.attrs["data-event-date"]==="1950-06-25"&&x.attrs["aria-pressed"]==="true").length,4);
  for(const event of events.events)for(const k of ["chronology","id_chronology","market_context","id_market_context","lesson","id_lesson"]){
   assert.ok(typeof event[k]==="string"&&event[k].length>=35,event.date+" missing "+k);
  }
@@ -245,4 +245,46 @@ test("Food geopolitical pathway uses source-dated primary baseline and crosslink
  assert.ok(food.links.some(x=>x.url.includes("food-agriculture-intelligence")));
  assert.ok(food.links.some(x=>x.url.includes("sli-research-ai.html")));
  assert.ok(food.search.includes("pangan")&&food.search.includes("rice"));
+});
+
+test("World Bank global food quotations are real source-observed rows with original units",()=>{
+ const prices=JSON.parse(read("data/sli-geopolitical-commodity-prices.json"));
+ for(const key of ["rice_thai_5","wheat_us_hrw","maize","soybeans","palm_oil","sugar_world","urea"]){
+  const coverage=prices.series_coverage[key];
+  assert.ok(coverage?.count>=600,key+" missing historical food series");
+  assert.equal(coverage.first,"1960-01");
+  assert.equal(coverage.last,prices.latest_month);
+  assert.equal(coverage.unit,key==="sugar_world"?"USD/kg":"USD/mt");
+  assert.ok(prices.observations.some(row=>row.month===prices.latest_month&&row[key]>0),"Last monthly observation missing for "+key);
+ }
+ const graph=read("js/sli-geopolitical-timeline.js");
+ assert.match(graph,/for\(const group of \["energy","minerals","food","cross"\]\)/);
+ assert.match(graph,/Different physical units detected/);
+});
+test("Indonesian presidential and regime transitions have primary sources and stay outside economic shock statistics",async()=>{
+ const doc=JSON.parse(read("data/sli-geopolitical-events.json"));
+ const political=doc.presidential_transitions;
+ assert.equal(political.length,10);
+ assert.deepEqual(political.map(x=>x.date),["1945-08-18","1959-07-05","1967-03-12","1968-03-27","1998-05-21","1999-10-20","2001-07-23","2004-10-20","2014-10-20","2024-10-20"]);
+ assert.ok(political.every(x=>x.source_url.startsWith("https://")&&x.statistical_event_eligible===false));
+ assert.equal(new Set(political.filter(x=>["president","regime"].includes(x.kind)).map(x=>x.president)).size,8);
+ const graph=read("js/sli-geopolitical-timeline.js");
+ assert.match(graph,/data-presidential-date/);
+ assert.match(graph,/chosenEvents=filteredGeo\(\),chosenPolitical=filteredPresidencies\(\)/);
+ const root=new Element("div");root.id="sliGeoTimelineRoot";
+ const docAPI={createElement:t=>new Element(t),createElementNS:(_ns,t)=>new Element(t),getElementById:id=>id==="sliGeoTimelineRoot"?root:null};
+ const prices=JSON.parse(read("data/sli-geopolitical-commodity-prices.json"));
+ const fetch=async uri=>({ok:true,json:async()=>uri.endsWith("sli-geopolitical-events.json")?doc:uri.endsWith("sli-geopolitical-commodity-prices.json")?prices:{articles:[]}});
+ const win={SLIi18n:{language:"id"}};
+ runInNewContext(graph,{window:win,document:docAPI,fetch,URL,Intl,Date,Math,Number,Set,Map,Promise,console});
+ await win.initSLIGeopoliticalTimeline();
+ let nodes=flatten(root);
+ assert.equal(nodes.filter(x=>x.attrs?.["data-presidential-date"]==="1998-05-21").length,4);
+ const marker=nodes.find(x=>x.attrs?.["data-presidential-date"]==="1967-03-12");
+ assert.ok(marker&&marker.listeners.has("click")&&marker.listeners.has("keydown"));
+ marker.listeners.get("click")();
+ nodes=flatten(root);
+ assert.equal(nodes.filter(x=>x.attrs?.["data-presidential-date"]==="1967-03-12"&&x.attrs["aria-pressed"]==="true").length,4);
+ assert.ok(nodes.some(x=>String(x.textContent||"").includes("Pejabat Presiden")));
+ assert.ok(nodes.some(x=>String(x.textContent||"").includes("dikecualikan dari statistik")));
 });
