@@ -15,16 +15,19 @@ class Mock {
  getBoundingClientRect(){return {width:1200,height:530}}
 }
 const root=new Mock("div");
+const emitted=[];
 const document={
  createElement:tag=>new Mock(tag),
  createElementNS:(ns,tag)=>new Mock(tag),
  createTextNode:x=>String(x),
  getElementById:id=>id==="sliMapRoot"?root:null,
- addEventListener:()=>{}
+ addEventListener:()=>{},
+ dispatchEvent:event=>emitted.push(event)
 };
 const flatten=x=>x instanceof Mock?[x,...x.children.flatMap(flatten)]:[];
 const fakeFetch=async url=>{const p=path.resolve(ROOT,url);assert.ok(p.startsWith(ROOT+path.sep));return {ok:true,json:async()=>JSON.parse(fs.readFileSync(p,"utf8"))}};
-const ctx={document,window:{SLIi18n:{language:"en"}},fetch:fakeFetch,Promise,Number,Math,Date,console,setTimeout,clearTimeout};
+const ctx={document,window:{SLIi18n:{language:"en"}},fetch:fakeFetch,Promise,Number,Math,Date,console,setTimeout,clearTimeout,
+ CustomEvent:class{constructor(type,{detail}={}){this.type=type;this.detail=detail}}};
 const script=fs.readFileSync(path.join(ROOT,"js/strategic-map.js"),"utf8");
 vm.runInNewContext(script,ctx,{filename:"strategic-map.js"});
 const geo=JSON.parse(fs.readFileSync(path.join(ROOT,"data/indonesia-provinces.geojson"),"utf8"));
@@ -44,6 +47,7 @@ assert.equal(ctx.window.SLIProvinceFor("Indonesia — site unspecified"),null);
 assert.equal(ctx.window.SLIProvinceFor("Karawang, West Java; East Halmahera, North Maluku (multi-site)"),null);
 (async()=>{
  await ctx.window.initSLIStrategicMap();
+ assert.ok(emitted.some(e=>e.type==="sli:mapready"&&e.detail?.ok===true),"Async map readiness is announced for search navigation");
  let all=flatten(root);
  assert.ok(all.some(n=>n.textContent==="Indonesia Investment & Energy Map"),"Map title rendered");
  assert.equal(all.filter(n=>n.tagName==="path").length,38,"One province path per feature");

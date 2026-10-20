@@ -1081,7 +1081,8 @@ window.initSLIStrategicMap=async function(){
   if(settled.some(x=>x.status!=="fulfilled"))throw Error("Required basemap/registry unavailable");
   const [geo,assets,projects,infra,sectorSites,upstream,power,industry,regional,digital,pltuAudit,localityAnchors,glossary,smelters]=settled.map(x=>x.value);
   APP.data={geo,assets,projects,infra,sectorSites,upstream,power,industry,regional,digital,pltuAudit,localityAnchors,glossary,smelters};mapPage(root,APP.data);
- }catch(e){root.replaceChildren(node("p","map-alert",label("Geographic registry unavailable; no inferred project positions are displayed.","Registri geografis tidak tersedia; lokasi proyek tidak direka.")));console.error("[SLI map]",e)}
+   document.dispatchEvent(new CustomEvent("sli:mapready",{detail:{ok:true}}));
+ }catch(e){if(root===document.getElementById("sliMapRoot")){root.replaceChildren(node("p","map-alert",label("Geographic registry unavailable; no inferred project positions are displayed.","Registri geografis tidak tersedia; lokasi proyek tidak direka.")));document.dispatchEvent(new CustomEvent("sli:mapready",{detail:{ok:false}}))}console.error("[SLI map]",e)}
 };
 document.addEventListener("sli:languagechange",()=>{const root=document.getElementById("sliMapRoot");if(!root||!APP.data)return;mapPage(root,APP.data)});
 })();

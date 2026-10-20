@@ -42,7 +42,7 @@ test('specialist page exposes a compact cross-dashboard route, without replacing
 test('guide renders the catalog as real linked, grouped and bilingual modules',()=>{
  const d=setup('sli-user-guide.html','<main><header><h1>How to use SLI</h1></header><section id="sliGuideCatalog"></section></main>');
  const doc=d.window.document;
- assert.equal(doc.querySelectorAll('.sli-guide-group').length,6);
+ assert.equal(doc.querySelectorAll('.sli-guide-group').length,7,'The guide must include all seven SLI module groups');
  assert.ok(doc.querySelectorAll('.sli-guide-card').length>=20);
  assert.ok(doc.querySelector('a[href="./index.html#overview"]'));
  assert.ok(doc.querySelector('.sli-guide-cards a[href="./sli-data-automation-center.html"]'));
