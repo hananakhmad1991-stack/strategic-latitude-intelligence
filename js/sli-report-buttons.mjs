@@ -23,10 +23,12 @@ function updateApaGate(){
  gate.hidden=false;
  const count=report.refs.metadata_complete_candidates;
  gate.textContent=report.language==="en"
-  ?("APA 7 · "+count+"/10 cited sources with preliminary metadata"+
-   (report.refs.meets_preliminary_minimum?" · Subject to primary-source review":" · DRAFT: references incomplete"))
-  :("APA 7 · "+count+"/10 kandidat referensi tersitasi dengan metadata awal"+
-   (report.refs.meets_preliminary_minimum?" · Tetap perlu audit sumber primer":" · DRAF: daftar pustaka belum mencukupi"));
+  ?("Source review · "+count+"/"+report.refs.required_minimum+" metadata-complete citations"+(report.refs.legal_focus?
+    " · Focused statutory article · AI draft, not legally certified":
+    " · Broad research · primary verification required"))
+  :("Audit sumber · "+count+"/"+report.refs.required_minimum+" sitasi dengan metadata awal"+(report.refs.legal_focus?
+    " · Telaah satu pasal · masih DRAF, status hukum belum disertifikasi":
+    " · Riset luas · verifikasi sumber primer tetap diperlukan"));
  gate.dataset.complete=String(report.refs.meets_preliminary_minimum);
 }
 window.addEventListener("sli:research-export-state",updateApaGate);
@@ -39,8 +41,8 @@ export function attachResearchExportButtons(){
    const report=current();if(!report)return status("Belum ada hasil riset untuk diekspor.","warning");
    save(docxBytes(report),"SLI-Research-AI-"+report.date+".docx");
    status(report.refs.meets_preliminary_minimum
-    ?"Dokumen Word dibuat. Periksa ulang sumber primer dan pemformatan akhir sebelum publikasi."
-    :"Word tersimpan sebagai DRAF. "+report.refs.warning,
+    ?"Dokumen Word DRAF tersimpan. Verifikasi isi dan sitasi sebelum publikasi."
+    :"Dokumen Word DRAF tersimpan. "+report.refs.warning,
     report.refs.meets_preliminary_minimum?"ready":"warning");
   }catch(e){status("Ekspor Word gagal: "+String(e.message||e).slice(0,130),"warning")}
  });
@@ -49,8 +51,7 @@ export function attachResearchExportButtons(){
    const report=current();if(!report)return status("Belum ada hasil riset untuk diekspor.","warning");
    if(!openPdfPrintDialog(report,(...args)=>window.open(...args)))return status(
     "Pop-up diblokir browser. Izinkan pop-up untuk SLI lalu klik PDF lagi.","warning");
-   status("Di dialog cetak pilih Destination/Tujuan: Save as PDF, ukuran A4. "+
-    (report.refs.meets_preliminary_minimum?"":"Dokumen ini masih DRAF: referensi belum cukup."),
+   status("Di dialog cetak pilih Destination/Tujuan: Save as PDF, ukuran A4. Dokumen ini masih DRAF dan sitasinya harus diverifikasi.",
     report.refs.meets_preliminary_minimum?"ready":"warning");
   }catch(e){status("Ekspor PDF gagal: "+String(e.message||e).slice(0,130),"warning")}
  });

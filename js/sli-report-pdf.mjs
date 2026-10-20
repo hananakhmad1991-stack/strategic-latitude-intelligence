@@ -14,11 +14,12 @@ function blocks(items){
 }
 export function printableResearchHtml(report){
  const lang=report.language==="en"?"en":"id",bib=report.refs.references.map(r=>
-  '<p class="apa-ref">'+(r.author?escapeMarkup(r.author)+". ":"")+
+  '<p class="apa-ref"><strong class="ref-number">['+escapeMarkup(r.aliases.join(", "))+']</strong> '+(r.author?escapeMarkup(r.author)+". ":"")+
   "("+escapeMarkup(r.year||"n.d.")+"). <i>"+escapeMarkup(r.title||"[Judul tidak tercatat]")+
   "</i>. "+escapeMarkup(r.url||"[URL dokumen asli belum tersedia]")+"</p>").join("\n");
- const minimal=!report.refs.meets_preliminary_minimum?
-  '<p class="draft">DRAF · JUMLAH REFERENSI BELUM MEMENUHI MINIMUM 10</p>':"";
+ const minimal='<p class="draft">'+(lang==="id"?
+  "DRAF BERBANTUAN AI · SITASI DAN KEABSAHAN HUKUM PERLU DIPERIKSA":
+  "AI-ASSISTED DRAFT · VERIFY CITATIONS AND CURRENT LEGAL STATUS")+'</p>';
  const styles=[
  '@page {size:A4;margin:26mm 22mm 23mm 25mm;',
  '@top-right{content:"SLI  ·  STRATEGIC LATITUDE INTELLIGENCE";font:700 9pt Arial,sans-serif;color:#a7b1ba}',
@@ -33,6 +34,7 @@ export function printableResearchHtml(report){
  '.draft{font-weight:700;text-align:left;color:#86521c}',
  '.source-warning{font:9pt/1.5 Arial,sans-serif;text-align:left;color:#465463}',
  '.apa-ref{padding-left:12.7mm;text-indent:-12.7mm;text-align:left;overflow-wrap:anywhere;margin:0 0 9pt}',
+ '.ref-number{color:#314d60}',
  '.listitem{padding-left:9mm;text-indent:-5mm}',
  'table{border-collapse:collapse;width:100%;table-layout:fixed;margin:11pt 0;font:9pt/1.45 Arial,sans-serif;page-break-inside:auto}',
  'tr{break-inside:avoid;page-break-inside:avoid}',

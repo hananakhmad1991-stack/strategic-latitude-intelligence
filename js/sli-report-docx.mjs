@@ -70,9 +70,11 @@ export function docxBytes(report){
   const left=(x.author?x.author+". ":"")+"("+(x.year||"n.d.")+"). ";
   const emphasized='<w:r><w:rPr><w:i/><w:rFonts w:ascii="Arial" w:hAnsi="Arial"/></w:rPr><w:t xml:space="preserve">'+escapeMarkup(x.title||"[Judul tidak tercatat]")+'</w:t></w:r>';
   return '<w:p><w:pPr><w:pStyle w:val="Bibliography"/></w:pPr>'+
-   tag(left)+emphasized+tag(". "+(x.url||"[URL dokumen asli belum tersedia]"))+'</w:p>';
+   tag("["+x.aliases.join(", ")+"] "+left)+emphasized+tag(". "+(x.url||"[URL dokumen asli belum tersedia]"))+'</w:p>';
  }).join("");
- const draft=report.refs.meets_preliminary_minimum?"":para("DRAF — REFERENSI BELUM MEMENUHI MINIMUM 10","Caution");
+ const draft=para(report.language==="id"?
+  "DRAF BERBANTUAN AI — SITASI DAN KEABSAHAN HUKUM PERLU DIPERIKSA":
+  "AI-ASSISTED DRAFT — VERIFY CITATIONS AND CURRENT LEGAL STATUS","Caution");
  const warnings=para(report.refs.warning,"Caution")+para(report.disclaimer,"Caution");
  const document='<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" '+
   'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><w:body>'+
