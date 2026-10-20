@@ -71,7 +71,7 @@ function link(id,cls){const a=node('a',cls),identity=window.SLIEntityIdentity;if
 
 /* Unified SLI masthead for detailed dashboards. Index #home and Research AI
    retain their purpose-built headers. Other pages keep original data and tools. */
-function dashboardPage(){return path==='index.html'&&(document.body.classList.contains('sli-home-active')||!location.hash||location.hash==='#home')?false:path!=='sli-research-ai.html'}
+function dashboardPage(){return path!=='sli-research-ai.html'&&path!=='sli-source-viewer.html'}
 function mastLink(to,caption,current){
  const a=node('a','sli-platform-link',caption);a.href=to;
  if(current)a.setAttribute('aria-current','page');return a;
@@ -83,8 +83,10 @@ function syncPlatformMastOffset(){
  document.documentElement.style.setProperty('--sli-mast-offset',height+'px');
 }
 function renderPlatformMast(){
- const use=path==='sli-source-viewer.html'?false:dashboardPage();
- document.body.classList.toggle('sli-dashboard-unified',use);
+ const use=dashboardPage();
+ // A single shared Explore Data menu on Home, Full Overview, and sector dashboards.
+ const homepage=path==='index.html'&&(document.body.classList.contains('sli-home-active')||!location.hash||location.hash==='#home');
+ document.body.classList.toggle('sli-dashboard-unified',use&&!homepage);
  let mast=document.getElementById('sliPlatformMast');
  if(!use){if(mast)mast.hidden=true;syncPlatformMastOffset();return}
  if(!mast){
