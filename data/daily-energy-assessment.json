@@ -1,6 +1,6 @@
 {
-  "assessment_date_wib": "2026-10-19",
-  "generated_at_utc": "2026-10-19T03:01:33.162203+00:00",
+  "assessment_date_wib": "2026-10-20",
+  "generated_at_utc": "2026-10-20T03:02:06.607259+00:00",
   "headline": "Indonesia Energy Security — Daily Overall Assessment",
   "status": "Automated evidence-led interpretation; news leads unverified, no LLM article-body verification",
   "method": "Deterministic editorial transmission framework sourced from dated official baselines and qualified, attributed public headline leads.",
@@ -10,12 +10,12 @@
   "news_note": "4 newly identified attributed headline leads across the seven findings.",
   "news_freshness": {
     "domestic": {
-      "source_checked_at_utc": "2026-10-19T01:06:59.420776+00:00",
+      "source_checked_at_utc": "2026-10-20T01:08:35.568577+00:00",
       "age_hours_at_generation": 1.9,
       "usable": true
     },
     "geopolitical": {
-      "source_checked_at_utc": "2026-10-19T00:47:11.389229+00:00",
+      "source_checked_at_utc": "2026-10-20T00:47:46.880507+00:00",
       "age_hours_at_generation": 2.2,
       "usable": true
     }
@@ -25,7 +25,7 @@
       "id": "oil-gas",
       "heading": "01 · Oil & Gas Supply Resilience",
       "finding": "Indonesia's reported oil-field output averaged 581 thousand barrels/day in 2025, while gross gas production was 6,789 MMSCFD in 2025. Proved reserves reported for 2025 were 2.326 billion barrels of oil and 34.78 TSCF of gas. These are different stock and flow measures. For 2026, the BPH Migas Pertalite quota was 29.27 million kL and the subsidized diesel quota was 18.64 million kL (annual allocations, not observed October deliveries).",
-      "daily_signal": "Newly identified attributed headline (Kompas.tv, 18 Oct 2026 20:03 WIB): Bahlil Ungkap Konsumsi BBM Bergeser ke RON 90, Bagaimana dengan Stok Nasional? | SAPA MALAM - Kompas.tv. Analytical test: Assess regional stocks, last-mile fuel delivery and physical gas flows before attributing a supply problem to domestic crude production. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Newly identified attributed headline (ANTARA News Mataram, 20 Oct 2026 04:26 WIB): Gubernur NTB pastikan pasokan BBM, elpiji, beras, dan pupuk terkendali - ANTARA News Mataram. Analytical test: Assess regional stocks, last-mile fuel delivery and physical gas flows before attributing a supply problem to domestic crude production. The headline is not independently verified evidence of operational impact.",
       "implication": "Sustained supply resilience depends on replacement discoveries, operational delivery and refinery import needs. Regional fuel-availability headlines may point to distribution issues rather than changes in national production; LNG headlines do not prove Indonesian gas outages.",
       "verification_priority": "Monitor SKK Migas and ESDM revisions to actual output, domestic gas allocation, proved reserves and Pertamina/BPH Migas supply status.",
       "baseline_sources": [
@@ -44,10 +44,10 @@
       ],
       "recent_news_leads": [
         {
-          "title": "Bahlil Ungkap Konsumsi BBM Bergeser ke RON 90, Bagaimana dengan Stok Nasional? | SAPA MALAM - Kompas.tv",
-          "publisher": "Kompas.tv",
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOVjNmcXFIQzY4M2ZHVEdsUFBvd3BhUVItOUI4X0h5WXp4OEZ3NjV0UzQ2SDVMNGUwbVRIRmw4dXgtR2FFaTN0eHl5X2pZaGJXeDZId1R4alBBb0V1ek1ua2VlaE95Ry1YVUdBM1FpTXZ5WXRtVEdZZ3F2elVHaU5SU1BfOEtxZnJ4aW5DRF85dXJfLW9lVDQwdVNCbjhyQlBOajBaRmNUS2R0Mk9HNDBJcHpWRmZXa1UwckE2U0llYm5HaVHSAcgBQVVfeXFMTWZpYm1PZUVPUVVkQkhwVDM3RFRXSThoOTV2YnFHdFdiSWNUVlRQR1o2Q1ZIUWQ0RllPQTNoaG5BTXlpcUgxaGtrNFZSOV9lZG14bjV1elEyR09qc2RYaHE3WHJMR3FRV1ljM2tWNW9aZDVicnlkdVI4cE5GU3hwTHBtS3pxWFZ2WTVUQnlUZ0V4S0tqV2VJeGpOaFhKRmY4ejRXSjlsVDB4Nk5qT0MtVGcwRXg2UHpCNG4yVDdBeVlWVHBrX0VrVWY?oc=5",
-          "published_at_utc": "2026-10-18T13:03:00+00:00",
+          "title": "Gubernur NTB pastikan pasokan BBM, elpiji, beras, dan pupuk terkendali - ANTARA News Mataram",
+          "publisher": "ANTARA News Mataram",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOa0ZDQllsWktNZXVIVl9PdFdaMXZFWlEwWGF1cXhFSzBTMkprUlJLN1ljMU5DZjllRzBYOTlOeTF0RDFYNUpaNWJYTTJ0WGxGdVV2bWVDeFY4Z096c0JoRnEyb0JYZmhMTEJBeHFFYW9hQ3ZBYnNzbW1pdnF6OWF1VWdFNDQ0VERETlFRYzdvMkRkMGh1SFVuTWVzeElNOGtMTmdlbFJSa1B4NEMxc1FvWDZB?oc=5",
+          "published_at_utc": "2026-10-19T21:26:33+00:00",
           "category": "Fuel and LPG availability",
           "topic_id": "fuel",
           "kind": "attributed news headline, not independently verified",
@@ -117,7 +117,7 @@
       "id": "power",
       "heading": "04 · Grid Reliability & Industrial Demand",
       "finding": "Electricity security must be evaluated through grid availability and restoration times, not installed capacity alone. Smelters, industrial estates and data centres are particularly dependent on reliable regional supply.",
-      "daily_signal": "Newly identified attributed headline (Bisnis.com, 19 Oct 2026 07:12 WIB): Blackout Batam Berawal dari Percikan Trafo, Dugaan Hewan Liar Masih Diselidiki - Bisnis.com. Analytical test: Verify outage location, utility-confirmed cause, restoration time and affected industrial load, rather than extrapolating one regional event nationally. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Newly identified attributed headline (CNN Indonesia, 19 Oct 2026 23:44 WIB): PLN Ungkap Penyebab Listrik Pusat Kota Surabaya 'Blackout' 12 Menit - CNN Indonesia. Analytical test: Verify outage location, utility-confirmed cause, restoration time and affected industrial load, rather than extrapolating one regional event nationally. The headline is not independently verified evidence of operational impact.",
       "implication": "Reported local blackouts can disrupt industry and data-centre operations. Their economic scale cannot be inferred without operator-confirmed duration, affected substations, customers and industrial load.",
       "verification_priority": "Verify each outage with the regional PLN operator; track interruption duration, cause, recovery, transmission constraints and the commissioning of firm supply.",
       "baseline_sources": [
@@ -130,20 +130,20 @@
       ],
       "recent_news_leads": [
         {
-          "title": "Blackout Batam Berawal dari Percikan Trafo, Dugaan Hewan Liar Masih Diselidiki - Bisnis.com",
-          "publisher": "Bisnis.com",
-          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPVDlRZnk5akZ3R2ZvRE9nam1vZmY2by05ZHNUdlltQmJfZHNPZldvdk8ycndZeDBDUDBUMDZCQWJjRXZnalk5Uzc4a1dscmlXaUJnMnBRMkF0M3ItbjNhVndYRVcyTnk5VkJJNEpRSDBDOEhaaEpJcjdnU3dnN2hMVGU4aG1wRlpRTnByNUdlakd0VXdLdklPdFdpMjAzaHVuTnV3RHR6OXQxaDQ2SzUyem1IWGQtakdSdmZaODF2anRFeDRqMS1Wak9B?oc=5",
-          "published_at_utc": "2026-10-19T00:12:57+00:00",
+          "title": "PLN Ungkap Penyebab Listrik Pusat Kota Surabaya 'Blackout' 12 Menit - CNN Indonesia",
+          "publisher": "CNN Indonesia",
+          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPYVpoQWxSb0JlV0NDZWhBdllwUGc0Qmx2MzNCQ1Y3RGZuRHYtREE2NVQ0WUtsdWlvaE5tUmVMSEgwSHB5U2dYSFVPdDQ2a1hIbFlNNHVOYWRDQjdLVDJ4UUxYWFRKSkFNXzFuWERnVElIZW56cDhraTVSSTNjUHlZS013VTBJbFdORU5RNldtZHJfbHg0cWdwbjFVZDNrWXp3d21vMVhTdFBaWE9qM2daQnp4UTA4U1RWa0E3SnZDNjlUN2xVcmJN0gHMAUFVX3lxTE5TUE5vVzRpODNFcDBTX25KaDVONjdXRmZXdlkzcmNNdDBfOC0xcHltak1oVjc1dFFFNDZqYllCb2tvd1kteTJHeG1Va0xyblFNdHpIWGkzeW5vOVZJSGtqOWh6T1hFd0pEQUdBWGZIbW50WXhNREZCS3RXR1NuY1duZGVZYnpFRHFIOXJlVVBId2JXZG9MQmhESEQtMGFTQW9QbFZ3UFNfeDY5akFJZTJjSzNGRUxnbXVMWTV1NGh6N3V6R3hESlE4VnBZbQ?oc=5",
+          "published_at_utc": "2026-10-19T16:44:09+00:00",
           "category": "Electricity outages",
           "topic_id": "power",
           "kind": "attributed news headline, not independently verified",
           "new_since_previous": true
         },
         {
-          "title": "PLN Temukan Kejanggalan soal Blackout Batam, Tegaskan Tak Terkait Data Center - Kompas.com",
+          "title": "Listrik di Monkasel dan Mall Delta Plaza Surabaya Sempat Padam, Aktivitas Kembali Normal - Kompas.com",
           "publisher": "Kompas.com",
-          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQTWdoSE1fTFpVeEE1VldFMHdzaFphSy04b0Z5NldZZzhScmZOSTZjUkNGSFNKV3ZQWTA2RHNQbEd6dFRDSUh0enN4MGUtUm15ellVeGh3cU16elF3M2NQeXBvX2NOWWhnX1BHR0YwWGtqcUwzQmZ0TmRubDNfaGhUUnJrdW9BUHNTaGd0QVdQSFZiQm1BS1czM29GUzI5RHlncHpZVFBiVnY5M0ZwMkFhZl9pZ3YxckhSbkJaY01Od0E?oc=5",
-          "published_at_utc": "2026-10-18T23:29:00+00:00",
+          "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQUzVxTmRCbzJ6X0RJOEo1UVdnVkk1UUhDOFBkbkwyWW9TNEQ5bkR5dnh3UFg2bGlSWklZcGVyNWtKcll1X19HOXpERHJhLWFuU0Rkdm10QkJhanB3SnA3aG1MV0k4UTFYbGpxLWdWR1VpOXdSQWNNNmdBUk9TRGJuM2dVUkhWWGFVc2VLXzREWHNMOW96RmR3V2xQNHVoQjM5N29mSkJXakJGU1lOcURMUGc2dlBIeTNLbUZUb2VmbHpFLUNzOTNsX1A1S0M2eFRUTld0NXJsRG9VVGl6ckhJbjVydw?oc=5",
+          "published_at_utc": "2026-10-19T14:53:00+00:00",
           "category": "Electricity outages",
           "topic_id": "power",
           "kind": "attributed news headline, not independently verified",
@@ -184,7 +184,7 @@
       "id": "carbon",
       "heading": "06 · Carbon Outcomes & Environmental Risk",
       "finding": "The BPS/KLHK inventory shown here ends in 2023; energy-sector emissions were 752.28 MtCO₂e and national emissions 1,360.35 MtCO₂e. These are emitted greenhouse gases, not reported avoided-emission achievements.",
-      "daily_signal": "Newly identified attributed headline (ANTARA News, 19 Oct 2026 05:26 WIB): 269 karhutla lalap 621,25 hektare di PPU hingga 17 Oktober - ANTARA News. Analytical test: Verify observed fire area, duration, smoke dispersion and infrastructure proximity before inferring either an emissions increase or energy-system loss. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Newly identified attributed headline (ANTARA News, 20 Oct 2026 07:02 WIB): Karhutla di Tapin bakar 31 hektare, kebun cabai ikut terdampak - ANTARA News. Analytical test: Verify observed fire area, duration, smoke dispersion and infrastructure proximity before inferring either an emissions increase or energy-system loss. The headline is not independently verified evidence of operational impact.",
       "implication": "Peatland and forest-fire conditions can affect land-use emissions, haze and infrastructure access; local fire reports do not on their own confirm damage to electricity or fuel assets. National net-zero progress should use updated inventories rather than assuming daily changes.",
       "verification_priority": "Review BNPB/BPBD and KLHK fire measurements, proximity to critical infrastructure, restoration work, and the next verified GHG inventory.",
       "baseline_sources": [
@@ -197,10 +197,10 @@
       ],
       "recent_news_leads": [
         {
-          "title": "269 karhutla lalap 621,25 hektare di PPU hingga 17 Oktober - ANTARA News",
+          "title": "Karhutla di Tapin bakar 31 hektare, kebun cabai ikut terdampak - ANTARA News",
           "publisher": "ANTARA News",
-          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQbTNZcnpXc2Y3VHg3N1UtLWo5YWc0bHlkRUxGUjB3Zm1OTUg4N0dvb2JBU0haMmMtZUExcVNGUHJGZ1JyN1M0N0t0VnUtOUpjUDlNZnd0aDZnNElHSjAtc282Z3A5QnpXZFd6TDAwOWZmNFNVeXFkVEFqSnl1OENYOE1zOS0wTUdUM0xsREh3RGFDenBocF9rNWRUVkxoM0dFdVhTREl0VEXSAagBQVVfeXFMUG0zWXJ6V3NmN1R4NzdVLS1qOWFnNGx5ZEVMRlIwd2ZtTk1IODdHb29iQVNIWjJjLWVBMXFTRlByRmdScjdTNDdLdFZ1LTlKY1A5TWZ3dGg2ZzRJR0owLXNvNmdwOUJ6V2RXekwwMDlmZjRTVXlxZFRBakp5dThDWDhNczktME1HVDNMbERId0RhQ3pwaHBfazVkVFZMaDNHRXVYU0RJdFRF?oc=5",
-          "published_at_utc": "2026-10-18T22:26:08+00:00",
+          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQdHFOTFRLSnlyczdHTWdvQnEzNUZHTHBLRTNNTWR4bEEtNnZ2VUNsX25GLUlTbzR2LThFaUN6NXNpMm9vR2kwWnNrUDdOVVROa0x6SkxOeTUyVVhwYXgyNU1hLTRrR0xDU0dYeGkyWDV4OXZxNVRIU1lwUmNJMDNIQXlvRnluTWxtTGNISnlfUlV1NVRxUE1aQ01aYWF6ZU1tSTFoaVFZMHPSAa4BQVVfeXFMUG1xc09WSS1SQVNVM2lmQnY4eWwtZ05RN2JNQllZbTZNMkg2a2x6SHp6bmVwYXRCaGx6SnFPcUFzc19zQVNFM0FPMTRvbTV1LXlMc0ZHa0pWQjlEU0RTaWdCbHZnQ2ROU3kxY1JsS0NlaWtZam9IU2JhM3dKQWo2dG1xUXJFLThfb2dUM3VQR2tnamdrQ2VCNWZIRXhaa0l6bDBEMmxXYU9aN1NOWmVR?oc=5",
+          "published_at_utc": "2026-10-20T00:02:51+00:00",
           "category": "Forest fires and haze",
           "topic_id": "forest_fire",
           "kind": "attributed news headline, not independently verified",
