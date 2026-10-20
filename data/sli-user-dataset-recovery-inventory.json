@@ -99,7 +99,7 @@
       "public_dataset": "data/pln-ruptl-uploaded-excerpt-2025-2034.json",
       "main_dashboard": "index.html#energy",
       "detail_dashboard": "sli-sector-data-library.html#ruptl",
-      "caution": "RUPTL 100-page upload gives 109 selected reservoir entries and a 2022–2045 AMI schedule; Chapter V project annexes are not present."
+      "caution": "RUPTL 100-page excerpt has 109 reservoirs and 24 AMI years. Official full PDF endpoint returned only 16.1 MB of ~51.8 MB and lacked %%EOF; project annexes not validated. Range-resume or mirror retrieval is still required."
     },
     {
       "id": "environment",
@@ -107,11 +107,12 @@
       "domain": "Environment",
       "source_agency": "BMKG/BNPB/environmental agencies/NASA FIRMS",
       "observation_period": "mixed",
-      "status": "source_registry_not_full_numeric_observations",
+      "status": "partial_national_wdi_history_plus_20_source_registry_indicators",
       "public_dataset": "data/sli-climate-environment.json",
       "main_dashboard": "climate-environment.html",
-      "detail_dashboard": "sli-sector-data-library.html#environment",
-      "caution": "No numerical values in 20-indicator registry; alerts, hazards, and assessed asset exposure require separate evidence."
+      "detail_dashboard": "sli-sector-data-library.html#environment-wdi",
+      "caution": "World Bank WDI 3 Indonesia national annual series with 71 dated records available for forest area, PM2.5 and renewables; 20 local monitoring/pollution/asset indicators remain unverified, and CO2 endpoint failed.",
+      "context_dataset": "data/sli-environment-worldbank-wdi-indonesia.json"
     },
     {
       "id": "bnpb_disasters",
@@ -136,7 +137,7 @@
       "public_dataset": "data/sli-ai-stanford-worldbank-foundations-2025-2026.json",
       "main_dashboard": "ai-intelligence-hub.html",
       "detail_dashboard": "sli-sector-data-library.html#ai-reports",
-      "caution": "9 Stanford report observations transcribed from identified PDF pages; rest of chart candidate catalog remains not fully digitized."
+      "caution": "16 selected Stanford 2026 source-PDF-page indicators now in AI Hub; other image charts still require exact labels/underlying dataset/rights review."
     },
     {
       "id": "worldbank_ai",
@@ -148,7 +149,7 @@
       "public_dataset": "data/sli-ai-stanford-worldbank-foundations-2025-2026.json",
       "main_dashboard": "ai-intelligence-hub.html",
       "detail_dashboard": "sli-sector-data-library.html#ai-reports",
-      "caution": "6 World Bank report observations from identified PDF pages; income-group statistics cannot be treated as national Indonesia figures."
+      "caution": "46 selected World Bank 2025 publisher-summary/source-page metrics now in AI Hub, covering AI connectivity, jobs, digital skills, compute and adoption; country/income-group comparisons are not Indonesia metrics."
     },
     {
       "id": "ministry_esdm",
@@ -169,5 +170,5 @@
     "New sources are not automatically indexed as source-linked evidence in Research AI until exact provenance has been reviewed.",
     "No local hidden file, private report or credentials are published from user uploads."
   ],
-  "revision_note": "Homepage prominent. RUPTL 109 reservoirs + 24 AMI years shown; 15 original-report AI metrics integrated; official 38-province BNPB 2025 records added with earthquake source total mismatch flagged."
+  "revision_note": "Source-page cited AI 62 metrics; historical WDI national environment 3 indicators/71 year-values; original RUPTL CDN yielded incomplete PDF bytes and annex projects remain unconfirmed."
 }

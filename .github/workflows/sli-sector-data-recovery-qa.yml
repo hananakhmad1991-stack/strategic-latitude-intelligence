@@ -15,6 +15,10 @@ on:
       - 'data/iea-critical-minerals-2026-full-scenarios.json'
       - 'data/sli-user-dataset-recovery-inventory.json'
       - 'tests/qa-sli-user-data-visibility.mjs'
+      - 'tests/qa-sli-ai-wdi-source-phase2.mjs'
+      - 'data/sli-environment-worldbank-wdi-indonesia.json'
+      - 'js/sli-environment-wdi.js'
+      - 'css/sli-environment-wdi.css'
       - 'tests/qa-sli-provincial-bnpb-2025.mjs'
       - 'provincial-intelligence.html'
       - 'js/sli-provincial-nexus-ui.js'
@@ -36,6 +40,10 @@ on:
       - 'data/iea-critical-minerals-2026-full-scenarios.json'
       - 'data/sli-user-dataset-recovery-inventory.json'
       - 'tests/qa-sli-user-data-visibility.mjs'
+      - 'tests/qa-sli-ai-wdi-source-phase2.mjs'
+      - 'data/sli-environment-worldbank-wdi-indonesia.json'
+      - 'js/sli-environment-wdi.js'
+      - 'css/sli-environment-wdi.css'
       - 'tests/qa-sli-provincial-bnpb-2025.mjs'
       - 'provincial-intelligence.html'
       - 'js/sli-provincial-nexus-ui.js'
@@ -56,8 +64,9 @@ jobs:
           node --check js/sli-sector-data-library.js
           node --check js/sli-navigation.js
           node --check js/sli-ai-report-evidence.js
+          node --check js/sli-environment-wdi.js
           node --check js/sli-provincial-nexus-ui.js
-          node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs tests/qa-sli-provincial-bnpb-2025.mjs
+          node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs tests/qa-sli-provincial-bnpb-2025.mjs tests/qa-sli-ai-wdi-source-phase2.mjs
       - name: Validate every page references a real public source dataset
         run: |
           python - <<'PY'

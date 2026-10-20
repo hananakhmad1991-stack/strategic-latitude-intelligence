@@ -231,15 +231,18 @@ function aiReports(d){
   ["World Bank 2025",num(arr.filter(x=>x.source==="worldbank").length,0),"Angka kelompok pendapatan dunia"],
   ["Katalog kandidat grafik","405","Belum semuanya memiliki seri data numerik terverifikasi"]
  ]);
- const filter=$("aiReportSource");
+ const filter=$("aiReportSource"),category=$("aiReportCategory");
+ for(const k of [...new Set(arr.map(x=>x.category))].sort()){
+  const opt=document.createElement("option");opt.value=k;opt.textContent=k;category.append(opt);
+ }
  const render=()=>{
   table("aiReportTable",["Topik","Indikator","Nilai","Periode","Geografi/cakupan","Basis/jenis","PDF"],
-   arr.filter(x=>!filter.value||filter.value===x.source).map(x=>[
+   arr.filter(x=>(!filter.value||filter.value===x.source)&&(!category.value||category.value===x.category)).map(x=>[
     x.category,x.label_id,(x.comparator||"")+num(x.value,2)+" "+x.unit,x.period||x.year,
     x.geography,x.methodology,(x.source==="stanford"?"Stanford":"World Bank")+" · hal. "+x.pdf_page
    ]));
  };
- filter.addEventListener("change",render);render();
+ filter.addEventListener("change",render);category.addEventListener("change",render);render();
 }
 function inventory(d){
  if(!d||!Array.isArray(d.datasets))return;
