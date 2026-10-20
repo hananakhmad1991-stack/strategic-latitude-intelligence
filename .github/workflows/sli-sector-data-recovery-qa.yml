@@ -15,6 +15,9 @@ on:
       - 'data/iea-critical-minerals-2026-full-scenarios.json'
       - 'data/sli-user-dataset-recovery-inventory.json'
       - 'tests/qa-sli-user-data-visibility.mjs'
+      - 'tests/qa-sli-provincial-bnpb-2025.mjs'
+      - 'provincial-intelligence.html'
+      - 'js/sli-provincial-nexus-ui.js'
       - 'js/sli-navigation.js'
       - 'sli-research-ai.html'
       - '.github/workflows/sli-sector-data-recovery-qa.yml'
@@ -33,6 +36,9 @@ on:
       - 'data/iea-critical-minerals-2026-full-scenarios.json'
       - 'data/sli-user-dataset-recovery-inventory.json'
       - 'tests/qa-sli-user-data-visibility.mjs'
+      - 'tests/qa-sli-provincial-bnpb-2025.mjs'
+      - 'provincial-intelligence.html'
+      - 'js/sli-provincial-nexus-ui.js'
       - '.github/workflows/sli-sector-data-recovery-qa.yml'
 permissions:
   contents: read
@@ -50,7 +56,8 @@ jobs:
           node --check js/sli-sector-data-library.js
           node --check js/sli-navigation.js
           node --check js/sli-ai-report-evidence.js
-          node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs
+          node --check js/sli-provincial-nexus-ui.js
+          node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs tests/qa-sli-provincial-bnpb-2025.mjs
       - name: Validate every page references a real public source dataset
         run: |
           python - <<'PY'
