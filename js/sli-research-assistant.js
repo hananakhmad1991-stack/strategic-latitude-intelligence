@@ -180,6 +180,41 @@ function renderClaimReview(qualityAudit,report,language="id"){
  card.append(node("p",null,isId
   ?"Audit membandingkan klaim dengan cuplikan sumber. Pemeriksaan halaman sumber primer dibatasi dan tidak membaca PDF; kecocokan angka BUKAN pembuktian klaim. Tidak ada klaim yang dinyatakan otomatis terverifikasi."
   :"Review compares claims with cited excerpts. Original publisher HTML checks are limited and do not parse PDFs; numeric presence is NOT claim verification. No claims are automatically certified."));
+ const ledger=qualityAudit?.claim_ledger?.schema==="sli-claim-evidence-ledger-v1"?qualityAudit.claim_ledger:null;
+ if(ledger){
+  const pending=Math.max(0,Number(ledger.not_sampled_candidates)||0);
+  card.append(node("p","sli-ra-source-role",(isId?"JEJAK AUDIT · ":"EVIDENCE LEDGER · ")+
+   String(Number(ledger.sampled_claims)||0)+(isId?" klaim ditelusuri; ":" sampled claims traced; ")+pending+
+   (isId?" kandidat lain belum diaudit.":" additional candidates not sampled.")+
+   (isId?" Seluruh klaim menunggu pemeriksaan editorial.":" Every claim still requires editorial review.")));
+  card.append(node("p","sli-ra-source-role","SHA-256 · "+String(ledger.report_sha256||"").slice(0,24)+
+   "… "+(isId?"Identitas perubahan laporan dan sumber, bukan sertifikat kebenaran.":"Change fingerprint of answer and sources, not a truth certificate.")));
+  const exportButton=node("button",null,isId?"Unduh jejak audit (CSV)":"Export audit trail (CSV)");
+  exportButton.type="button";
+  exportButton.addEventListener("click",()=>{
+   const cell=value=>{
+    let v=String(value??"");
+    if(/^[=+@-]/.test(v))v="'"+v;
+    return '"'+v.replace(/"/g,'""')+'"';
+   };
+   const rows=[["claim_id","category","claim","review_status","risk_tier","issue_codes",
+    "citation","source_title","source_url","source_period","source_date","source_type",
+    "publisher_page_check","report_sha256"]];
+   for(const r of (Array.isArray(ledger.claims)?ledger.claims:[])){
+    for(const s of r.source_traces?.length?r.source_traces:[{}]){
+     rows.push([r.claim_id,r.category,r.claim,r.review_status,r.risk_tier,
+      (r.issues||[]).join("; "),s.citation||"",s.title||"",s.original_url||"",s.period||"",
+      s.source_date||"",s.source_type||"",s.publisher_page_check||"",ledger.report_sha256]);
+    }
+   }
+   // Local browser export only. Nothing is uploaded or auto-approved.
+   const blob=new Blob(["\ufeff"+rows.map(row=>row.map(cell).join(",")).join("\r\n")],{type:"text/csv;charset=utf-8"});
+   const url=URL.createObjectURL(blob),a=node("a");
+   a.href=url;a.download="sli-claim-evidence-audit.csv";
+   document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+  card.append(exportButton);
+ }
  const probe=qualityAudit?.primary_source_probe;
  if(probe){
   card.append(node("p","sli-ra-source-role",(isId?"HALAMAN PRIMER: ":"PRIMARY PAGES: ")+
@@ -217,6 +252,29 @@ function renderClaimReview(qualityAudit,report,language="id"){
   card.append(p);
   if(Array.isArray(item.missing_numbers)&&item.missing_numbers.length)
    card.append(node("p","sli-ra-source-role",(isId?"Format/nilai angka belum cocok dengan cuplikan: ":"Number/format not matched in cited excerpt: ")+item.missing_numbers.join(", ")));
+  if(ledger){
+   const row=(Array.isArray(ledger.claims)?ledger.claims:[]).find(r=>r.claim===String(item.claim||"").slice(0,300));
+   if(row){
+    const issues={no_local_citation:isId?"Tanpa sitasi langsung":"No citation",
+     numbers_absent_from_cited_excerpts:isId?"Angka tidak ditemukan pada cuplikan sumber":"Numbers absent from cited excerpts",
+     discovery_or_dashboard_snapshot_citation:isId?"Bukti snapshot/temuan web belum ditinjau":"Unreviewed discovery/dashboard evidence",
+     original_primary_document_not_established:isId?"Sumber primer belum dipastikan":"Primary document not established",
+     primary_page_claim_entailment_not_checked:isId?"Dukungan klaim dalam dokumen primer belum diperiksa":"Primary source entailment not checked"};
+    card.append(node("p","sli-ra-source-role",
+     (isId?"Status: perlu pemeriksaan manusia · ":"Status: human review required · ")+
+     (row.issues||[]).map(x=>issues[x]||x).join("; ")));
+    for(const s of (row.source_traces||[]).slice(0,3)){
+     const p=node("p","sli-ra-source-role",
+      "["+String(s.citation)+"] "+String(s.title||s.source_id||"Source").slice(0,110)+
+      " · "+String(s.source_date||s.period||"date not available"));
+     const uri=safeUrl(s.original_url||"");
+     if(uri){const a=node("a",null,isId?" · Buka sumber asli ↗":" · Open original ↗");
+      a.href=uri;a.target="_blank";a.rel="noopener noreferrer";p.append(a);}
+     p.append(node("span",null," · "+String(s.publisher_page_check||"not_checked_for_this_claim").replace(/_/g," ")));
+     card.append(p);
+    }
+   }
+  }
  }
  report.prepend(card);
 }
