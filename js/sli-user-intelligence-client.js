@@ -3,7 +3,7 @@
  */
 (()=>{"use strict";
 const ROOT="sliUserIntelligence",CONFIG="./config/sli-user-intelligence.json";
-const PREF_KEY="sli-catalyst-v2-preferences",WATCH_KEY="sli-terminal-watchlist-v1";
+const PREF_KEY="sli-catalyst-v2-preferences",WATCH_KEY="sli-terminal-watchlist-v1",SECTOR_KEY="sli-user-sector-alert-selection-v1";
 const E=(tag,text,cls)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=String(text);return x};
 const isID=()=>document.documentElement.lang?.toLowerCase().startsWith("id");
 const T=(en,indo)=>isID()?indo:en;
@@ -18,11 +18,14 @@ const urls=(cfg)=>{
 };
 const safeSource=s=>{try{const u=new URL(s);return u.protocol==="https:"&&!u.username&&!u.password?u.href:null}catch{return null}};
 const tickers=()=>{const w=getJSON(WATCH_KEY);return Array.isArray(w)?[...new Set(w.filter(x=>typeof x==="string"&&/^[A-Z0-9]{4}$/.test(x)))].slice(0,30):[]};
+const localSector=()=>{const x=getJSON(SECTOR_KEY);return x&&typeof x==="object"?x:{enabled:false,sector:""};};
 function localPreferences(){
  const p=getJSON(PREF_KEY)||{};
  const list=p.type&&p.type!=="all"?[p.type]:["news","project","regulation"];
- return {tickers:tickers(),sectors:[],kinds:list.filter(x=>["news","project","regulation"].includes(x)),
-  include_sector:false,in_app:p.inApp!==false};
+ const opt=localSector();const possible=new Set(["energy","minerals","coal","food","technology","infrastructure","transport","manufacturing"]);
+ const sector=possible.has(opt.sector)?opt.sector:"";
+ return {tickers:tickers(),sectors:opt.enabled&&sector?[sector]:[],kinds:list.filter(x=>["news","project","regulation"].includes(x)),
+  include_sector:!!(opt.enabled&&sector),in_app:p.inApp!==false};
 }
 let cfg=null,api=null,notice="",busy=false,inboxItems=[];
 const $=()=>document.getElementById(ROOT);
@@ -50,6 +53,21 @@ function render(){
   root.append(E("p",T("Not activated: Cloudflare Access and private D1 must be configured and validated by the owner. Your browser watchlist remains local.","Belum diaktifkan: Cloudflare Access dan D1 privat harus dikonfigurasi serta diuji pemilik. Watchlist tetap tersimpan lokal."),"sli-uib-note"));
   return;
  }
+ const filters=E("div",undefined,"sli-uib-sector");
+ const holder=E("label");const cb=E("input");cb.type="checkbox";cb.checked=localSector().enabled===true;
+ holder.append(cb,E("span",T("Also include a chosen sector (context only, not proven company impact)","Sertakan sektor pilihan (hanya konteks, bukan bukti dampak emiten)")));
+ const select=E("select");
+ const sectors=[
+  ["",T("Choose a sector","Pilih sektor")],["energy",T("Energy","Energi")],["minerals",T("Minerals","Mineral")],
+  ["coal",T("Coal","Batu bara")],["food",T("Food","Pangan")],["technology",T("Technology & AI","Teknologi & AI")],
+  ["infrastructure",T("Infrastructure","Infrastruktur")],["transport",T("Transport","Transportasi")],
+  ["manufacturing",T("Manufacturing","Manufaktur")]];
+ for(const [value,label]of sectors){const opt=E("option",label);opt.value=value;select.append(opt)}
+ select.value=localSector().sector||"";select.disabled=!cb.checked;
+ const store=()=>putJSON(SECTOR_KEY,{enabled:cb.checked,sector:select.value});
+ cb.addEventListener("change",()=>{select.disabled=!cb.checked;store()});
+ select.addEventListener("change",store);
+ filters.append(holder,select);root.append(filters);
  const actions=E("div",undefined,"sli-uib-actions");
  const login=cfg.login_url&&safeSource(cfg.login_url)?cfg.login_url:api+"/api/me";
  const a=E("a",T("Sign in through Cloudflare Access ↗","Login melalui Cloudflare Access ↗"));a.href=login;a.target="_blank";a.rel="noopener noreferrer";actions.append(a);
@@ -68,6 +86,7 @@ function render(){
   if(!data.enrolled){notice=T("No saved account preferences yet.","Belum ada preferensi akun tersimpan.");return}
   if(!Array.isArray(data.preferences?.tickers))throw Error("invalid server watchlist");
   if(!putJSON(WATCH_KEY,data.preferences.tickers.filter(x=>/^[A-Z0-9]{4}$/.test(x)).slice(0,30)))throw Error("local storage unavailable");
+  putJSON(SECTOR_KEY,{enabled:data.preferences.include_sector===true,sector:data.preferences.sectors?.[0]||""});
   notice=T("Local watchlist updated. Reload this page to refresh the existing workspace.","Watchlist lokal diperbarui. Muat ulang halaman agar workspace lain ikut berubah.");
  }));
  actions.append(button(T("Read private inbox","Baca inbox privat"),async()=>{
