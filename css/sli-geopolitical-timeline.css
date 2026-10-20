@@ -87,3 +87,16 @@
 @media(max-width:950px){.sli-geo-insight-move{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.sli-geo-event-navigation{padding:11px}.sli-geo-event-nav-buttons{width:100%}.sli-geo-event-nav-buttons button{flex:1;min-width:90px;padding:9px 5px;font-size:11px}.sli-geo-insight-move{grid-template-columns:1fr 1fr;gap:5px}}
 @media(prefers-reduced-motion:reduce){.sli-geo-event-marker .sli-geo-event-dot{transition:none}}
+
+/* Food-sector global benchmark and Indonesian president/regime overlay. */
+.sli-geo-political-toggle{display:inline-flex!important;flex-direction:row!important;align-items:center;gap:10px;min-width:min(390px,100%);max-width:100%;background:#12364a;border:1px solid #3a857f;border-radius:9px;padding:10px 13px;font-size:12px!important;color:#b8eee9!important;cursor:pointer}
+.sli-geo-political-toggle input{width:17px!important;height:17px!important;min-height:0!important;accent-color:#72d7d5;flex:none}
+.sli-geo-political-legend{display:flex;flex-wrap:wrap;gap:9px 18px;padding:10px 12px;border:1px solid #466376;border-radius:9px;margin:4px 0 12px;color:#cbdce8;font-size:12px}
+.sli-geo-political-legend span:last-child{color:#a8e9e5}
+.sli-geo-presidency-marker{cursor:pointer}
+.sli-geo-presidency-marker:focus-visible{outline:2px solid #c4f4f0;outline-offset:3px}
+.sli-geo-presidency-marker .sli-geo-presidency-diamond{transition:fill .12s ease}
+.sli-geo-presidency-marker:hover .sli-geo-presidency-diamond,.sli-geo-presidency-marker.is-selected .sli-geo-presidency-diamond{fill:#d5ffff}
+.sli-geo-timeline-political-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.07em;color:#9ce1db;background:#173d4b;border:1px solid #477b7c;border-radius:5px;padding:3px 7px;margin:2px 0 6px}
+@media(max-width:760px){.sli-geo-political-toggle{width:100%}.sli-geo-political-legend{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.sli-geo-presidency-marker .sli-geo-presidency-diamond{transition:none}}
