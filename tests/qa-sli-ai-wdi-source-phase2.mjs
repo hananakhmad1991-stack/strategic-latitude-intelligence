@@ -40,7 +40,7 @@ test("WDI interactive source data appears in Climate and SLI Data Library, retai
  assert.match(script,/data\/sli-environment-worldbank-wdi-indonesia\.json/);
  assert.match(script,/r\.year/);
  assert.match(script,/m\.latest_year/);
- assert.match(script,/source/);
+ assert.match(script,/data\.worldbank\.org\/indicator/);
  assert.doesNotMatch(script,/innerHTML/);
 });
 test("PDF summary stats preserve source pages, upper bounds and geographic comparability",()=>{
