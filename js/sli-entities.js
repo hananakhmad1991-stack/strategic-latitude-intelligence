@@ -67,6 +67,34 @@ function fromIssuerUniverse(db){
   upsert({key,type:'company',title:n.name,person:'',source:n.source_url,role:'IDX: '+n.ticker+' · '+(official?T('Official issuer snapshot','Snapshot emiten resmi'):T('Issuer candidate — verify current listing','Kandidat emiten — periksa pencatatan terkini')),date:db.as_of,sectors:[n.sector],records:[rec],summary:n.name,original:n,corporate,issuerRecord:n});
  }
 }
+function fromCorporateEvidence(db){
+ if(db?.schema!=='sli-corporate-evidence-relationships-v1')throw Error('Unsupported relationship evidence');
+ const note=T('Dated source record; no ultimate ownership inferred','Bukti bertanggal; kepemilikan akhir tidak diasumsikan');
+ const add=(name,type,role,date,url,tag,record,detail)=>{
+  if(!name||!safe(url))return;
+  const key=type+':'+I().nameKey(name);
+  upsert({key,type,title:name,person:'',source:url,role,date,sectors:[tag],records:[record],summary:role,original:detail||null});
+ };
+ for(const p of db.ownership_profiles||[]){
+  const source=p.source_urls?.find(safe);
+  if(!source)continue;
+  const role=T('Dated direct equity disclosure','Keterbukaan pemegang saham langsung')+' · '+p.reference_date;
+  add(p.name,'company',role,p.reference_date,source,'corporate',{source,relationship:'reported_direct_equity',profile_id:p.id,verification:'source-dated'},p);
+  for(const shareholder of p.shareholders||[]){
+   if(!['organization','person'].includes(shareholder.holder_kind))continue;
+   const kind=shareholder.holder_kind==='person'?'person':'company';
+   add(shareholder.name,kind,note+' · '+p.name,p.reference_date,source,'corporate',
+    {source,relationship:'reported_direct_shareholder',target:p.name,pct:shareholder.reported_pct,verification:'source-dated'},null);
+  }
+ }
+ for(const p of db.project_participations||[]){
+  const institution=/^(Danantara Indonesia|Indonesia Investment Authority)/.test(p.name);
+  add(p.name,institution?'institution':'company',
+   T('Reported project participant (not a shareholder)','Peserta proyek terlapor (bukan bukti saham)')+' · '+p.project_name,
+   p.source_date,p.source_url,'projects',
+   {source:p.source_url,relationship:'reported_project_participant_not_equity_shareholder',projectId:p.project_id,verification:p.verification},null);
+ }
+}
 const typeLabels={person:['Person','Tokoh'],institution:['Institution','Lembaga'],company:['Company','Perusahaan'],project:['Project','Proyek']};
 const sectorLabels={finance:['Banking & finance','Perbankan & keuangan'],infrastructure:['Infrastructure & construction','Infrastruktur & konstruksi'],transport:['Transport & logistics','Transportasi & logistik'],property:['Property & industrial estates','Properti & kawasan industri'],healthcare:['Health & pharma','Kesehatan & farmasi'],manufacturing:['Industrial manufacturing','Industri manufaktur'],retail:['Retail & commerce','Ritel & perdagangan'],other:['Unclassified','Lainnya'],corporate:['Corporate groups','Grup perusahaan'],energy:['Energy','Energi'],minerals:['Critical minerals','Mineral kritis'],coal:['Coal','Batu bara'],technology:['AI, data centers & technology','AI, data center & teknologi'],food:['Food & agriculture','Pangan & pertanian'],ai:['AI & digital','AI & digital'],projects:['Project register','Registri proyek']};
 const labelType=a=>typeLabels[a.type]?.[id()?1:0]||a.type;
@@ -120,6 +148,9 @@ function drawDetail(){
   if(a.person&&a.type!=='person'){const key=el('dt','',T('Named leader','Pimpinan tercatat'));const dd=el('dd');dd.append(I().personLink(a.person,a.source));dl.append(key,dd)}
   addDl(dl,T('Evidence class','Jenis bukti'),a.original?.verification||T('Source-linked register','Registri dengan sumber'));
   if(a.records.length>1)addDl(dl,T('Matched register rows','Baris registri terkait'),String(a.records.length));
+  if(a.records.some(r=>r.relationship==='reported_direct_shareholder'||r.relationship==='reported_direct_equity'||r.relationship==='reported_project_participant_not_equity_shareholder'))
+   addDl(dl,T('Relationships','Hubungan'),T('Dated direct holdings or reported project involvement; see the evidence network above for exact source and basis.',
+   'Kepemilikan langsung atau partisipasi proyek terlapor; lihat jaringan bukti di atas untuk sumber dan dasar hubungan.'));
  }
  if(a.type==='company'&&a.issuerRecord){
   const n=a.issuerRecord;
@@ -175,6 +206,8 @@ async function load(){
   fromHierarchy(results[0]);fromProjects(results[1]);fromCorporateGroups(results[2]);
   try{const response=await fetch('./data/sli-idx-issuer-universe.json',{cache:'no-store'});if(!response.ok)throw Error('IDX catalogue HTTP '+response.status);
    fromIssuerUniverse(await response.json());}catch(error){console.warn('[SLI IDX catalogue]',error)}
+  try{const response=await fetch('./data/sli-corporate-evidence-relationships.json',{cache:'no-store'});if(!response.ok)throw Error('Relationship evidence HTTP '+response.status);
+   fromCorporateEvidence(await response.json());}catch(error){console.warn('[SLI corporate relationship evidence]',error)}
   const coverage=$('sliEntityCoverage');if(coverage&&issuerCoverage)coverage.textContent=
    T('Issuer catalogue: ','Katalog emiten: ')+issuerCoverage.count+' · '+(issuerCoverage.status==='official_exchange_bulk_snapshot'?
     T('Official IDX profile snapshot · ','Snapshot profil resmi BEI · '):T('Initial candidate list; full IDX reconciliation pending · ','Daftar kandidat awal; rekonsiliasi penuh BEI belum selesai · '))+issuerCoverage.as_of+
