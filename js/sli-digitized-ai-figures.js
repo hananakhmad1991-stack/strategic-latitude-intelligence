@@ -48,13 +48,39 @@ function bars(f){
  });
  addText(v,L,H-5,f.unit+" · "+(f.year||"2025"),12,"#cbdfe7","start");return v;
 }
+function multiLine(f){
+ const W=900,H=370,L=64,R=35,T=22,B=83;
+ const chart=svg("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":en()?f.title_en:f.title_id});
+ const x=i=>L+i*(W-L-R)/(f.values.length-1);
+ // Natural log transform is visual only; original integer numbers exported unchanged.
+ const y=v=>H-B-(Math.log10(1+v)/Math.log10(10001))*(H-T-B);
+ const keys=f.series.map(z=>z.key),colors=["#54bcd1","#f0c379","#c999ed","#8fc896"];
+ [1,10,100,1000,10000].forEach(n=>{
+  const yy=y(n);chart.append(svg("line",{x1:L,y1:yy,x2:W-R,y2:yy,stroke:"#375d73","stroke-dasharray":"3 5"}));
+  addText(chart,L-9,yy+4,String(n),12,"#cee2eb","end");
+ });
+ f.values.forEach((v,i)=>addText(chart,x(i),H-B+22,String(v.year),11,"#c9dce7"));
+ f.series.forEach((cat,j)=>{
+  const points=f.values.map((v,i)=>x(i)+","+y(v[cat.key])).join(" ");
+  chart.append(svg("polyline",{points,fill:"none",stroke:colors[j],"stroke-width":j===0?3:2.2}));
+  f.values.forEach((v,i)=>{
+   const g=svg("circle",{cx:x(i),cy:y(v[cat.key]),r:4,fill:colors[j],stroke:"#102c3f","stroke-width":"1.3"});
+   point(g,String(v.year)+" · "+(en()?cat.label_en:cat.label_id),v[cat.key],f);chart.append(g);
+  });
+  const lx=L+(j%2)*390,ly=H-43+Math.floor(j/2)*18;
+  chart.append(svg("line",{x1:lx,y1:ly-4,x2:lx+24,y2:ly-4,stroke:colors[j],"stroke-width":3}));
+  addText(chart,lx+31,ly,en()?cat.label_en:cat.label_id,12,"#dbe8ee","start");
+ });
+ addText(chart,L,13,en()?"Log scale (1+count) · original values remain exact":"Skala log (1+jumlah) · nilai asal tidak diubah",12,"#d2e6eb","start");
+ return chart;
+}
 function registerExporter(){
- const f=d.figures[Number(select.value)||0],isPower=!!f.values[0].period;
+ const f=d.figures[Number(select.value)||0],isPower=!!f.values[0].period,multi=f.chart_type==="multi-series-line";
  const svgNode=plot.querySelector("svg");if(!svgNode||!window.SLIVisualExport?.register)return;
  const labelName=isPower?"Quarter":f.values[0].country?"Country":"Category";
  window.SLIVisualExport.register(svgNode,{
-  getData:()=>({headers:[labelName,f.title_en+" ("+f.unit+")"],
-   rows:f.values.map(r=>isPower?[r.period,r.value_gw]:[r.country||r.label_en,r.count===undefined?r.value:r.count]),kind:"verified-provider"}),
+  getData:()=>({headers:multi?["Year",...f.series.map(x=>x.label_en+" (satellites)")]:[labelName,f.title_en+" ("+f.unit+")"],
+   rows:multi?f.values.map(r=>[r.year,...f.series.map(x=>r[x.key])]):f.values.map(r=>isPower?[r.period,r.value_gw]:[r.country||r.label_en,r.count===undefined?r.value:r.count]),kind:"verified-provider"}),
   getMeta:()=>({title:en()?f.title_en:f.title_id,source:f.source_credit,
    sourceUrl:f.source_url||d.source.official_url,period:isPower?"2022Q1–2025Q4":String(f.period||f.year||2025),
    completeness:"Exact printed numeric source-labels only; "+f.statistical_status+". "+f.caution_en})
@@ -62,20 +88,21 @@ function registerExporter(){
 }
 document.addEventListener("sli:exportready",registerExporter);
 function show(){
- const f=d.figures[Number(select.value)||0],isPower=!!f.values[0].period;
+ const f=d.figures[Number(select.value)||0],isPower=!!f.values[0].period,multi=f.chart_type==="multi-series-line";
  const selected=f.values.at(-1);
- const selectedLabel=isPower?selected.period:(selected.country||(en()?selected.label_en:selected.label_id));
- const selectedValue=isPower?selected.value_gw:selected.count===undefined?selected.value:selected.count;
+ const selectedLabel=multi?String(selected.year)+" · "+f.series[0].key:isPower?selected.period:(selected.country||(en()?selected.label_en:selected.label_id));
+ const selectedValue=multi?selected[f.series[0].key]:isPower?selected.value_gw:selected.count===undefined?selected.value:selected.count;
  meta.textContent=f.source_credit+" · Figure "+f.figure_number+(f.figure_panel||"")+" · PDF "+f.pdf_page+" · "+(en()?"Publisher figures are not independently audited by SLI":"Angka sumber belum menjadi validasi independen metodologi penerbit");
- plot.replaceChildren(isPower?line(f):bars(f));
+ plot.replaceChildren(multi?multiLine(f):isPower?line(f):bars(f));
  warn.textContent=en()?f.caution_en:f.caution_id;
  sourceLink(f);setDetail(selectedLabel,selectedValue,f);
  const thead=el("thead"),tr=el("tr");
- [isPower?"Kuartal":f.values[0].country?"Negara":"Kategori",f.title_en+" ("+f.unit+")"].forEach(h=>tr.append(el("th",h)));
+ (multi?["Tahun",...f.series.map(x=>x.label_en+" ("+f.unit+")")]:[isPower?"Kuartal":f.values[0].country?"Negara":"Kategori",f.title_en+" ("+f.unit+")"]).forEach(h=>tr.append(el("th",h)));
  thead.append(tr);
  const tbody=el("tbody");
- f.values.forEach(r=>{const row=el("tr");const val=isPower?r.value_gw:r.count===undefined?r.value:r.count;
-  row.append(el("td",isPower?r.period:r.country||(en()?r.label_en:r.label_id)),el("td",fmt(val)));tbody.append(row)});
+ f.values.forEach(r=>{const row=el("tr");if(multi){row.append(el("td",r.year));f.series.forEach(x=>row.append(el("td",fmt(r[x.key]))));}
+  else {const val=isPower?r.value_gw:r.count===undefined?r.value:r.count;
+   row.append(el("td",isPower?r.period:r.country||(en()?r.label_en:r.label_id)),el("td",fmt(val)));}tbody.append(row)});
  table.replaceChildren(thead,tbody);registerExporter();
 }
 select.addEventListener("change",show);show();

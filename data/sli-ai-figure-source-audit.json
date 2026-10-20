@@ -63,18 +63,25 @@
           "figure": "4.3",
           "panel": "d",
           "pdf_page": 85
+        },
+        {
+          "figure": "2.2",
+          "pdf_page": 50,
+          "series": 4,
+          "years": "2015–2023",
+          "source_numeric_labels": 36
         }
       ]
     }
   ],
   "text_figure_label_total": 409,
-  "already_digitized_numeric_source_figures": 9,
+  "already_digitized_numeric_source_figures": 10,
   "previous_initial_figures_estimate": 405,
   "catalog_build_script": "scripts/catalog-ai-report-figure-candidates.py",
   "review_only_artifact": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39411989759/artifacts/12259517775",
   "review_artifact_retention_days": 15,
-  "review_limits": "Printed labels may appear more than once or carry trailing superscript footnote digits; counts are occurrences, not unique verified chart series. Image-only figures may be missed. Numeric extraction, primary-study verification, chart status and geographic denominators remain pending figure by figure. Panel counts can exceed distinct numbered figures; currently 9 reviewed numeric chart presentations across 7 figure numbers, not nine distinct figure-number IDs.",
+  "review_limits": "Printed labels may appear more than once or carry trailing superscript footnote digits; counts are occurrences, not unique verified chart series. Image-only figures may be missed. Numeric extraction, primary-study verification, chart status and geographic denominators remain pending figure by figure. Panel counts can exceed distinct numbered figures; currently 10 reviewed chart/panel presentations across 8 distinct numbered figures (including one four-series Figure 2.2, four World Bank subpanels and five Stanford figures).",
   "no_automatic_numeric_publication": true,
-  "reviewed_numeric_chart_panels": 9,
-  "distinct_digitized_figure_numbers": 7
+  "reviewed_numeric_chart_panels": 10,
+  "distinct_digitized_figure_numbers": 8
 }
