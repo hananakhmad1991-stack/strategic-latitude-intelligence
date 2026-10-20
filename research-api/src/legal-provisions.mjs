@@ -47,6 +47,9 @@ function matchRank(x,q,laws,articles){
 export function legalProvisionEvidence(question,max=3){
  const q=norm(question),refs=explicitLaws(q),articles=articleNumbers(q),maxItems=Math.max(0,Math.min(6,Number(max)||0));
  if(!q||!maxItems)return [];
+ // A bare article number cannot identify an instrument. Never choose one by
+ // topic aliases such as "energi" when multiple statutes contain Pasal 2.
+ if(articles.length&&!refs.length)return [];
  return verified.items.filter(sourceValid).map(x=>({x,score:matchRank(x,q,refs,articles)}))
   .filter(z=>z.score>=0).sort((a,b)=>b.score-a.score||
     a.x.law_node_id.localeCompare(b.x.law_node_id)||
