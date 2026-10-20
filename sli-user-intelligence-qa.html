@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src https://sli-user-intelligence.hananakhmad1991.workers.dev; base-uri 'none'; form-action 'none'">
+<title>SLI | Uji Koneksi Akun Privat</title>
+<style>
+:root {color-scheme:light; font: 16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif; color:#18243c; background:#f3f6fb}
+* {box-sizing:border-box}
+main {max-width:780px; margin:52px auto; padding:0 18px}
+header {margin-bottom:28px} .eyebrow {font-size:.78rem; letter-spacing:.12em; color:#4767a0; font-weight:700}
+h1 {font-size:clamp(1.6rem,4vw,2.15rem); margin:7px 0 9px; line-height:1.22}
+p {margin:8px 0;color:#43536e}
+.panel {background:white; border:1px solid #dee5ef; border-radius:15px; padding:24px; box-shadow:0 7px 24px #15254909; margin:18px 0}
+.controls {display:flex; gap:12px; flex-wrap:wrap; margin:20px 0}
+.btn {display:inline-flex;align-items:center;justify-content:center;background:#153b7c;color:white;text-decoration:none;border:0;border-radius:9px;padding:11px 17px;font:inherit;cursor:pointer}
+.btn.secondary {background:#e7edf7;color:#173665}
+.btn:disabled {opacity:.6;cursor:not-allowed}
+.checks {display:grid;gap:12px;margin-top:22px}
+.check {border:1px solid #e4e9f1;border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.check b {display:block}
+.check small {display:block;color:#5d6c83;max-width:520px}
+.status {font-size:.86rem;font-weight:700;color:#5a6880}
+.status.good {color:#16704e}.status.bad{color:#ac3045}.status.pending{color:#976417}
+#summary {white-space:pre-wrap;word-break:break-word;font-size:.93rem;min-height:1.5rem;color:#40536f}
+aside {font-size:.87rem;color:#576782;margin-top:25px}
+a {color:#2254a2}
+</style>
+<script defer src="./js/sli-user-intelligence-qa.js"></script>
+</head>
+<body>
+<main>
+<header>
+<div class="eyebrow">STRATEGIC LATITUDE INTELLIGENCE · OWNER QA</div>
+<h1>Uji koneksi akun privat</h1>
+<p>Periksa login Cloudflare Access, preferensi D1, dan inbox secara <strong>read-only</strong> dari domain GitHub Pages SLI.</p>
+</header>
+<section class="panel" aria-label="Pemeriksaan koneksi">
+<p>Langkah pertama, login ke Worker melalui tautan terpisah. Setelah login sukses, kembali ke halaman ini dan tekan <strong>Periksa koneksi</strong>.</p>
+<div class="controls">
+<a class="btn secondary" href="https://sli-user-intelligence.hananakhmad1991.workers.dev/api/me" target="_blank" rel="noopener noreferrer">1. Login Cloudflare Access ↗</a>
+<button class="btn" id="check" type="button">2. Periksa koneksi</button>
+</div>
+<div class="checks" aria-live="polite">
+<div class="check"><div><b>Identitas akun</b><small>GET /api/me</small></div><span id="me" class="status">Belum diuji</span></div>
+<div class="check"><div><b>Preferensi watchlist</b><small>GET /api/preferences</small></div><span id="preferences" class="status">Belum diuji</span></div>
+<div class="check"><div><b>Inbox privat</b><small>GET /api/inbox?limit=1</small></div><span id="inbox" class="status">Belum diuji</span></div>
+</div>
+<p id="summary" role="status"></p>
+</section>
+<aside><strong>Keamanan:</strong> Halaman uji ini tidak menyimpan cookie/token, tidak menampilkan email atau isi inbox, dan tidak mengubah data akun. Jika login di Worker berhasil tetapi pengujian dari sini gagal, mungkin ada hambatan cookie lintas situs, bukan kegagalan database. Dashboard utama tetap nonaktif sampai QA selesai.</aside>
+</main>
+</body>
+</html>
