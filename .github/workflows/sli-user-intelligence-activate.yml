@@ -1,0 +1,101 @@
+name: SLI Private User Backend — Manual Cloudflare Activation
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "verify checks Cloudflare Access + D1 without writing; deploy requires an explicit confirmation."
+        required: true
+        type: choice
+        default: verify
+        options:
+          - verify
+          - deploy
+      confirmation:
+        description: "For deploy only, type exactly DEPLOY_PRIVATE_SLI"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sli-private-user-worker-activation
+  cancel-in-progress: false
+
+jobs:
+  activation:
+    name: Verify secure Access/D1 and optionally deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: sli-user-intelligence-production
+    env:
+      CF_ACCOUNT_ID: ${{ secrets.SLI_CF_ACCOUNT_ID }}
+      CF_API_TOKEN: ${{ secrets.SLI_CF_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.SLI_CF_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.SLI_CF_API_TOKEN }}
+      SLI_ACCESS_AUD: ${{ vars.SLI_ACCESS_AUD }}
+      SLI_API_HOSTNAME: ${{ vars.SLI_API_HOSTNAME }}
+      SLI_ACCESS_ISSUER: ${{ vars.SLI_ACCESS_ISSUER }}
+      SLI_D1_DATABASE_ID: ${{ vars.SLI_D1_DATABASE_ID }}
+      MODE: ${{ inputs.mode }}
+      CONFIRM: ${{ inputs.confirmation }}
+    defaults:
+      run:
+        working-directory: services/sli-user-intelligence
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Require manual confirmation and configured private credentials
+        run: |
+          set -eu
+          if [ "$MODE" != verify ] && [ "$MODE" != deploy ]; then exit 1; fi
+          if [ "$MODE" = deploy ] && [ "$CONFIRM" != DEPLOY_PRIVATE_SLI ]; then
+            echo "::error::Deployment confirmation string missing"
+            exit 1
+          fi
+          for v in CF_ACCOUNT_ID CF_API_TOKEN SLI_ACCESS_AUD SLI_API_HOSTNAME SLI_ACCESS_ISSUER SLI_D1_DATABASE_ID; do
+            if [ -z "$(printenv "$v")" ]; then
+              echo "::error::Required Cloudflare secret or environment variable missing: $v"
+              exit 1
+            fi
+          done
+      - name: Validate source, signature handling and private data isolation
+        run: |
+          set -eu
+          node --test tests/*.test.mjs
+      - name: Confirm EXISTING Access app, CORS, allow policies, and D1 with Cloudflare API
+        run: node scripts/cloudflare-activation-preflight.mjs
+      - name: Render ephemeral Wrangler config after Access gate is proven
+        run: node scripts/render-wrangler-config.mjs .
+      - name: Apply private D1 migration (manual deploy only)
+        if: ${{ inputs.mode == 'deploy' }}
+        run: npx --yes wrangler@4 d1 migrations apply sli-user-intelligence --remote --config .wrangler.activation.toml
+      - name: Deploy exact Access-protected Worker custom domain (manual deploy only)
+        if: ${{ inputs.mode == 'deploy' }}
+        run: npx --yes wrangler@4 deploy --config .wrangler.activation.toml
+      - name: Reject public unauthenticated access and verify OPTIONS CORS (manual deploy only)
+        if: ${{ inputs.mode == 'deploy' }}
+        run: |
+          set -eu
+          url="https://${SLI_API_HOSTNAME}/api/me"
+          status="$(curl -sS --max-time 15 -o /dev/null -w '%{http_code}' "$url")"
+          if [ "$status" != 302 ] && [ "$status" != 401 ] && [ "$status" != 403 ]; then
+            echo "::error::Protected API did not reject unauthenticated access (HTTP $status)"
+            exit 1
+          fi
+          echo "Unauthenticated access blocked (HTTP $status)"
+          cors_status="$(curl -sS --max-time 15 -D /tmp/sli-private-cors.headers -o /dev/null -w '%{http_code}' \
+            -X OPTIONS "https://${SLI_API_HOSTNAME}/api/preferences" \
+            -H 'Origin: https://hananakhmad1991-stack.github.io' \
+            -H 'Access-Control-Request-Method: PUT' \
+            -H 'Access-Control-Request-Headers: content-type')"
+          if [ "$cors_status" != 200 ] && [ "$cors_status" != 204 ]; then
+            echo "::error::Access CORS OPTIONS response HTTP $cors_status; do NOT enable static client"
+            exit 1
+          fi
+          grep -qi '^access-control-allow-origin: https://hananakhmad1991-stack.github.io' /tmp/sli-private-cors.headers
+          grep -qi '^access-control-allow-credentials: true' /tmp/sli-private-cors.headers
+          echo "Preflight CORS accepted for exact GitHub Pages origin. Manual two-account browser QA still required."
