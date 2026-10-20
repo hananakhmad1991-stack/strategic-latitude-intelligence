@@ -24,9 +24,9 @@ function validManifest(manifest){
  }
  return true;
 }
-function significantTokens(value){
+function significantTokens(value,maxTokens=32){
  return [...new Set((String(value||"").toLowerCase().match(/[\p{L}\p{N}]{5,}/gu)||[])
-  .filter(w=>!/^(?:proyek|project|dalam|untuk|bahwa|tahun|yang|mereka|source|sumber|dengan)$/.test(w)))].slice(0,32);
+  .filter(w=>!/^(?:proyek|project|dalam|untuk|bahwa|tahun|yang|mereka|source|sumber|dengan)$/.test(w)))].slice(0,maxTokens);
 }
 export function screenClaimAgainstPdfPages(claim,manifest,{maxCandidates=3}={}){
  const base={schema:"sli-pdf-page-screen-v1",
@@ -38,7 +38,7 @@ export function screenClaimAgainstPdfPages(claim,manifest,{maxCandidates=3}={}){
  const wanted=numericTokens(claim).slice(0,14).map(n=>n.raw);
  const ranked=manifest.pages.map(p=>{
   const pageText=p.text_excerpt;
-  const pageTerms=new Set(significantTokens(pageText));
+  const pageTerms=new Set(significantTokens(pageText,1200));
   const matching_terms=terms.filter(t=>pageTerms.has(t));
   const missing_numbers=compareQuotedNumbers(claim,pageText).missing;
   const numeric_matches=wanted.filter(x=>!missing_numbers.includes(x));
