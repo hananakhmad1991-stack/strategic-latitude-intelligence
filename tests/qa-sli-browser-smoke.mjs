@@ -97,6 +97,94 @@ await check("DERGUBA AI: optional methods lab expands on demand",{width:1366,hei
  await page.waitForFunction(()=>document.getElementById("raAdvancedLab")?.open===true,null,{timeout:7000});
  assert.ok(await page.locator("#raMethod").count()===1,"Research methodology control missing");
 });
+
+await check("Homepage: fewer topics, source links within sector cards",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("index.html#home"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.locator(".sli-portal-topic-card").first().waitFor({timeout:22000});
+ assert.equal(await page.locator(".sli-portal-topic-card").count(),6,"Expected 6 subject cards with source links");
+ assert.equal(await page.locator(".sli-portal-sector-library,#sliPortalDataLibrary").count(),0,"Redundant Data Library category must be absent");
+ const topics=page.locator(".sli-portal-topic-links a");
+ assert.equal(await topics.count(),9,"Every recovered library domain must link from its parent topic");
+ const link=page.locator('.sli-portal-topic-card:has(a[href="#energy"]) .sli-portal-topic-links a[href*="#power"]');
+ await link.click();
+ await page.waitForURL(/sli-sector-data-library\.html#power/,{timeout:15000});
+ await page.locator("#powerTable table").waitFor({timeout:20000});
+ assert.ok((await page.locator("#powerTable tbody tr").count())>0,"PLN source data not rendered");
+});
+await check("Source integration: provincial search and IEA dataset filters",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("sli-sector-data-library.html#socio"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.waitForFunction(()=>document.getElementById("libStatus")?.dataset.status==="ready",null,{timeout:25000});
+ assert.ok(await page.locator("#socioTable tbody tr").count()>0,"Missing source-linked socioeconomic records");
+ const before=await page.locator("#socioTable tbody tr").count();
+ await page.locator("#socioQuery").fill("Aceh");
+ await page.waitForTimeout(150);
+ const after=await page.locator("#socioTable tbody tr").count();
+ assert.ok(after>0&&after<before,"Provincial search must narrow real rows: "+before+" → "+after);
+ await page.locator("#ieaGroup option").first().waitFor({timeout:12000});
+ assert.ok((await page.locator("#ieaGroup option").count())>1,"IEA scenario options missing");
+ await page.locator("#ieaGroup").selectOption({index:1});
+ assert.ok(await page.locator("#ieaDemand table").count()>0,"IEA table not updated by group filter");
+});
+await check("IDX sector watchlist: selected tab changes tickers",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("index.html#home"),{waitUntil:"domcontentloaded",timeout:30000});
+ const tabs=page.locator("#sliHomeIDXSectors .sli-idx-sectoral-tab");
+ await tabs.first().waitFor({timeout:25000});
+ assert.ok((await tabs.count())>=6,"Missing strategic sector selectors");
+ const initial=await page.locator("#sliHomeIDXSectors .sli-idx-sectoral-tickers").innerText();
+ await tabs.nth(1).click();
+ assert.equal(await tabs.nth(1).getAttribute("aria-pressed"),"true","Sector selection not activated");
+ const next=await page.locator("#sliHomeIDXSectors .sli-idx-sectoral-tickers").innerText();
+ assert.ok(next!==initial,"Sector filter did not change listed companies");
+ const href=await page.locator("#sliHomeIDXSectors .sli-idx-sectoral-ticker").first().getAttribute("href");
+ assert.match(href,/sli-issuer\.html\?ticker=[A-Z0-9]{4}/,"Ticker must link to exact issuer dossier");
+});
+await check("Strategic Map: map province click opens contextual inspector",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("index.html#map"),{waitUntil:"domcontentloaded",timeout:30000});
+ const provinces=page.locator("#sliMapRoot .map-viz .map-province");
+ await provinces.first().waitFor({timeout:35000});
+ assert.ok(await provinces.count()>=30,"Geographic province layer did not render");
+ const withRecords=provinces.filter({hasNotText:"DO_NOT_MATCH"}).first();
+ await withRecords.click({force:true});
+ await page.waitForFunction(()=>document.querySelector("#sliMapRoot .map-results-head h3")?.textContent?.trim().length>0);
+ assert.ok((await page.locator("#sliMapRoot .map-asset-insight").innerText()).length>20,"Right-side inspector missing after map selection");
+ await page.locator("#sliMapRoot .map-expand").click();
+ assert.equal(await page.locator("#sliMapRoot .map-expand").getAttribute("aria-expanded"),"true","Browse matching assets did not expand");
+});
+await check("Chart click and CSV/XLSX/PNG/JPG/PDF/embed exports produce real output",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("index.html#home"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.waitForFunction(()=>!!window.SLIVisualExport&&!!window.SLIVisualFormats,null,{timeout:25000});
+ await page.evaluate(()=>{
+  const root=document.createElement("section");
+  root.id="sliSmokeExports";root.innerHTML='<h3>SLI browser QA source illustration</h3><div class="table-wrap"><table><thead><tr><th>Year</th><th>Observed value</th></tr></thead><tbody><tr><td>2025</td><td>10</td></tr><tr><td>2026</td><td>11</td></tr></tbody></table></div>';
+  document.body.append(root);
+  window.SLIVisualExport.register(root.querySelector("table"),{
+   meta:{title:"SLI browser QA source illustration",source:"Deterministic local QA fixture — not real statistics",sourceUrl:"https://www.bps.go.id",period:"QA only"},
+   getData:()=>({headers:["Year","Observed value"],rows:[["2025","10"],["2026","11"]]})
+  });
+  window.SLIVisualExport.refresh();
+ });
+ const host=page.locator("#sliSmokeExports .sli-visual-export-host");
+ await host.locator(".sli-visual-export-toolbar").waitFor({timeout:12000});
+ await host.locator("tbody tr").first().click();
+ await page.locator(".sli-visual-insight").waitFor({timeout:12000});
+ assert.ok((await page.locator(".sli-visual-insight").innerText()).includes("2025"),"Click for chart/table insight did not show selected point");
+ const signatures={csv:null,xlsx:"504b",png:"89504e47",jpg:"ffd8",pdf:"25504446"};
+ for(const [format,magic] of Object.entries(signatures)){
+  const [download]=await Promise.all([page.waitForEvent("download",{timeout:20000}),host.locator('[data-sli-export-format="'+format+'"]').click()]);
+  assert.ok(download.suggestedFilename().endsWith("."+format),"Wrong export extension for "+format);
+  const bytes=fs.readFileSync(await download.path());
+  assert.ok(bytes.length>100,"Empty "+format+" export");
+  if(magic)assert.equal(bytes.subarray(0,magic.length/2).toString("hex"),magic,"Invalid "+format+" file signature");
+  if(format==="csv")assert.ok(bytes.toString("utf8").includes("Observed value"),"CSV missing column content");
+  console.log("Verified",format,bytes.length,"bytes");
+ }
+ await page.context().grantPermissions(["clipboard-read","clipboard-write"]);
+ await host.locator('[data-sli-export-format="embed"]').click();
+ await page.waitForFunction(()=>document.querySelector("#sliSmokeExports .sli-visual-export-feedback")?.textContent?.includes("copied"),null,{timeout:8000});
+ const copied=await page.evaluate(()=>navigator.clipboard.readText());
+ assert.ok(copied.includes("<iframe")&&copied.includes("sli_embed="),"Embed does not contain an attributable frame");
+});
+
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");
 console.log("Browser smoke:",report.tests.filter(x=>x.status==="pass").length,"passed /",report.tests.length,"total");
