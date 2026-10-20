@@ -8,7 +8,7 @@ Cloudflare supports securing a production `workers.dev` URL with an Access self-
 sli-user-intelligence.<your-actual-cloudflare-account-subdomain>.workers.dev
 ```
 
-The account subdomain is retrieved from Cloudflare at `GET /accounts/{account_id}/workers/subdomain`; **do not guess it** and do not substitute the hostname from an unrelated Worker. The deployment preflight verifies the suffix belongs to this Cloudflare account, checks the **exact** Access app audience and hostname (no wildcard or public bypass), credentialed CORS, Allow policies, and the D1 database. The generated deployment config enables the one production `workers.dev` route but disables Worker **preview URLs**. A custom domain is still preferred for a public paid SLI launch.
+For Worker-level Access applications (`destinations.type = worker`), the preflight also checks the immutable `worker_id` against the exact named Worker through the Cloudflare Workers Scripts Search API. A preview-only or unrelated Worker ID cannot pass the production check. The API token must have Worker scripts metadata read access.\n\nThe account subdomain is retrieved from Cloudflare at `GET /accounts/{account_id}/workers/subdomain`; **do not guess it** and do not substitute the hostname from an unrelated Worker. The deployment preflight verifies the suffix belongs to this Cloudflare account, checks the **exact** Access app audience and hostname (no wildcard or public bypass), credentialed CORS, Allow policies, and the D1 database. The generated deployment config enables the one production `workers.dev` route but disables Worker **preview URLs**. A custom domain is still preferred for a public paid SLI launch.
 
 ### Owner steps for domain-free pilot
 

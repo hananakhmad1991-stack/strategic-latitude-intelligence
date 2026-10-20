@@ -44,10 +44,48 @@ const pilotAPI=async (url)=>{
 const pilotVerified=await preflight(pilotEnv,pilotAPI);
 assert.equal(pilotVerified.mode,"workers_dev_pilot");
 assert.equal(pilotVerified.hostname,pilotEnv.SLI_API_HOSTNAME);
+// Worker-level Access applications use destination.worker_id, not a hostname URI.
+// The worker_id must be validated against this account's immutable Worker script ID.
+const workerId="a".repeat(32);
+const workerOnlyApp={...pilotApp,domain:undefined,
+ destinations:[{type:"worker",worker_id:workerId}]};
+const workerAPI=async (url,chosenApp=workerOnlyApp)=>{
+ let result=[];
+ if(url.includes("/workers/subdomain"))result={subdomain:"test-account"};
+ else if(url.includes("/workers/scripts-search?"))result=[
+  {id:workerId,script_name:"sli-user-intelligence",environment_is_default:true}];
+ else if(url.includes("/access/apps/app-id/policies"))result=[{decision:"allow"}];
+ else if(url.includes("/access/apps?"))result=[chosenApp];
+ else if(url.includes("/d1/database/"))result={uuid:env.SLI_D1_DATABASE_ID};
+ else throw Error("Unexpected Cloudflare API "+url);
+ return new Response(JSON.stringify({success:true,result}),{status:200});
+};
+assert.equal((await preflight(pilotEnv,url=>workerAPI(url))).mode,"workers_dev_pilot");
+await assert.rejects(preflight(pilotEnv,url=>workerAPI(url,{
+ ...workerOnlyApp,destinations:[{type:"preview_worker",worker_id:workerId}]})),
+ /Access application/,"Preview-only Worker Access cannot authorize production");
+await assert.rejects(preflight(pilotEnv,url=>workerAPI(url,{
+ ...workerOnlyApp,destinations:[{type:"worker",worker_id:"b".repeat(32)}]})),
+ /Access application/,"Unrelated Worker destination must not authorize production");
+await assert.rejects(preflight(pilotEnv,url=>workerAPI(url,{
+ ...workerOnlyApp,destinations:[{type:"worker",worker_id:workerId,
+  overrides:[{behavior:"public",path_pattern:"/api/*"}]}]})),
+ /Access application/,"Public API path overrides must be rejected");
+await assert.rejects(preflight(pilotEnv,async url=>{
+ let response=await workerAPI(url);
+ if(url.includes("/workers/scripts-search?")){
+  response=new Response(JSON.stringify({success:true,result:[
+   {id:workerId,script_name:"sli-research-owner-test",environment_is_default:true}
+  ]}),{status:200});
+ }
+ return response;
+}),/Worker script ID/,"Worker ID must be proven for exact script name");
+
 await assert.rejects(preflight({...pilotEnv,SLI_API_HOSTNAME:"sli-user-intelligence.other-account.workers.dev"},pilotAPI),
  /does not match this Cloudflare account/);
 await assert.rejects(preflight(pilotEnv,async url=>{
- const value=url.includes("/access/apps?")?[]:url.includes("/workers/subdomain")?{subdomain:"test-account"}:null;
+ const value=url.includes("/access/apps?")?[]:url.includes("/workers/subdomain")?{subdomain:"test-account"}:
+  url.includes("/workers/scripts-search?")?[{id:workerId,script_name:"sli-user-intelligence",environment_is_default:true}]:null;
  return new Response(JSON.stringify({success:true,result:value}),{status:200});
 }),/Access application/);
 
