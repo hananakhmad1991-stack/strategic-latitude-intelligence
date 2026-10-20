@@ -147,3 +147,7 @@ body.sli-dashboard-unified .sli-platform-sector-menu{
  top:calc(var(--sli-mast-offset, 80px) + 7px)!important;
  max-height:max(140px,calc(100dvh - var(--sli-mast-offset, 80px) - 22px))!important;
 }
+
+/* Nested evidence trails: source datasets are part of the sector, not top-level modules. */
+.sli-platform-sector-group a.sli-platform-topic-source{padding:1px 0 2px 12px!important;border-left:2px solid #617d8f;font-size:10px!important;color:#d9c59b!important;margin:-3px 0 2px 8px}
+.sli-platform-sector-group a.sli-platform-topic-source:hover,.sli-platform-sector-group a.sli-platform-topic-source:focus-visible{border-left-color:#e2bf80;color:#ffdfaa!important}
