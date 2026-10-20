@@ -1,0 +1,100 @@
+/* Standalone, focused SLI IDX issuer dossier. All internal details use the SAME published
+ * issuer and corporate registries as Entity Intelligence. Quote widgets stay inside provider iframe.
+ */
+(()=>{"use strict";
+const $=id=>document.getElementById(id);
+const id=()=>document.documentElement.lang==="id";
+const T=(en,bahasa)=>id()?bahasa:en;
+const E=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=String(txt);return n};
+const safe=(url)=>{try{const a=new URL(url);return a.protocol==="https:"&&!a.username&&!a.password?a.href:null}catch{return null}};
+const link=(url,txt,external=false)=>{const a=E("a",null,txt);a.href=url;if(external){a.target="_blank";a.rel="noopener noreferrer"}return a};
+const member=new Map();
+function tickerFrom(locationObject){
+ const p=new URLSearchParams(locationObject.search);
+ const candidate=p.get("ticker")||p.get("tvwidgetsymbol")||p.get("symbol")||"";
+ const normalized=candidate.trim().toUpperCase();
+ const raw=normalized.startsWith("IDX:")?normalized.slice(4):normalized;
+ return /^[A-Z0-9]{4}$/.test(raw)?raw:null;
+}
+const typed=(label,value,parent)=>{if(value===null||value===undefined||value==="")return;
+ parent.append(E("dt",null,label),E("dd",null,String(value)))};
+function sourceLink(parent,url,caption){const path=safe(url);if(path)parent.append(link(path,caption+" ↗",true))}
+function tradingview(host,ticker,name){
+ const outer=E("div","sli-issuer-tv");
+ outer.append(E("h3",null,T("TradingView market quotation · IDX:"+ticker,"Harga saham dari TradingView · IDX:"+ticker)));
+ outer.append(E("p","sli-issuer-tv-disclosure",T("Displayed by TradingView independently in its official widget. Data may be delayed. SLI does not copy or relicense any quote.","Ditampilkan langsung oleh widget resmi TradingView. Data bisa tertunda. SLI tidak menyalin atau mendistribusikan ulang harga saham.")));
+ const frame=E("div","tradingview-widget-container");
+ const mount=E("div","tradingview-widget-container__widget");
+ frame.append(mount);
+ const footer=E("div","tradingview-widget-copyright");
+ footer.append(link("https://www.tradingview.com/symbols/IDX-"+ticker+"/",ticker+" on TradingView ↗",true));
+ frame.append(footer);
+ const src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js";
+ const config={symbols:[[ticker+" · "+name,"IDX:"+ticker+"|1D"]],chartType:"area",lineWidth:2,lineType:0,colorTheme:"dark",isTransparent:true,
+  locale:id()?"id":"en",fontFamily:"system-ui",dateRanges:["1d|1","1m|30","3m|60","12m|1D","60m|1W"],autosize:true,width:"100%",height:"100%",
+  showSymbolLogo:true,hideMarketStatus:false,changeMode:"price-and-percent"};
+ const s=E("script");s.type="text/javascript";s.src=src;s.async=true;s.textContent=JSON.stringify(config);frame.append(s);
+ outer.append(frame);host.append(outer);
+}
+function render(data,ticker,groups){
+ const root=$("sliIssuerDossier");root.replaceChildren();
+ const name=data.name||ticker, related=groups.records.filter(n=>n.exchange==="IDX"&&n.ticker===ticker);
+ root.append(E("span","sli-issuer-kicker",T("SOURCED ENTITY DOSSIER · IDX","PROFIL ENTITAS BERSUMBER · BEI")));
+ const heading=E("div","sli-issuer-title");
+ const mark=window.SLIEntityIdentity?.brand?.(name,"building");
+ if(mark)heading.append(mark);heading.append(E("h1",null,name));root.append(heading);
+ root.append(E("span","sli-issuer-ticker","IDX:"+ticker),E("p","sli-issuer-sector",T("Sector","Sektor")+": "+(data.sector||T("Classification pending","Klasifikasi belum diverifikasi"))));
+ const notice=E("p","sli-issuer-notice",data.verification==="official_exchange_snapshot"?
+ T("Official IDX directory snapshot. Listing and financial information may have changed since the date.","Snapshot direktori BEI resmi. Informasi pencatatan dan keuangan dapat berubah."):
+ T("This ticker comes from a curated SLI catalogue. Current listing, sector and shareholding need confirmation against official BEI records.","Kode berasal dari katalog kurasi SLI. Status pencatatan, sektor, dan kepemilikan perlu dicocokkan kembali dengan catatan resmi BEI."));
+ root.append(notice);
+ const content=E("div","sli-issuer-content"),left=E("section","sli-issuer-main"),side=E("aside","sli-issuer-side");
+ const facts=E("dl","sli-issuer-facts");
+ typed(T("Ticker / exchange","Kode saham / bursa"),"IDX:"+ticker,facts);
+ typed(T("Company name · source register","Nama perusahaan · registri"),name,facts);
+ typed(T("Strategic sector","Sektor strategis"),data.sector,facts);
+ typed(T("Source register date","Tanggal registri"),data.source_as_of||"2026-10-20",facts);
+ typed(T("Current BEI listing verified?","Status pencatatan BEI sudah pasti?"),data.verification==="official_exchange_snapshot"?T("Official snapshot only","Snapshot resmi bertanggal"):T("Pending official reconciliation","Menunggu rekonsiliasi resmi"),facts);
+ left.append(E("h2",null,T("Issuer profile and provenance","Profil emiten dan sumber")),facts);
+ const sources=E("div","sli-issuer-links");
+ sourceLink(sources,data.source_url,T("Official issuer profile (BEI)","Profil emiten resmi (BEI)"));
+ sourceLink(sources,"https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan/",T("BEI financial and annual reports","Laporan keuangan dan tahunan BEI"));
+ sources.append(link("./sli-entities.html?ticker="+encodeURIComponent(ticker)+"#"+encodeURIComponent("company:idx:"+ticker),T("Cross-check full SLI entities register ↗","Periksa registri lengkap Entitas SLI ↗")));
+ sources.append(link("./sli-research-ai.html?prompt="+encodeURIComponent(T("Analyze IDX:"+ticker+" ("+name+") against official company disclosures, audited balance sheet, SLI corporate ownership sources and strategic sector risks. Do not invent prices or market caps.","Analisis IDX:"+ticker+" ("+name+") dari keterbukaan emiten BEI, laporan keuangan diaudit, kepemilikan korporasi SLI, dan risiko sektoral. Jangan mengarang harga atau kapitalisasi.")),T("Research AI ↗","Research AI ↗")));
+ left.append(sources);
+ const relate=E("section","sli-issuer-related");relate.append(E("h2",null,T("Group and ownership links","Hubungan grup dan kepemilikan")));
+ if(!related.length){relate.append(E("p",null,T("A verified corporate group relationship has not been matched for this issuer. Do not infer ownership.","Hubungan grup yang terverifikasi belum ditemukan dalam registri. Jangan asumsikan kepemilikan.")));}
+ else {
+  for(const r of related){
+   const block=E("article","sli-issuer-related-row");
+   block.append(E("strong",null,r.name),E("small",null,T("Relationship","Hubungan")+": "+(r.relationship||"—")+(r.ownership_pct!=null?" · "+r.ownership_pct+"%":"")));
+   const source=E("div","sli-issuer-links");
+   sourceLink(source,r.source_url,T("Evidence","Bukti"));
+   if(r.group)source.append(link("./sli-entities.html?group="+encodeURIComponent(r.group),T("View company group ↗","Lihat grup perusahaan ↗")));
+   block.append(source);relate.append(block);
+  }
+ }
+ left.append(relate);
+ tradingview(side,ticker,name);
+ side.append(E("p","sli-issuer-missing",T("SLI has not published a licensed, auditable IDX EOD market-cap quote for this ticker. The embedded chart belongs to the provider and is separate from SLI internal statistics.",
+ "SLI belum menerbitkan kutipan kapitalisasi/harga EOD berizin yang bisa diaudit untuk emiten ini. Grafik tersemat milik penyedia dan terpisah dari statistik internal SLI.")));
+ content.append(left,side);root.append(content);
+}
+async function load(){
+ const ticker=tickerFrom(location);
+ if(!ticker){$("sliIssuerStatus").textContent=T("No valid IDX ticker supplied. Return to the homepage.","Kode saham IDX tidak valid. Kembali ke beranda.");return}
+ try{
+  const paths=["./data/sli-idx-issuer-universe.json","./data/sli-corporate-group-registry.json"];
+  const files=await Promise.all(paths.map(p=>fetch(p,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()})));
+  if(files[0].schema!=="sli-idx-issuer-universe-v1"||!Array.isArray(files[0].records)||!Array.isArray(files[1].records))throw Error("Invalid issuer sources");
+  const item=files[0].records.find(x=>x.ticker===ticker&&x.exchange==="IDX");
+  if(!item){$("sliIssuerStatus").textContent=T("This ticker is not in the SLI IDX register; no fictional profile is shown.","Kode ini belum ada di registri emiten SLI; tidak ada profil pengganti yang dibuat.");return}
+  document.title=ticker+" · "+item.name+" | SLI Entity Intelligence";
+  $("sliIssuerStatus").textContent=T("Focused company dossier · ","Profil emiten khusus · ")+"IDX:"+ticker;
+  render({...item,source_as_of:files[0].as_of},ticker,files[1]);
+ }catch(e){console.error("[SLI issuer]",e);$("sliIssuerStatus").textContent=T("Official source registry could not be loaded.","Sumber registri belum dapat dimuat.")}
+}
+document.addEventListener("sli:languagechange",()=>load());
+document.addEventListener("DOMContentLoaded",load,{once:true});
+window.SLIIssuerRoute={tickerFrom};
+})();
