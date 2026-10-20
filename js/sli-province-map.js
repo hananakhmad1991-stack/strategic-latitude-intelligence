@@ -5,7 +5,7 @@
 "use strict";
 const NS="http://www.w3.org/2000/svg",GEO="./data/indonesia-provinces.geojson";
 let geoPromise=null;
-const id=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("id").replace(/[^a-z0-9]+/g," ").trim();
+const id=x=>String(x||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("id").replace(/[^a-z0-9]+/g," ").trim().replace(/^daerah istimewa yogyakarta$/,"di yogyakarta").replace(/^sumatera /,"sumatra ");
 function load(){
  if(!geoPromise)geoPromise=fetch(GEO,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("GeoJSON HTTP "+r.status);return r.json()}).then(g=>{
   if(g?.type!=="FeatureCollection"||g.features?.length!==38||new Set(g.features.map(f=>id(f.properties?.name))).size!==38)throw Error("Provincial boundaries incomplete");
