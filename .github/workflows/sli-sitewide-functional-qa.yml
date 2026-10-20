@@ -23,6 +23,11 @@ on:
       - 'tests/qa-sli-geopolitics-chapter.mjs'
       - 'js/sli-home-portal.js'
       - 'tests/qa-sli-home-portal.mjs'
+      - 'tests/qa-sli-idx-heatmap.mjs'
+      - 'js/sli-idx-heatmap.js'
+      - 'css/sli-idx-heatmap.css'
+      - 'data/sli-idx-market-snapshot.json'
+      - 'js/sli-entities.js'
       - 'tests/qa-sli-navigation-chrome.mjs'
       - 'sli-research-ai.html'
       - 'js/sli-research-assistant.js'
@@ -83,7 +88,7 @@ jobs:
         with:
           node-version: '22'
       - name: Verify all critical scripts, navigation, filters and export controls
-        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs tests/qa-sli-food-agriculture.mjs tests/qa-sli-cross-sector-integration.mjs tests/qa-sli-province-map.mjs
+        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-idx-heatmap.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs tests/qa-sli-food-agriculture.mjs tests/qa-sli-cross-sector-integration.mjs tests/qa-sli-province-map.mjs
       - name: Sitewide link, inline runtime and search destination integrity
         run: node --test tests/qa-sli-site-integrity.mjs
       - name: Geopolitical chapter JavaScript syntax
@@ -91,6 +96,8 @@ jobs:
           node --check js/sli-geopolitics-chapter.js
           node --check js/sli-geopolitical-timeline.js
           node --check js/sli-navigation.js
+          node --check js/sli-idx-heatmap.js
+          node --check js/sli-entities.js
           node --check js/food-agriculture-intelligence.js
           node --check js/food-governance-hierarchy.js
           node --check js/food-governance-tree.js
