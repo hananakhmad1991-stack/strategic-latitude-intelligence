@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-20T18:40:29.233486+00:00",
+  "checked_at_utc": "2026-10-20T21:36:36.940009+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -20,6 +20,23 @@
       "status": "Unverified aggregated news lead"
     },
     {
+      "topic": "Asian LNG and gas",
+      "topic_id": "lng_asia",
+      "type": "Gas supply",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "general",
+      "title": "Do not worry too much about European gas prices - Financial Times",
+      "publisher": "Financial Times",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNeUpHNFdKbkhoVXMzQTJkVm51bXBORzhidEMxdjRKZUl2NHlUZFFvc01LU2Ftb2dTbjAtTXFCLU1Wa3JlOTg1VEhLTUJEZmpEVko4SGUtakpWTVRibWxTVUxCVHg1Y0lnQjVld2Q5X0FIdjVucWRHSU9pZWFxQkVXVmlRRkI?oc=5",
+      "indexed_at_utc": "2026-10-20T11:30:02+00:00",
+      "impact_pathway": "Gas supply changes -> Asian LNG pricing -> power and industrial costs",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
       "topic": "Global crude oil & OPEC supply",
       "topic_id": "oil_supply",
       "type": "Oil markets",
@@ -31,7 +48,7 @@
       "title": "Brent crude edges lower, even after Houthi attacks on Saudi infrastructure - Reuters",
       "publisher": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMmVLc19hd0VSYXIydVNTWENKZ2J5WVNvVDRQUjRfTUJXWGhjOGxGZkFHVm9SNnZzeU9TWUhrYnJTRU1sVFRnX1BwZVd3NHB5a0NLdThkbDRldlg2eHdhTll2b3RnQTJ4U3dHVGczM25FdjJHRGQ5WGJDV2Qxd1hzLV9EcjNWaUQ4cXEzbWVHRzNuS1dGVVNBSmdXWGR6THN1dXhvSUdFS0dMMTJZTnBBZEFfZ2JoYVVFSWNMZw?oc=5",
-      "indexed_at_utc": "2026-10-18T22:23:00+00:00",
+      "indexed_at_utc": "2026-10-19T19:18:06+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -89,7 +106,7 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 3,
+    "oil_gas": 4,
     "coal": 1,
     "nre": 1,
     "electricity": 0,
