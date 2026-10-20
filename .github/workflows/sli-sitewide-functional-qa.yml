@@ -39,6 +39,16 @@ on:
       - 'css/sli-idx-heatmap.css'
       - 'data/sli-idx-market-snapshot.json'
       - 'js/sli-entities.js'
+      - 'sli-entities.html'
+      - 'js/sli-corporate-groups.js'
+      - 'css/sli-corporate-groups.css'
+      - 'css/sli-entities.css'
+      - 'js/i18n-dictionary.js'
+      - 'js/i18n.js'
+      - 'tests/qa-sitewide-indonesian-content.mjs'
+      - 'tests/qa-sli-entities.mjs'
+      - 'tests/qa-sli-corporate-groups.mjs'
+      - 'tests/qa-sli-sector-issuer-explorer.mjs'
       - 'tests/qa-sli-navigation-chrome.mjs'
       - 'tests/qa-sli-cross-dashboard-chrome.mjs'
       - 'sli-research-ai.html'
@@ -88,8 +98,12 @@ on:
       - 'tests/qa-sli-content-quality.mjs'
       - '.github/workflows/sli-sitewide-functional-qa.yml'
   workflow_dispatch:
+  schedule:
+    # Daily full UI/functional QA at 11:47 WIB (best effort, UTC cron).
+    - cron: '47 4 * * *'
 permissions:
   contents: read
+  issues: write
 jobs:
   regression:
     runs-on: ubuntu-latest
@@ -101,6 +115,9 @@ jobs:
           node-version: '22'
       - name: Verify all critical scripts, navigation, filters and export controls
         run: node --test tests/qa-sli-cross-dashboard-chrome.mjs tests/qa-sitewide-functions.mjs tests/qa-sli-decision-terminal.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-idx-heatmap.mjs tests/qa-sli-idx-provider-dossier.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs tests/qa-sli-food-agriculture.mjs tests/qa-sli-cross-sector-integration.mjs tests/qa-sli-province-map.mjs
+      - name: Independently screen entity groups, issuer selector and Indonesian content
+        run: |
+          node --test tests/qa-sli-entities.mjs tests/qa-sli-corporate-groups.mjs tests/qa-sli-sector-issuer-explorer.mjs tests/qa-sitewide-indonesian-content.mjs
       - name: Sitewide link, inline runtime and search destination integrity
         run: node --test tests/qa-sli-site-integrity.mjs
       - name: Geopolitical chapter JavaScript syntax
@@ -129,3 +146,51 @@ jobs:
           node --check js/energy-prices-fiscal.js
       - name: Validate published SLI JSON and asset integrity
         run: node scripts/audit-sli-content-quality.mjs
+
+      - name: Escalate regression for owner review, without self-modifying production
+        if: ${{ always() && github.ref == 'refs/heads/main' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          QA_RESULT: ${{ job.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          MARKER="SLI_UI_QA_SENTINEL_REVIEW"
+          {
+            echo "### SLI Continuous Dashboard QA"
+            echo "- Result before review escalation: ${QA_RESULT}"
+            echo "- Evidence: ${RUN_URL}"
+            echo "- Coverage: static routes, JS, source integrity, bilingual content, entities, issuer selector, sector cards, exports"
+            echo "- Browser rendering and content truth still need independent checks; no autonomous source/fact/code promotion."
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$QA_RESULT" = "success" ]; then
+            echo "Daily source-code dashboard checks green; no issue created."
+            exit 0
+          fi
+          # Leave unresolved review issues open until owner inspects the regression.
+          if ! EXISTING=$(gh issue list --repo "$REPO" --state open --search "$MARKER in:body" --limit 30 --json number --jq '.[0].number // empty'); then
+            echo "::warning::Issue lookup failed; preserve failed QA status without issuing duplicates."
+            exit 0
+          fi
+          if [ -n "$EXISTING" ]; then
+            echo "Already tracked as issue #$EXISTING; avoid duplicate alerts."
+            exit 0
+          fi
+          cat > /tmp/sli-qa-review.md <<EOF
+          The scheduled or push-triggered SLI cross-dashboard QA failed.
+
+          Failed CI run: $RUN_URL
+
+          Review navigation, scrolling, entities, issuer filters, localization, links,
+          charts/exports and changes since the last green deployment. Follow the
+          failed job steps; do not infer a data-source or legal change from a UI failure.
+
+          No automated production repair, deployment rollback, fact rewriting,
+          secrets access, or auto-merging is authorized by this alert.
+
+          $MARKER
+          EOF
+          if ! gh issue create --repo "$REPO" --title "SLI: dashboard QA regression needs review" --body-file /tmp/sli-qa-review.md; then
+            echo "::warning::Could not create an issue; failing QA run remains visible in Actions."
+          fi
