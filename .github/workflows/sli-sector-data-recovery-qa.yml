@@ -1,0 +1,56 @@
+name: SLI Restored Sector Data QA
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'sli-sector-data-library.html'
+      - 'js/sli-sector-data-library.js'
+      - 'css/sli-sector-data-library.css'
+      - 'data/iea-critical-minerals-2026-full-scenarios.json'
+      - 'data/sli-user-dataset-recovery-inventory.json'
+      - 'tests/qa-sli-user-data-visibility.mjs'
+      - 'js/sli-navigation.js'
+      - 'sli-research-ai.html'
+      - '.github/workflows/sli-sector-data-recovery-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'sli-sector-data-library.html'
+      - 'js/sli-sector-data-library.js'
+      - 'css/sli-sector-data-library.css'
+      - 'data/iea-critical-minerals-2026-full-scenarios.json'
+      - 'data/sli-user-dataset-recovery-inventory.json'
+      - 'tests/qa-sli-user-data-visibility.mjs'
+      - '.github/workflows/sli-sector-data-recovery-qa.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JS and source dataset schemas
+        run: |
+          node --check js/sli-sector-data-library.js
+          node --check js/sli-navigation.js
+          node --test tests/qa-sli-user-data-visibility.mjs
+      - name: Validate every page references a real public source dataset
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          inv=json.loads(Path("data/sli-user-dataset-recovery-inventory.json").read_text())
+          assert len(inv["datasets"]) >= 12
+          for row in inv["datasets"]:
+              if row["public_dataset"]:
+                  assert Path(row["public_dataset"]).is_file(), row["public_dataset"]
+              assert row["main_dashboard"] and row["detail_dashboard"]
+          for file in ("sli-sector-data-library.html","js/sli-sector-data-library.js",
+                       "css/sli-sector-data-library.css"):
+              assert Path(file).is_file(), file
+          print("Recovery file paths and dashboard routes valid")
+          PY
