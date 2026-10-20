@@ -106,13 +106,14 @@ function renderDetails(){
    T('N/A · closing price and shares outstanding not ingested','N/A · harga penutupan dan saham beredar belum terindeks'));
   line(T('Closing price × outstanding shares','Harga penutupan × saham beredar'),shown(n.closing_price)&&shown(n.shares_outstanding)&&n.market_cap_as_of?n.closing_price+' × '+n.shares_outstanding+' · '+n.market_cap_as_of:'N/A');
  }else line(T('Market cap','Kapitalisasi pasar'),T('Not applicable: no separately listed shares','Tidak berlaku: tidak ada saham yang dicatatkan tersendiri'));
- for(const [label,value] of [[T('Revenue','Pendapatan'),n.revenue],[T('Net profit','Laba bersih'),n.net_income],[T('Total assets','Total aset'),n.total_assets]]){
+ for(const [label,value] of [[T('Revenue','Pendapatan'),n.revenue],[T('Profit for year (all interests)','Laba tahun berjalan (total)'),n.net_income],[T('Total assets','Total aset'),n.total_assets]]){
   line(label,shown(value)&&n.financial_period&&n.financial_source_url?
   new Intl.NumberFormat(document.documentElement.lang==='id'?'id-ID':'en-US').format(value)+' '+(n.financial_currency||'')+' · '+n.financial_period:'N/A · '+T('report/period pending source verification','perlu laporan dan periode terverifikasi'));
  }
  disclosure.append(fd);
  const note=E('p','sli-cg-small',T('Capitalization is price × issued outstanding shares on the same dated trading session, not company asset value or project investment. Financial statements and shareholder percentages use their own reporting periods. Missing is not zero.','Kapitalisasi = harga saham × jumlah saham beredar pada tanggal perdagangan yang sama; bukan total aset atau nilai proyek. Laporan keuangan dan kepemilikan mengikuti tanggal serta cakupan sendiri. Data kosong bukan nol.'));
  disclosure.append(note);
+ if(n.financial_basis)disclosure.append(E('p','sli-cg-small',T('Reporting basis: ','Basis laporan: ')+n.financial_basis));
  const financeLinks=E('div','sli-cg-source-links');
  if(listing&&n.exchange==='IDX'){
   financeLinks.append(aLink('https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/'+encodeURIComponent(n.ticker),T('IDX issuer profile ↗','Profil emiten BEI ↗')));
