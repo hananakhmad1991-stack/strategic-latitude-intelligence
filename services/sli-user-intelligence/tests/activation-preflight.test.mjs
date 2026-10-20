@@ -84,7 +84,8 @@ await assert.rejects(preflight(pilotEnv,async url=>{
 await assert.rejects(preflight({...pilotEnv,SLI_API_HOSTNAME:"sli-user-intelligence.other-account.workers.dev"},pilotAPI),
  /does not match this Cloudflare account/);
 await assert.rejects(preflight(pilotEnv,async url=>{
- const value=url.includes("/access/apps?")?[]:url.includes("/workers/subdomain")?{subdomain:"test-account"}:null;
+ const value=url.includes("/access/apps?")?[]:url.includes("/workers/subdomain")?{subdomain:"test-account"}:
+  url.includes("/workers/scripts-search?")?[{id:workerId,script_name:"sli-user-intelligence",environment_is_default:true}]:null;
  return new Response(JSON.stringify({success:true,result:value}),{status:200});
 }),/Access application/);
 
