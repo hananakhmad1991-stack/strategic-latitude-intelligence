@@ -59,3 +59,13 @@ test("scheduled evidence builder has pinned stage baseline and no AI self-modifi
  assert.match(worker,/dashboard_evidence:/);
  assert.match(worker,/UNIFIED SLI DASHBOARD SOURCE INDEX/);
 });
+
+test("Food research filters to source-dated Pusdatin records, preserving evidence class",()=>{
+ const payload={records:[
+  {id:"dashboard_foodtrade",title:"Pertanian trade data May 2026",dataset:"food-agriculture-2026.json",text:"Pusdatin pangan rice harga",source_url:"https://satudata.pertanian.go.id/data",period:"2026-04",publisher:"Pusdatin"},
+  {id:"dashboard_mineraltrade",title:"Nickel production",dataset:"usgs-indonesia-minerals-2026.json",text:"mineral report",source_url:"https://www.usgs.gov/data",period:"2025",publisher:"USGS"}]};
+ const matched=selectDashboardEvidence(payload,"Analisis perdagangan pangan dan pertanian Indonesia");
+ assert.equal(matched.length,1);
+ assert.equal(matched[0].dataset,"food-agriculture-2026.json");
+ assert.equal(matched[0].source_type,"public_dashboard_source_record_not_claim_verified");
+});
