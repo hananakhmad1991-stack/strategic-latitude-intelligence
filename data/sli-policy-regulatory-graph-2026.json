@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-20-broad-regulation-expansion-v2",
+  "version": "2026-10-20-national-plus-sulsel-regulation-expansion-v3",
   "updated_at": "2026-10-20",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -70,7 +70,7 @@
     "foreign_law_notes": "Foreign EU and US regulations are separate market-access/transactional applicability branches, not levels in Indonesian hierarchy; check destination, product nomenclature, counterparty, implementation dates, license requirements and foreign jurisdictional scope.",
     "regional_coverage": "Initial verified national and selected local examples. All provincial/city legal sources must be progressively catalogued; no nationwide exhaustive coverage claim.",
     "source_update_policy": "Automated JDIH/news monitoring creates review candidates; enactment, amendment, repeal and jurisdiction are not automatically legally determined from a news headline or page fingerprint. Expansion 20 Oct 2026: 23 source-linked nationally relevant instruments incl. 2026 amendments; links to official JDIH BPK records do not by themselves certify full consolidated current text, MK jurisprudence or future updates.",
-    "regional_coverage_detail": "Wilayah pada setiap instrumen adalah cakupan administratif asal/otoritas, bukan penetapan bahwa izin atau aturan tersebut diterapkan persis demikian pada setiap proyek. Pemilihan lokasi proyek perlu kajian RTRW, RDTR, KKPR, Perda serta kewenangan lokal.",
+    "regional_coverage_detail": "Wilayah pada setiap instrumen adalah cakupan administratif asal/otoritas, bukan penetapan bahwa izin atau aturan tersebut diterapkan persis demikian pada setiap proyek. Pemilihan lokasi proyek perlu kajian RTRW, RDTR, KKPR, Perda serta kewenangan lokal. Four individual South Sulawesi Perda source records entered 20 October 2026: RTRW, RPPLH, provincial food reserve, and regional taxation.",
     "legal_status_explanation": "Berlaku dengan perubahan is NOT the same as repealed. Histories distinguish amendment, partial repeal and entire repeal; verified legal links carry source and date. Future source discoveries stay pending until official text reviewed.",
     "regulatory_topic_coverage": "Extended digital (ITE/PSTE/SPBE/PMSE 2026), food (Bapanas/CPP), regional fiscal, investment, mining authority, tax/carbon and finance/P2SK 2026. Discovery is continuously incomplete, including most Perda."
   },
@@ -2069,6 +2069,70 @@
       "region": "Indonesia",
       "source_checked_at": "2026-10-20",
       "verification_scope": "instrument_identity_and_registry_relationships; not complete consolidated article-by-article legal opinion"
+    },
+    {
+      "id": "perda_sulsel_cpp2025",
+      "tier": "perda",
+      "ref": "Perda Sulsel 7/2025",
+      "label": "Penyelenggaraan Cadangan Pangan Pemerintah Provinsi Sulawesi Selatan",
+      "sector": "food",
+      "source": "https://jdih.sulselprov.go.id/dokumen/no-7-tahun-2025-2",
+      "note": "Aturan cadangan pangan daerah tercatat berlaku pada portal JDIH Sulawesi Selatan per Oktober 2026; jangan menyamakan cadangan provinsi dengan CPP nasional.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Sulawesi Selatan",
+      "evidence": "official_jdih_individual_regulation_record",
+      "region": "Sulawesi Selatan",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "portal document metadata/status at review date; not future validity or site-specific permit conclusion"
+    },
+    {
+      "id": "perda_sulsel_rpplh2024",
+      "tier": "perda",
+      "ref": "Perda Sulsel 5/2024",
+      "label": "Rencana Perlindungan dan Pengelolaan Lingkungan Hidup Sulawesi Selatan",
+      "sector": "environment",
+      "source": "https://jdih.sulselprov.go.id/dokumen/no-5-tahun-2024-2",
+      "note": "Rencana lingkungan daerah resmi; tidak otomatis menetapkan hasil AMDAL untuk masing-masing proyek. Verifikasi kesesuaian RTRW dan perubahan lokal terbaru.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Sulawesi Selatan",
+      "evidence": "official_jdih_individual_regulation_record",
+      "region": "Sulawesi Selatan",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "portal document metadata/status at review date; not future validity or site-specific permit conclusion"
+    },
+    {
+      "id": "perda_sulsel_rtrw2022",
+      "tier": "perda",
+      "ref": "Perda Sulsel 3/2022",
+      "label": "RTRW Provinsi Sulawesi Selatan 2022–2041",
+      "sector": "cross",
+      "source": "https://jdih.sulselprov.go.id/dokumen/no-3-tahun-2022-2",
+      "note": "RTRW provinsi dengan konteks zonasi pesisir; tidak mengganti pemeriksaan RDTR/KKPR bidang tanah, otoritas kabupaten/kota dan hukum baru.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Sulawesi Selatan",
+      "evidence": "official_jdih_individual_regulation_record",
+      "region": "Sulawesi Selatan",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "portal document metadata/status at review date; not future validity or site-specific permit conclusion"
+    },
+    {
+      "id": "perda_sulsel_pdrd2024",
+      "tier": "perda",
+      "ref": "Perda Sulsel 1/2024",
+      "label": "Pajak Daerah dan Retribusi Daerah Sulawesi Selatan",
+      "sector": "cross",
+      "source": "https://jdih.sulselprov.go.id/dokumen/no-1-tahun-2024-2",
+      "note": "Kerangka PDRD Sulawesi Selatan; status 'mencabut' pada JDIH berarti aturan ini mencabut pendahulu tertentu, bukan otomatis dinyatakan telah dicabut.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Sulawesi Selatan",
+      "evidence": "official_jdih_individual_regulation_record",
+      "region": "Sulawesi Selatan",
+      "source_checked_at": "2026-10-20",
+      "verification_scope": "portal document metadata/status at review date; not future validity or site-specific permit conclusion"
     }
   ],
   "edges": [
@@ -2901,6 +2965,26 @@
       "from": "uu4p2sk2026",
       "to": "uu2minerba",
       "type": "commodity_exchange_sector_overlap"
+    },
+    {
+      "from": "perpres125cpp",
+      "to": "perda_sulsel_cpp2025",
+      "type": "regional_implementation_context"
+    },
+    {
+      "from": "uu32env",
+      "to": "perda_sulsel_rpplh2024",
+      "type": "regional_implementation_context"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_sulsel_rtrw2022",
+      "type": "spatial_alignment_review"
+    },
+    {
+      "from": "uu1hkpd2022",
+      "to": "perda_sulsel_pdrd2024",
+      "type": "regional_implementation_context"
     }
   ],
   "cases": [
