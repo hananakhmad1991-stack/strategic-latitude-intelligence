@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-19T18:57:15.708189+00:00",
+  "checked_at_utc": "2026-10-20T01:00:50.080834+00:00",
   "verification_method": "Cabinet + ministry-source matching for ministers, role-linked ESDM leadership profile for director generals, expanded Pertamina/PLN/DPR/DPD/Presidential adviser public-source scans for candidate changes. News headlines cannot auto-replace non-government officeholders.",
   "current_actor_count": 65,
   "official_sources_checked": 22,
@@ -124,6 +124,15 @@
       "status": "Appointment headline candidate only"
     },
     {
+      "topic": "Power utility leadership",
+      "title": "RUPSLB Tetapkan Suroso Isnandar sebagai Direktur Utama PLN - https://www.politikindonesia.id/",
+      "publisher": "https://www.politikindonesia.id/",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPQjFIZ0RsNDRDeC0yMTRqX1VSa2FSZnoyYml0N2d5NVp5NGs4OE5aOV82a3FNVTFqcFRBb01XWUNjQ0VacVNBeXhfMlhUUE1XYnhfV1dyWDZtZV9adlJQeHNKazh3T2Rsa1ZZMk91UTZkMlZ6RzE0VkYwUHB0bEpUeldMUUFXQjFKWU95Ulp2SzhKb09a?oc=5",
+      "published_at_utc": "2026-10-16T07:00:00+00:00",
+      "verified": false,
+      "status": "Appointment headline candidate only"
+    },
+    {
       "topic": "DPR Energy & SOE Commissions",
       "title": "Komisi I DPR dukung pergantian KSAD oleh Presiden Prabowo - ANTARA News Sultra",
       "publisher": "ANTARA News Sultra",
@@ -156,15 +165,6 @@
       "publisher": "Kabar Timur",
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNUlZ4M2VjQ1JoY01nU2tGal80Um5qc0wxbDlVMjBkWXY1aTBRZDZvRGVRaUFCemxJaHZqS0lqRUUwbDVnSEhrZmJMSU94d0pqN0pXcm5qcWVqZWFJUlFWOUs1MFRMNnRlMTdiNFlzZ1pPMFBHN3p6NGNla0FuamtnVWE0U2E4dk9vd3N2T1JiZlFUTWdqRWlnWkpZMkE5ckxYRTRRMkx4ZkxzNEYzVk1kTXpjWkpxOFpkNEhUUWZJYTB5YTjSAcgBQVVfeXFMTnBHbXhWZWtySDZMTDBCeXBOTDhmSlRGOXQyQlY3S3VZNE5uQVQ2NmhERFBFcUxQMFk5eWJnc0NkOEJNNzk2REdHUGlhZ2VkTVp2cGdCZkVXdEFPd19LWjRpUl83YkRlV1Eyd0VncXdLZWFqRVZvUnBkbHVnXzJ4YUVoaUctQkRUbzIwM2JNcFcwb28xRmx6OFhFbmtTbVJXZUtOd2V2MUwyMFJuV2VpdVYwbENHdDExc2lFakxqekdaZXY4SGEzazI?oc=5",
       "published_at_utc": "2026-10-15T23:43:35+00:00",
-      "verified": false,
-      "status": "Appointment headline candidate only"
-    },
-    {
-      "topic": "Power utility leadership",
-      "title": "RUPSLB Tetapkan Suroso Isnandar sebagai Direktur Utama PLN - https://www.politikindonesia.id/",
-      "publisher": "https://www.politikindonesia.id/",
-      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPQjFIZ0RsNDRDeC0yMTRqX1VSa2FSZnoyYml0N2d5NVp5NGs4OE5aOV82a3FNVTFqcFRBb01XWUNjQ0VacVNBeXhfMlhUUE1XYnhfV1dyWDZtZV9adlJQeHNKazh3T2Rsa1ZZMk91UTZkMlZ6RzE0VkYwUHB0bEpUeldMUUFXQjFKWU95Ulp2SzhKb09a?oc=5",
-      "published_at_utc": "2026-10-15T17:35:10+00:00",
       "verified": false,
       "status": "Appointment headline candidate only"
     }
@@ -222,7 +222,7 @@
       "actor": "BPH Migas",
       "primary_source": "https://www.bphmigas.go.id/komite/",
       "status": "source-available-review-needed",
-      "bytes_read": 127856,
+      "bytes_read": 127857,
       "last_published_person": "Wahyudi Anas",
       "listed_person_appears_in_source": true,
       "interpretation": "Source has candidate name; does not prove the role is still held (especially archival news)."
@@ -255,7 +255,7 @@
       "actor": "PT Pertamina (Persero) — parent company",
       "primary_source": "https://sustainability.pertamina.com/id-ID/Sustainability-Commitment/CEO-Statement/",
       "status": "source-unavailable",
-      "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+      "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
     },
     {
       "actor": "PT Pertamina Hulu Indonesia — regional upstream",
@@ -285,7 +285,7 @@
       "actor": "DPR RI · Komisi VI — BUMN",
       "primary_source": "https://www.dpr.go.id/",
       "status": "source-available-name-not-found",
-      "bytes_read": 853842,
+      "bytes_read": 853841,
       "last_published_person": "Anggia Erma Rini",
       "listed_person_appears_in_source": false,
       "interpretation": "No matching name in source; may be an old article, generic homepage or site formatting issue. Do not infer a leadership change without a current role-linked official appointment."
@@ -303,7 +303,7 @@
       "actor": "Penasihat Khusus Presiden Bidang Energi",
       "primary_source": "https://www.setneg.go.id/baca/index/presiden_prabowo_resmi_lantik_para_penasihat_khusus_utusan_khusus_dan_staf_khusus_presiden",
       "status": "source-available-review-needed",
-      "bytes_read": 67966,
+      "bytes_read": 68020,
       "last_published_person": "Purnomo Yusgiantoro",
       "listed_person_appears_in_source": true,
       "interpretation": "Source has candidate name; does not prove the role is still held (especially archival news)."
@@ -359,7 +359,7 @@
     },
     {
       "source": "https://sustainability.pertamina.com/id-ID/Sustainability-Commitment/CEO-Statement/",
-      "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+      "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
     },
     {
       "source": "https://www.mpr.go.id/berita/cost-recovery-skk-migas-mekeng",
