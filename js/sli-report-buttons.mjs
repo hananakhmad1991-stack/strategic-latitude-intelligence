@@ -17,9 +17,23 @@ function save(bytes,name){
  a.href=url;a.download=name;document.body.append(a);a.click();a.remove();
  setTimeout(()=>URL.revokeObjectURL(url),1200);
 }
+function updateApaGate(){
+ const gate=el("raExportApaGate");if(!gate)return;
+ const report=current();if(!report){gate.hidden=true;gate.textContent="";return}
+ gate.hidden=false;
+ const count=report.refs.metadata_complete_candidates;
+ gate.textContent=report.language==="en"
+  ?("APA 7 · "+count+"/10 cited sources with preliminary metadata"+
+   (report.refs.meets_preliminary_minimum?" · Subject to primary-source review":" · DRAFT: references incomplete"))
+  :("APA 7 · "+count+"/10 kandidat referensi tersitasi dengan metadata awal"+
+   (report.refs.meets_preliminary_minimum?" · Tetap perlu audit sumber primer":" · DRAF: daftar pustaka belum mencukupi"));
+ gate.dataset.complete=String(report.refs.meets_preliminary_minimum);
+}
+window.addEventListener("sli:research-export-state",updateApaGate);
 export function attachResearchExportButtons(){
  const word=el("raWord"),pdf=el("raPdf");
  if(!word||!pdf)return false;
+ updateApaGate();
  word.addEventListener("click",()=>{
   try{
    const report=current();if(!report)return status("Belum ada hasil riset untuk diekspor.","warning");
