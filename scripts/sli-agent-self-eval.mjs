@@ -8,6 +8,7 @@ import {fileURLToPath} from "node:url";
 import {METHODS,getMethod,inferMethod,METHOD_FORMULAS,evaluate as executeMethod} from "../js/sli-analytical-core.mjs";
 import {findProvinces,validateProfiles} from "../js/sli-research-analysis.mjs";
 import {auditReport} from "../research-api/src/report-audit.mjs";
+import {assessResolvedFixes} from "./sli-agent-resolved-learning.mjs";
 
 const root=fileURLToPath(new URL("../",import.meta.url));
 const load=p=>JSON.parse(readFileSync(resolve(root,p),"utf8"));
@@ -40,12 +41,18 @@ export function summarize(results){
 }
 export function evaluate(){
  tests.length=0;
+ const learned=assessResolvedFixes();
  const fixture=methodCases.cases||[];
  check("seed_cases_present","learning",true,()=>{
   checked(methodCases.schema_version==="sli-agent-eval-cases-v1"&&fixture.length>=10,"missing versioned evaluation cases");
   checked(fixture.every(x=>x.id&&x.category&&typeof x.prompt==="string"),"invalid evaluation case");
   checked(new Set(fixture.map(x=>x.id)).size===fixture.length,"duplicate evaluation ID");
   return fixture.length+" public/synthetic seed regression prompts";
+ });
+ check("resolved_fix_memory_traceable","learning",true,()=>{
+  checked(learned.pass,"Resolved fix lesson reference invalid: "+learned.failures.join(", "));
+  checked(learned.total>=4,"Retained code-fix lessons have been lost");
+  return learned.total+" permanent regression lessons from "+learned.traced_merged_prs+" merged fixes; no automatic model training";
  });
  check("catalog_truth","methodology",true,()=>{
   checked(METHODS.length===49,"catalog size changed from 49 without review");
@@ -149,7 +156,7 @@ export function evaluate(){
   evaluation_mode:"deterministic_offline_public_only_no_paid_model_calls",benchmark_review:methodCases.human_review_status,
   score_interpretation:"Regression-check pass ratio, NOT AI answer accuracy, human satisfaction or actual source truth",
   ...stats,status:stats.release_regression?"regression_detected":needsAttention.length?"passing_with_existing_source_warnings":"offline_checks_pass",
-  checks:tests,source_alerts:needsAttention,proposed_actions:proposed.slice(0,30),
+  checks:tests,resolved_lessons:{count:learned.total,merged_prs:learned.traced_merged_prs,regression_files:learned.regression_files,review_required:true},source_alerts:needsAttention,proposed_actions:proposed.slice(0,30),
   human_gate:"All code/prompt/model upgrades and evidence promotions require reviewed PR, QA and operator approval. No self-deploy, paid API call, private data ingestion or silent baseline update."};
 }
 export function markdown(report){
@@ -162,7 +169,7 @@ export function markdown(report){
  if(!failed.length)out.push("- No failing offline regression cases.");
  for(const x of failed)out.push("- "+x.id+" ("+x.domain+"): "+x.note);
  for(const x of report.source_alerts)out.push("- Upstream data warning: "+x.issue+" — "+x.status);
- out.push("","### Safeguards","- No OpenAI/Tavily charge; autonomous agent may propose a reviewed branch, but never writes directly to main, overrides primary data or deploys.","- Human feedback becomes new regression cases only after review.","- Original publisher claim-to-source correctness and real generative output still need human/owner-staging evaluation.");
+ out.push("","### Retained bugfix learning","- "+(report.resolved_lessons?.count??0)+" tested and traceable resolved lessons across "+(report.resolved_lessons?.merged_prs??0)+" merged PRs; new fixes enter a separate human-review queue.","","### Safeguards","- No OpenAI/Tavily charge; autonomous agent may propose a reviewed branch, but never writes directly to main, overrides primary data or deploys.","- Human feedback becomes new regression cases only after review.","- Original publisher claim-to-source correctness and real generative output still need human/owner-staging evaluation.");
  return out.join("\n")+"\n";
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
