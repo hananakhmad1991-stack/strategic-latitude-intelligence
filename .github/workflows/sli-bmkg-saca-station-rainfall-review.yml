@@ -21,7 +21,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: sli-bmkg-darmaga-historical-rainfall-source-review
-          path: artifacts/sli-bmkg-saca-darmaga-rain-review.json
+          name: sli-bmkg-cengkareng-historical-rainfall-source-review
+          path: artifacts/sli-bmkg-saca-cengkareng-rain-review.json
           if-no-files-found: warn
           retention-days: 14
