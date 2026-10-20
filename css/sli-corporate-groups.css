@@ -49,3 +49,20 @@
 .sli-cg-hit:hover{border-color:#d1b781}
 @media(max-width:930px){.sli-cg-workspace{grid-template-columns:minmax(0,1fr)}.sli-cg-dossier{position:static}.sli-cg-tree{max-height:520px}}
 @media(max-width:550px){.sli-cg-root{padding:12px}.sli-cg-branch{margin-left:9px;padding-left:7px}.sli-cg-entry-main{gap:6px;padding:6px}}
+
+/* Sector-led navigation and public-financial evidence, separate from ownership diagram. */
+.sli-cg-sectorbar{display:flex;gap:11px 15px;flex-wrap:wrap;align-items:end;margin:17px 0 7px;padding:13px;background:#122b40;border:1px solid #3f637a;border-radius:10px}
+.sli-cg-sectorbar label{display:flex;flex-direction:column;gap:5px;font-size:11px;font-weight:750;color:#decc9f}
+.sli-cg-sectorbar select{min-width:min(100%,280px);max-width:100%;min-height:41px;color:#f5f6f9;border-radius:8px;border:1px solid #668397;background:#10283d;padding:7px 9px;font:600 12px system-ui}
+.sli-cg-sectorbar>span{flex:1 1 190px;padding-bottom:7px}
+.sli-cg-tabbar{max-height:135px;overflow:auto;align-content:flex-start;border-bottom:1px solid #35546b;padding-bottom:8px}
+.sli-cg-tabbar button{white-space:normal;text-align:left;max-width:240px}
+.sli-cg-finance-disclaimer{background:#112d40;border-left:3px solid #ddb775;padding:11px 13px;border-radius:4px;font-size:11px!important;line-height:1.75!important;color:#c9d9e3!important}
+.sli-cg-finance-disclaimer a{color:#f3d29e}
+.sli-cg-finance{border:1px solid #36556d;background:#0a2438;border-radius:9px;margin:13px 0;padding:13px}
+.sli-cg-finance h4{font-size:13px;color:#e9ca97;margin:0 0 9px}
+.sli-cg-finance .sli-cg-fields{grid-template-columns:minmax(105px,.55fr) minmax(0,1.45fr)}
+.sli-cg-finance .sli-cg-source-links{gap:8px 15px;margin:9px 0 0}
+.sli-cg-company-tags{font-size:11px;color:#cbddea;background:#19394b;border:1px solid #456a7f;padding:9px 11px;border-radius:8px}
+.sli-cg-tabbar button:focus-visible,.sli-cg-sectorbar select:focus-visible{outline:2px solid #f0d397;outline-offset:2px}
+@media(max-width:700px){.sli-cg-sectorbar{display:block}.sli-cg-sectorbar select{width:100%;margin-bottom:7px}.sli-cg-tabbar{max-height:200px}.sli-cg-tabbar button{max-width:none}.sli-cg-finance .sli-cg-fields{grid-template-columns:1fr;gap:2px}.sli-cg-finance .sli-cg-fields dd{margin-bottom:8px}}
