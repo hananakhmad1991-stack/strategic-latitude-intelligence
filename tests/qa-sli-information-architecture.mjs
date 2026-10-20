@@ -89,7 +89,7 @@ test('all public static HTML pages have a topical navigation owner (dynamic/priv
  assert.match(restricted,/noindex, nofollow/,'Private QA endpoint must not appear as user research content');
  const ownership=read('docs/SLI_INFORMATION_ARCHITECTURE_2026-10-20.md');
  assert.match(ownership,/Seven visible topic families/);
- assert.match(ownership,/not a public research category/);
+ assert.match(ownership,/private-account connection test/);
 });
 
 test('seven topical families own specialist pages exactly once and distinguish overview from detail',()=>{
