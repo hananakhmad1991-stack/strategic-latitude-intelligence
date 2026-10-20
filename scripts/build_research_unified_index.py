@@ -110,8 +110,11 @@ def build():
   except (UnicodeError,json.JSONDecodeError) as e:raise SystemExit(f"Malformed {file.name}: {e}")
   stages.update(stage_entries(file.name,raw))
   candidates=0
+  # Food governance has 24 source-linked entities; keep all rather than drop two
+  # due to the standard 22-record quota. Other datasets retain their normal cap.
+  quota=28 if file.name=="food-governance-hierarchy.json" else LIMIT_PER_DATASET
   for path,r in chain(walk(raw),adapted_rows(file.name,raw)):
-   if candidates>=LIMIT_PER_DATASET or len(rows)>=LIMIT_TOTAL:break
+   if candidates>=quota or len(rows)>=LIMIT_TOTAL:break
    url=rec_source(r);title=rec_title(r)
    if not url or not title:continue
    # Dedupe exact source+title in same dataset; preserve distinct dated source references.
