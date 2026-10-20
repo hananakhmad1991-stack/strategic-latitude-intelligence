@@ -19,19 +19,19 @@ const browserNeutral=originalSource
  .replace('import graph from "../../data/sli-policy-regulatory-graph-2026.json";','const graph='+JSON.stringify(graph)+';');
 const {legalProvisionEvidence,validateProvisionRegistry}=await import("data:text/javascript;charset=utf-8,"+encodeURIComponent(browserNeutral));
 
-test("Verified legal corpus has bounded original-PDF passage anchors across seven distinct laws",()=>{
+test("Verified legal corpus has bounded original-PDF passage anchors across twenty-one distinct laws",()=>{
  const v=validateProvisionRegistry();
- assert.equal(v.entries,12);
- assert.equal(v.laws,7);
+ assert.equal(v.entries,26);
+ assert.equal(v.laws,21);
  assert.equal(v.full_corpus,false);
  assert.equal(v.all_status_uncertified,true);
- assert.equal(new Set(registry.items.map(r=>r.law_node_id+"|"+r.article)).size,12);
+ assert.equal(new Set(registry.items.map(r=>r.law_node_id+"|"+r.article)).size,26);
  const nodes=new Map(graph.nodes.map(n=>[n.id,n]));
  for(const x of registry.items){
   assert.equal(x.source_type,"official_promulgated_pdf");
   assert.equal(x.excerpt_kind,"reviewed_paraphrase_not_verbatim");
   assert.equal(x.current_status_certified,false);
-  assert.match(x.source_url,/^https:\/\/(?:www\.)?peraturan\.go\.id\//);
+  assert.match(x.source_url,/^https:\/\/(?:www\.)?peraturan\.go\.id\/|^https:\/\/peraturan\.bpk\.go\.id\/Download\/|^https:\/\/jdih\.tanjungpinangkota\.go\.id\/data_file\//);
   assert.ok(nodes.has(x.law_node_id));
   assert.ok(x.legal_effect_limit&&x.page_reference);
  }
@@ -94,8 +94,8 @@ test("Public legal reader has real article search and does not substitute index 
  vm.runInNewContext(read("js/sli-legal-provisions.js"),context);
  await document.start();
  for(let i=0;i<12;i++)await Promise.resolve();
- assert.equal(get("policyProvisionCount").textContent,12);
- assert.equal(get("policyProvisionList").children.length,12);
+ assert.equal(get("policyProvisionCount").textContent,26);
+ assert.equal(get("policyProvisionList").children.length,26);
  get("policyProvisionLaw").value="pp71pste";
  get("policyProvisionLaw").handlers.change();
  assert.equal(get("policyProvisionList").children.length,2);
@@ -106,4 +106,16 @@ test("Public legal reader has real article search and does not substitute index 
  assert.equal(links[0].rel,"noopener noreferrer");
  assert.match(links[0].href,/\.pdf$/);
  assert.match(links[1].href,/law=pp71pste/);
+});
+
+test("Expanded legal retrieval separates Perpres, PP, UU with same Pasal number",()=>{
+ const p=legalProvisionEvidence("Perpres 110/2025 Pasal 2 tentang nilai ekonomi karbon",4);
+ assert.equal(p.length,1);
+ assert.equal(p[0].provision_anchor.law_node_id,"pres110carbon");
+ const q=legalProvisionEvidence("PP 40/2025 Pasal 2 kebijakan energi",4);
+ assert.equal(q.length,1);
+ assert.equal(q[0].provision_anchor.law_node_id,"pp40");
+ assert.equal(legalProvisionEvidence("Perpres 110/2025 Pasal 99",4).length,0);
+ const withoutSpecific=legalProvisionEvidence("Pasal 2 tentang energi",5);
+ assert.equal(withoutSpecific.length,0,"Ambiguous article without law should never ground current obligations");
 });
