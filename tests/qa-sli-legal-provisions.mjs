@@ -2,12 +2,23 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import vm from "node:vm";
-import {legalProvisionEvidence,validateProvisionRegistry} from "../research-api/src/legal-provisions.mjs";
+
 import {auditLegalArticleCitations} from "../research-api/src/legal-citation-audit.mjs";
 
 const read=path=>fs.readFileSync(new URL("../"+path,import.meta.url),"utf8");
 const registry=JSON.parse(read("data/sli-verified-legal-provisions.json"));
 const graph=JSON.parse(read("data/sli-policy-regulatory-graph-2026.json"));
+/* Node 22 requires JSON import attributes; Workers/esbuild imports these local
+   registry files directly. Evaluate the unchanged provision logic under Node
+   with only its two JSON import declarations replaced by current fixture data. */
+const originalSource=read("research-api/src/legal-provisions.mjs");
+assert.match(originalSource,/import verified from/);
+assert.match(originalSource,/import graph from/);
+const browserNeutral=originalSource
+ .replace('import verified from "../../data/sli-verified-legal-provisions.json";','const verified='+JSON.stringify(registry)+';')
+ .replace('import graph from "../../data/sli-policy-regulatory-graph-2026.json";','const graph='+JSON.stringify(graph)+';');
+const {legalProvisionEvidence,validateProvisionRegistry}=await import("data:text/javascript;charset=utf-8,"+encodeURIComponent(browserNeutral));
+
 test("Verified legal corpus has bounded original-PDF passage anchors across seven distinct laws",()=>{
  const v=validateProvisionRegistry();
  assert.equal(v.entries,12);
