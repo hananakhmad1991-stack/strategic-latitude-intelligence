@@ -61,7 +61,7 @@ test("Attribution and cross-source filters remain distinct from verification and
  const regulations=a.policyFor(laws,{sector:"food",q:"",selected:""});
  assert.ok(regulations.some(x=>x.sector==="food"),"Food regulatory lineage not available");
  const min=a.policyFor(laws,{sector:"minerals",q:"",selected:""});
- assert.ok(min.some(x=>x.sector==="minerals"),"Mineral law lineage missing");
+ assert.ok(min.some(x=>x.sector==="minerba"),"Official Minerba policy records must map to SLI minerals workspace");
  assert.match(source,/publisher_attributed_news_report/);
  assert.match(source,/not independently corroborated/);
  assert.match(source,/require verification at JDIH/);
