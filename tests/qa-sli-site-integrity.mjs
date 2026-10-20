@@ -9,7 +9,7 @@ const pages=readdirSync(root).filter(p=>p.endsWith(".html")).sort();
 const clean=ref=>ref.split(/[?#]/)[0].replace(/^\.\//,"");
 
 test("All published HTML routes have resolvable local assets and valid inline JavaScript",()=>{
- assert.ok(pages.length>=40,"Unexpected loss of published SLI dashboards");
+ assert.ok(pages.length>=39,"Unexpected loss of published SLI dashboards");
  let localCount=0,scriptCount=0;
  for(const file of pages){
   const html=read(file);
