@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-20-national-plus-sulsel-regulation-expansion-v3",
+  "version": "2026-10-20-official-jdih-cross-region-wave4",
   "updated_at": "2026-10-20",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
@@ -69,10 +69,10 @@
     "international_law_notes": "Treaties, investment agreements and arbitration rules differ in binding parties, forum and domestic implementation. WTO dispute DS592 is state-to-state and under appeal with a non-functioning Appellate Body in published record; ICSID is investor-state subject to consent, while New York Convention covers arbitral award recognition; UNCITRAL Arbitration Rules operate if adopted. No investor wins/loses automatically.",
     "foreign_law_notes": "Foreign EU and US regulations are separate market-access/transactional applicability branches, not levels in Indonesian hierarchy; check destination, product nomenclature, counterparty, implementation dates, license requirements and foreign jurisdictional scope.",
     "regional_coverage": "Initial verified national and selected local examples. All provincial/city legal sources must be progressively catalogued; no nationwide exhaustive coverage claim.",
-    "source_update_policy": "Automated JDIH/news monitoring creates review candidates; enactment, amendment, repeal and jurisdiction are not automatically legally determined from a news headline or page fingerprint. Expansion 20 Oct 2026: 23 source-linked nationally relevant instruments incl. 2026 amendments; links to official JDIH BPK records do not by themselves certify full consolidated current text, MK jurisprudence or future updates.",
+    "source_update_policy": "Automated JDIH/news monitoring creates review candidates; enactment, amendment, repeal and jurisdiction are not automatically legally determined from a news headline or page fingerprint. Expansion 20 Oct 2026: 23 source-linked nationally relevant instruments incl. 2026 amendments; links to official JDIH BPK records do not by themselves certify full consolidated current text, MK jurisprudence or future updates. New legal records must distinguish true law, agency rule, administrative decision and proposal. OJK 2026 consultation to revise POJK 51/2017 is NOT an enacted amendment; avoid false positive status changes.",
     "regional_coverage_detail": "Wilayah pada setiap instrumen adalah cakupan administratif asal/otoritas, bukan penetapan bahwa izin atau aturan tersebut diterapkan persis demikian pada setiap proyek. Pemilihan lokasi proyek perlu kajian RTRW, RDTR, KKPR, Perda serta kewenangan lokal. Four individual South Sulawesi Perda source records entered 20 October 2026: RTRW, RPPLH, provincial food reserve, and regional taxation.",
     "legal_status_explanation": "Berlaku dengan perubahan is NOT the same as repealed. Histories distinguish amendment, partial repeal and entire repeal; verified legal links carry source and date. Future source discoveries stay pending until official text reviewed.",
-    "regulatory_topic_coverage": "Extended digital (ITE/PSTE/SPBE/PMSE 2026), food (Bapanas/CPP), regional fiscal, investment, mining authority, tax/carbon and finance/P2SK 2026. Discovery is continuously incomplete, including most Perda."
+    "regulatory_topic_coverage": "Extended digital (ITE/PSTE/SPBE/PMSE 2026), food (Bapanas/CPP), regional fiscal, investment, mining authority, tax/carbon and finance/P2SK 2026. Discovery is continuously incomplete, including most Perda. Wave 4: source-identified cyber/IIV rules, sustainable finance, PSN and 2023–26 provincial/city RTRW, food, investment and mineral area decisions. Older superseded regional RTRW remains visible as archive."
   },
   "nodes": [
     {
@@ -2133,6 +2133,312 @@
       "region": "Sulawesi Selatan",
       "source_checked_at": "2026-10-20",
       "verification_scope": "portal document metadata/status at review date; not future validity or site-specific permit conclusion"
+    },
+    {
+      "id": "pres82iiv2022",
+      "tier": "perpres",
+      "ref": "Perpres 82/2022",
+      "label": "Pelindungan Infrastruktur Informasi Vital (IIV)",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/211029/perpres-no-82-tahun-2022",
+      "note": "Dasar identifikasi dan pelindungan infrastruktur informasi vital lintas sektor. Penetapan IIV terhadap fasilitas tertentu tidak dapat diasumsikan hanya karena fasilitas itu pusat data.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Presiden Republik Indonesia",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2022-05-24",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "pres47cyber2023",
+      "tier": "perpres",
+      "ref": "Perpres 47/2023",
+      "label": "Strategi Keamanan Siber Nasional dan Manajemen Krisis Siber",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/255542/perpres-no-47-tahun-2023",
+      "note": "Kebijakan dan koordinasi keamanan/manajemen krisis siber nasional. Periksa kewajiban spesifik instansi dan pihak terkait, bukan klaim semua entitas otomatis berkualifikasi IIV.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Presiden Republik Indonesia",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2023-07-20",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "bssn5iiv2025",
+      "tier": "agency",
+      "ref": "Peraturan BSSN 5/2025",
+      "label": "Peta Jalan Pelindungan Infrastruktur Informasi Vital Sektor Administrasi Pemerintahan 2025–2029",
+      "sector": "digital",
+      "source": "https://peraturan.bpk.go.id/Details/315044/peraturan-bssn-no-5-tahun-2025",
+      "note": "Roadmap terbatas sektor administrasi pemerintahan; tidak boleh diproyeksikan sebagai peraturan semua operator pusat data swasta.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Badan Siber dan Sandi Negara",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2025",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "pojk51sustain2017",
+      "tier": "agency",
+      "ref": "POJK 51/POJK.03/2017",
+      "label": "Penerapan Keuangan Berkelanjutan bagi LJK, Emiten dan Perusahaan Publik",
+      "sector": "finance",
+      "source": "https://peraturan.bpk.go.id/Details/129651/peraturan-ojk-no-51pojk032017-tahun-2017",
+      "note": "OJK membuka konsultasi RPOJK perubahan pada 12 Februari 2026; RANCANGAN belum boleh dicatat sebagai perubahan yang sudah diundangkan. Periksa status final di JDIH OJK sebelum penilaian emiten.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Otoritas Jasa Keuangan",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2017-07-27",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "pp42psn2021",
+      "tier": "pp",
+      "ref": "PP 42/2021",
+      "label": "Kemudahan Proyek Strategis Nasional (PSN)",
+      "sector": "cross",
+      "source": "https://peraturan.bpk.go.id/Details/161962/pp-no-42-tahun-2021",
+      "note": "Kemudahan tahap perencanaan sampai operasi PSN; daftar PSN, keputusan penetapan proyek dan status hukum mutakhir harus diverifikasi terpisah.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2021-02-02",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_jateng_rtrw2024",
+      "tier": "perda",
+      "ref": "Perda Jateng 8/2024",
+      "label": "RTRW Provinsi Jawa Tengah 2024–2044",
+      "sector": "cross",
+      "source": "https://jdih.jatengprov.go.id/index.php/inventarisasi-hukum/detail/perda_8_th_2024",
+      "note": "JDIH Jateng menyatakan Perda ini mencabut RTRW Provinsi No. 6/2010 jo. No. 16/2019, Perda RZWP3K 13/2018 dan Perda kawasan strategis 2/2016. Status Perda RTRW tidak otomatis menetapkan zonasi rinci persil.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Jawa Tengah",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Jawa Tengah",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2024-10-17",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_magelang_rtrw2024",
+      "tier": "perda_kab",
+      "ref": "Perda Kab. Magelang 7/2024",
+      "label": "RTRW Kabupaten Magelang 2024–2044",
+      "sector": "cross",
+      "source": "https://jdih.magelangkab.go.id/hukum/detail/peraturan-daerah-kabupaten/7/2024",
+      "note": "JDIH kabupaten mencatat mulai berlaku 4 Juli 2024. Wajib periksa zonasi RDTR/KKPR dan kewenangan spesifik terhadap setiap rencana kegiatan; Perda RTRW lama 5/2011 ditandai tidak berlaku.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Kabupaten Magelang",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Kabupaten Magelang, Jawa Tengah",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2024-07-04",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_magelang_rtrwold2011",
+      "tier": "perda_kab",
+      "ref": "Perda Kab. Magelang 5/2011",
+      "label": "RTRW Kabupaten Magelang 2010–2030 (arsip tidak berlaku)",
+      "sector": "cross",
+      "source": "https://jdih.magelangkab.go.id/hukum/detail/peraturan-daerah-kabupaten/5/2011",
+      "note": "JDIH Kabupaten Magelang secara eksplisit menandai TIDAK BERLAKU. Ditampilkan sebagai arsip untuk jejak transisi ke Perda 7/2024; jangan dipakai sebagai dasar hukum terkini.",
+      "status": "repealed",
+      "kind": "regulation",
+      "owner": "Pemerintah Kabupaten Magelang",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Kabupaten Magelang, Jawa Tengah",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2011-07-14",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_banten_rtrw2023",
+      "tier": "perda",
+      "ref": "Perda Banten 1/2023",
+      "label": "RTRW Provinsi Banten 2023–2043",
+      "sector": "cross",
+      "source": "https://jdih.bantenprov.go.id/produkhukum/peraturan-daerah-provinsi/peraturan-daerah-provinsi-banten-nomor-1-tahun-2023-tentang-rencana-tata-ruang-wilayah-provinsi-banten-tahun-2023-2043",
+      "note": "JDIH Banten mencatat Berlaku dan peraturan ini MENCABUT Perda 2/2011 serta Perda 5/2014. Label 'Dicabut' pada catatan status merujuk ke aturan pendahulu, bukan pencabutan Perda 1/2023.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Banten",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Banten",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2023-03-14",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_diy_rtrw2023",
+      "tier": "perda",
+      "ref": "Perda DIY 10/2023",
+      "label": "RTRW Daerah Istimewa Yogyakarta 2023–2043",
+      "sector": "cross",
+      "source": "https://jdih.jogjaprov.go.id/upload//storage/app/public/2023pd0034010.pdf",
+      "note": "Dokumen hukum RTRW DIY 2023–2043 pada portal JDIH DIY. Status perubahan pasca pengundangan dan kesesuaian lokasi wajib diverifikasi pada JDIH daerah.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Daerah Istimewa Yogyakarta",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "DI Yogyakarta",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2023",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_diy_pangan2026",
+      "tier": "perda",
+      "ref": "Perda DIY 9/2026",
+      "label": "Penyelenggaraan Keamanan Pangan dan Mutu Pangan Berbasis Hewani",
+      "sector": "food",
+      "source": "https://jdih.jogjaprov.go.id/produk-hukum/peraturan-perundang-undangan/detail/peraturan-daerah-daerah-istimewa-yogyakarta-nomor-9-tahun-2026-tentang-penyelenggaraan-keamanan-pangan-dan-mutu-pangan-berbasis-hewani_1789691219-91",
+      "note": "JDIH DIY menunjukkan diundangkan 14 September 2026 dan status berlaku. Ruang lingkup pangan hewani; tidak otomatis mengatur seluruh jenis pangan nasional.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Daerah Istimewa Yogyakarta",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "DI Yogyakarta",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2026-09-14",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_bali_rtrw2023",
+      "tier": "perda",
+      "ref": "Perda Bali 2/2023",
+      "label": "RTRW Provinsi Bali 2023–2043",
+      "sector": "cross",
+      "source": "https://jdih.baliprov.go.id/uploads/produk-hukum/peraturan/2023/perda/2023pd0051002.pdf",
+      "note": "Naskah peraturan RTRW 2023–2043 tersedia di JDIH Bali; hubungan dengan RTRW lama 16/2009 jo. 3/2020 dan status terkini perlu pembacaan ketentuan penutup.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Bali",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Bali",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2023",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_kaltim_rtrw2023",
+      "tier": "perda",
+      "ref": "Perda Kaltim 1/2023",
+      "label": "RTRW Provinsi Kalimantan Timur 2023–2042",
+      "sector": "cross",
+      "source": "https://jdih.kaltimprov.go.id/dokumen/peraturan-daerah-provinsi-kalimantan-timur-nomor-1-tahun-2023-tentang-rencana-tata-ruang-wilayah-provinsi-kalimantan-timur-tahun-2023-2042",
+      "note": "JDIH Kaltim mencatat berlaku. Kesesuaian IKN/kawasan industri dan izin setempat tidak dapat disimpulkan dari abstrak RTRW saja.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Kalimantan Timur",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Kalimantan Timur",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2023-04-28",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_lampung_rtrw2023",
+      "tier": "perda",
+      "ref": "Perda Lampung 14/2023",
+      "label": "RTRW Provinsi Lampung 2023–2043",
+      "sector": "cross",
+      "source": "https://jdih.lampungprov.go.id/product-hukum/provinsi/10862/pages/rak-buku-online",
+      "note": "JDIH Lampung menyatakan masih berlaku; aturan terdahulu Perda 12/2019 RTRW secara terpisah dinyatakan tidak berlaku. Perlu pemeriksaan RDTR/KKPR untuk persil.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Lampung",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Lampung",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2023-12-29",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_ntb_rtrw2024",
+      "tier": "perda",
+      "ref": "Perda NTB 5/2024",
+      "label": "RTRW Provinsi Nusa Tenggara Barat 2024–2044",
+      "sector": "cross",
+      "source": "https://jdih.ntbprov.go.id/produk-hukum/perda-nomor-5-tahun-2024",
+      "note": "JDIH NTB mencatat pengundangan 31 Mei 2024 dan status berlaku; periksa aturan turunan kawasan pariwisata, tambang, pesisir dan kabupaten/kota.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Nusa Tenggara Barat",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Nusa Tenggara Barat",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2024-05-31",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_ntb_invest2024",
+      "tier": "perda",
+      "ref": "Perda NTB 6/2024",
+      "label": "Penyelenggaraan Penanaman Modal Provinsi Nusa Tenggara Barat",
+      "sector": "cross",
+      "source": "https://jdih.ntbprov.go.id/produk-hukum/perda-nomor-6-tahun-2024-1786584904",
+      "note": "JDIH NTB mencatat status berlaku untuk aturan penyelenggaraan penanaman modal, berlaku sesuai ruang kewenangan daerah; perizinan OSS pusat tetap diperiksa terpisah.",
+      "status": "listed_active_review_alignment",
+      "kind": "regulation",
+      "owner": "Pemerintah Provinsi Nusa Tenggara Barat",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Nusa Tenggara Barat",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2024-08-28",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "perda_karawang_rtrw2013",
+      "tier": "perda_kab",
+      "ref": "Perda Kab. Karawang 2/2013",
+      "label": "RTRW Kabupaten Karawang 2011–2031",
+      "sector": "cross",
+      "source": "https://jdih.karawangkab.go.id/document/peraturan-daerah/eyJpdiI6IkxhNXYwK0wzNlo0bGk2cHU3eUZJK2c9PSIsInZhbHVlIjoiZWpWcllPS0pHNkVtZXAySjIvSlV3dz09IiwibWFjIjoiZjlmOGFmYTE4MWY1NGVmYjFjYzlkZTFkOWNhOTNmZTJjYTA2NjAyNTJjNjI2MjBmOTc0MDRlMmI4MGRhNDI5NiIsInRhZyI6IiJ9",
+      "note": "JDIH Kabupaten Karawang saat diperiksa menampilkan berlaku, tetapi riwayat perubahan dan status 2026 harus direkonfirmasi; jangan otomatis menjadikan dokumen historis sebagai RTRW proyek industri terkini.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Kabupaten Karawang",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Kabupaten Karawang, Jawa Barat",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2013-02-15",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
+    },
+    {
+      "id": "kepmen88papuabaratdaya2026",
+      "tier": "decision",
+      "ref": "Kepmen ESDM 88.K/MB.01/MEM.B/2026",
+      "label": "Wilayah Pertambangan Provinsi Papua Barat Daya",
+      "sector": "minerba",
+      "source": "https://jdih.esdm.go.id/dokumen/view?id=2749",
+      "note": "Keputusan administratif penetapan wilayah pertambangan, bukan aturan normatif perizinan umum. JDIH ESDM mencatat mencabut Kepmen 87.K/MB.01/MEM.B/2022 terkait wilayah Papua Barat; batas/lampiran harus dibaca sebelum inferensi spasial.",
+      "status": "issued_review_scope",
+      "kind": "regulation",
+      "owner": "Kementerian ESDM",
+      "evidence": "official_primary_jdih_document_or_individual_registry_metadata",
+      "region": "Papua Barat Daya",
+      "source_checked_at": "2026-10-20",
+      "document_date": "2026-02-12",
+      "verification_scope": "verified instrument identity and visible primary metadata; later amendments and project-specific obligations require recheck"
     }
   ],
   "edges": [
@@ -2985,6 +3291,121 @@
       "from": "uu1hkpd2022",
       "to": "perda_sulsel_pdrd2024",
       "type": "regional_implementation_context"
+    },
+    {
+      "from": "pp71pste",
+      "to": "pres82iiv2022",
+      "type": "implementing_policy_context"
+    },
+    {
+      "from": "pp71pste",
+      "to": "pres47cyber2023",
+      "type": "implementing_policy_context"
+    },
+    {
+      "from": "pres82iiv2022",
+      "to": "bssn5iiv2025",
+      "type": "implements"
+    },
+    {
+      "from": "pres82iiv2022",
+      "to": "pres47cyber2023",
+      "type": "cyber_crisis_governance_context"
+    },
+    {
+      "from": "uu27pdp",
+      "to": "pres82iiv2022",
+      "type": "distinct_privacy_and_infrastructure_requirements"
+    },
+    {
+      "from": "uu4p2sk",
+      "to": "pojk51sustain2017",
+      "type": "financial_sustainability_alignment_review"
+    },
+    {
+      "from": "pres110carbon",
+      "to": "pojk51sustain2017",
+      "type": "carbon_disclosure_finance_context"
+    },
+    {
+      "from": "uu6",
+      "to": "pp42psn2021",
+      "type": "business_licensing_harmonization_review"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_jateng_rtrw2024",
+      "type": "regional_spatial_implementation"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_banten_rtrw2023",
+      "type": "regional_spatial_implementation"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_diy_rtrw2023",
+      "type": "regional_spatial_implementation"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_bali_rtrw2023",
+      "type": "regional_spatial_implementation"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_kaltim_rtrw2023",
+      "type": "regional_spatial_implementation"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_lampung_rtrw2023",
+      "type": "regional_spatial_implementation"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_ntb_rtrw2024",
+      "type": "regional_spatial_implementation"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_karawang_rtrw2013",
+      "type": "spatial_alignment_review"
+    },
+    {
+      "from": "pp21spatial",
+      "to": "perda_magelang_rtrw2024",
+      "type": "regional_spatial_implementation"
+    },
+    {
+      "from": "perda_jateng_rtrw2024",
+      "to": "perda_magelang_rtrw2024",
+      "type": "spatial_alignment_review"
+    },
+    {
+      "from": "perda_magelang_rtrw2024",
+      "to": "perda_magelang_rtrwold2011",
+      "type": "supersedes_noncurrent_record"
+    },
+    {
+      "from": "uu18food2012",
+      "to": "perda_diy_pangan2026",
+      "type": "regional_implementation_context"
+    },
+    {
+      "from": "perpres10invest",
+      "to": "perda_ntb_invest2024",
+      "type": "regional_investment_context"
+    },
+    {
+      "from": "uu23local",
+      "to": "perda_ntb_invest2024",
+      "type": "regional_authority_context"
+    },
+    {
+      "from": "uu4minerba",
+      "to": "kepmen88papuabaratdaya2026",
+      "type": "administrative_mining_area_context"
     }
   ],
   "cases": [
