@@ -42,3 +42,33 @@ export async function requireIdentity(request,env,fetcher=fetch){
  const id=[...new Uint8Array(hash)].map(x=>x.toString(16).padStart(2,"0")).join("");
  return {id,provider:"cloudflare_access"};
 }
+
+
+// Cloudflare Worker-level Access authenticates the invocation before this Worker
+// runs, and supplies a trusted ctx.access object to directly invoked Workers.
+// This eliminates runtime network requests to the Access JWKS endpoint while
+// retaining strict audience and stable, per-user identity checks. Never accept
+// client-supplied identity headers, JWT payloads, or an unverified email here.
+export async function requireWorkerAccessIdentity(access,env){
+ const issuer=String(env.CF_ACCESS_ISSUER||"").replace(/\/$/,""),aud=String(env.CF_ACCESS_AUD||"");
+ if(!/^https:\/\/[a-z0-9-]+\.cloudflareaccess\.com$/.test(issuer)||!aud)
+  throw new HttpError(503,"Cloudflare Access authentication not configured");
+ if(!access)throw new HttpError(401,"Cloudflare Access login required");
+ if(typeof access.aud!=="string"||access.aud!==aud)
+  throw new HttpError(403,"Cloudflare Access application mismatch");
+ if(typeof access.getIdentity!=="function")
+  throw new HttpError(503,"Cloudflare Access identity API unavailable");
+ let identity;
+ try{identity=await access.getIdentity()}catch{
+  throw new HttpError(503,"Cloudflare Access identity unavailable");
+ }
+ if(identity?.service_token_status===true)
+  throw new HttpError(403,"A user login is required");
+ const uuid=identity?.user_uuid;
+ if(typeof uuid!=="string"||!(/^[a-z0-9_-]{16,128}$/i).test(uuid))
+  throw new HttpError(403,"Cloudflare Access user ID unavailable");
+ const hash=await crypto.subtle.digest("SHA-256",
+  new TextEncoder().encode(issuer+"|"+aud+"|"+uuid));
+ const id=[...new Uint8Array(hash)].map(x=>x.toString(16).padStart(2,"0")).join("");
+ return {id,provider:"cloudflare_access"};
+}

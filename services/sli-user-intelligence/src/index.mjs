@@ -1,5 +1,5 @@
 // SLI User Intelligence Backend (Cloudflare Worker / D1). No secrets in static dashboard.
-import {requireIdentity,HttpError} from "./auth.mjs";
+import {requireIdentity,requireWorkerAccessIdentity,HttpError} from "./auth.mjs";
 import {validatePreferences,eligible,eventKind,validateEvent,DEFAULT_PREFS} from "./matcher.mjs";
 const HISTORY="https://raw.githubusercontent.com/hananakhmad1991-stack/strategic-latitude-intelligence/main/data/sli-catalyst-history.json";
 const MAX_USERS=200,MAX_EVENTS=24;
@@ -138,6 +138,6 @@ export async function processEvents(env,fetcher=fetch){
 export default {
  // Cloudflare invokes fetch(request, env, ctx). Do not forward ctx into
  // handleRequest's third parameter (test-only identity function injection).
- fetch(request,env,_ctx){return handleRequest(request,env)},
+ fetch(request,env,ctx){return handleRequest(request,env,(_req,_env)=>requireWorkerAccessIdentity(ctx?.access,env))},
  scheduled(_event,env,ctx){ctx.waitUntil(processEvents(env))}
 };

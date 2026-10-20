@@ -31,6 +31,12 @@ Official Cloudflare documentation:
 
 **Status:** Source code and security tests only. This does **not** mean Cloudflare resources, Access policies, live inbox delivery, push, or email have been deployed.
 
+## Worker-level Access runtime identity (October 2026)
+
+On a direct Worker invocation protected by the `worker` destination, Cloudflare provides a trusted `ctx.access` object after the visitor authenticates. SLI now validates `ctx.access.aud` against its exact configured Access AUD and reads `ctx.access.getIdentity().user_uuid` to derive the same pseudonymous user key namespace; no untrusted client-provided identity headers, email, or unsigned JWT claims are accepted. A missing Access context, incorrect AUD, service token login, or missing stable UUID **fails closed**. This avoids the `Access key validation unavailable` runtime failure caused by fetching `/cdn-cgi/access/certs` from inside a Worker. See [Cloudflare Workers Access identity documentation](https://developers.cloudflare.com/workers/configuration/cloudflare-access/#read-authenticated-user-identity-with-ctxaccess).
+
+**Boundary:** `ctx.access` is not passed through service bindings or static-asset router Workers. This service has no static asset router and its preflight confirms a Worker-level Access destination. If that architecture changes, revisit identity verification. The old remote JWT verifier remains as a helper for separately tested/explicitly controlled environments, but the deployed Worker uses only Cloudflare-attested `ctx.access`.
+
 ## Architecture
 
 - **Frontend:** SLI GitHub Pages, opt-in account panel. Public client configuration at `config/sli-user-intelligence.json` remains `enabled: false`.
