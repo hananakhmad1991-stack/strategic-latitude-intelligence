@@ -33,6 +33,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq poppler-utils
+          python3 -m pip install --disable-pip-version-check --quiet pymupdf
       - name: Locate possible project-annex pages within PLN official 2025-2034 RUPTL
         continue-on-error: true
         run: python3 scripts/audit-ruptl-official-full-pdf.py
