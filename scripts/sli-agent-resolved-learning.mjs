@@ -43,6 +43,17 @@ export function assessResolvedFixes(registry=loadLessons(),reader=file){
   failures:issues,pass:issues.length===0,
   model_weights_changed:false,original_facts_auto_promoted:false,owner_review_required:true};
 }
+export function compareRetainedLessons(before,after){
+ const previous=Array.isArray(before?.lessons)?before.lessons:[];
+ const current=new Map((Array.isArray(after?.lessons)?after.lessons:[]).map(x=>[x.id,x]));
+ const failures=[];
+ for(const item of previous){
+  const updated=current.get(item.id);
+  if(!updated)failures.push("removed_resolved_lesson:"+item.id);
+  else if(JSON.stringify(updated)!==JSON.stringify(item))failures.push("changed_resolved_lesson:"+item.id);
+ }
+ return {pass:failures.length===0,failures,retained:previous.length};
+}
 const FIX_TITLE=/\b(?:fix|fixed|bug|regression|repair|repaired|prevent|correct|corrected|recover|recovery|resolve|resolved|derguba|security)\b/i;
 export function discoverMergedFixes(prs,registry=loadLessons(),{now=new Date(),days=7,max=30}={}){
  if(!Array.isArray(prs))throw Error("merged PR input is not an array");
@@ -69,12 +80,19 @@ export function discoverMergedFixes(prs,registry=loadLessons(),{now=new Date(),d
 }
 function main(){
  const mergedArg=process.argv.find(x=>x.startsWith("--merged="));
+ const baselineArg=process.argv.find(x=>x.startsWith("--baseline="));
  const outArg=process.argv.find(x=>x.startsWith("--out="));
- const audit=assessResolvedFixes();
+ const registry=loadLessons(),audit=assessResolvedFixes(registry);
  const result={...audit,discovery_status:"not_scanned"};
+ if(baselineArg){
+  const old=JSON.parse(readFileSync(resolve(process.cwd(),baselineArg.slice(11)),"utf8"));
+  const retained=compareRetainedLessons(old,registry);
+  result.retention=retained;
+  if(!retained.pass){result.failures.push(...retained.failures);result.pass=false}
+ }
  if(mergedArg){
   const path=resolve(process.cwd(),mergedArg.slice(9));
-  const discovery=discoverMergedFixes(JSON.parse(readFileSync(path,"utf8")));
+  const discovery=discoverMergedFixes(JSON.parse(readFileSync(path,"utf8")),registry);
   Object.assign(result,{discovery_status:"scanned",discovery});
  }
  if(outArg){
@@ -84,6 +102,6 @@ function main(){
  }
  console.log("Retained resolved lessons: "+audit.total+" in "+audit.traced_merged_prs+" merged PRs; valid="+audit.pass+
   "; candidates="+(result.discovery?.discovered??"not_scanned"));
- if(!audit.pass){for(const failure of audit.failures)console.error("LESSON QA:",failure);process.exitCode=1}
+ if(!result.pass){for(const failure of result.failures)console.error("LESSON QA:",failure);process.exitCode=1}
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url))main();
