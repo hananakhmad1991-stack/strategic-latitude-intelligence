@@ -136,3 +136,6 @@ html.sli-chrome-pending body::before{
  .sli-platform-sector-group{min-width:0}
  .sli-platform-sector-menu{gap:14px}
 }
+
+/* Keep anchored dashboard sections visible below the live-height sticky platform masthead. */
+html{scroll-padding-top:calc(var(--sli-mast-offset, 0px) + 16px)}
