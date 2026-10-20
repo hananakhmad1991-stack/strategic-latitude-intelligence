@@ -5,6 +5,10 @@ on:
       - 'sli-entities.html'
       - 'js/sli-entity-identity.js'
       - 'js/sli-entities.js'
+      - 'js/sli-idx-heatmap.js'
+      - 'css/sli-idx-heatmap.css'
+      - 'data/sli-idx-market-snapshot.json'
+      - 'tests/qa-sli-idx-heatmap.mjs'
       - 'js/sli-corporate-evidence-ui.js'
       - 'css/sli-corporate-evidence.css'
       - 'data/sli-corporate-evidence-relationships.json'
@@ -47,11 +51,12 @@ jobs:
         run: |
           node --check js/sli-entity-identity.js
           node --check js/sli-entities.js
+          node --check js/sli-idx-heatmap.js
           node --check js/sli-corporate-evidence-ui.js
           node --check js/sli-navigation.js
           node --check js/sector-command-hierarchy.js
           node --check js/sli-research-ai.js
       - name: Entity, shared chrome and data regression tests
         run: |
-          node --test tests/qa-sli-corporate-evidence.mjs tests/qa-sli-entities.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-home-portal.mjs
+          node --test tests/qa-sli-corporate-evidence.mjs tests/qa-sli-entities.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-idx-heatmap.mjs
           node tests/qa-command-hierarchy.mjs
