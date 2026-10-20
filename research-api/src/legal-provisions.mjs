@@ -2,8 +2,8 @@
  * Each record is a reviewed paraphrase anchored to an original official legal PDF.
  * This does NOT certify up-to-date consolidated text, amendment scope or compliance.
  */
-import verified from "../../data/sli-verified-legal-provisions.json";
-import graph from "../../data/sli-policy-regulatory-graph-2026.json";
+import verified from "../../data/sli-verified-legal-provisions.json" with {type:"json"};
+import graph from "../../data/sli-policy-regulatory-graph-2026.json" with {type:"json"};
 
 const norm=s=>String(s||"").normalize("NFKD").toLowerCase()
   .replace(/[^a-z0-9]+/g," ").replace(/\s+/g," ").trim();
