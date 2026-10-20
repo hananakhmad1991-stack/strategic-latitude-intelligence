@@ -12,8 +12,15 @@ function unit(m){return percent.has(m)?"%":"Rp miliar"}
 function render(){if(!db)return;const q=current(),data=db.provinces.map(p=>({p,v:value(p,q.metric,q.year)})).filter(x=>x.v!==null&&Number.isFinite(x.v)&&x.p.name.toLowerCase().includes(q.search)).sort((a,b)=>b.v-a.v);
  const median=data.length?data.map(x=>x.v).sort((a,b)=>a-b)[Math.floor(data.length/2)]:null;
  $("headline").textContent=data.length+" provinsi dengan data tersedia · Median "+fmt(median)+" "+unit(q.metric)+" · "+q.year;
- const top=Math.max(...data.map(x=>Math.abs(x.v)),1);const bars=$("bars");bars.replaceChildren();
- for(const x of data){const btn=document.createElement("button");btn.type="button";btn.className="bar";btn.setAttribute("aria-pressed",String(x.p.id===q.province));const name=document.createElement("span");name.textContent=x.p.name;const track=document.createElement("span");track.className="track";const fill=document.createElement("span");fill.className="fill";fill.style.width=Math.min(100,100*Math.abs(x.v)/top)+"%";track.append(fill);const amount=document.createElement("span");amount.textContent=fmt(x.v);btn.append(name,track,amount);btn.onclick=()=>{$("province").value=x.p.id;render()};bars.append(btn)}
+ // Source-backed provincial map replaces the former Power BI-like province bar comparison.
+ // The generic exporter remains available for eligible tables and source-linked charts.
+ if(window.SLIProvinceMap){
+  const all=db.provinces.map(p=>({name:p.name,value:p.name.toLowerCase().includes(q.search)?value(p,q.metric,q.year):null,period:String(q.year)}));
+  window.SLIProvinceMap.render("provinceMap",{records:all,selected:db.provinces.find(p=>p.id===q.province)?.name||"",
+   period:String(q.year),source:"BPS · PDRB Provinsi menurut Pengeluaran",unit:unit(q.metric),digits:percent.has(q.metric)?2:1,
+   onSelect:name=>{const target=db.provinces.find(p=>p.name===name);if(target){$("province").value=String(target.id);$("search").value="";render();}}
+  });
+ }
  const p=db.provinces.find(x=>x.id===q.province),trend=$("trend");trend.replaceChildren();if(p){const h=document.createElement("h3");h.textContent=p.name+" · "+$("metric").selectedOptions[0].text;trend.append(h);
  const vals=years.map(y=>({year:y,v:value(p,q.metric,y)})).filter(x=>x.v!==null);const upper=Math.max(...vals.map(x=>x.v),1),lower=Math.min(0,...vals.map(x=>x.v));
  for(const item of vals){const row=document.createElement("div");row.className="trendRow";const l=document.createElement("span");l.textContent=item.year;const meter=document.createElement("span");meter.className="track";const f=document.createElement("span");f.className="fill";f.style.width=(100*(item.v-lower)/Math.max(1,upper-lower))+"%";meter.append(f);const num=document.createElement("b");num.textContent=fmt(item.v);row.append(l,meter,num);trend.append(row)}}
