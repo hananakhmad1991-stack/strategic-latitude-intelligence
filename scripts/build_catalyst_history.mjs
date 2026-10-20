@@ -21,7 +21,7 @@ const INPUTS={
 const MAX_EVENTS=1800, RETENTION_DAYS=365;
 const RE={ticker:/^[A-Z0-9]{4}$/,date:/^\d{4}-\d{2}-\d{2}/};
 const normalized=x=>String(x||"").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
-const legal=x=>normalized(x).replace(/^pt /,"").replace(/ tbk$/,"").replace(/\s+antam$/,"").trim();
+const legal=x=>normalized(String(x||"").replace(/\s*\([A-Z0-9]{4}\)\s*$/,"")).replace(/^pt /,"").replace(/ tbk$/,"").trim();
 const digest=x=>createHash("sha256").update(x).digest("hex").slice(0,18);
 const validDate=x=>{const t=Date.parse(x||"");return Number.isFinite(t)?t:null};
 function safeUrl(value){
@@ -73,7 +73,10 @@ function headlineLinks(title,data){
   const names=issuerAlias(i,data.groups);
   const text=" "+normalized(title)+" ";
   const issuerName=[...names].some(n=>n.length>=10&&n.split(" ").length>=2&&text.includes(" "+n+" "));
-  const code=new RegExp("(?:IDX:|\\$|\\()"+i.ticker+"(?:\\)|\\b)").test(String(title));
+  const raw=String(title||"");
+  const ambiguous=new Set(["BIRD","CITY","HOME","LIFE","STAR","BANK","WIFI","DATA","FOOD","AUTO","MOVE","GOLD","COAL","RICE"]);
+  const code=new RegExp("(?:IDX:|\\$|\\()"+i.ticker+"(?:\\)|\\b)").test(raw)||
+    (!ambiguous.has(i.ticker)&&new RegExp("(?:^|[^A-Z0-9])"+i.ticker+"(?=$|[^A-Z0-9])").test(raw));
   if(issuerName||code)found.push({ticker:i.ticker,basis:"explicit_headline_identity"});
  }
  return found.slice(0,16);
