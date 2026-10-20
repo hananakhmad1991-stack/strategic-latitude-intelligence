@@ -137,6 +137,9 @@ await check("Source integration: provincial search and IEA dataset filters",{wid
  await page.waitForTimeout(150);
  const after=await page.locator("#socioTable tbody tr").count();
  assert.ok(after>0&&after<before,"Provincial search must narrow real rows: "+before+" → "+after);
+ await page.goto(pageUrl("sli-sector-data-library.html#minerals"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.waitForFunction(()=>document.body.classList.contains("sli-library-topic-mode"),null,{timeout:12000});
+ assert.ok(await page.locator("#minerals").isVisible(),"Mineral evidence topic not visible");
  await page.locator("#ieaGroup option").first().waitFor({state:"attached",timeout:12000});
  assert.ok((await page.locator("#ieaGroup option").count())>1,"IEA scenario options missing");
  await page.locator("#ieaGroup").selectOption({index:1});
