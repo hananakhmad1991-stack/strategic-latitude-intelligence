@@ -1,0 +1,41 @@
+name: SLI Full IEA 2026 Scenario Integrity
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'data/iea-critical-minerals-2026-full-scenarios.json'
+      - 'js/sli-iea-2026-full-explorer.js'
+      - 'css/sli-iea-2026-full-explorer.css'
+      - 'js/research-chapters.js'
+      - 'index.html'
+      - 'tests/qa-sli-iea-2026-full-scenarios.mjs'
+      - '.github/workflows/sli-iea-2026-full-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/iea-critical-minerals-2026-full-scenarios.json'
+      - 'js/sli-iea-2026-full-explorer.js'
+      - 'css/sli-iea-2026-full-explorer.css'
+      - 'js/research-chapters.js'
+      - 'index.html'
+      - 'tests/qa-sli-iea-2026-full-scenarios.mjs'
+      - '.github/workflows/sli-iea-2026-full-qa.yml'
+permissions:
+  contents: read
+jobs:
+  scientific-source-constraints:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax QA for both IEA model explorers and research chapters
+        run: |
+          node --check js/sli-iea-2026-full-explorer.js
+          node --check js/iea-2026-explorer.js
+          node --check js/research-chapters.js
+          node --test tests/qa-sli-iea-2026-full-scenarios.mjs
+      - name: Existing smaller series remain unchanged
+        run: node tests/qa-iea-2026-workbook.mjs
