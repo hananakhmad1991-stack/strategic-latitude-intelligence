@@ -1,21 +1,21 @@
-/* Numeric chart-label digitization from Stanford HAI AI Index 2026, original PDF pages 30, 31, 33 and 39. */
+/* Source figure-label digitization from Stanford HAI AI Index 2026 and World Bank AI Foundations 2025. */
 (()=>{"use strict";
 const roots=[...document.querySelectorAll("[data-sli-ai-figures]")];if(!roots.length)return;
-const NS="http://www.w3.org/2000/svg",PATH="./data/sli-stanford-2026-digitized-figures.json";
+const NS="http://www.w3.org/2000/svg",PATH="./data/sli-stanford-2026-digitized-figures.json",WB_PATH="./data/sli-worldbank-ai-2025-digitized-figure-panels.json";
 function el(tag,text){const x=document.createElement(tag);if(text!==undefined)x.textContent=String(text);return x}
 function svg(tag,attrs,txt){const n=document.createElementNS(NS,tag);Object.entries(attrs||{}).forEach(([k,v])=>n.setAttribute(k,String(v)));if(txt!==undefined)n.textContent=String(txt);return n}
 const fmt=x=>Number(x).toLocaleString("id-ID",{maximumFractionDigits:2});
 const en=()=>document.documentElement.lang.toLowerCase().startsWith("en");
 function chart(root,d){
-root.classList.add("sli-figure-atlas");root.setAttribute("data-sli-visual","source-verified-stanford-figures");
+root.classList.add("sli-figure-atlas");root.setAttribute("data-sli-visual","source-reviewed-original-report-figure-panels");
 const heading=el("h3",en()?"Digitized original-report figures":"Grafik laporan asli yang telah didigitalisasi");
 const selectWrap=el("div");selectWrap.className="sli-figure-select";
 const lab=el("label",en()?"Choose figure":"Pilih grafik");const select=el("select");lab.append(select);selectWrap.append(lab);
-d.figures.forEach((f,i)=>{const op=el("option",(en()?f.title_en:f.title_id)+" · Figure "+f.figure_number);op.value=String(i);select.append(op)});
+d.figures.forEach((f,i)=>{const provider=f.source_url?"World Bank":"Stanford";const op=el("option",provider+" · "+(en()?f.title_en:f.title_id)+" · Figure "+f.figure_number+(f.figure_panel||""));op.value=String(i);select.append(op)});
 const meta=el("p"),plot=el("div"),detail=el("div"),warn=el("p"),source=el("p"),details=el("details"),sum=el("summary",en()?"Show exact transcribed values":"Lihat tabel nilai sumber"),table=el("table");
 plot.className="sli-figure-plot";detail.className="sli-figure-detail";details.append(sum,table);
 root.replaceChildren(heading,selectWrap,meta,plot,detail,warn,source,details);
-function sourceLink(f){source.replaceChildren();const a=el("a",(en()?"Original Stanford 2026 PDF":"PDF asli Stanford 2026")+" · Figure "+f.figure_number+" · "+(en()?"PDF page ":"halaman PDF ")+f.pdf_page);a.href=d.source.official_url;a.target="_blank";a.rel="noopener noreferrer";source.append(a)}
+function sourceLink(f){source.replaceChildren();const publisher=f.source_url?"World Bank 2025":"Stanford 2026";const a=el("a",publisher+" · Figure "+f.figure_number+(f.figure_panel||"")+" · "+(en()?"PDF page ":"halaman PDF ")+f.pdf_page);a.href=f.source_url||d.source.official_url;a.target="_blank";a.rel="noopener noreferrer";source.append(a)}
 function setDetail(label,value,f){detail.textContent=label+": "+fmt(value)+" "+f.unit+". "+(en()?f.caution_en:f.caution_id)}
 function point(base,label,value,f){const title=svg("title",{},label+": "+fmt(value)+" "+f.unit);base.append(title);base.setAttribute("data-value",String(value));base.setAttribute("tabindex","0");base.setAttribute("role","button");base.setAttribute("aria-label",label+": "+fmt(value)+" "+f.unit);const run=()=>setDetail(label,value,f);base.addEventListener("click",run);base.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();run()}})}
 function addText(v,x,y,content,size=12,color="#bdd7e3",anchor="middle"){v.append(svg("text",{x,y,fill:color,"font-size":size,"text-anchor":anchor},content))}
@@ -56,7 +56,7 @@ function registerExporter(){
   getData:()=>({headers:[labelName,f.title_en+" ("+f.unit+")"],
    rows:f.values.map(r=>isPower?[r.period,r.value_gw]:[r.country||r.label_en,r.count===undefined?r.value:r.count]),kind:"verified-provider"}),
   getMeta:()=>({title:en()?f.title_en:f.title_id,source:f.source_credit,
-   sourceUrl:d.source.official_url,period:isPower?"2022Q1–2025Q4":String(f.year||2025),
+   sourceUrl:f.source_url||d.source.official_url,period:isPower?"2022Q1–2025Q4":String(f.period||f.year||2025),
    completeness:"Exact printed numeric source-labels only; "+f.statistical_status+". "+f.caution_en})
  });
 }
@@ -66,7 +66,7 @@ function show(){
  const selected=f.values.at(-1);
  const selectedLabel=isPower?selected.period:(selected.country||(en()?selected.label_en:selected.label_id));
  const selectedValue=isPower?selected.value_gw:selected.count===undefined?selected.value:selected.count;
- meta.textContent=f.source_credit+" · Figure "+f.figure_number+" · PDF "+f.pdf_page+" · "+(en()?"Publisher figures are not independently audited by SLI":"Angka sumber belum menjadi validasi independen metodologi penerbit");
+ meta.textContent=f.source_credit+" · Figure "+f.figure_number+(f.figure_panel||"")+" · PDF "+f.pdf_page+" · "+(en()?"Publisher figures are not independently audited by SLI":"Angka sumber belum menjadi validasi independen metodologi penerbit");
  plot.replaceChildren(isPower?line(f):bars(f));
  warn.textContent=en()?f.caution_en:f.caution_id;
  sourceLink(f);setDetail(selectedLabel,selectedValue,f);
@@ -80,5 +80,14 @@ function show(){
 }
 select.addEventListener("change",show);show();
 }
-fetch(PATH,{cache:"no-cache"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>roots.forEach(root=>chart(root,d))).catch(e=>roots.forEach(root=>{root.textContent="Source-verified Stanford figures unavailable: "+String(e.message)}));
+async function loadJSON(path){const r=await fetch(path,{cache:"no-cache"});if(!r.ok)throw Error("HTTP "+r.status+" "+path);return r.json()}
+Promise.allSettled([loadJSON(PATH),loadJSON(WB_PATH)]).then(results=>{
+ const stanford=results[0];if(stanford.status!=="fulfilled")throw stanford.reason;
+ const d=stanford.value;if(d.schema!=="sli-stanford-ai-index-2026-digitized-figures-v1"||!Array.isArray(d.figures))throw Error("Stanford dataset schema");
+ const bank=results[1];
+ if(bank.status==="fulfilled"&&bank.value.schema==="sli-worldbank-ai-foundations-2025-digitized-figure-panels-v1"&&Array.isArray(bank.value.figures)){
+  d.figures.push(...bank.value.figures.map(f=>({...f,source_url:f.source_url||bank.value.source.official_url})));
+ }
+ roots.forEach(root=>chart(root,d));
+}).catch(e=>roots.forEach(root=>{root.textContent="Source-reviewed AI figures unavailable: "+String(e.message)}));
 })();

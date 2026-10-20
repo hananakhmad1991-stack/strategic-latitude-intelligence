@@ -14,7 +14,7 @@ fetch("./data/sli-ai-figure-source-audit.json",{cache:"no-store"})
     " kemunculan label figure terdeteksi otomatis (Stanford "+d.publisher_reports[0].text_figure_label_candidates+
     ", World Bank "+d.publisher_reports[1].text_figure_label_candidates+
     "). Bukan "+num+" grafik terverifikasi. Hanya "+done+
-    " grafik yang sudah memiliki dataset numerik hasil pembacaan label asli; sisanya memerlukan pemeriksaan visual, angka, periode dan definisi.";
+    " panel grafik yang telah memiliki dataset numerik dari label asli ("+d.distinct_digitized_figure_numbers+" nomor gambar berbeda); sisanya masih kandidat yang memerlukan pemeriksaan visual, angka, periode, lisensi dan definisi.";
    const link=document.createElement("a");
    link.textContent="Lihat log audit ↗";link.href=d.publisher_reports[0].evidence_run;
    link.target="_blank";link.rel="noopener noreferrer";

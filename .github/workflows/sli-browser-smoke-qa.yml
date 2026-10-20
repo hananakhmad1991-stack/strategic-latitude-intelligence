@@ -1,6 +1,13 @@
 name: SLI Rendered Browser and Interaction QA
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'data/sli-worldbank-ai-2025-digitized-figure-panels.json'
+      - 'data/sli-stanford-2026-digitized-figures.json'
+      - 'js/sli-digitized-ai-figures.js'
+      - 'tests/qa-sli-browser-smoke.mjs'
+      - '.github/workflows/sli-browser-smoke-qa.yml'
   schedule:
     # ~12:27 WIB daily, GitHub schedule may be delayed.
     - cron: '27 5 * * *'
@@ -10,6 +17,9 @@ on:
       - 'tests/qa-sli-browser-smoke.mjs'
       - 'index.html'
       - 'sli-sector-data-library.html'
+      - 'ai-intelligence-hub.html'
+      - 'data/sli-worldbank-ai-2025-digitized-figure-panels.json'
+      - 'js/sli-digitized-ai-figures.js'
       - 'css/sli-home-portal.css'
       - 'css/sli-sector-data-library.css'
       - 'css/sli-navigation.css'

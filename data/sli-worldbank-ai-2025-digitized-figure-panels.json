@@ -1,0 +1,224 @@
+{
+  "schema": "sli-worldbank-ai-foundations-2025-digitized-figure-panels-v1",
+  "reviewed_at": "2026-10-20",
+  "source": {
+    "publisher": "World Bank",
+    "report": "Digital Progress and Trends Report 2025: Strengthening AI Foundations",
+    "official_url": "https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf",
+    "independent_primary_study_validation": false
+  },
+  "editorial_policy": "Only original printed numerical panel labels transcribed from PDF pages 83 and 85, cross-checked visually; not counts of underlying records. Ratios and time periods are not interchangeable. Numeric panels within Figures 4.2 and 4.3 separately counted; neither entire report's graphics nor underlying studies independently validated.",
+  "figures": [
+    {
+      "id": "worldbank-ai-training-startups-4-2a",
+      "figure_number": "4.2",
+      "figure_panel": "a",
+      "pdf_page": 83,
+      "title_id": "Distribusi perusahaan rintisan penyedia data pelatihan AI, 2024",
+      "title_en": "Training-data AI startups by location, 2024",
+      "unit": "%",
+      "period": "2024",
+      "geography": "Global or selected income/country group comparisons (not Indonesia-only)",
+      "statistical_status": "publisher_reproduced_secondary_estimate_original_study_not_independently_validated",
+      "source_credit": "World Bank Digital Progress and Trends Report 2025, Figure 4.2a; OECD.AI/CB Insights tabulations",
+      "source_url": "https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf",
+      "source_chart_basis": "Original explicitly printed category percentages from PDF page 83 / Figure 4.2 panel a. No pixel-derived estimation. Percentages may not sum to exactly 100 due to rounding.",
+      "caution_id": "Persentase jumlah startup menurut kelompok/wilayah pada 2024, bukan nilai pendanaan. Total angka label 101% karena pembulatan; bukan distribusi startup di Indonesia.",
+      "caution_en": "2024 share of training-data startups, NOT venture funding value. Printed labels sum to 101% due to rounding; not Indonesia-only data.",
+      "values": [
+        {
+          "label_en": "United States",
+          "label_id": "Amerika Serikat",
+          "value": 40
+        },
+        {
+          "label_en": "EU",
+          "label_id": "Uni Eropa",
+          "value": 21
+        },
+        {
+          "label_en": "Other HICs",
+          "label_id": "Negara berpendapatan tinggi lainnya",
+          "value": 17
+        },
+        {
+          "label_en": "United Kingdom",
+          "label_id": "Britania Raya",
+          "value": 9
+        },
+        {
+          "label_en": "China",
+          "label_id": "Tiongkok",
+          "value": 6
+        },
+        {
+          "label_en": "Other UMICs",
+          "label_id": "Negara menengah atas lainnya",
+          "value": 5
+        },
+        {
+          "label_en": "India",
+          "label_id": "India",
+          "value": 2
+        },
+        {
+          "label_en": "Other LMICs",
+          "label_id": "Negara menengah bawah lainnya",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "worldbank-ai-training-vc-4-2b",
+      "figure_number": "4.2",
+      "figure_panel": "b",
+      "pdf_page": 83,
+      "title_id": "Distribusi investasi modal ventura dalam data pelatihan AI, 2014–2023",
+      "title_en": "Training-data AI venture capital funding shares, 2014–2023",
+      "unit": "%",
+      "period": "2014–2023",
+      "geography": "Global or selected income/country group comparisons (not Indonesia-only)",
+      "statistical_status": "publisher_reproduced_secondary_estimate_original_study_not_independently_validated",
+      "source_credit": "World Bank Digital Progress and Trends Report 2025, Figure 4.2b; OECD.AI/CB Insights tabulations",
+      "source_url": "https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf",
+      "source_chart_basis": "Original explicitly printed category percentages from PDF page 83 / Figure 4.2 panel b. No pixel-derived estimation. Percentages may not sum to exactly 100 due to rounding.",
+      "caution_id": "Persentase pendanaan modal ventura secara kumulatif 2014–2023, bukan arus tahun 2024 atau realisasi investasi Indonesia. Total angka label 99% akibat pembulatan.",
+      "caution_en": "Distribution of cumulative VC funding 2014–2023, NOT 2024 startup counts or Indonesian investment. Printed labels sum to 99% due to rounding.",
+      "values": [
+        {
+          "label_en": "United States",
+          "label_id": "Amerika Serikat",
+          "value": 56
+        },
+        {
+          "label_en": "China",
+          "label_id": "Tiongkok",
+          "value": 17
+        },
+        {
+          "label_en": "EU",
+          "label_id": "Uni Eropa",
+          "value": 15
+        },
+        {
+          "label_en": "Others",
+          "label_id": "Negara lainnya",
+          "value": 6
+        },
+        {
+          "label_en": "India",
+          "label_id": "India",
+          "value": 3
+        },
+        {
+          "label_en": "United Kingdom",
+          "label_id": "Britania Raya",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "worldbank-ai-huggingface-languages-4-3c",
+      "figure_number": "4.3",
+      "figure_panel": "c",
+      "pdf_page": 85,
+      "title_id": "Bahasa dataset open-source Hugging Face, 2024",
+      "title_en": "Language distribution of Hugging Face open-source datasets, 2024",
+      "unit": "%",
+      "period": "2024",
+      "geography": "Global or selected income/country group comparisons (not Indonesia-only)",
+      "statistical_status": "publisher_reproduced_secondary_estimate_original_study_not_independently_validated",
+      "source_credit": "World Bank Digital Progress and Trends Report 2025 Figure 4.3c; OECD.AI source updated April 2024",
+      "source_url": "https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf",
+      "source_chart_basis": "Original explicitly printed category percentages from PDF page 85 / Figure 4.3 panel c. No pixel-derived estimation. Percentages may not sum to exactly 100 due to rounding.",
+      "caution_id": "Distribusi dataset Hugging Face 2024; tidak mewakili seluruh data pelatihan AI ataupun komposisi dataset berbahasa Indonesia.",
+      "caution_en": "Share of Hugging Face open-source datasets by language, 2024. Not all global AI training data, and NOT an Indonesia-specific estimate.",
+      "values": [
+        {
+          "label_en": "English",
+          "label_id": "Inggris",
+          "value": 56.3
+        },
+        {
+          "label_en": "Other languages",
+          "label_id": "Bahasa lainnya",
+          "value": 30
+        },
+        {
+          "label_en": "Chinese",
+          "label_id": "Tionghoa",
+          "value": 5.1
+        },
+        {
+          "label_en": "French",
+          "label_id": "Prancis",
+          "value": 3.4
+        },
+        {
+          "label_en": "Spanish",
+          "label_id": "Spanyol",
+          "value": 2.8
+        },
+        {
+          "label_en": "Russian",
+          "label_id": "Rusia",
+          "value": 2.4
+        }
+      ]
+    },
+    {
+      "id": "worldbank-ai-youtube-languages-4-3d",
+      "figure_number": "4.3",
+      "figure_panel": "d",
+      "pdf_page": 85,
+      "title_id": "Distribusi bahasa video YouTube, 2022",
+      "title_en": "Estimated language composition of YouTube videos, 2022",
+      "unit": "%",
+      "period": "2022",
+      "geography": "Global or selected income/country group comparisons (not Indonesia-only)",
+      "statistical_status": "publisher_reproduced_secondary_estimate_original_study_not_independently_validated",
+      "source_credit": "World Bank Digital Progress and Trends Report 2025 Figure 4.3d; McGrady et al. 2023 Figure 18",
+      "source_url": "https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf",
+      "source_chart_basis": "Original explicitly printed category percentages from PDF page 85 / Figure 4.3 panel d. No pixel-derived estimation. Percentages may not sum to exactly 100 due to rounding.",
+      "caution_id": "Estimasi distribusi bahasa konten YouTube tahun 2022, bukan data terkini atau pengukuran bahasa audiens Strategic Latitude.",
+      "caution_en": "Published estimate of YouTube video language shares for 2022, not current platform composition or channel-specific audience demographics.",
+      "values": [
+        {
+          "label_en": "Other languages",
+          "label_id": "Bahasa lainnya",
+          "value": 51.6
+        },
+        {
+          "label_en": "English",
+          "label_id": "Inggris",
+          "value": 21.4
+        },
+        {
+          "label_en": "Hindi",
+          "label_id": "Hindi",
+          "value": 7.6
+        },
+        {
+          "label_en": "Spanish",
+          "label_id": "Spanyol",
+          "value": 6.7
+        },
+        {
+          "label_en": "Portuguese",
+          "label_id": "Portugis",
+          "value": 5
+        },
+        {
+          "label_en": "Russian",
+          "label_id": "Rusia",
+          "value": 4.5
+        },
+        {
+          "label_en": "Arabic",
+          "label_id": "Arab",
+          "value": 3.2
+        }
+      ]
+    }
+  ]
+}

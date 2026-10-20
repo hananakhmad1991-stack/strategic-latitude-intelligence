@@ -12,7 +12,7 @@ test("Five original Stanford figures have verifiable page, unit, status and sour
   assert.ok([30,31,33,39].includes(f.pdf_page));
   assert.ok(f.source_credit&&f.figure_number&&f.caution_id&&f.statistical_status);
  }
- assert.equal(metrics.figure_catalog_status.verified_numeric_figure_series_count,5);
+ assert.equal(metrics.figure_catalog_status.verified_numeric_figure_series_count,9);
 });
 test("Figure 1.2.4 follows original printed quarterly power estimates, not electricity consumption",()=>{
  const f=d.figures.find(x=>x.figure_number==="1.2.4");
@@ -47,7 +47,7 @@ test("Digitized figures displayed in both AI topic and sector data library with 
  assert.match(js,/SLIVisualExport\.register\(svgNode/);
  assert.match(js,/sli:exportready/);
  assert.match(js,/kind:"verified-provider"/);
- assert.match(js,/sourceUrl:d.source.official_url/);
+ assert.match(js,/sourceUrl:f.source_url\|\|d.source.official_url/);
  assert.match(js,/document\.createElement\("table"\)|el\("table"\)/);
  assert.doesNotMatch(js,/innerHTML|Math\.random/);
 });
@@ -58,7 +58,7 @@ test("Source PDF figure-candidate audit does not claim unreviewed charts are num
  assert.equal(d.text_figure_label_total,409);
  assert.equal(d.publisher_reports[0].pdf_pages,425);
  assert.equal(d.publisher_reports[1].pdf_pages,136);
- assert.equal(d.already_digitized_numeric_source_figures,5);
+ assert.equal(d.already_digitized_numeric_source_figures,9);
  assert.equal(d.no_automatic_numeric_publication,true);
  assert.match(d.review_limits,/not unique verified chart series/);
  const script=read("js/sli-ai-figure-audit-status.js");
