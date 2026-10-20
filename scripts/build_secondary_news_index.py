@@ -121,6 +121,7 @@ def normalize_row(row, source, now):
         "title": title, "publisher": publisher, "url": article_url,
         "published_at_utc": pub.isoformat().replace("+00:00", "Z"),
         "date_type": date_type, "sector": infer_sector(row, source),
+        "scope": str(row.get("_scope") or row.get("scope") or "")[:30] if source=="research-signal-radar" else "",
         "topic": str(row.get("topic") or row.get("topic_id") or row.get("category") or row.get("channel") or row.get("group") or row.get("kind") or "")[:110],
         "geo": str(row.get("geo") or "Indonesia and global context")[:90],
         "monitor_source": source, "link_kind": link_kind,
