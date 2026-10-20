@@ -4,7 +4,8 @@
 .sli-idx-eyebrow{display:block;font-size:10px;letter-spacing:.13em;color:#e4c386;font-weight:800;margin-bottom:7px}
 .sli-idx-head h3{font:400 clamp(23px,2.8vw,30px)/1.22 Georgia,serif;color:#f3f7fa;margin:0 0 8px}
 .sli-idx-head p{color:#bacee0;font-size:12px;line-height:1.7;max-width:760px;margin:0}
-.sli-idx-external{flex:none;align-self:flex-start;background:#1a3851;color:#eed4a3;text-decoration:none;border:1px solid #5b7a8f;border-radius:9px;padding:10px 12px;font-size:11px;font-weight:700}
+.sli-idx-market-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;align-items:flex-start}
+.sli-idx-external,.sli-idx-market-links>a{flex:none;align-self:flex-start;background:#1a3851;color:#eed4a3;text-decoration:none;border:1px solid #5b7a8f;border-radius:9px;padding:10px 12px;font-size:11px;font-weight:700}
 .sli-idx-external:hover{background:#24495e;border-color:#e1bf82}
 .sli-idx-tools{display:grid;grid-template-columns:minmax(160px,.88fr) minmax(185px,1.2fr) auto;align-items:end;gap:12px;margin:16px 0}
 .sli-idx-tools label{display:flex;flex-direction:column;gap:7px;color:#aecaDC;font-size:11px;font-weight:700}
