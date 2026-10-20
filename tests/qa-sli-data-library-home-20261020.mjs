@@ -33,8 +33,8 @@ test("RUPTL 109-reservoir and 24-year AMI source reuse is exact",()=>{
 test("Stanford and World Bank 2025–26 chart facts carry source, pages, geography, scope, and unit",()=>{
  const d=json("data/sli-ai-stanford-worldbank-foundations-2025-2026.json");
  assert.equal(d.indicators.length,62);
- assert.equal(d.indicators.filter(x=>x.source==="stanford").length,15);
- assert.equal(d.indicators.filter(x=>x.source==="worldbank").length,47);
+ assert.equal(d.indicators.filter(x=>x.source==="stanford").length,16);
+ assert.equal(d.indicators.filter(x=>x.source==="worldbank").length,46);
  assert.equal(d.indicators.find(x=>x.id==="stanford_us_ai_private_investment_2025").value,285.9);
  assert.equal(d.indicators.find(x=>x.id==="stanford_ai_power_q42025").value,29.6);
  assert.equal(d.indicators.find(x=>x.id==="wb_lmic_usage_april2025").value,4.7);
