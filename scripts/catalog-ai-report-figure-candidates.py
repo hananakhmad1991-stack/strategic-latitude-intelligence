@@ -16,14 +16,14 @@ def detect_page(text, publisher):
     hits=[]
     for raw in lines:
         if publisher=="stanford":
-            m=re.match(r"^\\s*Figure\\s+(\\d+\\.\\d+\\.\\d{1,3})\\s*$",raw,re.I)
+            m=re.match(r"^\s*Figure\s+(\d+\.\d+\.\d{1,3})\s*$",raw,re.I)
             if not m: continue
             value=m.group(1)
             suspect=(len(value.split(".")[-1])>2)
             hits.append({"figure_label_candidate":value,
                 "footnote_suffix_ambiguous":suspect})
         else:
-            m=re.match(r"^\\s*FIGURE\\s+(\\d+)\\.\\s*(\\d+)\\s+(.{3,140})$",raw,re.I)
+            m=re.match(r"^\s*FIGURE\s+(\d+)\.\s*(\d+)\s+(.{3,140})$",raw,re.I)
             if not m: continue
             hits.append({"figure_label_candidate":m.group(1)+"."+m.group(2),
                 "caption_preview":m.group(3)[:110],"footnote_suffix_ambiguous":False})
@@ -56,7 +56,7 @@ def main():
       "caveat":"Occurrences may include duplicate caption/reference labels or glued footnote digits; page/figure number needs individual inspection. Candidate count does not equal validated charts.",
       "sources":series}
     a.out.parent.mkdir(parents=True,exist_ok=True)
-    a.out.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    a.out.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     for item in series:
         print("AI_FIGURE_LABEL_CANDIDATES",item["publisher"],"pdf_pages="+str(item["report_pages"]),
               "candidate_labels="+str(item["extracted_candidate_labels"]))
