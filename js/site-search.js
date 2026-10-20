@@ -223,7 +223,7 @@
    // The page shell is synchronous; many charts load asynchronously. Retry only
    // until the target section and relevant filter exist, without creating GPS or
    // inventing a record-specific deep link where no exact detail panel exists.
-   let jumped=false,mapSelected=false;
+   let jumped=false,mapSelected=false,appliedTab=false,appliedLayer=false;
    const attempt=(delay)=>{
     setTimeout(()=>{
      // Clicking a different sidebar dashboard cancels obsolete delayed scroll/filter actions.
@@ -238,6 +238,12 @@
      if(item.page==="map"&&item.kind==="record"&&!mapSelected&&typeof window.SLIMapSearchRecord==="function"){
       mapSelected=window.SLIMapSearchRecord({id:String(item.keywords||"").split(/\s+/)[0],title:item.title})===true;
      }
+     // Wait until the control exists before positioning the view. Do not re-apply
+     // filters after a user has started interacting with the destination.
+     const tab=item.komdigi_tab?[...el.querySelectorAll("button.kd25-tab")].find(b=>b.dataset.tab===item.komdigi_tab):null;
+     const atlas=item.layer?el.querySelector("select.he25-atlas-select"):null;
+     if(item.komdigi_tab&&!tab&&delay<6500)return;
+     if(item.layer&&(!atlas||![...atlas.options].some(o=>o.value===item.layer))&&delay<6500)return;
      if(!jumped){
       // The map handler already scrolls to its exact asset inspector; do not jump back to the map top.
       if(!mapSelected){
@@ -246,7 +252,8 @@
       }
       jumped=true;
      }
-     if(item.komdigi_tab){
+     if(item.komdigi_tab&&!appliedTab&&tab){
+      appliedTab=true;
       const tab=[...el.querySelectorAll("button.kd25-tab")].find(b=>b.dataset.tab===item.komdigi_tab);
       if(tab&&tab.getAttribute("aria-selected")!=="true")tab.click();
       if(item.komdigi_tab==="regional"&&item.province){
@@ -254,15 +261,20 @@
        provinceBtn?.click();
       }
      }
-     if(item.layer){
-      const select=el.querySelector("select.he25-atlas-select");
+     if(item.layer&&!appliedLayer){
+      const select=atlas;
       if(select&&[...select.options].some(o=>o.value===item.layer)){
+       appliedLayer=true;
        if(select.value!==item.layer){select.value=item.layer;select.dispatchEvent(new Event("change",{bubbles:true}))}
        if(item.province){
         const match=[...el.querySelectorAll(".he25-atlas-rank")].find(b=>(b.textContent||"").includes(item.province));
         match?.click();
        }
       }
+     }
+     // One resolved result, one navigation/selection: cancel all later retries.
+     if(jumped&&(!item.komdigi_tab||appliedTab)&&(!item.layer||appliedLayer)){
+      requested++;pendingTarget=null;
      }
     },delay);
    };
@@ -287,7 +299,14 @@
    }
    if(e.key==="Escape"&&open){close();input.blur()}
   });
-  document.addEventListener("pointerdown",e=>{if(open&&!root.contains(e.target))close()});
+  document.addEventListener("pointerdown",e=>{
+   if(open&&!root.contains(e.target))close();
+   // A deliberate interaction in the destination takes precedence over delayed
+   // search retries (including selecting another chart tab or a map filter).
+   if(pendingTarget&&document.getElementById("content")?.contains(e.target)&&!root.contains(e.target)){
+    requested++;pendingTarget=null;
+   }
+  });
   document.addEventListener("sli:languagechange",()=>{labels();if(open)update()});
   // Page changes may occur from the sidebar while the popover is open.
   document.addEventListener("sli:pagechange",event=>{if(pendingTarget&&event.detail?.page&&event.detail.page!==pendingTarget){requested++;pendingTarget=null}if(open)update()});
