@@ -22,17 +22,11 @@ test("Every SLI page inherits shared visual-export bootstrap without external ch
  assert.match(css,/content:"SLI"/);
  assert.match(css,/rgba\(151,162,177,.19\)/);
  assert.match(css,/sli-visual-export-toolbar/);
- assert.match(core,/function openVisualInsight\(event\)/);
- assert.match(core,/pointInsights\.set\(visual,provider\)/);
- assert.match(core,/document\.addEventListener\('click',openVisualInsight\)/);
- assert.match(core,/#sliMapRoot,#geo-commodity-timeline/);
- assert.match(core,/This visual observation alone cannot establish cause and effect/);
- assert.match(css,/\.sli-visual-insight-fields/);
- assert.match(css,/\.sli-visual-insight-selected/);
- assert.match(css,/\.sli-visual-insight-split/,"Selected visual observations have a shared two-column layout");
- assert.match(core,/split\.append\(inspector\)/,"Insight panel belongs beside its chart");
- assert.match(core,/host\.parentNode\.insertBefore\(split,host\)/,"Chart and inspector are wrapped together");
- assert.match(core,/split\.parentNode\.insertBefore\(host,split\)/,"Closing restores the original DOM");
+ // The old global, right-hand Power BI-style panel was explicitly withdrawn.
+ assert.doesNotMatch(core,/function openVisualInsight/);
+ assert.doesNotMatch(core,/document\.addEventListener\('click',openVisualInsight\)/);
+ assert.doesNotMatch(css,/sli-visual-insight-split/);
+ assert.match(core,/function registerInsight\(\)\{return false\}/);
 
  assert.match(core,/\["jpg","JPG"\]/);
  assert.match(core,/host\.insertBefore\(toolbar,host\.firstChild\)/);
@@ -138,36 +132,16 @@ test("Energy Fundamentals chart actually renders six working export controls wit
  assert.ok(handlers.has("sli:exportready"),"Should register even if universal export loads after the chart");
 });
 
-test("One-click one-observation inspector is shared while rich specialist panels remain independent",()=>{
- const macro=read("js/sli-macro-overview.js");
- const commodity=read("js/commodity-market-prices.js");
+test("Domain-specific maps survive without Power BI-style universal inspectors",()=>{
+ const map=read("js/strategic-map.js");
  const trade=read("js/commodity-trade-flow.js");
- const local=read("js/strategic-map.js");
- for(const [name,src] of [
-  ["shared inspector",core],["commodity chart",commodity],["macro chart",macro],["trade Sankey",trade]
- ])assert.doesNotThrow(()=>new Function(src),name+" JavaScript must parse");
- assert.match(core,/activeInspectorHost/);
- assert.match(core,/clearChartInsight\(activeInspectorHost\)/,"Selecting another chart clears the previous inspector");
- assert.match(core,/one selected table row|Satu baris tabel terpilih/i);
- assert.match(core,/tr\[data-sli-inspectable\]/,"Table rows support keyboard selection");
- assert.match(core,/sourceUrl=extra\?\.sourceUrl\|\|rowSource\|\|meta.sourceUrl/,"Selected record source takes precedence");
- assert.match(core,/#sliMapRoot,#geo-commodity-timeline/,"Specialist maps bypass generic panel");
- assert.match(core,/svg\.stake-svg,#energyOilGasStakeholdersRoot,#energyCoalStakeholdersRoot/,"Dedicated stakeholder inspectors are not overridden");
- assert.match(core,/sourceUrl:meta\?\.sourceUrl\|\|""/,"Unrelated nearby hyperlinks must not masquerade as evidence");
- assert.match(core,/barHost&&isChart\(barHost\)/,"Unrelated cards cannot trigger the bar inspector");
- assert.match(css,/tr\[data-sli-inspectable\]:focus-visible/);
- assert.match(commodity,/data-sli-point-index/);
- assert.match(commodity,/registerInsight\?\.\(svg,/);
- assert.match(commodity,/previous saved observation/,"Commodity change must use dated saved points only");
- assert.match(macro,/const spark=root.querySelector/);
- assert.match(macro,/window.SLIVisualExport.registerInsight\?\.\(spark,/);
- assert.match(trade,/data-sli-trade-key/,"Sankey ribbons resolve to one selected partner and product");
- assert.match(trade,/edges.find\(e=>e.p.id\+"\|"\+e.c/);
- assert.match(trade,/OTHER is a computed remainder/,"Unattributed remainder cannot masquerade as a named partner");
- assert.match(local,/currentPointLabel/,"The map retains dedicated point inspection");
- assert.match(read("js/sli-geopolitical-timeline.js"),/eventInsight\(/,"Geopolitical source-aware inspector must remain intact");
+ assert.match(map,/SLIMapSearchRecord/);
+ assert.match(trade,/data-sli-trade-key/);
+ assert.doesNotMatch(core,/activeInspectorHost|openVisualInsight|sli-visual-insight-split/);
+ assert.doesNotMatch(css,/sli-visual-insight-split/);
+ assert.match(core,/MutationObserver/);
+ assert.match(core,/register,registerInsight,export:exportVisual,refresh:queue/);
 });
-
 test("Energy Security investment chart selects specific ESDM year and source instead of an entire series",()=>{
  const energy=read("js/energy-prices-fiscal.js");
  assert.doesNotThrow(()=>new Function(energy));
