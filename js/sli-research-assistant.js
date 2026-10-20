@@ -697,5 +697,5 @@ document.addEventListener("DOMContentLoaded",init);
 window.SLIResearchAssistant=Object.freeze({version:"2026-10-20-professional-report-exports",generation_requires_backend:true,method_catalog_count:49,follow_up_chat:true,owner_attachment_staging:true,
  getExportData:()=>state.lastResult?{answer:reportBody(state.lastResult.answer,state.language),sources:state.lastResult.sources||[],
   charts:state.lastResult.charts||[],language:state.language,
-  title:(String(state.lastResult.answer||"").match(/^#{1,2}\\s+(.+)$/m)?.[1]||String(state.lastResult.question||"").slice(0,125)||"Laporan Riset SLI").replace(/\\*\\*/g,"").slice(0,145)}:null});
+  title:(String(state.lastResult.answer||"").match(/^#{1,2}\s+(.+)$/m)?.[1]||String(state.lastResult.question||"").slice(0,125)||"Laporan Riset SLI").replace(/\*\*/g,"").slice(0,145)}:null});
 })();
