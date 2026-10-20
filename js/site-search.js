@@ -233,6 +233,7 @@
      const deferredRoot=/^(sliMapRoot|sliResearchRoot|sliKomdigiAI2025Root|he25InvestorAtlasEnergyRoot|skkMigas2025EnergyRoot)$/.test(item.anchor||"");
      const busy=deferredRoot&&((section.children?.length||0)===0||
       (section.children?.length===1&&/^(Loading|Memuat)\b/i.test(section.textContent?.trim()||"")));
+     if(item.page==="map"&&item.kind==="record"&&busy)return; // mapready resumes even on slow connections
      if((busy||(item.page==="map"&&item.kind==="record"&&typeof window.SLIMapSearchRecord!=="function"))&&delay<6500)return;
      const el=section;
      if(item.page==="map"&&item.kind==="record"&&!mapSelected&&typeof window.SLIMapSearchRecord==="function"){
@@ -279,6 +280,10 @@
     },delay);
    };
    [0,180,500,1100,2200,4000,6500].forEach(attempt);
+   if(item.page==="map"&&item.kind==="record"){
+    // A slow basemap should never become a generic result just because a retry timer expired.
+    document.addEventListener("sli:mapready",()=>attempt(0),{once:true});
+   }
   }
   function selectItem(item){goToRecord(item)}
   function begin(){show();labels();preload();update()}
