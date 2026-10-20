@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-20T22:46:51.330698+00:00",
-  "last_attempt_at_utc": "2026-10-20T22:46:51.330698+00:00",
+  "generated_at_utc": "2026-10-20T23:43:02.521099+00:00",
+  "last_attempt_at_utc": "2026-10-20T23:43:02.521099+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
@@ -27,7 +27,7 @@
           "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPdGJDTEN3Z09DeWNoSlBtNGNOWnBCNDNHbHJjbVpBeHNRX3FpVjA2SnRuNFVvMXVYeGU3eVdqT0s3RjFkeHV5bmY0ZjQ5TUVweWFRNk1xTTNJbjBkTzNNTllPdVpHVzZZUDAwSjZ2WmN1b1E3M2wtTUVHQVM5c20tNk5teFY?oc=5",
           "publisher": "Financial Times",
           "publisher_url": "https://www.ft.com",
-          "published_at_utc": "2026-10-20T04:03:25+00:00",
+          "published_at_utc": "2026-10-20T04:03:44+00:00",
           "sector": "minerals",
           "scope": "geopolitical",
           "topic_id": "export_policy",
@@ -493,6 +493,21 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
+          "id": "subsea-new-taipei-hong-kong-subsea-route-opened-to-cut-risk-and-meet-ai-demand-south-china-morning-post",
+          "title": "New Taipei-Hong Kong subsea route opened to cut risk and meet AI demand - South China Morning Post",
+          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxORnhtU2x5enNnS1pBUHdxSk1PMFZpXzJreVJHYjdORzgtbFBybWZkWkk2a0hMcm96Z05ZWU45WTU1Z29mYl9IUVhIcF9zTFZxOENCRFllZWZBZUM0dmIyM3d6N1VJWlFuZ2pwS18yUUJwRzktVjJxeXJzaTJsbUQ1OXBGVkJDeDZVSEtLTzNTb3l2VE1sX2VJLWdBTmJYNThWYnBaNWxfcnBzeklQdTJIcFJLWGlUSFZIUFdXVTEzVi12UQ?oc=5",
+          "publisher": "South China Morning Post",
+          "publisher_url": "https://www.scmp.com",
+          "published_at_utc": "2026-10-10T07:00:00+00:00",
+          "sector": "ai",
+          "scope": "geopolitical",
+          "topic_id": "subsea",
+          "channel": "Subsea cable and connectivity resilience",
+          "impact_pathway": "External network incidents may affect resilience or redundancy planning, not necessarily verified Indonesia outages.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
           "id": "compute-competition-indonesia-accelerates-data-center-build-out-as-digital-economy-nears-100-billion-the-jakarta-post",
           "title": "Indonesia accelerates data center build-out as digital economy nears $100 billion - The Jakarta Post",
           "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPTU5xQncxaHR6MHBBVnJnT2RKZHNpN01HdFdqZ0FUQ0hrMWg4MGZfcF83VlJNOVUwVTFVVjRiRWJsOGxhR3lrLVV5SHhMSHpiaUMtQ203bmlQVkNZeldiMi1VRWhsOE43bU5KaGswdFdKMERub3VzWVlzUDNRbFphUC1DZk5mckUtTzZZZ2tqUmZGcFpSNGFiTmlBV25NUVZGVXpvZFpJYVNlLWg4REc2ZEgwVjVVc1NyYTJHTGFQODJ6dWUy?oc=5",
@@ -709,6 +724,21 @@
     "food": {
       "geopolitical": [
         {
+          "id": "climate-food-eu-allocates-rp4-billion-in-aid-for-indonesia-s-drought-hit-regions-tempo-co-english",
+          "title": "EU Allocates Rp4 Billion in Aid for Indonesia's Drought-Hit Regions - Tempo.co English",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQaFpQLUFnWE1nNTVYNkdMUlBnZVV6VElZaDlzR3JoY0p2S3F4ZlplMWRmeFl5YklVRnd3VUlTWkZJU3dLRjVsVkxvOGdSbzJsdUxOSmdDREJwb2x5TG4tdkhFZ1FtbDlyanlBTnZGZEtfbG9JYVdlZV9EdGxfTXp4cG1Hb0xMU2hQUlJRcGJsaU9hZXBoLUpBbzc0am5OTzdC?oc=5",
+          "publisher": "Tempo.co English",
+          "publisher_url": "https://en.tempo.co",
+          "published_at_utc": "2026-10-20T17:46:36+00:00",
+          "sector": "food",
+          "scope": "geopolitical",
+          "topic_id": "climate_food",
+          "channel": "Climate and regional food security",
+          "impact_pathway": "Weather and production reporting may signal potential yield risks but is not a measured crop loss.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
           "id": "climate-food-indonesia-holds-4-5-mln-tons-of-rice-reserves-for-el-nio-official-antara-news",
           "title": "Indonesia holds 4.5 mln tons of rice reserves for El Nio: Official - ANTARA News",
           "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNalZOSGVxaUFFOU9Yd1dENE1qdzExODlFaGo1V2htSjFnR1VCclNMaG1YTjdJQnM5VkdScVl2Vm9qajhVUXh3VDVQVjF4QW5rQURUZDBLU1hrWWZaQ3JjMnZBcXZSX3dGd29RemlsSUVZMmtIM2dKYXVXSWlMdnhJWTBGUkFKX21MN1pveWlMWmJtYUNLQ0VIRDViZC1BZnRWbEM3blFmRkZiZ9IBqgFBVV95cUxNalZOSGVxaUFFOU9Yd1dENE1qdzExODlFaGo1V2htSjFnR1VCclNMaG1YTjdJQnM5VkdScVl2Vm9qajhVUXh3VDVQVjF4QW5rQURUZDBLU1hrWWZaQ3JjMnZBcXZSX3dGd29RemlsSUVZMmtIM2dKYXVXSWlMdnhJWTBGUkFKX21MN1pveWlMWmJtYUNLQ0VIRDViZC1BZnRWbEM3blFmRkZiZw?oc=5",
@@ -729,12 +759,27 @@
           "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQUVRkb2hsTDU1SE9pWjNla2I5RTYxUFJQZndkWkVIQ05EbzhUOWlfbGp5X2J2SHA0bTJpMGptenRDdXdWZ3E2VkthVVdBY2YxTFQ0SjhPc2xadGJWRFR2dENBZ1luZ1lEOUlsVTFxYnJxYmJ4ck9kZmtaQlg1bzFjemN5Rk1WdFhSb0tpT2c2OVVGd2lRenlBVnRud2E5S2ZsMlRucENKZ0hpLWJBd1dCX0R5VG10YkU?oc=5",
           "publisher": "Reuters",
           "publisher_url": "https://www.reuters.com",
-          "published_at_utc": "2026-10-19T04:04:00+00:00",
+          "published_at_utc": "2026-10-19T04:06:36+00:00",
           "sector": "food",
           "scope": "geopolitical",
           "topic_id": "global_grains",
           "channel": "Global rice, wheat and food prices",
           "impact_pathway": "Changes in global staple supply may affect import costs and food price expectations; published trade statistics are the baseline.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "climate-food-imf-warns-global-food-security-worsening-amid-el-nino-nikkei-asia",
+          "title": "IMF warns global food security worsening amid El Nino - Nikkei Asia",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPNzFZNVZDT2psMmlidVVPTDNlNUNYX0VOeVQwZlRRZHZPTFVWX3JEMDNteHVybFJxOGI4eTR0Y19VczVHZmdRNnRQR2Q3ZVFUWEpWY0w3b2Q0cHJRMndMT2g5cXp4Wk9sUWYwUkVlYzBuMm9JaW1xME9xaEVWaG9WS05Zb2ZKZGJTZW41UWo4ZVlURVlZa3h2WUE4WkxKT2h4VUFCZU92SUtkWHBGa3RraS1UR04?oc=5",
+          "publisher": "Nikkei Asia",
+          "publisher_url": "https://asia.nikkei.com",
+          "published_at_utc": "2026-10-16T01:36:00+00:00",
+          "sector": "food",
+          "scope": "geopolitical",
+          "topic_id": "climate_food",
+          "channel": "Climate and regional food security",
+          "impact_pathway": "Weather and production reporting may signal potential yield risks but is not a measured crop loss.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -1041,6 +1086,21 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
+          "id": "food-policy-pangan-energi-air-masih-jadi-pr-ri-sejak-era-kemerdekaan-cnbc-indonesia",
+          "title": "Pangan, Energi, Air Masih Jadi PR RI Sejak Era Kemerdekaan - CNBC Indonesia",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQR2RyRENtSHZjV0RGd2xyMi1NM0tYeV9iNGVwOE1vWnhlakFMYnJSNkJGM2hMaHNQU1NUZG5rZDl0MHo4V3hIb0dzQ29MVG1IWDhfTEVrTm5jeXFpM21TWW4yY3pwSnJVT3NGNXNDTHhYRnJwaEJJaWdIMlgzdkxSd1VKemJhQzBTUjdrYklXT0EwRzM0ZVJRQWJZTkJ1c0xWcEczdjhvVmJuclROa0phNmNJRnpQd9IBuwFBVV95cUxQQXFPejc3S3JBZjJtWVlKRE4xcVE5VzBQaGMySF9JVFJjOWpWTWUtcDdaNGowc002clBVeE5CZ29aeHhDeEhISGY5ak9GSVR4ejZZcHl5Wng1ZWVsM0RvX0sxR3hsa0RHTVQxZk5XR1FsSi1YNDlpQjYzaC1aY3FRM0ZDZ1pEQ2hYQXc2NDZvZWZraU84SWNaUkRTb3BtMFZWZE5acERXMzlrVlZmV0xnLWcxX0JubGx3UnN3?oc=5",
+          "publisher": "CNBC Indonesia",
+          "publisher_url": "https://www.cnbcindonesia.com",
+          "published_at_utc": "2026-10-15T00:25:05+00:00",
+          "sector": "food",
+          "scope": "domestic",
+          "topic_id": "food_policy",
+          "channel": "Food governance and trade policy",
+          "impact_pathway": "Regulatory changes need primary legal documents; do not infer effective legal status from a headline.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
           "id": "rice-reserves-swasembada-beras-upaya-pemerintah-perkuat-fondasi-ketahanan-pangan-nasional-kementerian-sekretariat-negara",
           "title": "Swasembada Beras, Upaya Pemerintah Perkuat Fondasi Ketahanan Pangan Nasional - Kementerian Sekretariat Negara",
           "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPc0ltYlBDSXhuYlNOY29hX3lQNTViWGo1NTBDcDBlX092VXNrUkZRaTBmQWZnYjNDWngzYzZ5T3h5cGxTVWtLX2pvSU0zcWs0ZU1NLUlkT002Yld0U1RCZGhtVUVFbTV3cUppVVZsWUtYSzNYS3hTY0d3Q2hmWnVsRFBqTDJqbi1oZHY2ekdobDZ0RFVCRGZzblFPenF1dGhKc20wZGpsdWl0VHd0LVNJcg?oc=5",
@@ -1079,12 +1139,12 @@
       "domestic": 13
     },
     "ai": {
-      "geopolitical": 11,
+      "geopolitical": 12,
       "domestic": 11
     },
     "food": {
-      "geopolitical": 4,
-      "domestic": 20
+      "geopolitical": 6,
+      "domestic": 21
     }
   },
   "topic_status": [
@@ -1152,7 +1212,7 @@
       "id": "climate_food",
       "scope": "food/geopolitical",
       "state": "scanned",
-      "found": 2
+      "found": 4
     },
     {
       "id": "rice_reserves",
@@ -1206,7 +1266,7 @@
       "id": "subsea",
       "scope": "ai/geopolitical",
       "state": "scanned",
-      "found": 0
+      "found": 1
     },
     {
       "id": "campus_projects",
