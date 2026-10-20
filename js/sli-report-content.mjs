@@ -95,7 +95,7 @@ export function makeResearchReport({answer,sources=[],language="id",title=null,c
  // original law source is an initial metadata threshold ONLY, never
  // publication-ready verification.
  const legalFocus=/\b(?:pasal|article)\s+\d+[a-z]?\b/i.test(q)&&
-  /\b(?:uu|pp|perpres|perda|permen|pergub|perbup|perwali)\s*(?:(?:no\.?|nomor)\s*)?\d+/i.test(q);
+  /\b(?:uu|undang[\s-]*undang|pp|peraturan\s+pemerintah|perpres|peraturan\s+presiden|perda|permen|pergub|perbup|perwali)\s*(?:(?:no\.?|nomor)\s*)?\d+/i.test(q);
  const requiredMinimum=legalFocus?1:10;
  const refs=bibliographyReport(answer,sources,requiredMinimum);
  refs.reference_policy=legalFocus?"focused_legal_article":"broad_research";
