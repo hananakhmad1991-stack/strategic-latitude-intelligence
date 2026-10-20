@@ -67,3 +67,7 @@
 .fa-gvn-entity-row strong{min-width:0;overflow-wrap:anywhere}
 .fa-gvn-entity-row .sli-entity-brand{width:27px;height:27px;flex-basis:27px}
 .fa-gvn-entity-row .sli-entity-favicon{width:22px;height:22px}
+
+.fa-gvn-crosslinks{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}
+.fa-gvn-crosslinks a{font-size:11px;padding:8px 10px;border:1px solid #688298;border-radius:8px;background:#1b3a50;color:#efd8a7;text-decoration:none}
+.fa-gvn-crosslinks a:hover{border-color:#e5c589}
