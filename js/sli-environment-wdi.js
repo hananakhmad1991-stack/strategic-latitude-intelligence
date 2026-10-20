@@ -12,10 +12,10 @@ function init(host){
  host.replaceChildren(wrapper);
  return fetch(SOURCE,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("HTTP "+r.status);return r.json()}).then(d=>{
   const map=new Map(d.indicators.map(x=>[x.indicator_code,x]));
-  if(d.schema!=="sli-indonesia-environment-worldbank-wdi-v1"||d.indicators.length!==3||d.geography!=="Indonesia (IDN)")throw Error("WDI version or origin mismatch");
+  if(d.schema!=="sli-indonesia-environment-worldbank-wdi-v1"||d.indicators.length!==4||d.geography!=="Indonesia (IDN)")throw Error("WDI version or origin mismatch");
   wrapper.replaceChildren();
   const title=node("h3","Indikator lingkungan nasional · World Bank WDI");
-  const sub=node("p","Seri tahunan Indonesia; sumber publik sekunder dari FAO, IHME dan mitra World Bank. Tahun terbaru berbeda antarindikator dan tidak boleh dibaca sebagai kondisi 2026.");
+  const sub=node("p","Seri tahunan Indonesia; sumber sekunder World Bank dengan metodologi berbeda menurut indikator. CO₂ memakai EDGAR/JRC di luar LULUCF, bukan kelanjutan seri lama EN.ATM.CO2E.PC. Tahun terbaru berbeda dan bukan kondisi langsung 2026.");
   const kpis=node("div");kpis.className="sli-wdi-kpis";
   for(const m of d.indicators){
    const card=node("article");card.className="sli-wdi-kpi";
@@ -32,7 +32,7 @@ function init(host){
   const foot=node("p");foot.className="sli-wdi-caveat";
   const update=()=>{
    const m=map.get(select.value),series=d.observations.filter(x=>x.indicator_code===m.indicator_code).sort((a,b)=>a.year-b.year);
-   desc.textContent="Indonesia · "+m.name+" · "+m.unit+" · "+series[0].year+"–"+series.at(-1).year+" · "+m.scope+". Bukan indikator kabupaten/provinsi atau peringatan kini.";
+   desc.textContent="Indonesia · "+m.name+" · "+m.unit+" · "+series[0].year+"–"+series.at(-1).year+" · "+m.scope+". Bukan indikator kabupaten/provinsi atau peringatan kini."+(m.series_break_note?" "+m.series_break_note:"");
    const min=Math.min(...series.map(x=>x.value)),max=Math.max(...series.map(x=>x.value)),range=Math.max(max-min,1e-6);
    const svg=document.createElementNS(NS,"svg");svg.setAttribute("viewBox","0 0 730 225");svg.setAttribute("role","img");
    svg.setAttribute("aria-label",m.name+" di Indonesia "+series[0].year+" sampai "+series.at(-1).year+", nilai terakhir "+display(series.at(-1).value)+" "+m.unit);
@@ -58,7 +58,7 @@ function init(host){
   };
   select.addEventListener("change",update);
   wrapper.append(title,sub,kpis,controls,desc,chart,scroll,foot);
-  const note=node("p","CO₂ per kapita belum diimpor karena endpoint API mengembalikan respons tidak valid. SLI tidak mengasumsikan angka 0.");
+  const note=node("p","CO₂ per kapita 2000–2024 menggunakan seri penerus EDGAR/JRC (EN.GHG.CO2.PC.CE.AR5), bukan seri lama EN.ATM.CO2E.PC. Grafik CO₂ tidak memasukkan LULUCF. Semua 20 indikator lingkungan lokal tetap belum memiliki angka observasi sesuai lokasi.");
   note.className="sli-wdi-caveat";wrapper.append(note);
   update();return true;
  }).catch(e=>{wrapper.textContent="Sumber lingkungan World Bank belum tersedia; silakan verifikasi melalui portal resmi. ("+String(e.message)+")";return false});

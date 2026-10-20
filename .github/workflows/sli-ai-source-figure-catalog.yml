@@ -1,0 +1,44 @@
+name: SLI AI Source PDF Figure-Label Inventory (Review Only)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/catalog-ai-report-figure-candidates.py'
+      - '.github/workflows/sli-ai-source-figure-catalog.yml'
+permissions:
+  contents: read
+jobs:
+  catalog-original-reports:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF reader
+        run: python3 -m pip install --quiet pymupdf
+      - name: Retrieve publisher PDFs as temporary source copies
+        run: |
+          mkdir -p /tmp/sli-pdf
+          curl -L --fail --retry 2 --retry-delay 2 --max-time 150 -o /tmp/sli-pdf/stanford.pdf 'https://hai.stanford.edu/assets/files/ai_index_report_2026.pdf'
+          curl -L --fail --retry 2 --retry-delay 2 --max-time 90 -o /tmp/sli-pdf/worldbank.pdf 'https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf'
+          python3 - <<'PY'
+          from pathlib import Path
+          for k in ('stanford','worldbank'):
+              p=Path('/tmp/sli-pdf')/(k+'.pdf')
+              if p.stat().st_size<100000: raise ValueError(k+' source PDF incomplete')
+              with p.open('rb') as f:
+                  if f.read(5)!=b'%PDF-': raise ValueError(k+' is not PDF')
+                  f.seek(max(0,p.stat().st_size-8192))
+                  if b'%%EOF' not in f.read(): raise ValueError(k+' source missing PDF EOF')
+              print('SOURCE_PDF_TRANSFER_OK',k,p.stat().st_size)
+          PY
+      - name: Index figure captions and preserve candidate-only labels
+        run: |
+          python3 scripts/catalog-ai-report-figure-candidates.py --stanford-pdf /tmp/sli-pdf/stanford.pdf --worldbank-pdf /tmp/sli-pdf/worldbank.pdf
+      - name: Upload only candidate index, not original copyrighted PDFs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-ai-report-figure-candidates-review-only
+          path: artifacts/sli-figure-label-review-candidates.json
+          if-no-files-found: warn
+          retention-days: 15

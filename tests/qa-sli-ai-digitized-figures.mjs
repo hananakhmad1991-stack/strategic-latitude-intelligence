@@ -51,3 +51,21 @@ test("Digitized figures displayed in both AI topic and sector data library with 
  assert.match(js,/document\.createElement\("table"\)|el\("table"\)/);
  assert.doesNotMatch(js,/innerHTML|Math\.random/);
 });
+
+test("Source PDF figure-candidate audit does not claim unreviewed charts are numerical series",()=>{
+ const d=JSON.parse(read("data/sli-ai-figure-source-audit.json"));
+ assert.equal(d.publisher_reports.length,2);
+ assert.equal(d.text_figure_label_total,409);
+ assert.equal(d.publisher_reports[0].pdf_pages,425);
+ assert.equal(d.publisher_reports[1].pdf_pages,136);
+ assert.equal(d.already_digitized_numeric_source_figures,2);
+ assert.equal(d.no_automatic_numeric_publication,true);
+ assert.match(d.review_limits,/not unique verified chart series/);
+ const script=read("js/sli-ai-figure-audit-status.js");
+ assert.match(script,/Bukan /);
+ assert.doesNotMatch(script,/innerHTML/);
+ for(const p of ["ai-intelligence-hub.html","sli-sector-data-library.html"]){
+  assert.match(read(p),/data-sli-ai-figure-audit/);
+  assert.match(read(p),/sli-ai-figure-audit-status.js/);
+ }
+});

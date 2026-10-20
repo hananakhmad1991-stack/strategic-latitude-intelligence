@@ -315,9 +315,9 @@
   ],
   "contextual_national_series": {
     "dataset": "data/sli-environment-worldbank-wdi-indonesia.json",
-    "published_source": "World Bank WDI annual Indonesia indicators; FAO and IHME underlying sources",
+    "published_source": "World Bank WDI annual Indonesia indicators; underlying sources include FAO, IHME and EDGAR/JRC",
     "geographic_scope": "Indonesia national, not a province/asset climate exposure observation",
-    "status": "3 historical numerical indicators published, 1 CO2 API query unavailable",
+    "status": "4 historical national indicators published; current CO2 successor distinct from legacy series",
     "indicators": [
       {
         "code": "AG.LND.FRST.ZS",
@@ -336,8 +336,14 @@
         "topic": "Renewable energy consumption as fraction of final energy demand (not electric capacity)",
         "last_period": 2021,
         "unit": "%"
+      },
+      {
+        "code": "EN.GHG.CO2.PC.CE.AR5",
+        "topic": "EDGAR-derived national carbon dioxide emissions excluding LULUCF per capita; not the legacy EN.ATM.CO2E.PC series",
+        "last_period": 2024,
+        "unit": "t CO2e/capita"
       }
     ],
-    "method": "Original WDI API observations cross-checked against available publisher dashboards. Existing 20 operational district/facility/regulatory indicators retain null until exact geographic scope data are ingested."
+    "method": "Original WDI API observations cross-checked against available publisher dashboards. Existing 20 operational district/facility/regulatory indicators retain null until exact geographic scope data are ingested. The carbon dioxide series uses EN.GHG.CO2.PC.CE.AR5 excluding LULUCF; do not splice to EN.ATM.CO2E.PC."
   }
 }

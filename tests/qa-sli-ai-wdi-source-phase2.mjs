@@ -5,11 +5,19 @@ const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const data=p=>JSON.parse(read(p));
 const w=data("data/sli-environment-worldbank-wdi-indonesia.json");
 const ai=data("data/sli-ai-stanford-worldbank-foundations-2025-2026.json");
-test("World Bank WDI has only real dated Indonesian national series, no fake CO2",()=>{
+test("World Bank WDI has four source-verified Indonesia histories including EDGAR CO2 successor",()=>{
  assert.equal(w.schema,"sli-indonesia-environment-worldbank-wdi-v1");
- assert.equal(w.indicators.length,3);
- assert.equal(w.observations.length,71);
- assert.deepEqual(w.source_audit.missing_indicator_codes,["EN.ATM.CO2E.PC"]);
+ assert.equal(w.indicators.length,4);
+ assert.equal(w.observations.length,96);
+ assert.deepEqual(w.source_audit.missing_indicator_codes,[]);
+ assert.equal(w.source_audit.co2_source_transition.previous_code,"EN.ATM.CO2E.PC");
+ assert.equal(w.source_audit.co2_source_transition.current_code,"EN.GHG.CO2.PC.CE.AR5");
+ assert.equal(w.observations.some(x=>x.indicator_code==="EN.ATM.CO2E.PC"),false);
+ const co2=w.indicators.find(x=>x.indicator_code==="EN.GHG.CO2.PC.CE.AR5");
+ assert.equal(co2.latest_year,2024);
+ assert.ok(Math.abs(co2.latest_value-2.86503978188758)<1e-10);
+ assert.equal(w.observations.filter(x=>x.indicator_code===co2.indicator_code).length,25);
+ assert.match(co2.methodology_note,/Not identical|not identical/);
  assert.equal(w.geography,"Indonesia (IDN)");
  for(const x of w.indicators){
   const rows=w.observations.filter(y=>y.indicator_code===x.indicator_code);
@@ -26,7 +34,8 @@ test("WDI national context does not silently overwrite 20 missing local environm
  const e=data("data/sli-climate-environment.json");
  assert.equal(e.indicators.length,20);
  assert.ok(e.indicators.every(x=>x.observed_value===null));
- assert.equal(e.contextual_national_series.indicators.length,3);
+ assert.equal(e.contextual_national_series.indicators.length,4);
+ assert.ok(e.contextual_national_series.indicators.some(x=>x.code==="EN.GHG.CO2.PC.CE.AR5"));
  assert.match(e.indicators.find(x=>x.id==="CE-011").definition_warning,/NOT.*forest-cover change/);
  assert.equal(e.indicators.find(x=>x.id==="CE-009").related_historical_national_series,"EN.ATM.PM25.MC.M3");
 });
@@ -40,6 +49,8 @@ test("WDI interactive source data appears in Climate and SLI Data Library, retai
  assert.match(script,/data\/sli-environment-worldbank-wdi-indonesia\.json/);
  assert.match(script,/r\.year/);
  assert.match(script,/m\.latest_year/);
+ assert.match(script,/d\.indicators\.length!==4/);
+ assert.match(script,/EN\.GHG\.CO2\.PC\.CE\.AR5/);
  assert.match(script,/data\.worldbank\.org\/indicator/);
  assert.doesNotMatch(script,/innerHTML/);
 });
