@@ -192,7 +192,8 @@
    // The old hard-coded allowlist silently sent new Food/AI/Policy results to a generic tab.
    if(item.path&&/^[a-z0-9-]+\.html$/.test(item.path)){
     const fragment=/^[a-z][a-z0-9-]*$/.test(item.anchor||"")?"#"+encodeURIComponent(item.anchor):"";
-    window.location.assign("./"+item.path+(item.province?"?province="+encodeURIComponent(item.province):"")+fragment);return;
+    const issuer=item.path==="sli-entities.html"&&/^[A-Z0-9]{4}$/.test(item.issuer||"")?"?ticker="+encodeURIComponent(item.issuer):"";
+    window.location.assign("./"+item.path+(issuer||(item.province?"?province="+encodeURIComponent(item.province):""))+fragment);return;
    }
    function displayFocus(anchor){
     if(!["record","indicator","topic"].includes(item.kind))return null;
