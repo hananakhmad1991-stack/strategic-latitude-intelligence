@@ -25,6 +25,8 @@ on:
       - 'tests/qa-sli-home-portal.mjs'
       - 'tests/qa-sli-idx-heatmap.mjs'
       - 'js/sli-idx-heatmap.js'
+      - 'js/sli-idx-sector-watchlist.js'
+      - 'css/sli-idx-sector-watchlist.css'
       - 'js/sli-idx-tradingview.js'
       - 'sli-issuer.html'
       - 'js/sli-issuer.js'
@@ -102,6 +104,7 @@ jobs:
           node --check js/sli-geopolitical-timeline.js
           node --check js/sli-navigation.js
           node --check js/sli-idx-heatmap.js
+          node --check js/sli-idx-sector-watchlist.js
           node --check js/sli-idx-tradingview.js
           node --check js/sli-issuer.js
           node --check js/sli-entities.js
