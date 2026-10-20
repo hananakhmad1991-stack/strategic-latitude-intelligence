@@ -38,7 +38,8 @@ def run():
     if len(meta)!=1 or "DARMAGA" not in meta[0].upper():
         raise ValueError("Station ID / location not confirmed in the official inventory")
     result["official_station_metadata_line"]=meta[0].strip()
-    content=fetch(URL,90000000)
+    content=fetch(URL,330000000)
+    print('BMKG_SACA_OFFICIAL_ZIP_BYTES='+str(len(content)))
     if not content.startswith(b"PK"):raise ValueError("BMKG archive is not ZIP")
     with zipfile.ZipFile(io.BytesIO(content)) as z:
         members=[v for v in z.infolist() if not v.is_dir()]
