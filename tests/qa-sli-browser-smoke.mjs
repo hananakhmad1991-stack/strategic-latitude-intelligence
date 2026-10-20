@@ -108,8 +108,25 @@ await check("Homepage: fewer topics, source links within sector cards",{width:13
  const link=page.locator('.sli-portal-topic-card:has(a[href="#energy"]) .sli-portal-topic-links a[href*="#power"]');
  await link.click();
  await page.waitForURL(/sli-sector-data-library\.html#power/,{timeout:15000});
+ await page.waitForFunction(()=>document.body.classList.contains("sli-library-topic-mode"),null,{timeout:12000});
+ assert.ok(await page.locator("#power").isVisible(),"Selected power evidence must remain visible");
+ assert.ok(!(await page.locator("#security").isVisible()),"Unrelated security section must not clutter power topic view");
+ assert.ok(await page.locator("#sliLibraryTopicParent a").count()>=1,"Domain return navigation missing");
  await page.locator("#powerTable table").waitFor({timeout:20000});
  assert.ok((await page.locator("#powerTable tbody tr").count())>0,"PLN source data not rendered");
+});
+await check("Mobile homepage topics: responsive layout without extra library tile",{width:390,height:844},async page=>{
+ await page.goto(pageUrl("index.html#home"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.locator(".sli-portal-topic-card").first().waitFor({timeout:18000});
+ const metrics=await page.evaluate(()=>({viewport:innerWidth,doc:document.documentElement.scrollWidth,topicCards:document.querySelectorAll(".sli-portal-topic-card").length,oldLibrary:document.querySelectorAll(".sli-portal-sector-library").length}));
+ assert.ok(metrics.doc<=metrics.viewport+16,"Home page horizontal overflow after topic consolidation: "+JSON.stringify(metrics));
+ assert.equal(metrics.topicCards,6);
+ assert.equal(metrics.oldLibrary,0);
+ await page.locator('.sli-portal-topic-card:has(a[href="#policy"]) .sli-portal-topic-links a[href$="#governance"]').click();
+ await page.waitForURL(/sli-sector-data-library\.html#governance/,{timeout:15000});
+ await page.waitForFunction(()=>document.body.classList.contains("sli-library-topic-mode"),null,{timeout:12000});
+ assert.ok(await page.locator("#governance").isVisible());
+ assert.ok(!(await page.locator("#power").isVisible()));
 });
 await check("Source integration: provincial search and IEA dataset filters",{width:1366,height:850},async page=>{
  await page.goto(pageUrl("sli-sector-data-library.html#socio"),{waitUntil:"domcontentloaded",timeout:30000});
