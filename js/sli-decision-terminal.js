@@ -81,9 +81,11 @@ function policyFor(list,opts){
   if(needle&&!line.includes(needle))return false;
   if(s==="all")return true;
   return x.sector===s||x.sector==="cross"||
-   (s==="coal"&&x.sector==="energy")||
-   (s==="technology"&&x.sector==="ai")||
-   (s==="infrastructure"&&x.sector==="energy");
+   (s==="minerals"&&x.sector==="minerba")||
+   (s==="coal"&&x.sector==="minerba")||
+   (s==="energy"&&["oilgas","electricity"].includes(x.sector))||
+   (s==="technology"&&["digital","ai"].includes(x.sector))||
+   (s==="infrastructure"&&["energy","electricity"].includes(x.sector));
  });
 }
 function researchLink(issuer){
