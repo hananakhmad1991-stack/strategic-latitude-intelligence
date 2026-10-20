@@ -48,3 +48,15 @@ h1{font:700 clamp(33px,4.3vw,51px)/1.15 Georgia,serif;margin:3px 0 14px}h1 em{fo
 .sourcegrid a{display:block;border:1px solid #52708b;padding:10px;border-radius:7px;text-decoration:none;font-size:12px;background:#1a3b55}
 footer{max-width:1210px;margin:15px auto 0;padding:25px 24px;border-top:1px solid #344f66;color:#97afc1;font-size:12px}
 @media(max-width:680px){.top{padding:13px 17px;align-items:flex-start;flex-direction:column}.top nav{gap:13px}main{padding:16px 13px 40px}.hero{padding:24px 3px 13px}.section{padding:14px}.head{flex-direction:column;gap:6px}.head>a{text-align:left}.scroll{max-height:420px}.scroll th,.scroll td{padding:8px 9px;font-size:11px}.filter{align-items:stretch;flex-direction:column}.filter select,.filter input{width:100%}}
+
+/* Topic-owned source views: a sector deep-link shows only its own evidence.
+   Bare archive URL remains a comprehensive historical source index. */
+body.sli-library-topic-mode #libraryMain>.hero,
+body.sli-library-topic-mode #libraryMain>.tabs,
+body.sli-library-topic-mode #libraryMain>.section:not(:target){display:none!important}
+.sli-library-topic-parent{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center;margin:5px 0 17px}
+.sli-library-topic-parent a{font-size:12px;line-height:1.5;color:#edcf98;text-decoration:none;border-bottom:1px solid #8f7855}
+.sli-library-topic-parent a:hover,.sli-library-topic-parent a:focus-visible{text-decoration:underline}
+body.sli-library-topic-mode #libraryMain{padding-top:18px}
+body.sli-library-topic-mode #libraryMain>.section:target{margin-top:0;scroll-margin-top:calc(var(--sli-mast-offset, 80px) + 16px)}
+@media(max-width:680px){.sli-library-topic-parent{align-items:flex-start;gap:8px}}
