@@ -46,6 +46,36 @@ assert.equal(pilotVerified.mode,"workers_dev_pilot");
 assert.equal(pilotVerified.hostname,pilotEnv.SLI_API_HOSTNAME);
 // Worker-level Access applications use destination.worker_id, not a hostname URI.
 // The worker_id must be validated against this account's immutable Worker script ID.
+
+assert.equal((await preflight(env,api)).cors_mode,"access_response_options");
+const bypassApp={...app,cors_headers:undefined,options_preflight_bypass:true};
+const bypassAPI=async url=>{
+ const result=url.includes("/access/apps?")?[bypassApp]:
+  url.includes("/access/apps/app-id/policies")?[{decision:"allow"}]:
+  url.includes("/d1/database/")?{uuid:env.SLI_D1_DATABASE_ID}:null;
+ return new Response(JSON.stringify({success:true,result}),{status:200});
+};
+assert.equal((await preflight(env,bypassAPI)).cors_mode,"worker_origin_options");
+await assert.rejects(preflight(env,async url=>{
+ const result=url.includes("/access/apps?")?[{...app,options_preflight_bypass:true}]:
+  url.includes("/access/apps/app-id/policies")?[{decision:"allow"}]:
+  url.includes("/d1/database/")?{uuid:env.SLI_D1_DATABASE_ID}:null;
+ return new Response(JSON.stringify({success:true,result}),{status:200});
+}),/conflicts with OPTIONS bypass/);
+await assert.rejects(preflight(env,async url=>{
+ const result=url.includes("/access/apps?")?[{...app,cors_headers:undefined}]:
+  url.includes("/access/apps/app-id/policies")?[{decision:"allow"}]:
+  url.includes("/d1/database/")?{uuid:env.SLI_D1_DATABASE_ID}:null;
+ return new Response(JSON.stringify({success:true,result}),{status:200});
+}),/Access CORS not configured/);
+await assert.rejects(preflight(env,async url=>{
+ const result=url.includes("/access/apps?")?[{...app,cors_headers:{
+  ...app.cors_headers,allowed_methods:["GET","PUT"]}}]:
+  url.includes("/access/apps/app-id/policies")?[{decision:"allow"}]:
+  url.includes("/d1/database/")?{uuid:env.SLI_D1_DATABASE_ID}:null;
+ return new Response(JSON.stringify({success:true,result}),{status:200});
+}),/GET, PUT, POST, DELETE, OPTIONS methods/);
+
 const workerId="a".repeat(32);
 const workerOnlyApp={...pilotApp,domain:undefined,
  destinations:[{type:"worker",worker_id:workerId}]};
