@@ -18,7 +18,7 @@
     "regulatory-monitor",
     "publication-watch"
   ],
-  "count": 918,
+  "count": 919,
   "articles": [
     {
       "id": "sli_feed_a31ca97420a089fe97f40870c",
@@ -219,6 +219,23 @@
       "topic": "Cybersecurity",
       "geo": "Indonesia and global context",
       "monitor_source": "ai-monitoring",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_ad1975cec76ee6a914246300a",
+      "title": "Banjir di Talamau, 6,25 Hektare Sawah Rusak dan 8 Titik Irigasi Terdampak - detiksatu.com",
+      "publisher": "detiksatu.com",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBxNnRaUUJ6U3NQQkF1bHRkNURic2Vmb1pqNHBSVkNRUDF0RXp0ZC0wVFlGQWlZS3lFUk03VE54T3R2VkNkZC1peHF1Y2stdWJWZi1DZTE3VDVocGdtUEU4bzQxTmduYWxnTmFCZTFZREJSUFFkMFAzUnNfLXJvMG8?oc=5",
+      "published_at_utc": "2026-10-20T11:41:56Z",
+      "date_type": "publisher_publication_date",
+      "sector": "food",
+      "scope": "domestic",
+      "topic": "agri_weather",
+      "geo": "Indonesia and global context",
+      "monitor_source": "research-signal-radar",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -508,23 +525,6 @@
       "topic": "Policy & incentives",
       "geo": "Indonesia and global context",
       "monitor_source": "investment-news",
-      "link_kind": "aggregator",
-      "evidence_level": "publisher_attributed_news_report",
-      "article_body_checked": false,
-      "claim_corroborated": false
-    },
-    {
-      "id": "sli_feed_ad1975cec76ee6a914246300a",
-      "title": "Banjir di Talamau, 6,25 Hektare Sawah Rusak dan 8 Titik Irigasi Terdampak - detiksatu.com",
-      "publisher": "detiksatu.com",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBxNnRaUUJ6U3NQQkF1bHRkNURic2Vmb1pqNHBSVkNRUDF0RXp0ZC0wVFlGQWlZS3lFUk03VE54T3R2VkNkZC1peHF1Y2stdWJWZi1DZTE3VDVocGdtUEU4bzQxTmduYWxnTmFCZTFZREJSUFFkMFAzUnNfLXJvMG8?oc=5",
-      "published_at_utc": "2026-10-20T09:54:10Z",
-      "date_type": "publisher_publication_date",
-      "sector": "food",
-      "scope": "domestic",
-      "topic": "agri_weather",
-      "geo": "Indonesia and global context",
-      "monitor_source": "research-signal-radar",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -1381,6 +1381,23 @@
       "claim_corroborated": false
     },
     {
+      "id": "sli_feed_74914feb383f84c53354df5e9",
+      "title": "Hilirisasi Mineral Terus Jadi Strategis Dongkrak Kinerja Ekonomi - CNBC Indonesia",
+      "publisher": "CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNcVVJd3o0VG9LeE43QWtNVGpZYzN2c29Tb1Z0dl9leXlVY1NJR1h3Wkw0N1dxVkZEeTlHZUFMOFZIcUY3Q3VKQTdidHNncWtaRnV3X1dNcVlPa1RuRjdaZkNCdVM2X2RLZkFub1ZxR2YyeTNpenExT0xHRmstYmdyeEFZSVBDd0pzTFVUYXU4ZFdHWmZWVGVkTzRYM25DS3dBRFNjMVlLZUVnbUYxeXlQVmNNM1MxQzZRc3lycW0tQWN4WEN2RUHSAcYBQVVfeXFMTXFVSXd6NFRvS3hON0FrTVRqWWMzdnNvU29WdHZfZXl5VWNTSUdYd1pMNDdXcVZGRHk5R2VBTDhWSHFGN0N1SkE3YnRzZ3FrWkZ1d19XTXFZT2tUbkY3WmZDQnVTNl9kS2ZBbm9WcUdmMnkzaXpxMU9MR0ZrLWJncnhBWUlQQ3dKc0xVVGF1OGRXR1pmVlRlZE80WDNuQ0t3QURTYzFZS2VFZ21GMXl5UFZjTTNTMUM2UXN5cnFtLUFjeFhDdkVB?oc=5",
+      "published_at_utc": "2026-10-20T04:57:03Z",
+      "date_type": "publisher_publication_date",
+      "sector": "minerals",
+      "scope": "domestic",
+      "topic": "mineral_policy",
+      "geo": "Indonesia and global context",
+      "monitor_source": "research-signal-radar",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
       "id": "sli_feed_5bb47382c8b979c7ad7e87cbd",
       "title": "Dua Tahun Pemerintahan Prabowo – Gibran, Realisasi investasi Capai Rp3.923 Triliun dan Serap 5,4 Juta Pekerja - Media Nikel Indonesia",
       "publisher": "Media Nikel Indonesia",
@@ -1487,7 +1504,7 @@
       "title": "Japan ‘months’ from running out of critical rare earth as China squeezes supply - Financial Times",
       "publisher": "Financial Times",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPdGJDTEN3Z09DeWNoSlBtNGNOWnBCNDNHbHJjbVpBeHNRX3FpVjA2SnRuNFVvMXVYeGU3eVdqT0s3RjFkeHV5bmY0ZjQ5TUVweWFRNk1xTTNJbjBkTzNNTllPdVpHVzZZUDAwSjZ2WmN1b1E3M2wtTUVHQVM5c20tNk5teFY?oc=5",
-      "published_at_utc": "2026-10-20T04:03:44Z",
+      "published_at_utc": "2026-10-20T04:03:25Z",
       "date_type": "publisher_publication_date",
       "sector": "minerals",
       "scope": "geopolitical",
@@ -3058,7 +3075,7 @@
       "id": "sli_feed_a81cc00123405bd03c01c75cf",
       "title": "Govt targets up to US$50 billion in nickel exports by 2026 - ANTARA News",
       "publisher": "ANTARA News",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPRmJ2RHh2YnJNNHRtM3NiQ3RRcy1DbUxMb0dkeTR1dVNYNWVzcXBEQzh4T1FrS3M4VXI1RE16N3V0SWtwamNva3JWbElob25NdXVrV1N4OERMX1o4TVpuMDN1MHVOOXZucmlzRFQ3Q0ZjdzNRSzVhWjkyLUJ4LVVoTV9GOGpock90NExZUTVuUnNzR3Z4NEVNcmk4bXhtQUk40gGgAUFVX3lxTE9GYnZEeHZick00dG0zc2JDdFFzLUNtTExvR2R5NHV1U1g1ZXNxcERDOHhPUWtLczhVcjVETXo3dXRJa3BqY29rclZsSWhvbk11dWtXU3g4RExfWjhNWm4wM3UwdU45dm5yaXNEVDdDRmN3M1FLNWFaOTItQngtVWhNX0Y4amhyT3Q0TFlRNW5Sc3NHdng0RU1yaThteG1BSTg?oc=5",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPZDNuMk9scy1yUE1udFMtVXlqbnJteVVJejNLMmJLbWhVUXFzTmVDMkVieFRqc3dySVVfYXhOYTlHam9xTWNOSHRYSGItbXM4V1ZRMmltMWxRelpPcGtXMXVGTTVtVi02TmlsSWdQbGxuSC15VGZFWFd1OE9HTlYyN1NDZVFoa250TXRaMmpqVjFQUUJfbHp5dDdCWdIBoAFBVV95cUxPRmJ2RHh2YnJNNHRtM3NiQ3RRcy1DbUxMb0dkeTR1dVNYNWVzcXBEQzh4T1FrS3M4VXI1RE16N3V0SWtwamNva3JWbElob25NdXVrV1N4OERMX1o4TVpuMDN1MHVOOXZucmlzRFQ3Q0ZjdzNRSzVhWjkyLUJ4LVVoTV9GOGpock90NExZUTVuUnNzR3Z4NEVNcmk4bXhtQUk4?oc=5",
       "published_at_utc": "2026-10-19T13:31:46Z",
       "date_type": "publisher_publication_date",
       "sector": "minerals",
@@ -15427,5 +15444,5 @@
       "claim_corroborated": false
     }
   ],
-  "updated_at_utc": "2026-10-20T16:12:55.132678Z"
+  "updated_at_utc": "2026-10-20T17:13:37.174261Z"
 }

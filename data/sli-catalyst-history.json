@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-10-20T16:12:55.743Z",
+  "published_at_utc": "2026-10-20T17:13:38.868Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-10-20T16:12:55.132678Z",
+    "news": "2026-10-20T17:13:37.174261Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-20",
     "participations": "2026-10-20"
   },
-  "count": 114,
+  "count": 115,
   "events": [
+    {
+      "id": "sli-catalyst-737156ab3635ca7916",
+      "kind": "news_indexed",
+      "title": "Hilirisasi Mineral Terus Jadi Strategis Dongkrak Kinerja Ekonomi - CNBC Indonesia",
+      "detected_at_utc": "2026-10-20T17:13:38.868Z",
+      "source_at_utc": "2026-10-20T04:57:03Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNcVVJd3o0VG9LeE43QWtNVGpZYzN2c29Tb1Z0dl9leXlVY1NJR1h3Wkw0N1dxVkZEeTlHZUFMOFZIcUY3Q3VKQTdidHNncWtaRnV3X1dNcVlPa1RuRjdaZkNCdVM2X2RLZkFub1ZxR2YyeTNpenExT0xHRmstYmdyeEFZSVBDd0pzTFVUYXU4ZFdHWmZWVGVkTzRYM25DS3dBRFNjMVlLZUVnbUYxeXlQVmNNM1MxQzZRc3lycW0tQWN4WEN2RUHSAcYBQVVfeXFMTXFVSXd6NFRvS3hON0FrTVRqWWMzdnNvU29WdHZfZXl5VWNTSUdYd1pMNDdXcVZGRHk5R2VBTDhWSHFGN0N1SkE3YnRzZ3FrWkZ1d19XTXFZT2tUbkY3WmZDQnVTNl9kS2ZBbm9WcUdmMnkzaXpxMU9MR0ZrLWJncnhBWUlQQ3dKc0xVVGF1OGRXR1pmVlRlZE80WDNuQ0t3QURTYzFZS2VFZ21GMXl5UFZjTTNTMUM2UXN5cnFtLUFjeFhDdkVB?oc=5",
+      "publisher": "CNBC Indonesia",
+      "sector": "minerals",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-65cb17dea96d9973ad",
       "kind": "news_indexed",
