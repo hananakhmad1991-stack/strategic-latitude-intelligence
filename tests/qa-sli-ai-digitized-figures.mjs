@@ -5,7 +5,7 @@ const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const d=JSON.parse(read("data/sli-stanford-2026-digitized-figures.json"));
 const metrics=JSON.parse(read("data/sli-ai-stanford-worldbank-foundations-2025-2026.json"));
 test("Five original Stanford figures have verifiable page, unit, status and source",()=>{
- assert.equal(d.figures.length,7);
+ assert.equal(d.figures.length,5);
  assert.match(d.source.official_url,/hai\.stanford\.edu/);
  assert.equal(d.source.independent_primary_study_validation,false);
  for(const f of d.figures){
@@ -60,7 +60,7 @@ test("Source PDF figure-candidate audit does not claim unreviewed charts are num
  assert.equal(d.publisher_reports[1].pdf_pages,136);
  assert.equal(d.already_digitized_numeric_source_figures,12);
  assert.equal(d.no_automatic_numeric_publication,true);
- assert.match(d.review_limits,/not unique verified chart series/);
+ assert.match(d.review_limits,/not digitized figures/);
  const script=read("js/sli-ai-figure-audit-status.js");
  assert.match(script,/Bukan /);
  assert.doesNotMatch(script,/innerHTML/);
