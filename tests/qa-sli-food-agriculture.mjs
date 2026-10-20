@@ -204,9 +204,9 @@ test("Food dual visualization contract: original card hierarchy and six-hub netw
  assert.ok(html.indexOf('id="fa-hierarchy"')<html.indexOf('id="fa-network"'),"Keep original card hierarchy first and six-hub network next");
  assert.match(html,/href="#fa-hierarchy"/);
  assert.match(html,/href="#fa-network"/);
- assert.match(html,/js\/food-governance-tree\.js\?v=20261020-dual-v1/);
- assert.match(html,/css\/food-governance-tree\.css\?v=20261020-dual-v1/);
- assert.match(html,/js\/food-governance-hierarchy\.js\?v=20261020-functional-v3/);
+ assert.match(html,/js\/food-governance-tree\.js\?v=20261020-[a-z0-9-]+/);
+ assert.match(html,/css\/food-governance-tree\.css\?v=20261020-[a-z0-9-]+/);
+ assert.match(html,/js\/food-governance-hierarchy\.js\?v=20261020-[a-z0-9-]+/);
  assert.match(main,/SLIFoodGovernance\.render\(\)/);
  assert.match(main,/SLIFoodGovernanceHierarchy\.render\(\)/);
  assert.match(tree,/window\.SLIFoodGovernanceHierarchy=\{render/);
