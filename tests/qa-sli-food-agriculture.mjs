@@ -145,9 +145,47 @@ test("food governance v2 is an interactive, source-led hierarchy without false m
  assert.match(page,/food-governance-hierarchy\.css/);
  assert.match(page,/id="faOrgGraph" class="fa-governance-map"/);
  assert.match(main,/SLIFoodGovernance\.render/);
- assert.match(js,/fa-gov-branches/);
- assert.match(js,/drawInspector/);
- assert.match(js,/fa-gov-related/);
+ assert.match(js,/fa-gvn-workspace/);
+ assert.match(js,/fa-gvn-tabs/);
+ assert.match(js,/networkGraph/);
+ assert.match(js,/profile\(inspector,db\)/);
+ assert.match(js,/fa-gvn-related/);
  assert.match(js,/fetch\("\.\/data\/food-governance-hierarchy\.json"/);
- assert.match(style,/fa-gov-children/);
+ assert.match(style,/fa-gvn-tiles/);
+ assert.match(style,/fa-gvn-plot/);
+ assert.match(style,/fa-gvn-inspector/);
+});
+
+test("Food functional intelligence matches the Oil & Gas six-group navigation model",()=>{
+ const registry=JSON.parse(read("data/food-governance-hierarchy.json"));
+ const script=read("js/food-governance-hierarchy.js");
+ const css=read("css/food-governance-hierarchy.css");
+ const page=read("food-agriculture-intelligence.html");
+ const groups=[
+ ["policy",["pres","kemenkopangan","bappenas","kemenkoekon"]],
+ ["production",["kementan","ditjen-tp","ditjen-horti","ditjen-psp","pusdatin","kkp","pemda"]],
+ ["security",["bapanas","bgn","kemendag","bpom"]],
+ ["enterprise",["bulog","pupuk","idfood"]],
+ ["industry",["kemenperin","kemendagri"]],
+ ["evidence",["bps","bi","dpr","bpk"]]
+ ];
+ assert.equal(groups.length,6);
+ const all=groups.flatMap(g=>g[1]);assert.equal(all.length,24);
+ assert.equal(new Set(all).size,all.length);
+ assert.deepEqual([...all].sort(),registry.nodes.map(n=>n.id).sort(),"Every curated institution must be placed once in the functional diagram");
+ for(const [key,ids]of groups){
+   assert.match(script,new RegExp('id:"'+key+'"'));
+   for(const id of ids)assert.ok(script.includes('"'+id+'"'),"Missing functional node "+id);
+ }
+ for(const issue of ["rice","fertilizer","inflation","imports","nutrition","regional"])assert.match(script,new RegExp('id:"'+issue+'"'));
+ assert.match(script,/getData:\(\)=>/,"Universal export must register verified records, not guessed numeric data");
+ assert.match(script,/SLIVisualExport\.register/);
+ assert.match(script,/role:"button"/);
+ assert.match(script,/keydown/);
+ assert.match(script,/aria-pressed/);
+ assert.match(script,/fa-gvn-issue-panel/);
+ assert.match(script,/source-dated/i);
+ assert.match(css,/grid-template-columns:minmax\(0,1\.64fr\)/);
+ assert.match(page,/functional-v3/,"Cache bust must ensure public visitors get the new graph");
+ assert.doesNotMatch(script,/new Function|eval\(/,"Do not dynamically evaluate untrusted source data");
 });
