@@ -16,7 +16,7 @@ export async function requireIdentity(request,env,fetcher=fetch){
  const now=Math.floor(Date.now()/1000);
  if(payload.iss!==issuer||!(typeof payload.aud==="string"?payload.aud===aud:Array.isArray(payload.aud)&&payload.aud.includes(aud))||
  !payload.sub||typeof payload.sub!=="string"||payload.sub.length>512||
- !Number.isFinite(payload.exp)||payload.exp<=now||payload.exp>now+86400||
+ !Number.isFinite(payload.exp)||payload.exp<=now||
  (payload.nbf!==undefined&&(!Number.isFinite(payload.nbf)||payload.nbf>now+60))||
  (payload.iat!==undefined&&(!Number.isFinite(payload.iat)||payload.iat>now+60)))
   throw new HttpError(401,"Invalid Access JWT claims");
