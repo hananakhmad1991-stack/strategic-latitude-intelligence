@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-10-20T17:13:38.868Z",
+  "published_at_utc": "2026-10-20T18:06:24.594Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-10-20T17:13:37.174261Z",
+    "news": "2026-10-20T18:06:23.919529Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-20",
     "participations": "2026-10-20"
   },
-  "count": 115,
+  "count": 116,
   "events": [
+    {
+      "id": "sli-catalyst-b27907a9a587e2bd0e",
+      "kind": "news_indexed",
+      "title": "Swasembada Beras, Upaya Pemerintah Perkuat Fondasi Ketahanan Pangan Nasional - Kementerian Sekretariat Negara",
+      "detected_at_utc": "2026-10-20T18:06:24.594Z",
+      "source_at_utc": "2026-10-14T06:43:07Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPc0ltYlBDSXhuYlNOY29hX3lQNTViWGo1NTBDcDBlX092VXNrUkZRaTBmQWZnYjNDWngzYzZ5T3h5cGxTVWtLX2pvSU0zcWs0ZU1NLUlkT002Yld0U1RCZGhtVUVFbTV3cUppVVZsWUtYSzNYS3hTY0d3Q2hmWnVsRFBqTDJqbi1oZHY2ekdobDZ0RFVCRGZzblFPenF1dGhKc20wZGpsdWl0VHd0LVNJcg?oc=5",
+      "publisher": "Kementerian Sekretariat Negara",
+      "sector": "food",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-737156ab3635ca7916",
       "kind": "news_indexed",
