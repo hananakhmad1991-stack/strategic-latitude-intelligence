@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-17",
+  "version": "2026-10-20",
   "purpose": "Source directory and transparent coverage of Indonesian climate/environmental investment risk. A catalog is not a numeric observation.",
   "sources": [
     {
@@ -178,10 +178,11 @@
       "name": "Air pollution PM2.5",
       "scope": "city/station",
       "agency": "environmental authorities",
-      "status": "needs_numeric_ingestion",
+      "status": "national_history_available_station_local_data_pending",
       "observed_value": null,
       "source_date": null,
-      "confidence": "unassessed"
+      "confidence": "unassessed",
+      "related_historical_national_series": "EN.ATM.PM25.MC.M3"
     },
     {
       "id": "CE-010",
@@ -203,7 +204,9 @@
       "status": "needs_numeric_ingestion",
       "observed_value": null,
       "source_date": null,
-      "confidence": "unassessed"
+      "confidence": "unassessed",
+      "related_historical_national_series": "AG.LND.FRST.ZS",
+      "definition_warning": "WDI forest area share is NOT the forest-cover change indicator; change requires a comparable interannual analysis."
     },
     {
       "id": "CE-012",
@@ -309,5 +312,32 @@
     "Never treat a satellite hotspot as a confirmed wildfire area or assign it to a named company without asset and geospatial verification.",
     "Climate exposure is not automatically a loss estimate. Hazard, asset location, vulnerability and financial sensitivity are separate.",
     "Official external source links do not imply API ingestion or live local measurements."
-  ]
+  ],
+  "contextual_national_series": {
+    "dataset": "data/sli-environment-worldbank-wdi-indonesia.json",
+    "published_source": "World Bank WDI annual Indonesia indicators; FAO and IHME underlying sources",
+    "geographic_scope": "Indonesia national, not a province/asset climate exposure observation",
+    "status": "3 historical numerical indicators published, 1 CO2 API query unavailable",
+    "indicators": [
+      {
+        "code": "AG.LND.FRST.ZS",
+        "topic": "Forest area as share of national land (not deforestation rate)",
+        "last_period": 2024,
+        "unit": "%"
+      },
+      {
+        "code": "EN.ATM.PM25.MC.M3",
+        "topic": "National annual PM2.5 exposure (not a live monitoring station)",
+        "last_period": 2023,
+        "unit": "μg/m³"
+      },
+      {
+        "code": "EG.FEC.RNEW.ZS",
+        "topic": "Renewable energy consumption as fraction of final energy demand (not electric capacity)",
+        "last_period": 2021,
+        "unit": "%"
+      }
+    ],
+    "method": "Original WDI API observations cross-checked against available publisher dashboards. Existing 20 operational district/facility/regulatory indicators retain null until exact geographic scope data are ingested."
+  }
 }
