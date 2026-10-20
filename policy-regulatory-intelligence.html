@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="./css/sli-regulatory-explorer.css?v=20261019-policy-reader2">
 <link rel="stylesheet" href="./css/sli-policy-assistant.css?v=20261019-pai1">
 <link rel="stylesheet" href="./css/sli-policy-coverage.css?v=20261019-coverage1">
+<link rel="stylesheet" href="./css/sli-legal-provisions.css?v=20261020-verpro1">
 </head>
 <body class="policy-reader">
 <main class="policy-app">
@@ -39,6 +40,17 @@
 <p class="quiet">Cakupan kota/kabupaten ini masih sampel prioritas; belum seluruh daerah. Peraturan RTRW atau perubahan terbaru hanya dinyatakan berlaku jika didukung pemeriksaan dokumen JDIH.</p>
 <p id="policyCoverageDate"></p>
 </details>
+<section id="policyVerifiedProvisions" class="policy-provisions" aria-label="Ringkasan pasal yang ditelaah">
+<div class="policy-kicker">SLI / VERIFIED LEGAL CORPUS · ORIGINAL TEXT</div>
+<h2>Pasal yang telah ditelaah terhadap naskah resmi</h2>
+<p class="policy-provision-sub">Ringkasan terbatas per pasal dari naskah resmi ketika diundangkan, bukan kutipan kata demi kata dan bukan jaminan versi hukum terbaru. Selalu periksa perubahan, putusan pengadilan, dan ketentuan peralihan sebelum menyimpulkan kewajiban proyek. <strong id="policyProvisionCount">—</strong> ringkasan tersedia.</p>
+<div class="policy-provision-filters">
+<label for="policyProvisionLaw">Peraturan <select id="policyProvisionLaw"><option value="all">Semua peraturan</option></select></label>
+<label for="policyProvisionQuery">Cari makna pasal <input id="policyProvisionQuery" type="search" placeholder="Misalnya: pusat data, kewenangan daerah, pangan" autocomplete="off"></label>
+</div>
+<p id="policyProvisionResult" role="status" aria-live="polite">Memuat ringkasan pasal yang telah ditelaah...</p>
+<div id="policyProvisionList" class="policy-provision-list" aria-label="Ringkasan pasal dan sumber primer"></div>
+</section>
 <section id="policyAskAi" class="policy-assistant" aria-label="Asisten penelusuran kebijakan dan regulasi">
 <div class="pa-head"><div><div class="policy-kicker">SLI / ASK POLICY</div><h2>Tanya kebijakan dan regulasi dengan bahasa sehari-hari.</h2>
 <p>Mulai dari pertanyaan investasi, AI, energi, tata ruang, perubahan peraturan, atau kewenangan daerah. SLI menghubungkan pertanyaan dengan dokumen resmi dalam indeks, lalu Anda dapat membuka riset generatif di Research AI.</p></div><span class="pa-tag">Evidence-first · Tahap awal</span></div>
@@ -108,6 +120,7 @@
 </main>
 <script>window.SLI_POLICY_EXPLORER_VERSION="20261019-policy-reader2";</script>
 <script defer src="./js/sli-regulatory-explorer.js?v=20261019-policy-reader3"></script>
+<script defer src="./js/sli-legal-provisions.js?v=20261020-verpro1"></script>
 <script defer src="./js/sli-policy-assistant.js?v=20261019-pai1"></script>
 <script defer src="./js/sli-policy-coverage.js?v=20261019-coverage1"></script>
 <script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script>
