@@ -1,0 +1,45 @@
+{
+  "schema": "sli-ai-publisher-figure-audit-v1",
+  "audit_date": "2026-10-20",
+  "status": "source_pdf_caption_candidates_extracted_not_full_figure_data",
+  "scope": "Two complete official publisher PDFs inspected in GitHub Actions; source files not republished.",
+  "publisher_reports": [
+    {
+      "publisher": "Stanford HAI",
+      "report": "AI Index 2026",
+      "pdf_pages": 425,
+      "text_figure_label_candidates": 376,
+      "source_url": "https://hai.stanford.edu/assets/files/ai_index_report_2026.pdf",
+      "evidence_run": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39411989759",
+      "candidate_status": "auto_detected_unreviewed",
+      "known_numeric_source_figures": [
+        {
+          "figure": "1.2.4",
+          "pdf_page": 31
+        },
+        {
+          "figure": "1.3.2",
+          "pdf_page": 33
+        }
+      ]
+    },
+    {
+      "publisher": "World Bank",
+      "report": "Digital Progress and Trends Report 2025: Strengthening AI Foundations",
+      "pdf_pages": 136,
+      "text_figure_label_candidates": 33,
+      "source_url": "https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf",
+      "evidence_run": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39411989759",
+      "candidate_status": "auto_detected_unreviewed",
+      "known_numeric_source_figures": []
+    }
+  ],
+  "text_figure_label_total": 409,
+  "already_digitized_numeric_source_figures": 2,
+  "previous_initial_figures_estimate": 405,
+  "catalog_build_script": "scripts/catalog-ai-report-figure-candidates.py",
+  "review_only_artifact": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39411989759/artifacts/12259517775",
+  "review_artifact_retention_days": 15,
+  "review_limits": "Printed labels may appear more than once or carry trailing superscript footnote digits; counts are occurrences, not unique verified chart series. Image-only figures may be missed. Numeric extraction, primary-study verification, chart status and geographic denominators remain pending figure by figure.",
+  "no_automatic_numeric_publication": true
+}
