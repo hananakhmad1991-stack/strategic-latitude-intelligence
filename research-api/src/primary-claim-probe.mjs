@@ -19,7 +19,7 @@ function htmlText(source){
   .replace(/&nbsp;|&#160;/gi," ").replace(/&amp;/gi,"&").replace(/\s+/g," ");
 }
 async function probeOne(row,fetcher){
- const base={citation:row.citation,source_url:row.url,
+ const base={citation:row.citation,claim:row.claim,source_url:row.url,
   status:"pending_original_publisher_read",claim_numbers_present:[],claim_numbers_absent:[],
   note:"HTML token/number presence is NOT primary-source claim entailment or fact verification"};
  try{
