@@ -21,15 +21,16 @@ test("brand-origin Derepan link points to the user's exact Google Maps URL",()=>
  assert.equal(page.split('href="'+map+'"').length-1,1);
  assert.match(page,/class="sli-ra-derepan-map"[^>]+target="_blank" rel="noopener noreferrer"/);
  assert.match(page,/Dusun Derepan/);
- assert.match(page,/Desa Menoreh, Kecamatan Salaman, Kabupaten Magelang/);
- assert.match(page,/Menoreh Village, Salaman District, Magelang Regency/);
+ assert.match(page,/Desa Menoreh, Kecamatan Salaman, Kabupaten Magelang, Provinsi Jawa Tengah, Indonesia/);
+ assert.match(page,/Menoreh Village, Salaman District, Magelang Regency, Central Java Province, Indonesia/);
 });
 test("DERGUBA research acronym, bilingual narrative and accessibility remain intact",()=>{
  for(const part of ["Data","Evidence","Research","Governance","Uncertainty","Business","Analytics"])
   assert.ok(page.includes(part),part);
  assert.match(page,/data-id="DARI DEREPAN · UNTUK DUNIA"/);
  assert.match(page,/data-en="BORN IN DEREPAN · BUILT FOR THE WORLD"/);
- assert.match(page,/data-en="The name DERGUBA is rooted in the community of"/);
+ assert.match(page,/data-id="Nama DERGUBA berakar dari komunitas dan keindahan pegunungan dengan banyak angkrem di"/);
+ assert.match(page,/data-en="The name DERGUBA is rooted in its community and the beauty of mountains dotted with locally known angkrem in"/);
  assert.match(page,/aria-label="Buka Dusun Derepan/);
  assert.match(client,/document\.querySelectorAll\("\[data-id\]\[data-en\]"\)/);
  assert.match(style,/sli-ra-derepan-map:focus-visible/);
