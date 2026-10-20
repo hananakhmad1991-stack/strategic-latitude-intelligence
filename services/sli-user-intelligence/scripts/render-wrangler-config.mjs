@@ -11,6 +11,7 @@ export async function render(dir,e){
  if(!base.includes(placeholder)||!base.includes(origin)||!base.includes('workers_dev = false'))
   throw Error("Unexpected base Wrangler config; refuse deployment");
  const cfg=base.replace(placeholder,'database_id = '+JSON.stringify(e.SLI_D1_DATABASE_ID))
+ .replace('workers_dev = false','workers_dev = false\npreview_urls = false')
   .replace(origin,origin+"\nCF_ACCESS_ISSUER = "+JSON.stringify(e.SLI_ACCESS_ISSUER)+
    "\nCF_ACCESS_AUD = "+JSON.stringify(e.SLI_ACCESS_AUD))
   +'\n# Exact Access-protected Custom Domain (no workers.dev bypass)\n[[routes]]\npattern = '+
