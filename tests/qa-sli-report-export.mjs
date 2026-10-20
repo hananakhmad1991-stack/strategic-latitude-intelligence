@@ -5,7 +5,7 @@ import {docxBytes} from "../js/sli-report-docx.mjs";
 import {printableResearchHtml} from "../js/sli-report-pdf.mjs";
 const source=i=>({title:"Official report "+i,publisher:"Research Institute "+i,
  source_date:"2026-10-19",source_url:"https://www.esdm.go.id/reports/example-"+i+".pdf",
- source_type:"reviewed_primary_article_paraphrase"});
+ source_type:"official_report"});
 const fullSources=Array.from({length:12},(_,i)=>source(i+1));
 const answer="# Analysis of Indonesian strategic investment\n\n## Executive Summary\n\n"+
  "Research reports provide a cautious trend analysis "+Array.from({length:10},(_,i)=>"["+(i+1)+"]").join(" ")+
@@ -108,7 +108,7 @@ test("Focused Pasal 4 PP 28/2025 PDF keeps uniform numeric references and origin
  assert.equal(report.refs.meets_preliminary_minimum,true);
  assert.equal(report.refs.ready_for_publication,false);
  assert.equal(report.refs.verified_sources,0);
- assert.equal(report.refs.references[0].year,"2025");
+ assert.equal(report.refs.references.find(x=>x.index===1).year,"2025");
  assert.match(report.body.find(x=>x.type==="p").text,/OSS \[1\] \[2\]/);
  assert.doesNotMatch(report.body.find(x=>x.type==="p").text,/\(JDIH/i);
  const printable=printableResearchHtml(report);
