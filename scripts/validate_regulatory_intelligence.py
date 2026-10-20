@@ -9,7 +9,7 @@ data = json.loads((ROOT/"data/sli-policy-regulatory-graph-2026.json").read_text(
 nodes = data["nodes"]
 node_ids = {n["id"] for n in nodes}
 assert len(nodes) == len(node_ids), "Duplicate legal instrument ids"
-assert len(nodes) >= 149, "Regulatory source graph unexpectedly shrank"
+assert len(nodes) >= 153, "Regulatory source graph unexpectedly shrank"
 required_sectors = {"energy","electricity","oilgas","minerba","environment","digital","carbon","cross"}
 assert required_sectors.issubset({n["sector"] for n in nodes})
 required_tiers = {"constitutional","tap","uu","pp","perpres","perda","permen","decision","dirjen","technical"}
@@ -47,11 +47,18 @@ assert any(e["from"]=="uu23local" and e["to"]=="uu1hkpd2022" and e["type"]=="par
 assert any(e["from"]=="pres110carbon" and e["to"]=="pres98repealed" and e["type"]=="repeals" for e in data["edges"])
 assert all(lookup[k]["region"]!="Indonesia" for k in ("perda_dki_rtrw2024","perda_jabar_rtrw2022","perda_bekasi"))
 
+# Fiscal replacement and Bengkulu amendment must remain distinguishable.
+assert lookup["pp10pdrdold2021"]["status"]=="repealed"
+assert lookup["pp35hkpd2023"]["status"]=="check_current"
+assert lookup["perda_bengkulu_pdrd2023"]["status"]=="amended"
+assert lookup["perda_bengkulu_pdrd2026"]["status"]=="amending_instrument"
+for parent,successor,kind in (("pp35hkpd2023","pp10pdrdold2021","repeals"),("perda_bengkulu_pdrd2023","perda_bengkulu_pdrd2026","amended_by")):
+    assert any(e["from"]==parent and e["to"]==successor and e["type"]==kind for e in data["edges"])
 # Provincial directory coverage must distinguish source discovery from verified law text.
 coverage = json.loads((ROOT/"data/sli-policy-source-coverage.json").read_text(encoding="utf-8"))
 assert len(coverage["provinces"]) == 38
 with_portal = [p for p in coverage["provinces"] if p.get("source_url")]
-assert len(with_portal) >= 24, "Verified province portal discovery unexpectedly regressed"
+assert len(with_portal) >= 29, "Verified province portal discovery unexpectedly regressed"
 assert all(p["source_url"].startswith("https://") for p in with_portal)
 assert all(p["discovery_status"] != "not_yet_confirmed" for p in with_portal)
 assert any(p["name"]=="Sulawesi Selatan" and p.get("source_url","").startswith("https://jdih.sulselprov.go.id/") for p in with_portal)
@@ -70,8 +77,8 @@ watch_config = json.loads((ROOT/"data/regulatory-monitor-sources.json").read_tex
 assert len(watch_config["watched_laws"]) == len(set(watch_config["watched_laws"])), "Duplicate watched legal instrument"
 assert set(("uu4p2sk2026","permendag19pmse2026","perpres83bgn","perda_dki_rtrw2024")).issubset(watch_config["watched_laws"])
 assert all(w in node_ids for w in watch_config["watched_laws"]), "Watched law not in legal graph"
-assert len(watch_config["watched_laws"])>=91
-assert len(watch_config["listing_sources"])>=35
+assert len(watch_config["watched_laws"])>=95
+assert len(watch_config["listing_sources"])>=36
 assert data["methodology"]["ria_lite"]["purpose"]
 dimensions = data["methodology"]["ria_lite"]["dimensions"]
 weights = {x["id"]:x["weight"] for x in dimensions}
