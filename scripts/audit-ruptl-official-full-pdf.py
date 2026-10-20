@@ -117,6 +117,25 @@ if not is_complete:
  print("RUPTL_BLOCKED_INCOMPLETE_SOURCE="+json.dumps(report,separators=(",",":")))
  raise SystemExit(0)
 
+# A PDF %%EOF marker can exist in a corrupted or partial source. Before any
+# project annex scanning, test every page's structure, not only the trailer.
+import hashlib
+import fitz
+pdf_sha256=hashlib.sha256(DOCUMENT.read_bytes()).hexdigest()
+with fitz.open(str(DOCUMENT)) as integrity_doc:
+ if integrity_doc.needs_pass: raise ValueError("RUPTL official PDF is password-protected")
+ verified_page_count=len(integrity_doc)
+ if not 100<verified_page_count<=5000: raise ValueError("RUPTL implausible complete PDF page count")
+ for index in range(verified_page_count):
+  try:
+   page=integrity_doc.load_page(index)
+   _=page.rect
+   # Read actual page contents/streams to catch malformed or missing page objects.
+   _=page.get_text("text")
+  except Exception as exc:
+   raise ValueError(f"RUPTL document failed page-integrity test at PDF page {index+1}: {exc}") from exc
+ print("RUPTL_ALL_PAGES_INTEGRITY_OK pages="+str(verified_page_count)+" sha256="+pdf_sha256)
+
 probe=subprocess.run(["pdfinfo",str(DOCUMENT)],capture_output=True,text=True,timeout=80)
 if probe.returncode:
  print("RUPTL_PDFINFO_ERROR "+re.sub(r"\\s+"," ",probe.stderr)[-850:])
@@ -130,8 +149,8 @@ if probe.returncode:
   raise ValueError("Official PLN PDF cannot yet be read safely: "+str(exc)[:220]) from exc
 else:
  pages=int(re.search(r"^Pages:\s+(\d+)\b",probe.stdout,re.M).group(1))
-if pages<=100 or pages>5000:raise ValueError("Complete PDF page count unexpectedly "+str(pages))
-print("RUPTL_FULL_PDF_OK bytes="+str(size)+" pages="+str(pages)+" origin=PLN")
+if pages!=verified_page_count:raise ValueError("RUPTL PDF parser page counts inconsistent: "+str(pages)+" vs "+str(verified_page_count))
+print("RUPTL_FULL_PDF_OK bytes="+str(size)+" pages="+str(pages)+" source="+source_name+" sha256="+pdf_sha256)
 # The uploaded source ended at page 100; scan only pages missing from that original.
 probe_text=subprocess.run(["pdftotext","-layout","-enc","UTF-8","-f","101","-l",str(pages),str(DOCUMENT),"-"],capture_output=True,text=True,timeout=210)
 if probe_text.returncode:
@@ -166,7 +185,7 @@ output={
  "schema":"sli-ruptl-full-official-pdf-page-index-v1",
  "source":"PT PLN (Persero) official full RUPTL 2025–2034 PDF",
  "source_url":URL, "checked_at":datetime.now(timezone.utc).isoformat(),
- "source_size_bytes":size,"source_pdf_total_pages":pages,"attempted_official_sources":attempts,"original_user_upload_pages":100,
+ "source_size_bytes":size,"source_pdf_total_pages":pages,"source_sha256":pdf_sha256,"full_page_integrity_checked":True,"attempted_official_sources":attempts,"original_user_upload_pages":100,
  "scanned_missing_page_range":[101,pages],"scan_keyword_hits":candidate_count,
  "indexed_candidate_pages":len(rows),
  "status":"full_official_pdf_accessed_page_leads_only_not_approved_project_registry",
