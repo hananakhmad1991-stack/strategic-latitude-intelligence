@@ -1,0 +1,32 @@
+/* Evidence relationships: factual shareholder tables and project participants, not inferred tree edges. */
+.sli-evidence-directory{margin:24px 0;background:#0d2135;border:1px solid #3b5e76;border-radius:17px;padding:24px;color:#eaf1f6;scroll-margin-top:95px}
+.sli-evidence-intro small{font-size:11px;letter-spacing:.12em;font-weight:750;color:#e0b978}
+.sli-evidence-intro h2{font-size:23px;margin:5px 0 9px;letter-spacing:-.015em}
+.sli-evidence-intro p{color:#bdd2df;line-height:1.6;font-size:13px;max-width:1080px}
+.sli-evidence-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:14px 0}
+.sli-evidence-toolbar label{font-weight:650;color:#e2c592;font-size:12px}
+.sli-evidence-toolbar select,.sli-evidence-toolbar input{background:#102a40;border:1px solid #4b6d85;border-radius:8px;color:#f0f6fb;padding:10px;font:inherit;min-height:40px}
+.sli-evidence-toolbar input{flex:1 1 250px;min-width:0}
+.sli-evidence-toolbar select{flex:0 1 260px}
+.sli-evidence-stat{font-size:11px;color:#c4d7e2;margin:7px 0 14px}
+.sli-evidence-workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:17px}
+.sli-evidence-list{overflow-y:auto;max-height:630px;display:grid;align-content:start;gap:5px}
+.sli-evidence-hit{display:grid;gap:3px;text-align:left;padding:10px 11px;background:#142d43;color:#f4f6f8;border:1px solid #355b76;border-radius:8px;cursor:pointer}
+.sli-evidence-hit:hover,.sli-evidence-hit[aria-pressed=true]{background:#223d53;border-color:#e2bc7a}
+.sli-evidence-hit strong{font-size:12px}.sli-evidence-hit small{color:#b9cddd;font-size:10px}
+.sli-evidence-detail{background:#10283e;border:1px solid #46677e;border-radius:11px;padding:17px;max-height:730px;overflow-y:auto;min-width:0}
+.sli-evidence-detail h3{font-size:20px;margin:0 0 10px;overflow-wrap:anywhere}
+.sli-evidence-detail h4{font-size:14px;color:#f0cc91;margin:0 0 11px}
+.sli-evidence-note{font-size:11px;color:#b9cfdf;overflow-wrap:anywhere}
+.sli-evidence-profile{border-top:1px solid #3a5b73;margin-top:14px;padding-top:15px}
+.sli-evidence-fields{display:grid;grid-template-columns:minmax(110px,.4fr) minmax(0,1fr);gap:5px 11px;font-size:12px}
+.sli-evidence-fields dt{color:#9dbdd0}.sli-evidence-fields dd{margin:0 0 5px;overflow-wrap:anywhere}
+.sli-evidence-equity{width:100%;border-collapse:collapse;margin:9px 0 14px;font-size:11px}
+.sli-evidence-equity th,.sli-evidence-equity td{padding:8px;border-bottom:1px solid #36536a;text-align:left}
+.sli-evidence-equity th{color:#e9d4b4;background:#19354b}.sli-evidence-equity td:last-child{white-space:nowrap}
+.sli-evidence-link{color:#f1d095;display:inline-block;margin:6px 13px 5px 0;font-size:11px;overflow-wrap:anywhere}
+.sli-evidence-project{margin:10px 0;padding:11px;background:#18364c;border:1px solid #3c617b;border-radius:7px}
+.sli-evidence-project strong{font-size:13px}
+.sli-evidence-toolbar input:focus-visible,.sli-evidence-toolbar select:focus-visible,.sli-evidence-hit:focus-visible{outline:2px solid #e9c98a;outline-offset:2px}
+@media(max-width:900px){.sli-evidence-workspace{grid-template-columns:minmax(0,1fr)}.sli-evidence-detail{max-height:none}.sli-evidence-directory{padding:16px}.sli-evidence-list{max-height:340px}}
+@media(max-width:560px){.sli-evidence-fields{grid-template-columns:minmax(0,1fr)}.sli-evidence-fields dt{font-weight:750}}
