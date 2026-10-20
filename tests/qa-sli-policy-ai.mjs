@@ -72,7 +72,7 @@ test("primary article reference pilot preserves law-to-article and source proven
  const bridge=file("research-api/src/legal-provisions.mjs");
  const ids=new Set(graph.nodes.map(n=>n.id));
  assert.equal(articleDb.schema,"sli-legal-provisions-v1");
- assert.ok(articleDb.items.length>=26);
+ assert.ok(articleDb.items.length>=30);
  for(const provision of articleDb.items){
   assert.ok(ids.has(provision.law_node_id));
   assert.match(provision.source_url,/^https:\/\//);
