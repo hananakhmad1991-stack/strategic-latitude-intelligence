@@ -66,7 +66,7 @@ test("User source inventory separates ready data from source-only/pending archiv
  assert.equal(ids.size,inventory.datasets.length);
  for(const id of ["bps_crime","bps_politics","bps_grdp","iea_full","environment","ai_index","worldbank_ai","pln_ruptl"])
   assert.ok(ids.has(id),id);
- assert.ok(inventory.datasets.some(x=>x.status==="pending_numeric_ingestion"));
+ assert.ok(inventory.datasets.some(x=>/partial|source_registry|not_all/.test(x.status)),"Other uploaded datasets remain partial even after BNPB ingestion");
  assert.ok(inventory.datasets.some(x=>x.status==="full_user_normalized_upload_restored_to_repository"));
  assert.equal(inventory.no_automatic_factual_promotion,true);
  assert.match(page,/id="inventoryTable"/);
