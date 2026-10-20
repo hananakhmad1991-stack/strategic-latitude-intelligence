@@ -18,6 +18,9 @@ on:
       - 'tests/qa-sli-ai-wdi-source-phase2.mjs'
       - 'data/sli-environment-worldbank-wdi-indonesia.json'
       - 'data/sli-bnpb-district-2024.json'
+      - 'data/sli-bnpb-gis-2025-methodology-gate.json'
+      - 'js/sli-bnpb-gis-2025-gate.js'
+      - 'tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
       - 'data/sli-ruptl-esdm-2025-2034-period-plan.json'
       - 'js/sli-ruptl-esdm-period-plan.js'
       - 'css/sli-ruptl-esdm-period-plan.css'
@@ -25,7 +28,7 @@ on:
       - 'pln-ruptl-2025-2034-source-intelligence.html'
       - 'js/sli-bnpb-district-2024.js'
       - 'css/sli-bnpb-district-2024.css'
-      - 'tests/qa-sli-bnpb-district-2024.mjs'
+      - 'tests/qa-sli-bnpb-district-2024.mjs tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
       - 'js/sli-environment-wdi.js'
       - 'data/sli-stanford-2026-digitized-figures.json'
       - 'data/sli-worldbank-ai-2025-digitized-figure-panels.json'
@@ -60,6 +63,9 @@ on:
       - 'tests/qa-sli-ai-wdi-source-phase2.mjs'
       - 'data/sli-environment-worldbank-wdi-indonesia.json'
       - 'data/sli-bnpb-district-2024.json'
+      - 'data/sli-bnpb-gis-2025-methodology-gate.json'
+      - 'js/sli-bnpb-gis-2025-gate.js'
+      - 'tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
       - 'data/sli-ruptl-esdm-2025-2034-period-plan.json'
       - 'js/sli-ruptl-esdm-period-plan.js'
       - 'css/sli-ruptl-esdm-period-plan.css'
@@ -100,6 +106,7 @@ jobs:
           node --check js/sli-ai-report-evidence.js
           node --check js/sli-environment-wdi.js
           node --check js/sli-bnpb-district-2024.js
+          node --check js/sli-bnpb-gis-2025-gate.js
           node --check js/sli-ruptl-esdm-period-plan.js
           node --check js/sli-digitized-ai-figures.js
           node --check js/sli-ai-figure-audit-status.js
