@@ -19,6 +19,9 @@ test("SLI homepage renders provider-owned actual IDX market watchlist before tic
  assert.match(home,/js\/sli-idx-tradingview\.js/);
  assert.ok(home.indexOf('js/sli-idx-tradingview.js')<home.indexOf('js/sli-idx-heatmap.js'));
  assert.match(heat,/SLIIDXTradingView\?\.mount/);
+ assert.match(heat,/SLIIDXTradingView\?\.mountHeatmap/);
+ assert.match(heat,/sli-idx-watchlist-accordion/);
+ assert.match(heat,/selected="MEDC",activeSector="energy"/);
  assert.match(heat,/sliIDXTradingViewWatchlist/);
  assert.match(heat,/sli-issuer\.html\?ticker=/);
  assert.match(heat,/Open dossier/);
@@ -40,6 +43,10 @@ test("All live TradingView watchlist symbols are IDX only and drawn from the sam
   }
  }
  assert.equal(config.showChart,false);
+ const hm=ui.heatmapConfig();
+ assert.equal(hm.dataSource,"IDX");assert.equal(hm.exchanges[0],"IDX");
+ assert.equal(hm.blockSize,"market_cap_basic");assert.equal(hm.blockColor,"change");
+ assert.equal(hm.symbolUrl,ui.issuerRoute);
  assert.equal(config.largeChartUrl,"https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-issuer.html");
  assert.equal(ui.scriptUrl,"https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js");
  assert.ok(config.plotLineColorGrowing!==config.plotLineColorFalling);
