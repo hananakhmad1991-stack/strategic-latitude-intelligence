@@ -1,11 +1,26 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-20T21:48:35.115375+00:00",
-  "last_attempt_at_utc": "2026-10-20T21:48:35.115375+00:00",
+  "generated_at_utc": "2026-10-20T22:46:51.330698+00:00",
+  "last_attempt_at_utc": "2026-10-20T22:46:51.330698+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
+        {
+          "id": "copper-supply-lme-week-copper-supply-struggles-to-keep-pace-with-electrification-demand-s-p-global",
+          "title": "LME Week: Copper supply struggles to keep pace with electrification demand - S&P Global",
+          "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNLXRmRWZCaW5zRnlvVmlEVzlzakMzMFpPRGJubDZFejlKYkgycUkwRmc4eW1SY1A4QnA5NHdPSWdlVzJNb3lYak9NT0JxaXBfdlhLTjVSWnI5dHZjbU1JM21mX0E3SjVyR3lzUEhmU3BKWGVJMTFxYmpDZU1RcjRoekF3RHhiSG9XOW5pd09ybXB2SzZHcjZ5cktjU3A5QWgwTWZabWZqZWFaZ0ZrUlVyTzc3eEl3em1qQTYzWGU1T1pzMk9HZjV2OGRIc3JndlhNNzdENktXMWlWTW5kRnl0Q2d3?oc=5",
+          "publisher": "S&P Global",
+          "publisher_url": "https://www.spglobal.com",
+          "published_at_utc": "2026-10-20T14:08:30+00:00",
+          "sector": "minerals",
+          "scope": "geopolitical",
+          "topic_id": "copper_supply",
+          "channel": "Copper, alumina and aluminium exposure",
+          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
         {
           "id": "export-policy-japan-months-from-running-out-of-critical-rare-earth-as-china-squeezes-supply-financial-times",
           "title": "Japan ‘months’ from running out of critical rare earth as China squeezes supply - Financial Times",
@@ -73,21 +88,6 @@
           "publisher": "Mining.com",
           "publisher_url": "https://www.mining.com",
           "published_at_utc": "2026-10-14T14:31:47+00:00",
-          "sector": "minerals",
-          "scope": "geopolitical",
-          "topic_id": "copper_supply",
-          "channel": "Copper, alumina and aluminium exposure",
-          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "copper-supply-column-aluminium-s-calm-belies-lingering-supply-chain-stress-mining-com-au",
-          "title": "Column: Aluminium’s calm belies lingering supply-chain stress - Mining.com.au",
-          "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNeTJyUm9COEtoQW10cy02WVJzS2VRU19OdXI0Z040TjBoY0pReDNPVlU3RlZGdjFaMFl0S2lfM3pjZERvWlp0M3lrWjk1MGZ2T0pIczZYWVpfaEtRcmhMbGw4MzVQbnZZaU83aGp0SGdqY2pwSTdqc2p1bEJpVUxFSVFsNC1PNGExWkE?oc=5",
-          "publisher": "Mining.com.au",
-          "publisher_url": "https://mining.com.au",
-          "published_at_utc": "2026-10-14T11:57:14+00:00",
           "sector": "minerals",
           "scope": "geopolitical",
           "topic_id": "copper_supply",
@@ -219,6 +219,21 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
+          "id": "smelter-projects-bpk-sorot-penjualan-ore-ke-smelter-iui-ada-potensi-pnbp-melayang-energi-bloomberg-technoz",
+          "title": "BPK Sorot Penjualan Ore ke Smelter IUI, Ada Potensi PNBP Melayang - Energi - Bloomberg Technoz",
+          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQbTVDcy1zb1dCck5EU2ZHU0pFdDNPMWtsQU1RYUtBTTZ4QUZHYjBySlo5NXdlTHBnZThWSElGYUVYaDBzZ3dvNGUtZ0ZOQzdxSHVZam4zMktCaWJnNG1udjVKUE5XemRLb0NLbzFVTHpxS2x5dWdxbGl1aEhnOTdFZVRyNURZYXVNSkxGRUNrcVBRMG0tVUtqNHBENTVkbW53ellxZ0RlU291U3NlV3VXd1NPbFdNbDd6Znc?oc=5",
+          "publisher": "Bloomberg Technoz",
+          "publisher_url": "https://www.bloombergtechnoz.com",
+          "published_at_utc": "2026-10-14T10:41:42+00:00",
+          "sector": "minerals",
+          "scope": "domestic",
+          "topic_id": "smelter_projects",
+          "channel": "Smelter construction and operation",
+          "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
           "id": "mineral-policy-prancis-pimpin-suntikan-rp10-t-ke-pemilik-tambang-nikel-raksasa-ri-cnbc-indonesia",
           "title": "Prancis Pimpin Suntikan Rp10 T ke Pemilik Tambang Nikel Raksasa RI - CNBC Indonesia",
           "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxONTRSbTRUbGtjNVFnSDhwb2swSFpWbjk2RnFwOEJiRnpKTUxER29WVE1rT3UyVHAxUVNFTEFKZGMzWHA4WEU1TGQ3S2pPYWRGbVZWSFNSXzYxYTFNejl6c2ZjZHNxMVdpdXZCWHUxNHRlbU5YN3BYSk1CaG5lU0JOWWJ3RWJtYzhUSUkyaTQyMzR6SFp0UGlFMW5jMHVGWGVYMnZld0xxVlBpNUxjU0Zqa0lsZzZWdG5HQXQ4ODBNenJ4WWh5Vlkw0gHMAUFVX3lxTFBOVEl1ZmlyWk9Pc25NTFM0RGV1Ymg3MVl1TDRseVJfNzZhLVRtQUVvUkE1cVV3WDhBZ2pod2s2bjAyajI0WFFIcGNHSXBSR1M4ZFdUUE5rc0VodEU4RkU2TVFqM1MtWnVkZ1BmUHRXQklsTnBUU3NxczJtRjRKczZrNzRTQzBZcmhjR2l6WFIxZmNvbktTVGZfLVdoVmc1WnVsTWIxUkpRX2U1XzBjZ2dwRjViVHZJZDk2U3lNbnFNaV9YcUU3S3VwQURIUg?oc=5",
@@ -329,21 +344,6 @@
           "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQRXp5X2ZoMnNVZ1dMYVJ5U3JjYWt5c2dINS1xdVFPN0IxaHl6cExiZWtXakxhX1N2Nl9JeVhzdzVVajhKM2hPb29qWFQtQ1R1eWwzaFNTUzFvU0h3WURZWFVsY1plYkdyYlotNU03aHRScjN3dHl4dVg3eFNwTFhRbWpuOHBtM0RlS0FHbE9oVU1YNVExaHlLMndBMVZUZUJiamxXV096ZXhfbVgyc19QTEFlY1g2WTBXckdKZWZfZUE2Z9IBxwFBVV95cUxPTFBLYUZZY21kdEw0MDJWLW5TQVYzR01pTWVzQjdSV1E5bWpjMWNHSFl5N0p5a3ozaDNlNGZNTVJ5WFBmWHlZU013Q0tiVUFfVnNSejJNQ29fVkJsYnl5LUpKRjVoRldhcEY1Zy1jQWRkaGlsbWR3YlB4eXVjemNQV2xZdFZIY0F4RTU1OXdudmRPZmpjT1NBQWRWc05JNnlOdlNyWTl5UWtvVXpwM0pfOTJMX0tVX0FJeWpMeVZzS3l4a3RZZ1FR?oc=5",
           "publisher": "CNBC Indonesia",
           "publisher_url": "https://www.cnbcindonesia.com",
-          "published_at_utc": "2026-10-08T07:00:00+00:00",
-          "sector": "minerals",
-          "scope": "domestic",
-          "topic_id": "smelter_projects",
-          "channel": "Smelter construction and operation",
-          "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "smelter-projects-indonesia-kuasai-66-produksi-nikel-dunia-den-ingatkan-risiko-oversupply-bisnis-com-ekonomi",
-          "title": "Indonesia Kuasai 66% Produksi Nikel Dunia, DEN Ingatkan Risiko Oversupply - Bisnis.com - Ekonomi",
-          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNcktYQVJCR1ppeEM2bUtVYnM2N0Q2a05QTFl6SS16SkFLYnd2SllFOUVtMXhQcUd0d2lxdGM5V0dVV0VmTV9ubmd4TS1lRkY3N3UtU2stZ3NnZUlRSFRBcHNQM0RXZDl0aUM1Szh1aGN0bVpwWUR1d0tQS05vcjcwZDNfSFIzZ2h4YTN3QkNEOTM4RmljM3ljZ3Q2ejRBblRMN2xBeGdMN19pNzB2ZlFPSGdoNWxSamp2bkttbFVlSlQ?oc=5",
-          "publisher": "Bisnis.com - Ekonomi",
-          "publisher_url": "https://ekonomi.bisnis.com",
           "published_at_utc": "2026-10-08T07:00:00+00:00",
           "sector": "minerals",
           "scope": "domestic",
@@ -493,21 +493,6 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
-          "id": "subsea-new-taipei-hong-kong-subsea-route-opened-to-cut-risk-and-meet-ai-demand-south-china-morning-post",
-          "title": "New Taipei-Hong Kong subsea route opened to cut risk and meet AI demand - South China Morning Post",
-          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxORnhtU2x5enNnS1pBUHdxSk1PMFZpXzJreVJHYjdORzgtbFBybWZkWkk2a0hMcm96Z05ZWU45WTU1Z29mYl9IUVhIcF9zTFZxOENCRFllZWZBZUM0dmIyM3d6N1VJWlFuZ2pwS18yUUJwRzktVjJxeXJzaTJsbUQ1OXBGVkJDeDZVSEtLTzNTb3l2VE1sX2VJLWdBTmJYNThWYnBaNWxfcnBzeklQdTJIcFJLWGlUSFZIUFdXVTEzVi12UQ?oc=5",
-          "publisher": "South China Morning Post",
-          "publisher_url": "https://www.scmp.com",
-          "published_at_utc": "2026-10-10T07:00:00+00:00",
-          "sector": "ai",
-          "scope": "geopolitical",
-          "topic_id": "subsea",
-          "channel": "Subsea cable and connectivity resilience",
-          "impact_pathway": "External network incidents may affect resilience or redundancy planning, not necessarily verified Indonesia outages.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
           "id": "compute-competition-indonesia-accelerates-data-center-build-out-as-digital-economy-nears-100-billion-the-jakarta-post",
           "title": "Indonesia accelerates data center build-out as digital economy nears $100 billion - The Jakarta Post",
           "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPTU5xQncxaHR6MHBBVnJnT2RKZHNpN01HdFdqZ0FUQ0hrMWg4MGZfcF83VlJNOVUwVTFVVjRiRWJsOGxhR3lrLVV5SHhMSHpiaUMtQ203bmlQVkNZeldiMi1VRWhsOE43bU5KaGswdFdKMERub3VzWVlzUDNRbFphUC1DZk5mckUtTzZZZ2tqUmZGcFpSNGFiTmlBV25NUVZGVXpvZFpJYVNlLWg4REc2ZEgwVjVVc1NyYTJHTGFQODJ6dWUy?oc=5",
@@ -557,7 +542,7 @@
         {
           "id": "ai-policy-bssn-waspadai-pencurian-data-terenkripsi-dengan-teknologi-komputasi-kuantum-kompas-id",
           "title": "BSSN Waspadai Pencurian Data Terenkripsi dengan Teknologi Komputasi Kuantum - Kompas.id",
-          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOMnBGVEJVbEV1allvVjNwblBBUkRUUUNTaGRCek56bW5La21paE1PZDNONGpDaF82V0x3a1pHWkpzOUo2cU0yWHg2QUZmRm1WR05fMTUzWWdaVEYxS3hiS2tKeHMwN0VaNUF4aURGci0yaV93dDBZX2ZoOVdUN1RYUTdvdDBJX19iUl92RUhyazhWaHJpVWU5aVR0RHNxVndobDFjcnpUVFFiR0hSMk5ZdzZ1ZG1vWFNlWloxLTRiMHl2SXM2dFVz?oc=5",
+          "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPU3JNMUZWeW8xZFpQZGJjY1JNSzhfVEZwbEdtc0ljalBNYzhfNW4wSmJoOHRtcktNQ3hYVzB5eUt3eENOYWZPeDBKVXJGTjlkVzdWWDc4MFF5bjUwUHhVRXV4WFA4dml5Rlc4Y0xucEZrdlhkb1NNSVE0NXZLamlwdHNldEYwSExpZ1VtSzk1clNsV081RXBhS2x0WUpWd2lyeG9ZZ2ZmeDFNdl9vSEdFY3loeVQ3T0FnWDF4a09iVTlUSkVN?oc=5",
           "publisher": "Kompas.id",
           "publisher_url": "https://www.kompas.id",
           "published_at_utc": "2026-10-20T11:42:38+00:00",
@@ -750,21 +735,6 @@
           "topic_id": "global_grains",
           "channel": "Global rice, wheat and food prices",
           "impact_pathway": "Changes in global staple supply may affect import costs and food price expectations; published trade statistics are the baseline.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "climate-food-imf-warns-global-food-security-worsening-amid-el-nino-nikkei-asia",
-          "title": "IMF warns global food security worsening amid El Nino - Nikkei Asia",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPNzFZNVZDT2psMmlidVVPTDNlNUNYX0VOeVQwZlRRZHZPTFVWX3JEMDNteHVybFJxOGI4eTR0Y19VczVHZmdRNnRQR2Q3ZVFUWEpWY0w3b2Q0cHJRMndMT2g5cXp4Wk9sUWYwUkVlYzBuMm9JaW1xME9xaEVWaG9WS05Zb2ZKZGJTZW41UWo4ZVlURVlZa3h2WUE4WkxKT2h4VUFCZU92SUtkWHBGa3RraS1UR04?oc=5",
-          "publisher": "Nikkei Asia",
-          "publisher_url": "https://asia.nikkei.com",
-          "published_at_utc": "2026-10-16T01:36:00+00:00",
-          "sector": "food",
-          "scope": "geopolitical",
-          "topic_id": "climate_food",
-          "channel": "Climate and regional food security",
-          "impact_pathway": "Weather and production reporting may signal potential yield risks but is not a measured crop loss.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -1109,11 +1079,11 @@
       "domestic": 13
     },
     "ai": {
-      "geopolitical": 12,
+      "geopolitical": 11,
       "domestic": 11
     },
     "food": {
-      "geopolitical": 5,
+      "geopolitical": 4,
       "domestic": 20
     }
   },
@@ -1182,7 +1152,7 @@
       "id": "climate_food",
       "scope": "food/geopolitical",
       "state": "scanned",
-      "found": 3
+      "found": 2
     },
     {
       "id": "rice_reserves",
@@ -1236,7 +1206,7 @@
       "id": "subsea",
       "scope": "ai/geopolitical",
       "state": "scanned",
-      "found": 1
+      "found": 0
     },
     {
       "id": "campus_projects",
