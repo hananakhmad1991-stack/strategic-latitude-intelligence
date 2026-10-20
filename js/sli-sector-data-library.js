@@ -178,8 +178,19 @@ function disasters(d){
   return;
  }
  const metricIds=Array.isArray(d.disaster_types)?d.disaster_types:["floods","extreme_weather","wildfires","landslides","earthquakes"];
- table("disasterTable",["Provinsi",...metricIds],records.map(row=>[row.province||row.name,
-  ...metricIds.map(k=>row[k]===null||row[k]===undefined?"—":num(row[k],0))]));
+ const select=$("disasterProvince");
+ const dossier=$("disasterProvinceDossier");
+ for(const row of records){const option=document.createElement("option");option.value=row.province;option.textContent=row.province;select.append(option)}
+ const requested=new URLSearchParams(window.location.search).get("province");
+ if(requested&&records.some(r=>r.province===requested))select.value=requested;
+ const draw=()=>{
+  const province=select.value,subset=province?records.filter(r=>r.province===province):records;
+  table("disasterTable",["Provinsi",...metricIds],subset.map(row=>[row.province||row.name,
+   ...metricIds.map(k=>row[k]===null||row[k]===undefined?"—":num(row[k],0))]));
+  dossier.href="./provincial-intelligence.html"+(province?"?province="+encodeURIComponent(province):"")+"#provincialDisasterEvidence";
+  dossier.textContent=province?"Lihat dossier "+province+" ↗":"Buka dossier provinsi ↗";
+ };
+ select.addEventListener("change",draw);draw();
  const note=$("disasterIntegrityNotice");if(note){
   const anomalies=d.quality_checks?.national_aggregate_discrepancies||[];
   note.textContent=anomalies.length?"Audit total nasional BNPB: "+anomalies.map(x=>x.indicator+
