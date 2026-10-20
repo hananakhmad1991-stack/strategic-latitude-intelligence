@@ -53,6 +53,8 @@ on:
       - 'research-api/src/legal-citation-audit.mjs'
       - 'data/sli-verified-legal-provisions.json'
       - 'research-api/src/owner-test-worker.mjs'
+      - 'research-api/src/legal-source-limited.mjs'
+      - 'tests/qa-sli-legal-source-limited.mjs'
       - 'tests/qa-sli-policy-ai.mjs'
 jobs:
   validate:
