@@ -13,6 +13,21 @@ const wiki=Object.freeze({
  'Brian Yuliarto':'https://en.wikipedia.org/wiki/Brian_Yuliarto'
 });
 const sites=[
+ [/(\bkementan\b|kementerian pertanian|ministry of agriculture|ditjen tanaman pangan|ditjen hortikultura|ditjen prasarana|pusdatin kementan)/i,'pertanian.go.id'],
+ [/(\bbapanas\b|badan pangan nasional|national food agency)/i,'badanpangan.go.id'],
+ [/(\bkemenko pangan\b|kemenko bidang pangan|coordinating ministry for food)/i,'kemenkopangan.go.id'],
+ [/(\bkemendag\b|kementerian perdagangan|ministry of trade)/i,'kemendag.go.id'],
+ [/(\bbgn\b|badan gizi nasional|national nutrition agency)/i,'bgn.go.id'],
+ [/(\bkkp\b|kementerian kelautan dan perikanan|marine affairs and fisheries)/i,'kkp.go.id'],
+ [/(\bbulog\b)/i,'bulog.co.id'],
+ [/(\bpupuk indonesia\b)/i,'pupuk-indonesia.com'],
+ [/(\bid food\b)/i,'idfood.co.id'],
+ [/(\bbps\b|badan pusat statistik|statistics indonesia)/i,'bps.go.id'],
+ [/(\bbpom\b|badan pengawas obat dan makanan)/i,'pom.go.id'],
+ [/(\bbank indonesia\b)/i,'bi.go.id'],
+ [/(\bdpr ri\b)/i,'dpr.go.id'],
+ [/(\bbpk\b|badan pemeriksa keuangan)/i,'bpk.go.id'],
+
  [/\b(esdm|ditjen minerba|bad[a]?n geologi|gatrik)\b/i,'esdm.go.id'],
  [/\b(pln|perusahaan listrik negara)\b/i,'pln.co.id'],
  [/\b(komdigi|komunikasi dan digital|digital ecosystem|digital infrastructure|ai & new technology)\b/i,'komdigi.go.id'],
