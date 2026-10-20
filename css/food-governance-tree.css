@@ -1,0 +1,65 @@
+/* SLI Food governance: restored clickable organization-card hierarchy */
+#fa-governance .fa-tree-layout{grid-template-columns:minmax(0,1.65fr) minmax(320px,.88fr)}
+#faOrgHierarchy{display:block}.fa-gov-root{color:#e8f2f9}
+.fa-gov-intro{padding:5px 0 10px;border-bottom:1px solid #35546a}.fa-gov-intro strong{font-size:16px;color:#f3dfb0}.fa-gov-intro p{margin:5px 0;color:#b6cfdf}
+.fa-gov-tools{display:grid;grid-template-columns:minmax(150px,1.3fr) minmax(135px,1fr) auto auto;gap:7px;margin:16px 0}
+.fa-gov-tools input,.fa-gov-tools select,.fa-gov-small-btn{min-width:0;min-height:40px;padding:9px;background:#0d263a;border:1px solid #56758b;border-radius:9px;color:#ecf4f9;font:inherit;font-size:11px}
+.fa-gov-small-btn{cursor:pointer;white-space:nowrap}
+.fa-gov-tools :is(input,select,button):focus-visible,.fa-gov-related button:focus-visible,.fa-gov-card:focus-visible,.fa-gov-toggle:focus-visible{outline:2px solid #e2c483;outline-offset:2px}
+.fa-gov-level{font-size:11px;letter-spacing:.1em;color:#d7b678;text-align:center;font-weight:750}
+.fa-gov-pres{max-width:360px;margin:0 auto 24px;position:relative}
+.fa-gov-pres:not(:empty):after{content:"";position:absolute;left:50%;bottom:-23px;height:22px;border-left:2px solid #d7b678;opacity:.75}
+.fa-gov-pres .fa-gov-card{background:#264358;border:2px solid #dab96c;text-align:center;padding:15px}.fa-gov-pres .fa-gov-card strong{font-size:17px}
+.fa-gov-pres .fa-gov-entry{margin-top:8px}
+.fa-gov-branches{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.fa-gov-lane{background:#0d2538;border:1px solid #38556a;border-radius:12px;padding:13px;min-width:0}
+.fa-gov-lane h4{margin:0;font-size:12px;color:#e7c889}.fa-gov-lane>p{font-size:10.5px;line-height:1.55;margin:7px 0 11px;color:#b8ccdb}
+.fa-gov-lane-grid{display:grid;gap:8px}
+.fa-gov-card{width:100%;text-align:left;background:#18394f;border:1px solid #506e84;border-radius:9px;padding:10px 11px;color:#eaf3f9;display:grid;gap:4px;cursor:pointer;font:inherit;overflow-wrap:anywhere}
+.fa-gov-card:hover,.fa-gov-card.chosen{background:#245064;border-color:#dab96c;box-shadow:inset 3px 0 0 #dab96c}
+.fa-gov-card strong{font-size:12px;line-height:1.45}.fa-gov-kind{font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:#c0d1de;font-size:9px}
+.fa-gov-person{font-size:11px;color:#f1d79e;font-weight:700}.fa-gov-caption{color:#a7c2d4;font-size:9.5px;line-height:1.4}
+.fa-gov-lane.lane-coordination{border-top:3px solid #d7b678}.fa-gov-lane.lane-authority{border-top:3px solid #8cc7c5}.fa-gov-lane.lane-operator{border-top:3px solid #b6a2d2}.fa-gov-lane.lane-evidence{border-top:3px solid #90bca9}
+.fa-gov-entry{min-width:0;position:relative}.fa-gov-children{display:grid;gap:7px;margin:5px 0 5px 10px;border-left:2px solid #60768a;padding:1px 0 0 11px}
+.fa-gov-entry.nested:before{content:"";position:absolute;top:22px;left:-11px;width:10px;border-top:1px solid #60768a}
+.fa-gov-entry.nested .fa-gov-card{background:#102c40}.fa-gov-entry.nested .fa-gov-card strong{font-size:11px}
+.fa-gov-toggle{margin:5px 0 0;width:100%;padding:5px 6px;text-align:left;background:none;border:0;color:#e0c890;cursor:pointer;font-size:10.5px}
+.fa-gov-method{border-top:1px solid #395369;margin:15px 0 0;padding:13px 0 0;font-size:11px;color:#b5ccda}
+.fa-gov-loading,.fa-gov-empty{padding:15px;color:#d0e3f0}
+#faOrgHierarchyInspector{top:112px}#faOrgHierarchyInspector .fa-gov-role{font-size:12px;color:#d1e3ed;line-height:1.8}
+#faOrgHierarchyInspector dl{grid-template-columns:minmax(100px,1fr) minmax(0,1.25fr);font-size:11px;gap:8px 13px}
+#faOrgHierarchyInspector dd{text-align:left;overflow-wrap:anywhere}
+#faOrgHierarchyInspector h4{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#e2c589;margin:20px 0 7px}
+#faOrgHierarchyInspector .fa-gov-lead-title{font-size:10px;letter-spacing:.07em;color:#dab96c;margin-top:17px}
+#faOrgHierarchyInspector .fa-gov-lead{font-size:21px;color:#f5daa4;font-weight:750;line-height:1.5}
+#faOrgHierarchyInspector .fa-gov-asof,#faOrgHierarchyInspector .fa-gov-unverified{font-size:10px;color:#dec89b}
+#faOrgHierarchyInspector .fa-gov-relationship{border-left:3px solid #d7b678;padding:8px 10px;background:#0e2e42}
+.fa-gov-related{display:flex;flex-wrap:wrap;gap:6px}
+.fa-gov-related button{background:#183a4e;border:1px solid #6a8295;color:#d9eaf4;border-radius:7px;padding:7px 9px;cursor:pointer;font-size:10px}
+.fa-gov-sources{display:grid;gap:8px}.fa-gov-sources a{font-size:11px;overflow-wrap:anywhere}
+#faOrgHierarchyInspector .fa-gov-warning{margin:15px 0 0;padding-top:11px;border-top:1px solid #405b70;font-size:10.5px}
+@media(max-width:1240px){#fa-governance .fa-tree-layout{grid-template-columns:1fr}#faOrgHierarchyInspector{position:static}}
+@media(max-width:700px){.fa-gov-tools{grid-template-columns:1fr 1fr}.fa-gov-tools input,.fa-gov-tools select{grid-column:1/-1}.fa-gov-branches{grid-template-columns:1fr}.fa-gov-lane{padding:12px}}
+
+/* Distinct simultaneous views: keep the prior card hierarchy beside its own inspector. */
+#fa-governance .fa-tree-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(290px,.85fr);gap:14px;align-items:start}
+#fa-governance .fa-tree-layout>.fa-card{min-width:0}
+#faOrgHierarchyInspector{display:block;position:sticky;top:108px;align-self:start}
+#faOrgHierarchyInspector .fa-gov-role{font-size:12px;color:#c5d9e5;line-height:1.8}
+#faOrgHierarchyInspector .fa-gov-lead{font-size:20px;font-weight:750;color:#f0d392}
+#faOrgHierarchyInspector .fa-gov-asof{font-size:10px;color:#b4cbd9}
+#faOrgHierarchyInspector .fa-gov-unverified{font-size:11px;color:#dfc997}
+#faOrgHierarchyInspector .fa-gov-related{display:flex;flex-wrap:wrap;gap:6px}
+#faOrgHierarchyInspector .fa-gov-related button{background:#193a4e;border:1px solid #627f94;border-radius:7px;color:#e4edf3;padding:7px 9px;cursor:pointer;font-size:10px}
+#faOrgHierarchyInspector .fa-gov-sources{display:grid;gap:8px}
+#faOrgHierarchyInspector .fa-gov-sources a{overflow-wrap:anywhere}
+#fa-governance .fa-hierarchy-section{margin-bottom:28px}
+#fa-governance .fa-network-section{border-top:1px solid #476179;padding-top:28px}
+#fa-governance .fa-view-heading{margin:0 0 9px;font-size:21px;color:#f4e0b3;font-family:Georgia,serif;font-weight:400}
+#fa-governance .fa-view-desc{font-size:12px;line-height:1.8;color:#bcd1de;max-width:1020px;margin:4px 0 14px}
+#fa-governance .fa-view-links{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px}
+#fa-governance .fa-view-links a{border:1px solid #617e93;border-radius:8px;padding:8px 12px;background:#16384c;color:#f1dfb9;text-decoration:none;font-size:11px;font-weight:700}
+#fa-governance .fa-view-links a:focus-visible,#fa-governance .fa-view-links a:hover{border-color:#dabf85}
+#fa-governance #fa-hierarchy,#fa-governance #fa-network{scroll-margin-top:112px}
+@media(max-width:1240px){#fa-governance .fa-tree-layout{grid-template-columns:1fr}#faOrgHierarchyInspector{position:static}}
+@media(max-width:700px){#fa-governance .fa-view-heading{font-size:19px}}
