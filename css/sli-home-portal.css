@@ -1,3 +1,4 @@
+
 /* Original SLI Navy–Gold portal: navigation-first homepage.
    Legacy #overview and all existing sector dashboards are preserved.
    Does not change the Research AI workspace palette or layout. */
@@ -58,6 +59,20 @@ body.sli-home-active .main>.top .chip{display:none}
  .sli-portal-hero h2{font-size:32px}
  .sli-portal-primary{width:100%}}
 @media(prefers-reduced-motion:reduce){.sli-portal-sector{transition:none}.sli-portal-sector:hover{transform:none}}
+
+
+/* Prominent source-linked library above the home KPI strip, not a hidden footer link. */
+.sli-portal-data-library{margin:20px 0 8px;padding:23px 26px;border:1px solid #b59863;border-radius:14px;background:linear-gradient(112deg,#15394d 0%,#10283e 65%,#12394b 100%);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.8fr);gap:20px;align-items:center}
+.sli-portal-data-library h3{font-size:clamp(21px,2.6vw,29px);line-height:1.25;margin:7px 0;color:#faf5e8;font-family:Georgia,serif}
+.sli-portal-data-library p{font-size:12px;line-height:1.7;color:#c6d9e4;max-width:640px;margin:6px 0 13px}
+.sli-portal-data-library-cta{display:inline-flex;min-height:39px;align-items:center;border-radius:8px;padding:10px 16px;background:#e5c68e;color:#11283c!important;text-decoration:none!important;font-weight:800;font-size:12px}
+.sli-portal-data-library-cta:hover,.sli-portal-data-library-cta:focus-visible{background:#fff0c7}
+.sli-portal-data-library-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.sli-portal-data-library-topics a{font-size:11px;font-weight:650;text-decoration:none;color:#e7eef4;border:1px solid #466880;border-radius:8px;padding:10px;background:#173c54}
+.sli-portal-data-library-topics a:hover,.sli-portal-data-library-topics a:focus-visible{border-color:#d7b678;color:#fff}
+.sli-portal-sector-library{border-color:#b59863!important;background:linear-gradient(135deg,#26445a,#10283d)!important}
+@media(max-width:740px){.sli-portal-data-library{grid-template-columns:1fr;padding:17px}.sli-portal-data-library-topics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:370px){.sli-portal-data-library-topics{grid-template-columns:1fr}}
 
 /* National KPI preview: every displayed metric is sourced, dated, and never live-labelled. */
 .sli-portal-indicators{margin-top:25px}
@@ -135,3 +150,4 @@ body.sli-home-active .sli-portal-heading{margin:19px 0 11px;scroll-margin-top:17
 /* Quiet landing chrome; detailed breadcrumb/disclosures remain on non-home dashboard pages. */
 body.sli-home-active .sli-universal-nav{display:none!important}
 body.sli-home-active .main>.top>.eyebrow{display:none}
+
