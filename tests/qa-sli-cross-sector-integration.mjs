@@ -32,7 +32,8 @@ test("Institutional identity, food policy, geopolitics, and Research AI have liv
  for(const id of ['id="fa-hierarchy"','id="fa-network"','id="fa-monitoring"'])assert.ok(page.includes(id),id);
  assert.ok(page.includes('initSLIResearchRadar("food",target)'));
  assert.ok(news.includes('id="sliNewsSector"')&&news.includes('id="sliNewsScope"'));
- for(const url of ["sli-sector-news.html?sector=food","sli-sector-news.html?sector=minerals","sli-research-ai.html"])assert.ok(network.includes(url),url);
+ for(const url of ["sli-sector-news.html?sector=food","sli-research-ai.html"])assert.ok(network.includes(url),url);
+ assert.ok(read("index.html").includes("sli-sector-news.html?sector=minerals"),"Mineral dashboard must link to mineral news");
  assert.match(tree,/SLIEntityIdentity\.brand/);
  assert.match(network,/SLIEntityIdentity\.brand/);
  assert.match(identity,/badanpangan\.go\.id/);
