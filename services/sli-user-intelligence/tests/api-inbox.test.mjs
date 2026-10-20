@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import {webcrypto} from "node:crypto";
 import {handleRequest,processEvents} from "../src/index.mjs";
-globalThis.crypto=webcrypto;
 class FakeD1{
  constructor(){this.profiles=new Map;this.inbox=new Map;this.state=new Map;this.processed=new Map}
  prepare(sql){
