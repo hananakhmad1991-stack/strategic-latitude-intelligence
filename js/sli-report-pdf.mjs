@@ -49,7 +49,7 @@ export function printableResearchHtml(report){
   '<p class="subtitle">SLI Research AI · '+escapeMarkup(report.date)+'</p>'+minimal+
   blocks(report.body)+(report.charts.length?'<h2>'+ (lang==="id"?"Data Pendukung":"Supporting Data")+
    '</h2>'+blocks(report.charts):"")+
-  '<h2>'+(lang==="id"?"Daftar Pustaka (APA Edisi 7)":"References (APA 7th edition)")+'</h2>'+
+  '<h2>'+(lang==="id"?"Sumber dan Referensi (sitasi bernomor)":"Sources and References (numbered citations)")+'</h2>'+
   '<p class="source-warning">'+escapeMarkup(report.refs.warning)+'</p>'+
   (bib||'<p>Belum ada referensi yang dapat didaftarkan.</p>')+
   '<p class="note">'+escapeMarkup(report.disclaimer)+'</p></body></html>';
