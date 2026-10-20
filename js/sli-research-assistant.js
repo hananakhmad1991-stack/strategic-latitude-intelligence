@@ -13,7 +13,7 @@ const MESSAGES={id:{
  ready:"Backend Research AI dikonfigurasi; akses membutuhkan login Pro/Enterprise.",
  prelaunch:"Layanan generatif belum aktif · Research AI Prototype",
  copied:"Hasil analisis disalin.", copyFail:"Salin teks tidak diizinkan browser.",
- user:"Instruksi riset", assistant:"SLI Research AI · Analisis bersumber", system:"Status layanan", source:"Sumber",
+ user:"Instruksi riset", assistant:"DERGUBA AI · Analisis bersumber", system:"Status layanan", source:"Sumber",
  example:"Gunakan sebagai instruksi", noSources:"Tidak ada sumber yang diberikan oleh layanan.", caution:"Periksa fakta dan publikasi asli sebelum menggunakan hasil ini."
 },en:{
  inactive:"The generative Research AI service is not active. This is a research assistant interface, not a connected AI model. The separate Evidence Preview is available; full Research AI needs Pro/Enterprise access and a private backend.",
@@ -24,7 +24,7 @@ const MESSAGES={id:{
  ready:"Research AI backend configured; verified Pro/Enterprise login required.",
  prelaunch:"Generative service inactive · Research AI Prototype",
  copied:"Research answer copied.", copyFail:"Browser clipboard not available.",
- user:"Research instruction",assistant:"SLI Research AI · Sourced assessment",system:"Service status",source:"Source",
+ user:"Research instruction",assistant:"DERGUBA AI · Sourced assessment",system:"Service status",source:"Source",
  example:"Use as research prompt",noSources:"No sources were returned by the service.",caution:"Verify important facts and primary publications."
 }};
 const PROMPTS={
@@ -365,7 +365,7 @@ function externalApiDiagnostic(payload,language="id"){
 }
 function makeExport(){
  if(!state.lastResult)return "";
- const last=state.lastResult,heading=state.language==="id"?"Laporan SLI Research AI":"SLI Research AI Report";
+ const last=state.lastResult,heading=state.language==="id"?"Laporan DERGUBA AI · SLI":"DERGUBA AI · SLI Research Report";
  if(last.mode==="local_ahp")return "# SLI · Academic AHP Analysis\n\n"+last.answer+"\n\n**Calculation:** Local AHP; respondent data never sent to SLI/AI server. Verify inputs and review CR.\n";
  const citations=last.sources.map((s,i)=>"["+(i+1)+"] "+apaEntry(s)).join("\n");
  const figures=(last.charts||[]).map(c=>"### "+c.title+" ("+c.period+" · "+c.unit+")\n"+c.points.map(p=>"- "+p.label+": "+p.value+" ["+p.source+"]").join("\n")+"\n"+c.note).join("\n\n");
@@ -691,14 +691,14 @@ async function init(){
    $("raOwnerInputRow").hidden=false;
    $("raOwnerPanel").open=true;
    $("raOwnerState").textContent="Ready for owner-token test";
-   $("raAccessLabel").textContent="Research AI · Owner Test";
+   $("raAccessLabel").textContent="DERGUBA AI · Owner Test";
    status(state.language==="id"?"Backend Owner Test tersedia. Masukkan token pribadi pada panel, lalu tulis prompt riset.":"Owner test backend available. Enter the private token and send a research prompt.","ready");
   }else if(isConfigured()){
-   $("raAccessLabel").textContent="Research AI · Pro / Enterprise";
+   $("raAccessLabel").textContent="DERGUBA AI · Pro / Enterprise";
    $("raOwnerState").textContent="Pro / Enterprise";
    status(tr("ready"),"ready");
   }else{
-   $("raAccessLabel").textContent="Research AI · Pre-launch";
+   $("raAccessLabel").textContent="DERGUBA AI · Pre-launch";
    $("raOwnerState").textContent=state.language==="id"?"Belum terhubung":"Not connected";
    status(state.language==="id"?(state.config.published_notice_id||tr("prelaunch")):(state.config.published_notice_en||tr("prelaunch")));
   }
