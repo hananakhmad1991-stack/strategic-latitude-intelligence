@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><script>/* SLI chrome prepaint: prevent flash of legacy layout */try{var pref=localStorage.getItem('sli-ui-language');if(pref==='en'||pref==='id')document.documentElement.lang=pref}catch(_){ }document.documentElement.classList.add('sli-chrome-pending');window.addEventListener('load',function(){setTimeout(function(){document.documentElement.classList.remove('sli-chrome-pending')},1400)},{once:true});</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SLI Provincial Investment Intelligence · Industry, Energy, Economy & Effects</title>
 <meta name="description" content="Source-attributed 38-province investment intelligence linking BPS growth, Gini, capital formation, ESDM electricity and curated industrial assets. Descriptive correlations, panel association and gated multiplier scenarios.">
-<link rel="stylesheet" href="./css/sli-site-ux.css">
+<link rel="stylesheet" href="./css/sli-site-ux.css"><link rel="stylesheet" href="./css/sli-province-map.css?v=20261020-prov-map1">
 <style>
 :root{color-scheme:dark;--bg:#091625;--panel:#10283d;--border:#35526a;--secondary:#b8ccda;--gold:#e8c17f;--aqua:#8fc7c1}
 *{box-sizing:border-box}body{background:var(--bg);color:#f4f8fb;margin:0;font:14px/1.58 system-ui,-apple-system,Segoe UI,sans-serif}
@@ -33,7 +33,7 @@ footer{text-align:center;padding:20px;color:var(--secondary);font-size:11px;bord
 <div class="eyebrow">STRATEGIC LATITUDE INTELLIGENCE · INDEPENDENT INVESTMENT RESEARCH</div>
 <h1>Provincial Investment <span style="color:#e8c17f">Intelligence Nexus</span></h1>
 <p class="lede">One province, one evidence-linked dossier: economic growth, capital formation, expenditure inequality, electricity access, industrial facilities, sector-linked projects and transparent economic sensitivity. Every data point retains its original reference period and scope.</p>
-<nav class="links" aria-label="SLI navigation"><a href="./sli-interactive-analytics.html">Interactive Analytics ↗</a><a href="./index.html#overview">← SLI Overview</a><a href="./provincial-opportunity-engine.html">Provincial Opportunity Engine</a><a href="./geopolitical-impact-assessment.html#regional">BPS Regional Data</a><a href="./gini-inequality.html">Gini Explorer</a><a href="./index.html#energy">Energy &amp; Electrification</a><a href="./index.html#map">Strategic Asset Map</a><a href="./sli-glossary-methodology.html">Glossary &amp; Definitions</a></nav>
+<nav class="links" aria-label="SLI navigation"><a href="./sli-interactive-analytics.html">Provincial Indicator Map ↗</a><a href="./index.html#overview">← SLI Overview</a><a href="./provincial-opportunity-engine.html">Provincial Opportunity Engine</a><a href="./geopolitical-impact-assessment.html#regional">BPS Regional Data</a><a href="./gini-inequality.html">Gini Explorer</a><a href="./index.html#energy">Energy &amp; Electrification</a><a href="./index.html#map">Strategic Asset Map</a><a href="./sli-glossary-methodology.html">Glossary &amp; Definitions</a></nav>
 </header>
 <main>
 <div class="note" id="state" role="status">Loading independently dated SLI and official source datasets…</div>
@@ -51,6 +51,7 @@ footer{text-align:center;padding:20px;color:var(--secondary);font-size:11px;bord
 <div class="metric"><small>Source-linked facility records</small><strong id="assetCount">—</strong><em>May overlap across SLI source layers</em></div>
 </div>
 </section>
+<section class="panel"><div class="kicker">01A · Provincial geography</div><h2>Indonesia · verified provincial comparisons</h2><p class="small">Choose an indicator and click a province to open its evidence dossier. Multi-site projects and PLN service regions are never silently assigned to one province.</p><div class="controls"><label for="provinceMapMetric">Peta indikator<select id="provinceMapMetric"><option value="growth">PDRB riil · pertumbuhan 2025 (%)</option><option value="grdp">PDRB nominal 2025 (Rp triliun)</option><option value="pmtb">PMTB / PDRB 2025 (%)</option><option value="gini">Gini pengeluaran Maret 2026</option></select></label></div><div id="provincialDossierMap" class="sli-province-map"></div></section>
 <div class="columns">
 <section class="panel">
 <div class="kicker">02 · Economic profile</div><h2>2021–2025 observed macro trend</h2>
@@ -117,7 +118,7 @@ footer{text-align:center;padding:20px;color:var(--secondary);font-size:11px;bord
 <p class="small">Data observation years differ: GRDP 2025 is preliminary, inequality March 2026, national electrification 2026-Q1, and project registries reflect their original vintages. Absence from curated SLI layers is not evidence of absence in the province.</p>
 </section>
 </main><footer>© Strategic Latitude Intelligence · Original source-attributed analytical implementation · Investment research prototype, not audited economic forecasts, due diligence certification or financial advice.</footer>
-<script src="./js/sli-provincial-nexus.js?v=20261017-nexus1"></script>
-<script defer src="./js/sli-provincial-nexus-ui.js?v=20261017-nexus1"></script>
+<script defer src="./js/sli-province-map.js?v=20261020-prov-map1"></script><script src="./js/sli-provincial-nexus.js?v=20261017-nexus1"></script>
+<script defer src="./js/sli-provincial-nexus-ui.js?v=20261020-prov-map1"></script>
 <script defer src="./js/sli-public-usability.js"></script>
 <script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script><script defer src="./js/sli-shared-appendix.js?v=20261017-unified2"></script><script defer src="./js/pln-saidi-saifi.js?v=20261019-saidi1"></script></body></html>

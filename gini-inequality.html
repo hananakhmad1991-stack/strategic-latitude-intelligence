@@ -2,7 +2,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Indonesia Gini Ratio | SLI Economic & Regional Intelligence</title>
 <meta name="description" content="Official BPS March 2026 expenditure Gini ratio nationally, urban-rural and for all 38 provinces; regional province distributions, verified source and download.">
-<link rel="stylesheet" href="./css/sli-site-ux.css">
+<link rel="stylesheet" href="./css/sli-site-ux.css"><link rel="stylesheet" href="./css/sli-province-map.css?v=20261020-prov-map1">
 <style>
 :root{color-scheme:dark;--bg:#081827;--panel:#10293d;--line:#3d586d;--muted:#b9cbd8;--gold:#dfbc7c;--teal:#80c8c4;--white:#f3f6f8}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:14px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
@@ -76,7 +76,7 @@ footer{color:var(--muted);border-top:1px solid var(--line);padding:22px;text-ali
 <label for="search">Province search<input id="search" type="search" placeholder="Search: Jawa Barat, Papua…"></label>
 <button id="export" class="btn" type="button">Export CSV</button>
 </div>
-<p class="small" id="resultCount"></p><p class="small">Selected column: <strong id="viewName">Urban + rural</strong>. Missing BPS observations are shown as N/A, never zero. Click a province for more detail.</p>
+<div id="giniProvinceMap" class="sli-province-map" aria-label="Provincial expenditure Gini map"></div><p class="small" id="resultCount"></p><p class="small">Selected column: <strong id="viewName">Urban + rural</strong>. Missing BPS observations are shown as N/A, never zero. Click a province for more detail.</p>
 <div class="scroll"><table><thead><tr><th>Province</th><th>Region (SLI)</th><th>Gini · Total</th><th>Urban</th><th>Rural</th><th>Selected value</th></tr></thead><tbody id="provinceRows"></tbody></table></div>
 </section>
 <section class="panel"><h2>Province detail</h2><div id="provinceDetail"></div></section>
@@ -90,6 +90,6 @@ footer{color:var(--muted);border-top:1px solid var(--line);padding:22px;text-ali
 </div>
 </section>
 </main><footer>© Strategic Latitude Intelligence · Indonesia Socioeconomic Data. Official values attributed to BPS, while presentation and geographic groupings are SLI editorial work.</footer>
-<script defer src="./js/sli-bps-gini-explorer.js?v=20261017-gini1"></script>
+<script defer src="./js/sli-province-map.js?v=20261020-prov-map1"></script><script defer src="./js/sli-bps-gini-explorer.js?v=20261020-prov-map1"></script>
 <script defer src="./js/sli-public-usability.js"></script>
 <script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script><script defer src="./js/sli-shared-appendix.js?v=20261017-unified2"></script></body></html>

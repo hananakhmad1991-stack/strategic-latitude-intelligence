@@ -56,12 +56,21 @@ function provinces(){
   return (order==='desc'?y-x:x-y)||a.name.localeCompare(b.name);
  });
 }
+function renderMap(){
+ if(!window.SLIProvinceMap||!DATA)return;
+ const data=DATA.provinces.map(p=>({name:p.name,value:(!region||p.region===region)&&(!query||p.name.toLowerCase().includes(query.toLowerCase()))?p[metric]:null,period:DATA.measurement_period,source:DATA.sources?.[0]?.url}));
+ window.SLIProvinceMap.render("giniProvinceMap",{records:data,selected,period:DATA.measurement_period,
+  source:"BPS · Susenas expenditure Gini",digits:3,
+  onSelect:name=>{const match=DATA.provinces.find(p=>window.SLIProvinceMap.normalize(p.name)===window.SLIProvinceMap.normalize(name));if(!match)return;selected=match.name;query="";region="";
+   $('search').value="";$('region').value="";render();}
+ });
+}
 function renderProvinces(){
  const host=$('provinceRows');host.replaceChildren();const list=provinces();
  $('resultCount').textContent=list.length+' province(s) shown';
  for(const p of list){
   const tr=el('tr');tr.tabIndex=0;tr.setAttribute('aria-selected',String(selected===p.name));
-  const label=el('td');const choose=el('button',p.name);choose.className='textbutton';choose.addEventListener('click',()=>{selected=p.name;renderProvinces();renderSelected();});
+  const label=el('td');const choose=el('button',p.name);choose.className='textbutton';choose.addEventListener('click',()=>{selected=p.name;renderProvinces();renderSelected();renderMap();});
   label.append(choose);tr.append(label);
   for(const field of ['region','combined','urban','rural']){
    const td=el('td',field==='region'?p.region:f(p[field]));if(field===metric)td.className='focus-value';tr.append(td);
@@ -87,7 +96,7 @@ function renderSelected(){
 }
 function render(){
  if(!DATA)return;
- renderRegion();renderProvinces();renderSelected();
+ renderRegion();renderProvinces();renderSelected();renderMap();
  $('viewName').textContent=AREA[metric];
 }
 function download(){
@@ -99,8 +108,8 @@ function download(){
 function start(){
  $('area').addEventListener('change',e=>{metric=e.target.value;render();});
  $('region').addEventListener('change',e=>{region=e.target.value;render();});
- $('search').addEventListener('input',e=>{query=e.target.value;renderProvinces();});
- $('sort').addEventListener('change',e=>{order=e.target.value;renderProvinces();});
+ $('search').addEventListener('input',e=>{query=e.target.value;renderProvinces();renderMap();});
+ $('sort').addEventListener('change',e=>{order=e.target.value;renderProvinces();renderMap();});
  $('export').addEventListener('click',download);
  fetch('./data/sli-bps-gini-2026.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json();}).then(d=>{
   if(d.schema!=='sli-bps-gini-ratio-v1'||d.provinces?.length!==38||new Set(d.provinces.map(p=>p.name)).size!==38||!d.national?.history?.length)throw Error('Incomplete Gini dataset');
