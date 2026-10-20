@@ -60,8 +60,8 @@ test("PDF summary stats preserve source pages, upper bounds and geographic compa
 test("RUPTL fallback only trusts the two official hosts and signals incomplete sources",()=>{
  const script=read("scripts/audit-ruptl-official-full-pdf.py");
  const workflow=read(".github/workflows/sli-primary-source-candidate-recovery.yml");
- assert.match(script,/gatrik\\.esdm\\.go\\.id\\/assets\\/uploads\\/download_index\\/files\\/b967d-/);
- assert.match(script,/www\\.pln\\.co\\.id\\/webapi\\/media\\/file/);
+ assert.ok(script.includes("https://gatrik.esdm.go.id/assets/uploads/download_index/files/b967d-"));
+ assert.ok(script.includes("https://www.pln.co.id/webapi/media/file/"));
  assert.match(script,/attempted_official_sources/);
  assert.match(script,/source_transfer_incomplete_no_project_annex_verified/);
  assert.match(script,/if not is_complete:/);
