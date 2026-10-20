@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/fetch-environment-wdi-review.py'
       - 'scripts/audit-ruptl-official-full-pdf.py'
+      - 'tests/qa-sli-ruptl-complete-pdf-gate.mjs'
       - '.github/workflows/sli-primary-source-candidate-recovery.yml'
 permissions:
   contents: read
@@ -28,6 +29,13 @@ jobs:
     timeout-minutes: 13
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test strict RUPTL official-source gates
+        run: |
+          python3 -m py_compile scripts/audit-ruptl-official-full-pdf.py
+          node --test tests/qa-sli-ruptl-complete-pdf-gate.mjs
       - name: Install PDF layout and page inspection utilities
         run: |
           sudo apt-get update -qq
