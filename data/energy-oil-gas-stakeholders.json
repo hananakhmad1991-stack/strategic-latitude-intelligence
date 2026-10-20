@@ -28,8 +28,8 @@
     },
     {
       "id": "state",
-      "en": "State-owned oil, gas & infrastructure operators",
-      "id_label": "Operator BUMN & infrastruktur migas",
+      "en": "SOE oil and gas firms & energy buyers",
+      "id_label": "BUMN migas & pembeli energi primer",
       "color": "#83bbab"
     },
     {
@@ -40,8 +40,8 @@
     },
     {
       "id": "downstream",
-      "en": "Fuel, LPG and gas distribution",
-      "id_label": "Distribusi BBM, LPG & gas bumi",
+      "en": "Downstream regulators & distribution",
+      "id_label": "Regulator & jaringan hilir migas",
       "color": "#e1a57f"
     },
     {
@@ -61,7 +61,9 @@
       "lead": "Bahlil Lahadalia · Minister",
       "as_of": "2026-10-15",
       "source": "https://www.esdm.go.id/",
-      "role": "Government regulator"
+      "role": "Government regulator",
+      "role_id": "Regulator pemerintah",
+      "lead_id": "Bahlil Lahadalia · Menteri"
     },
     {
       "group": "policy",
@@ -72,7 +74,9 @@
       "lead": "Laode Sulaeman · Director General",
       "as_of": "2026-06-19",
       "source": "https://migas.esdm.go.id/post/Sambut-Pejabat-Administrator-dan-Pengawas-Baru-Dirjen-Migas-Tekankan-Kecepatan-dan-Kekompakan",
-      "role": "Government regulator"
+      "role": "Government regulator",
+      "role_id": "Regulator pemerintah",
+      "lead_id": "Laode Sulaeman · Direktur Jenderal"
     },
     {
       "group": "policy",
@@ -83,7 +87,9 @@
       "lead": "Government agency · incumbent verify separately",
       "as_of": "2026-10-15",
       "source": "https://perpajakan.ddtc.co.id/id/sumber-hukum/peraturan-pusat/undang-undang-16-tahun-2025",
-      "role": "SOE regulator"
+      "role": "SOE regulator",
+      "role_id": "Regulator BUMN",
+      "lead_id": "Lembaga pemerintah · pejabat perlu diverifikasi"
     },
     {
       "group": "policy",
@@ -94,7 +100,9 @@
       "lead": "Rosan Perkasa Roeslani · CEO",
       "as_of": "2026-10-15",
       "source": "https://www.danantaraindonesia.co.id/id/about",
-      "role": "SOE ownership / investor"
+      "role": "SOE ownership / investor",
+      "role_id": "Pengelola investasi BUMN",
+      "lead_id": "Rosan Perkasa Roeslani · CEO"
     },
     {
       "group": "policy",
@@ -105,7 +113,9 @@
       "lead": "Minister / fiscal teams · date-specific review",
       "as_of": "2026-10-15",
       "source": "https://www.kemenkeu.go.id/",
-      "role": "Fiscal authority"
+      "role": "Fiscal authority",
+      "role_id": "Otoritas fiskal",
+      "lead_id": "Menteri / tim fiskal · verifikasi sesuai tanggal"
     },
     {
       "group": "policy",
@@ -116,7 +126,9 @@
       "lead": "Commission XII · current leadership verify",
       "as_of": "2026-10-15",
       "source": "https://www.dpr.go.id/",
-      "role": "Parliamentary oversight"
+      "role": "Parliamentary oversight",
+      "role_id": "Pengawasan parlemen",
+      "lead_id": "Komisi XII · pimpinan perlu diverifikasi"
     },
     {
       "group": "upstream",
@@ -127,7 +139,9 @@
       "lead": "Djoko Siswanto · Head",
       "as_of": "2026-10-15",
       "source": "https://skkmigas.go.id/",
-      "role": "PSC supervisor"
+      "role": "PSC supervisor",
+      "role_id": "Pengawas KKS hulu",
+      "lead_id": "Djoko Siswanto · Kepala"
     },
     {
       "group": "upstream",
@@ -138,7 +152,9 @@
       "lead": "Aceh oil-and-gas authority",
       "as_of": "2026-10-15",
       "source": "https://bpma.go.id/",
-      "role": "Aceh upstream authority"
+      "role": "Aceh upstream authority",
+      "role_id": "Otoritas hulu migas Aceh",
+      "lead_id": "Otoritas migas Aceh"
     },
     {
       "group": "upstream",
@@ -149,7 +165,9 @@
       "lead": "Contract and field dependent",
       "as_of": "2026-10-15",
       "source": "https://skkmigas.go.id/",
-      "role": "Contract framework"
+      "role": "Contract framework",
+      "role_id": "Kerangka kontrak KKS",
+      "lead_id": "Bergantung kontrak dan lapangan"
     },
     {
       "group": "state",
@@ -160,7 +178,9 @@
       "lead": "Simon Aloysius Mantiri · CEO (dated roster)",
       "as_of": "2026-10-15",
       "source": "https://www.pertamina.com/",
-      "role": "BUMN group"
+      "role": "BUMN group",
+      "role_id": "Grup BUMN",
+      "lead_id": "Simon Aloysius Mantiri · CEO (daftar bertanggal)"
     },
     {
       "group": "state",
@@ -171,7 +191,9 @@
       "lead": "Sunaryanto · President Director (dated roster)",
       "as_of": "2026-10-15",
       "source": "https://phe.pertamina.com/",
-      "role": "SOE upstream operator"
+      "role": "SOE upstream operator",
+      "role_id": "Operator hulu BUMN",
+      "lead_id": "Sunaryanto · Direktur Utama (daftar bertanggal)"
     },
     {
       "group": "state",
@@ -182,7 +204,9 @@
       "lead": "Regional operating management",
       "as_of": "2026-10-15",
       "source": "https://phi.pertamina.com/",
-      "role": "SOE upstream operator"
+      "role": "SOE upstream operator",
+      "role_id": "Operator hulu BUMN",
+      "lead_id": "Manajemen operasi regional"
     },
     {
       "group": "state",
@@ -193,7 +217,9 @@
       "lead": "Mars Ega Legowo Putra · President Director",
       "as_of": "2026-10-15",
       "source": "https://pertaminapatraniaga.com/",
-      "role": "SOE downstream operator"
+      "role": "SOE downstream operator",
+      "role_id": "Operator hilir BUMN",
+      "lead_id": "Mars Ega Legowo Putra · Direktur Utama"
     },
     {
       "group": "state",
@@ -204,7 +230,9 @@
       "lead": "Corporate leadership · verify current appointment",
       "as_of": "2026-10-15",
       "source": "https://www.pgn.co.id/",
-      "role": "SOE gas networks"
+      "role": "SOE gas networks",
+      "role_id": "Jaringan gas grup BUMN",
+      "lead_id": "Pimpinan perusahaan · periksa penunjukan terbaru"
     },
     {
       "group": "state",
@@ -215,7 +243,9 @@
       "lead": "PLN Group operations",
       "as_of": "2026-10-15",
       "source": "https://web.pln.co.id/",
-      "role": "SOE buyer / offtaker"
+      "role": "SOE buyer / offtaker",
+      "role_id": "Pembeli energi primer BUMN",
+      "lead_id": "Operasi grup PLN"
     },
     {
       "group": "private",
@@ -226,7 +256,9 @@
       "lead": "Indonesian BUMS / KKKS",
       "as_of": "2026-10-15",
       "source": "https://www.energimedco.org/en/our-businesses/oil-gas/south-natuna-sea-block-b/index.html",
-      "role": "Private Indonesian operator"
+      "role": "Private Indonesian operator",
+      "role_id": "Operator swasta nasional",
+      "lead_id": "BUMS Indonesia / KKKS"
     },
     {
       "group": "private",
@@ -237,7 +269,9 @@
       "lead": "International KKKS · Cepu",
       "as_of": "2026-08-20",
       "source": "https://corporate.exxonmobil.com/locations/indonesia/newsroom/2026/first-of-its-kind-tech-strengthening-indonesias-oil-resilience-future",
-      "role": "Foreign operator"
+      "role": "Foreign operator",
+      "role_id": "Operator asing",
+      "lead_id": "KKKS internasional · Cepu"
     },
     {
       "group": "private",
@@ -248,7 +282,9 @@
       "lead": "International KKKS · Papua",
       "as_of": "2026-10-15",
       "source": "https://www.bp.com/en_id/indonesia/home.html",
-      "role": "Foreign gas / LNG"
+      "role": "Foreign gas / LNG",
+      "role_id": "Operator gas dan LNG asing",
+      "lead_id": "KKKS internasional · Papua"
     },
     {
       "group": "private",
@@ -259,7 +295,9 @@
       "lead": "International KKKS · Masela",
       "as_of": "2026-05-20",
       "source": "https://www.inpex.com/news/2026/20260520.html",
-      "role": "Foreign gas / LNG"
+      "role": "Foreign gas / LNG",
+      "role_id": "Operator gas dan LNG asing",
+      "lead_id": "KKKS internasional · Masela"
     },
     {
       "group": "private",
@@ -270,7 +308,9 @@
       "lead": "International JV / KKKS",
       "as_of": "2026-10-12",
       "source": "https://www.eni.com/en-IT/media/press-release/2026/10/eni-signs-two-agreements-for-the-sale-of-stakes-in-selected-upstream-assets-indonesia.html",
-      "role": "International JV"
+      "role": "International JV",
+      "role_id": "Usaha patungan internasional",
+      "lead_id": "Usaha patungan internasional / KKKS"
     },
     {
       "group": "downstream",
@@ -281,7 +321,9 @@
       "lead": "Wahyudi Anas · Head",
       "as_of": "2026-10-15",
       "source": "https://www.bphmigas.go.id/komite-bph/wahyudi-anas-s-t-2/",
-      "role": "Downstream regulator"
+      "role": "Downstream regulator",
+      "role_id": "Regulator hilir migas",
+      "lead_id": "Wahyudi Anas · Kepala"
     },
     {
       "group": "downstream",
@@ -292,7 +334,9 @@
       "lead": "Named facilities / owners differ",
       "as_of": "2026-10-15",
       "source": "https://migas.esdm.go.id/",
-      "role": "Commercial infrastructure"
+      "role": "Commercial infrastructure",
+      "role_id": "Infrastruktur komersial",
+      "lead_id": "Bergantung fasilitas dan pemilik"
     },
     {
       "group": "downstream",
@@ -303,7 +347,9 @@
       "lead": "Commercial BUMN + BUMS",
       "as_of": "2026-10-15",
       "source": "https://www.bphmigas.go.id/",
-      "role": "Distribution operator"
+      "role": "Distribution operator",
+      "role_id": "Operator distribusi",
+      "lead_id": "BUMN dan BUMS komersial"
     },
     {
       "group": "downstream",
@@ -314,7 +360,9 @@
       "lead": "State & private network operators",
       "as_of": "2026-10-15",
       "source": "https://www.pgn.co.id/",
-      "role": "Gas infrastructure"
+      "role": "Gas infrastructure",
+      "role_id": "Infrastruktur gas",
+      "lead_id": "Operator jaringan BUMN dan swasta"
     },
     {
       "group": "regions",
@@ -325,7 +373,9 @@
       "lead": "DPR XII / DPR VI / DPD II",
       "as_of": "2026-10-15",
       "source": "https://www.dpr.go.id/",
-      "role": "Oversight"
+      "role": "Oversight",
+      "role_id": "Pengawasan",
+      "lead_id": "DPR XII / DPR VI / DPD II"
     },
     {
       "group": "regions",
@@ -336,7 +386,9 @@
       "lead": "Province-specific offices",
       "as_of": "2026-10-15",
       "source": "https://www.esdm.go.id/",
-      "role": "Regional implementation"
+      "role": "Regional implementation",
+      "role_id": "Pelaksana daerah",
+      "lead_id": "Kantor sesuai provinsi"
     },
     {
       "group": "regions",
@@ -347,7 +399,9 @@
       "lead": "ESDM / BRIN labs",
       "as_of": "2026-10-15",
       "source": "https://migas.esdm.go.id/",
-      "role": "Technical and research"
+      "role": "Technical and research",
+      "role_id": "Teknis dan riset",
+      "lead_id": "Laboratorium ESDM / BRIN"
     },
     {
       "group": "downstream",
@@ -358,7 +412,9 @@
       "lead": "Djauhar Maulidi · President Director (company profile)",
       "as_of": "2026-10-15",
       "source": "https://www.raja.co.id/id/business-portfolio",
-      "role": "Indonesian BUMS · gas networks"
+      "role": "Indonesian BUMS · gas networks",
+      "role_id": "Swasta nasional · jaringan gas",
+      "lead_id": "Djauhar Maulidi · Direktur Utama (profil perusahaan)"
     },
     {
       "group": "private",
@@ -369,7 +425,9 @@
       "lead": "UK-listed international KKKS",
       "as_of": "2026-10-15",
       "source": "https://www.harbourenergy.com/what-we-do/southeast-asia/",
-      "role": "Foreign PSC operator"
+      "role": "Foreign PSC operator",
+      "role_id": "Operator KKS asing",
+      "lead_id": "KKKS internasional tercatat di Inggris"
     },
     {
       "group": "private",
@@ -380,7 +438,9 @@
       "lead": "UAE-origin international KKKS",
       "as_of": "2026-10-15",
       "source": "https://www.harbourenergy.com/what-we-do/southeast-asia/",
-      "role": "Foreign SOE PSC participant"
+      "role": "Foreign SOE PSC participant",
+      "role_id": "Peserta KKS BUMN asing",
+      "lead_id": "KKKS internasional asal UEA"
     }
   ],
   "issues": [
