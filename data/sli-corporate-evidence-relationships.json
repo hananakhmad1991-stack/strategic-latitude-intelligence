@@ -1,0 +1,961 @@
+{
+  "schema": "sli-corporate-evidence-relationships-v1",
+  "generated_from": [
+    "data/investment-ownership.json",
+    "data/sli-project-registry.json"
+  ],
+  "as_of": "2026-10-20",
+  "policy": "Cited reported direct equity percentages belong to their individual source period and do not imply ultimate beneficial control. Project actor mentions denote reported participation, NOT equity. Public-float and treasury aggregates must not become legal entities. Validate contemporary status against source.",
+  "coverage": {
+    "ownership_profiles": 18,
+    "direct_shareholders": 37,
+    "non_aggregate_shareholders": 27,
+    "project_participation_links": 40,
+    "distinct_observed_names": 73
+  },
+  "ownership_profiles": [
+    {
+      "id": "ptfi",
+      "name": "PT Freeport Indonesia",
+      "reference_date": "2025-12-31",
+      "control_note": "FCX is described as operating shareholder with rights to appoint a majority of members of the operating committee. Economic equity majority and operational governance differ.",
+      "ownership_chain_note": "PT IPMM was reported 100% MIND ID-owned at 31 December 2025, yielding a 51.24% MIND ID group position. This is a corporate equity chain, not an individually verified beneficial owner.",
+      "source_urls": [
+        "https://links.sgx.com/FileOpen/PTFI_251231.ashx?App=Announcement&FileID=878366",
+        "https://www.fcx.com/operations/indonesia"
+      ],
+      "shareholders": [
+        {
+          "name": "Freeport-McMoRan (FCX)",
+          "reported_pct": 48.76,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "unspecified"
+        },
+        {
+          "name": "PT Mineral Industri Indonesia (MIND ID)",
+          "reported_pct": 26.24,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "PT Indonesia Papua Metal Dan Mineral (PT IPMM)",
+          "reported_pct": 25,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "vale",
+      "name": "PT Vale Indonesia Tbk (INCO)",
+      "reference_date": "2025-12-31",
+      "control_note": "Joint control disclosed by company; not inferred from simple ownership threshold.",
+      "ownership_chain_note": "Vale states MIND ID and Vale Canada exercise joint control. A 34% largest shareholding is not sole control. Company identifies Vale Canada as belonging to Vale Base Metals.",
+      "source_urls": [
+        "https://saladeimprensa.vale.com/in/indonesia/informasi-saham",
+        "https://vale.com/indonesia/major-and-controlling-shareholders"
+      ],
+      "shareholders": [
+        {
+          "name": "MIND ID",
+          "reported_pct": 34,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "Vale Canada Limited",
+          "reported_pct": 33.88,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "Sumitomo Metal Mining Co., Ltd.",
+          "reported_pct": 11.48,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "unspecified"
+        },
+        {
+          "name": "Public / free and other float",
+          "reported_pct": 20.64,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "aggregate_not_entity"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "antam",
+      "name": "PT Aneka Tambang Tbk (ANTM)",
+      "reference_date": "2025-06-30",
+      "control_note": "MIND ID direct controlling shareholder in reported period; state strategic rights are a separate layer.",
+      "ownership_chain_note": "ANTAM reports MIND ID as immediate parent and Danantara as ultimate parent incorporated in Indonesia, controlled by the Republic of Indonesia. A separate Series A Dwiwarna state share must not be confused with Series B economic percentages.",
+      "source_urls": [
+        "https://www.antam.com/downloads/appendix-4d-first-half-2025--reviewed-",
+        "https://antam.com/id/company-report/annual-report"
+      ],
+      "shareholders": [
+        {
+          "name": "MIND ID",
+          "reported_pct": 65,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "Public shareholders",
+          "reported_pct": 35,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "aggregate_not_entity"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "imip",
+      "name": "PT Indonesia Morowali Industrial Park",
+      "reference_date": "2024-07-01",
+      "control_note": "Direct percentages disclosed; cannot infer a single controlling natural person, governance rights or ultimate voting control without additional evidence.",
+      "ownership_chain_note": "The IMIP corporate FAQ lists three direct shareholders. The ultimate owners of intermediate companies and ultimate natural-person beneficial owners are NOT established by this statement.",
+      "source_urls": [
+        "https://imip.co.id/helpie_faq/pertanyaan-3/"
+      ],
+      "shareholders": [
+        {
+          "name": "Shanghai Decent Investment Group",
+          "reported_pct": 49.69,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "PT Sulawesi Mining Investment",
+          "reported_pct": 25,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "PT Bintang Delapan Investama",
+          "reported_pct": 25.31,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "smelting",
+      "name": "PT Smelting (Gresik)",
+      "reference_date": "2026-10-15",
+      "control_note": "FCX states Mitsubishi Materials operates PT Smelting facilities despite holding a 34% stake.",
+      "ownership_chain_note": "PT Freeport Indonesia is majority shareholder in PT Smelting. Its own shareholder chain is separately documented under PTFI; look-through arithmetic does not automatically translate to operating control.",
+      "source_urls": [
+        "https://www.fcx.com/operations/indonesia"
+      ],
+      "shareholders": [
+        {
+          "name": "PT Freeport Indonesia",
+          "reported_pct": 66,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "Mitsubishi Materials Corporation",
+          "reported_pct": 34,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "kni",
+      "name": "PT Kolaka Nickel Indonesia (KNI)",
+      "reference_date": "2026-10-15",
+      "control_note": "Not established from reviewed disclosure.",
+      "ownership_chain_note": "Vale identifies PT KNI as the HPAL project venture with Vale, Huayou and Ford. No current ownership percentages are supplied in the selected project disclosure; partner participation does not determine equity percentage.",
+      "source_urls": [
+        "https://www.vale.com/in/indonesia/indonesia-growth-projects-pomalaa/-/categories/64940"
+      ],
+      "shareholders": [],
+      "has_reported_percentages": false
+    },
+    {
+      "id": "ptba",
+      "name": "PT Bukit Asam Tbk (PTBA)",
+      "reference_date": "2025-12-31",
+      "control_note": "Majority corporate ownership through MIND ID; direct control rights and operational authorizations are not interchangeable.",
+      "ownership_chain_note": "MIND ID is the majority Series B holder. The Republic of Indonesia additionally holds five Series A Dwiwarna shares; those special shares are a separate rights class and cannot be measured by percentage alone.",
+      "source_urls": [
+        "https://www.ptba.co.id/api/storage/1777608216188-530aad52-cfc2-40fc-8d3c-0afcaa236e6c.pdf"
+      ],
+      "shareholders": [
+        {
+          "name": "MIND ID (Series B)",
+          "reported_pct": 65.93,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "Public (Series B)",
+          "reported_pct": 34.02,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "aggregate_not_entity"
+        },
+        {
+          "name": "Treasury shares (Series B)",
+          "reported_pct": 0.05,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "aggregate_not_entity"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "phi",
+      "name": "PT Pertamina Hulu Indonesia (PHI)",
+      "reference_date": "Company webpage reviewed 2026-10-15 (register date unspecified)",
+      "control_note": "PHE is PHI's disclosed controlling shareholder at the entity level; PHI subsidiary PSC operational rights must be checked at asset-specific level.",
+      "ownership_chain_note": "PHI's direct equity holders are PHE and Pertamina Pedeve. The group's ultimate institutional ownership and legal special rights require separate parent-level disclosures.",
+      "source_urls": [
+        "https://phi.pertamina.com/id/relasi-investor-dan-pengadaan/relasi-investor/pemegang-saham"
+      ],
+      "shareholders": [
+        {
+          "name": "PT Pertamina Hulu Energi",
+          "reported_pct": 99.93,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "PT Pertamina Pedeve Indonesia",
+          "reported_pct": 0.07,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "telkom",
+      "name": "PT Telkom Indonesia (Persero) Tbk (TLKM)",
+      "reference_date": "2025-09-30",
+      "control_note": "Distinguish Danantara's economic equity interests, the state Dwiwarna share, Telkom corporate governance and Telkom subsidiary-level data-center JV shareholdings.",
+      "ownership_chain_note": "The September 2025 Telkom public disclosure lists PT Danantara Asset Management holding 52.09% of Series B shares and the Republic of Indonesia holding one Series A Dwiwarna special-rights share.",
+      "source_urls": [
+        "https://www.telkom.co.id/minio/show/data/lampiran/1764593627837_original_Tambahan-Keterbukaan-Informasi-Infraco-ENG.pdf"
+      ],
+      "shareholders": [
+        {
+          "name": "PT Danantara Asset Management (Series B)",
+          "reported_pct": 52.090852931,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "Public (Series B)",
+          "reported_pct": 47.907380502,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "aggregate_not_entity"
+        },
+        {
+          "name": "Treasury stock",
+          "reported_pct": 0.001766567,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "aggregate_not_entity"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "masela",
+      "name": "Abadi LNG / Masela PSC consortium",
+      "reference_date": "2026-02-20",
+      "control_note": "INPEX Masela is the PSC operator. SKK Migas supervision, field development approvals, project contractors and equity governance are different powers.",
+      "ownership_chain_note": "65/20/15 are upstream Masela Production Sharing Contract (PSC) participating interests, NOT share ownership in a single Indonesian incorporated company. Each contractor's corporate parent chain requires separate filings.",
+      "source_urls": [
+        "https://www.inpex.com/english/business/project/abadi.html",
+        "https://www.inpex.com/english/news/english/news/assets/pdf/20231205.pdf"
+      ],
+      "shareholders": [],
+      "has_reported_percentages": false
+    },
+    {
+      "id": "tangguh",
+      "name": "Tangguh LNG PSC consortium (UCC investment)",
+      "reference_date": "2024-11-21",
+      "control_note": "bp is PSC operator with 40.22% working/participating interest; operational designation is not direct share majority.",
+      "ownership_chain_note": "Disclosed percentages are Tangguh PSC participating interests. The controlling owners of each consortium SPV require separate legal-entity tracing, not mechanical attribution to individuals.",
+      "source_urls": [
+        "https://www.bp.com/content/dam/bp/country-sites/id_id/indonesia/home/news/press-releases/241121%20Siaran%20pers%20proyek%20Tangguh%20UCC.pdf",
+        "https://www.jogmec.go.jp/english/news/release/release_00140.html"
+      ],
+      "shareholders": [],
+      "has_reported_percentages": false
+    },
+    {
+      "id": "byan",
+      "name": "PT Bayan Resources Tbk (BYAN)",
+      "reference_date": "2026-03-31",
+      "control_note": "Bayan officially identifies Low Tuck Kwong as a primary and controlling shareholder with 40.22% voting shares. Do not automatically attribute Elaine Low's holdings to him or claim a 72.22% sole block.",
+      "ownership_chain_note": "Bayan directly identifies Low Tuck Kwong and Elaine Low among shareholders. PT Sumber Suryadaya Prima is separately recorded as a 10% corporate shareholder; its shareholder chain has not been established in this dossier.",
+      "source_urls": [
+        "https://www.bayan.com.sg/shareholders-information",
+        "https://www.bayan.com.sg/primary-and-controlling-shareholders"
+      ],
+      "shareholders": [
+        {
+          "name": "Dato' Dr. Low Tuck Kwong",
+          "reported_pct": 40.22,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "person"
+        },
+        {
+          "name": "Elaine Low",
+          "reported_pct": 22,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "person"
+        },
+        {
+          "name": "PT Sumber Suryadaya Prima",
+          "reported_pct": 10,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "Public / other holders",
+          "reported_pct": 27.78,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "aggregate_not_entity"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "aadi",
+      "name": "PT Adaro Andalan Indonesia Tbk (AADI)",
+      "reference_date": "2025-12-31",
+      "control_note": "Largest disclosed direct corporate holder is PT Adaro Strategic. Operational control, contractual rights and beneficial ownership cannot be inferred solely from percentage.",
+      "ownership_chain_note": "Listed direct holding percentages are from PT Adaro Andalan Indonesia; the aggregated remainder is calculated as 100% minus the three individually listed large shareholders, including public holders and small management stakes. It must not be interpreted as a single legal shareholder. Ownership up the PT Adaro Strategic chain requires entity-by-entity verification.",
+      "source_urls": [
+        "https://www.adaroindonesia.com/pages/view/informasi-saham.html",
+        "https://www.adaroindonesia.com/pages/view/keterbukaan-informasi.html"
+      ],
+      "shareholders": [
+        {
+          "name": "PT Adaro Strategic",
+          "reported_pct": 41.0965,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "PT Alamtri Resources Indonesia Tbk",
+          "reported_pct": 15.3723,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "Garibaldi Thohir",
+          "reported_pct": 5.8304,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "person"
+        },
+        {
+          "name": "Other holders incl. directors (arithmetic remainder)",
+          "reported_pct": 37.7008,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "aggregate_not_entity"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "medc",
+      "name": "PT Medco Energi Internasional Tbk (MEDC)",
+      "reference_date": "2025-12-31",
+      "control_note": "Majority shareholding by PT Medco Daya Abadi Lestari. Subsidiary PSC operators and project financing arrangements must be evaluated independently from holding-company voting rights.",
+      "ownership_chain_note": "The annual report lists PT Medco Daya Abadi Lestari as majority shareholder and Diamond Bridge Pte. Ltd. as a major shareholder. The aggregated remainder is not a legal shareholder. Corporate and natural-person ownership above these entities must be traced from primary filings.",
+      "source_urls": [
+        "https://www.medcoenergi.com/uploads/areports/2025/MEDC_AR2025_ENG.pdf",
+        "https://www.medcoenergi.com/id/publikasi/laporan-tahunan/"
+      ],
+      "shareholders": [
+        {
+          "name": "PT Medco Daya Abadi Lestari",
+          "reported_pct": 51.5,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "Diamond Bridge Pte. Ltd.",
+          "reported_pct": 21.46,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "All other shareholders (calculated remainder)",
+          "reported_pct": 27.04,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "aggregate_not_entity"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "equinix_astra",
+      "name": "Equinix–Astra Indonesia data center joint venture (JK1)",
+      "reference_date": "2023-04-11",
+      "control_note": "Equinix is the majority equity holder in the publicly announced JV. The physical JK1 facility was inaugurated 15 May 2025, but ownership percentages were disclosed at JV formation, not reconfirmed as of 2026.",
+      "ownership_chain_note": "JV direct economic equity at 2023 formation was 75/25; verify current local legal entity, cap table and amendments before asserting this remains unchanged in October 2026. Astra itself reports Jardine Cycle & Carriage as its 50.11% shareholder in 2025.",
+      "source_urls": [
+        "https://www.astra.co.id/en/press-release/equinix-dan-astra-bentuk-usaha-patungan-untuk-mendukung-kebutuhan-digital-indonesia-yang-semakin-berkembang",
+        "https://newsroom.equinix.com/2025-05-15-Equinix-Unveils-Its-First-AI-Ready-Data-Center-with-Dense-Ecosystem-in-Jakarta"
+      ],
+      "shareholders": [
+        {
+          "name": "Equinix",
+          "reported_pct": 75,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "unspecified"
+        },
+        {
+          "name": "PT Astra International Tbk",
+          "reported_pct": 25,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "astra",
+      "name": "PT Astra International Tbk (ASII)",
+      "reference_date": "2025-12-31",
+      "control_note": "Jardine Cycle & Carriage direct corporate majority in Astra; this does not itself specify control of each Astra investee or subsidiary.",
+      "ownership_chain_note": "Astra's corporate owner Jardine Cycle & Carriage holds a 50.11% majority. Its upstream corporate group chain needs separate filings before assigning natural-person ownership. Its 25% JK1 JV interest is a different layer.",
+      "source_urls": [
+        "https://www.astra.co.id/investor-relations/shareholding"
+      ],
+      "shareholders": [
+        {
+          "name": "Jardine Cycle & Carriage Limited",
+          "reported_pct": 50.11,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "organization"
+        },
+        {
+          "name": "Public and holders below 5%",
+          "reported_pct": 49.89,
+          "basis": "direct_shareholding_reported_not_ultimate_beneficial_ownership",
+          "holder_kind": "aggregate_not_entity"
+        }
+      ],
+      "has_reported_percentages": true
+    },
+    {
+      "id": "caa",
+      "name": "PT Chandra Asri Alkali (CAA) — CA-EDC project developer",
+      "reference_date": "2026-03-03",
+      "control_note": "CAA is identified as the operating project developer, but the investment agreement does not itself prove changes in voting control or closing of new share allotments.",
+      "ownership_chain_note": "Danantara identifies PT Chandra Asri Alkali as the subsidiary project company of Chandra Asri Group. A 3 March 2026 Conditional Share Subscription Agreement proposed aggregate Danantara + INA participation of US$200m; the release does not specify individual contributions, direct issued share percentages, or whether conditions were completed.",
+      "source_urls": [
+        "https://www.danantaraindonesia.co.id/media-center/press-releases/reducing-import-dependency-danantara-and-ina-sign-investment-agreement-in-chandra-asri-groups-ca-edc-project"
+      ],
+      "shareholders": [],
+      "has_reported_percentages": false
+    },
+    {
+      "id": "denera",
+      "name": "PT Daya Energi Bersih Nusantara (Denera) — Danantara WtE platform",
+      "reference_date": "2026-09-17",
+      "control_note": "DIM is the stated sponsoring platform. Programmatic oversight does not prove Denera owns 100% of each PSEL project or controls future privately selected partners.",
+      "ownership_chain_note": "Danantara's 17 September 2026 official release describes Denera as established under DIM as the national waste-to-energy development and coordination platform. Precise direct shareholding percentages and any project-specific SPV shares are not disclosed in that statement.",
+      "source_urls": [
+        "https://www.danantaraindonesia.co.id/zh/media-center/press-releases/psel-bogor-raya-1-construction",
+        "https://www.danantaraindonesia.co.id/media-center/press-releases/dim-cloa-batch-ii-wte-partners"
+      ],
+      "shareholders": [],
+      "has_reported_percentages": false
+    }
+  ],
+  "project_participations": [
+    {
+      "name": "PT Aneka Tambang Tbk (ANTAM)",
+      "project_id": "sli-project-001",
+      "project_name": "Integrated EV battery ecosystem",
+      "project_sector": "Critical minerals",
+      "project_region": "Karawang, West Java; East Halmahera, North Maluku (multi-site)",
+      "project_role_note": "ANTAM · IBC · Ningbo Contemporary Brunp Lygend (CBL)",
+      "source_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai",
+      "source_date": "2025-06-29",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Indonesia Battery Corporation (IBC)",
+      "project_id": "sli-project-001",
+      "project_name": "Integrated EV battery ecosystem",
+      "project_sector": "Critical minerals",
+      "project_region": "Karawang, West Java; East Halmahera, North Maluku (multi-site)",
+      "project_role_note": "ANTAM · IBC · Ningbo Contemporary Brunp Lygend (CBL)",
+      "source_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai",
+      "source_date": "2025-06-29",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Ningbo Contemporary Brunp Lygend (CBL)",
+      "project_id": "sli-project-001",
+      "project_name": "Integrated EV battery ecosystem",
+      "project_sector": "Critical minerals",
+      "project_region": "Karawang, West Java; East Halmahera, North Maluku (multi-site)",
+      "project_role_note": "ANTAM · IBC · Ningbo Contemporary Brunp Lygend (CBL)",
+      "source_url": "https://setneg.go.id/baca/index/presiden_prabowo_pacu_hilirisasi_lewat_industri_baterai",
+      "source_date": "2025-06-29",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Microsoft",
+      "project_id": "sli-project-002",
+      "project_name": "Microsoft Indonesia cloud and AI program",
+      "project_sector": "AI infrastructure",
+      "project_region": "Indonesia (multi-location program)",
+      "project_role_note": "Microsoft",
+      "source_url": "https://news.microsoft.com/source/asia/2024/04/30/microsoft-announces-us1-7-billion-investment-to-advance-indonesias-cloud-and-ai-ambitions/",
+      "source_date": "2024-04-30",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Vale Indonesia Tbk (INCO)",
+      "project_id": "sli-project-004",
+      "project_name": "IGP Pomalaa — mine and HPAL",
+      "project_sector": "Critical minerals",
+      "project_region": "Kolaka, Southeast Sulawesi",
+      "project_role_note": "PT Vale Indonesia · PT Kolaka Nickel Indonesia · Huayou · Ford (project partners)",
+      "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion",
+      "source_date": "2026-02-25",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Kolaka Nickel Indonesia (KNI)",
+      "project_id": "sli-project-004",
+      "project_name": "IGP Pomalaa — mine and HPAL",
+      "project_sector": "Critical minerals",
+      "project_region": "Kolaka, Southeast Sulawesi",
+      "project_role_note": "PT Vale Indonesia · PT Kolaka Nickel Indonesia · Huayou · Ford (project partners)",
+      "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion",
+      "source_date": "2026-02-25",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Huayou",
+      "project_id": "sli-project-004",
+      "project_name": "IGP Pomalaa — mine and HPAL",
+      "project_sector": "Critical minerals",
+      "project_region": "Kolaka, Southeast Sulawesi",
+      "project_role_note": "PT Vale Indonesia · PT Kolaka Nickel Indonesia · Huayou · Ford (project partners)",
+      "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion",
+      "source_date": "2026-02-25",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Ford",
+      "project_id": "sli-project-004",
+      "project_name": "IGP Pomalaa — mine and HPAL",
+      "project_sector": "Critical minerals",
+      "project_region": "Kolaka, Southeast Sulawesi",
+      "project_role_note": "PT Vale Indonesia · PT Kolaka Nickel Indonesia · Huayou · Ford (project partners)",
+      "source_url": "https://www.vale.com/in/w/pt-vale-s-growth-project-in-igp-pomalaa-reaches-62-completion",
+      "source_date": "2026-02-25",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Vale Indonesia Tbk (INCO)",
+      "project_id": "sli-project-005",
+      "project_name": "IGP Morowali — mine and HPAL / BNSI",
+      "project_sector": "Critical minerals",
+      "project_region": "Morowali, Central Sulawesi",
+      "project_role_note": "PT Vale Indonesia · PT Bahodopi Nickel Smelting Indonesia (BNSI) · GEM · EcoPro",
+      "source_url": "https://vale.com/in/w/sambalagi-hpal-project-reaches-major-milestone-with-autoclave-arrival-strengthening-the-future-of-sustainable-downstreaming/-/categories",
+      "source_date": "2026-07-22",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Bahodopi Nickel Smelting Indonesia (BNSI)",
+      "project_id": "sli-project-005",
+      "project_name": "IGP Morowali — mine and HPAL / BNSI",
+      "project_sector": "Critical minerals",
+      "project_region": "Morowali, Central Sulawesi",
+      "project_role_note": "PT Vale Indonesia · PT Bahodopi Nickel Smelting Indonesia (BNSI) · GEM · EcoPro",
+      "source_url": "https://vale.com/in/w/sambalagi-hpal-project-reaches-major-milestone-with-autoclave-arrival-strengthening-the-future-of-sustainable-downstreaming/-/categories",
+      "source_date": "2026-07-22",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "GEM",
+      "project_id": "sli-project-005",
+      "project_name": "IGP Morowali — mine and HPAL / BNSI",
+      "project_sector": "Critical minerals",
+      "project_region": "Morowali, Central Sulawesi",
+      "project_role_note": "PT Vale Indonesia · PT Bahodopi Nickel Smelting Indonesia (BNSI) · GEM · EcoPro",
+      "source_url": "https://vale.com/in/w/sambalagi-hpal-project-reaches-major-milestone-with-autoclave-arrival-strengthening-the-future-of-sustainable-downstreaming/-/categories",
+      "source_date": "2026-07-22",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "EcoPro",
+      "project_id": "sli-project-005",
+      "project_name": "IGP Morowali — mine and HPAL / BNSI",
+      "project_sector": "Critical minerals",
+      "project_region": "Morowali, Central Sulawesi",
+      "project_role_note": "PT Vale Indonesia · PT Bahodopi Nickel Smelting Indonesia (BNSI) · GEM · EcoPro",
+      "source_url": "https://vale.com/in/w/sambalagi-hpal-project-reaches-major-milestone-with-autoclave-arrival-strengthening-the-future-of-sustainable-downstreaming/-/categories",
+      "source_date": "2026-07-22",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Freeport Indonesia",
+      "project_id": "sli-project-006",
+      "project_name": "PTFI Manyar copper smelter",
+      "project_sector": "Critical minerals",
+      "project_region": "Gresik, East Java",
+      "project_role_note": "PT Freeport Indonesia (PTFI); shareholder groups MIND ID / PT IPMM / FCX",
+      "source_url": "https://www.fcx.com/operations/indonesia",
+      "source_date": "2025-12-31",
+      "verification": "Facility operation supported by cited corporate release; capital spending unverified",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "INPEX Masela",
+      "project_id": "sli-project-007",
+      "project_name": "Abadi LNG Masela — onshore/offshore LNG and CCS",
+      "project_sector": "Energy",
+      "project_region": "Tanimbar Islands, Maluku",
+      "project_role_note": "INPEX Masela (operator, PSC 65%) · PHE Masela (20%) · PETRONAS Masela (15%)",
+      "source_url": "https://esdm.go.id/id/media-center/arsip-berita/pembangunan-lng-abadi-masela-mulai-jalan-pemerintah-dorong-pertumbuhan-ekonomi-lokal-",
+      "source_date": "2026-07-16",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PHE Masela",
+      "project_id": "sli-project-007",
+      "project_name": "Abadi LNG Masela — onshore/offshore LNG and CCS",
+      "project_sector": "Energy",
+      "project_region": "Tanimbar Islands, Maluku",
+      "project_role_note": "INPEX Masela (operator, PSC 65%) · PHE Masela (20%) · PETRONAS Masela (15%)",
+      "source_url": "https://esdm.go.id/id/media-center/arsip-berita/pembangunan-lng-abadi-masela-mulai-jalan-pemerintah-dorong-pertumbuhan-ekonomi-lokal-",
+      "source_date": "2026-07-16",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PETRONAS Masela",
+      "project_id": "sli-project-007",
+      "project_name": "Abadi LNG Masela — onshore/offshore LNG and CCS",
+      "project_sector": "Energy",
+      "project_region": "Tanimbar Islands, Maluku",
+      "project_role_note": "INPEX Masela (operator, PSC 65%) · PHE Masela (20%) · PETRONAS Masela (15%)",
+      "source_url": "https://esdm.go.id/id/media-center/arsip-berita/pembangunan-lng-abadi-masela-mulai-jalan-pemerintah-dorong-pertumbuhan-ekonomi-lokal-",
+      "source_date": "2026-07-16",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "bp",
+      "project_id": "sli-project-008",
+      "project_name": "Tangguh Ubadari CCUS Compression (UCC)",
+      "project_sector": "Energy",
+      "project_region": "Bintuni Bay, West Papua",
+      "project_role_note": "bp operator and Tangguh production sharing contract partners",
+      "source_url": "https://www.spglobal.com/energy/en/news-research/latest-news/lng/060326-bp-expects-tangguh-lng-domestic-deliveries-to-rise-to-89-cargoes-in-2026",
+      "source_date": "2026-06-03",
+      "verification": "Reported milestone or funding only; verify subsequent steps",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Pertamina Geothermal Energy Tbk",
+      "project_id": "sli-project-009",
+      "project_name": "PLTP Lumut Balai Unit 2",
+      "project_sector": "Energy",
+      "project_region": "Muara Enim, South Sumatra",
+      "project_role_note": "PT Pertamina Geothermal Energy Tbk",
+      "source_url": "https://www.pge.pertamina.com/id/siaran-pers/pltp-lumut-balai-unit-2-beroperasi-penuh-pge-tambah-kapasitas-terpasang-55-mw-menuju-target-1-gw",
+      "source_date": "2025-06-29",
+      "verification": "Facility operation supported by cited corporate release; capital spending unverified",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Pertamina Geothermal Energy Tbk",
+      "project_id": "sli-project-010",
+      "project_name": "PLTP Gunung Tiga (Ulubelu Extension I)",
+      "project_sector": "Energy",
+      "project_region": "Lampung",
+      "project_role_note": "PT Pertamina Geothermal Energy Tbk",
+      "source_url": "https://www.pge.pertamina.com/Media/Uploads/investor/Earnings_Call_Maret_2026%20%28FY25%20Results%29.pdf",
+      "source_date": "2026-03",
+      "verification": "Preparation / early works; not commercial operations",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Equinix",
+      "project_id": "sli-project-011",
+      "project_name": "Equinix JK1 — Jakarta IBX data center",
+      "project_sector": "AI infrastructure",
+      "project_region": "Jakarta CBD, DKI Jakarta",
+      "project_role_note": "Equinix–Astra joint venture (announced 75% / 25% equity at formation)",
+      "source_url": "https://newsroom.equinix.com/2025-05-15-Equinix-Unveils-Its-First-AI-Ready-Data-Center-with-Dense-Ecosystem-in-Jakarta",
+      "source_date": "2025-05-15",
+      "verification": "Facility operation supported by cited corporate release; capital spending unverified",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Astra International Tbk",
+      "project_id": "sli-project-011",
+      "project_name": "Equinix JK1 — Jakarta IBX data center",
+      "project_sector": "AI infrastructure",
+      "project_region": "Jakarta CBD, DKI Jakarta",
+      "project_role_note": "Equinix–Astra joint venture (announced 75% / 25% equity at formation)",
+      "source_url": "https://newsroom.equinix.com/2025-05-15-Equinix-Unveils-Its-First-AI-Ready-Data-Center-with-Dense-Ecosystem-in-Jakarta",
+      "source_date": "2025-05-15",
+      "verification": "Facility operation supported by cited corporate release; capital spending unverified",
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Chandra Asri Alkali (CAA)",
+      "project_id": "sli-project-012",
+      "project_name": "Chandra Asri CA-EDC — Cilegon",
+      "project_sector": "Other",
+      "project_region": "Cilegon, Banten",
+      "project_role_note": "PT Chandra Asri Alkali (CAA) · Chandra Asri Group; Danantara Indonesia and INA as conditional equity participants",
+      "source_url": "https://www.danantaraindonesia.co.id/media-center/press-releases/reducing-import-dependency-danantara-and-ina-sign-investment-agreement-in-chandra-asri-groups-ca-edc-project",
+      "source_date": "2026-03-03",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Danantara Indonesia",
+      "project_id": "sli-project-012",
+      "project_name": "Chandra Asri CA-EDC — Cilegon",
+      "project_sector": "Other",
+      "project_region": "Cilegon, Banten",
+      "project_role_note": "PT Chandra Asri Alkali (CAA) · Chandra Asri Group; Danantara Indonesia and INA as conditional equity participants",
+      "source_url": "https://www.danantaraindonesia.co.id/media-center/press-releases/reducing-import-dependency-danantara-and-ina-sign-investment-agreement-in-chandra-asri-groups-ca-edc-project",
+      "source_date": "2026-03-03",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Indonesia Investment Authority (INA)",
+      "project_id": "sli-project-012",
+      "project_name": "Chandra Asri CA-EDC — Cilegon",
+      "project_sector": "Other",
+      "project_region": "Cilegon, Banten",
+      "project_role_note": "PT Chandra Asri Alkali (CAA) · Chandra Asri Group; Danantara Indonesia and INA as conditional equity participants",
+      "source_url": "https://www.danantaraindonesia.co.id/media-center/press-releases/reducing-import-dependency-danantara-and-ina-sign-investment-agreement-in-chandra-asri-groups-ca-edc-project",
+      "source_date": "2026-03-03",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Daya Energi Bersih Nusantara (Denera)",
+      "project_id": "sli-project-014",
+      "project_name": "PSEL Bogor Raya 1 — waste-to-energy",
+      "project_sector": "Energy",
+      "project_region": "Galuga, Cibungbulang, Bogor Regency, West Java",
+      "project_role_note": "PT Daya Energi Bersih Nusantara (Denera), Danantara Investment Management platform and future selected partners",
+      "source_url": "https://www.danantaraindonesia.co.id/zh/media-center/press-releases/psel-bogor-raya-1-construction",
+      "source_date": "2026-09-17",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Microsoft",
+      "project_id": "sli-project-015",
+      "project_name": "Microsoft Indonesia Central cloud region — operational milestone",
+      "project_sector": "AI infrastructure",
+      "project_region": "Indonesia, three availability zones; site addresses not disclosed in this release",
+      "project_role_note": "Microsoft",
+      "source_url": "https://news.microsoft.com/id-id/2025/04/15/general-availability-of-indonesia-central-cloud-region/",
+      "source_date": "2025-04-15",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Amazon Web Services (AWS)",
+      "project_id": "sli-project-016",
+      "project_name": "AWS Asia Pacific (Jakarta) cloud region",
+      "project_sector": "AI infrastructure",
+      "project_region": "Jakarta region, Indonesia; physical AZ locations undisclosed",
+      "project_role_note": "Amazon Web Services (AWS), Amazon group",
+      "source_url": "https://press.aboutamazon.com/2021/12/aws-launches-region-in-indonesia",
+      "source_date": "2021-12-14",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Nusantara Sembcorp Solar Energi",
+      "project_id": "sli-project-017",
+      "project_name": "IKN Solar Power Plant — 50 MW",
+      "project_sector": "Solar PV",
+      "project_region": "East Kalimantan · IKN Sepaku",
+      "project_role_note": "PT Nusantara Sembcorp Solar Energi · PLN Nusantara Power · Sembcorp Utilities",
+      "source_url": "https://www.ikn.go.id/storage/press-release/2025/20251128-siaran-pers-tandatangani-kerja-sama-dengan-pt-nsse%2C-otorita-ikn-siap-percepat-optimalisasi-penggunaan-energi-bersih.pdf",
+      "source_date": "2025-11-28",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PLN Nusantara Power",
+      "project_id": "sli-project-017",
+      "project_name": "IKN Solar Power Plant — 50 MW",
+      "project_sector": "Solar PV",
+      "project_region": "East Kalimantan · IKN Sepaku",
+      "project_role_note": "PT Nusantara Sembcorp Solar Energi · PLN Nusantara Power · Sembcorp Utilities",
+      "source_url": "https://www.ikn.go.id/storage/press-release/2025/20251128-siaran-pers-tandatangani-kerja-sama-dengan-pt-nsse%2C-otorita-ikn-siap-percepat-optimalisasi-penggunaan-energi-bersih.pdf",
+      "source_date": "2025-11-28",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Sembcorp Utilities",
+      "project_id": "sli-project-017",
+      "project_name": "IKN Solar Power Plant — 50 MW",
+      "project_sector": "Solar PV",
+      "project_region": "East Kalimantan · IKN Sepaku",
+      "project_role_note": "PT Nusantara Sembcorp Solar Energi · PLN Nusantara Power · Sembcorp Utilities",
+      "source_url": "https://www.ikn.go.id/storage/press-release/2025/20251128-siaran-pers-tandatangani-kerja-sama-dengan-pt-nsse%2C-otorita-ikn-siap-percepat-optimalisasi-penggunaan-energi-bersih.pdf",
+      "source_date": "2025-11-28",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Poso Energy",
+      "project_id": "sli-project-018",
+      "project_name": "PLTA Poso Peaker — 515 MW",
+      "project_sector": "Hydropower & Storage",
+      "project_region": "Central Sulawesi · Poso",
+      "project_role_note": "PT Poso Energy (Kalla Group project)",
+      "source_url": "https://www.esdm.go.id/en/media-center/news-archives/presiden-joko-widodo-resmikan-plta-di-kabupaten-poso",
+      "source_date": "2022-02-25",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Energi Bayu Jeneponto",
+      "project_id": "sli-project-019",
+      "project_name": "PLTB Tolo 1 — 72 MW",
+      "project_sector": "Wind",
+      "project_region": "South Sulawesi · Jeneponto",
+      "project_role_note": "PT Energi Bayu Jeneponto / Vena Energy development",
+      "source_url": "https://www.esdm.go.id/en/media-center/arsip-berita/pltb-tolo-sukses-beroperasi-komersial-tahap-ii-siap-dikembangkan",
+      "source_date": "2019-09-06",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Vena Energy",
+      "project_id": "sli-project-019",
+      "project_name": "PLTB Tolo 1 — 72 MW",
+      "project_sector": "Wind",
+      "project_region": "South Sulawesi · Jeneponto",
+      "project_role_note": "PT Energi Bayu Jeneponto / Vena Energy development",
+      "source_url": "https://www.esdm.go.id/en/media-center/arsip-berita/pltb-tolo-sukses-beroperasi-komersial-tahap-ii-siap-dikembangkan",
+      "source_date": "2019-09-06",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT North Sumatra Hydro Energy",
+      "project_id": "sli-project-020",
+      "project_name": "PLTA Batang Toru — 510 MW",
+      "project_sector": "Hydropower & Storage",
+      "project_region": "North Sumatra · South Tapanuli",
+      "project_role_note": "PT North Sumatra Hydro Energy",
+      "source_url": "https://nshe.co.id/en/",
+      "source_date": "2026-08-02",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Thorcon Power Indonesia",
+      "project_id": "sli-project-022",
+      "project_name": "Thorcon 500 — Kelasa Island nuclear site evaluation",
+      "project_sector": "Nuclear (New Energy)",
+      "project_region": "Bangka Belitung · Pulau Kelasa",
+      "project_role_note": "PT Thorcon Power Indonesia",
+      "source_url": "https://bapeten.go.id/berita/siaran-pers-bapeten-terbitkan-persetujuan-evaluasi-tapak-pltn-di-pulau-kelasa-kepulauan-bangka-belitung-112749?lang=en",
+      "source_date": "2025-07-30",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT PLN (Persero)",
+      "project_id": "sli-project-023",
+      "project_name": "PLN–KHNP SMR early-stage cooperation",
+      "project_sector": "Nuclear (New Energy)",
+      "project_region": "Indonesia · proposed site not disclosed",
+      "project_role_note": "PT PLN (Persero) · Korea Hydro & Nuclear Power",
+      "source_url": "https://web.pln.co.id/cms/media/siaran-pers/2023/12/dari-akselerasi-ebt-hingga-pensiun-dini-pltu-pln-berhasil-jaring-14-kerja-sama-global-dalam-cop28/",
+      "source_date": "2023-12-04",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Korea Hydro & Nuclear Power",
+      "project_id": "sli-project-023",
+      "project_name": "PLN–KHNP SMR early-stage cooperation",
+      "project_sector": "Nuclear (New Energy)",
+      "project_region": "Indonesia · proposed site not disclosed",
+      "project_role_note": "PT PLN (Persero) · Korea Hydro & Nuclear Power",
+      "source_url": "https://web.pln.co.id/cms/media/siaran-pers/2023/12/dari-akselerasi-ebt-hingga-pensiun-dini-pltu-pln-berhasil-jaring-14-kerja-sama-global-dalam-cop28/",
+      "source_date": "2023-12-04",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PLN Nusantara Power",
+      "project_id": "sli-project-024",
+      "project_name": "Cirata Floating Solar PV — 192 MWp",
+      "project_sector": "Solar PV",
+      "project_region": "West Java · Cirata Reservoir",
+      "project_role_note": "PLN Nusantara Power / PMSE and Masdar (UAE)",
+      "source_url": "https://www.esdm.go.id/en/media-center/news-archives/presiden-ri-resmikan-plts-terapung-terbesar-di-asia-tenggara",
+      "source_date": "2023-11-09",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "Masdar",
+      "project_id": "sli-project-024",
+      "project_name": "Cirata Floating Solar PV — 192 MWp",
+      "project_sector": "Solar PV",
+      "project_region": "West Java · Cirata Reservoir",
+      "project_role_note": "PLN Nusantara Power / PMSE and Masdar (UAE)",
+      "source_url": "https://www.esdm.go.id/en/media-center/news-archives/presiden-ri-resmikan-plts-terapung-terbesar-di-asia-tenggara",
+      "source_date": "2023-11-09",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    },
+    {
+      "name": "PT Pertamina Geothermal Energy Tbk",
+      "project_id": "sli-project-025",
+      "project_name": "PLTP Lumut Balai Unit 3 — 55 MW development",
+      "project_sector": "Geothermal",
+      "project_region": "South Sumatra · Muara Enim",
+      "project_role_note": "PT Pertamina Geothermal Energy Tbk (PGEO)",
+      "source_url": "https://www.pge.pertamina.com/id/siaran-pers/pge-resmi-mulai-tahap-eksekusi-proyek-pltp-lumut-balai-unit-3-berkapasitas-55-mw-perkuat-pasokan-energi-bersih-nasional",
+      "source_date": "2026-01",
+      "verification": null,
+      "relationship": "reported_project_participant_not_equity_shareholder"
+    }
+  ]
+}
