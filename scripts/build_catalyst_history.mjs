@@ -89,11 +89,17 @@ const compactSource=(docs)=>({
 const projectState=p=>({stage:String(p.stage||""),source_date:String(p.evidence_date||"")});
 const lawState=n=>({status:String(n.status||""),verified_at:String(n.verified_at||"")});
 const newsState=n=>String(n.id||"");
+const actorKey=a=>digest(String(a.project_id||"")+"|"+legal(a.name));
+const actorState=a=>({project_id:String(a.project_id||""),actor_name:String(a.name||""),
+ source_date:String(a.source_date||""),source_url:String(a.source_url||""),
+ relationship:String(a.relationship||"")});
 function initialState(docs,at){
  return {schema_version:"sli-catalyst-baseline-v2",initialized_at_utc:at,
  news_ids:(docs.news?.articles||[]).map(newsState).filter(Boolean).slice(0,4000),
  projects:Object.fromEntries((docs.projects?.records||[]).filter(x=>x.id).map(x=>[x.id,projectState(x)])),
- laws:Object.fromEntries((docs.laws?.nodes||[]).filter(x=>x.id&&x.kind!=="tier_marker").map(x=>[x.id,lawState(x)]))}
+ laws:Object.fromEntries((docs.laws?.nodes||[]).filter(x=>x.id&&x.kind!=="tier_marker").map(x=>[x.id,lawState(x)])),
+ participant_evidence:Object.fromEntries((docs.actors?.project_participations||[])
+  .filter(x=>x.project_id&&x.name&&safeUrl(x.source_url)).map(x=>[actorKey(x),actorState(x)]))}
 }
 function event({kind,key,title,sector="",source_url,publisher="",source_at_utc=null,
  date_type="index_record_date",summary="",project_id=null,regulation_id=null,previous=null,current=null,
@@ -136,6 +142,35 @@ function deltaEvents(before,docs,at){
     "Project stage field changed in SLI; verify the effective milestone/date with the source.",
    project_id:p.id,previous:added?null:prev.stage,current:current.stage,
    provinces:p.provinces,region:p.region||"",ticker_links:projectLinks(p.id,docs),detected_at_utc:at}));
+ }
+ for(const actor of docs.actors?.project_participations||[]){
+  if(!actor.project_id||!actor.name||!safeUrl(actor.source_url))continue;
+  const key=actorKey(actor),previous=before.participant_evidence?.[key],current=actorState(actor);
+  if(!previous){
+   const project=(docs.projects?.records||[]).find(x=>x.id===actor.project_id);
+   const onlyThis={...docs,actors:{project_participations:[actor]}};
+   results.push(event({kind:"project_participant_indexed",key,
+    title:(project?.name||actor.project_id)+" · "+actor.name,
+    sector:categorize(project?.sector||""),source_url:actor.source_url,
+    publisher:"SLI corporate participation register / cited source",
+    source_at_utc:actor.source_date||null,date_type:"participation_source_date",
+    summary:"An actor/project participation evidence link entered SLI; not an equity or control assertion.",
+    project_id:actor.project_id,previous:null,current:"reported participant",
+    provinces:project?.provinces||[],region:project?.region||"",
+    ticker_links:projectLinks(actor.project_id,onlyThis),detected_at_utc:at}));
+  }else if(previous.source_date!==current.source_date&&current.source_date&&previous.source_date){
+   const project=(docs.projects?.records||[]).find(x=>x.id===actor.project_id);
+   const onlyThis={...docs,actors:{project_participations:[actor]}};
+   results.push(event({kind:"project_participation_evidence_revised",key:key+"|"+current.source_date,
+    title:(project?.name||actor.project_id)+" · "+actor.name,
+    sector:categorize(project?.sector||""),source_url:actor.source_url,
+    publisher:"SLI corporate participation register / cited source",
+    source_at_utc:actor.source_date,date_type:"participation_source_date",
+    summary:"Dated source record for an actor/project link changed in SLI; not proof of new shareholding.",
+    project_id:actor.project_id,previous:previous.source_date,current:current.source_date,
+    provinces:project?.provinces||[],region:project?.region||"",
+    ticker_links:projectLinks(actor.project_id,onlyThis),detected_at_utc:at}));
+  }
  }
  for(const law of docs.laws?.nodes||[]){
   const url=safeUrl(law.source),prev=before.laws?.[law.id];
@@ -182,7 +217,7 @@ export async function build(root,{now=new Date().toISOString()}={}){
  const baseline=initialState(docs,now);
  if(prev){
   baseline.initialized_at_utc=prev.initialized_at_utc;
-  for(const [k,source]of [["news_ids","news"],["projects","projects"],["laws","laws"]]){
+  for(const [k,source]of [["news_ids","news"],["projects","projects"],["laws","laws"],["participant_evidence","actors"]]){
    if(!docs[source])baseline[k]=prev[k];
   }
  }
