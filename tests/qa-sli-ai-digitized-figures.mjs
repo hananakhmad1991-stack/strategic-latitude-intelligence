@@ -58,7 +58,7 @@ test("Source PDF figure-candidate audit does not claim unreviewed charts are num
  assert.equal(d.text_figure_label_total,409);
  assert.equal(d.publisher_reports[0].pdf_pages,425);
  assert.equal(d.publisher_reports[1].pdf_pages,136);
- assert.equal(d.already_digitized_numeric_source_figures,9);
+ assert.equal(d.already_digitized_numeric_source_figures,10);
  assert.equal(d.no_automatic_numeric_publication,true);
  assert.match(d.review_limits,/not unique verified chart series/);
  const script=read("js/sli-ai-figure-audit-status.js");
