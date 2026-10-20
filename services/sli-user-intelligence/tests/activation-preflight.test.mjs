@@ -1,0 +1,63 @@
+import assert from "node:assert/strict";
+import {mkdtemp,cp,readFile,rm} from "node:fs/promises";
+import {tmpdir} from "node:os";
+import path from "node:path";
+import {fileURLToPath} from "node:url";
+import {preflight,validateConfig} from "../scripts/cloudflare-activation-preflight.mjs";
+import {render} from "../scripts/render-wrangler-config.mjs";
+const HERE=path.dirname(fileURLToPath(import.meta.url)),ROOT=path.resolve(HERE,"..");
+const env={CF_ACCOUNT_ID:"a".repeat(32),CF_API_TOKEN:"fixture-token-do-not-use",
+ SLI_ACCESS_AUD:"abcXYZ0123456789aud",SLI_API_HOSTNAME:"private.sli.example.com",
+ SLI_ACCESS_ISSUER:"https://example.cloudflareaccess.com",
+ SLI_D1_DATABASE_ID:"11111111-1111-4111-8111-111111111111"};
+const app={id:"app-id",aud:env.SLI_ACCESS_AUD,type:"self_hosted",
+ domain:env.SLI_API_HOSTNAME,destinations:[],
+ cors_headers:{allow_all_origins:false,allowed_origins:["https://hananakhmad1991-stack.github.io"],
+  allow_credentials:true,allowed_methods:["GET","PUT","POST","DELETE","OPTIONS"],
+  allowed_headers:["Content-Type"]}};
+const api=async (url)=>{
+ let result=[];
+ if(url.includes("/access/apps/app-id/policies"))result=[{decision:"allow"}];
+ else if(url.includes("/access/apps?"))result=[app];
+ else if(url.includes("/d1/database/"))result={uuid:env.SLI_D1_DATABASE_ID};
+ else throw Error("Unexpected endpoint "+url);
+ return new Response(JSON.stringify({success:true,result}),{status:200});
+};
+assert.equal(validateConfig(env),true);
+const verified=await preflight(env,api);
+assert.equal(verified.hostname,env.SLI_API_HOSTNAME);
+const refute=async(override,overrideApi=api)=>{
+ await assert.rejects(preflight({...env,...override},overrideApi));
+};
+await refute({SLI_API_HOSTNAME:"unprotected.example.workers.dev"});
+await refute({CF_API_TOKEN:""});
+await refute({SLI_D1_DATABASE_ID:"abc"});
+await assert.rejects(preflight(env,async u=>{
+ const result=u.includes("/access/apps?")?[{...app,cors_headers:{...app.cors_headers,allow_all_origins:true}}]:
+ u.includes("/policies")?[{decision:"allow"}]:{uuid:env.SLI_D1_DATABASE_ID};
+ return new Response(JSON.stringify({success:true,result}));
+}),/CORS/);
+await assert.rejects(preflight(env,async u=>{
+ const result=u.includes("/access/apps?")?[{...app,destinations:[{uri:env.SLI_API_HOSTNAME,overrides:[{behavior:"public",path_pattern:"/api/"}]}]}]:
+ u.includes("/policies")?[{decision:"allow"}]:{uuid:env.SLI_D1_DATABASE_ID};
+ return new Response(JSON.stringify({success:true,result}));
+}),/Access application/);
+await assert.rejects(preflight(env,async u=>{
+ const result=u.includes("/access/apps?")?[app]:
+ u.includes("/policies")?[{decision:"allow"},{decision:"bypass"}]:{uuid:env.SLI_D1_DATABASE_ID};
+ return new Response(JSON.stringify({success:true,result}));
+}),/bypass/);
+const tmp=await mkdtemp(path.join(tmpdir(),"sli-access-config-"));
+try{
+ await cp(path.join(ROOT,"wrangler.toml"),path.join(tmp,"wrangler.toml"));
+ const outfile=await render(tmp,env);
+ const s=await readFile(outfile,"utf8");
+ assert.match(s,/workers_dev = false/);
+ assert.match(s,/custom_domain = true/);
+ assert.ok(s.includes('pattern = "'+env.SLI_API_HOSTNAME+'"'));
+ assert.ok(s.includes(env.SLI_D1_DATABASE_ID));
+ assert.ok(s.includes("CF_ACCESS_ISSUER"));
+ assert.ok(!s.includes(env.CF_API_TOKEN),"API bearer token must never enter Wrangler config");
+ assert.ok(!s.includes("REPLACE_WITH_REAL_D1_DATABASE_ID"));
+}finally{await rm(tmp,{recursive:true,force:true})}
+console.log("Cloudflare activation preflight and safe ephemeral config QA passed");
