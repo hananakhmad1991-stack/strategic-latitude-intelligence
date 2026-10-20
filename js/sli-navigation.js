@@ -122,7 +122,8 @@ function renderPlatformMast(){
   climate:[['Climate & environment evidence','Bukti iklim & lingkungan','environment'],['BNPB disaster history','Riwayat bencana BNPB','disasters']]
  };
  const specialistByGroup={
-  0:[['Research evidence preview','Pratinjau bukti riset','sli-research-evidence-preview.html']],
+  0:[['Research evidence preview','Pratinjau bukti riset','sli-research-evidence-preview.html'],
+     ['Food & minerals news monitoring','Pemantauan berita pangan & mineral','sli-sector-news.html']],
   1:[['Investment navigator','Navigator investasi','indonesia-investment-navigator.html']],
   2:[['Regional PLN grid baseline','Kondisi jaringan regional PLN','pln-regional-grid-baseline-2024.html'],
      ['RUPTL source intelligence','Intelijen sumber RUPTL','pln-ruptl-2025-2034-source-intelligence.html'],
@@ -136,7 +137,8 @@ function renderPlatformMast(){
      ['International AI benchmarks','Pembanding AI internasional','indonesia-ai-global-benchmarks.html'],
      ['AI evidence inventory','Inventaris bukti AI','indonesia-ai-source-inventory.html']],
   5:[['Policy impact evaluation','Evaluasi dampak kebijakan','policy-impact-evaluation.html'],
-     ['Sector regulatory impact','Dampak regulasi sektoral','policy-sector-ria.html']]
+     ['Sector regulatory impact','Dampak regulasi sektoral','policy-sector-ria.html']],
+  6:[['Atlas of 49 research methods','Atlas 49 metode riset','sli-methodology-models.html']]
  };
  for(const [i,group] of groups.entries()){
   const col=node('details','sli-platform-sector-group');
