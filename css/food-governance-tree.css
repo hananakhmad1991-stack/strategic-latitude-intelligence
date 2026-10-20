@@ -63,3 +63,9 @@
 #fa-governance #fa-hierarchy,#fa-governance #fa-network{scroll-margin-top:112px}
 @media(max-width:1240px){#fa-governance .fa-tree-layout{grid-template-columns:1fr}#faOrgHierarchyInspector{position:static}}
 @media(max-width:700px){#fa-governance .fa-view-heading{font-size:19px}}
+
+.fa-actor-name,.fa-gov-profile-name{display:flex;align-items:center;gap:9px;min-width:0}
+.fa-actor-name>strong{min-width:0}
+.fa-actor-name .sli-entity-brand{width:28px;height:28px;flex-basis:28px}
+.fa-actor-name .sli-entity-favicon{width:22px;height:22px}
+.fa-gov-profile-name>h3{margin:0}
