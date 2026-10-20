@@ -196,7 +196,7 @@ async function init(){
  const root=document.getElementById("sliGeoChapterRoot");if(!root)return;
  const [chapter,official,news]=await Promise.allSettled(Object.values(INPUTS).map(read));
  if(!root.isConnected)return;
- if(chapter.status!=="fulfilled"||!Array.isArray(chapter.value?.themes)||chapter.value.themes.length!==6){
+ if(chapter.status!=="fulfilled"||!Array.isArray(chapter.value?.themes)||chapter.value.themes.length<7){
   root.replaceChildren(h(2,tx("Geopolitical chapter temporarily unavailable","Bab geopolitik belum dapat dimuat")),
    p(tx("Please try refreshing; existing Indonesia intelligence dossiers remain accessible.","Silakan segarkan halaman; dossier Intelijen Indonesia masih tersedia.")),
    link(FALLBACK_LINK,tx("Open Indonesia Intelligence ↗","Buka Intelijen Indonesia ↗")));
