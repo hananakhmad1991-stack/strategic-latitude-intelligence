@@ -1,0 +1,87 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import {missingLegalArticleBrief} from "../research-api/src/legal-source-limited.mjs";
+import {auditLegalArticleCitations} from "../research-api/src/legal-citation-audit.mjs";
+import {makeResearchReport} from "../js/sli-report-content.mjs";
+import {printableResearchHtml} from "../js/sli-report-pdf.mjs";
+import {docxBytes} from "../js/sli-report-docx.mjs";
+
+const metadata={
+ id:"policy_law_uu7hpp",title:"UU 7/2021 · Harmonisasi Peraturan Perpajakan (HPP)",
+ publisher:"Pemerintah Republik Indonesia",
+ source_url:"https://peraturan.bpk.go.id/Details/185162/uu-no-7-tahun-2021",
+ source_date:"2026-10-20",period:"2026 SLI index; not a consolidated statute"
+};
+const reviewed={
+ id:"primary_uu7hpp_pasal1",
+ source_url:"https://peraturan.bpk.go.id/Download/178620/UU%20Nomor%207%20Tahun%202021.pdf",
+ provision_anchor:{instrument_ref:"UU 7/2021",article:"Pasal 1"}
+};
+const answer=(q,documents=[metadata],reviewedArticles=[reviewed])=>missingLegalArticleBrief({
+ question:q,articleEvidence:reviewedArticles,policyEvidence:documents,language:"id"
+});
+test("Unreviewed Pasal 99 of UU 7/2021 returns a complete source-limited response without a fake article meaning",()=>{
+ const r=answer("Jelaskan Pasal 99 UU 7/2021. Jika pasalnya tidak tersedia, jangan mengarang.");
+ assert.equal(r.source_limited,true);
+ assert.equal(r.model_called,false);
+ assert.equal(r.article_text_verified,false);
+ assert.equal(r.sources.length,1);
+ assert.equal(r.sources[0].source_type,"legal_index_metadata");
+ assert.equal(r.sources[0].source_url,metadata.source_url);
+ assert.equal(auditLegalArticleCitations(r.answer,r.sources).pass,true);
+ assert.match(r.answer,/^## Status bukti pasal: Pasal 99 UU 7\/2021/m);
+ assert.match(r.answer,/BUKAN teks asli pasalnya/);
+ assert.match(r.answer,/bunyi ketentuan|Bunyi ketentuan/i);
+ assert.match(r.answer,/tidak ada substansi pasal yang direka/i);
+ assert.doesNotMatch(r.answer,/Pasal 99 .*mengatur|Pasal 99 .*mewajibkan/i);
+ assert.doesNotMatch(r.answer,/\n\n(?:##[^\n]+\n\n)?(?:\*|•|-\s*)?\n/);
+ assert.equal((r.answer.match(/^## /gm)||[]).length,5);
+});
+test("Only exactly one requested law and article triggers the deterministic guard",()=>{
+ assert.equal(answer("Pasal 1 UU 7/2021"),null,"Known reviewed article must go to normal model");
+ assert.equal(answer("Apa isi UU 7/2021"),null,"Broad question must not be treated as a specific missing Pasal");
+ assert.equal(answer("Jelaskan Pasal 99 tanpa nama UU"),null,"Bare article numbers are ambiguous");
+ assert.equal(answer("UU 7/2021 Pasal 99 dan Pasal 1"),null,"Multi-article query requires separate analysis");
+ assert.equal(answer("UU 7/2021 Pasal 99 dan PP 28/2025"),null,"Multi-law question requires separate analysis");
+ assert.ok(answer("UU No. 7 Tahun 2021 Pasal 99")?.source_limited);
+});
+test("No matching law index cannot be converted into a fabricated legal citation",()=>{
+ const r=answer("Jelaskan Pasal 99 UU 7/2021",[{...metadata,id:"policy_law_pp28",title:"PP 28/2025 · Licensing"}],[]);
+ assert.equal(r.sources.length,0);
+ assert.doesNotMatch(r.answer,/\[1\]/);
+ assert.equal(r.model_called,false);
+});
+test("Source-limited legal export explicitly distinguishes law metadata from a reviewed Pasal source",()=>{
+ const r=answer("Jelaskan Pasal 99 UU 7/2021");
+ const doc=makeResearchReport({question:"Jelaskan Pasal 99 UU 7/2021",mode:"deep_research",
+  answer:r.answer,sources:r.sources,language:"id",generatedAt:"2026-10-20T00:00:00Z",
+  title:"Status Korpus SLI untuk Pasal 99 UU 7/2021"});
+ assert.equal(doc.report_scope,"focused_legal_article");
+ assert.equal(doc.refs.cited_unique,1);
+ assert.equal(doc.refs.metadata_only_legal_index,1);
+ assert.equal(doc.refs.metadata_complete_candidates,0);
+ assert.equal(doc.refs.meets_preliminary_minimum,false);
+ assert.equal(doc.refs.ready_for_publication,false);
+ assert.match(doc.refs.warning,/catatan indeks regulasi/);
+ assert.match(doc.refs.warning,/tidak ada teks pasal primer/);
+ const print=printableResearchHtml(doc);
+ assert.match(print,/Sumber dan Referensi/);
+ assert.match(print,/catatan indeks regulasi/);
+ assert.match(print,/DRAF BERBANTUAN AI/);
+ assert.match(print,/UU 7\/2021/);
+ assert.doesNotMatch(print,/belum bisa memberi:/i);
+ assert.doesNotMatch(print,/target minimum 1/);
+ const word=docxBytes(doc);
+ assert.ok(word.byteLength>3000);
+});
+test("Worker source excludes speculative model run for single missing Pasal and owner deploy workflow validates safeguard",()=>{
+ const worker=fs.readFileSync(new URL("../research-api/src/owner-test-worker.mjs",import.meta.url),"utf8");
+ const action=fs.readFileSync(new URL("../.github/workflows/sli-owner-worker-deploy.yml",import.meta.url),"utf8");
+ assert.match(worker,/missingLegalArticleBrief/);
+ const bypass=worker.indexOf('if(absentArticle){');
+ assert.ok(bypass>=0&&bypass<worker.indexOf("const params=modelRequest("));
+ assert.match(worker,/model_route:"not_invoked_missing_legal_article"/);
+ assert.match(worker,/article_text_verified:false/);
+ assert.match(action,/qa-sli-legal-source-limited\.mjs/);
+});
