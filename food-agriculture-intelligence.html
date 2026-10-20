@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="./css/food-agriculture-intelligence.css?v=20261020-food1">
 <link rel="stylesheet" href="./css/food-governance-hierarchy.css?v=20261020-functional-v3">
 <link rel="stylesheet" href="./css/food-governance-tree.css?v=20261020-dual-v1">
+<link rel="stylesheet" href="./css/research-signal-radar.css?v=20261020-crosssector1">
 <link rel="stylesheet" href="./css/sli-entity-identity.css?v=20261020-food-identity1">
 </head>
 <body>
@@ -28,6 +29,7 @@
   <a href="#fa-farmers" data-en="Farmer welfare" data-id="Indeks petani">Indeks petani</a>
   <a href="#fa-prices" data-en="Food prices" data-id="Harga pangan">Harga pangan</a>
   <a href="#fa-governance" data-en="Institutions" data-id="Kelembagaan">Kelembagaan</a>
+  <a href="#fa-monitoring" data-en="News monitoring" data-id="Monitoring berita">Monitoring berita</a>
   <a href="#fa-analysis" data-en="Assessment" data-id="Analisis">Analisis</a>
   <a href="#fa-sources" data-en="Source data" data-id="Sumber data">Sumber data</a>
  </nav>
@@ -94,6 +96,17 @@
    </div>
   </section>
  </section>
+ <section id="fa-monitoring" class="fa-section">
+  <div class="fa-heading"><div><span class="fa-step">06 / MONITORING INTELLIGENCE</span><h2 data-en="Food & Agriculture · News & OSINT" data-id="Pangan & Pertanian · Berita dan OSINT">Pangan & Pertanian · Berita dan OSINT</h2></div><small data-en="Hourly attributed news leads" data-id="Headline teratribusi dari pemantauan per jam">Headline teratribusi dari pemantauan per jam</small></div>
+  <p class="fa-note" data-en="Follow global agricultural supply and domestic rice reserves, farm production, fertilizer and food-policy reporting. Compare headlines against official dated Kementan/BPS/Bapanas records." data-id="Pantau pasokan pangan global, stok beras, produksi pertanian, pupuk dan kebijakan pangan. Bandingkan pemberitaan dengan data resmi Kementan/BPS/Bapanas sesuai periode masing-masing.">Pantau pasokan pangan global, stok beras, produksi pertanian, pupuk dan kebijakan pangan. Bandingkan pemberitaan dengan data resmi Kementan/BPS/Bapanas sesuai periode masing-masing.</p>
+  <div class="fa-view-links">
+   <a href="./sli-sector-news.html?sector=food" data-en="Food news archive ↗" data-id="Arsip berita pangan ↗">Arsip berita pangan ↗</a>
+   <a href="./sli-sector-news.html?sector=minerals" data-en="Minerals monitoring ↗" data-id="Monitoring mineral ↗">Monitoring mineral ↗</a>
+   <a href="./index.html#geopolitics" data-en="Food geopolitics ↗" data-id="Geopolitik pangan ↗">Geopolitik pangan ↗</a>
+   <a href="./policy-regulatory-intelligence.html" data-en="Food policy & law ↗" data-id="Regulasi pangan ↗">Regulasi pangan ↗</a>
+  </div>
+  <div id="fa-monitoring-radar" aria-live="polite"></div>
+ </section>
  <section id="fa-analysis" class="fa-section">
   <div class="fa-heading"><div><span class="fa-step">06 / RESEARCH SYNTHESIS</span><h2 data-en="Overall food and agriculture assessment" data-id="Penilaian menyeluruh pangan & pertanian">Penilaian menyeluruh pangan & pertanian</h2></div><small data-en="Conditional conclusions · explicit evidence periods" data-id="Kesimpulan bersyarat · periode data jelas">Kesimpulan bersyarat · periode data jelas</small></div>
   <div class="fa-analysis-grid" id="faAssessment"></div>
@@ -109,8 +122,10 @@
  <footer class="fa-footer">Strategic Latitude Intelligence · Data with periods, provenance, and human-verifiable methods. © SLI</footer>
 </main>
 <script src="./js/sli-entity-identity.js?v=20261020-food-identity1" defer></script>
+<script src="./js/research-signal-radar.js?v=20261020-food-radar1" defer></script>
 <script src="./js/food-governance-hierarchy.js?v=20261020-food-identity1" defer></script>
 <script src="./js/food-governance-tree.js?v=20261020-food-identity1" defer></script>
 <script src="./js/food-agriculture-intelligence.js?v=20261020-dual-v1" defer></script>
 <script src="./js/sli-navigation.js?v=20261019-id-audit9" defer></script>
+<script>document.addEventListener("DOMContentLoaded",()=>{const target=document.getElementById("fa-monitoring-radar");if(target&&typeof window.initSLIResearchRadar==="function")window.initSLIResearchRadar("food",target)});</script>
 </body></html>
