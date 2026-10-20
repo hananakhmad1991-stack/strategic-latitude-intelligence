@@ -63,3 +63,17 @@ test("Expanded legal register includes 2026 amendments, partial repeals, and dis
   assert.match(nodes.get(id).source,/^https:\/\/peraturan\.bpk\.go\.id\/Details\//);
  }
 });
+
+test("Regional legal provenance and legacy RTRW are reviewable without fake OJK enactment",()=>{
+ const nodes=new Map(law.nodes.map(n=>[n.id,n]));
+ assert.ok(law.nodes.length>=149);
+ assert.ok(law.edges.length>=193);
+ assert.equal(nodes.get("perda_magelang_rtrwold2011").status,"repealed");
+ assert.equal(nodes.get("pojk51sustain2017").status,"check_current");
+ assert.match(nodes.get("pojk51sustain2017").note,/RANCANGAN/);
+ for(const id of ["pres82iiv2022","pres47cyber2023","bssn5iiv2025","perda_diy_pangan2026","perda_jateng_rtrw2024","perda_lampung_rtrw2023","perda_ntb_invest2024","kepmen88papuabaratdaya2026"]) {
+  assert.match(nodes.get(id).source,/^https:\/\//);
+  assert.equal(nodes.get(id).source_checked_at,"2026-10-20");
+ }
+ assert.ok(law.edges.some(x=>x.from==="perda_magelang_rtrw2024"&&x.to==="perda_magelang_rtrwold2011"&&x.type==="supersedes_noncurrent_record"));
+});
