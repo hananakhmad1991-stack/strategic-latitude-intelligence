@@ -2482,3 +2482,17 @@ window.SLI_TRANSLATIONS_ID.set("◈ SLI Decision Terminal","◈ Terminal Keputus
 
 /* Reviewed source-library homepage link (ID navigation). */
 window.SLI_TRANSLATIONS_ID.set("Data Library · BPS / IEA / PLN ↗","Perpustakaan Data · BPS / IEA / PLN ↗");
+
+/* Approved bilingual SLI Data Library landing-page labels · 20 Oct 2026. */
+window.SLI_TRANSLATIONS_ID.set("DATA SOURCES · BPS / IEA / BNPB / PLN / WORLD BANK","SUMBER DATA · BPS / IEA / BNPB / PLN / BANK DUNIA");
+window.SLI_TRANSLATIONS_ID.set("SLI Data Library","Perpustakaan Data SLI");
+window.SLI_TRANSLATIONS_ID.set("Explore crime, democracy, socioeconomic, energy, environment and AI evidence. Every indicator is linked to its source, period, availability and limitations.","Jelajahi data kriminalitas, demokrasi, sosial-ekonomi, energi, lingkungan, dan AI. Setiap indikator memiliki sumber, periode, status dan batasan yang jelas.");
+window.SLI_TRANSLATIONS_ID.set("Explore the SLI Data Library ↗","Buka Perpustakaan Data SLI ↗");
+window.SLI_TRANSLATIONS_ID.set("Crime & safety ↗","Kriminalitas ↗");
+window.SLI_TRANSLATIONS_ID.set("Democracy ↗","Demokrasi ↗");
+window.SLI_TRANSLATIONS_ID.set("Socioeconomic ↗","Sosial-ekonomi ↗");
+window.SLI_TRANSLATIONS_ID.set("IEA & minerals ↗","IEA & mineral ↗");
+window.SLI_TRANSLATIONS_ID.set("Environment & BNPB ↗","Lingkungan & BNPB ↗");
+window.SLI_TRANSLATIONS_ID.set("PLN & RUPTL ↗","PLN & RUPTL ↗");
+window.SLI_TRANSLATIONS_ID.set("38 provinces · BPS, IEA, BNPB, PLN, social and governance statistics","38 provinsi BPS, IEA, BNPB, PLN, statistik sosial dan politik");
+window.SLI_TRANSLATIONS_ID.set("Open data, sources & periods →","Buka data, sumber & periode →");
