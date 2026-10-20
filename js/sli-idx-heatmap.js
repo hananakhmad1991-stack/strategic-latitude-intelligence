@@ -102,7 +102,7 @@ function view(){
  provider.append(text("p","sli-idx-provider-note",tr("TradingView's own IDX exchange-wide heatmap, not an exact SLI-sector universe. Green/red and size are calculated by the provider (IDX prices can be end-of-day).","Heatmap seluruh bursa IDX milik TradingView, bukan hanya ticker sektor SLI. Warna hijau/merah dan ukuran dihitung penyedia (harga IDX dapat berupa EOD).")));
  const priceMount=text("div","sli-idx-heatmap-mount");provider.append(priceMount);root.append(provider);
  if(window.SLIIDXTradingView?.mountHeatmap)window.SLIIDXTradingView.mountHeatmap(priceMount);
- const fallback=href("https://www.tradingview.com/heatmap/stock/",tr("Open complete stock heatmap on TradingView ↗","Lihat heatmap saham lengkap di TradingView ↗"),true);
+ const fallback=href("https://www.tradingview.com/markets/stocks-indonesia/",tr("Check Indonesia / IDX stocks on TradingView ↗","Periksa pasar saham Indonesia / IDX di TradingView ↗"),true);
  fallback.className="sli-idx-tv-fallback";provider.append(fallback);
  const more=text("details","sli-idx-watchlist-accordion");more.id="sliIDXTradingViewWatchlist";
  const moreTitle=text("summary",null,tr("More IDX quotes · watchlist by SLI strategic sector","Lihat harga IDX lainnya · watchlist per sektor strategis SLI"));
