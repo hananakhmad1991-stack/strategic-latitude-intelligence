@@ -16,7 +16,7 @@ function sector(row){return String(row?.sector||"").toLowerCase()}
 function relevant(row,chosen,scope,q){
  const sec=sector(row);if(chosen!=="all"&&sec!==chosen)return false;
  const origin=String(row.monitor_source||"");
- if(scope!=="all"&&origin==="research-signal-radar"&&String(row.topic||"").toLowerCase().includes(scope)===false&&String(row._scope||"")!==scope)return false;
+ if(scope!=="all"&&String(row.scope||"")!==scope)return false;
  const corpus=[row.title,row.publisher,row.topic,row.geo].join(" ").toLowerCase();
  return !q||corpus.includes(q);
 }
