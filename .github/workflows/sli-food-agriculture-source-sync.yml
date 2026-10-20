@@ -10,6 +10,8 @@ on:
       - 'food-agriculture-intelligence.html'
       - 'css/food-governance-hierarchy.css'
       - 'js/food-governance-hierarchy.js'
+      - 'js/food-governance-tree.js'
+      - 'css/food-governance-tree.css'
       - 'data/food-governance-hierarchy.json'
       - 'css/food-agriculture-intelligence.css'
       - 'js/food-agriculture-intelligence.js'
@@ -39,6 +41,7 @@ jobs:
         run: |
           node --check js/food-agriculture-intelligence.js
           node --check js/food-governance-hierarchy.js
+          node --check js/food-governance-tree.js
           node --check js/sli-navigation.js
           python -m py_compile scripts/build_food_agriculture.py
           python tests/test_food_officeholder_watch.py
