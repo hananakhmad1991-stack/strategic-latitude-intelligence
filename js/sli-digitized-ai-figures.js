@@ -7,7 +7,7 @@ function svg(tag,attrs,txt){const n=document.createElementNS(NS,tag);Object.entr
 const fmt=x=>Number(x).toLocaleString("id-ID",{maximumFractionDigits:2});
 const en=()=>document.documentElement.lang.toLowerCase().startsWith("en");
 function chart(root,d){
-root.classList.add("sli-figure-atlas");
+root.classList.add("sli-figure-atlas");root.setAttribute("data-sli-visual","source-verified-stanford-figures");
 const heading=el("h3",en()?"Digitized original-report figures":"Grafik laporan asli yang telah didigitalisasi");
 const selectWrap=el("div");selectWrap.className="sli-figure-select";
 const lab=el("label",en()?"Choose figure":"Pilih grafik");const select=el("select");lab.append(select);selectWrap.append(lab);
@@ -41,6 +41,18 @@ function bars(f){
  addText(v,L+w+7,y+17,fmt(r.count),11,"#eef5f9","start");
  });addText(v,L,H-4,en()?"Facility count, 2025 (linear scale)":"Jumlah fasilitas, 2025 (skala linear)",11,"#cbdfe7","start");return v;
 }
+function registerExporter(){
+ const f=d.figures[Number(select.value)||0],isPower=f.id.includes("power");
+ const svgNode=plot.querySelector("svg");if(!svgNode||!window.SLIVisualExport?.register)return;
+ window.SLIVisualExport.register(svgNode,{
+  getData:()=>({headers:isPower?["Quarter","Estimated power capacity (GW)"]:["Country","Data center facilities (count)"],
+   rows:f.values.map(r=>isPower?[r.period,r.value_gw]:[r.country,r.count]),kind:"verified-provider"}),
+  getMeta:()=>({title:en()?f.title_en:f.title_id,source:f.source_credit,
+   sourceUrl:d.source.official_url,period:isPower?"2022Q1–2025Q4":"2025",
+   completeness:"Exact printed numeric source-label series; "+f.statistical_status+". "+f.caution_en})
+ });
+}
+document.addEventListener("sli:exportready",registerExporter);
 function show(){
  const f=d.figures[Number(select.value)||0],isPower=f.id.includes("power");
  meta.textContent=f.source_credit+" · Figure "+f.figure_number+" · PDF "+f.pdf_page+" · "+(en()?"Published numbers, not independent study validation":"Angka terbitan, bukan validasi independen studi asal");
@@ -51,6 +63,7 @@ function show(){
  const thead=el("thead"),tr=el("tr");[isPower?"Kuartal":"Negara",isPower?"Estimasi daya (GW)":"Fasilitas"].forEach(h=>tr.append(el("th",h)));thead.append(tr);
  const tbody=el("tbody");f.values.forEach(r=>{const row=el("tr");row.append(el("td",isPower?r.period:r.country),el("td",fmt(isPower?r.value_gw:r.count)));tbody.append(row)});
  table.replaceChildren(thead,tbody);
+ registerExporter();
 }
 select.addEventListener("change",show);show();
 }
