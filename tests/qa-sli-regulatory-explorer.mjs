@@ -66,8 +66,8 @@ test("Expanded legal register includes 2026 amendments, partial repeals, and dis
 
 test("Regional legal provenance and legacy RTRW are reviewable without fake OJK enactment",()=>{
  const nodes=new Map(law.nodes.map(n=>[n.id,n]));
- assert.ok(law.nodes.length>=149);
- assert.ok(law.edges.length>=193);
+ assert.ok(law.nodes.length>=153);
+ assert.ok(law.edges.length>=198);
  assert.equal(nodes.get("perda_magelang_rtrwold2011").status,"repealed");
  assert.equal(nodes.get("pojk51sustain2017").status,"check_current");
  assert.match(nodes.get("pojk51sustain2017").note,/RANCANGAN/);
@@ -76,4 +76,14 @@ test("Regional legal provenance and legacy RTRW are reviewable without fake OJK 
   assert.equal(nodes.get(id).source_checked_at,"2026-10-20");
  }
  assert.ok(law.edges.some(x=>x.from==="perda_magelang_rtrw2024"&&x.to==="perda_magelang_rtrwold2011"&&x.type==="supersedes_noncurrent_record"));
+});
+
+test("Bengkulu PDRD and HKPD fiscal change histories remain distinct",()=>{
+ const n=new Map(law.nodes.map(x=>[x.id,x]));
+ assert.equal(n.get("pp10pdrdold2021").status,"repealed");
+ assert.equal(n.get("pp35hkpd2023").status,"check_current");
+ assert.equal(n.get("perda_bengkulu_pdrd2023").status,"amended");
+ assert.equal(n.get("perda_bengkulu_pdrd2026").status,"amending_instrument");
+ assert.ok(law.edges.some(x=>x.from==="pp35hkpd2023"&&x.to==="pp10pdrdold2021"&&x.type==="repeals"));
+ assert.ok(law.edges.some(x=>x.from==="perda_bengkulu_pdrd2023"&&x.to==="perda_bengkulu_pdrd2026"&&x.type==="amended_by"));
 });
