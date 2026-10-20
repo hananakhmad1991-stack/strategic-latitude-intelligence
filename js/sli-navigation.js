@@ -2,46 +2,46 @@
    Static local links only, no analytics, redirects, network dependency or injected source data. */
 (()=>{'use strict';
 const groups=[
- ['Start here','Mulai di sini','overview','terminal','research','guide','membership'],
- ['Investment & regions','Investasi & daerah','investment','entities','macro','opportunity','province','gini','labs'],
- ['Energy, trade & assets','Energi, perdagangan & aset','energy','map','trade','minerals','electricity','ruptl'],
+ ['Start & research tools','Mulai & perangkat riset','overview','terminal','research','guide','membership'],
+ ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','investment','entities','province','opportunity','gini','labs'],
+ ['Energy, minerals & trade','Energi, mineral & perdagangan','energy','electricity','ruptl','minerals','trade','map'],
  ['Food & agriculture','Pangan & pertanian','food'],
- ['Technology & AI','Teknologi & AI','ai','aihub','komdigi','digital','digitalgov'],
- ['Policy, environment & intelligence','Kebijakan, lingkungan & intelijen','policy','geopolitics','indo','climate','ria'],
- ['Reference & transparency','Referensi & transparansi','glossary','freshness']
+ ['AI & digital transformation','AI & transformasi digital','ai','aihub','komdigi','digital','digitalgov'],
+ ['Policy, geopolitics & environment','Kebijakan, geopolitik & lingkungan','policy','ria','geopolitics','indo','climate'],
+ ['Reference & quality','Referensi & kualitas','glossary','freshness']
 ];
 const modules={
- overview:['Overview · Big picture','Gambaran besar · Overview','index.html#overview','National executive context; go deeper for tables, project records and source detail.','Konteks nasional; buka modul detail untuk tabel dan sumber.'],
+ overview:['Full Overview · Strategic picture','Overview Lengkap · Gambaran Strategis','index.html#overview','National executive context; go deeper for tables, project records and source detail.','Konteks nasional; buka modul detail untuk tabel dan sumber.'],
  datahub:['SLI Data Library · BPS / IEA / PLN','Perpustakaan Data SLI · BPS / IEA / PLN','sli-sector-data-library.html','Source-linked, dated crime, democracy, socioeconomic, critical mineral and environmental data; no missing figures invented.','Dataset kriminalitas, demokrasi, sosial-ekonomi, mineral IEA dan lingkungan, dengan periode serta status sumber yang jelas.'],
  terminal:['SLI Decision Terminal · Cross-source workspace','SLI Decision Terminal · Workspace lintas sumber','sli-decision-terminal.html','Issuer, attributed-news and policy search with local watchlists and Research AI handoff. Not a live trading terminal.','Pencarian emiten, berita, dan regulasi dengan watchlist lokal serta jalur DERGUBA AI. Bukan terminal perdagangan langsung.'],
  research:['DERGUBA AI · SLI Research Intelligence · Owner Test','DERGUBA AI · Asisten Riset SLI · Uji Pemilik','sli-research-ai.html','Owner-only generative research is in limited testing; subscriber access is not active.','Riset generatif masih uji khusus pemilik dengan sumber terbatas; akses pelanggan belum aktif.'],
  membership:['Membership · Open / Pro / Enterprise','Keanggotaan · Open / Pro / Enterprise','sli-membership.html','Plans and early-access requests; payments are not active yet.','Paket dan permintaan akses awal; pembayaran belum aktif.'],
  guide:['User guide · Start here','Panduan pengguna · Mulai di sini','sli-user-guide.html','Task-based paths, navigation, dates, sources, filters and limitations.','Alur penggunaan, navigasi, tanggal, sumber dan batasan.'],
  entities:['Entity Intelligence · People & Projects','Intelijen Entitas · Tokoh & Proyek','sli-entities.html','Browse source-dated organizations, people and projects across sectors.','Telusuri organisasi, tokoh, dan proyek lintas sektor bersumber bertanggal.'],
- investment:['Investment Tracker','Pelacak Investasi','index.html#investment','Projects, investors, capital and execution status.','Proyek, investor, modal dan status pelaksanaan.'],
+ investment:['Investment · Project Tracker','Investasi · Pelacak Proyek','index.html#investment','Projects, investors, capital and execution status.','Proyek, investor, modal dan status pelaksanaan.'],
  macro:['Macroeconomic Intelligence','Intelijen Makroekonomi','indonesia-macroeconomic-intelligence.html','GDP, inflation, external balances and dated national data.','PDB, inflasi, neraca eksternal dan data nasional.'],
- opportunity:['Provincial Opportunity & Stress','Peluang & Tekanan Provinsi','provincial-opportunity-engine.html','Compare 38 provincial economies and conditional stress, not predicted returns.','Bandingkan 38 provinsi dan skenario, bukan prediksi keuntungan.'],
- province:['Provincial Investment Dossiers','Profil Investasi 38 Provinsi','provincial-intelligence.html','Industry, energy, PDRB/GRDP, Gini and bounded economic scenarios.','Industri, energi, PDRB, Gini dan skenario ekonomi bersyarat.'],
+ opportunity:['Provincial Comparison & Stress','Perbandingan & Tekanan Provinsi','provincial-opportunity-engine.html','Compare 38 provincial economies and conditional stress, not predicted returns.','Bandingkan 38 provinsi dan skenario, bukan prediksi keuntungan.'],
+ province:['Provincial Intelligence · Dossiers','Intelijen Provinsi · Profil Daerah','provincial-intelligence.html','Industry, energy, PDRB/GRDP, Gini and bounded economic scenarios.','Industri, energi, PDRB, Gini dan skenario ekonomi bersyarat.'],
  gini:['Gini Ratio · Expenditure Inequality','Rasio Gini · Ketimpangan Pengeluaran','gini-inequality.html','BPS expenditure inequality, not income or wealth inequality.','Ketimpangan pengeluaran BPS, bukan pendapatan atau kekayaan.'],
  labs:['Investor & Scenario Labs','Lab Investor & Skenario','intelligence-labs.html','Source-linked screening and user-supplied model assumptions.','Penyaringan berbasis sumber dan asumsi model dari pengguna.'],
- energy:['Energy Security','Ketahanan Energi','index.html#energy','Oil, gas, power, biofuels, transition, governance and resilience.','Migas, listrik, bioenergi, transisi dan tata kelola.'],
+ energy:['Energy Security · Overview','Ketahanan Energi · Gambaran Umum','index.html#energy','Oil, gas, power, biofuels, transition, governance and resilience.','Migas, listrik, bioenergi, transisi dan tata kelola.'],
  food:['Food & Agriculture Intelligence','Intelijen Pangan & Pertanian','food-agriculture-intelligence.html','Official-date agricultural trade, farmer indices, food prices, institutions, exports and evidence assessments.','Perdagangan pertanian, NTP, harga pangan, kelembagaan dan analisis bersumber resmi.'],
  map:['Strategic Map','Peta Strategis','index.html#map','Geographic evidence with varying precision, status and source dates.','Bukti spasial dengan akurasi, status dan periode berbeda.'],
  trade:['Trade Flows','Arus Perdagangan','index.html#trade','Commodity trade, partners, balances and coverage conventions.','Komoditas, negara mitra, neraca dan cakupan data.'],
- minerals:['Critical Minerals','Mineral Kritis','index.html#minerals','Extraction, processing, reserves, ownership and project status.','Ekstraksi, pengolahan, cadangan, kepemilikan dan status.'],
+ minerals:['Critical Minerals · Overview','Mineral Kritis · Gambaran Umum','index.html#minerals','Extraction, processing, reserves, ownership and project status.','Ekstraksi, pengolahan, cadangan, kepemilikan dan status.'],
  electricity:['PLN Electricity Statistics','Statistik Ketenagalistrikan PLN','pln-electricity-statistics.html','Electricity source register; distinguish households, villages and grid reliability.','Registri data PLN; bedakan rumah tangga, desa dan keandalan.'],
  ruptl:['PLN RUPTL & Grid Investment','RUPTL PLN & Investasi Jaringan','pln-ruptl-energy-investment.html','Planned infrastructure and source-qualified power investment.','Prasarana terencana dan investasi tenaga listrik.'],
- ai:['AI Infrastructure','Infrastruktur AI','index.html#ai','Technology and infrastructure big-picture section.','Gambaran sektor teknologi dan infrastruktur.'],
- aihub:['AI Intelligence Hub','Pusat Intelijen AI','ai-intelligence-hub.html','Detailed projects, power, digital infrastructure and specialized AI research.','Proyek, kelistrikan, infrastruktur dan riset AI.'],
+ ai:['AI Infrastructure · Overview','Infrastruktur AI · Gambaran Umum','index.html#ai','Technology and infrastructure big-picture section.','Gambaran sektor teknologi dan infrastruktur.'],
+ aihub:['AI Projects & Compute Intelligence','Intelijen Proyek AI & Komputasi','ai-intelligence-hub.html','Detailed projects, power, digital infrastructure and specialized AI research.','Proyek, kelistrikan, infrastruktur dan riset AI.'],
  komdigi:['Komdigi Infrastructure 2025','Infrastruktur Komdigi 2025','ai-infrastructure.html','Official-source digital connectivity data and exports.','Data konektivitas dan ekspor bersumber resmi.'],
  digital:['Digital Economy Readiness','Kesiapan Ekonomi Digital','digital-economy-readiness.html','Readiness, connectivity, talent and public digital services.','Kesiapan, konektivitas, talenta dan layanan digital.'],
  digitalgov:['Digital Governance & Data Centres','Tata Kelola Digital & Pusat Data','digital-governance-data-centers.html','Public sector digital infrastructure and data governance.','Infrastruktur digital pemerintah dan tata kelola data.'],
- policy:['Policy & Risk','Kebijakan & Risiko','index.html#policy','Policy summary and evidence-linked regulatory context.','Ringkasan kebijakan dan konteks regulasi.'],
+ policy:['Policy & Regulation · Overview','Kebijakan & Regulasi · Gambaran Umum','index.html#policy','Policy summary and evidence-linked regulatory context.','Ringkasan kebijakan dan konteks regulasi.'],
   geopolitics:['Geopolitical Intelligence','Intelijen Geopolitik','index.html#geopolitics','Six geopolitical theatres, Indonesia exposure, dated official metrics and secondary-news monitoring.','Enam tema geopolitik, paparan Indonesia, data resmi bertanggal dan monitoring berita sekunder.'],
- indo:['Indonesia Intelligence','Intelijen Indonesia','geopolitical-impact-assessment.html','Integrated geopolitical, economy, regional and public safety intelligence.','Intelijen geopolitik, ekonomi, wilayah dan keselamatan publik.'],
+ indo:['Indonesia Intelligence · Domestic & Regional','Intelijen Indonesia · Domestik & Daerah','geopolitical-impact-assessment.html','Integrated geopolitical, economy, regional and public safety intelligence.','Intelijen geopolitik, ekonomi, wilayah dan keselamatan publik.'],
  climate:['Climate & Environment','Iklim & Lingkungan','climate-environment.html','Environmental exposure, dated monitoring and official alerts.','Risiko lingkungan, monitoring dan peringatan resmi.'],
- ria:['Policy & Regulatory Intelligence','Intelijen Kebijakan & Regulasi','policy-regulatory-intelligence.html','Rules, institutional implementation and linked policy evaluations.','Regulasi, pelaksana dan evaluasi kebijakan.'],
- glossary:['Glossary & Methodology','Glosarium & Metodologi','sli-glossary-methodology.html','Single canonical definitions, methods, units, sources and caveats.','Satu sumber definisi, metodologi, satuan dan batasan.'],
+ ria:['Regulatory Instruments & Institutions','Instrumen Regulasi & Kelembagaan','policy-regulatory-intelligence.html','Rules, institutional implementation and linked policy evaluations.','Regulasi, pelaksana dan evaluasi kebijakan.'],
+ glossary:['Glossary & Methodology · Reference','Glosarium & Metodologi · Referensi','sli-glossary-methodology.html','Single canonical definitions, methods, units, sources and caveats.','Satu sumber definisi, metodologi, satuan dan batasan.'],
  freshness:['Data Freshness & QA','Kebaruan Data & QA','sli-data-automation-center.html','Review latest observed period, update coverage and system QA.','Periksa periode observasi, pembaruan dan pengujian.'],
  methodology:['Research Methods · Main Site','Metodologi · Situs Utama','index.html#methodology','Concise research principles and links to detailed methodology.','Prinsip riset ringkas dan tautan metodologi lengkap.'],
  about:['About SLI','Tentang SLI','index.html#about','Editorial purpose, independence and research contact.','Tujuan editorial, independensi dan kontak riset.']
@@ -110,7 +110,8 @@ function renderPlatformMast(){
  summary.setAttribute('aria-label',text('Browse SLI sector dashboards','Jelajahi dashboard sektoral SLI'));
  explorer.append(summary);
  const sectors=node('div','sli-platform-sector-menu');
- // Keep source datasets under their parent domains, not a competing first-level category.
+ // Canonical information architecture: seven progressively disclosed topics.
+ // Specialist pages and source observations remain owned by ONE substantive category.
  const topicalEvidence={
   macro:[['Socioeconomic provincial data','Data sosial-ekonomi provinsi','socio']],
   energy:[['PLN reliability data','Data keandalan PLN','power'],['RUPTL source tables','Tabel sumber RUPTL','ruptl']],
@@ -120,50 +121,47 @@ function renderPlatformMast(){
   indo:[['Public safety indicators','Indikator keamanan publik','security']],
   climate:[['Climate & environment evidence','Bukti iklim & lingkungan','environment'],['BNPB disaster history','Riwayat bencana BNPB','disasters']]
  };
- for(const group of groups){
-  const col=node('div','sli-platform-sector-group');col.append(node('h3','',text(group[0],group[1])));
+ const specialistByGroup={
+  0:[['Research evidence preview','Pratinjau bukti riset','sli-research-evidence-preview.html']],
+  1:[['Investment navigator','Navigator investasi','indonesia-investment-navigator.html']],
+  2:[['Regional PLN grid baseline','Kondisi jaringan regional PLN','pln-regional-grid-baseline-2024.html'],
+     ['RUPTL source intelligence','Intelijen sumber RUPTL','pln-ruptl-2025-2034-source-intelligence.html'],
+     ['RUPTL investor digitization','Digitalisasi RUPTL bagi investor','ruplt-investor-digitization.html']],
+  4:[['Electricity demand forecast','Proyeksi permintaan listrik','ai-electricity-demand-forecast.html'],
+     ['AI investment geography','Sebaran investasi AI','ai-investment-geography.html'],
+     ['AI investors & partner projects','Investor & mitra proyek AI','ai-investor-layer.html'],
+     ['Project grid & finance','Jaringan & pembiayaan proyek','ai-project-grid-finance.html'],
+     ['Regional grid opportunities','Peluang jaringan regional','ai-regional-grid-opportunities.html'],
+     ['AI compute & power','Komputasi AI & listrik','indonesia-ai-compute-power.html'],
+     ['International AI benchmarks','Pembanding AI internasional','indonesia-ai-global-benchmarks.html'],
+     ['AI evidence inventory','Inventaris bukti AI','indonesia-ai-source-inventory.html']],
+  5:[['Policy impact evaluation','Evaluasi dampak kebijakan','policy-impact-evaluation.html'],
+     ['Sector regulatory impact','Dampak regulasi sektoral','policy-sector-ria.html']]
+ };
+ for(const [i,group] of groups.entries()){
+  const col=node('details','sli-platform-sector-group');
+  const header=node('summary','sli-platform-sector-heading');
+  header.append(node('span','',text(group[0],group[1])));
+  header.append(node('small','',String(group.length-2+(specialistByGroup[i]?.length||0))+' '+text('dashboards','dashboard')));
+  col.append(header);
+  const items=node('div','sli-platform-group-links');
   for(const id of group.slice(2)){
-   const a=link(id);if(id===current)a.setAttribute('aria-current','page');col.append(a);
+   const a=link(id);if(id===current){a.setAttribute('aria-current','page');col.open=true}
+   items.append(a);
    for(const [en,bahasa,anchor] of topicalEvidence[id]||[]){
     const related=node('a','sli-platform-topic-source',text(en,bahasa));
-    related.href='./sli-sector-data-library.html#'+anchor;
-    col.append(related);
+    related.href='./sli-sector-data-library.html#'+anchor;items.append(related);
    }
   }
-  sectors.append(col);
- }
- // Direct routes for the remaining specialist pages; none of the full datasets are removed.
- const specialist=[
-  ['AI project & compute',[
-    ['Electricity demand forecast','ai-electricity-demand-forecast.html'],
-    ['AI investment geography','ai-investment-geography.html'],
-    ['AI investors & partner projects','ai-investor-layer.html'],
-    ['Project grid & finance','ai-project-grid-finance.html'],
-    ['Regional grid opportunities','ai-regional-grid-opportunities.html'],
-    ['AI compute & power','indonesia-ai-compute-power.html'],
-    ['International AI benchmarks','indonesia-ai-global-benchmarks.html'],
-    ['AI evidence inventory','indonesia-ai-source-inventory.html']]],
-  ['Energy & investment detail',[
-    ['Investment navigator','indonesia-investment-navigator.html'],
-    ['Regional PLN grid baseline','pln-regional-grid-baseline-2024.html'],
-    ['RUPTL source intelligence','pln-ruptl-2025-2034-source-intelligence.html'],
-    ['RUPTL investor digitization','ruplt-investor-digitization.html']]],
-  ['Policy & research detail',[
-    ['Policy impact evaluation','policy-impact-evaluation.html'],
-    ['Sector regulatory impact','policy-sector-ria.html'],
-    ['Research evidence preview','sli-research-evidence-preview.html'],
-    ['SLI editorial background','index.html#about'],
-    ['Research methodology','index.html#methodology']]]
- ];
- for(const [heading,items] of specialist){
-  const col=node('div','sli-platform-sector-group');
-  col.append(node('h3','',heading));
-  for(const [title,url] of items){
-   const a=node('a','',title);a.href='./'+url;
-   if(path===url)a.setAttribute('aria-current','page');
-   col.append(a);
+  if(specialistByGroup[i]?.length){
+   items.append(node('div','sli-platform-subheading',text('Specialist dashboards','Dashboard khusus')));
+   for(const [en,bahasa,url] of specialistByGroup[i]){
+    const item=node('a','sli-platform-specialist-link',text(en,bahasa));item.href='./'+url;
+    if(path===url){item.setAttribute('aria-current','page');col.open=true}
+    items.append(item);
+   }
   }
-  sectors.append(col);
+  col.append(items);sectors.append(col);
  }
  explorer.append(sectors);
  primary.append(explorer);
