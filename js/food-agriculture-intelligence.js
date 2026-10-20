@@ -158,6 +158,7 @@ function renderPriceDetail(){
  root.append(anchor(rowSource(data,x.table),t("Inspect original price table ↗","Periksa tabel harga sumber ↗")));
 }
 function renderOrg(){
+  if(window.SLIFoodGovernance&&typeof window.SLIFoodGovernance.render==="function"){window.SLIFoodGovernance.render();return}
  const root=$("faOrgGraph");root.replaceChildren();
  for(const group of sections){
   root.append(el("h4",en()?group.nameEn:group.name));
