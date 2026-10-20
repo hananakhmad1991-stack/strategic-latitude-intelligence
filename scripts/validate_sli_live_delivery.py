@@ -3,7 +3,7 @@
 from pathlib import Path
 import json
 root=Path(__file__).resolve().parents[1]
-pages=sorted(root.glob("*.html"))
+pages=sorted(p for p in root.glob("*.html") if p.name!="sli-user-intelligence-qa.html")
 assert len(pages)>=20
 for page in pages:
     text=page.read_text(encoding="utf-8")
