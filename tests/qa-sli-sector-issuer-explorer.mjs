@@ -5,6 +5,9 @@ import vm from "node:vm";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const groups=JSON.parse(read("data/sli-corporate-group-registry.json"));
 const universe=JSON.parse(read("data/sli-idx-issuer-universe.json"));
+const expectedIndex=new Map(universe.records.map(n=>[n.ticker,n]));
+for(const n of groups.records)if(n.exchange==='IDX'&&n.ticker&&!expectedIndex.has(n.ticker))expectedIndex.set(n.ticker,{ticker:n.ticker,sector:n.sector});
+const expectedUniverse=[...expectedIndex.values()];
 function mount(){
  class El{
   constructor(tag){this.tagName=tag;this.children=[];this.attrs={};this.dataset={};this.listeners={};this.classList={add(){}};this.value='';this.textContent='';this.style={};this.hidden=false;this.id='';this.parentNode=null;}
@@ -57,7 +60,7 @@ test("Coal, minerals, AI/tech and food select complete sector ticker set, and 12
  const select=get('sliCgSector');
  for(const sector of ['coal','minerals','technology','food','finance']){
   select.value=sector;select.listeners.change();
-  const expected=universe.records.filter(x=>x.sector===sector).length;
+  const expected=expectedUniverse.filter(x=>x.sector===sector).length;
   assert.ok(expected>10,sector);
   assert.equal(walk(get('sliCgTree')).filter(x=>x.dataset?.issuerTicker).length,expected,sector);
   assert.equal(get('sliCgIssuerRows').children.length,expected,sector);
@@ -68,7 +71,7 @@ test("Coal, minerals, AI/tech and food select complete sector ticker set, and 12
  assert.ok(more,"Pagination control needed when catalogue has >60");
  more.click();
  assert.equal(walk(get('sliCgTree')).filter(x=>x.dataset?.issuerTicker).length,120);
- assert.equal(get('sliCgIssuerRows').children.length,universe.records.length,"Disclosure table must not be limited to 40 groups");
+ assert.equal(get('sliCgIssuerRows').children.length,expectedUniverse.length,"Disclosure table must include IDX catalogue and independently sourced group-only tickers");
 });
 test("Ticker search and group-tree jump preserve evidence status and avoid fictitious children",async()=>{
  const {get,walk}=await ready();
