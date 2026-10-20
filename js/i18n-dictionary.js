@@ -2555,3 +2555,6 @@ window.SLI_TRANSLATIONS_ID.set("Democracy & governance data ↗","Data demokrasi
 window.SLI_TRANSLATIONS_ID.set("Public safety indicators ↗","Indikator keamanan publik ↗");
 window.SLI_TRANSLATIONS_ID.set("Climate & environment data ↗","Data iklim & lingkungan ↗");
 window.SLI_TRANSLATIONS_ID.set("BNPB disaster records ↗","Catatan bencana BNPB ↗");
+
+/* Approved bilingual homepage label for the canonical detailed AI project hub. */
+window.SLI_TRANSLATIONS_ID.set("AI Intelligence Hub","Pusat Intelijen AI");
