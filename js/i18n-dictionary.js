@@ -2470,3 +2470,6 @@ window.SLI_TRANSLATIONS_ID.set("Entity dossiers →","Profil entitas →");
 window.SLI_TRANSLATIONS_ID.set("Food & Agriculture","Pangan & Pertanian");
 window.SLI_TRANSLATIONS_ID.set("Agricultural trade, farmer welfare, prices, institutions and food resilience","Perdagangan pertanian, kesejahteraan petani, harga, kelembagaan, dan ketahanan pangan");
 window.SLI_TRANSLATIONS_ID.set("Food Intelligence →","Intelijen Pangan →");
+
+/* Approved bilingual IDX provider watchlist loading indicator. */
+window.SLI_TRANSLATIONS_ID.set("Loading IDX issuer map…","Memuat peta emiten IDX…");
