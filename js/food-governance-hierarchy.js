@@ -100,7 +100,9 @@ function profile(panel,db){
  const item=db.nodes.find(n=>n.id===state.selected);
  if(!item){target.append(E("p",null,T("Pilih satu lembaga untuk melihat mandat dan sumbernya.","Select an institution to inspect its mandate and sources.")));return}
  const g=groupOf(item.id);
- target.append(E("span","fa-gvn-overline",g?label(g):""),E("h3",null,T(item.name,item.en)));
+ target.append(E("span","fa-gvn-overline",g?label(g):""));
+ const visual=E("div","fa-gvn-actor-name");if(window.SLIEntityIdentity?.brand)visual.append(window.SLIEntityIdentity.brand(item.name,"government"));
+ visual.append(E("h3",null,T(item.name,item.en)));target.append(visual);
  if(item.person&&item.confirmed){target.append(E("p","fa-gvn-leader",item.person+" · "+T("Pejabat","Officeholder")),
    E("p","fa-gvn-stamp",T("Konfirmasi resmi: ","Official reference: ")+item.confirmed))}
  else target.append(E("p","fa-gvn-stamp",T("Nama pimpinan belum terkonfirmasi oleh dokumen resmi bertanggal dalam registri.","No dated primary-source officeholder confirmation is stored.")));
@@ -166,7 +168,8 @@ function draw(root,inspector,db){
   const tiles=E("div","fa-gvn-tiles");
   rows.forEach(n=>{const g=groupOf(n.id),b=button(T(n.name,n.en),"fa-gvn-tile"+(n.id===state.selected?" active":""),()=>{state.selected=n.id;redraw()});
     b.setAttribute("aria-pressed",String(n.id===state.selected));
-    b.append(E("span",null,g?label(g):""));tiles.append(b)});
+    const visual=E("span","fa-gvn-entity-row");if(window.SLIEntityIdentity?.brand)visual.append(window.SLIEntityIdentity.brand(n.name,"government"));
+    visual.append(E("strong",null,T(n.name,n.en)));b.textContent="";b.append(visual,E("span",null,g?label(g):""));tiles.append(b)});
   left.append(tiles);
   if(rows.length===0)left.append(E("p","fa-gvn-noresults",T("Tidak ditemukan. Hapus kata pencarian atau ubah filter.","Nothing matches. Clear the search or change filters.")));
   profile(inspector,db);
