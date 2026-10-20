@@ -66,3 +66,15 @@
 .sli-cg-company-tags{font-size:11px;color:#cbddea;background:#19394b;border:1px solid #456a7f;padding:9px 11px;border-radius:8px}
 .sli-cg-tabbar button:focus-visible,.sli-cg-sectorbar select:focus-visible{outline:2px solid #f0d397;outline-offset:2px}
 @media(max-width:700px){.sli-cg-sectorbar{display:block}.sli-cg-sectorbar select{width:100%;margin-bottom:7px}.sli-cg-tabbar{max-height:200px}.sli-cg-tabbar button{max-width:none}.sli-cg-finance .sli-cg-fields{grid-template-columns:1fr;gap:2px}.sli-cg-finance .sli-cg-fields dd{margin-bottom:8px}}
+
+.sli-cg-issuer-list{background:#0d2639;border:1px solid #395a70;border-radius:10px;margin-top:18px;padding:12px 15px}
+.sli-cg-issuer-list summary{cursor:pointer;font-weight:750;color:#edd09a;padding:5px 0;font-size:13px}
+.sli-cg-issuer-list summary:focus-visible{outline:2px solid #e9ca86;outline-offset:3px}
+.sli-cg-issuer-scroll{overflow-x:auto;max-height:570px;overflow-y:auto;border:1px solid #365469;border-radius:8px}
+.sli-cg-issuer-scroll table{border-collapse:collapse;width:100%;min-width:1150px;font:500 11px/1.45 system-ui}
+.sli-cg-issuer-scroll th{position:sticky;top:0;background:#244057;color:#efdcbb;text-align:left;padding:10px;border-bottom:1px solid #698598;z-index:1}
+.sli-cg-issuer-scroll td{padding:9px 10px;color:#d7e5ed;border-bottom:1px solid #324d63;text-align:left;white-space:normal}
+.sli-cg-issuer-scroll td:nth-child(4){color:#edc987;font-weight:750}
+.sli-cg-issuer-scroll tr:hover td{background:#18394f}
+.sli-cg-issuer-open{background:none;border:0;padding:0;color:#f2d99f;cursor:pointer;text-align:left;font-weight:700;text-decoration:underline;text-decoration-color:#8e7858}
+.sli-cg-issuer-open:focus-visible{outline:2px solid #efd097}
