@@ -21,7 +21,13 @@ jobs:
           import json
           from pathlib import Path
           d=json.loads(Path("artifacts/sli-bnpb-gis-district-2025-review.json").read_text())
-          assert d["status"].endswith("not_yet_accepted_by_editor")
+          assert d["status"]=="blocked_gis_vs_province_event_definition_conflict_not_published"
+          assert d["source_definition_consistency_gate"]=="blocked_pending_aggregation_method_review"
+          assert len(d["unmatched_source_rows"])>=1
+          for q in d["source_comparison_with_2025_provincial_bnpb"].values():
+              assert q["same_event_count_definition_verified"] is False
+              assert q["ratio"]>1.15, "Expected GIS vs official provincial scope discrepancy"
+          print("BNPB_GIS2025_BLOCKER_CONFIRMED_UNPUBLISHED")
           assert len(d["records"])==d["record_count"]
           assert len({x["admin_code"] for x in d["records"]})==d["record_count"]
           assert d["record_count"]>=300
