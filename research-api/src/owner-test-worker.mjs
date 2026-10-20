@@ -23,6 +23,7 @@ import {legalProvisionEvidence} from "./legal-provisions.mjs";
 import {parisTreatyTimelineEvidence} from "./treaty-status.mjs";
 import {parisImplementationContextEvidence} from "./paris-policy-context.mjs";
 import {auditLegalArticleCitations,recoverUnsupportedLegalAnswer} from "./legal-citation-audit.mjs";
+import {missingLegalArticleBrief} from "./legal-source-limited.mjs";
 import {fetchEnergyMonitoring,monitoringPromptContext} from "./monitoring-context.mjs";
 import {fetchReviewedSecondaryArticles} from "./secondary-news.mjs";
 import {fetchMonitoringEvidence,selectMonitoringNewsEvidence} from "./monitoring-evidence.mjs";
@@ -170,6 +171,39 @@ export default{
    consent:body.external_search===true,hasAttachments:ownerFiles.length>0,focusedLegalReading});
   const evidence=[...articleEvidence,...treatyChronologyEvidence,...implementationEvidence,...legalEvidence,
    ...ccsEvidence,...primaryEvidence,...unified.documents,...live.documents,...secondaryEvidence];
+
+  // No matching reviewed original Pasal: do not ask a generative model to
+  // invent it and then delete paragraphs. Return a complete, bounded report.
+  const absentArticle=focusedArticleReading?missingLegalArticleBrief({
+   question:payload.question,articleEvidence,policyEvidence:legalEvidence,language:payload.language
+  }):null;
+  if(absentArticle){
+   const guard=auditLegalArticleCitations(absentArticle.answer,[]);
+   if(!guard.pass)return send(502,{error:"source_limited_legal_safety_failure"},origin);
+   return send(200,{
+    mode:"generative_rag",research_format:payload.mode,
+    response_basis:"deterministic_missing_article_not_model_generated",
+    answer:absentArticle.answer,charts:[],sources:absentArticle.sources,
+    evidence_status:"owner_staging_source_limited_legal_review",
+    corpus_as_of:energyCorpusAudit().assessment_date,
+    retrieved_sources_count:absentArticle.sources.length,
+    reviewed_secondary_sources:0,attributed_secondary_sources:0,
+    quality_audit:{
+     review_scope:absentArticle.review_scope,
+     structural_status:"source_limited_not_primary_article_verified",
+     issues:["named_article_not_in_reviewed_corpus","current_consolidated_status_not_certified"],
+     legal_article_gate:{
+      pass:true,reviewed_article_anchors:[],source_limited:true,
+      requested_article:absentArticle.request.article,
+      requested_law:absentArticle.request.law_ref,
+      article_text_verified:false,recovered:false,omitted_paragraphs:0
+     }
+    },model_route:"not_invoked_missing_legal_article",
+    external_evidence:{status:"not_requested_for_focused_legal_article"},
+    dashboard_evidence:{status:"not_requested_for_focused_legal_article",indexed_datasets:0,
+     total_indexed_records:0,selected_records:0}
+   },origin);
+  }
   // No source match does not prevent academic methodology assistance.
   // Without evidence, only a clearly scoped research-design response is allowed;
   // there is no empirical claim, SLI numeric data or fabricated citation.
