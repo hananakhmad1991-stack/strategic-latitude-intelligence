@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
 <link rel="stylesheet" href="./css/food-agriculture-intelligence.css?v=20261020-food1">
 <link rel="stylesheet" href="./css/food-governance-hierarchy.css?v=20261020-functional-v3">
+<link rel="stylesheet" href="./css/food-governance-tree.css?v=20261020-dual-v1">
 </head>
 <body>
 <main class="fa-shell" id="foodAgricultureRoot">
@@ -69,12 +70,28 @@
   </div>
  </section>
  <section id="fa-governance" class="fa-section">
-  <div class="fa-heading"><div><span class="fa-step">05 / INSTITUTIONAL INTELLIGENCE</span><h2 data-en="Food policy and agricultural governance" data-id="Kebijakan pangan & tata kelola pertanian">Kebijakan pangan & tata kelola pertanian</h2></div><small data-en="Functional accountability, not legal subordination" data-id="Hubungan tugas/fungsi, bukan otomatis hierarki hukum">Hubungan tugas/fungsi, bukan otomatis hierarki hukum</small></div>
-  <p class="fa-note" data-en="Explore functional links across institutions, search individual actors and trace policy issues. Each institution opens its mandate, source-dated leadership, authority boundaries and primary evidence." data-id="Telusuri hubungan antarlembaga melalui simpul interaktif, cari aktor, filter jenis instansi, atau pilih satu isu pangan. Klik lembaga untuk melihat mandat, pimpinan bertanggal, batas kewenangan dan rujukan resmi.">Klik lembaga untuk melihat mandat, fungsi pelaksanaan, dan sumber primer. Koordinator, regulator, penerbit statistik, dan operator BUMN dibedakan.</p>
-  <div class="fa-two fa-two-wide">
-   <article class="fa-card"><h3 data-en="Functional institutional network & responsibilities" data-id="Jaringan kelembagaan & pembagian tanggung jawab">Peta kelembagaan & batas kewenangan</h3><div id="faOrgGraph" class="fa-governance-map" role="group" aria-label="Interactive food and agriculture functional accountability network"></div></article>
-   <aside class="fa-card fa-inspector" id="faOrgInspector" aria-live="polite"><span class="fa-step" data-en="INSTITUTION PROFILE" data-id="PROFIL LEMBAGA">PROFIL LEMBAGA</span><div id="faOrgDetail"></div></aside>
-  </div>
+  <div class="fa-heading"><div><span class="fa-step">05 / INSTITUTIONAL INTELLIGENCE</span><h2 data-en="Food policy and agricultural governance" data-id="Kebijakan pangan & tata kelola pertanian">Kebijakan pangan & tata kelola pertanian</h2></div><small data-en="Two complementary views · source-dated" data-id="Dua visualisasi pelengkap · berdasarkan sumber bertanggal">Dua visualisasi pelengkap · berdasarkan sumber bertanggal</small></div>
+  <p class="fa-note" data-en="Both institutional views are available below: a top-down card hierarchy for organization and authority, and a six-hub functional network for relationships and issue tracing. Each has an independent clickable source-linked profile." data-id="Dua tampilan tersedia bersamaan: bagan hierarki berkartu untuk struktur dan kewenangan, serta jaringan enam simpul untuk hubungan antarlembaga dan penelusuran isu. Keduanya memiliki profil interaktif serta sumber masing-masing.">Dua tampilan tersedia bersamaan: bagan hierarki berkartu untuk struktur dan kewenangan, serta jaringan enam simpul untuk hubungan antarlembaga dan penelusuran isu. Keduanya memiliki profil interaktif serta sumber masing-masing.</p>
+  <nav class="fa-view-links" aria-label="Institutional visualization navigation">
+   <a href="#fa-hierarchy" data-en="01 · Institutional hierarchy" data-id="01 · Hierarki kelembagaan">01 · Hierarki kelembagaan</a>
+   <a href="#fa-network" data-en="02 · Functional network" data-id="02 · Jaringan fungsional">02 · Jaringan fungsional</a>
+  </nav>
+  <section id="fa-hierarchy" class="fa-hierarchy-section" aria-labelledby="faHierarchyHeading">
+   <h3 id="faHierarchyHeading" class="fa-view-heading" data-en="Institutional hierarchy & sector mandates" data-id="Hierarki kelembagaan & mandat sektoral">Hierarki kelembagaan & mandat sektoral</h3>
+   <p class="fa-view-desc" data-en="Top-down institutional card map: President, national coordination, technical authorities, internal units, SOE operators, statistics and oversight. Open internal ministry units and select any card to inspect its official responsibilities. Functional links do not imply direct statutory command." data-id="Bagan berkartu dari Presiden, koordinasi nasional, kementerian/badan, unit internal, operator BUMN, hingga statistik dan pengawasan. Buka unit kementerian dan klik kartu untuk memeriksa mandatnya. Hubungan fungsional tidak otomatis berarti garis komando resmi.">Bagan berkartu dari Presiden, koordinasi nasional, kementerian/badan, unit internal, operator BUMN, hingga statistik dan pengawasan. Buka unit kementerian dan klik kartu untuk memeriksa mandatnya. Hubungan fungsional tidak otomatis berarti garis komando resmi.</p>
+   <div class="fa-two fa-tree-layout">
+    <article class="fa-card"><h3 data-en="Organizational structure" data-id="Struktur organisasi">Struktur organisasi</h3><div id="faOrgHierarchy" class="fa-governance-tree" role="group" aria-label="Interactive top-down food institutional hierarchy"></div></article>
+    <aside class="fa-card fa-inspector" id="faOrgHierarchyInspector" aria-live="polite"><span class="fa-step" data-en="HIERARCHY · INSTITUTION PROFILE" data-id="HIERARKI · PROFIL LEMBAGA">HIERARKI · PROFIL LEMBAGA</span><div id="faOrgHierarchyDetail"></div></aside>
+   </div>
+  </section>
+  <section id="fa-network" class="fa-network-section" aria-labelledby="faNetworkHeading">
+   <h3 id="faNetworkHeading" class="fa-view-heading" data-en="Functional accountability & issue network" data-id="Jaringan tanggung jawab & penelusuran isu">Jaringan tanggung jawab & penelusuran isu</h3>
+   <p class="fa-view-desc" data-en="Interactive six-hub network inspired by SLI Oil & Gas: search actors, filter institutional functions, trace food policy issues and inspect source-dated profiles." data-id="Jaringan interaktif enam simpul seperti sektor Migas: cari lembaga, filter fungsi, telusuri isu pangan, dan periksa profil bertanggal serta sumber resmi.">Jaringan interaktif enam simpul seperti sektor Migas: cari lembaga, filter fungsi, telusuri isu pangan, dan periksa profil bertanggal serta sumber resmi.</p>
+   <div class="fa-two fa-two-wide">
+    <article class="fa-card"><h3 data-en="Functional institutional network & responsibilities" data-id="Jaringan kelembagaan & pembagian tanggung jawab">Jaringan kelembagaan & pembagian tanggung jawab</h3><div id="faOrgGraph" class="fa-governance-map" role="group" aria-label="Interactive food and agriculture functional accountability network"></div></article>
+    <aside class="fa-card fa-inspector" id="faOrgInspector" aria-live="polite"><span class="fa-step" data-en="NETWORK · INSTITUTION PROFILE" data-id="JARINGAN · PROFIL LEMBAGA">JARINGAN · PROFIL LEMBAGA</span><div id="faOrgDetail"></div></aside>
+   </div>
+  </section>
  </section>
  <section id="fa-analysis" class="fa-section">
   <div class="fa-heading"><div><span class="fa-step">06 / RESEARCH SYNTHESIS</span><h2 data-en="Overall food and agriculture assessment" data-id="Penilaian menyeluruh pangan & pertanian">Penilaian menyeluruh pangan & pertanian</h2></div><small data-en="Conditional conclusions · explicit evidence periods" data-id="Kesimpulan bersyarat · periode data jelas">Kesimpulan bersyarat · periode data jelas</small></div>
@@ -91,6 +108,7 @@
  <footer class="fa-footer">Strategic Latitude Intelligence · Data with periods, provenance, and human-verifiable methods. © SLI</footer>
 </main>
 <script src="./js/food-governance-hierarchy.js?v=20261020-functional-v3" defer></script>
-<script src="./js/food-agriculture-intelligence.js?v=20261020-food-v2" defer></script>
+<script src="./js/food-governance-tree.js?v=20261020-dual-v1" defer></script>
+<script src="./js/food-agriculture-intelligence.js?v=20261020-dual-v1" defer></script>
 <script src="./js/sli-navigation.js?v=20261019-id-audit9" defer></script>
 </body></html>
