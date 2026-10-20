@@ -47,6 +47,15 @@ on:
       - 'js/sli-secondary-evidence.js'
       - 'tests/qa-sli-secondary-sitewide.mjs'
       - 'sli-interactive-analytics.html'
+      - 'js/sli-province-map.js'
+      - 'css/sli-province-map.css'
+      - 'gini-inequality.html'
+      - 'provincial-intelligence.html'
+      - 'js/sli-bps-gini-explorer.js'
+      - 'js/sli-provincial-nexus-ui.js'
+      - 'js/sli-interactive-analytics.js'
+      - 'tests/qa-sli-province-map.mjs'
+      - 'tests/qa-sli-interactive-analytics.mjs'
       - 'css/sli-navigation.css'
       - 'sli-user-guide.html'
       - 'sli-glossary-methodology.html'
@@ -68,7 +77,7 @@ jobs:
         with:
           node-version: '22'
       - name: Verify all critical scripts, navigation, filters and export controls
-        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs tests/qa-sli-food-agriculture.mjs
+        run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs tests/qa-sli-food-agriculture.mjs tests/qa-sli-province-map.mjs tests/qa-sli-interactive-analytics.mjs
       - name: Sitewide link, inline runtime and search destination integrity
         run: node --test tests/qa-sli-site-integrity.mjs
       - name: Geopolitical chapter JavaScript syntax
@@ -78,6 +87,10 @@ jobs:
           node --check js/sli-navigation.js
           node --check js/food-agriculture-intelligence.js
           node --check js/sli-visual-export.js
+          node --check js/sli-province-map.js
+          node --check js/sli-interactive-analytics.js
+          node --check js/sli-bps-gini-explorer.js
+          node --check js/sli-provincial-nexus-ui.js
           node --check js/sli-visual-export-formats.js
           node --check js/commodity-market-prices.js
           node --check js/sli-macro-overview.js
