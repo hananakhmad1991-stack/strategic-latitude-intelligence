@@ -19,6 +19,8 @@ on:
       - 'data/sli-environment-worldbank-wdi-indonesia.json'
       - 'js/sli-environment-wdi.js'
       - 'data/sli-stanford-2026-digitized-figures.json'
+      - 'data/sli-ai-figure-source-audit.json'
+      - 'js/sli-ai-figure-audit-status.js'
       - 'js/sli-digitized-ai-figures.js'
       - 'css/sli-digitized-ai-figures.css'
       - 'tests/qa-sli-ai-digitized-figures.mjs'
@@ -48,6 +50,8 @@ on:
       - 'data/sli-environment-worldbank-wdi-indonesia.json'
       - 'js/sli-environment-wdi.js'
       - 'data/sli-stanford-2026-digitized-figures.json'
+      - 'data/sli-ai-figure-source-audit.json'
+      - 'js/sli-ai-figure-audit-status.js'
       - 'js/sli-digitized-ai-figures.js'
       - 'css/sli-digitized-ai-figures.css'
       - 'tests/qa-sli-ai-digitized-figures.mjs'
@@ -74,6 +78,7 @@ jobs:
           node --check js/sli-ai-report-evidence.js
           node --check js/sli-environment-wdi.js
           node --check js/sli-digitized-ai-figures.js
+          node --check js/sli-ai-figure-audit-status.js
           node --check js/sli-provincial-nexus-ui.js
           node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs tests/qa-sli-provincial-bnpb-2025.mjs tests/qa-sli-ai-wdi-source-phase2.mjs tests/qa-sli-ai-digitized-figures.mjs
       - name: Validate every page references a real public source dataset
