@@ -2544,3 +2544,14 @@ window.SLI_TRANSLATIONS_ID.set("Public policy & risk","Kebijakan publik & risiko
 window.SLI_TRANSLATIONS_ID.set("Data Source Health ↗","Kesehatan Sumber Data ↗");
 window.SLI_TRANSLATIONS_ID.set("Legislation, directive and foreign-law status must be verified in original issuing registers.","Status peraturan, instruksi, dan hukum asing harus diverifikasi pada registri resmi penerbitnya.");
 window.SLI_TRANSLATIONS_ID.set("BPS/BI/Kemenkeu release periods differ from annual World Bank WDI definitions.","Periode rilis BPS, BI, dan Kemenkeu berbeda dari definisi tahunan WDI Bank Dunia.");
+
+/* SLI topic-owned public evidence navigation · 20 Oct 2026. */
+window.SLI_TRANSLATIONS_ID.set("Provincial socioeconomic data ↗","Data sosial-ekonomi provinsi ↗");
+window.SLI_TRANSLATIONS_ID.set("PLN reliability data ↗","Data keandalan PLN ↗");
+window.SLI_TRANSLATIONS_ID.set("RUPTL source tables ↗","Tabel sumber RUPTL ↗");
+window.SLI_TRANSLATIONS_ID.set("IEA mineral scenarios ↗","Skenario mineral IEA ↗");
+window.SLI_TRANSLATIONS_ID.set("AI report evidence ↗","Bukti laporan AI ↗");
+window.SLI_TRANSLATIONS_ID.set("Democracy & governance data ↗","Data demokrasi & tata kelola ↗");
+window.SLI_TRANSLATIONS_ID.set("Public safety indicators ↗","Indikator keamanan publik ↗");
+window.SLI_TRANSLATIONS_ID.set("Climate & environment data ↗","Data iklim & lingkungan ↗");
+window.SLI_TRANSLATIONS_ID.set("BNPB disaster records ↗","Catatan bencana BNPB ↗");
