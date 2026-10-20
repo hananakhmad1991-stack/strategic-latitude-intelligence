@@ -7,7 +7,7 @@ test("Four original World Bank 4.x figure panels have exact PDF citations, metho
  assert.equal(d.schema,"sli-worldbank-ai-foundations-2025-digitized-figure-panels-v1");
  assert.match(d.source.official_url,/documents1\.worldbank\.org/);
  assert.equal(d.source.independent_primary_study_validation,false);
- assert.equal(d.figures.length,5);
+ assert.equal(d.figures.length,7);
  assert.deepEqual(d.figures.slice(0,4).map(f=>f.figure_number+f.figure_panel),["4.2a","4.2b","4.3c","4.3d"]);
  assert.deepEqual(d.figures.slice(0,4).map(f=>f.pdf_page),[83,83,85,85]);
  for(const f of d.figures.slice(0,4)){
@@ -52,9 +52,9 @@ test("World Bank charts are dynamically integrated into existing AI and Library 
  assert.match(js,/kind:"verified-provider"/);
  assert.doesNotMatch(js,/innerHTML/);
  const audit=JSON.parse(read("data/sli-ai-figure-source-audit.json"));
- assert.equal(audit.already_digitized_numeric_source_figures,10);
- assert.equal(audit.reviewed_numeric_chart_panels,10);
- assert.equal(audit.distinct_digitized_figure_numbers,8);
+ assert.equal(audit.already_digitized_numeric_source_figures,12);
+ assert.equal(audit.reviewed_numeric_chart_panels,12);
+ assert.equal(audit.distinct_digitized_figure_numbers,9);
  assert.equal(audit.text_figure_label_total,409);
  for(const page of ["ai-intelligence-hub.html","sli-sector-data-library.html"]){
   assert.match(read(page),/sli-digitized-ai-figures\.js/);
@@ -79,4 +79,25 @@ test("World Bank original 2.2 has all 36 printed orbital satellites counts from 
  assert.match(js,/f\.chart_type==="multi-series-line"/);
  assert.match(js,/f\.series\.map\(x=>r\[x.key\]\)/);
  assert.match(js,/kind:"verified-provider"/);
+});
+
+test("World Bank original Figure 5.2 pages 96–97 contain exactly 36 printed O*NET occupation/year ratios",()=>{
+ const a=d.figures.find(f=>f.figure_number==="5.2"&&f.figure_panel==="a");
+ const b=d.figures.find(f=>f.figure_number==="5.2"&&f.figure_panel==="b");
+ assert.equal(a.pdf_page,96);assert.equal(b.pdf_page,97);
+ assert.equal(a.unit,"share (0–1)");assert.equal(b.unit,"share (0–1)");
+ assert.equal(a.values.length,9);assert.equal(b.values.length,9);
+ assert.deepEqual(a.values.map(x=>x.value2015),[.90,.87,.64,.54,.52,.45,.31,.23,.14]);
+ assert.deepEqual(a.values.map(x=>x.value2024),[.91,.90,.67,.60,.59,.56,.40,.35,.21]);
+ assert.deepEqual(b.values.map(x=>x.value2015),[.60,.61,.27,.36,.26,.27,.21,.17,.07]);
+ assert.deepEqual(b.values.map(x=>x.value2024),[.63,.60,.28,.37,.29,.28,.22,.19,.07]);
+ for(const x of [a,b]){
+  assert.equal(x.chart_type,"paired-bars");
+  assert.match(x.caution_en,/not measured Indonesian worker usage/);
+  assert.ok(x.values.every(v=>Number.isFinite(v.value2015)&&Number.isFinite(v.value2024)&&v.label_en&&v.label_id));
+ }
+ const ui=read("js/sli-digitized-ai-figures.js");
+ assert.match(ui,/function pairedBars\(f\)/);
+ assert.match(ui,/f\.chart_type==="paired-bars"/);
+ assert.match(ui,/\["Occupation","2015 \(ratio\)","2024 \(ratio\)"\]/);
 });
