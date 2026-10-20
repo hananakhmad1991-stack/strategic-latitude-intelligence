@@ -63,7 +63,7 @@ test("Coal, minerals, AI/tech and food select complete sector ticker set, and 12
   const expected=expectedUniverse.filter(x=>x.sector===sector).length;
   assert.ok(expected>10,sector);
   assert.equal(walk(get('sliCgTree')).filter(x=>x.dataset?.issuerTicker).length,expected,sector);
-  assert.equal(get('sliCgIssuerRows').children.length,expected,sector);
+  assert.equal(get('sliCgIssuerRows').children.length,expected+groups.records.filter(n=>n.listing_status==='listed'&&n.exchange!=='IDX'&&n.sector===sector).length,sector);
  }
  select.value='all';select.listeners.change();
  assert.equal(walk(get('sliCgTree')).filter(x=>x.dataset?.issuerTicker).length,60);
@@ -71,7 +71,7 @@ test("Coal, minerals, AI/tech and food select complete sector ticker set, and 12
  assert.ok(more,"Pagination control needed when catalogue has >60");
  more.click();
  assert.equal(walk(get('sliCgTree')).filter(x=>x.dataset?.issuerTicker).length,120);
- assert.equal(get('sliCgIssuerRows').children.length,expectedUniverse.length,"Disclosure table must include IDX catalogue and independently sourced group-only tickers");
+ assert.equal(get('sliCgIssuerRows').children.length,expectedUniverse.length+groups.records.filter(n=>n.listing_status==='listed'&&n.exchange!=='IDX').length,"Disclosure table includes IDX catalogue plus overseas-listed group companies");
 });
 test("Ticker search and group-tree jump preserve evidence status and avoid fictitious children",async()=>{
  const {get,walk}=await ready();
