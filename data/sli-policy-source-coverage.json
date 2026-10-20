@@ -1,7 +1,7 @@
 {
   "schema": "sli-legal-coverage-register-v1",
   "updated_at": "2026-10-20",
-  "description": "38 province coverage/source discovery matrix, NOT complete regional regulation corpus. Expanded 20 Oct 2026 with 6 additional officially located provincial legal portals; only 4 distinct Sulsel Perda added as individually reviewed records.",
+  "description": "Source-discovery coverage for 38 provinces (NOT comprehensive regulation coverage), with official reference pages and a documented 2026-10-20 audit wave. Province source identified does not imply all Perda are ingested.",
   "regional_document_types": [
     "Perda Provinsi",
     "Pergub",
@@ -9,7 +9,7 @@
     "Perbup",
     "Perwali"
   ],
-  "metadata_policy": "Unlisted sources and regulations remain unknown, never counted as no law. JDIH homepage confirmation does not verify individual rules or continued validity. Registered monitoring sources may fail or have zero qualified matches; that alone never proves no provincial law.",
+  "metadata_policy": "Unlisted sources and regulations remain unknown, never counted as no law. JDIH homepage confirmation does not verify individual rules or continued validity. Registered monitoring sources may fail or have zero qualified matches; that alone never proves no provincial law. Added portal discovery wave Oct 20 2026. One East Java source is linked by other official regional JDIH and needs a direct live health check. Do not equate a portal with any specific current legal instrument.",
   "official_national_sources": [
     {
       "id": "djpp",
@@ -47,10 +47,11 @@
     {
       "id": "prov_03",
       "name": "Sumatera Barat",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih-birohukum.sumbarprov.go.id/web2/home/daftar-peraturan",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_04",
@@ -87,18 +88,20 @@
     {
       "id": "prov_08",
       "name": "Lampung",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.lampungprov.go.id/product-hukum/provinsi/10862/pages/rak-buku-online",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_09",
       "name": "Kepulauan Bangka Belitung",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.babelprov.go.id/data",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_10",
@@ -135,18 +138,20 @@
     {
       "id": "prov_14",
       "name": "DI Yogyakarta",
-      "source_url": "https://jdih-dprd-diy.jogjaprov.go.id/",
+      "source_url": "https://jdih.jogjaprov.go.id/",
       "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "executive_jdih_portal_plus_two_individual_documents_not_full_province_corpus",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_15",
       "name": "Jawa Timur",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.jatimprov.go.id/",
+      "discovery_status": "official_jdih_linked_from_fellow_government_directory",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_16",
@@ -175,10 +180,11 @@
     {
       "id": "prov_19",
       "name": "Nusa Tenggara Timur",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.nttprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_20",
@@ -223,18 +229,20 @@
     {
       "id": "prov_25",
       "name": "Sulawesi Utara",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.sulutprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_26",
       "name": "Sulawesi Tengah",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.sultengprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_27",
@@ -255,10 +263,11 @@
     {
       "id": "prov_29",
       "name": "Gorontalo",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.gorontaloprov.go.id/dokumen/tipe/1",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_30",
@@ -295,10 +304,11 @@
     {
       "id": "prov_34",
       "name": "Papua Barat",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.papuabaratprov.go.id/dokumen/peraturan",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
+      "portal_checked_at": "2026-10-20"
     },
     {
       "id": "prov_35",
@@ -327,10 +337,11 @@
     {
       "id": "prov_38",
       "name": "Papua Barat Daya",
-      "source_url": null,
-      "discovery_status": "not_yet_confirmed",
+      "source_url": "https://jdih.papuabaratdayaprov.go.id/",
+      "discovery_status": "web_checked_official_jdih",
       "monitor_source_id": null,
-      "verification_scope": "portal_directory_only_not_rule_text"
+      "verification_scope": "confirmed_public_legal_portal_only_not_complete_legal_records",
+      "portal_checked_at": "2026-10-20"
     }
   ]
 }
