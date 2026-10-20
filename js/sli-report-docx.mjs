@@ -97,7 +97,7 @@ export function docxBytes(report){
   '<Default Extension="xml" ContentType="application/xml"/>'+
   ["document","styles","header","footer"].map((x,i)=>
    '<Override PartName="/word/'+(i>1?x+"1":x)+'.xml" ContentType="'+
-   'application/vnd.openxmlformats-officedocument.wordprocessingml.'+x+'+xml"/>').join("")+'</Types>';
+   'application/vnd.openxmlformats-officedocument.wordprocessingml.'+(x==="document"?"document.main":x)+'+xml"/>').join("")+'</Types>';
  const rootRels='<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
   '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>';
  const wordRels='<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
