@@ -117,3 +117,37 @@ test("Bapanas leader is official-source verified and not overwritten by obsolete
  assert.doesNotMatch(js,/Arief Prasetyo Adi/,"Do not hardcode superseded holder in live UI.");
  assert.equal(registry.rules.missing_officeholder,"show_unverified_do_not_guess");
 });
+
+test("food governance v2 is an interactive, source-led hierarchy without false ministerial subordination",()=>{
+ const model=JSON.parse(read("data/food-governance-hierarchy.json"));
+ const page=read("food-agriculture-intelligence.html");
+ const js=read("js/food-governance-hierarchy.js");
+ const main=read("js/food-agriculture-intelligence.js");
+ const style=read("css/food-governance-hierarchy.css");
+ assert.equal(model.schema,"sli-food-governance-v2");
+ assert.ok(model.nodes.length>=20);
+ const byId=new Map(model.nodes.map(n=>[n.id,n]));
+ assert.equal(byId.get("pres").person,"Prabowo Subianto");
+ assert.equal(byId.get("kemenkopangan").person,"Zulkifli Hasan");
+ assert.equal(byId.get("bapanas").person,"Andi Amran Sulaiman");
+ assert.equal(byId.get("kementan").person,byId.get("bapanas").person);
+ assert.equal(byId.get("bgn").person,"Sudaryono");
+ assert.equal(byId.get("pusdatin").parent,"kementan");
+ assert.equal(byId.get("pemda").parent,"kemendagri");
+ for(const item of model.nodes){
+  if(item.parent)assert.ok(byId.has(item.parent),item.id+" parent must exist");
+  for(const other of item.related||[])assert.ok(byId.has(other),item.id+" related node must exist");
+  assert.ok(item.sources?.length>0&&item.sources.every(s=>s.url.startsWith("https://")));
+  assert.ok(item.role&&item.roleEn&&item.limit&&item.limitEn);
+  if(item.group==="authority"||item.group==="coordination")assert.equal(item.parent,undefined,item.id+" must not be fictitiously nested under coordinating ministry");
+ }
+ assert.match(page,/food-governance-hierarchy\.js/);
+ assert.match(page,/food-governance-hierarchy\.css/);
+ assert.match(page,/id="faOrgGraph" class="fa-governance-map"/);
+ assert.match(main,/SLIFoodGovernance\.render/);
+ assert.match(js,/fa-gov-branches/);
+ assert.match(js,/drawInspector/);
+ assert.match(js,/fa-gov-related/);
+ assert.match(js,/fetch\("\.\/data\/food-governance-hierarchy\.json"/);
+ assert.match(style,/fa-gov-children/);
+});
