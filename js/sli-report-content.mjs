@@ -9,7 +9,14 @@ export const plain=x=>trim(x).replace(/\*\*([^*]+)\*\*/g,"$1").replace(/\*([^*\n
 export const escapeMarkup=x=>String(x??"").replace(/&/g,"&amp;").replace(/</g,"&lt;")
  .replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;");
 const validUrl=x=>{try{const u=new URL(trim(x));return u.protocol==="https:"&&!u.username&&!u.password&&!u.port&&u.hostname.includes(".")?u.href:null}catch{return null}};
-const pubYear=s=>trim(s?.publication_date||s?.published_at||s?.source_date).match(/(?:19|20)\d{2}/)?.[0]||null;
+const legalTypes=new Set(["reviewed_primary_article_paraphrase","legal_index_metadata"]);
+const legalInstrumentYear=s=>{
+ // Review date (2026) is NOT the promulgation date of an older statute.
+ const text=trim(s?.provision_anchor?.instrument_ref)+" "+trim(s?.title);
+ return text.match(/\b(?:UU|PP|Perpres|Perda|Permen|Pergub|Perbup|Perwali)\s*(?:(?:No\.?|Nomor)\s*)?\d+\s*(?:\/|-|Tahun\s+)((?:19|20)\d{2})\b/i)?.[1]||null;
+};
+const pubYear=s=>legalTypes.has(trim(s?.source_type))?legalInstrumentYear(s):
+ trim(s?.publication_date||s?.published_at||s?.source_date).match(/(?:19|20)\d{2}/)?.[0]||null;
 const author=s=>trim(s?.author||s?.publisher);
 const title=s=>trim(s?.title);
 function apaCitation(s){
@@ -43,8 +50,13 @@ export function bibliographyReport(answer,sources,min=10){
   note:"Kecukupan metadata dan tautan tidak berarti suatu sumber telah terbukti akurat."};
 }
 export function substituteCitations(input,references){
- const by=new Map(references.flatMap(x=>x.aliases.map(i=>[i,x.cite])));
- return trim(input).replace(/\[(\d{1,3})\]/g,(match,n)=>by.get(Number(n))||match);
+ // In a source-numbered report, NEVER convert some [N] markers into
+ // (Publisher, year) while leaving metadata-incomplete markers numeric.
+ // Use numeric citations consistently and list their matching labels in
+ // the bibliography; adjacent markers need visible separation.
+ const known=new Set(references.flatMap(x=>x.aliases));
+ return trim(input).replace(/\]\s*\[/g,"] [")
+  .replace(/\[(\d{1,3})\]/g,(match,n)=>known.has(Number(n))?match:match);
 }
 export function markdownBlocks(md){
  const lines=trim(md).replace(/\r/g,"").split("\n"),blocks=[];let batch=[];
@@ -72,8 +84,19 @@ export function markdownBlocks(md){
   batch.push(s);
  }flush();return blocks;
 }
-export function makeResearchReport({answer,sources=[],language="id",title=null,charts=[],generatedAt=null}={}){
- const lang=language==="en"?"en":"id",refs=bibliographyReport(answer,sources);
+export function makeResearchReport({answer,sources=[],language="id",title=null,charts=[],generatedAt=null,question="",mode=""}={}){
+ const lang=language==="en"?"en":"id";
+ const q=trim(question);
+ // One precisely requested statutory article is a focused legal note,
+ // not a ten-reference literature review. One independently linked
+ // original law source is an initial metadata threshold ONLY, never
+ // publication-ready verification.
+ const legalFocus=/\b(?:pasal|article)\s+\d+[a-z]?\b/i.test(q)&&
+  /\b(?:uu|pp|perpres|perda|permen|pergub|perbup|perwali)\s*(?:(?:no\.?|nomor)\s*)?\d+/i.test(q);
+ const requiredMinimum=legalFocus?1:10;
+ const refs=bibliographyReport(answer,sources,requiredMinimum);
+ refs.reference_policy=legalFocus?"focused_legal_article":"broad_research";
+ refs.legal_focus=legalFocus;
  const body=markdownBlocks(substituteCitations(answer,refs.references)),chartBlocks=[];
  if(title&&body[0]?.type==="h1"&&plain(body[0].text).toLowerCase()===plain(title).toLowerCase())body.shift();
  for(const ch of (Array.isArray(charts)?charts:[]).slice(0,12)){
@@ -87,7 +110,7 @@ export function makeResearchReport({answer,sources=[],language="id",title=null,c
  return {language:lang,title:title||(lang==="id"?"Laporan Riset Strategic Latitude Intelligence":
    "Strategic Latitude Intelligence Research Report"),
   date:Number.isFinite(d.getTime())?d.toISOString().slice(0,10):"",
-  body,charts:chartBlocks,refs,
+  body,charts:chartBlocks,refs,report_scope:refs.reference_policy,
   disclaimer:lang==="id"?"Draf berbantuan AI. Periksa dokumen primer, angka, metodologi dan semua sitasi sebelum publikasi.":
    "AI-assisted draft. Review original documents, measurements, methods and all citations before publication."};
 }
