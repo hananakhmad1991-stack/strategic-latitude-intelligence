@@ -9,7 +9,7 @@ const ORIGIN="https://hananakhmad1991-stack.github.io";
 const REQUIRED=["CF_ACCOUNT_ID","CF_API_TOKEN","SLI_ACCESS_AUD","SLI_API_HOSTNAME","SLI_ACCESS_ISSUER","SLI_D1_DATABASE_ID"];
 const die=(message)=>{throw Error(message)};
 const domain=x=>typeof x==="string"&&/^[a-z0-9](?:[a-z0-9.-]{1,251}[a-z0-9])$/.test(x)&&x.includes(".")&&!x.includes("..");
-function validateConfig(e){
+export function validateConfig(e){
  const absent=REQUIRED.filter(k=>!e[k]);if(absent.length)die("Missing configuration: "+absent.join(", "));
  if(!/^[a-f0-9-]{32,36}$/i.test(e.SLI_D1_DATABASE_ID))die("D1 database ID invalid");
  if(!domain(e.SLI_API_HOSTNAME)||e.SLI_API_HOSTNAME.endsWith(".workers.dev"))die("Dedicated protected custom hostname required");
