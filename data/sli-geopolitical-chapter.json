@@ -1,7 +1,7 @@
 {
   "schema_version": "sli-geopolitical-chapter-v1",
-  "as_of": "2026-10-18",
-  "editorial_scope": "Original Indonesia-focused qualitative geopolitical assessment comparing dated BPS, BKPM, BI and ESDM metrics with attributed secondary monitoring headlines. No composite geopolitical score, military conflict forecast, independently verified closure, or inferred numerical effect.",
+  "as_of": "2026-10-20",
+  "editorial_scope": "Original Indonesia-focused qualitative geopolitical assessment comparing dated BPS, BKPM, BI and ESDM metrics with attributed secondary monitoring headlines. No composite geopolitical score, military conflict forecast, independently verified closure, or inferred numerical effect. Food & Agriculture mechanisms use Kementan/BPS/Bapanas source-dated baseline; no independent food shortage/impact inference from headlines.",
   "themes": [
     {
       "id": "maritime",
@@ -259,6 +259,61 @@
         {
           "label": "PLN RUPTL & Grid",
           "url": "./pln-ruptl-energy-investment.html"
+        }
+      ]
+    },
+    {
+      "id": "foodsecurity",
+      "order": 7,
+      "region": "Indonesia · ASEAN · Global grain and fertilizer trade",
+      "tag": "FOOD SECURITY GEOPOLITICS",
+      "title": "Rice, fertilizer and cross-border food security",
+      "id_title": "Beras, pupuk dan geopolitik ketahanan pangan",
+      "thesis": "Food security depends on production resilience, trade rules and international input supply.",
+      "id_thesis": "Ketahanan pangan ditentukan ketahanan produksi, aturan dagang, dan pasokan input dari luar negeri.",
+      "mechanism": "Regional droughts, rice export restrictions, global fertilizer availability, agricultural input prices and maritime freight costs can transmit international supply shocks into Indonesian food import bills and farmer production costs. The magnitude is commodity-specific: a global wheat price rise is not evidence of an Indonesian rice shortage, and international freight news does not independently establish stock depletion inside Indonesia. Trade policy abroad can shift bilateral availability even when local production figures remain unchanged.",
+      "id_mechanism": "Kekeringan kawasan, pembatasan ekspor beras, ketersediaan pupuk global, kenaikan harga input pertanian dan biaya angkutan laut dapat menyalurkan guncangan internasional ke biaya impor pangan serta ongkos produksi petani Indonesia. Dampaknya harus dibedakan menurut komoditas: kenaikan harga gandum dunia bukan bukti kelangkaan beras di Indonesia, dan berita biaya angkut tidak membuktikan cadangan pangan domestik telah menurun. Kebijakan perdagangan negara lain dapat mengubah pasokan bilateral tanpa perubahan produksi lokal.",
+      "indonesia": "The June 2026 Pusdatin agricultural publication offers trade observations through April and farmer-price observations through May; these are dated baseline records, not continuously updated October measurements. Evaluate global news against BPS agricultural output, Bapanas food-reserve reporting, BULOG procurement/distribution, original fertilizer allocations, and import/export records with compatible commodity definitions. Any causal estimate of shortages, yield loss, inflation pass-through or province-level welfare effects requires additional data and explicit statistical identification.",
+      "id_indonesia": "Publikasi Pusdatin Kementan edisi Juni 2026 menyediakan pengamatan perdagangan sampai April serta indeks dan harga pertanian sampai Mei; itu adalah baseline historis, bukan angka Oktober yang terus bergerak. Berita internasional harus diperiksa terhadap produksi BPS, cadangan Bapanas, realisasi pengadaan/penyaluran BULOG, alokasi serta penyaluran pupuk, dan statistik ekspor-impor pada definisi komoditas yang sebanding. Estimasi kausal kelangkaan, gagal panen, inflasi impor atau dampak kesejahteraan provinsi memerlukan data tambahan dan metode yang jelas.",
+      "counter": "A reported export ban, price surge, crop loss, or fertilizer interruption does not alone demonstrate Indonesian stock shortages, physical deliveries, realized budget cost or inflation effects. Distinguish policy announcements from legal implementation and market reporting from official observations.",
+      "id_counter": "Laporan pembatasan ekspor, lonjakan harga, gagal panen atau gangguan pupuk tidak otomatis membuktikan stok Indonesia menipis, pengiriman fisik terganggu, beban anggaran terealisasi, atau inflasi meningkat. Bedakan pengumuman kebijakan dari pelaksanaan hukum serta berita pasar dari pengamatan statistik resmi.",
+      "watch": "Monitor FAO and regional grain reports; domestic BPS, Bapanas and Kementan data; fertilizer and freight prices; food-related import permits; weather alerts; producer prices, NTP and provincial stocks. Track differences in reporting period and original publisher.",
+      "id_watch": "Pantau laporan FAO dan pasar beras kawasan; BPS, Bapanas dan Kementan; harga pupuk serta angkutan; kebijakan impor pangan; cuaca; harga produsen, NTP dan stok daerah. Catat perbedaan periode dan sumber penerbit.",
+      "evidence": [
+        "inflation",
+        "imports",
+        "fx"
+      ],
+      "search": [
+        "food",
+        "pangan",
+        "beras",
+        "rice",
+        "wheat",
+        "grain",
+        "fertilizer",
+        "pupuk",
+        "bulog",
+        "bapanas",
+        "agricultur",
+        "swasembada"
+      ],
+      "links": [
+        {
+          "label": "Food & Agriculture · official baseline",
+          "url": "./food-agriculture-intelligence.html"
+        },
+        {
+          "label": "Food institutional network",
+          "url": "./food-agriculture-intelligence.html#fa-network"
+        },
+        {
+          "label": "Food policy & regulation",
+          "url": "./index.html#policy"
+        },
+        {
+          "label": "Research AI",
+          "url": "./sli-research-ai.html"
         }
       ]
     }
