@@ -21,6 +21,7 @@ on:
       - 'tests/test_food_officeholder_watch.py'
       - 'js/sli-navigation.js'
       - 'tests/qa-sli-food-agriculture.mjs'
+      - 'tests/qa-sli-cross-sector-integration.mjs'
       - 'scripts/build_food_agriculture.py'
       - '.github/workflows/sli-food-agriculture-source-sync.yml'
 permissions:
@@ -45,7 +46,7 @@ jobs:
           node --check js/sli-navigation.js
           python -m py_compile scripts/build_food_agriculture.py
           python tests/test_food_officeholder_watch.py
-          node --test tests/qa-sli-food-agriculture.mjs
+          node --test tests/qa-sli-food-agriculture.mjs tests/qa-sli-cross-sector-integration.mjs
       - name: Disclose PDF source-sync status and newer-publication requirement
         run: |
           echo '## Food & Agriculture publication provenance' >> "$GITHUB_STEP_SUMMARY"
