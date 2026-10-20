@@ -40,7 +40,7 @@ def evaluate_profile(raw,expected):
     body=normalise(" ".join(parser.bits))
     name=normalise(expected)
     # Detect current bio pattern, not historical replacement mentions elsewhere.
-    mention=re.search(r"(?:(?:dr\.\s*)?(?:ir\.\s*)?(?:h\.\s*)?)andi amran sulaiman",body)
+    mention=re.search(re.escape(name),body)
     if mention and "kini menjabat sebagai kepala badan pangan nasional" in body[mention.start():mention.start()+850]:
         return {"status":"expected_name_near_current_role","requires_human_verification":False}
     return {"status":"official_profile_changed_or_expected_role_not_detected","requires_human_verification":True}
