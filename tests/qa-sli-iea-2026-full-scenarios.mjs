@@ -19,7 +19,7 @@ test("IEA 2026 full upload contains nine demand groups with aligned 2025/CPS/STE
  assert.ok(rows.length>200);
  for(const r of rows){
   assert.equal(r.v.length,16,r.h+" "+r.n);
-  assert.ok(r.v.every(v=>typeof v==="number"&&Number.isFinite(v)),"IEA row has nonnumeric/model gap: "+r.h+" "+r.n);
+  assert.ok(r.v.every(v=>v===null||(typeof v==="number"&&Number.isFinite(v))),"IEA source gap must remain null, not an invented number: "+r.h+" "+r.n);
  }
  assert.equal(d.supply.length,108);
 });
@@ -43,7 +43,7 @@ test("Full IEA module loads before research-chapters.js and mounts after existin
  assert.match(research,/initSLIIEA2026Explorer\("minerals",rawIEA\)/);
  assert.match(research,/initSLIIEA2026FullExplorer\(fullIEA\)/);
  assert.match(research,/sections\[3\]\.append\(fullIEA\)/);
- assert.match(research,/id="sliIEA2026FullMineralsRoot"/);
+ assert.match(research,/fullIEA\.id="sliIEA2026FullMineralsRoot"/);
  assert.match(css,/\.sli-iea-full-controls/);
  assert.match(css,/@media\(max-width:800px\)/);
 });
