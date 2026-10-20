@@ -95,11 +95,11 @@
       "domain": "Energy",
       "source_agency": "PLN/ESDM",
       "observation_period": "RUPTL 2025–2034",
-      "status": "partial_dataset_ingestion_needs_table_level_reconciliation",
-      "public_dataset": "data/pln-ruptl-2025-2034-verified-extract.json",
+      "status": "partial_digitized_109_reservoirs_24_ami_years_annexes_pending",
+      "public_dataset": "data/pln-ruptl-uploaded-excerpt-2025-2034.json",
       "main_dashboard": "index.html#energy",
-      "detail_dashboard": "sli-sector-data-library.html#power",
-      "caution": "Targets and project pipelines are plans, not completed assets."
+      "detail_dashboard": "sli-sector-data-library.html#ruptl",
+      "caution": "RUPTL 100-page upload gives 109 selected reservoir entries and a 2022–2045 AMI schedule; Chapter V project annexes are not present."
     },
     {
       "id": "environment",
@@ -119,11 +119,11 @@
       "domain": "Environment",
       "source_agency": "BNPB",
       "observation_period": "2025",
-      "status": "pending_numeric_ingestion",
+      "status": "official_xlsx_found_download_and_numeric_validation_pending",
       "public_dataset": "data/sli-bnpb-provincial-2025.json",
       "main_dashboard": "climate-environment.html#climate-data",
-      "detail_dashboard": "sli-sector-data-library.html#environment",
-      "caution": "Do not infer 0 disasters from pending rows."
+      "detail_dashboard": "sli-sector-data-library.html#disasters",
+      "caution": "BNPB official CKAN resource includes 2025 province table definitions; no verified normalized 38-province rows yet."
     },
     {
       "id": "ai_index",
@@ -131,11 +131,11 @@
       "domain": "AI and Technology",
       "source_agency": "Stanford HAI and report source",
       "observation_period": "2025–2026",
-      "status": "report_inventory_available_not_all_charts_numeric_verified",
-      "public_dataset": null,
+      "status": "selected_report_numerics_integrated_partial",
+      "public_dataset": "data/sli-ai-stanford-worldbank-foundations-2025-2026.json",
       "main_dashboard": "ai-intelligence-hub.html",
-      "detail_dashboard": "sli-sector-data-library.html",
-      "caution": "Figure inventory is not itself verified numeric dataset."
+      "detail_dashboard": "sli-sector-data-library.html#ai-reports",
+      "caution": "8 Stanford source-page checked metrics are available; the 405 candidate figure catalog has not been fully verified or digitized."
     },
     {
       "id": "worldbank_ai",
@@ -143,11 +143,11 @@
       "domain": "AI and Technology",
       "source_agency": "World Bank",
       "observation_period": "2025",
-      "status": "report_uploaded_numerical_ingestion_not_confirmed",
-      "public_dataset": null,
+      "status": "selected_report_numerics_integrated_partial",
+      "public_dataset": "data/sli-ai-stanford-worldbank-foundations-2025-2026.json",
       "main_dashboard": "ai-intelligence-hub.html",
-      "detail_dashboard": "sli-sector-data-library.html",
-      "caution": "Cannot claim all the report data appears in dashboard without figure-level checks."
+      "detail_dashboard": "sli-sector-data-library.html#ai-reports",
+      "caution": "7 World Bank source-page checked global income-group statistics integrated; Indonesia-specific adoption percentages not asserted."
     },
     {
       "id": "ministry_esdm",
@@ -167,5 +167,6 @@
     "Copyright and full-table reproduction permissions differ between BPS, IEA, PLN, Stanford and World Bank.",
     "New sources are not automatically indexed as source-linked evidence in Research AI until exact provenance has been reviewed.",
     "No local hidden file, private report or credentials are published from user uploads."
-  ]
+  ],
+  "revision_note": "The homepage has a prominent Data Library panel. Fifteen sourced Stanford HAI / World Bank measures are transcribed and RUPTL first-100-pages tables are exposed, with all incomplete publisher figures explicitly marked partial."
 }
