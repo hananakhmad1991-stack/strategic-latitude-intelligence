@@ -46,3 +46,11 @@ test("The new mast mounts before pending chrome is released; the original portal
  assert.match(read("index.html"),/selectDashboard\(pagesFromURL\(\)\|\|'home'\)/);
  assert.match(read("css/sli-home-portal.css"),/body\.sli-home-active \.layout>\.sidebar\{display:none!important\}/);
 });
+
+
+test("Sticky dashboard inspectors and anchored sections respect the measured masthead",()=>{
+ assert.match(js,/function syncPlatformMastOffset\(\)/);
+ assert.match(js,/new ResizeObserver\(syncPlatformMastOffset\)/);
+ assert.match(js,/style\.setProperty\('--sli-mast-offset'/);
+ assert.match(css,/scroll-padding-top:calc\(var\(--sli-mast-offset/);
+});
