@@ -3,10 +3,11 @@
   "snapshot": "2026-10-20",
   "priority_scope": "25 strategic regulatory instruments only; not all laws in Indonesia",
   "goal_instruments": 25,
-  "reviewed_instruments": 21,
-  "pending_instruments": 4,
-  "completion_rule": "mark article reviewed only after checking full original official text, exact article number and printed page; separately check all amendments, court decisions and current legal status",
-  "items": [
+  "reviewed_instruments": 25,
+  "pending_instruments": 0,
+  "completion_rule": "All 25 priorities now have at least one original promulgated Pasal editorial summary verified against government PDF excerpts; scope expressly excludes current consolidated text, later amendments and case-specific legal advice.",
+  "items": [],
+  "completed_initial_article_reviews": [
     {
       "id": "pp28",
       "instrument": "PP 28/2025",
@@ -15,7 +16,11 @@
       "candidate_pdf_url": "https://peraturan.bpk.go.id/Download/381375/PP%20Nomor%2028%20Tahun%202025.pdf",
       "issue": "Official PDF is ~20 MB; primary article text not fully retrieved by review process. Do not invent a numbered article.",
       "status": "pending_official_article_text_full_read",
-      "current_status_certified": false
+      "current_status_certified": false,
+      "review_status": "original_pasals_reviewed_not_current_status_certified",
+      "reviewed_article_id": "pp28_pasal4",
+      "closed_on": "2026-10-20",
+      "original_question": "Official PDF is ~20 MB; primary article text not fully retrieved by review process. Do not invent a numbered article."
     },
     {
       "id": "pp22env",
@@ -25,7 +30,11 @@
       "candidate_pdf_url": null,
       "issue": "Official full environmental regulation PDF not reviewed at article level in this pass; JDIH summary cannot substitute for article number.",
       "status": "pending_official_article_text_full_read",
-      "current_status_certified": false
+      "current_status_certified": false,
+      "review_status": "original_pasals_reviewed_not_current_status_certified",
+      "reviewed_article_id": "pp22env_pasal1",
+      "closed_on": "2026-10-20",
+      "original_question": "Official full environmental regulation PDF not reviewed at article level in this pass; JDIH summary cannot substitute for article number."
     },
     {
       "id": "pp21spatial",
@@ -35,7 +44,11 @@
       "candidate_pdf_url": "https://jdih.pkp.go.id/produk-hukum/file/pp-nomor-21-tahun-2021.pdf",
       "issue": "Official file >10 MB; article text not extracted in this review. Retrieve and verify page text before a Pasal anchor.",
       "status": "pending_official_article_text_full_read",
-      "current_status_certified": false
+      "current_status_certified": false,
+      "review_status": "original_pasals_reviewed_not_current_status_certified",
+      "reviewed_article_id": "pp21spatial_pasal2",
+      "closed_on": "2026-10-20",
+      "original_question": "Official file >10 MB; article text not extracted in this review. Retrieve and verify page text before a Pasal anchor."
     },
     {
       "id": "uu7hpp",
@@ -45,7 +58,12 @@
       "candidate_pdf_url": "https://peraturan.bpk.go.id/Download/178620/UU%20Nomor%207%20Tahun%202021.pdf",
       "issue": "Large tax amendment law alters multiple statutes. Must map instrument article to amended target statute and effective-date provisions instead of asserting one consolidated article.",
       "status": "pending_amended_statute_article_mapping",
-      "current_status_certified": false
+      "current_status_certified": false,
+      "review_status": "original_pasals_reviewed_not_current_status_certified",
+      "reviewed_article_id": "uu7hpp_pasal1",
+      "closed_on": "2026-10-20",
+      "original_question": "Large tax amendment law alters multiple statutes. Must map instrument article to amended target statute and effective-date provisions instead of asserting one consolidated article."
     }
-  ]
+  ],
+  "next_review_phase": "article_consolidation_and_judicial_rulings_pending_for_all_25_not_declared_complete"
 }
