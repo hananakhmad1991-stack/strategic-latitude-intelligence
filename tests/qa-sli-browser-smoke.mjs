@@ -243,6 +243,43 @@ await check("Navigation mobile: dropdown remains visible and scrollable",{width:
  assert.equal(geom.overflow,"auto","Long module menu must support internal scrolling");
  assert.ok(await dropdown.locator("summary").innerText().then(x=>x.includes("Jelajahi Data")),"Indonesian menu label not displayed");
 });
+await check("AI atlas desktop: World Bank panel selection preserves original source and CSV numeric values",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("ai-intelligence-hub.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ const root=page.locator("#sliAiDigitizedFigureAtlas");
+ const select=root.locator("select").first();
+ await page.waitForFunction(()=>document.querySelectorAll("#sliAiDigitizedFigureAtlas select option").length===9,null,{timeout:20000});
+ await select.selectOption({index:5});
+ assert.match(await root.locator(".sli-figure-atlas p").first().innerText(),/World Bank/i);
+ const source=await root.locator('a[href*="worldbank.org"]').first().getAttribute("href");
+ assert.match(source,/documents1.worldbank.org/);
+ const bars=root.locator(".sli-figure-plot svg rect[data-value]");
+ assert.equal(await bars.count(),8,"World Bank figure 4.2a must show all eight labelled categories");
+ await bars.first().click();
+ assert.match(await root.locator(".sli-figure-detail").innerText(),/40 %/);
+ await page.waitForFunction(()=>!!window.SLIVisualExport&&!!document.querySelector("#sliAiDigitizedFigureAtlas .sli-visual-export-toolbar"),null,{timeout:16000});
+ const [download]=await Promise.all([page.waitForEvent("download",{timeout:20000}),root.locator('[data-sli-export-format="csv"]').first().click()]);
+ const raw=fs.readFileSync(await download.path()).toString("utf8");
+ assert.ok(raw.includes("United States")&&raw.includes("40"),"Source-aligned numeric CSV missing World Bank observation");
+ assert.ok(raw.includes("documents1.worldbank.org"),"World Bank link missing from CSV provenance");
+ await select.selectOption({index:6});
+ assert.match(await root.locator(".sli-figure-detail").innerText(),/%/);
+ assert.equal(await root.locator(".sli-figure-plot svg rect[data-value]").count(),6);
+});
+await check("AI atlas mobile: all nine numeric panels stay navigable and do not widen page",{width:390,height:844},async page=>{
+ await page.goto(pageUrl("ai-intelligence-hub.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ const root=page.locator("#sliAiDigitizedFigureAtlas");
+ const select=root.locator("select").first();
+ await page.waitForFunction(()=>document.querySelectorAll("#sliAiDigitizedFigureAtlas select option").length===9,null,{timeout:20000});
+ await select.selectOption({index:8});
+ assert.equal(await root.locator(".sli-figure-plot svg rect[data-value]").count(),7);
+ const dims=await page.evaluate(()=>{
+   const plot=document.querySelector("#sliAiDigitizedFigureAtlas .sli-figure-plot");
+   return {viewport:innerWidth,doc:document.documentElement.scrollWidth,chartOverflow:getComputedStyle(plot).overflowX,chartScroll:plot.scrollWidth,chartClient:plot.clientWidth};
+ });
+ assert.ok(dims.doc<=dims.viewport+16,"Page overflowing horizontally: "+JSON.stringify(dims));
+ assert.equal(dims.chartOverflow,"auto","Long figure labels must scroll INSIDE chart plot");
+ assert.ok(dims.chartScroll>=dims.chartClient);
+});
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");
 console.log("Browser smoke:",report.tests.filter(x=>x.status==="pass").length,"passed /",report.tests.length,"total");
