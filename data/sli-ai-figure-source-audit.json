@@ -70,18 +70,30 @@
           "series": 4,
           "years": "2015–2023",
           "source_numeric_labels": 36
+        },
+        {
+          "figure": "5.2",
+          "panel": "a",
+          "pdf_page": 96,
+          "data_points": 18
+        },
+        {
+          "figure": "5.2",
+          "panel": "b",
+          "pdf_page": 97,
+          "data_points": 18
         }
       ]
     }
   ],
   "text_figure_label_total": 409,
-  "already_digitized_numeric_source_figures": 10,
+  "already_digitized_numeric_source_figures": 12,
   "previous_initial_figures_estimate": 405,
   "catalog_build_script": "scripts/catalog-ai-report-figure-candidates.py",
   "review_only_artifact": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39411989759/artifacts/12259517775",
   "review_artifact_retention_days": 15,
-  "review_limits": "Printed labels may appear more than once or carry trailing superscript footnote digits; counts are occurrences, not unique verified chart series. Image-only figures may be missed. Numeric extraction, primary-study verification, chart status and geographic denominators remain pending figure by figure. Panel counts can exceed distinct numbered figures; currently 10 reviewed chart/panel presentations across 8 distinct numbered figures (including one four-series Figure 2.2, four World Bank subpanels and five Stanford figures).",
+  "review_limits": "Counts are publisher figure/panel presentations, not independent underlying studies: 12 reviewed series/panels across 9 distinct figure numbers, including newly transcribed World Bank Figure 5.2 a/b (36 printed occupation-year ratios). Remaining detected caption-label occurrences are not digitized figures. No cross-country Indonesian occupation adoption inference.",
   "no_automatic_numeric_publication": true,
-  "reviewed_numeric_chart_panels": 10,
-  "distinct_digitized_figure_numbers": 8
+  "reviewed_numeric_chart_panels": 12,
+  "distinct_digitized_figure_numbers": 9
 }
