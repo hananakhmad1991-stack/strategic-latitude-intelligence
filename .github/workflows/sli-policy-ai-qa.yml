@@ -27,6 +27,8 @@ on:
       - 'css/sli-legal-provisions.css'
       - 'js/sli-legal-provisions.js'
       - 'research-api/src/owner-test-worker.mjs'
+      - 'research-api/src/legal-source-limited.mjs'
+      - 'tests/qa-sli-legal-source-limited.mjs'
       - 'tests/qa-sli-policy-ai.mjs'
       - '.github/workflows/sli-policy-ai-qa.yml'
   pull_request:
@@ -64,4 +66,4 @@ jobs:
       - name: Validate policy assistant and legal evidence guardrails
         run: |
           node --check js/sli-legal-provisions.js
-          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs
+          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-source-limited.mjs tests/qa-sli-legal-provisions.mjs

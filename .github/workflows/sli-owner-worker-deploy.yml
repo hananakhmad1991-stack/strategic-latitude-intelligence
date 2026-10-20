@@ -28,10 +28,11 @@ jobs:
         run: |
           node --check research-api/src/owner-test-worker.mjs
           node --check research-api/src/legal-provisions.mjs
+          node --check research-api/src/legal-source-limited.mjs
           node --check js/sli-legal-provisions.js
           node --check research-api/src/legal-citation-audit.mjs
           node --check research-api/src/policy-corpus.mjs
-          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs
+          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs
 
   deploy-owner-staging:
     needs: policy-gate
