@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id);
 const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const norm=s=>String(s||"").normalize("NFKD").toLowerCase().replace(/\b(nomor|no[.]?|tahun|tentang)\b/gi," ").replace(/[\u2013\u2014.,/\\()]+/g," ").replace(/\s+/g," ").trim();
 const fmt=s=>String(s??"").replace(/_/g," ");
-const statuses={enacted:"Diundangkan; cek perubahan terbaru",amended:"Aturan dasar telah diubah; cek konsolidasi",amending_instrument:"Peraturan perubahan",repealed:"Dicabut / tidak berlaku",check_current:"Perlu periksa status terbaru",transition_review:"Perlu pemeriksaan transisi",listed_active_review_alignment:"Tercatat pada JDIH; perlu tinjauan lanjutan",issued_plan_not_commissioned:"Keputusan rencana, bukan realisasi",issued_directive:"Instruksi eksekutif",constitutional_foundation:"Dasar konstitusi",archival_not_verified:"Arsip, status belum dikonfirmasi",project_specific:"Bergantung pada proyek",not_applicable:"Penanda kategori",dispute_appealed_not_final:"Perkara belum final",foreign_rule_conditional_scope:"Hukum asing, ruang lingkup bersyarat"};
+const statuses={enacted:"Diundangkan; cek perubahan terbaru",amended:"Aturan dasar telah diubah; cek konsolidasi",amending_instrument:"Peraturan perubahan",repealed:"Dicabut / tidak berlaku",partially_repealed:"Dicabut sebagian; bagian lain dapat tetap berlaku",check_current:"Perlu periksa status terbaru",transition_review:"Perlu pemeriksaan transisi",listed_active_review_alignment:"Tercatat pada JDIH; perlu tinjauan lanjutan",issued_plan_not_commissioned:"Keputusan rencana, bukan realisasi",issued_directive:"Instruksi eksekutif",constitutional_foundation:"Dasar konstitusi",archival_not_verified:"Arsip, status belum dikonfirmasi",project_specific:"Bergantung pada proyek",not_applicable:"Penanda kategori",dispute_appealed_not_final:"Perkara belum final",foreign_rule_conditional_scope:"Hukum asing, ruang lingkup bersyarat"};
 const types={uu:"Undang-undang",pp:"Peraturan Pemerintah",perpres:"Peraturan Presiden",permen:"Peraturan Menteri",perda:"Perda Provinsi",perda_kab:"Perda Kabupaten/Kota",pergub:"Peraturan Gubernur",perbup:"Peraturan Bupati",perwali:"Peraturan Wali Kota",inpres:"Instruksi Presiden",decision:"Keputusan / ketetapan",dirjen:"Perdirjen",agency:"Peraturan lembaga",constitutional:"Konstitusi",tap:"Ketetapan MPR",international:"Hukum internasional",foreignlaw:"Hukum asing",technical:"Persyaratan teknis"};
 const labels={amended_by:["Diubah oleh","Mengubah"],amends:["Mengubah","Diubah oleh"],specific_provision_amended_by:["Pasal tertentu diubah oleh","Mengubah pasal tertentu"],repeals:["Mencabut","Dicabut oleh"],partially_repealed_by:["Dicabut sebagian oleh","Mencabut sebagian"],implements:["Melaksanakan","Dilaksanakan melalui"],implementation:["Pelaksanaan terkait","Dasar implementasi"],regional_authority_context:["Konteks kewenangan daerah","Dasar kewenangan daerah"],harmonization_review:["Perlu harmonisasi dengan","Perlu ditinjau bersama"],spatial_alignment_review:["Kesesuaian tata ruang","Kesesuaian tata ruang"]};
 const legalTypes=new Set(["amended_by","amends","repeals","partially_repealed_by","specific_provision_amended_by"]);
@@ -16,6 +16,7 @@ const topicDefs=[
 ["digital","AI & digital"],
 ["region","Daerah & tata ruang"],
 ["investment","Investasi & perdagangan"],
+["finance","Keuangan & pasar modal"],
 ["food","Pangan, air & bencana"],
 ["global","Perdagangan global"]];
 const topics={
@@ -25,6 +26,7 @@ const topics={
  digital:n=>n.sector==="digital"||match(n,"pusat data data center AI digital siber komdigi"),
  region:n=>["perda","perda_kab","pergub","perbup","perwali"].includes(n.tier)||match(n,"daerah provinsi RTRW RDTR otonomi tata ruang kewenangan"),
  investment:n=>match(n,"investasi penanaman modal OSS perizinan pajak retribusi BKPM ekspor impor perdagangan"),
+ finance:n=>n.sector==="finance"||match(n,"keuangan perbankan fintech OJK LPS bursa saham pasar modal P2SK asuransi"),
  food:n=>match(n,"pangan pertanian irigasi air bencana BPBD geospasial"),
  global:n=>n.sector==="international"||["international","foreignlaw"].includes(n.tier)
 };
