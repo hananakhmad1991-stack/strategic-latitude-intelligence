@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-20.1",
+  "version": "2026-10-20.2",
   "purpose": "Selected official national/sectoral/local law and government policy feeds; candidate detection only, NOT exhaustive Indonesian legislation or automatic legal status amendment.",
   "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
@@ -378,6 +378,104 @@
         "/"
       ],
       "limit": 40
+    },
+    {
+      "id": "diy_jdih",
+      "label": "JDIH DIY — peraturan daerah dan gubernur",
+      "url": "https://jdih.jogjaprov.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.jogjaprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/produk-hukum/"
+      ],
+      "limit": 40
+    },
+    {
+      "id": "ntb_jdih",
+      "label": "JDIH NTB — produk hukum daerah",
+      "url": "https://jdih.ntbprov.go.id/produk-hukum/bentuk/peraturan-daerah",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.ntbprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/produk-hukum/"
+      ],
+      "limit": 40
+    },
+    {
+      "id": "lampung_jdih",
+      "label": "JDIH Lampung — produk hukum daerah",
+      "url": "https://jdih.lampungprov.go.id/product-hukum/provinsi/10862/pages/rak-buku-online",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.lampungprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/product-hukum/"
+      ],
+      "limit": 35
+    },
+    {
+      "id": "magelang_jdih",
+      "label": "JDIH Kabupaten Magelang — aturan tata ruang daerah",
+      "url": "https://jdih.magelangkab.go.id/",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.magelangkab.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/hukum/",
+        "/public/index.php/hukum/"
+      ],
+      "limit": 40
+    },
+    {
+      "id": "sulteng_jdih",
+      "label": "JDIH Sulawesi Tengah — peraturan daerah dan gubernur",
+      "url": "https://jdih.sultengprov.go.id/produkhukum",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.sultengprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/produkhukum/",
+        "/produk/",
+        "/detail/"
+      ],
+      "limit": 40
+    },
+    {
+      "id": "babel_jdih",
+      "label": "JDIH Bangka Belitung — Perda dan Pergub",
+      "url": "https://jdih.babelprov.go.id/data",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.babelprov.go.id",
+        "www.jdih.babelprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/data/",
+        "/detail/",
+        "/peraturan/"
+      ],
+      "limit": 35
+    },
+    {
+      "id": "sulut_jdih",
+      "label": "JDIH Sulawesi Utara — Perda dan Pergub",
+      "url": "https://jdih.sulutprov.go.id/produk-hukum/peraturan-daerah?view=resources",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.sulutprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/produk-hukum/",
+        "/dokumen/"
+      ],
+      "limit": 35
     }
   ],
   "watched_laws": [
@@ -453,7 +551,25 @@
     "perpres55minerba",
     "uu7hpp",
     "uu4p2sk",
-    "uu4p2sk2026"
+    "uu4p2sk2026",
+    "pres82iiv2022",
+    "pres47cyber2023",
+    "bssn5iiv2025",
+    "pojk51sustain2017",
+    "pp42psn2021",
+    "perda_jateng_rtrw2024",
+    "perda_magelang_rtrw2024",
+    "perda_magelang_rtrwold2011",
+    "perda_banten_rtrw2023",
+    "perda_diy_rtrw2023",
+    "perda_diy_pangan2026",
+    "perda_bali_rtrw2023",
+    "perda_kaltim_rtrw2023",
+    "perda_lampung_rtrw2023",
+    "perda_ntb_rtrw2024",
+    "perda_ntb_invest2024",
+    "perda_karawang_rtrw2013",
+    "kepmen88papuabaratdaya2026"
   ],
   "keywords": [
     "energi",
@@ -609,7 +725,7 @@
   "item_retention": 450,
   "source_item_cap": 65,
   "monitoring_window_days": 90,
-  "notes": "Expanded to official BPK, Bapanas, BNPB and selected local JDIH. These feeds provide *candidate* discovery, not comprehensive national/provincial historical crawling or legally adjudicated status. Degraded/403 source is displayed; never infer no legal change. On 19 October 2026 four additional public provincial JDIH portals (Aceh, North Sumatra, Bali, East Kalimantan) were added for candidate-only discovery. Newly identified sources require successful baseline scans before change alerts; watch failures are explicit. Added 23 source-linked national instruments to watched document list after legal register expansion. Watch result is candidate-level, not automatic legal status verification.",
+  "notes": "Expanded to official BPK, Bapanas, BNPB and selected local JDIH. These feeds provide *candidate* discovery, not comprehensive national/provincial historical crawling or legally adjudicated status. Degraded/403 source is displayed; never infer no legal change. On 19 October 2026 four additional public provincial JDIH portals (Aceh, North Sumatra, Bali, East Kalimantan) were added for candidate-only discovery. Newly identified sources require successful baseline scans before change alerts; watch failures are explicit. Added 23 source-linked national instruments to watched document list after legal register expansion. Watch result is candidate-level, not automatic legal status verification. Added targeted regional legal-listing probes and 18 instrument-detail checks (candidate-level only). Regulator or municipality website outages never mean the law has ceased to exist.",
   "monitor_groups": [
     {
       "id": "domestic_policy",
