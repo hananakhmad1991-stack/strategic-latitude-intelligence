@@ -30,11 +30,65 @@ def download():
  if DOCUMENT.stat().st_size<100000 or DOCUMENT.open("rb").read(5)!=b"%PDF-":raise ValueError("Not an official readable PDF")
  return DOCUMENT.stat().st_size
 
+def try_http_ranges():
+ step=2*1024*1024
+ request=urllib.request.Request(URL,headers={"Range":"bytes=0-"+str(step-1),"User-Agent":"SLI-source-range-review/1.0"})
+ try:
+  with urllib.request.urlopen(request,timeout=100) as resp:
+   hdr=resp.headers.get("Content-Range") or ""
+   matched=re.fullmatch(r"bytes 0-(\d+)/(\d+)",hdr)
+   if resp.status != 206 or not matched:
+    print("RUPTL_RANGE_UNSUPPORTED http="+str(resp.status)+" content_range="+hdr[:90])
+    return False
+   size_expected=int(matched.group(2))
+   first=resp.read(step+1)
+   if size_expected<20000000 or size_expected>MAX_SIZE or len(first)!=int(matched.group(1))+1:
+    raise ValueError("Invalid official byte-range response")
+  partial=Path("/tmp/sli-ruptl-complete-range.pdf")
+  with partial.open("wb") as out:
+   out.write(first)
+   offset=len(first)
+   while offset<size_expected:
+    end=min(offset+step-1,size_expected-1)
+    req=urllib.request.Request(URL,headers={"Range":f"bytes={offset}-{end}","User-Agent":"SLI-source-range-review/1.0"})
+    with urllib.request.urlopen(req,timeout=100) as part:
+     if part.status!=206 or part.headers.get("Content-Range","").split("/")[0]!=f"bytes {offset}-{end}":
+      raise ValueError("PLN byte range ignored or inconsistent at "+str(offset))
+     chunk=part.read(step+1)
+    if len(chunk)!=end-offset+1:raise ValueError("PLN range truncated at "+str(offset))
+    out.write(chunk)
+    offset+=len(chunk)
+    if offset%(8*step)==0:print("RUPTL_RANGE_PROGRESS bytes="+str(offset))
+  if partial.stat().st_size != size_expected:raise ValueError("Complete RUPTL PDF assembled length mismatch")
+  with partial.open("rb") as final:
+   final.seek(-8192,2)
+   if b"%%EOF" not in final.read():raise ValueError("PLN range-retrieved PDF still lacks EOF trailer")
+  partial.replace(DOCUMENT)
+  print("RUPTL_RANGE_FULL_SUCCESS bytes="+str(size_expected))
+  return True
+ except Exception as exc:
+  print("RUPTL_RANGE_RECOVERY_FAILED "+type(exc).__name__+": "+str(exc)[:170])
+  return False
+
 size=download()
 with DOCUMENT.open("rb") as handle:
  handle.seek(max(0,size-8192))
  trailer=handle.read()
 print("RUPTL_PDF_TRANSFER bytes="+str(size)+" eof_found="+str(b"%%EOF" in trailer))
+if b"%%EOF" not in trailer:
+ print("RUPTL_PRIMARY_INCOMPLETE trying official byte ranges; incomplete CDN response will NOT be labelled a full PDF")
+ if try_http_ranges():
+  size=DOCUMENT.stat().st_size
+ else:
+  Path("artifacts").mkdir(exist_ok=True)
+  report={"schema":"sli-ruptl-source-availability-v1","status":"source_transfer_incomplete_no_project_annex_verified",
+   "source_url":URL,"bytes_received":size,"pdf_eof":False,
+   "source_discrepancy":"CDN returned incomplete PDF bytes. No annex projects, COD, ownership or MW may be imported from it.",
+   "next_step":"Try official alternative PLN/ESDM mirror or owner-supplied complete PDF with exact checksum."}
+  Path("artifacts/sli-ruptl-full-project-page-candidates.json").write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf-8")
+  print("RUPTL_BLOCKED_INCOMPLETE_SOURCE="+json.dumps(report,separators=(",",":")))
+  raise SystemExit(0)
+
 probe=subprocess.run(["pdfinfo",str(DOCUMENT)],capture_output=True,text=True,timeout=80)
 if probe.returncode:
  print("RUPTL_PDFINFO_ERROR "+re.sub(r"\\s+"," ",probe.stderr)[-850:])
@@ -47,7 +101,7 @@ if probe.returncode:
  except Exception as exc:
   raise ValueError("Official PLN PDF cannot yet be read safely: "+str(exc)[:220]) from exc
 else:
- pages=int(re.search(r"^Pages:\s+(\\d+)\\b",probe.stdout,re.M).group(1))
+ pages=int(re.search(r"^Pages:\s+(\d+)\b",probe.stdout,re.M).group(1))
 if pages<=100 or pages>5000:raise ValueError("Complete PDF page count unexpectedly "+str(pages))
 print("RUPTL_FULL_PDF_OK bytes="+str(size)+" pages="+str(pages)+" origin=PLN")
 # The uploaded source ended at page 100; scan only pages missing from that original.
@@ -57,7 +111,7 @@ if probe_text.returncode:
  try:
   import fitz
   recovered=fitz.open(str(DOCUMENT))
-  text="\\f".join(recovered[n].get_text("text") for n in range(100,len(recovered)))
+  text="\f".join(recovered[n].get_text("text") for n in range(100,len(recovered)))
   recovered.close()
   print("RUPTL_PYMUPDF_TEXT_RECOVERED")
  except Exception as exc:
