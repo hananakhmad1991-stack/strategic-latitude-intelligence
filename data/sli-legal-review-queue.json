@@ -1,0 +1,51 @@
+{
+  "schema": "sli-legal-article-review-queue-v1",
+  "snapshot": "2026-10-20",
+  "priority_scope": "25 strategic regulatory instruments only; not all laws in Indonesia",
+  "goal_instruments": 25,
+  "reviewed_instruments": 21,
+  "pending_instruments": 4,
+  "completion_rule": "mark article reviewed only after checking full original official text, exact article number and printed page; separately check all amendments, court decisions and current legal status",
+  "items": [
+    {
+      "id": "pp28",
+      "instrument": "PP 28/2025",
+      "topic": "Risk-based business licensing, OSS",
+      "source_url": "https://peraturan.bpk.go.id/Details/319773/pp-no-28-tahun-2025",
+      "candidate_pdf_url": "https://peraturan.bpk.go.id/Download/381375/PP%20Nomor%2028%20Tahun%202025.pdf",
+      "issue": "Official PDF is ~20 MB; primary article text not fully retrieved by review process. Do not invent a numbered article.",
+      "status": "pending_official_article_text_full_read",
+      "current_status_certified": false
+    },
+    {
+      "id": "pp22env",
+      "instrument": "PP 22/2021",
+      "topic": "Environmental approval and impact assessment",
+      "source_url": "https://peraturan.bpk.go.id/Details/161852/pp-no-22tahun-2021",
+      "candidate_pdf_url": null,
+      "issue": "Official full environmental regulation PDF not reviewed at article level in this pass; JDIH summary cannot substitute for article number.",
+      "status": "pending_official_article_text_full_read",
+      "current_status_certified": false
+    },
+    {
+      "id": "pp21spatial",
+      "instrument": "PP 21/2021",
+      "topic": "Spatial planning and land-use activity suitability",
+      "source_url": "https://jdih.pkp.go.id/produk-hukum/pp-21-2021",
+      "candidate_pdf_url": "https://jdih.pkp.go.id/produk-hukum/file/pp-nomor-21-tahun-2021.pdf",
+      "issue": "Official file >10 MB; article text not extracted in this review. Retrieve and verify page text before a Pasal anchor.",
+      "status": "pending_official_article_text_full_read",
+      "current_status_certified": false
+    },
+    {
+      "id": "uu7hpp",
+      "instrument": "UU 7/2021",
+      "topic": "Tax harmonization and carbon tax",
+      "source_url": "https://peraturan.bpk.go.id/Details/185162/uu-no-7-tahun-2021",
+      "candidate_pdf_url": "https://peraturan.bpk.go.id/Download/178620/UU%20Nomor%207%20Tahun%202021.pdf",
+      "issue": "Large tax amendment law alters multiple statutes. Must map instrument article to amended target statute and effective-date provisions instead of asserting one consolidated article.",
+      "status": "pending_amended_statute_article_mapping",
+      "current_status_certified": false
+    }
+  ]
+}

@@ -16,3 +16,10 @@
 .policy-provision-actions a:hover,.policy-provision-actions a:focus-visible{outline:2px solid #f1d09a}
 .policy-provision-empty{color:#cbdbe5;font-size:12px}
 @media(max-width:620px){.policy-provisions{padding:13px}.policy-provision-list{grid-template-columns:1fr}}
+.policy-pending-review{margin:15px 0;border:1px solid #4f6b7e;border-radius:10px;padding:12px;background:#0c2638;color:#e3edf3}
+.policy-pending-review summary{cursor:pointer;font-size:13px;font-weight:600;color:#f1d09a}
+.policy-pending-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:9px;margin-top:12px}
+.policy-pending-item{background:#132f42;padding:12px;border-radius:8px;border:1px solid #38566b;line-height:1.55}
+.policy-pending-item strong{display:block;font-size:12px;color:#f0d5ac}
+.policy-pending-item p{font-size:11px;color:#c5d3de}
+.policy-pending-item a{font-size:11px;color:#e9ca9e}

@@ -22,6 +22,7 @@ on:
       - 'data/sli-paris-treaty-status.json'
       - 'research-api/src/legal-citation-audit.mjs'
       - 'data/sli-verified-legal-provisions.json'
+      - 'data/sli-legal-review-queue.json'
       - 'tests/qa-sli-legal-provisions.mjs'
       - 'css/sli-legal-provisions.css'
       - 'js/sli-legal-provisions.js'

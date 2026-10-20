@@ -2,7 +2,7 @@
 (()=>{"use strict";
 const $=id=>document.getElementById(id);
 const ids={};
-const official=new Set(["peraturan.go.id","www.peraturan.go.id"]);
+const official=new Set(["peraturan.go.id","www.peraturan.go.id","peraturan.bpk.go.id","jdih.tanjungpinangkota.go.id"]);
 const normalize=s=>String(s||"").toLowerCase().normalize("NFKD").replace(/\s+/g," ").trim();
 function valid(r){
  try{const u=new URL(r.source_url);return u.protocol==="https:"&&official.has(u.hostname)&&
@@ -55,6 +55,23 @@ async function start(){
   select.addEventListener("change",()=>render(items,select.value,$("policyProvisionQuery").value));
   $("policyProvisionQuery").addEventListener("input",()=>render(items,select.value,$("policyProvisionQuery").value));
   render(items,"all","");
+  const progress=$("policyCorpusProgress");
+  if(progress)progress.textContent=lawKeys.length+" dari target 25 peraturan strategis memiliki telaah Pasal pada naskah aslinya. Status konsolidasi terbaru belum disertifikasi.";
+  // A review queue is NOT legal evidence. Keep it out of legalProvisionEvidence.
+  fetch("./data/sli-legal-review-queue.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(queue=>{
+   if(queue?.schema!=="sli-legal-article-review-queue-v1"||!Array.isArray(queue.items))return;
+   const pending=$("policyPendingList");if(!pending)return;
+   pending.replaceChildren();
+   const count=$("policyPendingCount");if(count)count.textContent=queue.items.length;
+   for(const x of queue.items){
+    const card=element("article","policy-pending-item");
+    card.append(element("strong",null,x.instrument+" · "+x.topic));
+    card.append(element("p",null,x.issue));
+    const link=element("a",null,"Buka sumber resmi untuk pemeriksaan ↗");
+    link.href=x.source_url;link.target="_blank";link.rel="noopener noreferrer";
+    card.append(link);pending.append(card);
+   }
+  }).catch(()=>{const p=$("policyPendingList");if(p)p.replaceChildren(element("p","policy-provision-empty","Daftar telaah lanjutan tidak dapat dimuat; status hukum tetap belum dinyatakan diverifikasi."));});
  }catch(error){
   status.textContent="Belum bisa memuat indeks pasal yang ditelaah: "+error.message;
   list.replaceChildren(element("p","policy-provision-empty","Tidak ada klaim hukum yang disajikan sebelum sumber dapat diperiksa."));
