@@ -31,7 +31,7 @@ def run():
       "data_class":"historical_station_daily_precipitation",
       "status":"candidate_source_not_published",
       "data_value_unit_original":"0.1 mm","missing_sentinel":-9999,
-      "publication_rule":"Only verified station-date observations, no current alert or province-wide inference. 0 is dry when explicitly recorded; -9999 stays null.",
+      "publication_rule":"Only quality flag 0 station-date values are valid. Q=1 suspect is held null even if numerical; Q=9 / -9999 missing null; valid 0 rainfall is an actual dry day. No current alert or province-wide inference.",
       "limits":"Historical archive may end many years before 2026 and source observations may have quality flags."}
     station_text=fetch(STATIONS,600000).decode("utf-8-sig",errors="replace")
     meta=[ln for ln in station_text.splitlines() if re.match(rf"^\s*{STAID}\s*,",ln)]
@@ -106,10 +106,15 @@ def run():
         value=int(row[keys["RR"]])
         quality=next((row[k] for name,k in keys.items() if name.startswith("Q_") and "RR" in name),None)
         if quality is not None:qflags[str(quality).strip()]=qflags.get(str(quality).strip(),0)+1
+        flag=str(quality).strip() if quality is not None else ""
         if value==-9999:missing+=1
         elif value<0 or value>20000:raise ValueError("Invalid 0.1mm source precipitation")
-        days.append({"date":f"{day[:4]}-{day[4:6]}-{day[6:]}","rain_mm":None if value==-9999 else value/10,
-                     "source_value_tenth_mm":None if value==-9999 else value,"quality_flag":quality})
+        # ECA&D / SACA RR quality: 0 valid, 1 suspect, 9 missing.
+        # Suspect numeric values can be extreme outliers. NEVER use as measured rainfall.
+        approved=(value!=-9999 and flag=="0")
+        days.append({"date":f"{day[:4]}-{day[4:6]}-{day[6:]}","rain_mm":value/10 if approved else None,
+                     "source_value_tenth_mm":None if value==-9999 else value,"quality_flag":flag,
+                     "numeric_source_candidate_rejected":value!=-9999 and not approved})
     if len(days)<100:raise ValueError("Too few official station days")
     days.sort(key=lambda x:x["date"])
     valid=[x for x in days if x["rain_mm"] is not None]
@@ -117,6 +122,7 @@ def run():
     result["first_numeric_observed_date"]=valid[0]["date"]
     result["last_numeric_observed_date"]=valid[-1]["date"]
     result["nonmissing_observation_days"]=len(valid)
+    result["quality_suspect_numeric_values_rejected"]=sum(x["numeric_source_candidate_rejected"] for x in days)
     result.update(status="review_data_extracted_not_approved_for_live_alert",date_start=days[0]["date"],
                   date_end=days[-1]["date"],observation_days=len(days),missing_days=missing,
                   days_with_explicit_zero=sum(v["rain_mm"]==0 for v in days),
