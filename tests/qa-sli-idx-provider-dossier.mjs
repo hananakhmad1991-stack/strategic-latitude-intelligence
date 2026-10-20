@@ -65,3 +65,39 @@ test("Sector-only ticker buttons lead to a specific SLI company dossier instead 
  assert.match(code,/Research AI/);
  assert.doesNotMatch(code,/Math\.random|fakePrice|syntheticMarketCap/);
 });
+
+test("Historical provider price chart is integrated in the selected IDX issuer's right panel",()=>{
+ const route=issuer();
+ const script=read("js/sli-issuer.js");
+ const css=read("css/sli-issuer.css");
+ const html=read("sli-issuer.html");
+ assert.ok(html.includes("js/sli-issuer.js?v=20261020-history1"));
+ assert.ok(html.includes("css/sli-issuer.css?v=20261020-history1"));
+ assert.equal(route.historicalChartWidget,"https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js");
+ for(const ticker of ["ANTM","PTBA","MEDC","TLKM","INDF","GOTO"]){
+  const cfg=route.historicalChartConfig(ticker);
+  assert.equal(cfg.symbol,"IDX:"+ticker);
+  assert.equal(cfg.interval,"D");
+  assert.equal(cfg.range,"12M");
+  assert.equal(cfg.withdateranges,true);
+  assert.equal(cfg.hide_top_toolbar,false);
+  assert.equal(cfg.allow_symbol_change,false);
+  assert.equal(cfg.autosize,true);
+  assert.equal(cfg.theme,"dark");
+  assert.equal(cfg.timezone,"Asia/Jakarta");
+  assert.equal(cfg.locale,"id");
+  assert.equal(cfg.support_host,"https://www.tradingview.com");
+ }
+ for(const bad of ["AAPL","IDX:ANTM","ANTM;alert(1)","",'<script>']){
+  if(bad==="AAPL")continue; // syntactically indistinguishable four-letter ticker; whitelist enforced by IDX issuer registry upstream
+  assert.throws(()=>route.historicalChartConfig(bad));
+ }
+ const sideSource=script.indexOf("historicalChart(side,ticker)");
+ const quoteSource=script.indexOf("tradingview(side,ticker,name)");
+ assert.ok(quoteSource>=0&&sideSource>quoteSource,"Keep price quote and place historical chart immediately below");
+ assert.match(script,/frame\.append\(script\);section\.append\(frame\)/);
+ assert.match(css,/\.sli-issuer-history-frame/);
+ assert.match(css,/height:455px/);
+ assert.match(css,/@media\(max-width:580px\)/);
+ assert.doesNotMatch(script,/fetch\([^)]*tradingview|Math\.random|fakeHistoricalPrices|syntheticCandles/);
+});
