@@ -40,7 +40,17 @@ COLS = {
  "iron_ore": [r"^iron ore$"],
  "zinc": [r"^zinc$"],
  "lead": [r"^lead$"],
- "cobalt": [r"^cobalt$"]
+ "cobalt": [r"^cobalt$"],
+ # Global agricultural/food references from the SAME World Bank Pink Sheet monthly workbook.
+ "rice_thai_5": [r"^rice,?\s*thai,?\s*5\s*%$",r"^rice,?\s*thai,?\s*5 percent$"],
+ "wheat_us_hrw": [r"^wheat,?\s*(?:us|u\.s\.),?\s*hrw$"],
+ "maize": [r"^maize$",r"^corn,?\s*us$"],
+ "soybeans": [r"^soybeans?$"],
+ "palm_oil": [r"^palm\s*oil$"],
+ "sugar_world": [r"^sugar,?\s*world$"],
+ "urea": [r"^urea$"],
+ "coffee_robusta": [r"^coffee,?\s*robusta$"],
+ "cocoa": [r"^cocoa$"],
 }
 UNITS = {
  "brent":"USD/bbl","wti":"USD/bbl","dubai":"USD/bbl","oil_average":"USD/bbl",
@@ -48,7 +58,10 @@ UNITS = {
  "gas_us":"USD/mmbtu","gas_europe":"USD/mmbtu","lng_japan":"USD/mmbtu",
  "gold":"USD/troy oz","silver":"USD/troy oz",
  "copper":"USD/mt","nickel":"USD/mt","tin":"USD/mt",
- "aluminum":"USD/mt","iron_ore":"USD/dmt","zinc":"USD/mt","lead":"USD/mt","cobalt":"USD/mt"
+ "aluminum":"USD/mt","iron_ore":"USD/dmt","zinc":"USD/mt","lead":"USD/mt","cobalt":"USD/mt",
+ "rice_thai_5":"USD/mt","wheat_us_hrw":"USD/mt","maize":"USD/mt",
+ "soybeans":"USD/mt","palm_oil":"USD/mt","sugar_world":"USD/kg","urea":"USD/mt",
+ "coffee_robusta":"USD/kg","cocoa":"USD/kg"
 }
 # Cobalt and other optional series are omitted automatically if source lacks them.
 
@@ -127,6 +140,14 @@ def parse(blob):
 def main():
  blob,url=download()
  obs,columns=parse(blob)
+ # Preserve full historical coverage for existing metals/energy plus globally standard
+ # food benchmarks. Never manufacture missing observations or silent currency conversion.
+ required_food={"rice_thai_5","wheat_us_hrw","maize","soybeans","palm_oil","sugar_world"}
+ missing=required_food-set(columns)
+ if missing: raise RuntimeError("World Bank food benchmarks missing; refusing incomplete update: "+", ".join(sorted(missing)))
+ for key in required_food:
+  n=sum(1 for o in obs if key in o)
+  if n<350: raise RuntimeError(f"Food benchmark {key}: only {n} monthly observations")
  first_last={}
  for key in columns:
   available=[o["month"] for o in obs if key in o]
@@ -140,7 +161,7 @@ def main():
   "latest_month":obs[-1]["month"],
   "unit_by_series":{k:UNITS[k] for k in first_last},
   "series_coverage":first_last,
-  "methodology":"Missing observations are omitted. Monthly nominal benchmark, not a retail price. WTI/Brent/Dubai and other benchmarks begin at different dates. 1950s events may predate monthly World Bank coverage.",
+  "methodology":"World Bank Pink Sheet monthly nominal benchmark quotations, NOT Indonesian consumer/farmgate prices. Food benchmarks: Thai 5% rice, US HRW wheat, maize, soybeans, palm oil, world sugar and urea. USD/mt vs USD/kg retain original physical units. Missing observations omitted, no interpolation; benchmark coverage varies by commodity and early political events predate price data.",
   "observations":obs
  }
  encoded=json.dumps(out,ensure_ascii=False,separators=(",",":"))+"\n"
