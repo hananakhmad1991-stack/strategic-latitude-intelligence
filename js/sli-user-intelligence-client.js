@@ -24,7 +24,7 @@ function localPreferences(){
  return {tickers:tickers(),sectors:[],kinds:list.filter(x=>["news","project","regulation"].includes(x)),
   include_sector:false,in_app:p.inApp!==false};
 }
-let cfg=null,api=null,notice="",busy=false;
+let cfg=null,api=null,notice="",busy=false,inboxItems=[];
 const $=()=>document.getElementById(ROOT);
 async function call(path,method="GET",payload){
  const r=await fetch(api+path,{method,credentials:"include",cache:"no-store",
@@ -72,11 +72,12 @@ function render(){
  }));
  actions.append(button(T("Read private inbox","Baca inbox privat"),async()=>{
   const feed=await call("/api/inbox?limit=15");
-  showInbox(feed.items||[]);
+  inboxItems=feed.items||[];
   notice=T("Unread notifications: ","Notifikasi belum dibaca: ")+feed.unread;
  }));
  root.append(actions);
  const inbox=E("div",undefined,"sli-uib-inbox");inbox.id="sliUserIntelligenceInbox";root.append(inbox);
+ if(inboxItems.length)showInbox(inboxItems);
  if(notice)root.append(E("p",notice,"sli-uib-note"));
  root.append(E("p",T("Access relies on a protected Worker session. No token is stored in the browser. Settings on this device are uploaded or replaced only when you select those actions.",
   "Akses memerlukan sesi Worker yang dilindungi. Tidak ada token yang disimpan di browser. Preferensi perangkat ini hanya diunggah atau diganti jika tombol terkait ditekan."),"sli-uib-foot"));
@@ -94,7 +95,7 @@ function showInbox(items){
   if(!item.read_at&&/^[a-f0-9-]{36}$/i.test(item.id||"")){
    const b=E("button",T("Mark read","Tandai dibaca"));
    b.type="button";b.addEventListener("click",()=>act(async()=>{
-    await call("/api/inbox/read","POST",{ids:[item.id]});item.read_at=new Date().toISOString();showInbox(items);
+    await call("/api/inbox/read","POST",{ids:[item.id]});item.read_at=new Date().toISOString();
    }));row.append(b);
   }
   mount.append(row)
