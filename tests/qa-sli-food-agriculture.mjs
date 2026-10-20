@@ -189,3 +189,44 @@ test("Food functional intelligence matches the Oil & Gas six-group navigation mo
  assert.match(page,/functional-v3/,"Cache bust must ensure public visitors get the new graph");
  assert.doesNotMatch(script,/new Function|eval\(/,"Do not dynamically evaluate untrusted source data");
 });
+
+
+test("Food dual visualization contract: original card hierarchy and six-hub network coexist independently",()=>{
+ const html=read("food-agriculture-intelligence.html");
+ const main=read("js/food-agriculture-intelligence.js");
+ const tree=read("js/food-governance-tree.js");
+ const treeStyle=read("css/food-governance-tree.css");
+ const network=read("js/food-governance-hierarchy.js");
+ const source=JSON.parse(read("data/food-governance-hierarchy.json"));
+ const times=(content,phrase)=>content.split(phrase).length-1;
+ for(const id of ["fa-hierarchy","fa-network","faOrgHierarchy","faOrgHierarchyInspector","faOrgHierarchyDetail","faOrgGraph","faOrgInspector","faOrgDetail"])
+   assert.equal(times(html,'id="'+id+'"'),1,"Each component must have one unique independent DOM mount: "+id);
+ assert.ok(html.indexOf('id="fa-hierarchy"')<html.indexOf('id="fa-network"'),"Keep original card hierarchy first and six-hub network next");
+ assert.match(html,/href="#fa-hierarchy"/);
+ assert.match(html,/href="#fa-network"/);
+ assert.match(html,/js\/food-governance-tree\.js\?v=20261020-dual-v1/);
+ assert.match(html,/css\/food-governance-tree\.css\?v=20261020-dual-v1/);
+ assert.match(html,/js\/food-governance-hierarchy\.js\?v=20261020-functional-v3/);
+ assert.match(main,/SLIFoodGovernance\.render\(\)/);
+ assert.match(main,/SLIFoodGovernanceHierarchy\.render\(\)/);
+ assert.match(tree,/window\.SLIFoodGovernanceHierarchy=\{render/);
+ assert.match(tree,/const root=\$\("faOrgHierarchy"\),detail=\$\("faOrgHierarchyDetail"\)/);
+ assert.match(tree,/fa-gov-branches/);
+ assert.match(tree,/fa-gov-children/);
+ assert.match(tree,/drawInspector/);
+ assert.match(tree,/fa-gov-search/);
+ assert.match(tree,/fa-gov-filter/);
+ assert.match(network,/window\.SLIFoodGovernance=\{render/);
+ assert.match(network,/networkGraph/);
+ assert.match(network,/fa-gvn-tabs/);
+ assert.match(network,/fa-gvn-issue-panel/);
+ assert.match(treeStyle,/#fa-governance \.fa-tree-layout\{display:grid/);
+ assert.match(treeStyle,/#faOrgHierarchyInspector\{display:block/);
+ assert.ok(!treeStyle.includes("#faOrgInspector"),"Tree style must not alter the network inspector");
+ assert.ok(!tree.includes('window.SLIFoodGovernance={'),"Tree must not replace network renderer");
+ assert.ok(!network.includes('window.SLIFoodGovernanceHierarchy={'),"Network must not replace tree renderer");
+ assert.match(tree,/food-governance-hierarchy\.json/);
+ assert.match(network,/food-governance-hierarchy\.json/);
+ assert.equal(source.nodes.length,24);
+ assert.ok(source.nodes.find(n=>n.id==="pusdatin"&&n.parent==="kementan"));
+});
