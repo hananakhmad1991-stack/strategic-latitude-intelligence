@@ -13,7 +13,7 @@ function iconOf(n){
  const type=n.tier===0&&n.ownership_class==='indonesian-state'?'government':'building';
  return I()?.siteBrand?.(n.website_domain,type)||I()?.brand(n.name,type)||E('span','sli-cg-no-icon','▢');
 }
-function depthName(n){return n.tier===0?T('Holding','Induk'):n.tier===1?T('Subsidiary','Anak'):n.tier===2?T('Grandchild','Cucu'):n.tier===3?T('Great-grandchild','Cicit'):T('Deeper tier','Lapisan lanjutan')}
+function depthName(n){if(n.relationship==='business-unit')return T('Business unit · not separate issuer','Unit bisnis · bukan emiten tersendiri');if(n.relationship==='associated-investment')return T('Associated investment · verify control','Investasi terkait · kendali belum pasti');if(n.relationship==='reported-member')return T('Reported member · ownership not inferred','Anggota terlapor · kepemilikan belum diasumsikan');return n.tier===0?T('Group root / standalone issuer','Induk grup / emiten tersendiri'):n.tier===1?T('Subsidiary','Anak'):n.tier===2?T('Grandchild','Cucu'):n.tier===3?T('Great-grandchild','Cicit'):T('Deeper tier','Lapisan lanjutan')}
 function children(id){return data.records.filter(n=>n.parent_id===id).sort((a,b)=>a.name.localeCompare(b.name,'id'))}
 function path(n){const result=[];const visited=new Set();while(n&&!visited.has(n.id)){result.unshift(n);visited.add(n.id);n=byId.get(n.parent_id)}return result}
 function card(n,depth=0){
@@ -60,13 +60,13 @@ function renderDetails(){
  host.replaceChildren();
  const n=byId?.get(selected);if(!n||n.group!==group){host.append(E('p','',T('Choose a company to view its dossier.','Pilih perusahaan untuk melihat profil.')));return}
  const head=E('div','sli-cg-profile-title');head.append(iconOf(n));const names=E('div');names.append(E('small','',depthName(n)),E('h3','',n.name));head.append(names);host.append(head);
- const chip=E('span','sli-cg-chip',n.relationship==='joint-venture'?T('Joint venture (not wholly owned)','Usaha patungan (bukan milik penuh)'):n.relationship==='subsidiary'?T('Reported subsidiary','Anak usaha terlapor'):T('Parent group','Induk grup'));host.append(chip);
+ const chip=E('span','sli-cg-chip',n.relationship==='joint-venture'?T('Joint venture (not wholly owned)','Usaha patungan (bukan milik penuh)'):n.relationship==='subsidiary'?T('Reported subsidiary','Anak usaha terlapor'):n.relationship==='business-unit'?T('Business unit (not a legal company)','Unit bisnis (bukan badan hukum terpisah)'):n.relationship==='reported-member'?T('Reported group member','Anggota grup terlapor'):n.relationship==='associated-investment'?T('Related investment; control unverified','Investasi terkait; kendali belum terverifikasi'):T('Parent or standalone issuer','Induk atau emiten tersendiri'));host.append(chip);
  host.append(E('p','sli-cg-company-tags',sectorName(n.sector||'energy')+' · '+className(n.ownership_class)+' · '+(n.listing_status==='listed'?T('Publicly listed','Emiten tercatat'):T('Unlisted / private / subsidiary','Tidak tercatat / privat / anak usaha'))));
  const desc=E('p','sli-cg-business',n.business_id);host.append(desc);
  const dl=E('dl','sli-cg-fields');
  const pairs=[[T('Generation','Generasi'),depthName(n)],[T('Snapshot source','Tanggal sumber'),n.source_date],
  [T('Reported ownership','Persentase terlapor'),n.ownership_pct===null?T('Not recorded · do not infer 100%','Tidak tersedia · jangan asumsikan 100%'):n.ownership_pct+'%'],
- [T('Parent entity','Induk langsung'),n.parent_id?byId.get(n.parent_id)?.name:T('Group holding','Induk grup')]];
+ [T('Reported link to','Relasi tercatat dengan'),n.parent_id?byId.get(n.parent_id)?.name:T('Standalone/root','Entitas mandiri/induk')]];
  for(const [label,value] of pairs){dl.append(E('dt','',label),E('dd','',value))}host.append(dl);
  const disclosure=E('section','sli-cg-finance');disclosure.append(E('h4','',T('Capital markets & financial disclosure','Pasar modal & keterbukaan keuangan')));
  const fd=E('dl','sli-cg-fields'),listing=n.listing_status==='listed'&&n.ticker;
