@@ -57,4 +57,11 @@ assert(page.includes('href="#energyOilGasStakeholdersRoot"'),"No quick navigatio
 assert(page.includes('js/energy-oil-gas-stakeholders.js')&&page.includes('css/energy-oil-gas-stakeholders.css'),"Assets not loaded");
 assert(/initSLIOilGasStakeholders(?:\?\.)?\(\)/.test(page),"Map initializer omitted");
 assert(details.includes(".ogas-profile")&&details.includes(".ogas-tile"),"Responsive actor cards missing");
+
+assert(map.items.every(x=>x.role_id&&x.lead_id),"All stakeholder roles and leads need localized labels");
+assert.equal(map.items.find(x=>x.name==="BPH Migas")?.role_id,"Regulator hilir migas","BPH Migas must not be styled as a distribution operator");
+assert.equal(map.items.find(x=>x.name==="PT PLN Energi Primer Indonesia")?.role_id,"Pembeli energi primer BUMN","PLN EPI is an energy offtaker, not an oilfield operator");
+assert(dedicated.includes('a.role_id||label.id_label')&&dedicated.includes('actor.lead_id||actor.lead'),"Role-specific bilingual cards or dossier details missing");
+assert(details.includes('top:calc(var(--sli-mast-offset')&&details.includes('overflow-y:auto'),"The oil and gas sticky dossier may disappear behind platform masthead");
+
 console.log("Oil & Gas stakeholders PASS: "+map.items.length+" sector actors in "+map.groups.length+" groups, "+map.issues.length+" issue lenses; Danantara/BP BUMN and BUMS separated.");
