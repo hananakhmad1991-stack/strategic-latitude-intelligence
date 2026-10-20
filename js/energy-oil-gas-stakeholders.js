@@ -23,8 +23,8 @@ function profile(container,data){
  const group=data.groups.find(g=>g.id===actor.group);
  panel.append(E("div","ogas-label",lang()==="id"?group.id_label:group.en));
  panel.append(E("h3",null,lang()==="id"?actor.id_name:actor.name));
- panel.append(E("p","ogas-lead",actor.lead),E("p","ogas-role",roleText(actor)));
- panel.append(E("span","ogas-profile-badge",actor.role));
+ panel.append(E("p","ogas-lead",lang()==="id"?(actor.lead_id||actor.lead):actor.lead),E("p","ogas-role",roleText(actor)));
+ panel.append(E("span","ogas-profile-badge",lang()==="id"?(actor.role_id||actor.role):actor.role));
  const stamp=E("div","ogas-vintage",T("Reference date","Tanggal rujukan")+": "+actor.as_of);
  panel.append(stamp,safeLink(actor.source,T("Open original publication ↗","Buka sumber asli ↗")));
  if(actor.group==="policy"&&(actor.name==="Danantara Indonesia"||actor.name==="BP BUMN"))panel.append(E("p","ogas-caution",T(
@@ -119,7 +119,8 @@ function render(root,data){
    const item=button(lang()==="id"?a.id_name:a.name,"ogas-tile",()=>{state.selected=a.name;drawResults()});
    item.classList.toggle("selected",state.selected===a.name);item.setAttribute("aria-pressed",String(state.selected===a.name));
    const label=data.groups.find(g=>g.id===a.group);
-   item.append(E("span",null,lang()==="id"?label.id_label:label.en));
+   // A specific role, not a broad group title, distinguishes regulators, buyers and operators.
+    item.append(E("span",null,lang()==="id"?(a.role_id||label.id_label):(a.role||label.en)));
    tiles.append(item);
   });visual.append(tiles);
   if(!rows.length)visual.append(E("p","ogas-empty",T("No stakeholders match this filter.","Tidak ada entitas sesuai pencarian.")));
