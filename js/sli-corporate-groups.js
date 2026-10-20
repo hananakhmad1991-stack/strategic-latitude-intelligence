@@ -102,9 +102,10 @@ function renderIssuerDossier(){
  const host=document.getElementById('sliCgDossier');if(!host)return;host.replaceChildren();
  const n=issuerByTicker.get(selectedTicker);
  if(!n){host.append(E('p','sli-cg-small',T('Choose a ticker from the issuer list.','Pilih ticker dari daftar emiten.')));return}
- const gr=n.groupRecord,confirmed=n.verification==='official_exchange_snapshot';
+ const gr=n.groupRecord,confirmed=n.verification==='official_exchange_snapshot',groupOnly=n.verification==='group_source_only';
  const heading=E('div','sli-cg-profile-title');const title=E('div');title.append(E('small','',n.exchange+':'+n.ticker),E('h3','',gr?.name||n.name));heading.append(title);host.append(heading);
  const status=E('p','sli-cg-warning',confirmed?T('Indexed from an official IDX company-directory snapshot; confirm subsequent actions.','Terindeks dari snapshot direktori resmi BEI; periksa aksi korporasi setelah tanggal snapshot.'):
+  groupOnly?T('Dated corporate group source identifies this ticker; current exchange listing and actions still require verification.','Sumber grup bertanggal mengidentifikasi kode ini; status perdagangan dan aksi korporasi terkini tetap perlu diverifikasi.'):
   T('Initial IDX ticker catalogue; current listing and issuer name have not been independently reconciled against the complete official IDX directory.','Katalog kandidat ticker BEI; status pencatatan dan nama emiten terkini belum direkonsiliasi menyeluruh dengan direktori resmi BEI.'));
  host.append(status);
  host.append(E('p','sli-cg-company-tags',sectorName(n.sector)+' · '+T('separate issuer record, not an inferred subsidiary','profil emiten tersendiri, bukan anak usaha yang diasumsikan')));
@@ -261,7 +262,18 @@ function initialize(db){
   selectedTicker=allSectorIssuers()[0]?.ticker||'';issuerLimit=60;query='';document.getElementById('sliCgSearch').value='';
   if(selected)expand.add(selected);renderTabs();renderTree();renderDetails();
  });
- document.getElementById('sliCgSearch').addEventListener('input',e=>{query=e.target.value.trim();issuerLimit=60;if(query&&issuerByTicker.size)view='issuer';renderTabs();renderTree();renderDetails()});
+ document.getElementById('sliCgSearch').addEventListener('input',e=>{query=e.target.value.trim();issuerLimit=60;
+  if(query&&issuerByTicker.size){
+   const words=I().nameKey(query).split('-').filter(Boolean);
+   const issuerHit=allSectorIssuers().some(n=>words.every(w=>I().nameKey([n.name,n.ticker,n.groupRecord?.name||''].join(' ')).includes(w)));
+   const groupHit=data.records.some(n=>(sector==='all'||n.sector===sector)&&words.every(w=>I().nameKey([n.name,n.business_id,n.ticker||''].join(' ')).includes(w)));
+   view=issuerHit?'issuer':groupHit?'group':'issuer';
+   if(view==='group'){
+    const target=data.records.find(n=>(sector==='all'||n.sector===sector)&&words.every(w=>I().nameKey([n.name,n.business_id,n.ticker||''].join(' ')).includes(w)));
+    if(target){group=target.group;selected=target.id}
+   }
+  }
+  renderTabs();renderTree();renderDetails()});
  document.getElementById('sliCgExpand').addEventListener('click',()=>{if(view==='issuer'){issuerLimit=sectorIssuers().length}else expand=new Set(data.records.filter(n=>n.group===group).map(n=>n.id));renderTree()});
  document.getElementById('sliCgCollapse').addEventListener('click',()=>{if(view==='issuer')issuerLimit=60;else expand=new Set([groups.get(group)?.root_id]);renderTree()});
  document.getElementById('sliCgCsv').addEventListener('click',exportRows);
