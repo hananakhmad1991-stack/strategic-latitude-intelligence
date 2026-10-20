@@ -26,7 +26,13 @@ function sourceType(d){
  if(id.startsWith("sli_tavily_"))return "live_web_discovery";
  if(id.startsWith("dashboard_"))return "public_dashboard_source_record_not_claim_verified";
  if(id.startsWith("sli_news_")||id.startsWith("sli_feed_"))return "secondary_news";
- return "source_type_unspecified";
+ if(id.startsWith("sli_wb_"))return "official_numeric_api";
+ if(id.startsWith("sli_policy_second_ndc"))return "official_ndc_registry";
+ if(id.startsWith("sli_policy_"))return "official_policy_context_metadata";
+ if(id.startsWith("sli_treaty_"))return "primary_treaty_depositary_record";
+ if(id.startsWith("primary_"))return "reviewed_primary_article_paraphrase";
+ if(id.startsWith("policy_law_"))return "legal_index_metadata";
+ return "curated_baseline";
 }
 export async function buildClaimEvidenceLedger(answer,evidence,review,primaryProbe){
  const docs=Array.isArray(evidence)?evidence:[];
