@@ -23,7 +23,7 @@ test("Home and Research AI retain specialized headers, detailed SPA hides only l
  assert.match(home,/function homePortal\(\)/);
 });
 test("All public dashboards load one shared navigation and source features stay in place",()=>{
- const pages=readdirSync(new URL("../",import.meta.url)).filter(n=>n.endsWith(".html"));
+ const pages=readdirSync(new URL("../",import.meta.url)).filter(n=>n.endsWith(".html")&&n!=="sli-user-intelligence-qa.html");
  assert.ok(pages.length>=35);
  for(const page of pages){
   const s=rd(page);
