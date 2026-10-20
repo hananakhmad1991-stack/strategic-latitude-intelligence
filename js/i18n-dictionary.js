@@ -2476,3 +2476,6 @@ window.SLI_TRANSLATIONS_ID.set("Loading IDX issuer map…","Memuat peta emiten I
 
 /* Reviewed SLI separated market heatmap and sectoral issuer loading copy · 20 Oct 2026 */
 window.SLI_TRANSLATIONS_ID.set("Loading sourced IDX sector issuers…","Memuat kode emiten sektoral bersumber…");
+
+/* Approved SLI Decision Terminal homepage entry */
+window.SLI_TRANSLATIONS_ID.set("◈ SLI Decision Terminal","◈ Terminal Keputusan SLI");
