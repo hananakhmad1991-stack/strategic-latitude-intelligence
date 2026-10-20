@@ -18,16 +18,16 @@ test("The homepage integrates public datasets into subject cards without a redun
   "#policy":["governance","security"],
   "#geopolitics":["environment","disasters"]
  };
- const groups=[...home.matchAll(/<div class="sli-portal-sector sli-portal-topic-card">([\s\S]*?)<\/nav><\/div>/g)].map(x=>x[1]);
+ const groups=home.split('<div class="sli-portal-sector sli-portal-topic-card">').slice(1).map(x=>x.split("</nav></div>")[0]);
  assert.equal(groups.length,6,"Six existing sector cards receive source links without new categories");
  for(const [primary,ids] of Object.entries(mapping)){
   const owner=groups.find(block=>block.includes('href="'+primary+'" class="sli-portal-topic-main"'));
   assert.ok(owner,"Missing existing sector card: "+primary);
   for(const id of ids)assert.ok(owner.includes('href="./sli-sector-data-library.html#'+id+'"'),"Missing source link "+id+" within "+primary);
  }
- assert.match(nav,/topicalEvidence=\{/);
+ assert.ok(nav.includes("topicalEvidence={"));
  assert.doesNotMatch(nav,/['"]overview['"],['"]terminal['"],['"]research['"],['"]datahub['"]/);
- assert.match(css,/\.sli-portal-topic-links/);
+ assert.ok(css.includes(".sli-portal-topic-links"));
  assert.ok(!css.includes(".sli-portal-sector-library"));
  assert.match(read("sli-sector-data-library.html"),/id="security"/);
  assert.match(read("sli-sector-data-library.html"),/id="ai-reports"/);
