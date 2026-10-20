@@ -38,7 +38,7 @@ const group=key=>key==="all"?T(...EN.all):T(...(sectorNames[key]||[key,key]));
 const corpURL=t=>"./sli-issuer.html?ticker="+encodeURIComponent(t);
 const WATCH="sli-terminal-watchlist-v1";
 const LIMIT_WATCH=30;
-let source={issuers:[],news:[],policies:[],meta:{}},watch=new Set(),ready=false,role="investor",sector="all",q="",selected="";
+let source={issuers:[],news:[],policies:[],meta:{},failures:[]},watch=new Set(),ready=false,role="investor",sector="all",q="",selected="",watchOnly=false,explicitSelected=false;
 function parseWatch(raw,available){
  const valid=new Set(available.map(x=>x.ticker));const output=new Set();
  if(!Array.isArray(raw))return output;
@@ -57,9 +57,9 @@ function classifySector(s){
  return lower;
 }
 function filterIssuers(list,opts){
- const sector=opts.sector||"all",needle=norm(opts.q),saved=opts.watch||new Set();
+ const sector=opts.sector||"all",needle=norm(opts.q),saved=opts.watch||new Set(),onlyWatch=!!opts.onlyWatch;
  return list.filter(x=>x.exchange==="IDX"&&tickerRE.test(x.ticker||"")&&ALLOWED_SECTORS.has(x.sector)&&
- (sector==="all"||x.sector===sector)&&(!needle||norm(x.ticker+" "+x.name+" "+x.sector).includes(needle)))
+ (sector==="all"||x.sector===sector)&&(!onlyWatch||saved.has(x.ticker))&&(!needle||norm(x.ticker+" "+x.name+" "+x.sector).includes(needle)))
  .sort((a,b)=>Number(saved.has(b.ticker))-Number(saved.has(a.ticker))||a.ticker.localeCompare(b.ticker));
 }
 function newsFor(list,opts){
@@ -88,6 +88,13 @@ function policyFor(list,opts){
    (s==="infrastructure"&&["energy","electricity"].includes(x.sector));
  });
 }
+function queryIssuer(){const n=norm(q);return n?source.issuers.find(x=>norm(x.ticker)===n||norm(x.name)===n)||null:null}
+function selectedContext(){
+ const match=queryIssuer();
+ const chosen=!match&&explicitSelected?source.issuers.find(x=>x.ticker===selected):null;
+ const issuer=match||chosen||null;
+ return {issuer,sector:issuer?.sector||sector,q:match?"":q,companyContext:!!issuer};
+}
 function researchLink(issuer){
  const target=issuer?("IDX:"+issuer.ticker+" "+issuer.name+"; "):"";
  const prompt=(id()?
@@ -103,7 +110,7 @@ function renderText(){
 }
 function status(){
  const s=$("sliTerminalStatus");if(!s)return;
- s.textContent=ready?T("Connected to published SLI snapshots · last news ingestion: ","Terhubung ke snapshot SLI · data berita terakhir diperbarui: ")+fmtDate(source.meta.news):
+ s.textContent=ready?(source.failures.length?T("Partial snapshot: ","Snapshot parsial: ")+source.failures.join(", "):T("Published snapshot · news ingestion: ","Snapshot publikasi · berita dihimpun: ")+fmtDate(source.meta.news)):
  T("Source index is temporarily unavailable. The research shortcuts remain accessible.","Indeks sumber belum tersedia. Pintasan riset tetap dapat digunakan.");
 }
 function stats(){
@@ -119,7 +126,7 @@ function stats(){
 function renderEntities(){
  const list=$("sliTerminalEntityList"),details=$("sliTerminalSelected");
  list.replaceChildren();details.replaceChildren();
- const rows=filterIssuers(source.issuers,{sector,q,watch});
+ const rows=filterIssuers(source.issuers,{sector,q,watch,onlyWatch:watchOnly});
  const preferred=(selected&&rows.find(x=>x.ticker===selected))||rows.find(x=>watch.has(x.ticker))||rows[0];
  selected=preferred?.ticker||"";
  $("sliTerminalEntityCount").textContent=rows.length+" "+T("matched","cocok");
@@ -128,7 +135,7 @@ function renderEntities(){
   const item=E("div","sli-terminal-entity"+(x.ticker===selected?" active":""));
   const choose=E("button","sli-terminal-select",x.ticker+" · "+x.name);
   choose.type="button";choose.setAttribute("aria-pressed",String(x.ticker===selected));
-  choose.addEventListener("click",()=>{selected=x.ticker;draw()});
+  choose.addEventListener("click",()=>{selected=x.ticker;explicitSelected=true;draw()});
   const pin=E("button","sli-terminal-pin",watch.has(x.ticker)?T("Saved ✓","Tersimpan ✓"):T("+ Watch","+ Pantau"));
   pin.type="button";pin.setAttribute("aria-pressed",String(watch.has(x.ticker)));
   pin.title=T("Saved in this browser only","Hanya disimpan di browser ini");
@@ -152,8 +159,11 @@ function renderEntities(){
 function renderNews(){
  const target=$("sliTerminalNews");target.replaceChildren();
  const current=source.issuers.find(x=>x.ticker===selected);
- const rows=newsFor(source.news,{sector,q,selected,issuer:current});
+ const ctx=selectedContext(),rows=newsFor(source.news,{sector:ctx.sector,q:ctx.q,selected,issuer:current});
  const top=E("p","sli-terminal-count",rows.length+" "+T("matching attributed reports · newest first","laporan teratribusi yang cocok · terbaru dahulu"));target.append(top);
+ if(ctx.companyContext)target.append(E("p","sli-terminal-context-warning",T(
+ "Sector-level reporting for "+ctx.issuer.ticker+" is a research lead, not proof of direct company exposure.",
+ "Berita sektoral untuk "+ctx.issuer.ticker+" merupakan bahan riset, bukan bukti dampak langsung pada emiten.")));
  for(const x of rows.slice(0,9)){
   const path=safeUrl(x.url);if(!path)continue;
   const card=E("article","sli-terminal-news-item");
@@ -166,8 +176,9 @@ function renderNews(){
 }
 function renderPolicies(){
  const target=$("sliTerminalPolicy");target.replaceChildren();
- const rows=policyFor(source.policies,{sector,q});
+ const ctx=selectedContext(),rows=policyFor(source.policies,{sector:ctx.sector,q:ctx.q});
  target.append(E("p","sli-terminal-count",rows.length+" "+T("regulatory records match this context","catatan regulasi cocok dengan konteks")));
+ if(ctx.companyContext)target.append(E("p","sli-terminal-context-warning",T("Sector rules may not apply directly to "+ctx.issuer.ticker+"; verify legally.","Aturan sektor belum tentu berlaku langsung pada "+ctx.issuer.ticker+"; periksa secara hukum.")));
  for(const x of rows.slice(0,8)){
   const item=E("article","sli-terminal-law");
   item.append(E("strong",null,x.ref||x.label||"Regulation"));
@@ -196,7 +207,7 @@ function renderActions(){
 function draw(){
  if(!ready)return;
  const root=$("sliTerminalRoot");if(root)root.dataset.workspace=role;
- renderText();stats();renderEntities();renderNews();renderPolicies();renderActions();
+ renderText();stats();renderEntities();renderNews();renderPolicies();renderActions();document.dispatchEvent(new Event("sli:terminalrender"));
 }
 async function load(){
  try{
@@ -204,19 +215,21 @@ async function load(){
    "./data/sli-idx-issuer-universe.json",
    "./data/sli-secondary-news-index.json",
    "./data/sli-policy-regulatory-graph-2026.json"];
-  const results=await Promise.all(paths.map(x=>fetch(x,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(x+" HTTP "+r.status);return r.json()})));
-  if(results[0].schema!=="sli-idx-issuer-universe-v1"||!Array.isArray(results[0].records)||
-   !Array.isArray(results[1].articles)||!Array.isArray(results[2].nodes))throw Error("Unexpected source schemas");
+  const outcomes=await Promise.allSettled(paths.map(x=>fetch(x,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(x+" HTTP "+r.status);return r.json()})));
+  const validators=[x=>x?.schema==="sli-idx-issuer-universe-v1"&&Array.isArray(x.records),x=>Array.isArray(x?.articles),x=>Array.isArray(x?.nodes)];
+  const results=outcomes.map((x,i)=>x.status==="fulfilled"&&validators[i](x.value)?x.value:null);
+  if(results.every(x=>!x))throw Error("Every source registry unavailable");
   source={
-   issuers:results[0].records.filter(x=>x.exchange==="IDX"&&tickerRE.test(x.ticker||"")&&ALLOWED_SECTORS.has(x.sector)),
-   news:results[1].articles.filter(x=>x.evidence_level==="publisher_attributed_news_report"||x.evidence_level==="official_metadata_change_candidate"),
-   policies:results[2].nodes.filter(x=>x.id&&x.ref&&x.source&&x.kind!=="tier_marker"),
-   meta:{news:results[1].updated_at_utc,issuers:results[0].as_of,policies:results[2].updated_at}
+    issuers:(results[0]?.records||[]).filter(x=>x.exchange==="IDX"&&tickerRE.test(x.ticker||"")&&ALLOWED_SECTORS.has(x.sector)),
+    news:(results[1]?.articles||[]).filter(x=>x.evidence_level==="publisher_attributed_news_report"||x.evidence_level==="official_metadata_change_candidate"),
+    policies:(results[2]?.nodes||[]).filter(x=>x.id&&x.ref&&x.source&&x.kind!=="tier_marker"),
+    meta:{news:results[1]?.updated_at_utc,issuers:results[0]?.as_of,policies:results[2]?.updated_at},
+    failures:paths.filter((x,i)=>!results[i]).map(x=>x.split("/").pop())
   };
   watch=readWatch();ready=true;
   const from=new URLSearchParams(location.search);
   const t=(from.get("ticker")||"").trim().toUpperCase();
-  if(tickerRE.test(t)&&source.issuers.some(x=>x.ticker===t)){selected=t;sector=source.issuers.find(x=>x.ticker===t).sector;$("sliTerminalSector").value=sector}
+  if(tickerRE.test(t)&&source.issuers.some(x=>x.ticker===t)){selected=t;explicitSelected=true;sector=source.issuers.find(x=>x.ticker===t).sector;$("sliTerminalSector").value=sector}
   status();draw();
  }catch(err){console.warn("[SLI Terminal]",err);status();
   $("sliTerminalEntityList").append(E("p","sli-terminal-note",T("Unable to load source snapshots at present.","Snapshot sumber belum bisa dimuat.")))}
@@ -224,9 +237,14 @@ async function load(){
 function main(){
  const r=$("sliTerminalRole"),s=$("sliTerminalSector"),input=$("sliTerminalSearch");
  if(!r||!s||!input)return;
- r.addEventListener("change",()=>{role=r.value;if(role==="policy"&&sector==="all"){sector="food";s.value=sector}draw()});
- s.addEventListener("change",()=>{sector=s.value;selected="";draw()});
- input.addEventListener("input",()=>{q=input.value.trim();selected="";draw()});
+ r.addEventListener("change",()=>{role=r.value;draw()});
+ s.addEventListener("change",()=>{sector=s.value;selected="";explicitSelected=false;draw()});
+ input.addEventListener("input",()=>{
+   q=input.value.trim();selected="";explicitSelected=false;
+   const issuer=queryIssuer();if(issuer&&issuer.sector!==sector){sector=issuer.sector;s.value=sector}
+   draw();
+  });
+  const watched=$("sliTerminalWatchOnly");if(watched)watched.addEventListener("change",()=>{watchOnly=watched.checked;explicitSelected=false;selected="";draw()});
  document.addEventListener("keydown",event=>{
   if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==="k"){event.preventDefault();input.focus();input.select()}
   else if(event.key==="Escape"&&document.activeElement===input){input.value="";q="";selected="";draw()}
@@ -234,6 +252,6 @@ function main(){
  document.addEventListener("sli:languagechange",()=>{status();draw()});
  renderText();load();
 }
-window.SLIDecisionTerminal={filterIssuers,newsFor,policyFor,parseWatch,corpURL,sectorNames,sourceURLS:urls};
+window.SLIDecisionTerminal={filterIssuers,newsFor,policyFor,parseWatch,corpURL,sectorNames,sourceURLS:urls,getSnapshot:()=>source,getContext:selectedContext,getSelection:()=>selected,group};
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",main,{once:true});else main();
 })();
