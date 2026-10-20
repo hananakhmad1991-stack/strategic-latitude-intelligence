@@ -4,6 +4,12 @@ on:
   pull_request:
     paths:
       - 'sli-sector-data-library.html'
+      - 'index.html'
+      - 'ai-intelligence-hub.html'
+      - 'climate-environment.html'
+      - 'js/sli-ai-report-evidence.js'
+      - 'data/sli-ai-stanford-worldbank-foundations-2025-2026.json'
+      - 'tests/qa-sli-data-library-home-20261020.mjs'
       - 'js/sli-sector-data-library.js'
       - 'css/sli-sector-data-library.css'
       - 'data/iea-critical-minerals-2026-full-scenarios.json'
@@ -16,6 +22,12 @@ on:
     branches: [main]
     paths:
       - 'sli-sector-data-library.html'
+      - 'index.html'
+      - 'ai-intelligence-hub.html'
+      - 'climate-environment.html'
+      - 'js/sli-ai-report-evidence.js'
+      - 'data/sli-ai-stanford-worldbank-foundations-2025-2026.json'
+      - 'tests/qa-sli-data-library-home-20261020.mjs'
       - 'js/sli-sector-data-library.js'
       - 'css/sli-sector-data-library.css'
       - 'data/iea-critical-minerals-2026-full-scenarios.json'
@@ -37,7 +49,8 @@ jobs:
         run: |
           node --check js/sli-sector-data-library.js
           node --check js/sli-navigation.js
-          node --test tests/qa-sli-user-data-visibility.mjs
+          node --check js/sli-ai-report-evidence.js
+          node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs
       - name: Validate every page references a real public source dataset
         run: |
           python - <<'PY'

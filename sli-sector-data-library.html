@@ -16,7 +16,7 @@
 <nav class="tabs" aria-label="Kelompok dataset">
 <a href="#security">Keamanan & kriminalitas</a><a href="#governance">Demokrasi & politik</a>
 <a href="#socio">Sosial-ekonomi</a><a href="#minerals">Mineral IEA</a>
-<a href="#environment">Lingkungan</a><a href="#power">Keandalan listrik</a>
+<a href="#environment">Lingkungan</a><a href="#disasters">Bencana BNPB</a><a href="#power">Keandalan listrik</a><a href="#ruptl">RUPTL 2025–2034</a><a href="#ai-reports">AI Index &amp; World Bank</a>
 </nav>
 <section id="security" class="section"><div class="head"><div><p class="eyebrow">01 · POLRI / SUSENAS / PODES</p><h2>Keamanan & kriminalitas</h2></div><a href="./geopolitical-impact-assessment.html">Indonesia Intelligence ↗</a></div>
 <p>Rekap kepolisian berdasarkan wilayah Polda <strong>bukan</strong> tabel provinsi administratif. Susenas dan Podes menggunakan sampel/denominator berbeda dan tidak boleh dijumlahkan dengan kasus kepolisian.</p>
@@ -54,6 +54,35 @@
 <div id="powerKpis" class="metrics"></div><div id="powerTable" class="scroll" role="region" tabindex="0" aria-label="PLN SAIDI dan SAIFI historis"></div>
 <p class="note">SAIDI = durasi gangguan rata-rata (jam/pelanggan/tahun). SAIFI = frekuensi gangguan rata-rata (gangguan/pelanggan/tahun). Unit pelayanan PLN tertentu melayani lebih dari satu provinsi; jangan menyebutnya angka provinsi secara langsung.</p>
 <div class="sources"><a href="https://web.pln.co.id/statics/uploads/2026/03/Statistik-2025-16.3-c.pdf" target="_blank" rel="noopener noreferrer">PLN Statistik 2025 ↗</a></div></section>
+
+<section id="disasters" class="section">
+ <div class="head"><div><p class="eyebrow">07 · BNPB 2025</p><h2>Bencana menurut provinsi · status data resmi</h2></div><a href="./climate-environment.html#climate-data">Climate &amp; Environment ↗</a></div>
+ <p>SLI telah mengambil baris resmi BNPB 2025 untuk 38 provinsi dan sembilan kategori. Delapan kategori berjumlah sama dengan baris Indonesia; untuk gempa bumi terdapat selisih satu kejadian yang dipertahankan sebagai catatan audit. Ini adalah data historis, bukan peringatan bencana real-time.</p>
+ <div id="disasterSummary" class="metrics"></div>
+ <p id="disasterIntegrityNotice" class="note" role="status">Memeriksa kecocokan jumlah provinsi dengan total BNPB…</p>
+ <div id="disasterTable" class="scroll" role="region" tabindex="0" aria-label="Data bencana BNPB 2025 provinsi"></div>
+ <p class="sources"><a href="https://data.bnpb.go.id/dataset/kompilasi-data-kejadian-dan-dampak-bencana-2025/resource/df39e8c3-117e-40fa-b518-ff1037743955" target="_blank" rel="noopener noreferrer">BNPB · XLSX Jumlah Kejadian Bencana Menurut Provinsi 2025 ↗</a></p>
+</section>
+<section id="ruptl" class="section">
+ <div class="head"><div><p class="eyebrow">08 · PLN / ESDM</p><h2>RUPTL 2025–2034 · rencana kelistrikan</h2></div><a href="./pln-ruptl-2025-2034-source-intelligence.html">RUPTL Source Intelligence ↗</a></div>
+ <p>Potensi PLTS terapung pada 109 waduk dan target smart meter sudah tersedia dari 100 halaman unggahan RUPTL. Ini adalah <strong>potensi dan target dokumen perencanaan</strong>, bukan proyek PLTS yang sudah beroperasi atau meter yang sudah terpasang.</p>
+ <div id="ruptlKpis" class="metrics"></div>
+ <div class="filter"><label for="ruptlProvince">Provinsi potensi PLTS terapung</label><select id="ruptlProvince"><option value="">Semua provinsi</option></select></div>
+ <div id="ruptlReservoirs" class="scroll" role="region" tabindex="0" aria-label="Potensi PLTS terapung 109 waduk RUPTL"></div>
+ <h3>Target tahunan dan kumulatif smart meter (AMI) 2022–2045</h3>
+ <div id="ruptlAmi" class="scroll" role="region" tabindex="0" aria-label="Target AMI 2022 sampai 2045"></div>
+ <p class="note">Unggahan RUPTL saat ini hanya 100 halaman; lampiran proyek provinsi dan rincian gardu induk belum terekstrak lengkap. Angka AMI mengikuti tabel dokumen yang memiliki perbedaan terhadap sebagian narasinya.</p>
+ <p class="sources"><a href="./ruplt-investor-digitization.html">RUPTL Investor Digitization ↗</a> · <a href="./pln-ruptl-2025-2034-source-intelligence.html">Tabel dan keterbatasan sumber ↗</a></p>
+</section>
+<section id="ai-reports" class="section">
+ <div class="head"><div><p class="eyebrow">09 · STANFORD HAI / WORLD BANK</p><h2>AI Index 2026 &amp; AI Foundations 2025</h2></div><a href="./ai-intelligence-hub.html">AI Intelligence Hub ↗</a></div>
+ <p>15 indikator numerik yang telah dicocokkan dengan halaman asli laporan unggahan. <strong>Angka global, negara lain, dan kelompok pendapatan tidak boleh dibaca sebagai statistik Indonesia.</strong> Ribuan grafik lainnya tetap memerlukan pemeriksaan secara individual.</p>
+ <div id="aiReportKpis" class="metrics"></div>
+ <div class="filter"><label for="aiReportSource">Laporan</label><select id="aiReportSource"><option value="">Semua laporan</option><option value="stanford">Stanford AI Index 2026</option><option value="worldbank">World Bank AI Foundations 2025</option></select></div>
+ <div id="aiReportTable" class="scroll" role="region" tabindex="0" aria-label="Indikator AI Index dan World Bank berbasis halaman asli"></div>
+ <p class="note">IEA, Stanford dan World Bank menggunakan definisi data center berbeda (jumlah fasilitas, estimasi kapasitas daya, kapasitas colocation). Tidak dijumlahkan. Indonesia disebut sebagai salah satu pengguna ChatGPT terbesar di antara negara berkembang tanpa persentase Indonesia tersendiri.</p>
+ <p class="sources"><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank" rel="noopener noreferrer">Stanford HAI 2026 ↗</a> · <a href="https://www.worldbank.org/en/publication/dptr2025-ai-foundations" target="_blank" rel="noopener noreferrer">World Bank 2025 ↗</a></p>
+</section>
 <section id="inventory" class="section"><div class="head"><div><p class="eyebrow">07 · SOURCE RECOVERY</p><h2>Daftar pemulihan data yang pernah diunggah</h2></div><a href="./sli-research-ai.html">Tanyakan ke DERGUBA AI ↗</a></div>
 <p>Inventaris ini membedakan dataset yang sudah menjadi angka terstruktur, masih berupa registri sumber, dan dokumen yang tabelnya belum sepenuhnya didigitalkan.</p>
 <div id="inventoryStatus" class="metrics"></div><div id="inventoryTable" class="scroll" role="region" tabindex="0" aria-label="Status integrasi sumber yang pernah diunggah"></div></section>

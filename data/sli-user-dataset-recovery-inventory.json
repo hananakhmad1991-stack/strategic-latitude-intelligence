@@ -95,11 +95,11 @@
       "domain": "Energy",
       "source_agency": "PLN/ESDM",
       "observation_period": "RUPTL 2025–2034",
-      "status": "partial_dataset_ingestion_needs_table_level_reconciliation",
-      "public_dataset": "data/pln-ruptl-2025-2034-verified-extract.json",
+      "status": "partial_digitized_109_reservoirs_24_ami_years_annexes_pending",
+      "public_dataset": "data/pln-ruptl-uploaded-excerpt-2025-2034.json",
       "main_dashboard": "index.html#energy",
-      "detail_dashboard": "sli-sector-data-library.html#power",
-      "caution": "Targets and project pipelines are plans, not completed assets."
+      "detail_dashboard": "sli-sector-data-library.html#ruptl",
+      "caution": "RUPTL 100-page upload gives 109 selected reservoir entries and a 2022–2045 AMI schedule; Chapter V project annexes are not present."
     },
     {
       "id": "environment",
@@ -119,11 +119,12 @@
       "domain": "Environment",
       "source_agency": "BNPB",
       "observation_period": "2025",
-      "status": "pending_numeric_ingestion",
+      "status": "numeric_in_repository_with_source_reconciliation_warning",
       "public_dataset": "data/sli-bnpb-provincial-2025.json",
       "main_dashboard": "climate-environment.html#climate-data",
-      "detail_dashboard": "sli-sector-data-library.html#environment",
-      "caution": "Do not infer 0 disasters from pending rows."
+      "detail_dashboard": "sli-sector-data-library.html#disasters",
+      "caution": "38 administrative provinces and nine event categories retrieved from official BNPB 2025 CKAN resource; eight category totals reconcile. Earthquake provincial sum 29 versus published national 28; do not overwrite either source figure.",
+      "source_discovery_status": "official_ckan_rows_retrieved_and_provincial_names_matched_to_bps"
     },
     {
       "id": "ai_index",
@@ -131,11 +132,11 @@
       "domain": "AI and Technology",
       "source_agency": "Stanford HAI and report source",
       "observation_period": "2025–2026",
-      "status": "report_inventory_available_not_all_charts_numeric_verified",
-      "public_dataset": null,
+      "status": "selected_report_numerics_integrated_partial",
+      "public_dataset": "data/sli-ai-stanford-worldbank-foundations-2025-2026.json",
       "main_dashboard": "ai-intelligence-hub.html",
-      "detail_dashboard": "sli-sector-data-library.html",
-      "caution": "Figure inventory is not itself verified numeric dataset."
+      "detail_dashboard": "sli-sector-data-library.html#ai-reports",
+      "caution": "9 Stanford report observations transcribed from identified PDF pages; rest of chart candidate catalog remains not fully digitized."
     },
     {
       "id": "worldbank_ai",
@@ -143,11 +144,11 @@
       "domain": "AI and Technology",
       "source_agency": "World Bank",
       "observation_period": "2025",
-      "status": "report_uploaded_numerical_ingestion_not_confirmed",
-      "public_dataset": null,
+      "status": "selected_report_numerics_integrated_partial",
+      "public_dataset": "data/sli-ai-stanford-worldbank-foundations-2025-2026.json",
       "main_dashboard": "ai-intelligence-hub.html",
-      "detail_dashboard": "sli-sector-data-library.html",
-      "caution": "Cannot claim all the report data appears in dashboard without figure-level checks."
+      "detail_dashboard": "sli-sector-data-library.html#ai-reports",
+      "caution": "6 World Bank report observations from identified PDF pages; income-group statistics cannot be treated as national Indonesia figures."
     },
     {
       "id": "ministry_esdm",
@@ -167,5 +168,6 @@
     "Copyright and full-table reproduction permissions differ between BPS, IEA, PLN, Stanford and World Bank.",
     "New sources are not automatically indexed as source-linked evidence in Research AI until exact provenance has been reviewed.",
     "No local hidden file, private report or credentials are published from user uploads."
-  ]
+  ],
+  "revision_note": "Homepage prominent. RUPTL 109 reservoirs + 24 AMI years shown; 15 original-report AI metrics integrated; official 38-province BNPB 2025 records added with earthquake source total mismatch flagged."
 }
