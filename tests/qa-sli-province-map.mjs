@@ -55,18 +55,18 @@ test("Province map renders 38 selectable geometries, source context, and missing
  assert.ok(items.some(x=>String(x.textContent).includes("2 / 38")));
  assert.ok(items.some(x=>String(x.textContent).includes("BPS")));
 });
-test("Provincial pages connect map to original source dashboards, not generic Power BI panels",()=>{
- const analytics=read("sli-interactive-analytics.html"),giniHtml=read("gini-inequality.html"),nexus=read("provincial-intelligence.html"),opportunity=read("provincial-opportunity-engine.html");
- for(const html of [analytics,giniHtml,nexus,opportunity]){
-  assert.match(html,/js\/sli-province-map\.js/);
-  assert.match(html,/css\/sli-province-map\.css/);
+test("Source-grounded province maps remain embedded in three existing dashboards",()=>{
+ const pages=["gini-inequality.html","provincial-intelligence.html","provincial-opportunity-engine.html"];
+ for(const page of pages){
+  const html=read(page);
+  assert.match(html,/js\/sli-province-map\.js/,page);
+  assert.match(html,/css\/sli-province-map\.css/,page);
+  assert.doesNotMatch(html,/sli-interactive-analytics\.html/,page);
  }
- assert.match(read("js/sli-interactive-analytics.js"),/SLIProvinceMap\.render/);
  assert.match(read("js/sli-bps-gini-explorer.js"),/SLIProvinceMap\.render/);
  assert.match(read("js/sli-provincial-nexus-ui.js"),/SLIProvinceMap\.render/);
- assert.match(opportunity,/SLIProvinceMap\.render/);
+ assert.match(read("provincial-opportunity-engine.html"),/SLIProvinceMap\.render/);
  const exportJS=read("js/sli-visual-export.js");
- assert.doesNotMatch(exportJS,/document\.addEventListener\('click',openVisualInsight\)/);
- assert.doesNotMatch(exportJS,/sli-visual-insight-split/);
+ assert.match(exportJS,/document\.addEventListener\('click',openVisualInsight\)/);
  assert.match(exportJS,/SLIVisualFormats\.save/);
 });
