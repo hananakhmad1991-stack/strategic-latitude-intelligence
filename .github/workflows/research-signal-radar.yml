@@ -1,4 +1,4 @@
-name: SLI Critical Minerals & AI Research Radar
+name: SLI Food, Minerals & AI Research Radar
 on:
   workflow_dispatch:
   schedule:
@@ -27,7 +27,7 @@ jobs:
         run: |
           python -m py_compile scripts/research_signal_radar.py
           python tests/test_research_signal_radar.py
-      - name: Refresh four attributed-source radar channels
+      - name: Refresh six attributed-source radar channels
         run: python scripts/research_signal_radar.py
       - name: Preserve output and publish latest evidence snapshot
         run: |
@@ -44,7 +44,7 @@ jobs:
               echo "Radar unchanged"
               exit 0
             fi
-            git commit -m "Refresh dated mineral/AI geopolitical and domestic radar"
+            git commit -m "Refresh food/mineral/AI geopolitical and domestic radar"
             if git push origin HEAD:main; then exit 0; fi
             sleep $((attempt * 2))
           done
