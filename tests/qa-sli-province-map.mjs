@@ -56,14 +56,15 @@ test("Province map renders 38 selectable geometries, source context, and missing
  assert.ok(items.some(x=>String(x.textContent).includes("BPS")));
 });
 test("Provincial pages connect map to original source dashboards, not generic Power BI panels",()=>{
- const analytics=read("sli-interactive-analytics.html"),giniHtml=read("gini-inequality.html"),nexus=read("provincial-intelligence.html");
- for(const html of [analytics,giniHtml,nexus]){
+ const analytics=read("sli-interactive-analytics.html"),giniHtml=read("gini-inequality.html"),nexus=read("provincial-intelligence.html"),opportunity=read("provincial-opportunity-engine.html");
+ for(const html of [analytics,giniHtml,nexus,opportunity]){
   assert.match(html,/js\/sli-province-map\.js/);
   assert.match(html,/css\/sli-province-map\.css/);
  }
  assert.match(read("js/sli-interactive-analytics.js"),/SLIProvinceMap\.render/);
  assert.match(read("js/sli-bps-gini-explorer.js"),/SLIProvinceMap\.render/);
  assert.match(read("js/sli-provincial-nexus-ui.js"),/SLIProvinceMap\.render/);
+ assert.match(opportunity,/SLIProvinceMap\.render/);
  const exportJS=read("js/sli-visual-export.js");
  assert.doesNotMatch(exportJS,/document\.addEventListener\('click',openVisualInsight\)/);
  assert.doesNotMatch(exportJS,/sli-visual-insight-split/);
