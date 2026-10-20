@@ -193,6 +193,7 @@ function renderActions(){
 }
 function draw(){
  if(!ready)return;
+ const root=$("sliTerminalRoot");if(root)root.dataset.workspace=role;
  renderText();stats();renderEntities();renderNews();renderPolicies();renderActions();
 }
 async function load(){
