@@ -61,7 +61,7 @@ function renderMap(){
  const data=DATA.provinces.map(p=>({name:p.name,value:(!region||p.region===region)&&(!query||p.name.toLowerCase().includes(query.toLowerCase()))?p[metric]:null,period:DATA.measurement_period,source:DATA.sources?.[0]?.url}));
  window.SLIProvinceMap.render("giniProvinceMap",{records:data,selected,period:DATA.measurement_period,
   source:"BPS · Susenas expenditure Gini",digits:3,
-  onSelect:name=>{if(!DATA.provinces.some(p=>p.name===name))return;selected=name;query="";region="";
+  onSelect:name=>{const match=DATA.provinces.find(p=>window.SLIProvinceMap.normalize(p.name)===window.SLIProvinceMap.normalize(name));if(!match)return;selected=match.name;query="";region="";
    $('search').value="";$('region').value="";render();}
  });
 }
