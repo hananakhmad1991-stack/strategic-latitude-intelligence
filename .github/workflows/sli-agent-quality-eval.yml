@@ -51,6 +51,8 @@ jobs:
           python scripts/audit_sli_research_index.py
           node --check research-api/src/claim-evidence-audit.mjs
           node --check research-api/src/claim-evidence-ledger.mjs
+          node --check research-api/src/owner-test-worker.mjs
+          node --check js/sli-research-assistant.js
           node --test tests/qa-sli-claim-audit.mjs tests/qa-sli-primary-claim-probe.mjs tests/qa-sli-claim-evidence-ledger.mjs
       - name: Score public evidence retrieval and claim-audit regression
         id: evaluation
