@@ -91,7 +91,7 @@ function renderDetails(){
  host.append(E('p','sli-cg-company-tags',sectorName(n.sector||'energy')+' · '+className(n.ownership_class)+' · '+(n.listing_status==='listed'?T('Publicly listed','Emiten tercatat'):T('Unlisted / private / subsidiary','Tidak tercatat / privat / anak usaha'))));
  const desc=E('p','sli-cg-business',n.business_id);host.append(desc);
  const dl=E('dl','sli-cg-fields');
- const pairs=[[T('Generation','Generasi'),depthName(n)],[T('Snapshot source','Tanggal sumber'),n.source_date],
+ const pairs=[[T('Generation','Generasi'),depthName(n)],[n.source_date_basis==='registry_review'?T('Registry review date','Tanggal pemeriksaan registri'):T('Dated source','Tanggal sumber'),n.source_date],
  [T('Reported ownership','Persentase terlapor'),n.ownership_pct===null?T('Not recorded · do not infer 100%','Tidak tersedia · jangan asumsikan 100%'):n.ownership_pct+'%'],
  [T('Reported link to','Relasi tercatat dengan'),n.parent_id?byId.get(n.parent_id)?.name:T('Standalone/root','Entitas mandiri/induk')]];
  for(const [label,value] of pairs){dl.append(E('dt','',label),E('dd','',value))}host.append(dl);
@@ -144,8 +144,8 @@ function renderDetails(){
 function csvCell(value){let s=String(value??'');if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}
 function exportRows(){
  if(!data)return;
- const columns=['group','sector','ownership_class','entity_name','parent_entity','relationship','exchange','ticker','listing_status','market_cap','market_cap_currency','market_cap_as_of','market_cap_source_url','revenue','net_income','total_assets','financial_currency','financial_period','financial_source_url','business','ownership_pct_reported','directors_names','source_date','original_source'];
- const rows=data.records.filter(n=>n.group===group).map(n=>[n.group,n.sector,n.ownership_class,n.name,byId.get(n.parent_id)?.name||'',n.relationship,n.exchange,n.ticker,n.listing_status,n.market_cap,n.market_cap_currency,n.market_cap_as_of,n.market_cap_source_url,n.revenue,n.net_income,n.total_assets,n.financial_currency,n.financial_period,n.financial_source_url,n.business_id,n.ownership_pct,n.directors?.map(d=>d.name+' — '+d.title_id).join('; ')||'',n.source_date,n.source_url]);
+ const columns=['group','sector','ownership_class','entity_name','parent_entity','relationship','exchange','ticker','listing_status','market_cap','market_cap_currency','market_cap_as_of','market_cap_source_url','revenue','net_income','total_assets','financial_currency','financial_period','financial_source_url','business','ownership_pct_reported','directors_names','source_date','source_date_basis','original_source'];
+ const rows=data.records.filter(n=>n.group===group).map(n=>[n.group,n.sector,n.ownership_class,n.name,byId.get(n.parent_id)?.name||'',n.relationship,n.exchange,n.ticker,n.listing_status,n.market_cap,n.market_cap_currency,n.market_cap_as_of,n.market_cap_source_url,n.revenue,n.net_income,n.total_assets,n.financial_currency,n.financial_period,n.financial_source_url,n.business_id,n.ownership_pct,n.directors?.map(d=>d.name+' — '+d.title_id).join('; ')||'',n.source_date,n.source_date_basis,n.source_url]);
  const content='\uFEFF'+[columns,...rows].map(c=>c.map(csvCell).join(',')).join('\r\n');
  const object=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'}));
  const link=document.createElement('a');link.href=object;link.download='sli-'+group+'-group-evidence.csv';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(object),1000);
