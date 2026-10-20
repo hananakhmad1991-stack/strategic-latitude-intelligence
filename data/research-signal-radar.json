@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-20T02:20:36.831536+00:00",
-  "last_attempt_at_utc": "2026-10-20T02:20:36.831536+00:00",
+  "generated_at_utc": "2026-10-20T02:50:16.345289+00:00",
+  "last_attempt_at_utc": "2026-10-20T02:50:16.345289+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
@@ -43,6 +43,21 @@
           "publisher": "Mining.com",
           "publisher_url": "https://www.mining.com",
           "published_at_utc": "2026-10-14T16:31:40+00:00",
+          "sector": "minerals",
+          "scope": "geopolitical",
+          "topic_id": "copper_supply",
+          "channel": "Copper, alumina and aluminium exposure",
+          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "copper-supply-aurubis-raises-2027-european-copper-premium-to-record-347-a-ton-sources-say-mining-com",
+          "title": "Aurubis raises 2027 European copper premium to record $347 a ton, sources say - Mining.com",
+          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNS3l5SjNwVEl4NVp3R1F6TWNhRGxzZV9pQnE4djZjUUh1UVN5Wng4akdQSXhSN2Z5aC1MZ1BYZWUwYlRkd2hYR1ZvR2dISkdEZmpTRXJNeTFuRXA2STRkTDdNQ1BKR205TUN2bzEyWWVSTkFzZDRpR08wbHFNZVVINHNtaC1YNVFzQk9Qc3FkZmItMzFramVFWkZHVGJwRFNRb2JpQ0RR?oc=5",
+          "publisher": "Mining.com",
+          "publisher_url": "https://www.mining.com",
+          "published_at_utc": "2026-10-14T15:55:08+00:00",
           "sector": "minerals",
           "scope": "geopolitical",
           "topic_id": "copper_supply",
@@ -108,21 +123,6 @@
           "topic_id": "nickel_market",
           "channel": "Nickel prices, demand and downstream margins",
           "impact_pathway": "Nickel-related market or export developments may affect Indonesian smelter utilisation, investment margins or trading relationships.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "copper-supply-platts-proposes-to-launch-weekly-1-arsenic-differential-assessment-for-complex-copper-concentrate-s-p-global",
-          "title": "Platts proposes to launch weekly 1% arsenic differential assessment for complex copper concentrate - S&P Global",
-          "url": "https://news.google.com/rss/articles/CBMimwJBVV95cUxPdFBiTk90MVhHeF9iSVFMWk9mcWFzVnFXckdaTUdBODNkbkRuNExabkI4TlpyUV9BRzhSekNFcmdVYXU1WVFWSldLcHFrcUxJZ21PaDBmaVZGTHctY2F0SGgxU2hBSnk2MWJMZEJsUXF5RWItWS10cXZUUEZ1VmR5RG9wS1ZlZmV5OVNzOTgzeHI4UlItU3hfVmwzOTVQZjNTWUE4b2R4Q1I1Q0JtR3dodGx1SENDWW42Z0s4ckJ6cXU3bkJBc3AzdDRxQ042TmNoR3hiY1FDYXFzQ2tXNm5fa0ZjZlNYa01TR2UwZHd0MllJWTNLMFhyaEFBYURRM1luZC1acWlHa0ZHWWJOYXFZa29fSFB1eGQ5MWx3?oc=5",
-          "publisher": "S&P Global",
-          "publisher_url": "https://www.spglobal.com",
-          "published_at_utc": "2026-10-12T03:04:02+00:00",
-          "sector": "minerals",
-          "scope": "geopolitical",
-          "topic_id": "copper_supply",
-          "channel": "Copper, alumina and aluminium exposure",
-          "impact_pathway": "Global disruptions may affect concentrate inputs, export realisations and metal-sector trade.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -344,7 +344,7 @@
           "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNUXRyd0U2bGEtdmNsNEpFQ1Z0M3M5Vkp5Z3hfT2FBNzVLUW55NnkycG9sakxYZ08wSHJvNzA5bW84RXZrNl8zUjZLbUc0WFhQdUVWQUttMFpiZkJfaEd5dmY3Um1GMWd1Z1hKRk9XVlA5NXpXUWtKREEwVzZrbzFJeUFCTk5ZdG01cllJVi1ST3B5czMxejdJb282ai1zRk1JcnM2MkxQZ3pKRTdFS0ZfU1lyM25KSlVz?oc=5",
           "publisher": "Bloomberg Technoz",
           "publisher_url": "https://www.bloombergtechnoz.com",
-          "published_at_utc": "2026-10-07T01:10:00+00:00",
+          "published_at_utc": "2026-10-06T07:00:00+00:00",
           "sector": "minerals",
           "scope": "domestic",
           "topic_id": "smelter_projects",
@@ -570,6 +570,21 @@
       ],
       "domestic": [
         {
+          "id": "campus-projects-data-center-di-ri-butuh-listrik-20-giga-watt-begini-rencana-bahlil-cnbc-indonesia",
+          "title": "Data Center di RI Butuh Listrik 20 Giga Watt, Begini Rencana Bahlil.. - CNBC Indonesia",
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPV1VqLWI4WjJ1b0sxcU12eHdHSjdIUjVnYU4wSHNqQzdINVkzYVhMOXR5a2tLNWlyZ0JpRDB0elFLSWs4RTV2T0JUTWx5SWdGX1VoNkNOSi04MEQzek95dzdyY3FZNnR4SkJHSnYyRUdkb3I2bUVDU1J1VnpWdkdMcTlMTFUtVUJRYktSQzhBSVA1OVhKVmlqMlZLTUZYR3RIMENsMDJ6aExWcERkX1JZY1c2Z0FfOFZQWUFGOFRlQ0VjYzTSAcgBQVVfeXFMUFdJd1puUklSREZKQ3ZxY2Y5T2dzOG0tN3pYMmdGU3M5MTBOOHU1ZTZfMDJwcVVTaHR3akpNZU5waHg4azBGaExaNXVUQ2RXVDVMT0ZsaHpHa1NwSjRmQ1R4eVFLWTFlQWlBbFh2UlJZdExjTkkyVHlPZ0JpRTV2aDI2OFRrTTRwWTA0YmxMbFg0OWZfdi1ZREx3OWR6SVZGa1JVUE1UNHp4Ykp0LUFUUzNqTGZhSkJFbUhOREZ2UTBkX0M0amFSc1M?oc=5",
+          "publisher": "CNBC Indonesia",
+          "publisher_url": "https://www.cnbcindonesia.com",
+          "published_at_utc": "2026-10-20T02:35:03+00:00",
+          "sector": "ai",
+          "scope": "domestic",
+          "topic_id": "campus_projects",
+          "channel": "Data-center campuses and implementation",
+          "impact_pathway": "Track announced megawatts separately from grid energisation, commissioning, leased capacity and AI GPU deployments.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
           "id": "campus-projects-investasi-ebt-untuk-data-center-kontan",
           "title": "Investasi EBT untuk Data Center - KONTAN",
           "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBJQWVHNjBGa2ZmRUp2SVVHZXQ5aThlNWtPeFhhRzhwVEU3ZG9KNUVQZnpWQnpvUmtuNzJNVENna2hjcTdMcXhpM2Ytb3FDelZmMW1pVTZ6SFBzOEJQM3hSVkdrNnpMN0J5M3V1c3NCT2p3bWM?oc=5",
@@ -675,7 +690,7 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
-          "id": "campus-projects-data-center-konsumsi-air-ratusan-juta-galon-perusahaan-putar-otak-cnbc-indonesia",
+          "id": "power-water-data-center-konsumsi-air-ratusan-juta-galon-perusahaan-putar-otak-cnbc-indonesia",
           "title": "Data Center Konsumsi Air Ratusan Juta Galon, Perusahaan Putar Otak - CNBC Indonesia",
           "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQR2MwUGgxZ3oxdlRMM2xqRDZkeF9yRnBDSG1WWGJpTkttR2g1R1M5d3VWSU1ORmlQMFBITWlmRXR5SDVjR0xyLWZmTTFqMlMyWHo4Q2RGakVtY3NieHRUQVJLd01KYlZKY3JlTGNKYzc1ZFBGeXdidGNqdTU1MDJvc0NtTmRndndDbGktWFZIN0dhNVB3dC1xdDRiZG1razN1UnNnRm5BcEgzeVEzdHVCNXRmbE5lcXE5TGF0dmJPaE9QdlZIWHkyZWt3?oc=5",
           "publisher": "CNBC Indonesia",
@@ -683,9 +698,9 @@
           "published_at_utc": "2026-10-10T07:00:00+00:00",
           "sector": "ai",
           "scope": "domestic",
-          "topic_id": "campus_projects",
-          "channel": "Data-center campuses and implementation",
-          "impact_pathway": "Track announced megawatts separately from grid energisation, commissioning, leased capacity and AI GPU deployments.",
+          "topic_id": "power_water",
+          "channel": "Grid, water and cooling",
+          "impact_pathway": "Power contracts, cooling and water availability can affect delivery; contracted MVA is not operating IT MW.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -831,12 +846,12 @@
       ],
       "domestic": [
         {
-          "id": "rice-reserves-wamentan-saleh-ungkap-biang-kerok-harga-beras-naik-meski-stok-melimpah-cnn-indonesia",
-          "title": "Wamentan Saleh Ungkap Biang Kerok Harga Beras Naik Meski Stok Melimpah - CNN Indonesia",
-          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPNkc5blBGWG9ia0hGNHZIb1lTRnduTWx0aXE5QUNhSndFTUN0THpSMUF5M3h3MUpoQTh5Wmt0VzhXbWFJVTFkc19XRTFWSHVWNXdBZjFVN0pMNHJwYW51aXNfQlU0NTRidVQtZHVJUWpFZHhKTFZ2TmlTV3JQajN3UzZsWjgxTUFFOFRPZ1dfaG91S0tWWDVNcEtfeldMdjdDZ3EzeGtKOU1LUDlwdE5PeU83dGEwZy15ZWRwcGk4NHowWFdQbXlwcVVnbXpVUdIB0wFBVV95cUxNQjVvbEd0TnhCNGxPYlFKMS10MkNCaDc4cllWVnJKZmhXWWIxS08xeWdHRTVQNEtxelpHUFNIaWwwYjY4TDZOeXRHTzB3Wkx5ajhUVnhwdEpEa3JkZTBwVXYxS0pFZ2Z3dk0tem4xMk0zYTU5VnVjUGRtRHZEand2WVdLdlNQb2l5WHFVeE5YbWtQVjhqTHZtYUFac2FOWUw1MnhFblNRS2ZKRVdsZ0l4ZVd2WHVDbThjMldKSzhMak5DWFBGWTJGNW1tQ1lTYzZlSWw4?oc=5",
-          "publisher": "CNN Indonesia",
-          "publisher_url": "https://www.cnnindonesia.com",
-          "published_at_utc": "2026-10-19T08:05:35+00:00",
+          "id": "rice-reserves-produksi-beras-2025-naik-13-29-persen-pengadaan-bulog-tembus-4-juta-ton-kompas-com",
+          "title": "Produksi Beras 2025 Naik 13,29 Persen, Pengadaan Bulog Tembus 4 Juta Ton - Kompas.com",
+          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOT2dLMUdHMVBWWGVpaEc1TTVzNXZDZFF5cGNPem9zdjhNSUc2WEQtVkFHY0ZUaXN3QWZUS0FHWjQ0N0VuNWZFb3ZJRkRoek9jbVRCNVJxcVM4MDN6Rmx5bGFmcm56bFZSQk5Kbkhrd1NNaFgwY05XaU5MVFB2MVp5Y3ptNWdQeHJiYWJXNGRYTXJZSzdxdm5tTlZEdlJ0dFoxNWFxSFpNMk9NeDdRVFF2ZU5KMHhXb3JxWWswRmVXbFc?oc=5",
+          "publisher": "Kompas.com",
+          "publisher_url": "https://nasional.kompas.com",
+          "published_at_utc": "2026-10-20T02:17:00+00:00",
           "sector": "food",
           "scope": "domestic",
           "topic_id": "rice_reserves",
@@ -846,12 +861,12 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
-          "id": "rice-reserves-ri-buka-sinyal-ekspor-beras-ke-luar-negeri-setelah-malaysia-bloomberg-technoz",
-          "title": "RI Buka Sinyal Ekspor Beras ke Luar Negeri Setelah Malaysia - Bloomberg Technoz",
-          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPeE92bENZeWdoRlNvTktSZEVpVHM1T0JzaUJ0YVNpaFJlcGdiRVl5eXVJbHBoWE5tSVZaWWZDc3dLcHhFNU55TGszaWpnS1d0N3g1ODJpRUd1TnZNQXg3b0pFQkEwZzBHMGUyYk93ZHhVX1pQVjdtOUFlay0ta1dNM2l6MC1ybnRWZnpxNVlKeGxlYkM2RkxsTE9XWWtubUhQU0JTZExObHh2TU9nTE1TTw?oc=5",
-          "publisher": "Bloomberg Technoz",
-          "publisher_url": "https://www.bloombergtechnoz.com",
-          "published_at_utc": "2026-10-19T07:20:00+00:00",
+          "id": "rice-reserves-wamentan-saleh-ungkap-biang-kerok-harga-beras-naik-meski-stok-melimpah-cnn-indonesia",
+          "title": "Wamentan Saleh Ungkap Biang Kerok Harga Beras Naik Meski Stok Melimpah - CNN Indonesia",
+          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPNkc5blBGWG9ia0hGNHZIb1lTRnduTWx0aXE5QUNhSndFTUN0THpSMUF5M3h3MUpoQTh5Wmt0VzhXbWFJVTFkc19XRTFWSHVWNXdBZjFVN0pMNHJwYW51aXNfQlU0NTRidVQtZHVJUWpFZHhKTFZ2TmlTV3JQajN3UzZsWjgxTUFFOFRPZ1dfaG91S0tWWDVNcEtfeldMdjdDZ3EzeGtKOU1LUDlwdE5PeU83dGEwZy15ZWRwcGk4NHowWFdQbXlwcVVnbXpVUdIB0wFBVV95cUxNQjVvbEd0TnhCNGxPYlFKMS10MkNCaDc4cllWVnJKZmhXWWIxS08xeWdHRTVQNEtxelpHUFNIaWwwYjY4TDZOeXRHTzB3Wkx5ajhUVnhwdEpEa3JkZTBwVXYxS0pFZ2Z3dk0tem4xMk0zYTU5VnVjUGRtRHZEand2WVdLdlNQb2l5WHFVeE5YbWtQVjhqTHZtYUFac2FOWUw1MnhFblNRS2ZKRVdsZ0l4ZVd2WHVDbThjMldKSzhMak5DWFBGWTJGNW1tQ1lTYzZlSWw4?oc=5",
+          "publisher": "CNN Indonesia",
+          "publisher_url": "https://www.cnnindonesia.com",
+          "published_at_utc": "2026-10-19T08:05:35+00:00",
           "sector": "food",
           "scope": "domestic",
           "topic_id": "rice_reserves",
@@ -1026,6 +1041,21 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
+          "id": "food-policy-amran-ungkap-harga-beras-di-vietnam-tailan-anjlok-usai-ri-setop-impor-bisnis-com-ekonomi",
+          "title": "Amran Ungkap Harga Beras di Vietnam-Tailan Anjlok Usai RI Setop Impor - Bisnis.com - Ekonomi",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPOTBxQjhhVk5KOVpOdndZRGxZX19XVThNNjRXUFotRk5NWHZtWmpUV01tWnRXV0NaTW41T3pFSkZDNzk3bHMzcTdLU1ZHaURzT20tRmhwVV84ckFHTk5lRVhMYWdWSzlWcFlNMWdGSXhHb1hzNG1CakRmUXlnQ0J3MzczWTVFY3JpRFRYeU8xdlZuVXBXLU9HQ204cklDQS1RRm9tWUtaMExmTnEybkxacFdTeTViMUdQNHdJalF3?oc=5",
+          "publisher": "Bisnis.com - Ekonomi",
+          "publisher_url": "https://ekonomi.bisnis.com",
+          "published_at_utc": "2026-10-13T10:38:00+00:00",
+          "sector": "food",
+          "scope": "domestic",
+          "topic_id": "food_policy",
+          "channel": "Food governance and trade policy",
+          "impact_pathway": "Regulatory changes need primary legal documents; do not infer effective legal status from a headline.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
           "id": "fertilizer-subsidy-penyaluran-pupuk-subsidi-tak-sesuai-ketentuan-pi-rugi-rp21-9-m-bloomberg-technoz",
           "title": "Penyaluran Pupuk Subsidi tak Sesuai Ketentuan, PI Rugi Rp21,9 M - Bloomberg Technoz",
           "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOdExwak1QelBHQmlvVjJVTTdJeG9wNm5uWFB4SG9QektLWGtZMWphNkJKbEl3OVctaTBsWDBQVElRWDZRQmlibUlmaWFpZG1zZVdkUHpicHdmU19JbmxlQkw3ZFVXMk40Y19vWFBUWUpKOWl4Mm1uSEV0V0FyaTRZRWNuLTZZTUpQb1M1MllUTm9vX0l0aWl2MkQ4c0R6X2VEWVdFT3pveWVVcHYxd2h0RktleWc?oc=5",
@@ -1047,21 +1077,6 @@
           "publisher": "Kompas.com",
           "publisher_url": "https://money.kompas.com",
           "published_at_utc": "2026-10-12T23:40:00+00:00",
-          "sector": "food",
-          "scope": "domestic",
-          "topic_id": "food_policy",
-          "channel": "Food governance and trade policy",
-          "impact_pathway": "Regulatory changes need primary legal documents; do not infer effective legal status from a headline.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "food-policy-sekdaprov-marindo-kurniawan-ikuti-rakor-pengendalian-inflasi-perkuat-koordinasi-pengendalian-inflasi-dan-ketahanan-pangan-pemerintah-provi",
-          "title": "Sekdaprov Marindo Kurniawan Ikuti Rakor Pengendalian Inflasi, Perkuat Koordinasi Pengendalian Inflasi dan Ketahanan Pangan - Pemerintah Provinsi Lampung",
-          "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOaU84MDhYc3dSVnh4SzRNYXFrUzUxMTFSOFhCdU5VMUw0d0VkNHNyY1VQSzRLX1Z0NC1WcjkyZVh5bmhHZjFhX0ZpRldRaXBPdmxneHFzNTVTWmRlLWNrNkJGdXV3d3ZONGQ3U2xuZzF6LUJWd1BMRGVXTmxUeG1ONEFacGNHR2lZMnpnZkVIa09Vblg2WWZBVG5hcHVha2RWV1Q3UFM4RkNYeUN2VXc1aE5DRncxSHBuOU95TFByUVRZT3ZqaWdjRkNta08wOHdpb3FPWUVZV3BXWmYxclA2RUhFZUZnbUppQk0ybjYtbUJRM09jRG5lV0ZXTmk0dw?oc=5",
-          "publisher": "Pemerintah Provinsi Lampung",
-          "publisher_url": "https://biroadpim.lampungprov.go.id",
-          "published_at_utc": "2026-10-12T15:23:00+00:00",
           "sector": "food",
           "scope": "domestic",
           "topic_id": "food_policy",
@@ -1155,7 +1170,7 @@
     },
     "ai": {
       "geopolitical": 13,
-      "domestic": 10
+      "domestic": 11
     },
     "food": {
       "geopolitical": 7,
