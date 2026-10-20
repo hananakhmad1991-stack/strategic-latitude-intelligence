@@ -7,7 +7,7 @@
     "official_url": "https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf",
     "independent_primary_study_validation": false
   },
-  "editorial_policy": "Only original printed numerical panel labels transcribed from PDF pages 83 and 85, cross-checked visually; not counts of underlying records. Ratios and time periods are not interchangeable. Numeric panels within Figures 4.2 and 4.3 separately counted; neither entire report's graphics nor underlying studies independently validated.",
+  "editorial_policy": "Only original printed numerical panel labels transcribed from PDF pages 83 and 85, cross-checked visually; not counts of underlying records. Ratios and time periods are not interchangeable. Numeric panels within Figures 4.2 and 4.3 separately counted; neither entire report's graphics nor underlying studies independently validated. World Bank Figure 2.2 was transcribed as four exact nine-year orbit-class series from printed labels on PDF page 50; categories are not proxies for bandwidth, coverage or observed 2026 satellites.",
   "figures": [
     {
       "id": "worldbank-ai-training-startups-4-2a",
@@ -219,6 +219,111 @@
           "value": 3.2
         }
       ]
+    },
+    {
+      "id": "worldbank-commercial-communications-satellites-fig-2-2",
+      "figure_number": "2.2",
+      "figure_panel": null,
+      "pdf_page": 50,
+      "chart_type": "multi-series-line",
+      "title_id": "Jumlah satelit komunikasi komersial menurut orbit, 2015–2023",
+      "title_en": "Commercial communications satellites by orbital positioning, 2015–2023",
+      "unit": "satellites",
+      "period": "2015–2023",
+      "geography": "Global",
+      "statistical_status": "publisher_calculation_from_union_of_concerned_scientists_database",
+      "source_credit": "World Bank Digital Progress and Trends Report 2025, Figure 2.2; original calculations based on Union of Concerned Scientists satellite database",
+      "source_url": "https://documents1.worldbank.org/curated/en/099112525160536089/pdf/P505350-59c98ca8-0803-4f23-b470-17f3dab010ab.pdf",
+      "source_chart_basis": "All 36 printed numerical labels (9 years × 4 orbit classes) verified against original Figure 2.2 on source PDF page 50. Publisher's original computed series; not an active in-orbit census in 2026.",
+      "series": [
+        {
+          "key": "LEO",
+          "label_id": "Orbit rendah (LEO)",
+          "label_en": "Low Earth orbit (LEO)"
+        },
+        {
+          "key": "GEO",
+          "label_id": "Orbit geosinkron (GEO)",
+          "label_en": "Geosynchronous orbit (GEO)"
+        },
+        {
+          "key": "MEO",
+          "label_id": "Orbit menengah (MEO)",
+          "label_en": "Medium Earth orbit (MEO)"
+        },
+        {
+          "key": "Elliptical",
+          "label_id": "Orbit elips",
+          "label_en": "Elliptical orbit"
+        }
+      ],
+      "values": [
+        {
+          "year": 2015,
+          "LEO": 96,
+          "GEO": 239,
+          "MEO": 12,
+          "Elliptical": 3
+        },
+        {
+          "year": 2016,
+          "LEO": 96,
+          "GEO": 256,
+          "MEO": 12,
+          "Elliptical": 3
+        },
+        {
+          "year": 2017,
+          "LEO": 136,
+          "GEO": 278,
+          "MEO": 12,
+          "Elliptical": 3
+        },
+        {
+          "year": 2018,
+          "LEO": 176,
+          "GEO": 292,
+          "MEO": 16,
+          "Elliptical": 3
+        },
+        {
+          "year": 2019,
+          "LEO": 254,
+          "GEO": 308,
+          "MEO": 20,
+          "Elliptical": 3
+        },
+        {
+          "year": 2020,
+          "LEO": 1093,
+          "GEO": 315,
+          "MEO": 20,
+          "Elliptical": 3
+        },
+        {
+          "year": 2021,
+          "LEO": 2367,
+          "GEO": 326,
+          "MEO": 20,
+          "Elliptical": 3
+        },
+        {
+          "year": 2022,
+          "LEO": 4222,
+          "GEO": 337,
+          "MEO": 20,
+          "Elliptical": 3
+        },
+        {
+          "year": 2023,
+          "LEO": 4944,
+          "GEO": 344,
+          "MEO": 20,
+          "Elliptical": 3
+        }
+      ],
+      "caution_id": "Jumlah satelit komunikasi komersial menurut klasifikasi orbit pada 2015–2023. Tidak setara dengan kapasitas internet, kepemilikan AI data center, cakupan Indonesia, atau jumlah satelit aktif pada 2026.",
+      "caution_en": "Global commercial communications satellite counts by orbit, 2015–2023; not 2026 active fleet, connectivity capacity, Indonesian coverage or AI compute infrastructure."
     }
   ]
 }
