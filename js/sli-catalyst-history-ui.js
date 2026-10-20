@@ -25,7 +25,7 @@ function prefsRead(){
   inApp:p.inApp!==false,desktop:p.desktop===true};
 }
 const seenRead=()=>{const x=json(SEEN);return {initialized:!!x?.initialized,known:Array.isArray(x?.known)?x.known.slice(-1800):[],
- read:Array.isArray(x?.read)?x.read.slice(-1800):[]}};
+ read:Array.isArray(x?.read)?x.read.slice(-1800):[],lastIndexIds:Array.isArray(x?.lastIndexIds)?x.lastIndexIds.slice(-1800):[]}};
 const safeStamp=x=>{const time=Date.parse(x||"");return Number.isFinite(time)?
  new Intl.DateTimeFormat(id()?"id-ID":"en-GB",{year:"numeric",month:"short",day:"numeric",timeZone:"Asia/Jakarta"}).format(new Date(time)):"—"};
 const sectorAlias={energy:["oilgas","electricity"],minerals:["minerba"],coal:["energy","minerba"],
@@ -186,6 +186,9 @@ function render(){
  const status=E("div","sli-hist-notice-status",T("In-app activity markers are device-local; no account or server preference sync.",
  "Penanda aktivitas dalam aplikasi bersifat lokal; belum ada sinkronisasi akun atau preferensi ke server."));
  options.append(status);
+ const alerts=E("label","sli-hist-inapp");const check=E("input");check.type="checkbox";check.checked=p.inApp;
+ check.addEventListener("change",()=>{p.inApp=check.checked;persist()});
+ alerts.append(check,E("span",null,T("Show new/unread markers","Tampilkan penanda baru/belum dibaca")));options.append(alerts);
  const desktop=E("button","sli-hist-desktop",p.desktop?T("Desktop notices ON (while open)","Notifikasi desktop AKTIF (saat terbuka)"):
   T("Enable desktop notices while open","Aktifkan notifikasi desktop saat terbuka"));
  desktop.type="button";desktop.addEventListener("click",async()=>{
@@ -219,7 +222,7 @@ function renderResults(){
   btn.setAttribute("aria-pressed",String(e.id===current?.event.id));
   btn.append(E("span","sli-hist-kind",labelledType(e)),E("strong",null,e.title));
   btn.append(E("small",null,safeStamp(e.detected_at_utc)+" · "+(e.sector||"cross")+" · "+strengthLabel(basis)));
-  if(seen.known.includes(e.id)&&!seen.read.includes(e.id))btn.append(E("span","sli-hist-new",T("NEW FOR YOU","BARU UNTUK ANDA")));
+  if(p.inApp&&seen.known.includes(e.id)&&!seen.read.includes(e.id))btn.append(E("span","sli-hist-new",T("NEW FOR YOU","BARU UNTUK ANDA")));
   btn.addEventListener("click",()=>{
    focused=e.id;if(!seen.read.includes(e.id)){seen.read=[...seen.read,e.id].slice(-1800);save(SEEN,seen)}
    renderResults();
@@ -241,14 +244,17 @@ async function refresh(){
   const resp=await fetch(FEED,{cache:"no-store"});if(!resp.ok)throw Error("HTTP "+resp.status);
   const next=await resp.json();
   if(next?.schema_version!=="sli-catalyst-history-v2"||!Array.isArray(next.events))throw Error("Invalid public history schema");
-  const oldKnown=new Set((data?.events||[]).map(e=>e.id));
-  const wasReady=ready;
+  const oldKnown=new Set(seen.lastIndexIds||[]);
   const all=new Set(next.events.map(x=>x.id));
-  if(!seen.initialized){seen.initialized=true;seen.known=[];save(SEEN,seen)}
-  else if(wasReady){
-   const added=next.events.filter(x=>!oldKnown.has(x.id)&&!seen.known.includes(x.id));
+  const initial=!seen.initialized;
+  const added=initial?[]:next.events.filter(x=>!oldKnown.has(x.id)&&!seen.known.includes(x.id));
+  if(initial){seen.initialized=true;seen.known=[]}
+  else {
    seen.known=[...new Set([...seen.known,...added.map(x=>x.id)])].filter(x=>all.has(x)).slice(-1800);
-   save(SEEN,seen);
+  }
+  seen.lastIndexIds=[...all].slice(-1800);
+  save(SEEN,seen);
+  if(!initial){
    if(p.desktop&&typeof Notification!=="undefined"&&Notification.permission==="granted"){
     const context=pickContext(),watched=watch();
     for(const e of added.filter(x=>relevant(x,p,context,watched,issuerByTicker).match).slice(0,3)){
@@ -267,7 +273,13 @@ async function refresh(){
 }
 function mount(){
  const root=$(ROOT);if(!root)return;
- render();refresh();
+ render();
+ const indexed=window.SLIDecisionTerminal?.getSnapshot?.().issuers;
+ if(Array.isArray(indexed))issuerByTicker=new Map(indexed.filter(x=>x.ticker).map(x=>[x.ticker,x]));
+ fetch("./data/sli-idx-issuer-universe.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(x=>{
+  if(Array.isArray(x?.records)){issuerByTicker=new Map(x.records.filter(v=>v.ticker).map(v=>[v.ticker,v]));if(ready)render()}
+ }).catch(()=>{});
+ refresh();
  document.addEventListener("sli:terminalrender",()=>{if(ready)render()});
  document.addEventListener("sli:languagechange",()=>{if(ready)render()});
  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")refresh()});
