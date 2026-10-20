@@ -1,0 +1,32 @@
+name: SLI Monthly National WDI Official Source Delta Watch
+on:
+  schedule:
+    - cron: '19 2 1 * *'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/fetch-environment-wdi-review.py'
+      - 'scripts/audit_wdi_official_deltas.py'
+      - '.github/workflows/sli-wdi-national-source-watch.yml'
+permissions:
+  contents: read
+jobs:
+  source-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download fresh official Indonesia indicators (read only)
+        run: python3 scripts/fetch-environment-wdi-review.py
+      - name: Compare current published SLI values to API candidate and produce audit only
+        run: python3 scripts/audit_wdi_official_deltas.py
+      - name: Save source candidate and data-change report for editorial review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: indonesia-worldbank-wdi-source-delta-review
+          path: |
+            artifacts/sli-indonesia-environment-wdi-review.json
+            artifacts/sli-wdi-official-delta-review.json
+          if-no-files-found: warn
+          retention-days: 30
