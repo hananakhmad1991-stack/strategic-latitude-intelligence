@@ -80,7 +80,7 @@ export function docxBytes(report){
   'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><w:body>'+
   para(report.title,"Title")+para("SLI Research AI · "+report.date,"Caution")+draft+
   blocks(report.body)+(report.charts.length?para("Data Pendukung","Heading1")+blocks(report.charts):"")+
-  para(report.language==="id"?"Daftar Pustaka (APA Edisi 7)":"References (APA 7th edition)","Heading1")+
+  para(report.language==="id"?"Sumber dan Referensi (sitasi bernomor)":"Sources and References (numbered citations)","Heading1")+
   warnings+cited+sect+'</w:body></w:document>';
  const header='<w:hdr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:p>'+
   '<w:pPr><w:jc w:val="right"/></w:pPr><w:r><w:rPr><w:rFonts w:ascii="Arial" w:hAnsi="Arial"/>'+
