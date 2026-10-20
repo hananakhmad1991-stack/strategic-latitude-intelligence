@@ -67,9 +67,13 @@ test("National KPI cards read observed values, source URLs and reporting periods
  }
 });
 
-test("Home mode uses a complete lightweight top-nav without exposing the long legacy sidebar and legal disclosures",()=>{
- assert.match(html,/sli-portal-mast/);
- assert.match(html,/sli-portal-topnav/);
+test("Home mode reuses the unified Explore Data masthead without duplicate homepage links",()=>{
+ const nav=read("js/sli-navigation.js");
+ assert.doesNotMatch(html,/<header class="sli-portal-mast"/);
+ assert.doesNotMatch(html,/class="sli-portal-topnav"/);
+ assert.match(nav,/function renderPlatformMast\(\)/);
+ assert.match(nav,/const explorer=node\('details','sli-platform-explorer'\)/);
+ assert.match(nav,/classList.toggle\('sli-dashboard-unified',use&&!homepage\)/);
  assert.match(html,/data-sli-locale="en"/);
  assert.match(html,/data-sli-locale="id"/);
  assert.match(html,/id="sliPortalSectors"/);
@@ -83,11 +87,12 @@ test("Home mode uses a complete lightweight top-nav without exposing the long le
  assert.match(html,/class="sidebar"/);
 });
 
-test("SLI primary homepage brand uses an original typography-only monogram, not the former compass emblem",()=>{
- assert.match(html,/<span class="sli-portal-brand-monogram" aria-hidden="true">SLI<\/span>/);
- assert.match(html,/<span class="sli-portal-brand-name"><strong>STRATEGIC LATITUDE<\/strong><small>INTELLIGENCE<\/small><\/span>/);
- assert.doesNotMatch(html,/class="sli-portal-brand-emblem"/);
- assert.match(style,/\.sli-portal-brand-monogram\{/);
- assert.match(style,/border-right:1px solid #5b6470/);
+test("Unified primary SLI masthead retains original navy/gold typographic identity",()=>{
+ const nav=read("js/sli-navigation.js"),css=read("css/sli-navigation.css");
+ assert.match(nav,/node\('span','sli-platform-monogram','SLI'\)/);
+ assert.match(nav,/node\('strong','', 'STRATEGIC LATITUDE'\)/);
+ assert.match(nav,/node\('small','', 'INTELLIGENCE'\)/);
+ assert.match(css,/\.sli-platform-monogram\{/);
+ assert.match(css,/border-right:1px solid #5b6470/);
  assert.ok(html.includes(style),"Home page embedded styles must match the latest standalone CSS");
 });
