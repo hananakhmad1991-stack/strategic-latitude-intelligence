@@ -213,6 +213,13 @@ function renderDetails(){
 function csvCell(value){let s=String(value??'');if(/^[=+\-@]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}
 function exportRows(){
  if(!data)return;
+ if(view==='issuer'){
+  const header=['ticker','exchange','name','sli_sector','verification','source_url','registry_as_of','listing_status','market_cap','financial_period','revenue','net_income','total_assets','financial_source_url'];
+  const rows=sectorIssuers().map(n=>[n.ticker,n.exchange,n.groupRecord?.name||n.name,n.sector,n.verification,n.source_url,issuerData?.as_of||'',n.verification==='official_exchange_snapshot'?'IDX directory snapshot':'Unverified current listing',n.groupRecord?.market_cap??'',n.groupRecord?.financial_period||'',n.groupRecord?.revenue??'',n.groupRecord?.net_income??'',n.groupRecord?.total_assets??'',n.groupRecord?.financial_source_url||'']);
+  const content='\uFEFF'+[header,...rows].map(row=>row.map(csvCell).join(',')).join('\r\n');
+  const object=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'}));
+  const link=document.createElement('a');link.href=object;link.download='sli-idx-'+sector+'-issuer-catalogue.csv';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(object),1000);return;
+ }
  const columns=['group','sector','ownership_class','entity_name','parent_entity','relationship','exchange','ticker','listing_status','market_cap','market_cap_currency','market_cap_as_of','market_cap_source_url','revenue','net_income','total_assets','financial_currency','financial_period','financial_source_url','business','ownership_pct_reported','directors_names','source_date','source_date_basis','original_source'];
  const rows=data.records.filter(n=>n.group===group).map(n=>[n.group,n.sector,n.ownership_class,n.name,byId.get(n.parent_id)?.name||'',n.relationship,n.exchange,n.ticker,n.listing_status,n.market_cap,n.market_cap_currency,n.market_cap_as_of,n.market_cap_source_url,n.revenue,n.net_income,n.total_assets,n.financial_currency,n.financial_period,n.financial_source_url,n.business_id,n.ownership_pct,n.directors?.map(d=>d.name+' — '+d.title_id).join('; ')||'',n.source_date,n.source_date_basis,n.source_url]);
  const content='\uFEFF'+[columns,...rows].map(c=>c.map(csvCell).join(',')).join('\r\n');
@@ -242,21 +249,48 @@ function initialize(db){
  const params=new URLSearchParams(location.search),requestedGroup=params.get('group');
  if(groups.has(requestedGroup))group=requestedGroup;
  sector=groups.get(group)?.sector||'energy';
- if(['all','energy','minerals','coal','technology','food'].includes(params.get('sector'))&&params.get('sector')==='all')sector='all';
+ if(['all','energy','minerals','coal','technology','food','finance','infrastructure','transport','property','healthcare','manufacturing','retail','other'].includes(params.get('sector')))sector=params.get('sector');
  selected=groups.get(group)?.root_id;
  expand=new Set([selected]);
  const sectorSelect=document.getElementById('sliCgSector');sectorSelect.value=sector;
  sectorSelect.addEventListener('change',()=>{sector=sectorSelect.value;
   const matches=db.groups.filter(g=>sector==='all'||g.sector===sector);
-  if(!matches.some(g=>g.id===group)){group=matches[0].id;selected=matches[0].root_id}
-  query='';document.getElementById('sliCgSearch').value='';expand.add(selected);renderTabs();renderTree();renderDetails();
+  if(!matches.some(g=>g.id===group)&&matches.length){group=matches[0].id;selected=matches[0].root_id}
+  if(!matches.length||view==='issuer')view='issuer';
+  selectedTicker=allSectorIssuers()[0]?.ticker||'';issuerLimit=60;query='';document.getElementById('sliCgSearch').value='';
+  if(selected)expand.add(selected);renderTabs();renderTree();renderDetails();
  });
- document.getElementById('sliCgSearch').addEventListener('input',e=>{query=e.target.value.trim();renderTree()});
- document.getElementById('sliCgExpand').addEventListener('click',()=>{expand=new Set(data.records.filter(n=>n.group===group).map(n=>n.id));renderTree()});
- document.getElementById('sliCgCollapse').addEventListener('click',()=>{expand=new Set([groups.get(group).root_id]);renderTree()});
+ document.getElementById('sliCgSearch').addEventListener('input',e=>{query=e.target.value.trim();issuerLimit=60;if(query&&issuerByTicker.size)view='issuer';renderTabs();renderTree();renderDetails()});
+ document.getElementById('sliCgExpand').addEventListener('click',()=>{if(view==='issuer'){issuerLimit=sectorIssuers().length}else expand=new Set(data.records.filter(n=>n.group===group).map(n=>n.id));renderTree()});
+ document.getElementById('sliCgCollapse').addEventListener('click',()=>{if(view==='issuer')issuerLimit=60;else expand=new Set([groups.get(group)?.root_id]);renderTree()});
  document.getElementById('sliCgCsv').addEventListener('click',exportRows);
  document.addEventListener('sli:languagechange',()=>{renderTabs();renderTree();renderDetails()});
  renderTabs();renderTree();renderDetails();
+ loadIssuerUniverse(!!requestedGroup);
+}
+async function loadIssuerUniverse(preserveGroup){
+ try{
+  const r=await fetch(ISSUERS,{cache:'no-store'});if(!r.ok)throw Error('IDX issuer catalogue HTTP '+r.status);
+  const body=await r.json();
+  if(body.schema!=='sli-idx-issuer-universe-v1'||!Array.isArray(body.records)||body.records.length<100)throw Error('IDX issuer catalogue schema invalid');
+  const map=new Map(),groupIndex=new Map();
+  for(const n of data.records)if(n.exchange==='IDX'&&n.ticker){if(groupIndex.has(n.ticker))throw Error('Duplicate group issuer '+n.ticker);groupIndex.set(n.ticker,n)}
+  for(const record of body.records){
+   if(!/^[A-Z0-9]{4}$/.test(record.ticker)||map.has(record.ticker)||!source(record.source_url))throw Error('Invalid or duplicate IDX catalogue ticker '+record.ticker);
+   const gr=groupIndex.get(record.ticker);
+   map.set(record.ticker,{...record,exchange:'IDX',groupRecord:gr||null,sector:gr?.sector||record.sector});
+  }
+  for(const [ticker,gr] of groupIndex)if(!map.has(ticker))map.set(ticker,{
+   ticker,name:gr.name,exchange:'IDX',sector:gr.sector,verification:'group_source_only',source_url:gr.source_url,groupRecord:gr
+  });
+  issuerData=body;issuerByTicker=map;groupByTicker=groupIndex;issuerLoadFailed=false;
+  if(!preserveGroup){view='issuer';selectedTicker=allSectorIssuers()[0]?.ticker||''}
+  renderTabs();renderTree();renderDetails();
+ }catch(err){
+  issuerLoadFailed=true;console.warn('[SLI IDX sector explorer]',err);
+  renderTabs();
+  const info=document.getElementById('sliCgCoverage');if(info)info.textContent+=' · '+T('issuer catalogue unavailable; group trees remain usable','katalog emiten tidak tersedia; pohon grup tetap berfungsi');
+ }
 }
 function load(){
  const root=document.getElementById(ROOT);if(!root)return;
