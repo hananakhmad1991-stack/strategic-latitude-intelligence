@@ -5,6 +5,9 @@ on:
       - 'sli-entities.html'
       - 'js/sli-entity-identity.js'
       - 'js/sli-entities.js'
+      - 'js/sli-corporate-evidence-ui.js'
+      - 'css/sli-corporate-evidence.css'
+      - 'data/sli-corporate-evidence-relationships.json'
       - 'css/sli-entity-identity.css'
       - 'css/sli-entities.css'
       - 'js/sli-navigation.js'
@@ -18,6 +21,9 @@ on:
       - 'sli-entities.html'
       - 'js/sli-entity-identity.js'
       - 'js/sli-entities.js'
+      - 'js/sli-corporate-evidence-ui.js'
+      - 'css/sli-corporate-evidence.css'
+      - 'data/sli-corporate-evidence-relationships.json'
       - 'css/sli-entity-identity.css'
       - 'css/sli-entities.css'
       - 'js/sli-navigation.js'
@@ -41,10 +47,11 @@ jobs:
         run: |
           node --check js/sli-entity-identity.js
           node --check js/sli-entities.js
+          node --check js/sli-corporate-evidence-ui.js
           node --check js/sli-navigation.js
           node --check js/sector-command-hierarchy.js
           node --check js/sli-research-ai.js
       - name: Entity, shared chrome and data regression tests
         run: |
-          node --test tests/qa-sli-entities.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-home-portal.mjs
+          node --test tests/qa-sli-corporate-evidence.mjs tests/qa-sli-entities.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-home-portal.mjs
           node tests/qa-command-hierarchy.mjs
