@@ -7,7 +7,7 @@
     "official_url": "https://hai.stanford.edu/assets/files/ai_index_report_2026.pdf",
     "independent_primary_study_validation": false
   },
-  "editorial_policy": "Transcribed only printed numeric labels from original PDF pages. Not interpolated from pixels. Modelled power is NOT metered grid use; data center facility count is NOT MW. Global/country series are NOT Indonesia-specific.",
+  "editorial_policy": "Transcribed only printed numeric labels from original PDF pages. Not interpolated from pixels. Modelled power is NOT metered grid use; data center facility count is NOT MW. Global/country series are NOT Indonesia-specific. Three further figure-level label sets read directly from original printed Stanford PDF pages 30 and 39; no pixel interpolation. Modelled comparisons must not imply direct facility or Indonesian measurements.",
   "figures": [
     {
       "id": "stanford-ai-dc-power-fig-1-2-4",
@@ -165,6 +165,162 @@
       ],
       "caution_id": "Jumlah fasilitas tidak setara kapasitas MW, daya AI, ataupun tingkat utilisasi. Data Indonesia tidak disajikan pada grafik ini.",
       "caution_en": "Number of facilities is not MW, AI compute, or utilization. Indonesia is not shown in this figure."
+    },
+    {
+      "id": "stanford-models-by-accelerator-fig-1-2-2",
+      "figure_number": "1.2.2",
+      "pdf_page": 30,
+      "title_id": "Jumlah kumulatif model AI penting menurut akselerator",
+      "title_en": "Cumulative notable AI models by accelerator",
+      "unit": "models",
+      "year": 2025,
+      "geography": "Global notable AI model tracker",
+      "statistical_status": "third_party_cumulative_reported_model_counts_not_annual_flow",
+      "source_credit": "Epoch AI, 2026, as reproduced in Stanford HAI AI Index 2026",
+      "source_chart_basis": "2025 terminal labels of eight accelerator series in Figure 1.2.2. Endpoint counts only, not complete 2017–2025 time series. Categories may overlap for models using multiple hardware types.",
+      "caution_id": "Angka kumulatif model hingga 2025, bukan jumlah model baru pada 2025. Grafik asli memuat tren yang belum didigitalisasi; kategori akselerator tidak dijumlahkan.",
+      "caution_en": "Cumulative model count through 2025, NOT newly trained models in 2025. Only printed terminal values transcribed; accelerator categories must not be added together.",
+      "values": [
+        {
+          "label_id": "A100",
+          "label_en": "A100",
+          "value": 84
+        },
+        {
+          "label_id": "V100",
+          "label_en": "V100",
+          "value": 69
+        },
+        {
+          "label_id": "Other",
+          "label_en": "Other",
+          "value": 54
+        },
+        {
+          "label_id": "TPU v3",
+          "label_en": "TPU v3",
+          "value": 44
+        },
+        {
+          "label_id": "TPU v4",
+          "label_en": "TPU v4",
+          "value": 28
+        },
+        {
+          "label_id": "H100",
+          "label_en": "H100",
+          "value": 28
+        },
+        {
+          "label_id": "P100",
+          "label_en": "P100",
+          "value": 6
+        },
+        {
+          "label_id": "H800",
+          "label_en": "H800",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "stanford-inference-energy-comparisons-fig-1-4-7",
+      "figure_number": "1.4.7",
+      "pdf_page": 39,
+      "title_id": "Perbandingan estimasi energi kueri AI dan aktivitas lain",
+      "title_en": "Estimated AI query energy versus everyday activities",
+      "unit": "Wh",
+      "year": 2025,
+      "geography": "Global/general activity comparisons, not Indonesia",
+      "statistical_status": "publisher_compilation_estimates_ai_inference_energy",
+      "source_credit": "AI Index, 2025, as reproduced in Stanford HAI AI Index 2026",
+      "source_chart_basis": "All seven explicitly labelled bars in Figure 1.4.7, original PDF page 39. GPT-4o query estimates as of March 2025; comparisons not independently measured by SLI.",
+      "caution_id": "Estimasi energi per interaksi/sesi GPT-4o Maret 2025, bukan konsumsi listrik nasional atau pengukuran pusat data Indonesia. Angka sumber berbeda menurut panjang kueri.",
+      "caution_en": "Model-based GPT-4o interaction/session energy estimates for March 2025, not observed Indonesian electricity consumption or energy efficiency of newer models.",
+      "values": [
+        {
+          "label_id": "1 pencarian Google",
+          "label_en": "1 Google search",
+          "value": 0.3
+        },
+        {
+          "label_id": "GPT-4o Mar 2025 · kueri singkat",
+          "label_en": "GPT-4o Mar 2025 · short query",
+          "value": 0.42
+        },
+        {
+          "label_id": "GPT-4o Mar 2025 · kueri sedang",
+          "label_en": "GPT-4o Mar 2025 · medium query",
+          "value": 1.21
+        },
+        {
+          "label_id": "GPT-4o Mar 2025 · kueri panjang",
+          "label_en": "GPT-4o Mar 2025 · long query",
+          "value": 1.79
+        },
+        {
+          "label_id": "Sesi harian · 8 pesan singkat",
+          "label_en": "Daily session · 8 short-query messages",
+          "value": 3.37
+        },
+        {
+          "label_id": "Sesi harian · 8 pesan sedang",
+          "label_en": "Daily session · 8 medium-query messages",
+          "value": 9.71
+        },
+        {
+          "label_id": "Pengisian daya 2 ponsel",
+          "label_en": "Charging 2 phones",
+          "value": 10
+        }
+      ]
+    },
+    {
+      "id": "stanford-inference-water-comparisons-fig-1-4-8",
+      "figure_number": "1.4.8",
+      "pdf_page": 39,
+      "title_id": "Perbandingan estimasi konsumsi air tahunan AI",
+      "title_en": "Estimated annual AI inference water consumption comparisons",
+      "unit": "kL",
+      "year": 2025,
+      "geography": "Published global AI inference comparison and baseline equivalents",
+      "statistical_status": "publisher_compilation_modelled_water_estimates",
+      "source_credit": "AI Index, 2025, as reproduced in Stanford HAI AI Index 2026",
+      "source_chart_basis": "Six labelled bars Figure 1.4.8, original PDF page 39. 1,334,991 and 1,579,680 kL refer to GPT-4o inference range, not current measured national water withdrawal.",
+      "caution_id": "Perbandingan skenario tahunan dengan satuan kiloliter. Dua batang GPT-4o adalah estimasi minimum–maksimum, bukan dua konsumsi yang boleh dijumlah. Tidak merepresentasikan air yang dipakai Indonesia.",
+      "caution_en": "Published annual kL comparison; GPT-4o min/max are alternative estimate bounds, not additive or metered Indonesian freshwater withdrawals.",
+      "values": [
+        {
+          "label_id": "Air minum 1 orang per tahun (AS)",
+          "label_en": "One person's yearly drinking water (US average)",
+          "value": 1
+        },
+        {
+          "label_id": "1 kolam renang Olimpiade",
+          "label_en": "One Olympic swimming pool",
+          "value": 2500
+        },
+        {
+          "label_id": "500 kolam renang Olimpiade",
+          "label_en": "500 Olympic swimming pools",
+          "value": 1250000
+        },
+        {
+          "label_id": "Air minum tahunan 1,2 juta orang",
+          "label_en": "1.2 million people annual drinking water",
+          "value": 1314000
+        },
+        {
+          "label_id": "Inferensi GPT-4o · batas minimum",
+          "label_en": "GPT-4o inference · minimum estimate",
+          "value": 1334991
+        },
+        {
+          "label_id": "Inferensi GPT-4o · batas maksimum",
+          "label_en": "GPT-4o inference · maximum estimate",
+          "value": 1579680
+        }
+      ]
     }
   ]
 }

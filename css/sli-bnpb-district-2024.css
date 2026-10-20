@@ -1,0 +1,17 @@
+.sli-bnpb-district{background:#11283b;color:#eef5fb;border:1px solid #375e74;border-radius:12px;padding:17px;margin:16px 0}
+.sli-bnpb-district h3{color:#f5dcaa;margin:0 0 9px}
+.sli-bnpb-district p{font-size:13px;color:#d2e1ea;line-height:1.55}
+.sli-bnpb-district-controls{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0;align-items:end}
+.sli-bnpb-district-controls label{display:flex;flex-direction:column;gap:4px;color:#d5e6f0;font-size:13px}
+.sli-bnpb-district-controls select,.sli-bnpb-district-controls input{font:inherit;background:#193a50;color:#f6fafd;border:1px solid #6a92a6;border-radius:7px;padding:8px;max-width:100%;min-width:185px}
+.sli-bnpb-district-summary{padding:10px;background:#1a3a4d;border-left:3px solid #7ed1c7}
+.sli-bnpb-district-table{max-height:490px;overflow:auto;max-width:100%}
+.sli-bnpb-district-table table{border-collapse:collapse;width:100%;min-width:570px}
+.sli-bnpb-district-table th,.sli-bnpb-district-table td{padding:8px 11px;border-bottom:1px solid #325367;text-align:left}
+.sli-bnpb-district-table tbody tr{cursor:pointer}
+.sli-bnpb-district-table tbody tr:hover,.sli-bnpb-district-table tbody tr:focus{background:#25546a;outline:2px solid #96d6d1}
+.sli-bnpb-district-nav{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:12px 0}
+.sli-bnpb-district-nav button{background:#25566e;border:1px solid #7ca9bb;color:#fff;border-radius:7px;padding:7px 12px;cursor:pointer}
+.sli-bnpb-district-nav button:disabled{opacity:.42;cursor:default}
+.sli-bnpb-district-detail{background:#173c51;border-left:3px solid #e0be81;padding:10px 12px}
+.sli-bnpb-district a{color:#c2e5ff}

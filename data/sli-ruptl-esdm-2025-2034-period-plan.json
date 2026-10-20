@@ -1,0 +1,119 @@
+{
+  "schema": "sli-ruptl-2025-2034-esdm-period-plan-v1",
+  "publisher": "Kementerian ESDM — Direktorat Jenderal Ketenagalistrikan / PLN presentation",
+  "source_url": "https://gatrik.esdm.go.id/assets/uploads/download_index/files/baec8-bahan_dir_transmisi_pln_compressed.pdf",
+  "source_title": "Perbandingan RUPTL 2025–2034 pada 2025–2030 dan 2031–2034 Nasional",
+  "reviewed_at": "2026-10-20",
+  "document_status": "official_presentation_aggregate_plan_not_complete_ruptl_project_annex",
+  "unit": "GW",
+  "geography": "Indonesia",
+  "meaning": "Planned capacity additions for two periods by technology; not realized power plants or confirmed financial close, procurement, PPA, start of construction, commissioning or COD.",
+  "time_windows": [
+    "2025–2030",
+    "2031–2034"
+  ],
+  "groups": [
+    {
+      "category": "EBT/renewables",
+      "type": "new_renewable_capacity",
+      "values": [
+        16.7,
+        25.8
+      ]
+    },
+    {
+      "category": "Non-EBT/non-renewable",
+      "type": "new_nonrenewable_capacity",
+      "values": [
+        14,
+        2.7
+      ]
+    },
+    {
+      "category": "Energy storage",
+      "type": "new_storage_capacity",
+      "values": [
+        3.5,
+        6.8
+      ]
+    },
+    {
+      "category": "Total planned additions",
+      "type": "total_planned_additions",
+      "values": [
+        34.2,
+        35.3
+      ]
+    }
+  ],
+  "technologies": [
+    {
+      "label": "Pembangkit hidro",
+      "technology": "hydro",
+      "values": [
+        4,
+        7.7
+      ]
+    },
+    {
+      "label": "Pembangkit panas bumi",
+      "technology": "geothermal",
+      "values": [
+        1.5,
+        3.6
+      ]
+    },
+    {
+      "label": "Pembangkit surya",
+      "technology": "solar",
+      "values": [
+        7.6,
+        9.5
+      ]
+    },
+    {
+      "label": "Pembangkit bayu",
+      "technology": "wind",
+      "values": [
+        2.8,
+        4.4
+      ]
+    },
+    {
+      "label": "Pembangkit EBT lainnya",
+      "technology": "other_renewables",
+      "values": [
+        0.9,
+        0.1
+      ]
+    },
+    {
+      "label": "PLTN",
+      "technology": "nuclear",
+      "values": [
+        null,
+        0.5
+      ]
+    },
+    {
+      "label": "Gas",
+      "technology": "gas",
+      "values": [
+        9.9,
+        0.4
+      ]
+    },
+    {
+      "label": "Batubara",
+      "technology": "coal",
+      "values": [
+        4.1,
+        2.3
+      ]
+    }
+  ],
+  "totals_note": "Values are rounded one-decimal GW; do not force technology totals to exactly equal EBT 42.569 GW or infer individual project MW. Null nuclear in 2025–2030 represents a dash on publisher slide (not verified numeric zero).",
+  "project_annex_status": "not_accessible_full_verified_copy",
+  "project_records_verified_from_this_source": 0,
+  "validation_rule": "No individual project name, location, investor, owner, construction status or COD may be generated from these aggregate slide values."
+}

@@ -104,7 +104,15 @@
       "status": "needs_numeric_ingestion",
       "observed_value": null,
       "source_date": null,
-      "confidence": "unassessed"
+      "confidence": "unassessed",
+      "related_2024_bnpb_district_dataset": "data/sli-bnpb-district-2024.json",
+      "historical_coverage_year": 2024,
+      "related_fields": [
+        "flood_events",
+        "coastal_events"
+      ],
+      "historical_data_status": "district_year_history_available",
+      "data_boundary_warning": "BNPB BANJIR and GELOMBANG PASANG DAN ABRASI counts are observed district events; they do not specify river mechanism or future asset flood probabilities."
     },
     {
       "id": "CE-003",
@@ -148,7 +156,14 @@
       "status": "needs_numeric_ingestion",
       "observed_value": null,
       "source_date": null,
-      "confidence": "unassessed"
+      "confidence": "unassessed",
+      "related_2024_bnpb_district_dataset": "data/sli-bnpb-district-2024.json",
+      "historical_coverage_year": 2024,
+      "related_fields": [
+        "wildfire_events"
+      ],
+      "historical_data_status": "district_fire_events_context_only_losses_unverified",
+      "data_boundary_warning": "BNPB district-year fire event counts do NOT measure burnt area, lost assets, or financial loss. Original loss indicator remains null."
     },
     {
       "id": "CE-007",
@@ -170,7 +185,14 @@
       "status": "needs_numeric_ingestion",
       "observed_value": null,
       "source_date": null,
-      "confidence": "unassessed"
+      "confidence": "unassessed",
+      "related_2024_bnpb_district_dataset": "data/sli-bnpb-district-2024.json",
+      "historical_coverage_year": 2024,
+      "related_fields": [
+        "landslide_events"
+      ],
+      "historical_data_status": "district_year_history_available",
+      "data_boundary_warning": "BNPB TANAH LONGSOR counts are historical district event occurrences, not slope vulnerability or asset geospatial exposure."
     },
     {
       "id": "CE-009",
@@ -345,5 +367,24 @@
       }
     ],
     "method": "Original WDI API observations cross-checked against available publisher dashboards. Existing 20 operational district/facility/regulatory indicators retain null until exact geographic scope data are ingested. The carbon dioxide series uses EN.GHG.CO2.PC.CE.AR5 excluding LULUCF; do not splice to EN.ATM.CO2E.PC."
-  }
+  },
+  "historical_district_sources": [
+    {
+      "id": "bnpb-district-types-2024",
+      "year": 2024,
+      "geography": "publisher-listed 450 kabupaten/kota",
+      "observed_records": 450,
+      "dataset": "data/sli-bnpb-district-2024.json",
+      "source_url": "https://data.bnpb.go.id/dataset/data-bencana-indonesia/resource/a4daec53-1119-43ef-b05e-00ec3a4c42a4",
+      "source_class": "official_observed_events_historical",
+      "data_quality": "450 rows listed by publisher, does not claim all Indonesia kabupaten/kota; absent rows are missing not zero; district-level event counts are not asset hazard or damage losses",
+      "linked_climate_ids": [
+        "CE-002",
+        "CE-008"
+      ],
+      "related_context_only": [
+        "CE-006"
+      ]
+    }
+  ]
 }

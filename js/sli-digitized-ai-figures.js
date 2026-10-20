@@ -1,4 +1,4 @@
-/* Numeric chart-label digitization from Stanford HAI AI Index 2026, PDF pages 31 and 33. */
+/* Numeric chart-label digitization from Stanford HAI AI Index 2026, original PDF pages 30, 31, 33 and 39. */
 (()=>{"use strict";
 const roots=[...document.querySelectorAll("[data-sli-ai-figures]")];if(!roots.length)return;
 const NS="http://www.w3.org/2000/svg",PATH="./data/sli-stanford-2026-digitized-figures.json";
@@ -30,40 +30,53 @@ function line(f){
  addText(v,L,H-6,en()?"Quarter · global modelled power (GW)":"Kuartal · estimasi daya global (GW)",11,"#bfd8df","start");
  return v;
 }
+function barDatum(r){
+ return {label:r.country||r.label_id||r.label_en||"—",labelEn:r.country||r.label_en||r.label_id||"—",
+  value:r.count===undefined?r.value:r.count};
+}
 function bars(f){
- const W=870,L=142,R=86,T=16,S=30,H=T+f.values.length*S+26,max=5500;
+ const records=f.values.slice().map(barDatum);
+ const W=1080,L=385,R=135,T=16,S=35,H=T+records.length*S+34;
+ const max=Math.max(1,...records.map(r=>r.value))*1.03;
  const v=svg("svg",{viewBox:"0 0 "+W+" "+H,role:"img","aria-label":en()?f.title_en:f.title_id});
- f.values.slice().reverse().forEach((r,i)=>{const y=T+i*S;
- addText(v,L-12,y+17,r.country,11,"#dce9f1","end");
- const w=(W-L-R)*r.count/max;
- const b=svg("rect",{x:L,y:y+3,width:w,height:19,rx:3,fill:i===0?"#64ccca":"#6a9bbc"});
- point(b,r.country,r.count,f);v.append(b);
- addText(v,L+w+7,y+17,fmt(r.count),11,"#eef5f9","start");
- });addText(v,L,H-4,en()?"Facility count, 2025 (linear scale)":"Jumlah fasilitas, 2025 (skala linear)",11,"#cbdfe7","start");return v;
+ records.forEach((r,i)=>{const y=T+i*S,label=en()?r.labelEn:r.label;
+  addText(v,L-12,y+20,label,12,"#dce9f1","end");
+  const w=(W-L-R)*(r.value/max);
+  const b=svg("rect",{x:L,y:y+5,width:Math.max(.5,w),height:21,rx:3,fill:i===0?"#64ccca":"#6a9bbc"});
+  point(b,label,r.value,f);v.append(b);
+  addText(v,L+w+9,y+20,fmt(r.value),12,"#eef5f9","start");
+ });
+ addText(v,L,H-5,f.unit+" · "+(f.year||"2025"),12,"#cbdfe7","start");return v;
 }
 function registerExporter(){
- const f=d.figures[Number(select.value)||0],isPower=f.id.includes("power");
+ const f=d.figures[Number(select.value)||0],isPower=!!f.values[0].period;
  const svgNode=plot.querySelector("svg");if(!svgNode||!window.SLIVisualExport?.register)return;
+ const labelName=isPower?"Quarter":f.values[0].country?"Country":"Category";
  window.SLIVisualExport.register(svgNode,{
-  getData:()=>({headers:isPower?["Quarter","Estimated power capacity (GW)"]:["Country","Data center facilities (count)"],
-   rows:f.values.map(r=>isPower?[r.period,r.value_gw]:[r.country,r.count]),kind:"verified-provider"}),
+  getData:()=>({headers:[labelName,f.title_en+" ("+f.unit+")"],
+   rows:f.values.map(r=>isPower?[r.period,r.value_gw]:[r.country||r.label_en,r.count===undefined?r.value:r.count]),kind:"verified-provider"}),
   getMeta:()=>({title:en()?f.title_en:f.title_id,source:f.source_credit,
-   sourceUrl:d.source.official_url,period:isPower?"2022Q1–2025Q4":"2025",
-   completeness:"Exact printed numeric source-label series; "+f.statistical_status+". "+f.caution_en})
+   sourceUrl:d.source.official_url,period:isPower?"2022Q1–2025Q4":String(f.year||2025),
+   completeness:"Exact printed numeric source-labels only; "+f.statistical_status+". "+f.caution_en})
  });
 }
 document.addEventListener("sli:exportready",registerExporter);
 function show(){
- const f=d.figures[Number(select.value)||0],isPower=f.id.includes("power");
- meta.textContent=f.source_credit+" · Figure "+f.figure_number+" · PDF "+f.pdf_page+" · "+(en()?"Published numbers, not independent study validation":"Angka terbitan, bukan validasi independen studi asal");
+ const f=d.figures[Number(select.value)||0],isPower=!!f.values[0].period;
+ const selected=f.values.at(-1);
+ const selectedLabel=isPower?selected.period:(selected.country||(en()?selected.label_en:selected.label_id));
+ const selectedValue=isPower?selected.value_gw:selected.count===undefined?selected.value:selected.count;
+ meta.textContent=f.source_credit+" · Figure "+f.figure_number+" · PDF "+f.pdf_page+" · "+(en()?"Publisher figures are not independently audited by SLI":"Angka sumber belum menjadi validasi independen metodologi penerbit");
  plot.replaceChildren(isPower?line(f):bars(f));
  warn.textContent=en()?f.caution_en:f.caution_id;
- sourceLink(f);
- setDetail(isPower?f.values[f.values.length-1].period:f.values[f.values.length-1].country,isPower?f.values[f.values.length-1].value_gw:f.values[f.values.length-1].count,f);
- const thead=el("thead"),tr=el("tr");[isPower?"Kuartal":"Negara",isPower?"Estimasi daya (GW)":"Fasilitas"].forEach(h=>tr.append(el("th",h)));thead.append(tr);
- const tbody=el("tbody");f.values.forEach(r=>{const row=el("tr");row.append(el("td",isPower?r.period:r.country),el("td",fmt(isPower?r.value_gw:r.count)));tbody.append(row)});
- table.replaceChildren(thead,tbody);
- registerExporter();
+ sourceLink(f);setDetail(selectedLabel,selectedValue,f);
+ const thead=el("thead"),tr=el("tr");
+ [isPower?"Kuartal":f.values[0].country?"Negara":"Kategori",f.title_en+" ("+f.unit+")"].forEach(h=>tr.append(el("th",h)));
+ thead.append(tr);
+ const tbody=el("tbody");
+ f.values.forEach(r=>{const row=el("tr");const val=isPower?r.value_gw:r.count===undefined?r.value:r.count;
+  row.append(el("td",isPower?r.period:r.country||(en()?r.label_en:r.label_id)),el("td",fmt(val)));tbody.append(row)});
+ table.replaceChildren(thead,tbody);registerExporter();
 }
 select.addEventListener("change",show);show();
 }
