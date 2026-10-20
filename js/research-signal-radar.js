@@ -13,14 +13,14 @@ const channels={
  ai:{en:"AI Infrastructure",id:"Infrastruktur AI",impact:{china_ai:"technology",chip_controls:"technology",compute_competition:"investment",data_governance:"policy",subsea:"connectivity",campus_projects:"delivery",power_water:"electricity",ai_policy:"policy",cloud_operations:"operations"}}
 };
 let pollTimer=null,active=null;
-const tr=(en,id)=>window.SLIi18n?.language==="id"?id:en;
+const tr=(en,id)=>window.SLIi18n?.language==="id"||document.documentElement.lang?.toLowerCase().startsWith("id")?id:en;
 const E=(tag,cls,text)=>{
  const e=document.createElement(tag);if(cls)e.className=cls;
  if(text!==undefined&&text!==null)e.textContent=String(text);
  return e;
 };
 const iso=val=>{const d=new Date(val||"");return Number.isFinite(d.getTime())?d:null};
-const stamp=val=>{const d=iso(val);return d?new Intl.DateTimeFormat(window.SLIi18n?.language==="id"?"id-ID":"en-GB",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Jakarta"}).format(d)+" WIB":tr("Not yet available","Belum tersedia")};
+const stamp=val=>{const d=iso(val);return d?new Intl.DateTimeFormat(window.SLIi18n?.language==="id"||document.documentElement.lang?.toLowerCase().startsWith("id")?"id-ID":"en-GB",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Jakarta"}).format(d)+" WIB":tr("Not yet available","Belum tersedia")};
 const diff=val=>{const d=iso(val);return d?Math.max(0,Date.now()-d.getTime()):Infinity};
 function classifyFreshness(data){
  const age=diff(data?.generated_at_utc);
