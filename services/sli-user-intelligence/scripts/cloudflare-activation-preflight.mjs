@@ -21,11 +21,13 @@ export function validateConfig(e){
  if(!/^[A-Za-z0-9_-]{8,128}$/.test(e.SLI_ACCESS_AUD))die("Invalid Access application AUD format");
  return true;
 }
-function appMatches(app,e){
+function appMatches(app,e,verifiedWorkerId=null){
  if(!app||app.aud!==e.SLI_ACCESS_AUD||app.type!=="self_hosted")return false;
  const domains=[app.domain,...(app.destinations||[]).map(d=>d?.uri)].filter(Boolean);
  const exact=domains.some(d=>String(d).replace(/^https:\/\//,"").replace(/\/$/,"")===e.SLI_API_HOSTNAME);
- if(!exact)return false;
+ const workerProtected=Boolean(verifiedWorkerId)&&
+  (app.destinations||[]).some(d=>d?.type==="worker"&&d.worker_id===verifiedWorkerId);
+ if(!exact&&!workerProtected)return false;
  // Do not accept a public path exception, which could expose /api/ routes.
  if((app.destinations||[]).some(d=>(d?.overrides||[]).some(o=>o.behavior==="public")))return false;
  return true;
@@ -63,7 +65,19 @@ export async function preflight(e,fetcher=fetch){
  }
  const apps=await api("/access/apps?per_page=100",e,fetcher);
  if(!Array.isArray(apps))die("Access application list unreadable");
- const app=apps.find(x=>appMatches(x,e));
+ // Hostname Access applications carry a domain/URI. Worker-level applications
+ // instead carry a type="worker" destination with an immutable worker_id.
+ // Verify that ID against this account's exact named Worker; never trust a
+ // preview_worker or an unrelated worker_id as production protection.
+ let app=apps.find(x=>appMatches(x,e));
+ if(!app&&isProtectedWorkersDevHost(e.SLI_API_HOSTNAME)){
+  const scripts=await api("/workers/scripts-search?name=sli-user-intelligence&per_page=100",e,fetcher);
+  if(!Array.isArray(scripts))die("Worker scripts search unreadable");
+  const script=scripts.find(x=>x.script_name==="sli-user-intelligence"&&
+   x.environment_is_default!==false&&/^[0-9a-f]{32}$/i.test(x.id||""));
+  if(!script)die("Exact Worker script ID not verified in this Cloudflare account");
+  app=apps.find(x=>appMatches(x,e,script.id));
+ }
  if(!app)die("No EXACT matching self-hosted Access application; create protection first");
  if(!corsMatches(app))die("Access CORS needs exact Pages origin, credentials and OPTIONS behavior. See docs.");
  const policies=await api("/access/apps/"+app.id+"/policies?per_page=100",e,fetcher);
