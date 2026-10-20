@@ -75,6 +75,7 @@ def try_http_ranges():
 OFFICIAL_SOURCES=[
  ("PLN", "https://www.pln.co.id/webapi/media/file/webkorp/asset/b967d-ruptl-pln-2025-2034-pub-.pdf"),
  ("Ditjen Gatrik ESDM", "https://gatrik.esdm.go.id/assets/uploads/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf"),
+ ("Ditjen Gatrik — migrated official storage candidate", "https://gatrik.esdm.go.id/gatrik/gatrik-api/storage/migrasi/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf"),
 ]
 attempts=[]
 is_complete=False
