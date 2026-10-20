@@ -5,7 +5,11 @@ class FakeD1{
  constructor(){this.profiles=new Map;this.inbox=new Map;this.state=new Map;this.processed=new Map}
  prepare(sql){
   const db=this;
-  return {bind(...args){
+  return {
+   async first(){return (await db.exec(sql,[])).first||null},
+   async all(){return {results:(await db.exec(sql,[])).results||[]}},
+   async run(){return {meta:{changes:(await db.exec(sql,[])).changes||0}}},
+   bind(...args){
    const cmd={sql,args,
     async first(){return (await db.exec(sql,args)).first||null},
     async all(){return {results:(await db.exec(sql,args)).results||[]}},
