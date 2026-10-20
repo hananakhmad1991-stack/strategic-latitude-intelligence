@@ -386,3 +386,41 @@ body.sli-research-brand #raAnalyticalWorkbench .ra-wb-structural-economy>small{
   grid-template-columns:1fr
  }
 }
+
+
+/* Advanced lab remains available and fully wired, but doesn't interrupt chat-first Research AI.
+   Native details provide keyboard accessibility and a compact collapsed default. */
+body.sli-research-brand #raAdvancedLab{
+ max-width:1100px;margin:25px auto 32px;padding:0;
+ border:1px solid #466178;border-radius:12px;background:#122c43;color:#e9f0f7;
+ box-shadow:none;scroll-margin-top:22px;overflow:clip
+}
+body.sli-research-brand #raAdvancedLab>summary{
+ list-style:none;cursor:pointer;display:flex;align-items:center;
+ min-height:56px;padding:15px 22px;color:#e6d0a0;
+ font:750 14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif
+}
+body.sli-research-brand #raAdvancedLab>summary::-webkit-details-marker{display:none}
+body.sli-research-brand #raAdvancedLab>summary:before{content:"▸";margin-right:12px;color:#d7b678}
+body.sli-research-brand #raAdvancedLab[open]>summary:before{content:"▾"}
+body.sli-research-brand #raAdvancedLab>summary:hover,
+body.sli-research-brand #raAdvancedLab>summary:focus-visible{background:#1a3a53;color:#ffe5ac;outline-offset:-3px}
+body.sli-research-brand #raAdvancedLab #raAnalyticalWorkbench{
+ margin:0 14px 14px;box-shadow:none;max-width:calc(100% - 28px)
+}
+body.sli-research-brand #raAdvancedLab:not([open]) #raAnalyticalWorkbench{display:none}
+#raAnalyticalWorkbench .ra-wb-bps-disclosure{padding:0!important;margin:15px 0 20px!important}
+#raAnalyticalWorkbench .ra-wb-bps-disclosure>summary{
+ display:list-item;cursor:pointer;padding:12px 17px;color:#204e6d;
+ font:750 13px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif
+}
+#raAnalyticalWorkbench .ra-wb-bps-disclosure>summary:hover,
+#raAnalyticalWorkbench .ra-wb-bps-disclosure>summary:focus-visible{background:#e6f0f8}
+#raAnalyticalWorkbench .ra-wb-bps-disclosure>div,
+#raAnalyticalWorkbench .ra-wb-bps-disclosure>small{display:block;margin:0 16px 13px}
+#raAnalyticalWorkbench .ra-wb-bps-disclosure .ra-wb-official-actions{display:flex}
+@media(max-width:650px){
+ body.sli-research-brand #raAdvancedLab{margin:20px 12px 26px}
+ body.sli-research-brand #raAdvancedLab>summary{padding:13px 15px;font-size:13px}
+ body.sli-research-brand #raAdvancedLab #raAnalyticalWorkbench{margin:0 8px 8px;max-width:calc(100% - 16px)}
+}
