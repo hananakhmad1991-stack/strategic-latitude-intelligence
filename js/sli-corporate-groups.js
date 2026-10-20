@@ -7,10 +7,10 @@ const T=(en,id)=>document.documentElement.lang==='id'?id:en;
 const E=(tag,cl,s)=>{const e=document.createElement(tag);if(cl)e.className=cl;if(s!==undefined)e.textContent=String(s);return e};
 const source=a=>{try{const u=new URL(a);return u.protocol==='https:'?u.href:null}catch{return null}};
 const I=()=>window.SLIEntityIdentity;
-let data,byId,group='pertamina',selected='per',query='',expand=new Set();
+let data,byId,group='pertamina',sector='energy',selected='per',query='',expand=new Set();
 function aLink(url,title){const valid=source(url),a=E(valid?'a':'span','sli-cg-link',title);if(valid){a.href=valid;a.target='_blank';a.rel='noopener noreferrer'}return a}
 function iconOf(n){
- const type=n.tier===0?'government':'building';
+ const type=n.tier===0&&n.ownership_class==='indonesian-state'?'government':'building';
  return I()?.siteBrand?.(n.website_domain,type)||I()?.brand(n.name,type)||E('span','sli-cg-no-icon','▢');
 }
 function depthName(n){return n.tier===0?T('Holding','Induk'):n.tier===1?T('Subsidiary','Anak'):n.tier===2?T('Grandchild','Cucu'):n.tier===3?T('Great-grandchild','Cicit'):T('Deeper tier','Lapisan lanjutan')}
@@ -30,20 +30,31 @@ function card(n,depth=0){
  }
  return row;
 }
+function sectorName(key){return ({energy:T('Energy & utilities','Energi & utilitas'),minerals:T('Minerals & downstream','Mineral & hilirisasi'),coal:T('Coal','Batu bara'),technology:T('AI, data centers & technology','AI, pusat data & teknologi'),food:T('Food & agribusiness','Pangan & agribisnis')})[key]||key}
+function className(key){return ({'indonesian-state':T('State-owned / SOE','BUMN'),'indonesian-private':T('Indonesian private','Swasta Indonesia'),'foreign':T('Foreign company','Perusahaan asing'),'foreign-linked':T('Foreign-affiliated IDX issuer','Emiten dengan afiliasi asing'),'joint-venture':T('Joint venture / strategic investor','Usaha patungan / investor strategis')})[key]||T('Review control evidence','Verifikasi pengendalian')}
+function renderTabs(){
+ const tabs=document.getElementById('sliCgGroupTabs');if(!tabs||!data)return;tabs.replaceChildren();
+ const groups=data.groups.filter(g=>sector==='all'||g.sector===sector);
+ for(const g of groups){const b=E('button','',g.name);b.type='button';b.dataset.sliCgGroup=g.id;b.setAttribute('aria-pressed',String(g.id===group));
+  b.addEventListener('click',()=>{group=g.id;selected=g.root_id;query='';document.getElementById('sliCgSearch').value='';expand.add(g.root_id);renderTabs();renderTree();renderDetails()});tabs.append(b)}
+ const count=data.records.filter(n=>sector==='all'||n.sector===sector).length;
+ document.getElementById('sliCgCoverage').textContent=count+' '+T('company records across ','entitas dalam ')+groups.length+' '+T('groups; dated, not exhaustive','grup; bersumber, belum menyeluruh');
+}
 function renderTree(){
  const mount=document.getElementById('sliCgTree');if(!mount||!data)return;mount.replaceChildren();
  const root=data.groups.find(g=>g.id===group);if(!root)return;
- const list=data.records.filter(n=>n.group===group);
  const normalized=I().nameKey(query).split('-').filter(Boolean);
  if(normalized.length){
-  const matches=list.filter(n=>normalized.every(term=>I().nameKey([n.name,n.business_id,n.directors?.map(d=>d.name).join(' ')||''].join(' ')).includes(term))).slice(0,100);
-  mount.append(E('p','sli-cg-small',T('Matching entities: ','Entitas cocok: ')+matches.length));
-  for(const n of matches)mount.append(cardSearch(n));if(!matches.length)mount.append(E('p','sli-cg-small',T('No matches.','Tidak ditemukan.')));
+  const matches=data.records.filter(n=>(sector==='all'||n.sector===sector)&&normalized.every(term=>I().nameKey([n.name,n.business_id,n.ticker||'',n.directors?.map(d=>d.name).join(' ')||''].join(' ')).includes(term))).slice(0,100);
+  mount.append(E('p','sli-cg-small',T('Matching entities across sector groups: ','Entitas cocok lintas grup sektor: ')+matches.length));
+  for(const n of matches)mount.append(cardSearch(n));
+  if(!matches.length)mount.append(E('p','sli-cg-small',T('No matches in this sector. Try All sectors.','Tidak ada hasil di sektor ini; coba Semua sektor.')));
  }else mount.append(card(byId.get(root.root_id)));
- document.getElementById('sliCgCount').textContent=list.length+' '+T('documented entities · not full audited ownership census','entitas terdokumentasi · belum sensus kepemilikan menyeluruh');
+ const count=data.records.filter(n=>n.group===group).length;
+ document.getElementById('sliCgCount').textContent=count+' '+T('documented records in selected group · not a full audited ownership census','catatan grup terpilih · bukan sensus kepemilikan penuh');
  document.querySelectorAll('[data-sli-cg-group]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.sliCgGroup===group)));
 }
-function cardSearch(n){const b=E('button','sli-cg-hit',n.name+' · '+depthName(n));b.type='button';b.addEventListener('click',()=>{selected=n.id;renderDetails()});return b}
+function cardSearch(n){const b=E('button','sli-cg-hit',n.name+' · '+(n.ticker?n.exchange+':'+n.ticker+' · ':'')+sectorName(n.sector));b.type='button';b.addEventListener('click',()=>{selected=n.id;group=n.group;renderTabs();renderDetails()});return b}
 function renderDetails(){
  const host=document.getElementById('sliCgDossier');if(!host)return;
  host.replaceChildren();
