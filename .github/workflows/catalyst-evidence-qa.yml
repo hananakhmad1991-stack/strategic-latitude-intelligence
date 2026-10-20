@@ -1,0 +1,42 @@
+name: SLI Catalyst Evidence QA
+
+on:
+  pull_request:
+    paths:
+      - 'js/sli-catalyst-engine.js'
+      - 'js/sli-company-monitor.js'
+      - 'data/sli-idx-issuer-universe.json'
+      - 'data/sli-secondary-news-index.json'
+      - 'data/sli-policy-regulatory-graph-2026.json'
+      - 'data/sli-project-registry.json'
+      - 'data/sli-corporate-evidence-relationships.json'
+      - 'data/sli-corporate-group-registry.json'
+      - 'sli-decision-terminal.html'
+      - 'sli-issuer.html'
+      - 'tests/catalyst-engine-qa.cjs'
+      - '.github/workflows/catalyst-evidence-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'js/sli-catalyst-engine.js'
+      - 'js/sli-company-monitor.js'
+      - 'data/sli-idx-issuer-universe.json'
+      - 'data/sli-secondary-news-index.json'
+      - 'data/sli-policy-regulatory-graph-2026.json'
+      - 'data/sli-project-registry.json'
+      - 'data/sli-corporate-evidence-relationships.json'
+      - 'data/sli-corporate-group-registry.json'
+      - 'tests/catalyst-engine-qa.cjs'
+      - '.github/workflows/catalyst-evidence-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check catalyst source-delta and matching invariants
+        run: node tests/catalyst-engine-qa.cjs
