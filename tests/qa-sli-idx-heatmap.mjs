@@ -21,7 +21,7 @@ test("SLI homepage embeds a native IDX heatmap with searchable strategic sectors
  assert.match(code,/sli-idx-market-snapshot\.json/);
  assert.match(code,/sliIDXGroupFilter/);
  assert.match(code,/data\.sector|\.sector===activeSector/);
- assert.match(code,/company:idx:/);
+ assert.match(code,/sli-issuer\.html\?ticker=/);
  assert.match(code,/sli-issuer\.html\?ticker=/);
  assert.match(entity,/a\.issuerRecord\?\.ticker===requestedTicker/);
  assert.match(css,/\.sli-idx-tiles/);
