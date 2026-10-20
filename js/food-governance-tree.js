@@ -40,7 +40,9 @@ function draw(root,detail,db){
  function actorCard(a,nested){
   const entry=E("div","fa-gov-entry"+(nested?" nested":""));
   const b=E("button","fa-gov-card"+(state.selected===a.id?" chosen":""),undefined);b.type="button";b.setAttribute("aria-pressed",String(state.selected===a.id));
-  const status=E("small","fa-gov-kind",T(a.kind,a.kindEn));b.append(status,E("strong",null,T(a.name,a.en)));
+  const status=E("small","fa-gov-kind",T(a.kind,a.kindEn));const title=E("span","fa-actor-name");
+  if(window.SLIEntityIdentity?.brand)title.append(window.SLIEntityIdentity.brand(a.name,"government"));
+  title.append(E("strong",null,T(a.name,a.en)));b.append(status,title);
   if(a.person&&a.confirmed)b.append(E("span","fa-gov-person",a.person));
   b.append(E("span","fa-gov-caption",a.relation?T(a.relation,a.relationEn):T(a.kind,a.kindEn)));
   b.addEventListener("click",()=>{state.selected=a.id;drawCards();drawInspector()});entry.append(b);
@@ -71,7 +73,8 @@ function draw(root,detail,db){
  }
  function drawInspector(){
   const actor=map.get(state.selected)||map.get("pres");detail.replaceChildren();
-  detail.append(E("h3",null,T(actor.name,actor.en)));
+  const actorTitle=E("div","fa-gov-profile-name");if(window.SLIEntityIdentity?.brand)actorTitle.append(window.SLIEntityIdentity.brand(actor.name,"government"));
+  actorTitle.append(E("h3",null,T(actor.name,actor.en)));detail.append(actorTitle);
   detail.append(E("p","fa-gov-role",T(actor.role,actor.roleEn)));
   const dl=E("dl");
   function kv(k,v){dl.append(E("dt",null,k),E("dd",null,v))}
