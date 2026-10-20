@@ -9,6 +9,7 @@ const FIVE_MIN=300000;
 const MAX_AGE=14*86400000;
 const channels={
  minerals:{en:"Critical Minerals",id:"Mineral Kritis",impact:{nickel_market:"market",export_policy:"trade",batteries:"industry",copper_supply:"market",smelter_projects:"delivery",mineral_policy:"policy",environment:"environment",mineral_investment:"investment"}},
+ food:{en:"Food & Agriculture",id:"Pangan & Pertanian",impact:{global_grains:"market",fertilizer_shipping:"inputs",climate_food:"climate",rice_reserves:"supply",fertilizer_subsidy:"inputs",food_policy:"policy",agri_weather:"climate"}},
  ai:{en:"AI Infrastructure",id:"Infrastruktur AI",impact:{china_ai:"technology",chip_controls:"technology",compute_competition:"investment",data_governance:"policy",subsea:"connectivity",campus_projects:"delivery",power_water:"electricity",ai_policy:"policy",cloud_operations:"operations"}}
 };
 let pollTimer=null,active=null;
