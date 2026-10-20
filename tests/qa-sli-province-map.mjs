@@ -13,7 +13,7 @@ function mount(){
   constructor(tag){this.tagName=tag;this.children=[];this.attrs={};this.listeners={};this.dataset={};this.style={};this.isConnected=true;this.textContent="";this.className="";}
   append(...nodes){this.children.push(...nodes);}
   replaceChildren(...nodes){this.children=[...nodes];}
-  setAttribute(k,v){this.attrs[k]=String(v);}
+  setAttribute(k,v){this.attrs[k]=String(v);if(k==="class")this.className=String(v);}
   addEventListener(type,fn){this.listeners[type]=fn;}
  }
  const host=new Node("div");
