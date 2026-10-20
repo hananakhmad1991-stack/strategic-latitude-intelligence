@@ -47,3 +47,17 @@
 @media(max-width:760px){.sli-idx-tools{grid-template-columns:1fr}.sli-idx-head{flex-direction:column}.sli-idx-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}.sli-idx-map{max-height:590px}}
 @media(max-width:490px){.sli-idx-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.sli-idx-tile{min-height:75px;padding:7px}.sli-idx-tile small{font-size:8.5px}.sli-idx-code{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.sli-idx-tile{transition:none}}
+
+/* Provider-owned, live-price watchlist sits prominently above the SLI issuer directory. */
+.sli-idx-provider{border:1px solid #496c7c;border-radius:12px;padding:15px 16px;background:#101f2e;margin:17px 0 20px}
+.sli-idx-provider-header h4,.sli-idx-curated-heading{font:400 22px/1.4 Georgia,serif;color:#e7d0a6;margin:3px 0 9px}
+.sli-idx-provider-header p{font-size:12px;line-height:1.7;color:#a9ccdc;margin:0 0 12px}
+.sli-idx-provider-container{width:100%;height:540px;min-height:540px;display:flex;flex-direction:column}
+.sli-idx-provider-container .tradingview-widget-container__widget{height:515px;width:100%;flex:1}
+.sli-idx-provider-container .tradingview-widget-copyright{font-size:11px;text-align:right;padding:8px;color:#b6c9d4}
+.sli-idx-provider-container .tradingview-widget-copyright a{color:#d8bd84;text-decoration:none}
+.sli-idx-provider-note{font-size:11px;color:#adbfce;margin:10px 0 0;line-height:1.6}
+.sli-idx-curated-heading{padding:8px 0;border-bottom:1px solid #455e73;margin-top:20px}
+.sli-idx-tile.no-quote .sli-idx-change{font-size:10px;color:#dfceab;font-weight:600}
+.sli-idx-tile.no-quote:hover{border-color:#dbb985;background:#2b4a62}
+@media(max-width:650px){.sli-idx-provider{padding:11px}.sli-idx-provider-container{height:500px;min-height:500px}.sli-idx-provider-container .tradingview-widget-container__widget{height:475px}}
