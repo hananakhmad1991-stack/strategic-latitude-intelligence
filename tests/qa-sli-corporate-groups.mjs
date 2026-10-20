@@ -97,3 +97,30 @@ test('Public capital-market classification does not conflate private companies o
  assert.match(read('js/sli-corporate-groups.js'),/sector==='all'/);
  assert.match(read('js/sli-entities.js'),/a\.corporate\?\.ticker/);
 });
+
+test('Issuer disclosure follows IDX-style evidence: source date, period, currency, and non-imputed capitalization',()=>{
+ assert.ok(db.groups.length>=40,'Energy, minerals, coal, technology and food groups');
+ assert.ok(db.records.length>=135);
+ const page=read('sli-entities.html'),script=read('js/sli-corporate-groups.js');
+ for(const key of ['sliCgIssuerRows','sliCgIssuerCount','sliCgIssuerDisclosure','sliCgSector','sliCgGroupTabs'])assert.ok(page.includes('id="'+key+'"'),key);
+ assert.match(script,/function renderIssuerTable/);
+ assert.match(script,/source_date_basis/);
+ assert.match(script,/market_cap_as_of/);
+ assert.match(script,/financial_source_url/);
+ assert.match(script,/new Intl.NumberFormat/);
+ assert.match(script,/URL\.createObjectURL/);
+ const tel=byId.get('tel'),ptba=byId.get('ptba-mind');
+ assert.equal(tel.ticker,'TLKM');assert.equal(tel.exchange,'IDX');
+ assert.equal(tel.revenue,146742);assert.equal(tel.net_income,24458);assert.equal(tel.total_assets,287759);
+ assert.equal(tel.financial_currency,'IDR billion');
+ assert.match(tel.financial_source_url,/telkom\.co\.id/);
+ assert.match(tel.financial_basis,/non-controlling interests/);
+ assert.equal(ptba.revenue,42651.724);assert.match(ptba.financial_source_url,/ptba\.co\.id/);
+ const holding=byId.get('idfood-root');assert.ok(holding&&holding.sector==='food');
+ assert.equal(db.records.filter(n=>n.parent_id==='idfood-root').length,5);
+ for(const n of db.records)if(n.listing_status==='listed'){
+  if(n.market_cap!=null)assert.ok(Number.isFinite(n.closing_price)&&Number.isFinite(n.shares_outstanding)&&n.market_cap_currency&&n.market_cap_source_url&&n.market_cap_as_of);
+ }
+ for(const issuer of ['MEDC','ENRG','AKRA','ESSA'])assert.ok(db.records.some(n=>n.ticker===issuer&&n.sector==='energy'));
+ for(const n of ['bpindo-root','exxon-root','bulog-root','pupuk-root'])assert.ok(byId.has(n));
+});
