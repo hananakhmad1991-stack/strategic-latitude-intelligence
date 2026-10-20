@@ -28,7 +28,7 @@ const sections=[
   {id:"pupuk",name:"Pupuk Indonesia",en:"Pupuk Indonesia",role:"Holding industri pupuk nasional dan rantai pasok input pertanian. Operasi perusahaan perlu dibedakan dari regulator subsidi dan penetapan kuota.",roleEn:"Fertilizer industrial and input supply group. Corporate operations are distinct from subsidy and quota policy authority.",link:"https://www.pupuk-indonesia.com/",tag:"Input pertanian",tagEn:"Farm inputs"},
   {id:"idfood",name:"ID FOOD",en:"ID FOOD",role:"Kelompok BUMN pangan pada mata rantai produksi, pengolahan dan distribusi; tidak otomatis menjadi regulator harga nasional.",roleEn:"Food SOE group in production, processing and distribution; not automatically the national price regulator.",link:"https://www.idfood.co.id/",tag:"BUMN pangan",tagEn:"Food SOE"}]}
 ];
-let data,farmerMetric="ntp",selectedProvince=11,priceCommodity=0,selectedPlace=11,tradeScope="Segar + olahan",institutionId="kemenkopangan";
+let data,leadership=null,farmerMetric="ntp",selectedProvince=11,priceCommodity=0,selectedPlace=11,tradeScope="Segar + olahan",institutionId="kemenkopangan";
 const node=()=>sections.flatMap(g=>g.nodes).find(x=>x.id===institutionId);
 function titleLocalized(){document.querySelectorAll("[data-en][data-id]").forEach(x=>{x.textContent=en()?x.dataset.en:x.dataset.id});}
 function anchor(href,text){const x=el("a",text);x.href=href;x.target="_blank";x.rel="noopener noreferrer";return x;}
@@ -172,6 +172,20 @@ function renderOrg(){
  const profile=node(),out=$("faOrgDetail");out.replaceChildren(el("h3",en()?profile.en:profile.name),el("p",en()?profile.roleEn:profile.role));
  const dl=el("dl");detailLine(dl,t("Institution type","Jenis lembaga"),en()?profile.tagEn:profile.tag);
  detailLine(dl,t("Evidence status","Status bukti"),t("Official institutional mandate","Mandat kelembagaan resmi"));out.append(dl);
+ if(profile.id==="bapanas"||profile.id==="kementan"){
+  const office=leadership?.appointments?.find(a=>a.institution_id===profile.id);
+  const valid=office&&office.person&&office.sources?.some(src=>src.type==="official_dated_press_release"&&src.url?.startsWith("https://"))&&office.last_official_confirmation;
+  if(valid){
+   out.append(el("h4",t("Official officeholder — source dated","Pejabat — bersumber dan bertanggal")));
+   out.append(el("div",office.person,"fa-big fa-leader-name"));
+   const who=el("dl");detailLine(who,t("Position","Jabatan"),en()?office.office_en:office.office);
+   detailLine(who,t("Concurrent office","Jabatan rangkap"),en()?office.concurrent_role_en:office.concurrent_role);
+   detailLine(who,t("Last confirmed by official source","Konfirmasi sumber resmi terakhir"),office.last_official_confirmation);
+   if(office.instrument)detailLine(who,t("Appointment instrument","Dasar pengangkatan"),office.instrument);
+   out.append(who,anchor(office.sources.find(x=>x.type==="official_head_profile")?.url||office.sources[0].url,t("Official officeholder profile ↗","Profil pejabat resmi ↗")));
+   out.append(el("p",t("Leadership is a human-reviewed, source-dated registry—not live AI extraction. Check for later appointments before relying on this profile.","Nama pejabat berasal dari registri bertanggal yang telah ditinjau manusia, bukan hasil ekstraksi AI real-time. Periksa kemungkinan mutasi berikutnya.")));
+  }else out.append(el("p",t("The current officeholder has not been verified against primary sources. No name is displayed.","Pejabat saat ini belum diverifikasi dengan sumber primer. Nama tidak ditampilkan.")));
+ }
  out.append(anchor(profile.link,t("Open primary institutional source ↗","Buka sumber kelembagaan primer ↗")));
  out.append(el("p",t("Functional association is not an official reporting hierarchy. Verify statutory organisation changes through JDIH before decisions.","Hubungan tugas di peta bukan hierarki laporan yang sah secara otomatis. Perubahan organisasi wajib dicek melalui JDIH.")));
 }
@@ -211,7 +225,11 @@ function renderAll(){
 async function init(){
  try{
   const res=await fetch("./data/food-agriculture-2026.json",{cache:"no-store"});if(!res.ok)throw Error("HTTP "+res.status);
-  data=await res.json();if(data.schema!=="sli-food-2026-launch-v1"||data.provinces.length!==38||data.tables.length!==63||data.trade.length!==15||data.tradeMonthly?.length!==60||data.nationalFarmerIndices?.series?.length!==6)throw Error("Food source dataset failed integrity test");
+  data=await res.json();
+  leadership=await fetch("./data/food-institution-leadership.json",{cache:"no-store"})
+     .then(r=>r.ok?r.json():null).catch(()=>null);
+  if(leadership?.schema_version!=="sli-food-leadership-v1"||leadership?.review_status!=="official_primary_source_verified")leadership=null;
+  if(data.schema!=="sli-food-2026-launch-v1"||data.provinces.length!==38||data.tables.length!==63||data.trade.length!==15||data.tradeMonthly?.length!==60||data.nationalFarmerIndices?.series?.length!==6)throw Error("Food source dataset failed integrity test");
   selectOptions("faNationalGroup",data.nationalFarmerIndices.series.map(x=>x.name),0);
   selectOptions("faFarmerProvince",data.provinces,selectedProvince);
   selectOptions("faPricePlace",data.prices.places,selectedPlace);
