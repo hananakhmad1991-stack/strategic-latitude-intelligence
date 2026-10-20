@@ -32,40 +32,52 @@ function card(n,depth=0){
 }
 function sectorName(key){return ({energy:T('Energy & utilities','Energi & utilitas'),minerals:T('Minerals & downstream','Mineral & hilirisasi'),coal:T('Coal','Batu bara'),technology:T('AI, data centers & technology','AI, pusat data & teknologi'),food:T('Food & agribusiness','Pangan & agribisnis'),finance:T('Banking & finance','Keuangan & perbankan'),infrastructure:T('Infrastructure & construction','Infrastruktur & konstruksi'),transport:T('Transport & logistics','Transportasi & logistik'),property:T('Property & industrial estates','Properti & kawasan industri'),healthcare:T('Health & pharma','Kesehatan & farmasi'),manufacturing:T('Manufacturing','Industri manufaktur'),retail:T('Retail','Perdagangan & ritel'),other:T('Other / unclassified','Lainnya / belum diklasifikasi')})[key]||key}
 function className(key){return ({'indonesian-state':T('State-owned / SOE','BUMN'),'indonesian-private':T('Indonesian private','Swasta Indonesia'),'foreign':T('Foreign company','Perusahaan asing'),'foreign-linked':T('Foreign-affiliated IDX issuer','Emiten dengan afiliasi asing'),'joint-venture':T('Joint venture / strategic investor','Usaha patungan / investor strategis')})[key]||T('Review control evidence','Verifikasi pengendalian')}
+function sectorIssuers(){
+ const terms=(I()?.nameKey?.(query)||query.toLowerCase().replace(/[^a-z0-9]+/g,'-')).split('-').filter(Boolean);
+ return [...issuerByTicker.values()].filter(n=>(sector==='all'||n.sector===sector)&&terms.every(term=>I().nameKey([n.ticker,n.name,n.sector,n.groupRecord?.business_id||''].join(' ')).includes(term)))
+  .sort((a,b)=>a.ticker.localeCompare(b.ticker));
+}
+function allSectorIssuers(){return [...issuerByTicker.values()].filter(n=>sector==='all'||n.sector===sector)}
+function chooseIssuer(n){
+ view='issuer';selectedTicker=n.ticker;issuerLimit=Math.max(issuerLimit,60);renderTabs();renderTree();renderDetails();
+}
 function renderTabs(){
  const tabs=document.getElementById('sliCgGroupTabs');if(!tabs||!data)return;tabs.replaceChildren();
- const groups=data.groups.filter(g=>sector==='all'||g.sector===sector);
- for(const g of groups){const b=E('button','',g.name);b.type='button';b.dataset.sliCgGroup=g.id;b.setAttribute('aria-pressed',String(g.id===group));
-  b.addEventListener('click',()=>{group=g.id;selected=g.root_id;query='';document.getElementById('sliCgSearch').value='';expand.add(g.root_id);renderTabs();renderTree();renderDetails()});tabs.append(b)}
- const count=data.records.filter(n=>sector==='all'||n.sector===sector).length;
- document.getElementById('sliCgCoverage').textContent=count+' '+T('company records across ','entitas dalam ')+groups.length+' '+T('groups; dated, not exhaustive','grup; bersumber, belum menyeluruh');
+ const groups=data.groups.filter(g=>sector==='all'||g.sector===sector),count=data.records.filter(n=>sector==='all'||n.sector===sector).length;
+ if(issuerByTicker.size){
+  const n=allSectorIssuers().length;
+  const btn=E('button','sli-cg-issuer-tab',T('IDX issuers · ','Emiten BEI · ')+n);btn.type='button';btn.dataset.sliCgIssuer='true';btn.setAttribute('aria-pressed',String(view==='issuer'));
+  btn.addEventListener('click',()=>{view='issuer';issuerLimit=60;query='';document.getElementById('sliCgSearch').value='';selectedTicker=allSectorIssuers()[0]?.ticker||'';renderTabs();renderTree();renderDetails()});
+  tabs.append(btn);
+ }
+ for(const g of groups){const btn=E('button','',g.name);btn.type='button';btn.dataset.sliCgGroup=g.id;btn.setAttribute('aria-pressed',String(view==='group'&&g.id===group));
+  btn.addEventListener('click',()=>{view='group';group=g.id;selected=g.root_id;query='';document.getElementById('sliCgSearch').value='';expand.add(g.root_id);renderTabs();renderTree();renderDetails()});tabs.append(btn)}
+ document.getElementById('sliCgCoverage').textContent=count+' '+T('sourced company records · ','entitas grup bersumber · ')+groups.length+' '+T('groups · ','grup · ')+allSectorIssuers().length+' '+T('IDX ticker candidates, not all independently reverified','kandidat ticker BEI; belum semuanya terverifikasi ulang')+(issuerLoadFailed?' · '+T('issuer feed unavailable','katalog emiten gagal dimuat'):'');
  renderIssuerTable();
 }
 function renderIssuerTable(){
  const tbody=document.getElementById('sliCgIssuerRows'),count=document.getElementById('sliCgIssuerCount');
- if(!tbody||!data)return;
- tbody.replaceChildren();
- const issuers=data.records.filter(n=>n.listing_status==='listed'&&n.ticker&&(sector==='all'||n.sector===sector)).sort((a,b)=>(a.exchange||'').localeCompare(b.exchange||'')||a.ticker.localeCompare(b.ticker));
- count.textContent=issuers.length+' '+T('listed entities','emiten');
- const finance=(n,k)=>typeof n[k]==='number'&&Number.isFinite(n[k])&&n.financial_period&&source(n.financial_source_url)?
+ if(!tbody||!data)return;tbody.replaceChildren();
+ const groupForeign=data.records.filter(n=>n.listing_status==='listed'&&n.exchange!=='IDX'&&(sector==='all'||n.sector===sector));
+ const rows=[...allSectorIssuers(),...groupForeign.map(n=>({ticker:n.ticker,name:n.name,exchange:n.exchange,sector:n.sector,groupRecord:n,verification:'group_source_only',source_url:n.source_url}))].sort((a,b)=>a.exchange.localeCompare(b.exchange)||a.ticker.localeCompare(b.ticker));
+ count.textContent=rows.length+' '+T('ticker records · verify live listing','catatan ticker · verifikasi pencatatan aktif');
+ const finance=(n,k)=>typeof n?.[k]==='number'&&Number.isFinite(n[k])&&n.financial_period&&source(n.financial_source_url)?
   new Intl.NumberFormat(document.documentElement.lang==='id'?'id-ID':'en-US',{maximumFractionDigits:2}).format(n[k])+' '+(n.financial_currency||''):'N/A';
- for(const n of issuers){
+ for(const n of rows){
   const row=E('tr');row.setAttribute('data-sli-issuer',n.ticker);
-  const code=E('td','',n.exchange+':'+n.ticker),name=E('td'),button=E('button','sli-cg-issuer-open',n.name);
-  button.type='button';button.addEventListener('click',()=>{sector=n.sector;document.getElementById('sliCgSector').value=sector;
-   group=n.group;selected=n.id;query='';document.getElementById('sliCgSearch').value='';
-   for(const p of path(n))expand.add(p.id);
-   renderTabs();renderTree();renderDetails();
+  const code=E('td','',n.exchange+':'+n.ticker),name=E('td'),button=E('button','sli-cg-issuer-open',n.name);button.type='button';
+  button.addEventListener('click',()=>{if(n.exchange!=='IDX'&&n.groupRecord){view='group';group=n.groupRecord.group;sector=n.sector;document.getElementById('sliCgSector').value=sector;selected=n.groupRecord.id;renderTabs();renderTree();renderDetails();return}
+   if(sector!==n.sector&&sector!=='all'){sector=n.sector;document.getElementById('sliCgSector').value=sector}
+   query='';document.getElementById('sliCgSearch').value='';chooseIssuer(n);
    document.getElementById('sliCgDossier')?.scrollIntoView?.({block:'nearest',behavior:'smooth'});
-  });
-  name.append(button);
-  const cap=typeof n.market_cap==='number'&&Number.isFinite(n.market_cap)&&n.market_cap_as_of&&n.market_cap_source_url?
-   new Intl.NumberFormat(document.documentElement.lang==='id'?'id-ID':'en-US').format(n.market_cap)+' '+n.market_cap_currency+' · '+n.market_cap_as_of:'N/A';
-  const cells=[code,name,E('td','',sectorName(n.sector)),E('td','',cap),E('td','',finance(n,'revenue')),E('td','',finance(n,'net_income')),E('td','',finance(n,'total_assets')),E('td','',n.financial_period||T('Not verified','Belum terverifikasi'))];
-  for(const cell of cells)row.append(cell);
-  const src=E('td');src.append(aLink(n.financial_source_url||n.source_url,T('Disclosure ↗','Dokumen ↗')));row.append(src);tbody.append(row);
+  });name.append(button);
+  const gr=n.groupRecord;
+  const cap=typeof gr?.market_cap==='number'&&gr.market_cap_as_of&&gr.market_cap_source_url?
+   new Intl.NumberFormat(document.documentElement.lang==='id'?'id-ID':'en-US').format(gr.market_cap)+' '+gr.market_cap_currency+' · '+gr.market_cap_as_of:'N/A';
+  for(const cell of [code,name,E('td','',sectorName(n.sector)),E('td','',cap),E('td','',finance(gr,'revenue')),E('td','',finance(gr,'net_income')),E('td','',finance(gr,'total_assets')),E('td','',gr?.financial_period||'N/A')])row.append(cell);
+  const src=E('td');src.append(aLink(gr?.financial_source_url||n.source_url,T('Source ↗','Sumber ↗')));row.append(src);tbody.append(row);
  }
- if(!issuers.length){const row=E('tr'),cell=E('td','',T('No listed issuers in this category.','Tidak ada emiten tercatat pada kategori ini.'));cell.colSpan=9;row.append(cell);tbody.append(row)}
+ if(!rows.length){const r=E('tr'),cell=E('td','',T('No issuer records for this sector yet.','Katalog sektor ini belum memiliki kode saham.'));cell.colSpan=9;r.append(cell);tbody.append(r)}
 }
 function renderTree(){
  const mount=document.getElementById('sliCgTree');if(!mount||!data)return;mount.replaceChildren();
