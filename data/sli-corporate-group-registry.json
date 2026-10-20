@@ -1857,7 +1857,13 @@
       "listing_status": "listed",
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": "FY2025 · year ended 2025-12-31",
+      "revenue": 146742,
+      "net_income": 24458,
+      "total_assets": 287759,
+      "financial_currency": "IDR billion",
+      "financial_source_url": "https://www.telkom.co.id/sites/investor-relations/en_US/page/financial-highlights-542",
+      "financial_basis": "Consolidated: total revenues; profit for the year including non-controlling interests; total assets. Amounts in IDR billion, not attributable-profit figure."
     },
     {
       "id": "sel",
@@ -2511,12 +2517,14 @@
       "market_cap_as_of": null,
       "closing_price": null,
       "shares_outstanding": null,
-      "revenue": null,
+      "revenue": 42651.724,
       "net_income": null,
       "total_assets": null,
-      "financial_period": null,
-      "financial_source_url": null,
-      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A."
+      "financial_period": "FY2025 · year ended 2025-12-31",
+      "financial_source_url": "https://www.ptba.co.id/api/storage/1777608216188-530aad52-cfc2-40fc-8d3c-0afcaa236e6c.pdf",
+      "capitalization_note": "Kapitalisasi pasar memerlukan harga penutupan dan saham beredar pada tanggal yang cocok. Tanpa kutipan bertanggal, tampilkan N/A.",
+      "financial_currency": "IDR billion",
+      "financial_basis": "Consolidated revenue 2025 = IDR 42,651,724 million, converted to IDR billion (/1,000). Profit and assets not populated from this extract."
     },
     {
       "id": "tins-mind",
@@ -3616,6 +3624,7 @@
     "financial_reports_source": "https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan/",
     "disclosure_source": "https://www.idx.co.id/id/perusahaan-tercatat/keterbukaan-informasi/",
     "accounting_note": "Revenue, net income and total assets must carry issuer/currency, FY/Q period, report type and original URL; blank means unknown, not zero.",
-    "as_of": "2026-10-20"
+    "as_of": "2026-10-20",
+    "available_examples": "FY2025 consolidated financial values from Telkom investor relations and PTBA annual report. Values not updated to subsequent quarters without reconciling source periods."
   }
 }
