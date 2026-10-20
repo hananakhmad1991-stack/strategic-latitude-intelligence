@@ -6,9 +6,14 @@ on:
       - 'js/sli-entity-identity.js'
       - 'js/sli-entities.js'
       - 'js/sli-idx-heatmap.js'
+      - 'js/sli-idx-tradingview.js'
+      - 'sli-issuer.html'
+      - 'js/sli-issuer.js'
+      - 'css/sli-issuer.css'
+      - 'tests/qa-sli-idx-provider-dossier.mjs'
       - 'css/sli-idx-heatmap.css'
       - 'data/sli-idx-market-snapshot.json'
-      - 'tests/qa-sli-idx-heatmap.mjs'
+      - 'tests/qa-sli-idx-heatmap.mjs tests/qa-sli-idx-provider-dossier.mjs'
       - 'js/sli-corporate-evidence-ui.js'
       - 'css/sli-corporate-evidence.css'
       - 'data/sli-corporate-evidence-relationships.json'
@@ -52,6 +57,8 @@ jobs:
           node --check js/sli-entity-identity.js
           node --check js/sli-entities.js
           node --check js/sli-idx-heatmap.js
+          node --check js/sli-idx-tradingview.js
+          node --check js/sli-issuer.js
           node --check js/sli-corporate-evidence-ui.js
           node --check js/sli-navigation.js
           node --check js/sector-command-hierarchy.js
