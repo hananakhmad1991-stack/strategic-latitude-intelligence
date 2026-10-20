@@ -86,7 +86,7 @@ function render(){
   select.addEventListener("change",()=>{onChange(select.value);render()});section.append(select);
   const picked=items.find(x=>x.id===select.value)||items[0];
   section.append(E("p","sli-terminal-brief-meta",meta(picked)));
-  const link=E("a",null,T("Open original source ↗","Buka sumber asli ↗"));
+  const link=E("a",null,T("Open indexed report link ↗","Buka tautan laporan terindeks ↗"));
   link.href=safe(type==="news"?picked.url:picked.source);
   link.target="_blank";link.rel="noopener noreferrer";section.append(link);
   section.append(E("small","sli-terminal-brief-provenance",details(picked)));
