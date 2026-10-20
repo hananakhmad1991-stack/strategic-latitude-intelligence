@@ -8,6 +8,9 @@ on:
     paths:
       - "scripts/build_secondary_news_index.py"
       - "tests/test_secondary_news_index.py"
+      - "scripts/build_catalyst_history.mjs"
+      - "tests/catalyst-history-qa.mjs"
+      - "data/sli-catalyst-state.json"
       - ".github/workflows/sli-secondary-news-index.yml"
 permissions:
   contents: write
@@ -29,7 +32,11 @@ jobs:
           python tests/test_secondary_news_index.py
       - name: Ingest all 11 monitored SLI news and source-detection feeds
         run: python scripts/build_secondary_news_index.py
-      - name: Commit refreshed secondary research index
+      - name: Validate shared Catalyst history generator
+        run: |
+          node --check scripts/build_catalyst_history.mjs
+          node tests/catalyst-history-qa.mjs
+      - name: Commit refreshed news and shared Catalyst history
         run: |
           set -eu
           cp data/sli-secondary-news-index.json /tmp/sli-secondary-news-index.json
@@ -39,12 +46,13 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             cp /tmp/sli-secondary-news-index.json data/sli-secondary-news-index.json
-            git add data/sli-secondary-news-index.json
+            node scripts/build_catalyst_history.mjs
+            git add data/sli-secondary-news-index.json data/sli-catalyst-state.json data/sli-catalyst-history.json
             if git diff --cached --quiet; then
-              echo "Secondary index unchanged"
+              echo "News index and Catalyst history unchanged"
               exit 0
             fi
-            git commit -m "Update SLI attributed secondary news evidence archive"
+            git commit -m "Update SLI news and shared source-dated Catalyst history"
             if git push origin HEAD:main; then exit 0; fi
             sleep $((attempt*2))
           done
