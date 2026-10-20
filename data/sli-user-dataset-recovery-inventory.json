@@ -119,12 +119,12 @@
       "domain": "Environment",
       "source_agency": "BNPB",
       "observation_period": "2025",
-      "status": "pending_numeric_ingestion",
+      "status": "numeric_in_repository_with_source_reconciliation_warning",
       "public_dataset": "data/sli-bnpb-provincial-2025.json",
       "main_dashboard": "climate-environment.html#climate-data",
       "detail_dashboard": "sli-sector-data-library.html#disasters",
-      "caution": "BNPB official CKAN resource includes 2025 province table definitions; no verified normalized 38-province rows yet.",
-      "source_discovery_status": "official_xlsx_found_download_and_numeric_validation_pending"
+      "caution": "38 administrative provinces and nine event categories retrieved from official BNPB 2025 CKAN resource; eight category totals reconcile. Earthquake provincial sum 29 versus published national 28; do not overwrite either source figure.",
+      "source_discovery_status": "official_ckan_rows_retrieved_and_provincial_names_matched_to_bps"
     },
     {
       "id": "ai_index",
@@ -169,5 +169,5 @@
     "New sources are not automatically indexed as source-linked evidence in Research AI until exact provenance has been reviewed.",
     "No local hidden file, private report or credentials are published from user uploads."
   ],
-  "revision_note": "The homepage has a prominent Data Library panel. Fifteen sourced Stanford HAI / World Bank measures are transcribed and RUPTL first-100-pages tables are exposed, with all incomplete publisher figures explicitly marked partial."
+  "revision_note": "Homepage prominent. RUPTL 109 reservoirs + 24 AMI years shown; 15 original-report AI metrics integrated; official 38-province BNPB 2025 records added with earthquake source total mismatch flagged."
 }
