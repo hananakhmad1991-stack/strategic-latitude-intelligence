@@ -32,18 +32,35 @@ function appMatches(app,e,verifiedWorkerId=null){
  if((app.destinations||[]).some(d=>(d?.overrides||[]).some(o=>o.behavior==="public")))return false;
  return true;
 }
-function corsMatches(app){
+// Access supports two safe preflight modes. In the first, Access itself answers
+// OPTIONS with exact origin/credentials headers. In the second, Access bypasses
+// authentication ONLY for OPTIONS and the Worker validates Origin itself; all
+// actual API requests remain protected by Access and RS256 JWT verification.
+export function accessCorsMode(app){
  const c=app?.cors_headers;
- if(!c||c.allow_all_origins===true)return false;
- const origins=c.allowed_origins||[];
- const methods=c.allowed_methods||[];
- const headers=c.allowed_headers||[];
- const checkHeaders=headers.some(x=>typeof x==="string"?x.toLowerCase()==="content-type":String(x?.name||x?.header||"").toLowerCase()==="content-type");
- const bypass=c.bypass_options_requests===true||c.bypass_options===true;
- return origins.length===1&&origins[0]===ORIGIN&&
-  c.allow_credentials===true&&["GET","PUT","POST","DELETE"].every(x=>methods.includes(x))&&
-  (checkHeaders||c.allow_all_headers===true)&&
-  (bypass||methods.includes("OPTIONS"));
+ if(app?.options_preflight_bypass===true){
+  // Cloudflare declares CORS response headers mutually exclusive with bypass.
+  // Do not accept ambiguous app configuration that could mask an exposure.
+  if(c && (c.allow_all_origins||c.allow_all_methods||c.allow_all_headers||
+   c.allow_credentials||(c.allowed_origins||[]).length||
+   (c.allowed_methods||[]).length||(c.allowed_headers||[]).length))
+   die("Access CORS conflicts with OPTIONS bypass; choose only one preflight mode");
+  return "worker_origin_options";
+ }
+ if(!c)die("Access CORS not configured: set strict CORS response headers OR enable Bypass OPTIONS requests to origin");
+ const origins=c.allowed_origins||[],methods=c.allowed_methods||[],headers=c.allowed_headers||[];
+ const hasContentType=headers.some(x=>typeof x==="string"
+  ?x.toLowerCase()==="content-type":String(x?.name||x?.header||"").toLowerCase()==="content-type");
+ const missing=[];
+ if(c.allow_all_origins===true||origins.length!==1||origins[0]!==ORIGIN)
+  missing.push("exact allowed origin "+ORIGIN);
+ if(c.allow_credentials!==true)missing.push("allow credentials");
+ if(!["GET","PUT","POST","DELETE","OPTIONS"].every(x=>methods.includes(x)))
+  missing.push("GET, PUT, POST, DELETE, OPTIONS methods");
+ if(!hasContentType&&c.allow_all_headers!==true)missing.push("Content-Type header");
+ if(missing.length)die("Access CORS incomplete: "+missing.join("; ")+
+  ". Configure Additional settings > CORS or enable Bypass OPTIONS requests to origin.");
+ return "access_response_options";
 }
 async function api(endpoint,e,fetcher){
  const r=await fetcher("https://api.cloudflare.com/client/v4/accounts/"+e.CF_ACCOUNT_ID+endpoint,{
@@ -79,7 +96,7 @@ export async function preflight(e,fetcher=fetch){
   app=apps.find(x=>appMatches(x,e,script.id));
  }
  if(!app)die("No EXACT matching self-hosted Access application; create protection first");
- if(!corsMatches(app))die("Access CORS needs exact Pages origin, credentials and OPTIONS behavior. See docs.");
+ const corsMode=accessCorsMode(app);
  const policies=await api("/access/apps/"+app.id+"/policies?per_page=100",e,fetcher);
  if(!Array.isArray(policies)||!policies.some(x=>x.decision==="allow"))die("Access policy has no Allow rule");
  if(policies.some(x=>x.decision==="bypass"||x.decision==="non_identity"))die("Access bypass/non-identity policy not allowed");
@@ -87,7 +104,7 @@ export async function preflight(e,fetcher=fetch){
  if(!d1||d1.uuid!==e.SLI_D1_DATABASE_ID)die("D1 database ID not confirmed by Cloudflare");
  return {access_app_id:app.id,hostname:e.SLI_API_HOSTNAME,
   mode:isProtectedWorkersDevHost(e.SLI_API_HOSTNAME)?"workers_dev_pilot":"custom_domain",
-  database_verified:true,cors_origin:ORIGIN};
+  database_verified:true,cors_origin:ORIGIN,cors_mode:corsMode};
 }
 if(process.argv[1]?.endsWith("cloudflare-activation-preflight.mjs")){
  preflight(process.env).then(r=>{console.log("SLI Cloudflare deployment preflight PASSED");console.log(JSON.stringify(r))})
