@@ -31,4 +31,16 @@ The Research AI interface shows an expandable **Audit Klaim** list, numbers abse
 4. Verify 3 live owner-only questions: CCS status Tangguh/Masela, PLN SAIDI by reporting unit (not province fraud), and AI data center project milestone comparison. Expected: external API status, more source-linked dashboard evidence, expandable claim review and bounded primary HTML probe diagnostic.
 5. Compare original regulator/operator PDF and primary page manually before trusting major figures or project classifications.
 
-Next hardening: same-source PDF text extraction with exact paragraph/page provenance; evidence version history; low-risk primary page source capture; reviewer approval workflow for changing legal status or capex; evaluation of actual model outputs on licensed, nonconfidential prompts after spend/consent controls. These are **not** implemented here.
+## Phase 3 owner-only pilot: sampled Claim–Evidence Ledger (pending review)
+
+- A deterministic schema (sli-claim-evidence-ledger-v1) is returned as quality_audit.claim_ledger. Each risk-ranked sampled claim maps to numbered citations, original source IDs and public URLs, dates, evidence type, issue codes, and claim-scoped bounded HTML page diagnostics. Nothing is automatically fact-certified.
+- Candidate totals and uncaptured candidate counts are explicit. The heuristic cannot promise that it detected all factual claims; even matched numbers or original-page HTTP success do not establish claim entailment.
+- SHA-256 fingerprints cover the answer, evidence metadata/excerpts and sampled claim review. These hashes detect changed inputs; they are NOT a signature, immutable archival snapshot, or source authenticity guarantee. Underlying source documents require independent retention.
+- The owner-browser CSV export lists source and claim references with outstanding reviews; export does not change facts or production records.
+- Every claim is marked requires_human_source_and_editorial_review, and the ledger marks ready_for_external_use false. Material project, legal, budget and operational assertions need independent editorial review before publication.
+
+**Acceptance checks:** node --test tests/qa-sli-claim-evidence-ledger.mjs tests/qa-sli-claim-audit.mjs tests/qa-sli-primary-claim-probe.mjs; Worker integration test; Research Agent Weekly Quality Evaluation CI on the PR SHA. No offline fixture pass implies an LLM truthfulness score.
+
+**Still missing:** official-PDF paragraph/page text with direct entailment review, signed reviewer decisions, archived source snapshots, complete sourced dataset coverage, blinded real-world LLM-answer tests. Leave the feature on Owner Test until these controls are complete.
+
+Next hardening: same-source PDF text extraction with exact paragraph/page provenance; evidence version history; low-risk primary page source capture; reviewer approval workflow for changing legal status or capex; evaluation of actual model outputs on licensed, nonconfidential prompts after spend/consent controls. These remain **unimplemented**.
