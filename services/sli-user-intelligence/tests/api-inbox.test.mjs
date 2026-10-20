@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {webcrypto} from "node:crypto";
-import {handleRequest,processEvents} from "../src/index.mjs";
+import worker, {handleRequest,processEvents} from "../src/index.mjs";
 class FakeD1{
  constructor(){this.profiles=new Map;this.inbox=new Map;this.state=new Map;this.processed=new Map}
  prepare(sql){
@@ -69,6 +69,14 @@ assert.equal((await query(req("PUT","/api/preferences","alice",{tickers:["INCO"]
 assert.equal((await query(req("PUT","/api/preferences","alice",{tickers:["INCO"]},"https://evil.example"))).status,403);
 assert.equal((await query(req("PUT","/api/preferences","alice",{tickers:["INCO"]},null))).status,403);
 assert.equal((await handleRequest(req("GET","/api/me"),{CF_ALLOWED_ORIGIN:origin},identify)).status,503);
+// Regression: Cloudflare passes ExecutionContext as the third argument to
+// the public Worker fetch() handler. It must NOT be used as an identity callback.
+const noJwtEnv={...env,CF_ACCESS_ISSUER:"https://sli-testing.cloudflareaccess.com",
+ CF_ACCESS_AUD:"sli-app-aud"};
+const runtimeResponse=await worker.fetch(req("GET","/api/me"),noJwtEnv,{waitUntil(){}});
+assert.equal(runtimeResponse.status,401,"Worker fetch entrypoint must reject missing JWT, never respond 500");
+assert.equal((await runtimeResponse.json()).error,"Cloudflare Access login required");
+
 const baseline=await processEvents(env,async()=>new Response(JSON.stringify({schema_version:"sli-catalyst-history-v2",events:[]})));
 assert.equal(baseline.initialized,true);
 const after=new Date(Date.now()+5000).toISOString();
