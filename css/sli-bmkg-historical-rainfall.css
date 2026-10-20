@@ -1,0 +1,9 @@
+.sli-bmkg-historical{margin:18px 0;padding:17px;color:#e9f4fb;border:1px solid #42657d;background:#102b40;border-radius:12px;max-width:100%;overflow:hidden}
+.sli-bmkg-historical h3{color:#efd9ae;font-size:1.05rem}
+.sli-bmkg-historical p{color:#cfdfeb;font-size:.89rem;line-height:1.55}
+.sli-bmkg-historical-plot,.sli-bmkg-historical-scroll{max-width:100%;overflow:auto}
+.sli-bmkg-historical-plot svg{min-width:540px;width:100%;height:auto;display:block}
+.sli-bmkg-historical-scroll{max-height:380px}
+.sli-bmkg-historical table{min-width:660px;border-collapse:collapse;width:100%;font-size:13px}
+.sli-bmkg-historical th,.sli-bmkg-historical td{padding:8px;border-bottom:1px solid #456079;text-align:left}
+.sli-bmkg-historical a{color:#b1e0f8}
