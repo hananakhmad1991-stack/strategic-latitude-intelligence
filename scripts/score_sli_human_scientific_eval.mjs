@@ -9,6 +9,9 @@ import {createHash} from "node:crypto";
 import {fileURLToPath} from "node:url";
 
 const SHA=/^[a-f0-9]{64}$/;
+const OFFICIAL_PDF_HOSTS=new Set(["esdm.go.id","www.esdm.go.id","bps.go.id","www.bps.go.id",
+ "bi.go.id","www.bi.go.id","pln.co.id","www.pln.co.id","web.pln.co.id",
+ "kemenkeu.go.id","www.kemenkeu.go.id","iea.org","www.iea.org","worldbank.org","www.worldbank.org"]);
 const VERDICTS=new Set(["supported_by_primary_source","contradicted_by_primary_source",
   "insufficient_primary_evidence"]);
 const CITATIONS=new Set(["correct_direct_citation","incorrect_or_unrelated_citation",
@@ -47,8 +50,9 @@ export function evaluateHumanReviewedAnswers(data){
       !/^https:\/\/\S+/.test(String(p.source_url||"")))
      fail(c.case_id+": source URL, PDF byte SHA-256 and 1-based physical page required");
     const u=new URL(p.source_url);
-    if(u.username||u.password||u.search||u.hash||u.port||u.protocol!=="https:")
-     fail(c.case_id+": unclean PDF URL");
+    if(u.username||u.password||u.search||u.hash||u.port||u.protocol!=="https:"||
+      !OFFICIAL_PDF_HOSTS.has(u.hostname)||!u.pathname.toLowerCase().endsWith(".pdf"))
+     fail(c.case_id+": unclean or nonofficial primary PDF URL");
    }
    all.push({
     case_id:c.case_id,claim_id:String(item.claim_id),verdict:item.verdict,
