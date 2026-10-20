@@ -287,14 +287,140 @@ async function exportOne(host,format,button,feedback){
  }finally{button.disabled=false}
 }
 
-/* Power BI-style universal click-to-inspector experiment withdrawn.
- * Each domain-specific map, chart or dossier owns its own source-grounded details.
- * Keep the public registration signature for older modules, but do not attach a
- * generic listener, rearrange visual DOM or infer observations from arbitrary shapes. */
-function registerInsight(){return false}
+/* Universal click-for-context fallback for published tables, source-labelled SVGs and
+ * CSS bar charts. Specialty modules (strategic map, geopolitical events) have their
+ * own richer, record-specific inspectors and are deliberately not intercepted.
+ * No numeric data or causal interpretation is inferred from pixel positions. */
+const pointInsights=new WeakMap();
+let activeInspectorHost=null;
+function registerInsight(visual,provider){
+ if(typeof visual==="string")visual=document.getElementById(visual);
+ if(!visual||!provider)return false;
+ pointInsights.set(visual,provider);return true;
+}
+function insightName(meta){return meta?.title||tr("Selected visual evidence","Bukti visual terpilih")}
+function detailValue(node){return txt(node?.innerText||node?.textContent).trim()}
+function genericLesson(){
+ return tr("Compare like-for-like units, dates, definitions and reporting statuses. This visual observation alone cannot establish cause and effect.",
+ "Bandingkan satuan, waktu, definisi, dan status pelaporan yang sepadan. Satu observasi visual tidak membuktikan sebab-akibat.");
+}
+function clearChartInsight(host){
+ if(!host)return;
+ const split=host.parentElement?.classList?.contains("sli-visual-insight-split")?host.parentElement:null;
+ if(!split)return;
+ split.querySelector(":scope > .sli-visual-insight")?.remove();
+ host.querySelectorAll(".sli-visual-insight-selected").forEach(x=>x.classList.remove("sli-visual-insight-selected"));
+ if(split.isConnected&&host.parentNode===split){split.parentNode.insertBefore(host,split);split.remove()}
+ if(activeInspectorHost===host)activeInspectorHost=null;
+}
+function openVisualInsight(event){
+ const target=event.target;
+ if(!(target instanceof Element)||target.closest(".sli-visual-export-toolbar,.sli-visual-insight,[role=menu],a,button,select,input,textarea"))return;
+ const svg=target.closest("svg"),table=target.closest("table"),canvas=target.closest("canvas");
+ const barCandidate=target.closest(".regbar,.bar-row,[class*=bar-item]");
+ const barHost=barCandidate?.closest(BAR_SELECTOR);
+ const bar=barHost&&isChart(barHost)?barCandidate:null;
+ const visual=svg||table||canvas||barHost;if(!visual)return;
+ // Rich local inspectors retain control: asset maps and geopolitical event chronologies.
+ if(visual.closest("#sliMapRoot,#geo-commodity-timeline,.sli-geo-timeline-panel,.sli-geo-timeline-plot,.sli-geo-timeline-scatter,svg.stake-svg,#energyOilGasStakeholdersRoot,#energyCoalStakeholdersRoot"))return;
+ const host=visual.closest(".sli-visual-export-host")||findHost(visual);if(!host||!host.isConnected)return;
+ const meta=metadata(host),provider=pointInsights.get(visual)||pointInsights.get(host);
+ let heading="",details=[],selection=null,scope="";
+ if(table){
+  const row=target.closest("tr");
+  if(!row||!row.querySelector("td"))return;
+  const bodyRows=Array.from(table.querySelectorAll("tr")).filter(r=>r.querySelector("td"));
+  const index=bodyRows.indexOf(row);if(index<0)return;
+  const heads=Array.from(table.querySelectorAll("thead tr:last-child th"));
+  const fallback=extractTable(table),cells=Array.from(row.querySelectorAll(":scope > th,:scope > td"));
+  const readable=c=>c?.innerText?.trim()||c?.textContent?.trim()||"";
+  details=cells.map((cell,i)=>[(heads[i]?readable(heads[i]):fallback.headers[i])||tr("Column ","Kolom ")+(i+1),readable(cell)])
+   .filter(x=>x[1]).slice(0,16);
+  if(!details.length)return;
+  heading=details[0][1];selection=row;
+  scope=tr("One selected table row, not the full dataset","Satu baris tabel terpilih, bukan seluruh dataset");
+ }else if(svg){
+  const shape=target.closest("[data-sli-point],circle,rect,path,polyline,polygon,g");
+  if(!shape||shape===svg)return;
+  const ownTitle=shape.querySelector(":scope > title")||shape.parentElement?.querySelector(":scope > title");
+  const caption=detailValue(ownTitle)||shape.getAttribute("aria-label")||shape.dataset.sliPointLabel||"";
+  heading=caption.slice(0,280);
+  details=heading?[[tr("Displayed observation","Observasi pada grafik"),heading]]:[];
+  selection=shape;scope=tr("One chart point, not the whole series","Satu titik grafik, bukan seluruh deret");
+ }else if(bar){
+  const name=detailValue(bar.querySelector(".regbar-top span,.bar-label,[class*=bar-name]"))||detailValue(bar.querySelector("span"))||detailValue(bar).slice(0,160);
+  const value=detailValue(bar.querySelector(".regbar-top strong,.bar-value,[class*=bar-value]"));
+  if(!name)return;
+  heading=name;details=[[tr("Selected category","Kategori terpilih"),name]];
+  if(value)details.push([tr("Displayed figure","Angka pada grafik"),value]);
+  selection=bar;scope=tr("One selected bar","Satu batang grafik terpilih");
+ }else if(canvas){
+  const observation=provider?.getInsight?.({event,visual});
+  if(!observation)return; // A pixel alone never establishes a numeric reading.
+  heading=observation.title||meta.title;
+  details=observation.details||[];
+  selection=canvas;
+  scope=tr("Registered source observation","Observasi dari sumber yang terdaftar");
+ }
+ let extra;
+ if(provider?.getInsight && !canvas){
+  try{extra=provider.getInsight({event,visual,heading,details})}catch(e){console.warn("[SLI insight] provider",e)}
+ }else if(canvas)extra=provider.getInsight({event,visual,heading,details});
+ if(extra===false)return; // Domain-specific chart declined a generic fallback.
+ if(extra){heading=extra.title||heading;details=extra.details||details}
+ if(!heading&&!details.length)return; // Do not create fictional values for unlabeled marks.
+ if(activeInspectorHost&&activeInspectorHost!==host)clearChartInsight(activeInspectorHost);
+ // The active observation owns the right panel. Keep an already-open panel and
+ // replace its content on every subsequent bar/point/row click.
+ let split=host.parentElement?.classList?.contains("sli-visual-insight-split")?host.parentElement:null;
+ if(!split){
+  split=$("div",{class:"sli-visual-insight-split"});
+  host.parentNode.insertBefore(split,host);
+  split.append(host);
+ }
+ let inspector=split.querySelector(":scope > .sli-visual-insight");
+ if(!inspector){inspector=$("section",{class:"sli-visual-insight",role:"region","aria-live":"polite","aria-label":tr("SLI visual evidence inspector","Inspektor bukti visual SLI")});split.append(inspector)}
+ inspector.replaceChildren();
+ const head=$("div",{class:"sli-visual-insight-head"});
+ const name=$("strong",{},tr("SELECTED DATA INSIGHT","ANALISIS DATA TERPILIH"));
+ const close=$("button",{type:"button"},tr("Clear selection","Hapus pilihan"));
+ close.addEventListener("click",()=>clearChartInsight(host));
+ head.append(name,close);
+ inspector.append(head,$("h4",{},heading),$("p",{class:"sli-visual-insight-kind"},scope));
+ const fields=$("dl",{class:"sli-visual-insight-fields"});
+ for(const item of details.slice(0,18)){
+  if(!Array.isArray(item)||item.length<2||item[1]==null||!txt(item[1]).trim())continue;
+  fields.append($("dt",{},txt(item[0])),$("dd",{},txt(item[1])));
+ }
+ inspector.append(fields);
+ const period=extra?.period||meta.period;
+ if(period)inspector.append($("p",{class:"sli-visual-insight-period"},tr("Observation/reporting period: ","Periode observasi/pelaporan: ")+period));
+ const note=extra?.lesson||genericLesson();
+ inspector.append($("p",{class:"sli-visual-insight-lesson"},note));
+ const source=extra?.source||meta.source;
+ const rowSource=table?selection?.querySelector('a[href^="https://"]')?.href:"";
+ const sourceUrl=extra?.sourceUrl||rowSource||meta.sourceUrl;
+ const preciseSource=Boolean(extra?.sourceUrl||rowSource||pointInsights.get(visual)?.getInsight||providers.get(host)?.getMeta);
+ const sourceLinkLabel=preciseSource?tr("Read original source ↗","Buka sumber asli ↗"):tr("Related source ↗","Sumber terkait ↗");
+ const credit=$("p",{class:"sli-visual-insight-credit"},tr("Source / provenance: ","Sumber / asal data: ")+source);
+ if(/^https:\/\/[^/\s]+/i.test(sourceUrl||"")){
+  const a=$("a",{href:sourceUrl,target:"_blank",rel:"noopener noreferrer"},sourceLinkLabel);credit.append(" · ",a)
+ }
+ inspector.append(credit);
+ host.querySelectorAll(".sli-visual-insight-selected").forEach(x=>x.classList.remove("sli-visual-insight-selected"));
+ if(selection?.classList)selection.classList.add("sli-visual-insight-selected");
+ activeInspectorHost=host;
+}
 
 function start(){
  if(!document.body)return;
+ document.addEventListener('click',openVisualInsight);
+ document.addEventListener('keydown',event=>{
+  if(event.key!=="Enter"&&event.key!==" ")return;
+  const t=event.target;if(!(t instanceof Element))return;
+  if(!t.matches('tr[data-sli-inspectable],svg [data-sli-point],.regbar[tabindex],.bar-row[tabindex]'))return;
+  event.preventDefault();openVisualInsight(event);
+ });
  queue();
  if(!observing&&typeof MutationObserver!=="undefined"){
   observing=true;new MutationObserver(queue).observe(document.body,{subtree:true,childList:true});
