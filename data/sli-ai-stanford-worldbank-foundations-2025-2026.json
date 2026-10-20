@@ -951,8 +951,14 @@
     "world_bank_report_pages": 136,
     "stanford_report_pages": 425,
     "numeric_data_integrated": "62 page-attributed selected numeric facts (not all report figures digitized or independently verified)",
-    "remaining": "Full report chart extraction and independent source verification still pending; category shares do not imply Indonesia-only measurements.",
-    "new_source_pages": "2026-10-20 checked World Bank PDF pages 15–17 and Stanford PDF page 11 using uploaded primary copies."
+    "remaining": "403 additional caption candidates have NOT been reviewed as complete numeric chart series. Figure inventory count is approximate/candidate-only; chart values must be inspected visually and validated before publishing.",
+    "new_source_pages": "2026-10-20 World Bank PDF pages 15–17; Stanford source PDF pages 11, 31 and 33 directly inspected. The two numeric figure series are separately published with source cautions.",
+    "verified_numeric_figure_series_count": 2,
+    "verified_numeric_figure_file": "data/sli-stanford-2026-digitized-figures.json",
+    "verified_numeric_figure_sources": [
+      "Stanford AI Index 2026 PDF p.31 Figure 1.2.4",
+      "Stanford AI Index 2026 PDF p.33 Figure 1.3.2"
+    ]
   },
   "source_audit": {
     "verification_method": "Primary PDF parsed text compared manually to explicit summary bullet figures; not image-chart pixel digitization or review of underlying methodology.",
