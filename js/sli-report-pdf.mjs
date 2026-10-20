@@ -14,7 +14,9 @@ function blocks(items){
 }
 export function printableResearchHtml(report){
  const lang=report.language==="en"?"en":"id",bib=report.refs.references.map(r=>
-  '<p class="apa-ref">'+escapeMarkup(r.apa)+"</p>").join("\n");
+  '<p class="apa-ref">'+(r.author?escapeMarkup(r.author)+". ":"")+
+  "("+escapeMarkup(r.year||"n.d.")+"). <i>"+escapeMarkup(r.title||"[Judul tidak tercatat]")+
+  "</i>. "+escapeMarkup(r.url||"[URL dokumen asli belum tersedia]")+"</p>").join("\n");
  const minimal=!report.refs.meets_preliminary_minimum?
   '<p class="draft">DRAF · JUMLAH REFERENSI BELUM MEMENUHI MINIMUM 10</p>':"";
  const styles=[
