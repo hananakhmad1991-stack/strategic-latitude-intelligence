@@ -46,12 +46,12 @@ def main():
         if not v["features"]:break
     if len(raw)!=expected:raise ValueError("ArcGIS record coverage mismatches count "+str(len(raw))+"/"+str(expected))
     names={"BANJIR":"flood_events","CUACA_EKSTREM":"extreme_weather_events","TANAH_LONGSOR":"landslide_events","Jml_hdro":"source_reported_hydrometeorological_total"}
-    normalized=[];seen_codes=set();seen_oids=set()
+    normalized=[];seen_codes=set();seen_oids=set();unmapped=[]
     for x in raw:
         code=x.get("Kode_Kab");oid=x.get("OBJECTID");name=str(x.get("Kabupaten_Kota") or "").strip()
         if type(code) is not int or code<=0 or not name or type(oid) is not int:
-            print("BNPB_GIS2025_INVALID_ID_SAMPLE="+json.dumps({"OBJECTID":oid,"Kode_Kab":code,"Kabupaten_Kota":name,"kode_kab_s":x.get("kode_kab_s"),"nama_kab_1":x.get("nama_kab_1")},ensure_ascii=False))
-            raise ValueError("Invalid district identity")
+            unmapped.append({"OBJECTID":oid,"Kode_Kab":code,"Kabupaten_Kota":name,"kode_kab_s":x.get("kode_kab_s"),"nama_kab_1":x.get("nama_kab_1"),"metrics":{v:x.get(v) for v in ("BANJIR","CUACA_EKSTREM","TANAH_LONGSOR","Jml_hdro")}})
+            continue
         if oid in seen_oids:raise ValueError("Repeated GIS OBJECTID")
         seen_oids.add(oid)
         if code in seen_codes:raise ValueError("Repeated district code "+str(code))
@@ -75,7 +75,7 @@ def main():
       "retrieved_at":datetime.now(timezone.utc).isoformat(),
       "status":"publisher_gis_layer_observations_review_only_not_yet_accepted_by_editor",
       "geography":"kabupaten/kota boundaries, publisher feature set; not complete national jurisdiction coverage unless separately proven",
-      "record_count":len(normalized),"records":normalized,"source_totals_unreviewed":totals,
+      "record_count":len(normalized),"records":normalized,"source_feature_count":expected,"unmatched_source_rows":unmapped,"source_totals_unreviewed":totals,
       "missing_values":missing,"overlap_with_2024_resource":overlap,
       "limitations":[
        "Service title specifies 2025, but service metadata does not provide field-level revision or methodological bulletin dates; confirm period/revision before interpreting trend.",
@@ -88,5 +88,5 @@ def main():
     out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("BNPB_GIS2025_SOURCE_RESULT="+json.dumps({"count":len(normalized),"totals":totals,"missing":missing,"overlap":overlap,
-         "first_three":normalized[:3]},ensure_ascii=False,separators=(",",":")))
+         "first_three":normalized[:3],"unmapped_source_count":len(unmapped),"unmapped_examples":unmapped[:6]},ensure_ascii=False,separators=(",",":")))
 if __name__=="__main__":main()
