@@ -39,6 +39,7 @@ function fromProjects(db){
  }
 }
 function fromCorporateGroups(db){
+ registryDate=db.as_of||registryDate;
  for(const n of db.records||[]){
   if(!n?.id||!n.name||!safe(n.source_url))continue;
   const rec={sector:n.sector||'corporate',actorId:n.id,parentId:n.parent_id,relation:n.relationship,verification:'source-dated',source:n.source_url};
@@ -109,9 +110,10 @@ function drawDetail(){
   addDl(dl,T('Business type','Kategori korporasi'),c.ownership_class||'');
   addDl(dl,T('Listing / ticker','Pencatatan / kode saham'),listed?c.exchange+': '+c.ticker:T('Not separately listed','Tidak tercatat tersendiri'));
   addDl(dl,T('Reported market capitalization','Kapitalisasi pasar terlapor'),listed?(fmt(c.market_cap)&&c.market_cap_as_of&&c.market_cap_source_url?fmt(c.market_cap)+' '+c.market_cap_currency+' · '+c.market_cap_as_of:'N/A · '+T('dated closing quote and shares outstanding not ingested','perlu harga penutupan dan saham beredar dengan tanggal sama')):T('Not applicable to unlisted company','Tidak berlaku untuk perusahaan non-Tbk'));
-  for(const [label,v] of [[T('Revenue','Pendapatan'),c.revenue],[T('Net income','Laba bersih'),c.net_income],[T('Total assets','Total aset'),c.total_assets]]){
+  for(const [label,v] of [[T('Revenue','Pendapatan'),c.revenue],[T('Profit for year (all interests)','Laba tahun berjalan (total)'),c.net_income],[T('Total assets','Total aset'),c.total_assets]]){
    addDl(dl,label,fmt(v)&&c.financial_source_url&&c.financial_period?fmt(v)+' '+(c.financial_currency||'')+' · '+c.financial_period:'N/A · '+T('dated issuer report unavailable','laporan emiten bertanggal belum tersedia'));
   }
+  if(c.financial_basis)addDl(dl,T('Accounting basis','Basis akuntansi'),c.financial_basis);
   if(listed&&c.exchange==='IDX'){
    const d=el('div','sli-entity-finance-links');
    linkTo(d,'https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/'+encodeURIComponent(c.ticker),T('IDX company profile','Profil emiten BEI'));
