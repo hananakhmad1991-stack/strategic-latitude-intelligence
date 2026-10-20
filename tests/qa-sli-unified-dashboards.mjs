@@ -8,7 +8,8 @@ test("Shared SLI header preserves original monogram, live pages and grouped modu
  assert.match(nav,/sli-platform-monogram','SLI'/);
  for(const url of ["./index.html#home","./index.html#overview","./provincial-intelligence.html","./sli-research-ai.html"])assert.ok(nav.includes(url),url);
  assert.match(nav,/sli-platform-sector-menu/);
- assert.match(nav,/for\(const group of groups\)/);
+ assert.match(nav,/for\(const \[i,group\] of groups\.entries\(\)\)/);
+ assert.match(nav,/sli-platform-sector-heading/);
  assert.match(nav,/renderPlatformMast\(\);/);
 });
 test("Home and Research AI retain specialized headers, detailed SPA hides only legacy sidebar",()=>{
