@@ -116,17 +116,30 @@ function renderWeights(){
 }
 function shock(row){return core.staticShock(row,+$('consumerShock').value,+$('capitalShock').value);}
 function makeLink(url,label){if(typeof url!=='string'||!url.startsWith('https://'))return el('span',label);const a=el('a',label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
+function renderProvinceMap(){
+ if(!window.SLIProvinceMap||!rows.length)return;
+ const metric=$('opportunityMapMetric').value;
+ const records=rows.map(row=>({name:row.name,
+  value:metric==='gini'?(row.inequality?.combined??null):Number.isFinite(row[metric])?row[metric]:null}));
+ window.SLIProvinceMap.render('opportunityProvinceMap',{records,
+  selected:selected.values().next().value||'',
+  period:metric==='gini'?'BPS Susenas Maret 2026':'BPS PDRB Provinsi 2025 (sementara)',
+  source:metric==='gini'?'BPS Gini pengeluaran':'BPS PDRB menurut Pengeluaran',
+  unit:metric==='gini'?'':(metric==='scale'?'Rp triliun':'%'),digits:metric==='gini'?3:2,
+  onSelect:name=>{const match=rows.find(row=>window.SLIProvinceMap.normalize(row.name)===window.SLIProvinceMap.normalize(name));if(match)select(match.name);}
+ });
+}
 function recompute(){
  if(!data)return;
  rows=core.attachInequality(core.screen(data,{preset:$('preset').value,weights:custom}),gini);
  $('consumerShockVal').textContent=$('consumerShock').value+'%';
  $('capitalShockVal').textContent=$('capitalShock').value+'%';
- renderWeights();renderTable();renderScatter();renderComparison();renderTrend();renderProjects();renderInequality();renderBrief();
+ renderWeights();renderTable();renderScatter();renderComparison();renderTrend();renderProjects();renderInequality();renderBrief();renderProvinceMap();
 }
 function select(name){
  if(selected.has(name))selected.delete(name);
  else{if(selected.size===3)selected.delete(selected.values().next().value);selected.add(name);}
- renderTable();renderScatter();renderComparison();renderTrend();renderProjects();renderInequality();renderBrief();
+ renderTable();renderScatter();renderComparison();renderTrend();renderProjects();renderInequality();renderBrief();renderProvinceMap();
 }
 function giniContext(row){return core.inequalityContext(row,gini,$('giniArea').value);}
 function giniValue(row){const c=giniContext(row);return c.value===null?'N/A':fmt(c.value,3);}
@@ -312,6 +325,7 @@ function attach(){
  for(const k of core.FACTORS)$((k)+'Weight').addEventListener('input',()=>{custom=Object.fromEntries(core.FACTORS.map(z=>[z,+$(z+'Weight').value]));$('preset').value='custom';recompute();});
  $('consumerShock').addEventListener('input',recompute);$('capitalShock').addEventListener('input',recompute);
  $('giniArea').addEventListener('change',()=>{renderTable();renderComparison();renderInequality();renderBrief();});
+ $('opportunityMapMetric').addEventListener('change',renderProvinceMap);
  $('filter').addEventListener('input',renderTable);$('clearSelection').addEventListener('click',()=>{selected.clear();recompute();});
  $('reset').addEventListener('click',()=>{$('preset').value='balanced';custom=null;$('consumerShock').value=5;$('capitalShock').value=10;$('giniArea').value='combined';$('filter').value='';selected.clear();rows.slice(0,2).forEach(r=>selected.add(r.name));recompute();});
  $('export').addEventListener('click',exportCsv);
