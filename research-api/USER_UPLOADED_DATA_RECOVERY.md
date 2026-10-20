@@ -14,9 +14,9 @@ Much of the problem was visibility, not deletion. Historic uploaded BPS *Statist
 One discoverable user-facing entry: `sli-sector-data-library.html`, linked from the homepage, DERGUBA AI and related sector dashboards. Detailed source-by-source status lives in `data/sli-user-dataset-recovery-inventory.json`.
 
 ## Known incompleteness (do not conceal)
-- AI Index Report 2026 and World Bank AI foundations report were found as uploads; numeric figure-level integration is not yet established. The source inventory lists them with explicit pending statuses.
-- Some source PDFs and RUPTL extracted CSVs have partial existing SLI derivatives and need table-by-table reconciliation.
-- BNPB 2025 provincial disaster data has no verified provincial rows in the relevant SLI register, and environmental indicators may be source leads only. `null` must never be rendered as 0.
+- Stanford HAI AI Index 2026 and World Bank AI Foundations 2025 now have **15 selected numeric indicators** traced to uploaded source PDF pages (`data/sli-ai-stanford-worldbank-foundations-2025-2026.json`), visible in both the source library and the AI hub. This does **not** mean the original figure catalog's 405 candidates have all been digitised or checked.
+- RUPTL first-100-page user excerpt has 109 location-specific potential floating-solar reservoir rows and 24 planned AMI target years shown in `sli-sector-data-library.html#ruptl`. Generation, reservoir potential, and AMI rollouts are **plans**, not realized capacity or meter deployment. The full provincial project annexes remain unavailable.
+- The official BNPB 2025 CKAN resource has now supplied 38 administrative-province rows and 9 hazard types. The province values are preserved in `data/sli-bnpb-provincial-2025.json` and visible in Climate & Environment plus Data Library. 8/9 hazard sums reconcile; **earthquake provincial sum 29 vs official Indonesia row 28** is explicitly flagged. This source-reconciliation warning must not be silently corrected. Other environmental registries still lack observed numeric feeds; `null` must never be rendered as 0.
 - The existence of a public JSON file or a link does not prove a full uploaded book has been extracted, licensed for commercial resale, or independently rechecked against every PDF page.
 - This PR adds or restores source discoverability and the full IEA normalized model only; it does **not** automatically add new claim-level evidence to DERGUBA AI's RAG index or update baseline facts.
 
@@ -25,3 +25,8 @@ Before considering an uploaded document integrated, log its exact title, provena
 
 ## QA
 Run `node --test tests/qa-sli-user-data-visibility.mjs` and `node --check js/sli-sector-data-library.js`. `SLI Restored Sector Data QA` verifies the public source attributes, numeric sample comparability, IEA array lengths, missing climate values and links across main sector dashboards. Live browser visual checks and commercial reproduction rights remain separate requirements.
+## Follow-up validation (20 October 2026)
+
+- The Data Library is now a prominent panel **immediately below the homepage hero**, plus a top navigation link, direct source-sector tile, and subject shortcuts, instead of only a small footer link.
+- BNPB official read-only automated extraction is scheduled weekly and produces reviewer-only candidates in CI; it never rewrites observed production figures without a researcher comparing the source version, province keys and national totals.
+- User-uploaded Stanford/World Bank statistics are transcribed on a source-page-specific basis and carefully distinguish Indonesia from global and income-group reference numbers. The publisher PDFs are not republished as files.
