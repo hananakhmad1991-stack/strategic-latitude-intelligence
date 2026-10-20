@@ -1,0 +1,48 @@
+name: SLI Reviewed BNPB District 2024 Source Staging (Feature Branch Only)
+on:
+  push:
+    branches:
+      - feat/ruptl-district-bnpb-ai-figures-20261020
+    paths:
+      - '.github/workflows/sli-bnpb-district-reviewed-staging.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  stage-data-after-reviewed-baseline:
+    if: github.ref == 'refs/heads/feat/ruptl-district-bnpb-ai-figures-20261020'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/ruptl-district-bnpb-ai-figures-20261020
+      - name: Recheck original BNPB CKAN values and promote only into this review branch
+        run: |
+          python3 scripts/fetch_bnpb_2024_district_disasters.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path("artifacts/sli-bnpb-district-2024-review.json")
+          d=json.loads(p.read_text(encoding="utf-8"))
+          assert d["ckan_resource_id"]=="a4daec53-1119-43ef-b05e-00ec3a4c42a4"
+          assert d["district_count"]==450
+          totals={k:sum(x[k] for x in d["records"]) for k in
+             ("flood_events","wildfire_events","landslide_events","drought_events")}
+          assert totals=={"flood_events":1428,"wildfire_events":973,"landslide_events":207,"drought_events":89},totals
+          assert d["records"][0]["admin_code"]=="1101" and d["records"][0]["flood_events"]==5
+          assert len({x["admin_code"] for x in d["records"]})==450
+          d["status"]="publisher_records_crosschecked_against_reviewed_2024_snapshot"
+          d["coverage_warning"]="The published resource listed 450 districts/cities. Do NOT infer zeros for omitted districts; administrative coverage is incomplete against all Indonesia jurisdictions."
+          d["reviewed_source_totals"]=totals
+          Path("data/sli-bnpb-district-2024.json").write_text(json.dumps(d,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print("BNPB_REVIEWED_DISTRICT_READY 450",totals)
+          PY
+      - name: Publish candidate only to the reviewed GitHub feature branch
+        run: |
+          git config user.name "sli-source-review-bot"
+          git config user.email "sli-source-review-bot@users.noreply.github.com"
+          git add data/sli-bnpb-district-2024.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Stage reviewed 2024 BNPB district event counts with explicit partial coverage"
+          git push origin HEAD:feat/ruptl-district-bnpb-ai-figures-20261020
