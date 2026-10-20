@@ -951,9 +951,9 @@
     "world_bank_report_pages": 136,
     "stanford_report_pages": 425,
     "numeric_data_integrated": "62 page-attributed selected numeric facts (not all report figures digitized or independently verified)",
-    "remaining": "409 detected PDF figure-label occurrences are CANDIDATES, not 409 validated numeric datasets. 10 reviewed chart/panel presentations (five Stanford figures, four World Bank panels from Figures 4.2/4.3, one World Bank Figure 2.2 with 36 values) span 8 distinct figure numbers. Numeric digitization of other graphic candidates is still pending.",
+    "remaining": "409 auto-detected text figure labels are candidates, NOT verified complete numeric figures. Twelve figure/panel presentations now have transcribed source numbers across nine distinct numbered figures. All other chart candidates require source-by-source numeric audit.",
     "new_source_pages": "2026-10-20 World Bank PDF pages 15–17; Stanford source PDF pages 11, 31 and 33 directly inspected. The two numeric figure series are separately published with source cautions.",
-    "verified_numeric_figure_series_count": 10,
+    "verified_numeric_figure_series_count": 12,
     "verified_numeric_figure_file": "data/sli-stanford-2026-digitized-figures.json",
     "verified_numeric_figure_sources": [
       "Stanford AI Index 2026 PDF p.31 Figure 1.2.4",
@@ -963,10 +963,11 @@
       "Stanford AI Index 2026 PDF p.39 Figure 1.4.8 (6 estimated annual water comparisons)",
       "World Bank Digital Progress and Trends 2025 PDF page 83 Figure 4.2 panels a–b",
       "World Bank Digital Progress and Trends 2025 PDF page 85 Figure 4.3 panels c–d",
-      "World Bank Digital Progress and Trends 2025 original PDF page 50 Figure 2.2: 36 printed counts by orbital class, 2015–2023"
+      "World Bank Digital Progress and Trends 2025 original PDF page 50 Figure 2.2: 36 printed counts by orbital class, 2015–2023",
+      "World Bank Digital Progress and Trends 2025 source PDF pages 96–97 Figure 5.2 panels a,b (36 printed O*NET technology/tool occupation ratios, 2015 vs 2024)"
     ],
-    "verified_numeric_figure_panel_series_count": 10,
-    "distinct_original_figure_numbers": 8,
+    "verified_numeric_figure_panel_series_count": 12,
+    "distinct_original_figure_numbers": 9,
     "verified_numeric_figure_files": [
       "data/sli-stanford-2026-digitized-figures.json",
       "data/sli-worldbank-ai-2025-digitized-figure-panels.json"
