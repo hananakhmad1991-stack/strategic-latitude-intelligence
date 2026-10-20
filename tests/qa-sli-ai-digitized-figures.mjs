@@ -44,6 +44,10 @@ test("Digitized figures displayed in both AI topic and sector data library with 
  const js=read("js/sli-digitized-ai-figures.js");
  assert.match(js,/createElementNS/);
  assert.match(js,/tabindex/);
+ assert.match(js,/SLIVisualExport\.register\(svgNode/);
+ assert.match(js,/sli:exportready/);
+ assert.match(js,/kind:"verified-provider"/);
+ assert.match(js,/sourceUrl:d.source.official_url/);
  assert.match(js,/document\.createElement\("table"\)|el\("table"\)/);
  assert.doesNotMatch(js,/innerHTML|Math\.random/);
 });
