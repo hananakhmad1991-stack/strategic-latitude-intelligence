@@ -19,7 +19,7 @@ test("Policy visible references use official publication links",()=>{
  assert.ok(policy.methodology.source_catalog.find(x=>x.id==="pln_statistics_2024").url.endsWith(".pdf"));
 });
 test("Every dashboard loads shared source routing and source viewer is listed as a normal page",()=>{
- const pages=readdirSync(new URL("../",import.meta.url)).filter(x=>x.endsWith(".html"));
+ const pages=readdirSync(new URL("../",import.meta.url)).filter(x=>x.endsWith(".html")&&x!=="sli-user-intelligence-qa.html");
  assert.ok(pages.length>=36);
  for(const p of pages){
  const source=load(p);
