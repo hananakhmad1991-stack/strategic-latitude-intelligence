@@ -65,9 +65,9 @@ function mount(host,rows,selected){
    Provider may reject unsupported market codes or block third-party embedding. */
 const HEATMAP_SCRIPT="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js";
 function heatmapConfig(){
- return {dataSource:"IDX",exchanges:["IDX"],blockSize:"market_cap_basic",blockColor:"change",
+ return {dataSource:"IDX",exchanges:[],blockSize:"market_cap_basic",blockColor:"change",
   grouping:"sector",locale:document.documentElement.lang==="id"?"id":"en",
-  symbolUrl:route,colorTheme:"dark",hasTopBar:true,isDataSetEnabled:false,
+  symbolUrl:"",colorTheme:"dark",hasTopBar:true,isDataSetEnabled:true,
   isZoomEnabled:true,hasSymbolTooltip:true,isMonoSize:false,width:"100%",height:"100%"};
 }
 function mountHeatmap(host){
