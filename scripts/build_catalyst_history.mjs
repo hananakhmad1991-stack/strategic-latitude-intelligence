@@ -143,6 +143,7 @@ function deltaEvents(before,docs,at){
    project_id:p.id,previous:added?null:prev.stage,current:current.stage,
    provinces:p.provinces,region:p.region||"",ticker_links:projectLinks(p.id,docs),detected_at_utc:at}));
  }
+ if(before.participant_evidence){
  for(const actor of docs.actors?.project_participations||[]){
   if(!actor.project_id||!actor.name||!safeUrl(actor.source_url))continue;
   const key=actorKey(actor),previous=before.participant_evidence?.[key],current=actorState(actor);
@@ -171,6 +172,7 @@ function deltaEvents(before,docs,at){
     provinces:project?.provinces||[],region:project?.region||"",
     ticker_links:projectLinks(actor.project_id,onlyThis),detected_at_utc:at}));
   }
+ }
  }
  for(const law of docs.laws?.nodes||[]){
   const url=safeUrl(law.source),prev=before.laws?.[law.id];
