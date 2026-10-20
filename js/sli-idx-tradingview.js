@@ -23,12 +23,12 @@ const priority={
  transport:["BIRD","SMDR","TMAS","ASSA","GIAA","WINS","MPMX","SHIP","MBSS"],
  manufacturing:["UNTR","AUTO","SMGR","INKP","TKIM","INTP","AVIA","KRAS","IMAS"]
 };
-function watchlistConfig(rows,selected="all"){
+function watchlistConfig(rows,selected="all",limit=9){
  const ordered=SECTORS.filter(([s])=>selected==="all"||selected===s);
  const tabs=ordered.map(([sector,id,en])=>{
   const picks=rows.filter(x=>x.sector===sector&&/^[A-Z0-9]{4}$/.test(x.ticker||""))
    .sort((a,b)=>{const p=priority[sector]||[];const x=p.indexOf(a.ticker),y=p.indexOf(b.ticker);return (x<0?999:x)-(y<0?999:y)||a.ticker.localeCompare(b.ticker)})
-   .slice(0,9);
+   .slice(0,Math.max(1,Math.min(9,limit)));
   return {title:T(id,en),originalTitle:en,symbols:picks.map(x=>({s:"IDX:"+x.ticker,d:x.ticker+" · "+x.name.slice(0,29)}))};
  }).filter(t=>t.symbols.length>0);
  return {colorTheme:"dark",dateRange:"1M",locale:document.documentElement.lang==="id"?"id":"en",
@@ -82,5 +82,21 @@ function mountHeatmap(host){
  script.textContent=JSON.stringify(heatmapConfig());widget.append(script);host.append(widget);
 }
 
-window.SLIIDXTradingView={watchlistConfig,mount,scriptUrl:SCRIPT,issuerRoute:route,heatmapScriptUrl:HEATMAP_SCRIPT,heatmapConfig,mountHeatmap};
+
+function mountCompact(host,rows,sector){
+ if(!host)return;
+ host.replaceChildren();
+ const options=watchlistConfig(rows,sector,6);
+ if(!options.tabs.length){host.append(E("p",null,T("Tidak ada simbol IDX pada sektor ini.","No IDX tickers in this sector.")));return}
+ options.height="100%";options.width="100%";
+ const widget=E("div","sli-idx-compact-tv tradingview-widget-container");
+ widget.append(E("div","tradingview-widget-container__widget"));
+ const credit=E("div","tradingview-widget-copyright");
+ const a=E("a",null,"TradingView IDX ↗");a.href="https://www.tradingview.com/markets/stocks-indonesia/";
+ a.target="_blank";a.rel="noopener noreferrer nofollow";credit.append(a);widget.append(credit);
+ const sc=E("script");sc.src=SCRIPT;sc.type="text/javascript";sc.async=true;
+ sc.textContent=JSON.stringify(options);widget.append(sc);host.append(widget);
+}
+
+window.SLIIDXTradingView={watchlistConfig,mount,mountCompact,scriptUrl:SCRIPT,issuerRoute:route,heatmapScriptUrl:HEATMAP_SCRIPT,heatmapConfig,mountHeatmap};
 })();
