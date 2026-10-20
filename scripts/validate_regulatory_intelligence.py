@@ -9,7 +9,7 @@ data = json.loads((ROOT/"data/sli-policy-regulatory-graph-2026.json").read_text(
 nodes = data["nodes"]
 node_ids = {n["id"] for n in nodes}
 assert len(nodes) == len(node_ids), "Duplicate legal instrument ids"
-assert len(nodes) >= 35, "Register unexpectedly shrank"
+assert len(nodes) >= 149, "Regulatory source graph unexpectedly shrank"
 required_sectors = {"energy","electricity","oilgas","minerba","environment","digital","carbon","cross"}
 assert required_sectors.issubset({n["sector"] for n in nodes})
 required_tiers = {"constitutional","tap","uu","pp","perpres","perda","permen","decision","dirjen","technical"}
@@ -51,14 +51,27 @@ assert all(lookup[k]["region"]!="Indonesia" for k in ("perda_dki_rtrw2024","perd
 coverage = json.loads((ROOT/"data/sli-policy-source-coverage.json").read_text(encoding="utf-8"))
 assert len(coverage["provinces"]) == 38
 with_portal = [p for p in coverage["provinces"] if p.get("source_url")]
-assert len(with_portal) >= 14, "Official source discovery unexpectedly regressed"
+assert len(with_portal) >= 24, "Verified province portal discovery unexpectedly regressed"
 assert all(p["source_url"].startswith("https://") for p in with_portal)
 assert all(p["discovery_status"] != "not_yet_confirmed" for p in with_portal)
 assert any(p["name"]=="Sulawesi Selatan" and p.get("source_url","").startswith("https://jdih.sulselprov.go.id/") for p in with_portal)
+# Additive regional/cyber wave (October 2026): preserve official provenance and older law lifecycle.
+for k in ("pres82iiv2022","pres47cyber2023","bssn5iiv2025","pojk51sustain2017","pp42psn2021","perda_jateng_rtrw2024","perda_magelang_rtrw2024","perda_magelang_rtrwold2011","perda_banten_rtrw2023","perda_diy_rtrw2023","perda_diy_pangan2026","perda_bali_rtrw2023","perda_kaltim_rtrw2023","perda_lampung_rtrw2023","perda_ntb_rtrw2024","perda_ntb_invest2024","perda_karawang_rtrw2013","kepmen88papuabaratdaya2026"):
+    assert k in lookup and lookup[k]["source"].startswith("https://") and lookup[k].get("source_checked_at"), k
+assert lookup["perda_magelang_rtrwold2011"]["status"]=="repealed"
+assert lookup["perda_magelang_rtrw2024"]["region"]=="Kabupaten Magelang, Jawa Tengah"
+assert lookup["pojk51sustain2017"]["status"]=="check_current", "OJK 2026 draft proposal is not an enacted POJK amendment"
+assert any(e["from"]=="perda_magelang_rtrw2024" and e["to"]=="perda_magelang_rtrwold2011" and e["type"]=="supersedes_noncurrent_record" for e in data["edges"])
+local_sources = coverage.get("local_government_sources", [])
+assert len(local_sources)>=4, "Municipal JDIH sources missing"
+assert all(s.get("region") and s.get("province") and s.get("source_url","").startswith("https://") for s in local_sources)
+assert {s["region"] for s in local_sources}.issuperset({"Kabupaten Magelang","Kabupaten Karawang","Kabupaten Bekasi","Kota Batam"})
 watch_config = json.loads((ROOT/"data/regulatory-monitor-sources.json").read_text(encoding="utf-8"))
 assert len(watch_config["watched_laws"]) == len(set(watch_config["watched_laws"])), "Duplicate watched legal instrument"
 assert set(("uu4p2sk2026","permendag19pmse2026","perpres83bgn","perda_dki_rtrw2024")).issubset(watch_config["watched_laws"])
 assert all(w in node_ids for w in watch_config["watched_laws"]), "Watched law not in legal graph"
+assert len(watch_config["watched_laws"])>=91
+assert len(watch_config["listing_sources"])>=35
 assert data["methodology"]["ria_lite"]["purpose"]
 dimensions = data["methodology"]["ria_lite"]["dimensions"]
 weights = {x["id"]:x["weight"] for x in dimensions}
