@@ -75,11 +75,17 @@ function mastLink(to,caption,current){
  const a=node('a','sli-platform-link',caption);a.href=to;
  if(current)a.setAttribute('aria-current','page');return a;
 }
+// Share the actual sticky masthead height with dashboard inspectors and anchor scrolling.
+function syncPlatformMastOffset(){
+ const mast=document.getElementById('sliPlatformMast');
+ const height=mast&&!mast.hidden?Math.ceil(mast.getBoundingClientRect().height):0;
+ document.documentElement.style.setProperty('--sli-mast-offset',height+'px');
+}
 function renderPlatformMast(){
  const use=path==='sli-source-viewer.html'?false:dashboardPage();
  document.body.classList.toggle('sli-dashboard-unified',use);
  let mast=document.getElementById('sliPlatformMast');
- if(!use){if(mast)mast.hidden=true;return}
+ if(!use){if(mast)mast.hidden=true;syncPlatformMastOffset();return}
  if(!mast){
   mast=node('header','sli-platform-mast');mast.id='sliPlatformMast';
   mast.setAttribute('aria-label','Strategic Latitude Intelligence dashboard navigation');
@@ -168,6 +174,14 @@ function renderPlatformMast(){
   tools.append(langs);
  }
  inner.append(brand,primary,tools);mast.append(inner);
+  if(!mast.dataset.sliOffsetObserver){
+   mast.dataset.sliOffsetObserver='1';
+   if(typeof ResizeObserver==='function'){
+    const observer=new ResizeObserver(syncPlatformMastOffset);
+    observer.observe(mast);
+   } else window.addEventListener('resize',syncPlatformMastOffset);
+  }
+  syncPlatformMastOffset();
  // Clicking a module navigates normally; no overlay intercepts data controls.
 }
 
