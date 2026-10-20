@@ -1,7 +1,24 @@
 {
-  "checked_at_utc": "2026-10-20T03:36:32.497203+00:00",
+  "checked_at_utc": "2026-10-20T06:43:10.793959+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
+    {
+      "topic": "Asian LNG and gas",
+      "topic_id": "lng_asia",
+      "type": "Gas supply",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "gas_lng",
+      "title": "EXCLUSIVE: Qatari electricity lifeline for Lebanon includes two power plants, LNG supply deal - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOWTItdGRQank5NVFPZGVycjUxaVZrTFJjRkxJb2VoWHJtdEE5NnUybkZDOTFGQWZ5WS1ZT2dvaFZTNTVwaTdEWWhrcWJSRUozMFlRU3JHWWYtdV9hNEVJMEpIcFhVUGMxcXY1bjdjLWs0bWpqaUVOYWktRmtKTEhqT2xwdXh5cC16aHZOejVyM3FIY3FJOEFvVzFINW90dlp2aWtSZURsb203YkdBVGxkTmpsZmhaemczeWpLVlloeDNEamxtMzZhTQ?oc=5",
+      "indexed_at_utc": "2026-10-19T13:49:00+00:00",
+      "impact_pathway": "Gas supply changes -> Asian LNG pricing -> power and industrial costs",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
     {
       "topic": "Global crude oil & OPEC supply",
       "topic_id": "oil_supply",
@@ -11,10 +28,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Brent crude edges lower, even after Houthi attacks on Saudi infrastructure - Reuters",
+      "title": "Brent crude holds near five-month high on Middle East tension - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMmVLc19hd0VSYXIydVNTWENKZ2J5WVNvVDRQUjRfTUJXWGhjOGxGZkFHVm9SNnZzeU9TWUhrYnJTRU1sVFRnX1BwZVd3NHB5a0NLdThkbDRldlg2eHdhTll2b3RnQTJ4U3dHVGczM25FdjJHRGQ5WGJDV2Qxd1hzLV9EcjNWaUQ4cXEzbWVHRzNuS1dGVVNBSmdXWGR6THN1dXhvSUdFS0dMMTJZTnBBZEFfZ2JoYVVFSWNMZw?oc=5",
-      "indexed_at_utc": "2026-10-18T22:23:00+00:00",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPZlA3RXBMd0lXRU1feWpodXpZQ2tnUERkUHFQSlFGX2hCMjdrOVdhRVd2eVk3dmhLYklUdVM1WGtoXzc0cUt2OG44WjBYVFVZazFvQWo1UmJWRlliNzJHWlZBU1hScTU1RU9sVEdDVllsSWE4UXh5b0ZHX0VlU01fNDc3ckpxRkw3ZGdaM0xxMW1qOEhWck1XYUlSVkJWeVZyZWRRSkpqdTFQSmZhejlBRmkxZUJmMGtPVWx6Ym82SnNTcElaWGc?oc=5",
+      "indexed_at_utc": "2026-10-20T00:58:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -28,10 +45,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil prices slide as sanctions relief on Russian crude raises hopes of increased supply - CNBC Africa",
-      "publisher": "CNBC Africa",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNNGVzX0YxNHprM1hadkhFQ0VSeE9WWFRHeEVTenF3ak1GcGVtRDNETWp3SHVKNVFuQThmNEtpVjZ5bWNkZDh0NUlLTWgzYzh4alpuV1FJSE4weVMyd2FWZ3Y2SWY1VVQ0LUptQ1h0TkFkVUxpYXplODBpZUdxWTJZcTVRckxEQm9UNG1uLWlXWHpEZDNwa0Y4WHFYMERQaDlFWFR0a0RhVjk1NlFWRXV4SWVRRFhrNVRjWkww?oc=5",
-      "indexed_at_utc": "2026-10-19T07:28:45+00:00",
+      "title": "Brent crude edges lower, even after Houthi attacks on Saudi infrastructure - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMmVLc19hd0VSYXIydVNTWENKZ2J5WVNvVDRQUjRfTUJXWGhjOGxGZkFHVm9SNnZzeU9TWUhrYnJTRU1sVFRnX1BwZVd3NHB5a0NLdThkbDRldlg2eHdhTll2b3RnQTJ4U3dHVGczM25FdjJHRGQ5WGJDV2Qxd1hzLV9EcjNWaUQ4cXEzbWVHRzNuS1dGVVNBSmdXWGR6THN1dXhvSUdFS0dMMTJZTnBBZEFfZ2JoYVVFSWNMZw?oc=5",
+      "indexed_at_utc": "2026-10-18T22:23:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -72,7 +89,7 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 2,
+    "oil_gas": 3,
     "coal": 0,
     "nre": 2,
     "electricity": 0,
@@ -81,7 +98,7 @@
   "sector_taxonomy_version": "2026-10-15",
   "errors": [
     {
-      "topic": "Red Sea and Bab el-Mandeb",
+      "topic": "Hormuz and Gulf energy",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
