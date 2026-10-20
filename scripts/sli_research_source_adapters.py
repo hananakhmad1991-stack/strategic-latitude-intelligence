@@ -118,3 +118,33 @@ def adapted_rows(name,d):
    str(d.get("caveat") or "")[:180],"IEA",
    "IEA dataset uses scenarios; do not label model estimates measured 2026 Indonesia mine production.")
   if out:yield out
+
+ # FOOD & AGRICULTURE: every record inherits only the explicitly identified official source.
+ if name=="food-agriculture-2026.json":
+  pub=d.get("publication") or {};u=pub.get("pdf")
+  for i,x in enumerate(d.get("trade",[])[:15]):
+   if not isinstance(x,dict):continue
+   out=record(("trade",str(i)),
+    "Agricultural trade "+str(x.get("sector"))+" · "+str(x.get("scope"))+" · "+str(x.get("period")),
+    u,pub.get("release"),x.get("balance"),x.get("unit"),
+    "Reported export "+str(x.get("export"))+", import "+str(x.get("import"))+
+    ", net balance "+str(x.get("balance"))+"; January–April 2026 YTD, not annual/October data.","Pusdatin Kementan / BPS",
+    "Source June 2026 edition; period through April 2026; thousands US dollars.")
+   if out:yield out
+  ntp=d.get("nationalFarmerIndices") or {};periods=ntp.get("periods") or []
+  for i,x in enumerate((ntp.get("series") or [])[:6]):
+   vals=x.get("ntp") or []
+   if not periods or len(periods)!=len(vals):continue
+   out=record(("nationalFarmerIndices","series",str(i)),
+    "Nilai Tukar Petani "+str(x.get("name"))+" · "+str(periods[-1]),u,pub.get("release"),
+    vals[-1],"index 2018=100","NTP May 2026, source table "+str(x.get("table"))+".","Pusdatin Kementan / BPS",
+    "Farmer price index, not farmer household income and not the latest October figure.")
+   if out:yield out
+ if name=="food-governance-hierarchy.json":
+  for i,x in enumerate((d.get("nodes") or [])[:24]):
+   sources=x.get("sources") or []
+   src=next((s.get("url") for s in sources if isinstance(s,dict) and str(s.get("url") or "").startswith("https://")),None)
+   out=record(("nodes",str(i)),"Food institution · "+str(x.get("name")),src,d.get("as_of"),
+    x.get("role"),"institutional mandate","Role boundary: "+str(x.get("limit")),"Official institution",
+    "Curated governance description, not independently verified current law or direct reporting chart.")
+   if out:yield out
