@@ -51,8 +51,14 @@ data={"schema":"sli-indonesia-environment-worldbank-wdi-candidate-v1",
       "geography":"Indonesia (IDN)",
       "status":"candidate_original_api_checked_pending_editorial_review",
       "observations":[], "indicators":[], "review_warning":"Secondary World Bank cross-country indicators are dated annual model/statistical series; do NOT interpret as province forecasts, live fire alerts or 2026 observations."}
+failures=[]
 for code,detail in INDICATORS.items():
-    url,series=load(code)
+    try:
+        url,series=load(code)
+    except Exception as exc:
+        failures.append({"code":code,"reason":type(exc).__name__+": "+str(exc)[:180]})
+        print("WORLD_BANK_WDI_SOURCE_PENDING "+code+" "+type(exc).__name__)
+        continue
     data["indicators"].append({"indicator_code":code,**detail,
         "unit_of_observation":"Indonesia nation-year", "api_url":url,
         "latest_year":series[-1]["year"], "latest_value":series[-1]["value"],
@@ -60,6 +66,10 @@ for code,detail in INDICATORS.items():
     data["observations"].extend({"indicator_code":code,**row} for row in series)
     print("WORLD_BANK_WDI_SOURCE_OK "+code+" observations="+str(len(series))+
           " latest="+str(series[-1]["year"])+":"+str(series[-1]["value"]))
+data["unavailable_indicators"]=failures
+data["review_warning"] += " Individual unavailable indicators have not been imputed."
+if len(data["indicators"])<1:
+    raise RuntimeError("World Bank did not provide any verified Indonesia historical series")
 pathlib.Path("artifacts").mkdir(exist_ok=True)
 out=pathlib.Path("artifacts/sli-indonesia-environment-wdi-review.json")
 out.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
