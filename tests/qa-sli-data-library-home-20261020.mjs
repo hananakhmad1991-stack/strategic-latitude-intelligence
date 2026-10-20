@@ -54,14 +54,21 @@ test("AI topic dashboard displays recovered source-page report evidence",()=>{
  assert.match(js,/x\.geography/);
  assert.doesNotMatch(js,/innerHTML/);
 });
-test("BNPB 2025 publisher data is not invented before XLSX validation",()=>{
+test("BNPB 2025 official CKAN rows cover 38 provinces with source discrepancy flagged",()=>{
  const d=json("data/sli-bnpb-provincial-2025.json");
- assert.equal(d.records.length,0);
- const src=read("sli-sector-data-library.html");
- assert.match(src,/df39e8c3-117e-40fa-b518-ff1037743955/);
- assert.match(src,/belum ada angka bukan berarti nihil bencana/);
- const script=read("js/sli-sector-data-library.js");
- assert.match(script,/Menunggu ingesti/);
+ assert.equal(d.records.length,38);
+ assert.equal(new Set(d.records.map(x=>x.admin_code)).size,38);
+ assert.equal(d.disaster_types.length,9);
+ assert.equal(d.quality_checks.national_totals_match,8);
+ assert.equal(d.quality_checks.national_totals_checked,9);
+ assert.deepEqual(d.quality_checks.national_aggregate_discrepancies,[{indicator:"earthquakes",provincial_sum:29,source_national:28,difference:1}]);
+ for(const type of d.disaster_types){
+  assert.equal(d.records.reduce((acc,x)=>acc+x[type],0),d.recomputed_provincial_totals[type]);
+ }
+ const s=read("sli-sector-data-library.html");
+ assert.match(s,/id="disasterIntegrityNotice"/);
+ assert.match(s,/df39e8c3-117e-40fa-b518-ff1037743955/);
+ assert.match(read("climate-environment.html"),/p\.floods\?\?p\.events\?\.flood/);
  assert.match(read("climate-environment.html"),/id="bnpb2025Availability"/);
 });
 test("Inventory truthfully distinguishes ready from partial and published target pages",()=>{
@@ -71,6 +78,6 @@ test("Inventory truthfully distinguishes ready from partial and published target
  }
  for(const id of ["ai_index","worldbank_ai"])
   assert.equal(d.datasets.find(x=>x.id===id).public_dataset,"data/sli-ai-stanford-worldbank-foundations-2025-2026.json");
- assert.equal(d.datasets.find(x=>x.id==="bnpb_disasters").status,"pending_numeric_ingestion");
- assert.equal(d.datasets.find(x=>x.id==="bnpb_disasters").source_discovery_status,"official_xlsx_found_download_and_numeric_validation_pending");
+ assert.equal(d.datasets.find(x=>x.id==="bnpb_disasters").status,"numeric_in_repository_with_source_reconciliation_warning");
+ assert.equal(d.datasets.find(x=>x.id==="bnpb_disasters").source_discovery_status,"official_ckan_rows_retrieved_and_provincial_names_matched_to_bps");
 });
