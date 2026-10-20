@@ -81,7 +81,8 @@ function renderIssuerTable(){
 }
 function renderSectorIssuerList(){
  const mount=document.getElementById('sliCgTree');if(!mount)return;mount.replaceChildren();
- const matches=sectorIssuers(),shown=matches.slice(0,issuerLimit);
+ const matches=sectorIssuers();if(!matches.some(n=>n.ticker===selectedTicker))selectedTicker=matches[0]?.ticker||'';
+ const shown=matches.slice(0,issuerLimit);
  const heading=E('p','sli-cg-small',matches.length+' '+T('IDX ticker records in selected sector; names/status may require a fresh exchange check.','catatan ticker BEI pada sektor terpilih; nama/status perlu pengecekan mutakhir di bursa.'));mount.append(heading);
  for(const n of shown){
   const btn=E('button','sli-cg-issuer-result');btn.type='button';btn.dataset.issuerTicker=n.ticker;
