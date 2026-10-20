@@ -10,7 +10,9 @@ on:
       - 'js/sli-investor-chat.mjs'
       - 'scripts/build_research_unified_index.py'
       - 'research-api/src/claim-evidence-audit.mjs'
+      - 'research-api/src/claim-evidence-ledger.mjs'
       - 'research-api/src/primary-claim-probe.mjs'
+      - 'tests/qa-sli-claim-evidence-ledger.mjs'
       - 'tests/qa-sli-primary-claim-probe.mjs'
       - 'scripts/sli_research_source_adapters.py'
       - '.github/workflows/sli-agent-quality-eval.yml'
@@ -21,6 +23,8 @@ on:
       - 'js/sli-investor-chat.mjs'
       - 'scripts/build_research_unified_index.py'
       - 'research-api/src/claim-evidence-audit.mjs'
+      - 'research-api/src/claim-evidence-ledger.mjs'
+      - 'tests/qa-sli-claim-evidence-ledger.mjs'
       - 'scripts/sli_research_source_adapters.py'
       - '.github/workflows/sli-agent-quality-eval.yml'
 permissions:
@@ -46,7 +50,8 @@ jobs:
           python scripts/build_research_unified_index.py
           python scripts/audit_sli_research_index.py
           node --check research-api/src/claim-evidence-audit.mjs
-          node --test tests/qa-sli-claim-audit.mjs tests/qa-sli-primary-claim-probe.mjs
+          node --check research-api/src/claim-evidence-ledger.mjs
+          node --test tests/qa-sli-claim-audit.mjs tests/qa-sli-primary-claim-probe.mjs tests/qa-sli-claim-evidence-ledger.mjs
       - name: Score public evidence retrieval and claim-audit regression
         id: evaluation
         continue-on-error: true
