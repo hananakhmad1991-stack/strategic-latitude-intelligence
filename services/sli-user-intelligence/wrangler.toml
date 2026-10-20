@@ -1,0 +1,20 @@
+name = "sli-user-intelligence"
+main = "src/index.mjs"
+compatibility_date = "2026-10-20"
+workers_dev = false
+
+# Do not configure a public route until protected by a Cloudflare Access application.
+# Update database_id after creating a PRIVATE D1 database.
+[[d1_databases]]
+binding = "DB"
+database_name = "sli-user-intelligence"
+database_id = "REPLACE_WITH_REAL_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+[vars]
+CF_ALLOWED_ORIGIN = "https://hananakhmad1991-stack.github.io"
+# Configure CF_ACCESS_ISSUER and CF_ACCESS_AUD in environment variables
+# or as nonsecret Wrangler vars only after Cloudflare Access policy exists.
+
+[triggers]
+crons = ["*/15 * * * *"]

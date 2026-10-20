@@ -1,0 +1,85 @@
+import assert from "node:assert/strict";
+import {webcrypto} from "node:crypto";
+import {handleRequest,processEvents} from "../src/index.mjs";
+class FakeD1{
+ constructor(){this.profiles=new Map;this.inbox=new Map;this.state=new Map;this.processed=new Map}
+ prepare(sql){
+  const db=this;
+  return {
+   async first(){return (await db.exec(sql,[])).first||null},
+   async all(){return {results:(await db.exec(sql,[])).results||[]}},
+   async run(){return {meta:{changes:(await db.exec(sql,[])).changes||0}}},
+   bind(...args){
+   const cmd={sql,args,
+    async first(){return (await db.exec(sql,args)).first||null},
+    async all(){return {results:(await db.exec(sql,args)).results||[]}},
+    async run(){return {meta:{changes:(await db.exec(sql,args)).changes||0}}}};
+   return cmd;
+  }};
+ }
+ async batch(stmts){for(const s of stmts)await this.exec(s.sql,s.args);return []}
+ async exec(q,a){
+  if(q.startsWith("SELECT preferences_json")){const p=this.profiles.get(a[0]);return {first:p||null}}
+  if(q.startsWith("INSERT INTO user_profiles")){
+   const p=this.profiles.get(a[0]);this.profiles.set(a[0],{user_id:a[0],preferences_json:a[1],created_at:p?.created_at||a[2],updated_at:a[3]});return {changes:1}
+  }
+  if(q.startsWith("SELECT id,event_id"))return {results:[...this.inbox.values()].filter(x=>x.user_id===a[0]).sort((x,y)=>y.created_at.localeCompare(x.created_at)).slice(a[2],a[2]+a[1])};
+  if(q.startsWith("SELECT COUNT(*) AS n FROM notification_inbox"))return {first:{n:[...this.inbox.values()].filter(x=>x.user_id===a[0]&&!x.read_at).length}};
+  if(q.startsWith("UPDATE notification_inbox")){const n=this.inbox.get(a[1]);if(n?.user_id===a[2])n.read_at=a[0];return {changes:1}}
+  if(q.startsWith("DELETE FROM notification_inbox")){for(const [k,x]of this.inbox)if(x.user_id===a[0])this.inbox.delete(k);return {changes:1}}
+  if(q.startsWith("DELETE FROM user_profiles")){this.profiles.delete(a[0]);return {changes:1}}
+  if(q.startsWith("SELECT value FROM service_state"))return {first:this.state.has("first_activated_at")?{value:this.state.get("first_activated_at")}:null};
+  if(q.startsWith("INSERT OR IGNORE INTO service_state")){if(!this.state.has("first_activated_at"))this.state.set("first_activated_at",a[0]);return {changes:1}}
+  if(q.startsWith("SELECT event_id FROM processed_events"))return {results:[...this.processed.keys()].map(event_id=>({event_id}))};
+  if(q.startsWith("SELECT user_id,preferences_json FROM user_profiles"))return {results:[...this.profiles.values()].slice(0,a[0])};
+  if(q.startsWith("INSERT OR IGNORE INTO notification_inbox")){
+   const [id,user_id,event_id,title,event_kind,relevance,source_url,detected_at,created_at]=a;
+   if(![...this.inbox.values()].some(x=>x.user_id===user_id&&x.event_id===event_id))
+    this.inbox.set(id,{id,user_id,event_id,title,event_kind,relevance,source_url,detected_at,created_at,read_at:null});
+   return {changes:1};
+  }
+  if(q.startsWith("INSERT OR IGNORE INTO processed_events")){this.processed.set(a[0],a[1]);return {changes:1}}
+  throw Error("Unmocked SQL: "+q);
+ }
+}
+const db=new FakeD1();
+const env={DB:db,CF_ALLOWED_ORIGIN:"https://hananakhmad1991-stack.github.io"};
+const origin=env.CF_ALLOWED_ORIGIN;
+const identify=async req=>({id:req.headers.get("X-Test-User")||"alice"});
+function req(method,path,user="alice",body=null,originHeader=origin){
+ const headers={"X-Test-User":user};
+ if(originHeader!==null)headers.Origin=originHeader;
+ if(body!==null)headers["Content-Type"]="application/json";
+ return new Request("https://api.sli.example"+path,{method,headers,body:body===null?undefined:JSON.stringify(body)});
+}
+const query=async r=>{const response=await handleRequest(r,env,identify);return {status:response.status,json:await response.json()}};
+assert.equal((await query(req("GET","/api/me"))).json.enrolled,false);
+assert.equal((await query(req("PUT","/api/preferences","alice",{tickers:["ANTM"],sectors:[],kinds:["news","project"],include_sector:false,in_app:true}))).status,200);
+assert.equal((await query(req("PUT","/api/preferences","bob",{tickers:["PGEO"],sectors:[],kinds:["news"],include_sector:false,in_app:true}))).status,200);
+assert.deepEqual((await query(req("GET","/api/preferences","alice"))).json.preferences.tickers,["ANTM"]);
+assert.equal((await query(req("PUT","/api/preferences","alice",{tickers:["INCO"],bad:true}))).status,400);
+assert.equal((await query(req("PUT","/api/preferences","alice",{tickers:["INCO"]},"https://evil.example"))).status,403);
+assert.equal((await query(req("PUT","/api/preferences","alice",{tickers:["INCO"]},null))).status,403);
+assert.equal((await handleRequest(req("GET","/api/me"),{CF_ALLOWED_ORIGIN:origin},identify)).status,503);
+const baseline=await processEvents(env,async()=>new Response(JSON.stringify({schema_version:"sli-catalyst-history-v2",events:[]})));
+assert.equal(baseline.initialized,true);
+const after=new Date(Date.now()+5000).toISOString();
+const event={id:"sli-catalyst-111111111111111111",kind:"news_indexed",title:"ANTM announces project",detected_at_utc:after,
+ sector:"minerals",source_url:"https://news.example/article",ticker_links:[{ticker:"ANTM",basis:"explicit_headline_identity"}]};
+const feed=async()=>new Response(JSON.stringify({schema_version:"sli-catalyst-history-v2",events:[event]}));
+const sent=await processEvents(env,feed);
+assert.equal(sent.delivered,1);
+assert.equal(db.inbox.size,1);
+assert.equal((await processEvents(env,feed)).delivered,0,"rerun cannot duplicate notifications");
+const alice=await query(req("GET","/api/inbox","alice"));
+const bob=await query(req("GET","/api/inbox","bob"));
+assert.equal(alice.json.unread,1);assert.equal(bob.json.unread,0);
+const id=alice.json.items[0].id;
+assert.equal((await query(req("POST","/api/inbox/read","bob",{ids:[id]}))).status,200);
+assert.equal((await query(req("GET","/api/inbox","alice"))).json.unread,1,"other user cannot read another inbox");
+assert.equal((await query(req("POST","/api/inbox/read","alice",{ids:[id]}))).status,200);
+assert.equal((await query(req("GET","/api/inbox","alice"))).json.unread,0);
+assert.equal((await query(req("DELETE","/api/me","alice"))).json.deleted,true);
+assert.equal(db.profiles.has("alice"),false);
+assert.equal(db.inbox.size,0);
+console.log("D1 backend API QA passed: ownership, origin, opt-in delivery, dedupe, read isolation and account erasure");
