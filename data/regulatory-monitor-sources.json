@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-20.2",
+  "version": "2026-10-20.3",
   "purpose": "Selected official national/sectoral/local law and government policy feeds; candidate detection only, NOT exhaustive Indonesian legislation or automatic legal status amendment.",
   "frequency": "Two automatic scans each day at 01:13 and 11:13 UTC (08:13/18:13 WIB), plus manual dispatch; subject to GitHub scheduling delays.",
   "listing_sources": [
@@ -476,6 +476,19 @@
         "/dokumen/"
       ],
       "limit": 35
+    },
+    {
+      "id": "bengkulu_jdih",
+      "label": "JDIH Bengkulu — Peraturan Daerah Provinsi",
+      "url": "https://jdih.bengkuluprov.go.id/produk-hukum?category=peraturan-daerah",
+      "class": "official_regulation_listing",
+      "allowed_hosts": [
+        "jdih.bengkuluprov.go.id"
+      ],
+      "allowed_path_prefixes": [
+        "/produk-hukum/"
+      ],
+      "limit": 35
     }
   ],
   "watched_laws": [
@@ -569,7 +582,11 @@
     "perda_ntb_rtrw2024",
     "perda_ntb_invest2024",
     "perda_karawang_rtrw2013",
-    "kepmen88papuabaratdaya2026"
+    "kepmen88papuabaratdaya2026",
+    "pp35hkpd2023",
+    "pp10pdrdold2021",
+    "perda_bengkulu_pdrd2023",
+    "perda_bengkulu_pdrd2026"
   ],
   "keywords": [
     "energi",
@@ -725,7 +742,7 @@
   "item_retention": 450,
   "source_item_cap": 65,
   "monitoring_window_days": 90,
-  "notes": "Expanded to official BPK, Bapanas, BNPB and selected local JDIH. These feeds provide *candidate* discovery, not comprehensive national/provincial historical crawling or legally adjudicated status. Degraded/403 source is displayed; never infer no legal change. On 19 October 2026 four additional public provincial JDIH portals (Aceh, North Sumatra, Bali, East Kalimantan) were added for candidate-only discovery. Newly identified sources require successful baseline scans before change alerts; watch failures are explicit. Added 23 source-linked national instruments to watched document list after legal register expansion. Watch result is candidate-level, not automatic legal status verification. Added targeted regional legal-listing probes and 18 instrument-detail checks (candidate-level only). Regulator or municipality website outages never mean the law has ceased to exist.",
+  "notes": "Expanded to official BPK, Bapanas, BNPB and selected local JDIH. These feeds provide *candidate* discovery, not comprehensive national/provincial historical crawling or legally adjudicated status. Degraded/403 source is displayed; never infer no legal change. On 19 October 2026 four additional public provincial JDIH portals (Aceh, North Sumatra, Bali, East Kalimantan) were added for candidate-only discovery. Newly identified sources require successful baseline scans before change alerts; watch failures are explicit. Added 23 source-linked national instruments to watched document list after legal register expansion. Watch result is candidate-level, not automatic legal status verification. Added targeted regional legal-listing probes and 18 instrument-detail checks (candidate-level only). Regulator or municipality website outages never mean the law has ceased to exist. Watch Bengkulu provincial tax amendment 2026 and PP 35/2023 replacement of repealed PP 10/2021. Candidate updates never auto-certify legal change.",
   "monitor_groups": [
     {
       "id": "domestic_policy",
