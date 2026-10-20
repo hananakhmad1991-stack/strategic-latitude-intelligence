@@ -1,0 +1,47 @@
+{
+  "schema": "sli-agent-resolved-lessons-v1",
+  "purpose": "Public reviewed-code regression memory; not LLM fine-tuning, a legal fact database, or automatic approval",
+  "update_policy": "Append source-safe resolved lessons only through reviewed PR with executable tests. Never ingest raw client prompts, credentials, issue-body prose, attachments, or unverified facts.",
+  "lessons": [
+    {
+      "id": "derguba-no-invented-pasal-pr70",
+      "pr_number": 70,
+      "merged_commit": "abc865f70187614556c07ee0faca7c92140fd619",
+      "area": "legal_research",
+      "failure_mode": "Model attempted unsupported article interpretation before removing paragraphs.",
+      "preventive_rule": "Missing reviewed article returns deterministic bounded report without model call.",
+      "test_file": "tests/qa-sli-legal-source-limited.mjs",
+      "test_title": "Unreviewed Pasal 99 of UU 7/2021 returns a complete source-limited response without a fake article meaning"
+    },
+    {
+      "id": "derguba-index-is-not-pasal-pr70",
+      "pr_number": 70,
+      "merged_commit": "abc865f70187614556c07ee0faca7c92140fd619",
+      "area": "citation_integrity",
+      "failure_mode": "Bibliography displayed one legal-index link while count of qualifying article sources was zero.",
+      "preventive_rule": "Reference label identifies index metadata and never counts it as verified article text.",
+      "test_file": "tests/qa-sli-legal-source-limited.mjs",
+      "test_title": "Source-limited legal export explicitly distinguishes law metadata from a reviewed Pasal source"
+    },
+    {
+      "id": "derguba-formal-law-name-pr73",
+      "pr_number": 73,
+      "merged_commit": "421c3df13e7b7a759ef309cc0cac73edb971fa26",
+      "area": "legal_retrieval",
+      "failure_mode": "Formal law names did not consistently match abbreviated reviewed article anchors.",
+      "preventive_rule": "Use canonical statute identifiers before deterministic missing-article fallback.",
+      "test_file": "tests/qa-sli-legal-source-limited.mjs",
+      "test_title": "Existing reviewed Pasal is not accidentally withheld when user spells out full law name"
+    },
+    {
+      "id": "derguba-no-orphan-headings-pr73",
+      "pr_number": 73,
+      "merged_commit": "421c3df13e7b7a759ef309cc0cac73edb971fa26",
+      "area": "report_export",
+      "failure_mode": "Filtered legal analysis could leave headings without accompanying substantive text.",
+      "preventive_rule": "Source-limited report sections remain complete; Word/PDF reference warnings distinguish metadata-only sources.",
+      "test_file": "tests/qa-sli-legal-source-limited.mjs",
+      "test_title": "Formal law name source-limited report has substantive text after every heading and never counts index-only metadata"
+    }
+  ]
+}
