@@ -175,6 +175,23 @@ function simulate(){
  $('multiplierOutput').textContent=impact.output===null||impact.output===undefined?'N/A':num(impact.output,2);
  $('impactNote').textContent=impact.reason+' '+(impact.status==='conditional'?'USER-SUPPLIED coefficient '+impact.multiplier+'; source URL supplied, NOT independently verified by SLI. Assess domestic final-demand share and avoid interpreting gross output as GRDP.':'');
 }
+function renderProvinceMap(){
+ if(!window.SLIProvinceMap||!datasets.bps)return;
+ const metric=$('provinceMapMetric').value;
+ const giniByName=new Map((datasets.gini?.provinces||[]).map(x=>[x.name,x.combined]));
+ const rows=datasets.bps.provinces.map(p=>{
+  const last=p.grdp_current?.[4],prior=p.grdp_constant?.[3],current=p.grdp_constant?.[4],invest=p.pmtb_current?.[4];
+  const values={grdp:Number.isFinite(last)?last/1000:null,growth:Number.isFinite(current)&&Number.isFinite(prior)&&prior>0?100*(current/prior-1):null,
+   pmtb:Number.isFinite(last)&&last>0&&Number.isFinite(invest)?100*invest/last:null,
+   gini:giniByName.get(p.name)??null};
+  return {name:p.name,value:values[metric],period:metric==='gini'?(datasets.gini?.measurement_period||'Maret 2026'):'2025'};
+ });
+ window.SLIProvinceMap.render('provincialDossierMap',{records:rows,selected:sel,
+  period:metric==='gini'?'BPS Susenas Maret 2026':'BPS PDRB menurut Pengeluaran 2025 (angka sementara)',
+  source:metric==='gini'?'BPS · Gini pengeluaran':'BPS · PDRB dan PMTB',digits:metric==='gini'?3:2,unit:metric==='gini'?'':(metric==='grdp'?'Rp triliun':'%'),
+  onSelect:name=>{if(!datasets.bps.provinces.some(p=>p.name===name))return;sel=name;filter='';$('province').value=name;render();}
+ });
+}
 function render(){
  if(!sel||!datasets.bps)return;
  const p=N.province(datasets,sel),v=p.latest;
@@ -184,12 +201,13 @@ function render(){
  $('gini').textContent=p.gini?fixed(p.gini.combined):'N/A';
  $('giniBasis').textContent=p.gini?'BPS '+datasets.gini.measurement_period+' · Gini national '+fixed(p.nationalGini):'No source observation';
  $('assetCount').textContent=num(p.assets.length,0);
- renderTrend(p.annual);renderPower(p);renderIndustry(p);renderProjects(p);renderBrief(p);
+ renderProvinceMap();renderTrend(p.annual);renderPower(p);renderIndustry(p);renderProjects(p);renderBrief(p);
  simulate();renderStatistics();
  $('macroNote').textContent='BPS expenditure GRDP vintage '+(datasets.bps?.sources?.pdrb?.released||'not specified')+'. 2025 values preliminary; new Papua provinces have missing early-year observations. The plot has separate y-axis scales and does not constitute a growth forecast.';
 }
 function attach(){
  $('province').addEventListener('change',event=>{sel=event.target.value;filter='';render();});
+ $('provinceMapMetric').addEventListener('change',renderProvinceMap);
  $('sectorFilter').addEventListener('change',event=>{filter=event.target.value;renderAssets(N.province(datasets,sel));});
  $('xVar').addEventListener('change',renderStatistics);$('yVar').addEventListener('change',renderStatistics);
  $('simulate').addEventListener('click',simulate);
