@@ -169,7 +169,8 @@ function disasters(d){
  metrics("disasterSummary",[
   ["Tahun dasar","2025","BNPB Satu Data · status sumber "+(d.status||"tidak diketahui").replaceAll("_"," ")],
   ["Provinsi tervalidasi",num(records.length,0),"Baris sumber resmi sudah terekstrak dan lolos pemeriksaan"],
-  ["Status observasi",records.length?"Data angka tersedia":"Menunggu ingesti","Tidak mengartikan belum diimpor sebagai nol kejadian"]
+  ["Status observasi",records.length?"Data angka tersedia":"Menunggu ingesti","Tidak mengartikan belum diimpor sebagai nol kejadian"],
+  ["Audit total BNPB",d.quality_checks?String(d.quality_checks.national_totals_match)+"/"+String(d.quality_checks.national_totals_checked):"—","Kategori yang sesuai agregat nasional"]
  ]);
  if(!records.length){
   table("disasterTable",["Provinsi","Kejadian"],[],
@@ -179,6 +180,13 @@ function disasters(d){
  const metricIds=Array.isArray(d.disaster_types)?d.disaster_types:["floods","extreme_weather","wildfires","landslides","earthquakes"];
  table("disasterTable",["Provinsi",...metricIds],records.map(row=>[row.province||row.name,
   ...metricIds.map(k=>row[k]===null||row[k]===undefined?"—":num(row[k],0))]));
+ const note=$("disasterIntegrityNotice");if(note){
+  const anomalies=d.quality_checks?.national_aggregate_discrepancies||[];
+  note.textContent=anomalies.length?"Audit total nasional BNPB: "+anomalies.map(x=>x.indicator+
+   " — jumlah provinsi "+num(x.provincial_sum,0)+", baris nasional "+num(x.source_national,0)+
+   " (selisih "+num(x.difference,0)+").").join(" ")+
+   " Kedua angka dipertahankan; SLI tidak mengubah sumber.":"Seluruh agregat provinsi sama dengan angka nasional BNPB.";
+ }
 }
 function ruptl(solar,ex){
  if(!solar||!ex)return;
