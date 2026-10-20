@@ -30,6 +30,7 @@ on:
       - 'js/sli-public-usability.js'
       - 'css/sli-site-ux.css'
       - 'tests/qa-sitewide-functions.mjs'
+      - 'tests/qa-sli-site-integrity.mjs'
       - 'tests/qa-sitewide-ux.mjs'
       - 'tests/qa-sli-information-architecture.mjs'
       - 'tests/qa-sli-unified-dashboards.mjs'
@@ -68,6 +69,8 @@ jobs:
           node-version: '22'
       - name: Verify all critical scripts, navigation, filters and export controls
         run: node --test tests/qa-sitewide-functions.mjs tests/qa-sitewide-ux.mjs tests/qa-sli-information-architecture.mjs tests/qa-sli-content-quality.mjs tests/qa-sli-home-portal.mjs tests/qa-sli-navigation-chrome.mjs tests/qa-sli-unified-dashboards.mjs tests/qa-sli-source-links.mjs tests/qa-sli-secondary-sitewide.mjs tests/qa-sli-geopolitics-chapter.mjs tests/qa-sli-visual-export.mjs tests/qa-sli-food-agriculture.mjs
+      - name: Sitewide link, inline runtime and search destination integrity
+        run: node --test tests/qa-sli-site-integrity.mjs
       - name: Geopolitical chapter JavaScript syntax
         run: |
           node --check js/sli-geopolitics-chapter.js
