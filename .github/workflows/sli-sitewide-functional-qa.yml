@@ -147,6 +147,14 @@ jobs:
       - name: Validate published SLI JSON and asset integrity
         run: node scripts/audit-sli-content-quality.mjs
 
+      - name: Archive daily Indonesian-content review candidates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-daily-indonesian-editorial-queue
+          path: sli-i18n-screening.json
+          retention-days: 30
+          if-no-files-found: ignore
       - name: Escalate regression for owner review, without self-modifying production
         if: ${{ always() && github.ref == 'refs/heads/main' }}
         env:
