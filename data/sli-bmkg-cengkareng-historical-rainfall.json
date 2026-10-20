@@ -1,0 +1,152 @@
+{
+  "schema": "sli-bmkg-saca-historical-station-rainfall-v1",
+  "reviewed_at": "2026-10-20",
+  "publisher": "Southeast Asian Climate Assessment & Dataset (SACA&D) / BMKG",
+  "official_archive_url": "https://sacad.bmkg.go.id/ID/download/SACA_blend_rr.zip",
+  "official_station_inventory_url": "https://sacad.bmkg.go.id/ID/download/data/stations_rr.txt",
+  "quality_code_definition": "https://sacad.bmkg.go.id/ID/dailydata/datadictionaryelement.php",
+  "original_station_file": "RR_STAID000046.txt",
+  "station": {
+    "id": 46,
+    "name": "SOEKARNO HATTA / CENGKARENG",
+    "country": "ID",
+    "latitude_dms": "-06:07:12",
+    "longitude_dms": "+106:39:00",
+    "elevation_m": 8,
+    "geometry_scope": "one historical reporting station; not district mean or direct asset exposure"
+  },
+  "data_scope": "2000–2014 historical quality-valid station rain-day sums; not annual totals on years with missing/suspect days",
+  "reported_unit": "millimetres (mm)",
+  "original_unit": "0.1 mm",
+  "source_missing_code": -9999,
+  "quality_flag_valid": "0",
+  "quality_flag_suspect": "1",
+  "quality_flag_missing": "9",
+  "archive_nominal_last_date": "2022-11-30",
+  "last_actual_quality_valid_observation_date": "2020-03-30",
+  "publication_status": "reviewed_historical_station_measurements_only_not_current",
+  "source_limits": "Sum over Q=0 validated observed days only; Q=1 suspect numerical values excluded, Q=9/-9999 missing excluded. Annual sum is incomplete whenever missing_or_suspect_days>0. A station reading is not rainfall anomaly or direct flood risk. No 2026 values.",
+  "annual_observations": [
+    {
+      "year": 2000,
+      "calendar_days": 366,
+      "valid_observation_days": 359,
+      "missing_or_suspect_days": 7,
+      "source_observed_rainfall_mm": 1364.6,
+      "complete_year": false
+    },
+    {
+      "year": 2001,
+      "calendar_days": 365,
+      "valid_observation_days": 362,
+      "missing_or_suspect_days": 3,
+      "source_observed_rainfall_mm": 1431.3,
+      "complete_year": false
+    },
+    {
+      "year": 2002,
+      "calendar_days": 365,
+      "valid_observation_days": 361,
+      "missing_or_suspect_days": 4,
+      "source_observed_rainfall_mm": 1859.2,
+      "complete_year": false
+    },
+    {
+      "year": 2003,
+      "calendar_days": 365,
+      "valid_observation_days": 364,
+      "missing_or_suspect_days": 1,
+      "source_observed_rainfall_mm": 856.6,
+      "complete_year": false
+    },
+    {
+      "year": 2004,
+      "calendar_days": 366,
+      "valid_observation_days": 365,
+      "missing_or_suspect_days": 1,
+      "source_observed_rainfall_mm": 1589.3,
+      "complete_year": false
+    },
+    {
+      "year": 2005,
+      "calendar_days": 365,
+      "valid_observation_days": 362,
+      "missing_or_suspect_days": 3,
+      "source_observed_rainfall_mm": 2069.9,
+      "complete_year": false
+    },
+    {
+      "year": 2006,
+      "calendar_days": 365,
+      "valid_observation_days": 365,
+      "missing_or_suspect_days": 0,
+      "source_observed_rainfall_mm": 1261.3,
+      "complete_year": true
+    },
+    {
+      "year": 2007,
+      "calendar_days": 365,
+      "valid_observation_days": 364,
+      "missing_or_suspect_days": 1,
+      "source_observed_rainfall_mm": 1633.5,
+      "complete_year": false
+    },
+    {
+      "year": 2008,
+      "calendar_days": 366,
+      "valid_observation_days": 362,
+      "missing_or_suspect_days": 4,
+      "source_observed_rainfall_mm": 1754.3,
+      "complete_year": false
+    },
+    {
+      "year": 2009,
+      "calendar_days": 365,
+      "valid_observation_days": 364,
+      "missing_or_suspect_days": 1,
+      "source_observed_rainfall_mm": 1511.3,
+      "complete_year": false
+    },
+    {
+      "year": 2010,
+      "calendar_days": 365,
+      "valid_observation_days": 365,
+      "missing_or_suspect_days": 0,
+      "source_observed_rainfall_mm": 2280.5,
+      "complete_year": true
+    },
+    {
+      "year": 2011,
+      "calendar_days": 365,
+      "valid_observation_days": 365,
+      "missing_or_suspect_days": 0,
+      "source_observed_rainfall_mm": 1120.2,
+      "complete_year": true
+    },
+    {
+      "year": 2012,
+      "calendar_days": 366,
+      "valid_observation_days": 366,
+      "missing_or_suspect_days": 0,
+      "source_observed_rainfall_mm": 1185,
+      "complete_year": true
+    },
+    {
+      "year": 2013,
+      "calendar_days": 365,
+      "valid_observation_days": 364,
+      "missing_or_suspect_days": 1,
+      "source_observed_rainfall_mm": 2662.5,
+      "complete_year": false
+    },
+    {
+      "year": 2014,
+      "calendar_days": 365,
+      "valid_observation_days": 364,
+      "missing_or_suspect_days": 1,
+      "source_observed_rainfall_mm": 2596.9,
+      "complete_year": false
+    }
+  ],
+  "quality_review": "Original unfiltered Q=1 extreme values (e.g. 945.0 mm/day) were rejected and are not part of annual results; source audit CI recomputes Q=0 aggregates."
+}
