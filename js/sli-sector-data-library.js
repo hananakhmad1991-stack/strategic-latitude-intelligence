@@ -163,6 +163,18 @@ function power(d){
  ]);
  table("powerTable",["Tahun","Wilayah agregasi PLN","SAIDI (jam/pelanggan)","SAIFI (gangguan/pelanggan)"],rows);
 }
+function inventory(d){
+ if(!d||!Array.isArray(d.datasets))return;
+ const ready=d.datasets.filter(x=>x.status.startsWith("numeric_in_repository")||
+  x.status==="full_user_normalized_upload_restored_to_repository").length;
+ metrics("inventoryStatus",[
+  ["Kelompok sumber",num(d.datasets.length,0),"Rekonsiliasi dokumen/dataset yang diketahui"],
+  ["Numerik tersedia",num(ready,0),"Ada JSON sumber; tetap perlu audit"],
+  ["Parsial / tertunda",num(d.datasets.length-ready,0),"Belum boleh diklaim terintegrasi lengkap"]
+ ]);
+ table("inventoryTable",["Subjek","Berkas yang pernah disediakan","Periode/scope","Status","Dashboard utama"],
+  d.datasets.map(x=>[x.domain,x.source_upload,x.observation_period,x.status.replaceAll("_"," "),x.main_dashboard]));
+}
 const manifests=[
  ["security","./data/sli-bps-public-safety.json",security],
  ["governance","./data/sli-bps-regional-intelligence.json",governance],
@@ -170,7 +182,8 @@ const manifests=[
  ["macro","./data/sli-macro-indonesia-2026.json",null],
  ["iea","./data/iea-critical-minerals-2026-full-scenarios.json",iea],
  ["environment","./data/sli-climate-environment.json",environment],
- ["power","./data/pln-saidi-saifi-2023-2025.json",power]
+ ["power","./data/pln-saidi-saifi-2023-2025.json",power],
+ ["inventory","./data/sli-user-dataset-recovery-inventory.json",inventory]
 ];
 Promise.all(manifests.map(async([id,path])=>{
  try{const res=await fetch(path,{cache:"no-cache"});if(!res.ok)throw Error("HTTP "+res.status);
@@ -184,6 +197,7 @@ Promise.all(manifests.map(async([id,path])=>{
  try{iea(data.iea)}catch(e){failed.push({id:"iea",error:e.message})}
  try{environment(data.environment)}catch(e){failed.push({id:"environment",error:e.message})}
  try{power(data.power)}catch(e){failed.push({id:"power",error:e.message})}
+ try{inventory(data.inventory)}catch(e){failed.push({id:"inventory",error:e.message})}
  const status=$("libStatus");status.textContent=ready+"/"+manifests.length+
  " dataset publik berhasil dimuat. "+(failed.length?
   "Belum tersedia: "+[...new Set(failed.map(x=>x.id))].join(", ")+". Cek jaringan atau sumber.":"Nilai ditampilkan berdasarkan periode masing-masing, tidak disatukan menjadi skor risiko.");
