@@ -205,6 +205,44 @@ await check("Chart click and CSV/XLSX/PNG/JPG/PDF/embed exports produce real out
  assert.ok(copied.includes("<iframe")&&copied.includes("sli_embed="),"Embed does not contain an attributable frame");
 });
 
+await check("Navigation parity: Home and Full Overview open the SAME sector dropdown",{width:1366,height:850},async page=>{
+ for(const chapter of ["home","overview"]){
+  await page.goto(pageUrl("index.html#"+chapter),{waitUntil:"domcontentloaded",timeout:30000});
+  await waitMast(page);await checkMast(page);
+  assert.equal(await page.locator(".sli-portal-topnav").count(),0,"Duplicate standalone homepage navbar still present");
+  const dropdown=page.locator("#sliPlatformMast .sli-platform-explorer");
+  await dropdown.locator("summary").click();
+  await page.waitForFunction(()=>document.querySelector("#sliPlatformMast .sli-platform-explorer")?.open===true,null,{timeout:6000});
+  const menu=dropdown.locator(".sli-platform-sector-menu");
+  assert.ok(await menu.isVisible(),"Explore Data dropdown not visible on "+chapter);
+  assert.ok(await menu.locator('a[href="./index.html#energy"]').count()===1,"Energy sector missing from unified menu");
+  assert.ok(await menu.locator('a[href="./sli-sector-data-library.html#power"]').count()===1,"Power source evidence not nested beneath Energy");
+  assert.equal(await menu.locator('a[href="./sli-sector-data-library.html"]').count(),0,"Data Library is not a top-level category");
+  await page.keyboard.press("Escape");
+  assert.equal(await dropdown.getAttribute("open"),null,"Escape must close accessible Explore Data dropdown");
+ }
+ await page.locator("#sliPlatformMast .sli-platform-explorer summary").click();
+ await page.locator('#sliPlatformMast .sli-platform-sector-menu a[href="./index.html#energy"]').click();
+ await page.waitForURL(/#energy$/,{timeout:15000});
+ assert.equal(await page.locator("body.sli-home-active").count(),0,"Choosing energy must open dashboard, not scroll homepage");
+});
+await check("Navigation mobile: dropdown remains visible and scrollable",{width:390,height:844},async page=>{
+ await page.goto(pageUrl("index.html#home"),{waitUntil:"domcontentloaded",timeout:30000});
+ await waitMast(page);
+ await page.locator('#sliPlatformMast [data-sli-mast-language="id"]').click();
+ const dropdown=page.locator("#sliPlatformMast .sli-platform-explorer");
+ await dropdown.locator("summary").click();
+ await page.waitForFunction(()=>document.querySelector("#sliPlatformMast .sli-platform-explorer")?.open===true,null,{timeout:6000});
+ const geom=await page.evaluate(()=>{
+  const m=document.querySelector("#sliPlatformMast .sli-platform-sector-menu"),r=m.getBoundingClientRect(),header=document.querySelector("#sliPlatformMast").getBoundingClientRect();
+  return {top:r.top,bottom:r.bottom,headerBottom:header.bottom,width:r.width,viewport:innerWidth,scrollHeight:m.scrollHeight,clientHeight:m.clientHeight,overflow:getComputedStyle(m).overflowY};
+ });
+ assert.ok(geom.width<=geom.viewport+1,"Mobile dropdown wider than viewport: "+JSON.stringify(geom));
+ assert.ok(geom.top>=geom.headerBottom-4,"Mobile menu hidden underneath navbar: "+JSON.stringify(geom));
+ assert.ok(geom.bottom<=844+4,"Dropdown goes beyond the viewport: "+JSON.stringify(geom));
+ assert.equal(geom.overflow,"auto","Long module menu must support internal scrolling");
+ assert.ok(await dropdown.locator("summary").innerText().then(x=>x.includes("Jelajahi Data")),"Indonesian menu label not displayed");
+});
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");
 console.log("Browser smoke:",report.tests.filter(x=>x.status==="pass").length,"passed /",report.tests.length,"total");
