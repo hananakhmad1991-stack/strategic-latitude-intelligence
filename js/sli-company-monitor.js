@@ -14,6 +14,7 @@ const E=(tag,cls,value)=>{const x=document.createElement(tag);if(cls)x.className
 const id=()=>document.documentElement.lang?.toLowerCase().startsWith("id");
 const T=(en,bahasa)=>id()?bahasa:en;
 const norm=s=>String(s||"").normalize("NFKD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+const legal=s=>norm(s).replace(/^pt /,"").replace(/ tbk$/,"").trim();
 const safe=x=>{try{const u=new URL(x);return u.protocol==="https:"&&!u.username&&!u.password?u.href:null}catch{return null}};
 const link=(url,title)=>{const u=safe(url),a=E(u?"a":"span","sli-cm-link",title);if(u){a.href=u;a.target="_blank";a.rel="noopener noreferrer"}return a};
 const projectUrl="./index.html#investment";
@@ -59,8 +60,8 @@ async function getData(){
  */
 function companyNames(issuer,groups){
  const rows=(groups?.records||[]).filter(x=>x.exchange==="IDX"&&x.ticker===issuer.ticker&&safe(x.source_url));
- const words=new Set([norm(issuer.name)]);
- for(const row of rows)words.add(norm(row.name));
+ const words=new Set([norm(issuer.name),legal(issuer.name)]);
+ for(const row of rows){words.add(norm(row.name));words.add(legal(row.name))}
  return {rows,words};
 }
 function attributedProjects(issuer,groups,projects,edges){
@@ -71,7 +72,7 @@ function attributedProjects(issuer,groups,projects,edges){
   if(!edge.project_id||!safe(edge.source_url)||!byId.has(edge.project_id))continue;
   const tag=String(edge.name||"").match(/\(([A-Z0-9]{4})\)\s*$/);
   const exactTicker=tag?.[1]===issuer.ticker;
-  const exactName=company.words.has(norm(edge.name))||
+  const exactName=company.words.has(norm(edge.name))||company.words.has(legal(edge.name))||
    (exactTicker&&company.words.has(norm(String(edge.name).replace(/\s*\([A-Z0-9]{4}\)\s*$/,""))));
   if(!exactTicker&&!exactName)continue;
   if(seen.has(edge.project_id))continue;
