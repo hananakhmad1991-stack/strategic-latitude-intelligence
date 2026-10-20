@@ -6,12 +6,15 @@ const ITEMS={
  brent:["Brent crude","Minyak Brent","energy"],wti:["WTI crude","Minyak WTI","energy"],dubai:["Dubai crude","Minyak Dubai","energy"],oil_average:["World Bank crude average","Rata-rata minyak World Bank","energy"],
  coal_australia:["Australian coal","Batu bara Australia","energy"],coal_south_africa:["South African coal","Batu bara Afrika Selatan","energy"],
  gas_us:["US natural gas","Gas alam AS","energy"],gas_europe:["European natural gas","Gas alam Eropa","energy"],lng_japan:["Japan LNG import benchmark","Acuan LNG impor Jepang","energy"],
- nickel:["Nickel","Nikel","minerals"],copper:["Copper","Tembaga","minerals"],tin:["Tin","Timah","minerals"],aluminum:["Aluminum","Aluminium","minerals"],iron_ore:["Iron ore","Bijih besi","minerals"],zinc:["Zinc","Seng","minerals"],lead:["Lead","Timbal","minerals"],gold:["Gold","Emas","minerals"],silver:["Silver","Perak","minerals"],cobalt:["Cobalt","Kobalt","minerals"]
+ nickel:["Nickel","Nikel","minerals"],copper:["Copper","Tembaga","minerals"],tin:["Tin","Timah","minerals"],aluminum:["Aluminum","Aluminium","minerals"],iron_ore:["Iron ore","Bijih besi","minerals"],zinc:["Zinc","Seng","minerals"],lead:["Lead","Timbal","minerals"],gold:["Gold","Emas","minerals"],silver:["Silver","Perak","minerals"],cobalt:["Cobalt","Kobalt","minerals"],
+ rice_thai_5:["Rice · Thai 5%","Beras Thailand 5%","food"],wheat_us_hrw:["Wheat · US HRW","Gandum AS HRW","food"],maize:["Maize","Jagung","food"],
+ soybeans:["Soybeans","Kedelai","food"],palm_oil:["Palm oil","Minyak sawit","food"],sugar_world:["Sugar · World","Gula dunia","food"],
+ urea:["Urea fertilizer","Pupuk urea","food"],coffee_robusta:["Robusta coffee","Kopi robusta","food"],cocoa:["Cocoa","Kakao","food"]
 };
-const DEFAULTS={energy:["brent","wti","dubai"],minerals:["nickel","copper","gold"],cross:["brent","coal_australia","nickel","copper","gold"]};
+const DEFAULTS={energy:["brent","wti","dubai"],minerals:["nickel","copper","gold"],food:["rice_thai_5","wheat_us_hrw","maize"],cross:["brent","nickel","rice_thai_5","wheat_us_hrw"]};
 const PALETTE=["#76c3f3","#edc376","#83d2a0","#d49cf1","#f6a79b"];
-const groupLabels={energy:["Energy commodities","Komoditas energi"],minerals:["Mineral and metal commodities","Komoditas mineral dan logam"],cross:["Cross-commodity comparison","Perbandingan lintas komoditas"]};
-const categoryNames={all:["All events","Semua peristiwa"],conflict:["Conflict","Konflik"],macro:["Macro shocks","Guncangan ekonomi"],trade:["Trade and oil policy","Perdagangan dan kebijakan minyak"],shipping:["Maritime routes","Jalur maritim"],health:["Health crisis","Krisis kesehatan"]};
+const groupLabels={energy:["Energy commodities","Komoditas energi"],minerals:["Mineral and metal commodities","Komoditas mineral dan logam"],food:["Global food & agriculture benchmarks","Komoditas pangan & pertanian global"],cross:["Cross-commodity comparison","Perbandingan lintas komoditas"]};
+const categoryNames={all:["All events","Semua peristiwa"],conflict:["Conflict","Konflik"],macro:["Macro shocks","Guncangan ekonomi"],trade:["Trade and oil policy","Perdagangan dan kebijakan minyak"],shipping:["Maritime routes","Jalur maritim"],health:["Health crisis","Krisis kesehatan"],indonesia_presidency:["Indonesia · Presidential and regime change","Indonesia · Presiden dan perubahan rezim"]};
 const modeNames={single:["Single","Tunggal"],compare:["Compare · absolute","Bandingkan · nominal"],indexed:["Indexed Compare · 100","Perbandingan indeks · 100"]};
 const tx=(en,id)=>window.SLIi18n?.language==="id"?id:en;
 const local=(o,k)=>window.SLIi18n?.language==="id"&&o["id_"+k]?o["id_"+k]:o[k];
@@ -58,7 +61,7 @@ function latestSignals(index){
   now-Date.parse(x.published_at_utc)>=0&&now-Date.parse(x.published_at_utc)<=maxAge)
  .sort((a,b)=>b.published_at_utc.localeCompare(a.published_at_utc)).slice(0,7);
 }
-function graphLines(series,events,signals,year,lastMonth,isIndex,activeDate,onChoose){
+function graphLines(series,events,presidentialTransitions,signals,year,lastMonth,isIndex,activeDate,onChoose){
  const root=svg("svg",{viewBox:"0 0 1040 350",role:"img","aria-label":tx("Geopolitical milestones over monthly commodity prices","Peristiwa geopolitik dan harga komoditas bulanan")});
  const W=1040,H=350,L=78,R=26,T=38,B=49;
  const origin=year*12,finish=absMonth(lastMonth),span=Math.max(1,finish-origin);
@@ -76,6 +79,28 @@ function graphLines(series,events,signals,year,lastMonth,isIndex,activeDate,onCh
  for(let yr=year;yr<=Math.floor(finish/12);yr++){
   if(yr%interval)continue;const x=L+(yr*12-origin)/span*(W-L-R);
   const t=svg("text",{x,y:H-19,fill:"#c2d5e4","font-size":13,"text-anchor":"middle"},root);t.textContent=yr;
+ }
+ // Cyan diamonds show presidential and regime chronology, not price-shock evidence.
+ let lastPoliticalX=-120;
+ for(const event of presidentialTransitions){
+  const m=month(event.date);if(absMonth(m)<origin||absMonth(m)>finish)continue;
+  const x=xx(m),chosen=activeDate===event.date,cy=T+17;
+  const tooltip=local(event,"title")+" · "+event.date+" · "+tx("Presidency/regime chronology, not a price shock","Kronologi presiden/rezim, bukan guncangan harga");
+  const mark=svg("g",{"class":"sli-geo-presidency-marker"+(chosen?" is-selected":""),role:"button",tabindex:0,
+   "aria-label":tooltip,"aria-pressed":chosen?"true":"false","data-presidential-date":event.date},root,tooltip);
+  svg("line",{x1:x,x2:x,y1:T+10,y2:H-B,stroke:"#6fe0d8","stroke-width":chosen?3.5:1.6,
+   "stroke-opacity":chosen?".9":".48","stroke-dasharray":"2 6"},mark);
+  svg("polygon",{points:[x+","+(cy-10),(x+10)+","+cy,x+","+(cy+10),(x-10)+","+cy].join(" "),
+   fill:chosen?"#d3ffff":"#72d7d5",stroke:chosen?"#102638":"#174052",
+   "stroke-width":chosen?3:2,"class":"sli-geo-presidency-diamond"},mark);
+  svg("circle",{cx:x,cy,r:20,fill:"transparent",stroke:"none","class":"sli-geo-presidency-hit"},mark);
+  if(x-lastPoliticalX>37||chosen){
+   const label=svg("text",{x,y:T-21,"text-anchor":"middle",fill:"#8eede9","font-size":chosen?15:11,
+    "font-weight":chosen?800:650,"class":"sli-geo-presidency-year"},mark);
+   label.textContent=event.date.slice(0,4);lastPoliticalX=x;
+  }
+  const choose=()=>onChoose?.(event.date);mark.addEventListener("click",choose);
+  mark.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();choose()}});
  }
  // Source-attributed event markers. The entire marker has a generous pointer/keyboard hit area.
  let lastYearLabelX=-100;
@@ -148,6 +173,7 @@ function eventRows(events,points,onChoose,activeDate){
   date.dateTime=e.date;const a=link(e.source_url,local(e,"title")+" ↗");a.className="sli-geo-timeline-title";
   const selectEvent=el("button","sli-geo-timeline-open",tx("View event lesson","Lihat pelajaran peristiwa"));selectEvent.type="button";
   selectEvent.addEventListener("click",()=>onChoose?.(e.date));
+  if(e.category==="indonesia_presidency")body.append(el("small","sli-geo-timeline-political-tag",tx("INDONESIA · PRESIDENT / REGIME","INDONESIA · PRESIDEN / REZIM")));
   body.append(a,el("p",null,local(e,"mechanism")),selectEvent);
   const match=map.get(month(e.date));
   if(match?.prior&&absMonth(match.p.month)-absMonth(match.prior.month)===1){
@@ -197,13 +223,14 @@ function eventInsight(event,series,coverage,onReset){
  const headText=el("div");
  headText.append(el("small","sli-geo-insight-kicker",tx("SELECTED EVENT · LESSON LEARNED","PERISTIWA TERPILIH · PELAJARAN")),
  el("h4",null,local(event,"title")),
- el("p","sli-geo-insight-date",event.date+" · "+event.publisher));
+ el("p","sli-geo-insight-date",event.date+" · "+event.publisher+(event.category==="indonesia_presidency"?" · "+tx("Political timeline","Linimasa politik"):"")));
  const reset=el("button","sli-geo-insight-reset",tx("Back to general analysis","Kembali ke analisis umum"));reset.type="button";reset.addEventListener("click",onReset);
  header.append(headText,reset);panel.append(header);
  panel.append(labelBlock(tx("1. What happened · chronology","1. Apa yang terjadi · kronologi"),local(event,"chronology")||local(event,"mechanism")));
  panel.append(labelBlock(tx("2. Transmission pathways · possible mechanisms","2. Jalur transmisi · mekanisme potensial"),local(event,"mechanism")));
  panel.append(labelBlock(tx("3. Commodity-market context","3. Konteks pasar komoditas"),local(event,"market_context")));
  panel.append(marketMoves(event,series,coverage));
+ if(event.category==="indonesia_presidency")panel.append(el("p","sli-geo-timeline-caution",tx("Presidential and regime changes are context only; excluded from geopolitical event-month statistics. Price movements are not attributed to the presidential succession.","Pergantian presiden dan rezim merupakan konteks saja; dikecualikan dari statistik kejadian geopolitik. Perubahan harga tidak diklaim disebabkan oleh suksesi presiden.")));
  panel.append(labelBlock(tx("4. Lesson learned","4. Pelajaran yang bisa diambil"),local(event,"lesson")));
  const source=el("p","sli-geo-timeline-caution");
  source.append(tx("Historical narrative: ","Kronologi historis: "),link(event.source_url,event.publisher+" ↗"));
