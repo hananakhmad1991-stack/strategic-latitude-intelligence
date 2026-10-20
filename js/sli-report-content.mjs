@@ -25,9 +25,9 @@ export function bibliographyReport(answer,sources,min=10){
  for(const i of cited){
   const s=docs[i-1],url=validUrl(s?.source_url);
   const key=url?.replace(/[#?].*/,"").replace(/\/$/,"").toLowerCase()||"notlinked:"+i;
-  if(seen.has(key))continue;seen.add(key);
+  if(seen.has(key)){const original=references.find(r=>r.key===key);if(original)original.aliases.push(i);continue}seen.add(key);
   const type=trim(s?.source_type),eligible=!!(url&&title(s)&&author(s)&&pubYear(s)&&!badTypes.has(type));
-  references.push({index:i,title:title(s),author:author(s),year:pubYear(s),url,
+  references.push({index:i,key,aliases:[i],title:title(s),author:author(s),year:pubYear(s),url,
    type,eligible,cite:apaCitation(s),apa:formatApa7(s),
    missing:[!url?"original URL":null,!title(s)?"title":null,!author(s)?"author/publisher":null,
     !pubYear(s)?"publication date":null,badTypes.has(type)?"unreviewed source":null].filter(Boolean)});
@@ -43,7 +43,7 @@ export function bibliographyReport(answer,sources,min=10){
   note:"Kecukupan metadata dan tautan tidak berarti suatu sumber telah terbukti akurat."};
 }
 export function substituteCitations(input,references){
- const by=new Map(references.map(x=>[x.index,x.cite]));
+ const by=new Map(references.flatMap(x=>x.aliases.map(i=>[i,x.cite])));
  return trim(input).replace(/\[(\d{1,3})\]/g,(match,n)=>by.get(Number(n))||match);
 }
 export function markdownBlocks(md){
