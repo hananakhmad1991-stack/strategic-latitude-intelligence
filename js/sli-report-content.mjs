@@ -41,10 +41,13 @@ export function bibliographyReport(answer,sources,min=10){
  }
  references.sort((a,b)=>(a.author||a.title).localeCompare(b.author||b.title,"id"));
  const n=references.filter(x=>x.eligible).length;
+ const indexOnly=references.filter(x=>x.type==="legal_index_metadata").length;
  return {schema:"sli-report-apa7-review-v1",references,cited_unique:references.length,
-  metadata_complete_candidates:n,required_minimum:min,meets_preliminary_minimum:n>=min,
+  metadata_complete_candidates:n,metadata_only_legal_index:indexOnly,required_minimum:min,meets_preliminary_minimum:n>=min,
   verified_sources:0,ready_for_publication:false,
-  warning:n>=min
+  warning:min===1&&n===0&&indexOnly>0
+   ?"DRAF BERBATAS SUMBER: "+indexOnly+" catatan indeks regulasi ditampilkan, tetapi tidak ada teks pasal primer yang telah ditelaah untuk mendukung isi ketentuan. Metadata tidak boleh dihitung sebagai bukti pasal."
+   :n>=min
    ?"Ada "+n+" kandidat referensi dengan metadata awal; semua isi, keterkaitan sitasi dan dokumen asli tetap perlu diverifikasi."
    :"DRAF: baru "+n+" kandidat referensi memenuhi kelengkapan metadata awal; target minimum "+min+". Referensi tidak ditambahkan atau dikarang.",
   note:"Kecukupan metadata dan tautan tidak berarti suatu sumber telah terbukti akurat."};
