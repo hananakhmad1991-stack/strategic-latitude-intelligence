@@ -12,7 +12,7 @@ const groups=[
 ];
 const modules={
  overview:['Overview · Big picture','Gambaran besar · Overview','index.html#overview','National executive context; go deeper for tables, project records and source detail.','Konteks nasional; buka modul detail untuk tabel dan sumber.'],
- research:['Research AI Assistant · Owner Test','Asisten Research AI · Uji Pemilik','sli-research-ai.html','Owner-only generative research is in limited testing; subscriber access is not active.','Riset generatif masih uji khusus pemilik dengan sumber terbatas; akses pelanggan belum aktif.'],
+ research:['DERGUBA AI · SLI Research Intelligence · Owner Test','DERGUBA AI · Asisten Riset SLI · Uji Pemilik','sli-research-ai.html','Owner-only generative research is in limited testing; subscriber access is not active.','Riset generatif masih uji khusus pemilik dengan sumber terbatas; akses pelanggan belum aktif.'],
  membership:['Membership · Open / Pro / Enterprise','Keanggotaan · Open / Pro / Enterprise','sli-membership.html','Plans and early-access requests; payments are not active yet.','Paket dan permintaan akses awal; pembayaran belum aktif.'],
  guide:['User guide · Start here','Panduan pengguna · Mulai di sini','sli-user-guide.html','Task-based paths, navigation, dates, sources, filters and limitations.','Alur penggunaan, navigasi, tanggal, sumber dan batasan.'],
  entities:['Entity Intelligence · People & Projects','Intelijen Entitas · Tokoh & Proyek','sli-entities.html','Browse source-dated organizations, people and projects across sectors.','Telusuri organisasi, tokoh, dan proyek lintas sektor bersumber bertanggal.'],
@@ -141,7 +141,7 @@ function renderPlatformMast(){
  primary.append(explorer);
  primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
  primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'));
- primary.append(mastLink('./sli-research-ai.html','Research AI',false));
+ primary.append(mastLink('./sli-research-ai.html','DERGUBA AI',false));
  primary.append(mastLink('./index.html#overview',text('Full Overview','Overview Lengkap'),path==='index.html'&&current==='overview'));
  const tools=node('div','sli-platform-tools');
  // All specialist dashboards share the same persisted EN/ID preference as the homepage.
