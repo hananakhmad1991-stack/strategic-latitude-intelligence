@@ -279,7 +279,7 @@ async function loadIssuerUniverse(preserveGroup){
   for(const record of body.records){
    if(!/^[A-Z0-9]{4}$/.test(record.ticker)||map.has(record.ticker)||!source(record.source_url))throw Error('Invalid or duplicate IDX catalogue ticker '+record.ticker);
    const gr=groupIndex.get(record.ticker);
-   map.set(record.ticker,{...record,exchange:'IDX',groupRecord:gr||null,sector:gr?.sector||record.sector});
+   map.set(record.ticker,{...record,exchange:'IDX',groupRecord:gr||null,sector:record.sector});
   }
   for(const [ticker,gr] of groupIndex)if(!map.has(ticker))map.set(ticker,{
    ticker,name:gr.name,exchange:'IDX',sector:gr.sector,verification:'group_source_only',source_url:gr.source_url,groupRecord:gr
