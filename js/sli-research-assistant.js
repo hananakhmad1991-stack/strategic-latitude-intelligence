@@ -614,6 +614,17 @@ async function init(){
   state.features=await import("./sli-investor-chat.mjs?v=20261018-chatfirst1");
   state.features.fillChatMethods($("raChatMethod"));
  }catch(e){status("Library metodologi belum bisa dimuat; mode otomatis tetap tersedia.");}
+ // Prefill a cross-sector dashboard research request; never auto-execute it.
+ try{
+  const prompt=new URLSearchParams(location.search).get("prompt");
+  if(prompt&&prompt.length>=8&&prompt.length<=1600){
+   $("raPrompt").value=prompt;
+   const hint=document.createElement("p");hint.setAttribute("role","status");hint.className="sli-policy-handoff-note";
+   hint.textContent=state.language==="id"?"Instruksi dari dashboard SLI dimuat. Periksa kembali sumber sebelum mengirim.":"SLI dashboard research request is ready. Review its evidence before submitting.";
+   hint.style.cssText="border-left:3px solid #d7b678;padding:9px 12px;color:#dfcda7;background:#163146;border-radius:7px;font-size:12px;";
+   $("raPrompt").insertAdjacentElement("beforebegin",hint);
+  }
+ }catch(_){}
  $("raChatMethod").addEventListener("change",methodStatus);
  $("raChatFiles").addEventListener("change",updateFileStatus);
  $("raAssistantForm").addEventListener("submit",e=>{e.preventDefault();submit()});
