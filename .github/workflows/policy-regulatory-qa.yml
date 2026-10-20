@@ -4,6 +4,10 @@ on:
   push:
     paths:
       - 'data/sli-policy-regulatory-graph-2026.json'
+      - 'tests/qa-sli-legal-provisions.mjs'
+      - 'css/sli-legal-provisions.css'
+      - 'js/sli-legal-provisions.js'
+      - 'data/sli-verified-legal-provisions.json'
       - 'data/regulatory-monitor-sources.json'
       - 'data/sli-policy-source-coverage.json'
       - 'js/sli-policy-coverage.js'
@@ -51,9 +55,11 @@ jobs:
           PY
           node --check /tmp/sli-policy-inline.js
           node --check js/sli-regulatory-explorer.js
+          node --check js/sli-legal-provisions.js
           node --check js/sli-policy-coverage.js
           node --check js/regulatory-monitor-dashboard.js
           node --test tests/qa-sli-regulatory-explorer.mjs
+          node --test tests/qa-sli-legal-provisions.mjs
           node --test tests/qa-sli-policy-coverage.mjs
           node --test tests/qa-sli-policy-chapters.mjs
           python - <<'PY'

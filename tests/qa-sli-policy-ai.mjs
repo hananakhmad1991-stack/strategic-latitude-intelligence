@@ -72,7 +72,7 @@ test("primary article reference pilot preserves law-to-article and source proven
  const bridge=file("research-api/src/legal-provisions.mjs");
  const ids=new Set(graph.nodes.map(n=>n.id));
  assert.equal(articleDb.schema,"sli-legal-provisions-v1");
- assert.ok(articleDb.items.length>=2);
+ assert.ok(articleDb.items.length>=12);
  for(const provision of articleDb.items){
   assert.ok(ids.has(provision.law_node_id));
   assert.match(provision.source_url,/^https:\/\//);
@@ -80,9 +80,11 @@ test("primary article reference pilot preserves law-to-article and source proven
   assert.equal(provision.current_status_certified,false);
   assert.equal(provision.excerpt_kind,"reviewed_paraphrase_not_verbatim");
   assert.ok(provision.page_reference);
-  assert.match(provision.instrument_ref,/^UU\s+\d+\/\d{4}$/);
+  assert.match(provision.instrument_ref,/^(?:UU|PP)\s+\d+\/\d{4}$/);
  }
  assert.match(bridge,/legalProvisionEvidence/);
+ assert.match(bridge,/validateProvisionRegistry/);
+ assert.match(worker,/focusedArticleReading\?3:4/);
  assert.match(worker,/import \{legalProvisionEvidence\}/);
  assert.match(worker,/ARTICLE CITATIONS/);
  assert.match(worker,/\.\.\.articleEvidence,\.\.\.treatyChronologyEvidence,\.\.\.implementationEvidence,\.\.\.legalEvidence/);

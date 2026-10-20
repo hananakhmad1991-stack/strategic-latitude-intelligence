@@ -141,13 +141,13 @@ export default{
   // Law-specific owner queries can draw on source-linked public SLI policy metadata.
   // This is not full legal text and never an automatic claim of current enforceability.
   const legalScope=(payload.history||[]).filter(h=>h.role==="user").slice(-2).map(h=>h.content).join(" ")+" "+payload.question;
-  const legalQuestion=/\b(?:uu|pp)\s*\d+|peraturan|regulasi|undang.undang|perpres|perda|pergub|jdih|izin|perizinan|otonomi|legal|regulatory|regulation|law\b|compliance|kewenangan daerah|paris|unfccc|ratifikasi|pasal/i.test(legalScope);
+  const legalQuestion=/\b(?:uu|pp)\s*\d+|peraturan|regulasi|undang.undang|perpres|perda|pergub|jdih|izin|perizinan|otonomi|legal|regulatory|regulation|law\b|compliance|kewenangan daerah|paris|unfccc|ratifikasi|pasal|\bpdp\b|\bpste\b|pelindungan data|kebocoran data|ketahanan pangan/i.test(legalScope);
   // An article-focused legal reading needs primary text and the regulatory registry,
   // not unrelated dated media reports or sector charts.
   const focusedArticleReading=legalQuestion&&/(?:\bpasal\s*\d+|\barticle\s*\d+|isi pasal|bunyi pasal)/i.test(payload.question);
   const focusedTreatyChronology=legalQuestion&&/(?:tanggal|deposit|ratifikasi|ratification|mulai berlaku|berlakunya|effective|entry.into.force|kronologi|timeline|perbedaan)/i.test(payload.question)&&/(?:paris agreement|persetujuan paris|unfccc|\buu\s*(?:(?:nomor|no\.?)[ ]*)?16\s*(?:\/|[ ]+tahun[ ]+)2016)/i.test(payload.question);
   const focusedLegalReading=focusedArticleReading||focusedTreatyChronology;
-  const articleEvidence=legalQuestion?legalProvisionEvidence(legalScope,2):[];
+  const articleEvidence=legalQuestion?legalProvisionEvidence(legalScope,focusedArticleReading?3:4):[];
   const treatyChronologyEvidence=legalQuestion?parisTreatyTimelineEvidence(legalScope):[];
   const implementationEvidence=focusedLegalReading?parisImplementationContextEvidence(payload.question):[];
   const legalEvidence=legalQuestion?selectPolicyEvidence(legalScope,focusedLegalReading?2:4,policyLegalEvidence()):[];
