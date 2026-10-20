@@ -163,6 +163,65 @@ function power(d){
  ]);
  table("powerTable",["Tahun","Wilayah agregasi PLN","SAIDI (jam/pelanggan)","SAIFI (gangguan/pelanggan)"],rows);
 }
+function disasters(d){
+ if(!d)return;
+ const records=Array.isArray(d.records)?d.records:[];
+ metrics("disasterSummary",[
+  ["Tahun dasar","2025","BNPB Satu Data · status sumber "+(d.status||"tidak diketahui").replaceAll("_"," ")],
+  ["Provinsi tervalidasi",num(records.length,0),"Baris sumber resmi sudah terekstrak dan lolos pemeriksaan"],
+  ["Status observasi",records.length?"Data angka tersedia":"Menunggu ingesti","Tidak mengartikan belum diimpor sebagai nol kejadian"]
+ ]);
+ if(!records.length){
+  table("disasterTable",["Provinsi","Kejadian"],[],
+   {empty:"XLSX BNPB 2025 ditemukan di portal resmi; rincian angka provinsi belum berhasil diunduh/diperiksa. Data tidak diisi perkiraan."});
+  return;
+ }
+ const metricIds=Array.isArray(d.disaster_types)?d.disaster_types:["floods","extreme_weather","wildfires","landslides","earthquakes"];
+ table("disasterTable",["Provinsi",...metricIds],records.map(row=>[row.province||row.name,
+  ...metricIds.map(k=>row[k]===null||row[k]===undefined?"—":num(row[k],0))]));
+}
+function ruptl(solar,ex){
+ if(!solar||!ex)return;
+ const rows=Array.isArray(solar.rows)?solar.rows:[],ami=ex.ami?.series||[];
+ const total=solar.printed_total_mw;
+ metrics("ruptlKpis",[
+  ["Potensi waduk",num(rows.length,0),"RUPTL · tabel 2.2, halaman PDF 82–83"],
+  ["Potensi PLTS terapung",num(total,1)+" MW","Potensi teknis, bukan pembangkit beroperasi"],
+  ["Target AMI",num(ami.length,0)+" tahun","Tabel 2.4 · RUPTL 2022–2045"],
+  ["Cakupan sumber",String(ex.source?.pages_in_upload??100)+" halaman","Rincian annex proyek tidak tersedia"]
+ ]);
+ const provinces=[...new Set(rows.map(x=>x.province).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+ const sel=$("ruptlProvince");
+ for(const name of provinces){const op=document.createElement("option");op.value=name;op.textContent=name;sel.append(op)}
+ const display=()=>{
+  table("ruptlReservoirs",["Waduk","Provinsi","Status bendungan","Luas (ha)","Potensi PLTS (MW)","Halaman PDF"],
+    rows.filter(x=>!sel.value||x.province===sel.value).map(x=>[x.reservoir,x.province,x.dam_status,
+    num(x.area_ha,2),num(x.potential_mw,2),num(x.pdf_page,0)]));
+ };
+ sel.addEventListener("change",display);display();
+ table("ruptlAmi",["Tahun target","Target baru (meter)","Target kumulatif (meter)","Halaman PDF","Status sumber"],
+  ami.map(x=>[x.year,num(x.annual_target,0),num(x.cumulative_target,0),
+   num(x.source_pdf_page||98,0),(x.quality||"rencana yang diterbitkan").replaceAll("_"," ")]));
+}
+function aiReports(d){
+ if(!d)return;
+ const arr=d.indicators||[];
+ metrics("aiReportKpis",[
+  ["Angka yang ditelusuri",num(arr.length,0),"Halaman PDF teridentifikasi dan disimpan"],
+  ["Stanford 2026",num(arr.filter(x=>x.source==="stanford").length,0),"Angka global dan pembanding negara"],
+  ["World Bank 2025",num(arr.filter(x=>x.source==="worldbank").length,0),"Angka kelompok pendapatan dunia"],
+  ["Katalog kandidat grafik","405","Belum semuanya memiliki seri data numerik terverifikasi"]
+ ]);
+ const filter=$("aiReportSource");
+ const render=()=>{
+  table("aiReportTable",["Topik","Indikator","Nilai","Periode","Geografi/cakupan","Basis/jenis","PDF"],
+   arr.filter(x=>!filter.value||filter.value===x.source).map(x=>[
+    x.category,x.label_id,(x.comparator||"")+num(x.value,2)+" "+x.unit,x.period||x.year,
+    x.geography,x.methodology,(x.source==="stanford"?"Stanford":"World Bank")+" · hal. "+x.pdf_page
+   ]));
+ };
+ filter.addEventListener("change",render);render();
+}
 function inventory(d){
  if(!d||!Array.isArray(d.datasets))return;
  const ready=d.datasets.filter(x=>x.status.startsWith("numeric_in_repository")||
@@ -183,6 +242,10 @@ const manifests=[
  ["iea","./data/iea-critical-minerals-2026-full-scenarios.json",iea],
  ["environment","./data/sli-climate-environment.json",environment],
  ["power","./data/pln-saidi-saifi-2023-2025.json",power],
+ ["bnpb","./data/sli-bnpb-provincial-2025.json",null],
+ ["ruptlSolar","./data/ruplt-2025-2034-floating-solar-potential.json",null],
+ ["ruptlSource","./data/pln-ruptl-uploaded-excerpt-2025-2034.json",null],
+ ["aiReports","./data/sli-ai-stanford-worldbank-foundations-2025-2026.json",null],
  ["inventory","./data/sli-user-dataset-recovery-inventory.json",inventory]
 ];
 Promise.all(manifests.map(async([id,path])=>{
@@ -197,6 +260,9 @@ Promise.all(manifests.map(async([id,path])=>{
  try{iea(data.iea)}catch(e){failed.push({id:"iea",error:e.message})}
  try{environment(data.environment)}catch(e){failed.push({id:"environment",error:e.message})}
  try{power(data.power)}catch(e){failed.push({id:"power",error:e.message})}
+ try{disasters(data.bnpb)}catch(e){failed.push({id:"bnpb",error:e.message})}
+ try{ruptl(data.ruptlSolar,data.ruptlSource)}catch(e){failed.push({id:"ruptl",error:e.message})}
+ try{aiReports(data.aiReports)}catch(e){failed.push({id:"aiReports",error:e.message})}
  try{inventory(data.inventory)}catch(e){failed.push({id:"inventory",error:e.message})}
  const status=$("libStatus");status.textContent=ready+"/"+manifests.length+
  " dataset publik berhasil dimuat. "+(failed.length?
