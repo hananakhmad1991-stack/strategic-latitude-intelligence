@@ -28,12 +28,12 @@ def run():
             "unavailable_indicators":fresh.get("unavailable_indicators",[]),
             "review_requirements":"Source metadata, definition, year and unit must be validated before modifying production datasets. Changes do not replace site data automatically."}
     OUT.parent.mkdir(parents=True,exist_ok=True)
-    OUT.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    OUT.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     summary=Path(os.environ.get("GITHUB_STEP_SUMMARY","/dev/null"))
     with summary.open("a",encoding="utf-8") as f:
-        f.write("### Indonesia WDI official source delta watch\\n\\n")
-        f.write(f"New observations: **{len(additions)}**; publisher revisions: **{len(revisions)}**; unavailable codes: **{len(gaps)}**.\\n\\n")
-        f.write("Status: review-only. No public dashboard values were changed.\\n")
+        f.write("### Indonesia WDI official source delta watch\n\n")
+        f.write(f"New observations: **{len(additions)}**; publisher revisions: **{len(revisions)}**; unavailable codes: **{len(gaps)}**.\n\n")
+        f.write("Status: review-only. No public dashboard values were changed.\n")
     if additions or revisions or gaps:
         print("::warning::World Bank WDI changed or lacks indicators. Review audit artifact before promoting data.")
     else: print("WDI_SOURCE_NO_CHANGES")
