@@ -10,7 +10,7 @@ const monitor=JSON.parse(read('data/regulatory-monitor.json'));
 
 test('Province and municipal JDIH catalogue separates official source discovery from exhaustive law indexing',()=>{
  assert.equal(catalogue.provinces.length,38);
- assert.ok(catalogue.provinces.filter(p=>p.source_url).length>=24);
+ assert.ok(catalogue.provinces.filter(p=>p.source_url).length>=29);
  assert.ok(catalogue.provinces.filter(p=>!p.source_url).length>0,'Never imply all JDIHs were recovered');
  assert.ok(catalogue.local_government_sources.length>=4);
  for(const local of catalogue.local_government_sources) {
@@ -37,7 +37,7 @@ test('Reader renders provenance-aware 38-province and separate locality coverage
  doc.start();
  await new Promise(resolve=>setImmediate(resolve));
  assert.match(get('policyCoverageSummary').textContent,/38 provinsi/);
- assert.match(get('policyCoverageSummary').textContent,/24 portal/);
+ assert.match(get('policyCoverageSummary').textContent,/29 portal/);
  assert.match(get('policyCoverageTable').innerHTML,/Lampung/);
  assert.match(get('policyLocalCoverageSummary').textContent,/4 sumber kabupaten\/kota/);
  assert.match(get('policyLocalCoverageTable').innerHTML,/Kabupaten Magelang/);
