@@ -59,8 +59,21 @@ function render(root,data,legacy,evidence,expansion){
  const count=el("p");count.className="sli-ruptl-prov-count";
  const scroller=el("div");scroller.className="sli-ruptl-prov-scroll";
  const coverage=el("details");const covTitle=el("summary","Lihat 34 tabel proyek asli: nomor tabel, halaman PDF, 970 kandidat mentah");const covDiv=el("div");covDiv.className="sli-ruptl-prov-scroll";coverage.append(covTitle,covDiv);
+ const quality=el("details");
+ const qs=el("summary","Audit kualitas sel sumber: 9 kasus duplikasi, unit, tata kolom dan lokasi kuota");
+ const qtable=el("table"),qh=el("thead"),qhrow=el("tr");
+ ["Risiko sumber","Tabel / halaman PDF","Temuan di tabel asli","Keputusan sebelum dimasukkan sebagai proyek"].forEach(x=>qhrow.append(el("th",x)));qh.append(qhrow);
+ const qb=el("tbody");
+ for(const issue of expansion.source_quality_flag_registry){
+  const row=el("tr");row.append(el("td",issue.flag));
+  const td=el("td");td.append(link(data.source.official_url+"#page="+issue.pdf_page,issue.table+" · "+issue.pdf_page+" ↗"));
+  row.append(td,el("td",issue.example),el("td",issue.review_needed));qb.append(row);
+ }
+ qtable.append(qh,qb);
+ const qwrap=el("div");qwrap.className="sli-ruptl-prov-scroll";qwrap.append(qtable);
+ quality.append(qs,qwrap);
  const footer=el("p");footer.append("Sumber dasar: ",link(data.source.official_url,"RUPTL PLN 2025–2034 PDF resmi ↗")," · ",link(scan.run,"Audit ekstraksi semua 34 sublampiran ↗"),". Jumlah 970 adalah baris grid calon hasil mesin, BUKAN proyek individual tervalidasi. Tidak ada realisasi yang diisi otomatis dari target COD.");
- root.replaceChildren(h,pre,summary,methodology,controls,count,scroller,coverage,footer);
+ root.replaceChildren(h,pre,summary,methodology,controls,count,scroller,coverage,quality,footer);
  const head=["Wilayah lampiran","Nama sumber (proyek/kuota)","Kelas sumber","Teknologi","Kapasitas tercetak","Target COD ARED","Status rencana 2025","Bukti perkembangan","COD aktual unit (jika terbukti)","Asal tabel/PDF"];
  const tabs=el("table"),th=el("thead"),tr=el("tr");head.forEach(x=>tr.append(el("th",x)));th.append(tr);tabs.append(th);
  const tb=el("tbody");tabs.append(tb);scroller.append(tabs);
