@@ -1,5 +1,7 @@
 # SLI information architecture and editorial ownership — 20 October 2026
 
+> **Superseded for navigation on 21 October 2026.** Full Overview has been retired in favor of Home + Explore Data + canonical sector dashboards. See [SLI sector-first migration](SLI_SECTOR_FIRST_MIGRATION_2026-10-21.md). Legacy `index.html#overview` is a compatibility alias to Home. The historical notes below are preserved for auditing but must not be used to recreate duplicate navigation.
+
 ## Purpose
 Maintain one discoverable location for each SLI public function without erasing original datasets, removing deep links, or claiming that visually similar measurements are interchangeable. The **shared masthead Explore Data** is the only sitewide module chooser. Home is the short executive entry point; Full Overview is the expanded analytic view; the individual modules are evidence owners. Source-library URLs remain stable **evidence details/archives**, never a competing top-level sector.
 
