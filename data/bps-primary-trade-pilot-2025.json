@@ -8,7 +8,7 @@
   "annual_export_publication": "https://www.bps.go.id/id/publication/2026/08/10/556d446e35c86054cb33739f/statistik-perdagangan-luar-negeri-indonesia-ekspor-2025.html",
   "annual_import_publication": "https://www.bps.go.id/id/publication/2026/08/04/29900d4157c9ba7ad7fc72ea/statistik-perdagangan-luar-negeri-indonesia-impor-2025",
   "download_state": "not_acquired",
-  "commercial_reuse_review": "pending_official_terms_check",
+  "commercial_reuse_review": "bps_public_website_terms_found_specific_public_dataset_rights_review_pending",
   "no_purchase_authorized": true,
   "no_synthetic_allocations": true,
   "verified_cells": 0,
@@ -115,5 +115,10 @@
     "Time windows and HS resolutions never mixed",
     "License, attribution and commercial redistribution terms checked before publication",
     "Independent cell-by-cell reviewer attestations and CI gates passed"
-  ]
+  ],
+  "public_website_terms_url": "https://www.bps.go.id/id/term-of-use",
+  "public_attribution_guidance_url": "https://ppid.bps.go.id/app/konten/3505/Standar-Layanan-Informasi-Publik.html",
+  "free_consultation_url": "https://pst.bps.go.id/",
+  "free_webapi_developer_url": "https://webapi.bps.go.id/developer",
+  "reuse_caveat": "BPS website public terms allow commercial and non-commercial data uses subject to stated terms and source attribution. This does not automatically extend to purchased/restricted microdata or override file-specific restrictions."
 }
