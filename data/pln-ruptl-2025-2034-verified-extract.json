@@ -1,5 +1,5 @@
 {
-  "version": "2026-10-16",
+  "version": "2026-10-21",
   "sources": [
     {
       "name": "RUPTL approval ESDM 188.K/TL.03/MEM.L/2025",
@@ -10,8 +10,8 @@
       "url": "https://web.pln.co.id/cms/media/siaran-pers/2025/06/ruptl-2025-2034-pln-siap-bangun-green-super-grid-sepanjang-47-758-kms/"
     },
     {
-      "name": "Official RUPTL large PDF (direct retrieval blocked)",
-      "url": "https://www.pln.co.id/webapi/media/file/webkorp/asset/b967d-ruptl-pln-2025-2034-pub-.pdf"
+      "name": "Full original RUPTL PLN 2025–2034 (Gatrik, SHA-256 verified, 1,253 PDF pages)",
+      "url": "https://gatrik.esdm.go.id/gatrik/gatrik-api/storage/migrasi/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf"
     },
     {
       "name": "PLN Statistics 2025 large PDF (direct retrieval blocked)",
@@ -74,27 +74,29 @@
   ],
   "scope_note": "National investment opportunities from ESDM RUPTL dissemination presentation, not committed funding and not data-center capex.",
   "verification": {
-    "large_official_pdf": "not_downloaded_52MB_web_limit_and_container_network",
+    "large_official_pdf": "verified_complete_1253_pages_sha256_1308ee580c7c1642fe7817e000c87cb2dc87053e1fcef90606dcc1da396fd002",
     "pln_stats_2025": "not_downloaded_76MB_web_limit_and_container_network",
     "regional_station_table": "pending",
     "regional_peak_2025": "available_only_at_system_level",
-    "headroom": "not_available"
+    "headroom": "not_available",
+    "project_annex_sources": "34_of_34_geographic_annex_grid_scan_digitized_as_970_unverified_source_cell_candidates_plus_92_selected_sample_rows",
+    "operational_actuals": "independent_primary_dated_events_only_not_inferred_from_2025_ruplt_planned_cod"
   },
   "required_annexes": [
     {
       "annex": "A4",
       "province": "Kepulauan Riau",
-      "status": "unextracted"
+      "status": "original_pdf_grid_extracted; selected_source_rows_checked; full_distinct_project_and_actual_status_review_pending"
     },
     {
       "annex": "B3",
       "province": "Jawa Barat",
-      "status": "unextracted"
+      "status": "original_pdf_grid_extracted; selected_source_rows_checked; full_distinct_project_and_actual_status_review_pending"
     },
     {
       "annex": "B4",
       "province": "Jawa Tengah",
-      "status": "unextracted"
+      "status": "original_pdf_grid_extracted; selected_source_rows_checked; full_distinct_project_and_actual_status_review_pending"
     }
   ],
   "source_landing_page": "https://www.pln.co.id/hubungan-investor-id/informasi-perusahaan-id/ruptl-id-1",
@@ -115,8 +117,20 @@
     "source_sha256": "6b0a38077e64421c034b94f49bf97d05afc18ddfdedaf8e44607380c9a284ac1",
     "dataset": "data/pln-ruptl-uploaded-excerpt-2025-2034.json",
     "dashboard": "pln-ruptl-2025-2034-source-intelligence.html",
-    "coverage": "Signed approval and RUPTL chapters I to II.4.2; province-by-province Chapter V annex and complete RUPTL remain missing.",
+    "coverage": "This uploaded 100-page excerpt contains only the approval and RUPTL chapters I–II.4.2. Detailed original annex tables now come from the separately verified complete 1,253-page PDF, not from this excerpt.",
     "extracted": "Approved national targets, engineering N-1/substation rules, AMI Table 2.4 2022–2045 and selected reservoir potential Table 2.2.",
     "full_document_pdf_downloaded": false
+  },
+  "full_original_ruplt_review": {
+    "source_url": "https://gatrik.esdm.go.id/gatrik/gatrik-api/storage/migrasi/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf",
+    "source_sha256": "1308ee580c7c1642fe7817e000c87cb2dc87053e1fcef90606dcc1da396fd002",
+    "total_pdf_pages": 1253,
+    "geographic_project_annexes": 34,
+    "original_machine_grid_candidates_review_only": 970,
+    "source_sample_rows_published": 92,
+    "validated_2026_operating_records_from_pdf_plan": 0,
+    "review_catalog": "data/sli-ruptl-970-raw-grid-candidates-review.json",
+    "visual_page": "pln-ruptl-energy-investment.html",
+    "caution": "Machine-extracted original cells are not unique projects or as-built generating MW; 2025 planned COD is not operating COD."
   }
 }
