@@ -1,0 +1,235 @@
+{
+  "schema": "sli-marine-crosssector-v1",
+  "updated_at": "2026-10-21",
+  "purpose": "Public marine-sector topic links and legal/entity/issuer discovery references across SLI. Not certified consolidated law or exchange census.",
+  "source_portal": "https://portaldata.kkp.go.id/portals/data-statistik/layer1",
+  "statistics_dataset": "./data/sli-marine-fisheries-kkp.json",
+  "regulations": [
+    {
+      "id": "uu-31-2004",
+      "ref": "UU 31/2004",
+      "title": "Perikanan",
+      "source_url": "https://jdih.kkp.go.id/Peraturannew/PeraturanEnglish/",
+      "status": "legal_index_review_required",
+      "note": "Amended by UU 45/2009; verify later amendments and consolidated text."
+    },
+    {
+      "id": "uu-45-2009",
+      "ref": "UU 45/2009",
+      "title": "Perubahan atas UU 31/2004 tentang Perikanan",
+      "source_url": "https://peraturan.bpk.go.id/Details/38790/uu-no-45-tahun-2009",
+      "status": "amending_instrument",
+      "note": "Amending law, not a complete consolidated parent-law text."
+    },
+    {
+      "id": "uu-32-2014",
+      "ref": "UU 32/2014",
+      "title": "Kelautan",
+      "source_url": "https://jdih.kkp.go.id/Peraturannew/PeraturanEnglish/",
+      "status": "legal_index_review_required",
+      "note": "Check current amendments and implementing rules."
+    },
+    {
+      "id": "uu-27-2007",
+      "ref": "UU 27/2007",
+      "title": "Pengelolaan Wilayah Pesisir dan Pulau-Pulau Kecil",
+      "source_url": "https://jdih.kkp.go.id/Peraturannew/PeraturanEnglish/",
+      "status": "amended_parent",
+      "note": "Use with UU 1/2014 and review later changes."
+    },
+    {
+      "id": "uu-1-2014",
+      "ref": "UU 1/2014",
+      "title": "Perubahan atas UU 27/2007 tentang Wilayah Pesisir",
+      "source_url": "https://jdih.kkp.go.id/Peraturannew/PeraturanEnglish/",
+      "status": "amending_instrument",
+      "note": "Not consolidated text."
+    },
+    {
+      "id": "uu-7-2016",
+      "ref": "UU 7/2016",
+      "title": "Perlindungan dan Pemberdayaan Nelayan, Pembudi Daya Ikan, dan Petambak Garam",
+      "source_url": "https://jdih.kkp.go.id/Homedev/PeraturanAll?peraturan=45",
+      "status": "legal_index_review_required",
+      "note": "Check subsequent amendments and applicable regulations before claiming current obligations."
+    },
+    {
+      "id": "pp-11-2023",
+      "ref": "PP 11/2023",
+      "title": "Penangkapan Ikan Terukur",
+      "source_url": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/4584",
+      "status": "legal_index_review_required",
+      "note": "KKP index includes specific repeals; verify current consolidated licensing and WPP rules."
+    }
+  ],
+  "agencies": [
+    {
+      "id": "kkp",
+      "name": "Kementerian Kelautan dan Perikanan",
+      "role": "National policy, fisheries/marine data and sectoral programs",
+      "source_url": "https://kkp.go.id/",
+      "verified_scope": "institution_identity"
+    },
+    {
+      "id": "djpt",
+      "name": "Direktorat Jenderal Perikanan Tangkap",
+      "role": "Marine fisheries capture governance and related policy implementation",
+      "source_url": "https://kkp.go.id/",
+      "verified_scope": "functional_directory_lead"
+    },
+    {
+      "id": "djpb",
+      "name": "Direktorat Jenderal Perikanan Budi Daya",
+      "role": "Aquaculture development and monitoring; verify latest formal nomenclature and duties",
+      "source_url": "https://kkp.go.id/",
+      "verified_scope": "functional_directory_lead"
+    },
+    {
+      "id": "psdkp",
+      "name": "Direktorat Jenderal PSDKP",
+      "role": "Marine and fisheries resource surveillance; enforcement claims require incident documents",
+      "source_url": "https://kkp.go.id/",
+      "verified_scope": "functional_directory_lead"
+    },
+    {
+      "id": "brsdm",
+      "name": "Badan Penyuluhan dan Pengembangan Sumber Daya Manusia Kelautan dan Perikanan",
+      "role": "Extension, training and human-resources development",
+      "source_url": "https://kkp.go.id/",
+      "verified_scope": "functional_directory_lead"
+    },
+    {
+      "id": "bkpm",
+      "name": "Kementerian Investasi/BKPM",
+      "role": "Investment facilitation and aggregate official investment realization; no inferred company CAPEX",
+      "source_url": "https://www.bkpm.go.id/",
+      "verified_scope": "cross_sector_partner"
+    }
+  ],
+  "issuer_candidates": [
+    {
+      "ticker": "CPRO",
+      "name": "Central Proteina Prima",
+      "business": "Shrimp aquaculture, feed and processed seafood",
+      "source_url": "https://web.ksei.co.id/services/registered-securities/shares/lc/CPRO?setLocale=id-ID",
+      "status": "KSEI active securities snapshot; IDX trading status not inferred",
+      "classification": "thematic_marine_candidate"
+    },
+    {
+      "ticker": "DSFI",
+      "name": "Dharma Samudera Fishing Industries",
+      "business": "Seafood and fish processing/export",
+      "source_url": "https://www.dsfi.id/id/investor",
+      "status": "corporate filing evidence; verify current IDX status",
+      "classification": "thematic_marine_candidate"
+    },
+    {
+      "ticker": "IKAN",
+      "name": "Era Mandiri Cemerlang",
+      "business": "Fishery/seafood export processing candidate; company segment needs issuer filing review",
+      "source_url": "https://www.idx.id/media/nbkfn2sd/des-mei-2026.pdf",
+      "status": "2026 listed security reference; verify current IDX listing and segment",
+      "classification": "thematic_marine_candidate"
+    },
+    {
+      "ticker": "PCAR",
+      "name": "Prima Cakrawala Abadi",
+      "business": "Seafood processing candidate; company segment needs annual-report review",
+      "source_url": "https://www.idx.id/media/nbkfn2sd/des-mei-2026.pdf",
+      "status": "2026 listed security reference; verify current IDX listing and segment",
+      "classification": "thematic_marine_candidate"
+    }
+  ],
+  "geopolitical_channels": [
+    {
+      "id": "natuna",
+      "title_id": "Laut Natuna Utara & ZEE",
+      "title_en": "North Natuna Sea & EEZ",
+      "exposure": "Fishing rights, enforcement, patrols and cross-border maritime incidents",
+      "guard": "EEZ resource rights do not establish island-sovereignty claims; claims of incursions need primary evidence.",
+      "source_url": "https://kkp.go.id/"
+    },
+    {
+      "id": "shipping",
+      "title_id": "Selat dan rantai dingin",
+      "title_en": "Chokepoints & cold chain",
+      "exposure": "Freight, fuel, port access, insurance and refrigerated exports",
+      "guard": "A global incident is not an observed Indonesian seafood export decline.",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/layer1"
+    },
+    {
+      "id": "sustainability",
+      "title_id": "Kuota tangkap & ekosistem",
+      "title_en": "Catch quotas & ecosystems",
+      "exposure": "WPPNRI governance, licensing and fish-stock sustainability",
+      "guard": "Stock potential and JTB are management estimates, not actual catch.",
+      "source_url": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/4584"
+    },
+    {
+      "id": "trade",
+      "title_id": "Ekspor hasil laut",
+      "title_en": "Seafood export chains",
+      "exposure": "Market access, food safety standards, tariffs and buyer concentration",
+      "guard": "Export risk needs HS-coded BPS/KKP series and importing-market measures.",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/layer1"
+    },
+    {
+      "id": "climate",
+      "title_id": "Risiko iklim pesisir",
+      "title_en": "Coastal climate risks",
+      "exposure": "Sea surface temperature, storm, flooding, mangroves and aquaculture resilience",
+      "guard": "News reports or rehabilitation hectares do not establish quantified economic losses or carbon absorption.",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/layer1"
+    }
+  ],
+  "links": [
+    {
+      "id": "dashboard",
+      "label_id": "Dashboard KKP",
+      "label_en": "KKP dashboard",
+      "url": "./marine-fisheries-intelligence.html"
+    },
+    {
+      "id": "stocks",
+      "label_id": "Watchlist IDX Kelautan",
+      "label_en": "Marine IDX watchlist",
+      "url": "./index.html#home"
+    },
+    {
+      "id": "news",
+      "label_id": "Monitoring kelautan",
+      "label_en": "Marine news monitoring",
+      "url": "./sli-sector-news.html?sector=marine"
+    },
+    {
+      "id": "policy",
+      "label_id": "Kebijakan dan regulasi kelautan",
+      "label_en": "Marine policy and regulation",
+      "url": "./policy-regulatory-intelligence.html?sector=marine"
+    },
+    {
+      "id": "entities",
+      "label_id": "Entitas KKP dan perusahaan",
+      "label_en": "KKP and company entities",
+      "url": "./sli-entities.html?sector=marine"
+    },
+    {
+      "id": "geo",
+      "label_id": "Geopolitik maritim",
+      "label_en": "Maritime geopolitics",
+      "url": "./index.html#geopolitics"
+    },
+    {
+      "id": "research",
+      "label_id": "Analisis DERGUBA AI",
+      "label_en": "DERGUBA AI analysis",
+      "url": "./sli-research-ai.html"
+    }
+  ],
+  "assumptions": [
+    "Issuer theme sector is editorial screening, not official IDX classification; price data and listing status must be checked at provider.",
+    "KKP numeric source, news reporting, legal-index metadata and geopolitical analysis have different evidence strength.",
+    "No numeric or legal conclusion may be based only on attributed news headlines or metadata modifications.",
+    "Thematic agency directory does not assert a named current minister or exclusive statutory jurisdiction."
+  ]
+}
