@@ -44,7 +44,11 @@ macro=(ROOT/"indonesia-macroeconomic-intelligence.html").read_text(encoding="utf
 overview_js=(ROOT/"js/sli-macro-overview.js").read_text(encoding="utf-8")
 index=(ROOT/"index.html").read_text(encoding="utf-8")
 assert "sli-macro-indonesia-2026.json" in macro and "sli-macro-worldbank-history.json" in macro
-assert "initSLIMacroOverview" in overview_js and "sliMacroOverviewRoot" in index
-assert "indonesia-macroeconomic-intelligence.html" in overview_js
-assert "js/sli-macro-overview.js" in index
+# Home now routes to the canonical macro dashboard; the former Full Overview is retired.
+assert "initSLIMacroOverview" in overview_js
+assert "indonesia-macroeconomic-intelligence.html" in index
+assert 'id="kpis"' in macro and 'id="register"' in macro
+assert ("sliMacroOverviewRoot" in index and "js/sli-macro-overview.js" in index) or (
+    'href="./indonesia-macroeconomic-intelligence.html"' in index
+), "Macro must be reachable from Home without restoring a duplicate overview"
 print(f"PASS {len(snap['metrics'])} dated indicators; {len(snap['manual_series'])} source-verified compact series; {len(wdi['series'])} annual WDI series")
