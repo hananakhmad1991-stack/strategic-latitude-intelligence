@@ -8,6 +8,7 @@ on:
       - 'food-agriculture-intelligence.html'
       - 'marine-fisheries-intelligence.html'
       - 'tests/qa-sli-bps-agri-horti-2026.cjs'
+      - 'scripts/audit_bps_2026_watermarked_cells_offline.py'
       - 'research-api/src/dashboard-corpus.mjs'
       - '.github/workflows/sli-bps-agri-horti-2026-qa.yml'
   workflow_dispatch:
@@ -27,6 +28,7 @@ jobs:
           node --check js/sli-bps-agri-horti-source-panel.js
           node --check research-api/src/dashboard-corpus.mjs
           node tests/qa-sli-bps-agri-horti-2026.cjs
+          python3 -m py_compile scripts/audit_bps_2026_watermarked_cells_offline.py
           python - <<'PY'
           import json
           f=json.load(open('data/sli-bps-agri-horti-2026-source-register.json',encoding='utf-8'))
