@@ -437,6 +437,36 @@ await check("Indonesian source cautions: RUPTL and provincial methodology remain
  await page.waitForFunction(()=>document.body.innerText.includes("Garis acuan vertikal merupakan median pertumbuhan riil"),null,{timeout:12000});
  assert.equal(await page.locator('a[href="./provincial-intelligence.html"]').first().count(),1,"Provincial dashboard must retain cross-sector dossier route");
 });
+
+await check("Cross-sector institutional hierarchy: six standalone dashboards render source-linked officials",{width:1366,height:850},async page=>{
+ const pages=[
+  ["indonesia-macroeconomic-intelligence.html","macro","Destry Damayanti"],
+  ["policy-regulatory-intelligence.html","policy","Rachmat Pambudy"],
+  ["geopolitical-impact-assessment.html","geo","Rachmat Pambudy"],
+  ["climate-environment.html","environment","Teuku Faisal Fathani"],
+  ["sli-entities.html","entities","Destry Damayanti"],
+  ["provincial-intelligence.html","provincial","Rachmat Pambudy"]
+ ];
+ for(const [filename,sector,leader] of pages){
+  await page.goto(pageUrl(filename),{waitUntil:"domcontentloaded",timeout:30000});
+  const mount=page.locator('[data-sli-ministry-sector="'+sector+'"]');
+  await mount.locator(".sli-ministry-node").first().waitFor({timeout:15000});
+  const text=await mount.innerText();
+  assert.ok(text.includes(leader),filename+" missing officially verified leader "+leader);
+  assert.ok(await mount.locator(".sli-ministry-inspector a[href^='https://']").count()>=2,filename+" missing institutional source links");
+ }
+});
+await check("Macro institution independent BI and responsive mobile roster",{width:390,height:844},async page=>{
+ await page.goto(pageUrl("indonesia-macroeconomic-intelligence.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ const mount=page.locator('[data-sli-ministry-sector="macro"]');
+ await mount.locator(".sli-ministry-node").first().waitFor({timeout:15000});
+ const filter=mount.locator("select").first();await filter.selectOption("bi");
+ await mount.locator(".sli-ministry-node").first().click();
+ assert.match(await mount.locator(".sli-ministry-inspector").innerText(),/Destry Damayanti/);
+ assert.match(await mount.innerText(),/independent|independen/i);
+ const metrics=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));
+ assert.ok(metrics.scroll<=metrics.width+16,"Cross-sector ministerial inspector overflows mobile viewport: "+JSON.stringify(metrics));
+});
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");
 console.log("Browser smoke:",report.tests.filter(x=>x.status==="pass").length,"passed /",report.tests.length,"total");

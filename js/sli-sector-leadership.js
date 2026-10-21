@@ -4,7 +4,7 @@
  */
 (function(){
 "use strict";
-const path="./data/sli-cross-sector-official-leadership-2026.json";
+const path="./data/sli-cross-sector-official-leadership-2026.json?v=20261021-coverall2";
 const site=()=>document.documentElement.lang?.toLowerCase().startsWith("en")??true;
 const T=(id,en)=>site()?en:id;
 const E=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=String(txt);return e};
@@ -12,17 +12,19 @@ const urlOK=url=>/^https:\/\/[a-z\d.-]+(?:\/|$)/i.test(String(url||""));
 const link=(url,text)=>{const a=E("a","sli-ministry-source",text);if(urlOK(url)){a.href=url;a.rel="noopener noreferrer";a.target="_blank"}return a};
 function validateRegistry(d){
  const issues=[];
- if(d?.schema!=="sli-cross-sector-official-leadership-v1"||!d.as_of)issues.push("schema");
+ if(d?.schema!=="sli-cross-sector-official-leadership-v2"||!d.as_of)issues.push("schema");
  const agencies=d?.agencies||{},sectors=d?.sectors||{};
- for(const key of ["food","energy","minerals","ai","investment"])if(!sectors[key]?.agencies?.length)issues.push("sector:"+key);
+ for(const key of ["food","energy","minerals","ai","investment","macro","policy","geo","environment","entities","provincial"])if(!sectors[key]?.agencies?.length)issues.push("sector:"+key);
  for(const [id,ag]of Object.entries(agencies)){
-  if(!urlOK(ag.source)||!urlOK(ag.website)||!Array.isArray(ag.nodes))issues.push("agency:"+id);
-  const ids=new Set(ag.nodes.map(n=>n.id));
-  if(!ids.has("m")||ag.nodes.filter(n=>n.tier==="minister").length!==1)issues.push("minister:"+id);
+  if(!urlOK(ag.source)||!urlOK(ag.website)||!Array.isArray(ag.nodes)||!ag.nodes.length)issues.push("agency:"+id);
+  const ids=new Set(ag.nodes.map(n=>n.id));if(ids.size!==ag.nodes.length)issues.push("duplicate_office:"+id);
+  if(!ids.has("m")||ag.nodes.filter(n=>["minister","head"].includes(n.tier)).length!==1)issues.push("leadership:"+id);
+  if(ag.institutional_class==="independent-central-bank"&&ag.nodes.some(n=>n.tier==="minister"||n.tier==="deputy"))issues.push("independent_bank_hierarchy:"+id);
+  if(ag.institutional_class==="line-ministry"&&ag.nodes.some(n=>["head","deputy-head"].includes(n.tier)))issues.push("ministry_role_mismatch:"+id);
   for(const n of ag.nodes){
-   if(!n.office_id||!n.office_en||!urlOK(n.source)||!n.checked_on||!n.verification||!["minister","deputy","support","oversight","directorate","agency","internal","deputy-agency"].includes(n.tier))issues.push("node:"+id+"/"+n.id);
-   if(n.parent&&!ids.has(n.parent))issues.push("parent:"+id+"/"+n.id);
-   if(n.person===null&&n.verification!=="unverified_officeholder")issues.push("false_appointment:"+id+"/"+n.id);
+   if(!n.office_id||!n.office_en||!urlOK(n.source)||!n.checked_on||!n.verification||!["minister","deputy","head","deputy-head","support","oversight","directorate","agency","internal","deputy-agency"].includes(n.tier))issues.push("node:"+id+"/"+n.id);
+   if(n.parent&&!ids.has(n.parent))issues.push("parent:"+id+"/"+n.id);if(n.id!=="m"&&!n.parent)issues.push("orphan:"+id+"/"+n.id);if(n.id==="m"&&n.parent)issues.push("root_parent:"+id);
+   if(n.person===null&&n.verification!=="unverified_officeholder")issues.push("false_appointment:"+id+"/"+n.id);if(n.person&&n.verification==="unverified_officeholder")issues.push("unsupported_named_officer:"+id+"/"+n.id);
   }
  }
  for(const [k,sector]of Object.entries(sectors))for(const id of sector.agencies||[])if(!agencies[id])issues.push("missing agency:"+k+"/"+id);
@@ -60,8 +62,8 @@ function build(host,sector,d){
  const shell=E("section","sli-ministry-section");
  const heading=E("div","sli-ministry-heading");
  heading.append(E("div","sli-ministry-overline","SLI / INSTITUTIONAL LEADERSHIP"));
- heading.append(E("h3","",T("Pimpinan Kementerian, Wamen, Dirjen & Irjen","Ministers, Deputy Ministers, DGs & Inspectors General")));
- heading.append(E("p","",T("Peta hierarki internal kementerian per 21 Oktober 2026. Pilih lembaga dan jabatan untuk melihat pejabat serta sumber resmi; hubungan lintas lembaga bukan garis komando.","Internal ministerial hierarchy reviewed 21 October 2026. Select an institution and office to inspect verified incumbents and official sources; links between agencies are not command relationships.")));
+ heading.append(E("h3","",T("Pimpinan, Wamen/Wakil Kepala, Sekjen, Irjen & Unit Teknis","Institutional Heads, Deputies, Secretaries, Inspectors & Technical Offices")));
+ heading.append(E("p","",T("Peta kementerian, badan dan lembaga independen berdasarkan sumber resmi (21 Oktober 2026). Kaitan antarinstansi bukan garis komando; Bank Indonesia independen.","Source-dated ministries, agencies and independent institutions reviewed 21 October 2026. Cross-agency links do not establish command; Bank Indonesia is independent.")));
  shell.append(heading);
  const tools=E("div","sli-ministry-tools");
  const select=E("select",""),query=E("input","");query.type="search";query.placeholder=T("Cari pejabat, wamen, dirjen, irjen…","Find ministers, DGs and inspectors…");query.setAttribute("aria-label",T("Cari jabatan dan pejabat","Search officeholders"));
@@ -72,6 +74,8 @@ function build(host,sector,d){
  tools.append(select,query,expand,collapse);shell.append(tools);
  const stats=E("div","sli-ministry-count",T(people.length+" jabatan · "+people.filter(n=>n.person).length+" nama terverifikasi",people.length+" offices · "+people.filter(n=>n.person).length+" named leaders"));
  shell.append(stats);
+ const coverage=E("p","sli-ministry-warning",T("Cakupan: jabatan yang telah berhasil dipetakan, bukan seluruh instansi/pejabat pemerintah. Baris dengan nama kosong sengaja tidak diisi tanpa verifikasi.","Coverage: offices currently mapped, NOT a census of all government agencies or officeholders. Missing names remain unfilled until verified."));
+ shell.append(coverage);
  const layout=E("div","sli-ministry-layout"),left=E("div","sli-ministry-tree"),inspector=E("aside","sli-ministry-inspector");inspector.setAttribute("aria-live","polite");
  layout.append(left,inspector);shell.append(layout);
  const note=E("p","sli-ministry-warning",T(config.note_id,config.note_en)+" "+T("Nama kosong berarti belum diverifikasi, bukan jabatan dihapus. Sumber bertanggal tidak selalu menjamin belum ada pergantian setelah tanggal itu.","Missing names mean unverified, not that the post was abolished. Dated sources do not establish that no later appointment occurred."));
@@ -96,7 +100,7 @@ function build(host,sector,d){
   b.type="button";b.setAttribute("aria-pressed",String(st.selected===agency+":"+n.id));
   const top=E("span","sli-ministry-node-line");
   top.append(E("strong","",T(n.office_id,n.office_en)));
-  top.append(E("small","sli-ministry-badge",n.tier==="minister"?"MINISTER":n.tier==="deputy"?"WAMEN":n.tier==="oversight"?"IRJEN":n.tier==="support"?"SEKJEN":"ESELON"));
+  top.append(E("small","sli-ministry-badge",n.tier==="minister"?"MENTERI":n.tier==="deputy"?"WAMEN":n.tier==="head"?"KEPALA / GUBERNUR":n.tier==="deputy-head"?"WAKIL KEPALA":n.tier==="oversight"?"PENGAWAS":n.tier==="support"?"SEKRETARIAT":"ESELON"));
   b.append(top);b.append(E("span","sli-ministry-name",n.person||T("Belum diverifikasi","Unverified")));
   b.addEventListener("click",()=>{st.selected=agency+":"+n.id;draw()});
   return b;
@@ -105,7 +109,7 @@ function build(host,sector,d){
  function draw(){
   left.replaceChildren();
   const president=E("div","sli-ministry-president");
-  president.append(E("small","",T("TINGKAT NASIONAL","NATIONAL EXECUTIVE")),E("strong","",T("Presiden Republik Indonesia","President of Indonesia")),E("span","",d.president.name));
+  president.append(E("small","",T("KONTEKS NEGARA · BUKAN SEMUA GARIS KOMANDO","NATIONAL CONTEXT · NOT UNIVERSAL COMMAND")),E("strong","",T("Tata Kelola Institusi Indonesia","Indonesian Institutional Governance")),E("span","",T("Presiden: "+d.president.name+" · Bank Indonesia independen.","President: "+d.president.name+" · Bank Indonesia is independent.")));
   left.append(president);
   const list=E("div","sli-ministry-agencies");
   for(const id of agencyIds){
@@ -113,14 +117,14 @@ function build(host,sector,d){
    const ag=d.agencies[id],relevant=ag.nodes.filter(n=>matches(n)||ag.nodes.some(c=>c.parent===n.id&&matches(c)));
    if(st.q&&!relevant.length)continue;
    const group=E("section","sli-ministry-agency");
-   group.append(E("div","sli-ministry-agency-name",ag.name));
-   const leader=ag.nodes.find(n=>n.tier==="minister");group.append(card(id,leader));
+   group.append(E("div","sli-ministry-agency-name",ag.name+(ag.institutional_class==="independent-central-bank"?T(" · Independen"," · Independent"):"")));
+   const leader=ag.nodes.find(n=>["minister","head"].includes(n.tier));if(leader)group.append(card(id,leader));
    const children=E("div","sli-ministry-deputies");
-   for(const n of ag.nodes.filter(n=>n.tier==="deputy"&&matches(n)))children.append(card(id,n));
+   for(const n of ag.nodes.filter(n=>["deputy","deputy-head"].includes(n.tier)&&matches(n)))children.append(card(id,n));
    group.append(children);
-   const items=ag.nodes.filter(n=>!["minister","deputy","internal"].includes(n.tier)&&matches(n));
+   const items=ag.nodes.filter(n=>!["minister","deputy","head","deputy-head","internal"].includes(n.tier)&&matches(n));
    const internal=ag.nodes.filter(n=>n.tier==="internal");
-   const toggle=E("button","sli-ministry-expand",st.expanded.has(id)?T("Tutup Sekjen, Irjen & Ditjen −","Collapse SG/IG/DGs −"):T("Buka Sekjen, Irjen & Ditjen +","Expand SG/IG/DGs +"));
+   const toggle=E("button","sli-ministry-expand",st.expanded.has(id)?T("Tutup unit teknis −","Collapse technical offices −"):T("Buka Sekjen, Irjen & unit teknis +","Expand secretariat, audit and technical offices +"));
    toggle.type="button";toggle.setAttribute("aria-expanded",String(st.expanded.has(id)||!!st.q));
    toggle.addEventListener("click",()=>{st.expanded.has(id)?st.expanded.delete(id):st.expanded.add(id);draw()});
    group.append(toggle);
@@ -152,6 +156,14 @@ function build(host,sector,d){
 let pending=false;
 function hydrate(){
  pending=false;
+ const direct=document.querySelectorAll("[data-sli-ministry-sector]");
+ for(const target of direct){
+  const sector=target.dataset.sliMinistrySector;
+  if(target.dataset.sliMinistryAttached==="1")continue;
+  target.dataset.sliMinistryAttached="1";
+  target.textContent=T("Memuat daftar pejabat bersumber resmi…","Loading verified officeholder hierarchy…");
+  fetchRegistry().then(d=>{if(target.isConnected&&d.sectors[sector])build(target,sector,d)}).catch(err=>{if(target.isConnected)target.textContent=T("Registri institusi belum tersedia.","Institutional roster unavailable.");console.error("[SLI leadership]",err)});
+ }
  for(const def of mounts){
   const target=document.querySelector(def.selector);if(!target||target.dataset.sliMinistryAttached==="1")continue;
   target.dataset.sliMinistryAttached="1";
