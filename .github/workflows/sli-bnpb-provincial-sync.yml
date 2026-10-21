@@ -1,31 +1,68 @@
-name: SLI BNPB Provincial Disaster Sync
+name: SLI BNPB 2025 Official DataStore Source Check
 on:
-  push:
+  pull_request:
     paths:
-      - 'scripts/sync_bnpb_provinces.py'
+      - 'scripts/check_bnpb_official_datastore.py'
+      - 'tests/test_bnpb_official_datastore.py'
+      - '.github/workflows/sli-bnpb-provincial-sync.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/check_bnpb_official_datastore.py'
+      - 'tests/test_bnpb_official_datastore.py'
+      - '.github/workflows/sli-bnpb-provincial-sync.yml'
   workflow_dispatch:
   schedule:
     - cron: '17 3 * * 1'
 permissions:
-  contents: write
+  contents: read
+concurrency:
+  group: sli-bnpb-official-datastore-source-check
+  cancel-in-progress: false
 jobs:
-  sync:
+  official-check:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - name: Normalize official BNPB provincial disaster events
-        run: python scripts/sync_bnpb_provinces.py
-      - name: Commit validated snapshot
+          python-version: '3.12'
+      - name: Verify CKAN reconciliation and no silent numeric publication
         run: |
-          git config user.name sli-data-bot
-          git config user.email actions@users.noreply.github.com
-          git add data/sli-bnpb-provincial-2025.json
-          if ! git diff --cached --quiet; then
-            git commit -m "data: normalize BNPB provincial disaster observations"
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
+          python -m py_compile scripts/check_bnpb_official_datastore.py
+          python -m unittest discover -s tests -p 'test_bnpb_official_datastore.py' -v
+      - name: Check officially documented BNPB DataStore endpoint
+        id: probe
+        if: github.event_name != 'pull_request'
+        continue-on-error: true
+        run: python scripts/check_bnpb_official_datastore.py
+      - name: Preserve source status for owner review
+        if: always() && github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-bnpb-2025-source-availability
+          path: artifacts/bnpb-ckan-source-check.json
+          if-no-files-found: warn
+          retention-days: 21
+      - name: Explain observation/source status
+        if: always()
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json,pathlib
+          p=pathlib.Path("artifacts/bnpb-ckan-source-check.json")
+          print("### BNPB 2025 provenance-only official source check")
+          if p.exists():
+              s=json.loads(p.read_text())
+              print("Source status: **"+str(s["status"])+"**")
+              print("Drift candidates:",s.get("differences_total","not checked"))
+              print("Publisher HTTP status:",s.get("http_status","not reported"))
+          else:
+              print("Source not fetched (PR/offline-only run or missing artifact).")
+          print("No 2025 disaster observation is updated by this workflow. Official 403/429 remains a source blocker.")
+          PY
+      - name: Fail closed if public publisher unavailable or observations drift
+        if: github.event_name != 'pull_request' && steps.probe.outcome != 'success'
+        run: |
+          echo "::error::BNPB official DataStore blocked, malformed or differs from the reviewed snapshot. Existing curated numbers preserved."
+          exit 1
