@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T20:02:03.456972Z",
+  "updated_at_utc": "2026-10-21T21:03:00.247973Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,6 +42,54 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_d78172ee93abdbc0792fad",
+      "title": "Kinerja PGEO Tumbuh, Tarif Listrik dan Free Float 3,9 Persen Jadi Perhatian - VOI.ID",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOM1ZrR1ppQXlVZGV4WWNONS1FZ3haZzcyNmhKYVdEMXhkNGwtaDZJVWkzR1o5ZzFzal9EaG9PSDlBd016bDBwZV94VU4zUXRXdTNPR1BRX2NSUlRaaW02YW8wQkJUY2dlZlA5UlVOU2t0TGdSNVVyZGE5Z1BuNnhfRjNOZ3JLbWIyVmZvSTVZMkRlX0xrd3h6MlREMjE0X2xPYmfSAaIBQVVfeXFMTjNWa0daaUF5VWRleFljTjUtRWd4Wmc3MjZoSmFXRDF4ZDRsLWg2SVVpM0daOWcxc2pfRGhvT0g5QXdNemwwcGVfeFVOM1F0V3UzT0dQUV9jUlJUWmltNmFvMEJCVGNnZWZQOVJVTlNrdExnUjVVcmRhOWdQbjZ4X0YzTmdyS21iMlZmb0k1WTJEZV9Ma3d4ejJURDIxNF9sT2Jn?oc=5",
+      "publisher": "VOI.ID",
+      "published_at_utc": "2026-10-21T18:42:26Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_3dc0ad20c84643efef66f0",
+      "title": "KISI Soroti Fundamental PGEO di Tengah Gejolak Pasar Saham - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9rMkk4dzNsdjhSQ3ZSbnZXV2hvNXJlTF85ZVhYS2FtNXVMMFUteHZMVVlPSUNMQWlSVU45MFFsWWVzMUp6aXZpODVsdm5QblNmeHEyTFhrNHMxMm9telIzVk1xTlg2a1REb1E?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-21T17:23:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_282f8936f21fd21e46ff28",
+      "title": "Analis Beri Rekomendasi Saham BBCA ENRG dan JPFA - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5PNGRwNHRMY0dnY25QbzNiYXU2TGk3SDBrMmJCMmhsdUs5aDk2UVUzZWlVUkpza0h3QTNyYVRhQ2V6Qy1sVXF3NVlxZk9YMXBlbnBZNzNZdDhMTUliV2ZfODZSWXJUY2ho?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-21T16:30:24Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_6b2c4f059d8b19c0a536c9",
       "title": "PGEO's Performance Grows, Electricity Tariffs and Free Float 3.9 Percent Become a Concern - VOI.ID",
       "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBjSm1fOFpFSTVzY0N4V3lMcS15WmZ3bXpTTVhtd1V0VGtsc2pPR00tNzUzTlNFMDVDa1NwUFdTclFPazDSAUJBVV95cUxPVU1Zd3ZIU2RmZHIwN0l6NGtWQi1zaFlnbVhJS0FUUnhwNHJ4V3YwWFZ6OFpRd0djRlJqMTdvak1xNXc?oc=5",
@@ -52,6 +100,22 @@
         "PGEO"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_de45beeba90834bb166a6b",
+      "title": "Analis Rekomendasikan Saham BBCA ENRG dan JPFA - SuaraGarut.ID",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBfdGhKSUdxeF9iWHlnQzAxQk9FWVZkeXNSUkVvbFFwOHdVOGFSTFE2MVNKZDBoQVIyeHNnckhvajNTMkRmeUZ2WE1kbkpYNGJXbzVFZGd3SGRPZF9ieVRiWWloMGc?oc=5",
+      "publisher": "SuaraGarut.ID",
+      "published_at_utc": "2026-10-21T16:26:26Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -110,6 +174,22 @@
       "title": "Jasa Marga (JSMR) Kaji Buyback Saham di Tengah Rencana Ekspansi Jalan Tol - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNbWZWS2g5d2I4WDlsN0poZFVULW0zUkJOYWJDanlKdTZNM0lWcFIycUhJU1VuV19HNm5rVkNXMUNYd3ljNElBdFVnRE5tSzZPZVlGcnV1SWtPTUZxdlhsY3J0QXU2RV9maHhFT0xGS1RlSy1xVkhrV1VsVzBvTzZoZUI3UzRQR3hTZTFpSlVHbzh6ZDduaVZJX05mdWhSUm1lbkl2RmYwVWJaTGfSAaMBQVVfeXFMTmdpUUV6UjJZd0J3ek82WEhkWHd0d0w1bmxTc2JReERQb3l1bTNZWDFoNmdhTHY3NnRqR3ozejdBNkRqV2h2UFlHOUpKdmQzX1pGRzF4UXFVUXk1U3ZMcTVnR2szVTlNcGUxNncycmt2dmEzamZJSk9qT09wdDhwYTFEMUo1dlA0V1JlX2dhRGo3ZDhORkRqQWU2NUtyUjNFZU4tMA?oc=5",
       "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T14:49:36Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_8ed3af3b3b444fa96c2e25",
+      "title": "Jasa Marga (JSMR) Kaji Buyback Saham di Tengah Rencana Ekspansi Jalan Tol - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFA0Z1RBVWtGNDNUazFUMHFwY2JpWWxNazhpZEhQeUxfazhUWGl1VUR3ZXo3Y1JsVGlQeE5jZDZSRk5VNWdhRHNlQ3R3a2ptSjhla3FmYzRnTXoxRFV0WjJ1N3FtbHBfQQ?oc=5",
+      "publisher": "TradingView",
       "published_at_utc": "2026-10-21T14:49:36Z",
       "date_type": "rss_pubdate",
       "tickers": [
@@ -725,6 +805,22 @@
         "ICBP"
       ],
       "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_da9df98306edccafe691c9",
+      "title": "Saham JSMR Volatil, Jasa Marga Singgung Sentimen MSCI - StockWatch.id",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNdGlJSE9QWnc1bGJJek5LUVFnOFJnc3BLdjBYT3pYVXpqYzhaVjB3M3Qwc2hfanhPSzdvcWVSbFUycEJqMWJERVZ0eW1mS0ZXS09BV1N2c2JzUURhemp2ZkdrV0ZESmR6YW56WHJxOC1EeGtpVWl2ZmU5QW9sdUJmaQ?oc=5",
+      "publisher": "StockWatch.id",
+      "published_at_utc": "2026-10-21T09:00:15Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
