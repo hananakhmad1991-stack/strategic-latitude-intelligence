@@ -1,0 +1,84 @@
+name: SLI KKP Cross-Sector Integration QA
+on:
+  pull_request:
+    paths:
+      - 'data/sli-marine-crosssector.json'
+      - 'js/sli-marine-crosssector.mjs'
+      - 'marine-fisheries-intelligence.html'
+      - 'index.html'
+      - 'js/sli-home-portal.js'
+      - 'js/sli-idx-sector-watchlist.js'
+      - 'js/sli-idx-tradingview.js'
+      - 'data/sli-idx-issuer-universe.json'
+      - 'sli-sector-news.html'
+      - 'js/sli-sector-monitor.js'
+      - 'scripts/research_signal_radar.py'
+      - 'js/research-signal-radar.js'
+      - 'data/research-signal-radar.json'
+      - 'data/sli-policy-regulatory-graph-2026.json'
+      - 'js/sli-regulatory-explorer.js'
+      - 'policy-regulatory-intelligence.html'
+      - 'js/sli-entities.js'
+      - 'data/sli-geopolitical-chapter.json'
+      - 'tests/qa-sli-marine-crossmodule.mjs'
+      - 'tests/qa-sli-idx-provider-dossier.mjs'
+      - 'tests/test_research_signal_radar.py'
+      - 'tests/qa-research-signal-radar.mjs'
+      - '.github/workflows/sli-kkp-crossmodule-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/sli-marine-crosssector.json'
+      - 'js/sli-marine-crosssector.mjs'
+      - 'marine-fisheries-intelligence.html'
+      - 'index.html'
+      - 'js/sli-home-portal.js'
+      - 'js/sli-idx-sector-watchlist.js'
+      - 'js/sli-idx-tradingview.js'
+      - 'data/sli-idx-issuer-universe.json'
+      - 'sli-sector-news.html'
+      - 'js/sli-sector-monitor.js'
+      - 'scripts/research_signal_radar.py'
+      - 'js/research-signal-radar.js'
+      - 'data/research-signal-radar.json'
+      - 'data/sli-policy-regulatory-graph-2026.json'
+      - 'js/sli-regulatory-explorer.js'
+      - 'policy-regulatory-intelligence.html'
+      - 'js/sli-entities.js'
+      - 'data/sli-geopolitical-chapter.json'
+      - 'tests/qa-sli-marine-crossmodule.mjs'
+      - 'tests/qa-sli-idx-provider-dossier.mjs'
+      - 'tests/test_research_signal_radar.py'
+      - 'tests/qa-research-signal-radar.mjs'
+      - '.github/workflows/sli-kkp-crossmodule-qa.yml'
+permissions:
+  contents: read
+jobs:
+  integrated-source-and-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate KKP data, cross-module source limits, typed SDK and scripts
+        run: |
+          node --check js/sli-marine-crosssector.mjs
+          node --check js/sli-home-portal.js
+          node --check js/sli-entities.js
+          node --check js/sli-idx-tradingview.js
+          node --check js/sli-idx-sector-watchlist.js
+          node --check js/research-signal-radar.js
+          node --check js/sli-regulatory-explorer.js
+          node --check js/sli-sector-monitor.js
+          python -m py_compile scripts/research_signal_radar.py
+          node --test tests/qa-sli-marine-crossmodule.mjs tests/qa-sli-marine-fisheries.mjs tests/qa-sli-idx-provider-dossier.mjs tests/qa-sli-information-architecture.mjs
+          python tests/test_research_signal_radar.py
+          node tests/qa-research-signal-radar.mjs
+      - name: Declare actual verification boundary
+        run: |
+          echo "KKP source links and deterministic module connections verified; no live quote accuracy, legal consolidated text, news event corroboration, end-to-end Cloudflare model run or full instrument exhaustiveness certified." >> "$GITHUB_STEP_SUMMARY"
