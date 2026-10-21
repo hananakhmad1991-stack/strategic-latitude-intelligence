@@ -8,11 +8,12 @@ const research=fs.readFileSync('js/research-chapters.js','utf8');
 const source=fs.readFileSync('js/source-data-bridge.js','utf8');
 assert.ok(html.includes('js/source-data-bridge.js?v='),'new data module must be loaded');
 assert.ok(html.includes('css/source-data-bridge.css?v='),'source styles loaded');
-for(const marker of ['sliSourceEnergyRoot','sliSourceInvestmentRoot','sliSourceOverviewRoot'])
+for(const marker of ['sliSourceEnergyRoot','sliSourceInvestmentRoot'])
  assert.ok(html.includes(marker),'missing dashboard mounting point '+marker);
 assert.ok(html.includes("initSLISourceBridge?.('energy','sliSourceEnergyRoot')"));
 assert.ok(html.includes("initSLISourceBridge('investment','sliSourceInvestmentRoot')"));
-assert.ok(html.includes("initSLISourceBridge('overview','sliSourceOverviewRoot')"));
+assert.ok(!html.includes("initSLISourceBridge('overview','sliSourceOverviewRoot')"));
+ assert.match(html,/indonesia-macroeconomic-intelligence\.html/);
 assert.ok(research.includes('initSLISourceBridge(which,sourceMount)'),'specialist mineral and AI economics page should mount');
 assert.ok(research.includes('initSLISourceBridge("policy",policyEvidence)'),'policy risk should retain official investment and energy source provenance');
 assert.ok(source.includes('scope==="World"'),'world metrics must not appear as Indonesian statistics');
