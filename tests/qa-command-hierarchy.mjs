@@ -88,3 +88,19 @@ assert.equal(db.sectors.minerals.nodes.find(x=>x.id==='dsi').parent,'bpi');
 assert.equal(db.sectors.minerals.nodes.find(x=>x.id==='mind').parent,'dam');
 assert.equal(db.sectors.minerals.nodes.find(x=>x.id==='vale').relation,'minority');
 console.log('No false regulator/owner collapse. All hierarchy tests passed.');
+
+import {test as sectorRosterTest} from 'node:test';
+sectorRosterTest('Supplemental ESDM offices and Kementan structure have no redundant officeholder cards',()=>{
+ const db=JSON.parse(fs.readFileSync('data/sector-command-hierarchy.json','utf8'));
+ for(const key of ['minerals','ai']){
+  const nodes=db.sectors[key].nodes;
+  assert.equal(new Set(nodes.map(x=>x.id)).size,nodes.length);
+  assert.ok(nodes.some(x=>x.id==='esdm-dirjen-migas'&&x.person==='Laode Sulaeman'));
+  assert.ok(nodes.some(x=>x.id==='esdm-dirjen-ebtke'&&x.person==='Eniya Listiani Dewi'));
+  assert.equal(nodes.find(x=>x.id==='esdm-dirjen-gatrik')?.appointment_status,'acting');
+  assert.equal(nodes.filter(x=>x.id==='esdm-wamen').length,1);
+ }
+ const food=JSON.parse(fs.readFileSync('data/food-governance-hierarchy.json','utf8')).nodes;
+ assert.equal(food.filter(x=>x.name==='Wakil Menteri Pertanian').length,1);
+ assert.ok(food.some(x=>x.name==='Ditjen Peternakan dan Kesehatan Hewan'));
+});
