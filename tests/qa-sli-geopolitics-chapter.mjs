@@ -31,7 +31,8 @@ test("Homepage card routes to actual geopolitical SPA chapter, with dedicated si
  assert.ok(html.includes('<a href="#geopolitics" class="sli-portal-topic-main"') && html.includes('<strong>Geopolitical Intelligence</strong>'));
  assert.ok(html.includes('<a href="#policy" class="sli-portal-topic-main"') && html.includes('<strong>Policy &amp; Regulation</strong>'));
  assert.match(html,/data-page="geopolitics"/);
- assert.match(html,/data-link="geopolitics"/);
+ assert.doesNotMatch(html,/data-link="geopolitics"/);
+ assert.ok(html.includes('<a href="#geopolitics" class="sli-portal-topic-main"'),"Geopolitics must have one canonical Home card");
  assert.match(html,/geopolitics:\["Geopolitical Intelligence"/);
  assert.match(html,/page==='geopolitics'\?'<div id="sliGeoChapterRoot"/);
  assert.match(html,/window\.initSLIGeopoliticsChapter\(\)/);
