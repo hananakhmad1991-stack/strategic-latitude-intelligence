@@ -23,6 +23,13 @@ test("All original 34 geographic annex project table headings cite PDF page and 
  assert.equal(lookup["C.4"].project_table_pdf_page,1016);
  assert.equal(lookup["C.12"].project_table_number,"C12.11");
  assert.equal(Object.keys(lookup).length,34);
+ const scan=a.geographic_appendix_coverage.all_annex_source_grid_scan;
+ assert.equal(scan.subsections_scanned,34);
+ assert.equal(scan.raw_numbered_grid_row_candidates,970);
+ assert.equal(scan.approved_project_records_from_this_scan,0);
+ assert.ok(scan.artifact.includes("12325505947"));
+ assert.equal(a.geographic_appendix_coverage.subsections.reduce((n,x)=>n+x.machine_candidate_numbered_grid_rows,0),970);
+ assert.ok(a.geographic_appendix_coverage.subsections.every(x=>x.machine_row_audit_status==="raw_pdf_grid_candidate_not_editor_approved_project"));
  assert.equal(a.record_count,35);
 });
 test("Full-annex scanner outputs only unreviewed source table grids with no new project statuses",()=>{
