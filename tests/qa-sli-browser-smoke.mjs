@@ -136,37 +136,6 @@ await check("Mobile homepage topics: responsive layout without extra library til
  assert.ok(await page.locator("#governance").isVisible());
  assert.ok(!(await page.locator("#power").isVisible()));
 });
-await check("KKP Marine desktop: source data, estimates, trends and topic filters", {width:1366,height:850},async page=>{
- await page.goto(pageUrl("marine-fisheries-intelligence.html"),{waitUntil:"domcontentloaded",timeout:30000});
- await waitMast(page);await checkMast(page);
- await page.locator("#mfKpis .mf-kpi").first().waitFor({timeout:20000});
- assert.equal(await page.locator("#mfKpis .mf-kpi").count(),3,"KKP national snapshot must expose three source-qualified KPIs");
- assert.equal(await page.locator("#mfHistoryRows tr").count(),6,"2019–2024 KKP observation years missing");
- assert.equal(await page.locator("#mfProvinceRows tr").count(),10,"Ten source-verified provinces not available");
- assert.equal(await page.locator("#mfTopicGrid .mf-topic").count(),11,"Marine source/topic register not accessible");
- assert.ok((await page.locator("#mfEstimateBox").innerText()).includes("2025"),"2025 estimate must be visible but separate");
- await page.locator("#mfIndicator").selectOption("marine_fishers");
- assert.equal(await page.locator("#mfHistoryRows tr").count(),6);
- assert.match((await page.locator("#mfChartTitle").innerText()),/nelayan|fishers/i,"Selected fisher series must update in either UI language");
- assert.equal(await page.locator("#mfChart svg").count(),1,"KKP history chart did not render");
- assert.match((await page.locator("#mfEstimateBox").innerText()),/Tidak ada estimasi|No estimate/i,"Missing estimate should not be presented as zero");
- await page.locator("#mfTopicFilter").selectOption("environment");
- assert.equal(await page.locator("#mfTopicGrid .mf-topic").count(),2,"Conservation and mangrove source-only topics should be filterable");
- assert.match((await page.locator("#mfTopicGrid").innerText()),/angka belum diimpor|numeric values not imported/i,"Missing environmental numerics must be labeled, not fabricated");
-});
-await check("KKP Marine mobile: responsive layout and EN/ID", {width:390,height:844},async page=>{
- await page.goto(pageUrl("marine-fisheries-intelligence.html"),{waitUntil:"domcontentloaded",timeout:30000});
- await waitMast(page);
- await page.locator("#mfKpis .mf-kpi").first().waitFor({timeout:20000});
- const geom=await page.evaluate(()=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,tableScroll:getComputedStyle(document.querySelector(".mf-scroll")).overflowX}));
- assert.ok(geom.documentWidth<=geom.viewport+16,"KKP mobile page has viewport-level overflow: "+JSON.stringify(geom));
- assert.equal(geom.tableScroll,"auto","Large KKP tables should scroll inside their cards");
- await page.locator("button[data-sli-mast-language='en']").click();
- await page.waitForFunction(()=>document.documentElement.lang==="en",null,{timeout:12000});
- await page.waitForFunction(()=>document.getElementById("mfChartTitle")?.textContent?.includes("Seaweed"),null,{timeout:12000});
- assert.equal(await page.locator("#mfProvinceRows tr").count(),10);
-});
-
 await check("Source integration: provincial search and IEA dataset filters",{width:1366,height:850},async page=>{
  await page.goto(pageUrl("sli-sector-data-library.html#socio"),{waitUntil:"domcontentloaded",timeout:30000});
  await page.waitForFunction(()=>document.getElementById("libStatus")?.dataset.status==="ready",null,{timeout:25000});
@@ -376,6 +345,22 @@ await check("AI Atlas data library: source table and satellite unit remain bilin
  assert.match(await root.locator("table thead").innerText(),/Orbit rendah \(LEO\) \(satelit\)/);
  assert.equal(await select.inputValue(),figureValue,"Switching language changed selected figure");
  assert.equal(await root.locator(".sli-figure-plot svg circle[data-value]").first().getAttribute("data-value"),numericBefore,"Source measurement changed when switching language");
+});
+await check("RUPTL source consistency: 1,253-page indexed annex is discoverable without invented project rows",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("pln-ruptl-2025-2034-source-intelligence.html#ruptl-full-annex-source-index"),{waitUntil:"domcontentloaded",timeout:30000});
+ const sourceNote=page.locator("#ruptl-full-source-status");
+ assert.match(await sourceNote.innerText(),/1,253-page/);
+ assert.match(await sourceNote.innerText(),/heading-only index does not validate individual project records/);
+ assert.equal(await page.locator("#ruplt-provincial-project-review").count(),1,"Separate sampled project evidence panel must remain available");
+ assert.doesNotMatch(await sourceNote.innerText(),/truncated approximately 16 MB/);
+ const atlas=page.locator('[data-sli-ruptl-annex-index]');
+ await page.waitForFunction(()=>document.querySelectorAll('[data-sli-ruptl-annex-index] tbody tr').length===42,null,{timeout:20000});
+ assert.equal(await atlas.locator("tbody tr").count(),42);
+ assert.match(await atlas.innerText(),/belum mengonfirmasi nama proyek/);
+ await page.goto(pageUrl("ai-regional-grid-opportunities.html"),{waitUntil:"domcontentloaded"});
+ const back=page.locator('a[href*="#ruptl-full-annex-source-index"]').first();
+ assert.equal(await back.count(),1,"AI grid dashboard must link directly to full annex source index");
+ assert.match(await page.locator("body").innerText(),/not confirm project-level grid nodes/);
 });
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");

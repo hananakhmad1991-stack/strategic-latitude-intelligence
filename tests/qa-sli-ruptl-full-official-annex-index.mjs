@@ -32,3 +32,21 @@ test("Annex source index available from RUPTL sector and library; renderer links
  assert.match(script,/source_audit_run/);
  assert.doesNotMatch(script,/innerHTML/);
 });
+
+test("RUPTL sector, investor, PLN stats and AI grid pages distinguish available full PDF from unverified project rows",()=>{
+ for(const page of ["pln-ruptl-2025-2034-source-intelligence.html","pln-ruptl-energy-investment.html","pln-electricity-statistics.html","ruplt-investor-digitization.html","ai-regional-grid-opportunities.html"]){
+  const html=read(page);
+  assert.match(html,/1,253.page|1,253-page|1,253 PDF pages|1,253-page/,"Must disclose full official RUPTL PDF status: "+page);
+  assert.match(html,/42 annex|42 annex-section/,"Must report bounded official annex header count: "+page);
+  assert.match(html,/not validat|unverified|pending verification|not confirm|zero individual|neither constitutes a complete province-level realized-investment census/i,"Must not promote headings into verified individual projects: "+page);
+  assert.match(html,/pln-ruptl-2025-2034-source-intelligence\.html#ruptl-full-annex-source-index|id="ruptl-full-annex-source-index"/,"Link to verified annex index missing: "+page);
+ }
+ const investor=read("pln-ruptl-energy-investment.html"),primary=read("pln-ruptl-2025-2034-source-intelligence.html");
+ assert.doesNotMatch(investor,/The complete ~52 MB RUPTL PDF and ~76 MB PLN Statistics 2025 file could not be downloaded/);
+ assert.doesNotMatch(primary,/The official full-PDF URL returned a truncated approximately 16 MB file/);
+ assert.doesNotMatch(primary,/still unavailable for page-level verification/);
+ assert.match(primary,/The heading-only index does not validate individual project records/);
+ assert.match(primary,/Review sampled project evidence/);
+ assert.match(primary,/id="ruplt-provincial-project-review"/);
+ assert.match(primary,/gatrik\.esdm\.go\.id/);
+});
