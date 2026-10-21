@@ -30,3 +30,19 @@ Uji: `node --test tests/qa-sli-kkp-source-atlas.mjs`.
 - Dashboard dapat mencari provinsi, kabupaten dan komoditas, menampilkan enam kolom angka, dan mengekspor subset terfilter dengan satuan, status sampel, observasi, dan tautan sumber.
 - Adapter Research AI secara khusus menghasilkan 34 rekaman 2024 yang masing-masing punya URL KKP: dua total nasional, masing-masing lima provinsi teratas untuk dua indikator, dua belas kategori benih, dan sepuluh baris pembenihan kabupaten/kota. Rekaman ini adalah evidence yang terkait sumber, bukan otomatis fakta terbaru, analisis sebab-akibat, atau angka 1.387 baris yang sudah lengkap.
 - Tes menolak nilai tidak numerik, duplikasi komoditas dan wilayah, satuan keliru, serta tidak sinkronnya angka sumber dan Research AI.
+
+## Regional KKP 2019–2024 · audited expansion
+- `data/sli-kkp-regional-historical-2019-2024.json` memuat **354 observasi angka** pada dua seri KKP per provinsi/per tahun: nelayan tangkap laut (34 provinsi dengan angka di tiap tahun 2019–2023, 37 tahun 2024) dan produksi pembesaran rumput laut (26, 24, 24, 23, 24, 26 provinsi per tahun).
+- **12 pemeriksaan total nasional:** seluruh enam tahun jumlah nelayan cocok secara eksak dengan baris TOTAL KKP. Rumput laut berbeda hanya -0,03 hingga +0,02 ton akibat pembulatan tabel KKP. Sumber asli:
+  - https://portaldata.kkp.go.id/Portals/Data-Statistik/Nelayan/Tbl-Statis/d/65
+  - https://portaldata.kkp.go.id/portals/data-statistik/prod-ikan/tbl-statis/d/1
+- Angka `null` berarti sel tabel KKP kosong, bukan nol. KEP. BANGKA BELITUNG tahun sebelum 2024 disamakan nomenklaturnya, tetapi pemekaran Papua tahun 2024 **tidak** mengubah pengukuran 2019–2023. Tahun 2025 bertanda estimasi tidak dimasukkan.
+- Peta interaktif memanfaatkan modul visualisasi provinsi SLI dengan GeoJSON 38 provinsi berlisensi komunitas CC BY 4.0 dan **batas ilustratif, bukan batas resmi BIG**. Oleh karena itu peta ini adalah *visualization preview*, tidak memenuhi permintaan peta geometri BIG resmi/WPP. Penggantian harus menunggu pemeriksaan versi, geometri, atribusi, perizinan, dan crosswalk kode provinsi/wilayah. Ina-Geoportal: https://tanahair.indonesia.go.id/portal-web/unduh/.
+- Dashboard mendukung pemilihan kedua indikator dan tahun 2019–2024, choropleth berinteraksi melalui klik/keyboard, detail peringkat, tren nasional/provinsi dan ekspor CSV teratribusi. Nilai tidak diketahui tetap tidak diwarnai sebagai nilai nol.
+- `scripts/sli_research_source_adapters.py`: indeks Research AI dibatasi **36 rekaman bukti historis** (12 total nasional dan 24 sampel top-2 provinsi per indikator/tahun). Ke-354 pengukuran tersedia melalui dashboard, bukan diklaim seluruhnya ada di konteks Worker. Ini *evidence retrieval* historis, bukan pembuktian sebab akibat atau retraining model.
+
+## Peluang 1.377 baris pembenihan tersisa
+- Tambah `scripts/import_kkp_hatchery_export.py` sebagai gerbang offline; meminta unduhan CSV **asli dari KKP** sesuai tahun dan 1.387 baris, memeriksa duplikasi kunci provinsi/kabupaten/komoditas, satuan dan angka, serta merekonsiliasi 10 baris publik yang sudah disalin sebelumnya.
+- Secara default pemeriksa **hanya mengeluarkan audit** berisi checksum SHA256, jumlah baris, jumlah pasangan wilayah/komoditas dan perbedaan dengan total nasional; tidak mempublikasikan dataset.
+- Full numeric export hanya ditulis ke `artifacts/` dengan bendera operator `--rights-reviewed` setelah izin penggunaan dan redistribusi ditinjau. Tidak ada jalan impor paksa untuk 10 dari 1.387 baris atau sumber fiktif. Full 1.387 belum diimpor, dan izin komersial belum diverifikasi.
+- WPPNRI membutuhkan geometri berkoordinat dan peraturan batas resmi; tidak dibuat polygon palsu. Nilai produksi tangkap, konsumsi ikan, garam, armada, PNBP, kawasan konservasi, pembiayaan tetap berstatus kandidat sehingga tidak dinyatakan numerik diimpor.
