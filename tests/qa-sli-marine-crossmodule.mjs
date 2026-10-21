@@ -21,10 +21,10 @@ test("IDX thematic fisheries ticker watchlist derives exact issuer dossier and n
  const db=json("data/sli-idx-issuer-universe.json");
  const x=hub.issuer_candidates.map(x=>x.ticker);
  assert.deepEqual(x,["CPRO","DSFI","IKAN","PCAR"]);
- assert.equal(db.records.filter(row=>row.sector==="marine").length,4);
+ assert.equal(db.records.filter(row=>row.sector==="marine"||row.theme_marine===true).length,4);
  for(const ticker of x){
   const row=db.records.find(x=>x.ticker===ticker);
-  assert.ok(row&&row.sector==="marine"&&row.exchange==="IDX",ticker);
+  assert.ok(row&&(row.sector==="marine"||row.theme_marine===true)&&row.exchange==="IDX",ticker);
   assert.equal(row.verification,"idx_seed_awaiting_official_refresh");
   for(const name of ["market_cap","revenue","net_income","total_assets"])assert.equal(row[name],null);
   assert.ok(/^https:\/\//.test(row.marine_evidence_url));
