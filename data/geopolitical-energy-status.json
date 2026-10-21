@@ -1,16 +1,20 @@
 {
-  "checked_at_utc": "2026-10-21T09:37:54.056408+00:00",
-  "leads_found": 7,
+  "checked_at_utc": "2026-10-21T12:45:24.368367+00:00",
+  "leads_found": 8,
   "sector_counts": {
     "oil_gas": 6,
     "coal": 1,
-    "nre": 0,
+    "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
   },
   "errors": [
     {
       "topic": "Red Sea and Bab el-Mandeb",
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "topic": "Middle East energy infrastructure",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
