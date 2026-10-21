@@ -1,0 +1,584 @@
+{
+  "schema": "sli-kkp-screened-sources-v1",
+  "reviewed_on": "2026-10-21",
+  "portal": "https://portaldata.kkp.go.id/portals/data-statistik/layer1",
+  "method": "Directly attributable public KKP routes surfaced by official portal search; their existence validates a source lead, not a complete table extraction, a current-year measurement or reuse license.",
+  "groups": [
+    {
+      "id": "production",
+      "label_id": "Produksi tangkap",
+      "label_en": "Capture fisheries"
+    },
+    {
+      "id": "aquaculture",
+      "label_id": "Budidaya dan bibit",
+      "label_en": "Aquaculture and hatcheries"
+    },
+    {
+      "id": "livelihoods",
+      "label_id": "Nelayan dan usaha",
+      "label_en": "Fishers and livelihoods"
+    },
+    {
+      "id": "salt",
+      "label_id": "Garam",
+      "label_en": "Salt"
+    },
+    {
+      "id": "food",
+      "label_id": "Konsumsi ikan",
+      "label_en": "Fish consumption"
+    },
+    {
+      "id": "trade",
+      "label_id": "Perdagangan",
+      "label_en": "Marine trade"
+    },
+    {
+      "id": "economy",
+      "label_id": "Ekonomi perikanan",
+      "label_en": "Fisheries economy"
+    },
+    {
+      "id": "fleet",
+      "label_id": "Armada",
+      "label_en": "Vessels"
+    },
+    {
+      "id": "workforce",
+      "label_id": "Tenaga pendamping",
+      "label_en": "Extension"
+    },
+    {
+      "id": "finance",
+      "label_id": "Keuangan KKP",
+      "label_en": "Marine finance"
+    },
+    {
+      "id": "governance",
+      "label_id": "Pengawasan",
+      "label_en": "Monitoring"
+    },
+    {
+      "id": "environment",
+      "label_id": "Kelautan dan lingkungan",
+      "label_en": "Ocean & environment"
+    }
+  ],
+  "sources": [
+    {
+      "id": "capture",
+      "group": "production",
+      "label_id": "Produksi perikanan tangkap",
+      "label_en": "Capture fisheries output",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/prod-ikan/tbl-statis/d/37",
+      "status": "verified_source_table",
+      "opportunity_id": "Trend tonase nasional/provinsi, komoditas dan WPP jika tersedia",
+      "opportunity_en": "Tonnage trend, provincial ranking and WPP when an explicit crosswalk exists",
+      "visual_types": [
+        "line",
+        "bar",
+        "province"
+      ],
+      "sli_modules": [
+        "marine",
+        "food",
+        "regional"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "seed",
+      "group": "aquaculture",
+      "label_id": "Pembenihan perikanan budi daya",
+      "label_en": "Aquaculture hatchery and seed",
+      "source_url": "https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan",
+      "status": "partial_numeric_ingested",
+      "opportunity_id": "Perbandingan kelompok benih, nilai dan sebaran kabupaten; detail 1.387 baris masih perlu ekspor",
+      "opportunity_en": "Seed species comparison; 1,387 district source rows require export",
+      "visual_types": [
+        "bar",
+        "district",
+        "table"
+      ],
+      "sli_modules": [
+        "marine",
+        "food",
+        "regional"
+      ],
+      "numeric_import_status": "partial_or_2024_only",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "seaweed",
+      "group": "aquaculture",
+      "label_id": "Rumput laut menurut provinsi",
+      "label_en": "Seaweed production by province",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/prod-ikan/tbl-statis/d/1",
+      "status": "numeric_ingested_2024",
+      "opportunity_id": "Ranking provinsi dan intensitas produksi panen basah",
+      "opportunity_en": "Provincial rank and wet harvest concentration",
+      "visual_types": [
+        "bar",
+        "province",
+        "line"
+      ],
+      "sli_modules": [
+        "marine",
+        "investment",
+        "trade"
+      ],
+      "numeric_import_status": "partial_or_2024_only",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "growout",
+      "group": "aquaculture",
+      "label_id": "Budidaya pembesaran per provinsi",
+      "label_en": "Grow-out aquaculture by province",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/prod-ikan/tbl-statis/d/35",
+      "status": "national_numeric_only",
+      "opportunity_id": "Provinsi, tahun, komoditas; harmonisasi kode wilayah",
+      "opportunity_en": "Provincial historical output requiring geography harmonization",
+      "visual_types": [
+        "line",
+        "province",
+        "bar"
+      ],
+      "sli_modules": [
+        "marine",
+        "food",
+        "regional"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "aquaculture_species",
+      "group": "aquaculture",
+      "label_id": "Budidaya pembesaran menurut kelompok ikan",
+      "label_en": "Grow-out by species",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/prod-ikan/tbl-statis/d/53",
+      "status": "verified_source_table",
+      "opportunity_id": "Komposisi produksi menurut spesies, nilai versus volume jika tabel cocok",
+      "opportunity_en": "Species composition and value/volume separation",
+      "visual_types": [
+        "stacked-bar",
+        "bar"
+      ],
+      "sli_modules": [
+        "marine",
+        "food",
+        "trade"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "fishers",
+      "group": "livelihoods",
+      "label_id": "Nelayan tangkap laut per provinsi",
+      "label_en": "Marine fishers by province",
+      "source_url": "https://portaldata.kkp.go.id/Portals/Data-Statistik/Nelayan/Tbl-Statis/d/65",
+      "status": "numeric_ingested_2024",
+      "opportunity_id": "Kepadatan relatif antardaerah hanya setelah penambahan data pembagi",
+      "opportunity_en": "Province rankings; ratios require independently sourced denominators",
+      "visual_types": [
+        "bar",
+        "province",
+        "line"
+      ],
+      "sli_modules": [
+        "marine",
+        "regional"
+      ],
+      "numeric_import_status": "partial_or_2024_only",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "households",
+      "group": "livelihoods",
+      "label_id": "Rumah tangga perikanan budidaya",
+      "label_en": "Aquaculture households",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/prod-ikan/tbl-statis/d/74",
+      "status": "verified_source_table",
+      "opportunity_id": "Rumah tangga usaha dan pembandingan produksi setelah validasi definisi",
+      "opportunity_en": "Enterprise households and conditional output ratios",
+      "visual_types": [
+        "bar",
+        "line"
+      ],
+      "sli_modules": [
+        "marine",
+        "regional"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "fisher_registry",
+      "group": "livelihoods",
+      "label_id": "Jumlah nelayan menurut usaha",
+      "label_en": "Fishing workforce by type",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/nelayan/tbl-statis",
+      "status": "verified_source_table",
+      "opportunity_id": "Nelayan menurut kategori usaha dan wilayah",
+      "opportunity_en": "Fisher type and regional distribution",
+      "visual_types": [
+        "bar",
+        "table"
+      ],
+      "sli_modules": [
+        "marine",
+        "regional"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "salt_prod",
+      "group": "salt",
+      "label_id": "Produksi garam",
+      "label_en": "Salt production",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/prod_garam/tbl-statis",
+      "status": "verified_source_table",
+      "opportunity_id": "Trend tonase nasional dan provinsi serta risiko pasokan",
+      "opportunity_en": "Salt supply and provincial output trends",
+      "visual_types": [
+        "line",
+        "province"
+      ],
+      "sli_modules": [
+        "marine",
+        "food",
+        "industry"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "salt_farmers",
+      "group": "salt",
+      "label_id": "Petambak garam",
+      "label_en": "Salt farmers",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/petambak_garam/tbl-dinamis",
+      "status": "verified_source_table",
+      "opportunity_id": "Jumlah pelaku garam dan distribusi wilayah",
+      "opportunity_en": "Regional salt farmers and productivity if source units match",
+      "visual_types": [
+        "bar",
+        "table"
+      ],
+      "sli_modules": [
+        "marine",
+        "regional"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "consumption",
+      "group": "food",
+      "label_id": "Konsumsi ikan masyarakat",
+      "label_en": "Household fish consumption",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/konsumsi-ikan-rt/summary",
+      "status": "verified_source_table",
+      "opportunity_id": "Konsumsi rumah tangga dan ketahanan gizi; tidak dicampur serapan",
+      "opportunity_en": "Household consumption and nutrition; distinct from total absorption",
+      "visual_types": [
+        "line",
+        "province"
+      ],
+      "sli_modules": [
+        "food",
+        "marine",
+        "regional"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "absorption",
+      "group": "food",
+      "label_id": "Serapan ikan masyarakat",
+      "label_en": "Fish absorption in society",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/serapan-ikan-rt/summary",
+      "status": "verified_source_table",
+      "opportunity_id": "Pasokan terserap masyarakat, pisahkan dari konsumsi per kapita",
+      "opportunity_en": "Fish absorption distinct from per-capita consumption",
+      "visual_types": [
+        "line",
+        "bar"
+      ],
+      "sli_modules": [
+        "food",
+        "marine"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "exports",
+      "group": "trade",
+      "label_id": "Ekspor nilai menurut komoditas",
+      "label_en": "Export value by marine commodity",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/exim/tbl-statis/d/156",
+      "status": "verified_source_table",
+      "opportunity_id": "Bar komoditas; nilai USD ribu, bukan USD satuan",
+      "opportunity_en": "Commodity exports; note USD thousand unit",
+      "visual_types": [
+        "bar",
+        "line"
+      ],
+      "sli_modules": [
+        "marine",
+        "trade",
+        "investment"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "exports_volume",
+      "group": "trade",
+      "label_id": "Volume ekspor",
+      "label_en": "Fisheries export tonnage",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/exim/tbl-statis/d/159",
+      "status": "verified_source_table",
+      "opportunity_id": "Tonase ekspor menurut kategori, jangan disejajarkan tanpa HS yang konsisten",
+      "opportunity_en": "Export tonnage and commodity differences",
+      "visual_types": [
+        "line",
+        "bar"
+      ],
+      "sli_modules": [
+        "marine",
+        "trade"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "trade_hs",
+      "group": "trade",
+      "label_id": "Ekspor impor dinamis dengan kode HS",
+      "label_en": "HS-coded marine imports and exports",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/exim/tbl-dinamis",
+      "status": "verified_source_table",
+      "opportunity_id": "Sankey hanya ketika mitra negara, HS, periode dan nilai ada bersama satu baris",
+      "opportunity_en": "Sankey only when partner, HS code, period and flow values coexist in a validated row",
+      "visual_types": [
+        "sankey-conditional",
+        "table"
+      ],
+      "sli_modules": [
+        "marine",
+        "trade",
+        "geo"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "fisheries_gdp",
+      "group": "economy",
+      "label_id": "PDB perikanan dan kontribusinya",
+      "label_en": "Fisheries GDP and share",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/pdb_perikanan/tbl-statis/d/107",
+      "status": "verified_source_table",
+      "opportunity_id": "Pertumbuhan sektor dan kontribusi terhadap PDB",
+      "opportunity_en": "Sector growth and contribution share",
+      "visual_types": [
+        "line",
+        "bar"
+      ],
+      "sli_modules": [
+        "marine",
+        "macro"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "fleet",
+      "group": "fleet",
+      "label_id": "Kapal perikanan menurut ukuran",
+      "label_en": "Fishing vessels by size",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/jumlah_kapal/tbl-statis/d/54",
+      "status": "verified_source_table",
+      "opportunity_id": "Komposisi GT, potensi kapasitas armada dengan disclaimer definisi",
+      "opportunity_en": "GT fleet composition and capacity mix",
+      "visual_types": [
+        "stacked-bar",
+        "bar"
+      ],
+      "sli_modules": [
+        "marine",
+        "geo"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "land",
+      "group": "aquaculture",
+      "label_id": "Luas lahan budidaya",
+      "label_en": "Aquaculture land area",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/lahan_budidaya/tbl-statis",
+      "status": "verified_source_table",
+      "opportunity_id": "Areal budidaya provinsi; produktivitas hanya jika satuan dan lokasi sepadan",
+      "opportunity_en": "Province aquaculture area, ratios only after matching basis",
+      "visual_types": [
+        "province",
+        "line"
+      ],
+      "sli_modules": [
+        "marine",
+        "environment"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "extension",
+      "group": "workforce",
+      "label_id": "Penyuluh kelautan perikanan",
+      "label_en": "Fisheries extension officers",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/sdm/jumlah-penyuluh/tbl-statis",
+      "status": "verified_source_table",
+      "opportunity_id": "Sebaran penyuluh dan dukungan SDM sektor",
+      "opportunity_en": "Extension coverage by province",
+      "visual_types": [
+        "bar",
+        "province"
+      ],
+      "sli_modules": [
+        "marine",
+        "regional"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "pnbp",
+      "group": "finance",
+      "label_id": "PNBP KKP",
+      "label_en": "KKP non-tax revenue",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/keuangan/pnbp-kkp/tbl-statis",
+      "status": "verified_source_table",
+      "opportunity_id": "Tren PNBP; hindari pengakuan pendapatan daerah sebagai PNBP pusat",
+      "opportunity_en": "Central non-tax revenue trends",
+      "visual_types": [
+        "line",
+        "bar"
+      ],
+      "sli_modules": [
+        "marine",
+        "macro"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "monitoring",
+      "group": "governance",
+      "label_id": "Kelompok masyarakat pengawas",
+      "label_en": "Community fisheries monitoring groups",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/pokmaswas/tbl-statis",
+      "status": "verified_source_table",
+      "opportunity_id": "Kapasitas pengawasan komunitas; bukan bukti jumlah pelanggaran",
+      "opportunity_en": "Community surveillance capacity (not violations)",
+      "visual_types": [
+        "bar",
+        "province"
+      ],
+      "sli_modules": [
+        "marine",
+        "geo"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "enforcement",
+      "group": "governance",
+      "label_id": "Kapal terkait tindak pidana perikanan",
+      "label_en": "Enforcement vessel disposal record",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/pengawas/jml-kapal-tindak-pidana-ditenggelamkan-by-pemusnahan/tbl-dinamis",
+      "status": "verified_source_table",
+      "opportunity_id": "Analisis tren penindakan berdasarkan definisi tiap jenis putusan",
+      "opportunity_en": "Enforcement events by documented disposal/action basis",
+      "visual_types": [
+        "line",
+        "table"
+      ],
+      "sli_modules": [
+        "marine",
+        "geo",
+        "regulation"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "conservation",
+      "group": "environment",
+      "label_id": "Kawasan konservasi dan zonasi",
+      "label_en": "Marine protected and zoned areas",
+      "source_url": "https://portaldata.kkp.go.id/?layers=ZonasiKawasanKonservasi_AR_50K_2021_Rev2022",
+      "status": "map_layer_only",
+      "opportunity_id": "Overlay geospasial setelah lisensi dan geometrinya diverifikasi; tahun layer ≠ kondisi kini",
+      "opportunity_en": "Geospatial overlay only after validated license, boundaries and temporal version",
+      "visual_types": [
+        "map-conditional"
+      ],
+      "sli_modules": [
+        "marine",
+        "environment"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "wpp",
+      "group": "environment",
+      "label_id": "Wilayah pengelolaan perikanan (WPPNRI)",
+      "label_en": "Fisheries management areas WPPNRI",
+      "source_url": "https://portaldata.kkp.go.id/",
+      "status": "map_layer_only",
+      "opportunity_id": "Overlay 11 WPP, agregasi produksi hanya jika data memakai kode WPP identik",
+      "opportunity_en": "Overlay of WPP and linked statistics only with explicit WPP keys",
+      "visual_types": [
+        "map-conditional"
+      ],
+      "sli_modules": [
+        "marine",
+        "geo",
+        "environment"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    },
+    {
+      "id": "mangrove",
+      "group": "environment",
+      "label_id": "Rehabilitasi mangrove / karbon biru",
+      "label_en": "Mangrove restoration / blue carbon",
+      "source_url": "https://portaldata.kkp.go.id/api/portal/data_dcat",
+      "status": "catalog_metadata_only",
+      "opportunity_id": "Area restorasi bukan perhitungan serapan CO2 tanpa faktor emisi tervalidasi",
+      "opportunity_en": "Restoration hectares are not verified carbon uptake",
+      "visual_types": [
+        "map-conditional",
+        "line"
+      ],
+      "sli_modules": [
+        "marine",
+        "environment"
+      ],
+      "numeric_import_status": "not_imported",
+      "reviewed_on": "2026-10-21"
+    }
+  ]
+}
