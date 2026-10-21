@@ -1,0 +1,119 @@
+{
+  "schema": "sli-bps-primary-trade-pilot-v1",
+  "as_of": "2026-10-21",
+  "objective": "Six deliberately narrow HS × named-country × full-year 2025 joint-value source requests; not data observations.",
+  "reference_period": "2025",
+  "geographic_scope": "Indonesia (national only)",
+  "preferred_source": "https://www.bps.go.id/id/exim",
+  "annual_export_publication": "https://www.bps.go.id/id/publication/2026/08/10/556d446e35c86054cb33739f/statistik-perdagangan-luar-negeri-indonesia-ekspor-2025.html",
+  "annual_import_publication": "https://www.bps.go.id/id/publication/2026/08/04/29900d4157c9ba7ad7fc72ea/statistik-perdagangan-luar-negeri-indonesia-impor-2025",
+  "download_state": "not_acquired",
+  "commercial_reuse_review": "pending_official_terms_check",
+  "no_purchase_authorized": true,
+  "no_synthetic_allocations": true,
+  "verified_cells": 0,
+  "pilot": [
+    {
+      "id": "rice",
+      "sector": "food",
+      "commodity": "Rice / Beras",
+      "hs_code": "1006",
+      "hs_level": 4,
+      "hs_version": "HS2022",
+      "precision_note": "Rice heading, not all cereals HS10",
+      "query_directions": [
+        "imports",
+        "exports"
+      ],
+      "status": "awaiting_bps_joint_cells"
+    },
+    {
+      "id": "coffee",
+      "sector": "food",
+      "commodity": "Coffee / Kopi",
+      "hs_code": "0901",
+      "hs_level": 4,
+      "hs_version": "HS2022",
+      "precision_note": "Coffee heading, not all coffee, tea and spices HS09",
+      "query_directions": [
+        "exports",
+        "imports"
+      ],
+      "status": "awaiting_bps_joint_cells"
+    },
+    {
+      "id": "palm_oil",
+      "sector": "food",
+      "commodity": "Palm oil and fractions / Minyak sawit",
+      "hs_code": "1511",
+      "hs_level": 4,
+      "hs_version": "HS2022",
+      "precision_note": "Does not cover all oil-palm derivatives, biodiesel or palm kernel oil",
+      "query_directions": [
+        "exports",
+        "imports"
+      ],
+      "status": "awaiting_bps_joint_cells"
+    },
+    {
+      "id": "frozen_shrimp",
+      "sector": "marine",
+      "commodity": "Frozen non-coldwater shrimp/prawns / Udang beku selain air dingin",
+      "hs_code": "030617",
+      "hs_level": 6,
+      "hs_version": "HS2022",
+      "precision_note": "Narrow HS subheading; excludes live/fresh shrimp, coldwater shrimp and prepared products. Confirm exact BTKI 2022 subheading.",
+      "query_directions": [
+        "exports",
+        "imports"
+      ],
+      "status": "awaiting_bps_joint_cells",
+      "classification_reference": "https://unstats.un.org/unsd/classifications/Econ/Structure/Detail/EN/2089/0306"
+    },
+    {
+      "id": "coal",
+      "sector": "minerals",
+      "commodity": "Coal and coal-based solid fuels / Batu bara",
+      "hs_code": "2701",
+      "hs_level": 4,
+      "hs_version": "HS2022",
+      "precision_note": "Coal is minerba not oil and gas; do not mix with HS27 petroleum or electricity",
+      "query_directions": [
+        "exports",
+        "imports"
+      ],
+      "status": "awaiting_bps_joint_cells"
+    },
+    {
+      "id": "nickel_ore",
+      "sector": "minerals",
+      "commodity": "Nickel ores and concentrates / Bijih dan konsentrat nikel",
+      "hs_code": "2604",
+      "hs_level": 4,
+      "hs_version": "HS2022",
+      "precision_note": "Ore only; HS720260 ferronickel and HS7501 nickel mattes are separate; absence or export prohibition does not imply zero.",
+      "query_directions": [
+        "exports",
+        "imports"
+      ],
+      "status": "awaiting_bps_joint_cells"
+    }
+  ],
+  "candidate_source_leads": [
+    {
+      "title": "BPS Central Java province export/import release Oct 2025",
+      "url": "https://jateng.bps.go.id/id/pressrelease/2025/12/01/1611/ekspor-dan-impor-jawa-tengah-oktober-2025-masing-masing-tercatat-us-1-123-60-juta-dan-us-1-344-87-juta-.html",
+      "geography": "Central Java",
+      "time_window": "2025-01/2025-10",
+      "status": "source_lead_only",
+      "block_reason": "Provincial, year-to-date, and available presentation mirror is not accepted as independently verified BPS national annual HS-partner cells"
+    }
+  ],
+  "promotion_criteria": [
+    "Original public BPS output/PDF obtained, original file preserved with SHA-256 and official source locator",
+    "Each cell jointly encodes reporting period, original country, HS2022, declared direction, USD value and national geography",
+    "Time windows and HS resolutions never mixed",
+    "License, attribution and commercial redistribution terms checked before publication",
+    "Independent cell-by-cell reviewer attestations and CI gates passed"
+  ]
+}
