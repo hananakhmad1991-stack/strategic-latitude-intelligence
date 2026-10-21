@@ -74,7 +74,8 @@ jobs:
           with open(os.environ['GITHUB_ENV'],'a') as f:
               f.write('PUSDATIN_REVIEW_MARKER='+marker+'\n')
           PY
-          if [ -z "${PUSDATIN_REVIEW_MARKER:-}" ]; then exit 0; fi
+          if [ ! -f /tmp/pusdatin-review.md ]; then exit 0; fi
+          PUSDATIN_REVIEW_MARKER=$(python -c "import json; a=json.load(open('artifacts/pusdatin-source-watch/discovery.json')).get('latest_new_candidate'); print('SLI_PUSDATIN_NEW_EDITION_'+a['edition'] if a else '')")
           ISSUE=$(gh issue list --repo "$REPO" --state open --search "$PUSDATIN_REVIEW_MARKER in:body" --json number --jq '.[0].number // empty' || true)
           if [ -n "$ISSUE" ]; then echo "Existing review issue #$ISSUE"; exit 0; fi
           gh issue create --repo "$REPO" --title "Pusdatin new agriculture edition requires digitization review" --body-file /tmp/pusdatin-review.md
