@@ -7,7 +7,7 @@ const db=JSON.parse(read("data/sli-cross-sector-official-leadership-2026.json"))
 const nodes=id=>db.agencies[id].nodes;
 const office=(agency,id)=>nodes(agency).find(n=>n.id===id);
 test("SLI shares one curated agency roster across all relevant specialist sectors",()=>{
- assert.equal(db.schema,"sli-cross-sector-official-leadership-v2");
+ assert.equal(db.schema,"sli-cross-sector-official-leadership-v3");
  assert.equal(db.as_of,"2026-10-21");
  assert.deepEqual(Object.keys(db.sectors).sort(),["ai","energy","entities","environment","food","geo","investment","macro","minerals","policy","provincial"]);
  assert.equal(db.sectors.energy.agencies.includes("esdm"),true);
@@ -143,7 +143,7 @@ test("All participating SLI families map 16 agencies and retain legally distinct
  vm.runInNewContext(sourceJs,{window:win,document:{readyState:"loading",addEventListener(){}},console});
  const check=win.validateSLISectorLeadership(db);
  assert.equal(check.pass,true,JSON.stringify(check.issues));
- const old=structuredClone(db);old.schema="sli-cross-sector-official-leadership-v1";
+ const old=structuredClone(db);old.schema="sli-cross-sector-official-leadership-v2";
  assert.equal(win.validateSLISectorLeadership(old).pass,false,"Older data must not replace new roster");
  const dupe=structuredClone(db);dupe.agencies.kemhan.nodes.push({...dupe.agencies.kemhan.nodes[0]});
  assert.equal(win.validateSLISectorLeadership(dupe).pass,false,"Duplicate office IDs must fail QA");
