@@ -1,0 +1,14 @@
+.sli-ruptl-raw-explorer{margin:15px 0 27px;padding:15px;border:1px solid #47667c;border-radius:12px;background:#102638;color:#e1ebf2}
+.sli-ruptl-raw-explorer>summary{cursor:pointer;font-size:17px;font-weight:700;color:#f6d59a}
+.sli-ruptl-raw-explorer p{font-size:12px;line-height:1.55;color:#cbdbea}
+.sli-ruptl-raw-explorer .rv-disclaimer{border-left:3px solid #dbb873;padding:10px;background:#283238}
+.sli-ruptl-raw-explorer .rv-raw-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:15px 0}
+.sli-ruptl-raw-explorer .rv-raw-metrics>div{padding:9px;border:1px solid #486275;border-radius:8px;display:flex;flex-direction:column}
+.sli-ruptl-raw-explorer .rv-raw-metrics small{font-size:11px;color:#bed2df}.sli-ruptl-raw-explorer .rv-raw-metrics strong{font-size:20px;color:#edce9c}
+.sli-ruptl-raw-explorer .rv-raw-controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.sli-ruptl-raw-explorer .rv-raw-controls>input{flex:2 1 220px}.sli-ruptl-raw-explorer .rv-raw-controls>select{flex:1 1 180px}
+.sli-ruptl-raw-explorer input,.sli-ruptl-raw-explorer select,.sli-ruptl-raw-explorer button{font:inherit;font-size:12px;border:1px solid #6e8b9e;border-radius:7px;padding:9px;background:#193d54;color:#f2f7fb}
+.sli-ruptl-raw-explorer button:not(:disabled){cursor:pointer}.sli-ruptl-raw-explorer button:disabled{opacity:.45}.sli-ruptl-raw-explorer button:focus-visible,.sli-ruptl-raw-explorer select:focus-visible,.sli-ruptl-raw-explorer input:focus-visible{outline:2px solid #e1ba77}
+.sli-ruptl-raw-explorer .rv-raw-scroller{overflow:auto;max-height:520px}.sli-ruptl-raw-explorer table{border-collapse:collapse;width:100%;min-width:780px;font-size:12px}.sli-ruptl-raw-explorer th,.sli-ruptl-raw-explorer td{padding:9px;text-align:left;vertical-align:top;border-bottom:1px solid #3c566c}.sli-ruptl-raw-explorer th{position:sticky;top:0;background:#204056;color:#f9dda9}
+.sli-ruptl-raw-explorer td code{color:#c0e4e7;white-space:normal;overflow-wrap:anywhere}.sli-ruptl-raw-explorer .rv-raw-buttons{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:9px}
+.sli-ruptl-raw-explorer a{color:#afe5fa}@media(max-width:550px){.sli-ruptl-raw-explorer{padding:10px}.sli-ruptl-raw-explorer .rv-raw-metrics{grid-template-columns:1fr 1fr}}
