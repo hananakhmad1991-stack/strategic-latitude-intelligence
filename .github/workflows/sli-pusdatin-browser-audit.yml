@@ -1,0 +1,83 @@
+name: SLI Pusdatin September 2026 — Real Browser & Independent PDF QA
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'data/pusdatin-agriculture-september-2026.json'
+      - 'data/pusdatin-agriculture-september-2026-semantic.json'
+      - 'data/pusdatin-september-pdf-independent-audit.json'
+      - 'js/pusdatin-agriculture-september-2026.js'
+      - 'js/pusdatin-september-semantic.js'
+      - 'css/pusdatin-agriculture-september-2026.css'
+      - 'css/pusdatin-september-semantic.css'
+      - 'food-agriculture-intelligence.html'
+      - 'tests/qa-pusdatin-independent-pdf.mjs'
+      - 'tests/qa-pusdatin-september-browser.mjs'
+      - '.github/workflows/sli-pusdatin-browser-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/pusdatin-september-pdf-independent-audit.json'
+      - 'food-agriculture-intelligence.html'
+      - 'tests/qa-pusdatin-independent-pdf.mjs'
+      - 'tests/qa-pusdatin-september-browser.mjs'
+      - '.github/workflows/sli-pusdatin-browser-audit.yml'
+permissions:
+  contents: read
+concurrency:
+  group: sli-pusdatin-qa-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+jobs:
+  independent-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Reconcile independent original-PDF glyph signatures with 8,514 cells
+        run: node --test tests/qa-pusdatin-independent-pdf.mjs tests/qa-pusdatin-agriculture-september-2026.mjs tests/qa-pusdatin-september-semantic.mjs
+  rendered-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Use runner Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          test -n "$CHROME"
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+      - name: Install light Playwright client (no browser download)
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Serve public static app locally
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sli-pusdatin-browser.log 2>&1 &
+          echo $! >/tmp/sli-pusdatin-server.pid
+          for n in {1..25}; do
+            if curl -fsS http://127.0.0.1:8765/food-agriculture-intelligence.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/sli-pusdatin-browser.log
+          exit 1
+      - name: Run desktop and mobile real interaction tests
+        run: node tests/qa-pusdatin-september-browser.mjs
+      - name: Retain screenshots, report and CSV download
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-pusdatin-september-browser-evidence
+          path: artifacts/pusdatin-september-browser/
+          retention-days: 21
+          if-no-files-found: warn
+      - name: Stop web server
+        if: always()
+        run: test ! -f /tmp/sli-pusdatin-server.pid || kill "$(cat /tmp/sli-pusdatin-server.pid)" || true
