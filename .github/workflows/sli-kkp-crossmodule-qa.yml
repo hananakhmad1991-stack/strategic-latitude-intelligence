@@ -4,6 +4,8 @@ on:
     paths:
       - 'data/sli-marine-crosssector.json'
       - 'js/sli-marine-crosssector.mjs'
+      - 'js/sli-live-data.js'
+      - 'tests/qa-sli-live-data-preview.mjs'
       - 'marine-fisheries-intelligence.html'
       - 'index.html'
       - 'js/sli-home-portal.js'
@@ -68,6 +70,7 @@ jobs:
       - name: Validate KKP data, cross-module source limits, typed SDK and scripts
         run: |
           node --check js/sli-marine-crosssector.mjs
+          node --check js/sli-live-data.js
           node --check js/sli-home-portal.js
           node --check js/sli-entities.js
           node --check js/sli-idx-tradingview.js
@@ -76,7 +79,7 @@ jobs:
           node --check js/sli-regulatory-explorer.js
           node --check js/sli-sector-monitor.js
           python -m py_compile scripts/research_signal_radar.py
-          node --test tests/qa-sli-marine-crossmodule.mjs tests/qa-sli-marine-fisheries.mjs tests/qa-sli-idx-provider-dossier.mjs tests/qa-sli-information-architecture.mjs
+          node --test tests/qa-sli-live-data-preview.mjs tests/qa-sli-marine-crossmodule.mjs tests/qa-sli-marine-fisheries.mjs tests/qa-sli-idx-provider-dossier.mjs tests/qa-sli-information-architecture.mjs
           python tests/test_research_signal_radar.py
           node tests/qa-research-signal-radar.mjs
       - name: Declare actual verification boundary
