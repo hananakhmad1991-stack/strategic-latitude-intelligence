@@ -27,7 +27,7 @@ A PASS proves only that the **offline code and metadata gate** passed. It does *
 A recent automation audit can legitimately contain failures, notably:
 - data/sli-bnpb-provincial-2025.json refresh workflow failures (Issue #2).
 - Pusdatin external feed HTTP 403 (Issue #130); this may be outside the generic automation health summary and remains a separate source-ingestion blocker.
-- Incomplete source-index coverage (73/169 datasets as of the referenced index; excluded datasets are *not* automatically erroneous).
+- Incomplete source-index coverage (74/178 dataset files indexed in this PR snapshot; excluded/source-only datasets are *not* automatically erroneous).
 - Stale automation audit, source failures, GitHub workflow API errors or inconsistent status counters.
 
 These produce warnings and **never** silently mean healthy. An unrelated upstream publisher failure does not prevent an owner-only test of safe code, but must be disclosed to reviewers. No publisher access-control bypass is authorized.
