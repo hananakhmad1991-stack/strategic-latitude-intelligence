@@ -16,10 +16,11 @@ test("The homepage integrates public datasets into subject cards without a redun
   "#minerals":["minerals"],
   "./ai-intelligence-hub.html":["ai-reports"],
   "#policy":["governance","security"],
-  "#geopolitics":["environment","disasters"]
+  "#geopolitics":["environment","disasters"],
+  "./marine-fisheries-intelligence.html":["marine"]
  };
  const groups=home.split('<div class="sli-portal-sector sli-portal-topic-card">').slice(1).map(x=>x.split("</nav></div>")[0]);
- assert.equal(groups.length,6,"Six existing sector cards receive source links without new categories");
+ assert.equal(groups.length,7,"Six existing source-linked sector cards plus independent Marine & Fisheries");
  for(const [primary,ids] of Object.entries(mapping)){
   const owner=groups.find(block=>block.includes('href="'+primary+'" class="sli-portal-topic-main"'));
   assert.ok(owner,"Missing existing sector card: "+primary);
