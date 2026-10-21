@@ -16,9 +16,13 @@ The canonical main entry is `index.html#trade` with sector lenses; Food and Mari
 - Destination groups (independent marginal): United States 1,990; China 1,220; ASEAN 1,000; Japan 613.65; European Union 451.72. Their **selected-category sum** is 5,275.37. Official national total is quoted **about** 6,270; difference should not be shown as exact official residual.
 - Commodity groups (another marginal): shrimp 1,870; tuna/skipjack 1,040; squid/cuttlefish/octopus 889.73; crab/swimming crab 507.74; seaweed 315.62. Selected-category sum is 4,623.09. Commodity/partner values cannot be multiplied or allocated to manufacture a commodity-to-country network.
 - The KKP Bursa Ikan table displayed links to CSV endpoints `/statistik-perikanan/export/7` and `/export/8`, returning 404 during review. This dataset therefore uses the separately accessible original KKP report, not those CSV links.
+- KKP's official 16 Feb 2026 release separately cites a 2025 fishery trade surplus of **about US$5.60bn** (BPS-based). This is context only and must never be subtracted from the rounded US$6.27bn export figure to back-solve an exact import observation.
 
 ## Agricultural Kementan records
 Published `trade` matrix has exactly eight leaves: four agriculture subsectors × fresh/processed. Imported/exported values are distinct and drawn independently with a direction selector; the `Segar + olahan` aggregate rows and `Pertanian Total` rollups are never drawn again. Export leaf sum 14,463.544 USD million and import leaf sum 8,192.336 USD million in Jan–Apr 2026. Some published category subtotals differ by 1 thousand USD due to source rounding. The diagram is **not** a physical goods transport, bilateral origin or HS trade map.
+
+## Mineral HS source transparency
+The 2025 mineral, coal, oil/gas and cross-border electricity HS-partner sample uses **UN Comtrade-derived figures served by intermediary presentations (World Bank WITS or CorpLox)**. This is not a direct BPS HS×partner extract. The SLI national 2026 trade header is a separately sourced official BPS release. The chart now links to the [BPS customs query portal](https://www.bps.go.id/assets/exim) and labels detailed BPS reconciliation as **pending**. Partial partner lists, computed residuals, unavailable reverse directions and uneven HS product coverage must remain visibly qualified.
 
 ## Strict presentation rules
 1. Never plot observed FOB/CIF USD, planned GW, and observed thousand BOE on one chart.
