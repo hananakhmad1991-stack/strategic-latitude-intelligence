@@ -1,0 +1,40 @@
+name: SLI BPS Welfare Desktop + Mobile Browser QA
+on:
+  pull_request:
+    paths:
+      - 'data/sli-bps-welfare-2026.json'
+      - 'sli-welfare-2026.html'
+      - 'js/sli-bps-welfare-2026.js'
+      - 'js/sli-navigation.js'
+      - 'tests/browser-bps-welfare-2026.mjs'
+      - '.github/workflows/sli-bps-welfare-browser-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chrome-smoke:
+    name: Chrome 1440px desktop and 390px phone QA
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: browser-actions/setup-chrome@v2
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Validate browser test syntax
+        run: node --check tests/browser-bps-welfare-2026.mjs
+      - name: Run real Chrome and phone emulation QA
+        env:
+          CHROME_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tests/browser-bps-welfare-2026.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: welfare-2026-browser-desktop-mobile
+          path: artifacts/sli-bps-welfare-*.png
+          if-no-files-found: ignore
+          retention-days: 7
