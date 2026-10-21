@@ -46,3 +46,9 @@ Uji: `node --test tests/qa-sli-kkp-source-atlas.mjs`.
 - Secara default pemeriksa **hanya mengeluarkan audit** berisi checksum SHA256, jumlah baris, jumlah pasangan wilayah/komoditas dan perbedaan dengan total nasional; tidak mempublikasikan dataset.
 - Full numeric export hanya ditulis ke `artifacts/` dengan bendera operator `--rights-reviewed` setelah izin penggunaan dan redistribusi ditinjau. Tidak ada jalan impor paksa untuk 10 dari 1.387 baris atau sumber fiktif. Full 1.387 belum diimpor, dan izin komersial belum diverifikasi.
 - WPPNRI membutuhkan geometri berkoordinat dan peraturan batas resmi; tidak dibuat polygon palsu. Nilai produksi tangkap, konsumsi ikan, garam, armada, PNBP, kawasan konservasi, pembiayaan tetap berstatus kandidat sehingga tidak dinyatakan numerik diimpor.
+
+## BIG official WPP polygon source found — geometry not yet imported
+- Public BIG Satu Peta MapServer official **Layer 21**: https://kspservices.big.go.id/satupeta/rest/services/PUBLIK/SUMBER_DAYA_ALAM_DAN_LINGKUNGAN/MapServer/21
+- The official service metadata declares Polygon geometry, EPSG:4326, JSON/geoJSON query formats, and 11 WPP-RI legend zones **571, 572, 573, 711–718**.
+- Registered in `data/sli-kkp-wpp-official-geometry-lead.json`; actual polygon geometry, regulation vintage, polygon/area validity and bulk reuse rights are **not yet verified or imported**, so the 38-province map remains clearly labelled community-derived illustrative geography, not WPP.
+- Official BIG service has other candidate map layers: conservation zones (33) and mangrove (57), neither numerically or spatially imported. Never treat WPP potential estimates as measured actual catches.
