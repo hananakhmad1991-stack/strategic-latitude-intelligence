@@ -30,7 +30,7 @@ const dataById=(d,id)=>[...d.hierarchy,...d.actors].find(x=>x.id===id);
 function logoOrIcon(x,d){
  const box=E("span","mf-institution-emblem");
  const isKkp=d.hierarchy.some(n=>n.id===x.id);
- if(isKkp){const img=E("img");img.src=d.emblem?.url||KKP_ICON;img.alt="KKP";img.loading="lazy";img.referrerPolicy="no-referrer";img.addEventListener("error",()=>img.replaceWith(E("span","",x.id==="president"?"RI":"KKP")),{once:true});box.append(img)}
+ if(isKkp&&x.id!=="president"){const img=E("img");img.src=d.emblem?.url||KKP_ICON;img.alt="KKP";img.loading="lazy";img.referrerPolicy="no-referrer";img.addEventListener("error",()=>img.replaceWith(E("span","",x.id==="president"?"RI":"KKP")),{once:true});box.append(img)}
  else box.append(E("span","",x.id.toUpperCase().slice(0,3)));
  return box;
 }
@@ -57,6 +57,7 @@ function profile(d,id,host,hub=null){
   host.append(sourced(officer.source,T("Verifikasi pejabat ↗","Verify officeholder ↗")));
  }else host.append(E("p","mf-gov-review-note",T("Pejabat belum terverifikasi; nama tidak ditampilkan.","Officeholder not verified; name deliberately withheld.")));
  host.append(E("p","mf-gov-role",T(x.role_id,x.role_en)));
+ if(x.sector_contact){host.append(E("h5","mf-gov-mates-heading",T("Kontak teknis sektoral","Sector policy counterpart")));host.append(E("p","",x.sector_contact.name+" · "+x.sector_contact.role));host.append(sourced(x.sector_contact.source,T("Direktori resmi ↗","Official directory ↗")))}
  const status=E("div","mf-gov-source-box");
  status.append(E("strong","",T("Mandat dan sumber resmi","Mandate and primary source")));
  status.append(sourced(x.source,T("Periksa dokumen lembaga ↗","Open institutional evidence ↗")));
@@ -147,7 +148,7 @@ function renderNetwork(d,state){
  }
  canvas.append(grid);root.append(canvas);
  if(!filtered.length)root.append(E("p","mf-hint",T("Tidak ada entitas yang cocok.","No matching institutions.")));
- const chosen=filtered.find(x=>x.id===state.selectedHub?.id)||filtered[0]||d.groups[0];
+ const chosen=filtered.find(x=>x.id===state.selectedHub?.id)||filtered[0]||d.groups[0];if(chosen?.id!==state.selectedHub?.id)state.selectedHub=chosen;
  if(chosen&&!chosen.actor_ids.includes(state.selectedNetwork))state.selectedNetwork=chosen.actor_ids[0];
  profile(d,state.selectedNetwork,$("mfNetworkProfile"),chosen);
  const counter=$("mfNetworkCount");if(counter)counter.textContent=T(count+" entri · "+filtered.length+" klaster",count+" entries · "+filtered.length+" hubs");
