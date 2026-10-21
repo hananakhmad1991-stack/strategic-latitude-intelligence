@@ -1,0 +1,132 @@
+{
+  "schema": "sli-pusdatin-september-pdf-independent-audit-v1",
+  "edition": "2026-09",
+  "as_of": "2026-10-21",
+  "source": "User-provided original Pusdatin 89-page September 2026 PDF",
+  "pdf_sha256": "c7434d6ef596ac4f622239d46167004e352cb39fb49daf12cc69e931a56b81c0",
+  "source_pdf_page_count": 89,
+  "verification": "Independent text-position verification against PDF page glyph positions, not just equality with SLI-derived transcript. Page word groups sorted by bounding box y/x, 11 numeric columns per row. Missing values remain null. FNV-1a 32 fingerprints over normalized labels and 11 canonical source values. Checks across 22 tables.",
+  "independent_table_fingerprints": {
+    "36": {
+      "page": 57,
+      "count": 38,
+      "hash32": 3354829300
+    },
+    "37": {
+      "page": 58,
+      "count": 38,
+      "hash32": 1909542454
+    },
+    "38": {
+      "page": 59,
+      "count": 38,
+      "hash32": 1620935987
+    },
+    "39": {
+      "page": 60,
+      "count": 38,
+      "hash32": 2518344145
+    },
+    "40": {
+      "page": 61,
+      "count": 38,
+      "hash32": 2763138136
+    },
+    "41": {
+      "page": 62,
+      "count": 38,
+      "hash32": 1018262972
+    },
+    "42": {
+      "page": 63,
+      "count": 38,
+      "hash32": 431700237
+    },
+    "43": {
+      "page": 64,
+      "count": 38,
+      "hash32": 3444386057
+    },
+    "49": {
+      "page": 72,
+      "count": 34,
+      "hash32": 612235431
+    },
+    "50": {
+      "page": 73,
+      "count": 34,
+      "hash32": 1627614882
+    },
+    "51": {
+      "page": 74,
+      "count": 34,
+      "hash32": 1289691818
+    },
+    "52": {
+      "page": 75,
+      "count": 34,
+      "hash32": 3246534186
+    },
+    "53": {
+      "page": 76,
+      "count": 34,
+      "hash32": 2949120909
+    },
+    "54": {
+      "page": 77,
+      "count": 34,
+      "hash32": 1470972955
+    },
+    "55": {
+      "page": 78,
+      "count": 34,
+      "hash32": 4276077859
+    },
+    "56": {
+      "page": 79,
+      "count": 34,
+      "hash32": 3481753369
+    },
+    "57": {
+      "page": 80,
+      "count": 34,
+      "hash32": 2979557798
+    },
+    "58": {
+      "page": 81,
+      "count": 34,
+      "hash32": 1782765839
+    },
+    "59": {
+      "page": 82,
+      "count": 34,
+      "hash32": 1209096764
+    },
+    "60": {
+      "page": 83,
+      "count": 32,
+      "hash32": 2819257204
+    },
+    "61": {
+      "page": 84,
+      "count": 25,
+      "hash32": 143578407
+    },
+    "62": {
+      "page": 85,
+      "count": 39,
+      "hash32": 2129229602
+    }
+  },
+  "verified_rows": 774,
+  "verified_numeric_cells": 8514,
+  "verified_table_count": 22,
+  "remaining_table_count": 41,
+  "limitations": [
+    "This is an independent source-PDF text-position audit over 22 tables, not a claim that all 63 tables or 2,163 semantically parsed rows have completed cell-by-cell visual signoff.",
+    "Tables 49–59 include 34 provincial/place observations plus separately labeled national average in source; only 34 locality rows are independently fingerprinted.",
+    "Tables 1–27 and other landscape/rotated layout tables require column-level independent reconstruction; their original page transcriptions and semantic records remain review flagged.",
+    "PDF glyph extraction and numeric sequence comparison do not catch a publisher's underlying statistical error; follow source revision notices.",
+    "Publication PDF is a dated historical snapshot, not a current/live feed."
+  ]
+}
