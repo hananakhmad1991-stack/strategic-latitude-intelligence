@@ -59,6 +59,19 @@ The two supplied original PDF hashes were checked against the registered 154-pag
 
 **Controls now applied:** quarantine 3.2, 3.10, 3.11, 6.14 by year/scope metadata flags; quarantine 6.1 and 6.2 by arithmetic flags. The Food dashboard catalog labels flagged tables and prints complete multi-page source spans; DERGUBA continues to receive **only source metadata**, not speculative values. `scripts/extract_bps_agri_horti_offline.py` was amended to include multi-page continuations while still excluding directories and all public output.
 
+## 22 October 2026 — direct original-PDF watermark separation and reviewed crops
+
+**The previous "85 watermark + 1 unreadable" backlog is now resolved as a source-reading issue for the six pilot tables only.** The exact SHA-256-matched 668-page PDF was reopened and 86/86 flagged cell rectangles independently cross-read from native small (approximately 7 pt) Aptos table glyphs, excluding the watermark's separate large Arial text span. All 86 matched the previously tentative values or visible dash. Four 24-cell private contact sheets containing original page-image crops were inspected for the 86 source cells; these crops and raw numeric values **were not published to the SLI repo**. Exact reproducibility is provided by `scripts/audit_bps_2026_watermarked_cells_offline.py`, which requires the original PDF and private flag input and enforces an outside-repository output path.
+
+**What has NOT been resolved:** Original source printed arithmetic gaps remain and have been independently confirmed without OCR:
+- **Table 6.1 (other horticultural businesses 2023)**, printed page 117 / PDF 133: 36 provinces with printed numeric values sum to **5,154**, while the national total is printed **5,155**. *Papua Selatan and Papua Tengah are printed as en dashes*, which are not reinterpreted as numeric zeros or a residual one. National-vs-listed-number difference: **1 unit**; requires BPS explanation of the dash convention and totals.
+- **Table 6.2 (other horticultural business status, 2026)**, printed page 118 / PDF 134: numeric provincial values in the category *binaan dari nonpemerintah* sum to **195**, national total printed **209** (difference **14 units**). DKI Jakarta row printed **65 (independent) + 163 (government-related) + en dash (non-government-supported), reported total 242**. The 14 difference is a **source inconsistency or an unreported category value**, not evidence permitting imputation into DKI's dash. Ten provinces show dashes in that category.
+- Table 6.1/6.2 remain marked **`hold_numeric_publication`**; the six-table pilot is *not* a complete 82-table numeric QA.
+
+**Rights & privacy:** Source-side readability is separate from legal republication permission. Both PDFs still require written BPS permission for commercial reproduction. A BPS PST clarification email is saved as a **draft** in the owner's Gmail; it has **not** been sent, and no response/permission has been received. No raw CSV, image crop, original directory, mobile/business contact or unlicensed numeric observation is mirrored to the public SLI site or deployed Research AI.
+
+**Private operator artifact:** `SLI_BPS_2025_2026_watermark_and_subtotal_QA_private_v3.zip` contains the cell-level original PDF native-text proof, the four cropped contact sheets, the original discrepancy report and audit scripts. Distribute only via the private operator conversation, not public GitHub.
+
 ## Next audit gate (not complete)
 1. Contact BPS to clarify commercial reproduction rights for derived chart values vs table mirrors; retain written response and any publication-specific license.
 2. Visually verify 82 table headers, printed/PDF pages, source year, units, missing-value glyphs, and cross-table totals. Log each verified numeric cell and any edits; classify source estimates and revisions explicitly.
