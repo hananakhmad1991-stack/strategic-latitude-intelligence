@@ -1,0 +1,52 @@
+name: SLI IDX Issuer Headlines
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "8,38 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/build_sli_issuer_news.py"
+      - "tests/test_sli_issuer_news.py"
+      - ".github/workflows/sli-issuer-news.yml"
+permissions:
+  contents: write
+concurrency:
+  group: sli-idx-issuer-news-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify attribution, ticker matching and feed parsing
+        run: |
+          python -m py_compile scripts/build_sli_issuer_news.py
+          python tests/test_sli_issuer_news.py
+      - name: Read current RSS headline metadata
+        run: python scripts/build_sli_issuer_news.py
+      - name: Publish attributable headline index (if feeds succeeded)
+        run: |
+          set -eu
+          if [ ! -f data/sli-issuer-news.json ]; then
+            echo "No successful RSS feeds. Keep the existing SLI headline archive."
+            exit 0
+          fi
+          cp data/sli-issuer-news.json /tmp/sli-issuer-news.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/sli-issuer-news.json data/sli-issuer-news.json
+            git add data/sli-issuer-news.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Refresh source-attributed IDX issuer headline monitor"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt*2))
+          done
+          exit 1
