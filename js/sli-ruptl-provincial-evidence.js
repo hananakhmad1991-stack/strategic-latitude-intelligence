@@ -1,7 +1,7 @@
 /* PLN RUPTL 2025 plan by geographic appendix: candidate source rows, NOT observed operation. */
 (()=>{"use strict";
 const roots=[...document.querySelectorAll("[data-sli-ruptl-provincial]")];if(!roots.length)return;
-const P="./data/sli-ruptl-provincial-source-projects-2025.json",O="./data/sli-ruptl-primary-pdf-2025-2034.json";
+const P="./data/sli-ruptl-provincial-source-projects-2025.json",O="./data/sli-ruptl-primary-pdf-2025-2034.json",E="./data/sli-ruptl-project-progress-primary-evidence.json";
 const el=(tag,txt)=>{const x=document.createElement(tag);if(txt!==undefined)x.textContent=String(txt);return x};
 const fmt=n=>typeof n==="number"?n.toLocaleString("id-ID",{maximumFractionDigits:2}):"—";
 const option=(select,txt,val)=>{const o=el("option",txt);o.value=val;select.append(o)};
@@ -17,7 +17,9 @@ function normalizeExisting(x,i){
  verified_realized_capacity_mw:null,verified_realization_source_url:null,
  interpretation:"Older 13 source rows, annex-section heading only; exact site geography/current progress unverified."};
 }
-function render(root,data,legacy){
+function render(root,data,legacy,evidence){
+ if(evidence.schema!=="sli-ruptl-project-official-progress-evidence-v1"||evidence.approved_attribution_count!==3)throw Error("Independent current milestone evidence mismatch");
+ const evidenceMap=new Map(evidence.observations.map(x=>[x.project_sample_id,x]));
  if(data.schema!=="sli-ruptl-provincial-source-projects-2025-v1"||data.source_rows.length!==35||data.geographic_appendix_coverage.subsections.length!==34)throw Error("Source review dataset schema mismatch");
  const old=legacy.individual_project_source_records.records.map(normalizeExisting);
  const all=[...old,...data.source_rows]; // disjoint original source row selections; NOT national roster
@@ -25,25 +27,25 @@ function render(root,data,legacy){
  const h=el("h2","RUPTL · Proyek per wilayah lampiran dan rencana vs realisasi");
  const pre=el("p","Katalog audit sumber dari PDF RUPTL yang disahkan pada 2025. "+all.length+" baris sampel dari tabel asli; tidak mewakili seluruh proyek nasional. Wilayah lampiran bukan koordinat proyek.");
  const summary=el("div");summary.className="sli-ruptl-province-summary";
- [["Sublampiran geografis",34],["Baris proyek sampel",all.length],["Wilayah lampiran dengan sampel",new Set(all.map(x=>x.annex_id)).size],["Status aktual", "Belum ada yang terverifikasi"]].forEach(([a,b])=>{const c=el("div");c.append(el("small",a),el("strong",b));summary.append(c)});
- const methodology=el("p","PERBEDAAN PENTING: Target COD dan status dokumen tahun 2025 bukan bukti COD aktual, penyerahan operasi, atau konstruksi pada Oktober 2026. Kolom data realisasi kosong berarti BELUM DIVERIFIKASI, bukan proyek gagal atau realisasi nol.");
+ [["Sublampiran geografis",34],["Baris proyek sampel",all.length],["Wilayah lampiran dengan sampel",new Set(all.map(x=>x.annex_id)).size],["Baris dengan bukti resmi",evidenceMap.size+" / "+all.length+" sampel"]].forEach(([a,b])=>{const c=el("div");c.append(el("small",a),el("strong",b));summary.append(c)});
+ const methodology=el("p","PERBEDAAN PENTING: Target COD dan status dokumen tahun 2025 bukan bukti COD aktual, penyerahan operasi, atau konstruksi pada Oktober 2026. Kolom data realisasi kosong berarti BELUM DIVERIFIKASI, bukan proyek gagal atau realisasi nol. Bukti Jawa-9/10 adalah COD kompleks gabungan (tanggal unit masing-masing tidak ditentukan). Bukti Bali Timur memakai MWp yang tidak langsung setara dengan MW RUPTL.");
  methodology.className="sli-ruptl-prov-warning";
  const controls=el("div");controls.className="sli-ruptl-prov-filters";
- const regions=el("select"),tech=el("select"),status=el("select"),q=el("input");
+ const regions=el("select"),tech=el("select"),status=el("select"),actualFilter=el("select"),q=el("input");
  q.type="search";q.placeholder="Cari nama proyek / wilayah / sistem";
- option(regions,"Semua wilayah lampiran","");option(tech,"Semua teknologi","");option(status,"Semua status rencana","")
+ option(regions,"Semua wilayah lampiran","");option(tech,"Semua teknologi","");option(status,"Semua status rencana","");option(actualFilter,"Semua status realisasi","");option(actualFilter,"Ada bukti milestone resmi","verified");option(actualFilter,"Belum ditemukan bukti yang sesuai","unknown");
  const geographic=data.geographic_appendix_coverage.subsections.map(x=>x.geographic_heading);
  const subset=[...new Set(all.map(x=>x.appendix_geography))];
  subset.sort((a,b)=>a.localeCompare(b,"id")).forEach(x=>option(regions,x,x));
  [...new Set(all.map(x=>x.technology))].sort().forEach(x=>option(tech,x,x));
  [...new Set(all.map(x=>x.status_as_printed_2025))].sort().forEach(x=>option(status,x,x));
- for(const [lab,n] of [["Wilayah sumber",regions],["Teknologi",tech],["Tahap RUPTL 2025",status],["Nama atau sistem",q]]){const l=el("label",lab);l.append(n);controls.append(l)}
+ for(const [lab,n] of [["Wilayah sumber",regions],["Teknologi",tech],["Tahap RUPTL 2025",status],["Bukti realisasi",actualFilter],["Nama atau sistem",q]]){const l=el("label",lab);l.append(n);controls.append(l)}
  const count=el("p");count.className="sli-ruptl-prov-count";
  const scroller=el("div");scroller.className="sli-ruptl-prov-scroll";
  const coverage=el("details");const covTitle=el("summary","Lihat 34 sublampiran geografis dan cakupan pemeriksaan");const covDiv=el("div");covDiv.className="sli-ruptl-prov-scroll";coverage.append(covTitle,covDiv);
  const footer=el("p");footer.append("Sumber dasar: ",link(data.source.official_url,"RUPTL PLN 2025–2034 PDF resmi ↗"),". Tidak ada nilai realisasi yang diisi otomatis berdasarkan kalender COD.");
  root.replaceChildren(h,pre,summary,methodology,controls,count,scroller,coverage,footer);
- const head=["Wilayah lampiran","Nama menurut tabel","Teknologi","Kapasitas tercetak","Target COD ARED","Status rencana 2025","Realisasi terkini","COD aktual","Asal tabel/PDF"];
+ const head=["Wilayah lampiran","Nama menurut tabel","Teknologi","Kapasitas tercetak","Target COD ARED","Status rencana 2025","Bukti perkembangan","COD aktual unit (jika terbukti)","Asal tabel/PDF"];
  const tabs=el("table"),th=el("thead"),tr=el("tr");head.forEach(x=>tr.append(el("th",x)));th.append(tr);tabs.append(th);
  const tb=el("tbody");tabs.append(tb);scroller.append(tabs);
  const coverageTable=el("table"),cHead=el("thead"),cr=el("tr");
@@ -55,32 +57,34 @@ function render(root,data,legacy){
  coverageTable.append(cHead,cBody);covDiv.append(coverageTable);
  function renderRows(){
   const term=q.value.toLowerCase().trim();
-  const rows=all.filter(x=>(!regions.value||x.appendix_geography===regions.value)&&(!tech.value||x.technology===tech.value)&&(!status.value||x.status_as_printed_2025===status.value)&&(!term||[x.source_project_label,x.appendix_geography,x.source_power_system||""].some(s=>s.toLowerCase().includes(term))));
-  count.textContent="Ditampilkan "+rows.length+" / "+all.length+" baris sampel bersumber. Nilai realisasi tidak tersedia ≠ 0.";
+  const rows=all.filter(x=>(!regions.value||x.appendix_geography===regions.value)&&(!tech.value||x.technology===tech.value)&&(!status.value||x.status_as_printed_2025===status.value)&&(!actualFilter.value||(actualFilter.value==="verified"?evidenceMap.has(x.id):!evidenceMap.has(x.id)))&&(!term||[x.source_project_label,x.appendix_geography,x.source_power_system||""].some(s=>s.toLowerCase().includes(term))));
+  count.textContent="Ditampilkan "+rows.length+" / "+all.length+" baris sampel, dengan "+rows.filter(x=>evidenceMap.has(x.id)).length+" baris punya bukti resmi. Nilai realisasi yang tidak ditemukan ≠ 0.";
   tb.replaceChildren();
   for(const x of rows){
    const tr=el("tr");[x.appendix_geography,x.source_project_label,x.technology,x.capacity_as_printed,x.planned_cod_ared,x.status_as_printed_2025].forEach(k=>tr.append(el("td",k)));
-   const actual=el("td","Belum terverifikasi");actual.className="sli-ruptl-prov-unknown";
-   const cod=el("td",x.verified_actual_cod===null?"—":x.verified_actual_cod);const source=el("td");source.append(x.table+" · ",link(data.source.official_url+"#page="+x.pdf_page,"PDF "+x.pdf_page+" ↗"));
+   const e=evidenceMap.get(x.id)||null;
+   const actual=el("td",e?"COD dikonfirmasi dalam sumber operator ("+e.source_event_date+")":"Belum ada bukti spesifik yang cocok");actual.className=e?"sli-ruptl-prov-evidence":"sli-ruptl-prov-unknown";
+   if(e){actual.append(" · ",link(e.source_url,"Sumber primer ↗"));if(e.facility_group==="PLTU Jawa 9 & 10")actual.append(" · COD tingkat kompleks, bukan COD individual");if(e.capacity_source_unit==="MWp")actual.append(" · 25 MWp tidak langsung dibandingkan dengan 25 MW");}
+   const cod=el("td",e?.individually_attributed_actual_cod||"—");const source=el("td");source.append(x.table+" · ",link(data.source.official_url+"#page="+x.pdf_page,"PDF "+x.pdf_page+" ↗"));
    tr.append(actual,cod,source);tb.append(tr);
   }
   if(window.SLIVisualExport?.register){
    window.SLIVisualExport.register(tabs,{
-    getData:()=>({headers:["Appendix grouping","Source project label","Technology","Printed capacity","Parsed simple MW (null for uncertain/composite)","Planned COD ARED","2025 source stage","Actual status (null=unverified)","Actual COD (null=unverified)","Annex/table","Original PDF page"],
-    rows:rows.map(x=>[x.appendix_geography,x.source_project_label,x.technology,x.capacity_as_printed,x.capacity_mw,x.planned_cod_ared,x.status_as_printed_2025,x.operational_status_2026,x.verified_actual_cod,x.table,x.pdf_page]),
+    getData:()=>({headers:["Appendix grouping","Source project label","Technology","Printed capacity","Parsed simple MW (null for uncertain/composite)","Planned COD ARED","2025 source stage","Observed evidence milestone","Observed event date","Individually attributed actual COD (null if unknown)","Primary evidence URL","Source capacity unit","Annex/table","Original PDF page"],
+    rows:rows.map(x=>[x.appendix_geography,x.source_project_label,x.technology,x.capacity_as_printed,x.capacity_mw,x.planned_cod_ared,x.status_as_printed_2025,evidenceMap.get(x.id)?.observed_status??null,evidenceMap.get(x.id)?.source_event_date??null,evidenceMap.get(x.id)?.individually_attributed_actual_cod??null,evidenceMap.get(x.id)?.source_url??null,evidenceMap.get(x.id)?.capacity_source_unit??null,x.table,x.pdf_page]),
     kind:"verified-provider"}),
-    getMeta:()=>({title:"RUPTL 2025–2034 source-reviewed project sample: plan versus unverified realization",
+    getMeta:()=>({title:"RUPTL 2025–2034 provincial source-row sample: plan versus verified official milestone",
      source:data.source.doc,sourceUrl:data.source.official_url,period:"2025–2034 planning horizon; as published May 2025",
-     completeness:"ONLY "+rows.length+" filtered manually selected source rows. No verified realization or actual COD. Appendix geographic grouping is NOT verified project site. NULL not zero; national registry incomplete."})
+     completeness:"ONLY "+rows.length+" filtered source-row samples. "+rows.filter(x=>evidenceMap.has(x.id)).length+" have separately sourced dated milestones. Jawa-9 and Jawa-10 belong to ONE complex and do not have individually mapped unit COD dates. Bali Timur: source MWp differs from plan MW. Other statuses are null, not zero. Not a national registry."})
    });
   }
  }
- for(const x of [regions,tech,status])x.addEventListener("change",renderRows);
+ for(const x of [regions,tech,status,actualFilter])x.addEventListener("change",renderRows);
  q.addEventListener("input",renderRows);
  document.addEventListener("sli:exportready",renderRows);
  renderRows();
 }
-Promise.all([fetch(P,{cache:"no-store"}).then(x=>{if(!x.ok)throw Error("Province HTTP "+x.status);return x.json()}),fetch(O,{cache:"no-store"}).then(x=>{if(!x.ok)throw Error("Previous source HTTP "+x.status);return x.json()})])
-.then(([data,legacy])=>roots.forEach(x=>render(x,data,legacy)))
+Promise.all([fetch(P,{cache:"no-store"}).then(x=>{if(!x.ok)throw Error("Province HTTP "+x.status);return x.json()}),fetch(O,{cache:"no-store"}).then(x=>{if(!x.ok)throw Error("Previous source HTTP "+x.status);return x.json()}),fetch(E,{cache:"no-store"}).then(x=>{if(!x.ok)throw Error("Evidence HTTP "+x.status);return x.json()})])
+.then(([data,legacy,evidence])=>roots.forEach(x=>render(x,data,legacy,evidence)))
 .catch(err=>roots.forEach(x=>{x.textContent="Katalog proyek per lampiran belum dapat dimuat: "+String(err.message)}));
 })();
