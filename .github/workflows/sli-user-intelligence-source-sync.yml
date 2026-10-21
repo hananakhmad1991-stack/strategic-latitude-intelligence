@@ -1,0 +1,64 @@
+name: SLI Private Catalyst D1 Source Sync
+
+on:
+  workflow_dispatch:
+  # The hourly trusted news workflow commits Catalyst history with GITHUB_TOKEN.
+  # Such pushes do not trigger other push workflows. workflow_run fires reliably.
+  workflow_run:
+    workflows:
+      - "SLI Secondary News Intelligence Index"
+    types: [completed]
+  schedule:
+    - cron: "7 3 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sli-private-catalyst-source-sync
+  cancel-in-progress: false
+
+jobs:
+  import:
+    name: Mirror public source history into private Cloudflare D1
+    if: ${{ github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: sli-user-intelligence-production
+    env:
+      CF_ACCOUNT_ID: ${{ secrets.SLI_CF_ACCOUNT_ID }}
+      CF_API_TOKEN: ${{ secrets.SLI_CF_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.SLI_CF_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.SLI_CF_API_TOKEN }}
+      SLI_ACCESS_AUD: ${{ vars.SLI_ACCESS_AUD }}
+      SLI_API_HOSTNAME: ${{ vars.SLI_API_HOSTNAME }}
+      SLI_ACCESS_ISSUER: ${{ vars.SLI_ACCESS_ISSUER }}
+      SLI_D1_DATABASE_ID: ${{ vars.SLI_D1_DATABASE_ID }}
+    defaults:
+      run:
+        working-directory: services/sli-user-intelligence
+    steps:
+      - name: Check out trusted default branch, never upstream artifacts
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate private Cloudflare scope and application protection
+        run: node scripts/cloudflare-activation-preflight.mjs
+      - name: Validate import and existing D1 isolation tests
+        run: |
+          node --test tests/*.test.mjs
+          python tests/test_migration.py
+      - name: Render ephemeral Wrangler config
+        run: node scripts/render-wrangler-config.mjs .
+      - name: Render validated public Catalyst SQL, excluding all user records
+        run: node scripts/build-d1-catalyst-import.mjs ../../data/sli-catalyst-history.json .catalyst-source-import.sql
+      - name: Import checked-out public Catalyst events into existing remote D1
+        run: npx --yes wrangler@4 d1 execute sli-user-intelligence --remote --config .wrangler.activation.toml --file .catalyst-source-import.sql --yes
+      - name: Confirm source checkpoint exists (no private data returned)
+        run: |
+          npx --yes wrangler@4 d1 execute sli-user-intelligence --remote --config .wrangler.activation.toml --command "SELECT key FROM service_state WHERE key='catalyst_source_sync'" --yes
+          echo "Remote public Catalyst source import completed; next Cloudflare cron reads D1 only."
