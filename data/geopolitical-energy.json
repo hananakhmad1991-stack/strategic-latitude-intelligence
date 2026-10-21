@@ -1,7 +1,24 @@
 {
-  "checked_at_utc": "2026-10-21T15:40:13.074629+00:00",
+  "checked_at_utc": "2026-10-21T18:41:18.281272+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
+    {
+      "topic": "Hormuz and Gulf energy",
+      "topic_id": "oil_shipping",
+      "type": "Maritime chokepoint",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "general",
+      "title": "Middle East oil exports climb back to prewar levels - Financial Times",
+      "publisher": "Financial Times",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRUpxSXBnV3lLb2hmSHBCc2sxQlgyVnhTSklvZEpnM21ZSGRMTHlOa1FEQnkwMDA3ME83Yjc1b1ZQQnJNSFlvN0J4ZWgyZHRnRXdpZWZ5VUVEMDd1eHh3WkJNZE5vckZjX1dXZ2lnUXpDa1dPV3dIVmdZWHlJbF9IaTRGSFc?oc=5",
+      "indexed_at_utc": "2026-10-21T12:01:37+00:00",
+      "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
     {
       "topic": "Hormuz and Gulf energy",
       "topic_id": "oil_shipping",
@@ -37,6 +54,23 @@
       "status": "Unverified aggregated news lead"
     },
     {
+      "topic": "Russia and energy sanctions",
+      "topic_id": "oil_sanctions",
+      "type": "Geoeconomic",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "upstream",
+      "title": "UK approves development of Jackdaw gasfield in North Sea - Financial Times",
+      "publisher": "Financial Times",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNZGxWWjZUZU50ZVc5TEJ6VmtPN0pBb1Mwa05hdGlLM2c0aEczSWhXYkthSy1FZFd4dkxBS01IdkstS2d6MGpfbnpNbkZwallQdlhsQ0lBSFJtRUNyWU1GNnlLRW82blhrZnEzalJGSWtIVXBYYWxMSWYxdmFoeGFFMExTTUI?oc=5",
+      "indexed_at_utc": "2026-10-20T21:20:35+00:00",
+      "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
       "topic": "Asian LNG and gas",
       "topic_id": "lng_asia",
       "type": "Gas supply",
@@ -62,7 +96,7 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil prices jump $2 as Iran knocks hopes of diplomatic progress - Reuters",
+      "title": "Oil prices steady as investors weigh progress on Russia-Ukraine talks against falling US oil stocks - Reuters",
       "publisher": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPNTdIRmp3MTB3c3JZNGxXMUl1Wk5haXFwcjdJNXgtQnJkOEM4aWVVWG5tai03TmhHSWZidkliV1VlRkRvOVJCX3Q3QXhCWVdZeXlYQmViOUdOaU85anVWMXpSWFNCOHAtVU5id3Fad1BhX1BzVEt6S1A4N2s1YjJocFh6QXFTVXhHdDJJVzZBX21WUQ?oc=5",
       "indexed_at_utc": "2026-10-21T00:50:00+00:00",
@@ -88,6 +122,23 @@
       "status": "Unverified aggregated news lead"
     },
     {
+      "topic": "Indonesian coal in global trade",
+      "topic_id": "coal_indonesia_trade",
+      "type": "Indonesia coal trade",
+      "sector": "coal",
+      "sector_tags": [
+        "coal"
+      ],
+      "subsector": "general",
+      "title": "Indonesia to allow ‘limited’ coal quota relaxation as prices surge - The Jakarta Post",
+      "publisher": "The Jakarta Post",
+      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQV2szek5rSWVuSG94RXhZZDFFUjF0cXM5cG5fQUdkb21LNVM5ekVBSGpnbF9nUzNIaW9DSzBsQ0hEdVJXWUY4R0pjN00yOV9hQUVUMWloX0kwY0p0OUxmWXZtenlpejdIM0NTSXFCZFBzVjRxTmRhMUJhY0FPc1IzYzdqVWk1LVZMRmtoS3BTTDY3dEdRcWdFdlZOUmRvSGY4anRma296VWRGdl90dk1pb19Xc3dvSFdKYXRGZnZlLXBqOXkzR2ZtR1NiV1FsWUthQ3lnOUtTcURESTJKdTU5WEo2cFB1RzZsQWFwaUhrTQ?oc=5",
+      "indexed_at_utc": "2026-10-20T06:06:05+00:00",
+      "impact_pathway": "Foreign buyer, sanctions and energy-security policy -> Indonesia coal exports and coal state-revenue exposure",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
       "topic": "Geothermal and renewable financing",
       "topic_id": "nre_geothermal",
       "type": "NRE investment",
@@ -106,8 +157,8 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 5,
-    "coal": 0,
+    "oil_gas": 7,
+    "coal": 1,
     "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
