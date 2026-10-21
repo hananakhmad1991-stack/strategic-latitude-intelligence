@@ -88,3 +88,23 @@ test("audit failures cannot be masked by stale positive counters",()=>{
  assert.equal(r.automation_reported_health,"unknown");
  assert.equal(r.commercial_release_ready,false);
 });
+
+test("health reconciliation identifies failures hidden by summary counters",()=>{
+ const f=fixture();
+ f.automation.summary.workflows=1;
+ f.automation.workflows=[{id:"scheduled.yml",last_run:{conclusion:"failure"}}];
+ f.automation.summary.datasets=1;
+ f.automation.datasets=[{id:"data/input.json",status:"workflow_failure"}];
+ const r=check(f);
+ assert.equal(r.automation_reported_health,"degraded");
+ assert.ok(r.warnings.includes("workflow_failure_counter_underreported"));
+ assert.ok(r.warnings.includes("dataset_failure_counter_underreported"));
+ assert.equal(r.commercial_release_ready,false);
+});
+test("source record can use official publisher URL query without enabling owner endpoint query",()=>{
+ const f=fixture();
+ f.index.records[0].source_url="https://data.bps.go.id/report?series=2025";
+ const r=check(f);
+ assert.equal(r.owner_staging_code_gate_pass,true);
+ assert.ok(!r.blockers.includes("source_index_records_fail_provenance_screen"));
+});
