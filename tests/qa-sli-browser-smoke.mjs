@@ -138,7 +138,7 @@ await check("Mobile homepage topics: responsive layout without extra library til
 });
 await check("Homepage KKP Marine: visible entry opens sourced fisheries intelligence", {width:1366,height:850},async page=>{
  await page.goto(pageUrl("index.html#home"),{waitUntil:"domcontentloaded",timeout:30000});
- const link=page.locator('#sliPortalSectors a[href="./marine-fisheries-intelligence.html"]').first();
+ const link=page.locator('.sli-portal-sectors a[href="./marine-fisheries-intelligence.html"]').first();
  await link.waitFor({state:"visible",timeout:20000});
  assert.match(await link.innerText(),/Marine|Kelautan/i,"Home must visibly introduce the marine domain");
  const visible=await link.getAttribute("href");assert.equal(visible,"./marine-fisheries-intelligence.html");
