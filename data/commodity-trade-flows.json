@@ -543,6 +543,10 @@
         },
         "notes": "Reporter Indonesia 2025 UN Comtrade via CorpLox, published 2026-09-07; exports USD 10 nominal; imports USD 81,767,197. Do not infer commercial export trade with Singapore from July 2026 CBET cooperation announcement. Malaysian mirror exports to Indonesia differ from Indonesia's importer declaration."
       }
-    ]
+    ],
+    "source_lineage": "Published UN Comtrade-derived partner/HS presentations from World Bank WITS and CorpLox, depending on product. These are secondary access layers and not an independently fetched BPS primary customs microdata export.",
+    "primary_reconciliation_status": "pending_independent_BPS_HS_partner_matrix",
+    "partner_coverage_rule": "Selected explicitly recorded partner rows; OTHER is computed from reported world total, UNKNOWN is no verified partner allocation.",
+    "primary_bps_query": "https://www.bps.go.id/assets/exim"
   }
 }
