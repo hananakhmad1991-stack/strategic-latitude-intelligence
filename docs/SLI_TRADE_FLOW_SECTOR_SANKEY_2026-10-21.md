@@ -24,6 +24,12 @@ Published `trade` matrix has exactly eight leaves: four agriculture subsectors �
 ## Mineral HS source transparency
 The 2025 mineral, coal, oil/gas and cross-border electricity HS-partner sample uses **UN Comtrade-derived figures served by intermediary presentations (World Bank WITS or CorpLox)**. This is not a direct BPS HS×partner extract. The SLI national 2026 trade header is a separately sourced official BPS release. The chart now links to the [BPS customs query portal](https://www.bps.go.id/assets/exim) and labels detailed BPS reconciliation as **pending**. Partial partner lists, computed residuals, unavailable reverse directions and uneven HS product coverage must remain visibly qualified.
 
+## Official primary BPS HS × country acquisition (post-audit expansion)
+- New metadata gate: `data/bps-hs-partner-matrix.json`, initially `awaiting_primary_extract` with zero verified bilateral cells.
+- Official import/verification tool: `scripts/import_bps_hs_partner.py`, row-level provenance and independent review attestation required before any Sankey values can be published.
+- When valid cells are available, `js/sli-sector-trade-sankey.js` shows a separate **verified BPS** lens (exact HS level, direction, period). Until then no empty/fabricated official BPS country Sankey is shown.
+- BPS 2025 annual exports and imports yearbooks identified, but the full direct HS-country cross-tab remains **not yet downloaded**; see [source-to-Sankey import protocol](SLI_BPS_HS_PARTNER_PRIMARY_IMPORT_2026-10-21.md). This is **not** a claim of complete primary-source integration.
+
 ## Strict presentation rules
 1. Never plot observed FOB/CIF USD, planned GW, and observed thousand BOE on one chart.
 2. Never mix full-year 2025 with Jan–Apr 2026 in a combined flow or total.
