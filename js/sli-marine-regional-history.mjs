@@ -91,7 +91,7 @@ async function mount(){
   const year=el("mfHistoryYear"),indicator=el("mfHistoryMetric"),sel=el("mfHistorySelected");
   function draw(){
    const s=selected(),rows=rowsForYear(s,state.year);
-   const table=el("mfHistoryRows");table.replaceChildren();
+   const table=el("mfKKPHistoryRows");table.replaceChildren();
    rows.forEach((r,i)=>{const tr=node("tr");for(const [j,v]of [i+1,r.province,fmt(r.value,s.unit==="ton"?2:0),fmt(r.value/s.national_totals[state.year-2019]*100,2)+"%"].entries())tr.append(node(j===1?"th":"td",j>1?"numeric":"",v));tr.addEventListener("click",()=>{state.selected=r.province;draw();});table.append(tr);});
    el("mfHistorySummary").textContent=t("Tahun ","Year ")+state.year+" · "+nameOf(s)+" · "+rows.length+" "+t("provinsi dengan angka","provinces reporting")+" · "+fmt(s.national_totals[state.year-2019],s.unit==="ton"?2:0)+" "+s.unit+". "+t("Sel kosong bukan nol.","Blanks are not zeros.");
    sel.textContent=state.selected?t("Provinsi dipilih: ","Selected province: ")+state.selected:t("Tren total nasional","National total trend");
