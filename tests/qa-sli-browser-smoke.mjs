@@ -467,6 +467,34 @@ await check("Macro institution independent BI and responsive mobile roster",{wid
  const metrics=await page.evaluate(()=>({width:innerWidth,scroll:document.documentElement.scrollWidth}));
  assert.ok(metrics.scroll<=metrics.width+16,"Cross-sector ministerial inspector overflows mobile viewport: "+JSON.stringify(metrics));
 });
+await check("KKP Marine atlas desktop: reconciled provinces, hatchery ranking, source status and CSV",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("marine-fisheries-intelligence.html#marine-source-atlas"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.locator("#mfAtlasProvinceChart .mf-atlas-bar-row").first().waitFor({timeout:25000});
+ assert.match(await page.locator("#mfAtlasProvinceSummary").innerText(),/37/);
+ assert.equal(await page.locator("#mfAtlasSourceCards .mf-atlas-source-card").count(),25);
+ assert.equal(await page.locator("#mfAtlasSeedList .mf-atlas-seed-item").count(),12);
+ await page.locator("#mfAtlasProvinceMetric").selectOption("seaweed_growout_2024");
+ assert.match(await page.locator("#mfAtlasProvinceSummary").innerText(),/26/);
+ assert.equal((await page.locator("#mfAtlasProvinceChart .mf-atlas-bar-row").first().innerText()).includes("Sulawesi Selatan"),true);
+ await page.locator("#mfAtlasProvinceQuery").fill("Kalimantan Utara");
+ assert.equal(await page.locator("#mfAtlasProvinceChart .mf-atlas-bar-row").count(),1);
+ await page.locator("#mfAtlasProvinceQuery").fill("");
+ await page.locator("#mfAtlasAllButton").click();
+ assert.equal(await page.locator("#mfAtlasProvinceChart .mf-atlas-bar-row").count(),26);
+ await page.locator("#mfAtlasSourceStatus").selectOption("candidate");
+ assert.equal(await page.locator("#mfAtlasSourceCards .mf-atlas-source-card").count(),22);
+ await page.locator("#mfAtlasSourceGroup").selectOption("trade");
+ assert.ok(await page.locator("#mfAtlasSourceCards .mf-atlas-source-card").count()>=3);
+ const links=await page.locator("#mfAtlasSourceCards .mf-atlas-source-card a").evaluateAll(items=>items.every(x=>new URL(x.href).hostname==="portaldata.kkp.go.id"));
+ assert.ok(links,"Official source URLs must lead to portaldata.kkp.go.id");
+});
+await check("KKP Marine atlas mobile: usable controls without horizontal overflow",{width:390,height:844},async page=>{
+ await page.goto(pageUrl("marine-fisheries-intelligence.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.locator("#mfAtlasSourceCards .mf-atlas-source-card").first().waitFor({timeout:25000});
+ const m=await page.evaluate(()=>({inner:innerWidth,document:document.documentElement.scrollWidth,rows:document.querySelectorAll("#mfAtlasSeedList .mf-atlas-seed-item").length}));
+ assert.ok(m.document<=m.inner+16,"KKP atlas mobile overflow: "+JSON.stringify(m));
+ assert.equal(m.rows,12);
+});
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");
 console.log("Browser smoke:",report.tests.filter(x=>x.status==="pass").length,"passed /",report.tests.length,"total");
