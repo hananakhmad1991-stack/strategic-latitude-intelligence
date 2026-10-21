@@ -65,7 +65,7 @@ footer{margin-top:30px;border-top:1px solid #2b4761;padding-top:22px;color:var(-
 <div class="tags"><span>38 provinsi + Indonesia</span><span>23 tren nasional</span><span>9 indikator provinsi pilihan</span><span>165 tabel sumber diinventarisasi</span><span>Rilis BPS 5 Okt 2026</span></div>
 <p class="subtle" id="sourceDate">Memuat tanggal sumber BPS…</p>
 </section>
-<p class="notice"><strong>Status data:</strong> Tampilan ini adalah pilot digitalisasi, bukan replika seluruh publikasi 558 halaman. Pemeriksaan struktur otomatis telah dilakukan; verifikasi visual tiap sel, keterkaitan RSE dan izin reproduksi komersial data BPS masih terbuka. <strong>NA bukan 0.</strong> Jangan menyimpulkan hubungan sebab-akibat dari perbedaan provinsi.</p>
+<p class="notice"><strong>Status data:</strong> Tampilan ini adalah pilot digitalisasi, bukan replika seluruh publikasi 558 halaman. Pemeriksaan struktur otomatis telah dilakukan; verifikasi visual seluruh sel, penyelesaian RSE untuk indikator lain, dan izin reproduksi komersial data BPS masih terbuka. <strong>NA bukan 0.</strong> Jangan menyimpulkan hubungan sebab-akibat dari perbedaan provinsi.</p>
 <div id="status" class="status" role="status" aria-live="polite">Memuat dataset SLI…</div>
 <section class="card" aria-label="Pemilihan indikator">
 <h2>Jelajahi menurut sektor</h2>
@@ -102,16 +102,16 @@ footer{margin-top:30px;border-top:1px solid #2b4761;padding-top:22px;color:var(-
 <div><label for="provinceSearch">Cari provinsi</label><input id="provinceSearch" placeholder="Contoh: Papua / Jawa / Aceh"></div>
 <div><label for="sortMode">Urutan</label><select id="sortMode"><option value="descending">Angka tertinggi</option><option value="ascending">Angka terendah</option><option value="alphabetical">Nama provinsi A–Z</option></select></div>
 </div>
-<div class="table-wrap" role="region" tabindex="0" aria-label="Tabel statistik provinsi"><table><thead><tr><th>Urutan</th><th>Provinsi</th><th>Nilai (%)</th></tr></thead><tbody id="provinceRows"></tbody></table></div>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Tabel statistik provinsi"><table><thead><tr><th>Urutan</th><th>Provinsi</th><th>Nilai (%)</th><th>RSE (%)</th><th>CI 95% (%)</th><th>Presisi</th></tr></thead><tbody id="provinceRows"></tbody></table></div>
 <p class="note" id="tableCount"></p>
 </div>
 </section>
 <section class="card">
 <header><div><p class="eyebrow">Research AI / Bukti &amp; sumber</p><h2>Jalur analisis lintas sektor</h2></div></header>
 <p>Dataset terkurasi ini disiapkan untuk pengambilan bukti DERGUBA AI Owner Test. Pertanyaan riset dapat mencakup kesenjangan akses internet–uang elektronik, BPJS, listrik, dukungan sosial, maupun pendidikan, lalu dibandingkan dengan indikator sektor lain. <strong>Ini perbandingan deskriptif, bukan bukti sebab-akibat.</strong></p>
-<div class="actions"><button id="copyQuestion" type="button" class="btn primary">Salin pertanyaan riset bersumber</button><a class="btn" href="./sli-research-ai.html">Buka DERGUBA AI ↗</a><button id="csvButton" type="button" class="btn">Ekspor 7 indikator provinsi (CSV)</button><a id="sourceBps" href="https://www.bps.go.id" target="_blank" rel="noopener noreferrer" class="btn">Publikasi resmi BPS ↗</a></div>
+<div class="actions"><button id="copyQuestion" type="button" class="btn primary">Salin pertanyaan riset bersumber</button><a class="btn" href="./sli-research-ai.html">Buka DERGUBA AI ↗</a><button id="csvButton" type="button" class="btn">Ekspor 9 indikator provinsi (CSV)</button><a id="sourceBps" href="https://www.bps.go.id" target="_blank" rel="noopener noreferrer" class="btn">Publikasi resmi BPS ↗</a></div>
 <p id="copyStatus" class="note" aria-live="polite"></p>
-<p class="note">Sampling error/RSE dari bab 9 wajib diperiksa sebelum memakai angka berpresisi rendah untuk kesimpulan kebijakan. Istilah sumber, penyebut, periode pengamatan dan perbedaan kategori disertakan pada selector indikator.</p>
+<p class="note">Bab IX: RSE dan interval kepercayaan 95% telah ditautkan untuk lima indikator dengan pasangan tabel yang tepat (jaminan kesehatan, penerangan tanpa listrik, gas memasak, BPNT/Sembako, uang elektronik). Empat indikator lain masih tanpa tautan RSE yang setara. RSE >25%–50% perlu hati-hati; RSE >50% tidak andal dan tidak dimasukkan ke peringkat. Istilah sumber, penyebut, periode pengamatan dan perbedaan kategori disertakan pada selector indikator.</p>
 </section>
 <footer>Sumber: BPS, <em>Statistik Kesejahteraan Rakyat 2026</em> (Katalog 4101002), Susenas Maret 2026. <a id="sourceFoot" href="https://www.bps.go.id" target="_blank" rel="noopener noreferrer">Buka sumber resmi BPS ↗</a> · SLI Data QA: pilot terkurasi, bukan data real-time atau hasil inferensi kausal.</footer>
 </main>
