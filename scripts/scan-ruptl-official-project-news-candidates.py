@@ -16,7 +16,7 @@ from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
 
 PAGES=[
- ("PLN", "https://web.pln.co.id/media/siaran-pers", "web.pln.co.id"),
+ ("PLN", "https://www.pln.co.id/news/press-release", "www.pln.co.id"),
  ("ESDM Berita", "https://www.esdm.go.id/id/media-center/arsip-berita", "www.esdm.go.id"),
  ("ESDM Siaran Pers", "https://www.esdm.go.id/id/media-center/siaran-pers", "www.esdm.go.id"),
  ("Medco Power operator evidence", "https://medcopower.co.id/id/project/medco-solar-bali-timur/", "medcopower.co.id"),
@@ -71,7 +71,7 @@ def main():
     if not title or not href:continue
     destination=urljoin(url,html.unescape(href))
     parsed=urlparse(destination)
-    if parsed.scheme not in ("https",) or parsed.hostname not in ("web.pln.co.id","www.esdm.go.id","medcopower.co.id","www.irt.co.id"):continue
+    if parsed.scheme not in ("https",) or parsed.hostname not in ("www.pln.co.id","web.pln.co.id","www.esdm.go.id","medcopower.co.id","www.irt.co.id"):continue
     hit=mentions(title,terms)
     if not hit:continue
     key=(destination,publisher)
