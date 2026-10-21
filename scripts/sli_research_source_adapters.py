@@ -148,3 +148,40 @@ def adapted_rows(name,d):
     x.get("role"),"institutional mandate","Role boundary: "+str(x.get("limit")),"Official institution",
     "Curated governance description, not independently verified current law or direct reporting chart.")
    if out:yield out
+
+ # KKP hatchery 2024: qualified numeric evidence, never 1,387-row or current-supply claims.
+ if name=="sli-kkp-portal-screened-2024.json":
+  for series in (d.get("province_indicators") or []):
+   if series.get("year")!=2024:continue
+   field=series.get("id");url=series.get("source_url");unit=series.get("unit")
+   out=record(("province_indicators",field,"national_total"),
+    "KKP 2024 national · "+str(series.get("label_en")),url,"2024",
+    series.get("national_total"),unit,"2024 observed national total, source-reconciled against printed table.","KKP",
+    "Observation 2024, not 2026 current-year statistic; 2025 estimate excluded.")
+   if out:yield out
+   ranked=sorted(series.get("rows") or [],key=lambda x:-x.get("value",0))[:5]
+   for i,x in enumerate(ranked):
+    out=record(("province_indicators",field,"top5",str(i)),
+     "KKP 2024 "+str(series.get("label_en"))+" · "+str(x.get("province")),url,"2024",
+     x.get("value"),unit,"Published 2024 province cell; one of top five reporting provinces.","KKP",
+     "Missing provinces are not zero; province split boundaries require harmonization.")
+    if out:yield out
+  seed=d.get("seed_species") or {};url=seed.get("source_url")
+  if seed.get("year")==2024:
+   for i,x in enumerate((seed.get("rows") or [])[:12]):
+    out=record(("seed_species","rows",str(i)),
+     "KKP 2024 seed category · "+str(x.get("species")),url,"2024",
+     x.get("value"),"ribu ekor","KKP published selected species-category ranking.","KKP",
+     "Partial top-12 category ranking, not complete 1,387 district/commodity records, and not fish tonnes.")
+    if out:yield out
+  district=d.get("seed_district_top_rows") or {};url=district.get("source_url")
+  if district.get("year")==2024 and district.get("status")=="source_visible_top_10_only_not_full_1387":
+   for i,x in enumerate((district.get("rows") or [])[:10]):
+    out=record(("seed_district_top_rows","rows",str(i)),
+     "KKP 2024 seed · "+str(x.get("species"))+" · "+str(x.get("district"))+" · "+str(x.get("province")),
+     url,"2024",x.get("volume_ribu_ekor"),"ribu ekor",
+     "District commodity observation; reported value Rp "+str(x.get("value_rp_million"))+
+     " million; weighted price Rp "+str(x.get("weighted_price_rp_per_thousand"))+
+     "/ribu ekor; 2024, released "+str(district.get("source_release"))+".","KKP",
+     "Exactly 10 public table rows, NOT the full 1,387 rows. Weighted prices rounded. No district total or current availability inference.")
+    if out:yield out

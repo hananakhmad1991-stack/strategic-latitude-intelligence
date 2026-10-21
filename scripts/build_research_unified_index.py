@@ -50,7 +50,6 @@ def safeurl(x):
  try:
   u=urllib.parse.urlparse(x.strip())
   if u.scheme!="https" or not u.hostname or u.username or u.password or u.port not in (None,443):return None
-  # urlparse accepts pseudo-domains with spaces, e.g. https:// official source.
   if "." not in u.hostname or re.search(r"\s",u.hostname) or not re.fullmatch(r"[a-zA-Z0-9.-]+",u.hostname):return None
   if u.hostname in ("localhost","127.0.0.1") or u.hostname.endswith((".internal",".local")):return None
   return x.strip()[:700]
@@ -72,7 +71,6 @@ def walk(value,path=(),depth=0):
  if depth>MAX_DEPTH:return
  if isinstance(value,dict):
   # A source must be local to a record, never inferred from an unrelated sibling.
-  # Example/schema fields are documentation, never dated empirical observations.
   if len(path)>=1 and not any(p.lower() in ("schema","example","template") for p in path) and rec_source(value) and rec_title(value):
    yield path,value
   if depth<MAX_DEPTH:
@@ -115,7 +113,7 @@ def build():
   candidates=0
   # Food governance has 24 source-linked entities; keep all rather than drop two
   # due to the standard 22-record quota. Other datasets retain their normal cap.
-  quota=30 if file.name=="sli-marine-fisheries-kkp.json" else (28 if file.name=="food-governance-hierarchy.json" else LIMIT_PER_DATASET)
+  quota=40 if file.name=="sli-kkp-portal-screened-2024.json" else (30 if file.name=="sli-marine-fisheries-kkp.json" else (28 if file.name=="food-governance-hierarchy.json" else LIMIT_PER_DATASET))
   for path,r in chain(walk(raw),adapted_rows(file.name,raw)):
    # Source-curated KKP numeric observations only: never index estimate-only,
    # catalog-only thematic entries, or DCAT metadata as historic realized data.

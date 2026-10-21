@@ -1,0 +1,39 @@
+name: SLI BPS Agriculture and Horticulture 2026 Source QA
+on:
+  push:
+    paths:
+      - 'data/sli-bps-agri-horti-2026-source-register.json'
+      - 'js/sli-bps-agri-horti-source-panel.js'
+      - 'css/sli-bps-agri-horti-source-panel.css'
+      - 'food-agriculture-intelligence.html'
+      - 'marine-fisheries-intelligence.html'
+      - 'tests/qa-sli-bps-agri-horti-2026.cjs'
+      - 'research-api/src/dashboard-corpus.mjs'
+      - '.github/workflows/sli-bps-agri-horti-2026-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-catalogue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Statistically accurate catalog, zero rights-bypassing numeric republication
+        run: |
+          node --check js/sli-bps-agri-horti-source-panel.js
+          node --check research-api/src/dashboard-corpus.mjs
+          node tests/qa-sli-bps-agri-horti-2026.cjs
+          python - <<'PY'
+          import json
+          f=json.load(open('data/sli-bps-agri-horti-2026-source-register.json',encoding='utf-8'))
+          assert f['table_count']==82
+          assert f['rights_status']=='commercial_reproduction_requires_written_bps_permission'
+          assert f['coverage']['all_verified_numeric_cells_public']==0
+          assert all('written_permission_not_on_file'==d['rights_review_status'] for d in f['documents'])
+          assert not any(any(key in r for key in ('phone','address','raw_row','numeric_values')) for r in f['research_records'])
+          print('BPS two publications: metadata-only source index accepted; no leaked directory contacts or numeric reproduction.')
+          PY

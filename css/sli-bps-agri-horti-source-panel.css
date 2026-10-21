@@ -1,0 +1,15 @@
+
+/* BPS source locator only. Numeric reproduction remains gated on BPS written permission. */
+#faBPS2026Catalog{padding:18px;border:1px solid #466878;border-radius:12px;background:#112c3b;color:#d8e4e8}
+#faBPS2026Catalog h3{margin:0 0 10px;font-size:18px;color:#f0d49c}
+#faBPS2026Catalog .fa-bps-notice{max-width:1100px;color:#d3e0e6;line-height:1.65;font-size:13px}
+#faBPS2026Catalog .fa-bps-meta{font-size:12px;color:#bbccda;margin:10px 0}
+#faBPS2026Catalog .fa-bps-filters{display:grid;grid-template-columns:1fr 2fr;gap:12px;margin:12px 0}
+#faBPS2026Catalog select,#faBPS2026Catalog input{min-width:0;min-height:38px;background:#0a2030;border:1px solid #658091;border-radius:7px;color:#f0f6f8;padding:9px;font:12px system-ui}
+#faBPS2026Catalog .fa-bps-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:9px;max-height:480px;overflow:auto}
+#faBPS2026Catalog .fa-bps-entry{border:1px solid #466278;background:#092334;border-radius:9px;padding:12px;display:flex;flex-direction:column;gap:6px}
+#faBPS2026Catalog .fa-bps-entry strong{font-size:13px;color:#f1d7a7}
+#faBPS2026Catalog .fa-bps-entry p{font-size:12px;color:#cedee5;margin:0}
+#faBPS2026Catalog .fa-bps-entry small{font-size:11px;color:#abc4d4}
+#faBPS2026Catalog .fa-bps-entry a{font-size:11px;color:#f7d99e}
+@media(max-width:650px){#faBPS2026Catalog .fa-bps-filters{grid-template-columns:1fr}}
