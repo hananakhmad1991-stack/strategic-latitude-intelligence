@@ -63,7 +63,7 @@ test("Search index source records and specialist deep links stay real",()=>{
   ["food-agriculture-intelligence.html","food"],
   ["policy-regulatory-intelligence.html","policy"],
   ["ai-intelligence-hub.html","ai"],
-  ["sli-research-ai.html","overview"]
+  ["sli-research-ai.html","methodology"]
  ];
  for(const [path,page] of pairs)assert.ok(registry.entries.some(e=>e.path===path&&e.page===page),"Unindexed specialist route: "+path);
 });
