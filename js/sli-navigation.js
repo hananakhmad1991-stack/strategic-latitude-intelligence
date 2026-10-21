@@ -1,8 +1,8 @@
-/* SLI shared information architecture · one overview, evidence in chapters, one glossary.
+/* SLI sector-first navigation · one Home portal, evidence owned by topic dashboards, one glossary.
    Static local links only, no analytics, redirects, network dependency or injected source data. */
 (()=>{'use strict';
 const groups=[
- ['Start & research tools','Mulai & perangkat riset','overview','terminal','research','guide','membership'],
+ ['Start & research tools','Mulai & perangkat riset','terminal','research','guide','membership'],
  ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','investment','entities','province','opportunity','gini','labs'],
  ['Energy, minerals & trade','Energi, mineral & perdagangan','energy','electricity','ruptl','minerals','trade','map'],
  ['Food, marine & fisheries','Pangan, kelautan & perikanan','food','marine'],
@@ -11,7 +11,8 @@ const groups=[
  ['Reference & quality','Referensi & kualitas','glossary','freshness']
 ];
 const modules={
- overview:['Full Overview · Strategic picture','Overview Lengkap · Gambaran Strategis','index.html#overview','National executive context; go deeper for tables, project records and source detail.','Konteks nasional; buka modul detail untuk tabel dan sumber.'],
+ overview:['Home · Intelligence portal','Beranda · Portal intelijen','index.html#home','Enter SLI through sector-owned research and dated public data.','Masuk ke riset sektoral dan data publik bertanggal melalui beranda.'],
+ home:['Home · Intelligence portal','Beranda · Portal intelijen','index.html#home','Find sectors and source-dated intelligence.','Temukan sektor dan intelijen bersumber bertanggal.'],
  datahub:['SLI Data Library · BPS / IEA / PLN','Perpustakaan Data SLI · BPS / IEA / PLN','sli-sector-data-library.html','Source-linked, dated crime, democracy, socioeconomic, critical mineral and environmental data; no missing figures invented.','Dataset kriminalitas, demokrasi, sosial-ekonomi, mineral IEA dan lingkungan, dengan periode serta status sumber yang jelas.'],
  terminal:['SLI Decision Terminal · Cross-source workspace','SLI Decision Terminal · Workspace lintas sumber','sli-decision-terminal.html','Issuer, attributed-news and policy search with local watchlists and Research AI handoff. Not a live trading terminal.','Pencarian emiten, berita, dan regulasi dengan watchlist lokal serta jalur DERGUBA AI. Bukan terminal perdagangan langsung.'],
  research:['DERGUBA AI · SLI Research Intelligence · Owner Test','DERGUBA AI · Asisten Riset SLI · Uji Pemilik','sli-research-ai.html','Owner-only generative research is in limited testing; subscriber access is not active.','Riset generatif masih uji khusus pemilik dengan sumber terbatas; akses pelanggan belum aktif.'],
@@ -61,13 +62,13 @@ const related={
  glossary:['guide','freshness'],freshness:['glossary','guide'],methodology:['glossary','guide','freshness'],about:['guide','overview'],guide:['overview','glossary','freshness']
 };
 const path=location.pathname.split('/').pop()||'index.html';
-const page=()=>path==='index.html'?((!location.hash||location.hash==='#home'||location.hash==='#sliPortalSectors')?'home':(modules[location.hash.slice(1)]?location.hash.slice(1):'overview')):(Object.keys(modules).find(id=>modules[id][2].split('#')[0]===path)||'detail');
+const page=()=>path==='index.html'?((!location.hash||location.hash==='#home'||location.hash==='#overview'||location.hash==='#sliPortalSectors')?'home':(modules[location.hash.slice(1)]?location.hash.slice(1):'home')):(Object.keys(modules).find(id=>modules[id][2].split('#')[0]===path)||'detail');
 const lang=()=>window.SLIi18n?.language==='id'||document.documentElement.lang==='id'||(!window.SLIi18n&&(()=>{try{return localStorage.getItem('sli-ui-language')==='id'}catch{return false}})())?'id':'en';
 const text=(en,id)=>lang()==='id'?id:en;
 const label=id=>id==='detail'?(document.title||document.querySelector('h1')?.textContent||'SLI Dashboard').split('|')[0].trim().slice(0,90):(modules[id]?.[lang()==='id'?1:0]||id);
 const href=id=>'./'+modules[id][2];
 function node(tag,classes,txt){const n=document.createElement(tag);if(classes)n.className=classes;if(txt)n.textContent=txt;return n}
-const moduleIcon=Object.freeze({overview:'government',terminal:'technology',research:'technology',entities:'building',investment:'project',macro:'project',opportunity:'project',province:'globe',energy:'energy',food:'government',marine:'globe',map:'globe',trade:'globe',minerals:'mineral',electricity:'energy',ruptl:'energy',ai:'technology',aihub:'technology',policy:'government',geopolitics:'globe',climate:'globe',ria:'government',guide:'link',glossary:'link',freshness:'project'});
+const moduleIcon=Object.freeze({home:'globe',overview:'government',terminal:'technology',research:'technology',entities:'building',investment:'project',macro:'project',opportunity:'project',province:'globe',energy:'energy',food:'government',marine:'globe',map:'globe',trade:'globe',minerals:'mineral',electricity:'energy',ruptl:'energy',ai:'technology',aihub:'technology',policy:'government',geopolitics:'globe',climate:'globe',ria:'government',guide:'link',glossary:'link',freshness:'project'});
 function link(id,cls){const a=node('a',cls),identity=window.SLIEntityIdentity;if(identity){const i=identity.icon(moduleIcon[id]||'building');i.classList.add('sli-nav-icon');a.append(i)}a.append(node('span','',label(id)));a.href=href(id);return a}
 
 /* Unified SLI masthead for detailed dashboards. Index #home and Research AI
@@ -85,8 +86,8 @@ function syncPlatformMastOffset(){
 }
 function renderPlatformMast(){
  const use=dashboardPage();
- // A single shared Explore Data menu on Home, Full Overview, and sector dashboards.
- const homepage=path==='index.html'&&(document.body.classList.contains('sli-home-active')||!location.hash||location.hash==='#home');
+ // A single shared Explore Data menu on Home and sector dashboards.
+ const homepage=path==='index.html'&&(document.body.classList.contains('sli-home-active')||!location.hash||location.hash==='#home'||location.hash==='#overview');
  document.body.classList.toggle('sli-dashboard-unified',use&&!homepage);
  let mast=document.getElementById('sliPlatformMast');
  if(!use){if(mast)mast.hidden=true;syncPlatformMastOffset();return}
@@ -102,7 +103,7 @@ function renderPlatformMast(){
  const names=node('span','sli-platform-brand-name');names.append(node('strong','', 'STRATEGIC LATITUDE'),node('small','', 'INTELLIGENCE'));brand.append(names);
  const primary=node('nav','sli-platform-links');primary.setAttribute('aria-label','Main SLI navigation');
  const current=page();
- primary.append(mastLink('./index.html#home',text('Home','Beranda'),false));
+ primary.append(mastLink('./index.html#home',text('Home','Beranda'),current==='home'));
  const explorer=node('details','sli-platform-explorer'),summary=node('summary','',text('Explore Data','Jelajahi Data'));
  summary.setAttribute('aria-haspopup','true');summary.setAttribute('aria-expanded','false');
  explorer.addEventListener('toggle',()=>{
@@ -171,7 +172,7 @@ function renderPlatformMast(){
  primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
  primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'||path==='sli-issuer.html'));
  primary.append(mastLink('./sli-research-ai.html','DERGUBA AI',false));
- primary.append(mastLink('./index.html#overview',text('Full Overview','Overview Lengkap'),path==='index.html'&&current==='overview'));
+ 
  const tools=node('div','sli-platform-tools');
  // All specialist dashboards share the same persisted EN/ID preference as the homepage.
  // Never show a decorative language button that does not apply the language.
