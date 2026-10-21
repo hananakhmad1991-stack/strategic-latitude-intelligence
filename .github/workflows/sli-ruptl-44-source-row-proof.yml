@@ -1,6 +1,12 @@
 name: SLI RUPTL 44 Source-Row Original PDF Proof
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/verify-ruptl-expanded-original-source-rows.py'
+      - 'data/sli-ruptl-expanded-22-annex-source-rows.json'
+      - '.github/workflows/sli-ruptl-44-source-row-proof.yml'
   pull_request:
     paths:
       - 'scripts/verify-ruptl-expanded-original-source-rows.py'
