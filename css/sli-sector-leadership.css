@@ -1,0 +1,43 @@
+/* Shared SLI ministry hierarchy; all sectors reuse one dated agency register. */
+.sli-ministry-mount{margin:18px 0 24px;min-width:0;color:#eaf3fa}
+.sli-ministry-section{padding:22px;border:1px solid #42637b;border-radius:16px;background:linear-gradient(145deg,#102b41,#0c2032);color:#eaf4f9}
+.sli-ministry-heading h3{font:500 clamp(20px,2.4vw,30px)/1.25 Georgia,serif;color:#f2d59f;margin:6px 0}
+.sli-ministry-heading p{margin:5px 0 15px;color:#c6d7e3;max-width:1080px;line-height:1.8}
+.sli-ministry-overline{font-size:11px;letter-spacing:.14em;color:#e8c379;font-weight:750}
+.sli-ministry-tools{display:flex;gap:9px;flex-wrap:wrap;padding-bottom:8px;align-items:center}
+.sli-ministry-tools input,.sli-ministry-tools select,.sli-ministry-tools button{font:inherit;font-size:12px;background:#1a3950;color:#f0f7fa;border:1px solid #67879d;padding:10px;border-radius:10px;min-height:42px}
+.sli-ministry-tools select{min-width:175px;max-width:290px}.sli-ministry-tools input{flex:1;min-width:180px}
+.sli-ministry-tools button{cursor:pointer}
+.sli-ministry-tools button:hover,.sli-ministry-expand:hover,.sli-ministry-subtoggle:hover{background:#28516d}
+.sli-ministry-count{color:#c9d7df;font-size:12px;margin:7px 0 13px}
+.sli-ministry-layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(280px,.9fr);gap:14px;align-items:start}
+.sli-ministry-tree{background:#0b2438;border:1px solid #36596e;border-radius:13px;padding:15px;min-width:0}
+.sli-ministry-president{border:2px solid #d7ba78;border-radius:12px;max-width:450px;margin:0 auto 22px;padding:12px 16px;text-align:center;background:#24465f;display:grid;gap:5px;position:relative}
+.sli-ministry-president:after{content:"";position:absolute;left:50%;bottom:-24px;height:21px;border-left:2px solid #d7ba78}
+.sli-ministry-president small{font-size:10px;letter-spacing:.1em;color:#e7bf76}.sli-ministry-president strong{font-size:14px}.sli-ministry-president span{font-size:12px;color:#c5d9e6}
+.sli-ministry-agencies{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(265px,100%),1fr));gap:12px}
+.sli-ministry-agency{border:1px solid #50738b;border-radius:12px;background:#132f44;padding:12px;min-width:0}
+.sli-ministry-agency-name{font-size:12px;text-transform:uppercase;color:#eed19a;margin-bottom:12px;font-weight:750;letter-spacing:.035em}
+.sli-ministry-node{background:#1d4157;border:1px solid #54798c;border-radius:10px;padding:9px 11px;display:block;width:100%;text-align:left;color:#f0f4f8;font:inherit;cursor:pointer;min-height:66px}
+.sli-ministry-node:hover{background:#2d566c}.sli-ministry-node.selected{border:2px solid #e8c87f}
+.sli-ministry-node-line{display:flex;align-items:start;justify-content:space-between;gap:6px}
+.sli-ministry-node-line strong{font-size:12px;line-height:1.5}.sli-ministry-badge{color:#e4c684;background:#173346;border-radius:5px;font-size:9px;padding:3px 5px;font-weight:800}
+.sli-ministry-name{display:block;color:#e3c483;font-size:12px;margin-top:4px}
+.sli-ministry-deputies,.sli-ministry-units{display:grid;gap:8px;margin:8px 0}
+.sli-ministry-deputies{padding-left:10px;border-left:2px solid #e5bd71}
+.sli-ministry-expand,.sli-ministry-subtoggle{padding:8px 10px;color:#e0eaf2;background:#1a3c53;border:1px solid #56778d;border-radius:9px;cursor:pointer;width:100%;font-size:11px;text-align:left;margin:5px 0}
+.sli-ministry-units{border-left:2px dashed #73b6c8;padding-left:10px}
+.sli-ministry-unit{min-width:0}.sli-ministry-internal{display:grid;gap:6px;padding-left:12px}
+.sli-ministry-inspector{position:sticky;top:calc(var(--sli-mast-offset,90px) + 14px);background:#142f45;border:1px solid #476b82;border-radius:13px;padding:19px;max-height:80vh;overflow:auto;min-width:0}
+.sli-ministry-kicker{display:block;color:#e7c47e;font-weight:800;font-size:10px;letter-spacing:.1em;margin-bottom:15px}
+.sli-ministry-inspector h4{font-family:Georgia,serif;color:#ffe4b2;font-size:24px;margin:0 0 8px;line-height:1.3}
+.sli-ministry-entity{color:#b5d5e5;font-size:13px;margin:0 0 14px}
+.sli-ministry-person{display:block;color:#ebc379;font-size:20px;line-height:1.4;margin-bottom:7px}
+.sli-ministry-check{font-size:11px;color:#c8d1dd;margin:8px 0}
+.sli-ministry-inspector>p{line-height:1.75;color:#dce7ef}
+.sli-ministry-source{display:block;margin-top:14px;color:#bee6ff;text-decoration:underline;text-underline-offset:4px;font-size:12px;overflow-wrap:anywhere}
+.sli-ministry-alert{border-left:2px solid #e6c07a;background:#1e374b;padding:10px;font-size:12px}
+.sli-ministry-warning{background:#102737;border-left:3px solid #c49d60;color:#d1dbe4;font-size:12px;padding:10px 13px;margin:18px 0 0}
+.sli-ministry-tools :is(input,select,button):focus-visible,.sli-ministry-node:focus-visible,.sli-ministry-expand:focus-visible{outline:2px solid #f4ce77;outline-offset:3px}
+@media(max-width:960px){.sli-ministry-layout{grid-template-columns:1fr}.sli-ministry-inspector{position:static;max-height:none}}
+@media(max-width:600px){.sli-ministry-section{padding:14px 10px}.sli-ministry-agencies{grid-template-columns:1fr}.sli-ministry-tools :is(input,select){width:100%;max-width:none;flex:1 0 100%}}
