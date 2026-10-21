@@ -89,5 +89,8 @@
   "source_class": "official_attributed_reported_actual_2025",
   "unsupported_csv": "https://bursaikan.kkp.go.id/statistik-perikanan/export/7",
   "unsupported_csv_status": "404 when reviewed 2026-10-21",
-  "validation_rule": "Visible ribbons must equal one published product-group OR market-group amount. Do not fabricate counterpart country/product links, do not infer residual as official exact."
+  "validation_rule": "Visible ribbons must equal one published product-group OR market-group amount. Do not fabricate counterpart country/product links, do not infer residual as official exact.",
+  "trade_surplus_reported_musd": 5600,
+  "trade_surplus_precision": "rounded 2025 KKP official claim based on BPS; NOT obtained by subtracting the displayed rounded fishery exports from an unobserved import total",
+  "trade_surplus_source_url": "https://www.kkp.go.id/news/news-detail/produk-perikanan-indonesia-makin-bernilai-di-pasar-internasional-LvAA.html"
 }
