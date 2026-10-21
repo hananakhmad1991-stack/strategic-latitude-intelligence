@@ -118,7 +118,7 @@ test("Find candidate untranslated page prose as transparent QA review queue",()=
   version:"2026-10-19",languages:["en","id"],scope:"Static HTML candidate audit; includes official/source text and EN-only fallback content",pages:rows.length,
   candidateCount:remaining,rows:rows.filter(x=>x.candidates>0).sort((a,b)=>b.candidates-a.candidates)
  },null,2)+"\n","utf8");
- assert.ok(remaining<=345,"New English/source-text candidates exceed the post-review budget (310 at 2026-10-20); inspect source headings, do not fake coverage");
+ assert.ok(remaining<=190,"New English/source-text candidates exceed the post-review budget (310 at 2026-10-20); inspect source headings, do not fake coverage");
   for(const [page,ceiling] of [["sli-user-guide.html",35],["sli-glossary-methodology.html",30]]){
     const found=rows.find(x=>x.page===page);
     assert.ok(found&&found.candidates<=ceiling,"Priority bilingual guide/glossary content regressed: "+page);
