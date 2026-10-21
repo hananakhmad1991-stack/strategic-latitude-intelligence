@@ -1,0 +1,24 @@
+import {test} from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+const read=p=>JSON.parse(readFileSync(new URL("../"+p,import.meta.url),"utf8"));
+test("RUPTL sources must not contradict 1,253-page original recovery and visualised raw 970 / sampled 92",()=>{
+ const n=read("data/pln-ruptl-2025-2034-verified-extract.json");
+ const p=read("data/sli-ruptl-primary-pdf-2025-2034.json");
+ const a=read("data/sli-ruptl-970-raw-grid-candidates-review.json");
+ const b=read("data/sli-ruptl-expanded-22-annex-source-rows.json");
+ assert.equal(n.full_original_ruplt_review.source_sha256,p.source.sha256);
+ assert.equal(n.full_original_ruplt_review.source_sha256,a.source_pdf_sha256);
+ assert.equal(n.full_original_ruplt_review.source_sha256,b.source_sha256);
+ assert.equal(n.full_original_ruplt_review.total_pdf_pages,1253);
+ assert.equal(n.full_original_ruplt_review.original_machine_grid_candidates_review_only,970);
+ assert.equal(n.full_original_ruplt_review.source_sample_rows_published,92);
+ assert.equal(n.full_original_ruplt_review.validated_2026_operating_records_from_pdf_plan,0);
+ assert.equal(n.national.planned_generation_and_storage_mw,p.official_decree_totals.new_capacity_and_storage_mw);
+ assert.ok(n.verification.large_official_pdf.startsWith("verified_complete_1253"));
+ assert.ok(n.sources.some(x=>x.url===p.source.source_url));
+ assert.ok(n.required_annexes.every(x=>x.status.includes("review_pending")));
+ assert.match(n.primary_source_excerpt.coverage,/This uploaded 100-page excerpt/);
+ assert.ok(n.primary_source_excerpt.full_document_pdf_downloaded===false,"The 100-page upload must not be mislabeled as the 1,253-page recovered file");
+ assert.ok(n.verification.pln_stats_2025.startsWith("not_downloaded"),"Full RUPTL PDF recovery does not imply PLN Statistics download success");
+});
