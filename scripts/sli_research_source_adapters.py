@@ -185,3 +185,28 @@ def adapted_rows(name,d):
      "/ribu ekor; 2024, released "+str(district.get("source_release"))+".","KKP",
      "Exactly 10 public table rows, NOT the full 1,387 rows. Weighted prices rounded. No district total or current availability inference.")
     if out:yield out
+
+ # KKP 2019-2024 source-era geographic series. Index a bounded 36-record sample
+ # (12 annual national totals, 24 top-two province/year observations), not an
+ # independently revalidated 2026 live feed or an invariant spatial boundary.
+ if name=="sli-kkp-regional-historical-2019-2024.json":
+  for s in (d.get("series") or []):
+   u=s.get("source_url")
+   years=s.get("years") or []; unit=s.get("unit")
+   for i,year in enumerate(years):
+    if year>2024 or year<2019:continue
+    out=record(("series",str(s.get("id")),"national",str(year)),
+     "KKP "+str(year)+" national · "+str(s.get("label_id")),u,str(year),
+     (s.get("national_totals") or [None]*6)[i],unit,
+     "Source table national total, annual historical observation, not a 2026 estimate.","KKP",
+     "For seaweed individual province sums may differ by 0.01–0.03 tonnes due to rounding. Marine fishers are headcounts, not catch tonnage.")
+    if out:yield out
+    rows=[x for x in (s.get("rows") or []) if len(x.get("values") or [])==6 and x["values"][i] is not None]
+    rows=sorted(rows,key=lambda x:-x["values"][i])[:2]
+    for j,x in enumerate(rows):
+     out=record(("series",str(s.get("id")),"top2",str(year),str(j)),
+      "KKP "+str(year)+" "+str(s.get("label_id"))+" · "+str(x.get("province")),
+      u,str(year),x["values"][i],unit,
+      "2024 province splits are not backcast; historical administrative units as reported. Printed KKP row "+str(x.get("source_name"))+".","KKP",
+      "Top-two province/year evidence subset; all 354 source numeric observations remain separately navigable in Marine dashboard. Missing ≠ zero.")
+     if out:yield out
