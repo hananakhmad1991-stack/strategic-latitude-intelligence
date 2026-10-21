@@ -22,7 +22,7 @@ async function check(name,route,viewport,callback){
  }catch(err){
   cases.push({name,status:"fail",error:String(err.message||err),pageerrors:errors});
   console.error("FAIL",name,String(err.message||err),errors);
-  try{await page.screenshot({path:path.join(ROOT,name.replace(/[^a-z0-9]+/gi,"-")+"-failure.png",fullPage:false})}catch{}
+  try{await page.screenshot({path:path.join(ROOT,name.replace(/[^a-z0-9]+/gi,"-")+"-failure.png"),fullPage:false})}catch{}
  }finally{await context.close()}
 }
 try{
