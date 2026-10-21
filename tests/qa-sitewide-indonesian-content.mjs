@@ -93,7 +93,7 @@ test("English publisher titles and unapproved factual copy are not silently mach
 test("Homepage portal has zero unreviewed English headings and descriptions in ID mode",()=>{
  const html=fs.readFileSync("index.html","utf8");
  const start=html.indexOf("function homePortal(){return \x60".replace("\\x60","\x60"));
- const end=html.indexOf("function overview(){return \x60".replace("\\x60","\x60"));
+ const end=html.indexOf("function energyMonitor(){return \x60".replace("\\x60","\x60"));
  assert.ok(start>=0&&end>start,"Homepage portal must be a separately testable interface");
  const portal=html.slice(start,end);
  const values=[...portal.matchAll(/>([^<>]{3,1000})</g)].map(x=>x[1].replace(/&amp;/g,"&").replace(/&nbsp;/g," ").replace(/\s+/g," ").trim())
