@@ -72,6 +72,29 @@ The two supplied original PDF hashes were checked against the registered 154-pag
 
 **Private operator artifact:** `SLI_BPS_2025_2026_watermark_and_subtotal_QA_private_v3.zip` contains the cell-level original PDF native-text proof, the four cropped contact sheets, the original discrepancy report and audit scripts. Distribute only via the private operator conversation, not public GitHub.
 
+## 22 October 2026 — full private native-PDF geometry scan, all 82 tables
+
+After the 86 flagged cells were source-reviewed, a second **private structural scan** ran original PyMuPDF table recognition on every registered start and continuation page of both SHA-256-matched PDFs:
+
+| Audit metric | Observed result | Meaning |
+| --- | ---: | --- |
+| Logical original statistic tables registered | **82** | 47 Agriculture Indicators + 35 horticultural enterprises and other businesses |
+| Unique pages with registered table spans | **114** | All 114 had at least one detectable PDF table rectangle |
+| Logical tables with geometry recognized on every page | **82/82** | Location/table geometry coverage, **not individual-cell validation** |
+| Detected table objects | **177** | Includes extra header/footnote fragments; not 177 independent official published tables |
+| Candidate extracted rows | **4,132** | Includes notes, headers, continuation fragments and non-data; not 4,132 validated observations |
+| Agriculture indicator tables with 9+ PDF-detected columns | **44 of 47** | Known multi-column segmentation artifacts and complex PDF layout, **must manually reconstruct** |
+| Horticultural enterprise tables with <=8 detected columns | **35 of 35** | Better geometry; numbers still require source image/year/unit/rights checks |
+| Cleared public numeric series from these two PDFs | **0** | No BPS commercial written permission and incomplete numerical QA |
+
+Private JSON candidate output: `all_82_table_geometry_coverage_private.json` (source-to-page geometry summary) and `all_82_table_raw_candidates_private.json` (actual raw candidate rows, **NOT for publication**). These are part of the operator's private QA review, not the GitHub source repository.
+
+**Priority sequence to turn the candidates into correct statistics**:
+1. Focus on 35 simpler horticulture establishment tables with genuine province, commodity, employment and area columns. Retain 3.2, 3.10, 3.11, 6.1, 6.2 and 6.14 as publication holds where source-year/universe/totals conflict.
+2. For the 44 high-complexity indicator tables, rebuild the logical year/commodity header grid from page crops; never treat 17–21 detected pseudo-columns as official columns and never infer hidden/watermarked values.
+3. Independently review every numeric cell with original page image and machine-readable year, unit, geographic/enterprise universe; use explicit null/missing/unresolved flags.
+4. Ask BPS for written treatment of derived chart/data reuse and the two source subtotal discrepancies before any public chart/map/numeric DERGUBA activation. A saved Gmail draft is still unsent.
+
 ## Next audit gate (not complete)
 1. Contact BPS to clarify commercial reproduction rights for derived chart values vs table mirrors; retain written response and any publication-specific license.
 2. Visually verify 82 table headers, printed/PDF pages, source year, units, missing-value glyphs, and cross-table totals. Log each verified numeric cell and any edits; classify source estimates and revisions explicitly.
