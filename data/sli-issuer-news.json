@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T13:39:15.657667Z",
+  "updated_at_utc": "2026-10-21T14:33:08.620786Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,70 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_f92d053842913359ee073b",
+      "title": "Ini Dia Pihak-pihak dalam Skandal Transaksi DSSA, BREN, dan Cuan - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNbGFzeE5OcUZIbFlXc1RXNkNJeFdRZ3A0ZzFxT0tCQUNfVEVZbEp6U1RZQTJ5SjUwTjZITndOd2swYTZLQTZTd2xqZldUVXNILV9aRzhESDMxOGVtdE5PcnUxVU10Y0c5NEM3MnpEbHk2d3djMF8yVDFzYVNRUXB3S25yZm5yYWpwalNrMElkc29FR3FRQjJIZVdNYw?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-21T14:16:33Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_29916c97937e378abc842b",
+      "title": "OJK Ungkap Pelanggaran Saham DSSA dan IPO CUAN-BREN, Ini Daftar Pihak yang Disanksi - SWA.co.id",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNYVI4RjF4MXB4eE1fbGxVZ3NTM3pwMk04WTRJeW5iUW1scDYyNGRFMnJyNnU1ZVo2aTFEazdHODhUNzFnRlJtRGtkWGp2WVJWRkUtdzlyRmEzbElYU0Fpa0xER2xsMWt4enEtNDBQaWdPbEpJTmZoSi1BV29tTXd2NUJGaDN4UDlyWV9CR056RVhTNm1CWk15TmVPMjZBdEVBeG11RGpydDQ3UUlEekx4TXNR?oc=5",
+      "publisher": "SWA.co.id",
+      "published_at_utc": "2026-10-21T13:42:58Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ce967c6a9a6634eb8a25b4",
+      "title": "JSMR Pertimbangkan Aksi Buyback - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5RMzY1NHB1Umt4SGlvTGt0SURsOXE1ajdDbl9pR0ZicVpJTGprZVZONUdCdS16WDZ2eDZqVnNNYzhWZ2RrbXRIUW1wbWVVWWprR3dORDBOZkduN1YtMTVTWkJra3B0TnNaVzVLT0N3U3dQWjA?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-21T13:41:37Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ee414d8100649a191a0676",
+      "title": "Diganjar Denda Jumbo dan Pembekuan Izin! Ini Daftar Pihak yang Disikat OJK dalam Kasus DSSA, BREN, dan CUAN - Pasardana",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPdGZWMlFSQkpMZUkzSGxLUm9kaHhEN2NJdDVtQ1cxaXNSRzBXUTZsSFJqelY3N29Ib0pmQ1pVQWxnaV9PTEk2cmQzSDV0dk1HOS13aHBEQnl2NS1xNmY4Ql96Q3l6SThnRDcxQ2FreVJWUld0MWRMZkc0alotcmV3SzlZWWQxejBxUlJPX3hIczNfTERzWmNoQXJtaHNPZDdlSmYwRWdRUTVuSGFjNWNnbzdvV3MwZm5nalpOYjJEUy0yUGtCX3l0aVptX3lQYUhlbFVBaGRrVUM?oc=5",
+      "publisher": "Pasardana",
+      "published_at_utc": "2026-10-21T13:38:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_47cc7c040f29234183c25e",
       "title": "Denda Rp500 Miliar, OJK Bongkar Masalah di Balik IPO Saham BREN - CNBC Indonesia",
@@ -170,6 +234,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_ebd9164ccad31adaba48b9",
+      "title": "Prospek EBT Tetap Cerah di Tengah Tekanan Pasar, PGEO Dinilai Punya Fondasi Kuat untuk Tumbuh - VIVA Jakarta",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQTjMxM3I4QmVlbFR5cFNHTjg2bDc5OTJTaUF3ekZHMGNWY3NzX01OQjFDaXBVYU1KMjlSX3RoZVBzV2xza3dJdlBvQ2Zpc3NxaHBYTjFPYVhneTlWYnpkTnRoaHRZaVlQb01rNld1QWZnQm9PYTVMU3lPSi1DYVRmQ1U0SlItaWJ2WFE0QUNGY2RnQS12cWxjOV9CN3lrY1NoX3p3WVY5NHdibGVEcFZ2X1RRczJ1c2tSbThrQm4tWVBOd3ptTUZqdHBtZHjSAdIBQVVfeXFMTkd6RjBpUW9JV1NJbjlZOWt1Wl93VVQ4QmNCbUYwZXhOTzE1REdaeG1JdmdnU3AyODBoRm00a2RmZGdlaHI3cTg1bmNIYk56S1UteC1zUmh0ZFRYeWExckJGMDdYakp6U01LcGRieS04VFpXcHN2OHgzVFZoTmJfeWNKeENZaUZTcVJkMmRYOFBQcHRsWTJRRTBtbVZ2VERKU2hKQlM2VDg3M3pOWEwzc2ZOQkpHVHVhX1hQaUtTVXRkbl9PeC03UHFEakZhSjVWMFRn?oc=5",
+      "publisher": "VIVA Jakarta",
+      "published_at_utc": "2026-10-21T11:51:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_f07f76328baaeb22366d3a",
       "title": "Saham TLKM Makin Menarik Usai Tekanan MSCI, Yield Dividen Tembus 12,8 Persen dan Potensi Cuan 76 Persen - TOPIK.ID",
       "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPNUNDbDhuWFAxWW9PeGpmYlhlS3RsY294c1pndXd5UjJJbTVLRllFa2p2T0JBUm1GTWZxeGJpbDZkWkxqMmhPbk1uaG9VbVUyX3h6d2c0b3dabHBSX3BVdlQtdVdGYmdwWm1oYlU5WE5zWU9EcmhjZ0hhT0liU0lXa2JmQkFKdmxrYnZOZVJ4c3VQMGphN3pQQmFWTGhPOXJaSkF6TWlwbUZxN2JSbGs5Tk03bXhhLVFCT3J0RXFyVQ?oc=5",
@@ -245,6 +325,22 @@
         "SMGR"
       ],
       "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d43e772c631ae18c7c7682",
+      "title": "Industri EBT Dinilai Cerah di Tengah Tekanan Pasar, Simak Prospek Kinerja PGEO - IDX Channel",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQdVVsVVZGU2xHbTZ0U1ZlYThXd0xjU2NJZWxHWDRfdjhnNk9nQ3N0QmV0clJDc2tnWDBLQ0RBTVN5QjcteVc2c3lsS2FPTzl6SEpVc1g3aEFQSGxIaTdsUmd0eUh6WGYteTNVcmdkRGlWVEFiSUxBSmJfQ25GbU1iUnZqazdSeS1UaS1IeXNtbnVHMkZBSDIwZFYtUUk4RjlGZDY3dGVXdkhIa3FOMWtPb0ZxOVBWTXlUbVhPT9IBvAFBVV95cUxQdVVsVVZGU2xHbTZ0U1ZlYThXd0xjU2NJZWxHWDRfdjhnNk9nQ3N0QmV0clJDc2tnWDBLQ0RBTVN5QjcteVc2c3lsS2FPTzl6SEpVc1g3aEFQSGxIaTdsUmd0eUh6WGYteTNVcmdkRGlWVEFiSUxBSmJfQ25GbU1iUnZqazdSeS1UaS1IeXNtbnVHMkZBSDIwZFYtUUk4RjlGZDY3dGVXdkhIa3FOMWtPb0ZxOVBWTXlUbVhPTw?oc=5",
+      "publisher": "IDX Channel",
+      "published_at_utc": "2026-10-21T10:02:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -2022,6 +2118,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "INCO"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_bb4ee3c236195924d34d63",
+      "title": "IHSG Berpeluang Rebound ke 5.133, MNC Sekuritas Pilih AADI, ADRO, ANTM, dan TAPG - tutur.co.id",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxORHJ6TFhYZDZmM2JJWDQ0M29xNk05QXJSbWJUY1QwWVRLTHpCYzE3dHNkQlZVNnlWUFhDWjRhakRXVFFUMjJKMWQ2S3dDUk1INGpudHE3cjhhMnRDb3hhdFNmVFY1eFJDNlRVbW92T3NiYXpnSVAtLVVEdUFhRzFqNTZ4cWdrMmxOdUhZWklFaEdmNTRzd25STUQ2dWZTQQ?oc=5",
+      "publisher": "tutur.co.id",
+      "published_at_utc": "2026-10-19T23:58:36Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
       ],
       "sector": "minerals",
       "source": "public_google_news_rss",
