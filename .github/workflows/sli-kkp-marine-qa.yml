@@ -13,6 +13,8 @@ on:
       - 'data/sli-kkp-screened-source-register.json'
       - 'js/sli-marine-source-atlas.mjs'
       - 'tests/qa-sli-kkp-source-atlas.mjs'
+      - 'tests/test_sli_kkp_research_bridge.py'
+      - 'scripts/sli_research_source_adapters.py'
       - 'docs/sli-kkp-dcat-baseline.json'
       - 'scripts/watch_kkp_dcat.py'
       - 'tests/qa-sli-marine-fisheries.mjs'
@@ -32,6 +34,8 @@ on:
       - 'data/sli-kkp-screened-source-register.json'
       - 'js/sli-marine-source-atlas.mjs'
       - 'tests/qa-sli-kkp-source-atlas.mjs'
+      - 'tests/test_sli_kkp_research_bridge.py'
+      - 'scripts/sli_research_source_adapters.py'
       - 'docs/sli-kkp-dcat-baseline.json'
       - 'scripts/watch_kkp_dcat.py'
       - 'tests/qa-sli-marine-fisheries.mjs'
@@ -60,7 +64,7 @@ jobs:
           node --check js/sli-marine-fisheries.mjs
           node --check js/sli-marine-source-atlas.mjs
           node --test tests/qa-sli-marine-fisheries.mjs tests/qa-sli-kkp-source-atlas.mjs tests/qa-sli-information-architecture.mjs
-          python -m unittest discover -s tests -p 'test_sli_kkp_catalog.py' -v
+          python -m unittest discover -s tests -p 'test_sli_kkp_*.py' -v
           python -m py_compile scripts/watch_kkp_dcat.py
       - name: Document source verification boundary
         run: |

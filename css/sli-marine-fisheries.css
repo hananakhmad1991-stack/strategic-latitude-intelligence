@@ -123,3 +123,12 @@
 #marine-source-atlas td.numeric{text-align:right;font-variant-numeric:tabular-nums}
 @media(max-width:1030px){.mf-atlas-source-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.mf-atlas-source-grid{grid-template-columns:1fr}.mf-atlas-bar-row,.mf-atlas-seed-item{grid-template-columns:minmax(80px,1fr) minmax(50px,.9fr) minmax(70px,.8fr)}.mf-atlas-filters label{width:100%}.mf-atlas-filters select,.mf-atlas-filters input{flex:0 0 100%}}
+
+/* District hatchery evidence: horizontally scrollable source table, not inferred map geometry. */
+.mf-atlas-district{margin-top:18px}
+.mf-atlas-district .mf-atlas-filters{justify-content:flex-start}
+.mf-atlas-district .mf-atlas-filters input{max-width:390px}
+.mf-atlas-district .mf-atlas-filters button{cursor:pointer;border:1px solid #66899f;border-radius:9px;padding:10px 13px;background:#25465e;color:#f2f7fb;font:inherit;font-size:12px;min-height:42px}
+.mf-atlas-district-table{min-width:840px}
+.mf-atlas-district-table td,.mf-atlas-district-table th{white-space:normal;overflow-wrap:anywhere}
+@media(max-width:640px){.mf-atlas-district .mf-atlas-filters input{max-width:100%}}

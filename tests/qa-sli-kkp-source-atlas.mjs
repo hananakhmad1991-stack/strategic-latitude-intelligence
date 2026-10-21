@@ -1,7 +1,7 @@
 import {test} from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {validateScreenedPortal,rankedRegions,rankedSeeds} from "../js/sli-marine-source-atlas.mjs";
+import {validateScreenedPortal,rankedRegions,rankedSeeds,rankedDistrictSeed} from "../js/sli-marine-source-atlas.mjs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const regional=JSON.parse(read("data/sli-kkp-portal-screened-2024.json"));
 const register=JSON.parse(read("data/sli-kkp-screened-source-register.json"));
@@ -65,4 +65,25 @@ test("SLI source atlas UI is wired to dedicated Marine dashboard with source-qua
  const disguised=structuredClone(register);disguised.sources[0].status="numeric_ingested_2024";
  // Catalogue-only rows must not be marked numeric merely by changing status.
  assert.equal(disguised.sources[0].numeric_import_status,"not_imported");
+});
+
+test("KKP hatchery top-10 qualified district/value/weighted price data do not pretend to cover 1387",()=>{
+ const group=regional.seed_district_top_rows;
+ assert.equal(group.rows.length,10);
+ assert.equal(group.source_rows_displayed,1387);
+ assert.equal(group.unit_volume,"ribu_ekor");
+ assert.equal(group.unit_value,"Rp juta");
+ assert.equal(group.unit_weighted_price,"Rp/ribu ekor");
+ assert.equal(group.rows[0].district,"Kediri");
+ assert.equal(group.rows[0].value_rp_million,1398);
+ assert.equal(rankedDistrictSeed(regional,"vaname").length,3);
+ assert.equal(rankedDistrictSeed(regional,"bogor").length,1);
+ assert.equal(rankedDistrictSeed(regional,"sumatera selatan").length,2);
+ const broken=structuredClone(regional);broken.seed_district_top_rows.rows[0].value_rp_million=NaN;
+ assert.equal(validateScreenedPortal(broken,register).pass,false);
+ const html=read("marine-fisheries-intelligence.html"),js=read("js/sli-marine-source-atlas.mjs");
+ for(const id of ["mfAtlasDistrictQuery","mfAtlasDistrictCount","mfAtlasDistrictCSV","mfAtlasDistrictRows","mfAtlasDistrictSource"])
+  assert.equal(html.split('id="'+id+'"').length-1,1,id);
+ assert.match(js,/rankedDistrictSeed\(data,state\.districtQuery\)/);
+ assert.match(html,/10 dari 1\.387 baris/);
 });

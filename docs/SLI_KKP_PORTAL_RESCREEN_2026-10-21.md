@@ -23,3 +23,10 @@ Sel kosong bukan nol; observasi 2024 bukan data live; 2025 estimasi tidak dicamp
 Backlog: rincian 1.387 baris pembenihan, data penangkapan per WPP, potensi vs tangkapan aktual, matriks HS–mitra–periode untuk Sankey, serta GeoJSON/WMS wilayah dan konservasi yang punya versi dan izin jelas.
 
 Uji: `node --test tests/qa-sli-kkp-source-atlas.mjs`.
+## Tambahan pembenihan kabupaten/kota (sesudah PR #136)
+
+- Sumber resmi KKP menampilkan 1.387 baris tahun 2024 dalam tabel insight. Sepuluh baris teratas yang terlihat sudah ditranskripsi berikut provinsi, kabupaten/kota, kelompok ikan, volume (ribu ekor), nilai (Rp juta), dan harga rata-rata tertimbang (Rp/ribu ekor). **1.377 baris lainnya belum diimpor.**
+- Ini hanya subset baris yang terlihat, bukan keseluruhan kabupaten, bukan penjumlahan provinsi, dan bukan statistik 2026. Harga rata-rata tertimbang tercetak bukan harga transaksi setiap ikan dan dapat dibulatkan.
+- Dashboard dapat mencari provinsi, kabupaten dan komoditas, menampilkan enam kolom angka, dan mengekspor subset terfilter dengan satuan, status sampel, observasi, dan tautan sumber.
+- Adapter Research AI secara khusus menghasilkan 34 rekaman 2024 yang masing-masing punya URL KKP: dua total nasional, masing-masing lima provinsi teratas untuk dua indikator, dua belas kategori benih, dan sepuluh baris pembenihan kabupaten/kota. Rekaman ini adalah evidence yang terkait sumber, bukan otomatis fakta terbaru, analisis sebab-akibat, atau angka 1.387 baris yang sudah lengkap.
+- Tes menolak nilai tidak numerik, duplikasi komoditas dan wilayah, satuan keliru, serta tidak sinkronnya angka sumber dan Research AI.

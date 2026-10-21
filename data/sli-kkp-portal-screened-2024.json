@@ -4,7 +4,7 @@
   "publisher": "Kementerian Kelautan dan Perikanan · Portal Satu Data",
   "portal": "https://portaldata.kkp.go.id/portals/data-statistik/layer1",
   "methodology": {
-    "verification": "Transcribed from visible KKP official tables/insight page. Marine fisher 2024 37 reporting provinces sum exactly to the published TOTAL row. Seaweed 2024 26 nonblank provincial rows sum to within 0.03 t of national TOTAL due to source row rounding. Species 2024 top 12 are a PARTIAL selection; the 1,387-row kabupaten/komoditas detail is not ingested.",
+    "verification": "Transcribed from visible KKP official tables/insight page. Marine fisher 2024 37 reporting provinces sum exactly to the published TOTAL row. Seaweed 2024 26 nonblank provincial rows sum to within 0.03 t of national TOTAL due to source row rounding. Species 2024 top 12 are a PARTIAL selection; the 1,387-row kabupaten/komoditas detail is not ingested. Ten source-visible 2024 district/commodity seed rows with KKP volume/value/price were additionally transcribed; the other 1,377 displayed district rows are NOT imported.",
     "zero_policy": "Missing, blank and unlisted regions remain absent—not numeric zero. A blank may reflect non-reporting, no production or administrative harmonization; do not infer.",
     "time_policy": "Observation year 2024 is not a live 2026 reading. Source publishing dates vary and should not be confused with measurement dates; 2025 ** estimates never mixed with 2024 actuals.",
     "licensing": "Public inspection of KKP tables does not independently establish unlimited commercial redistribution rights; track official usage terms before extensive bulk copies.",
@@ -356,6 +356,111 @@
       {
         "species": "Bawal Bintang",
         "value": 421091
+      }
+    ]
+  },
+  "seed_district_top_rows": {
+    "year": 2024,
+    "observation": "2024 KKP public insight default tabular top ten",
+    "status": "source_visible_top_10_only_not_full_1387",
+    "source_rows_displayed": 1387,
+    "selected_count": 10,
+    "unit_volume": "ribu_ekor",
+    "unit_value": "Rp juta",
+    "unit_weighted_price": "Rp/ribu ekor",
+    "source_url": "https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan",
+    "source_release": "2025-10-15",
+    "methodology": "Exactly ten originally displayed rows of the 2024 KKP table, transcribed from public page in displayed order. Province, district, category, volume, value and source-displayed weighted average are preserved. The district 10-row sample is not exhaustive, not a provincial total, not necessarily the 10 largest unique districts, and is not evidence for 2026 availability. Displayed values and rounded prices MUST NOT be used for exact price-volume identity.",
+    "rows": [
+      {
+        "rank_display": 1,
+        "province": "Jawa Timur",
+        "district": "Kediri",
+        "species": "Lele",
+        "volume_ribu_ekor": 13980000,
+        "value_rp_million": 1398,
+        "weighted_price_rp_per_thousand": 100
+      },
+      {
+        "rank_display": 2,
+        "province": "Sumatera Selatan",
+        "district": "Kota Lubuk Linggau",
+        "species": "Nila",
+        "volume_ribu_ekor": 11843467,
+        "value_rp_million": 1313,
+        "weighted_price_rp_per_thousand": 111
+      },
+      {
+        "rank_display": 3,
+        "province": "Lampung",
+        "district": "Lampung Selatan",
+        "species": "Udang Vaname",
+        "volume_ribu_ekor": 10031370,
+        "value_rp_million": 451,
+        "weighted_price_rp_per_thousand": 45
+      },
+      {
+        "rank_display": 4,
+        "province": "Bali",
+        "district": "Buleleng",
+        "species": "Bandeng",
+        "volume_ribu_ekor": 8025776,
+        "value_rp_million": 77,
+        "weighted_price_rp_per_thousand": 10
+      },
+      {
+        "rank_display": 5,
+        "province": "Jawa Timur",
+        "district": "Situbondo",
+        "species": "Udang Vaname",
+        "volume_ribu_ekor": 7910259,
+        "value_rp_million": 396,
+        "weighted_price_rp_per_thousand": 50
+      },
+      {
+        "rank_display": 6,
+        "province": "Banten",
+        "district": "Serang",
+        "species": "Udang Vaname",
+        "volume_ribu_ekor": 7482524,
+        "value_rp_million": 374,
+        "weighted_price_rp_per_thousand": 50
+      },
+      {
+        "rank_display": 7,
+        "province": "Sumatera Selatan",
+        "district": "Kota Lubuk Linggau",
+        "species": "Lele",
+        "volume_ribu_ekor": 6605512,
+        "value_rp_million": 991,
+        "weighted_price_rp_per_thousand": 150
+      },
+      {
+        "rank_display": 8,
+        "province": "Jawa Barat",
+        "district": "Cianjur",
+        "species": "Nila",
+        "volume_ribu_ekor": 4899025,
+        "value_rp_million": 1127,
+        "weighted_price_rp_per_thousand": 230
+      },
+      {
+        "rank_display": 9,
+        "province": "Jawa Barat",
+        "district": "Bogor",
+        "species": "Lele",
+        "volume_ribu_ekor": 4627219,
+        "value_rp_million": 1851,
+        "weighted_price_rp_per_thousand": 400
+      },
+      {
+        "rank_display": 10,
+        "province": "Jawa Barat",
+        "district": "Subang",
+        "species": "Mas",
+        "volume_ribu_ekor": 4104979,
+        "value_rp_million": 1045,
+        "weighted_price_rp_per_thousand": 255
       }
     ]
   }
