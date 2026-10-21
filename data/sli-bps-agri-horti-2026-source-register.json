@@ -973,7 +973,22 @@
         53
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "province_year",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2022–2026",
+        "candidate_visualization": "line|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "3.2",
@@ -994,7 +1009,22 @@
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
       "numeric_cell_qa": "hold_source_heading_conflict_and_individual_cell_qa",
-      "review_flag": "heading_vs_contents_year"
+      "review_flag": "heading_vs_contents_year",
+      "semantic_profile": {
+        "observation_grain": "province_legal_form",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2025",
+        "candidate_visualization": "grouped_bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": "contents_vs_printed_year",
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "3.3",
@@ -1013,7 +1043,22 @@
         56
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "province_crop_group",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2026",
+        "candidate_visualization": "bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "3.4",
@@ -1032,7 +1077,22 @@
         57
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "province_business_attribute",
+        "measure_type": "nonexclusive_business_attribute_count",
+        "unit": "unit",
+        "printed_period": "2026",
+        "candidate_visualization": "grouped_bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "nonexclusive_attributes_do_not_sum_as_partition",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "3.5",
@@ -1051,7 +1111,22 @@
         58
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "province_establishment_status",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2026",
+        "candidate_visualization": "bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "3.6",
@@ -1070,7 +1145,22 @@
         59
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "province_capital_status",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2026",
+        "candidate_visualization": "bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "3.7",
@@ -1091,7 +1181,22 @@
         62
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity_activity",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "3.8",
@@ -1111,7 +1216,22 @@
         64
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity_activity",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "3.9",
@@ -1130,7 +1250,22 @@
         65
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "province_worker_status",
+        "measure_type": "worker_count",
+        "unit": "person",
+        "printed_period": "2025",
+        "candidate_visualization": "grouped_bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "3.10",
@@ -1150,7 +1285,22 @@
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
       "numeric_cell_qa": "hold_source_heading_conflict_and_individual_cell_qa",
-      "review_flag": "heading_vs_contents_year"
+      "review_flag": "heading_vs_contents_year",
+      "semantic_profile": {
+        "observation_grain": "province_worker_status",
+        "measure_type": "worker_count",
+        "unit": "person",
+        "printed_period": "2024",
+        "candidate_visualization": "grouped_bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": "contents_vs_printed_year",
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "3.11",
@@ -1170,7 +1320,22 @@
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
       "numeric_cell_qa": "hold_source_heading_conflict_and_individual_cell_qa",
-      "review_flag": "heading_vs_contents_year"
+      "review_flag": "heading_vs_contents_year",
+      "semantic_profile": {
+        "observation_grain": "province_worker_status",
+        "measure_type": "worker_count",
+        "unit": "person",
+        "printed_period": "2024",
+        "candidate_visualization": "grouped_bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": "contents_vs_printed_year",
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "3.12",
@@ -1189,7 +1354,22 @@
         68
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_productivity",
+        "unit": "source_commodity_unit_per_m2",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "3.13",
@@ -1208,7 +1388,22 @@
         69
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_productivity",
+        "unit": "kg_per_source_commodity_unit",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "3.14",
@@ -1227,7 +1422,22 @@
         70
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "province",
+        "measure_type": "total_and_average_land_area",
+        "unit": "m2",
+        "printed_period": "2025",
+        "candidate_visualization": "bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "3.15",
@@ -1246,7 +1456,22 @@
         71
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_planted_harvested_area",
+        "unit": "m2",
+        "printed_period": "2025",
+        "candidate_visualization": "grouped_bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "3.16",
@@ -1265,7 +1490,22 @@
         72
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_production_and_value",
+        "unit": "source_commodity_unit_and_IDR",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "3.17",
@@ -1284,7 +1524,22 @@
         73
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_plant_condition_count",
+        "unit": "tree",
+        "printed_period": "2025",
+        "candidate_visualization": "grouped_bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "3.18",
@@ -1303,7 +1558,22 @@
         74
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_production_and_value",
+        "unit": "source_commodity_unit_and_IDR",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "3.19",
@@ -1322,7 +1592,22 @@
         75
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_target_production",
+        "unit": "kg",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "3.20",
@@ -1341,7 +1626,22 @@
         76
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_target_production",
+        "unit": "source_commodity_unit",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "6.1",
@@ -1361,7 +1661,22 @@
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
       "numeric_cell_qa": "hold_subtotal_conflict_plus_rights_review",
-      "arithmetic_review_flag": "publisher_or_extraction_subtotal_disagreement"
+      "arithmetic_review_flag": "publisher_or_extraction_subtotal_disagreement",
+      "semantic_profile": {
+        "observation_grain": "province_year",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2022–2026",
+        "candidate_visualization": "line|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": "printed_national_vs_province_subtotal",
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "6.2",
@@ -1381,7 +1696,22 @@
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
       "numeric_cell_qa": "hold_subtotal_conflict_plus_rights_review",
-      "arithmetic_review_flag": "publisher_or_extraction_subtotal_disagreement"
+      "arithmetic_review_flag": "publisher_or_extraction_subtotal_disagreement",
+      "semantic_profile": {
+        "observation_grain": "province_business_status",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2026",
+        "candidate_visualization": "grouped_bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": "printed_national_vs_province_subtotal",
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "6.3",
@@ -1400,7 +1730,22 @@
         135
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "province_crop_group",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2026",
+        "candidate_visualization": "bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "6.4",
@@ -1421,7 +1766,22 @@
         138
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity_activity",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "6.5",
@@ -1442,7 +1802,22 @@
         141
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity_activity",
+        "measure_type": "business_count",
+        "unit": "unit",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "6.6",
@@ -1461,7 +1836,22 @@
         142
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "province_worker_sex_status",
+        "measure_type": "worker_count",
+        "unit": "person",
+        "printed_period": "2025",
+        "candidate_visualization": "grouped_bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "only_sum_if_mutually_exclusive_and_verified",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "6.7",
@@ -1481,7 +1871,22 @@
         144
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_productivity",
+        "unit": "source_commodity_unit_per_m2",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "6.8",
@@ -1501,7 +1906,22 @@
         146
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_productivity",
+        "unit": "kg",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "6.9",
@@ -1520,7 +1940,22 @@
         147
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "province",
+        "measure_type": "average_land_area",
+        "unit": "m2",
+        "printed_period": "2025",
+        "candidate_visualization": "bar|province_map",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": "do_not_assume_38_numeric_rows_or_impute_absent_provinces"
+      }
     },
     {
       "id": "6.10",
@@ -1540,7 +1975,22 @@
         149
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_planted_harvested_area",
+        "unit": "m2",
+        "printed_period": "2025",
+        "candidate_visualization": "grouped_bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "6.11",
@@ -1560,7 +2010,22 @@
         151
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_production",
+        "unit": "source_commodity_unit",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "6.12",
@@ -1580,7 +2045,22 @@
         153
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_production",
+        "unit": "kg",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "6.13",
@@ -1600,7 +2080,22 @@
         155
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_plant_condition_count",
+        "unit": "tree",
+        "printed_period": "2025",
+        "candidate_visualization": "grouped_bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "6.14",
@@ -1621,7 +2116,22 @@
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
       "numeric_cell_qa": "hold_source_heading_conflict_and_individual_cell_qa",
-      "review_flag": "heading_scope_vs_chapter_mismatch"
+      "review_flag": "heading_scope_vs_chapter_mismatch",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_target_production",
+        "unit": "source_commodity_unit",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": "heading_vs_chapter_population",
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     },
     {
       "id": "6.15",
@@ -1641,7 +2151,22 @@
         159
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review",
+      "semantic_profile": {
+        "observation_grain": "commodity",
+        "measure_type": "average_target_production",
+        "unit": "source_commodity_unit",
+        "printed_period": "2025",
+        "candidate_visualization": "bar",
+        "heading_audit": "original_sha256_pdf_native_text_heading_read_not_all_cells_visual_checked",
+        "numeric_cell_validation": "pending_full_cell_by_cell_source_image_review",
+        "publication_authorized": false,
+        "rights_gate": "written_BPS_permission_not_on_file",
+        "specific_hold_reason": null,
+        "missing_policy": "dash_or_unreported_is_null_never_automatically_zero_or_residual",
+        "aggregation_policy": "do_not_sum_averages_or_mix_units",
+        "province_coverage_policy": null
+      }
     }
   ],
   "research_records": [
@@ -1994,5 +2519,25 @@
     "horticulture_tables_with_8_or_fewer_detected_columns": 35,
     "privacy": "private_operator_candidate_extracts; unpublished source PDF data and names excluded from GitHub",
     "caution": "PDF table geometry != verified numeric cells. 44 indicator tables show 9+ extracted pseudo-columns; manual header reconstruction required. All candidate values are unpublished."
+  },
+  "horticulture_semantic_stage": {
+    "status": "35_original_native_heading_semantics_mapped_numeric_values_unpublished",
+    "audit_date": "2026-10-22",
+    "source_id": "horti2026",
+    "source_sha256": "af5dcf57f3510e2d390885035f4a0aeef5a52851e9a69fa6e9028b3bf8e5a355",
+    "profiles_classified": 35,
+    "table_headings_checked_via_native_text": 35,
+    "all_individual_cells_visually_validated": false,
+    "written_bps_commercial_permission_on_file": false,
+    "publication_ready_tables": 0,
+    "table_specific_holds": [
+      "3.2",
+      "3.10",
+      "3.11",
+      "6.1",
+      "6.2",
+      "6.14"
+    ],
+    "caution": "printed_period_is_not_a_verified_observation_year_when_contents_conflict; not all provinces have numeric cells; commodity averages and overlapping business attributes cannot be summed; no public numeric AI evidence"
   }
 }

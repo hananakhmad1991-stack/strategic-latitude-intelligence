@@ -15,7 +15,7 @@ function render(reg){
  const h=dom("h3",null,"Katalog sumber BPS 2025–2026 · lintas subsektor");
  const about=dom("p","fa-bps-notice","Dua PDF BPS telah diaudit dan 82 tabel statistik dipetakan ke sektor SLI. Ini adalah indeks sumber, BUKAN salinan angka tabel. Seluruh angka hasil ekstraksi menunggu pemeriksaan visual dan izin tertulis BPS untuk reproduksi komersial. Direktori yang memuat nomor telepon tidak dipublikasikan.");
  host.append(h,about);
- const counts=dom("p","fa-bps-meta","82 tabel · 114 halaman tabel terpetakan (termasuk 32 halaman lanjutan) · empat konflik metadata judul · 0 sel numerik diterbitkan. Audit lokasi selesai; audit setiap angka dan izin belum.");host.append(counts);
+ const counts=dom("p","fa-bps-meta","82 tabel · 114 halaman tabel terpetakan · 35 profil semantik hortikultura untuk telaah internal · 4 konflik judul/ruang lingkup + 2 selisih subtotal sumber · 0 seri numerik diterbitkan. Periode, unit, dan jenis agregasi sudah dipetakan awal; audit semua sel dan izin BPS tetap menunggu.");host.append(counts);
  const filters=dom("div","fa-bps-filters"),select=dom("select"),search=dom("input"),status=dom("p","fa-bps-meta");
  select.setAttribute("aria-label","Sektor tabel sumber BPS");
  for(const [value,label] of [["all","Semua subsektor"],...Object.entries(sectorNames)]){
@@ -27,7 +27,7 @@ function render(reg){
  function repaint(){
   const query=search.value.toLowerCase().trim();
   const rows=reg.tables.filter(t=>(select.value==="all"||t.sector===select.value)&&
-   (!query||[t.id,t.subsector,t.domain,t.sector].join(" ").toLowerCase().includes(query)));
+   (!query||[t.id,t.subsector,t.domain,t.sector,t.semantic_profile?.observation_grain,t.semantic_profile?.measure_type,t.semantic_profile?.printed_period].join(" ").toLowerCase().includes(query)));
   list.replaceChildren();
   status.textContent=rows.length+" dari "+reg.tables.length+" tabel sumber · numerik belum boleh diperbanyak secara komersial tanpa izin BPS.";
   for(const t of rows){
@@ -35,11 +35,18 @@ function render(reg){
    const article=dom("article","fa-bps-entry");
    const heading=dom("strong",null,"Tabel "+t.id+" · "+(sectorNames[t.sector]||t.sector));
    const desc=dom("p",null,(t.domain||"").replace(/ · /g," · "));
-   const meta=dom("small",null,doc.title+" · halaman cetak "+t.printed_page+(t.pdf_page_end>t.pdf_page?"–"+(t.printed_page+t.pdf_page_end-t.pdf_page):"")+" · PDF "+t.pdf_page+(t.pdf_page_end>t.pdf_page?"–"+t.pdf_page_end:"")+" · "+t.chart_candidate);
+   const meta=dom("small",null,doc.title+" · halaman cetak "+t.printed_page+(t.pdf_page_end>t.pdf_page?"–"+(t.printed_page+t.pdf_page_end-t.pdf_page):"")+" · PDF "+t.pdf_page+(t.pdf_page_end>t.pdf_page?"–"+t.pdf_page_end:"")+" · kandidat visualisasi: "+(t.semantic_profile?.candidate_visualization||t.chart_candidate)+" (belum aktif)");
    const link=dom("a",null,"Cari publikasi resmi BPS ↗");link.href=doc.publisher_search_url;
    link.target="_blank";link.rel="noopener noreferrer";
-   if(t.review_flag||t.arithmetic_review_flag){const flag=dom("small","fa-bps-qa-alert",t.review_flag?"Perbedaan judul/tahun sumber — tahan angka sampai diklarifikasi.":"Perbedaan subtotal sumber/ekstraksi — perlu verifikasi visual.");article.append(flag)}
-   article.append(heading,desc,meta,link);list.append(article)
+   if(t.review_flag||t.arithmetic_review_flag){const flag=dom("small","fa-bps-qa-alert",t.review_flag?"Perbedaan judul/tahun atau populasi pada sumber BPS — tahan angka sampai diklarifikasi.":"Selisih subtotal pada publikasi asli — jangan isi tanda pisah dengan hasil pengurangan.");article.append(flag)}
+   article.append(heading,desc,meta);
+   if(t.semantic_profile){
+    const s=t.semantic_profile;
+    const grain=s.observation_grain.startsWith("province")?"provinsi":s.observation_grain==="commodity"||s.observation_grain==="commodity_activity"?"komoditas":"unit lainnya";
+    const guide=dom("small","fa-bps-semantic","Struktur: "+grain+" · periode sesuai judul cetak: "+s.printed_period+" · jenis ukuran: "+s.measure_type+" · satuan: "+s.unit+". Belum boleh diterbitkan sebagai angka/grafik sebelum validasi seluruh sel dan izin BPS; tanda pisah bukan nol.");
+    article.append(guide);
+   }
+   article.append(link);list.append(article)
   }
  }
  select.addEventListener("change",repaint);search.addEventListener("input",repaint);repaint();
