@@ -86,7 +86,7 @@
  };
  function init(options){
   const root=document.getElementById(ID);if(!root||root.dataset.ready==="true")return;
-  const getPage=options?.getPage||(()=> "overview"),navigate=options?.navigate||(()=>{});
+  const getPage=options?.getPage||(()=> "home"),navigate=options?.navigate||(()=>{});
   root.dataset.ready="true";
   root.setAttribute("role","search");root.setAttribute("aria-label","Strategic Latitude Intelligence site search");
   root.replaceChildren();
@@ -102,7 +102,7 @@
   pop.hidden=true;const controls=document.createElement("div");controls.className="sli-search-controls";
   const scope=document.createElement("select");scope.className="sli-search-scope";
   scope.setAttribute("aria-label","Search scope");
-  for(const [v,l] of [["all","All dashboards"],["page","This dashboard"],["overview","Overview"],["investment","Investment"],["map","Strategic Map"],["trade","Trade"],["energy","Energy"],["food","Food & Agriculture"],["minerals","Critical Minerals"],["ai","AI Infrastructure"],["policy","Policy"],["geopolitics","Geopolitics"],["methodology","Methodology"]]){const o=document.createElement("option");o.value=v;o.textContent=l;scope.append(o)}
+  for(const [v,l] of [["all","All dashboards"],["page","This dashboard"],["macro","Macroeconomy"],["investment","Investment"],["map","Strategic Map"],["trade","Trade"],["energy","Energy"],["food","Food & Agriculture"],["minerals","Critical Minerals"],["ai","AI Infrastructure"],["policy","Policy"],["geopolitics","Geopolitics"],["methodology","Methodology"]]){const o=document.createElement("option");o.value=v;o.textContent=l;scope.append(o)}
   const count=document.createElement("span");count.className="sli-search-count";
   controls.append(scope,count);
   const list=document.createElement("div");list.className="sli-search-list";
