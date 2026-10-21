@@ -47,6 +47,9 @@ export function scoreLiveResearchBatch(plan,batch,{fixtureMode=false}={}){
   const spec=prompts.find(x=>x.id===item.case_id);
   if(item.prompt_sha256!==sha(spec.prompt))throw Error("Prompt digest mismatch: "+item.case_id);
   if(!STATUSES.has(item.status)||!iso(item.at_utc)||!n(item.latency_ms))throw Error("Invalid run receipt");
+  results.latencies.push(item.latency_ms);
+  if(n(item.cost_usd))results.reported_cost_sum_usd+=item.cost_usd;
+  else results.cost_missing_receipts++;
   if(item.status==="failed"||item.status==="blocked"){
    results[item.status]++;continue;
   }
@@ -54,9 +57,6 @@ export function scoreLiveResearchBatch(plan,batch,{fixtureMode=false}={}){
   if(!item.model||!HEX.test(item.source_index_sha256||"")||typeof item.answer!=="string"||
     !item.answer.trim()||sha(item.answer)!==item.answer_sha256)throw Error("Missing/unmatched saved model answer");
   results.completed++;results.models.add(item.model);results.corpora.add(item.source_index_sha256);
-  results.latencies.push(item.latency_ms);
-  if(n(item.cost_usd))results.reported_cost_sum_usd+=item.cost_usd;
-  else results.cost_missing_receipts++;
   if(!Array.isArray(item.claims))throw Error("Saved answer requires adjudicated claims array");
   if(item.claims.length===0){results.unresolved_claims++;continue;}
   let complete=true;
@@ -129,6 +129,8 @@ function main(){
  const arg=prefix=>{const a=process.argv.find(x=>x.startsWith(prefix));return a?.slice(prefix.length)};
  const input=arg("--input="),out=arg("--out=");
  if(!input||!out)throw Error("Usage: node scripts/score_sli_research_live30.mjs --input=/private/batch.json --out=/private/summary.json");
+ const insideRoot=p=>{const absolute=resolve(p);return absolute===ROOT||absolute.startsWith(ROOT+"/");};
+ if(insideRoot(input)||insideRoot(out))throw Error("Live evaluation transcripts and summaries must stay outside the public repository.");
  const plan=read(resolve(ROOT,"tests/fixtures/sli-research-live-30-prompts.json"));
  const summary=scoreLiveResearchBatch(plan,read(resolve(input)));
  mkdirSync(dirname(resolve(out)),{recursive:true});
