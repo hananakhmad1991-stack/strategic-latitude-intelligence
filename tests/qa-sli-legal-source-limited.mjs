@@ -39,6 +39,17 @@ test("Nonexistent Pasal 99 of original UU 7/2021 returns publisher-anchored stru
  assert.doesNotMatch(r.answer,/\n\n(?:##[^\n]+\n\n)?(?:\*|•|-\s*)?\n/);
  assert.equal((r.answer.match(/^## /gm)||[]).length,3);
 });
+test("Unreviewed Pasal 99 of UU 7/2021 returns a complete source-limited response without a fake article meaning",()=>{
+ // Retained merged PR #70 lesson title: still test no invented article while improving structural provenance.
+ const r=answer("Jelaskan Pasal 99 UU 7/2021");
+ assert.equal(r.model_called,false);
+ assert.equal(r.source_limited,true);
+ assert.equal(r.article_text_verified,false);
+ assert.equal(r.article_existence,"not_in_original_promulgated_instrument");
+ assert.equal(r.sources[0].source_type,"official_original_statute_structure_only");
+ assert.equal(auditLegalArticleCitations(r.answer,r.sources).pass,true);
+ assert.doesNotMatch(r.answer,/Pasal 99 .*mengatur|Pasal 99 .*mewajibkan/i);
+});
 test("Only exactly one requested law and article triggers the deterministic guard",()=>{
  assert.equal(answer("Pasal 1 UU 7/2021"),null,"Known reviewed article must go to normal model");
  assert.equal(answer("Apa isi UU 7/2021"),null,"Broad question must not be treated as a specific missing Pasal");
