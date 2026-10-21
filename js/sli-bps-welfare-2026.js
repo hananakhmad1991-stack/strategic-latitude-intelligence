@@ -17,14 +17,14 @@ function samplePrecision(data,metric,province){
  if(!source)return {status:"unlinked",label:"RSE belum ditautkan untuk indikator ini",rse:null,ci:null,source:null};
  const idx=data.provinces.findIndex(p=>p.name===province);
  if(idx<0)return {status:"unlinked",label:"Wilayah tidak ditemukan",rse:null,ci:null,source:null};
- const rse=source.relative_standard_error_pct[idx],lo=source.confidence_interval_low_pct[idx],hi=source.confidence_interval_high_pct[idx];
+ const rse=source.relative_standard_error_pct[idx],se=source.standard_error_pp?.[idx]??null,lo=source.confidence_interval_low_pct[idx],hi=source.confidence_interval_high_pct[idx];
  const status=rse===null?"not_reported":rse>50?"unreliable":rse>25?"caution":"standard";
  const label=status==="unreliable"?"Tidak andal":status==="caution"?"Gunakan hati-hati":status==="standard"?"Presisi memadai":"RSE tidak dilaporkan";
- return {status,label,rse,ci:lo!==null&&hi!==null?[lo,hi]:null,source};
+ return {status,label,rse,se,ci:lo!==null&&hi!==null?[lo,hi]:null,source};
 }
 function precisionText(q){
  if(q.status==="unlinked")return q.label;
- return "RSE "+(q.rse===null?"NA":fmt(q.rse)+"%")+" · "+q.label+
+ return "SE "+(q.se===null?"NA":fmt(q.se)+" poin persentase")+" · RSE "+(q.rse===null?"NA":fmt(q.rse)+"%")+" · "+q.label+
   (q.ci?" · CI 95% "+fmt(q.ci[0])+"–"+fmt(q.ci[1])+"%":"")+
   " · Tabel "+q.source.sampling_table+" PDF hal. "+q.source.pdf_page;
 }
@@ -97,7 +97,7 @@ function drawRank(data,metric,onSelect){
   b.append(track);b.append(el("span",{class:"bar-value"},num(p.values[metric.index])+(samplePrecision(data,metric,p.name).status==="caution"?" ⚠":"")));
   b.addEventListener("click",()=>onSelect(p.name));div.append(b)
  }
- $("#rankNote").textContent="12 nilai tertinggi, RSE >50% dikeluarkan dari peringkat. ⚠ = RSE >25–50%. Empat indikator tanpa tautan RSE tepat bersifat eksploratif. Angka tinggi tidak otomatis lebih baik.";
+ $("#rankNote").textContent="12 nilai tertinggi, RSE >50% dikeluarkan dari peringkat. ⚠ = RSE >25–50%. Tiga indikator tanpa tautan RSE tepat bersifat eksploratif. Angka tinggi tidak otomatis lebih baik.";
 }
 function renderTable(data,metric,selectedName,onSelect,search){
  const body=$("#provinceRows");body.replaceChildren();
@@ -115,6 +115,7 @@ function renderTable(data,metric,selectedName,onSelect,search){
   a.addEventListener("click",()=>onSelect(p.name));th.append(a);
   const q=samplePrecision(data,metric,p.name);
   tr.append(el("td",{},i+1));tr.append(th);tr.append(el("td",{},num(p.values[metric.index])));
+  tr.append(el("td",{},q.se===null?"—":fmt(q.se)));
   tr.append(el("td",{},q.rse===null?"—":fmt(q.rse)+"%"));
   tr.append(el("td",{},q.ci?fmt(q.ci[0])+"–"+fmt(q.ci[1]):"—"));
   tr.append(el("td",{},q.label));
