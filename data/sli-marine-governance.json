@@ -12,8 +12,8 @@
       "url": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
     }
   ],
-  "disclosure_id": "Hierarki menampilkan struktur organisasi formal KKP; jejaring adalah pengelompokan fungsi lintas lembaga, bukan bukti hubungan komando, delegasi wewenang atau MoU tertentu. Jabatan perorangan tidak ditampilkan.",
-  "disclosure_en": "Hierarchy shows the formal KKP structure; network is analytical clustering of cross-agency functions, not proof of command, delegated authority or specific MoUs. Individual officeholders are intentionally omitted.",
+  "disclosure_id": "Model kelembagaan 21 Oktober 2026 memisahkan struktur internal KKP dari jaringan peran lintas lembaga. Profil pimpinan berdasar halaman pejabat lembaga atau siaran pers KKP resmi, bukan asumsi masa jabatan. Tanggal peninjauan sumber bukan tanggal pelantikan. Logo KKP berasal dari portal resmi dan tidak boleh dipakai sebagai logo lembaga lain.",
+  "disclosure_en": "The 21 October 2026 institutional model separates KKP's internal structure from cross-agency functional relationships. Officers are sourced to official agency rosters or official KKP releases, not inferred tenures. A source review date is not an appointment date. KKP's emblem originates from an official portal and must not be reused for other institutions.",
   "hierarchy": [
     {
       "id": "president",
@@ -830,7 +830,19 @@
       "label_en": "Ministry of National Development Planning",
       "role_id": "Perencanaan pembangunan nasional dan prioritas lintas sektor.",
       "role_en": "National development planning and cross-sector prioritization.",
-      "source": "https://www.bappenas.go.id/"
+      "source": "https://www.bappenas.go.id/",
+      "officeholder": {
+        "name": "Rachmat Pambudy",
+        "source": "https://www.bappenas.go.id/struktur-organisasi",
+        "checked_on": "2026-10-21",
+        "status": "official_agency_roster"
+      },
+      "sector_contact": {
+        "name": "Mohamad Rahmat Mulianda",
+        "role": "Direktur Kelautan dan Perikanan",
+        "source": "https://www.bappenas.go.id/struktur-organisasi",
+        "checked_on": "2026-10-21"
+      }
     },
     {
       "id": "kemenkopangan",
@@ -870,7 +882,13 @@
       "label_en": "Ministry of Trade",
       "role_id": "Perdagangan dan akses pasar produk kelautan dan perikanan; kewenangan perdagangan tidak berada di bawah KKP.",
       "role_en": "Trade and market access for marine products; separate ministerial authority.",
-      "source": "https://www.kemendag.go.id/"
+      "source": "https://www.kemendag.go.id/",
+      "officeholder": {
+        "name": "Budi Santoso",
+        "source": "https://www.kemendag.go.id/tentang/pejabat",
+        "checked_on": "2026-10-21",
+        "status": "official_agency_roster"
+      }
     },
     {
       "id": "dkp",
@@ -886,7 +904,13 @@
       "label_en": "Meteorology, Climatology and Geophysics Agency",
       "role_id": "Informasi cuaca maritim, gelombang dan iklim sebagai masukan risiko operasi.",
       "role_en": "Marine weather, waves and climate risk information.",
-      "source": "https://www.bmkg.go.id/"
+      "source": "https://www.bmkg.go.id/",
+      "officeholder": {
+        "name": "Teuku Faisal Fathani",
+        "source": "https://www.bmkg.go.id/profil/pejabat",
+        "checked_on": "2026-10-21",
+        "status": "official_agency_roster"
+      }
     },
     {
       "id": "perindo",
