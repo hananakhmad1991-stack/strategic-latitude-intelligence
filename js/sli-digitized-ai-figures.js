@@ -11,7 +11,7 @@ root.classList.add("sli-figure-atlas");root.setAttribute("data-sli-visual","sour
 const heading=el("h3",en()?"Digitized original-report figures":"Grafik laporan asli yang telah didigitalisasi");
 const selectWrap=el("div");selectWrap.className="sli-figure-select";
 const lab=el("label",en()?"Choose figure":"Pilih grafik");const select=el("select");lab.append(select);selectWrap.append(lab);
-d.figures.forEach((f,i)=>{const provider=f.source_url?"World Bank":"Stanford";const op=el("option",provider+" · "+(en()?f.title_en:f.title_id)+" · Figure "+f.figure_number+(f.figure_panel||""));op.value=String(i);select.append(op)});
+d.figures.forEach((f,i)=>{const provider=f.source_url?"World Bank":"Stanford";const op=el("option",provider+" · "+(en()?f.title_en:f.title_id)+" · Figure "+f.figure_number+(f.figure_panel||""));op.value=String(i);op.dataset.sliFigureId=(f.source_url?"worldbank:":"stanford:")+f.figure_number+(f.figure_panel||"");select.append(op)});
 const meta=el("p"),plot=el("div"),detail=el("div"),warn=el("p"),source=el("p"),details=el("details"),sum=el("summary",en()?"Show exact transcribed values":"Lihat tabel nilai sumber"),table=el("table");
 plot.className="sli-figure-plot";detail.className="sli-figure-detail";details.append(sum,table);
 root.replaceChildren(heading,selectWrap,meta,plot,detail,warn,source,details);
