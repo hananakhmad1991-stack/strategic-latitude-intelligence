@@ -43,12 +43,17 @@ export function selectDashboardEvidence(payload,question,limit=7){
  for(const {d} of results){
   if(selected.length>=Math.max(1,Math.min(10,limit)))break;
   if(files.has(d.dataset)&&results.length>=limit*2)continue; // diversify dashboards
-  selected.push({id:d.id,title:d.title,text:d.text.slice(0,900),
+  const bpsLocator=d.dataset==="sli-bps-agri-horti-2026-source-register.json";
+  selected.push({id:d.id,title:d.title,text:(bpsLocator?
+   "BPS 2025/2026 SOURCE TABLE LOCATOR ONLY. No individual numeric cells are verified or commercially cleared for public reproduction; do not extract, quote, compute, aggregate or infer numeric figures from this catalog. Publisher search link is not an original PDF citation. "+
+   d.text.slice(0,580):d.text.slice(0,900)),
    source_url:d.source_url,source_date:d.period,publisher:d.publisher||"Public dashboard",
    period:d.period,geo:"Indonesia",access:"pro",
-   topic:"public dashboard contextual evidence dated",
+   topic:bpsLocator?"source catalog reference only; numerical evidence unavailable":"public dashboard contextual evidence dated",
    source_type:"public_dashboard_source_record_not_claim_verified",
    verification_status:d.verification_status,
+   numeric_claim_permitted:!bpsLocator,
+   publication_rights_status:bpsLocator?"BPS_written_commercial_reproduction_permission_missing":"source_specific_rights_unchanged",
    dataset:d.dataset});
   files.add(d.dataset);
  }
