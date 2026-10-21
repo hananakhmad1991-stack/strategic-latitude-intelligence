@@ -25,7 +25,7 @@ from pathlib import Path
 import re
 from urllib.parse import urlparse
 
-HEADERS = {"direction","period","hs_code","partner_country","value_usd","net_weight_kg","source_url","source_locator"}
+HEADERS = {"direction","period","hs_code","partner_country","value_usd","net_weight_kg","source_url","source_locator","geographic_scope"}
 DIRECTIONS={"exports":"FOB","imports":"CIF"}
 INVALID_PARTNERS={"WORLD","ALL","TOTAL","OTHERS","OTHER","ASEAN","EU","EUROPEAN UNION","UNKNOWN","UNSPECIFIED","N/A","-"}
 SCHEMA="sli-bps-hs-partner-matrix-v1"
@@ -65,21 +65,24 @@ def read_observations(csv_path):
             country=(row["partner_country"] or "").strip()
             source_url=(row["source_url"] or "").strip()
             locator=(row["source_locator"] or "").strip()
+            geography=(row["geographic_scope"] or "").strip()
             if direction not in DIRECTIONS:raise ValueError(f"line {line}: exports or imports required")
             if not re.fullmatch(r"20[0-9]{2}(?:-(?:0[1-9]|1[0-2]))?",period):raise ValueError(f"line {line}: YYYY or YYYY-MM required")
             if not re.fullmatch(r"[0-9]{2}(?:[0-9]{2}){0,4}",hs):raise ValueError(f"line {line}: HS2/4/6/8/10 required, preserve leading zeros")
             if len(country)<2 or len(country)>100 or country.upper() in INVALID_PARTNERS or re.search(r"[<>]",country):
                 raise ValueError(f"line {line}: named individual partner required, not aggregate/placeholder")
+            if geography!="Indonesia":raise ValueError(f"line {line}: national dataset requires geographic_scope=Indonesia; provincial or regional BPS data must be reviewed separately")
             if not allowed_url(source_url):raise ValueError(f"line {line}: official BPS HTTPS source URL required")
             if len(locator)<10 or len(locator)>250:raise ValueError(f"line {line}: exact original query/table/page locator required")
             value=parse_decimal(row["value_usd"],"value_usd")
             weight=parse_decimal(row["net_weight_kg"],"net_weight_kg",allow_blank=True)
             if value==0:raise ValueError(f"line {line}: ambiguous zero; exclude unobserved cells instead")
-            k=(direction,period,hs,country.casefold())
+            k=(direction,period,hs,country.casefold(),geography)
             if k in keys:raise ValueError(f"line {line}: duplicate HS-partner-period-direction")
             keys.add(k)
             observations.append({
               "direction":direction,"period":period,"hs_code":hs,"hs_level":len(hs),"hs_version":"HS2022",
+              "geographic_scope":geography,
               "partner_country":country,"value_usd":float(value),"net_weight_kg":float(weight) if weight is not None else None,
               "value_basis":DIRECTIONS[direction],"source_url":source_url,"source_locator":locator
             })
@@ -99,9 +102,15 @@ def promote(csv_path,observations,approval_path):
         raise ValueError("Named independent reviewer required")
     if not isinstance(obj.get("review_note"),str) or len(obj["review_note"].strip())<20:
         raise ValueError("Substantive review note required")
+    if obj.get("public_website_terms_review")!="approved" or not allowed_url(str(obj.get("rights_basis_url",""))):
+        raise ValueError("Public website rights review and official BPS terms URL required for publication")
+    if not isinstance(obj.get("rights_note"),str) or len(obj["rights_note"].strip())<20:
+        raise ValueError("Specific public BPS data redistribution/attribution rights assessment required")
     return {"status":"verified","review_status":"primary_cell_review_attested",
             "review":{"reviewed_by":obj["reviewed_by"].strip(),"review_note":obj["review_note"].strip(),
-                      "approved_cell_count":len(observations),"source_csv_sha256":digest}}
+                      "approved_cell_count":len(observations),"source_csv_sha256":digest,
+                      "public_website_terms_review":"approved","rights_basis_url":obj["rights_basis_url"],
+                      "rights_note":obj["rights_note"].strip()}}
 
 def run(csv_path,output_path,approval_path=None):
     if not csv_path.is_file():raise ValueError("Source CSV not found")
@@ -110,7 +119,7 @@ def run(csv_path,output_path,approval_path=None):
     document={
       "schema":SCHEMA,**review,
       "as_of":datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-      "publisher":"Badan Pusat Statistik (BPS)",
+      "publisher":"Badan Pusat Statistik (BPS)","geographic_scope":"Indonesia",
       "primary_query_url":"https://www.bps.go.id/id/exim",
       "hs_classification":"HS 2022","unit":"USD",
       "value_basis":DIRECTIONS,
