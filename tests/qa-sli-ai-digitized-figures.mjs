@@ -90,3 +90,16 @@ test("Three newly checked Stanford label-only figure series preserve units, PDF 
  assert.match(js,/function barDatum/);
  assert.match(js,/r.count===undefined\?r.value:r.count/);
 });
+
+// Editorial UI localization is distinct from the unmodified English export/source fields.
+test("AI Atlas uses localized figure labels, table headers and readable units without rewriting numeric CSV provenance",()=>{
+ const js=read("js/sli-digitized-ai-figures.js");
+ assert.ok(js.includes('en()?"en-US":"id-ID"'),"Rendered number formatting must follow the chosen locale");
+ assert.ok(js.includes('facilities:"fasilitas",models:"model",satellites:"satelit"'));
+ assert.ok(js.includes('en()?"Year":"Tahun"'));
+ assert.ok(js.includes('(en()?x.label_en:x.label_id)'));
+ assert.ok(js.includes('(en()?f.title_en:f.title_id)+" ("+localizedUnit(f.unit)+")"'));
+ assert.ok(js.includes('(en()?"Figure ":"Gambar ")'));
+ assert.ok(js.includes('getData:()=>({headers:multi?["Year"'),"Evidence-backed CSV schema must remain original English");
+ assert.ok(js.includes('sourceUrl:f.source_url||d.source.official_url'),"Publisher PDF provenance must be unchanged");
+});
