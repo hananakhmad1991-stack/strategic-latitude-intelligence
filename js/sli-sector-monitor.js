@@ -6,6 +6,7 @@ const T=(id,e)=>en()?e:id;
 const E=(t,c,v)=>{const n=document.createElement(t);if(c)n.className=c;if(v!==undefined)n.textContent=String(v);return n};
 const sectorRefs={
  food:{id:"Pangan & Pertanian",en:"Food & Agriculture",paths:[["Dashboard pangan","Food dashboard","./food-agriculture-intelligence.html"],["Peta kelembagaan","Institutions","./food-agriculture-intelligence.html#fa-hierarchy"],["Kebijakan pangan","Food policy","./policy-regulatory-intelligence.html"]]},
+ marine:{id:"Kelautan & Perikanan",en:"Marine & Fisheries",paths:[["Dashboard KKP","KKP dashboard","./marine-fisheries-intelligence.html"],["Peraturan KKP","KKP regulations","./policy-regulatory-intelligence.html?sector=marine"],["Entitas kelautan","Marine entities","./sli-entities.html?sector=marine"]]},
  minerals:{id:"Mineral Kritis",en:"Critical Minerals",paths:[["Dashboard mineral","Minerals dashboard","./index.html#minerals"],["Investasi mineral","Mineral projects","./index.html#investment"],["Regulasi mineral","Minerals policy","./policy-regulatory-intelligence.html"]]}
 };
 let news=null,radar=null;
@@ -23,7 +24,7 @@ function relevant(row,chosen,scope,q){
 function render(){
  if(!news)return;
  for(const n of document.querySelectorAll("[data-en][data-id]"))n.textContent=en()?n.dataset.en:n.dataset.id;
- for(const [value,idText,enText] of [["food","Pangan & Pertanian","Food & Agriculture"],["minerals","Mineral Kritis","Critical Minerals"],["all","Seluruh sektor","All monitored sectors"]]){
+ for(const [value,idText,enText] of [["food","Pangan & Pertanian","Food & Agriculture"],["minerals","Mineral Kritis","Critical Minerals"],["marine","Kelautan & Perikanan","Marine & Fisheries"],["all","Seluruh sektor","All monitored sectors"]]){
   const n=Array.from($("sliNewsSector").options).find(x=>x.value===value);if(n)n.textContent=T(idText,enText);
  }
  const root=$("sliNewsCards");root.replaceChildren();
@@ -63,7 +64,7 @@ async function main(){
   $("sliNewsStatus").textContent=T("Arsip berita tidak tersedia; sumber belum bisa dimuat.","Monitoring archive unavailable.");return}
  news=results[0].value;radar=results[1].status==="fulfilled"?results[1].value:null;
  const val=new URLSearchParams(location.search).get("sector");
- if(val==="minerals"||val==="food"||val==="all")$("sliNewsSector").value=val;
+ if(val==="minerals"||val==="food"||val==="marine"||val==="all")$("sliNewsSector").value=val;
  for(const id of ["sliNewsSector","sliNewsScope","sliNewsSearch"])$(id).addEventListener(id==="sliNewsSearch"?"input":"change",render);
  document.addEventListener("sli:languagechange",render);
  const observer=new MutationObserver(a=>{if(a.some(e=>e.attributeName==="lang"))render()});observer.observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});

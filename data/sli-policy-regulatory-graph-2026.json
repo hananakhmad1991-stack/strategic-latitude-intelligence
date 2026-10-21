@@ -1,10 +1,10 @@
 {
-  "version": "2026-10-20-cross-region-fiscal-regulations-wave5",
-  "updated_at": "2026-10-20",
+  "version": "2026-10-20-cross-region-fiscal-regulations-wave5__marine_kkp_index1",
+  "updated_at": "2026-10-21",
   "methodology": {
     "framework": "Normative legal hierarchy based on UU 12/2011 Articles 7-8 as amended by UU 13/2022; cross-sector delegation network and RIA-lite issue triage.",
     "not_legal_advice": true,
-    "exhaustiveness": "Curated cross-sector national and regional baseline; NOT every Indonesian legal instrument. Full Perda/Pergub/Perbup/Perwali coverage requires province-by-province JDIH discovery and source confirmation. Missing record does not mean no applicable law.",
+    "exhaustiveness": "Curated cross-sector national and regional baseline; NOT every Indonesian legal instrument. Full Perda/Pergub/Perbup/Perwali coverage requires province-by-province JDIH discovery and source confirmation. Missing record does not mean no applicable law. Marine/KKP law list is a JDIH/BPK instrument index without verified consolidated article text; article claims must pass SLI separately-reviewed legal-provision gate.",
     "status_dictionary": {
       "enacted": "officially enacted instrument; later changes may still require review",
       "repealed": "repeal supported by successor official source",
@@ -2507,6 +2507,167 @@
       "source_checked_at": "2026-10-20",
       "document_date": "2026-04-01",
       "verification_scope": "law identity and explicit amendment metadata; text consolidation and future amendments require separate verification"
+    },
+    {
+      "id": "kkp_uu_31_2004",
+      "tier": "uu",
+      "ref": "UU 31/2004",
+      "label": "Perikanan",
+      "sector": "marine",
+      "topics": [
+        "marine",
+        "fisheries",
+        "kkp",
+        "perikanan",
+        "kelautan"
+      ],
+      "source": "https://jdih.kkp.go.id/Peraturannew/PeraturanEnglish/",
+      "note": "Amended by UU 45/2009; verify later amendments and consolidated text.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Republik Indonesia",
+      "evidence": "official_kkp_jdih_catalog_or_bpk_instrument_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-21",
+      "verification_scope": "Identity and metadata only; no provision text verified; current legal force and later amendments require separate legal review"
+    },
+    {
+      "id": "kkp_uu_45_2009",
+      "tier": "uu",
+      "ref": "UU 45/2009",
+      "label": "Perubahan atas UU 31/2004 tentang Perikanan",
+      "sector": "marine",
+      "topics": [
+        "marine",
+        "fisheries",
+        "kkp",
+        "perikanan",
+        "kelautan"
+      ],
+      "source": "https://peraturan.bpk.go.id/Details/38790/uu-no-45-tahun-2009",
+      "note": "Amending law, not a complete consolidated parent-law text.",
+      "status": "amending_instrument",
+      "kind": "regulation",
+      "owner": "Republik Indonesia",
+      "evidence": "official_kkp_jdih_catalog_or_bpk_instrument_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-21",
+      "verification_scope": "Identity and metadata only; no provision text verified; current legal force and later amendments require separate legal review"
+    },
+    {
+      "id": "kkp_uu_32_2014",
+      "tier": "uu",
+      "ref": "UU 32/2014",
+      "label": "Kelautan",
+      "sector": "marine",
+      "topics": [
+        "marine",
+        "fisheries",
+        "kkp",
+        "perikanan",
+        "kelautan"
+      ],
+      "source": "https://jdih.kkp.go.id/Peraturannew/PeraturanEnglish/",
+      "note": "Check current amendments and implementing rules.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Republik Indonesia",
+      "evidence": "official_kkp_jdih_catalog_or_bpk_instrument_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-21",
+      "verification_scope": "Identity and metadata only; no provision text verified; current legal force and later amendments require separate legal review"
+    },
+    {
+      "id": "kkp_uu_27_2007",
+      "tier": "uu",
+      "ref": "UU 27/2007",
+      "label": "Pengelolaan Wilayah Pesisir dan Pulau-Pulau Kecil",
+      "sector": "marine",
+      "topics": [
+        "marine",
+        "fisheries",
+        "kkp",
+        "perikanan",
+        "kelautan"
+      ],
+      "source": "https://jdih.kkp.go.id/Peraturannew/PeraturanEnglish/",
+      "note": "Use with UU 1/2014 and review later changes.",
+      "status": "amended",
+      "kind": "regulation",
+      "owner": "Republik Indonesia",
+      "evidence": "official_kkp_jdih_catalog_or_bpk_instrument_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-21",
+      "verification_scope": "Identity and metadata only; no provision text verified; current legal force and later amendments require separate legal review"
+    },
+    {
+      "id": "kkp_uu_1_2014",
+      "tier": "uu",
+      "ref": "UU 1/2014",
+      "label": "Perubahan atas UU 27/2007 tentang Wilayah Pesisir",
+      "sector": "marine",
+      "topics": [
+        "marine",
+        "fisheries",
+        "kkp",
+        "perikanan",
+        "kelautan"
+      ],
+      "source": "https://jdih.kkp.go.id/Peraturannew/PeraturanEnglish/",
+      "note": "Not consolidated text.",
+      "status": "amending_instrument",
+      "kind": "regulation",
+      "owner": "Republik Indonesia",
+      "evidence": "official_kkp_jdih_catalog_or_bpk_instrument_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-21",
+      "verification_scope": "Identity and metadata only; no provision text verified; current legal force and later amendments require separate legal review"
+    },
+    {
+      "id": "kkp_uu_7_2016",
+      "tier": "uu",
+      "ref": "UU 7/2016",
+      "label": "Perlindungan dan Pemberdayaan Nelayan, Pembudi Daya Ikan, dan Petambak Garam",
+      "sector": "marine",
+      "topics": [
+        "marine",
+        "fisheries",
+        "kkp",
+        "perikanan",
+        "kelautan"
+      ],
+      "source": "https://jdih.kkp.go.id/Homedev/PeraturanAll?peraturan=45",
+      "note": "Check subsequent amendments and applicable regulations before claiming current obligations.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Republik Indonesia",
+      "evidence": "official_kkp_jdih_catalog_or_bpk_instrument_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-21",
+      "verification_scope": "Identity and metadata only; no provision text verified; current legal force and later amendments require separate legal review"
+    },
+    {
+      "id": "kkp_pp_11_2023",
+      "tier": "pp",
+      "ref": "PP 11/2023",
+      "label": "Penangkapan Ikan Terukur",
+      "sector": "marine",
+      "topics": [
+        "marine",
+        "fisheries",
+        "kkp",
+        "perikanan",
+        "kelautan"
+      ],
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/4584",
+      "note": "KKP index includes specific repeals; verify current consolidated licensing and WPP rules.",
+      "status": "check_current",
+      "kind": "regulation",
+      "owner": "Pemerintah Republik Indonesia",
+      "evidence": "official_kkp_jdih_catalog_or_bpk_instrument_metadata",
+      "region": "Indonesia",
+      "source_checked_at": "2026-10-21",
+      "verification_scope": "Identity and metadata only; no provision text verified; current legal force and later amendments require separate legal review"
     }
   ],
   "edges": [
@@ -3499,6 +3660,16 @@
       "from": "pp35hkpd2023",
       "to": "perda_bengkulu_pdrd2023",
       "type": "regional_fiscal_implementation_context"
+    },
+    {
+      "from": "kkp_uu_45_2009",
+      "to": "kkp_uu_31_2004",
+      "type": "amends"
+    },
+    {
+      "from": "kkp_uu_1_2014",
+      "to": "kkp_uu_27_2007",
+      "type": "amends"
     }
   ],
   "cases": [

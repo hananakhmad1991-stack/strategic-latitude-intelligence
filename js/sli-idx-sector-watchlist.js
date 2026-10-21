@@ -10,6 +10,7 @@ const SECTORS=[
  ["minerals","Metals & minerals","Logam & mineral"],
  ["coal","Coal & mining","Batu bara & tambang"],
  ["food","Food & agriculture","Pangan & pertanian"],
+ ["marine","Marine & fisheries","Kelautan & perikanan"],
  ["technology","Digital & technology","Digital & teknologi"],
  ["infrastructure","Infrastructure","Infrastruktur"],
  ["transport","Logistics & transport","Logistik & transportasi"],
@@ -20,9 +21,9 @@ const lang=()=>document.documentElement?.lang?.toLowerCase().startsWith("id")||w
 const T=(en,id)=>lang()?id:en;
 const tickerUrl=t=>"./sli-issuer.html?ticker="+encodeURIComponent(t);
 const ALLOWED=/^[A-Z0-9]{4}$/;
-let candidates=[],sector="energy",ready=null;
+let candidates=[],sector=(typeof location!=="undefined"&&new URLSearchParams(location.search).get("watchlist")==="marine")?"marine":"energy",ready=null;
 function activeIssuerList(rows,k){
- return rows.filter(x=>x.sector===k&&x.exchange==="IDX"&&ALLOWED.test(x.ticker||"")&&x.name);
+ return rows.filter(x=>(x.sector===k||(k==="marine"&&x.theme_marine===true))&&x.exchange==="IDX"&&ALLOWED.test(x.ticker||"")&&x.name);
 }
 function link(url,label,external=false){
  const a=E("a",null,label);a.href=url;if(external){a.target="_blank";a.rel="noopener noreferrer"}return a;
@@ -40,8 +41,8 @@ function renderUI(){
  const header=E("div","sli-idx-sectoral-header");
  header.append(E("span","sli-idx-sectoral-kicker",T("SLI · INDONESIAN STRATEGIC SECTORS","SLI · SEKTOR STRATEGIS INDONESIA")),
  E("h3",null,T("IDX Sector Watchlist & Company Research","Watchlist Sektoral IDX & Riset Perusahaan")),
- E("p",null,T("Unlike the full-market heatmap above, this section shows only SLI's eight strategic IDX sectors. Provider quotes and the SLI company register are kept separate.",
- "Berbeda dari heatmap pasar umum di atas, bagian ini hanya menampilkan delapan sektor strategis IDX pilihan SLI. Harga penyedia dan registri perusahaan SLI tetap dipisahkan.")));
+ E("p",null,T("Unlike the full-market heatmap above, this section shows only SLI's curated strategic IDX sectors. Provider quotes and the SLI company register are kept separate.",
+ "Berbeda dari heatmap pasar umum di atas, bagian ini hanya menampilkan sektor strategis IDX pilihan SLI. Harga penyedia dan registri perusahaan SLI tetap dipisahkan.")));
  root.append(header);
  const tabs=E("div","sli-idx-sectoral-tabs");tabs.setAttribute("role","group");tabs.setAttribute("aria-label",T("Filter selected IDX strategic sector","Pilih sektor saham strategis IDX"));
  for(const [key,en,id]of SECTORS){
@@ -68,7 +69,7 @@ function renderUI(){
  const best=PROVIDER?.watchlistConfig?PROVIDER.watchlistConfig(candidates,sector,6).tabs[0]?.symbols.map(x=>x.s.slice(4)):[];
  const byCode=new Map(selected.map(x=>[x.ticker,x]));
  const top=(best||[]).map(x=>byCode.get(x)).filter(Boolean);
- if(!top.length)top.push(...selected.slice(0,6));
+ for(const candidate of selected){if(top.length>=6)break;if(!top.some(row=>row.ticker===candidate.ticker))top.push(candidate)}
  const quick=E("div","sli-idx-sectoral-tickers");
  for(const issuer of top){const a=link(tickerUrl(issuer.ticker),"");a.className="sli-idx-sectoral-ticker";
   a.append(E("strong",null,issuer.ticker),E("small",null,issuer.name));quick.append(a)}

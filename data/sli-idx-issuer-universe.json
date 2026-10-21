@@ -4,7 +4,7 @@
   "source_status": "curated_seed_pending_official_bulk_reconciliation",
   "official_source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat",
   "official_financial_url": "https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan",
-  "methodology": "Initial issuer ticker/name catalogue curated as discovery leads. Exact current issuer name, sector, listing status and code require profile or official bulk reconciliation; not a census of live listed securities. No current financials, price, market cap or shareholding imputed.",
+  "methodology": "Initial issuer ticker/name catalogue curated as discovery leads. Exact current issuer name, sector, listing status and code require profile or official bulk reconciliation; not a census of live listed securities. No current financials, price, market cap or shareholding imputed. Marine thematic screen adds CPRO, DSFI, IKAN and PCAR as candidate issuer links supported by named KSEI/issuer/IDX references; it is not an official IDX industry-classification reallocation or assurance of current trading eligibility.",
   "records": [
     {
       "ticker": "MEDC",
@@ -1860,7 +1860,10 @@
       "total_assets": null,
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": null,
+      "theme_marine": true,
+      "marine_review_note": "Marine fish export candidate; 2026 IDX company-name list, segment requires filing",
+      "marine_evidence_url": "https://www.idx.id/media/nbkfn2sd/des-mei-2026.pdf"
     },
     {
       "ticker": "BBCA",
@@ -4165,6 +4168,63 @@
       "market_cap": null,
       "market_cap_as_of": null,
       "financial_period": null
+    },
+    {
+      "ticker": "CPRO",
+      "name": "Central Proteina Prima",
+      "sector": "marine",
+      "exchange": "IDX",
+      "entity_type": "issuer_candidate",
+      "verification": "idx_seed_awaiting_official_refresh",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/CPRO",
+      "financial_source_url": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "financial_period": null,
+      "theme_marine": true,
+      "marine_review_note": "Aquaculture and shrimp feed; KSEI stock active record 2026-09",
+      "marine_evidence_url": "https://web.ksei.co.id/services/registered-securities/shares/lc/CPRO?setLocale=id-ID"
+    },
+    {
+      "ticker": "DSFI",
+      "name": "Dharma Samudera Fishing Industries",
+      "sector": "marine",
+      "exchange": "IDX",
+      "entity_type": "issuer_candidate",
+      "verification": "idx_seed_awaiting_official_refresh",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/DSFI",
+      "financial_source_url": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "financial_period": null,
+      "theme_marine": true,
+      "marine_review_note": "Seafood processing and fisheries; published issuer financial reports",
+      "marine_evidence_url": "https://www.dsfi.id/id/investor"
+    },
+    {
+      "ticker": "PCAR",
+      "name": "Prima Cakrawala Abadi",
+      "sector": "marine",
+      "exchange": "IDX",
+      "entity_type": "issuer_candidate",
+      "verification": "idx_seed_awaiting_official_refresh",
+      "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/PCAR",
+      "financial_source_url": null,
+      "revenue": null,
+      "net_income": null,
+      "total_assets": null,
+      "market_cap": null,
+      "market_cap_as_of": null,
+      "financial_period": null,
+      "theme_marine": true,
+      "marine_review_note": "Seafood processing candidate; 2026 IDX company-name list, segment requires filing",
+      "marine_evidence_url": "https://www.idx.id/media/nbkfn2sd/des-mei-2026.pdf"
     }
   ]
 }

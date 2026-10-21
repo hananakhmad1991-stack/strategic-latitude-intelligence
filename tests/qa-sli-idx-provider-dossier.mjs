@@ -16,14 +16,19 @@ function issuer(){
 }
 test("Sector watchlist is restricted to SLI IDX issuers while general heatmap is not sector restricted",()=>{
  const ui=provider();
- const source=data.records.filter(x=>["energy","minerals","coal","food","technology","infrastructure","transport","manufacturing"].includes(x.sector));
+ const source=data.records.filter(x=>["energy","minerals","coal","food","marine","technology","infrastructure","transport","manufacturing"].includes(x.sector));
  const config=ui.watchlistConfig(source,"all");
- assert.equal(config.tabs.length,8);
+ assert.equal(config.tabs.length,9);
  const sourceTickers=new Set(source.map(x=>x.ticker));
  for(const tab of config.tabs){
   assert.ok(tab.symbols.length>0&&tab.symbols.length<=9);
   for(const {s} of tab.symbols){assert.match(s,/^IDX:[A-Z0-9]{4}$/);assert.ok(sourceTickers.has(s.slice(4)))}
  }
+ const marine=ui.watchlistConfig(source,"marine",6);
+ assert.equal(marine.tabs.length,1);
+ assert.equal(marine.tabs[0].title,"Kelautan");
+ assert.ok(marine.tabs[0].symbols.some(x=>x.s==="IDX:CPRO"));
+ assert.ok(marine.tabs[0].symbols.some(x=>x.s==="IDX:DSFI"));
  const food=ui.watchlistConfig(source,"food",6);
  assert.equal(food.tabs.length,1);assert.equal(food.tabs[0].title,"Pangan");
  assert.ok(food.tabs[0].symbols.length>=5&&food.tabs[0].symbols.length<=6);

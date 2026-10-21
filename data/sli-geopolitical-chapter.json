@@ -1,7 +1,7 @@
 {
   "schema_version": "sli-geopolitical-chapter-v1",
-  "as_of": "2026-10-20",
-  "editorial_scope": "Original Indonesia-focused qualitative geopolitical assessment comparing dated BPS, BKPM, BI and ESDM metrics with attributed secondary monitoring headlines. No composite geopolitical score, military conflict forecast, independently verified closure, or inferred numerical effect. Food & Agriculture mechanisms use Kementan/BPS/Bapanas source-dated baseline; no independent food shortage/impact inference from headlines.",
+  "as_of": "2026-10-21",
+  "editorial_scope": "Original Indonesia-focused qualitative geopolitical assessment comparing dated BPS, BKPM, BI and ESDM metrics with attributed secondary monitoring headlines. No composite geopolitical score, military conflict forecast, independently verified closure, or inferred numerical effect. Food & Agriculture mechanisms use Kementan/BPS/Bapanas source-dated baseline; no independent food shortage/impact inference from headlines. Maritime and Natuna sector exposure now links KKP observed marine data. Fisheries stock estimates, dated production figures and headline conflict claims are strictly separate evidence classes.",
   "themes": [
     {
       "id": "maritime",
@@ -44,6 +44,10 @@
         {
           "label": "Geopolitical energy monitoring",
           "url": "./index.html#energy"
+        },
+        {
+          "label": "SLI KKP source-linked marine exposure",
+          "url": "./marine-fisheries-intelligence.html"
         }
       ]
     },
@@ -118,7 +122,12 @@
         "coast guard",
         "asean",
         "uncLOS",
-        "submarine cable"
+        "submarine cable",
+        "perikanan",
+        "fisheries",
+        "illegal fishing",
+        "seaweed",
+        "KKP"
       ],
       "links": [
         {
@@ -128,6 +137,10 @@
         {
           "label": "Indonesia Intelligence Dossiers",
           "url": "./geopolitical-impact-assessment.html#dossiers"
+        },
+        {
+          "label": "KKP · Marine & Fisheries historical evidence",
+          "url": "./marine-fisheries-intelligence.html"
         }
       ]
     },

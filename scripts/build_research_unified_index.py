@@ -26,6 +26,7 @@ EXCLUDE={
  "sli-research-project-stage-baseline.json","sli-research-evidence-preview.json",
  "sli-research-province-preview.json","sli-research-assistant-config.json",
  "sli-verified-legal-provisions.json",
+ "sli-marine-crosssector.json", # legal index/issuer metadata: not original KKP numeric observations
 }
 LIMIT_PER_DATASET=22
 LIMIT_TOTAL=1400

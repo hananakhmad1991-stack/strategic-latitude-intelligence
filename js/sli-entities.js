@@ -32,6 +32,16 @@ function fromHierarchy(db){
   }
  }
 }
+function fromMarineRegistry(db){
+ if(db?.schema!=='sli-marine-crosssector-v1'||!Array.isArray(db.agencies))throw Error('Unsupported KKP entity directory');
+ for(const a of db.agencies){
+  if(!a.name||!safe(a.source_url))continue;
+  upsert({key:'institution:'+I().nameKey(a.name),type:'institution',title:a.name,person:'',
+   source:a.source_url,role:a.role,date:db.updated_at,sectors:['marine'],
+   records:[{sector:'marine',verification:a.verified_scope,source:a.source_url}],
+   summary:a.role,original:{verification:'official_directory_functional_lead',source_url:a.source_url}});
+ }
+}
 function fromProjects(db){
  for(const p of db.records||[]){
   if(!p?.id||!p.name)continue;
@@ -96,11 +106,11 @@ function fromCorporateEvidence(db){
  }
 }
 const typeLabels={person:['Person','Tokoh'],institution:['Institution','Lembaga'],company:['Company','Perusahaan'],project:['Project','Proyek']};
-const sectorLabels={finance:['Banking & finance','Perbankan & keuangan'],infrastructure:['Infrastructure & construction','Infrastruktur & konstruksi'],transport:['Transport & logistics','Transportasi & logistik'],property:['Property & industrial estates','Properti & kawasan industri'],healthcare:['Health & pharma','Kesehatan & farmasi'],manufacturing:['Industrial manufacturing','Industri manufaktur'],retail:['Retail & commerce','Ritel & perdagangan'],other:['Unclassified','Lainnya'],corporate:['Corporate groups','Grup perusahaan'],energy:['Energy','Energi'],minerals:['Critical minerals','Mineral kritis'],coal:['Coal','Batu bara'],technology:['AI, data centers & technology','AI, data center & teknologi'],food:['Food & agriculture','Pangan & pertanian'],ai:['AI & digital','AI & digital'],projects:['Project register','Registri proyek']};
+const sectorLabels={finance:['Banking & finance','Perbankan & keuangan'],infrastructure:['Infrastructure & construction','Infrastruktur & konstruksi'],transport:['Transport & logistics','Transportasi & logistik'],property:['Property & industrial estates','Properti & kawasan industri'],healthcare:['Health & pharma','Kesehatan & farmasi'],manufacturing:['Industrial manufacturing','Industri manufaktur'],retail:['Retail & commerce','Ritel & perdagangan'],other:['Unclassified','Lainnya'],corporate:['Corporate groups','Grup perusahaan'],energy:['Energy','Energi'],minerals:['Critical minerals','Mineral kritis'],coal:['Coal','Batu bara'],technology:['AI, data centers & technology','AI, data center & teknologi'],food:['Food & agriculture','Pangan & pertanian'],marine:['Marine & fisheries','Kelautan & perikanan'],ai:['AI & digital','AI & digital'],projects:['Project register','Registri proyek']};
 const labelType=a=>typeLabels[a.type]?.[id()?1:0]||a.type;
 function applyLanguage(){
  for(const e of document.querySelectorAll('[data-id][data-en]'))e.textContent=e.dataset[id()?'id':'en'];
- for(const [selector,opts] of [['sliEntityType',[['all','All entities','Semua entitas'],['person','People','Tokoh'],['institution','Institutions','Lembaga'],['company','Companies','Perusahaan'],['project','Projects','Proyek']]],['sliEntitySector',[['all','All sectors','Semua sektor'],['ai','AI & digital','AI & digital'],['minerals','Minerals','Mineral'],['projects','Project register','Registri proyek'],['corporate','Corporate groups','Grup perusahaan'],['energy','Energy','Energi'],['coal','Coal','Batu bara'],['technology','AI & technology','AI & teknologi'],['food','Food & agriculture','Pangan & pertanian'],['finance','Banking & finance','Perbankan & keuangan'],['infrastructure','Infrastructure & construction','Infrastruktur & konstruksi'],['transport','Transport & logistics','Transportasi & logistik'],['property','Property & estates','Properti & kawasan industri'],['healthcare','Health & pharma','Kesehatan & farmasi'],['manufacturing','Manufacturing','Manufaktur'],['retail','Retail & trade','Ritel & perdagangan'],['other','Unclassified','Lainnya']]]]){
+ for(const [selector,opts] of [['sliEntityType',[['all','All entities','Semua entitas'],['person','People','Tokoh'],['institution','Institutions','Lembaga'],['company','Companies','Perusahaan'],['project','Projects','Proyek']]],['sliEntitySector',[['all','All sectors','Semua sektor'],['ai','AI & digital','AI & digital'],['minerals','Minerals','Mineral'],['projects','Project register','Registri proyek'],['corporate','Corporate groups','Grup perusahaan'],['energy','Energy','Energi'],['coal','Coal','Batu bara'],['technology','AI & technology','AI & teknologi'],['food','Food & agriculture','Pangan & pertanian'],['marine','Marine & fisheries','Kelautan & perikanan'],['finance','Banking & finance','Perbankan & keuangan'],['infrastructure','Infrastructure & construction','Infrastruktur & konstruksi'],['transport','Transport & logistics','Transportasi & logistik'],['property','Property & estates','Properti & kawasan industri'],['healthcare','Health & pharma','Kesehatan & farmasi'],['manufacturing','Manufacturing','Manufaktur'],['retail','Retail & trade','Ritel & perdagangan'],['other','Unclassified','Lainnya']]]]){
   const select=$(selector);if(!select)continue;for(const [k,en,bahasa] of opts){const opt=[...select.options].find(x=>x.value===k);if(opt)opt.textContent=T(en,bahasa)}
  }
 }
@@ -206,6 +216,8 @@ async function load(){
   fromHierarchy(results[0]);fromProjects(results[1]);fromCorporateGroups(results[2]);
   try{const response=await fetch('./data/sli-idx-issuer-universe.json',{cache:'no-store'});if(!response.ok)throw Error('IDX catalogue HTTP '+response.status);
    fromIssuerUniverse(await response.json());}catch(error){console.warn('[SLI IDX catalogue]',error)}
+  try{const response=await fetch('./data/sli-marine-crosssector.json',{cache:'no-store'});if(!response.ok)throw Error('KKP source directory HTTP '+response.status);fromMarineRegistry(await response.json());}
+  catch(error){console.warn('[SLI KKP entities]',error)}
   try{const response=await fetch('./data/sli-corporate-evidence-relationships.json',{cache:'no-store'});if(!response.ok)throw Error('Relationship evidence HTTP '+response.status);
    fromCorporateEvidence(await response.json());}catch(error){console.warn('[SLI corporate relationship evidence]',error)}
   const coverage=$('sliEntityCoverage');if(coverage&&issuerCoverage)coverage.textContent=
@@ -213,7 +225,8 @@ async function load(){
     T('Official IDX profile snapshot · ','Snapshot profil resmi BEI · '):T('Initial candidate list; full IDX reconciliation pending · ','Daftar kandidat awal; rekonsiliasi penuh BEI belum selesai · '))+issuerCoverage.as_of+
    ' · '+T('Group-tree and verified reports remain separate.','Pohon grup dan laporan terverifikasi tetap dipisahkan.');
   all=[...catalog.values()].sort((a,b)=>a.title.localeCompare(b.title,'id'));
-  const hash=decodeURIComponent(location.hash.slice(1)),requestedTicker=new URLSearchParams(location.search).get('ticker')||'';
+  const hash=decodeURIComponent(location.hash.slice(1)),params=new URLSearchParams(location.search),requestedTicker=params.get('ticker')||'';
+  if(params.get('sector')==='marine')$('sliEntitySector').value='marine';
   const target=[...catalog.values()].find(a=>a.type==='company'&&((a.corporate?.exchange==='IDX'&&a.corporate?.ticker===requestedTicker)||a.issuerRecord?.ticker===requestedTicker));
   selected=catalog.has(hash)?hash:(target?.key||'');
   if(target){$('sliEntityType').value='company';$('sliEntitySector').value='all';$('sliEntitySearch').value=requestedTicker;}

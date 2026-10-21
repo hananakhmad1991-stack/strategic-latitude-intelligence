@@ -2784,3 +2784,8 @@ window.SLI_TRANSLATIONS_ID.set("National IDI covers both central and provincial 
 window.SLI_TRANSLATIONS_ID.set("Read the data correctly","Cara membaca data dengan tepat");
 window.SLI_TRANSLATIONS_ID.set("BKPM PMA/PMDN investment realization. Growth computed from constant-price GRDP is a derived real growth rate.","Realisasi investasi PMA/PMDN BKPM. Pertumbuhan yang dihitung dari PDRB harga konstan merupakan tingkat pertumbuhan riil turunan.");
 window.SLI_TRANSLATIONS_ID.set("Strategic Latitude Intelligence · Original independent research. Data values come from their named publishers; all editorial assessments are SLI interpretations, not official government conclusions. Coverage is dated, not a live risk rating, and does not constitute financial advice.","Strategic Latitude Intelligence · Riset independen orisinal. Angka berasal dari penerbit sumber masing-masing; seluruh penilaian editorial merupakan interpretasi SLI, bukan kesimpulan resmi pemerintah. Cakupan memiliki periode tertentu, bukan peringkat risiko waktu nyata dan bukan nasihat keuangan.");
+
+/* KKP Marine home portal: translated display is sourced from curated SLI dictionary. */
+window.SLI_TRANSLATIONS_ID.set("Marine & Fisheries","Kelautan & Perikanan");
+window.SLI_TRANSLATIONS_ID.set("KKP statistics · aquaculture, seaweed, fishers, WPPNRI, conservation and marine regulation","Statistik KKP · budidaya, rumput laut, nelayan, WPPNRI, konservasi dan regulasi");
+window.SLI_TRANSLATIONS_ID.set("Loading official KKP observations…","Membaca observasi resmi KKP…");

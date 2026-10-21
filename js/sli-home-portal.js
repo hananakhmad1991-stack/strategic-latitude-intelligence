@@ -20,7 +20,17 @@ async function readMetrics(){
  }).finally(()=>{pending=null});
  return pending;
 }
+async function marinePulse(){
+ const target=document.getElementById("sliMarineHomeSnapshot");if(!target)return;
+ try{
+  const res=await fetch("./data/sli-marine-fisheries-kkp.json",{cache:"no-store"});if(!res.ok)throw Error("KKP source unavailable");
+  const data=await res.json(),k=data.records?.find(x=>x.indicator==="seaweed_aquaculture"&&x.year===2024);
+  if(!k||!Number.isFinite(k.value)||!/^https:\/\/portaldata\.kkp\.go\.id\//.test(k.source_url))throw Error("KKP baseline unverified");
+  target.textContent=T("KKP actual 2024 · seaweed ","KKP realisasi 2024 · rumput laut ")+(k.value/1e6).toLocaleString(isId()?"id-ID":"en-US",{maximumFractionDigits:2})+T(" million tonnes · view source ↗"," juta ton · lihat sumber ↗");
+ }catch{target.textContent=T("KKP baseline unavailable · open source dashboard ↗","Baseline KKP belum tersedia · buka dashboard sumber ↗")}
+}
 async function render(){
+ void marinePulse();
  const host=document.getElementById("sliPortalMetrics");if(!host)return;
  try{
   const register=await readMetrics();

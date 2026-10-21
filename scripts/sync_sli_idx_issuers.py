@@ -21,7 +21,7 @@ TARGET = ROOT / "data" / "sli-idx-issuer-universe.json"
 ENDPOINT = "https://www.idx.co.id/primary/ListedCompany/GetCompanyProfiles"
 SOURCE = "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat"
 VALID_SECTORS = {
-    "energy", "minerals", "coal", "technology", "food", "finance",
+    "energy", "minerals", "coal", "technology", "food", "marine", "finance",
     "infrastructure", "transport", "property", "healthcare",
     "manufacturing", "retail", "other"
 }
@@ -81,6 +81,9 @@ def build_snapshot(official, previous, as_of):
             "ticker": ticker,
             "name": name.strip(),
             "sector": old.get("sector", "other"),
+            "theme_marine": bool(old.get("theme_marine")),
+            "marine_review_note": old.get("marine_review_note"),
+            "marine_evidence_url": old.get("marine_evidence_url"),
             "exchange": "IDX",
             "entity_type": "listed_issuer",
             "verification": "official_exchange_snapshot",

@@ -41,14 +41,14 @@ test("General heatmap is a single provider-owned market overview, not a custom s
  assert.equal(widget.heatmapScriptUrl,"https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js");
  assert.doesNotMatch(provider,/fetch\(.*prices|Math\.random|fakeChange|SPX500/);
 });
-test("Internal SLI sector watchlist contains only its eight strategic sectors and links directly to a named dossier",()=>{
+test("Internal SLI sector watchlist contains only its nine strategic sectors and links directly to a named dossier",()=>{
  const api=load("js/sli-idx-sector-watchlist.js").SLIIDXSectors;
- assert.equal(api.sectorKeys.length,8);
+ assert.equal(api.sectorKeys.length,9);
  const selected=issuer.records.filter(x=>api.sectorKeys.includes(x.sector)&&x.exchange==="IDX");
- assert.equal(selected.length,178);
- assert.equal(new Set(selected.map(x=>x.ticker)).size,178);
+ assert.equal(selected.length,181);
+ assert.equal(new Set(selected.map(x=>x.ticker)).size,181);
  for(const [sector,n]of [["energy",17],["minerals",18],["coal",21],["food",36],["technology",24],
- ["infrastructure",19],["transport",16],["manufacturing",27]])assert.equal(api.activeIssuerList(issuer.records,sector).length,n);
+ ["infrastructure",19],["transport",16],["manufacturing",27],["marine",4]])assert.equal(api.activeIssuerList(issuer.records,sector).length,n);
  assert.equal(api.tickerUrl("ANTM"),"./sli-issuer.html?ticker=ANTM");
  for(const ticker of ["ANTM","PTBA","TLKM","INDF","ICBP","MEDC","GOTO","AMMN"]){
   assert.ok(selected.some(x=>x.ticker===ticker),"Missing SLI issuer ticker "+ticker);
