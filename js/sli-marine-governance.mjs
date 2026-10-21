@@ -1,5 +1,5 @@
 /* SLI Marine 2026 · verified hierarchy and evidence-linked functional network */
-const DATA_URL=new URL("../data/sli-marine-governance.json",import.meta.url);
+const DATA_URL=new URL("../data/sli-marine-governance.json?v=20261021-officers-v2",import.meta.url);
 const KKP_ICON="https://ptsp.kkp.go.id/assets/out/images/logo385.png";
 const https=s=>typeof s==="string"&&/^https:\/\/[^<>\s]+$/.test(s);
 export function validateMarineGovernance(data){
@@ -157,7 +157,7 @@ async function init(){
  if(!$("mfHierarchyDiagram"))return;
  try{
   const res=await fetch(DATA_URL,{cache:"no-store"});if(!res.ok)throw Error("Marine governance HTTP "+res.status);
-  const d=await res.json(),check=validateMarineGovernance(d);if(!check.pass)throw Error(check.issues.join(", "));
+  const d=await res.json(),check=validateMarineGovernance(d);if(!check.pass)throw Error(check.issues.join(", ")+" · "+res.url+" · schema="+d.schema+" · count="+d.hierarchy?.length);
   const state={selectedHierarchy:"minister",selectedNetwork:"djpt",selectedHub:d.groups.find(g=>g.id==="capture"),hub:"all",lane:"all",query:"",networkQuery:"",expanded:new Set(["djprl"])};
   const q=$("mfHierarchyQuery"),sel=$("mfHierarchyFilter");
   if(q)q.addEventListener("input",()=>{state.query=q.value;renderHierarchy(d,state)});
