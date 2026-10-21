@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import {webcrypto} from "node:crypto";
 import worker, {handleRequest,processEvents,runCron} from "../src/index.mjs";
 class FakeD1{
- constructor(){this.profiles=new Map;this.inbox=new Map;this.state=new Map;this.processed=new Map}
+ constructor(){this.profiles=new Map;this.inbox=new Map;this.state=new Map;this.processed=new Map;this.sources=new Map}
  prepare(sql){
   const db=this;
   return {
@@ -23,13 +23,15 @@ class FakeD1{
   if(q.startsWith("INSERT INTO user_profiles")){
    const p=this.profiles.get(a[0]);this.profiles.set(a[0],{user_id:a[0],preferences_json:a[1],created_at:p?.created_at||a[2],updated_at:a[3]});return {changes:1}
   }
+  if(q.startsWith("SELECT event_json FROM source_events"))
+   return {results:[...this.sources.values()].sort((x,y)=>y.detected_at_utc.localeCompare(x.detected_at_utc)).slice(0,1800)};
   if(q.startsWith("SELECT id,event_id"))return {results:[...this.inbox.values()].filter(x=>x.user_id===a[0]).sort((x,y)=>y.created_at.localeCompare(x.created_at)).slice(a[2],a[2]+a[1])};
   if(q.startsWith("SELECT COUNT(*) AS n FROM notification_inbox"))return {first:{n:[...this.inbox.values()].filter(x=>x.user_id===a[0]&&!x.read_at).length}};
   if(q.startsWith("UPDATE notification_inbox")){const n=this.inbox.get(a[1]);if(n?.user_id===a[2])n.read_at=a[0];return {changes:1}}
   if(q.startsWith("DELETE FROM notification_inbox")){for(const [k,x]of this.inbox)if(x.user_id===a[0])this.inbox.delete(k);return {changes:1}}
   if(q.startsWith("DELETE FROM user_profiles")){this.profiles.delete(a[0]);return {changes:1}}
   if(q.startsWith("SELECT value FROM service_state")){
-   const key=q.includes("'cron_monitor'")?"cron_monitor":"first_activated_at";
+   const key=q.includes("'cron_monitor'")?"cron_monitor":q.includes("'catalyst_source_sync'")?"catalyst_source_sync":"first_activated_at";
    return {first:this.state.has(key)?{value:this.state.get(key)}:null};
   }
   if(q.startsWith("INSERT OR IGNORE INTO service_state")){if(!this.state.has("first_activated_at"))this.state.set("first_activated_at",a[0]);return {changes:1}}
@@ -114,12 +116,12 @@ const runtimeResponse=await worker.fetch(req("GET","/api/me"),noJwtEnv,{waitUnti
 assert.equal(runtimeResponse.status,401,"Worker fetch entrypoint must reject missing JWT, never respond 500");
 assert.equal((await runtimeResponse.json()).error,"Cloudflare Access login required");
 
-const baseline=await processEvents(env,async()=>new Response(JSON.stringify({schema_version:"sli-catalyst-history-v2",events:[]})));
+const baseline=await processEvents(env,async()=>[]);
 assert.equal(baseline.initialized,true);
 const after=new Date(Date.now()+5000).toISOString();
 const event={id:"sli-catalyst-111111111111111111",kind:"news_indexed",title:"ANTM announces project",detected_at_utc:after,
  sector:"minerals",source_url:"https://news.example/article",ticker_links:[{ticker:"ANTM",basis:"explicit_headline_identity"}]};
-const feed=async()=>new Response(JSON.stringify({schema_version:"sli-catalyst-history-v2",events:[event]}));
+const feed=async()=>[event];
 const sent=await processEvents(env,feed);
 assert.equal(sent.delivered,1);
 assert.equal(db.inbox.size,1);
@@ -154,4 +156,21 @@ assert.equal(recovered.consecutive_failures,0);
 assert.equal(recovered.last_delivered,0);
 assert.equal((await worker.fetch(req("GET","/api/health"),noJwtEnv,{waitUntil(){}})).status,401,
  "Unauthenticated callers may not see backend health");
-console.log("D1 backend API QA passed: ownership, origin, opt-in delivery, dedupe, read isolation, account erasure and cron diagnostics");
+// Production cron must consume D1 only, fail closed before source sync,
+// and never silently report a successful empty processing pass on missing data.
+const sourceDB=new FakeD1();
+const sourceEnv={...env,DB:sourceDB};
+await assert.rejects(processEvents(sourceEnv),/source not synchronized/);
+sourceDB.state.set("catalyst_source_sync",JSON.stringify({
+ schema_version:"sli-catalyst-history-v2",synced_at_utc:new Date().toISOString(),event_count:1
+}));
+sourceDB.sources.set(event.id,{event_json:JSON.stringify(event),detected_at_utc:event.detected_at_utc});
+const firstLocal=await processEvents(sourceEnv);
+assert.equal(firstLocal.initialized,true);
+assert.equal((await processEvents(sourceEnv)).processed,1);
+assert.equal((await processEvents(sourceEnv)).processed,0,"Local D1 repeat must deduplicate");
+sourceDB.state.set("catalyst_source_sync",JSON.stringify({
+ schema_version:"sli-catalyst-history-v2",synced_at_utc:new Date(Date.now()-7*3600e3).toISOString(),event_count:1
+}));
+await assert.rejects(processEvents(sourceEnv),/sync expired/);
+console.log("D1 backend API QA passed: ownership, origin, delivery isolation, cron diagnostics, D1-only source ingestion, freshness and dedupe");
