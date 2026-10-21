@@ -57,9 +57,10 @@ jobs:
           import json
           p=json.load(open("data/sli-research-unified-index.json",encoding="utf-8"))
           hits=[x for x in p["records"] if x.get("dataset")=="sli-marine-fisheries-kkp.json"]
-          assert len(hits)>=18, f"KKP historical observations missing from DERGUBA index: {len(hits)} indexed"
+          assert len(hits)==28, f"KKP historical or provincial observations missing from DERGUBA index: {len(hits)} indexed"
           for indicator in ["Seaweed grow-out aquaculture production","Total grow-out aquaculture production","Marine capture fishers"]:
               assert any(indicator in x["title"] and "2024" in x["title"] and "portaldata.kkp.go.id" in x["source_url"] for x in hits), indicator
+          assert sum("province_seaweed_2024" in x["path"] for x in hits)==10, "KKP province source evidence incomplete"
           assert not any("2025" in x["title"] for x in hits), "Estimated KKP 2025 accidentally promoted into observed corpus"
           print("KKP research retrieval indexed:",len(hits),"dated official source-linked records")
           PY
