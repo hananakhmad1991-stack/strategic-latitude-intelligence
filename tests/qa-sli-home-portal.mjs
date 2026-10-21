@@ -3,22 +3,23 @@ import assert from "node:assert/strict";
 import {readFileSync,existsSync} from "node:fs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const html=read("index.html"),style=read("css/sli-home-portal.css");
-test("SLI portal is the default view and the original comprehensive overview is preserved",()=>{
+test("SLI portal is the sole entry point and legacy overview routes migrate safely",()=>{
  assert.match(html,/const pages=\{home:\[/);
  assert.match(html,/selectDashboard\(pagesFromURL\(\)\|\|'home'\)/);
- assert.match(html,/page==='home'\?homePortal\(\):page==='overview'\?/);
- assert.match(html,/function overview\(\)\{return/);
+ assert.match(html,/page==='home'\?homePortal\(\):page==='about'\?/);
+ assert.doesNotMatch(html,/function overview\(\)\{return/);
  assert.match(html,/function homePortal\(\)\{return/);
  assert.match(html,/data-page="home"/);
- assert.match(html,/data-page="overview"/);
- assert.match(html,/href="#overview"/);
+ assert.doesNotMatch(html,/data-page="overview"/);
+ assert.doesNotMatch(html,/href="#overview"/);
+ assert.match(html,/if\(hash===\x27overview\x27\)return \x27home\x27/);
 });
 test("Portfolio homepage links to research and six functioning sector portals, with dedicated geopolitical chapter",()=>{
  for(const ref of ["#energy","#investment","#minerals","#policy","#geopolitics","indonesia-macroeconomic-intelligence.html","ai-intelligence-hub.html","sli-research-ai.html","provincial-intelligence.html"])
   assert.ok(html.includes('href="'+ref+'"')||html.includes('href="./'+ref+'"'),ref);
  assert.match(html,/data-sli-home-search/);
  assert.match(html,/sliGlobalSearchInput/);
- assert.match(html,/selectedPage==='home'\?'overview'/);
+ assert.match(html,/getPage:\(\)=>selectedPage\|\|'home'/);
  assert.match(html,/LIMITED TEST|Owner Test remains restricted/);
 });
 test("Policy and Geopolitics have separate homepage cards, distinct destinations, and independent dashboard content",()=>{
@@ -81,7 +82,7 @@ test("Home mode reuses the unified Explore Data masthead without duplicate homep
  assert.match(style,/body\.sli-home-active \.main>\.sli-data-guide\{display:none!important\}/);
  assert.match(style,/body\.sli-home-active \.main>\.top \.sli-top-actions/);
  assert.match(style,/@media\(max-width:650px\)/);
- // Legacy disclosures and navigation remain present for #overview and sector pages.
+ // Reader disclosures and navigation remain accessible on Home and each sector dashboard.
  assert.match(html,/id="sliDataGuide"/);
  assert.match(html,/id="nav"/);
  assert.match(html,/class="sidebar"/);
