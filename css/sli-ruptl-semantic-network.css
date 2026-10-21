@@ -1,0 +1,26 @@
+.sli-ruptl-semantic{background:#0e2639;border:1px solid #49677e;border-radius:13px;padding:16px;color:#e8f3fa;margin:17px 0;font:14px/1.55 system-ui,sans-serif}
+.sli-ruptl-semantic h2{font-size:22px;color:#f8d99c;margin:0 0 8px}
+.sli-ruptl-semantic h3{font-size:17px;color:#f4dba8;margin:0 0 7px}
+.sli-ruptl-semantic .semantic-intro{color:#c9dcea;font-size:13px}
+.sli-ruptl-semantic .semantic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:15px 0}
+.sli-ruptl-semantic .semantic-grid>div{border:1px solid #45667b;background:#15394c;padding:10px;border-radius:9px;display:flex;flex-direction:column}
+.sli-ruptl-semantic .semantic-grid small{color:#b8d2e2}.sli-ruptl-semantic .semantic-grid strong{color:#f6d9a8;font-size:21px}
+.sli-ruptl-semantic .semantic-warning{border-left:3px solid #e3bc77;background:#302f32;padding:11px;color:#e6ddd0;font-size:12px}
+.sli-ruptl-semantic details{margin:12px 0;border:1px solid #3f5d75;border-radius:9px;padding:12px;background:#102b40}
+.sli-ruptl-semantic summary{color:#f7dba7;cursor:pointer;font-weight:700}
+.sli-ruptl-semantic .sem-controls{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.sli-ruptl-semantic select,.sli-ruptl-semantic input,.sli-ruptl-semantic button{background:#193e58;color:#eff6fb;border:1px solid #68849b;border-radius:7px;padding:8px;font:inherit;font-size:12px}
+.sli-ruptl-semantic .sem-controls>input{flex:2 1 240px}.sli-ruptl-semantic .sem-controls>select{flex:1 1 160px}
+.sli-ruptl-semantic button{cursor:pointer}.sli-ruptl-semantic button:disabled{opacity:.5;cursor:default}
+.sli-ruptl-semantic a{color:#b5eaff}
+.sli-ruptl-semantic .sem-scroller{overflow:auto;max-height:500px}
+.sli-ruptl-semantic table{min-width:780px;width:100%;border-collapse:collapse;font-size:12px}
+.sli-ruptl-semantic th,.sli-ruptl-semantic td{padding:9px;border-bottom:1px solid #3a5367;text-align:left;vertical-align:top}
+.sli-ruptl-semantic th{background:#224359;color:#f5d9a9;position:sticky;top:0}
+.sli-ruptl-semantic .sem-actions{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:10px 0}
+.sli-ruptl-semantic .sem-cell{white-space:pre-wrap;word-break:break-word}
+.sli-ruptl-semantic .sem-evidence{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:10px}
+.sli-ruptl-semantic .sem-event{border:1px solid #42647a;background:#163347;border-radius:8px;padding:12px}
+.sli-ruptl-semantic .sem-event small{color:#a6d3e0}.sli-ruptl-semantic .sem-event strong{display:block;margin:4px 0;color:#f6dfb6}
+.sli-ruptl-semantic .sem-event p{color:#d5e1ea;font-size:12px;margin:6px 0}
+@media(max-width:680px){.sli-ruptl-semantic{padding:10px}.sli-ruptl-semantic .semantic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sli-ruptl-semantic .sem-evidence{grid-template-columns:1fr}}
