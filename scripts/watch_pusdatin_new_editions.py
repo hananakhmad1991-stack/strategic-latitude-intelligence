@@ -119,8 +119,11 @@ def download_pdf(url,dest):
 def audit_discovery(html_get=get_html,base=baseline):
     current=base()
     listing=html_get(LISTING)
+    detail_urls=listing_detail_urls(listing)
+    if not detail_urls:
+        raise RuntimeError("Official publication listing contains no readable detail links; publisher layout may have changed")
     candidates=[]
-    for url in listing_detail_urls(listing):
+    for url in detail_urls:
         try:
             record=source_candidate(url,html_get(url))
             if record:candidates.append(record)
@@ -128,7 +131,7 @@ def audit_discovery(html_get=get_html,base=baseline):
             candidates.append({"detail_url":url,"status":"detail_fetch_error","error":str(err)[:250]})
     newer=sorted((r for r in candidates if r.get("edition","")>current["edition"]),key=lambda r:r["edition"],reverse=True)
     return {"schema":"sli-pusdatin-next-edition-watch-v1","checked_at_utc":dt.datetime.now(dt.timezone.utc).isoformat(),
-        "baseline_edition":current["edition"],"listing_url":LISTING,"detail_urls_checked":len(listing_detail_urls(listing)),
+        "baseline_edition":current["edition"],"listing_url":LISTING,"detail_urls_checked":len(detail_urls),
         "candidate_count":len(candidates),"latest_new_candidate":newer[0] if newer else None,
         "candidates":candidates,"status":"new_candidate_review_required" if newer else "no_new_edition_observed",
         "auto_publish":False}
