@@ -503,6 +503,35 @@ await check("KKP Marine atlas mobile: usable controls without horizontal overflo
  assert.equal(await page.locator("#mfAtlasDistrictRows tr").count(),10);
  assert.ok(await page.locator("#mfAtlasDistrictCSV").isVisible());
 });
+await check("KKP historical six-year choropleth desktop: official figures and illustrative geometry disclosure",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("marine-fisheries-intelligence.html#mfHistoryPanel"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.locator("#mfHistoryMap svg .sli-province-shape").first().waitFor({timeout:25000});
+ assert.equal(await page.locator("#mfHistoryMap svg .sli-province-shape").count(),38);
+ assert.equal(await page.locator("#mfHistoryRows tr").count(),26);
+ assert.match(await page.locator("#mfHistorySummary").innerText(),/2024/);
+ await page.locator("#mfHistoryMetric").selectOption("marine_fishers");
+ assert.equal(await page.locator("#mfHistoryRows tr").count(),37);
+ await page.locator("#mfHistoryYear").selectOption("2019");
+ assert.equal(await page.locator("#mfHistoryRows tr").count(),34);
+ assert.match(await page.locator("#mfHistorySummary").innerText(),/2[,.]088[,.]959/);
+ assert.match(await page.locator("#mfHistoryPanel").innerText(),/bukan batas wilayah resmi BIG/i);
+ await page.locator("#mfHistoryMap svg .sli-province-shape[aria-label^='Aceh:']").click();
+ assert.match(await page.locator("#mfHistorySelected").innerText(),/Aceh/);
+ assert.equal(await page.locator("#mfHistoryTrend svg circle").count(),6);
+ await page.locator("#mfHistoryReset").click();
+ assert.match(await page.locator("#mfHistorySelected").innerText(),/nasional|national/i);
+});
+await check("KKP historical choropleth mobile: accessible region and selectable years",{width:390,height:844},async page=>{
+ await page.goto(pageUrl("marine-fisheries-intelligence.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.locator("#mfHistoryMap svg .sli-province-shape").first().waitFor({timeout:25000});
+ await page.locator("#mfHistoryMetric").selectOption("seaweed");
+ await page.locator("#mfHistoryYear").selectOption("2022");
+ assert.equal(await page.locator("#mfHistoryRows tr").count(),23);
+ assert.equal(await page.locator("#mfHistoryMap .sli-province-shape").count(),38);
+ assert.ok(await page.locator("#mfHistoryCSV").isVisible());
+ const a=await page.evaluate(()=>({vw:innerWidth,sw:document.documentElement.scrollWidth}));
+ assert.ok(a.sw<=a.vw+16,"History map viewport overflow: "+JSON.stringify(a));
+});
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");
 console.log("Browser smoke:",report.tests.filter(x=>x.status==="pass").length,"passed /",report.tests.length,"total");
