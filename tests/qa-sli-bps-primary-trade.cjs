@@ -2,9 +2,14 @@
 "use strict";
 const fs=require("node:fs"),assert=require("node:assert/strict"),vm=require("node:vm");
 const read=p=>fs.readFileSync(p,"utf8"),production=JSON.parse(read("data/bps-hs-partner-matrix.json"));
-assert.equal(production.status,"awaiting_primary_extract");
-assert.equal(production.verified_cells,0);
-assert.deepEqual(production.observations,[],"No fabricated official partner-HS values");
+if(production.status==="awaiting_primary_extract"){
+ assert.equal(production.verified_cells,0);
+ assert.deepEqual(production.observations,[],"No fabricated official partner-HS values");
+}else{
+ assert.equal(production.status,"verified");
+ assert.equal(production.verified_cells,production.observations.length);
+ assert.ok(production.verified_cells>0);
+}
 class El{
  constructor(tag){this.tagName=tag;this.children=[];this.attributes={};this.events={};this.isConnected=true;this.textContent="";this.style={};this.value="";}
  append(...n){this.children.push(...n)}
@@ -18,7 +23,8 @@ const document={createElement:tag=>new El(tag),createElementNS:(_,tag)=>new El(t
 const w={SLIi18n:{language:"en"}};
 vm.runInNewContext(read("js/sli-sector-trade-sankey.js"),{document,window:w,fetch:async()=>({ok:false}),Number,Math,Map,Set,URL,console});
 const api=w.SLISectorTradeSankey;
-assert.throws(()=>api.validateBPS(production),/not approved/);
+if(production.status!=="verified")assert.throws(()=>api.validateBPS(production),/not approved/);
+else assert.equal(api.validateBPS(production),production);
 const sig="a".repeat(64);
 const row={direction:"exports",period:"2025",hs_code:"0901",hs_level:4,hs_version:"HS2022",
  partner_country:"Japan",value_usd:12000,net_weight_kg:42,value_basis:"FOB",
