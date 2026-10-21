@@ -1,6 +1,6 @@
 {
   "schema": "sli-search-1",
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "scope": "A source-dated navigational locator across main SLI, supporting dashboards and the canonical 312-term dictionary. Not all indexed records have interactive row-level details.",
   "pages": [
     {
@@ -18237,6 +18237,53 @@
       "issuer": "ABBA",
       "source": "data/sli-idx-issuer-universe.json",
       "keywords": "ABBA Mahaka Media idx bei emiten saham public company issuer kapitalisasi keuangan retail"
+    },
+    {
+      "id": "sli-idx-issuer-CPRO",
+      "title": "CPRO · Central Proteina Prima",
+      "description": "Katalog kandidat emiten BEI · perlu konfirmasi status pencatatan · sektor marine · periksa profil dan sumber BEI",
+      "page": "investment",
+      "anchor": "",
+      "kind": "record",
+      "path": "sli-entities.html",
+      "issuer": "CPRO",
+      "source": "data/sli-idx-issuer-universe.json",
+      "keywords": "CPRO Central Proteina Prima idx bei emiten saham public company issuer kapitalisasi keuangan marine"
+    },
+    {
+      "id": "sli-idx-issuer-DSFI",
+      "title": "DSFI · Dharma Samudera Fishing Industries",
+      "description": "Katalog kandidat emiten BEI · perlu konfirmasi status pencatatan · sektor marine · periksa profil dan sumber BEI",
+      "page": "investment",
+      "anchor": "",
+      "kind": "record",
+      "path": "sli-entities.html",
+      "issuer": "DSFI",
+      "source": "data/sli-idx-issuer-universe.json",
+      "keywords": "DSFI Dharma Samudera Fishing Industries idx bei emiten saham public company issuer kapitalisasi keuangan marine"
+    },
+    {
+      "id": "sli-idx-issuer-PCAR",
+      "title": "PCAR · Prima Cakrawala Abadi",
+      "description": "Katalog kandidat emiten BEI · perlu konfirmasi status pencatatan · sektor marine · periksa profil dan sumber BEI",
+      "page": "investment",
+      "anchor": "",
+      "kind": "record",
+      "path": "sli-entities.html",
+      "issuer": "PCAR",
+      "source": "data/sli-idx-issuer-universe.json",
+      "keywords": "PCAR Prima Cakrawala Abadi idx bei emiten saham public company issuer kapitalisasi keuangan marine"
+    },
+    {
+      "id": "sli-marine-sector-hub",
+      "title": "Kelautan & Perikanan · KKP Marine Intelligence",
+      "description": "Statistik KKP 2019–2024, rumput laut, budidaya, nelayan, IDX marine watchlist, regulasi JDIH, monitoring berita dan DERGUBA.",
+      "page": "home",
+      "anchor": "",
+      "kind": "dashboard",
+      "path": "marine-fisheries-intelligence.html",
+      "source": "data/sli-marine-fisheries-kkp.json",
+      "keywords": "KKP kelautan perikanan budidaya rumput laut nelayan fishery aquaculture maritim blue economy marine Natuna WPPNRI"
     }
   ]
 }
