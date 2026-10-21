@@ -10,7 +10,25 @@ const $=s=>document.querySelector(s);
 const svgNS="http://www.w3.org/2000/svg";
 const num=v=>v===null||v===undefined?"NA":Number(v).toLocaleString("id-ID",{maximumFractionDigits:2})+"%";
 const norm=s=>String(s||"").toLowerCase().replace(/sumatra/g,"sumatera").replace(/kepulauan /g,"kep. ").replace(/daerah istimewa /g,"di ").replace(/dki /g,"dki ").replace(/[^a-z0-9]/g,"");
-const fmt=v=>v===null||v===undefined?"NA":Number(v).toLocaleString("id-ID",{maximumFractionDigits:2});
+const fmt=v=>v==="~0"?"≈0":v===null||v===undefined?"NA":Number(v).toLocaleString("id-ID",{maximumFractionDigits:2});
+
+function samplePrecision(data,metric,province){
+ const source=data.sampling_error_2026?.metrics?.[metric.id];
+ if(!source)return {status:"unlinked",label:"RSE belum ditautkan untuk indikator ini",rse:null,ci:null,source:null};
+ const idx=data.provinces.findIndex(p=>p.name===province);
+ if(idx<0)return {status:"unlinked",label:"Wilayah tidak ditemukan",rse:null,ci:null,source:null};
+ const rse=source.relative_standard_error_pct[idx],lo=source.confidence_interval_low_pct[idx],hi=source.confidence_interval_high_pct[idx];
+ const status=rse===null?"not_reported":rse>50?"unreliable":rse>25?"caution":"standard";
+ const label=status==="unreliable"?"Tidak andal":status==="caution"?"Gunakan hati-hati":status==="standard"?"Presisi memadai":"RSE tidak dilaporkan";
+ return {status,label,rse,ci:lo!==null&&hi!==null?[lo,hi]:null,source};
+}
+function precisionText(q){
+ if(q.status==="unlinked")return q.label;
+ return "RSE "+(q.rse===null?"NA":fmt(q.rse)+"%")+" · "+q.label+
+  (q.ci?" · CI 95% "+fmt(q.ci[0])+"–"+fmt(q.ci[1])+"%":"")+
+  " · Tabel "+q.source.sampling_table+" PDF hal. "+q.source.pdf_page;
+}
+
 function el(tag,attrs={},value){
  const n=document.createElement(tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);
  if(value!==undefined)n.textContent=String(value);return n;
@@ -50,20 +68,25 @@ function drawMap(data,geo,metric,selectedName,onSelect){
  for(const feature of geo.features||[]){
   const name=feature.properties?.PROVINSI||feature.properties?.name||"";
   const value=vals.has(norm(name))?vals.get(norm(name)):null;
+  const matchedProvince=data.provinces.find(p=>norm(p.name)===norm(name));
+  const q=samplePrecision(data,metric,matchedProvince?.name||"");
   if(vals.has(norm(name)))matched++;
-  const path=svgEl("path",{d:pathCoords(feature.geometry),fill:choroplethColor(value,min,max),stroke:"#13263c","stroke-width":".75",
-    "fill-rule":"evenodd",tabindex:"0",role:"button","aria-label":name+": "+num(value)});
+  const path=svgEl("path",{d:pathCoords(feature.geometry),
+    fill:q.status==="unreliable"?"#7f7286":choroplethColor(value,min,max),
+    stroke:q.status==="caution"?"#e3b75b":"#13263c",
+    "stroke-width":q.status==="caution"?"1.7":".75",
+    "fill-rule":"evenodd",tabindex:"0",role:"button","aria-label":name+": "+num(value)+" · "+precisionText(q)});
   if(norm(name)===norm(selectedName))path.setAttribute("stroke-width","3");
-  const title=svgEl("title");title.textContent=name+": "+num(value);path.append(title);
+  const title=svgEl("title");title.textContent=name+": "+num(value)+" · "+precisionText(q);path.append(title);
   const click=()=>onSelect(name);path.addEventListener("click",click);
   path.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();click()}});
   svg.append(path);
  }
- $("#geoMatch").textContent=matched+"/38 geometri dicocokkan · rona lebih gelap = angka lebih tinggi (bukan penilaian baik/buruk).";
+ $("#geoMatch").textContent=matched+"/38 geometri cocok · ungu keabu-abuan = RSE >50% (tidak andal); garis kuning = RSE >25–50% (hati-hati). Warna lain menunjukkan nilai, bukan baik atau buruk.";
 }
 function drawRank(data,metric,onSelect){
  const div=$("#rankBars");div.replaceChildren();
- const rows=data.provinces.filter(p=>p.name!=="Indonesia"&&typeof p.values[metric.index]==="number")
+ const rows=data.provinces.filter(p=>p.name!=="Indonesia"&&typeof p.values[metric.index]==="number"&&samplePrecision(data,metric,p.name).status!=="unreliable")
   .sort((a,b)=>b.values[metric.index]-a.values[metric.index]);
  const top=rows.slice(0,12);const max=Math.max(...rows.map(p=>p.values[metric.index]),1);
  for(const p of top){
@@ -71,10 +94,10 @@ function drawRank(data,metric,onSelect){
   b.append(el("span",{class:"bar-region"},p.name));
   const track=el("span",{class:"bar-track"});
   track.append(el("span",{class:"bar-fill",style:"width:"+Math.min(100,p.values[metric.index]/max*100)+"%"}));
-  b.append(track);b.append(el("span",{class:"bar-value"},num(p.values[metric.index])));
+  b.append(track);b.append(el("span",{class:"bar-value"},num(p.values[metric.index])+(samplePrecision(data,metric,p.name).status==="caution"?" ⚠":"")));
   b.addEventListener("click",()=>onSelect(p.name));div.append(b)
  }
- $("#rankNote").textContent="12 provinsi dengan nilai tertinggi untuk indikator terpilih. Angka tinggi tidak otomatis bermakna kondisi lebih baik.";
+ $("#rankNote").textContent="12 nilai tertinggi, RSE >50% dikeluarkan dari peringkat. ⚠ = RSE >25–50%. Empat indikator tanpa tautan RSE tepat bersifat eksploratif. Angka tinggi tidak otomatis lebih baik.";
 }
 function renderTable(data,metric,selectedName,onSelect,search){
  const body=$("#provinceRows");body.replaceChildren();
@@ -90,7 +113,11 @@ function renderTable(data,metric,selectedName,onSelect,search){
   const th=el("th",{scope:"row"});
   const a=el("button",{type:"button",class:"region-link"},p.name);
   a.addEventListener("click",()=>onSelect(p.name));th.append(a);
+  const q=samplePrecision(data,metric,p.name);
   tr.append(el("td",{},i+1));tr.append(th);tr.append(el("td",{},num(p.values[metric.index])));
+  tr.append(el("td",{},q.rse===null?"—":fmt(q.rse)+"%"));
+  tr.append(el("td",{},q.ci?fmt(q.ci[0])+"–"+fmt(q.ci[1]):"—"));
+  tr.append(el("td",{},q.label));
   body.append(tr)
  }
  $("#tableCount").textContent=rows.length+" provinsi ditampilkan; Indonesia (nilai nasional) "+num(data.provinces.at(-1).values[metric.index])+".";
@@ -153,7 +180,7 @@ async function main(){
   drawRank(data,activeMetric,onSelect);
   renderTable(data,activeMetric,selected,onSelect,search.value);
   const p=data.provinces.find(p=>norm(p.name)===norm(selected))||data.provinces.at(-1);
-  $("#selection").textContent=p.name+" · "+activeMetric.label+" : "+num(p.values[activeMetric.index])+" (Susenas 2026).";
+  $("#selection").textContent=p.name+" · "+activeMetric.label+" : "+num(p.values[activeMetric.index])+" · "+precisionText(samplePrecision(data,activeMetric,p.name))+" (Susenas 2026).";
  }
  function onSelect(name){selected=data.provinces.some(p=>norm(p.name)===norm(name))?data.provinces.find(p=>norm(p.name)===norm(name)).name:"Indonesia";draw()}
  function updateIndicators(){
