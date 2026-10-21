@@ -7,6 +7,9 @@ on:
     paths:
       - 'scripts/scan-ruptl-official-project-news-candidates.py'
       - '.github/workflows/sli-ruptl-project-news-review.yml'
+concurrency:
+  group: sli-ruptl-news-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
