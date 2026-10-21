@@ -33,7 +33,8 @@ export function buildFoodEvidence(semantic,source,previousAudit,{commodity=49,pr
  const ntp=table(38).rows.find(r=>flatten(r.label)===flatten(province));
  const m=(r,key)=>number(r?.values?.[key]);
  const nvalue=m(national,"2026-08"),jvalue=m(national,"2026-07"),prov=m(exact,"2026-08"),provPrev=m(exact,"2026-07"),ntpv=m(ntp,"2026-08"),ntpPrev=m(ntp,"2026-07");
- const pm=pct(nvalue,jvalue),lm=pct(prov,provPrev),nm=pct(ntpv,ntpPrev);
+ const sourceMoM=r=>Number.isFinite(r?.extra?.mom_pct)?r.extra.mom_pct:null;
+ const pm=sourceMoM(national)??pct(nvalue,jvalue),lm=sourceMoM(exact)??pct(prov,provPrev),nm=sourceMoM(ntp)??pct(ntpv,ntpPrev);
  const direction=x=>x==null?"belum dapat dinilai":x>0?"naik":x<0?"turun":"tidak berubah";
  const risk=pm==null?"data_gap":Math.abs(pm)>=10?"large_monthly_change":Math.abs(pm)>=5?"notable_monthly_change":"moderate_or_small_change";
  return {
