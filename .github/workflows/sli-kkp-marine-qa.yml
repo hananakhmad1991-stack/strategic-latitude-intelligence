@@ -14,6 +14,8 @@ on:
       - 'js/sli-marine-regional-history.mjs'
       - 'tests/qa-sli-kkp-regional-history.mjs'
       - 'tests/test_sli_kkp_historical_research.py'
+      - 'tests/test_sli_kkp_import_validation.py'
+      - 'scripts/import_kkp_hatchery_export.py'
       - 'data/sli-kkp-screened-source-register.json'
       - 'js/sli-marine-source-atlas.mjs'
       - 'tests/qa-sli-kkp-source-atlas.mjs'
@@ -39,6 +41,8 @@ on:
       - 'js/sli-marine-regional-history.mjs'
       - 'tests/qa-sli-kkp-regional-history.mjs'
       - 'tests/test_sli_kkp_historical_research.py'
+      - 'tests/test_sli_kkp_import_validation.py'
+      - 'scripts/import_kkp_hatchery_export.py'
       - 'data/sli-kkp-screened-source-register.json'
       - 'js/sli-marine-source-atlas.mjs'
       - 'tests/qa-sli-kkp-source-atlas.mjs'
@@ -74,7 +78,7 @@ jobs:
           node --check js/sli-marine-regional-history.mjs
           node --test tests/qa-sli-marine-fisheries.mjs tests/qa-sli-kkp-source-atlas.mjs tests/qa-sli-kkp-regional-history.mjs tests/qa-sli-information-architecture.mjs
           python -m unittest discover -s tests -p 'test_sli_kkp_*.py' -v
-          python -m py_compile scripts/watch_kkp_dcat.py
+          python -m py_compile scripts/watch_kkp_dcat.py scripts/import_kkp_hatchery_export.py
       - name: Document source verification boundary
         run: |
           echo "Historical figures are curated KKP table snapshots; no numeric external API update or commercial licence verification is claimed." >> "$GITHUB_STEP_SUMMARY"
