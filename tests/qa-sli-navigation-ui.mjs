@@ -11,11 +11,11 @@ function setup(path,markup){
  dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded',{bubbles:true}));
  return dom;
 }
-test('main Overview has one stable breadcrumb, detailed sector links and live route change',()=>{
- const d=setup('index.html#overview','<main class="main"><div class="top">Existing header</div><div id="content"></div></main>');
+test('Home has one stable breadcrumb, detailed sector links and live route change',()=>{
+ const d=setup('index.html#home','<main class="main"><div class="top">Existing header</div><div id="content"></div></main>');
  const doc=d.window.document;
  assert.equal(doc.querySelectorAll('#sliUniversalNavigation').length,1);
- assert.match(doc.querySelector('.sli-location strong').textContent,/Overview/);
+ assert.match(doc.querySelector('.sli-location strong').textContent,/Home/);
  assert.ok(doc.querySelector('.sli-universal-actions a[href="./sli-user-guide.html"]'));
  assert.ok(doc.querySelector('.sli-universal-actions a[href="./sli-glossary-methodology.html"]'));
  assert.equal(doc.querySelectorAll('.sli-platform-explorer').length,1,'One canonical Explore Data menu must serve the site');
@@ -47,7 +47,8 @@ test('guide renders the catalog as real linked, grouped and bilingual modules',(
  const doc=d.window.document;
  assert.equal(doc.querySelectorAll('.sli-guide-group').length,7,'The guide must include all seven SLI module groups');
  assert.ok(doc.querySelectorAll('.sli-guide-card').length>=20);
- assert.ok(doc.querySelector('a[href="./index.html#overview"]'));
+ assert.ok(doc.querySelector('a[href="./index.html#home"]'));
+ assert.equal(doc.querySelectorAll('.sli-platform-links a[href="./index.html#overview"]').length,0);
  assert.ok(doc.querySelector('.sli-guide-cards a[href="./sli-data-automation-center.html"]'));
  d.window.SLIi18n.language='id';
  doc.dispatchEvent(new d.window.CustomEvent('sli:languagechange'));
