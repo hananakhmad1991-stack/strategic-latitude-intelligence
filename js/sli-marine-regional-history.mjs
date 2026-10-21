@@ -62,7 +62,7 @@ function line(series,province,host){
  const make=(tag,attrs)=>{const v=document.createElementNS(svg.namespaceURI,tag);for(const [k,val]of Object.entries(attrs))v.setAttribute(k,String(val));svg.append(v);return v};
  for(let i=0;i<3;i++){const Y=y(hi*i/2);make("line",{x1:padL,y1:Y,x2:W-padR,y2:Y,stroke:"#405f72","stroke-width":1,"stroke-dasharray":"3 6"});}
  let segment=[];
- function flush(){if(segment.length>=2)make("polyline",{points:segment.join(" "),fill:"none",stroke:"#e3be7a","stroke-width":3,""stroke-linejoin":"round"});segment=[];}
+ function flush(){if(segment.length>=2)make("polyline",{points:segment.join(" "),fill:"none",stroke:"#e3be7a","stroke-width":3,"stroke-linejoin":"round"});segment=[];}
  vals.forEach((v,i)=>{if(v.value===null){flush();return;}segment.push(x(i)+","+y(v.value));});flush();
  vals.forEach((v,i)=>{
   const X=x(i);let yy=v.value===null?H-padB:y(v.value);
