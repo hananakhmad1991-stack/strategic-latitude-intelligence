@@ -12,6 +12,10 @@ on:
       - 'tests/qa-sli-sector-trade-sankeys.cjs'
       - 'css/commodity-trade-flow.css'
       - 'data/commodity-trade-flows.json'
+      - 'data/bps-hs-partner-matrix.json'
+      - 'scripts/import_bps_hs_partner.py'
+      - 'tests/test_import_bps_hs_partner.py'
+      - 'tests/qa-sli-bps-primary-trade.cjs'
       - 'tests/check-commodity-trade.cjs'
       - '.github/workflows/commodity-trade-qa.yml'
   workflow_dispatch:
@@ -32,6 +36,8 @@ jobs:
           node --check js/sli-sector-trade-sankey.js
           node tests/check-commodity-trade.cjs
           node tests/qa-sli-sector-trade-sankeys.cjs
+          node tests/qa-sli-bps-primary-trade.cjs
+          python3 tests/test_import_bps_hs_partner.py
       - name: Validate homepage Trade Flows link and bundle
         run: |
           python - <<'PY'
