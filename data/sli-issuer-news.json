@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T22:03:25.226908Z",
+  "updated_at_utc": "2026-10-21T22:29:44.372228Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_ead6ef37547a7d8b54a47f",
+      "title": "BERITA POPULER: 15 Saham Tahan Banting hingga Potensi Dividen TLKM - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZ0dYd29JYW5mcTIybndidUVCNUYxdWF5bkZBMUQtR0w4aHppUWdEYk1UOHFBUUR4djRTUC1ySHEyNnN0dWp3U0ExRFdfSVV6TGNXODRsd3JJRkYwRnhLcDVqOHVhbjZFaTdXZVJoRWRoVVg0aXlFekZSMUJaVmVza0NBN09xai1zc0poajJ6ZFAxVGR0bENzQl9ZWW5ubmU3?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-21T22:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_d78172ee93abdbc0792fad",
       "title": "Kinerja PGEO Tumbuh, Tarif Listrik dan Free Float 3,9 Persen Jadi Perhatian - VOI.ID",
@@ -3166,6 +3182,22 @@
         "INDF"
       ],
       "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_9e350019842f438dde8b1c",
+      "title": "Selain BREN dan CUAN, Emiten Prajogo Pangestu (TPIA) Buyback Rp 1 T - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPa0dCSDBJd01ySS1UeDRIV0h6WERZbk5TM1dHVTZuQWxOR0JiNDBsQmRZdEZnOFJrY1lwUHlpcEJXdElKc3l1UWk2RnM3MEJiZjlhVDA0V0JGNmQxcU9OYm5jQjdXOENKTVRYUEFBdGpnbU9uRWVWYUN6T1lPbXJzbnNhc0JPWUdXX1d5OVFoYUFkdGlfemFUeUZDNE9kanowZ1k5UmVOZGlSRHVpOFVNal9XLTFleXRsVWRjZDk0OXVqa2VOdGpV0gHMAUFVX3lxTE01Nmo3VnI5R19ES3FtSXdOMnNXSDNQYjZOUDE0OHJGbVJDVjB4VWt4dHpQeEx0NVp0eFd4N0FMT2FKOGlvSGJxdHlFclNKMzVHTFFxR1Q1NURRNi05Vmc0NlBTdVh5U3ZVa3FOc0NNeU8wQTB3dmxwQzFObzhZTk1vanZsbmRPQ3M2WXU3VkJmM25ibXQ0R19keGdiTVFUcXRSUjZFUHB5OXBETUJJWmRNanRFVElBLXduejFsbE9xUmpRckNITDVLWXlFSw?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-19T05:58:52Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
