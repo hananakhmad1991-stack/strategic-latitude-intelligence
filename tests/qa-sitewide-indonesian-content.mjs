@@ -39,6 +39,22 @@ test("Read-only sitewide editorial dictionary covers homepage and strategic rese
  assert.equal(runtime.translate("   For better decisions. ","id"),"   Untuk keputusan yang lebih tepat. ","Whitespace variants must work");
  assert.equal(runtime.translate("✦  AI Infrastructure","id"),"✦  Infrastruktur AI","Decorated dynamic labels must translate");
 });
+test("Substantive ID prose retains critical source, period and investment qualifications",()=>{
+ const cases=[
+  ["Regulatory pipeline ≠ enacted policy","Rancangan regulasi ≠ kebijakan yang telah berlaku"],
+  ["2024 observations do not become 2026 measurements after a dashboard refresh","Pengamatan 2024 tidak berubah menjadi pengukuran 2026 ketika dashboard diperbarui"],
+  ["Size comparison only, NOT GRDP impact","Hanya perbandingan besaran, BUKAN dampak pada PDRB"],
+  ["A successful workflow does not certify that the underlying source changed","Workflow yang berhasil bukan bukti bahwa sumber data telah berubah"],
+  ["No multiplier results will appear until a coefficient and its source are supplied. The system does not verify user-entered multipliers automatically.","Hasil pengganda tidak akan ditampilkan sampai pengguna memasukkan koefisien beserta sumbernya. Sistem tidak memverifikasi koefisien yang dimasukkan secara otomatis."],
+  ["For solar, module nameplate DC peak (MWp) differs from inverter/AC output and energy yield.","Untuk PLTS, kapasitas puncak DC modul (MWp) berbeda dari keluaran inverter/AC dan energi yang dihasilkan."],
+  ["The year/month the phenomenon was measured","Tahun/bulan saat fenomena diukur"]
+ ];
+ for(const [english,indonesian] of cases){
+  assert.equal(runtime.translate(english,"id"),indonesian,"Source-qualified Indonesian interpretation changed: "+english);
+  assert.equal(runtime.translate(english,"en"),english);
+ }
+});
+
 test("All published SLI pages initialize the same up-to-date EN/ID engine",()=>{
  const pages=fs.readdirSync(repo).filter(p=>p.endsWith(".html")&&p!=="sli-user-intelligence-qa.html");
  assert.ok(pages.length>=37,"Sitewide navigation should cover every page, not a partial subset");
