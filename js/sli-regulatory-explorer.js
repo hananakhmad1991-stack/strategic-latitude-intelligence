@@ -18,6 +18,7 @@ const topicDefs=[
 ["investment","Investasi & perdagangan"],
 ["finance","Keuangan & pasar modal"],
 ["food","Pangan, air & bencana"],
+["marine","Kelautan & perikanan KKP"],
 ["global","Perdagangan global"]];
 const topics={
  energy:n=>["energy","electricity","oilgas"].includes(n.sector)||match(n,"energi listrik migas gas bumi ESDM RUED RUPTL"),
@@ -28,6 +29,7 @@ const topics={
  investment:n=>match(n,"investasi penanaman modal OSS perizinan pajak retribusi BKPM ekspor impor perdagangan"),
  finance:n=>n.sector==="finance"||match(n,"keuangan perbankan fintech OJK LPS bursa saham pasar modal P2SK asuransi"),
  food:n=>match(n,"pangan pertanian irigasi air bencana BPBD geospasial"),
+ marine:n=>n.sector==="marine"||match(n,"perikanan kelautan nelayan pesisir WPPNRI udang akuakultur"),
  global:n=>n.sector==="international"||["international","foreignlaw"].includes(n.tier)
 };
 function match(n, terms){const corpus=norm([n.ref,n.label,n.note,n.region,n.sector,...(n.topics||[])].join(" "));return terms.split(" ").some(w=>w.length>2&&corpus.includes(norm(w)))}
@@ -143,6 +145,8 @@ async function start(){
   addOptions("topic",topicDefs);
   addOptions("region",[...new Set(db.nodes.map(regionOf))].sort((a,b)=>a.localeCompare(b,"id")).map(x=>[x,x]));
   addOptions("tier",[...new Set(db.nodes.map(n=>n.tier))].sort().map(x=>[x,types[x]||x]));
+  const requestedSector=new URL(window.location.href).searchParams.get("sector");
+  if(requestedSector==="marine"){$("topic").value="marine";state.topic="marine";}
   const initialId=new URL(window.location.href).searchParams.get("law");
   state.selected=ids.has(initialId)?initialId:getFiltered()[0]?.id;
   for(const [id,key] of [["query","q"],["topic","topic"],["region","region"],["tier","tier"],["status","status"],["sort","sort"]]){$(id).addEventListener(id==="query"?"input":"change",ev=>{state[key]=ev.target.value;state.limit=20;drawList();});}
