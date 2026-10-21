@@ -22,6 +22,7 @@ on:
       - 'tests/test_sli_kkp_research_bridge.py'
       - 'data/sli-bps-agri-horti-2026-source-register.json'
       - 'data/sli-food-impact-source-leads-september-2026.json'
+      - '.github/workflows/sli-owner-worker-deploy.yml'
       - '.github/workflows/sli-unified-research-sync.yml'
   pull_request:
     paths:
@@ -42,6 +43,7 @@ on:
       - 'tests/test_sli_kkp_research_bridge.py'
       - 'data/sli-bps-agri-horti-2026-source-register.json'
       - 'data/sli-food-impact-source-leads-september-2026.json'
+      - '.github/workflows/sli-owner-worker-deploy.yml'
       - '.github/workflows/sli-unified-research-sync.yml'
 permissions:
   contents: write
