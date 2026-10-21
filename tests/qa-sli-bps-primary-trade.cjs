@@ -26,19 +26,19 @@ const api=w.SLISectorTradeSankey;
 if(production.status!=="verified")assert.throws(()=>api.validateBPS(production),/not approved/);
 else assert.equal(api.validateBPS(production),production);
 const sig="a".repeat(64);
-const row={direction:"exports",period:"2025",hs_code:"0901",hs_level:4,hs_version:"HS2022",
+const row={direction:"exports",period:"2025",hs_code:"0901",hs_level:4,hs_version:"HS2022",geographic_scope:"Indonesia",
  partner_country:"Japan",value_usd:12000,net_weight_kg:42,value_basis:"FOB",
  source_url:"https://www.bps.go.id/id/exim",source_locator:"2025 table one, HS0901, Japan row"};
 const fixture={schema:"sli-bps-hs-partner-matrix-v1",status:"verified",review_status:"primary_cell_review_attested",
- primary_query_url:"https://www.bps.go.id/id/exim",verified_cells:2,source_csv_sha256:sig,
- review:{approved_cell_count:2,reviewed_by:"QA reviewer",source_csv_sha256:sig},
+ primary_query_url:"https://www.bps.go.id/id/exim",verified_cells:2,source_csv_sha256:sig,geographic_scope:"Indonesia",
+ review:{approved_cell_count:2,reviewed_by:"QA reviewer",source_csv_sha256:sig,public_website_terms_review:"approved",rights_basis_url:"https://www.bps.go.id/id/term-of-use"},
  observations:[row,{...row,partner_country:"South Korea",value_usd:34567}]};
 assert.equal(api.validateBPS(fixture),fixture);
-for(const [prop,value] of [["partner_country","ASEAN"],["hs_code","901"],["value_usd",-500],["source_url","https://bps.go.id.bad-site.invalid/data"],["value_basis","CIF"]]){
+for(const [prop,value] of [["partner_country","ASEAN"],["hs_code","901"],["value_usd",-500],["source_url","https://bps.go.id.bad-site.invalid/data"],["value_basis","CIF"],["geographic_scope","Central Java"]]){
  const obj=JSON.parse(JSON.stringify(fixture));obj.observations[0][prop]=value;
  assert.throws(()=>api.validateBPS(obj),/Inconsistent primary BPS observation/);
 }
-for(const override of [{verified_cells:3},{status:"awaiting_primary_extract"},{review:{approved_cell_count:2,reviewed_by:"QA reviewer",source_csv_sha256:"0".repeat(64)}}]){
+for(const override of [{verified_cells:3},{status:"awaiting_primary_extract"},{geographic_scope:"Jawa Tengah"},{review:{approved_cell_count:2,reviewed_by:"QA reviewer",source_csv_sha256:"0".repeat(64)}}]){
  const obj={...fixture,...override};assert.throws(()=>api.validateBPS(obj),/not approved/);
 }
 const mount=new El("div");
