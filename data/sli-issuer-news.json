@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T09:10:13.559261Z",
+  "updated_at_utc": "2026-10-21T10:06:24.570301Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,102 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_45ed64f36bbae0c144e42c",
+      "title": "Jasa Marga (JSMR) Buka Opsi Buyback Saham di Tengah Gejolak Pasar Modal - Infobanknews",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNNW52VUwyUC1rbW41RDFkYUlsZlVrSnZCZXQ4QlNuZlpnV0IybWgtOS0yZkNSXzFGRnBNc1JIRHFxajdtZ0VBbnQ2U1JVc3kzVUltRDItS3ZBY1lmR0VKeEIxdG9PeXFzU003c29sUUVPNTZRd0JIU1VYZ3BQN2czTzdZNTJHcFV0RzF5RUZTbGRHNmJFUkdPUjJ3?oc=5",
+      "publisher": "Infobanknews",
+      "published_at_utc": "2026-10-21T09:48:14Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_997198f83b1485247f6640",
+      "title": "JPFA Bidik Pemulihan Laba di Tengah Kenaikan Harga Ayam - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5sUGthQkpvUHB4Y0J1ODFCQUE1bHh4bjBhSzJ6SEh0M2VsbTEwTlEtSENpQjAxNXBlOGRSc2pUakhweDdjak1JZnJTeS1aMUxlM21B?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-10-21T09:42:54Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_dc1e58134de75f516357fb",
+      "title": "Analis BRI Danareksa Ungkap Prospek ADRO, ADMR & AADI Jelang Akhir 2026 - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOdk5UMkY0emx0RmttQWYwd2NET1ZWSE13VmlRV0pDbWlGaTdhMWNqMk8tUlRyTTNGZFgyQmFkZGd2MU1oSnU4dE1ncmYzcVpnNHlmZkpfMzBHM1pBUG44cTZoWTU4ZUt1X01ldHFDVHBUMnpnYU5FN0x0VVQ3X21CZkFvNDlseWJSUUtxNklQVHdpRlNpTExxVFJrUEQ1aE15OVpZQXY1V2VCTnkzT0tFbll1YlhabGZUcGJfTg?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-21T09:40:44Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_3a33a8ea0c64b1f27d25dc",
+      "title": "JPFA Menguatkan Prospek Laba di Tengah Kenaikan Harga Ayam - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1ZMDFFMXdULVpiUHFDLVNHeW5PZUgtV1EyMmFVQUlmNmdUdW1ZQ2x4QXR2eU9IOFkyNHZETE1hMk1ZeTlOM1laU1pXWmxBb0gyMkVqS1hiWm96SjVKbmxRNnVsbGFONWNh?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-21T09:36:48Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_3d142b1cbf839fe5077f46",
+      "title": "Indeks Bisnis-27 Ditutup Menguat, Saham MIKA hingga ICBP ke Zona Hijau - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNR1JmbTF2cS1NblBicmhrNDM4a21FN01DUExEY1IwQnNka0F1c09SR0dOZU9rc0RGZ2hWZ216WmhzMzJkX0E1NkxDXzBuVUt0VWVUVEd3a3lYTGJtbVlLLWY2M0ZJemZmVEVLU092ZVZTanh2cDBQUExDUGpaY0M4a2MtUnZ0LWRqUTROZ2dncE9YdFo1UlI4NVprYXZ5V2x2Nkx3a1NCTU1ub05haUpBaFl6eFhwRHBRcnRj?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-21T09:34:52Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_8098448c4b05a0340ca7b0",
+      "title": "Jasa Marga (JSMR) Buka Opsi Buyback di Tengah Gejolak Pasar Saham - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPOGQweEdVdElkMFJrYW5BS3hLeDBiak9xeFlaVTdaZlJwc1pOZlpWYnRaMXRXR0o3SzJUaWJBcjRWeldFREk0a1ZjbzZCcGdlU2Y5SGROemowLWJoZjBvcjNfQXBYWmQzOGtNaS1lWEgyekpDTE1qdGRuN09nM1pmczVLLTFMSUs4b1F4dXRET0libms1dzFkS2pTdHZreEZBbmRucmNIUS1TMWlPMlQ5OEQ4SHY5Zw?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-21T09:16:01Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_d52b56bea0a0a12aea7ad0",
       "title": "Bisikan Target Terbaru Saham Emiten Boy Thohir ADRO, ADMR, AADI Kala Buyback Jumbo - Bisnis Indonesia Premium",
@@ -1321,6 +1417,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_f0307b0e5941e7dc971140",
+      "title": "Emiten Boy Thohir ADRO dan AADI Mulai Buyback Saham Hari Ini - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQU1d5dXNlaUZQWV9hWEt3Mk8yRDE2S0dXVDMxX0wyYXBJcFkxRHc2UTlHQ3VoV1JORi1nM3hrYVZEaEY2NXU1SHp1dHU0WFdnVVAtSkhjRTUxTGU0bE1XWGFGY01BVW5hem9xUkhxNVBBX2ZFLUJydndYYWx6cFNHc3dmMXlxRVRPWUVyX3JzQXdPSHVneHdFOWZRS3NFY1MxRjUxMktVeVNPQlRRQkxoc09hONIBuAFBVV95cUxQd182UDJWdzNNSTYzRFlNQmYzNlktQzl1TEZUX29KRVFlNkFLckVWX2xSTjk3czQ3dHRiQURWel8tXzBNNjRqNXpJZ2ViTWk4ME5XbkNFUUpuZ1BEbkREU1d4ODJNOTFOQzBvTWhKUXhTT3pkVTlUXzhFd2gtaU1SWGs4TGkwZnpfS1N5RjNNMm9BMHZRSVotbGp5bExiWUN4OUdVLWxIZ3N6TDRpTTFscGQ4LVltTEhv?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-20T03:57:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_9ee3d08a40263d1e0bf0ba",
       "title": "Rekomendasi Saham Analis 20 Oktober 2026: KLBF, EMAS, ESSA, INKP, ERAA - Head Topics",
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPZmJ1RnFySmNaME84eGtTVFp0OHJxaXN6eVJfWERBUE51U2dETUpiNzhPOUduZWhqcXl6TzhGTWJjSUZGQ1R1cG55SHRZZXB4OGpCTTFRUEprMGNyVWVZWWp0TXEtd1pXYmg5Nk50a2VNbFhpOHJxbklMZlJaSDBGLXJXVGZSVkxTanVDVU13d1hjRktURnF6NDZyaw?oc=5",
@@ -1595,6 +1707,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_60aaf0e05ffa1cbe2afde1",
+      "title": "Saham MDKA Turun 7 Persen dan Tembus Level Terendah - bsinews.id",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE53WU1GOGI1enRfLUt2SjRmYkFYNjNPOXI3emVtZmtsY0FJVWdtZGh4cmc2QXdMOXNxZHpkRkxxUm1OSTlIampxNFZ3Qk5vOFZWN1VKVzFnU2FjQmZKWXJZ?oc=5",
+      "publisher": "bsinews.id",
+      "published_at_utc": "2026-10-19T22:56:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "MDKA"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_09e6874856113986ce3827",
       "title": "IHSG Diprediksi Lanjutkan Bearish, Tiga Saham Dipimpin INCO Layak Dilirik - InvestorTrust",
       "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxONjR0UnZ2WWJ3bTljUWx0Mmo2NHBEWWlZNGxDVkRjb2F5X01ROFQ0dXRreXFJeVViUDdYbWwzYVl1NWpNVmNtZ3Q5RWpFZFlfRnE3aXJVbll1ellYSXV3Tlc3REZpMnFuQTdFVUltUUNCc21TYkMyTTcyekkyb2RWTzJHRHN1eWhQRWFfQ3oxZGlkY016RGdaYkVwQkhUcnFiRUJoRVZEc1h1RXBtaEtBNQ?oc=5",
@@ -1782,6 +1910,22 @@
         "JPFA"
       ],
       "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_6e7666c174a780de699b8d",
+      "title": "Hanya 4 Saham yang Naik di Penutupan LQ45 Hari Ini, MDKA Jebol - TrenAsia",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQWUlZR1hic0pUYmhVTUw3R3RiYVFDLW5aT1hQSGFtQ2ZNZE1rR21qSWlSOWhPMldFcUxKX0cxZlZ2dWMyMnBrTVpsN3p2V1BpVEZST1NKNnhjajlLVmp6VjJ0aVpIX2RmVzk2bVJseWphZWJxZVFLeE4tXzd2T0Z1UWNKdVNuTUJJUjJmb0dCWmJ0VEJBMVJKTHZqd0tSQdIBlAFBVV95cUxQanBod2JDZXRDYnA0Q1dJOURrQ2VFLU9TS1c3eFR1M29NTlBCclF6cUVuZU9pRWYtN0FhMDJCNU84VTlRRmh2empYX2xqMkhpelM5aXA4RU1CS3JybE5XeXdZY0pwN0gtQkFub2g0UldVQXprSUt3bzJ1eDdPaFpaWnNrU3ZyOFdKaEFJNERvSEd6SDRl?oc=5",
+      "publisher": "TrenAsia",
+      "published_at_utc": "2026-10-19T09:37:05Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "MDKA"
+      ],
+      "sector": "minerals",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -3778,41 +3922,6 @@
         "PTBA"
       ],
       "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_9d5121f4f43a2cc0768baa",
-      "title": "IHSG Ditutup Melemah 0,17% ke 5.925, Saham JPFA, INKP & HRTA Kompak Lesu - Bisnis.com - Market",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPWG9LZmVQa2p1bWg5eTZ5RDNNUVNuRUhONTJwWE1fZE16WjJEMnhoSV9RTC12QnZVYy1JQlpDand4STV2cENYYW96NjU2aVFVOUNxbHRYMzE0ZVkzSUdSN2NvMm1ES3htckUxS09pUmhwaDF5SEIweUF1RHRoOHJRNjVldVhMS1pBMkw2YlFiNFZROURmNFR0VU40Y3I4OGI2ZFBCYW8yVGVIYXdOTFF1bWl3UU0wUQ?oc=5",
-      "publisher": "Bisnis.com - Market",
-      "published_at_utc": "2026-10-13T09:24:12Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INKP",
-        "JPFA"
-      ],
-      "sector": "food",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_592efa193ad89ff1683d91",
-      "title": "Indeks Bisnis-27 Ditutup Melemah, Saham JPFA, INKP, hingga PGAS Loyo - Bisnis.com - Market",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQN3ZyMmhhaWVFNDZhOXM1d01VRE5YQXFPMk5PRHVmdEpEV1RUNU9oRGpqM2JzeG5HMkdXdk1zYU9yc3RrYUt5ZVNlM3B6U1RzWFJPVEdJVXFTVnBtU2dIZlh4R0pJcUFHTV9KSUk0ckc5N3RJUEZlOXl4TVowT0dSRl9tdXNxeE9NUUdlTXhMR0hYZjFERVBvNllYeVgxQ3RIZXhzdEZZcmg5T0xvSC1CamY2ZWM4QQ?oc=5",
-      "publisher": "Bisnis.com - Market",
-      "published_at_utc": "2026-10-13T09:21:41Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INKP",
-        "JPFA",
-        "PGAS"
-      ],
-      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
