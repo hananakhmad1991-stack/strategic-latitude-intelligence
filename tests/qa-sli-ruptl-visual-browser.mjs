@@ -28,6 +28,15 @@ async function scenario(route,width,height){
   assert.match(await root.locator(".rv-map-info").innerText(),/kandidat baris mesin/);
   await root.locator("select").selectOption("20");
   assert.equal(await root.locator(".rv-chart-wrap").last().locator("svg rect").count(),20);
+  const raw=page.locator("[data-sli-ruptl-raw-grid]");
+  await raw.locator("summary").waitFor({timeout:20000});
+  await raw.locator("summary").click();
+  await raw.locator("tbody tr").first().waitFor({timeout:10000});
+  assert.equal(await raw.locator("tbody tr").count(),30,"All 970 catalog rows should be paginated at 30");
+  await raw.locator("select").selectOption("B.3");
+  assert.match(await raw.locator(".rv-raw-buttons").innerText(),/dari 75 kandidat/);
+  assert.match(await raw.locator("tbody tr").first().innerText(),/B\.3/);
+
   assert.ok(!errors.some(e=>/visual RUPTL|Source PDF identity|source-map|sli-ruptl-visual-explorer/i.test(e)),errors.join("; "));
   if(width<500){
    const r=await root.evaluate(n=>({width:n.getBoundingClientRect().width,viewport:innerWidth,outerScroll:n.scrollWidth}));
