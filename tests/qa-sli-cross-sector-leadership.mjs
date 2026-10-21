@@ -148,3 +148,31 @@ test("All participating SLI families map 16 agencies and retain legally distinct
  const dupe=structuredClone(db);dupe.agencies.kemhan.nodes.push({...dupe.agencies.kemhan.nodes[0]});
  assert.equal(win.validateSLISectorLeadership(dupe).pass,false,"Duplicate office IDs must fail QA");
 });
+
+test("Official 2026 source evidence fills Diaz, two agriculture deputies and finance/trade vacancies",()=>{
+ assert.equal(office("klh","w").person,"Diaz Faisal Malik Hendropriyono");
+ assert.equal(office("klh","w").office_id,"Wakil Menteri LH / Wakil Kepala BPLH");
+ assert.equal(office("kementan","w").person,"Muhammad Saleh Mustafa");
+ assert.equal(office("kementan","w2").person,"Alim Setiawan Slamet");
+ assert.equal(nodes("kementan").filter(x=>x.tier==="deputy").length,2);
+ assert.equal(office("kemendag","it").person,"Helmy Santika");
+ assert.equal(office("kemenkeu","sek").person,"Robert Leonard Marbun");
+ assert.equal(office("kemenkeu","it").person,"Awan Nurmawan Nuh");
+ assert.equal(office("kemenkeu","pajak").person,"Bimo Wijayanto");
+ assert.equal(office("kemenkeu","perbend").person,"Astera Primanto Bhakti");
+ assert.equal(office("kemenperin","ig").person,"Mohammad Rum");
+ assert.equal(office("kemenperin","ketahanan").person,"Tri Supondy");
+ assert.equal(office("kementan","livestock").person,"Agung Suganda");
+ assert.equal(office("kementan","extension").person,"Idha Widi Arsanti");
+ assert.equal(office("kementan","plant").verification,"acting_appointment");
+ assert.equal(office("kemenkeu","fiskal").verification,"acting_appointment");
+ const native=JSON.parse(read("data/food-governance-hierarchy.json"));
+ assert.equal(native.nodes.find(x=>x.id==="wamentan-alim-2026").person,"Alim Setiawan Slamet");
+ assert.equal(native.nodes.find(x=>x.id==="kementan-ditjen-pkh").person,"Agung Suganda");
+ assert.equal(native.nodes.find(x=>x.id==="kementan-bppsdmp").person,"Idha Widi Arsanti");
+ assert.ok(Object.values(db.agencies).every(a=>a.icon?.kind==="official-site-favicon"&&a.icon.src.startsWith("https://www.google.com/s2/favicons?domain=")));
+ const script=read("js/sli-sector-leadership.js");
+ assert.ok(script.includes("agencyIcon"));
+ assert.ok(script.includes("not a certified institutional logo"));
+ assert.ok(Object.values(db.agencies).reduce((n,a)=>n+a.nodes.filter(x=>x.person).length,0)>=120);
+});
