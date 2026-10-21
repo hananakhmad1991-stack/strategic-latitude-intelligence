@@ -22,7 +22,7 @@ const reviewed={
 const answer=(q,documents=[metadata],reviewedArticles=[reviewed])=>missingLegalArticleBrief({
  question:q,articleEvidence:reviewedArticles,policyEvidence:documents,language:"id"
 });
-test("Unreviewed Pasal 99 of UU 7/2021 returns a complete source-limited response without a fake article meaning",()=>{
+test("Nonexistent Pasal 99 of original UU 7/2021 returns publisher-anchored structural absence without fake legal claims",()=>{
  const r=answer("Jelaskan Pasal 99 UU 7/2021. Jika pasalnya tidak tersedia, jangan mengarang.");
  assert.equal(r.source_limited,true);
  assert.equal(r.model_called,false);
@@ -31,7 +31,7 @@ test("Unreviewed Pasal 99 of UU 7/2021 returns a complete source-limited respons
  assert.equal(r.sources[0].source_type,"official_original_statute_structure_only");
  assert.equal(r.sources[0].source_url,"https://pajak.go.id/index.php/id/peraturan/harmonisasi-peraturan-perpajakan");
  assert.equal(auditLegalArticleCitations(r.answer,r.sources).pass,true);
- assert.match(r.answer,/^## Status bukti pasal: Pasal 99 UU 7\/2021/m);
+ assert.match(r.answer,/^## Keberadaan pasal: Pasal 99 UU 7\/2021/m);
  assert.match(r.answer,/pasal utama bernomor 1 sampai 19/);
  assert.match(r.answer,/tidak terdapat sebagai pasal utama/i);
  assert.match(r.answer,/tidak menyusun isi atau kewajiban hukum/i);
@@ -49,8 +49,9 @@ test("Only exactly one requested law and article triggers the deterministic guar
 });
 test("No matching law index cannot be converted into a fabricated legal citation",()=>{
  const r=answer("Jelaskan Pasal 99 UU 7/2021",[{...metadata,id:"policy_law_pp28",title:"PP 28/2025 · Licensing"}],[]);
- assert.equal(r.sources.length,0);
- assert.doesNotMatch(r.answer,/\[1\]/);
+ assert.equal(r.sources.length,1);
+ assert.match(r.answer,/\[1\]/);
+ assert.equal(r.sources[0].source_type,"official_original_statute_structure_only");
  assert.equal(r.model_called,false);
 });
 test("Source-limited legal export explicitly distinguishes law metadata from a reviewed Pasal source",()=>{
@@ -104,6 +105,18 @@ test("Full formal names, abbreviations, and duplicated same-law mentions resolve
  assert.equal(pp.sources.length,0);
  const perpres=answer("Jelaskan Article 99 Peraturan Presiden Nomor 110 Tahun 2025",[],[]);
  assert.equal(perpres.request.law_ref,"Perpres 110/2025");
+});
+test("Structural check only covers verified article range of original UU HPP",()=>{
+ const unknown=answer("Jelaskan Pasal 11 UU 7/2021",[],[]);
+ assert.equal(unknown?.review_scope,"indexed_law_metadata_only_no_reviewed_article");
+ assert.equal(unknown?.sources.length,0);
+ const absent=answer("Jelaskan Pasal 20 UU 7/2021",[],[]);
+ assert.equal(absent?.article_existence,"not_in_original_promulgated_instrument");
+ assert.equal(absent?.model_called,false);
+ const different=answer("Jelaskan Pasal 99 PP 28/2025",[],[]);
+ assert.equal(different?.article_existence,undefined);
+ const ambiguous=answer("Jelaskan Pasal 19A UU 7/2021",[],[]);
+ assert.equal(ambiguous?.article_existence,undefined);
 });
 test("Existing reviewed Pasal is not accidentally withheld when user spells out full law name",()=>{
  const question="Jelaskan Pasal 1 Undang-Undang Nomor 16 Tahun 2016";
