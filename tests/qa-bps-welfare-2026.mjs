@@ -159,7 +159,7 @@ test("new drinking-water crosswalk agrees with primary source, flags precision a
  assert.equal(data.sampling_error_2026.matched_unavailable,18);
  assert.equal(data.quality.sampling_error_metric_count,6);
  assert.equal(data.provincial_metrics.length,9);
- assert.match(data.sampling_error_2026.cautions,/four unmatched welfare indicators|four unmatched|four categories|four/);
+ assert.match(data.sampling_error_2026.cautions,/three unmatched welfare indicators/);
 });
 test("Full appendix index is structural internal review metadata, not 24,921 public observations",()=>{
  const a=data.sampling_error_2026.internal_full_appendix;
