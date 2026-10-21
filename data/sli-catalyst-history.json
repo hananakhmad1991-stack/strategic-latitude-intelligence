@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-10-21T19:15:20.188Z",
+  "published_at_utc": "2026-10-21T20:05:56.230Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-10-21T19:15:19.451301Z",
+    "news": "2026-10-21T20:05:55.501998Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-20",
     "participations": "2026-10-20"
   },
-  "count": 257,
+  "count": 258,
   "events": [
+    {
+      "id": "sli-catalyst-8f3b0e40203822749d",
+      "kind": "news_indexed",
+      "title": "Matangkan Bioetanol E50, Bahlil Petakan Pasokan Bahan Baku - Bisnis.com - Ekonomi",
+      "detected_at_utc": "2026-10-21T20:05:56.230Z",
+      "source_at_utc": "2026-10-12T07:00:00Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQd0tNZFZlN0dIeG5FOE5rMERXdWxlajJyVkJqQ2RvbkFBajQwTGd2QTBnekcyRWRMdk5PbXNIRkhWUWRXMl9mV0JWN0x5Um1GWFZWU3c0UUMxMzFJU1RqT1NlZTByazdHY0wtOTdBMjM2S3g3RzBCM0dPMVZvNUpQUnlEa2UxelhQMkFKWmp0bEdiLXAwZ2hvV2VldDlIX3FuSUtjMDJiY0wtTEZn?oc=5",
+      "publisher": "Bisnis.com - Ekonomi",
+      "sector": "energy",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-6e2f9e5a8b0cdcaaca",
       "kind": "news_indexed",
