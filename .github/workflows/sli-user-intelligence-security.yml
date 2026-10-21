@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'services/sli-user-intelligence/**'
+      - '.github/workflows/sli-user-intelligence-source-sync.yml'
+      - '.github/workflows/sli-user-intelligence-activate.yml'
       - 'js/sli-user-intelligence-client.js'
       - 'js/sli-user-intelligence-qa.js'
       - 'sli-user-intelligence-qa.html'
@@ -16,6 +18,8 @@ on:
     branches: [main]
     paths:
       - 'services/sli-user-intelligence/**'
+      - '.github/workflows/sli-user-intelligence-source-sync.yml'
+      - '.github/workflows/sli-user-intelligence-activate.yml'
       - 'js/sli-user-intelligence-client.js'
       - 'js/sli-user-intelligence-qa.js'
       - 'sli-user-intelligence-qa.html'
@@ -43,6 +47,7 @@ jobs:
           node --check services/sli-user-intelligence/src/auth.mjs
           node --check services/sli-user-intelligence/src/matcher.mjs
           node --check services/sli-user-intelligence/src/index.mjs
+          node --check services/sli-user-intelligence/scripts/build-d1-catalyst-import.mjs
           node --check js/sli-user-intelligence-client.js
           node --check js/sli-user-intelligence-qa.js
           node --test services/sli-user-intelligence/tests/*.test.mjs
