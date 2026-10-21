@@ -50,3 +50,15 @@ test("RUPTL sector, investor, PLN stats and AI grid pages distinguish available 
  assert.match(primary,/id="ruplt-provincial-project-review"/);
  assert.match(primary,/gatrik\.esdm\.go\.id/);
 });
+
+test("Historic PDF extraction notes cannot override verified full official RUPTL recovery",()=>{
+ const bas=read("pln-regional-grid-baseline-2024.html");
+ assert.match(bas,/official complete RUPTL PDF was verified later in a separate audit/);
+ assert.doesNotMatch(bas,/The RUPTL 2025–2034 and Statistics 2025 complete PDFs were not downloaded in the same run/);
+ const stats=read("pln-electricity-statistics.html");
+ assert.match(stats,/heading-only index does not validate project rows/);
+ assert.match(stats,/sampled source-project register/);
+ const investor=read("ruplt-investor-digitization.html");
+ assert.match(investor,/100-page excerpt and full-PDF heading index alone do not establish verified grid-node coordinates/);
+ assert.doesNotMatch(investor,/conclusions await the missing regional annex pages/);
+});

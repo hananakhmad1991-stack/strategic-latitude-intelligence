@@ -362,6 +362,18 @@ await check("RUPTL source consistency: 1,253-page indexed annex is discoverable 
  assert.equal(await back.count(),1,"AI grid dashboard must link directly to full annex source index");
  assert.match(await page.locator("body").innerText(),/not confirm project-level grid nodes/);
 });
+await check("Indonesian source cautions: RUPTL and provincial methodology remain navigable",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("ruplt-investor-digitization.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ await waitMast(page);
+ await page.locator('#sliPlatformMast [data-sli-mast-language="id"]').click();
+ await page.waitForFunction(()=>document.body.innerText.includes("akumulasi 71,67 juta meter pada 2037"),null,{timeout:10000});
+ const annex=page.locator('a[href*="pln-ruptl-2025-2034-source-intelligence.html#ruptl-full-annex-source-index"]').first();
+ assert.equal(await annex.count(),1,"Excerpt must link to independently audited full official annex source");
+ await page.goto(pageUrl("provincial-opportunity-engine.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ await waitMast(page);
+ await page.waitForFunction(()=>document.body.innerText.includes("Garis acuan vertikal merupakan median pertumbuhan riil"),null,{timeout:12000});
+ assert.equal(await page.locator('a[href="./provincial-intelligence.html"]').first().count(),1,"Provincial dashboard must retain cross-sector dossier route");
+});
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");
 console.log("Browser smoke:",report.tests.filter(x=>x.status==="pass").length,"passed /",report.tests.length,"total");
