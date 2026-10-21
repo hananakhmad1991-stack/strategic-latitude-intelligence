@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T15:36:52.649745Z",
+  "updated_at_utc": "2026-10-21T16:11:04.390283Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,38 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_9e72aaeb9aec4d1d7d0fcd",
+      "title": "Sanksi Tegas! OJK Beber Praktik Manipulasi Saham DSSA, BREN, dan CUAN - Emitennews.com",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQLWt3QVlOVVg5SklYeGFMczcwUFFMSHpqaXBuMGx1QTdlRnMzcGRSX1Jkbi0zWnVndngxQUdmdDlWYUFzcU4yVFNUcjlUVFJ3S3ZzMkFrTmRiN1k0N2RrbzZ6ZjBsZ1QzNE9lNW5HZGM2NmxzTXJwQUN3YmFGZjNPTXVjV3M5dVlZSEVQVDBnS0c3X2xCX19pS1lR?oc=5",
+      "publisher": "Emitennews.com",
+      "published_at_utc": "2026-10-21T15:39:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_8e25710149e1175eb4c9ea",
+      "title": "Prospek Saham PGE (PGEO) di Tengah Tekanan Sentimen MSCI - InvestorTrust",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxONUNDX09OTUJDMWp2bk1KYTJpVXQwTFhiSGFZZzJvX1JGNGxSSDNtRVJpczZsQkR1TklVSmk1c2ZyLXZoREJEMVNDSGQtcENnaFBwY0Vqc214UnEyMHNtX1pBRjJTM1BfMWFvbU9haG5DVzZkUEJ1UFcta1hRSzhfbzRyM3JaNEpNVVJ2c1BON2h5NFhvbXgtcg?oc=5",
+      "publisher": "InvestorTrust",
+      "published_at_utc": "2026-10-21T15:22:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_cd622f860066a759f5d7f6",
       "title": "Jasa Marga (JSMR) Kaji Buyback Saham di Tengah Rencana Ekspansi Jalan Tol - kontan.co.id",
@@ -448,6 +480,22 @@
       "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5sUGthQkpvUHB4Y0J1ODFCQUE1bHh4bjBhSzJ6SEh0M2VsbTEwTlEtSENpQjAxNXBlOGRSc2pUakhweDdjak1JZnJTeS1aMUxlM21B?oc=5",
       "publisher": "شبكة تواصل الإخبارية",
       "published_at_utc": "2026-10-21T09:42:54Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_3e26377f762d5756b42581",
+      "title": "JPFA Bidik Pemulihan Laba di Tengah Kenaikan Harga Ayam - SuaraGarut.ID",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBaSVE1ZXZ0cGpaLXdXR0xPNEw0QnJQRms0MG8zcEF1czdSVFlBeTdUdG1BNkR1YTJQX05xMmVOcnJtaXV5N25hcUx3THFxRFZnaDRTcTVjcWtqN0U?oc=5",
+      "publisher": "SuaraGarut.ID",
+      "published_at_utc": "2026-10-21T09:42:25Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "JPFA"
@@ -1663,6 +1711,7 @@
       "published_at_utc": "2026-10-20T09:24:03Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "ANTM",
         "MEDC",
         "TLKM"
       ],
@@ -1710,6 +1759,22 @@
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNR1VHR3YyS013WmQ5QzN1a0dRTnVoUFp6eXZITHkwMUMzUGZETUh0VF9UbXl6cTFjV3NrMkN4bHdraHRiSVNjRWl6YzNrV2RLdTdzZjlIeXJwZlZ0eElwczV6ZGUtdy1rS0NFX0ctUXhsWjd4eW5JTWdreUJVNFhZQk8wREFsN1BzWWdwN1d5VFhYUFBjLVQwTnllZ2FmZjFudU9SdG5vNHEyR2JJYk9WYXFDMUZDU0p0U2hXdDhQYWhoVUE?oc=5",
       "publisher": "Bisnis.com - Market",
       "published_at_utc": "2026-10-20T09:05:54Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c935abf6868ecdf04a7b3c",
+      "title": "Adaro Andalan (AADI) Gelar Buyback Saham Senilai Rp5 Triliun, Catat Jadwalnya - Ajaib",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQUHdMM2Z1MDlmRllwTllkVWtNM1NTR20xR0lhWG9DcHItRTFocFZKODYxSXV6Y21HbG4ybWZMOUdKUmZRVXhuSFRsRkswQjlyVUFYWUVqTjJFcnBpTG45SjNWcV9wbjFnQml0b3d4S0pESE5pRzB3bDUycWxTOUQ0Z240QXNEVmhFTDIwSTJoTldvc0ZVVi1JZjdheHgzalNtVFFCcWYtaWloWVhMaUE?oc=5",
+      "publisher": "Ajaib",
+      "published_at_utc": "2026-10-20T08:00:19Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "AADI"
@@ -4488,6 +4553,22 @@
         "PTPP"
       ],
       "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_7cd6226660c2761d5d17f7",
+      "title": "Penjualan Semen Indocement Naik 12 Persen pada September 2026, Pangsa Pasar INTP Tembus 31,6 Persen - TOPIK.ID",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOYXcwZG1ObmZvN05yam45UmI2VnhxQUwtRlF5Zi1kU0x6Wl91ODJoMXZWOHBzQUhPYWdQS09GeG41b1ZtY1ctWFJHRWV6VHlJdVdrVldfWmp1Ri1UZTZvTVlnOG5tN2FlQ3lCZ212NTJvRmxzLWhOWWpERjhLZ0MyUU9GS1ktVmN6OXlRVzlEdTVidlFPNmwydWtVR2tsYUlpcWtfOXA0SS1Zd2EwM29CYkc5R3FjdG1PZlE?oc=5",
+      "publisher": "TOPIK.ID",
+      "published_at_utc": "2026-10-14T04:30:12Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INTP"
+      ],
+      "sector": "manufacturing",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
