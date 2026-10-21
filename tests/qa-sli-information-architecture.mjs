@@ -27,8 +27,9 @@ test('all published HTML pages share common reader navigation, glossary and reli
   assert.match(s,/<\/head>/i,name+': missing head');
  }
 });
-test('one source of truth for overview, sector detail, guided research and methods',()=>{
- assert.ok(modules.overview&&modules.guide&&modules.glossary&&modules.freshness);
+test('one source of truth for Home, sector detail, guided research and methods',()=>{
+ assert.ok(modules.home&&modules.guide&&modules.glossary&&modules.freshness);
+ assert.equal(modules.overview[2],'index.html#home','Historical overview alias must route to Home');
  assert.ok(modules.province&&modules.opportunity&&modules.gini&&modules.aihub);
  assert.equal(new Set(Object.keys(modules)).size,Object.keys(modules).length);
  const used=groups.flatMap(g=>g.slice(2));
@@ -43,11 +44,16 @@ test('one source of truth for overview, sector detail, guided research and metho
  }
  for(const [from,ids] of Object.entries(related)){assert.ok(modules[from]);for(const id of ids)assert.ok(modules[id])}
 });
-test('overview is a concise decision hub and detail modules have their own homes',()=>{
+test('unique overview evidence is owned by sector, macroeconomy and automation dashboards',()=>{
  const main=read('index.html'),guide=read('sli-user-guide.html');
- assert.match(main,/id="sliPulse"/);
- assert.match(main,/sli-executive-wayfinding/);
- assert.match(main,/sli-chapter-grid/);
+ assert.doesNotMatch(main,/id="sliPulse"/);
+ assert.doesNotMatch(main,/function overview\(\)\{return/);
+ assert.doesNotMatch(main,/data-page="overview"/);
+ assert.match(main,/id="sliPortalMetrics"/);
+ assert.match(main,/id="sliHomeIHSG"/);
+ assert.match(main,/initDailyEnergyAssessment/);
+ assert.match(read('sli-data-automation-center.html'),/id="sliAutomationCenterRoot"/);
+ assert.match(read('indonesia-macroeconomic-intelligence.html'),/World Bank|BPS|JISDOR/i);
  assert.match(main,/sli-user-guide\.html/);
  assert.match(main,/Expenditure Inequality · Gini Ratio \(BPS\)/);
  for(const section of ['workflow','catalog','tasks','controls','trust','models','help'])
@@ -114,7 +120,9 @@ test('seven topical families own specialist pages exactly once and distinguish o
  assert.doesNotMatch(js,/const specialist=\[/,'Specialists must not reappear as peer categories');
  assert.match(js,/const col=node\('details','sli-platform-sector-group'\)/,'Topical groups should be progressive disclosure');
  assert.doesNotMatch(js,/node\('details','sli-explore-menu'\)/,'Do not repeat Explore Data in lower breadcrumb');
- assert.match(js,/page=\(\)=>path==='index.html'\?\(\(!location\.hash/,'The real home route must not be labeled as Full Overview');
+ assert.match(js,/page=\(\)=>path==='index.html'\?\(\(!location\.hash/,'Home route must remain canonical');
+ assert.doesNotMatch(js,/mastLink\('\.\/index\.html#overview'/);
+ assert.ok(!all.includes('overview'),'Obsolete overview alias must not appear as a navigation topic');
 });
 
 console.log('SLI information architecture checks complete: '+files.length+' HTML pages · '+Object.keys(modules).length+' canonical navigation destinations.');
