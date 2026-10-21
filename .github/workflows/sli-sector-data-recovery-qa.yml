@@ -41,6 +41,11 @@ on:
       - 'data/sli-ruptl-official-inauguration-slo-2025.json'
       - 'tests/qa-sli-ruplt-official-slo-milestones.mjs'
       - 'js/sli-ruptl-provincial-evidence.js'
+      - 'js/sli-ruptl-visual-explorer.js'
+      - 'css/sli-ruptl-visual-explorer.css'
+      - 'data/sli-indonesia-province-38.geojson'
+      - 'data/sli-indonesia-province-38-ATTRIBUTION.txt'
+      - 'tests/qa-sli-ruptl-visual-explorer.mjs'
       - 'css/sli-ruptl-provincial-evidence.css'
       - 'tests/qa-sli-ruptl-provincial-realization-evidence.mjs'
       - 'js/sli-ruptl-primary-pdf.js'
@@ -119,6 +124,11 @@ on:
       - 'data/sli-ruptl-official-inauguration-slo-2025.json'
       - 'tests/qa-sli-ruplt-official-slo-milestones.mjs'
       - 'js/sli-ruptl-provincial-evidence.js'
+      - 'js/sli-ruptl-visual-explorer.js'
+      - 'css/sli-ruptl-visual-explorer.css'
+      - 'data/sli-indonesia-province-38.geojson'
+      - 'data/sli-indonesia-province-38-ATTRIBUTION.txt'
+      - 'tests/qa-sli-ruptl-visual-explorer.mjs'
       - 'css/sli-ruptl-provincial-evidence.css'
       - 'tests/qa-sli-ruptl-provincial-realization-evidence.mjs'
       - 'js/sli-ruptl-primary-pdf.js'
@@ -172,13 +182,14 @@ jobs:
           node --check js/sli-ruptl-esdm-period-plan.js
           node --check js/sli-ruptl-primary-pdf.js
           node --check js/sli-ruptl-provincial-evidence.js
+          node --check js/sli-ruptl-visual-explorer.js
           node --check js/sli-ruptl-progress-event-timeline.js
           node --check js/sli-ruptl-annex-index.js
           node --check js/sli-digitized-ai-figures.js
           node --check js/sli-ai-figure-audit-status.js
           node --check js/sli-provincial-nexus-ui.js
           node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs tests/qa-sli-provincial-bnpb-2025.mjs tests/qa-sli-ai-wdi-source-phase2.mjs tests/qa-sli-ai-digitized-figures.mjs tests/qa-sli-worldbank-digitized-panels.mjs tests/qa-sli-bnpb-district-2024.mjs tests/qa-sli-ruptl-official-period-plan.mjs tests/qa-sli-ruptl-full-official-annex-index.mjs
-          node --test tests/qa-sli-ruptl-primary-pdf-digitization.mjs tests/qa-sli-ruptl-provincial-realization-evidence.mjs tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs tests/qa-sli-ruplt-official-slo-milestones.mjs tests/qa-sli-ruptl-expanded-source-rows.mjs
+          node --test tests/qa-sli-ruptl-primary-pdf-digitization.mjs tests/qa-sli-ruptl-provincial-realization-evidence.mjs tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs tests/qa-sli-ruplt-official-slo-milestones.mjs tests/qa-sli-ruptl-expanded-source-rows.mjs tests/qa-sli-ruptl-visual-explorer.mjs
       - name: Validate every page references a real public source dataset
         run: |
           python - <<'PY'
