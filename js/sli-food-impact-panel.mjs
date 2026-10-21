@@ -11,7 +11,7 @@ function paragraph(text){return el("p",text)}
 function label(text,id){const l=el("label",text);l.htmlFor=id;return l}
 function choose(id,entries){const s=el("select");s.id=id;for(const [v,title] of entries){const o=el("option",title);o.value=String(v);s.append(o)}return s}
 const sectorLinks=[
- ["./sli-idx-sector-watchlist.html","IDX Sector Watchlist"],
+ ["./index.html#sliHomeIDXSectors","IDX Sector Watchlist"],
  ["./provincial-intelligence.html","Provincial Intelligence"],
  ["./policy-regulatory-intelligence.html","Regulasi & Kebijakan"],
  ["./geopolitical-impact-assessment.html","Geopolitical Intelligence"],
