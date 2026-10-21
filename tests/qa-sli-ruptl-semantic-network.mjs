@@ -1,0 +1,92 @@
+import {test} from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
+const J=p=>JSON.parse(read(p));
+const sem=J("data/sli-ruptl-970-semantic-candidates-2025.json");
+const original=J("data/sli-ruptl-970-raw-grid-candidates-review.json");
+const full=J("data/sli-ruptl-1253-page-table-inventory-review.json");
+const net=J("data/sli-ruptl-network-table-grids-review.json");
+const events=J("data/sli-ruptl-2026-independent-primary-milestones.json");
+test("All 970 extracted power-grid rows have explicit non-promoted semantic identities and source provenance",()=>{
+ assert.equal(sem.schema,"sli-ruptl-970-semantic-candidate-ledger-v1");
+ assert.equal(sem.source_pdf_sha256,original.source_pdf_sha256);
+ assert.equal(sem.rows.length,970);
+ assert.equal(sem.counters.source_grid_candidates,970);
+ assert.equal(new Set(sem.rows.map(r=>r.source_key)).size,970);
+ assert.ok(sem.counters.recognized_technology>=850,"Too many unrecognized technology cells");
+ assert.ok(sem.counters.curated_sample_matched_uniquely>=75);
+ assert.equal(sem.counters.verified_distinct_physical_assets_from_machine_extract,0);
+ assert.equal(sem.counters.actual_2026_status_confirmed_from_2025_pdf,0);
+ const keys=new Set(original.sections.flatMap(s=>s.rows.map(r=>r.source_key)));
+ for(const r of sem.rows){
+  assert.ok(keys.has(r.source_key));
+  assert.equal(r.physical_asset_identity_verified,false);
+  assert.equal(r.actual_2026_operational_status,null);
+  assert.equal(r.verified_actual_cod,null);
+  assert.equal(r.realized_capacity_mw,null);
+  assert.equal(r.geo_coordinates,null);
+  if(r.name_collision_not_proof_same_asset)assert.ok(r.name_collision_source_keys.length>1);
+ }
+});
+test("Full 1,253 source pages are enumerated and ALL candidate network table pages grid scanned",()=>{
+ assert.equal(full.schema,"sli-ruptl-all-1253-pages-table-headings-v1");
+ assert.equal(full.source_pdf_pages,1253);
+ assert.equal(full.page_count_audited,1253);
+ assert.equal(full.page_index.length,1253);
+ assert.equal(full.page_index[0].pdf_page,1);
+ assert.equal(full.page_index.at(-1).pdf_page,1253);
+ assert.ok(full.original_table_heading_candidates>900);
+ assert.ok(full.network_table_heading_candidates>150);
+ assert.equal(full.network_grid_extraction_partial,false);
+ assert.equal(full.network_grid_pages_queued_total,full.network_grid_pages_parsed);
+ assert.equal(net.schema,"sli-ruptl-network-source-tables-raw-grid-review-v1");
+ assert.equal(net.source_sha256,full.source_sha256);
+ assert.equal(net.pages_with_source_cells,full.network_grid_pages_parsed);
+ assert.equal(net.remaining_pages_not_grid_parsed,0);
+ assert.ok(net.pages_with_source_cells>=150);
+ assert.ok(net.pages.some(p=>p.grids.length>0));
+ assert.equal(net.published_network_asset_count,0);
+ assert.equal(net.verified_realized_transmission_kms,null);
+ assert.equal(net.verified_realized_substation_mva,null);
+ assert.equal(net.verified_realized_distribution_km,null);
+ assert.ok(full.table_headings.every(x=>x.pdf_page>26||x.pdf_page<18),"Table-of-contents source candidates should not be promoted");
+});
+test("2026 actual evidence statuses and original RUPTL planned dates remain distinct",()=>{
+ assert.equal(events.schema,"sli-ruptl-2026-independent-primary-milestones-v1");
+ assert.equal(events.events.length,5);
+ assert.equal(new Set(events.events.map(e=>e.id)).size,5);
+ assert.equal(events.validated_2026_individual_plant_cod_event_count_from_this_dataset,0);
+ assert.equal(events.published_2026_national_realization_sum_mw,null);
+ assert.equal(events.national_plan_versus_realization_percentage,null);
+ assert.ok(events.events.every(e=>e.source_url.startsWith("https://")&&e.observed_date.startsWith("2026-")));
+ assert.ok(events.events.every(e=>e.actual_cod_date===null && e.actual_operating_capacity_mw===null));
+ const ungaran=events.events.find(e=>e.id==="ruptl-2026-ungaran-0902");
+ assert.equal(ungaran.original_ruplt_source.table,"B4.10");
+ assert.equal(ungaran.original_ruplt_source.pdf_page,881);
+ assert.equal(ungaran.original_ruplt_source.original_source_row_no,"24");
+ assert.equal(ungaran.original_ruplt_source.planned_ared_cod_year,2031);
+ assert.equal(ungaran.original_ruplt_source.printed_planned_capacity_mw,55);
+ assert.equal(ungaran.event_type,"official_exploration_and_feasibility_stage");
+ const grid=original.sections.find(s=>s.annex_id==="B.4");
+ assert.ok(grid.rows.some(r=>r.page===881&&r.original_row_no==="24"&&r.raw_cells.some(c=>String(c).toLowerCase().includes("ungaran"))));
+ const aceh=events.events.find(e=>e.id==="ruptl-2026-blangpidie-0219");
+ assert.equal(aceh.observed_transmission_kms,115);
+ assert.equal(aceh.observed_substation_mva,30);
+ assert.equal(aceh.original_ruplt_source,null);
+});
+test("RUPTL source UI exposes candidate labels and network grids only on demand, with primary 2026 evidence",()=>{
+ const js=read("js/sli-ruptl-semantic-network.js");
+ assert.match(js,/sli-ruptl-970-semantic-candidates-2025\.json/);
+ assert.match(js,/sli-ruptl-1253-page-table-inventory-review\.json/);
+ assert.match(js,/sli-ruptl-network-table-grids-review\.json/);
+ assert.match(js,/sli-ruptl-2026-independent-primary-milestones\.json/);
+ assert.match(js,/sli:ruptl-region/);
+ assert.doesNotMatch(js,/innerHTML|eval\(/);
+ for(const file of ["pln-ruptl-energy-investment.html","pln-ruptl-2025-2034-source-intelligence.html"]){
+  const html=read(file);
+  assert.ok(html.indexOf("data-sli-ruptl-visual")<html.indexOf("data-sli-ruptl-semantic-network"));
+  assert.match(html,/sli-ruptl-semantic-network\.js/);
+  assert.match(html,/sli-ruptl-semantic-network\.css/);
+ }
+});
