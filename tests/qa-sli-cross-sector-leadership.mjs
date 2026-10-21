@@ -7,7 +7,7 @@ const db=JSON.parse(read("data/sli-cross-sector-official-leadership-2026.json"))
 const nodes=id=>db.agencies[id].nodes;
 const office=(agency,id)=>nodes(agency).find(n=>n.id===id);
 test("SLI shares one curated agency roster across all relevant specialist sectors",()=>{
- assert.equal(db.schema,"sli-cross-sector-official-leadership-v2");
+ assert.equal(db.schema,"sli-cross-sector-official-leadership-v3");
  assert.equal(db.as_of,"2026-10-21");
  assert.deepEqual(Object.keys(db.sectors).sort(),["ai","energy","entities","environment","food","geo","investment","macro","minerals","policy","provincial"]);
  assert.equal(db.sectors.energy.agencies.includes("esdm"),true);
@@ -82,7 +82,7 @@ test("2026 official Bappenas, Kemendag, BPS, BI and BMKG leadership has source-p
  assert.equal(office("bappenas","sek").person,"Teni Widuriyanti");
  assert.equal(office("bappenas","dir-marine").person,"Mohamad Rahmat Mulianda");
  assert.equal(office("kemendag","w").person,"Dyah Roro Esti Widya Putri");
- assert.equal(office("kemendag","it").person,null,"Do not invent trade inspector currently unverified");
+ assert.equal(office("kemendag","it").person,"Helmy Santika","Official Kemendag appointment on 8 July 2026 supersedes outdated vacancy");
  assert.equal(office("kemenkeu","m").person,"Suahasil Nazara");
  assert.equal(office("kemenkeu","w").person,"Juda Agung");
  assert.equal(office("bps","m").person,"Amalia Adininggar Widyasanti");
@@ -143,8 +143,36 @@ test("All participating SLI families map 16 agencies and retain legally distinct
  vm.runInNewContext(sourceJs,{window:win,document:{readyState:"loading",addEventListener(){}},console});
  const check=win.validateSLISectorLeadership(db);
  assert.equal(check.pass,true,JSON.stringify(check.issues));
- const old=structuredClone(db);old.schema="sli-cross-sector-official-leadership-v1";
+ const old=structuredClone(db);old.schema="sli-cross-sector-official-leadership-v2";
  assert.equal(win.validateSLISectorLeadership(old).pass,false,"Older data must not replace new roster");
  const dupe=structuredClone(db);dupe.agencies.kemhan.nodes.push({...dupe.agencies.kemhan.nodes[0]});
  assert.equal(win.validateSLISectorLeadership(dupe).pass,false,"Duplicate office IDs must fail QA");
+});
+
+test("Official 2026 source evidence fills Diaz, two agriculture deputies and finance/trade vacancies",()=>{
+ assert.equal(office("klh","w").person,"Diaz Faisal Malik Hendropriyono");
+ assert.equal(office("klh","w").office_id,"Wakil Menteri LH / Wakil Kepala BPLH");
+ assert.equal(office("kementan","w").person,"Muhammad Saleh Mustafa");
+ assert.equal(office("kementan","w2").person,"Alim Setiawan Slamet");
+ assert.equal(nodes("kementan").filter(x=>x.tier==="deputy").length,2);
+ assert.equal(office("kemendag","it").person,"Helmy Santika");
+ assert.equal(office("kemenkeu","sek").person,"Robert Leonard Marbun");
+ assert.equal(office("kemenkeu","it").person,"Awan Nurmawan Nuh");
+ assert.equal(office("kemenkeu","pajak").person,"Bimo Wijayanto");
+ assert.equal(office("kemenkeu","perbend").person,"Astera Primanto Bhakti");
+ assert.equal(office("kemenperin","ig").person,"Mohammad Rum");
+ assert.equal(office("kemenperin","ketahanan").person,"Tri Supondy");
+ assert.equal(office("kementan","livestock").person,"Agung Suganda");
+ assert.equal(office("kementan","extension").person,"Idha Widi Arsanti");
+ assert.equal(office("kementan","plant").verification,"acting_appointment");
+ assert.equal(office("kemenkeu","fiskal").verification,"acting_appointment");
+ const native=JSON.parse(read("data/food-governance-hierarchy.json"));
+ assert.equal(native.nodes.find(x=>x.id==="wamentan-alim-2026").person,"Alim Setiawan Slamet");
+ assert.equal(native.nodes.find(x=>x.id==="kementan-ditjen-pkh").person,"Agung Suganda");
+ assert.equal(native.nodes.find(x=>x.id==="kementan-bppsdmp").person,"Idha Widi Arsanti");
+ assert.ok(Object.values(db.agencies).every(a=>a.icon?.kind==="official-site-favicon"&&a.icon.src.startsWith("https://www.google.com/s2/favicons?domain=")));
+ const script=read("js/sli-sector-leadership.js");
+ assert.ok(script.includes("agencyIcon"));
+ assert.ok(script.includes("not a certified institutional logo"));
+ assert.ok(Object.values(db.agencies).reduce((n,a)=>n+a.nodes.filter(x=>x.person).length,0)>=120);
 });

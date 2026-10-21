@@ -523,8 +523,8 @@
       "id": "wamentan-2026",
       "parent": "kementan",
       "group": "unit",
-      "name": "Wakil Menteri Pertanian",
-      "en": "Deputy Minister of Agriculture",
+      "name": "Wakil Menteri Pertanian I",
+      "en": "Deputy Minister of Agriculture I",
       "kind": "Unit internal kementerian",
       "kindEn": "Internal ministerial office",
       "role": "Membantu Menteri Pertanian menjalankan kebijakan nasional sektor pertanian.",
@@ -677,13 +677,14 @@
       "limitEn": "Internal Agriculture Ministry unit; not a command relationship over Bapanas, BULOG or regional government.",
       "sources": [
         {
-          "url": "https://jdih.pertanian.go.id/jdih-ops/download/kepmentan-no-98-tahun-2026.pdf",
-          "label": "Dokumen/sumber resmi"
+          "url": "https://ditjenbun.pertanian.go.id/wamentan-alim-setiawan-slamet-dorong-sinergi-untuk-percepatan-program-strategis-perkebunan/",
+          "label": "Sumber resmi pejabat"
         }
       ],
-      "person": null,
-      "confirmed": null,
-      "leaderSource": null
+      "person": "Heru Tri Widarto",
+      "confirmed": "2026-10-21",
+      "leaderSource": "https://ditjenbun.pertanian.go.id/wamentan-alim-setiawan-slamet-dorong-sinergi-untuk-percepatan-program-strategis-perkebunan/",
+      "acting": true
     },
     {
       "id": "kementan-ditjen-pkh",
@@ -699,13 +700,14 @@
       "limitEn": "Internal Agriculture Ministry unit; not a command relationship over Bapanas, BULOG or regional government.",
       "sources": [
         {
-          "url": "https://jdih.pertanian.go.id/jdih-ops/download/kepmentan-no-98-tahun-2026.pdf",
-          "label": "Dokumen/sumber resmi"
+          "url": "https://ditjenpkh.pertanian.go.id/index.php/informasi/lhkpnlhkasn",
+          "label": "Sumber resmi pejabat"
         }
       ],
-      "person": null,
-      "confirmed": null,
-      "leaderSource": null
+      "person": "Agung Suganda",
+      "confirmed": "2026-10-21",
+      "leaderSource": "https://ditjenpkh.pertanian.go.id/index.php/informasi/lhkpnlhkasn",
+      "acting": false
     },
     {
       "id": "kementan-brmp",
@@ -743,13 +745,40 @@
       "limitEn": "Internal Agriculture Ministry unit; not a command relationship over Bapanas, BULOG or regional government.",
       "sources": [
         {
-          "url": "https://jdih.pertanian.go.id/jdih-ops/download/kepmentan-no-98-tahun-2026.pdf",
-          "label": "Dokumen/sumber resmi"
+          "url": "https://bppsdmp.pertanian.go.id/post/berita/hut-ri-ke-81-kementan-beri-penghargaan-bagi-asn-dan-unit-kerja-berprestasi",
+          "label": "Sumber resmi pejabat"
         }
       ],
-      "person": null,
-      "confirmed": null,
-      "leaderSource": null
+      "person": "Idha Widi Arsanti",
+      "confirmed": "2026-10-21",
+      "leaderSource": "https://bppsdmp.pertanian.go.id/post/berita/hut-ri-ke-81-kementan-beri-penghargaan-bagi-asn-dan-unit-kerja-berprestasi",
+      "acting": false
+    },
+    {
+      "id": "wamentan-alim-2026",
+      "parent": "kementan",
+      "group": "unit",
+      "name": "Wakil Menteri Pertanian II",
+      "en": "Deputy Minister of Agriculture II",
+      "kind": "Unit internal kementerian",
+      "kindEn": "Internal ministerial office",
+      "role": "Membantu Menteri Pertanian menjalankan kebijakan nasional sektor pertanian.",
+      "roleEn": "Membantu Menteri Pertanian menjalankan kebijakan nasional sektor pertanian.",
+      "sources": [
+        {
+          "url": "https://pertanian.go.id/index.php/news/view/8232",
+          "label": "Pengukuhan resmi Alim Setiawan Slamet · 21 Okt 2026"
+        }
+      ],
+      "limit": "Mandat internal kementerian, bukan subordinasi atas otoritas nasional lintas kementerian.",
+      "limitEn": "Internal office, not cross-ministerial statutory command.",
+      "related": [
+        "kementan"
+      ],
+      "person": "Alim Setiawan Slamet",
+      "confirmed": "2026-10-21",
+      "leaderSource": "https://pertanian.go.id/index.php/news/view/8232"
     }
-  ]
+  ],
+  "audit_note": "Two Wamentan in office on 21 October 2026: Muhammad Saleh Mustafa and Alim Setiawan Slamet; acting Directorate General of Estate Crops explicitly marked. Official roster evidence per office."
 }

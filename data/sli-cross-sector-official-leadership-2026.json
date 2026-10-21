@@ -1,5 +1,5 @@
 {
-  "schema": "sli-cross-sector-official-leadership-v2",
+  "schema": "sli-cross-sector-official-leadership-v3",
   "as_of": "2026-10-21",
   "scope": "Verified named leadership and structural offices in other SLI sectors. Not every candidate officeholder is established as current; unknown remains null. Functional adjacency does not imply ministerial command.",
   "president": {
@@ -300,7 +300,14 @@
           "verification": "official-profile",
           "checked_on": "2026-10-21"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.esdm.go.id&sz=64",
+        "website": "https://www.esdm.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "komdigi": {
       "name": "Kementerian Komunikasi dan Digital",
@@ -534,7 +541,14 @@
           "verification": "official-source-reviewed",
           "checked_on": "2026-10-21"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.komdigi.go.id&sz=64",
+        "website": "https://www.komdigi.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "kementan": {
       "name": "Kementerian Pertanian",
@@ -558,7 +572,7 @@
         {
           "id": "w",
           "parent": "m",
-          "office_id": "Wakil Menteri Pertanian",
+          "office_id": "Wakil Menteri Pertanian I",
           "office_en": "Deputy Minister of Agriculture",
           "person": "Muhammad Saleh Mustafa",
           "source": "https://itjen.pertanian.go.id/",
@@ -638,39 +652,42 @@
           "parent": "m",
           "office_id": "Ditjen Perkebunan",
           "office_en": "DG Plantations",
-          "person": null,
-          "source": "https://pertanian.go.id/page/view/7",
+          "person": "Heru Tri Widarto",
+          "source": "https://ditjenbun.pertanian.go.id/wamentan-alim-setiawan-slamet-dorong-sinergi-untuk-percepatan-program-strategis-perkebunan/",
           "tier": "directorate",
           "mandate_id": "Ditjen Perkebunan bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "DG Plantations exercises its agency-specific delegated mandate.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "acting_appointment",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-10-20"
         },
         {
           "id": "livestock",
           "parent": "m",
           "office_id": "Ditjen Peternakan & Kesehatan Hewan",
           "office_en": "DG Livestock & Animal Health",
-          "person": null,
-          "source": "https://pertanian.go.id/page/view/7",
+          "person": "Agung Suganda",
+          "source": "https://ditjenpkh.pertanian.go.id/index.php/informasi/lhkpnlhkasn",
           "tier": "directorate",
           "mandate_id": "Ditjen Peternakan & Kesehatan Hewan bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "DG Livestock & Animal Health exercises its agency-specific delegated mandate.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-10"
         },
         {
           "id": "extension",
           "parent": "m",
           "office_id": "Badan Penyuluhan & Pengembangan SDM Pertanian",
           "office_en": "Agricultural Extension & HRD Agency",
-          "person": null,
-          "source": "https://pertanian.go.id/page/view/7",
+          "person": "Idha Widi Arsanti",
+          "source": "https://bppsdmp.pertanian.go.id/post/berita/hut-ri-ke-81-kementan-beri-penghargaan-bagi-asn-dan-unit-kerja-berprestasi",
           "tier": "agency",
           "mandate_id": "Badan Penyuluhan & Pengembangan SDM Pertanian bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "Agricultural Extension & HRD Agency exercises its agency-specific delegated mandate.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-08-17"
         },
         {
           "id": "horti-sec",
@@ -749,8 +766,29 @@
           "mandate_en": "Internal DG Horticulture office under its statutory organizational mandate.",
           "verification": "official-source-reviewed",
           "checked_on": "2026-10-21"
+        },
+        {
+          "id": "w2",
+          "parent": "m",
+          "office_id": "Wakil Menteri Pertanian II",
+          "office_en": "Deputy Minister of Agriculture II",
+          "person": "Alim Setiawan Slamet",
+          "source": "https://pertanian.go.id/index.php/news/view/8232",
+          "tier": "deputy",
+          "mandate_id": "Wakil Menteri Pertanian bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
+          "mandate_en": "Deputy Minister of Agriculture exercises its agency-specific delegated mandate.",
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-10-15"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.pertanian.go.id&sz=64",
+        "website": "https://www.pertanian.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "kemenperin": {
       "name": "Kementerian Perindustrian",
@@ -802,13 +840,14 @@
           "parent": "m",
           "office_id": "Inspektur Jenderal",
           "office_en": "Inspector General",
-          "person": null,
-          "source": "https://kemenperin.go.id/struktur-organisasi",
+          "person": "Mohammad Rum",
+          "source": "https://itjen.kemenperin.go.id/inspektur-jenderal",
           "tier": "oversight",
           "mandate_id": "Inspektur Jenderal bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "Inspector General exercises its agency-specific delegated mandate.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-10"
         },
         {
           "id": "agro",
@@ -867,15 +906,23 @@
           "parent": "m",
           "office_id": "Ditjen Ketahanan, Perwilayahan & Akses Industri Internasional",
           "office_en": "DG Industrial Resilience, Regionalization & International Access",
-          "person": null,
-          "source": "https://kemenperin.go.id/struktur-organisasi",
+          "person": "Tri Supondy",
+          "source": "https://kpaii.kemenperin.go.id/id/profile",
           "tier": "directorate",
           "mandate_id": "Ditjen Ketahanan, Perwilayahan & Akses Industri Internasional bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "DG Industrial Resilience, Regionalization & International Access exercises its agency-specific delegated mandate.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-07-14"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=kemenperin.go.id&sz=64",
+        "website": "https://kemenperin.go.id/",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "bkpm": {
       "name": "Kementerian Investasi dan Hilirisasi / BKPM",
@@ -1026,7 +1073,14 @@
           "verification": "official-source-reviewed",
           "checked_on": "2026-10-21"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.bkpm.go.id&sz=64",
+        "website": "https://www.bkpm.go.id/",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "bappenas": {
       "name": "Kementerian PPN / Bappenas",
@@ -1360,7 +1414,14 @@
           "verification": "unverified_officeholder",
           "checked_on": "2026-10-21"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.bappenas.go.id&sz=64",
+        "website": "https://www.bappenas.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "kemendag": {
       "name": "Kementerian Perdagangan",
@@ -1414,12 +1475,13 @@
           "tier": "oversight",
           "office_id": "Inspektur Jenderal",
           "office_en": "Inspector General",
-          "person": null,
-          "source": "https://ppid.kemendag.go.id/informasi-publik/lhkpn-tahun-2024",
+          "person": "Helmy Santika",
+          "source": "https://www.kemendag.go.id/index.php/berita/siaran-pers/mendag-busan-lantik-inspektur-jenderal-kemendag-dorong-peran-pengawasan-dalam-mendukung-program-prioritas",
           "mandate_id": "Mandat jabatan Inspektur Jenderal dalam kelembagaan masing-masing; tidak menunjukkan subordinasi lembaga lain.",
           "mandate_en": "Office-specific function within its own agency. Cross-agency links do not confer statutory authority.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-07-08"
         },
         {
           "id": "pdn",
@@ -1525,7 +1587,14 @@
           "verification": "official-source-reviewed",
           "checked_on": "2026-10-21"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.kemendag.go.id&sz=64",
+        "website": "https://www.kemendag.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "kemenkeu": {
       "name": "Kementerian Keuangan",
@@ -1566,12 +1635,13 @@
           "tier": "support",
           "office_id": "Sekretariat Jenderal Kemenkeu",
           "office_en": "Ministry Secretariat General",
-          "person": null,
+          "person": "Robert Leonard Marbun",
           "source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
           "mandate_id": "Mandat jabatan Sekretariat Jenderal Kemenkeu dalam kelembagaan masing-masing; tidak menunjukkan subordinasi lembaga lain.",
           "mandate_en": "Office-specific function within its own agency. Cross-agency links do not confer statutory authority.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-03-27"
         },
         {
           "id": "it",
@@ -1579,12 +1649,13 @@
           "tier": "oversight",
           "office_id": "Inspektorat Jenderal Kemenkeu",
           "office_en": "Inspectorate General",
-          "person": null,
-          "source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
+          "person": "Awan Nurmawan Nuh",
+          "source": "https://setjen.kemenkeu.go.id/in/post/kemenkeu-menerima-3-laporan-hasil-pemeriksaan%2C-komitmen-untuk-pelayanan-publik-yang-lebih-efektif-dan-efisien",
           "mandate_id": "Mandat jabatan Inspektorat Jenderal Kemenkeu dalam kelembagaan masing-masing; tidak menunjukkan subordinasi lembaga lain.",
           "mandate_en": "Office-specific function within its own agency. Cross-agency links do not confer statutory authority.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-08-03"
         },
         {
           "id": "anggaran",
@@ -1592,12 +1663,13 @@
           "tier": "directorate",
           "office_id": "Ditjen Anggaran",
           "office_en": "DG Budget",
-          "person": null,
-          "source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
+          "person": "Sudarto",
+          "source": "https://anggaran.kemenkeu.go.id/in/post/profil-singkat-direktur-jenderal-anggaran",
           "mandate_id": "Mandat jabatan Ditjen Anggaran dalam kelembagaan masing-masing; tidak menunjukkan subordinasi lembaga lain.",
           "mandate_en": "Office-specific function within its own agency. Cross-agency links do not confer statutory authority.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-07-01"
         },
         {
           "id": "pajak",
@@ -1605,12 +1677,13 @@
           "tier": "directorate",
           "office_id": "Ditjen Pajak",
           "office_en": "DG Taxes",
-          "person": null,
-          "source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
+          "person": "Bimo Wijayanto",
+          "source": "https://e-ppid.kemenkeu.go.id/in/page/lhkpnpimpinan",
           "mandate_id": "Mandat jabatan Ditjen Pajak dalam kelembagaan masing-masing; tidak menunjukkan subordinasi lembaga lain.",
           "mandate_en": "Office-specific function within its own agency. Cross-agency links do not confer statutory authority.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-05-29"
         },
         {
           "id": "beacukai",
@@ -1618,12 +1691,13 @@
           "tier": "directorate",
           "office_id": "Ditjen Bea dan Cukai",
           "office_en": "DG Customs and Excise",
-          "person": null,
-          "source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
+          "person": "Djaka Budhi Utama",
+          "source": "https://www.kemenkeu.go.id/profile/profile-pejabat/direktur-jenderal-bea-dan-cukai",
           "mandate_id": "Mandat jabatan Ditjen Bea dan Cukai dalam kelembagaan masing-masing; tidak menunjukkan subordinasi lembaga lain.",
           "mandate_en": "Office-specific function within its own agency. Cross-agency links do not confer statutory authority.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-05-29"
         },
         {
           "id": "perbend",
@@ -1631,25 +1705,27 @@
           "tier": "directorate",
           "office_id": "Ditjen Perbendaharaan",
           "office_en": "DG Treasury",
-          "person": null,
-          "source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
+          "person": "Astera Primanto Bhakti",
+          "source": "https://djpb.kemenkeu.go.id/portal/id/profil/profil-organisasi/profil-pejabat.html",
           "mandate_id": "Mandat jabatan Ditjen Perbendaharaan dalam kelembagaan masing-masing; tidak menunjukkan subordinasi lembaga lain.",
           "mandate_en": "Office-specific function within its own agency. Cross-agency links do not confer statutory authority.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "official-source-reviewed",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-09-11"
         },
         {
           "id": "fiskal",
           "parent": "m",
           "tier": "directorate",
-          "office_id": "Badan Kebijakan Fiskal",
-          "office_en": "Fiscal Policy Agency",
-          "person": null,
+          "office_id": "Plt. Dirjen Strategi Ekonomi dan Fiskal",
+          "office_en": "Acting DG Economic and Fiscal Strategy",
+          "person": "Ferry Ardiyanto",
           "source": "https://www.kemenkeu.go.id/profile/profile-pejabat",
           "mandate_id": "Mandat jabatan Badan Kebijakan Fiskal dalam kelembagaan masing-masing; tidak menunjukkan subordinasi lembaga lain.",
           "mandate_en": "Office-specific function within its own agency. Cross-agency links do not confer statutory authority.",
-          "verification": "unverified_officeholder",
-          "checked_on": "2026-10-21"
+          "verification": "acting_appointment",
+          "checked_on": "2026-10-21",
+          "evidence_published": "2026-10"
         },
         {
           "id": "w2",
@@ -1677,7 +1753,14 @@
           "mandate_en": "Functions associated with Deputy Finance Minister within its own institution.",
           "verification": "official-source-reviewed"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.kemenkeu.go.id&sz=64",
+        "website": "https://www.kemenkeu.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "bps": {
       "name": "Badan Pusat Statistik (BPS)",
@@ -1764,7 +1847,14 @@
           "verification": "official-source-reviewed",
           "checked_on": "2026-10-21"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.bps.go.id&sz=64",
+        "website": "https://www.bps.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "bi": {
       "name": "Bank Indonesia",
@@ -1851,7 +1941,14 @@
           "verification": "official-source-reviewed",
           "checked_on": "2026-10-21"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.bi.go.id&sz=64",
+        "website": "https://www.bi.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "bmkg": {
       "name": "Badan Meteorologi, Klimatologi dan Geofisika",
@@ -1925,7 +2022,14 @@
           "verification": "unverified_officeholder",
           "checked_on": "2026-10-21"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.bmkg.go.id&sz=64",
+        "website": "https://www.bmkg.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "bnpb": {
       "name": "Badan Nasional Penanggulangan Bencana",
@@ -1973,7 +2077,14 @@
           "verification": "official-source-reviewed",
           "checked_on": "2026-10-21"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=bnpb.go.id&sz=64",
+        "website": "https://bnpb.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "kemlu": {
       "name": "Kementerian Luar Negeri",
@@ -2001,12 +2112,13 @@
           "tier": "deputy",
           "office_id": "Wakil Menteri Luar Negeri",
           "office_en": "Deputy Minister of Foreign Affairs",
-          "person": null,
-          "source": "https://www.kemlu.go.id/id/berita/informasi-penting/Pages/berita/presiden-prabowo-lantik-arrmanatha-nasir-sebagai-menteri-luar-negeri?type=publication",
+          "person": "Muhammad Anis Matta",
+          "source": "https://kemlu.go.id/files/repositori/65411/177509648369cdd2a391aef_PK_WAMENLU_I_2026.pdf",
           "checked_on": "2026-10-21",
           "mandate_id": "Tugas Wakil Menteri Luar Negeri menurut urusan instansi; bukan kewenangan lembaga lain.",
           "mandate_en": "Functions associated with Deputy Minister of Foreign Affairs within its own institution.",
-          "verification": "unverified_officeholder"
+          "verification": "official-source-reviewed",
+          "evidence_published": "2026-01"
         },
         {
           "id": "sek",
@@ -2014,12 +2126,13 @@
           "tier": "support",
           "office_id": "Sekretaris Jenderal Kemlu",
           "office_en": "Secretary General of Foreign Affairs",
-          "person": null,
-          "source": "https://kemlu.go.id",
+          "person": "Denny Abdi",
+          "source": "https://kemlu.go.id/berita/sekjen-kemlu-tegaskan-diplomasi-budaya-indonesia-pada-peringatan-100-tahun-jam-gadang-dan-imlf-2026?type=publication",
           "checked_on": "2026-10-21",
           "mandate_id": "Tugas Sekretaris Jenderal Kemlu menurut urusan instansi; bukan kewenangan lembaga lain.",
           "mandate_en": "Functions associated with Secretary General of Foreign Affairs within its own institution.",
-          "verification": "unverified_officeholder"
+          "verification": "official-source-reviewed",
+          "evidence_published": "2026-06-10"
         },
         {
           "id": "it",
@@ -2040,12 +2153,13 @@
           "tier": "directorate",
           "office_id": "Direktorat Jenderal Asia Pasifik dan Afrika",
           "office_en": "DG Asia Pacific and Africa",
-          "person": null,
-          "source": "https://kemlu.go.id",
+          "person": "Santo Darmosumarto",
+          "source": "https://kemlu.go.id/berita/diplomasi-yang-bekerja-kemlu-ri-paparkan-peran-strategis-iora-kepada-4000-mahasiswa-baru-universitas-andalas?type=publication",
           "checked_on": "2026-10-21",
           "mandate_id": "Tugas Direktorat Jenderal Asia Pasifik dan Afrika menurut urusan instansi; bukan kewenangan lembaga lain.",
           "mandate_en": "Functions associated with DG Asia Pacific and Africa within its own institution.",
-          "verification": "unverified_officeholder"
+          "verification": "official-source-reviewed",
+          "evidence_published": "2026-08-11"
         },
         {
           "id": "dg-amerika",
@@ -2053,12 +2167,13 @@
           "tier": "directorate",
           "office_id": "Direktorat Jenderal Amerika dan Eropa",
           "office_en": "DG Americas and Europe",
-          "person": null,
-          "source": "https://kemlu.go.id",
+          "person": "Grata Endah Werdaningtyas",
+          "source": "https://kemlu.go.id/files/repositori/65409/177580868169d8b0a9db48e_SK_Peta_Strategi_dan_Indikator_Kinerja_Ditjen_Amerop_2026.pdf",
           "checked_on": "2026-10-21",
           "mandate_id": "Tugas Direktorat Jenderal Amerika dan Eropa menurut urusan instansi; bukan kewenangan lembaga lain.",
           "mandate_en": "Functions associated with DG Americas and Europe within its own institution.",
-          "verification": "unverified_officeholder"
+          "verification": "official-source-reviewed",
+          "evidence_published": "2026-03-02"
         },
         {
           "id": "dg-multilateral",
@@ -2066,14 +2181,22 @@
           "tier": "directorate",
           "office_id": "Direktorat Jenderal Kerja Sama Multilateral",
           "office_en": "DG Multilateral Cooperation",
-          "person": null,
-          "source": "https://kemlu.go.id",
+          "person": "Tri Tharyat",
+          "source": "https://d8indonesia.kemlu.go.id/media-center/news/Keketuaan%20D-8%3A%20Indonesia%20Dorong%20Integrasi%20Ekonomi%20dan%20Solidaritas%20Negara%20Berkembang",
           "checked_on": "2026-10-21",
           "mandate_id": "Tugas Direktorat Jenderal Kerja Sama Multilateral menurut urusan instansi; bukan kewenangan lembaga lain.",
           "mandate_en": "Functions associated with DG Multilateral Cooperation within its own institution.",
-          "verification": "unverified_officeholder"
+          "verification": "official-source-reviewed",
+          "evidence_published": "2026-03-17"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=kemlu.go.id&sz=64",
+        "website": "https://kemlu.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "kemhan": {
       "name": "Kementerian Pertahanan",
@@ -2166,12 +2289,13 @@
           "tier": "directorate",
           "office_id": "Ditjen Potensi Pertahanan",
           "office_en": "DG Defense Potential",
-          "person": null,
-          "source": "https://www.kemhan.go.id/tugas-dan-fungsi",
+          "person": "Sri Yanto",
+          "source": "https://www.kemhan.go.id/pothan/2026/09/23/dirjen-pothan-tutup-rakor-penentu-kebijakan-pengguna-dan-produsen-alpalhankam-ta-2026.html",
           "checked_on": "2026-10-21",
           "mandate_id": "Tugas Ditjen Potensi Pertahanan menurut urusan instansi; bukan kewenangan lembaga lain.",
           "mandate_en": "Functions associated with DG Defense Potential within its own institution.",
-          "verification": "unverified_officeholder"
+          "verification": "official-source-reviewed",
+          "evidence_published": "2026-09-23"
         },
         {
           "id": "dg-kuat",
@@ -2186,7 +2310,14 @@
           "mandate_en": "Functions associated with DG Defense Force within its own institution.",
           "verification": "unverified_officeholder"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.kemhan.go.id&sz=64",
+        "website": "https://www.kemhan.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "kemendagri": {
       "name": "Kementerian Dalam Negeri",
@@ -2227,12 +2358,13 @@
           "tier": "support",
           "office_id": "Sekretaris Jenderal Kemendagri",
           "office_en": "Home Affairs Secretary General",
-          "person": null,
-          "source": "https://www.kemendagri.go.id/",
+          "person": "Tomsi Tohir",
+          "source": "https://binapemdes.kemendagri.go.id/publikasi%20lainnya/LAKIN%202025%20Ditjen%20Bina%20Pemdes.pdf",
           "checked_on": "2026-10-21",
           "mandate_id": "Tugas Sekretaris Jenderal Kemendagri menurut urusan instansi; bukan kewenangan lembaga lain.",
           "mandate_en": "Functions associated with Home Affairs Secretary General within its own institution.",
-          "verification": "unverified_officeholder"
+          "verification": "official-source-reviewed",
+          "evidence_published": "2026-01-01"
         },
         {
           "id": "it",
@@ -2240,12 +2372,13 @@
           "tier": "oversight",
           "office_id": "Inspektur Jenderal Kemendagri",
           "office_en": "Inspector General of Home Affairs",
-          "person": null,
-          "source": "https://www.kemendagri.go.id/",
+          "person": "Sang Made Mahendra Jaya",
+          "source": "https://otda.kemendagri.go.id/berita/Ow9x3nFFbZVr1CzEAwP61RkPg7ffVE/kemendagri-batalkan-pemecatan-2-guru-asn-luwu-utara",
           "checked_on": "2026-10-21",
           "mandate_id": "Tugas Inspektur Jenderal Kemendagri menurut urusan instansi; bukan kewenangan lembaga lain.",
           "mandate_en": "Functions associated with Inspector General of Home Affairs within its own institution.",
-          "verification": "unverified_officeholder"
+          "verification": "official-source-reviewed",
+          "evidence_published": "2025-11"
         },
         {
           "id": "otda",
@@ -2253,12 +2386,13 @@
           "tier": "directorate",
           "office_id": "Ditjen Otonomi Daerah",
           "office_en": "DG Regional Autonomy",
-          "person": null,
-          "source": "https://www.kemendagri.go.id/",
+          "person": "Akmal Malik",
+          "source": "https://bpsdm.kemendagri.go.id/storage/uploads/laporan/043de8d401c347b9b2ba0dfafeb63c43.pdf",
           "checked_on": "2026-10-21",
           "mandate_id": "Tugas Ditjen Otonomi Daerah menurut urusan instansi; bukan kewenangan lembaga lain.",
           "mandate_en": "Functions associated with DG Regional Autonomy within its own institution.",
-          "verification": "unverified_officeholder"
+          "verification": "official-source-reviewed",
+          "evidence_published": "2026-04"
         },
         {
           "id": "bangda",
@@ -2299,7 +2433,14 @@
           "mandate_en": "Functions associated with DG Civil Registration within its own institution.",
           "verification": "unverified_officeholder"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.kemendagri.go.id&sz=64",
+        "website": "https://www.kemendagri.go.id/",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     },
     "klh": {
       "name": "Kementerian Lingkungan Hidup / BPLH",
@@ -2325,14 +2466,15 @@
           "id": "w",
           "parent": "m",
           "tier": "deputy",
-          "office_id": "Wakil Menteri Lingkungan Hidup",
-          "office_en": "Deputy Minister of Environment",
-          "person": null,
-          "source": "https://www.menlh.go.id",
+          "office_id": "Wakil Menteri LH / Wakil Kepala BPLH",
+          "office_en": "Deputy Minister of Environment / Deputy Head of BPLH",
+          "person": "Diaz Faisal Malik Hendropriyono",
+          "source": "https://www.setneg.go.id/baca/index/keterangan_pers_presiden_prabowo_subianto_pada_pengumuman_menteri_negara_kabinet_merah_putih_periode_2024_2029",
           "checked_on": "2026-10-21",
           "mandate_id": "Tugas Wakil Menteri Lingkungan Hidup menurut urusan instansi; bukan kewenangan lembaga lain.",
           "mandate_en": "Functions associated with Deputy Minister of Environment within its own institution.",
-          "verification": "unverified_officeholder"
+          "verification": "official-source-reviewed",
+          "evidence_published": "2024-10-21"
         },
         {
           "id": "sek",
@@ -2386,7 +2528,14 @@
           "mandate_en": "Functions associated with Waste and Hazardous Materials Management Deputy within its own institution.",
           "verification": "unverified_officeholder"
         }
-      ]
+      ],
+      "icon": {
+        "kind": "official-site-favicon",
+        "src": "https://www.google.com/s2/favicons?domain=www.menlh.go.id&sz=64",
+        "website": "https://www.menlh.go.id",
+        "source_note": "Website favicon is a visual aid, not a certified statutory organizational logo.",
+        "verified_logo": false
+      }
     }
   },
   "quality_policy": {
@@ -2402,7 +2551,16 @@
     "disclosure": "Scope expansion is a cited partial institutional roster, NOT a complete census of Indonesia's public sector.",
     "coverage_note": "The shared roster covers named sectors and selected ministries, agencies and institutions; it is not a complete civil-service census. Unknown roles are retained as null.",
     "review_required": "Official rosters for numerous internal directorates and independent bodies remain incomplete; do not present this registry as an exhaustive state organization chart.",
-    "scope_label": "Expanding verified institutional sample · not exhaustive"
+    "scope_label": "Expanding verified institutional sample · not exhaustive",
+    "branding": "Display official agency web-site favicons as distinctly labelled site icons, not as authenticated statutory emblems; verified logo needs approved source asset."
   },
-  "registry_version": 2
+  "registry_version": 3,
+  "audit_update": {
+    "checked_on": "2026-10-21",
+    "source_specific": true,
+    "acting_distinguished": true,
+    "agriculture_deputies": 2,
+    "extra_validation": "Kemlu named leaders backed by 2026 official government documents; Kemendagri senior officials backed by latest available ministry 2025-2026 reference.",
+    "reason": "Old main JSON with v2 must not satisfy current browser schema validation; require local v3 fallback in PR and after release."
+  }
 }

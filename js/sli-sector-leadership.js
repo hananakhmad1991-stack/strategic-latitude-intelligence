@@ -4,15 +4,28 @@
  */
 (function(){
 "use strict";
-const path="./data/sli-cross-sector-official-leadership-2026.json?v=20261021-coverall2";
+const path="./data/sli-cross-sector-official-leadership-2026.json?v=20261021-official-officeholders3";
 const site=()=>document.documentElement.lang?.toLowerCase().startsWith("en")??true;
 const T=(id,en)=>site()?en:id;
 const E=(tag,cls,txt)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=String(txt);return e};
 const urlOK=url=>/^https:\/\/[a-z\d.-]+(?:\/|$)/i.test(String(url||""));
 const link=(url,text)=>{const a=E("a","sli-ministry-source",text);if(urlOK(url)){a.href=url;a.rel="noopener noreferrer";a.target="_blank"}return a};
+const agencyIcon=ag=>{
+ const icon=E("span","sli-ministry-agency-icon");
+ icon.title=T("Ikon situs instansi; belum tentu logo resmi.","Agency website icon; not a verified institutional emblem.");
+ const asset=ag?.logo?.verified===true?ag.logo.url:ag?.icon?.kind==="official-site-favicon"?ag.icon.src:null;
+ if(asset&&urlOK(asset)){
+  const img=E("img","sli-ministry-site-icon");img.src=asset;img.alt="";
+  img.width=34;img.height=34;img.loading="lazy";img.referrerPolicy="no-referrer";
+  img.addEventListener("error",()=>img.replaceWith(E("span","sli-ministry-icon-fallback",(ag?.name||"?").slice(0,2).toUpperCase())),{once:true});
+  icon.append(img);
+ }else icon.append(E("span","sli-ministry-icon-fallback",(ag?.name||"?").slice(0,2).toUpperCase()));
+ return icon;
+};
+
 function validateRegistry(d){
  const issues=[];
- if(d?.schema!=="sli-cross-sector-official-leadership-v2"||!d.as_of)issues.push("schema");
+ if(d?.schema!=="sli-cross-sector-official-leadership-v3"||!d.as_of)issues.push("schema");
  const agencies=d?.agencies||{},sectors=d?.sectors||{};
  for(const key of ["food","energy","minerals","ai","investment","macro","policy","geo","environment","entities","provincial"])if(!sectors[key]?.agencies?.length)issues.push("sector:"+key);
  for(const [id,ag]of Object.entries(agencies)){
@@ -85,8 +98,9 @@ function build(host,sector,d){
  function inspect(){
   inspector.replaceChildren();const [a,id]=st.selected.split(":");const ag=agencyFor(a),n=record(a,id);if(!ag||!n)return;
   inspector.append(E("small","sli-ministry-kicker",T("PROFIL PEJABAT · SUMBER RESMI","OFFICEHOLDER · OFFICIAL SOURCE")));
-  const title=E("h4","",n.office_id);inspector.append(title);
+  const brand=E("div","sli-ministry-inspector-brand");brand.append(agencyIcon(ag));const title=E("h4","",T(n.office_id,n.office_en));brand.append(title);inspector.append(brand);
   inspector.append(E("p","sli-ministry-entity",ag.name));
+  inspector.append(E("p","sli-ministry-icon-note",T("Ikon situs institusi (favicon), bukan logo yang telah tersertifikasi.","Agency website favicon, not a certified institutional logo.")));
   inspector.append(E("strong","sli-ministry-person",n.person||T("Nama belum terverifikasi","Officeholder not verified")));
   inspector.append(E("p","sli-ministry-check",T("Status sumber: ","Source status: ")+n.verification+" · "+n.checked_on));
   inspector.append(E("p","",T(n.mandate_id,n.mandate_en)||n.mandate_id));
@@ -99,7 +113,7 @@ function build(host,sector,d){
   const b=E("button","sli-ministry-node"+(st.selected===agency+":"+n.id?" selected":""));
   b.type="button";b.setAttribute("aria-pressed",String(st.selected===agency+":"+n.id));
   const top=E("span","sli-ministry-node-line");
-  top.append(E("strong","",T(n.office_id,n.office_en)));
+  const line=E("span","sli-ministry-officer-head");line.append(agencyIcon(agencyFor(agency)));line.append(E("strong","",T(n.office_id,n.office_en)));top.append(line);
   top.append(E("small","sli-ministry-badge",n.tier==="minister"?"MENTERI":n.tier==="deputy"?"WAMEN":n.tier==="head"?"KEPALA / GUBERNUR":n.tier==="deputy-head"?"WAKIL KEPALA":n.tier==="oversight"?"PENGAWAS":n.tier==="support"?"SEKRETARIAT":"ESELON"));
   b.append(top);b.append(E("span","sli-ministry-name",n.person||T("Belum diverifikasi","Unverified")));
   b.addEventListener("click",()=>{st.selected=agency+":"+n.id;draw()});
@@ -117,7 +131,7 @@ function build(host,sector,d){
    const ag=d.agencies[id],relevant=ag.nodes.filter(n=>matches(n)||ag.nodes.some(c=>c.parent===n.id&&matches(c)));
    if(st.q&&!relevant.length)continue;
    const group=E("section","sli-ministry-agency");
-   group.append(E("div","sli-ministry-agency-name",ag.name+(ag.institutional_class==="independent-central-bank"?T(" · Independen"," · Independent"):"")));
+   const agencyTitle=E("div","sli-ministry-agency-name");agencyTitle.append(agencyIcon(ag));agencyTitle.append(E("span","",ag.name+(ag.institutional_class==="independent-central-bank"?T(" · Independen"," · Independent"):"")));group.append(agencyTitle);
    const leader=ag.nodes.find(n=>["minister","head"].includes(n.tier));if(leader)group.append(card(id,leader));
    const children=E("div","sli-ministry-deputies");
    for(const n of ag.nodes.filter(n=>["deputy","deputy-head"].includes(n.tier)&&matches(n)))children.append(card(id,n));

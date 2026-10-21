@@ -101,6 +101,7 @@ sectorRosterTest('Supplemental ESDM offices and Kementan structure have no redun
   assert.equal(nodes.filter(x=>x.id==='esdm-wamen').length,1);
  }
  const food=JSON.parse(fs.readFileSync('data/food-governance-hierarchy.json','utf8')).nodes;
- assert.equal(food.filter(x=>x.name==='Wakil Menteri Pertanian').length,1);
+ assert.equal(food.filter(x=>/^Wakil Menteri Pertanian(?: I| II)?$/.test(x.name)).length,2,'Two distinct Wamentan were in office after 15 October 2026');
+  assert.equal(new Set(food.filter(x=>/^Wakil Menteri Pertanian/.test(x.name)).map(x=>x.person)).size,2);
  assert.ok(food.some(x=>x.name==='Ditjen Peternakan dan Kesehatan Hewan'));
 });
