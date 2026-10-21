@@ -34,7 +34,7 @@ test("all 2,163 parsed records reconcile exactly against saved original PDF tran
   const lines=source.tables.find(x=>x.number===t.table).text_rows.split("\n").map(s=>s.trim().replace(/\s+/g," "));
   for(const r of t.rows){
    const tokens=[...t.periods.map(k=>r.values[k]),...t.extra_periods.map(k=>r.extra[k])];
-   const matches=lines.filter(x=>x.startsWith(r.label.replace(/\s+/g," ").slice(0,45)+" "));
+   const matches=lines.filter(x=>x.startsWith(r.label.replace(/\s+/g," ")+" "));
    assert.ok(matches.some(line=>{
     const nums=line.split(" ").slice(-tokens.length);
     return nums.length===tokens.length&&nums.every((raw,i)=>{
