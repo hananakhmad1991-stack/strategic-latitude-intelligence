@@ -132,5 +132,24 @@
       "verification": "unverified media lead"
     }
   ],
-  "errors": []
+  "errors": [
+    {
+      "topic": "Floods & extreme weather",
+      "error": "HTTPError"
+    },
+    {
+      "topic": "Wildfire & haze",
+      "error": "HTTPError"
+    },
+    {
+      "topic": "Environmental policy",
+      "error": "HTTPError"
+    },
+    {
+      "topic": "Climate investment",
+      "error": "HTTPError"
+    }
+  ],
+  "last_attempt": "2026-10-21T07:16:03.201783+00:00",
+  "warning": "No new feed results; retained last successful snapshot without relabeling its observation timestamp."
 }
