@@ -45,6 +45,8 @@ on:
       - 'js/sli-ruptl-raw-grid-explorer.js'
       - 'css/sli-ruptl-raw-grid-explorer.css'
       - 'data/sli-ruptl-970-raw-grid-candidates-review.json'
+      - 'data/pln-ruptl-2025-2034-verified-extract.json'
+      - 'tests/qa-sli-ruptl-full-source-status.mjs'
       - 'scripts/publish-ruptl-970-review-ledger.py'
       - 'tests/qa-sli-ruptl-raw-grid-catalog.mjs'
       - 'css/sli-ruptl-visual-explorer.css'
@@ -133,6 +135,8 @@ on:
       - 'js/sli-ruptl-raw-grid-explorer.js'
       - 'css/sli-ruptl-raw-grid-explorer.css'
       - 'data/sli-ruptl-970-raw-grid-candidates-review.json'
+      - 'data/pln-ruptl-2025-2034-verified-extract.json'
+      - 'tests/qa-sli-ruptl-full-source-status.mjs'
       - 'scripts/publish-ruptl-970-review-ledger.py'
       - 'tests/qa-sli-ruptl-raw-grid-catalog.mjs'
       - 'css/sli-ruptl-visual-explorer.css'
@@ -200,7 +204,7 @@ jobs:
           node --check js/sli-ai-figure-audit-status.js
           node --check js/sli-provincial-nexus-ui.js
           node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs tests/qa-sli-provincial-bnpb-2025.mjs tests/qa-sli-ai-wdi-source-phase2.mjs tests/qa-sli-ai-digitized-figures.mjs tests/qa-sli-worldbank-digitized-panels.mjs tests/qa-sli-bnpb-district-2024.mjs tests/qa-sli-ruptl-official-period-plan.mjs tests/qa-sli-ruptl-full-official-annex-index.mjs
-          node --test tests/qa-sli-ruptl-primary-pdf-digitization.mjs tests/qa-sli-ruptl-provincial-realization-evidence.mjs tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs tests/qa-sli-ruplt-official-slo-milestones.mjs tests/qa-sli-ruptl-expanded-source-rows.mjs tests/qa-sli-ruptl-visual-explorer.mjs tests/qa-sli-ruptl-raw-grid-catalog.mjs
+          node --test tests/qa-sli-ruptl-primary-pdf-digitization.mjs tests/qa-sli-ruptl-provincial-realization-evidence.mjs tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs tests/qa-sli-ruplt-official-slo-milestones.mjs tests/qa-sli-ruptl-expanded-source-rows.mjs tests/qa-sli-ruptl-visual-explorer.mjs tests/qa-sli-ruptl-raw-grid-catalog.mjs tests/qa-sli-ruptl-full-source-status.mjs
       - name: Validate every page references a real public source dataset
         run: |
           python - <<'PY'
