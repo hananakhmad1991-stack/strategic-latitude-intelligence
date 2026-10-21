@@ -1,0 +1,111 @@
+name: SLI KKP Marine & Fisheries Source QA
+on:
+  pull_request:
+    paths:
+      - 'marine-fisheries-intelligence.html'
+      - 'css/sli-marine-fisheries.css'
+      - 'js/sli-marine-fisheries.mjs'
+      - 'js/sli-navigation.js'
+      - 'food-agriculture-intelligence.html'
+      - 'sli-sector-data-library.html'
+      - 'data/sli-marine-fisheries-kkp.json'
+      - 'docs/sli-kkp-dcat-baseline.json'
+      - 'scripts/watch_kkp_dcat.py'
+      - 'tests/qa-sli-marine-fisheries.mjs'
+      - 'tests/test_sli_kkp_catalog.py'
+      - '.github/workflows/sli-kkp-marine-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'marine-fisheries-intelligence.html'
+      - 'css/sli-marine-fisheries.css'
+      - 'js/sli-marine-fisheries.mjs'
+      - 'js/sli-navigation.js'
+      - 'food-agriculture-intelligence.html'
+      - 'sli-sector-data-library.html'
+      - 'data/sli-marine-fisheries-kkp.json'
+      - 'docs/sli-kkp-dcat-baseline.json'
+      - 'scripts/watch_kkp_dcat.py'
+      - 'tests/qa-sli-marine-fisheries.mjs'
+      - 'tests/test_sli_kkp_catalog.py'
+      - '.github/workflows/sli-kkp-marine-qa.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '29 2 * * 1'
+permissions:
+  contents: read
+  issues: write
+jobs:
+  source-and-dashboard-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify data invariants, UI routes, methodology and Python metadata watch
+        run: |
+          node --check js/sli-marine-fisheries.mjs
+          node --test tests/qa-sli-marine-fisheries.mjs tests/qa-sli-information-architecture.mjs
+          python -m unittest discover -s tests -p 'test_sli_kkp_catalog.py' -v
+          python -m py_compile scripts/watch_kkp_dcat.py
+      - name: Document source verification boundary
+        run: |
+          echo "Historical figures are curated KKP table snapshots; no numeric external API update or commercial licence verification is claimed." >> "$GITHUB_STEP_SUMMARY"
+  metadata-change-watch:
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check KKP DCAT metadata without overriding original statistics
+        run: |
+          python scripts/watch_kkp_dcat.py --out=artifacts/sli-kkp-dcat-review.json
+      - name: Retain source candidate audit for human review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-kkp-catalog-change-review
+          path: artifacts/sli-kkp-dcat-review.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Open one nonduplicate review issue when official catalog changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          MARKER="SLI-KKP-DCAT-CHANGE-REVIEW"
+          needs=$(python - <<'PY'
+          import json
+          d=json.load(open('artifacts/sli-kkp-dcat-review.json'))
+          print('yes' if d.get('status')=='review_candidates' else 'no')
+          PY
+          )
+          if [ "$needs" != yes ]; then
+            echo "No verified KKP metadata change candidate; no issue."
+            exit 0
+          fi
+          prior=$(gh issue list --state open --search "$MARKER in:body" --json number --jq '.[0].number // empty' 2>/dev/null || true)
+          if [ -n "$prior" ]; then
+            echo "KKP review issue #$prior already exists; preserve new details in Actions artifact."
+            exit 0
+          fi
+          python - <<'PY' > /tmp/sli-kkp-review.md
+          import json,os
+          r=json.load(open("artifacts/sli-kkp-dcat-review.json"))
+          print("Automated KKP catalog metadata check found differences. These are candidates requiring manual primary-source verification, **not automatically verified updated statistics**.\n")
+          for x in r.get("metadata_changes",[]):print("- "+x["topic"]+": prior catalog "+str(x["old_modified"])+" -> "+str(x["current_modified"]))
+          for x in r.get("missing_catalog_entries",[]):print("- "+x["topic"]+": no longer found; leave last verified numerical snapshot intact")
+          print("\nCheck the official table, units, time series, statistical estimation labels, provincial coverage and commercial redistribution terms before updating SLI data.")
+          print("\nWorkflow: "+os.environ["RUN_URL"])
+          print("\nSLI-KKP-DCAT-CHANGE-REVIEW")
+          PY
+          gh issue create --title "SLI KKP: review official marine catalog changes" --body-file /tmp/sli-kkp-review.md
