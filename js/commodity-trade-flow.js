@@ -65,7 +65,7 @@ if(state.lens==="energy"){
  "HEESI 2025 sudah memiliki Sankey neraca energi nasional resmi pada Ketahanan Energi. RUPTL 2025–2034 adalah RENCANA KAPASITAS, bukan arus listrik fisik atau pembangkitan terverifikasi; jangan campurkan GW rencana dengan perdagangan US$ atau BOE HEESI.")));
  const links=el("div","tf-source-route-links");
  const a=el("a",null,t("Open Energy Security · HEESI 2025 Sankey ↗","Buka Ketahanan Energi · Sankey HEESI 2025 ↗"));a.href="./index.html#energy";links.append(a);
- const b=el("a",null,t("Open official RUPTL planning by period ↗","Buka rencana RUPTL resmi per periode ↗"));b.href="./pln-ruptl-energy-investment.html";links.append(b);
+ const b=el("a",null,t("Open official RUPTL planning by period ↗","Buka rencana RUPTL resmi per periode ↗"));b.href="./pln-ruptl-2025-2034-source-intelligence.html";links.append(b);
  energy.append(links);root.append(energy);return;
 }
 const panel=el("section","tf-panel");panel.append(el("h3",null,t("Bilateral commodity flows · Full year 2025","Arus bilateral komoditas · Tahun penuh 2025")));
