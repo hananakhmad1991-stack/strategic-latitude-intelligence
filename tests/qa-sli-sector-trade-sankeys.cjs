@@ -6,6 +6,7 @@ marine=JSON.parse(read("data/sli-marine-fisheries-trade-2025.json"));
 assert.equal(marine.schema,"sli-marine-fisheries-trade-2025-v1");
 assert.match(marine.source_url,/^https:\/\/www\.kkp\.go\.id\//);
 assert.equal(marine.period,"2025-01/2025-12");
+assert.equal(marine.trade_surplus_reported_musd,5600,"KKP/BPS trade surplus must be separately reported, never derived as a Sankey flow");
 assert.equal(marine.views.length,2);
 class El{
  constructor(tag){this.tagName=tag;this.children=[];this.attributes={};this.events={};this.style={};this.isConnected=true;this.value="";this.textContent="";}
@@ -56,6 +57,7 @@ const all=n=>[n,...n.children.flatMap(all)];
  assert.equal(els.filter(x=>x.tagName==="path").length,5,"KKP partner-only marginal, not an invented cross-matrix");
  assert.ok(els.some(x=>x.textContent==="United States"));
  assert.ok(els.some(x=>x.textContent.includes("5.28")),"Five reported destination groups value");
+ assert.ok(els.some(x=>x.textContent.includes("5.6")||x.textContent.includes("5.60")),"KKP reported 2025 surplus visible as separate contextual metric");
  select=els.find(x=>x.tagName==="select");select.value="commodities";select.events.change();
  els=all(root);assert.equal(els.filter(x=>x.tagName==="path").length,5,"KKP product-only marginal");
  assert.ok(els.some(x=>x.textContent==="Seaweed"));
@@ -69,5 +71,9 @@ const all=n=>[n,...n.children.flatMap(all)];
  assert.ok(read("food-agriculture-intelligence.html").includes("index.html?trade=food#trade"));
  assert.ok(read("marine-fisheries-intelligence.html").includes("index.html?trade=marine#trade"));
  assert.doesNotMatch(read("js/sli-sector-trade-sankey.js"),/x\.country.*x\.product|partner.*commodity.*target/);
+ const trade=JSON.parse(read("data/commodity-trade-flows.json"));
+ assert.equal(trade.bilateral.primary_reconciliation_status,"pending_independent_BPS_HS_partner_matrix");
+ assert.match(read("js/commodity-trade-flow.js"),/World Bank WITS and CorpLox/);
+ assert.equal(trade.bilateral.primary_bps_query,"https://www.bps.go.id/assets/exim");
  console.log("PASS source-linked food 2026, KKP 2025 independent marginal Sankeys, and sector navigation");
 })().catch(e=>{console.error(e);process.exitCode=1});
