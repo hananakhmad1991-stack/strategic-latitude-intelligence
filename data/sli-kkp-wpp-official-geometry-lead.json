@@ -1,0 +1,52 @@
+{
+  "schema": "sli-kkp-wpp-official-geometry-lead-v1",
+  "reviewed_on": "2026-10-21",
+  "primary_host": "kspservices.big.go.id",
+  "publisher_portal": "Badan Informasi Geospasial · Kebijakan Satu Peta",
+  "service_title": "Peta Wilayah Pengelolaan Perikanan RI",
+  "service_url": "https://kspservices.big.go.id/satupeta/rest/services/PUBLIK/SUMBER_DAYA_ALAM_DAN_LINGKUNGAN/MapServer/21",
+  "geometry_type": "esriGeometryPolygon",
+  "spatial_reference": 4326,
+  "arcgis_layer_id": 21,
+  "supported_query_formats": [
+    "JSON",
+    "geoJSON"
+  ],
+  "official_layer_legend_wpp_codes": [
+    "WPP-RI 571",
+    "WPP-RI 572",
+    "WPP-RI 573",
+    "WPP-RI 711",
+    "WPP-RI 712",
+    "WPP-RI 713",
+    "WPP-RI 714",
+    "WPP-RI 715",
+    "WPP-RI 716",
+    "WPP-RI 717",
+    "WPP-RI 718"
+  ],
+  "observed_count_of_legend_categories": 11,
+  "provider_geometry_import_status": "verified_service_metadata_only_not_geojson_downloaded",
+  "geometry_snapshot_sha256": null,
+  "usage_rights_reviewed": false,
+  "official_boundary_vintage_legal_status": "not_yet_verifiably_matched_to_current_KKP_WPP_regulation",
+  "sli_coverage": "source atlas and official download/service lead only; do not render guessed polygons or mix WPP geometries with province statistics",
+  "source_published_date": "not_disclosed",
+  "metadata_review_note": "ArcGIS REST layer metadata indicates feature polygon service and geoJSON query format, but individual polygons/feature count, spatial validity, current rule vintage and commercial redistribution rights have NOT been downloaded or audited. No WPP catch, JTB or stock numbers in this register.",
+  "other_official_layers": [
+    {
+      "id": 33,
+      "title": "Peta Kawasan Konservasi"
+    },
+    {
+      "id": 57,
+      "title": "Peta Mangrove Skala 1:25.000"
+    }
+  ],
+  "notes": [
+    "Exact service layer 21 is a lead for later geom extraction, not a delivered official map yet.",
+    "WPP-RI administrative management polygons are NOT interchangeable with 38 province land boundaries.",
+    "Check KKP source law vintage and BIG terms before displaying or publishing source-derived GeoJSON.",
+    "Zero numeric status: service metadata alone cannot establish actual catch or marine stock."
+  ]
+}
