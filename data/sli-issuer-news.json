@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T22:29:44.372228Z",
+  "updated_at_utc": "2026-10-21T22:59:40.065156Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,38 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_b83d6116fb8ee74ea843a9",
+      "title": "Teknikal Saham ANTM: Melemah 0.73% pada Rabu, Death Cross Menekan - JournalArta",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOUkxiWXY3M0hveUhWT1BxLVB1SUVwQXQwaWRyWXhPN04xUXI3LTBpM0w0cEpKZ3pTTUx3aExhRzdkMklpZWZuUUUzcWJCVlNNVnJocWQyNl9TdUV1ZjBfQ25sOFlCVWZldkVBOXoyOTlwMC1WV2pXQ3htc29JX01zV3pSVTJ6S1BqeFl0SG52VGlXYm5uajBHRENUX3p4U3k3SUdpeE13?oc=5",
+      "publisher": "JournalArta",
+      "published_at_utc": "2026-10-21T22:52:46Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_8f50f7c991175d4f4d070c",
+      "title": "RSI Jenuh Jual, Saham GOTO Menguat 0.00% pada Rabu - JournalArta",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOMlNSbjJJR1duWEEwWURsMFh3elNnd0JNZWtDVkVCZW1TZ0J2cjdrRi0tcTVFZl9VNDZaVUQ0OGsyZnZlVFRzelVMaG03VEM5Qk9kQUNxeUhteG1QRVByMUd4VGhncEN4QXloRDVoNTRlSlBnZC1QRXRIdHFON1phQXp0MDhKWUZhS2ZiektXa0d6N3c?oc=5",
+      "publisher": "JournalArta",
+      "published_at_utc": "2026-10-21T22:51:49Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GOTO"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_ead6ef37547a7d8b54a47f",
       "title": "BERITA POPULER: 15 Saham Tahan Banting hingga Potensi Dividen TLKM - investor.id",
@@ -1676,6 +1708,7 @@
       "published_at_utc": "2026-10-20T23:01:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "INDF",
         "PGEO"
       ],
       "sector": "energy",
@@ -5188,6 +5221,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_9315e8dcdb5ed2d73fb8e8",
+      "title": "Peluang Rebound IHSG Hari Ini (14/10), Cermati Saham PTBA Hingga ERAA - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPUk9ZOHhZdmFBdHVLeWhBdHA2d1QwOWh4THdRZGY3R0xXajZQWmxLTzkxZW1sNDcwQ2tuMGpuTlAySlBVdkt1YnlucGMzQ1BpN1VZaUNweHhrckJWZm9KYkRpVzQ0ZjhtZmI1bnlPRlFUSTFwR0xHTy0wZk1nak10TFBacnFDTkJUWmZNTWNBVjVkNFdkenBRZzhjd1dpdzJwTXdVeUplQW4zMjU4NVJoNU40NDNOSkd3?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-14T01:48:54Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_120134988c105313e183af",
       "title": "Rekomendasi Saham Hari Ini, Rabu 14 Oktober 2026: PTBA, EMAS, ERAA - investor.id",
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOSDVBMEU0OVhPMW8taVVidHI2aUJzc1NzMFdQV3RhbS15Ump6WGRPRi1IN2hzT0FzMkJLQ3ZuanN0djJpN1lCWmFLTGwzREMxUGRWaFcxYndlRWozMC1oMnBTMTdNRHpaTkRndV9QOEhSaUc5clJwa2FSV21DemtHSlBMWE5fRUJKVG00WlE1eng4YV9fTmdseTFlM1I?oc=5",
@@ -5209,22 +5258,6 @@
       "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNa0ZudHE2TG9BaTdQb0Z0eHZnNUNNLUI5UXl1Ym5oWklISERXUTF0WFVwWGhGb2FhcjloQm56WEJrVEtuN1NnYTc0TEp3OUdUcHJ3UlBpU2htVHJEMHFLY1dOeVZaRW42bi05TnhEVi1uRkNqTzJLSlpTR1NMVFNKbW5qS3RFcHRVZHNGbXVMVVQxRC14aFV1dU02SDZtNVhZNzVLYUJ6MnpCaTdaVGhzT0VBUEZZMkVTWUZVQ3ZhMU1YeVh6ckJkT9IBzgFBVV95cUxNSG00b2JtYXo3aHE4OC04MG1oZGoyN0ctNW10aTdVdm5ha2ZHNE95MEY0S0ZHYmhPczhjVmo4dkJMYUw3NjduQzlfaE1ZOWFpQ2ZTOHRoY19DMThhWXgtcVB4WlE5eUpZUzBNdUFQTklXc0VEem1rTEFxbDJpZWFOWXNFa3VpTTlPYVlPMnM2Yk53YXpRLXBleDBySUt0MGFjQlN1Nmo2ZF9WYnF0VTRFcm5XMG1oekhjdVplMnl6azhKZDNOWF9RU0NpempoUQ?oc=5",
       "publisher": "Katadata.co.id",
       "published_at_utc": "2026-10-13T23:18:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_5d6acedab7214b9e03786d",
-      "title": "IHSG Berpeluang Technical Rebound Hari Ini, Saham PTBA hingga ERAA Layak Dilirik - InvestorTrust",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOYlFTeWhDLUVSYXQ2ekdrdVJWeklPbWJVR3B4VmcxVXZ5ZXgxUUdpMGdkbGJkMnhqOU9laWpaSUttcldEd2xibnhrMUtUYkdzZUxoM0VHOXNxVDdPMGdWeXpOemhFeFhBdnVja05femY0cS0xQS1IQ09tT09qMmFoVkNiZEJyUDc3aDI0enBNNXdOUWtZLW1LUmZ6a2dsWWhJak1NeGYwY3J2TUVoMkJuSU5VaF9QLUJ5OXc?oc=5",
-      "publisher": "InvestorTrust",
-      "published_at_utc": "2026-10-13T22:42:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "PTBA"
