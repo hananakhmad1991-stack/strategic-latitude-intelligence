@@ -162,7 +162,7 @@ await check("Energy ministerial hierarchy: Deputy SG IG and DG names mobile",{wi
  await root.locator(".sli-ministry-expand").first().click();
  assert.match(await root.innerText(),/Ahmad Erani Yustika/);
  assert.match(await root.innerText(),/Yudhiawan/);
- const metrics=await page.evaluate(()=>({doc:document.documentElement.scrollWidth,vp:innerWidth,pos:getComputedStyle(document.querySelector('.sli-ministry-mount[data-sli-sector="energy"] .sli-ministry-inspector')).position}));
+ const metrics=await page.evaluate(()=>({doc:document.documentElement.scrollWidth,vp:innerWidth,pos:getComputedStyle(document.querySelector('.sli-ministry-mount[data-sli-sector="energy"] .sli-ministry-inspector')).position,offenders:[...document.querySelectorAll('body *')].map(e=>({e,rect:e.getBoundingClientRect()})).filter(x=>x.rect.right>innerWidth+12&&x.rect.width>0).sort((a,b)=>b.rect.right-a.rect.right).slice(0,6).map(x=>({tag:x.e.tagName,id:x.e.id,cl:String(x.e.className).slice(0,65),right:Math.round(x.rect.right),width:Math.round(x.rect.width)}))}));
  assert.ok(metrics.doc<=metrics.vp+16,"Ministry hierarchy mobile overflow: "+JSON.stringify(metrics));
  assert.equal(metrics.pos,"static");
 });
