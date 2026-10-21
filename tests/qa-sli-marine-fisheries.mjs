@@ -76,8 +76,17 @@ test("KKP governance sources separate official directorates from six functional 
  const checked=validateMarineGovernance(d);
  assert.equal(checked.pass,true,JSON.stringify(checked.issues));
  assert.equal(d.groups.length,6);
- assert.equal(d.hierarchy.find(x=>x.id==="djprl").parent,"kkp");
- assert.equal(d.hierarchy.find(x=>x.id==="djpkel").parent,"kkp");
+ assert.equal(d.schema,"sli-marine-governance-v2");
+ assert.ok(checked.organizations>=50);
+ assert.ok(checked.verified_people>=40);
+ assert.equal(d.hierarchy.find(x=>x.id==="wamen").officeholder.name,"Irwan Meilano");
+ assert.equal(d.hierarchy.find(x=>x.id==="setjen").officeholder.name,"Andy Artha Donny Oktopura");
+ assert.equal(d.hierarchy.find(x=>x.id==="djpdspkp").officeholder.name,"Yudi Nurul Ihsan");
+ assert.equal(d.hierarchy.find(x=>x.id==="itjen").officeholder.name,"Ade Tajudin Sutiawarman");
+ assert.ok(d.emblem.url.startsWith("https://ptsp.kkp.go.id/"));
+ assert.ok(d.actors.find(x=>x.id==="bappenas").sector_contact?.name==="Mohamad Rahmat Mulianda");
+ assert.equal(d.hierarchy.find(x=>x.id==="djprl").parent,"minister");
+ assert.equal(d.hierarchy.find(x=>x.id==="djpkel").parent,"minister");
  assert.ok(d.hierarchy.some(x=>x.id==="bppmhkp"));
  assert.ok(d.legal_sources.some(x=>x.url.includes("perpres-no-112-tahun-2025")));
  assert.ok(d.legal_sources.some(x=>x.url.includes("DetailPeraturan/6750")));
@@ -85,4 +94,10 @@ test("KKP governance sources separate official directorates from six functional 
  assert.ok(!d.hierarchy.some(x=>x.id==="dkp"),"Regional authority must not become a KKP subordinate");
  for(const hub of d.groups)assert.ok(hub.actor_ids.length>=2);
  const fake=structuredClone(d);fake.groups[0].actor_ids=["does-not-exist"];assert.equal(validateMarineGovernance(fake).pass,false);
+ {const stale=structuredClone(d);stale.hierarchy.find(x=>x.id==="wamen").officeholder.name="Didit Herdiawan";assert.equal(validateMarineGovernance(stale).pass,false)}
+ const page=read("marine-fisheries-intelligence.html");
+ assert.ok(page.indexOf('id="marine-governance"')<page.indexOf('id="marine-overview"'),"Institutional intelligence must appear above statistics");
+ for(const id of ["mfHierarchyQuery","mfHierarchyFilter","mfExpandAll","mfCollapseAll","mfNetworkChips","mfNetworkCount"])assert.ok(page.includes('id="'+id+'"'),id);
+ assert.match(read("js/sli-marine-governance.mjs"),/mf-gov-link-lines/);
+ assert.match(read("css/sli-marine-fisheries.css"),/mf-gov-network-grid/);
 });
