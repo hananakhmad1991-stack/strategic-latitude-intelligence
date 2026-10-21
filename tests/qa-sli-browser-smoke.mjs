@@ -147,12 +147,12 @@ await check("KKP Marine desktop: source data, estimates, trends and topic filter
  assert.ok((await page.locator("#mfEstimateBox").innerText()).includes("2025"),"2025 estimate must be visible but separate");
  await page.locator("#mfIndicator").selectOption("marine_fishers");
  assert.equal(await page.locator("#mfHistoryRows tr").count(),6);
- assert.ok((await page.locator("#mfChartTitle").innerText()).toLowerCase().includes("nelayan"));
+ assert.match((await page.locator("#mfChartTitle").innerText()),/nelayan|fishers/i,"Selected fisher series must update in either UI language");
  assert.equal(await page.locator("#mfChart svg").count(),1,"KKP history chart did not render");
- assert.ok((await page.locator("#mfEstimateBox").innerText()).includes("Tidak ada estimasi"),"Missing estimate should not be presented as zero");
+ assert.match((await page.locator("#mfEstimateBox").innerText()),/Tidak ada estimasi|No estimate/i,"Missing estimate should not be presented as zero");
  await page.locator("#mfTopicFilter").selectOption("environment");
  assert.equal(await page.locator("#mfTopicGrid .mf-topic").count(),2,"Conservation and mangrove source-only topics should be filterable");
- assert.ok((await page.locator("#mfTopicGrid").innerText()).includes("angka belum diimpor"),"Missing environmental numerics must be labeled, not fabricated");
+ assert.match((await page.locator("#mfTopicGrid").innerText()),/angka belum diimpor|numeric values not imported/i,"Missing environmental numerics must be labeled, not fabricated");
 });
 await check("KKP Marine mobile: responsive layout and EN/ID", {width:390,height:844},async page=>{
  await page.goto(pageUrl("marine-fisheries-intelligence.html"),{waitUntil:"domcontentloaded",timeout:30000});
