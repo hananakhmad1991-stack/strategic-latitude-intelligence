@@ -16,6 +16,7 @@ on:
       - 'research-api/src/owner-test-worker.mjs'
       - 'data/sli-research-project-stage-baseline.json'
       - 'data/sli-marine-fisheries-kkp.json'
+      - 'data/sli-food-impact-source-leads-september-2026.json'
       - '.github/workflows/sli-unified-research-sync.yml'
   pull_request:
     paths:
@@ -30,6 +31,7 @@ on:
       - 'research-api/src/owner-test-worker.mjs'
       - 'data/sli-research-project-stage-baseline.json'
       - 'data/sli-marine-fisheries-kkp.json'
+      - 'data/sli-food-impact-source-leads-september-2026.json'
       - '.github/workflows/sli-unified-research-sync.yml'
 permissions:
   contents: write
@@ -63,6 +65,10 @@ jobs:
           assert sum("province_seaweed_2024" in x["path"] for x in hits)==10, "KKP province source evidence incomplete"
           assert not any("2025" in x["title"] for x in hits), "Estimated KKP 2025 accidentally promoted into observed corpus"
           print("KKP research retrieval indexed:",len(hits),"dated official source-linked records")
+          food=[x for x in p["records"] if x.get("dataset")=="sli-food-impact-source-leads-september-2026.json"]
+          assert len(food)==22, f"September 2026 Pusdatin sources missing from DERGUBA: {len(food)}"
+          assert all(x["period"]=="2026-08" and "satudata.pertanian.go.id" in x["source_url"] for x in food)
+          print("Pusdatin September 2026 evidence indexed:",len(food),"source-linked dated records")
           PY
           node --check research-api/src/dashboard-corpus.mjs
           node --check research-api/src/claim-evidence-audit.mjs
