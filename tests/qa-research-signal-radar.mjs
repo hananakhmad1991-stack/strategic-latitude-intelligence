@@ -24,7 +24,7 @@ assert.equal(normalized(rows,"ai","geopolitical").length,1);
 assert.equal(normalized(rows,"minerals","domestic").length,1);
 const radar=JSON.parse(fs.readFileSync("data/research-signal-radar.json","utf8"));
 assert.equal(radar.schema_version,1);
-for(const sector of ["minerals","ai","food"])for(const scope of ["geopolitical","domestic"]){
+for(const sector of ["minerals","ai","food","marine"])for(const scope of ["geopolitical","domestic"]){
  assert.ok(Array.isArray(radar.groups[sector][scope]),"Missing radar lane "+sector+"/"+scope);
  assert.ok(radar.groups[sector][scope].every(x=>x.sector===sector&&x.scope===scope),"Cross-category item leaked");
 }
