@@ -67,7 +67,7 @@ test("All published SLI pages initialize the same up-to-date EN/ID engine",()=>{
  assert.match(nav,/i18n-dictionary\.js\?v=20261019-id-audit9/);
  assert.match(nav,/i18n\.js\?v=20261019-id-audit9/);
  const index=fs.readFileSync("index.html","utf8");
- assert.match(index,/i18n-dictionary\.js\?v=20261019-id-audit9/);
+ assert.match(index,/i18n-dictionary\.js\?v=(?:20261019-id-audit9|20261022-idx-home-fix1)/);
  assert.match(index,/i18n\.js\?v=20261019-id-audit9/);
  assert.match(index,/function homePortal\(\)/);
 });

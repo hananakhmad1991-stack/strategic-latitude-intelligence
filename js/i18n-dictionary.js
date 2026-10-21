@@ -2794,3 +2794,5 @@ window.SLI_TRANSLATIONS_ID.set("Capture fisheries, aquaculture, seaweed, ocean g
 window.SLI_TRANSLATIONS_ID.set("Marine Intelligence →","Intelijen Kelautan →");
 window.SLI_TRANSLATIONS_ID.set("Institutional maps ↗","Peta kelembagaan ↗");
 window.SLI_TRANSLATIONS_ID.set("KKP source data ↗","Data sumber KKP ↗");
+// IDX-first homepage loading state (October 2026 mobile fix).
+window.SLI_TRANSLATIONS_ID.set("Loading Indonesian market overview…","Memuat ringkasan pasar Indonesia…");

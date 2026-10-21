@@ -45,12 +45,12 @@ def extract(agriculture,horticulture,output):
         d=fitz.open(path)
         if len(d)!=doc["total_pdf_pages"]:
             raise ValueError("Unexpected page count "+doc["id"])
-        pages=sorted(set(t["pdf_page"] for t in reg["tables"] if t["document_id"]==doc["id"]))
+        pages=sorted(set(page for t in reg["tables"] if t["document_id"]==doc["id"] for page in t.get("statistical_pdf_pages",[t["pdf_page"]])))
         records=[]
         for n in pages:
             # Only registered statistical pages; whole >500-page phone directory omitted.
             text=d[n-1].get_text("text",sort=True)
-            refs=[t["id"] for t in reg["tables"] if t["document_id"]==doc["id"] and t["pdf_page"]==n]
+            refs=[t["id"] for t in reg["tables"] if t["document_id"]==doc["id"] and n in t.get("statistical_pdf_pages",[t["pdf_page"]])]
             records.append({"pdf_page":n,"table_ids":refs,"text":text,"numeric_status":"unverified_raw_text",
               "source_locator":"PDF page "+str(n), "manual_visual_table_review_required":True})
         # No public write: this file contains copyrighted table text and possibly marginal

@@ -14,7 +14,7 @@ function issuer(){
  vm.runInNewContext(read("js/sli-issuer.js"),{window:w,document:d,URL,URLSearchParams,JSON,console});
  return w.SLIIssuerRoute;
 }
-test("Sector watchlist is restricted to SLI IDX issuers while general heatmap is not sector restricted",()=>{
+test("Sector watchlist is restricted to SLI IDX issuers and global heatmap is explicitly separate",()=>{
  const ui=provider();
  const source=data.records.filter(x=>["energy","minerals","coal","food","technology","infrastructure","transport","manufacturing"].includes(x.sector));
  const config=ui.watchlistConfig(source,"all");
@@ -32,8 +32,10 @@ test("Sector watchlist is restricted to SLI IDX issuers while general heatmap is
  assert.equal(minerals.tabs.length,1);assert.equal(minerals.tabs[0].title,"Mineral");
  const allIds=new Set(minerals.tabs[0].symbols.map(x=>x.s));
  assert.ok(allIds.has("IDX:ANTM"));
+ const home=ui.homeIDXConfig();
+ assert.ok(home.tabs.length>=3&&home.tabs.every(t=>t.symbols.every(x=>x.s.startsWith("IDX:"))));
  const general=ui.heatmapConfig();
- assert.equal(general.dataSource,"IDX");
+ assert.equal(general.dataSource,"SPX500");
  assert.equal(general.blockSize,"market_cap_basic");
  assert.equal(general.blockColor,"change");
  assert.equal(general.grouping,"sector");
@@ -43,6 +45,7 @@ test("Sector watchlist is restricted to SLI IDX issuers while general heatmap is
  const code=read("js/sli-idx-tradingview.js");
  assert.match(code,/function mountCompact\(/);
  assert.match(code,/function mountHeatmap\(/);
+ assert.match(code,/function mountHomeIDX\(/);
  assert.doesNotMatch(code,/Math\.random|samplePercentage|guessMarketCap/);
 });
 test("Sector-only ticker buttons lead to a specific SLI company dossier instead of general Entity directory",()=>{

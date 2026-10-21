@@ -18,7 +18,7 @@
     "regulatory-monitor",
     "publication-watch"
   ],
-  "count": 1053,
+  "count": 1055,
   "articles": [
     {
       "id": "sli_feed_2294722f9c97fa55729390152",
@@ -32,6 +32,23 @@
       "topic": "fuel",
       "geo": "Indonesia and global context",
       "monitor_source": "domestic-energy",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_f8e96a2923c30e939470682d4",
+      "title": "Rencana Insentif Hybrid Berhadapan dengan Kepentingan BEV - kontan.co.id",
+      "publisher": "kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPRjBCc3d4TGZVNDJGSHhuZFpHY3JqMEtWVFh1cEhvc2JXemlfdFNULWZhcUFja0JvN3JHOS1ZM1lQVElTRDM4V256YWJ3cHpTMGtjN2FBdlQ2cUlibVVxbFJQQ01LakNRWHJ4MlhieE5GOHh2Wm5haWg3ZEpUdTgwWjFEcC1ENlp2aGtncXlfeVlCVXdZSjhF0gGQAUFVX3lxTE5jNjlrQ2lnYU50X2x1Sk91ZUwyM2MwcUdkLU5VUWxJR2lnUUN0V1loY3o1Rkl5dVc1WGlNWGtpRHBSZlEyWnF4RnFiemdzNUlIalIzbXVwNWJmWUo4emxoTEhPRk03N25KdzZlalBYRW16NzNHdnA5NXFSYjBGbXNmRV9KNkNOaFl6WGd0cEJ0RA?oc=5",
+      "published_at_utc": "2026-10-21T12:36:42Z",
+      "date_type": "publisher_publication_date",
+      "sector": "energy",
+      "scope": "",
+      "topic": "Policy",
+      "geo": "Indonesia and global context",
+      "monitor_source": "energy-ev-watch",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -297,6 +314,23 @@
       "title": "Prabowo Bidik Mandatori Bensin Etanol 10% Tahun Ini, E50 Menyusul - Bloomberg Technoz",
       "publisher": "Bloomberg Technoz",
       "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNeUhiOElDRVFrcFJrR0lRZEg5SGg1VnhCOGhhbFZpOWVPTGg5d21fRFVhRngzbWs3RFZxWFBJaktLTlRudEFUX2FYckRmbjJ4cEVNTUdMck5jTGg5QThOZXd0NlR5NGVzWUEtWWVTYzVHcWlfa2VNcUx0b0lmMDNoWF95aVNhS251VVVhN25ZLXYwaXBReGxjV3NxLThSLUl5bmhzWGNRVzFPQ3ByNzMyUGFKcjJkUQ?oc=5",
+      "published_at_utc": "2026-10-21T10:15:00Z",
+      "date_type": "publisher_publication_date",
+      "sector": "energy",
+      "scope": "",
+      "topic": "Policy",
+      "geo": "Indonesia and global context",
+      "monitor_source": "energy-biofuels-watch",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_e2a83f5ceac38da774b10e1d5",
+      "title": "Prabowo Bidik Mandatori Bensin Etanol 10% Tahun Ini, E50 Menyusul - Green - Bloomberg Technoz",
+      "publisher": "Bloomberg Technoz",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNUFpzbFJ3enUwQnpsNHpwamlITmxmc0thOXQ2Q3p3c2x0TEgwOUF3Q0pWNzEtR1RuR2Q5NmY3VnVyeVJOVXhSWWJwLVRBT0h3Ty0xMV8wVWwtc0xLZGRxQ2h6YlAyb015N3RYMVY4XzFFU3gxMUZYaHQ0aU9FSGpRSnVJMHJrSWN0aE1VVTlJdThKdEdtcGRwNFhsVWJCVW5CWVNDYm9SaWJyc1liM2dJTTRkdDVOS0Vs?oc=5",
       "published_at_utc": "2026-10-21T10:15:00Z",
       "date_type": "publisher_publication_date",
       "sector": "energy",
@@ -12864,23 +12898,6 @@
       "claim_corroborated": false
     },
     {
-      "id": "sli_feed_b32e706a9fc07c893ec7fec37",
-      "title": "Bahlil Kejar Mandatori Etanol E50, Ogah RI Bergantung Impor - CNN Indonesia",
-      "publisher": "CNN Indonesia",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQaU1XMkFNajJvLWJJbEJub0xzOXVBdzBHQmpodW1EeXFlVko2RHhWRTd2SHBtS2sxQjZTYm1WSGdhc1Z3WnU2ejNmNVhiR2FxNDBGX2ZQRmhsbXlQQkVEbVJqeHZYLTBYV0VmNTVBWUZuLVg0OW9hUjEzd2Njbi16bmxsYWZPeUc3Skc3VktDczRaMW9zdVdIQ0F6QVdMVWI3Y0wzTE90b2JMekxMMzk1T1VySHVlUXd2UGw0VVhn0gHDAUFVX3lxTE5FSzViaU9fMnFYb0Rua2xNMnNTWElFcVl5N3BEZUhtQnJIZl95T2RQTlhMal92M0dfQVp5VnZFaFBMWklvRnFVeHA3QVJuR2xGRHFDUEFBMmg1UzJjNVpUblpvN2FRbm9CN3Z6U1N2a1Y1dVhteUhuZi1hNDNJcGY0Z2kxa1loT00yMER6ZmxyalhDc1AzX3F6eXVTTFZwSGQ4bDZNRGhpQW8tWnJYWjUxZnZFRnFzSC1oc214RW9nLWVhZw?oc=5",
-      "published_at_utc": "2026-10-12T12:27:09Z",
-      "date_type": "publisher_publication_date",
-      "sector": "energy",
-      "scope": "",
-      "topic": "Bioethanol",
-      "geo": "Indonesia and global context",
-      "monitor_source": "energy-biofuels-watch",
-      "link_kind": "aggregator",
-      "evidence_level": "publisher_attributed_news_report",
-      "article_body_checked": false,
-      "claim_corroborated": false
-    },
-    {
       "id": "sli_feed_d242523669d5dc05a29dbf041",
       "title": "Bahlil sebut bahan baku E10 dari Jawa, Sumatera, dan Papua - ANTARA News Gorontalo",
       "publisher": "ANTARA News Gorontalo",
@@ -13007,7 +13024,7 @@
       "date_type": "publisher_publication_date",
       "sector": "energy",
       "scope": "",
-      "topic": "Bioethanol",
+      "topic": "Feedstock",
       "geo": "Indonesia and global context",
       "monitor_source": "energy-biofuels-watch",
       "link_kind": "aggregator",
@@ -13090,6 +13107,23 @@
       "sector": "energy",
       "scope": "",
       "topic": "Feedstock",
+      "geo": "Indonesia and global context",
+      "monitor_source": "energy-biofuels-watch",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_b32e706a9fc07c893ec7fec37",
+      "title": "Bahlil Kejar Mandatori Etanol E50, Ogah RI Bergantung Impor - CNN Indonesia",
+      "publisher": "CNN Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQaU1XMkFNajJvLWJJbEJub0xzOXVBdzBHQmpodW1EeXFlVko2RHhWRTd2SHBtS2sxQjZTYm1WSGdhc1Z3WnU2ejNmNVhiR2FxNDBGX2ZQRmhsbXlQQkVEbVJqeHZYLTBYV0VmNTVBWUZuLVg0OW9hUjEzd2Njbi16bmxsYWZPeUc3Skc3VktDczRaMW9zdVdIQ0F6QVdMVWI3Y0wzTE90b2JMekxMMzk1T1VySHVlUXd2UGw0VVhn0gHDAUFVX3lxTE5FSzViaU9fMnFYb0Rua2xNMnNTWElFcVl5N3BEZUhtQnJIZl95T2RQTlhMal92M0dfQVp5VnZFaFBMWklvRnFVeHA3QVJuR2xGRHFDUEFBMmg1UzJjNVpUblpvN2FRbm9CN3Z6U1N2a1Y1dVhteUhuZi1hNDNJcGY0Z2kxa1loT00yMER6ZmxyalhDc1AzX3F6eXVTTFZwSGQ4bDZNRGhpQW8tWnJYWjUxZnZFRnFzSC1oc214RW9nLWVhZw?oc=5",
+      "published_at_utc": "2026-10-12T07:00:00Z",
+      "date_type": "publisher_publication_date",
+      "sector": "energy",
+      "scope": "",
+      "topic": "Bioethanol",
       "geo": "Indonesia and global context",
       "monitor_source": "energy-biofuels-watch",
       "link_kind": "aggregator",
@@ -17734,5 +17768,5 @@
       "claim_corroborated": false
     }
   ],
-  "updated_at_utc": "2026-10-21T16:12:16.637875Z"
+  "updated_at_utc": "2026-10-21T17:11:07.726741Z"
 }
