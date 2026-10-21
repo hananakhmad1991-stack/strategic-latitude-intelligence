@@ -46,7 +46,10 @@ def main():
         for idx,page in enumerate(doc):
             pn=idx+1
             t=page.get_text("text",sort=True)
-            matches=list(TABLE.finditer(t))
+            # PDF pages 18–26 are the Daftar Tabel (table OF CONTENTS),
+            # not the pages where numeric table cells reside. Index every
+            # page, but do not mispublish TOC references as source tables.
+            matches=[] if 18<=pn<=26 else list(TABLE.finditer(t))
             page_classes=categories(t)
             pageIndex.append({"pdf_page":pn,"topic_markers":page_classes,"table_heading_count":len(matches)})
             for m in matches:
