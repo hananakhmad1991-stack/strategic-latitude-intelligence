@@ -32,7 +32,9 @@ on:
       - 'css/sli-ruptl-progress-event-timeline.css'
       - 'scripts/review-ruptl-all-34-project-grids.py'
       - 'scripts/scan-ruptl-official-project-news-candidates.py'
-      - 'tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs tests/qa-sli-ruptl-expanded-source-rows.mjs tests/qa-sli-ruplt-official-slo-milestones.mjs'
+      - 'tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs'
+      - 'tests/qa-sli-ruptl-expanded-source-rows.mjs'
+      - 'tests/qa-sli-ruplt-official-slo-milestones.mjs'
       - '.github/workflows/sli-ruptl-full-34-review.yml'
       - '.github/workflows/sli-ruptl-project-news-review.yml'
       - 'data/sli-ruptl-project-progress-primary-evidence.json'
@@ -43,19 +45,25 @@ on:
       - 'tests/qa-sli-ruptl-provincial-realization-evidence.mjs'
       - 'js/sli-ruptl-primary-pdf.js'
       - 'css/sli-ruptl-primary-pdf.css'
-      - 'tests/qa-sli-ruptl-primary-pdf-digitization.mjs tests/qa-sli-ruptl-provincial-realization-evidence.mjs'
+      - 'tests/qa-sli-ruptl-primary-pdf-digitization.mjs'
+      - 'tests/qa-sli-ruptl-provincial-realization-evidence.mjs'
       - 'pln-ruptl-energy-investment.html'
       - 'data/sli-ruptl-full-official-annex-index.json'
       - 'js/sli-ruptl-annex-index.js'
       - 'css/sli-ruptl-annex-index.css'
-      - 'tests/qa-sli-ruptl-full-official-annex-index.mjs tests/qa-sli-ruptl-primary-pdf-digitization.mjs tests/qa-sli-ruptl-provincial-realization-evidence.mjs tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs'
+      - 'tests/qa-sli-ruptl-full-official-annex-index.mjs'
+      - 'tests/qa-sli-ruptl-primary-pdf-digitization.mjs'
+      - 'tests/qa-sli-ruptl-provincial-realization-evidence.mjs'
+      - 'tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs'
       - 'js/sli-ruptl-esdm-period-plan.js'
       - 'css/sli-ruptl-esdm-period-plan.css'
-      - 'tests/qa-sli-ruptl-official-period-plan.mjs tests/qa-sli-ruptl-primary-pdf-digitization.mjs'
+      - 'tests/qa-sli-ruptl-official-period-plan.mjs'
+      - 'tests/qa-sli-ruptl-primary-pdf-digitization.mjs'
       - 'pln-ruptl-2025-2034-source-intelligence.html'
       - 'js/sli-bnpb-district-2024.js'
       - 'css/sli-bnpb-district-2024.css'
-      - 'tests/qa-sli-bnpb-district-2024.mjs tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
+      - 'tests/qa-sli-bnpb-district-2024.mjs'
+      - 'tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
       - 'js/sli-environment-wdi.js'
       - 'data/sli-stanford-2026-digitized-figures.json'
       - 'data/sli-worldbank-ai-2025-digitized-figure-panels.json'
@@ -170,6 +178,7 @@ jobs:
           node --check js/sli-ai-figure-audit-status.js
           node --check js/sli-provincial-nexus-ui.js
           node --test tests/qa-sli-user-data-visibility.mjs tests/qa-sli-data-library-home-20261020.mjs tests/qa-sli-provincial-bnpb-2025.mjs tests/qa-sli-ai-wdi-source-phase2.mjs tests/qa-sli-ai-digitized-figures.mjs tests/qa-sli-worldbank-digitized-panels.mjs tests/qa-sli-bnpb-district-2024.mjs tests/qa-sli-ruptl-official-period-plan.mjs tests/qa-sli-ruptl-full-official-annex-index.mjs
+          node --test tests/qa-sli-ruptl-primary-pdf-digitization.mjs tests/qa-sli-ruptl-provincial-realization-evidence.mjs tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs tests/qa-sli-ruplt-official-slo-milestones.mjs tests/qa-sli-ruptl-expanded-source-rows.mjs
       - name: Validate every page references a real public source dataset
         run: |
           python - <<'PY'
