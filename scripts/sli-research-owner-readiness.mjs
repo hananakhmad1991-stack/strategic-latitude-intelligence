@@ -86,6 +86,19 @@ export function assessOwnerResearchReadiness({config,index,automation,now=new Da
   if(!Number.isInteger(failures)||failures<0||
      !Number.isInteger(broken)||broken<0||
      !Number.isInteger(errors)||errors<0)warn("automation_health_counters_invalid");
+  if(Array.isArray(automation.workflows)){
+   const observed=automation.workflows.filter(w=>w?.last_run?.conclusion==="failure").length;
+   if(failures<observed)warn("workflow_failure_counter_underreported");
+   if(Number.isInteger(summary.workflows)&&automation.workflows.length!==summary.workflows)
+    warn("workflow_inventory_count_inconsistent");
+  }
+  if(Array.isArray(automation.datasets)){
+   const brokenStatuses=new Set(["overdue","workflow_failure","invalid_dataset"]);
+   const observed=automation.datasets.filter(d=>brokenStatuses.has(d?.status)).length;
+   if(broken<observed)warn("dataset_failure_counter_underreported");
+   if(Number.isInteger(summary.datasets)&&automation.datasets.length!==summary.datasets)
+    warn("dataset_inventory_count_inconsistent");
+  }
   if(failures>0)warn("upstream_workflow_failures_outstanding");
   if(broken>0)warn("dataset_refresh_failures_outstanding");
   if(errors>0||automation.audit_state==="complete_with_api_warnings")
