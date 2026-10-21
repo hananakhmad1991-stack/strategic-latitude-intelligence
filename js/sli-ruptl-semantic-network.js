@@ -87,7 +87,7 @@ function networkRows(body){
   const topics=["transmission","substations","distribution"];
   const typ=selector("Kelompok infrastruktur",[["Semua jaringan dan distribusi",""],["Transmisi","transmission"],["Gardu induk","substations"],["Distribusi","distribution"]]),
    q=$("input");q.type="search";q.placeholder="Cari nomor atau judul tabel";q.setAttribute("aria-label","Cari tabel RUPTL semua halaman");
-  const ctrls=$("div",null,"sem-controls");ctrls.append(typ,q);body.append(ctrlls);
+  const ctrls=$("div",null,"sem-controls");ctrls.append(typ,q);body.append(ctrls);
   const gridByPage=new Map(grid.pages.map(g=>[g.pdf_page,g]));
   const relevant=inv.table_headings.filter(x=>x.topic_candidates.some(t=>topics.includes(t)));
   const pager=buildPager(null,{onRow:r=>[
