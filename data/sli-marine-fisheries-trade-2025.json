@@ -1,0 +1,93 @@
+{
+  "schema": "sli-marine-fisheries-trade-2025-v1",
+  "publisher": "Kementerian Kelautan dan Perikanan · Ditjen PDSPKP",
+  "source_url": "https://www.kkp.go.id/news/news-detail/produk-perikanan-indonesia-makin-bernilai-di-pasar-internasional-LvAA.html",
+  "published": "2026-02-16",
+  "period": "2025-01/2025-12",
+  "unit": "USD million",
+  "total_exports_reported_musd": 6270,
+  "total_precision": "Rounded official 6.27 USD billion, not exact cent-level customs total",
+  "views": [
+    {
+      "id": "destinations",
+      "title_en": "Top export markets",
+      "title_id": "Pasar utama tujuan ekspor",
+      "dimension": "partner_group",
+      "items": [
+        {
+          "id": "us",
+          "label_en": "United States",
+          "label_id": "Amerika Serikat",
+          "value_musd": 1990
+        },
+        {
+          "id": "china",
+          "label_en": "China",
+          "label_id": "Tiongkok",
+          "value_musd": 1220
+        },
+        {
+          "id": "asean",
+          "label_en": "ASEAN (regional group)",
+          "label_id": "ASEAN (kawasan)",
+          "value_musd": 1000
+        },
+        {
+          "id": "japan",
+          "label_en": "Japan",
+          "label_id": "Jepang",
+          "value_musd": 613.65
+        },
+        {
+          "id": "eu",
+          "label_en": "European Union (regional group)",
+          "label_id": "Uni Eropa (kawasan)",
+          "value_musd": 451.72
+        }
+      ]
+    },
+    {
+      "id": "commodities",
+      "title_en": "Top fishery commodity groups",
+      "title_id": "Kelompok komoditas perikanan utama",
+      "dimension": "product_group",
+      "items": [
+        {
+          "id": "shrimp",
+          "label_en": "Shrimp",
+          "label_id": "Udang",
+          "value_musd": 1870
+        },
+        {
+          "id": "tuna",
+          "label_en": "Tuna & skipjack",
+          "label_id": "Tuna & cakalang",
+          "value_musd": 1040
+        },
+        {
+          "id": "squid",
+          "label_en": "Squid, cuttlefish & octopus",
+          "label_id": "Cumi, sotong & gurita",
+          "value_musd": 889.73
+        },
+        {
+          "id": "crab",
+          "label_en": "Crab & swimming crab",
+          "label_id": "Kepiting & rajungan",
+          "value_musd": 507.74
+        },
+        {
+          "id": "seaweed",
+          "label_en": "Seaweed",
+          "label_id": "Rumput laut",
+          "value_musd": 315.62
+        }
+      ]
+    }
+  ],
+  "coverage_note": "Two distinct national marginals (by destination and by product). No product-by-destination bilateral cross-tab was supplied; do not join the two views. Values are published rounded national figures; selected flows exclude unlisted remainder. ASEAN and EU are regions, not single countries.",
+  "source_class": "official_attributed_reported_actual_2025",
+  "unsupported_csv": "https://bursaikan.kkp.go.id/statistik-perikanan/export/7",
+  "unsupported_csv_status": "404 when reviewed 2026-10-21",
+  "validation_rule": "Visible ribbons must equal one published product-group OR market-group amount. Do not fabricate counterpart country/product links, do not infer residual as official exact."
+}
