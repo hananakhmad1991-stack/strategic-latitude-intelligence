@@ -6,7 +6,7 @@ const nav=rd("js/sli-navigation.js"),css=rd("css/sli-navigation.css"),home=rd("i
 test("Shared SLI header preserves original monogram, live pages and grouped module discovery",()=>{
  assert.match(nav,/function renderPlatformMast\(\)/);
  assert.match(nav,/sli-platform-monogram','SLI'/);
- for(const url of ["./index.html#home","./index.html#overview","./provincial-intelligence.html","./sli-research-ai.html"])assert.ok(nav.includes(url),url);
+ for(const url of ["./index.html#home","./provincial-intelligence.html","./sli-research-ai.html"])assert.ok(nav.includes(url),url);
  assert.match(nav,/sli-platform-sector-menu/);
  assert.match(nav,/for\(const \[i,group\] of groups\.entries\(\)\)/);
  assert.match(nav,/sli-platform-sector-heading/);
@@ -19,7 +19,8 @@ test("Home and Research AI retain specialized headers, detailed SPA hides only l
  assert.match(css,/\.sli-dashboard-unified \.layout>\.main/);
  assert.match(css,/\.sli-platform-mast\[hidden\]\{display:none!important\}/);
  assert.match(css,/@media\(max-width:650px\)/);
- assert.match(home,/function overview\(\)/);
+ assert.doesNotMatch(home,/function overview\(\)/);
+ assert.doesNotMatch(nav,/mastLink\(\x27\.\/index\.html#overview\x27/);
  assert.match(home,/function homePortal\(\)/);
 });
 test("All public dashboards load one shared navigation and source features stay in place",()=>{
