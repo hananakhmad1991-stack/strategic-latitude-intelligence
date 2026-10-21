@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T07:42:04.840078Z",
+  "updated_at_utc": "2026-10-21T08:34:50.201429Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,55 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_d52b56bea0a0a12aea7ad0",
+      "title": "Bisikan Target Terbaru Saham Emiten Boy Thohir ADRO, ADMR, AADI Kala Buyback Jumbo - Bisnis Indonesia Premium",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOR2lockxLVXJubVFzbUJPaFR4QVhVWEVVMTkxRDFFZlRvUTA2a3llMVh0MUdWRWJtVHpwVGxqUDhCNE1JOENSTkE4QjVLbUJBbkpxVFJoR25GdkxqejZ3NEFEaEx5cXlUQ1BhZkJ4R0t2R1hPMDFrMzctQTNfY0ZTVW5lVTFXYXBCcXROMzZmb0V6VVlDQnlQc2lRU2p4T3hzcnVFYlpsSmhDN3ZBTjZhdThiTlBkTEpIV0FXR0hsMTNPSFBlVWpjRnM5QW4wZw?oc=5",
+      "publisher": "Bisnis Indonesia Premium",
+      "published_at_utc": "2026-10-21T08:29:45Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI",
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_3bb31573d504b13bf738f9",
+      "title": "Cermati Dinamika Pasar, Jasa Marga (JSMR) Siapkan Opsi Buyback Saham - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQWXJZd2FXOEhRZENSbnhYU01tQ1hYcTB4dHJBSHEweE5JZU04NFcwWEltejFObGR5X1NxWGZBNDlIRHdHSnh1RzdyOUZxUndUX0x5ZmE4TFJNS3owRkl5Mm5QcWxIT2pCczgwVm9odmdvckR4X1MwaFZac3RfX0dTMUVuNkptVUpycXlTSkd0V1pkT0ljbWFMX0taeVkwc3RaWm5EUFhRYU5FZHFiMWZGQklpSWY1bnEzN0RaY3lXdDZZNFZQeEpvMdIBzgFBVV95cUxOcFF3Z3BtbG9HVGROVmw5UjR2VFdaNTFmREZIR1AzT0M4V0dZT0NBXzFyY2ZTNU1MWGh0djlaUGlBMktkU3FVcEhqSE9MNnpJR1pqdEFfNE5sb09nOWx2MEVzWTRPMUxSUVhaMnVjME0yUHM4OXlWaUtHVHNvZ0FZckJzbU9ablZjeFpReWZSalZscXptenQ3eHZvZzExMzY0dHRRNzg4N2tTTmNaeEdQbUlBOHNGckVqaUtrU2Y4NXJxRG1mcUFMd0lteXNkZw?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-21T08:21:57Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d1ae316b4789e2122d876e",
+      "title": "Data Center Jadi Mesin Pertumbuhan, Intip Prospek Saham Telkom (TLKM) - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQQWNWbUhrUXVTZ21MaGxpaUJBYXptOFkzNTJ0ckxCNGpDY3JDNmZnWVU4SDEyeDNUSXQxY0hWZjV2ZUVsbU5tbFp5ZnZ4bG5OdVRQSTJOMmdZbzJCa1VHRDlPVzRXSjE5d19xXzRndm9BSVIzeDd6cXl4LWk2U2x2MEFQTjFmeFFzQTduTkg0d2NXcnY2YnhIY01Rc1UyMGx2LWUyWtIBnAFBVV95cUxNRk1icHZkQVV5NnJRYnNRWU5ZWDJoNVplZkdodDRQMFVfU0NnZnlYaXY1aHd0QzZYMm1FWHpnREU3SkpMRngwcGdKTG9JUUZCZkdyOUlqelRpNGQxRktmX21kMkNXT2R3cGNGRDdJdmtoeDRrc3JJOWpGVmoza0p6T25Oa292bHVya0t5RzZfVk12dzA0d3pyUUJoTjY?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T08:09:24Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_954eb638347c5aa8dc38ba",
       "title": "Produksi Tembus Rekor dan Laba Tumbuh Dua Digit, Saham PGEO Kian Prospektif - Info Ekonomi",
@@ -97,7 +146,8 @@
       "published_at_utc": "2026-10-21T06:04:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "AADI"
+        "AADI",
+        "ADRO"
       ],
       "sector": "coal",
       "source": "public_google_news_rss",
@@ -278,6 +328,22 @@
         "TLKM"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_6fe54b9682b21f25a0aca6",
+      "title": "Semarak Konglomerat Buyback Saham, Prajogo Siapkan Dana di Atas Denda BREN-CUAN - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPTG9HVURnaV9BQlZBVjh4anlOOV9pcGxGYVZkbXcybmRXNTJsVWpvUWZqdkExekdnUGhEVU5MY2Zzemh6MlhSc1FadjVWOHVoWi1XQWJ5UmVKWEdPUEg3bkpobm9taldNdHI4OWRIcWUxWFFrRU1IcFlSQ09KRkFraTBJWW5PZkhjdzctSEtqR01KVmR3bXl0UGtfbm1DZnV4dHA5cDFyQW95eGM4OHZZRVYzRHJYSlQwMG9keGhSMFhZd0JaVGd5NTFwZEZsR1VS0gHWAUFVX3lxTE4wUVRUUVgwMTRLV25uVVZhYnczbzkxVHJKYkNzbHlnVVdKRF9QRmJGQzVuSWp1UTNuSGJwb0l2azRfZmtQTURFOU1QaS1xSkl3anJqLUkwZzA4VzlQUGJZZG1RM01WT2hjazdNUm5sX25jdkc4allvVGM3QU1wNVoySEV5UkNzUDdlTTR3TGdYc0RSMFpIZEZKdDVLN1lvV1J2eldRLWIxUWJYTFkxaVpzVHpXUlpTRmNnR1ZIOHFpVHR3bDVhSkRfUms5MmtNa2g5c2dEVHc?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-21T03:05:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -1303,6 +1369,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_547d2b293d9a7684dd17ba",
+      "title": "Dukung Nilai Jangka Panjang, Telkom (TLKM) Siapkan Percepatan Buyback - Emitennews.com",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQcHdzTGdVOUlIYW5aM3Juel9qSS1JWmRIT0FlckZmT1VyMmtBb3FtdThsdm1mYjhkM08yMk4ySWExaHd6U2wxN0hzX0ZYM3dqTXVPby15UElQZDhFZFFLLXp6eXdRbUZUSkRBeTJmMDl1RUotV1Q3VC1nNEZGNGd5NEdSRktSVC1XcS02SDA1emtFWGNkS2gwQldR?oc=5",
+      "publisher": "Emitennews.com",
+      "published_at_utc": "2026-10-20T02:59:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_b066946d861a21e3baacf1",
       "title": "BEI Bakal Keluarkan 80 Saham dari IHSG, DCII dan BREN Ikut Terdampak - HARIAN MISTAR",
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPREMwZ3BERTF2bWs3Z3FFZUI1Mm1TNlJha2NWQTEwQzVzN09LaW9SSDRnLVVtMXl3c2VXSXMxa2JsQi1IWGlhVUYzRVFIclBBc0RmMjNUS3BYTEthVTZmd25ydEZtYjdPV001VXpoVk1WZFljZERrV19fZmpmLXpCU1VCWTdHbDBlOUFjNXgzQU9DRjBCbllncEZ3SGZZTlk?oc=5",
@@ -2055,6 +2137,22 @@
         "BREN"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_995f7a308a1e01ac139000",
+      "title": "Rekomendasi Saham Analis 19 Oktober 2026: TINS, NCKL, INCO, AADI, CPIN - Liputan6.com",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOWE5MNm1kNThEc2VYckZtQ3lZcXMydW1tb3pDVzBnd3U3anVzMnI3NURpa0hUUmxDLUViSU1yRGY4LXVIYWg4YlpHNU8weTlIMHdwMUI1dkQ1X2E4VWJQei1TNnU5N0R5cEhRUHVYSmwzS3Mzby02VkpEUWxQVkZ2NFpyVGN6TG9vU0dVVWxzVXhxYXUzQUpBdXI3NjBlME43MncyUHhzNlNlR2cxclHSAaQBQVVfeXFMTVBNTS1aR192c3NoWWduU3VFNXBXNnJZTHZ4am1fMGRFb0ZIUllQMXhTLVJHZU9QSEJaWEtZTFd5cW85RDhUMmxLR2ZsQXFfaHVmWXZuUDFSZE1PVnNNT2R6Y2tEMERWSHRqX0MyYkN5SHNkZzdkREp2VG9acDJJeGtBQ1ZFZll2a2RCMW9kX2hUdjhZMG9BSEZ4d0lQTDA5a0JraXE?oc=5",
+      "publisher": "Liputan6.com",
+      "published_at_utc": "2026-10-19T02:00:37Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "CPIN"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
