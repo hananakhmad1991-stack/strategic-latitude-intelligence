@@ -207,6 +207,6 @@ def adapted_rows(name,d):
      out=record(("series",str(s.get("id")),"top2",str(year),str(j)),
       "KKP "+str(year)+" "+str(s.get("label_id"))+" · "+str(x.get("province")),
       u,str(year),x["values"][i],unit,
-      "2024 province splits are not backcast; historical administrative units as reported. Printed KKP row "+str(x.get("source_name"))+".","KKP",
+      "Papua 2024 province splits are not backcast; historical administrative units as reported. Printed KKP row "+str(x.get("source_name"))+".","KKP",
       "Top-two province/year evidence subset; all 354 source numeric observations remain separately navigable in Marine dashboard. Missing ≠ zero.")
      if out:yield out
