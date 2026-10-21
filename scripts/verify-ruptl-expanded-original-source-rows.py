@@ -33,7 +33,11 @@ def main():
             numbered=[]
             for gi,table in enumerate(page.find_tables().tables):
                 for ri,cells in enumerate(table.extract()):
-                    if not cells or compact(cells[0])!=str(row["original_source_row_no"]):continue
+                    if not cells:continue
+                    target=str(row["original_source_row_no"])
+                    first=compact(cells[0])
+                    split_no=(len(cells)>1 and first in ("","-") and compact(cells[1])==target)
+                    if first!=target and not split_no:continue
                     values=[norm(x) for x in cells]
                     full= " | ".join(values)
                     match_label=compact(row["source_project_label"]) in [compact(v) for v in values]
