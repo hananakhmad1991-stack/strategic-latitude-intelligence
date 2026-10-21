@@ -127,8 +127,8 @@ function marineView(host,data,viewID){
  note:"Separate 2025 marginal group only. Not a product × country pair or full-country matrix.",
  headers:[v.dimension,"USD million","Period"],row:e=>[e.to,e.value,data.period]});
  dataTable(host,[T(v.dimension==="partner_group"?"Destination group":"Commodity group",v.dimension==="partner_group"?"Kelompok tujuan":"Kelompok komoditas"),T("USD million","USD juta")],v.items.map(x=>[T(x.label_en,x.label_id),fmt(x.value_musd)]));
- host.append(E("p","tf-warning",T("KKP Bursa Ikan CSV was not accessible; the source is the verified annual KKP report, not an inferred bilateral product allocation.",
- "CSV Bursa Ikan KKP belum dapat diakses; sumber yang digunakan adalah rilis tahunan KKP terverifikasi, bukan alokasi bilateral produk hasil dugaan.")));
+ host.append(E("p","tf-warning",T("KKP Bursa Ikan CSV was not accessible; the source is KKP’s dated original publication, not an inferred bilateral product allocation.",
+ "CSV Bursa Ikan KKP belum dapat diakses; sumber yang digunakan adalah publikasi resmi KKP bertanggal, bukan alokasi bilateral produk hasil dugaan.")));
 }
 async function render(host,sector){
  const token=++generation;host.replaceChildren(E("p","tf-warning",T("Loading verified sector flows…","Memuat arus sektoral terverifikasi…")));
