@@ -77,11 +77,11 @@ test("Research AI has evidence-only source integration without training claims",
 });
 
 
-test("five direct chapter IX sampling-error crosswalks cover 39 regions with documented uncertainty",()=>{
+test("original five Chapter IX crosswalks keep their verified precision baseline",()=>{
  const matrix=data.sampling_error_2026;
- assert.equal(matrix.schema,"sli-bps-welfare-march-2026-five-indicator-rse-v1");
- assert.equal(matrix.matched_provincial_estimates,180);
- assert.equal(matrix.matched_unavailable,15);
+ assert.equal(matrix.schema,"sli-bps-welfare-march-2026-six-indicator-rse-v2");
+ assert.equal(matrix.matched_provincial_estimates,216);
+ assert.equal(matrix.matched_unavailable,18);
  assert.equal(matrix.nonmatched,0);
  const expected={
   uninsured:["9.28",316],
@@ -90,7 +90,8 @@ test("five direct chapter IX sampling-error crosswalks cover 39 regions with doc
   bpnt_sembako:["9.126",513],
   e_money_households:["9.133",523]
  };
- assert.deepEqual(Object.keys(matrix.metrics),Object.keys(expected));
+ for(const key of Object.keys(expected))assert.ok(matrix.metrics[key],key+" should remain matched");
+ assert.equal(Object.keys(matrix.metrics).length,6);
  let standard=0,caution=0,unreliable=0,unknown=0,validCI=0;
  for(const [id,[table,page]] of Object.entries(expected)){
   const row=matrix.metrics[id];assert.equal(row.sampling_table,table);assert.equal(row.pdf_page,page);
@@ -128,4 +129,55 @@ test("five direct chapter IX sampling-error crosswalks cover 39 regions with doc
  assert.match(js,/samplePrecision\(data,metric,p.name\).status!=="unreliable"/);
  assert.match(html,/<th>CI 95% \(%\)<\/th>/);
  assert.match(html,/Ekspor 9 indikator provinsi/);
+ assert.match(html,/<th>SE \(p\.p\.\)<\/th>/);
+});
+
+
+test("new drinking-water crosswalk agrees with primary source, flags precision and avoids invented district data",()=>{
+ const m=data.sampling_error_2026.metrics.piped_drinking_water;
+ assert.equal(m.sampling_table,"9.88");
+ assert.equal(m.pdf_page,434);
+ assert.equal(m.source_main_table,"6.23");
+ assert.equal(m.source_main_pdf_page,215);
+ for(const k of ["standard_error_pp","relative_standard_error_pct","confidence_interval_low_pct","confidence_interval_high_pct"])assert.equal(m[k].length,39,k);
+ assert.equal(m.relative_standard_error_pct[38],0.82);
+ assert.equal(m.standard_error_pp[38],0.07);
+ assert.equal(m.confidence_interval_low_pct[38],8.87);
+ assert.equal(m.confidence_interval_high_pct[38],9.16);
+ assert.equal(data.provinces[38].values[met.piped_drinking_water.index],9.02);
+ let numeric=0,notReported=0,standard=0,caution=0,unreliable=0;
+ for(const [i,p] of data.provinces.entries()){
+  const value=p.values[met.piped_drinking_water.index];
+  const se=m.standard_error_pp[i],rse=m.relative_standard_error_pct[i],low=m.confidence_interval_low_pct[i],high=m.confidence_interval_high_pct[i];
+  assert.ok(rse!==null&&rse>=0);
+  if(rse>50)unreliable++;else if(rse>25)caution++;else standard++;
+  if(value===null){notReported++;assert.equal(se,null);assert.equal(low,null);assert.equal(high,null)}
+  else{numeric++;assert.ok(low<=value+.02&&value-.02<=high,p.name);assert.ok(se>=0,p.name)}
+ }
+ assert.deepEqual([numeric,notReported,standard,caution,unreliable],[36,3,34,2,3]);
+ assert.equal(data.sampling_error_2026.matched_provincial_estimates,216);
+ assert.equal(data.sampling_error_2026.matched_unavailable,18);
+ assert.equal(data.quality.sampling_error_metric_count,6);
+ assert.equal(data.provincial_metrics.length,9);
+ assert.match(data.sampling_error_2026.cautions,/three unmatched welfare indicators/);
+});
+test("Full appendix index is structural internal review metadata, not 24,921 public observations",()=>{
+ const a=data.sampling_error_2026.internal_full_appendix;
+ assert.equal(a.tables,133);
+ assert.equal(a.parsed_panels,253);
+ assert.equal(a.geographies,39);
+ assert.equal(a.rse_group_categories,639);
+ assert.equal(a.extracted_rse_estimate_candidates,24921);
+ assert.equal(a.raw_field_candidates,124605);
+ assert.equal(a.rse_group_categories*a.geographies,a.extracted_rse_estimate_candidates);
+ assert.equal(a.source_pdf_sha256,data.source.pdf_source_sha256);
+ assert.match(a.rights,/INTERNAL/);
+ assert.match(a.status,/NOT complete/);
+ assert.equal(data.sampling_error_2026.nonmatched,0);
+ for(const m of Object.values(data.sampling_error_2026.metrics))assert.equal(m.standard_error_pp.length,39);
+ const browser=from("js/sli-bps-welfare-2026.js");
+ const ai=from("research-api/src/welfare-corpus.mjs");
+ assert.match(browser,/SE \(\?p\.p\.|q\.se/);
+ assert.match(ai,/standard_error_pp/);
+ assert.match(from("sli-welfare-2026.html"),/24\.921 kandidat/);
 });
