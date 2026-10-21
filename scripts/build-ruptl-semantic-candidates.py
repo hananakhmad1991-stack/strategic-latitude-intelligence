@@ -13,7 +13,9 @@ ORIGINAL=BASE/"sli-ruptl-primary-pdf-2025-2034.json"
 PROV=BASE/"sli-ruptl-provincial-source-projects-2025.json"
 EXPANDED=BASE/"sli-ruptl-expanded-22-annex-source-rows.json"
 OUT=BASE/"sli-ruptl-970-semantic-candidates-2025.json"
-TECH=re.compile(r"^(?:PLT[A-Z][A-Z0-9]*|BESS|PS|PLTBio)(?:\s|$)",re.I)
+# The source prints footnoted types (PLTBg1)), hybrids (PLTS+BESS),
+# slash-delimited gas (PLTG/GU), and PumpStorage in technology CELLS.
+TECH=re.compile(r"^(?:PLT.{1,21}|BESS|PUMP\\s*STORAGE|PS)\\s*$",re.I)
 PROGRAM=re.compile(r"kuota|tersebar|lisdes|dedieselisasi|pembangkit\s*ebt|isolated|microgrid",re.I)
 CLEAN=lambda x: " ".join(str(x or "").split())
 def identity(s):
