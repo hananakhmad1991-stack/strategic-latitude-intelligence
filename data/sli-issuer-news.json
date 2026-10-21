@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T22:59:40.065156Z",
+  "updated_at_utc": "2026-10-21T23:26:42.444012Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,54 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_55781d9c388c28d14025b6",
+      "title": "Daftar Pihak yang Terlibat Pelanggaran DSSA & BREN-CUAN - Bloomberg Technoz",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPal9KR3FnV2t5MGxIX2pXMTVsb3V2VlduZnU0d2lmT05CWURMdWlScVloaFc0MnRlVjNSZVVoRXYwV3JPOTJqdnhlaXNvR1g0NFZHZmhHVU5Ya0dpUXFoZ1NfWW5NOEZ2Y1lZRzhzTVhIc0VUUGc3MXMtWVZOVkZ2bDBZOU5hRmowaDB5Z2FJSTEyM1ZrbTNHYWppdHJIQWJ6ajd6NkJlT3ZTTWhMdGFUWnpyZw?oc=5",
+      "publisher": "Bloomberg Technoz",
+      "published_at_utc": "2026-10-21T23:21:10Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_3e3d561339a0e740b4cd16",
+      "title": "OJK ungkap pihak-pihak terkait manipulasi saham DSSA, BREN, CUAN - IDNFinancials",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOQ2R5X3BHbFMtU3QtMkloQjNJd1lEaldqQkcyd1JjanZKVFFQNG94UEw3NG83V28zc2w3WFJiSFFHYkFtN1NMUkpnbEVMTTVnUW5WcTRkRTdyMU05VVZoOHZXc0pEVDl3R0dpSFd6NnZ4dmM2dXJwcEh3bzFBRTlHMnZUaU5jQTRZN3puYXplYUh5Yl9uVkVWSldscnpQeGFhNlFyMUQ3UmN5dw?oc=5",
+      "publisher": "IDNFinancials",
+      "published_at_utc": "2026-10-21T23:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ba5558267923fa4e785ef7",
+      "title": "Jasa Marga (JSMR) Buka Peluang Buyback Saham - Bloomberg Technoz",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOQUN0a0Qzb1FmVm1hOXBINC1ERG5sdjc1RkVpZXNCZ1oyTG1sU3BiN2xJQ0ozc216NjFQSXBlN1dDQ01aNXIxNVpTaGpvdURMM0ktX0FXVTVGZ3MzS3lTLS1ybFB5OV8zZU1iTENnM1owNEVMa1NROU5aTHNuc29qXzlia2lXZ1hFT0E5elVXUlBLTXpwQk9xZzJR?oc=5",
+      "publisher": "Bloomberg Technoz",
+      "published_at_utc": "2026-10-21T23:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_b83d6116fb8ee74ea843a9",
       "title": "Teknikal Saham ANTM: Melemah 0.73% pada Rabu, Death Cross Menekan - JournalArta",
@@ -3205,6 +3253,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_3f919ca312649b9d857d13",
+      "title": "Emiten Depakan MSCI Dilego Asing Senin Sore Ini (31/8), CPIN Top Sell! - Emitennews.com",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOal9JOFJQWUwwWVh2NVI3T1h2S052d0x2eVBpd1lueTQzajJQb0ZRX1gtZU4yOXp2RmtzWTlaVElLZjJBakFkS2F4MkZQVU9qdGdpQ3ZtRFZ5UXlkYWtxMFBlRFNQa3d2QmthVFB0blB5cUZ5S3pnNmZpNFQtTjd6TUdZWEZRNWJuNHk2ajF4ZXdRSVFyZmwzeg?oc=5",
+      "publisher": "Emitennews.com",
+      "published_at_utc": "2026-10-19T07:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "CPIN"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_549a19c9af826724e37aef",
       "title": "Diam-diam Asing Serok GOTO, ENRG, hingga INDF saat Wacana Standalone Picu Outflow - Bisnis.com - Market",
       "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQTlF1cXRqS2pRUG9yU2g3OXE3Q1NrS1M4YmJkYkxzcWhiU0ZHYVgwc2o1X0diTDBwRHpDZlU3YTg1TlFPLVh2SU9VMEtIVldFN0oyVlFZRnJpc1pHSi1FZkVHWnFTRmpscHY3bnVJWkxIVWJZeUlBbVd0aXNsN2lHWWhXMDlzZjJCMG9SNzFlTkVkS3BpNWNBLTZKZlQzdlJlbDJoaHltUzQ1MGt2ZlVSc1ZlcHBlRzZ4bFE5cjJYRkdjXzl2NmVOMw?oc=5",
@@ -5204,6 +5268,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_db214ab92c64478288f4b5",
+      "title": "Saham PTBA, MEDC, dan ADRO Bawa Indeks Bisnis-27 Dibuka Menguat - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNekNsY2xVaURRdzFYR1RkRHZhLVFRYmpQTWs0WTBPWlRRZ3RmVXZkTHczd3haUzNraUFUTEZFWTNDaFBLcnVFb3o4SmxPSmFteTRWU1BwZUsxQm9vZWxJb182RW5kdDg5WFhOMUV5cEt4UVVtMTlEUng0QWd4VGxVU0dBMFpfWWJMZmc4cGFlOC1VTDBXd2tpVDg2N2RjNmk5ZlVrLWw0OWxoejFCZ0t4OA?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-14T02:26:54Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_4de31ee82d9bfd51036a8e",
       "title": "Rekomendasi Saham Hari Ini: MEDC, INCO, dan ENRG - Ajaib",
       "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOQVkyWGNSQzhsZFYzV3pqTG5qZkhXXzVWMEpLanVTT0d0NHpXSGsxdnRkTW93cWFuMUgwMG1Xc0VackctcXRKVU9Iak9OQzhETl9yZ29GeXhPbmJWWXpyb3ZjcTJZWlNLTTVFUnlEMzNOVVFhR1lvSUJaZWRlZ2U5blhRWENJZw?oc=5",
@@ -5242,22 +5322,6 @@
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOSDVBMEU0OVhPMW8taVVidHI2aUJzc1NzMFdQV3RhbS15Ump6WGRPRi1IN2hzT0FzMkJLQ3ZuanN0djJpN1lCWmFLTGwzREMxUGRWaFcxYndlRWozMC1oMnBTMTdNRHpaTkRndV9QOEhSaUc5clJwa2FSV21DemtHSlBMWE5fRUJKVG00WlE1eng4YV9fTmdseTFlM1I?oc=5",
       "publisher": "investor.id",
       "published_at_utc": "2026-10-14T00:35:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_84a58873d2d4c106df2a82",
-      "title": "IHSG Diramal Masih Melemah, Analis Rekomendasikan Saham EMAS, PTBA, hingga ADRO - Katadata.co.id",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNa0ZudHE2TG9BaTdQb0Z0eHZnNUNNLUI5UXl1Ym5oWklISERXUTF0WFVwWGhGb2FhcjloQm56WEJrVEtuN1NnYTc0TEp3OUdUcHJ3UlBpU2htVHJEMHFLY1dOeVZaRW42bi05TnhEVi1uRkNqTzJLSlpTR1NMVFNKbW5qS3RFcHRVZHNGbXVMVVQxRC14aFV1dU02SDZtNVhZNzVLYUJ6MnpCaTdaVGhzT0VBUEZZMkVTWUZVQ3ZhMU1YeVh6ckJkT9IBzgFBVV95cUxNSG00b2JtYXo3aHE4OC04MG1oZGoyN0ctNW10aTdVdm5ha2ZHNE95MEY0S0ZHYmhPczhjVmo4dkJMYUw3NjduQzlfaE1ZOWFpQ2ZTOHRoY19DMThhWXgtcVB4WlE5eUpZUzBNdUFQTklXc0VEem1rTEFxbDJpZWFOWXNFa3VpTTlPYVlPMnM2Yk53YXpRLXBleDBySUt0MGFjQlN1Nmo2ZF9WYnF0VTRFcm5XMG1oekhjdVplMnl6azhKZDNOWF9RU0NpempoUQ?oc=5",
-      "publisher": "Katadata.co.id",
-      "published_at_utc": "2026-10-13T23:18:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "PTBA"
