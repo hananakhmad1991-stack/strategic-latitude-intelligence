@@ -82,7 +82,7 @@ test("2026 official Bappenas, Kemendag, BPS, BI and BMKG leadership has source-p
  assert.equal(office("bappenas","sek").person,"Teni Widuriyanti");
  assert.equal(office("bappenas","dir-marine").person,"Mohamad Rahmat Mulianda");
  assert.equal(office("kemendag","w").person,"Dyah Roro Esti Widya Putri");
- assert.equal(office("kemendag","it").person,null,"Do not invent trade inspector currently unverified");
+ assert.equal(office("kemendag","it").person,"Helmy Santika","Official Kemendag appointment on 8 July 2026 supersedes outdated vacancy");
  assert.equal(office("kemenkeu","m").person,"Suahasil Nazara");
  assert.equal(office("kemenkeu","w").person,"Juda Agung");
  assert.equal(office("bps","m").person,"Amalia Adininggar Widyasanti");
