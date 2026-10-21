@@ -5,7 +5,7 @@ const groups=[
  ['Start & research tools','Mulai & perangkat riset','overview','terminal','research','guide','membership'],
  ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','investment','entities','province','opportunity','gini','labs'],
  ['Energy, minerals & trade','Energi, mineral & perdagangan','energy','electricity','ruptl','minerals','trade','map'],
- ['Food & agriculture','Pangan & pertanian','food'],
+ ['Food, marine & fisheries','Pangan, kelautan & perikanan','food','marine'],
  ['AI & digital transformation','AI & transformasi digital','ai','aihub','komdigi','digital','digitalgov'],
  ['Policy, geopolitics & environment','Kebijakan, geopolitik & lingkungan','policy','ria','geopolitics','indo','climate'],
  ['Reference & quality','Referensi & kualitas','glossary','freshness']
@@ -26,6 +26,7 @@ const modules={
  labs:['Investor & Scenario Labs','Lab Investor & Skenario','intelligence-labs.html','Source-linked screening and user-supplied model assumptions.','Penyaringan berbasis sumber dan asumsi model dari pengguna.'],
  energy:['Energy Security · Overview','Ketahanan Energi · Gambaran Umum','index.html#energy','Oil, gas, power, biofuels, transition, governance and resilience.','Migas, listrik, bioenergi, transisi dan tata kelola.'],
  food:['Food & Agriculture Intelligence','Intelijen Pangan & Pertanian','food-agriculture-intelligence.html','Official-date agricultural trade, farmer indices, food prices, institutions, exports and evidence assessments.','Perdagangan pertanian, NTP, harga pangan, kelembagaan dan analisis bersumber resmi.'],
+ marine:['Marine & Fisheries Intelligence','Intelijen Kelautan & Perikanan','marine-fisheries-intelligence.html','KKP historical fishery production, aquaculture, seaweed, fishers and blue economy source inventory.','Produksi perikanan KKP, budidaya, rumput laut, nelayan serta inventaris sumber ekonomi biru.'],
  map:['Strategic Map','Peta Strategis','index.html#map','Geographic evidence with varying precision, status and source dates.','Bukti spasial dengan akurasi, status dan periode berbeda.'],
  trade:['Trade Flows','Arus Perdagangan','index.html#trade','Commodity trade, partners, balances and coverage conventions.','Komoditas, negara mitra, neraca dan cakupan data.'],
  minerals:['Critical Minerals · Overview','Mineral Kritis · Gambaran Umum','index.html#minerals','Extraction, processing, reserves, ownership and project status.','Ekstraksi, pengolahan, cadangan, kepemilikan dan status.'],
@@ -50,7 +51,7 @@ const related={
  terminal:['entities','research','policy','geopolitics'],
  entities:['investment','aihub','energy','policy'],
  research:['overview','terminal','macro','aihub'],membership:['overview','research','guide','glossary'],overview:['terminal','research','investment','energy'],investment:['province','opportunity','gini','labs'],map:['investment','energy','province'],
- trade:['minerals','energy','macro','food'],energy:['electricity','ruptl','map','trade','food'],food:['trade','macro','province','policy'],minerals:['map','trade','investment'],
+ trade:['minerals','energy','macro','marine'],energy:['electricity','ruptl','map','trade','food'],food:['marine','trade','macro','province'],marine:['food','trade','climate','province'],minerals:['map','trade','investment'],
  ai:['aihub','komdigi','digital','digitalgov'],policy:['geopolitics','ria','indo','climate'],geopolitics:['policy','indo','trade','energy'],macro:['opportunity','gini','investment'],
  opportunity:['province','gini','labs'],province:['opportunity','gini','map','electricity'],gini:['province','opportunity','macro'],
  labs:['province','opportunity','indo'],electricity:['energy','ruptl','province'],ruptl:['energy','electricity','aihub'],
@@ -66,7 +67,7 @@ const text=(en,id)=>lang()==='id'?id:en;
 const label=id=>id==='detail'?(document.title||document.querySelector('h1')?.textContent||'SLI Dashboard').split('|')[0].trim().slice(0,90):(modules[id]?.[lang()==='id'?1:0]||id);
 const href=id=>'./'+modules[id][2];
 function node(tag,classes,txt){const n=document.createElement(tag);if(classes)n.className=classes;if(txt)n.textContent=txt;return n}
-const moduleIcon=Object.freeze({overview:'government',terminal:'technology',research:'technology',entities:'building',investment:'project',macro:'project',opportunity:'project',province:'globe',energy:'energy',food:'government',map:'globe',trade:'globe',minerals:'mineral',electricity:'energy',ruptl:'energy',ai:'technology',aihub:'technology',policy:'government',geopolitics:'globe',climate:'globe',ria:'government',guide:'link',glossary:'link',freshness:'project'});
+const moduleIcon=Object.freeze({overview:'government',terminal:'technology',research:'technology',entities:'building',investment:'project',macro:'project',opportunity:'project',province:'globe',energy:'energy',food:'government',marine:'globe',map:'globe',trade:'globe',minerals:'mineral',electricity:'energy',ruptl:'energy',ai:'technology',aihub:'technology',policy:'government',geopolitics:'globe',climate:'globe',ria:'government',guide:'link',glossary:'link',freshness:'project'});
 function link(id,cls){const a=node('a',cls),identity=window.SLIEntityIdentity;if(identity){const i=identity.icon(moduleIcon[id]||'building');i.classList.add('sli-nav-icon');a.append(i)}a.append(node('span','',label(id)));a.href=href(id);return a}
 
 /* Unified SLI masthead for detailed dashboards. Index #home and Research AI
