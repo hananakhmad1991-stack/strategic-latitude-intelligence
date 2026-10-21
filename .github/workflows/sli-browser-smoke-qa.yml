@@ -19,7 +19,9 @@ on:
       - 'sli-sector-data-library.html'
       - 'ai-intelligence-hub.html'
       - 'data/sli-worldbank-ai-2025-digitized-figure-panels.json'
+      - 'data/sli-stanford-2026-digitized-figures.json'
       - 'js/sli-digitized-ai-figures.js'
+      - 'js/i18n.js'
       - 'css/sli-home-portal.css'
       - 'css/sli-sector-data-library.css'
       - 'css/sli-navigation.css'
@@ -99,8 +101,9 @@ jobs:
           Run: $RUN_URL
 
           Inspect the test artifact for rendered screenshots and failure messages.
-          This test checks local public routes, navbar, entity selection, migas inspector
-          and optional DERGUBA lab. It does NOT verify source facts or external data feeds.
+          This test checks local public routes, desktop/mobile navigation, sector filters,
+          source tables, strategic map, AI Atlas chart selection and language switching,
+          and generated export formats. It does NOT verify source facts or external data feeds.
           Review before any CSS fix; do not auto-merge or self-deploy.
 
           $MARKER
