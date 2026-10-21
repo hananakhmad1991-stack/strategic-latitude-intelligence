@@ -7,6 +7,7 @@
 <meta name="theme-color" content="#091a2a">
 <title>Kelautan & Perikanan | Strategic Latitude Intelligence</title>
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
+<link rel="stylesheet" href="./css/sli-province-map.css?v=20261021-geo1">
 <link rel="stylesheet" href="./css/sli-marine-fisheries.css?v=20261021-kkp-district2">
 <script src="./js/sli-live-data.js?v=20261019-id-audit9" defer></script>
 <script src="./js/sli-shared-appendix.js?v=20261016-glossary1" defer></script>
@@ -73,6 +74,27 @@
 <section class="mf-section" id="marine-source-atlas">
  <div class="mf-section-title"><div><p class="mf-overline">05 / KKP SOURCE ATLAS</p><h2 data-id="Atlas Statistik KKP · Regional, Pembenihan &amp; Sumber" data-en="KKP Statistical Atlas · Regions, Hatcheries &amp; Sources">Atlas Statistik KKP · Regional, Pembenihan &amp; Sumber</h2></div><small data-id="Screening 21 Oktober 2026 · data observasi 2024" data-en="Screened 21 October 2026 · 2024 observations">Screening 21 Oktober 2026 · data observasi 2024</small></div>
  <p class="mf-hint" data-id="Ekspansi digitalisasi: 37 provinsi pelaporan nelayan, 26 provinsi dengan angka rumput laut (sel kosong bukan nol), dan 12 kelompok benih unggulan. Katalog 25 jalur sumber resmi memperlihatkan peluang data yang belum diimpor." data-en="Expanded source-backed snapshot: 37 reporting fisher provinces, 26 seaweed provinces with numeric source cells (blanks are not zeros), and 12 leading fish-seed categories. A 25-route KKP source atlas identifies still-unimported data.">Ekspansi digitalisasi: 37 provinsi pelaporan nelayan, 26 provinsi dengan angka rumput laut (sel kosong bukan nol), dan 12 kelompok benih unggulan. Katalog 25 jalur sumber resmi memperlihatkan peluang data yang belum diimpor.</p>
+ <article class="mf-card mf-atlas-historical" id="mfHistoryPanel">
+  <h3 data-id="Peta &amp; tren provinsi KKP · 2019–2024" data-en="KKP provincial map &amp; time series · 2019–2024">Peta &amp; tren provinsi KKP · 2019–2024</h3>
+  <p class="mf-hint" data-id="354 observasi berangka dari dua tabel KKP; nelayan cocok persis dengan total nasional, rumput laut selisih pembulatan maksimum 0,03 ton. Ini angka historis, bukan real-time." data-en="354 numeric observations across two KKP tables; fisher totals reconcile exactly and seaweed year totals differ by at most 0.03 tonne from row rounding. Historical, not live.">354 observasi berangka dari dua tabel KKP; nelayan cocok persis dengan total nasional, rumput laut selisih pembulatan maksimum 0,03 ton. Ini angka historis, bukan real-time.</p>
+  <div class="mf-atlas-filters">
+   <label for="mfHistoryMetric" data-id="Indikator" data-en="Indicator">Indikator</label><select id="mfHistoryMetric"><option value="seaweed" data-id="Rumput laut (ton)" data-en="Seaweed (tonnes)">Rumput laut (ton)</option><option value="marine_fishers" data-id="Nelayan laut (orang)" data-en="Marine fishers (people)">Nelayan laut (orang)</option></select>
+   <label for="mfHistoryYear" data-id="Tahun observasi" data-en="Observation year">Tahun observasi</label><select id="mfHistoryYear"><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option></select>
+   <button type="button" id="mfHistoryReset" data-id="Reset pilihan peta" data-en="Reset map selection">Reset pilihan peta</button>
+   <button type="button" id="mfHistoryCSV" data-id="Ekspor CSV beratribusi" data-en="Export cited CSV">Ekspor CSV beratribusi</button>
+  </div>
+  <p id="mfHistorySummary" class="mf-hint" role="status">—</p>
+  <div class="mf-history-layout">
+   <div><div id="mfHistoryMap" class="sli-province-map" role="region" aria-label="KKP illustrated provincial choropleth"></div>
+     <p class="mf-hint" data-id="Penting: poligon pada peta berasal dari GeoJSON komunitas berlisensi CC BY 4.0 di SLI, bukan batas wilayah resmi BIG. Tidak dipakai sebagai geometri WPP. Pemekaran Papua 2024 tidak di-backcast." data-en="Important: map polygons use an existing CC BY 4.0 community-derived illustrative SLI GeoJSON, NOT official BIG boundaries or WPP polygons. 2024 Papua splits are not backcast.">Penting: poligon pada peta berasal dari GeoJSON komunitas berlisensi CC BY 4.0 di SLI, bukan batas wilayah resmi BIG. Tidak dipakai sebagai geometri WPP. Pemekaran Papua 2024 tidak di-backcast.</p>
+   </div>
+   <div class="mf-history-right">
+    <p id="mfHistorySelected" class="mf-hint">—</p><div id="mfHistoryTrend" class="mf-history-trend" role="group" aria-label="KKP yearly historical trend"></div>
+    <div class="mf-scroll mf-history-table"><table><thead><tr><th data-id="Peringkat" data-en="Rank">Peringkat</th><th data-id="Provinsi" data-en="Province">Provinsi</th><th data-id="Angka" data-en="Value">Angka</th><th data-id="Kontribusi" data-en="Share">Kontribusi</th></tr></thead><tbody id="mfHistoryRows"></tbody></table></div>
+   </div>
+  </div>
+  <p class="mf-hint"><a id="mfHistorySource" href="https://portaldata.kkp.go.id/portals/data-statistik/layer1" target="_blank" rel="noopener noreferrer" data-id="Buka tabel KKP resmi ↗" data-en="Official KKP statistic ↗">Buka tabel KKP resmi ↗</a> · <a href="https://tanahair.indonesia.go.id/portal-web/unduh/" target="_blank" rel="noopener noreferrer" data-id="Unduh batas wilayah resmi BIG (belum diintegrasikan) ↗" data-en="BIG official boundary download (not yet integrated) ↗">Unduh batas wilayah resmi BIG (belum diintegrasikan) ↗</a></p>
+ </article>
  <div class="mf-two">
   <article class="mf-card">
    <h3 data-id="Perbandingan provinsi 2024" data-en="2024 provincial comparison">Perbandingan provinsi 2024</h3>
@@ -146,6 +168,8 @@
 </main>
 <script type="module" src="./js/sli-marine-fisheries.mjs?v=20261021-kkp1"></script>
 <script type="module" src="./js/sli-marine-governance.mjs?v=20261021-governance-v2"></script>
+<script src="./js/sli-province-map.js?v=20261021-kkp-history1" defer></script>
+<script type="module" src="./js/sli-marine-regional-history.mjs?v=20261021-kkp-history1"></script>
 <script type="module" src="./js/sli-marine-source-atlas.mjs?v=20261021-kkp-district2"></script>
 <script src="./js/sli-navigation.js?v=20261019-id-audit9" defer></script>
 </body>
