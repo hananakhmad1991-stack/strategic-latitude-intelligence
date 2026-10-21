@@ -163,14 +163,14 @@ test("Food functional intelligence matches the Oil & Gas six-group navigation mo
  const page=read("food-agriculture-intelligence.html");
  const groups=[
  ["policy",["pres","kemenkopangan","bappenas","kemenkoekon"]],
- ["production",["kementan","ditjen-tp","ditjen-horti","ditjen-psp","pusdatin","kkp","pemda"]],
+ ["production",["kementan","wamentan-2026","setjen-kementan","itjen-kementan","ditjen-tp","ditjen-horti","ditjen-psp","ditjen-psp-2026","kementan-ditjen-lahan","kementan-ditjen-bun","kementan-ditjen-pkh","kementan-brmp","kementan-bppsdmp","pusdatin","kkp","pemda"]],
  ["security",["bapanas","bgn","kemendag","bpom"]],
  ["enterprise",["bulog","pupuk","idfood"]],
- ["industry",["kemenperin","kemendagri"]],
+ ["industry",["kemenperin","wamenperin-2026","kemendagri"]],
  ["evidence",["bps","bi","dpr","bpk"]]
  ];
  assert.equal(groups.length,6);
- const all=groups.flatMap(g=>g[1]);assert.equal(all.length,24);
+ const all=groups.flatMap(g=>g[1]);assert.equal(all.length,34);
  assert.equal(new Set(all).size,all.length);
  assert.deepEqual([...all].sort(),registry.nodes.map(n=>n.id).sort(),"Every curated institution must be placed once in the functional diagram");
  for(const [key,ids]of groups){
@@ -227,6 +227,6 @@ test("Food dual visualization contract: original card hierarchy and six-hub netw
  assert.ok(!network.includes('window.SLIFoodGovernanceHierarchy={'),"Network must not replace tree renderer");
  assert.match(tree,/food-governance-hierarchy\.json/);
  assert.match(network,/food-governance-hierarchy\.json/);
- assert.equal(source.nodes.length,24);
+ assert.equal(source.nodes.length,34);
  assert.ok(source.nodes.find(n=>n.id==="pusdatin"&&n.parent==="kementan"));
 });

@@ -1,6 +1,18 @@
 name: SLI Food & Agriculture — Source & Dashboard Quality
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'food-agriculture-intelligence.html'
+      - 'data/pusdatin-agriculture-september-2026.json'
+      - 'data/pusdatin-agriculture-september-2026-semantic.json'
+      - 'js/pusdatin-september-semantic.js'
+      - 'css/pusdatin-september-semantic.css'
+      - 'tests/qa-pusdatin-september-semantic.mjs'
+      - 'js/pusdatin-agriculture-september-2026.js'
+      - 'css/pusdatin-agriculture-september-2026.css'
+      - 'tests/qa-pusdatin-agriculture-september-2026.mjs'
+      - '.github/workflows/sli-food-agriculture-source-sync.yml'
   schedule:
     # Weekly validation of already curated baseline; no claim of live numerical sync.
     - cron: '27 23 * * 0'
@@ -16,6 +28,14 @@ on:
       - 'css/food-agriculture-intelligence.css'
       - 'js/food-agriculture-intelligence.js'
       - 'data/food-agriculture-2026.json'
+      - 'data/pusdatin-agriculture-september-2026.json'
+      - 'data/pusdatin-agriculture-september-2026-semantic.json'
+      - 'js/pusdatin-september-semantic.js'
+      - 'css/pusdatin-september-semantic.css'
+      - 'tests/qa-pusdatin-september-semantic.mjs'
+      - 'js/pusdatin-agriculture-september-2026.js'
+      - 'css/pusdatin-agriculture-september-2026.css'
+      - 'tests/qa-pusdatin-agriculture-september-2026.mjs'
       - 'data/food-institution-leadership.json'
       - 'scripts/watch_food_officeholders.py'
       - 'tests/test_food_officeholder_watch.py'
@@ -41,15 +61,18 @@ jobs:
       - name: Static source/model/UX review
         run: |
           node --check js/food-agriculture-intelligence.js
+          node --check js/pusdatin-agriculture-september-2026.js
+          node --check js/pusdatin-september-semantic.js
           node --check js/food-governance-hierarchy.js
           node --check js/food-governance-tree.js
           node --check js/sli-navigation.js
           python -m py_compile scripts/build_food_agriculture.py
           python tests/test_food_officeholder_watch.py
-          node --test tests/qa-sli-food-agriculture.mjs tests/qa-sli-cross-sector-integration.mjs
+          node --test tests/qa-sli-food-agriculture.mjs tests/qa-sli-cross-sector-integration.mjs tests/qa-pusdatin-agriculture-september-2026.mjs
       - name: Disclose PDF source-sync status and newer-publication requirement
         run: |
           echo '## Food & Agriculture publication provenance' >> "$GITHUB_STEP_SUMMARY"
-          echo 'June 2026 Kementan 63-table baseline is dated and validated against archived extracted records.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Original June PDF download at Pusdatin returns HTTP 403 from GitHub Actions runner. Automatic numerical promotion of newer editions is **not operational**.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'The dashboard does not claim a live October price or auto-updated NTP. To refresh, ingest the newer official PDF through a reviewed, source-backed extraction workflow and rerun tests.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'June 2026 Kementan baseline remains available as archive.'
+          echo 'September 2026 Pusdatin 63 tables: all source pages transcribed; 90 trade and 678 regional rows extracted. Remaining tables still await semantic row QA.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'September PDF: https://satudata.pertanian.go.id/assets/docs/publikasi/ad1eefa1b328ba907c7a3b7a8c41720d.pdf — verified source; latest snapshot is **not** live automated synchronization.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Neither October spot prices nor monthly automatic ingestion are claimed; PDF source access from CI may be blocked. Source dates and null missing values must remain explicit.' >> "$GITHUB_STEP_SUMMARY"
