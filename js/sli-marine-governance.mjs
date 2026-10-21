@@ -157,7 +157,16 @@ async function init(){
  if(!$("mfHierarchyDiagram"))return;
  try{
   const res=await fetch(DATA_URL,{cache:"no-store"});if(!res.ok)throw Error("Marine governance HTTP "+res.status);
-  const d=await res.json(),check=validateMarineGovernance(d);if(!check.pass)throw Error(check.issues.join(", ")+" · "+res.url+" · schema="+d.schema+" · count="+d.hierarchy?.length);
+  let d=await res.json(),check=validateMarineGovernance(d);
+  if(!check.pass){
+   // The public fetch transport can return an older GitHub main copy during PR QA or deployment.
+   // Recover only from the exact same-origin source JSON and require full source validation.
+   const local=await fetch(DATA_URL,{cache:"no-store",sliLocalOnly:true});
+   if(local.ok){const candidate=await local.json(),verified=validateMarineGovernance(candidate);
+    if(verified.pass){d=candidate;check=verified;}
+   }
+  }
+  if(!check.pass)throw Error(check.issues.join(", ")+" · source="+res.url+" · schema="+d.schema+" · count="+d.hierarchy?.length);
   const state={selectedHierarchy:"minister",selectedNetwork:"djpt",selectedHub:d.groups.find(g=>g.id==="capture"),hub:"all",lane:"all",query:"",networkQuery:"",expanded:new Set(["djprl"])};
   const q=$("mfHierarchyQuery"),sel=$("mfHierarchyFilter");
   if(q)q.addEventListener("input",()=>{state.query=q.value;renderHierarchy(d,state)});
