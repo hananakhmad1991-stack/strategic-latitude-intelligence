@@ -48,11 +48,32 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Ensure source index was rebuilt without example records
+      - name: Regenerate and audit evidence from current checkout without publishing
+        id: index_verification
         run: |
           python -m unittest discover -s tests -p 'test_sli_research_index_source.py' -v
-          python scripts/build_research_unified_index.py --check
+          python scripts/build_research_unified_index.py
           python scripts/audit_sli_research_index.py
+          if git diff --quiet -- data/sli-research-unified-index.json; then
+            echo 'source_index_fresh=true' >> "$GITHUB_OUTPUT"
+            echo 'Committed index matches latest datasets.' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'source_index_fresh=false' >> "$GITHUB_OUTPUT"
+            echo '::warning::Committed Research AI index is stale; rebuilt in runner for offline QA, not published. Owner Worker deployment must wait for the official index sync.'
+            echo 'Research AI source index is stale in main. **Validate-only is allowed; owner deployment is blocked until the official index sync publishes a matching snapshot.**' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Preserve rebuilt index for safe reconciliation
+        if: steps.index_verification.outputs.source_index_fresh == 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-owner-rebuilt-evidence-index
+          path: data/sli-research-unified-index.json
+          retention-days: 3
+      - name: Block staging deploy when main evidence index is stale
+        if: github.event_name == 'workflow_dispatch' && inputs.action == 'deploy-owner-staging' && steps.index_verification.outputs.source_index_fresh != 'true'
+        run: |
+          echo '::error::Refusing deployment: committed public Research AI index is not synchronized with current data.'
+          exit 1
       - name: Audit Research AI security, source traces and report quality (offline)
         run: |
           node --check scripts/sli-research-owner-readiness.mjs
