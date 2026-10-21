@@ -136,6 +136,30 @@ await check("Mobile homepage topics: responsive layout without extra library til
  assert.ok(await page.locator("#governance").isVisible());
  assert.ok(!(await page.locator("#power").isVisible()));
 });
+await check("Homepage KKP Marine: visible entry opens sourced fisheries intelligence", {width:1366,height:850},async page=>{
+ await page.goto(pageUrl("index.html#home"),{waitUntil:"domcontentloaded",timeout:30000});
+ const link=page.locator('#sliPortalSectors a[href="./marine-fisheries-intelligence.html"]').first();
+ await link.waitFor({state:"visible",timeout:20000});
+ assert.match(await link.innerText(),/Marine|Kelautan/i,"Home must visibly introduce the marine domain");
+ const visible=await link.getAttribute("href");assert.equal(visible,"./marine-fisheries-intelligence.html");
+ await page.waitForFunction(()=>document.getElementById("sliMarineHomeSnapshot")?.textContent?.includes("2024"),null,{timeout:15000});
+ await link.click();
+ await page.waitForURL(/marine-fisheries-intelligence\.html/,{timeout:15000});
+ await page.locator("#mfKpis .mf-kpi").first().waitFor({timeout:15000});
+ assert.equal(await page.locator("#mfConnectedIntelligence .mf-connect-card").count(),7,"All seven cross-module paths must be visible");
+ assert.ok((await page.locator("#mfConnectedIntelligence").innerText()).includes("DERGUBA"),"DERGUBA entry missing");
+});
+await check("Marine IDX: thematic equities show named candidates without invented prices", {width:1366,height:850},async page=>{
+ await page.goto(pageUrl("index.html?watchlist=marine#home"),{waitUntil:"domcontentloaded",timeout:30000});
+ const button=page.locator("#sliHomeIDXSectors .sli-idx-sectoral-tab").filter({hasText:/Marine|Kelautan/});
+ await button.waitFor({state:"visible",timeout:24000});
+ assert.equal(await button.getAttribute("aria-pressed"),"true","Deep-link marine watchlist must be selected");
+ const links=page.locator('#sliHomeIDXSectors .sli-idx-sectoral-ticker');
+ assert.ok(await links.count()>=3,"Marine ticker candidates must be visible");
+ const codes=(await links.allInnerTexts()).join(" ");
+ assert.match(codes,/CPRO|DSFI|IKAN|PCAR/);
+ const first=await links.first().getAttribute("href");assert.match(first,/sli-issuer\.html\?ticker=/);
+});
 await check("Source integration: provincial search and IEA dataset filters",{width:1366,height:850},async page=>{
  await page.goto(pageUrl("sli-sector-data-library.html#socio"),{waitUntil:"domcontentloaded",timeout:30000});
  await page.waitForFunction(()=>document.getElementById("libStatus")?.dataset.status==="ready",null,{timeout:25000});
