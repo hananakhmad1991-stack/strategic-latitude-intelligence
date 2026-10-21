@@ -266,8 +266,9 @@
           "tier": "support",
           "mandate_id": "Sekretaris Jenderal bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "Secretary General exercises its agency-specific delegated mandate.",
-          "verification": "official-source-reviewed",
-          "checked_on": "2026-10-21"
+          "verification": "official-appointment-list-2025; 2026-current-incumbency-needs-recheck",
+          "checked_on": "2026-10-21",
+          "source_date": "2025-01-14"
         },
         {
           "id": "ig",
@@ -305,8 +306,9 @@
           "tier": "directorate",
           "mandate_id": "Dirjen Teknologi Pemerintah Digital bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "DG Digital Government Technology exercises its agency-specific delegated mandate.",
-          "verification": "official-source-reviewed",
-          "checked_on": "2026-10-21"
+          "verification": "official-appointment-list-2025; 2026-current-incumbency-needs-recheck",
+          "checked_on": "2026-10-21",
+          "source_date": "2025-01-14"
         },
         {
           "id": "ecosystem",
@@ -318,8 +320,9 @@
           "tier": "directorate",
           "mandate_id": "Dirjen Ekosistem Digital bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "DG Digital Ecosystem exercises its agency-specific delegated mandate.",
-          "verification": "official-source-reviewed",
-          "checked_on": "2026-10-21"
+          "verification": "official-appointment-list-2025; 2026-current-incumbency-needs-recheck",
+          "checked_on": "2026-10-21",
+          "source_date": "2025-01-14"
         },
         {
           "id": "monitor",
@@ -331,8 +334,9 @@
           "tier": "directorate",
           "mandate_id": "Dirjen Pengawasan Ruang Digital bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "DG Digital Space Surveillance exercises its agency-specific delegated mandate.",
-          "verification": "official-source-reviewed",
-          "checked_on": "2026-10-21"
+          "verification": "official-appointment-list-2025; 2026-current-incumbency-needs-recheck",
+          "checked_on": "2026-10-21",
+          "source_date": "2025-01-14"
         },
         {
           "id": "public",
@@ -344,8 +348,9 @@
           "tier": "directorate",
           "mandate_id": "Dirjen Komunikasi Publik dan Media bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "DG Public Communication & Media exercises its agency-specific delegated mandate.",
-          "verification": "official-source-reviewed",
-          "checked_on": "2026-10-21"
+          "verification": "official-appointment-list-2025; 2026-current-incumbency-needs-recheck",
+          "checked_on": "2026-10-21",
+          "source_date": "2025-01-14"
         },
         {
           "id": "bpsdm",
@@ -617,7 +622,7 @@
           "office_en": "Secretary General",
           "person": null,
           "source": "https://kemenperin.go.id/struktur-organisasi",
-          "tier": "directorate",
+          "tier": "support",
           "mandate_id": "Sekretaris Jenderal bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "Secretary General exercises its agency-specific delegated mandate.",
           "verification": "unverified_officeholder",
@@ -630,7 +635,7 @@
           "office_en": "Inspector General",
           "person": null,
           "source": "https://kemenperin.go.id/struktur-organisasi",
-          "tier": "directorate",
+          "tier": "oversight",
           "mandate_id": "Inspektur Jenderal bertugas menjalankan kewenangan dalam lingkup kelembagaannya.",
           "mandate_en": "Inspector General exercises its agency-specific delegated mandate.",
           "verification": "unverified_officeholder",
@@ -862,6 +867,7 @@
     "sectors_overlap": "shared agency record referenced by sectors, never duplicated",
     "ministry_companies": "SOEs and privately-owned operators are excluded from statutory ministries",
     "agency_icons": "neutral initials only unless an original official logo asset is reviewed",
-    "broad_coverage": "this is an expansion of national ministry units and not an exhaustive inventory of every province, regional service office or rank II unit"
+    "broad_coverage": "this is an expansion of national ministry units and not an exhaustive inventory of every province, regional service office or rank II unit",
+    "official_sources_dated": "An official 2025 appointment list does not automatically confirm the same incumbent in October 2026. Profile rows explicitly flag this uncertainty."
   }
 }
