@@ -34,7 +34,7 @@ jobs:
             'https://gatrik.esdm.go.id/gatrik/gatrik-api/storage/migrasi/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf'
       - name: Index every original PDF page and network/station/distribution table candidates
         run: |
-          python scripts/index-ruptl-all-pages-and-network.py --pdf /tmp/sli/ruptl-original-1253.pdf --max-grid-pages 180
+          python scripts/index-ruptl-all-pages-and-network.py --pdf /tmp/sli/ruptl-original-1253.pdf --max-grid-pages 300
       - name: Invariant checks before publishing any digital source registry
         run: |
           python - <<'PY'
@@ -75,4 +75,6 @@ jobs:
           git add data/sli-ruptl-970-semantic-candidates-2025.json data/sli-ruptl-1253-page-table-inventory-review.json data/sli-ruptl-network-table-grids-review.json
           if git diff --cached --quiet; then echo 'No derived data change'; exit 0; fi
           git commit -m 'data: source-anchored 970 semantic candidates, 1253-page inventory, network raw grids'
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"
