@@ -5,6 +5,10 @@ on:
     paths:
       - 'food-agriculture-intelligence.html'
       - 'data/pusdatin-agriculture-september-2026.json'
+      - 'data/pusdatin-agriculture-september-2026-semantic.json'
+      - 'js/pusdatin-september-semantic.js'
+      - 'css/pusdatin-september-semantic.css'
+      - 'tests/qa-pusdatin-september-semantic.mjs'
       - 'js/pusdatin-agriculture-september-2026.js'
       - 'css/pusdatin-agriculture-september-2026.css'
       - 'tests/qa-pusdatin-agriculture-september-2026.mjs'
@@ -25,6 +29,10 @@ on:
       - 'js/food-agriculture-intelligence.js'
       - 'data/food-agriculture-2026.json'
       - 'data/pusdatin-agriculture-september-2026.json'
+      - 'data/pusdatin-agriculture-september-2026-semantic.json'
+      - 'js/pusdatin-september-semantic.js'
+      - 'css/pusdatin-september-semantic.css'
+      - 'tests/qa-pusdatin-september-semantic.mjs'
       - 'js/pusdatin-agriculture-september-2026.js'
       - 'css/pusdatin-agriculture-september-2026.css'
       - 'tests/qa-pusdatin-agriculture-september-2026.mjs'
@@ -54,6 +62,7 @@ jobs:
         run: |
           node --check js/food-agriculture-intelligence.js
           node --check js/pusdatin-agriculture-september-2026.js
+          node --check js/pusdatin-september-semantic.js
           node --check js/food-governance-hierarchy.js
           node --check js/food-governance-tree.js
           node --check js/sli-navigation.js
