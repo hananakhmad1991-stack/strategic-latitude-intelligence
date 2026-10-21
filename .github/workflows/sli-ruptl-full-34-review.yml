@@ -1,0 +1,47 @@
+name: SLI RUPTL All 34 Project Tables Review Only
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/review-ruptl-all-34-project-grids.py'
+      - 'data/sli-ruptl-provincial-source-projects-2025.json'
+      - '.github/workflows/sli-ruptl-full-34-review.yml'
+permissions:
+  contents: read
+jobs:
+  audit-34-original-annexes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF table reader
+        run: python3 -m pip install --quiet pymupdf
+      - name: Fetch official 1,253-page RUPTL as source evidence only
+        run: |
+          mkdir -p /tmp/sli
+          curl --retry 2 --retry-delay 4 --fail --location --max-time 200 \
+             -o /tmp/sli/ruplt-full.pdf 'https://gatrik.esdm.go.id/gatrik/gatrik-api/storage/migrasi/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf'
+      - name: Parse original project-table grids with exact page numbers
+        run: python3 scripts/review-ruptl-all-34-project-grids.py --pdf /tmp/sli/ruplt-full.pdf
+      - name: Enforce all-34 coverage and no blind numeric publication
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          f=Path('artifacts/sli-ruptl-all-34-project-table-grids-review-only.json')
+          v=json.loads(f.read_text())
+          assert v['total_subsections']==34
+          assert v['approved_new_project_records']==0
+          assert len({x['annex_id'] for x in v['sections']})==34
+          missing=[x['annex_id'] for x in v['sections'] if x['candidate_numbered_rows']==0]
+          print('RUPTL_ALL34_REVIEW_CANDIDATE_SUMMARY',v['total_numbered_grid_candidates'],'empty',missing)
+          assert v['total_numbered_grid_candidates']>=150,'unexpectedly few machine table rows; review scanner'
+          assert not any('approved' in k for x in v['sections'] for row in x['raw_candidates'] for k in row if k != 'review_status')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-ruplt-all-34-annex-grid-candidates-read-only
+          path: artifacts/sli-ruptl-all-34-project-table-grids-review-only.json
+          retention-days: 30
+          if-no-files-found: warn
