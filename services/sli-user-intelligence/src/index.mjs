@@ -1,7 +1,6 @@
 // SLI User Intelligence Backend (Cloudflare Worker / D1). No secrets in static dashboard.
 import {requireIdentity,requireWorkerAccessIdentity,HttpError} from "./auth.mjs";
 import {validatePreferences,eligible,eventKind,validateEvent,DEFAULT_PREFS} from "./matcher.mjs";
-const HISTORY="https://raw.githubusercontent.com/hananakhmad1991-stack/strategic-latitude-intelligence/main/data/sli-catalyst-history.json";
 const MAX_USERS=200,MAX_EVENTS=24;
 const nowUTC=()=>new Date().toISOString();
 const json=(body,status=200,extra={})=>new Response(JSON.stringify(body),{status,headers:{"Content-Type":"application/json; charset=utf-8","Cache-Control":"no-store","X-Content-Type-Options":"nosniff",...extra}});
@@ -99,30 +98,34 @@ export async function handleRequest(request,env,identify=requireIdentity){
   return safeReturn(error,headers);
  }
 }
-async function fetchLedger(fetcher){
- // Transient upstream/network failures should not destroy schedule progress.
- // Only retry transport/429/5xx: malformed source data must fail closed.
- let response=null;
- for(let attempt=0;attempt<2;attempt++){
-  try{
-   response=await fetcher(HISTORY,{redirect:"error",headers:{Accept:"application/json"},signal:AbortSignal.timeout(7000)});
-  }catch(error){
-   if(attempt===0)continue;
-   throw new Error("SLI history request unavailable",{cause:error});
-  }
-  if(response.ok)break;
-  if(attempt===0&&(response.status===429||response.status>=500))continue;
-  throw new Error("SLI history HTTP "+response.status);
+// Source snapshots are pushed from GitHub Actions into private D1; no external
+// network fetch is required for the 15-minute Cloudflare scheduled handler.
+async function readLedgerFromD1(db){
+ const sync=await db.prepare("SELECT value FROM service_state WHERE key='catalyst_source_sync'").first();
+ if(!sync?.value)throw new Error("SLI catalyst source not synchronized");
+ let state;
+ try{state=JSON.parse(sync.value)}catch{throw new Error("SLI catalyst sync metadata invalid")}
+ const at=Date.parse(state?.synced_at_utc||"");
+ const age=Date.now()-at;
+ if(!Number.isFinite(at)||age < -120000||
+  age > 6*60*60*1000||state.schema_version!=="sli-catalyst-history-v2")
+  throw new Error("SLI catalyst source sync expired");
+ const response=await db.prepare(
+  "SELECT event_json FROM source_events ORDER BY detected_at_utc DESC LIMIT 1800").all();
+ if(!Array.isArray(response.results))throw new Error("SLI catalyst source rows unavailable");
+ const events=[];
+ for(const row of response.results){
+  let item;
+  try{item=JSON.parse(row.event_json)}catch{throw new Error("SLI catalyst source row invalid")}
+  if(!validateEvent(item))throw new Error("SLI catalyst source row invalid");
+  events.push(item);
  }
- if(!response?.ok)throw new Error("SLI history request unavailable");
- const text=await response.text();if(text.length>2000000)throw new Error("SLI history size exceeded");
- const d=JSON.parse(text);
- if(d.schema_version!=="sli-catalyst-history-v2"||!Array.isArray(d.events)||d.events.length>1800)
-  throw new Error("Invalid SLI history schema");
- return d.events.filter(validateEvent).sort((a,b)=>a.detected_at_utc.localeCompare(b.detected_at_utc));
+ if(events.length===0&&state.event_count>0)
+  throw new Error("SLI catalyst source rows unavailable");
+ return events.sort((a,b)=>a.detected_at_utc.localeCompare(b.detected_at_utc));
 }
-export async function processEvents(env,fetcher=fetch){
- const db=requireDB(env),events=await fetchLedger(fetcher),now=nowUTC();
+export async function processEvents(env,readEvents=readLedgerFromD1){
+ const db=requireDB(env),events=await readEvents(db),now=nowUTC();
  const state=await db.prepare("SELECT value FROM service_state WHERE key='first_activated_at'").first();
  if(!state){
   // First activation is a baseline. No retrospective notifications.
@@ -161,6 +164,9 @@ function cronErrorCode(error){
  if(/^SLI history HTTP (429|5\\d\\d)$/.test(msg))return "source_http_transient";
  if(msg.startsWith("SLI history HTTP "))return "source_http";
  if(msg==="Invalid SLI history schema"||msg==="SLI history size exceeded")return "source_schema";
+ if(msg==="SLI catalyst source not synchronized")return "source_unseeded";
+ if(msg==="SLI catalyst source sync expired")return "source_stale";
+ if(msg.startsWith("SLI catalyst source row")||msg==="SLI catalyst sync metadata invalid")return "source_schema";
  if(error instanceof SyntaxError)return "source_json";
  return "processing_error";
 }
