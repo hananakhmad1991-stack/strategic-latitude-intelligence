@@ -46,6 +46,14 @@ TOPICS = [
     ("food", "domestic", "food_policy", "(Badan Pangan Nasional OR Kementerian Pertanian OR swasembada pangan OR impor pangan) (peraturan OR kebijakan OR harga OR revisi) Indonesia", "Food governance and trade policy", "Regulatory changes need primary legal documents; do not infer effective legal status from a headline."),
     ("food", "domestic", "agri_weather", "(banjir sawah OR kekeringan pertanian OR gagal panen OR irigasi OR lahan pertanian) Indonesia", "Agricultural disruption and irrigation", "Floods and drought alerts are leads, not verified hectares lost or output impacts."),
 
+    # Marine & Fisheries: trade, compliance, maritime exposure and domestic execution.
+    ("marine", "geopolitical", "seafood_trade", "(Indonesia seafood OR Indonesia shrimp OR seaweed export) (China OR Japan OR Korea OR US OR EU OR tariffs OR food safety)", "Seafood exports and foreign-market access", "Market rules and buyer demand can affect export economics, but trade value needs official HS-coded export data."),
+    ("marine", "geopolitical", "maritime_security", "(Natuna fisheries OR North Natuna Sea fishing OR illegal fishing Indonesia) (patrol OR enforcement OR vessels OR coast guard)", "Natuna, fisheries rights and maritime security", "Reported incidents do not establish a legal finding or the extent of an incursion; check official maritime authority notices."),
+    ("marine", "geopolitical", "ocean_climate", "(Indonesia fisheries OR shrimp aquaculture OR seaweed Indonesia) (marine heatwave OR climate change OR ocean warming OR storm OR El Nino)", "Ocean temperature and coastal climate risks", "Climate reporting signals possible supply exposure; confirmed yield or income losses require location-specific observations."),
+    ("marine", "domestic", "kkp_fisheries", "(KKP OR perikanan tangkap OR nelayan Indonesia) (produksi OR pelabuhan OR kapal ikan OR penangkapan terukur OR WPPNRI)", "Fisheries catches, vessels and port operations", "Reported volumes and implementation milestones must be checked against KKP data and precise observation years."),
+    ("marine", "domestic", "aquaculture_seaweed", "(budidaya udang OR rumput laut OR aquaculture Indonesia OR garam rakyat) (produksi OR panen OR harga OR investasi OR ekspor)", "Aquaculture, seaweed and coastal livelihoods", "News about farm yields, production and prices is not a substitute for KKP official series."),
+    ("marine", "domestic", "marine_policy", "(KKP OR JDIH KKP OR penangkapan ikan terukur OR kawasan konservasi) (peraturan OR izin OR kuota OR kebijakan OR regulasi)", "Marine regulation, licences and conservation", "Verify legal force, changes and dates against KKP JDIH; a headline is not an enacted legal instrument."),
+
     # External chips, trade controls, cross-border networks, cyber geopolitical spillovers
     ("ai", "geopolitical", "chip_controls", "(AI chip OR GPU OR H100 OR H200 OR Blackwell OR semiconductor) (US China export restrictions OR export controls OR licensing OR tariffs) Southeast Asia", "GPU/semiconductor export controls", "Controls on accelerated computing or chips may change procurement access, costs and Indonesian AI infrastructure timelines."),
     ("ai", "geopolitical", "compute_competition", "(AI data centers OR AI datacenters OR hyperscale OR AI infrastructure) (Singapore Malaysia Indonesia Southeast Asia investment OR geopolitics)", "Regional data-center investment competition", "Regional power, connectivity and investment competition may affect relative project attractiveness and capital allocation."),
@@ -61,7 +69,8 @@ TOPICS = [
 ]
 GROUPS = (("minerals", "geopolitical"), ("minerals", "domestic"),
           ("ai", "geopolitical"), ("ai", "domestic"),
-           ("food", "geopolitical"), ("food", "domestic"))
+           ("food", "geopolitical"), ("food", "domestic"),
+           ("marine", "geopolitical"), ("marine", "domestic"))
 
 # Only publisher-attributed titles from known news organisations or governmental/corporate sources.
 PUBLISHER_PATTERNS = (
@@ -84,6 +93,7 @@ NEWS_DOMAINS = ("go.id", "reuters.com", "apnews.com", "bloomberg.com", "cnbc.com
                 "datacenterdynamics.com", "techinasia.com", "scmp.com")
 FOCUS = {
     "minerals": re.compile(r"\b(nickel|nikel|smelter|mineral|copper|tembaga|cobalt|kobalt|rare earth|bauksit|bauxite|alumina|aluminium|timah|baterai|tin\b|hpal|rkef|battery material|bahan baterai|ore|tailing|hilirisasi)\b", re.I),
+    "marine": re.compile(r"\b(fisheries|fishery|perikanan|seafood|udang|shrimp|rumput laut|seaweed|nelayan|ikan|budidaya|aquaculture|garam|natuna|WPPNRI|KKP|coastal|pesisir|kapal ikan|illegal fishing)\b", re.I),
     "food": re.compile(r"\b(beras|gabah|padi|rice|wheat|grain|food|pangan|pertanian|agricultur|pupuk|fertilizer|urea|potash|swasembada|ketahanan pangan|bulog|bapanas|gagal panen|irigasi|drought|elnino|el nino|la nina|flood)\b", re.I),
     "ai": re.compile(r"\b(AI|artificial intelligence|kecerdasan buatan|GPU|semiconductor|semikonduktor|chip|data cent(?:er|re)|data\s*center|pusat data|komputasi|cloud|hyperscale|cyber|siber|submarine cable|undersea cable|pdp)\b", re.I),
 }
@@ -91,6 +101,12 @@ EXCLUDE_AI = re.compile(r"\b(football|soccer|celebrity|gaming laptop|smartphone 
 # A Google News query can match article text even when the headline concerns a
 # different topic. Require a topic-specific signal in the displayed headline.
 TITLE_RULES = {
+    "seafood_trade": r"\b(seafood|shrimp|udang|fishery|fisheries|fish export|ikan|seaweed|rumput laut)\b",
+    "maritime_security": r"\b(natuna|fisheries|fishing|illegal fishing|nelayan|kapal ikan|laut utara)\b",
+    "ocean_climate": r"\b(ocean|marine|fisheries|aquaculture|shrimp|seaweed|nelayan|coastal|suhu laut|perikanan)\b",
+    "kkp_fisheries": r"\b(KKP|nelayan|perikanan|tangkap|fishing|kapal ikan|WPPNRI)\b",
+    "aquaculture_seaweed": r"\b(udang|shrimp|rumput laut|seaweed|budidaya|aquaculture|garam)\b",
+    "marine_policy": r"\b(KKP|penangkapan ikan|fishery|perikanan|konservasi|WPPNRI|pesisir)\b",
     "global_grains": r"\b(rice|wheat|grain|food|staple|beras|gandum|cereal)\b",
     "fertilizer_shipping": r"\b(fertilizer|urea|potash|ammonia|pupuk)\b",
     "climate_food": r"\b(el nino|elnino|la nina|drought|flood|rice|food security|ketahanan pangan)\b",
@@ -229,9 +245,9 @@ def main() -> int:
     payload = {
         "schema_version": 1, "status": state, "generated_at_utc": generated,
         "last_attempt_at_utc": now.isoformat(), "groups": groups,
-        "counts": {d: {s: len(groups[d][s]) for s in ("geopolitical", "domestic")} for d in ("minerals", "ai", "food")},
+        "counts": {d: {s: len(groups[d][s]) for s in ("geopolitical", "domestic")} for d in ("minerals", "ai", "food", "marine")},
         "topic_status": status, "errors": errors, "reused_last_good_groups": reused,
-        "methodology": ( "Automated, hourly scheduled Google News RSS discovery across 24 themed "
+        "methodology": ( "Automated, hourly scheduled Google News RSS discovery across 30 themed "
                         "searches; published dates belong to news articles. Source names are publisher "
                         "attributions, not a verification of facts. A successful scrape is not evidence "
                         "that any specific event occurred. No quantitative probability or actual loss is inferred."),
