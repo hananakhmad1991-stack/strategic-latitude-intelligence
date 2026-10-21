@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T10:06:24.570301Z",
+  "updated_at_utc": "2026-10-21T10:35:49.734856Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,55 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_f07f76328baaeb22366d3a",
+      "title": "Saham TLKM Makin Menarik Usai Tekanan MSCI, Yield Dividen Tembus 12,8 Persen dan Potensi Cuan 76 Persen - TOPIK.ID",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPNUNDbDhuWFAxWW9PeGpmYlhlS3RsY294c1pndXd5UjJJbTVLRllFa2p2T0JBUm1GTWZxeGJpbDZkWkxqMmhPbk1uaG9VbVUyX3h6d2c0b3dabHBSX3BVdlQtdVdGYmdwWm1oYlU5WE5zWU9EcmhjZ0hhT0liU0lXa2JmQkFKdmxrYnZOZVJ4c3VQMGphN3pQQmFWTGhPOXJaSkF6TWlwbUZxN2JSbGs5Tk03bXhhLVFCT3J0RXFyVQ?oc=5",
+      "publisher": "TOPIK.ID",
+      "published_at_utc": "2026-10-21T10:17:57Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c34123df46e6154f5728d3",
+      "title": "Jasa Marga Kaji Buyback Saham Sambil Jaga Likuiditas - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9Lb2YyeEVoMUsxbDBpekxUeUhWeWZSNzJta0szZGI5dTcwT2R6b2ZfLVNsWXJWdkU4WHgyNmQ4cFIyc0E3NWhubFhYMUwzT2htRTMweWdrV3NwMnR0M1RwR2FSZ1E?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-21T10:11:31Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_0c73e91ea1f4f2198c8c8b",
+      "title": "Jangkar Saham Semen SMGR, INTP di Akhir 2026 - Bisnis Indonesia Premium",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNUVljVERyVDlKVnEtQTAtV09iX3pQcXB1SHF1bUZRc3l4TmJXZjF4S0lFMHVfVzU2VzM1MWh0NEp5UHBiZUZYenlrV1hxaVZyOHVKSkxZRHVvSzJBNng0X1AtQTB5WWdUR1g3MngtZVp5RjNJbmV4VkVZNTdMYVN2QS1Kcks1RjJVeGNPOGVQV1N4bl9TYUxBekpmeE4?oc=5",
+      "publisher": "Bisnis Indonesia Premium",
+      "published_at_utc": "2026-10-21T10:10:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INTP",
+        "SMGR"
+      ],
+      "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_45ed64f36bbae0c144e42c",
       "title": "Jasa Marga (JSMR) Buka Opsi Buyback Saham di Tengah Gejolak Pasar Modal - Infobanknews",
@@ -114,6 +163,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "ICBP"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_a7c5f7df9492574714a03e",
+      "title": "Harga Ayam dan DOC Naik, Simak Prospek Saham Japfa Comfeed Indonesia Tbk (JPFA) - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQbVl0bWdSeGRxanMwSll6dEVtS2NpMk9EQWhJRHZpUE5SeDhaNWpLUzcwdjhaWEN0S3dvMGFlelIwYmozcUg1MzdEeU4zanhZOWFsUWd6emRIZ3Z0bkdyOGNkWVhPX3FMRy1ZNHYyR3NUQnVDRXJ0d0lyd2ZfdEMzNFFrcDFuQk9obWFiVWJNeFJQY0dBd2hwcS14TFlPQ1V1ZnBsNUp3Qk0yRGo4LUEtZ0p30gGqAUFVX3lxTE5EMkpCRzJQSjhTblQ5MmY1X2hSU05laTRSc0NMZUdjR1R6cmRHQjJyTm5lN1o5U3BUNWE0a2NVcnpNN016QUdRSF8xcXlzUXFSaXY2MF9Eczl5Q3lvbEZsLUtwc0ZTMkJqam5nbUgwTm9NYXlNVV8wVDNqeHowQ0tNbnV1c0hTOFJKQzVwajVHQjM4TWExT19oMEt3YzJ3Q0hFMzlzQi1KS0JB?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T09:33:12Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
       ],
       "sector": "food",
       "source": "public_google_news_rss",
@@ -1424,6 +1489,7 @@
       "published_at_utc": "2026-10-20T03:57:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "AADI",
         "ADRO"
       ],
       "sector": "coal",
@@ -3880,6 +3946,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_5d6acedab7214b9e03786d",
+      "title": "IHSG Berpeluang Technical Rebound Hari Ini, Saham PTBA hingga ERAA Layak Dilirik - InvestorTrust",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOYlFTeWhDLUVSYXQ2ekdrdVJWeklPbWJVR3B4VmcxVXZ5ZXgxUUdpMGdkbGJkMnhqOU9laWpaSUttcldEd2xibnhrMUtUYkdzZUxoM0VHOXNxVDdPMGdWeXpOemhFeFhBdnVja05femY0cS0xQS1IQ09tT09qMmFoVkNiZEJyUDc3aDI0enBNNXdOUWtZLW1LUmZ6a2dsWWhJak1NeGYwY3J2TUVoMkJuSU5VaF9QLUJ5OXc?oc=5",
+      "publisher": "InvestorTrust",
+      "published_at_utc": "2026-10-13T22:42:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_e5015be8444b0ffbd83c7f",
       "title": "Strategi Koleksi Saham HSC: BREN, DCII, DSSA Vs MTEL dan TBIG - Bisnis Indonesia Premium",
       "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNU085MTA2dkk1XzVEczVtdEZHbG1TOTdDS1ZBY0x1dVlYRkxlemF3R3U4VmxrTlJfaHhGMXpTY3VIVkVDamtZUXpIamlrbFBSeWJ1UUNITGZPS3dyNVJEQUF2cDZzR0o5TVpseXN4TUhFQklfSlVpVXFRNkNLaDRlYzJSdEprWjMzRl9zdXZKUWZWWm9fcC1zaGFFaDZod0VVbEg5YU1yTUc1eUhvSThMTQ?oc=5",
@@ -3906,22 +3988,6 @@
         "MEDC"
       ],
       "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_224d63b96950472f90295a",
-      "title": "PTBA +46%, Saham AS +113%: Stockpick AI Melejit Sejak Musim Laba Q2, Ini Daftar Q3 - Investing.com Indonesia",
-      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNR19SdndFLUNWZnR2X29FcjJURDZSX2o1OXUzdFBRSWlBNG14X3gweHhxbzQ5Q2FMMU1PamNOd095clJmcUNpY0VEN1hQb2VTY09QZ1J4OFRxcWQxQjBCVVZlNGtlUFdmdTdOZWlMU1pMTHRJdUgyZjJha2NtMjBQci0tdDNudWI5OUxTd3p5QWVobjFiSDZ3RllUVnp4NXpBcmRzRWtWZXptM3JqTVhpWUVGRUNuWlU3ek1STFo2UFlONVYxRlJtMnNB?oc=5",
-      "publisher": "Investing.com Indonesia",
-      "published_at_utc": "2026-10-13T10:18:48Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
