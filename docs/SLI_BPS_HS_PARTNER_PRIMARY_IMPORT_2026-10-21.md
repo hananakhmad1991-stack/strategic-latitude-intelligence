@@ -29,6 +29,7 @@ BPS website exposes filters for **direction, HS, year, month, port and partner c
 | `net_weight_kg` | non-negative KG with dot decimal if officially published; otherwise blank, NOT zero |
 | `source_url` | original `https://*.bps.go.id/...` page/download |
 | `source_locator` | specific query/table/page/row reference allowing an independent recheck |
+| `geographic_scope` | literal `Indonesia` only for the national Trade Flow Sankey; keep provincial and year-to-date publication examples as separate acquisition leads |
 
 ### Strict reviewer-and-checksum gate
 
@@ -46,7 +47,10 @@ For promotion, a human reviewer checks **every cell** against the actual BPS que
   "source_csv_sha256": "64-character lowercase SHA-256 of the exact CSV file",
   "approved_cell_count": 1,
   "independent_cell_checks": 1,
-  "review_note": "Description of the actual source tables/queries and how every row was independently checked"
+  "review_note": "Description of the actual source tables/queries and how every row was independently checked",
+  "public_website_terms_review": "approved",
+  "rights_basis_url": "https://www.bps.go.id/id/term-of-use",
+  "rights_note": "Specify the applicable public website reuse terms, BPS attribution and any file-specific restrictions"
 }
 ```
 
@@ -59,6 +63,14 @@ node tests/qa-sli-bps-primary-trade.cjs
 ```
 
 The generated file is then reviewed in GitHub, tested with the Commodity Trade Sankey QA and published through normal release controls. Reviewer attestation is a documented manual review, **not** a digital signature issued by BPS. The source CSV checksum is used for detecting later changes, not for proving provenance.
+
+## Reuse rights and geographic safeguards (new October 2026 pilot gate)
+
+BPS public website [terms of use](https://www.bps.go.id/id/term-of-use) explicitly describe commercial and non-commercial uses, including reproduction and redistribution of website content, subject to those terms and applicable rights. [PPID BPS](https://ppid.bps.go.id/app/konten/3505/Standar-Layanan-Informasi-Publik.html) requires attribution when public information is republished. These **public web terms are different from SILASTIK paid microdata**, which has its own purchase and SPPD terms. A reviewer must assess the exact source file, permitted reuse, attribution and restrictions before approving SLI's publication; reading the generic terms alone does not certify a microdata license.
+
+The importer and frontend now require a **national geographic scope explicitly set to `Indonesia`** for every displayed bilateral cell, plus a reviewed public-website rights basis. Provincial BPS slides, even if they expose individual HS × country values, must never be presented as national HS trade. Year-to-date Jan–Oct observations must never be coded as annual `2025` values or treated as monthly `2025-10`.
+
+A six-commodity **query plan with zero numeric cells** lives in `data/bps-primary-trade-pilot-2025.json`; it covers rice HS1006, coffee HS0901, palm oil HS1511, frozen non-coldwater shrimp HS030617, coal HS2701, and nickel ore HS2604. Classification is a research-selection hypothesis that must be checked against the BPS/BTKI 2022 master; HS030617 covers a narrow category of frozen shrimp, not all processed or fresh shrimp. Different HS levels must never be aggregated together.
 
 ## Dashboard rendering and anti-double-count protection
 
