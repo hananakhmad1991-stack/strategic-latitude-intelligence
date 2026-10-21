@@ -1,7 +1,7 @@
 /* SLI report content: strict source provenance triage, APA 7 presentation.
  * Metadata presence is NOT fact-checking; never synthesize missing references.
  */
-const badTypes=new Set(["live_web_discovery","public_dashboard_source_record_not_claim_verified","legal_index_metadata"]);
+const badTypes=new Set(["live_web_discovery","public_dashboard_source_record_not_claim_verified","legal_index_metadata","official_original_statute_structure_only"]);
 const trim=x=>String(x??"").trim();
 export const plain=x=>trim(x).replace(/\*\*([^*]+)\*\*/g,"$1").replace(/\*([^*\n]+)\*/g,"$1")
  .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,"$1 ($2)")
@@ -9,7 +9,7 @@ export const plain=x=>trim(x).replace(/\*\*([^*]+)\*\*/g,"$1").replace(/\*([^*\n
 export const escapeMarkup=x=>String(x??"").replace(/&/g,"&amp;").replace(/</g,"&lt;")
  .replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;");
 const validUrl=x=>{try{const u=new URL(trim(x));return u.protocol==="https:"&&!u.username&&!u.password&&!u.port&&u.hostname.includes(".")?u.href:null}catch{return null}};
-const legalTypes=new Set(["reviewed_primary_article_paraphrase","legal_index_metadata"]);
+const legalTypes=new Set(["reviewed_primary_article_paraphrase","legal_index_metadata","official_original_statute_structure_only"]);
 const legalInstrumentYear=s=>{
  // Review date (2026) is NOT the promulgation date of an older statute.
  const text=trim(s?.provision_anchor?.instrument_ref)+" "+trim(s?.title);
@@ -42,10 +42,12 @@ export function bibliographyReport(answer,sources,min=10){
  references.sort((a,b)=>(a.author||a.title).localeCompare(b.author||b.title,"id"));
  const n=references.filter(x=>x.eligible).length;
  const indexOnly=references.filter(x=>x.type==="legal_index_metadata").length;
+ const structureOnly=references.filter(x=>x.type==="official_original_statute_structure_only").length;
  return {schema:"sli-report-apa7-review-v1",references,cited_unique:references.length,
-  metadata_complete_candidates:n,metadata_only_legal_index:indexOnly,required_minimum:min,meets_preliminary_minimum:n>=min,
+  metadata_complete_candidates:n,metadata_only_legal_index:indexOnly,structure_only_legal_source:structureOnly,required_minimum:min,meets_preliminary_minimum:n>=min,
   verified_sources:0,ready_for_publication:false,
-  warning:min===1&&n===0&&indexOnly>0
+  warning:structureOnly>0&&n===0
+   ?"DRAF BERBATAS SUMBER: struktur naskah UU yang diundangkan telah diperiksa, namun bukan teks pasal yang diminta atau pembuktian status hukum terkonsolidasi.":min===1&&n===0&&indexOnly>0
    ?"DRAF BERBATAS SUMBER: "+indexOnly+" catatan indeks regulasi ditampilkan, tetapi tidak ada teks pasal primer yang telah ditelaah untuk mendukung isi ketentuan. Metadata tidak boleh dihitung sebagai bukti pasal."
    :n>=min
    ?"Ada "+n+" kandidat referensi dengan metadata awal; semua isi, keterkaitan sitasi dan dokumen asli tetap perlu diverifikasi."
