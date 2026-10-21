@@ -1,3 +1,4 @@
+import {structuralAbsence} from "./legal-article-existence.mjs";
 /* Deterministic source-limited response for a single explicitly requested
  * legal article that has NO matching reviewed article-level evidence.
  * Never describe metadata as actual statutory text. Do not call the paid model.
@@ -32,6 +33,8 @@ function matchingAnchor(item,law,article){
 export function missingLegalArticleBrief({question,articleEvidence=[],policyEvidence=[],language="id"}={}){
  const request=lawInfo(question);
  if(!request)return null;
+ const absent=structuralAbsence(request,language);
+ if(absent)return absent;
  if(articleEvidence.some(x=>matchingAnchor(x,request.law_key,request.article)))return null;
  // No matching article is reviewed, even if the law itself is in the index.
  const match=(Array.isArray(policyEvidence)?policyEvidence:[]).find(x=>
