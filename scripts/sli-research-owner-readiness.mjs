@@ -19,7 +19,7 @@ function safeHttps(value,requiredPath){
  try{
   const u=new URL(value);
   if(u.protocol!=="https:"||!u.hostname.includes(".")||u.username||u.password||
-    u.search||u.hash||u.port||u.hostname==="localhost"||u.hostname.endsWith(".local")||
+    (requiredPath&&(u.search||u.hash))||u.port||u.hostname==="localhost"||u.hostname.endsWith(".local")||
     /^(?:127|10|192\.168|169\.254)\./.test(u.hostname))return false;
   return !requiredPath||u.pathname===requiredPath;
  }catch{return false}
