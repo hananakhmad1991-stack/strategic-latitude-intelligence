@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#091a2a">
 <title>Kelautan & Perikanan | Strategic Latitude Intelligence</title>
 <link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
-<link rel="stylesheet" href="./css/sli-marine-fisheries.css?v=20261021-governance-v2">
+<link rel="stylesheet" href="./css/sli-marine-fisheries.css?v=20261021-kkp-district2">
 <script src="./js/sli-live-data.js?v=20261019-id-audit9" defer></script>
 <script src="./js/sli-shared-appendix.js?v=20261016-glossary1" defer></script>
 </head>
@@ -88,12 +88,31 @@
   </article>
   <article class="mf-card">
    <h3 data-id="Produksi pembenihan menurut jenis ikan · 2024" data-en="2024 fish-seed output by species">Produksi pembenihan menurut jenis ikan · 2024</h3>
-   <p class="mf-hint" data-id="12 kategori terbesar yang terlihat di halaman insight KKP; jumlah 1.387 baris kabupaten/kota belum diekstrak. Unit mempertahankan istilah KKP: ribu ekor, bukan ton." data-en="Top 12 visible categories on KKP insight; 1,387 district rows remain unextracted. Unit is KKP's 'thousand fish', not tonnes.">12 kategori terbesar yang terlihat di halaman insight KKP; jumlah 1.387 baris kabupaten/kota belum diekstrak. Unit mempertahankan istilah KKP: ribu ekor, bukan ton.</p>
+   <p class="mf-hint" data-id="12 kategori terbesar yang terlihat di halaman insight KKP; 10 dari 1.387 baris kabupaten/kota telah ditranskripsi. Unit mempertahankan istilah KKP: ribu ekor, bukan ton." data-en="Top 12 visible categories on KKP insight; 10 of 1,387 district rows have been transcribed. Unit is KKP's 'thousand fish', not tonnes.">12 kategori terbesar yang terlihat di halaman insight KKP; jumlah 1.387 baris kabupaten/kota belum diekstrak. Unit mempertahankan istilah KKP: ribu ekor, bukan ton.</p>
    <div id="mfAtlasSeedList" class="mf-atlas-seeds" role="group" aria-label="KKP 2024 hatchery fish species categories"></div>
    <p id="mfAtlasSeedSummary" class="mf-hint" role="status">—</p>
    <p class="mf-hint"><span data-id="Angka 2024 belum membuktikan ketersediaan bibit 2026. Tidak digunakan untuk estimasi produksi tonase ikan." data-en="A 2024 hatchery record is not a 2026 supply forecast. Fish seed count is never converted to fishery tonnes.">Angka 2024 belum membuktikan ketersediaan bibit 2026. Tidak digunakan untuk estimasi produksi tonase ikan.</span> <a id="mfAtlasSeedSource" href="https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan" target="_blank" rel="noopener noreferrer" data-id="Tabel pembenihan KKP ↗" data-en="Official hatchery insight ↗">Tabel pembenihan KKP ↗</a></p>
   </article>
  </div>
+ <article class="mf-card mf-atlas-district">
+  <h3 data-id="Pembenihan kabupaten/kota · 10 baris sumber KKP 2024" data-en="District hatchery production · 10 public KKP 2024 rows">Pembenihan kabupaten/kota · 10 baris sumber KKP 2024</h3>
+  <p class="mf-hint" data-id="Baru 10 dari 1.387 baris sumber yang tertera di halaman insight KKP didigitalisasi. Ini adalah subset baris yang tampak, bukan keseluruhan kabupaten, dan bukan total per provinsi. Volume mempertahankan satuan asli ribu ekor; nilai Rp juta; harga Rp/ribu ekor." data-en="Only 10 of 1,387 source rows visible in KKP's 2024 insight have been digitized. This is a public-row subset, not the complete district or provincial totals. Original units: thousand fish, IDR million value, and IDR per thousand fish weighted price.">Baru 10 dari 1.387 baris sumber yang tertera di halaman insight KKP didigitalisasi. Ini adalah subset baris yang tampak, bukan keseluruhan kabupaten, dan bukan total per provinsi. Volume mempertahankan satuan asli ribu ekor; nilai Rp juta; harga Rp/ribu ekor.</p>
+  <div class="mf-atlas-filters">
+   <label for="mfAtlasDistrictQuery" data-id="Cari provinsi, kabupaten, atau komoditas" data-en="Find province, district or category">Cari provinsi, kabupaten, atau komoditas</label>
+   <input id="mfAtlasDistrictQuery" type="search" placeholder="Kediri, Udang Vaname, Jawa Barat…" data-id="Cari wilayah atau jenis ikan…" data-en="Search region or fish category…" aria-label="Search KKP hatchery district subset">
+   <button id="mfAtlasDistrictCSV" type="button" data-id="Ekspor CSV 10 baris teratribusi" data-en="Export cited ten-row subset CSV">Ekspor CSV 10 baris teratribusi</button>
+  </div>
+  <p id="mfAtlasDistrictCount" class="mf-hint" role="status">—</p>
+  <div class="mf-scroll"><table class="mf-atlas-district-table"><thead><tr>
+   <th data-id="Provinsi" data-en="Province">Provinsi</th>
+   <th data-id="Kabupaten/kota" data-en="District/city">Kabupaten/kota</th>
+   <th data-id="Kelompok ikan" data-en="Fish category">Kelompok ikan</th>
+   <th data-id="Volume (ribu ekor)" data-en="Volume (thousand fish)">Volume (ribu ekor)</th>
+   <th data-id="Nilai (Rp juta)" data-en="Value (IDR mn)">Nilai (Rp juta)</th>
+   <th data-id="Harga tertimbang (Rp/ribu ekor)" data-en="Weighted price (IDR/1,000 fish)">Harga tertimbang (Rp/ribu ekor)</th>
+  </tr></thead><tbody id="mfAtlasDistrictRows"></tbody></table></div>
+  <p class="mf-hint"><span data-id="Harga dan nilai yang ditampilkan mengikuti pembulatan KKP; jangan gunakan untuk menghitung identitas harga × volume secara presisi. Data observasi 2024 tidak menunjukkan persediaan saat ini." data-en="Displayed value and price retain KKP rounding, so exact volume-times-price identities must not be inferred. These 2024 observations are not live hatchery inventories.">Harga dan nilai yang ditampilkan mengikuti pembulatan KKP; jangan gunakan untuk menghitung identitas harga × volume secara presisi. Data observasi 2024 tidak menunjukkan persediaan saat ini.</span> <a id="mfAtlasDistrictSource" href="https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan" target="_blank" rel="noopener noreferrer" data-id="Tabel pembenihan resmi ↗" data-en="Official KKP hatchery source ↗">Tabel pembenihan resmi ↗</a></p>
+ </article>
  <article class="mf-card mf-atlas-catalog">
   <h3 data-id="Screening katalog · 25 sumber statistik sektoral KKP" data-en="Source screening · 25 official KKP datasets">Screening katalog · 25 sumber statistik sektoral KKP</h3>
   <p class="mf-hint" data-id="Status berikut mengacu pada proses digitalisasi SLI, bukan kualitas atau kelengkapan seluruh dataset KKP. Jalur data ada ≠ angka telah diimpor." data-en="Statuses track SLI numeric ingestion—not the reliability or completeness of KKP data. A source URL does not mean its numerical rows have been imported.">Status berikut mengacu pada proses digitalisasi SLI, bukan kualitas atau kelengkapan seluruh dataset KKP. Jalur data ada ≠ angka telah diimpor.</p>
@@ -127,7 +146,7 @@
 </main>
 <script type="module" src="./js/sli-marine-fisheries.mjs?v=20261021-kkp1"></script>
 <script type="module" src="./js/sli-marine-governance.mjs?v=20261021-governance-v2"></script>
-<script type="module" src="./js/sli-marine-source-atlas.mjs?v=20261021-screening1"></script>
+<script type="module" src="./js/sli-marine-source-atlas.mjs?v=20261021-kkp-district2"></script>
 <script src="./js/sli-navigation.js?v=20261019-id-audit9" defer></script>
 </body>
 </html>

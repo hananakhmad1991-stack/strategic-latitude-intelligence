@@ -29,6 +29,16 @@ export function validateScreenedPortal(data,catalog){
  if(seed?.year!==2024||seed.rows?.length!==12||seed.unit!=="ribu_ekor"||!SOURCE.test(seed.source_url)||
  seed.rows.some(x=>!x.species||!Number.isFinite(x.value)||x.value<=0)||
  seed.rows.reduce((a,r)=>a+r.value,0)>seed.national_total_displayed)issues.push("seed_inconsistent");
+ const district=data?.seed_district_top_rows;
+ if(district?.year!==2024||district.source_rows_displayed!==1387||district.selected_count!==10||
+ district.status!=="source_visible_top_10_only_not_full_1387"||district.unit_volume!=="ribu_ekor"||
+ district.unit_value!=="Rp juta"||district.unit_weighted_price!=="Rp/ribu ekor"||
+ !SOURCE.test(district.source_url)||district.rows?.length!==10||
+ new Set((district.rows||[]).map(r=>[r.province,r.district,r.species].join("|"))).size!==10||
+ (district.rows||[]).some((r,i)=>r.rank_display!==i+1||!r.province||!r.district||!r.species||
+ !Number.isFinite(r.volume_ribu_ekor)||r.volume_ribu_ekor<=0||
+ !Number.isFinite(r.value_rp_million)||r.value_rp_million<=0||
+ !Number.isFinite(r.weighted_price_rp_per_thousand)||r.weighted_price_rp_per_thousand<=0))issues.push("seed_district_top10_invalid:"+JSON.stringify({y:district?.year,n:district.source_rows_displayed,s:district.selected_count,status:district.status,u:[district.unit_volume,district.unit_value,district.unit_weighted_price],url:SOURCE.test(district.source_url),len:district.rows?.length,uniq:new Set((district.rows||[]).map(r=>[r.province,r.district,r.species].join("|"))).size,bad:(district.rows||[]).findIndex((r,i)=>r.rank_display!==i+1||!r.province||!r.district||!r.species||!Number.isFinite(r.volume_ribu_ekor)||r.volume_ribu_ekor<=0||!Number.isFinite(r.value_rp_million)||r.value_rp_million<=0||!Number.isFinite(r.weighted_price_rp_per_thousand)||r.weighted_price_rp_per_thousand<=0)}));
  for(const s of sources){
   if(!SOURCE.test(s.source_url)||!["numeric_ingested_2024","partial_numeric_ingested","national_numeric_only","verified_source_table","map_layer_only","catalog_metadata_only"].includes(s.status)||
   !s.label_id||!s.label_en||!s.numeric_import_status||!Array.isArray(s.visual_types))issues.push("unqualified_catalog_entry");
@@ -42,6 +52,10 @@ export function rankedRegions(data,indicator,q="",all=false){
  return all?found:found.slice(0,12);
 }
 export function rankedSeeds(data){return [...data.seed_species.rows].sort((a,b)=>b.value-a.value)}
+export function rankedDistrictSeed(data,q=""){
+ const needle=q.toLocaleLowerCase("id-ID").trim();
+ return (data.seed_district_top_rows?.rows||[]).filter(r=>[r.province,r.district,r.species].some(x=>x.toLocaleLowerCase("id-ID").includes(needle)));
+}
 function fmt(x,places=0){return Number(x).toLocaleString(en()?"en-US":"id-ID",{maximumFractionDigits:places})}
 function formatUnit(id){return id==="marine_fishers_2024"?T("orang","people"):T("ton","tonnes")}
 function link(url,label){const a=E("a","mf-atlas-source",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer";return a}
@@ -57,7 +71,7 @@ function mount(){
   if(!a.ok||!b.ok)throw Error("KKP source snapshot unavailable "+a.status+"/"+b.status);
   const [data,cat]=await Promise.all([a.json(),b.json()]);
   const test=validateScreenedPortal(data,cat);if(!test.pass)throw Error(test.issues.join(","));
-  const state={indicator:"marine_fishers_2024",query:"",all:false,catGroup:"all",catStatus:"all"};
+  const state={indicator:"marine_fishers_2024",query:"",all:false,districtQuery:"",catGroup:"all",catStatus:"all"};
   const host=$("mfAtlasProvinceChart"),table=$("mfAtlasProvinceRows"),stats=$("mfAtlasProvinceSummary");
   function renderProvince(){
    const series=data.province_indicators.find(x=>x.id===state.indicator),rows=rankedRegions(data,state.indicator,state.query,state.all);
@@ -94,10 +108,31 @@ function mount(){
     fill.style.width=(100*x.value/top).toFixed(2)+"%";track.append(fill);
     box.append(track,E("strong","",fmt(x.value)));list.append(box);
    });
-   $("mfAtlasSeedSummary").textContent=T("12 kelompok teratas ditampilkan; total nasional di sumber "+fmt(data.seed_species.national_total_displayed)+" ribu ekor. Detail 1.387 baris kabupaten belum diimpor.",
+   $("mfAtlasSeedSummary").textContent=T("12 kelompok teratas ditampilkan; total nasional di sumber "+fmt(data.seed_species.national_total_displayed)+" ribu ekor. Baru 10 dari 1.387 baris kabupaten/komoditas sumber yang diimpor.",
     "12 leading categories shown; KKP national total "+fmt(data.seed_species.national_total_displayed)+" thousand fish. The 1,387 source district rows are NOT imported.");
    $("mfAtlasSeedSource").href=data.seed_species.source_url;
   }
+  function renderDistrict(){
+   const info=data.seed_district_top_rows,items=rankedDistrictSeed(data,state.districtQuery),root=$("mfAtlasDistrictRows");
+   root.replaceChildren();
+   items.forEach(r=>{
+    const tr=E("tr");
+    for(const [i,val] of [r.province,r.district,r.species,fmt(r.volume_ribu_ekor),fmt(r.value_rp_million),fmt(r.weighted_price_rp_per_thousand)].entries())
+      tr.append(E(i===1?"th":"td",i>=3?"numeric":"",val));
+    root.append(tr);
+   });
+   $("mfAtlasDistrictCount").textContent=T(
+    items.length+" dari 10 baris sumber terlihat · dari 1.387 baris tabel sumber (observasi 2024), hanya 10 baris diimpor. Angka harga adalah rata-rata tertimbang tercetak, bukan hasil hitung ulang.",
+    items.length+" of 10 visible source rows · only 10 of KKP's 1,387 displayed 2024 rows have been imported. Weighted prices are as printed, not recalculated.");
+   $("mfAtlasDistrictSource").href=info.source_url;
+  }
+  $("mfAtlasDistrictQuery").addEventListener("input",e=>{state.districtQuery=e.target.value;renderDistrict()});
+  $("mfAtlasDistrictCSV").addEventListener("click",()=>{
+   const info=data.seed_district_top_rows;
+   downloadCSV("sli-kkp-2024-pembenihan-top10-terfilter.csv",
+    ["Observation year","Province","District","Species","Volume (ribu ekor)","Value (Rp juta)","Weighted avg price (Rp/ribu ekor)","Evidence scope","Official KKP source"],
+    rankedDistrictSeed(data,state.districtQuery).map(r=>[2024,r.province,r.district,r.species,r.volume_ribu_ekor,r.value_rp_million,r.weighted_price_rp_per_thousand,info.status,info.source_url]));
+  });
   const groups=$("mfAtlasSourceGroup");
   cat.groups.forEach(x=>{const opt=E("option","",T(x.label_id,x.label_en));opt.value=x.id;groups.append(opt)});
   function renderSources(){
@@ -117,7 +152,7 @@ function mount(){
   $("mfAtlasSourceStatus").addEventListener("change",e=>{state.catStatus=e.target.value;renderSources()});
   const renderAll=()=>{
    for(const opt of groups.options){const g=cat.groups.find(x=>x.id===opt.value);if(g)opt.textContent=T(g.label_id,g.label_en)}
-   renderProvince();renderSeed();renderSources();
+   renderProvince();renderSeed();renderDistrict();renderSources();
   };
   document.addEventListener("sli:languagechange",renderAll);
   new MutationObserver(x=>{if(x.some(y=>y.attributeName==="lang"))renderAll()}).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});

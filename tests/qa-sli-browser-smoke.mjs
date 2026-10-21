@@ -473,6 +473,12 @@ await check("KKP Marine atlas desktop: reconciled provinces, hatchery ranking, s
  assert.match(await page.locator("#mfAtlasProvinceSummary").innerText(),/37/);
  assert.equal(await page.locator("#mfAtlasSourceCards .mf-atlas-source-card").count(),25);
  assert.equal(await page.locator("#mfAtlasSeedList .mf-atlas-seed-item").count(),12);
+ assert.equal(await page.locator("#mfAtlasDistrictRows tr").count(),10);
+ await page.locator("#mfAtlasDistrictQuery").fill("Udang Vaname");
+ assert.equal(await page.locator("#mfAtlasDistrictRows tr").count(),3);
+ await page.locator("#mfAtlasDistrictQuery").fill("");
+ assert.equal(await page.locator("#mfAtlasDistrictRows tr").count(),10);
+ assert.match(await page.locator("#mfAtlasDistrictCount").innerText(),/1[.,]387/);
  await page.locator("#mfAtlasProvinceMetric").selectOption("seaweed_growout_2024");
  assert.match(await page.locator("#mfAtlasProvinceSummary").innerText(),/26/);
  assert.equal((await page.locator("#mfAtlasProvinceChart .mf-atlas-bar-row").first().innerText()).includes("Sulawesi Selatan"),true);
@@ -494,6 +500,8 @@ await check("KKP Marine atlas mobile: usable controls without horizontal overflo
  const m=await page.evaluate(()=>({inner:innerWidth,document:document.documentElement.scrollWidth,rows:document.querySelectorAll("#mfAtlasSeedList .mf-atlas-seed-item").length}));
  assert.ok(m.document<=m.inner+16,"KKP atlas mobile overflow: "+JSON.stringify(m));
  assert.equal(m.rows,12);
+ assert.equal(await page.locator("#mfAtlasDistrictRows tr").count(),10);
+ assert.ok(await page.locator("#mfAtlasDistrictCSV").isVisible());
 });
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");

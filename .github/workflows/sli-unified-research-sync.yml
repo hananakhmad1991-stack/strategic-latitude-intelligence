@@ -16,6 +16,8 @@ on:
       - 'research-api/src/owner-test-worker.mjs'
       - 'data/sli-research-project-stage-baseline.json'
       - 'data/sli-marine-fisheries-kkp.json'
+      - 'data/sli-kkp-portal-screened-2024.json'
+      - 'tests/test_sli_kkp_research_bridge.py'
       - 'data/sli-bps-agri-horti-2026-source-register.json'
       - 'data/sli-food-impact-source-leads-september-2026.json'
       - '.github/workflows/sli-unified-research-sync.yml'
@@ -32,6 +34,8 @@ on:
       - 'research-api/src/owner-test-worker.mjs'
       - 'data/sli-research-project-stage-baseline.json'
       - 'data/sli-marine-fisheries-kkp.json'
+      - 'data/sli-kkp-portal-screened-2024.json'
+      - 'tests/test_sli_kkp_research_bridge.py'
       - 'data/sli-bps-agri-horti-2026-source-register.json'
       - 'data/sli-food-impact-source-leads-september-2026.json'
       - '.github/workflows/sli-unified-research-sync.yml'
@@ -66,6 +70,12 @@ jobs:
               assert any(indicator in x["title"] and "2024" in x["title"] and "portaldata.kkp.go.id" in x["source_url"] for x in hits), indicator
           assert sum("province_seaweed_2024" in x["path"] for x in hits)==10, "KKP province source evidence incomplete"
           assert not any("2025" in x["title"] for x in hits), "Estimated KKP 2025 accidentally promoted into observed corpus"
+          regional=[x for x in p["records"] if x.get("dataset")=="sli-kkp-portal-screened-2024.json"]
+          assert len(regional)==34, f"KKP detailed 2024 Research AI bridge incomplete: {len(regional)}"
+          assert sum("seed_district_top_rows" in x["path"] for x in regional)==10
+          assert sum("seed_species" in x["path"] for x in regional)==12
+          assert all("2024" in x["title"] and "portaldata.kkp.go.id" in x["source_url"] for x in regional)
+          print("KKP 2024 district+province+species Research AI records:",len(regional))
           print("KKP research retrieval indexed:",len(hits),"dated official source-linked records")
           food=[x for x in p["records"] if x.get("dataset")=="sli-food-impact-source-leads-september-2026.json"]
           assert len(food)==22, f"September 2026 Pusdatin sources missing from DERGUBA: {len(food)}"
@@ -82,6 +92,7 @@ jobs:
           node --check research-api/src/claim-evidence-audit.mjs
           node --check research-api/src/primary-claim-probe.mjs
           python -m py_compile scripts/sli_research_source_adapters.py
+          python -m unittest discover -s tests -p 'test_sli_kkp_research_bridge.py' -v
           node --check research-api/src/owner-test-worker.mjs
           node --test tests/qa-sli-dashboard-corpus.mjs tests/qa-sli-claim-audit.mjs tests/qa-sli-primary-claim-probe.mjs
       - name: Explain actual coverage, not fake fact verification
