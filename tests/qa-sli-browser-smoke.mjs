@@ -298,7 +298,7 @@ await check("AI Atlas EN/ID switch preserves chart selection, source unit and ex
  await page.locator('#sliPlatformMast [data-sli-mast-language="id"]').click();
  await page.waitForFunction(()=>document.querySelector("#sliAiDigitizedFigureAtlas h3")?.textContent?.includes("Grafik laporan asli"),null,{timeout:8000});
  assert.match(await atlas.locator("table thead").innerText(),/Distribusi perusahaan rintisan penyedia data pelatihan AI/,"Indonesian evidence table must have Indonesian title");
- assert.match(await select.locator("option:checked").innerText(),/Gambar 4\\.2a/,"Source figure number preserved, figure label localized");
+ assert.match(await select.locator("option:checked").innerText(),/Gambar 4\.2a/,"Source figure number preserved, figure label localized");
  assert.equal(await select.inputValue(),initial,"Language switch must preserve selected source figure");
  assert.equal(await atlas.locator(".sli-figure-plot svg rect[data-value]").first().getAttribute("data-value"),sample,"Language switch changed actual source number");
  assert.equal(await atlas.locator('a[href*="worldbank.org"]').first().getAttribute("href"),source,"Source PDF URL should be language-independent");
@@ -336,11 +336,11 @@ await check("AI Atlas data library: source table and satellite unit remain bilin
  assert.ok(figureValue!==null,"World Bank satellite figure not available through Data Library");
  await select.selectOption(figureValue);
  assert.equal(await root.locator("table thead th").first().innerText(),"Year");
- assert.match(await root.locator("table thead").innerText(),/Low Earth orbit \\(LEO\\) \\(satellites\\)/);
+ assert.match(await root.locator("table thead").innerText(),/Low Earth orbit \(LEO\) \(satellites\)/);
  const numericBefore=await root.locator(".sli-figure-plot svg circle[data-value]").first().getAttribute("data-value");
  await page.locator('#sliPlatformMast [data-sli-mast-language="id"]').click();
  await page.waitForFunction(()=>document.querySelector("#sliAiDigitizedLibraryFigures table thead th")?.textContent==="Tahun",null,{timeout:8000});
- assert.match(await root.locator("table thead").innerText(),/Orbit rendah \\(LEO\\) \\(satelit\\)/);
+ assert.match(await root.locator("table thead").innerText(),/Orbit rendah \(LEO\) \(satelit\)/);
  assert.equal(await select.inputValue(),figureValue,"Switching language changed selected figure");
  assert.equal(await root.locator(".sli-figure-plot svg circle[data-value]").first().getAttribute("data-value"),numericBefore,"Source measurement changed when switching language");
 });
