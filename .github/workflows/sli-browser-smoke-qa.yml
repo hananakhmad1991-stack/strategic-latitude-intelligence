@@ -6,6 +6,10 @@ on:
       - 'data/sli-worldbank-ai-2025-digitized-figure-panels.json'
       - 'data/sli-stanford-2026-digitized-figures.json'
       - 'js/sli-digitized-ai-figures.js'
+      - 'marine-fisheries-intelligence.html'
+      - 'js/sli-marine-fisheries.mjs'
+      - 'css/sli-marine-fisheries.css'
+      - 'data/sli-marine-fisheries-kkp.json'
       - 'tests/qa-sli-browser-smoke.mjs'
       - '.github/workflows/sli-browser-smoke-qa.yml'
   schedule:
@@ -14,6 +18,10 @@ on:
   push:
     branches: [main]
     paths:
+      - 'marine-fisheries-intelligence.html'
+      - 'js/sli-marine-fisheries.mjs'
+      - 'css/sli-marine-fisheries.css'
+      - 'data/sli-marine-fisheries-kkp.json'
       - 'tests/qa-sli-browser-smoke.mjs'
       - 'index.html'
       - 'sli-sector-data-library.html'
