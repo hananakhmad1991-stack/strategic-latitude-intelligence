@@ -24,6 +24,13 @@ on:
       - 'data/sli-ruptl-esdm-2025-2034-period-plan.json'
       - 'data/sli-ruptl-primary-pdf-2025-2034.json'
       - 'data/sli-ruptl-provincial-source-projects-2025.json'
+      - 'js/sli-ruptl-progress-event-timeline.js'
+      - 'css/sli-ruptl-progress-event-timeline.css'
+      - 'scripts/review-ruptl-all-34-project-grids.py'
+      - 'scripts/scan-ruptl-official-project-news-candidates.py'
+      - 'tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs'
+      - '.github/workflows/sli-ruptl-full-34-review.yml'
+      - '.github/workflows/sli-ruptl-project-news-review.yml'
       - 'data/sli-ruptl-project-progress-primary-evidence.json'
       - 'js/sli-ruptl-provincial-evidence.js'
       - 'css/sli-ruptl-provincial-evidence.css'
@@ -35,7 +42,7 @@ on:
       - 'data/sli-ruptl-full-official-annex-index.json'
       - 'js/sli-ruptl-annex-index.js'
       - 'css/sli-ruptl-annex-index.css'
-      - 'tests/qa-sli-ruptl-full-official-annex-index.mjs'
+      - 'tests/qa-sli-ruptl-full-official-annex-index.mjs tests/qa-sli-ruptl-primary-pdf-digitization.mjs tests/qa-sli-ruptl-provincial-realization-evidence.mjs tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs'
       - 'js/sli-ruptl-esdm-period-plan.js'
       - 'css/sli-ruptl-esdm-period-plan.css'
       - 'tests/qa-sli-ruptl-official-period-plan.mjs tests/qa-sli-ruptl-primary-pdf-digitization.mjs'
@@ -83,6 +90,13 @@ on:
       - 'data/sli-ruptl-esdm-2025-2034-period-plan.json'
       - 'data/sli-ruptl-primary-pdf-2025-2034.json'
       - 'data/sli-ruptl-provincial-source-projects-2025.json'
+      - 'js/sli-ruptl-progress-event-timeline.js'
+      - 'css/sli-ruptl-progress-event-timeline.css'
+      - 'scripts/review-ruptl-all-34-project-grids.py'
+      - 'scripts/scan-ruptl-official-project-news-candidates.py'
+      - 'tests/qa-sli-ruptl-34-annex-monitoring-timeline.mjs'
+      - '.github/workflows/sli-ruptl-full-34-review.yml'
+      - '.github/workflows/sli-ruptl-project-news-review.yml'
       - 'data/sli-ruptl-project-progress-primary-evidence.json'
       - 'js/sli-ruptl-provincial-evidence.js'
       - 'css/sli-ruptl-provincial-evidence.css'
@@ -138,6 +152,7 @@ jobs:
           node --check js/sli-ruptl-esdm-period-plan.js
           node --check js/sli-ruptl-primary-pdf.js
           node --check js/sli-ruptl-provincial-evidence.js
+          node --check js/sli-ruptl-progress-event-timeline.js
           node --check js/sli-ruptl-annex-index.js
           node --check js/sli-digitized-ai-figures.js
           node --check js/sli-ai-figure-audit-status.js
