@@ -36,7 +36,10 @@ function view(){
  const macroNote=el("p","tf-macro-note",t("National non-oil/gas is NOT equal to minerba. Exports FOB; imports CIF. ","Nonmigas nasional BUKAN sama dengan minerba. Ekspor FOB; impor CIF. "));
  macroNote.append(source(latest.source_url,t("BPS release, 1 Oct 2026","Rilis BPS, 1 Okt 2026")));macro.append(macroNote);root.append(macro);
  const bpsStatus=el("aside","tf-bps-source-status");
- const approved=state.bps?.schema==="sli-bps-hs-partner-matrix-v1"&&state.bps.status==="verified"&&state.bps.verified_cells>0;
+ let approved=false;
+ if(state.bps?.schema==="sli-bps-hs-partner-matrix-v1"&&state.bps.status==="verified"&&state.bps.verified_cells>0&&typeof window.SLISectorTradeSankey?.validateBPS==="function"){
+  try{window.SLISectorTradeSankey.validateBPS(state.bps);approved=true}catch(e){console.warn("[SLI BPS primary] Review gate failed",e)}
+ }
  bpsStatus.append(el("strong",null,approved?t("BPS primary bilateral HS matrix: individually reviewed observations available","Matriks HS bilateral primer BPS: tersedia observasi yang diperiksa per sel"):t("BPS primary HS × partner matrix: not yet verified","Matriks primer BPS HS × negara mitra: belum terverifikasi")));
  bpsStatus.append(el("p","tf-warning",approved?t("A separate, independently reviewed BPS HS × country dataset is available. Select the BPS Official tab; do not confuse it with the 2025 intermediary Comtrade basket.","Dataset BPS HS × negara yang ditinjau secara independen sudah tersedia. Pilih tab BPS Resmi; bedakan dari keranjang 2025 Comtrade perantara."):t("The 2025 partner × HS cells have not been downloaded and audited directly from BPS. The mineral chart below is still sourced through Comtrade intermediaries. No primary-BPS bilateral observations are fabricated.","Sel mitra × HS 2025 belum diunduh dan diaudit langsung dari BPS. Diagram mineral di bawah masih bersumber melalui perantara Comtrade. Tidak ada observasi bilateral BPS primer buatan.")));
  bpsStatus.append(source("https://www.bps.go.id/id/exim",t("Open BPS HS/country query","Buka kueri HS/negara BPS")));
