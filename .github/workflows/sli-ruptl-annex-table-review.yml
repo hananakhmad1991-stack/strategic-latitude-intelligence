@@ -1,0 +1,51 @@
+name: SLI RUPTL Official Annex Table Candidates (Read-only)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/review-ruptl-official-annex-tables.py'
+      - '.github/workflows/sli-ruptl-annex-table-review.yml'
+permissions:
+  contents: read
+jobs:
+  validate-complete-ruptl-table-leads:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF table inspection
+        run: python3 -m pip install --quiet pymupdf
+      - name: Download official RUPTL and assert independently audited digest
+        run: |
+          mkdir -p /tmp/sli-ruptl
+          curl --retry 2 --retry-delay 3 -L --fail --max-time 190 -o /tmp/sli-ruptl/official.pdf 'https://gatrik.esdm.go.id/gatrik/gatrik-api/storage/migrasi/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf'
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path('/tmp/sli-ruptl/official.pdf')
+          source=json.loads(Path('data/sli-ruptl-full-official-annex-index.json').read_text())
+          actual=hashlib.sha256(p.read_bytes()).hexdigest()
+          assert actual==source['source_sha256'],f'Official PDF source revision/partial transfer: digest mismatch; got {actual}'
+          assert p.stat().st_size==source['source_size_bytes']
+          print('RUPTL_OFFICIAL_ANNEX_SHA256_OK',actual)
+          PY
+      - name: Extract source-page table candidates without promoting projects
+        run: python3 scripts/review-ruptl-official-annex-tables.py --pdf /tmp/sli-ruptl/official.pdf --max-pages 3
+      - name: Enforce zero approved project rows
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('artifacts/sli-ruptl-annex-table-candidates-review.json').read_text())
+          assert d['approved_individual_project_count']==0
+          assert d['status']=='extraction_candidates_require_original_page_and_column_editor_review'
+          assert len(d['sections'])>=20
+          print('RUPTL_CANDIDATE_ONLY_OK',len(d['sections']))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-ruptl-official-annex-table-candidates-review-only
+          path: artifacts/sli-ruptl-annex-table-candidates-review.json
+          if-no-files-found: warn
+          retention-days: 15
