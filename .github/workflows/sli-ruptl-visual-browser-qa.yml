@@ -1,0 +1,80 @@
+name: SLI RUPTL Interactive Visual Browser QA
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'pln-ruptl-energy-investment.html'
+      - 'pln-ruptl-2025-2034-source-intelligence.html'
+      - 'js/sli-ruptl-visual-explorer.js'
+      - 'css/sli-ruptl-visual-explorer.css'
+      - 'js/sli-ruptl-provincial-evidence.js'
+      - 'data/sli-indonesia-province-38.geojson'
+      - 'data/sli-ruptl-primary-pdf-2025-2034.json'
+      - 'data/sli-ruptl-provincial-source-projects-2025.json'
+      - 'data/sli-ruptl-expanded-22-annex-source-rows.json'
+      - 'tests/qa-sli-ruptl-visual-browser.mjs'
+      - '.github/workflows/sli-ruptl-visual-browser-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'pln-ruptl-energy-investment.html'
+      - 'pln-ruptl-2025-2034-source-intelligence.html'
+      - 'js/sli-ruptl-visual-explorer.js'
+      - 'css/sli-ruptl-visual-explorer.css'
+      - 'js/sli-ruptl-provincial-evidence.js'
+      - 'data/sli-indonesia-province-38.geojson'
+      - 'data/sli-ruptl-primary-pdf-2025-2034.json'
+      - 'data/sli-ruptl-provincial-source-projects-2025.json'
+      - 'data/sli-ruptl-expanded-22-annex-source-rows.json'
+      - 'tests/qa-sli-ruptl-visual-browser.mjs'
+      - '.github/workflows/sli-ruptl-visual-browser-qa.yml'
+permissions:
+  contents: read
+concurrency:
+  group: sli-ruptl-visual-browser
+  cancel-in-progress: false
+jobs:
+  original-data-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Inspect available Google Chrome / Chromium
+        shell: bash
+        run: |
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          if [ -z "$CHROME" ]; then echo "Chrome is unavailable; cannot assert browser passes." >&2; exit 1; fi
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+      - name: Install Playwright Chrome driver (existing browser, no browser download)
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Start static server on local loopback
+        shell: bash
+        run: |
+          python3 -m http.server 8766 --bind 127.0.0.1 > /tmp/sli-ruptl-browser.log 2>&1 &
+          echo $! > /tmp/sli-ruptl-server.pid
+          for i in {1..25}; do
+            if curl -fsS http://127.0.0.1:8766/data/sli-indonesia-province-38.geojson >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/sli-ruptl-browser.log
+          exit 1
+      - name: Verify province map and interaction on desktop and mobile
+        env:
+          SLI_BROWSER_TEST_BASE: http://127.0.0.1:8766
+        run: node tests/qa-sli-ruptl-visual-browser.mjs
+      - name: Store visual screenshots and browser diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-ruptl-desktop-mobile-map-charts
+          path: artifacts/sli-ruptl-visual-browser/
+          retention-days: 21
+          if-no-files-found: warn
+      - name: Stop local test server
+        if: always()
+        run: |
+          if [ -f /tmp/sli-ruptl-server.pid ]; then kill "$(cat /tmp/sli-ruptl-server.pid)" || true; fi

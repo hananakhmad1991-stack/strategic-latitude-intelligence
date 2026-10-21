@@ -108,6 +108,17 @@ function render(root,data,legacy,evidence,expansion){
    });
   }
  }
+ document.addEventListener("sli:ruptl-region-focus",e=>{
+  const id=e.detail?.annex_id;
+  const sample=all.find(x=>x.annex_id===id);
+  if(!sample)return;
+  regions.value=sample.appendix_geography;
+  renderRows();
+ });
+ regions.addEventListener("change",()=>{
+  const sample=all.find(x=>x.appendix_geography===regions.value);
+  document.dispatchEvent(new CustomEvent("sli:ruptl-region-selected",{detail:{annex_id:sample?.annex_id||null}}));
+ });
  for(const x of [regions,tech,status,kind,actualFilter])x.addEventListener("change",renderRows);
  q.addEventListener("input",renderRows);
  document.addEventListener("sli:exportready",renderRows);
