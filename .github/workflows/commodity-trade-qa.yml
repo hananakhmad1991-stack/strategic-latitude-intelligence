@@ -4,6 +4,12 @@ on:
     paths:
       - 'index.html'
       - 'js/commodity-trade-flow.js'
+      - 'js/sli-sector-trade-sankey.js'
+      - 'data/sli-marine-fisheries-trade-2025.json'
+      - 'data/food-agriculture-2026.json'
+      - 'food-agriculture-intelligence.html'
+      - 'marine-fisheries-intelligence.html'
+      - 'tests/qa-sli-sector-trade-sankeys.cjs'
       - 'css/commodity-trade-flow.css'
       - 'data/commodity-trade-flows.json'
       - 'tests/check-commodity-trade.cjs'
@@ -23,7 +29,9 @@ jobs:
       - name: Validate source-dated bilateral Sankey and interaction states
         run: |
           node --check js/commodity-trade-flow.js
+          node --check js/sli-sector-trade-sankey.js
           node tests/check-commodity-trade.cjs
+          node tests/qa-sli-sector-trade-sankeys.cjs
       - name: Validate homepage Trade Flows link and bundle
         run: |
           python - <<'PY'
