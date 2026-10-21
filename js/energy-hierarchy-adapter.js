@@ -24,7 +24,7 @@ function build(governance,asOf){
  put("Kementerian ESDM / Minister",president,"policy",govt);
  for(const p of ["Kementerian Keuangan","Bappenas","Kementerian Investasi","Kementerian Perindustrian","Kementerian Lingkungan Hidup","Kementerian Kehutanan","Kementerian Dalam Negeri","Kementerian Perhubungan"])put(p,president,p==="Bappenas"?"planning":"policy",govt);
  put("BP BUMN",president,"policy",govt);
- for(const p of ["Ditjen Migas","Ditjen EBTKE","Ditjen Ketenagalistrikan","Ditjen Mineral dan Batubara","Badan Geologi","LEMIGAS"])put(p,minister,"reporting",govt);
+ for(const p of ["Ditjen Migas","Ditjen EBTKE","Ditjen Ketenagalistrikan","Ditjen Mineral dan Batubara","Ditjen Penegakan Hukum ESDM","Badan Geologi","BPSDM ESDM","LEMIGAS","Wakil Menteri ESDM","Sekretariat Jenderal ESDM","Inspektorat Jenderal ESDM"])put(p,minister,"reporting",govt);
  for(const p of ["SKK Migas","BPH Migas","BPMA"])put(p,minister,"coordination",govt); // Sector supervision; not claimed to be ministerial directorates.
  for(const p of ["BAPETEN","BRIN — Energy","BNPB","BMKG"])put(p,president,p.startsWith("BRIN")?"research":"policy",govt);
  put("Provincial governors",get("Kementerian Dalam Negeri"),"local-government",govt); // Administrative guidance only; local government remains autonomous.

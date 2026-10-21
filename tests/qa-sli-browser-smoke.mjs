@@ -135,6 +135,39 @@ await check("Marine institutional mobile: stacked inspector and no overflow",{wi
  assert.equal(size.hubs,6,"Marine hub map should be visible on mobile");
 });
 
+await check("Food ministry hierarchy: October Wamentan and Itjen are selectable",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("food-agriculture-intelligence.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ const root=page.locator('.sli-ministry-mount[data-sli-sector="food"]');
+ await root.locator(".sli-ministry-node").first().waitFor({timeout:24000});
+ assert.match(await root.innerText(),/Muhammad Saleh Mustafa/);
+ await root.locator(".sli-ministry-expand").first().click();
+ assert.match(await root.innerText(),/Irham Waroihan/);
+ assert.match(await root.locator(".sli-ministry-inspector").innerText(),/Andi Amran Sulaiman/);
+});
+await check("AI ministry hierarchy: dual deputies and directorates",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("ai-intelligence-hub.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ const root=page.locator('.sli-ministry-mount[data-sli-sector="ai"]');
+ await root.locator(".sli-ministry-node").first().waitFor({timeout:24000});
+ assert.match(await root.innerText(),/Angga Raka Prabowo/);
+ assert.match(await root.innerText(),/Nezar Patria/);
+ await root.locator(".sli-ministry-expand").first().click();
+ assert.match(await root.innerText(),/Ismail/);
+ assert.match(await root.innerText(),/Arief Tri Hardiyanto/);
+});
+await check("Energy ministerial hierarchy: Deputy SG IG and DG names mobile",{width:390,height:844},async page=>{
+ await page.goto(pageUrl("index.html#energy"),{waitUntil:"domcontentloaded",timeout:30000});
+ const root=page.locator('.sli-ministry-mount[data-sli-sector="energy"]');
+ await root.locator(".sli-ministry-node").first().waitFor({timeout:27000});
+ assert.match(await root.innerText(),/Yuliot/);
+ await root.locator(".sli-ministry-expand").first().click();
+ assert.match(await root.innerText(),/Ahmad Erani Yustika/);
+ assert.match(await root.innerText(),/Yudhiawan/);
+ const metrics=await page.evaluate(()=>{const el=document.querySelector('.sli-ministry-mount[data-sli-sector="energy"]');const r=el.getBoundingClientRect();return {pageDocument:document.documentElement.scrollWidth,viewport:innerWidth,componentRight:r.right,componentLeft:r.left,componentWidth:r.width,pos:getComputedStyle(el.querySelector('.sli-ministry-inspector')).position};});
+ assert.ok(metrics.componentRight<=metrics.viewport+8&&metrics.componentLeft>=-8,"New ministry component itself overflows mobile viewport: "+JSON.stringify(metrics));
+ if(metrics.pageDocument>metrics.viewport+16)console.warn("Known existing Energy page-wide SVG/table overflow remains outside ministry component:",JSON.stringify(metrics));
+ assert.equal(metrics.pos,"static");
+});
+
 await check("Homepage: fewer topics, source links within sector cards",{width:1366,height:850},async page=>{
  await page.goto(pageUrl("index.html#home"),{waitUntil:"domcontentloaded",timeout:30000});
  await page.locator(".sli-portal-topic-card").first().waitFor({timeout:22000});
