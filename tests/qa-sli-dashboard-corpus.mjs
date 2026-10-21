@@ -69,3 +69,13 @@ test("Food research filters to source-dated Pusdatin records, preserving evidenc
  assert.equal(matched[0].dataset,"food-agriculture-2026.json");
  assert.equal(matched[0].source_type,"public_dashboard_source_record_not_claim_verified");
 });
+
+test("BPS 2025/2026 Research AI table references never become numeric or licensed claims",()=>{
+ const payload={records:[{id:"dashboard_bpshorti1",title:"BPS · Perusahaan hortikultura menurut provinsi 2026",dataset:"sli-bps-agri-horti-2026-source-register.json",text:"DASHBOARD SNAPSHOT table 3.1 metadata_only_rights_pending_no_numeric_claim",source_url:"https://searchengine.web.bps.go.id/search?q=hortikultura",period:"2026",publisher:"BPS"}]};
+ const matched=selectDashboardEvidence(payload,"Berapa perusahaan hortikultura BPS per provinsi 2026?");
+ assert.equal(matched.length,1);
+ assert.equal(matched[0].numeric_claim_permitted,false);
+ assert.match(matched[0].text,/SOURCE TABLE LOCATOR ONLY/);
+ assert.match(matched[0].text,/do not extract, quote, compute, aggregate or infer numeric figures/);
+ assert.equal(matched[0].publication_rights_status,"BPS_written_commercial_reproduction_permission_missing");
+});
