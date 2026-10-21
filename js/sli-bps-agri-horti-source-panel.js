@@ -15,7 +15,7 @@ function render(reg){
  const h=dom("h3",null,"Katalog sumber BPS 2025–2026 · lintas subsektor");
  const about=dom("p","fa-bps-notice","Dua PDF BPS telah diaudit dan 82 tabel statistik dipetakan ke sektor SLI. Ini adalah indeks sumber, BUKAN salinan angka tabel. Seluruh angka hasil ekstraksi menunggu pemeriksaan visual dan izin tertulis BPS untuk reproduksi komersial. Direktori yang memuat nomor telepon tidak dipublikasikan.");
  host.append(h,about);
- const counts=dom("p","fa-bps-meta","47 tabel Indikator Pertanian 2025 · 35 tabel Perusahaan Hortikultura 2026 · 0 sel numerik diterbitkan dari kedua PDF ini.");host.append(counts);
+ const counts=dom("p","fa-bps-meta","82 tabel · 114 halaman tabel terpetakan (termasuk 32 halaman lanjutan) · empat konflik metadata judul · 0 sel numerik diterbitkan. Audit lokasi selesai; audit setiap angka dan izin belum.");host.append(counts);
  const filters=dom("div","fa-bps-filters"),select=dom("select"),search=dom("input"),status=dom("p","fa-bps-meta");
  select.setAttribute("aria-label","Sektor tabel sumber BPS");
  for(const [value,label] of [["all","Semua subsektor"],...Object.entries(sectorNames)]){
@@ -35,9 +35,10 @@ function render(reg){
    const article=dom("article","fa-bps-entry");
    const heading=dom("strong",null,"Tabel "+t.id+" · "+(sectorNames[t.sector]||t.sector));
    const desc=dom("p",null,(t.domain||"").replace(/ · /g," · "));
-   const meta=dom("small",null,doc.title+" · halaman cetak "+t.printed_page+" · PDF "+t.pdf_page+" · "+t.chart_candidate);
+   const meta=dom("small",null,doc.title+" · halaman cetak "+t.printed_page+(t.pdf_page_end>t.pdf_page?"–"+(t.printed_page+t.pdf_page_end-t.pdf_page):"")+" · PDF "+t.pdf_page+(t.pdf_page_end>t.pdf_page?"–"+t.pdf_page_end:"")+" · "+t.chart_candidate);
    const link=dom("a",null,"Cari publikasi resmi BPS ↗");link.href=doc.publisher_search_url;
    link.target="_blank";link.rel="noopener noreferrer";
+   if(t.review_flag||t.arithmetic_review_flag){const flag=dom("small","fa-bps-qa-alert",t.review_flag?"Perbedaan judul/tahun sumber — tahan angka sampai diklarifikasi.":"Perbedaan subtotal sumber/ekstraksi — perlu verifikasi visual.");article.append(flag)}
    article.append(heading,desc,meta,link);list.append(article)
   }
  }
