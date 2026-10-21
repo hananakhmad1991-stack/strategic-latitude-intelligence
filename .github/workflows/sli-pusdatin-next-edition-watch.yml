@@ -4,6 +4,12 @@ on:
   schedule:
     # 08:13 WIB daily, schedule may be delayed by GitHub.
     - cron: '13 1 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/watch_pusdatin_new_editions.py'
+      - 'tests/test_watch_pusdatin_editions.py'
+      - '.github/workflows/sli-pusdatin-next-edition-watch.yml'
   pull_request:
     paths:
       - 'scripts/watch_pusdatin_new_editions.py'
