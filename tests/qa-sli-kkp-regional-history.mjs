@@ -34,7 +34,7 @@ test("Source-era provincial splits and blanks must not be backcast or turned int
 });
 test("Marine 2019–2024 atlas has interactive year, metric, map, trend, cited CSV and explicit geometry rights",()=>{
  const html=read("marine-fisheries-intelligence.html"),js=read("js/sli-marine-regional-history.mjs");
- for(const id of ["mfHistoryMap","mfHistoryMetric","mfHistoryYear","mfHistoryReset","mfHistoryCSV","mfHistoryRows","mfHistoryTrend","mfHistorySummary","mfHistorySelected","mfHistorySource"])
+ for(const id of ["mfHistoryMap","mfHistoryMetric","mfHistoryYear","mfHistoryReset","mfHistoryCSV","mfKKPHistoryRows","mfHistoryTrend","mfHistorySummary","mfHistorySelected","mfHistorySource"])
   assert.equal(html.split('id="'+id+'"').length-1,1,id);
  assert.match(html,/js\/sli-province-map.js/);
  assert.match(html,/js\/sli-marine-regional-history.mjs/);
