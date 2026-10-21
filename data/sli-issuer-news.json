@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T16:11:04.390283Z",
+  "updated_at_utc": "2026-10-21T17:06:18.790058Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_86ba8ad76d7b365f8dbaeb",
+      "title": "PGEO Perkuat Fundamental di Tengah Tekanan Pasar Saham - www.suaralandak.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBaeHhEVXZCeVJrQXVqZF9fUlBjLUNhR2VVU0ZtTEVud2hoSVZKdnNMczRSVGRhSGQxM0R2M2hBVFZOU0JKeEN2WUZzWk1KdFl0T2RlZjlNajVvZ04zU0l0djBpWFZmNDByN1E?oc=5",
+      "publisher": "www.suaralandak.co.id",
+      "published_at_utc": "2026-10-21T16:24:59Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_9e72aaeb9aec4d1d7d0fcd",
       "title": "Sanksi Tegas! OJK Beber Praktik Manipulasi Saham DSSA, BREN, dan CUAN - Emitennews.com",
@@ -90,6 +106,38 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_5e6c70b8df43b8625970c5",
+      "title": "Babak Baru Kasus Saham DSSA, BREN, dan CUAN: OJK Serahkan Surat Sanksi Denda Triliunan Rupiah - JPNN.com",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOY20wdGdkeXUtT1d1bnBtNmljMlRKZy01NExYYlh0anFfX3I3Ry1fWnZYcDc0c2NCdWRxNzdpMGZaSGJaX2JfYUJTN3VFdURpcGY0dkFpSHR6NnpvVkhfQzR5ZUFBVE14NFdCSW83WlZ0a2w2bU9lRXlYeWdBLXdNdUxPRmxiaHdjcXdlT1lZQVY0Ni1McE1wenpGZ1VDZ1NrQ3Jwd3NNbVo5S1oxbW9lTXRhNmlod0HSAboBQVVfeXFMTXlGZzVlWmhoUGdyN0o4bDEyNHg5dWszTTVlbkFsd2tDZThwLXVQZmJ2azlQOGN3Y3BrZi1wcURVNHdlbFd5alFKUGhCUVRGMTJWRlRMam5CanZxZ2stTEk1OFFWcWd1dTU2YTg1Y1JtR1plWmhpaU5rc2pIVk1aT1VMVF8wbWRkSi0yUk1DMmhDNTI0MEhpR0tfbGFzNGoyVUpydUt3dTB5ZlFCdmFYMDdvTHgzbHhzR3Fn?oc=5",
+      "publisher": "JPNN.com",
+      "published_at_utc": "2026-10-21T14:46:39Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c5bedc05ee66c5a670dd51",
+      "title": "Sejumlah Sekuritas Terseret Kasus Saham DSSA, BREN, dan CUAN - Warta Ekonomi",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPa3MxcmlTTGtGNk5jS0R5Q1BpcW5DenNySkdVRGxFdXdqbFpjUzY2M2FXR3VNUENQdWtXMUxpaE5pb0pjUWp2N2x3ZHdxTDZCbklFVVFoZUFaX3JTRUlOdDVBYmswb3hSOFMwVHhTUXdYLW81d2VJV2FTeHZmc3ZlNThlbURtTTNfd0dMcHgwa1FWb1J2QTF1Q3ZPeG7SAaIBQVVfeXFMTkNSN0hMOTctNDZ1LUhuWHVsempsMXJEaVY5Z0JvWTAzMlVDMDNMNEN0SjMyM3o0aW5vaTRUMmhMM1BlVUIxNkdEd2xmeHlYbWwyNHVxa2ROZFJJZlVFdmtWV2MteU1CUG9qQzNWX0tEQUpMSWRHLTlKVGhSeERWZGNBUi14VXdRcUVDY0VyQWllRGRwXzVXNUpObUlnQnJUUHNR?oc=5",
+      "publisher": "Warta Ekonomi",
+      "published_at_utc": "2026-10-21T14:34:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_ded834d727703e7af07cf0",
       "title": "OJK Berikan Sanksi Korporasi dan Individu Perdangan Terkoordinasi Saham DSSA, BREN, dan CUAN - SWA.co.id",
       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNNUxtZDh3LUVYc3BPOXdaWHhRZDVBLU84cF9XR1FtdTlxRTdGUTBQN0tyM3p4VTJVYzdUOWltUjhJVVN3RzAzeU83T0NqRGlsbWRsVXZNX3NtdG1FcGh2Y3FHYUlDY0FpbkNpMm0zcE55MXoyWFVSLURmSnNiYTE0Ml94a25NczFfdlpNU2RpazZ5R2d3Ulh4SnAzQlpOclItV2F1WlMxcFZ6QWtXeU5rWWtzY0swYlk0OWk5LQ?oc=5",
@@ -114,6 +162,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_00716202e64e57c2bbd0fd",
+      "title": "Menakar Fundamental PGEO di Tengah Gejolak IHSG, Cermati Rekomendasi Analis - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQWTVzUUtRTXpUb1JSMmtNVzU2MDFIUm9MUmZLeXNQXzRqNXV6MmJ5ZXM5LWtsbUdfRDhTYkpDakdyRHlSb0trVlZ0cVUzUzVvR1RXR3RTUlpTNUx5LXY2RUZuYjBQdG00d3FTQzlVOGZkN3RzRHlldk5MRWQ4VTF2aWU4TXJLNlZUMTdleWN6eUMyU2p0S1diMHVoTDdWT2w2TlZBMUktUVU3dFNJQnV30gGnAUFVX3lxTE51TF93RWQ4aW9zZi1JaUZaWmxJdFliTF9VdG9TLVh2andHemZZaHpkLWNJcHRyT0NxOVlwRENuYUdZRk10YTlvaU1nR0YzVDVRbTRPUWtCYXdkU3BPLTFlRUI2UDZwRWxGZ2ZHcXFqcmdlaDdvZXA0aG9jZHVFODgxbTlGZ016dHNwTG5vbVgxYm9WekhWaEJ1enoxb29pWldTNUh4MGhF?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T14:19:33Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
       ],
       "sector": "energy",
       "source": "public_google_news_rss",
@@ -318,6 +382,22 @@
       "title": "Simak Rekomendasi Saham BBCA, ENRG, dan JPFA untuk Kamis (22/10) - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZTZVRlhhOEtyTmZZd3JQUlYwbXRrMlRTWWNtZGUtZGZKbnNVV29tdTJ1NkdOakxEYjZadWNHb21UZ1ZtdVpRQVF1UE9GQkItZ3Q3Z01TN0NoeW1VTnZnSkNIWVQwRndmMG02VzFESzIxSFhMOXJGMmdNSzRiT3d1NldQWkJlWXktRTNiUmNQc3ZHVVpLM2ZlNnNOY9IBkwFBVV95cUxNWmZ1ZzFaTWVSaW1HQV9EUHY3dk0zNmIwdHJYdTlFMFBzc2RNcFM3ZnlCMmRybmJsN3MzSEI3amxDMnNBUG9wOVFTWHpZVm9kNnFnaU8xbmdNdVEwamJHUkdfNllRSGI1cFVUZU9zSjU4N1dwd09lQ2cwYWpVVF8xRHB3WngySEpSa1ZXVEltdmlpMDQ?oc=5",
       "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T11:57:35Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_63c49a00743604d44704d9",
+      "title": "Simak Rekomendasi Saham BBCA, ENRG, dan JPFA untuk Kamis (22/10) - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9SWU12TTY0anhYN3pEMXE1X2tyVHhUVzJlN0UyQ0ZidERjUVpzSy04V3l5bFMyOF9GSzl0S1l1TkZ1YUFJTmN3S2w1aE83TmZCd2x0bm9WcUhhYUluUmR1WDcyaFR1QQ?oc=5",
+      "publisher": "TradingView",
       "published_at_utc": "2026-10-21T11:57:35Z",
       "date_type": "rss_pubdate",
       "tickers": [
@@ -2109,6 +2189,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_a1616265848da3eb557c06",
+      "title": "IHSG Dibuka Menguat Sentuh Level 5.000 Ditopang Laju BBRI, BMRI hingga TLKM - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNS2NSUzJ5MTVNYVYyUnVyZ0ZzVnZCNjFWNFVjZ2Y5akEtektLZFRsUm9QN0ZFbEpiUnlTXy1xcFJCeDFOLW1xOFY5YUZkWElXdmV2Z015WV84RDc4eWNLY2ZWVEVGeWRjQ1FLRlVRV0hnZmhOUzZYOHhqaml2V012LU5uNnVMN3JZcTRSc1I1MmhtTFV3RVZISy04YXpjTHdNVENWbHRJU25qdW5jbVdBT2tORWZORWYyUHZvcXVZVlM?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-20T02:11:50Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_b066946d861a21e3baacf1",
       "title": "BEI Bakal Keluarkan 80 Saham dari IHSG, DCII dan BREN Ikut Terdampak - HARIAN MISTAR",
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPREMwZ3BERTF2bWs3Z3FFZUI1Mm1TNlJha2NWQTEwQzVzN09LaW9SSDRnLVVtMXl3c2VXSXMxa2JsQi1IWGlhVUYzRVFIclBBc0RmMjNUS3BYTEthVTZmd25ydEZtYjdPV001VXpoVk1WZFljZERrV19fZmpmLXpCU1VCWTdHbDBlOUFjNXgzQU9DRjBCbllncEZ3SGZZTlk?oc=5",
@@ -2431,6 +2527,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_fe160871fe4e6810a41628",
+      "title": "IHSG Melemah 3,64 Persen dan Saham MAPA BRPT ISAT Disorot - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9mSWJmaGtEUGZuQ3ZDSGhoVUU2VVpnTGpBSzFnRi1paGV1Z0ZaeGdpeGlzckNCS3pkMkU5dTUtaV9MTERWTDE0N0xWMGZrcGsxM28ySkZYS2s1cDkzNTllNGNXTUxDVlJrQkR2VHdpbw?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-19T22:38:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ISAT"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_199558d9b4481f54d837d1",
       "title": "Kinerja PGEO 2026: Produksi GWh Lebihi Target - Bursa Nusantara",
       "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1YX0E3OUFheXlnbk84VzRKSGJFWUJfZDNyR2VMRDZiLUdUZ3ByUE9HdVBKZExHNTBKdmJ5V1kxaksyZ2d3cnVvYVFXM3o5ZWpmQjRoanozUXFkUjlCUVVHVzB2UnR2aGVSTVZmSS16NnpPeE4xaVpXV0sxUG3SAYIBQVVfeXFMT1BfUmxKajFFLS1wZldLYTlBM1BQcVVUZEhhak1qbjBKOU4yNVBjVkd5ZUhxVGhZcnlzZEZZeXRGOTdWeVNqc243b1N5OTliTl9NWmQxc0lFZWg5MWtONFcyXzNsR3hkN0dkSDIwSndRVmttUzA3RXAzWVMxQ0dSZ1JKQQ?oc=5",
@@ -2503,6 +2615,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "GOTO"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_7fee1b9b6827d9ef5c7602",
+      "title": "IHSG Anjlok 3,64 Persen Saham MAPA BRPT dan ISAT - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5OUUswUF90S1c4TUdwQzU3bDBHTnVWbHAyYndjWld0MklXUHg4dnpaMU1kUHN4LTJWZmxORWRLRkkwMEhGdG1ZUDIzU3lITDNtMTZueWJiUVZOcms1dGZkZWVzOWE?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-19T11:17:26Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ISAT"
       ],
       "sector": "technology",
       "source": "public_google_news_rss",
@@ -2974,6 +3102,22 @@
         "INCO"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_0330164d91a6660cd79db6",
+      "title": "BREN dan CUAN Umumkan Buyback Saham - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1kd3o4LTJPU25jTDlzNDVXVzc5ZERpdU1XaE9vQ1g4eEJCbGZ2RUlBSGZiejlOa3hGVHFDZThzY0RXSnZXdWJnRUdJbW5UcHdlMU5UemxhMHlQcy1RMWRBWEZFZVlOWDlmb2JXRTVDS0szZjVFM2c?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-19T01:35:31Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -4094,6 +4238,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_09eb5414fd90b477d49342",
+      "title": "Cek Ide Trading dari MNC Sekuritas Hari Ini (15/10), Ada ADMR, BRMS, ENRG, dan ISAT - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONk0tWkhOZEduWjNybHJCa3UyUkU2NEVwMzd3UHNyTDB6YmdJTFdZeGhGOHdRUVZKZ0dqQXZ3MFVEZmNBbE1CSDRTZ1N1T0w1N2hUMk1HdU9JRExhVkd2NzJUT0ZnYnNhSlB4WUt4LXVtdVcxTkxURWpaSlozUTRKV3JLall1d1cwWWNXMk9PYjVPVENubFpQOXpqUFVYOFBPUTcwSklMcUpQTEx2bW45NXV3?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-15T03:13:41Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ISAT"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_2b84d9652a6ede41792790",
       "title": "Saham GOTO Naik 3.7% Usai Gelar RUPSLB, Simak Hasilnya - Ajaib",
       "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPdjNTVlFXUUo1eGtCNXZnSTNEeFFoaHN5SXY3VDNCMm9aVmpkZUY0WE1lZUhNbjNNTjEtQi12N3daR29MVXlLSmM1a2k5Tzc5b3ZFcGJ1X1RwZy1tNm1IUDJGQU0zTkhNUkdHVWVacGM2QzJKLVNxX1IzdF9seXlaaUh3VHVlazJCVWVlSk1GZEo?oc=5",
@@ -4248,6 +4408,22 @@
         "MEDC"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_07d1b0b70199099af263b9",
+      "title": "Proyeksi IHSG Kamis 15 Oktober 2026, Cek Rekomendasi Saham ADMR dan ISAT - NTVNews.id",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQRHNQN2RPcm5WUERwWmYwZGtyZ0J5eHY0c1QtWWpYbUh2RkQwRU9oQlNpeVBWc21JVHZWbW5kZU5uUTZuR3RjekFoOU1fdTBVODZfa2JsOUdMTWNBc1BhZFdPU1h1eHVLSE9RZE5ndHNsaWxFLTRZWnFscFlULVZheEx2V0VIY2VrdnNJYXYwV2hmQnRGRUE5bXV5dlVENWczZDl2OFFFQmpMNVFXNkVZeQ?oc=5",
+      "publisher": "NTVNews.id",
+      "published_at_utc": "2026-10-15T00:01:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ISAT"
+      ],
+      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
