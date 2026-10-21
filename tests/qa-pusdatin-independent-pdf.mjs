@@ -39,7 +39,7 @@ test("all 2,163 parsed records reconcile exactly against saved original PDF tran
     const nums=line.split(" ").slice(-tokens.length);
     return nums.length===tokens.length&&nums.every((raw,i)=>{
      const num=raw==="-"||raw==="—"?null:Number(raw.replace(/\./g,"").replace(",","."));
-     return Object.is(num,tokens[i]);
+     return num===tokens[i];
     });
    }),"Source transcript mismatch: Tabel "+t.table+" "+r.label);
    total++;
