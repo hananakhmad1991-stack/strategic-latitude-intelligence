@@ -1360,7 +1360,8 @@
         133
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "hold_subtotal_conflict_plus_rights_review",
+      "arithmetic_review_flag": "publisher_or_extraction_subtotal_disagreement"
     },
     {
       "id": "6.2",
@@ -1379,7 +1380,8 @@
         134
       ],
       "page_locator_review": "pdf_text_table_id_matched_start_and_continuations_on_original_sha256",
-      "numeric_cell_qa": "pending_individual_cell_and_complex_header_visual_review"
+      "numeric_cell_qa": "hold_subtotal_conflict_plus_rights_review",
+      "arithmetic_review_flag": "publisher_or_extraction_subtotal_disagreement"
     },
     {
       "id": "6.3",
@@ -1859,7 +1861,10 @@
     "all_verified_numeric_cells_public": 0,
     "manual_visual_cell_qa_complete": false,
     "source_location_audit_complete": true,
-    "statistical_table_pages_mapped": 114
+    "statistical_table_pages_mapped": 114,
+    "private_pilot_statistical_tables_checked": 6,
+    "private_pilot_province_rows_per_table": 38,
+    "public_business_directory_contact_records": 0
   },
   "table_page_location_audit": {
     "source": "uploaded_sha256_matched_original_pdf_text_layer",
@@ -1913,5 +1918,38 @@
       ],
       "action": "verify_subject_universe_before_cross_table_calculation"
     }
-  ]
+  ],
+  "private_numeric_extraction_qa": {
+    "source": "operator_local_review_csv_extracted_from_watermarked_user_uploaded_BPS_PDF",
+    "status": "requires_visual_individual_cell_verification_and_written_rights_permission",
+    "initial_pilot_tables": [
+      "3.1",
+      "3.3",
+      "3.6",
+      "6.1",
+      "6.2",
+      "6.3"
+    ],
+    "private_pilot_province_rows_each": 38,
+    "watermark_affected_draft_cells": 85,
+    "unparseable_draft_cells": 1,
+    "national_column_sum_difference_detected": [
+      {
+        "table_id": "6.1",
+        "period": "2023",
+        "difference_in_units": 1,
+        "scope": "sum of candidate province cells vs printed national total",
+        "action": "do_not_reconcile_automatically; manual source cell and publisher reconciliation"
+      },
+      {
+        "table_id": "6.2",
+        "field": "non_government_supported_status",
+        "difference_in_units": 14,
+        "scope": "source DKI Jakarta row displays reported total 242 but numerics 65+163 and a dash; candidate sum gap 14",
+        "action": "dash_is_not_zero_and_missing_14_must_not_be_imputed"
+      }
+    ],
+    "affected_table_status": "hold_numeric_publication_even_if_one_national_total_reconciles",
+    "derived_metrics_and_maps_publication_allowed": false
+  }
 }
