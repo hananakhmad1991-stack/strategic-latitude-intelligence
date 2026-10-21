@@ -11,6 +11,9 @@ on:
       - 'css/sli-marine-fisheries.css'
       - 'data/sli-marine-fisheries-kkp.json'
       - 'tests/qa-sli-browser-smoke.mjs'
+      - 'js/sli-sector-leadership.js'
+      - 'css/sli-sector-leadership.css'
+      - 'data/sli-cross-sector-official-leadership-2026.json'
       - '.github/workflows/sli-browser-smoke-qa.yml'
   schedule:
     # ~12:27 WIB daily, GitHub schedule may be delayed.
@@ -23,6 +26,9 @@ on:
       - 'css/sli-marine-fisheries.css'
       - 'data/sli-marine-fisheries-kkp.json'
       - 'tests/qa-sli-browser-smoke.mjs'
+      - 'js/sli-sector-leadership.js'
+      - 'css/sli-sector-leadership.css'
+      - 'data/sli-cross-sector-official-leadership-2026.json'
       - 'index.html'
       - 'sli-sector-data-library.html'
       - 'ai-intelligence-hub.html'
