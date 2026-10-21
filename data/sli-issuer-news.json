@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T10:35:49.734856Z",
+  "updated_at_utc": "2026-10-21T11:06:39.646574Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -52,6 +52,22 @@
         "TLKM"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_a067553e3f063178b03268",
+      "title": "Jasa Marga (JSMR) Buka Ruang Jalani Buyback Saham - Warta Ekonomi",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNN2JqMUlGbUo2U3E1MWc2djM0aUNpTDhQMldyU0pTRjdRakJ2UWFaUjBtWVNoRFVFZVotR1Q4TWVKUkVmTy1PTWsyU0plQlE0SHh4VXZnN3ctRUs4a3pkNlpEcU9kNGQxbzhwZHVaZXpLUDAwMlJHdWd3ZVlRTWIyNFVwbGtZaDdZbEdwS1l30gGTAUFVX3lxTE5sQTlCQVBRT045OE9idmN4dm1NemdWTTBIZmRpdllJNERKUWl3NG1IRUhsWTl0NllwMzFvcHVWdXhIZzFDenMyNFVadll2ai05VGRGbXE1MXBVNGdsNlNGeTVWcy0yempGd0ZrUDRTbzV5RXNLWHppNFF6Q3hCNzRNUnE2bnliTjlSalJyMVRDcVhkQQ?oc=5",
+      "publisher": "Warta Ekonomi",
+      "published_at_utc": "2026-10-21T10:14:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -1411,6 +1427,22 @@
         "DCII"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_e77fafd4697e543ce02e41",
+      "title": "Jika BREN hingga DCII Keluar dari IHSG, Sahamnya ke Mana? - Halaman 2 - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQNUJsdHRDYkFIUnNNMDd0b0hlc2RFWVUtbFFFeEZ5QlVaajVZMFVPWUVhTzJ6U1FJUUJ6UC1yc3VWRTYzbjdYVWdJRHBlVzZXeFVXOEJkYWNsWEdTWDNCS1NDcU5mVzF2bW9mUFI0SHdDVGpiYXFwMkc0X1hSWHNxTWRCM2lleFRwV3p1OUpESmhvNDQ3Smc?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-20T04:44:17Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
