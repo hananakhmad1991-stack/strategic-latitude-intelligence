@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T06:48:40.664203Z",
+  "updated_at_utc": "2026-10-21T07:42:04.840078Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,70 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_954eb638347c5aa8dc38ba",
+      "title": "Produksi Tembus Rekor dan Laba Tumbuh Dua Digit, Saham PGEO Kian Prospektif - Info Ekonomi",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQWlR5OUlYMlN3cDFfem5fS0UyUTZMdXV3VnJEdHJ3ZzdyZDA3d0gxaTc1dWlUNDQ1OWZfTHNzaEpIRFlwRXBiVmo3OWpEZWZlbHlDV3k5SExwOFVrc1hPSHNvMFl3MWpUMzRjUzU1cF83VF9sdjIzVmc4bThwUTJFZ3dMc0hqVDRSTk1kcVpTclR0SkNDWnNXcWtDNm1UNDJfeFk3VHFMOEpBdw?oc=5",
+      "publisher": "Info Ekonomi",
+      "published_at_utc": "2026-10-21T07:27:44Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d06c2dc46499e4bbe1ae54",
+      "title": "Emiten ASSA Kantongi Pinjaman Rp 500 Miliar dari BCA - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9xZEFObGhIcW9fWG03VllLTmE5TTJFUnlyMGZ2dGMtVzhmcGFqT0NjMDl6WkNRUURNSWFmQWNwNWlPTHJaZUNpZVpac09vbjNpVUw4?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-10-21T07:18:46Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ASSA"
+      ],
+      "sector": "transport",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_adf80e70b6ec00b715488b",
+      "title": "BREN, DSSA, hingga BYAN Masuk Daftar 80 Saham HSC yang Dikeluarkan dari IHSG - Stabilitas.id",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQWW15RXZXYW9HdFBoRE9SbEc3Zzdta3cxbkFBeVd3WTBzbmJWN1VPV29yNWVPbFBoc3N2RFQ5Z3RlelVvckxIWWc0bEFvWDQ1bW5LVlBSWHVSdHdCcGd5RUltNGtGS0ZoSHd6dnA0R09aU2UtM3ZIWkUzTHY0TWl6bDdaQ3hJdmJpVGJiVHlrMU9pNHgta0phS2NjcTNvTXdlV1Fr?oc=5",
+      "publisher": "Stabilitas.id",
+      "published_at_utc": "2026-10-21T07:14:16Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_7e0a2239f5a322cf62d14f",
+      "title": "Borong Tiga Sekaligus, Trinugraha Thohir Serok Saham ESSA, AADI, ADRO - Emitennews.com",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNR0g1S2pFbWZidkp6WW1wR1A3ZGo0b21sMDBFR0hEWl8yaDB2RnZESzUwWU5CeTg5NHRxbzIzeUdUWGI1Y2ZGb05iRDFjeUxOclB2R1lHd292dm92c1NrVHFnMWtaM2c5SGdBZGN2N0JXQ1RtTFpRSmg0R2twallHTUgtYUEtQ0xmSHVCZk1BTFdQMVZydVhzRTJRc3N5Vzg?oc=5",
+      "publisher": "Emitennews.com",
+      "published_at_utc": "2026-10-21T06:04:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_dc6c42452cb861198e2508",
       "title": "Buyback TLKM Rp4 Triliun Dikebut, Dukung Nilai Jangka Panjang Investor - KabarBursa.com",
@@ -143,6 +207,22 @@
       "title": "Mulai Buyback Saham Rp5 Triliun, Tengok Profil AADI dan Kinerja Terkini - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPUVNRcnVvZlJjV01SdDI0NnJkN2x4ZHNGUVVRdVJsb1ctZ3QzaDRfQlV6RkwwekN4TlZXZEoxOU84ZEhPT1pLRGhOdXZRUVJwTHhJQ3BSSlg2OUZ2U1Z4WmZleEt3VjRPUU5PTlVKMElfcWh3M0VTY3puODFJcHV6Z1FkNkljVkZGMXRiWmNnWnZoWmkwUzRSQlVjUURRQTZPM2VnS2Y4VU54Z9IBogFBVV95cUxOdVpuMzR5dFkzZ2JWVXUxTDdteFBNb0VWbE8yODB5QmhhbHlWUUFUZDFoeVZBYWRKb0hrS0tWSGpHN1VDSlB0Z2JyeW56TkJFVVhzSzYtd0d2Xzh0TXFCU01KVU1TWktGbFc1THVOMlJlSHdVSndYOWExZXRfTjVWV1V5OUE2ejJTck9qczNYNWJTTGN5VFJMaWhXYVl2OGxkOXc?oc=5",
       "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T04:05:32Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_fec20e1154fa37a0c78415",
+      "title": "Mulai Buyback Saham Rp5 Triliun, Tengok Profil AADI dan Kinerja Terkini - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBmblgtc2NpMk9QZ0FhY3pUOXRqMThuZkloNnZEWllPZzcwLWZUZHI5RFA4T3duS3JSQ2dxdXNkN25SUnRVdXBCTXJhTXdmTWFrZ05pMnNHNFRQZzE0MTU3Yl9tblBFZw?oc=5",
+      "publisher": "TradingView",
       "published_at_utc": "2026-10-21T04:05:32Z",
       "date_type": "rss_pubdate",
       "tickers": [
@@ -328,6 +408,22 @@
         "ICBP"
       ],
       "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_6b2b3c7187e5f211170b33",
+      "title": "IHSG Hari Ini Dibayangi BI Rate, Simak Target ANTM hingga BBNI - Harianjogja.com",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOVldSZXBsaWtOR1lLZUlCVVh0eUl0cUdqYVVFVWpYQXJpdjhhWDVUOFpvdVhjcnA5bXhBRnNtMDhEZnB1R3ZpZnpGYzZNNlNNczlsWEl1a1dnNDh5MDIxbGF1alBPLUE2Q1I4bHpjMFYyZTJEOWd0ZV91QnB2OXhnZ3BXX1Z4bzhDTDJhWTY0NUptdE00b3JsTGZoM3liV05QbUhR?oc=5",
+      "publisher": "Harianjogja.com",
+      "published_at_utc": "2026-10-21T01:27:10Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -723,6 +819,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_6d9d908a3229d76996cb15",
+      "title": "Daftar 80 Saham HSC yang Akan Dikeluarkan dari Perhitungan IHSG, Ada BREN hingga DCII - Progres.id",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQa0N0WXc5R1JtR3VvMjJqQXI3MXd2OG9KaFdINTd1QjBKWldVSFE5dWx3Y0dEMmUzMmstbnVQUmpLdGJHYW85QVh4V2RlYmlRUmVYMVJZdUxTT2hVeWM1TVFvOWIydWZNUVVZUm1OTm9ab2NhQmpxLWRhWkh5alRKQkFBUE9Bc1JpUGFwVWs5YWh3ejB3cWxURHl3ckhnQWtzUy1ESDJxY3pYZ2hmUWtXLV92SFY3dw?oc=5",
+      "publisher": "Progres.id",
+      "published_at_utc": "2026-10-20T13:00:44Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "DCII"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_291289fc4415855bdf2644",
       "title": "OJK Denda Pihak Terkait DSSA, BREN, dan CUAN Rp2,1 Triliun - RRI.co.id",
       "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOcXlLYzRwSEFsOXRDbTZJV3lQWUNVaDBVY2pvSjd2dENOdHVYQnM5SnZDNDVrMXRhVWRLaHZfNWRzc2l0R3dPempvOFhlQ2pBWHhodG9zS0ZkZmZRcXFkNk1EOVpfWjlKX0F4UVhhYnhyY2RSQjlJUGxMMmpyZGY1TUE0LVNqUElEZHlyenBUOGhVYWFFY0VfX21OUEcwbWxUXzB1bmE3MG9aQQ?oc=5",
@@ -901,6 +1013,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_5d297492e6cf7edc382b56",
+      "title": "IHSG Melonjak 5,65% ke 5.278, Top Gainers LQ45: BRPT, WIFI, PGEO, Selasa (20/10) - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNNzlONjNOVzU3emRRUlpHeUR2NE9nalZkMzhYZkJrMzhmUXB2b0FxdEEyLVVvYkNBTjRBNExsVzdaTFhSOGRPeWRzcm1IOUxBaF9ORlZ3aVR2X0E3OXl6RUhDYnRRRWN5N0E5QnRYOUl3NG1WYTh1VE9MRjFLSGgySmQ0UTFmZXY1dDlqbV9HTHVOOElTcmZ6WTIwaHJGWHd2aGJvNGcxSmTSAaABQVVfeXFMTnNyU2F4VmZCbW9FVk9ObTVJUmNmN2IwTEJQcG54dlVPYS1jbGQ4SERHUUpsdDJ3ZEN6OU9IZld1UzV5U0RLWG9hZGxDWXZIdU5QRDZncGxQZzdhaFNGNkhhekNsVV80N2VUWFZDRkwtZEI4NFNRNUdjM2hvNUxrV2E1NlExZkw1b0FnRnZmRDBGb3NEUklZanVRV3BsUXI0bg?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-20T09:13:49Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_1ab1881fbf6cf1473ce3f4",
       "title": "Ramalan Terbaru Saham AADI usai Boy Thohir Borong Saham & Buyback Rp5 Triliun - Bisnis.com - Market",
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNR1VHR3YyS013WmQ5QzN1a0dRTnVoUFp6eXZITHkwMUMzUGZETUh0VF9UbXl6cTFjV3NrMkN4bHdraHRiSVNjRWl6YzNrV2RLdTdzZjlIeXJwZlZ0eElwczV6ZGUtdy1rS0NFX0ctUXhsWjd4eW5JTWdreUJVNFhZQk8wREFsN1BzWWdwN1d5VFhYUFBjLVQwTnllZ2FmZjFudU9SdG5vNHEyR2JJYk9WYXFDMUZDU0p0U2hXdDhQYWhoVUE?oc=5",
@@ -981,6 +1109,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_84bae59e26a13e439ecf72",
+      "title": "Membaca Arah IHSG usai Saham HSC BREN, DCII hingga BYAN Keluar dari Perhitungan - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNVWpUSF9HRDB2YW50RkZVODJ0UzBwd3NxNDdaS1E4SWFUMC1za1hCZEgzZThMenhOZU4zcEJwQUJCX2pJSFJfdFcxT2h6Y3BxdEFfN1p3bjM3NE9WVTdMclF1LWFTeE1yOXZ3VktwUVhRbTlCUElBX3h6cG5DU2pldTNGckxMVER2U2d3NTNqWFRKUUxObk1ldGIyQzAzbnJ2ZXJjTC05aEc2Vmp1bDB2UnV0cTdobEo2UG9DN1djUW5fd0s4bzNEZzZ6MNIB0AFBVV95cUxNQTNFUGcycDhwcWpEV2NJeUhPZFY0TERnZGhuTk5LUVI0Wk1reU96SmRKempSdXd5WmtIQ0hqX1hXc3FiWTFIRTdVcG4xbWprNnE4Ym5GbEYxM2lWQldiWlZTeWFqOHBXd1FGbTVzRDQ0cjNYNGp1VlFvMk1SbTJoUVhPOGZudVJ1VXJ1aWJwbWkzNnVNck5aNFctTXRUandXN045cUNhbURhM1pLYW5acmg5Y3dlWVFiZVYtWTIxeko1NDZxdnhxakFqbnBtRDZT?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-20T05:54:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "DCII"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_cefdaf1807f56810bfa1f2",
       "title": "Dukung Stabilisasi Pasar Modal, AADI Buyback Saham Mulai 20 Oktober 2026 - BeritaSatu.com",
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPMXFxZWlUby1LbHV5THY2NW5CeWgwSDlDQURIcmJLS3hCcy1pZDN5LTEzdHRSRmhUdWRIN1pIT2ExSmlJSC1qUjBrY3Y0Qkt4cEhWMXVkRjM3VGdUaXdUbzZ1TzliZlJDLUR2ZXNVblRKRWpjblk2cndXTFJuYzdlaGlMUVFRMmV5RFlXNktsbXBkOFoyeVlld19PZXZRbEl1QVlGY1VOX2dnWm9rbWxuOXgtRFo?oc=5",
@@ -1036,6 +1180,7 @@
       "published_at_utc": "2026-10-20T04:44:17Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "BREN",
         "DCII"
       ],
       "sector": "technology",
@@ -1158,6 +1303,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_b066946d861a21e3baacf1",
+      "title": "BEI Bakal Keluarkan 80 Saham dari IHSG, DCII dan BREN Ikut Terdampak - HARIAN MISTAR",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPREMwZ3BERTF2bWs3Z3FFZUI1Mm1TNlJha2NWQTEwQzVzN09LaW9SSDRnLVVtMXl3c2VXSXMxa2JsQi1IWGlhVUYzRVFIclBBc0RmMjNUS3BYTEthVTZmd25ydEZtYjdPV001VXpoVk1WZFljZERrV19fZmpmLXpCU1VCWTdHbDBlOUFjNXgzQU9DRjBCbllncEZ3SGZZTlk?oc=5",
+      "publisher": "HARIAN MISTAR",
+      "published_at_utc": "2026-10-20T02:03:39Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "DCII"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_3dbb7afb8a44d296deaf41",
       "title": "AADI & ADRO Mulai Buyback Saham Rp 10 Triliun - investor.id",
       "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNQVRkTEpVRjZHRnpDbVBSeVlXOUJ5Y0x5R0toZ2tVZ2dnTFNzS3lCZ1JzSk9ITVk4RUx2dl8taHFKd08taU5BaEVJbEE1MFQ1WDNlRFV2MEZ1YVE5dHpzMDlHV0Y3LWxSWDRXRlkyb3luS3ZIdWNDSGFSdTQzdDd3MFFSTQ?oc=5",
@@ -1216,6 +1377,22 @@
         "INCO"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_469dad7a5789576b830f18",
+      "title": "BEI Siapkan 80 Saham HSC Keluar dari Perhitungan IHSG, DCII hingga BREN Terdampak - Herald.ID",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNY3g1TmJMS1VYNngzeE9PVHdlWWg1cXlzRTRKZldyYVZob08tem40bjJBVXptQUI0dllPS0hNajJwUk5vTmRTT2hZdjVHV3IxUmdIb0xScjQ4aFZVRjRDY3drNzRTTHZncGUwMm5jeFdSTVVkYWNteGpYcWdkby14UVBXMFFnTy1PUUF6a1RsQkRNUXg1TE1vZmlWdXZqZFMya1VMa1VFZElxZTk4T2Zr?oc=5",
+      "publisher": "Herald.ID",
+      "published_at_utc": "2026-10-20T00:59:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "DCII"
+      ],
+      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -1282,6 +1459,22 @@
         "INCO"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_180d2c26b7195f436db97a",
+      "title": "IHSG Diprediksi Melemah Lagi, Analis Jagokan Saham INCO, JPFA hingga AADI - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNOUt2NXhtWGlfbnFFc2F5TU81Z1JVZE14RDAzc0s4SmV0LVhOZ0tNcy1HNUZJbXdzSUJjREt1Mk5RZXBnOGloOENPY1FjbFZCQTIxZlp2T09oZmxZVmRVcFpybVZZTmQ3c1hWYU5VLVVDdGJienNHZFpyZnVjanlWOW5jUUFnTHlBNlNRZUZ5ME1sajRWN2JDeTlpMms2akY2V0JnOHhsc0wxc2pHRTdTbEFhWjQwSkFzbEVqSlo0YkNxd9IBxwFBVV95cUxOcnlxcXRJUllpWlA0M1dIUlRuLU5XUU9ZOHFkd0xLR2c5Q2RtWnQzb3hZVmMycjVuamlMS0E0eXlxZV9CR0RSSmh0c2lBWmdVQTRJLVZZQVRPV0RjM2U1UTh6RTNCMGlWVzZ4MjlWREVjVW1sWG4xNGdjVU5uWjRGS3owR3JGdndObk52MGVxclJ3UXlfU0JwYTRSOFh2RWpDQkctWlFzcWVMOTI4UElYUGxQRXE1OWlsTlVoZ1lwRlZ3TUw4Qm5B?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-19T23:31:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -1448,6 +1641,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_017502629bbd547e23cbb5",
+      "title": "Daftar Lengkap 80 Saham HSC Dikeluarkan dari Perhitungan IHSG, DCII hingga BYAN - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOUkZvZkVKZE90V29wX2Z3N1ZtVXRGaFFjeTBKWVpRVlNJLXY1NnVpbmF5YS01SGpyUjJDcGtobjBrSWFaRnROd2kwX1ljZHViLXlkXzBUSW9Xay0yR0dRR2VqWFpja2llaXpiSGJvYkNfTTZKUXZvcEFrbkNFbG1tVGdyRDFjZDNFTDdGeUo3UjBUUFo2ZTg2cmV6QUstYmxqWW9YUk9tQ2h4amR4SDF1clBNRDYxZlpOR1VXQ3VoZXgtR29kRVBZQy1VUdIB0AFBVV95cUxNTTV6UGNvUGFCWUxqM1ZQZW52eFlqSUpoWTBnSnlUZEo4b01tcVNoaktsNmVROTdJRTFZNkcxTWJWNG1waUwwRTRxcTBJazFPY05ORU82QlVjM0lPaFVmbmJIZGptSXZ6MnFfUnpHaEREdFExTDJaZVZNc1lSMVZ2UXI2cDd2VjJJY3o4MXJ3SHpXLW1NeW90T3ZQc2VqS3VLTmZNR3dyaWQ2SmNxdXJQc2VXOUNmNWZVQW5DU2JYZFJuT2c4S2RuRlpwdGdhNE9j?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-19T11:12:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "DCII"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_1ffbacdc230859d827e69b",
       "title": "Cek Rekomendasi Saham MAPA, BRPT, dan ISAT untuk Selasa (20/10) - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNN3RUR1I2cnl2X1A0MlZmRTNaMkgxOURFVy1qc1lzSGZfMFpEa29ObFN0V0d3QlNjeFAyVW1wRlh4WEY3MjhDYjRMaHVWUTlJcmIxdVlnbW40eWhtdkN3NHp4N3dBRjhGVmVjY01JWUdfR3RBSnBUMkRCTHZ5RFdMdnk5OEl1NjQ2WmdITjc5eE82b2g5WjlGZW04UENSUUlpM1c2WUJld09YT0JmbXBrY253UUlMUdIBkgFBVV95cUxNOGRiakNKOGpDWlAwYWUxZi1WdGtHQjhMY0JhVzEtQWEtOGxFM1VlTzAzQmlld2s3akhXaGNtbTI3Zno2VjNDZWhiZkdaWmk0SW5HZ2FCMmpXMHNBLWs0d2xWVEtQU2R1UGN4dGFsdEs4VkphU0tFRTNCWUxLb1hJbDI5NFF4YVJMaDhaNjFDOFQ3dw?oc=5",
@@ -1556,6 +1765,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "MEDC"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_bb1d5a0b54e505fea3105f",
+      "title": "CUAN, BREN, dan DSSA Kompak Umumkan Buyback Saham Usai Disanksi OJK - detikFinance",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNaU43TWpjWXUxTzNuVHJxcGZvV0FvSzFrYU1JUjNFQ3V0VWpRcGgxUUpIRG1qSHZnaWNWMzZYMEFJSExVMlFVWUdBeTNzeElheU9WTy1wTmoyLXlUekhQVnk3bS10RWtXbkpTRUROemdWOEoycVhwMTNhUkt2NThiNUpCMHRVUDEzbzd6RHZKZkctMUF5c3ZOSzZlZDB2Qy1rWEk5ekdGVkg1SlNoSmM0VHBuMlFBTE9i0gG-AUFVX3lxTFA0Z09OMXJ4djJaaExiN2dTZ0xWVWlKYV9VS2FZQXFpX3ltYjI1dU5KVnNEVm94aWYwam50NThwTnNpVEZ3R0s2eTJBZG9NQ2FENy1wSzRsOVhub1VzYWp2WEdPa2dfYnNnTXFfTTNSc3Z0SFlVbncxQnBVRU1nbXlnU2h1dU4xVXBFMm56VVk5QlNWVm05eXhGQ3U2YU9yUmVWdV90RmhlM3d2cllJN01aZXplZnpEamtndUk0aXc?oc=5",
+      "publisher": "detikFinance",
+      "published_at_utc": "2026-10-19T08:17:04Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
       ],
       "sector": "energy",
       "source": "public_google_news_rss",
@@ -1934,6 +2159,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_468c445fec7f71e7eb6a87",
+      "title": "6 Saham Energi MEDC hingga ITMG Menarik Dicermati Saat Minyak dan Batu Bara Naik - gadget.qoo10.co.id",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE4tODU5LWpGdlp3ZzIybXRnLTYtZHROZVdqVGF1c2s5ZEJjbFgteTk3cl9uTFVPeGxPWDRvZ1ZObi1oczJ6cXhIaUFOcG1xY2ppOXdQejJaTlVSeTNIV2g4UmJIenVoZzdSNnROdkVjY0NkTWJj?oc=5",
+      "publisher": "gadget.qoo10.co.id",
+      "published_at_utc": "2026-10-18T23:17:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ITMG"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_d32031823a2c302fb0fba6",
       "title": "Investor Selektif Memilih Saham AMMN ANTM BRMS dan INCO - Demokratis.co.id",
       "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5QbnlVcG53MkY2b2lpT21Ua0IycTRqbHppRTRjMmg2aFV2RkV1aXplVzl4amxYMlRxYk4tYkcyTlZ3Y1NaTVBBVHlNZ1F4dmcta2JadkxrdllnWDlBWjJBRW1BSXY3VjcwY3J3?oc=5",
@@ -2170,6 +2411,22 @@
         "UNTR"
       ],
       "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f8c61240db06f6fd4c58fe",
+      "title": "Peta Pemegang Saham BREN & CUAN yang Terseret Kasus Pelanggaran - Market - Bloomberg Technoz",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNOEgyRDhxcV94RUI1akFoeDZMeVY5Nll4ZGRsUGxhaDVxbGFPLW82aEVXRGFVc2xNZjNDTGpiR3ItWV90SVRqMlcya3REclBPUF9kTjV6ZFNndHBXYW0zTE1BVDBVd1JWM0JCZWVWbHNNUVR6a3dLY3hCQ1dCZmlvOHI4WXB5N3NicG1GMm81RHhDZ1RCbloydXpkMFZndVZlaWlmdWhjUk1ibUNudVk4Q0pCZw?oc=5",
+      "publisher": "Bloomberg Technoz",
+      "published_at_utc": "2026-10-18T04:30:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -2761,6 +3018,7 @@
       "published_at_utc": "2026-10-15T08:21:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "AMMN",
         "UNTR"
       ],
       "sector": "manufacturing",
