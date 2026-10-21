@@ -60,12 +60,11 @@ function mount(host,rows,selected){
  host.append(fallback);
 }
 
-/* Exchange-restricted TradingView Stock Heatmap. This is a provider visualization
-   for IDX (not a custom selection of SLI-listed companies and not internal market data).
-   Provider may reject unsupported market codes or block third-party embedding. */
+/* The TradingView heatmap uses a documented S&P 500 dataset, never a guessed IDX key.
+   The IDX-first homepage instead embeds a genuine IDX-symbol market overview. */
 const HEATMAP_SCRIPT="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js";
 function heatmapConfig(){
- return {dataSource:"IDX",exchanges:[],blockSize:"market_cap_basic",blockColor:"change",
+ return {dataSource:"SPX500",exchanges:[],blockSize:"market_cap_basic",blockColor:"change",
   grouping:"sector",locale:document.documentElement.lang==="id"?"id":"en",
   symbolUrl:"",colorTheme:"dark",hasTopBar:true,isDataSetEnabled:true,
   isZoomEnabled:true,hasSymbolTooltip:true,isMonoSize:false,width:"100%",height:"100%"};
@@ -83,6 +82,37 @@ function mountHeatmap(host){
 }
 
 
+/* Explicit IDX exchange symbols: the provider owns prices/changes, and no
+   S&P 500 / unsupported heatmap dataset can be substituted for Indonesian quotes. */
+function homeIDXConfig(){
+ const tabs=[
+  [T("Saham utama","Major stocks"),["COMPOSITE","BBCA","BBRI","BMRI","ASII","TLKM","INDF"]],
+  [T("Energi dan listrik","Energy & power"),["MEDC","PGAS","PGEO","BREN","AKRA","ELSA"]],
+  [T("Mineral dan tambang","Metals & mining"),["ANTM","INCO","AMMN","MDKA","PTBA","TINS"]],
+  [T("Digital dan infrastruktur","Digital & infrastructure"),["TLKM","ISAT","GOTO","DCII","JSMR","MTEL"]]
+ ];
+ return {colorTheme:"dark",dateRange:"1M",locale:document.documentElement.lang==="id"?"id":"en",
+  largeChartUrl:"https://www.tradingview.com/markets/stocks-indonesia/",
+  isTransparent:true,showSymbolLogo:true,showChart:false,showFloatingTooltip:true,
+  width:"100%",height:"100%",
+  tabs:tabs.map(([title,tickers])=>({title,originalTitle:title,
+   symbols:tickers.map(t=>({s:"IDX:"+t,d:t}))}))};
+}
+function mountHomeIDX(host){
+ if(!host)return;
+ host.replaceChildren();
+ const widget=E("div","sli-idx-home-provider tradingview-widget-container");
+ widget.append(E("div","tradingview-widget-container__widget"));
+ const legal=E("div","tradingview-widget-copyright");
+ const a=E("a",null,"TradingView · IDX ↗");
+ a.href="https://www.tradingview.com/markets/stocks-indonesia/";
+ a.target="_blank";a.rel="noopener noreferrer nofollow";
+ legal.append(a);widget.append(legal);
+ const sc=E("script");sc.type="text/javascript";sc.src=SCRIPT;sc.async=true;
+ sc.textContent=JSON.stringify(homeIDXConfig());widget.append(sc);
+ host.append(widget);
+}
+
 function mountCompact(host,rows,sector){
  if(!host)return;
  host.replaceChildren();
@@ -98,5 +128,5 @@ function mountCompact(host,rows,sector){
  sc.textContent=JSON.stringify(options);widget.append(sc);host.append(widget);
 }
 
-window.SLIIDXTradingView={watchlistConfig,mount,mountCompact,scriptUrl:SCRIPT,issuerRoute:route,heatmapScriptUrl:HEATMAP_SCRIPT,heatmapConfig,mountHeatmap};
+window.SLIIDXTradingView={watchlistConfig,mount,mountCompact,scriptUrl:SCRIPT,issuerRoute:route,heatmapScriptUrl:HEATMAP_SCRIPT,heatmapConfig,mountHeatmap,homeIDXConfig,mountHomeIDX};
 })();
