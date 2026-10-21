@@ -1864,7 +1864,12 @@
     "statistical_table_pages_mapped": 114,
     "private_pilot_statistical_tables_checked": 6,
     "private_pilot_province_rows_per_table": 38,
-    "public_business_directory_contact_records": 0
+    "public_business_directory_contact_records": 0,
+    "private_watermark_ambiguous_cells_source_checked": 86,
+    "private_watermark_ambiguous_cells_disagreements": 0,
+    "arithmetic_conflict_tables_unresolved": 2,
+    "numeric_82_table_cell_qa_complete": false,
+    "bps_written_commercial_permission_on_file": false
   },
   "table_page_location_audit": {
     "source": "uploaded_sha256_matched_original_pdf_text_layer",
@@ -1921,7 +1926,7 @@
   ],
   "private_numeric_extraction_qa": {
     "source": "operator_local_review_csv_extracted_from_watermarked_user_uploaded_BPS_PDF",
-    "status": "requires_visual_individual_cell_verification_and_written_rights_permission",
+    "status": "86_previously_ambiguous_source_cells_original_pdf_native_text_and_visual_crops_reviewed; source_arithmetic_and_copyright_still_block_publication",
     "initial_pilot_tables": [
       "3.1",
       "3.3",
@@ -1939,17 +1944,34 @@
         "period": "2023",
         "difference_in_units": 1,
         "scope": "sum of candidate province cells vs printed national total",
-        "action": "do_not_reconcile_automatically; manual source cell and publisher reconciliation"
+        "action": "do_not_reconcile_automatically; manual source cell and publisher reconciliation",
+        "source_verified_detail": "2023 original p.117/PDF 133: 36 numeric provincial values sum 5,154; Papua Selatan and Papua Tengah printed as dashes; Indonesia printed 5,155. Neither dash can be imputed to 1. Difference may reflect source aggregation/notation or publisher error, not yet adjudicated."
       },
       {
         "table_id": "6.2",
         "field": "non_government_supported_status",
         "difference_in_units": 14,
         "scope": "source DKI Jakarta row displays reported total 242 but numerics 65+163 and a dash; candidate sum gap 14",
-        "action": "dash_is_not_zero_and_missing_14_must_not_be_imputed"
+        "action": "dash_is_not_zero_and_missing_14_must_not_be_imputed",
+        "source_verified_detail": "2026 original p.118/PDF 134: DKI Jakarta independent 65 + government 163 + non-government dash, total 242; observed national non-government 209, sum of printed provincial numeric values 195. 14-unit difference cannot be imputed to the dash without BPS clarification."
       }
     ],
     "affected_table_status": "hold_numeric_publication_even_if_one_national_total_reconciles",
-    "derived_metrics_and_maps_publication_allowed": false
+    "derived_metrics_and_maps_publication_allowed": false,
+    "watermark_separation_validation": {
+      "audit_date": "2026-10-22",
+      "original_pdf_sha256": "af5dcf57f3510e2d390885035f4a0aeef5a52851e9a69fa6e9028b3bf8e5a355",
+      "previous_watermark_affected": 85,
+      "previous_unparseable": 1,
+      "independent_native_text_cells_matched": 86,
+      "independent_native_text_cells_disagreed": 0,
+      "visual_contact_sheet_cells_inspected": 86,
+      "watermark_separation": "Aptos small-text spans in original PyMuPDF cell geometry; excludes large Arial diagonal PDF watermark",
+      "status": "source_reading_confirmed_for_86_only_not_all_numeric_cells_or_BPS_official_arithmetic",
+      "licensed_for_publication": false
+    },
+    "dash_policy": "Source en dash is distinct from numeric zero, not interpreted as missing equals residual",
+    "full_six_tables_cell_review_complete": false,
+    "original_printed_totals_confirmed": true
   }
 }
