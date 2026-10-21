@@ -1,0 +1,44 @@
+name: SLI RUPTL Official Project Progress Candidates (Review Only)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '37 2 * * 2'
+  pull_request:
+    paths:
+      - 'scripts/scan-ruptl-official-project-news-candidates.py'
+      - '.github/workflows/sli-ruptl-project-news-review.yml'
+permissions:
+  contents: read
+jobs:
+  scan-official-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Strict Python syntax gate
+        run: python3 -m py_compile scripts/scan-ruptl-official-project-news-candidates.py
+      - name: Inspect official PLN / ESDM / operator source link candidates
+        run: python3 scripts/scan-ruptl-official-project-news-candidates.py
+      - name: Assert source candidates are NOT promoted to realization
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('artifacts/sli-ruplt-official-news-candidates-review-only.json').read_text())
+          assert d['schema']=='sli-ruplt-official-announcement-mention-watch-v1'
+          assert len(d['source_pages'])==5
+          assert d['status']=='review_only_no_numeric_promotion'
+          assert d['auto_published_project_status_changes']==0
+          assert all(x['actual_COD'] is None and x['observed_capacity'] is None for x in d['matched_link_candidates'])
+          for x in d['source_pages']:
+              if x['status']!='source_html_read_candidate_only':
+                  print('OFFICIAL_NEWSROOM_UNAVAILABLE_REVIEW_NEEDED',x['publisher'],x.get('warning',''))
+          print('OFFICIAL_RUPTL_NEWS_REVIEW_ONLY_OK',d['candidate_count'])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-ruplt-source-news-candidate-review-only
+          path: artifacts/sli-ruplt-official-news-candidates-review-only.json
+          retention-days: 30
+          if-no-files-found: warn
