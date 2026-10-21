@@ -39,6 +39,13 @@ async function check(name,viewport,fn){
   try{await page.screenshot({path:path.join(outDir,filename+".png"),fullPage:false,timeout:5000})}catch{}
   report.tests.push({name,status:"fail",error:String(error.message||error),page_errors:errors.slice(0,5)});
   console.error("FAIL",name,String(error.message||error),errors.slice(0,5),await page.locator("#mfHierarchyDiagram").first().textContent().catch(()=>null));
+    if(name.startsWith("KKP Marine"))console.error("KKP district source probe",await page.evaluate(async()=>{
+      const u="./data/sli-kkp-portal-screened-2024.json?browser-check=20261021";
+      try{const resp=await fetch(u,{cache:"no-store"});const obj=await resp.json();
+       const d=obj.seed_district_top_rows||{};
+       return {url:resp.url,status:resp.status,keys:Object.keys(obj),year:d.year,count:d.rows?.length,visible:d.source_rows_displayed,first:d.rows?.[0],type:typeof d,docUrl:location.href};}
+      catch(e){return {error:String(e),pageUrl:location.href};}
+    }).catch(e=>String(e)));
     if(name.startsWith("Marine"))console.error("Marine source fetch probe",await page.evaluate(async()=>{try{const r=await fetch("./data/sli-marine-governance.json?v=20261021-officers-v2",{cache:"no-store"});const j=await r.json();return{url:r.url,status:r.status,schema:j.schema,n:j.hierarchy?.length}}catch(e){return{error:String(e)}}}).catch(e=>String(e)));
  }finally{await context.close()}
 }
