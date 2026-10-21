@@ -1,0 +1,719 @@
+{
+  "schema": "sli-ruptl-primary-pdf-2025-2034-review-v1",
+  "source": {
+    "title": "RUPTL PT PLN (Persero) 2025–2034, approved by Kepmen ESDM 188.K/TL.03/MEM.L/2025, 26 May 2025",
+    "original_pdf_pages": 1253,
+    "sha256": "1308ee580c7c1642fe7817e000c87cb2dc87053e1fcef90606dcc1da396fd002",
+    "source_url": "https://gatrik.esdm.go.id/gatrik/gatrik-api/storage/migrasi/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf",
+    "evidence": "Original full source PDF personally reviewed for printed tables and selected project lines on PDF pages 5, 333–334, 510–511, 607, 818 and 962",
+    "review_date": "2026-10-21"
+  },
+  "publication_policy": "Rencana/candidate in 2025 original ≠ actual construction/commissioning in 2026. Printed dashes are null, not confirmed zeros. Publisher's printed totals preserved even when arithmetic differs; no manufactured corrections.",
+  "official_decree_totals": {
+    "pdf_page": 5,
+    "new_capacity_and_storage_mw": 69512,
+    "renewables_and_new_energy_mw": 42569,
+    "energy_storage_mw": 10256,
+    "fossil_generation_mw": 16687,
+    "note": "Planning targets from Kepmen ESDM 188.K/TL.03/MEM.L/2025, not actual investment or completed MW."
+  },
+  "ared_capacity_additions": {
+    "table": "5.81",
+    "pdf_pages": [
+      333,
+      334
+    ],
+    "scenario": "ARED",
+    "unit": "MW",
+    "years": [
+      2025,
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034
+    ],
+    "annual_total_mw": [
+      5325,
+      4016,
+      7015,
+      5855,
+      5553,
+      6447,
+      9524,
+      9140,
+      12165,
+      4472
+    ],
+    "printed_grand_total_mw": 69512,
+    "technologies": [
+      {
+        "technology": "PLTU",
+        "annual_mw": [
+          2326,
+          34,
+          null,
+          null,
+          6,
+          24,
+          null,
+          6,
+          247,
+          null
+        ],
+        "printed_total_mw": 2643,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTU MT",
+        "annual_mw": [
+          900,
+          null,
+          null,
+          null,
+          200,
+          600,
+          null,
+          1400,
+          600,
+          null
+        ],
+        "printed_total_mw": 3700,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTP",
+        "annual_mw": [
+          133,
+          125,
+          275,
+          346,
+          71,
+          564,
+          1265,
+          573,
+          1805,
+          null
+        ],
+        "printed_total_mw": 5157,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTN",
+        "annual_mw": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          250,
+          250,
+          null
+        ],
+        "printed_total_mw": 500,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTGU",
+        "annual_mw": [
+          null,
+          500,
+          2830,
+          530,
+          1450,
+          600,
+          null,
+          null,
+          null,
+          null
+        ],
+        "printed_total_mw": 5910,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTG",
+        "annual_mw": [
+          null,
+          100,
+          200,
+          350,
+          900,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "printed_total_mw": 1550,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTMG",
+        "annual_mw": [
+          370,
+          990,
+          741,
+          205,
+          30,
+          120,
+          90,
+          93,
+          90,
+          150
+        ],
+        "printed_total_mw": 2879,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTD",
+        "annual_mw": [
+          null,
+          5,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "printed_total_mw": 5,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTBg",
+        "annual_mw": [
+          null,
+          3,
+          null,
+          null,
+          13,
+          null,
+          4,
+          4,
+          5,
+          null
+        ],
+        "printed_total_mw": 30,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTM",
+        "annual_mw": [
+          142,
+          82,
+          439,
+          211,
+          163,
+          131,
+          20,
+          1,
+          1,
+          null
+        ],
+        "printed_total_mw": 1190,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTA",
+        "annual_mw": [
+          612,
+          510,
+          null,
+          612,
+          425,
+          663,
+          3551,
+          1928,
+          1374,
+          825
+        ],
+        "printed_total_mw": 10500,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTA PS",
+        "annual_mw": [
+          null,
+          null,
+          null,
+          1040,
+          null,
+          null,
+          760,
+          943,
+          1500,
+          null
+        ],
+        "printed_total_mw": 4243,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTS",
+        "annual_mw": [
+          726,
+          595,
+          944,
+          647,
+          849,
+          1285,
+          1911,
+          2032,
+          3246,
+          1197
+        ],
+        "printed_total_mw": 13432,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTS+BESS",
+        "annual_mw": [
+          51,
+          393,
+          675,
+          821,
+          210,
+          366,
+          373,
+          67,
+          624,
+          50
+        ],
+        "printed_total_mw": 3630,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTB",
+        "annual_mw": [
+          null,
+          350,
+          372,
+          485,
+          293,
+          1265,
+          930,
+          922,
+          1570,
+          1000
+        ],
+        "printed_total_mw": 7188,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTSa",
+        "annual_mw": [
+          null,
+          18,
+          null,
+          165,
+          150,
+          101,
+          null,
+          null,
+          19,
+          null
+        ],
+        "printed_total_mw": 453,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTBM",
+        "annual_mw": [
+          15,
+          null,
+          13,
+          53,
+          144,
+          177,
+          20,
+          21,
+          8,
+          null
+        ],
+        "printed_total_mw": 451,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLTAL",
+        "annual_mw": [
+          null,
+          null,
+          null,
+          40,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "printed_total_mw": 40,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "BESS",
+        "annual_mw": [
+          50,
+          311,
+          527,
+          350,
+          650,
+          551,
+          600,
+          900,
+          825,
+          1250
+        ],
+        "printed_total_mw": 6013,
+        "source_cell_dash_is_null": true
+      },
+      {
+        "technology": "PLT Lain",
+        "annual_mw": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "printed_total_mw": null,
+        "source_cell_dash_is_null": true
+      }
+    ],
+    "quality_audit": {
+      "source_printed_technology_grand_sum_mw": 69514,
+      "source_printed_annual_grand_sum_mw": 69512,
+      "discrepancy_technology_totals_vs_grand_mw": 2,
+      "per_technology_printed_vs_sum_discrepancies": [
+        {
+          "technology": "PLTBg",
+          "printed_total_mw": 30,
+          "sum_nonnull_annual_cells_mw": 29
+        },
+        {
+          "technology": "PLTB",
+          "printed_total_mw": 7188,
+          "sum_nonnull_annual_cells_mw": 7187
+        },
+        {
+          "technology": "BESS",
+          "printed_total_mw": 6013,
+          "sum_nonnull_annual_cells_mw": 6014
+        }
+      ],
+      "printed_dash_represents_no_numeric_label": true,
+      "explanation": "Source Tabel 5.81 has arithmetic discrepancies (several ±1 MW technology totals and a 2 MW sum-of-printed-category-totals difference); do not auto-reconcile or overwrite original cells."
+    }
+  },
+  "rebase_capacity_additions": {
+    "table": "5.80",
+    "pdf_page": 333,
+    "scenario": "RE Base",
+    "unit": "MW",
+    "years": [
+      2025,
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034
+    ],
+    "annual_total_mw": [
+      5325,
+      3085,
+      5967,
+      5028,
+      4625,
+      5230,
+      6061,
+      5892,
+      7040,
+      4510
+    ],
+    "printed_grand_total_mw": 52763
+  },
+  "emissions_projection": {
+    "unit": "million tCO2",
+    "years": [
+      2025,
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034
+    ],
+    "scope": "Power-generation GHG as modelled by PLN, not observed national annual CO2",
+    "scenarios": [
+      {
+        "name": "RE Base",
+        "table": "5.175",
+        "pdf_page": 510,
+        "annual_total": [
+          309,
+          316,
+          330,
+          336,
+          340,
+          354,
+          354,
+          367,
+          373,
+          374
+        ]
+      },
+      {
+        "name": "ARED",
+        "table": "5.176",
+        "pdf_page": 511,
+        "annual_total": [
+          299,
+          308,
+          321,
+          329,
+          335,
+          348,
+          346,
+          360,
+          363,
+          362
+        ]
+      }
+    ],
+    "footnote": "151 million tCO2 reduction in 2030 quoted by the report refers to ARED vs BAU benchmark—not the difference between ARED and RE Base."
+  },
+  "individual_project_source_records": {
+    "status": "hand_checked_original_table_cells_not_verified_operational_status",
+    "selection_scope": "Selected explicit project rows only, not an exhaustive 2025–2034 national project register",
+    "records": [
+      {
+        "id": "ruplt-primary-pdf-001",
+        "table": "A1.11",
+        "pdf_page": 607,
+        "province": "Aceh",
+        "project_name": "Tanjung Semanto",
+        "technology": "PLTBm",
+        "capacity_as_printed": "9,8",
+        "capacity_mw": 9.8,
+        "cod_re_base": "2025",
+        "cod_ared": "2025",
+        "status_in_ruplt_2025": "Konstruksi",
+        "developer_class_as_printed": "IPP",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-002",
+        "table": "A1.11",
+        "pdf_page": 607,
+        "province": "Aceh",
+        "project_name": "Aceh Tamiang",
+        "technology": "PLTBg",
+        "capacity_as_printed": "3",
+        "capacity_mw": 3,
+        "cod_re_base": "2026",
+        "cod_ared": "2026",
+        "status_in_ruplt_2025": "Konstruksi",
+        "developer_class_as_printed": "IPP",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-003",
+        "table": "A1.11",
+        "pdf_page": 607,
+        "province": "Aceh",
+        "project_name": "Langsa",
+        "technology": "PLTBm",
+        "capacity_as_printed": "10",
+        "capacity_mw": 10,
+        "cod_re_base": "2027",
+        "cod_ared": "2027",
+        "status_in_ruplt_2025": "PPA",
+        "developer_class_as_printed": "IPP",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-004",
+        "table": "A1.11",
+        "pdf_page": 607,
+        "province": "Aceh",
+        "project_name": "Kumbih-3",
+        "technology": "PLTA",
+        "capacity_as_printed": "45",
+        "capacity_mw": 45,
+        "cod_re_base": "2029",
+        "cod_ared": "2029",
+        "status_in_ruplt_2025": "Committed",
+        "developer_class_as_printed": "PLN",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-005",
+        "table": "A1.11",
+        "pdf_page": 607,
+        "province": "Aceh",
+        "project_name": "Sumatera BESS-1#1",
+        "technology": "BESS",
+        "capacity_as_printed": "50",
+        "capacity_mw": 50,
+        "cod_re_base": "2026",
+        "cod_ared": "2026",
+        "status_in_ruplt_2025": "Rencana",
+        "developer_class_as_printed": "SH-PLN",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-006",
+        "table": "A1.11",
+        "pdf_page": 607,
+        "province": "Aceh",
+        "project_name": "Sabang",
+        "technology": "PLTS",
+        "capacity_as_printed": "0,3",
+        "capacity_mw": 0.3,
+        "cod_re_base": "2027",
+        "cod_ared": "2027",
+        "status_in_ruplt_2025": "Rencana",
+        "developer_class_as_printed": "IPP",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-007",
+        "table": "B1.10",
+        "pdf_page": 818,
+        "province": "DKI Jakarta",
+        "project_name": "Sunter",
+        "technology": "PLTSa",
+        "capacity_as_printed": "35",
+        "capacity_mw": 35,
+        "cod_re_base": "2028",
+        "cod_ared": "2028",
+        "status_in_ruplt_2025": "Pendanaan",
+        "developer_class_as_printed": "IPP",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-008",
+        "table": "C1.15",
+        "pdf_page": 962,
+        "province": "Sulawesi Utara",
+        "project_name": "Talaud",
+        "technology": "PLTU",
+        "capacity_as_printed": "2x3",
+        "capacity_mw": null,
+        "cod_re_base": "2025",
+        "cod_ared": "2025",
+        "status_in_ruplt_2025": "Konstruksi",
+        "developer_class_as_printed": "PLN",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-009",
+        "table": "C1.15",
+        "pdf_page": 962,
+        "province": "Sulawesi Utara",
+        "project_name": "Tahuna I",
+        "technology": "PLTMG",
+        "capacity_as_printed": "10",
+        "capacity_mw": 10,
+        "cod_re_base": "2026",
+        "cod_ared": "2026",
+        "status_in_ruplt_2025": "Committed",
+        "developer_class_as_printed": "SH-PLN",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-010",
+        "table": "C1.15",
+        "pdf_page": 962,
+        "province": "Sulawesi Utara",
+        "project_name": "Tahuna II",
+        "technology": "PLTMG",
+        "capacity_as_printed": "10",
+        "capacity_mw": 10,
+        "cod_re_base": "2028",
+        "cod_ared": "2028",
+        "status_in_ruplt_2025": "Committed",
+        "developer_class_as_printed": "SH-PLN",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-011",
+        "table": "C1.15",
+        "pdf_page": 962,
+        "province": "Sulawesi Utara",
+        "project_name": "Sulut 1",
+        "technology": "PLTU",
+        "capacity_as_printed": "2x50",
+        "capacity_mw": null,
+        "cod_re_base": "2025",
+        "cod_ared": "2025",
+        "status_in_ruplt_2025": "Konstruksi",
+        "developer_class_as_printed": "PLN",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-012",
+        "table": "C1.15",
+        "pdf_page": 962,
+        "province": "Sulawesi Utara",
+        "project_name": "Minahasa",
+        "technology": "PLTMG",
+        "capacity_as_printed": "100",
+        "capacity_mw": 100,
+        "cod_re_base": "2026",
+        "cod_ared": "2026",
+        "status_in_ruplt_2025": "Committed",
+        "developer_class_as_printed": "SH-PLN",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      },
+      {
+        "id": "ruplt-primary-pdf-013",
+        "table": "C1.15",
+        "pdf_page": 962,
+        "province": "Sulawesi Utara",
+        "project_name": "Minahasa",
+        "technology": "PLTMG",
+        "capacity_as_printed": "50",
+        "capacity_mw": 50,
+        "cod_re_base": "2027",
+        "cod_ared": "2027",
+        "status_in_ruplt_2025": "Committed",
+        "developer_class_as_printed": "SH-PLN",
+        "actual_commissioning_verified": false,
+        "actual_2026_status_verified": false
+      }
+    ],
+    "known_limits": "Talaud and Sulut 1 retain multiplicative capacity_as_printed and capacity_mw:null; repeated Minahasa entries are distinct planned rows; COD is planned by scenario, not actual COD. Project names and regions are preserved, not geocoded."
+  }
+}
