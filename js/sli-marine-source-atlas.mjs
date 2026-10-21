@@ -30,7 +30,7 @@ export function validateScreenedPortal(data,catalog){
  seed.rows.some(x=>!x.species||!Number.isFinite(x.value)||x.value<=0)||
  seed.rows.reduce((a,r)=>a+r.value,0)>seed.national_total_displayed)issues.push("seed_inconsistent");
  const district=data?.seed_district_top_rows;
- if(district?.year!==2024||district.source_rows_displayed!==1387||district.selected_count!==10||
+ if(!district||district.year!==2024||district.source_rows_displayed!==1387||district.selected_count!==10||
  district.status!=="source_visible_top_10_only_not_full_1387"||district.unit_volume!=="ribu_ekor"||
  district.unit_value!=="Rp juta"||district.unit_weighted_price!=="Rp/ribu ekor"||
  !SOURCE.test(district.source_url)||district.rows?.length!==10||
@@ -38,7 +38,7 @@ export function validateScreenedPortal(data,catalog){
  (district.rows||[]).some((r,i)=>r.rank_display!==i+1||!r.province||!r.district||!r.species||
  !Number.isFinite(r.volume_ribu_ekor)||r.volume_ribu_ekor<=0||
  !Number.isFinite(r.value_rp_million)||r.value_rp_million<=0||
- !Number.isFinite(r.weighted_price_rp_per_thousand)||r.weighted_price_rp_per_thousand<=0))issues.push("seed_district_top10_invalid:"+JSON.stringify({y:district?.year,n:district.source_rows_displayed,s:district.selected_count,status:district.status,u:[district.unit_volume,district.unit_value,district.unit_weighted_price],url:SOURCE.test(district.source_url),len:district.rows?.length,uniq:new Set((district.rows||[]).map(r=>[r.province,r.district,r.species].join("|"))).size,bad:(district.rows||[]).findIndex((r,i)=>r.rank_display!==i+1||!r.province||!r.district||!r.species||!Number.isFinite(r.volume_ribu_ekor)||r.volume_ribu_ekor<=0||!Number.isFinite(r.value_rp_million)||r.value_rp_million<=0||!Number.isFinite(r.weighted_price_rp_per_thousand)||r.weighted_price_rp_per_thousand<=0)}));
+ !Number.isFinite(r.weighted_price_rp_per_thousand)||r.weighted_price_rp_per_thousand<=0))issues.push("seed_district_top10_invalid");
  for(const s of sources){
   if(!SOURCE.test(s.source_url)||!["numeric_ingested_2024","partial_numeric_ingested","national_numeric_only","verified_source_table","map_layer_only","catalog_metadata_only"].includes(s.status)||
   !s.label_id||!s.label_en||!s.numeric_import_status||!Array.isArray(s.visual_types))issues.push("unqualified_catalog_entry");
@@ -67,7 +67,7 @@ function downloadCSV(name,headers,rows){
 }
 function mount(){
  if(!$("mfAtlasProvinceChart"))return;
- Promise.all([fetch(observations,{cache:"no-store"}),fetch(directory,{cache:"no-store"})]).then(async([a,b])=>{
+ Promise.all([fetch(observations,{cache:"no-store",sliLocalOnly:true}),fetch(directory,{cache:"no-store",sliLocalOnly:true})]).then(async([a,b])=>{
   if(!a.ok||!b.ok)throw Error("KKP source snapshot unavailable "+a.status+"/"+b.status);
   const [data,cat]=await Promise.all([a.json(),b.json()]);
   const test=validateScreenedPortal(data,cat);if(!test.pass)throw Error(test.issues.join(","));
