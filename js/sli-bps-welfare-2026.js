@@ -10,7 +10,7 @@ const $=s=>document.querySelector(s);
 const svgNS="http://www.w3.org/2000/svg";
 const num=v=>v===null||v===undefined?"NA":Number(v).toLocaleString("id-ID",{maximumFractionDigits:2})+"%";
 const norm=s=>String(s||"").toLowerCase().replace(/sumatra/g,"sumatera").replace(/kepulauan /g,"kep. ").replace(/daerah istimewa /g,"di ").replace(/dki /g,"dki ").replace(/[^a-z0-9]/g,"");
-const fmt=v=>v===null||v===undefined?"NA":Number(v).toLocaleString("id-ID",{maximumFractionDigits:2});
+const fmt=v=>v==="~0"?"≈0":v===null||v===undefined?"NA":Number(v).toLocaleString("id-ID",{maximumFractionDigits:2});
 
 function samplePrecision(data,metric,province){
  const source=data.sampling_error_2026?.metrics?.[metric.id];
