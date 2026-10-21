@@ -112,8 +112,11 @@ def build():
   candidates=0
   # Food governance has 24 source-linked entities; keep all rather than drop two
   # due to the standard 22-record quota. Other datasets retain their normal cap.
-  quota=28 if file.name=="food-governance-hierarchy.json" else LIMIT_PER_DATASET
+  quota=30 if file.name=="sli-marine-fisheries-kkp.json" else (28 if file.name=="food-governance-hierarchy.json" else LIMIT_PER_DATASET)
   for path,r in chain(walk(raw),adapted_rows(file.name,raw)):
+   # Source-curated KKP numeric observations only: never index estimate-only,
+   # catalog-only thematic entries, or DCAT metadata as historic realized data.
+   if file.name=="sli-marine-fisheries-kkp.json" and (not path or path[0] not in ("records","province_seaweed_2024")):continue
    if candidates>=quota or len(rows)>=LIMIT_TOTAL:break
    url=rec_source(r);title=rec_title(r)
    if not url or not title:continue

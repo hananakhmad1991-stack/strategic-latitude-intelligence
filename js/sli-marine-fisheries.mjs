@@ -191,6 +191,14 @@ async function init(){
   el("mfIndicator").addEventListener("change",()=>renderTrends(data));
   el("mfTopicFilter").addEventListener("change",()=>renderTopics(data));
   document.addEventListener("sli:languagechange",render);
+  // The global i18n runtime is injected asynchronously after navigation loads.
+  // Its initial English default updates <html lang> without emitting an event.
+  // Observe just that attribute so late initial locale activation re-renders
+  // our dynamic numeric captions and chart without changing underlying figures.
+  const localeObserver=new MutationObserver(changes=>{
+   if(changes.some(change=>change.attributeName==="lang"))render();
+  });
+  localeObserver.observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
   render();
  }catch(error){
   const host=el("mfKpis");if(host)host.textContent=t("Data KKP belum dapat dimuat atau gagal validasi. Tidak ada nilai cadangan yang direka.","KKP data unavailable or failed validation. No values have been invented.");
