@@ -1869,7 +1869,12 @@
     "private_watermark_ambiguous_cells_disagreements": 0,
     "arithmetic_conflict_tables_unresolved": 2,
     "numeric_82_table_cell_qa_complete": false,
-    "bps_written_commercial_permission_on_file": false
+    "bps_written_commercial_permission_on_file": false,
+    "private_table_geometry_detected_all_82": true,
+    "private_candidate_pdf_table_objects": 177,
+    "private_candidate_table_rows": 4132,
+    "private_high_complexity_agri_indicator_tables": 44,
+    "public_full_table_numeric_series": 0
   },
   "table_page_location_audit": {
     "source": "uploaded_sha256_matched_original_pdf_text_layer",
@@ -1973,5 +1978,21 @@
     "dash_policy": "Source en dash is distinct from numeric zero, not interpreted as missing equals residual",
     "full_six_tables_cell_review_complete": false,
     "original_printed_totals_confirmed": true
+  },
+  "table_geometry_candidate_extraction": {
+    "audit_date": "2026-10-22",
+    "status": "private_pdf_table_rectangles_detected_all_pages_numerics_not_verified",
+    "original_pdf_pages_in_scope": 114,
+    "original_statistical_tables_in_scope": 82,
+    "tables_with_geometry_detected_all_spans": 82,
+    "detected_pdf_table_objects_including_footnotes_and_fragments": 177,
+    "raw_candidate_rows_including_headers_notes_and_nondata": 4132,
+    "agricultural_indicator_tables": 47,
+    "agricultural_indicator_tables_with_9_plus_detected_columns_high_complexity": 44,
+    "agricultural_indicator_tables_with_8_or_fewer_detected_columns": 3,
+    "horticulture_tables": 35,
+    "horticulture_tables_with_8_or_fewer_detected_columns": 35,
+    "privacy": "private_operator_candidate_extracts; unpublished source PDF data and names excluded from GitHub",
+    "caution": "PDF table geometry != verified numeric cells. 44 indicator tables show 9+ extracted pseudo-columns; manual header reconstruction required. All candidate values are unpublished."
   }
 }
