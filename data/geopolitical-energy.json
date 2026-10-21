@@ -1,7 +1,24 @@
 {
-  "checked_at_utc": "2026-10-21T03:36:46.100638+00:00",
+  "checked_at_utc": "2026-10-21T06:44:58.029359+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
+    {
+      "topic": "Hormuz and Gulf energy",
+      "topic_id": "oil_shipping",
+      "type": "Maritime chokepoint",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "general",
+      "title": "Hormuz could be 'redundant' in five years, replaced by new routes, HSBC CEO says - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdkVTcjIwVzllN1R2X0UtNUdya0l1Y1pNWnc4eTItVF9lSVphdC1tMVRHZXdxbEV5dFZ2RjBDZm51Y1NVbU54Q0pHaGpuVTVha1F4ajg2NEY1Y3U1dnZxYTBJVjlTazNObkJnZF94dHRKTkRrazlEMzBSeklRMmlESWNwUk1jTC00YjJhRXFQYXUzMzVjTnVxTVI5V1VfRkNOOENGaHdkWEFZOG9MY0ZLVUU1M2Zib00xc3BHQkFHWUh4ZWNMZUNpcEtR?oc=5",
+      "indexed_at_utc": "2026-10-20T06:14:00+00:00",
+      "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
     {
       "topic": "Red Sea and Bab el-Mandeb",
       "topic_id": "oil_shipping",
@@ -62,10 +79,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Brent crude edges lower, even after Houthi attacks on Saudi infrastructure - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMmVLc19hd0VSYXIydVNTWENKZ2J5WVNvVDRQUjRfTUJXWGhjOGxGZkFHVm9SNnZzeU9TWUhrYnJTRU1sVFRnX1BwZVd3NHB5a0NLdThkbDRldlg2eHdhTll2b3RnQTJ4U3dHVGczM25FdjJHRGQ5WGJDV2Qxd1hzLV9EcjNWaUQ4cXEzbWVHRzNuS1dGVVNBSmdXWGR6THN1dXhvSUdFS0dMMTJZTnBBZEFfZ2JoYVVFSWNMZw?oc=5",
-      "indexed_at_utc": "2026-10-19T19:18:06+00:00",
+      "title": "Oil prices climb as traders assess Middle East developments - CNBC",
+      "publisher": "CNBC",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPMGJ5Y1pPUDFBa2J6dUEwc0RnYmVRWnNFQmhTNjhsa1ItUVBFZG14cGVzTU1kZ205RDN4Mmcyd1pzQjRJNGl6N2F1Nng2WlBGSWVZd2JBSXVYWmFNTnpZRWxBZTVqUmdaVFNRRUEwczJtcC1PcnhDSkN3RXU2eWllNlZGcFQyQzVzaXA3V09PTXYwVVAx0gGaAUFVX3lxTE95am5EZGd5cEZod2RCX0FMZTdIOE1paDJvTUQ2OERsckxsYVZON19rZ0JWbTZYWDhVZXlqU0dNRm0ydlp6dUVxQkcwU1VtbWFRWE9kRk5PLUNubG9MSWF5anBIQThhQ0FKS0UzaHVRdXRRN0V2Nkl2SFVHV05JaThJZFlMT2tsY1ZxdUxDUUJZRFBpN1hHSjJ2TkE?oc=5",
+      "indexed_at_utc": "2026-10-21T05:27:19+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -79,10 +96,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Non-Opec-Plus: South America Cranks Up Oil Output, Exports - Energy Intelligence",
-      "publisher": "Energy Intelligence",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE43UnV3Vk5KNGMwYkZJTGNfVV9WcHNfeUtEVjZXZlhKSWMyeC1tNHk5UDVXSUlHNEV2UmdyNWVjV3dvRFZESDBITF9lV2NSMVRWdC11dVhIZ09NU1JOSTRSZUZ4S0JDc0J1bVM1VjZGX1dJZw?oc=5",
-      "indexed_at_utc": "2026-10-20T17:14:59+00:00",
+      "title": "Brent crude edges lower, even after Houthi attacks on Saudi infrastructure - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMmVLc19hd0VSYXIydVNTWENKZ2J5WVNvVDRQUjRfTUJXWGhjOGxGZkFHVm9SNnZzeU9TWUhrYnJTRU1sVFRnX1BwZVd3NHB5a0NLdThkbDRldlg2eHdhTll2b3RnQTJ4U3dHVGczM25FdjJHRGQ5WGJDV2Qxd1hzLV9EcjNWaUQ4cXEzbWVHRzNuS1dGVVNBSmdXWGR6THN1dXhvSUdFS0dMMTJZTnBBZEFfZ2JoYVVFSWNMZw?oc=5",
+      "indexed_at_utc": "2026-10-19T19:18:06+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -123,7 +140,7 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 5,
+    "oil_gas": 6,
     "coal": 1,
     "nre": 1,
     "electricity": 0,
@@ -132,7 +149,7 @@
   "sector_taxonomy_version": "2026-10-15",
   "errors": [
     {
-      "topic": "Red Sea and Bab el-Mandeb",
+      "topic": "Hormuz and Gulf energy",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
