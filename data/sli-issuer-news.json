@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T18:33:07.018370Z",
+  "updated_at_utc": "2026-10-21T20:02:03.456972Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_6b2c4f059d8b19c0a536c9",
+      "title": "PGEO's Performance Grows, Electricity Tariffs and Free Float 3.9 Percent Become a Concern - VOI.ID",
+      "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBjSm1fOFpFSTVzY0N4V3lMcS15WmZ3bXpTTVhtd1V0VGtsc2pPR00tNzUzTlNFMDVDa1NwUFdTclFPazDSAUJBVV95cUxPVU1Zd3ZIU2RmZHIwN0l6NGtWQi1zaFlnbVhJS0FUUnhwNHJ4V3YwWFZ6OFpRd0djRlJqMTdvak1xNXc?oc=5",
+      "publisher": "VOI.ID",
+      "published_at_utc": "2026-10-21T16:30:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_86ba8ad76d7b365f8dbaeb",
       "title": "PGEO Perkuat Fundamental di Tengah Tekanan Pasar Saham - www.suaralandak.co.id",
@@ -1493,6 +1509,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_a0b6a6cf8601353442e496",
+      "title": "Teknikal Saham MEDC: Menguat 11.11%: Analisis Hari Ini - JournalArta",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPYmNwUUVfX19uXy0wYkp6bGczTUxIaXBlQ0NaTU53MXdqNklzOVZJRExTc2I3bW5aVG5KZndaR1Q4N3FxT2pQU0JPank3V0VrY3RuQ1dLd2lNcHFOY3U0WTRhR0JrdXJrXzlMWGwwUk02WHRMN0s3S1hnWjZfS0NZMVdyTlR5X0Q4RVdYWTlnRjFsRHJJd0N3c3U0bnlIdTNCQzI1RTItWGlRUQ?oc=5",
+      "publisher": "JournalArta",
+      "published_at_utc": "2026-10-20T22:51:12Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "MEDC"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_42a598976672ab7ae66e84",
       "title": "Cermati Rekomendasi Saham Teknikal ASII, INDF dan PGEO untuk Hari Ini (21/10) - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQRktXY3hFWlVsTHZCdnhYQWtldlJ2R095MGxDdUx5aG1zcEhIbjZhckc1MnlILUJraVlHYlBkTUZOcGtpbUlEbkwxSHUtc3ducld1SWtBLThQWEw3LXNkRzdCSE9pR0ZCdWdaM1Ryc2hiVk1Uc1RFbmh4VHMxdUVtNGt5a0ZraTJweHBCd0hZWGh4V0xpUlVoODRFRngya2pRMi1pNXp6NVdkamF3VlHSAaYBQVVfeXFMTzEzeVl4bExvZmlGa0xwTGdtaEREQ0haRUZaam81dmlJTS1GdXhUZDJmWlVOZVNlTnNGRmVQMmJSaGdyWXJoeUpnc1RmbFdXVUtyeGE0WTFBT3RuZkJHQkhnWDBFa0ZWSHJxMDRlbXdCRmROOEpoZXNITEw5STZRSFo2WjFvQW9hVkVvY3hNRmtLeWd5VkRHUUM3UXFzWExUVl9JLUFGQQ?oc=5",
@@ -2841,6 +2873,22 @@
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNaU43TWpjWXUxTzNuVHJxcGZvV0FvSzFrYU1JUjNFQ3V0VWpRcGgxUUpIRG1qSHZnaWNWMzZYMEFJSExVMlFVWUdBeTNzeElheU9WTy1wTmoyLXlUekhQVnk3bS10RWtXbkpTRUROemdWOEoycVhwMTNhUkt2NThiNUpCMHRVUDEzbzd6RHZKZkctMUF5c3ZOSzZlZDB2Qy1rWEk5ekdGVkg1SlNoSmM0VHBuMlFBTE9i0gG-AUFVX3lxTFA0Z09OMXJ4djJaaExiN2dTZ0xWVWlKYV9VS2FZQXFpX3ltYjI1dU5KVnNEVm94aWYwam50NThwTnNpVEZ3R0s2eTJBZG9NQ2FENy1wSzRsOVhub1VzYWp2WEdPa2dfYnNnTXFfTTNSc3Z0SFlVbncxQnBVRU1nbXlnU2h1dU4xVXBFMm56VVk5QlNWVm05eXhGQ3U2YU9yUmVWdV90RmhlM3d2cllJN01aZXplZnpEamtndUk0aXc?oc=5",
       "publisher": "detikFinance",
       "published_at_utc": "2026-10-19T08:17:04Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f469a222f81ec0066a9ff2",
+      "title": "Video: BREN Siapkan Buyback Saham Rp1 Triliun - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPZWptQXoxX2E0N0Z0UENFdUpqVnRNZTdhY3d3QnRxNzRNVk9YN202ZHpNTG5YTm4tNXNQX2FJQ25WUUtFVzRubUV5R3Uxcmo1QlVDT0x3STdiR21WM2ZSLWwxMlh0MUMzQVkxaDFsbnE5OVJvZE04cHlfekpNUzRXQ1VaMmVoQXE4NFNGdG5FQnVUWnIzNGoyRUFKWTBzWXk2dXE4YkY0VGptdw?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-19T07:30:22Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "BREN"
