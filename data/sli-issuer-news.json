@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T12:41:03.951418Z",
+  "updated_at_utc": "2026-10-21T13:39:15.657667Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,86 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_47cc7c040f29234183c25e",
+      "title": "Denda Rp500 Miliar, OJK Bongkar Masalah di Balik IPO Saham BREN - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQTnZSdHRaRVpCalFwN3ZLZWVIVWlqel9pQUZuZFRfbDRNXzNrSXNPc3Rla2FNd2JlaXpEcTZHWlJLWkk5UTU1ZUlvZ0VlS3JfVDM0b3BrMW1DODRHSzY4R051Q0JwZUxDR2d2UnB5RDM5N3cwOUZ6T2FqenRJcGVPdHluT0lGZk5xQjRydUMyY3JrNzc1WDlWSGQyWWhYVDBKMlU0bXVRTzIwVjFYeTNTelFYVGJZc1lhZHFLck9IclpPd9IBxwFBVV95cUxOdDdMSXBabVQzenBRWk91UWptX25iZUdDb2JwTXBKSUdNclNSNFNfclRpRnAtX0pMeVh0djkwM1YxTERWcXFxNXpncVMyV2MxVnJPMzVXMmpFNE1lV2Ywdmx6MzQ0RUk3T3RrbDNkN0Q1WnN3NzJUT0dyTUE5eHBRV3cwQ0ltMkU0SkRBLW1xRkhTX1FsOUtNYlh5NEJlNFQ2VUpibjRUQWkwM0VaLWNBY1VkNTh1em1UZGpYQTdwdTFOQjNEbzRN?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-21T13:33:17Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_21eafdb964662b2cddf399",
+      "title": "OJK Beri Sanksi Final Untuk Kasus Saham DSSA, BREN dan CUAN - Akurat.co",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRHRad0lERXZGa29jQW1UT1VJTHBHSk5HN1Z0andVbDZ0dWN4R1FvQjhnYmpNYUdZbVdlVURoYzd2bWt6X2QxX3BoSy04cWlXTndLakVSYllWc2hjRTg3d2ZKZzdnWXRqYWZ5NjRESDRwZjN1VFpnVGlWckNsQkRHUXJUN1RBaWtwcWN0Q2dLSTF0R0VDdXMw?oc=5",
+      "publisher": "Akurat.co",
+      "published_at_utc": "2026-10-21T13:19:02Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_23b3e830fabef7da4fbbd7",
+      "title": "OJK Sanksi Kasus DSSA, BREN, dan CUAN, Denda hingga Pembekuan Izin - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNNmUyZUlmMlBlbkNfaXBQaTZmSllvUUlTM3FWSjNqQUp0aEdxdXFqWDl5d1F2QnYwSmI1Zm0xSlFFc0IyREQ2WkJWZUo3bmw1RTR1NjIwOHpWczdTSzdvSDBsV0lkY081Y2ZjVVp0U3pxUzZSQ05EWGZ4dDZ2bWZzbW5CV09SUnlkWlVKZEZ2VGI0U3k3V25COVRVRXc3RTRWOTVRVmtEMEtoZHRndE0td0NJZWdEbUE0c3B5TUc2RV9QZ2JZM1FaVkhPQm0yMDVocXc?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-21T13:09:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_8c1ba12cab1214e09ca40c",
+      "title": "KISI: Fundamental PGEO Tetap Kuat di Tengah Tekanan Pasar Saham - indoposco",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNTUV4RjVaNVh2THdOdjNTTFlpM1ZQU0tQbVYwV0hIbDFsOEhCNjIyeUpGRW1oMlYxV0pPbzdabUVYX3NVNXR0Mmt3YWpxaVcxWno2SGpadVR3SDZ0aVFRanphUGNGU0RQWjVFOWtXa0pIY2dZZ2l5aUR2OVFFcEVKZ255MzFpZGw4bTFxWEhMeDA1SmpOSWlHRFQtMA?oc=5",
+      "publisher": "indoposco",
+      "published_at_utc": "2026-10-21T13:06:18Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f55ff427376f3cf7f66f3d",
+      "title": "OJK Jatuhkan Denda Terhadap Pihak Terkait Pelanggaran Saham DSSA, BREN, dan CUAN - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNX2RHdEl6cnBjX3RQcmw0VHZpYzZrczZ3NGpPckVaNkd6WERUcmtJYVdieDN4SWRINVNmSmtMaFB4WHN5c3lITVljWUk4NUVWLS01NG44SE56cjlMXzVCVkpoQmpJRWExMlF0YmhVOS1NYXhjS2dMZS1JZFBzV1F4eUJTOHNuWjFlRFZVV0hBT3dMbWs0eTZvTUVUT0FhajAwQ1B4c3VUUjA5RDk5NmkwajgyQznSAawBQVVfeXFMTTJVbVVjQUoyUWFfMS1WRjFna1Ftck1lckkxOG1tcDU1SXdwTDJsLVBuZkc2NUF4dUVqX0JzMUxjVERpYVBFSFQ3ZXNyT0VHRks1X1VaOUFEaVdSZ3lfOVktTUpWWmtDdndwcTVCNzUxNFVjRHFoZVBlZmlaNmhMQzAwTXBRdzBSTEdkNmxGd3piMnh6cmxwVHhxZGtsYk5TM2dTZGt6SlltbWI5Tw?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T12:50:25Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_f78a7704f7e1a27dd5a8fa",
       "title": "KISI Nilai Prospek EBT Tetap Cerah, PGEO Punya Fondasi Kuat untuk Tumbuh - Dunia Energi",
@@ -122,6 +202,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_e2f73238809c1d5ea92b81",
+      "title": "IHSG Bergejolak, KISI Ungkap Ketahanan Fundamental Saham PGEO - Tribunnews.com",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNTEFqVEszRjVvWmh1QXBpaVpRQVk2UDVFaWdZaFJtMXRaNkI1Qk1XSi1kc1dRTy1oS191VmdHMlhVSTJEYWRhMmxDMzhVY0tpbHZ2UXV3QU1vMWc1QVF6UkF5bVlicFc0Q2ZXaHlwTkdXSkZwWXc1YlN1dEhtUEliTjE4djJ4YXItcFl1ZHEtRlJSREs5T2dBY0ZUOG0zakREeVhibA?oc=5",
+      "publisher": "Tribunnews.com",
+      "published_at_utc": "2026-10-21T10:12:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_c34123df46e6154f5728d3",
       "title": "Jasa Marga Kaji Buyback Saham Sambil Jaga Likuiditas - Demokratis.co.id",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9Lb2YyeEVoMUsxbDBpekxUeUhWeWZSNzJta0szZGI5dTcwT2R6b2ZfLVNsWXJWdkU4WHgyNmQ4cFIyc0E3NWhubFhYMUwzT2htRTMweWdrV3NwMnR0M1RwR2FSZ1E?oc=5",
@@ -160,6 +256,22 @@
       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNNW52VUwyUC1rbW41RDFkYUlsZlVrSnZCZXQ4QlNuZlpnV0IybWgtOS0yZkNSXzFGRnBNc1JIRHFxajdtZ0VBbnQ2U1JVc3kzVUltRDItS3ZBY1lmR0VKeEIxdG9PeXFzU003c29sUUVPNTZRd0JIU1VYZ3BQN2czTzdZNTJHcFV0RzF5RUZTbGRHNmJFUkdPUjJ3?oc=5",
       "publisher": "Infobanknews",
       "published_at_utc": "2026-10-21T09:48:14Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_939be1e351c1e2a6b546ee",
+      "title": "Jasa Marga (JSMR) Siapkan Strategi Buyback Saham di Tengah Tekanan IHSG - IDX Channel",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNcENxc0Q0X01UTnpLZmZNWFAzYkRxNlZzZ1RCM2RTLUhtWWplZmxDNWh6eVRSZERMc0hTYmNTbjZ2dEFTUi1rYm0ybmhlUFl5b2dIXzd2V3JNLTczMUdUWFdobVR2cHd6NUpTVV9icUl1MzdTM2MxR1VFYWp3aHFtYjlBa0pzeTFqbzF1WDlHcEhjSE1LbnZUZW9jbkxIV1M0ZVhuY0Y1bDBDYUky0gGyAUFVX3lxTE82VG1wS1FtQ01wazNlaEVVMTBTWHpPMmRmQ3VTYXpKMGFyZm9zTGo3Vl9sX3AtNlpmaWpOdjl4Um5rbVdTVmlBa1NzZGNhNjdrU0tlaFVjMjkxckk3OF8xZHg3dTVlOFFESDExOGg2NmRPMDBfYXcyQ0JldUFzRFQxOVZLNmdicGwyaHp6M3FjYXJ3dk1WVXdvRnpHaFhBMmtLWHByY2hQRlhMamwyZVVWeVE?oc=5",
+      "publisher": "IDX Channel",
+      "published_at_utc": "2026-10-21T09:47:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "JSMR"
@@ -283,6 +395,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_4a95728552be4b19fde655",
+      "title": "Fundamental TLKM Defensif Hadapi Persaingan, Cek Prospek dan Rekomendasi Sahamnya - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNYm5xV0x3QjZfdm1kOTdncEs1RTZYbFlHUUtSRjNXRHhPdklvMzhLY2lwOVc3QWdJWTdxOVRGaFBONWd3Q29yT2ZfR29XUExXb1U5TTl5dUU3c3VNY0RQbnRkRVFkNEJGY2JWeXZGc3VTWm9rdlQ4TERYLUtKVUNNR3JjTDg5b2wtWUJ4LW9BOGt4WUQ0Z05JN2xHdDU1dHVyUFJ1cTVMbWs5cTRqYS1uMlZ1SlpPdTDSAa8BQVVfeXFMTkxQTWozQ0FlM1RwN3cwNVE3SFRFUmtrcWJFZTlxQTZRMU9ZN3N5VDQ0anRGeWl1ZDR6YnB3S09rUUpKWm1vUkhlTGhlWFNCUkRna0l2QzdfeGxKRTNkYXVlSWcxSS1iY1BuUFgxY2hMNGg2aW5DSnNmZHlOTk9GQVJ1NXg2V2VGNVBGUWhMbEtxLU01NGhhNUVPLTBnemlBVUs2NklDVE41VHIwTXNIYw?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T08:55:09Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_d52b56bea0a0a12aea7ad0",
       "title": "Bisikan Target Terbaru Saham Emiten Boy Thohir ADRO, ADMR, AADI Kala Buyback Jumbo - Bisnis Indonesia Premium",
       "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOR2lockxLVXJubVFzbUJPaFR4QVhVWEVVMTkxRDFFZlRvUTA2a3llMVh0MUdWRWJtVHpwVGxqUDhCNE1JOENSTkE4QjVLbUJBbkpxVFJoR25GdkxqejZ3NEFEaEx5cXlUQ1BhZkJ4R0t2R1hPMDFrMzctQTNfY0ZTVW5lVTFXYXBCcXROMzZmb0V6VVlDQnlQc2lRU2p4T3hzcnVFYlpsSmhDN3ZBTjZhdThiTlBkTEpIV0FXR0hsMTNPSFBlVWpjRnM5QW4wZw?oc=5",
@@ -326,6 +454,22 @@
         "TLKM"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c61ee7fbf4246afabad452",
+      "title": "IHSG Tertekan Sentimen MSCI, Fundamental PGEO Dinilai Tetap Solid - SINDOnews Ekbis",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQbkpqZGJoemZoTWtZN0RnYnVtTXlwUHV5R0NacFpuWUhDOHpyVXNzdTgxTl9BUUhaRFNLcnVjNkYyYlQ0TUVIZ3dFZVdxSzRUOGx0VHRQTGJJaWRIMW9wZHNGVTRCRHNVVXVNN1NvbEVMbldLRlpEMW42NDR0QjhKdVNjWjZuLVJ6YzhSVVlRS1FoMUhPN3Jwd2g3Rlo1QVdGVkpIS3RaUGFUbXVfOUhtT19kbFZFSHJZNUZuLdIBwgFBVV95cUxNY1NYbHhRUE0teDlWLXJPS1BaTEZXUkVha2lXYUNEQnFJNnB6SGhJc3J6Rk40dmVFWnphTE04VFVnZUhNSmE0MHdGZENEWnhiNTFld0hPcGZWRDV5bE15Wjk1dnIxTTRCYVhwQ3FfYi13NnlvUVdOb0pPT1BtOVhkOUVvWkQ4OG50NkxFdlg0aG92aVlZVW1EeWU5VTFvcDBJdlVnSGpwT3VKTmZESm5QS2ZHVE5udDZHTS1aZzNmcHpaZw?oc=5",
+      "publisher": "SINDOnews Ekbis",
+      "published_at_utc": "2026-10-21T08:02:05Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -953,7 +1097,8 @@
       "published_at_utc": "2026-10-20T23:02:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "INDF"
+        "INDF",
+        "PGEO"
       ],
       "sector": "food",
       "source": "public_google_news_rss",
@@ -970,6 +1115,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "INDF",
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_b0bb3c1488e0d22c151189",
+      "title": "Analis Rekomendasikan Tiga Saham ASII INDF dan PGEO - SuaraGarut.ID",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9CMjRHNEtmUU1ZM2VwVDVvaVpuOGhYckRBZndUWDBUOE1EOE1xT19XTHpmRTVob1FiaXg5bDMwU2NpTl9GS2xUUE05QVpxTEF2eEpGLW1Yd0dYWXR6NXRwSlM2ckg?oc=5",
+      "publisher": "SuaraGarut.ID",
+      "published_at_utc": "2026-10-20T23:01:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
         "PGEO"
       ],
       "sector": "energy",
