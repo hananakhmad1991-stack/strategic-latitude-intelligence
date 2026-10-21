@@ -27,6 +27,13 @@ assert.equal(registry.coverage.private_watermark_ambiguous_cells_source_checked,
 assert.equal(registry.coverage.arithmetic_conflict_tables_unresolved,2);
 assert.equal(registry.coverage.numeric_82_table_cell_qa_complete,false);
 assert.equal(registry.coverage.bps_written_commercial_permission_on_file,false);
+assert.equal(registry.table_geometry_candidate_extraction.original_pdf_pages_in_scope,114);
+assert.equal(registry.table_geometry_candidate_extraction.tables_with_geometry_detected_all_spans,82);
+assert.equal(registry.table_geometry_candidate_extraction.detected_pdf_table_objects_including_footnotes_and_fragments,177);
+assert.equal(registry.table_geometry_candidate_extraction.raw_candidate_rows_including_headers_notes_and_nondata,4132);
+assert.equal(registry.table_geometry_candidate_extraction.agricultural_indicator_tables_with_9_plus_detected_columns_high_complexity,44);
+assert.equal(registry.coverage.public_full_table_numeric_series,0);
+assert.equal(registry.coverage.private_high_complexity_agri_indicator_tables,44);
 assert.ok(registry.private_numeric_extraction_qa.dash_policy.includes("distinct from numeric zero"));
 assert.deepEqual(registry.private_numeric_extraction_qa.national_column_sum_difference_detected.map(x=>x.table_id),["6.1","6.2"]);
 assert.equal(registry.private_numeric_extraction_qa.derived_metrics_and_maps_publication_allowed,false);
