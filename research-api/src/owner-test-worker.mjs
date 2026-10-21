@@ -18,6 +18,7 @@ import {buildClaimEvidenceLedger} from "./claim-evidence-ledger.mjs";
 import {probeCitedPrimaryPages} from "./primary-claim-probe.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
+import {nationalWelfareEvidence,provincialWelfareEvidence} from "./welfare-corpus.mjs";
 import {policyLegalEvidence,selectPolicyEvidence} from "./policy-corpus.mjs";
 import {legalProvisionEvidence} from "./legal-provisions.mjs";
 import {parisTreatyTimelineEvidence} from "./treaty-status.mjs";
@@ -98,6 +99,8 @@ function publicCorpus(){
  }
  docs.push(...nationalEnergyEvidence());
  docs.push(...nationalMineralEvidence());
+ docs.push(...nationalWelfareEvidence());
+ docs.push(...provincialWelfareEvidence());
  return docs;
 }
 const DATA=publicCorpus();

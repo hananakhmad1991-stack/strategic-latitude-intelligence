@@ -1,0 +1,1028 @@
+{
+  "schema": "sli-bps-welfare-2026-v1",
+  "source": {
+    "publisher": "Badan Pusat Statistik (BPS)",
+    "title": "Statistik Kesejahteraan Rakyat 2026",
+    "catalog": "4101002",
+    "publication": "04200.26014",
+    "survey": "Susenas Kor Maret 2026",
+    "released": "2026-10-05",
+    "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html",
+    "pdf_pages": 558,
+    "pdf_source_sha256": "1338749eec4926885a3052ea2933cfeaca1b1328386bca26f80d5a1279a44305",
+    "sample_households": 356000,
+    "provinces": 38,
+    "surveyed_regencies_municipalities": 514,
+    "extra_ikn_households": 700
+  },
+  "quality": {
+    "phase": "partial_review_not_full_publication",
+    "core_tables_cataloged": 165,
+    "province_rows_candidate": 6435,
+    "parsed_numeric_cell_candidates": 48009,
+    "tables_passed_structural_check": 165,
+    "tables_require_column_review": 0,
+    "provincial_metric_count": 9,
+    "national_key_indicators": 23,
+    "commercial_reuse": "BPS PDF notice restricts commercial reproduction without written permission; seek permission before bulk redistribution.",
+    "rse": "Use RSE appendix before ranking uncertain estimates; RSE >25% to ≤50% use caution, >50% unreliable",
+    "missing_value": "null means missing/suppressed/not available, not zero",
+    "geographic_scope": "Published national/provincial comparisons; do not infer kabupaten data from national/provincial tables",
+    "status": "curated_small_subset_require_visual_cell_audit",
+    "notes": "All 165 core tables have 39 recognized national/provincial rows and stable numerical column counts after excluding PDF table-id artifacts. Structural QA does not validate each cell or the 9.x sampling error appendices."
+  },
+  "years": [
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "national_series": [
+    {
+      "id": "birth_certificate_0_17",
+      "sector": "Demografi",
+      "label": "Akta kelahiran penduduk usia 0–17 tahun",
+      "unit": "percent",
+      "values": [
+        90.41,
+        91.79,
+        92.75,
+        93.95,
+        94.64
+      ],
+      "pdf_page": 41,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "birth_certificate_0_4",
+      "sector": "Demografi",
+      "label": "Akta kelahiran penduduk usia 0–4 tahun",
+      "unit": "percent",
+      "values": [
+        81.34,
+        83.44,
+        85.07,
+        86.76,
+        88.18
+      ],
+      "pdf_page": 41,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "marriage_certificate",
+      "sector": "Demografi",
+      "label": "Penduduk menikah 10+ memiliki buku/akta nikah",
+      "unit": "percent",
+      "values": [
+        null,
+        null,
+        91.59,
+        92.29,
+        91.95
+      ],
+      "pdf_page": 41,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "no_school_certificate",
+      "sector": "Pendidikan",
+      "label": "Penduduk 15+ tanpa ijazah",
+      "unit": "percent",
+      "values": [
+        12.49,
+        12.26,
+        11.44,
+        11.37,
+        11.35
+      ],
+      "pdf_page": 41,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "primary_attainment",
+      "sector": "Pendidikan",
+      "label": "Penduduk 15+ pendidikan tertinggi SD/sederajat",
+      "unit": "percent",
+      "values": [
+        24.83,
+        24.62,
+        24.72,
+        23.9,
+        23.66
+      ],
+      "pdf_page": 41,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "health_complaints",
+      "sector": "Kesehatan",
+      "label": "Penduduk dengan keluhan kesehatan sebulan terakhir",
+      "unit": "percent",
+      "values": [
+        29.94,
+        26.27,
+        27.34,
+        28.31,
+        27.43
+      ],
+      "pdf_page": 41,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "health_insurance",
+      "sector": "Kesehatan",
+      "label": "Penduduk memiliki jaminan kesehatan",
+      "unit": "percent",
+      "values": [
+        69.62,
+        72.38,
+        75.48,
+        78.04,
+        79.68
+      ],
+      "pdf_page": 41,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "marriage_first_age_16",
+      "sector": "Fertilitas",
+      "label": "Perempuan pernah kawin dengan usia perkawinan pertama ≤16 tahun",
+      "unit": "percent",
+      "values": [
+        14.15,
+        14.58,
+        14.21,
+        13.21,
+        13.25
+      ],
+      "pdf_page": 42,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "floor_area_under_7_2",
+      "sector": "Perumahan",
+      "label": "Rumah tangga dengan luas lantai per kapita <7,2 m²",
+      "unit": "percent",
+      "values": [
+        null,
+        null,
+        5.67,
+        5.34,
+        5.09
+      ],
+      "pdf_page": 42,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "tiled_roof",
+      "sector": "Perumahan",
+      "label": "Rumah tangga dengan atap utama genteng",
+      "unit": "percent",
+      "values": [
+        54.39,
+        55.26,
+        54.94,
+        54.24,
+        53.24
+      ],
+      "pdf_page": 42,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "brick_wall",
+      "sector": "Perumahan",
+      "label": "Rumah tangga berdinding utama tembok",
+      "unit": "percent",
+      "values": [
+        78.99,
+        79.7,
+        81.16,
+        82.46,
+        82.82
+      ],
+      "pdf_page": 42,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "finished_floor",
+      "sector": "Perumahan",
+      "label": "Rumah tangga dengan lantai utama keramik/ubin/tegel/teraso/parket/vinil/karpet",
+      "unit": "percent",
+      "values": [
+        null,
+        null,
+        null,
+        64.83,
+        65.19
+      ],
+      "pdf_page": 42,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "private_toilet",
+      "sector": "Sanitasi",
+      "label": "Rumah tangga dengan fasilitas BAB digunakan sendiri",
+      "unit": "percent",
+      "values": [
+        86.06,
+        86.86,
+        89.42,
+        90.36,
+        91.25
+      ],
+      "pdf_page": 42,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "water_seal_toilet",
+      "sector": "Sanitasi",
+      "label": "Pengguna kloset leher angsa (denominator rumah tangga dengan fasilitas tertentu)",
+      "unit": "percent",
+      "values": [
+        94.14,
+        95.78,
+        96.59,
+        97.33,
+        97.13
+      ],
+      "pdf_page": 42,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "septic_tank",
+      "sector": "Sanitasi",
+      "label": "Pengguna tangki septik (denominator rumah tangga dengan fasilitas tertentu)",
+      "unit": "percent",
+      "values": [
+        82.56,
+        80.77,
+        80.57,
+        82.94,
+        83.21
+      ],
+      "pdf_page": 42,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "electric_lighting",
+      "sector": "Energi",
+      "label": "Rumah tangga dengan listrik sebagai sumber penerangan utama",
+      "unit": "percent",
+      "values": [
+        99.39,
+        99.37,
+        99.48,
+        99.55,
+        99.59
+      ],
+      "pdf_page": 42,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "landline",
+      "sector": "Digital",
+      "label": "Rumah tangga memiliki telepon rumah/PSTN",
+      "unit": "percent",
+      "values": [
+        1.34,
+        1.17,
+        0.99,
+        0.61,
+        0.6
+      ],
+      "pdf_page": 43,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "computer",
+      "sector": "Digital",
+      "label": "Rumah tangga memiliki komputer/laptop/tablet",
+      "unit": "percent",
+      "values": [
+        18.04,
+        18.05,
+        18.52,
+        19.94,
+        19.91
+      ],
+      "pdf_page": 43,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "crime_victim",
+      "sector": "Keamanan",
+      "label": "Penduduk korban kejahatan",
+      "unit": "percent",
+      "values": [
+        0.47,
+        0.53,
+        0.45,
+        0.73,
+        0.68
+      ],
+      "pdf_page": 43,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "received_credit",
+      "sector": "Keuangan",
+      "label": "Rumah tangga menerima kredit",
+      "unit": "percent",
+      "values": [
+        23.23,
+        22.97,
+        23.08,
+        23.9,
+        21.98
+      ],
+      "pdf_page": 43,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "food_assistance",
+      "sector": "Perlindungan Sosial",
+      "label": "Rumah tangga pernah menerima bantuan pangan",
+      "unit": "percent",
+      "values": [
+        20.33,
+        17.88,
+        20.44,
+        18.07,
+        15.08
+      ],
+      "pdf_page": 43,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "pkh",
+      "sector": "Perlindungan Sosial",
+      "label": "Rumah tangga penerima PKH",
+      "unit": "percent",
+      "values": [
+        14.92,
+        15.57,
+        15.57,
+        13.97,
+        13.61
+      ],
+      "pdf_page": 43,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    },
+    {
+      "id": "e_money",
+      "sector": "Digital",
+      "label": "Rumah tangga memiliki uang elektronik dalam setahun terakhir",
+      "unit": "percent",
+      "values": [
+        null,
+        null,
+        null,
+        33.04,
+        40.98
+      ],
+      "pdf_page": 43,
+      "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html"
+    }
+  ],
+  "provincial_metrics": [
+    {
+      "id": "school_7_23",
+      "label": "Partisipasi sekolah usia 7–23 tahun",
+      "sector": "Pendidikan",
+      "table": "3.11",
+      "pdf_page": 101,
+      "index": 0,
+      "unit": "percent",
+      "denominator": "Penduduk berumur 7–23 tahun; kategori masih sekolah"
+    },
+    {
+      "id": "uninsured",
+      "label": "Penduduk tanpa jaminan kesehatan",
+      "sector": "Kesehatan",
+      "table": "4.13",
+      "pdf_page": 142,
+      "index": 1,
+      "unit": "percent",
+      "denominator": "Penduduk; kategori tidak memiliki jaminan kesehatan"
+    },
+    {
+      "id": "no_electricity_lighting",
+      "label": "Rumah tangga tanpa listrik sebagai penerangan utama",
+      "sector": "Energi",
+      "table": "6.28",
+      "pdf_page": 220,
+      "index": 2,
+      "unit": "percent",
+      "denominator": "Rumah tangga perkotaan+perdesaan, sumber utama penerangan bukan listrik"
+    },
+    {
+      "id": "lpg_citygas_biogas_cooking",
+      "label": "Bahan bakar memasak utama: elpiji/gas kota/biogas",
+      "sector": "Energi",
+      "table": "6.31",
+      "pdf_page": 223,
+      "index": 3,
+      "unit": "percent",
+      "denominator": "Rumah tangga; elpiji, gas kota dan biogas kategori gabungan (tidak boleh dianggap elpiji saja)"
+    },
+    {
+      "id": "internet_5_plus",
+      "label": "Pengguna internet usia 5+ dalam 3 bulan terakhir",
+      "sector": "Digital",
+      "table": "7.4",
+      "pdf_page": 234,
+      "index": 4,
+      "unit": "percent",
+      "denominator": "Penduduk berumur 5 tahun ke atas; laki-laki+perempuan, perkotaan+perdesaan"
+    },
+    {
+      "id": "bpnt_sembako",
+      "label": "Rumah tangga menerima BPNT/Program Sembako 4 bulan terakhir",
+      "sector": "Perlindungan Sosial",
+      "table": "8.11",
+      "pdf_page": 259,
+      "index": 5,
+      "unit": "percent",
+      "denominator": "Rumah tangga; perkotaan+perdesaan; berbeda dari semua program bantuan pangan"
+    },
+    {
+      "id": "e_money_households",
+      "label": "Rumah tangga memiliki uang elektronik dalam setahun terakhir",
+      "sector": "Digital",
+      "table": "8.18",
+      "pdf_page": 266,
+      "index": 6,
+      "unit": "percent",
+      "denominator": "Rumah tangga; uang elektronik berbasis server atau kartu/chip, tidak saling eksklusif"
+    },
+    {
+      "id": "birth_certificate_0_17",
+      "label": "Penduduk usia 0–17 tahun memiliki akta kelahiran",
+      "sector": "Demografi",
+      "table": "2.13",
+      "pdf_page": 75,
+      "index": 7,
+      "unit": "percent",
+      "denominator": "Penduduk usia 0–17 tahun; memiliki akta kelahiran dari Kantor Catatan Sipil"
+    },
+    {
+      "id": "piped_drinking_water",
+      "label": "Rumah tangga dengan sumber utama air minum leding",
+      "sector": "Air & Sanitasi",
+      "table": "6.23",
+      "pdf_page": 215,
+      "index": 8,
+      "unit": "percent",
+      "denominator": "Rumah tangga dengan sumber utama minum leding/tap water; BUKAN ukuran air minum aman atau akses pipanisasi keseluruhan"
+    }
+  ],
+  "provinces": [
+    {
+      "name": "Aceh",
+      "values": [
+        77.53,
+        1.33,
+        null,
+        96.33,
+        76.49,
+        26.48,
+        27.12,
+        98.19,
+        7.49
+      ]
+    },
+    {
+      "name": "Sumatera Utara",
+      "values": [
+        75.65,
+        23.27,
+        0.25,
+        95.74,
+        84.17,
+        11.99,
+        38.65,
+        92.16,
+        12.41
+      ]
+    },
+    {
+      "name": "Sumatera Barat",
+      "values": [
+        79.29,
+        20.7,
+        0.16,
+        91.73,
+        85.26,
+        13.58,
+        38.36,
+        95.5,
+        9.87
+      ]
+    },
+    {
+      "name": "Riau",
+      "values": [
+        75.61,
+        20.56,
+        0.16,
+        98.33,
+        85.8,
+        8.16,
+        38.09,
+        93.25,
+        0.25
+      ]
+    },
+    {
+      "name": "Jambi",
+      "values": [
+        74.42,
+        31.42,
+        0.24,
+        95.01,
+        83.31,
+        7.82,
+        38.36,
+        96.87,
+        8.48
+      ]
+    },
+    {
+      "name": "Sumatera Selatan",
+      "values": [
+        72.73,
+        22.72,
+        0.11,
+        98.63,
+        82.38,
+        11.2,
+        44.35,
+        95.68,
+        13.65
+      ]
+    },
+    {
+      "name": "Bengkulu",
+      "values": [
+        78.24,
+        19.5,
+        null,
+        97.88,
+        83.8,
+        15.3,
+        32.44,
+        96.57,
+        7.57
+      ]
+    },
+    {
+      "name": "Lampung",
+      "values": [
+        74.1,
+        24.53,
+        0.03,
+        96.36,
+        86.17,
+        17.49,
+        35.66,
+        97.29,
+        2.34
+      ]
+    },
+    {
+      "name": "Kep. Bangka Belitung",
+      "values": [
+        71.33,
+        11.39,
+        null,
+        98.15,
+        84.59,
+        4.93,
+        28.33,
+        97.97,
+        0.82
+      ]
+    },
+    {
+      "name": "Kep. Riau",
+      "values": [
+        77.12,
+        12.17,
+        null,
+        90.7,
+        94.85,
+        5.49,
+        50.73,
+        96.55,
+        4.84
+      ]
+    },
+    {
+      "name": "DKI Jakarta",
+      "values": [
+        78.42,
+        2.96,
+        null,
+        98.5,
+        93.64,
+        2.91,
+        78.95,
+        98.31,
+        8.05
+      ]
+    },
+    {
+      "name": "Jawa Barat",
+      "values": [
+        72.88,
+        24.69,
+        null,
+        95.29,
+        84.99,
+        17.5,
+        55.42,
+        93.79,
+        4.75
+      ]
+    },
+    {
+      "name": "Jawa Tengah",
+      "values": [
+        74.39,
+        24.02,
+        null,
+        92.47,
+        81.82,
+        20.48,
+        39.64,
+        98.22,
+        13.69
+      ]
+    },
+    {
+      "name": "DI Yogyakarta",
+      "values": [
+        83.62,
+        5.71,
+        null,
+        86.96,
+        85.75,
+        22.99,
+        49.66,
+        99.08,
+        9.94
+      ]
+    },
+    {
+      "name": "Jawa Timur",
+      "values": [
+        74.84,
+        22.99,
+        null,
+        91.82,
+        79.28,
+        17.92,
+        31.5,
+        96.65,
+        11.08
+      ]
+    },
+    {
+      "name": "Banten",
+      "values": [
+        73.51,
+        19.57,
+        null,
+        96.79,
+        83.66,
+        9.89,
+        58.18,
+        93.17,
+        2.21
+      ]
+    },
+    {
+      "name": "Bali",
+      "values": [
+        77.6,
+        8.37,
+        null,
+        91.91,
+        85.78,
+        3.95,
+        34.03,
+        97.84,
+        19.18
+      ]
+    },
+    {
+      "name": "Nusa Tenggara Barat",
+      "values": [
+        76.75,
+        26.05,
+        null,
+        94.33,
+        80.86,
+        17.57,
+        24.84,
+        95.28,
+        13.93
+      ]
+    },
+    {
+      "name": "Nusa Tenggara Timur",
+      "values": [
+        77.23,
+        18.7,
+        1.91,
+        2.82,
+        71.51,
+        22.41,
+        12.06,
+        80.43,
+        16.97
+      ]
+    },
+    {
+      "name": "Kalimantan Barat",
+      "values": [
+        73.2,
+        29.22,
+        0.82,
+        97.44,
+        82.34,
+        9.88,
+        28.94,
+        94.89,
+        2.54
+      ]
+    },
+    {
+      "name": "Kalimantan Tengah",
+      "values": [
+        73.26,
+        28.22,
+        0.44,
+        96.88,
+        86.92,
+        5.56,
+        33.25,
+        94.8,
+        4.91
+      ]
+    },
+    {
+      "name": "Kalimantan Selatan",
+      "values": [
+        75.59,
+        18.54,
+        null,
+        94.41,
+        84.5,
+        7.85,
+        39.57,
+        96.06,
+        23.48
+      ]
+    },
+    {
+      "name": "Kalimantan Timur",
+      "values": [
+        76.37,
+        7.74,
+        0.02,
+        99.1,
+        90.54,
+        3.86,
+        45.57,
+        97.71,
+        8.52
+      ]
+    },
+    {
+      "name": "Kalimantan Utara",
+      "values": [
+        76.53,
+        9.34,
+        null,
+        92.8,
+        86.96,
+        8.69,
+        27.92,
+        96.58,
+        5.17
+      ]
+    },
+    {
+      "name": "Sulawesi Utara",
+      "values": [
+        72.82,
+        12.35,
+        0.06,
+        87.24,
+        80.8,
+        11.01,
+        29.74,
+        96.51,
+        7.39
+      ]
+    },
+    {
+      "name": "Sulawesi Tengah",
+      "values": [
+        74.12,
+        14.5,
+        0.52,
+        82.04,
+        79.4,
+        15.03,
+        19.55,
+        94.27,
+        7.35
+      ]
+    },
+    {
+      "name": "Sulawesi Selatan",
+      "values": [
+        75.35,
+        10.71,
+        0.07,
+        96.59,
+        83.48,
+        12.59,
+        32.43,
+        96.15,
+        12.06
+      ]
+    },
+    {
+      "name": "Sulawesi Tenggara",
+      "values": [
+        77.31,
+        12.33,
+        0.09,
+        73.65,
+        83.82,
+        14.86,
+        24.34,
+        94.69,
+        9.07
+      ]
+    },
+    {
+      "name": "Gorontalo",
+      "values": [
+        72.54,
+        8.68,
+        null,
+        98,
+        80.22,
+        26.54,
+        30.07,
+        97.14,
+        4.25
+      ]
+    },
+    {
+      "name": "Sulawesi Barat",
+      "values": [
+        73.68,
+        8.43,
+        0.22,
+        89.01,
+        81.33,
+        15.11,
+        18.95,
+        93.21,
+        7.23
+      ]
+    },
+    {
+      "name": "Maluku",
+      "values": [
+        76.28,
+        30.13,
+        1.23,
+        2.35,
+        76.38,
+        11.61,
+        17.57,
+        90.8,
+        10.96
+      ]
+    },
+    {
+      "name": "Maluku Utara",
+      "values": [
+        74.76,
+        26.14,
+        0.52,
+        3,
+        74.85,
+        5.85,
+        10.98,
+        91.42,
+        19.49
+      ]
+    },
+    {
+      "name": "Papua Barat",
+      "values": [
+        74.95,
+        17.5,
+        3.49,
+        4.23,
+        73.16,
+        14.88,
+        12.14,
+        82.92,
+        3.83
+      ]
+    },
+    {
+      "name": "Papua Barat Daya",
+      "values": [
+        78.55,
+        9.98,
+        1.3,
+        5.94,
+        71.53,
+        13.34,
+        17.67,
+        90.64,
+        1.62
+      ]
+    },
+    {
+      "name": "Papua",
+      "values": [
+        76.06,
+        17.52,
+        2.75,
+        6.52,
+        72.46,
+        9.83,
+        18.76,
+        86.39,
+        13.9
+      ]
+    },
+    {
+      "name": "Papua Selatan",
+      "values": [
+        71.05,
+        7.66,
+        15.58,
+        6.04,
+        52.45,
+        13.08,
+        7.86,
+        68.29,
+        null
+      ]
+    },
+    {
+      "name": "Papua Tengah",
+      "values": [
+        51.37,
+        25.28,
+        30.58,
+        4.02,
+        39.57,
+        3.79,
+        5.27,
+        58.69,
+        null
+      ]
+    },
+    {
+      "name": "Papua Pegunungan",
+      "values": [
+        56.92,
+        5.69,
+        31,
+        0.29,
+        13.03,
+        40.61,
+        0.51,
+        28.38,
+        null
+      ]
+    },
+    {
+      "name": "Indonesia",
+      "values": [
+        74.72,
+        20.32,
+        0.41,
+        90.15,
+        82.63,
+        15.08,
+        40.98,
+        94.64,
+        9.02
+      ]
+    }
+  ]
+}
