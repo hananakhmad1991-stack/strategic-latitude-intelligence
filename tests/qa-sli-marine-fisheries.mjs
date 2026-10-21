@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import vm from "node:vm";
 import {marineSeries,marineLatest,marineShares,marineGrowth,validateMarineData} from "../js/sli-marine-fisheries.mjs";
+import {validateMarineGovernance} from "../js/sli-marine-governance.mjs";
 
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const data=JSON.parse(read("data/sli-marine-fisheries-kkp.json"));
@@ -42,7 +43,7 @@ test("KKP static data fails validation on fabricated zeros, missing periods, est
  {const d=cloned();d.records[0].source_url="https://not-kkp.example/fake";assert.ok(validateMarineData(d).errors.includes("invalid_observation"))}
  {const d=cloned();d.province_seaweed_2024[0].value=100000000;assert.ok(validateMarineData(d).errors.includes("province_exceeds_national"))}
 });
-test("Marine dashboard follows SLI canonical navigation, no new top-level group or overlapping agriculture dashboard",()=>{
+test("Marine dashboard has independent Home and Explore Data destinations",()=>{
  const page=read("marine-fisheries-intelligence.html"),nav=read("js/sli-navigation.js");
  for(const expected of ["js/sli-live-data.js","js/sli-shared-appendix.js","css/sli-navigation.css","js/sli-navigation.js"])
   assert.equal(page.split(expected).length-1,1,"shared platform asset duplicate/missing "+expected);
@@ -56,12 +57,32 @@ test("Marine dashboard follows SLI canonical navigation, no new top-level group 
  const fakeWindow={addEventListener(){}};const fakeDoc={readyState:"loading",addEventListener(){}};
  vm.runInNewContext(nav,{window:fakeWindow,document:fakeDoc,location:{pathname:"/marine-fisheries-intelligence.html",hash:""}});
  const {groups,modules}=fakeWindow.SLIArchitecture;
- assert.equal(groups.length,7);
+ assert.equal(groups.length,8);
  assert.equal(groups.filter(g=>g.includes("marine")).length,1);
  assert.equal(modules.marine[2],"marine-fisheries-intelligence.html");
- assert.ok(groups.find(g=>g.includes("food")).includes("marine"));
+ assert.ok(!groups.find(g=>g.includes("food")).includes("marine"));
+ assert.deepEqual(Array.from(groups.find(g=>g.includes("marine")).slice(2)),["marine"]);
+ assert.match(read("index.html"),/href="\.\/marine-fisheries-intelligence\.html" class="sli-portal-topic-main"/);
+ for(const id of ["marine-governance","marine-hierarchy","marine-network","mfHierarchyDiagram","mfNetworkDiagram"])assert.ok(page.includes('id="'+id+'"'),id);
+ assert.match(page,/js\/sli-marine-governance\.mjs/);
  assert.ok(modules.food[2].includes("food-agriculture-intelligence.html"));
  assert.ok(modules.marine[1].includes("Kelautan"));
  assert.match(read("sli-sector-data-library.html"),/id="marine"/);
  assert.match(read("food-agriculture-intelligence.html"),/marine-fisheries-intelligence\.html/);
+});
+
+test("KKP governance sources separate official directorates from six functional hubs",()=>{
+ const d=JSON.parse(read("data/sli-marine-governance.json"));
+ const checked=validateMarineGovernance(d);
+ assert.equal(checked.pass,true,JSON.stringify(checked.issues));
+ assert.equal(d.groups.length,6);
+ assert.equal(d.hierarchy.find(x=>x.id==="djprl").parent,"kkp");
+ assert.equal(d.hierarchy.find(x=>x.id==="djpkel").parent,"kkp");
+ assert.ok(d.hierarchy.some(x=>x.id==="bppmhkp"));
+ assert.ok(d.legal_sources.some(x=>x.url.includes("perpres-no-112-tahun-2025")));
+ assert.ok(d.legal_sources.some(x=>x.url.includes("DetailPeraturan/6750")));
+ assert.ok(d.actors.some(x=>x.id==="dkp"));
+ assert.ok(!d.hierarchy.some(x=>x.id==="dkp"),"Regional authority must not become a KKP subordinate");
+ for(const hub of d.groups)assert.ok(hub.actor_ids.length>=2);
+ const fake=structuredClone(d);fake.groups[0].actor_ids=["does-not-exist"];assert.equal(validateMarineGovernance(fake).pass,false);
 });

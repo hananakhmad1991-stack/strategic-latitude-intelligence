@@ -5,13 +5,14 @@
 ## Purpose
 Maintain one discoverable location for each SLI public function without erasing original datasets, removing deep links, or claiming that visually similar measurements are interchangeable. The **shared masthead Explore Data** is the only sitewide module chooser. Home is the short executive entry point; Full Overview is the expanded analytic view; the individual modules are evidence owners. Source-library URLs remain stable **evidence details/archives**, never a competing top-level sector.
 
-### Seven visible topic families
+### Eight visible topic families
 | Canonical category (EN / ID) | Owns the following user tasks and canonical pages |
 |---|---|
 | Start & research tools / Mulai & perangkat riset | Full Overview (`index.html#overview`), cross-source Decision Terminal, limited owner-test DERGUBA AI, user guide, membership. Specialist: research evidence preview, attributed food/minerals monitoring |
 | Economy, investment & regions / Ekonomi, investasi & daerah | Macroeconomy, Investment Tracker (`index.html#investment`), Entity Intelligence, provincial dossiers, provincial comparison/stress, Gini, investor/scenario labs. Specialist: investment navigator |
 | Energy, minerals & trade / Energi, mineral & perdagangan | Energy Security overview (`index.html#energy`), official PLN statistics, RUPTL planned power investment, Critical Minerals overview (`index.html#minerals`), Trade Flows, Strategic Map. Specialist: regional PLN baseline, original RUPTL source inventory, investor digitization |
-| Food & agriculture / Pangan & pertanian | Food & Agriculture Intelligence; cross-sector attributed monitoring is linked from Start & tools but this food dashboard remains the sector's substantive home |
+| Food & agriculture / Pangan & pertanian | Food & Agriculture Intelligence; agricultural trade, farmer welfare and food resilience. Cross-links do not make marine a food subcategory. |
+| Marine & fisheries / Kelautan & perikanan | Standalone KKP Marine & Fisheries dashboard with source-led fisheries, seaweed, aquaculture, official institutional hierarchy and six-hub functional network. |
 | AI & digital transformation / AI & transformasi digital | AI Infrastructure overview (`index.html#ai`), detailed AI Intelligence Hub, Komdigi connectivity, digital-economy readiness and public digital governance. Eight power/investor/compute/source specialist pages belong here, not a new top-level category |
 | Policy, geopolitics & environment / Kebijakan, geopolitik & lingkungan | Policy & Regulation overview (`index.html#policy`), Regulatory Instruments & Institutions (`policy-regulatory-intelligence.html`), Geopolitical Intelligence (`index.html#geopolitics`), Indonesia domestic/regional intelligence, Climate & Environment. Specialist: policy impact evaluation and sector RIA |
 | Reference & quality / Referensi & kualitas | Canonical glossary/methodology, data freshness/QA. Specialist: Atlas of 49 research methods |
