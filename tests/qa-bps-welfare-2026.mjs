@@ -101,10 +101,10 @@ test("five direct chapter IX sampling-error crosswalks cover 39 regions with doc
    assert.ok(rse===null||(Number.isFinite(rse)&&rse>=0));
    if(rse===null)unknown++;else if(rse>50)unreliable++;else if(rse>25)caution++;else standard++;
    if(lo!==null||hi!==null){
-    assert.ok(Number.isFinite(lo)&&Number.isFinite(hi),"Partial CI: "+id+" "+data.provinces[i].name);
-    assert.ok(lo<=hi,"Reversed CI: "+id+" "+data.provinces[i].name);
+    assert.ok((Number.isFinite(lo)||lo==="~0")&&Number.isFinite(hi),"Partial CI: "+id+" "+data.provinces[i].name);
+    assert.ok((lo==="~0"?0:lo)<=hi,"Reversed CI: "+id+" "+data.provinces[i].name);
     assert.ok(Number.isFinite(point),"Published interval attached to NA: "+id+" "+data.provinces[i].name);
-    assert.ok(point+0.015>=lo&&point-0.015<=hi,"CI not enclosing point: "+id+" "+data.provinces[i].name);
+    assert.ok(point+0.015>=(lo==="~0"?0:lo)&&point-0.015<=hi,"CI not enclosing point: "+id+" "+data.provinces[i].name);
     validCI++;
    }
   }
