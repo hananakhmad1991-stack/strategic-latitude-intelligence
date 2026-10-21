@@ -23,7 +23,7 @@ const tickerUrl=t=>"./sli-issuer.html?ticker="+encodeURIComponent(t);
 const ALLOWED=/^[A-Z0-9]{4}$/;
 let candidates=[],sector=(typeof location!=="undefined"&&new URLSearchParams(location.search).get("watchlist")==="marine")?"marine":"energy",ready=null;
 function activeIssuerList(rows,k){
- return rows.filter(x=>x.sector===k&&x.exchange==="IDX"&&ALLOWED.test(x.ticker||"")&&x.name);
+ return rows.filter(x=>(x.sector===k||(k==="marine"&&x.theme_marine===true))&&x.exchange==="IDX"&&ALLOWED.test(x.ticker||"")&&x.name);
 }
 function link(url,label,external=false){
  const a=E("a",null,label);a.href=url;if(external){a.target="_blank";a.rel="noopener noreferrer"}return a;
