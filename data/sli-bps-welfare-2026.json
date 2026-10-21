@@ -1213,7 +1213,7 @@
           0.09,
           0.04,
           null,
-          null,
+          "~0",
           null,
           null,
           null,
@@ -1228,7 +1228,7 @@
           0.59,
           0.25,
           null,
-          null,
+          "~0",
           null,
           0.01,
           0.34,
@@ -1669,6 +1669,7 @@
           41.26
         ]
       }
-    }
+    },
+    "ci_near_zero_note": "'~0' is the BPS published near-zero estimate/CI bound, NOT exact numeric zero and NOT missing."
   }
 }
