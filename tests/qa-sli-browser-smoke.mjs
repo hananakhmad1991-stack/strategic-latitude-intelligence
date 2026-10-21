@@ -155,7 +155,10 @@ await check("Marine IDX: thematic equities show named candidates without invente
  await button.waitFor({state:"visible",timeout:24000});
  assert.equal(await button.getAttribute("aria-pressed"),"true","Deep-link marine watchlist must be selected");
  const links=page.locator('#sliHomeIDXSectors .sli-idx-sectoral-ticker');
- assert.ok(await links.count()>=3,"Marine ticker candidates must be visible");
+ await links.first().waitFor({state:"visible",timeout:12000}).catch(()=>{});
+ const count=await links.count();
+ const state=await page.evaluate(()=>({sector:[...document.querySelectorAll("#sliHomeIDXSectors .sli-idx-sectoral-tab")].filter(x=>x.getAttribute("aria-pressed")==="true").map(x=>x.textContent),text:document.querySelector("#sliHomeIDXSectors")?.innerText.slice(0,1200),tickerLinks:document.querySelectorAll("#sliHomeIDXSectors a[href*='sli-issuer.html']").length}));
+ assert.ok(count>=3,"Marine ticker candidates must be visible: "+count+" "+JSON.stringify(state));
  const codes=(await links.allInnerTexts()).join(" ");
  assert.match(codes,/CPRO|DSFI|IKAN|PCAR/);
  const first=await links.first().getAttribute("href");assert.match(first,/sli-issuer\.html\?ticker=/);
