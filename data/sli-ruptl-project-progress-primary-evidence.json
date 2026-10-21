@@ -1,0 +1,86 @@
+{
+  "schema": "sli-ruptl-project-official-progress-evidence-v1",
+  "reviewed_at": "2026-10-21",
+  "policy": "Only project-specific dated published official operator/PLN/issuer observations. A COD evidence date documents a historical event; it is not a live 2026 online availability guarantee. Do not equate MWp photovoltaic DC rating to MW nameplate grid/AC rating without technical definition. For Jawa-9/10, project-complex COD is not assigned to a separately mapped generating unit unless explicit unit-to-project correspondence is sourced.",
+  "status": "reviewed_primary_publisher_public_evidence_with_facility_matching",
+  "observations": [
+    {
+      "project_sample_id": "ruplt-provincial-sample-010",
+      "source_project_label": "Jawa-9",
+      "facility_group": "PLTU Jawa 9 & 10",
+      "facility_matching": "explicit combined facility names with operator source; individual Jawa-9 unit COD date not independently mapped",
+      "source_event_type": "commercial_operations_confirmed_at_plant_complex",
+      "source_event_date": "2025-05-02",
+      "observed_status": "commercial_operation_at_combined_plant_complex_confirmed",
+      "individually_attributed_actual_cod": null,
+      "verified_facility_complex_cod": "2025-05-02",
+      "capacity_per_source": 1000,
+      "capacity_source_unit": "MW",
+      "capacity_scope": "separate source-listed 1,000 MW unit; plant complex totals 2,000 MW",
+      "source_publisher": "PT Indo Raya Tenaga",
+      "source_url": "https://www.irt.co.id/id_ID/2025/05/plant-commercial-operation-date-cod/",
+      "additional_primary_url": "https://plnindonesiapowerrenewables.co.id/portfolio/pt-indo-raya-tenaga-irt/",
+      "published_date": "2025-05-02",
+      "source_validity": "Project operator describes whole combined plant COD; do not infer unit-to-Jawa-9 COD chronology."
+    },
+    {
+      "project_sample_id": "ruplt-provincial-sample-011",
+      "source_project_label": "Jawa-10",
+      "facility_group": "PLTU Jawa 9 & 10",
+      "facility_matching": "explicit combined facility names with operator source; individual Jawa-10 unit COD date not independently mapped",
+      "source_event_type": "commercial_operations_confirmed_at_plant_complex",
+      "source_event_date": "2025-05-02",
+      "observed_status": "commercial_operation_at_combined_plant_complex_confirmed",
+      "individually_attributed_actual_cod": null,
+      "verified_facility_complex_cod": "2025-05-02",
+      "capacity_per_source": 1000,
+      "capacity_source_unit": "MW",
+      "capacity_scope": "separate source-listed 1,000 MW unit; plant complex totals 2,000 MW",
+      "source_publisher": "PT Indo Raya Tenaga",
+      "source_url": "https://www.irt.co.id/id_ID/2025/05/plant-commercial-operation-date-cod/",
+      "additional_primary_url": "https://plnindonesiapowerrenewables.co.id/portfolio/pt-indo-raya-tenaga-irt/",
+      "published_date": "2025-05-02",
+      "source_validity": "Project operator describes whole combined plant COD; do not infer unit-to-Jawa-10 COD chronology."
+    },
+    {
+      "project_sample_id": "ruplt-provincial-sample-023",
+      "source_project_label": "Bali Timur",
+      "facility_group": "PLTS Bali Timur / PT Medcosolar Bali Timur",
+      "facility_matching": "operator press release explicitly names East Bali and project company",
+      "source_event_type": "commercial_operation_date_confirmed",
+      "source_event_date": "2025-06-17",
+      "observed_status": "commercial_operation_confirmed_as_of_2025",
+      "individually_attributed_actual_cod": "2025-06-17",
+      "verified_facility_complex_cod": "2025-06-17",
+      "capacity_per_source": 25,
+      "capacity_source_unit": "MWp",
+      "capacity_scope": "PV peak DC rating; not automatically equal to RUPTL plan 25 MW",
+      "source_publisher": "PT Medco Energi Internasional Tbk / Medco Power Indonesia",
+      "source_url": "https://medcopower.co.id/id/project/medco-solar-bali-timur/",
+      "additional_primary_url": "https://www.medcoenergi.com/uploads/pressreleases/548/Press%20Release_East%20Bali%20Solar%20PV_VF.pdf",
+      "published_date": "2025-06-17",
+      "source_validity": "Published reported COD date; avoid deriving AC capacity from MWp."
+    }
+  ],
+  "related_not_plant_cod": [
+    {
+      "source_project_label": "Sumsel-1",
+      "source_event_type": "related_transmission_first_energization",
+      "source_event_date": "2025-05-15",
+      "source_publisher": "PT PLN (Persero)",
+      "source_url": "https://web.pln.co.id/media/siaran-pers/2025/05/perkuat-keandalan-listrik-sumsel-pln-sukses-operasikan-sutet-275-kv-pltu-sumsel-1-betung",
+      "interpretation": "Operational SUTET 275kV PLTU Sumsel 1–GITET Betung is grid infrastructure milestone during plant commissioning, not a plant unit COD confirmation",
+      "never_promote_to_power_plant_operational_status": true
+    }
+  ],
+  "approved_attribution_count": 3,
+  "group_distinct_confirmed_facility_count": 2,
+  "unverified_rows_remain": null,
+  "quality_controls": [
+    "RUPTL original planning stage and target COD preserved unchanged",
+    "Source-specific dated facility name required",
+    "Jawa unit-specific COD dates remain null; complex COD once, not twice as unique commissioned facility",
+    "MWp is not MW, no assumed equivalence",
+    "Transmission energization is not generating plant COD"
+  ]
+}
