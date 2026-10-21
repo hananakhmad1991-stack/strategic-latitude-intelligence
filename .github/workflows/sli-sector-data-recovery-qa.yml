@@ -23,9 +23,14 @@ on:
       - 'tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
       - 'data/sli-ruptl-esdm-2025-2034-period-plan.json'
       - 'data/sli-ruptl-primary-pdf-2025-2034.json'
+      - 'data/sli-ruptl-provincial-source-projects-2025.json'
+      - 'data/sli-ruptl-project-progress-primary-evidence.json'
+      - 'js/sli-ruptl-provincial-evidence.js'
+      - 'css/sli-ruptl-provincial-evidence.css'
+      - 'tests/qa-sli-ruptl-provincial-realization-evidence.mjs'
       - 'js/sli-ruptl-primary-pdf.js'
       - 'css/sli-ruptl-primary-pdf.css'
-      - 'tests/qa-sli-ruptl-primary-pdf-digitization.mjs'
+      - 'tests/qa-sli-ruptl-primary-pdf-digitization.mjs tests/qa-sli-ruptl-provincial-realization-evidence.mjs'
       - 'pln-ruptl-energy-investment.html'
       - 'data/sli-ruptl-full-official-annex-index.json'
       - 'js/sli-ruptl-annex-index.js'
@@ -77,6 +82,11 @@ on:
       - 'tests/qa-sli-bnpb-2025-gis-publication-gate.mjs'
       - 'data/sli-ruptl-esdm-2025-2034-period-plan.json'
       - 'data/sli-ruptl-primary-pdf-2025-2034.json'
+      - 'data/sli-ruptl-provincial-source-projects-2025.json'
+      - 'data/sli-ruptl-project-progress-primary-evidence.json'
+      - 'js/sli-ruptl-provincial-evidence.js'
+      - 'css/sli-ruptl-provincial-evidence.css'
+      - 'tests/qa-sli-ruptl-provincial-realization-evidence.mjs'
       - 'js/sli-ruptl-primary-pdf.js'
       - 'css/sli-ruptl-primary-pdf.css'
       - 'tests/qa-sli-ruptl-primary-pdf-digitization.mjs'
@@ -127,6 +137,7 @@ jobs:
           node --check js/sli-bnpb-gis-2025-gate.js
           node --check js/sli-ruptl-esdm-period-plan.js
           node --check js/sli-ruptl-primary-pdf.js
+          node --check js/sli-ruptl-provincial-evidence.js
           node --check js/sli-ruptl-annex-index.js
           node --check js/sli-digitized-ai-figures.js
           node --check js/sli-ai-figure-audit-status.js
