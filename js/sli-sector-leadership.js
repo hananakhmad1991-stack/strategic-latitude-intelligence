@@ -25,7 +25,7 @@ const agencyIcon=ag=>{
 
 function validateRegistry(d){
  const issues=[];
- if(d?.schema!=="sli-cross-sector-official-leadership-v2"||!d.as_of)issues.push("schema");
+ if(d?.schema!=="sli-cross-sector-official-leadership-v3"||!d.as_of)issues.push("schema");
  const agencies=d?.agencies||{},sectors=d?.sectors||{};
  for(const key of ["food","energy","minerals","ai","investment","macro","policy","geo","environment","entities","provincial"])if(!sectors[key]?.agencies?.length)issues.push("sector:"+key);
  for(const [id,ag]of Object.entries(agencies)){
