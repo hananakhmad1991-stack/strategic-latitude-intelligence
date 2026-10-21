@@ -60,6 +60,7 @@ def main():
                                  " "+row["table"]+" p"+str(page_no)+" found "+str(len(numbered)))
             checked.append({"record_id":row["id"],
                 "source_pdf_page":page_no,"source_table":row["table"],
+                "source_row_no":row["original_source_row_no"],
                 "grid_index":numbered[0]["grid_index"],
                 "row_index":numbered[0]["row_index"],"row_cells_original":numbered[0]["cells"],
                 "status":"checked_against_original_pdf_page_table_cells_not_unique_asset"})
