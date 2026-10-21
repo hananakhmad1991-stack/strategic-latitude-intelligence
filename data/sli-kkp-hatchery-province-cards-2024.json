@@ -1,0 +1,189 @@
+{
+  "schema": "sli-kkp-2024-hatchery-province-card-snapshot-v1",
+  "source_url": "https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan",
+  "publisher": "Kementerian Kelautan dan Perikanan",
+  "source_release_date": "2025-10-15",
+  "observation_year": 2024,
+  "unit": "ribu ekor",
+  "national_total_displayed": 188203415,
+  "visible_numeric_provincial_cards": 33,
+  "visible_cards_sum": 187483665,
+  "unallocated_displayed_gap": 719750,
+  "coverage_status": "33_publicly_visible_numeric_province_cards_only_not_complete_indonesia_38_or_full_1387_detail",
+  "geographic_vintage_status": "as_printed_KKP_2024_province_cards_and_unharmonized_new_papua_provinces",
+  "methodology": [
+    "Transcribed only numeric 2024 province summary cards visibly displayed by KKP portal, not district/commodity source rows.",
+    "The 33 visible cards do NOT reconcile the reported national total; difference 719750 ribu ekor is UNATTRIBUTED, not assigned to missing provinces.",
+    "Province values are not summed with commodity/category rankings: those are different dimensions of the same hatchery production.",
+    "Missing province summary cards are unknown, not zero. Papua province splits are not backcast; no current 38-province legal mapping.",
+    "Original portal data release 15 October 2025; observation period 2024. No 2025 estimate or 2026 supply asserted.",
+    "Full 1,387 district/commodity source export, redistribution rights and numerical totals not yet audited."
+  ],
+  "rows": [
+    {
+      "province": "Aceh",
+      "volume_ribu_ekor": 1507673,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Sumatera Utara",
+      "volume_ribu_ekor": 9054993,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Sumatera Barat",
+      "volume_ribu_ekor": 2225598,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Riau",
+      "volume_ribu_ekor": 613863,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Jambi",
+      "volume_ribu_ekor": 178554,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Sumatera Selatan",
+      "volume_ribu_ekor": 26804441,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Bengkulu",
+      "volume_ribu_ekor": 4184303,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Lampung",
+      "volume_ribu_ekor": 13368072,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Kepulauan Bangka Belitung",
+      "volume_ribu_ekor": 518141,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Kepulauan Riau",
+      "volume_ribu_ekor": 402072,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "DKI Jakarta",
+      "volume_ribu_ekor": 3457950,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Jawa Barat",
+      "volume_ribu_ekor": 39903870,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Jawa Tengah",
+      "volume_ribu_ekor": 10055151,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "DI Yogyakarta",
+      "volume_ribu_ekor": 1600578,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Jawa Timur",
+      "volume_ribu_ekor": 41649893,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Banten",
+      "volume_ribu_ekor": 8108214,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Bali",
+      "volume_ribu_ekor": 8857771,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Nusa Tenggara Barat",
+      "volume_ribu_ekor": 2636877,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Nusa Tenggara Timur",
+      "volume_ribu_ekor": 1101,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Kalimantan Barat",
+      "volume_ribu_ekor": 139311,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Kalimantan Tengah",
+      "volume_ribu_ekor": 459341,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Kalimantan Selatan",
+      "volume_ribu_ekor": 220095,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Kalimantan Timur",
+      "volume_ribu_ekor": 1898358,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Kalimantan Utara",
+      "volume_ribu_ekor": 1757323,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Sulawesi Utara",
+      "volume_ribu_ekor": 3224782,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Sulawesi Tengah",
+      "volume_ribu_ekor": 11927,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Sulawesi Selatan",
+      "volume_ribu_ekor": 3970191,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Sulawesi Tenggara",
+      "volume_ribu_ekor": 292052,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Gorontalo",
+      "volume_ribu_ekor": 329880,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Sulawesi Barat",
+      "volume_ribu_ekor": 19443,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Maluku",
+      "volume_ribu_ekor": 1088,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Papua",
+      "volume_ribu_ekor": 7466,
+      "source_cell_status": "observed_official_2024_summary_card"
+    },
+    {
+      "province": "Papua Barat",
+      "volume_ribu_ekor": 23293,
+      "source_cell_status": "observed_official_2024_summary_card"
+    }
+  ]
+}

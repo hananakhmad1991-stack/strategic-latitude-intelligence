@@ -1,0 +1,120 @@
+name: SLI KKP BIG live source + Owner Worker acceptance
+on:
+  pull_request:
+    paths:
+      - 'js/sli-kkp-wpp-live.mjs'
+      - 'js/sli-kkp-hatchery-provincial.mjs'
+      - 'data/sli-kkp-hatchery-province-cards-2024.json'
+      - 'tests/qa-sli-kkp-hatchery-provincial.mjs'
+      - 'scripts/probe_kkp_big_live.mjs'
+      - 'scripts/probe_kkp_public_download.mjs'
+      - 'scripts/probe_sli_owner_worker_live.mjs'
+      - 'tests/qa-sli-kkp-wpp-live.mjs'
+      - '.github/workflows/sli-kkp-live-source-acceptance.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'js/sli-kkp-wpp-live.mjs'
+      - 'js/sli-kkp-hatchery-provincial.mjs'
+      - 'data/sli-kkp-hatchery-province-cards-2024.json'
+      - 'tests/qa-sli-kkp-hatchery-provincial.mjs'
+      - 'scripts/probe_kkp_big_live.mjs'
+      - 'scripts/probe_kkp_public_download.mjs'
+      - 'scripts/probe_sli_owner_worker_live.mjs'
+      - 'tests/qa-sli-kkp-wpp-live.mjs'
+      - '.github/workflows/sli-kkp-live-source-acceptance.yml'
+  workflow_dispatch:
+    inputs:
+      authorize_paid_owner_test:
+        description: "Explicitly run ONE paid owner-token model request from trusted main, with environment-held SLI_OWNER_TEST_TOKEN"
+        type: boolean
+        required: true
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: sli-kkp-live-acquisition-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  public-source-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate source-qualified geometry parser, scripts and static UI
+        run: |
+          node --check js/sli-kkp-wpp-live.mjs
+          node --check js/sli-kkp-hatchery-provincial.mjs
+          node --check scripts/probe_kkp_big_live.mjs
+          node --check scripts/probe_kkp_public_download.mjs
+          node --check scripts/probe_sli_owner_worker_live.mjs
+          node --test tests/qa-sli-kkp-wpp-live.mjs tests/qa-sli-kkp-hatchery-provincial.mjs
+      - name: Probe official BIG feature polygons; never auto-publish vendor geometry
+        run: node scripts/probe_kkp_big_live.mjs
+      - name: Check real Owner Worker unauthenticated request is rejected
+        run: node scripts/probe_sli_owner_worker_live.mjs
+      - name: Find local browser executable
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          if [ -z "$CHROME" ]; then echo "Chrome unavailable; KKP data export remains untested." >&2; exit 0; fi
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+      - name: Install browser automation client without browser binaries
+        if: env.CHROME_BIN != ''
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Attempt original KKP Unduh Data for complete hatchery table
+        if: env.CHROME_BIN != ''
+        run: node scripts/probe_kkp_public_download.mjs
+      - name: Publish audit conclusion — failures do not become fabricated data
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json,os,pathlib
+          out=pathlib.Path(os.environ["GITHUB_STEP_SUMMARY"])
+          with out.open("a",encoding="utf8") as f:
+           f.write("### KKP official sources and owner staging — probes, NOT data approval\n")
+           for p in ("artifacts/sli-kkp-big-live-probe.json","artifacts/sli-kkp-hatchery-download-probe.json","artifacts/sli-owner-worker-live-acceptance.json"):
+            q=pathlib.Path(p)
+            if not q.exists(): f.write(f"- `{p}`: not checked\n");continue
+            d=json.loads(q.read_text())
+            f.write(f"- `{p}`: "+str(d.get("status") or d.get("download_status") or d.get("negative_auth_status"))+"\n")
+           f.write("- These runs do not confirm redistribution rights, exact 2026 WPP boundary vintage, all 1,387 source rows, or an authenticated Owner response.\n")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-kkp-big-hatchery-owner-external-evidence-gates
+          path: |
+            artifacts/sli-kkp-big-live-probe.json
+            artifacts/sli-kkp-hatchery-download-probe.json
+            artifacts/kkp-hatchery-export-review.json
+            artifacts/sli-owner-worker-live-acceptance.json
+          if-no-files-found: warn
+          retention-days: 14
+  authorized-owner-smoke:
+    if: github.event_name == 'workflow_dispatch' && inputs.authorize_paid_owner_test == true && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    environment: sli-owner-staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Paid owner-only authenticated acceptance — once, opt-in, never log token
+        env:
+          SLI_OWNER_TEST_TOKEN: ${{ secrets.SLI_OWNER_TEST_TOKEN }}
+          SLI_PAID_OWNER_TEST_OPT_IN: 'true'
+          SLI_REQUIRE_OWNER_NEGATIVE: 'true'
+          SLI_REQUIRE_OWNER_POSITIVE: 'true'
+        run: node scripts/probe_sli_owner_worker_live.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-owner-live-positive-audit-no-secrets
+          path: artifacts/sli-owner-worker-live-acceptance.json
+          if-no-files-found: warn
+          retention-days: 7

@@ -210,3 +210,22 @@ def adapted_rows(name,d):
       "Papua 2024 province splits are not backcast; historical administrative units as reported. Printed KKP row "+str(x.get("source_name"))+".","KKP",
       "Top-two province/year evidence subset; all 354 source numeric observations remain separately navigable in Marine dashboard. Missing ≠ zero.")
      if out:yield out
+
+ # KKP 2024 hatchery provincial cards: partial 33-region summary, 719750 ribu
+ # ekor left unallocated vs printed national total. NOT 1,387 district rows.
+ if name=="sli-kkp-hatchery-province-cards-2024.json":
+  if d.get("observation_year")==2024 and d.get("visible_numeric_provincial_cards")==33 and d.get("unallocated_displayed_gap")==719750:
+   u=d.get("source_url")
+   out=record(("national_total_displayed",),
+    "KKP 2024 hatchery national production · published summary",u,"2024",
+    d.get("national_total_displayed"),"ribu ekor",
+    "Original source national summary, 2024 published with release date "+str(d.get("source_release_date"))+".","KKP",
+    "Only 33 visible province cards sum to 187483665 ribu ekor, leaving 719750 unallocated; neither 38 complete provinces nor full 1387 district rows claimed.")
+   if out:yield out
+   for i,x in enumerate(sorted(d.get("rows") or [],key=lambda r:-r.get("volume_ribu_ekor",0))[:5]):
+    out=record(("rows","top5",str(i)),
+     "KKP 2024 hatchery province summary · "+str(x.get("province")),u,"2024",
+     x.get("volume_ribu_ekor"),"ribu ekor",
+     "One of top 5 visible summary cards among 33, NOT 1387 verified district/commodity source rows.","KKP",
+     "Cards do not sum to published national total: 719750 ribu ekor unattributed difference; missing provinces are unknown, not zero.")
+    if out:yield out

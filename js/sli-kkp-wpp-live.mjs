@@ -1,0 +1,112 @@
+/* WPP-NRI polygons streamed on opt-in from BIG Kebijakan Satu Peta official ArcGIS service.
+ * No approximated WPP shapes, no redistribution, no calculated stock/landing totals.
+ */
+export const BIG_LAYER="https://kspservices.big.go.id/satupeta/rest/services/PUBLIK/SUMBER_DAYA_ALAM_DAN_LINGKUNGAN/MapServer/21";
+export const WPP_CODES=["571","572","573","711","712","713","714","715","716","717","718"];
+export const WPP_AREAS={
+"571":"Selat Malaka dan Laut Andaman","572":"Samudera Hindia barat Sumatera dan Selat Sunda","573":"Samudera Hindia selatan Jawa–Nusa Tenggara, Laut Sawu, Laut Timor barat",
+"711":"Selat Karimata dan Laut Natuna","712":"Laut Jawa","713":"Selat Makassar, Teluk Bone, Laut Flores, Laut Bali",
+"714":"Teluk Tolo dan Laut Banda","715":"Teluk Tomini, Laut Maluku, Laut Halmahera, Laut Seram, Teluk Berau",
+"716":"Laut Sulawesi dan utara Halmahera","717":"Teluk Cenderawasih dan Samudera Pasifik","718":"Laut Aru, Arafura, dan Laut Timor timur"};
+const norm=x=>String(x??"").toUpperCase().replace(/[^0-9]/g,"");
+export function wppCode(props){
+ const a=norm(props?.kodwpp),b=norm(props?.namobj);
+ return WPP_CODES.find(x=>a===x||b===x)||null;
+}
+export function validateOfficialWPP(data){
+ const errors=[],unique=new Map();let vertices=0;
+ if(data?.type!=="FeatureCollection"||!Array.isArray(data.features)||data.features.length<11||data.features.length>250)errors.push("feature_count");
+ for(const feature of data?.features||[]){
+  const code=wppCode(feature.properties),geom=feature.geometry;
+  if(!code){errors.push("unrecognized_wpp");continue}
+  if(!["Polygon","MultiPolygon"].includes(geom?.type)){errors.push("geometry_type");continue}
+  unique.set(code,(unique.get(code)||0)+1);
+  const polygons=geom.type==="Polygon"?[geom.coordinates]:geom.coordinates;
+  if(!Array.isArray(polygons)||!polygons.length){errors.push("polygon_empty");continue}
+  for(const poly of polygons)for(const ring of poly){
+   if(!Array.isArray(ring)||ring.length<4||ring.length>120000){errors.push("ring_length");continue}
+   const first=ring[0],last=ring[ring.length-1];
+   if(first?.[0]!==last?.[0]||first?.[1]!==last?.[1])errors.push("ring_open");
+   for(const p of ring){
+    vertices++;
+    if(!Array.isArray(p)||p.length<2||!Number.isFinite(p[0])||!Number.isFinite(p[1])||p[0]<90||p[0]>146||p[1]<-16||p[1]>13){errors.push("coordinate_outside_indonesia");break}
+   }
+  }
+ }
+ if(unique.size!==11||WPP_CODES.some(code=>!unique.has(code)))errors.push("not_all_11_wpp");
+ if(vertices<44||vertices>2000000)errors.push("vertex_count");
+ return {pass:errors.length===0,errors:[...new Set(errors)],codes:[...unique.keys()].sort(),features:data?.features?.length||0,vertices};
+}
+export function renderOfficialWPPPaths(data,width=920,height=430){
+ const features=data.features,bounds={west:90,east:146,south:-16,north:13},pad=16;
+ const scale=Math.min((width-2*pad)/(bounds.east-bounds.west),(height-2*pad)/(bounds.north-bounds.south));
+ const X=lon=>pad+(lon-bounds.west)*scale,Y=lat=>pad+(bounds.north-lat)*scale;
+ const polys=[];
+ for(const feature of features){
+  const code=wppCode(feature.properties),g=feature.geometry,groups=g.type==="Polygon"?[g.coordinates]:g.coordinates;
+  const segments=[];
+  for(const poly of groups)for(const ring of poly){
+   const coords=ring.map(p=>X(p[0]).toFixed(2)+","+Y(p[1]).toFixed(2));
+   segments.push("M"+coords.join("L")+"Z");
+  }
+  polys.push({code,d:segments.join(" "),label:feature.properties?.namobj||"WPP-RI "+code});
+ }
+ return polys;
+}
+const txt=(a,b)=>document.documentElement.lang?.startsWith("en")?b:a;
+const el=id=>document.getElementById(id);
+const svgNS="http://www.w3.org/2000/svg";
+let loadPromise=null;
+export async function fetchOfficialWPP(fetcher=fetch){
+ const url=BIG_LAYER+"/query?"+new URLSearchParams({where:"1=1",outFields:"objectid,namobj,kodwpp,metadata",returnGeometry:"true",outSR:"4326",f:"geoJSON"}).toString();
+ const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),25000);
+ try{
+  const response=await fetcher(url,{signal:ctl.signal,mode:"cors",cache:"no-store"});
+  if(!response.ok)throw Error("HTTP_"+response.status);
+  const text=await response.text();
+  if(text.length>16*1024*1024)throw Error("payload_limit");
+  const geo=JSON.parse(text),audit=validateOfficialWPP(geo);
+  if(!audit.pass)throw Error("geometry_validation_"+audit.errors.join(","));
+  return {geo,audit,service_url:BIG_LAYER,query_url:url};
+ }finally{clearTimeout(timer)}
+}
+function create(name,attrs){
+ const n=document.createElementNS(svgNS,name);for(const [k,v] of Object.entries(attrs||{}))n.setAttribute(k,String(v));return n;
+}
+function renderMap(host,data,audit){
+ const W=920,H=430,svg=create("svg",{viewBox:"0 0 "+W+" "+H,role:"group","aria-label":"Poligon WPP yang diterima langsung dari layanan BIG"});
+ let selected=null;
+ const panel=el("mfWPPSelected");
+ const shapes=renderOfficialWPPPaths(data,W,H);
+ for(const shape of shapes){
+  const index=WPP_CODES.indexOf(shape.code);
+  const colors=["#70b8a8","#90a8c3","#dfaa77","#a8b79a","#cc8cac","#b49bd6","#b7c57f","#65a0c2","#a4bd9c","#e8b8a1","#bd9dc6"];
+  const p=create("path",{d:shape.d,fill:colors[index],stroke:"#1b3347","stroke-width":"0.6","fill-opacity":"0.58","fill-rule":"evenodd",tabindex:0,role:"button","aria-label":"WPP-RI "+shape.code,"aria-pressed":"false"});
+  p.classList.add("mf-wpp-shape");
+  const tip=create("title");tip.textContent="WPP-RI "+shape.code+" — "+WPP_AREAS[shape.code];p.append(tip);
+  const activate=()=>{
+   if(selected)selected.setAttribute("aria-pressed","false");
+   selected=p;p.setAttribute("aria-pressed","true");
+   panel.textContent="WPP-RI "+shape.code+" · "+WPP_AREAS[shape.code]+". "+txt("Geometri langsung dari BIG; versi aturan dan izin penggunaan perlu diverifikasi.","Live BIG geometry; regulation vintage and reuse rights require review.");
+  };
+  p.addEventListener("click",activate);
+  p.addEventListener("keydown",e=>{if(["Enter"," "].includes(e.key)){e.preventDefault();activate()}});
+  svg.append(p);
+ }
+ host.replaceChildren(svg);
+ el("mfWPPStatus").textContent=txt("Berhasil mengambil ","Retrieved ")+audit.features+txt(" fitur geometri BIG · 11 zona WPP, "," BIG geometry features · 11 WPP zones, ")+audit.vertices+txt(" simpul. Tidak disimpan di server SLI."," vertices. Not stored by SLI.");
+}
+async function mount(){
+ const button=el("mfWPPLoad");if(!button)return;
+ button.addEventListener("click",async()=>{
+  button.disabled=true;el("mfWPPStatus").textContent=txt("Mengakses layanan BIG resmi...","Contacting official BIG service...");
+  try{
+   if(!loadPromise)loadPromise=fetchOfficialWPP().catch(err=>{loadPromise=null;throw err});
+   const r=await loadPromise;
+   renderMap(el("mfWPPMap"),r.geo,r.audit);
+  }catch(err){
+   el("mfWPPStatus").textContent=txt("Peta resmi tidak dapat dimuat atau belum lolos validasi (","Official geometry unavailable or not validated (")+err.message+"). "+txt("Tidak mengganti dengan poligon rekaan.","No guessed polygon fallback.");
+  }finally{button.disabled=false}
+ });
+}
+if(typeof document!=="undefined"){if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount,{once:true});else mount()}
