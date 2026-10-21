@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T23:26:42.444012Z",
+  "updated_at_utc": "2026-10-21T23:56:19.830786Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -47,6 +47,38 @@
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPal9KR3FnV2t5MGxIX2pXMTVsb3V2VlduZnU0d2lmT05CWURMdWlScVloaFc0MnRlVjNSZVVoRXYwV3JPOTJqdnhlaXNvR1g0NFZHZmhHVU5Ya0dpUXFoZ1NfWW5NOEZ2Y1lZRzhzTVhIc0VUUGc3MXMtWVZOVkZ2bDBZOU5hRmowaDB5Z2FJSTEyM1ZrbTNHYWppdHJIQWJ6ajd6NkJlT3ZTTWhMdGFUWnpyZw?oc=5",
       "publisher": "Bloomberg Technoz",
       "published_at_utc": "2026-10-21T23:21:10Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_73ea0f9d06e0f2f8b134f4",
+      "title": "IHSG Berpeluang Naik Hari Ini, Analis Jagokan Saham PTBA, ACES hingga ICBP - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPRXQ4TWQzci1vWVBtMEE4SHJacExlQkllM1Eza1cyUENxS2FKa0g5LWY0ODJQY2NiUThQMnFqQmRETHZaX3RjTnBYVFZRZkU2SDg2Z0xWZkxvUWxIYWI0aFJtUW90NU1LMklxd3l5THNQNmpkWmRnVWZlNlA5d3NhSUNteDFEVzBBQmtJeEJaOXMzdmNTZFhFZkloQUU0Z2w0Sm1ZbkJJSlA2ZW1Pa0E3blRqaUhaOWw3UFRjNHVCbkZISmvSAcgBQVVfeXFMT3lxTzBBYUgtaU91N3VyX1k5SUJSdldXWWppb3lFUFFTV1pERWV6WGtvbm5JOE82dmFDMjVCc2txUkMzbjhXeGZxSUlvek9DVXVZbFBwcTFXWVFONGVyelpEaU9GY0RuUG1rUG44dE9HcS1GZnZ3UEFySk9xWHFzdG9Yb1UybnMxMDBoSVEwQVBiekdLbnJUendPZDNvS1N3RlFiaF8wNU9Rczgza2l5ZkF4NGlPamVvZ0VHX3RkTVRuMzIzZUtPa0o?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-21T23:12:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_46c4b6a017f89adc026213",
+      "title": "Ini Daftar Broker dan Pihak Terkait yang Terseret Kasus DSSA, BREN dan CUAN - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNN2k4NUZadlhuTDdxNTlUTGpXWFJpeW1ET1Y2UzlENU5Zd1NwUnl1d3JBRHRYZDI5dkVsRmVSMVYyNEJTSnBwa2pfVGx2Qy1uQnUtU2dsRklkMlRla2lxZnJxVzBBQVgxTHpvRWhjQU1hRGFiNFhmZERHQUJFQUpDeUM2bFlqVVJUS3NhUW9kM3BlTU9kTGNaZ0ZzN3hEbDJlY05xUlpieGVlNWEwTkJV0gGnAUFVX3lxTE8wMlFRVDhqeGpXYkJULTJSdnI4ekl5UGluZ1FTcUFCdk94MTh0LW1QZ2p0c05DSGV6S014VTZGVTNzVGZWeDRpVWVmNTYtT2VVamU5V2VBUlhYU3JFMU1PZ2piYW5OMlkyMGhteHBWdDQ5V1dSbUt5eUFCeHhwYThfTm5vRkZtV01RSnROdEp3S2x4RklsVlV0emdQYWxyRE1zTmdZcUxn?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T23:11:03Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "BREN"
@@ -2182,6 +2214,22 @@
         "AADI"
       ],
       "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_3767368ecd6e5c4914d47f",
+      "title": "Daftar 80 Saham HSC yang Didepak dari IHSG: Ada DSSA, BREN, hingga DCII - Data Indonesia.id",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNY2lfWFdNTE9uamhxclR5aGdBWEtKdUlFQ0tsOE5mM2FybmdJNTZzRDBTYjY2VXZoYWtPQUhTSkdfc3ViS0ZtcktuZ2s0LTdTU0ZTY2hyQ1BNUFhvNnJmVWVoWEhVakxJRDNWUXBWUmJ5czg3MXBjTktRR3E2RDdaUmlrSHBNZFJqeWdxbnowWjd3WmxMZGFxTXRsSEZyMU54aTBSR1BLeHo5dXktVG5iT1RR?oc=5",
+      "publisher": "Data Indonesia.id",
+      "published_at_utc": "2026-10-20T08:35:14Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "DCII"
+      ],
+      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
