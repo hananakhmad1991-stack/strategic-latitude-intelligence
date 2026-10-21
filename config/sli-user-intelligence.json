@@ -1,7 +1,7 @@
 {
   "schema_version": "sli-user-intelligence-client-v1",
-  "enabled": false,
-  "api_base": null,
-  "login_url": null,
-  "note": "Enable only after Cloudflare Access, D1 migration, authorized worker hostname, HTTPS cookie/CORS integration, and explicit owner QA."
+  "enabled": true,
+  "api_base": "https://sli-user-intelligence.hananakhmad1991.workers.dev/",
+  "login_url": "https://sli-user-intelligence.hananakhmad1991.workers.dev/api/me",
+  "note": "Restricted two-identity Chrome pilot behind Cloudflare Access. No automatic upload/download, no token storage, no email or push, explicit confirmations for changes. Disable enabled flag to roll back."
 }
