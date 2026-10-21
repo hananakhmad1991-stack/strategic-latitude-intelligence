@@ -1,0 +1,73 @@
+name: SLI Publish Completed Original RUPTL 1253-Page Audit
+on:
+  push:
+    branches: [feat/ruptl-semantic-1253-network-and-2026-20261021]
+    paths:
+      - '.github/workflows/sli-ruptl-completed-audit-import.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish-completed-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Retrieve complete original PDF proof artifact from audit run 39610559590
+        uses: actions/download-artifact@v4
+        with:
+          name: sli-ruptl-semantic-full-document-and-network-source-cell-review
+          repository: hananakhmad1991-stack/strategic-latitude-intelligence
+          run-id: 39610559590
+          github-token: ${{ github.token }}
+          path: /tmp/sli/complete-audit
+      - name: Stage checksum-bound outputs and preserve them outside git reset
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/sli/snapshot
+          for name in sli-ruptl-970-semantic-candidates-2025.json sli-ruptl-1253-page-table-inventory-review.json sli-ruptl-network-table-grids-review.json; do
+            FILE=$(find /tmp/sli/complete-audit -type f -name "$name" -print -quit)
+            [ -n "$FILE" ] || { echo "Missing expected $name"; exit 1; }
+            cp "$FILE" "/tmp/sli/snapshot/$name"
+          done
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/sli/snapshot')
+          s=json.loads((p/'sli-ruptl-970-semantic-candidates-2025.json').read_text())
+          t=json.loads((p/'sli-ruptl-1253-page-table-inventory-review.json').read_text())
+          n=json.loads((p/'sli-ruptl-network-table-grids-review.json').read_text())
+          assert s['counters']['recognized_technology']>=900
+          assert s['counters']['actual_2026_status_confirmed_from_2025_pdf']==0
+          assert t['page_count_audited']==1253
+          assert t['original_table_heading_candidates']>=1000
+          assert t['network_grid_extraction_partial'] is False
+          assert all(x['pdf_page']<18 or x['pdf_page']>26 for x in t['table_headings'])
+          assert n['remaining_pages_not_grid_parsed']==0
+          assert n['published_network_asset_count']==0
+          assert len(n['pages'])>=200
+          assert s['source_pdf_sha256']==t['source_sha256']==n['source_sha256']
+          print('COMPLETED_RUPTL_AUDIT_IMPORT_VERIFIED',s['counters'],t['original_table_heading_candidates'],len(n['pages']))
+          PY
+      - name: Publish audited derived data safely after concurrent branch changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          [ "$GITHUB_REF_NAME" = "feat/ruptl-semantic-1253-network-and-2026-20261021" ] || exit 1
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for attempt in 1 2 3 4; do
+            git fetch origin "$GITHUB_REF_NAME"
+            git reset --hard "origin/$GITHUB_REF_NAME"
+            cp /tmp/sli/snapshot/sli-ruptl-*.json data/
+            git add data/sli-ruptl-970-semantic-candidates-2025.json data/sli-ruptl-1253-page-table-inventory-review.json data/sli-ruptl-network-table-grids-review.json
+            if git diff --cached --quiet; then echo 'Source datasets already current'; exit 0; fi
+            git commit -m 'data: audited 1253-page table index, network pages, 970 semantic candidates'
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then exit 0; fi
+            echo "Concurrent push; retrying expected source-only commit"
+          done
+          exit 1
