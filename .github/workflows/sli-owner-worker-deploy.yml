@@ -1,5 +1,14 @@
 name: SLI owner Worker · controlled deployment
 on:
+  pull_request:
+    paths:
+      - 'research-api/**'
+      - 'scripts/sli-research-owner-readiness.mjs'
+      - 'tests/qa-sli-owner-readiness.mjs'
+      - 'data/sli-research-unified-index.json'
+      - 'data/sli-research-assistant-config.json'
+      - 'data/sli-automation-health.json'
+      - '.github/workflows/sli-owner-worker-deploy.yml'
   workflow_dispatch:
     inputs:
       action:
@@ -33,6 +42,53 @@ jobs:
           node --check research-api/src/legal-citation-audit.mjs
           node --check research-api/src/policy-corpus.mjs
           node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs
+
+      - name: Audit Research AI security, source traces and report quality (offline)
+        run: |
+          node --check scripts/sli-research-owner-readiness.mjs
+          node --test \
+            tests/qa-sli-owner-readiness.mjs \
+            tests/qa-sli-owner-test.mjs \
+            tests/qa-sli-claim-audit.mjs \
+            tests/qa-sli-claim-evidence-ledger.mjs \
+            tests/qa-sli-primary-claim-probe.mjs \
+            tests/qa-sli-source-verification.mjs \
+            tests/qa-sli-hybrid-retrieval.mjs \
+            tests/qa-sli-multi-api.mjs \
+            tests/qa-sli-report-audit.mjs \
+            tests/qa-sli-legal-source-limited.mjs
+          node scripts/sli-research-owner-readiness.mjs --out=artifacts/sli-owner-research-readiness.json
+      - name: Summarize owner-readiness limits and automation warnings
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const p='artifacts/sli-owner-research-readiness.json';
+          if (!fs.existsSync(p)) {
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+              '### Owner Research staging\nNo readiness report produced: review failing tests.\n');
+          } else {
+            const r=JSON.parse(fs.readFileSync(p,'utf8'));
+            const lines=[
+              '### Owner Research staging (metadata and offline tests only)',
+              '- Static owner-only gate: '+(r.owner_staging_code_gate_pass?'PASS':'BLOCKED'),
+              '- Indexed evidence records: '+r.source_index_record_count,
+              '- Index datasets: '+r.source_index_datasets_indexed,
+              '- Data automation: '+r.automation_reported_health,
+              '- Blockers: '+(r.blockers.join(', ')||'none'),
+              '- Warnings: '+(r.warnings.join(', ')||'none'),
+              '- **Live authenticated smoke: NOT CHECKED; scientific accuracy: NOT VERIFIED; paid launch: NOT APPROVED.**'
+            ];
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join('\n')+'\n');
+          }
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-owner-research-offline-readiness
+          path: artifacts/sli-owner-research-readiness.json
+          if-no-files-found: ignore
+          retention-days: 7
 
   deploy-owner-staging:
     needs: policy-gate
