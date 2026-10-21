@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-21T12:45:24.368367+00:00",
+  "checked_at_utc": "2026-10-21T15:40:13.074629+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -14,7 +14,7 @@
       "title": "Hormuz could be 'redundant' in five years, replaced by new routes, HSBC CEO says - Reuters",
       "publisher": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdkVTcjIwVzllN1R2X0UtNUdya0l1Y1pNWnc4eTItVF9lSVphdC1tMVRHZXdxbEV5dFZ2RjBDZm51Y1NVbU54Q0pHaGpuVTVha1F4ajg2NEY1Y3U1dnZxYTBJVjlTazNObkJnZF94dHRKTkRrazlEMzBSeklRMmlESWNwUk1jTC00YjJhRXFQYXUzMzVjTnVxTVI5V1VfRkNOOENGaHdkWEFZOG9MY0ZLVUU1M2Zib00xc3BHQkFHWUh4ZWNMZUNpcEtR?oc=5",
-      "indexed_at_utc": "2026-10-20T07:47:56+00:00",
+      "indexed_at_utc": "2026-10-20T06:14:00+00:00",
       "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -33,23 +33,6 @@
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5saW1RbXc3clRkOFRtSGY3bVB0ZTFVX3lOUktna09IYXppc052UVFHU0ltVU9OcFJsM2pVeDdwRFdVUU1QaTNReGJveUJEc0JlY1JIdl9hM2hXR05Xei1lX0Y2UUNSNEh4Q0ktdFZQUlFlZw?oc=5",
       "indexed_at_utc": "2026-10-20T22:13:34+00:00",
       "impact_pathway": "Routing changes -> transit time and shipping insurance -> delivered commodity cost",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Asian LNG and gas",
-      "topic_id": "lng_asia",
-      "type": "Gas supply",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "gas_lng",
-      "title": "EXCLUSIVE: Qatari electricity lifeline for Lebanon includes two power plants, LNG supply deal - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOWTItdGRQank5NVFPZGVycjUxaVZrTFJjRkxJb2VoWHJtdEE5NnUybkZDOTFGQWZ5WS1ZT2dvaFZTNTVwaTdEWWhrcWJSRUozMFlRU3JHWWYtdV9hNEVJMEpIcFhVUGMxcXY1bjdjLWs0bWpqaUVOYWktRmtKTEhqT2xwdXh5cC16aHZOejVyM3FIY3FJOEFvVzFINW90dlp2aWtSZURsb203YkdBVGxkTmpsZmhaemczeWpLVlloeDNEamxtMzZhTQ?oc=5",
-      "indexed_at_utc": "2026-10-19T13:49:00+00:00",
-      "impact_pathway": "Gas supply changes -> Asian LNG pricing -> power and industrial costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -96,28 +79,11 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil prices climb as traders assess Middle East developments - CNBC",
+      "title": "Oil prices little changed as traders assess Middle East developments - CNBC",
       "publisher": "CNBC",
       "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPMGJ5Y1pPUDFBa2J6dUEwc0RnYmVRWnNFQmhTNjhsa1ItUVBFZG14cGVzTU1kZ205RDN4Mmcyd1pzQjRJNGl6N2F1Nng2WlBGSWVZd2JBSXVYWmFNTnpZRWxBZTVqUmdaVFNRRUEwczJtcC1PcnhDSkN3RXU2eWllNlZGcFQyQzVzaXA3V09PTXYwVVAx0gGaAUFVX3lxTE95am5EZGd5cEZod2RCX0FMZTdIOE1paDJvTUQ2OERsckxsYVZON19rZ0JWbTZYWDhVZXlqU0dNRm0ydlp6dUVxQkcwU1VtbWFRWE9kRk5PLUNubG9MSWF5anBIQThhQ0FKS0UzaHVRdXRRN0V2Nkl2SFVHV05JaThJZFlMT2tsY1ZxdUxDUUJZRFBpN1hHSjJ2TkE?oc=5",
       "indexed_at_utc": "2026-10-21T05:27:19+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Indonesian coal in global trade",
-      "topic_id": "coal_indonesia_trade",
-      "type": "Indonesia coal trade",
-      "sector": "coal",
-      "sector_tags": [
-        "coal"
-      ],
-      "subsector": "general",
-      "title": "Indonesia to allow ‘limited’ coal quota relaxation as prices surge - The Jakarta Post",
-      "publisher": "The Jakarta Post",
-      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQV2szek5rSWVuSG94RXhZZDFFUjF0cXM5cG5fQUdkb21LNVM5ekVBSGpnbF9nUzNIaW9DSzBsQ0hEdVJXWUY4R0pjN00yOV9hQUVUMWloX0kwY0p0OUxmWXZtenlpejdIM0NTSXFCZFBzVjRxTmRhMUJhY0FPc1IzYzdqVWk1LVZMRmtoS3BTTDY3dEdRcWdFdlZOUmRvSGY4anRma296VWRGdl90dk1pb19Xc3dvSFdKYXRGZnZlLXBqOXkzR2ZtR1NiV1FsWUthQ3lnOUtTcURESTJKdTU5WEo2cFB1RzZsQWFwaUhrTQ?oc=5",
-      "indexed_at_utc": "2026-10-20T06:06:05+00:00",
-      "impact_pathway": "Foreign buyer, sanctions and energy-security policy -> Indonesia coal exports and coal state-revenue exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -140,8 +106,8 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 6,
-    "coal": 1,
+    "oil_gas": 5,
+    "coal": 0,
     "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
@@ -149,11 +115,7 @@
   "sector_taxonomy_version": "2026-10-15",
   "errors": [
     {
-      "topic": "Red Sea and Bab el-Mandeb",
-      "error": "Expecting value: line 1 column 1 (char 0)"
-    },
-    {
-      "topic": "Middle East energy infrastructure",
+      "topic": "Hormuz and Gulf energy",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
