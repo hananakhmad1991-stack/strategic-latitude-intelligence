@@ -73,6 +73,11 @@ jobs:
       - name: Apply private D1 migration (manual deploy only)
         if: ${{ inputs.mode == 'deploy' }}
         run: npx --yes wrangler@4 d1 migrations apply sli-user-intelligence --remote --config .wrangler.activation.toml
+      - name: Stage the validated public Catalyst source in D1 (manual deploy only)
+        if: ${{ inputs.mode == 'deploy' }}
+        run: |
+          node scripts/build-d1-catalyst-import.mjs ../../data/sli-catalyst-history.json .catalyst-source-import.sql
+          npx --yes wrangler@4 d1 execute sli-user-intelligence --remote --config .wrangler.activation.toml --file .catalyst-source-import.sql --yes
       - name: Deploy exact Access-protected Worker hostname (manual deploy only)
         if: ${{ inputs.mode == 'deploy' }}
         run: npx --yes wrangler@4 deploy --config .wrangler.activation.toml
