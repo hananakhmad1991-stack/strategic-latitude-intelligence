@@ -51,6 +51,7 @@ test("duplicate, missing, or altered test prompts fail closed",()=>{
  const a=receipts();a.results.pop();
  assert.throws(()=>scoreLiveResearchBatch(plan,a,{fixtureMode:true}),/Exact 30/);
  const b=receipts();b.results[0].case_id=b.results[1].case_id;
+ b.results[0].prompt_sha256=b.results[1].prompt_sha256;
  assert.throws(()=>scoreLiveResearchBatch(plan,b,{fixtureMode:true}),/duplicate/);
  const c=receipts();c.results[0].prompt_sha256="a".repeat(64);
  assert.throws(()=>scoreLiveResearchBatch(plan,c,{fixtureMode:true}),/Prompt digest/);
