@@ -33,11 +33,11 @@ test("RUPTL sample has 34 official geographic subsections and 35 nonduplicate ne
  assert.equal(lombok.capacity_as_printed,"2x50");assert.equal(lombok.capacity_mw,null);
  assert.ok(d.geographic_appendix_coverage.subsections.find(x=>x.annex_id==="C.9").geographic_heading.includes("gabungan"));
 });
-test("Primary-source developments only promote 2 distinguishable facility COD events, not 3 standalone projects",()=>{
+test("Primary-source developments separate 3 facility evidence findings and only two directly dated COD cases",()=>{
  assert.equal(e.schema,"sli-ruptl-project-official-progress-evidence-v1");
- assert.equal(e.approved_attribution_count,3);
- assert.equal(e.group_distinct_confirmed_facility_count,2);
- assert.equal(e.observations.length,3);
+ assert.equal(e.approved_attribution_count,4);
+ assert.equal(e.group_distinct_confirmed_facility_count,3);
+ assert.equal(e.observations.length,4);
  const byName=Object.fromEntries(e.observations.map(x=>[x.source_project_label,x]));
  for(const name of ["Jawa-9","Jawa-10"]){
   const x=byName[name];
@@ -54,6 +54,16 @@ test("Primary-source developments only promote 2 distinguishable facility COD ev
  assert.equal(bali.capacity_source_unit,"MWp");
  assert.ok(bali.source_url.startsWith("https://medcopower.co.id/"));
  assert.equal(d.source_rows.find(x=>x.id===bali.project_sample_id).capacity_as_printed,"25");
+ const merangin=byName["Merangin"];
+ assert.equal(merangin.reporting_period,"2025-H1");
+ assert.equal(merangin.source_event_date,null);
+ assert.equal(merangin.capacity_per_source,492);
+ assert.equal(merangin.capacity_source_unit,"MW");
+ assert.equal(merangin.planned_capacity_mw,350);
+ assert.equal(merangin.individually_attributed_actual_cod,null);
+ assert.equal(merangin.capacity_comparability_to_ruptl,"blocked_pending_capacity_definition_and_asset_mapping_review");
+ assert.ok(merangin.source_url.includes("esdm.go.id"));
+ assert.equal(d.source_rows.find(x=>x.id===merangin.project_sample_id).capacity_as_printed,"350");
  const grid=e.related_not_plant_cod[0];
  assert.equal(grid.never_promote_to_power_plant_operational_status,true);
  assert.match(grid.source_event_type,/transmission/);

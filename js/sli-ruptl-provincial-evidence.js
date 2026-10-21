@@ -18,7 +18,7 @@ function normalizeExisting(x,i){
  interpretation:"Older 13 source rows, annex-section heading only; exact site geography/current progress unverified."};
 }
 function render(root,data,legacy,evidence){
- if(evidence.schema!=="sli-ruptl-project-official-progress-evidence-v1"||evidence.approved_attribution_count!==3)throw Error("Independent current milestone evidence mismatch");
+ if(evidence.schema!=="sli-ruptl-project-official-progress-evidence-v1"||evidence.approved_attribution_count!==4)throw Error("Independent current milestone evidence mismatch");
  const evidenceMap=new Map(evidence.observations.map(x=>[x.project_sample_id,x]));
  if(data.schema!=="sli-ruptl-provincial-source-projects-2025-v1"||data.source_rows.length!==35||data.geographic_appendix_coverage.subsections.length!==34)throw Error("Source review dataset schema mismatch");
  const old=legacy.individual_project_source_records.records.map(normalizeExisting);
@@ -28,7 +28,7 @@ function render(root,data,legacy,evidence){
  const pre=el("p","Katalog audit sumber dari PDF RUPTL yang disahkan pada 2025. "+all.length+" baris sampel dari tabel asli; tidak mewakili seluruh proyek nasional. Wilayah lampiran bukan koordinat proyek.");
  const summary=el("div");summary.className="sli-ruptl-province-summary";
  [["Sublampiran geografis",34],["Baris proyek sampel",all.length],["Wilayah lampiran dengan sampel",new Set(all.map(x=>x.annex_id)).size],["Baris dengan bukti resmi",evidenceMap.size+" / "+all.length+" sampel"]].forEach(([a,b])=>{const c=el("div");c.append(el("small",a),el("strong",b));summary.append(c)});
- const methodology=el("p","PERBEDAAN PENTING: Target COD dan status dokumen tahun 2025 bukan bukti COD aktual, penyerahan operasi, atau konstruksi pada Oktober 2026. Kolom data realisasi kosong berarti BELUM DIVERIFIKASI, bukan proyek gagal atau realisasi nol. Bukti Jawa-9/10 adalah COD kompleks gabungan (tanggal unit masing-masing tidak ditentukan). Bukti Bali Timur memakai MWp yang tidak langsung setara dengan MW RUPTL.");
+ const methodology=el("p","PERBEDAAN PENTING: Target COD dan status dokumen tahun 2025 bukan bukti COD aktual, penyerahan operasi, atau konstruksi pada Oktober 2026. Kolom data realisasi kosong berarti BELUM DIVERIFIKASI, bukan proyek gagal atau realisasi nol. Bukti Jawa-9/10 adalah COD kompleks gabungan (tanggal unit masing-masing tidak ditentukan). Bukti Bali Timur memakai MWp yang tidak langsung setara dengan MW RUPTL. PLTA Merangin 350 MW (rencana) versus 492 MW (laporan ESDM) memiliki perbedaan definisi kapasitas yang BELUM direkonsiliasi.");
  methodology.className="sli-ruptl-prov-warning";
  const controls=el("div");controls.className="sli-ruptl-prov-filters";
  const regions=el("select"),tech=el("select"),status=el("select"),actualFilter=el("select"),q=el("input");
@@ -63,19 +63,19 @@ function render(root,data,legacy,evidence){
   for(const x of rows){
    const tr=el("tr");[x.appendix_geography,x.source_project_label,x.technology,x.capacity_as_printed,x.planned_cod_ared,x.status_as_printed_2025].forEach(k=>tr.append(el("td",k)));
    const e=evidenceMap.get(x.id)||null;
-   const actual=el("td",e?"COD dikonfirmasi dalam sumber operator ("+e.source_event_date+")":"Belum ada bukti spesifik yang cocok");actual.className=e?"sli-ruptl-prov-evidence":"sli-ruptl-prov-unknown";
-   if(e){actual.append(" · ",link(e.source_url,"Sumber primer ↗"));if(e.facility_group==="PLTU Jawa 9 & 10")actual.append(" · COD tingkat kompleks, bukan COD individual");if(e.capacity_source_unit==="MWp")actual.append(" · 25 MWp tidak langsung dibandingkan dengan 25 MW");}
+   const actual=el("td",e?(e.source_event_type==="recorded_new_renewable_generation_capacity_first_half_2025"?"ESDM mencatat penambahan PLTA pada semester I 2025 (kapasitas 492 MW menurut laporan; RUPTL 350 MW, belum sebanding)":"COD dikonfirmasi dalam sumber operator ("+e.source_event_date+")"):"Belum ada bukti spesifik yang cocok");actual.className=e?"sli-ruptl-prov-evidence":"sli-ruptl-prov-unknown";
+   if(e){actual.append(" · ",link(e.source_url,"Sumber primer ↗"));if(e.facility_group==="PLTU Jawa 9 & 10")actual.append(" · COD tingkat kompleks, bukan COD individual");if(e.capacity_source_unit==="MWp")actual.append(" · 25 MWp tidak langsung dibandingkan dengan 25 MW");if(e.capacity_comparability_to_ruptl==="blocked_pending_capacity_definition_and_asset_mapping_review")actual.append(" · Perbandingan kapasitas tidak boleh dihitung sampai definisi cocok");}
    const cod=el("td",e?.individually_attributed_actual_cod||"—");const source=el("td");source.append(x.table+" · ",link(data.source.official_url+"#page="+x.pdf_page,"PDF "+x.pdf_page+" ↗"));
    tr.append(actual,cod,source);tb.append(tr);
   }
   if(window.SLIVisualExport?.register){
    window.SLIVisualExport.register(tabs,{
-    getData:()=>({headers:["Appendix grouping","Source project label","Technology","Printed capacity","Parsed simple MW (null for uncertain/composite)","Planned COD ARED","2025 source stage","Observed evidence milestone","Observed event date","Individually attributed actual COD (null if unknown)","Primary evidence URL","Source capacity unit","Annex/table","Original PDF page"],
-    rows:rows.map(x=>[x.appendix_geography,x.source_project_label,x.technology,x.capacity_as_printed,x.capacity_mw,x.planned_cod_ared,x.status_as_printed_2025,evidenceMap.get(x.id)?.observed_status??null,evidenceMap.get(x.id)?.source_event_date??null,evidenceMap.get(x.id)?.individually_attributed_actual_cod??null,evidenceMap.get(x.id)?.source_url??null,evidenceMap.get(x.id)?.capacity_source_unit??null,x.table,x.pdf_page]),
+    getData:()=>({headers:["Appendix grouping","Source project label","Technology","Printed capacity","Parsed simple MW (null for uncertain/composite)","Planned COD ARED","2025 source stage","Observed evidence milestone","Observed event date / reporting period","Individually attributed actual COD (null if unknown)","Primary evidence URL","Source capacity unit","Annex/table","Original PDF page"],
+    rows:rows.map(x=>[x.appendix_geography,x.source_project_label,x.technology,x.capacity_as_printed,x.capacity_mw,x.planned_cod_ared,x.status_as_printed_2025,evidenceMap.get(x.id)?.observed_status??null,(evidenceMap.get(x.id)?.source_event_date??evidenceMap.get(x.id)?.reporting_period??null),evidenceMap.get(x.id)?.individually_attributed_actual_cod??null,evidenceMap.get(x.id)?.source_url??null,evidenceMap.get(x.id)?.capacity_source_unit??null,x.table,x.pdf_page]),
     kind:"verified-provider"}),
     getMeta:()=>({title:"RUPTL 2025–2034 provincial source-row sample: plan versus verified official milestone",
      source:data.source.doc,sourceUrl:data.source.official_url,period:"2025–2034 planning horizon; as published May 2025",
-     completeness:"ONLY "+rows.length+" filtered source-row samples. "+rows.filter(x=>evidenceMap.has(x.id)).length+" have separately sourced dated milestones. Jawa-9 and Jawa-10 belong to ONE complex and do not have individually mapped unit COD dates. Bali Timur: source MWp differs from plan MW. Other statuses are null, not zero. Not a national registry."})
+     completeness:"ONLY "+rows.length+" filtered source-row samples. "+rows.filter(x=>evidenceMap.has(x.id)).length+" have separately sourced dated milestones. Jawa-9 and Jawa-10 belong to ONE complex and do not have individually mapped unit COD dates. Bali Timur: source MWp differs from plan MW. Merangin 492 MW vs plan 350 MW cannot be compared arithmetically without methodology checks. Other statuses are null, not zero. Not a national registry."})
    });
   }
  }

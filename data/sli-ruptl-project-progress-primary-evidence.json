@@ -60,6 +60,29 @@
       "additional_primary_url": "https://www.medcoenergi.com/uploads/pressreleases/548/Press%20Release_East%20Bali%20Solar%20PV_VF.pdf",
       "published_date": "2025-06-17",
       "source_validity": "Published reported COD date; avoid deriving AC capacity from MWp."
+    },
+    {
+      "project_sample_id": "ruplt-provincial-sample-004",
+      "source_project_label": "Merangin",
+      "facility_group": "PLTA Merangin / PT Kerinci Merangin Hidro",
+      "facility_matching": "ESDM 2025 semester-I national power-generation additions names PLTA Merangin in Jambi, corresponding to source project label in RUPTL Appendix A7.11 PDF page 685.",
+      "source_event_type": "recorded_new_renewable_generation_capacity_first_half_2025",
+      "source_event_date": null,
+      "reporting_period": "2025-H1",
+      "observed_status": "official_esdm_reports_renewable_generation_added_by_2025_H1",
+      "individually_attributed_actual_cod": null,
+      "verified_facility_complex_cod": null,
+      "capacity_per_source": 492,
+      "capacity_source_unit": "MW",
+      "capacity_scope": "Official ESDM first-semester 2025 sector summary groups PLTA Merangin 4 × 123 MW = 492 MW; RUPTL entry is PLTA Merangin 350 MW. Capacity basis not reconciled; never compute +142 MW or completion percentage as a confirmed comparable variance.",
+      "planned_capacity_raw": "350",
+      "planned_capacity_mw": 350,
+      "capacity_comparability_to_ruptl": "blocked_pending_capacity_definition_and_asset_mapping_review",
+      "source_publisher": "Kementerian Energi dan Sumber Daya Mineral (ESDM), Direktorat Jenderal EBTKE",
+      "source_url": "https://www.esdm.go.id/assets/media/content/content-capaian-kinerja-semester-i-sektor-esdm-tahun-2025.pdf",
+      "additional_primary_url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-ebtke-tahun-2025.pdf",
+      "published_date": "2025-08-11",
+      "source_validity": "Official national sector performance source lists EBT capacity entering installed portfolio. Exact unit-level COD dates, source capacity accounting convention, and match of 350 MW RUPTL definition to 492 MW 4-unit report not established; cannot infer 2026 current running status."
     }
   ],
   "related_not_plant_cod": [
@@ -73,14 +96,15 @@
       "never_promote_to_power_plant_operational_status": true
     }
   ],
-  "approved_attribution_count": 3,
-  "group_distinct_confirmed_facility_count": 2,
+  "approved_attribution_count": 4,
+  "group_distinct_confirmed_facility_count": 3,
   "unverified_rows_remain": null,
   "quality_controls": [
     "RUPTL original planning stage and target COD preserved unchanged",
     "Source-specific dated facility name required",
     "Jawa unit-specific COD dates remain null; complex COD once, not twice as unique commissioned facility",
     "MWp is not MW, no assumed equivalence",
-    "Transmission energization is not generating plant COD"
+    "Transmission energization is not generating plant COD",
+    "Merangin source 492 MW (four 123 MW items) versus planned RUPTL 350 MW is an unreconciled capacity-definition/asset-mapping discrepancy; do not compute realized-minus-planned 142 MW as confirmed excess."
   ]
 }
