@@ -2,8 +2,9 @@ name: SLI Pusdatin New Edition — Official Source Watch
 on:
   workflow_dispatch:
   schedule:
-    # 08:13 WIB daily, schedule may be delayed by GitHub.
-    - cron: '13 1 * * *'
+    # Source currently returns HTTP 403 to GitHub-hosted runners; weekly health-check only.
+    # Daily verified-edition notifications use an independent condition watch.
+    - cron: '13 1 * * 1'
   push:
     branches: [main]
     paths:
