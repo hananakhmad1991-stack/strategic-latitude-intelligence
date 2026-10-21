@@ -1,7 +1,7 @@
 {
   "schema": "sli-food-governance-v2",
   "as_of": "2026-10-21",
-  "method_id": "Source-dated functional presentation; parent field only indicates internal unit membership or regional guidance and never implies all cross-institution coordination is administrative subordination. Added office-level 2026 source-dated leadership, including replacement of former Deputy Agriculture Minister.",
+  "method_id": "Source-dated functional presentation; parent field only indicates internal unit membership or regional guidance and never implies all cross-institution coordination is administrative subordination. Added office-level 2026 source-dated leadership, including replacement of former Deputy Agriculture Minister. Supplemental internal Kementan technical offices are structurally sourced, but unnamed incumbents remain null.",
   "nodes": [
     {
       "id": "pres",
@@ -640,6 +640,116 @@
       "person": "Faisol Riza",
       "confirmed": "2026-06-20",
       "leaderSource": "https://ihya.kemenperin.go.id/berita/akselerasi-ekosistem-halal-global-kemenperin-resmi-buka-pendaftaran-ihya-2026"
+    },
+    {
+      "id": "kementan-ditjen-lahan",
+      "group": "unit",
+      "parent": "kementan",
+      "name": "Ditjen Lahan dan Irigasi Pertanian",
+      "en": "DG Agricultural Land and Irrigation",
+      "kind": "Kementerian teknis",
+      "kindEn": "Kementerian teknis",
+      "role": "Unit dalam struktur Kementerian Pertanian yang melaksanakan mandat ditjen lahan dan irigasi pertanian; tidak menguasai kewenangan kementerian lain.",
+      "roleEn": "Internal Ministry of Agriculture office responsible for dg agricultural land and irrigation; distinct from other ministries' powers.",
+      "limit": "Struktur internal Kementan, bukan jalur komando atas Bapanas, BULOG, atau pemerintah daerah.",
+      "limitEn": "Internal Agriculture Ministry unit; not a command relationship over Bapanas, BULOG or regional government.",
+      "sources": [
+        {
+          "url": "https://jdih.pertanian.go.id/jdih-ops/download/kepmentan-no-98-tahun-2026.pdf",
+          "label": "Dokumen/sumber resmi"
+        }
+      ],
+      "person": null,
+      "confirmed": null,
+      "leaderSource": null
+    },
+    {
+      "id": "kementan-ditjen-bun",
+      "group": "unit",
+      "parent": "kementan",
+      "name": "Ditjen Perkebunan",
+      "en": "DG Estate Crops",
+      "kind": "Kementerian teknis",
+      "kindEn": "Kementerian teknis",
+      "role": "Unit dalam struktur Kementerian Pertanian yang melaksanakan mandat ditjen perkebunan; tidak menguasai kewenangan kementerian lain.",
+      "roleEn": "Internal Ministry of Agriculture office responsible for dg estate crops; distinct from other ministries' powers.",
+      "limit": "Struktur internal Kementan, bukan jalur komando atas Bapanas, BULOG, atau pemerintah daerah.",
+      "limitEn": "Internal Agriculture Ministry unit; not a command relationship over Bapanas, BULOG or regional government.",
+      "sources": [
+        {
+          "url": "https://jdih.pertanian.go.id/jdih-ops/download/kepmentan-no-98-tahun-2026.pdf",
+          "label": "Dokumen/sumber resmi"
+        }
+      ],
+      "person": null,
+      "confirmed": null,
+      "leaderSource": null
+    },
+    {
+      "id": "kementan-ditjen-pkh",
+      "group": "unit",
+      "parent": "kementan",
+      "name": "Ditjen Peternakan dan Kesehatan Hewan",
+      "en": "DG Livestock and Animal Health",
+      "kind": "Kementerian teknis",
+      "kindEn": "Kementerian teknis",
+      "role": "Unit dalam struktur Kementerian Pertanian yang melaksanakan mandat ditjen peternakan dan kesehatan hewan; tidak menguasai kewenangan kementerian lain.",
+      "roleEn": "Internal Ministry of Agriculture office responsible for dg livestock and animal health; distinct from other ministries' powers.",
+      "limit": "Struktur internal Kementan, bukan jalur komando atas Bapanas, BULOG, atau pemerintah daerah.",
+      "limitEn": "Internal Agriculture Ministry unit; not a command relationship over Bapanas, BULOG or regional government.",
+      "sources": [
+        {
+          "url": "https://jdih.pertanian.go.id/jdih-ops/download/kepmentan-no-98-tahun-2026.pdf",
+          "label": "Dokumen/sumber resmi"
+        }
+      ],
+      "person": null,
+      "confirmed": null,
+      "leaderSource": null
+    },
+    {
+      "id": "kementan-brmp",
+      "group": "unit",
+      "parent": "kementan",
+      "name": "Badan Perakitan dan Modernisasi Pertanian",
+      "en": "Agency for Agricultural Assembly and Modernization",
+      "kind": "Kementerian teknis",
+      "kindEn": "Kementerian teknis",
+      "role": "Unit dalam struktur Kementerian Pertanian yang melaksanakan mandat badan perakitan dan modernisasi pertanian; tidak menguasai kewenangan kementerian lain.",
+      "roleEn": "Internal Ministry of Agriculture office responsible for agency for agricultural assembly and modernization; distinct from other ministries' powers.",
+      "limit": "Struktur internal Kementan, bukan jalur komando atas Bapanas, BULOG, atau pemerintah daerah.",
+      "limitEn": "Internal Agriculture Ministry unit; not a command relationship over Bapanas, BULOG or regional government.",
+      "sources": [
+        {
+          "url": "https://jdih.pertanian.go.id/jdih-ops/download/kepmentan-no-98-tahun-2026.pdf",
+          "label": "Dokumen/sumber resmi"
+        }
+      ],
+      "person": null,
+      "confirmed": null,
+      "leaderSource": null
+    },
+    {
+      "id": "kementan-bppsdmp",
+      "group": "unit",
+      "parent": "kementan",
+      "name": "Badan Penyuluhan dan Pengembangan SDM Pertanian",
+      "en": "Agricultural Extension and Human Resources Development Agency",
+      "kind": "Kementerian teknis",
+      "kindEn": "Kementerian teknis",
+      "role": "Unit dalam struktur Kementerian Pertanian yang melaksanakan mandat badan penyuluhan dan pengembangan sdm pertanian; tidak menguasai kewenangan kementerian lain.",
+      "roleEn": "Internal Ministry of Agriculture office responsible for agricultural extension and human resources development agency; distinct from other ministries' powers.",
+      "limit": "Struktur internal Kementan, bukan jalur komando atas Bapanas, BULOG, atau pemerintah daerah.",
+      "limitEn": "Internal Agriculture Ministry unit; not a command relationship over Bapanas, BULOG or regional government.",
+      "sources": [
+        {
+          "url": "https://jdih.pertanian.go.id/jdih-ops/download/kepmentan-no-98-tahun-2026.pdf",
+          "label": "Dokumen/sumber resmi"
+        }
+      ],
+      "person": null,
+      "confirmed": null,
+      "leaderSource": null
     }
   ]
 }
