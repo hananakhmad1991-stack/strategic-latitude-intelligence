@@ -13,6 +13,9 @@ on:
       - 'css/commodity-trade-flow.css'
       - 'data/commodity-trade-flows.json'
       - 'data/bps-hs-partner-matrix.json'
+      - 'data/bps-primary-trade-pilot-2025.json'
+      - 'tests/qa-bps-pilot-catalog.cjs'
+      - 'inputs/BPS_HS_PARTNER_TEMPLATE.csv'
       - 'scripts/import_bps_hs_partner.py'
       - 'tests/test_import_bps_hs_partner.py'
       - 'tests/qa-sli-bps-primary-trade.cjs'
@@ -37,6 +40,7 @@ jobs:
           node tests/check-commodity-trade.cjs
           node tests/qa-sli-sector-trade-sankeys.cjs
           node tests/qa-sli-bps-primary-trade.cjs
+          node tests/qa-bps-pilot-catalog.cjs
           python3 tests/test_import_bps_hs_partner.py
       - name: Validate homepage Trade Flows link and bundle
         run: |
