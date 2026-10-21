@@ -80,8 +80,8 @@ test("Research AI has evidence-only source integration without training claims",
 test("original five Chapter IX crosswalks keep their verified precision baseline",()=>{
  const matrix=data.sampling_error_2026;
  assert.equal(matrix.schema,"sli-bps-welfare-march-2026-six-indicator-rse-v2");
- assert.equal(matrix.matched_provincial_estimates,180);
- assert.equal(matrix.matched_unavailable,15);
+ assert.equal(matrix.matched_provincial_estimates,216);
+ assert.equal(matrix.matched_unavailable,18);
  assert.equal(matrix.nonmatched,0);
  const expected={
   uninsured:["9.28",316],
