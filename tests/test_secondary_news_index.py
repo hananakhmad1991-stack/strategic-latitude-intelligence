@@ -23,6 +23,10 @@ assert normalize_row(news("Reuters","Reuters reports Hormuz incident","http://ev
 assert normalize_row(news("Reuters","Reuters reports Hormuz incident","https://127.0.0.1/private"),"investment-news",NOW) is None
 radar={"groups":{"ai":{"geopolitical":[{**cgtn,"sector":"ai","scope":"geopolitical"}]}}}
 assert list(flatten("research-signal-radar",radar))[0]["sector"]=="ai"
+kkp_headline=news("Reuters","Indonesia KKP seaweed seafood policy in Natuna")
+kkp_headline["sector"]="marine"
+kkp_headline["scope"]="domestic"
+assert normalize_row(kkp_headline,"research-signal-radar",NOW)["sector"]=="marine", "Marine headlines must stay in marine sector, not regional catchall"
 with tempfile.TemporaryDirectory() as td:
     root=Path(td)
     (root/"data").mkdir()
