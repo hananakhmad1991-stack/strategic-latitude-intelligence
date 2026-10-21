@@ -1,0 +1,107 @@
+name: SLI Food PDF Audit, Impact Engine & Research Browser QA
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'data/pusdatin-september-layout-audit-2026.json'
+      - 'data/sli-food-impact-source-leads-september-2026.json'
+      - 'js/sli-food-impact-engine.mjs'
+      - 'js/sli-food-impact-panel.mjs'
+      - 'css/sli-food-impact-panel.css'
+      - 'food-agriculture-intelligence.html'
+      - 'sli-research-ai.html'
+      - 'sli-research-evidence-preview.html'
+      - 'tests/qa-sli-food-september-layout-and-impact.mjs'
+      - 'tests/qa-sli-food-impact-browser.mjs'
+      - '.github/workflows/sli-food-september-impact-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/pusdatin-september-layout-audit-2026.json'
+      - 'data/sli-food-impact-source-leads-september-2026.json'
+      - 'js/sli-food-impact-engine.mjs'
+      - 'js/sli-food-impact-panel.mjs'
+      - 'css/sli-food-impact-panel.css'
+      - 'food-agriculture-intelligence.html'
+      - 'sli-research-ai.html'
+      - 'sli-research-evidence-preview.html'
+      - 'tests/qa-sli-food-september-layout-and-impact.mjs'
+      - 'tests/qa-sli-food-impact-browser.mjs'
+      - '.github/workflows/sli-food-september-impact-audit.yml'
+permissions:
+  contents: read
+concurrency:
+  group: sli-food-impact-qa-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+jobs:
+  source-ledger-and-research-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate the independent 63-table PDF audit and no-causality analytics
+        run: |
+          node --check js/sli-food-impact-engine.mjs
+          node --check js/sli-food-impact-panel.mjs
+          node --test tests/qa-sli-food-september-layout-and-impact.mjs tests/qa-pusdatin-independent-pdf.mjs
+      - name: Verify DERGUBA public Research AI unified index includes exactly 22 dated food leads
+        run: |
+          python scripts/build_research_unified_index.py
+          python - <<'PY'
+          import json
+          idx=json.load(open('data/sli-research-unified-index.json'))
+          records=[r for r in idx['records'] if r.get('dataset')=='sli-food-impact-source-leads-september-2026.json']
+          assert len(records)==22, f'Only {len(records)} of 22 approved Pusdatin records reached DERGUBA'
+          assert all('satudata.pertanian.go.id' in r['source_url'] for r in records)
+          assert all(r.get('period')=='2026-08' for r in records)
+          assert all('2026-08' in r.get('text','') for r in records)
+          print('PASS: 22 period-marked official Pusdatin source records join Research AI unified index')
+          PY
+  chromium-desktop-and-mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Reuse runner Google Chrome
+        shell: bash
+        run: |
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          test -n "$CHROME"
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+      - name: Install headless browser automation client
+        run: npm install --no-save --ignore-scripts --no-fund --no-audit --no-package-lock playwright-core@1.56.1
+      - name: Serve SLI public pages on loopback
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sli-food-impact-server.log 2>&1 &
+          echo $! >/tmp/sli-food-impact-server.pid
+          for i in {1..25}; do
+            if curl -fsS http://127.0.0.1:8765/food-agriculture-intelligence.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/sli-food-impact-server.log
+          exit 1
+      - name: Test Food dashboard, Research AI entry, Evidence Preview and mobile interaction
+        run: node tests/qa-sli-food-impact-browser.mjs
+      - name: Save screenshots and structured browser report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-food-impact-chromium-evidence
+          path: artifacts/sli-food-impact-chromium/
+          retention-days: 21
+          if-no-files-found: warn
+      - name: Stop static server
+        if: always()
+        shell: bash
+        run: |
+          test ! -f /tmp/sli-food-impact-server.pid || kill "$(cat /tmp/sli-food-impact-server.pid)" || true
