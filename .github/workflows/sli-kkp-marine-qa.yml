@@ -9,6 +9,10 @@ on:
       - 'food-agriculture-intelligence.html'
       - 'sli-sector-data-library.html'
       - 'data/sli-marine-fisheries-kkp.json'
+      - 'data/sli-kkp-portal-screened-2024.json'
+      - 'data/sli-kkp-screened-source-register.json'
+      - 'js/sli-marine-source-atlas.mjs'
+      - 'tests/qa-sli-kkp-source-atlas.mjs'
       - 'docs/sli-kkp-dcat-baseline.json'
       - 'scripts/watch_kkp_dcat.py'
       - 'tests/qa-sli-marine-fisheries.mjs'
@@ -24,6 +28,10 @@ on:
       - 'food-agriculture-intelligence.html'
       - 'sli-sector-data-library.html'
       - 'data/sli-marine-fisheries-kkp.json'
+      - 'data/sli-kkp-portal-screened-2024.json'
+      - 'data/sli-kkp-screened-source-register.json'
+      - 'js/sli-marine-source-atlas.mjs'
+      - 'tests/qa-sli-kkp-source-atlas.mjs'
       - 'docs/sli-kkp-dcat-baseline.json'
       - 'scripts/watch_kkp_dcat.py'
       - 'tests/qa-sli-marine-fisheries.mjs'
@@ -50,7 +58,8 @@ jobs:
       - name: Verify data invariants, UI routes, methodology and Python metadata watch
         run: |
           node --check js/sli-marine-fisheries.mjs
-          node --test tests/qa-sli-marine-fisheries.mjs tests/qa-sli-information-architecture.mjs
+          node --check js/sli-marine-source-atlas.mjs
+          node --test tests/qa-sli-marine-fisheries.mjs tests/qa-sli-kkp-source-atlas.mjs tests/qa-sli-information-architecture.mjs
           python -m unittest discover -s tests -p 'test_sli_kkp_catalog.py' -v
           python -m py_compile scripts/watch_kkp_dcat.py
       - name: Document source verification boundary

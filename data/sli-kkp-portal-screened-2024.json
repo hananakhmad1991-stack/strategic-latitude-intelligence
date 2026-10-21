@@ -1,0 +1,362 @@
+{
+  "schema": "sli-kkp-sector-source-atlas-v1",
+  "snapshot_review_date": "2026-10-21",
+  "publisher": "Kementerian Kelautan dan Perikanan · Portal Satu Data",
+  "portal": "https://portaldata.kkp.go.id/portals/data-statistik/layer1",
+  "methodology": {
+    "verification": "Transcribed from visible KKP official tables/insight page. Marine fisher 2024 37 reporting provinces sum exactly to the published TOTAL row. Seaweed 2024 26 nonblank provincial rows sum to within 0.03 t of national TOTAL due to source row rounding. Species 2024 top 12 are a PARTIAL selection; the 1,387-row kabupaten/komoditas detail is not ingested.",
+    "zero_policy": "Missing, blank and unlisted regions remain absent—not numeric zero. A blank may reflect non-reporting, no production or administrative harmonization; do not infer.",
+    "time_policy": "Observation year 2024 is not a live 2026 reading. Source publishing dates vary and should not be confused with measurement dates; 2025 ** estimates never mixed with 2024 actuals.",
+    "licensing": "Public inspection of KKP tables does not independently establish unlimited commercial redistribution rights; track official usage terms before extensive bulk copies.",
+    "map_policy": "Source 2024 provinces are not a legally normalized 38-province GeoJSON. Historical 2019–2024 provincial boundaries and 2024 province splits need explicit harmonization before historical choropleths.",
+    "seed_unit_caution": "Seed production uses KKP's displayed 'Ribu Ekor' unit. DO NOT automatically convert to raw fish or compare to fishery tonnage; full detail and source denominator remain unverified."
+  },
+  "province_indicators": [
+    {
+      "id": "marine_fishers_2024",
+      "label_id": "Nelayan tangkap laut 2024",
+      "label_en": "Marine capture fishers, 2024",
+      "year": 2024,
+      "unit": "orang",
+      "national_total": 2819994,
+      "province_count": 37,
+      "rows": [
+        {
+          "province": "Aceh",
+          "value": 103990
+        },
+        {
+          "province": "Bali",
+          "value": 77786
+        },
+        {
+          "province": "Banten",
+          "value": 42971
+        },
+        {
+          "province": "Bengkulu",
+          "value": 16955
+        },
+        {
+          "province": "DI Yogyakarta",
+          "value": 5271
+        },
+        {
+          "province": "DKI Jakarta",
+          "value": 91632
+        },
+        {
+          "province": "Gorontalo",
+          "value": 33273
+        },
+        {
+          "province": "Jambi",
+          "value": 10269
+        },
+        {
+          "province": "Jawa Barat",
+          "value": 91299
+        },
+        {
+          "province": "Jawa Tengah",
+          "value": 189029
+        },
+        {
+          "province": "Jawa Timur",
+          "value": 217000
+        },
+        {
+          "province": "Kalimantan Barat",
+          "value": 62392
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "value": 39495
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "value": 52762
+        },
+        {
+          "province": "Kalimantan Timur",
+          "value": 64079
+        },
+        {
+          "province": "Kalimantan Utara",
+          "value": 27971
+        },
+        {
+          "province": "Kepulauan Bangka Belitung",
+          "value": 73836
+        },
+        {
+          "province": "Kepulauan Riau",
+          "value": 129225
+        },
+        {
+          "province": "Lampung",
+          "value": 31745
+        },
+        {
+          "province": "Maluku",
+          "value": 152725
+        },
+        {
+          "province": "Maluku Utara",
+          "value": 46150
+        },
+        {
+          "province": "Nusa Tenggara Barat",
+          "value": 89183
+        },
+        {
+          "province": "Nusa Tenggara Timur",
+          "value": 101181
+        },
+        {
+          "province": "Papua",
+          "value": 7681
+        },
+        {
+          "province": "Papua Barat",
+          "value": 11827
+        },
+        {
+          "province": "Papua Barat Daya",
+          "value": 12075
+        },
+        {
+          "province": "Papua Selatan",
+          "value": 10627
+        },
+        {
+          "province": "Papua Tengah",
+          "value": 1525
+        },
+        {
+          "province": "Riau",
+          "value": 41682
+        },
+        {
+          "province": "Sulawesi Barat",
+          "value": 31061
+        },
+        {
+          "province": "Sulawesi Selatan",
+          "value": 187282
+        },
+        {
+          "province": "Sulawesi Tengah",
+          "value": 260449
+        },
+        {
+          "province": "Sulawesi Tenggara",
+          "value": 148212
+        },
+        {
+          "province": "Sulawesi Utara",
+          "value": 113783
+        },
+        {
+          "province": "Sumatera Barat",
+          "value": 52614
+        },
+        {
+          "province": "Sumatera Selatan",
+          "value": 7118
+        },
+        {
+          "province": "Sumatera Utara",
+          "value": 183839
+        }
+      ],
+      "source_url": "https://portaldata.kkp.go.id/Portals/Data-Statistik/Nelayan/Tbl-Statis/d/65",
+      "source_total_match": "exact",
+      "source_release": "not_disclosed",
+      "status": "observed_static_province_table",
+      "missing_policy": "no record for Papua Pegunungan; this is not an imputed zero"
+    },
+    {
+      "id": "seaweed_growout_2024",
+      "label_id": "Produksi rumput laut 2024",
+      "label_en": "Seaweed grow-out, 2024",
+      "year": 2024,
+      "unit": "ton",
+      "national_total": 9853604.06,
+      "province_count": 26,
+      "rows": [
+        {
+          "province": "Bali",
+          "value": 12489.49
+        },
+        {
+          "province": "Banten",
+          "value": 53827.91
+        },
+        {
+          "province": "DKI Jakarta",
+          "value": 24.92
+        },
+        {
+          "province": "Gorontalo",
+          "value": 19919.24
+        },
+        {
+          "province": "Jawa Barat",
+          "value": 116936.32
+        },
+        {
+          "province": "Jawa Tengah",
+          "value": 92894.57
+        },
+        {
+          "province": "Jawa Timur",
+          "value": 755460.81
+        },
+        {
+          "province": "Kalimantan Barat",
+          "value": 104.6
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "value": 152.93
+        },
+        {
+          "province": "Kalimantan Timur",
+          "value": 89971.87
+        },
+        {
+          "province": "Kalimantan Utara",
+          "value": 857797.64
+        },
+        {
+          "province": "Kepulauan Riau",
+          "value": 15861.41
+        },
+        {
+          "province": "Lampung",
+          "value": 6065.96
+        },
+        {
+          "province": "Maluku",
+          "value": 257915.56
+        },
+        {
+          "province": "Maluku Utara",
+          "value": 140672.66
+        },
+        {
+          "province": "Nusa Tenggara Barat",
+          "value": 691574.24
+        },
+        {
+          "province": "Nusa Tenggara Timur",
+          "value": 1467663.91
+        },
+        {
+          "province": "Papua",
+          "value": 30.08
+        },
+        {
+          "province": "Papua Barat",
+          "value": 253
+        },
+        {
+          "province": "Sulawesi Barat",
+          "value": 40400.09
+        },
+        {
+          "province": "Sulawesi Selatan",
+          "value": 4018691.97
+        },
+        {
+          "province": "Sulawesi Tengah",
+          "value": 752242.42
+        },
+        {
+          "province": "Sulawesi Tenggara",
+          "value": 307265.53
+        },
+        {
+          "province": "Sulawesi Utara",
+          "value": 155358.54
+        },
+        {
+          "province": "Sumatera Barat",
+          "value": 26.77
+        },
+        {
+          "province": "Sumatera Utara",
+          "value": 1.59
+        }
+      ],
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/prod-ikan/tbl-statis/d/1",
+      "source_total_match": "within_0.03_tonne_rounding",
+      "source_release": "2025-10-15",
+      "status": "observed_static_province_table",
+      "missing_policy": "Only provinces with numeric 2024 source cells are included, blanks remain null."
+    }
+  ],
+  "seed_species": {
+    "year": 2024,
+    "label_id": "Produksi pembenihan menurut kelompok ikan",
+    "label_en": "Seed production by fish category",
+    "unit": "ribu_ekor",
+    "status": "observed_source_insight_partial_ranking",
+    "national_total_displayed": 188203415,
+    "detail_rows_displayed": 1387,
+    "source_url": "https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan",
+    "source_release": "2025-10-15",
+    "completeness": "12 top shown group rankings; does not reproduce the 1,387 detailed district/commodity source rows",
+    "rows": [
+      {
+        "species": "Lele",
+        "value": 51420906
+      },
+      {
+        "species": "Udang Vaname",
+        "value": 44260293
+      },
+      {
+        "species": "Nila",
+        "value": 41473675
+      },
+      {
+        "species": "Mas",
+        "value": 19131971
+      },
+      {
+        "species": "Bandeng",
+        "value": 8502070
+      },
+      {
+        "species": "Udang Windu",
+        "value": 6248229
+      },
+      {
+        "species": "Ikan Lainnya",
+        "value": 5784460
+      },
+      {
+        "species": "Patin",
+        "value": 5509957
+      },
+      {
+        "species": "Gurami",
+        "value": 2569737
+      },
+      {
+        "species": "Kerapu",
+        "value": 1524589
+      },
+      {
+        "species": "Kakap",
+        "value": 1344133
+      },
+      {
+        "species": "Bawal Bintang",
+        "value": 421091
+      }
+    ]
+  }
+}

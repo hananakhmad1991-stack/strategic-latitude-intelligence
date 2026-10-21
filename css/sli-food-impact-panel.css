@@ -1,0 +1,18 @@
+.sli-food-impact{margin:22px auto;padding:24px;border:1px solid #416177;border-radius:16px;background:#102538;color:#edf5fa;max-width:1240px;box-sizing:border-box}
+.sli-food-impact h2{color:#f6d9a8;font-size:clamp(1.15rem,2.3vw,1.5rem);margin:0 0 8px}
+.sli-food-impact p{line-height:1.65;color:#c7d7e2}
+.sli-fi-controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:16px 0}
+.sli-fi-controls label{font-size:13px;font-weight:700;color:#d5e6ef}
+.sli-fi-controls select{background:#081b2b;color:#f3f7fc;border:1px solid #6388a3;min-width:195px;max-width:100%;border-radius:8px;padding:9px 11px;flex:1 1 190px}
+.sli-fi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin:18px 0}
+.sli-fi-metric{padding:14px;border:1px solid #31516a;border-radius:12px;background:#081e30;display:flex;flex-direction:column;gap:6px;min-width:0}
+.sli-fi-metric small{color:#b5c9d5;font-size:12px}.sli-fi-metric strong{font-size:clamp(17px,2.3vw,25px);overflow-wrap:anywhere}.sli-fi-metric span{font-size:12px;color:#e5cc9c}
+.sli-fi-insights{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:12px}
+.sli-fi-insight{border-top:2px solid #8faac0;padding:12px;background:#0d2537;border-radius:8px}
+.sli-fi-insight h3{margin:0 0 4px;font-size:15px;color:#f6d9a8}
+.sli-fi-insight p{margin:0;font-size:13px}
+.sli-fi-note{font-size:12px!important;color:#bdd2df!important}
+.sli-fi-sources{margin-top:18px;display:flex;gap:10px 16px;align-items:baseline;flex-wrap:wrap}
+.sli-fi-sources a,.sli-fi-routes a{color:#f3cf92;font-size:13px}
+.sli-fi-routes{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:17px;border-top:1px solid #3f5c6e;padding-top:13px}
+@media(max-width:680px){.sli-food-impact{padding:16px;margin:18px 8px}.sli-fi-controls{align-items:stretch}.sli-fi-controls label{width:100%}.sli-fi-controls select{width:100%;flex:1 1 100%}}

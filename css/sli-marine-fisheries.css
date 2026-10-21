@@ -95,3 +95,31 @@
 
 /* Keep network connections behind cards but above canvas surface. */
 .mf-gov-link-lines{z-index:0}.mf-gov-network-grid{position:relative;z-index:1}
+
+/* KKP 2024 evidence atlas: responsive, source-qualified province and source explorer. */
+#marine-source-atlas{scroll-margin-top:105px}
+.mf-atlas-filters{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:16px 0}
+.mf-atlas-filters label{color:#d5e8f4;font-weight:650;font-size:12px}
+.mf-atlas-filters select,.mf-atlas-filters input{border:1px solid #62889e;border-radius:9px;background:#142e43;color:#f0f7fa;min-height:42px;padding:8px 11px;font:inherit;font-size:12px;max-width:100%;flex:1;min-width:146px}
+.mf-atlas-chart,.mf-atlas-seeds{display:grid;gap:9px;margin:20px 0;max-height:720px;overflow:auto}
+.mf-atlas-bar-row,.mf-atlas-seed-item{display:grid;grid-template-columns:minmax(88px,1.15fr) minmax(70px,1.6fr) minmax(65px,.75fr);gap:9px;align-items:center}
+.mf-atlas-bar-label,.mf-atlas-seed-item span:first-child{font-size:12px;color:#dbe8ef;min-width:0;overflow-wrap:anywhere}
+.mf-atlas-bar-track{height:13px;background:#1c3b52;border-radius:8px;overflow:hidden;min-width:0}
+.mf-atlas-bar-fill{height:100%;display:block;border-radius:8px;background:linear-gradient(90deg,#6db8ce,#e2bf78)}
+.mf-atlas-seeds .mf-atlas-bar-fill{background:linear-gradient(90deg,#7298d1,#91d0c7)}
+.mf-atlas-bar-value,.mf-atlas-seed-item strong{font-size:12px;text-align:right;white-space:nowrap;color:#f5e5bb;font-variant-numeric:tabular-nums}
+.mf-atlas-actions{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0}
+.mf-atlas-actions button{cursor:pointer;background:#25465e;border:1px solid #6789a3;color:#f1f7fb;padding:10px 13px;border-radius:8px;font:inherit;font-size:12px}
+.mf-atlas-actions button:hover,.mf-atlas-actions button:focus-visible{background:#35637d;outline:2px solid #e0c48b;outline-offset:1px}
+.mf-atlas-source-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-top:18px}
+.mf-atlas-source-card{border:1px solid #42667d;border-top:3px solid #79b9c7;border-radius:12px;padding:15px 13px;background:#132f44;display:flex;flex-direction:column;gap:11px;min-width:0;overflow-wrap:anywhere}
+.mf-atlas-source-card h4{font-size:14px;color:#f0daaa;line-height:1.5;margin:0}
+.mf-atlas-source-card p{font-size:12px;line-height:1.7;color:#c5dce6;margin:0}
+.mf-atlas-source-card small{font-size:11px;color:#acc8d9}
+.mf-atlas-status{font-size:10px;color:#f1c99d;border:1px solid #8a7659;padding:5px 8px;border-radius:7px;width:max-content;max-width:100%}
+.mf-atlas-status.has-data{color:#9cddcc;border-color:#65ada5}
+.mf-atlas-source{color:#9cdeef;font-size:12px;text-decoration:underline;text-underline-offset:4px;overflow-wrap:anywhere}
+.mf-atlas-catalog{margin-top:18px}
+#marine-source-atlas td.numeric{text-align:right;font-variant-numeric:tabular-nums}
+@media(max-width:1030px){.mf-atlas-source-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.mf-atlas-source-grid{grid-template-columns:1fr}.mf-atlas-bar-row,.mf-atlas-seed-item{grid-template-columns:minmax(80px,1fr) minmax(50px,.9fr) minmax(70px,.8fr)}.mf-atlas-filters label{width:100%}.mf-atlas-filters select,.mf-atlas-filters input{flex:0 0 100%}}
