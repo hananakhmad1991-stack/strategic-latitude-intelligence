@@ -1,6 +1,6 @@
 {
-  "schema": "sli-marine-governance-v1",
-  "revision": "2026-10-21",
+  "schema": "sli-marine-governance-v2",
+  "revision": "2026-10-21 institutional officers and navigable units",
   "source_baseline": "Perpres 193/2024 as amended by Perpres 112/2025; Permen KP 2/2025",
   "legal_sources": [
     {
@@ -12,8 +12,8 @@
       "url": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
     }
   ],
-  "disclosure_id": "Hierarki menampilkan struktur organisasi formal KKP; jejaring adalah pengelompokan fungsi lintas lembaga, bukan bukti hubungan komando, delegasi wewenang atau MoU tertentu. Jabatan perorangan tidak ditampilkan.",
-  "disclosure_en": "Hierarchy shows the formal KKP structure; network is analytical clustering of cross-agency functions, not proof of command, delegated authority or specific MoUs. Individual officeholders are intentionally omitted.",
+  "disclosure_id": "Model kelembagaan 21 Oktober 2026 memisahkan struktur internal KKP dari jaringan peran lintas lembaga. Profil pimpinan berdasar halaman pejabat lembaga atau siaran pers KKP resmi, bukan asumsi masa jabatan. Tanggal peninjauan sumber bukan tanggal pelantikan. Logo KKP berasal dari portal resmi dan tidak boleh dipakai sebagai logo lembaga lain.",
+  "disclosure_en": "The 21 October 2026 institutional model separates KKP's internal structure from cross-agency functional relationships. Officers are sourced to official agency rosters or official KKP releases, not inferred tenures. A source review date is not an appointment date. KKP's emblem originates from an official portal and must not be reused for other institutions.",
   "hierarchy": [
     {
       "id": "president",
@@ -22,7 +22,13 @@
       "label_en": "President of Indonesia",
       "role_id": "Kewenangan eksekutif nasional; bukan unit kerja di dalam KKP.",
       "role_en": "National executive oversight; not a KKP internal unit.",
-      "source": "https://peraturan.go.id/files/perpres-no-112-tahun-2025.pdf"
+      "source": "https://peraturan.go.id/files/perpres-no-112-tahun-2025.pdf",
+      "officeholder": {
+        "name": "Prabowo Subianto",
+        "source": "https://www.setneg.go.id/",
+        "checked_on": "2026-10-21",
+        "status": "official_executive"
+      }
     },
     {
       "id": "kkp",
@@ -31,97 +37,790 @@
       "label_en": "Ministry of Marine Affairs and Fisheries (KKP)",
       "role_id": "Kementerian yang menyelenggarakan urusan pemerintah di bidang kelautan dan perikanan.",
       "role_en": "National ministry responsible for marine affairs and fisheries.",
-      "source": "https://peraturan.go.id/files/perpres-no-112-tahun-2025.pdf"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "level": "ministry"
+    },
+    {
+      "id": "minister",
+      "parent": "kkp",
+      "label_id": "Menteri Kelautan dan Perikanan",
+      "label_en": "Minister of Marine Affairs and Fisheries",
+      "role_id": "Pimpinan kementerian, arah kebijakan dan pengambilan keputusan sektoral.",
+      "role_en": "Leads the ministry, strategic decisions and sector policy.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-menteri.html",
+      "level": "leadership",
+      "officeholder": {
+        "name": "Sakti Wahyu Trenggono",
+        "source": "https://kkp.go.id/tentang-kkp/profil-menteri.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-10-21",
+        "status": "official_profile"
+      }
+    },
+    {
+      "id": "wamen",
+      "parent": "minister",
+      "label_id": "Wakil Menteri Kelautan dan Perikanan",
+      "label_en": "Deputy Minister of Marine Affairs and Fisheries",
+      "role_id": "Membantu Menteri mengoordinasikan pelaksanaan kebijakan sektoral.",
+      "role_en": "Assists the Minister with sector delivery and coordination.",
+      "source": "https://www.kkp.go.id/news/news-detail/sambut-wamen-baru-menteri-trenggono-tekankan-akselerasi-6-program-prioritas-27VN.html",
+      "level": "leadership",
+      "officeholder": {
+        "name": "Irwan Meilano",
+        "source": "https://www.kkp.go.id/news/news-detail/sambut-wamen-baru-menteri-trenggono-tekankan-akselerasi-6-program-prioritas-27VN.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-10-01",
+        "status": "confirmed_official_press_release"
+      }
     },
     {
       "id": "setjen",
-      "parent": "kkp",
+      "parent": "minister",
       "label_id": "Sekretariat Jenderal",
       "label_en": "Secretariat General",
       "role_id": "Koordinasi administrasi, perencanaan internal dan dukungan manajemen KKP.",
       "role_en": "Ministry administration, management and internal coordination.",
-      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "officeholder": {
+        "name": "Andy Artha Donny Oktopura",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-detail/kkp/1.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-06",
+        "status": "official_profile_or_roster",
+        "acting": null
+      },
+      "level": "directorate"
     },
     {
       "id": "djprl",
-      "parent": "kkp",
+      "parent": "minister",
       "label_id": "Ditjen Penataan Ruang Laut",
       "label_en": "DG Marine Spatial Planning",
       "role_id": "Perencanaan, pemanfaatan dan pengendalian pemanfaatan ruang laut.",
       "role_en": "Planning, utilization and control of marine spatial use.",
-      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "officeholder": {
+        "name": "Kartika Listriana",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-10",
+        "status": "official_profile_or_roster",
+        "acting": null
+      },
+      "level": "directorate"
     },
     {
       "id": "djpkel",
-      "parent": "kkp",
+      "parent": "minister",
       "label_id": "Ditjen Pengelolaan Kelautan",
       "label_en": "DG Marine Management",
       "role_id": "Pengelolaan sumber daya dan ekosistem kelautan, pesisir, konservasi dan jasa bahari.",
       "role_en": "Marine resources, ecosystem and coastal management, conservation and marine services.",
-      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "officeholder": {
+        "name": "A. Koswara",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-10",
+        "status": "official_profile_or_roster",
+        "acting": null
+      },
+      "level": "directorate"
     },
     {
       "id": "djpt",
-      "parent": "kkp",
+      "parent": "minister",
       "label_id": "Ditjen Perikanan Tangkap",
       "label_en": "DG Capture Fisheries",
       "role_id": "Tata kelola perikanan tangkap dan sumber daya perikanan tangkap.",
       "role_en": "Capture fisheries governance and management.",
-      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "officeholder": {
+        "name": "Lotharia Latif",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-detail/djpt/230.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2025-09-10",
+        "status": "official_profile_or_roster",
+        "acting": null
+      },
+      "level": "directorate"
     },
     {
       "id": "djpb",
-      "parent": "kkp",
+      "parent": "minister",
       "label_id": "Ditjen Perikanan Budi Daya",
       "label_en": "DG Aquaculture",
       "role_id": "Kebijakan dan pengembangan perikanan budi daya.",
       "role_en": "Aquaculture policy and development.",
-      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "officeholder": {
+        "name": "Tb. Haeru Rahayu",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-detail/djpb/53.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-10",
+        "status": "official_profile_or_roster",
+        "acting": null
+      },
+      "level": "directorate"
     },
     {
       "id": "djpdspkp",
-      "parent": "kkp",
+      "parent": "minister",
       "label_id": "Ditjen Penguatan Daya Saing Produk Kelautan dan Perikanan",
       "label_en": "DG Competitiveness of Marine and Fishery Products",
       "role_id": "Penguatan nilai tambah, daya saing dan akses pasar produk kelautan dan perikanan.",
       "role_en": "Competitiveness, value addition and markets of marine/fishery products.",
-      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "officeholder": {
+        "name": "Yudi Nurul Ihsan",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpdskp/all.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-10",
+        "status": "official_profile_or_roster",
+        "acting": null
+      },
+      "level": "directorate"
     },
     {
       "id": "djpsdkp",
-      "parent": "kkp",
+      "parent": "minister",
       "label_id": "Ditjen Pengawasan Sumber Daya Kelautan dan Perikanan",
       "label_en": "DG Marine and Fisheries Resources Surveillance",
       "role_id": "Pengawasan kepatuhan pemanfaatan sumber daya kelautan dan perikanan.",
       "role_en": "Marine and fisheries resource surveillance and compliance.",
-      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "officeholder": {
+        "name": "Pung Nugroho Saksono",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-10",
+        "status": "official_profile_or_roster",
+        "acting": null
+      },
+      "level": "directorate"
     },
     {
       "id": "itjen",
-      "parent": "kkp",
+      "parent": "minister",
       "label_id": "Inspektorat Jenderal",
       "label_en": "Inspectorate General",
       "role_id": "Pengawasan intern kementerian; bukan regulator operasional komoditas.",
       "role_en": "Internal ministry audit; not a commodity operations regulator.",
-      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "officeholder": {
+        "name": "Ade Tajudin Sutiawarman",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/ip/all.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-10",
+        "status": "official_profile_or_roster",
+        "acting": null
+      },
+      "level": "directorate"
     },
     {
       "id": "bppsdm",
-      "parent": "kkp",
+      "parent": "minister",
       "label_id": "Badan Penyuluhan dan Pengembangan SDM Kelautan dan Perikanan",
       "label_en": "Marine and Fisheries Extension & Human Resources Development Agency",
       "role_id": "Penyuluhan, pendidikan, pelatihan dan pengembangan SDM sektor kelautan dan perikanan.",
       "role_en": "Extension, education, training and human-capital development.",
-      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "officeholder": {
+        "name": "I Nyoman Radiarta",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/bppsdmkp/all.html",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-10",
+        "status": "official_profile_or_roster",
+        "acting": null
+      },
+      "level": "directorate"
     },
     {
       "id": "bppmhkp",
-      "parent": "kkp",
+      "parent": "minister",
       "label_id": "Badan Pengendalian dan Pengawasan Mutu Hasil Kelautan dan Perikanan",
       "label_en": "Marine and Fishery Product Quality Control & Inspection Agency",
       "role_id": "Pengendalian dan pengawasan mutu hasil kelautan dan perikanan.",
       "role_en": "Quality control and inspection of marine and fishery products.",
-      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750",
+      "officeholder": {
+        "name": "Ishartini",
+        "source": "https://ppid.kkp.go.id/upp/bppmhkp/profil/penjabat/",
+        "checked_on": "2026-10-21",
+        "source_date": "2026-10",
+        "status": "official_profile_or_roster",
+        "acting": "verify_plt_status_in_current_roster"
+      },
+      "level": "directorate"
+    },
+    {
+      "id": "biro-perencanaan",
+      "parent": "setjen",
+      "label_id": "Biro Perencanaan",
+      "label_en": "Planning Bureau",
+      "role_id": "Unit pelaksana mandat di bawah Sekretariat Jenderal.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-detail/kkp/2.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Rudi Alek Wahyudin",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-detail/kkp/2.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "prl-sek",
+      "parent": "djprl",
+      "label_id": "Sekretariat Ditjen Penataan Ruang Laut",
+      "label_en": "Marine Spatial Planning Secretariat",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Penataan Ruang Laut.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Effin Martiana",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "prl-rencana",
+      "parent": "djprl",
+      "label_id": "Direktorat Perencanaan Ruang Perairan",
+      "label_en": "Aquatic Spatial Planning Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Penataan Ruang Laut.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Abdi Tunggal Priyanto",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "prl-pesisir",
+      "parent": "djprl",
+      "label_id": "Direktorat Pemanfaatan Ruang Pesisir dan Pulau Kecil",
+      "label_en": "Coastal and Small Islands Spatial Utilisation",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Penataan Ruang Laut.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Permana Yudiarso",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "prl-kolom",
+      "parent": "djprl",
+      "label_id": "Direktorat Pemanfaatan Kolom Perairan & Dasar Laut",
+      "label_en": "Water Column & Seabed Utilisation Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Penataan Ruang Laut.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Didit Eko Prasetiyo",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "prl-kendali",
+      "parent": "djprl",
+      "label_id": "Direktorat Pengendalian Pemanfaatan Ruang Laut",
+      "label_en": "Marine Spatial Use Control Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Penataan Ruang Laut.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Fajar Kurniawan",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djprl/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pk-sek",
+      "parent": "djpkel",
+      "label_id": "Sekretariat Ditjen Pengelolaan Kelautan",
+      "label_en": "Marine Management Secretariat",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Pengelolaan Kelautan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Miftahul Huda",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pk-ekosistem",
+      "parent": "djpkel",
+      "label_id": "Direktorat Konservasi Ekosistem",
+      "label_en": "Ecosystem Conservation Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Pengelolaan Kelautan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Muh. Firdaus Agung Kunto Kurniawan",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pk-spesies",
+      "parent": "djpkel",
+      "label_id": "Direktorat Konservasi Spesies dan Genetik",
+      "label_en": "Species & Genetic Conservation Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Pengelolaan Kelautan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Sarmintohadi",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pk-pesisir",
+      "parent": "djpkel",
+      "label_id": "Direktorat Pesisir dan Pulau-Pulau Kecil",
+      "label_en": "Coastal and Small Islands Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Pengelolaan Kelautan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Ahmad Aris",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pk-jasa",
+      "parent": "djpkel",
+      "label_id": "Direktorat Jasa Bahari",
+      "label_en": "Marine Services Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Pengelolaan Kelautan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Raden Bambang Adhitya Nugraha",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpk/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pt-sek",
+      "parent": "djpt",
+      "label_id": "Sekretariat Ditjen Perikanan Tangkap",
+      "label_en": "Capture Fisheries Secretariat",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Perikanan Tangkap.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpt/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Ridwan Mulyana",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpt/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pt-pelabuhan",
+      "parent": "djpt",
+      "label_id": "Direktorat Kepelabuhanan Perikanan",
+      "label_en": "Fishing Port Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Perikanan Tangkap.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpt/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Imas Masriah",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpt/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pt-sdi",
+      "parent": "djpt",
+      "label_id": "Direktorat Pengelolaan Sumber Daya Ikan",
+      "label_en": "Fish Resources Management Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Perikanan Tangkap.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpt/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Syahril Abd. Raup",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpt/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pt-kapal",
+      "parent": "djpt",
+      "label_id": "Direktorat Kapal Perikanan & Alat Penangkapan",
+      "label_en": "Fishing Vessels & Gear Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Perikanan Tangkap.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpt/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Mochamad Idnillah",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpt/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pt-usaha",
+      "parent": "djpt",
+      "label_id": "Direktorat Usaha Penangkapan Ikan",
+      "label_en": "Fishing Enterprise Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Perikanan Tangkap.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpt/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Ukon Ahmad Furkon",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpt/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pb-rumput",
+      "parent": "djpb",
+      "label_id": "Direktorat Rumput Laut",
+      "label_en": "Seaweed Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Perikanan Budi Daya.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat/djpb.html",
+      "level": "internal"
+    },
+    {
+      "id": "pb-airtawar",
+      "parent": "djpb",
+      "label_id": "Direktorat Ikan Air Tawar",
+      "label_en": "Freshwater Fish Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Perikanan Budi Daya.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat/djpb.html",
+      "level": "internal"
+    },
+    {
+      "id": "pb-airpayau",
+      "parent": "djpb",
+      "label_id": "Direktorat Ikan Air Payau",
+      "label_en": "Brackish Aquaculture Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Perikanan Budi Daya.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat/djpb.html",
+      "level": "internal"
+    },
+    {
+      "id": "pb-airlaut",
+      "parent": "djpb",
+      "label_id": "Direktorat Ikan Air Laut",
+      "label_en": "Marine Fish Aquaculture Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Perikanan Budi Daya.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat/djpb.html",
+      "level": "internal"
+    },
+    {
+      "id": "pd-sek",
+      "parent": "djpdspkp",
+      "label_id": "Sekretariat Ditjen Daya Saing",
+      "label_en": "Competitiveness Secretariat",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Penguatan Daya Saing Produk Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpdskp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Machmud",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpdskp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pd-pasar",
+      "parent": "djpdspkp",
+      "label_id": "Direktorat Pemasaran",
+      "label_en": "Marketing Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Penguatan Daya Saing Produk Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpdskp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Erwin Dwiyana",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpdskp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pd-olah",
+      "parent": "djpdspkp",
+      "label_id": "Direktorat Pengolahan",
+      "label_en": "Processing Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Penguatan Daya Saing Produk Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpdskp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Budi Yuwono",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpdskp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "pd-usaha",
+      "parent": "djpdspkp",
+      "label_id": "Direktorat Pemberdayaan Usaha",
+      "label_en": "Enterprise Empowerment Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Penguatan Daya Saing Produk Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpdskp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Ali Rahmat Iman Santoso",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpdskp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "ps-sek",
+      "parent": "djpsdkp",
+      "label_id": "Sekretariat Ditjen PSDKP",
+      "label_en": "Surveillance Secretariat",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Pengawasan Sumber Daya Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Saiful Umam",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "ps-pelanggaran",
+      "parent": "djpsdkp",
+      "label_id": "Direktorat Penanganan Pelanggaran",
+      "label_en": "Violation Enforcement Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Pengawasan Sumber Daya Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Halid K. Jusuf",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "ps-perikanan",
+      "parent": "djpsdkp",
+      "label_id": "Direktorat Pengawasan Sumber Daya Perikanan",
+      "label_en": "Fishery Resource Surveillance Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Pengawasan Sumber Daya Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Sahono Budianto",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "ps-kelautan",
+      "parent": "djpsdkp",
+      "label_id": "Direktorat Pengawasan Sumber Daya Kelautan",
+      "label_en": "Marine Resource Surveillance Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Pengawasan Sumber Daya Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Sumono Darwinto",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "ps-armada",
+      "parent": "djpsdkp",
+      "label_id": "Direktorat Pengendalian Operasi Armada",
+      "label_en": "Fleet Operations Control Directorate",
+      "role_id": "Unit pelaksana mandat di bawah Ditjen Pengawasan Sumber Daya Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Teuku Elvitrasyah",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/djpsdkp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "it-sek",
+      "parent": "itjen",
+      "label_id": "Sekretariat Inspektorat Jenderal",
+      "label_en": "Inspectorate Secretariat",
+      "role_id": "Unit pelaksana mandat di bawah Inspektorat Jenderal.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/ip/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Febry Budianto",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/ip/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "it-i",
+      "parent": "itjen",
+      "label_id": "Inspektorat I",
+      "label_en": "Inspectorate I",
+      "role_id": "Unit pelaksana mandat di bawah Inspektorat Jenderal.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/ip/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Abdul Mubin",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/ip/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "it-ii",
+      "parent": "itjen",
+      "label_id": "Inspektorat II",
+      "label_en": "Inspectorate II",
+      "role_id": "Unit pelaksana mandat di bawah Inspektorat Jenderal.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/ip/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Ahmad Rofiq Widadi",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/ip/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "it-iii",
+      "parent": "itjen",
+      "label_id": "Inspektorat III",
+      "label_en": "Inspectorate III",
+      "role_id": "Unit pelaksana mandat di bawah Inspektorat Jenderal.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/ip/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Kusdiantoro",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/ip/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "bp-penyuluhan",
+      "parent": "bppsdm",
+      "label_id": "Pusat Penyuluhan Kelautan dan Perikanan",
+      "label_en": "Marine & Fisheries Extension Centre",
+      "role_id": "Unit pelaksana mandat di bawah Badan Penyuluhan dan Pengembangan SDM Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/bppsdmkp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Yayan Hikmayani",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/bppsdmkp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "bp-pendidikan",
+      "parent": "bppsdm",
+      "label_id": "Pusat Pendidikan Kelautan dan Perikanan",
+      "label_en": "Marine & Fisheries Education Centre",
+      "role_id": "Unit pelaksana mandat di bawah Badan Penyuluhan dan Pengembangan SDM Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/bppsdmkp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Alan Frendy Koropitan",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/bppsdmkp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "bp-latih",
+      "parent": "bppsdm",
+      "label_id": "Pusat Pelatihan Kelautan dan Perikanan",
+      "label_en": "Marine & Fisheries Training Centre",
+      "role_id": "Unit pelaksana mandat di bawah Badan Penyuluhan dan Pengembangan SDM Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/bppsdmkp/all.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Joni Haryadi D",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-list/kkp/bppsdmkp/all.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
+    },
+    {
+      "id": "bpm-mutu",
+      "parent": "bppmhkp",
+      "label_id": "Pusat Manajemen Mutu",
+      "label_en": "Quality Management Centre",
+      "role_id": "Unit pelaksana mandat di bawah Badan Pengendalian dan Pengawasan Mutu Hasil Kelautan dan Perikanan.",
+      "role_en": "Internal unit executing the statutory responsibilities of its parent office.",
+      "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-detail/kkp/285.html",
+      "level": "internal",
+      "officeholder": {
+        "name": "Ari Prabowo",
+        "source": "https://kkp.go.id/tentang-kkp/profil-penjabat-detail/kkp/285.html",
+        "checked_on": "2026-10-21",
+        "status": "official_roster"
+      }
     }
   ],
   "actors": [
@@ -131,7 +830,19 @@
       "label_en": "Ministry of National Development Planning",
       "role_id": "Perencanaan pembangunan nasional dan prioritas lintas sektor.",
       "role_en": "National development planning and cross-sector prioritization.",
-      "source": "https://www.bappenas.go.id/"
+      "source": "https://www.bappenas.go.id/",
+      "officeholder": {
+        "name": "Rachmat Pambudy",
+        "source": "https://www.bappenas.go.id/struktur-organisasi",
+        "checked_on": "2026-10-21",
+        "status": "official_agency_roster"
+      },
+      "sector_contact": {
+        "name": "Mohamad Rahmat Mulianda",
+        "role": "Direktur Kelautan dan Perikanan",
+        "source": "https://www.bappenas.go.id/struktur-organisasi",
+        "checked_on": "2026-10-21"
+      }
     },
     {
       "id": "kemenkopangan",
@@ -171,7 +882,13 @@
       "label_en": "Ministry of Trade",
       "role_id": "Perdagangan dan akses pasar produk kelautan dan perikanan; kewenangan perdagangan tidak berada di bawah KKP.",
       "role_en": "Trade and market access for marine products; separate ministerial authority.",
-      "source": "https://www.kemendag.go.id/"
+      "source": "https://www.kemendag.go.id/",
+      "officeholder": {
+        "name": "Budi Santoso",
+        "source": "https://www.kemendag.go.id/tentang/pejabat",
+        "checked_on": "2026-10-21",
+        "status": "official_agency_roster"
+      }
     },
     {
       "id": "dkp",
@@ -187,7 +904,13 @@
       "label_en": "Meteorology, Climatology and Geophysics Agency",
       "role_id": "Informasi cuaca maritim, gelombang dan iklim sebagai masukan risiko operasi.",
       "role_en": "Marine weather, waves and climate risk information.",
-      "source": "https://www.bmkg.go.id/"
+      "source": "https://www.bmkg.go.id/",
+      "officeholder": {
+        "name": "Teuku Faisal Fathani",
+        "source": "https://www.bmkg.go.id/profil/pejabat",
+        "checked_on": "2026-10-21",
+        "status": "official_agency_roster"
+      }
     },
     {
       "id": "perindo",
@@ -271,5 +994,60 @@
         "perindo"
       ]
     }
-  ]
+  ],
+  "as_of": "2026-10-21",
+  "emblem": {
+    "url": "https://ptsp.kkp.go.id/assets/out/images/logo385.png",
+    "source": "https://ptsp.kkp.go.id/konten/dashboard",
+    "scope": "Kementerian Kelautan dan Perikanan only",
+    "alt": "Emblem displayed by the official KKP licensing portal"
+  },
+  "presentation": {
+    "hierarchy_modes": [
+      "command_and_internal_unit",
+      "functional_cross_agency"
+    ],
+    "lanes": [
+      {
+        "id": "leadership",
+        "label_id": "Arah nasional dan kepemimpinan",
+        "label_en": "National leadership",
+        "color": "#e5bd73",
+        "nodes": [
+          "president",
+          "kkp",
+          "minister",
+          "wamen"
+        ]
+      },
+      {
+        "id": "direction",
+        "label_id": "Ditjen teknis & regulator",
+        "label_en": "Technical directorates",
+        "color": "#78c2d5",
+        "nodes": [
+          "djprl",
+          "djpkel",
+          "djpt",
+          "djpb",
+          "djpdspkp",
+          "djpsdkp"
+        ]
+      },
+      {
+        "id": "support",
+        "label_id": "Sekretariat, pengawasan & penguatan kapasitas",
+        "label_en": "Secretariat, audit & capability",
+        "color": "#91c9ba",
+        "nodes": [
+          "setjen",
+          "itjen",
+          "bppsdm",
+          "bppmhkp"
+        ]
+      }
+    ],
+    "functional_network_not_command": true
+  },
+  "sources_reviewed_on": "2026-10-21"
 }

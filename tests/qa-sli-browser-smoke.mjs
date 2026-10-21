@@ -29,6 +29,7 @@ async function check(name,viewport,fn){
  const page=await context.newPage();
  const errors=[];
  page.on("pageerror",err=>errors.push(err.message.slice(0,350)));
+  page.on("console",msg=>{if(msg.type()==="error")errors.push("console: "+msg.text().slice(0,350))});
  try{
   await fn(page);
   report.tests.push({name,status:"pass",page_errors:errors.slice(0,3)});
@@ -37,7 +38,8 @@ async function check(name,viewport,fn){
   const filename=name.toLowerCase().replace(/[^a-z0-9]+/g,"-").slice(0,65);
   try{await page.screenshot({path:path.join(outDir,filename+".png"),fullPage:false,timeout:5000})}catch{}
   report.tests.push({name,status:"fail",error:String(error.message||error),page_errors:errors.slice(0,5)});
-  console.error("FAIL",name,String(error.message||error));
+  console.error("FAIL",name,String(error.message||error),errors.slice(0,5),await page.locator("#mfHierarchyDiagram").first().textContent().catch(()=>null));
+    if(name.startsWith("Marine"))console.error("Marine source fetch probe",await page.evaluate(async()=>{try{const r=await fetch("./data/sli-marine-governance.json?v=20261021-officers-v2",{cache:"no-store"});const j=await r.json();return{url:r.url,status:r.status,schema:j.schema,n:j.hierarchy?.length}}catch(e){return{error:String(e)}}}).catch(e=>String(e)));
  }finally{await context.close()}
 }
 function pageUrl(route){return BASE+"/"+route}
@@ -104,6 +106,33 @@ await check("DERGUBA AI: optional methods lab expands on demand",{width:1366,hei
  await page.locator("#raOpenDataLab").click();
  await page.waitForFunction(()=>document.getElementById("raAdvancedLab")?.open===true,null,{timeout:7000});
  assert.ok(await page.locator("#raMethod").count()===1,"Research methodology control missing");
+});
+
+await check("Marine institutional desktop: maps render, drill down and show verified 2026 officers",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("marine-fisheries-intelligence.html#marine-governance"),{waitUntil:"domcontentloaded",timeout:30000});
+ await waitMast(page);
+ await page.locator("#mfHierarchyDiagram .mf-gov-node").first().waitFor({timeout:25000});
+ const order=await page.evaluate(()=>document.getElementById("marine-governance").compareDocumentPosition(document.getElementById("marine-overview")) & Node.DOCUMENT_POSITION_FOLLOWING);
+ assert.ok(order,"Governance must appear before statistical overview");
+ assert.ok(await page.locator("#mfHierarchyDiagram .mf-gov-node").count()>=14,"KKP directorates unavailable");
+ assert.match(await page.locator("#mfHierarchyProfile").innerText(),/Sakti Wahyu Trenggono/);
+ await page.locator('#mfHierarchyDiagram [data-mf-entity="djprl"]').click();
+ assert.match(await page.locator("#mfHierarchyProfile").innerText(),/Kartika Listriana/);
+ await page.locator('#mfHierarchyDiagram .mf-gov-unit-block:has([data-mf-entity="djpt"]) .mf-gov-expand').click();
+ assert.ok(await page.locator('#mfHierarchyDiagram [data-mf-entity="pt-pelabuhan"]').count()===1,"Internal units did not expand");
+ assert.equal(await page.locator("#mfNetworkChips button").count(),7,"Six hubs and All filter missing");
+ await page.locator("#mfNetworkChips button").nth(2).click();
+ await page.locator('#mfNetworkDiagram [data-mf-entity="djpt"]').click();
+ assert.match(await page.locator("#mfNetworkProfile").innerText(),/Lotharia Latif/);
+ assert.equal(await page.locator('#mfNetworkDiagram .mf-gov-hub').count(),1,"Filtered hub should be independently selectable");
+});
+await check("Marine institutional mobile: stacked inspector and no overflow",{width:390,height:844},async page=>{
+ await page.goto(pageUrl("marine-fisheries-intelligence.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.locator("#mfNetworkDiagram .mf-gov-hub").first().waitFor({timeout:25000});
+ const size=await page.evaluate(()=>({viewport:innerWidth,doc:document.documentElement.scrollWidth,inspector:getComputedStyle(document.querySelector("#marine-hierarchy .mf-governance-inspector")).position,hubs:document.querySelectorAll("#mfNetworkDiagram .mf-gov-hub").length}));
+ assert.ok(size.doc<=size.viewport+16,"Marine organizational map horizontal overflow: "+JSON.stringify(size));
+ assert.equal(size.inspector,"static","Marine profile must stack below mobile diagram");
+ assert.equal(size.hubs,6,"Marine hub map should be visible on mobile");
 });
 
 await check("Homepage: fewer topics, source links within sector cards",{width:1366,height:850},async page=>{
