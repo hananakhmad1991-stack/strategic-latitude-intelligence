@@ -532,6 +532,19 @@ await check("KKP historical choropleth mobile: accessible region and selectable 
  const a=await page.evaluate(()=>({vw:innerWidth,sw:document.documentElement.scrollWidth}));
  assert.ok(a.sw<=a.vw+16,"History map viewport overflow: "+JSON.stringify(a));
 });
+await check("KKP 2024 hatchery partial 33-province evidence and BIG WPP safety on mobile",{width:390,height:844},async page=>{
+ await page.goto(pageUrl("marine-fisheries-intelligence.html#mfHatcheryProvincePanel"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.locator("#mfHatcheryProvinceRanking .mf-atlas-prov-summary").first().waitFor({timeout:20000});
+ assert.equal(await page.locator("#mfHatcheryProvinceRanking .mf-atlas-prov-summary").count(),33);
+ assert.match(await page.locator("#mfHatcheryProvinceStatus").innerText(),/719[,.]750/);
+ assert.ok(await page.locator("#mfHatcheryProvinceCSV").isVisible());
+ await page.locator("#mfHatcheryProvinceSearch").fill("Jawa Timur");
+ assert.equal(await page.locator("#mfHatcheryProvinceRanking .mf-atlas-prov-summary").count(),1);
+ assert.equal(await page.locator("#mfWPPMap svg path").count(),0,"Do not show WPP polygons before BIG official data validates");
+ assert.ok(await page.locator("#mfWPPLoad").isVisible());
+ const bounds=await page.evaluate(()=>({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth}));
+ assert.ok(bounds.scroll<=bounds.client+16,"KKP mobile panel must not cause page overflow "+JSON.stringify(bounds));
+});
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");
 console.log("Browser smoke:",report.tests.filter(x=>x.status==="pass").length,"passed /",report.tests.length,"total");

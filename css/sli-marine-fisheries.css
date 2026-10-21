@@ -143,3 +143,20 @@
 .mf-history-table tbody tr:hover{background:rgba(115,177,185,.15)}
 .mf-atlas-historical .mf-atlas-filters button{cursor:pointer;background:#25465e;border:1px solid #6789a3;color:#f1f7fb;border-radius:8px;padding:10px 12px;font:inherit;font-size:12px;min-height:42px}
 @media(max-width:900px){.mf-history-layout{grid-template-columns:minmax(0,1fr)}}
+
+/* Official BIG WPP geometry is rendered only after an explicit button click */
+.mf-wpp-live-map{border:1px solid #385b71;border-radius:12px;background:#102b40;padding:8px;min-height:115px;margin-top:12px;max-width:100%;overflow:auto}
+.mf-wpp-live-map svg{display:block;width:100%;height:auto;max-height:580px}
+.mf-wpp-shape{cursor:pointer;transition:filter .15s ease}
+.mf-wpp-shape:hover,.mf-wpp-shape:focus-visible,.mf-wpp-shape[aria-pressed=true]{stroke:#f5d69f;stroke-width:2.4;filter:brightness(1.2);outline:none}
+#mfWPPLoad[disabled]{opacity:.6;cursor:wait}
+@media(max-width:650px){.mf-wpp-live-map{padding:4px}.mf-wpp-live-map svg{min-width:0}}
+
+/* KKP published 2024 hatchery province cards — source-visible subset only */
+.mf-atlas-prov-summary-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;max-height:440px;overflow:auto;padding:8px 2px}
+.mf-atlas-prov-summary{display:grid;grid-template-columns:minmax(90px,1fr) minmax(60px,1.3fr) auto;gap:8px;align-items:center;color:#d9e9f2;font:500 12px/1.4 system-ui,sans-serif;min-width:0}
+.mf-atlas-prov-summary>span:first-child{overflow-wrap:anywhere}
+.mf-atlas-prov-summary-track{background:#183548;display:block;height:10px;border-radius:5px;overflow:hidden}
+.mf-atlas-prov-summary-fill{display:block;background:#74abb0;height:100%;border-radius:5px}
+.mf-atlas-prov-summary strong{font-variant-numeric:tabular-nums;text-align:right}
+@media(max-width:800px){.mf-atlas-prov-summary-list{grid-template-columns:minmax(0,1fr)}}
