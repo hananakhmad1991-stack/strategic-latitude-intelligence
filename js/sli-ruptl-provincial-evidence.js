@@ -34,7 +34,7 @@ function render(root,data,legacy,evidence){
  const regions=el("select"),tech=el("select"),status=el("select"),actualFilter=el("select"),q=el("input");
  q.type="search";q.placeholder="Cari nama proyek / wilayah / sistem";
  option(regions,"Semua wilayah lampiran","");option(tech,"Semua teknologi","");option(status,"Semua status rencana","");option(actualFilter,"Semua status realisasi","");option(actualFilter,"Ada bukti milestone resmi","verified");option(actualFilter,"Belum ditemukan bukti yang sesuai","unknown");
- const geographic=data.geographic_appendix_coverage.subsections.map(x=>x.geographic_heading);
+ if(data.geographic_appendix_coverage.original_project_table_headings_located!==34||data.geographic_appendix_coverage.subsections.some(x=>!x.project_table_number||!x.project_table_pdf_page))throw Error("All-34 source table locator metadata incomplete");
  const subset=[...new Set(all.map(x=>x.appendix_geography))];
  subset.sort((a,b)=>a.localeCompare(b,"id")).forEach(x=>option(regions,x,x));
  [...new Set(all.map(x=>x.technology))].sort().forEach(x=>option(tech,x,x));
@@ -42,18 +42,18 @@ function render(root,data,legacy,evidence){
  for(const [lab,n] of [["Wilayah sumber",regions],["Teknologi",tech],["Tahap RUPTL 2025",status],["Bukti realisasi",actualFilter],["Nama atau sistem",q]]){const l=el("label",lab);l.append(n);controls.append(l)}
  const count=el("p");count.className="sli-ruptl-prov-count";
  const scroller=el("div");scroller.className="sli-ruptl-prov-scroll";
- const coverage=el("details");const covTitle=el("summary","Lihat 34 sublampiran geografis dan cakupan pemeriksaan");const covDiv=el("div");covDiv.className="sli-ruptl-prov-scroll";coverage.append(covTitle,covDiv);
+ const coverage=el("details");const covTitle=el("summary","Lihat 34 tabel proyek asli: nomor tabel, halaman PDF, dan cakupan verifikasi");const covDiv=el("div");covDiv.className="sli-ruptl-prov-scroll";coverage.append(covTitle,covDiv);
  const footer=el("p");footer.append("Sumber dasar: ",link(data.source.official_url,"RUPTL PLN 2025–2034 PDF resmi ↗"),". Tidak ada nilai realisasi yang diisi otomatis berdasarkan kalender COD.");
  root.replaceChildren(h,pre,summary,methodology,controls,count,scroller,coverage,footer);
  const head=["Wilayah lampiran","Nama menurut tabel","Teknologi","Kapasitas tercetak","Target COD ARED","Status rencana 2025","Bukti perkembangan","COD aktual unit (jika terbukti)","Asal tabel/PDF"];
  const tabs=el("table"),th=el("thead"),tr=el("tr");head.forEach(x=>tr.append(el("th",x)));th.append(tr);tabs.append(th);
  const tb=el("tbody");tabs.append(tb);scroller.append(tabs);
  const coverageTable=el("table"),cHead=el("thead"),cr=el("tr");
- ["Sublampiran","Cakupan administratif sebagaimana tertulis","PDF halaman","Baris sampel"].forEach(x=>cr.append(el("th",x)));cHead.append(cr);
+ ["Sublampiran","Cakupan administratif sebagaimana tertulis","Awal lampiran","Tabel rencana pembangkit asli","Baris sampel"].forEach(x=>cr.append(el("th",x)));cHead.append(cr);
  const cBody=el("tbody");
  data.geographic_appendix_coverage.subsections.forEach(x=>{const rr=el("tr");const num=all.filter(y=>y.annex_id===x.annex_id).length;
  rr.append(el("td",x.annex_id),el("td",x.geographic_heading));
- const c=el("td");c.append(link(data.source.official_url+"#page="+x.pdf_page,String(x.pdf_page)));rr.append(c,el("td",num?String(num)+" sampel":"Belum ditinjau rinci"));cBody.append(rr)});
+ const c=el("td");c.append(link(data.source.official_url+"#page="+x.pdf_page,String(x.pdf_page)));const t=el("td");t.append(link(data.source.official_url+"#page="+x.project_table_pdf_page,"Tabel "+x.project_table_number+" · PDF "+x.project_table_pdf_page));rr.append(c,t,el("td",num?String(num)+" baris proyek diseleksi":"Baris belum diverifikasi"));cBody.append(rr)});
  coverageTable.append(cHead,cBody);covDiv.append(coverageTable);
  function renderRows(){
   const term=q.value.toLowerCase().trim();
