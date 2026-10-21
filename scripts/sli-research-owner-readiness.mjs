@@ -104,7 +104,7 @@ export function assessOwnerResearchReadiness({config,index,automation,now=new Da
   if(errors>0||automation.audit_state==="complete_with_api_warnings")
    warn("workflow_status_incomplete");
   health=warnings.some(x=>x.startsWith("automation_")||x.startsWith("upstream_")||
-    x.startsWith("dataset_")||x.startsWith("workflow_status_"))?"degraded":"reported_healthy";
+    x.startsWith("dataset_")||x.startsWith("workflow_"))?"degraded":"reported_healthy";
  }
  const errors=unique(blockers),notices=unique(warnings);
  return {
