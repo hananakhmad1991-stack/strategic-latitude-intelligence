@@ -1,7 +1,7 @@
 /* PLN RUPTL status event ledger: original press-evidence only, never invented dates */
 (()=>{"use strict";
 const roots=[...document.querySelectorAll("[data-sli-ruptl-official-timeline]")];if(!roots.length)return;
-const P="./data/sli-ruptl-project-progress-primary-evidence.json";
+const P="./data/sli-ruptl-project-progress-primary-evidence.json",S="./data/sli-ruptl-official-inauguration-slo-2025.json";
 const el=(name,txt)=>{const n=document.createElement(name);if(txt!==undefined)n.textContent=String(txt);return n};
 const sourceLink=(url,label)=>{const n=el("a",label);n.href=url;n.target="_blank";n.rel="noopener noreferrer";return n};
 const validDay=s=>typeof s==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(s);
@@ -35,18 +35,31 @@ function ledger(d){
   throw Error("Expected 2 facility COD milestones and 1 reporting-period observation");
  return {dated,periodOnly};
 }
-function display(root,d){
- const data=ledger(d),all=[...data.dated,...data.periodOnly];
+function display(root,d,supplement){
+ if(supplement.schema!=="sli-ruplt-primary-official-project-event-supplement-2025-v1"||supplement.events.length!==5||supplement.new_events_actual_cod_confirmed!==0)throw Error("Supplement source/cod constraints failed");
+ const data=ledger(d);
+ const extra=supplement.events.map(x=>{
+  if((x.event_date!==null&&!validDay(x.event_date))||(x.event_date===null&&!/^\d{4}-\d{2}$/.test(x.event_period||"")))throw Error("Unverified event time precision");
+  if(x.verified_actual_cod!==null)throw Error("SLO or inauguration cannot be treated as COD");
+  const type=x.event_type==="government_inauguration_not_commercial_cod"?"official_inauguration_not_cod":"slo_certificate_not_cod";
+  return {date:x.event_date,period:x.event_period,label:x.site,type,
+    type_id:type==="official_inauguration_not_cod"?"Peresmian resmi (bukan COD)":"Sertifikat laik operasi / SLO (bukan COD)",
+    publisher:x.event_source_publisher,url:x.event_primary_source_url,
+    details:x.event_claim+". Batasan: "+x.quality_note,row_ids:[x.original_table+" PDF "+x.original_pdf_page+" row "+x.original_source_row_no]};
+ });
+ const all=[...data.dated,...data.periodOnly,...extra];
+ all.sort((a,b)=>(a.date||a.period||"").localeCompare(b.date||b.period||"")||a.type.localeCompare(b.type));
+ if(all.length!==9||extra.filter(x=>x.type==="official_inauguration_not_cod").length!==3||extra.filter(x=>x.type==="slo_certificate_not_cod").length!==2)throw Error("Event-count or classification mismatch");
  root.classList.add("sli-ruptl-timeline");
  const title=el("h2","Riwayat bukti proyek RUPTL · Peristiwa terverifikasi");
  const desc=el("p","Peristiwa bersumber dari operator/PLN/ESDM dan diberi tanggal atau periode yang benar-benar disebut. Ini hanya proyek sampel yang berhasil dicocokkan, bukan grafik progres nasional seluruh proyek RUPTL.");
  const badges=el("div");badges.className="sli-ruptl-timeline-stats";
- for(const [label,value] of [["COD fasilitas berbeda (bertanggal)",2],["Kejadian jaringan terkait (bukan COD)",1],["Laporan berperiode tanpa COD spesifik",1],["Total peristiwa unik",4]]){
+ for(const [label,value] of [["COD fasilitas berbeda (bertanggal)",2],["Kejadian jaringan terkait (bukan COD)",1],["Laporan berperiode tanpa COD spesifik",1],["Peresmian (bukan COD)",3],["SLO (bukan COD)",2],["Total peristiwa unik",9]]){
   const s=el("div");s.append(el("small",label),el("strong",value));badges.append(s)}
  const controls=el("div");controls.className="sli-ruptl-timeline-filters";
- const filter=el("select");[["Semua jenis bukti",""],["COD fasilitas","facility_cod"],["Jaringan terkait (bukan COD)","related_grid_not_powerplant"],["Penambahan kapasitas per periode","period_capacity_addition"]].forEach(([label,id])=>{const x=el("option",label);x.value=id;filter.append(x)});
+ const filter=el("select");[["Semua jenis bukti",""],["COD fasilitas","facility_cod"],["Jaringan terkait (bukan COD)","related_grid_not_powerplant"],["Penambahan kapasitas per periode","period_capacity_addition"],["Peresmian resmi, bukan COD","official_inauguration_not_cod"],["SLO resmi, bukan COD","slo_certificate_not_cod"]].forEach(([label,id])=>{const x=el("option",label);x.value=id;filter.append(x)});
  const label=el("label","Jenis perkembangan");label.append(filter);controls.append(label);
- const warning=el("p","COD kompleks Jawa-9/10 dihitung sekali sebagai satu fasilitas; tanggal COD unitnya tidak dipetakan. PLTS Bali Timur dilaporkan dalam MWp. Merangin memiliki perbedaan basis 350 MW vs 492 MW. Bukti pengoperasian SUTET Sumsel-1 tidak berarti PLTU Sumsel-1 telah COD.");
+ const warning=el("p","COD kompleks Jawa-9/10 dihitung sekali sebagai satu fasilitas; tanggal COD unitnya tidak dipetakan. PLTS Bali Timur dilaporkan dalam MWp. Merangin memiliki perbedaan basis 350 MW vs 492 MW. Bukti pengoperasian SUTET Sumsel-1 tidak berarti PLTU Sumsel-1 telah COD. Peresmian PLTS IKN, PLTA Asahan III dan PLTP Ijen bukan tanggal COD. SLO Ijen dan Lumut Balai bukan COD; tanggal SLO Ijen diketahui bulannya saja.");
  warning.className="sli-ruptl-timeline-warning";
  const list=el("div");list.className="sli-ruptl-timeline-events";
  const table=el("table"),thead=el("thead"),tr=el("tr");
@@ -57,7 +70,7 @@ function display(root,d){
  root.replaceChildren(title,desc,badges,warning,controls,state,scroll);
  function draw(){
   const shown=all.filter(x=>!filter.value||x.type===filter.value);
-  state.textContent=shown.length+" bukti unik ditampilkan. Kolom yang tidak tersedia bukan nol; tanggal yang hanya diketahui semesternya tidak diberi hari fiktif.";
+  state.textContent=shown.length+" / "+all.length+" bukti sejarah berbeda ditampilkan. Tanggal yang hanya diketahui bulan/semester tidak diberi hari fiktif. Peresmian, SLO, operasi jaringan dan COD adalah jenis kejadian yang berbeda.";
   body.replaceChildren();
   for(const x of shown){
    const row=el("tr");const date=el("td",x.date||x.period+" (tanpa tanggal unit)");
@@ -71,11 +84,11 @@ function display(root,d){
     getMeta:()=>({title:"SLI PLN RUPTL source-confirmed event timeline (not national realization rates)",source:"Dated PLN/ESDM/operator primary reports linked per observation",
       sourceUrl:"https://gatrik.esdm.go.id/gatrik/gatrik-api/storage/migrasi/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf",
       period:"2025 operator/agency milestone evidence",
-      completeness:"Exactly 2 distinct COD facility evidence events, 1 transmission milestone excluded from plant COD, and 1 semester-only generation-additions report. Jawa 9/10 combined COD counted once. Not representative of full 2025–2034 RUPTL implementation."})
+      completeness:"9 unique dated/period source events: 2 separate facility CODs (Jawa 9/10 complex once), 1 transmission energization NOT plant COD, 1 Merangin H1 only, 3 plant inaugurations, 2 plant SLO reports (Ijen month-only). An inaugural/SLO date is NOT an actual COD. Not a national realization count."})
   });
  }
  filter.addEventListener("change",draw);document.addEventListener("sli:exportready",draw);draw();
 }
-fetch(P,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Source HTTP "+r.status);return r.json()})
- .then(d=>roots.forEach(root=>display(root,d))).catch(e=>roots.forEach(root=>{root.textContent="Riwayat perkembangan RUPTL tidak tersedia: "+String(e.message)}));
+Promise.all([fetch(P,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Source HTTP "+r.status);return r.json()}),fetch(S,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Supplement HTTP "+r.status);return r.json()})])
+ .then(([d,supplement])=>roots.forEach(root=>display(root,d,supplement))).catch(e=>roots.forEach(root=>{root.textContent="Riwayat perkembangan RUPTL tidak tersedia: "+String(e.message)}));
 })();
