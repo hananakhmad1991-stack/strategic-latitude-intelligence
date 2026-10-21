@@ -15,6 +15,7 @@ on:
       - 'research-api/src/dashboard-corpus.mjs'
       - 'research-api/src/owner-test-worker.mjs'
       - 'data/sli-research-project-stage-baseline.json'
+      - 'data/sli-marine-fisheries-kkp.json'
       - '.github/workflows/sli-unified-research-sync.yml'
   pull_request:
     paths:
@@ -28,6 +29,7 @@ on:
       - 'research-api/src/dashboard-corpus.mjs'
       - 'research-api/src/owner-test-worker.mjs'
       - 'data/sli-research-project-stage-baseline.json'
+      - 'data/sli-marine-fisheries-kkp.json'
       - '.github/workflows/sli-unified-research-sync.yml'
 permissions:
   contents: write
@@ -51,6 +53,16 @@ jobs:
         run: |
           python scripts/build_research_unified_index.py
           python scripts/audit_sli_research_index.py
+          python - <<'PY'
+          import json
+          p=json.load(open("data/sli-research-unified-index.json",encoding="utf-8"))
+          hits=[x for x in p["records"] if x.get("dataset")=="sli-marine-fisheries-kkp.json"]
+          assert len(hits)>=18, f"KKP historical observations missing from DERGUBA index: {len(hits)} indexed"
+          for indicator in ["Seaweed grow-out aquaculture production","Total grow-out aquaculture production","Marine capture fishers"]:
+              assert any(indicator in x["title"] and "2024" in x["title"] and "portaldata.kkp.go.id" in x["source_url"] for x in hits), indicator
+          assert not any("2025" in x["title"] for x in hits), "Estimated KKP 2025 accidentally promoted into observed corpus"
+          print("KKP research retrieval indexed:",len(hits),"dated official source-linked records")
+          PY
           node --check research-api/src/dashboard-corpus.mjs
           node --check research-api/src/claim-evidence-audit.mjs
           node --check research-api/src/primary-claim-probe.mjs
