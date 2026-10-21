@@ -108,3 +108,35 @@ body.sli-home-active #sliHomeIDXHeatmap .sli-idx-detail{
   position:static;top:auto;max-height:none;overflow:visible;
  }
 }
+
+
+/* 2026-10-22: IDX-first responsive market widget. The provider's iframe needs
+   usable vertical space on narrow screens; avoid 270px inherited heatmap rules. */
+#sliHomeIDXHeatmap.sli-idx-market-home{width:100%;min-width:0;overflow:visible;color:#edf3f8}
+#sliHomeIDXHeatmap .sli-idx-market-heading{margin:0 0 14px}
+#sliHomeIDXHeatmap .sli-idx-overline{display:block;color:#d9ba83;font-size:11px;font-weight:800;letter-spacing:.08em}
+#sliHomeIDXHeatmap .sli-idx-market-heading h3{font-size:clamp(23px,3vw,30px);line-height:1.3;margin:7px 0 10px;color:#f6f8f9}
+#sliHomeIDXHeatmap .sli-idx-market-heading p{font-size:13px;line-height:1.65;color:#bccbd9;margin:0}
+#sliHomeIDXHeatmap .sli-idx-market-switch{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 10px}
+#sliHomeIDXHeatmap .sli-idx-market-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #4d6e82;background:#172f43;color:#e4edf4;border-radius:9px;padding:10px 14px;font:inherit;font-size:12px;font-weight:750;cursor:pointer}
+#sliHomeIDXHeatmap .sli-idx-market-button.is-active{background:#dabc85;color:#14293a;border-color:#efd6a5}
+#sliHomeIDXHeatmap .sli-idx-market-button:focus-visible{outline:2px solid #f1d39b;outline-offset:3px}
+#sliHomeIDXHeatmap .sli-idx-market-note{font-size:11px;line-height:1.6;color:#b5c8d9;margin:0 0 11px}
+#sliHomeIDXHeatmap .sli-idx-home-market-frame{height:510px;min-height:510px;width:100%;min-width:0;overflow:hidden;border:1px solid #46677e;border-radius:12px;background:#101c2b;padding:11px}
+#sliHomeIDXHeatmap .sli-idx-home-provider,#sliHomeIDXHeatmap .sli-idx-priceheatmap{width:100%;height:100%;min-width:0;min-height:0;display:flex;flex-direction:column}
+#sliHomeIDXHeatmap .sli-idx-home-provider>.tradingview-widget-container__widget,#sliHomeIDXHeatmap .sli-idx-priceheatmap>.tradingview-widget-container__widget{width:100%;min-width:0;min-height:0;flex:1}
+#sliHomeIDXHeatmap .sli-idx-home-provider>.tradingview-widget-copyright,#sliHomeIDXHeatmap .sli-idx-priceheatmap>.tradingview-widget-copyright{flex:none;min-height:26px;font-size:11px;text-align:right;padding:4px 0;color:#b6c9d4}
+#sliHomeIDXHeatmap .sli-idx-home-provider a,#sliHomeIDXHeatmap .sli-idx-priceheatmap a{color:#efcf92;text-decoration:none}
+#sliHomeIDXHeatmap .sli-idx-market-footer{font-size:12px;line-height:1.65;margin:12px 0 0}
+#sliHomeIDXHeatmap .sli-idx-market-footer>a{display:inline-block;color:#eed09c;text-decoration:underline;text-underline-offset:3px}
+#sliHomeIDXHeatmap .sli-idx-market-footer p{margin:7px 0 0;color:#aabfd0;font-size:11px}
+@media(max-width:600px){
+ #sliHomeIDXHeatmap .sli-idx-market-heading p{font-size:12px}
+ #sliHomeIDXHeatmap .sli-idx-market-switch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+ #sliHomeIDXHeatmap .sli-idx-market-button{min-width:0;font-size:11px;line-height:1.35;padding:9px 6px}
+ #sliHomeIDXHeatmap .sli-idx-home-market-frame{height:560px;min-height:560px;padding:6px;border-radius:10px}
+ #sliHomeIDXHeatmap .sli-idx-market-note{font-size:11px}
+}
+@media(max-width:360px){
+ #sliHomeIDXHeatmap .sli-idx-home-market-frame{height:610px;min-height:610px}
+}

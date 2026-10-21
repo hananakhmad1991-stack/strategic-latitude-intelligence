@@ -11,7 +11,7 @@ function load(filename){
  vm.runInNewContext(read(filename),{window,document,URL,URLSearchParams,Intl,Map,Set,Number,Promise,console});
  return window;
 }
-test("General IDX heatmap and selected-sector watchlist are separate homepage regions",()=>{
+test("IDX-first market overview and selected-sector watchlist are separate homepage regions",()=>{
  const html=read("index.html");
  for(const path of ["js/sli-idx-heatmap.js","js/sli-idx-tradingview.js","js/sli-idx-sector-watchlist.js",
   "css/sli-idx-heatmap.css","css/sli-idx-sector-watchlist.css"])assert.ok(html.includes(path),path);
@@ -23,23 +23,35 @@ test("General IDX heatmap and selected-sector watchlist are separate homepage re
  assert.match(html,/initSLIHomeIDXSectors\(\)/);
  assert.ok(html.indexOf('js/sli-idx-tradingview.js')<html.indexOf('js/sli-idx-sector-watchlist.js'));
 });
-test("General heatmap is a single provider-owned market overview, not a custom sector-filtered subset",()=>{
+test("IDX is the explicit default and S&P 500 is only an opt-in global heatmap",()=>{
  const code=read("js/sli-idx-heatmap.js"),provider=read("js/sli-idx-tradingview.js");
  const heat=load("js/sli-idx-heatmap.js").SLIIDXHeatmap;
  const widget=load("js/sli-idx-tradingview.js").SLIIDXTradingView;
- assert.equal(heat.mode,"single-provider-heatmap");
+ assert.equal(heat.mode,"provider-idx-first-overview");
  assert.equal(heat.market,"IDX");
+ assert.equal(heat.getSelection(),"idx");
+ assert.match(code,/mountHomeIDX\(frame\)/);
  assert.match(code,/mountHeatmap\(frame\)/);
+ assert.match(code,/selection="idx"/);
  assert.doesNotMatch(code,/sli-idx-issuer-universe\.json|sliIDXGroupFilter|sli-idx-tiles/);
- const cfg=widget.heatmapConfig();
- assert.equal(cfg.dataSource,"IDX"); // provider-supported IDX market still requires browser verification
- assert.equal(cfg.grouping,"sector");
- assert.equal(cfg.blockSize,"market_cap_basic");
- assert.equal(cfg.blockColor,"change");
- assert.equal(cfg.hasTopBar,true);
- assert.equal(cfg.isDataSetEnabled,true);
+ const idx=widget.homeIDXConfig();
+ assert.equal(idx.width,"100%");
+ assert.equal(idx.height,"100%");
+ assert.ok(idx.tabs.length>=3);
+ assert.ok(idx.tabs.every(t=>t.symbols.length>0&&t.symbols.every(s=>/^IDX:[A-Z0-9]+$/.test(s.s))));
+ assert.ok(idx.tabs[0].symbols.some(s=>s.s==="IDX:COMPOSITE"));
+ assert.ok(idx.tabs[0].symbols.some(s=>s.s==="IDX:BBCA"));
+ const global=widget.heatmapConfig();
+ assert.equal(global.dataSource,"SPX500");
+ assert.equal(global.grouping,"sector");
+ assert.equal(global.blockSize,"market_cap_basic");
+ assert.equal(global.blockColor,"change");
  assert.equal(widget.heatmapScriptUrl,"https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js");
- assert.doesNotMatch(provider,/fetch\(.*prices|Math\.random|fakeChange|SPX500/);
+ assert.doesNotMatch(provider,/dataSource:"IDX"|fetch\(.*prices|Math\.random|fakeChange/);
+ const css=read("css/sli-idx-heatmap.css");
+ assert.match(css,/sli-idx-home-market-frame/);
+ assert.match(css,/height:560px;min-height:560px/);
+ assert.match(code,/aria-pressed/);
 });
 test("Internal SLI sector watchlist contains only its eight strategic sectors and links directly to a named dossier",()=>{
  const api=load("js/sli-idx-sector-watchlist.js").SLIIDXSectors;
