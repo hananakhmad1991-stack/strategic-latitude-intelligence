@@ -2787,3 +2787,9 @@ window.SLI_TRANSLATIONS_ID.set("Strategic Latitude Intelligence · Original inde
 
 window.SLI_TRANSLATIONS_ID.set("Loading IHSG index from provider…","Memuat indeks IHSG dari penyedia…");
 window.SLI_TRANSLATIONS_ID.set("Loading issuer news…","Memuat berita emiten…");
+
+window.SLI_TRANSLATIONS_ID.set("Marine & Fisheries","Kelautan & Perikanan");
+window.SLI_TRANSLATIONS_ID.set("Capture fisheries, aquaculture, seaweed, ocean governance and the blue economy","Perikanan tangkap, budidaya, rumput laut, tata kelola laut, dan ekonomi biru");
+window.SLI_TRANSLATIONS_ID.set("Marine Intelligence →","Intelijen Kelautan →");
+window.SLI_TRANSLATIONS_ID.set("Institutional maps ↗","Peta kelembagaan ↗");
+window.SLI_TRANSLATIONS_ID.set("KKP source data ↗","Data sumber KKP ↗");

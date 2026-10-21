@@ -94,12 +94,14 @@ test('all public static HTML pages have a topical navigation owner (dynamic/priv
  const restricted=read('sli-user-intelligence-qa.html');
  assert.match(restricted,/noindex, nofollow/,'Private QA endpoint must not appear as user research content');
  const ownership=read('docs/SLI_INFORMATION_ARCHITECTURE_2026-10-20.md');
- assert.match(ownership,/Seven visible topic families/);
+ assert.match(ownership,/Eight visible topic families/);
  assert.match(ownership,/private-account connection test/);
 });
 
-test('seven topical families own specialist pages exactly once and distinguish overview from detail',()=>{
- assert.equal(groups.length,7,'Seven top-level navigational families, not miscellaneous extra categories');
+test('eight topical families own specialist pages exactly once and distinguish overview from detail',()=>{
+ assert.equal(groups.length,8,'Eight independently owned topic families');
+ assert.ok(!groups.find(g=>g.includes('food')).includes('marine'));
+ assert.deepEqual(Array.from(groups.find(g=>g.includes('marine')).slice(2)),['marine']);
  const all=groups.flatMap(g=>g.slice(2));
  assert.equal(new Set(all).size,all.length,'A canonical module must have one navigation owner');
  for(const id of ['datahub','methodology','about']){

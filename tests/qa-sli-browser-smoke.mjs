@@ -109,10 +109,10 @@ await check("DERGUBA AI: optional methods lab expands on demand",{width:1366,hei
 await check("Homepage: fewer topics, source links within sector cards",{width:1366,height:850},async page=>{
  await page.goto(pageUrl("index.html#home"),{waitUntil:"domcontentloaded",timeout:30000});
  await page.locator(".sli-portal-topic-card").first().waitFor({timeout:22000});
- assert.equal(await page.locator(".sli-portal-topic-card").count(),6,"Expected 6 subject cards with source links");
+ assert.equal(await page.locator(".sli-portal-topic-card").count(),7,"Expected 7 cards including dedicated marine");
  assert.equal(await page.locator(".sli-portal-sector-library,#sliPortalDataLibrary").count(),0,"Redundant Data Library category must be absent");
  const topics=page.locator(".sli-portal-topic-links a");
- assert.equal(await topics.count(),9,"Every recovered library domain must link from its parent topic");
+ assert.equal(await topics.count(),11,"Marine adds source and institutional deep links");
  const link=page.locator('.sli-portal-topic-card:has(a[href="#energy"]) .sli-portal-topic-links a[href*="#power"]');
  await link.click();
  await page.waitForURL(/sli-sector-data-library\.html#power/,{timeout:15000});
@@ -128,7 +128,7 @@ await check("Mobile homepage topics: responsive layout without extra library til
  await page.locator(".sli-portal-topic-card").first().waitFor({timeout:18000});
  const metrics=await page.evaluate(()=>({viewport:innerWidth,doc:document.documentElement.scrollWidth,topicCards:document.querySelectorAll(".sli-portal-topic-card").length,oldLibrary:document.querySelectorAll(".sli-portal-sector-library").length}));
  assert.ok(metrics.doc<=metrics.viewport+16,"Home page horizontal overflow after topic consolidation: "+JSON.stringify(metrics));
- assert.equal(metrics.topicCards,6);
+ assert.equal(metrics.topicCards,7);
  assert.equal(metrics.oldLibrary,0);
  await page.locator('.sli-portal-topic-card:has(a[href="#policy"]) .sli-portal-topic-links a[href$="#governance"]').click();
  await page.waitForURL(/sli-sector-data-library\.html#governance/,{timeout:15000});
@@ -224,8 +224,8 @@ await check("Home and legacy #overview alias share the single sector navigation"
   await page.waitForFunction(()=>document.querySelector("#sliPlatformMast .sli-platform-explorer")?.open===true,null,{timeout:6000});
   const menu=dropdown.locator(".sli-platform-sector-menu");
   assert.ok(await menu.isVisible(),"Explore Data dropdown not visible on "+chapter);
-  assert.equal(await menu.locator(".sli-platform-sector-group").count(),7,"Explorer must have seven coherent topical groups");
-  assert.ok(await menu.locator(".sli-platform-sector-group").nth(4).locator('a[href="./ai-investor-layer.html"]').count()===1,"AI specialist route must live inside AI group");
+  assert.equal(await menu.locator(".sli-platform-sector-group").count(),8,"Explorer must have eight distinct topical groups");
+  assert.ok(await menu.locator(".sli-platform-sector-group").nth(5).locator('a[href="./ai-investor-layer.html"]').count()===1,"AI specialist route must live inside AI group");
   assert.ok(await menu.locator(".sli-platform-sector-group").nth(2).locator('a[href="./pln-ruptl-2025-2034-source-intelligence.html"]').count()===1,"RUPTL detail must live inside Energy group");
   assert.ok(await menu.locator('a[href="./index.html#energy"]').count()===1,"Energy sector missing from unified menu");
   assert.ok(await menu.locator('a[href="./sli-sector-data-library.html#power"]').count()===1,"Power source evidence not nested beneath Energy");

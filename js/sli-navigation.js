@@ -5,7 +5,8 @@ const groups=[
  ['Start & research tools','Mulai & perangkat riset','terminal','research','guide','membership'],
  ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','investment','entities','province','opportunity','gini','labs'],
  ['Energy, minerals & trade','Energi, mineral & perdagangan','energy','electricity','ruptl','minerals','trade','map'],
- ['Food, marine & fisheries','Pangan, kelautan & perikanan','food','marine'],
+ ['Food & agriculture','Pangan & pertanian','food'],
+ ['Marine & fisheries','Kelautan & perikanan','marine'],
  ['AI & digital transformation','AI & transformasi digital','ai','aihub','komdigi','digital','digitalgov'],
  ['Policy, geopolitics & environment','Kebijakan, geopolitik & lingkungan','policy','ria','geopolitics','indo','climate'],
  ['Reference & quality','Referensi & kualitas','glossary','freshness']
@@ -112,12 +113,13 @@ function renderPlatformMast(){
  summary.setAttribute('aria-label',text('Browse SLI sector dashboards','Jelajahi dashboard sektoral SLI'));
  explorer.append(summary);
  const sectors=node('div','sli-platform-sector-menu');
- // Canonical information architecture: seven progressively disclosed topics.
+ // Canonical information architecture: eight distinct topical families, including independent Marine & Fisheries.
  // Specialist pages and source observations remain owned by ONE substantive category.
  const topicalEvidence={
   macro:[['Socioeconomic provincial data','Data sosial-ekonomi provinsi','socio']],
   energy:[['PLN reliability data','Data keandalan PLN','power'],['RUPTL source tables','Tabel sumber RUPTL','ruptl']],
   minerals:[['IEA mineral scenarios','Skenario mineral IEA','minerals']],
+  marine:[['KKP original datasets','Dataset asli KKP','marine']],
   aihub:[['AI research data','Data riset AI','ai-reports']],
   policy:[['Democracy & governance data','Data demokrasi & tata kelola','governance']],
   indo:[['Public safety indicators','Indikator keamanan publik','security']],
@@ -130,7 +132,7 @@ function renderPlatformMast(){
   2:[['Regional PLN grid baseline','Kondisi jaringan regional PLN','pln-regional-grid-baseline-2024.html'],
      ['RUPTL source intelligence','Intelijen sumber RUPTL','pln-ruptl-2025-2034-source-intelligence.html'],
      ['RUPTL investor digitization','Digitalisasi RUPTL bagi investor','ruplt-investor-digitization.html']],
-  4:[['Electricity demand forecast','Proyeksi permintaan listrik','ai-electricity-demand-forecast.html'],
+  5:[['Electricity demand forecast','Proyeksi permintaan listrik','ai-electricity-demand-forecast.html'],
      ['AI investment geography','Sebaran investasi AI','ai-investment-geography.html'],
      ['AI investors & partner projects','Investor & mitra proyek AI','ai-investor-layer.html'],
      ['Project grid & finance','Jaringan & pembiayaan proyek','ai-project-grid-finance.html'],
@@ -138,9 +140,9 @@ function renderPlatformMast(){
      ['AI compute & power','Komputasi AI & listrik','indonesia-ai-compute-power.html'],
      ['International AI benchmarks','Pembanding AI internasional','indonesia-ai-global-benchmarks.html'],
      ['AI evidence inventory','Inventaris bukti AI','indonesia-ai-source-inventory.html']],
-  5:[['Policy impact evaluation','Evaluasi dampak kebijakan','policy-impact-evaluation.html'],
+  6:[['Policy impact evaluation','Evaluasi dampak kebijakan','policy-impact-evaluation.html'],
      ['Sector regulatory impact','Dampak regulasi sektoral','policy-sector-ria.html']],
-  6:[['Atlas of 49 research methods','Atlas 49 metode riset','sli-methodology-models.html']]
+  7:[['Atlas of 49 research methods','Atlas 49 metode riset','sli-methodology-models.html']]
  };
  for(const [i,group] of groups.entries()){
   const col=node('details','sli-platform-sector-group');

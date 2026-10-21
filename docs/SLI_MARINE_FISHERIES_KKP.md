@@ -1,8 +1,8 @@
 # SLI Kelautan & Perikanan — KKP data integration
 
 ## State (21 October 2026)
-- Dedicated canonical topic dashboard: `marine-fisheries-intelligence.html` under the existing food/marine navigation family (seven top-level families retained).
-- User entry points: SLI home Food sector, shared Explore Data, Food dashboard link and the source-linked data library `#marine`.
+- Dedicated canonical topic dashboard: `marine-fisheries-intelligence.html` in its independent Marine & Fisheries navigation family (eight top-level families).
+- User entry points: standalone Home Marine & Fisheries card, separate Explore Data Marine & Fisheries group, Food dashboard cross-link and the source-linked data library `#marine`.
 - Primary source: Kementerian Kelautan dan Perikanan Portal Satu Data, <https://portaldata.kkp.go.id/portals/data-statistik/layer1>.
 - Machine-readable catalog: <https://portaldata.kkp.go.id/api/portal/data_dcat>. **DCAT is metadata**: a dataset entry, modified timestamp or distribution link never certifies that its numerical data have been extracted or updated.
 - Curated, table-cited baseline: `data/sli-marine-fisheries-kkp.json`.

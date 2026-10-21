@@ -1,0 +1,275 @@
+{
+  "schema": "sli-marine-governance-v1",
+  "revision": "2026-10-21",
+  "source_baseline": "Perpres 193/2024 as amended by Perpres 112/2025; Permen KP 2/2025",
+  "legal_sources": [
+    {
+      "title": "Perpres No. 112 Tahun 2025 — amendment to Perpres No. 193/2024",
+      "url": "https://peraturan.go.id/files/perpres-no-112-tahun-2025.pdf"
+    },
+    {
+      "title": "Permen KP No. 2 Tahun 2025 — organization and working arrangements",
+      "url": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    }
+  ],
+  "disclosure_id": "Hierarki menampilkan struktur organisasi formal KKP; jejaring adalah pengelompokan fungsi lintas lembaga, bukan bukti hubungan komando, delegasi wewenang atau MoU tertentu. Jabatan perorangan tidak ditampilkan.",
+  "disclosure_en": "Hierarchy shows the formal KKP structure; network is analytical clustering of cross-agency functions, not proof of command, delegated authority or specific MoUs. Individual officeholders are intentionally omitted.",
+  "hierarchy": [
+    {
+      "id": "president",
+      "parent": null,
+      "label_id": "Presiden Republik Indonesia",
+      "label_en": "President of Indonesia",
+      "role_id": "Kewenangan eksekutif nasional; bukan unit kerja di dalam KKP.",
+      "role_en": "National executive oversight; not a KKP internal unit.",
+      "source": "https://peraturan.go.id/files/perpres-no-112-tahun-2025.pdf"
+    },
+    {
+      "id": "kkp",
+      "parent": "president",
+      "label_id": "Kementerian Kelautan dan Perikanan (KKP)",
+      "label_en": "Ministry of Marine Affairs and Fisheries (KKP)",
+      "role_id": "Kementerian yang menyelenggarakan urusan pemerintah di bidang kelautan dan perikanan.",
+      "role_en": "National ministry responsible for marine affairs and fisheries.",
+      "source": "https://peraturan.go.id/files/perpres-no-112-tahun-2025.pdf"
+    },
+    {
+      "id": "setjen",
+      "parent": "kkp",
+      "label_id": "Sekretariat Jenderal",
+      "label_en": "Secretariat General",
+      "role_id": "Koordinasi administrasi, perencanaan internal dan dukungan manajemen KKP.",
+      "role_en": "Ministry administration, management and internal coordination.",
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    },
+    {
+      "id": "djprl",
+      "parent": "kkp",
+      "label_id": "Ditjen Penataan Ruang Laut",
+      "label_en": "DG Marine Spatial Planning",
+      "role_id": "Perencanaan, pemanfaatan dan pengendalian pemanfaatan ruang laut.",
+      "role_en": "Planning, utilization and control of marine spatial use.",
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    },
+    {
+      "id": "djpkel",
+      "parent": "kkp",
+      "label_id": "Ditjen Pengelolaan Kelautan",
+      "label_en": "DG Marine Management",
+      "role_id": "Pengelolaan sumber daya dan ekosistem kelautan, pesisir, konservasi dan jasa bahari.",
+      "role_en": "Marine resources, ecosystem and coastal management, conservation and marine services.",
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    },
+    {
+      "id": "djpt",
+      "parent": "kkp",
+      "label_id": "Ditjen Perikanan Tangkap",
+      "label_en": "DG Capture Fisheries",
+      "role_id": "Tata kelola perikanan tangkap dan sumber daya perikanan tangkap.",
+      "role_en": "Capture fisheries governance and management.",
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    },
+    {
+      "id": "djpb",
+      "parent": "kkp",
+      "label_id": "Ditjen Perikanan Budi Daya",
+      "label_en": "DG Aquaculture",
+      "role_id": "Kebijakan dan pengembangan perikanan budi daya.",
+      "role_en": "Aquaculture policy and development.",
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    },
+    {
+      "id": "djpdspkp",
+      "parent": "kkp",
+      "label_id": "Ditjen Penguatan Daya Saing Produk Kelautan dan Perikanan",
+      "label_en": "DG Competitiveness of Marine and Fishery Products",
+      "role_id": "Penguatan nilai tambah, daya saing dan akses pasar produk kelautan dan perikanan.",
+      "role_en": "Competitiveness, value addition and markets of marine/fishery products.",
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    },
+    {
+      "id": "djpsdkp",
+      "parent": "kkp",
+      "label_id": "Ditjen Pengawasan Sumber Daya Kelautan dan Perikanan",
+      "label_en": "DG Marine and Fisheries Resources Surveillance",
+      "role_id": "Pengawasan kepatuhan pemanfaatan sumber daya kelautan dan perikanan.",
+      "role_en": "Marine and fisheries resource surveillance and compliance.",
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    },
+    {
+      "id": "itjen",
+      "parent": "kkp",
+      "label_id": "Inspektorat Jenderal",
+      "label_en": "Inspectorate General",
+      "role_id": "Pengawasan intern kementerian; bukan regulator operasional komoditas.",
+      "role_en": "Internal ministry audit; not a commodity operations regulator.",
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    },
+    {
+      "id": "bppsdm",
+      "parent": "kkp",
+      "label_id": "Badan Penyuluhan dan Pengembangan SDM Kelautan dan Perikanan",
+      "label_en": "Marine and Fisheries Extension & Human Resources Development Agency",
+      "role_id": "Penyuluhan, pendidikan, pelatihan dan pengembangan SDM sektor kelautan dan perikanan.",
+      "role_en": "Extension, education, training and human-capital development.",
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    },
+    {
+      "id": "bppmhkp",
+      "parent": "kkp",
+      "label_id": "Badan Pengendalian dan Pengawasan Mutu Hasil Kelautan dan Perikanan",
+      "label_en": "Marine and Fishery Product Quality Control & Inspection Agency",
+      "role_id": "Pengendalian dan pengawasan mutu hasil kelautan dan perikanan.",
+      "role_en": "Quality control and inspection of marine and fishery products.",
+      "source": "https://jdih.kkp.go.id/Homedev/DetailPeraturan/6750"
+    }
+  ],
+  "actors": [
+    {
+      "id": "bappenas",
+      "label_id": "Bappenas",
+      "label_en": "Ministry of National Development Planning",
+      "role_id": "Perencanaan pembangunan nasional dan prioritas lintas sektor.",
+      "role_en": "National development planning and cross-sector prioritization.",
+      "source": "https://www.bappenas.go.id/"
+    },
+    {
+      "id": "kemenkopangan",
+      "label_id": "Kemenko Bidang Pangan",
+      "label_en": "Coordinating Ministry for Food Affairs",
+      "role_id": "Koordinasi agenda ketahanan pangan yang beririsan dengan perikanan; bukan atasan hierarkis Ditjen KKP.",
+      "role_en": "Coordination of food-system priorities touching fisheries; not KKP directorates' reporting line.",
+      "source": "https://www.kemenkopangan.go.id/"
+    },
+    {
+      "id": "bakamla",
+      "label_id": "Bakamla RI",
+      "label_en": "Indonesia Maritime Security Agency",
+      "role_id": "Antarmuka analitis keamanan laut dan pengawasan kegiatan maritim; kewenangan institusi terpisah.",
+      "role_en": "Maritime security coordination interface, institutionally separate from KKP.",
+      "source": "https://bakamla.go.id/"
+    },
+    {
+      "id": "brin",
+      "label_id": "BRIN",
+      "label_en": "National Research and Innovation Agency",
+      "role_id": "Riset kelautan, budidaya, dan inovasi perikanan; bukan bagian struktural KKP.",
+      "role_en": "Marine research, aquaculture science and fisheries innovation; structurally separate.",
+      "source": "https://brin.go.id/"
+    },
+    {
+      "id": "klh",
+      "label_id": "Kementerian Lingkungan Hidup",
+      "label_en": "Ministry of Environment",
+      "role_id": "Kebijakan lingkungan yang beririsan dengan konservasi pesisir dan ekosistem laut.",
+      "role_en": "Environmental policy intersections with coastal conservation and marine ecosystems.",
+      "source": "https://www.menlh.go.id/"
+    },
+    {
+      "id": "kemendag",
+      "label_id": "Kementerian Perdagangan",
+      "label_en": "Ministry of Trade",
+      "role_id": "Perdagangan dan akses pasar produk kelautan dan perikanan; kewenangan perdagangan tidak berada di bawah KKP.",
+      "role_en": "Trade and market access for marine products; separate ministerial authority.",
+      "source": "https://www.kemendag.go.id/"
+    },
+    {
+      "id": "dkp",
+      "label_id": "Dinas Kelautan dan Perikanan Daerah",
+      "label_en": "Provincial Marine and Fisheries Agencies",
+      "role_id": "Pelaksanaan kewenangan daerah sesuai pembagian urusan pemerintahan; bukan unit Ditjen KKP.",
+      "role_en": "Implementation of devolved responsibilities under regional-government law; not KKP directorates.",
+      "source": "https://peraturan.go.id/"
+    },
+    {
+      "id": "bmkg",
+      "label_id": "BMKG",
+      "label_en": "Meteorology, Climatology and Geophysics Agency",
+      "role_id": "Informasi cuaca maritim, gelombang dan iklim sebagai masukan risiko operasi.",
+      "role_en": "Marine weather, waves and climate risk information.",
+      "source": "https://www.bmkg.go.id/"
+    },
+    {
+      "id": "perindo",
+      "label_id": "PT Perikanan Indonesia",
+      "label_en": "PT Perikanan Indonesia",
+      "role_id": "Operator usaha perikanan dalam lingkup korporasi; bukan pembuat regulasi KKP.",
+      "role_en": "Corporate fisheries operator; not a KKP regulator.",
+      "source": "https://www.perikananindonesia.co.id/"
+    }
+  ],
+  "groups": [
+    {
+      "id": "policy",
+      "label_id": "Kebijakan & perencanaan",
+      "label_en": "Policy & planning",
+      "issue_id": "Arah nasional, rencana sektoral, dan prioritas anggaran.",
+      "issue_en": "National direction, sector plans and budget prioritization.",
+      "actor_ids": [
+        "kkp",
+        "bappenas",
+        "kemenkopangan"
+      ]
+    },
+    {
+      "id": "capture",
+      "label_id": "Perikanan tangkap & pengawasan",
+      "label_en": "Capture & surveillance",
+      "issue_id": "Penangkapan, kepatuhan, dan pengawasan ruang maritim.",
+      "issue_en": "Fishing operations, compliance and maritime surveillance.",
+      "actor_ids": [
+        "djpt",
+        "djpsdkp",
+        "bakamla"
+      ]
+    },
+    {
+      "id": "aquaculture",
+      "label_id": "Budi daya, riset & SDM",
+      "label_en": "Aquaculture, research & talent",
+      "issue_id": "Produktivitas budidaya, penyuluhan, dan inovasi.",
+      "issue_en": "Aquaculture productivity, extension and innovation.",
+      "actor_ids": [
+        "djpb",
+        "bppsdm",
+        "brin"
+      ]
+    },
+    {
+      "id": "ocean",
+      "label_id": "Ruang laut & konservasi",
+      "label_en": "Ocean space & conservation",
+      "issue_id": "Zonasi, pemanfaatan pesisir, konservasi laut.",
+      "issue_en": "Zoning, coastal use and marine conservation.",
+      "actor_ids": [
+        "djprl",
+        "djpkel",
+        "klh"
+      ]
+    },
+    {
+      "id": "market",
+      "label_id": "Hilirisasi, mutu & pasar",
+      "label_en": "Value chain, quality & trade",
+      "issue_id": "Mutu hasil tangkap dan budi daya, akses perdagangan.",
+      "issue_en": "Product quality, fishery value addition and market access.",
+      "actor_ids": [
+        "djpdspkp",
+        "bppmhkp",
+        "kemendag"
+      ]
+    },
+    {
+      "id": "regional",
+      "label_id": "Daerah, cuaca & operasional",
+      "label_en": "Regional delivery & risk",
+      "issue_id": "Layanan daerah, risiko cuaca, dan rantai pasok operator.",
+      "issue_en": "Regional delivery, maritime weather and operators' logistics.",
+      "actor_ids": [
+        "dkp",
+        "bmkg",
+        "perindo"
+      ]
+    }
+  ]
+}
