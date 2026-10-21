@@ -41,3 +41,17 @@
 .sli-ministry-tools :is(input,select,button):focus-visible,.sli-ministry-node:focus-visible,.sli-ministry-expand:focus-visible{outline:2px solid #f4ce77;outline-offset:3px}
 @media(max-width:960px){.sli-ministry-layout{grid-template-columns:1fr}.sli-ministry-inspector{position:static;max-height:none}}
 @media(max-width:600px){.sli-ministry-section{padding:14px 10px}.sli-ministry-agencies{grid-template-columns:1fr}.sli-ministry-tools :is(input,select){width:100%;max-width:none;flex:1 0 100%}}
+
+/* Source-aware institutional identity, not assumed governmental logos */
+.sli-ministry-agency-icon{flex:none;width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid #68879c;background:#ecf2f6;color:#18354b;overflow:hidden}
+.sli-ministry-site-icon{width:32px;height:32px;object-fit:contain;display:block;image-rendering:auto}
+.sli-ministry-icon-fallback{font-size:10px;letter-spacing:.02em;font-weight:800}
+.sli-ministry-agency-name{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.sli-ministry-inspector-brand{display:flex;gap:11px;align-items:center;margin:7px 0 12px}
+.sli-ministry-inspector-brand h4{margin:0;min-width:0;overflow-wrap:anywhere}
+.sli-ministry-icon-note{font-size:11px!important;color:#a6c0d0!important;line-height:1.55!important;margin:5px 0!important}
+.sli-ministry-officer-head{display:inline-flex;align-items:center;gap:9px;min-width:0;overflow-wrap:anywhere}
+.sli-ministry-officer-head .sli-ministry-agency-icon{width:29px;height:29px;border-radius:6px}
+.sli-ministry-officer-head .sli-ministry-site-icon{width:25px;height:25px}
+.sli-ministry-officer-head strong{min-width:0;overflow-wrap:anywhere}
+@media(max-width:560px){.sli-ministry-inspector-brand{align-items:flex-start}.sli-ministry-agency-icon{width:32px;height:32px}.sli-ministry-site-icon{width:29px;height:29px}}
