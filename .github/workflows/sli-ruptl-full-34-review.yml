@@ -6,6 +6,9 @@ on:
       - 'scripts/review-ruptl-all-34-project-grids.py'
       - 'data/sli-ruptl-provincial-source-projects-2025.json'
       - '.github/workflows/sli-ruptl-full-34-review.yml'
+concurrency:
+  group: sli-ruptl-all34-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
