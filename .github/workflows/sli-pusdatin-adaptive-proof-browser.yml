@@ -1,0 +1,91 @@
+name: SLI Pusdatin 63-Table Adaptive PDF Integrity & Browser QA
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'data/pusdatin-september-adaptive-pdf-proof.json'
+      - 'scripts/audit_pusdatin_pdf_adaptive.py'
+      - 'tests/qa-pusdatin-adaptive-pdf-proof.mjs'
+      - 'js/pusdatin-september-semantic.js'
+      - 'js/sli-food-impact-panel.mjs'
+      - '.github/workflows/sli-pusdatin-adaptive-proof-browser.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/pusdatin-september-adaptive-pdf-proof.json'
+      - 'scripts/audit_pusdatin_pdf_adaptive.py'
+      - 'tests/qa-pusdatin-adaptive-pdf-proof.mjs'
+      - 'js/pusdatin-september-semantic.js'
+      - 'js/sli-food-impact-panel.mjs'
+      - '.github/workflows/sli-pusdatin-adaptive-proof-browser.yml'
+permissions:
+  contents: read
+concurrency:
+  group: sli-pusdatin-adaptive-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-pdf-evidence-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify adaptive PDF evidence ledger, source tables and 5 native PDF fallbacks
+        run: |
+          node --check js/pusdatin-september-semantic.js
+          node --check js/sli-food-impact-panel.mjs
+          python -m py_compile scripts/audit_pusdatin_pdf_adaptive.py
+          node --test tests/qa-pusdatin-adaptive-pdf-proof.mjs tests/qa-pusdatin-independent-pdf.mjs tests/qa-sli-food-september-layout-and-impact.mjs
+      - name: State the audit boundary
+        run: |
+          echo '63/63 numerical PDF matrices reconciled against an immutable original-PDF source digest and recorded native PDF signatures.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The publisher PDF was not re-downloaded on this runner (official access can return HTTP 403). CI rechecks committed independent source evidence against semantic data, not original page visual signoff.' >> "$GITHUB_STEP_SUMMARY"
+          echo '22 source-row independently audited; 41 further row-label/hierarchy visual signoffs pending. No firm-level or causal claims are promoted.' >> "$GITHUB_STEP_SUMMARY"
+  desktop-mobile-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Locate Chrome
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          test -n "$CHROME"
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+      - name: Install Playwright core only
+        run: npm install --no-save --ignore-scripts --no-fund --no-audit --no-package-lock playwright-core@1.56.1
+      - name: Serve public SLI static dashboards on loopback
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/pusdatin-adaptive-qa.log 2>&1 &
+          echo $! >/tmp/pusdatin-adaptive-qa.pid
+          for i in {1..25}; do
+            if curl -fsS http://127.0.0.1:8765/food-agriculture-intelligence.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/pusdatin-adaptive-qa.log
+          exit 1
+      - name: Actual Chromium checks for 63-table explorer and cross-module impact
+        run: |
+          node tests/qa-pusdatin-september-browser.mjs
+          node tests/qa-sli-food-impact-browser.mjs
+      - name: Preserve screenshot and interaction artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-pusdatin-adaptive-browser-evidence
+          path: |
+            artifacts/pusdatin-september-browser/
+            artifacts/sli-food-impact-chromium/
+          retention-days: 21
+          if-no-files-found: warn
+      - name: Stop local server
+        if: always()
+        run: test ! -f /tmp/pusdatin-adaptive-qa.pid || kill "$(cat /tmp/pusdatin-adaptive-qa.pid)" || true

@@ -32,11 +32,11 @@ async function init(){
  root.append(controls);
  const flags=el("p",null,"sli-fi-note");flags.id="sliFiCoverage";root.append(flags);
  const body=el("div",null,"sli-fi-content");root.append(body);
- const dataUrls=["./data/pusdatin-agriculture-september-2026-semantic.json","./data/pusdatin-agriculture-september-2026.json","./data/pusdatin-september-pdf-independent-audit.json","./data/pusdatin-september-layout-audit-2026.json"];
+ const dataUrls=["./data/pusdatin-agriculture-september-2026-semantic.json","./data/pusdatin-agriculture-september-2026.json","./data/pusdatin-september-pdf-independent-audit.json","./data/pusdatin-september-layout-audit-2026.json","./data/pusdatin-september-adaptive-pdf-proof.json"];
  try{
   const res=await Promise.all(dataUrls.map(path=>fetch(path,{cache:"no-store"}).then(r=>{if(!r.ok)throw Error(path+" HTTP "+r.status);return r.json()})));
-  const [sem,source,audit,layout]=res;
-  if(layout.schema!=="sli-pusdatin-september-63-table-layout-audit-v2"||layout.numeric_matrix_matched!==33)throw Error("Mismatch audit status");
+  const [sem,source,audit,layout,adaptive]=res;
+  if(layout.schema!=="sli-pusdatin-september-63-table-layout-audit-v2"||layout.numeric_matrix_matched!==33||adaptive?.numeric_matrix_tables_matched!==63)throw Error("Mismatch audit status");
   const provinces=sem.table_series.find(t=>t.table===38).rows.map(x=>x.label.replace(/^\d+\s+/,""));
   province.replaceChildren();for(const p of provinces){const o=el("option",p);o.value=p;province.append(o)}province.value="Jawa Barat";
   function render(){
@@ -59,7 +59,7 @@ async function init(){
    for(const [heading,text] of sections){const card=el("article",null,"sli-fi-insight");card.append(el("h3",heading),paragraph(text));insight.append(card)}
    body.append(insight);
    const refs=el("div",null,"sli-fi-sources");refs.append(el("strong","Bukti resmi dan periode: "),link(d.national.source_url,"Tabel "+d.commodity_table+" (harga) ↗"),link(d.region.ntp_source_url,"Tabel 38 (NTP) ↗"));
-   const docs=el("p","Audit: 22 tabel telah diperiksa lebih kuat terhadap baris PDF; 11 tabel lainnya cocok pada matriks angka; 30 masih memiliki pengecualian tata letak. Data historis, bukan harga live.","sli-fi-note");refs.append(docs);body.append(refs);
+   const docs=el("p","Audit sumber: angka dalam 63 matriks tabel berhasil direkonsiliasi ke PDF asli (termasuk 5 baris dengan pembacaan alternatif). Audit lebih kuat atas pemasangan label baris masih 22 tabel; 41 tabel lainnya memerlukan peninjauan visual lanjutan. Data historis, bukan harga live.","sli-fi-note");refs.append(docs);body.append(refs);
    flags.textContent="Basis data Agustus 2026 · publikasi September 2026 · verifikasi angka != validasi penyebab atau dampak korporasi · null bukan nol";
   }
   commodity.addEventListener("change",render);province.addEventListener("change",render);render();
