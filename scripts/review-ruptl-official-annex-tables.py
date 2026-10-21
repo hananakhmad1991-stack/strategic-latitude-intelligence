@@ -16,6 +16,7 @@ def main():
  a=p.parse_args()
  index=json.loads(a.annex_index.read_text())
  with fitz.open(a.pdf) as doc:
+  page_count=len(doc)
   if len(doc)!=index["source_pdf_total_pages"]:raise ValueError("RUPTL pages differ from verified full copy")
   if hashlib.sha256(a.pdf.read_bytes()).hexdigest()!=index["source_sha256"]:raise ValueError("RUPTL SHA-256 mismatch: do not extract")
   ranges=[]
@@ -43,7 +44,7 @@ def main():
    records.append({**area,"tables_found":sum(len(x["tables"]) for x in pages),"candidate_pages":pages})
  output={"schema":"sli-ruptl-annex-tabular-candidate-review-v1","reviewed_at":datetime.now(timezone.utc).isoformat(),
  "official_source_url":index["source_url"],"source_sha256":index["source_sha256"],
- "source_total_pdf_pages":len(doc),"method":"PyMuPDF find_tables; 12-page sample per exact indexed subsection, no OCR or numerical imputation",
+ "source_total_pdf_pages":page_count,"method":"PyMuPDF find_tables; sampled exact indexed subsection pages, no OCR or numerical imputation",
  "status":"extraction_candidates_require_original_page_and_column_editor_review",
  "approved_individual_project_count":0,
  "non_promotable_notice":"Tables, headers, rows, years, capacity units and jurisdictions are machine extraction candidates. Do not publish as operating projects, investments, PPA, COD or validated MW before human page check.",
