@@ -1,0 +1,58 @@
+{
+  "schema": "sli-kkp-dcat-watch-v1",
+  "baseline_date": "2026-10-21",
+  "catalog": "https://portaldata.kkp.go.id/api/portal/data_dcat",
+  "policy": "KKP metadata watch only. Modified dates indicate source candidates for manual review, never actual numerical observation changes or permission to automatically overwrite reviewed datasets.",
+  "watch": [
+    {
+      "id": "84b9a648-84c7-4f13-980d-4eca1f8fe5de",
+      "topic": "seaweed",
+      "modified": "2026-06-24"
+    },
+    {
+      "id": "cc251c0f-8bb4-43d6-89ef-c77673fcdb1c",
+      "topic": "capture",
+      "modified": "2026-04-28"
+    },
+    {
+      "id": "9d6bb6bb-8f27-4cb0-9715-1624c3455e19",
+      "topic": "aquaculture",
+      "modified": "2026-04-28"
+    },
+    {
+      "id": "9e1393b4-e929-4f2d-bd2c-5d569f68ef93",
+      "topic": "consumption",
+      "modified": "2026-04-28"
+    },
+    {
+      "id": "f3eb7ace-c83a-49a1-81f4-fd6a99306fce",
+      "topic": "salt",
+      "modified": "2026-04-28"
+    },
+    {
+      "id": "74c33393-796f-4649-8443-edc390a6e959",
+      "topic": "fleet",
+      "modified": "2026-04-28"
+    },
+    {
+      "id": "f972e1a6-c885-4ad7-9acb-fc6aaaf7246a",
+      "topic": "mangrove",
+      "modified": "2026-04-30"
+    },
+    {
+      "id": "b8dcf869-a684-49c9-921b-4539751c2546",
+      "topic": "wpp",
+      "modified": "2026-04-30"
+    },
+    {
+      "id": "484e2b75-81dc-41d4-94d3-8aa3731d5752",
+      "topic": "conservation",
+      "modified": "2026-04-28"
+    },
+    {
+      "id": "73fc1e18-01e6-46b3-9638-7d6d8171fab3",
+      "topic": "kusuka",
+      "modified": "2026-04-28"
+    }
+  ]
+}
