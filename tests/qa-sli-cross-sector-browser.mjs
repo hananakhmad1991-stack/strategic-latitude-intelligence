@@ -23,6 +23,19 @@ try{
   assert.equal(errors.length,0,pathname+" browser errors: "+errors.join("; "));
   console.log("PASS",pathname,sector,person);passed++;await page.close();
  }
+ {
+  const page=await browser.newPage({viewport:{width:1366,height:850},locale:"id-ID"});
+  await page.goto(base+"climate-environment.html",{waitUntil:"domcontentloaded",timeout:30000});
+  const root=page.locator('[data-sli-ministry-sector="environment"]');
+  await root.locator(".sli-ministry-node").first().waitFor({timeout:20000});
+  await root.locator("select").first().selectOption("klh");
+  await root.locator(".sli-ministry-node").filter({hasText:"Diaz Faisal Malik Hendropriyono"}).first().click();
+  assert.match(await root.locator(".sli-ministry-inspector").innerText(),/Diaz Faisal Malik Hendropriyono/);
+  assert.ok(await root.locator(".sli-ministry-site-icon").count()>=1,"Institutional agency site icon should render as img");
+  assert.match(await root.innerText(),/bukan logo|favicon|site icon/i);
+  console.log("PASS environment Diaz deputy and non-deceptive web-site icon identity");
+  passed++;await page.close();
+ }
  const page=await browser.newPage({viewport:{width:390,height:844},locale:"id-ID"});
  await page.goto(base+"indonesia-macroeconomic-intelligence.html",{waitUntil:"domcontentloaded",timeout:30000});
  const root=page.locator('[data-sli-ministry-sector="macro"]');
