@@ -50,7 +50,9 @@ def safeurl(x):
  try:
   u=urllib.parse.urlparse(x.strip())
   if u.scheme!="https" or not u.hostname or u.username or u.password or u.port not in (None,443):return None
-  if u.hostname in ("localhost","127.0.0.1") or u.hostname.endswith(".internal"):return None
+  # urlparse accepts pseudo-domains with spaces, e.g. https:// official source.
+  if "." not in u.hostname or re.search(r"\s",u.hostname) or not re.fullmatch(r"[a-zA-Z0-9.-]+",u.hostname):return None
+  if u.hostname in ("localhost","127.0.0.1") or u.hostname.endswith((".internal",".local")):return None
   return x.strip()[:700]
  except (ValueError,TypeError):return None
 def clean(x,maxlen=180):
@@ -70,7 +72,8 @@ def walk(value,path=(),depth=0):
  if depth>MAX_DEPTH:return
  if isinstance(value,dict):
   # A source must be local to a record, never inferred from an unrelated sibling.
-  if len(path)>=1 and rec_source(value) and rec_title(value):
+  # Example/schema fields are documentation, never dated empirical observations.
+  if len(path)>=1 and not any(p.lower() in ("schema","example","template") for p in path) and rec_source(value) and rec_title(value):
    yield path,value
   if depth<MAX_DEPTH:
    for key,child in value.items():
