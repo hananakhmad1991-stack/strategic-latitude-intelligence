@@ -1,0 +1,44 @@
+name: SLI One-Time RUPTL 970 Raw Grid Review Import
+on:
+  push:
+    branches:
+      - feat/ruptl-970-raw-source-cells-review-20261021
+    paths:
+      - 'scripts/publish-ruptl-970-review-ledger.py'
+      - '.github/workflows/sli-ruptl-import-970-review-ledger.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  import-review-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Retrieve verified original 970 candidate scan (no new source parsing)
+        uses: actions/download-artifact@v4
+        with:
+          name: sli-ruplt-all-34-annex-grid-candidates-read-only
+          repository: ${{ github.repository }}
+          run-id: 39554648991
+          github-token: ${{ github.token }}
+          path: /tmp/sli/ruptl-scan
+      - name: Convert scan artifact to guarded browser-readable original-cell ledger
+        run: python3 scripts/publish-ruptl-970-review-ledger.py
+      - name: Publish ONLY reviewed-identity artifact transcription to this feature branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          [ "$GITHUB_REF_NAME" = "feat/ruptl-970-raw-source-cells-review-20261021" ] || { echo "Write prohibited except to review branch"; exit 1; }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/sli-ruptl-970-raw-grid-candidates-review.json
+          if git diff --cached --quiet; then echo "Review ledger unchanged"; exit 0; fi
+          git commit -m 'data: publish 970 raw RUPTL table grid candidates as UNVERIFIED source cells'
+          git push origin "HEAD:$GITHUB_REF_NAME"
