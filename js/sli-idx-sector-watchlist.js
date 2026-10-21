@@ -69,7 +69,7 @@ function renderUI(){
  const best=PROVIDER?.watchlistConfig?PROVIDER.watchlistConfig(candidates,sector,6).tabs[0]?.symbols.map(x=>x.s.slice(4)):[];
  const byCode=new Map(selected.map(x=>[x.ticker,x]));
  const top=(best||[]).map(x=>byCode.get(x)).filter(Boolean);
- if(!top.length)top.push(...selected.slice(0,6));
+ for(const candidate of selected){if(top.length>=6)break;if(!top.some(row=>row.ticker===candidate.ticker))top.push(candidate)}
  const quick=E("div","sli-idx-sectoral-tickers");
  for(const issuer of top){const a=link(tickerUrl(issuer.ticker),"");a.className="sli-idx-sectoral-ticker";
   a.append(E("strong",null,issuer.ticker),E("small",null,issuer.name));quick.append(a)}
