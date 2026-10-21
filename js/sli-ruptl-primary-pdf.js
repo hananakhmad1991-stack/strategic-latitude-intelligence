@@ -66,20 +66,20 @@ function build(root,d){
  const emChart=svgChart(eA.annual_total,eB.annual_total,d.emissions_projection.years,"ARED","RE Base","juta ton CO₂");
  em.append(emChart,el("p",d.emissions_projection.footnote),paperLink(d,510,"RE Base · PDF hal. 510 ↗")," · ",paperLink(d,511,"ARED · PDF hal. 511 ↗"));root.append(em);
  attachExport(emChart,d,["Year","ARED projected CO2 (million t)","RE Base projected CO2 (million t)"],d.emissions_projection.years.map((y,i)=>[y,eA.annual_total[i],eB.annual_total[i]]),{table:"5.175/5.176",pdf_page:510,title:"RUPTL power-generation emissions projections",note:"Projected emissions only. Not actual historical CO2 emissions; the 151 million tonne BAU comparison is a different benchmark."});
- const proj=figure("Baris proyek yang telah dicocokkan dengan lampiran PDF","Contoh baris proyek bernama dari Tabel A1.11, B1.10, C1.15. Tahun adalah target COD, status adalah keterangan RUPTL terbitan 2025; bukan status aktual 2026.");
+ const proj=figure("Baris proyek yang telah dicocokkan dengan lampiran PDF","Contoh baris proyek bernama dari Tabel A1.11, B1.10, C1.15. Nama wilayah merujuk pada bagian lampiran yang memuat baris, bukan lokasi titik geospasial terverifikasi. Tahun adalah target COD, status adalah keterangan RUPTL terbitan 2025; bukan status aktual 2026.");
  const controls=el("div");controls.className="sli-ruplt-controls";
  const psel=el("select"),sSel=el("select"),yrSel=el("select");
- const province=el("label","Provinsi"),status=el("label","Status di dokumen 2025"),year=el("label","Target COD ARED");
+ const province=el("label","Wilayah lampiran"),status=el("label","Status di dokumen 2025"),year=el("label","Target COD ARED");
  for(const [select,all,arr] of [[psel,"Semua provinsi",[...new Set(d.individual_project_source_records.records.map(x=>x.province))]],[sSel,"Semua status",[...new Set(d.individual_project_source_records.records.map(x=>x.status_in_ruplt_2025))]],[yrSel,"Semua tahun",[...new Set(d.individual_project_source_records.records.map(x=>x.cod_ared))]]]){for(const item of [all,...arr]){const op=el("option",item);op.value=item===all?"":item;select.append(op)}}
  province.append(psel);status.append(sSel);year.append(yrSel);controls.append(province,status,year);
  const projectView=el("div");projectView.className="sli-ruplt-scroll";const info=el("p");
  function renderProjects(){
   const rows=d.individual_project_source_records.records.filter(x=>(!psel.value||x.province===psel.value)&&(!sSel.value||x.status_in_ruplt_2025===sSel.value)&&(!yrSel.value||x.cod_ared===yrSel.value));
   info.textContent=rows.length+" baris sampel dari 13 yang diperiksa, bukan daftar proyek nasional lengkap. Kode 2×3 dan 2×50 dipertahankan sebagai kapasitas sumber, bukan dijumlahkan diam-diam.";
-  const t=el("table"),head=el("thead"),tr=el("tr");["Provinsi","Nama/Lokasi sumber","Jenis","Kapasitas (asli)","COD rencana ARED","Status RUPTL 2025","Pengembang (jenis)","Hal. PDF"].forEach(x=>tr.append(el("th",x)));head.append(tr);
+  const t=el("table"),head=el("thead"),tr=el("tr");["Wilayah lampiran","Nama/Lokasi sumber","Jenis","Kapasitas (asli)","COD rencana ARED","Status RUPTL 2025","Pengembang (jenis)","Hal. PDF"].forEach(x=>tr.append(el("th",x)));head.append(tr);
   const body=el("tbody");rows.forEach(r=>{const tr=el("tr");[r.province,r.project_name,r.technology,r.capacity_as_printed,r.cod_ared,r.status_in_ruplt_2025,r.developer_class_as_printed].forEach(x=>tr.append(el("td",x)));const td=el("td");td.append(paperLink(d,r.pdf_page,"Hal. "+r.pdf_page));tr.append(td);body.append(tr)});
   t.append(head,body);projectView.replaceChildren(t);
-  attachExport(t,d,["Province","Project source label","Technology","Source capacity string","Parsed simple MW, null if composite","Planned COD RE Base","Planned COD ARED","2025 source stage","Developer class","Source table","PDF page"],
+  attachExport(t,d,["Appendix geographic grouping","Project source label","Technology","Source capacity string","Parsed simple MW, null if composite","Planned COD RE Base","Planned COD ARED","2025 source stage","Developer class","Source table","PDF page"],
    rows.map(r=>[r.province,r.project_name,r.technology,r.capacity_as_printed,r.capacity_mw,r.cod_re_base,r.cod_ared,r.status_in_ruplt_2025,r.developer_class_as_printed,r.table,r.pdf_page]),{table:"A1.11/B1.10/C1.15",pdf_page:607,title:"RUPTL selected appendix project source rows",note:"Sample verified source cell transcription. Actual 2026 status, operation, exact site coordinates and realized investment not independently verified."});
  }
  [psel,sSel,yrSel].forEach(x=>x.addEventListener("change",renderProjects));proj.append(controls,info,projectView);renderProjects();root.append(proj);
