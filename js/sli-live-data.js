@@ -21,6 +21,11 @@ window.fetch=function(input,options){
   // No interception of mutation, cross-domain, html, PDF, untrusted path or app traffic.
   if(method!=='GET'||url.origin!==location.origin||!url.pathname.startsWith(folder)||!url.pathname.endsWith('.json'))
     return original(input,options);
+  // Automated loopback QA and local previews MUST examine the checked-out
+  // branch fixture, not silently substitute older main-branch data. Production
+  // Pages still uses the primary Github-main transport and same-origin fallback.
+  if(location.hostname==='localhost'||location.hostname==='127.0.0.1')
+    return original(input,options);
   const path=url.pathname.slice(folder.length);
   if(!path||!/^[-\w./]+\.json$/.test(path)||path.includes('..'))return original(input,options);
   const raw=repoRoot+path;
