@@ -132,3 +132,14 @@
 .mf-atlas-district-table{min-width:840px}
 .mf-atlas-district-table td,.mf-atlas-district-table th{white-space:normal;overflow-wrap:anywhere}
 @media(max-width:640px){.mf-atlas-district .mf-atlas-filters input{max-width:100%}}
+
+/* 2019–2024 source-linked KKP atlas — responsive and with illustrative map disclosure */
+.mf-atlas-historical{margin:20px 0}
+.mf-history-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px}
+.mf-history-layout>div{min-width:0}
+.mf-history-trend svg{width:100%;height:auto;max-height:260px;display:block;overflow:visible}
+.mf-history-table{max-height:360px;overflow:auto}
+.mf-history-table tbody tr{cursor:pointer}
+.mf-history-table tbody tr:hover{background:rgba(115,177,185,.15)}
+.mf-atlas-historical .mf-atlas-filters button{cursor:pointer;background:#25465e;border:1px solid #6789a3;color:#f1f7fb;border-radius:8px;padding:10px 12px;font:inherit;font-size:12px;min-height:42px}
+@media(max-width:900px){.mf-history-layout{grid-template-columns:minmax(0,1fr)}}

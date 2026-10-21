@@ -10,6 +10,12 @@ on:
       - 'sli-sector-data-library.html'
       - 'data/sli-marine-fisheries-kkp.json'
       - 'data/sli-kkp-portal-screened-2024.json'
+      - 'data/sli-kkp-regional-historical-2019-2024.json'
+      - 'js/sli-marine-regional-history.mjs'
+      - 'tests/qa-sli-kkp-regional-history.mjs'
+      - 'tests/test_sli_kkp_historical_research.py'
+      - 'tests/test_sli_kkp_import_validation.py'
+      - 'scripts/import_kkp_hatchery_export.py'
       - 'data/sli-kkp-screened-source-register.json'
       - 'js/sli-marine-source-atlas.mjs'
       - 'tests/qa-sli-kkp-source-atlas.mjs'
@@ -31,6 +37,12 @@ on:
       - 'sli-sector-data-library.html'
       - 'data/sli-marine-fisheries-kkp.json'
       - 'data/sli-kkp-portal-screened-2024.json'
+      - 'data/sli-kkp-regional-historical-2019-2024.json'
+      - 'js/sli-marine-regional-history.mjs'
+      - 'tests/qa-sli-kkp-regional-history.mjs'
+      - 'tests/test_sli_kkp_historical_research.py'
+      - 'tests/test_sli_kkp_import_validation.py'
+      - 'scripts/import_kkp_hatchery_export.py'
       - 'data/sli-kkp-screened-source-register.json'
       - 'js/sli-marine-source-atlas.mjs'
       - 'tests/qa-sli-kkp-source-atlas.mjs'
@@ -63,9 +75,10 @@ jobs:
         run: |
           node --check js/sli-marine-fisheries.mjs
           node --check js/sli-marine-source-atlas.mjs
-          node --test tests/qa-sli-marine-fisheries.mjs tests/qa-sli-kkp-source-atlas.mjs tests/qa-sli-information-architecture.mjs
+          node --check js/sli-marine-regional-history.mjs
+          node --test tests/qa-sli-marine-fisheries.mjs tests/qa-sli-kkp-source-atlas.mjs tests/qa-sli-kkp-regional-history.mjs tests/qa-sli-information-architecture.mjs
           python -m unittest discover -s tests -p 'test_sli_kkp_*.py' -v
-          python -m py_compile scripts/watch_kkp_dcat.py
+          python -m py_compile scripts/watch_kkp_dcat.py scripts/import_kkp_hatchery_export.py
       - name: Document source verification boundary
         run: |
           echo "Historical figures are curated KKP table snapshots; no numeric external API update or commercial licence verification is claimed." >> "$GITHUB_STEP_SUMMARY"

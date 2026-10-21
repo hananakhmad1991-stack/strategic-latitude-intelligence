@@ -1,0 +1,1022 @@
+{
+  "schema": "sli-kkp-regional-historical-2019-2024-v1",
+  "captured_from_visible_primary_tables_on": "2026-10-21",
+  "source_publisher": "Kementerian Kelautan dan Perikanan",
+  "methodology": {
+    "classification": "official static source table transcription; not a live data feed",
+    "blanks": "null means original source cell blank/unreported; never impute zero",
+    "scope": "marine_capture_fishers and seaweed_growout by source-era province; national totals taken from original KKP printed tables; 2025 estimates omitted",
+    "provenance": "Every numeric observation uses its parent series source_url, observation year, original row label and unit. No inference of legal boundaries.",
+    "crosswalk": "KEP. BANGKA BELITUNG historical spelling normalized; Papua split in 2024 not backcast to 2019-2023; historically absent new province cells remain null",
+    "maps": "Current 38-province SLI GeoJSON is CC BY 4.0 community-derived and illustrative, NOT an official BIG/BPS legal boundary. Map must be labelled illustrative; do not claim WPP polygons.",
+    "unit_note": "Fishers are headcount and seaweed is harvest volume. Avoid division as fisheries productivity or income."
+  },
+  "series": [
+    {
+      "id": "marine_fishers",
+      "label_id": "Nelayan tangkap laut",
+      "unit": "orang",
+      "source_url": "https://portaldata.kkp.go.id/Portals/Data-Statistik/Nelayan/Tbl-Statis/d/65",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "source_date": "not_disclosed",
+      "geography_vintage": "source_year_specific",
+      "rows": [
+        {
+          "province": "Aceh",
+          "values": [
+            69617,
+            80689,
+            75944,
+            67547,
+            97130,
+            103990
+          ],
+          "source_name": "ACEH"
+        },
+        {
+          "province": "Bali",
+          "values": [
+            27987,
+            50063,
+            62302,
+            68925,
+            71714,
+            77786
+          ],
+          "source_name": "BALI"
+        },
+        {
+          "province": "Banten",
+          "values": [
+            42711,
+            43294,
+            39714,
+            52300,
+            47027,
+            42971
+          ],
+          "source_name": "BANTEN"
+        },
+        {
+          "province": "Bengkulu",
+          "values": [
+            27713,
+            32169,
+            23892,
+            28963,
+            18309,
+            16955
+          ],
+          "source_name": "BENGKULU"
+        },
+        {
+          "province": "DI Yogyakarta",
+          "values": [
+            3733,
+            4317,
+            4139,
+            6222,
+            5253,
+            5271
+          ],
+          "source_name": "DAERAH ISTIMEWA YOGYAKARTA"
+        },
+        {
+          "province": "DKI Jakarta",
+          "values": [
+            15374,
+            48899,
+            75604,
+            50840,
+            109019,
+            91632
+          ],
+          "source_name": "DKI JAKARTA"
+        },
+        {
+          "province": "Gorontalo",
+          "values": [
+            25672,
+            76690,
+            22662,
+            29139,
+            36158,
+            33273
+          ],
+          "source_name": "GORONTALO"
+        },
+        {
+          "province": "Jambi",
+          "values": [
+            7324,
+            8358,
+            5927,
+            8733,
+            9798,
+            10269
+          ],
+          "source_name": "JAMBI"
+        },
+        {
+          "province": "Jawa Barat",
+          "values": [
+            61022,
+            40625,
+            41439,
+            69307,
+            83091,
+            91299
+          ],
+          "source_name": "JAWA BARAT"
+        },
+        {
+          "province": "Jawa Tengah",
+          "values": [
+            108164,
+            171515,
+            134971,
+            175766,
+            227900,
+            189029
+          ],
+          "source_name": "JAWA TENGAH"
+        },
+        {
+          "province": "Jawa Timur",
+          "values": [
+            213495,
+            212379,
+            259621,
+            216973,
+            242464,
+            217000
+          ],
+          "source_name": "JAWA TIMUR"
+        },
+        {
+          "province": "Kalimantan Barat",
+          "values": [
+            25210,
+            38146,
+            43492,
+            37091,
+            71977,
+            62392
+          ],
+          "source_name": "KALIMANTAN BARAT"
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "values": [
+            25191,
+            35547,
+            57976,
+            48743,
+            70468,
+            39495
+          ],
+          "source_name": "KALIMANTAN SELATAN"
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "values": [
+            17722,
+            28972,
+            23519,
+            41333,
+            50472,
+            52762
+          ],
+          "source_name": "KALIMANTAN TENGAH"
+        },
+        {
+          "province": "Kalimantan Timur",
+          "values": [
+            42899,
+            47186,
+            46237,
+            57711,
+            67899,
+            64079
+          ],
+          "source_name": "KALIMANTAN TIMUR"
+        },
+        {
+          "province": "Kalimantan Utara",
+          "values": [
+            11996,
+            15302,
+            17753,
+            22432,
+            24930,
+            27971
+          ],
+          "source_name": "KALIMANTAN UTARA"
+        },
+        {
+          "province": "Kepulauan Bangka Belitung",
+          "values": [
+            72301,
+            69868,
+            59660,
+            50995,
+            87579,
+            73836
+          ],
+          "source_name": "KEP. BANGKA BELITUNG [2019-2023]; KEPULAUAN BANGKA BELITUNG [2024]"
+        },
+        {
+          "province": "Kepulauan Riau",
+          "values": [
+            65767,
+            116446,
+            102520,
+            95702,
+            111934,
+            129225
+          ],
+          "source_name": "KEPULAUAN RIAU"
+        },
+        {
+          "province": "Lampung",
+          "values": [
+            31174,
+            28540,
+            24032,
+            20961,
+            36067,
+            31745
+          ],
+          "source_name": "LAMPUNG"
+        },
+        {
+          "province": "Maluku",
+          "values": [
+            218981,
+            166359,
+            193756,
+            157550,
+            149741,
+            152725
+          ],
+          "source_name": "MALUKU"
+        },
+        {
+          "province": "Maluku Utara",
+          "values": [
+            62298,
+            93017,
+            91771,
+            88414,
+            50160,
+            46150
+          ],
+          "source_name": "MALUKU UTARA"
+        },
+        {
+          "province": "Nusa Tenggara Barat",
+          "values": [
+            88181,
+            87936,
+            75304,
+            87002,
+            99349,
+            89183
+          ],
+          "source_name": "NUSA TENGGARA BARAT"
+        },
+        {
+          "province": "Nusa Tenggara Timur",
+          "values": [
+            87102,
+            94238,
+            89289,
+            95897,
+            101921,
+            101181
+          ],
+          "source_name": "NUSA TENGGARA TIMUR"
+        },
+        {
+          "province": "Papua",
+          "values": [
+            74005,
+            56169,
+            57634,
+            33857,
+            36867,
+            7681
+          ],
+          "source_name": "PAPUA"
+        },
+        {
+          "province": "Papua Barat",
+          "values": [
+            32574,
+            28372,
+            23369,
+            23909,
+            23574,
+            11827
+          ],
+          "source_name": "PAPUA BARAT"
+        },
+        {
+          "province": "Papua Barat Daya",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            12075
+          ],
+          "source_name": "PAPUA BARAT DAYA"
+        },
+        {
+          "province": "Papua Selatan",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            10627
+          ],
+          "source_name": "PAPUA SELATAN"
+        },
+        {
+          "province": "Papua Tengah",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            1525
+          ],
+          "source_name": "PAPUA TENGAH"
+        },
+        {
+          "province": "Riau",
+          "values": [
+            32192,
+            33132,
+            38089,
+            44361,
+            42873,
+            41682
+          ],
+          "source_name": "RIAU"
+        },
+        {
+          "province": "Sulawesi Barat",
+          "values": [
+            44811,
+            47646,
+            46964,
+            36140,
+            28638,
+            31061
+          ],
+          "source_name": "SULAWESI BARAT"
+        },
+        {
+          "province": "Sulawesi Selatan",
+          "values": [
+            103119,
+            169718,
+            153654,
+            163830,
+            183011,
+            187282
+          ],
+          "source_name": "SULAWESI SELATAN"
+        },
+        {
+          "province": "Sulawesi Tengah",
+          "values": [
+            51824,
+            70447,
+            68469,
+            103090,
+            106244,
+            260449
+          ],
+          "source_name": "SULAWESI TENGAH"
+        },
+        {
+          "province": "Sulawesi Tenggara",
+          "values": [
+            106831,
+            93530,
+            122091,
+            121471,
+            131269,
+            148212
+          ],
+          "source_name": "SULAWESI TENGGARA"
+        },
+        {
+          "province": "Sulawesi Utara",
+          "values": [
+            57774,
+            72273,
+            74982,
+            82704,
+            92335,
+            113783
+          ],
+          "source_name": "SULAWESI UTARA"
+        },
+        {
+          "province": "Sumatera Barat",
+          "values": [
+            65728,
+            56505,
+            54312,
+            53183,
+            75505,
+            52614
+          ],
+          "source_name": "SUMATERA BARAT"
+        },
+        {
+          "province": "Sumatera Selatan",
+          "values": [
+            8492,
+            5723,
+            10443,
+            10574,
+            10972,
+            7118
+          ],
+          "source_name": "SUMATERA SELATAN"
+        },
+        {
+          "province": "Sumatera Utara",
+          "values": [
+            159975,
+            134994,
+            137733,
+            149875,
+            171890,
+            183839
+          ],
+          "source_name": "SUMATERA UTARA"
+        }
+      ],
+      "national_totals": [
+        2088959,
+        2359064,
+        2359264,
+        2401540,
+        2773538,
+        2819994
+      ],
+      "year_coverage": [
+        {
+          "year": 2019,
+          "reported_provinces": 34,
+          "sum": 2088959,
+          "national_total": 2088959,
+          "rounding_gap": 0,
+          "reconciles": true
+        },
+        {
+          "year": 2020,
+          "reported_provinces": 34,
+          "sum": 2359064,
+          "national_total": 2359064,
+          "rounding_gap": 0,
+          "reconciles": true
+        },
+        {
+          "year": 2021,
+          "reported_provinces": 34,
+          "sum": 2359264,
+          "national_total": 2359264,
+          "rounding_gap": 0,
+          "reconciles": true
+        },
+        {
+          "year": 2022,
+          "reported_provinces": 34,
+          "sum": 2401540,
+          "national_total": 2401540,
+          "rounding_gap": 0,
+          "reconciles": true
+        },
+        {
+          "year": 2023,
+          "reported_provinces": 34,
+          "sum": 2773538,
+          "national_total": 2773538,
+          "rounding_gap": 0,
+          "reconciles": true
+        },
+        {
+          "year": 2024,
+          "reported_provinces": 37,
+          "sum": 2819994,
+          "national_total": 2819994,
+          "rounding_gap": 0,
+          "reconciles": true
+        }
+      ],
+      "caveats": "Province splits and changed census coverage produce structural breaks. A 2024 row for new Papua province must not be assigned to prior Papua records."
+    },
+    {
+      "id": "seaweed",
+      "label_id": "Produksi budidaya rumput laut",
+      "unit": "ton",
+      "source_url": "https://portaldata.kkp.go.id/portals/data-statistik/prod-ikan/tbl-statis/d/1",
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "source_date": "2025-10-15",
+      "geography_vintage": "source_year_specific",
+      "rows": [
+        {
+          "province": "Aceh",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "source_name": "ACEH"
+        },
+        {
+          "province": "Bali",
+          "values": [
+            849.66,
+            17145.34,
+            11656.95,
+            11756.41,
+            11793.65,
+            12489.49
+          ],
+          "source_name": "BALI"
+        },
+        {
+          "province": "Banten",
+          "values": [
+            70592.68,
+            70554.98,
+            37698.23,
+            51230.25,
+            52775.2,
+            53827.91
+          ],
+          "source_name": "BANTEN"
+        },
+        {
+          "province": "Bengkulu",
+          "values": [
+            60,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "source_name": "BENGKULU"
+        },
+        {
+          "province": "DI Yogyakarta",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "source_name": "DAERAH ISTIMEWA YOGYAKARTA"
+        },
+        {
+          "province": "DKI Jakarta",
+          "values": [
+            253.62,
+            116.65,
+            126.39,
+            2.16,
+            10.49,
+            24.92
+          ],
+          "source_name": "DKI JAKARTA"
+        },
+        {
+          "province": "Gorontalo",
+          "values": [
+            9328.87,
+            8671.27,
+            9265.26,
+            12147.7,
+            15304.43,
+            19919.24
+          ],
+          "source_name": "GORONTALO"
+        },
+        {
+          "province": "Jambi",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "source_name": "JAMBI"
+        },
+        {
+          "province": "Jawa Barat",
+          "values": [
+            89149.24,
+            87274.92,
+            94030.26,
+            111998.1,
+            129009.58,
+            116936.32
+          ],
+          "source_name": "JAWA BARAT"
+        },
+        {
+          "province": "Jawa Tengah",
+          "values": [
+            73658.97,
+            80458.28,
+            89287.26,
+            87429.85,
+            92574.77,
+            92894.57
+          ],
+          "source_name": "JAWA TENGAH"
+        },
+        {
+          "province": "Jawa Timur",
+          "values": [
+            686202.81,
+            699235.92,
+            688018.86,
+            666653.81,
+            728339.26,
+            755460.81
+          ],
+          "source_name": "JAWA TIMUR"
+        },
+        {
+          "province": "Kalimantan Barat",
+          "values": [
+            20,
+            93.1,
+            21.14,
+            80.44,
+            78.3,
+            104.6
+          ],
+          "source_name": "KALIMANTAN BARAT"
+        },
+        {
+          "province": "Kalimantan Selatan",
+          "values": [
+            75.47,
+            null,
+            null,
+            null,
+            0.76,
+            152.93
+          ],
+          "source_name": "KALIMANTAN SELATAN"
+        },
+        {
+          "province": "Kalimantan Tengah",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "source_name": "KALIMANTAN TENGAH"
+        },
+        {
+          "province": "Kalimantan Timur",
+          "values": [
+            28103.17,
+            28067.39,
+            27335.06,
+            25629.37,
+            61316.71,
+            89971.87
+          ],
+          "source_name": "KALIMANTAN TIMUR"
+        },
+        {
+          "province": "Kalimantan Utara",
+          "values": [
+            489699.13,
+            523257.56,
+            627875.45,
+            788967.33,
+            966262.82,
+            857797.64
+          ],
+          "source_name": "KALIMANTAN UTARA"
+        },
+        {
+          "province": "Kepulauan Bangka Belitung",
+          "values": [
+            null,
+            21.81,
+            1,
+            null,
+            null,
+            null
+          ],
+          "source_name": "KEP. BANGKA BELITUNG [2019-2023]; KEPULAUAN BANGKA BELITUNG [2024]"
+        },
+        {
+          "province": "Kepulauan Riau",
+          "values": [
+            4811.02,
+            4095.36,
+            1754.01,
+            3277.63,
+            8850.16,
+            15861.41
+          ],
+          "source_name": "KEPULAUAN RIAU"
+        },
+        {
+          "province": "Lampung",
+          "values": [
+            4181,
+            5460.13,
+            4999.67,
+            5455.73,
+            5978.53,
+            6065.96
+          ],
+          "source_name": "LAMPUNG"
+        },
+        {
+          "province": "Maluku",
+          "values": [
+            618516.36,
+            191489.17,
+            293314.94,
+            267677.48,
+            236839.61,
+            257915.56
+          ],
+          "source_name": "MALUKU"
+        },
+        {
+          "province": "Maluku Utara",
+          "values": [
+            81555.33,
+            81555.43,
+            86281.63,
+            135073.94,
+            130763.29,
+            140672.66
+          ],
+          "source_name": "MALUKU UTARA"
+        },
+        {
+          "province": "Nusa Tenggara Barat",
+          "values": [
+            896760.37,
+            677110.76,
+            702844.3,
+            696765.83,
+            706261.53,
+            691574.24
+          ],
+          "source_name": "NUSA TENGGARA BARAT"
+        },
+        {
+          "province": "Nusa Tenggara Timur",
+          "values": [
+            1595741.14,
+            2158902.59,
+            1392539.23,
+            1403335.92,
+            1559601.18,
+            1467663.91
+          ],
+          "source_name": "NUSA TENGGARA TIMUR"
+        },
+        {
+          "province": "Papua",
+          "values": [
+            789.54,
+            904.63,
+            872.7,
+            872.7,
+            872.7,
+            30.08
+          ],
+          "source_name": "PAPUA"
+        },
+        {
+          "province": "Papua Barat",
+          "values": [
+            11921.14,
+            607.16,
+            769.38,
+            746.61,
+            493.51,
+            253
+          ],
+          "source_name": "PAPUA BARAT"
+        },
+        {
+          "province": "Riau",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "source_name": "RIAU"
+        },
+        {
+          "province": "Sulawesi Barat",
+          "values": [
+            70519.66,
+            94187.07,
+            77271.29,
+            16352.97,
+            40071.04,
+            40400.09
+          ],
+          "source_name": "SULAWESI BARAT"
+        },
+        {
+          "province": "Sulawesi Selatan",
+          "values": [
+            3405848.35,
+            3442076.11,
+            3787798.15,
+            3796881.68,
+            3847708.37,
+            4018691.97
+          ],
+          "source_name": "SULAWESI SELATAN"
+        },
+        {
+          "province": "Sulawesi Tengah",
+          "values": [
+            932685.63,
+            927786.52,
+            673786.49,
+            655452.63,
+            695921.95,
+            752242.42
+          ],
+          "source_name": "SULAWESI TENGAH"
+        },
+        {
+          "province": "Sulawesi Tenggara",
+          "values": [
+            346886.31,
+            272324.57,
+            299886.89,
+            313146.98,
+            309050.27,
+            307265.53
+          ],
+          "source_name": "SULAWESI TENGGARA"
+        },
+        {
+          "province": "Sulawesi Utara",
+          "values": [
+            357596.5,
+            247024.07,
+            184596.81,
+            183332.11,
+            153532.37,
+            155358.54
+          ],
+          "source_name": "SULAWESI UTARA"
+        },
+        {
+          "province": "Sumatera Barat",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            26.77
+          ],
+          "source_name": "SUMATERA BARAT"
+        },
+        {
+          "province": "Sumatera Selatan",
+          "values": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "source_name": "SUMATERA SELATAN"
+        },
+        {
+          "province": "Sumatera Utara",
+          "values": [
+            180,
+            null,
+            null,
+            null,
+            null,
+            1.59
+          ],
+          "source_name": "SUMATERA UTARA"
+        }
+      ],
+      "national_totals": [
+        9775985.95,
+        9618420.81,
+        9092031.33,
+        9234267.61,
+        9753410.49,
+        9853604.06
+      ],
+      "year_coverage": [
+        {
+          "year": 2019,
+          "reported_provinces": 26,
+          "sum": 9775985.97,
+          "national_total": 9775985.95,
+          "rounding_gap": 0.02,
+          "reconciles": true
+        },
+        {
+          "year": 2020,
+          "reported_provinces": 24,
+          "sum": 9618420.79,
+          "national_total": 9618420.81,
+          "rounding_gap": -0.02,
+          "reconciles": true
+        },
+        {
+          "year": 2021,
+          "reported_provinces": 24,
+          "sum": 9092031.35,
+          "national_total": 9092031.33,
+          "rounding_gap": 0.02,
+          "reconciles": true
+        },
+        {
+          "year": 2022,
+          "reported_provinces": 23,
+          "sum": 9234267.63,
+          "national_total": 9234267.61,
+          "rounding_gap": 0.02,
+          "reconciles": true
+        },
+        {
+          "year": 2023,
+          "reported_provinces": 24,
+          "sum": 9753410.48,
+          "national_total": 9753410.49,
+          "rounding_gap": -0.01,
+          "reconciles": true
+        },
+        {
+          "year": 2024,
+          "reported_provinces": 26,
+          "sum": 9853604.03,
+          "national_total": 9853604.06,
+          "rounding_gap": -0.03,
+          "reconciles": true
+        }
+      ],
+      "caveats": "Source blank cell = unavailable, not zero; 2025 ** estimates excluded. Wet seaweed harvest tonnage, not dry export output."
+    }
+  ]
+}
