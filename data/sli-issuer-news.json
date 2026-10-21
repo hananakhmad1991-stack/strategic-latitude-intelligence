@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T12:05:33.516376Z",
+  "updated_at_utc": "2026-10-21T12:41:03.951418Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,54 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_f78a7704f7e1a27dd5a8fa",
+      "title": "KISI Nilai Prospek EBT Tetap Cerah, PGEO Punya Fondasi Kuat untuk Tumbuh - Dunia Energi",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaXRDRWZuYTJfa0p2U0pDTDF4OFBmVHNWU2lhYTBjZ0dYbnZXNGxwM2p5cXZkdnNNaWxtbm9QVzVTQzhHUFZTc1ZTdXZQUUN1U1gtd2I1M0pLa3pJaDhiVG0wcHBuS2Z5MU5iSXR4N3hmcFloM1VHc1pOckItQzAzT2tyNU1yS01pUW0yN2o1dG1NemN6cW1NOTRjMFRFVUFLSjZn?oc=5",
+      "publisher": "Dunia Energi",
+      "published_at_utc": "2026-10-21T12:10:45Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_b656687159bc252982d4ae",
+      "title": "10 Saham Penopang IHSG Hari Ini: BBCA–BREN Pimpin Top Leaders - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPUE9EbTBzRjh6dHVJakFaWGNlUzJsOUV6VmRyLXRWZ3pXVjlka3pmLWM3UGxFYzNJc05WYmtQWklXYkc0Z2xVb0lVRnh4dTF1SWhBdVBkdTNxTFVzODhoQmZUUEpvYVF5RGNWb1pPWVYyLWZRMXBiNU1VQkVISnlSUlItbWljVVFST29mcDRJb1UwaVRBQ21VMVhEdFdnaUU0aktFd1NJeS1aeThXdzdr?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-21T12:01:57Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_e441f3774fb3baabbaed20",
+      "title": "Simak Rekomendasi Saham BBCA, ENRG, dan JPFA untuk Kamis (22/10) - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZTZVRlhhOEtyTmZZd3JQUlYwbXRrMlRTWWNtZGUtZGZKbnNVV29tdTJ1NkdOakxEYjZadWNHb21UZ1ZtdVpRQVF1UE9GQkItZ3Q3Z01TN0NoeW1VTnZnSkNIWVQwRndmMG02VzFESzIxSFhMOXJGMmdNSzRiT3d1NldQWkJlWXktRTNiUmNQc3ZHVVpLM2ZlNnNOY9IBkwFBVV95cUxNWmZ1ZzFaTWVSaW1HQV9EUHY3dk0zNmIwdHJYdTlFMFBzc2RNcFM3ZnlCMmRybmJsN3MzSEI3amxDMnNBUG9wOVFTWHpZVm9kNnFnaU8xbmdNdVEwamJHUkdfNllRSGI1cFVUZU9zSjU4N1dwd09lQ2cwYWpVVF8xRHB3WngySEpSa1ZXVEltdmlpMDQ?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T11:57:35Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_f07f76328baaeb22366d3a",
       "title": "Saham TLKM Makin Menarik Usai Tekanan MSCI, Yield Dividen Tembus 12,8 Persen dan Potensi Cuan 76 Persen - TOPIK.ID",
@@ -149,6 +197,22 @@
         "ADRO"
       ],
       "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ff67674985037c3f870579",
+      "title": "Saham JPFA Tertekan 40,69 Persen di Tengah Prospek Pemulihan - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE05QmU4MUw3eXdqdVgzUEo1emhDcmQ2TzZGWlB3WnpfNERLV0xYOFN0Wl9UemhoVW4wUmZZMjJpMTF6NVBQSTF4Y1hUNHRsNVZOTXFIdVgtcnluazFJT1BFNkdKTDdWdV8yX2c?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-21T09:37:23Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -498,6 +562,22 @@
       "id": "sli_issuer_f50cbd8e7a6989cfab2f2f",
       "title": "Dividen Yield ANTM, BBRI & BMRI Makin Tebal - Bloomberg Technoz",
       "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOTktJaHk4bzJuMnJjeDhLMWRPNTNkeFN2Q1lvWkZrSDJ2bm0yR2lSdURWX2wyd0Etay01SC0yUmh0YmJqTTYyLTFRVmRhUHlrZnlxWmJqUXEzZGx3c0oyYzM5VUdSZUJ2R1NwTXNGNGFCM2lyMXVNOGhmWHlCMnhPX3NlSmFQRHluX2JKeUlzZXJOU0IzeTJV?oc=5",
+      "publisher": "Bloomberg Technoz",
+      "published_at_utc": "2026-10-21T03:50:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_2d006bff9ef6d71421a84f",
+      "title": "Dividen Yield ANTM, BBRI & BMRI Makin Tebal - Market - Bloomberg Technoz",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPanczcmNMRG9RaDdsZl9jX3BEM0RuZ1NwX0lQQkxwUERUOG95aTIwN291ZGVoYjNuWTZZZHhYZTN5WlhlZF84d0JXeEpsMThSQWNmN3pnVjVUcTV0dFhvRXZpVUxqRzdtZzB5dEF4NUV0TU5rS3VsTC1sS1pFZEg0N25VYl9neTNWeTNFbXdxMkJqZTlwZjgxeGdn?oc=5",
       "publisher": "Bloomberg Technoz",
       "published_at_utc": "2026-10-21T03:50:00Z",
       "date_type": "rss_pubdate",
@@ -1341,6 +1421,22 @@
       "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOaWxKU0hGWDcxQ0RFV3QzU2h4X2xzcUdPWW85QmZsNTNSeE5BU09pVmxaUko1M0VqUzl2Y29CWXpUQ0JlcU1aTDhTM0ZTN2RlN3hmcmQzT2VDMEtlbGpDNkZXbXVhWTFvNWJJRmJubHNuVmdRSHl3Qkswb2hqMU5kTG9acUVnRnJDMm5yUDhGODl4WFBKLTB3WjF0dldfd3A3bW5laUdiOGRXNVVydEpabTlqaWF6bExnOHhaSm5sZVFMR3NPRHZZRnp3?oc=5",
       "publisher": "Bisnis Indonesia Premium",
       "published_at_utc": "2026-10-20T07:21:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_32eb584a940a2689cbdd02",
+      "title": "IHSG Naik 4,51% saat Net Sell Tembus Rp 1,9 T, Asing Borong Saham TLKM dan GOTO - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPYnExcDVSSXBLNnBGakM0SlhpTUdjS21hSkFNY2hQSEZETUlsZ05Iazh0UzFXQU54Y1NmVnRFTHF5Z1hfcXR0Q3Brc0tZVTdXeVpUc3JoU1Vkbno4T1d6Tm11N2V2cUJmMmtuZ1dDZ0NXQnRkM25VR2Zrc3Buc3pHbkJlUTJTSHV5VGk1LThmUjRZZ2Z4cGNBTjNqN2xUZWFReU1QcHFiR3hfSTNHWVZPY3lURTZIXzdxNl9vUXJCSU5WZzVqLThIVlBB0gHPAUFVX3lxTE5VTG93NHRwVHhneVRySm5rZEhkOURLNEkyQUJ5bHQ4YnRRUl91Zm9CMGNCZWNDUEUzRVd1eVdCMVgwOVJEMC1ZXzBDZk10ang1bDU3RDJRWlVQZ2NYcUhpSHB6TFNFLVd2b0IyOXpqMUhyMzFuTHRvRVFJOFRoYUZmX3Y2ZUtDSnpXYnBhY0lRWXpQRTE3QXctOFBjLThYSnpmcG14Zmp4eFpRQVJsWG53WnVBU0pBLWhoNjhLaEpaTXFzTjY2TmV0alZyUm9qYw?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-20T07:20:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "TLKM"
@@ -3113,6 +3209,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_aa33292c3f693984db7d8b",
+      "title": "IHSG Diprediksi Melemah, MNC Sekuritas Rekomendasikan BBCA, ICBP, TINS, dan VKTR - Jawa Pos",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQUmowWnpRbjJRYllTM3ZOcTB1Vk1qVTYwYTRHRUpXS0RyTmlKUHlLa1E3alZ6bWNpU09NU2RDWU5xeDB1dFhNWDZoXzRDNlFvMUZTUkF5OEJZOXNRRWJJbld1T3ZHRk9JUzd5WU9KVnFDNmY3ZDRfOWRPUjlGN0VndEZfVU1EdDktZW0xcER4WG5VcDBSVTY4bHAtX2txSTR5QVFnSzREUFZhSktHOWU5bjN4ZEFEQQ?oc=5",
+      "publisher": "Jawa Pos",
+      "published_at_utc": "2026-10-16T01:09:33Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_3f5adb31215e4daf365130",
       "title": "Dilego Asing Rp 1,6 Triliun, GOTO Jadi Saham Terbanyak Dilepas pada Oktober Berjalan - KONTAN",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQSEk3aUc1a0NSWUx3V0tfeDJtYkpsdmk2NVVTZkFlbnFzVUxOOTcxdE1Jb3FDOUhMVW9iWFBjUDZ3cHpuWE8zWHE3TGl6OUduX19ieWxITjBLc3JXTm9lTTZ3M3FhajVmRU9XRTduaGwtdUd6SUFrNnpYUFFTTHV6eFNlX1hFUFJoai1ZSVlya2dpMzZyeWhlaFFhb3d1eGplNElSd2wzRUUyb1pYS1ZaTHZDbEllNVE?oc=5",
@@ -3188,6 +3300,22 @@
         "INTP"
       ],
       "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_63ff2fa3e640312a6aaca8",
+      "title": "Saham INCO Menguji Support Rp4.050 pada 15 Oktober 2026 - bsinews.id",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE94aXBGS2JFUzBzVGdGUDliSmNYbUNKNlhHMGp4czh5bW54ZmFMWUx4THRoZGRVeG5TS2hDR1FxZTRQZ0FudEh2cEVfN3REQXNHbkNxSUFfeXRfQ2JHMDNxNA?oc=5",
+      "publisher": "bsinews.id",
+      "published_at_utc": "2026-10-15T23:14:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INCO"
+      ],
+      "sector": "minerals",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -3900,6 +4028,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_b463b3e2c6008e67bc4204",
+      "title": "INCO Lanjutkan Rebound dari 3.990 di Tengah Kabar Rencana RUPS Luar Biasa - FXStreet",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOYm1JRWJJRlJhNVJtajNpUjhpU2o5MHItVHhtbmxscWxHZUtvR3hjR09FRWU0RWQyMU94eXZXRHROVmxuWG1KTF9iZ0NRTUZNUXQ1aXZBclZpX2dQQWxYcXI2N1YxX3BwV2RTWi1jcTBXUVZSMlFaWHFTVWk5YWJDY2F5Q0JndHJkVl9iXzJ4dzhsbEZINE5YOG9kUDRiaTJob1BNWVZjamE2bHpjRy1fMEtFQks0YzRkemfSAb8BQVVfeXFMUExjbVpPdHg3LS1oMXQxUFJCcy02NndVc1cxOFZ0dnlpR0o1OHFEaC15alk3N1JSTkJsZExqSEdTY3VrWWZSdXFfb2NZXzhMVFZMdHBvSE5HSnVuUU9JN01uMzgtejBGdEhJbkRVT3J6RzYwZmVOTkx6NVZQNDRpQjRucHpwMXhGdzlQaExVVU9GVnhpczE3cVVLTk5FODRYNlhfUk5GUVdkZEZHLVFfM0RnRFJLbmhxTGpaQ3YyM0k?oc=5",
+      "publisher": "FXStreet",
+      "published_at_utc": "2026-10-14T06:50:16Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INCO"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_59871c06ffcc1fbdd85e17",
       "title": "Kisi-Kisi Terbaru Saham AMMN, ANTM Cs di Tengah Ledakan AI & Data Center - Bisnis Indonesia Premium",
       "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPVWtGWGhMUWNnZG10VTNFQnRMTU9Wd1dSamd0NnNjaW9McGs5ZnlQdkZ0d0V2dE1lLWlJYWJiZWdKbVg5MHExeFpXTk1jeG1WMnJiNjZYUl9US3p3eDl5Qno0d2ZfZ3FMSXdWT3Bta3V4WHdoX1g3eWhVUndCc0NYdFlYa1pULWhhUERDb2xjTnRBWjc4YnRuVkpVZFJoTGd1b1lYZDhBNHhXaExacURGQkJqUC03Rk8yU0I3NEZ3QQ?oc=5",
@@ -4055,22 +4199,6 @@
         "DCII"
       ],
       "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_7751abb4f8f660ce88799e",
-      "title": "Simak Rekomendasi Teknikal Saham EXCL, MEDC, ACES untuk Rabu (14/10) - TradingView",
-      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBmQTkzVXpqSGRMY1RMaEJ6QklzWGI2Z050RFJMakRQUXp0SnpYQks4cFVhaXFjTk9lNk9pNXR5WG55Y3lueTEyci0zVnBfQmdLV3REQ281V0dNY0pIVmlxSS03ZnJxUQ?oc=5",
-      "publisher": "TradingView",
-      "published_at_utc": "2026-10-13T12:13:41Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "MEDC"
-      ],
-      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
