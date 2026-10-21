@@ -1176,6 +1176,10 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         }
       ]
+    },
+    "marine": {
+      "geopolitical": [],
+      "domestic": []
     }
   },
   "counts": {
@@ -1190,6 +1194,10 @@
     "food": {
       "geopolitical": 7,
       "domestic": 21
+    },
+    "marine": {
+      "geopolitical": 0,
+      "domestic": 0
     }
   },
   "topic_status": [
@@ -1340,7 +1348,7 @@
   ],
   "errors": [],
   "reused_last_good_groups": [],
-  "methodology": "Automated, hourly scheduled Google News RSS discovery across 24 themed searches; published dates belong to news articles. Source names are publisher attributions, not a verification of facts. A successful scrape is not evidence that any specific event occurred. No quantitative probability or actual loss is inferred.",
+  "methodology": "Automated, hourly scheduled Google News RSS discovery across 30 themed searches; published dates belong to news articles. Source names are publisher attributions, not a verification of facts. A successful scrape is not evidence that any specific event occurred. No quantitative probability or actual loss is inferred.",
   "refresh_policy": "GitHub scheduled hourly; browser checks published snapshot every 5 minutes while chapter is open.",
   "windows": {
     "headline_max_age_days": 14,
