@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install exact PDF table parser
-        run: python3 -m pip install --quiet pymupdf
+        run: python3 -m pip install --quiet pymupdf==1.26.7
       - name: Fetch full checksum-pinned official RUPTL
         run: |
           mkdir -p /tmp/sli
