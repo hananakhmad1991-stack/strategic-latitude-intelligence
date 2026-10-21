@@ -116,6 +116,10 @@ function marineView(host,data,viewID){
  select.value=v.id;select.addEventListener("change",()=>marineView(host,data,select.value));label.append(select);controls.append(label);host.append(controls);
  host.append(E("p","tf-macro-note",T("Five published categories: ","Lima kategori yang diterbitkan: ")+usd(total)+T(" · full national total approximately "," · total nasional sekitar ")+usd(data.total_exports_reported_musd)+T(". No artificial exact 'other' balance because KKP's total was rounded.",
  ". Tidak membuat angka residu 'lainnya' yang terkesan persis karena total KKP dibulatkan.")));
+ if(Number.isFinite(data.trade_surplus_reported_musd)){
+  const surplus=E("p","tf-macro-note",T("2025 fisheries trade surplus reported separately by KKP/BPS: ","Surplus perdagangan perikanan 2025 yang dilaporkan terpisah oleh KKP/BPS: ")+usd(data.trade_surplus_reported_musd)+T(" (rounded; not a diagram edge or inferred imports)."," (dibulatkan; bukan sisi diagram atau dasar untuk menebak nilai impor)."));
+  host.append(surplus);
+ }
  const edges=v.items.map(a=>({from:"ALL",to:a.id,value:a.value_musd,tag:v.id+"|"+a.id,label:T(a.label_en,a.label_id)}));
  const area=E("div","tf-sankey-scroll");host.append(area);
  sankey(area,[[node("ALL","Indonesia fisheries exports","Ekspor perikanan Indonesia")],v.items.map(x=>node(x.id,x.label_en,x.label_id))],edges,{
