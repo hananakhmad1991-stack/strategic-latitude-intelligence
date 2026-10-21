@@ -1,0 +1,33 @@
+{
+  "schema": "sli-bps-hs-partner-matrix-v1",
+  "status": "awaiting_primary_extract",
+  "review_status": "not_reviewed",
+  "as_of": "2026-10-21",
+  "publisher": "Badan Pusat Statistik (BPS)",
+  "primary_query_url": "https://www.bps.go.id/id/exim",
+  "primary_publications": [
+    {
+      "direction": "exports",
+      "url": "https://www.bps.go.id/id/publication/2026/08/10/556d446e35c86054cb33739f/statistik-perdagangan-luar-negeri-indonesia-ekspor-2025.html",
+      "title": "Statistik Perdagangan Luar Negeri Indonesia Ekspor 2025",
+      "published": "2026-08-10"
+    },
+    {
+      "direction": "imports",
+      "url": "https://www.bps.go.id/id/publication/2026/08/04/29900d4157c9ba7ad7fc72ea/statistik-perdagangan-luar-negeri-indonesia-impor-2025",
+      "title": "Statistik Perdagangan Luar Negeri Indonesia Impor 2025",
+      "published": "2026-08-04"
+    }
+  ],
+  "hs_classification": "HS 2022",
+  "unit": "USD",
+  "value_basis": {
+    "exports": "FOB",
+    "imports": "CIF"
+  },
+  "verified_cells": 0,
+  "observations": [],
+  "data_caveat": "No BPS HS × country × period cell has been independently downloaded and reviewed yet. This metadata is NOT a numeric dataset; preserve existing secondary source flows with explicit qualification.",
+  "promotion_rule": "Only promote after individual cell evidence and original CSV checksum are checked; never infer joint commodity-partner allocations from separate marginals.",
+  "input_contract": "scripts/import_bps_hs_partner.py; inputs/bps_hs_partner.csv (official-source-transcribed standardized rows) and external reviewer approval manifest."
+}
