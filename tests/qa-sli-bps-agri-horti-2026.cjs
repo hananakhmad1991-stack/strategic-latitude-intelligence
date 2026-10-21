@@ -39,7 +39,7 @@ assert.match(food,/sli-bps-agri-horti-source-panel.css/);
 assert.match(marine,/food-agriculture-intelligence.html#fa-bps-2025-2026/);
 assert.ok(!js.includes("No. Telp")&&!js.includes("source_original_pdf_url"));
 class El{
- constructor(tag){this.tagName=tag;this.children=[];this.events={};this.textContent="";this.value="all";this.attributes={};this.style={};this.isConnected=true;}
+ constructor(tag){this.tagName=tag;this.children=[];this.events={};this.textContent="";this.value=tag==="select"?"all":"";this.attributes={};this.style={};this.isConnected=true;}
  append(...n){this.children.push(...n)}
  replaceChildren(...n){this.children=n}
  addEventListener(event,fn){this.events[event]=fn}
