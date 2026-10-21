@@ -23,6 +23,9 @@ window.fetch=function(input,options){
     return original(input,options);
   const path=url.pathname.slice(folder.length);
   if(!path||!/^[-\w./]+\.json$/.test(path)||path.includes('..'))return original(input,options);
+  // Only repo-owned local GET JSON: let schema-versioned dashboards recover an approved
+  // new local dataset when the latest main mirror has an incompatible older schema.
+  if(options?.sliLocalOnly===true){const clean={...options};delete clean.sliLocalOnly;return original(input,clean)}
   const raw=repoRoot+path;
   // cache no-store prevents deliberate stale local browser caches.
   // Remote CDN may still have short-lived caching, not second-by-second updates.
