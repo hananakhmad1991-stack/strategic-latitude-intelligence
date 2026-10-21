@@ -33,7 +33,7 @@ SOURCES = {
     "regulatory-monitor": "data/regulatory-monitor.json",
     "publication-watch": "data/sli-publication-watch.json",
 }
-ALLOWED_CATEGORIES = {"minerals", "ai", "energy", "regional", "food", "trade", "geopolitics", "macro"}
+ALLOWED_CATEGORIES = {"minerals", "ai", "energy", "regional", "food", "marine", "trade", "geopolitics", "macro"}
 def safe_link(value):
     try:
         u = urllib.parse.urlsplit(str(value))
@@ -74,6 +74,7 @@ def infer_sector(row, source):
         if "minerals" in sectors: return "minerals"
         if "ai" in sectors: return "ai"
         if "food" in sectors: return "food"
+        if "marine" in sectors: return "marine"
         return "regional"
     return "regional"
 def flatten(source, doc):
