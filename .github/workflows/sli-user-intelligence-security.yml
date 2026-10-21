@@ -52,12 +52,16 @@ jobs:
           node --check js/sli-user-intelligence-qa.js
           node --test services/sli-user-intelligence/tests/*.test.mjs
           python services/sli-user-intelligence/tests/test_migration.py
-      - name: Ensure production gate is still disabled until auth and D1 are configured
+      - name: Enforce exact Cloudflare Access pilot origin and no client secrets
         run: |
           python - <<'PY'
           import json
           p=json.load(open('config/sli-user-intelligence.json'))
-          assert p['enabled'] is False, 'Do not publish live API configuration in a QA PR'
-          assert p['api_base'] is None
-          print('Production feature flag remains disabled as expected')
+          assert p['schema_version']=='sli-user-intelligence-client-v1'
+          assert p['enabled'] is True, 'Restricted two-account Chrome pilot expected after owner QA'
+          assert p['api_base']=='https://sli-user-intelligence.hananakhmad1991.workers.dev/'
+          assert p['login_url']==p['api_base']+'api/me'
+          assert set(p)=={'schema_version','enabled','api_base','login_url','note'}
+          assert all(s not in json.dumps(p).lower() for s in ['authorization','cf_access_aud','secret','bearer','api_token','password'])
+          print('Restricted private pilot route and public-only metadata verified')
           PY
