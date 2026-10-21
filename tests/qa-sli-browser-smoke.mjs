@@ -213,10 +213,11 @@ await check("Chart click and CSV/XLSX/PNG/JPG/PDF/embed exports produce real out
  assert.ok(copied.includes("<iframe")&&copied.includes("sli_embed="),"Embed does not contain an attributable frame");
 });
 
-await check("Navigation parity: Home and Full Overview open the SAME sector dropdown",{width:1366,height:850},async page=>{
+await check("Home and legacy #overview alias share the single sector navigation",{width:1366,height:850},async page=>{
  for(const chapter of ["home","overview"]){
   await page.goto(pageUrl("index.html#"+chapter),{waitUntil:"domcontentloaded",timeout:30000});
   await waitMast(page);await checkMast(page);
+  assert.equal(new URL(page.url()).hash,"#home","Retired overview URL must normalize to Home");
   assert.equal(await page.locator(".sli-portal-topnav").count(),0,"Duplicate standalone homepage navbar still present");
   const dropdown=page.locator("#sliPlatformMast .sli-platform-explorer");
   await dropdown.locator(":scope > summary").click();
