@@ -86,7 +86,11 @@ class PrimarySourceTests(unittest.TestCase):
   repo=Path(__file__).resolve().parents[1]
   d=json.loads((repo/"data/bps-hs-partner-matrix.json").read_text(encoding="utf-8"))
   self.assertEqual(d["schema"],bps.SCHEMA)
-  self.assertEqual(d["status"],"awaiting_primary_extract")
-  self.assertEqual(d["observations"],[])
-  self.assertEqual(d["verified_cells"],0)
+  if d["status"]=="awaiting_primary_extract":
+   self.assertEqual(d["observations"],[])
+   self.assertEqual(d["verified_cells"],0)
+  else:
+   self.assertEqual(d["status"],"verified")
+   self.assertGreater(d["verified_cells"],0)
+   self.assertEqual(d["verified_cells"],len(d["observations"]))
 if __name__=="__main__":unittest.main()
