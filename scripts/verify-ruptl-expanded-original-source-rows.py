@@ -6,7 +6,7 @@ uniqueness of generating facilities or any realized/operational status.
 """
 import argparse,hashlib,json,re
 from pathlib import Path
-import fitz
+import pymupdf as fitz
 
 def norm(s):
     return " ".join(str(s or "").replace("\n"," ").split()).casefold()
