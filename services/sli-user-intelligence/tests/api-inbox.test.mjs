@@ -173,4 +173,85 @@ sourceDB.state.set("catalyst_source_sync",JSON.stringify({
  schema_version:"sli-catalyst-history-v2",synced_at_utc:new Date(Date.now()-7*3600e3).toISOString(),event_count:1
 }));
 await assert.rejects(processEvents(sourceEnv),/sync expired/);
+
+// Synthetic E2E acceptance test: production Worker handler, native Access
+// identity, real D1 query pathway (mock binding), one fresh Catalyst event,
+// per-user matching, inbox read ownership, dedupe and deletion isolation.
+// No synthetic event is written into the production ledger or remote D1.
+const e2eDB=new FakeD1();
+const e2eEnv={...noJwtEnv,DB:e2eDB};
+const session=uuid=>({access:{aud:e2eEnv.CF_ACCESS_AUD,
+ async getIdentity(){return {user_uuid:uuid,service_token_status:false}}}});
+const sessions={
+ antm:session("22222222-2222-4222-8222-222222222222"),
+ pgeo:session("33333333-3333-4333-8333-333333333333"),
+ sector:session("44444444-4444-4444-8444-444444444444")
+};
+const e2e=async (method,path,actor,body=null)=>{
+ const response=await worker.fetch(req(method,path,"untrusted-test-user",body),e2eEnv,sessions[actor]);
+ return {status:response.status,body:await response.json()};
+};
+e2eDB.state.set("catalyst_source_sync",JSON.stringify({
+ schema_version:"sli-catalyst-history-v2",
+ synced_at_utc:new Date().toISOString(),event_count:0
+}));
+// First cron pass creates only the activation baseline: no retroactive alerts.
+assert.equal((await processEvents(e2eEnv)).initialized,true);
+const enroll=[
+ ["antm",{tickers:["ANTM"],sectors:[],kinds:["news","project"],include_sector:false,in_app:true}],
+ ["pgeo",{tickers:["PGEO"],sectors:["minerals"],kinds:["news"],include_sector:false,in_app:true}],
+ ["sector",{tickers:[],sectors:["minerals"],kinds:["news"],include_sector:true,in_app:true}]
+];
+for(const [actor,prefs] of enroll){
+ const r=await e2e("PUT","/api/preferences",actor,prefs);
+ assert.equal(r.status,200,actor+" enroll status");
+ assert.deepEqual(r.body.preferences,prefs,actor+" enrollment should roundtrip");
+}
+const synthetic={
+ id:"sli-catalyst-aaaaaaaaaaaaaaaaaa",
+ kind:"news_indexed",title:"ANTM synthetic QA event — NOT A REAL NEWS ARTICLE",
+ detected_at_utc:new Date(Date.now()+5000).toISOString(),
+ sector:"minerals",source_url:"https://example.org/test-only/no-real-news",
+ ticker_links:[{ticker:"ANTM",basis:"explicit_headline_identity"}],
+ evidence_status:"index_change_candidate_not_independently_verified",
+ impact_status:"not_assessed"
+};
+e2eDB.sources.set(synthetic.id,{
+ event_json:JSON.stringify(synthetic),detected_at_utc:synthetic.detected_at_utc
+});
+e2eDB.state.set("catalyst_source_sync",JSON.stringify({
+ schema_version:"sli-catalyst-history-v2",
+ synced_at_utc:new Date().toISOString(),event_count:1
+}));
+const delivered=await processEvents(e2eEnv);
+assert.equal(delivered.processed,1);
+assert.equal(delivered.delivered,2,"ANTM should receive direct, sector follower contextual; PGEO none");
+const a=await e2e("GET","/api/inbox?limit=10","antm");
+const b=await e2e("GET","/api/inbox?limit=10","pgeo");
+const c=await e2e("GET","/api/inbox?limit=10","sector");
+assert.equal(a.status,200);assert.equal(b.status,200);assert.equal(c.status,200);
+assert.equal(a.body.items.length,1);assert.equal(a.body.unread,1);
+assert.equal(a.body.items[0].relevance,"direct");
+assert.equal(a.body.items[0].event_id,synthetic.id);
+assert.equal(b.body.items.length,0,"PGEO user may never see ANTM notification");
+assert.equal(b.body.unread,0,"Other user unread counter must be isolated");
+assert.equal(c.body.items.length,1);assert.equal(c.body.items[0].relevance,"sector");
+assert.equal((await processEvents(e2eEnv)).processed,0,"Scheduled rerun dedupes event");
+assert.equal(e2eDB.inbox.size,2,"Cron rerun must not redeliver");
+const foreignId=a.body.items[0].id;
+assert.equal((await e2e("POST","/api/inbox/read","pgeo",{ids:[foreignId]})).status,200);
+assert.equal((await e2e("GET","/api/inbox","antm")).body.unread,1,
+ "Another Access user cannot mark an ANTM alert read");
+assert.equal((await e2e("POST","/api/inbox/read","antm",{ids:[foreignId]})).status,200);
+assert.equal((await e2e("GET","/api/inbox","antm")).body.unread,0);
+assert.equal((await e2e("GET","/api/inbox","sector")).body.unread,1,
+ "Reading own item must not change sector follower's item");
+assert.equal((await e2e("DELETE","/api/me","pgeo")).body.deleted,true);
+assert.equal((await e2e("GET","/api/me","pgeo")).body.enrolled,false);
+assert.equal((await e2e("GET","/api/inbox","antm")).body.items.length,1,
+ "Other account deletion cannot erase ANTM inbox");
+assert.equal((await e2e("GET","/api/inbox","sector")).body.items.length,1,
+ "Other account deletion cannot erase sector inbox");
+console.log("SLI synthetic delivery E2E QA passed: ANTM direct notification, PGEO isolation, minerals sector context, dedupe, read & delete ownership");
+
 console.log("D1 backend API QA passed: ownership, origin, delivery isolation, cron diagnostics, D1-only source ingestion, freshness and dedupe");
