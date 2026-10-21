@@ -52,7 +52,7 @@ test("unapproved record kind cannot pass provenance screening",()=>{
  assert.ok(check(f).blockers.includes("source_index_records_fail_provenance_screen"));
 });
 test("unsupported source URL and duplicate IDs block staging",()=>{
- const f=fixture();f.index.records[0].source_url="https://example.org/data?key=hidden";
+ const f=fixture();f.index.records[0].source_url="http://example.org/data";
  assert.ok(check(f).blockers.includes("source_index_records_fail_provenance_screen"));
  const g=fixture();g.index.records.push({...g.index.records[0]});
  g.index.coverage.rows=2;
