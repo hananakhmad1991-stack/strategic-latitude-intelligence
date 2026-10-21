@@ -27,7 +27,7 @@ const priority={
 function watchlistConfig(rows,selected="all",limit=9){
  const ordered=SECTORS.filter(([s])=>selected==="all"||selected===s);
  const tabs=ordered.map(([sector,id,en])=>{
-  const picks=rows.filter(x=>x.sector===sector&&/^[A-Z0-9]{4}$/.test(x.ticker||""))
+  const picks=rows.filter(x=>(x.sector===sector||(sector==="marine"&&x.theme_marine===true))&&/^[A-Z0-9]{4}$/.test(x.ticker||""))
    .sort((a,b)=>{const p=priority[sector]||[];const x=p.indexOf(a.ticker),y=p.indexOf(b.ticker);return (x<0?999:x)-(y<0?999:y)||a.ticker.localeCompare(b.ticker)})
    .slice(0,Math.max(1,Math.min(9,limit)));
   return {title:T(id,en),originalTitle:en,symbols:picks.map(x=>({s:"IDX:"+x.ticker,d:x.ticker+" · "+x.name.slice(0,29)}))};
