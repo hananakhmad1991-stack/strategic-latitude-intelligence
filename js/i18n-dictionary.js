@@ -2479,6 +2479,7 @@ window.SLI_TRANSLATIONS_ID.set("Loading sourced IDX sector issuers…","Memuat k
 
 /* Approved SLI Decision Terminal homepage entry */
 window.SLI_TRANSLATIONS_ID.set("◈ SLI Decision Terminal","◈ Terminal Keputusan SLI");
+window.SLI_TRANSLATIONS_ID.set("◎ Private Watchlist & Inbox","◎ Watchlist dan Kotak Masuk Privat");
 
 /* Reviewed source-library homepage link (ID navigation). */
 window.SLI_TRANSLATIONS_ID.set("Data Library · BPS / IEA / PLN ↗","Perpustakaan Data · BPS / IEA / PLN ↗");
