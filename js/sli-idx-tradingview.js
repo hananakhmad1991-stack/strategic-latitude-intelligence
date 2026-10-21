@@ -6,7 +6,7 @@
 const SCRIPT="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js";
 const SECTORS=[
  ["energy","Energi","Energy"],["minerals","Mineral","Minerals"],["coal","Batu bara","Coal"],
- ["food","Pangan","Food"],["technology","Teknologi","Technology"],
+ ["food","Pangan","Food"],["marine","Kelautan","Marine & fisheries"],["technology","Teknologi","Technology"],
  ["infrastructure","Infrastruktur","Infrastructure"],["transport","Transportasi","Transport"],
  ["manufacturing","Manufaktur","Manufacturing"]
 ];
@@ -18,6 +18,7 @@ const priority={
  minerals:["ANTM","AMMN","INCO","MDKA","MBMA","NCKL","TINS","BRMS","HRUM"],
  coal:["PTBA","ADRO","AADI","ITMG","BYAN","BUMI","INDY","GEMS","DSSA"],
  food:["INDF","ICBP","CPIN","JPFA","MYOR","AALI","UNVR","CMRY","DSNG"],
+ marine:["CPRO","DSFI","IKAN","PCAR"],
  technology:["TLKM","ISAT","EXCL","GOTO","DCII","MTEL","TOWR","TBIG","EMTK"],
  infrastructure:["JSMR","WIKA","PTPP","ADHI","SSIA","CMNP","TOTL","WTON","WEGE"],
  transport:["BIRD","SMDR","TMAS","ASSA","GIAA","WINS","MPMX","SHIP","MBSS"],
