@@ -105,7 +105,20 @@ function show(){
    row.append(el("td",isPower?r.period:r.country||(en()?r.label_en:r.label_id)),el("td",fmt(val)));}tbody.append(row)});
  table.replaceChildren(thead,tbody);registerExporter();
 }
-select.addEventListener("change",show);show();
+select.addEventListener("change",show);
+ // The atlas is rendered from JSON after page load; switching EN/ID must refresh
+ // its dynamic labels while preserving the selected publisher figure and raw values.
+ document.addEventListener("sli:languagechange",()=>{
+  heading.textContent=en()?"Digitized original-report figures":"Grafik laporan asli yang telah didigitalisasi";
+  if(lab.firstChild?.nodeType===Node.TEXT_NODE)lab.firstChild.textContent=en()?"Choose figure":"Pilih grafik";
+  d.figures.forEach((f,i)=>{
+   const op=select.options[i];if(!op)return;
+   op.textContent=(f.source_url?"World Bank":"Stanford")+" · "+(en()?f.title_en:f.title_id)+" · Figure "+f.figure_number+(f.figure_panel||"");
+  });
+  sum.textContent=en()?"Show exact transcribed values":"Lihat tabel nilai sumber";
+  show();
+ });
+ show();
 }
 async function loadJSON(path){const r=await fetch(path,{cache:"no-cache"});if(!r.ok)throw Error("HTTP "+r.status+" "+path);return r.json()}
 Promise.allSettled([loadJSON(PATH),loadJSON(WB_PATH)]).then(results=>{
