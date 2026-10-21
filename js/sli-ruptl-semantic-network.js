@@ -62,7 +62,9 @@ function semanticRows(body){
   const q=$("input"),m=selector("Kelas data",[["Semua jenis",""],["Kuota/program","program_quota_or_area"],["Label proyek bernama","named_source_label_not_distinct_asset"],["Nama tidak terbaca","unresolved_source_cell"]]),
   n=selector("Tinjauan nama",[["Semua kandidat",""],["Nama duplikat potensial","duplicates"],["Sampel cocok terkurasi","curated"]]);
   q.type="search";q.placeholder="Cari nama, teknologi atau tabel asli";q.setAttribute("aria-label","Cari kandidat pembangkit dari PDF");
-  const ctrls=$("div",null,"sem-controls");ctrls.append(q,m,n);body.append(ctrls);
+  const regionOptions=[["Semua wilayah RUPTL",""],...Array.from(new Set(d.rows.map(r=>r.annex_id))).sort().map(id=>[id,id])];
+  const region=selector("Wilayah sumber RUPTL",regionOptions);
+  const ctrls=$("div",null,"sem-controls");ctrls.append(q,region,m,n);body.append(ctrls);
   const pager=buildPager(null,{onRow:r=>[
     a(urlPDF+"#page="+r.source_pdf_page,r.annex_id+" · "+r.source_table+" p"+r.source_pdf_page),
     (()=>{const x=$("div");x.append($("strong",r.source_label_candidate||"Label tidak terbaca"),
@@ -73,11 +75,20 @@ function semanticRows(body){
   body.append(pager.out);
   function filt(){
    const term=q.value.trim().toLocaleLowerCase("id-ID");
-   pager.setRows(d.rows.filter(r=>(!m.value||r.record_kind_candidate===m.value)
+   pager.setRows(d.rows.filter(r=>(!region.value||r.annex_id===region.value)&&(!m.value||r.record_kind_candidate===m.value)
      &&(!n.value||(n.value==="duplicates"?r.name_collision_not_proof_same_asset:!!r.sample_source_row_match_id))
      &&(!term||[r.source_label_candidate,r.annex_id,r.technology_candidate,r.source_table].join(" ").toLocaleLowerCase("id-ID").includes(term))));
   }
-  [m,n].forEach(x=>x.addEventListener("change",filt));q.addEventListener("input",filt);filt();
+  [m,n].forEach(x=>x.addEventListener("change",filt));q.addEventListener("input",filt);
+  region.addEventListener("change",()=>{
+    filt();
+    if(region.value)document.dispatchEvent(new CustomEvent("sli:ruptl-region-selected",{detail:{annex_id:region.value}}));
+  });
+  document.addEventListener("sli:ruptl-region-focus",e=>{
+    const id=e.detail?.annex_id;
+    if(id&&regionOptions.some(x=>x[1]===id)){region.value=id;filt();}
+  });
+  filt();
  });
 }
 function networkRows(body){
