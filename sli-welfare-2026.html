@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="id">
+<head>
+<script>/* SLI chrome prepaint: prevent flash of legacy layout */try{var pref=localStorage.getItem('sli-ui-language');if(pref==='en'||pref==='id')document.documentElement.lang=pref}catch(_){ }document.documentElement.classList.add('sli-chrome-pending');window.addEventListener('load',function(){setTimeout(function(){document.documentElement.classList.remove('sli-chrome-pending')},1400)},{once:true});</script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kesejahteraan Rakyat 2026 | SLI · BPS Susenas</title>
+<meta name="description" content="Statistik Kesejahteraan Rakyat 2026: peta provinsi, pendidikan, kesehatan, akses energi, internet, bantuan sosial, uang elektronik dan tren 2022–2026 berbasis BPS.">
+<link rel="stylesheet" href="./css/sli-navigation.css?v=20261018-menu-flash2">
+<style>
+:root{color-scheme:dark;--bg:#081321;--card:#112238;--line:#2a4160;--light:#eef7ff;--muted:#b7c8de;--accent:#6dd4e3;--shade:#172e47}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(160deg,#0b1e30,#081321 55%);color:var(--light);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:#90e7ec}a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,path:focus-visible{outline:3px solid #fbd26f;outline-offset:3px}
+main{width:min(1380px,100% - 30px);margin:0 auto;padding:28px 0 80px}
+.eyebrow{color:var(--accent);font-weight:750;letter-spacing:.11em;text-transform:uppercase;font-size:.79rem}
+h1{font-size:clamp(2rem,4.2vw,3.7rem);line-height:1.15;letter-spacing:-.04em;max-width:950px;margin:.28rem 0 1rem}
+h2{font-size:clamp(1.25rem,2vw,1.7rem);margin:.1rem 0 .35rem}
+h3{font-size:1.08rem;margin:0}
+p{margin:.55rem 0}small,.subtle{color:var(--muted)}
+.hero{padding:25px 0 16px}
+.hero>p:not(.eyebrow){max-width:980px;color:var(--muted)}
+.tags{display:flex;gap:9px;flex-wrap:wrap;margin:17px 0}
+.tags span{border:1px solid #466887;border-radius:999px;padding:5px 10px;font-size:.79rem;color:#cae3f2}
+.card{background:rgba(17,34,56,.95);border:1px solid var(--line);border-radius:15px;padding:20px;min-width:0}
+.grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(330px,1fr);gap:16px;margin:16px 0}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin:16px 0}
+.card header{margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}
+label{font-weight:650;font-size:.9rem;display:block;margin-bottom:6px}
+select,input{width:100%;background:#0c2035;border:1px solid #486b8d;color:var(--light);font:inherit;border-radius:9px;padding:10px 12px;min-height:45px}
+button,.btn{cursor:pointer;background:#173958;border:1px solid #5588a9;color:var(--light);padding:10px 13px;border-radius:9px;font-weight:690;font:inherit;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+button:hover,.btn:hover{background:#29516d}
+.btn.primary{background:#166078;border-color:#4fd5e8}
+.note{font-size:.87rem;color:var(--muted);margin:9px 0}
+.notice{border-left:3px solid #e1b877;padding:10px 14px;background:#43342155;font-size:.9rem;margin:20px 0}
+.map-scroll{overflow:auto;background:radial-gradient(ellipse at 60% 50%,#173651,#0b1c30 75%);border-radius:13px;border:1px solid #304b64}
+#welfareMap{display:block;width:100%;min-width:580px;height:auto;aspect-ratio:1120/490}
+#welfareMap path{cursor:pointer;transition:stroke-width .12s}
+#welfareMap path:hover,#welfareMap path:focus{stroke:#f4f8ff;stroke-width:2.5}
+.bar-row{width:100%;background:none;border:0;border-radius:6px;padding:5px 0;display:grid;grid-template-columns:minmax(114px,1.25fr) minmax(80px,1.1fr) 62px;gap:10px;align-items:center;text-align:left;font-size:.83rem;min-height:31px}
+.bar-region{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar-track{background:#243e59;height:10px;border-radius:9px;overflow:hidden}
+.bar-fill{background:linear-gradient(90deg,#4093a8,#78e0e4);height:100%;border-radius:9px;display:block}
+.bar-value{text-align:right;font-variant-numeric:tabular-nums}
+.table-wrap{overflow:auto;max-height:570px}
+table{width:100%;border-collapse:collapse;font-size:.91rem}
+th,td{border-bottom:1px solid #283e56;padding:9px 12px;text-align:left;white-space:nowrap}
+thead th{position:sticky;top:0;background:#142d45;z-index:2}
+tr.chosen{background:#1e4b60}
+tbody tr:hover{background:#224059}
+.region-link{color:#d9f5ff;border:0;background:transparent;padding:0;min-height:0;font-weight:650;text-align:left}
+svg#trendSvg{display:block;width:100%;min-height:195px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.status{padding:11px 14px;border:1px solid #466580;border-radius:9px;color:#d5e7fa;font-size:.87rem;margin:20px 0}
+footer{margin-top:30px;border-top:1px solid #2b4761;padding-top:22px;color:var(--muted)}
+@media(max-width:860px){.grid,.grid2{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr} main{width:min(100% - 22px,800px)}}
+@media(max-width:540px){.card{padding:13px}.controls{grid-template-columns:1fr}.bar-row{grid-template-columns:minmax(85px,1fr) minmax(60px,1fr) 57px;gap:6px}.hero{padding-top:14px}.tags span{font-size:.7rem}.grid,.grid2{gap:12px}.actions button,.actions a{flex:1 1 100%}}
+</style>
+</head><body>
+<main>
+<section class="hero">
+<p class="eyebrow">SLI / Sosial-ekonomi / Sumber primer BPS</p>
+<h1>Kesejahteraan Rakyat <span style="color:#79dce3">2026</span></h1>
+<p>Eksplorasi lintas sektor berbasis <strong>Susenas Maret 2026</strong>: pendidikan, kesehatan dan BPJS, listrik serta bahan bakar memasak, akses internet, bantuan pangan, dan uang elektronik. Bandingkan 38 provinsi melalui peta, peringkat dan tabel; lihat pula tren nasional 2022–2026.</p>
+<div class="tags"><span>38 provinsi + Indonesia</span><span>23 tren nasional</span><span>9 indikator provinsi pilihan</span><span>165 tabel sumber diinventarisasi</span><span>Rilis BPS 5 Okt 2026</span></div>
+<p class="subtle" id="sourceDate">Memuat tanggal sumber BPS…</p>
+</section>
+<p class="notice"><strong>Status data:</strong> Tampilan ini adalah pilot digitalisasi, bukan replika seluruh publikasi 558 halaman. Pemeriksaan struktur otomatis telah dilakukan; verifikasi visual tiap sel, keterkaitan RSE dan izin reproduksi komersial data BPS masih terbuka. <strong>NA bukan 0.</strong> Jangan menyimpulkan hubungan sebab-akibat dari perbedaan provinsi.</p>
+<div id="status" class="status" role="status" aria-live="polite">Memuat dataset SLI…</div>
+<section class="card" aria-label="Pemilihan indikator">
+<h2>Jelajahi menurut sektor</h2>
+<div class="controls">
+<div><label for="sectorSelect">Sektor terkait</label><select id="sectorSelect"><option>Memuat…</option></select></div>
+<div><label for="indicatorSelect">Indikator 2026</label><select id="indicatorSelect"><option>Memuat…</option></select></div>
+</div>
+<p class="note" id="indicatorInfo">Setiap indikator ditautkan ke tabel dan halaman asli.</p>
+<p id="selection" style="font-weight:750;color:#a5eef5">Pilih provinsi pada peta, grafik atau tabel.</p>
+</section>
+<section class="grid">
+<div class="card">
+<header><div><p class="eyebrow">Spasial · 38 provinsi</p><h2>Peta kesejahteraan</h2></div><span class="subtle">Klik wilayah</span></header>
+<div class="map-scroll" role="region" aria-label="Peta provinsi Indonesia interaktif" tabindex="0"><svg id="welfareMap" viewBox="0 0 1120 490" role="img" aria-label="Peta provinsi interaktif dengan nilai indikator Susenas 2026"></svg></div>
+<p class="note" id="geoMatch">Memuat geometri provinsi…</p>
+</div>
+<div class="card">
+<header><div><p class="eyebrow">Perbandingan · nilai indikator</p><h2>12 provinsi teratas</h2></div></header>
+<div id="rankBars" aria-live="polite"></div>
+<p class="note" id="rankNote">Peringkat hanya berdasarkan besaran angka, bukan kinerja.</p>
+</div>
+</section>
+<section class="grid2">
+<div class="card">
+<header><div><p class="eyebrow">Time series / nasional</p><h2>Tren 2022–2026</h2></div></header>
+<label for="trendSelect">Indikator tahunan nasional</label>
+<select id="trendSelect"><option>Memuat…</option></select>
+<svg id="trendSvg" role="img" viewBox="0 0 720 244" aria-label="Grafik tren nasional BPS lima tahun" style="margin-top:14px"></svg>
+<p class="note" id="trendCaption">Tahun tanpa data akan ditandai sebagai data tidak tersedia.</p>
+</div>
+<div class="card">
+<header><div><p class="eyebrow">Dataset &amp; keterlacakan</p><h2>Tabel provinsi</h2></div></header>
+<div class="controls">
+<div><label for="provinceSearch">Cari provinsi</label><input id="provinceSearch" placeholder="Contoh: Papua / Jawa / Aceh"></div>
+<div><label for="sortMode">Urutan</label><select id="sortMode"><option value="descending">Angka tertinggi</option><option value="ascending">Angka terendah</option><option value="alphabetical">Nama provinsi A–Z</option></select></div>
+</div>
+<div class="table-wrap" role="region" tabindex="0" aria-label="Tabel statistik provinsi"><table><thead><tr><th>Urutan</th><th>Provinsi</th><th>Nilai (%)</th></tr></thead><tbody id="provinceRows"></tbody></table></div>
+<p class="note" id="tableCount"></p>
+</div>
+</section>
+<section class="card">
+<header><div><p class="eyebrow">Research AI / Bukti &amp; sumber</p><h2>Jalur analisis lintas sektor</h2></div></header>
+<p>Dataset terkurasi ini disiapkan untuk pengambilan bukti DERGUBA AI Owner Test. Pertanyaan riset dapat mencakup kesenjangan akses internet–uang elektronik, BPJS, listrik, dukungan sosial, maupun pendidikan, lalu dibandingkan dengan indikator sektor lain. <strong>Ini perbandingan deskriptif, bukan bukti sebab-akibat.</strong></p>
+<div class="actions"><button id="copyQuestion" type="button" class="btn primary">Salin pertanyaan riset bersumber</button><a class="btn" href="./sli-research-ai.html">Buka DERGUBA AI ↗</a><button id="csvButton" type="button" class="btn">Ekspor 7 indikator provinsi (CSV)</button><a id="sourceBps" href="https://www.bps.go.id" target="_blank" rel="noopener noreferrer" class="btn">Publikasi resmi BPS ↗</a></div>
+<p id="copyStatus" class="note" aria-live="polite"></p>
+<p class="note">Sampling error/RSE dari bab 9 wajib diperiksa sebelum memakai angka berpresisi rendah untuk kesimpulan kebijakan. Istilah sumber, penyebut, periode pengamatan dan perbedaan kategori disertakan pada selector indikator.</p>
+</section>
+<footer>Sumber: BPS, <em>Statistik Kesejahteraan Rakyat 2026</em> (Katalog 4101002), Susenas Maret 2026. <a id="sourceFoot" href="https://www.bps.go.id" target="_blank" rel="noopener noreferrer">Buka sumber resmi BPS ↗</a> · SLI Data QA: pilot terkurasi, bukan data real-time atau hasil inferensi kausal.</footer>
+</main>
+<script defer src="./js/sli-bps-welfare-2026.js?v=20261022-bps1"></script>
+<script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script>
+<script defer src="./js/sli-shared-appendix.js?v=20261017-conversation4"></script>
+<script defer src="./js/sli-live-data.js?v=20261017-unified-transport"></script>
+</body></html>

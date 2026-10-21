@@ -3,7 +3,7 @@
 (()=>{'use strict';
 const groups=[
  ['Start & research tools','Mulai & perangkat riset','terminal','research','guide','membership'],
- ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','investment','entities','province','opportunity','gini','labs'],
+ ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','investment','entities','province','opportunity','gini','welfare','labs'],
  ['Energy, minerals & trade','Energi, mineral & perdagangan','energy','electricity','ruptl','minerals','trade','map'],
  ['Food & agriculture','Pangan & pertanian','food'],
  ['Marine & fisheries','Kelautan & perikanan','marine'],
@@ -24,6 +24,7 @@ const modules={
  macro:['Macroeconomic Intelligence','Intelijen Makroekonomi','indonesia-macroeconomic-intelligence.html','GDP, inflation, external balances and dated national data.','PDB, inflasi, neraca eksternal dan data nasional.'],
  opportunity:['Provincial Comparison & Stress','Perbandingan & Tekanan Provinsi','provincial-opportunity-engine.html','Compare 38 provincial economies and conditional stress, not predicted returns.','Bandingkan 38 provinsi dan skenario, bukan prediksi keuntungan.'],
  province:['Provincial Intelligence · Dossiers','Intelijen Provinsi · Profil Daerah','provincial-intelligence.html','Industry, energy, PDRB/GRDP, Gini and bounded economic scenarios.','Industri, energi, PDRB, Gini dan skenario ekonomi bersyarat.'],
+ welfare:['Welfare Statistics 2026 · Susenas','Kesejahteraan Rakyat 2026 · Susenas','sli-welfare-2026.html','BPS 2026 province map, health, schooling, energy access, digital inclusion and national trends; validated subset only.','Peta provinsi BPS 2026: pendidikan, kesehatan, energi rumah tangga, digitalisasi dan tren nasional; subset yang masih diaudit.'],
  gini:['Gini Ratio · Expenditure Inequality','Rasio Gini · Ketimpangan Pengeluaran','gini-inequality.html','BPS expenditure inequality, not income or wealth inequality.','Ketimpangan pengeluaran BPS, bukan pendapatan atau kekayaan.'],
  labs:['Investor & Scenario Labs','Lab Investor & Skenario','intelligence-labs.html','Source-linked screening and user-supplied model assumptions.','Penyaringan berbasis sumber dan asumsi model dari pengguna.'],
  energy:['Energy Security · Overview','Ketahanan Energi · Gambaran Umum','index.html#energy','Oil, gas, power, biofuels, transition, governance and resilience.','Migas, listrik, bioenergi, transisi dan tata kelola.'],
@@ -55,7 +56,8 @@ const related={
  research:['overview','terminal','macro','aihub'],membership:['overview','research','guide','glossary'],overview:['terminal','research','investment','energy'],investment:['province','opportunity','gini','labs'],map:['investment','energy','province'],
  trade:['minerals','energy','macro','marine'],energy:['electricity','ruptl','map','trade','food'],food:['marine','trade','macro','province'],marine:['food','trade','climate','province'],minerals:['map','trade','investment'],
  ai:['aihub','komdigi','digital','digitalgov'],policy:['geopolitics','ria','indo','climate'],geopolitics:['policy','indo','trade','energy'],macro:['opportunity','gini','investment'],
- opportunity:['province','gini','labs'],province:['opportunity','gini','map','electricity'],gini:['province','opportunity','macro'],
+ opportunity:['province','gini','labs'],province:['opportunity','gini','map','electricity'],gini:['province','opportunity','macro','welfare'],
+ welfare:['province','gini','macro','research'],
  labs:['province','opportunity','indo'],electricity:['energy','ruptl','province'],ruptl:['energy','electricity','aihub'],
  aihub:['ai','komdigi','digital','electricity'],komdigi:['aihub','digital','digitalgov'],
  digital:['aihub','komdigi','digitalgov'],digitalgov:['aihub','digital','ria'],
