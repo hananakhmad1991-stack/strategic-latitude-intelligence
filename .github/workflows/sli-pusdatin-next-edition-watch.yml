@@ -1,0 +1,88 @@
+name: SLI Pusdatin New Edition — Official Source Watch
+on:
+  workflow_dispatch:
+  schedule:
+    # 08:13 WIB daily, schedule may be delayed by GitHub.
+    - cron: '13 1 * * *'
+  pull_request:
+    paths:
+      - 'scripts/watch_pusdatin_new_editions.py'
+      - 'tests/test_watch_pusdatin_editions.py'
+      - '.github/workflows/sli-pusdatin-next-edition-watch.yml'
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: sli-pusdatin-next-edition-watch
+  cancel-in-progress: false
+jobs:
+  source-discovery-and-stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate official-only link parsing and staging policy
+        run: python -m unittest discover -s tests -p test_watch_pusdatin_editions.py -v
+      - name: Inspect official publisher listing; stage any new PDF (do not publish numeric values)
+        if: github.event_name != 'pull_request'
+        id: discover
+        continue-on-error: true
+        run: python scripts/watch_pusdatin_new_editions.py --out-dir artifacts/pusdatin-source-watch
+      - name: Upload source-discovery ledger and candidate PDF
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-pusdatin-publication-candidate
+          path: artifacts/pusdatin-source-watch/
+          retention-days: 21
+          if-no-files-found: warn
+      - name: Open one owner-review issue for new publisher edition
+        if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,pathlib,os
+          p=pathlib.Path('artifacts/pusdatin-source-watch/discovery.json')
+          if not p.exists():print("No source discovery report");raise SystemExit(0)
+          d=json.loads(p.read_text())
+          item=d.get("latest_new_candidate")
+          if not item:
+              print("No new publication edition, or source blocked; no misleading promotion.")
+              raise SystemExit(0)
+          stamp=item['edition']; marker=f'SLI_PUSDATIN_NEW_EDITION_{stamp}'
+          path=pathlib.Path('/tmp/pusdatin-review.md')
+          path.write_text(f"""A newer official **Statistik Terkini Ekonomi Pertanian** edition has been discovered.
+          
+          - New edition: {stamp}
+          - Detail: {item['detail_url']}
+          - PDF source: {item.get('pdf_url') or 'link not found'}
+          - Download status: {item['status']}
+          - Baseline currently on SLI: September 2026
+          - Workflow artifacts: PDF candidate and discovery ledger if the publisher allowed downloading.
+          
+          **Review gate:** verify all table counts, labels, units, revision notes, aggregation, provincal coverage and visual cells against the official PDF before updating SLI. Never automatically overwrite a prior publication or present an unreviewed release as current numeric data.
+          
+          {marker}
+          """,encoding='utf-8')
+          with open(os.environ['GITHUB_ENV'],'a') as f:
+              f.write('PUSDATIN_REVIEW_MARKER='+marker+'\n')
+          PY
+          if [ -z "${PUSDATIN_REVIEW_MARKER:-}" ]; then exit 0; fi
+          ISSUE=$(gh issue list --repo "$REPO" --state open --search "$PUSDATIN_REVIEW_MARKER in:body" --json number --jq '.[0].number // empty' || true)
+          if [ -n "$ISSUE" ]; then echo "Existing review issue #$ISSUE"; exit 0; fi
+          gh issue create --repo "$REPO" --title "Pusdatin new agriculture edition requires digitization review" --body-file /tmp/pusdatin-review.md
+      - name: Record official-source availability honestly
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          if [ "${{ steps.discover.outcome }}" != "success" ]; then
+            echo "Publisher listing unavailable or returned an error; release detection NOT verified." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
