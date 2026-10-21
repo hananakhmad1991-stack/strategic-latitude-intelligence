@@ -37,7 +37,7 @@ def evaluate(baseline, catalog):
         identifier=item.get("identifier")
         if isinstance(identifier,str) and identifier:
             indexes[identifier]=item
-    updates=[],absent=[],links=[]
+    updates,absent,links=[],[],[]
     for expected in baseline["watch"]:
         entry=indexes.get(expected["id"])
         if not entry:
