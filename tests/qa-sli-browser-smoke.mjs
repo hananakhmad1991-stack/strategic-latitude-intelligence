@@ -8,6 +8,14 @@ import path from "node:path";
 import {chromium} from "playwright-core";
 
 const BASE=(process.env.SLI_BROWSER_TEST_BASE||"http://127.0.0.1:8765").replace(/\/$/,"");
+// Derive the expected figure count from source-controlled, publisher-attributed registers.
+const aiFigures=[
+ ...JSON.parse(fs.readFileSync("data/sli-stanford-2026-digitized-figures.json","utf8")).figures,
+ ...JSON.parse(fs.readFileSync("data/sli-worldbank-ai-2025-digitized-figure-panels.json","utf8")).figures
+];
+const figureCount=aiFigures.length;
+const figureId=f=>(f.source_url?"worldbank:":"stanford:")+f.figure_number+(f.figure_panel||"");
+assert.equal(new Set(aiFigures.map(figureId)).size,figureCount,"Source-qualified AI panel identifiers must be unique");
 const outDir="artifacts/sli-browser-smoke";
 fs.mkdirSync(outDir,{recursive:true});
 const report={schema:"sli-browser-smoke-v1",checked_at_utc:new Date().toISOString(),tests:[],limitations:["Local served static public files only","Browser rendering does not verify externally sourced facts or live market feeds","Mobile emulation is not a physical-device test"]};
@@ -252,8 +260,12 @@ await check("AI atlas desktop: World Bank panel selection preserves original sou
  await page.goto(pageUrl("ai-intelligence-hub.html"),{waitUntil:"domcontentloaded",timeout:30000});
  const root=page.locator("#sliAiDigitizedFigureAtlas");
  const select=root.locator("select").first();
- await page.waitForFunction(()=>document.querySelectorAll("#sliAiDigitizedFigureAtlas select option").length===9,null,{timeout:20000});
- await select.selectOption({index:5});
+ await page.waitForFunction(n=>document.querySelectorAll("#sliAiDigitizedFigureAtlas select option").length===n,figureCount,{timeout:20000});
+ assert.equal(await select.locator("option").count(),figureCount,"AI Atlas must render every reviewed source panel");
+ const worldbankFigure=select.locator('option[data-sli-figure-id="worldbank:4.2a"]');
+ const figureValue=await worldbankFigure.getAttribute("value");
+ assert.ok(figureValue!==null,"World Bank Figure 4.2a must have a stable option ID");
+ await select.selectOption(figureValue);
  assert.match(await root.locator("p").first().innerText(),/World Bank/i);
  const source=await root.locator('a[href*="worldbank.org"]').first().getAttribute("href");
  assert.match(source,/documents1.worldbank.org/);
@@ -266,17 +278,22 @@ await check("AI atlas desktop: World Bank panel selection preserves original sou
  const raw=fs.readFileSync(await download.path()).toString("utf8");
  assert.ok(raw.includes("United States")&&raw.includes("40"),"Source-aligned numeric CSV missing World Bank observation");
  assert.ok(raw.includes("documents1.worldbank.org"),"World Bank link missing from CSV provenance");
- await select.selectOption({index:6});
+ const secondValue=await select.locator('option[data-sli-figure-id="worldbank:4.2b"]').getAttribute("value");
+ assert.ok(secondValue!==null,"World Bank Figure 4.2b missing");
+ await select.selectOption(secondValue);
  assert.match(await root.locator(".sli-figure-detail").innerText(),/%/);
  assert.equal(await root.locator(".sli-figure-plot svg rect[data-value]").count(),6);
 });
-await check("AI atlas mobile: all nine numeric panels stay navigable and do not widen page",{width:390,height:844},async page=>{
+await check("AI atlas mobile: full source-derived panel catalog and satellite series stay navigable",{width:390,height:844},async page=>{
  await page.goto(pageUrl("ai-intelligence-hub.html"),{waitUntil:"domcontentloaded",timeout:30000});
  const root=page.locator("#sliAiDigitizedFigureAtlas");
  const select=root.locator("select").first();
- await page.waitForFunction(()=>document.querySelectorAll("#sliAiDigitizedFigureAtlas select option").length===9,null,{timeout:20000});
- await select.selectOption({index:8});
- assert.equal(await root.locator(".sli-figure-plot svg rect[data-value]").count(),7);
+ await page.waitForFunction(n=>document.querySelectorAll("#sliAiDigitizedFigureAtlas select option").length===n,figureCount,{timeout:20000});
+ const satValue=await select.locator('option[data-sli-figure-id="worldbank:2.2"]').getAttribute("value");
+ assert.ok(satValue!==null,"World Bank Figure 2.2 satellite series is missing");
+ await select.selectOption(satValue);
+ assert.equal(await root.locator(".sli-figure-plot svg circle[data-value]").count(),36,"Four orbital series across nine years must be rendered");
+ assert.match(await root.locator(".sli-figure-detail").innerText(),/satellites/i);
  const dims=await page.evaluate(()=>{
    const plot=document.querySelector("#sliAiDigitizedFigureAtlas .sli-figure-plot");
    return {viewport:innerWidth,doc:document.documentElement.scrollWidth,chartOverflow:getComputedStyle(plot).overflowX,chartScroll:plot.scrollWidth,chartClient:plot.clientWidth};
