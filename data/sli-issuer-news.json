@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T14:33:08.620786Z",
+  "updated_at_utc": "2026-10-21T15:06:32.567178Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,38 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_cd622f860066a759f5d7f6",
+      "title": "Jasa Marga (JSMR) Kaji Buyback Saham di Tengah Rencana Ekspansi Jalan Tol - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNbWZWS2g5d2I4WDlsN0poZFVULW0zUkJOYWJDanlKdTZNM0lWcFIycUhJU1VuV19HNm5rVkNXMUNYd3ljNElBdFVnRE5tSzZPZVlGcnV1SWtPTUZxdlhsY3J0QXU2RV9maHhFT0xGS1RlSy1xVkhrV1VsVzBvTzZoZUI3UzRQR3hTZTFpSlVHbzh6ZDduaVZJX05mdWhSUm1lbkl2RmYwVWJaTGfSAaMBQVVfeXFMTmdpUUV6UjJZd0J3ek82WEhkWHd0d0w1bmxTc2JReERQb3l1bTNZWDFoNmdhTHY3NnRqR3ozejdBNkRqV2h2UFlHOUpKdmQzX1pGRzF4UXFVUXk1U3ZMcTVnR2szVTlNcGUxNncycmt2dmEzamZJSk9qT09wdDhwYTFEMUo1dlA0V1JlX2dhRGo3ZDhORkRqQWU2NUtyUjNFZU4tMA?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T14:49:36Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ded834d727703e7af07cf0",
+      "title": "OJK Berikan Sanksi Korporasi dan Individu Perdangan Terkoordinasi Saham DSSA, BREN, dan CUAN - SWA.co.id",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNNUxtZDh3LUVYc3BPOXdaWHhRZDVBLU84cF9XR1FtdTlxRTdGUTBQN0tyM3p4VTJVYzdUOWltUjhJVVN3RzAzeU83T0NqRGlsbWRsVXZNX3NtdG1FcGh2Y3FHYUlDY0FpbkNpMm0zcE55MXoyWFVSLURmSnNiYTE0Ml94a25NczFfdlpNU2RpazZ5R2d3Ulh4SnAzQlpOclItV2F1WlMxcFZ6QWtXeU5rWWtzY0swYlk0OWk5LQ?oc=5",
+      "publisher": "SWA.co.id",
+      "published_at_utc": "2026-10-21T14:25:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_f92d053842913359ee073b",
       "title": "Ini Dia Pihak-pihak dalam Skandal Transaksi DSSA, BREN, dan Cuan - investor.id",
@@ -111,6 +143,22 @@
       "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQTnZSdHRaRVpCalFwN3ZLZWVIVWlqel9pQUZuZFRfbDRNXzNrSXNPc3Rla2FNd2JlaXpEcTZHWlJLWkk5UTU1ZUlvZ0VlS3JfVDM0b3BrMW1DODRHSzY4R051Q0JwZUxDR2d2UnB5RDM5N3cwOUZ6T2FqenRJcGVPdHluT0lGZk5xQjRydUMyY3JrNzc1WDlWSGQyWWhYVDBKMlU0bXVRTzIwVjFYeTNTelFYVGJZc1lhZHFLck9IclpPd9IBxwFBVV95cUxOdDdMSXBabVQzenBRWk91UWptX25iZUdDb2JwTXBKSUdNclNSNFNfclRpRnAtX0pMeVh0djkwM1YxTERWcXFxNXpncVMyV2MxVnJPMzVXMmpFNE1lV2Ywdmx6MzQ0RUk3T3RrbDNkN0Q1WnN3NzJUT0dyTUE5eHBRV3cwQ0ltMkU0SkRBLW1xRkhTX1FsOUtNYlh5NEJlNFQ2VUpibjRUQWkwM0VaLWNBY1VkNTh1em1UZGpYQTdwdTFOQjNEbzRN?oc=5",
       "publisher": "CNBC Indonesia",
       "published_at_utc": "2026-10-21T13:33:17Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_6e9be3fb400237617028e1",
+      "title": "OJK Bongkar Manipulasi Saham 3 Emiten DSSA, BREN dan CUAN - RCTI+",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPUWQtdG1XN1N4QXlfU2lNLXZRV2FxcTVCWURpQ096QVEtUnBLOGV2SFRiaW0zU0xZUERZZWpyZ3cyTDNjTGZnUWl3eEFsTGFZQllBSFJUNjNSSXRwTWNWT2d4WTRvZWFMcmVSdnFDRl9CTWl1VnpNSm5WeE5yRGMxUHNuTEVwN3RUUV94aTlsWHlLbkZvX3VMQ0FrSG5lMG1zY0lMcHZqbUZYbTRzbWNZ?oc=5",
+      "publisher": "RCTI+",
+      "published_at_utc": "2026-10-21T13:33:09Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "BREN"
@@ -485,6 +533,22 @@
         "JSMR"
       ],
       "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_e4d97825af3d6bc9f196fc",
+      "title": "IHSG Menguat 0,94% ke 5.328 pada Rabu (21/10/2026), AKRA, ICBP, BBTN Top Gainers LQ45 - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOcTEzQkZFeUQzV0oycVZ2N0RvWFFZSlZLV1ZzeGVZQVlSNFJXNnhuSHMwel9DSEJ2dHE4OF90VWRLX2dkZGl5eV9vbmc4emJhVG5hNkJMR2I4NVV4MFRFSVZMN0ZfdFNyYmlVajZMbWYxcG5JQklxLXliVlZqdkM2WE5DQzdldkE2ajZUdmpPalRLSmozX3dVXzJHZE94dzVvNU9wSVR6enBGdjFIZzlPT9IBqAFBVV95cUxOeXN6UWpsYk14RFIzeXBFY2MyTnFsU3RMenR4RWozVnZqUnpydzlHRGF6Vms0em1TYWxvSmwtOTVKTmpwNHNJbldIdEoyU2Ywdy1LQWRqcW9ZUmNva094SEExS2xRNlk5cnRKLTAyVUk2NjJxaklzbXptekNsRXJMRzZ0Rjk4M1VJcnotd1Y0NlZtT3pabk5MODRPZ2ZvZ1lvbWRfaV9vX1o?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T09:10:15Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -2174,6 +2238,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_fed5bb52b321f52f079c0c",
+      "title": "Harga Minyak Memanas, Prospek MEDC Makin Ngegas - KONTAN",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNZWpYVXV2dmVoUlJwZjhIeF9JZXR0ZlFEa0dPS1dCN0p0TC1KX1hYNVJaajFCU0o0LVowZ2R3WmV6T2JVLWpHV2M3OTE1RXdUVWd2bzFIUmNuSEtzeFFrdG13VnN2TzRoSFE5STdqOERxRFJkbElYN2l1b2JCNGRBa0J2MzNlbzQ?oc=5",
+      "publisher": "KONTAN",
+      "published_at_utc": "2026-10-19T23:27:11Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "MEDC"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_5c54d112dd87141aa33218",
       "title": "7 Saham Buyback saat IHSG Anjlok, BREN BBCA CUAN BRPT DSSA TPIA, Apakah Layak Beli? - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNMmhpcHY4Sm5RN1E2X3RsWWVLRmdieVNXQzJjbUw3SDVNeUdldTVyRndiNW9oUUF4V3ptZkljQkZseXZvNHJjdFZYWjdSdmxGYlBPN195eVFNOGFqbjNQNzh4VnBCZkhuOXFKX0tZcVJvNW5DZ04tMWw2WlVGbWtjSmFiekZQbkVTbllXY3UycGNwVTVvNHhNWFdKN3FHSFhOaHBIQ0NNWm9DeV9tYnlyZXdNX2N4b2fSAa8BQVVfeXFMTUl4aVU5aURiTXBKcGFVQ0JEVkNtZjJjRVFISDhJY0stN1dxcUhMaFRkcVhyNkpNc3NDNDJzcVU5bkxqN21adml1RTk2TVR2OWo2MEtNNDRuTnhYakxLdTlzY2l0T25vdmRXa01pYXFfMy01NllxTmh5U0tCMGI3VHkzQzBudU1MRkxJdzhROHgyekNib2NldVVaRGhxd2Zra2NVdzF1V01DX3loYVVmdw?oc=5",
@@ -2184,6 +2264,22 @@
         "BREN"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_6d3df2fc2cb31ec389a0c6",
+      "title": "Berkat BIDIKSIBA PTBA, Tiga Mahasiswa Raih Pendidikan Tinggi meski Terkendala Ekonomi - Liputan6.com",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVzFsQUF2bGxZcXJKRHplM2FpT0hEWHFKS2h0WnpxNFlSRnJ1OWFpZ2c0OVBWQlNyRU9VMFhqMVFiWmpCdkZrNHpzSGxFX3FleUVmRVFKNlpKbUlxZ3R2TnJXWVRqMUl2eUJ0dnhMZnBEZzE3bGI0Ul9OamU0WVB0cmtwNTNUOHhLQU1KcFFnZmQ1dFl3ZVZWYW9mcVR4N1dTOWFoTFBGaHdFWXV0Y2JKTS1pVGpYdXVhaDJxaC1VVzdmRjR0SlhZQdIBvgFBVV95cUxORExSMUt6RFg5ZGlnd0hkTEdMbGswUE05RlU2MnRJS3hDQ3lNOXBQVXdyY2RQYXc2ekdKb2s5VG84ck9wWUs3Z3FzOG8tbElxeWkyazdiNVBhaFN2dXgxUW1yZE1ZRmluZmctN3MybU1HZFFKb3Q1TVBnbnhSSUVseFRHb3VNSlIyaEkxT0tnNGgxZ2g5ZFNDX0c0dUh4TjdnZ2NkdER5dXdvTE1ocll0aktqNTJFcjdvZEFnM1Fn?oc=5",
+      "publisher": "Liputan6.com",
+      "published_at_utc": "2026-10-19T23:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -4317,6 +4413,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_079d5ce4f63344df22ed9a",
+      "title": "IHSG Sesi I Naik saat Net Sell Tembus Rp1,2 T, Asing Jual Saham PTBA, TPIA, BBRI - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOTnp3VzRLaXFObzRJVlRscjdRV080dVVhMWhsQkZLR2M1Z3ZpNzczZjBScU9rZ0xmVmV6SE9va0U0alpBLWdCaEhlUVhwZ0x4TFJOZ3BWOVotT3kyZWFfYk82eTAtWjlGVVVBUEhBcFV2SEl6a3BiRUlPeEl5RFpxc1c4X1dGU1V0TG45M0d1dWthWm1TVUxibHdsSlBESldxOE53dDhScnpYSlc4Z2RqdG9QTWZjTUpYblBDaGdzSlVGNC1ibnV4bWJ30gHPAUFVX3lxTFB6U1R3UDYyMjBQWjBYSkF4eGliNGozSnhfS3pGVHByOHlLYlVqRlZyWWpERFQxZU41TWFvV2NYVDktbWotSkZXZDA0NmFxbDBCTEFOZEkwMVNBT3pxVGJuUTdSRlJvcW94bzN0Qm8zMEt3R25XOVRaaTNqLVNocnc5UmRpWTEyM09QVTI0RGVDTFdiakRMQWV2c292NEtab2RrOU9LcUNvWVZ4NGU2U0lSbEMtb2pTeVY4cFF1ZE02M29mNXhYVHE4OFV5aG9oSQ?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-14T06:11:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_59871c06ffcc1fbdd85e17",
       "title": "Kisi-Kisi Terbaru Saham AMMN, ANTM Cs di Tengah Ledakan AI & Data Center - Bisnis Indonesia Premium",
       "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPVWtGWGhMUWNnZG10VTNFQnRMTU9Wd1dSamd0NnNjaW9McGs5ZnlQdkZ0d0V2dE1lLWlJYWJiZWdKbVg5MHExeFpXTk1jeG1WMnJiNjZYUl9US3p3eDl5Qno0d2ZfZ3FMSXdWT3Bta3V4WHdoX1g3eWhVUndCc0NYdFlYa1pULWhhUERDb2xjTnRBWjc4YnRuVkpVZFJoTGd1b1lYZDhBNHhXaExacURGQkJqUC03Rk8yU0I3NEZ3QQ?oc=5",
@@ -4435,6 +4547,22 @@
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOSDVBMEU0OVhPMW8taVVidHI2aUJzc1NzMFdQV3RhbS15Ump6WGRPRi1IN2hzT0FzMkJLQ3ZuanN0djJpN1lCWmFLTGwzREMxUGRWaFcxYndlRWozMC1oMnBTMTdNRHpaTkRndV9QOEhSaUc5clJwa2FSV21DemtHSlBMWE5fRUJKVG00WlE1eng4YV9fTmdseTFlM1I?oc=5",
       "publisher": "investor.id",
       "published_at_utc": "2026-10-14T00:35:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_84a58873d2d4c106df2a82",
+      "title": "IHSG Diramal Masih Melemah, Analis Rekomendasikan Saham EMAS, PTBA, hingga ADRO - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNa0ZudHE2TG9BaTdQb0Z0eHZnNUNNLUI5UXl1Ym5oWklISERXUTF0WFVwWGhGb2FhcjloQm56WEJrVEtuN1NnYTc0TEp3OUdUcHJ3UlBpU2htVHJEMHFLY1dOeVZaRW42bi05TnhEVi1uRkNqTzJLSlpTR1NMVFNKbW5qS3RFcHRVZHNGbXVMVVQxRC14aFV1dU02SDZtNVhZNzVLYUJ6MnpCaTdaVGhzT0VBUEZZMkVTWUZVQ3ZhMU1YeVh6ckJkT9IBzgFBVV95cUxNSG00b2JtYXo3aHE4OC04MG1oZGoyN0ctNW10aTdVdm5ha2ZHNE95MEY0S0ZHYmhPczhjVmo4dkJMYUw3NjduQzlfaE1ZOWFpQ2ZTOHRoY19DMThhWXgtcVB4WlE5eUpZUzBNdUFQTklXc0VEem1rTEFxbDJpZWFOWXNFa3VpTTlPYVlPMnM2Yk53YXpRLXBleDBySUt0MGFjQlN1Nmo2ZF9WYnF0VTRFcm5XMG1oekhjdVplMnl6azhKZDNOWF9RU0NpempoUQ?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-13T23:18:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "PTBA"
