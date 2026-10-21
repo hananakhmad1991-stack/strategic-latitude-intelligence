@@ -163,14 +163,14 @@ test("Food functional intelligence matches the Oil & Gas six-group navigation mo
  const page=read("food-agriculture-intelligence.html");
  const groups=[
  ["policy",["pres","kemenkopangan","bappenas","kemenkoekon"]],
- ["production",["kementan","wamentan-2026","setjen-kementan","itjen-kementan","ditjen-tp","ditjen-horti","ditjen-psp","ditjen-psp-2026","kementan-ditjen-lahan","kementan-ditjen-bun","kementan-ditjen-pkh","kementan-brmp","kementan-bppsdmp","pusdatin","kkp","pemda"]],
+ ["production",["kementan","wamentan-2026","wamentan-alim-2026","setjen-kementan","itjen-kementan","ditjen-tp","ditjen-horti","ditjen-psp","ditjen-psp-2026","kementan-ditjen-lahan","kementan-ditjen-bun","kementan-ditjen-pkh","kementan-brmp","kementan-bppsdmp","pusdatin","kkp","pemda"]],
  ["security",["bapanas","bgn","kemendag","bpom"]],
  ["enterprise",["bulog","pupuk","idfood"]],
  ["industry",["kemenperin","wamenperin-2026","kemendagri"]],
  ["evidence",["bps","bi","dpr","bpk"]]
  ];
  assert.equal(groups.length,6);
- const all=groups.flatMap(g=>g[1]);assert.equal(all.length,34);
+ const all=groups.flatMap(g=>g[1]);assert.equal(all.length,35);
  assert.equal(new Set(all).size,all.length);
  assert.deepEqual([...all].sort(),registry.nodes.map(n=>n.id).sort(),"Every curated institution must be placed once in the functional diagram");
  for(const [key,ids]of groups){
@@ -186,7 +186,7 @@ test("Food functional intelligence matches the Oil & Gas six-group navigation mo
  assert.match(script,/fa-gvn-issue-panel/);
  assert.match(script,/source-dated/i);
  assert.match(css,/grid-template-columns:minmax\(0,1\.64fr\)/);
- assert.match(page,/functional-v3/,"Cache bust must ensure public visitors get the new graph");
+ assert.match(page,/two-wamentan1/,"Cache bust must deliver both October 2026 Deputy Agriculture offices");
  assert.doesNotMatch(script,/new Function|eval\(/,"Do not dynamically evaluate untrusted source data");
 });
 
@@ -206,7 +206,7 @@ test("Food dual visualization contract: original card hierarchy and six-hub netw
  assert.match(html,/href="#fa-network"/);
  assert.match(html,/js\/food-governance-tree\.js\?v=20261020-[a-z0-9-]+/);
  assert.match(html,/css\/food-governance-tree\.css\?v=20261020-[a-z0-9-]+/);
- assert.match(html,/js\/food-governance-hierarchy\.js\?v=20261020-[a-z0-9-]+/);
+ assert.match(html,/js\/food-governance-hierarchy\.js\?v=20261021-two-wamentan1/);
  assert.match(main,/SLIFoodGovernance\.render\(\)/);
  assert.match(main,/SLIFoodGovernanceHierarchy\.render\(\)/);
  assert.match(tree,/window\.SLIFoodGovernanceHierarchy=\{render/);
@@ -227,6 +227,6 @@ test("Food dual visualization contract: original card hierarchy and six-hub netw
  assert.ok(!network.includes('window.SLIFoodGovernanceHierarchy={'),"Network must not replace tree renderer");
  assert.match(tree,/food-governance-hierarchy\.json/);
  assert.match(network,/food-governance-hierarchy\.json/);
- assert.equal(source.nodes.length,34);
+ assert.equal(source.nodes.length,35);
  assert.ok(source.nodes.find(n=>n.id==="pusdatin"&&n.parent==="kementan"));
 });
