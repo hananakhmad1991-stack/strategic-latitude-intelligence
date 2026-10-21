@@ -1,7 +1,7 @@
 {
   "schema": "sli-food-governance-v2",
-  "as_of": "2026-10-20",
-  "method_id": "Source-dated functional presentation; parent field only indicates internal unit membership or regional guidance and never implies all cross-institution coordination is administrative subordination.",
+  "as_of": "2026-10-21",
+  "method_id": "Source-dated functional presentation; parent field only indicates internal unit membership or regional guidance and never implies all cross-institution coordination is administrative subordination. Added office-level 2026 source-dated leadership, including replacement of former Deputy Agriculture Minister.",
   "nodes": [
     {
       "id": "pres",
@@ -315,7 +315,10 @@
           "label": "Sumber resmi"
         }
       ],
-      "parent": "kementan"
+      "parent": "kementan",
+      "person": "Yudi Sastro",
+      "confirmed": "2026-03-07",
+      "leaderSource": "https://tanamanpangan.pertanian.go.id/id/artikel/panen-sorgum-untuk-benih-kegiatan-tahun-2026"
     },
     {
       "id": "ditjen-horti",
@@ -515,6 +518,128 @@
           "label": "Sumber resmi"
         }
       ]
+    },
+    {
+      "id": "wamentan-2026",
+      "parent": "kementan",
+      "group": "unit",
+      "name": "Wakil Menteri Pertanian",
+      "en": "Deputy Minister of Agriculture",
+      "kind": "Unit internal kementerian",
+      "kindEn": "Internal ministerial office",
+      "role": "Membantu Menteri Pertanian menjalankan kebijakan nasional sektor pertanian.",
+      "roleEn": "Membantu Menteri Pertanian menjalankan kebijakan nasional sektor pertanian.",
+      "sources": [
+        {
+          "url": "https://itjen.pertanian.go.id/",
+          "label": "Rujukan resmi"
+        }
+      ],
+      "limit": "Mandat internal kementerian, bukan subordinasi atas otoritas nasional lintas kementerian.",
+      "limitEn": "Internal office, not cross-ministerial statutory command.",
+      "related": [
+        "kementan"
+      ],
+      "person": "Muhammad Saleh Mustafa",
+      "confirmed": "2026-10-07",
+      "leaderSource": "https://itjen.pertanian.go.id/"
+    },
+    {
+      "id": "setjen-kementan",
+      "parent": "kementan",
+      "group": "unit",
+      "name": "Sekretariat Jenderal Kementan",
+      "en": "Agriculture Secretariat General",
+      "kind": "Unit internal kementerian",
+      "kindEn": "Internal ministerial office",
+      "role": "Koordinasi dukungan administrasi dan tata kelola kementerian.",
+      "roleEn": "Koordinasi dukungan administrasi dan tata kelola kementerian.",
+      "sources": [
+        {
+          "url": "https://pertanian.go.id/page/view/7",
+          "label": "Rujukan resmi"
+        }
+      ],
+      "limit": "Mandat internal kementerian, bukan subordinasi atas otoritas nasional lintas kementerian.",
+      "limitEn": "Internal office, not cross-ministerial statutory command.",
+      "related": [
+        "kementan"
+      ]
+    },
+    {
+      "id": "itjen-kementan",
+      "parent": "kementan",
+      "group": "unit",
+      "name": "Inspektorat Jenderal Kementan",
+      "en": "Agriculture Inspectorate General",
+      "kind": "Unit internal kementerian",
+      "kindEn": "Internal ministerial office",
+      "role": "Pengawasan internal program, keuangan, tata kelola dan integritas Kementan.",
+      "roleEn": "Pengawasan internal program, keuangan, tata kelola dan integritas Kementan.",
+      "sources": [
+        {
+          "url": "https://itjen.pertanian.go.id/berita/kementan-perkuat-tata-kelola-ratusan-pejabat-teken-surat-pernyataan-integritas",
+          "label": "Rujukan resmi"
+        }
+      ],
+      "limit": "Mandat internal kementerian, bukan subordinasi atas otoritas nasional lintas kementerian.",
+      "limitEn": "Internal office, not cross-ministerial statutory command.",
+      "related": [
+        "kementan"
+      ],
+      "person": "Irham Waroihan",
+      "confirmed": "2026-07-16",
+      "leaderSource": "https://itjen.pertanian.go.id/berita/kementan-perkuat-tata-kelola-ratusan-pejabat-teken-surat-pernyataan-integritas"
+    },
+    {
+      "id": "ditjen-psp-2026",
+      "parent": "kementan",
+      "group": "unit",
+      "name": "Direktorat Jenderal Prasarana dan Sarana Pertanian",
+      "en": "DG Agriculture Facilities and Infrastructure",
+      "kind": "Unit internal kementerian",
+      "kindEn": "Internal ministerial office",
+      "role": "Pengelolaan infrastruktur, sarana pertanian dan dukungan modernisasi.",
+      "roleEn": "Pengelolaan infrastruktur, sarana pertanian dan dukungan modernisasi.",
+      "sources": [
+        {
+          "url": "https://psp.pertanian.go.id/tentang-kami",
+          "label": "Rujukan resmi"
+        }
+      ],
+      "limit": "Mandat internal kementerian, bukan subordinasi atas otoritas nasional lintas kementerian.",
+      "limitEn": "Internal office, not cross-ministerial statutory command.",
+      "related": [
+        "kementan"
+      ],
+      "person": "Andi Nur Alam Syah",
+      "confirmed": "2026-08-10",
+      "leaderSource": "https://psp.pertanian.go.id/tentang-kami"
+    },
+    {
+      "id": "wamenperin-2026",
+      "parent": "kemenperin",
+      "group": "unit",
+      "name": "Wakil Menteri Perindustrian",
+      "en": "Deputy Minister of Industry",
+      "kind": "Unit internal kementerian",
+      "kindEn": "Internal ministerial office",
+      "role": "Mendukung kebijakan penguatan rantai nilai dan industri pengolahan pangan.",
+      "roleEn": "Mendukung kebijakan penguatan rantai nilai dan industri pengolahan pangan.",
+      "sources": [
+        {
+          "url": "https://ihya.kemenperin.go.id/berita/akselerasi-ekosistem-halal-global-kemenperin-resmi-buka-pendaftaran-ihya-2026",
+          "label": "Rujukan resmi"
+        }
+      ],
+      "limit": "Mandat internal kementerian, bukan subordinasi atas otoritas nasional lintas kementerian.",
+      "limitEn": "Internal office, not cross-ministerial statutory command.",
+      "related": [
+        "kemenperin"
+      ],
+      "person": "Faisol Riza",
+      "confirmed": "2026-06-20",
+      "leaderSource": "https://ihya.kemenperin.go.id/berita/akselerasi-ekosistem-halal-global-kemenperin-resmi-buka-pendaftaran-ihya-2026"
     }
   ]
 }
