@@ -1,0 +1,87 @@
+name: SLI Full RUPTL Semantic and 2026 Evidence QA
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/build-ruptl-semantic-candidates.py'
+      - 'scripts/index-ruptl-all-pages-and-network.py'
+      - 'data/sli-ruptl-970-semantic-candidates-2025.json'
+      - 'data/sli-ruptl-1253-page-table-inventory-review.json'
+      - 'data/sli-ruptl-network-table-grids-review.json'
+      - 'data/sli-ruptl-2026-independent-primary-milestones.json'
+      - 'js/sli-ruptl-semantic-network.js'
+      - 'css/sli-ruptl-semantic-network.css'
+      - 'tests/qa-sli-ruptl-semantic-network.mjs'
+      - 'tests/qa-sli-ruptl-semantic-browser.mjs'
+      - 'pln-ruptl-energy-investment.html'
+      - 'pln-ruptl-2025-2034-source-intelligence.html'
+      - '.github/workflows/sli-ruptl-semantic-network-qa.yml'
+  push:
+    branches: [main, feat/ruptl-semantic-1253-network-and-2026-20261021]
+    paths:
+      - 'data/sli-ruptl-970-semantic-candidates-2025.json'
+      - 'data/sli-ruptl-1253-page-table-inventory-review.json'
+      - 'data/sli-ruptl-network-table-grids-review.json'
+      - 'data/sli-ruptl-2026-independent-primary-milestones.json'
+      - 'js/sli-ruptl-semantic-network.js'
+      - 'css/sli-ruptl-semantic-network.css'
+      - 'tests/qa-sli-ruptl-semantic-network.mjs'
+      - 'tests/qa-sli-ruptl-semantic-browser.mjs'
+      - 'pln-ruptl-energy-investment.html'
+      - 'pln-ruptl-2025-2034-source-intelligence.html'
+      - '.github/workflows/sli-ruptl-semantic-network-qa.yml'
+permissions:
+  contents: read
+concurrency:
+  group: sli-ruptl-semantic-source-qa
+  cancel-in-progress: true
+jobs:
+  source-and-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source schema, source-row identity, complete table page index and dated proof
+        run: |
+          node --check js/sli-ruptl-semantic-network.js
+          node --test tests/qa-sli-ruptl-semantic-network.mjs
+      - name: Use runner Chrome without downloading another browser
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          [ -n "$CHROME" ] || { echo "Chrome missing"; exit 1; }
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+      - name: Install browser client only
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Start RUPTL browser QA local server
+        shell: bash
+        run: |
+          python3 -m http.server 8767 --bind 127.0.0.1 > /tmp/sli-ruplt-semantic-http.log 2>&1 &
+          echo $! > /tmp/sli-semantic-server.pid
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:8767/data/sli-ruptl-970-semantic-candidates-2025.json >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/sli-ruplt-semantic-http.log
+          exit 1
+      - name: Browser verify identity filters, dated 2026 milestones and network pages
+        env:
+          SLI_BROWSER_TEST_BASE: http://127.0.0.1:8767
+        run: node tests/qa-sli-ruptl-semantic-browser.mjs
+      - name: Upload browser proof even when checks fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-ruptl-1253-semantic-2026-browser-proof
+          path: artifacts/sli-ruptl-semantic-browser/
+          retention-days: 21
+          if-no-files-found: warn
+      - name: Stop local RUPTL browser test server
+        if: always()
+        run: |
+          if [ -f /tmp/sli-semantic-server.pid ]; then kill "$(cat /tmp/sli-semantic-server.pid)" || true; fi

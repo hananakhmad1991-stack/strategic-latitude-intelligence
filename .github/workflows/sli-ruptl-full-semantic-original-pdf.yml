@@ -1,0 +1,80 @@
+name: SLI Original 1253-Page RUPTL Semantic Audit
+on:
+  push:
+    branches: [feat/ruptl-semantic-1253-network-and-2026-20261021]
+    paths:
+      - 'scripts/build-ruptl-semantic-candidates.py'
+      - 'scripts/index-ruptl-all-pages-and-network.py'
+      - '.github/workflows/sli-ruptl-full-semantic-original-pdf.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sli-full-ruptl-source-original-1253
+  cancel-in-progress: false
+jobs:
+  source-semantic-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 27
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen original PDF parsing engine
+        run: python -m pip install --quiet pymupdf==1.26.7
+      - name: Produce caution-tagged 970-row semantic candidate ledger
+        run: python scripts/build-ruptl-semantic-candidates.py
+      - name: Fetch publisher original official RUPTL PDF, checksum strictly enforced by parser
+        shell: bash
+        run: |
+          mkdir -p /tmp/sli
+          curl --retry 3 --retry-delay 4 -L --fail --max-time 260 \
+            -o /tmp/sli/ruptl-original-1253.pdf \
+            'https://gatrik.esdm.go.id/gatrik/gatrik-api/storage/migrasi/download_index/files/b967d-ruptl-pln-2025-2034-pub-.pdf'
+      - name: Index every original PDF page and network/station/distribution table candidates
+        run: |
+          python scripts/index-ruptl-all-pages-and-network.py --pdf /tmp/sli/ruptl-original-1253.pdf --max-grid-pages 300
+      - name: Invariant checks before publishing any digital source registry
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('data/sli-ruptl-970-semantic-candidates-2025.json').read_text())
+          x=json.loads(Path('data/sli-ruptl-1253-page-table-inventory-review.json').read_text())
+          g=json.loads(Path('data/sli-ruptl-network-table-grids-review.json').read_text())
+          assert len(s['rows'])==970 and s['counters']['verified_distinct_physical_assets_from_machine_extract']==0
+          assert all(v['actual_2026_operational_status'] is None for v in s['rows'])
+          assert all(v['verified_actual_cod'] is None for v in s['rows'])
+          assert x['page_count_audited']==x['source_pdf_pages']==1253
+          assert g['published_network_asset_count']==0
+          assert g['verified_realized_transmission_kms'] is None
+          assert g['verified_realized_substation_mva'] is None
+          assert g['verified_realized_distribution_km'] is None
+          assert g['pages_with_source_cells']>0, 'No underlying network table grids extracted: cannot claim digitization'
+          assert x['source_sha256']==g['source_sha256']==s['source_pdf_sha256']
+          print('ALL_SOURCE_INVARIANTS_OK',len(s['rows']),x['page_count_audited'],g['pages_with_source_cells'])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-ruptl-semantic-full-document-and-network-source-cell-review
+          path: |
+            data/sli-ruptl-970-semantic-candidates-2025.json
+            data/sli-ruptl-1253-page-table-inventory-review.json
+            data/sli-ruptl-network-table-grids-review.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Commit derived review-only data to feature branch after all source audits pass
+        shell: bash
+        run: |
+          set -euo pipefail
+          [ "$GITHUB_REF_NAME" = "feat/ruptl-semantic-1253-network-and-2026-20261021" ] || { echo 'No production writes'; exit 1; }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/sli-ruptl-970-semantic-candidates-2025.json data/sli-ruptl-1253-page-table-inventory-review.json data/sli-ruptl-network-table-grids-review.json
+          if git diff --cached --quiet; then echo 'No derived data change'; exit 0; fi
+          git commit -m 'data: source-anchored 970 semantic candidates, 1253-page inventory, network raw grids'
+          git fetch origin "$GITHUB_REF_NAME"
+          git rebase "origin/$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
