@@ -42,6 +42,23 @@ python scripts/extract_bps_agri_horti_offline.py \
 
 The script enforces output **outside the GitHub repository**, and emits only registered statistical source pages. Never commit its extracted numeric/raw text output into `data/`, Research AI public corpus, or GitHub Pages without BPS written permission and cell-level QA.
 
+## Page-by-page locator and draft numeric QA findings (22 October 2026)
+
+The two supplied original PDF hashes were checked against the registered 154-page and 668-page editions. Source table **start IDs matched 82/82 original PDF pages**, with **21 multipage tables containing 32 additional continuation pages**, now indexed as a total of **114 table-bearing PDF pages**. The initial 134 extracted statistical-section pages included separators and other narrative pages; the new 114-page count is a *targeted per-table span* and not a denial of those 134 internal extraction pages.
+
+**Publisher heading inconsistencies requiring editorial review** (never rewrite dates to make them uniform):
+- Horticulture table **3.2**, printed p.38 / PDF 54–55: table title states **2025**, but contents list says **2026**.
+- Horticulture **3.10**, printed p.50 / PDF 66: table title states **2024**, while contents say **2025**.
+- Horticulture **3.11**, printed p.51 / PDF 67: table title states **2024**, while contents say **2025**.
+- Horticulture **6.14**, printed pp.140–141 / PDF 156–157: table title says *perusahaan hortikultura* despite being in the *usaha hortikultura lainnya* chapter. The unit universe requires source clarification.
+
+**Private six-table pilot** (3.1, 3.3, 3.6, 6.1, 6.2, 6.3; 38 listed provinces each): draft PDF geometry CSV data contain **85 cells affected by the diagonal BPS watermark** and one additional ambiguous numeric glyph, requiring visual cell confirmation. Cleanly reading the numeric suffix of a watermark-overlaid text string is merely a *candidate*, not certified reconstruction. Source national-vs-province subtotal checks flag:
+- **6.1, 2023**, printed p.117 / PDF 133: province candidate subtotal **one unit below** printed national total; investigate source-versus-extraction discrepancy, do not silently adjust.
+- **6.2**, printed p.118 / PDF 134: DKI Jakarta category counts printed **65, 163, dash** against reported total **242**. Difference is **14 units**; the national category subtotal also differs from visible province candidates by **14 units**. A dash is not automatically 14 or zero; this *cannot be imputed* from arithmetic.
+- The other draft table column sums reconcile arithmetically, but individual watermarked digits and period meaning still need page-image review. Arithmetic alone **does not validate** them.
+
+**Controls now applied:** quarantine 3.2, 3.10, 3.11, 6.14 by year/scope metadata flags; quarantine 6.1 and 6.2 by arithmetic flags. The Food dashboard catalog labels flagged tables and prints complete multi-page source spans; DERGUBA continues to receive **only source metadata**, not speculative values. `scripts/extract_bps_agri_horti_offline.py` was amended to include multi-page continuations while still excluding directories and all public output.
+
 ## Next audit gate (not complete)
 1. Contact BPS to clarify commercial reproduction rights for derived chart values vs table mirrors; retain written response and any publication-specific license.
 2. Visually verify 82 table headers, printed/PDF pages, source year, units, missing-value glyphs, and cross-table totals. Log each verified numeric cell and any edits; classify source estimates and revisions explicitly.
