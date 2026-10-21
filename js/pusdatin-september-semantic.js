@@ -1,7 +1,7 @@
 /* Supplemental numeric layer for all 63 official September 2026 tables.
    Immutable snapshot, not a claim that every extracted row passed visual QA. */
 (()=>{"use strict";
-let data,source;
+let data,source,audit;
 const $=id=>document.getElementById(id);
 const E=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=String(text);if(cls)e.className=cls;return e;};
 const a=(link,label)=>{const o=E("a",label,"sepsem-link");o.href=link;o.target="_blank";o.rel="noopener noreferrer";return o;};
@@ -44,6 +44,8 @@ function renderRows(){
  const rows=t.rows.filter(x=>x.label.toLowerCase().includes(query.toLowerCase()));
  box.append(E("h3","Tabel "+chosen+" · "+t.title.replace(/^Tabel\s*\d+\.\s*/,"")));
  box.append(E("p",t.rows.length+" baris diekstraksi · Status: "+t.parse_status+". Angka dengan penanda '-' dipertahankan sebagai tidak tersedia (null).","sepsem-flag"));
+ const pdfChecked=Boolean(audit?.independent_table_fingerprints?.[String(chosen)]);
+ box.append(E("p",pdfChecked?"Verifikasi PDF independen: semua "+audit.independent_table_fingerprints[String(chosen)].count+" baris wilayah/komoditas utama cocok dengan sel PDF asli.":"Audit PDF independen baris demi baris masih terbuka. Angka cocok dengan transkrip, tetapi tidak boleh diberi label validasi visual menyeluruh.","sepsem-flag"));
  const actions=E("div",undefined,"sepsem-controls");const c=E("button","Ekspor seluruh tabel ke CSV");c.onclick=()=>download(t);actions.append(c,a(link(chosen),"Lihat PDF sumber ↗"));box.append(actions);
  const scroll=E("div",undefined,"sepsem-table"),tbl=E("table"),thead=E("thead"),hrow=E("tr");
  ["Komoditas / indikator",...t.periods,...t.extra_periods].forEach(v=>hrow.append(E("th",v)));thead.append(hrow);tbl.append(thead);
@@ -112,11 +114,12 @@ async function init(){
  try{
   const r=await Promise.all([
    fetch("./data/pusdatin-agriculture-september-2026-semantic.json",{cache:"no-store"}),
-   fetch("./data/pusdatin-agriculture-september-2026.json",{cache:"no-store"})
+   fetch("./data/pusdatin-agriculture-september-2026.json",{cache:"no-store"}),
+   fetch("./data/pusdatin-september-pdf-independent-audit.json",{cache:"no-store"})
   ]);
-  if(!r[0].ok||!r[1].ok)throw Error("September semantic dataset could not load");
-  data=await r[0].json();source=await r[1].json();
-  if(data.table_series.length!==63||data.parsed_numeric_row_count!==2163||source.tables.length!==63)throw Error("semantic/source table integrity mismatch");
+  if(!r[0].ok||!r[1].ok||!r[2].ok)throw Error("September source or independent audit ledger could not load");
+  data=await r[0].json();source=await r[1].json();audit=await r[2].json();
+  if(data.table_series.length!==63||data.parsed_numeric_row_count!==2163||source.tables.length!==63||audit.verified_table_count!==22)throw Error("semantic/source/independent-audit integrity mismatch");
   start();
  }catch(e){const parent=$("fa-september");if(parent)parent.append(E("p","Modul angka tambahan belum dapat dimuat: "+e.message,"fa-error"));}
 }
