@@ -10,7 +10,7 @@ const usd=n=>n==null?t("Unavailable","Belum tersedia"):"US$"+fmt(n>=1000?n/1000:
 const signed=n=>(n>=0?"+":"−")+usd(Math.abs(n));
 const safeUrl=s=>/^https:\/\//.test(s||"");
 const source=(url,caption)=>{const a=el("a",null,caption+" ↗");if(safeUrl(url)){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}return a};
-const state={data:null,sector:"minerba",commodity:"coal",direction:"exports",limit:9,query:""};
+const state={data:null,sector:"minerba",commodity:"coal",direction:"exports",limit:9,query:"",lens:"minerals"};
 const selected=()=>state.data.bilateral.products.filter(p=>p.sector===state.sector&&(state.commodity==="all"||p.id===state.commodity));
 const total=(ps,d)=>ps.reduce((n,p)=>n+(p[d].world_musd||0),0);
 const alias=c=>c==="Korea, Rep."?"South Korea":c;
@@ -35,7 +35,40 @@ function view(){
  const cell=el("div","tf-kpi");cell.append(el("small",null,title),el("strong",null,balance?signed(value):usd(value)));macro.append(cell)}
  const macroNote=el("p","tf-macro-note",t("National non-oil/gas is NOT equal to minerba. Exports FOB; imports CIF. ","Nonmigas nasional BUKAN sama dengan minerba. Ekspor FOB; impor CIF. "));
  macroNote.append(source(latest.source_url,t("BPS release, 1 Oct 2026","Rilis BPS, 1 Okt 2026")));macro.append(macroNote);root.append(macro);
- const panel=el("section","tf-panel");panel.append(el("h3",null,t("Bilateral commodity flows · Full year 2025","Arus bilateral komoditas · Tahun penuh 2025")));
+ const nav=el("nav","tf-sector-tabs");nav.setAttribute("aria-label",t("Flow lens","Kategori aliran"));
+const tabs=[
+ ["minerals",t("Minerals, oil & gas · HS 2025","Mineral, migas · HS 2025")],
+ ["food",t("Food & Agriculture · 2026","Pangan & Pertanian · 2026")],
+ ["marine",t("Marine & Fisheries · KKP 2025","Kelautan & Perikanan · KKP 2025")],
+ ["energy",t("Energy & RUPTL evidence","Energi & bukti RUPTL")]
+];
+for(const [key,caption]of tabs){
+ const b=el("button","tf-sector-tab",caption);b.type="button";b.setAttribute("aria-pressed",String(key===state.lens));
+ b.addEventListener("click",()=>{
+  state.lens=key;
+  if(typeof location!=="undefined"&&typeof history!=="undefined"){
+   const u=new URL(location.href);u.searchParams.set("trade",key);history.replaceState(history.state||{},'',u.pathname+u.search+u.hash);
+  }
+  view();
+ });nav.append(b)
+}
+root.append(nav);
+if(state.lens==="food"||state.lens==="marine"){
+ const extension=el("section","tf-panel");extension.id="sliSectorTradeSankeyRoot";root.append(extension);
+ if(window.SLISectorTradeSankey)window.SLISectorTradeSankey.render(extension,state.lens);
+ else extension.append(el("p","tf-warning",t("Sector flow renderer unavailable.","Modul arus sektoral tidak tersedia.")));
+ return;
+}
+if(state.lens==="energy"){
+ const energy=el("section","tf-panel");energy.append(el("h3",null,t("Energy & RUPTL · specialist flow evidence","Energi & RUPTL · bukti aliran di dashboard khusus")),
+ el("p","tf-warning",t("HEESI 2025 already contains an official national energy Sankey within Energy Security. RUPTL 2025–2034 is a CAPACITY PLAN, not physical power flows or verified generation; do not mix its GW additions with customs US$ or HEESI BOE.",
+ "HEESI 2025 sudah memiliki Sankey neraca energi nasional resmi pada Ketahanan Energi. RUPTL 2025–2034 adalah RENCANA KAPASITAS, bukan arus listrik fisik atau pembangkitan terverifikasi; jangan campurkan GW rencana dengan perdagangan US$ atau BOE HEESI.")));
+ const links=el("div","tf-source-route-links");
+ const a=el("a",null,t("Open Energy Security · HEESI 2025 Sankey ↗","Buka Ketahanan Energi · Sankey HEESI 2025 ↗"));a.href="./index.html#energy";links.append(a);
+ const b=el("a",null,t("Open official RUPTL planning by period ↗","Buka rencana RUPTL resmi per periode ↗"));b.href="./pln-ruptl-energy-investment.html";links.append(b);
+ energy.append(links);root.append(energy);return;
+}
+const panel=el("section","tf-panel");panel.append(el("h3",null,t("Bilateral commodity flows · Full year 2025","Arus bilateral komoditas · Tahun penuh 2025")));
  const controls=el("div","tf-controls"),sector=el("select","tf-input"),commodity=el("select","tf-input"),direction=el("select","tf-input"),limit=el("select","tf-input"),query=el("input","tf-input");
  function options(s,rows,v){s.replaceChildren();for(const [id,title] of rows){const a=el("option",null,title);a.value=String(id);s.append(a)}s.value=String(v)}
  const group=state.data.bilateral.products.filter(p=>p.sector===state.sector);
@@ -163,7 +196,9 @@ function view(){
  }
  draw();
 }
-window.initSLITradeFlow=async function(){const root=document.getElementById("sliTradeRoot");if(!root)return;if(state.data){view();return}
+window.initSLITradeFlow=async function(){const root=document.getElementById("sliTradeRoot");if(!root)return;
+ if(typeof location!=="undefined"){try{const requested=new URLSearchParams(location.search).get("trade");if(["minerals","food","marine","energy"].includes(requested))state.lens=requested}catch(_){}}
+ if(state.data){view();return}
  root.replaceChildren(el("p","tf-warning",t("Loading published customs data…","Memuat data kepabeanan…")));
  try{const r=await fetch("data/commodity-trade-flows.json",{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);state.data=await r.json();view()}
  catch(e){root.replaceChildren(el("p","tf-warning",t("Source data unavailable; no values inferred.","Data sumber tidak tersedia; angka tidak direka.")));console.error("[SLI Trade]",e)}};
