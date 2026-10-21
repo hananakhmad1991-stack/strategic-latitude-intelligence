@@ -137,5 +137,93 @@ async function render(host,sector){
   else if(sector==="marine"){const data=cache.marine||(cache.marine=await load("./data/sli-marine-fisheries-trade-2025.json"));if(token===generation&&host.isConnected)marineView(host,data,"destinations")}
  }catch(err){console.error("[SLI sector Sankey]",err);if(token===generation&&host.isConnected)host.replaceChildren(E("p","tf-warning",T("Source unavailable or failed validation; no values fabricated.","Sumber tidak tersedia atau gagal diverifikasi; angka tidak direka.")))}
 }
-window.SLISectorTradeSankey={render,validateFood,foodFlows,validateMarine};
+
+/* Optional primary BPS bilateral matrix. Never display unreviewed or mixed-HS-level flows. */
+function validateBPS(data){
+ if(data?.schema!=="sli-bps-hs-partner-matrix-v1"||data.status!=="verified"||
+   data.review_status!=="primary_cell_review_attested"||
+   !Array.isArray(data.observations)||data.observations.length<1||
+   data.verified_cells!==data.observations.length||
+   data.review?.approved_cell_count!==data.observations.length||
+   !/^[a-f0-9]{64}$/.test(data.review?.source_csv_sha256||""))throw Error("BPS primary evidence not approved");
+ const keys=new Set();
+ for(const x of data.observations){
+  const key=[x.direction,x.period,x.hs_code,String(x.partner_country).toLowerCase()].join("|");
+  if(keys.has(key)||!["exports","imports"].includes(x.direction)||
+    !/^20[0-9]{2}(?:-(?:0[1-9]|1[0-2]))?$/.test(x.period)||
+    !/^(?:[0-9]{2}){1,5}$/.test(x.hs_code)||
+    x.hs_level!==x.hs_code.length||x.hs_version!=="HS2022"||
+    !x.partner_country||!Number.isFinite(x.value_usd)||x.value_usd<=0||
+    !/^https:\/\/(?:[\w-]+\.)*bps\.go\.id\//.test(x.source_url||"")||
+    !x.source_locator||x.source_locator.length<10||
+    x.value_basis!==(x.direction==="exports"?"FOB":"CIF"))
+     throw Error("Inconsistent primary BPS observation");
+  keys.add(key);
+ }
+ return data;
+}
+function bpsView(host,data,choices={}){
+ validateBPS(data);
+ const rows=data.observations;
+ const periods=[...new Set(rows.map(x=>x.period))].sort().reverse();
+ const period=periods.includes(choices.period)?choices.period:periods[0];
+ const available=rows.filter(x=>x.period===period);
+ const directions=[...new Set(available.map(x=>x.direction))];
+ const direction=directions.includes(choices.direction)?choices.direction:directions[0];
+ const resolution=[...new Set(available.filter(x=>x.direction===direction).map(x=>x.hs_code.length))].sort((a,b)=>a-b);
+ const level=resolution.includes(choices.level)?choices.level:resolution[0];
+ const cells=available.filter(x=>x.direction===direction&&x.hs_code.length===level)
+   .sort((a,b)=>b.value_usd-a.value_usd).slice(0,20);
+ host.replaceChildren();
+ host.append(E("h3",null,T("BPS verified HS × named trading partner","BPS terverifikasi: HS × negara mitra")),
+ E("p","tf-warning",T("Primary BPS observations only; reviewed source cells. This is a selected-cell view, NOT all Indonesian trade. The HS level, period and direction cannot be combined or double-counted.",
+ "Hanya observasi primer BPS yang selnya telah diperiksa. Diagram memuat sel terpilih, BUKAN semua perdagangan Indonesia. Tingkat HS, periode dan arah tidak digabung atau dihitung ganda.")),
+ mkLink(data.primary_query_url,T("BPS primary trade query","Kueri primer BPS")));
+ const controls=E("div","tf-controls");
+ function select(label,options,value,callback){
+  const wrap=E("label","tf-field"),inp=E("select","tf-input");
+  wrap.append(E("span",null,label));
+  for(const [v,title]of options){const option=E("option",null,title);option.value=String(v);inp.append(option)}
+  inp.value=String(value);inp.addEventListener("change",()=>callback(inp.value));wrap.append(inp);return wrap
+ }
+ controls.append(
+  select(T("Period","Periode"),periods.map(x=>[x,x]),period,v=>bpsView(host,data,{period:v})),
+  select(T("Flow direction","Arah perdagangan"),directions.map(x=>[x,x==="exports"?T("Exports · FOB","Ekspor · FOB"):T("Imports · CIF","Impor · CIF")]),direction,v=>bpsView(host,data,{period,direction:v})),
+  select(T("HS precision","Tingkat HS"),resolution.map(x=>[x,"HS "+x]),level,v=>bpsView(host,data,{period,direction,level:Number(v)}))
+ );host.append(controls);
+ const million=cells.reduce((a,b)=>a+b.value_usd,0)/1e6;
+ host.append(E("p","tf-macro-note",T("Top ","Sebanyak ")+cells.length+
+ T(" approved cells; selected value "," sel terverifikasi teratas; nilai terpilih ")+usd(million)+
+ " · "+period+" · HS"+level+T(". This is NOT a national sector total.",
+ ". Ini BUKAN total sektor nasional.")));
+ if(!cells.length){host.append(E("p","tf-warning",T("No approved cells for this selection.","Belum ada sel terverifikasi untuk pilihan ini.")));return}
+ const countries=[...new Set(cells.map(x=>x.partner_country))];
+ const codes=[...new Set(cells.map(x=>x.hs_code))];
+ const isExport=direction==="exports";
+ const edges=cells.map(c=>({
+  from:isExport?"IDN":"PT:"+c.partner_country,middle:"HS:"+c.hs_code,
+  to:isExport?"PT:"+c.partner_country:"IDN",
+  value:c.value_usd/1e6,
+  tag:direction+"|"+period+"|"+c.hs_code+"|"+c.partner_country,
+  label:"HS "+c.hs_code+" · "+c.partner_country+" · "+c.source_locator
+ }));
+ const nodesPT=countries.map(x=>node("PT:"+x,x,x));
+ const nodesHS=codes.map(x=>node("HS:"+x,"HS "+x,"HS "+x));
+ const nodesID=[node("IDN","Indonesia","Indonesia")];
+ const stages=isExport?[nodesID,nodesHS,nodesPT]:[nodesPT,nodesHS,nodesID];
+ const chart=E("div","tf-sankey-scroll");host.append(chart);
+ sankey(chart,stages,edges,{
+  title:"BPS verified "+direction+" HS"+level+" × country · "+period,
+  publisher:"Badan Pusat Statistik",url:data.primary_query_url,period,
+  note:"Independent review attested; 20 largest observed source cells only, no inferred zeros or residual countries. Value USD FOB exports/CIF imports.",
+  headers:["HS","Country", "Direction","Period","Value USD","BPS locator"],
+  row:e=>{const x=cells.find(c=>e.tag.endsWith("|"+c.hs_code+"|"+c.partner_country));return [x.hs_code,x.partner_country,direction,period,x.value_usd,x.source_locator]}
+ });
+ dataTable(host,[T("HS code","Kode HS"),T("Partner","Mitra"),T("Value USD","Nilai USD"),T("BPS cell reference","Referensi sel BPS")],
+ cells.map(x=>[x.hs_code,x.partner_country,fmt(x.value_usd),x.source_locator]));
+ const foot=E("p","tf-warning",T("Every displayed link was checked against a separately identified BPS source cell. Only the biggest twenty approved cells are visualized. Other observations remain in the source dataset, never an estimated residual.",
+ "Setiap aliran yang ditampilkan diperiksa terhadap sel sumber BPS yang teridentifikasi. Hanya dua puluh sel terbesar yang divisualisasikan. Observasi lain tetap di dataset sumber, bukan residu perkiraan."));host.append(foot);
+}
+
+window.SLISectorTradeSankey={render,validateFood,foodFlows,validateMarine,validateBPS,renderBPS:bpsView};
 })();
