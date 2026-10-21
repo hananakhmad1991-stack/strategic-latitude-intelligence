@@ -1066,5 +1066,94 @@
       "actual_evidence_source": null
     }
   ],
-  "auto_approved_operating_status_count": 0
+  "auto_approved_operating_status_count": 0,
+  "source_quality_flag_registry": [
+    {
+      "id": "DUP-A8",
+      "annex": "A.8",
+      "table": "A8.11",
+      "pdf_page": 697,
+      "flag": "repeated_plant_label",
+      "example": "Sumsel-1 repeats in source rows 1 and 3; Sumbagsel-1 in rows 2 and 4",
+      "review_needed": "Inspect whether physical units, phase splits, or editorial duplication; do not double count unique operating facilities."
+    },
+    {
+      "id": "DUP-A9",
+      "annex": "A.9",
+      "table": "A9.11",
+      "pdf_page": 709,
+      "flag": "repeated_plant_label",
+      "example": "Hululais (FTP2) repeats in source row 3 and 4 with 55 printed in each",
+      "review_needed": "Do not assume either one duplicate or two separate units without plant unit match."
+    },
+    {
+      "id": "DUP-C8",
+      "annex": "C.8",
+      "table": "C8.14",
+      "pdf_page": 1096,
+      "flag": "repeated_plant_label",
+      "example": "Songa Wayaua (FTP2) appears in rows 3 and 4; Halmahera 1 in rows 10 and 11",
+      "review_needed": "Preserve physical unit ambiguity; status/count not generated from dedup guess."
+    },
+    {
+      "id": "NO-A7",
+      "annex": "A.7",
+      "table": "A7.11",
+      "pdf_page": 685,
+      "flag": "nonsequential_source_row_number",
+      "example": "Jambi-2 source sequence displays number 43 following rows 1 and 2 in machine extraction",
+      "review_needed": "Use original table/page/position and verify typography; row number alone is not a stable identity key."
+    },
+    {
+      "id": "LAYOUT-B6",
+      "annex": "B.6",
+      "table": "B6.10",
+      "pdf_page": 913,
+      "flag": "nonuniform_source_grid_columns",
+      "example": "Machine table extraction yields 13 cells per row while source visual displays nine conceptual headings",
+      "review_needed": "Do not apply the nine-cell positional decoder from other regions to B6."
+    },
+    {
+      "id": "LAYOUT-C2",
+      "annex": "C.2",
+      "table": "C2.15",
+      "pdf_page": 980,
+      "flag": "source_split_columns",
+      "example": "Eleven machine columns and grouped PLTS + BESS capacity fields",
+      "review_needed": "Treat combined technology, MW and storage separately before building capacity totals."
+    },
+    {
+      "id": "UNIT-C4",
+      "annex": "C.4",
+      "table": "C4.16",
+      "pdf_page": 1016,
+      "flag": "mixed_capacity_header",
+      "example": "Source table header explicitly Kapasitas (MW/MWh)",
+      "review_needed": "Never sum generic numeric capacity values under this mixed unit header without per-row technology unit verification."
+    },
+    {
+      "id": "MULTI-A4",
+      "annex": "A.4",
+      "table": "A4.15",
+      "pdf_page": 650,
+      "flag": "multi_value_cell",
+      "example": "One Lisdes row contains 2,2, 0,63, 0,74 and 0,94 with multiple planned years",
+      "review_needed": "Must split dated parts only when each value is matched to its matching source year and technology."
+    },
+    {
+      "id": "GEO-B5",
+      "annex": "B.5",
+      "table": "B5.9",
+      "pdf_page": 901,
+      "flag": "geographic_appendix_not_precise_site",
+      "example": "DI Yogyakarta appendix contains Jawa-Bali (Kuota) Tersebar source records",
+      "review_needed": "Do not geocode entire quota to Yogyakarta or one wind facility."
+    }
+  ],
+  "source_quality_gate_summary": {
+    "flags": 9,
+    "flagged_distinct_subannexes": 9,
+    "method": "Original PDF page reading plus extracted grid structure inspection; no unsupported geolocation or unit deduplication.",
+    "released_2026_operational_status": 0
+  }
 }
