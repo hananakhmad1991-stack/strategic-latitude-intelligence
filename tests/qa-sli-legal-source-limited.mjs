@@ -28,16 +28,16 @@ test("Unreviewed Pasal 99 of UU 7/2021 returns a complete source-limited respons
  assert.equal(r.model_called,false);
  assert.equal(r.article_text_verified,false);
  assert.equal(r.sources.length,1);
- assert.equal(r.sources[0].source_type,"legal_index_metadata");
- assert.equal(r.sources[0].source_url,metadata.source_url);
+ assert.equal(r.sources[0].source_type,"official_original_statute_structure_only");
+ assert.equal(r.sources[0].source_url,"https://pajak.go.id/index.php/id/peraturan/harmonisasi-peraturan-perpajakan");
  assert.equal(auditLegalArticleCitations(r.answer,r.sources).pass,true);
  assert.match(r.answer,/^## Status bukti pasal: Pasal 99 UU 7\/2021/m);
- assert.match(r.answer,/BUKAN teks asli pasalnya/);
- assert.match(r.answer,/bunyi ketentuan|Bunyi ketentuan/i);
- assert.match(r.answer,/tidak ada substansi pasal yang direka/i);
+ assert.match(r.answer,/pasal utama bernomor 1 sampai 19/);
+ assert.match(r.answer,/tidak terdapat sebagai pasal utama/i);
+ assert.match(r.answer,/tidak menyusun isi atau kewajiban hukum/i);
  assert.doesNotMatch(r.answer,/Pasal 99 .*mengatur|Pasal 99 .*mewajibkan/i);
  assert.doesNotMatch(r.answer,/\n\n(?:##[^\n]+\n\n)?(?:\*|•|-\s*)?\n/);
- assert.equal((r.answer.match(/^## /gm)||[]).length,5);
+ assert.equal((r.answer.match(/^## /gm)||[]).length,3);
 });
 test("Only exactly one requested law and article triggers the deterministic guard",()=>{
  assert.equal(answer("Pasal 1 UU 7/2021"),null,"Known reviewed article must go to normal model");
@@ -60,15 +60,16 @@ test("Source-limited legal export explicitly distinguishes law metadata from a r
   title:"Status Korpus SLI untuk Pasal 99 UU 7/2021"});
  assert.equal(doc.report_scope,"focused_legal_article");
  assert.equal(doc.refs.cited_unique,1);
- assert.equal(doc.refs.metadata_only_legal_index,1);
+ assert.equal(doc.refs.metadata_only_legal_index,0);
+ assert.equal(doc.refs.structure_only_legal_source,1);
  assert.equal(doc.refs.metadata_complete_candidates,0);
  assert.equal(doc.refs.meets_preliminary_minimum,false);
  assert.equal(doc.refs.ready_for_publication,false);
- assert.match(doc.refs.warning,/catatan indeks regulasi/);
- assert.match(doc.refs.warning,/tidak ada teks pasal primer/);
+ assert.match(doc.refs.warning,/struktur naskah UU/);
+ assert.match(doc.refs.warning,/bukan teks pasal yang diminta/);
  const print=printableResearchHtml(doc);
  assert.match(print,/Sumber dan Referensi/);
- assert.match(print,/catatan indeks regulasi/);
+ assert.match(print,/struktur naskah UU/);
  assert.match(print,/DRAF BERBANTUAN AI/);
  assert.match(print,/UU 7\/2021/);
  assert.doesNotMatch(print,/belum bisa memberi:/i);
@@ -92,7 +93,7 @@ test("Full formal names, abbreviations, and duplicated same-law mentions resolve
  const r=answer("Jelaskan Pasal 99 Undang-Undang Nomor 7 Tahun 2021", [formal], []);
  assert.equal(r.request.law_ref,"UU 7/2021");
  assert.equal(r.sources.length,1,"formal legal index should match the canonical identity");
- assert.equal(r.sources[0].source_type,"legal_index_metadata");
+ assert.equal(r.sources[0].source_type,"official_original_statute_structure_only");
  assert.equal(r.model_called,false);
  assert.equal(auditLegalArticleCitations(r.answer,[]).pass,true);
  const repeated=answer("Jelaskan Pasal 99 UU 7/2021 (Undang-Undang Nomor 7 Tahun 2021)",[formal],[]);
@@ -119,7 +120,8 @@ test("Formal law name source-limited report has substantive text after every hea
  assert.equal(doc.report_scope,"focused_legal_article");
  assert.equal(doc.refs.required_minimum,1);
  assert.equal(doc.refs.metadata_complete_candidates,0);
- assert.equal(doc.refs.metadata_only_legal_index,1);
+ assert.equal(doc.refs.metadata_only_legal_index,0);
+ assert.equal(doc.refs.structure_only_legal_source,1);
  assert.equal(doc.refs.ready_for_publication,false);
  for(let i=0;i<doc.body.length;i++){
   if(!/^h[1-3]$/.test(doc.body[i].type))continue;
@@ -128,7 +130,7 @@ test("Formal law name source-limited report has substantive text after every hea
   assert.ok(next?.text?.length>50,"Each legal heading needs a meaningful supporting paragraph");
  }
  const html=printableResearchHtml(doc);
- assert.match(html,/tidak ada teks pasal primer/);
+ assert.match(html,/struktur naskah UU/);
  assert.match(html,/DRAF BERBANTUAN AI/);
  assert.doesNotMatch(html,/target minimum 1/);
  assert.ok(docxBytes(doc).byteLength>3000);
