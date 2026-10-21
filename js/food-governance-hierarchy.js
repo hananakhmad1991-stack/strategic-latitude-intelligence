@@ -12,7 +12,7 @@ const state={group:"all",issue:"all",query:"",selected:"bapanas"};
 let cache=null,renderSequence=0;
 const groups=[
  {id:"policy",color:"#d9bf89",idName:"Arahan nasional, koordinasi & perencanaan",enName:"National strategy, coordination & planning",ids:["pres","kemenkopangan","bappenas","kemenkoekon"]},
- {id:"production",color:"#7ebcd0",idName:"Produksi pertanian, perikanan & pelaksana daerah",enName:"Agriculture, fisheries & regional delivery",ids:["kementan","wamentan-2026","setjen-kementan","itjen-kementan","ditjen-tp","ditjen-horti","ditjen-psp","ditjen-psp-2026","kementan-ditjen-lahan","kementan-ditjen-bun","kementan-ditjen-pkh","kementan-brmp","kementan-bppsdmp","pusdatin","kkp","pemda"]},
+ {id:"production",color:"#7ebcd0",idName:"Produksi pertanian, perikanan & pelaksana daerah",enName:"Agriculture, fisheries & regional delivery",ids:["kementan","wamentan-2026","wamentan-alim-2026","setjen-kementan","itjen-kementan","ditjen-tp","ditjen-horti","ditjen-psp","ditjen-psp-2026","kementan-ditjen-lahan","kementan-ditjen-bun","kementan-ditjen-pkh","kementan-brmp","kementan-bppsdmp","pusdatin","kkp","pemda"]},
  {id:"security",color:"#8ac7b2",idName:"Ketahanan pangan, gizi & tata niaga",enName:"Food security, nutrition & trade rules",ids:["bapanas","bgn","kemendag","bpom"]},
  {id:"enterprise",color:"#c4aed7",idName:"Operator BUMN & rantai pasok",enName:"State food and farm-input operators",ids:["bulog","pupuk","idfood"]},
  {id:"industry",color:"#d4a78b",idName:"Industri pangan & pembinaan daerah",enName:"Food industry & regional governance",ids:["kemenperin","wamenperin-2026","kemendagri"]},
