@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T11:06:39.646574Z",
+  "updated_at_utc": "2026-10-21T11:35:37.602818Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -310,6 +310,22 @@
         "BREN"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_1174088408de6fe21dbfff",
+      "title": "Emiten ASSA Kantongi Pinjaman Rp 500 Miliar dari BCA - Liputan6.com",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNWC1KeDlYcFE0dTdXOWI3cFhjVU9meGk3WHJjMkdfR3cwSDloTlp3LWM3QjEwemdkbXU1bXdpVmRjVFhUWmFnSmQySUx4VTlTN3QxY2FRM1Bad3Q2RkZ3Q1NwTzhQNWFFcURaNDJIMEwwOEZtbjFqS0UtMml5Z0RnZHY2ZzVPRm1KQWY3UXNmdm5KclZDVklrR2xDMi3SAZMBQVVfeXFMUHNqSXhBM0FxdlBfUWJuX3BiM1RSeUNUbWlHVy1Vai1rcWRnOHUyeHJfOWJBY241QzFNekNEankzSXg3Q3Zkek9WOGFLUExLRHVXSHVEdTh5LU9mNWFIZi1lZmFScWFmUkhMcTA4VnpwM2p1QlRhU0QybFo4Y2N0ZjN0Mkk4cVlKOHpJc1FmSHJzZkx3?oc=5",
+      "publisher": "Liputan6.com",
+      "published_at_utc": "2026-10-21T07:04:57Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ASSA"
+      ],
+      "sector": "transport",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
