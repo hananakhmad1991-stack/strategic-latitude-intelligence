@@ -4,20 +4,21 @@ const roots=[...document.querySelectorAll("[data-sli-ai-figures]")];if(!roots.le
 const NS="http://www.w3.org/2000/svg",PATH="./data/sli-stanford-2026-digitized-figures.json",WB_PATH="./data/sli-worldbank-ai-2025-digitized-figure-panels.json";
 function el(tag,text){const x=document.createElement(tag);if(text!==undefined)x.textContent=String(text);return x}
 function svg(tag,attrs,txt){const n=document.createElementNS(NS,tag);Object.entries(attrs||{}).forEach(([k,v])=>n.setAttribute(k,String(v)));if(txt!==undefined)n.textContent=String(txt);return n}
-const fmt=x=>Number(x).toLocaleString("id-ID",{maximumFractionDigits:2});
+const fmt=x=>Number(x).toLocaleString(en()?"en-US":"id-ID",{maximumFractionDigits:2});
 const en=()=>document.documentElement.lang.toLowerCase().startsWith("en");
+const localizedUnit=u=>en()?u:({facilities:"fasilitas",models:"model",satellites:"satelit"}[u]||u);
 function chart(root,d){
 root.classList.add("sli-figure-atlas");root.setAttribute("data-sli-visual","source-reviewed-original-report-figure-panels");
 const heading=el("h3",en()?"Digitized original-report figures":"Grafik laporan asli yang telah didigitalisasi");
 const selectWrap=el("div");selectWrap.className="sli-figure-select";
 const lab=el("label",en()?"Choose figure":"Pilih grafik");const select=el("select");lab.append(select);selectWrap.append(lab);
-d.figures.forEach((f,i)=>{const provider=f.source_url?"World Bank":"Stanford";const op=el("option",provider+" · "+(en()?f.title_en:f.title_id)+" · Figure "+f.figure_number+(f.figure_panel||""));op.value=String(i);op.dataset.sliFigureId=(f.source_url?"worldbank:":"stanford:")+f.figure_number+(f.figure_panel||"");select.append(op)});
+d.figures.forEach((f,i)=>{const provider=f.source_url?"World Bank":"Stanford";const op=el("option",provider+" · "+(en()?f.title_en:f.title_id)+" · "+(en()?"Figure ":"Gambar ")+f.figure_number+(f.figure_panel||""));op.value=String(i);op.dataset.sliFigureId=(f.source_url?"worldbank:":"stanford:")+f.figure_number+(f.figure_panel||"");select.append(op)});
 const meta=el("p"),plot=el("div"),detail=el("div"),warn=el("p"),source=el("p"),details=el("details"),sum=el("summary",en()?"Show exact transcribed values":"Lihat tabel nilai sumber"),table=el("table");
 plot.className="sli-figure-plot";detail.className="sli-figure-detail";details.append(sum,table);
 root.replaceChildren(heading,selectWrap,meta,plot,detail,warn,source,details);
-function sourceLink(f){source.replaceChildren();const publisher=f.source_url?"World Bank 2025":"Stanford 2026";const a=el("a",publisher+" · Figure "+f.figure_number+(f.figure_panel||"")+" · "+(en()?"PDF page ":"halaman PDF ")+f.pdf_page);a.href=f.source_url||d.source.official_url;a.target="_blank";a.rel="noopener noreferrer";source.append(a)}
-function setDetail(label,value,f){detail.textContent=label+": "+fmt(value)+" "+f.unit+". "+(en()?f.caution_en:f.caution_id)}
-function point(base,label,value,f){const title=svg("title",{},label+": "+fmt(value)+" "+f.unit);base.append(title);base.setAttribute("data-value",String(value));base.setAttribute("tabindex","0");base.setAttribute("role","button");base.setAttribute("aria-label",label+": "+fmt(value)+" "+f.unit);const run=()=>setDetail(label,value,f);base.addEventListener("click",run);base.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();run()}})}
+function sourceLink(f){source.replaceChildren();const publisher=f.source_url?"World Bank 2025":"Stanford 2026";const a=el("a",publisher+" · "+(en()?"Figure ":"Gambar ")+f.figure_number+(f.figure_panel||"")+" · "+(en()?"PDF page ":"halaman PDF ")+f.pdf_page);a.href=f.source_url||d.source.official_url;a.target="_blank";a.rel="noopener noreferrer";source.append(a)}
+function setDetail(label,value,f){detail.textContent=label+": "+fmt(value)+" "+localizedUnit(f.unit)+". "+(en()?f.caution_en:f.caution_id)}
+function point(base,label,value,f){const title=svg("title",{},label+": "+fmt(value)+" "+localizedUnit(f.unit));base.append(title);base.setAttribute("data-value",String(value));base.setAttribute("tabindex","0");base.setAttribute("role","button");base.setAttribute("aria-label",label+": "+fmt(value)+" "+localizedUnit(f.unit));const run=()=>setDetail(label,value,f);base.addEventListener("click",run);base.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();run()}})}
 function addText(v,x,y,content,size=12,color="#bdd7e3",anchor="middle"){v.append(svg("text",{x,y,fill:color,"font-size":size,"text-anchor":anchor},content))}
 function line(f){
  const W=850,H=295,L=58,R=24,T=18,B=52,max=35;
@@ -46,7 +47,7 @@ function bars(f){
   point(b,label,r.value,f);v.append(b);
   addText(v,L+w+9,y+20,fmt(r.value),12,"#eef5f9","start");
  });
- addText(v,L,H-5,f.unit+" · "+(f.year||"2025"),12,"#cbdfe7","start");return v;
+ addText(v,L,H-5,localizedUnit(f.unit)+" · "+(f.year||"2025"),12,"#cbdfe7","start");return v;
 }
 function multiLine(f){
  const W=900,H=370,L=64,R=35,T=22,B=83;
@@ -92,12 +93,12 @@ function show(){
  const selected=f.values.at(-1);
  const selectedLabel=multi?String(selected.year)+" · "+f.series[0].key:isPower?selected.period:(selected.country||(en()?selected.label_en:selected.label_id));
  const selectedValue=multi?selected[f.series[0].key]:isPower?selected.value_gw:selected.count===undefined?selected.value:selected.count;
- meta.textContent=f.source_credit+" · Figure "+f.figure_number+(f.figure_panel||"")+" · PDF "+f.pdf_page+" · "+(en()?"Publisher figures are not independently audited by SLI":"Angka sumber belum menjadi validasi independen metodologi penerbit");
+ meta.textContent=f.source_credit+" · "+(en()?"Figure ":"Gambar ")+f.figure_number+(f.figure_panel||"")+" · PDF "+f.pdf_page+" · "+(en()?"Publisher figures are not independently audited by SLI":"Angka sumber belum menjadi validasi independen metodologi penerbit");
  plot.replaceChildren(multi?multiLine(f):isPower?line(f):bars(f));
  warn.textContent=en()?f.caution_en:f.caution_id;
  sourceLink(f);setDetail(selectedLabel,selectedValue,f);
  const thead=el("thead"),tr=el("tr");
- (multi?["Tahun",...f.series.map(x=>x.label_en+" ("+f.unit+")")]:[isPower?"Kuartal":f.values[0].country?"Negara":"Kategori",f.title_en+" ("+f.unit+")"]).forEach(h=>tr.append(el("th",h)));
+ (multi?[en()?"Year":"Tahun",...f.series.map(x=>(en()?x.label_en:x.label_id)+" ("+localizedUnit(f.unit)+")")]:[isPower?(en()?"Quarter":"Kuartal"):f.values[0].country?(en()?"Country":"Negara"):(en()?"Category":"Kategori"),(en()?f.title_en:f.title_id)+" ("+localizedUnit(f.unit)+")"]).forEach(h=>tr.append(el("th",h)));
  thead.append(tr);
  const tbody=el("tbody");
  f.values.forEach(r=>{const row=el("tr");if(multi){row.append(el("td",r.year));f.series.forEach(x=>row.append(el("td",fmt(r[x.key]))));}
@@ -113,7 +114,7 @@ select.addEventListener("change",show);
   if(lab.firstChild?.nodeType===Node.TEXT_NODE)lab.firstChild.textContent=en()?"Choose figure":"Pilih grafik";
   d.figures.forEach((f,i)=>{
    const op=select.options[i];if(!op)return;
-   op.textContent=(f.source_url?"World Bank":"Stanford")+" · "+(en()?f.title_en:f.title_id)+" · Figure "+f.figure_number+(f.figure_panel||"");
+   op.textContent=(f.source_url?"World Bank":"Stanford")+" · "+(en()?f.title_en:f.title_id)+" · "+(en()?"Figure ":"Gambar ")+f.figure_number+(f.figure_panel||"");
   });
   sum.textContent=en()?"Show exact transcribed values":"Lihat tabel nilai sumber";
   show();
@@ -129,5 +130,5 @@ Promise.allSettled([loadJSON(PATH),loadJSON(WB_PATH)]).then(results=>{
   d.figures.push(...bank.value.figures.map(f=>({...f,source_url:f.source_url||bank.value.source.official_url})));
  }
  roots.forEach(root=>chart(root,d));
-}).catch(e=>roots.forEach(root=>{root.textContent="Source-reviewed AI figures unavailable: "+String(e.message)}));
+}).catch(e=>roots.forEach(root=>{root.textContent=(en()?"Source-reviewed AI figures unavailable: ":"Grafik AI berbasis sumber yang ditinjau belum tersedia: ")+String(e.message)}));
 })();
