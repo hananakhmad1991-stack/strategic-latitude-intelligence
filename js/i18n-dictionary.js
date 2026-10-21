@@ -2660,3 +2660,18 @@ window.SLI_TRANSLATIONS_ID.set("from confirmed electrical grid stress.","dari te
 window.SLI_TRANSLATIONS_ID.set("Policy & Regulatory Intelligence / Indonesia","Intelijen Kebijakan & Regulasi / Indonesia");
 window.SLI_TRANSLATIONS_ID.set("SLI / VERIFIED LEGAL CORPUS · ORIGINAL TEXT","SLI / KORPUS HUKUM TERVERIFIKASI · TEKS ASLI");
 window.SLI_TRANSLATIONS_ID.set("Investment impact","Dampak investasi");
+window.SLI_TRANSLATIONS_ID.set("Main dashboard ↗","Dasbor utama ↗");
+window.SLI_TRANSLATIONS_ID.set("Energy intelligence ↗","Intelijen energi ↗");
+window.SLI_TRANSLATIONS_ID.set("Investment tracker ↗","Pelacak investasi ↗");
+window.SLI_TRANSLATIONS_ID.set("Provincial investment engine ↗","Analisis investasi provinsi ↗");
+window.SLI_TRANSLATIONS_ID.set("Province industry & energy dossier ↗","Profil industri dan energi provinsi ↗");
+window.SLI_TRANSLATIONS_ID.set("PLN statistics source registry","Daftar sumber statistik PLN");
+window.SLI_TRANSLATIONS_ID.set("AI regional grid map","Peta jaringan listrik regional untuk AI");
+window.SLI_TRANSLATIONS_ID.set("Verified Location Map","Peta lokasi terverifikasi");
+window.SLI_TRANSLATIONS_ID.set("Actual regional available reserve for DCs","Cadangan daya regional aktual yang tersedia untuk pusat data");
+window.SLI_TRANSLATIONS_ID.set("Checking verified asset locations…","Memeriksa lokasi aset terverifikasi…");
+window.SLI_TRANSLATIONS_ID.set("Facility Coordinates & Spatial Assessment Readiness","Kesiapan koordinat fasilitas dan penilaian spasial");
+window.SLI_TRANSLATIONS_ID.set("Geospatial AI Investment Intelligence","Intelijen investasi AI geospasial");
+window.SLI_TRANSLATIONS_ID.set("Verified AI Investment Geomap | SLI","Peta investasi AI terverifikasi | SLI");
+window.SLI_TRANSLATIONS_ID.set("RUPTL planned investment","Investasi yang direncanakan dalam RUPTL");
+window.SLI_TRANSLATIONS_ID.set("Environmental data readiness & source register ↗","Kesiapan data lingkungan dan daftar sumber ↗");

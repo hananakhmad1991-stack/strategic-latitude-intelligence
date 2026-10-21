@@ -140,3 +140,13 @@ test("Curated Indonesian reader guidance preserves source dates and noncausality
   assert.equal(runtime.translate(en,"en"),en);
  }
 });
+
+// Human-curated, UI-only sector labels. Publisher report titles and evidence remain unchanged.
+test("Reviewed EN/ID cross-module navigation and data-availability labels",()=>{
+ const cases=[["Main dashboard ↗","Dasbor utama ↗"],["Energy intelligence ↗","Intelijen energi ↗"],["Investment tracker ↗","Pelacak investasi ↗"],["Provincial investment engine ↗","Analisis investasi provinsi ↗"],["Province industry & energy dossier ↗","Profil industri dan energi provinsi ↗"],["PLN statistics source registry","Daftar sumber statistik PLN"],["AI regional grid map","Peta jaringan listrik regional untuk AI"],["Verified Location Map","Peta lokasi terverifikasi"],["Actual regional available reserve for DCs","Cadangan daya regional aktual yang tersedia untuk pusat data"],["Checking verified asset locations…","Memeriksa lokasi aset terverifikasi…"],["Facility Coordinates & Spatial Assessment Readiness","Kesiapan koordinat fasilitas dan penilaian spasial"],["Geospatial AI Investment Intelligence","Intelijen investasi AI geospasial"],["Verified AI Investment Geomap | SLI","Peta investasi AI terverifikasi | SLI"],["RUPTL planned investment","Investasi yang direncanakan dalam RUPTL"],["Environmental data readiness & source register ↗","Kesiapan data lingkungan dan daftar sumber ↗"]];
+ for(const [en,id] of cases){
+  assert.equal(runtime.translate(en,"id"),id,"Missing approved Indonesian label: "+en);
+  assert.equal(runtime.translate(en,"en"),en,"English UI source label changed: "+en);
+ }
+ assert.equal(runtime.translate("Stanford Artificial Intelligence Index Report 2026","id"),"Stanford Artificial Intelligence Index Report 2026");
+});

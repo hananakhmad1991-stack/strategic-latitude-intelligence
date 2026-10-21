@@ -1,6 +1,14 @@
 name: SLI Whole-Site Indonesian Content QA
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - '*.html'
+      - 'js/i18n.js'
+      - 'js/i18n-dictionary.js'
+      - 'js/sli-navigation.js'
+      - 'tests/qa-sitewide-indonesian-content.mjs'
+      - '.github/workflows/sitewide-indonesian-qa.yml'
   push:
     branches: [main]
     paths:
