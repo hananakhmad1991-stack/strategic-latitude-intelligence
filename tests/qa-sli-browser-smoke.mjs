@@ -29,6 +29,7 @@ async function check(name,viewport,fn){
  const page=await context.newPage();
  const errors=[];
  page.on("pageerror",err=>errors.push(err.message.slice(0,350)));
+  page.on("console",msg=>{if(msg.type()==="error")errors.push("console: "+msg.text().slice(0,350))});
  try{
   await fn(page);
   report.tests.push({name,status:"pass",page_errors:errors.slice(0,3)});
@@ -37,7 +38,7 @@ async function check(name,viewport,fn){
   const filename=name.toLowerCase().replace(/[^a-z0-9]+/g,"-").slice(0,65);
   try{await page.screenshot({path:path.join(outDir,filename+".png"),fullPage:false,timeout:5000})}catch{}
   report.tests.push({name,status:"fail",error:String(error.message||error),page_errors:errors.slice(0,5)});
-  console.error("FAIL",name,String(error.message||error));
+  console.error("FAIL",name,String(error.message||error),errors.slice(0,5),await page.locator("#mfHierarchyDiagram").first().textContent().catch(()=>null));
  }finally{await context.close()}
 }
 function pageUrl(route){return BASE+"/"+route}
