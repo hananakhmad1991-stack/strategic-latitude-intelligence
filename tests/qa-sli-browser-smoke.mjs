@@ -507,12 +507,12 @@ await check("KKP historical six-year choropleth desktop: official figures and il
  await page.goto(pageUrl("marine-fisheries-intelligence.html#mfHistoryPanel"),{waitUntil:"domcontentloaded",timeout:30000});
  await page.locator("#mfHistoryMap svg .sli-province-shape").first().waitFor({timeout:25000});
  assert.equal(await page.locator("#mfHistoryMap svg .sli-province-shape").count(),38);
- assert.equal(await page.locator("#mfHistoryRows tr").count(),26);
+ assert.equal(await page.locator("#mfKKPHistoryRows tr").count(),26);
  assert.match(await page.locator("#mfHistorySummary").innerText(),/2024/);
  await page.locator("#mfHistoryMetric").selectOption("marine_fishers");
- assert.equal(await page.locator("#mfHistoryRows tr").count(),37);
+ assert.equal(await page.locator("#mfKKPHistoryRows tr").count(),37);
  await page.locator("#mfHistoryYear").selectOption("2019");
- assert.equal(await page.locator("#mfHistoryRows tr").count(),34);
+ assert.equal(await page.locator("#mfKKPHistoryRows tr").count(),34);
  assert.match(await page.locator("#mfHistorySummary").innerText(),/2[,.]088[,.]959/);
  assert.match(await page.locator("#mfHistoryPanel").innerText(),/bukan batas wilayah resmi BIG/i);
  await page.locator("#mfHistoryMap svg .sli-province-shape[aria-label^='Aceh:']").click();
@@ -526,7 +526,7 @@ await check("KKP historical choropleth mobile: accessible region and selectable 
  await page.locator("#mfHistoryMap svg .sli-province-shape").first().waitFor({timeout:25000});
  await page.locator("#mfHistoryMetric").selectOption("seaweed");
  await page.locator("#mfHistoryYear").selectOption("2022");
- assert.equal(await page.locator("#mfHistoryRows tr").count(),23);
+ assert.equal(await page.locator("#mfKKPHistoryRows tr").count(),23);
  assert.equal(await page.locator("#mfHistoryMap .sli-province-shape").count(),38);
  assert.ok(await page.locator("#mfHistoryCSV").isVisible());
  const a=await page.evaluate(()=>({vw:innerWidth,sw:document.documentElement.scrollWidth}));
