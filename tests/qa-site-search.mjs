@@ -9,7 +9,7 @@ const css=read("css/site-search.css");
 assert.equal(index.schema,"sli-search-1");
 assert.equal(index.pages.length,11);
 assert.ok(index.entries.length>=800,"Global index must contain real assets and provincial records");
-const expected=["overview","investment","map","trade","energy","food","minerals","ai","policy","geopolitics","methodology"];
+const expected=["macro","investment","map","trade","energy","food","minerals","ai","policy","geopolitics","methodology"];
 assert.deepEqual(index.pages.map(p=>p.id),expected);
 assert.equal(new Set(index.entries.map(x=>x.id)).size,index.entries.length);
 for(const item of index.entries){
@@ -36,7 +36,7 @@ const api=bindings.window.SLISearchMath;
 assert.equal(typeof bindings.window.initSLISiteSearch,"function");
 assert.equal(typeof api.rank,"function");
 assert.equal(api.normalize("Panás Búmí / PLTP"),"panas bumi pltp");
-const result=(q,page="overview",scope="all")=>Array.from(api.rank(index.entries,q,page,scope,12),x=>x);
+const result=(q,page="macro",scope="all")=>Array.from(api.rank(index.entries,q,page,scope,12),x=>x);
 const spklu=result("SPKLU Jawa Barat");
 assert.ok(spklu.some(x=>x.page==="energy"&&x.layer==="spklu"&&x.province==="Jawa Barat"),"Search province detail");
 assert.ok(result("batubara").some(x=>x.page==="energy"||x.page==="map"),"Bahasa ↔ English alias");
