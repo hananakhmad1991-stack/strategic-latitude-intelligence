@@ -21,7 +21,7 @@ const lang=()=>document.documentElement?.lang?.toLowerCase().startsWith("id")||w
 const T=(en,id)=>lang()?id:en;
 const tickerUrl=t=>"./sli-issuer.html?ticker="+encodeURIComponent(t);
 const ALLOWED=/^[A-Z0-9]{4}$/;
-let candidates=[],sector="energy",ready=null;
+let candidates=[],sector=new URLSearchParams(location.search).get("watchlist")==="marine"?"marine":"energy",ready=null;
 function activeIssuerList(rows,k){
  return rows.filter(x=>x.sector===k&&x.exchange==="IDX"&&ALLOWED.test(x.ticker||"")&&x.name);
 }
