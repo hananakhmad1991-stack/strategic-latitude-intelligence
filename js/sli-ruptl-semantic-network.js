@@ -69,7 +69,7 @@ function semanticRows(body){
     a(urlPDF+"#page="+r.source_pdf_page,r.annex_id+" · "+r.source_table+" p"+r.source_pdf_page),
     (()=>{const x=$("div");x.append($("strong",r.source_label_candidate||"Label tidak terbaca"),
        $("div",String(r.technology_candidate||"Teknologi belum jelas")+" · "+String(r.record_kind_candidate).replaceAll("_"," ")),
-       $("small","Sel kapasitas mesin: "+String(r.capacity_source_cell_unreviewed??"—")+" · "+(r.sample_source_row_match_id?"sampel terkurasi "+r.sample_source_row_match_id:"belum cocok sampel"));return x})(),
+       $("small","Sel kapasitas mesin: "+String(r.capacity_source_cell_unreviewed??"—")+" · "+(r.sample_source_row_match_id?"sampel terkurasi "+r.sample_source_row_match_id:"belum cocok sampel")));return x})(),
     (r.name_collision_not_proof_same_asset?"Nama serupa muncul berulang; identitas BELUM digabung": "Identitas fasilitas BELUM terverifikasi")
   ]});
   body.append(pager.out);
