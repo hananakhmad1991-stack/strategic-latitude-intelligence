@@ -149,6 +149,39 @@ jobs:
         run: |
           cp wrangler.owner-test.toml.example wrangler.toml
           npx --yes wrangler@4 deploy --config wrangler.toml
+      - name: Verify deployed Owner endpoint denies unauthenticated requests
+        env:
+          OWNER_ENDPOINT: https://sli-research-owner-test.hananakhmad1991.workers.dev/v1/owner-research
+        run: |
+          node --input-type=module <<'NODE'
+          const endpoint=process.env.OWNER_ENDPOINT;
+          const origin='https://hananakhmad1991-stack.github.io';
+          if(!endpoint?.startsWith('https://')||new URL(endpoint).pathname!=='/v1/owner-research'){
+            throw new Error('Invalid staging endpoint configuration');
+          }
+          const response=await fetch(endpoint,{
+            method:'POST',redirect:'error',
+            headers:{Origin:origin,'Content-Type':'application/json'},
+            body:JSON.stringify({
+              question:'Owner staging postdeploy authentication gate check',
+              mode:'executive_summary',language:'id',history:[],methodology:'auto'
+            }),
+            signal:AbortSignal.timeout(25000)
+          });
+          const body=await response.json().catch(()=>({}));
+          if(response.status!==401||body?.error!=='owner_authentication_required'){
+            throw new Error('Owner staging unauthorized request was not strictly rejected: HTTP '+response.status);
+          }
+          console.log('OWNER STAGING LIVE SECURITY PASS: unauthenticated POST rejected (401).');
+          NODE
+      - name: Record deploy source commit and scientific validation boundary
+        if: always()
+        run: |
+          echo "### Owner Worker deployment" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Git source commit: \`$GITHUB_SHA\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Target: owner-only Cloudflare staging Worker" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Live unauthenticated security gate: see prior step" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Paid authenticated model completion, source-claim truth and DOCX/PDF integrity: **NOT TESTED BY DEPLOYMENT**" >> "$GITHUB_STEP_SUMMARY"
       - name: Note independent smoke-test requirement
         run: |
           echo "Deployment submitted. Verify the owner-only endpoint with its existing Cloudflare-stored OWNER_TEST_TOKEN and current OPENAI_API_KEY secrets."
