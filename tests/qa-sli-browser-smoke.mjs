@@ -293,6 +293,7 @@ await check("AI Atlas EN/ID switch preserves chart selection, source unit and ex
  const initial=await select.locator('option[data-sli-figure-id="worldbank:4.2a"]').getAttribute("value");
  assert.ok(initial!==null,"Missing permanent World Bank source qualified figure key");
  await select.selectOption(initial);
+ await atlas.locator("details > summary").click();
  const sample=await atlas.locator(".sli-figure-plot svg rect[data-value]").first().getAttribute("data-value");
  const source=await atlas.locator('a[href*="worldbank.org"]').first().getAttribute("href");
  await page.locator('#sliPlatformMast [data-sli-mast-language="id"]').click();
@@ -335,6 +336,7 @@ await check("AI Atlas data library: source table and satellite unit remain bilin
  const figureValue=await select.locator('option[data-sli-figure-id="worldbank:2.2"]').getAttribute("value");
  assert.ok(figureValue!==null,"World Bank satellite figure not available through Data Library");
  await select.selectOption(figureValue);
+ await root.locator("details > summary").click();
  assert.equal(await root.locator("table thead th").first().innerText(),"Year");
  assert.match(await root.locator("table thead").innerText(),/Low Earth orbit \(LEO\) \(satellites\)/);
  const numericBefore=await root.locator(".sli-figure-plot svg circle[data-value]").first().getAttribute("data-value");
