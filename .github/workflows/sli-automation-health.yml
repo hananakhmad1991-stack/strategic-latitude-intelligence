@@ -1,5 +1,10 @@
 name: SLI Whole Dashboard Freshness & Automation Health
 on:
+  workflow_run:
+    workflows:
+      - 'SLI BNPB 2025 Official DataStore Source Check'
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
   schedule:
     - cron: '7 0,6,12,18 * * *'
