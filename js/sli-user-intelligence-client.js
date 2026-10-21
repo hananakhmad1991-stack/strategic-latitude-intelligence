@@ -3,6 +3,7 @@
  */
 (()=>{"use strict";
 const ROOT="sliUserIntelligence",CONFIG="./config/sli-user-intelligence.json";
+const API_ORIGIN="https://sli-user-intelligence.hananakhmad1991.workers.dev";
 const PREF_KEY="sli-catalyst-v2-preferences",WATCH_KEY="sli-terminal-watchlist-v1",SECTOR_KEY="sli-user-sector-alert-selection-v1";
 const E=(tag,text,cls)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=String(text);return x};
 const isID=()=>document.documentElement.lang?.toLowerCase().startsWith("id");
@@ -12,7 +13,7 @@ const putJSON=(key,x)=>{try{localStorage.setItem(key,JSON.stringify(x));return t
 const urls=(cfg)=>{
  if(!cfg||cfg.enabled!==true||typeof cfg.api_base!=="string")return null;
  try{const u=new URL(cfg.api_base);
-  return u.protocol==="https:"&&!u.username&&!u.password&&!u.search&&!u.hash&&u.pathname==="/"?
+  return u.origin===API_ORIGIN&&!u.username&&!u.password&&!u.search&&!u.hash&&u.pathname==="/"?
    u.origin:null;
  }catch{return null}
 };
@@ -30,11 +31,14 @@ function localPreferences(){
 let cfg=null,api=null,notice="",busy=false,inboxItems=[];
 const $=()=>document.getElementById(ROOT);
 async function call(path,method="GET",payload){
- const r=await fetch(api+path,{method,credentials:"include",cache:"no-store",
-  headers:payload?{"Content-Type":"application/json"}:{},
+ const r=await fetch(api+path,{method,credentials:"include",mode:"cors",cache:"no-store",redirect:"follow",
+  headers:{"Accept":"application/json",...(payload?{"Content-Type":"application/json"}:{})},
   body:payload?JSON.stringify(payload):undefined});
- const data=await r.json().catch(()=>({}));
- if(!r.ok)throw Error(data.error||"HTTP "+r.status);
+ const contentType=r.headers.get("content-type")||"";
+ if(!r.ok)throw Error("API HTTP "+r.status);
+ if(!contentType.includes("application/json"))throw Error(T("API did not return JSON. Check Access login.","API tidak mengirim JSON. Periksa login Access."));
+ const data=await r.json();
+ if(!data||typeof data!=="object")throw Error("Invalid API response");
  return data;
 }
 async function act(action){
@@ -46,8 +50,8 @@ function button(text,action){const b=E("button",text);b.type="button";b.disabled
 function render(){
  const root=$();if(!root)return;root.replaceChildren();
  const head=E("div",undefined,"sli-uib-head");
- head.append(E("strong",T("SLI account sync & private inbox","Sinkronisasi akun & inbox privat")));
- head.append(E("p",T("Cross-device watchlists and in-app notifications require secure sign-in. No trading recommendations or automatic subscriptions.","Watchlist lintas perangkat dan notifikasi dalam aplikasi membutuhkan login aman. Tanpa rekomendasi transaksi atau langganan otomatis.")));
+ head.append(E("strong",T("SLI private account sync · pilot","Sinkronisasi akun privat SLI · percontohan")));
+ head.append(E("p",T("Cloudflare Access sign-in is required. No automatic watchlist upload or download; changes require your explicit action. Notifications are in-app only.","Login Cloudflare Access diperlukan. Watchlist tidak diunggah atau diunduh otomatis; perubahan hanya dilakukan setelah tindakan dan persetujuan Anda. Notifikasi hanya dalam aplikasi.")));
  root.append(head);
  if(!api){
   root.append(E("p",T("Not activated: Cloudflare Access and private D1 must be configured and validated by the owner. Your browser watchlist remains local.","Belum diaktifkan: Cloudflare Access dan D1 privat harus dikonfigurasi serta diuji pemilik. Watchlist tetap tersimpan lokal."),"sli-uib-note"));
@@ -69,25 +73,61 @@ function render(){
  select.addEventListener("change",store);
  filters.append(holder,select);root.append(filters);
  const actions=E("div",undefined,"sli-uib-actions");
- const login=cfg.login_url&&safeSource(cfg.login_url)?cfg.login_url:api+"/api/me";
+ const login=api+"/api/me";
  const a=E("a",T("Sign in through Cloudflare Access ↗","Login melalui Cloudflare Access ↗"));a.href=login;a.target="_blank";a.rel="noopener noreferrer";actions.append(a);
  actions.append(button(T("Check account","Periksa akun"),async()=>{
   const m=await call("/api/me");
-  notice=m.enrolled?T("Authenticated account connected. Preferences can now sync.","Akun terautentikasi. Preferensi dapat disinkronkan."):
-    T("Authenticated; no synced preferences yet. Save them explicitly.","Login berhasil; belum ada preferensi tersimpan. Simpan dahulu jika ingin sinkronisasi.");
+  if(m.identity_provider!=="cloudflare_access"||typeof m.enrolled!=="boolean")throw Error("Invalid account response");
+  if(m.enrolled&&!Array.isArray(m.preferences?.tickers))throw Error("Invalid account preferences");
+  const names=m.enrolled?m.preferences.tickers.join(", ")||T("(none)","(kosong)"):"—";
+  notice=m.enrolled?
+   T("Connected. Account tickers: ","Terhubung. Watchlist akun: ")+names+
+   T(". No changes were made.",". Tidak ada data yang diubah.") :
+   T("Login valid; no cloud watchlist yet. No changes were made.","Login berhasil; belum ada watchlist akun. Tidak ada data yang diubah.");
  }));
- actions.append(button(T("Save local watchlist to account","Simpan watchlist lokal ke akun"),async()=>{
-  const p=localPreferences();
-  await call("/api/preferences","PUT",p);
-  notice=T("Account preferences saved for this login. No email or push notifications are enabled.","Preferensi akun tersimpan. Notifikasi email dan push belum aktif.");
+ actions.append(button(T("Replace account watchlist from this browser","Ganti watchlist akun dari browser ini"),async()=>{
+  const local=localPreferences();
+  const remote=await call("/api/preferences");
+  if(typeof remote.enrolled!=="boolean"||!remote.preferences||!Array.isArray(remote.preferences.tickers))
+    throw Error("Invalid account preferences");
+  if(remote.enrolled&&remote.preferences.tickers.length>0&&local.tickers.length===0)
+    throw Error(T("Refusing to overwrite saved tickers with an empty browser watchlist. Restore your local watchlist first.","Tidak boleh menimpa watchlist akun yang berisi ticker dengan watchlist browser kosong. Pulihkan watchlist browser dahulu."));
+  const oldTickers=remote.enrolled?remote.preferences.tickers.join(", ")||"—":T("(not enrolled)","(belum terdaftar)");
+  const newTickers=local.tickers.join(", ")||"—";
+  const before=JSON.stringify(remote.preferences),after=JSON.stringify(local);
+  if(remote.enrolled&&before===after){
+   notice=T("Account preferences already match this browser. No changes needed.","Preferensi akun sudah sesuai dengan browser. Tidak ada perubahan.");return;
+  }
+  const question=T("Replace ACCOUNT preferences?\nCurrently in account: ","GANTI preferensi AKUN?\nSaat ini di akun: ")+oldTickers+
+    T("\nFrom this browser: ","\nDari browser ini: ")+newTickers+
+    T("\nThis changes tickers, sectors, alert kinds and in-app settings. The account settings will be overwritten; other accounts are unaffected.",
+      "\nTicker, sektor, jenis notifikasi dan pengaturan in-app akan diganti. Preferensi akun saat ini akan tertimpa; akun lain tidak berubah.");
+  if(!window.confirm(question)){
+   notice=T("Cancelled. Cloud watchlist unchanged.","Dibatalkan. Watchlist akun tidak berubah.");return;
+  }
+  // Recheck before mutation. Avoid knowingly overwriting another device's changes.
+  const latest=await call("/api/preferences");
+  if(latest.enrolled!==remote.enrolled||JSON.stringify(latest.preferences)!==before)
+   throw Error(T("Account changed on another device. Review again before saving.","Akun berubah di perangkat lain. Periksa kembali sebelum menyimpan."));
+  const saved=await call("/api/preferences","PUT",local);
+  if(!saved.enrolled||JSON.stringify(saved.preferences)!==after)throw Error("Account save response mismatch");
+  notice=T("Account preferences saved after your confirmation. Email and push are off.","Preferensi akun tersimpan setelah konfirmasi. Email dan push tidak aktif.");
  }));
- actions.append(button(T("Replace local watchlist from account","Ganti watchlist lokal dari akun"),async()=>{
+ actions.append(button(T("Replace this browser's watchlist from account","Ganti watchlist browser dari akun"),async()=>{
   const data=await call("/api/preferences");
   if(!data.enrolled){notice=T("No saved account preferences yet.","Belum ada preferensi akun tersimpan.");return}
-  if(!Array.isArray(data.preferences?.tickers))throw Error("invalid server watchlist");
-  if(!putJSON(WATCH_KEY,data.preferences.tickers.filter(x=>/^[A-Z0-9]{4}$/.test(x)).slice(0,30)))throw Error("local storage unavailable");
+  if(!Array.isArray(data.preferences?.tickers))throw Error("Invalid server watchlist");
+  const current=tickers(),incoming=data.preferences.tickers.filter(x=>/^[A-Z0-9]{4}$/.test(x)).slice(0,30);
+  if(JSON.stringify(current)===JSON.stringify(incoming)){
+   notice=T("Browser tickers already match the account. No changes needed.","Ticker browser sudah sesuai dengan akun. Tidak ada perubahan.");return;
+  }
+  const question=T("Replace this BROWSER's watchlist?\nBrowser: ","GANTI watchlist BROWSER ini?\nBrowser: ")+
+   (current.join(", ")||"—")+T("\nAccount: ","\nAkun: ")+(incoming.join(", ")||"—")+
+   T("\nThe account will NOT be changed.","\nData akun tidak akan diubah.");
+  if(!window.confirm(question)){notice=T("Cancelled. Browser unchanged.","Dibatalkan. Browser tidak berubah.");return}
+  if(!putJSON(WATCH_KEY,incoming))throw Error("local storage unavailable");
   putJSON(SECTOR_KEY,{enabled:data.preferences.include_sector===true,sector:data.preferences.sectors?.[0]||""});
-  notice=T("Local watchlist updated. Reload this page to refresh the existing workspace.","Watchlist lokal diperbarui. Muat ulang halaman agar workspace lain ikut berubah.");
+  notice=T("Browser watchlist updated. Reload to refresh existing workspace.","Watchlist browser diperbarui. Muat ulang halaman untuk memperbarui workspace.");
  }));
  actions.append(button(T("Read private inbox","Baca inbox privat"),async()=>{
   const feed=await call("/api/inbox?limit=15");
@@ -98,8 +138,8 @@ function render(){
  const inbox=E("div",undefined,"sli-uib-inbox");inbox.id="sliUserIntelligenceInbox";root.append(inbox);
  if(inboxItems.length)showInbox(inboxItems);
  if(notice)root.append(E("p",notice,"sli-uib-note"));
- root.append(E("p",T("Access relies on a protected Worker session. No token is stored in the browser. Settings on this device are uploaded or replaced only when you select those actions.",
-  "Akses memerlukan sesi Worker yang dilindungi. Tidak ada token yang disimpan di browser. Preferensi perangkat ini hanya diunggah atau diganti jika tombol terkait ditekan."),"sli-uib-foot"));
+ root.append(E("p",T("Access requires a protected Worker session. No token is stored in the browser. Every watchlist replacement requires confirmation. Use separate browser profiles for different accounts.",
+  "Akses memerlukan sesi Worker yang dilindungi. Tidak ada token yang disimpan di browser. Setiap penggantian watchlist harus Anda setujui. Gunakan profil browser terpisah untuk akun berbeda."),"sli-uib-foot"));
 }
 function showInbox(items){
  const mount=document.getElementById("sliUserIntelligenceInbox");if(!mount)return;
