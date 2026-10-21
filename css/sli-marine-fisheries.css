@@ -92,3 +92,6 @@
 @media(max-width:1170px){.mf-governance-columns{grid-template-columns:minmax(0,1.5fr) minmax(250px,1fr)}.mf-gov-network-grid{gap:16px 10px}.mf-gov-hub{padding:11px;min-height:120px}}
 @media(max-width:990px){.mf-governance-columns{grid-template-columns:1fr}.mf-governance-inspector{position:static;max-height:none}.mf-gov-tools{grid-template-columns:repeat(2,minmax(0,1fr))}.mf-gov-network-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mf-gov-link-lines{display:none}}
 @media(max-width:570px){.mf-gov-lanes,.mf-gov-network-grid,.mf-gov-network-filters,.mf-gov-tools{grid-template-columns:1fr}.mf-gov-main-panel{padding:16px 12px}.mf-governance-inspector{padding:19px 15px}.mf-gov-hub{min-height:95px}.mf-gov-network-canvas{padding:14px 9px}.mf-gov-executive-cell .mf-gov-node{max-width:100%}.mf-gov-map-caption{display:block}.mf-gov-map-caption span{display:block;margin-top:6px}}
+
+/* Keep network connections behind cards but above canvas surface. */
+.mf-gov-link-lines{z-index:0}.mf-gov-network-grid{position:relative;z-index:1}
