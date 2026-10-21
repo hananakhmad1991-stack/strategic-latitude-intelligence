@@ -145,6 +145,9 @@ function validateBPS(data){
    !Array.isArray(data.observations)||data.observations.length<1||
    data.verified_cells!==data.observations.length||
    data.review?.approved_cell_count!==data.observations.length||
+   data.geographic_scope!=="Indonesia"||
+   data.review?.public_website_terms_review!=="approved"||
+   !/^https:\/\/(?:[\w-]+\.)*bps\.go\.id\//.test(data.review?.rights_basis_url||"")||
    data.review?.source_csv_sha256!==data.source_csv_sha256||
    !data.review?.reviewed_by||data.review.reviewed_by.trim().length<3||
    !/^[a-f0-9]{64}$/.test(data.review?.source_csv_sha256||""))throw Error("BPS primary evidence not approved");
@@ -155,6 +158,7 @@ function validateBPS(data){
     !/^20[0-9]{2}(?:-(?:0[1-9]|1[0-2]))?$/.test(x.period)||
     !/^(?:[0-9]{2}){1,5}$/.test(x.hs_code)||
     x.hs_level!==x.hs_code.length||x.hs_version!=="HS2022"||
+    x.geographic_scope!=="Indonesia"||
     !x.partner_country||["WORLD","ALL","TOTAL","OTHER","OTHERS","ASEAN","EU","EUROPEAN UNION","UNKNOWN"].includes(x.partner_country.toUpperCase().trim())||
     !Number.isFinite(x.value_usd)||x.value_usd<=0||
     (x.net_weight_kg!==null&&(!Number.isFinite(x.net_weight_kg)||x.net_weight_kg<0))||
