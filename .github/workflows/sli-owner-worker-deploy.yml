@@ -5,6 +5,8 @@ on:
       - 'research-api/**'
       - 'scripts/sli-research-owner-readiness.mjs'
       - 'tests/qa-sli-owner-readiness.mjs'
+      - 'tests/test_sli_research_index_source.py'
+      - 'scripts/build_research_unified_index.py'
       - 'data/sli-research-unified-index.json'
       - 'data/sli-research-assistant-config.json'
       - 'data/sli-automation-health.json'
@@ -43,6 +45,14 @@ jobs:
           node --check research-api/src/policy-corpus.mjs
           node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ensure source index was rebuilt without example records
+        run: |
+          python -m unittest discover -s tests -p 'test_sli_research_index_source.py' -v
+          python scripts/build_research_unified_index.py --check
+          python scripts/audit_sli_research_index.py
       - name: Audit Research AI security, source traces and report quality (offline)
         run: |
           node --check scripts/sli-research-owner-readiness.mjs
