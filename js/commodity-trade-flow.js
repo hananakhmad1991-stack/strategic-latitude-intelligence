@@ -10,7 +10,7 @@ const usd=n=>n==null?t("Unavailable","Belum tersedia"):"US$"+fmt(n>=1000?n/1000:
 const signed=n=>(n>=0?"+":"−")+usd(Math.abs(n));
 const safeUrl=s=>/^https:\/\//.test(s||"");
 const source=(url,caption)=>{const a=el("a",null,caption+" ↗");if(safeUrl(url)){a.href=url;a.target="_blank";a.rel="noopener noreferrer"}return a};
-const state={data:null,sector:"minerba",commodity:"coal",direction:"exports",limit:9,query:"",lens:"minerals"};
+const state={data:null,bps:null,sector:"minerba",commodity:"coal",direction:"exports",limit:9,query:"",lens:"minerals"};
 const selected=()=>state.data.bilateral.products.filter(p=>p.sector===state.sector&&(state.commodity==="all"||p.id===state.commodity));
 const total=(ps,d)=>ps.reduce((n,p)=>n+(p[d].world_musd||0),0);
 const alias=c=>c==="Korea, Rep."?"South Korea":c;
@@ -35,6 +35,12 @@ function view(){
  const cell=el("div","tf-kpi");cell.append(el("small",null,title),el("strong",null,balance?signed(value):usd(value)));macro.append(cell)}
  const macroNote=el("p","tf-macro-note",t("National non-oil/gas is NOT equal to minerba. Exports FOB; imports CIF. ","Nonmigas nasional BUKAN sama dengan minerba. Ekspor FOB; impor CIF. "));
  macroNote.append(source(latest.source_url,t("BPS release, 1 Oct 2026","Rilis BPS, 1 Okt 2026")));macro.append(macroNote);root.append(macro);
+ const bpsStatus=el("aside","tf-bps-source-status");
+ const approved=state.bps?.schema==="sli-bps-hs-partner-matrix-v1"&&state.bps.status==="verified"&&state.bps.verified_cells>0;
+ bpsStatus.append(el("strong",null,approved?t("BPS primary bilateral HS matrix: individually reviewed observations available","Matriks HS bilateral primer BPS: tersedia observasi yang diperiksa per sel"):t("BPS primary HS × partner matrix: not yet verified","Matriks primer BPS HS × negara mitra: belum terverifikasi")));
+ bpsStatus.append(el("p","tf-warning",approved?t("A separate, independently reviewed BPS HS × country dataset is available. Select the BPS Official tab; do not confuse it with the 2025 intermediary Comtrade basket.","Dataset BPS HS × negara yang ditinjau secara independen sudah tersedia. Pilih tab BPS Resmi; bedakan dari keranjang 2025 Comtrade perantara."):t("The 2025 partner × HS cells have not been downloaded and audited directly from BPS. The mineral chart below is still sourced through Comtrade intermediaries. No primary-BPS bilateral observations are fabricated.","Sel mitra × HS 2025 belum diunduh dan diaudit langsung dari BPS. Diagram mineral di bawah masih bersumber melalui perantara Comtrade. Tidak ada observasi bilateral BPS primer buatan."));
+ bpsStatus.append(source("https://www.bps.go.id/id/exim",t("Open BPS HS/country query","Buka kueri HS/negara BPS")));
+ root.append(bpsStatus);
  const nav=el("nav","tf-sector-tabs");nav.setAttribute("aria-label",t("Flow lens","Kategori aliran"));
 const tabs=[
  ["minerals",t("Minerals, oil & gas · HS 2025","Mineral, migas · HS 2025")],
@@ -42,6 +48,7 @@ const tabs=[
  ["marine",t("Marine & Fisheries · KKP 2025","Kelautan & Perikanan · KKP 2025")],
  ["energy",t("Energy & RUPTL evidence","Energi & bukti RUPTL")]
 ];
+if(approved&&window.SLISectorTradeSankey?.validateBPS)tabs.push(["bps",t("Verified BPS · HS × country","BPS terverifikasi · HS × negara")]);
 for(const [key,caption]of tabs){
  const b=el("button","tf-sector-tab",caption);b.type="button";b.setAttribute("aria-pressed",String(key===state.lens));
  b.addEventListener("click",()=>{
@@ -53,6 +60,19 @@ for(const [key,caption]of tabs){
  });nav.append(b)
 }
 root.append(nav);
+if(state.lens==="bps"){
+  const stage=el("section","tf-panel");root.append(stage);
+  try{
+   if(!approved||!window.SLISectorTradeSankey?.validateBPS)throw Error("Primary BPS review gate absent");
+   window.SLISectorTradeSankey.validateBPS(state.bps);
+   window.SLISectorTradeSankey.renderBPS(stage,state.bps);
+  }catch(e){
+   console.error("[SLI primary BPS]",e);
+   state.lens="minerals";
+   stage.replaceChildren(el("p","tf-warning",t("BPS primary cells failed source validation. No Sankey displayed. Switch to the qualified 2025 commodity tab.","Sel primer BPS gagal validasi. Tidak menampilkan Sankey. Gunakan tab komoditas 2025 yang telah diberi keterangan keterbatasan.")));
+  }
+  return;
+ }
 if(state.lens==="food"||state.lens==="marine"){
  const extension=el("section","tf-panel");extension.id="sliSectorTradeSankeyRoot";root.append(extension);
  if(window.SLISectorTradeSankey)window.SLISectorTradeSankey.render(extension,state.lens);
@@ -203,7 +223,12 @@ window.initSLITradeFlow=async function(){const root=document.getElementById("sli
  if(typeof location!=="undefined"){try{const requested=new URLSearchParams(location.search).get("trade");if(["minerals","food","marine","energy"].includes(requested))state.lens=requested}catch(_){}}
  if(state.data){view();return}
  root.replaceChildren(el("p","tf-warning",t("Loading published customs data…","Memuat data kepabeanan…")));
- try{const r=await fetch("data/commodity-trade-flows.json",{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);state.data=await r.json();view()}
+ try{const r=await fetch("data/commodity-trade-flows.json",{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);state.data=await r.json();
+ try{
+  const primary=await fetch("data/bps-hs-partner-matrix.json",{cache:"no-store"});
+  if(primary.ok){const candidate=await primary.json();if(candidate?.schema==="sli-bps-hs-partner-matrix-v1")state.bps=candidate}
+ }catch(e){console.warn("[SLI Trade] BPS primary status unavailable",e)}
+ view()}
  catch(e){root.replaceChildren(el("p","tf-warning",t("Source data unavailable; no values inferred.","Data sumber tidak tersedia; angka tidak direka.")));console.error("[SLI Trade]",e)}};
 document.addEventListener("sli:languagechange",()=>{if(state.data&&document.getElementById("sliTradeRoot"))view()});
 })();
