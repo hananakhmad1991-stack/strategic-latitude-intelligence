@@ -11,12 +11,13 @@ import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
 import import_bps_hs_partner as bps
 
-HEADERS=["direction","period","hs_code","partner_country","value_usd","net_weight_kg","source_url","source_locator"]
+HEADERS=["direction","period","hs_code","partner_country","value_usd","net_weight_kg","source_url","source_locator","geographic_scope"]
 VALID={
  "direction":"exports", "period":"2025", "hs_code":"0901",
  "partner_country":"Japan", "value_usd":"12000.50", "net_weight_kg":"42.1",
  "source_url":"https://www.bps.go.id/id/exim",
- "source_locator":"2025 exports, HS0901, Japan, official BPS query row 7"
+ "source_locator":"2025 exports, HS0901, Japan, official BPS query row 7",
+ "geographic_scope":"Indonesia"
 }
 class PrimarySourceTests(unittest.TestCase):
  def setUp(self):
@@ -42,7 +43,9 @@ class PrimarySourceTests(unittest.TestCase):
   self.make([VALID,{**VALID,"direction":"imports","partner_country":"Brazil","value_usd":"23000","net_weight_kg":""}])
   review={"reviewed_by":"Independent reviewer", "source_csv_sha256":hashlib.sha256(self.csv.read_bytes()).hexdigest(),
   "approved_cell_count":2,"independent_cell_checks":2,
-  "review_note":"Independently matched each row to the exact original BPS HS by country query."}
+  "review_note":"Independently matched each row to the exact original BPS HS by country query.",
+  "public_website_terms_review":"approved","rights_basis_url":"https://www.bps.go.id/id/term-of-use",
+  "rights_note":"Official published site terms reviewed for commercial reuse; original BPS attribution required."}
   approval=self.p/"approve.json";approval.write_text(json.dumps(review))
   res=bps.run(self.csv,self.out,approval)
   self.assertEqual(res["status"],"verified")
@@ -50,8 +53,14 @@ class PrimarySourceTests(unittest.TestCase):
   self.assertEqual(res["candidate_observations"],[])
   self.assertEqual(sorted(x["value_basis"] for x in res["observations"]),["CIF","FOB"])
   self.assertIsNone(next(x for x in res["observations"] if x["direction"]=="imports")["net_weight_kg"])
+  self.assertEqual(res["geographic_scope"],"Indonesia")
+  self.assertEqual(res["review"]["public_website_terms_review"],"approved")
+  self.assertTrue(all(x["geographic_scope"]=="Indonesia" for x in res["observations"]))
   review["independent_cell_checks"]=1;approval.write_text(json.dumps(review))
   with self.assertRaisesRegex(ValueError,"Every cell"):
+   bps.run(self.csv,self.out,approval)
+  review["independent_cell_checks"]=2;review["public_website_terms_review"]="pending";approval.write_text(json.dumps(review))
+  with self.assertRaisesRegex(ValueError,"rights review"):
    bps.run(self.csv,self.out,approval)
  def test_reject_ambiguous_unverified_rows(self):
   rejects=[
@@ -64,7 +73,8 @@ class PrimarySourceTests(unittest.TestCase):
    ({"value_usd":"-5"},"dot-decimal"),
    ({"value_usd":"0"},"ambiguous zero"),
    ({"period":"2025/2026"},"YYYY"),
-   ({"source_locator":"unknown"},"locator")
+   ({"source_locator":"unknown"},"locator"),
+   ({"geographic_scope":"Jawa Tengah"},"national dataset")
   ]
   for override,message in rejects:
    with self.subTest(override=override):
@@ -78,7 +88,9 @@ class PrimarySourceTests(unittest.TestCase):
   self.make()
   approval=self.p/"approve.json";approval.write_text(json.dumps({
     "reviewed_by":"Reviewer","source_csv_sha256":"0"*64,"approved_cell_count":1,
-    "independent_cell_checks":1,"review_note":"Reviewed full published table with a source cross-reference."
+    "independent_cell_checks":1,"review_note":"Reviewed full published table with a source cross-reference.",
+    "public_website_terms_review":"approved","rights_basis_url":"https://www.bps.go.id/id/term-of-use",
+    "rights_note":"Official published website reuse terms individually checked against table scope."
   }))
   with self.assertRaisesRegex(ValueError,"SHA256"):
    bps.run(self.csv,self.out,approval)
