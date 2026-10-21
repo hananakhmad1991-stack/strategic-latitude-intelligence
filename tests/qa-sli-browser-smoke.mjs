@@ -284,6 +284,28 @@ await check("AI atlas desktop: World Bank panel selection preserves original sou
  assert.match(await root.locator(".sli-figure-detail").innerText(),/%/);
  assert.equal(await root.locator(".sli-figure-plot svg rect[data-value]").count(),6);
 });
+await check("AI Atlas EN/ID switch preserves chart selection, source unit and exact values",{width:1366,height:850},async page=>{
+ await page.goto(pageUrl("ai-intelligence-hub.html"),{waitUntil:"domcontentloaded",timeout:30000});
+ await waitMast(page);
+ const atlas=page.locator("#sliAiDigitizedFigureAtlas");
+ const select=atlas.locator("select").first();
+ await page.waitForFunction(n=>document.querySelectorAll("#sliAiDigitizedFigureAtlas select option").length===n,figureCount,{timeout:20000});
+ const initial=await select.locator('option[data-sli-figure-id="worldbank:4.2a"]').getAttribute("value");
+ assert.ok(initial!==null,"Missing permanent World Bank source qualified figure key");
+ await select.selectOption(initial);
+ const sample=await atlas.locator(".sli-figure-plot svg rect[data-value]").first().getAttribute("data-value");
+ const source=await atlas.locator('a[href*="worldbank.org"]').first().getAttribute("href");
+ await page.locator('#sliPlatformMast [data-sli-mast-language="id"]').click();
+ await page.waitForFunction(()=>document.querySelector("#sliAiDigitizedFigureAtlas h3")?.textContent?.includes("Grafik laporan asli"),null,{timeout:8000});
+ assert.equal(await select.inputValue(),initial,"Language switch must preserve selected source figure");
+ assert.equal(await atlas.locator(".sli-figure-plot svg rect[data-value]").first().getAttribute("data-value"),sample,"Language switch changed actual source number");
+ assert.equal(await atlas.locator('a[href*="worldbank.org"]').first().getAttribute("href"),source,"Source PDF URL should be language-independent");
+ assert.match(await select.locator("option:checked").innerText(),/World Bank/);
+ await page.locator('#sliPlatformMast [data-sli-mast-language="en"]').click();
+ await page.waitForFunction(()=>document.querySelector("#sliAiDigitizedFigureAtlas h3")?.textContent?.includes("Digitized original-report figures"),null,{timeout:8000});
+ assert.equal(await select.inputValue(),initial,"Switching back to English lost the active figure");
+ assert.equal(await atlas.locator(".sli-figure-plot svg rect[data-value]").first().getAttribute("data-value"),sample);
+});
 await check("AI atlas mobile: full source-derived panel catalog and satellite series stay navigable",{width:390,height:844},async page=>{
  await page.goto(pageUrl("ai-intelligence-hub.html"),{waitUntil:"domcontentloaded",timeout:30000});
  const root=page.locator("#sliAiDigitizedFigureAtlas");
