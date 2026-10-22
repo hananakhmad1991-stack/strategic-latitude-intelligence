@@ -1,0 +1,42 @@
+name: SLI DERGUBA Commercial Go-No-Go Safety Gate
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/check-derguba-commercial-launch.mjs'
+      - 'data/derguba-commercial-launch-gates.json'
+      - 'data/sli-research-assistant-config.json'
+      - 'tests/qa-derguba-commercial-launch-gate.mjs'
+      - 'docs/derguba-commercial-readiness.md'
+      - '.github/workflows/sli-derguba-commercial-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/check-derguba-commercial-launch.mjs'
+      - 'data/derguba-commercial-launch-gates.json'
+      - 'data/sli-research-assistant-config.json'
+      - 'tests/qa-derguba-commercial-launch-gate.mjs'
+      - 'docs/derguba-commercial-readiness.md'
+      - '.github/workflows/sli-derguba-commercial-gate.yml'
+permissions:
+  contents: read
+jobs:
+  protect-customer-launch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate live access is blocked before approved commercial gates
+        run: |
+          node --check scripts/check-derguba-commercial-launch.mjs
+          node --test tests/qa-derguba-commercial-launch-gate.mjs
+          node scripts/check-derguba-commercial-launch.mjs
+      - name: Explain the status: PASS means safe block, NOT launch approval
+        if: always()
+        run: |
+          echo '### DERGUBA commercial launch gate' >> "$GITHUB_STEP_SUMMARY"
+          echo '**BLOCKED for public paid subscribers until source-rights, PSE, tenant-auth, security, licensed payment, real-answer QA and explicit Owner signoff are evidenced.**' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Passing this security workflow does not approve or trigger a production deploy.' >> "$GITHUB_STEP_SUMMARY"
