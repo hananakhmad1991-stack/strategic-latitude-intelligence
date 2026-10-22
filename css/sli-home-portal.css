@@ -150,3 +150,26 @@ body.sli-home-active .sli-portal-heading{margin:19px 0 11px;scroll-margin-top:17
 body.sli-home-active .sli-universal-nav{display:none!important}
 body.sli-home-active .main>.top>.eyebrow{display:none}
 
+
+/* Public-only 2026-10-23 task-first product journey: three services, no paid-access change. */
+.sli-copy-id{display:none!important}
+html[lang="id"] .sli-copy-id{display:inline!important}
+html[lang="id"] .sli-copy-en{display:none!important}
+.sli-service-path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:24px 0 12px;position:relative}
+.sli-service-card{display:flex;flex-direction:column;min-width:0;min-height:198px;gap:9px;padding:20px;border:1px solid #58748b;border-radius:12px;background:linear-gradient(145deg,#17374e,#112c42);color:#f0f5f8!important;text-decoration:none!important}
+.sli-service-card:hover,.sli-service-card:focus-visible{background:#20435c;border-color:#eed3a2;outline-offset:3px}
+.sli-service-card .sli-service-num{color:#e4c58b;font-size:10px;letter-spacing:.13em;font-weight:800}
+.sli-service-card strong{font:750 clamp(15px,1.4vw,18px)/1.35 system-ui,sans-serif;color:#fff}
+.sli-service-card small{font:450 12px/1.5 system-ui,sans-serif;color:#c5d5df}
+.sli-service-card .sli-service-action{font:750 12px/1.4 system-ui,sans-serif;color:#f4dba8;margin-top:auto}
+.sli-service-expert{background:linear-gradient(140deg,#2a4353,#23445a);border-color:#d3b477}
+.sli-portal-hero .sli-service-disclosure{color:#b8cad8;font-size:11px;line-height:1.6;margin:8px 0 22px;max-width:100%}
+.sli-portal-subheading{font:750 12px/1.4 system-ui,sans-serif;color:#f4d9a5;letter-spacing:.03em;margin:18px 0 8px}
+.sli-home-journeys{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0 17px}
+.sli-home-journeys a{display:flex;flex-direction:column;gap:5px;min-width:0;min-height:80px;padding:13px 14px;border:1px solid #648198;border-radius:10px;background:#173449;color:#f3d6a2!important;text-decoration:none!important}
+.sli-home-journeys strong{font:750 13px/1.4 system-ui,sans-serif}
+.sli-home-journeys small{font:450 11px/1.5 system-ui,sans-serif;color:#c5d5e0}
+.sli-home-journeys a:hover,.sli-home-journeys a:focus-visible{border-color:#f4dba5;background:#24465e;outline-offset:2px}
+@media(max-width:920px){.sli-home-journeys{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.sli-service-path{grid-template-columns:1fr;gap:9px}.sli-service-card{min-height:0;padding:16px}.sli-service-card .sli-service-action{margin-top:3px}}
+@media(max-width:480px){.sli-home-journeys{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.sli-home-journeys a{padding:10px;min-height:95px}.sli-home-journeys strong{font-size:12px}.sli-home-journeys small{font-size:10px}.sli-portal-hero .sli-service-disclosure{margin-bottom:17px}.sli-portal-hero-actions>*{max-width:100%}}
