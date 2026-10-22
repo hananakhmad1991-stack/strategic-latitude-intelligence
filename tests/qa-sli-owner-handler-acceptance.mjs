@@ -199,3 +199,20 @@ test("Real Owner Worker serves 4-cell BPS precision comparison and rejects a swa
   assert.equal(modelCalls,2,"One mocked model response per request; no automatic paid retry");
  }finally{globalThis.fetch=oldFetch}
 });
+
+
+test("Real Owner Worker does not call a paid model for a BPS precision cell with suppressed SE/CI",async()=>{
+ const question="Menurut BPS, di Jawa Barat untuk rumah tangga tanpa listrik sebagai penerangan utama, berapa SE, RSE dan interval kepercayaan 95%?";
+ const oldFetch=globalThis.fetch;let providerCalls=0;
+ globalThis.fetch=async(url)=>{
+  if(String(url).includes("api.openai.com"))providerCalls++;
+  return Response.json({}, {status:404});
+ };
+ try{
+  const blocked=await answer(request(question),fixtureEnv());
+  assert.equal(blocked.status,422,JSON.stringify(blocked.json));
+  assert.equal(blocked.json.error,"bps_statistical_precision_unavailable");
+  assert.equal(blocked.json.reason,"requested_precision_cells_unavailable");
+  assert.equal(providerCalls,0);
+ }finally{globalThis.fetch=oldFetch}
+});
