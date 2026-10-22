@@ -200,3 +200,24 @@ test("BPS sampling error second-engine reconciliation remains an unverified sour
  assert.match(from("sli-welfare-2026.html"),/308 baris dengan 354 token/);
 });
 
+
+test("BPS chapter II percent-closure audit is aggregate-only and excludes NA imputation",()=>{
+ const a=JSON.parse(from("data/sli-bps-welfare-2026-demography-closure-qa.json"));
+ assert.equal(a.tables.length,19);
+ assert.equal(a.audit.groups_tested,1755);
+ assert.equal(a.audit.complete_numeric_groups,1305);
+ assert.equal(a.audit.incomplete_category_groups,435);
+ assert.equal(a.audit.missing_total_groups,15);
+ assert.equal(a.audit.complete_group_closure_outliers,0);
+ assert.equal(a.audit.rounded_total_outliers,0);
+ assert.equal(a.audit.tolerance_percentage_points,0.06);
+ assert.equal(a.privacy.public_metadata_only,true);
+ assert.equal(a.privacy.raw_39_region_rows_not_published,true);
+ assert.equal(a.audit.complete_numeric_groups+a.audit.incomplete_category_groups+a.audit.missing_total_groups,a.audit.groups_tested);
+ assert.equal(a.tables.reduce((n,r)=>n+r.groups,0),a.audit.groups_tested);
+ assert.ok(!a.group_widths["2.17"],"Non-exhaustive table cannot be auto-closed");
+ assert.match(from("scripts/sli-bps-owner-live-smoke.mjs"),/SLI_OWNER_SMOKE_TOKEN/);
+ assert.match(from(".github/workflows/sli-bps-owner-live-smoke.yml"),/workflow_dispatch/);
+ assert.match(from(".github/workflows/sli-bps-owner-live-smoke.yml"),/environment: sli-owner-staging/);
+});
+
