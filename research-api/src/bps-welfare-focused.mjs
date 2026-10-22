@@ -124,7 +124,11 @@ export function selectFocusedBpsWelfare(question,welfare){
  const q=String(question||"").normalize("NFKC");
  // Preserve the already-proven live Aceh test exactly.
  const legacy=selectLegacyAcehWelfare(q,welfare);
- if(legacy)return {...legacy,legacy:true,records:[{...legacy.measure,province:"Aceh",metric:"piped_drinking_water",label:"Rumah tangga dengan sumber utama air minum leding"}]};
+ const requestedRegions=Array.isArray(welfare?.provinces)?extraRegions(q,welfare):[];
+ const requestedIds=extraPatterns.filter(([,re])=>re.test(q)).map(([id])=>id);
+ if(legacy&&requestedRegions.length===1&&requestedRegions[0].name==="Aceh"&&
+    requestedIds.length===1&&requestedIds[0]==="piped_drinking_water")
+  return {...legacy,legacy:true,records:[{...legacy.measure,province:"Aceh",metric:"piped_drinking_water",label:"Rumah tangga dengan sumber utama air minum leding"}]};
  if(/(?:tanpa|tidak\s+perlu|without|exclude)\s+(?:(?:data|rincian|angka)\s+)?(?:sampling\s+error|\bRSE\b|\bSE\b)/i.test(q)||
     !/(?:\bRSE\b|\bSE\b|sampling\s+error|standard\s+error|interval\s+kepercayaan|confidence\s+interval|CI\s*95)/i.test(q))return null;
  if(!Array.isArray(welfare?.provinces)||!Array.isArray(welfare?.provincial_metrics)||!welfare?.source?.source_url)return null;
