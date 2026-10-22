@@ -45,6 +45,8 @@ jobs:
         with:
           name: sli-expert-inert-config
           path: .wrangler.expert-inert-staging.toml
+          include-hidden-files: true
+          if-no-files-found: error
           retention-days: 1
 
   upload-inert-worker:
