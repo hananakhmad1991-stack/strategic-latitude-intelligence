@@ -2801,3 +2801,29 @@ window.SLI_TRANSLATIONS_ID.set("Loading Indonesian market overview…","Memuat r
 window.SLI_TRANSLATIONS_ID.set("Strategic Pulse & Data Freshness · Open source-dated monitoring","Pulsa Strategis & Kemutakhiran Data · Buka pemantauan bersumber dan bertanggal");
 window.SLI_TRANSLATIONS_ID.set("Monitoring headlines are attributed research leads, not verified current incidents. Source audit timestamps and missing values remain visible.","Judul berita pemantauan adalah temuan riset yang mencantumkan sumber, bukan kejadian terkini yang telah diverifikasi. Waktu audit sumber serta nilai yang belum tersedia tetap ditampilkan.");
 window.SLI_TRANSLATIONS_ID.set("View full source freshness and workflow audit ↗","Lihat audit lengkap kemutakhiran sumber dan alur kerja ↗");
+
+/* SLI integrated intelligence workspace: reviewed Oct 2026 bilingual homepage copy. */
+window.SLI_TRANSLATIONS_ID.set("Indonesia Intelligence.","Intelijen Strategis Indonesia.");
+window.SLI_TRANSLATIONS_ID.set("Intelijen Strategis Indonesia.","Intelijen Strategis Indonesia.");
+window.SLI_TRANSLATIONS_ID.set("Evidence for better decisions.","Bukti untuk keputusan yang lebih baik.");
+window.SLI_TRANSLATIONS_ID.set("Bukti untuk keputusan yang lebih baik.","Bukti untuk keputusan yang lebih baik.");
+window.SLI_TRANSLATIONS_ID.set("Explore Indonesia's economy, energy, investment, food, maritime affairs, technology, policy and strategic risks in one connected intelligence workspace. Follow every insight from sector and region to company, original source and analysis.","Telusuri ekonomi, energi, investasi, pangan, kelautan, teknologi, kebijakan, dan risiko strategis Indonesia dalam satu ruang kerja intelijen terpadu. Hubungkan setiap temuan dari sektor dan daerah ke perusahaan, sumber asli, dan analisis.");
+window.SLI_TRANSLATIONS_ID.set("Telusuri ekonomi, energi, investasi, pangan, kelautan, teknologi, kebijakan, dan risiko strategis Indonesia dalam satu ruang kerja intelijen terpadu. Hubungkan setiap temuan dari sektor dan daerah ke perusahaan, sumber asli, dan analisis.","Telusuri ekonomi, energi, investasi, pangan, kelautan, teknologi, kebijakan, dan risiko strategis Indonesia dalam satu ruang kerja intelijen terpadu. Hubungkan setiap temuan dari sektor dan daerah ke perusahaan, sumber asli, dan analisis.");
+window.SLI_TRANSLATIONS_ID.set("Explore sectors","Jelajahi sektor");
+window.SLI_TRANSLATIONS_ID.set("Jelajahi sektor","Jelajahi sektor");
+window.SLI_TRANSLATIONS_ID.set("National indicators and sector evidence","Indikator nasional dan bukti sektoral");
+window.SLI_TRANSLATIONS_ID.set("Indikator nasional dan bukti sektoral","Indikator nasional dan bukti sektoral");
+window.SLI_TRANSLATIONS_ID.set("Explore regions","Jelajahi daerah");
+window.SLI_TRANSLATIONS_ID.set("Jelajahi daerah","Jelajahi daerah");
+window.SLI_TRANSLATIONS_ID.set("Provinces, maps and comparisons","Provinsi, peta dan perbandingan");
+window.SLI_TRANSLATIONS_ID.set("Provinsi, peta dan perbandingan","Provinsi, peta dan perbandingan");
+window.SLI_TRANSLATIONS_ID.set("Find companies & actors","Cari perusahaan & aktor");
+window.SLI_TRANSLATIONS_ID.set("Cari perusahaan & aktor","Cari perusahaan & aktor");
+window.SLI_TRANSLATIONS_ID.set("Issuers, ownership and projects","Emiten, kepemilikan dan proyek");
+window.SLI_TRANSLATIONS_ID.set("Emiten, kepemilikan dan proyek","Emiten, kepemilikan dan proyek");
+window.SLI_TRANSLATIONS_ID.set("Verify sources","Verifikasi sumber");
+window.SLI_TRANSLATIONS_ID.set("Verifikasi sumber","Verifikasi sumber");
+window.SLI_TRANSLATIONS_ID.set("Dates, methods and limitations","Tanggal, metode dan keterbatasan");
+window.SLI_TRANSLATIONS_ID.set("Tanggal, metode dan keterbatasan","Tanggal, metode dan keterbatasan");
+window.SLI_TRANSLATIONS_ID.set("Sector detail, regional context, organizations and original evidence in one connected workflow","Detail sektor, konteks daerah, organisasi, dan bukti sumber dalam satu alur terpadu");
+window.SLI_TRANSLATIONS_ID.set("Detail sektor, konteks daerah, organisasi, dan bukti sumber dalam satu alur terpadu","Detail sektor, konteks daerah, organisasi, dan bukti sumber dalam satu alur terpadu");
