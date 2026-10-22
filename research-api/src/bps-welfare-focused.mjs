@@ -232,7 +232,7 @@ export function auditFocusedBpsAnswer(answer,focus){
  // One or two plain-language uncertainty sentences without new numeric claims
  // are still permitted.
  const extraLines=lines.filter(line=>line.trim()&&!focus.records.some(r=>
-  new RegExp("^\s*(?:[-*]\s*)?"+extraEscape(r.province)+"\s*[—–-]\s*"+extraEscape(r.label)+"\s*:","i").test(line)));
+  new RegExp("^\\s*(?:[-*]\\s*)?"+extraEscape(r.province)+"\\s*[—–-]\\s*"+extraEscape(r.label)+"\\s*:","i").test(line)));
  for(const line of extraLines){
   const percentages=[...line.matchAll(/(?<![\d,.])(\d+(?:[,.]\d+)?)\s*%/g)];
   if(percentages.some(m=>Number(m[1].replace(",","."))!==95))
