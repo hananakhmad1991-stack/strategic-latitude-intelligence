@@ -103,8 +103,9 @@ test("Homepage portal has zero unreviewed English headings and descriptions in I
  assert.ok(enCount>=20,"Bilingual service journey is missing");
  assert.equal(idCount,enCount,"Every explicit EN service label must have an ID equivalent");
  const pairCount=(portal.match(/<span class="sli-copy-en">[^<]*<\/span><span class="sli-copy-id">[^<]*<\/span>/g)||[]).length;
- assert.equal(pairCount,enCount,"Explicit language pairs must be adjacent and nonempty");
- const dictionaryOnly=portal.replace(/<span class="sli-copy-(?:en|id)">[^<]*<\/span>/g,"");
+ const pairedParagraphs=(portal.match(/<p class="sli-copy-en">[^<]*<\/p>\s*<p class="sli-copy-id">[^<]*<\/p>/g)||[]).length;
+ assert.equal(pairCount+pairedParagraphs,enCount,"Every explicit English span or paragraph needs an adjacent Indonesian equivalent");
+ const dictionaryOnly=portal.replace(/<span class="sli-copy-(?:en|id)">[^<]*<\/span>/g,"").replace(/<p class="sli-copy-(?:en|id)">[^<]*<\/p>/g,"");
  const values=[...dictionaryOnly.matchAll(/>([^<>]{3,1000})</g)].map(x=>x[1].replace(/&amp;/g,"&").replace(/&nbsp;/g," ").replace(/\s+/g," ").trim())
  .filter(t=>/[a-z]{3}/i.test(t)&&!/^\s*https?:/.test(t));
  const normalize=s=>s.replace(/\s+/g," ").trim();
