@@ -177,3 +177,8 @@
 .mf-viz-sankey-ribbon:hover,.mf-viz-sankey-ribbon:focus-visible{fill-opacity:.85;stroke:#e9d0a5;stroke-width:.9;outline:none}
 @media(max-width:800px){.mf-viz-sankey{min-width:740px}.mf-viz-index svg{min-width:0}}
 @media(prefers-reduced-motion:reduce){.mf-viz-sankey-ribbon{transition:none}}
+
+.mf-wpp-official-raster{display:block;max-width:100%;width:100%;height:auto;background:#102a3e;border-radius:8px}
+.mf-wpp-official-legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;margin:14px 0}
+.mf-wpp-code-source{font:500 12px/1.5 system-ui,sans-serif;display:block;color:#a4d5f2;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+@media(max-width:650px){.mf-wpp-official-legend{grid-template-columns:minmax(0,1fr)}}
