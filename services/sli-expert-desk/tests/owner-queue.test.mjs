@@ -121,6 +121,25 @@ test('Owner workflow requires screening and client approval; rejects stale and i
  assert.equal((await handleRequest(request('/api/requests/'+id+'/status','POST',{to:'approved',version:7}),env(db2),owner)).status,400);
  assert.equal((await handleRequest(request('/api/requests/'+id+'/status','POST',{to:'approved',version:7,client_approval_confirmed:true}),env(db2),owner)).status,200);
 });
+test('Private Owner console requires Access and uses a restrictive CSP',async()=>{
+ const db=database();
+ assert.equal((await handleRequest(request('/owner'),env(db))).status,401);
+ assert.equal((await handleRequest(request('/owner'),env(db),async()=>({id:'b'.repeat(64)}))).status,403);
+ assert.equal((await handleRequest(request('/owner'),env(db,{CF_EXPERT_DESK_ENABLED:undefined}),owner)).status,503);
+ const res=await handleRequest(request('/owner'),env(db),owner);
+ assert.equal(res.status,200);
+ assert.match(res.headers.get('Content-Type'),/text\/html/);
+ assert.match(res.headers.get('Content-Security-Policy'),/default-src 'none'/);
+ assert.match(res.headers.get('Content-Security-Policy'),/script-src 'nonce-[a-f0-9]{32}'/);
+ assert.match(res.headers.get('Content-Security-Policy'),/connect-src 'self'/);
+ assert.equal(res.headers.get('Cache-Control'),'no-store, private');
+ const html=await res.text();
+ assert.match(html,/Private Research Desk/);
+ assert.match(html,/Manually record a received inquiry/);
+ assert.match(html,/same-origin/);
+ assert.doesNotMatch(html,/research@example\.org|<script[^>]+src=|<form[^>]+action=/i);
+ assert.equal((await handleRequest(request('/owner','POST',{}),env(db),owner)).status,404);
+});
 test('Bad IDs and API methods do not expose leads; owner DELETE uses batch',async()=>{
  const db=database();
  assert.equal((await handleRequest(request('/api/requests/../secrets'),env(db),owner)).status,404);
