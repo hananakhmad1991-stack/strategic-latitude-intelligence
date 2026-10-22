@@ -83,8 +83,10 @@ export async function handleExpertRoute(request,ctx){
     throw new HttpError(400,"Expert permission, conflicts and availability checks required");
    const expertId=uuid(input.expert_id);
    const fit=textField(input.fit_reason,"fit_reason",15,650);
-   const req=await db.prepare("SELECT id FROM research_requests WHERE id=?").bind(requestId).first();
+   const req=await db.prepare("SELECT id,status FROM research_requests WHERE id=?").bind(requestId).first();
    if(!req)throw new HttpError(404,"Research request not found");
+   if(!["scoping","sourcing","shortlisted","proposal_sent"].includes(req.status))
+    throw new HttpError(409,"Request is not in an expert sourcing stage");
    const person=await db.prepare("SELECT id FROM consented_experts WHERE id=? AND consent_scope=?").bind(expertId,"internal_matching").first();
    if(!person)throw new HttpError(409,"Consented expert not found");
    const id=crypto.randomUUID(),at=new Date().toISOString();
