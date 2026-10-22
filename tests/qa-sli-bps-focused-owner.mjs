@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {selectFocusedBpsWelfare,auditFocusedBpsAnswer} from "../research-api/src/bps-welfare-focused.mjs";
+import {selectFocusedBpsWelfare,auditFocusedBpsAnswer,classifyFocusedBpsPrecisionGap} from "../research-api/src/bps-welfare-focused.mjs";
 
 const welfare=JSON.parse(readFileSync(new URL("../data/sli-bps-welfare-2026.json",import.meta.url),"utf8"));
 const QUESTION="Menurut BPS Statistik Kesejahteraan Rakyat 2026 (Susenas Maret), berapa persentase rumah tangga Aceh dengan sumber utama air minum leding (Tabel 6.23), dan bagaimana SE, RSE, interval kepercayaan 95% dari tabel sampling error 9.88?";
@@ -136,4 +136,18 @@ test("cross-sector routes include health, electricity, social assistance and e-m
  assert.equal(selectFocusedBpsWelfare("Berapa RSE internet Jawa Barat?",welfare),null);
  assert.equal(selectFocusedBpsWelfare("Bandingkan Aceh, Bali dan Jawa Timur untuk RSE BPNT",welfare),null);
  assert.equal(selectFocusedBpsWelfare("RSE bantuan sosial di Aceh dan Indonesia secara nasional",welfare),null);
+});
+
+
+test("BPS gaps fail closed without inventing unavailable sampling precision",()=>{
+ const checks=[
+  ["Menurut BPS, berapa SE RSE internet Jawa Barat?","indicator_precision_not_in_verified_subset"],
+  ["Menurut BPS, berapa SE RSE listrik sebagai penerangan tanpa listrik di Jawa Barat?","requested_precision_cells_unavailable"],
+  ["Menurut BPS, berapa SE RSE BPNT Aceh, Bali dan Jawa Timur?","precision_query_exceeds_pilot_scope"]
+ ];
+ for(const [question,expected] of checks){
+  assert.equal(classifyFocusedBpsPrecisionGap(question,welfare),expected,question);
+ }
+ assert.equal(classifyFocusedBpsPrecisionGap("Berapa RSE BPNT Aceh menurut BPS?",welfare),null);
+ assert.equal(classifyFocusedBpsPrecisionGap("Dampak subsidi listrik secara umum di Jawa Barat",welfare),null);
 });
