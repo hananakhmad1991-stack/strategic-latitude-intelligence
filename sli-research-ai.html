@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="./css/sli-research-assistant.css?v=20261020-professional-export1">
 <link rel="stylesheet" href="./css/sli-research-brand.css?v=20261022-derguba-responsive2">
 <link rel="stylesheet" href="./css/sli-analytical-workbench.css?v=20261020-advanced-lab-progressive1">
-<link rel="stylesheet" href="./css/sli-derguba-chat-first.css?v=20261023-chatfirst2">
+<link rel="stylesheet" href="./css/sli-derguba-chat-first.css?v=20261023-external-evidence1">
 
 <script src="./js/sli-live-data.js?v=20261017-research1"></script><link rel="stylesheet" href="./css/sli-food-impact-panel.css?v=20261021-impact1"></head>
 <body class="sli-research-brand">
@@ -43,8 +43,21 @@
  <label for="raPrompt" class="sli-ra-sr" data-id="Instruksi riset" data-en="Research instruction">Instruksi riset</label>
  <textarea id="raPrompt" rows="4" maxlength="5000" placeholder="Contoh: Bandingkan ketahanan energi Indonesia dengan negara ASEAN, sertakan sumber dan periode data." required></textarea>
 
+ <fieldset class="sli-ra-external-evidence" id="raExternalEvidenceChoice">
+  <legend data-id="Sumber analisis" data-en="Research evidence">Sumber analisis</legend>
+  <label class="sli-ra-external-main" for="raExternalSearchConsent">
+   <input type="checkbox" id="raExternalSearchConsent" aria-describedby="raExternalSearchNote">
+   <span data-id="Perkuat dengan pencarian web eksternal (jika Owner Test dan API tersedia)" data-en="Include external web evidence (if Owner Test and API are available)">Perkuat dengan pencarian web eksternal (jika Owner Test dan API tersedia)</span>
+  </label>
+  <label class="sli-ra-external-remember" for="raExternalSearchRemember">
+   <input type="checkbox" id="raExternalSearchRemember">
+   <span data-id="Ingat izin ini di browser untuk pertanyaan selanjutnya" data-en="Remember my permission in this browser for future questions">Ingat izin ini di browser untuk pertanyaan selanjutnya</span>
+  </label>
+  <small id="raExternalSearchNote" data-id="Sumber SLI tetap digunakan. Bila diaktifkan, teks pertanyaan dapat dikirim ke penyedia pencarian eksternal. Jangan gunakan untuk informasi rahasia. Lampiran tidak dikirim ke mesin pencari; temuan web harus diperiksa." data-en="SLI sources remain in use. When enabled, the question text may be sent to an external search provider. Do not use for confidential information. Attachments are not sent to the search engine; web findings require verification.">Sumber SLI tetap digunakan. Bila diaktifkan, teks pertanyaan dapat dikirim ke penyedia pencarian eksternal. Jangan gunakan untuk informasi rahasia. Lampiran tidak dikirim ke mesin pencari; temuan web harus diperiksa.</small>
+ </fieldset>
+
  <details class="sli-ra-advanced-inputs" id="raAdvancedInputs">
-  <summary data-id="Opsi lanjutan · Lampiran, web dan metodologi" data-en="More options · Files, web and methods">Opsi lanjutan · Lampiran, web dan metodologi</summary>
+  <summary data-id="Opsi lanjutan · Lampiran dan metodologi" data-en="More options · Files and methods">Opsi lanjutan · Lampiran dan metodologi</summary>
   <div class="sli-ra-advanced-body">
  <div class="sli-ra-chat-attachment">
   <label for="raChatFiles">＋ Lampirkan data (opsional)</label>
@@ -54,10 +67,6 @@
   <div id="raAttachmentStatus" role="status" aria-live="polite">Belum ada lampiran.</div>
   <label class="sli-ra-upload-consent"><input type="checkbox" id="raChatUploadConsent"> Hanya jika menggunakan pemrosesan AI privat: saya setuju file pilihan dikirim ke penyedia AI. Untuk AHP CSV/JSON yang dihitung lokal, centang ini TIDAK diperlukan. Jangan unggah dokumen rahasia tanpa izin.</label>
  </div>
- <label class="sli-ra-upload-consent" style="display:flex;align-items:flex-start;gap:9px;margin:9px 0 13px">
-  <input type="checkbox" id="raExternalSearchConsent" style="margin-top:4px">
-  <span data-id="Izinkan pencarian web eksternal untuk pertanyaan INI saja (Owner Test, jika API tersedia). Hanya teks pertanyaan dikirim ke penyedia pencarian; jangan centang untuk riset rahasia. Temuan web belum otomatis terverifikasi." data-en="Allow external web search for THIS question only (Owner Test, if configured). Only the question text is sent to the search provider; leave unchecked for confidential research. Web findings are not independently verified.">Izinkan pencarian web eksternal untuk pertanyaan INI saja (Owner Test, jika API tersedia). Hanya teks pertanyaan dikirim ke penyedia pencarian; jangan centang untuk riset rahasia. Temuan web belum otomatis terverifikasi.</span>
- </label>
 
   <details class="sli-ra-chat-preferences" id="raChatPreferences">
    <summary>Pengaturan analisis (opsional) · Biarkan AI memilih</summary>
@@ -175,7 +184,7 @@
 </main>
 <script defer src="./js/sli-navigation.js?v=20261019-id-audit9&derguba=20261023-chatfirst1"></script>
 <script defer src="./js/sli-research-visuals.js?v=20261019-reportstyle2"></script>
-<script defer src="./js/sli-research-assistant.js?v=20261023-chatfirst1"></script>
+<script defer src="./js/sli-research-assistant.js?v=20261023-external-evidence1"></script>
 <script type="module" src="./js/sli-report-buttons.mjs?v=20261020-citation-consistency2"></script>
 <script type="module" src="./js/sli-analytical-workbench-ui.mjs?v=20261020-advanced-lab-progressive1"></script>
 <!-- Research AI is a focused conversation; stand-alone sector briefs belong on sector dashboards. -->
