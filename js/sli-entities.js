@@ -6,7 +6,7 @@ const id=()=>window.SLIi18n?.language==='id'||document.documentElement.lang==='i
 const T=(en,bahasa)=>id()?bahasa:en;
 const el=(tag,cls,value)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(value!==undefined)e.textContent=String(value);return e};
 const safe=url=>I().isHttps(url);
-const catalog=new Map();let all=[],visible=[],selected='',registryDate='',displayLimit=100,issuerCoverage=null;
+const catalog=new Map();let all=[],visible=[],selected='',registryDate='',displayLimit=100,issuerCoverage=null,assetProfiles=new Map(),equityProfiles=new Map();
 function upsert(record){
  const prev=catalog.get(record.key);
  if(prev){prev.sectors=[...new Set([...prev.sectors,...record.sectors])];prev.records.push(...record.records);
@@ -63,7 +63,7 @@ function fromIssuerUniverse(db){
   if(match){match.sectors=[...new Set([...match.sectors,n.sector])];match.records.push(rec);match.issuerRecord=n;continue}
   const key='company:idx:'+n.ticker;
   const official=n.verification==='official_exchange_snapshot';
-  const corporate={...n,listing_status:official?'listed':'verification-pending',market_cap:null,revenue:null,net_income:null,total_assets:null};
+  const corporate={...n,listing_status:official?'listed':'verification-pending'};
   upsert({key,type:'company',title:n.name,person:'',source:n.source_url,role:'IDX: '+n.ticker+' · '+(official?T('Official issuer snapshot','Snapshot emiten resmi'):T('Issuer candidate — verify current listing','Kandidat emiten — periksa pencatatan terkini')),date:db.as_of,sectors:[n.sector],records:[rec],summary:n.name,original:n,corporate,issuerRecord:n});
  }
 }
@@ -159,6 +159,26 @@ function drawDetail(){
    T('Initial curated ticker; official current listing unverified','Kode hasil kurasi awal; status pencatatan terkini belum terkonfirmasi'));
   addDl(dl,T('Ticker / exchange','Kode saham / bursa'),'IDX:'+n.ticker);
   addDl(dl,T('Sector tag','Tag sektor'),n.sector);
+  const profile=equityProfiles.get(n.ticker);
+  if(profile){
+   addDl(dl,T('Direct shareholding reference','Tanggal kepemilikan langsung'),profile.reference_date);
+   for(const sh of (profile.shareholders||[]).filter(x=>x.holder_kind!=='aggregate_not_entity').slice(0,8)){
+    addDl(dl,T('Shareholder · not necessarily beneficial owner','Pemegang saham · belum tentu pemilik manfaat'),sh.name+' · '+(sh.reported_pct??'N/A')+'%');
+   }
+   for(const source of profile.source_urls||[])linkTo(host,source,T('Shareholder evidence','Bukti pemegang saham'));
+  }
+  addDl(dl,T('Ultimate beneficial owner','Pemilik manfaat akhir'),T('Not independently verified','Belum terverifikasi'));
+  const asset=assetProfiles.get(n.ticker);
+  if(asset){
+   for(const c of asset.cross_border_links||[])addDl(dl,T('Corporate country link','Keterkaitan negara korporasi'),c.actor+' · '+c.country+' · '+T('not individual nationality','bukan kewarganegaraan individu'));
+   for(const right of asset.rights||[]){
+    const amount=right.participating_interest_pct!=null?' · '+right.participating_interest_pct+'% '+T('PSC participation','partisipasi PSC'):right.area_ha!=null?' · '+right.area_ha+' ha':'';
+    addDl(dl,T('Source-dated concession/permit','Konsesi/izin bertanggal'),right.name+' · '+right.region+amount+' · '+right.source_period);
+    linkTo(host,right.source_url,T('Asset and concession source','Sumber konsesi dan aset'));
+   }
+  }
+  const dossier=el('a','',T('Full ownership & concession dossier','Dossier lengkap kepemilikan & konsesi')+' ↗');
+  dossier.href='./sli-issuer.html?ticker='+encodeURIComponent(n.ticker);host.append(dossier);
  }
  if(a.type==='company'&&a.corporate){
   const c=a.corporate,listed=c.listing_status==='listed'&&c.ticker,fmt=v=>typeof v==='number'&&Number.isFinite(v)?new Intl.NumberFormat(id()?'id-ID':'en-US',{maximumFractionDigits:2}).format(v):null;
@@ -207,7 +227,14 @@ async function load(){
   try{const response=await fetch('./data/sli-idx-issuer-universe.json',{cache:'no-store'});if(!response.ok)throw Error('IDX catalogue HTTP '+response.status);
    fromIssuerUniverse(await response.json());}catch(error){console.warn('[SLI IDX catalogue]',error)}
   try{const response=await fetch('./data/sli-corporate-evidence-relationships.json',{cache:'no-store'});if(!response.ok)throw Error('Relationship evidence HTTP '+response.status);
-   fromCorporateEvidence(await response.json());}catch(error){console.warn('[SLI corporate relationship evidence]',error)}
+   const evidence=await response.json();fromCorporateEvidence(evidence);
+   const tickerById={medc:'MEDC',vale:'INCO',antam:'ANTM',ptba:'PTBA',telkom:'TLKM',byan:'BYAN',aadi:'AADI',astra:'ASII'};
+   equityProfiles=new Map((evidence.ownership_profiles||[]).filter(p=>tickerById[p.id]).map(p=>[tickerById[p.id],p]));
+  }catch(error){console.warn('[SLI corporate relationship evidence]',error)}
+  try{const response=await fetch('./data/sli-issuer-actor-assets.json',{cache:'no-store'});if(!response.ok)throw Error('Actor assets HTTP '+response.status);
+   const assetData=await response.json();
+   if(assetData.schema==='sli-issuer-actor-assets-v1')assetProfiles=new Map((assetData.records||[]).map(n=>[n.ticker,n]));
+  }catch(error){console.warn('[SLI issuer actor evidence]',error)}
   const coverage=$('sliEntityCoverage');if(coverage&&issuerCoverage)coverage.textContent=
    T('Issuer catalogue: ','Katalog emiten: ')+issuerCoverage.count+' · '+(issuerCoverage.status==='official_exchange_bulk_snapshot'?
     T('Official IDX profile snapshot · ','Snapshot profil resmi BEI · '):T('Initial candidate list; full IDX reconciliation pending · ','Daftar kandidat awal; rekonsiliasi penuh BEI belum selesai · '))+issuerCoverage.as_of+
