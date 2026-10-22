@@ -1,0 +1,35 @@
+name: SLI Expert Desk Private Owner Queue QA
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'services/sli-expert-desk/**'
+      - 'services/sli-user-intelligence/src/auth.mjs'
+      - '.github/workflows/sli-expert-desk-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  secure-owner-queue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Static module validation
+        run: |
+          node --check services/sli-expert-desk/src/index.mjs
+          node --check services/sli-expert-desk/src/experts.mjs
+          node --check services/sli-expert-desk/src/owner-console.mjs
+          if grep -E '^[[:space:]]*CF_ALLOWED_ORIGIN[[:space:]]*=' services/sli-expert-desk/wrangler.toml; then echo 'Owner origin must be configured privately'; exit 1; fi
+          test "$(grep -c 'workers_dev = false' services/sli-expert-desk/wrangler.toml)" -eq 1
+          if grep -E '^[[:space:]]*(routes|route)[[:space:]]*=' services/sli-expert-desk/wrangler.toml; then echo "Public routes forbidden in pilot"; exit 1; fi
+          if grep -E '^[[:space:]]*CF_EXPERT_DESK_ENABLED[[:space:]]*=' services/sli-expert-desk/wrangler.toml; then echo "Pilot feature must default OFF"; exit 1; fi
+      - name: Private owner workflow regression
+        run: node --test services/sli-expert-desk/tests/owner-queue.test.mjs
+      - name: D1 migrations and foreign key constraints
+        run: python3 services/sli-expert-desk/tests/test_schema.py
