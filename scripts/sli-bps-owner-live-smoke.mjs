@@ -3,6 +3,7 @@
  * One API call max, no retry and no model calls in --self-test mode.
  */
 import assert from "node:assert/strict";
+import {selectFocusedBpsWelfare,auditFocusedBpsAnswer} from "../research-api/src/bps-welfare-focused.mjs";
 import {readFileSync} from "node:fs";
 const welfare=JSON.parse(readFileSync(new URL("../data/sli-bps-welfare-2026.json",import.meta.url),"utf8"));
 const water=welfare.provincial_metrics.find(x=>x.id==="piped_drinking_water");
@@ -15,6 +16,22 @@ if(Object.values(reference).some(x=>!Number.isFinite(x)))throw Error("BPS primar
 const ORIGIN="https://hananakhmad1991-stack.github.io";
 const ENDPOINT="https://sli-research-owner-test.hananakhmad1991.workers.dev/v1/owner-research";
 const QUESTION="Menurut BPS Statistik Kesejahteraan Rakyat 2026 (Susenas Maret), berapa persentase rumah tangga Aceh dengan sumber utama air minum leding (Tabel 6.23), dan bagaimana SE, RSE, interval kepercayaan 95% dari tabel sampling error 9.88? Bedakan estimasi survey dan kepastian statistik, sertakan sitasi sumber BPS dan nomor halaman PDF. Jangan mengarang nilai yang tidak tersedia.";
+
+
+const SCENARIOS=Object.freeze({
+ aceh_water:QUESTION,
+ west_java_uninsured:"Menurut BPS Susenas Maret 2026, berapa estimasi penduduk Jawa Barat tanpa jaminan kesehatan beserta SE, RSE, interval kepercayaan 95%, nomor tabel dan halaman PDF?",
+ bali_e_money:"Menurut BPS Susenas Maret 2026, berapa estimasi rumah tangga Bali memiliki uang elektronik beserta SE, RSE, interval kepercayaan 95%, nomor tabel dan halaman PDF?",
+ papua_no_electricity:"Menurut BPS Susenas Maret 2026, berapa estimasi rumah tangga Papua tanpa listrik sebagai penerangan utama beserta SE, RSE, interval kepercayaan 95%, nomor tabel dan halaman PDF?",
+ aceh_west_java_water_bpnt:"Menurut BPS Susenas Maret 2026, bandingkan Aceh dan Jawa Barat untuk air minum leding serta BPNT: tuliskan estimasi, SE, RSE, interval kepercayaan 95%, nomor tabel, halaman PDF dan sitasi masing-masing."
+});
+const formatStat=n=>Number(n).toFixed(2).replace(".",",");
+function fixtureScenarioAnswer(focus){
+ return focus.records.map((m,i)=>m.province+" — "+m.label+": estimasi "+formatStat(m.estimate)+"%; SE "+formatStat(m.se)+
+  " poin persentase; RSE "+formatStat(m.rse)+"%; interval kepercayaan 95% "+
+  formatStat(m.ci_low)+"–"+formatStat(m.ci_high)+"%; Tabel "+m.table+", PDF halaman "+m.main_page+
+  "; Tabel "+m.appendix_table+", PDF halaman "+m.appendix_page+"; Penyebut: "+m.denominator+" ["+(i+1)+"].").join("\n");
+}
 
 /* Numerical source-citation gate:
  * passing with generic mentions of SE, RSE or table numbers is intentionally impossible.
@@ -83,16 +100,48 @@ export function evaluateBpsOwnerReply(status,reply){
   numerical_reference_source:"curated_BPS_Susenas_2026_exact_category_source_tables_6_23_and_9_88"};
 }
 
+
+export function evaluateBpsOwnerScenario(status,reply,scenario="aceh_water"){
+ if(!Object.hasOwn(SCENARIOS,scenario))throw Error("Unsupported fixed BPS scenario; no model call");
+ if(scenario==="aceh_water")return evaluateBpsOwnerReply(status,reply);
+ const focus=selectFocusedBpsWelfare(SCENARIOS[scenario],welfare);
+ if(!focus||focus.legacy)throw Error("Missing valid fixed BPS scenario source; no model call");
+ const sources=Array.isArray(reply?.sources)?reply.sources:[],issues=[];
+ if(status!==200)issues.push("unexpected_status_"+status);
+ if(reply?.mode!=="generative_rag")issues.push("not_generative_research");
+ if(sources.length!==focus.evidence.length)issues.push("source_count_mismatch");
+ for(let i=0;i<focus.evidence.length;i++){
+  const expected=focus.evidence[i],actual=sources[i];
+  if(actual?.id!==expected.id||actual?.source_url!==expected.source_url||actual?.index!==i+1||actual?.geo!==expected.geo)
+   issues.push("source_identity_or_citation_order_mismatch_"+(i+1));
+ }
+ if(!reply?.quality_audit||typeof reply.quality_audit!=="object")issues.push("missing_answer_quality_audit");
+ if(typeof reply?.answer!=="string")issues.push("missing_answer");
+ else issues.push(...auditFocusedBpsAnswer(reply.answer,focus).issues);
+ return {pass:issues.length===0,issues,
+  server_error_code:status===200?null:safeDiagnosticCode(reply?.error),
+  server_reason_code:status===200?null:safeDiagnosticCode(reply?.reason),
+  server_statistical_issue_codes:status===200?[]:safeDiagnosticIssues(reply?.issues),
+  scenario,source_count:sources.length,bps_source_count:sources.filter(x=>x?.source_url===welfare.source.source_url).length,
+  aceh_source_count:sources.filter(x=>x?.geo==="Aceh").length,
+  answer_length:String(reply?.answer||"").length,
+  numerical_reference_source:"curated_BPS_Susenas_2026_exact_source_table_and_sampling_crosswalk"};
+}
+
 export async function liveSmoke(env=process.env){
+ const scenario=env.BPS_OWNER_SCENARIO||"aceh_water";
+ if(!Object.hasOwn(SCENARIOS,scenario))throw Error("Unknown BPS_OWNER_SCENARIO; no request made.");
+ const focus=selectFocusedBpsWelfare(SCENARIOS[scenario],welfare);
+ if(!focus)throw Error("BPS scenario missing verified reference; no request made.");
  const token=env.SLI_OWNER_SMOKE_TOKEN;
  if(typeof token!=="string"||token.length<48)throw Error("Missing private SLI_OWNER_SMOKE_TOKEN (48+ characters). No model request made.");
  const url=new URL(env.SLI_OWNER_SMOKE_ENDPOINT||ENDPOINT);
  if(url.origin!==new URL(ENDPOINT).origin||url.pathname!=="/v1/owner-research"||url.protocol!=="https:"||url.search||url.hash||url.username||url.password)throw Error("Unapproved owner endpoint. No model request made.");
- const body={question:QUESTION,mode:"executive_summary",language:"id",history:[],methodology:"auto"};
+ const body={question:SCENARIOS[scenario],mode:"executive_summary",language:"id",history:[],methodology:"auto"};
  const res=await fetch(url,{method:"POST",headers:{"Origin":ORIGIN,"Content-Type":"application/json","x-sli-owner-test-token":token},
    body:JSON.stringify(body),redirect:"error",signal:AbortSignal.timeout(40000)});
  const data=await res.json().catch(()=>({}));
- const result=evaluateBpsOwnerReply(res.status,data);
+ const result=evaluateBpsOwnerScenario(res.status,data,scenario);
  // Emit only fixed, whitelisted status classes, never model prose, tokens or
  // provider payloads. Owner QA can distinguish a source-guard 502 from quota
  // failure without revealing confidential or costly provider response content.
@@ -106,7 +155,7 @@ export async function liveSmoke(env=process.env){
  ]);
  const backend_error_class=typeof data?.error==="string"&&safeErrors.has(data.error)?data.error:
    res.status===200?"none":"unclassified_backend_error";
- console.log(JSON.stringify({test:"BPS Owner Test live reference and uncertainty",backend_error_class,...result},null,2));
+ console.log(JSON.stringify({test:"BPS Owner Test live reference and uncertainty",scenario,backend_error_class,...result},null,2));
  if(!result.pass)process.exitCode=1;
  return result;
 }
@@ -136,6 +185,19 @@ function selfTest(){
  assert.equal(evaluateBpsOwnerReply(502,{error:"SECRET token=abcdef",reason:"some raw response"}).server_error_code,null);
  const english={...valid,answer:valid.answer.replace("7,49%","7.49%").replace("0,33","0.33").replace("4,38","4.38").replace("6,84–8,13","6.84–8.13")};
  assert.equal(evaluateBpsOwnerReply(200,english).pass,true,"Both Indonesian and English decimals must pass");
+
+ for(const scenario of Object.keys(SCENARIOS).filter(x=>x!=="aceh_water")){
+  const focus=selectFocusedBpsWelfare(SCENARIOS[scenario],welfare);
+  assert.ok(focus&&!focus.legacy,scenario+" selection must resolve without paid API calls");
+  const ok={mode:"generative_rag",answer:fixtureScenarioAnswer(focus),
+   sources:focus.evidence.map((e,i)=>({...e,index:i+1})),
+   quality_audit:{review_scope:"structural_only_not_factual_verification"}};
+  assert.equal(evaluateBpsOwnerScenario(200,ok,scenario).pass,true,scenario+" source and answer fixture");
+  const first=focus.records[0],corrupted={...ok,answer:ok.answer.replace("RSE "+formatStat(first.rse),"RSE 999,99")};
+  assert.equal(evaluateBpsOwnerScenario(200,corrupted,scenario).pass,false,scenario+" bad RSE must fail");
+  assert.equal(evaluateBpsOwnerScenario(200,{...ok,sources:ok.sources.slice(1)},scenario).pass,false,scenario+" missing source must fail");
+ }
+ assert.throws(()=>evaluateBpsOwnerScenario(200,{},"untrusted_question"),/Unsupported fixed BPS scenario/);
  console.log("BPS owner numerical and citation validator self-tests PASS (no network/model usage).");
 }
 if(process.argv[1]&&import.meta.url===new URL("file://"+process.argv[1]).href){
