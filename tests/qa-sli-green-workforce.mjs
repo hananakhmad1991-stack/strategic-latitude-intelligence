@@ -47,3 +47,12 @@ test('sector entry points preserve source caveats and canonical module ownership
  assert.match(home,/aria-label="Green Workforce Intelligence dashboard"/);
  assert.match(home,/Bappenas 2025–2029 employment projections/);
 });
+
+test('official publisher PDF and implementation phases are directly traceable',()=>{
+ const page=read('green-workforce-intelligence.html');
+ assert.match(page,/perpustakaan\.bappenas\.go\.id\/e-library\/file_upload/);
+ assert.match(page,/target="_blank" rel="noopener noreferrer"/);
+ assert.match(page,/Tabel 3–6 halaman cetak 63–66/);
+ for(const phase of ['2025–2029','2030–2034','2035–2039','2040–2045'])assert.ok(page.includes(phase));
+ assert.match(page,/Delapan sektor prioritas kebijakan tidak identik dengan 17 kategori/);
+});
