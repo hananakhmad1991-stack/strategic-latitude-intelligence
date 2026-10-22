@@ -1,0 +1,32 @@
+name: Energy Reserve / SPR Evidence QA
+on:
+  pull_request:
+    paths:
+      - index.html
+      - js/energy-spr-comparison.js
+      - css/energy-spr-comparison.css
+      - data/energy-spr-comparison-2026.json
+      - tests/qa-energy-spr-comparison.mjs
+      - .github/workflows/energy-spr-qa.yml
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - js/energy-spr-comparison.js
+      - css/energy-spr-comparison.css
+      - data/energy-spr-comparison-2026.json
+      - tests/qa-energy-spr-comparison.mjs
+      - .github/workflows/energy-spr-qa.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax, evidence data and Energy-page wiring
+        run: |
+          node --check js/energy-spr-comparison.js
+          node --test tests/qa-energy-spr-comparison.mjs

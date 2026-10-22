@@ -1,0 +1,55 @@
+/* SLI Oil Security & SPR: scoped component, no shared dashboard overrides */
+#energySPRRoot{margin:22px 0 26px;scroll-margin-top:22px;color:#c3d6e6}
+#energySPRRoot .spr-head{border:1px solid #3a5570;border-radius:12px;background:linear-gradient(135deg,#112c41,#0b2033);padding:19px 22px 16px}
+#energySPRRoot .spr-eyebrow{letter-spacing:.13em;text-transform:uppercase;font-size:10px;color:#e0c184;font-weight:750;margin:0 0 9px}
+#energySPRRoot h2{font-size:clamp(19px,2.5vw,26px);color:#f4ead5;line-height:1.25;margin:0}
+#energySPRRoot .spr-head p:last-child{font-size:12px;line-height:1.6;margin:10px 0 0;color:#b7cde0}
+#energySPRRoot .spr-metrics,#energySPRRoot .spr-target-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0}
+#energySPRRoot .spr-metric{background:#11283e;border:1px solid #365168;border-radius:10px;padding:16px;min-width:0;overflow-wrap:anywhere}
+#energySPRRoot .spr-kicker{display:block;color:#bad2e5;letter-spacing:.04em;font-size:11px}
+#energySPRRoot .spr-num{display:block;color:#e5c68a;font-size:clamp(17px,2vw,25px);line-height:1.3;margin:9px 0}
+#energySPRRoot .spr-metric-foot{margin:0;color:#bad0de;font-size:11px;line-height:1.55}
+#energySPRRoot .spr-caution{border-left:3px solid #e1b56a;border-radius:6px;background:#1d3445;padding:13px 17px;margin:13px 0;color:#d7e2e8;font-size:12px;line-height:1.7}
+#energySPRRoot .spr-caution strong{color:#f2d9ab}
+#energySPRRoot .spr-caution p{margin:6px 0}
+#energySPRRoot .spr-tabs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;border-bottom:1px solid #456179;margin:18px 0 0;padding:0 0 9px}
+#energySPRRoot .spr-tab,#energySPRRoot .spr-action,#energySPRRoot .spr-link-button{appearance:none;border:1px solid #47647c;border-radius:9px;background:#173149;color:#e8f0f5;cursor:pointer;padding:10px 12px;font:inherit;font-size:12px;min-height:38px}
+#energySPRRoot .spr-tab.active{background:#d7b678;color:#10283b;border-color:#d7b678;font-weight:700}
+#energySPRRoot button:hover,#energySPRRoot button:focus-visible,#energySPRRoot input:focus-visible,#energySPRRoot select:focus-visible{outline:2px solid #e2c78f;outline-offset:2px}
+#energySPRRoot .spr-section{padding:20px 0 8px}
+#energySPRRoot .spr-section h3{font-size:18px;color:#f1e3c5;margin:0 0 9px}
+#energySPRRoot .spr-section h4{font-size:14px;color:#e7d4aa;margin:0 0 9px}
+#energySPRRoot .spr-caption,#energySPRRoot .spr-count{font-size:11.5px;line-height:1.65;color:#aec4d5}
+#energySPRRoot .spr-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:18px 0}
+#energySPRRoot .spr-input,#energySPRRoot .spr-select{font:inherit;font-size:12px;border:1px solid #4c667d;border-radius:8px;background:#0b2438;color:#ecf3f6;min-height:40px;padding:10px 12px}
+#energySPRRoot .spr-input{min-width:170px;flex:1}
+#energySPRRoot .spr-graph{border:1px solid #334e67;border-radius:10px;padding:16px;background:#0c2538;margin:15px 0}
+#energySPRRoot .spr-bars{display:grid;gap:8px;margin:10px 0 14px}
+#energySPRRoot .spr-bar-row{display:grid;grid-template-columns:minmax(94px,175px) minmax(90px,1fr) 52px;gap:12px;align-items:center;font-size:11px}
+#energySPRRoot .spr-bar-country{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#energySPRRoot .spr-bar-track{height:14px;background:#1d3d55;border-radius:5px;position:relative;overflow:hidden}
+#energySPRRoot .spr-bar-fill{height:100%;background:linear-gradient(90deg,#3e8dbb,#7ac6d8);border-radius:4px;min-width:1px}
+#energySPRRoot .spr-threshold{position:absolute;top:0;bottom:0;width:2px;background:#e7c16b}
+#energySPRRoot .spr-bar-value{font-size:11px;text-align:right;color:#e6d4a8;font-variant-numeric:tabular-nums}
+#energySPRRoot .spr-table-wrap{max-width:100%;overflow:auto;border:1px solid #3a5970;border-radius:10px;max-height:520px}
+#energySPRRoot .spr-table{min-width:850px;border-collapse:collapse;width:100%;font-size:11px;font-variant-numeric:tabular-nums}
+#energySPRRoot .spr-table th,#energySPRRoot .spr-table td{padding:10px 12px;border-bottom:1px solid #2b495e;text-align:left;vertical-align:top;line-height:1.55}
+#energySPRRoot .spr-table thead{position:sticky;top:0;z-index:1;background:#1e3b50}
+#energySPRRoot .spr-table thead th{color:#f0d9ab;font-weight:700}
+#energySPRRoot .spr-table tbody tr:nth-child(2n){background:#102b3e}
+#energySPRRoot .spr-table tbody tr:hover{background:#28445a}
+#energySPRRoot .spr-table .spr-indonesia{background:#3b3c37!important;border-top:2px solid #d7b678}
+#energySPRRoot .spr-indonesia th,#energySPRRoot .spr-indonesia .spr-table-number{color:#f2d6a0}
+#energySPRRoot .spr-table-number{font-weight:700;font-size:12px;white-space:nowrap}
+#energySPRRoot .spr-policy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+#energySPRRoot .spr-policy-card{background:#102d42;border:1px solid #38536a;border-radius:10px;padding:17px;min-width:0}
+#energySPRRoot .spr-policy-stat{display:block;font-size:22px;color:#e8c689;margin:11px 0}
+#energySPRRoot .spr-policy-card p{color:#c4d7e3;font-size:12px;line-height:1.7}
+#energySPRRoot .spr-target-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+#energySPRRoot .spr-subtitle{margin-top:22px!important}
+#energySPRRoot .spr-policy-list{padding-left:23px;display:grid;gap:11px;font-size:12px;line-height:1.75;color:#cbdfeb}
+#energySPRRoot .spr-source-list{padding-left:21px;display:grid;gap:11px;font-size:12px;line-height:1.65}
+#energySPRRoot .spr-source-class{font-size:10px;color:#aac2d2}
+#energySPRRoot a{color:#bfe5ff;text-underline-offset:2px}
+@media(max-width:900px){#energySPRRoot .spr-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}#energySPRRoot .spr-policy-grid{grid-template-columns:1fr}}
+@media(max-width:580px){#energySPRRoot .spr-head{padding:15px}#energySPRRoot .spr-metrics,#energySPRRoot .spr-target-grid{grid-template-columns:1fr 1fr;gap:8px}#energySPRRoot .spr-metric{padding:12px}#energySPRRoot .spr-num{font-size:17px}#energySPRRoot .spr-tab{flex:1}#energySPRRoot .spr-input,#energySPRRoot .spr-select,#energySPRRoot .spr-action{width:100%}#energySPRRoot .spr-bar-row{grid-template-columns:80px minmax(60px,1fr) 40px;gap:6px;font-size:10px}#energySPRRoot .spr-graph{padding:10px}}
