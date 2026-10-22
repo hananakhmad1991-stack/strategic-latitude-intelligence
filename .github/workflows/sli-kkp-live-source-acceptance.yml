@@ -1,4 +1,4 @@
-name: SLI KKP BIG live source + Owner Worker acceptance
+name: SLI KKP BIG — authorized hatchery export (NO AI paid test)
 on:
   pull_request:
     paths:
@@ -9,18 +9,18 @@ on:
       - 'data/sli-kkp-hatchery-province-cards-2024.json'
       - 'tests/qa-sli-kkp-hatchery-provincial.mjs'
       - 'scripts/probe_kkp_big_live.mjs'
-      - 'scripts/probe_kkp_public_download.mjs'
       - 'scripts/export_kkp_hatchery_authorized.mjs'
       - 'scripts/kkp-questionnaire-controls.mjs'
       - 'scripts/kkp-official-download-observer.mjs'
       - 'scripts/probe_kkp_questionnaire_controls.mjs'
       - 'scripts/convert_kkp_hatchery_xlsx_to_csv.py'
       - 'tests/test_sli_kkp_authorized_export_converter.py'
-      - 'scripts/probe_sli_owner_worker_live.mjs'
       - 'scripts/kkp-owner-evidence-gate.mjs'
       - 'tests/qa-sli-kkp-owner-evidence-gate.mjs'
       - 'tests/qa-sli-kkp-wpp-live.mjs'
       - 'tests/qa-sli-kkp-download-observer.mjs'
+      - 'tests/qa-sli-kkp-owner-workflow-isolation.mjs'
+      - '.github/workflows/sli-owner-kkp-authenticated-smoke.yml'
       - '.github/workflows/sli-kkp-live-source-acceptance.yml'
   push:
     branches: [main]
@@ -32,28 +32,23 @@ on:
       - 'data/sli-kkp-hatchery-province-cards-2024.json'
       - 'tests/qa-sli-kkp-hatchery-provincial.mjs'
       - 'scripts/probe_kkp_big_live.mjs'
-      - 'scripts/probe_kkp_public_download.mjs'
       - 'scripts/export_kkp_hatchery_authorized.mjs'
       - 'scripts/kkp-questionnaire-controls.mjs'
       - 'scripts/kkp-official-download-observer.mjs'
       - 'scripts/probe_kkp_questionnaire_controls.mjs'
       - 'scripts/convert_kkp_hatchery_xlsx_to_csv.py'
       - 'tests/test_sli_kkp_authorized_export_converter.py'
-      - 'scripts/probe_sli_owner_worker_live.mjs'
       - 'scripts/kkp-owner-evidence-gate.mjs'
       - 'tests/qa-sli-kkp-owner-evidence-gate.mjs'
       - 'tests/qa-sli-kkp-wpp-live.mjs'
       - 'tests/qa-sli-kkp-download-observer.mjs'
+      - 'tests/qa-sli-kkp-owner-workflow-isolation.mjs'
+      - '.github/workflows/sli-owner-kkp-authenticated-smoke.yml'
       - '.github/workflows/sli-kkp-live-source-acceptance.yml'
   workflow_dispatch:
     inputs:
-      authorize_paid_owner_test:
-        description: "Explicitly run ONE paid owner-token model request from trusted main, with environment-held SLI_OWNER_TEST_TOKEN"
-        type: boolean
-        required: true
-        default: false
       authorize_kkp_form_submission:
-        description: "I authorize ONE official KKP download questionnaire with my genuine contact secrets (no public source publication)"
+        description: "REQUIRED for export: submit ONE official KKP questionnaire (genuine contact secrets, no automatic publication)"
         type: boolean
         required: true
         default: false
@@ -102,15 +97,13 @@ jobs:
           node --check js/sli-kkp-visual-lab.mjs
           node --check js/sli-kkp-hatchery-provincial.mjs
           node --check scripts/probe_kkp_big_live.mjs
-          node --check scripts/probe_kkp_public_download.mjs
           node --check scripts/export_kkp_hatchery_authorized.mjs
           node --check scripts/kkp-questionnaire-controls.mjs
           node --check scripts/kkp-official-download-observer.mjs
           node --check scripts/probe_kkp_questionnaire_controls.mjs
           python3 -m py_compile scripts/convert_kkp_hatchery_xlsx_to_csv.py
-          node --check scripts/probe_sli_owner_worker_live.mjs
           node --check scripts/kkp-owner-evidence-gate.mjs
-          node --test tests/qa-sli-kkp-wpp-live.mjs tests/qa-sli-kkp-visual-lab.mjs tests/qa-sli-kkp-hatchery-provincial.mjs tests/qa-sli-kkp-owner-evidence-gate.mjs tests/qa-sli-kkp-download-observer.mjs
+          node --test tests/qa-sli-kkp-wpp-live.mjs tests/qa-sli-kkp-visual-lab.mjs tests/qa-sli-kkp-hatchery-provincial.mjs tests/qa-sli-kkp-owner-evidence-gate.mjs tests/qa-sli-kkp-download-observer.mjs tests/qa-sli-kkp-owner-workflow-isolation.mjs
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - name: Test synthetic official XLSX to CSV source gate (never uses actual KKP bulk data)
@@ -119,8 +112,6 @@ jobs:
           python -m unittest discover -s tests -p 'test_sli_kkp_authorized_export_converter.py' -v
       - name: Probe official BIG feature polygons; never auto-publish vendor geometry
         run: node scripts/probe_kkp_big_live.mjs
-      - name: Check real Owner Worker unauthenticated request is rejected
-        run: node scripts/probe_sli_owner_worker_live.mjs
       - name: Find local browser executable
         shell: bash
         run: |
@@ -134,60 +125,31 @@ jobs:
       - name: Verify official KKP dropdown controls without respondent or submission
         if: env.CHROME_BIN != ''
         run: node scripts/probe_kkp_questionnaire_controls.mjs
-      - name: Attempt original KKP Unduh Data for complete hatchery table
-        if: env.CHROME_BIN != ''
-        run: node scripts/probe_kkp_public_download.mjs
-      - name: Publish audit conclusion — failures do not become fabricated data
+      - name: Publish KKP/BIG audit conclusion — failures do not become fabricated data
         if: always()
         run: |
           python3 - <<'PY'
           import json,os,pathlib
           out=pathlib.Path(os.environ["GITHUB_STEP_SUMMARY"])
           with out.open("a",encoding="utf8") as f:
-           f.write("### KKP official sources and owner staging — probes, NOT data approval\n")
-           for p in ("artifacts/sli-kkp-big-live-probe.json","artifacts/sli-kkp-hatchery-download-probe.json","artifacts/sli-owner-worker-live-acceptance.json"):
+           f.write("### KKP and BIG official source probes — NOT data approval\n")
+           for p in ("artifacts/sli-kkp-big-live-probe.json","artifacts/sli-kkp-questionnaire-public-control-probe.json"):
             q=pathlib.Path(p)
             if not q.exists(): f.write(f"- `{p}`: not checked\n");continue
             d=json.loads(q.read_text())
             f.write(f"- `{p}`: "+str(d.get("status") or d.get("download_status") or d.get("negative_auth_status"))+"\n")
-           f.write("- These runs do not confirm redistribution rights, exact 2026 WPP boundary vintage, all 1,387 source rows, or an authenticated Owner response.\n")
+           f.write("- These runs do not confirm redistribution rights, exact 2026 WPP boundary vintage, all 1,387 source rows, ; this workflow NEVER runs a paid Owner AI test.\n")
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sli-kkp-big-hatchery-owner-external-evidence-gates
+          name: sli-kkp-big-hatchery-source-evidence-gates
           path: |
             artifacts/sli-kkp-big-live-probe.json
-            artifacts/sli-kkp-hatchery-download-probe.json
             artifacts/sli-kkp-questionnaire-public-control-probe.json
             artifacts/kkp-hatchery-export-review.json
-            artifacts/sli-owner-worker-live-acceptance.json
           if-no-files-found: warn
           retention-days: 14
-  authorized-owner-smoke:
-    if: github.event_name == 'workflow_dispatch' && inputs.authorize_paid_owner_test == true && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    environment: sli-owner-staging
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: {node-version: '22'}
-      - name: Paid owner-only authenticated acceptance — once, opt-in, never log token
-        env:
-          SLI_OWNER_TEST_TOKEN: ${{ secrets.SLI_OWNER_TEST_TOKEN }}
-          SLI_PAID_OWNER_TEST_OPT_IN: 'true'
-          SLI_REQUIRE_OWNER_NEGATIVE: 'true'
-          SLI_REQUIRE_OWNER_POSITIVE: 'true'
-        run: node scripts/probe_sli_owner_worker_live.mjs
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: sli-owner-live-positive-audit-no-secrets
-          path: artifacts/sli-owner-worker-live-acceptance.json
-          if-no-files-found: warn
-          retention-days: 7
-
   authorized-hatchery-export:
     if: github.event_name == 'workflow_dispatch' && inputs.authorize_kkp_form_submission == true && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest

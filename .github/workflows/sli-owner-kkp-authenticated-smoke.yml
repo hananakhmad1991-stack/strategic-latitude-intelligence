@@ -1,0 +1,56 @@
+name: SLI Owner AI — separate paid authenticated staging smoke
+on:
+  workflow_dispatch:
+    inputs:
+      authorize_paid_owner_test:
+        description: "EXPLICIT CONSENT: run ONE paid Owner AI model request after protected staging token is configured"
+        type: boolean
+        required: true
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: sli-owner-positive-staging-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  owner-ai-staging-smoke:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && inputs.authorize_paid_owner_test == true
+    runs-on: ubuntu-latest
+    environment: sli-owner-staging
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Confirm owner-only staging credential exists before model request
+        env:
+          SLI_OWNER_TEST_TOKEN: ${{ secrets.SLI_OWNER_TEST_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "$SLI_OWNER_TEST_TOKEN" ] || [ "${#SLI_OWNER_TEST_TOKEN}" -lt 48 ]; then
+            echo "::error::SLI_OWNER_TEST_TOKEN is missing/invalid in GitHub Environment sli-owner-staging. No paid Owner model request was made. This is a separate Owner AI test, NOT a KKP data export."
+            exit 1
+          fi
+          echo "Owner staging credential preflight passed; token value not logged."
+      - name: Run ONE paid Owner AI citation/source acceptance
+        env:
+          SLI_OWNER_TEST_TOKEN: ${{ secrets.SLI_OWNER_TEST_TOKEN }}
+          SLI_PAID_OWNER_TEST_OPT_IN: 'true'
+          SLI_REQUIRE_OWNER_NEGATIVE: 'true'
+          SLI_REQUIRE_OWNER_POSITIVE: 'true'
+        run: node scripts/probe_sli_owner_worker_live.mjs
+      - name: Publish Owner-only test scope (not KKP bulk acceptance)
+        if: always()
+        shell: bash
+        run: |
+          echo '### Research AI Owner-only live staging smoke' >> "$GITHUB_STEP_SUMMARY"
+          echo 'This job is separate from the KKP hatchery download workflow and requires explicit consent and staging token.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Passing authentication/citation structure does not prove any KKP bulk export, exact numeric correctness, or permission to republish.' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-owner-live-positive-audit-no-secrets
+          path: artifacts/sli-owner-worker-live-acceptance.json
+          if-no-files-found: warn
+          retention-days: 7
