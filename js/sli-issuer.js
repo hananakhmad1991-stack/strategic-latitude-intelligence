@@ -114,6 +114,20 @@ function render(data,ticker,groups){
    const source=E("div","sli-issuer-links");
    sourceLink(source,r.source_url,T("Evidence","Bukti"));
    if(r.group)source.append(link("./sli-entities.html?group="+encodeURIComponent(r.group),T("View company group ↗","Lihat grup perusahaan ↗")));
+   // Display only registry-attested directors and domicile, never infer beneficial ownership.
+   if(r.domicile)block.append(E("small",null,T("Recorded domicile","Domisili tercatat")+": "+r.domicile));
+   if(r.ownership_class)block.append(E("small",null,T("Ownership classification","Klasifikasi kepemilikan")+": "+r.ownership_class));
+   if(Array.isArray(r.directors)&&r.directors.length){
+     const people=E("div","sli-issuer-related-people");
+     people.append(E("strong",null,T("Named officials in evidence registry","Pengurus dalam registri bukti")));
+     for(const p of r.directors){
+       if(!p.name)continue;
+       const person=E("div","sli-issuer-related-person",p.name+" · "+(p.title_id||p.title_en||T("Role not recorded","Jabatan belum dicatat")));
+       if(safe(p.source_url))person.append(document.createTextNode(" · "),link(safe(p.source_url),T("source ↗","sumber ↗"),true));
+       people.append(person);
+     }
+     block.append(people);
+   }
    block.append(source);relate.append(block);
   }
  }
