@@ -1,20 +1,20 @@
 {
   "schema_version": "1.0",
-  "generated_at_utc": "2026-10-22T00:42:37Z",
+  "generated_at_utc": "2026-10-22T06:41:12Z",
   "audit_state": "complete",
   "scope": "All data/*.json files and all .github/workflows/*.yml files in main at audit time.",
   "source_semantics": "Workflow freshness does not guarantee source completeness or official verification. News candidates do not modify legal status/project operations. Static historical vintages are not current observations.",
   "transport": "Data-backed SLI pages fetch latest public GitHub main JSON with GitHub Pages fallback; if fallback occurs, freshness may lag.",
   "summary": {
-    "datasets": 183,
-    "workflows": 110,
+    "datasets": 184,
+    "workflows": 111,
     "scheduled_workflows": 45,
     "auto_numeric_datasets": 19,
     "auto_discovery_datasets": 16,
-    "curated_or_archival_datasets": 147,
+    "curated_or_archival_datasets": 148,
     "other_datasets": 1,
     "overdue_or_broken_datasets": 0,
-    "unmanaged_datasets": 147,
+    "unmanaged_datasets": 148,
     "workflow_failures_latest": 1,
     "workflow_status_api_errors": 0
   },
@@ -41,11 +41,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T01:46:56Z",
-        "updated_at": "2026-10-21T01:47:13Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39529285990",
+        "created_at": "2026-10-22T01:46:27Z",
+        "updated_at": "2026-10-22T01:46:45Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39707609184",
         "event": "schedule",
-        "workflow_run_id": 39529285990
+        "workflow_run_id": 39707609184
       }
     },
     {
@@ -73,11 +73,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T14:53:30Z",
-        "updated_at": "2026-10-21T14:53:42Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39620842356",
+        "created_at": "2026-10-22T02:53:39Z",
+        "updated_at": "2026-10-22T02:53:50Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39713857406",
         "event": "schedule",
-        "workflow_run_id": 39620842356
+        "workflow_run_id": 39713857406
       }
     },
     {
@@ -117,11 +117,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-22T00:34:10Z",
-        "updated_at": "2026-10-22T00:34:33Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39700472622",
+        "created_at": "2026-10-22T06:35:50Z",
+        "updated_at": "2026-10-22T06:36:04Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39734933908",
         "event": "schedule",
-        "workflow_run_id": 39700472622
+        "workflow_run_id": 39734933908
       }
     },
     {
@@ -169,11 +169,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T03:02:47Z",
-        "updated_at": "2026-10-21T03:02:56Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39536381196",
+        "created_at": "2026-10-22T03:03:00Z",
+        "updated_at": "2026-10-22T03:03:11Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39714706356",
         "event": "schedule",
-        "workflow_run_id": 39536381196
+        "workflow_run_id": 39714706356
       }
     },
     {
@@ -191,11 +191,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T02:08:44Z",
-        "updated_at": "2026-10-21T02:08:56Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39531366315",
+        "created_at": "2026-10-22T02:08:04Z",
+        "updated_at": "2026-10-22T02:08:11Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39709680207",
         "event": "schedule",
-        "workflow_run_id": 39531366315
+        "workflow_run_id": 39709680207
       }
     },
     {
@@ -214,11 +214,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T21:56:36Z",
-        "updated_at": "2026-10-21T21:57:06Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39682764044",
+        "created_at": "2026-10-22T03:59:30Z",
+        "updated_at": "2026-10-22T04:00:00Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39719855155",
         "event": "schedule",
-        "workflow_run_id": 39682764044
+        "workflow_run_id": 39719855155
       }
     },
     {
@@ -237,11 +237,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T18:55:47Z",
-        "updated_at": "2026-10-21T18:57:09Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39657117296",
+        "created_at": "2026-10-22T00:59:02Z",
+        "updated_at": "2026-10-22T01:00:23Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39702969756",
         "event": "schedule",
-        "workflow_run_id": 39657117296
+        "workflow_run_id": 39702969756
       }
     },
     {
@@ -269,11 +269,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T23:42:30Z",
-        "updated_at": "2026-10-21T23:42:47Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39695142125",
+        "created_at": "2026-10-22T05:43:14Z",
+        "updated_at": "2026-10-22T05:43:30Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39729630166",
         "event": "schedule",
-        "workflow_run_id": 39695142125
+        "workflow_run_id": 39729630166
       }
     },
     {
@@ -291,11 +291,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T19:21:11Z",
-        "updated_at": "2026-10-21T19:21:25Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39660869893",
+        "created_at": "2026-10-22T01:21:28Z",
+        "updated_at": "2026-10-22T01:21:40Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39705201490",
         "event": "schedule",
-        "workflow_run_id": 39660869893
+        "workflow_run_id": 39705201490
       }
     },
     {
@@ -323,11 +323,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T22:09:26Z",
-        "updated_at": "2026-10-21T22:09:42Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39684396676",
+        "created_at": "2026-10-22T04:14:17Z",
+        "updated_at": "2026-10-22T04:14:31Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39721249606",
         "event": "schedule",
-        "workflow_run_id": 39684396676
+        "workflow_run_id": 39721249606
       }
     },
     {
@@ -345,11 +345,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-22T00:39:43Z",
-        "updated_at": "2026-10-22T00:41:12Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39701015983",
+        "created_at": "2026-10-22T06:38:46Z",
+        "updated_at": "2026-10-22T06:40:13Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39735237954",
         "event": "schedule",
-        "workflow_run_id": 39701015983
+        "workflow_run_id": 39735237954
       }
     },
     {
@@ -367,11 +367,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T13:19:06Z",
-        "updated_at": "2026-10-21T13:19:16Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39606933834",
+        "created_at": "2026-10-22T01:12:50Z",
+        "updated_at": "2026-10-22T01:13:04Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39704368612",
         "event": "schedule",
-        "workflow_run_id": 39606933834
+        "workflow_run_id": 39704368612
       }
     },
     {
@@ -389,11 +389,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T19:15:41Z",
-        "updated_at": "2026-10-21T19:15:54Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39660061468",
+        "created_at": "2026-10-22T01:15:08Z",
+        "updated_at": "2026-10-22T01:15:19Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39704592344",
         "event": "schedule",
-        "workflow_run_id": 39660061468
+        "workflow_run_id": 39704592344
       }
     },
     {
@@ -422,11 +422,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T21:37:28Z",
-        "updated_at": "2026-10-21T21:38:15Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39680293513",
+        "created_at": "2026-10-22T03:36:48Z",
+        "updated_at": "2026-10-22T03:37:23Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39717797562",
         "event": "schedule",
-        "workflow_run_id": 39680293513
+        "workflow_run_id": 39717797562
       }
     },
     {
@@ -531,11 +531,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T19:00:17Z",
-        "updated_at": "2026-10-21T19:00:35Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39657781075",
+        "created_at": "2026-10-22T01:01:54Z",
+        "updated_at": "2026-10-22T01:02:09Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39703272683",
         "event": "schedule",
-        "workflow_run_id": 39657781075
+        "workflow_run_id": 39703272683
       }
     },
     {
@@ -615,11 +615,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T11:40:06Z",
-        "updated_at": "2026-10-21T11:42:29Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39593644981",
+        "created_at": "2026-10-22T01:41:01Z",
+        "updated_at": "2026-10-22T01:43:27Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39707095748",
         "event": "schedule",
-        "workflow_run_id": 39593644981
+        "workflow_run_id": 39707095748
       }
     },
     {
@@ -647,11 +647,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T23:45:50Z",
-        "updated_at": "2026-10-21T23:46:19Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39695497395",
+        "created_at": "2026-10-22T05:47:34Z",
+        "updated_at": "2026-10-22T05:47:58Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39730043979",
         "event": "schedule",
-        "workflow_run_id": 39695497395
+        "workflow_run_id": 39730043979
       }
     },
     {
@@ -679,11 +679,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T01:44:48Z",
-        "updated_at": "2026-10-21T01:45:20Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39529085919",
+        "created_at": "2026-10-22T01:44:30Z",
+        "updated_at": "2026-10-22T01:45:04Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39707424616",
         "event": "schedule",
-        "workflow_run_id": 39529085919
+        "workflow_run_id": 39707424616
       }
     },
     {
@@ -709,11 +709,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T04:14:16Z",
-        "updated_at": "2026-10-21T04:14:27Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39542924328",
+        "created_at": "2026-10-22T04:15:37Z",
+        "updated_at": "2026-10-22T04:15:46Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39721379012",
         "event": "schedule",
-        "workflow_run_id": 39542924328
+        "workflow_run_id": 39721379012
       }
     },
     {
@@ -749,11 +749,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T17:54:11Z",
-        "updated_at": "2026-10-21T17:54:30Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39647907975",
+        "created_at": "2026-10-22T05:42:36Z",
+        "updated_at": "2026-10-22T05:42:59Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39729564948",
         "event": "push",
-        "workflow_run_id": 39647907975
+        "workflow_run_id": 39729564948
       }
     },
     {
@@ -769,11 +769,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T18:06:50Z",
-        "updated_at": "2026-10-21T18:07:00Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39649780696",
-        "event": "push",
-        "workflow_run_id": 39649780696
+        "created_at": "2026-10-22T02:39:57Z",
+        "updated_at": "2026-10-22T02:40:08Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39712626620",
+        "event": "schedule",
+        "workflow_run_id": 39712626620
       }
     },
     {
@@ -801,11 +801,11 @@
       "last_run": {
         "status": "in_progress",
         "conclusion": null,
-        "created_at": "2026-10-22T00:42:32Z",
-        "updated_at": "2026-10-22T00:42:35Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39701298846",
+        "created_at": "2026-10-22T06:41:07Z",
+        "updated_at": "2026-10-22T06:41:10Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39735487365",
         "event": "schedule",
-        "workflow_run_id": 39701298846
+        "workflow_run_id": 39735487365
       }
     },
     {
@@ -913,11 +913,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T20:10:17Z",
-        "updated_at": "2026-10-21T20:11:03Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39667960353",
+        "created_at": "2026-10-22T06:38:07Z",
+        "updated_at": "2026-10-22T06:38:51Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39735170628",
         "event": "push",
-        "workflow_run_id": 39667960353
+        "workflow_run_id": 39735170628
       }
     },
     {
@@ -945,11 +945,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T19:08:35Z",
-        "updated_at": "2026-10-21T19:08:47Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39659011462",
+        "created_at": "2026-10-22T01:08:12Z",
+        "updated_at": "2026-10-22T01:08:25Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39703912261",
         "event": "schedule",
-        "workflow_run_id": 39659011462
+        "workflow_run_id": 39703912261
       }
     },
     {
@@ -1047,11 +1047,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T02:49:03Z",
-        "updated_at": "2026-10-21T02:49:30Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39535112286",
+        "created_at": "2026-10-22T02:49:42Z",
+        "updated_at": "2026-10-22T02:50:12Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39713501054",
         "event": "schedule",
-        "workflow_run_id": 39535112286
+        "workflow_run_id": 39713501054
       }
     },
     {
@@ -1079,11 +1079,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T12:18:39Z",
-        "updated_at": "2026-10-21T12:18:49Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39598575413",
-        "event": "push",
-        "workflow_run_id": 39598575413
+        "created_at": "2026-10-22T03:01:05Z",
+        "updated_at": "2026-10-22T03:01:17Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39714531079",
+        "event": "schedule",
+        "workflow_run_id": 39714531079
       }
     },
     {
@@ -1164,11 +1164,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-22T00:38:33Z",
-        "updated_at": "2026-10-22T00:38:47Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39700905536",
+        "created_at": "2026-10-22T06:39:54Z",
+        "updated_at": "2026-10-22T06:40:07Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39735354999",
         "event": "schedule",
-        "workflow_run_id": 39700905536
+        "workflow_run_id": 39735354999
       }
     },
     {
@@ -1194,11 +1194,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T17:54:11Z",
-        "updated_at": "2026-10-21T17:54:24Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39647907501",
+        "created_at": "2026-10-22T05:49:09Z",
+        "updated_at": "2026-10-22T05:49:18Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39730194943",
         "event": "push",
-        "workflow_run_id": 39647907501
+        "workflow_run_id": 39730194943
       }
     },
     {
@@ -1224,6 +1224,16 @@
     {
       "id": "sli-multi-api-qa.yml",
       "name": "SLI Multi-API Evidence Security QA",
+      "scheduled": false,
+      "cron": [],
+      "manual_dispatch": true,
+      "expected_interval_hours": null,
+      "datasets_written": [],
+      "last_run": null
+    },
+    {
+      "id": "sli-orbit-globe-qa.yml",
+      "name": "SLI Home 3D Archipelago QA",
       "scheduled": false,
       "cron": [],
       "manual_dispatch": true,
@@ -1286,11 +1296,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T02:57:31Z",
-        "updated_at": "2026-10-21T02:58:12Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39535891941",
+        "created_at": "2026-10-22T02:58:32Z",
+        "updated_at": "2026-10-22T02:59:10Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39714296177",
         "event": "schedule",
-        "workflow_run_id": 39535891941
+        "workflow_run_id": 39714296177
       }
     },
     {
@@ -1482,11 +1492,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T23:59:57Z",
-        "updated_at": "2026-10-22T00:00:09Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39696948003",
+        "created_at": "2026-10-22T06:09:10Z",
+        "updated_at": "2026-10-22T06:09:20Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39732176502",
         "event": "schedule",
-        "workflow_run_id": 39696948003
+        "workflow_run_id": 39732176502
       }
     },
     {
@@ -1512,11 +1522,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T20:10:17Z",
-        "updated_at": "2026-10-21T20:10:36Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39667960893",
+        "created_at": "2026-10-22T06:38:07Z",
+        "updated_at": "2026-10-22T06:38:27Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39735170601",
         "event": "push",
-        "workflow_run_id": 39667960893
+        "workflow_run_id": 39735170601
       }
     },
     {
@@ -1534,11 +1544,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-21T20:53:48Z",
-        "updated_at": "2026-10-21T20:54:01Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39674250515",
-        "event": "schedule",
-        "workflow_run_id": 39674250515
+        "created_at": "2026-10-22T05:43:28Z",
+        "updated_at": "2026-10-22T05:43:48Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39729653131",
+        "event": "push",
+        "workflow_run_id": 39729653131
       }
     },
     {
@@ -1574,11 +1584,11 @@
       "last_run": {
         "status": "completed",
         "conclusion": "success",
-        "created_at": "2026-10-22T00:00:12Z",
-        "updated_at": "2026-10-22T00:00:53Z",
-        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39696976779",
+        "created_at": "2026-10-22T06:09:21Z",
+        "updated_at": "2026-10-22T06:09:45Z",
+        "url": "https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39732194802",
         "event": "workflow_run",
-        "workflow_run_id": 39696976779
+        "workflow_run_id": 39732194802
       }
     },
     {
@@ -1708,10 +1718,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T14:53:36.520263Z",
-      "age_hours_since_record": 9.82,
+      "last_record_utc": "2026-10-22T02:53:43.842442Z",
+      "age_hours_since_record": 3.79,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T14:53:36.520263+00:00"
+        "checked_at_utc": "2026-10-22T02:53:43.842442+00:00"
       },
       "scheduled_writers": [
         "ai-monitoring.yml"
@@ -1810,10 +1820,10 @@
       "priority": "high",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-22T00:34:16.675926Z",
-      "age_hours_since_record": 0.14,
+      "last_record_utc": "2026-10-22T06:35:56.978641Z",
+      "age_hours_since_record": 0.09,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-22T00:34:16.675926+00:00"
+        "checked_at_utc": "2026-10-22T06:35:56.978641+00:00"
       },
       "scheduled_writers": [
         "commodity-market-prices.yml"
@@ -1861,10 +1871,10 @@
       "priority": "medium",
       "status": "recent_check",
       "last_record_key": "generated_at_utc",
-      "last_record_utc": "2026-10-21T03:02:52.458111Z",
-      "age_hours_since_record": 21.66,
+      "last_record_utc": "2026-10-22T03:03:06.087924Z",
+      "age_hours_since_record": 3.64,
       "publisher_metadata": {
-        "generated_at_utc": "2026-10-21T03:02:52.458111+00:00"
+        "generated_at_utc": "2026-10-22T03:03:06.087924+00:00"
       },
       "scheduled_writers": [
         "daily-energy-assessment.yml"
@@ -1880,10 +1890,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T21:56:43.248520Z",
-      "age_hours_since_record": 2.77,
+      "last_record_utc": "2026-10-22T03:59:36.691906Z",
+      "age_hours_since_record": 2.69,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T21:56:43.248520+00:00"
+        "checked_at_utc": "2026-10-22T03:59:36.691906+00:00"
       },
       "scheduled_writers": [
         "domestic-energy-watch.yml"
@@ -1899,10 +1909,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T21:56:43.248520Z",
-      "age_hours_since_record": 2.77,
+      "last_record_utc": "2026-10-22T03:59:36.691906Z",
+      "age_hours_since_record": 2.69,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T21:56:43.248520+00:00"
+        "checked_at_utc": "2026-10-22T03:59:36.691906+00:00"
       },
       "scheduled_writers": [
         "domestic-energy-watch.yml"
@@ -1918,10 +1928,10 @@
       "priority": "high",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T18:55:54.787901Z",
-      "age_hours_since_record": 5.78,
+      "last_record_utc": "2026-10-22T00:59:07.356512Z",
+      "age_hours_since_record": 5.7,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T18:55:54.787901+00:00"
+        "checked_at_utc": "2026-10-22T00:59:07.356512+00:00"
       },
       "scheduled_writers": [
         "energy-actor-watch.yml"
@@ -1952,10 +1962,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T23:42:36.716262Z",
-      "age_hours_since_record": 1.0,
+      "last_record_utc": "2026-10-22T05:43:20.234750Z",
+      "age_hours_since_record": 0.96,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T23:42:36.716262+00:00"
+        "checked_at_utc": "2026-10-22T05:43:20.234750+00:00"
       },
       "scheduled_writers": [
         "energy-biofuels-watch.yml"
@@ -1988,10 +1998,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T19:21:17.313819Z",
-      "age_hours_since_record": 5.36,
+      "last_record_utc": "2026-10-22T01:21:33.434951Z",
+      "age_hours_since_record": 5.33,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T19:21:17.313819+00:00"
+        "checked_at_utc": "2026-10-22T01:21:33.434951+00:00"
       },
       "scheduled_writers": [
         "energy-ccs-watch.yml"
@@ -2024,10 +2034,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T22:09:32.687949Z",
-      "age_hours_since_record": 2.55,
+      "last_record_utc": "2026-10-22T04:14:22.653272Z",
+      "age_hours_since_record": 2.45,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T22:09:32.687949+00:00"
+        "checked_at_utc": "2026-10-22T04:14:22.653272+00:00"
       },
       "scheduled_writers": [
         "energy-ev-watch.yml"
@@ -2077,10 +2087,10 @@
       "priority": "medium",
       "status": "recent_check",
       "last_record_key": "generated_at_utc",
-      "last_record_utc": "2026-10-22T00:41:06.756500Z",
-      "age_hours_since_record": 0.03,
+      "last_record_utc": "2026-10-22T06:40:09.367734Z",
+      "age_hours_since_record": 0.02,
       "publisher_metadata": {
-        "generated_at_utc": "2026-10-22T00:41:06.756500+00:00",
+        "generated_at_utc": "2026-10-22T06:40:09.367734+00:00",
         "date_wib": "2026-10-22"
       },
       "scheduled_writers": [
@@ -2150,10 +2160,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T13:19:11.308745Z",
-      "age_hours_since_record": 11.39,
+      "last_record_utc": "2026-10-22T01:12:55.648480Z",
+      "age_hours_since_record": 5.47,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T13:19:11.308745+00:00"
+        "checked_at_utc": "2026-10-22T01:12:55.648480+00:00"
       },
       "scheduled_writers": [
         "energy-infrastructure-watch.yml"
@@ -2186,10 +2196,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T19:15:49.181774Z",
-      "age_hours_since_record": 5.45,
+      "last_record_utc": "2026-10-22T01:15:14.686406Z",
+      "age_hours_since_record": 5.43,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T19:15:49.181774+00:00"
+        "checked_at_utc": "2026-10-22T01:15:14.686406+00:00"
       },
       "scheduled_writers": [
         "energy-policy-watch.yml"
@@ -2223,7 +2233,7 @@
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
       "last_record_utc": "2026-10-21T02:08:51.493082Z",
-      "age_hours_since_record": 22.56,
+      "age_hours_since_record": 28.54,
       "publisher_metadata": {
         "checked_at_utc": "2026-10-21T02:08:51.493082+00:00"
       },
@@ -2325,10 +2335,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T21:37:34.103058Z",
-      "age_hours_since_record": 3.08,
+      "last_record_utc": "2026-10-22T03:36:54.007779Z",
+      "age_hours_since_record": 3.07,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T21:37:34.103058+00:00"
+        "checked_at_utc": "2026-10-22T03:36:54.007779+00:00"
       },
       "scheduled_writers": [
         "geopolitical-energy-watch.yml"
@@ -2344,10 +2354,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T21:37:34.103058Z",
-      "age_hours_since_record": 3.08,
+      "last_record_utc": "2026-10-22T03:36:54.007779Z",
+      "age_hours_since_record": 3.07,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T21:37:34.103058+00:00"
+        "checked_at_utc": "2026-10-22T03:36:54.007779+00:00"
       },
       "scheduled_writers": [
         "geopolitical-energy-watch.yml"
@@ -2582,10 +2592,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T19:00:22.966086Z",
-      "age_hours_since_record": 5.7,
+      "last_record_utc": "2026-10-22T01:01:59.798702Z",
+      "age_hours_since_record": 5.65,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T19:00:22.966086+00:00"
+        "checked_at_utc": "2026-10-22T01:01:59.798702+00:00"
       },
       "scheduled_writers": [
         "investment-media.yml"
@@ -2912,10 +2922,10 @@
       "priority": "critical",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T11:40:12Z",
-      "age_hours_since_record": 13.04,
+      "last_record_utc": "2026-10-22T01:41:13Z",
+      "age_hours_since_record": 5.0,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T11:40:12Z"
+        "checked_at_utc": "2026-10-22T01:41:13Z"
       },
       "scheduled_writers": [
         "regulatory-change-monitor.yml"
@@ -2931,10 +2941,10 @@
       "priority": "normal",
       "status": "recent_check",
       "last_record_key": "generated_at_utc",
-      "last_record_utc": "2026-10-21T23:45:58.451812Z",
-      "age_hours_since_record": 0.94,
+      "last_record_utc": "2026-10-22T05:47:40.181877Z",
+      "age_hours_since_record": 0.89,
       "publisher_metadata": {
-        "generated_at_utc": "2026-10-21T23:45:58.451812+00:00"
+        "generated_at_utc": "2026-10-22T05:47:40.181877+00:00"
       },
       "scheduled_writers": [
         "research-signal-radar.yml"
@@ -3048,10 +3058,10 @@
       "priority": "high",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T01:44:52.688791Z",
-      "age_hours_since_record": 22.96,
+      "last_record_utc": "2026-10-22T01:44:35.303404Z",
+      "age_hours_since_record": 4.94,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T01:44:52.688791+00:00"
+        "checked_at_utc": "2026-10-22T01:44:35.303404+00:00"
       },
       "scheduled_writers": [
         "sector-leadership-watch.yml"
@@ -3329,6 +3339,21 @@
     },
     {
       "id": "data/sli-bps-regional-intelligence.json",
+      "group": "Other / Reference",
+      "mode": "curated_snapshot",
+      "priority": "normal",
+      "status": "curated_not_automated",
+      "last_record_key": null,
+      "last_record_utc": null,
+      "age_hours_since_record": null,
+      "publisher_metadata": {},
+      "scheduled_writers": [],
+      "cadence_hours": null,
+      "note": "Dataset persists until a new source edition is verified and edited.",
+      "error": null
+    },
+    {
+      "id": "data/sli-bps-welfare-2026-reconciliation.json",
       "group": "Other / Reference",
       "mode": "curated_snapshot",
       "priority": "normal",
@@ -3832,7 +3857,7 @@
       "status": "recent_check",
       "last_record_key": "last_success_utc",
       "last_record_utc": "2026-10-21T15:05:53Z",
-      "age_hours_since_record": 9.61,
+      "age_hours_since_record": 15.59,
       "publisher_metadata": {
         "last_success_utc": "2026-10-21T15:05:53Z"
       },
@@ -4044,10 +4069,10 @@
       "priority": "high",
       "status": "recent_check",
       "last_record_key": "checked_at_utc",
-      "last_record_utc": "2026-10-21T02:57:36Z",
-      "age_hours_since_record": 21.75,
+      "last_record_utc": "2026-10-22T02:58:38Z",
+      "age_hours_since_record": 3.71,
       "publisher_metadata": {
-        "checked_at_utc": "2026-10-21T02:57:36Z"
+        "checked_at_utc": "2026-10-22T02:58:38Z"
       },
       "scheduled_writers": [
         "sli-publication-watch.yml"
