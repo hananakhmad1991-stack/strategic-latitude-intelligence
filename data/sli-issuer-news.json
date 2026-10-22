@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T01:34:29.713247Z",
+  "updated_at_utc": "2026-10-22T02:06:51.125719Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,55 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_ca39a6e3a04e5c1f2e2b36",
+      "title": "Pasar Saham Tertekan MSCI, PGEO Punya Penopang Kuat - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQcXlXZlpnV2RPbXpITjEwUGRmSlk2bEJ3WnB2RkdQZHc3ejNqdXlQMHh5Z0hsYmUzbEZuZk5mVWNpUHUydEluLWxWTUU3VHd2dkd0ZWU5cWkyaDdrekt6NWJFZFgzdzdqZklCV3kxX2JNMjR6aThIbW1YVlJyWWoyOEJudUtwRVdzYUFCTw?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-22T01:53:26Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_2b7d3675316123166c2075",
+      "title": "Rekomendasi Saham Hari Ini: INCO, TOBA, dan MDKA - Ajaib",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOZmRCOHpLdTZuSEQxWlBjamcyQjRMbHRpb0NQRHowMFZnZGJWdnlvcUp3S09UenlLa3RiYlNuQ25jVkVJZUZhNy1ZQUF5a2l6UUFOZ29zOTlTYURWUG5lQ0c0NjZ4Um5ScEU3OWJNRV9qN2pRcnNjVGdvRVFvUGtTUWtldlBhUQ?oc=5",
+      "publisher": "Ajaib",
+      "published_at_utc": "2026-10-22T01:45:52Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INCO",
+        "MDKA"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_53b831be5a3bc63f36c39b",
+      "title": "Trinugraha Thohir Borong 470.000 Saham ADRO, Investasi Tembus Rp1 Miliar - Pasardana",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQSzdjU0pocnRpb2RDZmJxQURHUnI1VkM5STJJTVBXRUR6cEItYWVNZzBnOWVRVG1UWmxySmpMR21vcnozRl95TC1oYTBEVzVhTTAzUHFFaVFIaEdtMzlxbkxsdHhGTHVVQ0QxME9uakxEU0I0UENocEFaSTRJQTBuVWVkWkhqXzF1WjdsaUVDTXRYVG4ya19rLWZNM2szS24ySnNQUUs5NHhsbDlZ?oc=5",
+      "publisher": "Pasardana",
+      "published_at_utc": "2026-10-22T01:29:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_9526b4402f6a9e1e245ff5",
       "title": "Rekomendasi Saham Hari Ini, Kamis 22 Oktober 2026: HRUM, PTBA, BBNI - investor.id",
@@ -5108,6 +5157,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_ba725a99345db0e5fe981b",
+      "title": "Medco (MEDC) Akuisisi 10% Aset Gas Eni di Kaltim, Maybank Pertahankan Target Rp 2.500 - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBnRnktV0JFLW1FdWw5c2NPeXdQLXZuYnBVZTktVWdPUGpHVXpsRkpiZlVZVjB1UWpZS3NwT1YzX05xLVZZX21wZkY5WlBfcGN2RW8yQWhMV0Mydjh0dDItNHNJeE5fZw?oc=5",
+      "publisher": "TradingView",
+      "published_at_utc": "2026-10-14T23:15:59Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "MEDC"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_cdac4c62d0bef089e48c97",
       "title": "IHSG Rawan Terkoreksi, Analis Rekomendasikan Saham EMTK, MEDC hingga UNTR - Katadata.co.id",
       "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNLTB4T3o0Vnd1TndJdkxKU09tN0c5M0EtUGE4VGl0bnZUOHV6M3E1WUhPUVU2M1FBMGVxUjhaSTdmcGFNWUVIVmwyRHZQN3ZKeUlUX3ZlU3NUMjdMbENWSWpndHhWcWFaRU5QR3RzQkM0eU9sNEZVWk1IenJVcmRpdFJsd19JeTY0Rkg0T3dOX3EzNFpla20xc0hMcnM3MDFIVGxSTmViakplZ29WcnZrWlVfUE41WmZPaDFVcy1fbW1pZ9IBxwFBVV95cUxQSkRqczRRVzFCdzYzRGozb0hPak0zaVBfdTcyTHRHclVTTzBSTTNyQU8wWFhnSVdiT0RwYTVHSWZHOEVTZzB2MER1LUNkMHJsT216cllCU1FJVnMzaW04TFJTSkd6Rm9aVG5IZ1ZJdTRhQ2hWOGMzZkZkMHh5S0czSUNOM3NrSkFQVGxqZ3BEUklhQi1OeGlRMDRpWEVXX29weWF3bHFUOTMtTFQ3QlBmZ1M1NTJfVFBZYzM5UjVTN1FrWEp4ejlr?oc=5",
@@ -5456,22 +5521,6 @@
         "MEDC"
       ],
       "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_9315e8dcdb5ed2d73fb8e8",
-      "title": "Peluang Rebound IHSG Hari Ini (14/10), Cermati Saham PTBA Hingga ERAA - Bisnis.com - Market",
-      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPUk9ZOHhZdmFBdHVLeWhBdHA2d1QwOWh4THdRZGY3R0xXajZQWmxLTzkxZW1sNDcwQ2tuMGpuTlAySlBVdkt1YnlucGMzQ1BpN1VZaUNweHhrckJWZm9KYkRpVzQ0ZjhtZmI1bnlPRlFUSTFwR0xHTy0wZk1nak10TFBacnFDTkJUWmZNTWNBVjVkNFdkenBRZzhjd1dpdzJwTXdVeUplQW4zMjU4NVJoNU40NDNOSkd3?oc=5",
-      "publisher": "Bisnis.com - Market",
-      "published_at_utc": "2026-10-14T01:48:54Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
