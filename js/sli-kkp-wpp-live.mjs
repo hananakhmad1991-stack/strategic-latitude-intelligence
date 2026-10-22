@@ -96,8 +96,45 @@ function renderMap(host,data,audit){
  host.replaceChildren(svg);
  el("mfWPPStatus").textContent=txt("Berhasil mengambil ","Retrieved ")+audit.features+txt(" fitur geometri BIG · 11 zona WPP, "," BIG geometry features · 11 WPP zones, ")+audit.vertices+txt(" simpul. Tidak disimpan di server SLI."," vertices. Not stored by SLI.");
 }
+/* Provider-side ArcGIS map export is a visual SOURCE SERVICE fallback only.
+ * The image is never stored, geometries are not reproduced, and screen pixels
+ * are never promoted to official licensed GeoJSON or numerically measured area.
+ */
+export function officialWPPRasterURL(){
+ const root=BIG_LAYER.replace(/\/21$/,"");
+ const p=new URLSearchParams({bbox:"90,-16,146,13",bboxSR:"4326",imageSR:"4326",size:"1280,650",format:"png32",transparent:"true",layers:"show:21",f:"image"});
+ return root+"/export?"+p.toString();
+}
+async function renderRasterFallback(host,why){
+ const img=document.createElement("img");
+ img.alt=txt("Pratinjau peta WPP dari renderer BIG langsung, bukan unduhan geometri tervalidasi.","WPP live image directly from BIG MapServer, NOT a validated reusable geometry file.");
+ img.referrerPolicy="no-referrer";img.decoding="async";img.src=officialWPPRasterURL();
+ const loaded=await new Promise(resolve=>{
+  const timer=setTimeout(()=>resolve(false),15000);
+  img.onload=()=>{clearTimeout(timer);resolve(true)};
+  img.onerror=()=>{clearTimeout(timer);resolve(false)};
+ });
+ if(loaded){
+  img.className="mf-wpp-official-raster";
+  host.replaceChildren(img);
+  el("mfWPPStatus").textContent=txt(
+   "Layer WPP langsung dari layanan render BIG tersedia sebagai gambar resmi (bukan poligon GeoJSON terverifikasi). Pengambilan vektor gagal: ",
+   "BIG-rendered WPP image available (NOT audited vector polygons). Vector request failed: ")+why+". "+txt("Batas regulasi dan izin penggunaan tetap belum diverifikasi.","Regulatory version and commercial reuse rights remain unverified.");
+  return true;
+ }
+ return false;
+}
+function renderWPPSourceLegend(){
+ const host=el("mfWPPLegend");if(!host)return;
+ host.replaceChildren();
+ for(const code of WPP_CODES){
+  const a=document.createElement("a");a.textContent="WPP-RI "+code+" · "+WPP_AREAS[code];a.href=BIG_LAYER;a.target="_blank";a.rel="noopener noreferrer";a.className="mf-wpp-code-source";
+  host.append(a);
+ }
+}
 async function mount(){
  const button=el("mfWPPLoad");if(!button)return;
+ renderWPPSourceLegend();
  button.addEventListener("click",async()=>{
   button.disabled=true;el("mfWPPStatus").textContent=txt("Mengakses layanan BIG resmi...","Contacting official BIG service...");
   try{
@@ -105,7 +142,9 @@ async function mount(){
    const r=await loadPromise;
    renderMap(el("mfWPPMap"),r.geo,r.audit);
   }catch(err){
-   el("mfWPPStatus").textContent=txt("Peta resmi tidak dapat dimuat atau belum lolos validasi (","Official geometry unavailable or not validated (")+err.message+"). "+txt("Tidak mengganti dengan poligon rekaan.","No guessed polygon fallback.");
+   const reason=String(err?.message||err).slice(0,160);
+   const raster=await renderRasterFallback(el("mfWPPMap"),reason);
+   if(!raster)el("mfWPPStatus").textContent=txt("Layanan geometri dan renderer peta BIG belum merespons (","BIG geometry and rendered map sources unavailable (")+reason+"). "+txt("Tidak mengganti dengan poligon rekaan.","No guessed polygon fallback.");
   }finally{button.disabled=false}
  });
 }
