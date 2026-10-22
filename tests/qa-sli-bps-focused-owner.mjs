@@ -60,7 +60,7 @@ const fmt=v=>Number(v).toFixed(2).replace(".",",");
 const formatRow=(r,i)=>r.province+" — "+r.label+": estimasi "+fmt(r.estimate)+"%; SE "+fmt(r.se)+
  " poin persentase; RSE "+fmt(r.rse)+"%; interval kepercayaan 95% "+fmt(r.ci_low)+"–"+fmt(r.ci_high)+
  "%; Tabel "+r.table+", PDF halaman "+r.main_page+"; Tabel "+r.appendix_table+
- ", PDF halaman "+r.appendix_page+" ["+(i+1)+"].";
+ ", PDF halaman "+r.appendix_page+"; Penyebut: "+r.denominator+" ["+(i+1)+"].";
 const simulated=f=>f.records.map(formatRow).join("\n");
 
 test("precision matching covers every complete provincial cell without using suppressed / unavailable values",()=>{
