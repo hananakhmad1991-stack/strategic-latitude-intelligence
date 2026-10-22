@@ -129,3 +129,30 @@ body.sli-research-brand .sli-ra-specialist-lens .sli-food-impact{
 @media(max-width:650px){
  body.sli-research-brand .sli-ra-specialist-lens{padding:10px 12px;margin-bottom:15px}
 }
+
+/* Explicit, browser-rememberable consent to optional external evidence.
+   Display the source choice with the question; never conceal or pre-approve data sharing. */
+body.sli-research-brand .sli-ra-external-evidence{
+ border:1px solid #3e5c75;background:#10283c;border-radius:10px;
+ padding:10px 13px;margin:5px 0 9px;min-width:0;
+}
+body.sli-research-brand .sli-ra-external-evidence legend{
+ color:#e8ca93;padding:0 6px;font:700 11px/1.5 system-ui,sans-serif;
+}
+body.sli-research-brand .sli-ra-external-evidence label{
+ display:flex;align-items:flex-start;gap:9px;cursor:pointer;max-width:100%;
+ color:#eaf1f7;line-height:1.45;
+}
+body.sli-research-brand .sli-ra-external-evidence input[type=checkbox]{
+ flex:0 0 auto;width:16px;height:16px;margin:2px 0 0;accent-color:#dabc83;
+}
+body.sli-research-brand .sli-ra-external-main{font:700 12px/1.5 system-ui,sans-serif}
+body.sli-research-brand .sli-ra-external-remember{margin-top:8px;font:500 11px/1.45 system-ui,sans-serif;color:#c7d6e2!important}
+body.sli-research-brand .sli-ra-external-evidence small{
+ display:block;margin:9px 0 0;color:#b3c9d9;font:450 10px/1.55 system-ui,sans-serif;
+}
+@media(max-width:650px){
+ body.sli-research-brand .sli-ra-external-evidence{padding:8px 10px}
+ body.sli-research-brand .sli-ra-external-main{font-size:11px}
+ body.sli-research-brand .sli-ra-external-evidence small{font-size:10px}
+}
