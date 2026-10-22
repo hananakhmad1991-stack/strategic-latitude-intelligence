@@ -198,9 +198,9 @@ test("Real Owner Worker serves 4-cell BPS precision comparison and rejects a swa
   assert.equal(no.json.answer,undefined);
   assert.equal(modelCalls,2,"One mocked model response per request; no automatic paid retry");
   const rejections=[
-    [good+"\\nPerbedaan Aceh dan Jawa Barat signifikan secara statistik.","unsupported_statistical_significance_claim"],
-    [good+"\\nPencapaian ini terbukti menyebabkan pertumbuhan ekonomi.","unsupported_causal_claim"],
-    [good+"\\nEstimasi 99,99% adalah prediksi lain.","unsupported_extra_numeric_claim"],
+    [good+"\nPerbedaan Aceh dan Jawa Barat signifikan secara statistik.","unsupported_statistical_significance_claim"],
+    [good+"\nPencapaian ini terbukti menyebabkan pertumbuhan ekonomi.","unsupported_causal_claim"],
+    [good+"\nEstimasi 99,99% adalah prediksi lain.","unsupported_extra_numeric_claim"],
     [good.replace(" [1]."," [9]."),"out_of_scope_numbered_citation"]
   ];
   for(const [candidate,issue] of rejections){
