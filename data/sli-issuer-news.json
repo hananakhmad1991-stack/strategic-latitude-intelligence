@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T03:32:22.382673Z",
+  "updated_at_utc": "2026-10-22T04:07:27.945383Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,6 +42,22 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_9fa2c783fc7a23c2680d85",
+      "title": "BRIDS Pangkas Target IHSG Jadi 6.000, Jagokan Saham AMMN, BBNI, hingga TINS - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNRjFGd1lKaG9wSVdidmJoUndIMk5Cd2N6LVdsUDRVS0F6cWVES3BnUHhCbG95bFpyRm5meV9LVEpxZWIxTFFYcDcyS01fdE5rVlRwQjZ5ZGRTMHE4Q2tZY0FFV3BodUM5ZDZOUGprUE1yRU5NcUg1Q2VEbTA4SVFIZlo1UGJhNVA4d1ZLZDJsdXFqWTBTQzE5TF9laXdyNU81MVpkdlNyUG16SW9PQkVxMUZHVGVLMUUyRVEzYThPXy0?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-22T03:42:23Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_1e39d41afe2b5924a20caa",
       "title": "WIKA Beton Kirim Bantalan Rel untuk Metro Manila Subway - Suara Independent News",
       "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1xdFVQZldkcVl5a0VXdGJDeExHS0I3NU45S05RQjZTSjUxaXRmcFVUV0JjRlo0SGdPOTFOTlA4QllQZ3ppQWxuQVZiMTRPcWNMS19uWDFWdmN5WFhWTjZFN1YyOGJjaGs1SFQzYkZCREV4UDA?oc=5",
@@ -74,6 +90,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_036d2c2f6cd3b3fddefaab",
+      "title": "Terbongkar Pihak-pihak di Balik Kasus Saham DSSA, BREN, dan CUAN - detikFinance",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOMHc1OFk0a0VNSU5SV0VUSWxIYlpoazJlNUpOZXlRc0p3ZGx4ckNSQk00ZEV0NlpaMjA0cmVsT1I2NHpLYXpVQ0hYUU55NmdlOUU3NnRSZjZMcnFZWGVrVmpkbS1ZdFd1WlRQYTQ1c0ViNUZXeEVNVHFvUkUwMXFlYjVwSFZGVE9OSlhJaHVLQ2wtT2lZc1NtUHBqWmxDSXlJbzJ0RVFZeHBTanViVkxHelhabnnSAboBQVVfeXFMUFVESWRWZ2xFRnNlQk1INE1TOXhEbW9PeDdrRFUxWUFScGNReW5wWnFSV2dsOUxvV3FiVnhvWl94bEdFRHp6VmVyeGtsN3dKaVlEQlNOVUE5d3RMYWRjTVZiS2FhaVVVWXUxcFJLQzZRdTRiTEk2aVJVZWtqbWlOYzNWd1FMamRYcDhlbHBxSUJ0TElGdTkyMk10LXNrRUxHQlM0SXRkYjRfZ1Y1YjZZQ3dvZlZRbVFsRGdR?oc=5",
+      "publisher": "detikFinance",
+      "published_at_utc": "2026-10-22T02:48:59Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_070e1cfb9cffec2cd88842",
       "title": "Rekomendasi Saham Analis 22 Oktober 2026: AMMN, DSSA, INCO, MAPA, KLBF, PGEO - شبكة تواصل الإخبارية",
       "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9MS0RSeWM2MTNibEZpVnl2T05OOHFIdWFfS05xLS1xYzN1VHFNVjBQMzNLTUhRcFdlWGpPR3NvUms4Z3VfNDM2Nm5ZRlV0QVBmUlhn?oc=5",
@@ -83,6 +115,22 @@
       "tickers": [
         "AMMN",
         "INCO"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_7d24a05ab38b2b53fffb71",
+      "title": "Rekomendasi Saham Analis 22 Oktober 2026: AMMN, DSSA, INCO, MAPA, KLBF, PGEO - Liputan6.com",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNSDlGeU5MUk5IcHlUZlJoSkI4ODMzVHdHNFlxMzYwLUtKX1Z0TGlTZ2hwUnFsSFlTRVVkT0tPUnBmdXlkRE5ZbFBHU2N0UjdNWno5TkxkXzg0TVd3NlpKWHk4SlYtc1V5SlJGLXJsZi1tRkVDX3JEeGFrTkk4RkZGRDZENm1oeVZ1R2xjWENtT0xrQjhCc3BnQndoX2NGaUp2OUZuWnAtODlCLWxrUC12YkxsOGfSAasBQVVfeXFMTVJhVmI5TVhGQ0dCdHN2QkxTRjlOVmRhWF9BVFBtQ3ZvM3l2ODViZWk2UzEyMmZjXzRvRzUwZ1daTzNOdFlOcXRPMW15a3dpeUhMb3lCLW9HeEV5V3VxUmQ4c0hsYWRfRzMtN0FlNlVpOXdUYUhpdGpwVlFNVFpoS3VtY3hmcUpHWU1Od1IzcTVLamZNNWNZX3lHQmVxUXRlX0JHMWJOak10UW9B?oc=5",
+      "publisher": "Liputan6.com",
+      "published_at_utc": "2026-10-22T02:33:52Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
       ],
       "sector": "minerals",
       "source": "public_google_news_rss",
@@ -198,6 +246,22 @@
         "INCO"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ec29ae1e6ad2e67245454f",
+      "title": "OJK Jatuhkan Denda Rp2,1 Triliun Terkait Kasus Saham DSSA, BREN, dan CUAN - - Barometer Bali",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNYXpRS3BXVGgzT01aZXpXelhxY1h2MUtkNnB2a05TRHpQNXRhNXg5WHNlU2dDUS11UVRDdkFFbHBUSUJuZ0hjTkZSeDhhcE93WVI1Ukp3R0lES1BaUThGb1llTGhtTGtDak1Xb1lDd3NkLUN6dVZodUh4b1h1VlI0NVlWd2QtdzdrelZSRDM4bWp5eXJRSW5WdjVwaHNGdw?oc=5",
+      "publisher": "Barometer Bali",
+      "published_at_utc": "2026-10-22T00:11:57Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -3529,6 +3593,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_03ba3c320669448435870e",
+      "title": "BREN Tancap Gas Buyback Saham, Anggaran Tembus Rp1 Triliun! - Pasardana",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQRU1YeTgxYzBTZXJodUpCUmZTaEtpVjJTNXAxb01reF9NMklGYjI1UkFWQ1poUDJhd3ZYVmpxdkJBbFcxdzJyOGNDUlZiWFFHQnhNc0hYR3hLLWFCb3VHcWptOXJqR3NfeVphUGk1QnlDZXBULWZOMFRncEp0WUh4NnRkcXEwdmZxZjh2U1Z2OFp2aXZwczBTSWVR?oc=5",
+      "publisher": "Pasardana",
+      "published_at_utc": "2026-10-19T07:37:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_f469a222f81ec0066a9ff2",
       "title": "Video: BREN Siapkan Buyback Saham Rp1 Triliun - CNBC Indonesia",
       "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPZWptQXoxX2E0N0Z0UENFdUpqVnRNZTdhY3d3QnRxNzRNVk9YN202ZHpNTG5YTm4tNXNQX2FJQ25WUUtFVzRubUV5R3Uxcmo1QlVDT0x3STdiR21WM2ZSLWwxMlh0MUMzQVkxaDFsbnE5OVJvZE04cHlfekpNUzRXQ1VaMmVoQXE4NFNGdG5FQnVUWnIzNGoyRUFKWTBzWXk2dXE4YkY0VGptdw?oc=5",
@@ -5586,38 +5666,6 @@
         "INTP"
       ],
       "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_85dad4e840e278d8ffbef9",
-      "title": "Rekomendasi Saham Hari Ini: AMRT, BBNI, BREN & MDKA, IHSG Berpeluang Rebound - Bareksa.com",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQbGN5Y185OXlyZFc2UTVlYWlvTEJuZXlwNWgza3VJTGpOa3RTN2JvY1BxUS1NN19fQktmUWRkWEtRSzQwMm8xME83emdTLU5RVE5TNzJrUnljdE9ydll0VEdlNVRheTJ6NW93LXp6RnJJako0MEo2b0VZU1M1RGJJUWFnbm9hTHFNb0Ytd0htZ3p3S2dZNVhqSVZoRi1PQjlVSm04U0RoZmE4NzFLNHFCa2V5dnRacnVmOHc?oc=5",
-      "publisher": "Bareksa.com",
-      "published_at_utc": "2026-10-14T04:06:32Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "MDKA"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_99b839ffed63629f2e0853",
-      "title": "Target Harga Indosat (ISAT) Naik ke Rp 3.850, Ada 2 Bisnis Jadi Katalis - Kompas.com",
-      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNVFA3ZjA0b3Z5bjNsZlpZdkhESVhmci0tNW5MRkJGTWNvNHFNWDNwdTJzTW9yaTlCaUpMRDZhXzZmSkwwb2pxdlFxUlRGOGMxWU1vWV8xd09kNzR5UE1EdUowd1RDTTFPc1lWXzlQMDZTMFpHc2UwaU1UeGh2ckphM3ZMcmFaeHQ0akxTQ2JYQi0xbGM2ck9udE5pa0thTWJtWGFJMUpXTGNMcWRlaThmUzdGNXRQZnBHYmhBVzFZVnQ4QkhNRVE?oc=5",
-      "publisher": "Kompas.com",
-      "published_at_utc": "2026-10-14T03:58:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ISAT"
-      ],
-      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
