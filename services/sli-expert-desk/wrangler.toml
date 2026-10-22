@@ -12,6 +12,7 @@ database_id = "REPLACE_WITH_PRIVATE_D1_DATABASE_ID"
 migrations_dir = "migrations"
 
 [vars]
-CF_ALLOWED_ORIGIN = "https://hananakhmad1991-stack.github.io"
+# Configure CF_ALLOWED_ORIGIN to the exact private Access-protected Owner console HTTPS origin.
+# Unset by default; server rejects (503) until independently configured.
 # CF_ACCESS_ISSUER, CF_ACCESS_AUD, CF_OWNER_USER_HASH must be configured securely.
 # CF_EXPERT_DESK_ENABLED must be "true" only after protected staging and privacy review.
