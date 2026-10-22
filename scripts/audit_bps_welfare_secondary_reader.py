@@ -41,7 +41,7 @@ def classify(original, secondary):
         return "secondary_extra_numeric_tokens", len(b)-len(a)
     return "non_subsequence_numeric_conflict", 0
 
-def run(pdf_path: Path, candidates_path: Path, private_out: Path):
+def run(pdf_path: Path, candidates_path: Path, private_out: Path, all_panels: bool=False):
     import pdfplumber
     base = private_out.resolve()
     if ROOT == base or ROOT in base.parents:
@@ -53,7 +53,7 @@ def run(pdf_path: Path, candidates_path: Path, private_out: Path):
     all_pages = sorted(set(record["pdf_page"] for record in records))
     if len(all_pages) != 253:
         raise ValueError("Expected 253 five-field appendix panels")
-    selected = sorted(set(all_pages[::11] + [316,434,435,436,451,456,462,479,513,523]))
+    selected = all_pages if all_panels else sorted(set(all_pages[::11] + [316,434,435,436,451,456,462,479,513,523]))
     first = all_pages[0]
     regions = list(dict.fromkeys(row["province"] for row in records if row["pdf_page"] == first))
     if len(regions) != 39 or regions[-1] != "Indonesia":
@@ -85,7 +85,7 @@ def run(pdf_path: Path, candidates_path: Path, private_out: Path):
                 if reason == "non_subsequence_numeric_conflict":
                     queue.append({"pdf_page":page,"province":province,"reason":reason,"source_tokens":original,"secondary_tokens":rows[province]})
     summary = {"status":"extraction_conflict_triage_not_visual_review", "source_sha256":EXPECTED_PDF_SHA,
-      "sampled_panels":len(selected),"total_panels":253,"regions_per_panel":39,
+      "sampled_panels":len(selected),"total_panels":253,"comparison_scope":"all_253_panels" if all_panels else "31_panel_sample","regions_per_panel":39,
       "rows_compared":len(selected)*39,"categories":dict(counts),
       "unresolved_non_subsequence_count":len(queue),
       "interpretation":"A missing token in secondary PDF text extraction is not evidence the printed BPS source is wrong. Printed values still require independent page-image verification."}
@@ -98,8 +98,9 @@ def main():
     parser.add_argument("--pdf",type=Path,required=True)
     parser.add_argument("--private-candidates",type=Path,required=True)
     parser.add_argument("--out",type=Path,required=True)
+    parser.add_argument("--all-panels",action="store_true",help="Compare all 253 appendix PDF panels (longer; private output only)")
     args=parser.parse_args()
-    print(json.dumps(run(args.pdf,args.private_candidates,args.out),ensure_ascii=False,indent=2))
+    print(json.dumps(run(args.pdf,args.private_candidates,args.out,all_panels=args.all_panels),ensure_ascii=False,indent=2))
 
 if __name__ == "__main__":
     main()
