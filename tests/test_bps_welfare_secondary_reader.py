@@ -27,6 +27,10 @@ class ReconciliationTests(unittest.TestCase):
     def test_actual_numeric_value_substitution_is_not_auto_reconciled(self):
         self.assertEqual(m.classify(["1,00","3,00"],["1,00","4,00"]),("non_subsequence_numeric_conflict",0))
 
+    def test_full_run_opt_in_is_explicit_and_default_is_31_panel_sample(self):
+        import inspect
+        self.assertEqual(inspect.signature(m.run).parameters["all_panels"].default,False)
+
     def test_negative_CI_and_approximate_zero_are_preserved(self):
         self.assertEqual(m.classify(["~0","-0,01","0,30"],["~0","-0,01","0,30"]),("exact_full_row",0))
         self.assertEqual(m.classify(["~0","-0,01"],["-0,01"]),("secondary_omits_numeric_tokens",1))
