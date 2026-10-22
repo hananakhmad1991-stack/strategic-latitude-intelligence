@@ -41,3 +41,21 @@ body.sli-home-active .sli-portal-hero-actions { max-width: 59%; }
 @media(prefers-reduced-motion:reduce) {
  .sli-orbit-stage {cursor:default;}
 }
+
+/* Low-detail world + detailed Indonesian archipelago globe controls. */
+.sli-orbit-controls{pointer-events:auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:5px;margin:10px 0 0;width:100%;max-width:370px}
+.sli-orbit-controls button{cursor:pointer;min-height:36px;padding:7px 10px;border:1px solid #43667b;border-radius:7px;background:#102b40;color:#e2eaf1;font:650 10px/1.2 system-ui,sans-serif}
+.sli-orbit-controls button[aria-pressed="true"]{background:#dcb979;color:#112435;border-color:#e9ce96}
+.sli-orbit-controls button:hover{border-color:#efd19e}
+.sli-orbit-controls button:focus-visible,.sli-orbit-range:focus-visible{outline:3px solid #ffe0aa;outline-offset:2px}
+.sli-orbit-controls .sli-orbit-zoom{width:35px;min-width:35px;font-size:17px;padding:4px}
+.sli-orbit-range{cursor:pointer;width:65px;max-width:80px;accent-color:#e0bd7b;min-height:35px}
+.sli-orbit-credits{pointer-events:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:2px 14px}
+.sli-orbit-stage{overscroll-behavior:contain}
+@media(max-width:520px){
+ .sli-orbit-controls{max-width:315px;gap:5px;margin-top:9px}
+ .sli-orbit-controls button{min-height:42px}
+ .sli-orbit-range{width:58px}
+ .sli-orbit-meta{margin-top:-16px}
+ .sli-orbit-credits{gap:2px 11px}
+}
