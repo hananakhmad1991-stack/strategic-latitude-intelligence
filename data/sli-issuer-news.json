@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T11:06:00.434836Z",
+  "updated_at_utc": "2026-10-22T11:34:58.486863Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_3832b321286d60cf364718",
+      "title": "AMMN Siapkan Buyback Saham Rp 1 Triliun Selama Tiga Bulan - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9yaVRPRVFFcVkwN0ZBTlI4U3RFSkV5OHVSb05kQnplY1o0ZDN4ZTJ6MGRpTXRZRk5WZlJJZktFUVFGZzNpV2lTb3ctdF95d2djVGlvVFc2WTdNMUZPQm5BXzAwSkc2STg?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-22T11:15:22Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_4b83cf5d3d78ae66604c57",
       "title": "Amman Mineral (AMMN) Siapkan Buyback Saham Rp 1 Triliun - kontan.co.id",
