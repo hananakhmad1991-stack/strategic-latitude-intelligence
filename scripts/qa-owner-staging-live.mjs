@@ -8,11 +8,17 @@ import {readFileSync} from "node:fs";
 import {makeResearchReport} from "../js/sli-report-content.mjs";
 import {docxBytes} from "../js/sli-report-docx.mjs";
 import {printableResearchHtml} from "../js/sli-report-pdf.mjs";
+import {saveOwnerPrivateEvidence} from "./sli-owner-private-evidence.mjs";
 
 const config=JSON.parse(readFileSync(new URL("../data/sli-research-assistant-config.json",import.meta.url),"utf8"));
 const endpoint=config?.owner_test?.endpoint;
 const origin="https://hananakhmad1991-stack.github.io";
 const includePaid=process.argv.includes("--include-paid-model");
+const savePrivate=process.argv.includes("--save-private-report");
+if(savePrivate&&!includePaid){
+ console.error("--save-private-report requires explicit --include-paid-model; no network call was made.");
+ process.exit(2);
+}
 const token=process.env.SLI_OWNER_TEST_TOKEN||"";
 if(!/^https:\/\/sli-research-owner-test\.hananakhmad1991\.workers\.dev\/v1\/owner-research$/.test(endpoint||"")){
  console.error("FAIL: Owner staging endpoint is not the approved fixed Cloudflare address.");process.exit(2);
@@ -89,13 +95,28 @@ async function main(){
   log("LIVE reviewed Pasal 1 model completion with correct primary citation",!!reviewedPass,
     {http:reviewed.http,error:reviewedPass?undefined:reviewed.body.error||"reviewed_article_citation_failed"});
   if(reviewedPass)log("Pasal 1 export HTML / Word draft",exportSmoke(q,reviewed.body));
+  if(savePrivate){
+   if(reviewed.http===200&&typeof reviewed.body.answer==="string"){
+    try{
+     const privateEvidence=saveOwnerPrivateEvidence({question:q,response:reviewed.body});
+     log("Local private report and per-sentence source review created",true);
+     console.log("PRIVATE_REPORT_FOLDER: "+privateEvidence.directory);
+     console.log("PRIVATE_PDF_STATUS: "+privateEvidence.pdf.status);
+     console.log("PRIVATE_CLAIM_COUNT: "+privateEvidence.claims+" (ALL require source-level human review)");
+    }catch{
+     log("Local private report and per-sentence source review created",false,{error:"private_report_write_failed"});
+    }
+   }else{
+    log("Local private report and per-sentence source review created",false,{error:"live_answer_missing"});
+   }
+  }
  }
  const ok=record.every(item=>item.pass);
  const summary={schema:"sli-owner-staging-live-acceptance-v1",as_of:now(),owner_endpoint_checked:endpoint,
   auth_token_printed:false,paid_live_model_test_requested:includePaid,
   test_count:record.length,passed:record.filter(x=>x.pass).length,
   result:ok?"PASS":"FAIL",results:record,
-  boundaries:["Actual PDF browser rendering NOT validated by this CLI",
+  boundaries:[savePrivate?"Locally rendered PDF (if present) requires owner visual review; claim-level checks still HUMAN REVIEW REQUIRED":"Actual PDF browser rendering NOT validated by this CLI",
    "Current consolidated legal status NOT certified","Public paid launch NOT authorized by this test"]};
  console.log(JSON.stringify(summary,null,2));
  process.exitCode=ok?0:1;

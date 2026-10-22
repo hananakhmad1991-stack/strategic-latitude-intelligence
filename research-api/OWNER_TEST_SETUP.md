@@ -122,3 +122,39 @@ try {
 The default run verifies 403 for wrong origin, 401 without token, the **nonexistent** Pasal 99 UU 7/2021, the **unreviewed** Pasal 11 UU 7/2021, and basic Word/A4 HTML draft output, with zero paid model calls. Add `--include-paid-model` only with explicit authorization for one live reviewed Pasal 1 UU 16/2016 response; the CLI respects the 2-per-minute rate limiter by waiting before the third authenticated request. It prints pass/fail and error codes, never the owner token or complete answer. If another test is running concurrently, wait for the limiter window before restarting.
 
 **Do not publish or share the terminal's secret, and never paste the token into GitHub Issues or screenshots.** Store any acceptance output privately. A successful live completion still needs human source-claim review, browser PDF rendering QA, BPS rights clearance, privacy/security review, customer access controls, and separate commercial launch approval. A bounded original-Pasal structural citation must never be interpreted as current consolidated legal text.
+
+## Private evidence from the ACTUAL authenticated Owner answer (October 22, 2026)
+
+The 8/8 live legal smoke checks prove the live Worker route, but previously the script intentionally printed only PASS/FAIL. To review **the exact generated answer** and a browser-rendered PDF, the Owner can now explicitly enable local private evidence export. This command makes one NEW paid model call; it does NOT recover the earlier 8/8 answer retroactively.
+
+Run the same masked-token PowerShell setup above, but inside the `try` block use:
+
+```powershell
+cd "$HOME\SLI-Owner-QA"
+git pull --ff-only
+node .\scripts\qa-owner-staging-live.mjs --include-paid-model --save-private-report
+```
+
+The script prints only the private folder location, claim count, PDF render status and abbreviated QA statuses. It writes an untracked local directory under `$HOME\SLI-Owner-Private-Reports\derguba-owner-*`, **never into GitHub**:
+
+- `answer.txt` — unabridged real Owner model answer (not a fixture)
+- `report.docx` — genuine editable Word draft generated from that answer
+- `report.html` — actual A4 printable draft, escaped model content
+- `report.pdf` — generated locally **only if** headless Microsoft Edge or Chrome succeeded; otherwise open `report.html` in Edge, press Ctrl+P and Save as PDF
+- `claim-review.md` and `claim-review.json` — every candidate substantive sentence, numbered evidence references and warnings, initially `HUMAN_PRIMARY_SOURCE_REVIEW_REQUIRED`
+- `manifest.json` — answer SHA-256 and limits; it excludes the secret Owner token and API key
+
+In PowerShell, locate the newest private export without exposing the token:
+
+```powershell
+$latest = Get-ChildItem "$HOME\SLI-Owner-Private-Reports" -Directory | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+Start-Process (Join-Path $latest.FullName "report.html")
+Start-Process (Join-Path $latest.FullName "report.docx")
+notepad (Join-Path $latest.FullName "claim-review.md")
+```
+
+Read the **first and last PDF page** and any page with long tables or references; confirm no clipping, citation displacement, unexpected blank pages, or missing last sentence. For every `C001`, `C002`, etc., compare the precise assertion with the original Pasal 1 of UU 16/2016 at [peraturan.go.id (original promulgated law)](https://peraturan.go.id/files/uu16-2016bt.pdf), record the original page and an exact supporting quote or mark **unsupported/needs context**. **Also independently check amendments and operative/current validity**, which the original-law anchor cannot certify. The automated checklist does not semantically certify any sentence.
+
+**Privacy:** These files include the actual model response. Keep them on your own device; do not upload the unredacted directory as a GitHub Action artifact, commit it, or include credentials in screenshots. If sharing for peer review, redact private material manually first. The browser subprocess is launched with secret/token-related environment variables removed. On Windows, filesystem permissions may inherit from your Windows account; use appropriate local disk protection.
+
+There is **no change to the Cloudflare Worker or subscriber access**. Commercial production remains blocked until its separate license/rights, customer auth, data privacy, billing and compliance acceptance checklist is signed off.
