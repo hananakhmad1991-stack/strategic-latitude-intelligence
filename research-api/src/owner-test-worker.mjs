@@ -247,7 +247,7 @@ export default{
   // The Responses API output budget includes reasoning tokens as well as visible prose.
   // Keep owner-only tests concise, with enough room for analysis and numbered citations.
   params.instructions+="\nOWNER TEST: For substantive factual research, produce 600–900 words when the cited evidence covers at least four distinct dimensions; use 5–7 organised sections and one source-dated evidence table. Don't repeat the same caveat as separate findings. Answer the precise research request, distinguish official baselines from source-dated editorial analysis, and give concrete numerical magnitudes where available. Do not call static bundled corpus live scraping or invent current events. On correction/follow-up requests revise the previous answer instead of resetting the topic.";
-  if(focusedWelfare){
+  if(focusedWelfare&&focusedWelfare.legacy){
     // Replace conflicting 40+ generic report instructions for one BPS statistic.
     const m=focusedWelfare.measure;
     const two=n=>Number(n).toFixed(2).replace(".",",");
@@ -261,9 +261,29 @@ export default{
       "Never change any number, denominator, confidence level, table or PDF page. Do not invent missing information or claim the source PDF was independently rechecked."
     ].join("\n");
   }
+  else if(focusedWelfare){
+    // Non-legacy regional / sector comparisons use exactly one source per cell.
+    // Each cell carries its own estimate, SE/RSE/CI, source table, PDF pages and citation.
+    // Do not infer an untested difference is statistically significant.
+    const two=n=>Number(n).toFixed(2).replace(".",",");
+    const examples=focusedWelfare.records.map((m,i)=>
+      m.province+" — "+m.label+": estimasi "+two(m.estimate)+"%; SE "+two(m.se)+
+      " poin persentase; RSE "+two(m.rse)+"%; interval kepercayaan 95% "+
+      two(m.ci_low)+"–"+two(m.ci_high)+"%; Tabel "+m.table+", PDF halaman "+m.main_page+
+      "; Tabel "+m.appendix_table+", PDF halaman "+m.appendix_page+" ["+(i+1)+"].");
+    params.instructions=[
+      "You are SLI DERGUBA Owner Test. Answer a source-bounded BPS Susenas 2026 statistics query in Bahasa Indonesia.",
+      "Only the included source_evidence entries may ground factual statements; they are curated transcriptions and not independently rechecked PDFs.",
+      "Reproduce EACH of the following data lines EXACTLY, on its OWN separate line, preserving labels, order, all numbers, units, tables, pages and citations. Do not merge records or replace region/indicator labels.",
+      ...examples,
+      "After the data lines, give at most two sentences on sampling uncertainty. RSE is relative standard error, SE is in percentage points; confidence intervals are not certainties.",
+      "Do not claim a statistically significant provincial difference without a valid difference estimator with covariance and design effects. Do not call a source category 'safe water', 'all electricity access' or 'LPG only' when definitions differ.",
+      "No invented numbers, missing cells, general essay, unsupported rankings, extra evidence, web retrieval claims or fabricated PDF verification."
+    ].join("\n");
+  }
   if(/^gpt-5(?:\.|-)/.test(env.RESEARCH_MODEL))params.reasoning={effort:"low"};
   params.max_output_tokens=Math.min(6000,Math.max(2500,Number(env.OWNER_MAX_OUTPUT_TOKENS)||4800));
-  if(focusedWelfare)params.max_output_tokens=2600;
+  if(focusedWelfare)params.max_output_tokens=focusedWelfare.records.length===1?2600:Math.min(5200,3000+focusedWelfare.records.length*450);
   let answer;
   try{
    const transport=openAITransport(env);
