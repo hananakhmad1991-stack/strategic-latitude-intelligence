@@ -110,6 +110,18 @@
   </article>
  </div>
  <article class="mf-card">
+ <h3 data-id="Heatmap provinsi · nilai terukur atau perubahan tahunan 2019–2024" data-en="Province heatmap · observed values or YoY changes 2019–2024">Heatmap provinsi · nilai terukur atau perubahan tahunan 2019–2024</h3>
+ <div class="mf-atlas-filters">
+  <label for="mfVizHeatSeries" data-id="Indikator" data-en="Indicator">Indikator</label><select id="mfVizHeatSeries"><option value="marine_fishers" data-id="Nelayan laut (orang)" data-en="Marine fishers (persons)">Nelayan laut (orang)</option><option value="seaweed" data-id="Rumput laut (ton)" data-en="Seaweed (tonnes)">Rumput laut (ton)</option></select>
+  <label for="mfVizHeatMode" data-id="Ukuran" data-en="Measure">Ukuran</label><select id="mfVizHeatMode"><option value="value" data-id="Nilai tahunan" data-en="Annual observed value">Nilai tahunan</option><option value="yoy" data-id="Pertumbuhan YoY (%)" data-en="YoY change (%)">Pertumbuhan YoY (%)</option></select>
+  <label for="mfVizHeatSearch" data-id="Provinsi" data-en="Province">Provinsi</label><input type="search" id="mfVizHeatSearch" placeholder="Cari provinsi..." aria-label="Search province in 2019 to 2024 heatmap">
+  <button type="button" id="mfVizHeatCSV" data-id="Ekspor CSV heatmap" data-en="Export cited heatmap CSV">Ekspor CSV heatmap</button>
+ </div>
+ <p id="mfVizHeatStatus" class="mf-hint" role="status">—</p>
+ <div id="mfVizHeatGrid" class="mf-viz-heat-scroll" role="region" aria-label="Provincial KKP 2019–2024 official numerical cells"></div>
+ <p class="mf-hint"><span data-id="Tidak ada penyamaan otomatis provinsi Papua sebelum dan sesudah pemekaran. Sel kosong = tidak tersedia, bukan 0; perubahan YoY hanya dihitung bila dua tahun berurutan tersedia." data-en="No backcasting of Papua administrative splits. Missing is not zero; YoY only calculated when both adjacent years are reported.">Tidak ada penyamaan otomatis provinsi Papua sebelum dan sesudah pemekaran. Sel kosong = tidak tersedia, bukan 0; perubahan YoY hanya dihitung bila dua tahun berurutan tersedia.</span> <a id="mfVizHeatSource" href="https://portaldata.kkp.go.id/portals/data-statistik/layer1" target="_blank" rel="noopener noreferrer" data-id="Tabel sumber KKP ↗" data-en="KKP source table ↗">Tabel sumber KKP ↗</a></p>
+</article>
+<article class="mf-card">
   <h3 data-id="Indeks perubahan nasional · 2019=100" data-en="National historical indices · 2019=100">Indeks perubahan nasional · 2019=100</h3>
   <div class="mf-viz-index-legend"><span><i class="mf-viz-key mf-viz-key-fishers"></i><span data-id="Nelayan tangkap laut (orang)" data-en="Marine capture fishers (persons)">Nelayan tangkap laut (orang)</span></span><span><i class="mf-viz-key mf-viz-key-seaweed"></i><span data-id="Produksi rumput laut (ton)" data-en="Seaweed grow-out production (tonnes)">Produksi rumput laut (ton)</span></span></div>
   <div id="mfVizNationalIndex" class="mf-viz-index" role="group" aria-label="Independent relative historical indices for marine fishers and seaweed output"></div>
