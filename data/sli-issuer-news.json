@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T05:34:24.339516Z",
+  "updated_at_utc": "2026-10-22T06:04:51.163676Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,6 +42,22 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_2b24e0698c39b1c03aec42",
+      "title": "IHSG Sesi I Melonjak, Saham BBRI, TLKM, BUMI Menguat - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOcXlON1FrSTAyRXJIUEd1MmVGSmFwc1VLdlJyZl84RnVPSU5Lb2pDQ2p6X2g0YzdKbm42YW9HSVdTOTlHY3UtVG1KX1BTUHM5SjdlYU0yV1BlS1VOcjRrZ0pGcmlfSEwyV1pweENFVUh2dF93bUhLanpPamxTMTRHX3J6SmpZbVFsOVdib2JFb2VkcXJZY3dLWnpudjZkZ2h5?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-22T05:54:59Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_637bd4922e7cf5156bf78d",
       "title": "OJK Bongkar Pihak-pihak yang Terlibat Pelanggaran Saham DSSA, BREN, CUAN - OWRITE",
       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNeFhSWDhKcVlLMW1YVHhFNFQtV2F1X2hmNXQ4SzUtM1RmZ195TTZqOVY1ZlNNX3VKUzZJSVhkc3NsSFRCOHJjV1dpSE0zamtqVVVJVFhoUE43VDRkRmNKS3djRTl4b0M1M0xyOVNYTnB5QldrdDZXNm5MQ0JKaDhFWW9xb1I1QU1lOW9IOHdCYW9tX3lKeWVTMTNjN3k5dzNnbWx2WEE3VzR0bGJnZ1lJ?oc=5",
@@ -68,6 +84,22 @@
         "BREN"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_087306497134c9832ef023",
+      "title": "Saham Vale Indonesia dan Antam Menguat Usai Koreksi Tajam - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1OZVl4MjNuVFNmb1FHT0p4YzlrWTZtTWRjWmpuMzdhdnhUa0xycU9nclFJMGRnMVgzc3JYa2VsXzk1Qmo1RnpDWUZQUGxLdkFUWmhV?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-10-22T04:56:54Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INCO"
+      ],
+      "sector": "minerals",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -117,6 +149,22 @@
         "TLKM"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_b40af8e8059b95247d161a",
+      "title": "Rekomendasi Saham Tim Analis Bareksa: INTP, BUKA, PTBA, IHSG Berpeluang Lanjut Rebound? - Bareksa.com",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQSDk3VWg5RlhtbV9RRV9IcjVFU29STE41N2syX0E0em9ZaEtyVmQ1MDdaZk0xNTM3YlFkZFF2eXlvNERJb0p1aFpXZ3RSRy1tVGd6Q3B6XzFuYlYxRFV0c18waU53Um1wcktwZ0cyMjhnbjJJYlgwX3hfT3pTZ1NkMmZHeEdIWWN6NVB2QmUtMEozanluZ0xnUURqZE4zQzlzWHBWWm9xLTFMYW9TNmxyRTNsX1BWU2YwdW1lV1ctOGtkMU9hYzkwdzZNX1laNE0?oc=5",
+      "publisher": "Bareksa.com",
+      "published_at_utc": "2026-10-22T03:59:41Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -227,7 +275,8 @@
       "published_at_utc": "2026-10-22T02:33:52Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "AMMN"
+        "AMMN",
+        "INCO"
       ],
       "sector": "minerals",
       "source": "public_google_news_rss",
@@ -1075,6 +1124,22 @@
       "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOaXRDRWZuYTJfa0p2U0pDTDF4OFBmVHNWU2lhYTBjZ0dYbnZXNGxwM2p5cXZkdnNNaWxtbm9QVzVTQzhHUFZTc1ZTdXZQUUN1U1gtd2I1M0pLa3pJaDhiVG0wcHBuS2Z5MU5iSXR4N3hmcFloM1VHc1pOckItQzAzT2tyNU1yS01pUW0yN2o1dG1NemN6cW1NOTRjMFRFVUFLSjZn?oc=5",
       "publisher": "Dunia Energi",
       "published_at_utc": "2026-10-21T12:10:45Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ed862a36b28c6b3bc05118",
+      "title": "Prospek EBT Cerah di Tengah Tekanan Pasar, PGEO Punya Fondasi untuk Tumbuh - Rmol.id",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNbnV5azctSEhpbGkyWlJLY3R2a1JzMjBMdF9yZHI0TWZxeDdjSmc3Qm1jNUJKUG0xdmpvR255eHdjSTJkdVdWbmFxSkxGYlN2X3JraC0yZmFycXl3Z2RoUGVtMTdQYlZZME1sdDZCUnZBRFRCOHpMX3RlME9ETHlJWkhIcnRwTWg2N0Uwd0tTQWl1NTV4NTEwcENfUTdLS29qUjhCaHRMUll1aGdnX1FzVlhGaw?oc=5",
+      "publisher": "Rmol.id",
+      "published_at_utc": "2026-10-21T12:07:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "PGEO"
@@ -4468,6 +4533,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_3580d0dd491907ac543774",
+      "title": "IHSG Ambruk 11,57% hingga Trading Halt, Asing Borong GOTO Rp288 Miliar, BBCA Dilepas Rp2,33 Triliun - Warta Ekonomi",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOakVlX1h5NlZ5VDlSbVQxRVg3dUdqMnlPeFpVM2RncEt2ellVZmdOdU8wNXUwNFNfajNwUEt6cF9HMld5NHZXVlFtSFpZOGNjTjVOMDBmZTBQY2JqUEIwQ1ZJLVROSUxnR01hRzZ1dmhKZmp2LXJtOTVWdG1ZMzhOY0E4NHJYeUFzN0hhQkE4RDAyU3FhUjR6WG4zQk9SN3pZTUtidUVGSFFtaXY1WHBaYnlVbkVNVS04QUx5VS1CWDNQbEYxT0lDT3hyOWTSAdIBQVVfeXFMTmtlMGdidTVka2NGbThtNnNEUDNmSTl6NmZZdkxWNTZQWlYwdExHd3ppMFp1bTZMX1BvOW1SZml4SWhnaVJ6LXlmcWFaQlRHUndyWlhTUk5pb19IbEtrUlJIaTMwN2FNbDBvZnF0WUJMNGRHNm5QbUFONWV3bHZaazhGTXFlQ1VGdlJ1cHMwTWpUWU5EdHVuaXZMT05WNmIwTVhzM1ZjLTJOQnlGcWlaUmZsTm9nY3NYNnV3ZWZ0aEtnVUVFQ1E1RDZmc3d5UG1Vazh3?oc=5",
+      "publisher": "Warta Ekonomi",
+      "published_at_utc": "2026-10-17T14:08:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GOTO"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_96e7779a20eff2bd07c2f5",
       "title": "OJK jatuhkan denda, manajemen BREN dan CUAN buka suara - IDNFinancials",
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxONzJ2ZmhxU0NqSGl2RlFkVXo4RlNzdXRGY296Y0FlS3NLd3l0OFZpMWpDQ1MzZi1nbEdQbDdDQ1pZTzdPUVdHMUJWZ3d4dERTZzBhWUdtRl9qd3FTMHFEeGJFdXBnRk0yb3NYZGNORDhYZ0NjUG9MLWdtY3M5c2FYRnV0RWk2WDZkVWxaNnF4dUM5LTFYUlV2dl9MV3N5UQ?oc=5",
@@ -5731,22 +5812,6 @@
         "PTBA"
       ],
       "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_59871c06ffcc1fbdd85e17",
-      "title": "Kisi-Kisi Terbaru Saham AMMN, ANTM Cs di Tengah Ledakan AI & Data Center - Bisnis Indonesia Premium",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPVWtGWGhMUWNnZG10VTNFQnRMTU9Wd1dSamd0NnNjaW9McGs5ZnlQdkZ0d0V2dE1lLWlJYWJiZWdKbVg5MHExeFpXTk1jeG1WMnJiNjZYUl9US3p3eDl5Qno0d2ZfZ3FMSXdWT3Bta3V4WHdoX1g3eWhVUndCc0NYdFlYa1pULWhhUERDb2xjTnRBWjc4YnRuVkpVZFJoTGd1b1lYZDhBNHhXaExacURGQkJqUC03Rk8yU0I3NEZ3QQ?oc=5",
-      "publisher": "Bisnis Indonesia Premium",
-      "published_at_utc": "2026-10-14T05:45:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "AMMN"
-      ],
-      "sector": "minerals",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
