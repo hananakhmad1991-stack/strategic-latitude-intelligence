@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T05:07:47.728317Z",
+  "updated_at_utc": "2026-10-22T05:34:24.339516Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,38 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_637bd4922e7cf5156bf78d",
+      "title": "OJK Bongkar Pihak-pihak yang Terlibat Pelanggaran Saham DSSA, BREN, CUAN - OWRITE",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNeFhSWDhKcVlLMW1YVHhFNFQtV2F1X2hmNXQ4SzUtM1RmZ195TTZqOVY1ZlNNX3VKUzZJSVhkc3NsSFRCOHJjV1dpSE0zamtqVVVJVFhoUE43VDRkRmNKS3djRTl4b0M1M0xyOVNYTnB5QldrdDZXNm5MQ0JKaDhFWW9xb1I1QU1lOW9IOHdCYW9tX3lKeWVTMTNjN3k5dzNnbWx2WEE3VzR0bGJnZ1lJ?oc=5",
+      "publisher": "OWRITE",
+      "published_at_utc": "2026-10-22T05:19:46Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_8df357f18331bb1f33a386",
+      "title": "OJK Hukum 11 Perusahaan di Kasus Manipulasi Saham DSSA, BREN, dan CUAN - CNN Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNcmo4LWJzNHRFXy1BZGdaUmM3allVYjZzZ3hiRXFRemVwU0ZxZ0NoWm9ScXNvUlZUM2VaejNVOUQya3lXVEIxNGRjbXdFRy1PbTZjTkV6WGF5UTVMeDB0ak1Xd255X1ViNVFqTWtaVGc4ZmhUMUE1TUtQMktlTWdtcjBrcXNXOVkyMjN6NzA3VDVEQVBxdi1qZG1MVVVkNFR2M0c4MFBOQTB2cDA3YWExczItUkVoUEtRLUwzX1EtMzNBQnhkN2VMNy1oTdIB0AFBVV95cUxOQW9tVEJodTRyNUE5UTlZcHRrXzdWQW1VaXJkYWR2bmgyckEzT3hXZkpENWY4allCSXdtU2pMUVpHMmFUc0VXOEhUczVZcGdqTEs1SEM4OUNzaXZKM3lTVDk4YXlrSTFpR0k2MHVqSUdNeFQ2Q3ZIbWhkeEhfUUZEVmNjYjZHNmVJTFlfUkdUcVB2OVMxanVxeHFxcnBydkdaRTV4WC00emR2a1hmY1dxSXZtYjJQVjNrdG9POVFMcW5QbXJTXzVhOWRVNTNvVmdW?oc=5",
+      "publisher": "CNN Indonesia",
+      "published_at_utc": "2026-10-22T05:13:08Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_971709ad09f0e4068419c0",
       "title": "Saham ANTM Melonjak 4,4 Persen, INCO Ikut Rebound, Simak Prospeknya - Kompas.com",
@@ -4870,6 +4902,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_b5096f7eb78ed73451fa66",
+      "title": "ITMG Bangun Anak Usaha Baru di Bisnis Mineral - Liputan6.com",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNWUcyay1wU1JOSGVTYXl6dEhramdQMGRuU0YwcFZZcURqbXRtNFR6aGpOVjJ0LU5LakV0RjJLV3NOaG96QS1aZm81aVk2VllfZlRla2QyazZFNnJwcnREdXlUQU9KQU56RjNYQmNIcnc1cmRndzFWc3AzUmNlZFBCNUd4TlY3S0VYRGpOY1JtZmFiUm_SAYoBQVVfeXFMT293TW1DR1VBVndQWVZmcWp0a1hHWjluYXlXZDZDekMzbmtFLUtPSV9QWEdKajdOZG5UTmlXZWNFX1FLaXMtaHg2Tjd5MDhxT1J0NGdOYXhfZkpiNF9jWlhNUGVYb0hRRUJqaHB1MHlsZkYwdVY0ZndqZ0ZDc24yaHVvbUpQeU5SUFFn?oc=5",
+      "publisher": "Liputan6.com",
+      "published_at_utc": "2026-10-15T23:03:31Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ITMG"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_18f4c836d8be82fe9b650b",
       "title": "Teknikal Saham INTP: Menguat 2.38%: Analisis Hari Ini - JournalArta",
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQMTZSWWoyUV9WUEVqVGNVaEE1WWgxV0JHV2FQeS1WZFdYSnl1US1tUWdvWTBGVFJPcTVMbDFaamNDREVWWE5RTjFGN1FpT2VXQ0ROREFqaUtwbExCRHpLSlIwY1F3LUFrT2dGdk9jTnVZVzRHRWgxdDhkc2lnSHhOSHh6RmZmUnp0UWpYdl9lTHJiY0thWVVrNFdqRDNDN2JFRmlsdFl0SXA?oc=5",
@@ -4880,6 +4928,22 @@
         "INTP"
       ],
       "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_8a0968545f028d28d22a21",
+      "title": "ITMG Dirikan Perusahaan Baru untuk Ekspansi Bisnis Mineral - CentralBatam",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1OT0NQaklRcUlZWExaQnJkeVpKWEZhbld3SXVRQlg0RW9qbmFhZWRpX0liTFFkdnFweHAwc2IyandrWTR0R2tqeU5acVNtQUhZSEkyeWhweGxCUlI3amN0U2w0dlBnaXZvVTUzNkpR?oc=5",
+      "publisher": "CentralBatam",
+      "published_at_utc": "2026-10-15T22:33:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ITMG"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -5683,38 +5747,6 @@
         "AMMN"
       ],
       "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_a01e3c2f6d88e75c678758",
-      "title": "GOTO Setujui Pembatalan 32 M Saham Tresuri dan Perubahan Pengurus - CNBC Indonesia",
-      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNLV9SVk5LdkdBbGhadi1SWlAyUS1pbmh3LS01LW1GUERLWjc2SUxYOFdNN2pabEszaFJsM0w1Ukkyd0owR1NfeFVIN25DUjM0RV9mMUZ4RkFfRHZULURWbWkzUDM1bFFVby03azNyQXdxLWhzckxkSEdrbXNOWXBGY0E5QVVCenhGRFhSRWdYakdkQzZ4a3pPeFN1SEZPZ1ZWVHJNdkI0VmhIRXVpVG5VRnZkbVo0MXdXVmpXZWNha25uV1NJWlHSAcsBQVVfeXFMUGRaVllXVENGbUw5MmltR2VyTzNLV2pWUTBpaHE0Z0F5UVVabkNyMU5GZGFMWFAzbDFMRFFyS2R1Nk1lbTRhRF9KeE8zckI2Q2pTM0daRzhfQ3ltbXZRYk9ibmlJX1hieTBidUNHNGRIM3UtUW5Ra2p5Yy1WeVp3UktkVGxUaFFIRHRkRUdWakZrT3Q0VDEtVlRMdmw0NDFxenYtS2ZKb25TNTFNNXBPUjFXOUZhWHdBZFJWM3pGM0VQejNVdkFaeVFXN2c?oc=5",
-      "publisher": "CNBC Indonesia",
-      "published_at_utc": "2026-10-14T05:27:52Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "GOTO"
-      ],
-      "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_332471138d2cf1724bac72",
-      "title": "BEI Hentikan Sementara Perdagangan Saham TFCO dan PTPP - Pasardana",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPRXl2VFRETzNsMFNkSENCQmU1OTdUUk52bzdCSXRYVVNDM0dhbzB1Wm9kUm1qQlJKd0Y2SnBucjFoY1RHdkJTcFNLQlR2T0xTZEI1cExVWlFacGRKUHNKN1FrZVR5SzQ5OHl6SlhpUXd0ejI4eXU5TmxFMkwyem1DZ214NURRQlE0VW5yV1NRWUZSTkNpdWc?oc=5",
-      "publisher": "Pasardana",
-      "published_at_utc": "2026-10-14T05:10:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTPP"
-      ],
-      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
