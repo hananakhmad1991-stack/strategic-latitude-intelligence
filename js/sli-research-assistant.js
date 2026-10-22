@@ -38,6 +38,26 @@ const PROMPTS={
  mineral:{mode:"risk_opportunity",id:"Susun Risk & Opportunity Assessment mengenai mineral kritis dan hilirisasi Indonesia, khususnya nikel, tembaga dan rantai nilai baterai. Evaluasi cadangan dan kapasitas, pelaksanaan smelter, pengaruh investor asing, energi, ESG, geopolitik rantai pasok, insentif, risiko regulasi, dan skenario hingga 2030. Cantumkan sumber data dan rekomendasi strategis yang bisa diuji.",en:"Prepare a risk and opportunity assessment of Indonesia's critical minerals downstreaming, focusing on nickel, copper and batteries. Evaluate project implementation, foreign investors, energy, ESG exposure, geopolitical supply chains, incentives, legal uncertainties and scenario assumptions to 2030, with evidence and verifiable recommendations."}
 };
 const state={language:"id",config:null,history:[],lastResult:null,busy:false,sequence:0,filesSupported:false,features:null};
+// Permission applies only to this browser. It is not an account-wide permission or an API key.
+const EXTERNAL_WEB_PERMISSION_KEY="sli-external-web-permission-v1";
+function initExternalWebPermission(){
+ const consent=$("raExternalSearchConsent"),remember=$("raExternalSearchRemember");
+ let approved=false;
+ try{approved=localStorage.getItem(EXTERNAL_WEB_PERMISSION_KEY)==="approved"}catch{}
+ consent.checked=approved;
+ remember.checked=approved;
+}
+function updateExternalWebPermission(){
+ const consent=$("raExternalSearchConsent"),remember=$("raExternalSearchRemember");
+ try{
+  if(consent.checked&&remember.checked)localStorage.setItem(EXTERNAL_WEB_PERMISSION_KEY,"approved");
+  else localStorage.removeItem(EXTERNAL_WEB_PERMISSION_KEY);
+ }catch{}
+}
+function resetQuestionWebPermission(){
+ // Without a remembered opt-in, each new question requires its own consent.
+ if(!$("raExternalSearchRemember").checked)$("raExternalSearchConsent").checked=false;
+}
 const ownerConfigured=()=>state.config?.owner_test?.enabled===true&&!!safeUrl(state.config?.owner_test?.endpoint||"")&&new URL(state.config.owner_test.endpoint).pathname==="/v1/owner-research";
 function tr(key){return MESSAGES[state.language][key]||key}
 function node(tag,cls,text){const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=String(text);return x}
@@ -324,7 +344,7 @@ function renderMonitoringSignals(payload){
 function reset(){
  state.sequence++;state.history=[];state.lastResult=null;state.busy=false;
  $("raMessages").replaceChildren();$("raSourcesList").replaceChildren();$("raMonitoringSignals").replaceChildren();$("raModelStatementBody")?.replaceChildren();$("raConversation").hidden=true;$("raPrompt").value="";
- $("raChatFiles").value="";$("raChatUploadConsent").checked=false;$("raExternalSearchConsent").checked=false;updateFileStatus();
+ $("raChatFiles").value="";$("raChatUploadConsent").checked=false;resetQuestionWebPermission();updateFileStatus();
  $("raFollowupPrompt").value="";
  enableControls();$("raPrompt").focus();
 }
@@ -488,8 +508,8 @@ async function submit(){
  catch(e){loading.parentNode?.remove();state.busy=false;enableControls();append("system",String(e.message||"Invalid uploaded data context"));return}
  const requestedMethod=$("raChatMethod").value||"auto";
  const requestBody={question,mode,language:state.language,history:state.history.slice(-8),...workbenchAddon,methodology:requestedMethod,
-  external_search:usingOwner&&$("raExternalSearchConsent")?.checked===true};
- $("raExternalSearchConsent").checked=false; // One-question consent; no automatic subsequent disclosure.
+  external_search:usingOwner&&files.length===0&&$("raExternalSearchConsent")?.checked===true};
+ resetQuestionWebPermission(); // Per-question unless expressly saved by this browser's user.
  if(files.length){
   try{
    requestBody.attachments=await state.features.encodeAttachments(files);
@@ -625,6 +645,9 @@ async function init(){
    $("raPrompt").insertAdjacentElement("beforebegin",hint);
   }
  }catch(_){}
+ initExternalWebPermission();
+ $("raExternalSearchConsent").addEventListener("change",updateExternalWebPermission);
+ $("raExternalSearchRemember").addEventListener("change",updateExternalWebPermission);
  $("raChatMethod").addEventListener("change",methodStatus);
  $("raChatFiles").addEventListener("change",updateFileStatus);
  $("raAssistantForm").addEventListener("submit",e=>{e.preventDefault();submit()});
