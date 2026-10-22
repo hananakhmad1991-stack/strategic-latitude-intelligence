@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-10-22T16:11:01.052Z",
+  "published_at_utc": "2026-10-22T17:09:41.646Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-10-22T16:11:00.327834Z",
+    "news": "2026-10-22T17:09:40.921546Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 373,
+  "count": 374,
   "events": [
+    {
+      "id": "sli-catalyst-c15c2cf36dff67dc27",
+      "kind": "news_indexed",
+      "title": "Wamen Nezar Patria: Kedaulatan AI Tak Cukup dengan Data Center, Indonesia Harus Kuasai Hulu Teknologi - Kementerian Komunikasi dan Digital",
+      "detected_at_utc": "2026-10-22T17:09:41.646Z",
+      "source_at_utc": "2026-10-22T15:00:00Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9aUzkycWhBLTFNeklTVE4yME1OejVBWmdqaGpjRkRHdjdFNThZS1NWUWdrckZnZTh0OVFDektoZE90YThKZ1ZUNG1RWFNZWEdTaEhiSU00SHVIOUJKQ283Y2MyTWp4SFVYaDVR?oc=5",
+      "publisher": "Kementerian Komunikasi dan Digital",
+      "sector": "ai",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-efd711a3ed453cff2e",
       "kind": "news_indexed",
