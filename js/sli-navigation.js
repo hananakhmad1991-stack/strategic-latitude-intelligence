@@ -3,7 +3,7 @@
 (()=>{'use strict';
 const groups=[
  ['Start & research tools','Mulai & perangkat riset','terminal','research','guide','membership'],
- ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','greenworkforce','investment','entities','province','opportunity','gini','welfare','labs'],
+ ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','industry','greenworkforce','investment','entities','province','opportunity','gini','welfare','labs'],
  ['Energy, minerals & trade','Energi, mineral & perdagangan','energy','electricity','ruptl','minerals','trade','map'],
  ['Food & agriculture','Pangan & pertanian','food'],
  ['Marine & fisheries','Kelautan & perikanan','marine'],
@@ -12,6 +12,7 @@ const groups=[
  ['Reference & quality','Referensi & kualitas','glossary','freshness']
 ];
 const modules={
+ industry:['Industrial Intelligence · Kemenperin','Intelijen Industri · Kemenperin','sli-industrial-intelligence.html','Curated Kemenperin source catalog; numerical indicators require XLSX validation.','Katalog sumber Kemenperin terkurasi; angka indikator menunggu validasi XLSX.'],
  overview:['Home · Intelligence portal','Beranda · Portal intelijen','index.html#home','Enter SLI through sector-owned research and dated public data.','Masuk ke riset sektoral dan data publik bertanggal melalui beranda.'],
  home:['Home · Intelligence portal','Beranda · Portal intelijen','index.html#home','Find sectors and source-dated intelligence.','Temukan sektor dan intelijen bersumber bertanggal.'],
  datahub:['SLI Data Library · BPS / IEA / PLN','Perpustakaan Data SLI · BPS / IEA / PLN','sli-sector-data-library.html','Source-linked, dated crime, democracy, socioeconomic, critical mineral and environmental data; no missing figures invented.','Dataset kriminalitas, demokrasi, sosial-ekonomi, mineral IEA dan lingkungan, dengan periode serta status sumber yang jelas.'],
