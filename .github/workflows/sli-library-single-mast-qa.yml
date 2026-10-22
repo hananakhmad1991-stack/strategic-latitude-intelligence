@@ -1,0 +1,55 @@
+name: SLI Data Library Single Header Browser QA
+on:
+  pull_request:
+    paths:
+      - 'sli-sector-data-library.html'
+      - 'css/sli-sector-data-library.css'
+      - 'js/sli-navigation.js'
+      - 'tests/qa-sli-library-single-mast-browser.mjs'
+      - '.github/workflows/sli-library-single-mast-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'sli-sector-data-library.html'
+      - 'css/sli-sector-data-library.css'
+      - 'js/sli-navigation.js'
+      - 'tests/qa-sli-library-single-mast-browser.mjs'
+      - '.github/workflows/sli-library-single-mast-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check Chrome availability
+        shell: bash
+        run: |
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          test -n "$CHROME"
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+      - name: Install browser client
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Start local website
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/sli-lib-qa-server.log 2>&1 &
+          echo $! > /tmp/sli-lib-qa-server.pid
+          for i in {1..25}; do
+            if curl -fsS http://127.0.0.1:8765/sli-sector-data-library.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/sli-lib-qa-server.log
+          exit 1
+      - name: Check single visible brand and intact dataset navigation on desktop and mobile
+        run: node tests/qa-sli-library-single-mast-browser.mjs
+      - name: Stop web server
+        if: always()
+        run: |
+          test ! -f /tmp/sli-lib-qa-server.pid || kill "$(cat /tmp/sli-lib-qa-server.pid)" || true

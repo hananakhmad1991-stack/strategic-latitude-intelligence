@@ -60,3 +60,9 @@ body.sli-library-topic-mode #libraryMain>.section:not(:target){display:none!impo
 body.sli-library-topic-mode #libraryMain{padding-top:18px}
 body.sli-library-topic-mode #libraryMain>.section:target{margin-top:0;scroll-margin-top:calc(var(--sli-mast-offset, 80px) + 16px)}
 @media(max-width:680px){.sli-library-topic-parent{align-items:flex-start;gap:8px}}
+
+/* The legacy standalone library mast is retained as a no-JS fallback.
+   Shared SLI navigation inserts #sliPlatformMast and marks the body unified;
+   only then hide this page's duplicate brand/menu bar. Do not hide the hero,
+   breadcrumb, dataset groups, or source-status indicators. */
+body.sli-dashboard-unified > header.top{display:none!important}
