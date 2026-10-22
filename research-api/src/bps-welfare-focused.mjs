@@ -204,3 +204,23 @@ export function auditFocusedBpsAnswer(answer,focus){
  }
  return {pass:issues.length===0,issues};
 }
+
+
+/* Block explicitly requested BPS sampling figures that lack validated source cells.
+   Never let an unsupported precision lookup silently fall into generic synthesis. */
+export function classifyFocusedBpsPrecisionGap(question,welfare){
+ const q=String(question||"").normalize("NFKC");
+ if(!/(?:\bBPS\b|Susenas|Statistik\s+Kesejahteraan\s+Rakyat)/i.test(q)||
+    !/(?:\bRSE\b|\bSE\b|sampling\s+error|standard\s+error|interval\s+kepercayaan|confidence\s+interval|CI\s*95)/i.test(q)||
+    /(?:tanpa|tidak\s+perlu|without|exclude)\s+(?:(?:data|rincian|angka)\s+)?(?:sampling\s+error|\bRSE\b|\bSE\b)/i.test(q)||
+    !Array.isArray(welfare?.provinces))return null;
+ const regions=extraRegions(q,welfare);
+ if(!regions.length)return null;
+ const supported=extraPatterns.filter(([,regex])=>regex.test(q)).map(([id])=>id);
+ const unavailable=/(?:\binternet\b|partisipasi\s+sekolah|akta\s+kelahiran)/i.test(q);
+ if(!supported.length&&!unavailable)return null;
+ if(unavailable)return "indicator_precision_not_in_verified_subset";
+ if(regions.length>2||supported.length>2)return "precision_query_exceeds_pilot_scope";
+ if(!selectFocusedBpsWelfare(q,welfare))return "requested_precision_cells_unavailable";
+ return null;
+}
