@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T12:05:31.506767Z",
+  "updated_at_utc": "2026-10-22T12:41:27.971732Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,38 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_4c185b77d8afd37e68ed7d",
+      "title": "Terimbas Badai Sentimen MSCI, Begini Prospek Saham ANTM Versi Analis - IDX Channel",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNNTlxT1N4T3pXcllaZEN0NjUwUDg1d1I0clVCTGJIbTlwS3UzMGJNUUJCcUpudTJaclZTdWcxMVIwRDMtbEExWVZwZzdqajZQU3ZhTjNDb01BZ2tBanNBMHFFbzhtTUUtRm93ZmV0Z0xoLVlSN0lBSHdHYWZ1X0lYZVhEdU94c1phM0xTSkVMVzQwSU5nU2NuZzJsaFJMRnRXNG1VakVfQlc3Z9IBrwFBVV95cUxOQkJmb3V6RjZON2VyaUFuVHprRlBlZkVQR0d1WHF5d3plZXN5VEcyWURDazhqRDFrS3RXMnduM1JYdko2X0VuWVZlUFpMNUdBZFpZRHVwUEFUbUFRaXZoa3JUcDVqaVVtX3d1amRJbV92NWg4dngwS0NkQVhWZEFkWXY2aDZmMWdqWFQ4YmR0SzF4NnoyMF9iSGNkMUFHVTVOeXgxb1ozMnVmeWlhS2xr?oc=5",
+      "publisher": "IDX Channel",
+      "published_at_utc": "2026-10-22T12:22:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d566e0d90fae1d7045b5d7",
+      "title": "Laba Bersih DCI Indonesia (DCII) Melesat 11,49% hingga September 2026 - SWA.co.id",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNR2xGSF9GY0c5dmVpZm8tU3dJWGJRVHpGbkxXT09VaVdLOHdJRzhMcEV1TjNTbDExVURqZ0FMNUpIV0E1RndmelFCaUtLOTdHU3FvdUxfbkFWMEJMaWZtX1NLbzJJWFN4R2k2TzlDMWNaTXJnMnQ5WllYbVFhWG90ajhxSDFEbzl2eWlBNWFqemJiN3JlMUdCUmJUSQ?oc=5",
+      "publisher": "SWA.co.id",
+      "published_at_utc": "2026-10-22T12:12:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "DCII"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_507cda7cf4e446816fd801",
       "title": "AMMN Siapkan Buyback Saham Rp1 Triliun hingga Januari 2027 - Warta Ekonomi",
@@ -90,6 +122,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_4de4b9154fc56a87338269",
+      "title": "Net Sell Berlanjut Rp 1,49 Triliun, Terbanyak Landa BBCA hingga TLKM - InvestorTrust",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPajJydndhOTZTRUhYNVFfcjZTVmtMbW5ickl2TEJCNVF1TFE1cGl2aW5IN20zczRzM29tbUVQbVNGZklLZU5qVnVVWkFMZEVhN3EyMmJsN2Vyb2pqbjRRcUFqdGNKdGV6b2hYY09tTHBOM1VybHJtV3VSNC1VSzdqaWhrUnJPd3lWb3cyMjd4aWlsUzBONnZiNTMxazVCR1RLR2hGdVJwdEhOZw?oc=5",
+      "publisher": "InvestorTrust",
+      "published_at_utc": "2026-10-22T11:02:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_4b83cf5d3d78ae66604c57",
       "title": "Amman Mineral (AMMN) Siapkan Buyback Saham Rp 1 Triliun - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQbXBtYzJIc0otaVJVckVYRExwUEM2b0J4cmtta25CUjVMNi1lR05WOGFmN3hkSXRSR0NKeFFHTGF3eDRZV184WjhpcGdNZGdGTkY2UnZPZE56QTltMzMwWTUwUy00dV9fUDhlZVREeEJhRE9WcDZKYnQtXzBQeXFQRktfYnd0OWlSaFV4WC1zQ1JzaXfSAYsBQVVfeXFMUDM2WXplN3hUMGc0Ym9odVVwVDNDR05EajlUdDRsdG1WWGpOWTJBMW9QQzZaNWtWcy14Y0tHbWJHM1o1NkZUNUQ5TDJRcmNQWUpkUDYwU3Nxanp0ZUJIbXB5YXZ4RlRJS055c0xMT2NWTGF0MF9lU3NtbzdyWUQyYWZOdEIyMFJxMnVBYw?oc=5",
@@ -116,6 +164,54 @@
         "ANTM"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_e51cd8ab151177b5279ec6",
+      "title": "ANTM Pertahankan Prospek Saham Meski Keluar dari Indeks MSCI - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE42LXBYS05nRFN5VVhRZ3hkSW1JRk5DdzI1Q3lKOEdfX1ZpUTVUNGI1MlItX1ZmRGVHTkxUeEs2NkhhMzJkbURnZHNfbkJsTnFnak1j?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-10-22T10:19:54Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_e68e055541b6b1ea4480f5",
+      "title": "Dipengaruhi Harga Komoditas, Analis Sebut Fundamental ANTM Masih Kuat - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUHdVOWtUbVRPQmJTWmVNaENHTkpFYWdiTGllRERXRFVKMFo4ZGYxeUx1d19hcXlrQk05Mm9DZGZZM25TQW9IY0FTam1CTnFYSWdkLTkxQUx5M1lldEZTWHhNaXpXTGZudmQ0a1ZZVlI5VGtSNzRzOW1sSm1Na3BNVDFuc0NaYnBET2RZUEJoUGtadTBnVXRUbVc0ZXhyc1poQlh6eFlYc9IBnwFBVV95cUxQOEo5S0o0WFpSWkNIeUVJTzFCQV9KbENPSXlQVGtxaDdqZldlTHg0djNtLWp1NmdJajJMSjRBdnBSeVQ1VmJ1QTRZb3V4S0JxX28tNENCbFFzT0U0TWV1a0I1UG1obUM0Qk5QeDFIT2ZHVjk1cFJrUUtHZXNKdm1DbjlHTnR1b0tZVFRxZ29EdEVwY1hiVWlVWHEybk4yM2c?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-22T10:14:21Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_325a7a824caccabe617694",
+      "title": "Japfa (JPFA) Bakal Serap Capex Jumbo hingga Akhir Tahun 2026, Cek Prospek Sahamnya - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQX0ZkTm8wcjRFS1BmNDVoZGJ2NEsxRlhlOFdGXzZPXzFCdzJHdDROaFVaaGhxSHk5TzZPY1dhVEM3UEJEckZycGFRWGM1WmlJdGZkMUlQSE9rVWF3VEhmMlRMWTZZeldhOHZXQU1BSWJFMEUtdkZ0Q1lEVXhvSUk4ekpsMkhxNTJJcTNfMUNGcXFOUHBRY3JXbHdNTm1BYUtWOS1rSXdCTHBNb2dmY0dDMEpBdmJDQdIBrgFBVV95cUxNMlgyLWswcmI2Wl9DSGNhcjBRNTBDUzdnYVRENE1DSy1BbmtuZDRaT2xGTVZ0YjV6Q3pmTXhyMEc5QUNib28zTHZjNmlzaGxFbTV3Q3NwbUZsay04dGdlb2NycEUwMWpjNzBmUTlGYzVoclJIZTlnR2t6bkt5Slg4Yi1yWWtOY0tfTDg1anlBQVJmb1JIb1JscXhfV2ZsLWVrUEdDbmFXN0QtOEE1QUE?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-22T09:48:36Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -212,6 +308,22 @@
         "BREN"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_1dc1c249df9d646fc04345",
+      "title": "Ekspansi Besar Telkom (TLKM), plus Target Harga Tinggi Sahamnya - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOUHNWRnpZRzFld2pkLU1LYklyRzBLTTlGWnVfbXlrSlpRSVo3WjdQdVZ2c0dCR1RsWTIybUluTUtuX2NhRWwzQ0YwSnl1bzByNkJCMFFma1hITkdNb1NUWVhCaWVmTjhSMGhyRWdWUEpaTmtEWGNSTEV1a3BtNzRUMHBpVlVjWFhVTHJyVUwtbFJVdlJmaDAzTTBR?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-22T08:01:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
