@@ -7,6 +7,7 @@ on:
       - "sli-research-ai.html"
       - "tests/qa-sli-report-export.mjs"
       - "tests/qa-sli-legal-source-limited.mjs"
+      - "tests/qa-sli-owner-handler-acceptance.mjs"
       - ".github/workflows/sli-report-export-qa.yml"
   push:
     branches: [main]
@@ -16,6 +17,7 @@ on:
       - "sli-research-ai.html"
       - "tests/qa-sli-report-export.mjs"
       - "tests/qa-sli-legal-source-limited.mjs"
+      - "tests/qa-sli-owner-handler-acceptance.mjs"
       - ".github/workflows/sli-report-export-qa.yml"
   workflow_dispatch:
 permissions:
@@ -37,7 +39,7 @@ jobs:
           node --check js/sli-report-buttons.mjs
           node --check js/sli-research-assistant.js
       - name: Test APA 7 source rules, page layout and Word OOXML
-        run: node --test tests/qa-sli-report-export.mjs tests/qa-sli-legal-source-limited.mjs
+        run: node --test tests/qa-sli-report-export.mjs tests/qa-sli-legal-source-limited.mjs tests/qa-sli-owner-handler-acceptance.mjs
       - name: Validate actual Word ZIP CRC and XML using Python
         run: |
           node --input-type=module -e '
