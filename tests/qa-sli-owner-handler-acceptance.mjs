@@ -128,3 +128,36 @@ test("Reviewed Pasal 1 UU 16/2016 uses actual Worker model path and preserves co
     assertDraftExports(q,json);
   }finally{globalThis.fetch=oldFetch}
 });
+
+test("Focused Aceh BPS Owner prompt and handler validate one source and fail closed",async()=>{
+ const question="Menurut BPS Statistik Kesejahteraan Rakyat 2026 (Susenas Maret), berapa persentase rumah tangga Aceh dengan sumber utama air minum leding (Tabel 6.23), dan bagaimana SE, RSE, interval kepercayaan 95% dari tabel sampling error 9.88?";
+ const good="Menurut BPS Susenas Maret 2026, estimasi rumah tangga Aceh yang menggunakan sumber utama air minum leding tercatat 7,49% (Tabel 6.23, PDF halaman 215) [1]. SE 0,33 poin persentase, RSE 4,38%, dan interval kepercayaan 95% sebesar 6,84–8,13% (Tabel 9.88, PDF halaman 434) [1]. Ini adalah perkiraan survei, bukan kepastian; sumber air minum leding tidak otomatis berarti air minum aman.";
+ const env=fixtureEnv(),oldFetch=globalThis.fetch;
+ let answerText=good,modelCalls=0;
+ globalThis.fetch=async (url,options)=>{
+  if(String(url)!=="https://api.openai.com/v1/responses")return Response.json({}, {status:404});
+  modelCalls++;
+  const params=JSON.parse(options.body);
+  assert.equal(params.store,false);
+  assert.ok(params.instructions.length<2100,"Do not inherit huge generic research prompt");
+  assert.match(params.instructions,/7,49%/);
+  assert.doesNotMatch(params.instructions,/600–900 words/);
+  const evidence=JSON.parse(params.input[0].content[0].text).source_evidence;
+  assert.equal(evidence.length,1);
+  assert.equal(evidence[0].citation,"[1]");
+  return Response.json({status:"completed",output:[{type:"message",role:"assistant",content:[{type:"output_text",text:answerText}]}]});
+ };
+ try{
+  const valid=await answer(request(question),env);
+  assert.equal(valid.status,200,JSON.stringify(valid.json));
+  assert.equal(valid.json.sources.length,1);
+  assert.equal(valid.json.sources[0].id,"bps_welfare_province_aceh");
+  answerText=good.replace("RSE 4,38%","RSE 4,83%");
+  const rejected=await answer(request(question),env);
+  assert.equal(rejected.status,502,JSON.stringify(rejected.json));
+  assert.equal(rejected.json.error,"focused_bps_statistical_answer_not_verified");
+  assert.ok(rejected.json.issues.includes("RSE_absent_or_numeric_mismatch"));
+  assert.equal(rejected.json.answer,undefined,"Rejected answer must never be exposed");
+  assert.equal(modelCalls,2,"One mocked model request per handler call, no retries");
+ }finally{globalThis.fetch=oldFetch}
+});
