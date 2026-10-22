@@ -221,10 +221,15 @@ await check("IDX sector watchlist: selected tab changes tickers",{width:1366,hei
  await tabs.first().waitFor({timeout:25000});
  assert.ok((await tabs.count())>=6,"Missing strategic sector selectors");
  const initial=await page.locator("#sliHomeIDXSectors .sli-idx-sectoral-tickers").innerText();
- await tabs.nth(1).click();
- assert.equal(await tabs.nth(1).getAttribute("aria-pressed"),"true","Sector selection not activated");
+ assert.ok(initial.trim().length>0,"Default sector must show source-linked tickers");
+ // The tab order is All, Energy, Minerals... and Energy is the intentional
+ // initial selection. Clicking Energy a second time is not a filter change.
+ const minerals=tabs.filter({hasText:/mineral/i}).first();
+ await minerals.click();
+ assert.equal(await minerals.getAttribute("aria-pressed"),"true","Minerals selection not activated");
  const next=await page.locator("#sliHomeIDXSectors .sli-idx-sectoral-tickers").innerText();
- assert.ok(next!==initial,"Sector filter did not change listed companies");
+ assert.ok(next.trim().length>0,"Minerals sector must not display an empty ticker panel");
+ assert.ok(next!==initial,"Switching Energy to Minerals must change listed companies");
  const href=await page.locator("#sliHomeIDXSectors .sli-idx-sectoral-ticker").first().getAttribute("href");
  assert.match(href,/sli-issuer\.html\?ticker=[A-Z0-9]{4}/,"Ticker must link to exact issuer dossier");
 });
