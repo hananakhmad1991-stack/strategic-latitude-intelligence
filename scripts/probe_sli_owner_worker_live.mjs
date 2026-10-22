@@ -4,6 +4,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import {assessOwnerKKPEvidence} from "./kkp-owner-evidence-gate.mjs";
 const config=JSON.parse(fs.readFileSync(new URL("../data/sli-research-assistant-config.json",import.meta.url),"utf8"));
 const endpoint=config?.owner_test?.endpoint,origin="https://hananakhmad1991-stack.github.io";
 const report={schema:"sli-owner-worker-live-acceptance-v1",checked_at_utc:new Date().toISOString(),
@@ -36,19 +37,21 @@ try{
   const verified=await call({method:"POST",headers:{...headers,"x-sli-owner-test-token":token},body});
   report.positive_http=verified.status;
   const v=await verified.json().catch(()=>({}));
-  report.positive_auth_status=verified.ok&&v?.mode==="generative_rag"&&typeof v.answer==="string"&&v.answer.length>=160&&Array.isArray(v.sources)?
-   "passed_model_response_structure":"failed_model_or_sources";
-  const numberedCitations=/\\[[1-9][0-9]*\\]/.test(v.answer)||/\\[\\*\\*[1-9][0-9]*\\*\\*\\]/.test(v.answer);
-  const officialSources=(v.sources||[]).filter(x=>String(x?.source_url||x?.url||"").startsWith("https://portaldata.kkp.go.id/")).length;
-  report.numbered_citations_present=numberedCitations;
-  report.official_kkp_sources_count=officialSources;
+  const evidence=assessOwnerKKPEvidence(v);
+  report.positive_auth_status=verified.ok&&evidence.passed?
+   "passed_cited_official_kkp_response_structure":"failed_auth_or_citation_source_gate";
+  report.numbered_citations_present=evidence.citedNumbersCount>0;
+  report.citations_resolve_to_sources=evidence.validCitationPositions;
+  report.official_kkp_sources_count=evidence.officialKKPSourcesCount;
+  report.official_kkp_cited_sources_count=evidence.officialCitedPositionsCount;
+  report.model_answer_fact_check="manual_primary_numeric_fact_crosscheck_still_required";
   report.research_basis=String(v?.evidence_status||"").slice(0,110);
   report.model_answer_fact_check="structural_only_primary_numeric_facts_require_manual_validation";
   report.source_count=Array.isArray(v.sources)?v.sources.length:null;
-  if(report.positive_auth_status!=="passed_model_response_structure")throw Error("authenticated_response_failed_"+verified.status);
+  if(report.positive_auth_status!=="passed_cited_official_kkp_response_structure")throw Error("authenticated_response_failed_"+verified.status);
  }else{report.positive_auth_status="not_checked_missing_secret_or_explicit_paid_opt_in";}
 }catch(e){report.error=String(e?.message||e).slice(0,200)}
 const out="artifacts/sli-owner-worker-live-acceptance.json";fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(report,null,2)+"\n");
 console.log("OWNER LIVE ACCEPTANCE SUMMARY",JSON.stringify(report));
 if(process.env.SLI_REQUIRE_OWNER_NEGATIVE==="true"&&report.negative_auth_status!=="passed_unauth_401")process.exitCode=1;
-if(process.env.SLI_REQUIRE_OWNER_POSITIVE==="true"&&report.positive_auth_status!=="passed_model_response_structure")process.exitCode=1;
+if(process.env.SLI_REQUIRE_OWNER_POSITIVE==="true"&&report.positive_auth_status!=="passed_cited_official_kkp_response_structure")process.exitCode=1;
