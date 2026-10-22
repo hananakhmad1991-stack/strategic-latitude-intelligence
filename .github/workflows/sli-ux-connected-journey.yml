@@ -1,0 +1,31 @@
+name: SLI UX Connected Journey Browser QA
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'js/sli-navigation.js'
+      - 'css/sli-navigation.css'
+      - 'css/sli-home-portal.css'
+      - 'tests/qa-sli-connected-journey-browser.mjs'
+      - '.github/workflows/sli-ux-connected-journey.yml'
+permissions:
+  contents: read
+jobs:
+  journey:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Chrome
+        run: echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
+      - name: Serve site
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sli-journey.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && exit 0; sleep 1; done
+          exit 1
+      - run: node tests/qa-sli-connected-journey-browser.mjs
