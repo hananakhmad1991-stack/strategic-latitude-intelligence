@@ -42,12 +42,17 @@ test('provenance, Owner controls, exports and research method workbench are reta
  assert.ok(more&&!more.hasAttribute('open'));
  assert.ok(more.querySelector('.sli-ra-derguba-brand-story'));
  assert.ok(more.querySelector('#raOpenDataLab[href="#raAdvancedLab"]'));
+ const food=d.querySelector('details#raFoodInsights');
+ assert.ok(food&&!food.hasAttribute('open'),'Food intelligence should be collapsed by default');
+ assert.ok(food.querySelector('#raFoodImpactMount'),'Food evidence must remain available');
+ assert.match(read('js/sli-food-impact-panel.mjs'),/raFoodImpactMount/,'Food module must mount in specialist disclosure');
+
  assert.ok(d.querySelector('details#raSourcesPanel'));
  assert.ok(d.querySelector('#raSourcesList'));
  for(const id of ['raConversation','raTemplates','raMoreExamples','raCopy','raExport','raWord','raPdf','raModelStatement','raFollowupForm'])assert.ok(d.getElementById(id),'missing '+id);
  assert.ok(html.includes('sli-analytical-workbench-ui.mjs'));
  assert.ok(html.includes('sli-report-buttons.mjs'));
- assert.ok(html.includes('sli-derguba-chat-first.css?v=20261023-chatfirst1'));
+ assert.ok(html.includes('sli-derguba-chat-first.css?v=20261023-chatfirst2'));
  assert.ok(!/fetch\(.*raPrompt.*onload/.test(html),'Do not auto-submit a prompt on load');
 });
 test('new CSS is responsive and does not disguise commercial Owner-only restriction',()=>{
