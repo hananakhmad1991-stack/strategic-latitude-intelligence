@@ -1,6 +1,7 @@
 /* SLI Expert Desk private owner queue — OFF by default; no public submission endpoint.
  * Cloudflare Access + per-owner allowlist + private D1, not GitHub Pages storage. */
 import {HttpError,requireWorkerAccessIdentity} from "../../sli-user-intelligence/src/auth.mjs";
+import {handleExpertRoute} from "./experts.mjs";
 
 const SERVICES=new Set(["expert_sourcing","consultation","custom_research","advisory"]);
 const SECTORS=new Set(["energy","digital","investment","food","policy","geopolitics","other"]);
@@ -99,6 +100,8 @@ export async function handleRequest(request,env,identify=()=>{throw new HttpErro
   if(!url.pathname.startsWith("/api/"))throw new HttpError(404,"Not found");
   const person=await identify(request,env);ownerIdentity(person,env);
   const db=requireDB(env);
+  const expertResult=await handleExpertRoute(request,{db,url,json,bodyJson,ownerId:person.id,cors});
+  if(expertResult)return expertResult;
   if(url.pathname==="/api/health"&&request.method==="GET")
    return json({active:true,scope:"owner_only",customer_intake:false},200,cors);
   if(url.pathname==="/api/requests"&&request.method==="GET"){
