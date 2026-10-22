@@ -115,6 +115,19 @@ function renderPlatformMast(){
  summary.setAttribute('aria-label',text('Browse SLI sector dashboards','Jelajahi dashboard sektoral SLI'));
  explorer.append(summary);
  const sectors=node('div','sli-platform-sector-menu');
+ // Task-first paths precede the detailed module catalog; no duplicate top-level sector.
+ const quick=node('div','sli-explore-quick');
+ quick.append(node('strong','sli-explore-quick-title',text('What would you like to investigate?','Apa yang ingin Anda telusuri?')));
+ const shortcuts=[
+  ['Explore sectors','Jelajahi sektor','./index.html#sliPortalSectors'],
+  ['Compare provinces','Bandingkan provinsi','./provincial-intelligence.html'],
+  ['Find a company','Cari perusahaan','./sli-entities.html'],
+  ['Check original sources','Periksa sumber data','./sli-sector-data-library.html'],
+  ['Analyze with DERGUBA','Analisis dengan DERGUBA','./sli-research-ai.html']
+ ];
+ const quickLinks=node('div','sli-explore-quick-links');
+ for(const [en,id,url] of shortcuts){const a=node('a','sli-explore-quick-link',text(en,id));a.href=url;quickLinks.append(a)}
+ quick.append(quickLinks);sectors.append(quick);
  // Canonical information architecture: eight distinct topical families, including independent Marine & Fisheries.
  // Specialist pages and source observations remain owned by ONE substantive category.
  const topicalEvidence={
