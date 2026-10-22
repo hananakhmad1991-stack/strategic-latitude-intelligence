@@ -43,7 +43,7 @@ jobs:
           node --check js/sli-legal-provisions.js
           node --check research-api/src/legal-citation-audit.mjs
           node --check research-api/src/policy-corpus.mjs
-          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs
+          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs tests/qa-sli-owner-deploy-snapshot.mjs
 
       - uses: actions/setup-python@v5
         with:
@@ -59,8 +59,8 @@ jobs:
             echo 'Committed index matches latest datasets.' >> "$GITHUB_STEP_SUMMARY"
           else
             echo 'source_index_fresh=false' >> "$GITHUB_OUTPUT"
-            echo '::warning::Committed Research AI index is stale; rebuilt in runner for offline QA, not published. Owner Worker deployment must wait for the official index sync.'
-            echo 'Research AI source index is stale in main. **Validate-only is allowed; owner deployment is blocked until the official index sync publishes a matching snapshot.**' >> "$GITHUB_STEP_SUMMARY"
+            echo '::warning::Committed Research AI index differs from a reproducibly rebuilt, audited snapshot. Staging may use only the source-commit-pinned verified artifact; public index publication remains a separate workflow.'
+            echo 'Committed Research AI index differs from the reproducibly rebuilt snapshot. **Any explicit owner staging deploy MUST use the audited index artifact from this run, with SHA-256 and source-commit checks. Public index synchronization remains separate.**' >> "$GITHUB_STEP_SUMMARY"
           fi
       - name: Preserve rebuilt index for safe reconciliation
         if: steps.index_verification.outputs.source_index_fresh == 'false'
@@ -69,11 +69,6 @@ jobs:
           name: sli-owner-rebuilt-evidence-index
           path: data/sli-research-unified-index.json
           retention-days: 3
-      - name: Block staging deploy when main evidence index is stale
-        if: github.event_name == 'workflow_dispatch' && inputs.action == 'deploy-owner-staging' && steps.index_verification.outputs.source_index_fresh != 'true'
-        run: |
-          echo '::error::Refusing deployment: committed public Research AI index is not synchronized with current data.'
-          exit 1
       - name: Audit Research AI security, source traces and report quality (offline)
         run: |
           node --check scripts/sli-research-owner-readiness.mjs
@@ -89,6 +84,24 @@ jobs:
             tests/qa-sli-report-audit.mjs \
             tests/qa-sli-legal-source-limited.mjs
           node scripts/sli-research-owner-readiness.mjs --out=artifacts/sli-owner-research-readiness.json
+      - name: Seal validated source-commit index for explicit Owner staging
+        if: github.event_name == 'workflow_dispatch' && inputs.action == 'deploy-owner-staging'
+        run: |
+          mkdir -p artifacts
+          sha256sum data/sli-research-unified-index.json > artifacts/sli-owner-index.sha256
+          printf '%s\n' "$GITHUB_SHA" > artifacts/sli-owner-source-sha.txt
+          echo "Owner staging index snapshot SHA-256: $(cut -d ' ' -f1 artifacts/sli-owner-index.sha256)" >> "$GITHUB_STEP_SUMMARY"
+          echo "Snapshot is not a certification of sources or a publish to the public index." >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'workflow_dispatch' && inputs.action == 'deploy-owner-staging'
+        with:
+          name: sli-owner-validated-index-${{ github.run_id }}
+          path: |
+            data/sli-research-unified-index.json
+            artifacts/sli-owner-index.sha256
+            artifacts/sli-owner-source-sha.txt
+          if-no-files-found: error
+          retention-days: 3
       - name: Summarize owner-readiness limits and automation warnings
         if: always()
         run: |
@@ -123,15 +136,32 @@ jobs:
 
   deploy-owner-staging:
     needs: policy-gate
-    if: ${{ inputs.action == 'deploy-owner-staging' }}
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.action == 'deploy-owner-staging' }}
     runs-on: ubuntu-latest
     timeout-minutes: 12
     environment: sli-owner-staging
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download audited evidence snapshot from this exact run
+        uses: actions/download-artifact@v4
+        with:
+          name: sli-owner-validated-index-${{ github.run_id }}
+          path: .
+      - name: Verify pinned source, index integrity, and deterministic audit before deploy
+        run: |
+          test "$(cat artifacts/sli-owner-source-sha.txt)" = "$GITHUB_SHA"
+          sha256sum --check artifacts/sli-owner-index.sha256
+          python scripts/build_research_unified_index.py --check
+          python scripts/audit_sli_research_index.py
+          echo "Owner staging is using only the validated same-run evidence snapshot."
       - name: Check Cloudflare deploy credentials are configured
         env:
           CF_DEPLOY_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
