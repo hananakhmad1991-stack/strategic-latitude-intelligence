@@ -19,7 +19,7 @@ import {probeCitedPrimaryPages} from "./primary-claim-probe.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {nationalWelfareEvidence,provincialWelfareEvidence} from "./welfare-corpus.mjs";
-import {selectFocusedBpsWelfare,auditFocusedBpsAnswer} from "./bps-welfare-focused.mjs";
+import {selectFocusedBpsWelfare,auditFocusedBpsAnswer,classifyFocusedBpsPrecisionGap} from "./bps-welfare-focused.mjs";
 import welfare from "../../data/sli-bps-welfare-2026.json";
 import {policyLegalEvidence,selectPolicyEvidence} from "./policy-corpus.mjs";
 import {legalProvisionEvidence} from "./legal-provisions.mjs";
@@ -177,6 +177,9 @@ export default{
   // Precision-specific BPS requests should be answered from the exact indicator and
   // its matching sampling-error table, not from an unrelated 20-source long report.
   const focusedWelfare=!focusedLegalReading&&!ownerFiles.length?selectFocusedBpsWelfare(payload.question,welfare):null;
+  const precisionGap=!focusedWelfare&&!focusedLegalReading&&!ownerFiles.length?
+   classifyFocusedBpsPrecisionGap(payload.question,welfare):null;
+  if(precisionGap)return send(422,{error:"bps_statistical_precision_unavailable",reason:precisionGap},origin);
   const evidence=focusedWelfare?focusedWelfare.evidence:
    [...articleEvidence,...treatyChronologyEvidence,...implementationEvidence,...legalEvidence,
     ...ccsEvidence,...primaryEvidence,...unified.documents,...live.documents,...secondaryEvidence];
