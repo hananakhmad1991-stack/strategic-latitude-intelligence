@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T23:27:59.256418Z",
+  "updated_at_utc": "2026-10-22T23:56:15.024655Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,38 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_2ef068087b816e796498af",
+      "title": "Jasa Marga Kaji Buyback Saham di Tengah Valuasi Rendah - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPVGJPSzNMWmkyQ3RsN2FiZVVFWE95NXI3N0NhUm56d0NHZF9pN2VmTXhuU1k2bUozcGM0N1owT0ZGUXNtaFR4c2xxaDl6ekdrNGpmUk96QWhYN0x4eEU1WlhuQXZrWWxjUFZnTG5Qcm5CdHlfNEI4X2tmZHF6Tmp1TXVtZU1lRkx3QXNickZWSjQyNVpP?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-22T23:29:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d7c4235af9e05c81d1d9ba",
+      "title": "TLKM Tuntaskan Buyback Soal Pemisahan Anak Usaha - KONTAN",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQUGpIandMNFdQbDlUbkc0UjZweFB0amVIbzlHZ01LXzBDQW52aExRRHNfc0tUak5IUVRVZjlVZ2R4Yjh1dmJMNWo2RTJNei10MGRySEN1bFdHYXA0ZmVrZEhfdGRmLVlmbEREelFOU0VVOF9IMEVFN2xzSEw0QlpZMUh1c3dIUjRMVUE?oc=5",
+      "publisher": "KONTAN",
+      "published_at_utc": "2026-10-22T23:28:55Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_ca5e54188d6056fd7d59fa",
       "title": "AMMN Gelar Buyback Saham Rp 1 Triliun Selama Tiga Bulan - شبكة تواصل الإخبارية",
@@ -4863,6 +4895,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_fc06cf3e778be58856a819",
+      "title": "INKP Pakai Refinancing untuk Lunasi Utang Rp585 Miliar - Emitennews.com",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNM280a1Z3alV6Zm9YbUhoVFlQOXM4WlFyWjFwNnE1WkVxM1ZVUG1OVDYxRENBWk9RS1pzaVY2R1BtblBidTlsYXBzZUllSllOQzN1aGdTQ2hkaUdSZlBlX2tfM210WTJ4WS1LTXpVV0JjaS02VmxvUnBDa0x5bFVkeTVGb3BoZmdHd0E?oc=5",
+      "publisher": "Emitennews.com",
+      "published_at_utc": "2026-10-19T07:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INKP"
+      ],
+      "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_549a19c9af826724e37aef",
       "title": "Diam-diam Asing Serok GOTO, ENRG, hingga INDF saat Wacana Standalone Picu Outflow - Bisnis.com - Market",
       "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQTlF1cXRqS2pRUG9yU2g3OXE3Q1NrS1M4YmJkYkxzcWhiU0ZHYVgwc2o1X0diTDBwRHpDZlU3YTg1TlFPLVh2SU9VMEtIVldFN0oyVlFZRnJpc1pHSi1FZkVHWnFTRmpscHY3bnVJWkxIVWJZeUlBbVd0aXNsN2lHWWhXMDlzZjJCMG9SNzFlTkVkS3BpNWNBLTZKZlQzdlJlbDJoaHltUzQ1MGt2ZlVSc1ZlcHBlRzZ4bFE5cjJYRkdjXzl2NmVOMw?oc=5",
@@ -5061,6 +5109,22 @@
       "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxONnJzZldhQVhYT0tNZEFSREJmb2YtakRWVlUzOWJnaUxPaVZqZnRpSGMyc08tMVBUVEtDWXV2Q01oQk5iQ0h4bDJYb3FlbmQ3bFZCSHY2bndDaXVsYjRHOFZsdGRYRWdzNURwTnQyd0lsZ0xEdUptaXYza2ZxWC0yaDRB?oc=5",
       "publisher": "Emitennews.com",
       "published_at_utc": "2026-10-19T02:38:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_954a7346ecf7536f14d2aa",
+      "title": "BREN Umumkan Buyback Rp1 T Usai Disorot OJK Soal Penjatahan IPO - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOaXRyWnVrWndyaENpOGlZcHY1ZkthNkJoaHlITlRTZUdIdmhEUGpUTC03RnZ6RzA3NWxGUWlFSW8tOVY2ekt5dWNJbmFhdnNQQUJEQzFtanpqV19Nb3A3YVdzOGlvYmVaQ1l0ZVQ5YVlxcmNOWFQxS3Uxbk1FVDB4cm0wOE5UeTNDTzEwSERRSTlOV0VYN0I2NXVGYUJjYmkwN1F1MDhYOHFTdE5Vbm00TlpKNk95bmJKTl9ONGRIaXFwa2_SAcgBQVVfeXFMTlhhcno0ajEzTE96ZXZFbkJqamFidVRWMHE4Sl9SOFktRDUxbnpUYkpyMUFEWGxVTlhmc1RfWFVYVVVaMXA3QkNwcUhpRS1LcXR1c3YydFdwNU05VF9xV01kWi1KeTlJeGlja0xOcVRZcU4xRmhISkRaWlRsbTZhT3p1ZlIwemd3VGxHQUtVdDR1ZG1tY2pNWkNLS19xWVkwbzJKeFVTZXlxTFQ1alVGTWFyZUNKbEt5bjhvSmpUU0JYZzg0RmREXzk?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-19T02:25:31Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "BREN"
@@ -6568,22 +6632,6 @@
         "ISAT"
       ],
       "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_8fe91b596658048de0075b",
-      "title": "Cermati Rekomendasi Teknikal Saham AKRA, MBMA, dan UNTR untuk Kamis (15/10) - kontan.co.id",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQdmxFOElrRGdyTlFEc3VIMjBPdVZ4eml2TERfZmlfWEdHczhkTFJ3aVJmYjgyMF94RnU1V0JHTmc3QTBHZXIyLWtEaFZkSzloN1pIcnpkQnRlcG5UajlfS2FPTEx4a0pqTWFkdXo4Yk9xTGpEQ3A2LWdpV2tZZVBoTHU3NXVFY09kMzRYd0RVSmJpLU9Od0ladW96THlXZDdRVmhrekhVNVRud9IBogFBVV95cUxQWUgwQ2hwUWUycU52NERYeXNFaGlQZElBY2RqQmxZQlc5b0d0azhhc0cxa2N4OUdtNC1Ua3U1bjM0Mkhta2pZejI0TFNqb1JhTmdTZnJ1WmUxRC1ZSmlGMHhhQm9vdFdITGQ1ZUhtYU1lMjFhRklTX2dkZlgzR2hpbXpvbTViNzdJNmVUMVdkcGNDbmduU2xpZnREVElKNlpTLWc?oc=5",
-      "publisher": "kontan.co.id",
-      "published_at_utc": "2026-10-14T23:35:18Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "UNTR"
-      ],
-      "sector": "manufacturing",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
