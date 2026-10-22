@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T16:06:38.103139Z",
+  "updated_at_utc": "2026-10-22T16:37:25.751107Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -196,6 +196,22 @@
         "TLKM"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_21704f084dc6c6c531f390",
+      "title": "Jasa Marga Kaji Buyback Saham di Tengah Beban Utang Besar - SuaraGarut.ID",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNUlJzbGxiMzllZGpwOTRoV19ZSzBvUXNSUGlKdE8xaWotb0tIOEVPUlhqZzhXR1dmWExUV0lEeXoxTlZKNmlmcGxkWVFPU1M5MG01NWdfbGRkX2RyQm1YUmg2bTU5UUpHRTV4VUNyRVVua2tWLTdaUERvcDJVR1ZkSXhXZUI3Zw?oc=5",
+      "publisher": "SuaraGarut.ID",
+      "published_at_utc": "2026-10-22T10:56:31Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -4033,6 +4049,7 @@
       "published_at_utc": "2026-10-20T00:30:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "AADI",
         "INCO"
       ],
       "sector": "minerals",
