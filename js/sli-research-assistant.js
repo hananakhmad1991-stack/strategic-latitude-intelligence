@@ -39,7 +39,6 @@ const PROMPTS={
 };
 const state={language:"id",config:null,history:[],lastResult:null,busy:false,sequence:0,filesSupported:false,features:null};
 // Permission applies only to this browser. It is not an account-wide permission or an API key.
-const EXTERNAL_WEB_PERMISSION_KEY="sli-external-web-permission-v1";
 function initExternalWebPermission(){
  const consent=$("raExternalSearchConsent"),remember=$("raExternalSearchRemember");
  const approved=window.SLIExternalEvidencePrefs?.read?.()===true;
