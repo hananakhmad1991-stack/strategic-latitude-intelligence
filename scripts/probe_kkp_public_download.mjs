@@ -19,7 +19,9 @@ try{
  const response=await page.goto(url,{waitUntil:"domcontentloaded",timeout:45000});
  result.page_http=response?.status()??null;
  if(!response?.ok())throw Error("KKP_official_page_unavailable");
- const downloadEvents=[],eventRequests=[],eventResponses=[],popupSources=[];
+ const downloadEvents=[],eventRequests=[],eventResponses=[],popupSources=[],pageErrors=[],dialogs=[];
+ page.on("pageerror",e=>pageErrors.push(String(e?.message||e).slice(0,180)));
+ page.on("dialog",d=>{dialogs.push({type:d.type(),message:String(d.message()).slice(0,160)});d.dismiss().catch(()=>{})});
  // Diagnostics cover only public response metadata and pathnames, never source rows or cookies.
  page.on("download",d=>downloadEvents.push(d));
  context.on("page",popup=>{popupSources.push(popup.url().split("?")[0]);popup.on("download",d=>downloadEvents.push(d))});
@@ -29,9 +31,63 @@ try{
  await button.waitFor({state:"visible",timeout:45000});
  result.source_button_seen=true;
  result.button_html=String(await button.evaluate(el=>el.outerHTML)).slice(0,350);
+ result.table_browser_diagnostics=await page.evaluate(()=>{
+  const tables=[...document.querySelectorAll("table")].slice(0,8).map((t,i)=>({
+   table:i,row_count:t.querySelectorAll("tbody tr").length,
+   head:[...t.querySelectorAll("thead th")].slice(0,8).map(x=>(x.textContent||"").trim().slice(0,35))
+  }));
+  const selects=[...document.querySelectorAll("select")].slice(0,12).map((s,i)=>({
+   index:i,value:s.value,options:[...s.options].map(o=>o.value).slice(0,15)
+  }));
+  const pagination=[...document.querySelectorAll("button,[role=button]")].filter(b=>(b.getAttribute("aria-label")||"").match(/next|page|halaman|prev/i)).slice(0,12).map(b=>({
+   title:(b.getAttribute("aria-label")||"").slice(0,50),disabled:!!b.disabled
+  }));
+  return {tables,selects,pagination};
+ });
  let download;
  try{
   await button.click({timeout:25000});
+  // Site may require a second-stage download click in its own visible modal.
+  await page.waitForTimeout(1800);
+  const modal=page.locator('[role="dialog"],.modal.show').filter({visible:true});
+  result.modal_visible=await modal.count().catch(()=>0);
+  if(result.modal_visible){
+   const m=modal.first();
+   result.export_modal_text_before=(await m.innerText().catch(()=>"")).replace(/\s+/g," ").slice(0,650);
+   result.export_modal_controls=await m.locator("input,select,[role=combobox],[role=radio],[role=checkbox],textarea").evaluateAll(nodes=>nodes.slice(0,18).map(x=>({
+    tag:x.tagName,role:x.getAttribute("role"),type:x.getAttribute("type"),placeholder:(x.getAttribute("placeholder")||"").slice(0,60),
+    aria:(x.getAttribute("aria-label")||"").slice(0,60),required:!!x.required,checked:!!x.checked,disabled:!!x.disabled,
+    options:x.tagName==="SELECT"?[...x.options].map(o=>({label:(o.label||"").slice(0,35),value:o.value})).slice(0,10):undefined
+   }))).catch(()=>[]);
+  }
+  // Discovery only: inspect public-choice text for each questionnaire field.
+  // No personal details or questionnaire are submitted in public CI.
+  result.export_dropdown_choice_labels=[];
+  const choices=modal.first().locator('[role="combobox"]');
+  for(let i=0;i<Math.min(await choices.count().catch(()=>0),4);i++){
+   const control=choices.nth(i);
+   await control.click({timeout:1800}).catch(()=>{});
+   await page.waitForTimeout(300);
+   const options=await page.locator('[role="option"],.ant-select-item-option,.MuiAutocomplete-option').filter({visible:true}).allInnerTexts().catch(()=>[]);
+   result.export_dropdown_choice_labels.push({control_index:i,labels:options.slice(0,24).map(x=>x.trim().slice(0,80))});
+   await control.press("Escape").catch(()=>{});
+  }
+  const dialogButtons=await page.locator('[role="dialog"] button,.modal.show button').filter({visible:true}).all().catch(()=>[]);
+  result.export_modal_button_labels=await Promise.all(dialogButtons.slice(0,12).map(b=>b.innerText().then(t=>t.slice(0,50)).catch(()=>"")));
+  if(!downloadEvents.length&&result.modal_visible){
+   for(const b of dialogButtons){
+    const label=await b.innerText().catch(()=>"");
+    if(/^(unduh|download|csv|excel|xlsx|export|ekspor)(?:\s+(?:csv|excel|xlsx|data))?$/i.test(label.trim())){
+     await b.click({timeout:5000}).catch(()=>{});
+     result.export_modal_confirmation_clicked=true;await page.waitForTimeout(900);
+     result.export_modal_text_after=(await modal.first().innerText().catch(()=>"")).replace(/\s+/g," ").slice(0,650);
+     break;
+    }
+   }
+  }
+  result.browser_new_tab_count=context.pages().length;
+  result.ui_download_links=await page.locator('a[download],a[href^="blob:"]').count().catch(()=>0);
+  result.button_disabled_after_click=await button.isDisabled().catch(()=>null);
   if(downloadEvents.length)download=downloadEvents[0];
   else download=await Promise.race([
     page.waitForEvent("download",{timeout:35000}).catch(()=>null),
@@ -43,11 +99,15 @@ try{
   result.request_metadata=eventRequests.slice(-20);
   result.response_metadata=eventResponses.slice(-20);
   result.popup_paths=popupSources.slice(0,5);
+  result.page_errors=pageErrors.slice(-4);
+  result.native_dialogs=dialogs.slice(-4);
+  result.visible_post_click_buttons=(await page.locator("button:visible").allInnerTexts().catch(()=>[])).filter(t=>/unduh|export|excel|csv|xlsx/i.test(t)).slice(0,12).map(t=>t.slice(0,60));
   throw Error("Unduh_Data_click_failed_or_no_attachment");
  }
  result.request_metadata=eventRequests.slice(-20);
  result.response_metadata=eventResponses.slice(-20);
  result.popup_paths=popupSources.slice(0,5);
+ result.page_errors=pageErrors.slice(-4);
  const name=path.basename(download.suggestedFilename()).replace(/[^a-zA-Z0-9._-]/g,"_");
  const temp=path.join("/tmp","sli-kkp-source-"+name);
  await download.saveAs(temp);

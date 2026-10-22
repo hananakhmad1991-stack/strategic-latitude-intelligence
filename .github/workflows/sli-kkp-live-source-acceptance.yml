@@ -10,6 +10,9 @@ on:
       - 'tests/qa-sli-kkp-hatchery-provincial.mjs'
       - 'scripts/probe_kkp_big_live.mjs'
       - 'scripts/probe_kkp_public_download.mjs'
+      - 'scripts/export_kkp_hatchery_authorized.mjs'
+      - 'scripts/convert_kkp_hatchery_xlsx_to_csv.py'
+      - 'tests/test_sli_kkp_authorized_export_converter.py'
       - 'scripts/probe_sli_owner_worker_live.mjs'
       - 'tests/qa-sli-kkp-wpp-live.mjs'
       - '.github/workflows/sli-kkp-live-source-acceptance.yml'
@@ -24,6 +27,9 @@ on:
       - 'tests/qa-sli-kkp-hatchery-provincial.mjs'
       - 'scripts/probe_kkp_big_live.mjs'
       - 'scripts/probe_kkp_public_download.mjs'
+      - 'scripts/export_kkp_hatchery_authorized.mjs'
+      - 'scripts/convert_kkp_hatchery_xlsx_to_csv.py'
+      - 'tests/test_sli_kkp_authorized_export_converter.py'
       - 'scripts/probe_sli_owner_worker_live.mjs'
       - 'tests/qa-sli-kkp-wpp-live.mjs'
       - '.github/workflows/sli-kkp-live-source-acceptance.yml'
@@ -34,6 +40,41 @@ on:
         type: boolean
         required: true
         default: false
+      authorize_kkp_form_submission:
+        description: "I authorize ONE official KKP download questionnaire with my genuine contact secrets (no public source publication)"
+        type: boolean
+        required: true
+        default: false
+      kkp_category:
+        description: "True respondent category on KKP site"
+        type: choice
+        options: ["Umum", "Pelajar / Mahasiswa", "Lembaga Pemerintahan"]
+        default: "Umum"
+      kkp_purpose:
+        description: "True intended use; select Komersial for commercial SLI reuse review"
+        type: choice
+        options: ["Penelitian", "Komersial", "Tugas Sekolah / Kuliah", "Pemerintahan"]
+        default: "Penelitian"
+      kkp_format:
+        description: "Official export file format"
+        type: choice
+        options: ["CSV", "Excel"]
+        default: "CSV"
+      kkp_data_type:
+        description: "Select original KKP data category"
+        type: choice
+        options: ["Produksi Hasil Kelautan dan Perikanan", "Pelaku Usaha Kelautan dan Perikanan (Kusuka)", "Data Sarana dan Prasarana", "PDB Perikanan", "Angka Konsumsi Ikan (AKI)", "Ekspor impor hasil perikanan", "Metadata", "Data Proritas", "Lainnya"]
+        default: "Produksi Hasil Kelautan dan Perikanan"
+      kkp_rating:
+        description: "Your genuine KKP portal survey rating — select a value 1 through 5"
+        type: choice
+        options: ["select-rating", "1", "2", "3", "4", "5"]
+        default: "select-rating"
+      kkp_review:
+        description: "Your honest review of portal experience (at least 15 chars if rating 1–3)"
+        type: string
+        required: false
+        default: ""
 permissions:
   contents: read
 concurrency:
@@ -55,8 +96,16 @@ jobs:
           node --check js/sli-kkp-hatchery-provincial.mjs
           node --check scripts/probe_kkp_big_live.mjs
           node --check scripts/probe_kkp_public_download.mjs
+          node --check scripts/export_kkp_hatchery_authorized.mjs
+          python3 -m py_compile scripts/convert_kkp_hatchery_xlsx_to_csv.py
           node --check scripts/probe_sli_owner_worker_live.mjs
           node --test tests/qa-sli-kkp-wpp-live.mjs tests/qa-sli-kkp-visual-lab.mjs tests/qa-sli-kkp-hatchery-provincial.mjs
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Test synthetic official XLSX to CSV source gate (never uses actual KKP bulk data)
+        run: |
+          python -m pip install --disable-pip-version-check 'openpyxl==3.1.5'
+          python -m unittest discover -s tests -p 'test_sli_kkp_authorized_export_converter.py' -v
       - name: Probe official BIG feature polygons; never auto-publish vendor geometry
         run: node scripts/probe_kkp_big_live.mjs
       - name: Check real Owner Worker unauthenticated request is rejected
@@ -121,5 +170,51 @@ jobs:
         with:
           name: sli-owner-live-positive-audit-no-secrets
           path: artifacts/sli-owner-worker-live-acceptance.json
+          if-no-files-found: warn
+          retention-days: 7
+
+  authorized-hatchery-export:
+    if: github.event_name == 'workflow_dispatch' && inputs.authorize_kkp_form_submission == true && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    environment: sli-kkp-data-acquisition
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install XLSX reader for official CSV/XLSX strict source conversion
+        run: python -m pip install --disable-pip-version-check 'openpyxl==3.1.5'
+      - name: Install official-form browser client without browser binary download
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Confirm GitHub environment contact credentials exist without logging their values
+        env:
+          KKP_CONTACT_NAME: ${{ secrets.KKP_CONTACT_NAME }}
+          KKP_CONTACT_EMAIL: ${{ secrets.KKP_CONTACT_EMAIL }}
+        run: |
+          if [ -z "$KKP_CONTACT_NAME" ] || [ -z "$KKP_CONTACT_EMAIL" ]; then
+            echo "::error::Add KKP_CONTACT_NAME and KKP_CONTACT_EMAIL to environment sli-kkp-data-acquisition in GitHub before authorizing official form submission."
+            exit 1
+          fi
+      - name: Submit owner-approved official KKP questionnaire once, validate source privately
+        env:
+          KKP_EXPORT_CONSENT: 'true'
+          KKP_CONTACT_NAME: ${{ secrets.KKP_CONTACT_NAME }}
+          KKP_CONTACT_EMAIL: ${{ secrets.KKP_CONTACT_EMAIL }}
+          KKP_EXPORT_CATEGORY: ${{ inputs.kkp_category }}
+          KKP_EXPORT_PURPOSE: ${{ inputs.kkp_purpose }}
+          KKP_EXPORT_FORMAT: ${{ inputs.kkp_format }}
+          KKP_EXPORT_DATA_TYPE: ${{ inputs.kkp_data_type }}
+          KKP_EXPORT_RATING: ${{ inputs.kkp_rating }}
+          KKP_EXPORT_REVIEW: ${{ inputs.kkp_review }}
+        run: node scripts/export_kkp_hatchery_authorized.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sli-kkp-hatchery-authorized-audit-only-no-personal-data
+          path: |
+            artifacts/sli-kkp-authorized-hatchery-export-review.json
+            artifacts/kkp-hatchery-export-review.json
           if-no-files-found: warn
           retention-days: 7

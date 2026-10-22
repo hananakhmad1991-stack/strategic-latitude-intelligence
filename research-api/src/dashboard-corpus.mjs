@@ -11,10 +11,13 @@ function tokens(q){
 export function selectDashboardEvidence(payload,question,limit=7){
  const docs=Array.isArray(payload?.records)?payload.records:[];
  const q=tokens(question);if(!q.length)return [];
+ // Official KKP hatchery records are titled in English in source index; map
+ // their Indonesian equivalents before ranking, without changing any claim.
+ if(/pembenihan|benih ikan|bibit ikan/i.test(question))for(const token of ["hatchery","kkp"])if(!q.includes(token))q.push(token);
  const target=/\bccs\b|\bccus\b|carbon captur|penyimpanan karbon/i.test(question)?"ccs":
   /data center|\bai\b|artificial intelligence|pusat data/i.test(question)?"ai":
   /nikel|nickel|tembaga|copper|mineral|smelter|bauksit|kobalt|timah/i.test(question)?"minerals":
-  /perikanan|fisheries|fishery|nelayan|aquacult|rumput laut|seaweed|udang|shrimp|marine/i.test(question)?"marine":
+  /perikanan|fisheries|fishery|nelayan|aquacult|rumput laut|seaweed|udang|shrimp|marine|pembenihan|benih ikan|bibit ikan|hatchery|budidaya/i.test(question)?"marine":
   /pangan|pertanian|agricultur|food security|beras|gabah|padi|rice|gandum|wheat|bulog|bapanas|pupuk|fertilizer|swasembada|petani|hortikultur|horticultur|perkebunan|plantation|peternakan|livestock|pmdn|pma/i.test(question)?"food":
   /pln|listrik|kelistrikan|pembangkit|grid/i.test(question)?"power":
   /iklim|climate|banjir|flood|bencana|kehutanan|forestry/i.test(question)?"climate":null;

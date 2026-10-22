@@ -23,6 +23,13 @@ try{
  // 401 proves token requirement. HTTP 403/503/200 are not acceptable owner-auth gate passes.
  report.negative_auth_status=response.status===401&&result?.error==="owner_authentication_required"?"passed_unauth_401":"failed_or_unavailable";
  if(report.negative_auth_status!=="passed_unauth_401")throw Error("unexpected_unauth_status_"+response.status);
+ // A second wrong random-looking token proves a 64-character guessed token
+ // does not bypass the Owner gate. Never send a real or generated credential.
+ const invalid=await call({method:"POST",headers:{...headers,"x-sli-owner-test-token":"0".repeat(64)},body});
+ const rejected=await invalid.json().catch(()=>({}));
+ report.invalid_token_http=invalid.status;
+ report.invalid_token_status=invalid.status===401&&rejected.error==="owner_authentication_required"?"passed_wrong_token_401":"failed_wrong_token_gate";
+ if(report.invalid_token_status!=="passed_wrong_token_401")throw Error("unexpected_invalid_token_status_"+invalid.status);
  const token=process.env.SLI_OWNER_TEST_TOKEN;
  if(token&&process.env.SLI_PAID_OWNER_TEST_OPT_IN==="true"){
   if(token.length<48)throw Error("secret_length_invalid");
@@ -31,7 +38,12 @@ try{
   const v=await verified.json().catch(()=>({}));
   report.positive_auth_status=verified.ok&&v?.mode==="generative_rag"&&typeof v.answer==="string"&&v.answer.length>=160&&Array.isArray(v.sources)?
    "passed_model_response_structure":"failed_model_or_sources";
-  report.model_answer_fact_check="not_claimed_requires_manual_primary_evidence_review";
+  const numberedCitations=/\\[[1-9][0-9]*\\]/.test(v.answer)||/\\[\\*\\*[1-9][0-9]*\\*\\*\\]/.test(v.answer);
+  const officialSources=(v.sources||[]).filter(x=>String(x?.source_url||x?.url||"").startsWith("https://portaldata.kkp.go.id/")).length;
+  report.numbered_citations_present=numberedCitations;
+  report.official_kkp_sources_count=officialSources;
+  report.research_basis=String(v?.evidence_status||"").slice(0,110);
+  report.model_answer_fact_check="structural_only_primary_numeric_facts_require_manual_validation";
   report.source_count=Array.isArray(v.sources)?v.sources.length:null;
   if(report.positive_auth_status!=="passed_model_response_structure")throw Error("authenticated_response_failed_"+verified.status);
  }else{report.positive_auth_status="not_checked_missing_secret_or_explicit_paid_opt_in";}

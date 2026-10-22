@@ -79,3 +79,13 @@ test("BPS 2025/2026 Research AI table references never become numeric or license
  assert.match(matched[0].text,/do not extract, quote, compute, aggregate or infer numeric figures/);
  assert.equal(matched[0].publication_rights_status,"BPS_written_commercial_reproduction_permission_missing");
 });
+
+test("Indonesian pembenihan intent retrieves KKP source-linked hatchery evidence; no invented dataset rows",()=>{
+ const index=JSON.parse(readFileSync(new URL("../data/sli-research-unified-index.json",import.meta.url),"utf8"));
+ const chosen=selectDashboardEvidence(index,"Apa data pembenihan ikan Indonesia menurut provinsi tahun 2024?");
+ assert.ok(chosen.some(d=>d.dataset==="sli-kkp-hatchery-province-cards-2024.json"),"KKP hatchery source should be retrievable");
+ assert.ok(chosen.every(d=>d.source_url.startsWith("https://")));
+ const source=chosen.find(d=>d.dataset==="sli-kkp-hatchery-province-cards-2024.json");
+ assert.ok(/719750|33 visible province|hatchery/i.test(source.text),"Evidence must retain source gap context or hatchery scope");
+ assert.equal(source.source_type,"public_dashboard_source_record_not_claim_verified");
+});
