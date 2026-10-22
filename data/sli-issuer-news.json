@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T04:34:53.126172Z",
+  "updated_at_utc": "2026-10-22T05:07:47.728317Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,23 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_971709ad09f0e4068419c0",
+      "title": "Saham ANTM Melonjak 4,4 Persen, INCO Ikut Rebound, Simak Prospeknya - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQYlpXZTk4VU9Mb2JRcTNaVnprckdfY2dDeHBPb3o1NmJBbVFpVUVlZnc2QmRNV1ZTRmIyaEtDVGZuMEVtMWl4eVgxT2xkNGhHYkduY1pZaW5kX0dodzZVVEM5bEFhSEczUWZsZ2VWdGFXSHhQM1Z2SVJYVVdHc1ZfWVh4SVVHcWFWT1NEQkdzMnNQN1VsTTNfbzM1ME1FM3FxcDF1T2Njb0E3QUE2M2hGeW5uUFQ1UQ?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-22T04:52:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM",
+        "INCO"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_d98a9d28cdb0cb2d42a139",
       "title": "Diam-Diam Lo Kheng Hong Borong Lagi Saham PGN (PGAS) Semester II/2026 - Bisnis Indonesia Premium",
