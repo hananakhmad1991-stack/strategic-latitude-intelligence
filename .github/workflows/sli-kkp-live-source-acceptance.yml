@@ -9,7 +9,6 @@ on:
       - 'data/sli-kkp-hatchery-province-cards-2024.json'
       - 'tests/qa-sli-kkp-hatchery-provincial.mjs'
       - 'scripts/probe_kkp_big_live.mjs'
-      - 'scripts/probe_kkp_public_download.mjs'
       - 'scripts/export_kkp_hatchery_authorized.mjs'
       - 'scripts/kkp-questionnaire-controls.mjs'
       - 'scripts/kkp-official-download-observer.mjs'
@@ -31,7 +30,6 @@ on:
       - 'data/sli-kkp-hatchery-province-cards-2024.json'
       - 'tests/qa-sli-kkp-hatchery-provincial.mjs'
       - 'scripts/probe_kkp_big_live.mjs'
-      - 'scripts/probe_kkp_public_download.mjs'
       - 'scripts/export_kkp_hatchery_authorized.mjs'
       - 'scripts/kkp-questionnaire-controls.mjs'
       - 'scripts/kkp-official-download-observer.mjs'
@@ -95,7 +93,6 @@ jobs:
           node --check js/sli-kkp-visual-lab.mjs
           node --check js/sli-kkp-hatchery-provincial.mjs
           node --check scripts/probe_kkp_big_live.mjs
-          node --check scripts/probe_kkp_public_download.mjs
           node --check scripts/export_kkp_hatchery_authorized.mjs
           node --check scripts/kkp-questionnaire-controls.mjs
           node --check scripts/kkp-official-download-observer.mjs
@@ -124,9 +121,6 @@ jobs:
       - name: Verify official KKP dropdown controls without respondent or submission
         if: env.CHROME_BIN != ''
         run: node scripts/probe_kkp_questionnaire_controls.mjs
-      - name: Attempt original KKP Unduh Data for complete hatchery table
-        if: env.CHROME_BIN != ''
-        run: node scripts/probe_kkp_public_download.mjs
       - name: Publish KKP/BIG audit conclusion — failures do not become fabricated data
         if: always()
         run: |
@@ -135,7 +129,7 @@ jobs:
           out=pathlib.Path(os.environ["GITHUB_STEP_SUMMARY"])
           with out.open("a",encoding="utf8") as f:
            f.write("### KKP and BIG official source probes — NOT data approval\n")
-           for p in ("artifacts/sli-kkp-big-live-probe.json","artifacts/sli-kkp-hatchery-download-probe.json"):
+           for p in ("artifacts/sli-kkp-big-live-probe.json","artifacts/sli-kkp-questionnaire-public-control-probe.json"):
             q=pathlib.Path(p)
             if not q.exists(): f.write(f"- `{p}`: not checked\n");continue
             d=json.loads(q.read_text())
@@ -148,7 +142,6 @@ jobs:
           name: sli-kkp-big-hatchery-source-evidence-gates
           path: |
             artifacts/sli-kkp-big-live-probe.json
-            artifacts/sli-kkp-hatchery-download-probe.json
             artifacts/sli-kkp-questionnaire-public-control-probe.json
             artifacts/kkp-hatchery-export-review.json
           if-no-files-found: warn
