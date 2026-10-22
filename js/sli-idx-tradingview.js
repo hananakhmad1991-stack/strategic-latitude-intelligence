@@ -8,7 +8,9 @@ const SECTORS=[
  ["energy","Energi","Energy"],["minerals","Mineral","Minerals"],["coal","Batu bara","Coal"],
  ["food","Pangan","Food"],["technology","Teknologi","Technology"],
  ["infrastructure","Infrastruktur","Infrastructure"],["transport","Transportasi","Transport"],
- ["manufacturing","Manufaktur","Manufacturing"]
+ ["manufacturing","Manufaktur","Manufacturing"],
+ ["finance","Keuangan","Finance"],["property","Properti","Property"],
+ ["healthcare","Kesehatan","Healthcare"],["retail","Ritel","Retail"]
 ];
 const T=(id,en)=>document.documentElement.lang==="id"?id:en;
 const E=(t,c,txt)=>{const n=document.createElement(t);if(c)n.className=c;if(txt!==undefined)n.textContent=txt;return n};
@@ -21,7 +23,11 @@ const priority={
  technology:["TLKM","ISAT","EXCL","GOTO","DCII","MTEL","TOWR","TBIG","EMTK"],
  infrastructure:["JSMR","WIKA","PTPP","ADHI","SSIA","CMNP","TOTL","WTON","WEGE"],
  transport:["BIRD","SMDR","TMAS","ASSA","GIAA","WINS","MPMX","SHIP","MBSS"],
- manufacturing:["UNTR","AUTO","SMGR","INKP","TKIM","INTP","AVIA","KRAS","IMAS"]
+ manufacturing:["UNTR","AUTO","SMGR","INKP","TKIM","INTP","AVIA","KRAS","IMAS"],
+ finance:["BBCA","BBRI","BMRI","BBNI","BRIS","BBTN"],
+ property:["BSDE","CTRA","PWON","SMRA","ASRI"],
+ healthcare:["KLBF","SIDO","KAEF","INAF","HEAL","MIKA"],
+ retail:["AMRT","MIDI","ACES","MAPI","RALS"]
 };
 function watchlistConfig(rows,selected="all",limit=9){
  const ordered=SECTORS.filter(([s])=>selected==="all"||selected===s);
