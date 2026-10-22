@@ -2,7 +2,7 @@
    Static local links only, no analytics, redirects, network dependency or injected source data. */
 (()=>{'use strict';
 const groups=[
- ['Start & research tools','Mulai & perangkat riset','terminal','research','guide','membership'],
+ ['Start & research tools','Mulai & perangkat riset','terminal','research','expert','guide','membership'],
  ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','investment','entities','province','opportunity','gini','welfare','labs'],
  ['Energy, minerals & trade','Energi, mineral & perdagangan','energy','electricity','ruptl','minerals','trade','map'],
  ['Food & agriculture','Pangan & pertanian','food'],
@@ -16,6 +16,7 @@ const modules={
  home:['Home · Intelligence portal','Beranda · Portal intelijen','index.html#home','Find sectors and source-dated intelligence.','Temukan sektor dan intelijen bersumber bertanggal.'],
  datahub:['SLI Data Library · BPS / IEA / PLN','Perpustakaan Data SLI · BPS / IEA / PLN','sli-sector-data-library.html','Source-linked, dated crime, democracy, socioeconomic, critical mineral and environmental data; no missing figures invented.','Dataset kriminalitas, demokrasi, sosial-ekonomi, mineral IEA dan lingkungan, dengan periode serta status sumber yang jelas.'],
  terminal:['SLI Decision Terminal · Cross-source workspace','SLI Decision Terminal · Workspace lintas sumber','sli-decision-terminal.html','Issuer, attributed-news and policy search with local watchlists and Research AI handoff. Not a live trading terminal.','Pencarian emiten, berita, dan regulasi dengan watchlist lokal serta jalur DERGUBA AI. Bukan terminal perdagangan langsung.'],
+ expert:['SLI Expert Connect · Research & Expert Desk','SLI Expert Connect · Layanan Pakar & Riset','sli-expert-connect.html','Human-managed expert sourcing, specialist interviews and contracted research.','Pencarian pakar yang dikelola manusia, wawancara dan riset sesuai kontrak.'],
  research:['DERGUBA AI · SLI Research Intelligence · Owner Test','DERGUBA AI · Asisten Riset SLI · Uji Pemilik','sli-research-ai.html','Owner-only generative research is in limited testing; subscriber access is not active.','Riset generatif masih uji khusus pemilik dengan sumber terbatas; akses pelanggan belum aktif.'],
  membership:['Membership · Open / Pro / Enterprise','Keanggotaan · Open / Pro / Enterprise','sli-membership.html','Plans and early-access requests; payments are not active yet.','Paket dan permintaan akses awal; pembayaran belum aktif.'],
  guide:['User guide · Start here','Panduan pengguna · Mulai di sini','sli-user-guide.html','Task-based paths, navigation, dates, sources, filters and limitations.','Alur penggunaan, navigasi, tanggal, sumber dan batasan.'],
@@ -53,7 +54,7 @@ const modules={
 const related={
  terminal:['entities','research','policy','geopolitics'],
  entities:['investment','aihub','energy','policy'],
- research:['overview','terminal','macro','aihub'],membership:['overview','research','guide','glossary'],overview:['terminal','research','investment','energy'],investment:['province','opportunity','gini','labs'],map:['investment','energy','province'],
+ expert:['research','guide','overview','entities'],research:['expert','overview','terminal','macro'],membership:['overview','research','guide','glossary'],overview:['terminal','research','investment','energy'],investment:['province','opportunity','gini','labs'],map:['investment','energy','province'],
  trade:['minerals','energy','macro','marine'],energy:['electricity','ruptl','map','trade','food'],food:['marine','trade','macro','province'],marine:['food','trade','climate','province'],minerals:['map','trade','investment'],
  ai:['aihub','komdigi','digital','digitalgov'],policy:['geopolitics','ria','indo','climate'],geopolitics:['policy','indo','trade','energy'],macro:['opportunity','gini','investment'],
  opportunity:['province','gini','labs'],province:['opportunity','gini','map','electricity'],gini:['province','opportunity','macro','welfare'],
@@ -71,12 +72,12 @@ const text=(en,id)=>lang()==='id'?id:en;
 const label=id=>id==='detail'?(document.title||document.querySelector('h1')?.textContent||'SLI Dashboard').split('|')[0].trim().slice(0,90):(modules[id]?.[lang()==='id'?1:0]||id);
 const href=id=>'./'+modules[id][2];
 function node(tag,classes,txt){const n=document.createElement(tag);if(classes)n.className=classes;if(txt)n.textContent=txt;return n}
-const moduleIcon=Object.freeze({home:'globe',overview:'government',terminal:'technology',research:'technology',entities:'building',investment:'project',macro:'project',opportunity:'project',province:'globe',energy:'energy',food:'government',marine:'globe',map:'globe',trade:'globe',minerals:'mineral',electricity:'energy',ruptl:'energy',ai:'technology',aihub:'technology',policy:'government',geopolitics:'globe',climate:'globe',ria:'government',guide:'link',glossary:'link',freshness:'project'});
+const moduleIcon=Object.freeze({home:'globe',overview:'government',terminal:'technology',research:'technology',expert:'building',entities:'building',investment:'project',macro:'project',opportunity:'project',province:'globe',energy:'energy',food:'government',marine:'globe',map:'globe',trade:'globe',minerals:'mineral',electricity:'energy',ruptl:'energy',ai:'technology',aihub:'technology',policy:'government',geopolitics:'globe',climate:'globe',ria:'government',guide:'link',glossary:'link',freshness:'project'});
 function link(id,cls){const a=node('a',cls),identity=window.SLIEntityIdentity;if(identity){const i=identity.icon(moduleIcon[id]||'building');i.classList.add('sli-nav-icon');a.append(i)}a.append(node('span','',label(id)));a.href=href(id);return a}
 
 /* Unified SLI masthead for detailed dashboards. Index #home and Research AI
    retain their purpose-built headers. Other pages keep original data and tools. */
-function dashboardPage(){return path!=='sli-research-ai.html'&&path!=='sli-source-viewer.html'}
+function dashboardPage(){return path!=='sli-research-ai.html'&&path!=='sli-expert-connect.html'&&path!=='sli-source-viewer.html'}
 function mastLink(to,caption,current){
  const a=node('a','sli-platform-link',caption);a.href=to;
  if(current)a.setAttribute('aria-current','page');return a;
@@ -123,7 +124,8 @@ function renderPlatformMast(){
   ['Compare provinces','Bandingkan provinsi','./provincial-intelligence.html'],
   ['Find a company','Cari perusahaan','./sli-entities.html'],
   ['Check original sources','Periksa sumber data','./sli-sector-data-library.html'],
-  ['Analyze with DERGUBA','Analisis dengan DERGUBA','./sli-research-ai.html']
+  ['Analyze with DERGUBA','Analisis dengan DERGUBA','./sli-research-ai.html'],
+  ['Find an expert','Carikan pakar','./sli-expert-connect.html']
  ];
  const quickLinks=node('div','sli-explore-quick-links');
  for(const [en,id,url] of shortcuts){const a=node('a','sli-explore-quick-link',text(en,id));a.href=url;quickLinks.append(a)}
@@ -188,7 +190,8 @@ function renderPlatformMast(){
  primary.append(explorer);
  primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
  primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'||path==='sli-issuer.html'));
- primary.append(mastLink('./sli-research-ai.html','DERGUBA AI',false));
+ primary.append(mastLink('./sli-research-ai.html','DERGUBA AI',current==='research'));
+ primary.append(mastLink('./sli-expert-connect.html','Expert Connect',current==='expert'));
  
  const tools=node('div','sli-platform-tools');
  // All specialist dashboards share the same persisted EN/ID preference as the homepage.
@@ -239,7 +242,7 @@ function renderBar(){
  const sep=node('span','sli-separator',' › ');position.append(sep,node('strong','',label(current)));
  const actions=node('div','sli-universal-actions');
  const guide=link('guide','sli-guide-link');guide.textContent=text('Help & how to use','Panduan pemakaian');
- actions.append(link('research'),link('membership'),guide,link('glossary'),link('freshness'))
+ actions.append(link('research'),link('expert'),link('membership'),guide,link('glossary'),link('freshness'))
  // Explore Data lives in the single shared masthead above; never duplicate it here.
  const relation=node('div','sli-related-links');
  relation.append(node('span','',text('Related:','Terkait:')));
@@ -251,7 +254,8 @@ function renderBar(){
   ['Regions','Daerah','./provincial-intelligence.html'],
   ['Companies & actors','Perusahaan & aktor','./sli-entities.html'],
   ['Original sources','Sumber asli','./sli-sector-data-library.html'],
-  ['Analyze','Analisis','./sli-research-ai.html']
+  ['Analyze','Analisis','./sli-research-ai.html'],
+   ['Find experts / commission research','Carikan pakar / pesan riset','./sli-expert-connect.html']
  ];
  for(const [en,id,url] of pathItems){
   const a=node('a','sli-research-step',text(en,id));a.href=url;
