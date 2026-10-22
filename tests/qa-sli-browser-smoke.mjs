@@ -131,6 +131,10 @@ for(const viewport of [{width:360,height:780},{width:390,height:844},{width:1366
   assert.ok(metrics.promptVisible&&metrics.promptWidth>160,"Research prompt not accessible: "+JSON.stringify(metrics));
   assert.equal(metrics.overviewLink,false,"Legacy overview link still visible");
   assert.equal(metrics.ownerCollapsed,true,"Owner diagnostics must be collapsed by default");
+  await page.locator("#raOwnerPanel > summary").click();
+  assert.equal(await page.locator("#raOwnerPanel").getAttribute("open"),"","Owner details must open intentionally");
+  await page.locator("#raOwnerPanel > summary").click();
+  assert.equal(await page.locator("#raOwnerPanel").getAttribute("open"),null,"Owner details must close again");
   assert.equal(metrics.cssLoaded,true,"Updated DERGUBA CSS link missing");
   await page.screenshot({path:path.join(outDir,"derguba-"+viewport.width+".png"),fullPage:false});
  });
