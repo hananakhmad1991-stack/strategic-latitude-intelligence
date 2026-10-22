@@ -3955,12 +3955,14 @@
       "market_cap_currency": null,
       "closing_price": null,
       "shares_outstanding": null,
-      "revenue": null,
-      "net_income": null,
+      "revenue": 2395,
+      "net_income": 101,
       "total_assets": null,
-      "financial_period": null,
-      "financial_source_url": null,
-      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan."
+      "financial_period": "FY2025 · year ended 2025-12-31",
+      "financial_source_url": "https://www.medcoenergi.com/id/investor/investor-tools/tabel-finansial/",
+      "source_note": "Sumber hanya memverifikasi aktivitas/grup dan perlu pemutakhiran bila ada perubahan.",
+      "financial_currency": "USD million",
+      "financial_basis": "Company investor financial table, FY2025 in USD million. Revenue and Net Income as published; Net Income must not be relabelled as attributable to owners without audit."
     },
     {
       "id": "enrg-root",
@@ -4258,15 +4260,5 @@
       "source_note": "Keanggotaan holding menurut profil ID FOOD, bukan konfirmasi persentase saham pada 2026."
     }
   ],
-  "financial_methodology": {
-    "market_cap": "Closing share price × shares outstanding at a matched as-of date; account for treasury shares, corporate actions and share class; never use issued capital or project CAPEX as substitute.",
-    "market_cap_status": "not_ingested",
-    "listed_source": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/",
-    "ownership_source": "https://www.idx.co.id/id/perusahaan-tercatat/data-kepemilikan-saham/",
-    "financial_reports_source": "https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan/",
-    "disclosure_source": "https://www.idx.co.id/id/perusahaan-tercatat/keterbukaan-informasi/",
-    "accounting_note": "Revenue, net income and total assets must carry issuer/currency, FY/Q period, report type and original URL; blank means unknown, not zero.",
-    "as_of": "2026-10-20",
-    "available_examples": "FY2025 consolidated financial values from Telkom investor relations and PTBA annual report. Values not updated to subsequent quarters without reconciling source periods."
-  }
+  "financial_methodology": "[object Object] FY2025 MEDC revenue USD 2,395 million and Net Income USD 101 million are from the company's public 2014-2025 investor financial table; revenue and income are different lines and cannot substitute for total assets. Null remains for unsupported asset/mkt-cap figures."
 }
