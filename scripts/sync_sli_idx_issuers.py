@@ -77,6 +77,17 @@ def build_snapshot(official, previous, as_of):
         if ticker in out:
             raise ValueError("Duplicate ticker in official API: " + ticker)
         old = prior.get(ticker, {})
+        # Preserve separately reviewed public fundamentals on official-directory refresh.
+        # The directory endpoint contains names, NOT finance; do not erase approved
+        # figures or infer new ones from it. Period + evidence URL are mandatory.
+        has_financial_evidence = (
+            isinstance(old.get("financial_source_url"), str)
+            and old["financial_source_url"].startswith("https://")
+            and bool(old.get("financial_period"))
+            and bool(old.get("financial_currency"))
+        )
+        def retained(field):
+            return old.get(field) if has_financial_evidence else None
         out[ticker] = {
             "ticker": ticker,
             "name": name.strip(),
@@ -85,13 +96,15 @@ def build_snapshot(official, previous, as_of):
             "entity_type": "listed_issuer",
             "verification": "official_exchange_snapshot",
             "source_url": SOURCE + "/" + ticker,
-            "financial_source_url": None,
+            "financial_source_url": retained("financial_source_url"),
             "market_cap": None,
             "market_cap_as_of": None,
-            "financial_period": None,
-            "revenue": None,
-            "net_income": None,
-            "total_assets": None,
+            "financial_period": retained("financial_period"),
+            "financial_currency": retained("financial_currency"),
+            "financial_basis": retained("financial_basis"),
+            "revenue": retained("revenue"),
+            "net_income": retained("net_income"),
+            "total_assets": retained("total_assets"),
         }
     if len(out) < 500:
         raise ValueError("Insufficient valid names after official API filtering")
