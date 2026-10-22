@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-22T04:33:42.685393+00:00",
-  "status": "partial",
+  "checked_at_utc": "2026-10-22T05:07:32.917082+00:00",
+  "status": "ok",
   "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
   "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
   "cadence": "Automated every 30 minutes subject to GitHub Action scheduling. Browser checks published raw repository JSON every 3 minutes.",
@@ -11,12 +11,12 @@
       "name": "Brent crude futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 110.87,
+      "value": 110.9,
       "previous": 99.25,
-      "change": 11.62,
-      "change_percent": 11.7078,
+      "change": 11.65,
+      "change_percent": 11.738,
       "unit": "USD/bbl",
-      "observed_at_utc": "2026-10-22T04:22:57+00:00",
+      "observed_at_utc": "2026-10-22T04:57:21+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF",
       "symbol": "BZ=F",
@@ -113,7 +113,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 110.870003
+          "value": 110.900002
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -123,12 +123,12 @@
       "name": "WTI crude futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 98.66,
+      "value": 98.67,
       "previous": 94.59,
-      "change": 4.07,
-      "change_percent": 4.3028,
+      "change": 4.08,
+      "change_percent": 4.3134,
       "unit": "USD/bbl",
-      "observed_at_utc": "2026-10-22T04:23:30+00:00",
+      "observed_at_utc": "2026-10-22T04:57:30+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/CL%3DF",
       "symbol": "CL=F",
@@ -225,7 +225,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 98.660004
+          "value": 98.669998
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -235,12 +235,12 @@
       "name": "US natural gas futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 2.76,
+      "value": 2.744,
       "previous": 2.965,
-      "change": -0.205,
-      "change_percent": -6.914,
+      "change": -0.221,
+      "change_percent": -7.4536,
       "unit": "USD/MMBtu",
-      "observed_at_utc": "2026-10-22T04:23:27+00:00",
+      "observed_at_utc": "2026-10-22T04:56:59+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/NG%3DF",
       "symbol": "NG=F",
@@ -337,7 +337,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 2.76
+          "value": 2.744
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -347,12 +347,12 @@
       "name": "Copper futures (COMEX)",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 6.48,
+      "value": 6.4815,
       "previous": 6.7595,
-      "change": -0.2795,
-      "change_percent": -4.1349,
+      "change": -0.278,
+      "change_percent": -4.1127,
       "unit": "USD/lb",
-      "observed_at_utc": "2026-10-22T04:23:40+00:00",
+      "observed_at_utc": "2026-10-22T04:57:20+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/HG%3DF",
       "symbol": "HG=F",
@@ -449,7 +449,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 6.48
+          "value": 6.4815
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -459,12 +459,12 @@
       "name": "Gold futures",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 4104.9,
+      "value": 4108.1,
       "previous": 4376.4,
-      "change": -271.5,
-      "change_percent": -6.2037,
+      "change": -268.3,
+      "change_percent": -6.1306,
       "unit": "USD/troy oz",
-      "observed_at_utc": "2026-10-22T04:23:33+00:00",
+      "observed_at_utc": "2026-10-22T04:57:32+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/GC%3DF",
       "symbol": "GC=F",
@@ -561,7 +561,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 4104.899902
+          "value": 4108.100098
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -571,12 +571,12 @@
       "name": "Silver futures",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 56.375,
+      "value": 56.42,
       "previous": 65.932,
-      "change": -9.557,
-      "change_percent": -14.4952,
+      "change": -9.512,
+      "change_percent": -14.427,
       "unit": "USD/troy oz",
-      "observed_at_utc": "2026-10-22T04:23:31+00:00",
+      "observed_at_utc": "2026-10-22T04:57:27+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/SI%3DF",
       "symbol": "SI=F",
@@ -673,7 +673,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 56.375
+          "value": 56.419998
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -793,8 +793,7 @@
           "value": 16632.36136
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
-      "availability": "last_good_source_unavailable"
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
     },
     {
       "id": "copper_monthly",
@@ -911,8 +910,7 @@
           "value": 13542.82087
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
-      "availability": "last_good_source_unavailable"
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
     },
     {
       "id": "aluminium",
@@ -1029,8 +1027,7 @@
           "value": 3158.265
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
-      "availability": "last_good_source_unavailable"
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
     },
     {
       "id": "tin",
@@ -1147,8 +1144,7 @@
           "value": 52881.99864
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
-      "availability": "last_good_source_unavailable"
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
     },
     {
       "id": "coal_australia",
@@ -1265,8 +1261,7 @@
           "value": 140.39679
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
-      "availability": "last_good_source_unavailable"
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
     },
     {
       "id": "palm_oil",
@@ -1383,26 +1378,11 @@
           "value": 1106.46993
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
-      "availability": "last_good_source_unavailable"
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
     }
   ],
-  "errors": {
-    "nickel": "ValueError: No IMF monthly observations",
-    "copper_monthly": "ValueError: No IMF monthly observations",
-    "aluminium": "ValueError: No IMF monthly observations",
-    "tin": "ValueError: No IMF monthly observations",
-    "coal_australia": "ValueError: No IMF monthly observations",
-    "palm_oil": "ValueError: No IMF monthly observations"
-  },
-  "fallback_ids": [
-    "nickel",
-    "copper_monthly",
-    "aluminium",
-    "tin",
-    "coal_australia",
-    "palm_oil"
-  ],
+  "errors": {},
+  "fallback_ids": [],
   "official_indonesia_reference": [
     {
       "id": "hba",
