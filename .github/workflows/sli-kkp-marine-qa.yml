@@ -13,6 +13,8 @@ on:
       - 'data/sli-kkp-regional-historical-2019-2024.json'
       - 'js/sli-marine-regional-history.mjs'
       - 'js/sli-kkp-wpp-live.mjs'
+      - 'js/sli-kkp-visual-lab.mjs'
+      - 'tests/qa-sli-kkp-visual-lab.mjs'
       - 'data/sli-kkp-hatchery-province-cards-2024.json'
       - 'js/sli-kkp-hatchery-provincial.mjs'
       - 'tests/qa-sli-kkp-hatchery-provincial.mjs'
@@ -46,6 +48,8 @@ on:
       - 'data/sli-kkp-regional-historical-2019-2024.json'
       - 'js/sli-marine-regional-history.mjs'
       - 'js/sli-kkp-wpp-live.mjs'
+      - 'js/sli-kkp-visual-lab.mjs'
+      - 'tests/qa-sli-kkp-visual-lab.mjs'
       - 'data/sli-kkp-hatchery-province-cards-2024.json'
       - 'js/sli-kkp-hatchery-provincial.mjs'
       - 'tests/qa-sli-kkp-hatchery-provincial.mjs'
@@ -89,8 +93,9 @@ jobs:
           node --check js/sli-marine-source-atlas.mjs
           node --check js/sli-marine-regional-history.mjs
           node --check js/sli-kkp-wpp-live.mjs
+          node --check js/sli-kkp-visual-lab.mjs
           node --check js/sli-kkp-hatchery-provincial.mjs
-          node --test tests/qa-sli-marine-fisheries.mjs tests/qa-sli-kkp-source-atlas.mjs tests/qa-sli-kkp-regional-history.mjs tests/qa-sli-kkp-wpp-live.mjs tests/qa-sli-kkp-hatchery-provincial.mjs tests/qa-sli-information-architecture.mjs
+          node --test tests/qa-sli-marine-fisheries.mjs tests/qa-sli-kkp-source-atlas.mjs tests/qa-sli-kkp-regional-history.mjs tests/qa-sli-kkp-wpp-live.mjs tests/qa-sli-kkp-visual-lab.mjs tests/qa-sli-kkp-hatchery-provincial.mjs tests/qa-sli-information-architecture.mjs
           python -m unittest discover -s tests -p 'test_sli_kkp_*.py' -v
           python -m py_compile scripts/watch_kkp_dcat.py scripts/import_kkp_hatchery_export.py
       - name: Document source verification boundary
