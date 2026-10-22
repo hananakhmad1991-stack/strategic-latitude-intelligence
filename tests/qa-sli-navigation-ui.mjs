@@ -79,3 +79,14 @@ test('DERGUBA AI and Expert Connect are adjacent, visible top-level quick action
  assert.ok(home.includes('sli-navigation.js?v=20261019-id-audit9&expert=20261023-top1'),'Home must cache-bust top nav JS');
  assert.ok(home.includes('sli-navigation.css?v=20261018-menu-flash2&expert=20261023-top1'),'Home must cache-bust top nav CSS');
 });
+
+test('Expert Connect uses its own compact navigation and never injects off-topic OSINT',()=>{
+ const d=setup('sli-expert-connect.html','<main id="sliExpertMain"><header class="sli-expert-header"><nav><a href="./index.html#home">Home</a><a href="./sli-research-ai.html">DERGUBA AI</a></nav></header><section class="sli-expert-hero"><h1 id="expertTitle">Expert Connect</h1></section></main>');
+ const doc=d.window.document;
+ assert.equal(doc.querySelectorAll('#sliUniversalNavigation').length,0,'No six-link universal breadcrumb before the research hero');
+ assert.equal(doc.querySelectorAll('#sliPlatformMast').length,0,'Use the dedicated service landing header');
+ assert.equal(doc.querySelectorAll('#sliSecondaryEvidenceLoader').length,0,'No secondary-news widget request on service pages');
+ assert.ok(doc.querySelector('#expertTitle')?.textContent.includes('Expert Connect'),'Original landing content remains');
+ assert.ok(doc.querySelector('.sli-expert-header a[href="./sli-research-ai.html"]'),'DERGUBA remains reachable from the compact header');
+ d.window.close();
+});

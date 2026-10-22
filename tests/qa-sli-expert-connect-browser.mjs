@@ -8,6 +8,20 @@ try{
   page.on('pageerror',error=>errors.push(error.message));
   page.on('request',req=>{if(req.method()==='POST')errors.push('Unexpected POST: '+req.url())});
   await page.goto('http://127.0.0.1:8765/sli-expert-connect.html?service=consultation',{waitUntil:'domcontentloaded'});
+  // This is a focused service request, not an intelligence dashboard.
+  // Its custom header and hero must remain visible without the injected universal panel or OSINT.
+  assert.equal(await page.locator('#sliUniversalNavigation').count(),0,'No generic breadcrumb/toolbar on Expert Connect');
+  assert.equal(await page.locator('#sliSecondaryEvidenceLoader').count(),0,'No sitewide news loader on Expert Connect');
+  assert.equal(await page.getByText('News & OSINT',{exact:false}).count(),0,'No off-topic news card above expert request');
+  const header=await page.locator('.sli-expert-header').boundingBox();
+  const hero=await page.locator('#expertTitle').boundingBox();
+  assert.ok(header&&hero,'The header and hero must render');
+  assert.ok(hero.y<470,'Client-facing heading should appear above the fold '+JSON.stringify({width,header,hero}));
+  if(width<=390){
+   const nav=await page.locator('.sli-expert-header nav').boundingBox();
+   const languages=await page.locator('.sli-expert-languages').boundingBox();
+   assert.ok(nav&&languages&&Math.abs(nav.y-languages.y)<5,'Navigation and language switch share one compact row '+JSON.stringify({width,nav,languages}));
+  }
   assert.equal(await page.locator('#expertService').inputValue(),'consultation');
   await page.locator('#expertObjective').fill('I need a qualified assessment of Indonesia data center policy implementation.');
   await page.locator('#expertProfile').fill('Independent specialist on digital policy, energy infrastructure and investment.');
