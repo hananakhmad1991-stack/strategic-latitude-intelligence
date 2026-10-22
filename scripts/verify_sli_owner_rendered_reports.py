@@ -61,7 +61,8 @@ if "--ci-pdf-only" in sys.argv:
       "Human visual screenshot inspection still required",
       "Synthetic fixtures are not actual owner live model output",
       "Current consolidated statutory status not certified"]
-    },indent=2)+"\\n",encoding="utf8")
+    },indent=2)+"\n",encoding="utf8")
+    json.loads((root/"ci-rendered-validation.json").read_text(encoding="utf8"))
     raise SystemExit(0)
 
 root=Path("artifacts/sli-owner-rendered-reports")
