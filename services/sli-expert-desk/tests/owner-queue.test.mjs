@@ -69,7 +69,7 @@ test('Strict mutation Origin, OPTIONS CORS and owner-scoped health',async()=>{
  assert.equal(opt.headers.get('Access-Control-Allow-Credentials'),'true');
  assert.equal((await handleRequest(request('/api/health'),env(db),owner)).status,200);
  const fromWorker=await (await import('../src/index.mjs')).default.fetch(request('/api/health'),env(db),{});
- assert.equal(fromWorker.status,401);
+ assert.equal(fromWorker.status,503,'No configured authentication must fail closed');
 });
 test('Strict form validation, no implicit data capture, contacts remain private',()=>{
  assert.equal(validateBrief(valid).contact_email,'research@example.org');
