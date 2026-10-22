@@ -3,7 +3,7 @@
 (()=>{'use strict';
 const groups=[
  ['Start & research tools','Mulai & perangkat riset','terminal','research','guide','membership'],
- ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','investment','entities','province','opportunity','gini','welfare','labs'],
+ ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','greenworkforce','investment','entities','province','opportunity','gini','welfare','labs'],
  ['Energy, minerals & trade','Energi, mineral & perdagangan','energy','electricity','ruptl','minerals','trade','map'],
  ['Food & agriculture','Pangan & pertanian','food'],
  ['Marine & fisheries','Kelautan & perikanan','marine'],
@@ -21,6 +21,7 @@ const modules={
  guide:['User guide · Start here','Panduan pengguna · Mulai di sini','sli-user-guide.html','Task-based paths, navigation, dates, sources, filters and limitations.','Alur penggunaan, navigasi, tanggal, sumber dan batasan.'],
  entities:['Entity Intelligence · People & Projects','Intelijen Entitas · Tokoh & Proyek','sli-entities.html','Browse source-dated organizations, people and projects across sectors.','Telusuri organisasi, tokoh, dan proyek lintas sektor bersumber bertanggal.'],
  investment:['Investment · Project Tracker','Investasi · Pelacak Proyek','index.html#investment','Projects, investors, capital and execution status.','Proyek, investor, modal dan status pelaksanaan.'],
+ greenworkforce:['Green Workforce Intelligence · Bappenas 2025','Intelijen Tenaga Kerja Hijau · Bappenas 2025','green-workforce-intelligence.html','2025–2029 green employment scenarios across 17 economic sectors; forecasts, not actuals.','Skenario pekerjaan hijau 2025–2029 untuk 17 sektor ekonomi; proyeksi, bukan realisasi.'],
  macro:['Macroeconomic Intelligence','Intelijen Makroekonomi','indonesia-macroeconomic-intelligence.html','GDP, inflation, external balances and dated national data.','PDB, inflasi, neraca eksternal dan data nasional.'],
  opportunity:['Provincial Comparison & Stress','Perbandingan & Tekanan Provinsi','provincial-opportunity-engine.html','Compare 38 provincial economies and conditional stress, not predicted returns.','Bandingkan 38 provinsi dan skenario, bukan prediksi keuntungan.'],
  province:['Provincial Intelligence · Dossiers','Intelijen Provinsi · Profil Daerah','provincial-intelligence.html','Industry, energy, PDRB/GRDP, Gini and bounded economic scenarios.','Industri, energi, PDRB, Gini dan skenario ekonomi bersyarat.'],
