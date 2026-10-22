@@ -10,6 +10,16 @@ try{
   const page=await browser.newPage({viewport:{width,height:860},reducedMotion:'reduce'});
   page.setDefaultTimeout(12000);
   try{
+   // SLI source bridge redirects the issuer JSON request to canonical raw GitHub/main.
+   // During PR review, raw/main still has the OLD catalogue. Intercept that single URL
+   // using the checked-out branch fixture to genuinely test the proposed 267 entries.
+   const localRegister=await page.request.get(origin+'data/sli-idx-issuer-universe.json');
+   assert.ok(localRegister.ok(),'Static fixture must load before installing route');
+   const localRegisterBody=await localRegister.body();
+   await page.route('**/data/sli-idx-issuer-universe.json*',async route=>{
+     if(route.request().url().startsWith(origin))return route.continue();
+     await route.fulfill({status:200,contentType:'application/json',body:localRegisterBody});
+   });
    await page.goto(origin+'index.html#home',{waitUntil:'domcontentloaded',timeout:25000});
    const directResponse=await page.request.get(origin+'data/sli-idx-issuer-universe.json');
    const directRecords=(await directResponse.json()).records.length;
