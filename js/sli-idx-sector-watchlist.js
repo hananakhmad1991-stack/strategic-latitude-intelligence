@@ -61,6 +61,28 @@ function renderUI(){
   candidates.length+" kandidat kode saham di 12 sektor riset; "+verifiedCount+" snapshot yang telah direkonsiliasi secara resmi. Ini BUKAN sensus seluruh emiten BEI; sebagian kode bisa berubah. Widget harga hanya menampilkan sebagian kecil pilihan penyedia."
   )));
  const selected=activeIssuerList(candidates,sector);
+ const financialRows=selected.filter(x=>x.financial_source_url&&x.financial_period&&
+   ["revenue","net_income","total_assets"].some(k=>typeof x[k]==="number"&&Number.isFinite(x[k])));
+ const verifiedAssets=new Set(["MEDC","INCO","BYAN","AADI","ASII"]);
+ const review=E("div","sli-idx-sectoral-coverage");
+ const rate=E("strong",null,T("Financial evidence: ","Bukti keuangan: ")+financialRows.length+"/"+selected.length);
+ const actorRate=E("span",null,T(" · "+selected.filter(x=>verifiedAssets.has(x.ticker)).length+" issuer concession/actor dossiers"," · "+selected.filter(x=>verifiedAssets.has(x.ticker)).length+" dossier aktor/konsesi"));
+ const caution=E("small",null,T(
+  "N/A means no source-reconciled figure, never zero. Periods/currencies vary; bank income is not industrial revenue. Specific issuer dossiers distinguish direct shareholders, officers, country links and concessions from unverified ultimate owners.",
+  "N/A berarti angka belum direkonsiliasi dengan sumber, bukan nol. Periode/mata uang berbeda; pendapatan bunga bank bukan pendapatan industri. Dossier emiten memisahkan pemegang saham langsung, pengurus, keterkaitan negara dan konsesi dari pemilik manfaat akhir yang belum terverifikasi."
+ ));
+ review.append(rate,actorRate,caution);
+ const verifiedList=E("div","sli-idx-sectoral-finance-links");
+ financialRows.forEach(x=>{
+   const a=link(tickerUrl(x.ticker),x.ticker+" · "+x.financial_period+" ↗");
+   a.title=T("Source-linked financials and company actors","Keuangan bersumber dan aktor perusahaan");
+   verifiedList.append(a);
+ });
+ if(financialRows.length)review.append(verifiedList);
+ const directory=link("./sli-entities.html",T("Explore company/people/ownership relationships ↗","Jelajahi hubungan perusahaan/orang/kepemilikan ↗"));
+ directory.className="sli-idx-sectoral-directory";
+ review.append(directory);
+ root.append(review);
  const cols=E("div","sli-idx-sectoral-columns");
  const market=E("section","sli-idx-sectoral-quotes");
  market.append(E("h4",null,T("Market watchlist · IDX quotations","Watchlist pasar · harga saham IDX")));

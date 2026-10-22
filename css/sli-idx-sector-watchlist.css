@@ -40,3 +40,13 @@
 .sli-idx-sectoral-rest{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:7px}
 .sli-idx-sectoral-rest a{overflow-wrap:anywhere}
 @media(max-width:600px){.sli-idx-sectoral-tabs{gap:6px}.sli-idx-sectoral-tab{min-height:44px}}
+
+/* Honest financial evidence coverage across all 12 research-sector candidates. */
+.sli-idx-sectoral-coverage{display:flex;flex-wrap:wrap;gap:5px 9px;align-items:baseline;margin:0 0 14px;padding:12px 14px;border:1px solid #4c6b7c;border-radius:10px;background:#102e43;color:#f2dfbd}
+.sli-idx-sectoral-coverage strong{font-size:13px}
+.sli-idx-sectoral-coverage span{font-size:11px;color:#d6dfeb}
+.sli-idx-sectoral-coverage small{width:100%;font-size:11px;color:#bdd1de;line-height:1.6}
+.sli-idx-sectoral-finance-links{display:flex;flex-wrap:wrap;gap:7px;width:100%}
+.sli-idx-sectoral-finance-links a,.sli-idx-sectoral-directory{font-size:11px;color:#f4d5a0;text-decoration:underline;text-underline-offset:3px}
+.sli-idx-sectoral-directory{display:inline-flex;align-self:center}
+.sli-idx-sectoral-coverage a:focus-visible{outline:2px solid #ffe1b1;outline-offset:3px}

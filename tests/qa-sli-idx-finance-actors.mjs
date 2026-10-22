@@ -19,14 +19,14 @@ test('260-ticker catalog exposes 12 sectors while retaining explicit not-a-censu
  assert.match(s,/issuerQuery=/);
  assert.match(s,/NOT the full IDX issuer universe/);
  assert.match(s,/candidates.length/);
- assert.match(get('index.html'),/js\/sli-idx-sector-watchlist\.js\?v=20261022-actorsfinance2/);
+ assert.match(get('index.html'),/js\/sli-idx-sector-watchlist\.js\?v=20261022-financecoverage3/);
 });
 
 test('dated fundamentals have explicit primary-source provenance and do not invent N/A',()=>{
  const finance=issuers.records.filter(x=>x.revenue!==null||x.net_income!==null||x.total_assets!==null);
- assert.equal(finance.length,3,'This tranche validates three issuer reports, not every ticker');
+ assert.equal(finance.length,4,'Only four issuer reports have selected source-reviewed fundamental cells');
  const by=Object.fromEntries(finance.map(x=>[x.ticker,x]));
- assert.deepEqual(finance.map(x=>x.ticker).sort(),['MEDC','PTBA','TLKM']);
+ assert.deepEqual(finance.map(x=>x.ticker).sort(),['BBRI','MEDC','PTBA','TLKM']);
  assert.equal(by.MEDC.revenue,2395);
  assert.equal(by.MEDC.net_income,101);
  assert.equal(by.MEDC.financial_currency,'USD million');
@@ -127,4 +127,14 @@ test('asset rights and cross-border actors preserve source-backed relation types
    assert.notEqual(link.relationship,'verified_ultimate_beneficial_owner','Corporate jurisdiction cannot establish a natural-person UBO');
   }
  }
+});
+
+test('BRI 2025 audited-period financial highlights retain measurement semantics', () => {
+ const bri=issuers.records.find(r=>r.ticker==='BBRI');
+ assert.equal(bri.total_assets, 2135371105);
+ assert.equal(bri.net_income, 57132365);
+ assert.equal(bri.financial_currency, 'IDR million');
+ assert.match(bri.financial_period, /FY2025/);
+ assert.equal(bri.revenue, null, 'Bank interest must not become generic industrial revenue');
+ assert.match(bri.financial_source_url, /^https:\/\/www\.ir-bri\.com\/financial_highlights\.html$/);
 });
