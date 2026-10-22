@@ -24,11 +24,11 @@ test('Bappenas 2025 scenario dataset retains source and audit flags',()=>{
 test('dashboard is navigable and responsive with explicit projection caveats',()=>{
  const page=read('green-workforce-intelligence.html');
  assert.match(page,/name="viewport"/);
- assert.match(page,/@media\\(max-width:750px\\)/);
- assert.match(page,/sli-green-workforce-projections\\.js/);
+ assert.match(page,/@media\(max-width:750px\)/);
+ assert.match(page,/sli-green-workforce-projections\.js/);
  assert.match(page,/bukan realisasi/);
  assert.match(page,/peninjauan hak penggunaan/);
- assert.match(read('index.html'),/green-workforce-intelligence\\.html/);
- assert.match(read('indonesia-macroeconomic-intelligence.html'),/green-workforce-intelligence\\.html/);
+ assert.match(read('index.html'),/green-workforce-intelligence\.html/);
+ assert.match(read('indonesia-macroeconomic-intelligence.html'),/green-workforce-intelligence\.html/);
  new Script(read('js/sli-green-workforce-projections.js'));
 });
