@@ -40,21 +40,16 @@ export async function selectKKPDropdown(page,modal,index,label){
 export async function selectKKPRating(modal,rating){
  const value=Number(rating);
  if(!Number.isInteger(value)||value<1||value>5)throw Error("kkp_invalid_rating");
- // KKP uses Material UI Rating: visually hidden radio inputs have values 1..5
- // plus a sixth 'Empty' input. Playwright input.check() is not reliable for
- // these custom star widgets. Click the REAL associated star label instead.
- const radios=modal.locator('input[type="radio"]');
- if((await radios.count())<5)throw Error("kkp_rating_control_not_found");
+ // KKP Material UI Rating uses label[for=radio.id] as a sibling BEFORE
+ // each visually hidden input. Never assume radio inputs are inside labels,
+ // and do not substitute an arbitrary star rating.
  const input=modal.locator('input[type="radio"][value="'+value+'"]');
  if((await input.count())!==1)throw Error("kkp_rating_value_not_found");
- const label=input.locator("xpath=ancestor::label[1]");
+ const id=await input.getAttribute("id");
+ if(!id||!/^[a-zA-Z0-9:_-]+$/.test(id))throw Error("kkp_rating_id_unavailable");
+ const label=modal.locator('label[for="'+id+'"]');
  if((await label.count())!==1)throw Error("kkp_rating_label_not_found");
  await label.click({timeout:10000});
- if(await input.isChecked())return true;
- // Browser-native keyboard selection supports the same official MUI rating
- // control without injecting values or dispatching synthetic form events.
- await input.focus();
- await input.press("Space",{timeout:7000});
- if(await input.isChecked())return true;
- throw Error("kkp_rating_not_confirmed");
+ if(!(await input.isChecked()))throw Error("kkp_rating_not_confirmed");
+ return true;
 }
