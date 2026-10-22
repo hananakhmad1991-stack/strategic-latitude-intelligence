@@ -190,3 +190,8 @@
 .mf-viz-heat-table thead th{position:sticky;top:0;z-index:2}
 .mf-viz-heat-table tbody th{position:sticky;left:0;z-index:1;min-width:148px}
 .mf-viz-heat-table td{text-align:right;color:#f0f8fb;border-radius:3px}
+
+.mf-viz-sankey-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:12px 0;max-height:260px;overflow:auto}
+.mf-viz-sankey-item{background:#1b3b51;color:#e5f2f5;font:500 11px/1.5 system-ui,sans-serif;text-align:left;border:1px solid #41657c;border-radius:6px;padding:8px;cursor:pointer;min-height:40px}
+.mf-viz-sankey-item:hover,.mf-viz-sankey-item:focus-visible,.mf-viz-sankey-item[aria-pressed=true]{outline:2px solid #e2bd7a;outline-offset:1px}
+@media(max-width:680px){.mf-viz-sankey-items{grid-template-columns:minmax(0,1fr)}}
