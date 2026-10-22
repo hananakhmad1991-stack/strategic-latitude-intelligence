@@ -57,3 +57,25 @@ test('guide renders the catalog as real linked, grouped and bilingual modules',(
  assert.ok(doc.querySelector('#sliGuideCatalog').textContent.includes('Panduan pengguna'));
  d.window.close();
 });
+
+test('DERGUBA AI and Expert Connect are adjacent, visible top-level quick actions, including on Home',()=>{
+ const paths=['index.html#home','gini-inequality.html'];
+ for(const path of paths){
+  const d=setup(path,'<main class="main"><div class="top">Header</div><div id="content"></div></main>');
+  const doc=d.window.document;
+  const quick=doc.querySelector('#sliPlatformMast .sli-platform-tools > nav.sli-platform-quicklinks');
+  assert.ok(quick,'Quick-access research pair must render in top header: '+path);
+  assert.deepEqual([...quick.querySelectorAll('a')].map(a=>a.getAttribute('href')),[
+   './sli-research-ai.html','./sli-expert-connect.html'
+  ],'Research AI and Expert Connect must be adjacent in one row');
+  assert.equal(doc.querySelectorAll('a.sli-platform-link[href="./sli-expert-connect.html"]').length,1,'No duplicate Expert Connect in scroll navigation');
+  assert.equal(quick.parentElement.classList.contains('sli-platform-tools'),true);
+  d.window.SLIi18n.language='id';
+  doc.dispatchEvent(new d.window.CustomEvent('sli:languagechange'));
+  assert.match(doc.querySelector('.sli-platform-quicklinks').textContent,/Carikan Pakar/);
+  d.window.close();
+ }
+ const home=readFileSync(new URL('../index.html',import.meta.url),'utf8');
+ assert.ok(home.includes('sli-navigation.js?v=20261019-id-audit9&expert=20261023-top1'),'Home must cache-bust top nav JS');
+ assert.ok(home.includes('sli-navigation.css?v=20261018-menu-flash2&expert=20261023-top1'),'Home must cache-bust top nav CSS');
+});

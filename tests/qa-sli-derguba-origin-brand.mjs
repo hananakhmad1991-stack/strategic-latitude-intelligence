@@ -13,7 +13,8 @@ test("DERGUBA AI product branding retains the SLI parent company and Research AI
  assert.match(page,/<h1>DERGUBA <em>AI<\/em>/);
  assert.match(page,/STRATEGIC LATITUDE/);
  assert.match(page,/sli-research-ai\.html" aria-current="page"[^>]*>DERGUBA AI<\/a>/);
- assert.match(nav,/primary\.append\(mastLink\('\.\/sli-research-ai\.html','DERGUBA AI',false\)\)/);
+ assert.ok(nav.includes("mastLink('./sli-research-ai.html','DERGUBA AI',path==='sli-research-ai.html')"),'DERGUBA must remain in the top-level quick links');
+ assert.match(nav,/sli-platform-quicklinks/,'The research pair is pinned in the top masthead');
  assert.match(client,/DERGUBA AI · Owner Test/);
 });
 test("brand-origin Derepan link points to the user's exact Google Maps URL",()=>{

@@ -11,6 +11,8 @@ on:
       - 'js/sli-navigation.js'
       - 'tests/qa-sli-expert-connect.mjs'
       - 'tests/qa-sli-expert-connect-browser.mjs'
+      - 'tests/qa-sli-expert-topnav-browser.mjs'
+      - 'css/sli-navigation.css'
       - '.github/workflows/sli-expert-connect-public-qa.yml'
   workflow_dispatch:
 permissions:
@@ -39,3 +41,5 @@ jobs:
           node --test tests/qa-sli-expert-connect.mjs tests/qa-sli-navigation-ui.mjs
       - name: Browser acceptance at 360px, 390px and 1440px
         run: node tests/qa-sli-expert-connect-browser.mjs
+      - name: Top masthead DERGUBA and Expert Connect visibility at 360, 390 and 1440px
+        run: node tests/qa-sli-expert-topnav-browser.mjs
