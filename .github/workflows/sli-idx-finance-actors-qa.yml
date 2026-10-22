@@ -1,0 +1,43 @@
+name: SLI IDX Financial Evidence & Corporate Actors QA
+on:
+  pull_request:
+    paths:
+      - 'data/sli-idx-issuer-universe.json'
+      - 'data/sli-corporate-group-registry.json'
+      - 'data/sli-issuer-actor-assets.json'
+      - 'js/sli-issuer.js'
+      - 'js/sli-entities.js'
+      - 'js/sli-idx-sector-watchlist.js'
+      - 'scripts/sync_sli_idx_issuers.py'
+      - 'tests/qa-sli-idx-finance-actors.mjs'
+      - 'sli-issuer.html'
+      - 'sli-entities.html'
+      - 'index.html'
+  push:
+    branches: [main]
+    paths:
+      - 'data/sli-idx-issuer-universe.json'
+      - 'data/sli-corporate-group-registry.json'
+      - 'data/sli-issuer-actor-assets.json'
+      - 'js/sli-issuer.js'
+      - 'js/sli-entities.js'
+      - 'js/sli-idx-sector-watchlist.js'
+      - 'tests/qa-sli-idx-finance-actors.mjs'
+      - 'scripts/sync_sli_idx_issuers.py'
+      - 'index.html'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  provenance-and-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate 12 sectors, period-safe fundamentals and actor dossiers
+        run: node --test tests/qa-sli-idx-finance-actors.mjs tests/qa-sli-idx-provider-dossier.mjs
+      - name: Validate IDX issuer sync and safeguards
+        run: python3 -m unittest discover -s tests -p test_sli_idx_issuers.py

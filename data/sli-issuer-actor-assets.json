@@ -1,0 +1,114 @@
+{
+  "schema": "sli-issuer-actor-assets-v1",
+  "as_of": "2026-10-22",
+  "methodology": "Only dated public-source actor and concession evidence. Contract/operator participation != company shareholding; shareholder country != individual citizenship; an identified shareholder or director != verified ultimate beneficial owner. Historical concessions need current licence registry reconfirmation.",
+  "policy_sources": [
+    "https://ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Pages/OJK-BEI-dan-KSEI-Tuntaskan-Empat-Agenda-Reformasi-Transparansi-Pasar-Modal-Indonesia.aspx",
+    "https://www.idx.co.id/id/perusahaan-tercatat/data-kepemilikan-saham/"
+  ],
+  "records": [
+    {
+      "ticker": "MEDC",
+      "issuer": "PT Medco Energi Internasional Tbk",
+      "beneficial_owner_status": "not_independently_verified",
+      "beneficial_owner_basis": "Reported major direct shareholders do not establish the natural-person ultimate beneficial owner.",
+      "rights": [
+        {
+          "name": "South Natuna Sea Block B",
+          "type": "oil_gas_psc",
+          "relation": "reported_operator_and_participating_interest",
+          "participating_interest_pct": 40,
+          "region": "Kepulauan Riau · Laut Natuna",
+          "source_period": "FY2024",
+          "source_url": "https://www.medcoenergi.com/uploads/areports/2024/MEDC_AR2024_ENG.pdf",
+          "note": "40% PSC participating interest reported in 2024 annual report, not equity ownership of MEDC; current PSC extension/validity needs reconfirmation."
+        },
+        {
+          "name": "Madura Offshore PSC",
+          "type": "oil_gas_psc",
+          "relation": "reported_operator_and_participating_interest",
+          "participating_interest_pct": 67.5,
+          "region": "Selat Madura · Jawa Timur",
+          "source_period": "FY2024",
+          "source_url": "https://www.medcoenergi.com/uploads/areports/2024/MEDC_AR2024_ENG.pdf",
+          "note": "Working interest as reported FY2024; do not confuse with Medco corporate shareholding."
+        },
+        {
+          "name": "Sampang PSC",
+          "type": "oil_gas_psc",
+          "relation": "reported_operator_and_participating_interest",
+          "participating_interest_pct": 45,
+          "region": "Selat Madura · Jawa Timur",
+          "source_period": "FY2024",
+          "source_url": "https://www.medcoenergi.com/uploads/areports/2024/MEDC_AR2024_ENG.pdf",
+          "note": "Working interest as reported FY2024; current concession status not verified."
+        }
+      ],
+      "cross_border_links": []
+    },
+    {
+      "ticker": "INCO",
+      "issuer": "PT Vale Indonesia Tbk",
+      "beneficial_owner_status": "not_independently_verified",
+      "beneficial_owner_basis": "Vale and MIND ID disclose corporate control; no unverified natural-person beneficiary is inferred.",
+      "rights": [
+        {
+          "name": "PT Vale IUPK nickel areas",
+          "type": "mining_iupk",
+          "relation": "permit_holder",
+          "participating_interest_pct": null,
+          "area_ha": 118017,
+          "region": "Sulawesi Selatan / Tengah / Tenggara",
+          "expiry_reported": "2035-12-28",
+          "source_period": "Corporate website (review 2026-10-22)",
+          "source_url": "https://vale.com/in/indonesia/tentang-pt-vale-indonesia",
+          "note": "Company states 118,017 ha and IUPK validity to 28 Dec 2035; not a proof every hectare is in production. Site-specific permit map needs verification."
+        }
+      ],
+      "cross_border_links": [
+        {
+          "actor": "Vale Canada Limited",
+          "country": "Canada",
+          "relationship": "reported_corporate_shareholder",
+          "source_url": "https://vale.com/in/indonesia/tentang-pt-vale-indonesia",
+          "note": "Company is linked to Canada; not evidence of the nationality of an ultimate natural-person owner."
+        },
+        {
+          "actor": "Sumitomo Metal Mining Co., Ltd.",
+          "country": "Japan",
+          "relationship": "reported_corporate_shareholder",
+          "source_url": "https://vale.com/in/indonesia/tentang-pt-vale-indonesia",
+          "note": "Japanese corporate shareholder, not proof of ultimate individual beneficial ownership."
+        },
+        {
+          "actor": "MIND ID",
+          "country": "Indonesia",
+          "relationship": "reported_corporate_shareholder",
+          "source_url": "https://vale.com/in/indonesia/tentang-pt-vale-indonesia",
+          "note": "Indonesian state mining holding; corporate shareholder identity only."
+        }
+      ]
+    },
+    {
+      "ticker": "BYAN",
+      "issuer": "PT Bayan Resources Tbk",
+      "beneficial_owner_status": "not_independently_verified",
+      "rights": [],
+      "cross_border_links": []
+    },
+    {
+      "ticker": "AADI",
+      "issuer": "PT Adaro Andalan Indonesia Tbk",
+      "beneficial_owner_status": "not_independently_verified",
+      "rights": [],
+      "cross_border_links": []
+    },
+    {
+      "ticker": "ASII",
+      "issuer": "PT Astra International Tbk",
+      "beneficial_owner_status": "not_independently_verified",
+      "rights": [],
+      "cross_border_links": []
+    }
+  ]
+}
