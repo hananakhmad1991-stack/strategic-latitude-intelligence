@@ -16,7 +16,14 @@ class IssuerUniverseTest(unittest.TestCase):
         self.assertGreaterEqual(module.validate(self.old), 250)
         self.assertEqual(self.old["source_status"], "curated_seed_pending_official_bulk_reconciliation")
         self.assertGreaterEqual(len({r["sector"] for r in self.old["records"]}), 12)
-        self.assertTrue(all(r["verification"] == "idx_seed_awaiting_official_refresh" for r in self.old["records"]))
+        self.assertTrue(all(r["verification"] in {"idx_seed_awaiting_official_refresh", "official_ksei_security_listing"} for r in self.old["records"]))
+        checked = {r["ticker"] for r in self.old["records"] if r["verification"] == "official_ksei_security_listing"}
+        self.assertEqual(checked, {"BRMS", "ADMR", "BIPI", "RATU", "HUMI", "GGRP", "DGWG", "PANI"})
+        for row in self.old["records"]:
+            if row["verification"] == "official_ksei_security_listing":
+                self.assertEqual(row["listing_source_url"],
+                    "https://web.ksei.co.id/services/registered-securities/shares/lc/" + row["ticker"])
+                self.assertIsNone(row["market_cap"])
         self.assertTrue(all(r.get("market_cap") is None for r in self.old["records"]))
 
     def test_genuine_response_requires_500_valid_issuers(self):
