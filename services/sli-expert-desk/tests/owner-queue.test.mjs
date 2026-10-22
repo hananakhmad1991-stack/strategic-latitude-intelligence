@@ -12,7 +12,7 @@ const valid={
  organization:'Sample client',contact_email:'research@example.org',deliverable:'report',
  timeline:'1-2-weeks',budget:'500-2000'
 };
-function database(status='new',version=1){
+function database(status='new',version=1,hasCandidate=true){
  const statements=[];
  const db={
   statements,
@@ -20,7 +20,9 @@ function database(status='new',version=1){
    const statement={sql,args:[],bind(...args){this.args=args;return this},
     async first(){
      if(sql.startsWith('SELECT status,version'))return {status,version};
-     if(sql.startsWith('SELECT id FROM research_requests')||sql.startsWith('SELECT id FROM consented_experts'))return {id:this.args[0]};
+     if(sql.startsWith('SELECT id FROM request_expert_shortlist'))return hasCandidate?{id:'example-shortlisted-candidate'}:null;
+     if(sql.startsWith('SELECT id,status FROM research_requests'))return {id:this.args[0],status};
+     if(sql.startsWith('SELECT id FROM consented_experts'))return {id:this.args[0]};
      if(sql.startsWith('SELECT *'))return {id:this.args[0],status,version};
      return null;
     },
@@ -110,6 +112,8 @@ test('Owner workflow requires screening and client approval; rejects stale and i
  assert.match(db.batches.at(-1)[1].sql,/WHERE EXISTS/);
  const stale=await handleRequest(request('/api/requests/'+id+'/status','POST',{to:'shortlisted',version:3,screening_confirmed:true}),env(db),owner);
  assert.equal(stale.status,409);
+ const missingCandidate=await handleRequest(request('/api/requests/'+id+'/status','POST',{to:'shortlisted',version:4,screening_confirmed:true}),env(database('sourcing',4,false)),owner);
+ assert.equal(missingCandidate.status,409,'No shortlist without a linked and screened expert');
  assert.equal(allowedTransition('new','delivered'),false);
  assert.equal(allowedTransition('proposal_sent','approved'),true);
  assert.deepEqual(TRANSITIONS.delivered,[]);
@@ -146,7 +150,7 @@ test('Expert profiles require documented consent, valid scope and source',()=>{
  ])assert.throws(()=>validateExpert(bad));
 });
 test('Owner-only expert registry and shortlist do not publish candidates or send messages',async()=>{
- const db=database();
+ const db=database('sourcing');
  const ex={
   display_name:'Consenting Example',sector:'digital',
   specialty:'Data centre infrastructure and energy policy',
