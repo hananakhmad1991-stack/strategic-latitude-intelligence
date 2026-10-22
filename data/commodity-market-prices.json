@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-22T19:11:02.326581+00:00",
+  "checked_at_utc": "2026-10-22T20:02:25.205011+00:00",
   "status": "ok",
   "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
   "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
@@ -11,12 +11,12 @@
       "name": "Brent crude futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 113.28,
+      "value": 113.09,
       "previous": 99.25,
-      "change": 14.03,
-      "change_percent": 14.136,
+      "change": 13.84,
+      "change_percent": 13.9446,
       "unit": "USD/bbl",
-      "observed_at_utc": "2026-10-22T19:00:59+00:00",
+      "observed_at_utc": "2026-10-22T19:52:00+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF",
       "symbol": "BZ=F",
@@ -113,7 +113,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 113.279999
+          "value": 113.089996
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -123,12 +123,12 @@
       "name": "WTI crude futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 99.5,
+      "value": 99.31,
       "previous": 94.59,
-      "change": 4.91,
-      "change_percent": 5.1908,
+      "change": 4.72,
+      "change_percent": 4.99,
       "unit": "USD/bbl",
-      "observed_at_utc": "2026-10-22T19:01:00+00:00",
+      "observed_at_utc": "2026-10-22T19:52:20+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/CL%3DF",
       "symbol": "CL=F",
@@ -225,7 +225,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 99.5
+          "value": 99.309998
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -235,12 +235,12 @@
       "name": "US natural gas futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 2.798,
+      "value": 2.788,
       "previous": 2.965,
-      "change": -0.167,
-      "change_percent": -5.6324,
+      "change": -0.177,
+      "change_percent": -5.9696,
       "unit": "USD/MMBtu",
-      "observed_at_utc": "2026-10-22T19:00:54+00:00",
+      "observed_at_utc": "2026-10-22T19:52:14+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/NG%3DF",
       "symbol": "NG=F",
@@ -337,7 +337,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 2.798
+          "value": 2.788
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -347,12 +347,12 @@
       "name": "Copper futures (COMEX)",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 6.385,
+      "value": 6.4005,
       "previous": 6.7595,
-      "change": -0.3745,
-      "change_percent": -5.5404,
+      "change": -0.359,
+      "change_percent": -5.311,
       "unit": "USD/lb",
-      "observed_at_utc": "2026-10-22T19:00:56+00:00",
+      "observed_at_utc": "2026-10-22T19:52:25+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/HG%3DF",
       "symbol": "HG=F",
@@ -449,7 +449,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 6.385
+          "value": 6.4005
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -459,12 +459,12 @@
       "name": "Gold futures",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 4044.8,
+      "value": 4044.1,
       "previous": 4376.4,
-      "change": -331.6,
-      "change_percent": -7.577,
+      "change": -332.3,
+      "change_percent": -7.593,
       "unit": "USD/troy oz",
-      "observed_at_utc": "2026-10-22T19:01:00+00:00",
+      "observed_at_utc": "2026-10-22T19:52:26+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/GC%3DF",
       "symbol": "GC=F",
@@ -561,7 +561,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 4044.800049
+          "value": 4044.100098
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -571,12 +571,12 @@
       "name": "Silver futures",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 54.685,
+      "value": 54.745,
       "previous": 65.932,
-      "change": -11.247,
-      "change_percent": -17.0585,
+      "change": -11.187,
+      "change_percent": -16.9675,
       "unit": "USD/troy oz",
-      "observed_at_utc": "2026-10-22T19:00:55+00:00",
+      "observed_at_utc": "2026-10-22T19:52:17+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/SI%3DF",
       "symbol": "SI=F",
@@ -673,7 +673,7 @@
         },
         {
           "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 54.685001
+          "value": 54.744999
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -683,27 +683,19 @@
       "name": "Nickel · IMF monthly",
       "sector": "minerals",
       "tier": "monthly_reference",
-      "value": 16632.36136,
-      "previous": 17588.28545,
-      "change": -955.92409,
-      "change_percent": -5.435,
+      "value": 16323.8219,
+      "previous": 16748.1819,
+      "change": -424.36,
+      "change_percent": -2.5338,
       "unit": "USD/metric ton",
-      "observation_period": "2026-07",
-      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "observation_period": "2026-09",
+      "observed_at_utc": "2026-09-01T00:00:00+00:00",
       "source": "International Monetary Fund primary commodity prices via FRED",
       "source_url": "https://fred.stlouisfed.org/series/PNICKUSDM",
       "symbol": "PNICKUSDM",
       "market": "IMF world monthly benchmark; historical period average",
       "refresh_class": "Monthly / delayed, NOT intraday",
       "history": [
-        {
-          "observed_at_utc": "2024-08-01T00:00:00+00:00",
-          "value": 16303.28773
-        },
-        {
-          "observed_at_utc": "2024-09-01T00:00:00+00:00",
-          "value": 16167.67762
-        },
         {
           "observed_at_utc": "2024-10-01T00:00:00+00:00",
           "value": 16765.80348
@@ -791,6 +783,14 @@
         {
           "observed_at_utc": "2026-07-01T00:00:00+00:00",
           "value": 16632.36136
+        },
+        {
+          "observed_at_utc": "2026-08-01T00:00:00+00:00",
+          "value": 16748.1819
+        },
+        {
+          "observed_at_utc": "2026-09-01T00:00:00+00:00",
+          "value": 16323.8219
         }
       ],
       "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
@@ -800,27 +800,19 @@
       "name": "Copper · IMF monthly",
       "sector": "minerals",
       "tier": "monthly_reference",
-      "value": 13542.82087,
-      "previous": 13552.04091,
-      "change": -9.22004,
-      "change_percent": -0.068,
+      "value": 14473.05591,
+      "previous": 14331.26476,
+      "change": 141.79115,
+      "change_percent": 0.9894,
       "unit": "USD/metric ton",
-      "observation_period": "2026-07",
-      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "observation_period": "2026-09",
+      "observed_at_utc": "2026-09-01T00:00:00+00:00",
       "source": "International Monetary Fund primary commodity prices via FRED",
       "source_url": "https://fred.stlouisfed.org/series/PCOPPUSDM",
       "symbol": "PCOPPUSDM",
       "market": "IMF world monthly benchmark; historical period average",
       "refresh_class": "Monthly / delayed, NOT intraday",
       "history": [
-        {
-          "observed_at_utc": "2024-08-01T00:00:00+00:00",
-          "value": 8981.11773
-        },
-        {
-          "observed_at_utc": "2024-09-01T00:00:00+00:00",
-          "value": 9259.12857
-        },
         {
           "observed_at_utc": "2024-10-01T00:00:00+00:00",
           "value": 9533.9913
@@ -908,6 +900,14 @@
         {
           "observed_at_utc": "2026-07-01T00:00:00+00:00",
           "value": 13542.82087
+        },
+        {
+          "observed_at_utc": "2026-08-01T00:00:00+00:00",
+          "value": 14331.26476
+        },
+        {
+          "observed_at_utc": "2026-09-01T00:00:00+00:00",
+          "value": 14473.05591
         }
       ],
       "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
@@ -917,27 +917,19 @@
       "name": "Aluminium · IMF monthly",
       "sector": "minerals",
       "tier": "monthly_reference",
-      "value": 3158.265,
-      "previous": 3438.84727,
-      "change": -280.58227,
-      "change_percent": -8.1592,
+      "value": 3283.05429,
+      "previous": 3250.12143,
+      "change": 32.93286,
+      "change_percent": 1.0133,
       "unit": "USD/metric ton",
-      "observation_period": "2026-07",
-      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "observation_period": "2026-09",
+      "observed_at_utc": "2026-09-01T00:00:00+00:00",
       "source": "International Monetary Fund primary commodity prices via FRED",
       "source_url": "https://fred.stlouisfed.org/series/PALUMUSDM",
       "symbol": "PALUMUSDM",
       "market": "IMF world monthly benchmark; historical period average",
       "refresh_class": "Monthly / delayed, NOT intraday",
       "history": [
-        {
-          "observed_at_utc": "2024-08-01T00:00:00+00:00",
-          "value": 2352.46727
-        },
-        {
-          "observed_at_utc": "2024-09-01T00:00:00+00:00",
-          "value": 2457.4781
-        },
         {
           "observed_at_utc": "2024-10-01T00:00:00+00:00",
           "value": 2595.58304
@@ -1025,6 +1017,14 @@
         {
           "observed_at_utc": "2026-07-01T00:00:00+00:00",
           "value": 3158.265
+        },
+        {
+          "observed_at_utc": "2026-08-01T00:00:00+00:00",
+          "value": 3250.12143
+        },
+        {
+          "observed_at_utc": "2026-09-01T00:00:00+00:00",
+          "value": 3283.05429
         }
       ],
       "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
@@ -1034,27 +1034,19 @@
       "name": "Tin · IMF monthly",
       "sector": "minerals",
       "tier": "monthly_reference",
-      "value": 52881.99864,
-      "previous": 53036.54545,
-      "change": -154.54682,
-      "change_percent": -0.2914,
+      "value": 53711.67667,
+      "previous": 55360.30952,
+      "change": -1648.63286,
+      "change_percent": -2.978,
       "unit": "USD/metric ton",
-      "observation_period": "2026-07",
-      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "observation_period": "2026-09",
+      "observed_at_utc": "2026-09-01T00:00:00+00:00",
       "source": "International Monetary Fund primary commodity prices via FRED",
       "source_url": "https://fred.stlouisfed.org/series/PTINUSDM",
       "symbol": "PTINUSDM",
       "market": "IMF world monthly benchmark; historical period average",
       "refresh_class": "Monthly / delayed, NOT intraday",
       "history": [
-        {
-          "observed_at_utc": "2024-08-01T00:00:00+00:00",
-          "value": 31553.93955
-        },
-        {
-          "observed_at_utc": "2024-09-01T00:00:00+00:00",
-          "value": 31554.18238
-        },
         {
           "observed_at_utc": "2024-10-01T00:00:00+00:00",
           "value": 32012.43435
@@ -1142,6 +1134,14 @@
         {
           "observed_at_utc": "2026-07-01T00:00:00+00:00",
           "value": 52881.99864
+        },
+        {
+          "observed_at_utc": "2026-08-01T00:00:00+00:00",
+          "value": 55360.30952
+        },
+        {
+          "observed_at_utc": "2026-09-01T00:00:00+00:00",
+          "value": 53711.67667
         }
       ],
       "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
@@ -1151,27 +1151,19 @@
       "name": "Coal Australia · IMF monthly",
       "sector": "energy",
       "tier": "monthly_reference",
-      "value": 140.39679,
-      "previous": 150.36214,
-      "change": -9.96536,
-      "change_percent": -6.6276,
+      "value": 153.84,
+      "previous": 140.50821,
+      "change": 13.33179,
+      "change_percent": 9.4883,
       "unit": "USD/metric ton",
-      "observation_period": "2026-07",
-      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "observation_period": "2026-09",
+      "observed_at_utc": "2026-09-01T00:00:00+00:00",
       "source": "International Monetary Fund primary commodity prices via FRED",
       "source_url": "https://fred.stlouisfed.org/series/PCOALAUUSDM",
       "symbol": "PCOALAUUSDM",
       "market": "IMF world monthly benchmark; historical period average",
       "refresh_class": "Monthly / delayed, NOT intraday",
       "history": [
-        {
-          "observed_at_utc": "2024-08-01T00:00:00+00:00",
-          "value": 151.635
-        },
-        {
-          "observed_at_utc": "2024-09-01T00:00:00+00:00",
-          "value": 148.74321
-        },
         {
           "observed_at_utc": "2024-10-01T00:00:00+00:00",
           "value": 153.2175
@@ -1259,6 +1251,14 @@
         {
           "observed_at_utc": "2026-07-01T00:00:00+00:00",
           "value": 140.39679
+        },
+        {
+          "observed_at_utc": "2026-08-01T00:00:00+00:00",
+          "value": 140.50821
+        },
+        {
+          "observed_at_utc": "2026-09-01T00:00:00+00:00",
+          "value": 153.84
         }
       ],
       "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
@@ -1268,27 +1268,19 @@
       "name": "Palm oil · IMF monthly",
       "sector": "energy",
       "tier": "monthly_reference",
-      "value": 1106.46993,
-      "previous": 1108.6811,
-      "change": -2.21117,
-      "change_percent": -0.1994,
+      "value": 1133.12885,
+      "previous": 1131.58521,
+      "change": 1.54364,
+      "change_percent": 0.1364,
       "unit": "USD/metric ton",
-      "observation_period": "2026-07",
-      "observed_at_utc": "2026-07-01T00:00:00+00:00",
+      "observation_period": "2026-09",
+      "observed_at_utc": "2026-09-01T00:00:00+00:00",
       "source": "International Monetary Fund primary commodity prices via FRED",
       "source_url": "https://fred.stlouisfed.org/series/PPOILUSDM",
       "symbol": "PPOILUSDM",
       "market": "IMF world monthly benchmark; historical period average",
       "refresh_class": "Monthly / delayed, NOT intraday",
       "history": [
-        {
-          "observed_at_utc": "2024-08-01T00:00:00+00:00",
-          "value": 888.20272
-        },
-        {
-          "observed_at_utc": "2024-09-01T00:00:00+00:00",
-          "value": 942.60725
-        },
         {
           "observed_at_utc": "2024-10-01T00:00:00+00:00",
           "value": 1034.05188
@@ -1376,6 +1368,14 @@
         {
           "observed_at_utc": "2026-07-01T00:00:00+00:00",
           "value": 1106.46993
+        },
+        {
+          "observed_at_utc": "2026-08-01T00:00:00+00:00",
+          "value": 1131.58521
+        },
+        {
+          "observed_at_utc": "2026-09-01T00:00:00+00:00",
+          "value": 1133.12885
         }
       ],
       "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
