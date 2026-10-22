@@ -57,19 +57,59 @@ const txt=(a,b)=>document.documentElement.lang?.startsWith("en")?b:a;
 const el=id=>document.getElementById(id);
 const svgNS="http://www.w3.org/2000/svg";
 let loadPromise=null;
-export async function fetchOfficialWPP(fetcher=fetch){
- const url=BIG_LAYER+"/query?"+new URLSearchParams({where:"1=1",outFields:"objectid,namobj,kodwpp,metadata",returnGeometry:"true",outSR:"4326",f:"geoJSON"}).toString();
- const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),25000);
+/* ArcGIS requests are split by provider-returned OBJECTIDs: no invented IDs,
+ * coordinates, external shapefiles, or inference from the server-rendered raster.
+ * KKP/BIG service may still be unavailable; rendering is always fail-closed.
+ */
+export function wppIdBatches(ids,chunk=3){
+ if(!Array.isArray(ids)||ids.length!==11||ids.some(x=>!Number.isSafeInteger(x)||x<0)||new Set(ids).size!==ids.length)throw Error("BIG_invalid_objectIds");
+ if(!Number.isInteger(chunk)||chunk<1||chunk>4)throw Error("BIG_invalid_batch_size");
+ const ordered=[...ids].sort((a,b)=>a-b),batches=[];
+ for(let i=0;i<ordered.length;i+=chunk)batches.push(ordered.slice(i,i+chunk));
+ return batches;
+}
+async function bigGet(fetcher,params,timeoutMs=15000){
+ const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),timeoutMs);
+ const url=BIG_LAYER+"/query?"+new URLSearchParams(params).toString();
  try{
-  const response=await fetcher(url,{signal:ctl.signal,mode:"cors",cache:"no-store"});
-  if(!response.ok)throw Error("HTTP_"+response.status);
-  const text=await response.text();
-  if(text.length>16*1024*1024)throw Error("payload_limit");
-  const geo=JSON.parse(text),audit=validateOfficialWPP(geo);
-  if(!audit.pass)throw Error("geometry_validation_"+audit.errors.join(","));
-  return {geo,audit,service_url:BIG_LAYER,query_url:url};
+  const resp=await fetcher(url,{signal:ctl.signal,mode:"cors",cache:"no-store"});
+  if(!resp.ok)throw Error("BIG_HTTP_"+resp.status);
+  const size=Number(resp.headers?.get?.("content-length")||0);
+  if(size>16000000)throw Error("BIG_response_too_large");
+  const body=await resp.text();
+  if(body.length>16000000)throw Error("BIG_response_too_large");
+  const obj=JSON.parse(body);
+  if(obj?.error)throw Error("BIG_ARCGIS_"+String(obj.error.code||"failure"));
+  return obj;
  }finally{clearTimeout(timer)}
 }
+export async function fetchOfficialWPP(fetcher=fetch){
+ let strategy="objectIds_batched";
+ try{
+  const index=await bigGet(fetcher,{where:"1=1",returnIdsOnly:"true",f:"json"},12000);
+  const batches=wppIdBatches(index.objectIds);
+  let collection={type:"FeatureCollection",features:[]};
+  // Limit concurrency: ArcGIS servers can time out on huge all-feature GeoJSON.
+  for(const batch of batches){
+   const geo=await bigGet(fetcher,{objectIds:batch.join(","),outFields:"objectid,namobj,kodwpp,metadata",returnGeometry:"true",outSR:"4326",f:"geoJSON"},15000);
+   if(geo.type!=="FeatureCollection"||!Array.isArray(geo.features))throw Error("BIG_batch_not_feature_collection");
+   collection.features.push(...geo.features);
+  }
+  const geo=collection,audit=validateOfficialWPP(geo);
+  if(!audit.pass)throw Error("geometry_validation_"+audit.errors.join(","));
+  return {geo,audit,service_url:BIG_LAYER,query_url:BIG_LAYER+"/query",strategy,batches:batches.length};
+ }catch(error){
+  // A legacy one-shot fallback is retained for servers that do not support
+  // returnIdsOnly. Both paths remain strict: all 11 WPP source features or none.
+  strategy="single_request_fallback";
+  const geo=await bigGet(fetcher,{where:"1=1",outFields:"objectid,namobj,kodwpp,metadata",returnGeometry:"true",outSR:"4326",f:"geoJSON"},13000)
+   .catch(e=>{throw Error("BIG_batched_or_full_unavailable: "+String(error?.message||error)+"; "+String(e?.message||e))});
+  const audit=validateOfficialWPP(geo);
+  if(!audit.pass)throw Error("geometry_validation_"+audit.errors.join(","));
+  return {geo,audit,service_url:BIG_LAYER,query_url:BIG_LAYER+"/query",strategy,batches:1};
+ }
+}
+
 function create(name,attrs){
  const n=document.createElementNS(svgNS,name);for(const [k,v] of Object.entries(attrs||{}))n.setAttribute(k,String(v));return n;
 }

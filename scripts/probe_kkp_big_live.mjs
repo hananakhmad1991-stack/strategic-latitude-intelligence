@@ -8,7 +8,7 @@ const report={schema:"sli-kkp-big-geoservice-live-probe-v1",checked_at_utc:new D
  imported_to_sli_public_repo:false,license_review_complete:false,legal_boundary_vintage_verified:false};
 try{
  const r=await fetchOfficialWPP();
- Object.assign(report,{status:"verified_live_geometry_11_wpp",features:r.audit.features,vertices:r.audit.vertices,matched_wpp_codes:r.audit.codes,query_url:r.query_url});
+ Object.assign(report,{status:"verified_live_geometry_11_wpp",features:r.audit.features,vertices:r.audit.vertices,matched_wpp_codes:r.audit.codes,query_url:r.query_url,query_strategy:r.strategy,feature_batches:r.batches});
  console.log("KKP BIG OFFICIAL WPP PASS",r.audit.features,"features",r.audit.vertices,"vertices",r.audit.codes.join(","));
 }catch(e){
  Object.assign(report,{status:"unverified_no_geometry_fetched",failure_reason:String(e?.message||e).slice(0,240)});
