@@ -4,12 +4,13 @@ import {readFileSync} from 'node:fs';
 const read=(p)=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 test('SLI homepage clearly describes connected research rather than endless dashboard search',()=>{
  const home=read('index.html');
- assert.match(home,/Evidence for better decisions/);
- assert.match(home,/Bukti untuk keputusan yang lebih baik/);
+ assert.match(home,/Find the expertise to act/);
+ assert.match(home,/Temukan pakar untuk bertindak/);
  assert.doesNotMatch(home,/without searching through an endless dashboard/);
  for(const link of ['#sliPortalSectors','./provincial-intelligence.html','./sli-entities.html','./sli-sector-data-library.html']){
   assert.ok(home.includes('href="'+link+'"'),link);
  }
+ for(const expected of ['sli-service-path','01 · INTELLIGENCE','02 · DERGUBA AI','03 · EXPERT CONNECT','no pre-enrolled expert panel','editable inquiry'])assert.ok(home.includes(expected),expected);
  assert.match(home,/sliPortalMetrics/);
  assert.match(home,/sliOrbitGlobe/);
 });
