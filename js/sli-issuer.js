@@ -196,6 +196,8 @@ function render(data,ticker,groups,relations,assets){
  root.append(E("span","sli-issuer-ticker","IDX:"+ticker),E("p","sli-issuer-sector",T("Sector","Sektor")+": "+(data.sector||T("Classification pending","Klasifikasi belum diverifikasi"))));
  const notice=E("p","sli-issuer-notice",data.verification==="official_exchange_snapshot"?
  T("Official IDX directory snapshot. Listing and financial information may have changed since the date.","Snapshot direktori BEI resmi. Informasi pencatatan dan keuangan dapat berubah."):
+ data.verification==="official_ksei_security_listing"?
+ T("This ticker was independently checked as an active registered security on KSEI. SLI industry category, financial statements and ultimate ownership are separate evidence questions.","Kode ini dicocokkan sebagai efek aktif pada KSEI. Sektor analitis SLI, laporan keuangan, dan pemilik manfaat akhir tetap memerlukan bukti terpisah."):
  T("This ticker comes from a curated SLI catalogue. Current listing, sector and shareholding need confirmation against official BEI records.","Kode berasal dari katalog kurasi SLI. Status pencatatan, sektor, dan kepemilikan perlu dicocokkan kembali dengan catatan resmi BEI."));
  root.append(notice);
  const content=E("div","sli-issuer-content"),left=E("section","sli-issuer-main"),side=E("aside","sli-issuer-side");
@@ -204,10 +206,12 @@ function render(data,ticker,groups,relations,assets){
  typed(T("Company name · source register","Nama perusahaan · registri"),name,facts);
  typed(T("Strategic sector","Sektor strategis"),data.sector,facts);
  typed(T("Source register date","Tanggal registri"),data.source_as_of||"2026-10-20",facts);
- typed(T("Current BEI listing verified?","Status pencatatan BEI sudah pasti?"),data.verification==="official_exchange_snapshot"?T("Official snapshot only","Snapshot resmi bertanggal"):T("Pending official reconciliation","Menunggu rekonsiliasi resmi"),facts);
+ typed(T("Public security listing cross-check","Pemeriksaan pencatatan efek"),data.verification==="official_exchange_snapshot"?T("Official IDX snapshot","Snapshot resmi BEI"):data.verification==="official_ksei_security_listing"?T("Active KSEI record at review date","Efek aktif menurut KSEI saat pemeriksaan"):T("Awaiting official evidence","Menunggu bukti resmi"),facts);
  left.append(E("h2",null,T("Issuer profile and provenance","Profil emiten dan sumber")),facts);
  const sources=E("div","sli-issuer-links");
  sourceLink(sources,data.source_url,T("Official issuer profile (BEI)","Profil emiten resmi (BEI)"));
+ sourceLink(sources,data.listing_source_url,T("Registered security at KSEI","Efek terdaftar di KSEI"));
+ sourceLink(sources,data.investor_relations_url,T("Issuer investor relations","Hubungan investor emiten"));
  sourceLink(sources,"https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan/",T("BEI financial and annual reports","Laporan keuangan dan tahunan BEI"));
  sources.append(link("./sli-entities.html?ticker="+encodeURIComponent(ticker)+"#"+encodeURIComponent("company:idx:"+ticker),T("Cross-check full SLI entities register ↗","Periksa registri lengkap Entitas SLI ↗")));
  sources.append(link("./sli-research-ai.html?prompt="+encodeURIComponent(T("Analyze IDX:"+ticker+" ("+name+") against official company disclosures, audited balance sheet, SLI corporate ownership sources and strategic sector risks. Do not invent prices or market caps.","Analisis IDX:"+ticker+" ("+name+") dari keterbukaan emiten BEI, laporan keuangan diaudit, kepemilikan korporasi SLI, dan risiko sektoral. Jangan mengarang harga atau kapitalisasi.")),T("Research AI ↗","Research AI ↗")));
