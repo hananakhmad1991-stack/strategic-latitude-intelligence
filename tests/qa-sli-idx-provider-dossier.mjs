@@ -16,9 +16,9 @@ function issuer(){
 }
 test("Sector watchlist is restricted to SLI IDX issuers and global heatmap is explicitly separate",()=>{
  const ui=provider();
- const source=data.records.filter(x=>["energy","minerals","coal","food","technology","infrastructure","transport","manufacturing"].includes(x.sector));
+ const source=data.records;
  const config=ui.watchlistConfig(source,"all");
- assert.equal(config.tabs.length,8);
+ assert.equal(config.tabs.length,12);
  const sourceTickers=new Set(source.map(x=>x.ticker));
  for(const tab of config.tabs){
   assert.ok(tab.symbols.length>0&&tab.symbols.length<=9);
