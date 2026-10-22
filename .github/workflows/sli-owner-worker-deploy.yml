@@ -5,6 +5,7 @@ on:
       - 'research-api/**'
       - 'scripts/sli-research-owner-readiness.mjs'
       - 'tests/qa-sli-owner-readiness.mjs'
+      - 'tests/qa-sli-owner-handler-acceptance.mjs'
       - 'tests/test_sli_research_index_source.py'
       - 'scripts/build_research_unified_index.py'
       - 'data/sli-research-unified-index.json'
@@ -43,7 +44,7 @@ jobs:
           node --check js/sli-legal-provisions.js
           node --check research-api/src/legal-citation-audit.mjs
           node --check research-api/src/policy-corpus.mjs
-          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs tests/qa-sli-owner-deploy-snapshot.mjs
+          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs tests/qa-sli-owner-deploy-snapshot.mjs tests/qa-sli-owner-handler-acceptance.mjs
 
       - uses: actions/setup-python@v5
         with:
