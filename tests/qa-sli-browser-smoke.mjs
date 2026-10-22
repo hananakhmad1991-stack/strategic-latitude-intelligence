@@ -549,6 +549,7 @@ await check("KKP verified visual laboratory: province choropleth, Sankey and his
  await page.goto(pageUrl("marine-fisheries-intelligence.html#marine-visual-lab"),{waitUntil:"domcontentloaded",timeout:30000});
  await page.locator("#mfVizHatcherySankey svg").waitFor({timeout:26000});
  assert.equal(await page.locator("#mfVizHatcherySankey .mf-viz-sankey-ribbon").count(),20);
+ assert.equal(await page.locator("#mfVizSankeyItems button").count(),10);
  assert.equal(await page.locator("#mfVizHatcheryMap svg .sli-province-shape").count(),38);
  assert.equal(await page.locator("#mfVizNationalIndex svg polyline").count(),2);
  assert.equal(await page.locator("#mfVizHeatGrid tbody tr").count(),37);
@@ -557,7 +558,7 @@ await check("KKP verified visual laboratory: province choropleth, Sankey and his
  assert.ok((await page.locator("#mfVizHeatGrid tbody tr").first().innerText()).includes("—"));
  await page.locator("#mfVizHeatSeries").selectOption("seaweed");
  assert.equal(await page.locator("#mfVizHeatGrid tbody tr").count(),34);
- await page.locator("#mfVizHatcherySankey .mf-viz-sankey-ribbon").first().click();
+ await page.locator("#mfVizSankeyItems button").first().click();
  assert.match(await page.locator("#mfVizSankeySelected").innerText(),/ribu ekor/);
  assert.match(await page.locator("#mfVizHatcheryCoverage").innerText(),/719[,.]750/);
  assert.equal(await page.locator("#mfWPPMap svg path").count(),0,"BIG WPP polygons cannot be invented");
