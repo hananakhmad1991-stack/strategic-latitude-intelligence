@@ -2,7 +2,7 @@
    Static local links only, no analytics, redirects, network dependency or injected source data. */
 (()=>{'use strict';
 const groups=[
- ['Start & research tools','Mulai & perangkat riset','terminal','research','expert','guide','membership'],
+ ['Research & expert services','Riset & layanan pakar','expert','research','terminal','guide','membership'],
  ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','investment','entities','province','opportunity','gini','welfare','labs'],
  ['Energy, minerals & trade','Energi, mineral & perdagangan','energy','electricity','ruptl','minerals','trade','map'],
  ['Food & agriculture','Pangan & pertanian','food'],
@@ -125,7 +125,7 @@ function renderPlatformMast(){
   ['Find a company','Cari perusahaan','./sli-entities.html'],
   ['Check original sources','Periksa sumber data','./sli-sector-data-library.html'],
   ['Analyze with DERGUBA','Analisis dengan DERGUBA','./sli-research-ai.html'],
-  ['Find an expert','Carikan pakar','./sli-expert-connect.html']
+  ['Request an expert / custom research','Minta pakar / riset khusus','./sli-expert-connect.html']
  ];
  const quickLinks=node('div','sli-explore-quick-links');
  for(const [en,id,url] of shortcuts){const a=node('a','sli-explore-quick-link',text(en,id));a.href=url;quickLinks.append(a)}
@@ -191,7 +191,7 @@ function renderPlatformMast(){
  primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
  primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'||path==='sli-issuer.html'));
  primary.append(mastLink('./sli-research-ai.html','DERGUBA AI',false));
- primary.append(mastLink('./sli-expert-connect.html','Expert Connect',current==='expert'));
+ const expertCta=mastLink('./sli-expert-connect.html',text('Expert Connect · By Request','Layanan Pakar · By Request'),current==='expert');expertCta.classList.add('sli-platform-expert-cta');primary.append(expertCta);
  
  const tools=node('div','sli-platform-tools');
  // All specialist dashboards share the same persisted EN/ID preference as the homepage.
@@ -255,7 +255,7 @@ function renderBar(){
   ['Companies & actors','Perusahaan & aktor','./sli-entities.html'],
   ['Original sources','Sumber asli','./sli-sector-data-library.html'],
   ['Analyze','Analisis','./sli-research-ai.html'],
-   ['Find experts / commission research','Carikan pakar / pesan riset','./sli-expert-connect.html']
+   ['Expert Connect / custom research','Layanan pakar / riset khusus','./sli-expert-connect.html']
  ];
  for(const [en,id,url] of pathItems){
   const a=node('a','sli-research-step',text(en,id));a.href=url;
