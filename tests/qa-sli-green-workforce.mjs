@@ -36,11 +36,11 @@ test('dashboard is navigable and responsive with explicit projection caveats',()
 test('sector entry points preserve source caveats and canonical module ownership',()=>{
  const nav=read('js/sli-navigation.js');
  assert.match(nav,/greenworkforce:\[/);
- assert.match(nav,/green-workforce-intelligence\\.html/);
+ assert.match(nav,/green-workforce-intelligence\.html/);
  for(const page of ['food-agriculture-intelligence.html','marine-fisheries-intelligence.html','pln-electricity-statistics.html']){
   const source=read(page);
   assert.match(source,/class="sli-green-sector-link"/,page+' missing contextual module');
-  assert.match(source,/green-workforce-intelligence\\.html/,page+' missing link');
+  assert.match(source,/green-workforce-intelligence\.html/,page+' missing link');
   assert.match(source,/bukan realisasi pekerjaan per sektor/,page+' missing scenario disclaimer');
  }
  const home=read('index.html');
