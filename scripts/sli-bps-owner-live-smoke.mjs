@@ -86,7 +86,20 @@ export async function liveSmoke(env=process.env){
    body:JSON.stringify(body),redirect:"error",signal:AbortSignal.timeout(40000)});
  const data=await res.json().catch(()=>({}));
  const result=evaluateBpsOwnerReply(res.status,data);
- console.log(JSON.stringify({test:"BPS Owner Test live reference and uncertainty",...result},null,2));
+ // Emit only fixed, whitelisted status classes, never model prose, tokens or
+ // provider payloads. Owner QA can distinguish a source-guard 502 from quota
+ // failure without revealing confidential or costly provider response content.
+ const safeErrors=new Set([
+  "focused_bps_statistical_answer_not_verified",
+  "invalid_or_missing_source_citations",
+  "model_request_failed",
+  "model_response_incomplete",
+  "model_unreachable",
+  "ai_gateway_configuration_invalid"
+ ]);
+ const backend_error_class=typeof data?.error==="string"&&safeErrors.has(data.error)?data.error:
+   res.status===200?"none":"unclassified_backend_error";
+ console.log(JSON.stringify({test:"BPS Owner Test live reference and uncertainty",backend_error_class,...result},null,2));
  if(!result.pass)process.exitCode=1;
  return result;
 }
