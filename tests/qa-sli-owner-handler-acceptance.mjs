@@ -3,7 +3,9 @@
  */
 import test from "node:test";
 import assert from "node:assert/strict";
-import worker from "../research-api/src/owner-test-worker.mjs";
+// Wrangler bundles JSON imports; Node needs the equivalent esbuild fixture bundle.
+// CI pins esbuild and builds this from the unchanged Worker source before running.
+const worker=(await import("file:///tmp/sli-owner-handler-acceptance.bundle.mjs")).default;
 import {makeResearchReport} from "../js/sli-report-content.mjs";
 import {printableResearchHtml} from "../js/sli-report-pdf.mjs";
 import {docxBytes} from "../js/sli-report-docx.mjs";
