@@ -52,7 +52,7 @@ test('globe uses source-backed archipelago coastlines, not a single location mar
   assert.ok(Math.min(...latitudes) < -10 && Math.max(...latitudes) > 5, 'Nusa Tenggara and northern islands are covered');
   assert.match(javascript, /sli-indonesia-province-38-ATTRIBUTION\.txt/, 'Coastline provenance link retained');
   assert.match(javascript, /Math\.sin\(phase\) \* radians\(16\)/, 'Auto orbit must keep archipelago facing forward');
-  assert.match(index, /sli-orbit-globe\.js\?v=20261022-worldzoom3/, 'Release cache bust expected');
+  assert.match(index, /sli-orbit-globe\.js\?v=20261022-globefit4/, 'Release cache bust expected');
 });
 
 test('real canvas renderer paints archipelago on initial reduced-motion frame', () => {
@@ -117,7 +117,7 @@ test('low-detail world geography contains every major continent and keeps Indone
   assert.ok(hasLand(95,141,-11,6), 'Indonesia at global scale');
   assert.match(javascript, /naturalearthdata.com\/about\/terms-of-use/);
   assert.match(javascript, /drawWorld\(cx, cy, r\);\s*drawIndonesia\(cx, cy, r\);/, 'Gold Indonesia must layer on top of continents');
-  assert.match(index, /worldzoom3/, 'Versioned assets cache-busted');
+  assert.match(index, /globefit4/, 'Versioned assets cache-busted');
 });
 
 test('zoom and focus controls are active and actually change canvas geometry', () => {
@@ -183,4 +183,12 @@ test('zoom and focus controls are active and actually change canvas geometry', (
   assert.match(javascript, /stage\.addEventListener\('touchmove', onTouchMove, \{ passive: false \}\)/);
   assert.match(javascript, /stage\.addEventListener\('pointermove', onMove\)/);
   assert.ok(worldWidth>0);
+});
+
+
+test('globe hero reserves room for the full interactive stack at desktop widths', () => {
+  assert.match(styles, /body\.sli-home-active \.sli-portal-hero\s*\{[^}]*min-height:\s*595px/s);
+  assert.match(styles, /@media\(max-width:1100px\)[\s\S]*?min-height:\s*0;/);
+  assert.match(javascript, /let mode = 'indonesia'/, 'Default Indonesia-facing position');
+  assert.match(index, /globefit4/, 'Updated asset URLs evade stale CSS cache');
 });

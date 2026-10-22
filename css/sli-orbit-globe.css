@@ -1,5 +1,11 @@
 /* The animated globe belongs to the landing hero only; no layout changes in research dashboards. */
-body.sli-home-active .sli-portal-hero { isolation: isolate; min-height: 354px; }
+/* Reserve the globe's COMPLETE interactive stack inside the clipped hero (not only its canvas).
+   The previous 354px min-height clipped World View, zoom, pause and source links. */
+body.sli-home-active .sli-portal-hero {
+  isolation: isolate;
+  box-sizing: border-box;
+  min-height: 595px;
+}
 body.sli-home-active .sli-portal-hero > .sli-portal-eyebrow,
 body.sli-home-active .sli-portal-hero > h2,
 body.sli-home-active .sli-portal-hero > p,
@@ -25,7 +31,7 @@ body.sli-home-active .sli-portal-hero-actions { max-width: 59%; }
 .sli-orbit-source:hover {color:#ffe2a9!important;}
 .sli-orbit-source:focus-visible {outline:3px solid #ffe0aa;outline-offset:3px;}
 @media(max-width:1100px) {
- body.sli-home-active .sli-portal-hero {min-height:unset;}
+ body.sli-home-active .sli-portal-hero {min-height:0;}
  body.sli-home-active .sli-portal-hero > h2,
  body.sli-home-active .sli-portal-hero > p,
  body.sli-home-active .sli-portal-hero-actions {max-width:100%;}
@@ -59,3 +65,22 @@ body.sli-home-active .sli-portal-hero-actions { max-width: 59%; }
  .sli-orbit-meta{margin-top:-16px}
  .sli-orbit-credits{gap:2px 11px}
 }
+
+/* Globe controls remain inside the hero border at desktop sizes, with room for
+   the bilingual attribution line on narrow desktop windows. */
+@media(min-width:1101px) {
+  body.sli-home-active .sli-portal-hero { padding-bottom: 36px; }
+  .sli-orbit-globe { top: 10px; }
+}
+/* Mobile and tablet are in the natural flow; never absolutely overlay controls. */
+@media(max-width:1100px) {
+  body.sli-home-active .sli-portal-hero { min-height: 0; }
+  .sli-orbit-globe { overflow: visible; }
+}
+
+/* Global visual-export integration wraps canvas in its own stacking context.
+   Keep the interactive toolbar ABOVE the canvas, even after this enhancement. */
+.sli-orbit-stage { z-index: 0; }
+.sli-orbit-controls,
+.sli-orbit-toggle,
+.sli-orbit-credits { position: relative; z-index: 5; }

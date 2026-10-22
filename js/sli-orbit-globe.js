@@ -88,7 +88,9 @@
     let phase = 0;
     let dragOffset = 0;
     let worldSpin = 0;
-    let mode = 'world';
+    // Start Indonesia-facing in World scale. All continents remain visible around it;
+    // users may switch to full continuous rotation with World View.
+    let mode = 'indonesia';
     let zoom = 1, targetZoom = 1;
     let tilt = radians(17);
     let pinchDistance = null;
