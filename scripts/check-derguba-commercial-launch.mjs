@@ -2,6 +2,8 @@
  * Production access may never be inferred from owner staging success.
  */
 import fs from "node:fs";
+import path from "node:path";
+import {fileURLToPath} from "node:url";
 const load=p=>JSON.parse(fs.readFileSync(new URL("../"+p,import.meta.url),"utf8"));
 export function evaluateDergubaLaunch(registry,config){
  const allowed=new Set(["PENDING","REJECTED","VERIFIED"]);
@@ -38,7 +40,7 @@ export function evaluateDergubaLaunch(registry,config){
      approved?"All recorded gates have evidence; still confirm manual operator deployment":
      "Paid public launch BLOCKED as intended; green CI only indicates protective controls are functioning"};
 }
-if(process.argv[1]&&new URL("file://"+process.argv[1]).pathname===new URL(import.meta.url).pathname){
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const res=evaluateDergubaLaunch(load("data/derguba-commercial-launch-gates.json"),
     load("data/sli-research-assistant-config.json"));
  console.log(JSON.stringify(res,null,2));
