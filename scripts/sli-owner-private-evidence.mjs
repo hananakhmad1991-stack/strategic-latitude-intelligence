@@ -7,14 +7,14 @@ import os from "node:os";
 import path from "node:path";
 import {createHash} from "node:crypto";
 import {spawnSync} from "node:child_process";
-import {pathToFileURL} from "node:url";
+import {pathToFileURL,fileURLToPath} from "node:url";
 import {makeResearchReport} from "../js/sli-report-content.mjs";
 import {printableResearchHtml} from "../js/sli-report-pdf.mjs";
 import {docxBytes} from "../js/sli-report-docx.mjs";
 
 const reviewedType="reviewed_primary_article_paraphrase";
 const boundedArticle=/\b(?:pasal|article)\s+(\d+[a-z]?)\b/gi;
-const scriptRoot=path.resolve(new URL("..",import.meta.url).pathname);
+const scriptRoot=path.resolve(fileURLToPath(new URL("../",import.meta.url)));
 const words=s=>String(s??"").trim();
 const safeFile=(directory,file,content)=>{
  const target=path.join(directory,file);
