@@ -1,0 +1,42 @@
+{
+  "schema": "sli-bps-susenas-2026-source-extraction-reconciliation-v1",
+  "source": {
+    "publisher": "BPS",
+    "title": "Statistik Kesejahteraan Rakyat 2026",
+    "survey": "Susenas Maret 2026",
+    "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html",
+    "pdf_sha256": "1338749eec4926885a3052ea2933cfeaca1b1328386bca26f80d5a1279a44305"
+  },
+  "comparisons": {
+    "engines": [
+      "PyMuPDF",
+      "pdfplumber"
+    ],
+    "sampled_panels": 31,
+    "total_panels": 253,
+    "region_rows_compared": 1209,
+    "exact_full_token_arrays": 875,
+    "equal_numeric_different_missing_or_footnotes": 26,
+    "secondary_parser_rows_with_numeric_omissions": 308,
+    "secondary_parser_numeric_tokens_omitted": 354,
+    "numeric_value_substitutions_on_shared_tokens": 0,
+    "secondary_parser_extra_numeric_rows": 0,
+    "non_subsequence_numeric_disagreements": 0
+  },
+  "method": "Two extracted text token streams for same PDF matched by official province sequence. Strip only superscript footnote markers for comparison. For 308 divergent numeric rows, pdfplumber numeric tokens are a subsequence of PyMuPDF tokens; this proves an extraction omission relative to PyMuPDF, not which engine is definitively accurate. Source page 271 visually inspected for representative omitted footnoted RSE.",
+  "quality": {
+    "structural_cross_engine_triage": "complete_for_sample",
+    "manual_pixel_review": "partial_representative_pages_only",
+    "printed_values_definitively_verified": "not_all",
+    "full_165_plus_133_tables_pixel_review": "open",
+    "usable_as_public_source_numeric_data": false,
+    "commercial_bulk_republication_approved": false
+  },
+  "reproduction": {
+    "command": "python scripts/audit_bps_welfare_secondary_reader.py --pdf ORIGINAL_BPS.pdf --private-candidates PRIVATE_RSE_JSON --out PRIVATE_DIRECTORY",
+    "output": "private audit JSON including aggregate counts; do not commit raw records",
+    "synthetic_test": "python -m unittest discover -s tests -p 'test_bps_welfare_secondary_reader.py' -v"
+  },
+  "rights_note": "The BPS website term-of-use appears to allow use of data, including commercial use, but the PDF's explicit publication notice restricts commercial reproduction without written permission. Treat reuse of the data versus reproducing the publication as separate questions pending BPS clarification.",
+  "maintainer_note": "This metadata is an audit of extraction methods, not an endorsement of an exact 24,921-entry machine transcription. Publication of all raw cells remains disallowed in this pipeline until review."
+}
