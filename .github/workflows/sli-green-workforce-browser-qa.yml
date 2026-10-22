@@ -1,0 +1,37 @@
+name: SLI Green Workforce Real Chrome Desktop Mobile QA
+on:
+  pull_request:
+    paths:
+      - 'green-workforce-intelligence.html'
+      - 'js/sli-green-workforce-projections.js'
+      - 'data/sli-green-workforce-projections.json'
+      - 'tests/browser-green-workforce.mjs'
+      - '.github/workflows/sli-green-workforce-browser-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chrome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: browser-actions/setup-chrome@v2
+        id: chrome
+        with:
+          chrome-version: stable
+      - run: node --check tests/browser-green-workforce.mjs
+      - name: Real Chrome desktop and mobile visual checks
+        env:
+          CHROME_PATH: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tests/browser-green-workforce.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: green-workforce-1440-390-360-screenshots
+          path: artifacts/sli-green-workforce-*.png
+          if-no-files-found: ignore
+          retention-days: 7
