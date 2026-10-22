@@ -181,9 +181,9 @@ function extraAuditRow(s,r,sourceNo){
  // labelled statistic into the same record. This is distinct from allowing
  // harmless re-use of numeric values in source references.
  for(const [field,pattern] of [
-  ["estimate",/(?:estimasi|perkiraan|diperkirakan)\\s*[:=]?\\s*\\d+(?:[,.]\\d+)?/gi],
-  ["SE",/(?:^|[^a-z])SE\\s*[:=]?\\s*\\d+(?:[,.]\\d+)?/gi],
-  ["RSE",/(?:^|[^a-z])RSE\\s*[:=]?\\s*\\d+(?:[,.]\\d+)?/gi]
+  ["estimate",/(?:estimasi|perkiraan|diperkirakan)\s*[:=]?\s*\d+(?:[,.]\d+)?/gi],
+  ["SE",/(?:^|[^a-z])SE\s*[:=]?\s*\d+(?:[,.]\d+)?/gi],
+  ["RSE",/(?:^|[^a-z])RSE\s*[:=]?\s*\d+(?:[,.]\d+)?/gi]
  ]){
   if([...s.matchAll(pattern)].length!==1)issues.push("ambiguous_or_duplicate_"+field);
  }
