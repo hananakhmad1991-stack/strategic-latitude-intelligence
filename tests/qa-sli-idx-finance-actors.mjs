@@ -70,7 +70,7 @@ test('direct owner, beneficial owner, PSC and country links are rigorously separ
  assert.match(js,/participating_interest_pct/);
  assert.match(js,/source_period/);
  assert.match(get('js/sli-entities.js'),/assetProfiles\.get\(n\.ticker\)/);
- assert.match(get('sli-issuer.html'),/20261022-actorsfinance3/);
+ assert.match(get('sli-issuer.html'),/20261022-brmsdiscovery4/);
 });
 
 test('IDX dossier renders verified revenue plus source-dated shareholder and concession actors', async ()=>{
