@@ -1,0 +1,59 @@
+/* SLI Expert Connect · isolated page styles and lightweight connected-journey CTAs. */
+.sli-expert-page{margin:0;background:#091625;color:#eaf2f7;font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}
+.sli-expert-page *{box-sizing:border-box}
+.sli-expert-page a{color:#f2d29a}
+.sli-expert-shell{width:min(1140px,calc(100% - 32px));margin:auto;min-width:0}
+.sli-expert-skip{position:absolute;left:8px;top:-100px;padding:8px;background:#fff;color:#081f36!important;z-index:2000}
+.sli-expert-skip:focus{top:8px}
+.sli-expert-header{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:24px 0;border-bottom:1px solid #31506a}
+.sli-expert-brand{display:flex;align-items:center;gap:12px;text-decoration:none!important;color:#f5f7f9!important}
+.sli-expert-brand b{font-size:26px;color:#e8c286;border-right:1px solid #5d7890;padding-right:13px}
+.sli-expert-brand span{font-weight:800;letter-spacing:.1em;font-size:12px;line-height:1.45}.sli-expert-brand small{display:block;color:#dfc391;letter-spacing:.17em}
+.sli-expert-header nav{display:flex;flex-wrap:wrap;gap:14px;font-size:13px}
+.sli-expert-languages{display:flex;gap:4px}
+.sli-expert-languages button{background:#18324b;color:#e9f2f7;border:1px solid #658097;border-radius:6px;padding:6px 10px;cursor:pointer}
+.sli-expert-languages button[aria-pressed=true]{background:#e6c287;color:#11263a}
+.sli-expert-hero{padding:clamp(35px,6vw,72px) 0 34px;max-width:900px}
+.sli-expert-eyebrow{color:#e6c287;font-size:12px;letter-spacing:.14em;font-weight:800}
+.sli-expert-hero h1{font-size:clamp(32px,5vw,58px);line-height:1.12;margin:10px 0 18px;letter-spacing:-.035em}
+.sli-expert-hero>p:not(.sli-expert-eyebrow){max-width:810px;color:#c5d6e3}
+.sli-expert-hero-actions,.sli-expert-result-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.sli-expert-primary,.sli-expert-secondary,.sli-expert-result-actions a,.sli-expert-result-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:10px 15px;text-decoration:none!important;border:1px solid #c9ac7e;border-radius:8px;font:750 14px/1.35 system-ui,sans-serif;cursor:pointer}
+.sli-expert-primary{background:#e8c78d;color:#17263a!important}
+.sli-expert-secondary{background:#19344c;color:#f3d6a1!important}
+.sli-expert-fine{font-size:12px;color:#b3c5d1!important;line-height:1.65}
+.sli-expert-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0 42px}
+.sli-expert-services article{padding:22px;border:1px solid #42617b;border-radius:12px;background:#142c42}
+.sli-expert-services article span{font-size:12px;color:#e8c58e;font-weight:800}
+.sli-expert-services h2{font-size:19px;line-height:1.25;margin:8px 0 11px;color:#fff}
+.sli-expert-services p{font-size:14px;color:#cbdae4;margin:0}
+.sli-expert-request{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start;gap:32px;padding:40px 0;border-top:1px solid #35516a}
+.sli-expert-request-intro h2{font-size:clamp(24px,3vw,34px);line-height:1.24}
+.sli-expert-request-intro>p{color:#c9d8e3}
+.sli-expert-steps{padding-left:25px;color:#eef5f8}
+.sli-expert-steps li{margin-bottom:12px}
+.sli-expert-privacy{font-size:13px;padding:14px;background:#1c344b;border-left:3px solid #d2af75;border-radius:5px}
+.sli-expert-form-wrap{padding:22px;background:#122c43;border:1px solid #42617c;border-radius:14px;min-width:0}
+#sliExpertForm{display:grid;gap:9px}
+#sliExpertForm label,.sli-expert-result label{font-size:13px;color:#f2d9aa;font-weight:650}
+#sliExpertForm input:not([type=checkbox]),#sliExpertForm textarea,#sliExpertForm select,.sli-expert-result textarea{width:100%;min-width:0;font:14px/1.5 system-ui,sans-serif;color:#eff6fa;background:#091e31;border:1px solid #7890a5;border-radius:8px;padding:10px 12px}
+#sliExpertForm textarea,.sli-expert-result textarea{resize:vertical}
+#sliExpertForm input:focus-visible,#sliExpertForm textarea:focus-visible,#sliExpertForm select:focus-visible,.sli-expert-page button:focus-visible,.sli-expert-page a:focus-visible{outline:3px solid #edc588;outline-offset:2px}
+.sli-expert-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sli-expert-two>div{display:grid;gap:7px;min-width:0}
+.sli-expert-consent{display:flex;align-items:flex-start;gap:10px;margin-top:8px;line-height:1.5;color:#d4e2ec!important}
+.sli-expert-consent input{flex:none;width:18px;height:18px}
+.sli-expert-submit{background:#dfbc7e;color:#102439;border:0;border-radius:8px;padding:13px;font-weight:800;font-size:14px;cursor:pointer}
+.sli-expert-result{margin-top:22px;border-top:1px solid #4a6980;padding-top:17px;display:grid;gap:10px}
+.sli-expert-result[hidden]{display:none}
+.sli-expert-result p{font-size:13px;color:#cad8e4}
+.sli-expert-result h3{font-size:19px;margin:0}
+.sli-expert-result-actions button,.sli-expert-result-actions a{color:#f6dba5;background:#1b3950}
+.sli-expert-footer{border-top:1px solid #36516b;padding:25px 0 45px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:#bed0dc}
+.sli-expert-home-banner,.sli-derguba-connect{margin:14px 0 20px;border:1px solid #6c7e87;border-radius:11px;background:#133047;padding:15px 18px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+.sli-expert-home-banner strong,.sli-derguba-connect strong{color:#f3d69d;font-size:14px}
+.sli-expert-home-banner p,.sli-derguba-connect p{font-size:12px;color:#d4e2ec;margin:4px 0 0}
+.sli-expert-home-banner a,.sli-derguba-connect a{min-height:44px;display:inline-flex;align-items:center;padding:10px 14px;background:#e6c58b;color:#16263a!important;border-radius:7px;font:750 12px/1.4 system-ui,sans-serif;text-decoration:none!important}
+@media(max-width:760px){.sli-expert-services{grid-template-columns:1fr}.sli-expert-request{grid-template-columns:1fr;gap:12px}.sli-expert-header{align-items:flex-start}.sli-expert-hero{padding-top:30px}.sli-expert-shell{width:min(100% - 24px,1140px)}}
+@media(max-width:390px){.sli-expert-two{grid-template-columns:1fr}.sli-expert-header nav{width:100%}.sli-expert-form-wrap{padding:14px}.sli-expert-home-banner a,.sli-derguba-connect a{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.sli-expert-page *{scroll-behavior:auto!important}}
