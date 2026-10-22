@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T11:34:58.486863Z",
+  "updated_at_utc": "2026-10-22T12:05:31.506767Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,38 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_507cda7cf4e446816fd801",
+      "title": "AMMN Siapkan Buyback Saham Rp1 Triliun hingga Januari 2027 - Warta Ekonomi",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQRFVHRGt4cDVPZ0lsUXpUbFNJREZ6dC04VlUwT1IzZXhnVTdFSDNPazlXbFBvTEFTR2ZBazhvaHRra1FJT3Npc0lual9TM0dwanJBblVFSTdaOUh5aGcwUE5MdEs4cEVfRWo1WHd6Ymd2aGpjZ1EwM1FTZlRXUmhuOTlHYjIySllQZmtmRkFEajB6bUVFdVR1QjNObELSAaIBQVVfeXFMT0dGRzdsSkdZUnZCcGlCMTJKQTZRdjNFVjlrQ2xJNF9DajRvUWxkT2N1UjJwNW4yX1p1MmVVdDdDbXZNaHh4cl9rQjl4UUY5N1hzVHN0VVVWb19RTUpua1h3c0hhTmlCREVobFNod21MdGQwLTBZUkNITDJ3TmVNdVBqSDNFaDZZTDlLdnZMX0UzcVd5QWFfSHJ2SURxSHBoZ1VR?oc=5",
+      "publisher": "Warta Ekonomi",
+      "published_at_utc": "2026-10-22T11:42:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_86631b1e27d604c0ba6899",
+      "title": "WIKA Percepat Penyelesaian Terminal Avtur Bandara Kertajati - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE55ZnoxSlBkX1VWV1NBMy00RFhBcDg5OXdqZEc4V1FIRWJSNktkc1U0V18yQlR4T2NWN1hkS3Rzd3k3Nlp1NFZsQk81QUFpdHExTFp5RXdEb2trTUhjblJ4M0dzZW8wWGF0MFN6a2R4SQ?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-22T11:33:20Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "WIKA"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_3832b321286d60cf364718",
       "title": "AMMN Siapkan Buyback Saham Rp 1 Triliun Selama Tiga Bulan - Demokratis.co.id",
@@ -3324,7 +3356,8 @@
       "published_at_utc": "2026-10-20T04:44:17Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "BREN"
+        "BREN",
+        "DCII"
       ],
       "sector": "energy",
       "source": "public_google_news_rss",
