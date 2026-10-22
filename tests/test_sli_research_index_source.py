@@ -4,7 +4,7 @@ import sys
 import unittest
 
 sys.path.insert(0,str(pathlib.Path(__file__).resolve().parents[1]/"scripts"))
-from build_research_unified_index import safeurl,walk,rec_source
+from build_research_unified_index import safeurl,walk,rec_source,EXCLUDE
 
 
 class SourceSafetyTests(unittest.TestCase):
@@ -30,6 +30,10 @@ class SourceSafetyTests(unittest.TestCase):
         }
         paths=[path for path,_ in walk(sample)]
         self.assertEqual(paths,[("records","0")])
+
+    def test_bps_parser_audit_metadata_not_an_ai_fact_source(self):
+        self.assertIn("sli-bps-welfare-2026-reconciliation.json",EXCLUDE)
+        self.assertIn("sli-bps-welfare-2026.json",EXCLUDE)
 
     def test_placeholder_source_rejected_at_record_level(self):
         self.assertIsNone(rec_source({"url":"https:// official source"}))
