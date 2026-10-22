@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T06:39:59.924484Z",
+  "updated_at_utc": "2026-10-22T07:43:31.777472Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,102 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_8a2ab7dfc51c4e04ee000f",
+      "title": "Mengintip Posisi Alibaba Terkini di Saham GOTO Kala IHSG Bergejolak - Bisnis Indonesia Premium",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPNUlLRllUSHd6N2JYaS0xZ1ljY0ZBWHhzOGR3UE8ySEJiQTJadE5uTEpPLWVyeEJKR2QxQmxhVk53N0dhMzA1Rk1xNEMtdk9kRm5KV0czTEdNTVJ5blR3bW5ETXliYnYyd3dkeTI0S0ZSRVFNS1Q5T2ZQQ1pUYzFWS0t5T1p0SG5tR3Jscy1aSkdQTHZIMXZtODlPUWFxaklxUThuejUwaW5nUUxoM285cXBHWE9QMEZ6Y3dmbg?oc=5",
+      "publisher": "Bisnis Indonesia Premium",
+      "published_at_utc": "2026-10-22T07:35:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GOTO"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_86b74ebca8fcd95b9c1e56",
+      "title": "Prospek Saham Antam (ANTM) Tetap Solid di Tengah Tekanan MSCI - TOPIK.ID",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNWlRud3hESldzQXY0d2xoSWZKQ0dUcHZKUFd1em5OdUNiQktGelBpTDRpOGpQX01oRWM1dmgxVTlsTG5PLTNVVFZtMmpnUWlIbktvR1lJSXpCZWtTWmVuOEpybERsSlppaW5tV0MydjRWQ2VaS1JJYmVoQ2hxd19qazlWVEZ1VzA?oc=5",
+      "publisher": "TOPIK.ID",
+      "published_at_utc": "2026-10-22T07:20:18Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_633dfeb61e48fdc5cced49",
+      "title": "Pelanggaran Pasar Modal Libatkan Saham DSSA, BREN, dan CUAN, OJK Buka Para Pihak yang Terima Sanksi Denda Rp2,1 Triliun - Informasi.com",
+      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxORE1zcVRobDhaVFNXUEJ3VjVOa2c0Ymg0STdIeFhtSlQ5UjlDeGZvRU9RUFRxRHV1RC15MVc0eU1xM0t3UmpfSERqRzZpZ1Rqc1JWa3ZUaWI4c2hLdHJUejBZMGhqMmhkRmF3VXJ0LVJXZGZnSm01RXBSQ1ZOVnFsYWh4cW9EcE0xek1fOFpzak5Sampkdkx4MjVTNTEtWUt0c3JqcWVzeWI1MVlxUEI3alJzZjFKSUwyOWx2cTQ4T21wWFhfNkJDMlFhcnRydExQdHRWWVg2NHRmSFAtTVktMnViMnZLS0ljUFpDQlkyZw?oc=5",
+      "publisher": "Informasi.com",
+      "published_at_utc": "2026-10-22T07:19:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ffbd01241ce6d431f04ec5",
+      "title": "OJK Jatuhkan Denda Total Rp 2,1 Triliun Terkait Kasus DSSA, BREN dan CUAN, Ini Rinciannya - TOPIK.ID",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNekRsU0dHc1F1am84WmtOZXpmMHV0ejE3OTBOSHlNbkRLMlRPNVpOSUNaNWpHWC1KeWZUMEw5SnVzWVZ3bEJNREdiWlU3dkpzRHVkeFpKalk2YWxldU9WTW9TTWMycjl2d2ljVVlTVWltSC1RaFc0a2FKSk9Eb1lMUVEwcEthU2ZMYXVNOVU4VmVQYWw4TEpTV2xDQjlpYXgzZW4xOTVoR2hCMUE?oc=5",
+      "publisher": "TOPIK.ID",
+      "published_at_utc": "2026-10-22T07:00:23Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_97269e6487fb9bb4932562",
+      "title": "Prospek Saham Antam (ANTM) di Tengah Badai MSCI - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOclJLd0dQR0ZxcU9LQXQ4aXZLdm03dzlvcEhZSFRBUzhtbTNtN0RfVHJXY00xTzdKbWdUU2F2ekpRUEhkQmJEbUljME1OMUxwVnJxSWRyS3lybkdrMnItMnc3ZnJpZDJ4VWJzQlcwVzNGS0tEbHVrT0RxZXQ1dmVXNF9qZHdVUQ?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-22T07:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_af298df6597e2771d194f6",
+      "title": "Daftar 11 Perusahaan Dihukum OJK di Kasus Saham DSSA, BREN dan CUAN - CNN Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQbTl4S2pfcjNDbnV2SkJXX3V2T3RPZFZkRGNpSVJHZ1NZWi02SWdxcEpjZ0sxekN5WUFEOWhnLUVSbk9RU2JteHNmVGFsbUw1WWpYSzh5OHZDTlgwbF9GTVpRTTNVSTNpXzBmN3FiRzR4VVl6M3hUT3RFRWk3ejlwcnpSMDlLXzRMcmtTRG0yZ1VHVHFoR19HSExPZ2kzWmkydURKX0hwVEVlN2d2ekZrSU5DREFodmNpYmxkZmN6OWZkQ0xiNDFicdIBzgFBVV95cUxPaXd4US1uR1lWQkgzZTRKWklzZjcycW9CbnY4bFdEY3ZtdHp2WXlHOEhGWU0wZGFxai1lLUdTUG45SmprTUpXZHNndFJnOFFnbUdkX0EwdGlfS1FILURzLURtRnBTTTRSekVpSlY1dElET0t3WGF3a0U4d3FPV0VpemZBNk9lZ09xZHFHTk9YZ25BWmZvY1luN2xPamhXekg3cWthODJVSjY3VEFVY3cydFJ1dUFQd1hkNkJORmk0ME9vamZxbjJrLVNHQ1p0UQ?oc=5",
+      "publisher": "CNN Indonesia",
+      "published_at_utc": "2026-10-22T06:50:40Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_607520ec06798658aa4134",
       "title": "Prospek Saham Aneka Tambang (ANTM) di Tengah Badai MSCI - CNBC Indonesia",
@@ -100,6 +196,38 @@
         "TLKM"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_bb2ec30fc6dfd9c0e315dd",
+      "title": "OJK Ungkap Identitas Pelanggar Kasus DSSA, BREN, CUAN, Ini Daftarnya - Bareksa.com",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOZUhBUS1JLW9NZlJpMnlxYkhoZ3hxc1FfNW41VzNXbG1VOFNPQzh2WkUxMEZYY1ZoM0dlaVBnd1J6OXhKOUs1eDZjd1N5aFVlLVVKSHMyVXhGanRRY212T29IQ1FGVFlWRWZsQnJnZ1pPcUZOX1B4UTNYMTBJYk5xdmZGRTNHTHczajlwYnFfYllVNktHMFp4SUJrZV9lSmtmcjRtLXZicDZTaGxqZThWaVNiZFZxd3V6?oc=5",
+      "publisher": "Bareksa.com",
+      "published_at_utc": "2026-10-22T05:54:21Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_7c577d891170c28aa42fd0",
+      "title": "IHSG Sesi I Berbalik Menguat 1,7%, Saham Masuk HSC BREN dan BYAN jadi Penopang - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPZjlYUjdOR1ZCUDNERjAtVElwc204OUhySTJBaHY0QlowZXRYV2VjMDVydWNUSG5vU2t2VDlsa21LeHBEaF9YWFB3dlVFQkxwWHBlQ3dkMERHeU5kdDlEX0RTOU9ublZWZnRia2hyb3JvZmc1R2otdWdqaWhVM1piZ1Q2OVFJR24xbHRNUmVRN1JLaE9na1Z3SnVfQWx5UzVTb1lIYkMxSFJMWFRBWTJVal9IWC1Ic2RieEpneXVIT2VoRU1pZ1M4ctIBzgFBVV95cUxNVTloMU9RZlNiSVl2amttOWxLanpUZWcwYW1lUnBNbnRSWlZjQXhMS0ctVTRPb0Q1WUJLVGNCdk40b1pIWXFTTkJvbFcyUEFUdmJ3MlczU25fSUc4UWtseWJCV2JOSm80MXVtaGpqUG1JQTBJVHhwYmFuTENHUldtd1JZUlNRRE9PS0Z5Nk9DNzZwT1JFc3NQRGE5YWJja09VcEgwVW5OU29FRVgxN29ZLU1RbGpaWEZyTnVPUGlDSXZheXJNWDB1YkZuWU9DUQ?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-22T05:39:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -408,6 +536,22 @@
         "PTBA"
       ],
       "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_1aab10ca5aa58819438513",
+      "title": "Modus DSSA, BREN, CUAN di Kasus Manipulasi Saham - kumparan.com - Kumparan.com",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNdU5lSlFZQkdTOTY2VF9XYWR1Q2lMelFwOTFFQUI4WnoxNlRBYU5TSVViY0t3NHdWWHNKWmUxenRaMmU4NkRwR0dxenBibGJEN1NudldGVDdUWVh0RDB5V0ZtTWpGWGNwVGFEWnlOX1FYcUtIelIxMEJtdUoyR2RsU1BSdnpFcUdvTDVCc2NZVGJDUUloQ28xczF30gGiAUFVX3lxTFBZZDQzVGFzdVU3ZkVVM3dOZ3FhVkQ1Zk9RRTU2TWtTNjg5dTlyYncwOWozbzBuNzFzbGVKS2w5eDNqeTlRc1NKNkJoU2x6alJ3STIzUnNPWWl1RWxEd3czemFqLVVFQjljTkladjNLMmEyWnJMZ3NqbHRuSUZlaXdBeFQtb255UnU5Rml5UTZqeXRVQUJEUWxES1hzS3BuY0NEUQ?oc=5",
+      "publisher": "Kumparan.com",
+      "published_at_utc": "2026-10-22T00:32:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -3906,6 +4050,7 @@
       "published_at_utc": "2026-10-19T06:40:42Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "GOTO",
         "INDF"
       ],
       "sector": "food",
@@ -4572,6 +4717,7 @@
       "published_at_utc": "2026-10-18T00:59:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "TLKM",
         "UNTR"
       ],
       "sector": "manufacturing",
@@ -5272,6 +5418,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_2b561a30e737cfe11ed7ee",
+      "title": "Foto : Saham PTBA Berpotensi Cuan 16 Persen, Katalisnya Dividen - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQanlfR1RlazVuVXJOeG5uV0d2bF96RVlJRmh2QXNWMGNfajRPYjU2LVVxMWVRZnpyOHprNDZBWE55b2VXbzJWOEtib2ZFMm5DQXFqM0UwX0JmNnhMSkoxU1hJTk9SWFBabmJob3MtSlBpdmE2RHdQNlNVYk94NXB4TnZrSzk3bWlrRU84cnNVWVhqVzNlT2hxemMzXzRWX3hEMHo0c2NDZGxyS1k?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-15T05:33:27Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_f1b393a9a36ab86a271f3e",
       "title": "Foto : Saham PTBA Berpotensi Cuan 16 Persen, Katalisnya Dividen Halaman 1 - Kompas.com",
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNTHBBejVramRGeUR6ekV6T0Z0YWxYYkhncVI5aVJob3hmYi1MWE0yRTV6YXhLeXJnUktrMWhSdkV6U1p1UTdPTllwdjVROHMwMXE2Y1JxbUpTTXV5S0FObDU2RXZtaHhmOHVvOXZCSnBIRy05ZldvdjVxWUQtbzVkeDcxMjdNVHJoZUh0aDF0ajFwUThYSGZ5VlBucUZXRjZYbDl0bmk0dmUwc0ZYUnNramd4a3I?oc=5",
@@ -5812,38 +5974,6 @@
         "ISAT"
       ],
       "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_09b83a1eae20dd1c1a4420",
-      "title": "ADHI Ikut Lindungi Pantai Bali, Ini 4 Pekerjaan dalam Proyeknya - konstruksimedia.com",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNaEx6M1ZZZGVjcFgwWng5ejUwWnBZY3c2RF9HeVdaV3RFcC1OUmJMeTlaOGFHLXJNa0o0LWx1bzA2S3g4UUw0NUh3c2pYb3Zqc2x4bGZ0dGFQb2ZYMkt5MlRBWnUxTWZqXzVMNU12S0w5T2VGN3dKRFhpOFREMkVKZUVMMDhwNnJ2S1JpZFo5VHM4RS00S0E?oc=5",
-      "publisher": "konstruksimedia.com",
-      "published_at_utc": "2026-10-14T07:00:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ADHI"
-      ],
-      "sector": "infrastructure",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_b463b3e2c6008e67bc4204",
-      "title": "INCO Lanjutkan Rebound dari 3.990 di Tengah Kabar Rencana RUPS Luar Biasa - FXStreet",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOYm1JRWJJRlJhNVJtajNpUjhpU2o5MHItVHhtbmxscWxHZUtvR3hjR09FRWU0RWQyMU94eXZXRHROVmxuWG1KTF9iZ0NRTUZNUXQ1aXZBclZpX2dQQWxYcXI2N1YxX3BwV2RTWi1jcTBXUVZSMlFaWHFTVWk5YWJDY2F5Q0JndHJkVl9iXzJ4dzhsbEZINE5YOG9kUDRiaTJob1BNWVZjamE2bHpjRy1fMEtFQks0YzRkemfSAb8BQVVfeXFMUExjbVpPdHg3LS1oMXQxUFJCcy02NndVc1cxOFZ0dnlpR0o1OHFEaC15alk3N1JSTkJsZExqSEdTY3VrWWZSdXFfb2NZXzhMVFZMdHBvSE5HSnVuUU9JN01uMzgtejBGdEhJbkRVT3J6RzYwZmVOTkx6NVZQNDRpQjRucHpwMXhGdzlQaExVVU9GVnhpczE3cVVLTk5FODRYNlhfUk5GUVdkZEZHLVFfM0RnRFJLbmhxTGpaQ3YyM0k?oc=5",
-      "publisher": "FXStreet",
-      "published_at_utc": "2026-10-14T06:50:16Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INCO"
-      ],
-      "sector": "minerals",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
