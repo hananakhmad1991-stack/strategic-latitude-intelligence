@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T06:04:51.163676Z",
+  "updated_at_utc": "2026-10-22T06:39:59.924484Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,54 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_607520ec06798658aa4134",
+      "title": "Prospek Saham Aneka Tambang (ANTM) di Tengah Badai MSCI - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPVW5GM0l5ZzBjakZOckZTa2lGSjdEU1BHZXhqemE0QWRWNms1ZXltTmo3aHZHREdlYkJFYWF1MUFPeThENHExRzRQamFzdVBpNkRxSm1oaHRHczI1VUtjSUpReVBEUmhlTEtaZVhZQnFuMkN4anRuYWxWS3hobjdicnBycVBndjBVbGdOZXJodWtFdkFoRk1yVXNEWmdaRkRyRHZiVWVydmkzT1lCSUZzdkVVUElmVzZV0gG-AUFVX3lxTE1XRnJMMkh4ems0TmplcExnak02QWs2c09GdGhSaTBZam5VTUFMUlhRZl9lZHVmdXZFOWNTX0ZWNS02RWRORU90R2RhS3p2QVlseDRnSTc2Zm9IWXhhNkNEdHZNcTh4dUgxRTUzLWNES0I1YWtsTHc0MTkxM2MwU3lMWlRxMGowbUhnZGNaMU9QUFZNQ1JfdWtOQUZCU1BaSF9NVm9UTnhoVUZZRk95Mk44UVlEMW5MNWV0VDdtMGc?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-22T06:20:46Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_6e4d34aa2827dbb6bcbadc",
+      "title": "Langgar Aturan Pasar Modal Indonesia, OJK Sanksi DSSA, BREN dan CUAN - Republiknews.co.id",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxONWFEbnQ5bi0zcFRmUVJsbUJIb2s5SEkyaVVLZk8wbm5aTGtUSW5uazIybXpLVU85ZVd1djRjU2lqTWVyUl9Ganh1cUllR0M3dTFSejJ5dmZrQ0xLd1lXb2xjNDlZQ3lYbnU0d0tjNEl4NmFNbXZBNnk1cTFOcnFMTUNBN2lYM2VrZzVRYVlBMW1NS0tKcW1FdUhB?oc=5",
+      "publisher": "Republiknews.co.id",
+      "published_at_utc": "2026-10-22T06:10:03Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_cccaefc28ef18048f2507f",
+      "title": "Harga Saham GOTO Hari Ini 22 Oktober 2026: Stagnan di Rp26 pada Penutupan Terakhir - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBRTkYzVFE3dEI4Uy1YNmxmUUFWMWhwcjREeDlJLUU4SWpXdVpsYVpzcUhkcHFkWlFOQ1gyTXByczBlLUJRRHBNVUNhYm4wemE1cmoyOEpuXzhaeFBheG9RUGJiREhtNGwzeXZVSXNlcXNxSzJqZk9WOFFZdTBuUdIBgwFBVV95cUxQV0tWOTZ1OU5wN1JqeDFIMEdzNVhqbFM5TGlCU2hKdFBuSU4wbHM0eWRtcmZYMTJ3VEFVUXluSjR6ay1BTjdHTjFaSmNwM05icTVvUnRSaXJrZ2drLXNNQ0RZYjZGNjc0SzB0TlY5ZWd2TEJ1MEJvTHBQNkV6THROcE5OQQ?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-10-22T06:06:49Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GOTO"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_2b24e0698c39b1c03aec42",
       "title": "IHSG Sesi I Melonjak, Saham BBRI, TLKM, BUMI Menguat - Bisnis.com - Market",
@@ -5796,22 +5844,6 @@
         "INCO"
       ],
       "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_079d5ce4f63344df22ed9a",
-      "title": "IHSG Sesi I Naik saat Net Sell Tembus Rp1,2 T, Asing Jual Saham PTBA, TPIA, BBRI - Katadata.co.id",
-      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOTnp3VzRLaXFObzRJVlRscjdRV080dVVhMWhsQkZLR2M1Z3ZpNzczZjBScU9rZ0xmVmV6SE9va0U0alpBLWdCaEhlUVhwZ0x4TFJOZ3BWOVotT3kyZWFfYk82eTAtWjlGVVVBUEhBcFV2SEl6a3BiRUlPeEl5RFpxc1c4X1dGU1V0TG45M0d1dWthWm1TVUxibHdsSlBESldxOE53dDhScnpYSlc4Z2RqdG9QTWZjTUpYblBDaGdzSlVGNC1ibnV4bWJ30gHPAUFVX3lxTFB6U1R3UDYyMjBQWjBYSkF4eGliNGozSnhfS3pGVHByOHlLYlVqRlZyWWpERFQxZU41TWFvV2NYVDktbWotSkZXZDA0NmFxbDBCTEFOZEkwMVNBT3pxVGJuUTdSRlJvcW94bzN0Qm8zMEt3R25XOVRaaTNqLVNocnc5UmRpWTEyM09QVTI0RGVDTFdiakRMQWV2c292NEtab2RrOU9LcUNvWVZ4NGU2U0lSbEMtb2pTeVY4cFF1ZE02M29mNXhYVHE4OFV5aG9oSQ?oc=5",
-      "publisher": "Katadata.co.id",
-      "published_at_utc": "2026-10-14T06:11:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
