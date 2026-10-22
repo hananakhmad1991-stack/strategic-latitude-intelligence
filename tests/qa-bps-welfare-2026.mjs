@@ -221,3 +221,29 @@ test("BPS chapter II percent-closure audit is aggregate-only and excludes NA imp
  assert.match(from(".github/workflows/sli-bps-owner-live-smoke.yml"),/environment: sli-owner-staging/);
 });
 
+
+test("253-panel 2026 RSE cross-engine triage is complete while image-cell QA remains unresolved",()=>{
+ const d=JSON.parse(from("data/sli-bps-welfare-2026-reconciliation.json"));
+ const q=d.full_253_panel_check;
+ assert.equal(q.scanned_sampling_error_tables,133);
+ assert.equal(q.sampled_panels,253);
+ assert.equal(q.region_rows_compared,9867);
+ assert.equal(q.exact_full_token_arrays,6992);
+ assert.equal(q.equal_numeric_different_missing_or_footnotes,257);
+ assert.equal(q.secondary_parser_rows_with_numeric_omissions,2617);
+ assert.equal(q.secondary_parser_numeric_tokens_omitted,2969);
+ assert.equal(q.raw_non_subsequence_numeric_differences,1);
+ assert.equal(q.exact_full_token_arrays+q.equal_numeric_different_missing_or_footnotes+
+  q.secondary_parser_rows_with_numeric_omissions+q.raw_non_subsequence_numeric_differences,9867);
+ assert.equal(q.manual_adjudication.length,1);
+ assert.equal(q.manual_adjudication[0].pdf_page,384);
+ assert.equal(q.manual_adjudication[0].printed_estimate_pct,89.05);
+ assert.equal(q.remaining_non_subsequence_without_visual_adjudication,0);
+ assert.equal(q.raw_candidate_rows_public,false);
+ assert.equal(q.zero_independently_verified_complete_table_images,true);
+ assert.match(q.interpretation,/not a visual audit/);
+ assert.equal(data.quality.cross_engine_reconciliation.full_253_panel_check.sampled_panels,253);
+ assert.match(from("sli-welfare-2026.html"),/9\.867 baris/);
+ assert.match(from("scripts/audit_bps_welfare_secondary_reader.py"),/--all-panels/);
+});
+
