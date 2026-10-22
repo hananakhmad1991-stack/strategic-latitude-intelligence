@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T17:08:19.676950Z",
+  "updated_at_utc": "2026-10-22T17:59:37.838378Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -68,6 +68,22 @@
         "PGEO"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_cab98b2175159d796347b8",
+      "title": "Telkom (TLKM) Rampungkan Buyback 15,95 Juta Saham Terkait Pemisahan Usaha - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQU3plMUE0VUJoQTZIV09DQUdLZmp2WEN2MWlNY3M4N3piZkc3ZGFKX2V0TU10d3FJM1JxNXdOWW1BcWFONmlxekk1aDF3Z3R5aDZ1QVRrV0xUc1dadlFXY1hLbVMzWElHMjQ4bm5vWnVmenJ2ejlsNFh3UGFodXZFaDduU0htaF9FXzJlby1FckM5Yk0zTEdQRktSTmtTTmZmcVh1MVAxNjl3d9IBogFBVV95cUxNLVV4Z0NhZlduRXNpRDZfT2pDZkl4S18xaVVlM2FHMjl5S1BsUHl2dWJJeXFzWVBEUjFhWmg4WWgwaktLeG90REdtYXVwUjMwU3dUYzNhcWtJcGdnV0I2U3NZQzZQNWhMNmdlR05yUU9pdmFRRWZTSDl0QjFfSldpc0lNN3hyX1J3MW5WdnkxcHB3VXRrdzdBZWtaazViOXBGcUE?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-22T13:26:13Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -270,6 +286,22 @@
       "title": "Jasa Marga (JSMR) Berencana Buyback Saham, Begini Prospeknya - TradingView",
       "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9aemJRTGhCSHRUeHFLUjlwYjZTdWpsX3pNeG5fVEJrUGVia2VBcGxNWkJkLWVZM2ZMcHk1SU5LakdnenpTZ3NIYTdxWTZGTzBHelNkc1lXYm1LZk1LNUFXZGdrSjUyUQ?oc=5",
       "publisher": "TradingView",
+      "published_at_utc": "2026-10-22T10:52:16Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_fd9377183d979e949e51c7",
+      "title": "Jasa Marga (JSMR) Berencana Buyback Saham, Begini Prospeknya - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPQy16cjd4ekxaaTNWSzRGLTNCZFlSZWUxZkk2RlMzLUwtdHVBVTRyTnRBdVVGTUFZVkpHZ3Vvc0pLRUszejAxVTRoQmZGOFZLNFl6dUpjUTlaOE1ESnNTNzBnTnNkSGc4X19rcWZZNklqdmtTcjVuRkZYWDBfVVlxS0FtUjVBV0FKaFJPMGhVV0xjY2JGYXBBctIBkAFBVV95cUxNYjk2VkRJcUlQMGx1UWlhLURLdTdOeEY5cF9tT0Y3QmFER3RvbUFzZF9HZG5ITjN1QlJkeHlPcUZxTnY3aXIyME1iMWNEUXVtM0RKYUhKSXhhcnhabGY0SmpfZjJ2YVNBa1ZVQmFwNlpCYXQtbWRYcmp1a3dfSTRzRk03Z3kyR0I1QnRJQ01XVG8?oc=5",
+      "publisher": "kontan.co.id",
       "published_at_utc": "2026-10-22T10:52:16Z",
       "date_type": "rss_pubdate",
       "tickers": [
