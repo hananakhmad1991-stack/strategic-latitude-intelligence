@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T21:03:54.466786Z",
+  "updated_at_utc": "2026-10-22T21:30:16.314184Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -3660,6 +3660,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_4f0e3ca5f7a092c079b748",
+      "title": "GOTO Diobral Murah, Miliaran Saham Harga Rp23 Dibeli Morgan Stanley! - Emitennews.com",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNbDYzRzVzT3BFQ0d4ZlREWVhfU0VrMTdWQUc2NEM2YXNKWGMzekZrazdEZ1VvV19qNk03TGRhdUthYkFtN21SY0t1ejNoRkYzdzd4RlNza3M1aEZZaHhSdmg2Rk5rSlBxbXBTSnpwUmRQcWpZenMzSDJyT0hMYnpmUWxaVGtvMW5ZZ2hwNXc4ZXlyNVVhVTZXY1VR?oc=5",
+      "publisher": "Emitennews.com",
+      "published_at_utc": "2026-10-20T07:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GOTO"
       ],
       "sector": "technology",
       "source": "public_google_news_rss",
