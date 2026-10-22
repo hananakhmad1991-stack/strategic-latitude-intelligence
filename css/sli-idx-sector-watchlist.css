@@ -32,3 +32,11 @@
 .sli-idx-sectoral-loading{color:#b7ccd9;font-size:12px;padding:18px;border:1px solid #4c667b;border-radius:9px}
 @media(max-width:900px){.sli-idx-sectoral-columns{grid-template-columns:1fr}.sli-idx-sectoral-widget{height:315px;min-height:315px;max-height:315px}}
 @media(max-width:530px){.sli-idx-sectoral{padding:12px}.sli-idx-sectoral-quotes,.sli-idx-sectoral-issuers{padding:10px}.sli-idx-sectoral-tickers{grid-template-columns:repeat(2,minmax(0,1fr))}.sli-idx-sectoral-rest{grid-template-columns:1fr}.sli-idx-sectoral-widget{height:300px;min-height:300px;max-height:300px}}
+
+/* The full 12-sector issuer catalogue remains searchable; live quotes remain provider-owned. */
+.sli-idx-sectoral-search{margin:11px 0}
+.sli-idx-sectoral-input{width:100%;border-radius:7px;background:#102a3d;color:#ecf4f8;border:1px solid #53758b;padding:11px 12px;font:13px system-ui,sans-serif}
+.sli-idx-sectoral-input:focus-visible{outline:2px solid #e0bf80;outline-offset:2px}
+.sli-idx-sectoral-rest{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:7px}
+.sli-idx-sectoral-rest a{overflow-wrap:anywhere}
+@media(max-width:600px){.sli-idx-sectoral-tabs{gap:6px}.sli-idx-sectoral-tab{min-height:44px}}

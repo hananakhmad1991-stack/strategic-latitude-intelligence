@@ -4,7 +4,7 @@
   "source_status": "curated_seed_pending_official_bulk_reconciliation",
   "official_source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat",
   "official_financial_url": "https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan",
-  "methodology": "Initial issuer ticker/name catalogue curated as discovery leads. Exact current issuer name, sector, listing status and code require profile or official bulk reconciliation; not a census of live listed securities. No current financials, price, market cap or shareholding imputed.",
+  "methodology": "Initial issuer ticker/name catalogue curated as discovery leads. Exact current issuer name, sector, listing status and code require profile or official bulk reconciliation; not a census of live listed securities. No current financials, price, market cap or shareholding imputed. First issuer entries with independently source-linked FY2025 fundamentals: MEDC (company investor table), TLKM and PTBA (existing SLI reviewed group reports). These are isolated reporting periods, not live market quotes; unavailable fields remain null.",
   "records": [
     {
       "ticker": "MEDC",
@@ -14,13 +14,15 @@
       "entity_type": "issuer_candidate",
       "verification": "idx_seed_awaiting_official_refresh",
       "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/MEDC",
-      "financial_source_url": null,
-      "revenue": null,
-      "net_income": null,
+      "financial_source_url": "https://www.medcoenergi.com/id/investor/investor-tools/tabel-finansial/",
+      "revenue": 2395,
+      "net_income": 101,
       "total_assets": null,
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": "FY2025 · year ended 2025-12-31",
+      "financial_currency": "USD million",
+      "financial_basis": "Company investor financial table, FY2025 in USD million. Revenue and Net Income as published; Net Income must not be relabelled as attributable to owners without audit."
     },
     {
       "ticker": "AKRA",
@@ -606,13 +608,15 @@
       "entity_type": "issuer_candidate",
       "verification": "idx_seed_awaiting_official_refresh",
       "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/PTBA",
-      "financial_source_url": null,
-      "revenue": null,
+      "financial_source_url": "https://www.ptba.co.id/api/storage/1777608216188-530aad52-cfc2-40fc-8d3c-0afcaa236e6c.pdf",
+      "revenue": 42651.724,
       "net_income": null,
       "total_assets": null,
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": "FY2025 · year ended 2025-12-31",
+      "financial_currency": "IDR billion",
+      "financial_basis": "Consolidated revenue 2025 = IDR 42,651,724 million, converted to IDR billion (/1,000). Profit and assets not populated from this extract."
     },
     {
       "ticker": "BUMI",
@@ -910,13 +914,15 @@
       "entity_type": "issuer_candidate",
       "verification": "idx_seed_awaiting_official_refresh",
       "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/TLKM",
-      "financial_source_url": null,
-      "revenue": null,
-      "net_income": null,
-      "total_assets": null,
+      "financial_source_url": "https://www.telkom.co.id/sites/investor-relations/en_US/page/financial-highlights-542",
+      "revenue": 146742,
+      "net_income": 24458,
+      "total_assets": 287759,
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": "FY2025 · year ended 2025-12-31",
+      "financial_currency": "IDR billion",
+      "financial_basis": "Consolidated: total revenues; profit for the year including non-controlling interests; total assets. Amounts in IDR billion, not attributable-profit figure."
     },
     {
       "ticker": "ISAT",
