@@ -25,7 +25,7 @@ test('Home has one stable breadcrumb, detailed sector links and live route chang
  assert.ok(doc.querySelector('.sli-platform-sector-menu a[href="./provincial-intelligence.html"]'));
  assert.equal(doc.querySelectorAll('.sli-platform-sector-group').length,8,'All eight canonical sector families, including Marine & Fisheries, must remain discoverable');
  assert.equal(doc.querySelectorAll('.sli-explore-quick-link').length,6,'Include expert sourcing among task-oriented starting points');
- assert.ok(doc.querySelector('.sli-explore-quick-link[href="./sli-sector-data-library.html"]'),'Evidence pathway should be immediately discoverable');
+ assert.ok(doc.querySelector('.sli-explore-quick-link[href="./sli-sector-data-library.html#socio"]'),'Evidence pathway should be immediately discoverable');
  assert.ok(doc.querySelector('.sli-explore-quick-link[href="./sli-entities.html"]'),'Company research pathway should be immediately discoverable');
  assert.ok(doc.querySelector('.sli-explore-quick-link[href="./sli-expert-connect.html"]'),'Expert Connect pathway should be discoverable');
 

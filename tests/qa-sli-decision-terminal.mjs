@@ -17,7 +17,7 @@ test("SLI Decision Terminal is a first-class, bilingual, source-linked dashboard
  const nav=read("js/sli-navigation.js");
  const index=read("index.html");
  assert.match(html,/SLI chrome prepaint/);
- for(const asset of ["sli-navigation.js?v=20261019-id-audit9","sli-navigation.css?v=20261018-menu-flash2","js/sli-live-data.js","js/sli-shared-appendix.js","js/sli-decision-terminal.js","css/sli-decision-terminal.css"])assert.ok(html.includes(asset),asset);
+ for(const asset of ["sli-navigation.js?v=20261023-expert-services1","sli-navigation.css?v=20261023-expert-services1","js/sli-live-data.js","js/sli-shared-appendix.js","js/sli-decision-terminal.js","css/sli-decision-terminal.css"])assert.ok(html.includes(asset),asset);
  for(const name of ["sliTerminalRoot","sliTerminalRole","sliTerminalSector","sliTerminalSearch","sliTerminalStats","sliTerminalEntityList","sliTerminalNews","sliTerminalPolicy","sliTerminalActions"])
   assert.equal((html.match(new RegExp('id="'+name+'"','g'))||[]).length,1,"Unique interactive terminal mount "+name);
  for(const role of ["investor","research","policy"])assert.match(html,new RegExp('<option value="'+role+'">'));
