@@ -25,11 +25,21 @@ test('secondary inputs are optional and collapsed, but privacy controls are pres
  assert.ok(advanced&&!advanced.hasAttribute('open'));
  assert.ok(advanced.querySelector('#raChatFiles'));
  assert.ok(advanced.querySelector('#raChatUploadConsent[type=checkbox]'));
- assert.ok(advanced.querySelector('#raExternalSearchConsent[type=checkbox]'));
+ const consent=d.querySelector('#raExternalEvidenceChoice #raExternalSearchConsent[type=checkbox]');
+ assert.ok(consent&&!consent.checked,'External search must require explicit opt-in by default');
+ assert.ok(d.querySelector('#raExternalEvidenceChoice #raExternalSearchRemember[type=checkbox]'),'Optional remembered consent');
+ assert.ok(!advanced.contains(consent),'Source decision must remain visible beside the prompt, not buried in advanced settings');
  assert.ok(advanced.querySelector('details#raChatPreferences'));
  assert.ok(advanced.querySelector('#raChatMethod'));
  assert.ok(advanced.querySelector('#raMode'));
- assert.match(client,/external_search:usingOwner&&/);
+ assert.match(client,/external_search:usingOwner&&files.length===0&&/);
+ assert.match(client,/SLIExternalEvidencePrefs/);
+ assert.match(read('js/sli-external-evidence-preferences.js'),/sli-external-web-permission-v1/);
+ assert.doesNotMatch(client,/localStorage\.setItem/,'Never store Owner tokens in the client app');
+ assert.match(client,/initExternalWebPermission\(\)/);
+ assert.match(client,/resetQuestionWebPermission\(\)/);
+ assert.match(read('research-api/src/external-research.mjs'),/if\(!consent\)return/);
+ assert.match(read('research-api/src/external-research.mjs'),/if\(hasAttachments\)return/);
  assert.match(client,/if\(!\$\("raChatUploadConsent"\)\.checked\)/);
  assert.match(client,/ownerConfigured\(\)/);
  assert.match(client,/getExportData/);
@@ -52,7 +62,7 @@ test('provenance, Owner controls, exports and research method workbench are reta
  for(const id of ['raConversation','raTemplates','raMoreExamples','raCopy','raExport','raWord','raPdf','raModelStatement','raFollowupForm'])assert.ok(d.getElementById(id),'missing '+id);
  assert.ok(html.includes('sli-analytical-workbench-ui.mjs'));
  assert.ok(html.includes('sli-report-buttons.mjs'));
- assert.ok(html.includes('sli-derguba-chat-first.css?v=20261023-chatfirst2'));
+ assert.ok(html.includes('sli-derguba-chat-first.css?v=20261023-external-evidence1'));
  assert.ok(!/fetch\(.*raPrompt.*onload/.test(html),'Do not auto-submit a prompt on load');
 });
 test('new CSS is responsive and does not disguise commercial Owner-only restriction',()=>{

@@ -194,3 +194,12 @@ body.sli-dashboard-unified .sli-platform-sector-menu{
  .sli-platform-sector-menu{grid-template-columns:1fr!important;padding:12px!important;gap:8px!important}
  .sli-platform-sector-heading{min-height:47px}
 }
+
+/* Position the mobile Explore Data dropdown below its measured, wrapped masthead.
+   Fixed 125px offsets hid it beneath a taller (e.g. 150px) mobile masthead. */
+@media(max-width:650px){
+ #sliPlatformMast .sli-platform-sector-menu{
+  top:calc(var(--sli-mast-offset,125px) + 2px)!important;
+  max-height:calc(100dvh - var(--sli-mast-offset,125px) - 14px)!important;
+ }
+}

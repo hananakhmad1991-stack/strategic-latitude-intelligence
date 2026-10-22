@@ -103,6 +103,9 @@ await check("DERGUBA AI: optional methods lab expands on demand",{width:1366,hei
  await page.goto(pageUrl("sli-research-ai.html"),{waitUntil:"domcontentloaded",timeout:30000});
  await page.locator("#raAdvancedLab").waitFor({timeout:25000});
  assert.equal(await page.locator("#raAdvancedLab").getAttribute("open"),null,"Advanced lab should be optional by default");
+ const more=page.locator("#raResourcesAndStory");
+ assert.equal(await more.getAttribute("open"),null,"Resource menu should be optional");
+ await more.locator(":scope > summary").click();
  await page.locator("#raOpenDataLab").click();
  await page.waitForFunction(()=>document.getElementById("raAdvancedLab")?.open===true,null,{timeout:7000});
  assert.ok(await page.locator("#raMethod").count()===1,"Research methodology control missing");
