@@ -1,0 +1,31 @@
+name: SLI Home 3D Archipelago QA
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'js/sli-orbit-globe.js'
+      - 'css/sli-orbit-globe.css'
+      - 'tests/qa-sli-orbit-globe.mjs'
+      - '.github/workflows/sli-orbit-globe-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'js/sli-orbit-globe.js'
+      - 'css/sli-orbit-globe.css'
+      - 'tests/qa-sli-orbit-globe.mjs'
+      - '.github/workflows/sli-orbit-globe-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  archipelago-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate globe geometry, JavaScript and Canvas paint
+        run: node --test tests/qa-sli-orbit-globe.mjs
