@@ -1,6 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {handleRequest,validateBrief,allowedTransition,TRANSITIONS} from '../src/index.mjs';
+import {validateExpert} from '../src/experts.mjs';
 
 const ORIGIN='https://hananakhmad1991-stack.github.io';
 const OWNER='a'.repeat(64);
@@ -19,6 +20,7 @@ function database(status='new',version=1){
    const statement={sql,args:[],bind(...args){this.args=args;return this},
     async first(){
      if(sql.startsWith('SELECT status,version'))return {status,version};
+     if(sql.startsWith('SELECT id FROM research_requests')||sql.startsWith('SELECT id FROM consented_experts'))return {id:this.args[0]};
      if(sql.startsWith('SELECT *'))return {id:this.args[0],status,version};
      return null;
     },
@@ -124,4 +126,58 @@ test('Bad IDs and API methods do not expose leads; owner DELETE uses batch',asyn
  assert.equal(response.status,200);
  assert.equal(db.batches.at(-1).length,2);
  assert.ok(db.batches.at(-1)[0].sql.includes('DELETE FROM research_request_history'));
+});
+
+test('Expert profiles require documented consent, valid scope and source',()=>{
+ const ex={
+  display_name:'Example Consenting Expert',sector:'energy',specialty:'Indonesian energy market',
+  experience_summary:'Ten years in industry and energy policy research',
+  contact_email:'specialist@example.org',public_profile_url:'https://example.org/profile',
+  consent_confirmed:true,consent_date:'2026-01-01',consent_reference:'Explicit written opt-in ref example-001'
+ };
+ assert.equal(validateExpert(ex).sector,'energy');
+ for(const bad of [
+  {...ex,consent_confirmed:false},
+  {...ex,consent_date:'2099-01-01'},
+  {...ex,consent_reference:''},
+  {...ex,sector:'unknown'},
+  {...ex,public_profile_url:'http://example.org/profile'},
+  {...ex,contact_email:'private@example.org\nBcc:elsewhere'}
+ ])assert.throws(()=>validateExpert(bad));
+});
+test('Owner-only expert registry and shortlist do not publish candidates or send messages',async()=>{
+ const db=database();
+ const ex={
+  display_name:'Consenting Example',sector:'digital',
+  specialty:'Data centre infrastructure and energy policy',
+  experience_summary:'Independent technical research and digital infrastructure experience',
+  contact_email:'expert@example.org',public_profile_url:'https://example.org/expert',
+  consent_confirmed:true,consent_date:'2026-01-01',
+  consent_reference:'Written opt-in to SLI private expert sourcing'
+ };
+ const denied=await handleRequest(request('/api/experts','POST',ex),env(db),async()=>({id:'b'.repeat(64)}));
+ assert.equal(denied.status,403);
+ const invalid=await handleRequest(request('/api/experts','POST',{...ex,consent_confirmed:false}),env(db),owner);
+ assert.equal(invalid.status,400);
+ const saved=await handleRequest(request('/api/experts','POST',ex),env(db),owner);
+ assert.equal(saved.status,201);
+ const out=await saved.json();
+ assert.equal(out.publicly_listed,false);
+ assert.equal(out.consent_scope,'internal_matching');
+ assert.ok(db.statements.some(x=>x.sql.includes('INSERT INTO consented_experts')));
+ const listed=await handleRequest(request('/api/experts'),env(db),owner);
+ assert.equal(listed.status,200);
+ assert.match(db.statements.at(-1).sql,/SELECT id,display_name,sector,specialty,public_profile_url,consent_verified_at/);
+ assert.doesNotMatch(db.statements.at(-1).sql,/contact_email|consent_reference/);
+ const notScreened=await handleRequest(request('/api/requests/'+id+'/candidates','POST',{expert_id:out.id,fit_reason:'Qualified expert with experience in AI energy policy'}),env(db),owner);
+ assert.equal(notScreened.status,400);
+ const shortlisted=await handleRequest(request('/api/requests/'+id+'/candidates','POST',{
+  expert_id:out.id,fit_reason:'Relevant expertise in Indonesian AI infrastructure regulation',
+  share_authorized:true,conflicts_checked:true,availability_confirmed:true
+ }),env(db),owner);
+ assert.equal(shortlisted.status,201);
+ assert.equal((await shortlisted.json()).not_contacted,true);
+ assert.ok(db.statements.some(x=>x.sql.includes('INSERT INTO request_expert_shortlist')));
+ assert.equal((await handleRequest(request('/api/experts/'+out.id,'DELETE'),env(db),owner)).status,200);
+ assert.ok(db.batches.at(-1)[0].sql.includes('DELETE FROM request_expert_shortlist'));
 });
