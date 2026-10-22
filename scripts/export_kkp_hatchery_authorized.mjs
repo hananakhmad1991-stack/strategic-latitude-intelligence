@@ -28,8 +28,8 @@ export function validFormSelections(v){
 const review={schema:"sli-kkp-official-hatchery-authorized-export-v1",source_url:URL,
  expected_rows:1387,verified_rows:null,download_status:"not_submitted",
  consent_to_kkp_form:false,source_rights_clearance:false,public_sli_ingestion:false,
- checked_at_utc:new Date().toISOString(),personal_identifiers_recorded:false};
-let browser,tempDir;
+ checked_at_utc:new Date().toISOString(),personal_identifiers_recorded:false,submission_click_acknowledged:false};
+let browser,tempDir,stage="consent_preflight";
 try{
  if(get("KKP_EXPORT_CONSENT")!=="true")throw Error("operator_consent_missing");
  const name=get("KKP_CONTACT_NAME"),email=get("KKP_CONTACT_EMAIL");
@@ -38,15 +38,19 @@ try{
   format:get("KKP_EXPORT_FORMAT"),type:get("KKP_EXPORT_DATA_TYPE"),
   rating:get("KKP_EXPORT_RATING"),review:get("KKP_EXPORT_REVIEW")};
  if(!validFormSelections(fields))throw Error("invalid_or_unapproved_survey_choices");
+ stage="launch_browser";
  browser=await chromium.launch({executablePath:get("CHROME_BIN")||"/usr/bin/google-chrome",headless:true,
   args:["--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]});
  const context=await browser.newContext({acceptDownloads:true,locale:"id-ID",viewport:{width:1365,height:920}});
  const page=await context.newPage();
+ stage="open_kkp_page";
  const start=await page.goto(URL,{waitUntil:"domcontentloaded",timeout:45000});
  if(!start?.ok())throw Error("kkp_form_http_unavailable");
+ stage="open_official_questionnaire";
  await page.getByRole("button",{name:"Unduh Data"}).click({timeout:20000});
  const modal=page.locator('[role="dialog"],.modal.show').filter({visible:true}).first();
  await modal.waitFor({state:"visible",timeout:15000});
+ stage="fill_official_questionnaire";
  await modal.getByPlaceholder("Masukkan Nama Lengkap").fill(name);
  await modal.getByPlaceholder("Masukkan Email").fill(email);
  for(const [i,key] of ["category","purpose","format","type"].entries()){
@@ -59,9 +63,13 @@ try{
  await rating.nth(Number(fields.rating)-1).check({force:true,timeout:5000});
  if(fields.review)await modal.getByPlaceholder("Masukkan Ulasan").fill(fields.review);
  review.consent_to_kkp_form=true;
+ stage="submit_official_questionnaire";
  const promise=page.waitForEvent("download",{timeout:70000});
  await modal.getByRole("button",{name:"Unduh",exact:true}).click({timeout:20000});
+ review.submission_click_acknowledged=true;
+ stage="wait_for_official_export";
  const dl=await promise;
+ stage="validate_official_export";
  tempDir=fs.mkdtempSync(path.join(os.tmpdir(),"sli-kkp-approved-export-"));
  const filename=String(dl.suggestedFilename()).replace(/[^a-zA-Z0-9._-]/g,"_").slice(0,80);
  const temp=path.join(tempDir,filename);
@@ -99,8 +107,16 @@ try{
  }
  await context.close();
 }catch(e){
- review.error_code=String(e.message||e).replace(/[^a-zA-Z0-9_ -]/g,"").slice(0,135);
- if(review.download_status==="not_submitted"&&review.consent_to_kkp_form)review.download_status="form_submitted_but_export_failed";
+ // Stage-only diagnostics keep form contents, email and Playwright page fragments
+ // out of the publicly visible audit and the runner console.
+ const recognized=new Set(["operator_consent_missing","genuine_contact_secrets_required","invalid_or_unapproved_survey_choices","kkp_form_http_unavailable","kkp_rating_control_not_found","suspicious_export_file_size","xlsx_schema_or_1387_row_count_failed","unsupported_source_download_format"]);
+ const raw=String(e?.message||"");
+ review.error_code=recognized.has(raw)?raw:"failure_at_"+stage;
+ review.failure_stage=stage;
+ if(review.download_status==="not_submitted"&&review.consent_to_kkp_form){
+  review.download_status=review.submission_click_acknowledged?
+   "form_submitted_but_export_failed":"questionnaire_not_confirmed_submitted";
+ }
 }finally{
  await browser?.close().catch(()=>{});
  if(tempDir)fs.rmSync(tempDir,{recursive:true,force:true});
