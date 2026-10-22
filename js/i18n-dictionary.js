@@ -1,5 +1,7 @@
 /* Curated Indonesian translations for SLI UI text. Original source titles remain unchanged. */
 window.SLI_TRANSLATIONS_ID = new Map([
+ ["SLI searches and screens experts on demand after reviewing your brief; no pre-existing panel or guaranteed availability.","SLI mencari dan menyeleksi pakar berdasarkan permintaan setelah meninjau kebutuhan Anda, tanpa mengklaim panel pakar siap pakai."],
+ ["SLI mencari dan menyeleksi pakar berdasarkan permintaan setelah meninjau kebutuhan Anda, tanpa mengklaim panel pakar siap pakai.","SLI mencari dan menyeleksi pakar berdasarkan permintaan setelah meninjau kebutuhan Anda, tanpa mengklaim panel pakar siap pakai."],
  [
   "Overview",
   "Ringkasan"
