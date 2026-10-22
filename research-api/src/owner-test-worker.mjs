@@ -280,6 +280,7 @@ export default{
       "Reproduce EACH of the following data lines EXACTLY, on its OWN separate line, preserving labels, order, all numbers, units, tables, pages and citations. Do not merge records or replace region/indicator labels.",
       ...examples,
       "After the data lines, give at most two sentences on sampling uncertainty. RSE is relative standard error, SE is in percentage points; confidence intervals are not certainties.",
+      "Commentary must have no new percentages, numbers, source pages, labels, p-values, rankings, calculated differences or unsupported causal claims. Do not add source citations beyond the numbered rows.",
       "Do not claim a statistically significant provincial difference without a valid difference estimator with covariance and design effects. Do not call a source category 'safe water', 'all electricity access' or 'LPG only' when definitions differ.",
       "No invented numbers, missing cells, general essay, unsupported rankings, extra evidence, web retrieval claims or fabricated PDF verification."
     ].join("\n");
