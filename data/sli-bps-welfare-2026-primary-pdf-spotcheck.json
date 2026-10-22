@@ -1,0 +1,82 @@
+{
+  "schema": "sli_bps_2026_primary_pdf_selected_cell_audit_v1",
+  "publication": "Statistik Kesejahteraan Rakyat 2026; Susenas Maret 2026",
+  "publisher": "Badan Pusat Statistik",
+  "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html",
+  "source_pdf_sha256": "1338749eec4926885a3052ea2933cfeaca1b1328386bca26f80d5a1279a44305",
+  "verified_at": "2026-10-22",
+  "method": "Compared publication PDF page images and extracted PDF text from the user-provided original 558-page PDF against the curated SLI JSON. Page numbers are one-indexed PDF pages; printed page labels differ.",
+  "scope": {
+    "uninsured_se_original_pdf_page": 316,
+    "uninsured_se_rows_rechecked": 39,
+    "sector_spotchecks": 3,
+    "total_original_pages": 558,
+    "all_tables_visually_verified": false
+  },
+  "error_discovered": {
+    "metric": "uninsured",
+    "column": "standard_error_pp",
+    "affected_rows": 39,
+    "description": "All 39 curated SE values previously came from an incorrect sampling-table column. They were replaced with the 39 source-page 'Tidak Memiliki' Standard Error values, while preserving original province order, RSE and CI."
+  },
+  "spotchecks": [
+    {
+      "province": "Jawa Barat",
+      "metric": "uninsured",
+      "estimate": 24.69,
+      "se": 0.37,
+      "rse": 1.51,
+      "ci_low": 23.96,
+      "ci_high": 25.43,
+      "main_table": "4.13",
+      "main_pdf_page": 142,
+      "sampling_table": "9.28",
+      "sampling_pdf_page": 316,
+      "definition": "Penduduk tanpa jaminan kesehatan"
+    },
+    {
+      "province": "Papua",
+      "metric": "no_electricity_lighting",
+      "estimate": 2.75,
+      "se": 0.23,
+      "rse": 8.51,
+      "ci_low": 2.29,
+      "ci_high": 3.21,
+      "main_table": "6.28",
+      "main_pdf_page": 220,
+      "sampling_table": "9.97",
+      "sampling_pdf_page": 451,
+      "definition": "Rumah tangga, sumber utama penerangan bukan listrik, perkotaan+perdesaan"
+    },
+    {
+      "province": "Bali",
+      "metric": "e_money_households",
+      "estimate": 34.03,
+      "se": 0.83,
+      "rse": 2.43,
+      "ci_low": 32.41,
+      "ci_high": 35.65,
+      "main_table": "8.18",
+      "main_pdf_page": 266,
+      "sampling_table": "9.133",
+      "sampling_pdf_page": 523,
+      "definition": "Rumah tangga memiliki uang elektronik selama satu tahun terakhir, bukan gabungan eksklusif server/kartu"
+    }
+  ],
+  "rights_review": {
+    "publication_pdf_page": 4,
+    "pdf_notice": "Publication prohibits producing or duplicating part or all of the book for commercial purposes without written permission from BPS.",
+    "web_terms_url": "https://www.bps.go.id/id/term-of-use",
+    "pst_quotation_policy_url": "https://ppid.bps.go.id/app/konten/0000/Layanan-BPS.html",
+    "pst_quotation_policy_summary": "Official PST guidance permits citation of published BPS statistics with proper source attribution and offers access to aggregate open data.",
+    "interpretation": "The publication-specific restriction concerns commercial reproduction of the book. General website/PST rules permit data use and quotation with attribution. This audit is not permission for commercial bulk reproduction of the copyrighted PDF or table layouts. Request BPS written clarification for commercial-scale redistribution or embedding publication content.",
+    "written_clearance_obtained": false,
+    "commercial_bulk_replication_approved": false
+  },
+  "caveats": [
+    "Source PDF must match the recorded SHA-256 before comparing page cells.",
+    "SE is in percentage points; RSE is percent of survey estimate. RSE=SE/estimate*100 uses unrounded source values, so small rounding differences are expected.",
+    "Three spotchecks and one 39-row SE column do not establish correctness of all other BPS tables or cells.",
+    "Do not publish embedded PDF pages in commercial product without separately established rights."
+  ]
+}

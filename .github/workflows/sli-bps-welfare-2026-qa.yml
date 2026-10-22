@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'data/sli-bps-welfare-2026.json'
+      - 'data/sli-bps-welfare-2026-primary-pdf-spotcheck.json'
       - 'data/sli-bps-welfare-2026-reconciliation.json'
       - 'data/sli-bps-welfare-2026-demography-closure-qa.json'
       - 'scripts/audit_bps_welfare_demography_closure.py'
