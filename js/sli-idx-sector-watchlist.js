@@ -89,14 +89,14 @@ function renderUI(){
  filter.value=issuerQuery;
  searchWrap.append(filter);group.append(searchWrap);
  const remaining=E("details","sli-idx-sectoral-more");
- remaining.append(E("summary",null,T("Show all "+selected.length+" sector issuer candidates","Tampilkan semua "+selected.length+" calon emiten sektor ini")));
+ const browseSummary=E("summary",null,T("Show all "+selected.length+" sector issuer candidates","Tampilkan semua "+selected.length+" calon emiten sektor ini"));remaining.append(browseSummary);
  const rest=E("div","sli-idx-sectoral-rest");
  const drawMatches=()=>{
   rest.replaceChildren();
   const q=issuerQuery.toLocaleLowerCase("id").trim();
   const matches=selected.filter(x=>!q||(x.ticker+" "+x.name).toLocaleLowerCase("id").includes(q));
   for(const x of matches){const a=link(tickerUrl(x.ticker),x.ticker+" · "+x.name);rest.append(a)}
-  remaining.querySelector("summary").textContent=T("Browse "+matches.length+"/"+selected.length+" sector candidates","Jelajahi "+matches.length+"/"+selected.length+" kandidat sektor");
+  browseSummary.textContent=T("Browse "+matches.length+"/"+selected.length+" sector candidates","Jelajahi "+matches.length+"/"+selected.length+" kandidat sektor");
   if(!matches.length)rest.append(E("p","sli-idx-sectoral-note",T("No ticker matches the filter.","Tidak ada kode yang cocok.")));
  };
  filter.addEventListener("input",()=>{issuerQuery=filter.value;remaining.open=true;drawMatches()});
