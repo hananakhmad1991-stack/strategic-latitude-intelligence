@@ -32,3 +32,18 @@ test('dashboard is navigable and responsive with explicit projection caveats',()
  assert.match(read('indonesia-macroeconomic-intelligence.html'),/green-workforce-intelligence\.html/);
  new Script(read('js/sli-green-workforce-projections.js'));
 });
+
+test('sector entry points preserve source caveats and canonical module ownership',()=>{
+ const nav=read('js/sli-navigation.js');
+ assert.match(nav,/greenworkforce:\[/);
+ assert.match(nav,/green-workforce-intelligence\\.html/);
+ for(const page of ['food-agriculture-intelligence.html','marine-fisheries-intelligence.html','pln-electricity-statistics.html']){
+  const source=read(page);
+  assert.match(source,/class="sli-green-sector-link"/,page+' missing contextual module');
+  assert.match(source,/green-workforce-intelligence\\.html/,page+' missing link');
+  assert.match(source,/bukan realisasi pekerjaan per sektor/,page+' missing scenario disclaimer');
+ }
+ const home=read('index.html');
+ assert.match(home,/aria-label="Green Workforce Intelligence dashboard"/);
+ assert.match(home,/Bappenas 2025–2029 employment projections/);
+});
