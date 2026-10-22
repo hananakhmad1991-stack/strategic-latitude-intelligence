@@ -2,6 +2,13 @@
 
 **Decision (22 October 2026):** SLI is an Indonesia intelligence workspace combining a data-backed dashboard, focused DERGUBA Research AI and **human-managed expert sourcing + bespoke research**. DERGUBA is not positioned as a replacement for primary interviews or professional judgement.
 
+## Starting state: zero enrolled experts (owner decision)
+- SLI starts with **zero pre-enrolled experts**. Do **not** claim an existing roster, pre-vetted membership, standby pool, expert count, published expert directory, confirmed availability or guaranteed introductions.
+- The client describes the question and desired expert experience **first**. Only after SLI manually evaluates a real request does SLI seek and screen candidate experts, verify conflicts, obtain the candidate's permission and check actual availability.
+- No speculative recruitment campaign, empty public directory or preloading people from past interviews, Google Contacts, LinkedIn, email or publications into a registry without documented consent.
+- A private registry is optional **later** for experts who actually opt in after legitimate engagement. It is not a dependency for launching the simple public request page.
+- If no appropriate willing expert can be found, SLI should decline or discuss alternatives, never invent a shortlist or imply a booking.
+
 ## Implemented in this draft branch — NOT deployed to customers
 - New bilingual English/Indonesian **Research & Expert Desk** public page: Find an Expert, Expert Consultation, Custom Research & Advisory.
 - Local-only, editable client brief: type of service, sector, objective, expert qualifications, deliverable, timeline, organization and budget guidance.
