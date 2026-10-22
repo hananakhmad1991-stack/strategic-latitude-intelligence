@@ -7,3 +7,7 @@ Module: `research-api/src/expert-scholar-discovery.mjs`. Both calls are disabled
 OpenAlex key is optional for exploratory use; its free budget is limited and query-search usage can consume credits. If a key is added, use only a Cloudflare server-side secret (`OPENALEX_API_KEY`). Crossref bibliographic DOI lookup does not require a secret. No APIs are activated by merging this PR. Add a source-linked review queue, duplicate resolution (ORCID and institution), manual approval, and consent before expert contact.
 
 Tests: `node --test tests/qa-expert-scholar-discovery.mjs`.
+
+## Owner Test endpoint (feature branch)
+
+New POST `/v1/owner-expert-discovery` requires original SLI Origin, the existing private `x-sli-owner-test-token` header, rate limiting, `SLI_EXPERT_DISCOVERY_ENABLED=true` as a Cloudflare Worker variable, and JSON consent `true`. Choose `type:"topic"` with a public `topic`, or `type:"doi"` with a DOI. Attachments, chat history, user-analysis and client briefs are rejected. The response contains only public candidate metadata. Leave the flag disabled until branch-specific acceptance and explicit deployment; this is **not** a public user feature.
