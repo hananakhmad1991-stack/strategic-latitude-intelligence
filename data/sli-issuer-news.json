@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T22:02:53.126979Z",
+  "updated_at_utc": "2026-10-22T22:28:13.909370Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_dd7ad28f57cc4104c2091e",
+      "title": "10 Emiten Siapkan Buyback Saham Rp18,6 Triliun, DSSA hingga BREN Masuk Daftar - VIVA.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOSlRUa0JfeVkyMzdPVk1XalVFc1FqUmZQVm5yQVRNdW9COFIzempscmdZNEZLSzlrZlppaW9iRGpoVzByczRoU2M3bjkySTJudk1tSnQ0d2o1ay01QkhuNG93bGdRQy1NTF9QSTlFbHozYWNhYUY1ZXI5Y1FpUWFhSUlscXI4QmhiMDBTTFpfZDFzSkg0Y0dFUXNCaHB4amFvZnFObGpHTHo2R1hMQkpfMWVoONIBuAFBVV95cUxPakMzMm05WE91UDJmMlZMYzRWRHUxTm5jaGRDeDVHTkZaRW9kOHNPOFlJMlVEbDVSdXhjUDR1cEVZVFBKbEVRS3ZiV1g4V1BXbG9ndHZoVGdwWEVXS29lOS1yOTdZMTU2R1RoYmloc3hWejFKZFFSMG9ZbXFQSzV2MURMclAtS3ZTVTFncno1TFo3STRiN25yWnV5a19JLXAydmpNRlBOQjNwRU1UemhRRUsxNkJGTmcw?oc=5",
+      "publisher": "VIVA.co.id",
+      "published_at_utc": "2026-10-22T18:15:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_834e33ce4ebe588cb2634c",
       "title": "TLKM Rampung Buyback Rp36,5M dari Pemegang Saham Tolak Spin-Off Fiber - Emitennews.com",
@@ -350,6 +366,22 @@
       "title": "Amman Mineral (AMMN) Siapkan Buyback Saham Rp 1 Triliun - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQbXBtYzJIc0otaVJVckVYRExwUEM2b0J4cmtta25CUjVMNi1lR05WOGFmN3hkSXRSR0NKeFFHTGF3eDRZV184WjhpcGdNZGdGTkY2UnZPZE56QTltMzMwWTUwUy00dV9fUDhlZVREeEJhRE9WcDZKYnQtXzBQeXFQRktfYnd0OWlSaFV4WC1zQ1JzaXfSAYsBQVVfeXFMUDM2WXplN3hUMGc0Ym9odVVwVDNDR05EajlUdDRsdG1WWGpOWTJBMW9QQzZaNWtWcy14Y0tHbWJHM1o1NkZUNUQ5TDJRcmNQWUpkUDYwU3Nxanp0ZUJIbXB5YXZ4RlRJS055c0xMT2NWTGF0MF9lU3NtbzdyWUQyYWZOdEIyMFJxMnVBYw?oc=5",
       "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-22T10:34:03Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_9e6006c75203cf39a32d07",
+      "title": "Amman Mineral (AMMN) Siapkan Buyback Saham Rp 1 Triliun - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5qQUs0SHAwOFczeW1qNWZyTUFyYWpiRk96ckdSRWM2dVUzbERDdXhBX2FveWpDNHV6V1BZbk1BWUthNTZSTnowM0pzc0NrQzY0amV2T29hYWRuMGVHWU1BOWpzYi16QQ?oc=5",
+      "publisher": "TradingView",
       "published_at_utc": "2026-10-22T10:34:03Z",
       "date_type": "rss_pubdate",
       "tickers": [
@@ -3652,6 +3684,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_553373bfcede3f81935932",
+      "title": "Alamtri Resources (ADRO) Lanjutkan Program Buyback Saham Mulai 20 Oktober - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1fVHl4b1A5NnZFQ01hNE53RWtHVXRDS0dWQlVVZlBlT2JyNVA5amF5M0c2Z0ptZjZKTFFOekdQc1NNaFRPSGxaLWdKQ2QwNEhqNnFRSUgxOE0tQ2dRVXN5VW1HbzFmUQ?oc=5",
+      "publisher": "TradingView",
+      "published_at_utc": "2026-10-20T07:52:34Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_75fab04707ef14c7b2df30",
       "title": "Kinerja Keuangan Saham PTPP: Laba Tertekan Beban Proyek dan Penurunan Nilai - PintarSaham",
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQbkpPa1N5ZzU5YkpuMjROX3ZSZTY0ckNZRDFXN1FqSjBLdkpNc2c1TzNDVnYycFVCX2RWc3puZnpiTEotZGJzYk81d0otSmdNREhkNHIwX25Na21wSVFxblAzZlNhUXdxbTRqeUJvXzdybGlTRVpOV3JnZWRqTlNwbUtrU1JlT0wzY1FTS0llb0NaTTZUM0tFc2J2TFZkU28?oc=5",
@@ -6650,22 +6698,6 @@
         "MDKA"
       ],
       "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_fc06cf3e778be58856a819",
-      "title": "INKP Pakai Refinancing untuk Lunasi Utang Rp585 Miliar - Emitennews.com",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPc1lvOWxJWkR1eHpUNnlGWDFPWnNRUEJKWGJDZ0ZQQ1B1b0lOZXB1ZFQ1MW9ZM1lVRHlqeDczZnlLemVXQnUzY3E3dVpQSjE3dWR2Q2lTUG1VUmFqaFFhYTAwb3BCNFpwLW45aC1XdWJ2NUV1cC0xLVlOWEJmZUM1akxRaFFVZWZpVnRGUWgzYw?oc=5",
-      "publisher": "Emitennews.com",
-      "published_at_utc": "2026-10-14T22:03:32Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INKP"
-      ],
-      "sector": "manufacturing",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
