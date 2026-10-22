@@ -221,7 +221,7 @@ function renderPlatformMast(){
 function renderBar(){
  // The Expert Connect landing owns a compact header, so do not inject a sitewide
  // breadcrumb and toolbar that would bury its client request form.
- if(path==='sli-expert-connect.html'){
+ if(path==='sli-expert-connect.html'||path==='sli-research-ai.html'){
   document.getElementById('sliUniversalNavigation')?.remove();
   renderPlatformMast();
   return;
@@ -316,7 +316,7 @@ window.SLIArchitecture={modules,groups,related,refresh:render};
  // Shared context for all dashboards: attributable secondary news and dated OSINT.
  function mountSecondaryEvidence(){
    // OSINT summaries are for intelligence dashboards, not service-request landing pages.
-   if(path==='sli-expert-connect.html')return;
+   if(path==='sli-expert-connect.html'||path==='sli-research-ai.html')return;
   if(document.getElementById('sliSecondaryEvidenceLoader'))return;
   const script=document.createElement('script');script.id='sliSecondaryEvidenceLoader';
   script.src='./js/sli-secondary-evidence.js?v=20261018-sitewide1';script.defer=true;

@@ -1,0 +1,131 @@
+/* DERGUBA chat-first public presentation, 23 October 2026.
+   Progressive disclosure only: all request fields, citations, Owner controls and exports stay in the DOM. */
+body.sli-research-brand .sli-ra-intro{
+ max-width:960px;margin:clamp(15px,2.4vw,30px) auto 15px;padding:0;text-align:left
+}
+body.sli-research-brand .sli-ra-intro h1{
+ font:650 clamp(34px,4vw,52px)/1.1 Georgia,"Times New Roman",serif;
+ letter-spacing:-.035em;margin:6px 0 3px;overflow-wrap:anywhere
+}
+body.sli-research-brand .sli-ra-intro .sli-ra-eyebrow{font-size:10px;letter-spacing:.14em}
+body.sli-research-brand .sli-ra-intro .sli-ra-byline{margin-bottom:10px}
+body.sli-research-brand .sli-ra-intro p.sli-ra-lead{
+ font:450 clamp(14px,1.35vw,17px)/1.6 system-ui,-apple-system,Segoe UI,sans-serif;
+ color:#d0e0ea;max-width:790px;margin:8px 0 12px
+}
+.sli-ra-status-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px}
+.sli-ra-public-preview{color:#e8ca91!important;font:650 12px/1.45 system-ui,sans-serif;text-decoration:underline;text-underline-offset:3px}
+body.sli-research-brand .sli-ra-workspace{max-width:960px;margin:0 auto 28px}
+body.sli-research-brand .sli-ra-composer{padding:clamp(13px,2vw,22px);border-color:#607b90}
+body.sli-research-brand .sli-ra-composer textarea{
+ min-height:110px;height:auto;max-width:100%;padding:7px 3px 10px;
+ font:450 16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;
+ color:#f5f7fa
+}
+body.sli-research-brand .sli-ra-composer textarea::placeholder{color:#aec2d1}
+body.sli-research-brand .sli-ra-advanced-inputs{
+ margin:6px 0 2px;border:0;background:transparent;padding:0;max-width:100%;
+}
+body.sli-research-brand .sli-ra-advanced-inputs>summary{
+ width:fit-content;max-width:100%;padding:8px 4px;cursor:pointer;
+ font:650 12px/1.45 system-ui,sans-serif;color:#e7cb99;
+}
+body.sli-research-brand .sli-ra-advanced-inputs>summary:focus-visible{outline:2px solid #e7c68b;outline-offset:3px}
+body.sli-research-brand .sli-ra-advanced-body{
+ margin:6px 0 12px;padding:13px;border:1px solid #45627a;
+ border-radius:10px;background:#10283d;min-width:0
+}
+body.sli-research-brand .sli-ra-advanced-body .sli-ra-chat-attachment{
+ margin:0 0 10px;background:#142e44;border-color:#4f6a81;color:#eaf2f8
+}
+body.sli-research-brand .sli-ra-advanced-body .sli-ra-chat-attachment :is(label,small,#raAttachmentStatus),
+body.sli-research-brand .sli-ra-advanced-body .sli-ra-upload-consent{color:#c6d6e2!important}
+body.sli-research-brand .sli-ra-advanced-body .sli-ra-chat-preferences{
+ background:#163247;border-color:#547086;margin-top:10px;max-width:100%;min-width:0
+}
+body.sli-research-brand .sli-ra-advanced-body .sli-ra-chat-preferences summary,
+body.sli-research-brand .sli-ra-advanced-body .sli-ra-chat-preferences :is(label,small){color:#d1e0eb!important}
+body.sli-research-brand .sli-ra-advanced-body select{
+ background:#10273a;color:#f2f4f8;border:1px solid #648095;max-width:100%
+}
+body.sli-research-brand .sli-ra-composer-bottom{
+ padding-top:10px;display:flex;align-items:center;justify-content:space-between;
+ gap:10px;flex-wrap:wrap
+}
+body.sli-research-brand .sli-ra-send-hint{color:#b9cbd8;font:500 11px/1.4 system-ui,sans-serif}
+body.sli-research-brand #raSend{min-height:44px;white-space:nowrap}
+body.sli-research-brand .sli-ra-task-links{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 10px
+}
+body.sli-research-brand .sli-ra-task-links a{
+ display:flex;align-items:center;justify-content:center;gap:6px;
+ min-height:48px;padding:8px;border-radius:9px;
+ border:1px solid #486781;background:#163047;color:#e8f0f5!important;
+ text-decoration:none!important;text-align:center;font:700 12px/1.4 system-ui,sans-serif;
+ overflow-wrap:anywhere
+}
+body.sli-research-brand .sli-ra-task-links a[aria-current=page]{
+ border-color:#be9c64;color:#f3d59f!important;background:#21384e
+}
+body.sli-research-brand .sli-ra-task-links a:hover{border-color:#edcc91}
+body.sli-research-brand .sli-ra-public-boundary{
+ font:450 12px/1.55 system-ui,sans-serif;color:#becfdb;max-width:960px;margin:7px 0 15px
+}
+body.sli-research-brand .sli-ra-more-resources{
+ max-width:960px;margin:12px auto 23px;background:#10273b;
+ border:1px solid #3c576e;border-radius:11px;padding:10px 14px
+}
+body.sli-research-brand .sli-ra-more-resources>summary{
+ color:#e3c890;cursor:pointer;font:700 12px/1.55 system-ui,sans-serif
+}
+body.sli-research-brand .sli-ra-more-resources-body{padding:14px 0 5px}
+body.sli-research-brand .sli-ra-more-resources .sli-ra-chat-promise{
+ font:450 12px/1.6 system-ui,sans-serif;color:#c4d4df;margin:0 0 12px
+}
+body.sli-research-brand .sli-ra-more-resources .sli-ra-utility-links{margin:8px 0 15px}
+body.sli-research-brand .sli-ra-more-resources .sli-ra-derguba-brand-story{margin:8px 0}
+@media(max-width:650px){
+ body.sli-research-brand .sli-assistant{padding:0 15px 40px}
+ body.sli-research-brand .sli-ra-mast{padding:10px 0;gap:8px}
+ body.sli-research-brand .sli-ra-primary-nav{gap:13px}
+ body.sli-research-brand .sli-ra-intro{margin:15px auto 12px;padding:0}
+ body.sli-research-brand .sli-ra-intro h1{font-size:clamp(33px,9vw,44px);margin:4px 0 2px}
+ body.sli-research-brand .sli-ra-intro p.sli-ra-lead{font-size:13px;line-height:1.55;margin:7px 0 9px}
+ body.sli-research-brand .sli-ra-intro .sli-ra-byline{margin-bottom:7px}
+ body.sli-research-brand .sli-ra-access-label{font-size:10px;padding:5px 9px}
+ body.sli-research-brand .sli-ra-public-preview{font-size:11px}
+ body.sli-research-brand .sli-ra-workspace{margin-bottom:23px}
+ body.sli-research-brand .sli-ra-composer{padding:12px}
+ body.sli-research-brand .sli-ra-composer textarea{min-height:92px;font-size:16px;padding:4px 1px 7px}
+ body.sli-research-brand .sli-ra-composer-bottom{align-items:center}
+ body.sli-research-brand .sli-ra-send-hint{font-size:10px;flex:1 1 115px}
+ body.sli-research-brand .sli-ra-task-links{gap:6px;margin-top:12px}
+ body.sli-research-brand .sli-ra-task-links a{min-height:54px;font-size:11px;padding:8px 5px}
+ body.sli-research-brand .sli-ra-public-boundary{font-size:11px}
+ body.sli-research-brand .sli-ra-more-resources{margin-top:12px}
+}
+@media(max-width:360px){
+ body.sli-research-brand .sli-ra-task-links a{font-size:10px}
+ body.sli-research-brand #raSend{padding-inline:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ body.sli-research-brand .sli-ra-task-links a{scroll-behavior:auto}
+}
+
+/* Preserve complex sector-specific research in a deliberately collapsed, accessible specialist panel. */
+body.sli-research-brand .sli-ra-specialist-lens{
+ width:100%;max-width:960px;margin:6px auto 20px;
+ border:1px solid #38566e;border-radius:10px;background:#10283b;padding:10px 14px
+}
+body.sli-research-brand .sli-ra-specialist-lens>summary{
+ cursor:pointer;color:#e7cb99;font:700 12px/1.6 system-ui,sans-serif
+}
+body.sli-research-brand .sli-ra-specialist-lens #raFoodImpactMount{
+ margin-top:12px;min-width:0
+}
+body.sli-research-brand .sli-ra-specialist-lens .sli-food-impact{
+ max-width:100%;margin:0;min-width:0
+}
+@media(max-width:650px){
+ body.sli-research-brand .sli-ra-specialist-lens{padding:10px 12px;margin-bottom:15px}
+}

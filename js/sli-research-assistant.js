@@ -605,7 +605,7 @@ function setResearchLanguage(language){
   button.classList.toggle("active",active);
   button.setAttribute("aria-pressed",String(active));
  });
- $("raPrompt").placeholder=language==="id"?"Tanyakan apa saja: olah kuesioner AHP penelitian saya, bandingkan provinsi, bantu metodologi skripsi, atau analisis proyek investasi.":"Ask any research question: analyse my AHP questionnaire, compare regions, design a university study, or assess an investment project.";
+ $("raPrompt").placeholder=language==="id"?"Tanyakan tentang Indonesia, misalnya: bandingkan ketahanan energi dan sertakan sumber resmi.":"Ask about Indonesia, for example: compare energy security with official sources.";
  $("raFollowupPrompt").placeholder=language==="id"?"Contoh: jelaskan aturan pelaksana, cek perubahan terbaru, atau lengkapi sumber resmi yang belum tersedia.":"Example: explain the implementing rules, check recent amendments, or identify missing primary sources.";
  if(state.config&&!isConfigured()&&!ownerConfigured())status(language==="id"?(state.config.published_notice_id||tr("prelaunch")):(state.config.published_notice_en||tr("prelaunch")));
 }
