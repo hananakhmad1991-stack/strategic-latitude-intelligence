@@ -279,3 +279,24 @@ body.sli-research-brand .sli-ra-derepan-map:focus-visible{
  body.sli-research-brand .sli-ra-intro .sli-ra-derguba-heritage,
  body.sli-research-brand .sli-ra-intro .sli-ra-derguba-meaning{font-size:12px;line-height:1.6}
 }
+
+/* DERGUBA workspace first: responsive masthead and legible introduction. */
+body.sli-research-brand{overflow-x:hidden}
+body.sli-research-brand .sli-assistant{max-width:100%;box-sizing:border-box}
+body.sli-research-brand .sli-ra-mast{min-width:0}
+body.sli-research-brand .sli-ra-mastlinks{min-width:0}
+body.sli-research-brand .sli-ra-intro{padding-top:8px;margin-top:18px}
+body.sli-research-brand .sli-ra-intro h1{font-size:clamp(44px,6vw,78px);letter-spacing:-.045em;line-height:1.08;margin:6px 0 3px;overflow-wrap:anywhere}
+body.sli-research-brand .sli-ra-byline{color:#b9ccdc;font:500 clamp(15px,1.5vw,21px)/1.5 Georgia,serif;margin:0 0 15px}
+body.sli-research-brand .sli-ra-chat-promise{color:#d3e2ec!important;opacity:1!important;line-height:1.65!important;font-weight:450!important;max-width:850px;margin:0 0 17px}
+body.sli-research-brand .sli-ra-intro .sli-ra-derguba-brand-story{max-width:940px;margin:12px 0 16px;padding:0 16px}
+body.sli-research-brand .sli-ra-derguba-brand-story>summary{color:#e8cf9f;cursor:pointer;padding:12px 3px;font:700 13px/1.5 system-ui,sans-serif}
+body.sli-research-brand .sli-ra-derguba-brand-story .sli-ra-heritage-content{padding:0 3px 12px}
+body.sli-research-brand .sli-ra-notice{box-sizing:border-box;max-width:100%;overflow-wrap:anywhere}
+@media(max-width:700px){
+ body.sli-research-brand .sli-ra-intro h1{font-size:clamp(39px,10vw,57px)}
+ body.sli-research-brand .sli-ra-primary-nav{max-width:100%;min-width:0;scrollbar-width:thin}
+ body.sli-research-brand .sli-ra-intro{padding-top:0;margin-top:16px}
+ body.sli-research-brand .sli-ra-chat-promise{font-size:13px!important}
+ body.sli-research-brand .sli-ra-notice{font-size:12px;padding:12px}
+}
