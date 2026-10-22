@@ -9,7 +9,7 @@ const root=resolve(import.meta.dirname,'..');
 const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json'};
 const wait=ms=>new Promise(ok=>setTimeout(ok,ms));
 async function until(fn){for(let i=0;i<80;i++){try{const v=await fn();if(v)return v}catch{}await wait(250)}throw Error('Chrome startup or dashboard timed out')}
-const server=createServer(async(req,res)=>{try{const rel=decodeURIComponent(new URL(req.url,'http://localhost').pathname).replace(/^\\/+/, '')||'index.html';const p=resolve(root,rel);if(!p.startsWith(root+sep))return res.writeHead(403).end();const b=await readFile(p);res.writeHead(200,{'content-type':types[extname(p)]||'application/octet-stream'}).end(b)}catch{res.writeHead(404).end()}});
+const server=createServer(async(req,res)=>{try{const rel=decodeURIComponent(new URL(req.url,'http://localhost').pathname).replace(/^\/+/, '')||'index.html';const p=resolve(root,rel);if(!p.startsWith(root+sep))return res.writeHead(403).end();const b=await readFile(p);res.writeHead(200,{'content-type':types[extname(p)]||'application/octet-stream'}).end(b)}catch{res.writeHead(404).end()}});
 await new Promise(ok=>server.listen(0,'127.0.0.1',ok));
 const origin='http://127.0.0.1:'+server.address().port;
 const profile=await mkdtemp(join(tmpdir(),'sli-green-chrome-'));
