@@ -48,6 +48,7 @@ try {
       assert.ok(boxes.stage.bottom < boxes.controls.top + 36, 'Stage must precede mode controls');
       assert.match(boxes.mode || '', /Indonesia/i, 'Indonesia is the initial geographic focus');
       const buttons=page.locator('#sliOrbitGlobe .sli-orbit-view');
+      await buttons.nth(1).scrollIntoViewIfNeeded();
       const hit = await page.evaluate(() => {
         const b = document.querySelector('#sliOrbitGlobe .sli-orbit-view:nth-child(2)');
         const r = b.getBoundingClientRect();
