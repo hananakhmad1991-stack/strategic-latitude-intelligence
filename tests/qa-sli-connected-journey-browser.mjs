@@ -3,7 +3,7 @@ import {chromium} from 'playwright-core';
 const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
 const base='http://127.0.0.1:8765/';
 try{
- for(const width of [390,1440]){
+ for(const width of [360,390,1440]){
   const page=await browser.newPage({viewport:{width,height:850}});
   await page.goto(base+'index.html#home',{waitUntil:'domcontentloaded'});
   await page.locator('.sli-home-journeys a').first().waitFor();
@@ -13,6 +13,14 @@ try{
   const collapse=page.locator('.sli-panel-collapse[aria-controls="sli-panel-sli-market-home"]');
   await collapse.waitFor({timeout:15000});
   assert.equal(await collapse.getAttribute('aria-expanded'),'true','market widget must render expanded first');
+  await collapse.focus();
+  await page.keyboard.press('Enter');
+  assert.equal(await collapse.getAttribute('aria-expanded'),'false','Keyboard users can collapse secondary content');
+  assert.ok(await panel.evaluate(el=>el.classList.contains('sli-panel-collapsed')));
+  await page.keyboard.press('Enter');
+  assert.equal(await collapse.getAttribute('aria-expanded'),'true','Keyboard users can reopen chart');
+  assert.ok(await panel.evaluate(el=>!el.classList.contains('sli-panel-collapsed')));
+  assert.equal(await page.locator('.sli-panel-collapse').count(),4,'No duplicate panel controls');
   await collapse.click();
   assert.equal(await collapse.getAttribute('aria-expanded'),'false');
   assert.ok(await panel.evaluate(el=>el.classList.contains('sli-panel-collapsed')));
