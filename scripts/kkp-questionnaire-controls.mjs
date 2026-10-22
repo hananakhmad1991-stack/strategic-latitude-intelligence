@@ -40,13 +40,16 @@ export async function selectKKPDropdown(page,modal,index,label){
 export async function selectKKPRating(modal,rating){
  const value=Number(rating);
  if(!Number.isInteger(value)||value<1||value>5)throw Error("kkp_invalid_rating");
- // Portal may include an additional 'Empty' radio; never blindly rely on its
- // numeric position when a labelled rating field exists.
- const radios=modal.locator('input[type="radio"]');
- if((await radios.count())<5)throw Error("kkp_rating_control_not_found");
- const named=modal.getByRole("radio",{name:new RegExp("^"+value+"\\s+Stars?$","i")});
- let target=(await named.count())===1?named:radios.nth(value-1);
- await target.check({force:true,timeout:7000});
- if(!(await target.isChecked()))throw Error("kkp_rating_not_confirmed");
+ // KKP Material UI Rating uses label[for=radio.id] as a sibling BEFORE
+ // each visually hidden input. Never assume radio inputs are inside labels,
+ // and do not substitute an arbitrary star rating.
+ const input=modal.locator('input[type="radio"][value="'+value+'"]');
+ if((await input.count())!==1)throw Error("kkp_rating_value_not_found");
+ const id=await input.getAttribute("id");
+ if(!id||!/^[a-zA-Z0-9:_-]+$/.test(id))throw Error("kkp_rating_id_unavailable");
+ const label=modal.locator('label[for="'+id+'"]');
+ if((await label.count())!==1)throw Error("kkp_rating_label_not_found");
+ await label.click({timeout:10000});
+ if(!(await input.isChecked()))throw Error("kkp_rating_not_confirmed");
  return true;
 }
