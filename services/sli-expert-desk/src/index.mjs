@@ -146,7 +146,11 @@ export async function handleRequest(request,env,identify=()=>{throw new HttpErro
     if(record.version!==expectedVersion)throw new HttpError(409,"Stale request; refresh");
     if(!allowedTransition(record.status,to))throw new HttpError(409,"Invalid workflow transition");
     // A human confirms actual screening / consent before shortlist; client approval before paid work.
-    if(to==="shortlisted"&&input.screening_confirmed!==true)throw new HttpError(400,"Expert consent and screening confirmation required");
+    if(to==="shortlisted"){
+      if(input.screening_confirmed!==true)throw new HttpError(400,"Expert consent and screening confirmation required");
+      const candidate=await db.prepare("SELECT id FROM request_expert_shortlist WHERE request_id=? LIMIT 1").bind(id).first();
+      if(!candidate)throw new HttpError(409,"No screened candidate has been linked to this request");
+    }
     if(to==="approved"&&input.client_approval_confirmed!==true)throw new HttpError(400,"Client approval confirmation required");
     const changedAt=new Date().toISOString();
     // D1 batch is transactional: state and audit history are committed together.
