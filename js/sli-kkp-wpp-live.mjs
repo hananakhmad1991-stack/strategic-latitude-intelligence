@@ -62,7 +62,8 @@ let loadPromise=null;
  * KKP/BIG service may still be unavailable; rendering is always fail-closed.
  */
 export function wppIdBatches(ids,chunk=3){
- if(!Array.isArray(ids)||ids.length!==11||ids.some(x=>!Number.isSafeInteger(x)||x<0)||new Set(ids).size!==ids.length)throw Error("BIG_invalid_objectIds");
+ // The BIG layer may represent some WPP zones with multiple polygon records.
+ if(!Array.isArray(ids)||ids.length<11||ids.length>250||ids.some(x=>!Number.isSafeInteger(x)||x<0)||new Set(ids).size!==ids.length)throw Error("BIG_invalid_objectIds");
  if(!Number.isInteger(chunk)||chunk<1||chunk>4)throw Error("BIG_invalid_batch_size");
  const ordered=[...ids].sort((a,b)=>a-b),batches=[];
  for(let i=0;i<ordered.length;i+=chunk)batches.push(ordered.slice(i,i+chunk));
