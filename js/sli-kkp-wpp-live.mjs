@@ -105,7 +105,7 @@ export function officialWPPRasterURL(){
  const p=new URLSearchParams({bbox:"90,-16,146,13",bboxSR:"4326",imageSR:"4326",size:"1280,650",format:"png32",transparent:"true",layers:"show:21",f:"image"});
  return root+"/export?"+p.toString();
 }
-async function renderRasterFallback(host,why){
+async function renderRasterFallback(host,why,accept=()=>true){
  const img=document.createElement("img");
  img.alt=txt("Pratinjau peta WPP dari renderer BIG langsung, bukan unduhan geometri tervalidasi.","WPP live image directly from BIG MapServer, NOT a validated reusable geometry file.");
  img.referrerPolicy="no-referrer";img.decoding="async";img.src=officialWPPRasterURL();
@@ -114,7 +114,7 @@ async function renderRasterFallback(host,why){
   img.onload=()=>{clearTimeout(timer);resolve(true)};
   img.onerror=()=>{clearTimeout(timer);resolve(false)};
  });
- if(loaded){
+ if(loaded&&accept()){
   img.className="mf-wpp-official-raster";
   host.replaceChildren(img);
   el("mfWPPStatus").textContent=txt(
@@ -137,14 +137,21 @@ async function mount(){
  renderWPPSourceLegend();
  button.addEventListener("click",async()=>{
   button.disabled=true;el("mfWPPStatus").textContent=txt("Mengakses layanan BIG resmi...","Contacting official BIG service...");
+  let vectorReady=false;
+  // Parallel source-rendered image is available immediately when BIG supports
+  // export, avoiding the 25-second vector timeout before any map appears.
+  const rasterTask=renderRasterFallback(el("mfWPPMap"),txt("masih diproses","pending"),()=>!vectorReady);
   try{
    if(!loadPromise)loadPromise=fetchOfficialWPP().catch(err=>{loadPromise=null;throw err});
    const r=await loadPromise;
+   vectorReady=true;
    renderMap(el("mfWPPMap"),r.geo,r.audit);
   }catch(err){
    const reason=String(err?.message||err).slice(0,160);
-   const raster=await renderRasterFallback(el("mfWPPMap"),reason);
-   if(!raster)el("mfWPPStatus").textContent=txt("Layanan geometri dan renderer peta BIG belum merespons (","BIG geometry and rendered map sources unavailable (")+reason+"). "+txt("Tidak mengganti dengan poligon rekaan.","No guessed polygon fallback.");
+   const raster=await rasterTask;
+   if(raster){
+    el("mfWPPStatus").textContent=txt("Layer raster BIG tersedia langsung dari sumber resmi, bukan geometri vektor tervalidasi. GeoJSON gagal: ","BIG official server-rendered raster available, NOT validated vector geometry. GeoJSON failed: ")+reason+". "+txt("Perizinan dan versi peraturan masih terbuka.","Legal vintage and reuse rights remain open.");
+   }else el("mfWPPStatus").textContent=txt("Layanan geometri dan renderer peta BIG belum merespons (","BIG geometry and rendered map sources unavailable (")+reason+"). "+txt("Tidak mengganti dengan poligon rekaan.","No guessed polygon fallback.");
   }finally{button.disabled=false}
  });
 }
