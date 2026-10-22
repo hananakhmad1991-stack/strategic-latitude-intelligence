@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T02:34:03.471346Z",
+  "updated_at_utc": "2026-10-22T03:04:53.252031Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,55 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_1e39d41afe2b5924a20caa",
+      "title": "WIKA Beton Kirim Bantalan Rel untuk Metro Manila Subway - Suara Independent News",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1xdFVQZldkcVl5a0VXdGJDeExHS0I3NU45S05RQjZTSjUxaXRmcFVUV0JjRlo0SGdPOTFOTlA4QllQZ3ppQWxuQVZiMTRPcWNMS19uWDFWdmN5WFhWTjZFN1YyOGJjaGs1SFQzYkZCREV4UDA?oc=5",
+      "publisher": "Suara Independent News",
+      "published_at_utc": "2026-10-22T02:49:14Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "WIKA"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_fdd3a2843ac90017093e17",
+      "title": "Saham PGEO Dinilai Tahan Tekanan Sentimen MSCI, Pendapatan Dolar AS dan Kontrak PLN Jadi Penopang Utama - TOPIK.ID",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNcl93ZFRfa1F3MG1LZk1hZGpGLTYtNE9oVEF5RWxpcC1Ca0gzTXQzZmltNVJNaS1pbGhlUmxmR0lOU3U2and3QWtGZjlkczBMQjZacUFTV3RhWmJySHZjUmQwWnFoODJfUmxPVy12RjcxbDRQWkRyUFBzZDBKYWN3aVA2cXdBN0lrVHFlYVBhSWQxbUlBN2d2NEMtSFcxaFJIY05wcWFvOFAwZ1B4TnhVeGt2NWZ3R2stOXQ5WUR4Sno?oc=5",
+      "publisher": "TOPIK.ID",
+      "published_at_utc": "2026-10-22T02:49:06Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_070e1cfb9cffec2cd88842",
+      "title": "Rekomendasi Saham Analis 22 Oktober 2026: AMMN, DSSA, INCO, MAPA, KLBF, PGEO - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9MS0RSeWM2MTNibEZpVnl2T05OOHFIdWFfS05xLS1xYzN1VHFNVjBQMzNLTUhRcFdlWGpPR3NvUms4Z3VfNDM2Nm5ZRlV0QVBmUlhn?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-10-22T02:39:29Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN",
+        "INCO"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_ca39a6e3a04e5c1f2e2b36",
       "title": "Pasar Saham Tertekan MSCI, PGEO Punya Penopang Kuat - investor.id",
@@ -194,7 +243,8 @@
       "published_at_utc": "2026-10-21T23:12:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "ICBP"
+        "ICBP",
+        "PTBA"
       ],
       "sector": "food",
       "source": "public_google_news_rss",
@@ -288,6 +338,38 @@
       "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPMjhWMjVTU1BaMnlCcWJCSzY3U3pUUlh0a1FmbUVCd01ablFDRWp2RzNKUTJ5MWd5UXcwMDQ2aDJQNjgwaWJ3VFVGQllRUHFwWkhqUzdpVjU1ekM4eUdhamF3YmowVkE4WHQ2Z0M3T2hXcjBPaUN0cVhuUGg2RkJfdC1n?oc=5",
       "publisher": "Demokratis.co.id",
       "published_at_utc": "2026-10-21T22:28:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ca5466c0d892c96dbd3ace",
+      "title": "Analis Menilai Peluang Tiga Saham BBCA ENRG dan JPFA - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBBUUU2TjhabnV5eXcyeVV5YmwxSjhZRjM4N01uRXZIcWdXamZoU3J4amVzdm9qSlh3a2RyaHhmUWtEVnFsMDdTNG16eURoaEZpZlVrSTBQdmJHUDVHaFZLeDJrdGQ1YlZfQnc?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-21T22:20:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_85440836dbef6a37f58d24",
+      "title": "Intip Rekomendasi Teknikal Saham BBCA, ENRG, JPFA untuk Hari Ini (22/10) - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPTkFoSWtyNVVZMzNDWlV2cngzYzh3a3NPOFB4XzZkSzhzRHZhN0ZRcnMyMVlUb1otcmdyTDk0T2VBcXY3dlVpeGRnUl9saDhSR1lFajVfcGlNSWxsc3Q4RnotNHRDdWVGNXNXaFE3Vnp6MUlzX0V5M3Vjb2E4dERmaEotYnExSzhnWXNxLVprRmpjUHg5TmsxYVk1YlJCZVBCLWh6S05n0gGeAUFVX3lxTE9mNC1xUmcyRV9sS0FHVENfZFVXWUc1N1ZBMFdpSWNRX2VWOHFKTDh3N0pWNFNIMDdBcW4wLXZjQ1J6RmgzR2kzV2FodXR1S1VibkdYb05OcDk4Uk8wOHFpcWYxZGxRcTktVjZoVGhYWWg4SHEwVDNKUHQ5VHQ1aGxhWFMxQ2Npd2dvWGdJcVV1Tmw1cTRGbW1jZ05jMkRR?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-21T22:17:21Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "JPFA"
@@ -2697,6 +2779,22 @@
       "tickers": [
         "AADI",
         "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f78c592b68879e955c2bcf",
+      "title": "AADI Mulai Buyback Saham Hari Ini, Periode Berlangsung hingga Mei 2027 - Lotus Andalan Sekuritas",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPQzkwYjI5NWRmLVJuOTJoMGxqbFI1VFJLNVp0N2xXSU0zamFYdVNGLUtTOC11Z0VGQ1JkOVI4aFZwSnBraWVXYTJKeUVsbGpsenpIeGE0Njh0dElPS0pLNUFFbS1RZ3dDYVlITlNzUmR2c1RZelVJVlF1U2tOYkNVRWgtT1l5RXZjeGprNm5fc0FXb05Wc0RXRDF2dW5IUGhVdXBORENoaFEtQU42M3c?oc=5",
+      "publisher": "Lotus Andalan Sekuritas",
+      "published_at_utc": "2026-10-20T03:49:21Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
       ],
       "sector": "coal",
       "source": "public_google_news_rss",
