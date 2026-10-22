@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-22T18:41:13.207771+00:00",
+  "checked_at_utc": "2026-10-22T21:35:06.824998+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -14,7 +14,7 @@
       "title": "Oil prices jump to five-month high as attacks threaten global supply - The Guardian",
       "publisher": "The Guardian",
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOSkIzeWdNTnhad3RfQTdsMFg0OHQ5ejlGVjF2R016akVNelJYNDdVQVNsaE5PRXQ2SWJpT1JDbG5RRmtDdWFEazN2b3FLYkY3eUx5Rmk4bThDcVZmWExKcTFBVW51cEpSUHBPd0ZsUGVnWXF5eTJxY0V1aHlaYUtQTHhsYU00WjdtWk8yOS1UMW9SVVAwN2I3bU43OA?oc=5",
-      "indexed_at_utc": "2026-10-22T16:10:00+00:00",
+      "indexed_at_utc": "2026-10-22T11:28:00+00:00",
       "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -33,23 +33,6 @@
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRUpxSXBnV3lLb2hmSHBCc2sxQlgyVnhTSklvZEpnM21ZSGRMTHlOa1FEQnkwMDA3ME83Yjc1b1ZQQnJNSFlvN0J4ZWgyZHRnRXdpZWZ5VUVEMDd1eHh3WkJNZE5vckZjX1dXZ2lnUXpDa1dPV3dIVmdZWHlJbF9IaTRGSFc?oc=5",
       "indexed_at_utc": "2026-10-21T12:01:37+00:00",
       "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Red Sea and Bab el-Mandeb",
-      "topic_id": "oil_shipping",
-      "type": "Maritime chokepoint",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "gas_lng",
-      "title": "Qatar LNG Cargo Appears Bound for Europe via Red Sea - Energy Intelligence",
-      "publisher": "Energy Intelligence",
-      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5saW1RbXc3clRkOFRtSGY3bVB0ZTFVX3lOUktna09IYXppc052UVFHU0ltVU9OcFJsM2pVeDdwRFdVUU1QaTNReGJveUJEc0JlY1JIdl9hM2hXR05Xei1lX0Y2UUNSNEh4Q0ktdFZQUlFlZw?oc=5",
-      "indexed_at_utc": "2026-10-20T22:13:34+00:00",
-      "impact_pathway": "Routing changes -> transit time and shipping insurance -> delivered commodity cost",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -95,23 +78,6 @@
       "sector_tags": [
         "oil_gas"
       ],
-      "subsector": "upstream",
-      "title": "UK approves development of Jackdaw gasfield in North Sea - Financial Times",
-      "publisher": "Financial Times",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNZGxWWjZUZU50ZVc5TEJ6VmtPN0pBb1Mwa05hdGlLM2c0aEczSWhXYkthSy1FZFd4dkxBS01IdkstS2d6MGpfbnpNbkZwallQdlhsQ0lBSFJtRUNyWU1GNnlLRW82blhrZnEzalJGSWtIVXBYYWxMSWYxdmFoeGFFMExTTUI?oc=5",
-      "indexed_at_utc": "2026-10-20T21:20:35+00:00",
-      "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Russia and energy sanctions",
-      "topic_id": "oil_sanctions",
-      "type": "Geoeconomic",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
       "subsector": "general",
       "title": "North Sea: UK government agrees to drilling at Jackdaw gas field - BBC",
       "publisher": "BBC",
@@ -130,10 +96,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "India's Mideast oil imports return to pre-war levels in September - Reuters",
+      "title": "Oil prices hit five-month high as Houthi attacks stoke Middle East supply fears - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNRl9GVUFVbTBqSFIzbnJpZmJ0c3Q5ZFJlQ0hQUkkwZW5aVDdVWTMwczBlRFRTbF9zM0NNODcyWG9PUTg5WXZKOXRfSUdJSXhHM1FPcFhUOTVmb0pIUHh5Rl9tYldSWDd1all5UV9fV2VMSmNxSUU4anJpUVVvMkFadHpQcmwxdFhRSHlvSXhpMEY1bXNkV2NnUnVNelltUHVRQjFzWE14TWZVVnhrRndv?oc=5",
-      "indexed_at_utc": "2026-10-22T06:02:00+00:00",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOYzBEdGVKYmZ3VVpJajg0TW5DN2VHVEM2aDVTcFJKQVduMnVMTU5NbVcyMGxBanBHY3VvMzJQR1VrQWM4b0hLeG1YaTFWcldTeU9yTlBXc3FiR1FtcUp0SmxhRkJkWmpmZ2x6X3VGZHZEUDNLTE9LTFZNSlBWWjNJVGtaV3YwWkc4QVhxbHozYkx5THpZMVlYVDAtd0dqbUMyOUcyVk91NEYxaFFCZklRWWhjQm5qN2NvVHdWdnZIQVJSMk0?oc=5",
+      "indexed_at_utc": "2026-10-22T00:46:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -147,10 +113,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil prices steady as investors weigh geopolitics, lower US stockpiles - Reuters",
+      "title": "India's Mideast oil imports return to pre-war levels in September - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPNTdIRmp3MTB3c3JZNGxXMUl1Wk5haXFwcjdJNXgtQnJkOEM4aWVVWG5tai03TmhHSWZidkliV1VlRkRvOVJCX3Q3QXhCWVdZeXlYQmViOUdOaU85anVWMXpSWFNCOHAtVU5id3Fad1BhX1BzVEt6S1A4N2s1YjJocFh6QXFTVXhHdDJJVzZBX21WUQ?oc=5",
-      "indexed_at_utc": "2026-10-21T00:50:00+00:00",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNRl9GVUFVbTBqSFIzbnJpZmJ0c3Q5ZFJlQ0hQUkkwZW5aVDdVWTMwczBlRFRTbF9zM0NNODcyWG9PUTg5WXZKOXRfSUdJSXhHM1FPcFhUOTVmb0pIUHh5Rl9tYldSWDd1all5UV9fV2VMSmNxSUU4anJpUVVvMkFadHpQcmwxdFhRSHlvSXhpMEY1bXNkV2NnUnVNelltUHVRQjFzWE14TWZVVnhrRndv?oc=5",
+      "indexed_at_utc": "2026-10-22T06:02:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -191,7 +157,7 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 9,
+    "oil_gas": 7,
     "coal": 1,
     "nre": 1,
     "electricity": 0,
