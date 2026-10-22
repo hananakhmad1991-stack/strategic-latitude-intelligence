@@ -47,7 +47,7 @@ function intervalPresent(answer,low,high){
  }
  return false;
 }
-const safeDiagnosticCode=value=>typeof value==="string"&&/^[a-z][a-z0-9_]{0,90}$/.test(value)?value:null;
+const safeDiagnosticCode=value=>typeof value==="string"&&/^[A-Za-z][A-Za-z0-9_]{0,90}$/.test(value)?value:null;
 const safeDiagnosticIssues=value=>Array.isArray(value)?value.slice(0,12).map(safeDiagnosticCode).filter(Boolean):[];
 export function evaluateBpsOwnerReply(status,reply){
  const issues=[];
