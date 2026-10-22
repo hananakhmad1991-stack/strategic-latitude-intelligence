@@ -8,7 +8,8 @@ const dom=new JSDOM(html,{url:'https://example.org/sli-research-ai.html'});
 const d=dom.window.document;
 test('public Research AI begins with a natural-language question and clear restricted-access disclosure',()=>{
  const intro=d.querySelector('#raIntro'),prompt=d.querySelector('#raPrompt'),form=d.querySelector('#raAssistantForm');
- assert.ok(intro&&prompt&&form&&intro.compareDocumentPosition(form)&dom.window.Node.DOCUMENT_POSITION_FOLLOWING);
+ assert.ok(intro&&prompt&&form,'intro and form should exist');
+ assert.ok((intro.compareDocumentPosition(form)&dom.window.Node.DOCUMENT_POSITION_FOLLOWING)!==0,'intro comes before question');
  assert.ok(intro.textContent.includes('DERGUBA'));
  assert.ok(intro.textContent.includes('Tanyakan dengan bahasa biasa'));
  assert.match(d.querySelector('#raAccessLabel').textContent,/Pre-launch/);
