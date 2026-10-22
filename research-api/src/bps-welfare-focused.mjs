@@ -196,6 +196,19 @@ function extraAuditRow(s,r,sourceNo){
     !new RegExp("(?:tabel|table)\\s*"+extraEscape(r.appendix_table),"i").test(s))issues.push("source_table_numbers_missing");
  if(!new RegExp("PDF\\s+halaman\\s*"+r.main_page+"\\b","i").test(s)||
     !new RegExp("PDF\\s+halaman\\s*"+r.appendix_page+"\\b","i").test(s))issues.push("source_pdf_pages_missing");
+ // A correct page or table number cannot conceal an additional fabricated
+ // reference on the same line. The tight Owner prompt requests two of each.
+ const namedTables=[...s.matchAll(/(?:tabel|table)\s+(\d+[,.]\d+)/gi)];
+ const namedPages=[...s.matchAll(/PDF\s+halaman\s+(\d+)/gi)];
+ if(namedTables.length!==2||namedPages.length!==2)issues.push("ambiguous_source_table_or_page_reference");
+ const exactTables=[r.table,r.appendix_table].map(x=>x.replace(".",",")).sort();
+ const receivedTables=namedTables.map(x=>x[1].replace(".",",")).sort();
+ if(receivedTables.length===2&&receivedTables.join("|")!==exactTables.join("|"))
+  issues.push("unexpected_source_table");
+ const exactPages=[String(r.main_page),String(r.appendix_page)].sort();
+ const receivedPages=namedPages.map(x=>x[1]).sort();
+ if(receivedPages.length===2&&receivedPages.join("|")!==exactPages.join("|"))
+  issues.push("unexpected_source_page");
  const kind=/rumah\s+tangga/i.test(r.denominator)?"rumah tangga":/penduduk/i.test(r.denominator)?"penduduk":null;
  if(kind&&!s.toLowerCase().includes(kind))issues.push("denominator_missing");
  return issues;
