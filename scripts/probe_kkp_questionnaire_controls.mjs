@@ -47,6 +47,7 @@ try{
 
   }))).catch(()=>[]);
   report.role_radio_count=await modal.getByRole("radio").count().catch(()=>null);
+  report.rating_root_html=await modal.locator(".MuiRating-root").first().evaluate(el=>el.outerHTML.slice(0,7500)).catch(()=>"");
  }
 }finally{
  await browser?.close().catch(()=>{});
