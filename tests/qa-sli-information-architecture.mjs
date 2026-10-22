@@ -46,7 +46,14 @@ test('one source of truth for Home, sector detail, guided research and methods',
 });
 test('unique overview evidence is owned by sector, macroeconomy and automation dashboards',()=>{
  const main=read('index.html'),guide=read('sli-user-guide.html');
- assert.doesNotMatch(main,/id="sliPulse"/);
+ // Strategic Pulse and automation evidence are opt-in on Home, not eager duplicate dashboards.
+ assert.match(main,/<details class="sli-exec-expand" id="sliHomeEvidenceDetails">/);
+ assert.match(main,/<div id="sliPulse"[^>]*>/);
+ assert.match(main,/<div id="sliAutomationHealthRoot"[^>]*>/);
+ assert.match(main,/evidenceDetails\.open/);
+ assert.match(main,/window\.initSLIPulse\(\)/);
+ assert.match(main,/window\.initSLIAutomationHealth\(\)/);
+ assert.equal((main.match(/id="sliPulse"/g)||[]).length,1,'Exactly one lazily mounted Pulse');
  assert.doesNotMatch(main,/function overview\(\)\{return/);
  assert.doesNotMatch(main,/data-page="overview"/);
  assert.match(main,/id="sliPortalMetrics"/);

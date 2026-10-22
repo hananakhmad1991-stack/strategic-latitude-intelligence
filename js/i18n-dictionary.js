@@ -2796,3 +2796,8 @@ window.SLI_TRANSLATIONS_ID.set("Institutional maps ↗","Peta kelembagaan ↗");
 window.SLI_TRANSLATIONS_ID.set("KKP source data ↗","Data sumber KKP ↗");
 // IDX-first homepage loading state (October 2026 mobile fix).
 window.SLI_TRANSLATIONS_ID.set("Loading Indonesian market overview…","Memuat ringkasan pasar Indonesia…");
+
+/* Restored, collapsed and lazy Strategic Pulse and operational source-audit copy. */
+window.SLI_TRANSLATIONS_ID.set("Strategic Pulse & Data Freshness · Open source-dated monitoring","Pulsa Strategis & Kemutakhiran Data · Buka pemantauan bersumber dan bertanggal");
+window.SLI_TRANSLATIONS_ID.set("Monitoring headlines are attributed research leads, not verified current incidents. Source audit timestamps and missing values remain visible.","Judul berita pemantauan adalah temuan riset yang mencantumkan sumber, bukan kejadian terkini yang telah diverifikasi. Waktu audit sumber serta nilai yang belum tersedia tetap ditampilkan.");
+window.SLI_TRANSLATIONS_ID.set("View full source freshness and workflow audit ↗","Lihat audit lengkap kemutakhiran sumber dan alur kerja ↗");
