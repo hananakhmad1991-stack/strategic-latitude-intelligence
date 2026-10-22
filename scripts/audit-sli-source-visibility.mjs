@@ -17,6 +17,25 @@ const priorities=records.filter(r=>r.evidence_tier!=='file_present_not_fully_ver
 const report={schema:'sli-data-visibility-ledger-v1',scope:'Only 13 inventoried source families, not all user uploads or all SLI data',source_reviewed_at:inventory.reviewed_at,total:records.length,source_status_counts:Object.fromEntries([...new Set(records.map(r=>r.status))].map(s=>[s,records.filter(r=>r.status===s).length])),broken_file_references:records.filter(r=>r.missing_files.length),unresolved_anchor_candidates:records.filter(r=>r.unresolved_anchor_candidates.length).map(r=>({id:r.id,anchors:r.unresolved_anchor_candidates})),evidence_tier_counts:Object.fromEntries([...new Set(records.map(r=>r.evidence_tier))].map(t=>[t,records.filter(r=>r.evidence_tier===t).length])),review_priorities:priorities,records};
 const dest=resolve(root,'artifacts/sli-data-visibility-ledger.json');mkdirSync(dirname(dest),{recursive:true});writeFileSync(dest,JSON.stringify(report,null,2)+'\n');console.log('Audited source-family inventory:',report.total,'missing file groups:',report.broken_file_references.length,'output:',dest);
 console.log('Review priorities:',priorities.length);
+for(const item of priorities)console.log('REVIEW',item.priority,item.id,'source-status='+item.reason);
+if(process.env.GITHUB_STEP_SUMMARY){
+ const markdown=[
+  '## SLI audited dataset coverage — inventory only',
+  '- Dataset groups inventoried: **'+report.total+'**',
+  '- File-present, not fully verified: **'+(report.evidence_tier_counts.file_present_not_fully_verified||0)+'**',
+  '- Partial / reconciliation pending: **'+(report.evidence_tier_counts.partial_or_reconciliation_pending||0)+'**',
+  '- Broken references: **'+report.broken_file_references.length+'**',
+  '- Candidate missing anchors: **'+report.unresolved_anchor_candidates.length+'**',
+  '',
+  '| Priority | Dataset | Recorded status |',
+  '|---|---|---|',
+  ...priorities.map(r=>'| '+r.priority+' | '+r.id+' | '+r.reason+' |'),
+  '',
+  'File presence or an audit PASS is not certification of every source number, copyright permission, or user-upload completeness.'
+ ];
+ const {appendFileSync}=await import('node:fs');
+ appendFileSync(process.env.GITHUB_STEP_SUMMARY,markdown.join('\\n')+'\\n');
+}
 console.log('Evidence tiers:',JSON.stringify(report.evidence_tier_counts),'anchor candidates:',report.unresolved_anchor_candidates.length);
 for(const r of report.broken_file_references)console.error(r.id,r.missing_files.join(', '));
 if(report.broken_file_references.length)process.exitCode=1;
