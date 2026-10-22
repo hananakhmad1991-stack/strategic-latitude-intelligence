@@ -111,6 +111,16 @@ export function layoutDistrictSankey(detail){
 function drawSankey(detail){
  const host=$("mfVizHatcherySankey"),status=$("mfVizSankeySelected");
  const g=layoutDistrictSankey(detail);if(!host)return;host.replaceChildren();
+ const links=$("mfVizSankeyItems");if(links){links.replaceChildren();
+  districtFlows(detail).records.forEach((r,i)=>{
+   const button=el("button","mf-viz-sankey-item",String(i+1)+". "+r.province+" → "+r.district+" → "+r.species+" · "+fmt(r.volume_ribu_ekor)+" ribu ekor");
+   button.type="button";
+   button.addEventListener("click",()=>{status.textContent=r.province+" → "+r.district+" → "+r.species+": "+fmt(r.volume_ribu_ekor)+" ribu ekor · nilai Rp "+fmt(r.value_rp_million)+" juta · "+fmt(r.share_of_displayed_subset*100,1)+"% "+T("dari hanya 10 baris yang terlihat.","of the ten visible records only.");links.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(b===button)))});
+   button.setAttribute("aria-pressed","false");
+   links.append(button);
+  });
+ }
+
  const chart=svg("svg",{viewBox:`0 0 ${g.W} ${g.H}`,role:"group","aria-label":"10 baris resmi KKP, provinsi ke kabupaten/kota ke komoditas"});
  const heads=[T("Provinsi","Province"),T("Kabupaten / kota","District / city"),T("Kelompok ikan","Fish group")];
  heads.forEach((l,i)=>{let a=svg("text",{x:g.columns[i],y:24,fill:"#eaf3f6","font-size":17,"font-weight":700});a.textContent=l;chart.append(a)});
