@@ -60,7 +60,7 @@ test("All published SLI pages initialize the same up-to-date EN/ID engine",()=>{
  assert.ok(pages.length>=37,"Sitewide navigation should cover every page, not a partial subset");
  for(const p of pages){
   const page=fs.readFileSync(p,"utf8");
-  assert.match(page,/sli-navigation\.js\?v=20261019-id-audit9/,"Stale language bootstrap: "+p);
+  assert.match(page,/sli-navigation\.js\?v=20261023-expert-services1/,"Stale language bootstrap: "+p);
   assert.match(page,/localStorage\.getItem\('sli-ui-language'\)/,"Persisted locale must be read before paint: "+p);
  }
  const nav=fs.readFileSync("js/sli-navigation.js","utf8");
@@ -96,7 +96,17 @@ test("Homepage portal has zero unreviewed English headings and descriptions in I
  const end=html.indexOf("function energyMonitor(){return \x60".replace("\\x60","\x60"));
  assert.ok(start>=0&&end>start,"Homepage portal must be a separately testable interface");
  const portal=html.slice(start,end);
- const values=[...portal.matchAll(/>([^<>]{3,1000})</g)].map(x=>x[1].replace(/&amp;/g,"&").replace(/&nbsp;/g," ").replace(/\s+/g," ").trim())
+ // Hand-reviewed bilingual spans intentionally carry BOTH languages in source markup.
+ // Ensure each EN string has a paired ID string; audit the remaining unpaired content through the dictionary.
+ const enCount=(portal.match(/class="sli-copy-en"/g)||[]).length;
+ const idCount=(portal.match(/class="sli-copy-id"/g)||[]).length;
+ assert.ok(enCount>=20,"Bilingual service journey is missing");
+ assert.equal(idCount,enCount,"Every explicit EN service label must have an ID equivalent");
+ const pairCount=(portal.match(/<span class="sli-copy-en">[^<]*<\/span><span class="sli-copy-id">[^<]*<\/span>/g)||[]).length;
+ const pairedParagraphs=(portal.match(/<p class="sli-copy-en">[^<]*<\/p>\s*<p class="sli-copy-id">[^<]*<\/p>/g)||[]).length;
+ assert.equal(pairCount+pairedParagraphs,enCount,"Every explicit English span or paragraph needs an adjacent Indonesian equivalent");
+ const dictionaryOnly=portal.replace(/<span class="sli-copy-(?:en|id)">[^<]*<\/span>/g,"").replace(/<p class="sli-copy-(?:en|id)">[^<]*<\/p>/g,"");
+ const values=[...dictionaryOnly.matchAll(/>([^<>]{3,1000})</g)].map(x=>x[1].replace(/&amp;/g,"&").replace(/&nbsp;/g," ").replace(/\s+/g," ").trim())
  .filter(t=>/[a-z]{3}/i.test(t)&&!/^\s*https?:/.test(t));
  const normalize=s=>s.replace(/\s+/g," ").trim();
  const accepted=new Set([...dictionary.keys()].map(normalize));

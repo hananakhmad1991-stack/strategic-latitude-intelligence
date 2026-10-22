@@ -84,7 +84,7 @@ test("food UX follows existing Energy/SLI architecture with genuine interactive 
  for(const id of ["fa-overview","fa-trade","fa-farmers","fa-prices","fa-governance","fa-analysis","fa-sources"])assert.ok(page.includes('id="'+id+'"'));
  for(const id of ["faTradeScope","faTradeMonth","faNationalGroup","faNationalMetric","faFarmerProvince","faCommodity","faPricePlace","faOrgGraph","faSourceSearch"])assert.ok(page.includes('id="'+id+'"'));
  assert.match(page,/sli-live-data\.js/);
- assert.match(page,/sli-navigation\.js\?v=20261019-id-audit9/);
+ assert.match(page,/sli-navigation\.js\?v=20261023-expert-services1/);
  assert.match(page,/localStorage\.getItem\('sli-ui-language'\)/);
  assert.match(js,/SLIVisualExport.*register/);
  assert.match(js,/aria-pressed/);
