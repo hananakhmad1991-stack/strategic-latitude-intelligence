@@ -29,6 +29,8 @@ Transitions: New → Scoping → Sourcing → Shortlisted → Proposal Sent → 
 
 ## Consent-based expert registry (private, no pre-enrolled claims)
 
+**Initial operating assumption: 0 enrolled experts.** SLI is a demand-led sourcing service: do not pre-populate the registry, import interviewees/contacts or portray the database as an active expert panel. The empty registry is a valid starting state. After a specific client requirement is reviewed, SLI may independently identify candidates and, only if an individual genuinely opts in with documented consent, create a private record. Running this private database is optional for the public MVP and should not delay the request-first customer page.
+
 A second D1 migration adds consenting expert profiles and request shortlists:
 - POST /api/experts (Owner only): require explicit documented opt-in, date, consent reference, sector, expertise and experience; optional HTTPS public-profile URL and contact email. Does not publish or message the expert.
 - GET /api/experts?sector=... (Owner only): minimal metadata list **without contact email**.
