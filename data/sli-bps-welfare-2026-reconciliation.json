@@ -38,5 +38,34 @@
     "synthetic_test": "python -m unittest discover -s tests -p 'test_bps_welfare_secondary_reader.py' -v"
   },
   "rights_note": "The BPS website term-of-use appears to allow use of data, including commercial use, but the PDF's explicit publication notice restricts commercial reproduction without written permission. Treat reuse of the data versus reproducing the publication as separate questions pending BPS clarification.",
-  "maintainer_note": "This metadata is an audit of extraction methods, not an endorsement of an exact 24,921-entry machine transcription. Publication of all raw cells remains disallowed in this pipeline until review."
+  "maintainer_note": "This metadata is an audit of extraction methods, not an endorsement of an exact 24,921-entry machine transcription. Publication of all raw cells remains disallowed in this pipeline until review.",
+  "full_253_panel_check": {
+    "status": "all_panels_two_extractor_source_text_review_complete_visual_cell_audit_still_open",
+    "scanned_sampling_error_tables": 133,
+    "sampled_panels": 253,
+    "region_rows_compared": 9867,
+    "exact_full_token_arrays": 6992,
+    "equal_numeric_different_missing_or_footnotes": 257,
+    "secondary_parser_rows_with_numeric_omissions": 2617,
+    "secondary_parser_numeric_tokens_omitted": 2969,
+    "raw_non_subsequence_numeric_differences": 1,
+    "zero_independently_verified_complete_table_images": true,
+    "manual_adjudication": [
+      {
+        "pdf_page": 384,
+        "source_printed_page": 340,
+        "sampling_table": "9.61",
+        "province": "Nusa Tenggara Barat",
+        "statistic": "Perempuan pernah kawin 15–49 tahun dengan ALH dalam dua tahun terakhir; berat badan ≥2,5 kg",
+        "printed_estimate_pct": 89.05,
+        "candidate_primary_engine": "PyMuPDF: 89,05",
+        "secondary_extraction": "pdfplumber: token malformed by visual/watermark interference",
+        "status": "one_case_confirmed_by_original_page_image_secondary_parser_artifact_not_BPS_error"
+      }
+    ],
+    "remaining_non_subsequence_without_visual_adjudication": 0,
+    "interpretation": "Two-reader numeric token matching is not a visual audit of the 124,605 statistical fields. 2,617 rows have omissions in the second parser, leaving per-cell visual verification open. No bulk tables published.",
+    "raw_candidate_rows_public": false,
+    "publication_reuse_rights": "pending_written_BPS_confirmation"
+  }
 }
