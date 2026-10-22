@@ -16,7 +16,7 @@ const profile=await mkdtemp(join(tmpdir(),'sli-green-chrome-'));
 const chrome=spawn(process.env.CHROME_PATH||'chrome',['--headless=new','--no-sandbox','--disable-dev-shm-usage','--remote-debugging-port=0','--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});
 let socket;
 try{
- const port=await until(()=>Number(readFileSync(join(profile,'DevToolsActivePort'),'utf8').split('\\n')[0]));
+ const port=await until(()=>Number(readFileSync(join(profile,'DevToolsActivePort'),'utf8').split('\n')[0]));
  const tab=await fetch('http://127.0.0.1:'+port+'/json/new?'+encodeURIComponent(origin+'/green-workforce-intelligence.html'),{method:'PUT'});assert.equal(tab.status,200);
  socket=new WebSocket((await tab.json()).webSocketDebuggerUrl);
  await new Promise((ok,fail)=>{socket.addEventListener('open',ok,{once:true});socket.addEventListener('error',fail,{once:true})});
