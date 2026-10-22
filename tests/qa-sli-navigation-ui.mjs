@@ -76,6 +76,6 @@ test('DERGUBA AI and Expert Connect are adjacent, visible top-level quick action
   d.window.close();
  }
  const home=readFileSync(new URL('../index.html',import.meta.url),'utf8');
- assert.match(home,/sli-navigation\\.js\\?v=20261019-id-audit9&expert=20261023-top1/,'Home must cache-bust top nav JS');
- assert.match(home,/sli-navigation\\.css\\?v=20261018-menu-flash2&expert=20261023-top1/,'Home must cache-bust top nav CSS');
+ assert.ok(home.includes('sli-navigation.js?v=20261019-id-audit9&expert=20261023-top1'),'Home must cache-bust top nav JS');
+ assert.ok(home.includes('sli-navigation.css?v=20261018-menu-flash2&expert=20261023-top1'),'Home must cache-bust top nav CSS');
 });
