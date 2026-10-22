@@ -43,7 +43,27 @@ nav.sli-platform-links{display:flex!important;flex:0 1 auto;align-items:center;j
 .sli-platform-sector-group h3{font:750 12px/1.4 system-ui,sans-serif!important;color:#f0d49e!important;margin:0 0 3px!important}
 .sli-platform-sector-group a{font:500 11px/1.45 system-ui,sans-serif!important;color:#d7e6ee!important;text-decoration:none!important;overflow-wrap:anywhere}
 .sli-platform-sector-group a:hover,.sli-platform-sector-group a:focus-visible,.sli-platform-sector-group a[aria-current=page]{color:#f5d79e!important;text-decoration:underline!important}
-.sli-platform-tools{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.sli-platform-tools{display:flex;align-items:center;gap:12px;flex:0 0 auto;min-width:0}
+/* Permanent, paired research entry points above the horizontally scrollable Explore Data menu. */
+nav.sli-platform-quicklinks{display:flex!important;align-items:center;flex-wrap:nowrap;gap:clamp(10px,1vw,18px);margin:0!important;padding:0!important;border:0!important;background:transparent!important;min-width:0}
+.sli-platform-quicklinks .sli-platform-link{font-weight:750!important;white-space:nowrap}
+.sli-platform-quicklinks .sli-platform-link[href="./sli-expert-connect.html"]{color:#f0d49e!important}
+.sli-platform-quicklinks .sli-platform-link[href="./sli-expert-connect.html"]:hover,
+.sli-platform-quicklinks .sli-platform-link[href="./sli-expert-connect.html"]:focus-visible{color:#fff0c6!important}
+@media(max-width:1090px){
+ .sli-platform-tools{margin-left:auto;max-width:100%}
+}
+@media(max-width:650px){
+ .sli-platform-tools{width:100%;justify-content:space-between;margin-left:0;gap:8px}
+ nav.sli-platform-quicklinks{gap:10px;flex:0 1 auto}
+ .sli-platform-quicklinks .sli-platform-link{font-size:11px!important;padding:7px 0!important;min-height:38px}
+ .sli-platform-language{flex-shrink:0}
+}
+@media(max-width:370px){
+ nav.sli-platform-quicklinks{gap:8px}
+ .sli-platform-quicklinks .sli-platform-link{font-size:10px!important}
+ .sli-platform-tools{gap:5px}
+}
 .sli-platform-language{display:flex;gap:2px;border:1px solid #3a5670;background:#132d44;padding:3px;border-radius:8px}
 .sli-platform-language button{font:650 11px/1.2 system-ui,sans-serif!important;color:#b8cad9!important;background:transparent!important;border:0!important;border-radius:5px!important;padding:8px 9px!important;margin:0!important;min-width:35px;min-height:32px;cursor:pointer}
 .sli-platform-language button.active,.sli-platform-language button[aria-pressed=true]{background:#ddbf85!important;color:#0e2436!important}
