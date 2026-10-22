@@ -15,6 +15,9 @@ test('Home has one stable breadcrumb, detailed sector links and live route chang
  const d=setup('index.html#home','<main class="main"><div class="top">Existing header</div><div id="content"></div></main>');
  const doc=d.window.document;
  assert.equal(doc.querySelectorAll('#sliUniversalNavigation').length,1);
+ assert.equal(doc.querySelectorAll('.sli-research-step').length,5,'Every page should expose one source-linked research journey');
+ assert.ok(doc.querySelector('.sli-research-step[href="./sli-sector-data-library.html"]'));
+
  assert.match(doc.querySelector('.sli-location strong').textContent,/Home/);
  assert.ok(doc.querySelector('.sli-universal-actions a[href="./sli-user-guide.html"]'));
  assert.ok(doc.querySelector('.sli-universal-actions a[href="./sli-glossary-methodology.html"]'));
