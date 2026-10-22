@@ -1,0 +1,16 @@
+import {readFileSync,existsSync,mkdirSync,writeFileSync} from 'node:fs';
+import {resolve,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const inventory=JSON.parse(readFileSync(resolve(root,'data/sli-user-dataset-recovery-inventory.json'),'utf8'));
+const sourceStatuses=new Set(['numeric_in_repository_now_visible','numeric_in_repository_already','full_user_normalized_upload_restored_to_repository']);
+const records=inventory.datasets.map(d=>{
+ const files=[d.public_dataset,d.main_dashboard?.split('#')[0],d.detail_dashboard?.split('#')[0]].filter(Boolean);
+ const missing=files.filter(p=>!existsSync(resolve(root,p)));
+ const needsReview=!sourceStatuses.has(d.status)||Boolean(d.caution)||Boolean(missing.length);
+ return {id:d.id,domain:d.domain,status:d.status,source_agency:d.source_agency,period:d.observation_period,dashboard:d.main_dashboard,detail:d.detail_dashboard,public_dataset:d.public_dataset||null,missing_files:missing,needs_review:needsReview};
+});
+const report={schema:'sli-data-visibility-ledger-v1',scope:'Only 13 inventoried source families, not all user uploads or all SLI data',source_reviewed_at:inventory.reviewed_at,total:records.length,source_status_counts:Object.fromEntries([...new Set(records.map(r=>r.status))].map(s=>[s,records.filter(r=>r.status===s).length])),broken_file_references:records.filter(r=>r.missing_files.length),records};
+const dest=resolve(root,'artifacts/sli-data-visibility-ledger.json');mkdirSync(dirname(dest),{recursive:true});writeFileSync(dest,JSON.stringify(report,null,2)+'\n');console.log('Audited source-family inventory:',report.total,'missing file groups:',report.broken_file_references.length,'output:',dest);
+for(const r of report.broken_file_references)console.error(r.id,r.missing_files.join(', '));
+if(report.broken_file_references.length)process.exitCode=1;
