@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T13:43:13.432221Z",
+  "updated_at_utc": "2026-10-22T14:34:17.328863Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_4b519e480288157b9d520f",
+      "title": "Penopang Kuat PGEO Tangkap Prospek Cerah EBT di Tengah Tekanan Pasar Saham - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPd3hLamQyRmxaZFRDQkxEMjA2Zk5NRFRaV1NPenFQdm5LM0FnS3VuTHE4Z2otU3pkS3ByaDBJMEdQb3NJUjhrQ2VXQXp3Wlh4M0dENWFLVDUtak92R2NSNEZNaENjQ0lpM1Rzam1XYWZJUnVFU0ZwUTZTcWM5Rm9wN1hBbFpkV0xQUTFhYV9tSUNtV25TZ1pReHAyMXRSQkJybkR0RmIwaFJsNE1QYzJza0gwYTltVnZ5c3phejl2eWZlSzZ3?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-22T13:46:59Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_71396f854c0f475b3526fb",
       "title": "Terimbas Badai Sentimen MSCI, Begini Prospek Saham ANTM Versi Analis - RCTI+",
@@ -180,6 +196,22 @@
         "AMMN"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_cb69f13f545ab6d6484ce5",
+      "title": "Jasa Marga (JSMR) Berencana Buyback Saham, Begini Prospeknya - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9aemJRTGhCSHRUeHFLUjlwYjZTdWpsX3pNeG5fVEJrUGVia2VBcGxNWkJkLWVZM2ZMcHk1SU5LakdnenpTZ3NIYTdxWTZGTzBHelNkc1lXYm1LZk1LNUFXZGdrSjUyUQ?oc=5",
+      "publisher": "TradingView",
+      "published_at_utc": "2026-10-22T10:52:16Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -889,6 +921,22 @@
         "INCO"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_009fd2925ed7f60e4d9216",
+      "title": "Trinugraha Thohir Borong 470.000 Saham ADRO, Investasi Tembus Rp1 Miliar - YB Sekuritas",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNVDdWQzYtV1FHRVBjOU1LMVZMZTNZQkY3RWhUVGFWakNKbXRoaG81SWdFcDVXcVRpVDFDMU9zT2QyenA4dzZ6VGlwX1hBSXJlaHc1UTBfNHcwaV9US0UwZk1qbmNXeGNBMW5ieTBzWVVNY3VTVGxudFp2YmtjMEtvSXRUdmRHT1RBRmtPRE1NNHFnT2U1NjNXVVFjcWszQ1hhUF9NR1NSdw?oc=5",
+      "publisher": "YB Sekuritas",
+      "published_at_utc": "2026-10-22T01:57:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
