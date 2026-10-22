@@ -176,10 +176,15 @@ function renderPlatformMast(){
  primary.append(explorer);
  primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
  primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'||path==='sli-issuer.html'));
- primary.append(mastLink('./sli-research-ai.html','DERGUBA AI',false));
- primary.append(mastLink('./sli-expert-connect.html',text('Expert Connect','Carikan Pakar'),false));
- 
+ // Keep the two client-facing research services visible together above the scrollable sector menu.
  const tools=node('div','sli-platform-tools');
+ const quick=node('nav','sli-platform-quicklinks');
+ quick.setAttribute('aria-label','Research AI and expert services');
+ quick.append(
+  mastLink('./sli-research-ai.html','DERGUBA AI',path==='sli-research-ai.html'),
+  mastLink('./sli-expert-connect.html',text('Expert Connect','Carikan Pakar'),path==='sli-expert-connect.html')
+ );
+ tools.append(quick);
  // All specialist dashboards share the same persisted EN/ID preference as the homepage.
  // Never show a decorative language button that does not apply the language.
  {
