@@ -50,3 +50,10 @@
 .sli-idx-sectoral-finance-links a,.sli-idx-sectoral-directory{font-size:11px;color:#f4d5a0;text-decoration:underline;text-underline-offset:3px}
 .sli-idx-sectoral-directory{display:inline-flex;align-self:center}
 .sli-idx-sectoral-coverage a:focus-visible{outline:2px solid #ffe1b1;outline-offset:3px}
+
+/* Indexed issuer directory: visible by default, paginated for mobile performance. */
+.sli-idx-sectoral-browse{min-width:0;margin-top:12px}
+.sli-idx-sectoral-browse h5{font-size:13px;margin:0 0 7px;color:#f2dfbd}
+.sli-idx-sectoral-load-more{display:block;width:100%;min-height:44px;margin-top:10px;padding:10px 12px;border:1px solid #678ba1;border-radius:8px;background:#163d56;color:#f5dfb4;font:600 12px system-ui,sans-serif;cursor:pointer}
+.sli-idx-sectoral-load-more[hidden]{display:none}
+.sli-idx-sectoral-load-more:focus-visible{outline:2px solid #ffe1b1;outline-offset:2px}
