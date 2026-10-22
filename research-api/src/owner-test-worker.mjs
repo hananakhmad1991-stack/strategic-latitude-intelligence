@@ -11,6 +11,7 @@ import {collectOptionalLiveEvidence} from "./external-research.mjs";
 import {isCCSQuestion,ccsResearchEvidence} from "./ccs-corpus.mjs";
 import {fetchDashboardEvidence} from "./dashboard-corpus.mjs";
 import {openAITransport} from "./model-transport.mjs";
+import {discoverScholarlyExperts,lookupDoiMetadata} from "./expert-scholar-discovery.mjs";
 import {buildResearchCharts} from "./chart-data.mjs";
 import {auditReport} from "./report-audit.mjs";
 import {auditResearchClaims} from "./claim-evidence-audit.mjs";
@@ -128,11 +129,29 @@ export default{
   if(!origin||origin!==incoming)return send(403,{error:"origin_denied"});
   if(req.method==="OPTIONS")return new Response(null,{status:204,headers:{...HEADERS,"access-control-allow-origin":origin,"access-control-allow-methods":"POST, OPTIONS","access-control-allow-headers":"content-type, x-sli-owner-test-token","access-control-max-age":"300"}});
   const path=new URL(req.url).pathname;
-  if(path!=="/v1/owner-research"||req.method!=="POST")return send(404,{error:"not_found"},origin);
+  if(!["/v1/owner-research","/v1/owner-expert-discovery"].includes(path)||req.method!=="POST")return send(404,{error:"not_found"},origin);
   if(env.STAGING_ONLY!=="true"||!env.OPENAI_API_KEY||!env.RESEARCH_MODEL||!env.OWNER_TEST_TOKEN||!env.AI_LIMITER)return send(503,{error:"staging_unavailable"},origin);
   if(!(await equalToken(req.headers.get("x-sli-owner-test-token"),env.OWNER_TEST_TOKEN)))return send(401,{error:"owner_authentication_required"},origin);
   if(!/^application\/json(?:;|$)/i.test(req.headers.get("content-type")||""))return send(415,{error:"json_required"},origin);
   let body;try{body=JSON.parse(await readBody(req))}catch{return send(400,{error:"malformed_or_large_request"},origin)}
+  if(path==="/v1/owner-expert-discovery"){
+   if(env.SLI_EXPERT_DISCOVERY_ENABLED!=="true")return send(503,{error:"expert_discovery_disabled"},origin);
+   if(body?.consent!==true)return send(422,{error:"external_scholarly_search_consent_required"},origin);
+   if(body?.attachments||body?.user_analysis||body?.history||body?.client_brief)return send(422,{error:"private_inputs_not_allowed"},origin);
+   let rate;try{rate=await env.AI_LIMITER.limit({key:"expert-"+(await sha256(env.OWNER_TEST_TOKEN)).slice(0,16).join("-")})}catch{return send(503,{error:"rate_limiter_not_ready"},origin)}
+   if(!rate?.success)return send(429,{error:"expert_discovery_rate_limit"},origin);
+   if(body?.type==="topic"){
+    const topic=typeof body.topic==="string"?body.topic.trim():"";
+    if(topic.length<4||topic.length>120||/password|secret|confidential|rahasia|@|\\d{8,}/i.test(topic))return send(422,{error:"invalid_public_topic"},origin);
+    const result=await discoverScholarlyExperts(topic,{enabled:true,openalexKey:env.OPENALEX_API_KEY||""});
+    return send(200,result,origin);
+   }
+   if(body?.type==="doi"){
+    const result=await lookupDoiMetadata(body.doi,{enabled:true});
+    return send(200,result,origin);
+   }
+   return send(422,{error:"invalid_discovery_type"},origin);
+  }
   const payload=validateAssistantPayload(body);
   if(!payload)return send(422,{error:"invalid_research_instruction"},origin);
   let ownerFiles;
