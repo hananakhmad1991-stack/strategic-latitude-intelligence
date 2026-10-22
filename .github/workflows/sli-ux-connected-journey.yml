@@ -4,6 +4,13 @@ on:
   pull_request:
     paths:
       - 'index.html'
+      - 'sli-expert-connect.html'
+      - 'sli-research-ai.html'
+      - 'sli-membership.html'
+      - 'js/sli-expert-connect.js'
+      - 'css/sli-expert-connect.css'
+      - 'tests/qa-sli-expert-connect.mjs'
+      - 'tests/qa-sli-expert-connect-browser.mjs'
       - 'js/sli-navigation.js'
       - 'css/sli-navigation.css'
       - 'css/sli-home-portal.css'
@@ -22,7 +29,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1 jsdom@26.1.0
       - name: Chrome
         run: echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
       - name: Serve site
@@ -30,4 +37,12 @@ jobs:
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sli-journey.log 2>&1 &
           for i in {1..20}; do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && exit 0; sleep 1; done
           exit 1
-      - run: node tests/qa-sli-connected-journey-browser.mjs
+      - name: Expert Desk logic and navigation tests
+        run: |
+          node --check js/sli-expert-connect.js
+          node --check js/sli-navigation.js
+          node --test tests/qa-sli-expert-connect.mjs tests/qa-sli-navigation-ui.mjs
+      - name: Existing connected journey
+        run: node tests/qa-sli-connected-journey-browser.mjs
+      - name: Expert Desk desktop and mobile browser QA
+        run: node tests/qa-sli-expert-connect-browser.mjs
