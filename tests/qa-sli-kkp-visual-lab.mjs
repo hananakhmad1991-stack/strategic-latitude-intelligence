@@ -1,7 +1,7 @@
 import {test} from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {validateMarineVisualInputs,indexSeries,districtFlows,layoutDistrictSankey,yearMatrix} from "../js/sli-kkp-visual-lab.mjs";
+import {validateMarineVisualInputs,indexSeries,districtFlows,layoutDistrictSankey,yearMatrix,historicalHeatCells} from "../js/sli-kkp-visual-lab.mjs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const prov=JSON.parse(read("data/sli-kkp-hatchery-province-cards-2024.json"));
 const detail=JSON.parse(read("data/sli-kkp-portal-screened-2024.json"));
@@ -52,4 +52,20 @@ test("KKP visual lab page provides browser controls, source disclosures and resp
  assert.match(js,/sliLocalOnly:true/);
  assert.match(js,/SLIProvinceMap.render/);
  assert.match(js,/source_rows_displayed/);
+});
+
+test("Six-year province heatmap preserves true missing cells and only computes YoY with valid adjacent denominators",()=>{
+ const weed=hist.series.find(s=>s.id==="seaweed");
+ const vals=historicalHeatCells(weed,"value");
+ const yoys=historicalHeatCells(weed,"yoy");
+ assert.equal(vals.find(x=>x.province==="Aceh").cells.every(x=>x.value===null),true);
+ assert.equal(yoys.find(x=>x.province==="Aceh").cells.every(x=>x.value===null),true);
+ assert.equal(yoys.every(r=>r.cells[0].value===null),true);
+ assert.equal(vals.find(x=>x.province==="Sulawesi Selatan").cells[0].value,3405848.35);
+ assert.equal(yoys.find(x=>x.province==="Sulawesi Selatan").cells[1].value!==null,true);
+ assert.equal(yoys.find(x=>x.province==="Bengkulu").cells[1].value,null);
+ assert.throws(()=>historicalHeatCells(weed,"unsupported"));
+ const html=read("marine-fisheries-intelligence.html");
+ for(const id of ["mfVizHeatSeries","mfVizHeatMode","mfVizHeatSearch","mfVizHeatGrid","mfVizHeatCSV","mfVizHeatStatus","mfVizHeatSource"])
+ assert.equal(html.split('id="'+id+'"').length-1,1,id);
 });
