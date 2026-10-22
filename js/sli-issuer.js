@@ -79,6 +79,19 @@ function historicalChart(host,ticker){
  host.append(section);
 }
 
+function showFinancialEvidence(parent,records){
+ const section=E("section","sli-issuer-financial-evidence");
+ section.append(E("h2",null,T("Source-linked financial statements","Laporan keuangan bersumber")));
+ const r=records.find(x=>x.financial_source_url&&x.financial_period&&x.financial_currency&&["revenue","net_income","total_assets"].some(k=>typeof x[k]==="number"&&Number.isFinite(x[k])));
+ if(!r){section.append(E("p","sli-issuer-missing",T("No reconciled financial figures available. N/A is not zero.","Angka keuangan belum direkonsiliasi. N/A bukan nol.")));parent.append(section);return;}
+ section.append(E("p",T("Period","Periode")+": "+r.financial_period+" · "+r.financial_currency));
+ const facts=E("dl","sli-issuer-facts");
+ for(const [k,en,ind] of [["revenue","Revenue","Pendapatan"],["net_income","Net income","Laba bersih"],["total_assets","Total assets","Total aset"]]){
+ const v=r[k];typed(T(en,ind),typeof v==="number"&&Number.isFinite(v)?v.toLocaleString(id()?"id-ID":"en-US"):"N/A",facts);}
+ section.append(facts);sourceLink(section,r.financial_source_url,T("Financial source","Sumber laporan"));
+ section.append(E("p","sli-issuer-missing",T("Source-registry units and period; not a live quote. Verify consolidation basis.","Mengikuti satuan dan periode registri; bukan kuotasi pasar. Basis konsolidasi perlu diperiksa.")));
+ parent.append(section);
+}
 function render(data,ticker,groups){
  const root=$("sliIssuerDossier");root.replaceChildren();
  const name=data.name||ticker, related=groups.records.filter(n=>n.exchange==="IDX"&&n.ticker===ticker);
@@ -105,6 +118,7 @@ function render(data,ticker,groups){
  sources.append(link("./sli-entities.html?ticker="+encodeURIComponent(ticker)+"#"+encodeURIComponent("company:idx:"+ticker),T("Cross-check full SLI entities register ↗","Periksa registri lengkap Entitas SLI ↗")));
  sources.append(link("./sli-research-ai.html?prompt="+encodeURIComponent(T("Analyze IDX:"+ticker+" ("+name+") against official company disclosures, audited balance sheet, SLI corporate ownership sources and strategic sector risks. Do not invent prices or market caps.","Analisis IDX:"+ticker+" ("+name+") dari keterbukaan emiten BEI, laporan keuangan diaudit, kepemilikan korporasi SLI, dan risiko sektoral. Jangan mengarang harga atau kapitalisasi.")),T("Research AI ↗","Research AI ↗")));
  left.append(sources);
+ showFinancialEvidence(left,related);
  const relate=E("section","sli-issuer-related");relate.append(E("h2",null,T("Group and ownership links","Hubungan grup dan kepemilikan")));
  if(!related.length){relate.append(E("p",null,T("A verified corporate group relationship has not been matched for this issuer. Do not infer ownership.","Hubungan grup yang terverifikasi belum ditemukan dalam registri. Jangan asumsikan kepemilikan.")));}
  else {
