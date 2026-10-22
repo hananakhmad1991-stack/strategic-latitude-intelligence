@@ -8,7 +8,7 @@ const style=read("css/sli-research-brand.css");
 test("SLI Research AI shares the minimal homepage monogram, navigation and Navy–Gold colors",()=>{
  assert.match(html,/<span class="sli-ra-brand-monogram" aria-hidden="true">SLI<\/span>/);
  assert.match(html,/<strong>STRATEGIC LATITUDE<\/strong><small>INTELLIGENCE<\/small>/);
- for(const target of ["./index.html#home","./index.html#sliPortalSectors","./provincial-intelligence.html","./index.html#overview"])
+ for(const target of ["./index.html#home","./index.html#sliPortalSectors","./provincial-intelligence.html","./sli-expert-connect.html"])
   assert.ok(html.includes('href="'+target+'"'),"Missing navigation "+target);
  assert.match(html,/<a href="\.\/sli-research-ai\.html" aria-current="page" title="DERGUBA AI · SLI Research Intelligence">DERGUBA AI<\/a>/);
  assert.match(html,/css\/sli-research-brand\.css/);
