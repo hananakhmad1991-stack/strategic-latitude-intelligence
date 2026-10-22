@@ -2,6 +2,7 @@
  * Cloudflare Access + per-owner allowlist + private D1, not GitHub Pages storage. */
 import {HttpError,requireIdentity} from "../../sli-user-intelligence/src/auth.mjs";
 import {handleExpertRoute} from "./experts.mjs";
+import {ownerConsoleResponse} from "./owner-console.mjs";
 
 const SERVICES=new Set(["expert_sourcing","consultation","custom_research","advisory"]);
 const SECTORS=new Set(["energy","digital","investment","food","policy","geopolitics","other"]);
@@ -97,9 +98,10 @@ export async function handleRequest(request,env,identify=()=>{throw new HttpErro
   guardEnabled(env);cors=corsFor(request,env);
   const url=new URL(request.url);
   if(request.method==="OPTIONS")return new Response(null,{status:204,headers:{...cors,"Access-Control-Allow-Methods":"GET,POST,DELETE,OPTIONS","Access-Control-Allow-Headers":"Content-Type","Cache-Control":"no-store"}});
-  if(!url.pathname.startsWith("/api/"))throw new HttpError(404,"Not found");
+  if(url.pathname!=="/owner"&&!url.pathname.startsWith("/api/"))throw new HttpError(404,"Not found");
   const person=await identify(request,env);ownerIdentity(person,env);
   const db=requireDB(env);
+  if(url.pathname==="/owner"&&request.method==="GET")return ownerConsoleResponse();
   const expertResult=await handleExpertRoute(request,{db,url,json,bodyJson,ownerId:person.id,cors});
   if(expertResult)return expertResult;
   if(url.pathname==="/api/health"&&request.method==="GET")
