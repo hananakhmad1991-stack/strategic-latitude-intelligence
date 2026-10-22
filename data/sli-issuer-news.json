@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T07:43:31.777472Z",
+  "updated_at_utc": "2026-10-22T08:36:16.004503Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,38 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_122bff3606e9190d3c9b72",
+      "title": "Telkom (TLKM) Berencana Ubah Fokus Belanja Modal pada 2027 - TOPIK.ID",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPTzlmb3dRWlZudnVsYXIxWWtUenlOTGZGUDlKa1BaMXFCbm5kZUFzay1qWFFQSGc4U2ZrYTdYQ2lwaHBrOFZRLWFJdFFOSUZ2cVN1SHlPaG9RZmFsQ0pVOWJFUFczWEh5dHBGZTAxSUpqb1F2TnZINTVHYWJ3elJfdDhKNA?oc=5",
+      "publisher": "TOPIK.ID",
+      "published_at_utc": "2026-10-22T08:16:40Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_346a9f774ccfd1d8154a3a",
+      "title": "Emiten Data Center (DCII) Kemas Pendapatan Rp2,5T, Laba Naik 11%! - Lotus Andalan Sekuritas",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQWEUtQXpuTjRabjM1VGNfYXVGOTFkMnFESXV2Ql8tVXVpelM0eTJjc2w0d0sxWTZUZmFSYm5wY05CWHJYU1J3NHFIb0FxSzJlREdqZHVrZzdCVHVpenJGbGRoU2pRMGtzMkM4WklKdU45LUhzVThYQ2ZYeGpKVmdyRkU1LVZ4RnNIcm5CNTJ2Tl80RzRVeEF3Y3ZoeVhhMUlHbXZ4UFJR?oc=5",
+      "publisher": "Lotus Andalan Sekuritas",
+      "published_at_utc": "2026-10-22T07:56:48Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "DCII"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_8a2ab7dfc51c4e04ee000f",
       "title": "Mengintip Posisi Alibaba Terkini di Saham GOTO Kala IHSG Bergejolak - Bisnis Indonesia Premium",
@@ -338,6 +370,7 @@
       "published_at_utc": "2026-10-22T03:59:41Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "INTP",
         "PTBA"
       ],
       "sector": "coal",
@@ -5956,22 +5989,6 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "GOTO"
-      ],
-      "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_e53442434089dbbc3e9acd",
-      "title": "Katalis Saham Indosat (ISAT) Jelang 2027 - Bisnis Indonesia Premium",
-      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQMXhTM3h1THNyLVg0Rl9ISE9fQ3FiWGk5Q1p3T1NoXzNnY29DVWx3c0JuZkNzQWFjUEM3WFdyZXhsTkpKdnMwZlVXVmYzbHVYTkNuSXB5NFByRWpkUFRJc3ltbkd1YzdTUlBjT2pXOWZPOEpaSkREUGlmeFlyQkktMnVVZ00wYmhLWHlGOGluYmhkaHpNa3c?oc=5",
-      "publisher": "Bisnis Indonesia Premium",
-      "published_at_utc": "2026-10-14T08:19:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ISAT"
       ],
       "sector": "technology",
       "source": "public_google_news_rss",
