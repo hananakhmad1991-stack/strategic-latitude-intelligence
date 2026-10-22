@@ -1,5 +1,15 @@
 /* Curated Indonesian translations for SLI UI text. Original source titles remain unchanged. */
 window.SLI_TRANSLATIONS_ID = new Map([
+ ["Need more than a dashboard answer?","Butuh lebih dari jawaban dashboard?"],
+ ["Butuh lebih dari jawaban dashboard?","Butuh lebih dari jawaban dashboard?"],
+ ["SLI will look for suitable experts and scope interviews or custom research based on your expectations.","SLI akan mencarikan pakar dan menyusun lingkup wawancara atau riset sesuai ekspektasi Anda."],
+ ["SLI akan mencarikan pakar dan menyusun lingkup wawancara atau riset sesuai ekspektasi Anda.","SLI akan mencarikan pakar dan menyusun lingkup wawancara atau riset sesuai ekspektasi Anda."],
+ ["Request expertise ↗","Ajukan kebutuhan pakar ↗"],
+ ["Ajukan kebutuhan pakar ↗","Ajukan kebutuhan pakar ↗"],
+ ["✦ DERGUBA Research AI","✦ DERGUBA Asisten Riset"],
+ ["✦ DERGUBA Asisten Riset","✦ DERGUBA Asisten Riset"],
+ ["◎ Expert Connect","◎ Layanan Pakar"],
+ ["◎ Layanan Pakar","◎ Layanan Pakar"],
  [
   "Overview",
   "Ringkasan"
