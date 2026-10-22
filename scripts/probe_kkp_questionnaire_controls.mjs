@@ -8,7 +8,7 @@ const URL="https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan";
 const values={category:"Umum",purpose:"Penelitian",format:"CSV",type:"Produksi Hasil Kelautan dan Perikanan"};
 const out="artifacts/sli-kkp-questionnaire-public-control-probe.json";
 const report={schema:"sli-kkp-questionnaire-readonly-controls-v1",checked_at_utc:new Date().toISOString(),form_submitted:false,contact_filled:false,selected_fields:[],status:"unavailable"};
-let browser,stage="open_page";
+let browser,modal,stage="open_page";
 try{
  browser=await chromium.launch({executablePath:process.env.CHROME_BIN||"/usr/bin/google-chrome",headless:true,
   args:["--no-sandbox","--disable-dev-shm-usage","--disable-gpu"]});
@@ -17,7 +17,7 @@ try{
  await page.goto(URL,{waitUntil:"domcontentloaded",timeout:40000});
  stage="open_questionnaire";
  await page.getByRole("button",{name:"Unduh Data"}).click({timeout:20000});
- const modal=page.locator('[role="dialog"],.modal.show').filter({visible:true}).first();
+ modal=page.locator('[role="dialog"],.modal.show').filter({visible:true}).first();
  await modal.waitFor({state:"visible",timeout:14000});
  const inputs=await modal.locator('input[role="combobox"]').count();
  if(inputs!==4)throw Error("unexpected_combobox_count");
@@ -36,6 +36,14 @@ try{
 }catch{
  report.status="control_selection_failed";
  report.failure_stage=stage;
+ if(stage==="select_rating_control"&&modal){
+  report.radio_controls=await modal.locator('input[type="radio"]').evaluateAll(nodes=>nodes.slice(0,9).map(el=>({
+   name:el.getAttribute("name"),value:el.value,html_id:el.id,
+   label:(el.closest("label")?.textContent||el.getAttribute("aria-label")||"").trim().slice(0,55),
+   checked:el.checked,disabled:el.disabled,html:el.outerHTML.slice(0,350)
+  }))).catch(()=>[]);
+  report.role_radio_count=await modal.getByRole("radio").count().catch(()=>null);
+ }
 }finally{
  await browser?.close().catch(()=>{});
  fs.mkdirSync("artifacts",{recursive:true});
