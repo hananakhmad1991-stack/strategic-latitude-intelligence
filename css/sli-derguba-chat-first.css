@@ -111,3 +111,21 @@ body.sli-research-brand .sli-ra-more-resources .sli-ra-derguba-brand-story{margi
 @media(prefers-reduced-motion:reduce){
  body.sli-research-brand .sli-ra-task-links a{scroll-behavior:auto}
 }
+
+/* Preserve complex sector-specific research in a deliberately collapsed, accessible specialist panel. */
+body.sli-research-brand .sli-ra-specialist-lens{
+ width:100%;max-width:960px;margin:6px auto 20px;
+ border:1px solid #38566e;border-radius:10px;background:#10283b;padding:10px 14px
+}
+body.sli-research-brand .sli-ra-specialist-lens>summary{
+ cursor:pointer;color:#e7cb99;font:700 12px/1.6 system-ui,sans-serif
+}
+body.sli-research-brand .sli-ra-specialist-lens #raFoodImpactMount{
+ margin-top:12px;min-width:0
+}
+body.sli-research-brand .sli-ra-specialist-lens .sli-food-impact{
+ max-width:100%;margin:0;min-width:0
+}
+@media(max-width:650px){
+ body.sli-research-brand .sli-ra-specialist-lens{padding:10px 12px;margin-bottom:15px}
+}
