@@ -151,3 +151,59 @@ test("BPS gaps fail closed without inventing unavailable sampling precision",()=
  assert.equal(classifyFocusedBpsPrecisionGap("Berapa RSE BPNT Aceh menurut BPS?",welfare),null);
  assert.equal(classifyFocusedBpsPrecisionGap("Dampak subsidi listrik secara umum di Jawa Barat",welfare),null);
 });
+
+
+const originalPdfSpotcheck=JSON.parse(readFileSync(new URL("../data/sli-bps-welfare-2026-primary-pdf-spotcheck.json",import.meta.url),"utf8"));
+
+test("source PDF spotchecks pin exact health, electricity and e-money statistics and pages",()=>{
+ assert.equal(originalPdfSpotcheck.source_pdf_sha256,welfare.source.pdf_source_sha256);
+ assert.equal(originalPdfSpotcheck.scope.uninsured_se_rows_rechecked,39);
+ assert.equal(originalPdfSpotcheck.spotchecks.length,3);
+ for(const cell of originalPdfSpotcheck.spotchecks){
+  const idx=welfare.provinces.findIndex(p=>p.name===cell.province);
+  const m=welfare.provincial_metrics.find(x=>x.id===cell.metric);
+  const sm=welfare.sampling_error_2026.metrics[cell.metric];
+  assert.ok(idx>=0&&m&&sm);
+  assert.deepEqual([welfare.provinces[idx].values[m.index],sm.standard_error_pp[idx],
+    sm.relative_standard_error_pct[idx],sm.confidence_interval_low_pct[idx],
+    sm.confidence_interval_high_pct[idx]],
+    [cell.estimate,cell.se,cell.rse,cell.ci_low,cell.ci_high],cell.province+" "+cell.metric);
+  assert.deepEqual([m.table,m.pdf_page,sm.sampling_table,sm.pdf_page],
+   [cell.main_table,cell.main_pdf_page,cell.sampling_table,cell.sampling_pdf_page]);
+  const question="Menurut BPS "+cell.province+", berapa RSE, SE dan interval kepercayaan 95% untuk "+
+    (cell.metric==="uninsured"?"tanpa jaminan kesehatan":
+     cell.metric==="no_electricity_lighting"?"tanpa listrik sebagai penerangan utama":"uang elektronik")+"?";
+  const selected=selectFocusedBpsWelfare(question,welfare);
+  assert.ok(selected,cell.province+" must be selectable with PDF-checked evidence");
+  assert.equal(selected.measure.se,cell.se);
+ }
+});
+
+test("all available curated SE and RSE figures are algebraically consistent; do not confuse a neighboring PDF table column",()=>{
+ let count=0;
+ for(const [metricId,sampling] of Object.entries(welfare.sampling_error_2026.metrics)){
+  const metric=welfare.provincial_metrics.find(x=>x.id===metricId);
+  assert.ok(metric,metricId);
+  for(let i=0;i<welfare.provinces.length;i++){
+   const estimate=welfare.provinces[i].values[metric.index];
+   const se=sampling.standard_error_pp?.[i];
+   const rse=sampling.relative_standard_error_pct?.[i];
+   if(![estimate,se,rse].every(Number.isFinite)||estimate===0)continue;
+   // Both SE and RSE are printed to two decimals; source estimate is also
+   // rounded. 0.025 percentage points accounts for published rounding.
+   const expected=estimate*rse/100;
+   assert.ok(Math.abs(se-expected)<=0.025,
+    metricId+" "+welfare.provinces[i].name+" SE "+se+" does not match estimate "+estimate+" and RSE "+rse);
+   count++;
+  }
+ }
+ assert.ok(count>=200,"Must exercise hundreds of available statistical cells");
+});
+
+test("BPS rights boundary is explicit and never infers bulk redistribution clearance",()=>{
+ const review=originalPdfSpotcheck.rights_review;
+ assert.equal(review.written_clearance_obtained,false);
+ assert.equal(review.commercial_bulk_replication_approved,false);
+ assert.equal(originalPdfSpotcheck.scope.all_tables_visually_verified,false);
+ assert.ok(review.pst_quotation_policy_url.startsWith("https://ppid.bps.go.id/"));
+});
