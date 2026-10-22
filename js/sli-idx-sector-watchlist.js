@@ -13,7 +13,11 @@ const SECTORS=[
  ["technology","Digital & technology","Digital & teknologi"],
  ["infrastructure","Infrastructure","Infrastruktur"],
  ["transport","Logistics & transport","Logistik & transportasi"],
- ["manufacturing","Strategic manufacturing","Manufaktur strategis"]
+ ["manufacturing","Strategic manufacturing","Manufaktur strategis"],
+ ["finance","Banking & financial services","Perbankan & jasa keuangan"],
+ ["property","Property & real estate","Properti & real estat"],
+ ["healthcare","Healthcare & pharmaceuticals","Kesehatan & farmasi"],
+ ["retail","Retail & consumer distribution","Ritel & distribusi konsumen"]
 ];
 const E=(tag,cls,value)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(value!==undefined)n.textContent=String(value);return n};
 const lang=()=>document.documentElement?.lang?.toLowerCase().startsWith("id")||window.SLIi18n?.language==="id";
@@ -40,8 +44,8 @@ function renderUI(){
  const header=E("div","sli-idx-sectoral-header");
  header.append(E("span","sli-idx-sectoral-kicker",T("SLI · INDONESIAN STRATEGIC SECTORS","SLI · SEKTOR STRATEGIS INDONESIA")),
  E("h3",null,T("IDX Sector Watchlist & Company Research","Watchlist Sektoral IDX & Riset Perusahaan")),
- E("p",null,T("Unlike the full-market heatmap above, this section shows only SLI's eight strategic IDX sectors. Provider quotes and the SLI company register are kept separate.",
- "Berbeda dari heatmap pasar umum di atas, bagian ini hanya menampilkan delapan sektor strategis IDX pilihan SLI. Harga penyedia dan registri perusahaan SLI tetap dipisahkan.")));
+ E("p",null,T("Unlike the full-market heatmap above, this section shows only SLI's twelve curated strategic IDX sectors. Provider quotes and the SLI company register are kept separate.",
+ "Berbeda dari heatmap pasar umum di atas, bagian ini hanya menampilkan dua belas sektor strategis IDX pilihan SLI. Harga penyedia dan registri perusahaan SLI tetap dipisahkan.")));
  root.append(header);
  const tabs=E("div","sli-idx-sectoral-tabs");tabs.setAttribute("role","group");tabs.setAttribute("aria-label",T("Filter selected IDX strategic sector","Pilih sektor saham strategis IDX"));
  for(const [key,en,id]of SECTORS){
