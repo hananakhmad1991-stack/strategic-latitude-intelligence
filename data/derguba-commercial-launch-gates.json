@@ -1,0 +1,109 @@
+{
+  "schema": "sli-derguba-commercial-launch-gates-v1",
+  "as_of": "2026-10-22",
+  "scope": "DERGUBA Pro/Enterprise customer production; separate from successful Owner-only staging pilot",
+  "public_release_approved": false,
+  "sign_off": "NOT_APPROVED",
+  "owner_staging_status": "core_live_acceptance_pass_8_of_8",
+  "gates": [
+    {
+      "id": "official_data_rights",
+      "title": "Dataset-by-dataset rights, attribution, reuse and data-provenance registry",
+      "status": "PENDING",
+      "evidence": [],
+      "critical": true,
+      "preliminary": [
+        "BPS website terms explicitly allow commercial content use with prescribed attribution",
+        "BPS SSO/PST access has separate terms; never treat as interchangeable",
+        "Other publishers and PDFs need source-specific review"
+      ]
+    },
+    {
+      "id": "pse_legal",
+      "title": "PSE registration, site identity, notices and legal operations",
+      "status": "PENDING",
+      "evidence": [],
+      "critical": true,
+      "preliminary": [
+        "NIB owner states already exists; TDPSE/OSS registration, KBLI match and actual domain remain unverified"
+      ]
+    },
+    {
+      "id": "customer_auth_privacy",
+      "title": "Customer authentication, per-tenant isolation and PDP compliance",
+      "status": "PENDING",
+      "evidence": [],
+      "critical": true,
+      "preliminary": [
+        "Pro/Enterprise login remains disabled; secure password/SSO, access withdrawal, deletion, retention, consent and privacy notice untested"
+      ]
+    },
+    {
+      "id": "service_security_resilience",
+      "title": "Production controls, abuse prevention, rollback, provider spend and reliability",
+      "status": "PENDING",
+      "evidence": [],
+      "critical": true,
+      "preliminary": [
+        "Owner 401/403 does not prove tenant isolation, DDoS safeguards, injection resistance, backups or billing spend limits"
+      ]
+    },
+    {
+      "id": "payment_billing",
+      "title": "Licensed PJP/PSP integration, reconciliation, refunds and payment entitlements",
+      "status": "PENDING",
+      "evidence": [],
+      "critical": true,
+      "preliminary": [
+        "No sandbox-to-production merchant billing gateway is yet evidenced. Use BI-licensed payment partner; no self-PJP assumption"
+      ]
+    },
+    {
+      "id": "editorial_accuracy_live_reports",
+      "title": "Actual live answers and source-verified exported reports",
+      "status": "PENDING",
+      "evidence": [],
+      "critical": true,
+      "preliminary": [
+        "Core 8/8 live Owner acceptance passed, but actual answer sentence-by-sentence checking is incomplete"
+      ]
+    },
+    {
+      "id": "owner_release_authorization",
+      "title": "Explicit owner release sign-off after documented evidence",
+      "status": "PENDING",
+      "evidence": [],
+      "critical": true,
+      "preliminary": [
+        "Only owner can authorize production and enable paid API/login"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "issuer": "BPS",
+      "subject": "Website terms incl. commercial reuse and attribution",
+      "url": "https://www.bps.go.id/id/term-of-use"
+    },
+    {
+      "issuer": "BPS SSO PST",
+      "subject": "Separate terms for authenticated client apps and paid SSO access",
+      "url": "https://sso-pst.bps.go.id/terms-of-use"
+    },
+    {
+      "issuer": "Komdigi",
+      "subject": "Official PSE private registration criteria",
+      "url": "https://pse.komdigi.go.id/panduan/kriteria-pendaftaran-pse-lingkup-privat"
+    },
+    {
+      "issuer": "Komdigi",
+      "subject": "PSE FAQ OSS flow",
+      "url": "https://pse.komdigi.go.id/pertanyaan-umum"
+    },
+    {
+      "issuer": "Bank Indonesia",
+      "subject": "Payment Service Providers and licensure",
+      "url": "https://www.bi.go.id/id/publikasi/peraturan/Pages/PBI_230621.aspx"
+    }
+  ]
+}
