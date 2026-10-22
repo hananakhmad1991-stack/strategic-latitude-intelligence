@@ -8,6 +8,8 @@ on:
       - 'css/sli-navigation.css'
       - 'css/sli-home-portal.css'
       - 'tests/qa-sli-connected-journey-browser.mjs'
+      - 'js/sli-home-panel-disclosure.js'
+      - 'css/sli-home-panel-disclosure.css'
       - '.github/workflows/sli-ux-connected-journey.yml'
 permissions:
   contents: read
