@@ -110,20 +110,28 @@ function renderUI(){
  filter.setAttribute("aria-label",T("Search issuers in this sector","Cari emiten di sektor ini"));
  filter.value=issuerQuery;
  searchWrap.append(filter);group.append(searchWrap);
- const remaining=E("details","sli-idx-sectoral-more");
- const browseSummary=E("summary",null,T("Show all "+selected.length+" sector issuer candidates","Tampilkan semua "+selected.length+" calon emiten sektor ini"));remaining.append(browseSummary);
+ const browse=E("section","sli-idx-sectoral-browse");
+ const browseTitle=E("h5",null,T("All indexed sector issuers","Seluruh emiten sektor yang terindeks"));
+ const resultCount=E("p","sli-idx-sectoral-note");
  const rest=E("div","sli-idx-sectoral-rest");
+ const PAGE_SIZE=60;
+ let shown=PAGE_SIZE;
+ const more=E("button","sli-idx-sectoral-load-more",T("Load more issuers","Muat lebih banyak emiten"));
+ more.type="button";
  const drawMatches=()=>{
   rest.replaceChildren();
   const q=issuerQuery.toLocaleLowerCase("id").trim();
   const matches=selected.filter(x=>!q||(x.ticker+" "+x.name).toLocaleLowerCase("id").includes(q));
-  for(const x of matches){const a=link(tickerUrl(x.ticker),x.ticker+" · "+x.name);rest.append(a)}
-  browseSummary.textContent=T("Browse "+matches.length+"/"+selected.length+" sector candidates","Jelajahi "+matches.length+"/"+selected.length+" kandidat sektor");
+  for(const x of matches.slice(0,shown)){const a=link(tickerUrl(x.ticker),x.ticker+" · "+x.name);rest.append(a)}
+  resultCount.textContent=T("Showing "+Math.min(shown,matches.length)+" of "+matches.length+" indexed sector issuers","Menampilkan "+Math.min(shown,matches.length)+" dari "+matches.length+" emiten sektor terindeks");
+  more.hidden=shown>=matches.length;
   if(!matches.length)rest.append(E("p","sli-idx-sectoral-note",T("No ticker matches the filter.","Tidak ada kode yang cocok.")));
  };
- filter.addEventListener("input",()=>{issuerQuery=filter.value;remaining.open=true;drawMatches()});
+ filter.addEventListener("input",()=>{issuerQuery=filter.value;shown=PAGE_SIZE;drawMatches()});
+ more.addEventListener("click",()=>{shown+=PAGE_SIZE;drawMatches()});
+ browse.append(browseTitle,resultCount,rest,more);
+ group.append(browse);
  drawMatches();
- remaining.append(rest);group.append(remaining);
  group.append(E("p","sli-idx-sectoral-disclosure",T("Issuer universe is a curated SLI candidate list, not a fully reconciled official IDX census or an IHSG membership list. Confirm listing status and fundamentals with BEI.",
  "Daftar emiten adalah katalog kandidat kurasi SLI, bukan sensus resmi BEI atau daftar konstituen IHSG. Periksa kembali pencatatan dan fundamental melalui BEI.")));
  cols.append(group);root.append(cols);
