@@ -1,0 +1,82 @@
+name: SLI DERGUBA Owner Rendered PDF & Word QA
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tests/qa-sli-owner-rendered-report-browser.mjs'
+      - 'scripts/verify_sli_owner_rendered_reports.py'
+      - 'js/sli-report-content.mjs'
+      - 'js/sli-report-pdf.mjs'
+      - 'js/sli-report-docx.mjs'
+      - 'research-api/src/legal-source-limited.mjs'
+      - 'data/sli-verified-legal-provisions.json'
+      - '.github/workflows/sli-derguba-owner-rendered-report-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tests/qa-sli-owner-rendered-report-browser.mjs'
+      - 'scripts/verify_sli_owner_rendered_reports.py'
+      - 'js/sli-report-content.mjs'
+      - 'js/sli-report-pdf.mjs'
+      - 'js/sli-report-docx.mjs'
+      - 'research-api/src/legal-source-limited.mjs'
+      - 'data/sli-verified-legal-provisions.json'
+      - '.github/workflows/sli-derguba-owner-rendered-report-qa.yml'
+permissions:
+  contents: read
+jobs:
+  rendered-report-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check Chrome is present for real A4 print rendering
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          test -n "$CHROME" || { echo "::error::Chrome missing; rendered QA cannot be certified"; exit 1; }
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+      - name: Install browser driver and document readers
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+          if ! command -v libreoffice >/dev/null || ! command -v pdfinfo >/dev/null || ! command -v pdftoppm >/dev/null; then
+            sudo apt-get update -qq
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends libreoffice-writer poppler-utils
+          fi
+          libreoffice --version
+          pdfinfo -v 2>&1 | head -n 2
+      - name: Render SLI draft reports to actual Chromium A4 PDFs and editable Word
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check tests/qa-sli-owner-rendered-report-browser.mjs
+          node tests/qa-sli-owner-rendered-report-browser.mjs
+      - name: Validate actual PDF text, page layout and Word import, render images
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/verify_sli_owner_rendered_reports.py
+      - name: Preserve PDF, Word, screenshots, findings for owner inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-derguba-owner-rendered-reports
+          path: artifacts/sli-owner-rendered-reports/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Record limited acceptance scope
+        if: always()
+        shell: bash
+        run: |
+          echo '### DERGUBA Owner report QA boundary' >> "$GITHUB_STEP_SUMMARY"
+          echo '- This job prints real Chromium A4 PDFs and imports real Word OOXML in LibreOffice.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- It checks document integrity, text continuity, mandatory headings, and page images, using synthetic source-bounded fixtures.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- These artifacts are NOT the original authenticated owner response, nor proof of source correctness or a commercial release.' >> "$GITHUB_STEP_SUMMARY"
+          echo '- Human visual inspection of uploaded PNGs remains required.' >> "$GITHUB_STEP_SUMMARY"
