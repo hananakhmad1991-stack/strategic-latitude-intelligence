@@ -15,6 +15,11 @@ on:
       - 'research-api/src/dashboard-corpus.mjs'
       - 'research-api/src/owner-test-worker.mjs'
       - 'data/sli-research-project-stage-baseline.json'
+      # Source-linked intelligence feeds omitted from the original push watch.
+      # Without these triggers a fresh dataset makes the owner Worker index stale.
+      - 'data/geopolitical-energy.json'
+      - 'data/sli-catalyst-history.json'
+      - 'data/sli-issuer-news.json'
       - 'data/sli-marine-fisheries-kkp.json'
       - 'data/sli-kkp-portal-screened-2024.json'
       - 'data/sli-kkp-regional-historical-2019-2024.json'
@@ -37,6 +42,11 @@ on:
       - 'research-api/src/dashboard-corpus.mjs'
       - 'research-api/src/owner-test-worker.mjs'
       - 'data/sli-research-project-stage-baseline.json'
+      # Source-linked intelligence feeds omitted from the original push watch.
+      # Without these triggers a fresh dataset makes the owner Worker index stale.
+      - 'data/geopolitical-energy.json'
+      - 'data/sli-catalyst-history.json'
+      - 'data/sli-issuer-news.json'
       - 'data/sli-marine-fisheries-kkp.json'
       - 'data/sli-kkp-portal-screened-2024.json'
       - 'data/sli-kkp-regional-historical-2019-2024.json'
