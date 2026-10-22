@@ -9,6 +9,7 @@ import os from "node:os";
 import crypto from "node:crypto";
 import {execFileSync} from "node:child_process";
 import {selectKKPDropdown,selectKKPRating,KKP_FORM_KEYS} from "./kkp-questionnaire-controls.mjs";
+import {observeKKPDownload} from "./kkp-official-download-observer.mjs";
 
 const URL="https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan";
 const out="artifacts/sli-kkp-authorized-hatchery-export-review.json";
@@ -69,11 +70,25 @@ try{
  }
  review.consent_to_kkp_form=true;
  stage="submit_official_questionnaire";
- const promise=page.waitForEvent("download",{timeout:70000});
- await modal.getByRole("button",{name:"Unduh",exact:true}).click({timeout:20000});
- review.submission_click_acknowledged=true;
+ // Install listeners on ALL tabs BEFORE the single user-authorized click.
+ // The public KKP app may issue a download from a popup rather than this page.
+ const observer=observeKKPDownload(context,{timeoutMs:90000});
+ try{
+  await modal.getByRole("button",{name:"Unduh",exact:true}).click({timeout:20000});
+  review.submission_click_acknowledged=true;
+ }catch(e){observer.cancel();throw e;}
  stage="wait_for_official_export";
- const dl=await promise;
+ const dl=await observer.promise;
+ review.browser_export_diagnostics=observer.diagnostics();
+ if(!dl){
+  // Only booleans/counts; never log the rendered modal contents or PII.
+  review.ui_after_click={
+   questionnaire_still_visible:await modal.isVisible().catch(()=>false),
+   validation_indicator_count:await modal.locator('[aria-invalid="true"],.invalid-feedback,.MuiFormHelperText-error,[role="alert"]').count().catch(()=>0),
+   popup_tab_count:Math.max(0,context.pages().length-1)
+  };
+  throw Error("kkp_no_browser_download_event");
+ }
  stage="validate_official_export";
  tempDir=fs.mkdtempSync(path.join(os.tmpdir(),"sli-kkp-approved-export-"));
  const filename=String(dl.suggestedFilename()).replace(/[^a-zA-Z0-9._-]/g,"_").slice(0,80);
@@ -114,13 +129,13 @@ try{
 }catch(e){
  // Stage-only diagnostics keep form contents, email and Playwright page fragments
  // out of the publicly visible audit and the runner console.
- const recognized=new Set(["operator_consent_missing","genuine_contact_secrets_required","invalid_or_unapproved_survey_choices","kkp_rating_selection_required","kkp_review_required_for_low_rating","kkp_form_http_unavailable","kkp_rating_control_not_found","suspicious_export_file_size","xlsx_schema_or_1387_row_count_failed","unsupported_source_download_format"]);
+ const recognized=new Set(["operator_consent_missing","genuine_contact_secrets_required","invalid_or_unapproved_survey_choices","kkp_rating_selection_required","kkp_review_required_for_low_rating","kkp_form_http_unavailable","kkp_no_browser_download_event","kkp_rating_control_not_found","suspicious_export_file_size","xlsx_schema_or_1387_row_count_failed","unsupported_source_download_format"]);
  const raw=String(e?.message||"");
  review.error_code=recognized.has(raw)?raw:"failure_at_"+stage;
  review.failure_stage=stage;
  if(review.download_status==="not_submitted"&&review.consent_to_kkp_form){
   review.download_status=review.submission_click_acknowledged?
-   "form_submitted_but_export_failed":"questionnaire_not_confirmed_submitted";
+   "download_button_clicked_no_file_observed":"questionnaire_not_confirmed_submitted";
  }
 }finally{
  await browser?.close().catch(()=>{});
