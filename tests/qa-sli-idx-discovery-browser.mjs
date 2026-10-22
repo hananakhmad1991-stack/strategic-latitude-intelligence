@@ -11,6 +11,17 @@ try{
   page.setDefaultTimeout(12000);
   try{
    await page.goto(origin+'index.html#home',{waitUntil:'domcontentloaded',timeout:25000});
+   const directResponse=await page.request.get(origin+'data/sli-idx-issuer-universe.json');
+   const directRecords=(await directResponse.json()).records.length;
+   const sourceDiagnostic=await page.evaluate(async()=>{
+     const res=await fetch('./data/sli-idx-issuer-universe.json',{cache:'no-store'});
+     const body=await res.json();
+     return {href:location.href,baseURI:document.baseURI,requestedURL:res.url,
+       records:body.records.length,controlled:!!navigator.serviceWorker?.controller};
+   });
+   console.log('IDX catalogue read '+width+'px',JSON.stringify({directRecords,...sourceDiagnostic}));
+   assert.equal(directRecords,267,'Local checked-out IDX register must have 267 tickers');
+   assert.equal(sourceDiagnostic.records,267,'Browser must read the same checked-out register, not stale production');
    const root=page.locator('#sliHomeIDXSectors');
    await root.locator('.sli-idx-global-input').waitFor({state:'visible'});
    const suggestions=root.locator('.sli-idx-global-ticker');
