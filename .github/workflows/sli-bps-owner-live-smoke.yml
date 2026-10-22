@@ -18,6 +18,7 @@ jobs:
         run: |
           node --check scripts/sli-bps-owner-live-smoke.mjs
           node scripts/sli-bps-owner-live-smoke.mjs --self-test
+          node --test tests/qa-sli-bps-focused-owner.mjs
       - name: Check owner staging secret is connected to this GitHub environment
         env:
           SLI_OWNER_SMOKE_TOKEN: ${{ secrets.SLI_OWNER_SMOKE_TOKEN }}

@@ -48,7 +48,7 @@ jobs:
           node --check research-api/src/legal-citation-audit.mjs
           node --check research-api/src/policy-corpus.mjs
           npx --yes esbuild@0.25.12 research-api/src/owner-test-worker.mjs --bundle --platform=neutral --format=esm --target=es2022 --outfile=/tmp/sli-owner-handler-acceptance.bundle.mjs
-          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs tests/qa-sli-owner-deploy-snapshot.mjs tests/qa-sli-owner-handler-acceptance.mjs tests/qa-sli-owner-live-cli.mjs
+          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs tests/qa-sli-owner-deploy-snapshot.mjs tests/qa-sli-owner-handler-acceptance.mjs tests/qa-sli-owner-live-cli.mjs tests/qa-sli-bps-focused-owner.mjs
 
       - uses: actions/setup-python@v5
         with:
