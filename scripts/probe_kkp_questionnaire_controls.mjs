@@ -40,7 +40,11 @@ try{
   report.radio_controls=await modal.locator('input[type="radio"]').evaluateAll(nodes=>nodes.slice(0,9).map(el=>({
    name:el.getAttribute("name"),value:el.value,html_id:el.id,
    label:(el.closest("label")?.textContent||el.getAttribute("aria-label")||"").trim().slice(0,55),
-   checked:el.checked,disabled:el.disabled,html:el.outerHTML.slice(0,350)
+   checked:el.checked,disabled:el.disabled,html:el.outerHTML.slice(0,350),
+   parent_html:(el.closest("label")?.outerHTML||"").slice(0,1100),
+   ancestor_classes:[el.parentElement?.className||"",el.parentElement?.parentElement?.className||""].map(String),
+   parent_rect:(()=>{const r=el.closest("label")?.getBoundingClientRect();return r?{x:r.x,y:r.y,width:r.width,height:r.height}:null})()
+
   }))).catch(()=>[]);
   report.role_radio_count=await modal.getByRole("radio").count().catch(()=>null);
  }
