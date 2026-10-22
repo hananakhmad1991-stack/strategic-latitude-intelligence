@@ -6,6 +6,7 @@
 const ROOT="sliHomeIDXSectors";
 const PROVIDER=window.SLIIDXTradingView;
 const SECTORS=[
+ ["all","All issuer candidates","Semua kandidat emiten"],
  ["energy","Energy & transition","Energi & transisi"],
  ["minerals","Metals & minerals","Logam & mineral"],
  ["coal","Coal & mining","Batu bara & tambang"],
@@ -24,9 +25,9 @@ const lang=()=>document.documentElement?.lang?.toLowerCase().startsWith("id")||w
 const T=(en,id)=>lang()?id:en;
 const tickerUrl=t=>"./sli-issuer.html?ticker="+encodeURIComponent(t);
 const ALLOWED=/^[A-Z0-9]{4}$/;
-let candidates=[],sector="energy",ready=null,issuerQuery="";
+let candidates=[],sector="energy",ready=null,issuerQuery="",globalQuery="";
 function activeIssuerList(rows,k){
- return rows.filter(x=>x.sector===k&&x.exchange==="IDX"&&ALLOWED.test(x.ticker||"")&&x.name);
+ return rows.filter(x=>(k==="all"||x.sector===k)&&x.exchange==="IDX"&&ALLOWED.test(x.ticker||"")&&x.name);
 }
 function link(url,label,external=false){
  const a=E("a",null,label);a.href=url;if(external){a.target="_blank";a.rel="noopener noreferrer"}return a;
@@ -47,6 +48,43 @@ function renderUI(){
  E("p",null,T("Unlike the full-market heatmap above, this section covers twelve SLI strategic research categories. Provider quotes and the SLI company register are kept separate.",
  "Berbeda dari heatmap pasar umum di atas, bagian ini mencakup 12 kategori riset strategis SLI. Harga penyedia dan registri perusahaan SLI tetap dipisahkan.")));
  root.append(header);
+ // Universal ticker discovery is ALWAYS visible, even when a different sector is selected.
+ const globalPanel=E("div","sli-idx-global-search");
+ const globalLabel=E("label","sli-idx-global-label",T("Find any issuer in the SLI catalogue","Cari semua emiten dalam katalog SLI"));
+ const globalInput=E("input","sli-idx-global-input");
+ globalInput.type="search";
+ globalInput.placeholder=T("Ticker or company name, e.g. BRMS, ANTM, ADMR…","Kode atau nama emiten, mis. BRMS, ANTM, ADMR…");
+ globalInput.setAttribute("aria-label",T("Search all IDX catalogue tickers","Cari semua kode emiten dalam katalog IDX"));
+ globalInput.value=globalQuery;
+ globalLabel.append(globalInput);
+ const globalHits=E("div","sli-idx-global-hits");
+ globalHits.setAttribute("aria-live","polite");
+ globalPanel.append(globalLabel,globalHits);
+ const suggested=["BRMS","ANTM","AMMN","MDKA","ADMR","RATU","PGEO","MEDC"];
+ const drawGlobal=()=>{
+  globalHits.replaceChildren();
+  const q=globalQuery.trim().toLocaleLowerCase("id");
+  const matches=q ? candidates.filter(x=>(x.ticker+" "+x.name+" "+x.sector).toLocaleLowerCase("id").includes(q))
+   : suggested.map(ticker=>candidates.find(x=>x.ticker===ticker)).filter(Boolean);
+  const count=E("p","sli-idx-global-count",
+   q?T(matches.length+" matches across all sectors",""+matches.length+" kecocokan di semua sektor")
+     :T("Quick access · search finds more tickers in all 12 sectors","Akses cepat · pencarian menjangkau semua kode dalam 12 sektor"));
+  globalHits.append(count);
+  const links=E("div","sli-idx-global-grid");
+  const display=matches.slice(0,65);
+  for(const issuer of display){
+   const a=link(tickerUrl(issuer.ticker),"");a.className="sli-idx-global-ticker";
+   a.append(E("strong",null,issuer.ticker),E("span",null,issuer.name),E("small",null,issuer.sector));
+   if(issuer.verification==="official_ksei_security_listing")a.title=T("Listing cross-checked against KSEI","Pencatatan dicocokkan dengan KSEI");
+   links.append(a);
+  }
+  if(!display.length)globalHits.append(E("p","sli-idx-global-none",T("Ticker not found in SLI's incomplete catalogue. Check official IDX directory.","Kode tidak ditemukan di katalog SLI yang belum lengkap. Periksa direktori resmi BEI.")));
+  globalHits.append(links);
+  if(matches.length>display.length)globalHits.append(E("p","sli-idx-global-count",T("Showing first "+display.length+" matches; refine your search.","Menampilkan "+display.length+" teratas; perjelas pencarian.")));
+ };
+ globalInput.addEventListener("input",()=>{globalQuery=globalInput.value;drawGlobal()});
+ drawGlobal();
+ root.append(globalPanel);
  const tabs=E("div","sli-idx-sectoral-tabs");tabs.setAttribute("role","group");tabs.setAttribute("aria-label",T("Filter selected IDX strategic sector","Pilih sektor saham strategis IDX"));
  for(const [key,en,id]of SECTORS){
   const amount=activeIssuerList(candidates,key).length;
@@ -111,7 +149,8 @@ function renderUI(){
  filter.value=issuerQuery;
  searchWrap.append(filter);group.append(searchWrap);
  const remaining=E("details","sli-idx-sectoral-more");
- const browseSummary=E("summary",null,T("Show all "+selected.length+" sector issuer candidates","Tampilkan semua "+selected.length+" calon emiten sektor ini"));remaining.append(browseSummary);
+ remaining.open=true; // All sector tickers are visible without an extra click.
+ const browseSummary=E("summary",null,T("All "+selected.length+" sector issuer candidates (open)","Semua "+selected.length+" kandidat emiten (terbuka)"));remaining.append(browseSummary);
  const rest=E("div","sli-idx-sectoral-rest");
  const drawMatches=()=>{
   rest.replaceChildren();
