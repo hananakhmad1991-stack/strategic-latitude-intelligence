@@ -273,7 +273,7 @@ export default{
       m.province+" — "+m.label+": estimasi "+two(m.estimate)+"%; SE "+two(m.se)+
       " poin persentase; RSE "+two(m.rse)+"%; interval kepercayaan 95% "+
       two(m.ci_low)+"–"+two(m.ci_high)+"%; Tabel "+m.table+", PDF halaman "+m.main_page+
-      "; Tabel "+m.appendix_table+", PDF halaman "+m.appendix_page+" ["+(i+1)+"].");
+      "; Tabel "+m.appendix_table+", PDF halaman "+m.appendix_page+"; Penyebut: "+m.denominator+" ["+(i+1)+"].");
     params.instructions=[
       "You are SLI DERGUBA Owner Test. Answer a source-bounded BPS Susenas 2026 statistics query in Bahasa Indonesia.",
       "Only the included source_evidence entries may ground factual statements; they are curated transcriptions and not independently rechecked PDFs.",
