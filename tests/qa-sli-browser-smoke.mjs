@@ -108,6 +108,34 @@ await check("DERGUBA AI: optional methods lab expands on demand",{width:1366,hei
  assert.ok(await page.locator("#raMethod").count()===1,"Research methodology control missing");
 });
 
+for(const viewport of [{width:360,height:780},{width:390,height:844},{width:1366,height:850}]){
+ await check("DERGUBA responsive "+viewport.width+"px",viewport,async page=>{
+  await page.goto(pageUrl("sli-research-ai.html"),{waitUntil:"domcontentloaded",timeout:30000});
+  await page.locator("#raPrompt").waitFor({state:"visible",timeout:20000});
+  const metrics=await page.evaluate(()=>{
+   const nav=document.querySelector(".sli-ra-primary-nav");
+   const intro=document.querySelector(".sli-ra-intro");
+   const prompt=document.querySelector("#raPrompt");
+   const owner=document.querySelector("#raOwnerPanel");
+   return {scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth,
+    navWidth:nav?.getBoundingClientRect().width,promptWidth:prompt?.getBoundingClientRect().width,
+    promptVisible:!!prompt&&getComputedStyle(prompt).visibility!=="hidden",
+    introColor:getComputedStyle(document.querySelector(".sli-ra-chat-promise")).color,
+    ownerCollapsed:owner&&!owner.open,
+    overviewLink:!!nav?.querySelector('a[href="./index.html#overview"]'),
+    cssLoaded:[...document.styleSheets].some(x=>x.href?.includes("sli-research-brand.css?v=20261022-derguba-responsive2")),
+    introWidth:intro?.getBoundingClientRect().width};
+  });
+  assert.ok(metrics.scrollWidth<=metrics.viewport+4,"DERGUBA uncontrolled horizontal overflow: "+JSON.stringify(metrics));
+  assert.ok(metrics.navWidth<=metrics.viewport+4,"DERGUBA nav exceeds viewport: "+JSON.stringify(metrics));
+  assert.ok(metrics.promptVisible&&metrics.promptWidth>160,"Research prompt not accessible: "+JSON.stringify(metrics));
+  assert.equal(metrics.overviewLink,false,"Legacy overview link still visible");
+  assert.equal(metrics.ownerCollapsed,true,"Owner diagnostics must be collapsed by default");
+  assert.equal(metrics.cssLoaded,true,"Updated DERGUBA CSS link missing");
+  await page.screenshot({path:path.join(outDir,"derguba-"+viewport.width+".png"),fullPage:false});
+ });
+}
+
 await check("Marine institutional desktop: maps render, drill down and show verified 2026 officers",{width:1366,height:850},async page=>{
  await page.goto(pageUrl("marine-fisheries-intelligence.html#marine-governance"),{waitUntil:"domcontentloaded",timeout:30000});
  await waitMast(page);
