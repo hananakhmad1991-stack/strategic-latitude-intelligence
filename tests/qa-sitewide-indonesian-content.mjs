@@ -96,7 +96,16 @@ test("Homepage portal has zero unreviewed English headings and descriptions in I
  const end=html.indexOf("function energyMonitor(){return \x60".replace("\\x60","\x60"));
  assert.ok(start>=0&&end>start,"Homepage portal must be a separately testable interface");
  const portal=html.slice(start,end);
- const values=[...portal.matchAll(/>([^<>]{3,1000})</g)].map(x=>x[1].replace(/&amp;/g,"&").replace(/&nbsp;/g," ").replace(/\s+/g," ").trim())
+ // Explicit bilingual pairs remain independently visible in each language.
+ const enCount=(portal.match(/class="sli-copy-en"/g)||[]).length;
+ const idCount=(portal.match(/class="sli-copy-id"/g)||[]).length;
+ assert.ok(enCount>=20,"Service paths require real bilingual copy");
+ assert.equal(idCount,enCount,"Every English label needs Indonesian copy");
+ const inlinePairs=(portal.match(/<span class="sli-copy-en">[^<]*<\/span><span class="sli-copy-id">[^<]*<\/span>/g)||[]).length;
+ const blockPairs=(portal.match(/<p class="sli-copy-en">[^<]*<\/p>\s*<p class="sli-copy-id">[^<]*<\/p>/g)||[]).length;
+ assert.equal(inlinePairs+blockPairs,enCount,"All bilingual labels and paragraphs must have adjacent counterparts");
+ const dictionaryOnly=portal.replace(/<span class="sli-copy-(?:en|id)">[^<]*<\/span>/g,"").replace(/<p class="sli-copy-(?:en|id)">[^<]*<\/p>/g,"");
+ const values=[...dictionaryOnly.matchAll(/>([^<>]{3,1000})</g)].map(x=>x[1].replace(/&amp;/g,"&").replace(/&nbsp;/g," ").replace(/\s+/g," ").trim())
  .filter(t=>/[a-z]{3}/i.test(t)&&!/^\s*https?:/.test(t));
  const normalize=s=>s.replace(/\s+/g," ").trim();
  const accepted=new Set([...dictionary.keys()].map(normalize));

@@ -65,6 +65,6 @@ test('Client inputs bounded and no false availability or payment',()=>{
  assert.doesNotMatch(html,/Submit a concise research brief/);
  assert.match(html,/No pre-registered expert panel/);
  assert.match(html,/Belum ada panel pakar terdaftar/);
- assert.match(index,/on demand after reviewing your brief/);
+ assert.match(index,/source and screen specialists case by case/);
  assert.doesNotMatch(html,/<form[^>]*action=/i);
 });

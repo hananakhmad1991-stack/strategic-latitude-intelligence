@@ -97,3 +97,18 @@ test("Unified primary SLI masthead retains original navy/gold typographic identi
  assert.match(css,/border-right:1px solid #5b6470/);
  assert.ok(html.includes(style),"Home page embedded styles must match the latest standalone CSS");
 });
+
+test("Public SLI release is task-first, bilingual and avoids implying an expert panel or public Research AI access",()=>{
+ assert.match(html,/Understand Indonesia/);
+ assert.match(html,/Find the expertise to act/);
+ assert.match(html,/Pahami Indonesia/);
+ assert.match(html,/Temukan pakar untuk bertindak/);
+ for(const label of ['01 · INTELLIGENCE','02 · DERGUBA AI','03 · EXPERT CONNECT'])assert.ok(html.includes(label),label);
+ assert.match(html,/no pre-enrolled expert panel/);
+ assert.match(html,/owner-only pilot/);
+ assert.match(html,/editable inquiry/);
+ assert.ok(html.includes('href="./sli-expert-connect.html"'));
+ assert.equal((html.match(/class="sli-service-card(?: sli-service-expert)?"/g)||[]).length,3);
+ assert.match(style,/@media\(max-width:850px\)/);
+ assert.ok(html.includes(style),"Embedded fallback must exactly match current CSS");
+});
