@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T23:01:10.256366Z",
+  "updated_at_utc": "2026-10-22T23:27:59.256418Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_ca5e54188d6056fd7d59fa",
+      "title": "AMMN Gelar Buyback Saham Rp 1 Triliun Selama Tiga Bulan - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5CZ2p3SXlqZVB2WVhUUUJQX0NRZjZIdVNRa1BuME5fclJ1bHF3N3B2U0JDZHhQUlQ2aXdWeFJUbUFWTk1KaFlhSHgxNlNDdmE0TmVR?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-10-22T23:05:26Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_dd7ad28f57cc4104c2091e",
       "title": "10 Emiten Siapkan Buyback Saham Rp18,6 Triliun, DSSA hingga BREN Masuk Daftar - VIVA.co.id",
@@ -6568,88 +6584,6 @@
         "UNTR"
       ],
       "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_357290113f10dbae5dd95c",
-      "title": "IHSG Rawan Terkoreksi, Analis Rekomendasikan Saham EMTK, MEDC hingga UNTR - Medialokal.co",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPdjQ3Nm9kbWxrTFNGWVI2Um1yUUdWRmpod3l4VmR1T2xmQWtEbGo5VTNvdWpVU1FCMDBjaVBTQ3BIRVVIRmRsZzM0OXlwd2QtYlNzN2lsY0pXNzVCdjhSdXVqcmVEZWs1SGpMVHhqbU9vWGludFJmRHEtTGhjTU1Fc0hON0x0VWxPZ3U3aEtHR3NLNzZGZ0pJamNCRERyQk11VEhBWXNWTUprYnpmZmRpUNIBpgFBVV95cUxQMWRMVUIzZDBKUTJSelI5YXF4RGhOcEtac2FadTNWVmNQX1dBM3kxYXZuOThrMV94WFp5cHU1WFFMUmRpMEptYm8ySnRiMFRiNTZSenFSbi15c1NqSXYzYTJqSGR3WjRlbV9BdTljUlpaaEs4NE9lOXRTV0pqT1FPbElORjkxY0tGNkhENjdyemJEQU1hNF9KeVFRN3pUSFpXMXBHVDlR?oc=5",
-      "publisher": "Medialokal.co",
-      "published_at_utc": "2026-10-14T23:21:01Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "MEDC",
-        "UNTR"
-      ],
-      "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_048deb7b54c184f8040c96",
-      "title": "Medco (MEDC) Akuisisi 10% Aset Gas Eni di Kaltim, Maybank Pertahankan Target Rp 2.500 - kontan.co.id",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNcmpIRU5XMGhPa0JvZ3lKdW1qdzd2YUJWeGdxS1M3ZWRIZ2hzdko1N0RxWHRMMlJTeGZidEtuUHhxUW9qVjgzQk1vQVBUaG5Xek5ZNnZ0SzVEUXpzc2FldmRfSDBsbjctaHJLWWhfOVVhRjdvM1lORkwtUTZCMi1sdmQ4dkIyN3VOU2x6RHRINWRsUnB4YkdlZktiT2plWWtJYlVtbHFBSzFncVFubHE5MGlkZi12dWPSAa8BQVVfeXFMUFZFemFSNWMwM1poU0dNRV83WHNXNGRxR2lIMVY3dFpVU3h1ZDdDYjJudE5lVXV0c093ejZRLXNfQ3JLVzAtekNVZU5HY3dIM3d0MGRtNHJFZDItejZablU4cFk2ckxmTVRkQXlXbkRULWxVbVd4Zk92RFpqVlpJTGxMT3d3MFdMM0RHSmFCTmxxMERmcFZvOGJSaE9kTExZUjJwRUVLUTZtMWtqODNKdw?oc=5",
-      "publisher": "kontan.co.id",
-      "published_at_utc": "2026-10-14T23:15:59Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "MEDC"
-      ],
-      "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_ba725a99345db0e5fe981b",
-      "title": "Medco (MEDC) Akuisisi 10% Aset Gas Eni di Kaltim, Maybank Pertahankan Target Rp 2.500 - TradingView",
-      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBnRnktV0JFLW1FdWw5c2NPeXdQLXZuYnBVZTktVWdPUGpHVXpsRkpiZlVZVjB1UWpZS3NwT1YzX05xLVZZX21wZkY5WlBfcGN2RW8yQWhMV0Mydjh0dDItNHNJeE5fZw?oc=5",
-      "publisher": "TradingView",
-      "published_at_utc": "2026-10-14T23:15:59Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "MEDC"
-      ],
-      "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_cdac4c62d0bef089e48c97",
-      "title": "IHSG Rawan Terkoreksi, Analis Rekomendasikan Saham EMTK, MEDC hingga UNTR - Katadata.co.id",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNLTB4T3o0Vnd1TndJdkxKU09tN0c5M0EtUGE4VGl0bnZUOHV6M3E1WUhPUVU2M1FBMGVxUjhaSTdmcGFNWUVIVmwyRHZQN3ZKeUlUX3ZlU3NUMjdMbENWSWpndHhWcWFaRU5QR3RzQkM0eU9sNEZVWk1IenJVcmRpdFJsd19JeTY0Rkg0T3dOX3EzNFpla20xc0hMcnM3MDFIVGxSTmViakplZ29WcnZrWlVfUE41WmZPaDFVcy1fbW1pZ9IBxwFBVV95cUxQSkRqczRRVzFCdzYzRGozb0hPak0zaVBfdTcyTHRHclVTTzBSTTNyQU8wWFhnSVdiT0RwYTVHSWZHOEVTZzB2MER1LUNkMHJsT216cllCU1FJVnMzaW04TFJTSkd6Rm9aVG5IZ1ZJdTRhQ2hWOGMzZkZkMHh5S0czSUNOM3NrSkFQVGxqZ3BEUklhQi1OeGlRMDRpWEVXX29weWF3bHFUOTMtTFQ3QlBmZ1M1NTJfVFBZYzM5UjVTN1FrWEp4ejlr?oc=5",
-      "publisher": "Katadata.co.id",
-      "published_at_utc": "2026-10-14T23:10:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "MEDC",
-        "UNTR"
-      ],
-      "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_cb0c8b5e150f28846d5330",
-      "title": "Saham MEDC Menguat 6,55 Persen dan Menguji Resistance Kunci - bsinews.id",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5zUGI5V1ZoWmFVUjhHTTZWQTNJZmVyaTFaSFh6S0U3UV83WnkybWlESVI2YUF5cmdVM19KTG5CdmxSbUI1eGJ1Q2RrTkR6Ymw5STRXLTA5ZW1PZ3JWamlv?oc=5",
-      "publisher": "bsinews.id",
-      "published_at_utc": "2026-10-14T23:03:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "MEDC"
-      ],
-      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
