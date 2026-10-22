@@ -2809,3 +2809,10 @@ window.SLI_TRANSLATIONS_ID.set("Jelajahi dashboard tenaga kerja hijau →","Buka
 window.SLI_TRANSLATIONS_ID.set("Green Workforce Intelligence","Intelijen Tenaga Kerja Hijau");
 window.SLI_TRANSLATIONS_ID.set("Bappenas 2025–2029 employment projections · 17 economic sectors","Proyeksi pekerjaan Bappenas 2025–2029 · 17 sektor ekonomi");
 window.SLI_TRANSLATIONS_ID.set("Explore forecasts →","Jelajahi proyeksi →");
+
+/* Expert Connect public pilot: manually reviewed Indonesian UI, zero roster. */
+window.SLI_TRANSLATIONS_ID.set("◎ Expert Connect · Request an expert","◎ Expert Connect · Ajukan kebutuhan pakar");
+window.SLI_TRANSLATIONS_ID.set("Need expertise beyond the dashboard?","Butuh pakar untuk analisis lebih mendalam?");
+window.SLI_TRANSLATIONS_ID.set("SLI sources and screens experts on demand after reviewing your brief; no pre-registered panel or guaranteed availability.","SLI mencari dan menyeleksi pakar sesuai permintaan setelah meninjau kebutuhan Anda; belum ada panel pakar terdaftar maupun jaminan ketersediaan.");
+window.SLI_TRANSLATIONS_ID.set("Describe your project ↗","Jelaskan kebutuhan riset ↗");
+window.SLI_TRANSLATIONS_ID.set("◎ Expert Connect · Request a specialist ↗","◎ Expert Connect · Ajukan kebutuhan pakar ↗");
