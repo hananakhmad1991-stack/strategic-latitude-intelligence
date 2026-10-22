@@ -1,0 +1,87 @@
+name: SLI Expert Desk Cloudflare inert staging deploy
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/sli-expert-inert-cloudflare-deploy.yml'
+      - 'services/sli-expert-desk/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sli-expert-inert-cloudflare-deploy.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Keep isolated Worker unreachable and fail closed
+        run: |
+          grep -q 'if(env.CF_EXPERT_DESK_ENABLED!=="true")' services/sli-expert-desk/src/index.mjs
+          node --test services/sli-expert-desk/tests/owner-queue.test.mjs
+          node --check services/sli-expert-desk/src/owner-console.mjs
+          cat > .wrangler.expert-inert-staging.toml <<'CONFIG'
+          name = "sli-expert-desk-inert-staging-20261023"
+          main = "services/sli-expert-desk/src/index.mjs"
+          compatibility_date = "2026-10-22"
+          workers_dev = false
+          preview_urls = false
+          # Strictly no routes, customer intake, Access credential or D1 binding.
+          CONFIG
+          grep -q '^workers_dev = false$' .wrangler.expert-inert-staging.toml
+          grep -q '^preview_urls = false$' .wrangler.expert-inert-staging.toml
+          ! grep -Eq '^[[:space:]]*(routes?|CF_EXPERT_DESK_ENABLED|database_id)[[:space:]]*=' .wrangler.expert-inert-staging.toml
+          npx --yes wrangler@4 deploy --dry-run --config .wrangler.expert-inert-staging.toml --outdir /tmp/sli-expert-desk-inert-build
+          echo 'Isolated Expert Desk Worker compiled. All runtime client functions remain disabled.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve inert release config for verified push deploy
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: sli-expert-inert-config
+          path: .wrangler.expert-inert-staging.toml
+          retention-days: 1
+
+  upload-inert-worker:
+    name: Deploy unreachable staging Worker (NO customer service)
+    needs: dry-run
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: sli-owner-staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Retrieve exact QA-validated no-route config
+        uses: actions/download-artifact@v4
+        with:
+          name: sli-expert-inert-config
+          path: .
+      - name: Publish disabled isolated Worker to Cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Cloudflare deploy credentials absent; no release."
+            exit 1
+          fi
+          test "$(grep -c '^workers_dev = false$' .wrangler.expert-inert-staging.toml)" -eq 1
+          test "$(grep -c '^preview_urls = false$' .wrangler.expert-inert-staging.toml)" -eq 1
+          ! grep -Eq '^[[:space:]]*(routes?|database_id|CF_EXPERT_DESK_ENABLED)[[:space:]]*=' .wrangler.expert-inert-staging.toml
+          npx --yes wrangler@4 deploy --config .wrangler.expert-inert-staging.toml
+          {
+            echo '### Cloudflare Expert Desk isolated staging'
+            echo '- Worker source uploaded from commit: '"$GITHUB_SHA"
+            echo '- \`workers_dev=false\`, \`preview_urls=false\`, **no routes**.'
+            echo '- No D1 database is bound; \`CF_EXPERT_DESK_ENABLED\` remains absent, so runtime fails closed.'
+            echo '- **This is not a client-facing or usable Owner Desk deployment.** Access + dedicated D1 + protected URL + authenticated security checks remain blocked.'
+          } >> "$GITHUB_STEP_SUMMARY"
