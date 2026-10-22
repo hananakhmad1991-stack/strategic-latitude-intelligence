@@ -173,7 +173,7 @@ test("Real Owner Worker serves 4-cell BPS precision comparison and rejects a swa
  const fmt=n=>Number(n).toFixed(2).replace(".",",");
  const good=focus.records.map((m,i)=>m.province+" — "+m.label+": estimasi "+fmt(m.estimate)+"%; SE "+fmt(m.se)+
  " poin persentase; RSE "+fmt(m.rse)+"%; interval kepercayaan 95% "+fmt(m.ci_low)+"–"+fmt(m.ci_high)+
- "%; Tabel "+m.table+", PDF halaman "+m.main_page+"; Tabel "+m.appendix_table+", PDF halaman "+m.appendix_page+" ["+(i+1)+"].").join("\n");
+ "%; Tabel "+m.table+", PDF halaman "+m.main_page+"; Tabel "+m.appendix_table+", PDF halaman "+m.appendix_page+"; Penyebut: "+m.denominator+" ["+(i+1)+"].").join("\n");
  const oldFetch=globalThis.fetch,env=fixtureEnv();
  let modelCalls=0,nextAnswer=good;
  globalThis.fetch=async(url,options)=>{
