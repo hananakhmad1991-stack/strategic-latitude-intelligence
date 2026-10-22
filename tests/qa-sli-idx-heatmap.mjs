@@ -57,12 +57,15 @@ test("Internal SLI sector watchlist shows all twelve curated strategic sectors a
  const api=load("js/sli-idx-sector-watchlist.js").SLIIDXSectors;
  assert.equal(api.sectorKeys.length,12);
  const selected=issuer.records.filter(x=>api.sectorKeys.includes(x.sector)&&x.exchange==="IDX");
- assert.equal(selected.length,260);
- assert.equal(new Set(selected.map(x=>x.ticker)).size,260);
- for(const [sector,n]of [["energy",17],["minerals",18],["coal",21],["food",36],["technology",24],
- ["infrastructure",19],["transport",16],["manufacturing",27],["finance",33],["property",19],["healthcare",15],["retail",15]])assert.equal(api.activeIssuerList(issuer.records,sector).length,n);
+ assert.ok(selected.length>=260,'Previously indexed issuers must remain discoverable');
+ assert.equal(new Set(selected.map(x=>x.ticker)).size,selected.length,'Ticker directory must not duplicate issuers');
+ for(const sector of api.sectorKeys){
+  const expected=selected.filter(x=>x.sector===sector).length;
+  assert.ok(expected>0,sector+' must contain an indexed issuer');
+  assert.equal(api.activeIssuerList(issuer.records,sector).length,expected);
+ }
  assert.equal(api.tickerUrl("ANTM"),"./sli-issuer.html?ticker=ANTM");
- for(const ticker of ["ANTM","PTBA","TLKM","INDF","ICBP","MEDC","GOTO","AMMN"]){
+ for(const ticker of ["BRMS","ANTM","INCO","PGEO","BBRI","BBCA","PTBA","TLKM","INDF","ICBP","MEDC","GOTO","AMMN"]){
   assert.ok(selected.some(x=>x.ticker===ticker),"Missing SLI issuer ticker "+ticker);
  }
  const code=read("js/sli-idx-sector-watchlist.js");

@@ -9,8 +9,9 @@ const groups=JSON.parse(get('data/sli-corporate-group-registry.json'));
 const relations=JSON.parse(get('data/sli-corporate-evidence-relationships.json'));
 const assets=JSON.parse(get('data/sli-issuer-actor-assets.json'));
 
-test('260-ticker catalog exposes 12 sectors while retaining explicit not-a-census warning',()=>{
- assert.equal(issuers.records.length,260);
+test('scalable ticker catalog exposes 12 sectors while retaining explicit not-a-census warning',()=>{
+ assert.ok(issuers.records.length>=260,'Do not regress existing issuer coverage');
+ assert.equal(new Set(issuers.records.map(x=>x.ticker)).size,issuers.records.length,'Duplicate issuer tickers must be rejected');
  const sectors=new Set(issuers.records.map(x=>x.sector));
  assert.equal(sectors.size,12);
  const s=get('js/sli-idx-sector-watchlist.js');
@@ -137,4 +138,20 @@ test('BRI 2025 audited-period financial highlights retain measurement semantics'
  assert.match(bri.financial_period, /FY2025/);
  assert.equal(bri.revenue, null, 'Bank interest must not become generic industrial revenue');
  assert.match(bri.financial_source_url, /^https:\/\/www\.ir-bri\.com\/financial_highlights\.html$/);
+});
+
+
+test('BRMS and representative issuers across strategic sectors have unique discoverable dossiers',()=>{
+ const cases={BRMS:'minerals',ANTM:'minerals',INCO:'minerals',PGEO:'energy',MEDC:'energy',BBRI:'finance',BBCA:'finance',TLKM:'technology',GOTO:'technology',PTBA:'coal',BREN:'energy'};
+ const watch=get('js/sli-idx-sector-watchlist.js');
+ const dossier=get('js/sli-issuer.js');
+ assert.match(watch,/issuerQuery=/);
+ assert.match(watch,/sli-issuer\\.html\\?ticker=/);
+ assert.match(dossier,/URLSearchParams/);
+ for(const [ticker,sector] of Object.entries(cases)){
+  const matching=issuers.records.filter(x=>x.ticker===ticker&&x.exchange==='IDX');
+  assert.equal(matching.length,1,ticker+' should have exactly one IDX issuer record');
+  assert.equal(matching[0].sector,sector,ticker+' must appear in the expected research sector');
+  assert.ok(matching[0].name,ticker+' has no issuer label');
+ }
 });

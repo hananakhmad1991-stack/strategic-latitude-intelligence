@@ -109,5 +109,6 @@ test("UI tells the user about incomplete verification and preserves source URL/N
  assert.match(js,/idx_seed_awaiting_official_refresh|initial IDX ticker catalogue/i);
  assert.match(js,/N\/A/);
  assert.doesNotMatch(js,/\.innerHTML\s*=/);
- assert.ok(universe.records.length>=250);
+ assert.ok(universe.records.length>=260);
+ assert.equal(new Set(universe.records.map(x=>x.ticker)).size,universe.records.length);
 });
