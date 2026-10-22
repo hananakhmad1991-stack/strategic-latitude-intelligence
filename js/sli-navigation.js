@@ -244,7 +244,21 @@ function renderBar(){
  const relation=node('div','sli-related-links');
  relation.append(node('span','',text('Related:','Terkait:')));
  for(const id of (related[current]||['overview']).slice(0,4))relation.append(link(id));
- bar.append(position,actions,relation);
+ const researchPath=node('nav','sli-research-path');
+ researchPath.setAttribute('aria-label',text('Research journey: sectors, organizations, sources and analysis','Alur riset: sektor, entitas, sumber dan analisis'));
+ const pathItems=[
+  ['Sectors','Sektor','./index.html#sliPortalSectors'],
+  ['Regions','Daerah','./provincial-intelligence.html'],
+  ['Companies & actors','Perusahaan & aktor','./sli-entities.html'],
+  ['Original sources','Sumber asli','./sli-sector-data-library.html'],
+  ['Analyze','Analisis','./sli-research-ai.html']
+ ];
+ for(const [en,id,url] of pathItems){
+  const a=node('a','sli-research-step',text(en,id));a.href=url;
+  if((url==='./'+path)||(url==='./index.html#sliPortalSectors'&&path==='index.html'&&current==='home'))a.setAttribute('aria-current','page');
+  researchPath.append(a);
+ }
+ bar.append(position,actions,researchPath,relation);
 }
 function renderGuide(){
  const target=document.getElementById('sliGuideCatalog');if(!target)return;
