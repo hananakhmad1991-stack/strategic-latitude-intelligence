@@ -19,6 +19,8 @@ on:
       - 'tests/qa-sli-kkp-owner-evidence-gate.mjs'
       - 'tests/qa-sli-kkp-wpp-live.mjs'
       - 'tests/qa-sli-kkp-download-observer.mjs'
+      - 'tests/qa-sli-kkp-owner-workflow-isolation.mjs'
+      - '.github/workflows/sli-owner-kkp-authenticated-smoke.yml'
       - '.github/workflows/sli-kkp-live-source-acceptance.yml'
   push:
     branches: [main]
@@ -40,6 +42,8 @@ on:
       - 'tests/qa-sli-kkp-owner-evidence-gate.mjs'
       - 'tests/qa-sli-kkp-wpp-live.mjs'
       - 'tests/qa-sli-kkp-download-observer.mjs'
+      - 'tests/qa-sli-kkp-owner-workflow-isolation.mjs'
+      - '.github/workflows/sli-owner-kkp-authenticated-smoke.yml'
       - '.github/workflows/sli-kkp-live-source-acceptance.yml'
   workflow_dispatch:
     inputs:
@@ -99,7 +103,7 @@ jobs:
           node --check scripts/probe_kkp_questionnaire_controls.mjs
           python3 -m py_compile scripts/convert_kkp_hatchery_xlsx_to_csv.py
           node --check scripts/kkp-owner-evidence-gate.mjs
-          node --test tests/qa-sli-kkp-wpp-live.mjs tests/qa-sli-kkp-visual-lab.mjs tests/qa-sli-kkp-hatchery-provincial.mjs tests/qa-sli-kkp-owner-evidence-gate.mjs tests/qa-sli-kkp-download-observer.mjs
+          node --test tests/qa-sli-kkp-wpp-live.mjs tests/qa-sli-kkp-visual-lab.mjs tests/qa-sli-kkp-hatchery-provincial.mjs tests/qa-sli-kkp-owner-evidence-gate.mjs tests/qa-sli-kkp-download-observer.mjs tests/qa-sli-kkp-owner-workflow-isolation.mjs
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - name: Test synthetic official XLSX to CSV source gate (never uses actual KKP bulk data)
