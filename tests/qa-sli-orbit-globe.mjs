@@ -21,6 +21,7 @@ test('animated globe is valid JavaScript without third party runtime or source c
   assert.doesNotMatch(javascript, /import\(|fetch\(|XMLHttpRequest|WebSocket|THREE|script\.src/);
   assert.match(javascript, /not live data/);
   assert.match(javascript, /radians\(-2\.5\).*radians\(118\)/);
+  assert.match(javascript, /drawIndonesia\(cx, cy, r\)/);
 });
 
 test('mobile and accessible motion safeguards exist', () => {
@@ -34,4 +35,64 @@ test('mobile and accessible motion safeguards exist', () => {
   assert.match(styles, /@media\(max-width:520px\)/);
   assert.match(styles, /@media\(prefers-reduced-motion:reduce\)/);
   assert.match(styles, /body\.sli-home-active/);
+});
+
+
+test('globe uses source-backed archipelago coastlines, not a single location marker', () => {
+  const found = javascript.match(/const INDONESIA_RINGS = (\[[^\n]+\]);/);
+  assert.ok(found, 'Missing bundled Indonesian polygon geometry');
+  const polygons = JSON.parse(found[1]);
+  assert.ok(polygons.length >= 150, 'At least 150 island/coastline polygons expected');
+  const coords = polygons.flat();
+  assert.ok(coords.length > 1700, 'Simplified coastline must preserve complex island shapes');
+  const longitudes = coords.map(([lon]) => lon);
+  const latitudes = coords.map(([, lat]) => lat);
+  assert.ok(Math.min(...longitudes) < 97, 'Sumatra is covered');
+  assert.ok(Math.max(...longitudes) > 140, 'Papua is covered');
+  assert.ok(Math.min(...latitudes) < -10 && Math.max(...latitudes) > 5, 'Nusa Tenggara and northern islands are covered');
+  assert.match(javascript, /sli-indonesia-province-38-ATTRIBUTION\.txt/, 'Coastline provenance link retained');
+  assert.match(javascript, /Math\.sin\(phase\) \* radians\(16\)/, 'Auto orbit must keep archipelago facing forward');
+  assert.match(index, /sli-orbit-globe\.js\?v=20261022-islands2/, 'Release cache bust expected');
+});
+
+test('real canvas renderer paints archipelago on initial reduced-motion frame', () => {
+  let goldenFills = 0, paths = 0;
+  let currentFill = '';
+  const drawing = {
+    createRadialGradient: () => ({ addColorStop() {} }),
+    setTransform() {}, clearRect() {}, beginPath() {}, arc() {}, stroke() {},
+    save() {}, restore() {}, ellipse() {}, setLineDash() {}, clip() {},
+    moveTo() { paths++ }, lineTo() { paths++ }, closePath() {}, fillText() {},
+    fill() { if (String(currentFill).includes('240, 180, 75')) goldenFills++ }
+  };
+  Object.defineProperty(drawing, 'fillStyle', {
+    get: () => currentFill, set: value => { currentFill = value }
+  });
+  const node = tag => ({
+    tag, children: [], dataset: {}, isConnected: true,
+    append(...children) { this.children.push(...children) },
+    replaceChildren(...children) { this.children = children },
+    setAttribute() {}, addEventListener() {}, removeEventListener() {},
+    getBoundingClientRect: () => ({ width: 365 }),
+    getContext: () => drawing
+  });
+  const root = node('host');
+  const fakeWindow = {
+    matchMedia: () => ({ matches: true, addEventListener() {}, removeEventListener() {} }),
+    devicePixelRatio: 1,
+    addEventListener() {}, removeEventListener() {}
+  };
+  const fakeDocument = {
+    documentElement: { lang: 'id' },
+    createElement: node,
+    getElementById: id => id === 'sliOrbitGlobe' ? root : null,
+    addEventListener() {}, removeEventListener() {}
+  };
+  assert.doesNotThrow(() => {
+    new Function('window', 'document', javascript)(fakeWindow, fakeDocument);
+    fakeWindow.initSLIOrbitGlobe();
+  });
+  assert.ok(goldenFills >= 1, 'Indonesian landmass painted in gold');
+  assert.ok(paths >= 150, 'Multiple island geometry paths rendered');
+  assert.ok(root.children.some(child => child.className === 'sli-orbit-source'), 'Attribution link mounted');
 });
