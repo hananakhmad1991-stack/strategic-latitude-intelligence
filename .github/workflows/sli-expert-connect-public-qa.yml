@@ -1,0 +1,41 @@
+name: SLI Expert Connect Public MVP QA
+on:
+  pull_request:
+    paths:
+      - 'sli-expert-connect.html'
+      - 'css/sli-expert-connect.css'
+      - 'js/sli-expert-connect.js'
+      - 'index.html'
+      - 'sli-research-ai.html'
+      - 'sli-membership.html'
+      - 'js/sli-navigation.js'
+      - 'tests/qa-sli-expert-connect.mjs'
+      - 'tests/qa-sli-expert-connect-browser.mjs'
+      - '.github/workflows/sli-expert-connect-public-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  expert-connect-public:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1 jsdom@26.1.0
+      - name: Find Chrome
+        run: echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
+      - name: Serve static site
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sli-expert-http.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:8765/sli-expert-connect.html >/dev/null && exit 0; sleep 1; done
+          exit 1
+      - name: Form, zero-roster and navigation contract
+        run: |
+          node --check js/sli-expert-connect.js
+          node --check js/sli-navigation.js
+          node --test tests/qa-sli-expert-connect.mjs tests/qa-sli-navigation-ui.mjs
+      - name: Browser acceptance at 360px, 390px and 1440px
+        run: node tests/qa-sli-expert-connect-browser.mjs

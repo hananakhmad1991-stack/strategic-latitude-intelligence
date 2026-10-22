@@ -77,7 +77,7 @@ function link(id,cls){const a=node('a',cls),identity=window.SLIEntityIdentity;if
 
 /* Unified SLI masthead for detailed dashboards. Index #home and Research AI
    retain their purpose-built headers. Other pages keep original data and tools. */
-function dashboardPage(){return path!=='sli-research-ai.html'&&path!=='sli-source-viewer.html'}
+function dashboardPage(){return path!=='sli-research-ai.html'&&path!=='sli-expert-connect.html'&&path!=='sli-source-viewer.html'}
 function mastLink(to,caption,current){
  const a=node('a','sli-platform-link',caption);a.href=to;
  if(current)a.setAttribute('aria-current','page');return a;
@@ -177,6 +177,7 @@ function renderPlatformMast(){
  primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
  primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'||path==='sli-issuer.html'));
  primary.append(mastLink('./sli-research-ai.html','DERGUBA AI',false));
+ primary.append(mastLink('./sli-expert-connect.html',text('Expert Connect','Carikan Pakar'),false));
  
  const tools=node('div','sli-platform-tools');
  // All specialist dashboards share the same persisted EN/ID preference as the homepage.
