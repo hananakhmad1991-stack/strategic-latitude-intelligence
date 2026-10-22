@@ -3,6 +3,9 @@ on:
   pull_request:
     paths:
       - 'data/sli-bps-welfare-2026.json'
+      - 'data/sli-bps-welfare-2026-reconciliation.json'
+      - 'scripts/audit_bps_welfare_secondary_reader.py'
+      - 'tests/test_bps_welfare_secondary_reader.py'
       - 'research-api/src/welfare-corpus.mjs'
       - 'research-api/src/owner-test-worker.mjs'
       - 'js/sli-bps-welfare-2026.js'
@@ -38,5 +41,9 @@ jobs:
         run: |
           python -m py_compile scripts/audit_bps_welfare_2026.py
           python -m unittest discover -s tests -p 'test_bps_welfare_2026_appendix_parser.py' -v
+      - name: Validate cross-PDF-engine parser discrepancy semantics
+        run: |
+          python -m py_compile scripts/audit_bps_welfare_secondary_reader.py
+          python -m unittest discover -s tests -p 'test_bps_welfare_secondary_reader.py' -v
       - name: Check BPS welfare data and integration contracts
         run: node --test tests/qa-bps-welfare-2026.mjs
