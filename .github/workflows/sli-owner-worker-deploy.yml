@@ -8,6 +8,8 @@ on:
       - 'tests/qa-sli-owner-handler-acceptance.mjs'
       - 'scripts/qa-owner-staging-live.mjs'
       - 'tests/qa-sli-owner-live-cli.mjs'
+      - 'scripts/sli-owner-private-evidence.mjs'
+      - 'tests/qa-sli-owner-private-evidence.mjs'
       - 'tests/test_sli_research_index_source.py'
       - 'scripts/build_research_unified_index.py'
       - 'data/sli-research-unified-index.json'
@@ -42,13 +44,14 @@ jobs:
         run: |
           node --check research-api/src/owner-test-worker.mjs
           node --check scripts/qa-owner-staging-live.mjs
+          node --check scripts/sli-owner-private-evidence.mjs
           node --check research-api/src/legal-provisions.mjs
           node --check research-api/src/legal-source-limited.mjs
           node --check js/sli-legal-provisions.js
           node --check research-api/src/legal-citation-audit.mjs
           node --check research-api/src/policy-corpus.mjs
           npx --yes esbuild@0.25.12 research-api/src/owner-test-worker.mjs --bundle --platform=neutral --format=esm --target=es2022 --outfile=/tmp/sli-owner-handler-acceptance.bundle.mjs
-          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs tests/qa-sli-owner-deploy-snapshot.mjs tests/qa-sli-owner-handler-acceptance.mjs tests/qa-sli-owner-live-cli.mjs tests/qa-sli-bps-focused-owner.mjs
+          node --test tests/qa-sli-policy-ai.mjs tests/qa-sli-legal-provisions.mjs tests/qa-sli-legal-source-limited.mjs tests/qa-sli-owner-deploy-snapshot.mjs tests/qa-sli-owner-handler-acceptance.mjs tests/qa-sli-owner-live-cli.mjs tests/qa-sli-owner-private-evidence.mjs tests/qa-sli-bps-focused-owner.mjs
 
       - uses: actions/setup-python@v5
         with:
