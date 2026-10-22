@@ -314,8 +314,15 @@ function aboutPage(){return `
 function homePortal(){return `<section class="sli-portal" aria-label="SLI intelligence portal">
  <div class="sli-portal-hero">
   <div class="sli-portal-eyebrow">INDONESIA · INDEPENDENT INTELLIGENCE</div>
-  <h2>Indonesia intelligence.<br><em>For better decisions.</em></h2>
-  <p>Explore reliable research across Indonesia’s economy, energy, investment, technology and strategic risks—without searching through an endless dashboard.</p>
+  <h2><span class="sli-copy-en">Indonesia Intelligence.</span><span class="sli-copy-id">Intelijen Strategis Indonesia.</span><br><em><span class="sli-copy-en">Evidence for better decisions.</span><span class="sli-copy-id">Bukti untuk keputusan yang lebih baik.</span></em></h2>
+  <p class="sli-copy-en">Explore Indonesia's economy, energy, investment, food, maritime affairs, technology, policy and strategic risks in one connected intelligence workspace. Follow every insight from sector and region to company, original source and analysis.</p>
+  <p class="sli-copy-id">Telusuri ekonomi, energi, investasi, pangan, kelautan, teknologi, kebijakan, dan risiko strategis Indonesia dalam satu ruang kerja intelijen terpadu. Hubungkan setiap temuan dari sektor dan daerah ke perusahaan, sumber asli, dan analisis.</p>
+  <nav class="sli-home-journeys" aria-label="Start an intelligence research journey">
+    <a href="#sliPortalSectors"><strong><span class="sli-copy-en">Explore sectors</span><span class="sli-copy-id">Jelajahi sektor</span></strong><small><span class="sli-copy-en">National indicators and sector evidence</span><span class="sli-copy-id">Indikator nasional dan bukti sektoral</span></small></a>
+    <a href="./provincial-intelligence.html"><strong><span class="sli-copy-en">Explore regions</span><span class="sli-copy-id">Jelajahi daerah</span></strong><small><span class="sli-copy-en">Provinces, maps and comparisons</span><span class="sli-copy-id">Provinsi, peta dan perbandingan</span></small></a>
+    <a href="./sli-entities.html"><strong><span class="sli-copy-en">Find companies &amp; actors</span><span class="sli-copy-id">Cari perusahaan &amp; aktor</span></strong><small><span class="sli-copy-en">Issuers, ownership and projects</span><span class="sli-copy-id">Emiten, kepemilikan dan proyek</span></small></a>
+    <a href="./sli-sector-data-library.html"><strong><span class="sli-copy-en">Verify sources</span><span class="sli-copy-id">Verifikasi sumber</span></strong><small><span class="sli-copy-en">Dates, methods and limitations</span><span class="sli-copy-id">Tanggal, metode dan keterbatasan</span></small></a>
+  </nav>
   <div class="sli-portal-hero-actions">
    <button type="button" class="sli-portal-primary" data-sli-home-search aria-label="Search all SLI dashboards">⌕ &nbsp; Search data, indicators and projects <span aria-hidden="true">↗</span></button>
    <a class="sli-portal-secondary" href="./sli-research-ai.html">✦ Research AI <span>↗</span></a>
@@ -332,6 +339,7 @@ function homePortal(){return `<section class="sli-portal" aria-label="SLI intell
   </div>
   <p class="sli-portal-metrics-note">Historical, source-dated observations — not market ticks or live estimates. Check the period shown on each metric.</p>
  </section>
+ <details class="sli-home-deep-dive"><summary><span class="sli-copy-en">Expand market monitoring and detailed charts</span><span class="sli-copy-id">Tampilkan pemantauan pasar dan grafik terperinci</span></summary><p><span class="sli-copy-en">Detailed market panels are optional. Sector and company research remain accessible from the starting paths above.</span><span class="sli-copy-id">Panel pasar terperinci bersifat opsional. Riset sektor dan perusahaan tetap tersedia melalui pilihan di atas.</span></p></details>
  <section id="sliHomeAtlas" aria-label="Indonesia interactive atlas"></section>
  <section class="sli-market-home" aria-label="IHSG index value and historical chart from TradingView"><div id="sliHomeIHSG" role="region" aria-label="IDX Composite quoted price and chart"><p>Loading IHSG index from provider…</p></div></section>
  <section class="sli-portal-market" aria-label="IDX-first Indonesian market overview and optional global heatmap">
@@ -341,7 +349,7 @@ function homePortal(){return `<section class="sli-portal" aria-label="SLI intell
   <div id="sliHomeIDXSectors" role="region" aria-label="IDX watchlist filtered by SLI strategic sector"><p class="sli-idx-sectoral-loading">Loading sourced IDX sector issuers…</p></div>
  </section>
  <section class="sli-market-news-home" aria-label="Source-attributed SLI sector issuer news"><div id="sliHomeIssuerNews" role="region" aria-label="Strategic issuer news monitoring"><p>Loading issuer news…</p></div></section>
- <div class="sli-portal-heading" id="sliPortalSectors"><h3>Explore by sector</h3><span>Choose a focused dashboard instead of scrolling a single long page</span></div>
+ <div class="sli-portal-heading" id="sliPortalSectors"><h3>Explore by sector</h3><span>Sector detail, regional context, organizations and original evidence in one connected workflow</span></div>
  <div class="sli-portal-sectors">
   
   <div class="sli-portal-sector sli-portal-topic-card"><a href="./indonesia-macroeconomic-intelligence.html" class="sli-portal-topic-main"><span class="sli-portal-glyph" aria-hidden="true">↗</span><strong>Macroeconomic Intelligence</strong><span>GDP, inflation, trade and monetary context</span><small>National indicators →</small></a><nav class="sli-portal-topic-links" aria-label="Related source data"><a href="./sli-sector-data-library.html#socio" data-id="Data sosial-ekonomi provinsi ↗" data-en="Provincial socioeconomic data ↗">Provincial socioeconomic data ↗</a></nav></div>
