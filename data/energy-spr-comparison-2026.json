@@ -1,0 +1,375 @@
+{
+  "title": "Emergency oil stock coverage — 25-country evidence comparison (including Indonesia)",
+  "dataset_version": "2026-10-22-v1",
+  "reference_date": "2025-12-31",
+  "last_reviewed": "2026-10-22",
+  "units": "days",
+  "important_methodology": "IEA member countries use DAYS OF NET OIL IMPORTS (IEA emergency stock methodology); Indonesia uses OPERATIONAL REFINED FUEL STOCK DAYS divided by daily domestic sales. They are not identical definitions, so Indonesia is NOT ranked against IEA members or marked as legally failing the IEA 90-day obligation. All IEA values except New Zealand are rounded graphical estimates (circa five-day steps) read from a third-party reproduction of IEA December 2025 chart. They are NOT exact machine-extracted IEA data and should not support precise gaps or statistical rankings.",
+  "iea_standard": {
+    "days": 90,
+    "denominator": "previous-year average daily net oil imports (crude-oil equivalent), including eligible government, agency and industry stocks",
+    "applies_to": "IEA member net oil importers",
+    "indonesia_member_type": "IEA Association country; not subject to the IEA member 90-day legal commitment",
+    "source": "https://www.iea.org/data-and-statistics/data-tools/oil-stocks-of-iea-countries",
+    "membership_source": "https://www.iea.org/countries/indonesia"
+  },
+  "cross_country_chart": {
+    "observation_date": "2025-12-31",
+    "publication_date": "2026-03-23",
+    "observed_population": "Selected 24 IEA net-importing countries from IEEFA Figure 3; selected subset, not all countries worldwide",
+    "iea_importer_average_days": 141,
+    "average_precision": "reported in IEEFA paragraph",
+    "chart_precision": "Approximate integer readings rounded to about 5 days except New Zealand, whose 88 days is explicitly stated in prose",
+    "source": "https://ieefa.org/sites/default/files/2026-03/IEEFA%20BN_The%20perfect%20storm%20to%20boost%20energy%20security_Mar26.pdf",
+    "figure_page": 4
+  },
+  "indonesia": {
+    "operational_fuel_days_2025": 20.76,
+    "operational_fuel_days_2024": 22.25,
+    "operational_lpg_days_2025": 14.5,
+    "operational_lpg_days_2024": 15.44,
+    "operational_target_2020_2024_days": 23,
+    "official_fuel_statement_2026_03_days": 23,
+    "official_fuel_statement_date": "2026-03-04",
+    "reported_storage_capacity_ceiling_days_2026_03": 25,
+    "iea_equivalent_net_import_cover_days": null,
+    "national_strategic_oil_stock_days_realised": null,
+    "energy_buffer_stock_days_realised": null,
+    "notes": "2025 is a published annual operational coverage indicator. March 2026 23 days is a dated ministerial statement about reported fuel availability, not the same statistical observation or a verified series for the whole year. No official comparable IEA-methodology net-import stock-cover days for Indonesia verified; strategic/buffer actual stock days remain null.",
+    "official_2025_source": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf",
+    "official_march_2026_source": "https://setneg.go.id/baca/index/cadangan_bbm_nasional_aman_presiden_prabowo_perintahkan_bangun_storage_baru_perkuat_ketahanan_energi",
+    "official_target_source": "https://www.peraturan.go.id/files/permen-esdm-no-20-tahun-2025.pdf",
+    "law_source": "https://peraturan.bpk.go.id/Details/297377",
+    "operational_basis": "BBM operating stock / average daily BBM distribution; stocks may include refinery, tanker, terminal/depot; not the IEA net-imports denominator",
+    "strategic_buffer_cpe_targets": {
+      "legal_status": "established_target_not_proof_of_stocks_in_storage",
+      "completion_horizon_year": 2035,
+      "gasoline_million_barrels": 9.64,
+      "lpg_thousand_metric_tonnes": 525.78,
+      "crude_million_barrels": 10.17,
+      "authority": "Perpres No. 96/2024, articles 2, 6 and 7",
+      "official_law_pdf": "https://peraturan.bpk.go.id/Download/357646/Perpres%20Nomor%2096%20Tahun%202024.pdf"
+    }
+  },
+  "countries": [
+    {
+      "code": "NL",
+      "country": "Netherlands",
+      "days": 470,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "DK",
+      "country": "Denmark",
+      "days": 370,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "FI",
+      "country": "Finland",
+      "days": 290,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "HU",
+      "country": "Hungary",
+      "days": 215,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "JP",
+      "country": "Japan",
+      "days": 210,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "KR",
+      "country": "South Korea",
+      "days": 200,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "SE",
+      "country": "Sweden",
+      "days": 175,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "BE",
+      "country": "Belgium",
+      "days": 170,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "CH",
+      "country": "Switzerland",
+      "days": 165,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "SK",
+      "country": "Slovak Republic",
+      "days": 165,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "IT",
+      "country": "Italy",
+      "days": 135,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "GR",
+      "country": "Greece",
+      "days": 135,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "DE",
+      "country": "Germany",
+      "days": 130,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "GB",
+      "country": "United Kingdom",
+      "days": 125,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "PL",
+      "country": "Poland",
+      "days": 120,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "PT",
+      "country": "Portugal",
+      "days": 120,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "CZ",
+      "country": "Czechia",
+      "days": 120,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "FR",
+      "country": "France",
+      "days": 115,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "LV",
+      "country": "Latvia",
+      "days": 115,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "AT",
+      "country": "Austria",
+      "days": 115,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "IE",
+      "country": "Ireland",
+      "days": 110,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "ES",
+      "country": "Spain",
+      "days": 95,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "NZ",
+      "country": "New Zealand",
+      "days": 88,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "reported_exact_in_ieefa_text",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "AU",
+      "country": "Australia",
+      "days": 45,
+      "group": "iea_net_imports",
+      "stock_type": "eligible emergency oil stocks (government/agency/industry)",
+      "denominator": "days of net petroleum imports",
+      "as_of": "2025-12-31",
+      "value_status": "graphical_approximation",
+      "source_id": "ieefa_figure3"
+    },
+    {
+      "code": "ID",
+      "country": "Indonesia",
+      "days": 20.76,
+      "group": "indonesia_operational",
+      "stock_type": "commercial/industry BBM operational stocks",
+      "denominator": "stock BBM / daily domestic BBM distribution",
+      "as_of": "2025-12-31",
+      "value_status": "official_annual_report",
+      "source_id": "esdm_2025"
+    }
+  ],
+  "sources": [
+    {
+      "id": "iea_rules",
+      "publisher": "IEA",
+      "title": "Oil Stocks of IEA Countries – requirement and methodology",
+      "url": "https://www.iea.org/data-and-statistics/data-tools/oil-stocks-of-iea-countries",
+      "type": "primary_methodology"
+    },
+    {
+      "id": "ieefa_figure3",
+      "publisher": "IEEFA, reproducing IEA data",
+      "title": "Figure 3: Oil stocks, December 2025",
+      "url": "https://ieefa.org/sites/default/files/2026-03/IEEFA%20BN_The%20perfect%20storm%20to%20boost%20energy%20security_Mar26.pdf",
+      "type": "secondary_chart"
+    },
+    {
+      "id": "esdm_2025",
+      "publisher": "Ditjen Migas / ESDM",
+      "title": "Laporan Kinerja 2025 – Tabel 16, BBM and LPG operational stocks",
+      "url": "https://www.esdm.go.id/assets/media/content/content-laporan-kinerja-ditjen-minyak-dan-gas-bumi-tahun-2025.pdf",
+      "type": "primary_statistic"
+    },
+    {
+      "id": "setneg_march2026",
+      "publisher": "Setneg",
+      "title": "4 March 2026 minister's statement on BBM stocks/storage",
+      "url": "https://setneg.go.id/baca/index/cadangan_bbm_nasional_aman_presiden_prabowo_perintahkan_bangun_storage_baru_perkuat_ketahanan_energi",
+      "type": "official_statement"
+    },
+    {
+      "id": "perpres_96_2024",
+      "publisher": "BPK / Republic of Indonesia",
+      "title": "Presidential Regulation 96/2024 – energy buffer stock targets",
+      "url": "https://peraturan.bpk.go.id/Details/297377",
+      "type": "primary_law"
+    },
+    {
+      "id": "iea_association",
+      "publisher": "IEA",
+      "title": "Indonesia — Association country",
+      "url": "https://www.iea.org/countries/indonesia",
+      "type": "primary_membership"
+    }
+  ]
+}
