@@ -12,6 +12,11 @@ async function check(name,route,viewport,callback){
  page.on("pageerror",e=>errors.push(e.message));
  try{
   await page.goto(BASE+"/"+route,{waitUntil:"domcontentloaded",timeout:30000});
+  if(route==="sli-research-ai.html"){
+   const extra=page.locator("#raFoodInsights");
+   assert.equal(await extra.getAttribute("open"),null,"Food lens should not obstruct the chat-first question");
+   await extra.locator("summary").click();
+  }
   await page.locator("#sliFoodImpactLens .sli-fi-metric").first().waitFor({timeout:27000});
   assert.equal(await page.locator("#sliFoodImpactLens .sli-fi-metric").count(),4);
   await callback(page);
