@@ -17,7 +17,7 @@ const E=(t,c,txt)=>{const n=document.createElement(t);if(c)n.className=c;if(txt!
 const route="https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-issuer.html";
 const priority={
  energy:["MEDC","PGAS","AKRA","PGEO","BREN","ELSA","TPIA","BRPT","ESSA"],
- minerals:["ANTM","AMMN","INCO","MDKA","MBMA","NCKL","TINS","BRMS","HRUM"],
+ minerals:["ANTM","BRMS","AMMN","INCO","MDKA","MBMA","NCKL","TINS","HRUM"],
  coal:["PTBA","ADRO","AADI","ITMG","BYAN","BUMI","INDY","GEMS","DSSA"],
  food:["INDF","ICBP","CPIN","JPFA","MYOR","AALI","UNVR","CMRY","DSNG"],
  technology:["TLKM","ISAT","EXCL","GOTO","DCII","MTEL","TOWR","TBIG","EMTK"],

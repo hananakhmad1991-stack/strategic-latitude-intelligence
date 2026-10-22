@@ -32,6 +32,7 @@ test("Sector watchlist is restricted to SLI IDX issuers and global heatmap is ex
  assert.equal(minerals.tabs.length,1);assert.equal(minerals.tabs[0].title,"Mineral");
  const allIds=new Set(minerals.tabs[0].symbols.map(x=>x.s));
  assert.ok(allIds.has("IDX:ANTM"));
+ assert.ok(allIds.has("IDX:BRMS"),"BRMS must appear without expanding secondary ticker lists");
  const home=ui.homeIDXConfig();
  assert.ok(home.tabs.length>=3&&home.tabs.every(t=>t.symbols.every(x=>x.s.startsWith("IDX:"))));
  const general=ui.heatmapConfig();
@@ -52,7 +53,7 @@ test("Sector-only ticker buttons lead to a specific SLI company dossier instead 
  const route=issuer();
  const s=read("js/sli-idx-sector-watchlist.js"),html=read("sli-issuer.html"),code=read("js/sli-issuer.js");
  const extract=u=>route.tickerFrom(new URL(u,"https://hananakhmad1991-stack.github.io/"));
- for(const ticker of ["ANTM","TLKM","PTBA","INDF","GOTO","AMMN"]){
+ for(const ticker of ["ANTM","BRMS","ADMR","TLKM","PTBA","INDF","GOTO","AMMN"]){
   assert.equal(extract("https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-issuer.html?ticker="+ticker),ticker);
   assert.equal(extract("https://hananakhmad1991-stack.github.io/strategic-latitude-intelligence/sli-issuer.html?tvwidgetsymbol=IDX%3A"+ticker),ticker);
   assert.ok(data.records.find(x=>x.ticker===ticker));
@@ -74,7 +75,7 @@ test("Historical provider price chart is integrated in the selected IDX issuer's
  const script=read("js/sli-issuer.js");
  const css=read("css/sli-issuer.css");
  const html=read("sli-issuer.html");
- assert.match(html,/js\/sli-issuer\.js\?v=20261022-actorsfinance3/);
+ assert.match(html,/js\/sli-issuer\.js\?v=20261022-brmsdiscovery4/);
  assert.match(html,/css\/sli-issuer\.css\?v=20261022-actorsfinance2/);
  assert.equal(route.historicalChartWidget,"https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js");
  for(const ticker of ["ANTM","PTBA","MEDC","TLKM","INDF","GOTO"]){

@@ -50,6 +50,10 @@ def validate(payload):
             raise ValueError("Unattributed IDX issuer " + t)
         if row.get("market_cap") is not None:
             raise ValueError("Issuer directory must not invent market capitalization")
+        if row.get("verification") == "official_ksei_security_listing":
+            expected_ksei = "https://web.ksei.co.id/services/registered-securities/shares/lc/" + t
+            if row.get("listing_source_url") != expected_ksei:
+                raise ValueError("KSEI verification requires exact public evidence link for " + t)
     if payload.get("source_status") == "official_exchange_bulk_snapshot" and len(rows) < 500:
         raise ValueError("Official snapshot unexpectedly too small")
     return len(rows)
@@ -105,6 +109,12 @@ def build_snapshot(official, previous, as_of):
             "revenue": retained("revenue"),
             "net_income": retained("net_income"),
             "total_assets": retained("total_assets"),
+            # Preserve independently checked public-security and IR source locators;
+            # direct security-registration proof is NOT an ultimate-owner disclosure.
+            "listing_source_url": old.get("listing_source_url"),
+            "listing_source_kind": old.get("listing_source_kind"),
+            "investor_relations_url": old.get("investor_relations_url"),
+            "sector_basis": old.get("sector_basis"),
         }
     if len(out) < 500:
         raise ValueError("Insufficient valid names after official API filtering")

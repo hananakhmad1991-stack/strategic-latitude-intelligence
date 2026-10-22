@@ -9,8 +9,8 @@ const groups=JSON.parse(get('data/sli-corporate-group-registry.json'));
 const relations=JSON.parse(get('data/sli-corporate-evidence-relationships.json'));
 const assets=JSON.parse(get('data/sli-issuer-actor-assets.json'));
 
-test('260-ticker catalog exposes 12 sectors while retaining explicit not-a-census warning',()=>{
- assert.equal(issuers.records.length,260);
+test('267-ticker catalog exposes 12 sectors while retaining explicit not-a-census warning',()=>{
+ assert.equal(issuers.records.length,267);
  const sectors=new Set(issuers.records.map(x=>x.sector));
  assert.equal(sectors.size,12);
  const s=get('js/sli-idx-sector-watchlist.js');
@@ -19,7 +19,7 @@ test('260-ticker catalog exposes 12 sectors while retaining explicit not-a-censu
  assert.match(s,/issuerQuery=/);
  assert.match(s,/NOT the full IDX issuer universe/);
  assert.match(s,/candidates.length/);
- assert.match(get('index.html'),/js\/sli-idx-sector-watchlist\.js\?v=20261022-financecoverage3/);
+ assert.match(get('index.html'),/js\/sli-idx-sector-watchlist\.js\?v=20261022-brmsdiscovery4/);
 });
 
 test('dated fundamentals have explicit primary-source provenance and do not invent N/A',()=>{
@@ -70,7 +70,7 @@ test('direct owner, beneficial owner, PSC and country links are rigorously separ
  assert.match(js,/participating_interest_pct/);
  assert.match(js,/source_period/);
  assert.match(get('js/sli-entities.js'),/assetProfiles\.get\(n\.ticker\)/);
- assert.match(get('sli-issuer.html'),/20261022-actorsfinance3/);
+ assert.match(get('sli-issuer.html'),/20261022-brmsdiscovery4/);
 });
 
 test('IDX dossier renders verified revenue plus source-dated shareholder and concession actors', async ()=>{
@@ -137,4 +137,30 @@ test('BRI 2025 audited-period financial highlights retain measurement semantics'
  assert.match(bri.financial_period, /FY2025/);
  assert.equal(bri.revenue, null, 'Bank interest must not become generic industrial revenue');
  assert.match(bri.financial_source_url, /^https:\/\/www\.ir-bri\.com\/financial_highlights\.html$/);
+});
+
+
+test('BRMS and seven missing strategic tickers have verifiable KSEI source links',()=>{
+ const listing=['BRMS','ADMR','BIPI','RATU','HUMI','GGRP','DGWG','PANI'];
+ assert.equal(new Set(issuers.records.map(x=>x.ticker)).size,267);
+ for(const ticker of listing){
+  const row=issuers.records.find(x=>x.ticker===ticker);
+  assert.ok(row, 'Missing ticker '+ticker);
+  assert.equal(row.exchange,'IDX');
+  assert.equal(row.verification,'official_ksei_security_listing');
+  assert.equal(row.listing_source_url,'https://web.ksei.co.id/services/registered-securities/shares/lc/'+ticker);
+  assert.ok(!row.financial_period || row.financial_source_url, 'Never invent financial evidence for '+ticker);
+  assert.equal(row.market_cap,null);
+ }
+ assert.equal(issuers.records.find(x=>x.ticker==='BRMS').sector,'minerals');
+ assert.match(issuers.records.find(x=>x.ticker==='BRMS').investor_relations_url,/^https:\/\//);
+ const watchlist=get('js/sli-idx-sector-watchlist.js');
+ assert.match(watchlist,/const globalPanel=E\("div","sli-idx-global-search"\)/);
+ assert.match(watchlist,/const suggested=\["BRMS"/);
+ assert.match(watchlist,/remaining\.open=true/);
+ const priority=get('js/sli-idx-tradingview.js');
+ assert.match(priority,/minerals:\["ANTM","BRMS"/);
+ const dossier=get('js/sli-issuer.js');
+ assert.match(dossier,/official_ksei_security_listing/);
+ assert.match(dossier,/sourceLink\(sources,data\.listing_source_url/);
 });
