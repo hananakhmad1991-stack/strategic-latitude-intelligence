@@ -37,6 +37,8 @@ try{
  const fields={category:get("KKP_EXPORT_CATEGORY"),purpose:get("KKP_EXPORT_PURPOSE"),
   format:get("KKP_EXPORT_FORMAT"),type:get("KKP_EXPORT_DATA_TYPE"),
   rating:get("KKP_EXPORT_RATING"),review:get("KKP_EXPORT_REVIEW")};
+ if(!/^[1-5]$/.test(fields.rating))throw Error("kkp_rating_selection_required");
+ if(Number(fields.rating)<=3&&fields.review.trim().length<15)throw Error("kkp_review_required_for_low_rating");
  if(!validFormSelections(fields))throw Error("invalid_or_unapproved_survey_choices");
  stage="launch_browser";
  browser=await chromium.launch({executablePath:get("CHROME_BIN")||"/usr/bin/google-chrome",headless:true,
@@ -109,7 +111,7 @@ try{
 }catch(e){
  // Stage-only diagnostics keep form contents, email and Playwright page fragments
  // out of the publicly visible audit and the runner console.
- const recognized=new Set(["operator_consent_missing","genuine_contact_secrets_required","invalid_or_unapproved_survey_choices","kkp_form_http_unavailable","kkp_rating_control_not_found","suspicious_export_file_size","xlsx_schema_or_1387_row_count_failed","unsupported_source_download_format"]);
+ const recognized=new Set(["operator_consent_missing","genuine_contact_secrets_required","invalid_or_unapproved_survey_choices","kkp_rating_selection_required","kkp_review_required_for_low_rating","kkp_form_http_unavailable","kkp_rating_control_not_found","suspicious_export_file_size","xlsx_schema_or_1387_row_count_failed","unsupported_source_download_format"]);
  const raw=String(e?.message||"");
  review.error_code=recognized.has(raw)?raw:"failure_at_"+stage;
  review.failure_stage=stage;
