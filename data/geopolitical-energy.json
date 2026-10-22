@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-22T00:46:43.476033+00:00",
+  "checked_at_utc": "2026-10-22T03:36:54.007779+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -31,7 +31,7 @@
       "title": "Hormuz could be 'redundant' in five years, replaced by new routes, HSBC CEO says - Reuters",
       "publisher": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdkVTcjIwVzllN1R2X0UtNUdya0l1Y1pNWnc4eTItVF9lSVphdC1tMVRHZXdxbEV5dFZ2RjBDZm51Y1NVbU54Q0pHaGpuVTVha1F4ajg2NEY1Y3U1dnZxYTBJVjlTazNObkJnZF94dHRKTkRrazlEMzBSeklRMmlESWNwUk1jTC00YjJhRXFQYXUzMzVjTnVxTVI5V1VfRkNOOENGaHdkWEFZOG9MY0ZLVUU1M2Zib00xc3BHQkFHWUh4ZWNMZUNpcEtR?oc=5",
-      "indexed_at_utc": "2026-10-20T06:14:00+00:00",
+      "indexed_at_utc": "2026-10-20T07:47:56+00:00",
       "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -50,6 +50,23 @@
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5saW1RbXc3clRkOFRtSGY3bVB0ZTFVX3lOUktna09IYXppc052UVFHU0ltVU9OcFJsM2pVeDdwRFdVUU1QaTNReGJveUJEc0JlY1JIdl9hM2hXR05Xei1lX0Y2UUNSNEh4Q0ktdFZQUlFlZw?oc=5",
       "indexed_at_utc": "2026-10-20T22:13:34+00:00",
       "impact_pathway": "Routing changes -> transit time and shipping insurance -> delivered commodity cost",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Middle East energy infrastructure",
+      "topic_id": "oil_supply",
+      "type": "Infrastructure",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "upstream",
+      "title": "Brent holds near $110 as oil climbs on Houthi strikes on Saudi Aramco oilfield - CNBC TV18",
+      "publisher": "CNBC TV18",
+      "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxNMXRDUGpqQmNDbzUwZ2Y3ZzFqNzR4aWJtYzhGVmU5WExETFdUN3E2SWNXWlVOdFI1Rmx2Rk9aVGxxM2xRNy02UTVUSllyeGhfTVVmWkNvWmpmdVVpSy1QZTV1QWFTMElBajFiVmdQbU9QSDR4Ym1URU5ZdURfYmROQ1Z6T0t4emxaZmNGcFpMUWdBUTJvc2pPYlJnWC1WNDhjcGhYaDJNZUtGTWRLU1hRemhfZDdFdXJ3czhOal9YdG1PX0VDX1hrUmlpcFV5M1BzbVZkTzB6MHp5ak41Z3JzT2RUWTA3Z0cwYU1aWU9kdlJmNEVIZXhMbWZ30gH_AUFVX3lxTE1weXh2YmdaSUwwcU82TzNnVF9LRlc5aDNCQTBQZE1oeVdmd01yQ21hV1R5NWxxM3NVUTJxaktmb3REUnFuY19IbEEzc3FJS0p5dFM1eDFnY2szNFp6b3lGNlNHZkMwLUdEV3NrTHo3bzBSZV9Va01mNjlCVnFaZkhRRW8zWDNNanY0LW1YT2p5TEhyQXdWR2M2QXNiZ05aZUxVRm9yWl9nd3JSNHp0SkRzaTM2aklQbmxBQUhtWllncFVJWS1FWHJoamRkZ3dkMzNLanJHSEVLRmFaYkYtRjBoVERnUDdwc2Q2amlYWXNJWF85eHlmcF95bF94cFVOTQ?oc=5",
+      "indexed_at_utc": "2026-10-22T01:02:51+00:00",
+      "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -82,7 +99,7 @@
       "title": "North Sea: UK government agrees to drilling at Jackdaw gas field - BBC",
       "publisher": "BBC",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1LV3k4UFpTRUpDUy1oTnZaOEhmbHdJWXh5eHZ2OEFKRlJrUVNfbkxNQWRPRWoySEN3cXVEZVVOUzJzYzF5ZHc1Szk2czJBdDN3UjBmcU81TjJlcURPNmowZ3BPNnA?oc=5",
-      "indexed_at_utc": "2026-10-21T06:56:45+00:00",
+      "indexed_at_utc": "2026-10-21T07:02:26+00:00",
       "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -174,7 +191,7 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 8,
+    "oil_gas": 9,
     "coal": 1,
     "nre": 1,
     "electricity": 0,
