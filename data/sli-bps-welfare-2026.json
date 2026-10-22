@@ -31,7 +31,20 @@
     "status": "curated_small_subset_require_visual_cell_audit",
     "notes": "All 165 core tables have 39 recognized national/provincial rows and stable numerical column counts after excluding PDF table-id artifacts. Structural QA does not validate each cell or the 9.x sampling error appendices.",
     "sampling_error_metric_count": 6,
-    "sampling_error_all_133_tables_status": "private_full_machine_extraction_pending_visual_verification"
+    "sampling_error_all_133_tables_status": "private_full_machine_extraction_pending_visual_verification",
+    "cross_engine_reconciliation": {
+      "status": "sampled_panels_structurally_classified_not_all_cells_visually_checked",
+      "reference": "data/sli-bps-welfare-2026-reconciliation.json",
+      "sampled_panels": 31,
+      "region_rows_compared": 1209,
+      "exact_token_rows": 875,
+      "numeric_equal_other_token_difference_rows": 26,
+      "secondary_extractor_omission_rows": 308,
+      "omitted_secondary_numeric_tokens": 354,
+      "conflicting_observed_numeric_values": 0,
+      "per_cell_visual_audit_complete": false,
+      "interpretation": "All 308 numeric differences on sampled panels are secondary extractor omissions relative to PyMuPDF, not an established conflict in printed source values. Still require printed-page manual verification."
+    }
   },
   "years": [
     2022,

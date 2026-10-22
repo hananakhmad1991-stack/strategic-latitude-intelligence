@@ -181,3 +181,22 @@ test("Full appendix index is structural internal review metadata, not 24,921 pub
  assert.match(ai,/standard_error_pp/);
  assert.match(from("sli-welfare-2026.html"),/24\.921 kandidat/);
 });
+
+test("BPS sampling error second-engine reconciliation remains an unverified source-text audit",()=>{
+ const q=JSON.parse(from("data/sli-bps-welfare-2026-reconciliation.json"));
+ assert.equal(q.comparisons.sampled_panels,31);
+ assert.equal(q.comparisons.region_rows_compared,1209);
+ assert.equal(q.comparisons.exact_full_token_arrays,875);
+ assert.equal(q.comparisons.equal_numeric_different_missing_or_footnotes,26);
+ assert.equal(q.comparisons.secondary_parser_rows_with_numeric_omissions,308);
+ assert.equal(q.comparisons.secondary_parser_numeric_tokens_omitted,354);
+ assert.equal(q.comparisons.non_subsequence_numeric_disagreements,0);
+ assert.equal(q.comparisons.numeric_value_substitutions_on_shared_tokens,0);
+ assert.equal(q.comparisons.exact_full_token_arrays+
+  q.comparisons.equal_numeric_different_missing_or_footnotes+
+  q.comparisons.secondary_parser_rows_with_numeric_omissions,q.comparisons.region_rows_compared);
+ assert.equal(data.quality.cross_engine_reconciliation.per_cell_visual_audit_complete,false);
+ assert.equal(data.quality.cross_engine_reconciliation.omitted_secondary_numeric_tokens,354);
+ assert.match(from("sli-welfare-2026.html"),/308 baris dengan 354 token/);
+});
+
