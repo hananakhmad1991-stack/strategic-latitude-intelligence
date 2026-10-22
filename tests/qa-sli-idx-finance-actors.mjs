@@ -105,3 +105,26 @@ test('IDX dossier renders verified revenue plus source-dated shareholder and con
  assert.match(visible,/BELUM TERVERIFIKASI/);
  assert.match(visible,/2025/);
 });
+
+test('asset rights and cross-border actors preserve source-backed relation types',()=>{
+ const allowedRights=new Set(['oil_gas_psc','mining_iupk','mining_iup','other_verified_right']);
+ const allowedRelations=new Set(['reported_operator_and_participating_interest','permit_holder','reported_participating_interest','reported_operator']);
+ for(const record of assets.records){
+  assert.match(record.ticker,/^[A-Z0-9]{4}$/);
+  assert.ok(issuers.records.some(x=>x.ticker===record.ticker),'Asset dossier must reference an indexed issuer');
+  assert.equal(record.beneficial_owner_status,'not_independently_verified');
+  for(const right of record.rights||[]){
+   assert.ok(allowedRights.has(right.type),'Unclassified concession type: '+right.type);
+   assert.ok(allowedRelations.has(right.relation),'Unknown legal right relationship: '+right.relation);
+   assert.ok(right.source_period&&/^https:\/\//.test(right.source_url));
+   assert.ok(right.region,'Geographic region must be named before mapping the right');
+   assert.ok(right.participating_interest_pct==null||(right.participating_interest_pct>=0&&right.participating_interest_pct<=100));
+   assert.ok(right.area_ha==null||right.area_ha>0);
+  }
+  for(const link of record.cross_border_links||[]){
+   assert.ok(link.actor&&link.country&&link.relationship);
+   assert.match(link.source_url,/^https:\/\//);
+   assert.notEqual(link.relationship,'verified_ultimate_beneficial_owner','Corporate jurisdiction cannot establish a natural-person UBO');
+  }
+ }
+});
