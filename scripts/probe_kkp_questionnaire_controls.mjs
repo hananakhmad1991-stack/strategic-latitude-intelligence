@@ -3,7 +3,7 @@
  */
 import fs from "node:fs";
 import {chromium} from "playwright-core";
-import {KKP_FORM_KEYS,selectKKPDropdown} from "./kkp-questionnaire-controls.mjs";
+import {KKP_FORM_KEYS,selectKKPDropdown,selectKKPRating} from "./kkp-questionnaire-controls.mjs";
 const URL="https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan";
 const values={category:"Umum",purpose:"Penelitian",format:"CSV",type:"Produksi Hasil Kelautan dan Perikanan"};
 const out="artifacts/sli-kkp-questionnaire-public-control-probe.json";
@@ -26,7 +26,12 @@ try{
   await selectKKPDropdown(page,modal,i,values[key]);
   report.selected_fields.push(key);
  }
- report.status="all_four_official_dropdowns_selected_no_submission";
+ // Select and verify the visible rating widget without filling contact fields,
+ // writing a review or submitting the KKP questionnaire.
+ stage="select_rating_control";
+ await selectKKPRating(modal,"4");
+ report.rating_widget_checked=true;
+ report.status="all_four_dropdowns_and_rating_selected_no_submission";
  await context.close();
 }catch{
  report.status="control_selection_failed";
@@ -37,4 +42,4 @@ try{
  fs.writeFileSync(out,JSON.stringify(report,null,2)+"\n");
  console.log("KKP QUESTIONNAIRE CONTROLS SAFE PROBE",JSON.stringify(report));
 }
-if(report.status!=="all_four_official_dropdowns_selected_no_submission")process.exitCode=1;
+if(report.status!=="all_four_dropdowns_and_rating_selected_no_submission")process.exitCode=1;
