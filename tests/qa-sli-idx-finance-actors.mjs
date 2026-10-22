@@ -146,7 +146,7 @@ test('BRMS and representative issuers across strategic sectors have unique disco
  const watch=get('js/sli-idx-sector-watchlist.js');
  const dossier=get('js/sli-issuer.js');
  assert.match(watch,/issuerQuery=/);
- assert.match(watch,/sli-issuer\\.html\\?ticker=/);
+ assert.ok(watch.includes('sli-issuer.html?ticker='),'Ticker URL builder must target the issuer dossier');
  assert.match(dossier,/URLSearchParams/);
  for(const [ticker,sector] of Object.entries(cases)){
   const matching=issuers.records.filter(x=>x.ticker===ticker&&x.exchange==='IDX');
