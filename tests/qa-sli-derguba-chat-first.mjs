@@ -1,4 +1,4 @@
-import {test} from 'node:test';
+import {test,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {JSDOM} from 'jsdom';
@@ -57,4 +57,4 @@ test('new CSS is responsive and does not disguise commercial Owner-only restrict
  assert.match(css,/\.sli-ra-task-links/);
  assert.doesNotMatch(css,/\bdisplay\s*:\s*none\s*!important\s*;?\s*\/\*Owner/);
 });
-dom.window.close();
+after(()=>dom.window.close());
