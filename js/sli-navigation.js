@@ -190,7 +190,7 @@ function renderPlatformMast(){
  primary.append(explorer);
  primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
  primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'||path==='sli-issuer.html'));
- primary.append(mastLink('./sli-research-ai.html','DERGUBA AI',current==='research'));
+ primary.append(mastLink('./sli-research-ai.html','DERGUBA AI',false));
  primary.append(mastLink('./sli-expert-connect.html','Expert Connect',current==='expert'));
  
  const tools=node('div','sli-platform-tools');
