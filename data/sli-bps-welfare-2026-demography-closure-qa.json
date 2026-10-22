@@ -1,0 +1,265 @@
+{
+  "schema": "sli-bps-welfare-2026-demography-closure-qa-v1",
+  "source": {
+    "title": "BPS Statistik Kesejahteraan Rakyat 2026",
+    "pdf_sha256": "1338749eec4926885a3052ea2933cfeaca1b1328386bca26f80d5a1279a44305",
+    "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html",
+    "basis": "BPS source pages for demography chapter II, 2026",
+    "sample_image_pages_reviewed": [
+      57,
+      75
+    ]
+  },
+  "audit": {
+    "scope": "19 Chapter II tables 2.1–2.16 and 2.18–2.20 only",
+    "excluded_table": "2.17 (not mutually exhaustive categorical totals)",
+    "all_region_rows_per_table": 39,
+    "groups_tested": 1755,
+    "complete_numeric_groups": 1305,
+    "incomplete_category_groups": 435,
+    "missing_total_groups": 15,
+    "rounded_total_outliers": 0,
+    "complete_group_closure_outliers": 0,
+    "tolerance_percentage_points": 0.06,
+    "status": "automated_percent_closure_source_text_only_not_independent_full_visual_cell_validation",
+    "missing_value_policy": "NA/missing is unknown and must never be replaced by zero or closed using residual arithmetic",
+    "interpretation": "Zero closure violations does not prove full cell correctness or permission for commercial redistribution."
+  },
+  "group_widths": {
+    "2.1": 3,
+    "2.2": 5,
+    "2.3": 5,
+    "2.4": 5,
+    "2.5": 5,
+    "2.6": 5,
+    "2.7": 5,
+    "2.8": 3,
+    "2.9": 3,
+    "2.10": 3,
+    "2.11": 4,
+    "2.12": 4,
+    "2.13": 4,
+    "2.14": 4,
+    "2.15": 4,
+    "2.16": 4,
+    "2.18": 4,
+    "2.19": 4,
+    "2.20": 4
+  },
+  "tables": [
+    {
+      "id": "2.1",
+      "pdf_page": 57,
+      "columns_per_group": 3,
+      "groups": 117,
+      "complete_groups": 116,
+      "incomplete_categories": 0,
+      "missing_total": 1,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.2",
+      "pdf_page": 58,
+      "columns_per_group": 5,
+      "groups": 117,
+      "complete_groups": 115,
+      "incomplete_categories": 2,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.3",
+      "pdf_page": 60,
+      "columns_per_group": 5,
+      "groups": 117,
+      "complete_groups": 113,
+      "incomplete_categories": 1,
+      "missing_total": 3,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.4",
+      "pdf_page": 62,
+      "columns_per_group": 5,
+      "groups": 117,
+      "complete_groups": 117,
+      "incomplete_categories": 0,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.5",
+      "pdf_page": 64,
+      "columns_per_group": 5,
+      "groups": 117,
+      "complete_groups": 108,
+      "incomplete_categories": 9,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.6",
+      "pdf_page": 66,
+      "columns_per_group": 5,
+      "groups": 117,
+      "complete_groups": 109,
+      "incomplete_categories": 5,
+      "missing_total": 3,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.7",
+      "pdf_page": 68,
+      "columns_per_group": 5,
+      "groups": 117,
+      "complete_groups": 116,
+      "incomplete_categories": 1,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.8",
+      "pdf_page": 70,
+      "columns_per_group": 3,
+      "groups": 117,
+      "complete_groups": 57,
+      "incomplete_categories": 60,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.9",
+      "pdf_page": 71,
+      "columns_per_group": 3,
+      "groups": 117,
+      "complete_groups": 74,
+      "incomplete_categories": 40,
+      "missing_total": 3,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.10",
+      "pdf_page": 72,
+      "columns_per_group": 3,
+      "groups": 117,
+      "complete_groups": 89,
+      "incomplete_categories": 28,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.11",
+      "pdf_page": 73,
+      "columns_per_group": 4,
+      "groups": 39,
+      "complete_groups": 17,
+      "incomplete_categories": 22,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.12",
+      "pdf_page": 74,
+      "columns_per_group": 4,
+      "groups": 39,
+      "complete_groups": 22,
+      "incomplete_categories": 16,
+      "missing_total": 1,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.13",
+      "pdf_page": 75,
+      "columns_per_group": 4,
+      "groups": 39,
+      "complete_groups": 27,
+      "incomplete_categories": 12,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.14",
+      "pdf_page": 76,
+      "columns_per_group": 4,
+      "groups": 39,
+      "complete_groups": 4,
+      "incomplete_categories": 35,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.15",
+      "pdf_page": 77,
+      "columns_per_group": 4,
+      "groups": 39,
+      "complete_groups": 7,
+      "incomplete_categories": 31,
+      "missing_total": 1,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.16",
+      "pdf_page": 78,
+      "columns_per_group": 4,
+      "groups": 39,
+      "complete_groups": 16,
+      "incomplete_categories": 23,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.18",
+      "pdf_page": 80,
+      "columns_per_group": 4,
+      "groups": 117,
+      "complete_groups": 35,
+      "incomplete_categories": 82,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.19",
+      "pdf_page": 82,
+      "columns_per_group": 4,
+      "groups": 117,
+      "complete_groups": 72,
+      "incomplete_categories": 42,
+      "missing_total": 3,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    },
+    {
+      "id": "2.20",
+      "pdf_page": 84,
+      "columns_per_group": 4,
+      "groups": 117,
+      "complete_groups": 91,
+      "incomplete_categories": 26,
+      "missing_total": 0,
+      "closure_outliers": 0,
+      "rounded_total_outliers": 0
+    }
+  ],
+  "privacy": {
+    "public_metadata_only": true,
+    "raw_39_region_rows_not_published": true,
+    "commercial_reproduction_permission": "pending_written_BPS_clarification"
+  }
+}
