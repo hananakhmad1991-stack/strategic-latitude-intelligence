@@ -7,6 +7,60 @@ import json,re,subprocess,xml.etree.ElementTree as ET
 from pathlib import Path
 from zipfile import ZipFile
 
+import sys
+if "--ci-pdf-only" in sys.argv:
+    # Lightweight hosted CI: PyMuPDF verifies real Chrome output and captures page images.
+    # Office rendering is intentionally separate; NEVER call this Word visual validation.
+    import fitz
+    root=Path("artifacts/sli-owner-rendered-reports")
+    names=("pasal99","pasal1","long")
+    screenshots=root/"rendered-pages"
+    screenshots.mkdir(parents=True,exist_ok=True)
+    findings=[]
+    for name in names:
+        f=root/(name+".pdf")
+        assert f.exists() and f.stat().st_size>1200
+        doc=fitz.open(f)
+        assert len(doc)>=1
+        for page in doc:
+            assert abs(page.rect.width-595.28)<2 and abs(page.rect.height-841.89)<2, f"A4 page mismatch: {f}"
+        text=" ".join(" ".join(p.get_text().split()) for p in doc)
+        assert "DRAF BERBANTUAN AI" in text, f"Missing watermark: {f}"
+        assert "Sumber dan Referensi" in text, f"Missing source section: {f}"
+        if name=="pasal99":
+            assert "Pasal 99" in text and "7/2021" in text
+        if name=="pasal1":
+            assert "Pasal 1" in text and "Paris" in text
+        if name=="long":
+            assert len(doc)>=3, f"Long report unexpectedly one-page: {f}"
+            assert "BATAS AKHIR LAPORAN TERLIHAT 20261022" in text, f"Long PDF end clipped: {f}"
+            assert "Row-25" in text, f"Long table clipped: {f}"
+        for n in sorted(set((0,len(doc)-1))):
+            p=doc[n]
+            pix=p.get_pixmap(matrix=fitz.Matrix(1.3,1.3),alpha=False)
+            pix.save(screenshots/f"{name}-chrome-page{n+1}.png")
+        # Validate actual Word ZIP contents without claiming rendered Word fidelity.
+        file=root/(name+".docx")
+        with ZipFile(file) as z:
+            assert z.testzip() is None
+            xml=z.read("word/document.xml").decode("utf8")
+            assert "DRAF BERBANTUAN AI" in xml
+            assert "Sumber dan Referensi" in xml
+            ET.fromstring(xml)
+        findings.append({"name":name,"pdf_pages":len(doc),"pdf_a4":True,
+            "pdf_content_integrity":True,"docx_package_integrity":True,
+            "libreoffice_visual_render":"not_run_in_hosted_ci"})
+        doc.close()
+        print("PASS CHROME PDF + DOCX STRUCTURE",name,findings[-1]["pdf_pages"],"pages")
+    (root/"ci-rendered-validation.json").write_text(json.dumps({
+      "schema":"sli-owner-rendered-validation-v1","result":"PASS_PDF_AND_DOCX_STRUCTURE",
+      "results":findings,"limitations":["Word visual rendering is checked separately offline",
+      "Human visual screenshot inspection still required",
+      "Synthetic fixtures are not actual owner live model output",
+      "Current consolidated statutory status not certified"]
+    },indent=2)+"\\n",encoding="utf8")
+    raise SystemExit(0)
+
 root=Path("artifacts/sli-owner-rendered-reports")
 cases=("pasal99","pasal1","long")
 def run(*args):
