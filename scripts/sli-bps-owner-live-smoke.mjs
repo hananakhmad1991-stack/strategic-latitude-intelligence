@@ -47,6 +47,8 @@ function intervalPresent(answer,low,high){
  }
  return false;
 }
+const safeDiagnosticCode=value=>typeof value==="string"&&/^[a-z][a-z0-9_]{0,90}$/.test(value)?value:null;
+const safeDiagnosticIssues=value=>Array.isArray(value)?value.slice(0,12).map(safeDiagnosticCode).filter(Boolean):[];
 export function evaluateBpsOwnerReply(status,reply){
  const issues=[];
  if(status!==200)issues.push("unexpected_status_"+status);
@@ -73,7 +75,12 @@ export function evaluateBpsOwnerReply(status,reply){
  if(!aceh.some(src=>answer.includes("["+src.sourceOrdinal+"]")||answer.includes(src.source_url)))issues.push("missing_citation_to_Aceh_source_index");
  if(!reply?.quality_audit||typeof reply.quality_audit!=="object")issues.push("missing_answer_quality_audit");
  if(/methodology_design_only_no_verified_sli_evidence/.test(String(reply?.evidence_status)))issues.push("model_answer_without_evidence");
- return {pass:issues.length===0,issues,source_count:sources.length,bps_source_count:bps.length,aceh_source_count:aceh.length,answer_length:answer.length,numerical_reference_source:"curated_BPS_Susenas_2026_exact_category_source_tables_6_23_and_9_88"};
+ return {pass:issues.length===0,issues,
+  server_error_code:status===200?null:safeDiagnosticCode(reply?.error),
+  server_reason_code:status===200?null:safeDiagnosticCode(reply?.reason),
+  server_statistical_issue_codes:status===200?[]:safeDiagnosticIssues(reply?.issues),
+  source_count:sources.length,bps_source_count:bps.length,aceh_source_count:aceh.length,answer_length:answer.length,
+  numerical_reference_source:"curated_BPS_Susenas_2026_exact_category_source_tables_6_23_and_9_88"};
 }
 
 export async function liveSmoke(env=process.env){
@@ -107,6 +114,13 @@ function selfTest(){
  assert.equal(evaluateBpsOwnerReply(200,{...valid,sources:[]}).pass,false);
  assert.equal(evaluateBpsOwnerReply(200,{...valid,answer:"BPS data unavailable."}).pass,false);
  assert.equal(evaluateBpsOwnerReply(401,{error:"owner_authentication_required"}).pass,false);
+ const invalid=evaluateBpsOwnerReply(502,{error:"focused_bps_statistical_answer_not_verified",issues:["RSE_absent_or_numeric_mismatch","SE_absent_or_numeric_mismatch"]});
+ assert.equal(invalid.server_error_code,"focused_bps_statistical_answer_not_verified");
+ assert.deepEqual(invalid.server_statistical_issue_codes,["RSE_absent_or_numeric_mismatch","SE_absent_or_numeric_mismatch"]);
+ const provider=evaluateBpsOwnerReply(502,{error:"model_request_failed",reason:"provider_rate_or_quota_limit"});
+ assert.equal(provider.server_error_code,"model_request_failed");
+ assert.equal(provider.server_reason_code,"provider_rate_or_quota_limit");
+ assert.equal(evaluateBpsOwnerReply(502,{error:"SECRET token=abcdef",reason:"some raw response"}).server_error_code,null);
  const english={...valid,answer:valid.answer.replace("7,49%","7.49%").replace("0,33","0.33").replace("4,38","4.38").replace("6,84–8,13","6.84–8.13")};
  assert.equal(evaluateBpsOwnerReply(200,english).pass,true,"Both Indonesian and English decimals must pass");
  console.log("BPS owner numerical and citation validator self-tests PASS (no network/model usage).");
