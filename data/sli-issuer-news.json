@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T00:38:39.882538Z",
+  "updated_at_utc": "2026-10-22T01:34:29.713247Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_9526b4402f6a9e1e245ff5",
+      "title": "Rekomendasi Saham Hari Ini, Kamis 22 Oktober 2026: HRUM, PTBA, BBNI - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNUU5NTzhRZ3VTaEhRTXpXVUx1M0FCY1BDSGZHU1hLMGluUGVhY09HTVJaQUd1SlhFU2g5RWtfV21memZybGhQUXp3dG9tWFUzeUJQQmFSWklOcmk4TmhGdzQ4RTUxNG1IcjBjV214MHdPOEU0aTVadTBvM1RISlV2YTdXTkh5SmRTQ0dBc1FrVVFnZ2FvS21Eb09PbDJCUQ?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-22T00:46:06Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_0aeba79b1c699addcb850a",
       "title": "Penuhi Kebutuhan Likuiditas dan Ekspansi, Jasa Marga (JSMR) Siapkan Opsi Buyback Saham - Jawa Pos",
@@ -420,6 +436,22 @@
         "PGEO"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_cf8c1711a40b2d6233908e",
+      "title": "BNY Mellon terus borong TLKM, beli 42,45 juta lembar - IDNFinancials",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQbjhzNnRtdUljSmNFMXJmMkEtZkNSSnZFYUZPcm56SEpBTDJqS1pPenBfMy1BcDN1ckV2Smo3bWRzU1lHRnlKRXUxdGZuaTBmZERqX203ai1IeExWYXRUZVd2U21aYkNib2RhNnNycHFTX1JKMU8wdjhDWXVwa2xQdGJVM2dIeFVKYldvdmxXRlB1MTVSTmlUWTN1RQ?oc=5",
+      "publisher": "IDNFinancials",
+      "published_at_utc": "2026-10-21T15:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
