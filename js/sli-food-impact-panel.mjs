@@ -20,11 +20,12 @@ const sectorLinks=[
 const mode=()=>document.getElementById("fa-september")?"food":document.getElementById("raIntro")?"research":document.getElementById("raForm")?"preview":null;
 async function init(){
  const where=mode();if(!where)return;
- const anchor=where==="food"?document.getElementById("fa-september"):where==="research"?document.getElementById("raIntro"):document.getElementById("raForm");
+ const anchor=where==="food"?document.getElementById("fa-september"):where==="research"?(document.getElementById("raFoodImpactMount")||document.getElementById("raIntro")):document.getElementById("raForm");
  if(!anchor)return;
  const root=el("section",null,"sli-food-impact");root.id="sliFoodImpactLens";root.setAttribute("aria-label","Pusdatin evidence and food-sector implications");
  if(where==="food"){const num=anchor.querySelector("#sepsemModule");if(num)anchor.insertBefore(root,num);else anchor.append(root)}
- else anchor.insertAdjacentElement("afterend",root);
+ else if(where==="research"&&anchor.id==="raFoodImpactMount")anchor.append(root);
+  else anchor.insertAdjacentElement("afterend",root);
  root.append(el("h2","Food Intelligence · apa yang berubah, di mana, dan dampak potensial"));
  root.append(paragraph("Analisis deskriptif data Pusdatin September 2026 (observasi Agustus). Perubahan harga dan NTP tidak membuktikan penyebab, kerawanan pangan, atau efek laba emiten."));
  const controls=el("div",null,"sli-fi-controls");const commodity=choose("sliFiCommodity",FOOD_COMMODITIES.map(c=>[c.table,c.label])),province=choose("sliFiProvince",[["Jawa Barat","Jawa Barat"]]);
