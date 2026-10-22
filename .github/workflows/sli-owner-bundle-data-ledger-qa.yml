@@ -6,6 +6,7 @@ on:
       - 'research-api/**'
       - 'data/sli-user-dataset-recovery-inventory.json'
       - 'scripts/audit-sli-source-visibility.mjs'
+      - 'tests/qa-sli-source-ledger.mjs'
       - '.github/workflows/sli-owner-bundle-data-ledger-qa.yml'
 permissions:
   contents: read
@@ -20,6 +21,10 @@ jobs:
           node-version: '22'
       - name: Bundle Owner Worker without deployment, tokens or secrets
         run: npx --yes esbuild@0.25.12 research-api/src/owner-test-worker.mjs --bundle --platform=browser --format=esm --target=es2022 --outfile=/tmp/sli-owner-worker-test.bundle.mjs
+      - name: Source ledger syntax and regression checks
+        run: |
+          node --check scripts/audit-sli-source-visibility.mjs
+          node --test tests/qa-sli-source-ledger.mjs
       - name: Source visibility and internal link audit
         run: node scripts/audit-sli-source-visibility.mjs
       - name: Preserve reconciliation evidence
