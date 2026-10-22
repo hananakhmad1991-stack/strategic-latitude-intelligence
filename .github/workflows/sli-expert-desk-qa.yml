@@ -23,6 +23,7 @@ jobs:
       - name: Static module validation
         run: |
           node --check services/sli-expert-desk/src/index.mjs
+          node --check services/sli-expert-desk/src/experts.mjs
           test "$(grep -c 'workers_dev = false' services/sli-expert-desk/wrangler.toml)" -eq 1
           if grep -E '^[[:space:]]*(routes|route)[[:space:]]*=' services/sli-expert-desk/wrangler.toml; then echo "Public routes forbidden in pilot"; exit 1; fi
           if grep -E '^[[:space:]]*CF_EXPERT_DESK_ENABLED[[:space:]]*=' services/sli-expert-desk/wrangler.toml; then echo "Pilot feature must default OFF"; exit 1; fi
