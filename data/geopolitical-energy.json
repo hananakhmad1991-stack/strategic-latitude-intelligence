@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-22T15:39:59.872721+00:00",
+  "checked_at_utc": "2026-10-22T18:41:13.207771+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -14,7 +14,24 @@
       "title": "Oil prices jump to five-month high as attacks threaten global supply - The Guardian",
       "publisher": "The Guardian",
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOSkIzeWdNTnhad3RfQTdsMFg0OHQ5ejlGVjF2R016akVNelJYNDdVQVNsaE5PRXQ2SWJpT1JDbG5RRmtDdWFEazN2b3FLYkY3eUx5Rmk4bThDcVZmWExKcTFBVW51cEpSUHBPd0ZsUGVnWXF5eTJxY0V1aHlaYUtQTHhsYU00WjdtWk8yOS1UMW9SVVAwN2I3bU43OA?oc=5",
-      "indexed_at_utc": "2026-10-22T12:41:00+00:00",
+      "indexed_at_utc": "2026-10-22T16:10:00+00:00",
+      "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Hormuz and Gulf energy",
+      "topic_id": "oil_shipping",
+      "type": "Maritime chokepoint",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "general",
+      "title": "Middle East oil exports climb back to prewar levels - Financial Times",
+      "publisher": "Financial Times",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRUpxSXBnV3lLb2hmSHBCc2sxQlgyVnhTSklvZEpnM21ZSGRMTHlOa1FEQnkwMDA3ME83Yjc1b1ZQQnJNSFlvN0J4ZWgyZHRnRXdpZWZ5VUVEMDd1eHh3WkJNZE5vckZjX1dXZ2lnUXpDa1dPV3dIVmdZWHlJbF9IaTRGSFc?oc=5",
+      "indexed_at_utc": "2026-10-21T12:01:37+00:00",
       "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -105,23 +122,6 @@
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Global coal and energy policy",
-      "topic_id": "coal_markets",
-      "type": "Coal markets",
-      "sector": "coal",
-      "sector_tags": [
-        "coal"
-      ],
-      "subsector": "general",
-      "title": "Half of India's coal plants run critically low on fuel as power demand surges - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOazNuSjVoOWdWeU9fY0hvSjV6UEpBQjNpVTZhaFg1Y3NXZUdobzk4Wk54a0ZMdHAtTk1CV1Z6OWstTlJ1dDdoSzV6aFZlRFpsVjRjdExPVDNrS2x3WTBSR3N2NThhRnRnYVJZdmkzN0ttNzFOdE9rTnkwS2pYdTNBWDFOcVZyb2xYRF9IU0F3S25fczdoWElJaFh3ajVndWF2bTFMeEVVLUlxbllnQUhxbjJBemxGS1MybXlZ?oc=5",
-      "indexed_at_utc": "2026-10-21T01:25:00+00:00",
-      "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
       "topic": "Global crude oil & OPEC supply",
       "topic_id": "oil_supply",
       "type": "Oil markets",
@@ -130,10 +130,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Brent crude tops $111 on Middle East worries as U.S., Israel reportedly weigh fresh Iran strikes - CNBC",
-      "publisher": "CNBC",
-      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOUjhnTDQ4QTM5cWtlRjN1MXFlOU5yQVlVd3F0M0pDNExkV29mV1duQUpSUjFiaXFuajRkNHRSc1EtaTBzemJOUElXbDhYUTRnSWlrdm1TRUxtQXEwdjM3blp5QnlVOFZJWnAyYjY1dTRwX3UycVZoMHJIWFZaUEZJNnRn0gGHAUFVX3lxTFBBRTI0YmhMaFkybjlPdGczT3I3cVlXX2xLcktrcjJEUVNueUY3QmNldksyRjFaWGtvUm1KUjVua2VibWMxcU5FWHpBakZCSWt2MXhUM0ZYd1FJeE1sLUtwREJ2Y1lldkxOdXZ6UGFqS2pwUksxZS1YLU1XUFNsTzBBMUJwRXAydw?oc=5",
-      "indexed_at_utc": "2026-10-22T05:12:19+00:00",
+      "title": "India's Mideast oil imports return to pre-war levels in September - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNRl9GVUFVbTBqSFIzbnJpZmJ0c3Q5ZFJlQ0hQUkkwZW5aVDdVWTMwczBlRFRTbF9zM0NNODcyWG9PUTg5WXZKOXRfSUdJSXhHM1FPcFhUOTVmb0pIUHh5Rl9tYldSWDd1all5UV9fV2VMSmNxSUU4anJpUVVvMkFadHpQcmwxdFhRSHlvSXhpMEY1bXNkV2NnUnVNelltUHVRQjFzWE14TWZVVnhrRndv?oc=5",
+      "indexed_at_utc": "2026-10-22T06:02:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -188,29 +188,12 @@
       "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Biofuels and international mandates",
-      "topic_id": "nre_biofuels",
-      "type": "Bioenergy trade",
-      "sector": "nre",
-      "sector_tags": [
-        "nre"
-      ],
-      "subsector": "bioenergy",
-      "title": "Neste urges EU to ease rules on biofuel feedstocks amid energy crunch - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOcGZHQkZtWC1Ba2llVFAtRXZYSmhuUkVseDZyQUJFNUZyTV9NWm9KVG91dTRRcmllLU9WR0wwVVUyLXRHN2p4VTFQT0hCcE1VY1hoVWVuR2VnTklLZmQ4blJNcnJNcjRGYmhUTlpPVnJETUExbWlGRkZNQlZwN0d3VHJUSVQ4a2RiVjMzV3VqejZscngyNTdGbktNdHlxcXNQOExjdTBEaUtYT19NOUlCYlI5QWZfUQ?oc=5",
-      "indexed_at_utc": "2026-10-20T16:32:21+00:00",
-      "impact_pathway": "International biofuel demand and standards -> Indonesian palm oil, FAME and bioethanol prices",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
     }
   ],
   "sector_counts": {
-    "oil_gas": 8,
-    "coal": 2,
-    "nre": 2,
+    "oil_gas": 9,
+    "coal": 1,
+    "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
   },
