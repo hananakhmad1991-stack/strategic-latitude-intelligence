@@ -49,6 +49,8 @@ test("Official BIG raster preview is served by same source, no locally invented 
 
 test("Provider returned OBJECTIDs are divided into bounded 3-feature batches",()=>{
  assert.deepEqual(wppIdBatches([9,7,3,5,4,1,10,6,2,8,11]),[[1,2,3],[4,5,6],[7,8,9],[10,11]]);
+ assert.deepEqual(wppIdBatches(Array.from({length:12},(_,i)=>i+1)).at(-1),[10,11,12]);
+ assert.throws(()=>wppIdBatches(Array.from({length:251},(_,i)=>i+1)),/invalid_objectIds/);
  assert.throws(()=>wppIdBatches([1,2]),/invalid_objectIds/);
  assert.throws(()=>wppIdBatches([1,1,2,3,4,5,6,7,8,9,10]),/invalid_objectIds/);
  assert.throws(()=>wppIdBatches([1,2,3,4,5,6,7,8,9,10,11],6),/batch_size/);
