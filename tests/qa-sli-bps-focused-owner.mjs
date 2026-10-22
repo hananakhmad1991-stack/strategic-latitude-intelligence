@@ -158,7 +158,7 @@ const originalPdfSpotcheck=JSON.parse(readFileSync(new URL("../data/sli-bps-welf
 test("source PDF spotchecks pin exact health, electricity and e-money statistics and pages",()=>{
  assert.equal(originalPdfSpotcheck.source_pdf_sha256,welfare.source.pdf_source_sha256);
  assert.equal(originalPdfSpotcheck.scope.uninsured_se_rows_rechecked,39);
- assert.equal(originalPdfSpotcheck.spotchecks.length,3);
+ assert.equal(originalPdfSpotcheck.spotchecks.length,6);
  for(const cell of originalPdfSpotcheck.spotchecks){
   const idx=welfare.provinces.findIndex(p=>p.name===cell.province);
   const m=welfare.provincial_metrics.find(x=>x.id===cell.metric);
@@ -170,9 +170,7 @@ test("source PDF spotchecks pin exact health, electricity and e-money statistics
     [cell.estimate,cell.se,cell.rse,cell.ci_low,cell.ci_high],cell.province+" "+cell.metric);
   assert.deepEqual([m.table,m.pdf_page,sm.sampling_table,sm.pdf_page],
    [cell.main_table,cell.main_pdf_page,cell.sampling_table,cell.sampling_pdf_page]);
-  const question="Menurut BPS "+cell.province+", berapa RSE, SE dan interval kepercayaan 95% untuk "+
-    (cell.metric==="uninsured"?"tanpa jaminan kesehatan":
-     cell.metric==="no_electricity_lighting"?"tanpa listrik sebagai penerangan utama":"uang elektronik")+"?";
+  const question=q(cell.province,cell.metric);
   const selected=selectFocusedBpsWelfare(question,welfare);
   assert.ok(selected,cell.province+" must be selectable with PDF-checked evidence");
   assert.equal(selected.measure.se,cell.se);
@@ -206,4 +204,79 @@ test("BPS rights boundary is explicit and never infers bulk redistribution clear
  assert.equal(review.commercial_bulk_replication_approved,false);
  assert.equal(originalPdfSpotcheck.scope.all_tables_visually_verified,false);
  assert.ok(review.pst_quotation_policy_url.startsWith("https://ppid.bps.go.id/"));
+});
+
+
+test("adversarial wrong-number append, duplicate labelled SE/RSE, and unsupported inference fail closed",()=>{
+ for(const [name,key] of [
+  ["Jawa Barat","uninsured"],
+  ["Papua","no_electricity_lighting"],
+  ["Bali","e_money_households"],
+  ["Jawa Timur","lpg_citygas_biogas_cooking"],
+  ["Sulawesi Selatan","bpnt_sembako"],
+  ["Bali","piped_drinking_water"]
+ ]){
+  const f=selectFocusedBpsWelfare(q(name,key),welfare);
+  assert.ok(f&&!f.legacy,name+"/"+key);
+  const valid=simulated(f);
+  assert.equal(auditFocusedBpsAnswer(valid,f).pass,true,name+" fixture");
+  for(const [label,suffix] of [
+   ["duplicate_SE","; SE 99,99 poin persentase"],
+   ["duplicate_RSE","; RSE 99,99%"],
+   ["duplicate_estimate","; estimasi 99,99%"],
+   ["fabricated_extra_table","; Tabel 99.99"],
+   ["fabricated_extra_page","; PDF halaman 9999"]
+  ]){
+   const malicious=valid+suffix;
+   assert.equal(auditFocusedBpsAnswer(malicious,f).pass,false,
+    name+"/"+key+" should reject "+label);
+  }
+  for(const claim of [
+   "Perbedaan ini signifikan secara statistik.",
+   "Temuan ini statistically significant.",
+   "Hasil ini disebabkan oleh keputusan pemerintah.",
+   "Angka ini terbukti menyebabkan perubahan kebijakan.",
+   "Uji p < 0.05 membuktikannya."
+  ]){
+   assert.equal(auditFocusedBpsAnswer(valid+"\n"+claim,f).pass,false,
+    name+"/"+key+" must reject unsupported inference: "+claim);
+  }
+ }
+});
+
+test("four-source comparison rejects cross-row contamination even when all correct numbers remain somewhere",()=>{
+ const question="Menurut BPS bandingkan Aceh dan Jawa Barat untuk air minum leding serta BPNT, berapa SE RSE dan interval kepercayaan 95%?";
+ const f=selectFocusedBpsWelfare(question,welfare);
+ assert.ok(f&&!f.legacy);assert.equal(f.records.length,4);
+ const correct=simulated(f),lines=correct.split("\n");
+ assert.equal(auditFocusedBpsAnswer(correct,f).pass,true);
+ const falseSE=[...lines];
+ falseSE[0]+="; SE 99,99 poin persentase";
+ assert.equal(auditFocusedBpsAnswer(falseSE.join("\n"),f).pass,false);
+ const falseEstimate=[...lines];falseEstimate[2]+="; estimasi 99,99%";
+ assert.equal(auditFocusedBpsAnswer(falseEstimate.join("\n"),f).pass,false);
+ const falseCitation=[...lines];falseCitation[3]=falseCitation[3].replace("[4]","[2]");
+ assert.equal(auditFocusedBpsAnswer(falseCitation.join("\n"),f).pass,false);
+ const unsupported=correct+"\nPerbedaan kedua provinsi signifikan secara statistik.";
+ assert.equal(auditFocusedBpsAnswer(unsupported,f).pass,false);
+});
+
+
+test("unverified numeric prose and extra citations outside source rows are not released",()=>{
+ const q2="Menurut BPS bandingkan Aceh dan Jawa Barat untuk air minum leding serta BPNT, berapa SE RSE dan interval kepercayaan 95%?";
+ const focus=selectFocusedBpsWelfare(q2,welfare);
+ const correct=simulated(focus);
+ assert.equal(auditFocusedBpsAnswer(correct+"\nInterval kepercayaan 95% bukan kepastian.",focus).pass,true);
+ for(const outside of [
+  "Jawa Barat juga sebesar 99,99%.",
+  "Estimasi 99,99% adalah angka tambahan.",
+  "SE 77,77 berarti salah.",
+  "Tabel 99.99 memuat data lain.",
+  "Selisih 40,20 poin persentase.",
+  "Sumber lain [9] mendukung klaim."
+ ]){
+  const reply=correct+"\n"+outside;
+  assert.equal(auditFocusedBpsAnswer(reply,focus).pass,false,
+   "unverified out-of-row number/citation must reject: "+outside);
+ }
 });

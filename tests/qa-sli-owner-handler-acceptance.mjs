@@ -197,6 +197,22 @@ test("Real Owner Worker serves 4-cell BPS precision comparison and rejects a swa
   assert.ok(no.json.issues.some(s=>s.startsWith("RSE_absent_or_numeric_mismatch_row_")));
   assert.equal(no.json.answer,undefined);
   assert.equal(modelCalls,2,"One mocked model response per request; no automatic paid retry");
+  const rejections=[
+    [good+"\nPerbedaan Aceh dan Jawa Barat signifikan secara statistik.","focused_bps_statistical_answer_not_verified","unsupported_statistical_significance_claim"],
+    [good+"\nPencapaian ini terbukti menyebabkan pertumbuhan ekonomi.","focused_bps_statistical_answer_not_verified","unsupported_causal_claim"],
+    [good+"\nEstimasi 99,99% adalah prediksi lain.","focused_bps_statistical_answer_not_verified","unsupported_extra_numeric_claim"],
+    [good.replace(" [1]."," [9]."),"invalid_or_missing_source_citations",null]
+  ];
+  for(const [candidate,serverCode,statisticalIssue] of rejections){
+    nextAnswer=candidate;
+    const rejected=await answer(request(question),env);
+    assert.equal(rejected.status,502,JSON.stringify(rejected.json));
+    assert.equal(rejected.json.error,serverCode,"Reject at the correct independent citation/statistics guard");
+    if(statisticalIssue)
+     assert.ok(rejected.json.issues.some(s=>s.includes(statisticalIssue)),JSON.stringify(rejected.json.issues));
+    assert.equal(rejected.json.answer,undefined,"Unverified output must not leak to customer");
+  }
+  assert.equal(modelCalls,6,"Exactly one mocked model response per request, no automatic retry");
  }finally{globalThis.fetch=oldFetch}
 });
 

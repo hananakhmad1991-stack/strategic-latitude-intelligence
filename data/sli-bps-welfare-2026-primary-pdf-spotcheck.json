@@ -5,13 +5,21 @@
   "source_url": "https://www.bps.go.id/id/publication/2026/10/05/7e415878a8af3678e51f3e0a/statistik-kesejahteraan-rakyat-2026.html",
   "source_pdf_sha256": "1338749eec4926885a3052ea2933cfeaca1b1328386bca26f80d5a1279a44305",
   "verified_at": "2026-10-22",
-  "method": "Compared publication PDF page images and extracted PDF text from the user-provided original 558-page PDF against the curated SLI JSON. Page numbers are one-indexed PDF pages; printed page labels differ.",
+  "method": "Compared original PDF page images (manual row-crop visual inspection for pages 434, 456, 513 plus earlier health/energy/e-money pages) and extracted original PDF text against curated BPS records. This scoped six-sector sample does not verify every cell or grant commercial reproduction permission.",
   "scope": {
     "uninsured_se_original_pdf_page": 316,
     "uninsured_se_rows_rechecked": 39,
-    "sector_spotchecks": 3,
+    "sector_spotchecks": 6,
     "total_original_pages": 558,
-    "all_tables_visually_verified": false
+    "all_tables_visually_verified": false,
+    "sectors_visual_spotchecked": [
+      "kesehatan",
+      "energi",
+      "keuangan_digital",
+      "energi_memasak",
+      "perlindungan_sosial",
+      "air_dan_sanitasi"
+    ]
   },
   "error_discovered": {
     "metric": "uninsured",
@@ -61,6 +69,48 @@
       "sampling_table": "9.133",
       "sampling_pdf_page": 523,
       "definition": "Rumah tangga memiliki uang elektronik selama satu tahun terakhir, bukan gabungan eksklusif server/kartu"
+    },
+    {
+      "province": "Jawa Timur",
+      "metric": "lpg_citygas_biogas_cooking",
+      "estimate": 91.82,
+      "se": 0.2,
+      "rse": 0.22,
+      "ci_low": 91.42,
+      "ci_high": 92.21,
+      "main_table": "6.31",
+      "main_pdf_page": 223,
+      "sampling_table": "9.100",
+      "sampling_pdf_page": 456,
+      "definition": "Rumah tangga menggunakan kelompok elpiji/gas kota/biogas sebagai bahan bakar memasak utama, bukan elpiji saja"
+    },
+    {
+      "province": "Sulawesi Selatan",
+      "metric": "bpnt_sembako",
+      "estimate": 12.59,
+      "se": 0.39,
+      "rse": 3.08,
+      "ci_low": 11.83,
+      "ci_high": 13.35,
+      "main_table": "8.11",
+      "main_pdf_page": 259,
+      "sampling_table": "9.126",
+      "sampling_pdf_page": 513,
+      "definition": "Rumah tangga menerima BPNT/Program Sembako dalam 4 bulan terakhir"
+    },
+    {
+      "province": "Bali",
+      "metric": "piped_drinking_water",
+      "estimate": 19.18,
+      "se": 0.55,
+      "rse": 2.88,
+      "ci_low": 18.1,
+      "ci_high": 20.26,
+      "main_table": "6.23",
+      "main_pdf_page": 215,
+      "sampling_table": "9.88",
+      "sampling_pdf_page": 434,
+      "definition": "Rumah tangga dengan sumber air minum utama leding, bukan akses air minum aman"
     }
   ],
   "rights_review": {

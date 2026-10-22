@@ -177,6 +177,16 @@ function extraAuditRow(s,r,sourceNo){
  if(!s.includes("["+sourceNo+"]"))issues.push("source_citation_missing");
  if(!s.toLowerCase().includes(r.province.toLowerCase()))issues.push("target_region_missing");
  if(!s.toLowerCase().includes(r.label.toLowerCase()))issues.push("indicator_label_missing");
+ // A superficially correct answer must not smuggle a contradictory second
+ // labelled statistic into the same record. This is distinct from allowing
+ // harmless re-use of numeric values in source references.
+ for(const [field,pattern] of [
+  ["estimate",/(?:estimasi|perkiraan|diperkirakan)\s*[:=]?\s*\d+(?:[,.]\d+)?/gi],
+  ["SE",/(?:^|[^a-z])SE\s*[:=]?\s*\d+(?:[,.]\d+)?/gi],
+  ["RSE",/(?:^|[^a-z])RSE\s*[:=]?\s*\d+(?:[,.]\d+)?/gi]
+ ]){
+  if([...s.matchAll(pattern)].length!==1)issues.push("ambiguous_or_duplicate_"+field);
+ }
  if(!new RegExp("(?:estimasi|perkiraan|diperkirakan)\\s*[:=]?\\s*"+token(r.estimate),"i").test(s))issues.push("estimate_absent_or_numeric_mismatch");
  if(!new RegExp("(?:^|[^a-z])SE\\s*[:=]?\\s*"+token(r.se),"i").test(s))issues.push("SE_absent_or_numeric_mismatch");
  if(!new RegExp("(?:^|[^a-z])RSE\\s*[:=]?\\s*"+token(r.rse),"i").test(s))issues.push("RSE_absent_or_numeric_mismatch");
@@ -186,6 +196,19 @@ function extraAuditRow(s,r,sourceNo){
     !new RegExp("(?:tabel|table)\\s*"+extraEscape(r.appendix_table),"i").test(s))issues.push("source_table_numbers_missing");
  if(!new RegExp("PDF\\s+halaman\\s*"+r.main_page+"\\b","i").test(s)||
     !new RegExp("PDF\\s+halaman\\s*"+r.appendix_page+"\\b","i").test(s))issues.push("source_pdf_pages_missing");
+ // A correct page or table number cannot conceal an additional fabricated
+ // reference on the same line. The tight Owner prompt requests two of each.
+ const namedTables=[...s.matchAll(/(?:tabel|table)\s+(\d+[,.]\d+)/gi)];
+ const namedPages=[...s.matchAll(/PDF\s+halaman\s+(\d+)/gi)];
+ if(namedTables.length!==2||namedPages.length!==2)issues.push("ambiguous_source_table_or_page_reference");
+ const exactTables=[r.table,r.appendix_table].map(x=>x.replace(".",",")).sort();
+ const receivedTables=namedTables.map(x=>x[1].replace(".",",")).sort();
+ if(receivedTables.length===2&&receivedTables.join("|")!==exactTables.join("|"))
+  issues.push("unexpected_source_table");
+ const exactPages=[String(r.main_page),String(r.appendix_page)].sort();
+ const receivedPages=namedPages.map(x=>x[1]).sort();
+ if(receivedPages.length===2&&receivedPages.join("|")!==exactPages.join("|"))
+  issues.push("unexpected_source_page");
  const kind=/rumah\s+tangga/i.test(r.denominator)?"rumah tangga":/penduduk/i.test(r.denominator)?"penduduk":null;
  if(kind&&!s.toLowerCase().includes(kind))issues.push("denominator_missing");
  return issues;
@@ -195,7 +218,28 @@ export function auditFocusedBpsAnswer(answer,focus){
  if(focus.legacy||!focus.records)return auditLegacyAcehAnswer(answer,focus);
  if(typeof answer!=="string"||!answer.trim())return {pass:false,issues:["empty_answer"]};
  const issues=[];
+ // Descriptive confidence intervals are not an independent hypothesis test;
+ // a model cannot invent statistical significance, p-values or causality.
+ if(/\b(?:signifikan|significant|signifikansi|significance)\b/i.test(answer)||/\bp\s*(?:[<=]|value)/i.test(answer))
+  issues.push("unsupported_statistical_significance_claim");
+ if(/(?:terbukti\s+menyebabkan|disebabkan\s+oleh|proves?\s+causation|caused\s+by)/i.test(answer))
+  issues.push("unsupported_causal_claim");
  const lines=answer.split(/\r?\n/);
+ const claimedNumbers=answer.match(/\[(\d+)\]/g)||[];
+ if(claimedNumbers.some(c=>{const x=Number(c.slice(1,-1));return !Number.isInteger(x)||x<1||x>focus.records.length;}))
+  issues.push("out_of_scope_numbered_citation");
+ // Commentary cannot insert unsupported new percentages, SE/RSE or table pages.
+ // One or two plain-language uncertainty sentences without new numeric claims
+ // are still permitted.
+ const extraLines=lines.filter(line=>line.trim()&&!focus.records.some(r=>
+  new RegExp("^\\s*(?:[-*]\\s*)?"+extraEscape(r.province)+"\\s*[—–-]\\s*"+extraEscape(r.label)+"\\s*:","i").test(line)));
+ for(const line of extraLines){
+  const percentages=[...line.matchAll(/(?<![\d,.])(\d+(?:[,.]\d+)?)\s*%/g)];
+  if(percentages.some(m=>Number(m[1].replace(",","."))!==95))
+   issues.push("unsupported_extra_numeric_claim");
+  if(/(?:\b(?:estimasi|SE|RSE|Tabel|Table|CI|selisih)\b|PDF\s+halaman)\s*[:=]?\s*\d/i.test(line))
+   issues.push("unsupported_extra_numeric_claim");
+ }
  for(let i=0;i<focus.records.length;i++){
   const r=focus.records[i],prefix=new RegExp("^\\s*(?:[-*]\\s*)?"+extraEscape(r.province)+"\\s*[—–-]\\s*"+extraEscape(r.label)+"\\s*:","i");
   const matches=lines.filter(x=>prefix.test(x));
