@@ -12,6 +12,9 @@ const hasNumber=(answer,n)=>numericPattern(n).test(answer);
 
 export function selectFocusedBpsWelfare(question,welfare){
  const q=normal(question);
+ // A user who explicitly excludes sampling uncertainty must not be routed to
+ // a compulsory SE/RSE/CI analysis.
+ if(/(?:tanpa|tidak\s+perlu|without|exclude)\s+(?:(?:data|rincian|angka)\s+)?(?:sampling\s+error|\bRSE\b|\bSE\b)/i.test(q))return null;
  if(!/\baceh\b/i.test(q)||
     !/(?:air\s+minum|leding|piped|tap\s+water)/i.test(q)||
     !/(?:\brse\b|sampling\s+error|standard\s+error|interval\s+kepercayaan|confidence\s+interval)/i.test(q))return null;
