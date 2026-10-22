@@ -34,7 +34,7 @@ jobs:
           node --check scripts/check-derguba-commercial-launch.mjs
           node --test tests/qa-derguba-commercial-launch-gate.mjs
           node scripts/check-derguba-commercial-launch.mjs
-      - name: Explain the status: PASS means safe block, NOT launch approval
+      - name: "Explain the status: PASS means safe block, NOT launch approval"
         if: always()
         run: |
           echo '### DERGUBA commercial launch gate' >> "$GITHUB_STEP_SUMMARY"
