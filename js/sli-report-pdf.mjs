@@ -33,7 +33,8 @@ export function printableResearchHtml(report){
  '.subtitle{font-size:9pt;text-align:left;color:#647380;margin-bottom:16pt}',
  '.draft{font-weight:700;text-align:left;color:#86521c}',
  '.source-warning{font:9pt/1.5 Arial,sans-serif;text-align:left;color:#465463}',
- '.apa-ref{padding-left:12.7mm;text-indent:-12.7mm;text-align:left;overflow-wrap:anywhere;margin:0 0 9pt}',
+ '.apa-ref{padding-left:12.7mm;text-indent:-12.7mm;text-align:left;overflow-wrap:anywhere;margin:0 0 9pt;break-inside:avoid}',
+ '.report-sources{break-inside:avoid-page;page-break-inside:avoid}',
  '.ref-number{color:#314d60}',
  '.listitem{padding-left:9mm;text-indent:-5mm}',
  'table{border-collapse:collapse;width:100%;table-layout:fixed;margin:11pt 0;font:9pt/1.45 Arial,sans-serif;page-break-inside:auto}',
@@ -49,10 +50,10 @@ export function printableResearchHtml(report){
   '<p class="subtitle">SLI Research AI · '+escapeMarkup(report.date)+'</p>'+minimal+
   blocks(report.body)+(report.charts.length?'<h2>'+ (lang==="id"?"Data Pendukung":"Supporting Data")+
    '</h2>'+blocks(report.charts):"")+
-  '<h2>'+(lang==="id"?"Sumber dan Referensi (sitasi bernomor)":"Sources and References (numbered citations)")+'</h2>'+
+  '<section class="report-sources"><h2>'+(lang==="id"?"Sumber dan Referensi (sitasi bernomor)":"Sources and References (numbered citations)")+'</h2>'+
   '<p class="source-warning">'+escapeMarkup(report.refs.warning)+'</p>'+
   (bib||'<p>Belum ada referensi yang dapat didaftarkan.</p>')+
-  '<p class="note">'+escapeMarkup(report.disclaimer)+'</p></body></html>';
+  '<p class="note">'+escapeMarkup(report.disclaimer)+'</p></section></body></html>';
 }
 export function openPdfPrintDialog(report,windowOpen){
  // Must be invoked directly on user click so pop-up blockers do not suppress it.
