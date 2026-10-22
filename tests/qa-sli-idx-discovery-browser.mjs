@@ -24,6 +24,14 @@ try{
    assert.equal((await suggestions.first().locator('strong').innerText()).trim(),'BRMS');
    assert.match(await suggestions.first().getAttribute('href'),/sli-issuer\.html\?ticker=BRMS/);
    await global.fill('DGWG');
+   const inspection=await page.evaluate(()=>({
+     input:document.querySelector('#sliHomeIDXSectors .sli-idx-global-input')?.value,
+     visible:[...document.querySelectorAll('#sliHomeIDXSectors .sli-idx-global-ticker strong')].map(x=>x.textContent),
+     count:document.querySelector('#sliHomeIDXSectors .sli-idx-global-count')?.textContent,
+     shown:document.querySelector('#sliHomeIDXSectors .sli-idx-global-none')?.textContent,
+     allCandidateAmount:document.querySelector('#sliHomeIDXSectors .sli-idx-sectoral-tab')?.textContent
+   }));
+   console.log('Ticker replacement diagnostic '+width+'px:',JSON.stringify(inspection));
    assert.equal((await suggestions.first().locator('strong').innerText()).trim(),'DGWG',
      'Cross-sector global ticker search must find new issuer');
    await global.fill('');
