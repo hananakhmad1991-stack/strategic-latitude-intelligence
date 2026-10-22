@@ -66,7 +66,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: sli-derguba-owner-rendered-reports
-          path: |\n            artifacts/sli-owner-rendered-reports/\n            scripts/verify_sli_owner_rendered_reports.py
+          path: |
+            artifacts/sli-owner-rendered-reports/
+            scripts/verify_sli_owner_rendered_reports.py
           retention-days: 14
           if-no-files-found: warn
       - name: Record limited acceptance scope
