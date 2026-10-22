@@ -389,6 +389,11 @@
       e.preventDefault();
       const distance = touchDistance(e.touches);
       syncZoom(targetZoom * distance / pinchDistance);
+      // Pointer capture may pause the animation during a two-finger gesture:
+      // make the zoom visible immediately instead of only after release.
+      zoom = targetZoom;
+      tilt = radians(17) + (radians(-2.5) - radians(17)) * ((zoom - 1) / 1.6);
+      draw();
       pinchDistance = distance;
     };
     const onTouchEnd = e => { if (e.touches.length < 2) { pinchDistance = null; schedule(); } };
