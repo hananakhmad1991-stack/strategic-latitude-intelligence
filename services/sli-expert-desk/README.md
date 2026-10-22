@@ -27,6 +27,18 @@ All mutations demand the exact \`Origin\` specified by \`CF_ALLOWED_ORIGIN\`. A 
 
 Transitions: New → Scoping → Sourcing → Shortlisted → Proposal Sent → Approved → In Progress → Delivered, plus allowed declined/cancelled branches. Sourcing → Shortlisted requires the owner to confirm **consent and screening**; Proposal Sent → Approved requires the owner to confirm **client approval**. Checkbox flags alone are not replacements for real records or contracts; retain supporting evidence in an appropriately protected workflow.
 
+## Consent-based expert registry (private, no pre-enrolled claims)
+
+A second D1 migration adds consenting expert profiles and request shortlists:
+- POST /api/experts (Owner only): require explicit documented opt-in, date, consent reference, sector, expertise and experience; optional HTTPS public-profile URL and contact email. Does not publish or message the expert.
+- GET /api/experts?sector=... (Owner only): minimal metadata list **without contact email**.
+- GET /api/experts/:uuid (Owner only): inspect a protected private profile.
+- DELETE /api/experts/:uuid (Owner only): delete candidate and related shortlist entries.
+- GET /api/requests/:uuid/candidates (Owner only): see a request's screened candidate shortlist.
+- POST /api/requests/:uuid/candidates (Owner only): require separate affirmative share permission, conflict check and availability confirmation plus a factual fit rationale; no automatic status update or client disclosure.
+
+The schema and owner assertions cannot prove consent documents exist: the owner must obtain and retain proof privately outside this code before entering an expert. No contact is automatically stored or shown to clients, and sourcing may involve finding a new qualified expert for each client request.
+
 ## Future activation — manually gated
 1. Conduct privacy/PDP review: lawful basis, retention, deletion/backup requests, contact and company privacy notice, consent records, third-party interviews and data location. Confirm PSE and organizational obligations.
 2. Create an independent Cloudflare Access Worker application with **only the authorized owner**, exact audience/issuer, no bypass policy. Make sure the Worker context exposes \`ctx.access\`.
