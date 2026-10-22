@@ -182,3 +182,11 @@
 .mf-wpp-official-legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;margin:14px 0}
 .mf-wpp-code-source{font:500 12px/1.5 system-ui,sans-serif;display:block;color:#a4d5f2;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 @media(max-width:650px){.mf-wpp-official-legend{grid-template-columns:minmax(0,1fr)}}
+
+.mf-viz-heat-scroll{overflow:auto;max-height:520px;border:1px solid #375c75;border-radius:8px}
+.mf-viz-heat-table{min-width:620px;width:100%;border-collapse:separate;border-spacing:2px;font:500 11px/1.45 system-ui,sans-serif}
+.mf-viz-heat-table th,.mf-viz-heat-table td{padding:7px 6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mf-viz-heat-table th{text-align:left;color:#dbe9f2;background:#15334a}
+.mf-viz-heat-table thead th{position:sticky;top:0;z-index:2}
+.mf-viz-heat-table tbody th{position:sticky;left:0;z-index:1;min-width:148px}
+.mf-viz-heat-table td{text-align:right;color:#f0f8fb;border-radius:3px}
