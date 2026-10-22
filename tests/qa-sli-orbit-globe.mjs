@@ -94,7 +94,7 @@ test('real canvas renderer paints archipelago on initial reduced-motion frame', 
   });
   assert.ok(goldenFills >= 1, 'Indonesian landmass painted in gold');
   assert.ok(paths >= 150, 'Multiple island geometry paths rendered');
-  assert.ok(root.children.some(child => child.className === 'sli-orbit-source'), 'Attribution link mounted');
+  assert.ok(root.children.some(child => child.className === 'sli-orbit-credits' && child.children.some(credit => credit.className === 'sli-orbit-source')), 'Attributed map sources mounted');
 });
 
 
@@ -121,7 +121,6 @@ test('low-detail world geography contains every major continent and keeps Indone
 });
 
 test('zoom and focus controls are active and actually change canvas geometry', () => {
-  const events = new Map();
   let currentFill = '';
   let coords = [];
   const earthWidths = [];
@@ -139,11 +138,11 @@ test('zoom and focus controls are active and actually change canvas geometry', (
   Object.defineProperty(contexts,'fillStyle',{get:()=>currentFill,set:v=>currentFill=v});
   const el=tag=>{
     const node={
-      tag, children:[], dataset:{}, isConnected:true, className:'', textContent:'',
+      tag, children:[], dataset:{}, isConnected:true, className:'', textContent:'', listeners:new Map(),
       append(...a){this.children.push(...a)},
       replaceChildren(...a){this.children=a},
       setAttribute(){},
-      addEventListener(name,fn){ events.set(this.className+':'+name,fn); },
+      addEventListener(name,fn){ this.listeners.set(name,fn); },
       removeEventListener(){},
       getBoundingClientRect(){return {width:365}},
       getContext(){return contexts}
@@ -164,8 +163,19 @@ test('zoom and focus controls are active and actually change canvas geometry', (
   assert.equal(controls.children[0].textContent, 'Tampilan Dunia');
   assert.equal(controls.children[1].textContent, 'Fokus Indonesia');
   const worldWidth = earthWidths.at(-1);
-  controls.children[1].addEventListener; // simulation dispatch via captured click handler
-  // Both view buttons share CSS class, so attach a unique identity below to capture separately.
+  controls.children[1].listeners.get('click')();
+  const indonesiaWidth = earthWidths.at(-1);
+  assert.ok(indonesiaWidth > worldWidth * 1.5, 'Focus Indonesia must truly zoom into geography');
+  assert.equal(controls.children[1].value, undefined);
+  assert.equal(controls.children[3].value, '2.2', 'Slider shows zoomed focus');
+  controls.children[0].listeners.get('click')();
+  const restoredWidth = earthWidths.at(-1);
+  assert.ok(restoredWidth < indonesiaWidth * .75, 'World view must zoom back out');
+  const stage = host.children.find(x=>x.className==='sli-orbit-stage');
+  let wheelPrevented = false;
+  stage.listeners.get('wheel')({deltaY:-100, preventDefault(){wheelPrevented=true;}});
+  assert.ok(wheelPrevented, 'wheel over globe zooms in');
+  assert.ok(earthWidths.at(-1) > restoredWidth, 'wheel zoom changes rendered globe size');
   assert.match(javascript, /focusView\.addEventListener\('click', \(\) => switchView\('indonesia'\)\)/);
   assert.match(javascript, /worldView\.addEventListener\('click', \(\) => switchView\('world'\)\)/);
   assert.match(javascript, /zoomInput\.addEventListener\('input'/);
