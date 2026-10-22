@@ -61,5 +61,8 @@ test('Client inputs bounded and no false availability or payment',()=>{
  assert.match(html,/maxlength="700"/);
  assert.match(html,/aria-live="polite"/);
  assert.match(html,/Privacy-first pilot/);
+ assert.match(html,/No pre-registered expert panel/);
+ assert.match(html,/Belum ada panel pakar terdaftar/);
+ assert.match(index,/on demand after reviewing your brief/);
  assert.doesNotMatch(html,/<form[^>]*action=/i);
 });
