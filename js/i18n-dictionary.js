@@ -2801,3 +2801,11 @@ window.SLI_TRANSLATIONS_ID.set("Loading Indonesian market overview…","Memuat r
 window.SLI_TRANSLATIONS_ID.set("Strategic Pulse & Data Freshness · Open source-dated monitoring","Pulsa Strategis & Kemutakhiran Data · Buka pemantauan bersumber dan bertanggal");
 window.SLI_TRANSLATIONS_ID.set("Monitoring headlines are attributed research leads, not verified current incidents. Source audit timestamps and missing values remain visible.","Judul berita pemantauan adalah temuan riset yang mencantumkan sumber, bukan kejadian terkini yang telah diverifikasi. Waktu audit sumber serta nilai yang belum tersedia tetap ditampilkan.");
 window.SLI_TRANSLATIONS_ID.set("View full source freshness and workflow audit ↗","Lihat audit lengkap kemutakhiran sumber dan alur kerja ↗");
+
+/* Green Workforce Intelligence: reviewed bilingual portal and sector copy. */
+window.SLI_TRANSLATIONS_ID.set("Green Workforce Intelligence · Bappenas 2025","Intelijen Tenaga Kerja Hijau · Bappenas 2025");
+window.SLI_TRANSLATIONS_ID.set("Proyeksi 2025–2029, 17 sektor ekonomi, tiga skenario; data proyeksi, bukan realisasi.","Proyeksi 2025–2029 untuk 17 sektor ekonomi dengan tiga skenario; bukan realisasi.");
+window.SLI_TRANSLATIONS_ID.set("Jelajahi dashboard tenaga kerja hijau →","Buka dashboard tenaga kerja hijau →");
+window.SLI_TRANSLATIONS_ID.set("Green Workforce Intelligence","Intelijen Tenaga Kerja Hijau");
+window.SLI_TRANSLATIONS_ID.set("Bappenas 2025–2029 employment projections · 17 economic sectors","Proyeksi pekerjaan Bappenas 2025–2029 · 17 sektor ekonomi");
+window.SLI_TRANSLATIONS_ID.set("Explore forecasts →","Jelajahi proyeksi →");
