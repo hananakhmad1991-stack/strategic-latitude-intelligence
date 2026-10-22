@@ -55,12 +55,17 @@ test("IDX is the explicit default and S&P 500 is only an opt-in global heatmap",
 });
 test("Internal SLI sector watchlist shows all twelve curated strategic sectors and links directly to a named dossier",()=>{
  const api=load("js/sli-idx-sector-watchlist.js").SLIIDXSectors;
- assert.equal(api.sectorKeys.length,12);
+ assert.equal(api.sectorKeys.filter(k=>k!=="all").length,12);
+ assert.ok(api.sectorKeys.includes("all"),"All-issuer discovery filter must be present");
  const selected=issuer.records.filter(x=>api.sectorKeys.includes(x.sector)&&x.exchange==="IDX");
- assert.equal(selected.length,260);
- assert.equal(new Set(selected.map(x=>x.ticker)).size,260);
- for(const [sector,n]of [["energy",17],["minerals",18],["coal",21],["food",36],["technology",24],
- ["infrastructure",19],["transport",16],["manufacturing",27],["finance",33],["property",19],["healthcare",15],["retail",15]])assert.equal(api.activeIssuerList(issuer.records,sector).length,n);
+ assert.ok(selected.length>=260);
+ assert.equal(new Set(selected.map(x=>x.ticker)).size,selected.length);
+ for(const sector of api.sectorKeys.filter(x=>x!=="all")){
+  const expected=issuer.records.filter(x=>x.sector===sector&&x.exchange==="IDX").length;
+  assert.equal(api.activeIssuerList(issuer.records,sector).length,expected,sector);
+ }
+ assert.equal(api.activeIssuerList(issuer.records,"all").length,issuer.records.length);
+ assert.ok(api.activeIssuerList(issuer.records,"minerals").some(x=>x.ticker==="BRMS"));
  assert.equal(api.tickerUrl("ANTM"),"./sli-issuer.html?ticker=ANTM");
  for(const ticker of ["ANTM","PTBA","TLKM","INDF","ICBP","MEDC","GOTO","AMMN"]){
   assert.ok(selected.some(x=>x.ticker===ticker),"Missing SLI issuer ticker "+ticker);

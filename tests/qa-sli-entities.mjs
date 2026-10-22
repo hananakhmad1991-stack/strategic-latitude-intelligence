@@ -59,7 +59,8 @@ test('Broad company directory is diversified, traceable and honest about provisi
   assert.match(e.ticker,/^[A-Z0-9]{4}$/);
   assert.ok(e.name&&e.sector&&e.source_url.startsWith('https://www.idx.co.id/'));
   assert.equal(e.market_cap,null);
-  assert.ok(['idx_seed_awaiting_official_refresh','official_exchange_snapshot'].includes(e.verification));
+  assert.ok(['idx_seed_awaiting_official_refresh','official_exchange_snapshot','official_ksei_security_listing'].includes(e.verification));
+  if(e.verification==='official_ksei_security_listing')assert.equal(e.listing_source_url,'https://web.ksei.co.id/services/registered-securities/shares/lc/'+e.ticker);
  }
  const overlap=new Set(corp.records.filter(x=>x.exchange==='IDX').map(x=>x.ticker));
  const distinct=issuer.records.length+corp.records.length-issuer.records.filter(x=>overlap.has(x.ticker)).length;
