@@ -8,6 +8,7 @@ import path from "node:path";
 import os from "node:os";
 import crypto from "node:crypto";
 import {execFileSync} from "node:child_process";
+import {selectKKPDropdown,selectKKPRating,KKP_FORM_KEYS} from "./kkp-questionnaire-controls.mjs";
 
 const URL="https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan";
 const out="artifacts/sli-kkp-authorized-hatchery-export-review.json";
@@ -52,18 +53,20 @@ try{
  await page.getByRole("button",{name:"Unduh Data"}).click({timeout:20000});
  const modal=page.locator('[role="dialog"],.modal.show').filter({visible:true}).first();
  await modal.waitFor({state:"visible",timeout:15000});
- stage="fill_official_questionnaire";
+ stage="fill_contact_name";
  await modal.getByPlaceholder("Masukkan Nama Lengkap").fill(name);
+ stage="fill_contact_email";
  await modal.getByPlaceholder("Masukkan Email").fill(email);
- for(const [i,key] of ["category","purpose","format","type"].entries()){
-  await modal.locator('[role="combobox"]').nth(i).click({timeout:4500});
-  const option=page.getByRole("option",{name:fields[key],exact:true});
-  await option.click({timeout:6500});
+ for(const [i,key] of KKP_FORM_KEYS.entries()){
+  stage="select_"+key;
+  await selectKKPDropdown(page,modal,i,fields[key]);
  }
- const rating=modal.locator('input[type="radio"]');
- if(await rating.count()<5)throw Error("kkp_rating_control_not_found");
- await rating.nth(Number(fields.rating)-1).check({force:true,timeout:5000});
- if(fields.review)await modal.getByPlaceholder("Masukkan Ulasan").fill(fields.review);
+ stage="select_rating";
+ await selectKKPRating(modal,fields.rating);
+ if(fields.review){
+  stage="fill_review";
+  await modal.getByPlaceholder("Masukkan Ulasan").fill(fields.review);
+ }
  review.consent_to_kkp_form=true;
  stage="submit_official_questionnaire";
  const promise=page.waitForEvent("download",{timeout:70000});

@@ -11,6 +11,8 @@ on:
       - 'scripts/probe_kkp_big_live.mjs'
       - 'scripts/probe_kkp_public_download.mjs'
       - 'scripts/export_kkp_hatchery_authorized.mjs'
+      - 'scripts/kkp-questionnaire-controls.mjs'
+      - 'scripts/probe_kkp_questionnaire_controls.mjs'
       - 'scripts/convert_kkp_hatchery_xlsx_to_csv.py'
       - 'tests/test_sli_kkp_authorized_export_converter.py'
       - 'scripts/probe_sli_owner_worker_live.mjs'
@@ -30,6 +32,8 @@ on:
       - 'scripts/probe_kkp_big_live.mjs'
       - 'scripts/probe_kkp_public_download.mjs'
       - 'scripts/export_kkp_hatchery_authorized.mjs'
+      - 'scripts/kkp-questionnaire-controls.mjs'
+      - 'scripts/probe_kkp_questionnaire_controls.mjs'
       - 'scripts/convert_kkp_hatchery_xlsx_to_csv.py'
       - 'tests/test_sli_kkp_authorized_export_converter.py'
       - 'scripts/probe_sli_owner_worker_live.mjs'
@@ -96,6 +100,8 @@ jobs:
           node --check scripts/probe_kkp_big_live.mjs
           node --check scripts/probe_kkp_public_download.mjs
           node --check scripts/export_kkp_hatchery_authorized.mjs
+          node --check scripts/kkp-questionnaire-controls.mjs
+          node --check scripts/probe_kkp_questionnaire_controls.mjs
           python3 -m py_compile scripts/convert_kkp_hatchery_xlsx_to_csv.py
           node --check scripts/probe_sli_owner_worker_live.mjs
           node --check scripts/kkp-owner-evidence-gate.mjs
@@ -120,6 +126,9 @@ jobs:
       - name: Install browser automation client without browser binaries
         if: env.CHROME_BIN != ''
         run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Verify official KKP dropdown controls without respondent or submission
+        if: env.CHROME_BIN != ''
+        run: node scripts/probe_kkp_questionnaire_controls.mjs
       - name: Attempt original KKP Unduh Data for complete hatchery table
         if: env.CHROME_BIN != ''
         run: node scripts/probe_kkp_public_download.mjs
@@ -145,6 +154,7 @@ jobs:
           path: |
             artifacts/sli-kkp-big-live-probe.json
             artifacts/sli-kkp-hatchery-download-probe.json
+            artifacts/sli-kkp-questionnaire-public-control-probe.json
             artifacts/kkp-hatchery-export-review.json
             artifacts/sli-owner-worker-live-acceptance.json
           if-no-files-found: warn
