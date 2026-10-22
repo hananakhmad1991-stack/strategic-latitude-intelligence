@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T04:07:27.945383Z",
+  "updated_at_utc": "2026-10-22T04:34:53.126172Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,6 +42,38 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_d98a9d28cdb0cb2d42a139",
+      "title": "Diam-Diam Lo Kheng Hong Borong Lagi Saham PGN (PGAS) Semester II/2026 - Bisnis Indonesia Premium",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNZENTc0pwOVM0RHRuazVGU3dEMkxOM0ZaTXdEbDNPU2REOFFVS1dIMXBjY3ZFQnBKc2JhbFpSSG5oQlhqNmFXX0Y4TFA3OGFscnJfd2hrVjhRemx5RDRhdmtKZTExbnpiUG10LW1ScjVqSk9VTE5odXBQV1NLSHFwY0tkVTNwWUE2THJmSUlPMV96VjliUHdORkdKbDZUYXZwVlV5YjhXd0hsNjh0M3VqTURGOWNrQWxEbkV3?oc=5",
+      "publisher": "Bisnis Indonesia Premium",
+      "published_at_utc": "2026-10-22T04:15:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGAS"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f0117524c1cd5c494e78de",
+      "title": "Potensi Menggiurkan Saham TLKM - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1TbGlHNmhWbTJucGhrc0I5U3ZiQ0c4N0lQejR4Y1JJdTQ5RWsyZkR3RmZmc0hULTJ2UXB4YzNTR2M5anYwbmYyTEEyQWpKYzJCdXhVWW9WVkgzYXE5R2lYak94ODQyYzBEWmFHbEZ6Mi1ldw?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-22T04:15:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_9fa2c783fc7a23c2680d85",
       "title": "BRIDS Pangkas Target IHSG Jadi 6.000, Jagokan Saham AMMN, BBNI, hingga TINS - Bisnis.com - Market",
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNRjFGd1lKaG9wSVdidmJoUndIMk5Cd2N6LVdsUDRVS0F6cWVES3BnUHhCbG95bFpyRm5meV9LVEpxZWIxTFFYcDcyS01fdE5rVlRwQjZ5ZGRTMHE4Q2tZY0FFV3BodUM5ZDZOUGprUE1yRU5NcUg1Q2VEbTA4SVFIZlo1UGJhNVA4d1ZLZDJsdXFqWTBTQzE5TF9laXdyNU81MVpkdlNyUG16SW9PQkVxMUZHVGVLMUUyRVEzYThPXy0?oc=5",
@@ -52,6 +84,22 @@
         "AMMN"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f0f6056363c9bb528c7777",
+      "title": "OJK Sanksi 11 Broker dalam Kasus Saham BREN, CUAN dan DSSA - Tirto.id",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOWXhoaVNsNHhFUzhyMVBhX2pfREVpbU1ic0piNmNuWHZFeFBMbmE0Y0tPX0RLOWNBOWFnX21RZ0t2Z0daZEZMeVR5RTczREJpZ1lGenhmM05SZ3JBS3hmTnd2ckVkdmdOSnFTal9OWVBGdktoVzh1TzBUVjBQWGxJcmtRUEkydw?oc=5",
+      "publisher": "Tirto.id",
+      "published_at_utc": "2026-10-22T03:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -5650,22 +5698,6 @@
         "PTPP"
       ],
       "sector": "infrastructure",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_7cd6226660c2761d5d17f7",
-      "title": "Penjualan Semen Indocement Naik 12 Persen pada September 2026, Pangsa Pasar INTP Tembus 31,6 Persen - TOPIK.ID",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOYXcwZG1ObmZvN05yam45UmI2VnhxQUwtRlF5Zi1kU0x6Wl91ODJoMXZWOHBzQUhPYWdQS09GeG41b1ZtY1ctWFJHRWV6VHlJdVdrVldfWmp1Ri1UZTZvTVlnOG5tN2FlQ3lCZ212NTJvRmxzLWhOWWpERjhLZ0MyUU9GS1ktVmN6OXlRVzlEdTVidlFPNmwydWtVR2tsYUlpcWtfOXA0SS1Zd2EwM29CYkc5R3FjdG1PZlE?oc=5",
-      "publisher": "TOPIK.ID",
-      "published_at_utc": "2026-10-14T04:30:12Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INTP"
-      ],
-      "sector": "manufacturing",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
