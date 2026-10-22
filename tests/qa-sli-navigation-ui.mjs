@@ -20,7 +20,8 @@ test('Home has one stable breadcrumb, detailed sector links and live route chang
  assert.ok(doc.querySelector('.sli-universal-actions a[href="./sli-glossary-methodology.html"]'));
  assert.equal(doc.querySelectorAll('.sli-platform-explorer').length,1,'One canonical Explore Data menu must serve the site');
  assert.ok(doc.querySelector('.sli-platform-sector-menu a[href="./provincial-intelligence.html"]'));
- assert.equal(doc.querySelectorAll('.sli-platform-sector-group').length,7);
+ assert.equal(doc.querySelectorAll('.sli-platform-sector-group').length,8,'All eight canonical sector families, including Marine & Fisheries, must remain discoverable');
+ assert.ok([...doc.querySelectorAll('.sli-platform-sector-heading')].some(x=>/Marine|Fisheries|Kelautan|Perikanan/i.test(x.textContent)),'Marine & Fisheries family missing');
  assert.equal(doc.querySelectorAll('.sli-explore-menu').length,0,'Remove legacy duplicate explorer');
  d.window.location.hash='#energy';
  doc.dispatchEvent(new d.window.CustomEvent('sli:pagechange',{detail:{page:'energy'}}));
@@ -45,7 +46,8 @@ test('specialist page exposes a compact cross-dashboard route, without replacing
 test('guide renders the catalog as real linked, grouped and bilingual modules',()=>{
  const d=setup('sli-user-guide.html','<main><header><h1>How to use SLI</h1></header><section id="sliGuideCatalog"></section></main>');
  const doc=d.window.document;
- assert.equal(doc.querySelectorAll('.sli-guide-group').length,7,'The guide must include all seven SLI module groups');
+ assert.equal(doc.querySelectorAll('.sli-guide-group').length,8,'The guide must cover all eight SLI module groups');
+ assert.ok([...doc.querySelectorAll('.sli-guide-group h3')].some(x=>/Marine|Fisheries|Kelautan|Perikanan/i.test(x.textContent)),'Marine & Fisheries guide group missing');
  assert.ok(doc.querySelectorAll('.sli-guide-card').length>=20);
  assert.ok(doc.querySelector('a[href="./index.html#home"]'));
  assert.equal(doc.querySelectorAll('.sli-platform-links a[href="./index.html#overview"]').length,0);
