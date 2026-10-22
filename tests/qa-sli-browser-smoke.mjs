@@ -136,6 +136,21 @@ for(const viewport of [{width:360,height:780},{width:390,height:844},{width:1366
   await page.locator("#raOwnerPanel > summary").click();
   assert.equal(await page.locator("#raOwnerPanel").getAttribute("open"),null,"Owner details must close again");
   assert.equal(metrics.cssLoaded,true,"Updated DERGUBA CSS link missing");
+  const layout=await page.evaluate(()=>{
+   const selectors=[".sli-ra-brand",".sli-ra-intro h1","#raPrompt","#raSend"];
+   return selectors.map(selector=>{
+    const el=document.querySelector(selector),b=el?.getBoundingClientRect();
+    return {selector,left:b?.left,right:b?.right,width:b?.width,height:b?.height};
+   });
+  });
+  for(const el of layout){
+   assert.ok(el.width>0&&el.height>0,"DERGUBA element not visible: "+JSON.stringify(el));
+   assert.ok(el.left>=-4&&el.right<=viewport.width+4,"DERGUBA important control clipped: "+JSON.stringify(el));
+  }
+  await page.locator('[data-ra-lang="en"]').click();
+  assert.equal(await page.locator('[data-ra-lang="en"]').getAttribute("aria-pressed"),"true","English selection did not activate");
+  await page.locator('[data-ra-lang="id"]').click();
+  assert.equal(await page.locator('[data-ra-lang="id"]').getAttribute("aria-pressed"),"true","Indonesian selection did not activate");
   await page.screenshot({path:path.join(outDir,"derguba-"+viewport.width+".png"),fullPage:false});
  });
 }
