@@ -225,6 +225,21 @@ export function auditFocusedBpsAnswer(answer,focus){
  if(/(?:terbukti\s+menyebabkan|disebabkan\s+oleh|proves?\s+causation|caused\s+by)/i.test(answer))
   issues.push("unsupported_causal_claim");
  const lines=answer.split(/\r?\n/);
+ const claimedNumbers=answer.match(/\[(\d+)\]/g)||[];
+ if(claimedNumbers.some(c=>{const x=Number(c.slice(1,-1));return !Number.isInteger(x)||x<1||x>focus.records.length;}))
+  issues.push("out_of_scope_numbered_citation");
+ // Commentary cannot insert unsupported new percentages, SE/RSE or table pages.
+ // One or two plain-language uncertainty sentences without new numeric claims
+ // are still permitted.
+ const extraLines=lines.filter(line=>line.trim()&&!focus.records.some(r=>
+  new RegExp("^\s*(?:[-*]\s*)?"+extraEscape(r.province)+"\s*[—–-]\s*"+extraEscape(r.label)+"\s*:","i").test(line)));
+ for(const line of extraLines){
+  const percentages=[...line.matchAll(/(?<![\d,.])(\d+(?:[,.]\d+)?)\s*%/g)];
+  if(percentages.some(m=>Number(m[1].replace(",","."))!==95))
+   issues.push("unsupported_extra_numeric_claim");
+  if(/(?:\b(?:estimasi|SE|RSE|Tabel|Table|CI|selisih)\b|PDF\s+halaman)\s*[:=]?\s*\d/i.test(line))
+   issues.push("unsupported_extra_numeric_claim");
+ }
  for(let i=0;i<focus.records.length;i++){
   const r=focus.records[i],prefix=new RegExp("^\\s*(?:[-*]\\s*)?"+extraEscape(r.province)+"\\s*[—–-]\\s*"+extraEscape(r.label)+"\\s*:","i");
   const matches=lines.filter(x=>prefix.test(x));
