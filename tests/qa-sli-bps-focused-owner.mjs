@@ -170,9 +170,7 @@ test("source PDF spotchecks pin exact health, electricity and e-money statistics
     [cell.estimate,cell.se,cell.rse,cell.ci_low,cell.ci_high],cell.province+" "+cell.metric);
   assert.deepEqual([m.table,m.pdf_page,sm.sampling_table,sm.pdf_page],
    [cell.main_table,cell.main_pdf_page,cell.sampling_table,cell.sampling_pdf_page]);
-  const question="Menurut BPS "+cell.province+", berapa RSE, SE dan interval kepercayaan 95% untuk "+
-    (cell.metric==="uninsured"?"tanpa jaminan kesehatan":
-     cell.metric==="no_electricity_lighting"?"tanpa listrik sebagai penerangan utama":"uang elektronik")+"?";
+  const question=q(cell.province,cell.metric);
   const selected=selectFocusedBpsWelfare(question,welfare);
   assert.ok(selected,cell.province+" must be selectable with PDF-checked evidence");
   assert.equal(selected.measure.se,cell.se);
