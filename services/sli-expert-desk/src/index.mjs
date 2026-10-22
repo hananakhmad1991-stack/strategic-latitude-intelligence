@@ -146,12 +146,15 @@ export async function handleRequest(request,env,identify=()=>{throw new HttpErro
     if(to==="shortlisted"&&input.screening_confirmed!==true)throw new HttpError(400,"Expert consent and screening confirmation required");
     if(to==="approved"&&input.client_approval_confirmed!==true)throw new HttpError(400,"Client approval confirmation required");
     const changedAt=new Date().toISOString();
-    const updated=await db.prepare("UPDATE research_requests SET status=?,version=version+1,updated_at=? WHERE id=? AND version=?")
-      .bind(to,changedAt,id,expectedVersion).run();
-    if((updated.meta?.changes||0)!==1)throw new HttpError(409,"Concurrent update; refresh");
-    // Do not claim an audit trail if the history write fails.
-    await db.prepare("INSERT INTO research_request_history(request_id,from_status,to_status,owner_hash,note,changed_at) VALUES(?,?,?,?,?,?)")
-      .bind(id,record.status,to,person.id,note,changedAt).run();
+    // D1 batch is transactional: state and audit history are committed together.
+    // The conditional INSERT is skipped if an optimistic-version conflict wins.
+    const results=await db.batch([
+      db.prepare("UPDATE research_requests SET status=?,version=version+1,updated_at=? WHERE id=? AND version=?")
+        .bind(to,changedAt,id,expectedVersion),
+      db.prepare("INSERT INTO research_request_history(request_id,from_status,to_status,owner_hash,note,changed_at) SELECT ?,?,?,?,?,? WHERE EXISTS(SELECT 1 FROM research_requests WHERE id=? AND version=? AND status=?)")
+        .bind(id,record.status,to,person.id,note,changedAt,id,expectedVersion+1,to)
+    ]);
+    if((results[0]?.meta?.changes||0)!==1)throw new HttpError(409,"Concurrent update; refresh");
     return json({id,status:to,version:expectedVersion+1},200,cors);
    }
    if(request.method==="DELETE"&&!statusRoute){
