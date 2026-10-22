@@ -123,7 +123,7 @@ function renderPlatformMast(){
   ['Explore sectors','Jelajahi sektor','./index.html#sliPortalSectors'],
   ['Compare provinces','Bandingkan provinsi','./provincial-intelligence.html'],
   ['Find a company','Cari perusahaan','./sli-entities.html'],
-  ['Check original sources','Periksa sumber data','./sli-sector-data-library.html'],
+  ['Check original sources','Periksa sumber data','./sli-sector-data-library.html#socio'],
   ['Analyze with DERGUBA','Analisis dengan DERGUBA','./sli-research-ai.html'],
   ['Request an expert / custom research','Minta pakar / riset khusus','./sli-expert-connect.html']
  ];
