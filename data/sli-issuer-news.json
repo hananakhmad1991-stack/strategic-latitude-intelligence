@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T14:34:17.328863Z",
+  "updated_at_utc": "2026-10-22T15:09:37.597148Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -52,6 +52,22 @@
         "PGEO"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_dcc81eec4266c24f752d28",
+      "title": "Jasa Marga Kaji Buyback Saham untuk Perkuat Kinerja JSMR - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE0yNGZib0xuWTZPTVFUM3BLMmFEWXBmZVUxVm1xcFBUNHprdnNMQVVDYkFINnBUMzN0RVMwbTdad1l5bHczOVc1dklXbmhWako5Tzg0?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-10-22T12:50:55Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -685,6 +701,22 @@
       "id": "sli_issuer_7c577d891170c28aa42fd0",
       "title": "IHSG Sesi I Berbalik Menguat 1,7%, Saham Masuk HSC BREN dan BYAN jadi Penopang - Katadata.co.id",
       "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPZjlYUjdOR1ZCUDNERjAtVElwc204OUhySTJBaHY0QlowZXRYV2VjMDVydWNUSG5vU2t2VDlsa21LeHBEaF9YWFB3dlVFQkxwWHBlQ3dkMERHeU5kdDlEX0RTOU9ublZWZnRia2hyb3JvZmc1R2otdWdqaWhVM1piZ1Q2OVFJR24xbHRNUmVRN1JLaE9na1Z3SnVfQWx5UzVTb1lIYkMxSFJMWFRBWTJVal9IWC1Ic2RieEpneXVIT2VoRU1pZ1M4ctIBzgFBVV95cUxNVTloMU9RZlNiSVl2amttOWxLanpUZWcwYW1lUnBNbnRSWlZjQXhMS0ctVTRPb0Q1WUJLVGNCdk40b1pIWXFTTkJvbFcyUEFUdmJ3MlczU25fSUc4UWtseWJCV2JOSm80MXVtaGpqUG1JQTBJVHhwYmFuTENHUldtd1JZUlNRRE9PS0Z5Nk9DNzZwT1JFc3NQRGE5YWJja09VcEgwVW5OU29FRVgxN29ZLU1RbGpaWEZyTnVPUGlDSXZheXJNWDB1YkZuWU9DUQ?oc=5",
+      "publisher": "Katadata.co.id",
+      "published_at_utc": "2026-10-22T05:39:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_b67bcb07e6d9e3b6ffa7de",
+      "title": "IHSG Sesi I Berbalik Menguat 1,70%, Saham BREN dan BYAN jadi Penopang - Katadata.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNVDNnRldtazMxMGhFM0JnaXdnYlJGYUZ6TEttRWtHYjU0MUJpMERQck1URWowRmhoYmd4QTU3QTBSR2lmMVI5UmFGNG4yRkpER05uTXo0alNxaWU0ZUoxUjJ1UDRPUHc1a1d3YlM0MWVyb2NZRDE1MTNsTXRxaTZrT2E3bkZQSzhUclFDaUI3OFJiMGREQWlZZWZfMW9qbjE4WXpBVnBPYk1zN0NXVUxGaF9fRm5mbU5EVDh4djhKRjNER3VaWm5SWdIBwgFBVV95cUxNNWhRYk5Zb0RIa0JHZXU1YkQyNmgzbklueHp3emR6ZFMtSHRMS0lUNG9Ra0NhS0Fyc3VxUlhwbGVaYVJSeTdDaENYajR4MksyYXdPOXp4WmlhVW83eFRPUHJZMWYxVXVUSlFQUkw3VjFvMWFpYzRuYWdvT3p3bzM1TlZ5X1JBUTk0M2tkd1lRZ0t3SGUtR3JPUl9fMkZ5RmU4Y19Gb1MxNWkyR0RWVEY0RzVKanNjT2E1SDRHZWIzMVBRUQ?oc=5",
       "publisher": "Katadata.co.id",
       "published_at_utc": "2026-10-22T05:39:00Z",
       "date_type": "rss_pubdate",
