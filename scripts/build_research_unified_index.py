@@ -28,6 +28,7 @@ EXCLUDE={
  "sli-verified-legal-provisions.json",
  "sli-bps-welfare-2026.json", # Dedicated 61-record Owner Worker corpus; avoid duplicate public dashboard indexing
  "sli-bps-welfare-2026-reconciliation.json", # Parser QA metadata only; never promote extraction diagnostics to RAG claims
+ "sli-bps-welfare-2026-demography-closure-qa.json", # Statistical audit aggregate only, NOT province welfare data
 }
 LIMIT_PER_DATASET=22
 LIMIT_TOTAL=1400

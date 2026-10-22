@@ -33,6 +33,7 @@ class SourceSafetyTests(unittest.TestCase):
 
     def test_bps_parser_audit_metadata_not_an_ai_fact_source(self):
         self.assertIn("sli-bps-welfare-2026-reconciliation.json",EXCLUDE)
+        self.assertIn("sli-bps-welfare-2026-demography-closure-qa.json",EXCLUDE)
         self.assertIn("sli-bps-welfare-2026.json",EXCLUDE)
 
     def test_placeholder_source_rejected_at_record_level(self):
