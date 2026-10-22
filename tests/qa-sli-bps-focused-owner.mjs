@@ -260,3 +260,23 @@ test("four-source comparison rejects cross-row contamination even when all corre
  const unsupported=correct+"\nPerbedaan kedua provinsi signifikan secara statistik.";
  assert.equal(auditFocusedBpsAnswer(unsupported,f).pass,false);
 });
+
+
+test("unverified numeric prose and extra citations outside source rows are not released",()=>{
+ const q2="Menurut BPS bandingkan Aceh dan Jawa Barat untuk air minum leding serta BPNT, berapa SE RSE dan interval kepercayaan 95%?";
+ const focus=selectFocusedBpsWelfare(q2,welfare);
+ const correct=simulated(focus);
+ assert.equal(auditFocusedBpsAnswer(correct+"\nInterval kepercayaan 95% bukan kepastian.",focus).pass,true);
+ for(const outside of [
+  "Jawa Barat juga sebesar 99,99%.",
+  "Estimasi 99,99% adalah angka tambahan.",
+  "SE 77,77 berarti salah.",
+  "Tabel 99.99 memuat data lain.",
+  "Selisih 40,20 poin persentase.",
+  "Sumber lain [9] mendukung klaim."
+ ]){
+  const reply=correct+"\n"+outside;
+  assert.equal(auditFocusedBpsAnswer(reply,focus).pass,false,
+   "unverified out-of-row number/citation must reject: "+outside);
+ }
+});
