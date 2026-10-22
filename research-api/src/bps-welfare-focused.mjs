@@ -177,6 +177,16 @@ function extraAuditRow(s,r,sourceNo){
  if(!s.includes("["+sourceNo+"]"))issues.push("source_citation_missing");
  if(!s.toLowerCase().includes(r.province.toLowerCase()))issues.push("target_region_missing");
  if(!s.toLowerCase().includes(r.label.toLowerCase()))issues.push("indicator_label_missing");
+ // A superficially correct answer must not smuggle a contradictory second
+ // labelled statistic into the same record. This is distinct from allowing
+ // harmless re-use of numeric values in source references.
+ for(const [field,pattern] of [
+  ["estimate",/(?:estimasi|perkiraan|diperkirakan)\\s*[:=]?\\s*\\d+(?:[,.]\\d+)?/gi],
+  ["SE",/(?:^|[^a-z])SE\\s*[:=]?\\s*\\d+(?:[,.]\\d+)?/gi],
+  ["RSE",/(?:^|[^a-z])RSE\\s*[:=]?\\s*\\d+(?:[,.]\\d+)?/gi]
+ ]){
+  if([...s.matchAll(pattern)].length!==1)issues.push("ambiguous_or_duplicate_"+field);
+ }
  if(!new RegExp("(?:estimasi|perkiraan|diperkirakan)\\s*[:=]?\\s*"+token(r.estimate),"i").test(s))issues.push("estimate_absent_or_numeric_mismatch");
  if(!new RegExp("(?:^|[^a-z])SE\\s*[:=]?\\s*"+token(r.se),"i").test(s))issues.push("SE_absent_or_numeric_mismatch");
  if(!new RegExp("(?:^|[^a-z])RSE\\s*[:=]?\\s*"+token(r.rse),"i").test(s))issues.push("RSE_absent_or_numeric_mismatch");
@@ -195,6 +205,12 @@ export function auditFocusedBpsAnswer(answer,focus){
  if(focus.legacy||!focus.records)return auditLegacyAcehAnswer(answer,focus);
  if(typeof answer!=="string"||!answer.trim())return {pass:false,issues:["empty_answer"]};
  const issues=[];
+ // Descriptive confidence intervals are not an independent hypothesis test;
+ // a model cannot invent statistical significance, p-values or causality.
+ if(/\b(?:signifikan|significant|signifikansi|significance)\b/i.test(answer)||/\bp\s*(?:[<=]|value)/i.test(answer))
+  issues.push("unsupported_statistical_significance_claim");
+ if(/(?:terbukti\s+menyebabkan|disebabkan\s+oleh|proves?\s+causation|caused\s+by)/i.test(answer))
+  issues.push("unsupported_causal_claim");
  const lines=answer.split(/\r?\n/);
  for(let i=0;i<focus.records.length;i++){
   const r=focus.records[i],prefix=new RegExp("^\\s*(?:[-*]\\s*)?"+extraEscape(r.province)+"\\s*[—–-]\\s*"+extraEscape(r.label)+"\\s*:","i");
