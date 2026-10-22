@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-21T23:56:19.830786Z",
+  "updated_at_utc": "2026-10-22T00:38:39.882538Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,38 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_0aeba79b1c699addcb850a",
+      "title": "Penuhi Kebutuhan Likuiditas dan Ekspansi, Jasa Marga (JSMR) Siapkan Opsi Buyback Saham - Jawa Pos",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQZ2NMdTEtTFhnRGtleDJieWZ3WTQ1ek5sLW9PZ2lTV091cTY4S0t4VlVDV2tPR3M1S2oySXZoX2lOUkRlMDhSSTZEMWpCSnczMDFjS3g5OEZrQUhhWmtFVUF3VFdYYWFIVTVVUVpGRlpEQ0twdW1yWEJBeTFibUxIQlRUTFdraEdDYmlqWUdBb1hsV1JBeGtuODJoTEoydi1EbXNoMWxjaGlVYzVPMmpvS2NFS2t0T2o5UmxRUzE0ZFA1Njg?oc=5",
+      "publisher": "Jawa Pos",
+      "published_at_utc": "2026-10-22T00:30:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_5071bc32a4444db465df1a",
+      "title": "Harga Sulfur Turun 21,17%, Saham MBMA, NCKL, dan INCO Berpeluang Diuntungkan - KONTAN",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOTG1LQkxiVWVXWGF3X0g5TVZTREw1YU05NE9ZSUl6Y0VVN1VqZ1Axa1AzWVI4Q016aExfU05GUmhoNUdvTE9BNUI4a3R2TE1iRlFfZGREWlVnOTMyZmJ6Wk9obk1MdDhHVnlqcWUxZHEydEhsWDFHMUxxWS15TEZweFJYc2F3RnBMcThiYTBBeFFnMm9KeDd0bWVoRjJnZU5iNzUzdmF3TTY?oc=5",
+      "publisher": "KONTAN",
+      "published_at_utc": "2026-10-22T00:27:46Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INCO"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_55781d9c388c28d14025b6",
       "title": "Daftar Pihak yang Terlibat Pelanggaran DSSA & BREN-CUAN - Bloomberg Technoz",
@@ -154,6 +186,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_8d6b2e876ac9eb50605e15",
+      "title": "Analis Soroti Peluang Tiga Saham BBCA ENRG dan JPFA - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPMjhWMjVTU1BaMnlCcWJCSzY3U3pUUlh0a1FmbUVCd01ablFDRWp2RzNKUTJ5MWd5UXcwMDQ2aDJQNjgwaWJ3VFVGQllRUHFwWkhqUzdpVjU1ekM4eUdhamF3YmowVkE4WHQ2Z0M3T2hXcjBPaUN0cVhuUGg2RkJfdC1n?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-21T22:28:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_ead6ef37547a7d8b54a47f",
       "title": "BERITA POPULER: 15 Saham Tahan Banting hingga Potensi Dividen TLKM - investor.id",
       "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOZ0dYd29JYW5mcTIybndidUVCNUYxdWF5bkZBMUQtR0w4aHppUWdEYk1UOHFBUUR4djRTUC1ySHEyNnN0dWp3U0ExRFdfSVV6TGNXODRsd3JJRkYwRnhLcDVqOHVhbjZFaTdXZVJoRWRoVVg0aXlFekZSMUJaVmVza0NBN09xai1zc0poajJ6ZFAxVGR0bENzQl9ZWW5ubmU3?oc=5",
@@ -223,6 +271,22 @@
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9rMkk4dzNsdjhSQ3ZSbnZXV2hvNXJlTF85ZVhYS2FtNXVMMFUteHZMVVlPSUNMQWlSVU45MFFsWWVzMUp6aXZpODVsdm5QblNmeHEyTFhrNHMxMm9telIzVk1xTlg2a1REb1E?oc=5",
       "publisher": "Demokratis.co.id",
       "published_at_utc": "2026-10-21T17:23:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_189f3f4f4ea7f2276fca7d",
+      "title": "KISI Soroti Fundamental PGEO di Tengah Tekanan Pasar Saham - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE50ajVWdWdtUTRNaFo4RndnV2tpVnROYWdWMXVUWUdlZy1ia2tZS0FHMGUtX05LYmpiRXktdVZSMElsV1BIQUdaNUtjbjZ3QU9UcXFwQ3hfV2NiZ1k4M1l2MUpCczdWVTA?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-21T17:04:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "PGEO"
@@ -827,6 +891,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_6b65c3ca11ced9a17ad57f",
+      "title": "Perkuat Likuiditas dan Ekspansi, Jasa Marga Buka Opsi Buyback Saham - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOMTRSOGgtVXhTZFpUbWtac0pYVVlTSnk2Y2pDS3RfOVVZeGNhUHp5angxVk5UMUNtYkg4SXNMQ2RRdmZIN19QV0NCRHJOQnIzQzZIYkMtTmdtanU2TUQySWFKaUpkdEZwdHhiLUFXaVVjV0FqMVNpdm9ZS2pxbF9qVk11WVNva09SZXpuQ094WmtzSXlmWVdYN2VaS09zdHAzNm9CQmxCR0t4ZGZMZnVyUjBHV3BkYkp5OHBXZGN2OWlGQQ?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-21T10:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_45ed64f36bbae0c144e42c",
       "title": "Jasa Marga (JSMR) Buka Opsi Buyback Saham di Tengah Gejolak Pasar Modal - Infobanknews",
       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNNW52VUwyUC1rbW41RDFkYUlsZlVrSnZCZXQ4QlNuZlpnV0IybWgtOS0yZkNSXzFGRnBNc1JIRHFxajdtZ0VBbnQ2U1JVc3kzVUltRDItS3ZBY1lmR0VKeEIxdG9PeXFzU003c29sUUVPNTZRd0JIU1VYZ3BQN2czTzdZNTJHcFV0RzF5RUZTbGRHNmJFUkdPUjJ3?oc=5",
@@ -898,6 +978,7 @@
       "published_at_utc": "2026-10-21T09:40:44Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "AADI",
         "ADRO"
       ],
       "sector": "coal",
@@ -5354,22 +5435,6 @@
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPUk9ZOHhZdmFBdHVLeWhBdHA2d1QwOWh4THdRZGY3R0xXajZQWmxLTzkxZW1sNDcwQ2tuMGpuTlAySlBVdkt1YnlucGMzQ1BpN1VZaUNweHhrckJWZm9KYkRpVzQ0ZjhtZmI1bnlPRlFUSTFwR0xHTy0wZk1nak10TFBacnFDTkJUWmZNTWNBVjVkNFdkenBRZzhjd1dpdzJwTXdVeUplQW4zMjU4NVJoNU40NDNOSkd3?oc=5",
       "publisher": "Bisnis.com - Market",
       "published_at_utc": "2026-10-14T01:48:54Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_120134988c105313e183af",
-      "title": "Rekomendasi Saham Hari Ini, Rabu 14 Oktober 2026: PTBA, EMAS, ERAA - investor.id",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOSDVBMEU0OVhPMW8taVVidHI2aUJzc1NzMFdQV3RhbS15Ump6WGRPRi1IN2hzT0FzMkJLQ3ZuanN0djJpN1lCWmFLTGwzREMxUGRWaFcxYndlRWozMC1oMnBTMTdNRHpaTkRndV9QOEhSaUc5clJwa2FSV21DemtHSlBMWE5fRUJKVG00WlE1eng4YV9fTmdseTFlM1I?oc=5",
-      "publisher": "investor.id",
-      "published_at_utc": "2026-10-14T00:35:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "PTBA"
