@@ -43,7 +43,7 @@ test("National trend indices share a baseline but DO NOT aggregate incommensurab
 test("KKP visual lab page provides browser controls, source disclosures and responsive vector views",()=>{
  const html=read("marine-fisheries-intelligence.html");
  const js=read("js/sli-kkp-visual-lab.mjs");
- for(const id of ["marine-visual-lab","mfVizHatcheryMap","mfVizHatcheryCoverage","mfVizNationalIndex","mfVizHatcherySankey","mfVizSankeySelected","mfVizSankeySummary"]){
+ for(const id of ["marine-visual-lab","mfVizHatcheryMap","mfVizHatcheryCoverage","mfVizNationalIndex","mfVizHatcherySankey","mfVizSankeyItems","mfVizSankeySelected","mfVizSankeySummary"]){
   assert.equal(html.split('id="'+id+'"').length-1,1,id);
  }
  assert.match(html,/bukan BIG/);
