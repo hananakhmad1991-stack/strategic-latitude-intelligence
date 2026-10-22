@@ -1,6 +1,18 @@
 name: SLI BPS Owner Evidence Live Smoke (manual, single API call)
 on:
   workflow_dispatch:
+    inputs:
+      scenario:
+        description: Fixed BPS statistical scenario (one model request max; no automatic retries)
+        type: choice
+        required: true
+        default: aceh_water
+        options:
+          - aceh_water
+          - west_java_uninsured
+          - bali_e_money
+          - papua_no_electricity
+          - aceh_west_java_water_bpnt
 permissions:
   contents: read
 jobs:
@@ -30,11 +42,12 @@ jobs:
       - name: Verify one authenticated BPS answer and primary citation
         env:
           SLI_OWNER_SMOKE_TOKEN: ${{ secrets.SLI_OWNER_SMOKE_TOKEN }}
+          BPS_OWNER_SCENARIO: ${{ inputs.scenario }}
         run: node scripts/sli-bps-owner-live-smoke.mjs
       - name: Document scope
         if: always()
         run: |
           echo '### DERGUBA BPS owner-only live acceptance' >> "$GITHUB_STEP_SUMMARY"
           echo 'This job requires pre-existing protected SLI_OWNER_SMOKE_TOKEN and makes **one** provider model call at most; no retry.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'Checker requires BPS publication, Aceh provincial source, two table citations, SE/RSE/CI and visible answer citation.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Checker requires exact province/indicator-specific BPS sources, table citations, SE/RSE/CI and correct PDF pages in every requested cell.' >> "$GITHUB_STEP_SUMMARY"
           echo 'Job PASS validates one response only; it does not prove full 165+133 table accuracy, claim-level PDF truth, or BPS reuse rights.' >> "$GITHUB_STEP_SUMMARY"

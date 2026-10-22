@@ -161,3 +161,58 @@ test("Focused Aceh BPS Owner prompt and handler validate one source and fail clo
   assert.equal(modelCalls,2,"One mocked model request per handler call, no retries");
  }finally{globalThis.fetch=oldFetch}
 });
+
+
+test("Real Owner Worker serves 4-cell BPS precision comparison and rejects a swapped/mismatched cell",async()=>{
+ const {readFileSync}=await import("node:fs");
+ const {selectFocusedBpsWelfare}=await import("../research-api/src/bps-welfare-focused.mjs");
+ const welfare=JSON.parse(readFileSync(new URL("../data/sli-bps-welfare-2026.json",import.meta.url),"utf8"));
+ const question="Menurut BPS, bandingkan Aceh dan Jawa Barat untuk air minum leding serta BPNT: berapa estimasi, SE, RSE dan interval kepercayaan 95% masing-masing?";
+ const focus=selectFocusedBpsWelfare(question,welfare);
+ assert.equal(focus.records.length,4);
+ const fmt=n=>Number(n).toFixed(2).replace(".",",");
+ const good=focus.records.map((m,i)=>m.province+" — "+m.label+": estimasi "+fmt(m.estimate)+"%; SE "+fmt(m.se)+
+ " poin persentase; RSE "+fmt(m.rse)+"%; interval kepercayaan 95% "+fmt(m.ci_low)+"–"+fmt(m.ci_high)+
+ "%; Tabel "+m.table+", PDF halaman "+m.main_page+"; Tabel "+m.appendix_table+", PDF halaman "+m.appendix_page+"; Penyebut: "+m.denominator+" ["+(i+1)+"].").join("\n");
+ const oldFetch=globalThis.fetch,env=fixtureEnv();
+ let modelCalls=0,nextAnswer=good;
+ globalThis.fetch=async(url,options)=>{
+  if(String(url)!=="https://api.openai.com/v1/responses")return Response.json({}, {status:404});
+  const params=JSON.parse(options.body);modelCalls++;
+  const source=JSON.parse(params.input[0].content[0].text).source_evidence;
+  assert.equal(source.length,4);
+  assert.equal(source[0].geo,"Aceh");assert.equal(source[3].geo,"Jawa Barat");
+  assert.match(params.instructions,/do not.*statistically significant/i);
+  assert.doesNotMatch(params.instructions,/600–900 words/);
+  return Response.json({status:"completed",output:[{type:"message",role:"assistant",content:[{type:"output_text",text:nextAnswer}]}]});
+ };
+ try{
+  const ok=await answer(request(question),env);
+  assert.equal(ok.status,200,JSON.stringify(ok.json));
+  assert.equal(ok.json.sources.length,4);
+  nextAnswer=good.replace("RSE "+fmt(focus.records[2].rse),"RSE 999,99");
+  const no=await answer(request(question),env);
+  assert.equal(no.status,502,JSON.stringify(no.json));
+  assert.equal(no.json.error,"focused_bps_statistical_answer_not_verified");
+  assert.ok(no.json.issues.some(s=>s.startsWith("RSE_absent_or_numeric_mismatch_row_")));
+  assert.equal(no.json.answer,undefined);
+  assert.equal(modelCalls,2,"One mocked model response per request; no automatic paid retry");
+ }finally{globalThis.fetch=oldFetch}
+});
+
+
+test("Real Owner Worker does not call a paid model for a BPS precision cell with suppressed SE/CI",async()=>{
+ const question="Menurut BPS, di Jawa Barat untuk rumah tangga tanpa listrik sebagai penerangan utama, berapa SE, RSE dan interval kepercayaan 95%?";
+ const oldFetch=globalThis.fetch;let providerCalls=0;
+ globalThis.fetch=async(url)=>{
+  if(String(url).includes("api.openai.com"))providerCalls++;
+  return Response.json({}, {status:404});
+ };
+ try{
+  const blocked=await answer(request(question),fixtureEnv());
+  assert.equal(blocked.status,422,JSON.stringify(blocked.json));
+  assert.equal(blocked.json.error,"bps_statistical_precision_unavailable");
+  assert.equal(blocked.json.reason,"requested_precision_cells_unavailable");
+  assert.equal(providerCalls,0);
+ }finally{globalThis.fetch=oldFetch}
+});
