@@ -250,7 +250,7 @@ export default{
   if(focusedWelfare)params.instructions+="\nFOCUSED BPS STATISTICAL QUESTION OVERRIDES GENERIC REPORT FORMAT: Answer the exact Aceh household tap-water question FIRST in 100–180 words. Use only the ONE BPS evidence record [1] and quote the exact estimate, SE (percentage points), RSE (%) and lower AND upper 95% CI bounds with two decimals. Cite [1] inline. Explicitly name table 6.23 PDF page 215 and sampling table 9.88 PDF page 434; differentiate households using piped water from safe drinking water. No general research essay, invented numbers, other provinces, generic conclusions or long source list.";
   if(/^gpt-5(?:\.|-)/.test(env.RESEARCH_MODEL))params.reasoning={effort:"low"};
   params.max_output_tokens=Math.min(6000,Math.max(2500,Number(env.OWNER_MAX_OUTPUT_TOKENS)||4800));
-  if(focusedWelfare)params.max_output_tokens=1600;
+  if(focusedWelfare)params.max_output_tokens=2600;
   let answer;
   try{
    const transport=openAITransport(env);
