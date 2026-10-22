@@ -50,6 +50,11 @@ export async function selectKKPRating(modal,rating){
  const label=input.locator("xpath=ancestor::label[1]");
  if((await label.count())!==1)throw Error("kkp_rating_label_not_found");
  await label.click({timeout:10000});
- if(!(await input.isChecked()))throw Error("kkp_rating_not_confirmed");
- return true;
+ if(await input.isChecked())return true;
+ // Browser-native keyboard selection supports the same official MUI rating
+ // control without injecting values or dispatching synthetic form events.
+ await input.focus();
+ await input.press("Space",{timeout:7000});
+ if(await input.isChecked())return true;
+ throw Error("kkp_rating_not_confirmed");
 }
