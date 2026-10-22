@@ -22,14 +22,15 @@ try{
   await page.locator('.sli-home-journeys a[href="./sli-entities.html"]').click();
   await page.waitForURL(/sli-entities\.html/);
   await page.locator('.sli-research-path').waitFor();
-  assert.equal(await page.locator('.sli-research-step').count(),5);
+  assert.equal(await page.locator('.sli-research-step').count(),6);
   const sources=page.locator('.sli-research-step[href="./sli-sector-data-library.html"]');
   assert.ok(await sources.count()>0);
   await sources.click();await page.waitForURL(/sli-sector-data-library\.html/);
   assert.ok(await page.locator('.sli-research-step[href="./sli-research-ai.html"]').count()>0);
   const size=await page.evaluate(()=>({viewport:innerWidth,body:document.documentElement.scrollWidth}));
   assert.ok(size.body<=size.viewport+20,'horizontal page overflow '+JSON.stringify(size));
-  console.log('PASS connected entity → source → analysis links width',width);
+  assert.equal(await page.locator('.sli-research-step[href="./sli-expert-connect.html"]').count(),1);
+  console.log('PASS connected entity → source → analysis → experts links width',width);
   await page.close();
  }
 }finally{await browser.close()}
