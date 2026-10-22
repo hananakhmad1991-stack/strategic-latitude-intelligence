@@ -1,0 +1,39 @@
+name: SLI BPS Owner Evidence Live Smoke (manual, single API call)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  owner-bps-acceptance:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: sli-owner-staging
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prove safe offline evidence checker
+        run: |
+          node --check scripts/sli-bps-owner-live-smoke.mjs
+          node scripts/sli-bps-owner-live-smoke.mjs --self-test
+      - name: Check owner staging secret is connected to this GitHub environment
+        env:
+          SLI_OWNER_SMOKE_TOKEN: ${{ secrets.SLI_OWNER_SMOKE_TOKEN }}
+        run: |
+          if [ -z "$SLI_OWNER_SMOKE_TOKEN" ]; then
+            echo "::error::SLI_OWNER_SMOKE_TOKEN not configured in the protected staging environment; no live call made."
+            exit 1
+          fi
+      - name: Verify one authenticated BPS answer and primary citation
+        env:
+          SLI_OWNER_SMOKE_TOKEN: ${{ secrets.SLI_OWNER_SMOKE_TOKEN }}
+        run: node scripts/sli-bps-owner-live-smoke.mjs
+      - name: Document scope
+        if: always()
+        run: |
+          echo '### DERGUBA BPS owner-only live acceptance' >> "$GITHUB_STEP_SUMMARY"
+          echo 'This job requires pre-existing protected SLI_OWNER_SMOKE_TOKEN and makes **one** provider model call at most; no retry.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Checker requires BPS publication, Aceh provincial source, two table citations, SE/RSE/CI and visible answer citation.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Job PASS validates one response only; it does not prove full 165+133 table accuracy, claim-level PDF truth, or BPS reuse rights.' >> "$GITHUB_STEP_SUMMARY"

@@ -4,6 +4,11 @@ on:
     paths:
       - 'data/sli-bps-welfare-2026.json'
       - 'data/sli-bps-welfare-2026-reconciliation.json'
+      - 'data/sli-bps-welfare-2026-demography-closure-qa.json'
+      - 'scripts/audit_bps_welfare_demography_closure.py'
+      - 'scripts/sli-bps-owner-live-smoke.mjs'
+      - 'tests/test_bps_welfare_demography_closure.py'
+      - '.github/workflows/sli-bps-owner-live-smoke.yml'
       - 'scripts/audit_bps_welfare_secondary_reader.py'
       - 'tests/test_bps_welfare_secondary_reader.py'
       - 'research-api/src/welfare-corpus.mjs'
@@ -45,5 +50,13 @@ jobs:
         run: |
           python -m py_compile scripts/audit_bps_welfare_secondary_reader.py
           python -m unittest discover -s tests -p 'test_bps_welfare_secondary_reader.py' -v
+      - name: Validate 19 demography categorical-total audit contracts
+        run: |
+          python -m py_compile scripts/audit_bps_welfare_demography_closure.py
+          python -m unittest discover -s tests -p 'test_bps_welfare_demography_closure.py' -v
+      - name: Validate owner BPS evidence smoke without consuming tokens
+        run: |
+          node --check scripts/sli-bps-owner-live-smoke.mjs
+          node scripts/sli-bps-owner-live-smoke.mjs --self-test
       - name: Check BPS welfare data and integration contracts
         run: node --test tests/qa-bps-welfare-2026.mjs
