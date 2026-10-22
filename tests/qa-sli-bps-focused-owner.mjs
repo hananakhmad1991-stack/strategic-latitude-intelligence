@@ -36,7 +36,7 @@ test("numeric guard accepts exact official source transcription with proper cita
 
 test("focused answers with omitted or changed key figures fail closed",()=>{
  for(const [from,to] of [["7,49","7,39"],["SE 0,33","SE 0,53"],["RSE 4,38","RSE 8,34"],["6,84–8,13","6,84–8,31"],["95%","90%"],["PDF halaman 434","PDF halaman 443"],["Tabel 6.23","Tabel 6.24"],["[1]","[3]"],["rumah tangga","populasi"]]){
-  const result=auditFocusedBpsAnswer(good.replace(from,to),get());
+  const result=auditFocusedBpsAnswer(from==="[1]"?good.replaceAll(from,to):good.replace(from,to),get());
   assert.equal(result.pass,false,from+" changed to "+to+" must fail; got "+JSON.stringify(result));
  }
 });
