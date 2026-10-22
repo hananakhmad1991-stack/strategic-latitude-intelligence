@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T16:37:25.751107Z",
+  "updated_at_utc": "2026-10-22T17:08:19.676950Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,6 +42,22 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_834e33ce4ebe588cb2634c",
+      "title": "TLKM Rampung Buyback Rp36,5M dari Pemegang Saham Tolak Spin-Off Fiber - Emitennews.com",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOb2loQ0Z6T3UtbnR5RmowSzBQaDhRbEZHXzRvYjdjazl1R2VEU1Z6VWs4bHkzSXJxZWJzc1RRNzVDQ3dkbko0VVVFUlNmQ3pZY3FQUVdsMEdmSmh5dXRRSDRObGJGdEU2XzM5OEp4MVBnclN5dnBuU2FnWnNHcDI4MTZsWjE0M2NGM2lhdEJJeV83N3NpcTVXMUNKVlNCaWpfRUE?oc=5",
+      "publisher": "Emitennews.com",
+      "published_at_utc": "2026-10-22T16:59:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_4b519e480288157b9d520f",
       "title": "Penopang Kuat PGEO Tangkap Prospek Cerah EBT di Tengah Tekanan Pasar Saham - Bisnis.com - Market",
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPd3hLamQyRmxaZFRDQkxEMjA2Zk5NRFRaV1NPenFQdm5LM0FnS3VuTHE4Z2otU3pkS3ByaDBJMEdQb3NJUjhrQ2VXQXp3Wlh4M0dENWFLVDUtak92R2NSNEZNaENjQ0lpM1Rzam1XYWZJUnVFU0ZwUTZTcWM5Rm9wN1hBbFpkV0xQUTFhYV9tSUNtV25TZ1pReHAyMXRSQkJybkR0RmIwaFJsNE1QYzJza0gwYTltVnZ5c3phejl2eWZlSzZ3?oc=5",
@@ -63,6 +79,22 @@
       "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE0yNGZib0xuWTZPTVFUM3BLMmFEWXBmZVUxVm1xcFBUNHprdnNMQVVDYkFINnBUMzN0RVMwbTdad1l5bHczOVc1dklXbmhWako5Tzg0?oc=5",
       "publisher": "شبكة تواصل الإخبارية",
       "published_at_utc": "2026-10-22T12:50:55Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_3ee16c8fe9720402a058df",
+      "title": "Kaji Buyback Saham, Cermati Rekomendasi Saham Jasa Marga (JSMR) - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPb0FaZ1c5aVFfcFFsMnUyZUpHSVJDeDJFRmk4eVVYcWNaRmhmOHZoVVV0NE9PNERTU0NqY01Kb200X2RWQl9oNWxRVm5iYWFEUTlLV2VzckZqbVNtVmtmQU80Y2UxT3lBTXlmbXU5b2FoWWZRMl9XWm4zNExPWFNieUhTRlA2U2x3Nk1ManRPbWItRzBLTUNHcUkzRXjSAZQBQVVfeXFMTVFsWDhEbElXOTU5NDhnNFhFU1JEakMzajFUOHB5bmYtb0dpcnJIZXp4SWFtTEhmLXJXb1F2QzB4eXNmZFNvb0NESmtpMFI3VWdnaFZwMW1wTWVGRFREX040ajhxamh3cjBBMTQ0ZXh4MGQzVmp4ZU5DMzdLdGhiUHRTZU9iV2tMNlpITTFuQjN2d0RaWQ?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-22T12:48:24Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "JSMR"
