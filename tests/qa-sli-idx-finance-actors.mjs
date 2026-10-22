@@ -19,7 +19,7 @@ test('260-ticker catalog exposes 12 sectors while retaining explicit not-a-censu
  assert.match(s,/issuerQuery=/);
  assert.match(s,/NOT the full IDX issuer universe/);
  assert.match(s,/candidates.length/);
- assert.match(get('index.html'),/js\/sli-idx-sector-watchlist\.js\?v=20261022-expanded1/);
+ assert.match(get('index.html'),/js\/sli-idx-sector-watchlist\.js\?v=20261022-actorsfinance2/);
 });
 
 test('dated fundamentals have explicit primary-source provenance and do not invent N/A',()=>{
@@ -70,7 +70,7 @@ test('direct owner, beneficial owner, PSC and country links are rigorously separ
  assert.match(js,/participating_interest_pct/);
  assert.match(js,/source_period/);
  assert.match(get('js/sli-entities.js'),/assetProfiles\.get\(n\.ticker\)/);
- assert.match(get('sli-issuer.html'),/20261022-actors1/);
+ assert.match(get('sli-issuer.html'),/20261022-actorsfinance3/);
 });
 
 test('IDX dossier renders verified revenue plus source-dated shareholder and concession actors', async ()=>{
