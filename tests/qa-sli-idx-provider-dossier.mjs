@@ -74,8 +74,8 @@ test("Historical provider price chart is integrated in the selected IDX issuer's
  const script=read("js/sli-issuer.js");
  const css=read("css/sli-issuer.css");
  const html=read("sli-issuer.html");
- assert.ok(html.includes("js/sli-issuer.js?v=20261020-history1"));
- assert.ok(html.includes("css/sli-issuer.css?v=20261020-history1"));
+ assert.match(html,/js\/sli-issuer\.js\?v=20261022-actorsfinance3/);
+ assert.match(html,/css\/sli-issuer\.css\?v=20261022-actorsfinance2/);
  assert.equal(route.historicalChartWidget,"https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js");
  for(const ticker of ["ANTM","PTBA","MEDC","TLKM","INDF","GOTO"]){
   const cfg=route.historicalChartConfig(ticker);
