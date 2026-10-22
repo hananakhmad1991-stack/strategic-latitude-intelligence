@@ -38,7 +38,7 @@ const tableRows=["| Bagian | Keterangan | Status |","| --- | --- | --- |",
  " | Contoh teks panjang untuk menguji pembungkusan tabel tanpa kehilangan huruf | Draf [1] |")].join("\n");
 const longAnswer="# UJI TATA LETAK — BUKAN HASIL MODEL LIVE\n\n## Ringkasan Uji\n\n"+
  paragraphs+"\n\n## Tabel Uji\n\n"+tableRows+
- "\n\n## Catatan Akhir\n\nBATAS_AKHIR_LAPORAN_TERLIHAT_20261022 [1].";
+ "\n\n## Catatan Akhir\n\nBATAS AKHIR LAPORAN TERLIHAT 20261022 [1].";
 
 const fixtures=[
  {id:"pasal99",question:absentQ,answer:absent.answer,sources:absent.sources},
