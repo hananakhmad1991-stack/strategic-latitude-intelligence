@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T10:09:08.229183Z",
+  "updated_at_utc": "2026-10-22T11:06:00.434836Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,38 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_4b83cf5d3d78ae66604c57",
+      "title": "Amman Mineral (AMMN) Siapkan Buyback Saham Rp 1 Triliun - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQbXBtYzJIc0otaVJVckVYRExwUEM2b0J4cmtta25CUjVMNi1lR05WOGFmN3hkSXRSR0NKeFFHTGF3eDRZV184WjhpcGdNZGdGTkY2UnZPZE56QTltMzMwWTUwUy00dV9fUDhlZVREeEJhRE9WcDZKYnQtXzBQeXFQRktfYnd0OWlSaFV4WC1zQ1JzaXfSAYsBQVVfeXFMUDM2WXplN3hUMGc0Ym9odVVwVDNDR05EajlUdDRsdG1WWGpOWTJBMW9QQzZaNWtWcy14Y0tHbWJHM1o1NkZUNUQ5TDJRcmNQWUpkUDYwU3Nxanp0ZUJIbXB5YXZ4RlRJS055c0xMT2NWTGF0MF9lU3NtbzdyWUQyYWZOdEIyMFJxMnVBYw?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-22T10:34:03Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_a0b34a1c546fa2a0f4d945",
+      "title": "Analis Nilai Saham ANTM Tetap Solid Usai Keluar dari MSCI - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1wUXFnNkFLbF9rWDFNRFBaN0h3LTZpOU5LUnFuTVg4dXc0UGxPQld2UUFCVXdWMHR5b3NEc3FGUFdIYnlFVkFmc1BuRDQtNTdBWGwyaGU5Z0ZsbXVwWDQwN0J2MA?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-22T10:31:25Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_19917ac50b0a5e9eec17f4",
       "title": "Indeks Bisnis-27 Ditutup Menguat, Saham MAPI, AMMN, hingga BBNI Melaju - Bisnis.com - Market",
@@ -335,6 +367,22 @@
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOZUhBUS1JLW9NZlJpMnlxYkhoZ3hxc1FfNW41VzNXbG1VOFNPQzh2WkUxMEZYY1ZoM0dlaVBnd1J6OXhKOUs1eDZjd1N5aFVlLVVKSHMyVXhGanRRY212T29IQ1FGVFlWRWZsQnJnZ1pPcUZOX1B4UTNYMTBJYk5xdmZGRTNHTHczajlwYnFfYllVNktHMFp4SUJrZV9lSmtmcjRtLXZicDZTaGxqZThWaVNiZFZxd3V6?oc=5",
       "publisher": "Bareksa.com",
       "published_at_utc": "2026-10-22T05:54:21Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_be1a84816c60dc7f5bf4a9",
+      "title": "OJK Ungkap \"Pihak Nakal\" Manipulator Saham DSSA, CUAN, BREN - Validnews",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNcXlwNWxCTG0tQW5PdEgzeFhLY3JFWmdCRE9HMkpwcHd2bXVHcUZaa3dqUUxtZndJUFgzWngybTdBWEk4R0pROWZ0bGpjM1pQZWs3bnpLY05VVDdqbi1aeExVVFNwODNETmR4eEk2MFdmOWZVNW12eGFWeERTWl9MYlhuNk4yZjBCRkFJb01jazA2dXFCUWM3QlFuXzNaWExOOWd2YjY2ZXY?oc=5",
+      "publisher": "Validnews",
+      "published_at_utc": "2026-10-22T05:54:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "BREN"
