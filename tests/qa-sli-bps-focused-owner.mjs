@@ -225,7 +225,9 @@ test("adversarial wrong-number append, duplicate labelled SE/RSE, and unsupporte
   for(const [label,suffix] of [
    ["duplicate_SE","; SE 99,99 poin persentase"],
    ["duplicate_RSE","; RSE 99,99%"],
-   ["duplicate_estimate","; estimasi 99,99%"]
+   ["duplicate_estimate","; estimasi 99,99%"],
+   ["fabricated_extra_table","; Tabel 99.99"],
+   ["fabricated_extra_page","; PDF halaman 9999"]
   ]){
    const malicious=valid+suffix;
    assert.equal(auditFocusedBpsAnswer(malicious,f).pass,false,
