@@ -77,3 +77,10 @@ body.sli-home-active .sli-portal-hero-actions { max-width: 59%; }
   body.sli-home-active .sli-portal-hero { min-height: 0; }
   .sli-orbit-globe { overflow: visible; }
 }
+
+/* Global visual-export integration wraps canvas in its own stacking context.
+   Keep the interactive toolbar ABOVE the canvas, even after this enhancement. */
+.sli-orbit-stage { z-index: 0; }
+.sli-orbit-controls,
+.sli-orbit-toggle,
+.sli-orbit-credits { position: relative; z-index: 5; }
