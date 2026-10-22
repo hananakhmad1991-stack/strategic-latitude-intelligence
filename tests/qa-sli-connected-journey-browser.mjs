@@ -8,7 +8,9 @@ try{
   await page.goto(base+'index.html#home',{waitUntil:'domcontentloaded'});
   await page.locator('.sli-home-journeys a').first().waitFor();
   assert.equal(await page.locator('.sli-home-journeys a').count(),4);
-  assert.match(await page.locator('.sli-portal-hero h2').innerText(),/Indonesia Intelligence/i);
+  assert.match(await page.locator('.sli-portal-hero h2').innerText(),/Find the expertise to act/i);
+  assert.equal(await page.locator('.sli-service-card').count(),3);
+  assert.equal(await page.locator('.sli-service-expert[href="./sli-expert-connect.html"]').count(),1);
   const panel=page.locator('.sli-portal .sli-market-home');
   const collapse=page.locator('.sli-panel-collapse[aria-controls="sli-panel-sli-market-home"]');
   await collapse.waitFor({timeout:15000});
