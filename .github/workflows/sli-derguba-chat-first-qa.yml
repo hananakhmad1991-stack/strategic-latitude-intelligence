@@ -1,0 +1,36 @@
+name: SLI DERGUBA Chat-First UX QA
+on:
+  pull_request:
+    paths:
+      - 'sli-research-ai.html'
+      - 'css/sli-derguba-chat-first.css'
+      - 'js/sli-research-assistant.js'
+      - 'tests/qa-sli-derguba-chat-first.mjs'
+      - 'tests/qa-sli-derguba-chat-first-browser.mjs'
+      - '.github/workflows/sli-derguba-chat-first-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chat-first-ux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1 jsdom@26.1.0
+      - name: Chrome
+        run: echo "CHROME_BIN=$(command -v google-chrome || command -v chromium)" >> "$GITHUB_ENV"
+      - name: Serve SLI
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sli-derguba-chat-first.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:8765/sli-research-ai.html >/dev/null && exit 0; sleep 1; done
+          exit 1
+      - name: Source-preserving chat UI tests
+        run: |
+          node --check js/sli-research-assistant.js
+          node --test tests/qa-sli-derguba-chat-first.mjs tests/qa-sli-derguba-origin-brand.mjs
+      - name: Visible chat-first mobile and desktop browser acceptance
+        run: node tests/qa-sli-derguba-chat-first-browser.mjs
