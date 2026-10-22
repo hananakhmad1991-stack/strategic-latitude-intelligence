@@ -1,0 +1,115 @@
+name: SLI Expert Desk Cloudflare private launch preflight
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/sli-expert-desk-cloudflare-gates.yml'
+      - 'services/sli-expert-desk/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sli-expert-desk-cloudflare-gates.yml'
+      - 'services/sli-expert-desk/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-qa:
+    name: Owner queue + schema + fail-closed config
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify testable source and private default
+        run: |
+          node --check services/sli-expert-desk/src/index.mjs
+          node --check services/sli-expert-desk/src/owner-console.mjs
+          node --check services/sli-expert-desk/src/experts.mjs
+          node --test services/sli-expert-desk/tests/owner-queue.test.mjs
+          python3 services/sli-expert-desk/tests/test_schema.py
+          grep -q '^workers_dev = false$' services/sli-expert-desk/wrangler.toml
+          grep -q 'REPLACE_WITH_PRIVATE_D1_DATABASE_ID' services/sli-expert-desk/wrangler.toml
+          ! grep -Eq '^[[:space:]]*(routes?|CF_ALLOWED_ORIGIN|CF_EXPERT_DESK_ENABLED)[[:space:]]*=' services/sli-expert-desk/wrangler.toml
+          echo 'Private Expert Desk source PASS; no active customer intake and no deployed route.' >> "$GITHUB_STEP_SUMMARY"
+
+  cloudflare-readonly:
+    name: Cloudflare account inventory (read-only)
+    needs: local-qa
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    environment: sli-owner-staging
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CF_EXPERT_D1_ID: ${{ secrets.SLI_EXPERT_D1_DATABASE_ID }}
+      CF_EXPERT_ACCESS_APP_ID: ${{ secrets.SLI_EXPERT_ACCESS_APP_ID }}
+      CF_EXPERT_PRIVATE_ORIGIN: ${{ secrets.SLI_EXPERT_PRIVATE_ORIGIN }}
+      CF_EXPERT_ACCESS_AUD: ${{ secrets.SLI_EXPERT_ACCESS_AUD }}
+      CF_EXPERT_ACCESS_ISSUER: ${{ secrets.SLI_EXPERT_ACCESS_ISSUER }}
+      CF_EXPERT_OWNER_HASH: ${{ secrets.SLI_EXPERT_OWNER_HASH }}
+    steps:
+      - name: Inspect named D1 and Access app without mutations or secret output
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const e=process.env,missing=[];
+          const names={
+            CF_TOKEN:'CLOUDFLARE_API_TOKEN',
+            CF_ACCOUNT:'CLOUDFLARE_ACCOUNT_ID',
+            CF_EXPERT_D1_ID:'SLI_EXPERT_D1_DATABASE_ID',
+            CF_EXPERT_ACCESS_APP_ID:'SLI_EXPERT_ACCESS_APP_ID',
+            CF_EXPERT_PRIVATE_ORIGIN:'SLI_EXPERT_PRIVATE_ORIGIN',
+            CF_EXPERT_ACCESS_AUD:'SLI_EXPERT_ACCESS_AUD',
+            CF_EXPERT_ACCESS_ISSUER:'SLI_EXPERT_ACCESS_ISSUER',
+            CF_EXPERT_OWNER_HASH:'SLI_EXPERT_OWNER_HASH'
+          };
+          for(const [key,label] of Object.entries(names)){if(!e[key])missing.push(label)}
+          const result={token_available:Boolean(e.CF_TOKEN&&e.CF_ACCOUNT),database:'not_checked',access:'not_checked',missing_keys:missing,
+            private_worker_deployed:false,public_intake_enabled:false};
+          const token=e.CF_TOKEN,account=e.CF_ACCOUNT;
+          async function read(url){
+            try{
+              const res=await fetch(url,{headers:{Authorization:'Bearer '+token,Accept:'application/json'},redirect:'error',signal:AbortSignal.timeout(15000)});
+              const data=await res.json().catch(()=>null);
+              return res.ok&&data?.success===true?{ok:true,items:data.result||[]}:{ok:false,code:res.status};
+            }catch{return {ok:false,code:'network_or_timeout'}}
+          }
+          if(token && /^[a-f0-9]{32}$/i.test(account||'')){
+            const prefix='https://api.cloudflare.com/client/v4/accounts/'+account;
+            const d1=await read(prefix+'/d1/database?name=sli-expert-desk-private');
+            if(!d1.ok)result.database='unverified_api_scope_or_service';
+            else{
+              const matches=(Array.isArray(d1.items)?d1.items:[]).filter(v=>v?.name==='sli-expert-desk-private');
+              result.database=matches.length===1?'named_database_exists':'named_database_missing';
+              if(e.CF_EXPERT_D1_ID && matches.some(v=>v.uuid===e.CF_EXPERT_D1_ID))result.database='id_verified';
+            }
+            const apps=await read(prefix+'/access/apps');
+            if(!apps.ok)result.access='unverified_api_scope_or_service';
+            else {
+              const list=Array.isArray(apps.items)?apps.items:[];
+              const named=list.filter(v=>/sli.*expert.*desk|expert.*desk.*sli/i.test(v.name||''));
+              result.access=named.length?'candidate_app_found_policy_unverified':'dedicated_app_not_found';
+              if(e.CF_EXPERT_ACCESS_APP_ID && named.some(v=>v.id===e.CF_EXPERT_ACCESS_APP_ID))result.access='app_id_found_policy_unverified';
+            }
+          }else if(token || account)result.account='token_or_account_id_invalid';
+          // This inventory NEVER certifies an Access policy, private data handling,
+          // database migrations or a protected Worker URL. It NEVER deploys a Worker.
+          const lines=[
+            '### SLI Expert Desk Cloudflare private-launch inventory (read only)',
+            '- Cloudflare credentials configured: '+(result.token_available?'yes':'no'),
+            '- D1 named inventory: '+result.database,
+            '- Dedicated Cloudflare Access app inventory: '+result.access,
+            '- Missing dedicated deployment keys: '+(missing.join(', ')||'none'),
+            '- **Production/private Worker deployment: NOT ATTEMPTED**',
+            '- Access Owner-only policy, signed-in login, private D1 migrations and PDP review: NOT VERIFIED.',
+            '- GitHub Pages Expert Connect remains an email-draft-only form, not a received or stored lead.'
+          ];
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join('\n')+'\n');
+          console.log(lines.join('\n'));
+          NODE
