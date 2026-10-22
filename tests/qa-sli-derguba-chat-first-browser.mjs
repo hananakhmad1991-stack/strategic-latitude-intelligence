@@ -16,6 +16,10 @@ try{
   assert.ok(await page.locator('.sli-ra-task-links a[href="./sli-expert-connect.html"]').isVisible());
   const rect=await question.boundingBox();
   const dims=await page.evaluate(()=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,ownerTokenType:document.querySelector('#raOwnerToken')?.type}));
+  if(!rect||rect.y>=720){
+   const layout=await page.evaluate(()=>[...document.querySelectorAll('body > *, #sliResearchMain > *')].slice(0,35).map(el=>{const r=el.getBoundingClientRect();return {tag:el.tagName,id:el.id,cls:String(el.className||'').slice(0,80),y:Math.round(r.y),h:Math.round(r.height),text:(el.innerText||'').slice(0,72)}}));
+   console.log('LAYOUT DIAGNOSTIC '+width+' '+JSON.stringify(layout));
+  }
   assert.ok(rect&&rect.y<720,'Question composer must be on initial screen '+JSON.stringify({width,rect}));
   assert.ok(dims.documentWidth<=dims.viewport+5,'No horizontal page overflow '+JSON.stringify({width,dims}));
   assert.equal(dims.ownerTokenType,'password');
