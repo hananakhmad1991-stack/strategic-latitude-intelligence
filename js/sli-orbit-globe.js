@@ -71,7 +71,7 @@
     let sizeObserver;
     function updateLanguage() {
       kicker.textContent = tr('INDONESIAN ARCHIPELAGO', 'KEPULAUAN INDONESIA');
-      detail.textContent = tr('Highlighted coastline · interactive illustration', 'Garis pantai bercahaya · ilustrasi interaktif');
+      detail.textContent = tr('Highlighted coastlines · not live data', 'Garis pantai bercahaya · bukan data langsung');
       source.textContent = tr('Coastline source & licence ↗', 'Sumber garis pantai & lisensi ↗');
       canvas.setAttribute('aria-label', tr('Rotating globe with the real shapes of Indonesian islands highlighted in gold. Drag horizontally to turn.', 'Globe berputar dengan bentuk nyata pulau-pulau Indonesia di-highlight emas. Geser mendatar untuk memutar.'));
       control.textContent = paused ? tr('▶ Rotate globe', '▶ Putar globe') : tr('Ⅱ Pause animation', 'Ⅱ Jeda animasi');
