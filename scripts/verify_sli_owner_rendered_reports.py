@@ -35,6 +35,9 @@ if "--ci-pdf-only" in sys.argv:
             assert len(doc)>=3, f"Long report unexpectedly one-page: {f}"
             assert "BATAS AKHIR LAPORAN TERLIHAT 20261022" in text, f"Long PDF end clipped: {f}"
             assert "Row-25" in text, f"Long table clipped: {f}"
+            headings={i for i,p in enumerate(doc) if "Sumber dan Referensi" in p.get_text()}
+            citations={i for i,p in enumerate(doc) if "Peraturan.go.id" in p.get_text()}
+            assert headings & citations, f"Bibliography citation separated from source heading: {f}"
         for n in sorted(set((0,len(doc)-1))):
             p=doc[n]
             pix=p.get_pixmap(matrix=fitz.Matrix(1.3,1.3),alpha=False)
@@ -86,6 +89,10 @@ def pdf_check(file,kind):
         flat=" ".join(text.split())
         assert "BATAS AKHIR LAPORAN TERLIHAT 20261022" in flat, f"Report truncated before final sentence: {file}"
         assert "Row-25" in text, "Long table was truncated"
+        # Bibliography should not start a citation on a new orphaned page.
+        heading_pages={i for i in range(pages) if "Sumber dan Referensi" in run("pdftotext","-f",str(i+1),"-l",str(i+1),str(file),"-")}
+        citation_pages={i for i in range(pages) if "Peraturan.go.id" in run("pdftotext","-f",str(i+1),"-l",str(i+1),str(file),"-")}
+        assert heading_pages & citation_pages, f"Bibliography heading orphaned from citation: {file}"
     print("PASS",file.name,"pages",pages,"A4",f"{w:.0f}x{h:.0f}pt")
     return {"name":file.name,"pages":pages,"size_pts":[w,h]}
 def docx_check(file,kind):
