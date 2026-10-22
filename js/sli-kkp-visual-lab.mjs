@@ -132,6 +132,45 @@ function drawSankey(detail){
  host.append(chart);
  $("mfVizSankeySummary").textContent=T("Aliran 10 baris kabupaten/komoditas yang benar-benar tercetak. Total subset ","Sankey of ONLY 10 source-visible district/commodity rows. Subset sum ")+fmt(g.total)+" ribu ekor. "+T("Bukan keseluruhan 1.387 baris, tidak boleh ditafsirkan sebagai total kabupaten atau provinsi.","NOT all 1,387 rows, not total district or provincial volume.");
 }
+export function historicalHeatCells(series,mode="value"){
+ if(!["value","yoy"].includes(mode))throw Error("unknown_mode");
+ return series.rows.map(r=>({province:r.province,cells:r.values.map((v,i)=>({
+ year:series.years[i],observed:v,
+ value:mode==="value"?v:(i&&v!==null&&r.values[i-1]!==null&&r.values[i-1]>0?100*(v/r.values[i-1]-1):null)
+ }))}));
+}
+function renderHistoryHeatmap(history){
+ const metric=$("mfVizHeatSeries"),mode=$("mfVizHeatMode"),search=$("mfVizHeatSearch"),host=$("mfVizHeatGrid");if(!host)return;
+ const series=history.series.find(s=>s.id===metric.value)||history.series[0],yoy=mode.value==="yoy";
+ const rows=historicalHeatCells(series,yoy?"yoy":"value").filter(r=>r.province.toLowerCase().includes(search.value.toLowerCase().trim()));
+ rows.sort((a,b)=>(b.cells[5].observed??-1)-(a.cells[5].observed??-1));
+ const max=Math.max(1,...rows.flatMap(r=>r.cells.map(c=>c.value)).filter(v=>v!==null));
+ const table=el("table","mf-viz-heat-table"),head=el("tr");
+ head.append(el("th","",T("Provinsi","Province")));for(let yr=2019;yr<=2024;yr++)head.append(el("th","",yr));
+ const thead=el("thead");thead.append(head);table.append(thead);
+ const tbody=el("tbody");for(const row of rows){
+  const tr=el("tr");tr.append(el("th","",row.province));
+  for(const cell of row.cells){
+   const value=cell.value;
+   const td=el("td","",value===null?"—":yoy?(value>=0?"+":"")+fmt(value,1)+"%":fmt(value,series.unit==="ton"?2:0));
+   const intensity=yoy?Math.min(1,Math.abs(value||0)/100):(value===null?0:Math.log1p(value)/Math.log1p(max));
+   td.style.background=value===null?"rgba(95,107,126,.20)":yoy?(value>=0?"rgba(73,184,161,":"rgba(213,118,117,")+(.18+intensity*.75).toFixed(3)+")":"rgba(73,166,188,"+(.18+intensity*.78).toFixed(3)+")";
+   td.title=row.province+" · "+cell.year+": "+(value===null?T("Tidak tersedia, bukan nol","Missing, not zero"):fmt(value,2)+(yoy?"%":" "+series.unit));td.setAttribute("aria-label",td.title);
+   tr.append(td);
+  }
+  tbody.append(tr);
+ }
+ table.append(tbody);host.replaceChildren(table);
+ const valid=rows.flatMap(r=>r.cells).filter(c=>c.value!==null).length;
+ $("mfVizHeatStatus").textContent=rows.length+T(" provinsi · "," provinces · ")+valid+"/"+(rows.length*6)+T(" sel valid. Tahun 2019 tidak memiliki pembanding YoY; provinsi kosong bukan nol."," numeric cells. Year 2019 has no YoY comparison; absent province cells are not zero.");
+ $("mfVizHeatSource").href=series.source_url;
+ $("mfVizHeatCSV").onclick=()=>{
+  const quote=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
+  const lines=[["Province",...series.years.map(String),"Source URL"],...rows.map(r=>[r.province,...r.cells.map(c=>c.value===null?"":+c.value.toFixed(4)),series.source_url])];
+  const blob=new Blob(["\\uFEFF"+lines.map(r=>r.map(quote).join(",")).join("\\r\\n")],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),a=el("a");
+  a.href=url;a.download="sli-kkp-"+series.id+"-2019-2024-"+(yoy?"yoy":"value")+".csv";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ };
+}
 async function mount(){
  if(!$("mfVizHatcheryMap"))return;
  try{
@@ -142,7 +181,9 @@ async function mount(){
   const status=validateMarineVisualInputs(prov,detail,history);
   if(!status.pass)throw Error("visual_source_validation_"+status.problems.join(","));
   drawHatcheryCoverage(prov);renderHatcheryMap(prov);drawNationalIndices(history);drawSankey(detail);
-  const update=()=>{drawHatcheryCoverage(prov);renderHatcheryMap(prov);drawNationalIndices(history);drawSankey(detail)};
+  for(const id of ["mfVizHeatSeries","mfVizHeatMode","mfVizHeatSearch"])$(id)?.addEventListener(id==="mfVizHeatSearch"?"input":"change",()=>renderHistoryHeatmap(history));
+  renderHistoryHeatmap(history);
+  const update=()=>{drawHatcheryCoverage(prov);renderHatcheryMap(prov);drawNationalIndices(history);drawSankey(detail);renderHistoryHeatmap(history)};
   document.addEventListener("sli:languagechange",update);
  }catch(e){$("mfVizHatcheryMap").textContent=T("Tidak ada data resmi yang lolos validasi untuk visualisasi tambahan: ","No source-validated numbers for additional visualizations: ")+e.message;console.error("[SLI KKP visual lab]",e)}
 }
