@@ -11,6 +11,7 @@ import {collectOptionalLiveEvidence} from "./external-research.mjs";
 import {isCCSQuestion,ccsResearchEvidence} from "./ccs-corpus.mjs";
 import {fetchDashboardEvidence} from "./dashboard-corpus.mjs";
 import {openAITransport} from "./model-transport.mjs";
+import {geminiSecondOpinion} from "./gemini-second-opinion.mjs";
 import {buildResearchCharts} from "./chart-data.mjs";
 import {auditReport} from "./report-audit.mjs";
 import {auditResearchClaims} from "./claim-evidence-audit.mjs";
@@ -337,6 +338,11 @@ export default{
    quality_audit.structural_status="needs_editorial_review";
    quality_audit.issues=[...new Set([...quality_audit.issues,"legal_content_withheld_pending_primary_source_verification"])];
   }
+  // Review is advisory only; existing deterministic source gates remain authoritative.
+  quality_audit.gemini_second_opinion=await geminiSecondOpinion({
+   env,consent:body.gemini_review===true,hasPrivateInputs:ownerFiles.length>0||!!payload.user_analysis,
+   answer,evidence
+  });
   return send(200,{mode:"generative_rag",research_format:payload.mode,answer,quality_audit,
    charts:focusedLegalReading?[]:(evidence.length?buildResearchCharts(evidence,payload.language,payload.question):[]),evidence_status:legalRecovery?.source_limited?"owner_staging_source_limited_legal_review":evidence.length?(articleEvidence.length||legalEvidence.length?"owner_staging_legal_articles_and_index_metadata_status_not_certified":"owner_staging_source_dated_corpus"):"methodology_design_only_no_verified_sli_evidence",
    corpus_as_of:energyCorpusAudit().assessment_date,
