@@ -14,6 +14,8 @@ on:
       - 'scripts/convert_kkp_hatchery_xlsx_to_csv.py'
       - 'tests/test_sli_kkp_authorized_export_converter.py'
       - 'scripts/probe_sli_owner_worker_live.mjs'
+      - 'scripts/kkp-owner-evidence-gate.mjs'
+      - 'tests/qa-sli-kkp-owner-evidence-gate.mjs'
       - 'tests/qa-sli-kkp-wpp-live.mjs'
       - '.github/workflows/sli-kkp-live-source-acceptance.yml'
   push:
@@ -31,6 +33,8 @@ on:
       - 'scripts/convert_kkp_hatchery_xlsx_to_csv.py'
       - 'tests/test_sli_kkp_authorized_export_converter.py'
       - 'scripts/probe_sli_owner_worker_live.mjs'
+      - 'scripts/kkp-owner-evidence-gate.mjs'
+      - 'tests/qa-sli-kkp-owner-evidence-gate.mjs'
       - 'tests/qa-sli-kkp-wpp-live.mjs'
       - '.github/workflows/sli-kkp-live-source-acceptance.yml'
   workflow_dispatch:
@@ -48,13 +52,13 @@ on:
       kkp_category:
         description: "True respondent category on KKP site"
         type: choice
-        options: ["Umum", "Pelajar / Mahasiswa", "Lembaga Pemerintahan"]
-        default: "Umum"
+        options: ["select-category", "Umum", "Pelajar / Mahasiswa", "Lembaga Pemerintahan"]
+        default: "select-category"
       kkp_purpose:
         description: "True intended use; select Komersial for commercial SLI reuse review"
         type: choice
-        options: ["Penelitian", "Komersial", "Tugas Sekolah / Kuliah", "Pemerintahan"]
-        default: "Penelitian"
+        options: ["select-purpose", "Penelitian", "Komersial", "Tugas Sekolah / Kuliah", "Pemerintahan"]
+        default: "select-purpose"
       kkp_format:
         description: "Official export file format"
         type: choice
@@ -70,11 +74,6 @@ on:
         type: choice
         options: ["select-rating", "1", "2", "3", "4", "5"]
         default: "select-rating"
-      kkp_review:
-        description: "Your honest review of portal experience (at least 15 chars if rating 1–3)"
-        type: string
-        required: false
-        default: ""
 permissions:
   contents: read
 concurrency:
@@ -99,7 +98,8 @@ jobs:
           node --check scripts/export_kkp_hatchery_authorized.mjs
           python3 -m py_compile scripts/convert_kkp_hatchery_xlsx_to_csv.py
           node --check scripts/probe_sli_owner_worker_live.mjs
-          node --test tests/qa-sli-kkp-wpp-live.mjs tests/qa-sli-kkp-visual-lab.mjs tests/qa-sli-kkp-hatchery-provincial.mjs
+          node --check scripts/kkp-owner-evidence-gate.mjs
+          node --test tests/qa-sli-kkp-wpp-live.mjs tests/qa-sli-kkp-visual-lab.mjs tests/qa-sli-kkp-hatchery-provincial.mjs tests/qa-sli-kkp-owner-evidence-gate.mjs
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - name: Test synthetic official XLSX to CSV source gate (never uses actual KKP bulk data)
@@ -188,6 +188,16 @@ jobs:
         run: python -m pip install --disable-pip-version-check 'openpyxl==3.1.5'
       - name: Install official-form browser client without browser binary download
         run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Locate Chrome before contacting KKP (fail safely when absent)
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          if [ -z "$CHROME" ]; then
+            echo "::error::Chromium/Chrome is unavailable on this runner. Official KKP form was not submitted."
+            exit 1
+          fi
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
       - name: Confirm GitHub environment contact credentials exist without logging their values
         env:
           KKP_CONTACT_NAME: ${{ secrets.KKP_CONTACT_NAME }}
@@ -207,7 +217,7 @@ jobs:
           KKP_EXPORT_FORMAT: ${{ inputs.kkp_format }}
           KKP_EXPORT_DATA_TYPE: ${{ inputs.kkp_data_type }}
           KKP_EXPORT_RATING: ${{ inputs.kkp_rating }}
-          KKP_EXPORT_REVIEW: ${{ inputs.kkp_review }}
+          KKP_EXPORT_REVIEW: ${{ secrets.KKP_EXPORT_REVIEW }}
         run: node scripts/export_kkp_hatchery_authorized.mjs
       - uses: actions/upload-artifact@v4
         if: always()
