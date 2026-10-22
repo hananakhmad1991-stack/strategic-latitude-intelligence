@@ -194,3 +194,7 @@ body.sli-dashboard-unified .sli-universal-nav{flex-wrap:wrap}
 body.sli-dashboard-unified .sli-research-path{width:100%;order:3;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:thin}
 body.sli-dashboard-unified .sli-research-step{flex:none}
 @media(max-width:600px){.sli-research-path{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}.sli-research-step{flex:none;min-height:42px}}
+
+/* Distinguish a human-reviewed service request from the public data navigation on every detailed dashboard. */
+.sli-platform-link.sli-platform-expert-cta{border:1px solid #b59762!important;border-radius:8px!important;background:#193a51!important;color:#f4d69c!important;padding:9px 12px!important;min-height:40px}
+.sli-platform-link.sli-platform-expert-cta:hover,.sli-platform-link.sli-platform-expert-cta:focus-visible{background:#254b66!important;border-color:#f2d49e!important}
