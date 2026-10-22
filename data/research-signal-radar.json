@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-22T05:47:40.181877+00:00",
-  "last_attempt_at_utc": "2026-10-22T05:47:40.181877+00:00",
+  "generated_at_utc": "2026-10-22T07:05:37.399993+00:00",
+  "last_attempt_at_utc": "2026-10-22T07:05:37.399993+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
@@ -42,7 +42,7 @@
           "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPdGJDTEN3Z09DeWNoSlBtNGNOWnBCNDNHbHJjbVpBeHNRX3FpVjA2SnRuNFVvMXVYeGU3eVdqT0s3RjFkeHV5bmY0ZjQ5TUVweWFRNk1xTTNJbjBkTzNNTllPdVpHVzZZUDAwSjZ2WmN1b1E3M2wtTUVHQVM5c20tNk5teFY?oc=5",
           "publisher": "Financial Times",
           "publisher_url": "https://www.ft.com",
-          "published_at_utc": "2026-10-20T04:03:56+00:00",
+          "published_at_utc": "2026-10-20T04:03:25+00:00",
           "sector": "minerals",
           "scope": "geopolitical",
           "topic_id": "export_policy",
@@ -170,21 +170,6 @@
           "impact_pathway": "Nickel-related market or export developments may affect Indonesian smelter utilisation, investment margins or trading relationships.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "nickel-market-spc-nickel-lines-up-60-muskox-targets-mining-com-au",
-          "title": "SPC Nickel lines up 60 Muskox targets - Mining.com.au",
-          "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9wNUlPME9TR3JXcDlZekpMNC1sa2x5b0s0WXMzb0pwY1ozRWE3VDJfZHQ4V055LTZUeVBtZVd4U2F6cVIxZE1JSkZtQm5pdlFFR3JvTjRrTTJ6MFFKQWtYNkNJeThSSmMwUkVocg?oc=5",
-          "publisher": "Mining.com.au",
-          "publisher_url": "https://mining.com.au",
-          "published_at_utc": "2026-10-08T07:00:00+00:00",
-          "sector": "minerals",
-          "scope": "geopolitical",
-          "topic_id": "nickel_market",
-          "channel": "Nickel prices, demand and downstream margins",
-          "impact_pathway": "Nickel-related market or export developments may affect Indonesian smelter utilisation, investment margins or trading relationships.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         }
       ],
       "domestic": [
@@ -195,6 +180,36 @@
           "publisher": "Bloomberg Technoz",
           "publisher_url": "https://www.bloombergtechnoz.com",
           "published_at_utc": "2026-10-21T10:30:00+00:00",
+          "sector": "minerals",
+          "scope": "domestic",
+          "topic_id": "smelter_projects",
+          "channel": "Smelter construction and operation",
+          "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "smelter-projects-ekspor-nikel-dan-komponen-baterai-litium-2026-diproyeksi-rp899-t-energi-bloomberg-technoz",
+          "title": "Ekspor Nikel dan Komponen Baterai Litium 2026 Diproyeksi Rp899 T - Energi - Bloomberg Technoz",
+          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPeUpGb1VGaEktQzFQWFhUdl9KcTJhLTdYMzQ4M241VWw3NFktd3A5cG1pSWpWNTRPYWU1a2t6U2xkempZZ1p5SFhHc2pqdFlpbjRjdGZfdWNzblFHeHpVLVZ4cHFfSUJLS3Btb05FZDZ3Zm11eUpCaDhJUVVxTk1Fal9NQW9yMkZ5VWZSYU5PTlhYcVlZTDk3SW9PZkdSOUdEcUN4Q3lnLUtFUlh5UXNZaFl4dUtnWk5fZmc?oc=5",
+          "publisher": "Bloomberg Technoz",
+          "publisher_url": "https://www.bloombergtechnoz.com",
+          "published_at_utc": "2026-10-21T03:11:58+00:00",
+          "sector": "minerals",
+          "scope": "domestic",
+          "topic_id": "smelter_projects",
+          "channel": "Smelter construction and operation",
+          "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "smelter-projects-ekspor-nikel-dan-komponen-baterai-litium-2026-diproyeksi-rp899-t-bloomberg-technoz",
+          "title": "Ekspor Nikel dan Komponen Baterai Litium 2026 Diproyeksi Rp899 T - Bloomberg Technoz",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQN19kRkVqOFdKRUROWE5mbVRZRVFMUlEzOXlmRDNWS1lYT0loTngySnlkMlhLUElfR3RJU2ItTGhtRzlmRFdJY2phWnlDZkhqVFZPTVpXRWNZV002U2U2WERpV2tJNnRnb0FQT0FZRjJMaFJwNk13UFE3R0RqeWw0d3hKWHRVSGkwczBjaWlSQ2NZcnRoekhHaDVwWGZKbmNnTjJ3TzA2QnFhdDRsV2lUVkQxYzNnSVE?oc=5",
+          "publisher": "Bloomberg Technoz",
+          "publisher_url": "https://www.bloombergtechnoz.com",
+          "published_at_utc": "2026-10-21T03:00:00+00:00",
           "sector": "minerals",
           "scope": "domestic",
           "topic_id": "smelter_projects",
@@ -245,6 +260,36 @@
           "topic_id": "mineral_policy",
           "channel": "Regulation, licensing and export controls",
           "impact_pathway": "Changes may affect compliance, permitted volumes or domestic processing requirements; verify enacted instrument and effective date.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "smelter-projects-bpk-sorot-penjualan-ore-ke-smelter-iui-ada-potensi-pnbp-melayang-energi-bloomberg-technoz",
+          "title": "BPK Sorot Penjualan Ore ke Smelter IUI, Ada Potensi PNBP Melayang - Energi - Bloomberg Technoz",
+          "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQbTVDcy1zb1dCck5EU2ZHU0pFdDNPMWtsQU1RYUtBTTZ4QUZHYjBySlo5NXdlTHBnZThWSElGYUVYaDBzZ3dvNGUtZ0ZOQzdxSHVZam4zMktCaWJnNG1udjVKUE5XemRLb0NLbzFVTHpxS2x5dWdxbGl1aEhnOTdFZVRyNURZYXVNSkxGRUNrcVBRMG0tVUtqNHBENTVkbW53ellxZ0RlU291U3NlV3VXd1NPbFdNbDd6Znc?oc=5",
+          "publisher": "Bloomberg Technoz",
+          "publisher_url": "https://www.bloombergtechnoz.com",
+          "published_at_utc": "2026-10-14T10:41:42+00:00",
+          "sector": "minerals",
+          "scope": "domestic",
+          "topic_id": "smelter_projects",
+          "channel": "Smelter construction and operation",
+          "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "smelter-projects-menko-bahlil-bidik-hilirisasi-nikel-tembus-rp805-t-tahun-ini-energi-bloomberg-technoz",
+          "title": "Menko Bahlil Bidik Hilirisasi Nikel Tembus Rp805 T Tahun Ini - Energi - Bloomberg Technoz",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOM2xzWExDQ2VGS2NWaTV5R1pRS3cxU2VIT1pkN1lDMUhIRXp6VnN5S0lCcWdxZ3VJS2ZnZDRzNDB3cElsRnZic3FNTTItV0dlUk1Md1NfZTNTQUZ3cmkyTTBfS1hua2JKUkJ0TkROSTdSSWtfSm1VU19sZS13RDBiWFNzUnpuZ2E3Z19lSTYtR3N6UW42V0x4LWtjSGJFc0FEYzBZWlFjaGpYMkU1QkpLWXhn?oc=5",
+          "publisher": "Bloomberg Technoz",
+          "publisher_url": "https://www.bloombergtechnoz.com",
+          "published_at_utc": "2026-10-14T10:30:00+00:00",
+          "sector": "minerals",
+          "scope": "domestic",
+          "topic_id": "smelter_projects",
+          "channel": "Smelter construction and operation",
+          "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -305,81 +350,6 @@
           "topic_id": "smelter_projects",
           "channel": "Smelter construction and operation",
           "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "smelter-projects-rosan-proyek-hilirisasi-nikel-sumbang-separuh-ekonomi-maluku-utara-cnbc-indonesia",
-          "title": "Rosan: Proyek Hilirisasi Nikel Sumbang Separuh Ekonomi Maluku Utara - CNBC Indonesia",
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPM2gwU2lyamgtZ2swWF9LMlk3NlFGa3RTRURUVTd4Vm1OSVBVR1N1ZWl0Zkx2Q19kNHdCSC1VYmlLSWd3X2VKNEJtREVPWVBsOTVZUFhOYnZoeVo4bXZOZklqNlQ3WFYwX0JRUjI1MTRkZEkxUDc0ZnlfR0d2M2ZkOXJTME5fVEJDekFJR3RkTW4zZllONjZfNF9leFRDXzQyRjl0cE1pSzRScnMwcnZYVGUwNlgtd2hyWUc5NVFQZGkxYnfSAcgBQVVfeXFMT3plVzZIZDRxbTBnd0FZd0h4bEhfYWUtOGxSSWNYVWNnUHBBTUItdmV5X3cwcjRLbDYyeGJvYjRIZ1VBNVN6Ykg2ckxWd0d0Ujl4MzFlQ1JHSW93ZE02Si1ScHFwWUZyVWZfQlh0cUtRajZHQlo3V1BOV1pyR25TbEgxcmw4RjI3QklSOG5mZFpKalFBN2Z6OHBmVlFkR2g3SEVLb0pRc2lRTVp4cUhUeUR6ZXEtTnExSVdQa1BUU0V4YWJkTTRjM1o?oc=5",
-          "publisher": "CNBC Indonesia",
-          "publisher_url": "https://www.cnbcindonesia.com",
-          "published_at_utc": "2026-10-08T07:00:00+00:00",
-          "sector": "minerals",
-          "scope": "domestic",
-          "topic_id": "smelter_projects",
-          "channel": "Smelter construction and operation",
-          "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "smelter-projects-tekanan-bisnis-smelter-nikel-kala-produksi-bijih-diperketat-bisnis-com-ekonomi",
-          "title": "Tekanan Bisnis Smelter Nikel Kala Produksi Bijih Diperketat - Bisnis.com - Ekonomi",
-          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPckszb2xxVFIwMjlPNmNDUVkyR2g4U01OS2oySG01dkpJVVJGRzdSdzhLWko5SUhnRUpDbl9Wbm9TZ0x4UW5ZVVp3cDZxYTBvOEtVSkoyZ1VQUXNzOFBwUG9QTnpZRDdoVEdUaVY5UVdpeGV5TUJDbXRvRF9seEsxak9xcjVUWG5uWUtCd285TU02WWtwRFlDcDIwM3dBTEE2am9qSU91Tzd3ZkhYbGtuSA?oc=5",
-          "publisher": "Bisnis.com - Ekonomi",
-          "publisher_url": "https://ekonomi.bisnis.com",
-          "published_at_utc": "2026-10-08T07:00:00+00:00",
-          "sector": "minerals",
-          "scope": "domestic",
-          "topic_id": "smelter_projects",
-          "channel": "Smelter construction and operation",
-          "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "smelter-projects-anggota-dpr-dukung-rencana-bahlil-moratorium-proyek-smelter-nikel-cnbc-indonesia",
-          "title": "Anggota DPR Dukung Rencana Bahlil Moratorium Proyek Smelter Nikel - CNBC Indonesia",
-          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQRXp5X2ZoMnNVZ1dMYVJ5U3JjYWt5c2dINS1xdVFPN0IxaHl6cExiZWtXakxhX1N2Nl9JeVhzdzVVajhKM2hPb29qWFQtQ1R1eWwzaFNTUzFvU0h3WURZWFVsY1plYkdyYlotNU03aHRScjN3dHl4dVg3eFNwTFhRbWpuOHBtM0RlS0FHbE9oVU1YNVExaHlLMndBMVZUZUJiamxXV096ZXhfbVgyc19QTEFlY1g2WTBXckdKZWZfZUE2Z9IBxwFBVV95cUxPTFBLYUZZY21kdEw0MDJWLW5TQVYzR01pTWVzQjdSV1E5bWpjMWNHSFl5N0p5a3ozaDNlNGZNTVJ5WFBmWHlZU013Q0tiVUFfVnNSejJNQ29fVkJsYnl5LUpKRjVoRldhcEY1Zy1jQWRkaGlsbWR3YlB4eXVjemNQV2xZdFZIY0F4RTU1OXdudmRPZmpjT1NBQWRWc05JNnlOdlNyWTl5UWtvVXpwM0pfOTJMX0tVX0FJeWpMeVZzS3l4a3RZZ1FR?oc=5",
-          "publisher": "CNBC Indonesia",
-          "publisher_url": "https://www.cnbcindonesia.com",
-          "published_at_utc": "2026-10-08T07:00:00+00:00",
-          "sector": "minerals",
-          "scope": "domestic",
-          "topic_id": "smelter_projects",
-          "channel": "Smelter construction and operation",
-          "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "smelter-projects-produksi-smelter-nikel-ri-penuh-tantangan-efek-sulfur-hingga-lfp-bloomberg-technoz",
-          "title": "Produksi Smelter Nikel RI Penuh Tantangan, Efek Sulfur hingga LFP - Bloomberg Technoz",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNREpteXNZVkFJR0VLRzhSWVRXMEY3aHh6X0hMOU12Mmdqbmx1NkduZHNJZXlPQ29XcGV5ZXpHaUp5QzdPOWhSWFJmalk1TVRUeDVRcjlBWXlJYWFVUEZsakpFMEpOa3JmVFB1TXJSaGJ5T1YtU2U3OUZ6RVZyRGR0TE1uTjJXMG5ybC1BLUpwSHp0SG9qYlptNGxuN0hNVHlSYmFDUXBlcEVpTUZZU3FGbzNjemlsbjA?oc=5",
-          "publisher": "Bloomberg Technoz",
-          "publisher_url": "https://www.bloombergtechnoz.com",
-          "published_at_utc": "2026-10-08T07:00:00+00:00",
-          "sector": "minerals",
-          "scope": "domestic",
-          "topic_id": "smelter_projects",
-          "channel": "Smelter construction and operation",
-          "impact_pathway": "A project headline may signal a shift in commissioning, cash deployment, feedstock or actual output; verify named assets and milestones.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "environment-derita-perempuan-di-tapal-nikel-sulawesi-menyapu-debu-mempertahankan-hidup-kompas-id",
-          "title": "Derita Perempuan di Tapal Nikel Sulawesi: Menyapu Debu, Mempertahankan Hidup - Kompas.id",
-          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPbjZsdUQ4QlRsbXFGSUpZdXhGY0NIUmk1UTVxWThXNnpXWlRMemdnLXA1dnphamhYTURBTl9Ubmoybl9oTXVPMDEta28taWlaXzlSZzF6YzVCd0ptRlJZNk40OVJnN3M5ZUhCbHQzNU9udkFtQ0Y1NFdkUXRHVEVlaFZZRWZubXAxXzdaLVRxTXE1V3phZlpaYk9za3otV2xJZTI0UnN4RQ?oc=5",
-          "publisher": "Kompas.id",
-          "publisher_url": "https://www.kompas.id",
-          "published_at_utc": "2026-10-08T07:00:00+00:00",
-          "sector": "minerals",
-          "scope": "domestic",
-          "topic_id": "environment",
-          "channel": "Environment, safety and physical infrastructure",
-          "impact_pathway": "Environmental and site-level reports may indicate permitting or continuity exposure; allegations are not established violations.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         }
@@ -566,21 +536,6 @@
           "impact_pathway": "Regional power, connectivity and investment competition may affect relative project attractiveness and capital allocation.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "compute-competition-softbank-and-grab-to-develop-ai-infrastructure-in-malaysia-s-sarawak-nikkei-asia",
-          "title": "SoftBank and Grab to develop AI infrastructure in Malaysia's Sarawak - Nikkei Asia",
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQMnZjWTg0MmI5VkdXZ3o3OVJqQ1p6TTluNTRHaEM3ZE1oNEZvUlNLZlM0SmNmamJEWjBPZ1Zvang4X3NOVUx2ZEZxS3o4ZDJINUU1SGFDRHRiVnMtTUthb0tCRFNPWXU2UkpKc2p4Q1VMVDlIU3VWVVdIYnJNSm16SHk1M3dJV3Z4STNNSVhBdE1VckV0UGRlVmIxMEg3azlNNnJHSWxybUVmTnp3T0FXU2hR?oc=5",
-          "publisher": "Nikkei Asia",
-          "publisher_url": "https://asia.nikkei.com",
-          "published_at_utc": "2026-10-08T07:00:00+00:00",
-          "sector": "ai",
-          "scope": "geopolitical",
-          "topic_id": "compute_competition",
-          "channel": "Regional data-center investment competition",
-          "impact_pathway": "Regional power, connectivity and investment competition may affect relative project attractiveness and capital allocation.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         }
       ],
       "domestic": [
@@ -606,21 +561,6 @@
           "publisher": "Tempo.co",
           "publisher_url": "https://www.tempo.co",
           "published_at_utc": "2026-10-20T06:13:00+00:00",
-          "sector": "ai",
-          "scope": "domestic",
-          "topic_id": "campus_projects",
-          "channel": "Data-center campuses and implementation",
-          "impact_pathway": "Track announced megawatts separately from grid energisation, commissioning, leased capacity and AI GPU deployments.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "campus-projects-menko-bahlil-dorong-batam-jadi-hub-pusat-data-antara-news-kepri",
-          "title": "Menko Bahlil dorong Batam jadi hub pusat data - ANTARA News Kepri",
-          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQNFNtUVpaNnVwZ0RXaXFUdEt3UkpqdEIxOE00anEtTjItMU5EUjk5SHRzV0dWaHMwZGc0M1lENXlieTJYd3RkZzY2NXhONC1xTHl5eUljVktSNDJ1THhiQnFkR21jRW5PVEpZMnVJVXF5YmM5bVh1NWF0QnRHc3NxaU5WMmhVcTc4T09uZzRVWmFEcVRPb3FPQjd3d29kdw?oc=5",
-          "publisher": "ANTARA News Kepri",
-          "publisher_url": "https://kepri.antaranews.com",
-          "published_at_utc": "2026-10-20T00:28:44+00:00",
           "sector": "ai",
           "scope": "domestic",
           "topic_id": "campus_projects",
@@ -660,7 +600,7 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
-          "id": "campus-projects-menakar-potensi-investasi-data-center-di-indonesia-kontan",
+          "id": "power-water-menakar-potensi-investasi-data-center-di-indonesia-kontan",
           "title": "Menakar Potensi Investasi Data Center di Indonesia - KONTAN",
           "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOS3NESHhIQWdQQWhxNlV4Q21QNHg0b0pqd1NFa0tJTDlDYmpUM2F5YWJxdlBLeWpjTzdHbkFKcEFVYm1tLXkwbks0RV9nUjJRTm1ldV9xRTJoUXE0V2JUR2wxQjJfZVd4aDVlZjBBSUVoSHpQZ1hDQVVURjdaUWFNWGQ5aUQ5ejVRNHQteQ?oc=5",
           "publisher": "KONTAN",
@@ -668,14 +608,14 @@
           "published_at_utc": "2026-10-15T21:30:09+00:00",
           "sector": "ai",
           "scope": "domestic",
-          "topic_id": "campus_projects",
-          "channel": "Data-center campuses and implementation",
-          "impact_pathway": "Track announced megawatts separately from grid energisation, commissioning, leased capacity and AI GPU deployments.",
+          "topic_id": "power_water",
+          "channel": "Grid, water and cooling",
+          "impact_pathway": "Power contracts, cooling and water availability can affect delivery; contracted MVA is not operating IT MW.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
-          "id": "campus-projects-apakah-kehadiran-data-center-menjadi-berkah-atau-musibah-kompas-id",
+          "id": "power-water-apakah-kehadiran-data-center-menjadi-berkah-atau-musibah-kompas-id",
           "title": "Apakah Kehadiran ”Data Center” Menjadi Berkah atau Musibah? - Kompas.id",
           "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNd3NfaG85TWVyck9SNmdfb2xKclFoZTlZQ25neWNtZW4wWG16OGlTZWhTa1hfOVVwZG8yRGFQQ2tDd1VhMk5XM1pqRzFESjlTNFhaQXBlaXduWE9KM0JTazBhSDVMSEw3T0VzMS0zSWpfTmVWQVlXbUl4c1dWZXRCSlR2VQ?oc=5",
           "publisher": "Kompas.id",
@@ -683,9 +623,9 @@
           "published_at_utc": "2026-10-15T00:00:06+00:00",
           "sector": "ai",
           "scope": "domestic",
-          "topic_id": "campus_projects",
-          "channel": "Data-center campuses and implementation",
-          "impact_pathway": "Track announced megawatts separately from grid energisation, commissioning, leased capacity and AI GPU deployments.",
+          "topic_id": "power_water",
+          "channel": "Grid, water and cooling",
+          "impact_pathway": "Power contracts, cooling and water availability can affect delivery; contracted MVA is not operating IT MW.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -696,6 +636,21 @@
           "publisher": "Kementerian Komunikasi dan Digital",
           "publisher_url": "https://www.komdigi.go.id",
           "published_at_utc": "2026-10-14T14:20:22+00:00",
+          "sector": "ai",
+          "scope": "domestic",
+          "topic_id": "power_water",
+          "channel": "Grid, water and cooling",
+          "impact_pathway": "Power contracts, cooling and water availability can affect delivery; contracted MVA is not operating IT MW.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "power-water-bos-dcii-toto-sugiri-ungkap-kebutuhan-data-center-ri-bisa-naik-4-kali-lipat-karena-ai-kontan-co-id",
+          "title": "Bos DCII Toto Sugiri Ungkap Kebutuhan Data Center RI Bisa Naik 4 Kali Lipat Karena AI - kontan.co.id",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNWk1zMmZwcVdyTU1tTmNudFdDeHVNNElqUE8xNVlRTmdWWC1Ua0F0amhmRG1VUkw5RzVfeEl5bUx3SXZpR01oMVJXcmFFUTVBcG0zLVZOS2xxZEt3cVVsRkgybF9aVExJeUg1UzBsMHk2aU5IeV9oT2R5UVZudk9CVFIyNUVvRDJKNmlieTdvbkd1Y1AyRjg4YnlLWjAyVHk1aVdNYzA2dzZUVzcybGQyZ2ZaSnhhbWhranF2VdIBtgFBVV95cUxQb2RQcVZqWWJhajZvUk9yeUtUd1V5amM0SkpiU2tTNDdMNHYtalh1bTJORTF5aWowV2JJS3VQXzRfR2p0NGM0VmdYNDZHVW5JLTJDVU12NnBXVGZkVjVzbGlJZFlNY0R3YjdLWHRadHR3Wi15WVdXMDRkYmVtLTlaeE9JQTlzTzQ2WG5xNnhfb2VvUDVsSjV3dGQtWGM0MXYxcHY4N29jWk90RmZVZEN0RFNzeTFkdw?oc=5",
+          "publisher": "kontan.co.id",
+          "publisher_url": "https://industri.kontan.co.id",
+          "published_at_utc": "2026-10-13T12:18:59+00:00",
           "sector": "ai",
           "scope": "domestic",
           "topic_id": "power_water",
@@ -720,7 +675,7 @@
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
-          "id": "campus-projects-data-center-konsumsi-air-ratusan-juta-galon-perusahaan-putar-otak-cnbc-indonesia",
+          "id": "power-water-data-center-konsumsi-air-ratusan-juta-galon-perusahaan-putar-otak-cnbc-indonesia",
           "title": "Data Center Konsumsi Air Ratusan Juta Galon, Perusahaan Putar Otak - CNBC Indonesia",
           "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQR2MwUGgxZ3oxdlRMM2xqRDZkeF9yRnBDSG1WWGJpTkttR2g1R1M5d3VWSU1ORmlQMFBITWlmRXR5SDVjR0xyLWZmTTFqMlMyWHo4Q2RGakVtY3NieHRUQVJLd01KYlZKY3JlTGNKYzc1ZFBGeXdidGNqdTU1MDJvc0NtTmRndndDbGktWFZIN0dhNVB3dC1xdDRiZG1razN1UnNnRm5BcEgzeVEzdHVCNXRmbE5lcXE5TGF0dmJPaE9QdlZIWHkyZWt3?oc=5",
           "publisher": "CNBC Indonesia",
@@ -728,24 +683,24 @@
           "published_at_utc": "2026-10-10T07:00:00+00:00",
           "sector": "ai",
           "scope": "domestic",
-          "topic_id": "campus_projects",
-          "channel": "Data-center campuses and implementation",
-          "impact_pathway": "Track announced megawatts separately from grid energisation, commissioning, leased capacity and AI GPU deployments.",
+          "topic_id": "power_water",
+          "channel": "Grid, water and cooling",
+          "impact_pathway": "Power contracts, cooling and water availability can affect delivery; contracted MVA is not operating IT MW.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
         {
-          "id": "power-water-investasi-data-center-masuk-ke-indonesia-suplai-air-bersih-ikut-naik-bisnis-tekno",
-          "title": "Investasi Data Center Masuk ke Indonesia, Suplai Air Bersih Ikut Naik - Bisnis Tekno",
-          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPREV2bjJMWEx5SFZrR1lwazlmLW8xN2dVdGRZVGxfdWgtdUJJcEc4YV9PVlBZSmwtV3lHeml0UU5ZcVEwTUxvMXFNM2JZTm9YRmRtNzdhUnZ2d0I5WmEyTmo5Sk95ajZlQ2xSQkZndHZPTjBjR0tZNEUtVjZ1MGFOSnRFbVFNaEtyakFVUUNqWC02VTFERVJKS1BkX0RaV3V3S0F0SEg5UDRPczNtUk5pYmpBbFVDYlZjZ0xpcmg5Yw?oc=5",
-          "publisher": "Bisnis Tekno",
-          "publisher_url": "https://teknologi.bisnis.com",
+          "id": "campus-projects-era-ai-datangkan-investasi-di-kawasan-indonesia-dilirik-untuk-pusat-data-kontan-co-id",
+          "title": "Era AI Datangkan Investasi di Kawasan, Indonesia Dilirik untuk Pusat Data - kontan.co.id",
+          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPRWlzRFJDX2FKRVZrdGlZTTFLcndxOTRBQWt0cUhqdmdHQmpQbVNrdVU3azVBa01xdnAtNTZwQUJOVmRTTF9JN0x1WWtXXzNzSlRmX2pzV1BpS0N1aW1uVVpHRkhodmFDWEJXMGs5WTR6T014eG4ycUsyeHM1NlFnUnBTcm5wTXliUlB4Rm9TSWVUU2s2YXRyR1FhYkw3NXEwdE1rSFpFTXhtUTBf0gGkAUFVX3lxTE9jUEJXWmdJVkRNdmlTU1hoZHVmUFpLNnRXTEJubEJKUDdsbUJnUXdlQ0IwUHhtOTRLbHppNmpJVGNHWTRwSzJ1bWxoQjl0TjBkYXFhSXBWYjV5N2thRWgyRmF4VENuYmJGVHJEb29Lb2JmZ1JCVjdXUGRCU3A5eVNmb1piSFR4cHpsOE1pMEE0OVdVR3EyUHhSSFhqSm1lVTdFTVJl?oc=5",
+          "publisher": "kontan.co.id",
+          "publisher_url": "https://investasi.kontan.co.id",
           "published_at_utc": "2026-10-08T07:00:00+00:00",
           "sector": "ai",
           "scope": "domestic",
-          "topic_id": "power_water",
-          "channel": "Grid, water and cooling",
-          "impact_pathway": "Power contracts, cooling and water availability can affect delivery; contracted MVA is not operating IT MW.",
+          "topic_id": "campus_projects",
+          "channel": "Data-center campuses and implementation",
+          "impact_pathway": "Track announced megawatts separately from grid energisation, commissioning, leased capacity and AI GPU deployments.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         }
@@ -754,9 +709,39 @@
     "food": {
       "geopolitical": [
         {
+          "id": "climate-food-den-delivers-policy-recommendations-to-anticipate-el-ni-o-strengthen-food-security-resolve-forest-land-fires-sekretariat-kabinet-republik",
+          "title": "DEN Delivers Policy Recommendations to Anticipate El Niño, Strengthen Food Security, Resolve Forest, Land Fires - Sekretariat Kabinet Republik Indonesia",
+          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOUVQ0ZU42cEZnMGVWVnNvQ2lxb0ZhZGpqUVU3SG9pT2xfUTZjdmhLUndsV2pRdWdyQVAzNmxVTzcxS2hxTlVYWkhhMXV0d3RNSGdSTWowZ2dISVBsZDdvN2xQam9MdnpXNXRncDBvOU5iN3c5a2dPM2JMR1BfZmpxOTFsRU5IaDMzb19DTVNPRFI0S19mdFdQMHBiOFBrNzFqME1Ib3FFclRXVlNzdVdjeVloV09DSVpWUHFRQk9ldjFBMnEzVVE5R1Y2a3RkQQ?oc=5",
+          "publisher": "Sekretariat Kabinet Republik Indonesia",
+          "publisher_url": "https://setkab.go.id",
+          "published_at_utc": "2026-10-22T06:51:57+00:00",
+          "sector": "food",
+          "scope": "geopolitical",
+          "topic_id": "climate_food",
+          "channel": "Climate and regional food security",
+          "impact_pathway": "Weather and production reporting may signal potential yield risks but is not a measured crop loss.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "climate-food-eu-allocates-rp4-billion-in-aid-for-indonesia-s-drought-hit-regions-tempo-co-english",
+          "title": "EU Allocates Rp4 Billion in Aid for Indonesia's Drought-Hit Regions - Tempo.co English",
+          "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQaFpQLUFnWE1nNTVYNkdMUlBnZVV6VElZaDlzR3JoY0p2S3F4ZlplMWRmeFl5YklVRnd3VUlTWkZJU3dLRjVsVkxvOGdSbzJsdUxOSmdDREJwb2x5TG4tdkhFZ1FtbDlyanlBTnZGZEtfbG9JYVdlZV9EdGxfTXp4cG1Hb0xMU2hQUlJRcGJsaU9hZXBoLUpBbzc0am5OTzdC?oc=5",
+          "publisher": "Tempo.co English",
+          "publisher_url": "https://en.tempo.co",
+          "published_at_utc": "2026-10-20T17:46:36+00:00",
+          "sector": "food",
+          "scope": "geopolitical",
+          "topic_id": "climate_food",
+          "channel": "Climate and regional food security",
+          "impact_pathway": "Weather and production reporting may signal potential yield risks but is not a measured crop loss.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
           "id": "climate-food-indonesia-holds-4-5-mln-tons-of-rice-reserves-for-el-nio-official-antara-news",
           "title": "Indonesia holds 4.5 mln tons of rice reserves for El Nio: Official - ANTARA News",
-          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNalZOSGVxaUFFOU9Yd1dENE1qdzExODlFaGo1V2htSjFnR1VCclNMaG1YTjdJQnM5VkdScVl2Vm9qajhVUXh3VDVQVjF4QW5rQURUZDBLU1hrWWZaQ3JjMnZBcXZSX3dGd29RemlsSUVZMmtIM2dKYXVXSWlMdnhJWTBGUkFKX21MN1pveWlMWmJtYUNLQ0VIRDViZC1BZnRWbEM3blFmRkZiZ9IBqgFBVV95cUxNalZOSGVxaUFFOU9Yd1dENE1qdzExODlFaGo1V2htSjFnR1VCclNMaG1YTjdJQnM5VkdScVl2Vm9qajhVUXh3VDVQVjF4QW5rQURUZDBLU1hrWWZaQ3JjMnZBcXZSX3dGd29RemlsSUVZMmtIM2dKYXVXSWlMdnhJWTBGUkFKX21MN1pveWlMWmJtYUNLQ0VIRDViZC1BZnRWbEM3blFmRkZiZw?oc=5",
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQUEdkNy1JSE5pOHNaWWl6Z0R6NlIxRElSZVBkQTM1S0FhYVZqU3dWRXNrNF9UMnBYdHdHSXVxUlF3VW0yUGNkcG9Wa29yVzRKTEtJbk5GbG5iSEY5cjNqZWxEZGI0bWMwQ1l0b1Q5M2JDeTR4OEJCVldwNlhLTFpwUWRDaldCT2xJYWdPQU90OFpFUm1UektiSmJGZEdXN1pOMmhscNIBqgFBVV95cUxNalZOSGVxaUFFOU9Yd1dENE1qdzExODlFaGo1V2htSjFnR1VCclNMaG1YTjdJQnM5VkdScVl2Vm9qajhVUXh3VDVQVjF4QW5rQURUZDBLU1hrWWZaQ3JjMnZBcXZSX3dGd29RemlsSUVZMmtIM2dKYXVXSWlMdnhJWTBGUkFKX21MN1pveWlMWmJtYUNLQ0VIRDViZC1BZnRWbEM3blFmRkZiZw?oc=5",
           "publisher": "ANTARA News",
           "publisher_url": "https://en.antaranews.com",
           "published_at_utc": "2026-10-19T06:45:22+00:00",
@@ -846,12 +831,27 @@
       ],
       "domestic": [
         {
-          "id": "food-policy-pemerintah-mengintervensi-harga-pangan-lewat-gpm-nasional-di-38-provinsi-antara-news",
-          "title": "Pemerintah mengintervensi harga pangan lewat GPM nasional di 38 provinsi - ANTARA News",
-          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxORE5pYjhxczJLclcxSWFNeG8tLWFNVFhSUFd3TS02Nm9OOG5CNmpPVl83NWJiSlZBLWVBcXQ1c2NEZE53X3FsTlVfeGRBRTd6cUs1aU9tdDE2UnBNUVRUTGFaS0ZDbkRtZ280ME10VzdUdk1pZTZsR1gxV0I1N2gxcjdtQzlNOXJWU1UtN3ZXbDZrY0J2XzNDV2RxZ0tGY0xlRFFJVzl1aTNiM2RQYVAzSGR2Z2l4LVU?oc=5",
-          "publisher": "ANTARA News",
-          "publisher_url": "https://kupang.antaranews.com",
-          "published_at_utc": "2026-10-22T05:38:35+00:00",
+          "id": "rice-reserves-bapanas-sebut-penyaluran-beras-pemerintah-hampir-4-juta-ton-antara-news-sultra",
+          "title": "Bapanas sebut penyaluran beras pemerintah hampir 4 juta ton - ANTARA News Sultra",
+          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxONmptM0c0RlMwbjRPa1F6bVgxR0QwelZOQVlMZEI4WTl4d2ZVcm5aZ1gzSlFaZ2NkQmxfZWpfNEZOWDktalZSbWFhT1hSa01GRmpSQWFBcV8zeXo4aXNhRmVtQU9hVXFDNG94VmlXOFgzd0ZyT3Y0TzBKYUc5N1VxLW52dUg3U2JZNW5EYmprXzEwSEtaaGtqeUZZRzFzR3l0MHM0d3ZB?oc=5",
+          "publisher": "ANTARA News Sultra",
+          "publisher_url": "https://sultra.antaranews.com",
+          "published_at_utc": "2026-10-22T06:53:48+00:00",
+          "sector": "food",
+          "scope": "domestic",
+          "topic_id": "rice_reserves",
+          "channel": "Rice production, reserves and distribution",
+          "impact_pathway": "Compare news claims about rice production, stock and distribution with BPS and Bapanas source-dated evidence.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "food-policy-pemerintah-intervensi-harga-pangan-lewat-gpm-nasional-di-38-provinsi-antara-news-jambi",
+          "title": "Pemerintah intervensi harga pangan lewat GPM nasional di 38 provinsi - ANTARA News Jambi",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQaW1UT1E3WnFGbTJwN2tqT01Vam5NYnJ3Mlh3blVoaDVpbllHNDhnUGNSbTNSb3FrX0JORGdpRmFsR0ViOVVCNmY0eXdXR3RyUHVvdGV2LVp2VGdVczl0enJ6cjhPYWEtYlo2YXdNemR3ZmhUUjdrSXI5SVgxYXJKbDJJellLenlJTzVfRndZVUJOVnJyYUs4bWoyVEF4dWw4ck5EWUFIUm9zc3JlaHZMLUtOeHpxd9IBtgFBVV95cUxQaW1UT1E3WnFGbTJwN2tqT01Vam5NYnJ3Mlh3blVoaDVpbllHNDhnUGNSbTNSb3FrX0JORGdpRmFsR0ViOVVCNmY0eXdXR3RyUHVvdGV2LVp2VGdVczl0enJ6cjhPYWEtYlo2YXdNemR3ZmhUUjdrSXI5SVgxYXJKbDJJellLenlJTzVfRndZVUJOVnJyYUs4bWoyVEF4dWw4ck5EWUFIUm9zc3JlaHZMLUtOeHpxdw?oc=5",
+          "publisher": "ANTARA News Jambi",
+          "publisher_url": "https://jambi.antaranews.com",
+          "published_at_utc": "2026-10-22T05:22:50+00:00",
           "sector": "food",
           "scope": "domestic",
           "topic_id": "food_policy",
@@ -917,21 +917,6 @@
           "topic_id": "food_policy",
           "channel": "Food governance and trade policy",
           "impact_pathway": "Regulatory changes need primary legal documents; do not infer effective legal status from a headline.",
-          "evidence": "Publisher-attributed RSS headline (not independently verified)",
-          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
-        },
-        {
-          "id": "rice-reserves-cadangan-beras-melimpah-dari-gudang-ke-meja-makan-semua-aman-cnbc-indonesia",
-          "title": "Cadangan Beras Melimpah: Dari Gudang ke Meja Makan Semua Aman - CNBC Indonesia",
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQVzJESDFmdm8tU2ZVWHF0d25jVWJqOUxqTGQ5N3JwcmlMbF9DX3F2R0Q4SmJpbnVBa2J2d0NuejRhVFN3cG5jcE5MOXllTXpfWVhDX182bDhWUWZOdjBMRnBWUUVLbHNkMFlncFJuS0Vsalp1d01acFJWQ2RJUXNMMGlJV2QwQTZBRDB5bkMwZU5vS240TXpPcXR2eEl0Z29iY1dwMk0xQU5RSXRzSjhKUlBnMzgzTzVUWHphdGYyWkhZQmc?oc=5",
-          "publisher": "CNBC Indonesia",
-          "publisher_url": "https://www.cnbcindonesia.com",
-          "published_at_utc": "2026-10-21T00:35:17+00:00",
-          "sector": "food",
-          "scope": "domestic",
-          "topic_id": "rice_reserves",
-          "channel": "Rice production, reserves and distribution",
-          "impact_pathway": "Compare news claims about rice production, stock and distribution with BPS and Bapanas source-dated evidence.",
           "evidence": "Publisher-attributed RSS headline (not independently verified)",
           "impact_status": "Potential impact pathway; no measured Indonesia exposure"
         },
@@ -1165,15 +1150,15 @@
   },
   "counts": {
     "minerals": {
-      "geopolitical": 12,
-      "domestic": 13
+      "geopolitical": 11,
+      "domestic": 12
     },
     "ai": {
-      "geopolitical": 13,
+      "geopolitical": 12,
       "domestic": 11
     },
     "food": {
-      "geopolitical": 6,
+      "geopolitical": 8,
       "domestic": 21
     }
   },
@@ -1182,7 +1167,7 @@
       "id": "nickel_market",
       "scope": "minerals/geopolitical",
       "state": "scanned",
-      "found": 5
+      "found": 4
     },
     {
       "id": "export_policy",
@@ -1218,7 +1203,7 @@
       "id": "environment",
       "scope": "minerals/domestic",
       "state": "scanned",
-      "found": 1
+      "found": 0
     },
     {
       "id": "mineral_investment",
@@ -1242,7 +1227,7 @@
       "id": "climate_food",
       "scope": "food/geopolitical",
       "state": "scanned",
-      "found": 3
+      "found": 5
     },
     {
       "id": "rice_reserves",
@@ -1278,7 +1263,7 @@
       "id": "compute_competition",
       "scope": "ai/geopolitical",
       "state": "scanned",
-      "found": 6
+      "found": 5
     },
     {
       "id": "data_governance",
@@ -1302,7 +1287,7 @@
       "id": "campus_projects",
       "scope": "ai/domestic",
       "state": "scanned",
-      "found": 6
+      "found": 3
     },
     {
       "id": "power_water",
