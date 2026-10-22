@@ -1,0 +1,28 @@
+name: SLI Green Workforce Source and Dashboard QA
+on:
+  pull_request:
+    paths:
+      - 'green-workforce-intelligence.html'
+      - 'data/sli-green-workforce-projections.json'
+      - 'js/sli-green-workforce-projections.js'
+      - 'tests/qa-sli-green-workforce.mjs'
+      - '.github/workflows/sli-green-workforce-qa.yml'
+      - 'index.html'
+      - 'indonesia-macroeconomic-intelligence.html'
+  push:
+    branches: [main]
+    paths:
+      - 'green-workforce-intelligence.html'
+      - 'data/sli-green-workforce-projections.json'
+      - 'js/sli-green-workforce-projections.js'
+      - 'tests/qa-sli-green-workforce.mjs'
+  workflow_dispatch:
+jobs:
+  source-and-navigation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/qa-sli-green-workforce.mjs
