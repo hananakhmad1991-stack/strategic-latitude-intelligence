@@ -689,7 +689,7 @@ async function init(){
   state.config=await r.json();
   if(ownerConfigured()){
    $("raOwnerInputRow").hidden=false;
-   $("raOwnerPanel").open=true;
+   // Keep owner diagnostics opt-in; availability does not auto-expand the private panel.
    $("raOwnerState").textContent="Ready for owner-token test";
    $("raAccessLabel").textContent="DERGUBA AI · Owner Test";
    status(state.language==="id"?"Backend Owner Test tersedia. Masukkan token pribadi pada panel, lalu tulis prompt riset.":"Owner test backend available. Enter the private token and send a research prompt.","ready");
