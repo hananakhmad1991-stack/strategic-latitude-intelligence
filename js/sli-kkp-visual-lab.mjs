@@ -95,12 +95,12 @@ export function layoutDistrictSankey(detail){
  }
  const scale=Math.min(...nodes.map(m=>(available-gap*(m.size-1))/total));
  const lists=nodes.map(m=>[...m.values()].sort((a,b)=>b.total-a.total||a.key.localeCompare(b.key)));
- for(let col=0;col<3;col++){let y=top;for(const n of lists[col]){n.y=y;n.height=n.total*scale;n.offset=0;n.x=coords[col];y+=n.height+gap;}}
+ for(let col=0;col<3;col++){let y=top;for(const n of lists[col]){n.y=y;n.height=n.total*scale;n.outOffset=0;n.inOffset=0;n.x=coords[col];y+=n.height+gap;}}
  for(const r of records){
   const a=nodes[0].get(labels[0](r)),b=nodes[1].get(labels[1](r)),c=nodes[2].get(labels[2](r));
   const thick=r.volume_ribu_ekor*scale;
   for(const [from,to,stage]of [[a,b,0],[b,c,1]]){
-   const y0=from.y+from.offset,y1=to.y+to.offset;from.offset+=thick;to.offset+=thick;
+   const y0=from.y+from.outOffset,y1=to.y+to.inOffset;from.outOffset+=thick;to.inOffset+=thick;
    const x0=from.x+w,x1=to.x,m0=x0+(x1-x0)*.47,m1=x0+(x1-x0)*.53;
    const d=`M${x0} ${y0} C${m0} ${y0} ${m1} ${y1} ${x1} ${y1} L${x1} ${y1+thick} C${m1} ${y1+thick} ${m0} ${y0+thick} ${x0} ${y0+thick}Z`;
    paths.push({d,stage,record:r,width:thick});
