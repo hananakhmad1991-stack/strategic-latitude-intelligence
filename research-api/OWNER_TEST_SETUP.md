@@ -95,3 +95,30 @@ After owner testing passes, the next stage is genuine subscriber authentication,
 - The frontend safely renders simple bar charts, source citations and limited Markdown emphasis/tables with DOM text nodes, never as trusted model HTML.
 - The model instruction closes with **Kesimpulan dan Rekomendasi Strategis** / **Conclusions and Strategic Recommendations**, giving 3–5 actionable pointers. It remains generative, so users must verify output and source attribution.
 - Graphs appear only when there are at least two comparable sourced observations or two meaningful project stage groups. Gaps are intentional; do not fabricate chart values to fill them. The full proprietary sector data platform is still not linked to this public staging corpus.
+
+
+## GitHub staging deployment acceptance (22 October 2026)
+
+The controlled Owner Worker deployment run [#39735505875](https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/39735505875) is **confirmed successful**. Wrangler uploaded and deployed the `sli-research-owner-test` Worker, and the unauthenticated request was rejected with HTTP 401. This is **not** proof of authenticated model completion, current legal validity, PDF rendering, or commercial release authorization.
+
+The owner may run a local acceptance test WITHOUT disclosing tokens to GitHub or ChatGPT. Use Node.js 22+ and the checked-out repository. The CLI uses the fixed allowlisted staging Worker endpoint from `data/sli-research-assistant-config.json`; it does **not** accept arbitrary upload URLs.
+
+### Windows PowerShell (read token without showing it)
+
+```powershell
+$secure = Read-Host "Paste existing OWNER_TEST_TOKEN locally (hidden)" -AsSecureString
+$ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
+try {
+  $env:SLI_OWNER_TEST_TOKEN = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr)
+  node scripts/qa-owner-staging-live.mjs
+  # To also test the REAL paid model once (uses your OpenAI API budget):
+  # node scripts/qa-owner-staging-live.mjs --include-paid-model
+} finally {
+  Remove-Item Env:SLI_OWNER_TEST_TOKEN -ErrorAction SilentlyContinue
+  [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr)
+}
+```
+
+The default run verifies 403 for wrong origin, 401 without token, the **nonexistent** Pasal 99 UU 7/2021, the **unreviewed** Pasal 11 UU 7/2021, and basic Word/A4 HTML draft output, with zero paid model calls. Add `--include-paid-model` only with explicit authorization for one live reviewed Pasal 1 UU 16/2016 response; the CLI respects the 2-per-minute rate limiter by waiting before the third authenticated request. It prints pass/fail and error codes, never the owner token or complete answer. If another test is running concurrently, wait for the limiter window before restarting.
+
+**Do not publish or share the terminal's secret, and never paste the token into GitHub Issues or screenshots.** Store any acceptance output privately. A successful live completion still needs human source-claim review, browser PDF rendering QA, BPS rights clearance, privacy/security review, customer access controls, and separate commercial launch approval. A bounded original-Pasal structural citation must never be interpreted as current consolidated legal text.
