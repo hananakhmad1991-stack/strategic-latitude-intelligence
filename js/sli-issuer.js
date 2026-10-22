@@ -84,7 +84,7 @@ function showFinancialEvidence(parent,records){
  section.append(E("h2",null,T("Source-linked financial statements","Laporan keuangan bersumber")));
  const r=records.find(x=>x.financial_source_url&&x.financial_period&&x.financial_currency&&["revenue","net_income","total_assets"].some(k=>typeof x[k]==="number"&&Number.isFinite(x[k])));
  if(!r){section.append(E("p","sli-issuer-missing",T("No reconciled financial figures available. N/A is not zero.","Angka keuangan belum direkonsiliasi. N/A bukan nol.")));parent.append(section);return;}
- section.append(E("p",T("Period","Periode")+": "+r.financial_period+" · "+r.financial_currency));
+ section.append(E("p",null,T("Period","Periode")+": "+r.financial_period+" · "+r.financial_currency));
  const facts=E("dl","sli-issuer-facts");
  for(const [k,en,ind] of [["revenue","Revenue","Pendapatan"],["net_income","Net income","Laba bersih"],["total_assets","Total assets","Total aset"]]){
  const v=r[k];typed(T(en,ind),typeof v==="number"&&Number.isFinite(v)?v.toLocaleString(id()?"id-ID":"en-US"):"N/A",facts);}
