@@ -42,17 +42,13 @@ const state={language:"id",config:null,history:[],lastResult:null,busy:false,seq
 const EXTERNAL_WEB_PERMISSION_KEY="sli-external-web-permission-v1";
 function initExternalWebPermission(){
  const consent=$("raExternalSearchConsent"),remember=$("raExternalSearchRemember");
- let approved=false;
- try{approved=localStorage.getItem(EXTERNAL_WEB_PERMISSION_KEY)==="approved"}catch{}
+ const approved=window.SLIExternalEvidencePrefs?.read?.()===true;
  consent.checked=approved;
  remember.checked=approved;
 }
 function updateExternalWebPermission(){
  const consent=$("raExternalSearchConsent"),remember=$("raExternalSearchRemember");
- try{
-  if(consent.checked&&remember.checked)localStorage.setItem(EXTERNAL_WEB_PERMISSION_KEY,"approved");
-  else localStorage.removeItem(EXTERNAL_WEB_PERMISSION_KEY);
- }catch{}
+ window.SLIExternalEvidencePrefs?.write?.(consent.checked&&remember.checked);
 }
 function resetQuestionWebPermission(){
  // Without a remembered opt-in, each new question requires its own consent.
