@@ -1,0 +1,4 @@
+/* Opt-in technical detail collapse; default remains expanded to preserve widget initial measurement. */
+.sli-panel-collapse{display:block;margin:16px 0 7px;padding:10px 14px;min-height:42px;border:1px solid #55748b;border-radius:8px;color:#e9cf9c;background:#152f46;font:650 12px/1.4 system-ui,sans-serif;cursor:pointer}
+.sli-panel-collapse:hover,.sli-panel-collapse:focus-visible{border-color:#e9cf9c;outline-offset:2px}
+.sli-portal .sli-panel-collapsed{display:none!important}

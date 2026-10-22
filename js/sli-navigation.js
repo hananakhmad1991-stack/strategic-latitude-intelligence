@@ -115,6 +115,19 @@ function renderPlatformMast(){
  summary.setAttribute('aria-label',text('Browse SLI sector dashboards','Jelajahi dashboard sektoral SLI'));
  explorer.append(summary);
  const sectors=node('div','sli-platform-sector-menu');
+ // Task-first paths precede the detailed module catalog; no duplicate top-level sector.
+ const quick=node('div','sli-explore-quick');
+ quick.append(node('strong','sli-explore-quick-title',text('What would you like to investigate?','Apa yang ingin Anda telusuri?')));
+ const shortcuts=[
+  ['Explore sectors','Jelajahi sektor','./index.html#sliPortalSectors'],
+  ['Compare provinces','Bandingkan provinsi','./provincial-intelligence.html'],
+  ['Find a company','Cari perusahaan','./sli-entities.html'],
+  ['Check original sources','Periksa sumber data','./sli-sector-data-library.html'],
+  ['Analyze with DERGUBA','Analisis dengan DERGUBA','./sli-research-ai.html']
+ ];
+ const quickLinks=node('div','sli-explore-quick-links');
+ for(const [en,id,url] of shortcuts){const a=node('a','sli-explore-quick-link',text(en,id));a.href=url;quickLinks.append(a)}
+ quick.append(quickLinks);sectors.append(quick);
  // Canonical information architecture: eight distinct topical families, including independent Marine & Fisheries.
  // Specialist pages and source observations remain owned by ONE substantive category.
  const topicalEvidence={
@@ -231,7 +244,21 @@ function renderBar(){
  const relation=node('div','sli-related-links');
  relation.append(node('span','',text('Related:','Terkait:')));
  for(const id of (related[current]||['overview']).slice(0,4))relation.append(link(id));
- bar.append(position,actions,relation);
+ const researchPath=node('nav','sli-research-path');
+ researchPath.setAttribute('aria-label',text('Research journey: sectors, organizations, sources and analysis','Alur riset: sektor, entitas, sumber dan analisis'));
+ const pathItems=[
+  ['Sectors','Sektor','./index.html#sliPortalSectors'],
+  ['Regions','Daerah','./provincial-intelligence.html'],
+  ['Companies & actors','Perusahaan & aktor','./sli-entities.html'],
+  ['Original sources','Sumber asli','./sli-sector-data-library.html'],
+  ['Analyze','Analisis','./sli-research-ai.html']
+ ];
+ for(const [en,id,url] of pathItems){
+  const a=node('a','sli-research-step',text(en,id));a.href=url;
+  if((url==='./'+path)||(url==='./index.html#sliPortalSectors'&&path==='index.html'&&current==='home'))a.setAttribute('aria-current','page');
+  researchPath.append(a);
+ }
+ bar.append(position,actions,researchPath,relation);
 }
 function renderGuide(){
  const target=document.getElementById('sliGuideCatalog');if(!target)return;
