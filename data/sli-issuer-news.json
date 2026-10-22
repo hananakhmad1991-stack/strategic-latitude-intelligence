@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T19:12:19.243481Z",
+  "updated_at_utc": "2026-10-22T20:03:54.956350Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -52,6 +52,22 @@
         "TLKM"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_391e178d0508e5b52c7b69",
+      "title": "OJK Cetak Rekor Denda Rp2,1 Triliun Terkait Tiga Transaksi Saham Raksasa DSSA, BREN, dan CUAN - harian.disway.id - HARIAN DISWAY",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQUDJEaXVrTlZIXzJGN1RQZnRfZFpNcXlWRE1ZX0FHTG5GeEpxMWxhMkNpVHY2S2xHMWt6WnIxQmFTbHJrSkNDWHhkVU44Sm1qZnk1SkNILWpnZ0lGWXRoSF9NdWVjTlg3U2lKV1g0cmRqNTU2cXFqZV94ZWxhMnZ2M2hOWS1oMXVzZjJCX3ZZS0RyeExoeTlZeE8tLVgyeUhUanZNOGRrR3VCWExsOHNtRmVFUnBjcXhMV3VIVUZoM0lpOG5Ob0HSAcQBQVVfeXFMTTFvSkJ1dUxJVzJvbEhNYXB0b3VlU29zaV9TdWFCNGVkM2Jsei1kYlBCLUhXUjRsM1JNMnVjY0pkNnhwSlFyUERTSmtaWVgxdUZGS3hqVGN1ZkVNT1M2dWtXT2ZnbzBBTlB6RlVJakZjdGZWMmdQM2EtY0dnZlk3dHc0MjdqMHlxRk5CY2dpV1NpTGpIMWhUZ0h4MmZtaGhoSC1Ccm5vLXBrQWxGNktZbGgyWGJFUnRObFg2RWZDRUZQcTh0Uw?oc=5",
+      "publisher": "HARIAN DISWAY",
+      "published_at_utc": "2026-10-22T16:13:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -228,6 +244,22 @@
         "AMMN"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_775ef59c297a872fc4b2f1",
+      "title": "Jasa Marga Kaji Buyback Saham di Tengah Valuasi Rendah - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPcFZ5emx3ZTF2TTlIanRzSHhlY1k2TWxCOGcxN2dkNUtIZG52MVJSbmRkYVZFYmRjOThmclBkbW5rdUhBSENpYTJONTJVMTA1M0JoOFNVNkxhSkRSUzkybjZVTnNyZWRIRHZQeUdTbThjMkYxbmx2Sk9FT194eFdabV9jT0RvaGdHU2lr?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-22T11:12:43Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
