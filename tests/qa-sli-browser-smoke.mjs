@@ -545,6 +545,34 @@ await check("KKP 2024 hatchery partial 33-province evidence and BIG WPP safety o
  const bounds=await page.evaluate(()=>({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth}));
  assert.ok(bounds.scroll<=bounds.client+16,"KKP mobile panel must not cause page overflow "+JSON.stringify(bounds));
 });
+await check("KKP verified visual laboratory: province choropleth, Sankey and historical heatmap",{width:1365,height:860},async page=>{
+ await page.goto(pageUrl("marine-fisheries-intelligence.html#marine-visual-lab"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.locator("#mfVizHatcherySankey svg").waitFor({timeout:26000});
+ assert.equal(await page.locator("#mfVizHatcherySankey .mf-viz-sankey-ribbon").count(),20);
+ assert.equal(await page.locator("#mfVizSankeyItems button").count(),10);
+ assert.equal(await page.locator("#mfVizHatcheryMap svg .sli-province-shape").count(),38);
+ assert.equal(await page.locator("#mfVizNationalIndex svg polyline").count(),2);
+ assert.equal(await page.locator("#mfVizHeatGrid tbody tr").count(),37);
+ await page.locator("#mfVizHeatMode").selectOption("yoy");
+ assert.equal(await page.locator("#mfVizHeatGrid tbody tr").count(),37);
+ assert.ok((await page.locator("#mfVizHeatGrid tbody tr").first().innerText()).includes("—"));
+ await page.locator("#mfVizHeatSeries").selectOption("seaweed");
+ assert.equal(await page.locator("#mfVizHeatGrid tbody tr").count(),34);
+ await page.locator("#mfVizSankeyItems button").first().click();
+ assert.match(await page.locator("#mfVizSankeySelected").innerText(),/ribu ekor/);
+ assert.match(await page.locator("#mfVizHatcheryCoverage").innerText(),/719[,.]750/);
+ assert.equal(await page.locator("#mfWPPMap svg path").count(),0,"BIG WPP polygons cannot be invented");
+ assert.equal(await page.locator("#mfWPPLegend a").count(),11);
+});
+await check("KKP visual laboratory on mobile: no viewport overflow, preserve scrollable Sankey",{width:390,height:844},async page=>{
+ await page.goto(pageUrl("marine-fisheries-intelligence.html#marine-visual-lab"),{waitUntil:"domcontentloaded",timeout:30000});
+ await page.locator("#mfVizHatcherySankey svg").waitFor({timeout:25000});
+ assert.ok(await page.locator("#mfVizHeatGrid").isVisible());
+ assert.equal(await page.locator("#mfVizHatcherySankey .mf-viz-sankey-ribbon").count(),20);
+ const b=await page.evaluate(()=>({width:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth,inner:document.querySelector(".mf-viz-sankey-viewport").scrollWidth,client:document.querySelector(".mf-viz-sankey-viewport").clientWidth}));
+ assert.ok(b.scroll<=b.width+16,"KKP page horizontal overflow "+JSON.stringify(b));
+ assert.ok(b.inner>=b.client,"Sankey owns horizontal scroll viewport");
+});
 await browser.close();
 fs.writeFileSync(path.join(outDir,"result.json"),JSON.stringify(report,null,2)+"\n");
 console.log("Browser smoke:",report.tests.filter(x=>x.status==="pass").length,"passed /",report.tests.length,"total");

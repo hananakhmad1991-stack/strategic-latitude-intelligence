@@ -76,7 +76,7 @@
  <h2 data-id="Peta Zona Perikanan WPP-NRI · BIG" data-en="BIG Official Fisheries Management Zones">Peta Zona Perikanan WPP-NRI · BIG</h2>
  </div><small data-id="11 zona resmi · geometri dimuat langsung saat diminta" data-en="11 official zones · loaded live on request">11 zona resmi · geometri dimuat langsung saat diminta</small></div>
  <article class="mf-card">
-  <p class="mf-hint" data-id="Sumber: BIG Kebijakan Satu Peta, ArcGIS Layer 21. Tekan tombol untuk mengambil poligon asli WPP 571–573 dan 711–718, lalu klik/tekan Enter pada zona untuk identifikasinya. Tanpa poligon buatan, tanpa mengubah WPP menjadi provinsi, dan tanpa menyimpan salinan geometri di SLI." data-en="BIG One Map Policy ArcGIS Layer 21. Load actual WPP 571–573 and 711–718 polygons directly from BIG; click or press Enter to inspect each zone. No invented polygons, no treating management zones as provinces, no SLI-side geometry redistribution.">Sumber: BIG Kebijakan Satu Peta, ArcGIS Layer 21. Tekan tombol untuk mengambil poligon asli WPP 571–573 dan 711–718, lalu klik/tekan Enter pada zona untuk identifikasinya. Tanpa poligon buatan, tanpa mengubah WPP menjadi provinsi, dan tanpa menyimpan salinan geometri di SLI.</p>
+  <p class="mf-hint" data-id="Sumber: BIG Kebijakan Satu Peta, ArcGIS Layer 21. Tekan tombol untuk meminta poligon WPP 571–573 dan 711–718 dari BIG. Jika GeoJSON gagal dimuat, SLI akan mencoba gambar langsung dari renderer BIG tanpa membuat poligon sendiri. Jika poligon tersedia, klik/tekan Enter untuk identifikasi. Tanpa poligon buatan, tanpa mengubah WPP menjadi provinsi, dan tanpa menyimpan salinan geometri di SLI." data-en="BIG One Map Policy ArcGIS Layer 21. Load actual WPP 571–573 and 711–718 polygons directly from BIG; click or press Enter to inspect each zone. No invented polygons, no treating management zones as provinces, no SLI-side geometry redistribution.">Sumber: BIG Kebijakan Satu Peta, ArcGIS Layer 21. Tekan tombol untuk mengambil poligon asli WPP 571–573 dan 711–718, lalu klik/tekan Enter pada zona untuk identifikasinya. Tanpa poligon buatan, tanpa mengubah WPP menjadi provinsi, dan tanpa menyimpan salinan geometri di SLI.</p>
   <div class="mf-atlas-actions">
    <button id="mfWPPLoad" type="button" data-id="Muat poligon WPP langsung dari BIG" data-en="Load WPP polygons directly from BIG">Muat poligon WPP langsung dari BIG</button>
    <a href="https://kspservices.big.go.id/satupeta/rest/services/PUBLIK/SUMBER_DAYA_ALAM_DAN_LINGKUNGAN/MapServer/21" target="_blank" rel="noopener noreferrer" data-id="Lihat layer resmi BIG ↗" data-en="Official BIG layer ↗">Lihat layer resmi BIG ↗</a>
@@ -86,7 +86,54 @@
     <p class="mf-hint" data-id="Area peta akan diisi hanya setelah fitur poligon valid diterima langsung dari BIG." data-en="The map is rendered only after valid official BIG polygons arrive.">Area peta akan diisi hanya setelah fitur poligon valid diterima langsung dari BIG.</p>
   </div>
   <p id="mfWPPSelected" class="mf-hint" role="status"></p>
+  <div id="mfWPPLegend" class="mf-wpp-official-legend" role="group" aria-label="Eleven official BIG WPP codes and zone names"></div>
   <p class="mf-hint" data-id="Status: peta eksplorasi berbasis layanan sumber. Hubungan kode WPP dengan regulasi terkini serta hak penggunaan ulang masih harus diuji. Data potensi stok/JTB berbeda dari realisasi tangkapan; tidak dibuat nilai secara otomatis." data-en="Exploratory source-layer visualization. Legal boundary vintage and reuse rights remain to be verified. Potential stock/JTB cannot be mistaken for realized catches; no numerical assumptions are generated.">Status: peta eksplorasi berbasis layanan sumber. Hubungan kode WPP dengan regulasi terkini serta hak penggunaan ulang masih harus diuji. Data potensi stok/JTB berbeda dari realisasi tangkapan; tidak dibuat nilai secara otomatis.</p>
+ </article>
+</section>
+<section class="mf-section" id="marine-visual-lab">
+ <div class="mf-section-title"><div><p class="mf-overline">KKP / EVIDENCE VISUAL LAB</p>
+ <h2 data-id="Eksplorasi KKP · Peta, Indeks, Sankey" data-en="KKP exploration · Maps, Trends & Sankey">Eksplorasi KKP · Peta, Indeks, Sankey</h2>
+ </div><small data-id="Rilis sumber 2025 · observasi 2019–2024" data-en="2025 source release · 2019–2024 observations">Rilis sumber 2025 · observasi 2019–2024</small></div>
+ <p class="mf-hint" data-id="Visualisasi baru hanya memakai angka asli yang sudah dicocokkan. Peta 38 poligon memakai GeoJSON ilustratif komunitas (bukan BIG), 33 provinsi memiliki angka pembenihan; diagram Sankey hanya 10 baris sumber kabupaten/komoditas, bukan populasi penuh 1.387 baris." data-en="Every visual uses source-qualified numeric observations. The 38-province map uses community illustrative geometry (NOT BIG); hatchery numeric observations are available for 33 provinces. The Sankey represents only ten published district/species rows, not the complete 1,387 rows.">Visualisasi baru hanya memakai angka asli yang sudah dicocokkan. Peta 38 poligon memakai GeoJSON ilustratif komunitas (bukan BIG), 33 provinsi memiliki angka pembenihan; diagram Sankey hanya 10 baris sumber kabupaten/komoditas, bukan populasi penuh 1.387 baris.</p>
+ <div class="mf-two">
+  <article class="mf-card">
+   <h3 data-id="Choropleth pembenihan 2024 · 33 angka provinsi" data-en="Hatchery choropleth 2024 · 33 province values">Choropleth pembenihan 2024 · 33 angka provinsi</h3>
+   <div id="mfVizHatcheryMap" class="sli-province-map" role="region" aria-label="KKP province hatchery original values map"></div>
+   <p id="mfVizHatcherySelected" class="mf-hint" role="status" data-id="Pilih provinsi pada peta untuk melihat jumlah pembenihan yang tercetak." data-en="Select a province on the map to inspect its published hatchery count.">Pilih provinsi pada peta untuk melihat jumlah pembenihan yang tercetak.</p>
+   <p class="mf-hint" data-id="Peta bersifat ilustratif, geometri wilayah bukan batas resmi BIG; sel kosong bukan nol." data-en="Illustrative map, NOT official BIG legal province boundaries; missing numbers do not mean zero.">Peta bersifat ilustratif, geometri wilayah bukan batas resmi BIG; sel kosong bukan nol.</p>
+  </article>
+  <article class="mf-card">
+   <h3 data-id="Rekonsiliasi pembenihan nasional 2024" data-en="2024 hatchery national reconciliation">Rekonsiliasi pembenihan nasional 2024</h3>
+   <p class="mf-hint" data-id="Subtotal 33 kartu provinsi versus total nasional yang benar-benar tercetak; area belum teralokasi bukan estimasi produksi provinsi yang hilang." data-en="Sum of 33 visible province cards against source-printed national total; unallocated area is NOT inferred missing-province production.">Subtotal 33 kartu provinsi versus total nasional yang benar-benar tercetak; area belum teralokasi bukan estimasi produksi provinsi yang hilang.</p>
+   <div id="mfVizHatcheryCoverage" role="group" aria-label="KKP hatchery subtotal versus source national reconciliation"></div>
+   <p class="mf-hint"><a href="https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan" target="_blank" rel="noopener noreferrer" data-id="Kartu provinsi dan tabel KKP resmi ↗" data-en="Official KKP cards and original table ↗">Kartu provinsi dan tabel KKP resmi ↗</a></p>
+  </article>
+ </div>
+ <article class="mf-card">
+ <h3 data-id="Heatmap provinsi · nilai terukur atau perubahan tahunan 2019–2024" data-en="Province heatmap · observed values or YoY changes 2019–2024">Heatmap provinsi · nilai terukur atau perubahan tahunan 2019–2024</h3>
+ <div class="mf-atlas-filters">
+  <label for="mfVizHeatSeries" data-id="Indikator" data-en="Indicator">Indikator</label><select id="mfVizHeatSeries"><option value="marine_fishers" data-id="Nelayan laut (orang)" data-en="Marine fishers (persons)">Nelayan laut (orang)</option><option value="seaweed" data-id="Rumput laut (ton)" data-en="Seaweed (tonnes)">Rumput laut (ton)</option></select>
+  <label for="mfVizHeatMode" data-id="Ukuran" data-en="Measure">Ukuran</label><select id="mfVizHeatMode"><option value="value" data-id="Nilai tahunan" data-en="Annual observed value">Nilai tahunan</option><option value="yoy" data-id="Pertumbuhan YoY (%)" data-en="YoY change (%)">Pertumbuhan YoY (%)</option></select>
+  <label for="mfVizHeatSearch" data-id="Provinsi" data-en="Province">Provinsi</label><input type="search" id="mfVizHeatSearch" placeholder="Cari provinsi..." aria-label="Search province in 2019 to 2024 heatmap">
+  <button type="button" id="mfVizHeatCSV" data-id="Ekspor CSV heatmap" data-en="Export cited heatmap CSV">Ekspor CSV heatmap</button>
+ </div>
+ <p id="mfVizHeatStatus" class="mf-hint" role="status">—</p>
+ <div id="mfVizHeatGrid" class="mf-viz-heat-scroll" role="region" aria-label="Provincial KKP 2019–2024 official numerical cells"></div>
+ <p class="mf-hint"><span data-id="Tidak ada penyamaan otomatis provinsi Papua sebelum dan sesudah pemekaran. Sel kosong = tidak tersedia, bukan 0; perubahan YoY hanya dihitung bila dua tahun berurutan tersedia." data-en="No backcasting of Papua administrative splits. Missing is not zero; YoY only calculated when both adjacent years are reported.">Tidak ada penyamaan otomatis provinsi Papua sebelum dan sesudah pemekaran. Sel kosong = tidak tersedia, bukan 0; perubahan YoY hanya dihitung bila dua tahun berurutan tersedia.</span> <a id="mfVizHeatSource" href="https://portaldata.kkp.go.id/portals/data-statistik/layer1" target="_blank" rel="noopener noreferrer" data-id="Tabel sumber KKP ↗" data-en="KKP source table ↗">Tabel sumber KKP ↗</a></p>
+</article>
+<article class="mf-card">
+  <h3 data-id="Indeks perubahan nasional · 2019=100" data-en="National historical indices · 2019=100">Indeks perubahan nasional · 2019=100</h3>
+  <div class="mf-viz-index-legend"><span><i class="mf-viz-key mf-viz-key-fishers"></i><span data-id="Nelayan tangkap laut (orang)" data-en="Marine capture fishers (persons)">Nelayan tangkap laut (orang)</span></span><span><i class="mf-viz-key mf-viz-key-seaweed"></i><span data-id="Produksi rumput laut (ton)" data-en="Seaweed grow-out production (tonnes)">Produksi rumput laut (ton)</span></span></div>
+  <div id="mfVizNationalIndex" class="mf-viz-index" role="group" aria-label="Independent relative historical indices for marine fishers and seaweed output"></div>
+ </article>
+ <article class="mf-card">
+  <h3 data-id="Sankey sumber asli · 10 baris pembenihan kabupaten × jenis ikan" data-en="Source-backed Sankey · ten district hatchery × fish-category records">Sankey sumber asli · 10 baris pembenihan kabupaten × jenis ikan</h3>
+  <p class="mf-hint" data-id="Jalur menghubungkan provinsi → kabupaten/kota → kelompok ikan hanya untuk 10 observasi yang benar-benar diterbitkan di tampilan awal KKP. Lebar pita adalah volume sumber, bukan nilai rupiah; klik pita untuk rincian volume, nilai, dan pangsa dari sepuluh baris saja." data-en="Flows connect province → district/city → fish category only for ten directly printed KKP table rows. Ribbon width represents reported fish-seed counts, NOT currency; click a ribbon for source volume, value and share of just these ten rows.">Jalur menghubungkan provinsi → kabupaten/kota → kelompok ikan hanya untuk 10 observasi yang benar-benar diterbitkan di tampilan awal KKP. Lebar pita adalah volume sumber, bukan nilai rupiah; klik pita untuk rincian volume, nilai, dan pangsa dari sepuluh baris saja.</p>
+  <div class="mf-viz-sankey-viewport"><div id="mfVizHatcherySankey" class="mf-viz-sankey" role="region" aria-label="Observed ten row province district species Sankey"></div></div>
+  <div id="mfVizSankeyItems" class="mf-viz-sankey-items" role="group" aria-label="Ten keyboard and touch accessible original KKP source rows"></div>
+  <p id="mfVizSankeySelected" class="mf-hint" role="status" data-id="Pilih salah satu pita untuk membuka rincian satu baris data sumber." data-en="Select any ribbon for its exact original source row.">Pilih salah satu pita untuk membuka rincian satu baris data sumber.</p>
+  <p id="mfVizSankeySummary" class="mf-hint" role="status">—</p>
+  <p class="mf-hint"><a href="https://portaldata.kkp.go.id/datainsight/produksi-ikan-pembenihan" target="_blank" rel="noopener noreferrer" data-id="Tabel 2024 KKP resmi ↗" data-en="Original KKP 2024 hatchery table ↗">Tabel 2024 KKP resmi ↗</a>. <span data-id="Tidak ada inferensi aliran 1.377 baris lainnya, nilai nol, ataupun generalisasi provinsi." data-en="No inferred flows for the other 1,377 rows, zeros, or province totals.">Tidak ada inferensi aliran 1.377 baris lainnya, nilai nol, ataupun generalisasi provinsi.</span></p>
  </article>
 </section>
 <section class="mf-section" id="marine-source-atlas">
@@ -197,6 +244,7 @@
 <script type="module" src="./js/sli-marine-fisheries.mjs?v=20261021-kkp1"></script>
 <script type="module" src="./js/sli-marine-governance.mjs?v=20261021-governance-v2"></script>
 <script src="./js/sli-province-map.js?v=20261021-kkp-history1" defer></script>
+<script type="module" src="./js/sli-kkp-visual-lab.mjs?v=20261022-data-viz1"></script>
 <script type="module" src="./js/sli-kkp-hatchery-provincial.mjs?v=20261022-seed-card1"></script>
 <script type="module" src="./js/sli-kkp-wpp-live.mjs?v=20261022-wpp-live1"></script>
 <script type="module" src="./js/sli-marine-regional-history.mjs?v=20261021-kkp-history1"></script>

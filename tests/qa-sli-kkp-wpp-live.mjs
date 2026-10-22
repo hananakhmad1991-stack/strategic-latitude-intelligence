@@ -1,7 +1,7 @@
 import {test} from "node:test";
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
-import {BIG_LAYER,WPP_CODES,wppCode,validateOfficialWPP,renderOfficialWPPPaths} from "../js/sli-kkp-wpp-live.mjs";
+import {BIG_LAYER,WPP_CODES,wppCode,validateOfficialWPP,renderOfficialWPPPaths,officialWPPRasterURL} from "../js/sli-kkp-wpp-live.mjs";
 const read=p=>readFileSync(new URL("../"+p,import.meta.url),"utf8");
 const micro=i=>({type:"Feature",properties:{namobj:"WPP-RI "+WPP_CODES[i],kodwpp:WPP_CODES[i]},geometry:{type:"Polygon",coordinates:[[[100+i*.2,-5],[100+i*.2+0.1,-5],[100+i*.2+0.1,-4.9],[100+i*.2,-5]]]}});
 test("Official BIG 11-code geoservice and inclusive geometry guards fail closed",()=>{
@@ -33,4 +33,16 @@ test("Official live map does not embed unreviewed WPP polygons in SLI files",()=
  assert.match(source,/No guessed polygon fallback/);
  assert.match(source,/addEventListener\("click"/);
  assert.ok(!source.includes("data:application/geo+json"));
+});
+
+test("Official BIG raster preview is served by same source, no locally invented boundary",()=>{
+ const url=new URL(officialWPPRasterURL());
+ assert.equal(url.hostname,"kspservices.big.go.id");
+ assert.equal(url.pathname.endsWith("/MapServer/export"),true);
+ assert.equal(url.searchParams.get("layers"),"show:21");
+ assert.equal(url.searchParams.get("bboxSR"),"4326");
+ assert.equal(url.searchParams.get("f"),"image");
+ const html=read("marine-fisheries-intelligence.html");
+ assert.equal(html.split('id="mfWPPLegend"').length-1,1);
+ assert.match(read("js/sli-kkp-wpp-live.mjs"),/BIG-rendered WPP image/);
 });
