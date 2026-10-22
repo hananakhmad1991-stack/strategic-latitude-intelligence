@@ -19,6 +19,8 @@ import {probeCitedPrimaryPages} from "./primary-claim-probe.mjs";
 import {nationalEnergyEvidence,energyCorpusAudit} from "./energy-corpus.mjs";
 import {nationalMineralEvidence} from "./mineral-corpus.mjs";
 import {nationalWelfareEvidence,provincialWelfareEvidence} from "./welfare-corpus.mjs";
+import {selectFocusedBpsWelfare,auditFocusedBpsAnswer} from "./bps-welfare-focused.mjs";
+import welfare from "../../data/sli-bps-welfare-2026.json";
 import {policyLegalEvidence,selectPolicyEvidence} from "./policy-corpus.mjs";
 import {legalProvisionEvidence} from "./legal-provisions.mjs";
 import {parisTreatyTimelineEvidence} from "./treaty-status.mjs";
@@ -172,8 +174,12 @@ export default{
   const unified=await fetchDashboardEvidence(payload.question,{enabled:env.SLI_UNIFIED_RESEARCH_ENABLED!=="false"&&!focusedLegalReading});
   const live=await collectOptionalLiveEvidence({env,question:payload.question,
    consent:body.external_search===true,hasAttachments:ownerFiles.length>0,focusedLegalReading});
-  const evidence=[...articleEvidence,...treatyChronologyEvidence,...implementationEvidence,...legalEvidence,
-   ...ccsEvidence,...primaryEvidence,...unified.documents,...live.documents,...secondaryEvidence];
+  // Precision-specific BPS requests should be answered from the exact indicator and
+  // its matching sampling-error table, not from an unrelated 20-source long report.
+  const focusedWelfare=!focusedLegalReading&&!ownerFiles.length?selectFocusedBpsWelfare(payload.question,welfare):null;
+  const evidence=focusedWelfare?focusedWelfare.evidence:
+   [...articleEvidence,...treatyChronologyEvidence,...implementationEvidence,...legalEvidence,
+    ...ccsEvidence,...primaryEvidence,...unified.documents,...live.documents,...secondaryEvidence];
 
   // No matching reviewed original Pasal: do not ask a generative model to
   // invent it and then delete paragraphs. Return a complete, bounded report.
@@ -241,8 +247,10 @@ export default{
   // The Responses API output budget includes reasoning tokens as well as visible prose.
   // Keep owner-only tests concise, with enough room for analysis and numbered citations.
   params.instructions+="\nOWNER TEST: For substantive factual research, produce 600–900 words when the cited evidence covers at least four distinct dimensions; use 5–7 organised sections and one source-dated evidence table. Don't repeat the same caveat as separate findings. Answer the precise research request, distinguish official baselines from source-dated editorial analysis, and give concrete numerical magnitudes where available. Do not call static bundled corpus live scraping or invent current events. On correction/follow-up requests revise the previous answer instead of resetting the topic.";
+  if(focusedWelfare)params.instructions+="\nFOCUSED BPS STATISTICAL QUESTION OVERRIDES GENERIC REPORT FORMAT: Answer the exact Aceh household tap-water question FIRST in 100–180 words. Use only the ONE BPS evidence record [1] and quote the exact estimate, SE (percentage points), RSE (%) and lower AND upper 95% CI bounds with two decimals. Cite [1] inline. Explicitly name table 6.23 PDF page 215 and sampling table 9.88 PDF page 434; differentiate households using piped water from safe drinking water. No general research essay, invented numbers, other provinces, generic conclusions or long source list.";
   if(/^gpt-5(?:\.|-)/.test(env.RESEARCH_MODEL))params.reasoning={effort:"low"};
   params.max_output_tokens=Math.min(6000,Math.max(2500,Number(env.OWNER_MAX_OUTPUT_TOKENS)||4800));
+  if(focusedWelfare)params.max_output_tokens=2600;
   let answer;
   try{
    const transport=openAITransport(env);
@@ -254,6 +262,10 @@ export default{
   }catch(e){return send(e?.message==="ai_gateway_configuration_invalid"?503:502,{error:e?.message==="ai_gateway_configuration_invalid"?"ai_gateway_configuration_invalid":"model_unreachable"},origin)}
   if(!(evidence.length?verifyResearchAnswer(answer,evidence):verifyMethodOnlyAnswer(answer)))
    return send(502,{error:evidence.length?"invalid_or_missing_source_citations":"invalid_unsourced_research_design"},origin);
+  // Release neither incomplete statistical answers nor guessed numerical values.
+  // Do not auto-retry a billed model request.
+  if(focusedWelfare&&!auditFocusedBpsAnswer(answer,focusedWelfare).pass)
+   return send(502,{error:"focused_bps_statistical_answer_not_verified"},origin);
   // Do not publish ungrounded article claims. Recover by removing offending paragraphs,
   // or by returning a clearly labelled source-limited brief instead of generic HTTP 502.
   const legalRecovery=legalQuestion?recoverUnsupportedLegalAnswer(answer,evidence):null;

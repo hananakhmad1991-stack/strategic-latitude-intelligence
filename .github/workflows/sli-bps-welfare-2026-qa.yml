@@ -13,6 +13,8 @@ on:
       - 'tests/test_bps_welfare_secondary_reader.py'
       - 'research-api/src/welfare-corpus.mjs'
       - 'research-api/src/owner-test-worker.mjs'
+      - 'research-api/src/bps-welfare-focused.mjs'
+      - 'tests/qa-sli-bps-focused-owner.mjs'
       - 'js/sli-bps-welfare-2026.js'
       - 'sli-welfare-2026.html'
       - 'js/sli-navigation.js'
@@ -58,5 +60,9 @@ jobs:
         run: |
           node --check scripts/sli-bps-owner-live-smoke.mjs
           node scripts/sli-bps-owner-live-smoke.mjs --self-test
+      - name: Verify focused Owner BPS statistical answer gate offline
+        run: |
+          node --check research-api/src/bps-welfare-focused.mjs
+          node --test tests/qa-sli-bps-focused-owner.mjs
       - name: Check BPS welfare data and integration contracts
         run: node --test tests/qa-bps-welfare-2026.mjs
