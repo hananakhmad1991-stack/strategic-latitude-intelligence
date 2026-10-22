@@ -61,3 +61,12 @@ Use Node 22+ and Python 3:
 Run the dedicated \`SLI Expert Desk Private Owner Queue QA\` workflow. Checks run on pull requests and can be triggered manually, but no deployments are involved.
 
 Related: issue #207, Expert Connect draft #209, parent UX draft #197, DERGUBA commercial readiness issue #206.
+
+## Owner console, private beta code (not deployed)
+
+- Protected `GET /owner` now serves a self-contained interface only after Access JWT verification, Owner hash authorization, enabled flag and private D1 configuration. It is not a public GitHub Pages route.
+- Owner can manually record a legitimately received inquiry, inspect sensitive request detail, review transition history and advance case status. The console does not message clients or experts automatically.
+- The page uses nonce-based Content Security Policy, no external scripts, DOM text-only rendering of client values, no-store responses and denies framing.
+- `CF_ALLOWED_ORIGIN` is deliberately unset in committed Wrangler configuration. During staging it must match the exact HTTPS **private Owner console origin**, not the GitHub Pages domain; no write works otherwise.
+- Consent and confidentiality handling, real Cloudflare Access login, D1 creation/migrations, backups, retention, privacy documentation, authenticated staging browser tests and explicit Owner go/no-go remain mandatory.
+- No automatic public-form POST is enabled. Do not label a prepared email as a received inquiry.
