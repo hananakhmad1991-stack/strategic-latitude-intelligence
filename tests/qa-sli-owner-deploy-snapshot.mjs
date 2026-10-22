@@ -31,5 +31,8 @@ test("No customer deployment, no live secrets in artifact and no unverified publ
   assert.match(workflow,/path: \|\n\s+data\/sli-research-unified-index\.json/);
   assert.match(workflow,/wrangler\.owner-test\.toml\.example/);
   assert.doesNotMatch(workflow,/wrangler\.pro\.toml/);
-  assert.doesNotMatch(workflow,/artifact[\s\S]*OWNER_TEST_TOKEN/);
+  const artifactSection=workflow.split("- name: Seal validated source-commit index for explicit Owner staging")[1]
+    ?.split("- name: Summarize owner-readiness limits")[0];
+  assert.ok(artifactSection);
+  assert.doesNotMatch(artifactSection,/OWNER_TEST_TOKEN|OPENAI_API_KEY|CLOUDFLARE_API_TOKEN/);
 });
