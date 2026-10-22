@@ -247,7 +247,20 @@ export default{
   // The Responses API output budget includes reasoning tokens as well as visible prose.
   // Keep owner-only tests concise, with enough room for analysis and numbered citations.
   params.instructions+="\nOWNER TEST: For substantive factual research, produce 600–900 words when the cited evidence covers at least four distinct dimensions; use 5–7 organised sections and one source-dated evidence table. Don't repeat the same caveat as separate findings. Answer the precise research request, distinguish official baselines from source-dated editorial analysis, and give concrete numerical magnitudes where available. Do not call static bundled corpus live scraping or invent current events. On correction/follow-up requests revise the previous answer instead of resetting the topic.";
-  if(focusedWelfare)params.instructions+="\nFOCUSED BPS STATISTICAL QUESTION OVERRIDES GENERIC REPORT FORMAT: Answer the exact Aceh household tap-water question FIRST in 100–180 words. Use only the ONE BPS evidence record [1] and quote the exact estimate, SE (percentage points), RSE (%) and lower AND upper 95% CI bounds with two decimals. Cite [1] inline. Explicitly name table 6.23 PDF page 215 and sampling table 9.88 PDF page 434; differentiate households using piped water from safe drinking water. No general research essay, invented numbers, other provinces, generic conclusions or long source list.";
+  if(focusedWelfare){
+    // Replace conflicting 40+ generic report instructions for one BPS statistic.
+    const m=focusedWelfare.measure;
+    const two=n=>Number(n).toFixed(2).replace(".",",");
+    params.instructions=[
+      "You are SLI DERGUBA Owner Test, answering one focused Indonesian BPS statistical question.",
+      "Answer in Bahasa Indonesia, 90–150 words. Start with the requested finding. No generic methodology, research proposal, unrelated sections or additional sources.",
+      "Use ONLY numbered source_evidence [1] in the JSON user input. It is a curated BPS transcription, NOT a new live PDF verification.",
+      "For Aceh HOUSEHOLDS using piped (leding) water as the MAIN drinking-water source, reproduce EXACTLY the cited values: estimate "+two(m.estimate)+"%; SE "+two(m.se)+" percentage points; RSE "+two(m.rse)+"%; 95% confidence interval "+two(m.ci_low)+"–"+two(m.ci_high)+"%.",
+      "Cite BPS [1] with BOTH Tabel "+m.table+", PDF halaman "+m.main_page+" and Tabel "+m.appendix_table+", PDF halaman "+m.appendix_page+". Include at least one literal [1] inline citation.",
+      "Explain the estimate and confidence interval are not certainty, and piped as main drinking-water source is not the same indicator as safe drinking water.",
+      "Never change any number, denominator, confidence level, table or PDF page. Do not invent missing information or claim the source PDF was independently rechecked."
+    ].join("\n");
+  }
   if(/^gpt-5(?:\.|-)/.test(env.RESEARCH_MODEL))params.reasoning={effort:"low"};
   params.max_output_tokens=Math.min(6000,Math.max(2500,Number(env.OWNER_MAX_OUTPUT_TOKENS)||4800));
   if(focusedWelfare)params.max_output_tokens=2600;
@@ -264,8 +277,11 @@ export default{
    return send(502,{error:evidence.length?"invalid_or_missing_source_citations":"invalid_unsourced_research_design"},origin);
   // Release neither incomplete statistical answers nor guessed numerical values.
   // Do not auto-retry a billed model request.
-  if(focusedWelfare&&!auditFocusedBpsAnswer(answer,focusedWelfare).pass)
-   return send(502,{error:"focused_bps_statistical_answer_not_verified"},origin);
+  if(focusedWelfare){
+   const statisticalAudit=auditFocusedBpsAnswer(answer,focusedWelfare);
+   if(!statisticalAudit.pass)
+    return send(502,{error:"focused_bps_statistical_answer_not_verified",issues:statisticalAudit.issues},origin);
+  }
   // Do not publish ungrounded article claims. Recover by removing offending paragraphs,
   // or by returning a clearly labelled source-limited brief instead of generic HTTP 502.
   const legalRecovery=legalQuestion?recoverUnsupportedLegalAnswer(answer,evidence):null;
