@@ -1,10 +1,10 @@
 {
   "schema": "sli-idx-issuer-universe-v1",
-  "as_of": "2026-10-20",
+  "as_of": "2026-10-22",
   "source_status": "curated_seed_pending_official_bulk_reconciliation",
   "official_source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat",
   "official_financial_url": "https://www.idx.co.id/id/perusahaan-tercatat/laporan-keuangan-dan-tahunan",
-  "methodology": "Initial issuer ticker/name catalogue curated as discovery leads. Exact current issuer name, sector, listing status and code require profile or official bulk reconciliation; not a census of live listed securities. No current financials, price, market cap or shareholding imputed. First issuer entries with independently source-linked FY2025 fundamentals: MEDC (company investor table), TLKM and PTBA (existing SLI reviewed group reports). These are isolated reporting periods, not live market quotes; unavailable fields remain null.",
+  "methodology": "Initial issuer ticker/name catalogue curated as discovery leads. Exact current issuer name, sector, listing status and code require profile or official bulk reconciliation; not a census of live listed securities. No current financials, price, market cap or shareholding imputed. First issuer entries with independently source-linked FY2025 fundamentals: MEDC (company investor table), TLKM and PTBA (existing SLI reviewed group reports). These are isolated reporting periods, not live market quotes; unavailable fields remain null. Added BBRI FY2025 total assets and consolidated income for the year using the issuer's financial highlights; banking revenue is not imputed from interest income. Dataset coverage is displayed by sector; missing means unverified, not zero.",
   "records": [
     {
       "ticker": "MEDC",
@@ -1892,13 +1892,15 @@
       "entity_type": "issuer_candidate",
       "verification": "idx_seed_awaiting_official_refresh",
       "source_url": "https://www.idx.co.id/id/perusahaan-tercatat/profil-perusahaan-tercatat/BBRI",
-      "financial_source_url": null,
+      "financial_source_url": "https://www.ir-bri.com/financial_highlights.html",
       "revenue": null,
-      "net_income": null,
-      "total_assets": null,
+      "net_income": 57132365,
+      "total_assets": 2135371105,
       "market_cap": null,
       "market_cap_as_of": null,
-      "financial_period": null
+      "financial_period": "FY2025 · year ended 2025-12-31",
+      "financial_currency": "IDR million",
+      "financial_basis": "BRI FY2025 consolidated financial highlights: total assets Rp 2,135,371,105 million; income for the year Rp 57,132,365 million (including non-controlling interests). Revenue field intentionally remains unavailable: banking interest and non-interest income are not directly comparable to nonfinancial issuer revenue. These are FY2025 figures, not a live quote."
     },
     {
       "ticker": "BMRI",
