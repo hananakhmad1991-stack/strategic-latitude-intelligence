@@ -130,7 +130,7 @@ test('asset rights and cross-border actors preserve source-backed relation types
 });
 
 test('BRI 2025 audited-period financial highlights retain measurement semantics', () => {
- const bri=issuer.records.find(r=>r.ticker==='BBRI');
+ const bri=issuers.records.find(r=>r.ticker==='BBRI');
  assert.equal(bri.total_assets, 2135371105);
  assert.equal(bri.net_income, 57132365);
  assert.equal(bri.financial_currency, 'IDR million');
