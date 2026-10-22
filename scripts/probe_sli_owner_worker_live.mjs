@@ -46,7 +46,6 @@ try{
   report.official_kkp_cited_sources_count=evidence.officialCitedPositionsCount;
   report.model_answer_fact_check="manual_primary_numeric_fact_crosscheck_still_required";
   report.research_basis=String(v?.evidence_status||"").slice(0,110);
-  report.model_answer_fact_check="structural_only_primary_numeric_facts_require_manual_validation";
   report.source_count=Array.isArray(v.sources)?v.sources.length:null;
   if(report.positive_auth_status!=="passed_cited_official_kkp_response_structure")throw Error("authenticated_response_failed_"+verified.status);
  }else{report.positive_auth_status="not_checked_missing_secret_or_explicit_paid_opt_in";}
