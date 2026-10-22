@@ -48,9 +48,17 @@ try {
       assert.ok(boxes.stage.bottom < boxes.controls.top + 36, 'Stage must precede mode controls');
       assert.match(boxes.mode || '', /Indonesia/i, 'Indonesia is the initial geographic focus');
       const buttons=page.locator('#sliOrbitGlobe .sli-orbit-view');
-      await buttons.nth(1).click();
+      const hit = await page.evaluate(() => {
+        const b = document.querySelector('#sliOrbitGlobe .sli-orbit-view:nth-child(2)');
+        const r = b.getBoundingClientRect();
+        const hits = document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+        return hits.slice(0,5).map(el => el.tagName.toLowerCase() + '.' + el.className);
+      });
+      console.log('Pointer hit stack '+width+'px: '+JSON.stringify(hit));
+      assert.match(hit[0] || '', /button.sli-orbit-view/, 'Mode control must receive pointer events');
+      await buttons.nth(1).click({timeout: 3500});
       assert.equal(await page.locator('#sliOrbitGlobe .sli-orbit-range').inputValue(), '2.2');
-      await buttons.nth(0).click();
+      await buttons.nth(0).click({timeout: 3500});
       assert.equal(await page.locator('#sliOrbitGlobe .sli-orbit-range').inputValue(), '1');
       console.log('PASS '+width+'px layout: all controls visible and mode switches work');
     } catch (error) {
