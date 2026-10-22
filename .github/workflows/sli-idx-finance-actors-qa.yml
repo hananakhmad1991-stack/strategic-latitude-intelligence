@@ -8,6 +8,9 @@ on:
       - 'js/sli-issuer.js'
       - 'js/sli-entities.js'
       - 'js/sli-idx-sector-watchlist.js'
+      - 'js/sli-idx-tradingview.js'
+      - 'css/sli-idx-sector-watchlist.css'
+      - 'tests/qa-sli-idx-discovery-browser.mjs'
       - 'scripts/sync_sli_idx_issuers.py'
       - 'tests/qa-sli-idx-finance-actors.mjs'
       - 'sli-issuer.html'
@@ -22,6 +25,9 @@ on:
       - 'js/sli-issuer.js'
       - 'js/sli-entities.js'
       - 'js/sli-idx-sector-watchlist.js'
+      - 'js/sli-idx-tradingview.js'
+      - 'css/sli-idx-sector-watchlist.css'
+      - 'tests/qa-sli-idx-discovery-browser.mjs'
       - 'tests/qa-sli-idx-finance-actors.mjs'
       - 'scripts/sync_sli_idx_issuers.py'
       - 'index.html'
@@ -41,3 +47,33 @@ jobs:
         run: node --test tests/qa-sli-idx-finance-actors.mjs tests/qa-sli-idx-provider-dossier.mjs
       - name: Validate IDX issuer sync and safeguards
         run: python3 -m unittest discover -s tests -p test_sli_idx_issuers.py
+
+  visible-issuer-discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Find installed Chrome
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHROME=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)
+          if [ -z "$CHROME" ]; then echo "Chrome missing: cannot assert actual BRMS visibility" >&2; exit 1; fi
+          echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+          "$CHROME" --version
+      - name: Install browser control client without browser download
+        run: npm install --no-save --ignore-scripts --no-audit --no-fund --no-package-lock playwright-core@1.56.1
+      - name: Serve the IDX homepage and issuer dossier
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/sli-idx-search.log 2>&1 &
+          for i in {1..25}; do
+            if curl -fsS http://127.0.0.1:8765/index.html >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: Validate desktop/mobile discovery and KSEI-linked BRMS dossier
+        run: node tests/qa-sli-idx-discovery-browser.mjs
