@@ -9,6 +9,16 @@ try{
   await page.locator('.sli-home-journeys a').first().waitFor();
   assert.equal(await page.locator('.sli-home-journeys a').count(),4);
   assert.match(await page.locator('.sli-portal-hero h2').innerText(),/Indonesia Intelligence/i);
+  const panel=page.locator('.sli-portal .sli-market-home');
+  const collapse=page.locator('.sli-panel-collapse[aria-controls="sli-panel-sli-market-home"]');
+  await collapse.waitFor({timeout:15000});
+  assert.equal(await collapse.getAttribute('aria-expanded'),'true','market widget must render expanded first');
+  await collapse.click();
+  assert.equal(await collapse.getAttribute('aria-expanded'),'false');
+  assert.ok(await panel.evaluate(el=>el.classList.contains('sli-panel-collapsed')));
+  await collapse.click();
+  assert.equal(await collapse.getAttribute('aria-expanded'),'true');
+  assert.ok(await panel.evaluate(el=>!el.classList.contains('sli-panel-collapsed')));
   await page.locator('.sli-home-journeys a[href="./sli-entities.html"]').click();
   await page.waitForURL(/sli-entities\.html/);
   await page.locator('.sli-research-path').waitFor();
