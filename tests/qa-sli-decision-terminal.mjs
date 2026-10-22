@@ -39,8 +39,11 @@ test("Terminal inherits IDX universe membership, ticker dossier links and bounde
  assert.equal(rows.length,1);
  assert.equal(rows[0].ticker,"ANTM");
  assert.equal(corpURL("ANTM"),"./sli-issuer.html?ticker=ANTM");
- assert.equal(filterIssuers(issuers,{sector:"food",q:"",watch:new Set()}).length,36);
- assert.equal(filterIssuers(issuers,{sector:"energy",q:"",watch:new Set()}).length,17);
+ for(const sector of ["food","energy","minerals","coal","manufacturing"]){
+  const expected=issuers.filter(x=>x.sector===sector&&x.exchange==="IDX").length;
+  assert.equal(filterIssuers(issuers,{sector,q:"",watch:new Set()}).length,expected,
+   "Terminal count must track validated issuer registry rather than a frozen 2026 seed");
+ }
  const keep=parseWatch(["ANTM","ANTM","NOT_A_TICKER","HACK","PTBA","TLKM","RM999"],issuers);
  assert.equal(keep.size,3);assert.ok(keep.has("ANTM")&&keep.has("PTBA")&&keep.has("TLKM"));
  assert.equal(Object.keys(sectorNames).length,8);
