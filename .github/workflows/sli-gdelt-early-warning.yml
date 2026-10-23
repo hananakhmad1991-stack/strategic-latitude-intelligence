@@ -1,6 +1,12 @@
 name: SLI GDELT Early Warning QA and Staging
 
 on:
+  push:
+    branches:
+      - feat/gdelt-early-warning-staging-20261023
+    paths:
+      - 'early-warning-api/**'
+      - '.github/workflows/sli-gdelt-early-warning.yml'
   pull_request:
     paths:
       - 'early-warning-api/**'
@@ -34,7 +40,7 @@ jobs:
       - name: Contract and sector safety tests
         run: node --test early-warning-api/tests/contract.test.mjs
   staging:
-    if: github.event_name == 'workflow_dispatch' && inputs.deploy_staging == true
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.deploy_staging == true)
     needs: qa
     runs-on: ubuntu-latest
     timeout-minutes: 15
