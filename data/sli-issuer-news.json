@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T04:33:48.615691Z",
+  "updated_at_utc": "2026-10-23T05:04:37.257753Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,6 +42,38 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_f1786bacd99e0855e10939",
+      "title": "Adhi Karya (ADHI) Mau Gelar RUPSLB, Salah Satunya Bahas Divestasi - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQalRVUEN6MDhteDFEbXpFR19mdUMxU2NVbjRLa0NLcXI3SDBkakg3eDBtVm1CRnNRNk9XZU9QTHptLUZXZjN5Y09RMUhrME1Ib0N5enk2cHJZMUNQN3RPVWpZNmxfaFhQU1k2TnpMWkhuenFYMDZsaWs1TVltS3ZyUWEtWDNsRmlXSXlxd0ctRlV1SFNsbEozREl4a3VaOW1RODhWekVkWUJZNlFocFhCTUVWN3RpMFIzU2NYaFlnSmJLYXpq?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-23T04:40:14Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADHI"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_0cb2f17fda67cfb562dc84",
+      "title": "Telkomsel Pangkas Harga Paket Perdana 43 Persen, Analis Pertimbangkan Saham ISAT - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOTVhoSW5EZmxqSTY2TmJwektINmtsMlVndEtIazZRTWdNUHpybGVrZ3lwYXF5NmVmazhxdmRaX3RmTENLUjVYZUFNUjg0dkZZcExJSjl4X3locU1QeG1hUV9HU2gxUzJGdjJDWmluUlI4MlZnQ2gxVDlWQjE0Uld1Nk1qUkYtYVV3eVZOU0ppVzZYSEwxNWpwdWNrTFl5RkJfSGdmZHlzM2t1SmZEclZzNVEyRmhmczdfSUgxVFJKZDFmWW8?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-23T04:39:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ISAT"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_fe96952b7a0d6422387a6a",
       "title": "OJK Jatuhkan Denda Rp2,1 Triliun dalam Kasus Saham DSSA, BREN, dan CUAN - Habar Digital",
       "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNRDQ4X0NDM2J2b0g5THNuXzlHemI5bmZhd3FGYUd2eTZzYjVBODIxd0pZZ3dlVUI3OG1UekpLVldBTnpuWDdDWDA0Y2hqLVFlOVNVeVM0dmFDVFNpU3FYVTFIbkh0OHBrdnM3aFUtdHFWemxXa2ozb2lrcUFwSGFJaFJPQUlnQQ?oc=5",
@@ -52,6 +84,38 @@
         "BREN"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_524b20063b151a707ca830",
+      "title": "Laba Adhi Karya (ADHI) Melonjak 247,05% di Kuartal III - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPY3Q3dXd1NzVsYVFQWWhLbk9EWEVveVlIaHdWYThGQlZ1NEVkV1dMTTVEN1U4b2QtbHpMQUtYUllKbjZyNmk1eGpaZXpmeTJudzdjMkFfVXY2UnREalkxZnNSWGgzbFc4MnZqTG8waFl6VmgwbE1ndXJUOGJMblJ6X2ZJVHFnblNjMTh0d0ZUSVF6TUlDOXNMR3ZHYmZ1Zm9ROXAyYXZEUTRib1Ixckx5N1pxcVN3V2FxNEHSAboBQVVfeXFMT2N0N3V3dTc1bGFRUFloS25PRFhFb3lZSGh3VmE4RkJWdTRFZFdXTE01RDdVOG9kLWx6TEFLWFJZSm42cjZpNXhqWmV6Znkybnc3YzJBX1V2NlJ0RGpZMWZzUlhoM2xXODJ2akxvMGhZelZoMGxNZ3VyVDhiTG5Sel9mSVRxZ25TYzE4dHdGVElRek1JQzlzTEd2R2JmdWZvUTlwMmF2RFE0Ym9SMXJMeTdacXFTd1dhcTRB?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-23T02:52:37Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADHI"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_e572db2584922157365076",
+      "title": "AMMN siapkan Rp1 triliun untuk buyback saham hingga Januari 2027 - IDNFinancials",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxORzRlUlZxbGF2TlNmOVJYZjBKZ3NiOVMtZXFWR2dfb0FiV1Y2dFBIUFRRTVVvRzllSmlPdXBDNVhoV0NsWGF3S2N3MC1PaVhnaVFyeEFudkhVdnJ5SWUxZW05LWlJS2FadGt5clZkaWVUcVB1cm9NeFBBS296QXVsOFlwVlJUNTFyMGszTGc3WkxoVnhRYnhZYjFpNzRXbnVENGZDS1d6eU8zTGg5?oc=5",
+      "publisher": "IDNFinancials",
+      "published_at_utc": "2026-10-23T02:50:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -84,6 +148,23 @@
         "TLKM"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_7435898dd55c346532dda5",
+      "title": "Rekomendasi Saham Tim Analis Bareksa: INTP, PWON, PTBA, IHSG Berpeluang Uji 5.607 - Bareksa.com",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQUXVmU2xSZU5RM19mMmhoTkliVExuTFJwX0NQbGVGZXN4cm5NVmZhUWR5ZzdheXZyWHdialNhU09RMXZqYUIzMDlDdXRYWDFWUnBnazhXakdmLVQ4RlJENFM2cU5sekpyYTVSeUlIOTF6R1N2d2VsRy1ZNHM5RXlQMEtFd3JoZEt4b3N6RGJSckNMX0lhTjJ0ODRhV1RSdk9GaDNZc05kT3ZTQVhMZHdEcDEzMU82TEpvQ1dUTUlWbHVxUQ?oc=5",
+      "publisher": "Bareksa.com",
+      "published_at_utc": "2026-10-23T02:25:36Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INTP",
+        "PTBA"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -6748,38 +6829,6 @@
       "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQanlfR1RlazVuVXJOeG5uV0d2bF96RVlJRmh2QXNWMGNfajRPYjU2LVVxMWVRZnpyOHprNDZBWE55b2VXbzJWOEtib2ZFMm5DQXFqM0UwX0JmNnhMSkoxU1hJTk9SWFBabmJob3MtSlBpdmE2RHdQNlNVYk94NXB4TnZrSzk3bWlrRU84cnNVWVhqVzNlT2hxemMzXzRWX3hEMHo0c2NDZGxyS1k?oc=5",
       "publisher": "Kompas.com",
       "published_at_utc": "2026-10-15T05:33:27Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_f1b393a9a36ab86a271f3e",
-      "title": "Foto : Saham PTBA Berpotensi Cuan 16 Persen, Katalisnya Dividen Halaman 1 - Kompas.com",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNTHBBejVramRGeUR6ekV6T0Z0YWxYYkhncVI5aVJob3hmYi1MWE0yRTV6YXhLeXJnUktrMWhSdkV6U1p1UTdPTllwdjVROHMwMXE2Y1JxbUpTTXV5S0FObDU2RXZtaHhmOHVvOXZCSnBIRy05ZldvdjVxWUQtbzVkeDcxMjdNVHJoZUh0aDF0ajFwUThYSGZ5VlBucUZXRjZYbDl0bmk0dmUwc0ZYUnNramd4a3I?oc=5",
-      "publisher": "Kompas.com",
-      "published_at_utc": "2026-10-15T04:40:54Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_f1e54ee1b49bdf2de55922",
-      "title": "BRI Danareksa Proyeksikan Imbal Hasil Saham PTBA Capai 16 Persen - bsinews.id",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9KX0E3M05hZ0QxUFZuSThOck9qTTY0YnRDdkJaakVoYkxQMHVpd2FzRnZhN3ZPOF9IMHF3WnhNV0lRSXcxQUpTUVR2X09tWHctdFFlNXNfaWlkVU04OG1v?oc=5",
-      "publisher": "bsinews.id",
-      "published_at_utc": "2026-10-15T04:39:19Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "PTBA"
