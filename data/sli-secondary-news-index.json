@@ -18,7 +18,7 @@
     "regulatory-monitor",
     "publication-watch"
   ],
-  "count": 1278,
+  "count": 1279,
   "articles": [
     {
       "id": "sli_feed_49235e8743d4dc8d05070f2de",
@@ -202,6 +202,23 @@
       "topic": "Official energy policy announcements",
       "geo": "Indonesia and global context",
       "monitor_source": "energy-policy-leads",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_92f6dd3cab79bbb6cfcb54896",
+      "title": "Kementerian PU Bangun 10 Sumur Bor Sebagai Sumber Air Bagi 150 Hektare Lahan Pertanian di Lampung - Kementerian PUPR",
+      "publisher": "Kementerian PUPR",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOcmkwT1pQQ0VqWnFDQVZUYzJFcElsbGVKbjlGVVZoYWlKYnp0bFdVOXlpdjRBX3I2bGU5cllJZWtYYlRHY2lVVXpNeFU0QTBlWnkyVTFWSk1pWkJtOThBMnRHWW9nM2k3NmJtWFdBQ1pCVnV1Ul9HREJXM2FWZTFNc2puWTV4VWE0eDg4WHpaZEt1SjlQdkxqM1lCUEN0WjVHTk1DUkJFN3ZMSkhEVGMtMzhZWFRhcnJqUnF6VnZn?oc=5",
+      "published_at_utc": "2026-10-23T04:33:58Z",
+      "date_type": "publisher_publication_date",
+      "sector": "food",
+      "scope": "domestic",
+      "topic": "agri_weather",
+      "geo": "Indonesia and global context",
+      "monitor_source": "research-signal-radar",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -14366,23 +14383,6 @@
       "claim_corroborated": false
     },
     {
-      "id": "sli_feed_4c8c4de99a32255fd2a125245",
-      "title": "Pertamina Sumbagsel Dukung Pemprov Lampung Perkuat Pengawasan Biosolar & Pelayanan SPBU - Kompas.tv",
-      "publisher": "Kompas.tv",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNTzM4a29XekFhTklyY0g4TzdBOWE1Tlp2NlZxZnc5RzBqTkxIU0hUc0kyd3VoQUZFa21oNkJyM0Z2WTlSN1U5YUZvQXl3ZDJTYVZBdHpER3BiWWo3aU95aTRnUW0wc3p6VW9HaTlpemNlaUh2WEJoSVFsVzBqQnh6Y21NU05wZEQwd0xjR2JDOHFXT0pIc19sWjUtT1BmUzVWWmJkQTFIVTFxZzIwWjBkSFZUV1h3aEt1ZlMyLW9NM2kwQXdK0gHKAUFVX3lxTE01dUw2S0RtMFVnUEFlUGV4Rm9MMFdRa3R5QmtEODhPaFFiRHlIY1YyQV9xQ2ZOUFBDbFdxVW9nUFNBUWdiX2l1Q3pmZnJwU1hQUmMtZHk2QUpMblFfaUQwUW8zV3dBeWpMOWNXcnp6S0t4V2FJenFoR3RWdXV6MjhWbGRiTFlwTDhmVEVWcjFwS1VxX2NoXzhrYkd5V2JjTEF2b1ZGZnRqRnZSQUVtV2psZmZJN3pSbHNHckhwM0hVWEZhb1dsX3dydFE?oc=5",
-      "published_at_utc": "2026-10-14T10:55:00Z",
-      "date_type": "publisher_publication_date",
-      "sector": "energy",
-      "scope": "",
-      "topic": "Distribution",
-      "geo": "Indonesia and global context",
-      "monitor_source": "energy-biofuels-watch",
-      "link_kind": "aggregator",
-      "evidence_level": "publisher_attributed_news_report",
-      "article_body_checked": false,
-      "claim_corroborated": false
-    },
-    {
       "id": "sli_feed_45706718b2df07cde21cd6f14",
       "title": "BPK Sorot Penjualan Ore ke Smelter IUI, Ada Potensi PNBP Melayang - Energi - Bloomberg Technoz",
       "publisher": "Bloomberg Technoz",
@@ -14680,6 +14680,23 @@
       "topic": "oil_gas_upstream",
       "geo": "Indonesia and global context",
       "monitor_source": "domestic-energy",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_4c8c4de99a32255fd2a125245",
+      "title": "Pertamina Sumbagsel Dukung Pemprov Lampung Perkuat Pengawasan Biosolar & Pelayanan SPBU - Kompas.tv",
+      "publisher": "Kompas.tv",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNTzM4a29XekFhTklyY0g4TzdBOWE1Tlp2NlZxZnc5RzBqTkxIU0hUc0kyd3VoQUZFa21oNkJyM0Z2WTlSN1U5YUZvQXl3ZDJTYVZBdHpER3BiWWo3aU95aTRnUW0wc3p6VW9HaTlpemNlaUh2WEJoSVFsVzBqQnh6Y21NU05wZEQwd0xjR2JDOHFXT0pIc19sWjUtT1BmUzVWWmJkQTFIVTFxZzIwWjBkSFZUV1h3aEt1ZlMyLW9NM2kwQXdK0gHKAUFVX3lxTE01dUw2S0RtMFVnUEFlUGV4Rm9MMFdRa3R5QmtEODhPaFFiRHlIY1YyQV9xQ2ZOUFBDbFdxVW9nUFNBUWdiX2l1Q3pmZnJwU1hQUmMtZHk2QUpMblFfaUQwUW8zV3dBeWpMOWNXcnp6S0t4V2FJenFoR3RWdXV6MjhWbGRiTFlwTDhmVEVWcjFwS1VxX2NoXzhrYkd5V2JjTEF2b1ZGZnRqRnZSQUVtV2psZmZJN3pSbHNHckhwM0hVWEZhb1dsX3dydFE?oc=5",
+      "published_at_utc": "2026-10-14T07:00:00Z",
+      "date_type": "publisher_publication_date",
+      "sector": "energy",
+      "scope": "",
+      "topic": "Distribution",
+      "geo": "Indonesia and global context",
+      "monitor_source": "energy-biofuels-watch",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -21564,5 +21581,5 @@
       "claim_corroborated": false
     }
   ],
-  "updated_at_utc": "2026-10-23T08:14:58.560618Z"
+  "updated_at_utc": "2026-10-23T09:12:15.071868Z"
 }

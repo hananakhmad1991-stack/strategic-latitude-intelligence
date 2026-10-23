@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-10-23T08:14:59.422Z",
+  "published_at_utc": "2026-10-23T09:12:15.848Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-10-23T08:14:58.560618Z",
+    "news": "2026-10-23T09:12:15.071868Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 440,
+  "count": 441,
   "events": [
+    {
+      "id": "sli-catalyst-72c0f97d97d79cad22",
+      "kind": "news_indexed",
+      "title": "Kementerian PU Bangun 10 Sumur Bor Sebagai Sumber Air Bagi 150 Hektare Lahan Pertanian di Lampung - Kementerian PUPR",
+      "detected_at_utc": "2026-10-23T09:12:15.848Z",
+      "source_at_utc": "2026-10-23T04:33:58Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOcmkwT1pQQ0VqWnFDQVZUYzJFcElsbGVKbjlGVVZoYWlKYnp0bFdVOXlpdjRBX3I2bGU5cllJZWtYYlRHY2lVVXpNeFU0QTBlWnkyVTFWSk1pWkJtOThBMnRHWW9nM2k3NmJtWFdBQ1pCVnV1Ul9HREJXM2FWZTFNc2puWTV4VWE0eDg4WHpaZEt1SjlQdkxqM1lCUEN0WjVHTk1DUkJFN3ZMSkhEVGMtMzhZWFRhcnJqUnF6VnZn?oc=5",
+      "publisher": "Kementerian PUPR",
+      "sector": "food",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-a77b071c0696613c3b",
       "kind": "news_indexed",
