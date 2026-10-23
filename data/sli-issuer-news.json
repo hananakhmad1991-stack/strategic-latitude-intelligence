@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T13:16:07.501284Z",
+  "updated_at_utc": "2026-10-23T14:14:16.001819Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -209,7 +209,8 @@
       "published_at_utc": "2026-10-23T10:30:05Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "ANTM"
+        "ANTM",
+        "INCO"
       ],
       "sector": "minerals",
       "source": "public_google_news_rss",
@@ -4871,7 +4872,8 @@
       "published_at_utc": "2026-10-20T07:00:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "ANTM"
+        "ANTM",
+        "INCO"
       ],
       "sector": "minerals",
       "source": "public_google_news_rss",
@@ -5634,6 +5636,22 @@
         "ISAT"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_10547394432015ee2cd795",
+      "title": "Adaro Andalan Indonesia (AADI) Mulai Buyback Saham Rp 5 Triliun Secara Bertahap - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5qQjd1R2VyTzdDQzVRLXIycDBvZkk4c3NKd2R4TGxJZHJTODFXYnVFX2I2LWI0eGRvLWNmUEtlcG9KcS1YQnRiV1RjNTdZQWJZVC1aSW5XYktzOUt3eWprSUFxMElwdw?oc=5",
+      "publisher": "TradingView",
+      "published_at_utc": "2026-10-19T21:02:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
