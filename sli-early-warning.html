@@ -1,0 +1,23 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SLI · Early Warning Signals</title><style>
+:root{color-scheme:dark}body{margin:0;background:#091625;color:#f4f6f8;font:15px/1.55 system-ui,sans-serif}main{max-width:1050px;margin:auto;padding:28px 20px}a{color:#d7b678}h1{margin-bottom:6px}p,small{color:#b8c8d5}.warning{border-left:3px solid #d7b678;padding:12px 16px;background:#172b3d;margin:18px 0}label{display:block;margin:20px 0 6px}select,input,button{padding:12px;border-radius:8px;background:#162f45;color:white;border:1px solid #537088;font:inherit}input{width:min(100%,540px);box-sizing:border-box}button{cursor:pointer}#items{display:grid;gap:12px;margin-top:18px}article{background:#12273b;border:1px solid #34516b;padding:15px;border-radius:10px}article h2{font-size:16px;margin:0 0 5px}article p{margin:3px 0} .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:end}</style></head>
+<body><main><a href="./index.html">← SLI Dashboard</a><h1>Early Warning · Sector Signals</h1><p>Monitoring awal pemberitaan terkait Indonesia, lintas sektor. Bukan konfirmasi kejadian atau penilaian risiko otomatis.</p>
+<div class="warning"><strong>UNVERIFIED SIGNALS</strong> — Judul, sumber, dan tanggal dari metadata GDELT harus diverifikasi ke sumber primer sebelum dipakai sebagai fakta analitis. Tidak ada scoring ancaman otomatis.</div>
+<label for="endpoint">Staging Worker endpoint (isi URL /signals hanya jika Worker sudah diterbitkan)</label><input id="endpoint" type="url" placeholder="https://your-staging-worker.workers.dev" autocomplete="off">
+<div class="controls"><div><label for="sector">Sektor</label><select id="sector"><option value="energy">Energi</option><option value="mining">Mineral & Tambang</option><option value="industry">Industri</option><option value="finance">Keuangan</option><option value="food">Pangan & Pertanian</option><option value="climate">Lingkungan & Bencana</option><option value="technology">Teknologi & AI</option><option value="defense">Pertahanan & Maritim</option><option value="infrastructure">Infrastruktur</option></select></div><button id="load">Muat sinyal</button></div>
+<p id="status" role="status" aria-live="polite">Belum terhubung ke staging Worker. Isi endpoint lalu pilih sektor.</p><section id="items" aria-label="Artikel GDELT"></section>
+<small>Metodologi: GDELT DOC 2.0 ArticleList, jendela 24 jam, maksimal 20 artikel per sektor, cache 15 menit. Metadata dapat terlambat, duplikat atau keliru. Tidak menyimpan data pengguna.</small></main>
+<script>
+const endpoint=document.querySelector('#endpoint'),sector=document.querySelector('#sector'),status=document.querySelector('#status'),items=document.querySelector('#items');
+document.querySelector('#load').addEventListener('click',async()=>{
+ items.replaceChildren();let base;try{base=new URL(endpoint.value.trim());if(base.protocol!=='https:')throw 0}catch(_){status.textContent='Masukkan URL staging Worker HTTPS yang valid.';return}
+ const url=new URL('/signals',base);url.searchParams.set('sector',sector.value);
+ status.textContent='Mengambil metadata GDELT…';const ctl=new AbortController(),timer=setTimeout(()=>ctl.abort(),16000);
+ try{const res=await fetch(url,{signal:ctl.signal});if(!res.ok)throw new Error('HTTP '+res.status);const data=await res.json();
+  status.textContent=(data.articles||[]).length+' sinyal · '+sector.selectedOptions[0].text+' · Belum terverifikasi';
+  for(const x of data.articles||[]){const card=document.createElement('article'),h=document.createElement('h2'),a=document.createElement('a'),meta=document.createElement('p');
+   a.textContent=x.title||'Tanpa judul';a.href=x.url;a.target='_blank';a.rel='noopener noreferrer';h.append(a);
+   meta.textContent=[x.source,x.published,x.language].filter(Boolean).join(' · ')+' · UNVERIFIED';
+   card.append(h,meta);items.append(card)}
+ }catch(e){status.textContent='Pengambilan gagal: '+e.message+'. Periksa Worker staging, CORS, dan status GDELT.'}finally{clearTimeout(timer)}
+});
+</script></body></html>
