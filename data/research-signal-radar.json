@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "ok",
-  "generated_at_utc": "2026-10-23T22:46:20.585486+00:00",
-  "last_attempt_at_utc": "2026-10-23T22:46:20.585486+00:00",
+  "generated_at_utc": "2026-10-23T23:43:58.195504+00:00",
+  "last_attempt_at_utc": "2026-10-23T23:43:58.195504+00:00",
   "groups": {
     "minerals": {
       "geopolitical": [
@@ -469,6 +469,36 @@
           "publisher": "Kompas.id",
           "publisher_url": "https://www.kompas.id",
           "published_at_utc": "2026-10-15T03:00:01+00:00",
+          "sector": "ai",
+          "scope": "geopolitical",
+          "topic_id": "compute_competition",
+          "channel": "Regional data-center investment competition",
+          "impact_pathway": "Regional power, connectivity and investment competition may affect relative project attractiveness and capital allocation.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "compute-competition-princeton-digital-group-seeks-us-1-2-bil-loan-for-malaysian-data-centre-bloomberg-the-edge-singapore",
+          "title": "Princeton Digital Group seeks US$1.2 bil loan for Malaysian data centre — Bloomberg - The Edge Singapore",
+          "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNUnRZa2RlVnZ1aXlTTkU5WEQ4Z2FBeVVUR01vUDA1a3pVSkhJLV9zWWpXOU9zbVZ0ejlwRmp3aTdqYVFmWmlRZEpvUTNveWhfZVd0aElxaGl1dTd6cWFEYmlGWVVEX2hrMThPZHFINE54aE9VWE9MSzZwb1lCUFo5R0RUSEtrQlRfc1VIdFZDMUZXY3QxMzRONmxPa0w2SndUSzF3Z3hYYkU0T3NTUkxhTTUzTlA5UDFPUFVYRmJpSTU1SFdq?oc=5",
+          "publisher": "The Edge Singapore",
+          "publisher_url": "https://www.theedgesingapore.com",
+          "published_at_utc": "2026-10-14T07:00:00+00:00",
+          "sector": "ai",
+          "scope": "geopolitical",
+          "topic_id": "compute_competition",
+          "channel": "Regional data-center investment competition",
+          "impact_pathway": "Regional power, connectivity and investment competition may affect relative project attractiveness and capital allocation.",
+          "evidence": "Publisher-attributed RSS headline (not independently verified)",
+          "impact_status": "Potential impact pathway; no measured Indonesia exposure"
+        },
+        {
+          "id": "compute-competition-the-extractivist-logic-haunts-the-ai-data-center-rush-in-indonesia-malaysia-the-jakarta-post",
+          "title": "The extractivist logic haunts the AI data center rush in Indonesia, Malaysia - The Jakarta Post",
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPRTE5aERvajdWMjhGUmJLWnlQaHVrNFNJbTIzX0FZSXI4S0l4TFBmZ1N1RkdkdEdPMkVmd2hIN1lzN3NNeXczcGJtUTNoWXg4ME84Vmd0WVpyVE1xUlZzbl9EUm9kTnFzU3Rjb0hTU0s5MTJwbTBhVmRSNTdNcUctNGdGakpYR0J1cW1McnFuZlJMY282OFBUY2Zralk2eXhNcFl3ZlZ1cURTSUYtTzRkdTdVXzVBcmJBOGxhdU1KTGg4SDg?oc=5",
+          "publisher": "The Jakarta Post",
+          "publisher_url": "https://www.thejakartapost.com",
+          "published_at_utc": "2026-10-13T04:35:22+00:00",
           "sector": "ai",
           "scope": "geopolitical",
           "topic_id": "compute_competition",
@@ -1154,7 +1184,7 @@
       "domestic": 12
     },
     "ai": {
-      "geopolitical": 8,
+      "geopolitical": 10,
       "domestic": 10
     },
     "food": {
@@ -1263,7 +1293,7 @@
       "id": "compute_competition",
       "scope": "ai/geopolitical",
       "state": "scanned",
-      "found": 1
+      "found": 3
     },
     {
       "id": "data_governance",
