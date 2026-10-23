@@ -9,7 +9,7 @@ const groups=[
  ['Marine & fisheries','Kelautan & perikanan','marine'],
  ['AI & digital transformation','AI & transformasi digital','ai','aihub','komdigi','digital','digitalgov'],
  ['Policy, geopolitics & environment','Kebijakan, geopolitik & lingkungan','policy','ria','geopolitics','indo','climate'],
- ['Reference & quality','Referensi & kualitas','glossary','freshness']
+ ['Reference & quality','Referensi & kualitas','glossary','freshness','inventory']
 ];
 const modules={
  industry:['Industrial Intelligence · Kemenperin','Intelijen Industri · Kemenperin','sli-industrial-intelligence.html','Curated Kemenperin source catalog; numerical indicators require XLSX validation.','Katalog sumber Kemenperin terkurasi; angka indikator menunggu validasi XLSX.'],
@@ -48,6 +48,7 @@ const modules={
  climate:['Climate & Environment','Iklim & Lingkungan','climate-environment.html','Environmental exposure, dated monitoring and official alerts.','Risiko lingkungan, monitoring dan peringatan resmi.'],
  ria:['Regulatory Instruments & Institutions','Instrumen Regulasi & Kelembagaan','policy-regulatory-intelligence.html','Rules, institutional implementation and linked policy evaluations.','Regulasi, pelaksana dan evaluasi kebijakan.'],
  glossary:['Glossary & Methodology · Reference','Glosarium & Metodologi · Referensi','sli-glossary-methodology.html','Single canonical definitions, methods, units, sources and caveats.','Satu sumber definisi, metodologi, satuan dan batasan.'],
+ inventory:['SLI Data Inventory · Dataset Counts','Inventaris Data SLI · Jumlah Dataset','sli-data-inventory.html','Auditable structural counts of public JSON; not certified unique observations.','Hitungan struktural JSON publik, bukan observasi unik tervalidasi.'],
  freshness:['Data Freshness & QA','Kebaruan Data & QA','sli-data-automation-center.html','Review latest observed period, update coverage and system QA.','Periksa periode observasi, pembaruan dan pengujian.'],
  methodology:['Research Methods · Main Site','Metodologi · Situs Utama','index.html#methodology','Concise research principles and links to detailed methodology.','Prinsip riset ringkas dan tautan metodologi lengkap.'],
  about:['About SLI','Tentang SLI','index.html#about','Editorial purpose, independence and research contact.','Tujuan editorial, independensi dan kontak riset.']
@@ -64,7 +65,7 @@ const related={
  aihub:['ai','komdigi','digital','electricity'],komdigi:['aihub','digital','digitalgov'],
  digital:['aihub','komdigi','digitalgov'],digitalgov:['aihub','digital','ria'],
  indo:['policy','province','climate','macro'],climate:['indo','policy','map'],ria:['policy','indo','labs'],
- glossary:['guide','freshness'],freshness:['glossary','guide'],methodology:['glossary','guide','freshness'],about:['guide','overview'],guide:['overview','glossary','freshness']
+ glossary:['guide','freshness','inventory'],freshness:['glossary','guide','inventory'],inventory:['freshness','glossary','guide'],methodology:['glossary','guide','freshness'],about:['guide','overview'],guide:['overview','glossary','freshness']
 };
 const path=location.pathname.split('/').pop()||'index.html';
 const page=()=>path==='index.html'?((!location.hash||location.hash==='#home'||location.hash==='#overview'||location.hash==='#sliPortalSectors')?'home':(modules[location.hash.slice(1)]?location.hash.slice(1):'home')):(Object.keys(modules).find(id=>modules[id][2].split('#')[0]===path)||'detail');
@@ -73,7 +74,7 @@ const text=(en,id)=>lang()==='id'?id:en;
 const label=id=>id==='detail'?(document.title||document.querySelector('h1')?.textContent||'SLI Dashboard').split('|')[0].trim().slice(0,90):(modules[id]?.[lang()==='id'?1:0]||id);
 const href=id=>'./'+modules[id][2];
 function node(tag,classes,txt){const n=document.createElement(tag);if(classes)n.className=classes;if(txt)n.textContent=txt;return n}
-const moduleIcon=Object.freeze({home:'globe',overview:'government',terminal:'technology',research:'technology',entities:'building',investment:'project',macro:'project',opportunity:'project',province:'globe',energy:'energy',food:'government',marine:'globe',map:'globe',trade:'globe',minerals:'mineral',electricity:'energy',ruptl:'energy',ai:'technology',aihub:'technology',policy:'government',geopolitics:'globe',climate:'globe',ria:'government',guide:'link',glossary:'link',freshness:'project'});
+const moduleIcon=Object.freeze({home:'globe',overview:'government',terminal:'technology',research:'technology',entities:'building',investment:'project',macro:'project',opportunity:'project',province:'globe',energy:'energy',food:'government',marine:'globe',map:'globe',trade:'globe',minerals:'mineral',electricity:'energy',ruptl:'energy',ai:'technology',aihub:'technology',policy:'government',geopolitics:'globe',climate:'globe',ria:'government',guide:'link',glossary:'link',freshness:'project',inventory:'project'});
 function link(id,cls){const a=node('a',cls),identity=window.SLIEntityIdentity;if(identity){const i=identity.icon(moduleIcon[id]||'building');i.classList.add('sli-nav-icon');a.append(i)}a.append(node('span','',label(id)));a.href=href(id);return a}
 
 /* Unified SLI masthead for detailed dashboards. Index #home and Research AI
