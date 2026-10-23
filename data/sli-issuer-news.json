@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T02:09:45.362305Z",
+  "updated_at_utc": "2026-10-23T03:05:03.446499Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,55 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_34fcf5043923ad96447b8c",
+      "title": "Indeks Bisnis-27 Dibuka Menguat 0,96%, Saham CPIN, AKRA, hingga AMRT Melaju - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPS0FKZFhyVlI2NFhudnphQ1kwY3VFNWt0eGtXN0RacGhKNFk0LThxYWxyeDc3UDlYMmNNNGNrU1g3d3ZjeGRTNjEwLURmcEZ1SjhFZm5sd0JaVHBLTXBBcUpYZkJzMEdlRFlhMzBOOU4xbG9lSEZoMGpSWGRsWE8zUGVGQVN2YXJWQi1NTW1xWXdSM2sxVWxqNnY3LUlKWldNNll6aGkwVk50WW5abE0xTGxzMmdqeFREdGxVOA?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-23T02:47:36Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "CPIN"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d0b3ebd57ba9320d4fd43e",
+      "title": "IHSG Dibuka Bertolak ke Zona Merah, Saham BMRI, BBRI, hingga TLKM Ambrol - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQQjNoUHdHRVRHZDF0RFhxWDcwUm5CTDQxRHNCUzkwdTBiamNpZ2VLWlAyQm84YU03Q1dCVDVLci1FUUt1SmM0aHJwbFZmcnhUN29RQVlkX2hocXozRFp1WEpmdEtubGlWVjk1TXMyOHpJT2U4N1RiMEVlbVJ0NWZvSklVd0hockE4R0VGOEU5ZldRdEk5cTItY0xuc3ptMDVFR0xDdEloNjVJOWRQSTUxbm0zeXVleFlVLTZn?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-23T02:26:13Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_07cbf42349875a36972d66",
+      "title": "Rekomendasi Saham Analis 23 Oktober 2026: MEDC, MDKA, PACK, PTRO, INDY, HMSP - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5jUnUzTWRwOFgyYUlXcmNUcHRJM3Y5UDdJaEFxekRoZ3ptRzF6VUpmb0ZaYVc3Ri00N0RxN3NvTm5KY1BOcXEyZWxpYWlhTUVoSXpZ?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-10-23T02:09:50Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "MDKA",
+        "MEDC"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_c5867350c72af52823f061",
       "title": "AMMN Mulai Eksekusi Aksi Buyback Saham Rp 1 Triliun - KONTAN",
@@ -174,6 +223,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_544ed2c9bcc7806e634bda",
+      "title": "IHSG Hari Ini Berpotensi Lanjut Menguat, Simak Analisa BBTN, ANTM, INCO, dan MMIX - IDX Channel",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNR0dBNm1jUDI2QTFTOXF6MVh2Vmk4S3RnZnVhc3g1QW1qRnRqb1Z0TzJlRW9ua0k5N0I2VFFCVlpNeUFCbzdiNE1sRXl4eXo4eVl4Rzh4aFFYajJXd0VlNXl0RWgyQ3l1WWlsRnhSSEVZNlE5dThKQXFqMkFGakw0TmprVUZoWVFaLWR6eWlqdVpiM0xaZ0ZQQVI5ZTNjMjVfT3ZMRjJQd0tOVkxPYVo0bElsRnNtdmYxUnI4Q9IBvAFBVV95cUxNR0dBNm1jUDI2QTFTOXF6MVh2Vmk4S3RnZnVhc3g1QW1qRnRqb1Z0TzJlRW9ua0k5N0I2VFFCVlpNeUFCbzdiNE1sRXl4eXo4eVl4Rzh4aFFYajJXd0VlNXl0RWgyQ3l1WWlsRnhSSEVZNlE5dThKQXFqMkFGakw0TmprVUZoWVFaLWR6eWlqdVpiM0xaZ0ZQQVI5ZTNjMjVfT3ZMRjJQd0tOVkxPYVo0bElsRnNtdmYxUnI4Qw?oc=5",
+      "publisher": "IDX Channel",
+      "published_at_utc": "2026-10-23T00:33:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INCO"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_f57392a820a43ec3ba9aa6",
       "title": "Rekomendasi Saham Hari Ini, Jumat 23 Oktober 2026: BBTN, ANTM, INCO - investor.id",
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPVm5OWEFDWDB0WUFpQWphS0VhS2VHdGUyLW5fb1F0M1ZITGpTS1I3MXdmODZCVWh1YThoQUtPcWdRczR6bVMyVVFlUFV3WFFjNmtjWkhiS0kxRGZ6R3dmUHplTVZUc2lwUDRrWVBwMzFGTWxGdjEtTEhUOWd2THNfM2xldWRDZHdwbmtaYUlXUFFiYzZ3b3BLUDhzcU8tZw?oc=5",
@@ -182,6 +247,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "ANTM",
+        "INCO"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_9c4b77e16bd1f978769e04",
+      "title": "IHSG Bidik 5.400, BRI Danareksa Rekomendasikan BBTN, ANTM, dan INCO - Tutur.co.id",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTG0tVDdGWWV1ZnR4TC1MWEhpbTVsZk1UTGs3NVV1Wnlaem9pdE1DN3REbDBuaFM2ay1JRldQdGVld0tjcXVSZ0tMS21pUERDaklHTW5Tb1pqMWdjY2tNeDI5Y2RtdWJ4dl8zWEVrTUp1cEI0YWdROWJLVkI5bXRHNDhnVnFfUzR5UElfSENn?oc=5",
+      "publisher": "Tutur.co.id",
+      "published_at_utc": "2026-10-23T00:18:11Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
         "INCO"
       ],
       "sector": "minerals",
@@ -6637,70 +6718,6 @@
         "ISAT"
       ],
       "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_2b84d9652a6ede41792790",
-      "title": "Saham GOTO Naik 3.7% Usai Gelar RUPSLB, Simak Hasilnya - Ajaib",
-      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPdjNTVlFXUUo1eGtCNXZnSTNEeFFoaHN5SXY3VDNCMm9aVmpkZUY0WE1lZUhNbjNNTjEtQi12N3daR29MVXlLSmM1a2k5Tzc5b3ZFcGJ1X1RwZy1tNm1IUDJGQU0zTkhNUkdHVWVacGM2QzJKLVNxX1IzdF9seXlaaUh3VHVlazJCVWVlSk1GZEo?oc=5",
-      "publisher": "Ajaib",
-      "published_at_utc": "2026-10-15T02:47:49Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "GOTO"
-      ],
-      "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_9ed76bd13cfaaf69baef98",
-      "title": "M. Slamet Sugiharto Jual Seluruh Saham INCO, Kepemilikan Kini Nihil - Pasardana",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNR0FFalBXaE93SmN5VUd5WV9OaUhLb1FmU2dxOTYwNXBpZHJPb2locnliQWdKWTJjWHB6Nm1ER1hla21oanZycFhWclE2Q3l2NWNQV1NPaURmN0JWWC1oZGtfa2dQblJEMUNwbFJ0WXVHZDQ0MldIWnNBQTYtREk3M3h2elo3UWg3X0RwWHhyQ195WmgwenR3R1RfeHpjM0JKSi1vbw?oc=5",
-      "publisher": "Pasardana",
-      "published_at_utc": "2026-10-15T02:46:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INCO"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_2d8438d5bb5e85044fa7a1",
-      "title": "IHSG Dibuka Turun ke 5.900,15 Tertekan Pelemahan GOTO, WIFI, hingga ISAT - Bisnis.com - Market",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPdGJabll1WjJfUmUzbkN6eldjX0VrdDhlZ1ZucXNqRzZQM0JNeWlGb2tWY3ZSOHAwaDY1Q2U5VlZQVWJFbGNnOTdMOGNMQUx6N1VrN3hwcW9KSUxIU1BoSjFlb21hRU9VSGZWeG9QdExxaTVFM3c2cnhBVzM4ckhKMGpLYUNBN0oxWjZZUFJrRTN5a1ZWVWxudjRIQ3lIMjJXRkRnUUZpaEg4b3ViWERyaEZRejZGaXR3N3c?oc=5",
-      "publisher": "Bisnis.com - Market",
-      "published_at_utc": "2026-10-15T02:23:04Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ISAT"
-      ],
-      "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_2a0599ad6acb6e7de1399d",
-      "title": "IHSG Masih Betah di Level 5.900, Pantau MEDC - Suara.com",
-      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxON0hCSVdkSGlsQWVCVXJGeHZWZnEwRnNsZUJhWFprVkcyelZMU0hSZzJRVGNIaTA4cE9XMzFWb3kzOWcxZUF2cnpjdVE4d2RNNVVVZFUyT29mT1g2ekpPTXpFSl8ybGZ0UHV0RmpDcVUzR2R1VVRTOHdzalN0ZFVjY2p5bGFhYjdwUDlLQVRrOGxuLTA?oc=5",
-      "publisher": "Suara.com",
-      "published_at_utc": "2026-10-15T02:13:08Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "MEDC"
-      ],
-      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
