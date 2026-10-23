@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T12:01:47.461132Z",
+  "updated_at_utc": "2026-10-23T12:34:22.258749Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -164,6 +164,38 @@
         "BREN"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_1347e97105e7e19211f754",
+      "title": "BEI Lanjutkan Suspensi Saham PTPP, Ini Penyebabnya - StockWatch.id",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFB4ZWJ0Y0tzdjVEdW5aQnIxQkpXR0FlSm0yR1JFc05hVW1NTEVLamEzRW1Pc2ZWaUxnenhzT25LWURSVUVmX0N0cU9SU3F1SDBrbEU3LUZDdkFEaE5halEzVE43OXV5VGtsXzVRTWxaSGxXUXdJWUxUOThUM0ZjU0U?oc=5",
+      "publisher": "StockWatch.id",
+      "published_at_utc": "2026-10-23T10:21:46Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTPP"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c103fa9a8990ec70ff44f0",
+      "title": "PTPP Percepat Pemulihan Jalan Terdampak Bencana Sumut - SuaraGarut.ID",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9BQTVvM0U4TENTVWNOWnpfM0lHWFNkd05jNXdMMWlvWFhsWUIyV2pkQ0xxajk4UXJ5a2RvbEdDOGxsTTlhS2ZFSzBEZUgweDM2MDBITTR3aGQzMXZHN2hBb1JsSzQ1ZkE?oc=5",
+      "publisher": "SuaraGarut.ID",
+      "published_at_utc": "2026-10-23T10:14:23Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTPP"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -4767,6 +4799,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_e1f7195c3b616a0bdeb7e0",
+      "title": "Mantap Geluti Bisnis Emas, MDKA Kini Kuasai 64 Persen Saham EMAS - Emitennews.com",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNT1A5ejVzVldIU2pTRU5PU3Q0bk5hN3ZCOXlLRFdzX25OSFltMWwtcE9fOS1pVDRpR0tMZEMybUpWdllKNFF1SHdTR0F5SUxmSV9jeE4ySTlMZ1l5TTk1bEFJNFpTMUNmSHpzWlFMNzFZdXQ2YmhmdHB0N2RheGNhXzROUTRBR3JWZmJBSTQ0UnUtdllIU3c?oc=5",
+      "publisher": "Emitennews.com",
+      "published_at_utc": "2026-10-20T07:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "MDKA"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_5e6d72a6b08c650bfb6f7b",
       "title": "Saham TLKM Banyak Diserok Asing - investor.id",
       "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE8yR1k3ZWNxSFFCU1ZyTTFaTnE2aVVsSngwbTRSZGhqYjdBODBqZW1FaENxdDB2ajlYU2J3OGZNaU9ZbVRhNzlKMlpMc21la1RKbGtLQlEtdkU4Qks0bmtISUpRNHB6TkdPb180N1NxNUE4X28?oc=5",
@@ -5130,7 +5178,8 @@
       "published_at_utc": "2026-10-20T01:50:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "AADI"
+        "AADI",
+        "ADRO"
       ],
       "sector": "coal",
       "source": "public_google_news_rss",
@@ -7154,22 +7203,6 @@
         "ITMG"
       ],
       "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_cc26a1fc4d03f115abdfbb",
-      "title": "Bisnis Hilirisasi Dinilai Jadi Katalis Baru Saham ANTM, Begini Analisisnya - IDX Channel",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPQ0hZeEdKUGJteF9ldDBTLWoxVzI4U1RCcWtDN0lhVHMwcDU4ZlcwbXQ3VjR6QjNVczVlbUJBUnhNYjdjamlwZ0JxaFgxQjFMb0h1THljWmVGcFJRdXBYenoyNEhaUG1rVW5aampyTS03V0pUMmJEb0RNbUZnMktoeTNWWk10cWFoYzk0U1NwUmxMTUNuM1pkNUxJel9PSW4zYmh2QndTMEZaaDZfejU5ZVh30gG3AUFVX3lxTE5LYUx5aV96U2pDZGFWSG9ocktOVHp0anNmZTZtVTNHakRGb3I2VUZmTHZuYUcwSGZaVV91ZTNMczFpSXVsZlg1eF9YUGRDMVEzUXFIMEdqMmdOVTEzRXFENGVtVjZPMXoyTWMyOFRkcWJ4M3JlVmRldDA4VkV1Mno1ci1wWGRyNGd4UG5VanFoX3E2NkVXUzJCb3Q0RW04WXJ2UDVvdHhHa05MYUQwNjdoZlhiNEk1cw?oc=5",
-      "publisher": "IDX Channel",
-      "published_at_utc": "2026-10-15T12:25:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ANTM"
-      ],
-      "sector": "minerals",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
