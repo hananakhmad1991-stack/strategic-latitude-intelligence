@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T21:01:50.155231Z",
+  "updated_at_utc": "2026-10-23T21:29:03.755141Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -242,6 +242,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "ICBP"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_8d4622bd80c5a728e04e65",
+      "title": "INDF Siapkan Buyback Saham Rp 750 Miliar hingga Akhir 2026 - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1uT3Y2eDVQbGF3YjRGV0JxZFNOYy1NY1dhbzhlSzVyNWo0R0FEbHpEcFI5bndJYS1MNlpPSEIxdUxRUm5hd1Q4R0lZTlVmdEpiNmRISkk1NG5QZ0RzLXBqeFRaUEV4ajNUMmc?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-23T13:43:20Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INDF"
       ],
       "sector": "food",
       "source": "public_google_news_rss",
@@ -5217,6 +5233,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_93903c3ca97cbba5232497",
+      "title": "ADRO Lanjutkan Buyback Saham Mulai 20 Oktober 2026 - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5neEpDSmhodkFoYTFnaUFaNVJ1OVlhZ2xoXzQxaG5XenJkTTdsV3k2RTRWUFNrdmMyazRBbnRmYVNPaWF5eWRjWWJORWJmc3NHVl92Z2tKLWhoRy00a01BM0dkSEFjVE1CaGxieVFn?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-20T08:01:22Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_c935abf6868ecdf04a7b3c",
       "title": "Adaro Andalan (AADI) Gelar Buyback Saham Senilai Rp5 Triliun, Catat Jadwalnya - Ajaib",
       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQUHdMM2Z1MDlmRllwTllkVWtNM1NTR20xR0lhWG9DcHItRTFocFZKODYxSXV6Y21HbG4ybWZMOUdKUmZRVXhuSFRsRkswQjlyVUFYWUVqTjJFcnBpTG45SjNWcV9wbjFnQml0b3d4S0pESE5pRzB3bDUycWxTOUQ0Z240QXNEVmhFTDIwSTJoTldvc0ZVVi1JZjdheHgzalNtVFFCcWYtaWloWVhMaUE?oc=5",
@@ -5549,6 +5581,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "AADI",
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_fa3158e171dd0c5e1f90b1",
+      "title": "Fundamental Bisnis Kuat, ADRO Lanjutkan Buyback Saham - MetroTVNews.com",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNYnVlQVYxR0xkSnBmN1FMMzhWYmJCVThGU1B4aXRLZzJyQzgwbGRvaWQtZHZuUW9QSWV1Rm9KMnRzYWZBRkNXS3Q2Z21CT2ZtSVZld3RRLTlzQzlTbVp2cmE2VlF4Vk8zWW9scnB0b21ZMW5ZaHJtSV9iaEkwMlhwaUU1T3FNUHk2NjFyRzlWM1JNOFp5eGw3cV9B?oc=5",
+      "publisher": "MetroTVNews.com",
+      "published_at_utc": "2026-10-20T03:52:47Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
         "ADRO"
       ],
       "sector": "coal",
@@ -6325,6 +6373,22 @@
         "JPFA"
       ],
       "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_8619118ab87768cb8aec06",
+      "title": "Tiga Emiten Prajogo, BRPT, BREN, CUAN Kompak Buyback Saham Rp2,5 Triliun - Maybank Trade ID",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOb2hZdEgtWWV4Z1VRUnhMaW0yUVMtNDAxUEtTdjNPYm8yWFh4ZDB1VmhUYTVoOElvWkJ0Rjg5eGY1X3lXelI2OWNmdXNRc0Z3S1ZaVEhlY3Q1R2NYWDlzY1RNMExoNEh1VWE2ekhObEgyWjdSX0k3b3NGV2xpN0FaXzdLTnA2a0VrY2xyMzl4dzZMQWdNN1B6elhNOEZfV0VKeVUtM3pBWnp4YUE?oc=5",
+      "publisher": "Maybank Trade ID",
+      "published_at_utc": "2026-10-19T10:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
