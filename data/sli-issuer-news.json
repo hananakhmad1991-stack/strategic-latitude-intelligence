@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T11:03:03.135796Z",
+  "updated_at_utc": "2026-10-23T12:01:47.461132Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,86 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_b379b5f2f7c764102e851e",
+      "title": "OJK Sanksi Pelanggaran Saham DSSA, BREN, dan CUAN dengan Denda Rp2,1 Triliun - Lenteraesai.id",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQNUZTQkJjQmwtWl94dnFLaVlJUTJEZUZOUmtGN09EOTVSUkhySW1uQk9KYkdkTDFIZUhYbTVFQmk4WGx6TXVWSlVvYzBjSEVuV01hcGJxMWxoSEc3My13RXdoQTF3US1uMjEtTG1NUEtFaGF6OWU3MDY4UG1QU19DT1VRVlVjbXp4eFREZGlsMUpKSVM3UEhDUERnQWpZWlAtMDNuZzhsdF9KY29E?oc=5",
+      "publisher": "Lenteraesai.id",
+      "published_at_utc": "2026-10-23T11:58:17Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_39ff5eb783c481f8090f9d",
+      "title": "PTBA Proyeksikan Pendapatan Kuartal III 2026 Tumbuh 29 Persen - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1namJTRFROUHlXakQ0czRPYnBNZEkxbHZFTEd4WVdpdlN3aGNwVG1HRVFTTjRHaUkwbmdTQW0xdjV4MVlCUU1UV2Y0RjhzTXU0TFhSZHRwTF9IbWcwT0JIaS1jS3FrMnNzQWxxVU85OA?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-23T11:00:26Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d3e3e035959ce0566c6ad6",
+      "title": "PTBA Proyeksikan Pendapatan Kuartal III 2026 Naik 29 Persen - SuaraGarut.ID",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE13Y1YwNUR3R3VLVnlRbkF6amlRUDlPZzVMazBPZHNFcXN1R1M0a19pbXhZQVRmUEJCWF8zSTZKMkNweXZhNlh3NzhMREhkbWYwcDl1Ykx2WjBYM1pDQWQwd1lMZjJNYU45ajdn?oc=5",
+      "publisher": "SuaraGarut.ID",
+      "published_at_utc": "2026-10-23T11:00:26Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_cee1a44d97796d241f8d97",
+      "title": "PTBA Proyeksikan Pendapatan Kuartal III 2026 Naik 29 Persen - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBnaVBLRTc4eDdSajEtalZIT1NVS3J1MDg5Yk95QUQzZFlzRWRkdWt4N2VhRHVBYjJTS0tjRDhMeEpwdHU1dTZoeDJ5Z3BwZHp0VENENjlxcm45SlpRcGR5eTduWGdETzNTcF9JV3duVDVrNmRs?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-23T10:57:25Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_06a8208b8527600dfbbfd9",
+      "title": "Insentif PPN Nataru Dorong Saham Garuda Indonesia - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9hVTl4TS1MWDlybFhvcUlFbXNpc0RYYkZGcW1LS1VhaTZnVlRBOFRoaVhUcjNZVm5SOG1LRFlmTGM2UUN3aTBsTUl1TVpGZFVhVy0yVElwSjl1WjBEcEkyR3pIZEJBbWti?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-23T10:57:19Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GIAA"
+      ],
+      "sector": "transport",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_983586cc85c2e7b8018456",
       "title": "Insentif PPN Nataru Dorong Prospek Saham Garuda Indonesia - Cirebon Times",
@@ -6630,6 +6710,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_ee2be0ce25975ba0b2a62e",
+      "title": "ARKO, SOCI, ITMG, dan VKTR Dirikan Anak Usaha Baru, Ini Prospeknya - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5mZ3ZLRGRpeDZqRi1oMnhDS0lvRkpLZHFmZzlZRi1SZl9JS1RXM2ExWWh0eWdlSkt5Tmtja01fUEtIanByVlFuN1FoZldFaGltakhlU3A0WjdHTUg3R0lKVHF0SFJ4UQ?oc=5",
+      "publisher": "TradingView",
+      "published_at_utc": "2026-10-16T23:35:44Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ITMG"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_be504e0965bfc13e461547",
       "title": "Saham GOTO Agak Laen - investor.id",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1lN042SWVJMmxRR3lWRmJLWXUza1VKSVJ4Q254NElfUWJLM1lCdGJwZURWWk1BQ0hXX3daSGVoYzF0QkdqTlNIVWNkcnhhSThhaHlRY2lBOGFOdzBrblNleFp1dk8?oc=5",
@@ -7074,102 +7170,6 @@
         "ANTM"
       ],
       "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_21b2063f7b2aa6b8ae0473",
-      "title": "Analis Rekomendasikan CTRA AMMN dan ESSA untuk Perdagangan Saham - Demokratis.co.id",
-      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFAyTkdhRGhFQTdkYjBzUFFiVXF6cnlBNWpDVTFNWnZrMEd4SlRQTlV1dXh4dnpyR3UwUzBQazdhZ0J4aDQ2ZENPc0Y4M2FaTUlEMFlaVXd1V2U3WFFJR0FkTE5RYlNiYnBV?oc=5",
-      "publisher": "Demokratis.co.id",
-      "published_at_utc": "2026-10-15T11:54:21Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "AMMN"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_ef499055e1104e21349ba3",
-      "title": "Cek Rekomendasi Teknikal Saham CTRA, AMMN, dan ESSA untuk Jumat (16/10) - kontan.co.id",
-      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOZTByb0pJaE1BVGJxdkVVSnk1aFlVQUxFQkZBSmhUSGcwcjA4S2pCTDFPTkZkbVp3d0lXNlNSdFZLZlJOYS1oUlVORklqbUFtZHBLVElURHZtWGNWSjdOSkNGOEhjWUdiVlhFOFgxX0dfYXFyQ3ZGZEhJUEdhaXlEaGpmbkJIY213TmIzODUzdTFmYWFMcHpOcHIzNkh4VUFGRE02ctIBnAFBVV95cUxNcDMyZWZRVmxUSzJqR3ZYTWJTUDNFY1dRcWhodm5tYzNuZjVXQlBLcGFtTWhJUmxGNnNZX0I4ODhaVDAyOWxvaV9HSDkyY2ZLRzlMV05nMGgyZno4QXpWTENCT2ZwOEFiSzFPd3pmSFFJT3Ryd2h5NmpXdEhzU01fcEVKR3JxemFNZ0dPTFhpREJDUmFHNy1XU1VjY3A?oc=5",
-      "publisher": "kontan.co.id",
-      "published_at_utc": "2026-10-15T11:50:17Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "AMMN"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_2b6d6b74b7ec93f8ce3920",
-      "title": "Laba ANTAM Melonjak 34%, Phintraco Ramal Saham ANTM Bakal Makin Mahal - Warta Ekonomi",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNTmdpU3NMRXdhU2YwNVp1NDM1dmJXVS0yckxQVWVEbXlCX1BidHgwMWJJMjBiSk5VenI2bW9WS2EtV1lydlBzVE1FQ29Cdm0tOXBmVlJBMERCTllVMkJJQmFXTnp3WnZKTnRLWFZmaUtqYUR2WHVMSnA3Zi1nbkVUN2FyZzNMUHJLTkxTTWhuN1FpaFRrU3lNWmdxZVFIQ25scERWTDZWOS3SAa4BQVVfeXFMUHNiSDJjcDFVaVJoUUlxQkppM1FrVkpETlBiZU1kR2ZlUVJRMXR6Qno5TkhsaWdRd1ZVMHQtQ3NHS3cyTEtqY19ETFhGT1JYeHFaazBoNmpvSl9ZVnBMSnJRVzVTN2NWSVZobjVub0lwVGVLT1J1eFEwczEzZUNZN3cxamhpOGJkU24tUHd4S0hlbmJfYVgyN1ZZMlhwTjVpVXB3WHZKdzItZHZMWmFB?oc=5",
-      "publisher": "Warta Ekonomi",
-      "published_at_utc": "2026-10-15T11:48:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ANTM"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_6182998b54eff88b92774b",
-      "title": "Bisnis Hilirisasi Antam (ANTM) Melesat, Ini Buktinya - CNBC Indonesia",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVzNJdFVqMEFscGhOd0pYejJZMXVVQlI3emh5R3VpMUJIaXdnbVU3d3cxRjQ3YjBRdGx5TUJWbnk3TTlpdXU4bGtWNGlCUXNJd1BaZVVSUG1NM3IxSy02XzRtSGRoV3ltNWNMMFNiQW1xOTN4M3loMV9jdVN0dmVTYlJqeEoxMEt0Ul94aXhOYU5NZ3BFcGRuU3pvZFdZUjBPZ2J3Tmx3Z0d6VlYxUzlHa0tsMNIBuAFBVV95cUxQZG1VODRqQ1BmYlZxVXp2elNNZG1YZlpVcjVMZkF4ZHlEWTdsbG01bURaYUlUTUphVldmeGZKbW5fdWw2VXRNRWlZZk9GOGRlLWRDM0FhWW56QWJMeXRoTHloVl84bnQ3WkVHckRaTlVQb2U5dExVWU1mWWxSYVphY3FaLTQ2TGgyVXlLWkRDanJ1OWptcHM3VEhvWS1rNVBtWTFZXzRSWFBjdTlYR0lZTU5kS2tBVmlq?oc=5",
-      "publisher": "CNBC Indonesia",
-      "published_at_utc": "2026-10-15T11:45:18Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ANTM"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_acd53a9ff29d5ffc7a98b3",
-      "title": "SMGR Perkuat Kinerja dan Bidik Laba Bersih Rp 505 Miliar - Demokratis.co.id",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1oZ1hjdmdHMWJvOXI2WWt4NWc4VndXa1lnUkJ2elcxenZqUFUycTdsZTYwMnZoNm01YTl0ZkhfWTdzejFnQVQ1WlVGMVpDMHdZLVBuU05mc2xpcWtQQW1ENWlURHo?oc=5",
-      "publisher": "Demokratis.co.id",
-      "published_at_utc": "2026-10-15T11:17:31Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "SMGR"
-      ],
-      "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_ef2ab13c2649a0d640dd6d",
-      "title": "Laba Bersih SMGR Diproyeksi Melonjak 164% pada 2026, Simak Prospeknya - kontan.co.id",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQd21rRDBZVjU0cUlNLTlsaGJoYmJKUFJBNFljMkh2TEtyQ1R1WTR3WGRqOW9oSjFWYW5sNVV2aExINFFHQjE4Vm5aTVpBbXQxeWtSakoxWDN1d25VY1hfY0hsOGlpTTVxaGdyVE15NmRGQTdRaVNiY3ZOcHRteFFVR1FFV2NCZEVHUkVCYlNoSnJUMUt1OTJGekpEaGdpYnlJR3dwVmRB0gGeAUFVX3lxTE52c1VsQ1NCM3dyQVdLeWQzWm9jZDQ4SVNBMWpSNzRKM2xLYUxwbkxEamxsbnRicU92d2g5NHZMXzRnNDFVZUxqYV9MUWRKbFNTb2ZqdUljYzc0eUQ0Smp2UGpkWlE3RWJEX2N3ZC1taDFfV3JxS01Idm1hRm9TaEwyU1dmSWQxWUlSYTJDamVLenhuZ2dZRF94WGRzQllB?oc=5",
-      "publisher": "kontan.co.id",
-      "published_at_utc": "2026-10-15T11:13:41Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "SMGR"
-      ],
-      "sector": "manufacturing",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
