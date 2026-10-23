@@ -84,3 +84,64 @@ body.sli-home-active .sli-portal-hero-actions { max-width: 59%; }
 .sli-orbit-controls,
 .sli-orbit-toggle,
 .sli-orbit-credits { position: relative; z-index: 5; }
+
+/* 2026-10-23: reserve a real grid cell for the 3D globe.
+   It must never float over the Expert Connect service card. */
+@media (min-width:1101px) {
+  body.sli-home-active .sli-portal-hero {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(310px,39%);
+    column-gap:clamp(18px,2.4vw,38px);
+    align-items:start;
+    min-height:0;
+  }
+  body.sli-home-active .sli-portal-hero > .sli-portal-eyebrow {
+    grid-column:1;
+    grid-row:1;
+  }
+  body.sli-home-active .sli-portal-hero > h2 {
+    grid-column:1;
+    grid-row:2;
+    max-width:100%;
+  }
+  body.sli-home-active .sli-portal-hero > p.sli-copy-en,
+  body.sli-home-active .sli-portal-hero > p.sli-copy-id {
+    grid-column:1;
+    grid-row:3;
+    max-width:100%;
+  }
+  body.sli-home-active .sli-portal-hero > .sli-orbit-globe {
+    position:relative;
+    top:auto;
+    right:auto;
+    grid-column:2;
+    grid-row:1 / span 3;
+    width:100%;
+    max-width:390px;
+    margin:0 auto;
+    align-self:start;
+    z-index:1;
+  }
+  body.sli-home-active .sli-portal-hero > .sli-service-path {
+    grid-column:1 / -1;
+    grid-row:4;
+    margin-top:20px;
+  }
+  body.sli-home-active .sli-portal-hero > .sli-service-disclosure,
+  body.sli-home-active .sli-portal-hero > .sli-portal-subheading,
+  body.sli-home-active .sli-portal-hero > .sli-home-journeys,
+  body.sli-home-active .sli-portal-hero > .sli-portal-hero-actions,
+  body.sli-home-active .sli-portal-hero > .sli-portal-disclosure {
+    grid-column:1 / -1;
+  }
+  body.sli-home-active .sli-portal-hero > .sli-portal-hero-actions {
+    max-width:100%;
+  }
+}
+@media (max-width:1100px) {
+  body.sli-home-active .sli-portal-hero { display:block; }
+  body.sli-home-active .sli-portal-hero > .sli-orbit-globe {
+    position:relative; top:auto; right:auto; width:100%;
+    max-width:390px; margin:16px auto 10px;
+  }
+}
