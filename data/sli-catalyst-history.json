@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-10-23T13:19:04.006Z",
+  "published_at_utc": "2026-10-23T14:17:35.263Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-10-23T13:19:03.151577Z",
+    "news": "2026-10-23T14:17:34.395072Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 483,
+  "count": 484,
   "events": [
+    {
+      "id": "sli-catalyst-5ee43f8c46a08f0fbb",
+      "kind": "news_indexed",
+      "title": "Pentingnya Riset dan Pengembangan buat Kemajuan Industri Motor Listrik - detikOto",
+      "detected_at_utc": "2026-10-23T14:17:35.263Z",
+      "source_at_utc": "2026-10-23T10:37:54Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOUVZ4WVBFNVlNaFBTa2Z4c1haa05vTExLLTNsVWVYajZoRDktc0R6SXVCYkgxMFhEQTVJTTl0N2dFWnNUcUxxQVpvUnFlc09EOXUtaWJxQm52VU8waGEzR2E1QTJJbWNtNy1KTDYzUlBsdGhaSUdHekt6Rk5JRXN1a2lQOVVxb0Q0Q204LXNNSXptaHUtR25UdXNyQ2xaeHkzRUs0WngzRGtZdV9scnNNX0p2b9IBswFBVV95cUxOUVZ4WVBFNVlNaFBTa2Z4c1haa05vTExLLTNsVWVYajZoRDktc0R6SXVCYkgxMFhEQTVJTTl0N2dFWnNUcUxxQVpvUnFlc09EOXUtaWJxQm52VU8waGEzR2E1QTJJbWNtNy1KTDYzUlBsdGhaSUdHekt6Rk5JRXN1a2lQOVVxb0Q0Q204LXNNSXptaHUtR25UdXNyQ2xaeHkzRUs0WngzRGtZdV9scnNNX0p2bw?oc=5",
+      "publisher": "detikOto",
+      "sector": "energy",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-42f1f32b4c22fb0fad",
       "kind": "news_indexed",
