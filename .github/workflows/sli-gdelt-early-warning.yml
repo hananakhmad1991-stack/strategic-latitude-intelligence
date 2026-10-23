@@ -60,12 +60,22 @@ jobs:
         run: |
           test -n "$STAGING_URL" || { echo 'Missing SLI_GDELT_STAGING_URL environment variable'; exit 1; }
           curl --fail --silent --show-error --max-time 15 "$STAGING_URL/health" | grep '"ok":true'
-          for sector in energy mining industry finance food climate technology defense infrastructure; do
-            echo "Checking $sector"
-            curl --fail --silent --show-error --max-time 20 "$STAGING_URL/signals?sector=$sector" | node -e '
-              let raw="";process.stdin.on("data",x=>raw+=x);process.stdin.on("end",()=>{
-                const d=JSON.parse(raw);
-                if(d.verified!==false || d.classification!=="unverified_news_signal" || !Array.isArray(d.articles) || d.articles.length>20)process.exit(1);
-                console.log(d.sector,d.articles.length,"unverified signals");
-              });'
-          done
+          node --input-type=module <<'NODE'
+          const root=process.env.STAGING_URL;
+          let degraded=0;
+          for(const sector of ['energy','mining','industry','finance','food','climate','technology','defense','infrastructure']){
+            const response=await fetch(root+'/signals?sector='+sector,{signal:AbortSignal.timeout(25000)});
+            const body=await response.json().catch(()=>null);
+            if(response.status===503 && body?.sector===sector && body?.verified===false && body?.classification==='upstream_failure' && Array.isArray(body.articles) && body.articles.length===0){
+              degraded++;
+              console.log('::warning::'+sector+': external GDELT upstream unavailable (503), correctly fail-closed; no verified news shown');
+              continue;
+            }
+            if(!response.ok || body?.sector!==sector || body?.verified!==false || body?.classification!=='unverified_news_signal' || !Array.isArray(body.articles) || body.articles.length>20){
+              throw new Error(sector+': unexpected signal API response (HTTP '+response.status+')');
+            }
+            console.log(sector,body.articles.length,'unverified signals');
+          }
+          console.log('Staging contract PASS; upstream degraded sectors:',degraded);
+          if(degraded)console.log('::warning::GDELT external availability remains degraded; staging is not certified for live news coverage.');
+          NODE
