@@ -56,7 +56,7 @@ jobs:
           command: deploy
       - name: Verify health and all nine sectors
         env:
-          STAGING_URL: ${{ vars.SLI_GDELT_STAGING_URL }}
+          STAGING_URL: https://sli-early-warning-staging.hananakhmad1991.workers.dev
         run: |
           test -n "$STAGING_URL" || { echo 'Missing SLI_GDELT_STAGING_URL environment variable'; exit 1; }
           curl --fail --silent --show-error --max-time 15 "$STAGING_URL/health" | grep '"ok":true'
