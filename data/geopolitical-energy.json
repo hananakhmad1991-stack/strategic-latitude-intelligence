@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-23T15:40:53.837334+00:00",
+  "checked_at_utc": "2026-10-23T18:41:20.909104+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -37,23 +37,6 @@
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Russia and energy sanctions",
-      "topic_id": "oil_sanctions",
-      "type": "Geoeconomic",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "upstream",
-      "title": "UK approves development of Jackdaw gasfield in North Sea - Financial Times",
-      "publisher": "Financial Times",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNZGxWWjZUZU50ZVc5TEJ6VmtPN0pBb1Mwa05hdGlLM2c0aEczSWhXYkthSy1FZFd4dkxBS01IdkstS2d6MGpfbnpNbkZwallQdlhsQ0lBSFJtRUNyWU1GNnlLRW82blhrZnEzalJGSWtIVXBYYWxMSWYxdmFoeGFFMExTTUI?oc=5",
-      "indexed_at_utc": "2026-10-21T16:49:02+00:00",
-      "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
       "topic": "Asian LNG and gas",
       "topic_id": "lng_asia",
       "type": "Gas supply",
@@ -83,6 +66,23 @@
       "publisher": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQOG84XzgtRVI4UzlHbEhTWFNJMlVkOU1hTG13WWxmU25waWNBekhRSHZpODA5MlZWTlBmNUxvaFljaDZRcEU4LXdTc1RxTUpIUGRjcjNjLVdSTUVETV9jT3lWME5vR1pzOUN0cXpyU2x3dzg3Y0NwRkpqTGVaX2h2bm1GVmN1OEo1VG1Id3VGWmptd3RST2ZhTk94Y0kta1E2SnlhYUlDNmhLQjczTEVvT3ZR?oc=5",
       "indexed_at_utc": "2026-10-23T01:14:00+00:00",
+      "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Global coal and energy policy",
+      "topic_id": "coal_markets",
+      "type": "Coal markets",
+      "sector": "coal",
+      "sector_tags": [
+        "coal"
+      ],
+      "subsector": "pricing_trade",
+      "title": "Indonesias energy revenue rises despite lower coal export volumes - ANTARA News",
+      "publisher": "ANTARA News",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOYlF4SDBHRWpveUhMRFlwaWkyODU4VnBDbW02WDBrYjVvRFFJbHNQRDFxcVBFSVd0RDVuMHBiXzZ1c1p3TnNnelA5XzNrRVVpSW1FWGszTHhkSEVBdUpud1lBdU44WkZJQ3VmdlZNZTJ0OHBlRFBQdnBuMklyNjdGWUFrZlNDb1RrYk1rcGdaMUZ5d3hVTWdBajhUbG1JQU8xVzRiYXN5eU1XYjDSAasBQVVfeXFMTmJReEgwR0Vqb3lITERZcGlpMjg1OFZwQ21tNlgwa2I1b0RRSWxzUEQxcXFQRUlXdEQ1bjBwYl82dXNad05zZ3pQOV8za0VVaUltRVhrM0x4ZEhFQXVKbndZQXVOOFpGSUN1ZnZWTWUydDhwZURQUHZwbjJJcjY3RllBa2ZTQ29Ua2JNa3BnWjFGeXd4VU1nQWo4VGxtSUFPMVc0YmFzeXlNV2Iw?oc=5",
+      "indexed_at_utc": "2026-10-23T12:55:54+00:00",
       "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -157,8 +157,8 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 6,
-    "coal": 2,
+    "oil_gas": 5,
+    "coal": 3,
     "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
@@ -166,7 +166,7 @@
   "sector_taxonomy_version": "2026-10-15",
   "errors": [
     {
-      "topic": "Red Sea and Bab el-Mandeb",
+      "topic": "Hormuz and Gulf energy",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
