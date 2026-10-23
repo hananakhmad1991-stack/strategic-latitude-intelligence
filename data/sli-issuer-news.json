@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T18:32:49.702159Z",
+  "updated_at_utc": "2026-10-23T19:10:34.901005Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -757,6 +757,22 @@
         "AMMN"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_b147ae5fdf7c4ac8ff7143",
+      "title": "Diguyur Net Sell Triliunan Rupiah, Apakah Kenaikan Tiga Hari TLKM Cuma Bull Trap? - KONTAN",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNbkxHZ2tMRVVWVFAwS1VxQ0xJekctZkNxZWlIWFB4T0VHNzdIcXhOWWZwc3hLenpEem9KMmItRlpyWjFwZ1JxaUxpYjF1VHRLS0ZwVGZMUzlmcEVSV3NndXZsNE5JY2NuTXpEYlg5azRWdWxnRDJpSjFWZC1EM3F3NDI3NHc4WFh5c3pRVi1tLTgyWmFnV2FVVE92WWQ1amVLS184ZnIxRGZNdmExM1J2TWpyQQ?oc=5",
+      "publisher": "KONTAN",
+      "published_at_utc": "2026-10-23T07:00:38Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
