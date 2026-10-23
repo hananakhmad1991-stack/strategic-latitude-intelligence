@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-10-22T22:07:47.262Z",
+  "published_at_utc": "2026-10-23T00:00:14.283Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-10-22T23:05:44.846432Z",
+    "news": "2026-10-23T00:00:12.862444Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 384,
+  "count": 385,
   "events": [
+    {
+      "id": "sli-catalyst-0221aff971d04bb11e",
+      "kind": "news_indexed",
+      "title": "Pemerintah pulihkan kerusakan jaringan irigasi di Nagan Raya Aceh - ANTARA News Aceh",
+      "detected_at_utc": "2026-10-23T00:00:14.283Z",
+      "source_at_utc": "2026-10-22T02:04:22Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOeEdGNXFQNGVieW5ueEs4aUtpdEd3NkF2bFVEUF9RQTY0TmJSVTRJMmViQTIwSUE0VERhQ0VkY281NVhZN2ktUm1rcUs0a294TGxTWVlTcXFFdGVWNEJNekdDQllXSmlVMVktbVBmbFlpWlNCbDh3ZkNma0JyWnp3cmJPN0pIUW1ZSGpndnNwTVdwSG9SaWlEMWJRdXpGb1F5b2hRblIzNkF5Rnc?oc=5",
+      "publisher": "ANTARA News Aceh",
+      "sector": "food",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-5505a64d20ab883b90",
       "kind": "news_indexed",

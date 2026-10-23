@@ -18,7 +18,7 @@
     "regulatory-monitor",
     "publication-watch"
   ],
-  "count": 1205,
+  "count": 1206,
   "articles": [
     {
       "id": "sli_feed_331522782af11a4ecae4feacc",
@@ -1103,6 +1103,23 @@
       "topic": "FDI & capital",
       "geo": "Indonesia and global context",
       "monitor_source": "investment-news",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_3426b045b8b3befa9fb3f2d28",
+      "title": "Pemerintah pulihkan kerusakan jaringan irigasi di Nagan Raya Aceh - ANTARA News Aceh",
+      "publisher": "ANTARA News Aceh",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOeEdGNXFQNGVieW5ueEs4aUtpdEd3NkF2bFVEUF9RQTY0TmJSVTRJMmViQTIwSUE0VERhQ0VkY281NVhZN2ktUm1rcUs0a294TGxTWVlTcXFFdGVWNEJNekdDQllXSmlVMVktbVBmbFlpWlNCbDh3ZkNma0JyWnp3cmJPN0pIUW1ZSGpndnNwTVdwSG9SaWlEMWJRdXpGb1F5b2hRblIzNkF5Rnc?oc=5",
+      "published_at_utc": "2026-10-22T02:04:22Z",
+      "date_type": "publisher_publication_date",
+      "sector": "food",
+      "scope": "domestic",
+      "topic": "agri_weather",
+      "geo": "Indonesia and global context",
+      "monitor_source": "research-signal-radar",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -5057,7 +5074,7 @@
       "title": "Japan ‘months’ from running out of critical rare earth as China squeezes supply - Financial Times",
       "publisher": "Financial Times",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPdGJDTEN3Z09DeWNoSlBtNGNOWnBCNDNHbHJjbVpBeHNRX3FpVjA2SnRuNFVvMXVYeGU3eVdqT0s3RjFkeHV5bmY0ZjQ5TUVweWFRNk1xTTNJbjBkTzNNTllPdVpHVzZZUDAwSjZ2WmN1b1E3M2wtTUVHQVM5c20tNk5teFY?oc=5",
-      "published_at_utc": "2026-10-20T04:03:56Z",
+      "published_at_utc": "2026-10-20T04:03:25Z",
       "date_type": "publisher_publication_date",
       "sector": "minerals",
       "scope": "geopolitical",
@@ -8853,7 +8870,7 @@
       "date_type": "publisher_publication_date",
       "sector": "food",
       "scope": "domestic",
-      "topic": "food_policy",
+      "topic": "rice_reserves",
       "geo": "Indonesia and global context",
       "monitor_source": "research-signal-radar",
       "link_kind": "aggregator",
@@ -14684,7 +14701,7 @@
       "date_type": "publisher_publication_date",
       "sector": "minerals",
       "scope": "domestic",
-      "topic": "environment",
+      "topic": "mineral_policy",
       "geo": "Indonesia and global context",
       "monitor_source": "research-signal-radar",
       "link_kind": "aggregator",
@@ -20323,5 +20340,5 @@
       "claim_corroborated": false
     }
   ],
-  "updated_at_utc": "2026-10-22T23:05:44.846432Z"
+  "updated_at_utc": "2026-10-23T00:00:12.862444Z"
 }
