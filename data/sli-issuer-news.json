@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T14:14:16.001819Z",
+  "updated_at_utc": "2026-10-23T15:10:43.382110Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,70 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_3f94c6508ee20857a44e91",
+      "title": "Kinerja Melesat, PTBA Siapkan Langkah Strategis Jaga Nilai Perusahaan - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNelB5c214aGszTm1YQi1yLUo1akN5S3Y5N21pdW5kc09relFFQVBFNlZWUWg2SEItVnRkQkxpSG50VnczeW1rV0FoYlRiai1QclZDSlN3MWwtVXA2M1BaVXQtQWNmRW10MzVLSXZKbXFYNGl4dVprd2dnQlM5RjRPNmxmcks2LTBCR2FITVFJMk1XakRsanUzNmpCSVg1OXMwc1gwcHJjSDktNzdqaEdHc0xQSG9NdDdrX2Izb0RncTdicGxrUjNqeE930gHPAUFVX3lxTFBIN0hpb2I0TnVTRVdGTE1VcnJYaHVwQmtMY1BiMWlseHlXNnQ1ZUpydHZPRDREZjVQYXpsZmtBVHJuWE02MTBzLWhTbVc5NmVzTVZ1YkVYaUw5MEhiM05vclRZc0pHQ05Lc3U5MzFUbzNDOEFuUjBQSTV0c0dZdWxUVU5OZnM0WnpsWjRQNDNDY0pEb05kS2tBWTJ2VEJpaFBtVWcxLTVUdnd4clc2bkZqTU5HV3hIZHNpVF81SXFMNkZvZmVOZ2hIYjVjQWNYTQ?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-23T14:52:35Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_564de6c0f4758039eed443",
+      "title": "ICBP Siapkan Buyback Saham Senilai Rp 750 Miliar - SuaraGarut.ID",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5ybm12MUgzWVNzSkFoNnFWODhYTVJEdGVxTjMyalIyMkVJNTFWZ3JaWWFpZHRwNE92WUNFMEJtcHBTbE9hc2Y4RUdKNk1ydnlUWEx2U1l1UUEtMUF2dXdadmw3UFA?oc=5",
+      "publisher": "SuaraGarut.ID",
+      "published_at_utc": "2026-10-23T13:40:30Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_100be0de9897da3eb06204",
+      "title": "ICBP Siapkan Rp 750 Miliar untuk Buyback Saham - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBlejlWcmJNYlZhUkllczdyNEVVRVlDVmNISkdnVW9VTGk0Zzd0d2ZsS3pzVzVFTXp3VW1lQm5BemR0dHYxd0VqbmRRa0p2VlYtd2V5dl9GRWZxNUZVZllmclg0cDdoemk1d3gtSA?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-23T13:40:19Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_03d889c2acaec3049fda52",
+      "title": "Indofood (INDF) Siapkan Dana Rp750 Miliar demi Buyback Saham - IDX Channel",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNczNyQ0VZOEhsRzBOWDRndFVtMzFELTJLSjRRM09HcEc3anVGOVItNnJtWnFXZGhnRXdkUzFZdjJrNVlpRnZpSGJuNWNRdEgxNVY1amVfdVFVWXkxUjdKWWltM25RMEJ1enhBTTQ2ZU1xR0wtZGlRYWNBbk95aFRJejU5MXlJWklmSlRRZ0xWUEJFVXZfTFlfWmhEOGs3Z9IBowFBVV95cUxNNlRjS2Vrcm9CM3MxOE9SM0lheVEtaWVYQ1BtTzVqNVp6bUlUYVhBcXBXcGF3dVJLUENsQkJkWUd1YUs3QXpVb0IwOG5VZERSSUFvWDNVR3hZTTRmY1U5eUhFRmhxTENNQlBSc2JnSUNDZWVfUnVrdHBVTVVKa2RzXzdLQ2dnc1c4OFZZdXVWWU1KcXBtUThVRXQxdGtYalRnRWpZ?oc=5",
+      "publisher": "IDX Channel",
+      "published_at_utc": "2026-10-23T11:59:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INDF"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_b379b5f2f7c764102e851e",
       "title": "OJK Sanksi Pelanggaran Saham DSSA, BREN, dan CUAN dengan Denda Rp2,1 Triliun - Lenteraesai.id",
@@ -180,6 +244,22 @@
         "PTBA"
       ],
       "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_506aa47d71e35f00c3ccdd",
+      "title": "Insentif PPN Nataru Jadi Katalis Garuda Indonesia (GIAA), Ini Saran Analis - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNc05rTVBaWEJRTWVMajQxZ29ZTk1EMTdqb0cwQlVHeEo2clZ2MDlMcjVuZ0RqY1hwRW5RSUw0NFBoVEFDQ1FfSUJPakg1REF2d3hXRmpNZTZKU05iczFLX0djR29BQ2lydUtMaFEzVVQ5YWVMV0dMQnd3MHBBN1pYZmhrbHFGT1FzZ1FvOEZrRjNadDNwbTlseU1xSTBlZTdMZGJ3elhXbEFDQWvSAaMBQVVfeXFMUFF4VU1aT3U2dk4xeGtRWHl2N2MtelctR1Z6MWFhUE9qa21RRzZEcGUyYUtHOWRrN1NybTIyblVsTXBMNW82bVZLMTRibU9ndm9KRmFWMExOanNpUzBmSTNXTG1DbENJWW9YdUp3WEdwQnJ3WnVCTGxydlpqR2VtSGlsRlF2aUJoeHdheGlGODI3ZDJBTVZpYVcxMlZQZGlxNDRYWQ?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-23T10:51:13Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GIAA"
+      ],
+      "sector": "transport",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -982,6 +1062,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_f3eda672bd17c501561265",
+      "title": "Jasa Marga Kaji Buyback Saham di Tengah Beban Utang Besar - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBPc0FySFB6MzFkOGg1WlBpdmNjbEVVeFBqS0VaelM0OUJSMVdrOFF3eDZhY1FOMDdnVVh4ZmpYVFBNY2hGRHpLSzF2UHR1OWJTNzJv?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-10-22T23:27:26Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_60017dae25998068e103f6",
       "title": "Lirik Rekomendasi Saham Jasa Marga (JSMR) yang Kaji Gelar Buyback Saham - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQUUx1RE5wR01Xb0tCM1VZa0RFa21iOHFld2l0VWxuMlN2NE9zckpIcFQ5U0x6d01NQVRlX2t6QzFRSV8yMllRRmNJWmhpSVUtWXk4bXRWaXNrR2Z1Wk56UUdEU2w4N2ktSmc4bjVBU1gtSlVYYVMzZzN4dGxDR29qbXdjdFd0UC1PYVBpbWJHUC1WZWw1M2d2eWx0eXNvS01xZE9rM1p3eGnSAaABQVVfeXFMTi1aRUxPWXBGMVRKaGFVVjRIc3BHRk9UUE9ReDRHdXhpeFRtRWxNVjdDRkVyanFRWFFZUTdXZUFkU1oyR1RoeUw1RlkyRExNZU5OamVOYldFNGhYQmJITEVjZm45X2g3SWFXdDYxWnVRRUtWYmJiQzlJcHk1bG82eGpuYU8zZlRMaXM2UFVtUkFsOVJudDIxdUNiTktadzRVWA?oc=5",
@@ -1040,6 +1136,22 @@
         "GOTO"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c436c873f52b0f5a1d50b5",
+      "title": "Saham PGAS Menguat 2,62 Persen di Tengah Tren Melemah - ChatNews.id",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5UdlpBaXF6clpUbTFSdGtDbEE3VDJzcC1fTDFoUTlyTERGNUF4dHl6WVpIbk1odmpVWkpWRl9za0JZSVRFaFBYU284TTFyNTJkUl9wVmtfUlg4anZ6d3Q5OA?oc=5",
+      "publisher": "ChatNews.id",
+      "published_at_utc": "2026-10-22T23:02:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGAS"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
