@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-23T09:37:54.474565+00:00",
+  "checked_at_utc": "2026-10-23T12:42:49.319179+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -16,40 +16,6 @@
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOSkIzeWdNTnhad3RfQTdsMFg0OHQ5ejlGVjF2R016akVNelJYNDdVQVNsaE5PRXQ2SWJpT1JDbG5RRmtDdWFEazN2b3FLYkY3eUx5Rmk4bThDcVZmWExKcTFBVW51cEpSUHBPd0ZsUGVnWXF5eTJxY0V1aHlaYUtQTHhsYU00WjdtWk8yOS1UMW9SVVAwN2I3bU43OA?oc=5",
       "indexed_at_utc": "2026-10-22T16:10:00+00:00",
       "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Hormuz and Gulf energy",
-      "topic_id": "oil_shipping",
-      "type": "Maritime chokepoint",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "Middle East oil exports climb back to prewar levels - Financial Times",
-      "publisher": "Financial Times",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRUpxSXBnV3lLb2hmSHBCc2sxQlgyVnhTSklvZEpnM21ZSGRMTHlOa1FEQnkwMDA3ME83Yjc1b1ZQQnJNSFlvN0J4ZWgyZHRnRXdpZWZ5VUVEMDd1eHh3WkJNZE5vckZjX1dXZ2lnUXpDa1dPV3dIVmdZWHlJbF9IaTRGSFc?oc=5",
-      "indexed_at_utc": "2026-10-21T12:01:37+00:00",
-      "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Middle East energy infrastructure",
-      "topic_id": "oil_supply",
-      "type": "Infrastructure",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "Saudi crude oil exports hit five-month high in August, data shows - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNekotZUduQW5FQm0wOVZHbVlzT3U0OWxVdVhNNDRfUjZlVjlxZmNMWEh2M09yTGhwNUhSOGlGQWJDTkg4NDBxdVNSNC1oZWN5cldTZ0xBSzFlYTNXRjBUOVpuMlYzWUo1aWEyaDJSM2NlSURCSFhQWlRHallSdU43TUU0ckpkXzI0UWhINjZqbW9IU0FhcUZjdlhNbi15djVCSktpVEE0LXNXOGFITzluWDBTRQ?oc=5",
-      "indexed_at_utc": "2026-10-21T12:17:43+00:00",
-      "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -78,11 +44,28 @@
       "sector_tags": [
         "oil_gas"
       ],
+      "subsector": "upstream",
+      "title": "UK approves development of Jackdaw gasfield in North Sea - Financial Times",
+      "publisher": "Financial Times",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNZGxWWjZUZU50ZVc5TEJ6VmtPN0pBb1Mwa05hdGlLM2c0aEczSWhXYkthSy1FZFd4dkxBS01IdkstS2d6MGpfbnpNbkZwallQdlhsQ0lBSFJtRUNyWU1GNnlLRW82blhrZnEzalJGSWtIVXBYYWxMSWYxdmFoeGFFMExTTUI?oc=5",
+      "indexed_at_utc": "2026-10-21T16:49:02+00:00",
+      "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Russia and energy sanctions",
+      "topic_id": "oil_sanctions",
+      "type": "Geoeconomic",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
       "subsector": "general",
       "title": "North Sea: UK government agrees to drilling at Jackdaw gas field - BBC",
       "publisher": "BBC",
       "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1LV3k4UFpTRUpDUy1oTnZaOEhmbHdJWXh5eHZ2OEFKRlJrUVNfbkxNQWRPRWoySEN3cXVEZVVOUzJzYzF5ZHc1Szk2czJBdDN3UjBmcU81TjJlcURPNmowZ3BPNnA?oc=5",
-      "indexed_at_utc": "2026-10-21T13:02:24+00:00",
+      "indexed_at_utc": "2026-10-21T12:59:38+00:00",
       "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -105,6 +88,23 @@
       "status": "Unverified aggregated news lead"
     },
     {
+      "topic": "Global coal and energy policy",
+      "topic_id": "coal_markets",
+      "type": "Coal markets",
+      "sector": "coal",
+      "sector_tags": [
+        "coal"
+      ],
+      "subsector": "general",
+      "title": "COMMENTARY: US tariff war is fueling Vietnam's coal boom - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQOG84XzgtRVI4UzlHbEhTWFNJMlVkOU1hTG13WWxmU25waWNBekhRSHZpODA5MlZWTlBmNUxvaFljaDZRcEU4LXdTc1RxTUpIUGRjcjNjLVdSTUVETV9jT3lWME5vR1pzOUN0cXpyU2x3dzg3Y0NwRkpqTGVaX2h2bm1GVmN1OEo1VG1Id3VGWmptd3RST2ZhTk94Y0kta1E2SnlhYUlDNmhLQjczTEVvT3ZR?oc=5",
+      "indexed_at_utc": "2026-10-23T01:14:00+00:00",
+      "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
       "topic": "Global crude oil & OPEC supply",
       "topic_id": "oil_supply",
       "type": "Oil markets",
@@ -113,7 +113,7 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil prices rise more than 1% as supply concerns linger - Reuters",
+      "title": "Brent crude hits more than five-month high on concern over Middle East escalation - Reuters",
       "publisher": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPR2dZUC10TmJYRUk2RmM5WWpxaUx2XzBPZ0ZTV3hIR3BkaGFvZ3B2T1hhd0xEcXZOWk5LdXhLLUF5QU9XdTRQdnRyTk9jcmVNMEZvZlZBRW8xcG1TVW1fTkY2UnFrcXlVWlUwbDhRYk9pcW1fdEdzMVNRR2ZhYVl2T0RZa09uZTktZGFWRVRWSEpGeFhYVXVPR09zNDVaTVdiNDdRRHg3VFNyZWNNWVBmdkxGMWFOa05yN2NBRnRVZjF3eF9i?oc=5",
       "indexed_at_utc": "2026-10-23T01:04:00+00:00",
@@ -130,10 +130,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Trump invokes Cold War-era Defense Production Act for oil production, refining - Reuters",
+      "title": "Oil prices hit five-month high as Houthi attacks stoke Middle East supply fears - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOdm9ka0hnal9OOUFnN19HQmRZd0ljY2tJOVNoN2tIWURrMHExZ0p0NWN0UEpTMmFORG1TTU1CeXZkb3RhenhtelltYVY2SmRyZEctMnRIcUNEQlFXODdsZGxBMXhpem81NjJwRjRCbVl1N2tyWVkxeXU0T2k3ZEttNk5lbzZCVzRrUEtwT3JPTlJiUUVmSjU4b25EaXNIQ3dyS3c3NlJUSkFBdWZSMDFZVmZ1dmhncGFIYjNQU0tOd1I5dFk?oc=5",
-      "indexed_at_utc": "2026-10-22T21:14:00+00:00",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOYzBEdGVKYmZ3VVpJajg0TW5DN2VHVEM2aDVTcFJKQVduMnVMTU5NbVcyMGxBanBHY3VvMzJQR1VrQWM4b0hLeG1YaTFWcldTeU9yTlBXc3FiR1FtcUp0SmxhRkJkWmpmZ2x6X3VGZHZEUDNLTE9LTFZNSlBWWjNJVGtaV3YwWkc4QVhxbHozYkx5THpZMVlYVDAtd0dqbUMyOUcyVk91NEYxaFFCZklRWWhjQm5qN2NvVHdWdnZIQVJSMk0?oc=5",
+      "indexed_at_utc": "2026-10-22T19:16:59+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -156,19 +156,19 @@
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Geothermal and renewable financing",
-      "topic_id": "nre_geothermal",
-      "type": "NRE investment",
+      "topic": "Battery storage and clean-energy grids",
+      "topic_id": "nre_grid_storage",
+      "type": "Renewable grid",
       "sector": "nre",
       "sector_tags": [
         "nre"
       ],
-      "subsector": "hydro_geothermal",
-      "title": "Trump geothermal lease sale collides with planned Nevada solar farms - Reuters",
+      "subsector": "storage_grid",
+      "title": "China's Sigenergy to build inverter, battery storage plants in India - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObmVVLWhZQi1mVVJXZ3haU2hJNk55bGdjd3VMVEZ3R0VwMUlDcERKVmc0N0VSQjkzYmtpaDh1d09zZS1MenF2R09mWGZQNHFGLTBNU3R3UXNFNmgtSGlLUjR4R1o5MVdwRllua3UxY2E5UDRlYUlfT05fVXZKaVk4ZTVJZW0wZm5QRWlxblRqUEJuc19ZYTNkWENpTFk0WWttNkpFQkNyYUR4Y0dTV2xqVkJ4MlV6eU9jS091eWpR?oc=5",
-      "indexed_at_utc": "2026-10-19T11:01:00+00:00",
-      "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNN005THpPamtzS25UUnJGVnUyMGJmOTlyTFBzWjVaTEhyQ21ocF9pYlNGUTRjRVFIRWdBWlA2S3BCNnVKekxPY0hsa2IwOENHMTN2ejVOcHl3NWNfZFlrbDFPV3ZJWnJXU3FCWnU2WlRsck9WVzd0R3lVQ0duX2tFZHE1WGtYV1ZZanpycUJSQm5rNHEzdUFVS203LTZUcXJ6bGF6RFJaZTdqRW1JTzYtSjZR?oc=5",
+      "indexed_at_utc": "2026-10-23T08:40:45+00:00",
+      "impact_pathway": "Battery and grid procurement policy -> Indonesia renewable integration and investment costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -191,8 +191,8 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 8,
-    "coal": 1,
+    "oil_gas": 7,
+    "coal": 2,
     "nre": 2,
     "electricity": 0,
     "cross_cutting": 0
