@@ -35,29 +35,40 @@ $('search').addEventListener('click',async()=>{
 const q=$('topic').value.trim();if(q.length<3){$('state').textContent='Bidang keahlian minimal 3 karakter.';return}
 controller?.abort();controller=new AbortController();$('search').disabled=true;$('state').textContent='Mengambil kandidat…';
 try{
-const u=new URL('https://api.openalex.org/works');
-u.searchParams.set('search.title_abstract_keywords',q);
-u.searchParams.set('per_page',String(Math.min(25,Number($('limit').value)||10)));
-u.searchParams.set('select','id,title,doi,publication_year,authorships');
-const r=await fetch(u.href,{headers:{'Accept':'application/json'},cache:'no-store',signal:controller.signal,referrerPolicy:'no-referrer'});
-if(!r.ok)throw Error('OpenAlex tidak tersedia (HTTP '+r.status+').');
-const payload=await r.json();
-if(!Array.isArray(payload.results))throw Error('Respons OpenAlex tidak valid.');
-const people=new Map();
-for(const work of payload.results){
-for(const byline of (work.authorships||[]).slice(0,8)){
-const id=byline.author?.id;
-if(typeof id!=='string'||!/^https:\/\/openalex\.org\/A\d+$/.test(id))continue;
-const inst=byline.institutions?.[0];
 const country=$('country').value.trim().toLowerCase();
-if(country&&country!=='all'&&country!=='semua'&&country!=='indonesia'&&country!=='id'){throw Error('Filter negara saat ini mendukung Indonesia atau kosong.')}
-if((country==='indonesia'||country==='id')&&!byline.institutions?.some(x=>x.country_code==='ID'))continue;
-if(!people.has(id))people.set(id,{name:byline.author.display_name||'Kandidat',institution:inst?.display_name||'Afiliasi belum tersedia',profile_url:id,publications:[],stage:'Discovered'});
-const candidate=people.get(id);
-if(candidate.publications.length<5)candidate.publications.push({title:work.title||'Publikasi',year:work.publication_year,doi:work.doi});
-}}
+if(country&&!['indonesia','id','all','semua'].includes(country))throw Error('Filter negara mendukung Indonesia atau kosong. Kosongkan untuk wilayah lain.');
+const indonesia=country==='indonesia'||country==='id';
+const count=Number($('limit').value)||10;
+const people=new Map();let seenWorks=0,seenAuthors=0;
+for(const term of [...new Set([q,q.replace(/\\b(indonesia|indonesian)\\b/ig,'').trim()])].filter(Boolean)){
+ const u=new URL('https://api.openalex.org/works');
+ u.searchParams.set('search',term);
+ u.searchParams.set('per_page','50');
+ u.searchParams.set('select','id,title,doi,publication_year,authorships');
+ const r=await fetch(u.href,{headers:{'Accept':'application/json'},cache:'no-store',signal:controller.signal,referrerPolicy:'no-referrer'});
+ if(!r.ok)throw Error('OpenAlex HTTP '+r.status+'. API mungkin memerlukan kredensial/kuota; administrator perlu mengaktifkan proxy Worker.');
+ const payload=await r.json();
+ if(!Array.isArray(payload.results))throw Error('Respons OpenAlex tidak valid.');
+ seenWorks+=payload.results.length;
+ for(const work of payload.results){
+  for(const byline of (work.authorships||[])){
+   const id=byline.author?.id;
+   if(typeof id!=='string'||!/^https:\\/\\/openalex\\.org\\/A\\d+$/.test(id))continue;
+   seenAuthors++;
+   const inst=byline.institutions?.[0];
+   if(indonesia&&!byline.institutions?.some(x=>x.country_code==='ID'))continue;
+   if(!people.has(id))people.set(id,{name:byline.author.display_name||'Kandidat',institution:inst?.display_name||'Afiliasi belum tersedia',profile_url:id,publications:[],stage:'Discovered'});
+   const candidate=people.get(id);
+   if(candidate.publications.length<5)candidate.publications.push({title:work.title||'Publikasi',year:work.publication_year,doi:work.doi});
+  }
+ }
+ if(people.size>=count)break;
+}
+if(people.size===0){
+ $('state').textContent=indonesia&&seenAuthors?'Tidak ada afiliasi Indonesia pada '+seenWorks+' publikasi teratas. Coba kosongkan wilayah.':seenWorks?'Publikasi ditemukan tetapi metadata peneliti tidak tersedia. Coba kata kunci lebih spesifik.':'Tidak ditemukan publikasi. Coba istilah bidang dalam bahasa Inggris.';
+}
 candidates=[...people.values()].slice(0,Number($('limit').value)||10).map(parseItem);
-$('state').textContent=candidates.length+' kandidat metadata publik ditemukan. Afiliasi dan bidang keahlian perlu diverifikasi.';render();
+if(candidates.length)$('state').textContent=candidates.length+' kandidat dari metadata '+seenWorks+' publikasi. Periksa relevansi dan afiliasinya.';render();
 }catch(e){if(e.name!=='AbortError'){const link='https://openalex.org/works?page=1&filter=default.search%3A'+encodeURIComponent(q);$('state').replaceChildren(document.createTextNode((e.message||'Pencarian gagal.')+' '));const a=document.createElement('a');a.href=link;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Cari langsung di OpenAlex ↗';$('state').append(a)}}finally{$('search').disabled=false}});
 
 render();
