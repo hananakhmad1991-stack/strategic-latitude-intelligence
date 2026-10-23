@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T03:05:03.446499Z",
+  "updated_at_utc": "2026-10-23T03:33:26.617440Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_fe96952b7a0d6422387a6a",
+      "title": "OJK Jatuhkan Denda Rp2,1 Triliun dalam Kasus Saham DSSA, BREN, dan CUAN - Habar Digital",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNRDQ4X0NDM2J2b0g5THNuXzlHemI5bmZhd3FGYUd2eTZzYjVBODIxd0pZZ3dlVUI3OG1UekpLVldBTnpuWDdDWDA0Y2hqLVFlOVNVeVM0dmFDVFNpU3FYVTFIbkh0OHBrdnM3aFUtdHFWemxXa2ozb2lrcUFwSGFJaFJPQUlnQQ?oc=5",
+      "publisher": "Habar Digital",
+      "published_at_utc": "2026-10-23T03:22:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_34fcf5043923ad96447b8c",
       "title": "Indeks Bisnis-27 Dibuka Menguat 0,96%, Saham CPIN, AKRA, hingga AMRT Melaju - Bisnis.com - Market",
@@ -6702,22 +6718,6 @@
         "PTBA"
       ],
       "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_09eb5414fd90b477d49342",
-      "title": "Cek Ide Trading dari MNC Sekuritas Hari Ini (15/10), Ada ADMR, BRMS, ENRG, dan ISAT - kontan.co.id",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONk0tWkhOZEduWjNybHJCa3UyUkU2NEVwMzd3UHNyTDB6YmdJTFdZeGhGOHdRUVZKZ0dqQXZ3MFVEZmNBbE1CSDRTZ1N1T0w1N2hUMk1HdU9JRExhVkd2NzJUT0ZnYnNhSlB4WUt4LXVtdVcxTkxURWpaSlozUTRKV3JLall1d1cwWWNXMk9PYjVPVENubFpQOXpqUFVYOFBPUTcwSklMcUpQTEx2bW45NXV3?oc=5",
-      "publisher": "kontan.co.id",
-      "published_at_utc": "2026-10-15T03:13:41Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ISAT"
-      ],
-      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
