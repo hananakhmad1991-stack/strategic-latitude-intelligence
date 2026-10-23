@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T21:29:03.755141Z",
+  "updated_at_utc": "2026-10-23T22:01:41.467216Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -4136,7 +4136,8 @@
       "published_at_utc": "2026-10-21T06:48:23Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "AADI"
+        "AADI",
+        "ADRO"
       ],
       "sector": "coal",
       "source": "public_google_news_rss",
@@ -4574,7 +4575,8 @@
       "published_at_utc": "2026-10-21T00:42:23Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "AADI"
+        "AADI",
+        "ADRO"
       ],
       "sector": "coal",
       "source": "public_google_news_rss",
@@ -4705,6 +4707,22 @@
         "ANTM"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_26e9548636c93d43bc7e36",
+      "title": "Boy Thohir Borong Saham ADRO dan AADI Rp 2 Miliar, Emiten Adaro Mulai Buyback hingga Rp 10 Triliun - TOPIK.ID",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOdHJLVURYZUlHN2JUUEVwZ2VKYTIzN3ZybjNKb2NKM0ViMzNhNEtxYTRZNDZLZXFhZkEzUW1jaW1XQUNjVDZBWllLWnlyemR6eXJGLXNVVUhjcE90bHkyQ0NYVkxWZkpld3VMV0VBTW9iZEdOWjlLOUNFVnhVbEROMDZQMlJqV09vR3BiQXRDOUVhQUZpN2JvRHU2NWR4aGZKOHdxQnRKSUlOaW9yUkQ3a0l1ejhtd2RqUnc?oc=5",
+      "publisher": "TOPIK.ID",
+      "published_at_utc": "2026-10-20T23:38:02Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -5000,6 +5018,22 @@
         "DCII"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_4a09cb5f4dd2a750d873eb",
+      "title": "ADRO, BRPT, dan TPIA Kompak Buyback Saham, Siapkan Dana hingga Rp 1 Triliun - kumparan.com - Kumparan.com",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOOWVJQ3I0UXVRb0dzYzNSb2VRMFJ6TkVWanBQM3FBMnl0a1JVOTh0dmRaT0tZOUxzal94OEhfbHlhemtrTk1XWGRIdllxUlJDcDluZ2ktOUxOTWtObHFCWmRsRFpWSE1BXzl5Vlh1bXdKbkVSalQzcU5ydkxvd1R6V2xnblhkYmZwalJpcVh0M2gzQlhxR3ZxRmk5bE0xUHZJcHIzMjBYNHJ5NS02SkJ1RDRPM1BvNW5yY2gxOdIBxAFBVV95cUxPdENjN0paWk5aSnYzQ0o1dHN1cktxeTFvUl8wY1ZqWVhCb2laTFp4MExoQm9tMk5fWEhNcGstelpYWFoxbHJmWnpHZ2xFeERKQTFyUkw2bEpzeXkyU3Vrbkw2QW1VazFOQXpHbW5qdmtseXl3dFlKSHNHeERieG83aDhTX2gweDNHOVdsTkNlaER5Z0NtdlNmTEt3NWhGN05qaXk1N1hBcWtsVUw0ZGlldUotZjlzTlM1U1JIbk0yZWNxNS1H?oc=5",
+      "publisher": "Kumparan.com",
+      "published_at_utc": "2026-10-20T11:46:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
