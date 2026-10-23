@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T07:22:19.125449Z",
+  "updated_at_utc": "2026-10-23T08:10:34.883592Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,11 +42,75 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_17442be636362d7c9c474e",
+      "title": "Amman Mineral (AMMN) Berencana Buyback Saham hingga Rp1 Triliun - RCTI+",
+      "url": "https://news.google.com/rss/articles/CBMilAJBVV95cUxOUXZWV1hTay03ZnFmSDlLaUh1SDdHMlNkS3dzWF8tczFDMGJ2NWtkNFM5QVVROEJqcElSN2MycDJyTWRGYjFmQk1HSDdPNmxCemhsTXdLQXpxTV95YTVpMjU2WnFlMTVtMXM2ajkwMzRKVjVCNFh6R195X1luZktUYkZEZmhvbkZBQTdiQU9aSlQ4b250SUhuNE5SaXNlUW9GU1JUNmJmLWNYX3ZveXhjYjh2RldtTF9HcV9lQjdiem9SZGxKcUpIUlRKS285UDJ5YVU5ay1rUElUeFdmSXVGa2Y4ZnFSY2xLNm5NWm1sOUFhcUVZYU9fdGhldzJfS1FHZlprOXVpYUJNWXIybDNqcEk0cnE?oc=5",
+      "publisher": "RCTI+",
+      "published_at_utc": "2026-10-23T07:44:09Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_9559921c43b64a0d1199fd",
+      "title": "AMMN Siapkan Buyback Saham Rp1 Triliun hingga Januari 2027 - Suara Independent News",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1rakVDMmhCd1cxcDJqZFhHZmJnTVpTNWFORDF5VUFWZXc1UUkwRFRIWXZWekFWdndaMUd5QUJlMlZFdE1MQkNSS0dIckh4cFJJYWZKWEVEcVdvOWs4elctaXh5UlVIWWItTl9aNHF2LTl6N2VE?oc=5",
+      "publisher": "Suara Independent News",
+      "published_at_utc": "2026-10-23T07:30:24Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d73d327a00a30232405efa",
+      "title": "Laba Adhi Karya (ADHI) Melesat hingga Kuartal III/2026, Pendapatan Turun ke Rp5,37 Triliun - SWA.co.id",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQOHRfb3FwckNHWXVFNVR3aWVQSTRFQVZRNFZ5cEJITEsyaTdNRk9MRXFwSjQ3ZTlLZFVxRmlFdXVwSFdfc3dWUzlkM1lrVGtDQWQzYWwybThyZGNMb3VWaU5zS2ZSai16eGhEU1gxSl94VzhmUU1UX3cyWEkyTGZ3azFjRlVHbkZ0X1FxclFvMUVxR2FaX1o5cGVwQnNaei1xdzdYZy1LQVByR3FOLVhYbUc0REo5UQ?oc=5",
+      "publisher": "SWA.co.id",
+      "published_at_utc": "2026-10-23T07:30:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADHI"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_546759fde32c78f8afa2f9",
       "title": "Amman (AMMN) Siapkan Buyback Saham Rp1 Triliun Lewat BCA Sekuritas - Bisnis.com - Market",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQYzJSMWxJLTJ4bW1WQ1BaRnVFZ3h5YUFlY2NJRzVPZlB2eUFRbnpHZTlycG5objBtOGJGdkpLejN0SEozcmpSQnhUaFNYeTFfaS1QQmNyVDJIM2w5TTFoX2FJUlV5MDlCeXBnUzYtS2szTmRiUV9maWg2TnRXSmFZTmRMMndjUDEyd0MxbHh0TUpEbnRWYmxaX1hrejhiSEo1R09va3JDTG1NUFlZTlg3TGpOaW5xQjg?oc=5",
       "publisher": "Bisnis.com - Market",
       "published_at_utc": "2026-10-23T07:02:05Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_e2c6e06bb69d5c7b6a4443",
+      "title": "IHSG Naik Betah di Level 5.400 pada Sesi I, Saham BYAN hingga AMMN Jadi Pendorong - Suara.com",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQdE1nM0ZSemVXQ2F6T2ZGQ1Z4c0lqdzhDOW5DczdDMkN3RkthSkxGajFIb0FkX1BCanZabWltZ2dxZEtZNjlEamJSbjRqLXk0NUlEM2lRRDhjUkNVblZyN3RSUkktbWRIU0lYcnhTYmxUaVVFNThfVWFNRmJUOGdnWHQ3WnVDazhrVE9zMnZaLS1paVdmYWJMN0ktLUotenFFSi1kMGI5TzZYTVh0TjRwdWpEWEFWa1RJVGJqVDJLYlVKOFAx0gHEAUFVX3lxTE5EMjN2RU56U2tsVXNZa2dFUXh5dUxVM0V6aVdSYW9raFMxTHhUR05HVzFpdTA2N3RUMUgxMjJMNjhBTEp1SkVkWFk2ME1oX1c4YXQ1T05NVDNGdkFmRHh0U1Y5eXd2MkFWbXo0Rk5Yay1ZMWlYc0hBa00tdFVrMEU2cUZrTThjZmUyY2V3b3FzTFB1azcxZ1RVS2dPd01JZHBJN2FvZlE4TGxsLWNwZWZsbld5X3FIZUtBeG5BMWhab1MtTFE?oc=5",
+      "publisher": "Suara.com",
+      "published_at_utc": "2026-10-23T06:38:34Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "AMMN"
@@ -350,6 +414,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_26fef0d37f95f8b17d9e59",
+      "title": "IHSG Diprediksi Menguat, Investor Bisa Cermati BBTN, ANTM, dan INCO - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPWUdHRG1ENURScVI0NW5UalRyZGZMZ2VTXzZfWGlBdEZqU3BGc3VDY1VwcTJaQWNvWkxPcGxoWHRDd19GdzFNd3RlT3ptazhyeXBIUS03dmVSZ044ZmtxTjBLUDNfdDhTSGdhdGlpVEFTT1dEMnZISzlpWUQzczdGM3VNWHBNS3BYWldSSnc4MTA2SGNCeE84bGdKbmVXU2NnOHhSdmJ5dE5hRHh1ZmdIdDJUWUxyZw?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-23T01:19:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_4b13a68e3927f6e7284803",
       "title": "Investor Global Soroti GOTO - investor.id",
       "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE14TmNkc3VuVjVKWko0SjQzYXcyRDR6WVFZQXRRQ3I2c2lJX0lBb1dULTFSdHRvLXVjdy1DVlpwZ3pUNzB1akxXTUIxUC02di04dVl5VHJtV1luMVJhRjhBNGJfNEtSMTNLRjdhSmhR?oc=5",
@@ -623,6 +703,22 @@
         "AMMN"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_6f1eca2d35f14eccc3cbd8",
+      "title": "Saham GOTO Turun 3,85 Persen Saat RSI Masuk Zona Jenuh Jual - ChatNews.id",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE8tTmdmV25RclFoa0lQNmhqWlg0R21ORl9XeWZWVTdoSUJNZ3ByemVoMnc5WHRtMmh4ZXNyd2FmdVhfbHFHdjdXc3dFZHVZZXRTUGZVTnd5Sm4?oc=5",
+      "publisher": "ChatNews.id",
+      "published_at_utc": "2026-10-22T23:05:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GOTO"
+      ],
+      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -2596,6 +2692,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "PGEO"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_21d6501bf0ff44617acc56",
+      "title": "Update Sanksi DSSA, BREN, CUAN, Sederet Sekuritas Terseret - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNYzBzUW1yU2FCdDFUSmdNSTI5Y1lCeFFoVHRVekh3bGU5b0hyWUxCcVU3T3ZqV2Rwd1JDOTJOeUwwWk1MMVBGcnpEWERfWWRFUy1uVFJiZEtUMFphMTJvYW9nWXNHMnFteXBlVUd1T0tPZVhROGJscGFRLUZYaEw4V2J3dDhELXF0bHJoZDJ6M3ktU1FQdHFQM3FydzZySmNpNklKX3FpWkw?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-21T12:50:49Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
       ],
       "sector": "energy",
       "source": "public_google_news_rss",
@@ -6748,6 +6860,22 @@
       "title": "ITMG Dirikan Perusahaan Baru untuk Ekspansi Bisnis Mineral - CentralBatam",
       "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1OT0NQaklRcUlZWExaQnJkeVpKWEZhbld3SXVRQlg0RW9qbmFhZWRpX0liTFFkdnFweHAwc2IyandrWTR0R2tqeU5acVNtQUhZSEkyeWhweGxCUlI3amN0U2w0dlBnaXZvVTUzNkpR?oc=5",
       "publisher": "CentralBatam",
+      "published_at_utc": "2026-10-15T22:33:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ITMG"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d15246b5a105b0ee004cc3",
+      "title": "ITMG Dirikan Anak Usaha Baru untuk Ekspansi Bisnis Mineral - Limapagi",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE4tSHpnYTdZUExrQWRlYlRubVRxazhHTjA0U1BHWnFELTk5ZDhGR01Tak9LdGZPQTdSUDZxbl9xWGZFWUZWaVpiTlFNMFZjNndRNVlNdDNvVFkxRl9OaUNyQWJXMXVyakQtWGZWbkpXdw?oc=5",
+      "publisher": "Limapagi",
       "published_at_utc": "2026-10-15T22:33:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
