@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T01:38:03.643177Z",
+  "updated_at_utc": "2026-10-23T02:09:45.362305Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_c5867350c72af52823f061",
+      "title": "AMMN Mulai Eksekusi Aksi Buyback Saham Rp 1 Triliun - KONTAN",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOMERoZ3hoaHdXbnh1TVZtSTNfVmpKcHhwcVctdGVMR3JVUFdQclM0cU5PTXh2Q1B3MDY0clY4VzQxM0FMRW9CZzVjT0xzU2xtQVdRZkNKVnBoUnVKOXduTzR4YkhUYnJkM2dYZW5lNzVWd2Z5cTlKOFczUVM5cHBSeGh0LU1kZUdWeldxczFn?oc=5",
+      "publisher": "KONTAN",
+      "published_at_utc": "2026-10-23T01:46:37Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_23c6124a5720a669cbc757",
       "title": "Deretan Emiten Lanjut Rancang Buyback, BBRI hingga TLKM - Bloomberg Technoz",
@@ -169,6 +185,22 @@
         "INCO"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_616ead4777c5536fdd8968",
+      "title": "Kinerja ADHI Kuartal III 2026: Laba Melonjak 247% meski Pendapatan Turun - StockWatch.id",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxON0ZQeXp6dUM5WlNPSVlpQ1VyOERsZ3Y2ZVVUSXh3Wm5IS2c2dmtqaGhHQnktVmQ5dWVSOWxiZFNsLUppRkRIU1lnOGE1QlowMVhLT2hVSjZGS3N3bDN3Y3VsWXBvQmlCYUlXRS1RRndUTmZDUXUwMDkxc0tjWUZ2RDhzM2o0MkF4dy1DczY2NFh3WHRFanZkdA?oc=5",
+      "publisher": "StockWatch.id",
+      "published_at_utc": "2026-10-23T00:14:32Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADHI"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -4237,6 +4269,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_d3e813cc6a0600cc1958c4",
+      "title": "AADI Mulai Buyback Saham di Hari Ini, Siapkan Dana Maksimal Rp5 Triliun - SWA.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQbHVUNzZweDkzMkl2QjFsRGsxLWtUbVo5cDR0cTh6ZlRKTVJfSGNpMUxEbzV6endTSk41TDg0amhLZkFvbWRVc3JSd3N4QjNtYVh6R3pqZ2xwTHJmSnlMaWlZVy12c3RvMFpZQnVzQXJDR2xBa1RVekVUV0ZBR3dDSFdpZXExak9GMm5VM2FxZjVNaFQxbGhGT1dSRDl4cU93Nnc?oc=5",
+      "publisher": "SWA.co.id",
+      "published_at_utc": "2026-10-20T03:13:46Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_547d2b293d9a7684dd17ba",
       "title": "Dukung Nilai Jangka Panjang, Telkom (TLKM) Siapkan Percepatan Buyback - Emitennews.com",
       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQcHdzTGdVOUlIYW5aM3Juel9qSS1JWmRIT0FlckZmT1VyMmtBb3FtdThsdm1mYjhkM08yMk4ySWExaHd6U2wxN0hzX0ZYM3dqTXVPby15UElQZDhFZFFLLXp6eXdRbUZUSkRBeTJmMDl1RUotV1Q3VC1nNEZGNGd5NEdSRktSVC1XcS02SDA1emtFWGNkS2gwQldR?oc=5",
@@ -6653,86 +6701,6 @@
         "MEDC"
       ],
       "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_6073f6f6505c87b009f472",
-      "title": "Rekomendasi Saham Analis 15 Oktober 2026: TLKM, AKRA, RAJA, ULTJ, CMRY, INTP - Liputan6.com",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNamJYTENhYlZFSXItM1lvSkFWeFNyd3VXcUpqV3FqbHQwel9HVHpUcjM2X3B6VldmVll5R3ZmWmx1UFJTVWdXZ3VuMlpEN0NXRkhFdG80TkdJLVB3bVczcWt6d1l1SElCNlN4N0pBczZvLTlJRmhVLXV6ODVaMktLWkQ1ZFZ5a0VxZWpObkh0R2lPMVVfd0dqckh3V2Z6RzhVMWpLZXg5TEVPWld4UnZwUlVHeEbSAasBQVVfeXFMUHpHRDMwNW1iT2UzOUJxNDNYSnJuTEZFU3ZHZTNuWHVlYWtsOURsYktpV1YzVUFDYjZ4dFBDcEZBNWdkTnNJbHcwbnlUUDdwZTdPTERKSUhfci11eWtzYmRIM2ZvWklvQmY0RHY0TjJCY0Zwc3Qxd09MeFVuU1RMOGdsd3pyY3YyWm5BazY3eUdfS0VvUXo1dmZFRi1rYUNZTkdZRzFnZzdrcHRV?oc=5",
-      "publisher": "Liputan6.com",
-      "published_at_utc": "2026-10-15T02:02:30Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INTP"
-      ],
-      "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_18578d776549aa0a7a7499",
-      "title": "Reliance Sekuritas Jagokan 4 Saham, Ada INCO hingga ISAT - InvestorTrust",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOSTJWTkFSdGNfcXFnWEFqdURNZzJDaDRvN3hwSjI3RFJOdkpvdkIxdGhPa0lWOTBXczhRRGk3N3F1VkVJRWJRTzBzMDlLMVNZa0sxb0JKYm9ueFBoajQ2aTI5NFFUcW9mRjZjMTcyNkhjemtPZnB5YVA3WE9BZ0d4a0VTTTVOUFRrNWhFQUlhMGxQVnFUbGZmUjVR?oc=5",
-      "publisher": "InvestorTrust",
-      "published_at_utc": "2026-10-15T01:56:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ISAT"
-      ],
-      "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_4e63b316ea5c48f8e465d3",
-      "title": "ITMG Share Price Today (IDX: ITMG) — Live Chart & Levels - JournalArta",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE0zaWVHNHlvLWxxdWpTTlJWT3JhZ2RPa29zbzQ4bDVhOFdhd1RjLWFFbU1XUUNGbnJ0RkNYOVVLU0M5Um9wbmdaSTExc1ROalN0bll4cllsQkNkRFE?oc=5",
-      "publisher": "JournalArta",
-      "published_at_utc": "2026-10-15T01:55:24Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ITMG"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_7c7b28ace34396dabc5b9e",
-      "title": "BNI Sekuritas Jagokan TLKM, AKRA, RAJA, ULTJ, CMRY, dan INTP pada Perdagangan Kamis Ini - SWA.co.id",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOeVdTOUZiWnlPb1JsMkdPUkJ5Q19EQlNFWk85WmJEMGJTRnh2VHp6WC1FY2JRTzYzOExKYldlX2VnT25HWEZEMU9oVW9Cd2Y1VGFRNVRyTzVMNXRVRjV4WVNxelA3Ml9rR0tnTWVtNWdGX1lwMHJSdmlHdmtaaGk4Y0Mtb05QYTdsNG5ZX3p6VnNkSzUyQTE5dDdCUmZBOEZwTlNzZ3ljek9CRnpMTkFJT0NB?oc=5",
-      "publisher": "SWA.co.id",
-      "published_at_utc": "2026-10-15T01:49:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INTP"
-      ],
-      "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_ca2c53d843117485b0b439",
-      "title": "Saham ISAT Direkomendasikan Buy, Simak Target Harga dan Prospek Bisnis AI - KONTAN",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQam9aUnJxbmNjTkdiU2RMZGJMaUVxMEMwakdUT2RFYnZYdF85aEE3d0RGNlVMNXFCVzRFQk13MkNQZ1ZFV1FPM0I2SFBqaWVUODAzWXJTc0tTVXJMbmVuS05QdmdVQ3VZM1NCMnpxbzc1MTM4NTYxYWZKV1h6MTBVeEtESmQzTDFFRHQ5QjVzbUU1ZElQY2Q1Z2k5QWpyUEo4M3QzaDREZzIydw?oc=5",
-      "publisher": "KONTAN",
-      "published_at_utc": "2026-10-15T01:48:02Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ISAT"
-      ],
-      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
