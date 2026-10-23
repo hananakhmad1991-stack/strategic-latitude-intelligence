@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-23T03:37:12.348554+00:00",
+  "checked_at_utc": "2026-10-23T06:43:57.352534+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -105,6 +105,23 @@
       "status": "Unverified aggregated news lead"
     },
     {
+      "topic": "Global coal and energy policy",
+      "topic_id": "coal_markets",
+      "type": "Coal markets",
+      "sector": "coal",
+      "sector_tags": [
+        "coal"
+      ],
+      "subsector": "general",
+      "title": "COMMENTARY: US tariff war is fueling Vietnam's coal boom - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQOG84XzgtRVI4UzlHbEhTWFNJMlVkOU1hTG13WWxmU25waWNBekhRSHZpODA5MlZWTlBmNUxvaFljaDZRcEU4LXdTc1RxTUpIUGRjcjNjLVdSTUVETV9jT3lWME5vR1pzOUN0cXpyU2x3dzg3Y0NwRkpqTGVaX2h2bm1GVmN1OEo1VG1Id3VGWmptd3RST2ZhTk94Y0kta1E2SnlhYUlDNmhLQjczTEVvT3ZR?oc=5",
+      "indexed_at_utc": "2026-10-23T01:14:00+00:00",
+      "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
       "topic": "Global crude oil & OPEC supply",
       "topic_id": "oil_supply",
       "type": "Oil markets",
@@ -113,10 +130,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Trump invokes Cold War era Defense Production Act for oil production, refining - CNBC",
-      "publisher": "CNBC",
-      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFAtRWszSkFOZEpkbWJ0ekJkVEFNaWlEWkN4Vm1oa3ZJLVl2V3R0elRNMGR3dmF5VEI0TDc4a2pGWFhMOEMyT01fRTJTVENBa0ZHSUc5OVEybmhURzNCYnRGeTJsNGlFRFR0QVpVb0JhTmhKX2vSAXhBVV95cUxQQmZpdVFYR1BvQVNmZWpOdV9tek91QTAyYkxCRFcxclJ4SlF5SGtyM0Q1VWsyWEpTZF80WTNzNk4tWHhQWXRfZG5tMmM1Tjc5czEtbGRwemdyX3o1TG9lQjFmMGtsYVN6UENpMWNkRTlqbXZrSGZCVkM?oc=5",
-      "indexed_at_utc": "2026-10-22T21:37:31+00:00",
+      "title": "Oil prices rise as supply concerns linger amid Houthi attacks on Saudi Arabia - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPR2dZUC10TmJYRUk2RmM5WWpxaUx2XzBPZ0ZTV3hIR3BkaGFvZ3B2T1hhd0xEcXZOWk5LdXhLLUF5QU9XdTRQdnRyTk9jcmVNMEZvZlZBRW8xcG1TVW1fTkY2UnFrcXlVWlUwbDhRYk9pcW1fdEdzMVNRR2ZhYVl2T0RZa09uZTktZGFWRVRWSEpGeFhYVXVPR09zNDVaTVdiNDdRRHg3VFNyZWNNWVBmdkxGMWFOa05yN2NBRnRVZjF3eF9i?oc=5",
+      "indexed_at_utc": "2026-10-23T05:27:30+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -130,10 +147,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil prices hit five-month high as Houthi attacks stoke Middle East supply fears - Reuters",
+      "title": "Trump invokes Cold War-era Defense Production Act for oil production, refining - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOYzBEdGVKYmZ3VVpJajg0TW5DN2VHVEM2aDVTcFJKQVduMnVMTU5NbVcyMGxBanBHY3VvMzJQR1VrQWM4b0hLeG1YaTFWcldTeU9yTlBXc3FiR1FtcUp0SmxhRkJkWmpmZ2x6X3VGZHZEUDNLTE9LTFZNSlBWWjNJVGtaV3YwWkc4QVhxbHozYkx5THpZMVlYVDAtd0dqbUMyOUcyVk91NEYxaFFCZklRWWhjQm5qN2NvVHdWdnZIQVJSMk0?oc=5",
-      "indexed_at_utc": "2026-10-22T00:46:00+00:00",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOdm9ka0hnal9OOUFnN19HQmRZd0ljY2tJOVNoN2tIWURrMHExZ0p0NWN0UEpTMmFORG1TTU1CeXZkb3RhenhtelltYVY2SmRyZEctMnRIcUNEQlFXODdsZGxBMXhpem81NjJwRjRCbVl1N2tyWVkxeXU0T2k3ZEttNk5lbzZCVzRrUEtwT3JPTlJiUUVmSjU4b25EaXNIQ3dyS3c3NlJUSkFBdWZSMDFZVmZ1dmhncGFIYjNQU0tOd1I5dFk?oc=5",
+      "indexed_at_utc": "2026-10-22T21:32:07+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -163,6 +180,23 @@
       "sector_tags": [
         "nre"
       ],
+      "subsector": "hydro_geothermal",
+      "title": "Trump geothermal lease sale collides with planned Nevada solar farms - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObmVVLWhZQi1mVVJXZ3haU2hJNk55bGdjd3VMVEZ3R0VwMUlDcERKVmc0N0VSQjkzYmtpaDh1d09zZS1MenF2R09mWGZQNHFGLTBNU3R3UXNFNmgtSGlLUjR4R1o5MVdwRllua3UxY2E5UDRlYUlfT05fVXZKaVk4ZTVJZW0wZm5QRWlxblRqUEJuc19ZYTNkWENpTFk0WWttNkpFQkNyYUR4Y0dTV2xqVkJ4MlV6eU9jS091eWpR?oc=5",
+      "indexed_at_utc": "2026-10-19T11:01:00+00:00",
+      "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Geothermal and renewable financing",
+      "topic_id": "nre_geothermal",
+      "type": "NRE investment",
+      "sector": "nre",
+      "sector_tags": [
+        "nre"
+      ],
       "subsector": "general",
       "title": "Tunisia targets 16% renewable power share in 2027, plans 1,600 MW of new capacity - Reuters",
       "publisher": "Reuters",
@@ -175,8 +209,8 @@
   ],
   "sector_counts": {
     "oil_gas": 8,
-    "coal": 1,
-    "nre": 1,
+    "coal": 2,
+    "nre": 2,
     "electricity": 0,
     "cross_cutting": 0
   },
