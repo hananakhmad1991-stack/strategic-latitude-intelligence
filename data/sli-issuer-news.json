@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T12:34:22.258749Z",
+  "updated_at_utc": "2026-10-23T13:16:07.501284Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -52,6 +52,22 @@
         "BREN"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c51c1057de902846650114",
+      "title": "PTBA Proyeksikan Pendapatan Kuartal III 2026 Naik 29 Persen - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1GY1FtbE5OM1BnOG5NY1lfNzN2Tm5UWVMtQVYtd0VFbXlFYUNkSkU1MEU5eVlSVm40TXdNZ0VWLUFNZDlyV004U2ZGci10ckVvM1BZ?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-10-23T11:00:52Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -154,6 +170,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_f1eb393f8671b748e46127",
+      "title": "Pendapatan PTBA Diproyeksi Melesat Didukung Logistik Kuat, Cek Rekomendasi Sahamnya - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQeHo3a3djcDlFSFkzNnllYWhTZFNWM2NTQ0JNUDNMMUpReEQ5OFBDNFpsM1dYdElnb2RQeU43cGIwTVpOWS1lNjdqQ0V5UE1UQzJyT2tPQjBVTWJjekZJODVRemJ3cXNJQ09mMWw3ZG00WmFsSFFncVBWZ3g2Vlg0b0h5dURqTmthdTV5WWUyVkVMZ0NBdmNQUUJJNEdUa2ltczFTVlBnMHozdF9ka2pVMXhHVU1lMGxHUXfSAbIBQVVfeXFMTXZ0YURQQVRrQ1ZZZGZkNWc5am9qVXBVNG00aDVwNTRFdThGVi0xaGNJeDJZcWlUYjdCaEtqbXVKNHlFRElwSE1HUmhpZFV1RlJocGZZX1QtVi1KNXE5VkhQU1pLMXNsZlVnZEJMaDB3ZTh0cXlTclRnbHhScV94bHA2eXBTZHdsVDJoUGR1Ylo4NmFOeEhFdzdON2w4a1hkSTNaOHo0VUhHSURzWFFFSnJpZw?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-23T10:53:01Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_598185b9967df8b04d3fd0",
       "title": "OJK bongkar pihak-pihak terkait manipulasi saham DSSA, BREN, dan CUAN - IDNFinancials",
       "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOaV9pTUh1ejRhZnhqSjlYN0w1ZHdVcWhsUzlRZXladGdvRFJaN2s4TXYwcnRQVm1iZkVXTHJnandEcVdSTWxVWkJXLVhKZ3dHcW1EMzk4dVNuSk1USGV4eU14emNIUS00RFdKMXpJNVQzeTRSWmpUS25TaEM0MmVXNGptTDJoQkdIX2NRMVpfM2hEN2V1WXJrcVBJZnNKU0ZkU29PeF9rWG1BUUhtS0E2VEUyWkJPQU41SEE?oc=5",
@@ -164,6 +196,22 @@
         "BREN"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_a4f53de08519c5041f5052",
+      "title": "Foto : Saham ANTM Melonjak 4,4 Persen, INCO Ikut Rebound, Simak Prospeknya Halaman 1 - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPQUZvbFFtNjlmNDNuTmFSa3R1eVY0aTFTVWdmc19SR3MzWmlWUlVzMTltVFdJSzc0X0U1T19NNEppcnk1N1RpMnZJU1JpTWFYNUlqV3hMdTh4Ym1HUDFVZzRDUWFTdmZxSlVzWnc1M1l4ZFBLOS1CWW5PUXI0N2NYMHZpamx3VHBCblhDS3ZscC1ZUmFnTUFYOFg0M05OTEJtanc4R0RyeEpCVEJINnJKbTNqZG5XQ0toRERaZkhQOXQ?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-23T10:30:05Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -196,6 +244,22 @@
         "PTPP"
       ],
       "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_2bf6096b71c8b36ab671fd",
+      "title": "Monetisasi Data Solid, Prospek AI Jadi Bonus Valuasi Saham ISAT - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPWDdWa0UyYm5KaVBib1BqQi0xM3MzcmxkNzBPNEdjTHN1YkdRSGpXd28zX1pwWXlIbjUtOXN6WUg4M0NRQmtwc2ZWdkhDblFBOWhucUxaQldfUU94SGxIY2dhendTSG8wcHFQeUJVaWNfTDE1VjRhRElCT3dsVW5TazJJdVE0NnhOZGpkZzlyYjJjeElINmRiaDF2cGJvV01UbW1LaEZ5ZnIxaVpHY293VENuekhiNlo4Z2fSAZcBQVVfeXFMTVpuaFNYc3ctVU9QYWtLZW5vUy16RlpKZWd5bVc5dm1OZTZIUVc4ZXk4LTRGdklTeUlSdzNWTFc5UDlvTWFHLUl1VFhFSHVpdnJTYkRxam9pUlVmZkgwaHduX0NEOGdiMGVSdld4X2p4dWowVkNvS3dxTjZueXJFY1dEX1V2aTNXdy03cWFrdlNmTV9XQWdPMA?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-23T09:59:15Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ISAT"
+      ],
+      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -2998,6 +3062,23 @@
         "BREN"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_5c1128e0944c25decd6599",
+      "title": "INDF dan ICBP Akan Gelar Buyback, Totalnya Rp1,5 Triliun - Emitennews.com",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNUnNGX0NMbVR2UmFTVU9Mdl9iaWNPVUZMTy1HUmp5ODJrT1hFaXVhMmZUNTdEaWxXNTJBaERNYmtnYkxrdHRUbnJudFFtNmRwVWtiV3dScTdpZ0NZRXNFaHBEWGZMR0ptdHBQRnVxZW1ROVFLbDgtT0hnVlFEMjBIV011ekVocTJILUtoMjcyUQ?oc=5",
+      "publisher": "Emitennews.com",
+      "published_at_utc": "2026-10-21T12:45:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP",
+        "INDF"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
