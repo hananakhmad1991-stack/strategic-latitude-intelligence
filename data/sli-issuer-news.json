@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T16:09:56.904439Z",
+  "updated_at_utc": "2026-10-23T17:07:46.556403Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_8b30e25e2f73c686c079d6",
+      "title": "PTBA Kaji Opsi Pembelian Kembali Saham pada 2026 - Suara Independent News",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1FZDEyaXU5bmkwdTRjSFpQall1QkFzNGhBM3FjMXFhRk12QU9Od05XNWhMLVdRWUdlOFpNekJ0dXpXZGYxaG1vZjU2OXZZVDNUamU1eWNTX210R3pYbER2aGUwUDM2Z3kzY01WdWZYQ1RUQmtPQU43TQ?oc=5",
+      "publisher": "Suara Independent News",
+      "published_at_utc": "2026-10-23T16:07:25Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_00c1696c231a0d96ceb188",
       "title": "PTBA Kaji Opsi Buyback di Tengah Penguatan Kinerja Semester I 2026 - patrolihukumindonesia.com",
@@ -373,6 +389,22 @@
         "INCO"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_86ccc861e5e2bb91063af4",
+      "title": "Foto : Indeks Kompas100 Menguat 0,86 Persen, Saham UNTR dan DEWA Melonjak - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPLUUzU0gySnNfZ25LT2pxZVVDNlNFLWFDOTVmcTYwNXZlLXRtS3VjMHo2dWFrcm91UW92Q3RrTEFVMEtPbnlNeGs1YUlfM0NwX1Q4Yl9tM09reDNpUFpod2psa2FVc3BxR1JKUWREbE92ZGhKaDJlRUhGeGtIal9QQUtMWWxNTXpuT2EwTXJSbUlHZkllZ2x1ZWt4eG1FM0ZYQmVXeEJJWGo2SlNmendHMko4cHAwMHc?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-23T10:29:58Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "UNTR"
+      ],
+      "sector": "manufacturing",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -1248,6 +1280,22 @@
         "PGAS"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_727fbe30dcbade5b82e092",
+      "title": "Bakal Buyback Saham, Amman Mineral (AMMN) Rogoh Kocek Rp 1 Triliun - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1LYUxySk5FZ1M1cWxEMzlJM0VXY1huN3htSG9vX0tJb0J4aUM4N3E4RGhHV0YtN0tRYS1DT3MwQXRRMGx4NUlZRW5CeHptVmd6UFktZ3JXUGpwRklVT0hoa2JxODYtQQ?oc=5",
+      "publisher": "TradingView",
+      "published_at_utc": "2026-10-22T22:55:24Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -5398,6 +5446,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_71dcbdc66e9e34d5c9b3fc",
+      "title": "Dua Emiten Grup Adaro Mulai Buyback Saham, AADI dan ADRO Siapkan Dana hingga Rp10 Triliun - TOPIK.ID",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPdEczSE9jODBfYU9MdWJmeWFfdGxocU9aenNWYzRNcDFMRTkwWW5FTzMwOV9hc1dod1lUNVEwQm96MmN3QTdmVWhIam1oWXhyR3V0LS1wUXNjVE5fcktRQWY2d1RZaERCZ0VKU1ZDT1NjTFNZQWtyd1EwWHhsLTlRNTg1Z2haYm5GSDEwb3duZUR2MVNfeVVNdVUxMmM1b0IteGhSVEtVZ1dRcW1Jd0E?oc=5",
+      "publisher": "TOPIK.ID",
+      "published_at_utc": "2026-10-20T02:59:23Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_547d2b293d9a7684dd17ba",
       "title": "Dukung Nilai Jangka Panjang, Telkom (TLKM) Siapkan Percepatan Buyback - Emitennews.com",
       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQcHdzTGdVOUlIYW5aM3Juel9qSS1JWmRIT0FlckZmT1VyMmtBb3FtdThsdm1mYjhkM08yMk4ySWExaHd6U2wxN0hzX0ZYM3dqTXVPby15UElQZDhFZFFLLXp6eXdRbUZUSkRBeTJmMDl1RUotV1Q3VC1nNEZGNGd5NEdSRktSVC1XcS02SDA1emtFWGNkS2gwQldR?oc=5",
@@ -5462,6 +5526,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_74e85502a42b941163214a",
+      "title": "Dukung Stabilisasi Pasar Modal, AADI Buyback Saham mulai 20 Oktober 2026 - MetroTVNews.com",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOM053TzM4ZW5KUmgyNnRPUHNEbDA3S3lWYXdFb3Y3M2NuMGNiOWk4TTZ4bmlWbXFBNDFqVWZzbVRnUE1XUldrbUpQR05PbkdZb3VUdDdxTEI1eDQ3clpRUnZUOHhyZjNpWmZQSHo4ZERVUWc3Yi1xRVJvVGxXZjNDRkVzbU1YWWxUdVQ2TEZpNmxXYk95M0JTVDEzRE1laldJNHJabGNQbDNzSHp2V3Mzbkx4MA?oc=5",
+      "publisher": "MetroTVNews.com",
+      "published_at_utc": "2026-10-20T02:05:35Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_b066946d861a21e3baacf1",
       "title": "BEI Bakal Keluarkan 80 Saham dari IHSG, DCII dan BREN Ikut Terdampak - HARIAN MISTAR",
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPREMwZ3BERTF2bWs3Z3FFZUI1Mm1TNlJha2NWQTEwQzVzN09LaW9SSDRnLVVtMXl3c2VXSXMxa2JsQi1IWGlhVUYzRVFIclBBc0RmMjNUS3BYTEthVTZmd25ydEZtYjdPV001VXpoVk1WZFljZERrV19fZmpmLXpCU1VCWTdHbDBlOUFjNXgzQU9DRjBCbllncEZ3SGZZTlk?oc=5",
@@ -5472,6 +5552,22 @@
         "DCII"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_0811a8b95b0004128db874",
+      "title": "HSG Berpotensi Melemah, Simak Rekomendasi Saham AADI - InaKoran",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQOUdzM185TkhzTTBkS0M4QU1QMjRoR3BqTzlVMnJJdDNWOFRac0RLSWxHNzFDSWhwWTkzaDZJU3RxRTFEbldkRDh2M3NvaWpVLXU5MlJvN3ZRbXh6TmxoR3BGR3ZLRm5HT193SF9pd0VvYThQSmRJVXNnYkl0NzlCYzhmRDBLUQ?oc=5",
+      "publisher": "InaKoran",
+      "published_at_utc": "2026-10-20T01:58:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -5559,6 +5655,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_67b40d4a95730af61191f9",
+      "title": "ADRO Lanjutkan Buyback Saham, Manajemen Yakin Fundamental Bisnis Tetap Kuat - Rmol.id",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNcUduLUl3UGRpSHBTMkc0blpEdVNaak9ERHQ3T01sd1ZIRG1ORjJMSHZxenNmQXRzVmFjOUNnTVBiOEdfQUd6eW5DYTEyS1RETE5vTUYyREEzOUNkcE9SbjY3cWFiR3V2N2E0YnQ0MW02X3BBSEItMWhCdGZZdW44Yy1YWHh1U2NHamJ6UkRDRTVtMllRU19TMHJvWEc0OHVhYzFwWGQwYVFuQlp0VFRCb0ljWQ?oc=5",
+      "publisher": "Rmol.id",
+      "published_at_utc": "2026-10-20T00:57:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_de7cf43728ff568e56b429",
       "title": "Alamtri Resources Indonesia (ADRO) Borong Saham, Dananya Triliunan - investor.id",
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPenF3OUZPUkEzbVhiTWJ6aTUxZS02R25SSVlfckh5T0pmWWJSbndSMG5EV3pTel9ETzUyVUZoVnc4dVgwOE9iY2dsdW4xQjJPLUFkMDh1SG1nMGNyODNvN05sVUw1MHRvb2hpZ2VVQTUwZVNUeFRBdmJROUZqeHNfRWVYN3IwTEtCaGNUT3lrdW55WV9idm9XVk92Wm9kdw?oc=5",
@@ -5567,6 +5679,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_811afbde1ae4e3016ecd5c",
+      "title": "AADI Mulai Buyback Saham Hari Ini, Periode Berlangsung hingga Mei 2027 - IDX Channel",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQSUdBLVdUZ2xIYUtpU1l2MkZESTUyVGg2MGRYMGdkYUR2ejJGbkhBaksyOUJHQmRxbDFpdkE0SkxlQnQ3OTd6YWFTNUZobXp1a1UxQngtZXpGUHdjemtSOHRFeF9OQ1h3Y2hwcG1ycmlBOEtkNm8zbUxDX2YtOFNpVlB6dzlEMUx6T3MtZnA2dlFWQkxUdXN3X3BGX3RTSkh0a0xKYVlNTmtkejFP0gGyAUFVX3lxTE95ZnB6YjU5VGJnS1V5N21wd1pWamt5Ql9kSE1JVXpRcnh3dUJMZ1JzeFU4NGFHbjhBMm9xM2xERThFT3lxdFhpcFExcTNQS1pTWjlTLVktZGJSdmc3XzJUQlhsZXlJOEp6M3hiS2MtYlJiVzNkWXh0b0dHVUcycDF3RU05eHgtcVlzdlhJVzFsSlp0VldyN0w2S2VhWFdLSzN0VkQ4YXYtTElMUzZBalpkWnc?oc=5",
+      "publisher": "IDX Channel",
+      "published_at_utc": "2026-10-20T00:49:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
       ],
       "sector": "coal",
       "source": "public_google_news_rss",
