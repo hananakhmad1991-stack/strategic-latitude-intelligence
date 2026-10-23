@@ -1,15 +1,15 @@
 // SLI Early Warning API — GDELT signals only, never verified facts.
 // Deploy as a separate staging Worker. No secret is needed for GDELT DOC 2.0.
 const SECTORS = {
- energy:'(Indonesia OR Indonesian) (oil OR gas OR electricity OR PLN OR energy)',
- mining:'(Indonesia OR Indonesian) (nickel OR copper OR tin OR mining)',
- industry:'(Indonesia OR Indonesian) (manufacturing OR factory OR industrial)',
- finance:'(Indonesia OR Indonesian) (banking OR rupiah OR stockmarket)',
- food:'(Indonesia OR Indonesian) (rice OR foodsecurity OR agriculture)',
- climate:'(Indonesia OR Indonesian) (flood OR wildfire OR drought)',
- technology:'(Indonesia OR Indonesian) (datacenter OR cybersecurity OR artificialintelligence)',
- defense:'(Indonesia OR Indonesian) (defense OR navy OR maritime)',
- infrastructure:'(Indonesia OR Indonesian) (infrastructure OR port OR railway)'
+ energy:'Indonesia (oil OR gas OR electricity)',
+ mining:'Indonesia (nickel OR mining)',
+ industry:'Indonesia (manufacturing OR factory)',
+ finance:'Indonesia (banking OR rupiah)',
+ food:'Indonesia (rice OR agriculture)',
+ climate:'Indonesia (flood OR wildfire)',
+ technology:'Indonesia (AI OR datacenter)',
+ defense:'Indonesia (navy OR defense)',
+ infrastructure:'Indonesia (port OR railway)'
 };
 const ALLOW_ORIGIN = /^(https:\/\/hananakhmad1991-stack\.github\.io|http:\/\/localhost(?::\d+)?)$/;
 export default {
@@ -33,14 +33,14 @@ export default {
   endpoint.searchParams.set('mode','artlist');
   endpoint.searchParams.set('format','json');
   endpoint.searchParams.set('timespan','24h');
-  endpoint.searchParams.set('maxrecords','20');
+  endpoint.searchParams.set('maxrecords','10');
   endpoint.searchParams.set('sort','datedesc');
   let upstream;
   try {upstream=await fetch(endpoint.toString(),{headers:{Accept:'application/json'},signal:AbortSignal.timeout(12000)});}
-  catch(_){return json({sector,status:'upstream_unavailable',articles:[],verified:false},503,cors);}
-  if(!upstream.ok)return json({sector,status:'upstream_error',articles:[],verified:false},502,cors);
+  catch(_){return json({sector,status:'upstream_unavailable',articles:[],verified:false,classification:'upstream_failure'},503,cors);}
+  if(!upstream.ok)return json({sector,status:'upstream_error',upstream_http_status:upstream.status,articles:[],verified:false,classification:'upstream_failure',retryable:[429,500,502,503,504].includes(upstream.status)},503,{...cors,'Cache-Control':'no-store'});
   let payload;
-  try{payload=await upstream.json()}catch(_){return json({sector,status:'invalid_upstream',articles:[],verified:false},502,cors)}
+  try{payload=await upstream.json()}catch(_){return json({sector,status:'invalid_upstream',articles:[],verified:false,classification:'upstream_failure'},503,{...cors,'Cache-Control':'no-store'})}
   const articles=(Array.isArray(payload.articles)?payload.articles:[]).slice(0,20).filter(x=>{
    try{return new URL(x.url).protocol==='https:'}catch(_){return false}
   }).map(x=>({title:String(x.title||'').slice(0,260),url:x.url,source:String(x.domain||'').slice(0,120),
