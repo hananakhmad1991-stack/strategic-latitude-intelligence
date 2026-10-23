@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T22:58:48.995127Z",
+  "updated_at_utc": "2026-10-23T23:26:05.365579Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -6968,7 +6968,8 @@
       "published_at_utc": "2026-10-19T02:00:37Z",
       "date_type": "rss_pubdate",
       "tickers": [
-        "CPIN"
+        "CPIN",
+        "INCO"
       ],
       "sector": "food",
       "source": "public_google_news_rss",
@@ -7848,102 +7849,6 @@
         "PGAS"
       ],
       "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_7915b37b072e583d515473",
-      "title": "Target Harga Saham Bukit Asam (PTBA) Direvisi Naik, Laba Melonjak dan Potensi Dividen 10% - InvestorTrust",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPNnVINUlWM0JiS1FPeEhPV0JfS2lFQ1hkV05nby1XUElBS3U4U2dpUzh4X1Fnby1RVnMxVjJaX2RRVVE3Zm5GRl92cXlGR0VHZE1lWVNWY2tkaUVKYUVqZzNodFFQNjhPVFc0VU9fR21jM25FbFFDeUpXemZuUXI0TkJSbHhXeXRybXRldDRKVlBzWms0UXpGYzl4OFhiWnV0alljN0F6TU1sVnEzdGZ1U0UzdTFUbFZTaEM0Y3FWVWdhdw?oc=5",
-      "publisher": "InvestorTrust",
-      "published_at_utc": "2026-10-15T23:22:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_8663bb336d3bd131a6f294",
-      "title": "Saham INTP Menguat 2.38% pada 15 Oktober 2026 - bsinews.id",
-      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5LNVA1Q09TTGJnOGx2U3VCaVNfRnc0R09sdTV5dWJ4T1JoZVAzN1JrZWhhNkpIcjR5LXY1Y2h1YThzbks5WVhsX203QkI0T3NySVllMUFmYU9vbXg5T2JxVG9XMA?oc=5",
-      "publisher": "bsinews.id",
-      "published_at_utc": "2026-10-15T23:17:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INTP"
-      ],
-      "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_63ff2fa3e640312a6aaca8",
-      "title": "Saham INCO Menguji Support Rp4.050 pada 15 Oktober 2026 - bsinews.id",
-      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE94aXBGS2JFUzBzVGdGUDliSmNYbUNKNlhHMGp4czh5bW54ZmFMWUx4THRoZGRVeG5TS2hDR1FxZTRQZ0FudEh2cEVfN3REQXNHbkNxSUFfeXRfQ2JHMDNxNA?oc=5",
-      "publisher": "bsinews.id",
-      "published_at_utc": "2026-10-15T23:14:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INCO"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_d321b279f19a2463323c70",
-      "title": "ITMG Dirikan ITM Mineral Investama untuk Perluas Bisnis Mineral - Demokratis.co.id",
-      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5IcHlkTzJqNmhsWU10NjY3WXVMd1dIWVZEOWo0aDRCNkJkNmc0cVJDWkktZ3RXOXEtNXpITkZLV3Q5YUxlbDVoWnMxLXlkVkFCU1cxZTVYeWJoWjFBQnFtdW5ITFlOQW52czlr?oc=5",
-      "publisher": "Demokratis.co.id",
-      "published_at_utc": "2026-10-15T23:12:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ITMG"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_b54ccf0af3d435c96f098d",
-      "title": "ITMG Dirikan PT ITM Mineral Investama, Perkuat Ekspansi Bisnis Mineral - auranusantara.com",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQX2E2NmxqaXlTaDFkeGJkc3p4U0dMTTIzRzFtejVSNTV6QlBMQnZ1T1FfRXdmV19WX3dsUjlnM0tybGExampZSUpUWUdwTFhqd1JyeVBkLS1pLVlQMzRGd3dTcnYxcmwyaGo5VUZNZlctbjQ3X0l6dGhWaFBfcjhZcEFzS1pKN0lrU2FUZXZmOTdpaUVKeTBZZzYtOENFcDVueDRqTk1kNmRkMEpDTFlDRTJB0gGwAUFVX3lxTE9laV9OVm9GTHN5V1VoSHBpb1lrdTN3QlJSSUlIWDhBdUxDSWxlWmpVLTF5MjJOQUFpdTdwVm1iUzVNR3B1djQ1THVoU2lkLTgzZmo0OGptUmNWeC1TLVVqSy1LVDRZYkhRRVRLSEtnZndyMHNfSXNnWnpGeDktc2ZyZExQUjFLdHlWb01kMWVfSHFkUGdYSWFLb0NkZkg4b1pJbWxpTUlsNG9WdTdpTExz?oc=5",
-      "publisher": "auranusantara.com",
-      "published_at_utc": "2026-10-15T23:04:01Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ITMG"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_b5096f7eb78ed73451fa66",
-      "title": "ITMG Bangun Anak Usaha Baru di Bisnis Mineral - Liputan6.com",
-      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNWUcyay1wU1JOSGVTYXl6dEhramdQMGRuU0YwcFZZcURqbXRtNFR6aGpOVjJ0LU5LakV0RjJLV3NOaG96QS1aZm81aVk2VllfZlRla2QyazZFNnJwcnREdXlUQU9KQU56RjNYQmNIcnc1cmRndzFWc3AzUmNlZFBCNUd4TlY3S0VYRGpOY1JtZmFiUm_SAYoBQVVfeXFMT293TW1DR1VBVndQWVZmcWp0a1hHWjluYXlXZDZDekMzbmtFLUtPSV9QWEdKajdOZG5UTmlXZWNFX1FLaXMtaHg2Tjd5MDhxT1J0NGdOYXhfZkpiNF9jWlhNUGVYb0hRRUJqaHB1MHlsZkYwdVY0ZndqZ0ZDc24yaHVvbUpQeU5SUFFn?oc=5",
-      "publisher": "Liputan6.com",
-      "published_at_utc": "2026-10-15T23:03:31Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ITMG"
-      ],
-      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
