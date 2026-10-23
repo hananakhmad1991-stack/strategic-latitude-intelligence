@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T09:07:57.269104Z",
+  "updated_at_utc": "2026-10-23T09:36:46.188299Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_5c295326f7ecd332eed83c",
+      "title": "IHSG Ditutup Menguat 0,95%, Saham Bank Jumbo hingga TLKM ke Zona Hijau - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQmlfQnhnS0RSUWNPOGJfNnVUTTVZZ3QyQzFFckM3b0l2QXNUZGc4MnhSZEFHNXFraHRMMDZ5Qi1mT01MYzNlX0xNc1JEX0FJME05OXJFdU5OSHRXeThRcVBVZFE5by1RZmNxNkFuemMwRUdxdHhBRktmQkYyT19JMEhnYnNjZG00MUtNUThBOEZfaW83UFdxUVdXR2hZNzFwUkR1YVUwSTlTa1I3UmxKMklzNGxDbGFl?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-23T09:10:37Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_17442be636362d7c9c474e",
       "title": "Amman Mineral (AMMN) Berencana Buyback Saham hingga Rp1 Triliun - RCTI+",
@@ -106,6 +122,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_4afdc9678a60950b5c61c4",
+      "title": "Amman Mineral (AMMN) Berencana Buyback Saham hingga Rp1 Triliun - IDX Channel",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQZDZwWE4yMW1Helg0NjdScXdfdEVhNkVtanE1aXA5VFlkU0dFVEpPV0dzbjh0aWItem5VaFVqUkNPY2VOTHdKSjc1SXpIVmY5ZXk2UmxCRVM2YkotRWJMMmxRVHRlcnI1aFJTODFId2hwOEJfbkJZMUlNVXRaNlFlc1BPOGJ2MmhJck04c3p2WWNMWVU4NlF1d200amgyT1o2VkE?oc=5",
+      "publisher": "IDX Channel",
+      "published_at_utc": "2026-10-23T07:27:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_546759fde32c78f8afa2f9",
       "title": "Amman (AMMN) Siapkan Buyback Saham Rp1 Triliun Lewat BCA Sekuritas - Bisnis.com - Market",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQYzJSMWxJLTJ4bW1WQ1BaRnVFZ3h5YUFlY2NJRzVPZlB2eUFRbnpHZTlycG5objBtOGJGdkpLejN0SEozcmpSQnhUaFNYeTFfaS1QQmNyVDJIM2w5TTFoX2FJUlV5MDlCeXBnUzYtS2szTmRiUV9maWg2TnRXSmFZTmRMMndjUDEyd0MxbHh0TUpEbnRWYmxaX1hrejhiSEo1R09va3JDTG1NUFlZTlg3TGpOaW5xQjg?oc=5",
@@ -148,6 +180,22 @@
         "DCII"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_73d07946b79916d03462df",
+      "title": "Jasa Marga Minati Saham Adhi Karya di Jasamarga Akses Patimban - Koridor.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBoVUljZk53bmNJMUI3akNNOW5xb0JMNEtYdjdTVjVlcnFyT0Uzd2puUzVpNFp0X2JvZjl3bm5TWkJMVmdlU1VwVGEyR2tacVBSZ05xTTBlRnduSy1VYWtWeXM1WWZGeXc?oc=5",
+      "publisher": "Koridor.co.id",
+      "published_at_utc": "2026-10-23T05:16:15Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADHI"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -743,6 +791,22 @@
     {
       "id": "sli_issuer_7f73491313163ea16c37cc",
       "title": "Momentum Melemah, Saham PGAS Menguat: Analisis Hari Ini - JournalArta",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNNkx6SDNoLWYyRjZDVktYcG9tOXFwZjRkakd5NjRoSzZxWGJsYWNKNVo0eVJsTE5lTVUyUVpoMTd5dE8zSHU3TVJnMU9mT0pkYWlVcHFZT1czbURpV09ZVERsNDJsQ3A0bFUyZEVjbk0xeHI0TmpXdkFJcHVDeXZFMW1KYlVuQ3JQa1oyTjRlOGNrSVlZWmMw?oc=5",
+      "publisher": "JournalArta",
+      "published_at_utc": "2026-10-22T22:49:33Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGAS"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_905b2af4c34c1827360fb6",
+      "title": "Momentum Melemah, Saham PGAS Menguat 2.62% pada Kamis - JournalArta",
       "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNNkx6SDNoLWYyRjZDVktYcG9tOXFwZjRkakd5NjRoSzZxWGJsYWNKNVo0eVJsTE5lTVUyUVpoMTd5dE8zSHU3TVJnMU9mT0pkYWlVcHFZT1czbURpV09ZVERsNDJsQ3A0bFUyZEVjbk0xeHI0TmpXdkFJcHVDeXZFMW1KYlVuQ3JQa1oyTjRlOGNrSVlZWmMw?oc=5",
       "publisher": "JournalArta",
       "published_at_utc": "2026-10-22T22:49:33Z",
