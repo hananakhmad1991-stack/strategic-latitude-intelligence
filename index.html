@@ -715,28 +715,26 @@ if(location.hash==='#sliPortalSectors')requestAnimationFrame(()=>document.getEle
 </script><script type="module" src="./js/sli-sector-context-portal.mjs?v=20261018-insight1"></script><script defer src="./js/sli-public-usability.js"></script><script defer src="./js/sli-navigation.js?v=20261019-id-audit9&expert=20261023-top1"></script><script defer src="./js/sli-sector-leadership.js?v=20261021-v1"></script>
 <script defer>(function(){function add(){var root=document.getElementById('sliPortalSectors')||document.querySelector('.main');if(!root||document.getElementById('sliKemenperinEntry'))return;var a=document.createElement('a');a.id='sliKemenperinEntry';a.href='./sli-industrial-intelligence.html';a.textContent='Industrial Intelligence · Data Kemenperin ↗';a.style.cssText='display:inline-flex;align-items:center;max-width:100%;margin:10px 0;padding:9px 13px;border:1px solid #d7b678;border-radius:9px;background:#11263a;color:#d7b678;font-weight:650;font-size:13px;text-decoration:none;white-space:normal';root.prepend(a)}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',add);else add();})();</script>
 <script defer>(function(){function addPrivacy(){if(document.getElementById('sliPrivacyQuickLink'))return;var el=document.createElement('a');el.id='sliPrivacyQuickLink';el.href='./sli-privacy.html';el.textContent='Privasi & Hak Data Pribadi ↗';el.setAttribute('aria-label','Buka informasi privasi dan hak data pribadi');el.style.cssText='position:fixed;bottom:16px;right:16px;z-index:9999;padding:10px 14px;border:1px solid #d7b678;border-radius:10px;background:#10283d;color:#f2d49a;font:600 12px system-ui;text-decoration:none;box-shadow:0 4px 16px #0007';document.body.appendChild(el)}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',addPrivacy);else addPrivacy()})();</script><style id="sli-pse-registry-style">
-#sliPseRegistry{background:linear-gradient(120deg,#102c40,#142f49);border:1px solid #58748a;border-left:4px solid #d7b678;border-radius:12px;padding:14px 16px;margin:14px 0 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 5px 18px #0002}
-#sliPseRegistry img{width:66px;height:66px;object-fit:contain;background:#fff;border-radius:8px;padding:6px}
-#sliPseRegistry .sli-pse-text{flex:1;min-width:215px;color:#e8f1f9;font-size:13px;line-height:1.55}
-#sliPseRegistry strong{display:block;font-size:15px;color:#f4f6f8}
-#sliPseRegistry small{display:block;color:#bdd0dc;font-size:11px}
-#sliPseRegistry a{color:#f2d49a;text-decoration:underline;font-weight:650;white-space:normal}
-@media(max-width:550px){#sliPseRegistry{align-items:flex-start;padding:12px;gap:10px}#sliPseRegistry img{width:51px;height:51px}#sliPseRegistry .sli-pse-text{min-width:calc(100% - 70px)}}
+#sliPseRegistry{border-top:1px solid #35516b;margin:26px 0 0;padding:18px 0 8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:transparent;box-shadow:none}
+#sliPseRegistry img{width:42px;height:42px;object-fit:contain;border-radius:4px;background:transparent}
+#sliPseRegistry .sli-pse-text{flex:1;min-width:210px;color:#b6cbda;font-size:12px;line-height:1.55}
+#sliPseRegistry strong{display:block;font-size:12px;color:#e1edf6}
+#sliPseRegistry small{display:block;font-size:10px;color:#91a9bd}
+#sliPseRegistry a{display:inline-block;margin-top:3px;color:#d7b678;text-decoration:underline}
+@media(max-width:550px){#sliPseRegistry{align-items:start}#sliPseRegistry img{width:35px;height:35px}}
 </style>
 <script defer id="sli-pse-registry-script">(function(){
 function addPseRegistry(){
- if(document.getElementById('sliPseRegistry'))return;
- var host=document.querySelector('.main')||document.querySelector('main');
- if(!host)return;
- var card=document.createElement('section');card.id='sliPseRegistry';card.setAttribute('aria-label','Informasi pendaftaran PSE Lingkup Privat');
- var logo=document.createElement('img');logo.src='https://commons.wikimedia.org/wiki/Special:FilePath/Logo_Kementerian_Komunikasi_dan_Digital.png';logo.alt='Logo Kementerian Komunikasi dan Digital';logo.loading='lazy';logo.referrerPolicy='no-referrer';
- var copy=document.createElement('div');copy.className='sli-pse-text';
- var heading=document.createElement('strong');heading.textContent='Terdaftar sebagai PSE Lingkup Privat Domestik';
- var details=document.createElement('span');details.textContent='Nomor TD PSE: 030639.01/DJAI.PSE/10/2026 · Terdaftar 23 Oktober 2026';
- var note=document.createElement('small');note.textContent='Informasi pendaftaran dari akun resmi PSE. Pendaftaran bukan endorsement atau sertifikasi keamanan oleh Komdigi.';
- var link=document.createElement('a');link.href='https://pse.komdigi.go.id/';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Direktori resmi PSE Komdigi ↗';link.setAttribute('aria-label','Buka direktori resmi PSE Komdigi untuk memeriksa pendaftaran');
- copy.append(heading,details,note,link);card.append(logo,copy);
- host.insertBefore(card,host.firstChild);
+if(document.getElementById('sliPseRegistry'))return;
+var host=document.querySelector('footer')||document.querySelector('.main')||document.querySelector('main');if(!host)return;
+var card=document.createElement('section');card.id='sliPseRegistry';card.setAttribute('aria-label','Informasi pendaftaran PSE Lingkup Privat');
+var logo=document.createElement('img');logo.src='https://commons.wikimedia.org/wiki/Special:FilePath/Komdigi.png';logo.alt='Logo resmi Kementerian Komunikasi dan Digital';logo.loading='lazy';logo.onerror=function(){this.style.display='none'};
+var copy=document.createElement('div');copy.className='sli-pse-text';
+var heading=document.createElement('strong');heading.textContent='Terdaftar sebagai PSE Lingkup Privat Domestik';
+var details=document.createElement('span');details.textContent='TD PSE 030639.01/DJAI.PSE/10/2026 · 23 Oktober 2026';
+var note=document.createElement('small');note.textContent='Pendaftaran PSE bukan endorsement maupun sertifikasi keamanan dari Komdigi.';
+var link=document.createElement('a');link.href='https://pse.komdigi.go.id/';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Periksa direktori PSE Komdigi ↗';
+copy.append(heading,details,note,link);card.append(logo,copy);host.appendChild(card);
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',addPseRegistry);else addPseRegistry();
 })();</script></body></html>
