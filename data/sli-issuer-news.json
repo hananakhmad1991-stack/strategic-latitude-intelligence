@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-22T23:56:15.024655Z",
+  "updated_at_utc": "2026-10-23T00:40:10.599897Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,40 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_e23f5df96db39d8a0877ba",
+      "title": "Pasar Berhitung Dampak Kebijakan HSC, Cermati Saham BBTN, ANTM, INCO Hari Ini (23/10) - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQUTgzLUkwU2ljaFNfTkQxeEp2QzJTWllVaHpRMF9kR2lnTTllZ1RFN3BBZWQ1WkxmZjRoMkJjSzJvZ3FITWd0NmI5RTB1THdzTWNYQkZCQkFSQ2dpbm5IRVE1bHBjUnpVeEd3eUhHOGQwMUs2OHhGVHJmZnpoVjdIdzZRMnFrUHJrSVBMa09VdjIwNXFzNU1WS3U3Znl0Sl80Z25tc0Q5X20tWGEyMDM4NHR4bVZETzN0Z2ZVSnRfVE1KNFVyVURKVEg3OA?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-23T00:34:55Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM",
+        "INCO"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f57392a820a43ec3ba9aa6",
+      "title": "Rekomendasi Saham Hari Ini, Jumat 23 Oktober 2026: BBTN, ANTM, INCO - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPVm5OWEFDWDB0WUFpQWphS0VhS2VHdGUyLW5fb1F0M1ZITGpTS1I3MXdmODZCVWh1YThoQUtPcWdRczR6bVMyVVFlUFV3WFFjNmtjWkhiS0kxRGZ6R3dmUHplTVZUc2lwUDRrWVBwMzFGTWxGdjEtTEhUOWd2THNfM2xldWRDZHdwbmtaYUlXUFFiYzZ3b3BLUDhzcU8tZw?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-10-23T00:26:13Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM",
+        "INCO"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_2ef068087b816e796498af",
       "title": "Jasa Marga Kaji Buyback Saham di Tengah Valuasi Rendah - Demokratis.co.id",
@@ -84,6 +118,22 @@
         "AMMN"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_7f73491313163ea16c37cc",
+      "title": "Momentum Melemah, Saham PGAS Menguat: Analisis Hari Ini - JournalArta",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNNkx6SDNoLWYyRjZDVktYcG9tOXFwZjRkakd5NjRoSzZxWGJsYWNKNVo0eVJsTE5lTVUyUVpoMTd5dE8zSHU3TVJnMU9mT0pkYWlVcHFZT1czbURpV09ZVERsNDJsQ3A0bFUyZEVjbk0xeHI0TmpXdkFJcHVDeXZFMW1KYlVuQ3JQa1oyTjRlOGNrSVlZWmMw?oc=5",
+      "publisher": "JournalArta",
+      "published_at_utc": "2026-10-22T22:49:33Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGAS"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -6600,38 +6650,6 @@
         "MEDC"
       ],
       "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_3a920bdfade8e8db9931dc",
-      "title": "IHSG Dibayangi Tekanan Global, BRI Danareksa Rekomendasikan TAPG, BSDE, dan MEDC - tutur.co.id",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQd01ncWJSNHlYMV9Mel9Db2Y5SFRSdk1hcFVvSlBlcVM1dWljemN3YWdwRWttYk1xSnpIT1dES1RYb0NWdU5QZ0pPZ2l3XzdacWZBcWNOVzRFUUZBRVhwb21YY2FoUnVFclEwZ2xLc1ZDWU93M3B3M1VULWp4OEptYUk5UVN5Rk5FMUxZclZLQlNxS3B2THRGWHVfVjAtR28?oc=5",
-      "publisher": "tutur.co.id",
-      "published_at_utc": "2026-10-15T00:28:16Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "MEDC"
-      ],
-      "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_07d1b0b70199099af263b9",
-      "title": "Proyeksi IHSG Kamis 15 Oktober 2026, Cek Rekomendasi Saham ADMR dan ISAT - NTVNews.id",
-      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQRHNQN2RPcm5WUERwWmYwZGtyZ0J5eHY0c1QtWWpYbUh2RkQwRU9oQlNpeVBWc21JVHZWbW5kZU5uUTZuR3RjekFoOU1fdTBVODZfa2JsOUdMTWNBc1BhZFdPU1h1eHVLSE9RZE5ndHNsaWxFLTRZWnFscFlULVZheEx2V0VIY2VrdnNJYXYwV2hmQnRGRUE5bXV5dlVENWczZDl2OFFFQmpMNVFXNkVZeQ?oc=5",
-      "publisher": "NTVNews.id",
-      "published_at_utc": "2026-10-15T00:01:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ISAT"
-      ],
-      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
