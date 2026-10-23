@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-23T18:41:20.909104+00:00",
+  "checked_at_utc": "2026-10-23T21:35:53.115913+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -10,12 +10,46 @@
       "sector_tags": [
         "oil_gas"
       ],
-      "subsector": "general",
-      "title": "Oil prices jump to five-month high as attacks threaten global supply - The Guardian",
-      "publisher": "The Guardian",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOSkIzeWdNTnhad3RfQTdsMFg0OHQ5ejlGVjF2R016akVNelJYNDdVQVNsaE5PRXQ2SWJpT1JDbG5RRmtDdWFEazN2b3FLYkY3eUx5Rmk4bThDcVZmWExKcTFBVW51cEpSUHBPd0ZsUGVnWXF5eTJxY0V1aHlaYUtQTHhsYU00WjdtWk8yOS1UMW9SVVAwN2I3bU43OA?oc=5",
-      "indexed_at_utc": "2026-10-22T11:28:00+00:00",
+      "subsector": "downstream",
+      "title": "UAE Closes Some Beaches After Tanker Oil Spill in Persian Gulf - Bloomberg",
+      "publisher": "Bloomberg",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQckU3WnhmY1F3bjhocVpfT0VBbGc2amk0UmhWZE9jeXdzclRESW5sRWxrWnFCY2NwaWhkNkg1bUZNSUROdW1aVy1Xa1Bub2x5b0FsWW5FLThVZk5rQVFSbVdieVJtQ2J6OEE0ZkdvREZYc2tBSzhHZmk0V2FGYmdBNkFfWXllVGNjdWlKdUZEQVdpd1F0aWVsTnc1TFB0OEpDd1RWSU56aG81aXdidjZ0VEJ4aw?oc=5",
+      "indexed_at_utc": "2026-10-23T10:20:54+00:00",
       "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Hormuz and Gulf energy",
+      "topic_id": "oil_shipping",
+      "type": "Maritime chokepoint",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "general",
+      "title": "Physical Oil Prices Drop in Mideast as Flows Via Hormuz Hold Up - Bloomberg",
+      "publisher": "Bloomberg",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPU2JHWWVTdGUzemo5WVMyVy1IcFZ0QUFhSlNueVh1NDhLbkpQNFpuNmo5VFNvSF9ISkpCNHQxM2ZqZWVLZUJOZ01XTUhUU0dzbmVOdmtaUklwSU9ldExUaV9OdldDNUVBLUViVmRKeUh2YTh6QjZfR09tb3R1QnhnTFcyS0I0ZWJCRS14TDBEYTNzcjN5V19CRWRudWwtYnkycFRyMjhDXzhjWDhZTG4tbXd5Rkw?oc=5",
+      "indexed_at_utc": "2026-10-23T07:24:06+00:00",
+      "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Middle East energy infrastructure",
+      "topic_id": "oil_supply",
+      "type": "Infrastructure",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "general",
+      "title": "Three Killed in Attacks on Aramco Oil Field, Saudi Airport - Bloomberg",
+      "publisher": "Bloomberg",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPMmllOFR3NkgtdHNXaGVEWVJkQ0hxM0NLd2VBREpTc1dFVzhTMllCRnFScFZldU1qMFBHdWlhczdCNWNDNFFUQnQ1X3RhVEZiQXdibC03N0VEY2JaNUVYQXh1ZnRNRXN6NFdMa09DcEFLakxZbzJwUXVJdzkyY05ya1ZFal9IenRza1ZpLUtQVG1YR3R4cEx6c1dkUDhKY2RlY2xfVmpBVUQ3OW5WUlI5MTVjMm9Jdw?oc=5",
+      "indexed_at_utc": "2026-10-21T23:28:37+00:00",
+      "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -49,6 +83,23 @@
       "publisher": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQWURhT3VUeGtQdDZGb0d4dnpPTUhGWW5NM0g2R3QwZFRWTUtaSm5ONEI0aFk1aUxRa0U0cUFFMHV6aDgxUjZCREo3TVNTNTBJNjE4QnJ0RUlyelh1RHI4eXdjWUdQdHVXOFBtN3k1VXhXUTh2LVY0UTdpSWVfQWFxd2FoeW1mV0IzR1RleTZLUDYxOFpTLUhydEJaT29QUXJTZE5KVkhkRGs5dWR5V1NwQXVXUUhjV2Vsd044WFZaaEdqWUR1SmdFaHdJaw?oc=5",
       "indexed_at_utc": "2026-10-22T22:09:46+00:00",
+      "impact_pathway": "Gas supply changes -> Asian LNG pricing -> power and industrial costs",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Asian LNG and gas",
+      "topic_id": "lng_asia",
+      "type": "Gas supply",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "gas_lng",
+      "title": "Qatar Agrees to Buy US LNG to 2054 as War Disrupts Own Supply - Bloomberg",
+      "publisher": "Bloomberg",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQaXV4a2huUEhKdW5KbG85VllTQ1pQN2E2TGc1Y3p6VXJmMlhjV0p6bUYtYlg2TUFleS11aXRNSmhMYkhFNDJCOXR0Q0g4OEhJZWRRLW1YYzBGRDBXQTQ2d3hLak8yVUUwMjU1LWtWVXpIdVdaUkc5NE1rajRsaTlNOVhKZV93Z3l3Q2ZETVBBS2FBaHVBV0NIZjRjU3VhX1kzS1g2QUhZU2ItR2JCSXRXRE5R?oc=5",
+      "indexed_at_utc": "2026-10-22T14:42:07+00:00",
       "impact_pathway": "Gas supply changes -> Asian LNG pricing -> power and industrial costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -96,7 +147,7 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Brent crude hits more than five-month high on Houthi-Saudi attacks, UAE oil spill - Reuters",
+      "title": "Brent crude jumps to highest since April on Houthi attacks, UAE oil spill - Reuters",
       "publisher": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPR2dZUC10TmJYRUk2RmM5WWpxaUx2XzBPZ0ZTV3hIR3BkaGFvZ3B2T1hhd0xEcXZOWk5LdXhLLUF5QU9XdTRQdnRyTk9jcmVNMEZvZlZBRW8xcG1TVW1fTkY2UnFrcXlVWlUwbDhRYk9pcW1fdEdzMVNRR2ZhYVl2T0RZa09uZTktZGFWRVRWSEpGeFhYVXVPR09zNDVaTVdiNDdRRHg3VFNyZWNNWVBmdkxGMWFOa05yN2NBRnRVZjF3eF9i?oc=5",
       "indexed_at_utc": "2026-10-23T01:04:00+00:00",
@@ -157,7 +208,7 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 5,
+    "oil_gas": 8,
     "coal": 3,
     "nre": 1,
     "electricity": 0,
