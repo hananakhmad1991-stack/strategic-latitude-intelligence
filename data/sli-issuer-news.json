@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T17:07:46.556403Z",
+  "updated_at_utc": "2026-10-23T17:33:51.523071Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_be1213d6d53c68ab973ca8",
+      "title": "Sucor Sekuritas Nilai Saham PGAS Menarik untuk Diakumulasi - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBXRTBjdDV2ODFZWnBnRGloUkZHTjQ1cWdYcGQ3bG1tcHk2Vnk3b3I4RVVlSjB4QmUweTRIY0RnREZfcmtGc0pwRTE3MDhVZU1zRGt0eTNWYnZzZVFoNmh6SDFhQkxqSmE2ajBN?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-23T17:16:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGAS"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_8b30e25e2f73c686c079d6",
       "title": "PTBA Kaji Opsi Pembelian Kembali Saham pada 2026 - Suara Independent News",
@@ -400,6 +416,22 @@
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPLUUzU0gySnNfZ25LT2pxZVVDNlNFLWFDOTVmcTYwNXZlLXRtS3VjMHo2dWFrcm91UW92Q3RrTEFVMEtPbnlNeGs1YUlfM0NwX1Q4Yl9tM09reDNpUFpod2psa2FVc3BxR1JKUWREbE92ZGhKaDJlRUhGeGtIal9QQUtMWWxNTXpuT2EwTXJSbUlHZkllZ2x1ZWt4eG1FM0ZYQmVXeEJJWGo2SlNmendHMko4cHAwMHc?oc=5",
       "publisher": "Kompas.com",
       "published_at_utc": "2026-10-23T10:29:58Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "UNTR"
+      ],
+      "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_dce00c294427b9df808fee",
+      "title": "Foto : Indeks Kompas100 Menguat 0,86 Persen, Saham UNTR dan DEWA Melonjak Halaman 1 - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSW52eGhKcDNBaDd6eHRyY0JST28xeDR1Nm5JTUhRQ2JLTXNwZ2pKUzJCN0ZaM25MOHRrWlp4bFp3UDA0SVg4VU1IQWNpcXhuMkFNVkwzLS1IanlhQjFoYm5seFNzZzhfZEQtSUFwY1liaGc2bDhEVU12bVlzMHltbkMwMEZfd3pleDk4Ni1IZHhJVnE4Yk05bEVsM0hPRGQ1R3NlU2ZSY1liZ1c3V283bUg2UFJGa01KeW1lNkRubUQ?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-23T10:27:43Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "UNTR"
