@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T05:31:15.014929Z",
+  "updated_at_utc": "2026-10-23T06:03:25.605058Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_684f1d437d580adfb3d500",
+      "title": "DCII Catat Laba Bersih Rp 919,84 Miliar hingga September 2026 - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9xa0VkMWJBYTJ6WFFYRk9zSkJreGV4UXdDYjUxTE1HejBvRzhqZVJ4Q05uN3hwSzRNQ0R6NXR2eUo3SHpFVVpSdVF5OTNOUll2eFl4MXU3Yk9WOVlpTWFtYWlWb0Y4cFU?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-23T05:39:22Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "DCII"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_e9d4a01dbd9ac00b43de98",
       "title": "JSMR Minati Saham ADHI di Tol Akses Patimban - Bloomberg Technoz",
@@ -6851,38 +6867,6 @@
         "UNTR"
       ],
       "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_b082a2d327daa394260792",
-      "title": "Deretan Saham Teknologi Anjlok 2026, Bagaimana Prospek DCII, EMTK Cs? - Bisnis Indonesia Premium",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPTFFFWl9NdTVyS05fVGlVQ0NsZXYxNmYtV094NjBiZWdBZjU0OGdqT3dxODJVd0tMajhFbU5yMmM5QlREcURFaUdtSUk3OU5QTUt1VFFBb2ZERnR3eUs2MXZFN2ZULUZIQ1NVMWhUc0lRMXVGTTd6WVQyZFYxa0toaGxXUGxxakh4UzU5LVFjdlhYQlF3OFZ4ZHBtTDlUZThOUVhEX3VOOFowdmN4cEdBQXdUdmNPX2duU1Bz?oc=5",
-      "publisher": "Bisnis Indonesia Premium",
-      "published_at_utc": "2026-10-15T05:45:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "DCII"
-      ],
-      "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_2b561a30e737cfe11ed7ee",
-      "title": "Foto : Saham PTBA Berpotensi Cuan 16 Persen, Katalisnya Dividen - Kompas.com",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQanlfR1RlazVuVXJOeG5uV0d2bF96RVlJRmh2QXNWMGNfajRPYjU2LVVxMWVRZnpyOHprNDZBWE55b2VXbzJWOEtib2ZFMm5DQXFqM0UwX0JmNnhMSkoxU1hJTk9SWFBabmJob3MtSlBpdmE2RHdQNlNVYk94NXB4TnZrSzk3bWlrRU84cnNVWVhqVzNlT2hxemMzXzRWX3hEMHo0c2NDZGxyS1k?oc=5",
-      "publisher": "Kompas.com",
-      "published_at_utc": "2026-10-15T05:33:27Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
