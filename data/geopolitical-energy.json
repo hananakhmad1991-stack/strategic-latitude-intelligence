@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-23T12:42:49.319179+00:00",
+  "checked_at_utc": "2026-10-23T15:40:53.837334+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -14,7 +14,7 @@
       "title": "Oil prices jump to five-month high as attacks threaten global supply - The Guardian",
       "publisher": "The Guardian",
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOSkIzeWdNTnhad3RfQTdsMFg0OHQ5ejlGVjF2R016akVNelJYNDdVQVNsaE5PRXQ2SWJpT1JDbG5RRmtDdWFEazN2b3FLYkY3eUx5Rmk4bThDcVZmWExKcTFBVW51cEpSUHBPd0ZsUGVnWXF5eTJxY0V1aHlaYUtQTHhsYU00WjdtWk8yOS1UMW9SVVAwN2I3bU43OA?oc=5",
-      "indexed_at_utc": "2026-10-22T16:10:00+00:00",
+      "indexed_at_utc": "2026-10-22T11:28:00+00:00",
       "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -49,23 +49,6 @@
       "publisher": "Financial Times",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNZGxWWjZUZU50ZVc5TEJ6VmtPN0pBb1Mwa05hdGlLM2c0aEczSWhXYkthSy1FZFd4dkxBS01IdkstS2d6MGpfbnpNbkZwallQdlhsQ0lBSFJtRUNyWU1GNnlLRW82blhrZnEzalJGSWtIVXBYYWxMSWYxdmFoeGFFMExTTUI?oc=5",
       "indexed_at_utc": "2026-10-21T16:49:02+00:00",
-      "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Russia and energy sanctions",
-      "topic_id": "oil_sanctions",
-      "type": "Geoeconomic",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "North Sea: UK government agrees to drilling at Jackdaw gas field - BBC",
-      "publisher": "BBC",
-      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1LV3k4UFpTRUpDUy1oTnZaOEhmbHdJWXh5eHZ2OEFKRlJrUVNfbkxNQWRPRWoySEN3cXVEZVVOUzJzYzF5ZHc1Szk2czJBdDN3UjBmcU81TjJlcURPNmowZ3BPNnA?oc=5",
-      "indexed_at_utc": "2026-10-21T12:59:38+00:00",
       "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -113,7 +96,7 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Brent crude hits more than five-month high on concern over Middle East escalation - Reuters",
+      "title": "Brent crude hits more than five-month high on Houthi-Saudi attacks, UAE oil spill - Reuters",
       "publisher": "Reuters",
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPR2dZUC10TmJYRUk2RmM5WWpxaUx2XzBPZ0ZTV3hIR3BkaGFvZ3B2T1hhd0xEcXZOWk5LdXhLLUF5QU9XdTRQdnRyTk9jcmVNMEZvZlZBRW8xcG1TVW1fTkY2UnFrcXlVWlUwbDhRYk9pcW1fdEdzMVNRR2ZhYVl2T0RZa09uZTktZGFWRVRWSEpGeFhYVXVPR09zNDVaTVdiNDdRRHg3VFNyZWNNWVBmdkxGMWFOa05yN2NBRnRVZjF3eF9i?oc=5",
       "indexed_at_utc": "2026-10-23T01:04:00+00:00",
@@ -130,10 +113,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil prices hit five-month high as Houthi attacks stoke Middle East supply fears - Reuters",
+      "title": "India's Bharat Petroleum profit drops amid crude oil price volatility - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOYzBEdGVKYmZ3VVpJajg0TW5DN2VHVEM2aDVTcFJKQVduMnVMTU5NbVcyMGxBanBHY3VvMzJQR1VrQWM4b0hLeG1YaTFWcldTeU9yTlBXc3FiR1FtcUp0SmxhRkJkWmpmZ2x6X3VGZHZEUDNLTE9LTFZNSlBWWjNJVGtaV3YwWkc4QVhxbHozYkx5THpZMVlYVDAtd0dqbUMyOUcyVk91NEYxaFFCZklRWWhjQm5qN2NvVHdWdnZIQVJSMk0?oc=5",
-      "indexed_at_utc": "2026-10-22T19:16:59+00:00",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQcVdwV1JLUVdlRmdFcGNlOFFfZlZaVEEzRWxVMTM2YTV5SmJ0TENiZURHbkJZdEcyd3lybVE3NGFvbnk5ZUFNN0RNMENoVVE3TVhEbkxpcko2aTNfUVRnZU9wY1RCay1yZUhyaUNVRlYxdng3RGc0STA0cnZqTVJtbzZsVnNicnRjaGZPNVJrM21FcVlvMjZGSUJoaU9UZS1SeTRwanJCNmMxQUg1UHdrczRhRl9oZzNkaDVVSg?oc=5",
+      "indexed_at_utc": "2026-10-23T14:37:45+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -156,23 +139,6 @@
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Battery storage and clean-energy grids",
-      "topic_id": "nre_grid_storage",
-      "type": "Renewable grid",
-      "sector": "nre",
-      "sector_tags": [
-        "nre"
-      ],
-      "subsector": "storage_grid",
-      "title": "China's Sigenergy to build inverter, battery storage plants in India - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNN005THpPamtzS25UUnJGVnUyMGJmOTlyTFBzWjVaTEhyQ21ocF9pYlNGUTRjRVFIRWdBWlA2S3BCNnVKekxPY0hsa2IwOENHMTN2ejVOcHl3NWNfZFlrbDFPV3ZJWnJXU3FCWnU2WlRsck9WVzd0R3lVQ0duX2tFZHE1WGtYV1ZZanpycUJSQm5rNHEzdUFVS203LTZUcXJ6bGF6RFJaZTdqRW1JTzYtSjZR?oc=5",
-      "indexed_at_utc": "2026-10-23T08:40:45+00:00",
-      "impact_pathway": "Battery and grid procurement policy -> Indonesia renewable integration and investment costs",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
       "topic": "Geothermal and renewable financing",
       "topic_id": "nre_geothermal",
       "type": "NRE investment",
@@ -191,16 +157,16 @@
     }
   ],
   "sector_counts": {
-    "oil_gas": 7,
+    "oil_gas": 6,
     "coal": 2,
-    "nre": 2,
+    "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
   },
   "sector_taxonomy_version": "2026-10-15",
   "errors": [
     {
-      "topic": "Hormuz and Gulf energy",
+      "topic": "Red Sea and Bab el-Mandeb",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
