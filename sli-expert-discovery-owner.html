@@ -5,14 +5,14 @@
 :root{color-scheme:dark;font:15px/1.55 system-ui,sans-serif;background:#091625;color:#edf3f8}*{box-sizing:border-box}body{margin:0}main{max-width:1160px;margin:auto;padding:24px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}h1{margin:8px 0;font-size:clamp(24px,4vw,34px)}h2{font-size:18px;margin:0 0 12px}.muted,.hint{color:#afc1cf}a{color:#e9c88b}.panel{border:1px solid #36516a;border-radius:12px;background:#10253a;padding:20px;margin-top:18px}label{display:block;font-size:13px;color:#d2e0eb;margin:10px 0 5px}input,select,button{font:inherit;border-radius:8px;padding:11px;color:#fff;background:#102d45;border:1px solid #587188;max-width:100%}input{width:100%}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}.primary{background:#c49c59;color:#091625;border-color:#c49c59;font-weight:700}.fields{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}.actions,.stage{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.result{padding:16px;border:1px solid #37536a;border-radius:10px;margin-top:12px;background:#0b1e30}.result strong{font-size:17px}.result p{margin:6px 0}.meta{font-size:13px;color:#c4d5e3}.tag{font-size:12px;border:1px solid #536b80;border-radius:20px;padding:3px 8px}.status{min-height:24px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}:focus-visible{outline:2px solid #f0c680;outline-offset:3px}@media(max-width:720px){.fields{grid-template-columns:1fr}.panel{padding:15px}main{padding:14px}}
 </style></head><body><main>
 <header><div><p class="hint">SLI · OWNER WORKSPACE · BETA</p><h1>Expert Discovery</h1></div><a href="./sli-expert-connect.html">↗ Expert Connect publik</a></header>
-<p class="muted">Pencarian kandidat akademik berbasis OpenAlex dan publikasi Crossref. <strong>Kandidat ≠ anggota jaringan SLI</strong>; afiliasi, publikasi, dan kesediaan konsultasi wajib diverifikasi manual.</p>
+<p class="muted">Pencarian kandidat akademik dari metadata publik OpenAlex. <strong>Kandidat ≠ anggota jaringan SLI</strong>; afiliasi, publikasi, dan kesediaan konsultasi wajib diverifikasi manual.</p>
 <section class="panel" aria-labelledby="searchTitle"><h2 id="searchTitle">Cari kandidat</h2>
-<p class="hint">Cari kandidat berdasarkan bidang. Koneksi data diatur oleh sistem SLI, tanpa konfigurasi teknis dari pengguna.</p>
+<p class="hint">Pencarian metadata akademik publik dari OpenAlex. Tidak perlu URL Worker maupun token. Nama kandidat tidak berarti tergabung dalam jaringan SLI.</p>
 <div class="fields"><div><label for="topic">Bidang keahlian</label><input id="topic" placeholder="Contoh: energy security, AI data centers" maxlength="160"></div><div><label for="country">Negara / wilayah (opsional)</label><input id="country" placeholder="Indonesia" maxlength="80"></div><div><label for="limit">Maksimum kandidat</label><select id="limit"><option>5</option><option selected>10</option><option>20</option></select></div></div>
 <div class="actions" style="margin-top:16px"><button type="button" id="search" class="primary">Cari pakar otomatis</button><button type="button" id="clear">Bersihkan sesi</button><span id="state" class="hint status" role="status" aria-live="polite">Belum ada pencarian.</span></div>
 </section>
 <section class="panel"><h2>Kandidat &amp; screening</h2><p class="hint">Tahap screening di bawah ini berlaku hanya selama halaman terbuka. Belum menjadi CRM privat atau penyimpanan permanen.</p><div id="summary" class="meta">0 kandidat; belum ada yang dikonfirmasi.</div><div id="results" aria-live="polite"></div></section>
-<section class="panel"><h2>Pengamanan</h2><p class="hint">Halaman publik GitHub Pages bukan kontrol akses. Hasil pencarian hanya dapat dimuat dari endpoint yang dikonfigurasi secara aman dan diotorisasi server. Jangan masukkan informasi rahasia klien di sini.</p></section>
+<section class="panel"><h2>Pengamanan</h2><p class="hint">Halaman publik GitHub Pages bukan kontrol akses. Pencarian publik menghubungi OpenAlex langsung, tidak melalui Worker privat; pengelolaan klien dan penyimpanan status tetap harus menggunakan backend autentikasi. Jangan masukkan informasi rahasia klien di sini.</p></section>
 </main><script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id), stages=['Discovered','Screening','Contacted','Confirmed'];
@@ -33,16 +33,32 @@ function clear(){controller?.abort();controller=null;candidates=[];$('topic').va
 $('clear').addEventListener('click',clear);
 $('search').addEventListener('click',async()=>{
 const q=$('topic').value.trim();if(q.length<3){$('state').textContent='Bidang keahlian minimal 3 karakter.';return}
-const api=window.SLI_EXPERT_DISCOVERY_API;
-if(typeof api!=='string'||!api.startsWith('/')||api.startsWith('//')){
-$('state').textContent='Layanan pencarian belum diaktifkan oleh administrator SLI.';return}
 controller?.abort();controller=new AbortController();$('search').disabled=true;$('state').textContent='Mengambil kandidat…';
-try{const u=new URL(api,location.origin);if(u.origin!==location.origin)throw Error('Konfigurasi endpoint tidak aman.');
-u.searchParams.set('q',q);u.searchParams.set('limit',$('limit').value);if($('country').value.trim())u.searchParams.set('country',$('country').value.trim());
-const r=await fetch(u.href,{method:'GET',headers:{'Accept':'application/json'},credentials:'same-origin',cache:'no-store',signal:controller.signal,referrerPolicy:'no-referrer'});
-if(!r.ok)throw Error(r.status===401||r.status===403?'Akses Owner belum aktif atau sesi berakhir.':'Layanan pencarian belum tersedia (HTTP '+r.status+').');
-candidates=normalized(await r.json());$('state').textContent=candidates.length+' kandidat ditemukan. Verifikasi manual tetap diperlukan.';render()
-}catch(e){if(e.name!=='AbortError')$('state').textContent=e.message||'Permintaan gagal.'}finally{$('search').disabled=false}});
+try{
+const u=new URL('https://api.openalex.org/works');
+u.searchParams.set('search.title_abstract_keywords',q);
+u.searchParams.set('per_page',String(Math.min(25,Number($('limit').value)||10)));
+u.searchParams.set('select','id,title,doi,publication_year,authorships');
+const r=await fetch(u.href,{headers:{'Accept':'application/json'},cache:'no-store',signal:controller.signal,referrerPolicy:'no-referrer'});
+if(!r.ok)throw Error('OpenAlex tidak tersedia (HTTP '+r.status+').');
+const payload=await r.json();
+if(!Array.isArray(payload.results))throw Error('Respons OpenAlex tidak valid.');
+const people=new Map();
+for(const work of payload.results){
+for(const byline of (work.authorships||[]).slice(0,8)){
+const id=byline.author?.id;
+if(typeof id!=='string'||!/^https:\/\/openalex\.org\/A\d+$/.test(id))continue;
+const inst=byline.institutions?.[0];
+const country=$('country').value.trim().toLowerCase();
+if(country&&country!=='all'&&country!=='semua'&&country!=='indonesia'&&country!=='id'){throw Error('Filter negara saat ini mendukung Indonesia atau kosong.')}
+if((country==='indonesia'||country==='id')&&!byline.institutions?.some(x=>x.country_code==='ID'))continue;
+if(!people.has(id))people.set(id,{name:byline.author.display_name||'Kandidat',institution:inst?.display_name||'Afiliasi belum tersedia',profile_url:id,publications:[],stage:'Discovered'});
+const candidate=people.get(id);
+if(candidate.publications.length<5)candidate.publications.push({title:work.title||'Publikasi',year:work.publication_year,doi:work.doi});
+}}
+candidates=[...people.values()].slice(0,Number($('limit').value)||10).map(parseItem);
+$('state').textContent=candidates.length+' kandidat metadata publik ditemukan. Afiliasi dan bidang keahlian perlu diverifikasi.';render();
+}catch(e){if(e.name!=='AbortError'){const link='https://openalex.org/works?page=1&filter=default.search%3A'+encodeURIComponent(q);$('state').replaceChildren(document.createTextNode((e.message||'Pencarian gagal.')+' '));const a=document.createElement('a');a.href=link;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Cari langsung di OpenAlex ↗';$('state').append(a)}}finally{$('search').disabled=false}});
 
 render();
 })();
