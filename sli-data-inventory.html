@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SLI · Data Inventory</title>
+<style>body{font:16px/1.55 system-ui,sans-serif;background:#0b1424;color:#e9f1ff;margin:0}main{max-width:1120px;margin:auto;padding:28px 18px}a{color:#92c9ff}h1{margin-bottom:0}.sub{color:#b7c6d9}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:26px 0}.card{background:#16263d;border:1px solid #34465f;border-radius:12px;padding:18px}.val{font-size:30px;font-weight:750}.lbl{color:#b7c6d9;font-size:13px}table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:10px;border-bottom:1px solid #34465f;text-align:left}th{position:sticky;top:0;background:#16263d}.wrap{max-height:60vh;overflow:auto}input{width:min(100%,380px);padding:10px;border-radius:8px;background:#172840;color:white;border:1px solid #61728b}small{color:#b7c6d9}</style></head>
+<body><main><a href="./">← SLI Overview</a><h1>SLI Data Inventory</h1><p class="sub">Transparansi cakupan berkas data publik, bukan klaim seluruh observasi unik atau dataset tervalidasi.</p>
+<p id="status" role="status">Memuat inventaris…</p><section id="cards" class="cards"></section>
+<p><strong>Catatan metode:</strong> Menghitung JSON di folder <code>data/</code>. Jumlah record adalah penjumlahan list utama yang dapat dideteksi secara struktural, belum dideduplikasi. Data privat D1/R2, feed live dan tabel internal tidak termasuk. Indikator unik belum diaudit.</p>
+<label for="search">Cari file dataset</label> <input id="search" placeholder="Cari nama file, kategori, status…">
+<div class="wrap"><table><thead><tr><th>File</th><th>Kategori</th><th>Record terukur</th><th>Datum terbaru*</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table></div>
+<small>*Tanggal ditemukan pada metadata; bukan jaminan pembaruan sumber primer.</small>
+</main><script>
+(async()=>{const status=document.getElementById('status'),cards=document.getElementById('cards'),rows=document.getElementById('rows');
+try{const res=await fetch('./data/sli-data-inventory.json',{cache:'no-store'});if(!res.ok)throw Error('Inventory belum dipublikasikan ('+res.status+')');const obj=await res.json(),t=obj.totals;
+const fields=[['File JSON',t.json_files],['Kandidat dataset',t.candidate_dataset_files],['List yang terukur',t.files_with_measurable_primary_list],['Record struktural (bukan unik)',t.primary_records_structural_sum],['Belum terukur',t.unmeasurable_candidate_files],['JSON invalid',t.invalid_json_files]];
+cards.replaceChildren(...fields.map(([label,v])=>{const el=document.createElement('div');el.className='card';const a=document.createElement('div');a.className='val';a.textContent=Number(v).toLocaleString('id-ID');const b=document.createElement('div');b.className='lbl';b.textContent=label;el.append(a,b);return el}));
+status.textContent='Dihitung: '+new Date(obj.generated_at_utc).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+' WIB · Sumber: berkas JSON repository.';
+const data=obj.datasets;function draw(){const q=document.getElementById('search').value.toLowerCase();rows.replaceChildren(...data.filter(x=>(x.file+' '+x.category+' '+x.status).toLowerCase().includes(q)).map(x=>{const tr=document.createElement('tr');[x.file,x.category,x.primary_records??'N/A',x.latest_date_found??'N/A',x.status].forEach(v=>{const td=document.createElement('td');td.textContent=v;tr.append(td)});return tr}))}document.getElementById('search').addEventListener('input',draw);draw()
+}catch(e){status.textContent='Inventaris belum tersedia: '+e.message;status.setAttribute('aria-live','polite')}})();
+</script></body></html>
