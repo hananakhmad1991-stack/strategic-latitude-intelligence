@@ -1,0 +1,65 @@
+name: SLI GDELT Early Warning QA and Staging
+
+on:
+  pull_request:
+    paths:
+      - 'early-warning-api/**'
+      - 'sli-early-warning.html'
+      - 'js/sli-early-warning-entry.js'
+      - '.github/workflows/sli-gdelt-early-warning.yml'
+  workflow_dispatch:
+    inputs:
+      deploy_staging:
+        description: 'Deploy separate GDELT staging Worker with Cloudflare secrets'
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check early-warning-api/src/index.js
+          node --check js/sli-early-warning-entry.js
+      - name: Contract and sector safety tests
+        run: node --test early-warning-api/tests/contract.test.mjs
+  staging:
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy_staging == true
+    needs: qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: sli-gdelt-staging
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy isolated staging Worker
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: early-warning-api
+          command: deploy
+      - name: Verify health and all nine sectors
+        env:
+          STAGING_URL: ${{ vars.SLI_GDELT_STAGING_URL }}
+        run: |
+          test -n "$STAGING_URL" || { echo 'Missing SLI_GDELT_STAGING_URL environment variable'; exit 1; }
+          curl --fail --silent --show-error --max-time 15 "$STAGING_URL/health" | grep '"ok":true'
+          for sector in energy mining industry finance food climate technology defense infrastructure; do
+            echo "Checking $sector"
+            curl --fail --silent --show-error --max-time 20 "$STAGING_URL/signals?sector=$sector" | node -e '
+              let raw="";process.stdin.on("data",x=>raw+=x);process.stdin.on("end",()=>{
+                const d=JSON.parse(raw);
+                if(d.verified!==false || d.classification!=="unverified_news_signal" || !Array.isArray(d.articles) || d.articles.length>20)process.exit(1);
+                console.log(d.sector,d.articles.length,"unverified signals");
+              });'
+          done
