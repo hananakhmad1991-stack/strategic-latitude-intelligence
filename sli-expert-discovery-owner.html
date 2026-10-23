@@ -40,7 +40,7 @@ if(country&&!['indonesia','id','all','semua'].includes(country))throw Error('Fil
 const indonesia=country==='indonesia'||country==='id';
 const count=Number($('limit').value)||10;
 const people=new Map();let seenWorks=0,seenAuthors=0;
-for(const term of [...new Set([q,q.replace(/\\b(indonesia|indonesian)\\b/ig,'').trim()])].filter(Boolean)){
+for(const term of [...new Set([q,q.replace(/\b(indonesia|indonesian)\b/ig,'').trim()])].filter(Boolean)){
  const u=new URL('https://api.openalex.org/works');
  u.searchParams.set('search',term);
  u.searchParams.set('per_page','50');
@@ -53,7 +53,7 @@ for(const term of [...new Set([q,q.replace(/\\b(indonesia|indonesian)\\b/ig,'').
  for(const work of payload.results){
   for(const byline of (work.authorships||[])){
    const id=byline.author?.id;
-   if(typeof id!=='string'||!/^https:\\/\\/openalex\\.org\\/A\\d+$/.test(id))continue;
+   if(typeof id!=='string'||!/^https:\/\/openalex\.org\/A\d+$/.test(id))continue;
    seenAuthors++;
    const inst=byline.institutions?.[0];
    if(indonesia&&!byline.institutions?.some(x=>x.country_code==='ID'))continue;
