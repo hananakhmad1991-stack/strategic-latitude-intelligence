@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T10:08:48.842668Z",
+  "updated_at_utc": "2026-10-23T11:03:03.135796Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,54 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_983586cc85c2e7b8018456",
+      "title": "Insentif PPN Nataru Dorong Prospek Saham Garuda Indonesia - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBIMVVqM1lxMVlRYzNtR2Rna0o0ei1uVjhuX2E2dmRqVmVnZEZBOXM3SUZ6VHJBRkNVSDNwdDRMZ1VFQUZIb1lTUGc4MjZuczJ0clBwX2YxVnlGWnlqNTRTWVhhNVRkTUd3YWFpSWR3?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-23T10:56:27Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GIAA"
+      ],
+      "sector": "transport",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_7f21f5c4d922c44e71d23b",
+      "title": "Insentif PPN Dorong Prospek Saham Garuda Indonesia - SuaraGarut.ID",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ncHNzc2t0V1h4Q292UVVUc2d6VUFJVUNMTVZuSklMYWEtR2ZEbndMOG85STBwTlQ1blNmY3lkSVlYN3JJalI3a1hTZ24ya1pabFBkWlFuTmRXVWlyTUNHNlRhcXF5LXdO?oc=5",
+      "publisher": "SuaraGarut.ID",
+      "published_at_utc": "2026-10-23T10:55:29Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GIAA"
+      ],
+      "sector": "transport",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_598185b9967df8b04d3fd0",
+      "title": "OJK bongkar pihak-pihak terkait manipulasi saham DSSA, BREN, dan CUAN - IDNFinancials",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOaV9pTUh1ejRhZnhqSjlYN0w1ZHdVcWhsUzlRZXladGdvRFJaN2s4TXYwcnRQVm1iZkVXTHJnandEcVdSTWxVWkJXLVhKZ3dHcW1EMzk4dVNuSk1USGV4eU14emNIUS00RFdKMXpJNVQzeTRSWmpUS25TaEM0MmVXNGptTDJoQkdIX2NRMVpfM2hEN2V1WXJrcVBJZnNKU0ZkU29PeF9rWG1BUUhtS0E2VEUyWkJPQU41SEE?oc=5",
+      "publisher": "IDNFinancials",
+      "published_at_utc": "2026-10-23T10:44:38Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_7fb7b28a424bf84eb4bea9",
       "title": "Indeks Kompas100 Menguat 0,86 Persen, Saham UNTR dan DEWA Melonjak - Kompas.com",
@@ -4623,6 +4671,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_55990698e3ed401f91f74a",
+      "title": "Cermati Saham Ini Pekan Depan; ANTM, INCO hingga BBCA - Emitennews.com",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPWV9mWVlCZW9wcHl1QUNWUEVWbkkwTmU0X2lZdXY2SmtsQ0lSUlNlaTdVNFRZSDl4eWRyTk9YaDVVXzdpMDYtUkpDMGpndkhLb0FkMnZfR0U5T3ZxTzZsRmpnWFo5bHB6bWlRc0pDbzVZSzdYTG5MY012MWlpWXRGakx5SE9mdw?oc=5",
+      "publisher": "Emitennews.com",
+      "published_at_utc": "2026-10-20T07:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_5e6d72a6b08c650bfb6f7b",
       "title": "Saham TLKM Banyak Diserok Asing - investor.id",
       "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE8yR1k3ZWNxSFFCU1ZyTTFaTnE2aVVsSngwbTRSZGhqYjdBODBqZW1FaENxdDB2ajlYU2J3OGZNaU9ZbVRhNzlKMlpMc21la1RKbGtLQlEtdkU4Qks0bmtISUpRNHB6TkdPb180N1NxNUE4X28?oc=5",
@@ -7106,38 +7170,6 @@
         "SMGR"
       ],
       "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_c871cb66d95f515d09dbce",
-      "title": "Potensi Dividen Menarik, Target Harga Saham PTBA Naik - TOPIK.ID",
-      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5hWUFuNFlJUGszTVkyT3pwZElWVzNRMW5lMVhlcFA0Y2wwZ1kxdkp3Q01reXlBZ09jWkZZSEZPV1k4WjF5QkdKMWhzSTl1Qnc1VzlVWWk2aFFDVTQxelZ0djNPT3MyZWRMS2JZMTJweEdmbGxxU05wb2RoNk5VZw?oc=5",
-      "publisher": "TOPIK.ID",
-      "published_at_utc": "2026-10-15T10:40:02Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_f29a1cb9e81a5436f836e3",
-      "title": "Morgan Stanley Terciduk Asik Jual-Beli Saham GOTO, Cuan Berapa? - CNBC Indonesia",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQMml0ekF4bGxlYzN5TmQ1Qk5icmZsQzRIU0N5NkZwdm9XUUs4RUhHcDh4OHBuREl4ZUZNSGZGOG5TM08zSEt0TzFTa1BybVF4NDVqcGVQV0dZby1xV2RwRTBJcU85bnBsZ0RBbWFaNmt4M2hzeUVTakpwaUlOWGhxbTVtdkNlX3JzQ21nVDl2aWlFaTVvd3dZeDlHTHlHRmIxWE9nYmJlN214SE5Cd3JiZ1o4SXJzTVlVdzI5V0lhbnfSAcYBQVVfeXFMTk9GRjFab3g2UnZnOVlmZTVoT2xwT0x1ckE3U3dhZ3hxcHJzcl9hRGNQNnVFYzU3XzRPcURlOWxhLVZuVldma1RaWlZ3Y2NNREsxdEVqeml3MkY2aFlxRnY1MTI0UXI3ejROS05penFqVjNmLVBQMTFSNmxqUjNKdlY5cFgwOXBhay1YVnMtQThnYUlKQWQ1MlVHTWZidkdVY1NXVWs1YmZWbGFoeEFjODNVX2QwaUpHclVtQzBINjhGcGUxRktn?oc=5",
-      "publisher": "CNBC Indonesia",
-      "published_at_utc": "2026-10-15T10:25:03Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "GOTO"
-      ],
-      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
