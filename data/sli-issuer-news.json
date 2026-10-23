@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T15:10:43.382110Z",
+  "updated_at_utc": "2026-10-23T16:09:56.904439Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,6 +42,38 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_00c1696c231a0d96ceb188",
+      "title": "PTBA Kaji Opsi Buyback di Tengah Penguatan Kinerja Semester I 2026 - patrolihukumindonesia.com",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOZ04yM0UxdE9SYkhNenhaLW9LUzhMckdBWExzZm1oWlVUbThpdGFQYnZHNm9XZ3h3QU4wUEtOTDEyOXp5ejVZbnkxTzZMbllueWdGWFMwRUxtUlh4Q1Nkb2Vmd3FHTURqZWJPV1VUdEh5UU5xR1gtLTFteFN5dFZwWnM1eWhGcGQyTUhXSV9mRE9ldEozajk5ZnlKcXd4LTdCNF8w?oc=5",
+      "publisher": "patrolihukumindonesia.com",
+      "published_at_utc": "2026-10-23T15:41:53Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_1955e29f870fc3bf5bdcd0",
+      "title": "Antam (ANTM) Perkuat Bisnis Emas dan Nikel, Buyback Saham Masih Dikaji - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQbmdlazljMi1IVFhFMjRKZlhlY0t3b21Ia1NrR3NXdXllb1RoY050YVVQQ3AwR0JyRU9lcUdIYjVTX2Z5cHJCTW1oakR6NUtZWUVSLXJVbVUtS2JwbHJBUFJ3Nmx4OE12eGZncXdTX2NJbWtNd3l1QnpuLTZwTS13Z0x0c1BhclA2QjI3NzAxQVFhTWgtUXNSXzhFcGxldzZTLV91emlqT0VvcHF4RG1hV2ktRjRibVliS1E?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-23T15:12:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_3f94c6508ee20857a44e91",
       "title": "Kinerja Melesat, PTBA Siapkan Langkah Strategis Jaga Nilai Perusahaan - CNBC Indonesia",
       "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNelB5c214aGszTm1YQi1yLUo1akN5S3Y5N21pdW5kc09relFFQVBFNlZWUWg2SEItVnRkQkxpSG50VnczeW1rV0FoYlRiai1QclZDSlN3MWwtVXA2M1BaVXQtQWNmRW10MzVLSXZKbXFYNGl4dVprd2dnQlM5RjRPNmxmcks2LTBCR2FITVFJMk1XakRsanUzNmpCSVg1OXMwc1gwcHJjSDktNzdqaEdHc0xQSG9NdDdrX2Izb0RncTdicGxrUjNqeE930gHPAUFVX3lxTFBIN0hpb2I0TnVTRVdGTE1VcnJYaHVwQmtMY1BiMWlseHlXNnQ1ZUpydHZPRDREZjVQYXpsZmtBVHJuWE02MTBzLWhTbVc5NmVzTVZ1YkVYaUw5MEhiM05vclRZc0pHQ05Lc3U5MzFUbzNDOEFuUjBQSTV0c0dZdWxUVU5OZnM0WnpsWjRQNDNDY0pEb05kS2tBWTJ2VEJpaFBtVWcxLTVUdnd4clc2bkZqTU5HV3hIZHNpVF81SXFMNkZvZmVOZ2hIYjVjQWNYTQ?oc=5",
@@ -52,6 +84,22 @@
         "PTBA"
       ],
       "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_df6be9847f5e7c94a68460",
+      "title": "ICBP Siapkan Rp 750 Miliar untuk Buyback Saham - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5LLWZ0QlIxZ21GNlMwWWUtTEZGMUh6X2hhUF9qSUM1cWc0MFdNaUxULVdnVjhnNUJhanRaRi1lRGF2ZWRhOEFrSDZuRmVISnR1VHJKTHFmY2hkVnJXRzJFNVM4d1U3b3FE?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-23T13:54:21Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -79,6 +127,38 @@
       "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBlejlWcmJNYlZhUkllczdyNEVVRVlDVmNISkdnVW9VTGk0Zzd0d2ZsS3pzVzVFTXp3VW1lQm5BemR0dHYxd0VqbmRRa0p2VlYtd2V5dl9GRWZxNUZVZllmclg0cDdoemk1d3gtSA?oc=5",
       "publisher": "Cirebon Times",
       "published_at_utc": "2026-10-23T13:40:19Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_198ca92e0df56c75205569",
+      "title": "Indofood CBP (ICBP) Siapkan Buyback Saham Rp 750 Miliar, Laba per Saham Potensi Naik - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbm56b2JzRlZObTd2REpXbFhLTmRZMV9tV1ZKdXFEaG1TcGducU8xLTZBTGZQZ0lqblVEc0piSGwzcVJvb0RGdk5LV0dHSEVvck13UmwtOW1GdndNVWNCM05RTW5JWlpUVnpwTWlHQ0JyRngta2dTTE1oYXdPNWhTdzRjN0VCM3V0VlljYVN3Ynk1Ujhha250YUo5N0VQUUJtcTFVTkFVblhGeXBncklzTTNlR1hZWk9M0gGwAUFVX3lxTE9VR2tXaU5Ec2gxUzVkYmpsUnViVkotOGhFZWZBSXAyZTR5QjU1a0x6dDhmY3NFZnNFNFJSRFllaFBpTWFYUThtZ0s1ZWtlbnphRHRkWnJUcm53amNWYU94elJUcUpPX29GbTFjUEF1ak5CYTVXWEhUYWg3ZWIzckV1SGdUbmIzbDcxNy0tMU9qcG40dUJkYkRmX2JRTWNsNkxwMW1RMFVaQkRIZWJJcTc0?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-23T13:37:51Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_fcde434ec326d228e7fa17",
+      "title": "Produsen Indomie (ICBP) Siap Buyback Rp750 Miliar hingga Akhir 2026 - IDX Channel",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPa2dyV2RCSDVoeVlnSE5NQTVUcXVLc3FfOFpjVS03MXVvMzJ6UUc2WHBoTXZ3ekVNYnhuZURxR0NlcmdURGltY0R6bE9tcU9KaExfaDlFOVlqWVBxTTF6WDEyRWVTZ2JfQWIwVW5kckE0eFhPalpaMUMtbUNLbWhrRS1CbFhfRk5TRmdXaTBYVU12S29zZEtXUU9EU3NiVlRVX2FLMWJzV0dqWkxM0gGsAUFVX3lxTE9rZ3JXZEJINWh5WWdITk1BNVRxdUtzcV84WmNVLTcxdW8zMnpRRzZYcGhNdnd6RU1ieG5lRHFHQ2VyZ1REaW1jRHpsT21xT0poTF9oOUU5WWpZUHFNMXpYMTJFZVNnYl9BYjBVbmRyQTR4WE9qWloxQy1tQ0ttaGtFLUJsWF9GTlNGZ1dpMFhVTXZLb3NkS1dRT0RTc2JWVFVfYUsxYnNXR2paTEw?oc=5",
+      "publisher": "IDX Channel",
+      "published_at_utc": "2026-10-23T12:20:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "ICBP"
@@ -623,6 +703,22 @@
       "id": "sli_issuer_524b20063b151a707ca830",
       "title": "Laba Adhi Karya (ADHI) Melonjak 247,05% di Kuartal III - CNBC Indonesia",
       "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPY3Q3dXd1NzVsYVFQWWhLbk9EWEVveVlIaHdWYThGQlZ1NEVkV1dMTTVEN1U4b2QtbHpMQUtYUllKbjZyNmk1eGpaZXpmeTJudzdjMkFfVXY2UnREalkxZnNSWGgzbFc4MnZqTG8waFl6VmgwbE1ndXJUOGJMblJ6X2ZJVHFnblNjMTh0d0ZUSVF6TUlDOXNMR3ZHYmZ1Zm9ROXAyYXZEUTRib1Ixckx5N1pxcVN3V2FxNEHSAboBQVVfeXFMT2N0N3V3dTc1bGFRUFloS25PRFhFb3lZSGh3VmE4RkJWdTRFZFdXTE01RDdVOG9kLWx6TEFLWFJZSm42cjZpNXhqWmV6Znkybnc3YzJBX1V2NlJ0RGpZMWZzUlhoM2xXODJ2akxvMGhZelZoMGxNZ3VyVDhiTG5Sel9mSVRxZ25TYzE4dHdGVElRek1JQzlzTEd2R2JmdWZvUTlwMmF2RFE0Ym9SMXJMeTdacXFTd1dhcTRB?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-23T02:52:37Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADHI"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_fcab6dfb97a8290c0772b8",
+      "title": "Laba Adhi Karya (ADHI) Melonjak 247% di Kuartal III, Ini Penyebabnya - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOejNMYko4SWtwMEFmLXF6UFJweTgzRVFLWVRFb1RaRE1WSVBEQ0N2ZFg1Q2VhdU5DRTJJREs2Q0JnbFNOcm9nRkdZMEV0cm9vUmVySzlVbjZrNzVPSDktd0hEZW5VVER2OWNSNmNxZTA3VWk0U1I1bGpiamlQTFJLZFBUYVZNeUpxQTFWenFiOG1BSlZDeHdMRjZMRDRCOTZPVDdobWxQLWFzNFlWSV9NS05NZnZISmFEV3lzRlUtV1Nrb1JuRkF30gHMAUFVX3lxTE8tWWJ6TWpRRUo2dW5kNnZjOWlNZmdsLXhvU1IxUkk5QnBCT0VWYTVfTm9VMHE0aXlCZDluQmVjMkFWeUZCR1ZRR0lEc1lmLURMUlJYZ3R1TUExNnh5UkkwTHhpeDNqdERhdXBxcER4eXNRQjYwcDIwLU4zNkF1Z19sb25uQnRGUDhXbGwzeTgxQmNfMDE5SDJSdFU4STlnT0JsQ2hjRmxRQzZCMTc2dzRST084RU9hZURyenRMU3c4eXlnd0NVdzlKQXJkTg?oc=5",
       "publisher": "CNBC Indonesia",
       "published_at_utc": "2026-10-23T02:52:37Z",
       "date_type": "rss_pubdate",
@@ -2146,6 +2242,22 @@
         "PTBA"
       ],
       "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_3360ceb2e0cf4bb89d7fd2",
+      "title": "Jasa Marga Kaji Buyback Saham - Liputan6.com",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE55Y1lSQi1UTk9DSXQ5ejdUOVEtUHZhX3dvQm5mdnB5QnV6czhwLXluUmNObFFOOG1UTnBETDNydHdrcDgyY0RxWmlxZjVOb2JzYXM0dUJ4WU5oUlhVOFctX2xidFhXMXhlXzRLcVVMdV9ISm5tWm1YaVRoNi15QdIBdEFVX3lxTE45VnMzQUl5cDJlOGV6M09hcmpXbDRvZW1OVm1TMWZzMFdzYnVwbW94SUNMS29yUEhQZTJIMW9zNlhxcGhRWTVrZmpnbEdiTEN5aGMxZkRUN0VXQmVKX1VRaWRfd0dGSjRRVkc1RUREa2pUUU5h?oc=5",
+      "publisher": "Liputan6.com",
+      "published_at_utc": "2026-10-22T03:42:51Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
