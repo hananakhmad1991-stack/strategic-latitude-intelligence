@@ -8,7 +8,7 @@ const groups=[
  ['Food & agriculture','Pangan & pertanian','food'],
  ['Marine & fisheries','Kelautan & perikanan','marine'],
  ['AI & digital transformation','AI & transformasi digital','ai','aihub','komdigi','digital','digitalgov'],
- ['Policy, geopolitics & environment','Kebijakan, geopolitik & lingkungan','policy','ria','geopolitics','indo','climate'],
+ ['Policy, geopolitics & environment','Kebijakan, geopolitik & lingkungan','policy','ria','geopolitics','indo','earlywarning','climate'],
  ['Reference & quality','Referensi & kualitas','glossary','freshness']
 ];
 const modules={
@@ -43,7 +43,8 @@ const modules={
  digital:['Digital Economy Readiness','Kesiapan Ekonomi Digital','digital-economy-readiness.html','Readiness, connectivity, talent and public digital services.','Kesiapan, konektivitas, talenta dan layanan digital.'],
  digitalgov:['Digital Governance & Data Centres','Tata Kelola Digital & Pusat Data','digital-governance-data-centers.html','Public sector digital infrastructure and data governance.','Infrastruktur digital pemerintah dan tata kelola data.'],
  policy:['Policy & Regulation · Overview','Kebijakan & Regulasi · Gambaran Umum','index.html#policy','Policy summary and evidence-linked regulatory context.','Ringkasan kebijakan dan konteks regulasi.'],
-  geopolitics:['Geopolitical Intelligence','Intelijen Geopolitik','index.html#geopolitics','Six geopolitical theatres, Indonesia exposure, dated official metrics and secondary-news monitoring.','Enam tema geopolitik, paparan Indonesia, data resmi bertanggal dan monitoring berita sekunder.'],
+  earlywarning:['Domestic Early Warning · Unverified Signals','Peringatan Dini Domestik · Sinyal Belum Terverifikasi','sli-early-warning.html','GDELT monitoring signals; not confirmed incidents.','Sinyal pemantauan GDELT; bukan kejadian terkonfirmasi.'],
+ geopolitics:['Geopolitical Intelligence','Intelijen Geopolitik','index.html#geopolitics','Six geopolitical theatres, Indonesia exposure, dated official metrics and secondary-news monitoring.','Enam tema geopolitik, paparan Indonesia, data resmi bertanggal dan monitoring berita sekunder.'],
  indo:['Indonesia Intelligence · Domestic & Regional','Intelijen Indonesia · Domestik & Daerah','geopolitical-impact-assessment.html','Integrated geopolitical, economy, regional and public safety intelligence.','Intelijen geopolitik, ekonomi, wilayah dan keselamatan publik.'],
  climate:['Climate & Environment','Iklim & Lingkungan','climate-environment.html','Environmental exposure, dated monitoring and official alerts.','Risiko lingkungan, monitoring dan peringatan resmi.'],
  ria:['Regulatory Instruments & Institutions','Instrumen Regulasi & Kelembagaan','policy-regulatory-intelligence.html','Rules, institutional implementation and linked policy evaluations.','Regulasi, pelaksana dan evaluasi kebijakan.'],

@@ -1,0 +1,9 @@
+name = "sli-early-warning-staging"
+main = "src/index.js"
+compatibility_date = "2026-10-23"
+workers_dev = true
+
+# GDELT does not need an API key.
+# Do not turn on paid AI usage or expose owner-only AI endpoints.
+# Future Workers AI integration requires a separate AI binding,
+# owner authorization, budget limits, and acceptance testing.

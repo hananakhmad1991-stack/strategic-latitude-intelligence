@@ -1,0 +1,63 @@
+name: SLI GDELT Early Warning QA and Staging
+
+on:
+  push:
+    branches:
+      - feat/gdelt-early-warning-staging-20261023
+    paths:
+      - 'early-warning-api/**'
+      - '.github/workflows/sli-gdelt-early-warning.yml'
+  pull_request:
+    paths:
+      - 'early-warning-api/**'
+      - 'sli-early-warning.html'
+      - 'js/sli-early-warning-entry.js'
+      - '.github/workflows/sli-gdelt-early-warning.yml'
+  workflow_dispatch:
+    inputs:
+      deploy_staging:
+        description: 'Deploy separate GDELT staging Worker with Cloudflare secrets'
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check early-warning-api/src/index.js
+          node --check js/sli-early-warning-entry.js
+      - name: Contract and sector safety tests
+        run: node --test early-warning-api/tests/contract.test.mjs
+  staging:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'feat/gdelt-early-warning-staging-20261023') || (github.event_name == 'workflow_dispatch' && inputs.deploy_staging == true)
+    needs: qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: sli-gdelt-staging
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy isolated staging Worker
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: early-warning-api
+          command: deploy
+      - name: Verify health and all nine sectors
+        env:
+          STAGING_URL: https://sli-early-warning-staging.hananakhmad1991.workers.dev
+        run: |
+          test -n "$STAGING_URL" || { echo 'Missing SLI_GDELT_STAGING_URL environment variable'; exit 1; }
+          curl --fail --silent --show-error --max-time 15 "$STAGING_URL/health" | grep '"ok":true'
+          node early-warning-api/tests/staging-smoke.mjs
