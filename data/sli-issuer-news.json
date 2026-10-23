@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T09:36:46.188299Z",
+  "updated_at_utc": "2026-10-23T10:08:48.842668Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,6 +42,22 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_7fb7b28a424bf84eb4bea9",
+      "title": "Indeks Kompas100 Menguat 0,86 Persen, Saham UNTR dan DEWA Melonjak - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPY3dmclRNTEFvSUVORFlMR1pRVG1rX08xSnVoelQ2dTNycFlyTjl6bWVPOUNMVDJWbkRtTnlPZjRxWFBXcXR0bHZvdnRJbG1KZDV4RXU5QmhiQUpwUHUzb2JIcE15TUpSejBEWHFhOEotVVBBZXdOVWxNYXlXY1g5dnRoYjlaSlJ0SGZYekFTZThwVFlJM3VaU1hoWVdXMm1XbGV5d09tNG5wTjc0RUtBLVJUN1BZZw?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-23T09:55:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "UNTR"
+      ],
+      "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_5c295326f7ecd332eed83c",
       "title": "IHSG Ditutup Menguat 0,95%, Saham Bank Jumbo hingga TLKM ke Zona Hijau - Bisnis.com - Market",
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOQmlfQnhnS0RSUWNPOGJfNnVUTTVZZ3QyQzFFckM3b0l2QXNUZGc4MnhSZEFHNXFraHRMMDZ5Qi1mT01MYzNlX0xNc1JEX0FJME05OXJFdU5OSHRXeThRcVBVZFE5by1RZmNxNkFuemMwRUdxdHhBRktmQkYyT19JMEhnYnNjZG00MUtNUThBOEZfaW83UFdxUVdXR2hZNzFwUkR1YVUwSTlTa1I3UmxKMklzNGxDbGFl?oc=5",
@@ -52,6 +68,22 @@
         "TLKM"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_2ec92ecd7c209aec9db722",
+      "title": "IHSG Menguat 0,95% ke 5.439 pada Jumat (23/10), AKRA, UNTR, DEWA Top Gainers LQ45 - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQZkZ1d25HQ1RJRE1wU0RGbjBMYnZsVjhUcS01THJycUZHQmtKcld3MTFYYmdWRkpvQm83WjF5ZnpYeVNWWi1meVJISml3MlFfQVNUcVFyUzJHcHRWajRqbFRwLWpoUEVPMmdnSXBMVlZHY0Q3RU00STBJMU90QkhXYzFBYnJlVk52RUV1elpra0tQRjQydkVrdkhqREZST0lVZzE2ZTFhRlNLaHJp0gGkAUFVX3lxTE1CSTRlQmMxWnc2WEVtbE5sTDNBUDJoaEhsQnphQTRoTzg1bUZnTzc3S3Q4bk9FNUFCSFBFSWxXUmlGcGhwUzUwbEJEMjl4VXZoZVRsX1V2MnJ4VjFWZm92R3NFa3JlY0NQRWgyOURudHpxdlR2YlZ4ZDQ4TkdyQVRqSWFzWVZlZVpEazJJXzFxTmk5QjBSTTh2QmtaSFZ4YWZfRzRk?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-23T09:06:45Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "UNTR"
+      ],
+      "sector": "manufacturing",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -7106,22 +7138,6 @@
         "GOTO"
       ],
       "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_8c53d9df5200ac4a7670aa",
-      "title": "Dividen PTBA plus Target Harga Baru Sahamnya - investor.id",
-      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOUUVvdXdreURDSmZOZ19WZ3BORlZ5aEEzLThfcFFPRDhSSTRQckxhclVQcjZoa1F0OUVSTzBpTFM5WVBzbFE5WUVRS2tsT0QyYm9leUVzOVlrdHRFbmswV2V6WW1xVXdpbFpUbzZhM2dYTk5uTDhKbG5kcVRnbUNxWW1qTG4?oc=5",
-      "publisher": "investor.id",
-      "published_at_utc": "2026-10-15T10:03:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
