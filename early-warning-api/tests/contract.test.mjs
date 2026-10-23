@@ -16,7 +16,7 @@ test('do not treat media signal as verified intelligence',()=>{
  assert.match(ui,/UNVERIFIED SIGNALS/);
 });
 test('bounded upstream and no AI usage enabled',()=>{
- assert.match(api,/maxrecords.*20/);
+ assert.match(api,/maxrecords.*10/);
  assert.match(api,/max-age=900/);
  assert.match(api,/ai_enabled:false/);
  assert.doesNotMatch(api,/AI\.run\(|env\.AI\.run\(/);
