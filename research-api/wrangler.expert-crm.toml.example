@@ -1,0 +1,17 @@
+name = "sli-expert-crm-staging"
+main = "src/expert-crm-worker.mjs"
+compatibility_date = "2026-10-23"
+workers_dev = false
+
+# Configure a Cloudflare Access application protecting the custom-domain route
+# before enabling this Worker. Do NOT point GitHub Pages directly to unprotected D1.
+[vars]
+EXPERT_CRM_ENABLED = "false"
+WEB_ORIGIN = "https://hananakhmad1991-stack.github.io"
+# Define these via Cloudflare secrets or environment variable settings, never commit real identifiers:
+# CF_ACCESS_AUD, CF_ACCESS_TEAM_DOMAIN, OWNER_EMAIL
+# D1 requires an existing database and a verified database_id; intentionally no fake binding ID here.
+# [[d1_databases]]
+# binding = "EXPERT_DB"
+# database_name = "sli-expert-crm-staging"
+# database_id = "<real staging D1 database UUID>"
