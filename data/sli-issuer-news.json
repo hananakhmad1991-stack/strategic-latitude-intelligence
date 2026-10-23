@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-23T05:04:37.257753Z",
+  "updated_at_utc": "2026-10-23T05:31:15.014929Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,6 +42,23 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_e9d4a01dbd9ac00b43de98",
+      "title": "JSMR Minati Saham ADHI di Tol Akses Patimban - Bloomberg Technoz",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPR0ZueWo0ODE4YlVadUQtbXVfY0VZU0JucWpWSDhvdWRrZ3dscXRSRnI4bWJOVDZrTDdnZzJSc24ta0sza1E1R0ppVGEyQThMYUZ0MC12T2lWRHp1amR2bTc5TFVhaEg1R0tSQThZNmVadHhVMDJOeXlrYm5KV1dsT19wX0RnOVZHb3Bid1lBbVV1WDY2ZnZZTUE3TW8?oc=5",
+      "publisher": "Bloomberg Technoz",
+      "published_at_utc": "2026-10-23T05:15:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADHI",
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_f1786bacd99e0855e10939",
       "title": "Adhi Karya (ADHI) Mau Gelar RUPSLB, Salah Satunya Bahas Divestasi - CNBC Indonesia",
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQalRVUEN6MDhteDFEbXpFR19mdUMxU2NVbjRLa0NLcXI3SDBkakg3eDBtVm1CRnNRNk9XZU9QTHptLUZXZjN5Y09RMUhrME1Ib0N5enk2cHJZMUNQN3RPVWpZNmxfaFhQU1k2TnpMWkhuenFYMDZsaWs1TVltS3ZyUWEtWDNsRmlXSXlxd0ctRlV1SFNsbEozREl4a3VaOW1RODhWekVkWUJZNlFocFhCTUVWN3RpMFIzU2NYaFlnSmJLYXpq?oc=5",
@@ -66,6 +83,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "ISAT"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_4fb7b8f13992ab99e6e224",
+      "title": "Saham DCII Bertahan di Rp182.975, Pendapatan Tumbuh 31 Persen hingga Kuartal III - Rmol.id",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNRExKdmtoSEIxTmRZdGx1Ukx0V212UEJJWWpIYlg1NXl1N292V3h0cWxSR3RUNTJ3UzhkZjZyaXhiY29zVDN0SnNkQXNUT1BHbjRGdTJwUXpEZ3g4dzBIR3lSWUFxWFRjUGlINkk4b05XRDdZNm1QeGxxeEd4bGZQVV9SVlRzMEdsaXg2RlZKV2dZRFZELU1Jd2J6WHZCNmlScXFBZXVUQ2xNMld6TndpVmx0VUk0bEJIRVE?oc=5",
+      "publisher": "Rmol.id",
+      "published_at_utc": "2026-10-23T04:00:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "DCII"
       ],
       "sector": "technology",
       "source": "public_google_news_rss",
@@ -6351,6 +6384,22 @@
         "PGAS"
       ],
       "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_b7af0d7511e25866d0cfba",
+      "title": "IHSG Diproyeksikan Masih Tertekan, MNC Sekuritas Soroti BBCA, ICBP, TINS, dan VKTR - patrolmedia.co.id",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQZzFtNnhCNjk4TGpQNUNBeDRWVGZaVWR0ZnZtbU1faGp0QjR5eXQ1TVJ0UTMzRjl0VUNoY255M1RDWXk2bXpCNGVZUGpWd2JHVjUwTEt0dWpaZmMzMjlEcmZHZlBUQzFVY1ZhNGpWSXgyNGFTWjVzUkdpZWstMVJDVndYWGo1dDU5TkVYeFVoYk1WOWs1TzBfWlBlSXZYR1FqN0dvT0RYN2ZMLXhYZDFfeklXVUJ5azQ?oc=5",
+      "publisher": "patrolmedia.co.id",
+      "published_at_utc": "2026-10-16T08:52:29Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
