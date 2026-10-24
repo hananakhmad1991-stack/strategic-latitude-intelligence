@@ -40,7 +40,7 @@ test('staging Worker own origin allowed only for staging console, untrusted orig
 
 test('realistic callback fragment is removed before reading protected entitlement',async()=>{
  const html=stagingLoginPage(stage);
- const script=html.match(/<script>([\\s\\S]*?)<\\/script>/)[1];
+ const script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
  const actions={};
  const elements=new Map();
  for(const id of ['email','password','signup','login','me','session','replace','resource','logout','output']){
