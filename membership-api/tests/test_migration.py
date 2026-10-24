@@ -5,7 +5,7 @@ def iso(days):
 class MigrationTest(unittest.TestCase):
  def setUp(self):
   self.db=sqlite3.connect(':memory:')
-  self.db.executescript((ROOT/'membership-api/schema.sql').read_text())
+  self.db.executescript((ROOT/'membership-api/migrations/0001_initial.sql').read_text())
   self.uid='83196df3-3f25-48df-b58c-1d1dd7b3f908'
   self.db.execute('INSERT INTO subscriptions(user_id,plan,status,access_until) VALUES(?,?,?,?)',(self.uid,'pro','active',iso(30)))
   self.db.executescript((ROOT/'membership-api/migrations/0002_sessions_billing.sql').read_text())
