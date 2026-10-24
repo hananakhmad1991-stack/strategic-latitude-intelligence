@@ -224,7 +224,7 @@ function renderPlatformMast(){
 function renderBar(){
  // The Expert Connect landing owns a compact header, so do not inject a sitewide
  // breadcrumb and toolbar that would bury its client request form.
- if(path==='sli-expert-connect.html'||path==='sli-research-ai.html'){
+ if(path==='sli-expert-connect.html'||path==='sli-research-ai.html'||['sli-company.html','sli-contact.html','sli-help.html','sli-contact-sales.html'].includes(path)){
   document.getElementById('sliUniversalNavigation')?.remove();
   renderPlatformMast();
   return;
