@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-24T03:28:40.958382Z",
+  "updated_at_utc": "2026-10-24T04:03:30.174997Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -84,6 +84,22 @@
         "PTBA"
       ],
       "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_49706a1a0c392745eb5cab",
+      "title": "Wijaya Karya Divestasi Seluruh Saham WINNER Senilai Rp641 Juta, Ini Tujuannya - StockWatch.id",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNcEdPRUFROEs5NWZ6Q1VxM3h4NldscUQzQkdpbVNsVGtKUnc3QTlxUjNHbmFrMHZ5SkdGSXVmN04zRElhWTI2alN5NFFBNVI0dTNyMnBQSi1YZUVUM0xRZVUtV1lLQkdSUVY2MjhPS01CSGRfWUNhWVYzN1k1VmpVLTdyOWtfRGlDTnU3QThDTGprd2xCZ2ZrX2xRUnpHNUJo?oc=5",
+      "publisher": "StockWatch.id",
+      "published_at_utc": "2026-10-23T23:20:24Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "WIKA"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -1771,6 +1787,22 @@
       "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE0yNGZib0xuWTZPTVFUM3BLMmFEWXBmZVUxVm1xcFBUNHprdnNMQVVDYkFINnBUMzN0RVMwbTdad1l5bHczOVc1dklXbmhWako5Tzg0?oc=5",
       "publisher": "شبكة تواصل الإخبارية",
       "published_at_utc": "2026-10-22T12:50:55Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f2e12f3162338be8c65b9a",
+      "title": "Jasa Marga Kaji Buyback Saham untuk Perkuat Kinerja JSMR - SuaraGarut.ID",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE05dTRxUHpZTWVEckxJempsbGhjUEdtdHZGbDlwRzlQaVYtZU5Yek41a0xCSGNwanNwTllpQUZCUjNxYkdxQWVyeUN6RzdFbHFjTnFHUDRqMFR4VFprMC1RakE2azVGRVk?oc=5",
+      "publisher": "SuaraGarut.ID",
+      "published_at_utc": "2026-10-22T12:50:33Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "JSMR"
@@ -3506,6 +3538,22 @@
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPZzNDcTE0bmlmbk5LSDBGakhpcHZyLVB6WHA4czhTbkF6Tk1DSHNHekhGVmxOMk1ud29lcVNGdk5UdDZ2VjF4U0cweHpTRi00Y0xZb2dfcWxmSHhqWjMzM3NOYnQzME9pWEFORXVkSzlyeVVRNi0xd19yUTFpNDhoSUctQ1ctVDNlek9LcTdkbVJLS01qUURBSi1yVU9BUQ?oc=5",
       "publisher": "investor.id",
       "published_at_utc": "2026-10-21T14:16:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_a48ade2f7878af843d88d7",
+      "title": "OJK Serahkan Surat Sanksi Kasus Saham DSSA, BREN, dan CUAN - kumparan.com - Kumparan.com",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxONm1Lbkp2djZiOGNtVmdyd2dkc1ZhQTNnN281cjVjbFJ6djJlSk4waTF1aTRmUHVjYU1QMVIyUUVVYW02aFVZSTA2dXhJeDROb0tTb19kNmk1RWRJOXNoNmFKM0VDcVVCRk9mZXlmNUhvWHJyYTVBWENhS1d6aHhqVHF4TkhTZC1GM0s1RlQ3UlljSGh1bnFXWklpZVAtMl9BV2dRT0VzQdIBrwFBVV95cUxPdzhjVnN1b1oxYnNDTVlxZ2lHOXc0NGtsMnRoTE9GazRlN1ROUjVhNHJtMlRrcnFGaTY1VS0tZ2cta1BzMmZDLWtRdVdhNUtnb1A3TWcwZkZjWTZMLUpmRWVTUG9IUjdha0x0MGU0bllyRmZGY0pMT1dLTnVUTUdMRnF5YW1CanFTSjN5b184TmpWZGRMRmJKb05ncUtRU2JVWlpKdkdYS0RyU283OGZ3?oc=5",
+      "publisher": "Kumparan.com",
+      "published_at_utc": "2026-10-21T13:51:00Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "BREN"
@@ -7805,6 +7853,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_351a9c15cd49893e455eb1",
+      "title": "OJK Denda DSSA, BREN, dan CUAN Total Rp2,1 Triliun, Apa Alasannya? - Ajaib",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQSTYtWkFhWlAtZmt4dVBHbW9Uay0wWFV1OHVmbjNYQVIxTWYxdXZwaDFxdjdNeEVpdGtnbEp3M2I3dDRmMTk5eExpc0Q3Wm5WdGxHNEowSkZBV3hKS2VPcERDUDZNOTFmcXRZeF9ia1dZUzdxWHliNVFzZnQ1MmlNRWlqRGdvZ055dUlNMzN6VW0xUHFxMTA4?oc=5",
+      "publisher": "Ajaib",
+      "published_at_utc": "2026-10-16T08:58:58Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_b7af0d7511e25866d0cfba",
       "title": "IHSG Diproyeksikan Masih Tertekan, MNC Sekuritas Soroti BBCA, ICBP, TINS, dan VKTR - patrolmedia.co.id",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQZzFtNnhCNjk4TGpQNUNBeDRWVGZaVWR0ZnZtbU1faGp0QjR5eXQ1TVJ0UTMzRjl0VUNoY255M1RDWXk2bXpCNGVZUGpWd2JHVjUwTEt0dWpaZmMzMjlEcmZHZlBUQzFVY1ZhNGpWSXgyNGFTWjVzUkdpZWstMVJDVndYWGo1dDU5TkVYeFVoYk1WOWs1TzBfWlBlSXZYR1FqN0dvT0RYN2ZMLXhYZDFfeklXVUJ5azQ?oc=5",
@@ -7863,6 +7927,22 @@
         "AMMN"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d7138ea24839d40409fd15",
+      "title": "Ada Pelanggaran, OJK Telusuri Saham BREN, CUAN, dan DSSA - CNBC Indonesia",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQMld0MnBNUTctMHdyaXdGeEt1YUtVbnFSVEl0WkNuamtiRmN2bTVNa1VlWXJ6LWR6Y3RaUlBtOWxRbFNONnRMZ2ZDaU84aExKUW9rbndDcWw2b1dWRDFVR2w2U3ZGUEVmT2xPb0NzR2U5eGN0Uk9HOTVlQ2dDVmQxb09vbkVzSHJabXBkcm9fbXUzMWtfYkl1MG5zQ3RsX1REYUdlU2FuWmNTdWtLRHVZSVhxU3h1QdIBuwFBVV95cUxPcnRfOXBHRjI2Y056aERrengwdG9DV2t2REhuRlEtM2h4Vy1mZDZfRGpYS0I1MEJrc1ZaRWVZc2xUelJJeWVQSkZRZjlhS3lCNmlzRk1iYnh0Unl5cEVidkRIRENDV1NpMjh4TDZ0UW1oVW9qOUZjTUZ4UkVNZ1lZZUdtNWRjVU82SW45aFBjcGVoM0ZsUHNiSmhEdEc1NFhkbkhTV21UZkF6V0N6NXVGRnhLRmFoQ3FEbGZz?oc=5",
+      "publisher": "CNBC Indonesia",
+      "published_at_utc": "2026-10-16T07:29:45Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "BREN"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
