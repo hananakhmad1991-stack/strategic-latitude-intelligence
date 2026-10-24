@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-24T01:39:18.400414Z",
+  "updated_at_utc": "2026-10-24T02:28:33.440314Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_0316ae1a381b02024159cd",
+      "title": "Antam (ANTM) Kaji Opsi Buyback Saham - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNSnZMa2NNWUdlSDFPSTQ0LS1SaFVURUJHcmFWMWI3akw0WFF1aGotZ3NKUktUS0hta01OaTVpaEhGMko4R0w2T255bzduVF9UbFo4Zmd1QUl6UXJnc3lPR2d2ZHZSNDNHSHNMMUptUWR0WVJQcnljcnZFOEMyQ3BHWDZJWDNnRG9QYk11bkQ3Zw?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-24T01:53:13Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_00af394584b79a46d5ec1e",
       "title": "PTBA Kaji Buyback Saham, Laba Bersih Semester I 2026 Melonjak 218% - Indragirione.com",
@@ -100,6 +116,22 @@
         "GOTO"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_431bec97675db49ec00994",
+      "title": "Sucor Sekuritas Pertahankan Rekomendasi Beli Saham PGAS - ChatNews.id",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE14bmE3UmdfOVp2RDVraW1wV3NaMENKQzlOSkItbEY2NG9OQmtUN0szdEY4SlV0RVd4NjFlamxLOUFBc3NwekVwQU15YzhSWU56dkdxQVd6aDlERWpvQmRkUjhjaw?oc=5",
+      "publisher": "ChatNews.id",
+      "published_at_utc": "2026-10-23T16:31:20Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGAS"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -661,6 +693,22 @@
         "PTPP"
       ],
       "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_59633a955e65aebbb570a9",
+      "title": "ISAT Proyeksikan Laba Bersih Tembus Rp 6,0 Triliun pada 2026 - Cirebon Times",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE13dkl0TkJpQ0w0N2lqc3pUZzMwX2xJanpFXzZwcGdfMGJ3ZmtxODV6VXVxbDMzYUFMSEoyeVBOVVVPbzdwRUIwUXoxbHRiNmNKNXNCRXFqS3I5OHR3bFF1ZHk4WFg1Mk0yYjZXaQ?oc=5",
+      "publisher": "Cirebon Times",
+      "published_at_utc": "2026-10-23T10:04:29Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ISAT"
+      ],
+      "sector": "technology",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -7797,23 +7845,6 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "INCO"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_fe98d5c196c76e91f379f3",
-      "title": "IHSG Berpotensi Melemah Terbatas, Pilarmas Sekuritas Rekomendasikan Beli DSNG, AMMN hingga UNTR - StockWatch.id",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPS29sbl9UQURrNjJENEhGbENKUnphTVZkQnBIdll1cFFzb1Z3STl5UmFwLUVvaDFWNG5ZQVRweVB4a0w5QUZLX2ZtX21NVk5zS01tZGFvYXlZbXBvMFVweWpFN1U2bngxdnU3M1lEUEplcDRGbF9KNXlqY3NhdGJGV0NVclM1TXM4TGZNeTFjcFNaTUIxWVhLbU0wSjd0Mlp6M1h5elhOcUFpVHh6bmdNYXNVMmlwRFE?oc=5",
-      "publisher": "StockWatch.id",
-      "published_at_utc": "2026-10-16T01:52:15Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "AMMN",
-        "UNTR"
       ],
       "sector": "minerals",
       "source": "public_google_news_rss",
