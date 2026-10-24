@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-24T05:59:28.263258Z",
+  "updated_at_utc": "2026-10-24T06:32:23.408583Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,39 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_ef120734c9d0496bf0211e",
+      "title": "INDF dan ICBP Siapkan Buyback Saham Rp 1,5 Triliun - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE85LXJKdUw1Wkcyb1JtLXFCWUVoZ25qV1M3b3dpTmc4TDlWM1hmeV9GS0lmOHN6U3RzVWRwaGZJYWxseF9objQ1RGlaQzRwTGRlR3dUc1VqQzhkVHlEd2JGbTRYUTFxUUU?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-24T06:20:22Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP",
+        "INDF"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_111f9ef5c183459e30e38a",
+      "title": "Boy Thohir Turun Gunung, ADRO Lanjutkan Buyback Rp5 Triliun - Industry.co.id",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPNm5PSVd1SWprRU1EOVBDS3lHb3gwYmd0ckY3TDFGeV9qclp1dkFQRGZQRGV3Mm9Jb0QyZXJVTms0a3NQeG5qVmdLbURhbWdLVW9nSDBXZ0tJdGx4bjJRSTBpUHR6N2tXdUZiY21tdEwtT3lNUE1tVkh3cDZPaFBzX0NnRWNMbFZxRC11Sk00V3NET01JU2UtWXAyMjVhdw?oc=5",
+      "publisher": "Industry.co.id",
+      "published_at_utc": "2026-10-24T05:42:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_d3f2032ec2e303d3c91e58",
       "title": "Antam (ANTM) Bakal Kelola Tambang Emas 275 Hektare di Papua Tengah - Warta Ekonomi",
@@ -175,6 +208,22 @@
       "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE14bmE3UmdfOVp2RDVraW1wV3NaMENKQzlOSkItbEY2NG9OQmtUN0szdEY4SlV0RVd4NjFlamxLOUFBc3NwekVwQU15YzhSWU56dkdxQVd6aDlERWpvQmRkUjhjaw?oc=5",
       "publisher": "ChatNews.id",
       "published_at_utc": "2026-10-23T16:31:20Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGAS"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_aa1831d0c6fc71376e4969",
+      "title": "Sucor Sekuritas Nilai Saham PGAS Menarik dengan Target Rp2.070 - Koridor.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1Nb0JuRGtWLVhoZ3Etc0JNZWo4bVRLS3JaWGV0Rzk0aFRlLXdaNkRzUmJJd3ZOM2hMeVFkQ1EyTHdiV3hWdVQ0bVRLbm53Q19waGNkMnNOTTNqbWE3NFVVMWNiTXFhUQ?oc=5",
+      "publisher": "Koridor.co.id",
+      "published_at_utc": "2026-10-23T16:26:19Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "PGAS"
