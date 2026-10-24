@@ -9,7 +9,9 @@ const HERE=path.dirname(fileURLToPath(import.meta.url)),ROOT=path.resolve(HERE,"
 const env={CF_ACCOUNT_ID:"a".repeat(32),CF_API_TOKEN:"fixture-token-do-not-use",
  SLI_ACCESS_AUD:"abcXYZ0123456789aud",SLI_API_HOSTNAME:"private.sli.example.com",
  SLI_ACCESS_ISSUER:"https://example.cloudflareaccess.com",
- SLI_D1_DATABASE_ID:"11111111-1111-4111-8111-111111111111"};
+ SLI_D1_DATABASE_ID:"11111111-1111-4111-8111-111111111111",
+ SLI_ACCESS_ALLOWED_GROUP_ID:"authorized-pilot-group"};
+const allowPolicy={decision:"allow",include:[{group:{id:env.SLI_ACCESS_ALLOWED_GROUP_ID}}]};
 const app={id:"app-id",aud:env.SLI_ACCESS_AUD,type:"self_hosted",
  domain:env.SLI_API_HOSTNAME,destinations:[],
  cors_headers:{allow_all_origins:false,allowed_origins:["https://hananakhmad1991-stack.github.io"],
@@ -17,7 +19,15 @@ const app={id:"app-id",aud:env.SLI_ACCESS_AUD,type:"self_hosted",
   allowed_headers:["Content-Type"]}};
 const api=async (url)=>{
  let result=[];
- if(url.includes("/access/apps/app-id/policies"))result=[{decision:"allow"}];
+ if(url.includes("/access/apps/app-id/policies"))result=[allowPolicy];
+ else if(url.includes("/access/apps?"))result=[app];
+ else if(url.includes("/d1/database/"))result={uuid:env.SLI_D1_DATABASE_ID};
+ else throw Error("Unexpected endpoint "+url);
+ return new Response(JSON.stringify({success:true,result}),{status:200});
+};
+const policiesAPI=policies=>async url=>{
+ let result=[];
+ if(url.includes("/access/apps/app-id/policies"))result=policies;
  else if(url.includes("/access/apps?"))result=[app];
  else if(url.includes("/d1/database/"))result={uuid:env.SLI_D1_DATABASE_ID};
  else throw Error("Unexpected endpoint "+url);
@@ -26,6 +36,13 @@ const api=async (url)=>{
 assert.equal(validateConfig(env),true);
 const verified=await preflight(env,api);
 assert.equal(verified.hostname,env.SLI_API_HOSTNAME);
+await assert.rejects(preflight({...env,SLI_ACCESS_ALLOWED_GROUP_ID:""},api),/Missing configuration/);
+await assert.rejects(preflight(env,policiesAPI([{decision:"allow",include:[{everyone:{}}]}])),
+ /Every Access Allow policy must include only the configured authorized group/);
+await assert.rejects(preflight(env,policiesAPI([{decision:"allow",include:[{group:{id:"another-pilot-group"}}]}])),
+ /Every Access Allow policy must include only the configured authorized group/);
+await assert.rejects(preflight(env,policiesAPI([allowPolicy,{decision:"allow",include:[{everyone:{}}]}])),
+ /Every Access Allow policy must include only the configured authorized group/);
 const refute=async(override,overrideApi=api)=>{
  await assert.rejects(preflight({...env,...override},overrideApi));
 };
@@ -35,7 +52,7 @@ const pilotApp={...app,domain:pilotEnv.SLI_API_HOSTNAME};
 const pilotAPI=async (url)=>{
  let result=[];
  if(url.includes("/workers/subdomain"))result={subdomain:"test-account"};
- else if(url.includes("/access/apps/app-id/policies"))result=[{decision:"allow"}];
+ else if(url.includes("/access/apps/app-id/policies"))result=[allowPolicy];
  else if(url.includes("/access/apps?"))result=[pilotApp];
  else if(url.includes("/d1/database/"))result={uuid:env.SLI_D1_DATABASE_ID};
  else throw Error("Unexpected Cloudflare API "+url);
@@ -51,27 +68,27 @@ assert.equal((await preflight(env,api)).cors_mode,"access_response_options");
 const bypassApp={...app,cors_headers:undefined,options_preflight_bypass:true};
 const bypassAPI=async url=>{
  const result=url.includes("/access/apps?")?[bypassApp]:
-  url.includes("/access/apps/app-id/policies")?[{decision:"allow"}]:
+  url.includes("/access/apps/app-id/policies")?[allowPolicy]:
   url.includes("/d1/database/")?{uuid:env.SLI_D1_DATABASE_ID}:null;
  return new Response(JSON.stringify({success:true,result}),{status:200});
 };
 assert.equal((await preflight(env,bypassAPI)).cors_mode,"worker_origin_options");
 await assert.rejects(preflight(env,async url=>{
  const result=url.includes("/access/apps?")?[{...app,options_preflight_bypass:true}]:
-  url.includes("/access/apps/app-id/policies")?[{decision:"allow"}]:
+  url.includes("/access/apps/app-id/policies")?[allowPolicy]:
   url.includes("/d1/database/")?{uuid:env.SLI_D1_DATABASE_ID}:null;
  return new Response(JSON.stringify({success:true,result}),{status:200});
 }),/conflicts with OPTIONS bypass/);
 await assert.rejects(preflight(env,async url=>{
  const result=url.includes("/access/apps?")?[{...app,cors_headers:undefined}]:
-  url.includes("/access/apps/app-id/policies")?[{decision:"allow"}]:
+  url.includes("/access/apps/app-id/policies")?[allowPolicy]:
   url.includes("/d1/database/")?{uuid:env.SLI_D1_DATABASE_ID}:null;
  return new Response(JSON.stringify({success:true,result}),{status:200});
 }),/Access CORS not configured/);
 await assert.rejects(preflight(env,async url=>{
  const result=url.includes("/access/apps?")?[{...app,cors_headers:{
   ...app.cors_headers,allowed_methods:["GET","PUT"]}}]:
-  url.includes("/access/apps/app-id/policies")?[{decision:"allow"}]:
+  url.includes("/access/apps/app-id/policies")?[allowPolicy]:
   url.includes("/d1/database/")?{uuid:env.SLI_D1_DATABASE_ID}:null;
  return new Response(JSON.stringify({success:true,result}),{status:200});
 }),/GET, PUT, POST, DELETE, OPTIONS methods/);
@@ -84,7 +101,7 @@ const workerAPI=async (url,chosenApp=workerOnlyApp)=>{
  if(url.includes("/workers/subdomain"))result={subdomain:"test-account"};
  else if(url.includes("/workers/scripts-search?"))result=[
   {id:workerId,script_name:"sli-user-intelligence",environment_is_default:true}];
- else if(url.includes("/access/apps/app-id/policies"))result=[{decision:"allow"}];
+ else if(url.includes("/access/apps/app-id/policies"))result=[allowPolicy];
  else if(url.includes("/access/apps?"))result=[chosenApp];
  else if(url.includes("/d1/database/"))result={uuid:env.SLI_D1_DATABASE_ID};
  else throw Error("Unexpected Cloudflare API "+url);
@@ -123,17 +140,17 @@ await refute({CF_API_TOKEN:""});
 await refute({SLI_D1_DATABASE_ID:"abc"});
 await assert.rejects(preflight(env,async u=>{
  const result=u.includes("/access/apps?")?[{...app,cors_headers:{...app.cors_headers,allow_all_origins:true}}]:
- u.includes("/policies")?[{decision:"allow"}]:{uuid:env.SLI_D1_DATABASE_ID};
+ u.includes("/policies")?[allowPolicy]:{uuid:env.SLI_D1_DATABASE_ID};
  return new Response(JSON.stringify({success:true,result}));
 }),/CORS/);
 await assert.rejects(preflight(env,async u=>{
  const result=u.includes("/access/apps?")?[{...app,destinations:[{uri:env.SLI_API_HOSTNAME,overrides:[{behavior:"public",path_pattern:"/api/"}]}]}]:
- u.includes("/policies")?[{decision:"allow"}]:{uuid:env.SLI_D1_DATABASE_ID};
+ u.includes("/policies")?[allowPolicy]:{uuid:env.SLI_D1_DATABASE_ID};
  return new Response(JSON.stringify({success:true,result}));
 }),/Access application/);
 await assert.rejects(preflight(env,async u=>{
  const result=u.includes("/access/apps?")?[app]:
- u.includes("/policies")?[{decision:"allow"},{decision:"bypass"}]:{uuid:env.SLI_D1_DATABASE_ID};
+ u.includes("/policies")?[allowPolicy,{decision:"bypass"}]:{uuid:env.SLI_D1_DATABASE_ID};
  return new Response(JSON.stringify({success:true,result}));
 }),/bypass/);
 const tmp=await mkdtemp(path.join(tmpdir(),"sli-access-config-"));

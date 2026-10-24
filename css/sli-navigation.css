@@ -65,7 +65,7 @@ nav.sli-platform-quicklinks{display:flex!important;align-items:center;flex-wrap:
  .sli-platform-tools{gap:5px}
 }
 .sli-platform-language{display:flex;gap:2px;border:1px solid #3a5670;background:#132d44;padding:3px;border-radius:8px}
-.sli-platform-language button{font:650 11px/1.2 system-ui,sans-serif!important;color:#b8cad9!important;background:transparent!important;border:0!important;border-radius:5px!important;padding:8px 9px!important;margin:0!important;min-width:35px;min-height:32px;cursor:pointer}
+.sli-platform-language button{font:650 11px/1.2 system-ui,sans-serif!important;color:#b8cad9!important;background:transparent!important;border:0!important;border-radius:5px!important;padding:8px 9px!important;margin:0!important;min-width:44px;min-height:44px;cursor:pointer}
 .sli-platform-language button.active,.sli-platform-language button[aria-pressed=true]{background:#ddbf85!important;color:#0e2436!important}
 body.sli-dashboard-unified .sli-universal-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 13px;margin:0 0 17px;border-color:#35536c;background:#10283e;max-width:100%}
 body.sli-dashboard-unified .sli-universal-actions{gap:10px}

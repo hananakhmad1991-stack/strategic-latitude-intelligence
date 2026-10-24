@@ -12,8 +12,16 @@ try{
   await group.waitFor({state:'visible',timeout:20000});
   const ai=group.locator('a[href="./sli-research-ai.html"]');
   const expert=group.locator('a[href="./sli-expert-connect.html"]');
+  const languageButtons=page.locator('#sliPlatformMast .sli-platform-language button');
   assert.ok(await ai.isVisible(),'DERGUBA must be visible on '+width+'px');
   assert.ok(await expert.isVisible(),'Expert Connect must be visible on '+width+'px');
+  assert.equal(await languageButtons.count(),2,'Both language controls must remain available');
+  if(width<=650){
+   for(const button of await languageButtons.all()){
+    const box=await button.boundingBox();
+    assert.ok(box.width>=44&&box.height>=44,'Language controls must meet 44px mobile touch targets '+JSON.stringify(box));
+   }
+  }
   const rects=await page.evaluate(()=>{
    const mast=document.querySelector('#sliPlatformMast');
    const ai=mast.querySelector('.sli-platform-quicklinks a[href="./sli-research-ai.html"]').getBoundingClientRect();

@@ -205,6 +205,13 @@ function renderPlatformMast(){
 
  // Keep the two client-facing research services visible together above the scrollable sector menu.
  const tools=node('div','sli-platform-tools');
+ const quicklinks=node('nav','sli-platform-quicklinks');
+ quicklinks.setAttribute('aria-label',text('Research services','Layanan riset'));
+ quicklinks.append(
+  mastLink('./sli-research-ai.html',text('DERGUBA AI','DERGUBA AI')),
+  mastLink('./sli-expert-connect.html',text('Expert Connect','Carikan Pakar'))
+ );
+ tools.append(quicklinks);
  // All specialist dashboards share the same persisted EN/ID preference as the homepage.
  // Never show a decorative language button that does not apply the language.
  {

@@ -42,6 +42,12 @@ None exists until SLI publishes and licenses original private research. Nothing 
 9. Migrate **only legally reusable, SLI-owned or licensed exclusive analyses** into the private bucket and remove any public copies; confirm protected URLs deny unauthenticated reads. Do not migrate primary-source citations or generic statistical definitions behind a paywall.
 10. Enable checkout only after end-to-end security/compliance QA and a payment provider integration have passed; then change the catalog state in \`data/sli-membership-plans.json\`.
 
+## Cloudflare staging prerequisites
+
+The staging bootstrap depends on Cloudflare account services and a dedicated staging token; a successful local build does not provision either. Before rerunning a staging bootstrap, the account owner must enable R2 in the intended Cloudflare account and verify that the restricted staging token can inspect D1 and manage staging Worker/R2 resources. Cloudflare API error \`10042\` means R2 must be enabled in the dashboard; error \`10000\` while listing D1 means the token/account authentication or permissions need owner review. Do not print tokens, substitute production credentials, or retry deployment into production to work around either error.
+
+If the post-deploy \`/healthz\` smoke reports \`health fails\`, that assertion alone does not record the HTTP status or response body. Inspect and record the health response before diagnosing or declaring the deployment healthy; a successful Worker upload is not a successful service smoke test.
+
 ## Running prototype tests
 
 From repo root with Node.js 22+:

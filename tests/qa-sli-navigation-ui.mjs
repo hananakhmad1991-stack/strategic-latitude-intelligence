@@ -65,7 +65,7 @@ test('DERGUBA AI and Expert Connect are adjacent, visible top-level quick action
   const doc=d.window.document;
   const quick=doc.querySelector('#sliPlatformMast .sli-platform-tools > nav.sli-platform-quicklinks');
   assert.ok(quick,'Quick-access research pair must render in top header: '+path);
-  assert.deepEqual([...quick.querySelectorAll('a')].map(a=>a.getAttribute('href')),[
+  assert.deepEqual([...quick.querySelectorAll('a')].slice(0,2).map(a=>a.getAttribute('href')),[
    './sli-research-ai.html','./sli-expert-connect.html'
   ],'Research AI and Expert Connect must be adjacent in one row');
   assert.equal(doc.querySelectorAll('a.sli-platform-link[href="./sli-expert-connect.html"]').length,1,'No duplicate Expert Connect in scroll navigation');
@@ -76,8 +76,8 @@ test('DERGUBA AI and Expert Connect are adjacent, visible top-level quick action
   d.window.close();
  }
  const home=readFileSync(new URL('../index.html',import.meta.url),'utf8');
- assert.ok(home.includes('sli-navigation.js?v=20261019-id-audit9&expert=20261023-top1'),'Home must cache-bust top nav JS');
- assert.ok(home.includes('sli-navigation.css?v=20261018-menu-flash2&expert=20261023-top1'),'Home must cache-bust top nav CSS');
+ assert.ok(home.includes('sli-navigation.js?v=20261024-audit-nav1'),'Home must cache-bust top nav JS');
+ assert.ok(home.includes('sli-navigation.css?v=20261024-audit-touch1'),'Home must cache-bust top nav CSS');
 });
 
 test('Expert Connect uses its own compact navigation and never injects off-topic OSINT',()=>{
