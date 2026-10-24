@@ -11,7 +11,7 @@ function request(path,{method="GET",bearer=null,site=origin}={}){
  return new Request(url+path,{method,headers});
 }
 function mockDB(record){
- return {prepare(sql){assert.match(sql,/WHERE user_id = \?/);return {bind(id){assert.equal(id,uid);return {async first(){return record}}}}}};
+ return {prepare(sql){assert.match(sql,/WHERE user_id\\s*=\\s*\\?/);return {bind(id){assert.equal(id,uid);return {async first(){return record}}}}}};
 }
 function environment(rec=null){
  return {WEB_ORIGIN:origin,SUPABASE_URL:"https://test-project.supabase.co",DB:mockDB(rec),PREMIUM_BUCKET:{
