@@ -181,29 +181,11 @@ function renderPlatformMast(){
   [text('Products','Produk'),[
    [text('Intelligence Dashboard','Dashboard Intelijen'),'./index.html#home'],
    [text('DERGUBA Research AI','DERGUBA Research AI'),'./sli-research-ai.html'],
-   [text('Expert Connect','Carikan Pakar'),'./sli-expert-connect.html'],
-   [text('Data & Methodology','Data & Metodologi'),'./sli-data-inventory.html']]],
-  [text('Solutions','Solusi'),[
-   [text('Energy Security Dashboard','Dashboard Ketahanan Energi'),'./index.html#energy'],
-   [text('Critical Minerals Dashboard','Dashboard Mineral Kritis'),'./index.html#minerals'],
-   [text('Investment Intelligence','Intelijen Investasi'),'./provincial-intelligence.html'],
-   [text('AI Infrastructure Dashboard','Dashboard Infrastruktur AI'),'./ai-intelligence-hub.html'],
-   [text('Food & Agriculture','Pangan & Pertanian'),'./food-agriculture-intelligence.html'],
-   [text('Marine & Fisheries','Kelautan & Perikanan'),'./marine-fisheries-intelligence.html'],
-   [text('Custom Research & Expert Services','Riset Khusus & Layanan Pakar'),'./sli-expert-connect.html']]],
-  [text('More','Lainnya'),[
-   [text('Terms of Use','Syarat Penggunaan'),'./sli-business-info.html#ketentuan'],
-   [text('Refund & Cancellation','Refund & Pembatalan'),'./sli-business-info.html#refund'],
-   [text('Privacy Policy','Kebijakan Privasi'),'./sli-privacy.html'],
-   [text('User Guide','Panduan Pengguna'),'./sli-user-guide.html'],
-   [text('Glossary & Methods','Glosarium & Metode'),'./sli-glossary-methodology.html'],
-   [text('Data Inventory','Inventaris Data'),'./sli-data-inventory.html'],
-   [text('Contact','Kontak'),'./sli-business-info.html#kontak']]],
-  [text('Pricing','Harga'),[
-   [text('Individual — SLI Open','Individual — SLI Open'),'./sli-business-info.html#layanan'],
-   [text('Professional & Intelligence Pro','Professional & Intelligence Pro'),'./sli-business-info.html#layanan'],
-   [text('Business & Enterprise','Bisnis & Enterprise'),'./sli-business-info.html#kontak'],
-   [text('Academia & Government','Akademisi & Pemerintah'),'./sli-business-info.html#kontak']]]
+   [text('Analytical Tools & Data Inventory','Perangkat Analisis & Inventaris Data'),'./sli-data-inventory.html']]],
+  [text('Solutions','Layanan'),[
+   [text('Custom Research & Advisory','Riset Khusus & Konsultasi'),'./sli-expert-connect.html#expertRequest'],
+   [text('Expert Sourcing & Consultation','Pencarian & Konsultasi Pakar'),'./sli-expert-connect.html'],
+   [text('Corporate & Institutional Intelligence','Intelijen Korporasi & Institusi'),'./sli-expert-connect.html#expertRequest']]],
  ];
  const menuWrap=node('div','sli-header-menu-set');
  for(const [caption,entries] of menus){
@@ -216,17 +198,11 @@ function renderPlatformMast(){
   detail.addEventListener('toggle',()=>{if(detail.open){for(const other of menuWrap.querySelectorAll('details'))if(other!==detail)other.open=false;explorer.open=false}});
  }
  primary.append(menuWrap);
+ primary.append(mastLink('./sli-business-info.html#layanan',text('Pricing','Harga'),path==='sli-business-info.html'));
  primary.append(mastLink('./sli-company.html',text('Company','Perusahaan'),path==='sli-company.html'));
 
  // Keep the two client-facing research services visible together above the scrollable sector menu.
  const tools=node('div','sli-platform-tools');
- const quick=node('nav','sli-platform-quicklinks');
- quick.setAttribute('aria-label','Research AI and expert services');
- quick.append(
-  mastLink('./sli-research-ai.html','DERGUBA AI',path==='sli-research-ai.html'),
-  mastLink('./sli-expert-connect.html',text('Expert Connect','Carikan Pakar'),path==='sli-expert-connect.html')
- );
- tools.append(quick);
  // All specialist dashboards share the same persisted EN/ID preference as the homepage.
  // Never show a decorative language button that does not apply the language.
  {
