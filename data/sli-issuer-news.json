@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-24T04:03:30.174997Z",
+  "updated_at_utc": "2026-10-24T04:28:44.094530Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_d3f2032ec2e303d3c91e58",
+      "title": "Antam (ANTM) Bakal Kelola Tambang Emas 275 Hektare di Papua Tengah - Warta Ekonomi",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNUkpsdEJLMlo2eE1ta19tUk5wS0pzMVhTdkhCUFB2a3A1THRHSVB0ZmFTVTRvQmNVRGNveFo4bXlrZ09MM1JlYVA5ZlhxbGtZeHJOZ2xvZjljTzRrVzRael9oTW5fbVhlWWF4LVl4TkpabjRibTJKaVd6Q0QxTnc0WFBvYTRXNGFtTHVlRFZNUVNWaktWMzZkQm1jVDlyOEhlSkJOYdIBqgFBVV95cUxOenRNVXNRX3pmbElVLXgwejd2SW5NaXNGaWl1N2k2ZjhYSDdXd2FCRW1xbHVtbWZVbGtra2t6RHk0VHlRaS1MbUdTMlo3WFl0N2hQZ1J4QkJIM0VXOVZjaVZRRGtWbms4WjczNXlhX0pjcmlDc1J2Y0NWaFNJWHhuT1RIcjVsYkhGWVFHT2pOb3NFc1pONUFNTmp1VVpqVGM4VjhFQVNNWUlFZw?oc=5",
+      "publisher": "Warta Ekonomi",
+      "published_at_utc": "2026-10-24T03:21:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_0e7fe5c7181652b4451371",
       "title": "Kinerja Melesat, PTBA Siapkan Langkah Strategis Jaga Nilai Perusahaan - Kompas.com",
