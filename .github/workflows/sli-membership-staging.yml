@@ -21,7 +21,8 @@ jobs:
       - name: Enforce offline auth and billing safeguards
         run: |
           node --check membership-api/src/index.js
-          node --test membership-api/tests/auth.test.mjs membership-api/tests/worker-sessions-billing.test.mjs membership-api/test/access.test.mjs
+          node --check research-api/src/index.js
+          node --test membership-api/tests/auth.test.mjs membership-api/tests/worker-sessions-billing.test.mjs membership-api/tests/research-entitlement.test.mjs membership-api/test/access.test.mjs
           python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
   staging-preview:
     needs: validation
