@@ -1,6 +1,7 @@
 import {PLANS,effectivePlan,canAccess} from './access.mjs';
 import {issueSession,verifySession,revokeSession,revokeAllSessions} from './sessions.mjs';
 import {verifyBillingSignature,processBillingEvent} from './billing.mjs';
+import {stagingLoginPage} from './staging-login.mjs';
 /*
  * SLI membership API · Cloudflare Worker reference implementation.
  * Fail closed: no checkout, no signup endpoint, no client-granted entitlements.
@@ -76,8 +77,10 @@ const json=(status,body,origin)=>new Response(JSON.stringify(body),{status,heade
 export default {
  async fetch(request,env){
   const url=new URL(request.url),configured=canonicalOrigin(env?.WEB_ORIGIN),incoming=request.headers.get('origin');
-  if(incoming&&(!configured||incoming!==configured))return fail(403,'origin_denied');
-  const origin=incoming===configured?configured:null;
+  const stageOrigin=(env?.ENVIRONMENT==='staging'&&env?.STAGING_LOGIN_UI_ENABLED==='true'&&
+    url.hostname==='sli-membership-infra-stage.hananakhmad1991.workers.dev')?url.origin:null;
+  if(incoming&&incoming!==configured&&incoming!==stageOrigin)return fail(403,'origin_denied');
+  const origin=incoming===configured?configured:(incoming===stageOrigin?stageOrigin:null);
   if(request.method==='OPTIONS'){
    if(!origin)return fail(403,'origin_denied');
    return new Response(null,{status:204,headers:{...headers(origin),
@@ -87,6 +90,16 @@ export default {
   }
   if(url.pathname==='/healthz'&&request.method==='GET')
     return json(200,{service:'sli-membership-api',state:'prelaunch',billing:'disabled_by_default'},origin);
+  if(url.pathname==='/staging-login'&&request.method==='GET'){
+    const html=stagingLoginPage(env);
+    if(!html||!stageOrigin)return fail(404,'not_found',origin);
+    return new Response(html,{status:200,headers:{
+      'content-type':'text/html; charset=utf-8','cache-control':'no-store',
+      'x-content-type-options':'nosniff','x-frame-options':'DENY',
+      'referrer-policy':'no-referrer',
+      'content-security-policy':"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' "+env.SUPABASE_URL+"; form-action 'none'; base-uri 'none'; frame-ancestors 'none'"
+    }});
+  }
   // Internal adapter messages are deliberately disabled in production. Never accept browser events.
   if(url.pathname==='/v1/billing/internal-event'){
    if(request.method!=='POST')return fail(405,'method_not_allowed');
