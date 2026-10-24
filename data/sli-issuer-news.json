@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-24T00:43:35.600605Z",
+  "updated_at_utc": "2026-10-24T01:39:18.400414Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -41,6 +41,22 @@
   "refresh_policy": "GitHub Actions attempts every 30 minutes; scheduler and RSS availability may delay updates.",
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
+    {
+      "id": "sli_issuer_00af394584b79a46d5ec1e",
+      "title": "PTBA Kaji Buyback Saham, Laba Bersih Semester I 2026 Melonjak 218% - Indragirione.com",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQTnF5TDdvRVp5b3o1OVFCS01rVXFFakp2eWRlSUlaZTdOLW1TZjFHbDE0a1BpWV9kX002aVVBWHljdjhTZkdNLU94ZXVRWDM3cndPNVViWkU5ZnVaODNfSkdicWhUbDA5MGZQelJhSkFrSmxrejh3NHFQM19zTGxRTTlQeEctRGNyOWM4OUNHT3ItLTB3SDEzZVdZcFVFOHZMNDhpQnN6LTfSAagBQVVfeXFMUE5xeUw3b0VaeW96NTlRQktNa1VxRWpKdnlkZUlJWmU3Ti1tU2YxR2wxNGtQaVlfZF9NNmlVQVh5Y3Y4U2ZHTS1PeGV1UVgzN3J3TzVVYlpFOWZ1WjgzX0pHYnFoVGwwOTBmUHpSYUpBa0psa3o4dzRxUDNfc0xsUU05UHhHLURjcjljODlDR09yLS0wd0gxM2VXWXBVRTh2TDQ4aUJzei03?oc=5",
+      "publisher": "Indragirione.com",
+      "published_at_utc": "2026-10-23T23:21:31Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
     {
       "id": "sli_issuer_be1213d6d53c68ab973ca8",
       "title": "Sucor Sekuritas Nilai Saham PGAS Menarik untuk Diakumulasi - Demokratis.co.id",
@@ -1642,6 +1658,22 @@
       "title": "Telkom (TLKM) Rampungkan Buyback 15,95 Juta Saham Terkait Pemisahan Usaha - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQU3plMUE0VUJoQTZIV09DQUdLZmp2WEN2MWlNY3M4N3piZkc3ZGFKX2V0TU10d3FJM1JxNXdOWW1BcWFONmlxekk1aDF3Z3R5aDZ1QVRrV0xUc1dadlFXY1hLbVMzWElHMjQ4bm5vWnVmenJ2ejlsNFh3UGFodXZFaDduU0htaF9FXzJlby1FckM5Yk0zTEdQRktSTmtTTmZmcVh1MVAxNjl3d9IBogFBVV95cUxNLVV4Z0NhZlduRXNpRDZfT2pDZkl4S18xaVVlM2FHMjl5S1BsUHl2dWJJeXFzWVBEUjFhWmg4WWgwaktLeG90REdtYXVwUjMwU3dUYzNhcWtJcGdnV0I2U3NZQzZQNWhMNmdlR05yUU9pdmFRRWZTSDl0QjFfSldpc0lNN3hyX1J3MW5WdnkxcHB3VXRrdzdBZWtaazViOXBGcUE?oc=5",
       "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-22T13:26:13Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_52a74fa7e8202b2d07ea0f",
+      "title": "Telkom (TLKM) Rampungkan Buyback 15,95 Juta Saham Terkait Pemisahan Usaha - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBZODQzTS0tM194ZjMwcW11WjJLaFFuTVpkZEFIRUJyNTI4N2NPUG5SeDhtYjZBOFhtSGtKdjZQU0h2eW9QY3FhQjhUZUVQSlBWUjVPamdkNTlxcVhrcDcxNlpCajdFZw?oc=5",
+      "publisher": "TradingView",
       "published_at_utc": "2026-10-22T13:26:13Z",
       "date_type": "rss_pubdate",
       "tickers": [
@@ -7784,22 +7816,6 @@
         "UNTR"
       ],
       "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_aa33292c3f693984db7d8b",
-      "title": "IHSG Diprediksi Melemah, MNC Sekuritas Rekomendasikan BBCA, ICBP, TINS, dan VKTR - Jawa Pos",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQUmowWnpRbjJRYllTM3ZOcTB1Vk1qVTYwYTRHRUpXS0RyTmlKUHlLa1E3alZ6bWNpU09NU2RDWU5xeDB1dFhNWDZoXzRDNlFvMUZTUkF5OEJZOXNRRWJJbld1T3ZHRk9JUzd5WU9KVnFDNmY3ZDRfOWRPUjlGN0VndEZfVU1EdDktZW0xcER4WG5VcDBSVTY4bHAtX2txSTR5QVFnSzREUFZhSktHOWU5bjN4ZEFEQQ?oc=5",
-      "publisher": "Jawa Pos",
-      "published_at_utc": "2026-10-16T01:09:33Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ICBP"
-      ],
-      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
