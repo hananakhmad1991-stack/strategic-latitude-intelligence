@@ -184,11 +184,13 @@ function renderPlatformMast(){
    [text('Expert Connect','Carikan Pakar'),'./sli-expert-connect.html'],
    [text('Data & Methodology','Data & Metodologi'),'./sli-data-inventory.html']]],
   [text('Solutions','Solusi'),[
-   [text('Energy & Minerals','Energi & Mineral'),'./index.html#energy'],
-   [text('Investment & Regions','Investasi & Daerah'),'./provincial-intelligence.html'],
-   [text('Provinces','Provinsi'),'./provincial-intelligence.html'],
-   [text('AI Infrastructure','Infrastruktur AI'),'./ai-intelligence-hub.html'],
-   [text('Custom Research','Riset Sesuai Permintaan'),'./sli-business-info.html#kontak']]],
+   [text('Energy Security Dashboard','Dashboard Ketahanan Energi'),'./index.html#energy'],
+   [text('Critical Minerals Dashboard','Dashboard Mineral Kritis'),'./index.html#minerals'],
+   [text('Investment Intelligence','Intelijen Investasi'),'./provincial-intelligence.html'],
+   [text('AI Infrastructure Dashboard','Dashboard Infrastruktur AI'),'./ai-intelligence-hub.html'],
+   [text('Food & Agriculture','Pangan & Pertanian'),'./index.html#food'],
+   [text('Marine & Fisheries','Kelautan & Perikanan'),'./index.html#marine'],
+   [text('Custom Research & Expert Services','Riset Khusus & Layanan Pakar'),'./sli-expert-connect.html']]],
   [text('More','Lainnya'),[
    [text('Terms of Use','Syarat Penggunaan'),'./sli-business-info.html#ketentuan'],
    [text('Refund & Cancellation','Refund & Pembatalan'),'./sli-business-info.html#refund'],
