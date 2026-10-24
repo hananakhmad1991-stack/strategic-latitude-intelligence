@@ -50,8 +50,8 @@ test("Membership API denies unauthenticated, missing configuration, forged claim
   const pro={plan:"pro",status:"active",access_until:"2099-01-01T00:00:00Z"};
   assert.equal((await (await worker.fetch(request("/v1/me",{bearer:valid}),environment(pro))).json()).plan,"pro");
   response=await worker.fetch(request("/v1/protected/province-research",{bearer:valid}),environment(pro));
-  assert.equal(response.status,200);assert.match(await response.text(),/"private"/);
-  assert.match(response.headers.get("content-disposition"),/attachment/);
+  assert.equal(response.status,401,"A paid JWT without an active server-issued session must not download private content");
+  assert.equal((await response.json()).error,"session_required");
   assert.equal((await worker.fetch(request("/v1/protected/institutional-brief",{bearer:valid}),environment(pro))).status,403);
   assert.equal((await (await worker.fetch(request("/v1/me",{bearer:valid}),environment({...pro,access_until:"2025-01-01T00:00:00Z"}))).json()).plan,"open");
   assert.equal((await (await worker.fetch(request("/v1/me",{bearer:valid}),environment({...pro,status:"past_due"}))).json()).plan,"open");
