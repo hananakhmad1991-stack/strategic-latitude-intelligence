@@ -1,0 +1,107 @@
+name: SLI Membership · integrated staging deploy
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'feature/sli-membership-session-billing-foundation-20261024'
+    paths:
+      - 'membership-api/**'
+      - '.github/workflows/sli-membership-integration-staging.yml'
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify route syntax, signature handling, account sessions, D1 schema
+        run: |
+          node --check membership-api/src/index.js
+          node --check membership-api/scripts/generate-staging-config.mjs
+          node --test membership-api/tests/auth.test.mjs membership-api/test/access.test.mjs membership-api/tests/worker-sessions-billing.test.mjs
+          python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
+  deploy:
+    needs: qa
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    environment: sli-membership-staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify isolated staging bindings configured
+        id: config
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          D1: ${{ secrets.SLI_MEMBERSHIP_STAGING_D1_ID }}
+          R2: ${{ secrets.SLI_MEMBERSHIP_STAGING_BUCKET }}
+          AUTH: ${{ secrets.SLI_SUPABASE_STAGING_URL }}
+          ORIGIN: ${{ secrets.SLI_MEMBERSHIP_STAGING_ORIGIN }}
+        run: |
+          if [ -z "$CF_TOKEN" ] || [ -z "$CF_ACCOUNT" ] || [ -z "$D1" ] || [ -z "$R2" ] || [ -z "$AUTH" ] || [ -z "$ORIGIN" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Integrated staging skipped. Requires Cloudflare, isolated D1/R2, trusted site origin and Supabase keys."
+            echo "### Integrated staging NOT DEPLOYED: required secrets are absent." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Prepare isolated staging configuration
+        if: steps.config.outputs.configured == 'true'
+        working-directory: membership-api
+        env:
+          SLI_MEMBERSHIP_STAGING_D1_ID: ${{ secrets.SLI_MEMBERSHIP_STAGING_D1_ID }}
+          SLI_MEMBERSHIP_STAGING_BUCKET: ${{ secrets.SLI_MEMBERSHIP_STAGING_BUCKET }}
+          SLI_SUPABASE_STAGING_URL: ${{ secrets.SLI_SUPABASE_STAGING_URL }}
+          SLI_MEMBERSHIP_STAGING_ORIGIN: ${{ secrets.SLI_MEMBERSHIP_STAGING_ORIGIN }}
+        run: node scripts/generate-staging-config.mjs
+      - name: Confirm Supabase JWKS is reachable before accepting JWTs
+        if: steps.config.outputs.configured == 'true'
+        env:
+          SUPABASE_URL: ${{ secrets.SLI_SUPABASE_STAGING_URL }}
+        run: |
+          node --input-type=module <<'NODE'
+          const jwks=await fetch(process.env.SUPABASE_URL+'/auth/v1/.well-known/jwks.json',{signal:AbortSignal.timeout(20000)});
+          if(!jwks.ok)throw Error('staging identity JWKS inaccessible: '+jwks.status);
+          const body=await jwks.json();
+          if(!Array.isArray(body.keys)||!body.keys.some(k=>['ES256','RS256'].includes(k.alg)))throw Error('asymmetric signing key missing');
+          console.log('Staging identity verification keys available.');
+          NODE
+      - name: Apply versioned D1 migrations to isolated staging only
+        if: steps.config.outputs.configured == 'true'
+        working-directory: membership-api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 d1 migrations apply DB --remote --config wrangler.integration-stage.json
+      - name: Deploy integrated Worker, with checkout and billing DISABLED
+        if: steps.config.outputs.configured == 'true'
+        working-directory: membership-api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 deploy --config wrangler.integration-stage.json
+      - name: Live reject unauthenticated protected requests and internal billing
+        if: steps.config.outputs.configured == 'true'
+        run: |
+          node --input-type=module <<'NODE'
+          const host='https://sli-membership-integration-stage.hananakhmad1991.workers.dev';
+          const health=await fetch(host+'/healthz',{signal:AbortSignal.timeout(25000)});
+          if(health.status!==200||(await health.json()).state!=='prelaunch')throw Error('stage health failed');
+          const protectedResponse=await fetch(host+'/v1/protected/province-research',{signal:AbortSignal.timeout(25000)});
+          if(protectedResponse.status!==401)throw Error('unauthenticated protected request not rejected: '+protectedResponse.status);
+          const webhook=await fetch(host+'/v1/billing/internal-event',{method:'POST',body:'{}',signal:AbortSignal.timeout(25000)});
+          if(webhook.status!==503)throw Error('billing was inadvertently enabled: '+webhook.status);
+          console.log('Integrated staging live security PASS: health 200, protected 401, billing disabled 503.');
+          NODE
+      - name: Record rollout limits
+        if: always()
+        run: |
+          echo '### SLI Membership integrated staging' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Run above steps to determine deployment. Checkout and provider webhooks stay disabled.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Authenticated real-user login, billing-provider events, account cancellation and invoice workflows require independent acceptance.' >> "$GITHUB_STEP_SUMMARY"
