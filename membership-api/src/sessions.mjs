@@ -29,10 +29,6 @@ export async function verifySession(userId,token,db){
  // Downgrades must immediately enforce the reduced cap, prioritizing older registered sessions.
  const row=await db.prepare('SELECT plan,status,access_until FROM subscriptions WHERE user_id=?').bind(userId).first();
  const limit=PLANS[effectivePlan(row)].sessions;
- const position=await db.prepare("SELECT COUNT(*) AS n FROM member_sessions WHERE user_id=? AND revoked_at IS NULL AND expires_at>datetime('now') AND (created_at<? OR (created_at=? AND session_hash<=?))").bind(userId,new Date(0).toISOString(),'',hash).first();
- // Accurate order check in a separate query (SQLite stable creation order + hash tie-break).
- const rank=await db.prepare("SELECT COUNT(*) AS n FROM member_sessions WHERE user_id=? AND revoked_at IS NULL AND expires_at>datetime('now') AND (created_at<(SELECT created_at FROM member_sessions WHERE session_hash=?) OR (created_at=(SELECT created_at FROM member_sessions WHERE session_hash=?) AND session_hash<=?))").bind(userId,hash,hash,hash).first();
- void position;
  return Number(rank?.n||0)<=limit;
 }
 export async function revokeSession(userId,token,db){
