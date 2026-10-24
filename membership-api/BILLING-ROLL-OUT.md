@@ -47,3 +47,11 @@ With the dedicated token, `.github/workflows/sli-membership-bootstrap.yml` will 
 The secure login portion still requires a separate **real** Supabase Auth staging project with RS256/ES256 public JWKS, and customer email verification / privacy settings. Store its URL in `SLI_SUPABASE_STAGING_URL`. `SLI_MEMBERSHIP_STAGING_ORIGIN` must be the actual browser origin, not a fabricated placeholder. The four historical missing settings were D1 ID, bucket, Supabase URL and origin; the bootstrap now derives D1 ID, bucket and known preview origin at run-time once Cloudflare permissions are authorized. Only the real Supabase project cannot be provisioned with current connected account permissions.
 
 Real payment-provider sandbox tests require account/merchant onboarding and signed provider events. The current internal HMAC tests exercise subscription transitions *offline*, and cannot be used to claim that payment provider checkout, settlement, refunds or reconciliation are connected.
+
+
+## Supabase connection audit — 24 October 2026
+A connected Supabase account was inspected via the authorized Supabase integration. There is **one Free-tier organization and zero projects**. No project URL, JWKS, email Auth configuration, or actual staging users exist in this connected account. Do not claim the Supabase identity gate is configured simply because the integration is connected.
+
+A new isolated Supabase project must be explicitly associated with the user-selected organization. Before any potentially billable creation, confirm the project's quoted cost and user's approval. Preferred staging region near Jakarta: `ap-southeast-1` (Singapore), provided the user approves this location. Once created, validate the actual RS256/ES256 keys through `/auth/v1/.well-known/jwks.json`, enable email confirmation and short-lived tokens, and set allowed site URLs/redirect origins carefully.
+
+**Cloudflare remains separately blocked:** the currently installed Worker deploy token failed D1 scope with Cloudflare error 10000. Only when `CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN` is configured may the isolated D1 and R2 bootstrap run. No database migration, customer login or payment sandbox checkout is proven live yet.
