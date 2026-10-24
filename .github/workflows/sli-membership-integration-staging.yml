@@ -1,6 +1,11 @@
 name: SLI Membership · integrated staging deploy
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'membership-api/**'
+      - 'research-api/src/index.js'
+      - '.github/workflows/sli-membership-integration-staging.yml'
   push:
     branches:
       - 'feature/sli-membership-session-billing-foundation-20261024'
@@ -27,6 +32,7 @@ jobs:
           python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
   deploy:
     needs: qa
+    if: github.event_name != 'pull_request' || (github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'feature/sli-membership-session-billing-foundation-20261024')
     runs-on: ubuntu-latest
     timeout-minutes: 12
     environment: sli-membership-staging
