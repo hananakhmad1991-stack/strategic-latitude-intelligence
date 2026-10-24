@@ -59,3 +59,6 @@ A new isolated Supabase project must be explicitly associated with the user-sele
 ## Staging provisioning resumed — 24 October 2026
 
 The owner confirmed that the separate Cloudflare staging API token was stored in GitHub Actions secrets as `CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN`. The isolated Supabase project `sli-membership-staging` was created in `ap-southeast-1` (Singapore), ref `wpiphwxdllwwmxlmxtwr`, with the free organization and a quoted $0/month project cost. The Cloudflare D1/R2 bootstrap must be rerun and actual resource creation, migrations, binding and live-denial tests confirmed from the run logs; **a configured token does not prove deployments or successful database migrations**. Supabase JWT signing keys and email Auth settings must be separately validated before authenticated customer testing.
+
+## R2 enablement recheck — 24 October 2026
+The owner reported enabling Cloudflare R2. Trigger a fresh *staging-only* bootstrap to verify entitlement (Cloudflare R2 error 10042 must be absent), confirm the private R2 bucket is created, and prove `PREMIUM_BUCKET` binding is present in the deployed Worker. Do not infer R2 activation merely from the owner's message or prior success of the D1-only Worker. Membership payment remains disabled and no commercial customer access should be enabled.
