@@ -1,6 +1,10 @@
 name: SLI Membership & Secure Access QA
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'membership-api/**'
+      - '.github/workflows/sli-membership-qa.yml'
   push:
     paths:
       - 'sli-membership.html'
@@ -24,4 +28,8 @@ jobs:
       - name: Validate public catalog, private API and negative authorization cases
         run: |
           node --check membership-api/src/index.js
-          node --test tests/qa-sli-membership.mjs membership-api/tests/auth.test.mjs
+          node --check membership-api/src/sessions.mjs
+          node --check membership-api/src/access.mjs
+          node --check membership-api/src/billing.mjs
+          node --test tests/qa-sli-membership.mjs membership-api/tests/auth.test.mjs membership-api/test/access.test.mjs membership-api/tests/worker-sessions-billing.test.mjs
+          python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
