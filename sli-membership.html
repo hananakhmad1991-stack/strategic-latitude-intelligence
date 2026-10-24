@@ -22,7 +22,7 @@ table{width:100%;border-collapse:collapse;min-width:640px}th,td{text-align:left;
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.step{background:#10283b;border:1px solid var(--line);border-radius:10px;padding:17px}.step strong{color:#f3d29b}
 footer{border-top:1px solid var(--line);margin-top:34px;padding-top:17px;color:#b6cbd9;font-size:12px}
 @media(max-width:850px){.plans,.steps{grid-template-columns:1fr}.plan{min-height:0}.audience{min-height:0}main{padding:14px 12px}}
-</style></head><body><main>
+</style><style>body>header:not(#sliPlatformMast){display:none!important}#sliPlatformMast{max-width:none!important;margin:0!important}</style></head><body><main>
 <header class="hero">
 <div class="langbar"><span class="eyebrow">STRATEGIC LATITUDE INTELLIGENCE · MEMBERSHIP</span><div><a href="./index.html#overview" data-id="← Kembali ke Overview" data-en="← Back to Overview">← Kembali ke Overview</a> · <button id="sliMembershipLanguage" class="switch" type="button" aria-label="Switch language">ID / EN</button></div></div>
 <h1 data-id="Pilih akses yang sesuai dengan kebutuhan riset Anda" data-en="Choose the research access that fits your work">Pilih akses yang sesuai dengan kebutuhan riset Anda</h1>
@@ -105,7 +105,7 @@ footer{border-top:1px solid var(--line);margin-top:34px;padding-top:17px;color:#
 <script>
 (()=>{'use strict';const button=document.getElementById('sliMembershipLanguage');let language='id';function render(){document.documentElement.lang=language;for(const el of document.querySelectorAll('[data-en][data-id]'))el.textContent=el.dataset[language];button.textContent=language==='id'?'ID / EN':'EN / ID';window.SLIi18n={language};document.dispatchEvent(new CustomEvent('sli:languagechange'))}button.addEventListener('click',()=>{language=language==='id'?'en':'id';render()});render()})();
 </script>
-<script defer src="./js/sli-navigation.js?v=20261019-id-audit9"></script>
+<script defer src="./js/sli-navigation.js?v=20261024-global-header8"></script>
 <script defer src="./js/sli-shared-appendix.js?v=20261017-membership1"></script>
 <script defer src="./js/sli-public-usability.js"></script>
 </body></html>
