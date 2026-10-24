@@ -183,9 +183,9 @@ function renderPlatformMast(){
    [text('DERGUBA Research AI','DERGUBA Research AI'),'./sli-research-ai.html'],
    [text('Analytical Tools & Data Inventory','Perangkat Analisis & Inventaris Data'),'./sli-data-inventory.html']]],
   [text('Solutions','Layanan'),[
-   [text('Custom Research & Advisory','Riset Khusus & Konsultasi'),'./sli-expert-connect.html#expertRequest'],
-   [text('Expert Sourcing & Consultation','Pencarian & Konsultasi Pakar'),'./sli-expert-connect.html'],
-   [text('Corporate & Institutional Intelligence','Intelijen Korporasi & Institusi'),'./sli-expert-connect.html#expertRequest']]],
+   [text('Custom Research & Advisory','Riset Khusus & Konsultasi'),'./sli-custom-research.html'],
+   [text('Expert Sourcing & Consultation','Pencarian & Konsultasi Pakar'),'./sli-expert-sourcing.html'],
+   [text('Corporate & Institutional Intelligence','Intelijen Korporasi & Institusi'),'./sli-institutional-intelligence.html']]],
  ];
  const menuWrap=node('div','sli-header-menu-set');
  for(const [caption,entries] of menus){
