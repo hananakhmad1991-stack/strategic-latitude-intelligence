@@ -38,6 +38,7 @@ jobs:
       SLI_API_HOSTNAME: ${{ vars.SLI_API_HOSTNAME }}
       SLI_ACCESS_ISSUER: ${{ vars.SLI_ACCESS_ISSUER }}
       SLI_D1_DATABASE_ID: ${{ vars.SLI_D1_DATABASE_ID }}
+      SLI_ACCESS_ALLOWED_GROUP_ID: ${{ vars.SLI_ACCESS_ALLOWED_GROUP_ID }}
       MODE: ${{ inputs.mode }}
       CONFIRM: ${{ inputs.confirmation }}
     defaults:
@@ -56,7 +57,7 @@ jobs:
             echo "::error::Deployment confirmation string missing"
             exit 1
           fi
-          for v in CF_ACCOUNT_ID CF_API_TOKEN SLI_ACCESS_AUD SLI_API_HOSTNAME SLI_ACCESS_ISSUER SLI_D1_DATABASE_ID; do
+          for v in CF_ACCOUNT_ID CF_API_TOKEN SLI_ACCESS_AUD SLI_API_HOSTNAME SLI_ACCESS_ISSUER SLI_D1_DATABASE_ID SLI_ACCESS_ALLOWED_GROUP_ID; do
             if [ -z "$(printenv "$v")" ]; then
               echo "::error::Required Cloudflare secret or environment variable missing: $v"
               exit 1
