@@ -29,6 +29,7 @@ jobs:
         run: |
           node --check membership-api/scripts/bootstrap-cloudflare-staging.mjs
           node --check membership-api/scripts/live-staging-acceptance.mjs
+          node --check membership-api/src/staging-login.mjs
           node --test membership-api/tests/auth.test.mjs membership-api/tests/worker-sessions-billing.test.mjs membership-api/tests/research-entitlement.test.mjs membership-api/test/access.test.mjs
           python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
   stage:
@@ -105,7 +106,11 @@ jobs:
           }catch(error){console.log('Staging Auth JWKS not reachable: '+error.message)}
           if(active){
             const path='wrangler.bootstrap-stage.json',conf=JSON.parse(fs.readFileSync(path,'utf8'));
-            conf.vars.SUPABASE_URL=url;fs.writeFileSync(path,JSON.stringify(conf,null,2),{mode:0o600});
+            conf.vars.SUPABASE_URL=url;
+            // Public client key, intentionally visible in staging browser (NEVER a service-role secret).
+            conf.vars.SUPABASE_PUBLISHABLE_KEY='sb_publishable_qpGYAmjSOgjZlAlPFD0-eA_IDPFnP3R';
+            conf.vars.STAGING_LOGIN_UI_ENABLED='true';
+            fs.writeFileSync(path,JSON.stringify(conf,null,2),{mode:0o600});
             console.log('SUPABASE STAGING AUTH READY: real asymmetric JWKS validated; ONLY account JWT and D1 entitlements are trusted.');
           }else{
             console.log('SUPABASE STAGING AUTH NOT ACTIVATED: asymmetric JWKS missing or inaccessible; fail-closed customer access remains.');
@@ -130,6 +135,12 @@ jobs:
           const expected=config.vars.SUPABASE_URL?401:503;
           const me=await call('/v1/me',{headers:{Origin:'https://hananakhmad1991-stack.github.io'}});
           if(me.status!==expected)throw Error('staging anonymous access did not fail closed: '+me.status+' expected '+expected);
+          if(config.vars.STAGING_LOGIN_UI_ENABLED==='true'){
+            const login=await call('/staging-login');
+            if(login.status!==200||!(login.headers.get('content-security-policy')||'').includes("frame-ancestors 'none'"))throw Error('staging login browser page unavailable or unsafe: '+login.status);
+            if(!(await login.text()).includes('Membership Acceptance Console'))throw Error('login UI payload missing');
+            console.log('STAGING LOGIN UI PASS: page=200, CSP enabled, password flow client-side only.');
+          }
           const billing=await call('/v1/billing/internal-event',{method:'POST',body:'{}'});
           if(billing.status!==503)throw Error('billing unexpectedly active: HTTP '+billing.status);
           const foreign=await call('/v1/me',{headers:{Origin:'https://malicious.example'}});
