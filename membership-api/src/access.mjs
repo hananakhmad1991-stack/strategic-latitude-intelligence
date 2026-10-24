@@ -1,20 +1,20 @@
-// Shared tier rules. The Server MUST make the final authorization decision.
+// One verified identity per account. Enterprise team seats require an approved contract.
 export const PLANS=Object.freeze({
- open:{sessions:1,export:false,rank:0},
- pro:{sessions:1,export:true,rank:1},
- intelligence_pro:{sessions:3,export:true,rank:2},
- enterprise:{sessions:10,export:true,rank:3} // seats & limits must be defined by contract before production
+ open:Object.freeze({sessions:1,rank:0,export:false}),
+ pro:Object.freeze({sessions:1,rank:1,export:true}), // Professional Rp249,000/month
+ intelligence_pro:Object.freeze({sessions:3,rank:2,export:true}), // Rp749,000/month
+ enterprise:Object.freeze({sessions:1,rank:3,export:true}) // one session PER named seat; no shared logins
 });
-export const paidAccess=(p)=>p==='pro'||p==='intelligence_pro'||p==='enterprise';
+export function effectivePlan(row,now=Date.now()){
+ if(!row||!['active','trialing'].includes(row.status))return 'open';
+ const expiration=Date.parse(row.access_until||'');
+ if(!Number.isFinite(expiration)||expiration<=now)return 'open';
+ return Object.hasOwn(PLANS,row.plan)?row.plan:'open';
+}
 export function canAccess(plan,feature){
  const p=PLANS[plan]||PLANS.open;
- if(feature==='download'||feature==='export'||feature==='embed')return p.export;
- if(feature==='weekly_personalized'||feature==='alerts')return p.rank>=2;
- if(feature==='team')return p.rank>=3;
- if(feature==='provincial'||feature==='research')return p.rank>=1;
- return true;
-}
-export function effectivePlan(row,now=Date.now()){
- if(!row||!['active','trialing'].includes(row.status)||!Number.isFinite(Date.parse(row.access_until))||Date.parse(row.access_until)<=now)return 'open';
- return Object.hasOwn(PLANS,row.plan)?row.plan:'open';
+ if(['download','export','embed','provincial','research','scenario'].includes(feature))return p.rank>=1;
+ if(['alerts','weekly_personalized','deep_research'].includes(feature))return p.rank>=2;
+ if(['team','custom_contract'].includes(feature))return p.rank>=3;
+ return ['overview','sources','glossary','sector_summary'].includes(feature);
 }
