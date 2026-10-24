@@ -41,29 +41,38 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Require available Cloudflare deploy credentials
+      - name: Check dedicated staging resource token
+        id: permission
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          test -n "$CLOUDFLARE_API_TOKEN" || (echo "::error::Cloudflare token missing" && exit 1)
-          test -n "$CLOUDFLARE_ACCOUNT_ID" || (echo "::error::Cloudflare account missing" && exit 1)
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::STAGING INFRA NOT DEPLOYED: requires CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN with D1 Edit, Workers R2 Storage Write and Worker deployment access."
+            echo "Missing dedicated staging token; D1/R2 creation and migration not executed." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          fi
       - name: Provision and verify strictly isolated empty D1 and R2
+        if: steps.permission.outputs.available == 'true'
         working-directory: membership-api
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: node scripts/bootstrap-cloudflare-staging.mjs
       - name: Apply D1 migrations to staging only
+        if: steps.permission.outputs.available == 'true'
         working-directory: membership-api
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx --yes wrangler@4 d1 migrations apply DB --remote --config wrangler.bootstrap-stage.json
       - name: Confirm D1 schema migration on remote
+        if: steps.permission.outputs.available == 'true'
         working-directory: membership-api
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           npx --yes wrangler@4 d1 execute DB --remote --config wrangler.bootstrap-stage.json --command "SELECT name FROM sqlite_master WHERE type='table' AND name IN ('subscriptions','member_sessions','billing_event_audit') ORDER BY name;" > /tmp/membership-d1-schema.txt
@@ -72,12 +81,14 @@ jobs:
           grep -q 'billing_event_audit' /tmp/membership-d1-schema.txt
           echo 'D1 remote staging schema verified.'
       - name: Deploy with D1 and R2 bindings, without real customer authentication or billing
+        if: steps.permission.outputs.available == 'true'
         working-directory: membership-api
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx --yes wrangler@4 deploy --config wrangler.bootstrap-stage.json
       - name: Live fail-closed HTTP smoke
+        if: steps.permission.outputs.available == 'true'
         run: |
           node --input-type=module <<'NODE'
           const base='https://sli-membership-infra-stage.hananakhmad1991.workers.dev';
