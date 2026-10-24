@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-10-23T23:04:02.745Z",
+  "published_at_utc": "2026-10-24T00:00:10.320Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-10-23T23:04:02.066808Z",
+    "news": "2026-10-24T00:00:09.412841Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 522,
+  "count": 523,
   "events": [
+    {
+      "id": "sli-catalyst-aea197afcd9547af57",
+      "kind": "news_indexed",
+      "title": "Hashim: 12,7 Juta Ha Hutan Terdegradasi untuk Bahan Baku B50-B100 Halaman all - Kompasiana.com",
+      "detected_at_utc": "2026-10-24T00:00:10.320Z",
+      "source_at_utc": "2026-10-15T14:43:47Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQbWJtU0Y3N2Nqb2VKQlg5bEQtcy1Ea3BlSll1d3QyM0hZQlBKeXFZRDZlWGhoVHJ0SFVzM2dWU09YSDE0Ry02ckVDdmtVemtVSGxPaTlsb3o5M1JUdkRvcXVXdmlndjF2cHVwYVRUVF9rdThwM0pjYzltV0ZVc3d1bkJuRU5hXzJkYU85ZGhZUnZZSVNJZmh3X01HY2p6NEV3aWFMZl9XbG1TMnZCLW55OHF1ckJHWkdyMGpLWVFEa3dmWW82SWNJQVBVVE0tRVRwbVE?oc=5",
+      "publisher": "Kompasiana.com",
+      "sector": "energy",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-bbebd09faf809a1ee2",
       "kind": "news_indexed",
