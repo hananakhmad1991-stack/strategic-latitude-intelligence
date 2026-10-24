@@ -195,7 +195,6 @@ function renderPlatformMast(){
    [text('Terms of Use','Syarat Penggunaan'),'./sli-business-info.html#ketentuan'],
    [text('Refund & Cancellation','Refund & Pembatalan'),'./sli-business-info.html#refund'],
    [text('Privacy Policy','Kebijakan Privasi'),'./sli-privacy.html'],
-   [text('Company','Perusahaan'),'./sli-company.html'],
    [text('User Guide','Panduan Pengguna'),'./sli-user-guide.html'],
    [text('Glossary & Methods','Glosarium & Metode'),'./sli-glossary-methodology.html'],
    [text('Data Inventory','Inventaris Data'),'./sli-data-inventory.html'],
@@ -217,6 +216,7 @@ function renderPlatformMast(){
   detail.addEventListener('toggle',()=>{if(detail.open){for(const other of menuWrap.querySelectorAll('details'))if(other!==detail)other.open=false;explorer.open=false}});
  }
  primary.append(menuWrap);
+ primary.append(mastLink('./sli-company.html',text('Company','Perusahaan'),path==='sli-company.html'));
 
  // Keep the two client-facing research services visible together above the scrollable sector menu.
  const tools=node('div','sli-platform-tools');
