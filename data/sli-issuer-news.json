@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-24T03:02:23.590130Z",
+  "updated_at_utc": "2026-10-24T03:28:40.958382Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -5981,6 +5981,22 @@
       "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQOUdzM185TkhzTTBkS0M4QU1QMjRoR3BqTzlVMnJJdDNWOFRac0RLSWxHNzFDSWhwWTkzaDZJU3RxRTFEbldkRDh2M3NvaWpVLXU5MlJvN3ZRbXh6TmxoR3BGR3ZLRm5HT193SF9pd0VvYThQSmRJVXNnYkl0NzlCYzhmRDBLUQ?oc=5",
       "publisher": "InaKoran",
       "published_at_utc": "2026-10-20T01:58:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c864b2532fea9f3833e576",
+      "title": "Susul Alamtri (ADRO), Adaro Andalan (AADI) Buyback Saham - Bisnis.com - Market",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNTENYS05KcERWVlloTUlCVG5ITDFURDNabjdaanlveWdRQkFIYmpaWlRzSXYzTHlONUozcnl3Tl9XamFRczV0OW1XeERoeDBmdXJBNFZybWdQRkRVZEd0MWkySHM2cDJMdFA3eWtOVHV5aG53Slc2Y0c3dVpIUTJtR210THVFWWhGNnBQM3h4LWdKNkVRcDlDaTdLdnNTRzdFcFFWWjNR?oc=5",
+      "publisher": "Bisnis.com - Market",
+      "published_at_utc": "2026-10-20T01:56:24Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "AADI"
