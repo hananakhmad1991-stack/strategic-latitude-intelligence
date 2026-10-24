@@ -1,4 +1,5 @@
--- Initial D1 schema; apply through migrations before 0002.\nPRAGMA foreign_keys=ON;
+-- Initial D1 schema; apply through migrations before 0002.
+PRAGMA foreign_keys=ON;
 CREATE TABLE IF NOT EXISTS subscriptions (
  user_id TEXT NOT NULL PRIMARY KEY,
  plan TEXT NOT NULL CHECK(plan IN ('open','pro','enterprise')),
