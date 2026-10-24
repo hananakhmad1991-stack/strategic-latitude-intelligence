@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-24T05:26:58.709922Z",
+  "updated_at_utc": "2026-10-24T05:59:28.263258Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -2144,6 +2144,22 @@
         "AMMN"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ca1eb6bed049e5c6ad9dcc",
+      "title": "JPFA Proyeksikan Belanja Modal 2026 Tembus Rp 4 Triliun - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9tU1VqaWVsUlpJZjd5bTY4d2pHenIzLVFlR21qcmgwR2gtcDc2NDUzY1hFNDRiQlRTQl9QanlzdW15MXNWLVVDREppa29ZU2c3Slpsa2k1Rk51dnJF?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-10-22T09:55:28Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JPFA"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -6064,6 +6080,22 @@
       "date_type": "rss_pubdate",
       "tickers": [
         "AADI"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d5c4c498a41962521a891c",
+      "title": "ADRO Mulai Buyback Saham 20 Oktober, Siapkan Dana Maksimal Rp 5 Triliun - Kompas.com",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPcHdmc1NCdHZIdUVqRGoyZXRrWk1vQWVrWFdwZ0pwVFV4SXZZNHA0WjRFS0E2UndYVmM4NjM4eWVhRWJTb2xRWE9SbnRmQk9kR2liZ1RlS2RrVjEtLTA1bkp6OEpsNk5zV0tvb0NscFd3RXpTSGU1MTZGeGgzaGRGbEkwT0phNy0xaWljWm1FT25pNzhQampka2Q4LXlFZ21LeW1WMkpZcUtCbUluQTluUzdPQ05yTzhDQ1Y2cml3?oc=5",
+      "publisher": "Kompas.com",
+      "published_at_utc": "2026-10-20T01:54:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
       ],
       "sector": "coal",
       "source": "public_google_news_rss",
