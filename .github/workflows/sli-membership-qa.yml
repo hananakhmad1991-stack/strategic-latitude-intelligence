@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'membership-api/**'
+      - 'research-api/src/index.js'
       - '.github/workflows/sli-membership-qa.yml'
   push:
     paths:
@@ -28,8 +29,9 @@ jobs:
       - name: Validate public catalog, private API and negative authorization cases
         run: |
           node --check membership-api/src/index.js
+          node --check research-api/src/index.js
           node --check membership-api/src/sessions.mjs
           node --check membership-api/src/access.mjs
           node --check membership-api/src/billing.mjs
-          node --test tests/qa-sli-membership.mjs membership-api/tests/auth.test.mjs membership-api/test/access.test.mjs membership-api/tests/worker-sessions-billing.test.mjs
+          node --test tests/qa-sli-membership.mjs membership-api/tests/auth.test.mjs membership-api/test/access.test.mjs membership-api/tests/worker-sessions-billing.test.mjs membership-api/tests/research-entitlement.test.mjs
           python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
