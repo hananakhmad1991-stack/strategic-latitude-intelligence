@@ -13,6 +13,7 @@ test('staging page only rendered with dedicated staging mode + public key',()=>{
  assert.ok(html.includes('signup?redirect_to='),'signup uses explicit callback target');
  assert.ok(html.includes('history.replaceState'),'implicit access token fragment immediately removed from browser URL');
  assert.ok(html.includes('finishConfirmation()'),'email confirmation return handler exists');
+ assert.ok(html.includes('/auth/v1/logout?scope=global'),'staging console supports global signout to revoke exposed refresh sessions');
  assert.equal(stagingLoginPage({...stage,ENVIRONMENT:'production'}),null);
  assert.equal(stagingLoginPage({...stage,STAGING_LOGIN_UI_ENABLED:'false'}),null);
  assert.equal(stagingLoginPage({...stage,SUPABASE_PUBLISHABLE_KEY:'secret-key'}),null);
