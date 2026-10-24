@@ -178,6 +178,21 @@ function renderPlatformMast(){
  primary.append(explorer);
  primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
  primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'||path==='sli-issuer.html'));
+ const company=node('details','sli-platform-company');
+ const companyLabel=node('summary','',text('Company','Perusahaan')+' ▾');
+ company.append(companyLabel);
+ const companyMenu=node('div','sli-platform-company-menu');
+ for(const [labelEn,labelId,url] of [
+  ['About SLI','Tentang SLI','sli-company.html'],
+  ['Why SLI','Mengapa SLI','sli-company.html#why-sli'],
+  ['Contact Us','Hubungi Kami','sli-contact.html'],
+  ['Help & FAQ','Bantuan & FAQ','sli-help.html'],
+  ['Contact Sales','Hubungi Sales','sli-contact-sales.html']
+ ]){
+  const item=node('a','',text(labelEn,labelId));item.href='./'+url;companyMenu.append(item);
+ }
+ company.append(companyMenu);primary.append(company);
+
  // Keep the two client-facing research services visible together above the scrollable sector menu.
  const tools=node('div','sli-platform-tools');
  const quick=node('nav','sli-platform-quicklinks');
