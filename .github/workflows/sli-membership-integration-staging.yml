@@ -21,8 +21,9 @@ jobs:
       - name: Verify route syntax, signature handling, account sessions, D1 schema
         run: |
           node --check membership-api/src/index.js
+          node --check research-api/src/index.js
           node --check membership-api/scripts/generate-staging-config.mjs
-          node --test membership-api/tests/auth.test.mjs membership-api/test/access.test.mjs membership-api/tests/worker-sessions-billing.test.mjs
+          node --test membership-api/tests/auth.test.mjs membership-api/test/access.test.mjs membership-api/tests/worker-sessions-billing.test.mjs membership-api/tests/research-entitlement.test.mjs
           python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
   deploy:
     needs: qa
