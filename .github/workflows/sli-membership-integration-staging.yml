@@ -51,10 +51,17 @@ jobs:
           AUTH: ${{ secrets.SLI_SUPABASE_STAGING_URL }}
           ORIGIN: ${{ secrets.SLI_MEMBERSHIP_STAGING_ORIGIN }}
         run: |
-          if [ -z "$CF_TOKEN" ] || [ -z "$CF_ACCOUNT" ] || [ -z "$D1" ] || [ -z "$R2" ] || [ -z "$AUTH" ] || [ -z "$ORIGIN" ]; then
+          missing=()
+          [ -z "$CF_TOKEN" ] && missing+=(CLOUDFLARE_API_TOKEN)
+          [ -z "$CF_ACCOUNT" ] && missing+=(CLOUDFLARE_ACCOUNT_ID)
+          [ -z "$D1" ] && missing+=(SLI_MEMBERSHIP_STAGING_D1_ID)
+          [ -z "$R2" ] && missing+=(SLI_MEMBERSHIP_STAGING_BUCKET)
+          [ -z "$AUTH" ] && missing+=(SLI_SUPABASE_STAGING_URL)
+          [ -z "$ORIGIN" ] && missing+=(SLI_MEMBERSHIP_STAGING_ORIGIN)
+          if [ ${#missing[@]} -gt 0 ]; then
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::Integrated staging skipped. Requires Cloudflare, isolated D1/R2, trusted site origin and Supabase keys."
-            echo "### Integrated staging NOT DEPLOYED: required secrets are absent." >> "$GITHUB_STEP_SUMMARY"
+            echo "::warning::Integrated staging skipped; missing secret names: ${missing[*]}"
+            echo "### Integrated staging NOT DEPLOYED; missing: ${missing[*]}" >> "$GITHUB_STEP_SUMMARY"
           else
             echo "configured=true" >> "$GITHUB_OUTPUT"
           fi
