@@ -184,7 +184,8 @@ function renderPlatformMast(){
  quick.setAttribute('aria-label','Research AI and expert services');
  quick.append(
   mastLink('./sli-research-ai.html','DERGUBA AI',path==='sli-research-ai.html'),
-  mastLink('./sli-expert-connect.html',text('Expert Connect','Carikan Pakar'),path==='sli-expert-connect.html')
+  mastLink('./sli-expert-connect.html',text('Expert Connect','Carikan Pakar'),path==='sli-expert-connect.html'),
+  mastLink('./sli-contact-sales.html',text('Contact Sales','Hubungi Sales'),path==='sli-contact-sales.html')
  );
  tools.append(quick);
  // All specialist dashboards share the same persisted EN/ID preference as the homepage.
