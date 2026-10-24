@@ -11,7 +11,7 @@ function dbMock(plan='pro'){
  return {state,prepare(sql){
   return {bind(...values){
    const execute=()=>{
-    if(sql.includes('SELECT 1 AS allowed'))return {allowed:state.sessions.some(s=>s.hash===values[0]&&s.uid===values[1]&&!s.revoked)};
+    if(sql.includes('SELECT 1 AS allowed'))return state.sessions.some(s=>s.hash===values[0]&&s.uid===values[1]&&!s.revoked)?{allowed:1}:null;
     if(sql.includes('FROM subscriptions WHERE user_id='))return {plan:state.plan,status:state.status,access_until:state.access_until};
     if(sql.includes('FROM billing_event_audit'))return state.receipts.has(values.join(':'))?{event_id:values[1]}:null;
     throw new Error('Unhandled DB first '+sql);
