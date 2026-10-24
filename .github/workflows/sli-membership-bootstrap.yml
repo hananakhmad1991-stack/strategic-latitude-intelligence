@@ -30,7 +30,7 @@ jobs:
           node --check membership-api/scripts/bootstrap-cloudflare-staging.mjs
           node --check membership-api/scripts/live-staging-acceptance.mjs
           node --check membership-api/src/staging-login.mjs
-          node --test membership-api/tests/auth.test.mjs membership-api/tests/worker-sessions-billing.test.mjs membership-api/tests/research-entitlement.test.mjs membership-api/test/access.test.mjs
+          node --test membership-api/tests/auth.test.mjs membership-api/tests/worker-sessions-billing.test.mjs membership-api/tests/research-entitlement.test.mjs membership-api/tests/staging-login.test.mjs membership-api/test/access.test.mjs
           python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
   stage:
     needs: qa
