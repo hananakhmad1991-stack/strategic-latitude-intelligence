@@ -25,19 +25,28 @@ console.log('Verified staging D1: '+d1Name);
 let info=wrangler(['r2','bucket','info',bucketName,'--json'],{allowFailure:true});
 if(!info.ok){
  console.log('Attempting creation of private R2 staging bucket.');
- wrangler(['r2','bucket','create',bucketName]);
- info=wrangler(['r2','bucket','info',bucketName,'--json']);
+ const created=wrangler(['r2','bucket','create',bucketName],{allowFailure:true});
+ if(!created.ok){
+  if(/\b10042\b/.test(created.err+' '+created.text)){
+   console.log('R2_NOT_ENABLED: Cloudflare account has not enabled R2. Continuing isolated D1 migration WITHOUT R2 binding; customer storage remains disabled.');
+   info={ok:false};
+  }else throw Error('Unable to create private R2 bucket: '+(created.err||created.text).slice(-800));
+ }else info=wrangler(['r2','bucket','info',bucketName,'--json']);
 }
-const r2=JSON.parse(info.text);
-if(r2?.name!==bucketName&&r2?.bucket?.name!==bucketName)throw Error('R2 resource identity could not be verified');
-if(r2?.dev_url_enabled===true||r2?.publicAccess===true||r2?.devUrlEnabled===true)throw Error('R2 bucket unexpectedly public');
-console.log('Verified private-by-default R2 staging bucket: '+bucketName);
+let r2Enabled=false;
+if(info.ok){
+ const r2=JSON.parse(info.text);
+ if(r2?.name!==bucketName&&r2?.bucket?.name!==bucketName)throw Error('R2 resource identity could not be verified');
+ if(r2?.dev_url_enabled===true||r2?.publicAccess===true||r2?.devUrlEnabled===true)throw Error('R2 bucket unexpectedly public');
+ r2Enabled=true;
+ console.log('Verified private-by-default R2 staging bucket: '+bucketName);
+}
 const config={
  name:'sli-membership-infra-stage',main:'src/index.js',compatibility_date:'2026-10-24',workers_dev:true,
  vars:{WEB_ORIGIN:origin,ENVIRONMENT:'staging',BILLING_STAGING_ENABLED:'false'},
  d1_databases:[{binding:'DB',database_name:d1Name,database_id:uuid,migrations_dir:'migrations'}],
- r2_buckets:[{binding:'PREMIUM_BUCKET',bucket_name:bucketName}],
+ ...(r2Enabled?{r2_buckets:[{binding:'PREMIUM_BUCKET',bucket_name:bucketName}]}:{}),
  ratelimits:[{name:'SESSION_LIMITER',namespace_id:'15062',simple:{limit:5,period:60}}]
 };
 fs.writeFileSync('wrangler.bootstrap-stage.json',JSON.stringify(config,null,2),{mode:0o600});
-console.log('Staging Worker config generated with no identity URL, merchant credentials or customer data.');
+console.log('Staging Worker config generated with no identity URL, merchant credentials or customer data. R2 enabled: '+r2Enabled);
