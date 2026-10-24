@@ -28,6 +28,7 @@ jobs:
       - name: Test membership JWT, revocable sessions, billing and D1 migrations
         run: |
           node --check membership-api/scripts/bootstrap-cloudflare-staging.mjs
+          node --check membership-api/scripts/live-staging-acceptance.mjs
           node --test membership-api/tests/auth.test.mjs membership-api/tests/worker-sessions-billing.test.mjs membership-api/tests/research-entitlement.test.mjs membership-api/test/access.test.mjs
           python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
   stage:
@@ -135,10 +136,17 @@ jobs:
           if(foreign.status!==403)throw Error('foreign origin not rejected');
           console.log('LIVE STAGING PASS: health=200, anonymous membership='+expected+', billing=503, foreign origin=403');
           NODE
+      - name: Exercise live D1 session limits, downgrade, event replay, private R2 upload/download
+        if: steps.permission.outputs.available == 'true'
+        working-directory: membership-api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/live-staging-acceptance.mjs
       - name: Record proof and launch limitations
         if: always()
         run: |
           echo '## SLI Membership infrastructure staging' >> "$GITHUB_STEP_SUMMARY"
           echo 'Read each deployment step for remote D1 migration, R2 binding and endpoint results.' >> "$GITHUB_STEP_SUMMARY"
-          echo 'This Worker has NO Supabase URL and NO billing key; it intentionally denies customer login and payment.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The Worker validates a real Supabase staging JWKS when reachable; login with a real verified Supabase user and provider payments still need separate tests.' >> "$GITHUB_STEP_SUMMARY"
           echo 'Actual Supabase authentication and payment-provider sandbox require separate provider integration.' >> "$GITHUB_STEP_SUMMARY"
