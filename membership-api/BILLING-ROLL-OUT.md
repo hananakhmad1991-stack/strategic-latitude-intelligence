@@ -35,3 +35,15 @@ All secrets go into protected GitHub Actions secrets/environment, **never commit
 - Confirm migration and rollback from a staging backup, DNS/TLS, customer support/contact and explicit production go/no-go.
 
 Until every gate is met, keep customer registration and payment routes disabled. Green CI and a fail-closed staging Worker are not commercial authorization.
+
+## Cloudflare bootstrap attempt — 24 October 2026
+
+GitHub Actions [#40069588318](https://github.com/hananakhmad1991-stack/strategic-latitude-intelligence/actions/runs/40069588318) ran Node/SQLite QA successfully but was denied listing D1 databases: **Cloudflare API Authentication error 10000** on `/accounts/<account>/d1/database`. The existing `CLOUDFLARE_API_TOKEN` does deploy Workers but does **not** grant this D1 operation. **No remote D1 migrations or new R2 private storage deployments were demonstrated.**
+
+Do **not** overwrite `CLOUDFLARE_API_TOKEN`, because other operational Workers use it. Use a separate protected GitHub Actions secret named `CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN` with account-scoped **D1 Edit**, **Workers R2 Storage Write** (bucket provisioning), and **Workers Scripts Edit/Workers Admin as appropriate to create a new Worker**. Apply to the specific Cloudflare account, minimize expiration and IP permissions per your runner policy. Store only the token value in GitHub secret—not in an issue, PR or code. See [Cloudflare API permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) and [R2 token scopes](https://developers.cloudflare.com/r2/api/tokens/).
+
+With the dedicated token, `.github/workflows/sli-membership-bootstrap.yml` will idempotently check/create **only** `sli-memberships-stage-20261024` and `sli-membership-private-stage-20261024`, run `0001_initial.sql` and `0002_sessions_billing.sql` against *staging*, bind D1/R2, deploy `sli-membership-infra-stage`, and verify unauthenticated access is denied. This is NOT a customer-facing app or paid checkout, and all customer identity and billing remain disabled.
+
+The secure login portion still requires a separate **real** Supabase Auth staging project with RS256/ES256 public JWKS, and customer email verification / privacy settings. Store its URL in `SLI_SUPABASE_STAGING_URL`. `SLI_MEMBERSHIP_STAGING_ORIGIN` must be the actual browser origin, not a fabricated placeholder. The four historical missing settings were D1 ID, bucket, Supabase URL and origin; the bootstrap now derives D1 ID, bucket and known preview origin at run-time once Cloudflare permissions are authorized. Only the real Supabase project cannot be provisioned with current connected account permissions.
+
+Real payment-provider sandbox tests require account/merchant onboarding and signed provider events. The current internal HMAC tests exercise subscription transitions *offline*, and cannot be used to claim that payment provider checkout, settlement, refunds or reconciliation are connected.
