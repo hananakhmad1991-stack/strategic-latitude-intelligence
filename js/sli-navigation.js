@@ -179,8 +179,10 @@ function renderPlatformMast(){
  // Customer-facing product navigation; details work with mouse, touch and keyboard.
  const menus=[
   [text('Products','Produk'),[
-   [text('Intelligence Dashboard','Dashboard Intelijen'),'./index.html#home'],
+   [text('Intelligence Dashboard','Dashboard Intelijen'),'./sli-products.html#dashboard'],
    [text('DERGUBA Research AI','DERGUBA Research AI'),'./sli-research-ai.html'],
+   [text('Weekly Intelligence Brief','Laporan Intelijen Mingguan'),'./sli-products.html#brief'],
+   [text('Monitoring & Alerts','Pemantauan & Peringatan'),'./sli-products.html#monitoring'],
    [text('Analytical Tools & Data Inventory','Perangkat Analisis & Inventaris Data'),'./sli-data-inventory.html']]],
   [text('Solutions','Layanan'),[
    [text('Custom Research & Advisory','Riset Khusus & Konsultasi'),'./sli-custom-research.html'],
@@ -245,7 +247,7 @@ function renderPlatformMast(){
 function renderBar(){
  // The Expert Connect landing owns a compact header, so do not inject a sitewide
  // breadcrumb and toolbar that would bury its client request form.
- if(path==='sli-expert-connect.html'||path==='sli-research-ai.html'||['sli-company.html','sli-contact.html','sli-help.html','sli-contact-sales.html','sli-custom-research.html','sli-expert-sourcing.html','sli-institutional-intelligence.html','sli-business-info.html','sli-privacy.html','sli-membership.html'].includes(path)){
+ if(path==='sli-expert-connect.html'||path==='sli-research-ai.html'||['sli-company.html','sli-contact.html','sli-help.html','sli-contact-sales.html','sli-custom-research.html','sli-expert-sourcing.html','sli-institutional-intelligence.html','sli-business-info.html','sli-privacy.html','sli-membership.html','sli-products.html'].includes(path)){
   document.getElementById('sliUniversalNavigation')?.remove();
   renderPlatformMast();
   return;
