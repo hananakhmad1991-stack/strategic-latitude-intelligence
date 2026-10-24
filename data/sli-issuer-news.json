@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-10-24T06:32:23.408583Z",
+  "updated_at_utc": "2026-10-24T07:13:38.310191Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -69,6 +69,22 @@
         "ADRO"
       ],
       "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f2b97053a067cd7f131195",
+      "title": "Indofood Sukses (INDF) Buyback Saham Mulai Senin (26/10), Siapkan Dana Rp 750 Miliar - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOSTY0SXBuZlpHOTFibDNUNUlkZ2UxRUhvZElrVEs3b0FIUC1uVjRHblpQYTR5N3J6SzdQWFJ3UkREQ2dvZG51RGlESWtyUXRKeW0tOEREX3UyM2hNSmVVVHljSDU2dTdtVTR2b0NpR3RWQ0NUcFNuZGMxX3RPV1g2ZU9xQXk0aURxWHZMbXJZblVfMUZfeHJzS3Fxc2lpWDZKdjBTTVhlWjdMZzVRVzAxN0hyajU?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-10-24T04:30:46Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INDF"
+      ],
+      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -8040,22 +8056,6 @@
         "BREN"
       ],
       "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_dc139d692dda8281a2af76",
-      "title": "Harga Saham ITMG Hari Ini (IDX: ITMG) — Grafik & Level - JournalArta",
-      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBjckd3S250aGk4d2VwcnREOGtQWVlhX0Nqcy1TMk02cnJCQmxYbE5tQldIVVdEenpEaUxKekZxcjBQeDlYcjQ1MjFqNA?oc=5",
-      "publisher": "JournalArta",
-      "published_at_utc": "2026-10-16T07:00:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ITMG"
-      ],
-      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
