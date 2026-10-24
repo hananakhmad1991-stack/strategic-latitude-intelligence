@@ -37,6 +37,7 @@ jobs:
         run: |
           node --check early-warning-api/src/index.js
           node --check js/sli-early-warning-entry.js
+          node --check early-warning-api/tests/staging-smoke.mjs
       - name: Contract and sector safety tests
         run: node --test early-warning-api/tests/contract.test.mjs
   staging:
