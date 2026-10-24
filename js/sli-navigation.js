@@ -176,6 +176,43 @@ function renderPlatformMast(){
  }
  explorer.append(sectors);
  primary.append(explorer);
+ // Customer-facing product navigation; details work with mouse, touch and keyboard.
+ const menus=[
+  [text('Products','Produk'),[
+   [text('Intelligence Dashboard','Dashboard Intelijen'),'./index.html#home'],
+   [text('DERGUBA Research AI','DERGUBA Research AI'),'./sli-research-ai.html'],
+   [text('Expert Connect','Carikan Pakar'),'./sli-expert-connect.html'],
+   [text('Data & Methodology','Data & Metodologi'),'./sli-data-inventory.html']]],
+  [text('Solutions','Solusi'),[
+   [text('Energy & Minerals','Energi & Mineral'),'./index.html#energy'],
+   [text('Investment & Regions','Investasi & Daerah'),'./provincial-intelligence.html'],
+   [text('AI Infrastructure','Infrastruktur AI'),'./ai-intelligence-hub.html'],
+   [text('Custom Research','Riset Sesuai Permintaan'),'./sli-business-info.html#kontak']]],
+  [text('Resources','Referensi'),[
+   [text('Terms of Use','Syarat Penggunaan'),'./sli-business-info.html#ketentuan'],
+   [text('Refund & Cancellation','Refund & Pembatalan'),'./sli-business-info.html#refund'],
+   [text('Privacy Policy','Kebijakan Privasi'),'./sli-privacy.html'],
+   [text('User Guide','Panduan Pengguna'),'./sli-user-guide.html'],
+   [text('Glossary & Methods','Glosarium & Metode'),'./sli-glossary-methodology.html'],
+   [text('Data Inventory','Inventaris Data'),'./sli-data-inventory.html'],
+   [text('Contact','Kontak'),'./sli-business-info.html#kontak']]],
+  [text('Pricing','Harga'),[
+   [text('Individual — SLI Open','Individual — SLI Open'),'./sli-business-info.html#layanan'],
+   [text('Professional & Intelligence Pro','Professional & Intelligence Pro'),'./sli-business-info.html#layanan'],
+   [text('Business & Enterprise','Bisnis & Enterprise'),'./sli-business-info.html#kontak'],
+   [text('Academia & Government','Akademisi & Pemerintah'),'./sli-business-info.html#kontak']]]
+ ];
+ const menuWrap=node('div','sli-header-menu-set');
+ for(const [caption,entries] of menus){
+  const detail=node('details','sli-header-dropdown');
+  const trigger=node('summary','',caption);trigger.setAttribute('aria-label',caption);
+  detail.append(trigger);
+  const panel=node('div','sli-header-dropdown-panel');
+  for(const [name,url] of entries){const a=node('a','',name);a.href=url;panel.append(a)}
+  detail.append(panel);menuWrap.append(detail);
+  detail.addEventListener('toggle',()=>{if(detail.open){for(const other of menuWrap.querySelectorAll('details'))if(other!==detail)other.open=false;explorer.open=false}});
+ }
+ primary.append(menuWrap);
  primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
  primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'||path==='sli-issuer.html'));
  primary.append(mastLink('./sli-company.html',text('Company','Perusahaan'),path==='sli-company.html'));
@@ -210,6 +247,12 @@ function renderPlatformMast(){
    langs.append(button);
   }
   tools.append(langs);
+ }
+ // Close dropdowns on Escape and on clicks outside the navigation.
+ if(!mast.dataset.sliMenuEvents){
+  mast.dataset.sliMenuEvents='1';
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){for(const d of mast.querySelectorAll('details[open]'))d.open=false}});
+  document.addEventListener('click',e=>{if(!mast.contains(e.target)){for(const d of mast.querySelectorAll('details[open]'))d.open=false}});
  }
  inner.append(brand,primary,tools);mast.append(inner);
   if(!mast.dataset.sliOffsetObserver){
