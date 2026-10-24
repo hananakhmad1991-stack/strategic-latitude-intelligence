@@ -186,12 +186,14 @@ function renderPlatformMast(){
   [text('Solutions','Solusi'),[
    [text('Energy & Minerals','Energi & Mineral'),'./index.html#energy'],
    [text('Investment & Regions','Investasi & Daerah'),'./provincial-intelligence.html'],
+   [text('Provinces','Provinsi'),'./provincial-intelligence.html'],
    [text('AI Infrastructure','Infrastruktur AI'),'./ai-intelligence-hub.html'],
    [text('Custom Research','Riset Sesuai Permintaan'),'./sli-business-info.html#kontak']]],
-  [text('Resources','Referensi'),[
+  [text('More','Lainnya'),[
    [text('Terms of Use','Syarat Penggunaan'),'./sli-business-info.html#ketentuan'],
    [text('Refund & Cancellation','Refund & Pembatalan'),'./sli-business-info.html#refund'],
    [text('Privacy Policy','Kebijakan Privasi'),'./sli-privacy.html'],
+   [text('Company','Perusahaan'),'./sli-company.html'],
    [text('User Guide','Panduan Pengguna'),'./sli-user-guide.html'],
    [text('Glossary & Methods','Glosarium & Metode'),'./sli-glossary-methodology.html'],
    [text('Data Inventory','Inventaris Data'),'./sli-data-inventory.html'],
@@ -213,9 +215,6 @@ function renderPlatformMast(){
   detail.addEventListener('toggle',()=>{if(detail.open){for(const other of menuWrap.querySelectorAll('details'))if(other!==detail)other.open=false;explorer.open=false}});
  }
  primary.append(menuWrap);
- primary.append(mastLink('./provincial-intelligence.html',text('Provinces','Provinsi'),current==='province'||current==='opportunity'||current==='gini'));
- primary.append(mastLink('./sli-entities.html',text('Entities','Entitas'),current==='entities'||path==='sli-issuer.html'));
- primary.append(mastLink('./sli-company.html',text('Company','Perusahaan'),path==='sli-company.html'));
 
  // Keep the two client-facing research services visible together above the scrollable sector menu.
  const tools=node('div','sli-platform-tools');
@@ -223,8 +222,7 @@ function renderPlatformMast(){
  quick.setAttribute('aria-label','Research AI and expert services');
  quick.append(
   mastLink('./sli-research-ai.html','DERGUBA AI',path==='sli-research-ai.html'),
-  mastLink('./sli-expert-connect.html',text('Expert Connect','Carikan Pakar'),path==='sli-expert-connect.html'),
-  mastLink('./sli-contact-sales.html',text('Contact Sales','Hubungi Sales'),path==='sli-contact-sales.html')
+  mastLink('./sli-expert-connect.html',text('Expert Connect','Carikan Pakar'),path==='sli-expert-connect.html')
  );
  tools.append(quick);
  // All specialist dashboards share the same persisted EN/ID preference as the homepage.
