@@ -15,9 +15,9 @@ test('plan session limits and subscription expiry fail closed',()=>{
  assert.equal(canAccess('intelligence_pro','alerts'),true);
 });
 test('hashed session has no raw bearer secret',async()=>{
- const hash=await hashSession('0123456789abcdef');
+ const hash=await hashSession('0123456789abcdef'.repeat(4));
  assert.match(hash,/^[a-f0-9]{64}$/);
- assert.ok(!hash.includes('0123456789abcdef'));
+ assert.ok(!hash.includes('0123456789abcdef'.repeat(4)));
 });
 test('billing signature rejects missing, forged and stale callbacks',async()=>{
  assert.equal(await verifyBillingSignature('{}','1','0'.repeat(64),'secret',1_800_000_000_000),false);
