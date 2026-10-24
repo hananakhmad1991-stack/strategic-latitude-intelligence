@@ -1,0 +1,23 @@
+{
+  "publisher_id": "ca-pub-3092642555794646",
+  "mode": "manual",
+  "enabled": false,
+  "allowed_page_paths": [],
+  "blocked_page_path_patterns": [
+    "sli-research-ai",
+    "sli-expert-connect",
+    "sli-membership",
+    "owner",
+    "account",
+    "login",
+    "checkout",
+    "enterprise",
+    "professional",
+    "intelligence-pro"
+  ],
+  "max_slots_per_page": 2,
+  "auto_ads": false,
+  "anchor_ads": false,
+  "vignette_ads": false,
+  "note": "Ad serving remains disabled until Google approves the site, a real manual ad unit slot ID is supplied, and qualified public editorial pages are explicitly allowlisted."
+}
