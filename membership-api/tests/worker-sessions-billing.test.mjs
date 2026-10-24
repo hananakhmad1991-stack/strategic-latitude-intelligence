@@ -49,7 +49,7 @@ function dbMock(plan='pro'){
    }else throw Error('Unhandled batch SQL');
   }
   void snapshot;
- }}}
+ }}
 }
 const enc=x=>Buffer.from(typeof x==='string'?x:JSON.stringify(x)).toString('base64url');
 async function signedJWT(){
