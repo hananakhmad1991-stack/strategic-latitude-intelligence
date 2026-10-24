@@ -3,10 +3,12 @@
  * server-held model key, rate/cost limits, and signed-off privacy/licensing.
  */
 import {verifyUserToken} from "../../membership-api/src/index.js";
+import {verifySession} from "../../membership-api/src/sessions.mjs";
+import {effectivePlan} from "../../membership-api/src/access.mjs";
 import {citationsValid,extractModelText} from "./core.mjs";
 import {auditReport} from "./report-audit.mjs";
 import {validateAssistantPayload,selectResearchEvidence,modelRequest,verifyResearchAnswer,verifyMethodOnlyAnswer} from "./assistant-core.mjs";
-const J={"content-type":"application/json; charset=utf-8","cache-control":"private, no-store","x-content-type-options":"nosniff","vary":"Origin, Authorization"};
+const J={"content-type":"application/json; charset=utf-8","cache-control":"private, no-store","x-content-type-options":"nosniff","vary":"Origin, Authorization, X-SLI-Session"};
 function response(status,body,origin){
  const extra=origin?{"access-control-allow-origin":origin}:{};
  return new Response(JSON.stringify(body),{status,headers:{...J,...extra}});
@@ -16,8 +18,7 @@ function trustedOrigin(input){
 }
 async function planOf(userId,db){
  const rec=await db.prepare("SELECT plan,status,access_until FROM subscriptions WHERE user_id = ? LIMIT 1").bind(userId).first();
- if(!rec||!["pro","enterprise"].includes(rec.plan)||!["active","trialing"].includes(rec.status)||!Number.isFinite(Date.parse(rec.access_until))||Date.parse(rec.access_until)<=Date.now())return "open";
- return rec.plan;
+ return effectivePlan(rec);
 }
 async function readBodyLimited(req,maxBytes=24000){
  const reader=req.body?.getReader();if(!reader)return "";
@@ -37,7 +38,7 @@ export default {
  async fetch(req,env){
   const allowed=trustedOrigin(env?.WEB_ORIGIN),incoming=req.headers.get("origin");
   if(!allowed||incoming!==allowed)return response(403,{error:"origin_denied"});
-  if(req.method==="OPTIONS")return new Response(null,{status:204,headers:{...J,"access-control-allow-origin":allowed,"access-control-allow-methods":"POST, OPTIONS","access-control-allow-headers":"authorization, content-type","access-control-max-age":"300"}});
+  if(req.method==="OPTIONS")return new Response(null,{status:204,headers:{...J,"access-control-allow-origin":allowed,"access-control-allow-methods":"POST, OPTIONS","access-control-allow-headers":"authorization, content-type, x-sli-session","access-control-max-age":"300"}});
   if(req.method!=="POST")return response(405,{error:"method_not_allowed"},allowed);
   if(new URL(req.url).pathname!=="/v1/research")return response(404,{error:"not_found"},allowed);
   if(!env.DB||!env.RESEARCH_BUCKET||!env.OPENAI_API_KEY||!env.RESEARCH_MODEL||!env.SUPABASE_URL||!env.AI_LIMITER)return response(503,{error:"research_not_configured"},allowed);
@@ -48,6 +49,10 @@ export default {
   let plan;
   try{plan=await planOf(userId,env.DB)}catch{return response(503,{error:"entitlement_unavailable"},allowed)}
   if(plan==="open")return response(403,{error:"pro_membership_required"},allowed);
+  let authenticatedSession;
+  try{authenticatedSession=await verifySession(userId,req.headers.get("x-sli-session"),env.DB)}
+  catch{return response(503,{error:"session_registry_unavailable"},allowed)}
+  if(!authenticatedSession)return response(401,{error:"active_session_required"},allowed);
   if(!/^application\/json(?:;|$)/i.test(req.headers.get("content-type")||""))return response(415,{error:"json_content_type_required"},allowed);
   const length=Number(req.headers.get("content-length")||0);
   if(length>24000)return response(413,{error:"request_too_large"},allowed);

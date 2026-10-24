@@ -1,0 +1,84 @@
+name: SLI Membership staging · fail-closed preview
+on:
+  push:
+    branches:
+      - 'feature/sli-membership-session-billing-foundation-20261024'
+    paths:
+      - 'membership-api/**'
+      - '.github/workflows/sli-membership-staging.yml'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'membership-api/**'
+      - 'research-api/src/index.js'
+      - '.github/workflows/sli-membership-staging.yml'
+permissions:
+  contents: read
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Enforce offline auth and billing safeguards
+        run: |
+          node --check membership-api/src/index.js
+          node --check research-api/src/index.js
+          node --test membership-api/tests/auth.test.mjs membership-api/tests/worker-sessions-billing.test.mjs membership-api/tests/research-entitlement.test.mjs membership-api/test/access.test.mjs
+          python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
+  staging-preview:
+    needs: validation
+    if: github.event_name != 'pull_request' || (github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'feature/sli-membership-session-billing-foundation-20261024')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: sli-membership-staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify preview deploy credentials
+        id: credentials
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_TOKEN" ] || [ -z "$CF_ACCOUNT" ]; then
+            echo 'available=false' >> "$GITHUB_OUTPUT"
+            echo '::warning::Cloudflare deployment skipped: protected token or account ID is missing.'
+            echo 'No Cloudflare staging deployment occurred.' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'available=true' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy fail-closed prelaunch Worker preview
+        if: steps.credentials.outputs.available == 'true'
+        working-directory: membership-api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 deploy --config wrangler.staging.toml
+      - name: Live preview denies unauthenticated and billing requests
+        if: steps.credentials.outputs.available == 'true'
+        env:
+          HOST: https://sli-membership-staging.hananakhmad1991.workers.dev
+        run: |
+          node --input-type=module <<'NODE'
+          const host=process.env.HOST;
+          const health=await fetch(host+'/healthz',{signal:AbortSignal.timeout(20000)});
+          const info=await health.json();
+          if(health.status!==200||info.state!=='prelaunch')throw Error('staging health not confirmed');
+          const account=await fetch(host+'/v1/me',{headers:{Origin:'https://hananakhmad1991-stack.github.io'},signal:AbortSignal.timeout(20000)});
+          if(account.status!==503)throw Error('unconfigured identity/database unexpectedly activated: '+account.status);
+          const billing=await fetch(host+'/v1/billing/internal-event',{method:'POST',body:'{}',signal:AbortSignal.timeout(20000)});
+          if(billing.status!==503)throw Error('staging billing was unexpectedly enabled: '+billing.status);
+          console.log('LIVE PREVIEW PASS: health 200, customer access 503, billing 503');
+          NODE
+      - name: Distinguish preview from integrated staging
+        if: always()
+        run: |
+          echo '## Membership staging security boundary' >> "$GITHUB_STEP_SUMMARY"
+          echo 'This workflow deploys a deliberately **unconfigured, fail-closed preview** only when Cloudflare credentials exist.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'It does not configure Supabase, D1, R2, customer login, webhooks, checkout, or commercial production.' >> "$GITHUB_STEP_SUMMARY"

@@ -11,7 +11,7 @@ function request(path,{method="GET",bearer=null,site=origin}={}){
  return new Request(url+path,{method,headers});
 }
 function mockDB(record){
- return {prepare(sql){assert.match(sql,/WHERE user_id = \?/);return {bind(id){assert.equal(id,uid);return {async first(){return record}}}}}};
+ return {prepare(sql){assert.match(sql,/WHERE user_id\s*=\s*\?/);return {bind(id){assert.equal(id,uid);return {async first(){return record}}}}}};
 }
 function environment(rec=null){
  return {WEB_ORIGIN:origin,SUPABASE_URL:"https://test-project.supabase.co",DB:mockDB(rec),PREMIUM_BUCKET:{
@@ -46,13 +46,13 @@ test("Membership API denies unauthenticated, missing configuration, forged claim
   assert.equal((await response.json()).plan,"open","Client plan=enterprise MUST NOT grant anything");
   assert.match(response.headers.get("cache-control"),/no-store/);
   assert.equal(response.headers.get("access-control-allow-origin"),origin);
-  assert.equal((await worker.fetch(request("/v1/protected/province-research",{bearer:valid}),environment())).status,403);
+  assert.equal((await worker.fetch(request("/v1/protected/province-research",{bearer:valid}),environment())).status,401);
   const pro={plan:"pro",status:"active",access_until:"2099-01-01T00:00:00Z"};
   assert.equal((await (await worker.fetch(request("/v1/me",{bearer:valid}),environment(pro))).json()).plan,"pro");
   response=await worker.fetch(request("/v1/protected/province-research",{bearer:valid}),environment(pro));
-  assert.equal(response.status,200);assert.match(await response.text(),/"private"/);
-  assert.match(response.headers.get("content-disposition"),/attachment/);
-  assert.equal((await worker.fetch(request("/v1/protected/institutional-brief",{bearer:valid}),environment(pro))).status,403);
+  assert.equal(response.status,401,"A paid JWT without an active server-issued session must not download private content");
+  assert.equal((await response.json()).error,"session_required");
+  assert.equal((await worker.fetch(request("/v1/protected/institutional-brief",{bearer:valid}),environment(pro))).status,401);
   assert.equal((await (await worker.fetch(request("/v1/me",{bearer:valid}),environment({...pro,access_until:"2025-01-01T00:00:00Z"}))).json()).plan,"open");
   assert.equal((await (await worker.fetch(request("/v1/me",{bearer:valid}),environment({...pro,status:"past_due"}))).json()).plan,"open");
   assert.equal((await worker.fetch(request("/v1/checkout",{bearer:valid}),environment(pro))).status,404);

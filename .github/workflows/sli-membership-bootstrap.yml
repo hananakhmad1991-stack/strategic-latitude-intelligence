@@ -1,0 +1,163 @@
+name: SLI Membership bootstrap · D1 and R2 staging
+on:
+  push:
+    branches:
+      - 'feature/sli-membership-session-billing-foundation-20261024'
+    paths:
+      - 'membership-api/**'
+      - '.github/workflows/sli-membership-bootstrap.yml'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'membership-api/**'
+      - '.github/workflows/sli-membership-bootstrap.yml'
+permissions:
+  contents: read
+concurrency:
+  group: sli-membership-cloudflare-bootstrap
+  cancel-in-progress: false
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test membership JWT, revocable sessions, billing and D1 migrations
+        run: |
+          node --check membership-api/scripts/bootstrap-cloudflare-staging.mjs
+          node --check membership-api/scripts/live-staging-acceptance.mjs
+          node --check membership-api/src/staging-login.mjs
+          node --test membership-api/tests/auth.test.mjs membership-api/tests/worker-sessions-billing.test.mjs membership-api/tests/research-entitlement.test.mjs membership-api/tests/staging-login.test.mjs membership-api/test/access.test.mjs
+          python3 -m unittest discover -s membership-api/tests -p 'test_migration.py' -v
+  stage:
+    needs: qa
+    if: github.event_name != 'pull_request' || (github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'feature/sli-membership-session-billing-foundation-20261024')
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    environment: sli-membership-staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check dedicated staging resource token
+        id: permission
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::STAGING INFRA NOT DEPLOYED: requires CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN with D1 Edit, Workers R2 Storage Write and Worker deployment access."
+            echo "Missing dedicated staging token; D1/R2 creation and migration not executed." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Provision and verify strictly isolated empty D1 and R2
+        if: steps.permission.outputs.available == 'true'
+        working-directory: membership-api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/bootstrap-cloudflare-staging.mjs
+      - name: Apply D1 migrations to staging only
+        if: steps.permission.outputs.available == 'true'
+        working-directory: membership-api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 d1 migrations apply DB --remote --config wrangler.bootstrap-stage.json
+      - name: Confirm actual D1 remote table, trigger and Intelligence Pro entitlement schema
+        if: steps.permission.outputs.available == 'true'
+        working-directory: membership-api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4 d1 execute DB --remote --config wrangler.bootstrap-stage.json --json --command "SELECT type,name,sql FROM sqlite_master WHERE name IN ('subscriptions','member_sessions','billing_event_audit','guard_session_limit') ORDER BY name;" > /tmp/membership-d1-schema.json
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const raw=JSON.parse(fs.readFileSync('/tmp/membership-d1-schema.json','utf8'));
+          if(!Array.isArray(raw)||raw.some(x=>!x.success))throw Error('D1 remote query failed');
+          const rows=raw.flatMap(x=>x.results||[]);
+          const byName=Object.fromEntries(rows.map(row=>[row.name,row]));
+          for(const name of ['subscriptions','member_sessions','billing_event_audit','guard_session_limit']){
+            if(!byName[name]?.sql)throw Error('Missing remote schema object '+name);
+          }
+          if(!byName.subscriptions.sql.includes('intelligence_pro'))throw Error('Remote D1 cannot store intelligence_pro plan');
+          if(!byName.guard_session_limit.sql.includes('session_limit_reached'))throw Error('D1 concurrent session trigger not installed');
+          console.log('REMOTE D1 VERIFIED: subscription plans, member sessions, idempotent billing audit and SQL session cap.');
+          NODE
+      - name: Verify isolated Supabase JWKS and enable staging Auth ONLY when asymmetric keys exist
+        if: steps.permission.outputs.available == 'true'
+        working-directory: membership-api
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const url='https://wpiphwxdllwwmxlmxtwr.supabase.co';
+          let active=false;
+          try{
+            const r=await fetch(url+'/auth/v1/.well-known/jwks.json',{signal:AbortSignal.timeout(20000)});
+            const doc=await r.json();
+            active=r.ok&&Array.isArray(doc.keys)&&doc.keys.some(k=>['ES256','RS256'].includes(k.alg)&&(k.kid||'').length>0);
+          }catch(error){console.log('Staging Auth JWKS not reachable: '+error.message)}
+          if(active){
+            const path='wrangler.bootstrap-stage.json',conf=JSON.parse(fs.readFileSync(path,'utf8'));
+            conf.vars.SUPABASE_URL=url;
+            // Public client key, intentionally visible in staging browser (NEVER a service-role secret).
+            conf.vars.SUPABASE_PUBLISHABLE_KEY='sb_publishable_qpGYAmjSOgjZlAlPFD0-eA_IDPFnP3R';
+            conf.vars.STAGING_LOGIN_UI_ENABLED='true';
+            fs.writeFileSync(path,JSON.stringify(conf,null,2),{mode:0o600});
+            console.log('SUPABASE STAGING AUTH READY: real asymmetric JWKS validated; ONLY account JWT and D1 entitlements are trusted.');
+          }else{
+            console.log('SUPABASE STAGING AUTH NOT ACTIVATED: asymmetric JWKS missing or inaccessible; fail-closed customer access remains.');
+          }
+          NODE
+      - name: Deploy with D1 and R2 bindings, without real customer authentication or billing
+        if: steps.permission.outputs.available == 'true'
+        working-directory: membership-api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 deploy --config wrangler.bootstrap-stage.json
+      - name: Live fail-closed HTTP smoke
+        if: steps.permission.outputs.available == 'true'
+        run: |
+          node --input-type=module <<'NODE'
+          const base='https://sli-membership-infra-stage.hananakhmad1991.workers.dev';
+          const call=(p,opts={})=>fetch(base+p,{redirect:'error',signal:AbortSignal.timeout(20000),...opts});
+          const health=await call('/healthz');
+          if(health.status!==200||(await health.json()).state!=='prelaunch')throw Error('health fails');
+          const config=JSON.parse((await import('node:fs')).readFileSync('membership-api/wrangler.bootstrap-stage.json','utf8'));
+          const expected=config.vars.SUPABASE_URL?401:503;
+          const me=await call('/v1/me',{headers:{Origin:'https://hananakhmad1991-stack.github.io'}});
+          if(me.status!==expected)throw Error('staging anonymous access did not fail closed: '+me.status+' expected '+expected);
+          if(config.vars.STAGING_LOGIN_UI_ENABLED==='true'){
+            const login=await call('/staging-login');
+            if(login.status!==200||!(login.headers.get('content-security-policy')||'').includes("frame-ancestors 'none'"))throw Error('staging login browser page unavailable or unsafe: '+login.status);
+            if(!(await login.text()).includes('Membership Acceptance Console'))throw Error('login UI payload missing');
+            console.log('STAGING LOGIN UI PASS: page=200, CSP enabled, password flow client-side only.');
+          }
+          const billing=await call('/v1/billing/internal-event',{method:'POST',body:'{}'});
+          if(billing.status!==503)throw Error('billing unexpectedly active: HTTP '+billing.status);
+          const foreign=await call('/v1/me',{headers:{Origin:'https://malicious.example'}});
+          if(foreign.status!==403)throw Error('foreign origin not rejected');
+          console.log('LIVE STAGING PASS: health=200, anonymous membership='+expected+', billing=503, foreign origin=403');
+          NODE
+      - name: Exercise live D1 session limits, downgrade, event replay, private R2 upload/download
+        if: steps.permission.outputs.available == 'true'
+        working-directory: membership-api
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_MEMBERSHIP_STAGING_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/live-staging-acceptance.mjs
+      - name: Record proof and launch limitations
+        if: always()
+        run: |
+          echo '## SLI Membership infrastructure staging' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Read each deployment step for remote D1 migration, R2 binding and endpoint results.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The Worker validates a real Supabase staging JWKS when reachable; login with a real verified Supabase user and provider payments still need separate tests.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Actual Supabase authentication and payment-provider sandbox require separate provider integration.' >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,10 @@
+name = "sli-membership-staging"
+main = "src/index.js"
+compatibility_date = "2026-10-24"
+workers_dev = true
+# PREVIEW-ONLY! No DB, R2, identity, billing, or customer accounts bound.
+# This deploy must fail closed and may ONLY be used to smoke-test the routing.
+[vars]
+WEB_ORIGIN = "https://hananakhmad1991-stack.github.io"
+ENVIRONMENT = "staging"
+BILLING_STAGING_ENABLED = "false"
