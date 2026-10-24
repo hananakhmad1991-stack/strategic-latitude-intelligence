@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-24T03:26:21.457562+00:00",
+  "checked_at_utc": "2026-10-24T04:02:14.232372+00:00",
   "status": "ok",
   "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
   "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
@@ -23,10 +23,6 @@
       "market": "ICE Brent continuous",
       "refresh_class": "Indicative / may be delayed",
       "history": [
-        {
-          "observed_at_utc": "2026-09-23T04:00:00+00:00",
-          "value": 103.080002
-        },
         {
           "observed_at_utc": "2026-09-24T04:00:00+00:00",
           "value": 106.599998
@@ -113,7 +109,7 @@
         },
         {
           "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 111.660004
+          "value": 116.720001
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -135,10 +131,6 @@
       "market": "NYMEX WTI continuous",
       "refresh_class": "Indicative / may be delayed",
       "history": [
-        {
-          "observed_at_utc": "2026-09-23T04:00:00+00:00",
-          "value": 92.160004
-        },
         {
           "observed_at_utc": "2026-09-24T04:00:00+00:00",
           "value": 94.610001
@@ -225,7 +217,7 @@
         },
         {
           "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 103.440002
+          "value": 103.269997
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -247,10 +239,6 @@
       "market": "NYMEX Henry Hub continuous",
       "refresh_class": "Indicative / may be delayed",
       "history": [
-        {
-          "observed_at_utc": "2026-09-23T04:00:00+00:00",
-          "value": 3.023
-        },
         {
           "observed_at_utc": "2026-09-24T04:00:00+00:00",
           "value": 3.297
@@ -337,7 +325,7 @@
         },
         {
           "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 3.047
+          "value": 2.64
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -359,10 +347,6 @@
       "market": "COMEX HG; not LME copper",
       "refresh_class": "Indicative / may be delayed",
       "history": [
-        {
-          "observed_at_utc": "2026-09-23T04:00:00+00:00",
-          "value": 6.678
-        },
         {
           "observed_at_utc": "2026-09-24T04:00:00+00:00",
           "value": 6.7185
@@ -449,7 +433,7 @@
         },
         {
           "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 6.4975
+          "value": 6.476
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -471,10 +455,6 @@
       "market": "COMEX GC",
       "refresh_class": "Indicative / may be delayed",
       "history": [
-        {
-          "observed_at_utc": "2026-09-23T04:00:00+00:00",
-          "value": 4318.399902
-        },
         {
           "observed_at_utc": "2026-09-24T04:00:00+00:00",
           "value": 4298.0
@@ -561,7 +541,7 @@
         },
         {
           "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 4010.0
+          "value": 4007.899902
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -583,10 +563,6 @@
       "market": "COMEX SI",
       "refresh_class": "Indicative / may be delayed",
       "history": [
-        {
-          "observed_at_utc": "2026-09-23T04:00:00+00:00",
-          "value": 64.382004
-        },
         {
           "observed_at_utc": "2026-09-24T04:00:00+00:00",
           "value": 63.457001
@@ -673,7 +649,7 @@
         },
         {
           "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 53.959999
+          "value": 53.710999
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
