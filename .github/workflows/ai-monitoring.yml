@@ -1,8 +1,13 @@
+# SLI monitoring recovery: 2026-11-24; source checks and validation retained.
 name: SLI AI monitoring and source QA
 on:
   workflow_dispatch:
   schedule:
-    - cron: '23 2,14 * * *'
+    - cron: '23 2,8,14,20 * * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ai-monitoring.yml'
 permissions:
   contents: write
 concurrency:
