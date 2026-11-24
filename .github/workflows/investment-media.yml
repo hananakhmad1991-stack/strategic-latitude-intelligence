@@ -1,8 +1,13 @@
+# SLI monitoring recovery: 2026-11-24; source checks and validation retained.
 name: Investment Media Monitoring
 on:
   schedule:
-    - cron: '24 */6 * * *'
+    - cron: '24 */3 * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/investment-media.yml'
 permissions:
   contents: write
 concurrency:
