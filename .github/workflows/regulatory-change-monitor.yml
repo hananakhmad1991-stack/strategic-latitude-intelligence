@@ -1,8 +1,9 @@
+# SLI monitoring recovery: 2026-11-24; source checks and validation retained.
 name: SLI Regulatory Change and Policy News Monitor
 on:
   workflow_dispatch:
   schedule:
-    - cron: '13 1,11 * * *'
+    - cron: '13 1,7,13,19 * * *'
   push:
     paths:
       - 'scripts/monitor_regulatory_policy.py'
