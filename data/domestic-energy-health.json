@@ -1,74 +1,74 @@
 {
-  "checked_at_utc": "2026-10-24T07:07:31.980030+00:00",
-  "found": 35,
-  "errors": [],
-  "topic_counts": [
+  "checked_at_utc": "2026-11-24T09:36:12.455551+00:00",
+  "found": 0,
+  "errors": [
     {
       "topic": "Oil & Gas · upstream / SKK Migas",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Oil & Gas · LNG, HGBT & Jargas",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Coal · production, RKAB & HBA",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Coal · DMO, PLN & PLTU supply",
-      "found": 0
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "NRE · solar and wind",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "NRE · geothermal and hydropower",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "NRE · regulation, financing and grid",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Forest fires and haze",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Refinery operations & capacity",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Biofuels · B50 & E10",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Fuel and LPG availability",
-      "found": 2
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Electricity outages",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Energy project commissioning",
-      "found": 3
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Energy regulations and permits",
-      "found": 0
+      "error": "HTTP Error 503: Service Unavailable"
     },
     {
       "topic": "Floods and infrastructure disruption",
-      "found": 0
+      "error": "HTTP Error 503: Service Unavailable"
     }
   ],
+  "topic_counts": [],
   "sector_counts": {
-    "oil_gas": 14,
-    "coal": 3,
-    "nre": 13,
-    "electricity": 3,
-    "cross_cutting": 5
+    "oil_gas": 0,
+    "coal": 0,
+    "nre": 0,
+    "electricity": 0,
+    "cross_cutting": 0
   }
 }
