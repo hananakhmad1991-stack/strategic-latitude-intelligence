@@ -39,7 +39,7 @@ async function read(){
  if(pending)return pending;
  pending=fetch(FEED,{cache:'no-store'}).then(async r=>{
   if(!r.ok)throw Error('HTTP '+r.status);
-  const content=await r.text();if(content.length>2200000)throw Error('index_too_large');
+  const content=await r.text();if(content.length>12000000)throw Error('index_too_large');
   const doc=JSON.parse(content);
   if(doc.schema_version!=='sli-secondary-news-index-v1'||!Array.isArray(doc.articles)||doc.articles.length>MAX_ITEMS)
    throw Error('invalid_index');
@@ -60,7 +60,7 @@ function renderResults(panel,doc){
  const root=panel.querySelector('[data-sli-news-results]'),meta=panel.querySelector('[data-sli-news-meta]');
  if(!root)return;
  const selected=filter?.value||'all',keyword=search?.value.trim()||'';
- const rows=rowsFor(doc,{sector:selected,term:keyword,limit:8});
+ const rows=rowsFor(doc,{sector:selected,term:keyword,limit:Number(panel.querySelector('[data-sli-news-limit]')?.value||8)});
  root.replaceChildren();
  if(!rows.length)root.append(el('p','sli-news-empty',tr('No matching attributed news in this snapshot.','Belum ada berita teratribusi yang sesuai pada snapshot ini.')));
  for(const item of rows){
@@ -70,10 +70,15 @@ function renderResults(panel,doc){
   const details=el('p','sli-news-byline',item.publisher+' · '+formatDate(item.published_at_utc)+' · '+String(item.sector||'').toUpperCase());
   const note=el('p','sli-news-evidence-level',item.evidence_level==='official_metadata_change_candidate'?
    tr('Official listing change detected; legal effect requires checking the actual instrument.','Perubahan metadata dokumen terdeteksi; status hukum memerlukan pemeriksaan naskah.'):
-   tr('Attributed secondary news · headline record, not independently checked article text.','Berita sekunder teratribusi · catatan judul, bukan isi artikel yang sudah diperiksa independen.'));
+   tr('Headline · secondary source','Judul berita · sumber sekunder'));
   card.append(head,details,note);root.append(card);
  }
- if(meta)meta.textContent=tr('Showing ','Menampilkan ')+rows.length+' · '+tr('Archive entries: ','Arsip berita: ')+doc.articles.length+' · '+tr('Updated ','Diperbarui ')+formatDate(doc.updated_at_utc);
+ if(meta){
+  const latest=doc.articles.reduce((n,x)=>Math.max(n,Date.parse(x.published_at_utc)||0),0);
+  const age=latest?(Date.now()-latest)/86400000:Infinity;
+  meta.textContent=tr('Showing ','Menampilkan ')+rows.length+' · '+tr('Archive: ','Arsip: ')+doc.articles.length+' · '+tr('Index updated: ','Indeks diperbarui: ')+formatDate(doc.updated_at_utc)+' · '+tr('Latest source date: ','Tanggal sumber terakhir: ')+(latest?formatDate(latest):'—');
+  if(age>2)meta.textContent+=' · '+tr('No source dated within 48 hours','Tidak ada sumber bertanggal dalam 48 jam terakhir');
+ }
 }
 function apply(){
  const nav=document.getElementById('sliUniversalNavigation');
@@ -95,7 +100,9 @@ function apply(){
   const search=el('input','sli-news-search');search.type='search';search.placeholder=tr('Search topics, publishers, regions…','Cari isu, media, wilayah…');
   search.setAttribute('aria-label',tr('Search secondary research news','Cari berita data sekunder'));search.setAttribute('data-sli-news-search','');
   const sources=el('a','sli-news-policy',tr('News sources & methodology ↗','Sumber berita & metodologi ↗'));sources.href='./sli-source-viewer.html?dataset=sli-secondary-news-index.json';
-  controls.append(sector,search,sources);inner.append(controls);
+  const limit=el('select','sli-news-sector');limit.setAttribute('data-sli-news-limit','');limit.setAttribute('aria-label',tr('Number of results','Jumlah hasil'));
+  for(const n of [8,20,50]){const opt=el('option',null,String(n)+' '+tr('results','hasil'));opt.value=String(n);limit.append(opt)}
+  controls.append(sector,search,limit,sources);inner.append(controls);
   const meta=el('small','sli-news-meta',tr('Loading source register…','Memuat indeks sumber…'));meta.setAttribute('data-sli-news-meta','');
   inner.append(meta);
   const results=el('div','sli-news-results');results.setAttribute('data-sli-news-results','');inner.append(results);
@@ -117,6 +124,8 @@ function apply(){
   details.addEventListener('toggle',()=>{if(details.open)load()});
   sector.addEventListener('change',()=>{if(snapshot)renderResults(panel,snapshot)});
   search.addEventListener('input',()=>{if(snapshot)renderResults(panel,snapshot)});
+  limit.addEventListener('change',()=>{if(snapshot)renderResults(panel,snapshot)});
+  window.setInterval(()=>{if(details.open&&panel.isConnected&&document.visibilityState==='visible')load()},TTL);
  }
  const sector=panel.querySelector('[data-sli-news-filter]');
  const next=context();
@@ -125,6 +134,7 @@ function apply(){
  }
  const title=panel.querySelector('.sli-news-summary strong');
  if(title)title.textContent=tr('News & OSINT · secondary evidence for ','Berita & OSINT · data sekunder untuk ')+label(next);
+ if(snapshot)renderResults(panel,snapshot);
  if(panel.querySelector('details')?.open&&!snapshot)read().then(doc=>renderResults(panel,doc)).catch(()=>{});
 }
 function schedule(){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply()}
