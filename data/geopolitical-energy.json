@@ -1,55 +1,38 @@
 {
-  "checked_at_utc": "2026-10-24T06:40:32.225201+00:00",
+  "checked_at_utc": "2026-11-24T09:30:59.103420+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
-      "topic": "Hormuz and Gulf energy",
-      "topic_id": "oil_shipping",
-      "type": "Maritime chokepoint",
+      "topic": "Middle East energy infrastructure",
+      "topic_id": "oil_supply",
+      "type": "Infrastructure",
       "sector": "oil_gas",
       "sector_tags": [
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil prices jump to five-month high as attacks threaten global supply - The Guardian",
-      "publisher": "The Guardian",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOSkIzeWdNTnhad3RfQTdsMFg0OHQ5ejlGVjF2R016akVNelJYNDdVQVNsaE5PRXQ2SWJpT1JDbG5RRmtDdWFEazN2b3FLYkY3eUx5Rmk4bThDcVZmWExKcTFBVW51cEpSUHBPd0ZsUGVnWXF5eTJxY0V1aHlaYUtQTHhsYU00WjdtWk8yOS1UMW9SVVAwN2I3bU43OA?oc=5",
-      "indexed_at_utc": "2026-10-22T16:10:00+00:00",
-      "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
+      "title": "Yemen's Houthis claim attacks on Saudi oil refinery as Trump warns of new strikes next year - CNBC",
+      "publisher": "CNBC",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9YeVVuSzlMa1Vza0JNYXpXbGw2emp5RndTVHplTzB1QllobEw0SW5Dc3VyTFhwMFJnMkpRSEJEZnhPOFFZYWZhckZXaUlKdTZPRzNyOGNzLWp0YUZDOHM4N0xZQWZHVm9zOHRPbXp1a040YUHSAXhBVV95cUxNcG02RV9VeGk3SG90SjhQdWEyTGd3RVdNRmw4YkZreEZmY2JHUU5nVGNBQklaSmFES0ppelA3UmZFVFVUdVF0RzlzdVBtWWF1emF1U3o1N0x4T25VRDVTMS1Od3BWZnhTVERFN0hJd1Bud1hHdkk3MnA?oc=5",
+      "indexed_at_utc": "2026-11-23T03:40:00+00:00",
+      "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Asian LNG and gas",
-      "topic_id": "lng_asia",
-      "type": "Gas supply",
+      "topic": "Russia and energy sanctions",
+      "topic_id": "oil_sanctions",
+      "type": "Geoeconomic",
       "sector": "oil_gas",
       "sector_tags": [
         "oil_gas"
       ],
-      "subsector": "gas_lng",
-      "title": "QatarEnergy in talks with Venture Global to buy LNG in long term supply deal, sources say - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQWURhT3VUeGtQdDZGb0d4dnpPTUhGWW5NM0g2R3QwZFRWTUtaSm5ONEI0aFk1aUxRa0U0cUFFMHV6aDgxUjZCREo3TVNTNTBJNjE4QnJ0RUlyelh1RHI4eXdjWUdQdHVXOFBtN3k1VXhXUTh2LVY0UTdpSWVfQWFxd2FoeW1mV0IzR1RleTZLUDYxOFpTLUhydEJaT29QUXJTZE5KVkhkRGs5dWR5V1NwQXVXUUhjV2Vsd044WFZaaEdqWUR1SmdFaHdJaw?oc=5",
-      "indexed_at_utc": "2026-10-22T22:09:46+00:00",
-      "impact_pathway": "Gas supply changes -> Asian LNG pricing -> power and industrial costs",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Global coal and energy policy",
-      "topic_id": "coal_markets",
-      "type": "Coal markets",
-      "sector": "coal",
-      "sector_tags": [
-        "coal"
-      ],
       "subsector": "general",
-      "title": "COMMENTARY: US tariff war is fueling Vietnam's coal boom - Reuters",
+      "title": "Russian western oil exports curbed by bad weather, drones - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQOG84XzgtRVI4UzlHbEhTWFNJMlVkOU1hTG13WWxmU25waWNBekhRSHZpODA5MlZWTlBmNUxvaFljaDZRcEU4LXdTc1RxTUpIUGRjcjNjLVdSTUVETV9jT3lWME5vR1pzOUN0cXpyU2x3dzg3Y0NwRkpqTGVaX2h2bm1GVmN1OEo1VG1Id3VGWmptd3RST2ZhTk94Y0kta1E2SnlhYUlDNmhLQjczTEVvT3ZR?oc=5",
-      "indexed_at_utc": "2026-10-23T01:14:00+00:00",
-      "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNdGhoUnJnMTZmZ3BZVWQweFd2S3hZUlFYTnJMNTRUSEJ4d3R1eWlFc24yV0NfNnRaRHJ6TDNhR0RCbkkyYlFIYjg4QjlIWEtnNVVyaUMxZ21CV2lqRnpvMlZNM0xydXVueG14VWFNdXpwSjdybVl3VmtoRzhvdnZzU2w2WjM1bi11RzREMmFzV0tNTGZTX3RzbVpuX0pVcU1tVHY5M1huQ1RvSENS?oc=5",
+      "indexed_at_utc": "2026-11-23T09:03:09+00:00",
+      "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -62,10 +45,10 @@
         "coal"
       ],
       "subsector": "pricing_trade",
-      "title": "Indonesias energy revenue rises despite lower coal export volumes - ANTARA News",
-      "publisher": "ANTARA News",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxObVJ1REFrR1FXc0V0UkJvMWEtaTltZ3IxeWt1VHl3OUNiLWlqR1ZQUDkxWTFJUHJUX1g3SXdheGlaQ0ktMTUxd3VrRGdiX3VVdl9BT1VLSHlEWG1RcDV2NU1mQTBZWURUWUdyVlRXWjdVdEN4Wm5wWG04RTBBcllrY2VfWHloVDFFeHJ1MnNtdXEzNWt5TW1zRFBVVlNRa2NVMENRTlRR0gGrAUFVX3lxTE5iUXhIMEdFam95SExEWXBpaTI4NThWcENtbTZYMGtiNW9EUUlsc1BEMXFxUEVJV3RENW4wcGJfNnVzWndOc2d6UDlfM2tFVWlJbUVYazNMeGRIRUF1Sm53WUF1TjhaRklDdWZ2Vk1lMnQ4cGVEUFB2cG4ySXI2N0ZZQWtmU0NvVGtiTWtwZ1oxRnl3eFVNZ0FqOFRsbUlBTzFXNGJhc3l5TVdiMA?oc=5",
-      "indexed_at_utc": "2026-10-23T12:55:54+00:00",
+      "title": "US export coal rallies on European demand - S&P Global",
+      "publisher": "S&P Global",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQOHFieW4zVE5FbjRYVzJuNG1qb01aZUFycWF2WERJY0ZJSDYyMWp5TjhCaEdIdXY2cDRRV3J2VWFFalNPT2ZYTkcyMUNxaHVjN3NtS282WGFtNHVFTGxuWHlhQ3gzQWZrT2xGZDFhNGFXUzYySzc2SDV3NEJRZFl5UFVOQm5JS1IxVGdhUjY1Z1RaMFZpTG1ReEMwSzhDZlkzVWkwRTNYZnpmSHp5VWlTY0g4NlZGVDEzWDVVYQ?oc=5",
+      "indexed_at_utc": "2026-11-20T01:56:35+00:00",
       "impact_pathway": "Export logistics/policy -> regional coal benchmark -> Indonesia export and power sector",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -79,27 +62,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil prices hit five-month high as Houthi attacks stoke Middle East supply fears - Reuters",
+      "title": "Oil prices near three-month lows as rising supply offsets Hormuz threat - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOYzBEdGVKYmZ3VVpJajg0TW5DN2VHVEM2aDVTcFJKQVduMnVMTU5NbVcyMGxBanBHY3VvMzJQR1VrQWM4b0hLeG1YaTFWcldTeU9yTlBXc3FiR1FtcUp0SmxhRkJkWmpmZ2x6X3VGZHZEUDNLTE9LTFZNSlBWWjNJVGtaV3YwWkc4QVhxbHozYkx5THpZMVlYVDAtd0dqbUMyOUcyVk91NEYxaFFCZklRWWhjQm5qN2NvVHdWdnZIQVJSMk0?oc=5",
-      "indexed_at_utc": "2026-10-22T23:54:39+00:00",
-      "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Global crude oil & OPEC supply",
-      "topic_id": "oil_supply",
-      "type": "Oil markets",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "Oil prices jump $3 on Houthi attacks, oil spill, highest settlement since April - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPR2dZUC10TmJYRUk2RmM5WWpxaUx2XzBPZ0ZTV3hIR3BkaGFvZ3B2T1hhd0xEcXZOWk5LdXhLLUF5QU9XdTRQdnRyTk9jcmVNMEZvZlZBRW8xcG1TVW1fTkY2UnFrcXlVWlUwbDhRYk9pcW1fdEdzMVNRR2ZhYVl2T0RZa09uZTktZGFWRVRWSEpGeFhYVXVPR09zNDVaTVdiNDdRRHg3VFNyZWNNWVBmdkxGMWFOa05yN2NBRnRVZjF3eF9i?oc=5",
-      "indexed_at_utc": "2026-10-23T01:04:00+00:00",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQMDQ4RU9qMFd6TWl0WkFDUGVsdk5Gb3Q1dURMcjcwbGxUV3ItdjhZUGdQUTBZOVUyZEZlRzdmSEtjM3EwQTNUam1nRVZNdXFRbmNfeHhpUnNVQjNPbjNyOGtSZHVnNEZmbnpJdC1VdVA5X25rWndhMnZqemNGVWdVU1Y5OE8ybExyT2xLelF6dnZsNkM0OU55b1dKc1NuNF9sWkVGSGZJaUNxLXc4eEdGZTl3LUtFTDFuUUE?oc=5",
+      "indexed_at_utc": "2026-11-24T02:56:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -113,10 +79,10 @@
         "coal"
       ],
       "subsector": "general",
-      "title": "Indonesia to allow ‘limited’ coal quota relaxation as prices surge - The Jakarta Post",
-      "publisher": "The Jakarta Post",
-      "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQV2szek5rSWVuSG94RXhZZDFFUjF0cXM5cG5fQUdkb21LNVM5ekVBSGpnbF9nUzNIaW9DSzBsQ0hEdVJXWUY4R0pjN00yOV9hQUVUMWloX0kwY0p0OUxmWXZtenlpejdIM0NTSXFCZFBzVjRxTmRhMUJhY0FPc1IzYzdqVWk1LVZMRmtoS3BTTDY3dEdRcWdFdlZOUmRvSGY4anRma296VWRGdl90dk1pb19Xc3dvSFdKYXRGZnZlLXBqOXkzR2ZtR1NiV1FsWUthQ3lnOUtTcURESTJKdTU5WEo2cFB1RzZsQWFwaUhrTQ?oc=5",
-      "indexed_at_utc": "2026-10-20T06:06:05+00:00",
+      "title": "Indonesia partners with US firm to turn coal into synthetic gas - ANTARA News",
+      "publisher": "ANTARA News",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxObEk2TEl4dnFCcGRRb3Zab0lCOXpyNm5KYXNqcHVubXJfOVRXUUpJa24xNnh4ZkltSEhqWXJpWFpYd1ZYMzNvend2Z19GN3FWaXBSZldWakhESENBaC1OT1hEWDRYWkF4QWhkTkZfUWdWcHVtUXZYMXNCeXpkYjlnc1V2SWFadExPQmI2azJXY0RRdjc5VXZzQ3lQeENhZnVNRl9oR0dzbTPSAagBQVVfeXFMTmxJNkxJeHZxQnBkUW92Wm9JQjl6cjZuSmFzanB1bm1yXzlUV1FKSWtuMTZ4eGZJbUhIallyaVhaWHdWWDMzb3p3dmdfRjdxVmlwUmZXVmpIREhDQWgtTk9YRFg0WFpBeEFoZE5GX1FnVnB1bVF2WDFzQnl6ZGI5Z3NVdklhWnRMT0JiNmsyV2NEUXY3OVV2c0N5UHhDYWZ1TUZfaEdHc20z?oc=5",
+      "indexed_at_utc": "2026-11-23T14:51:26+00:00",
       "impact_pathway": "Foreign buyer, sanctions and energy-security policy -> Indonesia coal exports and coal state-revenue exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -129,37 +95,20 @@
       "sector_tags": [
         "nre"
       ],
-      "subsector": "hydro_geothermal",
-      "title": "Trump geothermal lease sale collides with planned Nevada solar farms - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxObmVVLWhZQi1mVVJXZ3haU2hJNk55bGdjd3VMVEZ3R0VwMUlDcERKVmc0N0VSQjkzYmtpaDh1d09zZS1MenF2R09mWGZQNHFGLTBNU3R3UXNFNmgtSGlLUjR4R1o5MVdwRllua3UxY2E5UDRlYUlfT05fVXZKaVk4ZTVJZW0wZm5QRWlxblRqUEJuc19ZYTNkWENpTFk0WWttNkpFQkNyYUR4Y0dTV2xqVkJ4MlV6eU9jS091eWpR?oc=5",
-      "indexed_at_utc": "2026-10-19T11:01:00+00:00",
-      "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Geothermal and renewable financing",
-      "topic_id": "nre_geothermal",
-      "type": "NRE investment",
-      "sector": "nre",
-      "sector_tags": [
-        "nre"
-      ],
       "subsector": "general",
-      "title": "Tunisia targets 16% renewable power share in 2027, plans 1,600 MW of new capacity - Reuters",
+      "title": "Amazon to invest $7 billion in renewable energy in India - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPUlFMaHVPV3kzcUU2Y0JmMmhZSVp1X1d6U1JnaWd4WEV5YVVnYm9fd2czTi1TbDVRMWZoQ0p6SndpaUJXR1F6VFZVcFE5dU9oTWg0ZFVpTDJqdmVNOWg3WlhFVjIxTmgxaExHWHBjWFBCSEEyQUhNNXZ3YnZHanc3a1V3LVdrSWthbllZZVB0cEVSaS10eXZSdkR1VDl3VlExX0hRMEx1WWd5UWlpM0xnWi1XRk05M3NSWjhmOEFwcEgwdw?oc=5",
-      "indexed_at_utc": "2026-10-21T11:49:21+00:00",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQX2VQM2lmenVrZWFWR0hYWjNMUWlkdTVBOGVpSERjX05QZldrcnZGWE0ybHJxeE5Id3VSblZwU1A0Vmx2VkkzN0RyanlrN2R6R2xOcGpwemVVZ0owMTdwNW9WUzFTRkdVNlQzRG5lYXNQclJ1eGNyT0ZlZDJrOFpDcGtPTmNTTmlpLTdxRHk0SFpCX0V5MzJyZVNpVkhuc0U?oc=5",
+      "indexed_at_utc": "2026-11-17T11:57:02+00:00",
       "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     }
   ],
   "sector_counts": {
-    "oil_gas": 4,
-    "coal": 3,
-    "nre": 2,
+    "oil_gas": 3,
+    "coal": 2,
+    "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
   },
@@ -167,6 +116,14 @@
   "errors": [
     {
       "topic": "Hormuz and Gulf energy",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "topic": "Red Sea and Bab el-Mandeb RSS",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "topic": "Biofuels and international mandates RSS",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
