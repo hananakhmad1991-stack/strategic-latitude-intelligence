@@ -1,8 +1,9 @@
+# SLI monitoring recovery: 2026-11-24; source checks and validation retained.
 name: SLI Geopolitical Energy News Discovery
 on:
   workflow_dispatch:
   schedule:
-    - cron: "13 */3 * * *"
+    - cron: "13 * * * *"
   push:
     branches: [main]
     paths:
