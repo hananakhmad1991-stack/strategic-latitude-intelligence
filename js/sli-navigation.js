@@ -2,7 +2,7 @@
    Static local links only, no analytics, redirects, network dependency or injected source data. */
 (()=>{'use strict';
 const groups=[
- ['Start & research tools','Mulai & perangkat riset','terminal','research','guide','membership'],
+ ['Start & research tools','Mulai & perangkat riset','terminal','research','guide'],
  ['Economy, investment & regions','Ekonomi, investasi & daerah','macro','industry','greenworkforce','investment','entities','province','opportunity','gini','welfare','labs'],
  ['Energy, minerals & trade','Energi, mineral & perdagangan','energy','electricity','ruptl','minerals','trade','map'],
  ['Food & agriculture','Pangan & pertanian','food'],
@@ -18,7 +18,7 @@ const modules={
  datahub:['SLI Data Library · BPS / IEA / PLN','Perpustakaan Data SLI · BPS / IEA / PLN','sli-sector-data-library.html','Source-linked, dated crime, democracy, socioeconomic, critical mineral and environmental data; no missing figures invented.','Dataset kriminalitas, demokrasi, sosial-ekonomi, mineral IEA dan lingkungan, dengan periode serta status sumber yang jelas.'],
  terminal:['SLI Decision Terminal · Cross-source workspace','SLI Decision Terminal · Workspace lintas sumber','sli-decision-terminal.html','Issuer, attributed-news and policy search with local watchlists and Research AI handoff. Not a live trading terminal.','Pencarian emiten, berita, dan regulasi dengan watchlist lokal serta jalur DERGUBA AI. Bukan terminal perdagangan langsung.'],
  research:['DERGUBA AI · SLI Research Intelligence · Owner Test','DERGUBA AI · Asisten Riset SLI · Uji Pemilik','sli-research-ai.html','Owner-only generative research is in limited testing; subscriber access is not active.','Riset generatif masih uji khusus pemilik dengan sumber terbatas; akses pelanggan belum aktif.'],
- membership:['Membership · Open / Pro / Enterprise','Keanggotaan · Open / Pro / Enterprise','sli-membership.html','Plans and early-access requests; payments are not active yet.','Paket dan permintaan akses awal; pembayaran belum aktif.'],
+ membership:['Open Access','Akses Terbuka','sli-membership.html','Explore released public intelligence without subscriptions.','Jelajahi intelijen publik tanpa langganan.'],
  guide:['User guide · Start here','Panduan pengguna · Mulai di sini','sli-user-guide.html','Task-based paths, navigation, dates, sources, filters and limitations.','Alur penggunaan, navigasi, tanggal, sumber dan batasan.'],
  entities:['Entity Intelligence · People & Projects','Intelijen Entitas · Tokoh & Proyek','sli-entities.html','Browse source-dated organizations, people and projects across sectors.','Telusuri organisasi, tokoh, dan proyek lintas sektor bersumber bertanggal.'],
  investment:['Investment · Project Tracker','Investasi · Pelacak Proyek','index.html#investment','Projects, investors, capital and execution status.','Proyek, investor, modal dan status pelaksanaan.'],
@@ -200,7 +200,7 @@ function renderPlatformMast(){
   detail.addEventListener('toggle',()=>{if(detail.open){for(const other of menuWrap.querySelectorAll('details'))if(other!==detail)other.open=false;explorer.open=false}});
  }
  primary.append(menuWrap);
- primary.append(mastLink('./sli-business-info.html#layanan',text('Pricing','Harga'),path==='sli-business-info.html'));
+
  primary.append(mastLink('./sli-company.html',text('Company','Perusahaan'),path==='sli-company.html'));
 
  // Keep the two client-facing research services visible together above the scrollable sector menu.
@@ -266,7 +266,7 @@ function renderBar(){
  const sep=node('span','sli-separator',' › ');position.append(sep,node('strong','',label(current)));
  const actions=node('div','sli-universal-actions');
  const guide=link('guide','sli-guide-link');guide.textContent=text('Help & how to use','Panduan pemakaian');
- actions.append(link('research'),link('membership'),guide,link('glossary'),link('freshness'))
+ actions.append(link('research'),guide,link('glossary'),link('freshness'))
  // Explore Data lives in the single shared masthead above; never duplicate it here.
  const relation=node('div','sli-related-links');
  relation.append(node('span','',text('Related:','Terkait:')));
