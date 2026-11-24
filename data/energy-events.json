@@ -1,119 +1,158 @@
 {
-  "generated_at_utc": "2026-10-24T06:34:14.011776+00:00",
-  "date_wib": "2026-10-24",
+  "generated_at_utc": "2026-11-24T09:46:28.181854+00:00",
+  "date_wib": "2026-11-24",
   "time_zone": "Asia/Jakarta",
   "max_displayed": 5,
   "events": [
     {
-      "id": "coal-outlook-2027",
-      "title": "2027 Indonesia Coal Outlook Conference",
-      "start_date": "2026-11-03",
-      "end_date": "2026-11-03",
-      "venue": "Shangri-La Hotel Jakarta",
+      "id": "aapg-ice-2026",
+      "title": "AAPG International Conference & Exhibition (ICE) 2026",
+      "start_date": "2026-12-07",
+      "end_date": "2026-12-09",
+      "venue": "Nusantara International Convention Exhibition (NICE)",
       "city": "Jakarta",
-      "category": "Coal & Energy Security",
-      "organizer": "Petromindo & CoalMetal Asia",
-      "summary": "Prospek batubara 2027: RKAB, DMO, ekspor, regulasi, dan keamanan pasokan domestik.",
-      "relevance": "Coal export compliance, domestic supply and energy-security policy",
-      "source_url": "https://www.petromindo.com/events/detail/2027-indonesia-coal-outlook-conference-navigating-new-mandates-and-markets",
-      "source_type": "organizer event page; do not scrape automatically (site restrictions)",
-      "verified_on": "2026-10-15",
-      "automated_source_check": false,
-      "date_hints": [
-        "November 3, 2026",
-        "Nov 3, 2026",
-        "2026-11-03"
-      ],
-      "source_check": "manual-source-entry; no automated scraping"
-    },
-    {
-      "id": "eic-connect-indo-2026",
-      "title": "EIC Connect Indonesia 2026",
-      "start_date": "2026-11-09",
-      "end_date": "2026-11-09",
-      "venue": "Hotel Indonesia Kempinski",
-      "city": "Jakarta",
-      "category": "Energy Investment",
-      "organizer": "Energy Industries Council (EIC)",
-      "summary": "Forum pemimpin energi: migas, LNG, hidrogen, carbon management, energi terbarukan, dan investasi.",
-      "relevance": "Investors, national oil and gas operators and energy supply chains",
-      "source_url": "https://www.the-eic.com/Events/EICConnect/EICConnectIndonesia",
-      "source_type": "organizer event page",
+      "category": "Oil & Gas Geoscience",
+      "organizer": "AAPG & Indonesian Petroleum Association (IPA)",
+      "summary": "Eksplorasi migas, geosains, inovasi reservoir, dan investasi upstream.",
+      "relevance": "Upstream exploration, geological technology and reservoir expertise",
+      "source_url": "https://iceevent.org/2026/",
+      "source_type": "joint organizer official event page",
       "verified_on": "2026-10-15",
       "date_hints": [
-        "9 November 2026",
-        "9th November 2026",
-        "2026-11-09"
+        "7–9 December 2026",
+        "7-9 December 2026",
+        "2026-12-07"
       ],
       "source_check": "organizer-page-date-visible"
     },
     {
-      "id": "asean-solar-storage-2026",
-      "title": "ASEAN Solar-Storage Summit 2026",
-      "start_date": "2026-11-10",
-      "end_date": "2026-11-11",
+      "id": "carbon-digital-2026",
+      "title": "Carbon Digital Conference Indonesia 2026",
+      "start_date": "2026-12-08",
+      "end_date": "2026-12-09",
+      "venue": "Sheraton Hotel Gandaria City",
+      "city": "Jakarta",
+      "category": "Carbon Markets & CCS",
+      "organizer": "PT Bina Rekadaya Utama (event organiser)",
+      "summary": "Pasar karbon, pengembang proyek, pembiayaan iklim, regulasi, dan nilai ekonomi karbon.",
+      "relevance": "Carbon markets, climate finance and CCS/CCUS investment context",
+      "source_url": "https://carbondigitalconference.com/",
+      "source_type": "organizer event page",
+      "verified_on": "2026-10-15",
+      "date_hints": [
+        "8&9 December 2026",
+        "8 and 9 December 2026",
+        "2026-12-08"
+      ],
+      "source_check": "organizer-page-date-visible"
+    },
+    {
+      "id": "fl-week-2027",
+      "title": "F+L Week 2027 — Fuels & Lubricants",
+      "start_date": "2027-03-17",
+      "end_date": "2027-03-18",
+      "venue": "Location details on organiser site",
+      "city": "Jakarta",
+      "category": "Fuels & Transition",
+      "organizer": "F&L Asia",
+      "summary": "Forum industri bahan bakar, pelumas, transisi energi dan teknologi industri.",
+      "relevance": "Fuel demand, energy mobility and industrial refining technology",
+      "source_url": "https://www.fuelsandlubes.com/fl-week/2027-1/",
+      "source_type": "organizer event page",
+      "verified_on": "2026-10-15",
+      "date_hints": [
+        "17 – 18 March 2027",
+        "17 - 18 March 2027",
+        "2027-03-17"
+      ],
+      "source_check": "organizer-page-date-visible"
+    },
+    {
+      "id": "solartech-2027",
+      "title": "SOLARTECH Indonesia 2027",
+      "start_date": "2027-04-21",
+      "end_date": "2027-04-23",
+      "venue": "JIExpo Kemayoran",
+      "city": "Jakarta",
+      "category": "Solar PV",
+      "organizer": "GEM Indonesia",
+      "summary": "Pameran PLTS, fotovoltaik, komponen panel surya, pengembang dan sistem instalasi.",
+      "relevance": "Solar value chain, photovoltaic technologies and renewable investment",
+      "source_url": "https://solartech-exhibition.net/event-fact-sheet/",
+      "source_type": "organizer event fact sheet",
+      "verified_on": "2026-10-15",
+      "date_hints": [
+        "21 – 23 April 2027",
+        "21 - 23 April 2027",
+        "2027-04-21"
+      ],
+      "source_check": "organizer-page-date-visible"
+    },
+    {
+      "id": "energy-council-jakarta-2027",
+      "title": "Energy Council Jakarta 2027",
+      "start_date": "2027-04-22",
+      "end_date": "2027-04-22",
       "venue": "Venue not specified on organiser page",
       "city": "Jakarta",
-      "category": "Renewables & Storage",
-      "organizer": "Shanghai Metals Market (SMM)",
-      "summary": "Investasi PLTS, baterai, EPC, kebijakan, dan business matchmaking ASEAN.",
-      "relevance": "Solar developers, grid storage and renewable financing",
-      "source_url": "https://aseansolarstorage.metal.com/",
+      "category": "Upstream Investment",
+      "organizer": "Energy Council",
+      "summary": "Forum investasi hulu migas bersama pemimpin industri, pembiayaan, serta pemangku kebijakan.",
+      "relevance": "Upstream capex, investors, energy security and investment policy",
+      "source_url": "https://energycouncil.com/roadshows-and-receptions/jakarta-conference/",
       "source_type": "organizer event page",
       "verified_on": "2026-10-15",
       "date_hints": [
-        "NOVEMBER 10 - 11, 2026",
-        "November 10, 2026",
-        "2026-11-10"
-      ],
-      "source_check": "organizer-page-reachable-date-recheck"
-    },
-    {
-      "id": "solar-storage-live-2026",
-      "title": "Solar & Storage Live Indonesia 2026",
-      "start_date": "2026-11-11",
-      "end_date": "2026-11-12",
-      "venue": "Indonesia Convention Exhibition (ICE BSD)",
-      "city": "Tangerang, Banten",
-      "category": "Solar & Battery",
-      "organizer": "Terrapinn",
-      "summary": "Pameran dan konferensi PLTS, penyimpanan energi, grid, pengembang proyek, dan pembiayaan.",
-      "relevance": "Distributed solar, utility-scale solar, storage and power investment",
-      "source_url": "https://www.terrapinn.com/exhibition/solar-storage-live-indonesia/",
-      "source_type": "organizer event page",
-      "verified_on": "2026-10-15",
-      "date_hints": [
-        "11-12 NOVEMBER 2026",
-        "11–12 November 2026",
-        "2026-11-11"
-      ],
-      "source_check": "organizer-page-date-visible"
-    },
-    {
-      "id": "evcharge-live-2026",
-      "title": "EVCharge Live Indonesia 2026",
-      "start_date": "2026-11-11",
-      "end_date": "2026-11-12",
-      "venue": "ICE BSD City",
-      "city": "Tangerang, Banten",
-      "category": "EV Charging & Grid",
-      "organizer": "Terrapinn",
-      "summary": "Infrastruktur pengisian kendaraan listrik, grid integration, dan kebijakan elektrifikasi transportasi.",
-      "relevance": "Charging networks, power demand and battery ecosystems",
-      "source_url": "https://www.terrapinn.com/exhibition/ev-charge-live-indonesia/index.stm",
-      "source_type": "organizer event page",
-      "verified_on": "2026-10-15",
-      "date_hints": [
-        "11-12 November 2026",
-        "11–12 November 2026",
-        "2026-11-11"
+        "22 April 2027",
+        "2027-04-22"
       ],
       "source_check": "organizer-page-date-visible"
     }
   ],
-  "candidate_pool_count": 12,
+  "candidate_pool_count": 7,
   "discovered_from_official_iesr": 0,
-  "source_errors": [],
+  "source_errors": [
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "IESR event detail",
+      "error": "TimeoutError: The read operation timed out"
+    }
+  ],
   "policy": "Five upcoming/ongoing Indonesian energy events sorted by event start date. Past events automatically drop. Replacements come from pre-vetted organiser-dated catalog entries plus newly dated original IESR event pages. Other unverified event discoveries are not automatically promoted.",
   "disclaimer": "Event plans may change. Opening, registration, programme and venue should be confirmed at organiser links before travel. Failed source checks do not prove cancellations; newly found dates are not guessed."
 }
