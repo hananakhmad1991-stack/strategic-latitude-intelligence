@@ -173,3 +173,17 @@ html[lang="id"] .sli-copy-en{display:none!important}
 @media(max-width:920px){.sli-home-journeys{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:850px){.sli-service-path{grid-template-columns:1fr;gap:9px}.sli-service-card{min-height:0;padding:16px}.sli-service-card .sli-service-action{margin-top:3px}}
 @media(max-width:480px){.sli-home-journeys{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.sli-home-journeys a{padding:10px;min-height:95px}.sli-home-journeys strong{font-size:12px}.sli-home-journeys small{font-size:10px}.sli-portal-hero .sli-service-disclosure{margin-bottom:17px}.sli-portal-hero-actions>*{max-width:100%}}
+
+/* Executive portal refinement: preserve existing routes, charts and source context. */
+body.sli-home-active .sli-portal-hero{padding:clamp(20px,2.5vw,34px)}
+body.sli-home-active .sli-service-path{margin:18px 0 10px}
+body.sli-home-active .sli-service-card{min-height:154px;padding:15px 17px;gap:7px}
+body.sli-home-active .sli-service-card small{line-height:1.5}
+body.sli-home-active .sli-home-journeys{margin:10px 0}
+body.sli-home-active .sli-portal-metric-card{min-height:116px;min-width:0;overflow-wrap:anywhere}
+.sli-executive-freshness{display:flex;flex-wrap:wrap;align-items:center;gap:7px 16px;padding:11px 14px;margin:12px 0 0;border:1px solid #39556c;border-left:3px solid #d7b678;border-radius:8px;background:#0d2336;color:#bfd1df;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.sli-executive-freshness strong{color:#f0d29b;font-weight:700}
+.sli-executive-freshness a{color:#e8c78e;text-decoration:underline;margin-left:auto}
+.sli-freshness-status[data-state=attention]{color:#f3cc92}
+@media(max-width:850px){body.sli-home-active .sli-service-card{min-height:0;padding:13px 15px}}
+@media(max-width:480px){body.sli-home-active .sli-portal-hero{padding:17px}body.sli-home-active .sli-portal-hero h2{font-size:28px;line-height:1.15}body.sli-home-active .sli-portal-metric-grid{gap:8px}body.sli-home-active .sli-portal-metric-card{padding:12px;min-height:0}body.sli-home-active .sli-portal-metric-card>strong{font-size:18px}.sli-executive-freshness{display:grid;gap:5px}.sli-executive-freshness a{margin:0;min-height:36px;display:flex;align-items:center}}
