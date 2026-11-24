@@ -1,24 +1,16 @@
 {
-  "checked_at_utc": "2026-11-24T09:30:59.103420+00:00",
+  "checked_at_utc": "2026-11-24T20:39:22.348526+00:00",
   "leads_found": 6,
   "sector_counts": {
-    "oil_gas": 3,
+    "oil_gas": 4,
     "coal": 2,
-    "nre": 1,
+    "nre": 0,
     "electricity": 0,
     "cross_cutting": 0
   },
   "errors": [
     {
       "topic": "Hormuz and Gulf energy",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "topic": "Red Sea and Bab el-Mandeb RSS",
-      "error": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "topic": "Biofuels and international mandates RSS",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
