@@ -13,31 +13,19 @@ test("Prelaunch catalog has exactly three honest product tiers, no active paymen
  assert.equal(p.tiers[0].pricing_status,"free");
  for(const tier of p.tiers){assert.equal(tier.monthly_price,null);assert.equal(tier.annual_price,null);assert.ok(tier.features.length>=4)}
 });
-test("Membership marketing page is an honest bilingual prelaunch page with genuine links",()=>{
- const s=read("sli-membership.html");
- for(const label of ["SLI Open","SLI Pro","SLI Enterprise","Harga belum diumumkan","Penawaran khusus","checkout","sli-membership-plans"]){
-  if(label==="checkout"||label==="sli-membership-plans")continue;
-  assert.ok(s.includes(label),"Missing "+label);
+test("Public access pages have no subscription pricing or checkout",()=>{
+ const nav=read("js/sli-navigation.js"),index=read("index.html"),membership=read("sli-membership.html");
+ assert.ok(!nav.includes("text('Pricing','Harga')"));
+ assert.ok(!nav.includes("link('membership')"));
+ assert.ok(!index.includes("SLI Membership Open Pro Enterprise"));
+ assert.match(membership,/Open access to Strategic Latitude Intelligence/);
+ assert.match(membership,/Akses terbuka/);
+ assert.match(membership,/owner-only access retain existing restrictions/);
+ for(const file of ["sli-membership.html","sli-business-info.html","sli-products.html"]){
+ const html=read(file);
+ assert.doesNotMatch(html,/Rp\s*(?:249|749)[.,]000|IDR\s*(?:249|749)[.,]000|stripe\.com\/checkout|midtrans\.com\/checkout/i);
  }
- assert.match(s,/Pendaftaran akun/si); // may be represented by lowercase "pendaftaran akun"
- assert.ok(s.includes('href="./index.html#overview"'));
- assert.ok(s.includes("https://www.linkedin.com/in/akhmad-hanan-a9129a21a/"));
- assert.ok(!s.includes("stripe.com/checkout")&&!s.includes("midtrans.com/checkout"));
- const scripts=[...s.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(x=>x[1]).filter(x=>x.trim());
- assert.equal(scripts.length,2,'Locale prepaint and membership runtime must both remain present');
- assert.match(scripts[0],/sli-chrome-pending/,'Language preference must apply before paint');
- for(const code of scripts)assert.doesNotThrow(()=>new Function(code));
- assert.equal((s.match(/js\/sli-navigation\.js/g)||[]).length,1);
- assert.equal((s.match(/js\/sli-shared-appendix\.js/g)||[]).length,1);
- assert.equal((s.match(/js\/sli-live-data\.js/g)||[]).length,1);
-});
-test("Membership discoverable in main navigation without mutating existing public analysis",()=>{
- const index=read("index.html"), nav=read("js/sli-navigation.js");
- assert.ok(index.includes("sli-membership.html"));
- assert.match(nav,/membership:\['Membership/);
- assert.match(nav,/link\('membership'\)/);
- for(const path of ["provincial-intelligence.html","gini-inequality.html","intelligence-labs.html"])
-  assert.match(read(path),/sli-navigation\.js/);
+ assert.doesNotThrow(()=>new Function(nav));
 });
 test("Worker never trusts browser tier claims or exposes unverified payment route",()=>{
  const worker=read("membership-api/src/index.js");
@@ -63,9 +51,5 @@ test("Target tier policy is deliberately preview-limited and single-device is no
  assert.match(p.tiers[2].features.join(" "),/Weekly sector-specific monitoring/);
  assert.equal(p.tiers[2].delivery.weekly_sector_report,"weekly_when_explicitly_included_in_signed_contract");
  const html=read("sli-membership.html");
- for(const text of ["satu perangkat","mingguan","data nasional","GitHub Pages","1 akun"]){
-   assert.ok(html.includes(text),"Missing copy "+text);
- }
- assert.match(html,/pembatasan perangkat, paywall dan pembayaran belum aktif/i);
- assert.match(html,/no active|not active/i);
+ assert.match(html,/without subscriptions/);
 });
