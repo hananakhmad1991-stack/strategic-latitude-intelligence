@@ -232,3 +232,17 @@ body.sli-dashboard-unified .sli-platform-sector-menu{
 
 /* Keep the four customer menus accessible on phones without widening the page. */
 @media(max-width:1090px){.sli-header-menu-set{max-width:100%;overflow-x:auto;scrollbar-width:thin}.sli-header-dropdown-panel{position:fixed;top:var(--sli-mast-offset,135px)}}
+
+/* SLI compact intelligence reading layout — responsive, source-first. */
+.sli-news-controls{display:grid;grid-template-columns:minmax(150px,1fr) minmax(180px,2.5fr) minmax(90px,.6fr) auto;gap:8px;margin-bottom:9px}
+.sli-news-controls select,.sli-news-controls input{min-width:0;width:100%;min-height:40px}
+.sli-news-meta{line-height:1.65;overflow-wrap:anywhere;padding:5px 0}
+.sli-news-results{gap:6px 12px}
+.sli-news-record{border:0;border-bottom:1px solid #37546b;border-radius:0;background:transparent;padding:10px 4px;min-height:0}
+.sli-news-item-head .sli-news-link{font-size:13px;line-height:1.5;font-weight:650;text-decoration:none;color:#f0d29b}
+.sli-news-item-head .sli-news-link:hover{text-decoration:underline}
+.sli-news-byline{line-height:1.55;margin:4px 0!important;font-size:11px!important}
+.sli-news-evidence-level{font-size:10px!important;line-height:1.45}
+.sli-secondary-universal :is(a,input,select,summary):focus-visible{outline:2px solid #e0bf80;outline-offset:3px}
+@media(max-width:1000px){.sli-news-controls{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.sli-news-search{grid-column:1/-1;grid-row:1}.sli-news-policy{grid-column:1/-1}}
+@media(max-width:550px){.sli-news-body{padding:10px}.sli-news-results{grid-template-columns:1fr}.sli-news-controls select,.sli-news-controls input{font-size:16px;min-height:44px}.sli-news-item-head .sli-news-link{font-size:14px}.sli-news-meta{font-size:11px}}
