@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-10-24T07:12:39.581110+00:00",
+  "checked_at_utc": "2026-11-24T09:30:51.129466+00:00",
   "status": "ok",
   "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
   "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
@@ -11,12 +11,12 @@
       "name": "Brent crude futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 111.7,
-      "previous": 103.08,
-      "change": 8.62,
-      "change_percent": 8.3624,
+      "value": 86.43,
+      "previous": 116.72,
+      "change": -30.29,
+      "change_percent": -25.951,
       "unit": "USD/bbl",
-      "observed_at_utc": "2026-10-23T20:59:19+00:00",
+      "observed_at_utc": "2026-11-24T09:20:33+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/BZ%3DF",
       "symbol": "BZ=F",
@@ -24,92 +24,92 @@
       "refresh_class": "Indicative / may be delayed",
       "history": [
         {
-          "observed_at_utc": "2026-09-24T04:00:00+00:00",
-          "value": 106.599998
+          "observed_at_utc": "2026-10-26T04:00:00+00:00",
+          "value": 115.809998
         },
         {
-          "observed_at_utc": "2026-09-25T04:00:00+00:00",
-          "value": 104.32
+          "observed_at_utc": "2026-10-27T04:00:00+00:00",
+          "value": 113.879997
         },
         {
-          "observed_at_utc": "2026-09-28T04:00:00+00:00",
-          "value": 105.279999
+          "observed_at_utc": "2026-10-28T04:00:00+00:00",
+          "value": 115.32
         },
         {
-          "observed_at_utc": "2026-09-29T04:00:00+00:00",
-          "value": 102.589996
+          "observed_at_utc": "2026-10-29T04:00:00+00:00",
+          "value": 114.879997
         },
         {
-          "observed_at_utc": "2026-09-30T04:00:00+00:00",
-          "value": 103.529999
+          "observed_at_utc": "2026-10-30T04:00:00+00:00",
+          "value": 117.639999
         },
         {
-          "observed_at_utc": "2026-10-01T04:00:00+00:00",
-          "value": 102.309998
+          "observed_at_utc": "2026-11-02T05:00:00+00:00",
+          "value": 104.769997
         },
         {
-          "observed_at_utc": "2026-10-02T04:00:00+00:00",
-          "value": 102.25
+          "observed_at_utc": "2026-11-03T05:00:00+00:00",
+          "value": 103.599998
         },
         {
-          "observed_at_utc": "2026-10-05T04:00:00+00:00",
-          "value": 100.32
+          "observed_at_utc": "2026-11-04T05:00:00+00:00",
+          "value": 94.620003
         },
         {
-          "observed_at_utc": "2026-10-06T04:00:00+00:00",
-          "value": 100.580002
+          "observed_at_utc": "2026-11-05T05:00:00+00:00",
+          "value": 98.290001
         },
         {
-          "observed_at_utc": "2026-10-07T04:00:00+00:00",
-          "value": 100.199997
+          "observed_at_utc": "2026-11-06T05:00:00+00:00",
+          "value": 98.32
         },
         {
-          "observed_at_utc": "2026-10-08T04:00:00+00:00",
-          "value": 104.279999
+          "observed_at_utc": "2026-11-09T05:00:00+00:00",
+          "value": 92.57
         },
         {
-          "observed_at_utc": "2026-10-09T04:00:00+00:00",
-          "value": 104.720001
+          "observed_at_utc": "2026-11-10T05:00:00+00:00",
+          "value": 91.489998
         },
         {
-          "observed_at_utc": "2026-10-12T04:00:00+00:00",
-          "value": 106.650002
+          "observed_at_utc": "2026-11-11T05:00:00+00:00",
+          "value": 92.760002
         },
         {
-          "observed_at_utc": "2026-10-13T04:00:00+00:00",
-          "value": 105.690002
+          "observed_at_utc": "2026-11-12T05:00:00+00:00",
+          "value": 95.82
         },
         {
-          "observed_at_utc": "2026-10-14T04:00:00+00:00",
-          "value": 106.059998
+          "observed_at_utc": "2026-11-13T05:00:00+00:00",
+          "value": 95.839996
         },
         {
-          "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 105.919998
+          "observed_at_utc": "2026-11-16T05:00:00+00:00",
+          "value": 92.440002
         },
         {
-          "observed_at_utc": "2026-10-16T04:00:00+00:00",
-          "value": 109.860001
+          "observed_at_utc": "2026-11-17T05:00:00+00:00",
+          "value": 93.139999
         },
         {
-          "observed_at_utc": "2026-10-19T04:00:00+00:00",
-          "value": 109.550003
+          "observed_at_utc": "2026-11-18T05:00:00+00:00",
+          "value": 91.949997
         },
         {
-          "observed_at_utc": "2026-10-20T04:00:00+00:00",
-          "value": 108.790001
+          "observed_at_utc": "2026-11-19T05:00:00+00:00",
+          "value": 91.980003
         },
         {
-          "observed_at_utc": "2026-10-21T04:00:00+00:00",
-          "value": 108.82
+          "observed_at_utc": "2026-11-20T05:00:00+00:00",
+          "value": 92.57
         },
         {
-          "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 113.169998
+          "observed_at_utc": "2026-11-23T05:00:00+00:00",
+          "value": 89.370003
         },
         {
-          "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 116.720001
+          "observed_at_utc": "2026-11-24T05:00:00+00:00",
+          "value": 86.43
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -119,12 +119,12 @@
       "name": "WTI crude futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 103.27,
-      "previous": 92.16,
-      "change": 11.11,
-      "change_percent": 12.0551,
+      "value": 79.8,
+      "previous": 103.27,
+      "change": -23.47,
+      "change_percent": -22.7268,
       "unit": "USD/bbl",
-      "observed_at_utc": "2026-10-23T20:59:58+00:00",
+      "observed_at_utc": "2026-11-24T09:20:46+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/CL%3DF",
       "symbol": "CL=F",
@@ -132,92 +132,92 @@
       "refresh_class": "Indicative / may be delayed",
       "history": [
         {
-          "observed_at_utc": "2026-09-24T04:00:00+00:00",
-          "value": 94.610001
+          "observed_at_utc": "2026-10-26T04:00:00+00:00",
+          "value": 101.760002
         },
         {
-          "observed_at_utc": "2026-09-25T04:00:00+00:00",
-          "value": 92.410004
+          "observed_at_utc": "2026-10-27T04:00:00+00:00",
+          "value": 99.900002
         },
         {
-          "observed_at_utc": "2026-09-28T04:00:00+00:00",
-          "value": 92.599998
+          "observed_at_utc": "2026-10-28T04:00:00+00:00",
+          "value": 102.779999
         },
         {
-          "observed_at_utc": "2026-09-29T04:00:00+00:00",
-          "value": 89.379997
+          "observed_at_utc": "2026-10-29T04:00:00+00:00",
+          "value": 102.0
         },
         {
-          "observed_at_utc": "2026-09-30T04:00:00+00:00",
-          "value": 90.419998
+          "observed_at_utc": "2026-10-30T04:00:00+00:00",
+          "value": 104.120003
         },
         {
-          "observed_at_utc": "2026-10-01T04:00:00+00:00",
-          "value": 92.870003
+          "observed_at_utc": "2026-11-02T05:00:00+00:00",
+          "value": 96.459999
         },
         {
-          "observed_at_utc": "2026-10-02T04:00:00+00:00",
-          "value": 91.110001
+          "observed_at_utc": "2026-11-03T05:00:00+00:00",
+          "value": 96.089996
         },
         {
-          "observed_at_utc": "2026-10-05T04:00:00+00:00",
-          "value": 89.43
+          "observed_at_utc": "2026-11-04T05:00:00+00:00",
+          "value": 88.120003
         },
         {
-          "observed_at_utc": "2026-10-06T04:00:00+00:00",
-          "value": 89.440002
+          "observed_at_utc": "2026-11-05T05:00:00+00:00",
+          "value": 90.519997
         },
         {
-          "observed_at_utc": "2026-10-07T04:00:00+00:00",
-          "value": 88.279999
+          "observed_at_utc": "2026-11-06T05:00:00+00:00",
+          "value": 90.830002
         },
         {
-          "observed_at_utc": "2026-10-08T04:00:00+00:00",
-          "value": 91.489998
+          "observed_at_utc": "2026-11-09T05:00:00+00:00",
+          "value": 86.849998
         },
         {
-          "observed_at_utc": "2026-10-09T04:00:00+00:00",
-          "value": 91.849998
+          "observed_at_utc": "2026-11-10T05:00:00+00:00",
+          "value": 86.040001
         },
         {
-          "observed_at_utc": "2026-10-12T04:00:00+00:00",
-          "value": 93.739998
+          "observed_at_utc": "2026-11-11T05:00:00+00:00",
+          "value": 86.529999
         },
         {
-          "observed_at_utc": "2026-10-13T04:00:00+00:00",
-          "value": 94.139999
+          "observed_at_utc": "2026-11-12T05:00:00+00:00",
+          "value": 88.739998
         },
         {
-          "observed_at_utc": "2026-10-14T04:00:00+00:00",
-          "value": 95.089996
+          "observed_at_utc": "2026-11-13T05:00:00+00:00",
+          "value": 88.559998
         },
         {
-          "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 97.970001
+          "observed_at_utc": "2026-11-16T05:00:00+00:00",
+          "value": 85.720001
         },
         {
-          "observed_at_utc": "2026-10-16T04:00:00+00:00",
-          "value": 101.410004
+          "observed_at_utc": "2026-11-17T05:00:00+00:00",
+          "value": 86.010002
         },
         {
-          "observed_at_utc": "2026-10-19T04:00:00+00:00",
-          "value": 103.660004
+          "observed_at_utc": "2026-11-18T05:00:00+00:00",
+          "value": 83.260002
         },
         {
-          "observed_at_utc": "2026-10-20T04:00:00+00:00",
-          "value": 101.790001
+          "observed_at_utc": "2026-11-19T05:00:00+00:00",
+          "value": 83.209999
         },
         {
-          "observed_at_utc": "2026-10-21T04:00:00+00:00",
-          "value": 97.150002
+          "observed_at_utc": "2026-11-20T05:00:00+00:00",
+          "value": 83.980003
         },
         {
-          "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 99.470001
+          "observed_at_utc": "2026-11-23T05:00:00+00:00",
+          "value": 80.169998
         },
         {
-          "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 103.269997
+          "observed_at_utc": "2026-11-24T05:00:00+00:00",
+          "value": 79.800003
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -227,12 +227,12 @@
       "name": "US natural gas futures",
       "sector": "energy",
       "tier": "indicative_futures",
-      "value": 3.05,
-      "previous": 3.023,
-      "change": 0.027,
-      "change_percent": 0.8932,
+      "value": 3.611,
+      "previous": 2.64,
+      "change": 0.971,
+      "change_percent": 36.7803,
       "unit": "USD/MMBtu",
-      "observed_at_utc": "2026-10-23T21:00:00+00:00",
+      "observed_at_utc": "2026-11-24T09:20:45+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/NG%3DF",
       "symbol": "NG=F",
@@ -240,92 +240,92 @@
       "refresh_class": "Indicative / may be delayed",
       "history": [
         {
-          "observed_at_utc": "2026-09-24T04:00:00+00:00",
-          "value": 3.297
+          "observed_at_utc": "2026-10-26T04:00:00+00:00",
+          "value": 2.602
         },
         {
-          "observed_at_utc": "2026-09-25T04:00:00+00:00",
-          "value": 3.196
+          "observed_at_utc": "2026-10-27T04:00:00+00:00",
+          "value": 2.697
         },
         {
-          "observed_at_utc": "2026-09-28T04:00:00+00:00",
-          "value": 3.0
+          "observed_at_utc": "2026-10-28T04:00:00+00:00",
+          "value": 2.817
         },
         {
-          "observed_at_utc": "2026-09-29T04:00:00+00:00",
-          "value": 3.011
+          "observed_at_utc": "2026-10-29T04:00:00+00:00",
+          "value": 2.952
         },
         {
-          "observed_at_utc": "2026-09-30T04:00:00+00:00",
-          "value": 3.026
+          "observed_at_utc": "2026-10-30T04:00:00+00:00",
+          "value": 2.898
         },
         {
-          "observed_at_utc": "2026-10-01T04:00:00+00:00",
-          "value": 2.967
+          "observed_at_utc": "2026-11-02T05:00:00+00:00",
+          "value": 2.856
         },
         {
-          "observed_at_utc": "2026-10-02T04:00:00+00:00",
-          "value": 3.035
+          "observed_at_utc": "2026-11-03T05:00:00+00:00",
+          "value": 2.895
         },
         {
-          "observed_at_utc": "2026-10-05T04:00:00+00:00",
-          "value": 3.066
+          "observed_at_utc": "2026-11-04T05:00:00+00:00",
+          "value": 2.959
         },
         {
-          "observed_at_utc": "2026-10-06T04:00:00+00:00",
-          "value": 3.114
+          "observed_at_utc": "2026-11-05T05:00:00+00:00",
+          "value": 2.947
         },
         {
-          "observed_at_utc": "2026-10-07T04:00:00+00:00",
-          "value": 3.203
+          "observed_at_utc": "2026-11-06T05:00:00+00:00",
+          "value": 2.998
         },
         {
-          "observed_at_utc": "2026-10-08T04:00:00+00:00",
-          "value": 3.168
+          "observed_at_utc": "2026-11-09T05:00:00+00:00",
+          "value": 3.218
         },
         {
-          "observed_at_utc": "2026-10-09T04:00:00+00:00",
-          "value": 3.22
+          "observed_at_utc": "2026-11-10T05:00:00+00:00",
+          "value": 3.296
         },
         {
-          "observed_at_utc": "2026-10-12T04:00:00+00:00",
-          "value": 3.167
+          "observed_at_utc": "2026-11-11T05:00:00+00:00",
+          "value": 3.215
         },
         {
-          "observed_at_utc": "2026-10-13T04:00:00+00:00",
-          "value": 3.283
+          "observed_at_utc": "2026-11-12T05:00:00+00:00",
+          "value": 3.34
         },
         {
-          "observed_at_utc": "2026-10-14T04:00:00+00:00",
-          "value": 3.198
+          "observed_at_utc": "2026-11-13T05:00:00+00:00",
+          "value": 3.23
         },
         {
-          "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 3.236
+          "observed_at_utc": "2026-11-16T05:00:00+00:00",
+          "value": 3.122
         },
         {
-          "observed_at_utc": "2026-10-16T04:00:00+00:00",
-          "value": 3.116
+          "observed_at_utc": "2026-11-17T05:00:00+00:00",
+          "value": 3.208
         },
         {
-          "observed_at_utc": "2026-10-19T04:00:00+00:00",
-          "value": 3.058
+          "observed_at_utc": "2026-11-18T05:00:00+00:00",
+          "value": 3.372
         },
         {
-          "observed_at_utc": "2026-10-20T04:00:00+00:00",
-          "value": 2.963
+          "observed_at_utc": "2026-11-19T05:00:00+00:00",
+          "value": 3.268
         },
         {
-          "observed_at_utc": "2026-10-21T04:00:00+00:00",
-          "value": 2.79
+          "observed_at_utc": "2026-11-20T05:00:00+00:00",
+          "value": 3.411
         },
         {
-          "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 2.796
+          "observed_at_utc": "2026-11-23T05:00:00+00:00",
+          "value": 3.184
         },
         {
-          "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 2.64
+          "observed_at_utc": "2026-11-24T05:00:00+00:00",
+          "value": 3.611
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -335,12 +335,12 @@
       "name": "Copper futures (COMEX)",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 6.508,
-      "previous": 6.678,
-      "change": -0.17,
-      "change_percent": -2.5457,
+      "value": 5.546,
+      "previous": 6.476,
+      "change": -0.93,
+      "change_percent": -14.3607,
       "unit": "USD/lb",
-      "observed_at_utc": "2026-10-23T20:59:35+00:00",
+      "observed_at_utc": "2026-11-24T09:20:46+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/HG%3DF",
       "symbol": "HG=F",
@@ -348,92 +348,92 @@
       "refresh_class": "Indicative / may be delayed",
       "history": [
         {
-          "observed_at_utc": "2026-09-24T04:00:00+00:00",
-          "value": 6.7185
+          "observed_at_utc": "2026-10-26T04:00:00+00:00",
+          "value": 6.508
         },
         {
-          "observed_at_utc": "2026-09-25T04:00:00+00:00",
-          "value": 6.6955
+          "observed_at_utc": "2026-10-27T04:00:00+00:00",
+          "value": 6.622
         },
         {
-          "observed_at_utc": "2026-09-28T04:00:00+00:00",
-          "value": 6.566
+          "observed_at_utc": "2026-10-28T04:00:00+00:00",
+          "value": 6.6415
         },
         {
-          "observed_at_utc": "2026-09-29T04:00:00+00:00",
+          "observed_at_utc": "2026-10-29T04:00:00+00:00",
+          "value": 6.581
+        },
+        {
+          "observed_at_utc": "2026-10-30T04:00:00+00:00",
+          "value": 6.4585
+        },
+        {
+          "observed_at_utc": "2026-11-02T05:00:00+00:00",
           "value": 6.5435
         },
         {
-          "observed_at_utc": "2026-09-30T04:00:00+00:00",
-          "value": 6.559
+          "observed_at_utc": "2026-11-03T05:00:00+00:00",
+          "value": 6.3785
         },
         {
-          "observed_at_utc": "2026-10-01T04:00:00+00:00",
-          "value": 6.482
+          "observed_at_utc": "2026-11-04T05:00:00+00:00",
+          "value": 6.403
         },
         {
-          "observed_at_utc": "2026-10-02T04:00:00+00:00",
-          "value": 6.492
+          "observed_at_utc": "2026-11-05T05:00:00+00:00",
+          "value": 6.249
         },
         {
-          "observed_at_utc": "2026-10-05T04:00:00+00:00",
-          "value": 6.5855
+          "observed_at_utc": "2026-11-06T05:00:00+00:00",
+          "value": 6.218
         },
         {
-          "observed_at_utc": "2026-10-06T04:00:00+00:00",
-          "value": 6.5945
+          "observed_at_utc": "2026-11-09T05:00:00+00:00",
+          "value": 6.3285
         },
         {
-          "observed_at_utc": "2026-10-07T04:00:00+00:00",
-          "value": 6.5965
+          "observed_at_utc": "2026-11-10T05:00:00+00:00",
+          "value": 6.2195
         },
         {
-          "observed_at_utc": "2026-10-08T04:00:00+00:00",
-          "value": 6.519
+          "observed_at_utc": "2026-11-11T05:00:00+00:00",
+          "value": 6.2745
         },
         {
-          "observed_at_utc": "2026-10-09T04:00:00+00:00",
-          "value": 6.6425
+          "observed_at_utc": "2026-11-12T05:00:00+00:00",
+          "value": 6.1825
         },
         {
-          "observed_at_utc": "2026-10-12T04:00:00+00:00",
-          "value": 6.6985
+          "observed_at_utc": "2026-11-13T05:00:00+00:00",
+          "value": 6.0795
         },
         {
-          "observed_at_utc": "2026-10-13T04:00:00+00:00",
-          "value": 6.678
+          "observed_at_utc": "2026-11-16T05:00:00+00:00",
+          "value": 5.9975
         },
         {
-          "observed_at_utc": "2026-10-14T04:00:00+00:00",
-          "value": 6.6115
+          "observed_at_utc": "2026-11-17T05:00:00+00:00",
+          "value": 5.976
         },
         {
-          "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 6.5115
+          "observed_at_utc": "2026-11-18T05:00:00+00:00",
+          "value": 5.6595
         },
         {
-          "observed_at_utc": "2026-10-16T04:00:00+00:00",
-          "value": 6.531
+          "observed_at_utc": "2026-11-19T05:00:00+00:00",
+          "value": 5.625
         },
         {
-          "observed_at_utc": "2026-10-19T04:00:00+00:00",
-          "value": 6.538
+          "observed_at_utc": "2026-11-20T05:00:00+00:00",
+          "value": 5.477
         },
         {
-          "observed_at_utc": "2026-10-20T04:00:00+00:00",
-          "value": 6.5665
+          "observed_at_utc": "2026-11-23T05:00:00+00:00",
+          "value": 5.627
         },
         {
-          "observed_at_utc": "2026-10-21T04:00:00+00:00",
-          "value": 6.543
-        },
-        {
-          "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 6.3625
-        },
-        {
-          "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 6.476
+          "observed_at_utc": "2026-11-24T05:00:00+00:00",
+          "value": 5.546
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -443,12 +443,12 @@
       "name": "Gold futures",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 4007.9,
-      "previous": 4318.4,
-      "change": -310.5,
-      "change_percent": -7.1902,
+      "value": 3616.8,
+      "previous": 4007.9,
+      "change": -391.1,
+      "change_percent": -9.7582,
       "unit": "USD/troy oz",
-      "observed_at_utc": "2026-10-23T20:59:58+00:00",
+      "observed_at_utc": "2026-11-24T09:20:50+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/GC%3DF",
       "symbol": "GC=F",
@@ -456,92 +456,92 @@
       "refresh_class": "Indicative / may be delayed",
       "history": [
         {
-          "observed_at_utc": "2026-09-24T04:00:00+00:00",
-          "value": 4298.0
+          "observed_at_utc": "2026-10-26T04:00:00+00:00",
+          "value": 4038.399902
         },
         {
-          "observed_at_utc": "2026-09-25T04:00:00+00:00",
-          "value": 4321.200195
+          "observed_at_utc": "2026-10-27T04:00:00+00:00",
+          "value": 4074.600098
         },
         {
-          "observed_at_utc": "2026-09-28T04:00:00+00:00",
-          "value": 4168.399902
+          "observed_at_utc": "2026-10-28T04:00:00+00:00",
+          "value": 4051.600098
         },
         {
-          "observed_at_utc": "2026-09-29T04:00:00+00:00",
-          "value": 4179.700195
+          "observed_at_utc": "2026-10-29T04:00:00+00:00",
+          "value": 4031.399902
         },
         {
-          "observed_at_utc": "2026-09-30T04:00:00+00:00",
-          "value": 4186.700195
+          "observed_at_utc": "2026-10-30T04:00:00+00:00",
+          "value": 3898.899902
         },
         {
-          "observed_at_utc": "2026-10-01T04:00:00+00:00",
-          "value": 4202.299805
+          "observed_at_utc": "2026-11-02T05:00:00+00:00",
+          "value": 3969.600098
         },
         {
-          "observed_at_utc": "2026-10-02T04:00:00+00:00",
-          "value": 4162.299805
+          "observed_at_utc": "2026-11-03T05:00:00+00:00",
+          "value": 3940.399902
         },
         {
-          "observed_at_utc": "2026-10-05T04:00:00+00:00",
-          "value": 4156.799805
+          "observed_at_utc": "2026-11-04T05:00:00+00:00",
+          "value": 4073.0
         },
         {
-          "observed_at_utc": "2026-10-06T04:00:00+00:00",
-          "value": 4187.100098
+          "observed_at_utc": "2026-11-05T05:00:00+00:00",
+          "value": 4113.5
         },
         {
-          "observed_at_utc": "2026-10-07T04:00:00+00:00",
-          "value": 4140.700195
+          "observed_at_utc": "2026-11-06T05:00:00+00:00",
+          "value": 4074.899902
         },
         {
-          "observed_at_utc": "2026-10-08T04:00:00+00:00",
-          "value": 4157.0
+          "observed_at_utc": "2026-11-09T05:00:00+00:00",
+          "value": 4114.5
         },
         {
-          "observed_at_utc": "2026-10-09T04:00:00+00:00",
-          "value": 4216.299805
+          "observed_at_utc": "2026-11-10T05:00:00+00:00",
+          "value": 4030.199951
         },
         {
-          "observed_at_utc": "2026-10-12T04:00:00+00:00",
-          "value": 4190.600098
+          "observed_at_utc": "2026-11-11T05:00:00+00:00",
+          "value": 4000.5
         },
         {
-          "observed_at_utc": "2026-10-13T04:00:00+00:00",
-          "value": 4177.299805
+          "observed_at_utc": "2026-11-12T05:00:00+00:00",
+          "value": 3885.300049
         },
         {
-          "observed_at_utc": "2026-10-14T04:00:00+00:00",
-          "value": 4107.899902
+          "observed_at_utc": "2026-11-13T05:00:00+00:00",
+          "value": 3886.300049
         },
         {
-          "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 4170.100098
+          "observed_at_utc": "2026-11-16T05:00:00+00:00",
+          "value": 3853.0
         },
         {
-          "observed_at_utc": "2026-10-16T04:00:00+00:00",
-          "value": 4181.100098
+          "observed_at_utc": "2026-11-17T05:00:00+00:00",
+          "value": 3864.199951
         },
         {
-          "observed_at_utc": "2026-10-19T04:00:00+00:00",
-          "value": 4160.100098
+          "observed_at_utc": "2026-11-18T05:00:00+00:00",
+          "value": 3741.899902
         },
         {
-          "observed_at_utc": "2026-10-20T04:00:00+00:00",
-          "value": 4142.600098
+          "observed_at_utc": "2026-11-19T05:00:00+00:00",
+          "value": 3685.5
         },
         {
-          "observed_at_utc": "2026-10-21T04:00:00+00:00",
-          "value": 4150.0
+          "observed_at_utc": "2026-11-20T05:00:00+00:00",
+          "value": 3515.399902
         },
         {
-          "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 4060.399902
+          "observed_at_utc": "2026-11-23T05:00:00+00:00",
+          "value": 3651.399902
         },
         {
-          "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 4007.899902
+          "observed_at_utc": "2026-11-24T05:00:00+00:00",
+          "value": 3616.800049
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -551,12 +551,12 @@
       "name": "Silver futures",
       "sector": "minerals",
       "tier": "indicative_futures",
-      "value": 53.949,
-      "previous": 64.382,
-      "change": -10.433,
-      "change_percent": -16.2048,
+      "value": 41.745,
+      "previous": 53.711,
+      "change": -11.966,
+      "change_percent": -22.2785,
       "unit": "USD/troy oz",
-      "observed_at_utc": "2026-10-23T20:59:52+00:00",
+      "observed_at_utc": "2026-11-24T09:20:50+00:00",
       "source": "Yahoo Finance public chart endpoint (unofficial; unlicensed redistribution)",
       "source_url": "https://finance.yahoo.com/quote/SI%3DF",
       "symbol": "SI=F",
@@ -564,92 +564,92 @@
       "refresh_class": "Indicative / may be delayed",
       "history": [
         {
-          "observed_at_utc": "2026-09-24T04:00:00+00:00",
-          "value": 63.457001
+          "observed_at_utc": "2026-10-26T04:00:00+00:00",
+          "value": 54.108002
         },
         {
-          "observed_at_utc": "2026-09-25T04:00:00+00:00",
-          "value": 64.245003
+          "observed_at_utc": "2026-10-27T04:00:00+00:00",
+          "value": 54.292999
         },
         {
-          "observed_at_utc": "2026-09-28T04:00:00+00:00",
-          "value": 61.220001
+          "observed_at_utc": "2026-10-28T04:00:00+00:00",
+          "value": 53.457001
         },
         {
-          "observed_at_utc": "2026-09-29T04:00:00+00:00",
-          "value": 60.667999
+          "observed_at_utc": "2026-10-29T04:00:00+00:00",
+          "value": 52.191002
         },
         {
-          "observed_at_utc": "2026-09-30T04:00:00+00:00",
-          "value": 60.098
+          "observed_at_utc": "2026-10-30T04:00:00+00:00",
+          "value": 49.097
         },
         {
-          "observed_at_utc": "2026-10-01T04:00:00+00:00",
-          "value": 60.724998
+          "observed_at_utc": "2026-11-02T05:00:00+00:00",
+          "value": 50.720001
         },
         {
-          "observed_at_utc": "2026-10-02T04:00:00+00:00",
-          "value": 59.977001
+          "observed_at_utc": "2026-11-03T05:00:00+00:00",
+          "value": 49.587002
         },
         {
-          "observed_at_utc": "2026-10-05T04:00:00+00:00",
-          "value": 60.868999
+          "observed_at_utc": "2026-11-04T05:00:00+00:00",
+          "value": 52.119999
         },
         {
-          "observed_at_utc": "2026-10-06T04:00:00+00:00",
-          "value": 61.167999
+          "observed_at_utc": "2026-11-05T05:00:00+00:00",
+          "value": 52.233002
         },
         {
-          "observed_at_utc": "2026-10-07T04:00:00+00:00",
-          "value": 59.898998
+          "observed_at_utc": "2026-11-06T05:00:00+00:00",
+          "value": 51.803001
         },
         {
-          "observed_at_utc": "2026-10-08T04:00:00+00:00",
-          "value": 59.063999
+          "observed_at_utc": "2026-11-09T05:00:00+00:00",
+          "value": 52.563999
         },
         {
-          "observed_at_utc": "2026-10-09T04:00:00+00:00",
-          "value": 60.669998
+          "observed_at_utc": "2026-11-10T05:00:00+00:00",
+          "value": 51.101002
         },
         {
-          "observed_at_utc": "2026-10-12T04:00:00+00:00",
-          "value": 60.140999
+          "observed_at_utc": "2026-11-11T05:00:00+00:00",
+          "value": 51.881001
         },
         {
-          "observed_at_utc": "2026-10-13T04:00:00+00:00",
-          "value": 59.160999
+          "observed_at_utc": "2026-11-12T05:00:00+00:00",
+          "value": 49.972
         },
         {
-          "observed_at_utc": "2026-10-14T04:00:00+00:00",
-          "value": 55.549999
+          "observed_at_utc": "2026-11-13T05:00:00+00:00",
+          "value": 49.030998
         },
         {
-          "observed_at_utc": "2026-10-15T04:00:00+00:00",
-          "value": 56.837002
+          "observed_at_utc": "2026-11-16T05:00:00+00:00",
+          "value": 46.785
         },
         {
-          "observed_at_utc": "2026-10-16T04:00:00+00:00",
-          "value": 56.994999
+          "observed_at_utc": "2026-11-17T05:00:00+00:00",
+          "value": 47.287998
         },
         {
-          "observed_at_utc": "2026-10-19T04:00:00+00:00",
-          "value": 56.973999
+          "observed_at_utc": "2026-11-18T05:00:00+00:00",
+          "value": 44.999001
         },
         {
-          "observed_at_utc": "2026-10-20T04:00:00+00:00",
-          "value": 57.706001
+          "observed_at_utc": "2026-11-19T05:00:00+00:00",
+          "value": 44.318001
         },
         {
-          "observed_at_utc": "2026-10-21T04:00:00+00:00",
-          "value": 57.422001
+          "observed_at_utc": "2026-11-20T05:00:00+00:00",
+          "value": 41.035
         },
         {
-          "observed_at_utc": "2026-10-22T04:00:00+00:00",
-          "value": 54.764
+          "observed_at_utc": "2026-11-23T05:00:00+00:00",
+          "value": 43.146999
         },
         {
-          "observed_at_utc": "2026-10-23T04:00:00+00:00",
-          "value": 53.710999
+          "observed_at_utc": "2026-11-24T05:00:00+00:00",
+          "value": 41.744999
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
