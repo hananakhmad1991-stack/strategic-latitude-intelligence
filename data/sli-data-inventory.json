@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-24T01:48:01.284156+00:00",
+  "generated_at_utc": "2026-11-24T09:43:46.386613+00:00",
   "scope": "Committed root data/*.json files on the workflow checkout; excludes private D1/R2, APIs and nested folders.",
   "methodology": "One primary list per JSON, selected from recognized keys; counts are not de-duplicated across files. Objects/maps and nested series may not count as rows. No verified unique indicator total is claimed.",
   "totals": {
@@ -7,7 +7,7 @@
     "candidate_dataset_files": 186,
     "metadata_files": 5,
     "files_with_measurable_primary_list": 78,
-    "primary_records_structural_sum": 7623,
+    "primary_records_structural_sum": 7617,
     "unmeasurable_candidate_files": 108,
     "invalid_json_files": 0,
     "verified_unique_indicators": null,
@@ -64,7 +64,7 @@
     },
     {
       "file": "data/ai-monitoring.json",
-      "bytes": 35547,
+      "bytes": 23230,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -136,7 +136,7 @@
     },
     {
       "file": "data/commodity-market-prices.json",
-      "bytes": 41607,
+      "bytes": 40928,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -172,7 +172,7 @@
     },
     {
       "file": "data/daily-energy-assessment.json",
-      "bytes": 20409,
+      "bytes": 14197,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -196,7 +196,7 @@
     },
     {
       "file": "data/domestic-energy-health.json",
-      "bytes": 1393,
+      "bytes": 1930,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -208,7 +208,7 @@
     },
     {
       "file": "data/domestic-energy.json",
-      "bytes": 47011,
+      "bytes": 48395,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -220,7 +220,7 @@
     },
     {
       "file": "data/energy-actors-status.json",
-      "bytes": 21975,
+      "bytes": 21955,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -244,7 +244,7 @@
     },
     {
       "file": "data/energy-biofuels-watch.json",
-      "bytes": 17340,
+      "bytes": 15756,
       "category": "candidate_dataset",
       "primary_collection": "items",
       "primary_records": 19,
@@ -268,7 +268,7 @@
     },
     {
       "file": "data/energy-ccs-updates.json",
-      "bytes": 11370,
+      "bytes": 14288,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -292,10 +292,10 @@
     },
     {
       "file": "data/energy-ev-watch.json",
-      "bytes": 14280,
+      "bytes": 4241,
       "category": "candidate_dataset",
       "primary_collection": "items",
-      "primary_records": 16,
+      "primary_records": 4,
       "root_type": "dict",
       "top_level_keys": 8,
       "latest_date_found": null,
@@ -328,7 +328,7 @@
     },
     {
       "file": "data/energy-events.json",
-      "bytes": 5309,
+      "bytes": 5175,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -376,7 +376,7 @@
     },
     {
       "file": "data/energy-infrastructure-watch.json",
-      "bytes": 10799,
+      "bytes": 11368,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -400,10 +400,10 @@
     },
     {
       "file": "data/energy-policy-leads.json",
-      "bytes": 12395,
+      "bytes": 13211,
       "category": "candidate_dataset",
       "primary_collection": "items",
-      "primary_records": 17,
+      "primary_records": 18,
       "root_type": "dict",
       "top_level_keys": 6,
       "latest_date_found": null,
@@ -424,13 +424,13 @@
     },
     {
       "file": "data/energy-prices.json",
-      "bytes": 1031,
+      "bytes": 1029,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
       "root_type": "dict",
       "top_level_keys": 5,
-      "latest_date_found": "2026-10-20",
+      "latest_date_found": "2026-11-17",
       "status": "parsed",
       "validation": "structural_only"
     },
@@ -508,7 +508,7 @@
     },
     {
       "file": "data/geopolitical-energy-status.json",
-      "bytes": 444,
+      "bytes": 677,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -520,7 +520,7 @@
     },
     {
       "file": "data/geopolitical-energy.json",
-      "bytes": 12900,
+      "bytes": 7446,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -688,7 +688,7 @@
     },
     {
       "file": "data/investment-news.json",
-      "bytes": 121837,
+      "bytes": 118585,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -928,7 +928,7 @@
     },
     {
       "file": "data/regulatory-monitor.json",
-      "bytes": 248146,
+      "bytes": 262729,
       "category": "candidate_dataset",
       "primary_collection": "sources",
       "primary_records": 36,
@@ -940,7 +940,7 @@
     },
     {
       "file": "data/research-signal-radar.json",
-      "bytes": 100351,
+      "bytes": 92169,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -1024,7 +1024,7 @@
     },
     {
       "file": "data/sector-leadership-watch.json",
-      "bytes": 37013,
+      "bytes": 37004,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -1156,13 +1156,13 @@
     },
     {
       "file": "data/sli-automation-health.json",
-      "bytes": 163057,
+      "bytes": 168009,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
       "root_type": "dict",
       "top_level_keys": 12,
-      "latest_date_found": "2026-10-24",
+      "latest_date_found": "2026-11-24",
       "status": "parsed",
       "validation": "structural_only"
     },
@@ -1312,7 +1312,7 @@
     },
     {
       "file": "data/sli-catalyst-history.json",
-      "bytes": 636342,
+      "bytes": 647117,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -1324,7 +1324,7 @@
     },
     {
       "file": "data/sli-catalyst-state.json",
-      "bytes": 89319,
+      "bytes": 89739,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -1360,7 +1360,7 @@
     },
     {
       "file": "data/sli-climate-monitoring.json",
-      "bytes": 11239,
+      "bytes": 11068,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -1564,7 +1564,7 @@
     },
     {
       "file": "data/sli-issuer-news.json",
-      "bytes": 425829,
+      "bytes": 168808,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
@@ -1840,7 +1840,7 @@
     },
     {
       "file": "data/sli-publication-watch.json",
-      "bytes": 33695,
+      "bytes": 40701,
       "category": "candidate_dataset",
       "primary_collection": "sources",
       "primary_records": 14,
@@ -1900,10 +1900,10 @@
     },
     {
       "file": "data/sli-research-unified-index.json",
-      "bytes": 1030241,
+      "bytes": 1035116,
       "category": "candidate_dataset",
       "primary_collection": "records",
-      "primary_records": 1164,
+      "primary_records": 1169,
       "root_type": "dict",
       "top_level_keys": 4,
       "latest_date_found": null,
@@ -2068,7 +2068,7 @@
     },
     {
       "file": "data/sli-secondary-news-index.json",
-      "bytes": 1356075,
+      "bytes": 1366568,
       "category": "candidate_dataset",
       "primary_collection": null,
       "primary_records": null,
