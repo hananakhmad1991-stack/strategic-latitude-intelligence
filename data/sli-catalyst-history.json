@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-11-25T04:12:02.556Z",
+  "published_at_utc": "2026-11-25T04:17:35.598Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-11-25T04:12:02.442534Z",
+    "news": "2026-11-25T04:17:35.510203Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 912,
+  "count": 913,
   "events": [
+    {
+      "id": "sli-catalyst-26ed0feec5d932a81a",
+      "kind": "news_indexed",
+      "title": "Prabowo Ajak Jepang Perkuat Kerja Sama B50 hingga PLTS 100 GW - Bloomberg Technoz",
+      "detected_at_utc": "2026-11-25T04:17:35.598Z",
+      "source_at_utc": "2026-11-18T11:30:00Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNeVRzTk11NlgxdEMxRHBwa2FpcnlOUTVzRFF3SkdUVGt4QVFsNDk4MWxhTkxaUFBMSF9yc0pGTHdNWm9JS2FKMF9GQ1dKQ0h1RndUQzJoay1QdFdFWk9pb0FBREhBaTVHUzJzODRCQzZSTEl2d0RoMDd4TUZWaUJEZlhKc1NuS3NVRmtaemQzaXBJT3JoOF9pYUFsNWZ0SWE0OFltcVhqb2dRVTZfYmFfSmp0SQ?oc=5",
+      "publisher": "Bloomberg Technoz",
+      "sector": "energy",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-7975a2d9c1febbe4ff",
       "kind": "news_indexed",
