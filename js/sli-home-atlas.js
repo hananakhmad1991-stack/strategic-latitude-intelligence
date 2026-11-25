@@ -37,7 +37,8 @@ const panel=el('aside');panel.setAttribute('aria-live','polite');layout.append(f
 const note=el('p',t('Tinggi dan warna relatif terhadap indikator terpilih, bukan elevasi atau skor risiko. Abu-abu = data tidak tersedia. Filter sektor hanya menyaring contoh proyek, bukan angka indikator.','Height and color are relative to the selected indicator, not elevation or risk. Grey = missing data. Sector filtering affects project examples only, not indicator values.'));
 const attribution=link(t('Geometri: denyherianto · CC BY 4.0 · batas ilustratif','Geometry: denyherianto · CC BY 4.0 · illustrative boundaries'),'./data/sli-indonesia-province-38-ATTRIBUTION.txt');
 host.replaceChildren(heading,intro,controls,layout,note,attribution);
-let three=true;
+let three=!window.matchMedia('(max-width: 760px)').matches;
+mode.textContent=three?'3D':'2D';mode.setAttribute('aria-pressed',String(three));
 function detail(){const p=rows.get(province.value),m=metrics[metric.value];panel.replaceChildren(el('h4',p.name));
 const value=p[metric.value];panel.append(el('strong',Number.isFinite(value)?new Intl.NumberFormat(id?'id-ID':'en-US',{maximumFractionDigits:3}).format(value)+' '+m[id?2:3]:t('Tidak tersedia','Not available')),el('p',m[id?0:1]),link(t('Sumber indikator · BPS ↗','Indicator source · BPS ↗'),data.sources[m[4]].url));
 panel.append(el('p',t('PDRB 2025 sementara; Gini Maret 2026. Periode berbeda.','2025 GRDP is preliminary; Gini is March 2026. Periods differ.')));
@@ -64,6 +65,10 @@ metric.onchange=province.onchange=()=>{draw();detail()};sector.onchange=detail;r
 mode.onclick=()=>{three=!three;mode.textContent=three?'3D':'2D';mode.setAttribute('aria-pressed',String(three));draw()};
 reset.onclick=()=>{rotate.value='0';zoom.value='1';draw()};draw();detail();
 }catch{launch.disabled=false;launch.textContent=t('Coba muat ulang peta','Retry loading map');intro.textContent=t('Peta belum dapat dimuat. Dashboard sumber tetap tersedia.','Map could not load. Source dashboards remain available.')}};
+// Load the actual atlas automatically on the executive homepage when near the viewport.
+if(host.closest('.sli-exec-atlas')){
+ if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){observer.disconnect();if(host.isConnected&&!launch.disabled&&launch.isConnected)launch.click()}},{rootMargin:'200px'});observer.observe(host)}else launch.click();
+}
 };
 document.addEventListener('sli:languagechange',()=>{const h=document.getElementById('sliHomeAtlas');if(h){delete h.dataset.ready;window.initSLIHomeAtlas()}});
 })();
