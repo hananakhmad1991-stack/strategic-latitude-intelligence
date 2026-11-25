@@ -230,3 +230,14 @@ body.sli-home-active .sli-portal-metric-card{min-height:116px;min-width:0;overfl
 .sli-executive-v3 .sli-exec-services .sli-service-card{min-height:120px}
 body.sli-home-active #sliUniversalSecondaryEvidence{display:none}
 @media(max-width:650px){.sli-executive-v3 .sli-service-pair,.sli-executive-v3 .sli-home-journeys{grid-template-columns:minmax(0,1fr)}}
+
+/* Atlas-first landscape: map and headlines form a balanced editorial spread. */
+.sli-executive-v3 .sli-exec-atlas #sliHomeAtlas{width:100%;box-sizing:border-box;min-width:0}
+.sli-executive-v3 .sli-exec-atlas .sli-atlas-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.sli-executive-v3 .sli-exec-atlas .sli-atlas-map{min-width:0;width:100%;overflow:hidden}
+.sli-executive-v3 .sli-exec-atlas .sli-atlas-map svg{display:block;width:100%;height:auto;max-width:100%}
+.sli-executive-v3 .sli-exec-atlas .sli-atlas-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:end}
+.sli-executive-v3 .sli-exec-atlas .sli-atlas-controls label{min-width:0;max-width:100%}
+.sli-executive-v3 .sli-exec-atlas .sli-atlas-controls select{max-width:100%}
+.sli-executive-v3 .sli-exec-atlas .sli-atlas-layout aside{min-width:0;max-height:190px;overflow:auto;overscroll-behavior:contain}
+@media(max-width:650px){.sli-executive-v3 .sli-exec-atlas .sli-atlas-layout aside{max-height:none}.sli-executive-v3 .sli-exec-atlas .sli-atlas-controls>*{max-width:100%}}
