@@ -201,7 +201,7 @@ function renderPlatformMast(){
  }
  primary.append(menuWrap);
 
- primary.append(mastLink('./sli-company.html',text('Company','Perusahaan'),path==='sli-company.html'));
+ primary.append(mastLink('./sli-company.html',text('About Us','Tentang Kami'),path==='sli-company.html'));
 
  // Keep the two client-facing research services visible together above the scrollable sector menu.
  const tools=node('div','sli-platform-tools');
