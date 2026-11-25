@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const read=p=>fs.readFileSync(p,'utf8');
-const customer=['sli-custom-research.html','sli-expert-sourcing.html','sli-institutional-intelligence.html','sli-business-info.html','sli-company.html','sli-privacy.html','sli-products.html'];
+const customer=['sli-custom-research.html','sli-expert-sourcing.html','sli-institutional-intelligence.html','sli-business-info.html','sli-about-us.html','sli-privacy.html','sli-products.html'];
 const errors=[];
 for(const file of customer){
  const html=read(file);
