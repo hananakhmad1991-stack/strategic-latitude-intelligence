@@ -69,8 +69,34 @@ async function renderHealth(){
  strip.replaceChildren(title,date,status,link);
  }catch{if(strip.isConnected)strip.replaceChildren(el("span",null,T("Data freshness audit unavailable","Audit kesegaran data tidak tersedia")))}
 }
-window.initSLIPortalMetrics=()=>{render();renderHealth()};
-window.setInterval(()=>{if(document.visibilityState==="visible"&&document.getElementById("sliPortalMetrics")){render();renderHealth()}},TTL);
+let headlinesCache=null,headlinesAt=0,headlinesPending=null;
+function readHeadlines(){
+ if(headlinesCache&&Date.now()-headlinesAt<TTL)return Promise.resolve(headlinesCache);
+ if(!headlinesPending)headlinesPending=fetch("./data/sli-secondary-news-index.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("news unavailable");return r.json()}).then(d=>{
+ if(d.schema_version!=="sli-secondary-news-index-v1"||!Array.isArray(d.articles))throw Error("invalid news index");
+ headlinesCache=d;headlinesAt=Date.now();return d;
+ }).finally(()=>{headlinesPending=null});
+ return headlinesPending;
+}
+async function renderHeadlines(){
+ const host=document.getElementById("sliExecutiveHeadlines");if(!host)return;
+ host.className="sli-terminal-headlines";
+ try{
+ const d=await readHeadlines();if(document.getElementById("sliExecutiveHeadlines")!==host)return;
+ const now=Date.now(),rows=d.articles.filter(x=>x.evidence_level==="publisher_attributed_news_report"&&typeof x.title==="string"&&typeof x.publisher==="string"&&secureSource(x.url)&&Number.isFinite(Date.parse(x.published_at_utc))&&Date.parse(x.published_at_utc)<=now).sort((a,b)=>Date.parse(b.published_at_utc)-Date.parse(a.published_at_utc)).slice(0,6);
+ const fmt=v=>new Intl.DateTimeFormat(isId()?"id-ID":"en-GB",{dateStyle:"medium",timeZone:"Asia/Jakarta"}).format(new Date(v));
+ const title=el("h3",null,T("Latest strategic reporting","Pemberitaan strategis terbaru"));
+ const recent=rows[0]&&now-Date.parse(rows[0].published_at_utc)<=48*3600000;
+ const meta=el("p","sli-terminal-meta",rows.length?T("Latest source: ","Sumber terakhir: ")+fmt(rows[0].published_at_utc)+(recent?"":" · "+T("No reports dated within 48 hours","Tidak ada laporan bertanggal dalam 48 jam")):T("No eligible reports","Tidak ada laporan yang memenuhi syarat"));
+ host.replaceChildren(title,meta);
+ for(const item of rows){const link=el("a","sli-terminal-story");link.href=secureSource(item.url);link.target="_blank";link.rel="noopener noreferrer";link.append(el("strong",null,item.title),el("small",null,item.publisher+" · "+fmt(item.published_at_utc)+" · "+String(item.sector||"").toUpperCase()));host.append(link)}
+ host.append(el("p","sli-terminal-meta",T("Publisher-attributed headlines; not independently verified events.","Judul teratribusi penerbit; bukan kejadian terverifikasi independen.")));
+ const link=el("a",null,T("News sources & methodology ↗","Sumber berita & metodologi ↗"));link.href="./sli-source-viewer.html?dataset=sli-secondary-news-index.json";host.append(link);
+ }catch{if(host.isConnected)host.replaceChildren(el("h3",null,T("Latest strategic reporting","Pemberitaan strategis terbaru")),el("p","sli-terminal-meta",T("News index temporarily unavailable","Indeks berita sementara tidak tersedia")))}
+}
+window.initSLIPortalMetrics=()=>{render();renderHealth();renderHeadlines()};
+document.addEventListener("sli:languagechange",renderHeadlines);
+window.setInterval(()=>{if(document.visibilityState==="visible"&&document.getElementById("sliPortalMetrics")){render();renderHealth();renderHeadlines()}},TTL);
 document.addEventListener("sli:languagechange",renderHealth);
 document.addEventListener("sli:languagechange",()=>{if(document.getElementById("sliPortalMetrics"))render()});
 })();
