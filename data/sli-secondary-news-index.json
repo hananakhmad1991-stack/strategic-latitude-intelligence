@@ -18,7 +18,7 @@
     "regulatory-monitor",
     "publication-watch"
   ],
-  "count": 1919,
+  "count": 1923,
   "articles": [
     {
       "id": "sli_feed_8eedc3222ef45169866dcd2ec",
@@ -34,6 +34,23 @@
       "monitor_source": "regulatory-monitor",
       "link_kind": "publisher_or_official_link",
       "evidence_level": "official_metadata_change_candidate",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_6188bebeef46f049b77b56ee0",
+      "title": "Oil Edges Lower as Expanding Supply Vies With Hormuz Attacks - Bloomberg",
+      "publisher": "Bloomberg",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOenJ4V3FnWU1IVG94dUxRcE1YeTd1Y0Y0U1RWdkg4b1QwS2pPbFNhLUtmdGhwcE5XZWhnVXgzNVo2RkE2azdqdU53cW5KdDNVdWR3Z2JKc1RHX0Z2OWl0YjJsN3ZUTk9UbXhLNzR1Q19wOHVzVi00QmVxbUVWbVpJTk5rZldoalJRbW1hNmh2dnhqR216UlRpUTZDV1RZQQ?oc=5",
+      "published_at_utc": "2026-11-25T20:15:03Z",
+      "date_type": "first_seen_in_monitor",
+      "sector": "energy",
+      "scope": "",
+      "topic": "Hormuz and Gulf energy",
+      "geo": "Indonesia and global context",
+      "monitor_source": "geopolitical-energy",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
       "claim_corroborated": false
     },
@@ -321,23 +338,6 @@
       "topic": "Industry",
       "geo": "Indonesia and global context",
       "monitor_source": "energy-ev-watch",
-      "link_kind": "aggregator",
-      "evidence_level": "publisher_attributed_news_report",
-      "article_body_checked": false,
-      "claim_corroborated": false
-    },
-    {
-      "id": "sli_feed_6188bebeef46f049b77b56ee0",
-      "title": "Oil Edges Lower as Expanding Supply Vies With Hormuz Attacks - Bloomberg",
-      "publisher": "Bloomberg",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOenJ4V3FnWU1IVG94dUxRcE1YeTd1Y0Y0U1RWdkg4b1QwS2pPbFNhLUtmdGhwcE5XZWhnVXgzNVo2RkE2azdqdU53cW5KdDNVdWR3Z2JKc1RHX0Z2OWl0YjJsN3ZUTk9UbXhLNzR1Q19wOHVzVi00QmVxbUVWbVpJTk5rZldoalJRbW1hNmh2dnhqR216UlRpUTZDV1RZQQ?oc=5",
-      "published_at_utc": "2026-11-25T12:36:59Z",
-      "date_type": "first_seen_in_monitor",
-      "sector": "energy",
-      "scope": "",
-      "topic": "Hormuz and Gulf energy",
-      "geo": "Indonesia and global context",
-      "monitor_source": "geopolitical-energy",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -735,6 +735,23 @@
       "claim_corroborated": false
     },
     {
+      "id": "sli_feed_1375442b34343faa2df9fe82f",
+      "title": "Yemen's Houthis claim attack on Saudi Arabia's largest refinery - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOakM0aVEtei1RVzZkTUVZYlFabWlDYWpzTktyaGU2WHZqaGRkU0hJOHdsNDFUdU5GYzNOYzdZYnkwWnFYZ2daNlNvYkJ3ZWNjeDNTRm5HOUFtNW5nRjNYSVpaaGF0SF9xbjN6S1FpbVJ6MmFBYkdUeF9CMTZKRUdJT2RITmVSelAzWUJtTEIxQTN5Ry1YZEczX29iOHVuc0Q1bllidlBoN0VDNWVzYzZqU2RaNm5JRUctRDdsdGt2ZkEydWRVMV9wQUdHYw?oc=5",
+      "published_at_utc": "2026-11-25T07:24:00Z",
+      "date_type": "first_seen_in_monitor",
+      "sector": "energy",
+      "scope": "",
+      "topic": "Middle East energy infrastructure",
+      "geo": "Indonesia and global context",
+      "monitor_source": "geopolitical-energy",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
       "id": "sli_feed_cf972d733f790b8f9757ed3d8",
       "title": "Indonesia dan Uni Eropa Perkuat Kerja Sama Ekonomi melalui IEU-CEPA dan IEU-IPA - ANTARA News",
       "publisher": "ANTARA News",
@@ -922,6 +939,23 @@
       "claim_corroborated": false
     },
     {
+      "id": "sli_feed_ac2e9f7e3ec3bb8226787e68e",
+      "title": "Oil prices rise after Houthis say they attacked Saudi refinery - CNBC",
+      "publisher": "CNBC",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5sRU8tcFZoX2s0ckhDanczdzFPYndhQW9yeWdHdm51MlI2TElhR1MwM1I2MElSeGhmbzhiRk1Bamh0MGdBbE1FSkpnSjRNMXJseEVSZnZpMUhBUFRIY0JxNXIzUmtZSmptQmlQMGhreFRXdENfZ1d6UdIBfkFVX3lxTE5sVkRYS2FOQ1VncmwyVlgxNEpDWEtzaS15SlVVUTR1bThrMlRqT053QTAtTnlLYk1mRTdhWWtlbXFLZmZqa1pFc2xTdGwwcjlvc1RGRk9HVFpVaHQxVktfSXFfbTIyRWVTWWowOUhiNGN0WUg1WVNXSkx0MU8xUQ?oc=5",
+      "published_at_utc": "2026-11-25T05:05:08Z",
+      "date_type": "first_seen_in_monitor",
+      "sector": "energy",
+      "scope": "",
+      "topic": "Middle East energy infrastructure",
+      "geo": "Indonesia and global context",
+      "monitor_source": "geopolitical-energy",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
       "id": "sli_feed_65d9717040076fa4633c544ed",
       "title": "Think Policy Soroti Insentif yang Perlu Dibenahi untuk Transisi Energi - CNN Indonesia",
       "publisher": "CNN Indonesia",
@@ -982,6 +1016,23 @@
       "sector": "energy",
       "scope": "",
       "topic": "Middle East energy infrastructure",
+      "geo": "Indonesia and global context",
+      "monitor_source": "geopolitical-energy",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_2c55dfacb2bcfb55a4cc101ce",
+      "title": "Oil prices rise after Houthis claim attack on Saudi refinery - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOVGl4Nzdfc01ReTB5TnAxUkVLTXlaRVFvbGM5aTZDOEtVUXlrVDQtMHJwcWh2WldoMnVyb0QxU1pEQUoyN09sNU1SZXR3NVUzdTZXeWpkdGNTZW95MUtmdjV3dWFxTEZsRW5WUlF1djVTTWZxUGVxcHhPNEptMnBEcmZ0MURhX0JxTDFqc19HblpWd2hLSEs5SXRYTXB6bzFwNzZqOUFTc1ZOM3ItVDFZWmM2a0R5YkxsdnlsMTZWQ1ZEUQ?oc=5",
+      "published_at_utc": "2026-11-25T01:58:00Z",
+      "date_type": "first_seen_in_monitor",
+      "sector": "energy",
+      "scope": "",
+      "topic": "Global crude oil & OPEC supply",
       "geo": "Indonesia and global context",
       "monitor_source": "geopolitical-energy",
       "link_kind": "aggregator",
@@ -1152,6 +1203,23 @@
       "sector": "energy",
       "scope": "",
       "topic": "Middle East energy infrastructure",
+      "geo": "Indonesia and global context",
+      "monitor_source": "geopolitical-energy",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_baa164c8a2b9922f60dec3100",
+      "title": "Iran Adds Tugboats to Hormuz Blacklist as Pressure on Shipping Grows - Bloomberg",
+      "publisher": "Bloomberg",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQTDNSNndVNkJ1ZmxnQVNJUUhiYi1PRnEwU0gtY3hpM2dVcjJkaElablVWTVB3RTRjNTRjUnU2NnF4U2JkSTlwbTV4MkNhdUJ4a3g3akVhcWxEQm1XSjFhRURJTU5kU2FRUk1wOXVSWUhnSVJQTmUtdVN6SzJIemRsbGRQZjNoc0pMYXVodW5TRjktaUQyWUt2SExZV3Bfc1FBZURBNzNheGx6eHVxRGtuaXFCYklHUQ?oc=5",
+      "published_at_utc": "2026-11-24T17:54:34Z",
+      "date_type": "first_seen_in_monitor",
+      "sector": "energy",
+      "scope": "",
+      "topic": "Hormuz and Gulf energy",
       "geo": "Indonesia and global context",
       "monitor_source": "geopolitical-energy",
       "link_kind": "aggregator",
@@ -32470,5 +32538,5 @@
       "claim_corroborated": false
     }
   ],
-  "updated_at_utc": "2026-11-25T23:10:55.077226Z"
+  "updated_at_utc": "2026-11-25T23:38:03.387423Z"
 }
