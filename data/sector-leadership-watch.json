@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-24T01:48:18.497387+00:00",
+  "checked_at_utc": "2026-11-25T09:51:35.562596+00:00",
   "method": "Official/issuer source text monitor. Name appearance is not appointment verification. Automated scans NEVER overwrite actor identities; missing names trigger human review.",
   "checks": [
     {
@@ -8,10 +8,10 @@
       "name": "Coordinating Ministry for Downstreaming & Energy Transition · Kemenko Hilirisasi dan Transisi Energi",
       "person": "Bahlil Lahadalia",
       "source": "https://www.setneg.go.id/baca/index/usai_dilantik_presiden_prabowo_menko_bahlil_fokus_percepat_hilirisasi_dan_transisi_energi",
-      "page_sha256": "f6722290324f7c1e98ecaaaf1786a903b569b2939651b6acfd0ebea1256e416d",
+      "page_sha256": "097fbfd40538b82e192a8328f48737b3006e4677a1b259df07de6343f8d78c46",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -30,7 +30,7 @@
       "person": "Airlangga Hartarto",
       "source": "https://www.ekon.go.id/publikasi/detail/7150/dongkrak-pertumbuhan-ekonomi-menko-airlangga-perkuat-kinerja-ekspor",
       "status": "source_access_unavailable",
-      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>",
       "page_content_changed_since_previous_scan": false
     },
     {
@@ -60,7 +60,7 @@
       "person": "Muhammad Sarmuji",
       "source": "https://kemenperin.go.id/",
       "status": "source_access_unavailable",
-      "error": "<urlopen error [Errno -5] No address associated with hostname>",
+      "error": "<urlopen error timed out>",
       "page_content_changed_since_previous_scan": false
     },
     {
@@ -69,10 +69,10 @@
       "name": "Investment Ministry / BKPM",
       "person": "Rosan Perkasa Roeslani",
       "source": "https://www.bkpm.go.id/",
-      "page_sha256": "92812f1d8ede77123936c53fd20425cfa9379277d5f03ce0c45fa88bfdf3ee32",
+      "page_sha256": "00a9ce585a913730a4957c1f939d6f7616b10811fad85f65944ee017844b4b8e",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -80,10 +80,10 @@
       "name": "Strategic downstream investment deputies",
       "person": "Heldy Satrya Putera",
       "source": "https://www.bkpm.go.id/id/info/siaran-pers/menteri-investasi-dan-hilirisasi-kepala-bkpm-lantik-pejabat-tinggi-madya",
-      "page_sha256": "a889c4fd0bca0338e94d2e1375e8c8a53ed652c781f10b4fbfbd16a3485c6eee",
+      "page_sha256": "e5524c13bc7e0759d59820d5cba765b9fdd96176e543e9f50440b33982007c8e",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -91,10 +91,10 @@
       "name": "Ministry of Higher Education, Science & Technology",
       "person": "Brian Yuliarto",
       "source": "https://kemdiktisaintek.go.id/",
-      "page_sha256": "99a86daaf13e15f1b699d3c5b9ddc2592f7f939204f036da559717b7bce184d3",
+      "page_sha256": "4b91dbe04ae3a36c981356733ad79cf724018303083d2d4d5d8c4ad28ef1c871",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -102,10 +102,10 @@
       "name": "Badan Industri Mineral / strategic mineral programmes",
       "person": "Brian Yuliarto",
       "source": "https://timah.com/berita/post/hilirisasi-mineral-kritis-digenjot-pt-timah-dan-perminas-perkuat-sinergi-strategis.html",
-      "status": "source_access_unavailable",
-      "error": "<urlopen error timed out>",
+      "page_sha256": "1eaab395f3a50fdffeaa1c392993298b5053e9d1ac1dd80500b5184b9d4349fe",
+      "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-22T01:44:35.303404+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -113,10 +113,10 @@
       "name": "BPI Danantara Indonesia",
       "person": "Rosan Perkasa Roeslani",
       "source": "https://www.danantaraindonesia.co.id/id",
-      "page_sha256": "301bfcf4a7362f52e19fa64a9ee95fdb1313b8f18a736aaaaa69043135d8c095",
+      "page_sha256": "dc8c67d54b051e57d491fa5ebab7ea77bc4e2c442b33e4a907de7e3770e307ce",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -127,7 +127,7 @@
       "page_sha256": "8bb5752f76a4e7c82941e98b20973053c1279a0536a1d0425d375c18bbdacd82",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -138,7 +138,7 @@
       "page_sha256": "8ab945ca9223889dbf0664ee5690109e50d3597ca379885a76705487feec388f",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -149,7 +149,7 @@
       "page_sha256": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -157,10 +157,10 @@
       "name": "PT Indonesia Asahan Aluminium · INALUM",
       "person": "Melati Sarnita",
       "source": "https://www.inalum.id/id/tentang-kami/organisasi/direksi",
-      "page_sha256": "fff071462daaf6848dbb659154df06bb79cb631d3aa0ea7ee1773be1308a254b",
+      "page_sha256": "b6ee2998619d4a0fac89191a8451277d7f8617c06eadf3b919afff938cb56fea",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -169,7 +169,7 @@
       "person": "Restu Widiyantoro",
       "source": "https://timah.com/blog/about-us/direksi.html",
       "status": "source_access_unavailable",
-      "error": "<urlopen error timed out>",
+      "error": "HTTP Error 307: The HTTP server returned a redirect error that would lead to an infinite loop.\nThe last 30x error message was:\n",
       "page_content_changed_since_previous_scan": false
     },
     {
@@ -181,7 +181,7 @@
       "page_sha256": "c96dfd99243ba3155a2e7538065fb661ac391845a90434f9fea4444e4e5e69f4",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -192,7 +192,7 @@
       "page_sha256": "8c4a63ea1259cfec2f16c4fb5785221d5bba0bba2841bca5dfeae5fd87e4b973",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -203,7 +203,7 @@
       "page_sha256": "49602ef7b6cbabfbef77ad5a8a75c4926d85442ed1ef8c1ead6361acdfda56eb",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -211,9 +211,9 @@
       "name": "PT Danantara Sumberdaya Indonesia · DSI",
       "person": "Luke Thomas Mahony",
       "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
-      "page_sha256": "9343765574c3c29f14c63725773723ca683824a13595505b17d67815a46d48a4",
-      "status": "name_present_in_source",
-      "page_content_changed_since_previous_scan": true,
+      "status": "source_access_unavailable",
+      "error": "Remote end closed connection without response",
+      "page_content_changed_since_previous_scan": false,
       "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
     },
     {
@@ -222,10 +222,10 @@
       "name": "PT Perusahaan Mineral Nasional · PERMINAS",
       "person": "Gilarsi Wahju Setijono",
       "source": "https://timah.com/berita/post/hilirisasi-mineral-kritis-digenjot-pt-timah-dan-perminas-perkuat-sinergi-strategis.html",
-      "status": "source_access_unavailable",
-      "error": "<urlopen error timed out>",
+      "page_sha256": "1eaab395f3a50fdffeaa1c392993298b5053e9d1ac1dd80500b5184b9d4349fe",
+      "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-22T01:44:35.303404+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -233,10 +233,10 @@
       "name": "MIND ID Board · Deputy President Director",
       "person": "Dany Amrul Ichdan",
       "source": "https://mind.id/pages/board-of-director",
-      "status": "source_access_unavailable",
-      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>",
+      "page_sha256": "8bb5752f76a4e7c82941e98b20973053c1279a0536a1d0425d375c18bbdacd82",
+      "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-23T01:46:46.511488+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -247,7 +247,7 @@
       "page_sha256": "8bb5752f76a4e7c82941e98b20973053c1279a0536a1d0425d375c18bbdacd82",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -255,8 +255,8 @@
       "name": "MIND ID Board · Corporate Strategy, Business Development & Portfolio Director",
       "person": "Kuswantoro Pranabudi",
       "source": "https://mind.id/pages/board-of-director",
-      "page_sha256": "8bb5752f76a4e7c82941e98b20973053c1279a0536a1d0425d375c18bbdacd82",
-      "status": "name_present_in_source",
+      "status": "source_access_unavailable",
+      "error": "<urlopen error _ssl.c:994: The handshake operation timed out>",
       "page_content_changed_since_previous_scan": false,
       "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
     },
@@ -269,7 +269,7 @@
       "page_sha256": "8bb5752f76a4e7c82941e98b20973053c1279a0536a1d0425d375c18bbdacd82",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -280,7 +280,7 @@
       "page_sha256": "8bb5752f76a4e7c82941e98b20973053c1279a0536a1d0425d375c18bbdacd82",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -288,10 +288,10 @@
       "name": "MIND ID Board · HR & Transformation Director",
       "person": "Pambudi Soenarsihanto",
       "source": "https://mind.id/pages/board-of-director",
-      "status": "source_access_unavailable",
-      "error": "The read operation timed out",
+      "page_sha256": "8bb5752f76a4e7c82941e98b20973053c1279a0536a1d0425d375c18bbdacd82",
+      "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-23T01:46:46.511488+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -302,7 +302,7 @@
       "page_sha256": "8bb5752f76a4e7c82941e98b20973053c1279a0536a1d0425d375c18bbdacd82",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -313,7 +313,7 @@
       "page_sha256": "8bb5752f76a4e7c82941e98b20973053c1279a0536a1d0425d375c18bbdacd82",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -321,10 +321,10 @@
       "name": "DSI Board · Finance Director",
       "person": "Sinthya Roesly",
       "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
-      "page_sha256": "9343765574c3c29f14c63725773723ca683824a13595505b17d67815a46d48a4",
+      "page_sha256": "a55fea02dc7aadb8eea94ae6dacbcf5a6cfa1dea36048a72d85d7e2fbcd60579",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -332,10 +332,10 @@
       "name": "DSI Board · Risk Management Director",
       "person": "Nur Hidayat Udin",
       "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
-      "page_sha256": "9343765574c3c29f14c63725773723ca683824a13595505b17d67815a46d48a4",
+      "page_sha256": "a55fea02dc7aadb8eea94ae6dacbcf5a6cfa1dea36048a72d85d7e2fbcd60579",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -343,10 +343,10 @@
       "name": "DSI Board · Legal & Compliance Director",
       "person": "Ivan Ferdiansyah Baely",
       "source": "https://m.antaranews.com/amp/berita/5709539/danantara-sumberdaya-indonesia-umumkan-jajaran-komisaris-dan-direksi",
-      "page_sha256": "9343765574c3c29f14c63725773723ca683824a13595505b17d67815a46d48a4",
+      "page_sha256": "a55fea02dc7aadb8eea94ae6dacbcf5a6cfa1dea36048a72d85d7e2fbcd60579",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -357,7 +357,7 @@
       "page_sha256": "c68a49700f90186dd17c5d505a93b89c3c082c7f1b37d917348d43f356529495",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -368,7 +368,7 @@
       "page_sha256": "c68a49700f90186dd17c5d505a93b89c3c082c7f1b37d917348d43f356529495",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -416,10 +416,10 @@
       "name": "BKPM · Wakil Menteri Investasi dan Hilirisasi",
       "person": "Todotua Pasaribu",
       "source": "https://www.bkpm.go.id/id/info/siaran-pers/wamen-todotua-ungkap-tiga-strategi-jemput-investasi-dan-perkuat-hilirisasi",
-      "page_sha256": "3a9944791091d2b6f0279468cd148cbac1fbaf79950c0a9713cded64415c6556",
+      "page_sha256": "85fe8e8688a52f5c3b0f6ef5fac487036e58422e762fa45ea0f32acb712993f6",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -427,10 +427,10 @@
       "name": "BKPM · Sekretaris Kementerian",
       "person": "Rudy Salahuddin",
       "source": "https://bkpm.go.id/id/tentang-bkpm/eselon",
-      "page_sha256": "ae1257a51257a4f82c7eb4a929338665452a0a8f6f2daa64f097e1ca9970b827",
+      "page_sha256": "d6986bf244674603439986db90d750a0e87909d523df6c78ebf9343c972dacd9",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -438,10 +438,10 @@
       "name": "BKPM · Deputi Perencanaan Penanaman Modal",
       "person": "Ichsan Zulkarnaen",
       "source": "https://bkpm.go.id/id/tentang-bkpm/eselon",
-      "page_sha256": "ae1257a51257a4f82c7eb4a929338665452a0a8f6f2daa64f097e1ca9970b827",
+      "page_sha256": "d6986bf244674603439986db90d750a0e87909d523df6c78ebf9343c972dacd9",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -449,10 +449,10 @@
       "name": "BKPM · Deputi Teknologi Informasi",
       "person": "Siti Romayah",
       "source": "https://bkpm.go.id/id/tentang-bkpm/eselon",
-      "page_sha256": "ae1257a51257a4f82c7eb4a929338665452a0a8f6f2daa64f097e1ca9970b827",
+      "page_sha256": "d6986bf244674603439986db90d750a0e87909d523df6c78ebf9343c972dacd9",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "minerals",
@@ -461,7 +461,7 @@
       "person": "Faisol Riza",
       "source": "https://ihya.kemenperin.go.id/berita/akselerasi-ekosistem-halal-global-kemenperin-resmi-buka-pendaftaran-ihya-2026",
       "status": "source_access_unavailable",
-      "error": "<urlopen error [Errno -2] Name or service not known>",
+      "error": "<urlopen error timed out>",
       "page_content_changed_since_previous_scan": false
     },
     {
@@ -520,10 +520,10 @@
       "name": "Coordinating Ministry for Downstreaming & Energy Transition · Kemenko Hilirisasi dan Transisi Energi",
       "person": "Bahlil Lahadalia",
       "source": "https://www.setneg.go.id/baca/index/usai_dilantik_presiden_prabowo_menko_bahlil_fokus_percepat_hilirisasi_dan_transisi_energi",
-      "page_sha256": "f6722290324f7c1e98ecaaaf1786a903b569b2939651b6acfd0ebea1256e416d",
+      "page_sha256": "097fbfd40538b82e192a8328f48737b3006e4677a1b259df07de6343f8d78c46",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -542,7 +542,7 @@
       "person": "Airlangga Hartarto",
       "source": "https://www.ekon.go.id/publikasi/detail/7150/dongkrak-pertumbuhan-ekonomi-menko-airlangga-perkuat-kinerja-ekspor",
       "status": "source_access_unavailable",
-      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>",
       "page_content_changed_since_previous_scan": false
     },
     {
@@ -581,8 +581,8 @@
       "name": "DG Digital Infrastructure · Ditjen Infrastruktur Digital",
       "person": "Wayan Toni Supriyanto",
       "source": "https://infradigital.komdigi.go.id/artikel-daftar-pejabat-1-4",
-      "page_sha256": "0734b144e9d15a6aba891ee47ecdfec173e1b699367a06e100f58f881e71810b",
-      "status": "name_present_in_source",
+      "status": "source_access_unavailable",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>",
       "page_content_changed_since_previous_scan": false,
       "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
     },
@@ -592,8 +592,8 @@
       "name": "Directorate of Digital Infrastructure Services",
       "person": "Dwi Handoko",
       "source": "https://infradigital.komdigi.go.id/artikel-daftar-pejabat-1-4",
-      "page_sha256": "0734b144e9d15a6aba891ee47ecdfec173e1b699367a06e100f58f881e71810b",
-      "status": "name_present_in_source",
+      "status": "source_access_unavailable",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>",
       "page_content_changed_since_previous_scan": false,
       "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
     },
@@ -613,10 +613,10 @@
       "name": "PT PLN (Persero) · national power utility",
       "person": "Suroso Isnandar",
       "source": "https://www.antaranews.com/berita/5786793/direktur-utama-pln-diganti-jadi-suroso-isnandar",
-      "page_sha256": "e45ca6e540d0075da494ca2e8c08361a91f9e780b1fa4e6782c80467d551722f",
+      "page_sha256": "4eac7ad1e2ad178456b80d33642277a93042d135e24ee8670173833f3a74f226",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -624,10 +624,10 @@
       "name": "Investment Ministry / BKPM",
       "person": "Rosan Perkasa Roeslani",
       "source": "https://www.bkpm.go.id/",
-      "page_sha256": "92812f1d8ede77123936c53fd20425cfa9379277d5f03ce0c45fa88bfdf3ee32",
+      "page_sha256": "00a9ce585a913730a4957c1f939d6f7616b10811fad85f65944ee017844b4b8e",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -635,10 +635,10 @@
       "name": "BPI Danantara Indonesia",
       "person": "Rosan Perkasa Roeslani",
       "source": "https://www.danantaraindonesia.co.id/",
-      "page_sha256": "54474ba451da7817a7435e08450a6b19290253bf448309e47bbf62d513536dfd",
+      "page_sha256": "46c58cf8890692a9380aed56361d49e92a0493a850247aaafd5e03ebd9bedab2",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -646,10 +646,10 @@
       "name": "PT Telkom Indonesia Tbk",
       "person": "Dian Siswarini",
       "source": "https://www.telkom.co.id/",
-      "page_sha256": "6480ed88d652f7f375ef5bb5b82208cc46f80c154f9f04e2d0023445abdb7c25",
+      "page_sha256": "16705c5e3300649e3c2fc9593bad03c3f74243e0ed9ad2244f5d07e83131ccc4",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -657,10 +657,10 @@
       "name": "PT Telkom Data Ekosistem · NeutraDC",
       "person": "Rakhmad Tunggal Afifuddin",
       "source": "https://www.telkom.co.id/sites/berita/id_ID/news/sinergi-danantara-neutradc-gandeng-pln-siapkan-ekspansi-hyperscale-data-center-3881",
-      "page_sha256": "ba923dfa2e041d1fe5e53ee9b451f252f8ae3e8e6d1595590ade0d661cacae66",
+      "page_sha256": "1f272c1550c5c40b5cad6e8a15d8a7c270441949394cd01b631ca53e3030419d",
       "status": "name_present_in_source",
-      "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "page_content_changed_since_previous_scan": true,
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -668,10 +668,10 @@
       "name": "PT Telekomunikasi Indonesia International · Telin",
       "person": "Abdul Rahman Ansyori",
       "source": "https://www.telkom.co.id/",
-      "page_sha256": "6480ed88d652f7f375ef5bb5b82208cc46f80c154f9f04e2d0023445abdb7c25",
+      "page_sha256": "16705c5e3300649e3c2fc9593bad03c3f74243e0ed9ad2244f5d07e83131ccc4",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -679,10 +679,10 @@
       "name": "DEN Secretariat General · administrative energy-policy support",
       "person": "Dadan Kusdiana",
       "source": "https://jdih.esdm.go.id/dokumen/view?id=2822",
-      "page_sha256": "984762d09992204ab4a10df90f62de8ea7e1ea0a96c8d06aea86d45426c03cc7",
+      "page_sha256": "5102d567c473ab71bf0fe1ed00033bc64f27938b835ff4453e6996227959dcf5",
       "status": "name_not_detected_needs_review",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -733,7 +733,7 @@
       "page_sha256": "9d4e17d4e07b2b6502849a64b3919c803e9f88c978d137ac7697038620c61481",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -744,7 +744,7 @@
       "page_sha256": "9d4e17d4e07b2b6502849a64b3919c803e9f88c978d137ac7697038620c61481",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -752,10 +752,10 @@
       "name": "Komdigi · Sekretaris Jenderal",
       "person": "Ismail",
       "source": "https://bpsdm.komdigi.go.id/berita-pelantikan-pejabat-baru-kemkomdigi-mewujudkan-pemerintahan-digital-yang-tra-46-2174",
-      "page_sha256": "88687c75c0de1cf14a852dc01afe2d211ef0e4bc0d1f22d1a9cee7e30bbba5a0",
+      "page_sha256": "59c59c6e89f03455f0bb044e27436c5a8c4fea7cacc5d32366641d9fc1b6c119",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -763,10 +763,10 @@
       "name": "Komdigi · Inspektur Jenderal",
       "person": "Arief Tri Hardiyanto",
       "source": "https://itjen.komdigi.go.id/profil/profil-pejabat",
-      "page_sha256": "da5424443b8c282a1c36c37d079e4bc56ab39ff2597779a6f81c37c37df94575",
+      "page_sha256": "4102c8e2342f88b3fc2cbe7560202ada3fdf0b39303220fb474d01eee140990c",
       "status": "name_not_detected_needs_review",
-      "page_content_changed_since_previous_scan": false,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "page_content_changed_since_previous_scan": true,
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -774,10 +774,10 @@
       "name": "Komdigi · Ditjen Teknologi Pemerintah Digital",
       "person": "Mira Tayyiba",
       "source": "https://bpsdm.komdigi.go.id/berita-pelantikan-pejabat-baru-kemkomdigi-mewujudkan-pemerintahan-digital-yang-tra-46-2174",
-      "page_sha256": "6aacf89492deadd501718c03cecc9f6b6f1069a7948384c5a8b296d8a43c4716",
+      "page_sha256": "b2f60b18a7fe0310ad6493e2c01f678070ab010659a7b99b1049ec498870463b",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -785,10 +785,10 @@
       "name": "Komdigi · Ditjen Pengawasan Ruang Digital",
       "person": "Alexander Sabar",
       "source": "https://bpsdm.komdigi.go.id/berita-pelantikan-pejabat-baru-kemkomdigi-mewujudkan-pemerintahan-digital-yang-tra-46-2174",
-      "page_sha256": "7f9e62e3f11a0c6b70f0b217d0f8713ffed0b62822b7eb9aefca08e909b64fcd",
+      "page_sha256": "d2fe03eea77566f1e8348f8590fcaf02e15c5de3c3aa92649589914165090a31",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
@@ -796,10 +796,10 @@
       "name": "Komdigi · Ditjen Komunikasi Publik dan Media",
       "person": "Fifi Aleyda Yahya",
       "source": "https://bpsdm.komdigi.go.id/berita-pelantikan-pejabat-baru-kemkomdigi-mewujudkan-pemerintahan-digital-yang-tra-46-2174",
-      "page_sha256": "7f9e62e3f11a0c6b70f0b217d0f8713ffed0b62822b7eb9aefca08e909b64fcd",
+      "page_sha256": "f55eecb85a75b0f21c51057616287a182af740937d9871903de3befa403ebbb2",
       "status": "name_present_in_source",
       "page_content_changed_since_previous_scan": true,
-      "last_success_utc": "2026-10-24T01:48:18.497387+00:00"
+      "last_success_utc": "2026-11-25T09:51:35.562596+00:00"
     },
     {
       "sector": "ai",
