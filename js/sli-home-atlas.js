@@ -55,6 +55,42 @@ const top=svg('path',{d:poly.map(r=>path(r.map(p=>project(p)))).join(' '),fill:c
 const title=svg('title',{});title.textContent=f.name+' · '+(valid?v:t('Tidak tersedia','Missing'));top.append(title);
 const select=()=>{if(!f.row)return;province.value=key(f.name);draw();detail()};top.onclick=select;top.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select();province.focus()}};group.append(top);shapes.push({group,y:project(poly[0][0])[1]})})});
 view.replaceChildren(...shapes.sort((a,b)=>a.y-b.y).map(x=>x.group));
+// One label per province; prefer the largest land polygon and avoid label collisions.
+const abbreviations={sumatrautara:'Sumut',sumatrabarat:'Sumbar',sumatraselatan:'Sumsel',kepulauanriau:'Kepri',kepulauanbangkabelitung:'Babel',bangkabelitung:'Babel',dkijakarta:'Jakarta',dijogyakarta:'DIY',jawatengah:'Jateng',jawabarat:'Jabar',jawatimur:'Jatim',kalimantanbarat:'Kalbar',kalimantantengah:'Kalteng',kalimantanselatan:'Kalsel',kalimantantimur:'Kaltim',kalimantanutara:'Kaltara',sulawesiutara:'Sulut',sulawesitengah:'Sulteng',sulawesiselatan:'Sulsel',sulawesitenggara:'Sultra',sulawesibarat:'Sulbar',nusatenggarabarat:'NTB',nusatenggaratimur:'NTT',malukuutara:'Malut',papuabaratdaya:'P. Barat Daya',papuapegunungan:'P. Pegunungan',papuatengah:'P. Tengah',papuaselatan:'P. Selatan',papuabarat:'P. Barat'};
+function anchor(ring){
+ let area=0,cx=0,cy=0;
+ for(let i=0,j=ring.length-1;i<ring.length;j=i++){
+ const [x,y]=ring[j],[u,v]=ring[i],cross=x*v-u*y;area+=cross;cx+=(x+u)*cross;cy+=(y+v)*cross;
+ }
+ return {area:Math.abs(area/2),point:Math.abs(area)>1e-9?[cx/(3*area),cy/(3*area)]:ring[0]};
+}
+const layer=svg('g',{'aria-hidden':'true','pointer-events':'none','class':'sli-province-labels'});
+const occupied=[],compact=window.matchMedia('(max-width: 650px)').matches;
+const labels=features.map(f=>{
+ const polygons=f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates;
+ const best=polygons.filter(p=>p[0]?.length>2).map(p=>anchor(p[0])).sort((a,b)=>b.area-a.area)[0];
+ return {f,best,selected:key(f.name)===province.value};
+}).filter(o=>o.best).sort((a,b)=>Number(b.selected)-Number(a.selected)||b.best.area-a.best.area);
+for(const {f,best,selected} of labels){
+ if(compact&&!selected)continue;
+ const name=f.row?.name||f.name,short=abbreviations[key(name)]||name;
+ const label=compact?name:short;
+ const [x,y]=project(best.point);if(x<0||x>960||y<0||y>350)continue;
+ const size=selected?13:11,w=label.length*size*.57+8,h=size+5;
+ const offsets=[[0,0],[0,-14],[0,14],[20,-16],[-20,-16],[20,16],[-20,16],[0,-30],[0,30],[36,0],[-36,0],[38,-25],[-38,-25],[38,25],[-38,25]];
+ let chosen=null;
+ for(const [dx,dy] of offsets){
+ const px=x+dx,py=y+dy,box={l:px-w/2,r:px+w/2,t:py-h/2,b:py+h/2};
+ if(box.l<4||box.r>956||box.t<4||box.b>346||occupied.some(o=>box.l<o.r&&box.r>o.l&&box.t<o.b&&box.b>o.t))continue;
+ chosen={px,py,box,dx,dy};break;
+ }
+ if(!chosen)continue;
+ occupied.push(chosen.box);
+ if(Math.hypot(chosen.dx,chosen.dy)>12)layer.append(svg('line',{x1:x,y1:y,x2:chosen.px,y2:chosen.py,stroke:'#b9d3df','stroke-width':'.7',opacity:'.8'}));
+ const text=svg('text',{x:chosen.px,y:chosen.py,'text-anchor':'middle','dominant-baseline':'central','font-size':size,'font-weight':selected?'700':'500','font-family':'system-ui,sans-serif',fill:selected?'#ffe4a3':'#f1f7fa',stroke:'#0b2234','stroke-width':'2.5','stroke-linejoin':'round','paint-order':'stroke fill'});
+ text.textContent=label;layer.append(text);
+}
+view.append(layer);
 }
 metric.onchange=province.onchange=()=>{draw();detail()};sector.onchange=detail;zoom.oninput=draw;
 reset.onclick=()=>{zoom.value='1';draw()};draw();detail();
