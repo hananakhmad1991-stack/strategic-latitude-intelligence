@@ -3,7 +3,11 @@ name: SLI Secondary News Intelligence Index
 on:
   workflow_dispatch:
   schedule:
-    - cron: "37 * * * *"
+    - cron: "7,37 * * * *"
+  workflow_run:
+    workflows: ["SLI AI monitoring and source QA","SLI Indonesia Domestic Energy Radar","SLI Biodiesel Biofuel & Policy Radar","SLI Indonesia EV Mobility News Radar","SLI Refinery Grid Jargas & IKE Source Watch","SLI Energy Policy Candidate Scan","SLI Geopolitical Energy News Discovery","Investment Media Monitoring","SLI Regulatory Change and Policy News Monitor","SLI Food, Minerals & AI Research Radar","SLI Climate Environment Monitoring","SLI Official Publication Edition Watch"]
+    types: [completed]
+    branches: [main]
   push:
     branches: [main]
     paths:
@@ -20,6 +24,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   index:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 9
     steps:
