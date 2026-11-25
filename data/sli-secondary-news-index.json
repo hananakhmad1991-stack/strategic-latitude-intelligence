@@ -18,7 +18,7 @@
     "regulatory-monitor",
     "publication-watch"
   ],
-  "count": 1907,
+  "count": 1908,
   "articles": [
     {
       "id": "sli_feed_a390b0d5369f3351ebd3e5ff8",
@@ -627,6 +627,23 @@
       "topic": "power",
       "geo": "Indonesia and global context",
       "monitor_source": "daily-energy-assessment",
+      "link_kind": "aggregator",
+      "evidence_level": "publisher_attributed_news_report",
+      "article_body_checked": false,
+      "claim_corroborated": false
+    },
+    {
+      "id": "sli_feed_de6122402b21cc8e67e5371c6",
+      "title": "Arsip Berita - Kementerian ESDM",
+      "publisher": "Kementerian ESDM",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1SYl80NHI2ZFVLSzBBeU1ndTJCODZ0czh1SWl0eExnM2tNRVQyelA0LXVrR3M5U0FPNTM3blBSdUl1MDRidE5KdksxZ1BXVEJaUS03Uy1RRG96TWpXQ1JwSW1zLWVfa2ZtNjNRUHQycGxEUHRPWmc?oc=5",
+      "published_at_utc": "2026-11-25T06:30:07Z",
+      "date_type": "publisher_publication_date",
+      "sector": "energy",
+      "scope": "",
+      "topic": "Official energy policy announcements",
+      "geo": "Indonesia and global context",
+      "monitor_source": "energy-policy-leads",
       "link_kind": "aggregator",
       "evidence_level": "publisher_attributed_news_report",
       "article_body_checked": false,
@@ -32266,5 +32283,5 @@
       "claim_corroborated": false
     }
   ],
-  "updated_at_utc": "2026-11-25T21:55:50.427832Z"
+  "updated_at_utc": "2026-11-25T21:58:08.329043Z"
 }

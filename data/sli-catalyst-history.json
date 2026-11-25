@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-11-25T21:55:50.534Z",
+  "published_at_utc": "2026-11-25T21:58:08.434Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-11-25T21:55:50.427832Z",
+    "news": "2026-11-25T21:58:08.329043Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 1023,
+  "count": 1024,
   "events": [
+    {
+      "id": "sli-catalyst-5a401ca90375fada39",
+      "kind": "news_indexed",
+      "title": "Arsip Berita - Kementerian ESDM",
+      "detected_at_utc": "2026-11-25T21:58:08.434Z",
+      "source_at_utc": "2026-11-25T06:30:07Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1SYl80NHI2ZFVLSzBBeU1ndTJCODZ0czh1SWl0eExnM2tNRVQyelA0LXVrR3M5U0FPNTM3blBSdUl1MDRidE5KdksxZ1BXVEJaUS03Uy1RRG96TWpXQ1JwSW1zLWVfa2ZtNjNRUHQycGxEUHRPWmc?oc=5",
+      "publisher": "Kementerian ESDM",
+      "sector": "energy",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-f0e6029ae13bbcc35b",
       "kind": "news_indexed",
