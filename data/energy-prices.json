@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-24T09:36:07.602386+00:00",
+  "checked_at_utc": "2026-11-25T10:18:50.754100+00:00",
   "source": "FRED (EIA energy series), downloaded from public FRED graph CSV",
   "data": {
     "brent": {
@@ -8,7 +8,7 @@
       "unit": "USD/bbl",
       "series": "DCOILBRENTEU",
       "label": "Brent spot",
-      "age_days": 7,
+      "age_days": 8,
       "source_url": "https://fred.stlouisfed.org/series/DCOILBRENTEU"
     },
     "wti": {
@@ -17,7 +17,7 @@
       "unit": "USD/bbl",
       "series": "DCOILWTICO",
       "label": "WTI spot",
-      "age_days": 7,
+      "age_days": 8,
       "source_url": "https://fred.stlouisfed.org/series/DCOILWTICO"
     },
     "henry_hub": {
@@ -26,7 +26,7 @@
       "unit": "USD/MMBtu",
       "series": "DHHNGSP",
       "label": "Henry Hub natural gas",
-      "age_days": 7,
+      "age_days": 8,
       "source_url": "https://fred.stlouisfed.org/series/DHHNGSP"
     }
   },
