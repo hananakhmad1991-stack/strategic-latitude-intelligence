@@ -201,7 +201,7 @@ function renderPlatformMast(){
  }
  primary.append(menuWrap);
 
- primary.append(mastLink('/about-us',text('About Us','Tentang Kami'),(path==='/about-us'||path==='sli-about-us.html')));
+ primary.append(mastLink('/about-us',text('About Us','Tentang Kami'),(path==='about-us'||path==='sli-about-us.html')));
 
  // Keep the two client-facing research services visible together above the scrollable sector menu.
  const tools=node('div','sli-platform-tools');
