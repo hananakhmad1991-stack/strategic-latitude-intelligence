@@ -218,3 +218,15 @@ body.sli-home-active .sli-portal-metric-card{min-height:116px;min-width:0;overfl
 .sli-executive-v3 .sli-exec-expand>summary{font-weight:700;color:#e5c58f;cursor:pointer;font-size:13px;padding:5px 0}
 @media(max-width:1020px){.sli-exec-split{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:550px){.sli-executive-v3 .sli-portal-hero{padding:18px!important}.sli-executive-v3 .sli-portal-hero h2{font-size:31px!important}.sli-exec-heading{gap:5px;align-items:start;flex-direction:column}.sli-terminal-story{padding:12px 0}.sli-terminal-story strong{font-size:14px}.sli-executive-v3 .sli-portal-hero-actions>*{width:100%}}
+
+/* Terminal 4: compact home, detailed modules on demand. */
+.sli-executive-v3 .sli-service-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sli-executive-v3 .sli-home-journeys{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sli-executive-v3 .sli-exec-news>.sli-exec-expand{margin:0}
+.sli-executive-v3 .sli-exec-expand:not([open]){padding:10px 14px}
+.sli-executive-v3 .sli-exec-expand>summary{min-height:32px;line-height:1.5}
+.sli-executive-v3 .sli-portal-hero-actions{margin-top:10px}
+.sli-executive-v3 .sli-portal-hero>p{margin-bottom:8px}
+.sli-executive-v3 .sli-exec-services .sli-service-card{min-height:120px}
+body.sli-home-active #sliUniversalSecondaryEvidence{display:none}
+@media(max-width:650px){.sli-executive-v3 .sli-service-pair,.sli-executive-v3 .sli-home-journeys{grid-template-columns:minmax(0,1fr)}}
