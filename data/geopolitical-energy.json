@@ -1,24 +1,7 @@
 {
-  "checked_at_utc": "2026-11-26T08:16:17.653733+00:00",
+  "checked_at_utc": "2026-11-26T18:59:40.288718+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
-    {
-      "topic": "Hormuz and Gulf energy",
-      "topic_id": "oil_shipping",
-      "type": "Maritime chokepoint",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "The Oil Market Is Talking About a Surplus Again - Bloomberg",
-      "publisher": "Bloomberg",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNdG5CdzNEYmVkOFhQY2ZaUlpodkVXQ0hZOGxGTjYtcjZqbzFzQURBOHhSNnJYVmlQaFltencxM3lJUUYtUktCcXpqeVhjNDdqV3BLUkVJLThsZk5zVnBjNlMtQnEweGJoNnc1UUx1THJ1aklKY2swemhVY3JUUlM1cGZLcDZabnZLLXJLald1SUhPWVYzdU95VTc3QXNidmxYcXVN?oc=5",
-      "indexed_at_utc": "2026-11-24T12:38:42+00:00",
-      "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
     {
       "topic": "Middle East energy infrastructure",
       "topic_id": "oil_supply",
@@ -44,29 +27,29 @@
       "sector_tags": [
         "oil_gas"
       ],
-      "subsector": "general",
-      "title": "Oil prices rise after Houthis claim attack on Saudi refinery - Reuters",
-      "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOVGl4Nzdfc01ReTB5TnAxUkVLTXlaRVFvbGM5aTZDOEtVUXlrVDQtMHJwcWh2WldoMnVyb0QxU1pEQUoyN09sNU1SZXR3NVUzdTZXeWpkdGNTZW95MUtmdjV3dWFxTEZsRW5WUlF1djVTTWZxUGVxcHhPNEptMnBEcmZ0MURhX0JxTDFqc19HblpWd2hLSEs5SXRYTXB6bzFwNzZqOUFTc1ZOM3ItVDFZWmM2a0R5YkxsdnlsMTZWQ1ZEUQ?oc=5",
-      "indexed_at_utc": "2026-11-25T01:58:00+00:00",
+      "subsector": "gas_lng",
+      "title": "Aramco Looks to Reboot Domestic LNG Terminal Plans - Energy Intelligence",
+      "publisher": "Energy Intelligence",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE14Q1JRNTlkVGhSeU1LOFVtZ3hodHpPRE1KOEtDMklEaFA2Z0k2bG1iSVYwSXcyVFV3dUVYX1lHSjhLekQtOWhheUZlNFNFYlo2bERIUEpEN0VoWU9uM3J6RlZDd1k0RldIcFRWYk5XcDdZUQ?oc=5",
+      "indexed_at_utc": "2026-11-26T15:16:19+00:00",
       "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Asian LNG and gas",
-      "topic_id": "lng_asia",
-      "type": "Gas supply",
+      "topic": "Russia and energy sanctions",
+      "topic_id": "oil_sanctions",
+      "type": "Geoeconomic",
       "sector": "oil_gas",
       "sector_tags": [
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Europe Is Beating Asia in Fight for Gas Supply Disrupted by War - Bloomberg",
+      "title": "Russia’s Elevated Crude Shipments Stoke Global Supply Surplus - Bloomberg",
       "publisher": "Bloomberg",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOT0FwQmRzNUdWRDZBR3VHZ3ZUTDNqRG9MV2pyek4xSzRCLUNpUDkzWmpmekU5Z3loaWdmbDRvNWVTRFVKcFZXZkFXSEhmRU93SE1VNnA1NW5NSFUtZEVIN1JEQm96TVlNVllkWWhwY05mRW1sNUVQTXlKZ1dxMjJqRVBoSjhYajdTT1g1U3Q1Zzdoc0VTVlhUSHdjNTJ5ZUdINnpOX08tdVVjdzAyVS1PS2F4ODI?oc=5",
-      "indexed_at_utc": "2026-11-25T10:11:43+00:00",
-      "impact_pathway": "Gas supply changes -> Asian LNG pricing -> power and industrial costs",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQc2hkdGdsRUNWb2xfbVZDMGx4QkZoMl9QeVdJdUNja1NGYV9uY2VVTjhNYURpMkRrOG5iRGtvaG9WTGJuRmhTWnVaSmYtQ1JodzNOSnBRTTFQenl1dE9la0pkdlZTdXM4YjVjTk9ma1RsUm5YQ2VsaEFJWWRmV3BSQ2N6Q2RDQUNmMklfMkJ6bDdxZ2wtazRxcFlaRU85aEpZb0dMckV0NnlDVTUwcVE?oc=5",
+      "indexed_at_utc": "2026-11-25T12:02:40+00:00",
+      "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -79,52 +62,35 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Oil prices rise after Houthis say they attacked Saudi refinery - CNBC",
-      "publisher": "CNBC",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5sRU8tcFZoX2s0ckhDanczdzFPYndhQW9yeWdHdm51MlI2TElhR1MwM1I2MElSeGhmbzhiRk1Bamh0MGdBbE1FSkpnSjRNMXJseEVSZnZpMUhBUFRIY0JxNXIzUmtZSmptQmlQMGhreFRXdENfZ1d6UdIBfkFVX3lxTE5sVkRYS2FOQ1VncmwyVlgxNEpDWEtzaS15SlVVUTR1bThrMlRqT053QTAtTnlLYk1mRTdhWWtlbXFLZmZqa1pFc2xTdGwwcjlvc1RGRk9HVFpVaHQxVktfSXFfbTIyRWVTWWowOUhiNGN0WUg1WVNXSkx0MU8xUQ?oc=5",
-      "indexed_at_utc": "2026-11-25T05:05:08+00:00",
-      "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Global crude oil & OPEC supply",
-      "topic_id": "oil_supply",
-      "type": "Oil markets",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "Oil settles up $2 as traders weigh continued Hormuz ship attacks - Reuters",
+      "title": "Oil prices rise after mine strikes on ships revive supply concerns - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQMDQ4RU9qMFd6TWl0WkFDUGVsdk5Gb3Q1dURMcjcwbGxUV3ItdjhZUGdQUTBZOVUyZEZlRzdmSEtjM3EwQTNUam1nRVZNdXFRbmNfeHhpUnNVQjNPbjNyOGtSZHVnNEZmbnpJdC1VdVA5X25rWndhMnZqemNGVWdVU1Y5OE8ybExyT2xLelF6dnZsNkM0OU55b1dKc1NuNF9sWkVGSGZJaUNxLXc4eEdGZTl3LUtFTDFuUUE?oc=5",
-      "indexed_at_utc": "2026-11-25T01:26:50+00:00",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPWHpfX3p2RFoxU2l0SGZVbVdSejdGYkc0NFpERWlxVEtab0pQbGd1NUtqQ3c0cXprdWItUF9fRmVVVElET3BNbklnbElwaC1UZ0xoNnd4dE9Wb2dFVDFGN2JyQ3YyUVhfTWxsNGFWNFNURG5kX1pMdVBtb2QyLXFMaXZPM0ZPdGdud1hWdHFuTEpNQXBtdUh6RmpWcW1jelhTU0JHdmp3dWphb0hB?oc=5",
+      "indexed_at_utc": "2026-11-26T03:08:00+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Indonesian coal in global trade",
-      "topic_id": "coal_indonesia_trade",
-      "type": "Indonesia coal trade",
-      "sector": "coal",
+      "topic": "Global crude oil & OPEC supply",
+      "topic_id": "oil_supply",
+      "type": "Oil markets",
+      "sector": "oil_gas",
       "sector_tags": [
-        "coal"
+        "oil_gas"
       ],
       "subsector": "general",
-      "title": "Indonesia partners with US firm to turn coal into synthetic gas - ANTARA News",
-      "publisher": "ANTARA News",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxObEk2TEl4dnFCcGRRb3Zab0lCOXpyNm5KYXNqcHVubXJfOVRXUUpJa24xNnh4ZkltSEhqWXJpWFpYd1ZYMzNvend2Z19GN3FWaXBSZldWakhESENBaC1OT1hEWDRYWkF4QWhkTkZfUWdWcHVtUXZYMXNCeXpkYjlnc1V2SWFadExPQmI2azJXY0RRdjc5VXZzQ3lQeENhZnVNRl9oR0dzbTPSAagBQVVfeXFMTmxJNkxJeHZxQnBkUW92Wm9JQjl6cjZuSmFzanB1bm1yXzlUV1FKSWtuMTZ4eGZJbUhIallyaVhaWHdWWDMzb3p3dmdfRjdxVmlwUmZXVmpIREhDQWgtTk9YRFg0WFpBeEFoZE5GX1FnVnB1bVF2WDFzQnl6ZGI5Z3NVdklhWnRMT0JiNmsyV2NEUXY3OVV2c0N5UHhDYWZ1TUZfaEdHc20z?oc=5",
-      "indexed_at_utc": "2026-11-23T14:51:26+00:00",
-      "impact_pathway": "Foreign buyer, sanctions and energy-security policy -> Indonesia coal exports and coal state-revenue exposure",
+      "title": "OPEC+ likely to roll over oil output targets for Q1 as capacity disputes persist, sources say - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPRWNNN09tM1phcUhhRlFRRTlHaW0yYU5fQUxJUVFEZjl5cEdhaHRnOGNwRkl6QUZTWEhNeU16Vnk5bHhNQ3JSd0FXNDlHZkdDVTV4ZkVsbUpQUFV4VWdobEhfdlpHOUt4SEJadFRpNHlYZTZRZFdBaEZKYnUyTHJ0eHlyWjE1a1FjenhuYWtoZHJJSHVPYVhjSlprNF81NkNiMlpQNUpBcy1kcHd3eEFaRjZHczhHV3RIWlJRaHZOQlBXUQ?oc=5",
+      "indexed_at_utc": "2026-11-26T14:39:21+00:00",
+      "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     }
   ],
   "sector_counts": {
-    "oil_gas": 6,
-    "coal": 1,
+    "oil_gas": 5,
+    "coal": 0,
     "nre": 0,
     "electricity": 0,
     "cross_cutting": 0
