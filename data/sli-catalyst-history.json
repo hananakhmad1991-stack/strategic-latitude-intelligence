@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-11-26T11:09:05.891Z",
+  "published_at_utc": "2026-11-26T13:06:17.871Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-11-26T11:09:05.808110Z",
+    "news": "2026-11-26T13:06:17.798130Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 1086,
+  "count": 1087,
   "events": [
+    {
+      "id": "sli-catalyst-c476e17879c79880f4",
+      "kind": "news_indexed",
+      "title": "Penjualan Tembus 735.000 Unit, Vietnam Jadi Raja Motor Listrik Asia Tenggara - Kontan TV",
+      "detected_at_utc": "2026-11-26T13:06:17.871Z",
+      "source_at_utc": "2026-11-26T05:01:42Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9hOUU3OFduWGRRc3VtbV81VnluT2RCTVhnOEdHY1oxanB3LWRvS3p3MFBmdnF6WkQtdUw0WFdQZGY4VzNQa2xxMFNmVG9CbFBqaVVJ?oc=5",
+      "publisher": "Kontan TV",
+      "sector": "energy",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-94a807f5aac818bdcf",
       "kind": "news_indexed",
