@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-11-26T03:40:12.926Z",
+  "published_at_utc": "2026-11-26T08:43:13.196Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-11-26T08:16:58.810161Z",
+    "news": "2026-11-26T08:43:13.119790Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 1055,
+  "count": 1056,
   "events": [
+    {
+      "id": "sli-catalyst-d9ff3e3c984d36f863",
+      "kind": "news_indexed",
+      "title": "(PDF) Analisis Masalah Backpressure di Lapangan Ledok Sumur LDK-X PT Pertamina EP Asset 4 Cepu - ResearchGate",
+      "detected_at_utc": "2026-11-26T08:43:13.196Z",
+      "source_at_utc": "2026-11-13T08:00:00Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPZFhDWWp0NFBvMVFWQWxSV3VBb19lVEtfb0dBdDJ0X3d6blgzeVFIaTVMMTRzWVoxbnZJd3JWSU9qZll0N3JKYldzWmlNY2JzWVhhaTdFQVdCWWNiWlJlYjh5Z1p2WVBScDdVNmFKWW5MQWFpSDRJb3dCb3JHdGdTWUJnMFVJSHl2Vnc?oc=5",
+      "publisher": "ResearchGate",
+      "sector": "energy",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-b81e2d4726ce35fb74",
       "kind": "news_indexed",
