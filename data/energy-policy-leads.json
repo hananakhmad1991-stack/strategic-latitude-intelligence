@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-26T21:54:13.687291+00:00",
+  "checked_at_utc": "2026-11-27T09:02:25.410988+00:00",
   "window_days": 21,
   "items": [
     {
@@ -156,16 +156,21 @@
       "requires_review": true
     },
     {
-      "group": "Official upstream and CCS implementation",
-      "title": "Perkuat Transparansi dan Keamanan Informasi Digital Guna Dukung Iklim Investasi, Ditjen Migas Gelar Forum Konsultasi Publik - Ditjen Migas ESDM",
-      "publisher": "Ditjen Migas ESDM",
-      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQNFhpZzhFQ0hYRjFhODJLV0lwUDd6Y2UxTUFaMUlJcHBwNV8yYy0wM1NjaDJBWktvNVY5VlBXVTZCMENJS3VJenNPRVZpT0NNaTd5cEpjODZJRGpMSW1QNlpIbDRaTkwtRXN6azktMzVSUkdrNlFLWlNheHR0TjhzNFVubUdZbTBEbkJoaWl3bVFSVjdIRlpTTGFCQ25CMnFzUENZUVlYZmJyS2ZsSEtHelRYVjU3YktSTlNpSENaQU5qOFU4X2E5NzVuOFlfVEJGMm9mOHdWd2lBT0NLdGZ6X2RjWDMtMUk?oc=5",
-      "published_at_utc": "2026-11-13T08:00:00+00:00",
+      "group": "Official energy policy announcements",
+      "title": "Perkuat Perencanaan Ketenagalistrikan, Indonesia dan Denmark Perbarui Data Teknologi - Direktorat Jenderal Ketenagalistrikan",
+      "publisher": "Direktorat Jenderal Ketenagalistrikan",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQdFJHcWYybWJQUExGbDd0UlV3MjNxMzl2MnplazVPYlJJZ0NWZU9fSkE5NEpjVU95dHRWYkdiZjU3M1VJRlNXYWc1Z0c0WU80d3NEck1KWTJ4bEdzVVNfVHBiM19WMDF1SEkwYS12UlFYZUlpbk5PMVZiYm55NWVSMzhXM3lENHE5SDFid05KckxKbVpBUi05Mk4zcEpEcjl2aDB6Ukk1RkFHX1pFN0RuS3pNc0V4cnM?oc=5",
+      "published_at_utc": "2026-11-11T08:00:00+00:00",
       "status": "Unverified official-source candidate",
       "requires_review": true
     }
   ],
-  "scan_errors": [],
+  "scan_errors": [
+    {
+      "group": "Official upstream and CCS implementation",
+      "error": "HTTPError: HTTP Error 429: Too Many Requests"
+    }
+  ],
   "stale_previous_results": false,
   "disclaimer": "Google News RSS is only a discovery index. Headlines and publisher labels are not proof of passage, effective date, regulatory scope or legal validity. Verify original legal publication in JDIH before updating the curated enacted-policy register."
 }
