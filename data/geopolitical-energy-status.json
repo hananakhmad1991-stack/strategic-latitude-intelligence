@@ -1,16 +1,20 @@
 {
-  "checked_at_utc": "2026-11-27T02:10:29.877974+00:00",
-  "leads_found": 6,
+  "checked_at_utc": "2026-11-27T10:54:40.036541+00:00",
+  "leads_found": 8,
   "sector_counts": {
-    "oil_gas": 5,
-    "coal": 1,
-    "nre": 0,
+    "oil_gas": 6,
+    "coal": 0,
+    "nre": 2,
     "electricity": 0,
     "cross_cutting": 0
   },
   "errors": [
     {
-      "topic": "Hormuz and Gulf energy",
+      "topic": "Red Sea and Bab el-Mandeb",
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "topic": "Middle East energy infrastructure",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],

@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-27T02:10:29.877974+00:00",
+  "checked_at_utc": "2026-11-27T10:54:40.036541+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
     {
@@ -37,36 +37,36 @@
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Russia and energy sanctions",
-      "topic_id": "oil_sanctions",
-      "type": "Geoeconomic",
+      "topic": "Asian LNG and gas",
+      "topic_id": "lng_asia",
+      "type": "Gas supply",
       "sector": "oil_gas",
       "sector_tags": [
         "oil_gas"
       ],
-      "subsector": "general",
-      "title": "Russia’s Elevated Crude Shipments Stoke Global Supply Surplus - Bloomberg",
-      "publisher": "Bloomberg",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQc2hkdGdsRUNWb2xfbVZDMGx4QkZoMl9QeVdJdUNja1NGYV9uY2VVTjhNYURpMkRrOG5iRGtvaG9WTGJuRmhTWnVaSmYtQ1JodzNOSnBRTTFQenl1dE9la0pkdlZTdXM4YjVjTk9ma1RsUm5YQ2VsaEFJWWRmV3BSQ2N6Q2RDQUNmMklfMkJ6bDdxZ2wtazRxcFlaRU85aEpZb0dMckV0NnlDVTUwcVE?oc=5",
-      "indexed_at_utc": "2026-11-25T12:02:40+00:00",
-      "impact_pathway": "Export restrictions/physical damage -> trade flow rerouting -> Asia energy prices",
+      "subsector": "gas_lng",
+      "title": "Australia clears law requiring LNG exporters to keep 20% for domestic use - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOdDhMYThjNnMyOVpseWdXOW5xMmdHczk5dWRzdkYzVnM0eUJ2cGZMZEdBTGdpeHJUN3lfRHRNM1R2dk5YUkhHQUI0cDdMMEh4Mk9pTmNzMVpaLXBoTFF5b3JVNUVIZlZ4V2xYTkE3dTl6MWtnX2FPNlZRUTk0Z0NKc29TSDJoN1R5VUtXNURZcG9zdlJFd0IzN01HbzBkeHJMLWFGalNBb2JjcUN4Nk13emZ6X0VyYm1SVVJ6ejMtNDhhZXRjUmc?oc=5",
+      "indexed_at_utc": "2026-11-26T23:04:00+00:00",
+      "impact_pathway": "Gas supply changes -> Asian LNG pricing -> power and industrial costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Global crude oil & OPEC supply",
-      "topic_id": "oil_supply",
-      "type": "Oil markets",
+      "topic": "Asian LNG and gas",
+      "topic_id": "lng_asia",
+      "type": "Gas supply",
       "sector": "oil_gas",
       "sector_tags": [
         "oil_gas"
       ],
-      "subsector": "general",
-      "title": "Oil prices rise after Houthis say they attacked Saudi refinery - CNBC",
-      "publisher": "CNBC",
-      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5sRU8tcFZoX2s0ckhDanczdzFPYndhQW9yeWdHdm51MlI2TElhR1MwM1I2MElSeGhmbzhiRk1Bamh0MGdBbE1FSkpnSjRNMXJseEVSZnZpMUhBUFRIY0JxNXIzUmtZSmptQmlQMGhreFRXdENfZ1d6UdIBfkFVX3lxTE5sVkRYS2FOQ1VncmwyVlgxNEpDWEtzaS15SlVVUTR1bThrMlRqT053QTAtTnlLYk1mRTdhWWtlbXFLZmZqa1pFc2xTdGwwcjlvc1RGRk9HVFpVaHQxVktfSXFfbTIyRWVTWWowOUhiNGN0WUg1WVNXSkx0MU8xUQ?oc=5",
-      "indexed_at_utc": "2026-11-25T05:05:08+00:00",
-      "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
+      "subsector": "gas_lng",
+      "title": "Australian LNG exporters must reserve some supply to lower domestic prices - Nikkei Asia",
+      "publisher": "Nikkei Asia",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQTmYzUUoxck1GbzUtOGM1Y21sWWNRajh6YldtRk5TTUx3MEpONkh0dzNCd3VGZWJTUUtNSEpUZV9EeU9pTG83dHp4TzkyX0NqbkJzRUpJUTQzTkFfSXJKQTNwb3NuZVRKMnpnV2xKd0MtUTk2bzZTUEo5bGdOcjJXanYtRXhsWnFOSkpJVEx4Vmp0dlRkM2NCYWVsNlVDeFdrZXZxaGpqUkM1MkFMS2lDbTdkTXQ?oc=5",
+      "indexed_at_utc": "2026-11-27T05:50:00+00:00",
+      "impact_pathway": "Gas supply changes -> Asian LNG pricing -> power and industrial costs",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     },
@@ -88,34 +88,72 @@
       "status": "Unverified aggregated news lead"
     },
     {
-      "topic": "Indonesian coal in global trade",
-      "topic_id": "coal_indonesia_trade",
-      "type": "Indonesia coal trade",
-      "sector": "coal",
+      "topic": "Global crude oil & OPEC supply",
+      "topic_id": "oil_supply",
+      "type": "Oil markets",
+      "sector": "oil_gas",
       "sector_tags": [
-        "coal"
+        "oil_gas"
       ],
       "subsector": "general",
-      "title": "Indonesia partners with US firm to turn coal into synthetic gas - ANTARA News",
-      "publisher": "ANTARA News",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPNVpDQTZBR0J2ZmFJSGZaR0VHc2dma3VPaU0yR1BmQ09tRTVMem5PS3BLTldUZTBudnBoQkp1WmFuTi1jbmtNeEtpVUkzSFVKS2pKQmZoQVo0b3NmUHhNZWZ5LVpnY2Z2d1B1UjN1cE0wclduRktfSVRvZ0JlX2lDaEtmVGVyRmNVaEVmSHdxV0l1eHkyd1FuZ0M4SkJBSmlGVXZJ0gGoAUFVX3lxTE5sSTZMSXh2cUJwZFFvdlpvSUI5enI2bkphc2pwdW5tcl85VFdRSklrbjE2eHhmSW1ISGpZcmlYWlh3VlgzM296d3ZnX0Y3cVZpcFJmV1ZqSERIQ0FoLU5PWERYNFhaQXhBaGRORl9RZ1ZwdW1Rdlgxc0J5emRiOWdzVXZJYVp0TE9CYjZrMldjRFF2NzlVdnNDeVB4Q2FmdU1GX2hHR3NtMw?oc=5",
-      "indexed_at_utc": "2026-11-23T14:51:26+00:00",
-      "impact_pathway": "Foreign buyer, sanctions and energy-security policy -> Indonesia coal exports and coal state-revenue exposure",
+      "title": "Kazakhstan also seeks higher oil output capacity estimate ahead of 2027 OPEC+ quota debate, sources say - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQUmZkWG52MVRvamtENGF3YmViWno3ckhhV1JIeFBzcnVTeG5ueG55S0M1amhYa1c3U1NVUldNV3c3UTRzTG9lcnVsUmJoYzV2ckJsY2c2cmtFdFlLckpLRk91NTdnSEtJQ3lDSVlYNzEwdklnUkFvb1R6dUpZLWV2TnM5d0dldC00NnBCWkZ1RVRjQ0NqMFA2OEp2SThlVlQ5OXZNbDVHN2tLVjFjbmJhSHlPUGZCSXR0aUxLZGQ3RjZIdWlwOElBWmZPUQ?oc=5",
+      "indexed_at_utc": "2026-11-25T14:18:48+00:00",
+      "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Global solar PV and wind supply chains",
+      "topic_id": "nre_solar_wind",
+      "type": "Renewable equipment",
+      "sector": "nre",
+      "sector_tags": [
+        "nre"
+      ],
+      "subsector": "solar_wind",
+      "title": "Rest of the world plays catch-up with China’s solar power dominance - Financial Times",
+      "publisher": "Financial Times",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRFlVWEhsU1BRSl85NE9zaDNMMWtkS2VKX0lqRVNva1MycWZRRnBQTDM1LXh1QURBdjc2MnlBWW00bWlzX3Bmb3l6bmE3SUJuZ2pNbmZNekgzTm5EeG9uV2JCazNUSGRSa2w2RE9FeUhaSnd3eHBsdm8zTjdla1pfQU5MeWU?oc=5",
+      "indexed_at_utc": "2026-11-27T05:01:14+00:00",
+      "impact_pathway": "International PV/wind equipment prices, trade barriers and FDI -> Indonesian project economics",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Biofuels and international mandates",
+      "topic_id": "nre_biofuels",
+      "type": "Bioenergy trade",
+      "sector": "nre",
+      "sector_tags": [
+        "nre"
+      ],
+      "subsector": "bioenergy",
+      "title": "India SAF Market: Mandates & UCO | Webinar - Argus Media",
+      "publisher": "Argus Media",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9IbzNGRnIzMXl2ZnhpUF9qZG15N2pTTEhZbk9sbEd3UVZnRFVhQ0NhdHBfVDB1emxhNDdBcDcxRGZQdXlyaml0OUFOSXp2YlpwenNobkw3M0xDMjEwSFYxZmFHcHJENGlyZFZzdWdsel9IYmE0S1hYRWpB?oc=5",
+      "indexed_at_utc": "2026-11-26T08:41:22+00:00",
+      "impact_pathway": "International biofuel demand and standards -> Indonesian palm oil, FAME and bioethanol prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     }
   ],
   "sector_counts": {
-    "oil_gas": 5,
-    "coal": 1,
-    "nre": 0,
+    "oil_gas": 6,
+    "coal": 0,
+    "nre": 2,
     "electricity": 0,
     "cross_cutting": 0
   },
   "sector_taxonomy_version": "2026-10-15",
   "errors": [
     {
-      "topic": "Hormuz and Gulf energy",
+      "topic": "Red Sea and Bab el-Mandeb",
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "topic": "Middle East energy infrastructure",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
