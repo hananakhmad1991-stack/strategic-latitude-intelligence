@@ -1,6 +1,6 @@
 {
   "schema": "sli-issuer-news-v1",
-  "updated_at_utc": "2026-11-27T00:33:13.603411Z",
+  "updated_at_utc": "2026-11-27T09:03:19.626895Z",
   "status": "ok",
   "covered_tickers": [
     "MEDC",
@@ -42,6 +42,406 @@
   "methodology": "Google News RSS title/pubDate/source links; publisher-attributed unverified headline, not issuer disclosure, real-time market data, or a verified claim.",
   "articles": [
     {
+      "id": "sli_issuer_97de2f58c3469b27c6f889",
+      "title": "AADI Tebar Dividen Interim USD500 Juta, Cum Date 3 Desember 2026 - Ajaib",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOWHRqdFJSQU0tX3pGaVYzbUpGb1lhOGlxLWZ1c3U1VFN1Q3NsT2FmNnEzM1ZtWi1xUVNReGZfM3VVZU9xZWhwdHZUa3hYeVJaRWtsRkh1bjlTYlBSREJ3TllYSm5UdW85RXZVRXpldjBsMjJQVzlQM1MxUnZMaVhhZFhyNllCaGhkdUI4TE5sRVVmaXVzbkxWRXo5SU1kdw?oc=5",
+      "publisher": "Ajaib",
+      "published_at_utc": "2026-11-27T08:15:03Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_2f8561a658510b7bd176df",
+      "title": "Nvidia Setop Pengiriman Server AI, Bagaimana Nasib ISAT dan MGLV? - Mikirduit",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNSjd3c3lXckJOem40OGs4Tk1LbFgwazhkMHNwZWRJeC1aVWpfLWo2YjI3ZzlTRVZTNC1RZHFhd3hZYlhZUFMyMVN1NGF5ZmhhcVB4NWpkcFhJY2hzRDRQUzk4UU1qRkJUQzNIbXdnWFBkMmFNSEswM29NTTBWR2owRTZ6UkdLRFdMNm5Z?oc=5",
+      "publisher": "Mikirduit",
+      "published_at_utc": "2026-11-27T06:55:33Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ISAT"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_bdf7ca98c91ed046c02c01",
+      "title": "IHSG Sesi I Jumat Menguat 0,66% ke 5.276, Ditopang BRMS-BRPT-MDKA - Validnews",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPOVFfZ19JcFluNnVFdzJQeUJVWUI2U19EUUVsUjRUQUVqNW9xc2xBOWJmZmJLZ3ZTUTNIUmUxUEZlbG9ZbGxQUy1xRlI1Wkw0Q19GeFI0Y3FpdHBGS18xMWlOYk9PTGZrX3M2Z0J3ZHdXNlA1RjktUWp3Qm9ZYW9yeGV2akdaSHVvQXdWM3IxZ1E0Nk51QjV0ZHFBd0hkRVhsQnI1YXNFVk8zbVU0OWFCbUcyRnlPZw?oc=5",
+      "publisher": "Validnews",
+      "published_at_utc": "2026-11-27T06:01:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "MDKA"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_314065ab3314bde3a52430",
+      "title": "Harga Saham GOTO Hari Ini, Jumat 27 November 2026 - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBTci1WZ3ZLRGREdEVjMjRqc0lvZE9JNUZOM0sxYkxxdmM2bGlTbHhQTUZuOVpBTjl3RW1pMXBaajRSY3JRSkRtczNBM2xQaWtPX0x1SzNEamlmZDdtbkJsNWw1eTd4bWhPUVh1YmFINkxielJ4SlFxU3hBVmhxWlU?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-11-27T05:07:53Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "GOTO"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_b8adff0cee208e2ccb3c59",
+      "title": "Harga Saham ADRO Hari Ini, Jumat 27 November 2026 - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBGTWNSc25XOFFodWhfMEF2bGR1NzM5cEJtS0hOMGs4UUo2S0ZqQUhDYkZvLUcyclUtNTl3dVBpVWNGbzNDVFI3aTlSWUJHc2xhSGVhajhSMXdXSVI5Vkt3M2xfZVJXZ1NJcU9SbHpwcFNSN2dDZUR4dXRlYjBNTFk?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-11-27T05:07:52Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_68b1538273db451bec934c",
+      "title": "Harga Saham PTBA Hari Ini, Jumat 27 November 2026 - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5KaXcxSXpYV3J1M1otVm5IbkZHLVZobVIwNll1c1pYVk1PdHdwWDU3bVQ0dzl3bGFXRmRMOFNGZWRMdHBzbHFTYkNqNjFnbHYzY2ZGM0tHUlV5VWNxNk9OUlozay1NTnhvZDFQeGlKMmh4RjVhT2hEMkxrUjljWjA?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-11-27T05:07:52Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PTBA"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_4d542689be058091c0794e",
+      "title": "Harga Saham INDF Hari Ini, Jumat 27 November 2026 - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA4Rk13Z25kM2dWS2dNbU0zYUFXVUVUQlAxMGtEam1Jc3Z3eHpaQ2JsdlJsRDhPbGI1ZklRZ1FwaFJLMmFOejNHQkJnUF96Z0wyLWgtTzNMbU92NnZ6NXpqb3lmc3p6bTlDa25NRFJmTE5GNjJObmsxSzAwNzRyZEE?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-11-27T05:07:48Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INDF"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c8d52820454134067766c4",
+      "title": "Harga Saham ICBP Hari Ini, Jumat 27 November 2026 - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1RT281N1dSYVRiWGVZQ0Rra2lJQ3BZX3VGVHJkR3N5UVBxYTJXT3JTMEZkb0szTDluRll6SEoyR0ZyVFVmMjNZb1hpZDZqWTF2X1pmdTQ2d2VvNlUwb1AzaVZiVnN4U01NT0Y1eEVDRDY2ZlNxSEJOSWs1MXo5X3M?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-11-27T05:07:48Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ICBP"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_4361bc1e15278d9d266bd1",
+      "title": "Harga Saham TLKM Hari Ini, Jumat 27 November 2026 - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9vYm5XQ2JXZkRYNWxTQzJzWjJUY09mUHd4U3dHblNxekZ0aE1sczZIY2oyU1dzQVo5WEdrci1GejMyRG41cXRQMFdyUDA1NHd5bG1KOXdDUFctYzUzYzJ2MEtRTkk3V1Z1ME9fVVRsVlIwVEtIWnZlZ1YyS2lEV2c?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-11-27T05:07:48Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_db730a35c2e5d5df925494",
+      "title": "Harga Saham JSMR Hari Ini, Jumat 27 November 2026 - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE45eXlLTUFPcC0wV1BjOW1SVm9TS2NyLWZyWGRENkI0YzNHdm5LbXd4T05CbmxOTTR4bFdjaUZvOTRZWWs1N3ZGaENDcWtUYTF4TUFlM1h2VEVyczNSd0NUbHMxclB6aGNaWmF3SDk4akRNcXZvVG95aGtqZ28tLUE?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-11-27T05:07:48Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_4ba1f8686dcba5ca465376",
+      "title": "Harga Saham SMGR Hari Ini, Jumat 27 November 2026 - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1hbTVaZzRqRTdTNklYdTlIY0JfNW9fb0g2d05kLW5RYWN4N3ptUGFyMTBybjFyRE9CTjNGQ2luZXd6RExlTDNMeHdZV3RTMlgxc240YzloYVlTTE5ncTZhVlJzWVBFOXUzbW1jV3NvZkxLM2dleTFlRkdIN1ROVWc?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-11-27T05:07:48Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "SMGR"
+      ],
+      "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_a255be4a5000e7912ebeef",
+      "title": "Harga Saham CPIN Hari Ini, Jumat 27 November 2026 - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9nSlZRaGZlZnlFTHpfejFWTlhiQmZwTzliTjRSdVI3YWFBclhwS1FSblRVcUFoQVVxUHZkd0hCdUVGbXlIR09Xem5wVXRkT3QwOHJXNzVUZ2NRWGphSElNdWt4OWpjMklWZnFHc2hBbVRBWklzR0haWGxIS3lBRUk?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-11-27T05:07:46Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "CPIN"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_042a5ca616b5f65ce743dd",
+      "title": "Harga Saham ITMG Hari Ini, Jumat 27 November 2026 - Pintu",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBpckdKZDdsXzNubDctRWVKRVpIcXhaNEJYajluLUhRTDNLWk9hc1ZDMEdFeTFtVG81U2NpTkFrcmdQcTRuaVZxWGtyVGFjUTVQTjZzUlpwTEM5VFJtM2ROVUJYdURld3lwQ0puWDRiaUxkNDJ2X2F3MnVJNGZ3QVU?oc=5",
+      "publisher": "Pintu",
+      "published_at_utc": "2026-11-27T05:07:44Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ITMG"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_1c37f428f904d8c6b0d501",
+      "title": "Tekanan Rupiah Berlanjut, Intip Saham ANTM, EMAS, dan TOBA Hari Ini - SWA.co.id",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQLTBlZ0dqY09jeXVyV0VhWjBMa2JGUkJxRENHa0JKbVFEUXF5MW9ZLWljWk5RYXFnNE1zak5tWFZqaE9jN2VXTzNHUlV4MWMzTUFFOVE4Zkg1UUxBNjlpZmpiY3U5Y2ZGNGhKVUNDQ0l0TkV2dEF1Qld3VGhwOEtsQ1p2d3Z1d2toMHJQWXFxRE1vWUpHM1YtM1Zn?oc=5",
+      "publisher": "SWA.co.id",
+      "published_at_utc": "2026-11-27T04:22:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ANTM"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_83ec1a212a782ae9e0c922",
+      "title": "Rekomendasi Saham Tim Analis Bareksa: INDF, BBRI & EXCL - Bareksa.com",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNTjBCbDhiUk92MGxBMUpra1kwdV8wVWFYVXhmMDhQbVlDZmtzeHdqQ0l6ZDBiUHcyRU1CUUVlSlFiczEtZjU3aE1yeUM0VnVYNldDV3BUcTVBR2xxOEhNNGZqQ1RUTllXTjNzYW5BbXJiODVfTndPTUpRdjlZdi1xRTRnaE1WR1ZWUnJFdXVZSHRvWTl2OUJTNWFuSUNud2Rt?oc=5",
+      "publisher": "Bareksa.com",
+      "published_at_utc": "2026-11-27T04:19:57Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INDF"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_ce5a4227a1ea049cd71111",
+      "title": "Jasa Marga (JSMR) Umumkan Susunan Pengurus Perseroan yang Baru - Pasardana",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQNWhJN0YzMnFtd2V2YUtTRDZSd1hobHV2SHNIWHZmZWZqZFdMaHhJaHZKQ1VJUHVoQ3dVZVpHbU0td2lJYWZsWjU1b3lka0l1NG9mMFJzZzZBXzQxYzFpclRMUTJ1SnJ4TVVNUFh6MlFKYVNPZUlxbjRVbUlXWktFYXB2bU0zWWJwUmpoSlk3T3kxSk9LbW1uV3dMbVVUZw?oc=5",
+      "publisher": "Pasardana",
+      "published_at_utc": "2026-11-27T03:19:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c7f640a3cafba3c41bbc23",
+      "title": "SMGR Pulihkan Pangsa Pasar Saat Permintaan Semen Meningkat - cwibc.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1PRzg2Z1R2eWIzZDhobVN0cHlZeUU0ME81SksxcTctbTNUX0ZYeTVoajYwU21KaWpiczkteVpfRmYyVzVmd2Jjb3VSS0Zxa1F0WDlxUTFLMVZVMEcwbi03SFBueGhzZw?oc=5",
+      "publisher": "cwibc.co.id",
+      "published_at_utc": "2026-11-27T03:15:02Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "SMGR"
+      ],
+      "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_e97816261133417b8c7f91",
+      "title": "SMGR Pulihkan Pangsa Pasar Saat Permintaan Semen Meningkat - Limapagi",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5USFpkanF2M010S3VYYnZPZVliNThmUS1iekZZRlprWE9nQjRTVHctMkYtalR5aXJhMGJyNnJ6aHhpUDA4SHJNaDlWakQ0VlB3NkJhcWR5cHRlbUVaR2hyT0s3ZGpKSlU?oc=5",
+      "publisher": "Limapagi",
+      "published_at_utc": "2026-11-27T03:13:05Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "SMGR"
+      ],
+      "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d7704b1d66dfd2b73167ed",
+      "title": "Permintaan Semen Pulih, SMGR dan INTP Catat Perubahan Pasar - CentralBatam",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1ZbU1IaGVSZWVUQzIzRl9OTHJvakQ5M281eDdiazFYRlZoZlFxWlpROW1mdjVVaThXOXgtel90UVpFSUw4MlM1Y1BVZ2JZMllNM2hhcUVPNXI3dWprNEVlMUZSMFVjN05mVWFB?oc=5",
+      "publisher": "CentralBatam",
+      "published_at_utc": "2026-11-27T03:12:41Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INTP"
+      ],
+      "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_a9329324d303057fdeec6c",
+      "title": "Perkuat Portofolio Bisnis Jalan Tol, RUPSLB JSMR Setujui Penggabungan Anak Usaha - TopBusiness.id",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOSEw5SUcyNTBtSmkza19JNVRDdTBuSFk4Mno0Q1RHczVUbmRuTmhnN0ZnSGFrUXRMa0RqeUVSUllnNVZ5RDFITXR3UkNnV1pTU1h0cGY2Rk94SHdaRWxJUjJnZWF4ZFlvVVBrdXBUVUJ3NFdZbGh5bTNWdmFOQlZTLV91OFFyaDJZQkw1dHpmbXN5Ujg3LWd0Nkw5YU5SRDB1d0ZxbTZUQkx6ZUJCT195cUFreFhBdVpjdXc?oc=5",
+      "publisher": "TopBusiness.id",
+      "published_at_utc": "2026-11-27T02:46:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_222131672b30d6bc96a876",
+      "title": "Rekomendasi Saham 27 November 2026: EMAS, DSSA, AMMN, INDY, ADMR, NCKL - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5UdmdmNndKQzBKZjhWMFFKWFlVNW1pQmhtM0dRc0ZZZXdyQUpMRzAyUzZHbTFVVGhrcHhha08zNGlCRUNZdF9mMDdDZWF1cExIeUQ4?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-11-27T02:32:49Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_0a2af3429f833e740cf6ba",
+      "title": "Waspada Pasar Masih Fluktuatif, Analis Sarankan Trading di Saham Ini: EMAS, DSSA, AMMN, INDY, ADMR, dan NCKL - TopBusiness.id",
+      "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQYXMtT0lhR1dwU09zR2ZIZjRDb0ZWLVlYem93dkNnZXFIelllbkx4dTUxUzJVMHlZSnUyN01PTzlxaEdBZzdVb2RzT1YtUk5DSVlFTkRqbHBQWVd3MmtCaTJPNUo4R2h5dzhjb09ZV2t4UkFwM3gtWWxOWEtCSmI1UUJnRUcwVzJZNzJ3dnEybEFXaXV6c1dtR1doZGlfSmYwNDZpVVZmVS1vRVhmN3QzYU0zc1pCLWZnSC1XWlpIVHQwcUdIOHVzcUhkd3l2VHdHYUxrTnBvRQ?oc=5",
+      "publisher": "TopBusiness.id",
+      "published_at_utc": "2026-11-27T01:26:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AMMN"
+      ],
+      "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_907023ffc5b0bd4706da2c",
+      "title": "IHSG Diprediksi Bergerak Volatil, MYOR dan INDF Jadi Saham Pilihan - KabarBursa.com",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOaUNLdnp6OUJkRjUzTXV2VE9CZDNsNEJEamFOdkk2VnJ5U09ZYVdFN2syc0dOb3NBOWZxT1ZnTEI3Nkd2NjFHbzd1WGM2S0FwMkwzTEZYaXREOGRVU2lWTFFHYXNpMUFCTzlfaTBuZnFEcy10U01oWUhWcDByV1NEc3VkSzJlUUN3d0s3UkxPcW9kdzAwNWFMQ19CY3EydF9NNE5ZVUJpRGRlN1lD?oc=5",
+      "publisher": "KabarBursa.com",
+      "published_at_utc": "2026-11-27T01:15:17Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INDF"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_c2c5fbef0e461e43a2e439",
+      "title": "Telkom (TLKM) Terancam Outflow Rp15 Triliun, Mirae: Didiskon Bukan Rusak - Industry.co.id",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOY05ONXNTZnN3VU9jWTF1ZkRRaEtqaFpaaFgzWllIOVRCUU9YM2Z5NGw2VVVQcHR6UzZUQ2d3bmJCdnVRQkJWSlJhOU9JN0xJUHQzYzAzWEZaVmtPZFJXNnhnUjdfVnNHSksyeng1U1BpYk1BbzFYb0piYmFVZW4wUEdlbVJ5Z29wNjFELWFjRzA1SUtXYVF0U21WTmx2ZjNOSFptMEE1U3FMREk?oc=5",
+      "publisher": "Industry.co.id",
+      "published_at_utc": "2026-11-27T01:08:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "TLKM"
+      ],
+      "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_74acc96992abcc5f177d37",
+      "title": "Investor Bidik ADRO hingga ASII untuk Window Dressing Desember - Demokratis.co.id",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBQbjIxckh4amY4Zk4zRTNYRS00cDJRSWR4Z0dCU0s0eHI1U2hrUk9IZElELU1xTU1qYnJzWVpVZnZMd0p5SnREc01ISmV2SkZSeEZpLTRZMm92ajJKOXZZOVV1dC0yUmVYdzZsM2NqWGQ?oc=5",
+      "publisher": "Demokratis.co.id",
+      "published_at_utc": "2026-11-27T00:28:37Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_3761085a5b79766f0e15a5",
       "title": "AMMN di Harga Rp3.220, Valuasi Murah atau Value Trap? - PintarSaham",
       "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOd2dfdzREb2RqTmdwVXBXLU5TSFo5ck1XTC13UzA0aW5wQXozdDVtZk0zbUx3OVAzUW1NY0haRS1MdzFaeXAzSWFkN2pDTl94UFFKZ0FzS2dPMHU0Vi1LZFhEYUkwelpvVjh5MnRhckRlREdyb0RHQzZ0bGJkNWFkSg?oc=5",
@@ -52,6 +452,38 @@
         "AMMN"
       ],
       "sector": "minerals",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_d22181650960ae8836c1df",
+      "title": "Hendra Bidik ADRO ASII SMGR dan INTP untuk Window Dressing - ChatNews.id",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBEZFBFQXJUTFhQYlo2d0taM216NGJ2cjdBSjVwaHJXN1BlYTFUd3owUXVsMkw2Sk9iRUhmSHZiQmxvQW1CdlNpWFpiNUE3Q1NWVnVUUGJCMzVpSHZid1lFVGZqTXFJenF6d3c?oc=5",
+      "publisher": "ChatNews.id",
+      "published_at_utc": "2026-11-27T00:26:37Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INTP"
+      ],
+      "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f64a788ba1eec73aa30132",
+      "title": "Bulan Penentuan, ADRO Cs Jadi Target Empuk - investor.id",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNNW4tX2VUWjRIS2hwdWxMX3lUZjVZZUQyU1RwTE84RG42QzlQZE1VYlNhQkNSRWl3Z1lqS09LWVp4ekhIT29lcVlBa01pbFBNVE5jSEQ0Y05OUF9jSzluS3pHYkwtZ3pFeEU1VjZDZWN5UllSelRmY2FnMXRpUUpHbw?oc=5",
+      "publisher": "investor.id",
+      "published_at_utc": "2026-11-27T00:24:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "ADRO"
+      ],
+      "sector": "coal",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -278,6 +710,7 @@
       "published_at_utc": "2026-11-26T09:14:15Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "AADI",
         "ADRO"
       ],
       "sector": "coal",
@@ -598,6 +1031,7 @@
       "published_at_utc": "2026-11-26T05:47:14Z",
       "date_type": "rss_pubdate",
       "tickers": [
+        "AADI",
         "ADRO"
       ],
       "sector": "coal",
@@ -618,6 +1052,22 @@
         "ADRO"
       ],
       "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_1f7f87ffa346e35f84d4e6",
+      "title": "RUPSLB Jasa Marga Sahkan Penggabungan Dua Anak Usaha dan Rombak Direksi - Infobanknews",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNSThoUzAzeHBMNVU5MHZCNDhFTUM5cTJFQ2RKdVF6T0tnQTZqYTJodkVzcHF6S09HelJEUWNTZ1pXcnhURGVzRUFINVI0TGR5eHRrRFNfcS1BVFdobkFMenp2TXhsQVFuX0x3TUpLdTA4eUZTdG1GZUdrR3huRUlSUzFnV3BMbzRGVkxnU1h5dk1EU0dVdkJFVFhtWVM?oc=5",
+      "publisher": "Infobanknews",
+      "published_at_utc": "2026-11-26T05:16:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "JSMR"
+      ],
+      "sector": "infrastructure",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -1078,6 +1528,22 @@
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9Ra0lKUmtSRWVHSUVySF9CTHVKUThjQVoxNXdQSWtpZVQwQ3o0b2FaemxxZG9IN1F0cmNpZVZzSUlKSC1yam1PZ0dMNmpzcjN3bFNBb0VPb1JxMVFtUzBlRmR2OTY5cEcyc3c?oc=5",
       "publisher": "Demokratis.co.id",
       "published_at_utc": "2026-11-25T22:20:00Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "UNTR"
+      ],
+      "sector": "manufacturing",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_f7e275787c54821ca2b964",
+      "title": "UNTR Menguat 2,04 Persen Saat INDY Anjlok 4,90 Persen - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9mQXRWU3BUeThIS1BpdG9xbUV2SXp6WGF6Tzk4bmxKcjhHaDNkZ3ZaeHNkdDNpVTFsejgxczZGSk8zcEhZcE1kS0dCUnlvRm5XWEhr?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-11-25T22:16:40Z",
       "date_type": "rss_pubdate",
       "tickers": [
         "UNTR"
@@ -3636,6 +4102,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_703f449f84d7a8f07af9c8",
+      "title": "Cek Rekomendasi Teknikal Saham AADI, ISAT, dan PTBA untuk Perdagangan Selasa (24/11) - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBFbENkRG91WTZkY29Vc1dhN05FZ3kyY0FjcU9qc19pUFF3TjlQRzJJeUpHd3RnRzZpVjcxclpsY3l2R3MwREVXcmNCeDBhZnlHa0lYQXQ0aWhVcnZYUVY0VUY5ZG4tLVk?oc=5",
+      "publisher": "TradingView",
+      "published_at_utc": "2026-11-23T11:05:40Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "AADI"
+      ],
+      "sector": "coal",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_9cd010f35ab1f39debd96d",
       "title": "ASSA Siapkan Ekspansi Armada dengan Pendanaan Baru - MediaKompeten",
       "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE45LWw5X1BaclhsVXlqYWJlUHlYc3ZVbDc5ZlpOdmloUFhOT1VYSnM2RGxGV01uTExNUDI2ZWNSdU5FRW00M1Zsdm03MDJMUE9vOTl4S0RZVEQzNFhlSkxMT3JmdGlXT0Q5V2FERXVNRnM3QzNWOHc?oc=5",
@@ -3972,6 +4454,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_3473fb68bd6c9f0e4a3387",
+      "title": "Chart dan Harga Saham INDF — IDX:INDF - TradingView",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9JRmVzejZZWnlkUFIwUy1Wb21qQW5VRVRGNkk1SWZqdEZOSzJ4ajl6Z09NcTllVXNJMHJzd25Eek1rcngtUWdIYmVnUVBROHFETnE1WDlqNA?oc=5",
+      "publisher": "TradingView",
+      "published_at_utc": "2026-11-23T05:31:58Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "INDF"
+      ],
+      "sector": "food",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_49a291c665175b751aa438",
       "title": "Mirae Asset Pangkas Target Saham INCO Jadi Rp 4.560, Tapi Tetap Rekomendasi Buy - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPWEwyeWM4dXd6bktxaFJmbDNHbDVnTURaUWJyQ2tCRUZFd3V6NlhFQnBOYTF0dEVyX1doWDZLcTUwYkp6VXRlMm9sZHg3enYxMnVGWlFMY0xCZVRzRWZIdlY2SnROajRhcHpUb3dXbnYtTFd4VWlfTlV4SkFCS3N1dHZHM2pULUNOVkl0bDZQVjRXYmdYaW5SNXhOQ1FjWXF4VkV0NXg5aG1tdkhsLVoyaHRka9IBqwFBVV95cUxNLWxmTzFUeDk5MkZ6Z3RNWlVRRjZrWmNaek1GUVpkRHRMNEFrSjhTTzVscTZFOTQxa1BuYV90bWlaUEZIbldyTUFIaTdGWjNHcm5ISzhLcHVCb3VUVS1RQkZhWmRlUml1akVTRVBydWE5TTd3dHNyNEdqbm1hTXE5bFd0aUU3MEt6UVE1R29DcS1zVmNmY2c2WC1TYkpLM1dUSTAyc25NZUN4WWc?oc=5",
@@ -4191,6 +4689,22 @@
         "TLKM"
       ],
       "sector": "technology",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
+      "id": "sli_issuer_9da760f3e5b00cea043094",
+      "title": "Rekomendasi Saham 23 November 2026: TLKM, BMRI, PGAS, BRMS, PTRO, CPIN - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1Tb1hWbnNXTGNqMWRid000cjROcUs0Q25BN1Zpakt0ZHBjLWhQOFpfU0ZGMTJyazdzSXBkeXVGVTlQc2x4VkR1QUwyUmx5TUtQM25N?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-11-23T02:06:47Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGAS"
+      ],
+      "sector": "energy",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
@@ -5575,6 +6089,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_8a9a0814ce444e209ddb64",
+      "title": "PGAS Perkuat Prospek Bisnis hingga 2027 di Tengah Risiko Pasokan - شبكة تواصل الإخبارية",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1kUG1fTEc0Ml9ndUVlc2daZVY1MHdmYmlFRnEydVFuTFRVYmtjckx6ampGSERMbFFoSy1iWkltbk9JRnlMM24xOEo2SFltWE5lTHRn?oc=5",
+      "publisher": "شبكة تواصل الإخبارية",
+      "published_at_utc": "2026-11-20T01:07:51Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGAS"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_9d1043e202f40f69e1c8eb",
       "title": "Target Harga Saham Indofood (INDF) Dipangkas Jadi Rp 8.900, Ini Penyebabnya - InvestorTrust",
       "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQOGczWnc2Z2dqOW40MW5VbVBfOThwcUNZZVNoNzA4VjRaLUVac0I2eWEzZDJUTElLWnJEblFoWEQ1WUN4NENXMWw2TGtmSW9SaE9NV3I4czNtS2RkdnlXSzRKd1NWNHl5X1NmWFBIRi10VnI1Q243TEJBM3ozOUhBeTZmN3dnSGkydmtPWXo3ZHFLVXY1NkJwUXZ2M1JQUVdrRDF3?oc=5",
@@ -5879,6 +6409,22 @@
       "company_disclosure_verified": false
     },
     {
+      "id": "sli_issuer_461cedb6ff289a5072be50",
+      "title": "PGN (PGAS) Bidik Pertumbuhan 2027, Ini Katalis dan Risikonya - kontan.co.id",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPcXJPRUNKZ0FySkJEMnEteUtpX05WaURia1o3d0d6eFdwUFdMRGtENjQ1STVjSkxEOFdUTnRrOUFTekhtQ05GcGhxUVBhUnhiN1ZTVTF6YWN0RHZ4azRIeG1GQ2hnenhtQnRIeGxuZ19EQ3AtQ2pTNG10Q2hmTEZ5VkVPLWhOS2c1WUFqamp3N0dPZW9vbUM1Z9IBkAFBVV95cUxNcVZ0d25LRnFTRHR1aklXdWRKdXk2VHZMQ2ZBV095ZGl4UHZNelU5Y3ZzbndrVTNQR3d4RUhjaW9hQ3VfLTU5b21lV1g4al9QMEVncWpCYXZOLU5VNml6SGJOU3h5bFlaQUEwNXluRFZ5aTY5MWRaaDg3QlVvWE5IRlhWQ1Jqa29uUEItYmtseEc?oc=5",
+      "publisher": "kontan.co.id",
+      "published_at_utc": "2026-11-19T11:57:17Z",
+      "date_type": "rss_pubdate",
+      "tickers": [
+        "PGAS"
+      ],
+      "sector": "energy",
+      "source": "public_google_news_rss",
+      "evidence_level": "publisher_attributed_headline_unverified",
+      "article_body_checked": false,
+      "company_disclosure_verified": false
+    },
+    {
       "id": "sli_issuer_f65b7b1efe0949e31a6e37",
       "title": "Surat Utang Medco Energi (MEDC) Berkupon Tinggi, Simak Prospek Sahamnya - kontan.co.id",
       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOVFduWnphVHhrOVFvbVhzUTI4SDNzVzFqZ1pxQVJ5UElCWXNQeDlHZlp5RDNacmc5cFFhQ2RnV1FoUldOa0pxV1Zxak1wOV9DMHNXdl80Qm9XZzRRSDFSdEF3S0pYdGdBZ21sdE5FVFk5X2JsSkZCaXdmSUZSeXZVanZ3VXBMQXJxVnhhTGtTUHlVb0ZKWllNV0dnRjNMeUFfUE9EblJGVdIBnwFBVV95cUxOZEF6WnYxZXFqMld5Qm55eEV0N1VCcXRxYmdxYnQ3bzlIbUtaTWktMGFSNDkwLTV0VlBBeFBsMnNpSUNmUUwtcGtyVXQ4Q3hUaW0zRDZPVW91Tk1oNmJqMnh5MEQ5Q3BjbUZacXZHdWFhU2RTQ1JsNG5HU0hDVU01c2lxVFhpYWRNektBbzJiTHRPVzVRVWplNEpJLTRrcVk?oc=5",
@@ -5937,391 +6483,6 @@
         "ISAT"
       ],
       "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_24a2ca6283f778f890ecbf",
-      "title": "Saham ANTM: Laba 9M26 Melonjak 46%, Saham Tertekan Harga Emas - Ajaib",
-      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQbW1jVWh1ZUtiY0E5Vm55RmpZb0wyTjhnUkxPRVZ1Q3BnX20yQS02TUN4UzJIa0dUb2h1VVNLUWtQMjVkT0E2SFpCTU8zZ01fbGhndzNBZ3FSclN4ZUU5cnl0UmZ5S05UdU0tQkN6QVRKb3QzQklnSXRVZ1dkQlVSZ19ZUkw0N05DRlEtY3R6a2MwWTY5THBaSg?oc=5",
-      "publisher": "Ajaib",
-      "published_at_utc": "2026-11-19T08:11:35Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ANTM"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_1c795f03b8adfdda0e78be",
-      "title": "Indah Kiat (INKP) Terbitkan Utang Baru untuk Pelunasan November 2026 - Emitennews.com",
-      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOV2RFU3dGdm9QeDhxZlNvc1AxSmV6azktR0w5NzVmUjYwanV4dWMweDhWOHlacWlfekpsVjlQRk5fLVZlSldYdXRhZXdCLUM2MUtSSU43SHBlNGI3MWpSell4d2lZUko3RUJVU3FEVWNXTHdHTEpINWQwUG5CM2tjSzhQOVFuVVFkNlpzMTlkdVBGNVhfbkJGYm5R?oc=5",
-      "publisher": "Emitennews.com",
-      "published_at_utc": "2026-11-19T08:00:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "INKP"
-      ],
-      "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_bb1316860bb2cff1d1c8f3",
-      "title": "Turun Kasta di MSCI, Laba CPIN Malah Tumbuh Berlipat Berkat Bisnis Ini - Emitennews.com",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQRWdlUS1xaVZMaUFDYjFIeXBLOGExNDJ5bzdndTdpVWpOMFExc1R4VFpJdmxWSGYtS3ZFM0g1c2ttTkk0VnZsN2tJclg1T0ZGSnlPZjFsUGtkVnEwMjZMV2o4aGFmLW40NWJGdEg0T05BYkR6cTUtRXczRGV2dTdmRmNXOHdYeURoMnlsS0ZtTEdqZkJoQXkxVk9XUGM2NFdBc19V?oc=5",
-      "publisher": "Emitennews.com",
-      "published_at_utc": "2026-11-19T08:00:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "CPIN"
-      ],
-      "sector": "food",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_58f5ce587585d15da3f5dc",
-      "title": "PGAS Pertahankan Dividen Besar di Tengah Kasus Gunvor - Demokratis.co.id",
-      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1yMkJRbk1kVldZNWlaZGdHV29jNHRLVW5mYjdHemZacXo5cEtsN0xSOVRycEEwV3JWOEt6R3RweGktcmdadFFKekFTYUYzdHdlcXBrV1kzSHhkZkRXWk5F?oc=5",
-      "publisher": "Demokratis.co.id",
-      "published_at_utc": "2026-11-19T07:31:49Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PGAS"
-      ],
-      "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_27e06a8f09d0141ed3c6c5",
-      "title": "Teguh Pamuji Mundur dari Kursi Komisaris Amman Mineral (AMMN) - CNBC Indonesia",
-      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPbEVHaENNX2tfb24wdGhOWUdBekpaSU1DNUZUODAyanNKMG1SSTlMWTdvNHlLb2tfN0JmYklJQkhkcy1nMW5aeE1uc21udUYxY3B5MEtJZFpXeHhMbmc5ZHc4ODJlWTZuWWh3SjdYUUV3Zk8wMV83NjdvcG9vX2tqU3d2LWhWNV9XQXVlZFNmNlFNUEJYdjNiMkFFdlJZRHZUU3pBM255V1k4ZGpiNUEwZ2lUMTRHaVNCQWZDOEs3OGjSAcYBQVVfeXFMTlFKM3NSNzZ6VG54dTE3WWJuWlRzNlNFdjA1Wml1SUcteEtZcEdUb0hDMlpJUzVZNDFWSi16cHBNZnVQU0x3eF94cnVsQ2MxakRHZEZMTlhJdEtubm9FNHg3dDBqWTRKd2FaZElMamtfMURQR3VJU3hBS0k4bWY1WmZmSFdsRENFTDBvMk5IMmFGeW12aUZiVFpmTlBOQUtNSnA4ck01TXY2WUVDLS1mV2RLWWVHU0JXWG1uTWpKWFJsdUZCTXdR?oc=5",
-      "publisher": "CNBC Indonesia",
-      "published_at_utc": "2026-11-19T07:07:39Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "AMMN"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_223ca4fccf70aeaeef08f2",
-      "title": "Harga Saham UNTR Hari Ini, Kamis 19 November 2026 - Pintu",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE94V2lmSFFKTUNfYlZKM3ktNWxjMFZXWk8zb1V1d3AteXNYYUY4VmJDMkozTmlUcDZKRF9hOTNJLVkxYW9hekdsWWhMM3JwNE1NVGJRMjc4ekl0OVpIMmNQUmxiM3dMVmppRkpxV2JSZ3E5OEtsNlpKX0p3TUFDUTg?oc=5",
-      "publisher": "Pintu",
-      "published_at_utc": "2026-11-19T05:34:25Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "UNTR"
-      ],
-      "sector": "manufacturing",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_954e4791433c4e5c970699",
-      "title": "Harga Saham BREN Hari Ini, Kamis 19 November 2026 - Pintu",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1kMkYwQzVsb0g0VThaOE1kQThrVW0yNGNnRUNIOVhHTHFTQnQ3ODU5WHBJTHJjeTI4cWJQX2JSM1VxSDJrdnhOVmZkMWpvRGFnQVhyN0UzaU1mR2M5RnFYc016Y1lvTFl1cVlLMno2b2xveHcyb0VKdHhJakhOZFE?oc=5",
-      "publisher": "Pintu",
-      "published_at_utc": "2026-11-19T05:34:23Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "BREN"
-      ],
-      "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_39f0eade77a50237ffbe02",
-      "title": "Harga Saham PGAS Hari Ini, Kamis 19 November 2026 - Pintu",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5PNVoyS2ZhQ3hvS19wbXJwaHhfbTljTXhCN1JPbHVQdVM5eHE2NzJxYTFWdWh1QndrbGpDaVpMQ3Z0MG9HOUxmeVhMLWpLeXROWnZVaEZra2hmX1ZNTUNMaGNNM2pHS0tuSjMwajVFZjJBdVU4VlJ6UXFBaEpRZVU?oc=5",
-      "publisher": "Pintu",
-      "published_at_utc": "2026-11-19T05:34:20Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PGAS"
-      ],
-      "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_664cce6aad1a10535e2bfb",
-      "title": "Harga Saham ANTM Hari Ini, Kamis 19 November 2026 - Pintu",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE93RFBlTEZTZVNiT0lUbXhvSWVfcW5NT2pETFJqaXpoUHNQcnRVb1ZscDBUajF2MGFMNjdxNTQzbEZMZjZqN0lMUHZzbXloWkVLM1lUSjNydURoY0liN3JqZ2dFakdLSFRtR0pOYkFMTTFfaGVfc3hpQzEzQmRDYTQ?oc=5",
-      "publisher": "Pintu",
-      "published_at_utc": "2026-11-19T05:34:18Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ANTM"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_3b5a0641588e012ccd3cf8",
-      "title": "Harga Saham PTBA Hari Ini, Kamis 19 November 2026 - Pintu",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9adjF3elNkWVNTWlF0UmF0MnM4ZkNKelR3M0FrZjBWUWNGb1hVLUhvdXlhNjk4V24xR1NfeFkwWVpPLXQ0UmFfQnhIbzJUNWNvMzFnY3JUS2l2d0RYbWk1YnpNTXBCZzdmUk1EeG5HN3ZzTGlBRWlJMDc1b09jc3c?oc=5",
-      "publisher": "Pintu",
-      "published_at_utc": "2026-11-19T05:34:15Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "PTBA"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_938ae713c426ff1382747b",
-      "title": "Harga Saham ADRO Hari Ini, Kamis 19 November 2026 - Pintu",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5zcGlGZjZtbUhwUkhRX1hUcWpWRkZ1V0JlbWxWLV9hWTZ2ajczd2xuV1dpTFV0dzQtMkxBTFVWZHFXUTRxTjUwSTFWYVB5VUFWdGJSSzVobVVjLUZaeE54cThxbVVJSGI1SHZjdXd0aUh0a1p3TFJWdkhqbXV3SUk?oc=5",
-      "publisher": "Pintu",
-      "published_at_utc": "2026-11-19T05:34:15Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ADRO"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_b8813a6e7cf5d3e4a9f03c",
-      "title": "Harga Saham TLKM Hari Ini, Kamis 19 November 2026 - Pintu",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5IdFVQdVNoVGRwTy1tWjh2NnN3QWV1Q2doOFNfdFJfYzd6X1ZjaUZlLXlXOXc3VHptQVBER1J3M2s2bXp6bTZsTVRXMU1qTU5ZeThrd2xxS3VPVENfX1JQX1ZDb0dOZ2daekNoSDFpMUdURVlHb29LUlFjcmJyZnc?oc=5",
-      "publisher": "Pintu",
-      "published_at_utc": "2026-11-19T05:34:10Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "TLKM"
-      ],
-      "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_381a3f59515a5cb3bcff9c",
-      "title": "Harga Saham GOTO Hari Ini, Kamis 19 November 2026 - Pintu",
-      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE91ci0yTWhPeXpta0N3T21WdVJLSEprd29kRy12MkZBdEtRS2tGamtlUTVpLU9QejREZWFpZFJMU01HV2NOY1FCV0d3bnlZZ25MZkI5cWx1XzlYVE9CWXJ3Tk9YejdtZmwyOXVWd29QRVJXLUF6SjVmYVdhYUtlc3M?oc=5",
-      "publisher": "Pintu",
-      "published_at_utc": "2026-11-19T05:34:09Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "GOTO"
-      ],
-      "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_cb3a79f98d62c8b22c5fee",
-      "title": "IHSG Melemah Tipis ke 5.244,8 di Sesi Pertama, INDY, ISAT, HRTA Jadi Top Losers LQ45 - kontan.co.id",
-      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNeGs1eFFyd0l2Y1BmQnRYWDRyNjZ4SVhxOU1nS19GNk04cUoyT3YzSUZkM3FiczBMREFUSy1tbGtaSTV4QURPQi1OWkppVlJudU1Uc2NkRC1rVEZrTVNSdk5Db1pxOW1RSks0RW5vSktiMmJIMnkwcHdMdmhpN0NqdWtabjZsT19KQUI2Z3FWLWhLOElsMFhIaUpLMjNmbnVUSU5GbENOVDZ3RGhndTc3Ni05d2lkd9IBrgFBVV95cUxQZ1NNa25fYnJzaThhUk1wdlBtT21MZVB0WGdzdi1zVVhPcWp2RGwzc2VfTFVIbEsyTW9yMWRwM2xnZW5TcUlSRUU1dXZmVWhTY3ktdmM5Z1J5RFF0SnBRRlZvbVpQMFFhWEhmQ3dBT0w2MWI2Tkh2R2xDYzBCZkRGYkdsNTlhUkxtc1o2ay1GLTdkNjRIVHZUVXNjc0JOTXBOS1plcjZ1akZ0VUc0VXc?oc=5",
-      "publisher": "kontan.co.id",
-      "published_at_utc": "2026-11-19T05:10:02Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "ISAT"
-      ],
-      "sector": "technology",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_45051562a4d22a40f81123",
-      "title": "IHSG Melemah Usai Kenaikan BI-Rate, Cermati Saham EXCL, PWON, dan SMDR Hari Ini - SWA.co.id",
-      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNY0FoRzhxXzBGLWpHcjlHSEFmMk85VFVlekduSkR1bFJib09Ja3l3bHFZSlpMSl92X092TjMtUFUzVXBOZVFrTGJ2d3JlNVBMWVpuYnRidEl3WHZZcEg1Rlg1QjgzNlpNZHhhdXFJdFJXYXVwaTJBMTlfel9NNGszMFdqZmxHMUZxWkFIREwwVzlzZF96amp4a3UwU21ERjNMY0VTdzRCU0QyZw?oc=5",
-      "publisher": "SWA.co.id",
-      "published_at_utc": "2026-11-19T03:46:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "SMDR"
-      ],
-      "sector": "transport",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_4928da304079fc623905b0",
-      "title": "Harga Emas dan Logam Industri Loyo, Bagaimana Nasib Saham AMMN-MDKA Cs? - IDX Channel",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNRXdpU0NvUjlQYzgyZklyYXRrQkhmRndSdEd5NnRVQURxS28xMHY1cUFOZlhrd3pfSlk3dUlwMkpKSTNLSFlSZ0xqOXFGZElRZ256TE1fTjdsZXVPZnl6MlY2ZHZaTnA3d3YxbzRhUzhlQk9pZ19xckRZdlE0V21yU1luaWxCRUtEcDJ5SFc1OHA3a3UyMlItRWNZbF9KaFpvSGRsUzdMbVJSVFVi0gGyAUFVX3lxTE9QaVNCcTJFd3BxYlZfSzJtcko5V1dicjQtb3ZkNmUxdndQY2FjRVdMUXNPVlpSVWlCS2xJQ0Z4NnJKeHNWM0JncUJERF9XVFhQVXNEMWVOWVpoZ3ZsTy1peU5DZTJkZjl3OHI1Q05mZlIwMUVmVjJhY1NOR3hWVGgzOUlGSTdnZnJJSmN5TU1vZS1kcW43UEswLU05WV84d2dUcUVhVzRuYnR2WnJVZ3pwM2c?oc=5",
-      "publisher": "IDX Channel",
-      "published_at_utc": "2026-11-19T03:14:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "AMMN"
-      ],
-      "sector": "minerals",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_31442d99ec2aaa3a70bac2",
-      "title": "BEI Kembali Hentikan Sementara Perdagangan Saham WIKA - Pasardana",
-      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQUDdRalAzbGFscmVEaUtjZGR2TmpCZjlON3ZJMGI5eDVLMUNDUXE2WVpWUi1Jd3VzZklWOUhCWnNFelNRY2luSnpLbldFbDBqUE9KTDNDVzVWLVRUQ1pfcnhueHpZWWVWRkdHdzNjM2VfanVDeEdPanBoZ01ubmtELXM0bkJvRGFoWWhWaUoxNzVZWGtWSTNn?oc=5",
-      "publisher": "Pasardana",
-      "published_at_utc": "2026-11-19T03:12:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "WIKA"
-      ],
-      "sector": "infrastructure",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_589cdfec9ff3ad81d97c18",
-      "title": "Belum Bayar Bunga Obligasi dan Sukuk, BEI Gembok Lagi Saham WIKA - CNBC Indonesia",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPbFFkVGlka3lJaGtrQ29KTGNacFZ5dmZzLU9JR0o4QVhlSm5jWDE3WGVueC14ZjJub2VkRkxPZWpTNjVWaEZ1SS1jZ0hHLWM2NFR2ZUE4UHlOdEgtRksySXJSaHpzS2tBOEkyS2pqUHg3Q2tEbFJUT0hCaTVoTzJjUC1ZdHZJeGVFOVZpMDROajNONHFtSm1SOEQ4YjFpNzlBdlhncnpvNkFQQXF2SXdqb01GdU43ZlQ3RW4wcTRndjAtcFnSAcgBQVVfeXFMT2RKSzRCbHZYS0pBTjFMWlYtNG1xTVlkR0xyQnhuSlVnYUFMc01FOTNSUnJGTkhkczFNNlVsUHJWYlMxaTlKWGg5bzlEUlFVTFREVUJYdGtEU1NPMTlVaU5DeVRROEpvUEE1aEZrZzlZS0ZMRlZoRFVaNWZfeEtEQXBaSjNuUk1YQXBFd3VfLUZycUJEajZ0UlB1ZGRmbmxrcjZjTWFwM05Md216QjhmYW5IVWZfVDJGMVM1TUNEQnNvbkN1eHdTZUQ?oc=5",
-      "publisher": "CNBC Indonesia",
-      "published_at_utc": "2026-11-19T03:07:31Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "WIKA"
-      ],
-      "sector": "infrastructure",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_4fd44a921be0c3d223021a",
-      "title": "Indeks Bisnis-27 Dibuka Turun, Saham ENRG, MEDC hingga PTBA Justru Melaju - Bisnis.com - Market",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNa1VfNWU2N2hsQ09KdERPY3kyNU53YThjZ3Rtd09BdzVuVV8tRnJldnRjOGZDWER1dlZ2Ml8zSnBXVnNhN3R0QS1EREVSeWl2R0xBTTlfVEdvNU5sU1ZYRWpHeWtMTkN2Z1NRNG9lOHZvbzFxVlZVemVTa0RBVTRuOWt2c0poelN5LU9hYXhhRldzbXJWNXA2Zmo1YUdfU2RUTDQxWHNpbXMzMXZXVklVT2JYQlZWNHg1d3REZXNR?oc=5",
-      "publisher": "Bisnis.com - Market",
-      "published_at_utc": "2026-11-19T02:37:35Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "MEDC"
-      ],
-      "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_8ec60fc95e5b4e39f12553",
-      "title": "Proyeksi IHSG Kamis 19 November 2026, Cek Rekomendasi Saham AADI dan MAPA - NTVNews.id",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPVUR5M3lkNE9fVk9mcWN0NHgyaF9Jcmx4SmRHNWhfZ09jazRvWk9adWNpT3BzSlNDLUZwcDd6TGMzZ3c2dGRzNlpFWThCQ1NuakZTYVBVQ0lEUkhVclR1NnR1aUxReGVHZjhKeGNsNzE3ZXFxVzVJS1U5b011X1hRdmx0MlluRmFJbnRDWDh5VE1ic015dThDdVdKcWh4TGk0WWlJTkp2ekdrR1JxZ19TdDJ3?oc=5",
-      "publisher": "NTVNews.id",
-      "published_at_utc": "2026-11-19T02:02:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "AADI"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_595de3f7a0d211d30b1d0e",
-      "title": "Reliance Sekuritas Rekomendasi Beli 4 Saham, Ada BREN hingga TPIA - InvestorTrust",
-      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNOFFGcmloN3RoTTlUQzBTMkp0eWFxR2tWc1lZYnRvV3VRUFQyNlpXcjZERzNHdWtDUGlqN3Y4dmRjQjUxaUVBUjBITUlIX0w2ZHh0MjNkSzJIQmRrMU41YmNzeDVBQlFRN0ZDNmtnLVNwYURWSURqZVJqLWNRczh5UjhYa0NYb2dHSW1oMnlkWEpoZkhzZEM2TjZCeUJUZGo5TURwV3pB?oc=5",
-      "publisher": "InvestorTrust",
-      "published_at_utc": "2026-11-19T01:50:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "BREN"
-      ],
-      "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_016c14a634167a5b8a5b2f",
-      "title": "Masih Lanjutkan Pelemahan, Analis Sarankan ‘Buy on Weakness’ Empat Saham Ini: BREN, PGEO, DSSA, TPIA - TopBusiness.id",
-      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQTnZHTUJsdXNZVHByLUdmWDZ3RlZxNjRxX0hrXzZDOC1aRnhZd21mWFl6N3A2QV9IR0pqSkhWWHJJOUo0N2FHSUM5MWVLNXRSajVSTndyb2xDdHZDS09Td3RBZHJBdjYyOVhWY2xpd1ZuamNkMGk5UDZiRXU2NTYxd0J6T2xFc1VyLWx5M1FHd1BEajZlSTk1eUlxMzlxblNzNzlsX3gtNEdEbWRQRFlrNXFCa1VrdkVXMVFRZnBlQVlGT2JRMWNnNkhmc2k?oc=5",
-      "publisher": "TopBusiness.id",
-      "published_at_utc": "2026-11-19T01:45:00Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "BREN",
-        "PGEO"
-      ],
-      "sector": "energy",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_196a7134b4d7902da9efbf",
-      "title": "IHSG Berpeluang Rebound ke 5.520, MNC Sekuritas Rekomendasikan AADI hingga NCKL - tutur.co.id",
-      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQcGxmZFA3QW9zT3hmV2xmTzFRR2ZNZDV6Zm1yZlpfT09wVGRVREpodC1KZXhkWEFyN2FFQUxTUUItTXlIN1RCWVd3LTdKSUFBbmNacm1qYUI0YmtwY25XRkJxdE9fTnlmdW0walBSd0VWemh2MkhaVEtRTjNBT1oxZDRLSk9BVDlNNG9rQk41LXozMUYwZlE2X2h5d0d3TVhp?oc=5",
-      "publisher": "tutur.co.id",
-      "published_at_utc": "2026-11-19T01:19:22Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "AADI"
-      ],
-      "sector": "coal",
-      "source": "public_google_news_rss",
-      "evidence_level": "publisher_attributed_headline_unverified",
-      "article_body_checked": false,
-      "company_disclosure_verified": false
-    },
-    {
-      "id": "sli_issuer_19328b0836966f9977cdc7",
-      "title": "Permintaan Ayam Masih Tinggi, Tapi Pelemahan Rupiah Menghantui Margin CPIN - KONTAN",
-      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNazRvYmFvbTBXOGFKTXhJSjVkSTc2WFlfOFNzajlPWmR6OWRqNVZsWXZHUnBNdDg5aGMtWG15UzRlQVpYeGFzMzYzVUJqTExyMkcyTDU5YkdNZXEycnhqeUNZb2dQeFFEYzQ5Z0s0M2NwOExsNlR3eVFkdFRRVlJ5bDVWN3pPb3JyMk5DWG9WM09TZ1BXLUNXVTlnZERwQzRpZ3B1VjQ4Z3JPOVk?oc=5",
-      "publisher": "KONTAN",
-      "published_at_utc": "2026-11-19T00:36:07Z",
-      "date_type": "rss_pubdate",
-      "tickers": [
-        "CPIN"
-      ],
-      "sector": "food",
       "source": "public_google_news_rss",
       "evidence_level": "publisher_attributed_headline_unverified",
       "article_body_checked": false,
