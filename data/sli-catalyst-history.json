@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-11-27T01:50:03.188Z",
+  "published_at_utc": "2026-11-27T02:11:11.494Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-11-27T01:50:03.101012Z",
+    "news": "2026-11-27T02:11:11.401288Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 1138,
+  "count": 1139,
   "events": [
+    {
+      "id": "sli-catalyst-4ef2eb85ba79c62e84",
+      "kind": "news_indexed",
+      "title": "Brent settles higher as mine strikes, refinery attack stoke Middle East supply concerns - Reuters",
+      "detected_at_utc": "2026-11-27T02:11:11.494Z",
+      "source_at_utc": "2026-11-26T03:08:00Z",
+      "date_type": "first_seen_in_monitor",
+      "source_url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPWHpfX3p2RFoxU2l0SGZVbVdSejdGYkc0NFpERWlxVEtab0pQbGd1NUtqQ3c0cXprdWItUF9fRmVVVElET3BNbklnbElwaC1UZ0xoNnd4dE9Wb2dFVDFGN2JyQ3YyUVhfTWxsNGFWNFNURG5kX1pMdVBtb2QyLXFMaXZPM0ZPdGdud1hWdHFuTEpNQXBtdUh6RmpWcW1jelhTU0JHdmp3dWphb0hB?oc=5",
+      "publisher": "Reuters",
+      "sector": "energy",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-568524d19f1f026b7a",
       "kind": "news_indexed",
