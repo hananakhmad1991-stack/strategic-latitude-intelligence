@@ -1,22 +1,22 @@
 {
-  "assessment_date_wib": "2026-11-26",
-  "generated_at_utc": "2026-11-26T11:21:29.490182+00:00",
+  "assessment_date_wib": "2026-11-27",
+  "generated_at_utc": "2026-11-27T11:15:33.959658+00:00",
   "headline": "Indonesia Energy Security — Daily Overall Assessment",
   "status": "Automated evidence-led interpretation; news leads unverified, no LLM article-body verification",
   "method": "Deterministic editorial transmission framework sourced from dated official baselines and qualified, attributed public headline leads.",
   "baseline_fingerprint": "94f8dc22a6db81a51b3366afa1c11ab1f01ce7eda5279eacfb90edc071bf0839",
   "baseline_changed_since_previous": false,
-  "news_new_since_previous": 5,
-  "news_note": "5 newly identified attributed headline leads across the seven findings.",
+  "news_new_since_previous": 7,
+  "news_note": "7 newly identified attributed headline leads across the seven findings.",
   "news_freshness": {
     "domestic": {
-      "source_checked_at_utc": "2026-11-26T03:39:42.699410+00:00",
-      "age_hours_at_generation": 7.7,
+      "source_checked_at_utc": "2026-11-27T01:49:31.328439+00:00",
+      "age_hours_at_generation": 9.4,
       "usable": true
     },
     "geopolitical": {
-      "source_checked_at_utc": "2026-11-26T08:16:17.653733+00:00",
-      "age_hours_at_generation": 3.1,
+      "source_checked_at_utc": "2026-11-27T10:54:40.036541+00:00",
+      "age_hours_at_generation": 0.3,
       "usable": true
     }
   },
@@ -25,7 +25,7 @@
       "id": "oil-gas",
       "heading": "01 · Oil & Gas Supply Resilience",
       "finding": "Indonesia's reported oil-field output averaged 581 thousand barrels/day in 2025, while gross gas production was 6,789 MMSCFD in 2025. Proved reserves reported for 2025 were 2.326 billion barrels of oil and 34.78 TSCF of gas. These are different stock and flow measures. For 2026, the BPH Migas Pertalite quota was 29.27 million kL and the subsidized diesel quota was 18.64 million kL (annual allocations, not observed October deliveries).",
-      "daily_signal": "Newly identified attributed headline (CNBC Indonesia, 25 Nov 2026 18:42 WIB): Bahlil Mau Cadangan BBM Naik Jadi 60 Hari, Ini Kesiapan Pertamina - CNBC Indonesia. Analytical test: Assess regional stocks, last-mile fuel delivery and physical gas flows before attributing a supply problem to domestic crude production. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Newly identified attributed headline (CNBC Indonesia, 26 Nov 2026 16:00 WIB): Bos Pertamina Beberkan Upaya Kurangi Ketergantungan Impor Bensin-LPG - CNBC Indonesia. Analytical test: Assess regional stocks, last-mile fuel delivery and physical gas flows before attributing a supply problem to domestic crude production. The headline is not independently verified evidence of operational impact.",
       "implication": "Sustained supply resilience depends on replacement discoveries, operational delivery and refinery import needs. Regional fuel-availability headlines may point to distribution issues rather than changes in national production; LNG headlines do not prove Indonesian gas outages.",
       "verification_priority": "Monitor SKK Migas and ESDM revisions to actual output, domestic gas allocation, proved reserves and Pertamina/BPH Migas supply status.",
       "baseline_sources": [
@@ -44,20 +44,20 @@
       ],
       "recent_news_leads": [
         {
-          "title": "Bahlil Mau Cadangan BBM Naik Jadi 60 Hari, Ini Kesiapan Pertamina - CNBC Indonesia",
+          "title": "Bos Pertamina Beberkan Upaya Kurangi Ketergantungan Impor Bensin-LPG - CNBC Indonesia",
           "publisher": "CNBC Indonesia",
-          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOb3JZbVUxYkJJM2hrZ2VTNDcwOGpybU1zd3NJMjQxTjd2LUJqWUYzRHFwQ1huaGp1QkpMSjV1MGJUb3Ezb09nWTlxU1JGcGxHcXVpa0ctTFJVZHVsNDU4eVBMUVFqLTh1LVdxWkJIck5id1hqc2pRNU5PUzV3WmxDeFFqWFlLMTZpTHFLUHN2UjBMaW9UTkMwbU11UXF5YlJJTXF4S2ZPMzhNZS0xZGoxREhFb1UzcV9KNzJTT21UOFjSAcYBQVVfeXFMTXhKZXRnSGpDdkotazQyd3d6TkNiczlCNlpremxtZGpEVEZiWDZkNi1Jd2JCYi0tQ1ctVUZMQzJaVTR2VGt3VVZEd1NWdktOTHRyMXlYMWVaNzB0Wk9kWVFVdWEyQVhMU250M05MTE5BcGUyVjJ3cGQzX0M2YkdFZjNYR2hGeU1RX2xkNmhwMF93SS1EY1VIWnZoR2UxNm9tWGVZanBOMkoxQllMMVFlR0x4X0RoRkJZVGJKRWdmR2dRR3R6TWVR?oc=5",
-          "published_at_utc": "2026-11-25T11:42:16+00:00",
+          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQODEyUU5jaDFpQnk0UUF6ZGpGejV4eGJKelNVTHpubmY1T25jZ1V1YlE0TGhYWDlfWWZBbDVjbXF4M2RHTEExc3M5VkpJc0E3R1pvSVFRQnk1LVdFNnVNa3Z2X1FJSWN1VUZOVVdibnRJNUlMcW5xYmhuSkhCdFcwU0h5N3FDRDBFMWxqaV9LWHM1OWZGbW1lVTNLajFxYnpnOVRaV3E4a2d6MmVHWVZRZXVSVC1GSzVVVjg3eEQwblBwaDJTNWZFNDdEa9IBywFBVV95cUxQODEyUU5jaDFpQnk0UUF6ZGpGejV4eGJKelNVTHpubmY1T25jZ1V1YlE0TGhYWDlfWWZBbDVjbXF4M2RHTEExc3M5VkpJc0E3R1pvSVFRQnk1LVdFNnVNa3Z2X1FJSWN1VUZOVVdibnRJNUlMcW5xYmhuSkhCdFcwU0h5N3FDRDBFMWxqaV9LWHM1OWZGbW1lVTNLajFxYnpnOVRaV3E4a2d6MmVHWVZRZXVSVC1GSzVVVjg3eEQwblBwaDJTNWZFNDdEaw?oc=5",
+          "published_at_utc": "2026-11-26T09:00:05+00:00",
           "category": "Fuel and LPG availability",
           "topic_id": "fuel",
           "kind": "attributed news headline, not independently verified",
           "new_since_previous": true
         },
         {
-          "title": "Europe Is Beating Asia in Fight for Gas Supply Disrupted by War - Bloomberg",
-          "publisher": "Bloomberg",
-          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOT0FwQmRzNUdWRDZBR3VHZ3ZUTDNqRG9MV2pyek4xSzRCLUNpUDkzWmpmekU5Z3loaWdmbDRvNWVTRFVKcFZXZkFXSEhmRU93SE1VNnA1NW5NSFUtZEVIN1JEQm96TVlNVllkWWhwY05mRW1sNUVQTXlKZ1dxMjJqRVBoSjhYajdTT1g1U3Q1Zzdoc0VTVlhUSHdjNTJ5ZUdINnpOX08tdVVjdzAyVS1PS2F4ODI?oc=5",
-          "published_at_utc": "2026-11-25T10:11:43+00:00",
+          "title": "Australian LNG exporters must reserve some supply to lower domestic prices - Nikkei Asia",
+          "publisher": "Nikkei Asia",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQTmYzUUoxck1GbzUtOGM1Y21sWWNRajh6YldtRk5TTUx3MEpONkh0dzNCd3VGZWJTUUtNSEpUZV9EeU9pTG83dHp4TzkyX0NqbkJzRUpJUTQzTkFfSXJKQTNwb3NuZVRKMnpnV2xKd0MtUTk2bzZTUEo5bGdOcjJXanYtRXhsWnFOSkpJVEx4Vmp0dlRkM2NCYWVsNlVDeFdrZXZxaGpqUkM1MkFMS2lDbTdkTXQ?oc=5",
+          "published_at_utc": "2026-11-27T05:50:00+00:00",
           "category": "Asian LNG and gas",
           "topic_id": "lng_asia",
           "kind": "attributed news headline, not independently verified",
@@ -127,7 +127,7 @@
       "id": "power",
       "heading": "04 · Grid Reliability & Industrial Demand",
       "finding": "Electricity security must be evaluated through grid availability and restoration times, not installed capacity alone. Smelters, industrial estates and data centres are particularly dependent on reliable regional supply.",
-      "daily_signal": "Newly identified attributed headline (Bisnis.com - Ekonomi, 25 Nov 2026 21:12 WIB): Bos PLN Blak-blakan Ungkap Arahan Prabowo, Cegah Pemadaman hingga PLTS 100 GW - Bisnis.com - Ekonomi. Analytical test: Verify outage location, utility-confirmed cause, restoration time and affected industrial load, rather than extrapolating one regional event nationally. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Newly identified attributed headline (CNBC Indonesia, 27 Nov 2026 06:40 WIB): Malapetaka Hantam AS: 836.000 Mati Listrik-400 Penerbangan Batal - CNBC Indonesia. Analytical test: Verify outage location, utility-confirmed cause, restoration time and affected industrial load, rather than extrapolating one regional event nationally. The headline is not independently verified evidence of operational impact.",
       "implication": "Reported local blackouts can disrupt industry and data-centre operations. Their economic scale cannot be inferred without operator-confirmed duration, affected substations, customers and industrial load.",
       "verification_priority": "Verify each outage with the regional PLN operator; track interruption duration, cause, recovery, transmission constraints and the commissioning of firm supply.",
       "baseline_sources": [
@@ -140,24 +140,24 @@
       ],
       "recent_news_leads": [
         {
-          "title": "Bos PLN Blak-blakan Ungkap Arahan Prabowo, Cegah Pemadaman hingga PLTS 100 GW - Bisnis.com - Ekonomi",
-          "publisher": "Bisnis.com - Ekonomi",
-          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPaDFvbHp0eHQtWDBaWEVzT0kydTlfY3JQM2J4QndRc1ByQnBwSTZjbm8zNFdEX05PaFBQTERLbTktQmxqZHJ0eURFd2pab1pBb0hDLUpjaFN0QXQ3cXluR1FKb3dYNWU1bURFSjZqcjVWMWd5T0lBWEpsY1pMUXRweXM5UkZ3MlZyRkVGNExSOEE1Vi1RWENNcnU0c2xfNm9IeVNFRXJ0bHdYOGJQNmFqYzdSMFRCNGZ3cG83MlB2dkFKcXp3TWZB?oc=5",
-          "published_at_utc": "2026-11-25T14:12:35+00:00",
+          "title": "Malapetaka Hantam AS: 836.000 Mati Listrik-400 Penerbangan Batal - CNBC Indonesia",
+          "publisher": "CNBC Indonesia",
+          "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNUHNGMGlucjlxcDc3VERrVm1reFBDcXFiOFdQcGNpR0FKTVpqTVc5bGN2ZUp4TFotak5ST0tSaGl5WVZFdmVNbktHZmIxN29wSDg2enlGS0RUUVhfOHY2TnNPQWhLTHBiRG5WWTkwLTI4T2xuY0FZZlozd2hVV3VFSkJmdFlYRTcyc1h6cTJ5ZDBDTUxreTduNWtNVkNwLUZvRmFfN1dRN3BzTkpJNlEtOGctbHlRYjJUTHRHUFVB0gHDAUFVX3lxTFBDRWlhYzZuOVAzeldoZVZkcFpwSlBlSjB3V0FQT2hRRUg2S0wxRm5MMmhFaHlIbGFLRWlacnBCSllCS2xwZzJZNGJGSmpyaVNSaWluZDZ2M3FDc1NxTHlDTzItVmdxOFhEYTdPb3U3NDZFaFRQTlRtalMteFZIRmpUM0wzZkpLQ2hYVWtlUzdHbUxXQlpGR1lUVThTNXZJVHBxNEZOeVlkWktYbGtObzFPRFZZYURKSUJLWUtlYjFjNllvcw?oc=5",
+          "published_at_utc": "2026-11-26T23:40:00+00:00",
           "category": "Electricity outages",
           "topic_id": "power",
           "kind": "attributed news headline, not independently verified",
           "new_since_previous": true
         },
         {
-          "title": "PLN nyalakan sambungan 345 kVA untuk dukung lemulihan PLTM Aek Sibundong - ANTARA News Sumatera Utara",
-          "publisher": "ANTARA News Sumatera Utara",
-          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNYzkzS1FYNFpiMkktYWRrdmRvOWlVMmJNbm45ck5EWFZVQkJGbTFEaHVwTTlFSmYyc0tRZHU1MDV1Tll6TF9xVEFRWjV0aHpKdlBDRmZFS0swM1QwbTkyZlRCREpuZmVpNHVid2ozLUM4VWdBR1BCVW1rMmVsSVN4WTdwM0o2ZzZLVkVXNW9ycTc1Nm9UdFFsOXd1ZjY4NWdNMkpGNlYzdUp2ZF9YYTdXbW8zYjZvZ9IBuwFBVV95cUxOSkpseXZZLWVMQksyVi10QlJxZVZoNlNrRG5qOGlNQTN6R1NRak5jVFl2RUxRNFYwQkpNU0R4dGNuc244SWlOXy10R3BheEQ4WmZUaWNaOHlSc3A4Ym9nMmkxTFlsZlM5Z2Y0N216WlRiZ25QY3hNNURWQUZIU2dmUjE4X3dPT084dnBsUU5mZWx4TmVudFhuamthMXUyRGRXVmZlbWVQZFF4QzRsRkk0b3NScmp3UUx5blI4?oc=5",
-          "published_at_utc": "2026-11-25T07:17:30+00:00",
+          "title": "Pengamat Soroti Luasnya Dampak Pemadaman Listrik Bergilir di Kaltim - detikcom",
+          "publisher": "detikcom",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQMVBDS2FwNi1jYWpjZEkyWnVFSlVfUFpXeWY0akdWcFIxa1NfdE9PTjl6NUpxTDh5NmlWaV9Ea2dtRVhINVJhTEdjU1pXNzlKTDRuVUpfY3pHdldxTWhSakhHYi15UGlVYmJzV2dDVWZtVWY1YUNidS1pako0Z2FfTEt0STRmV2tJNHktREVuTmtWdGVic1U1aG0xd2NvM1prVFl3eHU0RVRVcnJHX2xNZ3FraU9XNkhn0gG-AUFVX3lxTFAtM3h5NU13ZlVGYXpUTnpIZ3pFS0FrckNHVHZqM2FjU0lhTlNTZ2tsUGxDTDRqMGI2SUNfbWN0VnBRZUNRWWxMM2NCbk1vQnFzcEd0U0RtQlNfMXJ1djRtb1FQWWh6QUhBMnlBT3dNcWdnRzhjVXNhS1RmVldBOWRjSVducEpfcVl1U3F6bEpEalphMTM0TDhYUGF5bnpralhlUVFoY3hOdE4wb0ZyMlp0U0RybW9VUjM1Mm9vcUE?oc=5",
+          "published_at_utc": "2026-11-26T23:01:01+00:00",
           "category": "Electricity outages",
           "topic_id": "power",
           "kind": "attributed news headline, not independently verified",
-          "new_since_previous": false
+          "new_since_previous": true
         }
       ]
     },
@@ -165,7 +165,7 @@
       "id": "transition",
       "heading": "05 · Energy Transition & Project Delivery",
       "finding": "Indonesia's reported EBT share was 15.75% in 2025 versus the revised KEN 2025 reference range of 17–20%. The 2025–2034 RUPTL plans 42.6 GW of renewable additions and 10.3 GW of storage, but these are planned, not commissioned. ESDM's realized 2025 investment was US$18.02bn in Migas versus US$2.31bn in EBTKE, which includes conservation and is not only renewable power-plant capex.",
-      "daily_signal": "Newly identified attributed headline (CNBC Indonesia, 25 Nov 2026 18:25 WIB): Bidik PLTN Beroperasi 2034, PLN Siap Serap 100% Listrik Nuklir - CNBC Indonesia. Analytical test: Determine whether the development is an investment proposal, construction milestone, grid energization or commissioned generation, since those represent different levels of delivery. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Newly identified attributed headline (CNBC Indonesia, 26 Nov 2026 13:55 WIB): Ada Proyek 100 GW PLTS, PLN Bakal Kerjasama dengan Kopdes Merah Putih - CNBC Indonesia. Analytical test: Determine whether the development is an investment proposal, construction milestone, grid energization or commissioned generation, since those represent different levels of delivery. The headline is not independently verified evidence of operational impact.",
       "implication": "The transition implementation gap remains an important strategic variable: grid connection, dispatch, financing and provincial RUED progress determine whether planned additions translate into generation and lower emissions.",
       "verification_priority": "Check COD, installed and dispatched capacity, regional RUED actuals and project operating data; do not treat announcements or personnel appointments as project completion.",
       "baseline_sources": [
@@ -190,10 +190,10 @@
       ],
       "recent_news_leads": [
         {
-          "title": "Bidik PLTN Beroperasi 2034, PLN Siap Serap 100% Listrik Nuklir - CNBC Indonesia",
+          "title": "Ada Proyek 100 GW PLTS, PLN Bakal Kerjasama dengan Kopdes Merah Putih - CNBC Indonesia",
           "publisher": "CNBC Indonesia",
-          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQQkVOOXo3dk9WS1Y3YUJ4bXgyLU5CQ2xFcEpKRlc4b25SUkFPR1FRVS1JWUNQRF9FQXRMdHZ0eVZTejJZQVQ3a0VEVEJhM2lMZ1IySGJlekt1Vm5YRFNUcGxaSDNwdE9veVp5OUNjOHZzVTFyRkExWGtLeHFfWTZ2emJRTHBtRWhNOWk2aFV3MFgxaEdqM1ROdklJQmJjRHowQ0pCbHBNSmswcWctcUlxNWpmVDZ5OVBBUjdPVlJjbDjSAcABQVVfeXFMUEJFTjl6N3ZPVktWN2FCeG14Mi1OQkNsRXBKSkZXOG9uUlJBT0dRUVUtSVlDUERfRUF0THR2dHlWU3oyWUFUN2tFRFRCYTNpTGdSMkhiZXpLdVZuWERTVHBsWkgzcHRPb3laeTlDYzh2c1UxckZBMVhrS3hxX1k2dnpiUUxwbUVoTTlpNmhVdzBYMWhHajNUTnZJSUJiY0R6MENKQmxwTUprMHFnLXFJcTVqZlQ2eTlQQVI3T1ZSY2w4?oc=5",
-          "published_at_utc": "2026-11-25T11:25:00+00:00",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOV1htMk53UzdGZ0JJM01QUWJuZ19EanRKbFcyRk0zQzhUV1lhWjJsR2pnWkVQY2pUelIxRzNCX0s3Ykk4OE01cUV4MjRXcTZ5TjBlYkItN3hndW9yblNoTlJqRVl3NkJ4MVlZY0dBcFdaQlJfVzVfZ2RENFpqQUt2NkFzX200MGtzRGhVVG1pOEc1YmMzTXkwdGd4dU4tQ2RGRDNzNlctcGNSMnl2eXFVMjYwV2xVdlZuSVgxVVVvUjVYQ21MQVHSAcsBQVVfeXFMTUMyd0pQUWRWbmUzWnM2a09zYnhRWEx1M3pvV1J1THhwem1tc2p5TnkyTmxzYnc0bFNnZ1ZET2VrN0FNV2U5bUhMVlRFTVlxZ2kwb2M3eHVOQThmVll4WWdzUjhnckRqd01QWmNpdEYtaTJpbnkwYm9mcGZyVDVHU2dxdm9kYV9TV1Y2eXdRdzVLMWVUVmd3cERzbU8yUDJrWjFrdGJENG4tWkZxRzdmNmdZR0xiaFR3aVFCdkdtVElTbERNMzlucDc2RlE?oc=5",
+          "published_at_utc": "2026-11-26T06:55:04+00:00",
           "category": "Energy project commissioning",
           "topic_id": "projects",
           "kind": "attributed news headline, not independently verified",
@@ -205,7 +205,7 @@
       "id": "carbon",
       "heading": "06 · Carbon Outcomes & Environmental Risk",
       "finding": "The BPS/KLHK inventory shown here ends in 2023; energy-sector emissions were 752.28 MtCO₂e and national emissions 1,360.35 MtCO₂e. These are emitted greenhouse gases, not reported avoided-emission achievements.",
-      "daily_signal": "Newly identified attributed headline (Kompas.id, 26 Nov 2026 09:37 WIB): Pengeringan Gambut Sumbang 2,7 Persen Pemanasan Global - Kompas.id. Analytical test: Verify observed fire area, duration, smoke dispersion and infrastructure proximity before inferring either an emissions increase or energy-system loss. The headline is not independently verified evidence of operational impact.",
+      "daily_signal": "Newly identified attributed headline (ANTARA News Papua, 27 Nov 2026 04:44 WIB): Polsek Kurik terima bantuan alat pemadam kebakaran dari BP Karhutla - ANTARA News Papua. Analytical test: Verify observed fire area, duration, smoke dispersion and infrastructure proximity before inferring either an emissions increase or energy-system loss. The headline is not independently verified evidence of operational impact.",
       "implication": "Peatland and forest-fire conditions can affect land-use emissions, haze and infrastructure access; local fire reports do not on their own confirm damage to electricity or fuel assets. National net-zero progress should use updated inventories rather than assuming daily changes.",
       "verification_priority": "Review BNPB/BPBD and KLHK fire measurements, proximity to critical infrastructure, restoration work, and the next verified GHG inventory.",
       "baseline_sources": [
@@ -218,24 +218,24 @@
       ],
       "recent_news_leads": [
         {
-          "title": "Pengeringan Gambut Sumbang 2,7 Persen Pemanasan Global - Kompas.id",
-          "publisher": "Kompas.id",
-          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPOVAwZVFOSmVMX1pRQnVDNWN6SzV1MUFqSkZMajdNMXRZRnE5OFBzaGFFTVVSODJaQlVidkgzUkxRTVM5VWRESXFHbWxfeUdYR1o4eHo3Z3R6NmN3blJ0QXN2VldkenZ0blNtNF9lcHZLUHZFR2sxNTVNU0FyN1NYa2FpNDcwd3RpSk1mTmlHREdjc1ZrZkJDVW5GSjdvcks0dTNHbC1taEZIUQ?oc=5",
-          "published_at_utc": "2026-11-26T02:37:35+00:00",
+          "title": "Polsek Kurik terima bantuan alat pemadam kebakaran dari BP Karhutla - ANTARA News Papua",
+          "publisher": "ANTARA News Papua",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOUzk3aHNPZDJaVHdCcEhHTlBlM1pkRGY0bGJ1WmRSdjlMQ1lBOTdLRGNJMFg2YVQtc1hiYkVNVDV5VVdNaGdIamRWdEcxVGROZTlSc0duZkc2c0d4WnNlU0FDbTVPcVFEYkVYYU85bWRhdkdhWDJWRVU4dXp3ZU9McFppWlVwTHJvYzkzVG1ybkVYUVNSVXh6TGdfUWh2VG51UkFETU5kQ0xBeG1BMnNB?oc=5",
+          "published_at_utc": "2026-11-26T21:44:09+00:00",
           "category": "Forest fires and haze",
           "topic_id": "forest_fire",
           "kind": "attributed news headline, not independently verified",
           "new_since_previous": true
         },
         {
-          "title": "BPBD Nunukan Petakan 444 Titik Panas, Perkuat Kesiapsiagaan Hadapi Karhutla - Berita Nunukan",
-          "publisher": "Berita Nunukan",
-          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQNmpuRTREQ2xxTDh0UDN1UHNQanlZczZPbTdvU1VNR0tucVhfOGEyQkg3S3ZjS095LUVNSW1FWHpBRFliMjk5QXJRUnk5WFFPVkFoNlZ3VjY4NXBqeEpCaGRMVlA3ZnJqRUdZbFIwV3BTX1JOX0IwbGdYalJqaGdzTEJRdFA3NkQtRTFQU3ZDeldCNUR0WklWTHdLR0lwTkFWMzlVQW5wX3BiWmd6YzhSSQ?oc=5",
-          "published_at_utc": "2026-11-24T12:36:35+00:00",
+          "title": "PASPI Bantah Sawit jadi Penyebab Karhutla - Bisnis.com - Ekonomi",
+          "publisher": "Bisnis.com - Ekonomi",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQR0xkbmljMmZ0UEVDVFdoZ0JtbFNSZ0JBZ3VvZ1lONXVMdGhZWk5jc3FvLThIaVY4OWhFWHBDSWJTb2g1NXRGdG9UZGZmdmM1dy1UcmVCZnFLQXdDM0VNd2Z5OEMxLXU0R2M3dVAwbVhLNGZic1p1Nk9vX0lXV01qSmR4NjBQWG1zRHptOGRCUHhsUTltOXV0SQ?oc=5",
+          "published_at_utc": "2026-11-26T13:10:10+00:00",
           "category": "Forest fires and haze",
           "topic_id": "forest_fire",
           "kind": "attributed news headline, not independently verified",
-          "new_since_previous": false
+          "new_since_previous": true
         }
       ]
     },
