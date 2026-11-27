@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-11-27T21:30:46.534Z",
+  "published_at_utc": "2026-11-27T21:33:38.919Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-11-27T21:30:46.455584Z",
+    "news": "2026-11-27T21:33:38.806790Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 1205,
+  "count": 1206,
   "events": [
+    {
+      "id": "sli-catalyst-fa024d74e233378bb8",
+      "kind": "news_indexed",
+      "title": "Karhutla Reda, Banjir Bandang dan Tanah Longsor Datang - Mongabay.co.id",
+      "detected_at_utc": "2026-11-27T21:33:38.919Z",
+      "source_at_utc": "2026-11-27T11:58:19Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQLXhoZk1BeVBvNERRbDducnpjNjd3VXhwQWY5TXVwbDNXZkpjaEJmUWVkc0pLekdmZDllZFNScm5lYnczeUxRcEcxcnNTODN5U2I5bldMcUtLUHAxTnNBeXBVMFNyMjhmMGp4djdVQlFCd2plWWI1TGpHbmJYRDlUQl96UEUxWEpwdmFfMnVmZ2JTUUYzRDNj?oc=5",
+      "publisher": "Mongabay.co.id",
+      "sector": "energy",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-f76d1265b1cf8acca9",
       "kind": "news_indexed",
