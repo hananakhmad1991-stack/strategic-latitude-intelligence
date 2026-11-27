@@ -1,18 +1,40 @@
 {
   "schema_version": "sli-catalyst-history-v2",
   "initialized_at_utc": "2026-10-20T06:07:40.191861Z",
-  "published_at_utc": "2026-11-27T21:33:38.919Z",
+  "published_at_utc": "2026-11-27T21:37:56.611Z",
   "provenance_policy": "Shared Git-versioned SLI index deltas. News is publisher-attributed, project/regulation events are changes to the SLI index only. Not independently verified factual changes, firm exposure, or trading alerts.",
   "retention_days": 365,
   "source_snapshots": {
-    "news": "2026-11-27T21:33:38.806790Z",
+    "news": "2026-11-27T21:37:56.521692Z",
     "projects": "2026-10-15",
     "regulations": "2026-10-20",
     "issuers": "2026-10-22",
     "participations": "2026-10-20"
   },
-  "count": 1206,
+  "count": 1207,
   "events": [
+    {
+      "id": "sli-catalyst-df512ece83727d188d",
+      "kind": "news_indexed",
+      "title": "Ditjen EBTKE Sosialisasikan Hasil Uji Teknis B50, Pastikan Kesiapan Enam Sektor Pengguna - Direktorat Jenderal EBTKE",
+      "detected_at_utc": "2026-11-27T21:37:56.611Z",
+      "source_at_utc": "2026-11-20T08:00:00Z",
+      "date_type": "publisher_publication_date",
+      "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPRG1fczhFdHp6RjkyT3BaMlZFbHlWV3cyZVVxVmdSdm9qejZSS2NPTndEY0FiU0NHaE5QLWVYb2t0RU50S1p1YmZBOC1CbklFTDliNTFkWFVzTmlZcnd3bTBWRmNiYTV1WTdaMmpWcHdFRlBsTi1lS1JmQ2tWcVNUaFowV2xGUzBSZnRpZVFXck41cnNYcDF6d2tpM2RJMEZGd1hWTXdnTF9DejRCWFUtSVJkMUFLN3J4c01oRTZDWGU1V3hvN2c?oc=5",
+      "publisher": "Direktorat Jenderal EBTKE",
+      "sector": "energy",
+      "summary": "Publisher/index metadata only; full article and claims not independently verified.",
+      "project_id": null,
+      "regulation_id": null,
+      "previous": null,
+      "current": null,
+      "provinces": [],
+      "region": "",
+      "ticker_links": [],
+      "evidence_status": "index_change_candidate_not_independently_verified",
+      "impact_status": "not_assessed",
+      "source_count": 1
+    },
     {
       "id": "sli-catalyst-fa024d74e233378bb8",
       "kind": "news_indexed",
