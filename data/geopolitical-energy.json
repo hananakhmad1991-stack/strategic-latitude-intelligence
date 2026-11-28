@@ -1,24 +1,7 @@
 {
-  "checked_at_utc": "2026-11-27T19:56:38.770796+00:00",
+  "checked_at_utc": "2026-11-28T02:40:31.184514+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
-    {
-      "topic": "Middle East energy infrastructure",
-      "topic_id": "oil_supply",
-      "type": "Infrastructure",
-      "sector": "oil_gas",
-      "sector_tags": [
-        "oil_gas"
-      ],
-      "subsector": "general",
-      "title": "Iraq Talking to OPEC About Its Production Ceiling, Minister Says - Bloomberg",
-      "publisher": "Bloomberg",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZlhOTmRNUnJnc20tNEFQN3FXY2NERWJWNGJWMllVd29jWktnRXVLNzJydFZvanE4OFRJX1NWSDkzMFBQTjgtendwelkyeFNHNGRCQW9FYkhkdHBKMlRwVjNyZkMzSXpadHJNNzhWZmhYM09nTHp4emhhWlJNOXRBd3MxVGxmeTdtNFduYVZWMUw1OE1sQlZPRmJ0czlyYm4tSXY3VXh6SG4wdkpnU1F4eUprTDk?oc=5",
-      "indexed_at_utc": "2026-11-27T15:03:28+00:00",
-      "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
     {
       "topic": "Middle East energy infrastructure",
       "topic_id": "oil_supply",
@@ -32,6 +15,23 @@
       "publisher": "Energy Intelligence",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9OWGRNWFRaVFRCSk5lNGgybjFQZVZjR0VEMXFjVnBoakpqbXNMVzlqbFNYRFBXbG5PZG82RVNwQnl6U001TS1SekVWU0ZIN0VnMFJaZW8yU01sSnQ2Zzk3UFNzeWVRX24xMGpLdWlHYk9sZw?oc=5",
       "indexed_at_utc": "2026-11-27T16:18:55+00:00",
+      "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Middle East energy infrastructure",
+      "topic_id": "oil_supply",
+      "type": "Infrastructure",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "gas_lng",
+      "title": "Aramco Looks to Reboot Domestic LNG Terminal Plans - Energy Intelligence",
+      "publisher": "Energy Intelligence",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE14Q1JRNTlkVGhSeU1LOFVtZ3hodHpPRE1KOEtDMklEaFA2Z0k2bG1iSVYwSXcyVFV3dUVYX1lHSjhLekQtOWhheUZlNFNFYlo2bERIUEpEN0VoWU9uM3J6RlZDd1k0RldIcFRWYk5XcDdZUQ?oc=5",
+      "indexed_at_utc": "2026-11-26T15:16:19+00:00",
       "impact_pathway": "Verified production/export outage -> supply balances -> global crude and ICP exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -116,25 +116,8 @@
       "title": "Rest of the world plays catch-up with China’s solar power dominance - Financial Times",
       "publisher": "Financial Times",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRFlVWEhsU1BRSl85NE9zaDNMMWtkS2VKX0lqRVNva1MycWZRRnBQTDM1LXh1QURBdjc2MnlBWW00bWlzX3Bmb3l6bmE3SUJuZ2pNbmZNekgzTm5EeG9uV2JCazNUSGRSa2w2RE9FeUhaSnd3eHBsdm8zTjdla1pfQU5MeWU?oc=5",
-      "indexed_at_utc": "2026-11-27T05:01:14+00:00",
+      "indexed_at_utc": "2026-11-27T05:00:04+00:00",
       "impact_pathway": "International PV/wind equipment prices, trade barriers and FDI -> Indonesian project economics",
-      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
-      "status": "Unverified aggregated news lead"
-    },
-    {
-      "topic": "Biofuels and international mandates",
-      "topic_id": "nre_biofuels",
-      "type": "Bioenergy trade",
-      "sector": "nre",
-      "sector_tags": [
-        "nre"
-      ],
-      "subsector": "bioenergy",
-      "title": "India SAF Market: Mandates & UCO | Webinar - Argus Media",
-      "publisher": "Argus Media",
-      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9IbzNGRnIzMXl2ZnhpUF9qZG15N2pTTEhZbk9sbEd3UVZnRFVhQ0NhdHBfVDB1emxhNDdBcDcxRGZQdXlyaml0OUFOSXp2YlpwenNobkw3M0xDMjEwSFYxZmFHcHJENGlyZFZzdWdsel9IYmE0S1hYRWpB?oc=5",
-      "indexed_at_utc": "2026-11-26T08:41:22+00:00",
-      "impact_pathway": "International biofuel demand and standards -> Indonesian palm oil, FAME and bioethanol prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     }
@@ -142,14 +125,14 @@
   "sector_counts": {
     "oil_gas": 6,
     "coal": 0,
-    "nre": 2,
+    "nre": 1,
     "electricity": 0,
     "cross_cutting": 0
   },
   "sector_taxonomy_version": "2026-10-15",
   "errors": [
     {
-      "topic": "Hormuz and Gulf energy",
+      "topic": "Red Sea and Bab el-Mandeb",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
