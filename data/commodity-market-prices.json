@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-11-28T01:54:36.672008+00:00",
-  "status": "ok",
+  "checked_at_utc": "2026-11-28T10:14:55.755431+00:00",
+  "status": "partial",
   "market_data_notice": "Futures are INDICATIVE public Yahoo quotes (may be delayed, market closed, or upstream unavailable). Not licensed live LME prices. IMF/FRED series are monthly averages, NOT intraday quotes.",
   "license_notice": "Market-data redistribution, especially for commercial products, may require provider licences. Obtain a licensed data API before promoting this as real-time trading-grade market data.",
   "cadence": "Automated every 30 minutes subject to GitHub Action scheduling. Browser checks published raw repository JSON every 3 minutes.",
@@ -108,8 +108,8 @@
           "value": 94.610001
         },
         {
-          "observed_at_utc": "2026-11-27T19:44:58+00:00",
-          "value": 90.839996
+          "observed_at_utc": "2026-11-27T14:30:00+00:00",
+          "value": 95.440002
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -216,7 +216,7 @@
           "value": 83.68
         },
         {
-          "observed_at_utc": "2026-11-27T19:44:59+00:00",
+          "observed_at_utc": "2026-11-27T14:30:00+00:00",
           "value": 83.080002
         }
       ],
@@ -324,7 +324,7 @@
           "value": 3.269
         },
         {
-          "observed_at_utc": "2026-11-27T19:44:59+00:00",
+          "observed_at_utc": "2026-11-27T14:30:00+00:00",
           "value": 3.491
         }
       ],
@@ -432,8 +432,8 @@
           "value": 5.3325
         },
         {
-          "observed_at_utc": "2026-11-27T19:44:55+00:00",
-          "value": 5.6005
+          "observed_at_utc": "2026-11-27T14:30:00+00:00",
+          "value": 5.517
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -540,8 +540,8 @@
           "value": 3535.800049
         },
         {
-          "observed_at_utc": "2026-11-27T19:44:58+00:00",
-          "value": 3668.5
+          "observed_at_utc": "2026-11-27T14:30:00+00:00",
+          "value": 3639.600098
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -648,8 +648,8 @@
           "value": 40.051998
         },
         {
-          "observed_at_utc": "2026-11-27T19:44:56+00:00",
-          "value": 43.702
+          "observed_at_utc": "2026-11-27T14:30:00+00:00",
+          "value": 43.167
         }
       ],
       "licensing_note": "For commercial real-time redistribution obtain a licensed market-data feed."
@@ -769,7 +769,8 @@
           "value": 16323.8219
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
+      "availability": "last_good_source_unavailable"
     },
     {
       "id": "copper_monthly",
@@ -886,7 +887,8 @@
           "value": 14473.05591
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
+      "availability": "last_good_source_unavailable"
     },
     {
       "id": "aluminium",
@@ -1003,7 +1005,8 @@
           "value": 3283.05429
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
+      "availability": "last_good_source_unavailable"
     },
     {
       "id": "tin",
@@ -1120,7 +1123,8 @@
           "value": 53711.67667
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
+      "availability": "last_good_source_unavailable"
     },
     {
       "id": "coal_australia",
@@ -1237,7 +1241,8 @@
           "value": 153.84
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
+      "availability": "last_good_source_unavailable"
     },
     {
       "id": "palm_oil",
@@ -1354,11 +1359,26 @@
           "value": 1133.12885
         }
       ],
-      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution."
+      "licensing_note": "IMF/FRED publisher terms apply; cite original series; verify before commercial redistribution.",
+      "availability": "last_good_source_unavailable"
     }
   ],
-  "errors": {},
-  "fallback_ids": [],
+  "errors": {
+    "nickel": "TimeoutError: The read operation timed out",
+    "copper_monthly": "TimeoutError: The read operation timed out",
+    "aluminium": "TimeoutError: The read operation timed out",
+    "tin": "TimeoutError: The read operation timed out",
+    "coal_australia": "TimeoutError: The read operation timed out",
+    "palm_oil": "TimeoutError: The read operation timed out"
+  },
+  "fallback_ids": [
+    "nickel",
+    "copper_monthly",
+    "aluminium",
+    "tin",
+    "coal_australia",
+    "palm_oil"
+  ],
   "official_indonesia_reference": [
     {
       "id": "hba",
