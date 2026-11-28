@@ -1,7 +1,24 @@
 {
-  "checked_at_utc": "2026-11-28T02:40:31.184514+00:00",
+  "checked_at_utc": "2026-11-28T11:44:17.973844+00:00",
   "coverage": "GDELT discovery with per-topic RSS fallback: oil/gas 2-day, coal 5-day and NRE 7-day search windows; source-attributed unverified headlines, not a live incident database",
   "events": [
+    {
+      "topic": "Hormuz and Gulf energy",
+      "topic_id": "oil_shipping",
+      "type": "Maritime chokepoint",
+      "sector": "oil_gas",
+      "sector_tags": [
+        "oil_gas"
+      ],
+      "subsector": "general",
+      "title": "Iran hitting same ships twice to deter traffic from Strait of Hormuz - Financial Times",
+      "publisher": "Financial Times",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNYzRHNFloazhBaUFycDBsWGVGbVhKQ3h2S1FEaG9MNDlLZUNnbzY4aHloeFI4RjlwOGFwQUowZHJ4aUtIcjZhOHZDd2FfMHN1aHBWSEpSYzBodXlOT3B4SWZBOUVCUzhaeTVSckxrVFBpVlQ5NnFwRDhYaUw3c3FKUDU0QUc?oc=5",
+      "indexed_at_utc": "2026-11-28T05:02:57+00:00",
+      "impact_pathway": "Potential shipping disruption -> freight/insurance -> Indonesian fuel import costs",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
     {
       "topic": "Middle East energy infrastructure",
       "topic_id": "oil_supply",
@@ -79,10 +96,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Iraq in talks with OPEC for higher oil quota, minister says before OPEC+ meeting - Reuters",
+      "title": "Brent settles higher as mine strikes, refinery attack stoke Middle East supply concerns - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOdndaSmMtcnZ2OU41SkZNYnNtNlU5ZnRWTFlOamJLb0x6eHRhRHJuQkNMY1oybHlpOUFkRWdncURJcUc0eGZvM2JNZUc4SGdvZG0yeTJFY0llZWJUeGtMRzQxaHFZNmZ0OS1YWFloelk4eDBVenhkQlotREpzR2F1cFgxbkZaT18zRWtGbHd2aTZENWFDMmhKaU13WnpSQkhIaUZGTDZtMFkwa2ZxUjdpTkRfTXRZMkNUcW1FM3hn?oc=5",
-      "indexed_at_utc": "2026-11-27T16:37:43+00:00",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPWHpfX3p2RFoxU2l0SGZVbVdSejdGYkc0NFpERWlxVEtab0pQbGd1NUtqQ3c0cXprdWItUF9fRmVVVElET3BNbklnbElwaC1UZ0xoNnd4dE9Wb2dFVDFGN2JyQ3YyUVhfTWxsNGFWNFNURG5kX1pMdVBtb2QyLXFMaXZPM0ZPdGdud1hWdHFuTEpNQXBtdUh6RmpWcW1jelhTU0JHdmp3dWphb0hB?oc=5",
+      "indexed_at_utc": "2026-11-26T20:56:47+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -96,10 +113,10 @@
         "oil_gas"
       ],
       "subsector": "general",
-      "title": "Brent settles higher as mine strikes, refinery attack stoke Middle East supply concerns - Reuters",
+      "title": "Iraq in talks with OPEC for higher oil quota, minister says before OPEC+ meeting - Reuters",
       "publisher": "Reuters",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPWHpfX3p2RFoxU2l0SGZVbVdSejdGYkc0NFpERWlxVEtab0pQbGd1NUtqQ3c0cXprdWItUF9fRmVVVElET3BNbklnbElwaC1UZ0xoNnd4dE9Wb2dFVDFGN2JyQ3YyUVhfTWxsNGFWNFNURG5kX1pMdVBtb2QyLXFMaXZPM0ZPdGdud1hWdHFuTEpNQXBtdUh6RmpWcW1jelhTU0JHdmp3dWphb0hB?oc=5",
-      "indexed_at_utc": "2026-11-26T03:08:00+00:00",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOdndaSmMtcnZ2OU41SkZNYnNtNlU5ZnRWTFlOamJLb0x6eHRhRHJuQkNMY1oybHlpOUFkRWdncURJcUc0eGZvM2JNZUc4SGdvZG0yeTJFY0llZWJUeGtMRzQxaHFZNmZ0OS1YWFloelk4eDBVenhkQlotREpzR2F1cFgxbkZaT18zRWtGbHd2aTZENWFDMmhKaU13WnpSQkhIaUZGTDZtMFkwa2ZxUjdpTkRfTXRZMkNUcW1FM3hn?oc=5",
+      "indexed_at_utc": "2026-11-27T16:37:43+00:00",
       "impact_pathway": "International crude supply -> ICP and Indonesian refinery import/BBM cost exposure",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
@@ -116,23 +133,74 @@
       "title": "Rest of the world plays catch-up with China’s solar power dominance - Financial Times",
       "publisher": "Financial Times",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNRFlVWEhsU1BRSl85NE9zaDNMMWtkS2VKX0lqRVNva1MycWZRRnBQTDM1LXh1QURBdjc2MnlBWW00bWlzX3Bmb3l6bmE3SUJuZ2pNbmZNekgzTm5EeG9uV2JCazNUSGRSa2w2RE9FeUhaSnd3eHBsdm8zTjdla1pfQU5MeWU?oc=5",
-      "indexed_at_utc": "2026-11-27T05:00:04+00:00",
+      "indexed_at_utc": "2026-11-27T05:01:14+00:00",
       "impact_pathway": "International PV/wind equipment prices, trade barriers and FDI -> Indonesian project economics",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Battery storage and clean-energy grids",
+      "topic_id": "nre_grid_storage",
+      "type": "Renewable grid",
+      "sector": "nre",
+      "sector_tags": [
+        "nre"
+      ],
+      "subsector": "storage_grid",
+      "title": "Longer battery storage durations reshape US power markets - Reuters",
+      "publisher": "Reuters",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOMEpMYkJwLXVfeTlRZFB4SlI3LXBRb2RUMFhtTm9TSGRtODVzT2RjUXJBODVXdDVhalRWU1I5T3d2YjlNWFNiM2h2OFZOcl9JUWROb19HQ0dlQi1Vcy1QOVV1WF9QZ3FvUUNFR05TeUtSWENfVFdtamlIZGdUcmY4Y3dScUJ6ak0ybkwzczZuMVdlQ3lkX0ZXejNiN0RCRG5OQ0hlbUtES0JNdzNOMHdMVHJEakMyU00?oc=5",
+      "indexed_at_utc": "2026-11-24T17:08:50+00:00",
+      "impact_pathway": "Battery and grid procurement policy -> Indonesia renewable integration and investment costs",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Geothermal and renewable financing",
+      "topic_id": "nre_geothermal",
+      "type": "NRE investment",
+      "sector": "nre",
+      "sector_tags": [
+        "nre"
+      ],
+      "subsector": "general",
+      "title": "Tegbe seeks private investment to expand renewable energy access - The Guardian Nigeria News",
+      "publisher": "The Guardian Nigeria News",
+      "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNUjlmRXNxV05Ob1lFWG1YQ1BJeWpSQWg1M2tmd2RaRUJTTlVueEIxeTFmaml6dUo1cXFDc2pJZE5qb0R4T2huV2VDWktwTC1SbkhNQWZmeTQ1djdsU01KMGYtb3kwejNZZ1BKVHhqWjJueG5ONVNRc3hVZVQwU1ZnT0xZYk0tRG4tQk1saHYyeE82bXZ1?oc=5",
+      "indexed_at_utc": "2026-11-28T03:27:42+00:00",
+      "impact_pathway": "International NRE project finance and transfer of engineering capability -> Indonesia clean power pipeline",
+      "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
+      "status": "Unverified aggregated news lead"
+    },
+    {
+      "topic": "Biofuels and international mandates",
+      "topic_id": "nre_biofuels",
+      "type": "Bioenergy trade",
+      "sector": "nre",
+      "sector_tags": [
+        "nre"
+      ],
+      "subsector": "bioenergy",
+      "title": "India SAF Market: Mandates & UCO | Webinar - Argus Media",
+      "publisher": "Argus Media",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9IbzNGRnIzMXl2ZnhpUF9qZG15N2pTTEhZbk9sbEd3UVZnRFVhQ0NhdHBfVDB1emxhNDdBcDcxRGZQdXlyaml0OUFOSXp2YlpwenNobkw3M0xDMjEwSFYxZmFHcHJENGlyZFZzdWdsel9IYmE0S1hYRWpB?oc=5",
+      "indexed_at_utc": "2026-11-26T08:41:22+00:00",
+      "impact_pathway": "International biofuel demand and standards -> Indonesian palm oil, FAME and bioethanol prices",
       "assessment": "Headline discovered via RSS. Incident, duration, physical impact and relevance to Indonesia require independent verification.",
       "status": "Unverified aggregated news lead"
     }
   ],
   "sector_counts": {
-    "oil_gas": 6,
+    "oil_gas": 7,
     "coal": 0,
-    "nre": 1,
+    "nre": 4,
     "electricity": 0,
     "cross_cutting": 0
   },
   "sector_taxonomy_version": "2026-10-15",
   "errors": [
     {
-      "topic": "Red Sea and Bab el-Mandeb",
+      "topic": "Hormuz and Gulf energy",
       "error": "HTTP Error 429: Too Many Requests"
     }
   ],
