@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-27T23:35:07.064054+00:00",
+  "checked_at_utc": "2026-11-28T08:06:26.725889+00:00",
   "scope": "Public RSS discovery only; no independent verification of investment amounts, permits, milestones or capital disbursement",
   "source": "Google News RSS search indexing attributed publishers",
   "reports": [
@@ -1446,8 +1446,68 @@
   ],
   "errors": [
     {
+      "topic": "FDI & capital",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Project implementation",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Downstreaming & energy",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Policy & incentives",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Risks & disputes",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Biofuels & bioenergy",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Palm oil & downstream",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Renewable energy",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Solar & hydro",
+      "reason": "HTTPError"
+    },
+    {
       "topic": "Wind & storage",
-      "reason": "RSS returned no headlines"
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Nuclear & SMR",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Electric vehicles",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Smelters & processing",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Corporate actions & market",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "Rumor & deal watch",
+      "reason": "HTTPError"
+    },
+    {
+      "topic": "AI & data centers",
+      "reason": "HTTPError"
     }
   ]
 }
